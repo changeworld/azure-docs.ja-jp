@@ -1,6 +1,6 @@
 ---
-title: Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成する
-description: Azure CLI と Azure portal を使用して Azure IoT Hub のメッセージ ルーティングを構成する
+title: チュートリアル - Azure CLI を使用して Azure IoT Hub のメッセージ ルーティングを構成する
+description: チュートリアル - Azure CLI と Azure portal を使用して Azure IoT Hub のメッセージ ルーティングを構成する
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 892dad3963e9da3560acc2c782c3d14db246ea78
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d7a10aac82286616273f7283bc3fba74f2c58f35
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500591"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625217"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI と Azure portal を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -140,17 +140,17 @@ az servicebus queue create --name $sbQueueName \
 
 2. リソースの一覧で IoT ハブを選択します。 このチュートリアルでは、**ContosoTestHub** を使います。
 
-3. **[メッセージ ルーティング]** を選択します。 **[メッセージ ルーティング]** ウィンドウで、+ **[追加]** を選択します。 次の図に示すように、 **[Add a Route]\(ルートの追加\)** ウィンドウで、[エンドポイント] フィールドの隣にある + **[追加]** を選択し、サポートされているエンドポイントを表示します。
+3. **[メッセージ ルーティング]** を選択します。 **[メッセージ ルーティング]** ウィンドウで、+ **[追加]** を選択します。 次の図に示すように、 **[ルートの追加]** ペインで、[エンドポイント] フィールドの横の + **[エンドポイントの追加]** を選択して、サポートされているエンドポイントを表示します。
 
-   ![ルートのエンドポイントの追加を開始する](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+   ![ルートのエンドポイントの追加を開始する](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
 
-4. **[Blob ストレージ]** を選択します。 **[Add storage endpoint]\(ストレージ エンドポイントの追加\)** ウィンドウが表示されます。
+4. **[ストレージ]** を選択します。 **[Add storage endpoint]\(ストレージ エンドポイントの追加\)** ウィンドウが表示されます。
 
-   ![エンドポイントの追加](./media/tutorial-routing/message-routing-add-storage-ep.png)
+   ![エンドポイントの追加](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
 
 5. エンドポイントの名前を入力します。 このチュートリアルでは、**ContosoStorageEndpoint** を使います。
 
-6. **[コンテナーを選択します]** を選択します。 ストレージ アカウントの一覧が表示されます。 準備ステップで設定したものを選択します。 このチュートリアルでは、**contosostorage** を使います。 そのストレージ アカウント内のコンテナーの一覧が表示されます。 準備ステップで設定したコンテナーを**選択**します。 このチュートリアルでは、**contosoresults** を使います。 **[ストレージ エンドポイントの追加]** ウィンドウに戻り、選択した内容が表示されます。
+6. **[コンテナーを選択します]** を選択します。 ストレージ アカウントの一覧が表示されます。 準備ステップで設定したものを選択します。 このチュートリアルでは、**contosostorage** を使います。 そのストレージ アカウント内のコンテナーの一覧が表示されます。 準備ステップで設定したコンテナーを **選択** します。 このチュートリアルでは、**contosoresults** を使います。 **[ストレージ エンドポイントの追加]** ウィンドウに戻り、選択した内容が表示されます。
 
 7. エンコードを AVRO または JSON に設定します。 このチュートリアルでは、残りのフィールドには既定値を使用します。 選択したリージョンが JSON エンコードをサポートしていない場合、このフィールドは灰色表示されます。
 

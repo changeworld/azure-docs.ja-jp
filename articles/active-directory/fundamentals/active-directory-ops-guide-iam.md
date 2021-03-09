@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: ab4e9f7410954292290b6acf0895197ff013b1d8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 66bce573be5a31641bdff809b8e9a79b617a703a
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321669"
+ms.lasthandoff: 10/22/2020
+ms.locfileid: "92371003"
 ---
 # <a name="azure-active-directory-identity-and-access-management-operations-reference-guide"></a>Azure Active Directory の ID およびアクセス管理の運用リファレンス ガイド
 
@@ -35,8 +35,8 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 | :- | :- |
 | Azure サブスクリプションを作成するプロセスを定義する | 組織によって異なる |
 | Enterprise Mobility + Security: ライセンスを取得するユーザーを決定する | IAM 運用チーム |
-| Office 365 のライセンスを取得するユーザーを決定する | 生産性チーム |
-| 他のライセンス (Dynamics、VSO など) を取得するユーザーを決定する | Application Owner |
+| Microsoft 365 のライセンスを取得するユーザーを決定する | 生産性チーム |
+| 他のライセンス (Dynamics、Visual Studio Codespaces など) を取得するユーザーを決定する | Application Owner |
 | ライセンスを割り当てる | IAM 運用チーム |
 | ライセンスの割り当てエラーをトラブルシューティングして修復する | IAM 運用チーム |
 | Azure AD のアプリケーションに ID をプロビジョニングする | IAM 運用チーム |
@@ -45,7 +45,7 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 
 #### <a name="assigning-owners-recommended-reading"></a>所有者の割り当てに関する推奨資料
 
-- [Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md)
 - [Azure でのガバナンス](../../governance/index.yml)
 
 ## <a name="on-premises-identity-synchronization"></a>オンプレミスの ID の同期
@@ -105,9 +105,9 @@ Azure AD Connect のバージョンが 6 か月を超えている場合は、最
 
 #### <a name="source-anchor"></a>ソース アンカー
 
-**ms-DS-consistencyguid** を[ソース アンカー](../hybrid/plan-connect-design-concepts.md)として使用すると、フォレストおよびドメイン間でのオブジェクトの移行が容易になります。これは、AD ドメインの統合/クリーンアップ、合併、買収、および売却に共通です。
+**ms-DS-consistencyguid** を [ソース アンカー](../hybrid/plan-connect-design-concepts.md)として使用すると、フォレストおよびドメイン間でのオブジェクトの移行が容易になります。これは、AD ドメインの統合/クリーンアップ、合併、買収、および売却に共通です。
 
-現在 **ObjectGuid** をソース アンカーとして使用している場合は、**ms-DS-ConsistencyGuid** の使用に切り替えることをお勧めします。
+現在 **ObjectGuid** をソース アンカーとして使用している場合は、 **ms-DS-ConsistencyGuid** の使用に切り替えることをお勧めします。
 
 #### <a name="custom-rules"></a>カスタム規則
 
@@ -140,7 +140,7 @@ Azure AD Connect カスタム規則を使用すると、オンプレミスのオ
 
 Azure Active Directory は、Microsoft クラウド サービスの[グループベースのライセンス](./active-directory-licensing-whatis-azure-portal.md) を使用してライセンスの管理を効率化します。 このようにして IAM は、グループのインフラストラクチャと、組織内の適切なチームに対するそれらのグループの委任管理を提供します。 Azure AD でグループのメンバーシップを設定するには、次のような複数の方法があります。
 
-- **オンプレミスからの同期** - グループはオンプレミスのディレクトリから取得できます。これは、Office 365 でライセンスを割り当てるために拡張できるグループ管理プロセスが確立されている組織に適しています。
+- **オンプレミスからの同期** - グループはオンプレミスのディレクトリから取得できます。これは、Microsoft 365 でライセンスを割り当てるために拡張できるグループ管理プロセスが確立されている組織に適しています。
 
 - **属性ベース/動的** - グループは、ユーザー属性に基づいた式に基づいてクラウドで作成できます。たとえば、Department は "sales" となります。 Azure AD は、定義された式との一貫性を維持したまま、グループのメンバーを保持します。 ライセンスの割り当てにこの種類のグループを使用すると、属性ベースのライセンスの割り当てが有効になります。これは、ディレクトリ内のデータ品質が高い組織に適しています。
 
@@ -157,20 +157,20 @@ Azure Active Directory は、Microsoft クラウド サービスの[グループ
 - 必要に応じて、ユーザーのパッケージを保持する属性を定義できます。
 
 > [!IMPORTANT]
-> Azure AD のグループベースのライセンスでは、ユーザーのライセンス付与に関してエラー状態の概念が導入されています。 ライセンスに関するエラーが発生した場合は、直ちにライセンスの割り当ての問題を[特定して解決](../users-groups-roles/licensing-groups-resolve-problems.md)してください。
+> Azure AD のグループベースのライセンスでは、ユーザーのライセンス付与に関してエラー状態の概念が導入されています。 ライセンスに関するエラーが発生した場合は、直ちにライセンスの割り当ての問題を[特定して解決](../enterprise-users/licensing-groups-resolve-problems.md)してください。
 
 ![自動的に生成されたコンピューター画面の説明のスクリーンショット](./media/active-directory-ops-guide/active-directory-ops-img2.png)
 
 #### <a name="lifecycle-management"></a>ライフサイクル管理
 
-オンプレミスのインフラストラクチャに依存する [Microsoft Identity Manager](/microsoft-identity-manager/) やサードパーティ システムなどのツールを現在使用している場合は、既存のツールから割り当てをオフロードし、グループベースのライセンスを実装し、[グループの](../users-groups-roles/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)に基づいてグループのライフサイクル管理を定義することをお勧めします。 同様に、既存のプロセスで、新しい従業員や組織を離れる従業員が考慮されていない場合は、動的グループに基づいてグループベースのライセンスをデプロイし、グループ メンバーシップのライフサイクルを定義する必要があります。 最後に、ライフサイクル管理が行われていないオンプレミスのグループに対してグループベースのライセンスをデプロイする場合は、クラウド グループを使用して、委任された所有権や属性ベースの動的メンバーシップなどの機能を有効にすることを検討してください。
+オンプレミスのインフラストラクチャに依存する [Microsoft Identity Manager](/microsoft-identity-manager/) やサードパーティ システムなどのツールを現在使用している場合は、既存のツールから割り当てをオフロードし、グループベースのライセンスを実装し、[グループの](../enterprise-users/licensing-group-advanced.md#use-group-based-licensing-with-dynamic-groups)に基づいてグループのライフサイクル管理を定義することをお勧めします。 同様に、既存のプロセスで、新しい従業員や組織を離れる従業員が考慮されていない場合は、動的グループに基づいてグループベースのライセンスをデプロイし、グループ メンバーシップのライフサイクルを定義する必要があります。 最後に、ライフサイクル管理が行われていないオンプレミスのグループに対してグループベースのライセンスをデプロイする場合は、クラウド グループを使用して、委任された所有権や属性ベースの動的メンバーシップなどの機能を有効にすることを検討してください。
 
 ### <a name="assignment-of-apps-with-all-users-group"></a>"すべてのユーザー" グループを使用したアプリの割り当て
 
-リソースの所有者は、**すべてのユーザー** グループに実際には**企業の従業員**と**ゲスト**の両方が含まれている可能性があるときに、**企業の従業員**のみが含まれていると考えることがあります。 そのため、**すべてのユーザー** グループを使用してアプリケーションの割り当てを行い、SharePoint コンテンツやアプリケーションなどのリソースへのアクセスを許可する場合は、特別な注意を払う必要があります。
+リソースの所有者は、 **すべてのユーザー** グループに実際には **企業の従業員** と **ゲスト** の両方が含まれている可能性があるときに、 **企業の従業員** のみが含まれていると考えることがあります。 そのため、 **すべてのユーザー** グループを使用してアプリケーションの割り当てを行い、SharePoint コンテンツやアプリケーションなどのリソースへのアクセスを許可する場合は、特別な注意を払う必要があります。
 
 > [!IMPORTANT]
-> **すべてのユーザー** グループが有効になっていて、条件付きアクセス ポリシー、アプリ、またはリソースの割り当てに使用されている場合に、ゲスト ユーザーを含めたくない場合は、必ず[グループをセキュリティで保護](../external-identities/use-dynamic-groups.md)してください。 さらに、**企業の従業員**のみが含まれるグループを作成して割り当てることによって、ライセンスの割り当てを修正する必要があります。 一方で、**すべてのユーザー** グループが有効になっているが、リソースへのアクセスを許可するために使用されていない場合は、組織の運用上のガイダンスで、そのグループ (**企業の従業員**と**ゲスト**を含む) を意図的に使用していることを確認してください。
+> **すべてのユーザー** グループが有効になっていて、条件付きアクセス ポリシー、アプリ、またはリソースの割り当てに使用されている場合に、ゲスト ユーザーを含めたくない場合は、必ず [グループをセキュリティで保護](../external-identities/use-dynamic-groups.md)してください。 さらに、 **企業の従業員** のみが含まれるグループを作成して割り当てることによって、ライセンスの割り当てを修正する必要があります。 一方で、 **すべてのユーザー** グループが有効になっているが、リソースへのアクセスを許可するために使用されていない場合は、組織の運用上のガイダンスで、そのグループ ( **企業の従業員** と **ゲスト** を含む) を意図的に使用していることを確認してください。
 
 ### <a name="automated-user-provisioning-to-apps"></a>自動化されたアプリへのユーザー プロビジョニング
 
@@ -188,7 +188,7 @@ Azure Active Directory は、Microsoft クラウド サービスの[グループ
 
 #### <a name="azure-ad-connect-troubleshooting-recommended-reading"></a>Azure AD Connect のトラブルシューティングに関する推奨資料
 
-- [IdFix ツールを使用した Office 365 との同期のためのディレクトリ属性の準備 - Office 365](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
+- [IdFix ツールを使用した Microsoft 365 との同期のためのディレクトリ属性の準備](/office365/enterprise/prepare-directory-attributes-for-synch-with-idfix)
 - [Azure AD Connect:同期中のエラーのトラブルシューティング](../hybrid/tshoot-connect-sync-errors.md)
 
 ## <a name="summary"></a>まとめ

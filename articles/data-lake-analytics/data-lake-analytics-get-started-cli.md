@@ -6,12 +6,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/18/2017
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: be7f9d66a10f3f0f4a1ae0f9e28e226f268a7f7c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9123ca6a1bfa90737bb1ce83ee365d1ecf514e1f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497445"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92220994"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-cli"></a>Azure CLI で Azure Data Lake Analytics の使用を開始する
 
@@ -104,11 +104,11 @@ az dls fs upload --account "<Data Lake Store Account Name>" --source-path "<Sour
 az dls fs list --account "<Data Lake Store Account Name>" --path "<Path>"
 ```
 
-Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。  Azure BLOB ストレージへのデータのアップロードについては、「 [Azure ストレージでの Azure CLI の使用](../storage/common/storage-azure-cli.md)」を参照してください。
+Data Lake Analytics は、Azure BLOB ストレージにもアクセスできます。  Azure BLOB ストレージへのデータのアップロードについては、「 [Azure ストレージでの Azure CLI の使用](../storage/blobs/storage-quickstart-blobs-cli.md)」を参照してください。
 
 ## <a name="submit-data-lake-analytics-jobs"></a>Data Lake Analytics ジョブを送信する
 
-Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関する記事および「[U-SQL Language Reference (U-SQL 言語リファレンス)](https://docs.microsoft.com/u-sql/)」をご覧ください。
+Data Lake Analtyics ジョブは U-SQL 言語で記述されます。 U-SQL の詳細については、[U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)に関する記事および「[U-SQL Language Reference (U-SQL 言語リファレンス)](/u-sql/)」をご覧ください。
 
 ### <a name="to-create-a-data-lake-analytics-job-script"></a>Data Lake Analytics ジョブ スクリプトを作成するには
 

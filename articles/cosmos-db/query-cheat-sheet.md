@@ -3,19 +3,21 @@ title: Azure Cosmos DB PDF クエリ チート シート
 description: Azure Cosmos DB の SQL、MongoDB、グラフ、およびテーブル API を使用してデータをクエリするのに役立つ印刷可能な PDF チート シート
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ef8aed7243e8956ad9ca62b630cda0efbd2deb9
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85117983"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339650"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB クエリのチート シート
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-**Azure Cosmos DB クエリのチート シート**は、簡単に印刷できる PDF 形式のリファレンス シートです。一般的なデータベース クエリ、操作、関数、演算子が記載されており、これを利用すればデータのクエリをすばやく記述できます。 チート シートには、SQL、MongoDB、Table、Gremlin の各 API のリファレンス情報が含まれます。 
+**Azure Cosmos DB クエリのチート シート** は、簡単に印刷できる PDF 形式のリファレンス シートです。一般的なデータベース クエリ、操作、関数、演算子が記載されており、これを利用すればデータのクエリをすばやく記述できます。 チート シートには、SQL、MongoDB、Table、Gremlin の各 API のリファレンス情報が含まれます。 
 
 レター サイズまたは A3 サイズのダウンロードを選択します。 
 
@@ -32,7 +34,7 @@ ms.locfileid: "85117983"
 
 ## <a name="next-steps"></a>次のステップ
 クエリの記述の詳細については、以下の記事を参照してください。
-* SQL API クエリについては、[SQL API を使用したクエリ](tutorial-query-sql-api.md)、[Azure Cosmos DB のための SQL クエリ](how-to-sql-query.md)、および[SQL 構文のリファレンス](sql-api-query-reference.md)を参照してください
+* SQL API クエリについては、[SQL API を使用したクエリ](tutorial-query-sql-api.md)、[Azure Cosmos DB のための SQL クエリ](./sql-query-getting-started.md)、および[SQL 構文のリファレンス](./sql-query-getting-started.md)を参照してください
 * MongoDB クエリについては、[Azure Cosmos DB の MongoDB 用 API を使用するクエリ](tutorial-query-mongodb.md)と [Azure Cosmos DB の MongoDB 用 API の機能のサポートと構文](mongodb-feature-support.md)に関するページを参照してください
 * Gremlin API クエリについては、[Gremlin API を使用したクエリ](tutorial-query-graph.md)、[Azure Cosmos DB での Gremlin グラフのサポート](gremlin-support.md)を参照してください
 * テーブル API クエリについては、[テーブル API を使用したクエリ](tutorial-query-table.md)を参照してください

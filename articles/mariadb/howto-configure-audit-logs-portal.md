@@ -1,17 +1,17 @@
 ---
 title: 監査ログにアクセスする - Azure portal - Azure Database for MariaDB
 description: この記事では、Azure portal から Azure Database for MariaDB の監査ログを構成し、それにアクセスする方法について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/24/2020
-ms.openlocfilehash: 30ca62305c325943e17ee574873cfbbbaee97f77
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: ec0791b169f667a2828087c37ea8f01fc3351bf7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113039"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663147"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Azure portal での監査ログの構成とアクセス
 
@@ -40,7 +40,7 @@ ms.locfileid: "86113039"
 1. **audit_log_enabled** パラメーターを ON に更新します。
     ![監査ログの有効化](./media/howto-configure-audit-logs-portal/audit-log-enabled.png)
 
-1. **audit_log_events** パラメーターを更新して、ログに記録する[イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
+1. **audit_log_events** パラメーターを更新して、ログに記録する [イベントの種類](concepts-audit-logs.md#configure-audit-logging)を選択します。
     ![監査ログのイベント](./media/howto-configure-audit-logs-portal/audit-log-events.png)
 
 1. **audit_log_exclude_users** パラメーターを更新して、ログから除外する MariaDB ユーザーを追加します。 ユーザーは MariaDB ユーザー名で指定します。

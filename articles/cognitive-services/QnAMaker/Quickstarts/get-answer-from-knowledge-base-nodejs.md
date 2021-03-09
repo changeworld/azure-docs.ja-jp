@@ -1,22 +1,24 @@
 ---
 title: クイック スタート:ナレッジ ベースから回答を取得する - REST (Node.js) - QnA Maker
 description: この Node.js REST ベースのクイック スタートでは、ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
 ms.topic: how-to
-ms.openlocfilehash: aa5a6395b537daa750a2e9b97bde4df320193c1e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: f7923e4b49ae9f047a314880607d1d9923abf0db
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89268059"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345894"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>クイック スタート:Node.js を使用してナレッジ ベースから質問の回答を取得する
 
-このクイック スタートでは、発行済みの QnA Maker ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。 ナレッジ ベースには、FAQ などの[データ ソース](../Concepts/knowledge-base.md)からの質問と回答が含まれます。 [質問](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)は QnA Maker サービスに送信されます。 [応答](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)には、予測上位の回答が含まれます。
+このクイック スタートでは、発行済みの QnA Maker ナレッジ ベースからプログラムによって回答を取得する手順を紹介しています。 ナレッジ ベースには、FAQ などの[データ ソース](../index.yml)からの質問と回答が含まれます。 [質問](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)は QnA Maker サービスに送信されます。 [応答](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties)には、予測上位の回答が含まれます。
 
-[リファレンス ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/get-answer/get-answer.js)
+[リファレンス ドキュメント](/rest/api/cognitiveservices/qnamaker4.0/Runtime) | [サンプル](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/get-answer/get-answer.js)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -51,7 +53,7 @@ VSCode を開き、`get-answer.js` という名前の新しいファイルを作
 
 :::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/QnAMaker/rest/query-kb.js" id="query":::
 
-## <a name="run-the-program"></a>プログラムを実行する
+## <a name="run-the-program"></a>プログラムの実行
 
 コマンド ラインからプログラムを実行します。 QnA Maker API に要求が自動的に送信され、コンソール ウィンドウへの出力が行われます。
 
@@ -70,4 +72,4 @@ node get-answer.js
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [QnA Maker (V4) REST API リファレンス](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [QnA Maker (V4) REST API リファレンス](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

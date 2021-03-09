@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics からの Event Hubs 出力
 description: この記事では、Azure Stream Analytics から Azure Event Hubs にデータを出力する方法について説明します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 08/25/2020
-ms.openlocfilehash: d18d4aa4bf9306bcdd667faa53f0d888c090e2fd
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.date: 09/23/2020
+ms.openlocfilehash: c2bde64c17520f4cf66ddecd9fc55a9bdd9edc37
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88875504"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020589"
 ---
 # <a name="event-hubs-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Event Hubs 出力
 
@@ -38,7 +37,7 @@ ms.locfileid: "88875504"
 
 ## <a name="partitioning"></a>パーティション分割
 
-パーティション分割はパーティションの配置によって異なります。 イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数はイベント ハブ出力のパーティションの数と同じになります。 各ライターは、[EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet)を使用して、特定のパーティションにイベントを送信します。 イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと一致していない場合、ライターの数はその前のステップのパーティションの数と同じになります。 各ライターは、**EventHubClient** の [SendBatchAsync クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet)を使用して、すべての出力パーティションにイベントを送信します。 
+パーティション分割はパーティションの配置によって異なります。 イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと等間隔で配置されている場合、ライターの数はイベント ハブ出力のパーティションの数と同じになります。 各ライターは、[EventHubSender クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet&preserve-view=true)を使用して、特定のパーティションにイベントを送信します。 イベント ハブ出力のパーティション キーが上流の (以前の) クエリ ステップと一致していない場合、ライターの数はその前のステップのパーティションの数と同じになります。 各ライターは、**EventHubClient** の [SendBatchAsync クラス](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet&preserve-view=true)を使用して、すべての出力パーティションにイベントを送信します。 
 
 ## <a name="output-batch-size"></a>出力バッチ サイズ
 
@@ -46,13 +45,25 @@ ms.locfileid: "88875504"
 
 ## <a name="custom-metadata-properties-for-output"></a>出力用のカスタム メタデータ プロパティ
 
-ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 "*キー*" は列名で、"*値*" はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。  
+ご自分の送信メッセージにクエリ列をユーザー プロパティとして添付できます。 これらの列はペイロードに入りません。 これらのプロパティは、出力メッセージにディクショナリの形式で表示されます。 "*キー*" は列名で、"*値*" はプロパティ ディクショナリの列値です。 Record と Array を除き、すべての Stream Analytics データ型がサポートされています。
+
+次の例では、`DeviceId` フィールドと `DeviceStatus` フィールドがメタデータに追加されています。
+
+1. 次のクエリを使用します。
+
+   ```sql
+   select *, DeviceId, DeviceStatus from iotHubInput
+   ```
+
+1. 出力のプロパティ列として `DeviceId,DeviceStatus` を構成します。
+
+   :::image type="content" source="media/event-hubs-output/property-columns.png" alt-text="プロパティ列":::
+
+次に示すのは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) を利用して EventHub で検査される出力メッセージ プロパティの図です。
+
+:::image type="content" source="media/event-hubs-output/custom-properties.png" alt-text="イベント カスタム プロパティ":::
 
 ## <a name="next-steps"></a>次のステップ
 
+* [Azure Stream Analytics ジョブからマネージド ID を使用してイベント ハブにアクセスする (プレビュー)](event-hubs-managed-identity.md)
 * [クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-portal.md)
-* [クイック スタート:Azure CLI を使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-cli.md)
-* [クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する](quick-create-azure-resource-manager.md)
-* [クイック スタート: Azure PowerShell を使用して Stream Analytics ジョブを作成する](stream-analytics-quick-create-powershell.md)
-* [クイック スタート:Visual Studio を使用して Azure Stream Analytics ジョブを作成する](stream-analytics-quick-create-vs.md)
-* [クイック スタート: Visual Studio Code で Azure Stream Analytics ジョブを作成する](quick-create-vs-code.md)

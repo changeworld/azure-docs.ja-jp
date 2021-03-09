@@ -1,25 +1,26 @@
 ---
-title: クイック スタート:イマーシブ リーダー クライアント ライブラリを使用する
+title: クイック スタート:Immersive Reader クライアント ライブラリ
 titleSuffix: Azure Cognitive Services
-description: イマーシブ リーダー API には、アプリケーションへの検索機能の統合を容易にするクライアント ライブラリが用意されています。 このクイックスタートでは、検索要求を送信し、結果を取得する基本的な方法について説明します。
+description: Immersive Reader クライアント ライブラリを使用すると、Web アプリケーションに Immersive Reader サービスを簡単に統合して、読解を支援することができます。 このクイックスタートでは、選択テキストに Immersive Reader を使用して、品詞認識、選択テキストの読み上げ、翻訳などを実現する方法について説明します。
 services: cognitive-services
-author: pasta
+author: nitinme
 manager: nitinme
 zone_pivot_groups: programming-languages-set-twenty
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: quickstart
-ms.date: 05/20/2020
-ms.author: pasta
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 5693ae7c4f42ba2f307cd888b65d269932b6fbff
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 09/14/2020
+ms.author: nitinme
+ms.custom: cog-serv-seo-aug-2020
+keywords: 画像の表示, 品詞, 選択テキストの読み上げ, 単語の翻訳, 読解力
+ms.openlocfilehash: 621be6293b4ac487cafafc14498524c97fdc6d82
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88921777"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "90978272"
 ---
-# <a name="quickstart-use-the-immersive-reader-client-library"></a>クイック スタート:イマーシブ リーダー クライアント ライブラリを使用する
+# <a name="quickstart-get-started-with-immersive-reader"></a>クイック スタート:Immersive Reader を使ってみる
 
 ::: zone pivot="programming-language-csharp"
 

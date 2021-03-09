@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 08b18dae6cec3f30ba9ecc69a3537eec428cc9ee
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372724"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685091"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD ディスクイメージの作成と Azure へのアップロード
 この記事では、OpenBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。 アップロードした VHD を独自のイメージとして使用し、Azure CLI で Azure の仮想マシン (VM) を作成することができます。
@@ -56,7 +56,7 @@ Hyper-V のサポートが追加された OpenBSD オペレーティング シ�
     ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
     ln -sf /usr/local/bin/python2.7-2to3 /usr/local/bin/2to3
     ln -sf /usr/local/bin/python2.7-config /usr/local/bin/python-config
-    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
+    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
 6. Azure エージェントの最新版は常に [GitHub](https://github.com/Azure/WALinuxAgent/releases) にあります。 次のように、エージェントをインストールします。
@@ -140,7 +140,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>VHD から VM を作成
-[サンプル スクリプト](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md)を使用して、または直接 [az vm create](/cli/azure/vm) を使用して、VM を作成できます。 アップロードした OpenBSD VHD を指定するには、次のように `--image` パラメーターを使用します。
+[サンプル スクリプト](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-vhd)を使用して、または直接 [az vm create](/cli/azure/vm) を使用して、VM を作成できます。 アップロードした OpenBSD VHD を指定するには、次のように `--image` パラメーターを使用します。
 
 ```azurecli
 az vm create \
@@ -168,4 +168,4 @@ ssh azureuser@<ip address>
 ## <a name="next-steps"></a>次のステップ
 OpenBSD 6.1 の Hyper-V の対応に関して詳細をお知りになりたい場合は、[OpenBSD 6.1](https://www.openbsd.org/61.html) および [hyperv.4](https://man.openbsd.org/hyperv.4) をお読みください。
 
-マネージド ディスクから VM を作成する場合は、[az disk](/cli/azure/disk) をお読みください。 
+マネージド ディスクから VM を作成する場合は、[az disk](/cli/azure/disk) をお読みください。

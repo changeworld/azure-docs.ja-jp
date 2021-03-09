@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: d533735af340b23e8a79b6c5953df748a548609c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046962"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028796"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer に関してよく寄せられる質問
 
@@ -183,7 +183,7 @@ Video Indexer の API では、インデックス作成、メタデータの抽�
 
 Video Indexer API には Authorization API (承認 API) と Operations API (操作 API) が含まれています。 Authorizations API に含まれている呼び出しによって、アクセス トークンがユーザーに付与されます。 Operations API の各呼び出しは、呼び出しの承認スコープと一致するアクセス トークンに関連付けられている必要があります。
 
-アクセス トークンが必要なのは、Video Indexer API をセキュリティ目的で使用する場合です。 この情報により、すべての呼び出しが、ユーザーまたはユーザーのアカウントへのアクセス許可を持つ人物から送信されたものであることが保証されます。 
+アクセス トークンが必要なのは、Video Indexer API をセキュリティ目的で使用する場合です。 この情報により、すべての呼び出しが、ユーザーまたはユーザーのアカウントへのアクセス許可を持つ人物から送信されたものであることが保証されます。 
 
 ### <a name="what-is-the-difference-between-account-access-token-user-access-token-and-video-access-token"></a>アカウント アクセス トークン、ユーザー アクセス トークン、ビデオ アクセス トークンはどう違うのですか?
 
@@ -197,7 +197,7 @@ Video Indexer API には Authorization API (承認 API) と Operations API (操�
 
 ### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Video Indexer の開発者ポータルにはどのようなログイン オプションがありますか?
 
-Azure AD、Microsoft アカウント、Google アカウント、または Facebook アカウントを使用してログインできます。 
+[ログイン情報](release-notes.md#october-2020)に関するリリース ノートを参照してください。
 
 ID プロバイダーを使用して電子メール アカウントを登録した後は、この電子メール アカウントを別の ID プロバイダーで使用することはできません。
 
@@ -217,4 +217,5 @@ Video Indexer では、インデックスを作成するコンテンツの入力
 
 ## <a name="next-steps"></a>次のステップ
 
-[概要](video-indexer-overview.md)
+* [概要](video-indexer-overview.md)
+* [Stack Overflow](https://stackoverflow.com/search?q=video-indexer)

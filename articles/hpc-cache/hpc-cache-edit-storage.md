@@ -4,18 +4,30 @@ description: Azure HPC Cache ストレージ ターゲットを編集する方�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 07/02/2020
+ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: f11e12c4f30977514e04b09c7e1c3012eb7888a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f97ff1c20b7edbf24e5a2c58e22097f88883ae4f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092458"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102204033"
 ---
 # <a name="edit-storage-targets"></a>ストレージ ターゲットを編集する
 
-キャッシュの**ストレージ ターゲット** ポータル ページから、あるいは Azure CLI を使用し、ストレージ ターゲットを削除または変更できます。
+Azure portal または Azure CLI を使用して、ストレージ ターゲットを削除または変更できます。
+
+ストレージの種類に応じて、次のストレージ ターゲット値を変更できます。
+
+* Blob ストレージ ターゲットの場合は、名前空間のパスを変更できます。
+
+* NFS ストレージ ターゲットの場合は、次の値を変更できます。
+
+  * 名前空間パス
+  * 名前空間パスに関連付けられているストレージ エクスポートまたはエクスポート サブディレクトリ
+  * 使用モデル
+
+ストレージ ターゲットの名前、種類、またはバックエンド ストレージ システム (Blob コンテナーまたは NFS ホスト名/IP アドレス) を編集することはできません。 これらのプロパティを変更する必要がある場合は、ストレージ ターゲットを削除し、新しい値で置換を作成します。
 
 > [!TIP]
 > [Azure HPC Cache の管理ビデオ](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)では、Azure portal でストレージ ターゲットを編集する方法を確認できます。
@@ -24,11 +36,11 @@ ms.locfileid: "87092458"
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-ストレージ ターゲットを削除するには、リストで選択し、 **[削除]** ボタンをクリックします。
+ストレージ ターゲットを削除するには、 **[ストレージ ターゲット]** ページを開きます。 一覧からストレージ ターゲットを選択し、 **[削除]** ボタンをクリックします。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
 [az hpc-cache storage-target remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove) を使用し、キャッシュからストレージ ターゲットを削除します。
 
@@ -45,99 +57,119 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 
 ---
 
-この操作により、この Azure HPC Cache システムとのストレージ ターゲットの関連付けが削除されますが、バックエンド ストレージ システムは変更されません。 たとえば、Azure BLOB ストレージ コンテナーを使用した場合、コンテナーとその内容はキャッシュから削除された後も存在します。 コンテナーを別の Azure HPC Cache に追加したり、このキャッシュに再度追加したり、Azure portal で削除したりすることができます。
+ストレージ ターゲットを削除することにより、この Azure HPC Cache システムとのストレージ システムの関連付けが削除されますが、バックエンド ストレージ システムは変更されません。 たとえば、Azure BLOB ストレージ コンテナーを使用した場合、コンテナーとその内容はキャッシュから削除された後も存在します。 コンテナーを別の Azure HPC Cache に追加したり、このキャッシュに再度追加したり、Azure portal で削除したりすることができます。
 
 キャッシュに格納されているファイルの変更は、ストレージ ターゲットが削除される前に、バックエンド ストレージ システムに書き込まれます。 キャッシュ内に多数の変更されたデータがある場合、このプロセスには 1 時間以上かかることがあります。
 
-## <a name="update-storage-targets"></a>ストレージ ターゲットの更新
+## <a name="change-a-blob-storage-targets-namespace-path"></a>BLOB ストレージ ターゲットの名前空間パスを変更する
 
-ストレージ ターゲットを編集して、そのプロパティの一部を変更できます。 ストレージの種類に応じて異なるプロパティを編集できます。
+名前空間パスは、クライアントがこのストレージ ターゲットをマウントするために使用するパスです。 (詳細については、「[集約された名前空間を計画する](hpc-cache-namespace.md)」および「[集約された名前空間を設定する](add-namespace-paths.md)」をご覧ください。)
 
-* Blob ストレージ ターゲットの場合は、名前空間のパスを変更できます。
-
-* NFS ストレージ ターゲットの場合は、以下のプロパティを変更できます。
-
-  * 名前空間のパス
-  * 使用モデル
-  * エクスポート
-  * サブディレクトリのエクスポート
-
-ストレージ ターゲットの名前、種類、またはバックエンド ストレージ システム (Blob コンテナーまたは NFS ホスト名/IP アドレス) を編集することはできません。 これらのプロパティを変更する必要がある場合は、ストレージ ターゲットを削除し、新しい値で置換を作成します。
-
-Azure portal で、ストレージ ターゲット名をクリックし、その詳細ページを開くことで編集可能なフィールドを確認できます。 Azure CLI でストレージ ターゲットも変更できます。
-
-![NFS ストレージ ターゲットの編集ページのスクリーンショット](media/hpc-cache-edit-storage-nfs.png)
-
-## <a name="update-an-nfs-storage-target"></a>NFS ストレージ ターゲットを更新する
-
-NFS ストレージターゲットの場合は、いくつかのプロパティを更新できます。 (編集ページの例については、上記のスクリーンショットを参照してください)。
-
-* **[使用モデル]** - 使用モデルは、キャッシュがデータを保持する方法に影響を及ぼします。 詳細については、「[使用モデルを選択する](hpc-cache-add-storage.md#choose-a-usage-model)」を参照してください。
-* **[仮想名前空間のパス]** - クライアントがこのストレージ ターゲットをマウントするために使用するパス。 詳細については、「[集約された名前空間を計画する](hpc-cache-namespace.md)」を参照してください。
-* **[NFS エクスポート パス]** - この名前空間のパスに使用するストレージ システムのエクスポート。
-* **[サブディレクトリ パス]** - この名前空間のパスに関連付けるサブディレクトリ (エクスポートの下)。 サブディレクトリを指定する必要がない場合は、このフィールドを空白のままにします。
-
-それぞれの名前空間のパスには、エクスポートとサブディレクトリの一意の組み合わせが必要です。 つまり、バックエンド ストレージ システム上のまったく同じディレクトリに対して、2 つの異なるクライアント向けのパスを作成することはできません。
+名前空間パスは、Azure Blob ストレージ ターゲットで行うことができる唯一の更新です。 これを変更するには、Azure portal または Azure CLI を使用します。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+ご利用の Azure HPC Cache の **[名前空間]** ページを使用します。 名前空間のページについては、記事「[集約された名前空間を設定する](add-namespace-paths.md)」で詳細に説明しています。
+
+変更するパスの名前をクリックし、表示される編集ウィンドウで新しいパスを作成します。
+
+![BLOB 名前空間パスをクリックした後の名前空間ページのスクリーンショット。右側のペインに編集フィールドが表示されています](media/edit-namespace-blob.png)
 
 変更を行った後、 **[OK]** をクリックしてストレージ ターゲットを更新するか、 **[キャンセル]** をクリックして変更を破棄します。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az nfs-storage-target](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) コマンドを使用し、ストレージ ターゲットの使用モデル、仮想名前空間パス、NFS エクスポートまたはサブディレクトリ値を変更します。
+BLOB ストレージ ターゲットの名前空間を Azure CLI を使用して変更するには、コマンド [az hpc-cache blob-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update) を使用します。 `--virtual-namespace-path` 値のみを変更できます。
 
-* 使用モデルを変更するには、``--nfs3-usage-model`` オプションを使用します。 例: ``--nfs3-usage-model WRITE_WORKLOAD_15``
-
-* 名前空間パス、エクスポート、またはエクスポート サブディレクトリを変更するには、``--junction`` オプションを使用します。
-
-  ``--junction`` パラメーターでは次の値が使用されます。
-
-  * ``namespace-path`` - クライアント側の仮想ファイル パス
-  * ``nfs-export`` - クライアント側パスに関連付けるストレージ システム エクスポート
-  * ``target-path`` (省略可能) - 必要な場合、エクスポートのサブディレクトリ
-
-  例: ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
-
-キャッシュ名、ストレージ ターゲット名、リソース グループは、すべての更新コマンドで必須です。
-
-コマンド例: <!-- having problem testing this -->
-
-```azurecli
-az hpc-cache nfs-storage-target update --cache-name mycache \
-    --name rivernfs0 --resource-group doc-rg0619 \
-    --nfs3-usage-model READ_HEAVY_INFREQ
-```
-
-キャッシュが停止しているか、正常な状態ではない場合、キャッシュが正常になってから更新が適用されます。
+  ```azurecli
+  az hpc-cache blob-storage-target update --cache-name cache-name --name target-name \
+    --resource-group rg --virtual-namespace-path "/new-path"
+  ```
 
 ---
 
-## <a name="update-an-azure-blob-storage-target"></a>Azure Blob ストレージ ターゲットを更新する
+## <a name="update-an-nfs-storage-target"></a>NFS ストレージ ターゲットを更新する
 
-Blob ストレージ ターゲットについては、仮想名前空間のパスを変更できます。
+NFS ストレージ ターゲットの場合は、仮想名前空間パスを変更または追加したり、名前空間パスが指す NFS エクスポートまたはサブディレクトリの値を変更したり、使用モデルを変更したりできます。
+
+詳細については以下にあります。
+
+* 「[集約された名前空間値を変更する](#change-aggregated-namespace-values)」 (仮想名前空間パス、エクスポート、エクスポート サブディレクトリ)
+* 「[使用モデルを変更する](#change-the-usage-model)」
+
+### <a name="change-aggregated-namespace-values"></a>集約された名前空間値を変更する
+
+Azure portal または Azure CLI を使用して、クライアント向けの名前空間パス、ストレージ エクスポート、エクスポート サブディレクトリ (使用されている場合) を変更できます。
+
+1 つのストレージ ターゲットに複数の有効なパスを作成する方法について再確認する必要がある場合は、[NFS 名前空間パスの追加](add-namespace-paths.md#nfs-namespace-paths)に関するガイドラインを参照してください。
 
 ### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-Blob ストレージ ターゲットの詳細ページでは、仮想名前空間のパスを変更できます。
+ご利用の Azure HPC Cache の **[名前空間]** ページを使用して、名前空間の値を更新します。 このページについては、記事「[集約された名前空間を設定する](add-namespace-paths.md)」で詳細に説明しています。
 
-![Blob ストレージ ターゲットの編集ページのスクリーンショット](media/hpc-cache-edit-storage-blob.png)
+![右側に NFS 更新ページが開いているポータルの名前空間ページのスクリーンショット](media/update-namespace-nfs.png)
 
-完了したら、 **[OK]** をクリックしてストレージ ターゲットを更新するか、 **[キャンセル]** をクリックして変更を破棄します。
+1. 変更するパスの名前をクリックします。
+1. [編集] ウィンドウを使用して、新しい仮想パス、エクスポート、またはサブディレクトリの値を入力します。
+1. 変更を加えた後、 **[OK]** をクリックしてストレージ ターゲットを更新するか、 **[キャンセル]** で変更を破棄します。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache blob-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update) を使用し、ターゲットの名前空間パスを更新します。
+[az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) コマンドで ``--junction`` オプションを使用して、名前空間パス、NFS エクスポート、またはエクスポート サブディレクトリを変更します。
+
+``--junction`` パラメーターでは次の値が使用されます。
+
+* ``namespace-path`` - クライアント側の仮想ファイル パス
+* ``nfs-export`` - クライアント側パスに関連付けるストレージ システム エクスポート
+* ``target-path`` (省略可能) - 必要な場合、エクスポートのサブディレクトリ
+
+例: ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
+
+``--junction`` ステートメントには、各パスの 3 つの値すべてを指定する必要があります。 変更しない値には、既存の値を使用します。
+
+キャッシュ名、ストレージ ターゲット名、およびリソース グループも、すべての更新コマンドで必須です。
+
+コマンドの例:
 
 ```azurecli
-az hpc-cache blob-storage-target update --cache-name cache-name --name target-name \
-    --resource-group rg --storage-account "/subscriptions/<subscription_ID>/resourceGroups/erinazcli/providers/Microsoft.Storage/storageAccounts/rg"  \
-    --container-name "container-name" --virtual-namespace-path "/new-path"
+az hpc-cache nfs-storage-target update --cache-name mycache \
+  --name st-name --resource-group doc-rg0619 \
+  --junction namespace-path="/new-path" nfs-export="/my-export" target-path="my-subdirectory"
 ```
+
+---
+
+### <a name="change-the-usage-model"></a>使用モデルを変更する
+
+使用モデルは、キャッシュによってデータが保持される方法に影響します。 詳細については、「[使用モデルを選択する](hpc-cache-add-storage.md#choose-a-usage-model)」を参照してください。
+
+NFS ストレージ ターゲットの使用モデルを変更するには、次のいずれかの方法を使用します。
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
+Azure portal の **[ストレージ ターゲット]** ページで、使用モデルを変更します。 変更するストレージ ターゲットの名前をクリックします。
+
+![NFS ストレージ ターゲットの編集ページのスクリーンショット](media/edit-storage-nfs.png)
+
+ドロップダウン セレクターを使用して、新しい使用モデルを選択します。 **[OK]** をクリックしてストレージ ターゲットを更新するか、 **[キャンセル]** をクリックして変更を破棄します。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+[Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
+
+[az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) コマンドを使用します。
+
+update コマンドは、NFS ストレージ ターゲットを追加するために使用するコマンドとほぼ同じものです。 詳細と例については、「[NFS ストレージ ターゲットを作成する](hpc-cache-add-storage.md#create-an-nfs-storage-target)」を参照してください。
+
+使用モデルを変更するには、``--nfs3-usage-model`` オプションを更新します。 例: ``--nfs3-usage-model WRITE_WORKLOAD_15``
+
+キャッシュ名、ストレージ ターゲット名、およびリソース グループの値も必須です。
+
+使用モデルの名前を確認するには、コマンド [az hpc-cache usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list) を使用します。
 
 キャッシュが停止しているか、正常な状態ではない場合、キャッシュが正常になってから更新が適用されます。
 

@@ -11,12 +11,12 @@ ms.date: 04/30/2019
 ms.author: jrasnick
 ms.reviewer: rortloff
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 81a28773f8f13cfb8dac75f1c4e11fd773c2c8f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 80e5da6bb281806afe6bc980e35d70732bcd609c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85212199"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676274"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE) の概要
 
@@ -54,7 +54,7 @@ ALTER DATABASE [AdventureWorks] SET ENCRYPTION OFF;
 ```
 
 > [!NOTE]
-> TDE 設定を変更する前に、一時停止した SQL プールを再開する必要があります。
+> TDE 設定を変更する前に、一時停止した専用 SQL プールを再開する必要があります。
 
 ## <a name="verifying-encryption"></a>暗号化の検証
 
@@ -75,5 +75,5 @@ FROM
 
 ## <a name="encryption-dmvs"></a>暗号化の DMV
 
-* [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
-* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+* [sys.databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)
+* [sys.dm_pdw_nodes_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)

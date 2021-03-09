@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 0fc18c6d67935889b0ba0c306dc326eca3b888f5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 58b7b67842e9ba385b34ea4d8fdbcac190076218
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184297"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428168"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する
 
@@ -80,8 +80,8 @@ ms.locfileid: "88184297"
 
     ![レガシ デバイスのソフトウェア バージョンを確認する](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * 稼働中のデバイスが v2.1.1.518 以降を実行していない場合は、必要最低限のバージョンにシステムをアップグレードしてください。 詳細な手順については、[システムを v2.1.1.518 にアップグレードする方法](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518)に関するページを参照してください。
-    * v2.1.1.518 を実行している場合は、Web UI で、レジストリ復元エラーの通知が表示されているかどうかを確認します。 レジストリの復元に失敗していた場合は、レジストリの復元を実行します。 詳細については、[レジストリ復元の実行方法](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry)に関するセクションを参照してください。
+    * 稼働中のデバイスが v2.1.1.518 以降を実行していない場合は、必要最低限のバージョンにシステムをアップグレードしてください。 アップグレードを実行するには、Microsoft サポートの協力が必要になることがあります。
+    * v2.1.1.518 を実行している場合は、Web UI で、レジストリ復元エラーの通知が表示されているかどうかを確認します。 レジストリの復元に失敗していた場合は、レジストリの復元を実行します。 レジストリを復元するには、Microsoft サポートの協力が必要になることがあります。
     * v2.1.1.518 を実行していない停止中のデバイスがある場合は、v2.1.1.518 を実行している代わりのデバイスにフェールオーバーを実行します。 詳細な手順については、5000/7000 シリーズの StorSimple デバイスの DR を参照してください。
     * クラウド スナップショットを作成してデバイスのデータをバックアップします。
     * ソース デバイスで実行中のアクティブなバックアップ ジョブが他にないか確認します。 StorSimple Data Protection Console ホスト上のジョブも含めて確認してください。 実行中のジョブが完了するまで待ちます。
@@ -150,4 +150,4 @@ StorSimple 移行ツールは、StorSimple 5000-7000 シリーズのデータを
   
 
 ## <a name="next-steps"></a>次のステップ
-[StorSimple 5000-7000 シリーズのデータを 8000 シリーズのデバイスに移行する方法](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)の手順をダウンロードします。
+[StorSimple 5000-7000 シリーズのデータを 8000 シリーズのデバイスに移行する方法](https://databoxbuilds.blob.core.windows.net/storsimpledocs/MicrosoftAzureStorSimple_Migration_Guide_20171115.pdf)の手順をダウンロードします。

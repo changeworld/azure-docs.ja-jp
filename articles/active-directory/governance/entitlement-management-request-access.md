@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 527255653bf2779b36e0e463cd32a0b334c00f96
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 726507fa6ea0651b23d46424bda669a2d8ad41e0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798496"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996646"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求する
 
@@ -81,6 +81,12 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 ![マイ アクセス ポータル - [アクセスの要求] - 複数のポリシー](./media/entitlement-management-request-access/my-access-multiple-policies.png)
 
+### <a name="fill-out-requestor-information"></a>要求元情報を入力する
+
+アクセス パッケージへのアクセスを要求できます。その場合、アクセス パッケージへのアクセスが許可されるためには、その前に、業務上の正当な理由および追加の要求元情報が必要になります。 アクセス パッケージにアクセスするために必要なすべての要求元情報を入力してください。
+
+![マイ アクセス ポータル - [アクセスの要求] - 要求元情報を入力する](./media/entitlement-management-request-access/my-access-requestor-information.png)
+
 ## <a name="resubmit-a-request"></a>要求を再送信する
 
 アクセス パッケージへのアクセスを要求すると、要求が拒否されたり、承認者が時間内に応答しない場合は、要求が期限切れになったりすることがあります。 アクセスが必要な場合は、再試行して、要求を再送信することができます。 次の手順では、アクセス要求を再送信する方法について説明します。
@@ -107,7 +113,7 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 ## <a name="cancel-a-request"></a>要求を取り消す
 
-アクセス要求を送信し、要求がまだ**承認待ち**状態の場合、要求を取り消すことができます。
+アクセス要求を送信し、要求がまだ **承認待ち** 状態の場合、要求を取り消すことができます。
 
 **事前に必要なロール:** 要求元
 
@@ -115,13 +121,13 @@ Azure AD のエンタイトルメント管理では、アクセス パッケー�
 
 1. 取り消す要求の **[表示]** リンクをクリックします。
 
-1. 要求がまだ**承認待ち**状態の場合は、 **[要求の取り消し]** をクリックして要求を取り消すことができます。
+1. 要求がまだ **承認待ち** 状態の場合は、**[要求の取り消し]** をクリックして要求を取り消すことができます。
 
     ![マイ アクセス ポータル - [要求の取り消し]](./media/entitlement-management-request-access/my-access-cancel-request.png)
 
 1. **[要求の履歴]** をクリックして、要求が取り消されたことを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [アクセス要求を承認または拒否する](entitlement-management-request-approve.md)
 - [要求プロセスとメール通知](entitlement-management-process.md)

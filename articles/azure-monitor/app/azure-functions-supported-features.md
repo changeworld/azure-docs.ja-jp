@@ -6,16 +6,16 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b44279f31aea8fc02130f1c3d7520f42c648bd4c
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033515"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607951"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions でサポートされる Application Insights の機能
 
-Azure Functions では、ILogger インターフェイス経由で使用できる、Application Insights との[組み込みの統合](../../azure-functions/functions-monitoring.md)を提供しています。 現在サポートされている機能の一覧を次に示します。 [概要](../../azure-functions/functions-monitoring.md#enable-application-insights-integration)については、Azure Functions のガイドを確認してください。
+Azure Functions では、ILogger インターフェイス経由で使用できる、Application Insights との[組み込みの統合](../../azure-functions/functions-monitoring.md)を提供しています。 現在サポートされている機能の一覧を次に示します。 [概要](../../azure-functions/configure-monitoring.md#enable-application-insights-integration)については、Azure Functions のガイドを確認してください。
 
 Functions ランタイム バージョンの詳細については、[こちら](../../azure-functions/functions-versions.md)をご覧ください。
 
@@ -23,37 +23,35 @@ Application Insights の互換性のあるバージョンの詳細について�
 
 ## <a name="supported-features"></a>サポートされている機能
 
-| Azure Functions                       | V1                | V2 および V3   | 
-|-----------------------------------    |---------------    |------------------ |
+| Azure Functions                   | V1            | V2 および V3 | 
+|-----------------------------------|---------------|------------------|
 | | | | 
-| **自動収集の対象**        |                 |                   |               
-| &bull; 要求                     | はい             | はい               | 
-| &bull; 例外                   | はい             | はい               | 
-| &bull; パフォーマンス カウンター         | はい             | はい               |
-| &bull; 依存関係                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | はい               | 
-| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | はい               | 
-| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | はい               | 
-| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | はい               | 
+| **自動収集の対象**        |               |                  |
+| &bull; 要求                     | はい           | はい              |
+| &bull; 例外                   | はい           | はい              |
+| &bull; パフォーマンス カウンター         | はい           | はい              |
+| &bull; 依存関係                 |               |                  |
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |               | はい              |
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|               | はい              |
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |               | はい              |
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |               | はい              |
 | | | | 
-| **サポートされる機能**                |                   |                   |               
-| &bull; QuickPulse/LiveMetrics       | はい             | はい               | 
-| &nbsp;&nbsp;&nbsp;&mdash; コントロール チャネルの保護|                 | はい               | 
-| &bull; サンプリング                     | はい             | はい               | 
-| &bull; ハートビート                   |                 | はい               | 
+| **サポートされる機能**              |               |                  |
+| &bull; QuickPulse/LiveMetrics       | はい           | はい              | 
+| &nbsp;&nbsp;&nbsp;&mdash; コントロール チャネルの保護 |               | はい | 
+| &bull; サンプリング                     | はい           | はい              | 
+| &bull; ハートビート                   | | はい              | 
+| | | |
+| **相関関係**                    |               |                  |
+| &bull; ServiceBus                  |               | はい              |
+| &bull; EventHub                    |               | はい              |
 | | | | 
-| **相関関係**                       |                   |                   |               
-| &bull; ServiceBus                     |                   | はい               | 
-| &bull; EventHub                       |                   | はい               | 
-| | | | 
-| **構成可否**                      |                   |                   |           
-| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[Asp.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。               |                   | はい                   | 
-
+| **構成可否**                  |               |                  |           
+| &bull;完全に構成可能。<br/>手順については、[Azure Functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) を確認する。<br/>すべてのオプションについては、[ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) を確認する。           |               | はい                 | 
 
 ## <a name="performance-counters"></a>パフォーマンス カウンター
 
 パフォーマンス カウンターの自動収集は、Windows マシンでのみ機能します。
-
 
 ## <a name="live-metrics--secure-control-channel"></a>Live Metrics とコントロール チャネルの保護
 
@@ -61,7 +59,7 @@ Application Insights の互換性のあるバージョンの詳細について�
 
 ## <a name="sampling"></a>サンプリング
 
-Azure Functions では、構成の中で、サンプリングが既定で有効になっています。 詳細については、[サンプリングの構成](../../azure-functions/functions-monitoring.md#configure-sampling)に関するページをご覧ください。
+Azure Functions では、構成の中で、サンプリングが既定で有効になっています。 詳細については、[サンプリングの構成](../../azure-functions/configure-monitoring.md#configure-sampling)に関するページをご覧ください。
 
 プロジェクトで Application Insights SDK に依存してテレメトリ追跡を手動で行っている場合、ご使用のサンプリング構成が Functions のサンプリング構成と異なっていると、予想外の動作が起こることがあります。 
 

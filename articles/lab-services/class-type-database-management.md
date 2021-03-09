@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 49f1528f1bb8b422374050512a9ae642ad129fac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32079d6dc31cf3fcad66976737630472129b4271
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85444014"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462422"
 ---
 # <a name="set-up-a-lab-to-teach-database-management-for-relational-databases"></a>リレーショナル データベースのデータベース管理を教えるためのラボを設定する
 
@@ -24,7 +24,7 @@ ms.locfileid: "85444014"
 
 ### <a name="lab-account-settings"></a>ラボ アカウントの設定
 
-以下の表に記載されているラボ アカウントの設定を有効にします。 Marketplace イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](https://docs.microsoft.com/azure/lab-services/classroom-labs/specify-marketplace-images)」を参照してください。
+以下の表に記載されているラボ アカウントの設定を有効にします。 Marketplace イメージを有効にする方法の詳細については、「[ラボ作成者が利用できる Marketplace イメージを指定する](./specify-marketplace-images.md)」を参照してください。
 
 | ラボ アカウントの設定 | Instructions |
 | ------------------- | ------------ |
@@ -41,7 +41,7 @@ ms.locfileid: "85444014"
 
 ## <a name="template-machine-configuration"></a>テンプレート マシンの構成
 
-Windows Server 2019 に MySQL をインストールするには、「[仮想マシンに MySQL Community Server をインストールして実行 する](https://docs.microsoft.com/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fclassic%2Ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)」に記載されている手順に従ってください。
+Windows Server 2019 に MySQL をインストールするには、「[仮想マシンに MySQL Community Server をインストールして実行 する](/previous-versions/azure/virtual-machines/windows/classic/mysql-2008r2?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json#install-and-run-mysql-community-server-on-the-virtual-machine)」に記載されている手順に従ってください。
 
 SQL Server 2019 は、新しいラボの作成時に選択した仮想マシン イメージにプレインストールされています。
 

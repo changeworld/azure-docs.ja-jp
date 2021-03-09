@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/29/2020
 ms.author: aahi
-ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244297"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996129"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose を使用して複数のコンテナーをデプロイする
 
@@ -35,14 +35,7 @@ ms.locfileid: "88244297"
   * F0 または Standard 価格レベルのみの **Computer Vision** リソース。
   * F0 または Standard 価格レベルのみの **Form Recognizer** リソース。
   * S0 価格レベルの **Cognitive Services** リソース。
-
-## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
-
-[Cognitive Services Speech コンテナー要求フォーム](https://aka.ms/speechcontainerspreview/)に記入して送信します。 
-
-[!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
-
-[!INCLUDE [Authenticate to the container registry](../../../includes/cognitive-services-containers-access-registry.md)]
+* ゲート プレビュー コンテナーを使用している場合、[オンライン要求フォーム](https://aka.ms/csgate/)に入力して使用する必要があります。
 
 ## <a name="docker-compose-file"></a>Docker Compose ファイル
 
@@ -52,7 +45,7 @@ YAML ファイルには、デプロイされるすべてのサービスが定義
 version: '3.7'
 services:
   forms:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer"
+    image: "mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout"
     environment:
        eula: accept
        billing: # < Your form recognizer billing URL >
@@ -70,7 +63,7 @@ services:
       - "5010:5000"
 
   ocr:
-    image: "containerpreview.azurecr.io/microsoft/cognitive-services-read"
+    image: "mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview"
     environment:
       eula: accept
       apikey: # < Your computer vision API key >
@@ -98,8 +91,8 @@ docker-compose up
 この構成を使用して **docker-compose up** コマンドを初めて実行するとき、Docker は **services** ノード下に構成されているイメージを取得してから、それらをダウンロードしてマウントします。
 
 ```console
-Pulling forms (containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:)...
-latest: Pulling from microsoft/cognitive-services-form-recognizer
+Pulling forms (mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout:)...
+latest: Pulling from azure-cognitive-services/form-recognizer/layout
 743f2d6c1f65: Pull complete
 72befba99561: Pull complete
 2a40b9192d02: Pull complete
@@ -113,8 +106,8 @@ fd93b5f95865: Pull complete
 ef41dcbc5857: Pull complete
 4d05c86a4178: Pull complete
 34e811d37201: Pull complete
-Pulling ocr (containerpreview.azurecr.io/microsoft/cognitive-services-read:)...
-latest: Pulling from microsoft/cognitive-services-read
+Pulling ocr (mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview:)...
+latest: Pulling from /azure-cognitive-services/vision/read:3.1-preview
 f476d66f5408: Already exists
 8882c27f669e: Already exists
 d9af21273955: Already exists
@@ -166,8 +159,8 @@ ocr_1    | Application started. Press Ctrl+C to shut down.
 
 ```
 IMAGE ID            REPOSITORY                                                                 TAG
-2ce533f88e80        containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer   latest
-4be104c126c5        containerpreview.azurecr.io/microsoft/cognitive-services-read              latest
+2ce533f88e80        mcr.microsoft.com/azure-cognitive-services/form-recognizer/layout          latest
+4be104c126c5        mcr.microsoft.com/azure-cognitive-services/vision/read:3.1-preview         latest
 ```
 
 ### <a name="test-containers"></a>テスト コンテナー

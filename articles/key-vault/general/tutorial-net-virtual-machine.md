@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - .NET で仮想マシンを使用して Azure Key Vault を使用する | Microsoft Docs
-description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように ASP.NET Core アプリケーションを構成します。
+description: このチュートリアルでは、キー コンテナーからシークレットを読み取るように 仮想マシン ASP.NET Core アプリケーションを構成します。
 services: key-vault
 author: msmbaldwin
 ms.service: key-vault
@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b4f832750f7a94a6a60cbb1d3ba630925dd4fff2
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: mvc, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: 5d78299c4583251180b3fb9a902561406b849b4a
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021733"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201177"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>チュートリアル:.NET で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 Windows、Mac、Linux:
   * [Git](https://git-scm.com/downloads)
   * [.Net Core 3.1 SDK 以降](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-  * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+  * [Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-resources-and-assign-permissions"></a>リソースを作成してアクセス許可を割り当てる
 
@@ -74,7 +74,7 @@ az login
 | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
-[az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) コマンドを使用して、仮想マシン用のシステムによって割り当てられる ID を作成します。
+[az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) コマンドを使用して、仮想マシン用のシステムによって割り当てられる ID を作成します。
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -90,7 +90,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>VM ID にアクセス許可を割り当てる
-[az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを実行して、前に作成した ID アクセス許可をキー コンテナーに割り当てます。
+[az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) コマンドを実行して、前に作成した ID アクセス許可をキー コンテナーに割り当てます。
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
@@ -140,6 +140,7 @@ dotnet add package Azure.Identity
 
 ```csharp
 using System;
+using Azure.Core;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 ```
@@ -204,4 +205,4 @@ using Azure.Security.KeyVault.Secrets;
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)
+> [Azure Key Vault REST API](/rest/api/keyvault/)

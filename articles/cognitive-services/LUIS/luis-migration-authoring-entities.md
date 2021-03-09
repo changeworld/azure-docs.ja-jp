@@ -1,14 +1,16 @@
 ---
 title: V3 機械学習エンティティに移行する
 description: V3 作成では、新しいエンティティ型である機械学習エンティティが用意されているほか、アプリケーションの機械学習エンティティやその他のエンティティ、または特徴にリレーションシップを追加することができます。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684592"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91324690"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>V3 作成エンティティに移行する
 

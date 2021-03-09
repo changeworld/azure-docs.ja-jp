@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383701"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>方法:iOS で ADAL を使用してクロスアプリ SSO を有効にする

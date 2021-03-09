@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 02/12/2021
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 85ebb7f5ac52f4eea25f9e6f1a2b1b5ac6f4caa5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f79402956148c566bc34faa88e10895657883c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077929"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591733"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs によるプッシュ通知:よく寄せられる質問
 
@@ -103,6 +103,10 @@ PNS は、通知の送信に関するいかなる SLA も保証しません。 �
 
 プッシュ通知の性質 (外部のプラットフォーム固有の PNS によって配信されるしくみ) のため、遅延に対する保証はありません。 通常、ほとんどのプッシュ通知は数分以内に配信されます。
 
+### <a name="where-does-azure-notification-hubs-store-data"></a>Azure Notification Hubs ではデータはどこに格納されますか。
+
+Azure Notification Hubs では、お客様の登録データはお客様が選択したリージョンに格納されます。 Notification Hubs では、メタデータ (Notification Hubs の名前、接続文字列、その他の重要情報など) のディザスター リカバリー対応を提供しています。 ブラジル南部と東南アジアを除くすべてのリージョンでは、メタデータ バックアップは別のリージョン (通常は Azure ペア リージョン) でホストされます。 ブラジル南部および東南アジア リージョンでは、バックアップは、これらのリージョンのデータ所在地の要件に対応するために同じリージョンに格納されます。
+
 ### <a name="what-do-i-need-to-consider-when-designing-a-solution-with-namespaces-and-notification-hubs"></a>名前空間と通知ハブを使用するソリューションを設計する際には、何を考慮する必要がありますか。
 
 #### <a name="mobile-appenvironment"></a>モバイル アプリ/環境
@@ -159,15 +163,12 @@ Microsoft 側でのメタデータ (Notification Hubs の名前、接続文字�
 
 1. 別のデータセンターにセカンダリ通知ハブを作成します。 ディザスター リカバリー発生時の管理機能への影響を避けるために、最初からセカンダリ通知ハブを作成しておくことをお勧めします。 ディザスター リカバリーの発生時にセカンダリ通知ハブを作成することもできます。
 
-2. セカンダリ通知ハブにプライマリ通知ハブの登録を設定します。 両方のハブで登録を保持し、登録が行われたときに両方の同期を維持しようとすることはお勧めしません。 この方法は、登録が PNS 側で期限切れになるという本質的な傾向があるため、うまく機能しません。 Notification Hubs は、期限切れの登録や無効な登録に関する PNS フィードバックを受け取ったときに、登録をクリーンアップします。  
+2. 次のいずれかのオプションを使用して、セカンダリ通知ハブとプライマリ通知ハブとの同期を維持します。
 
-アプリのバックエンドについては、以下の推奨事項があります。
+   * 両方の通知ハブで、同時にインストールを作成し、更新する、アプリ バックエンドを使用します。 インストールによって、独自の一意のデバイス ID を指定して、レプリケーションのシナリオにより適したものにすることができます。 詳細については、この[サンプル コード](https://github.com/Azure/azure-notificationhubs-dotnet/tree/main/Samples/RedundantHubSample)を参照してください。
+   * プライマリ通知ハブからバックアップとして登録の定期的なダンプを取得する、アプリのバックエンドを使用します。 そうすれば、セカンダリ通知ハブに一括挿入を実行することができます。
 
-* 登録の特定のセットを保持する、アプリのバックエンドを使用します。 そうすれば、セカンダリ通知ハブに一括挿入を実行することができます。
-* プライマリ通知ハブからバックアップとして登録の定期的なダンプを取得する、アプリのバックエンドを使用します。 そうすれば、セカンダリ通知ハブに一括挿入を実行することができます。
-
-> [!NOTE]
-> Standard レベルで利用できる登録のエクスポート/インポート機能については、[登録のエクスポートとインポート]に関するドキュメントを参照してください。
+セカンダリ通知ハブのインストールと登録が、期限切れになる場合があります。 有効期限が切れたハンドルにプッシュが実行されると、関連付けられているインストールと登録のレコードが、PNS サーバーから受信した応答に基づいて、Notification Hubs によって自動的に消去されます。 期限切れのレコードをセカンダリ通知ハブから消去するには、各送信からのフィードバックを処理するカスタム ロジックを追加します。 次に、セカンダリ通知ハブでのインストールと登録を期限切れにします。
 
 バックエンドがない場合は、ターゲット デバイスでアプリが起動するときに、セカンダリ通知ハブへの新しい登録が行われます。 最終的に、すべてのアクティブなデバイスがセカンダリ通知ハブに登録されます。
 
@@ -195,7 +196,7 @@ Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示�
 
 - [Retrieve Azure Monitor metrics with .NET (.NET を使用した Azure Monitor メトリックの取得)](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) このサンプルでは、ユーザー名とパスワードを使用します。 証明書を使用するために、[この例](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs)に示すように、FromServicePrincipal メソッドをオーバーロードして、証明書を提供します。 
 - [Getting metrics and activity logs for a resource (リソースのメトリックとアクティビティ ログの取得)](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
-- [Azure 監視 REST API のチュートリアル](../azure-monitor/platform/rest-api-walkthrough.md)
+- [Azure 監視 REST API のチュートリアル](../azure-monitor/essentials/rest-api-walkthrough.md)
 
 > [!NOTE]
 > 通知の成功は、単にプッシュ通知が外部の PNS (たとえば iOS および macOS の APNs や Android デバイスの FCM) に配信されたことを意味します。 ターゲット デバイスに通知を配信するのは、PNS の役目です。 通常、PNS は、配信メトリックを第三者に公開しません。  
@@ -210,7 +211,7 @@ Azure Notification Hubs では、[Azure Portal] で利用統計情報を表示�
 [Notification Hubs のセキュリティ モデル]: /previous-versions/azure/azure-services/dn495373(v=azure.100)
 [Notification Hubs の安全なプッシュのチュートリアル]: ./notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md
 [Notification Hubs のトラブルシューティング]: ./notification-hubs-push-notification-fixer.md
-[Notification Hubs のメトリック]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
+[Notification Hubs のメトリック]: ../azure-monitor/essentials/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [登録のエクスポートとインポート]: ./export-modify-registrations-bulk.md
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

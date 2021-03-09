@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 723546d6a997d895c1a1df39b558aabb797d0a11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dbccf38bcb89a6e0715604567be021cc890f209b
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545099"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92514811"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-solarwinds-orion"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SolarWinds Orion の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88545099"
 * ユーザーが自分の Azure AD アカウントを使用して SolarWinds Orion に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* SolarWinds Orion では、**SP と IDP** Initiated SSO がサポートされます
-* SolarWinds Orion を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+* SolarWinds Orion では、 **SP と IDP** Initiated SSO がサポートされます
+* SolarWinds Orion を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
 
 ## <a name="adding-solarwinds-orion-from-the-gallery"></a>ギャラリーからの SolarWinds Orion の追加
 
@@ -50,7 +50,7 @@ Azure AD への SolarWinds Orion の統合を構成するには、ギャラリ�
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**SolarWinds Orion**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **SolarWinds Orion** 」と入力します。
 1. 結果のパネルから **SolarWinds Orion** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -144,29 +144,29 @@ SolarWinds Orion で Azure AD SSO を構成してテストするには、次の�
 
 1. SolarWinds Orion にログインし、 **[Settings]\(設定\)**  ->  **[All Settings]\(すべての設定\)** に移動します。
 
-    ![ SolarWinds Orion の構成 ](./media/solarwinds-orion-tutorial/settings.png)
+    ![[Settings]\(設定\) から選択された [All Settings]\(すべての設定\) のスクリーンショット。](./media/solarwinds-orion-tutorial/settings.png)
 
 1. **[USER ACCOUNTS]\(ユーザー アカウント\)** セクションで、 **[SAML Configuration]\(SAML の構成\)** を選択します。
 
-    ![ SolarWinds Orion の構成 ](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
+    ![[User Accounts]\(ユーザー アカウント\) から選択された [SAML Configuration]\(SAML の構成\) のスクリーンショット。](./media/solarwinds-orion-tutorial/configure-user-accounts.png)
 
 1. **[ADD IDENTITY PROVIDER]\(ID プロバイダーの追加\)** をクリックします。
 
-    ![ SolarWinds Orion の構成 ](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
+    ![[SAML Configuration]\(SAML の構成\) のスクリーンショット。ここで [ADD IDENTITY PROVIDER]\(ID プロバイダーの追加\) を選択できます。](./media/solarwinds-orion-tutorial/configure-add-identity-provider.png)
 
 1. **[Add Identity Provider]\(ID プロバイダーの追加\)** ページで、次の手順のようにします。
 
-    ![ SolarWinds Orion の構成 ](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
+    ![[Add Identity Provider]\(ID プロバイダーの追加\) ページのスクリーンショット。ここで、説明されている値を入力できます。](./media/solarwinds-orion-tutorial/configure-solarwinds.png)
 
     a. **[Configure]\(構成\)** タブに移動します。
 
     b. **[Identity Provider Name]\(ID プロバイダー名\)** テキスト ボックスに、任意の有効な名前 (例: `My SSO service`) を入力します。
 
-    c. **[SSO Target URL]\(SSO ターゲット URL\)** テキスト ボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[SSO Target URL]\(SSO ターゲット URL\)** テキスト ボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     d.  **[Issuer URL]\(発行者 URL\)** テキスト ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    e. Azure portal からダウンロードした**証明書 (Base64)** をメモ帳で開き、その内容を **[X.509 Signing Certificate]\(X.509 署名証明書\)** テキスト ボックスに貼り付けます。
+    e. Azure portal からダウンロードした **証明書 (Base64)** をメモ帳で開き、その内容を **[X.509 Signing Certificate]\(X.509 署名証明書\)** テキスト ボックスに貼り付けます。
 
     f. **[Save]** をクリックします。
 
@@ -174,43 +174,42 @@ SolarWinds Orion で Azure AD SSO を構成してテストするには、次の�
 
 1. SolarWinds Orion の Web サイトにログインし、 **[Settings]\(設定\)**  ->  **[All Settings]\(すべての設定\)** に移動します。
 
-    ![ SolarWinds Orion でテスト ユーザーを作成する ](./media/solarwinds-orion-tutorial/settings.png)
+    ![[Settings]\(設定\) から選択された [All Settings]\(すべての設定\) のスクリーンショット。](./media/solarwinds-orion-tutorial/settings.png)
 
 1. **[USER ACCOUNTS]\(ユーザー アカウント\)** セクションで、 **[Manage Accounts]\(アカウントの管理\)** を選択します。
 
-    ![ SolarWinds Orion でテスト ユーザーを作成する ](./media/solarwinds-orion-tutorial/user-accounts.png)
+    ![[SAML Configuration]\(SAML の構成\) が選択された画面のスクリーンショット。](./media/solarwinds-orion-tutorial/user-accounts.png)
 
 1. **[INDIVIDUAL ACCOUNTS]\(個別のアカウント\)** タブで、 **[ADD NEW ACCOUNT]\(新しいアカウントの追加\)** をクリックします。
 
-    ![ SolarWinds Orion でテスト ユーザーを作成する ](./media/solarwinds-orion-tutorial/create-user.png)
+    ![[Manage Accounts]\(アカウントの管理\) で [ADD NEW ACCOUNT]\(新しいアカウントの追加\) が選択された画面のスクリーンショット。](./media/solarwinds-orion-tutorial/create-user.png)
 
 1. アカウントの種類を選択します。SAML の個人ユーザーまたはグループを作成する必要があります。
 
-    ![ SolarWinds Orion でテスト ユーザーを作成する ](./media/solarwinds-orion-tutorial/create-user-new-account.png)
+    ![[Add New Account]\(新しいアカウントの追加\) のスクリーンショット。ここでアカウントの種類を選択できます。](./media/solarwinds-orion-tutorial/create-user-new-account.png)
 
 1.  **[NAME ID]\(名前 ID\)** テキスト ボックスに、Azure AD と正確に一致するユーザー名またはグループ名を入力します。
 
 1.  **[Next]\(次へ\)** をクリックし、ページを送信します。
 
-    ![ SolarWinds Orion でテスト ユーザーを作成する ](./media/solarwinds-orion-tutorial/create-user-name-id.png)
+    ![[Add New Account]\(新しいアカウントの追加\) のスクリーンショット。ここで、Azure A D に基づく名前 I D を入力できます。](./media/solarwinds-orion-tutorial/create-user-name-id.png)
 
 ## <a name="test-sso"></a>SSO のテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [SolarWinds Orion] タイルをクリックすると、SSO を設定した SolarWinds Orion に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [SolarWinds Orion] タイルをクリックすると、SSO を設定した SolarWinds Orion に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で SolarWinds Orion を試す](https://aad.portal.azure.com/)
 
-- [Microsoft Cloud App Security におけるセッション制御とは](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [Microsoft Cloud App Security におけるセッション制御とは](/cloud-app-security/proxy-intro-aad)
 
-- [高度な可視性と制御によって SolarWinds Orion を保護する方法](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-
+- [高度な可視性と制御によって SolarWinds Orion を保護する方法](/cloud-app-security/proxy-intro-aad)

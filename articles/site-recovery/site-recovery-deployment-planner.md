@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: mayg
-ms.openlocfilehash: f930fbb9cad893363db2b1a6b9b6ea8acade5a54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4291e8438f70e2e7190cd4dc6c890b5b325f2324
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083788"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100360909"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware から Azure 用の Azure Site Recovery Deployment Planner について
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -65,7 +65,7 @@ Azure Site Recovery を使用して VMware 仮想マシン (VM) を保護する�
 | **カテゴリ** | **VMware から Azure** |**Hyper-V から Azure**|**Azure から Azure**|**Hyper-V からセカンダリ サイト**|**VMware からセカンダリ サイト**
 --|--|--|--|--|--
 サポートされるシナリオ |はい|はい|いいえ|はい*|いいえ
-サポートされているバージョン | vCenter 6.7、6.5、6.0、または 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
+サポートされているバージョン | vCenter 7.0、6.7、6.5、6.0、または 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
 サポートされている構成|vCenter、ESXi| Hyper-V クラスター、Hyper-V ホスト|NA|Hyper-V クラスター、Hyper-V ホスト|NA|
 Site Recovery Deployment Planner の実行中のインスタンスごとにプロファイルできるサーバーの数 |単一 (単一の vCenter Server または ESXi サーバーに含まれている VM を同時にプロファイル可能)|複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| NA |複数 (複数のホストまたはホスト クラスターにまたがった VM を同時にプロファイル可能)| NA
 
@@ -76,7 +76,7 @@ Site Recovery Deployment Planner の実行中のインスタンスごとにプ�
 
 | サーバーの要件 | 説明|
 |---|---|
-|プロファイリングとスループット測定| <ul><li>オペレーティング システム:Windows Server 2016 または Windows Server 2012 R2<br>(少なくとも[構成サーバーのサイズの推奨事項](https://aka.ms/asr-v2a-on-prem-components)を満たしていることが望ましい)</li><li>コンピューターの構成:8 vCPU、16 GB RAM、300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 の Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure (*.blob.core.windows.net) へのインターネット アクセス、ポート 443<br>[これは省略可能です。 レポート生成時に使用可能な帯域幅を手動で指定することを選択できます。]</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>VMware vCenter の統計レベルは 1 以上に設定できます</li><li>vCenter ポートの許可 (既定値は 443):Site Recovery Deployment Planner は、このポートを使用して vCenter サーバー/ESXi ホストに接続します</ul></ul>|
+|プロファイリングとスループット測定| <ul><li>オペレーティング システム:Windows Server 2016 または Windows Server 2012 R2<br>(少なくとも[構成サーバーのサイズの推奨事項](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server)を満たしていることが望ましい)</li><li>コンピューターの構成:8 vCPU、16 GB RAM、300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 の Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure (*.blob.core.windows.net) へのインターネット アクセス、ポート 443<br>[これは省略可能です。 レポート生成時に使用可能な帯域幅を手動で指定することを選択できます。]</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>VMware vCenter の統計レベルは 1 以上に設定できます</li><li>vCenter ポートの許可 (既定値は 443):Site Recovery Deployment Planner は、このポートを使用して vCenter サーバー/ESXi ホストに接続します</ul></ul>|
 | レポートの生成 | Excel 2013 以降がインストールされた Windows PC または Windows Server。<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual Studio 2012 の Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli) が必要なのは、VM の最新の VM 構成情報をフェッチするためにレポート生成コマンドで -User オプションを渡す場合のみです。 Deployment Planner は vCenter サーバーに接続します。 vCenter ポート (既定値は 443) に vCenter Server への接続を許可します。</li>|
 | ユーザーのアクセス許可 | 読み取り専用アクセス許可 (プロファイリング中、VMware vCenter サーバー/VMware vSphere ESXi ホストにアクセスするユーザー アカウントに適用) |
 
@@ -90,7 +90,7 @@ Site Recovery Deployment Planner の実行中のインスタンスごとにプ�
 ツールは .zip フォルダーにパッケージされています。 VMware から Azure へのレプリケーション シナリオに対応しているのは、このツールの最新バージョンのみです。
 
 2. ツールの実行場所となる Windows Server に .zip フォルダーをコピーします。
-このツールは、プロファイリングの対象となる VM のホスト (vCenter サーバー/vSphere ESXi ホスト) にネットワークで接続されている Windows Server 2012 R2 から実行することができます。 ただしこのツールは、[構成サーバーのサイズ ガイドライン](https://aka.ms/asr-v2a-on-prem-components)に準拠したハードウェア構成のサーバーで実行することをお勧めします。 Site Recovery のコンポーネントをオンプレミスにデプロイ済みである場合は、その構成サーバーからツールを実行してください。
+このツールは、プロファイリングの対象となる VM のホスト (vCenter サーバー/vSphere ESXi ホスト) にネットワークで接続されている Windows Server 2012 R2 から実行することができます。 ただしこのツールは、[構成サーバーのサイズ ガイドライン](/en-in/azure/site-recovery/site-recovery-plan-capacity-vmware#size-recommendations-for-the-configuration-server)に準拠したハードウェア構成のサーバーで実行することをお勧めします。 Site Recovery のコンポーネントをオンプレミスにデプロイ済みである場合は、その構成サーバーからツールを実行してください。
 
     ツールの実行起点となるサーバーには、(プロセス サーバーを一体化した) 構成サーバーと同じハードウェア構成を使用することをお勧めします。 そのような構成によって、Site Recovery がレプリケーションを実行している間の実際のスループットを正確に反映したレポートを得ることができます。 スループットの計算は、サーバーで利用できるネットワーク帯域幅とそのサーバーのハードウェア構成 (CPU、記憶域など) に左右されます。 その他のサーバーからツールを実行した場合、計算されるのは、そのサーバーから Azure へのスループットです。 しかもそのサーバーには、構成サーバーとは異なるハードウェア構成が使用されていることが考えられます。そうなると、達成スループットとしてツールから報告される値の精度が低下してしまいます。
 

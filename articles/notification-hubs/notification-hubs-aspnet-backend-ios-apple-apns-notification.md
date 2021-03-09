@@ -1,8 +1,8 @@
 ---
 title: Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する | Microsoft Docs
-description: Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する方法について説明します。
+description: Azure Notification Hubs を使用して特定の iOS ユーザーにプッシュ通知を送信する方法について説明します。
 documentationcenter: ios
-author: sethm
+author: sethmanheim
 manager: femila
 services: notification-hubs
 ms.service: notification-hubs
@@ -14,12 +14,12 @@ ms.date: 08/07/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 0d53709a9fd7cb3f40f540e1bb96c2be12b75f2c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004177"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016951"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する
 
@@ -488,7 +488,7 @@ ms.locfileid: "88004177"
     ![iOS テスト通知の表示][3]
 
 4. **Recipient username tag* というテキストが表示されているフィールドに、別のデバイスから登録するときに使用したユーザー名のタグを入力します。
-5. 通知メッセージを入力して **Send Notification**をクリックします。 入力したタグが登録されているデバイスのみ、通知メッセージを受信します。 通知は、該当するユーザーにのみ送信されます。
+5. 通知メッセージを入力して **Send Notification** をクリックします。 入力したタグが登録されているデバイスのみ、通知メッセージを受信します。 通知は、該当するユーザーにのみ送信されます。
 
     ![iOS テストのタグ付けされた通知][4]
 

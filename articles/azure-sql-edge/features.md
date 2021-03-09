@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Edge (プレビュー) でサポートされる機能
-description: Azure SQL Edge (プレビュー) でサポートされる機能の詳細について説明します。
+title: Azure SQL Edge でサポートされる機能
+description: Azure SQL Edge でサポートされる機能の詳細について説明します。
 keywords: SQL Edge の紹介, SQL Edge とは, SQL Edge の概要
 services: sql-edge
 ms.service: sql-edge
@@ -8,22 +8,19 @@ ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
-ms.date: 07/13/2020
-ms.openlocfilehash: 70a54f52470a715df1011199d5cbd6aa5030094d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 09/03/2020
+ms.openlocfilehash: 19dcbbf102a1d8d21f1b14780ea33816a1677c55
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539212"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392029"
 ---
-# <a name="supported-features-of-azure-sql-edge-preview"></a>Azure SQL Edge (プレビュー) でサポートされる機能 
+# <a name="supported-features-of-azure-sql-edge"></a>Azure SQL Edge でサポートされる機能 
 
-Azure SQL Edge は、最新バージョンの Microsoft SQL Server データベース エンジン on Linux に基づいて構築されています。 SQL Server 2019 on Linux でサポートされている機能や、SQL Server 2019 on Linux (または SQL Server on Windows) で現在サポートされていない、または使用できない機能のサブセットがサポートされています。
+Azure SQL Edge は、最新バージョンの SQL データベース エンジンを基盤として構築されています。 SQL Server 2019 on Linux でサポートされている機能や、SQL Server 2019 on Linux (または SQL Server on Windows) で現在サポートされていない、または使用できない機能のサブセットがサポートされています。
 
-SQL Server on Linux でサポートされている機能の完全な一覧については、「[SQL Server 2019 on Linux のエディションとサポートされる機能](https://docs.microsoft.com/sql/linux/sql-server-linux-editions-and-components-2019)」を参照してください。 SQL Server on Windows のエディションとサポートされている機能については、「[SQL Server 2019 (15.x) のエディションとサポートされる機能](https://docs.microsoft.com/sql/sql-server/editions-and-components-of-sql-server-version-15)」を参照してください。
-
-> [!NOTE]
-> Azure SQL Edge は現在プレビュー段階であるため、運用環境では使用しないでください。 Microsoft では、デプロイとユース ケース シナリオの検証に応じて、運用環境で Azure SQL Edge を実行することをお勧めします。
+SQL Server on Linux でサポートされている機能の完全な一覧については、「[SQL Server 2019 on Linux のエディションとサポートされる機能](/sql/linux/sql-server-linux-editions-and-components-2019)」を参照してください。 SQL Server on Windows のエディションとサポートされている機能については、「[SQL Server 2019 (15.x) のエディションとサポートされる機能](/sql/sql-server/editions-and-components-of-sql-server-version-15)」を参照してください。
 
 ## <a name="azure-sql-edge-editions"></a>Azure SQL Edge のエディション
 
@@ -36,9 +33,7 @@ Azure SQL Edge は、2 つの異なるエディション (ソフトウェア プ
 
 ## <a name="operating-system"></a>オペレーティング システム
 
-現在、Azure SQL Edge コンテナーは Ubuntu 16.04 をベースとしているため、Ubuntu 16.04 LTS (推奨) または Ubuntu 18.04 LTS を実行している Docker ホスト上での実行のみがサポートされています。 Azure SQL Edge コンテナーを他のオペレーティング システム ホストで実行することは可能です。たとえば、Linux の他のディストリビューションまたは Windows で (Docker CE または Docker EE を使用して) 実行できますが、この構成は広範囲にわたってテストされていないため、Microsoft ではこれを行うことはお勧めしません。
-
-Azure SQL Edge は現在、Azure IoT Edge を通じたデプロイでのみサポートされています。 詳細については、「[Azure IoT Edge のサポートされるシステム](https://docs.microsoft.com/azure/iot-edge/support)」を参照してください。
+Azure SQL Edge コンテナーは Ubuntu 18.04 をベースとしているため、Ubuntu 18.04 LTS (推奨) または Ubuntu 20.04 LTS のいずれかを実行している Docker ホストでの実行のみがサポートされています。 Azure SQL Edge コンテナーを他のオペレーティング システム ホストで実行することは可能です。たとえば、Linux の他のディストリビューションまたは Windows で (Docker CE または Docker EE を使用して) 実行できますが、この構成は広範囲にわたってテストされていないため、Microsoft ではこれを行うことはお勧めしません。
 
 Windows 上で Azure SQL Edge を実行するために推奨される構成は、Windows ホスト上で Ubuntu VM を構成し、Linux VM 内で Azure SQL Edge を実行することです。
 
@@ -46,7 +41,7 @@ Azure SQL Edge で推奨およびサポートされているファイル シス�
 
 ## <a name="hardware-support"></a>ハードウェア サポート
 
-Azure SQL Edge には 64 ビットプロセッサ (x64 または ARM64 のいずれか) が必要であり、少なくとも 1 個のプロセッサと 1 GB の RAM がホストに搭載されている必要があります。 Azure SQL Edge の初期メモリ占有領域は 500 MB ほどですが、エッジ デバイス上で実行される他の IoT Edge モジュール用に追加のメモリが必要です。 Azure SQL Edge の実際のメモリ要件および CPU 要件は、ワークロードの複雑さと処理するデータ量によって異なります。 ソリューションのハードウェアを選択する際は、ソリューションに必要なパフォーマンス特性が満たされていることを確認するために、広範なパフォーマンス テストを実行することをお勧めします。  
+Azure SQL Edge には 64 ビットプロセッサ (x64 または ARM64 のいずれか) が必要であり、少なくとも 1 個のプロセッサと 1 GB の RAM がホストに搭載されている必要があります。 Azure SQL Edge の初期メモリ占有領域は 450 MB ほどですが、エッジ デバイス上で実行される他の IoT Edge モジュールやプロセスのために追加のメモリが必要です。 Azure SQL Edge の実際のメモリ要件および CPU 要件は、ワークロードの複雑さと処理するデータ量によって異なります。 ソリューションのハードウェアを選択する際は、ソリューションに必要なパフォーマンス特性が満たされていることを確認するために、広範なパフォーマンス テストを実行することをお勧めします。  
 
 ## <a name="azure-sql-edge-components"></a>Azure SQL Edge のコンポーネント
 
@@ -76,6 +71,7 @@ Azure SQL Edge では、SQL Server on Linux の機能のサブセットに加え
 | &nbsp; | PolyBase。 Azure SQL Edge を Polybase の外部テーブルのターゲットとして構成できることに注意してください。 |
 | &nbsp; | Java および Spark による言語拡張 |
 | &nbsp; | Active Directory 統合。 |
+| &nbsp; | データベースの自動圧縮。 データベースの自動圧縮プロパティは `ALTER DATABASE <database_name> SET AUTO_SHRINK ON` コマンドを使用して設定できますが、変更しても効果はありません。 自動圧縮タスクはデータベースに対して実行されません。 ユーザーは 'DBCC' コマンドを使用してデータベース ファイルを圧縮することができます。 |
 | &nbsp; | データベース スナップショット。 |
 | &nbsp; | 永続メモリのサポート。 |
 | &nbsp; | Microsoft 分散トランザクション コーディネーター。 |
@@ -89,6 +85,10 @@ Azure SQL Edge では、SQL Server on Linux の機能のサブセットに加え
 | &nbsp; | CLR に依存する日付と時刻のカタログ ビュー、関数、クエリ句。 |
 | &nbsp; | バッファー プール拡張機能。 |
 | &nbsp; | データベース メール。 |
+| &nbsp; | Service Broker |
+| &nbsp; | ポリシー ベースの管理 |
+| &nbsp; | 管理データ ウェアハウス (management data warehouse) |
+| &nbsp; | 包含データベース |
 | **SQL Server エージェント** |  サブシステム: CmdExec、PowerShell、キュー リーダー、SSIS、SSAS、SSRS。 |
 | &nbsp; | アラート。 |
 | &nbsp; | マネージド バックアップ。 |

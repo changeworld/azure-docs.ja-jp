@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 4a97a084b11b34f97e0c020f367ec730d8dfb079
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 81005a3032355f566aef2a6794cf2ec5038b0dd8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89075734"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737118"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Azure PowerShell を使用した Azure の仮想マシンのバックアップ
 
@@ -18,7 +18,7 @@ ms.locfileid: "89075734"
 
 [Azure Backup](backup-overview.md) では、オンプレミスのマシンとアプリ、および Azure VM をバックアップします。 この記事では、AZ モジュールを使用して Azure VM をバックアップする方法を説明します。 代わりに [Azure CLI](quick-backup-vm-cli.md) または [Azure portal](quick-backup-vm-portal.md) を使用して VM をバックアップすることもできます。
 
-このクイック スタートでは、既存の Azure VM のバックアップを実行できます。 VM を作成する必要がある場合は、[Azure PowerShell を使用して VM を作成](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)できます。
+このクイック スタートでは、既存の Azure VM のバックアップを実行できます。 VM を作成する必要がある場合は、[Azure PowerShell を使用して VM を作成](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json)できます。
 
 このクイック スタートには、Azure PowerShell AZ モジュール バージョン 1.0.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
 
@@ -45,8 +45,8 @@ ms.locfileid: "89075734"
 コンテナーを作成する場合:
 
 - リソース グループと場所については、バックアップする VM のリソース グループと場所を指定します。
-- この[サンプル スクリプト](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)を使用して VM を作成した場合、リソース グループは **myResourceGroup**、VM は **myVM** になり、リソースは **WestEurope** リージョンに格納されます。
-- Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンに、バックアップされたデータが確実にレプリケートされます。
+- この [サンプル スクリプト](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json)を使用して VM を作成した場合、リソース グループは **myResourceGroup**、VM は **_myVM_* になり、リソースは **WestEurope** リージョンに格納されます。
+- Azure Backup では、バックアップされるデータのストレージを自動的に処理します。 既定では、コンテナーには [geo 冗長ストレージ (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) が使用されます。 geo 冗長ストレージでは、プライマリ リージョンから数百マイル離れたセカンダリ Azure リージョンに、バックアップされたデータが確実にレプリケートされます。
 
 それでは、コンテナーを作成します。
 

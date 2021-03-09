@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: bda186f6bb45250763e439b77b4d3af988574401
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 11/05/2020
+ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935884"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934171"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドに言語アナライザーを追加する
 
@@ -68,64 +68,64 @@ Azure Cognitive Search では、Lucene によって提供される 35 個の言�
 ## <a name="language-analyzer-list"></a>言語アナライザー一覧 
  サポートされている言語と、Lucene およびマイクロソフトのアナライザーの名前を以下に一覧します。  
 
-|Language|Microsoft のアナライザーの名前|Lucene のアナライザーの名前|  
-|--------------|-----------------------------|--------------------------|  
-|アラビア語|ar.microsoft|ar.lucene|  
-|アルメニア語||hy.lucene|  
-|ベンガル語|bn.microsoft||  
-|バスク語||eu.lucene|  
-|ブルガリア語|bg.microsoft|bg.lucene|  
-|カタロニア語|ca.microsoft|ca.lucene|  
-|簡体中国語|zh-Hans.microsoft|zh-Hans.lucene|  
-|中国語 (繁体字)|zh-Hant.microsoft|zh-Hant.lucene|  
-|クロアチア語|hr.microsoft||  
-|チェコ語|cs.microsoft|cs.lucene|  
-|デンマーク語|da.microsoft|da.lucene|  
-|オランダ語|nl.microsoft|nl.lucene|  
-|英語|en.microsoft|en.lucene|  
-|エストニア語|et.microsoft||  
-|フィンランド語|fi.microsoft|fi.lucene|  
-|フランス語|fr.microsoft|fr.lucene|  
-|ガリシア語||gl.lucene|  
-|ドイツ語|de.microsoft|de.lucene|  
-|ギリシャ語|el.microsoft|el.lucene|  
-|グジャラート語|gu.microsoft||  
-|ヘブライ語|he.microsoft||  
-|ヒンディー語|hi.microsoft|hi.lucene|  
-|ハンガリー語|hu.microsoft|hu.lucene|  
-|アイスランド語|is.microsoft||  
-|インドネシア語|id.microsoft|id.lucene|  
-|アイルランド語||ga.lucene|  
-|イタリア語|it.microsoft|it.lucene|  
-|日本語|ja.microsoft|ja.lucene|  
-|カンナダ語|kn.microsoft||  
-|韓国語|ko.microsoft|ko.lucene|  
-|ラトビア語|lv.microsoft|lv.lucene|  
-|リトアニア語|lt.microsoft||  
-|マラヤーラム語|ml.microsoft||  
-|マレー語 (ラテン)|ms.microsoft||  
-|マラーティー語|mr.microsoft||  
-|ノルウェー語|nb.microsoft|no.lucene|  
-|ペルシャ語||fa.lucene|  
-|ポーランド語|pl.microsoft|pl.lucene|  
-|ポルトガル語 (ブラジル)|pt-Br.microsoft|pt-Br.lucene|  
-|ポルトガル語 (ポルトガル)|pt-Pt.microsoft|pt-Pt.lucene|  
-|パンジャーブ語|pa.microsoft||  
-|ルーマニア語|ro.microsoft|ro.lucene|  
-|ロシア語|ru.microsoft|ru.lucene|  
-|セルビア語 (キリル)|sr-cyrillic.microsoft||  
-|セルビア語 (ラテン)|sr-latin.microsoft||  
-|スロバキア語|sk.microsoft||  
-|スロベニア語|sl.microsoft||  
-|スペイン語|es.microsoft|es.lucene|  
-|スウェーデン語|sv.microsoft|sv.lucene|  
-|タミル語|ta.microsoft||  
-|テルグ語|te.microsoft||  
-|タイ語|th.microsoft|th.lucene|  
-|トルコ語|tr.microsoft|tr.lucene|  
-|ウクライナ語|uk.microsoft||  
-|ウルドゥ語|ur.microsoft||  
-|ベトナム語|vi.microsoft||  
+| Language | Microsoft のアナライザーの名前 | Lucene のアナライザーの名前 |
+|--|--|--|
+| アラビア語 | ar.microsoft | ar.lucene |
+| アルメニア語 |  | hy.lucene |  |
+| ベンガル語 | bn.microsoft |  |  |
+| バスク語 |  | eu.lucene |  |
+| ブルガリア語 | bg.microsoft | bg.lucene |  |
+| カタロニア語 | ca.microsoft | ca.lucene |  |
+| 簡体中国語 | zh-Hans.microsoft | zh-Hans.lucene |  |
+| 中国語 (繁体字) | zh-Hant.microsoft | zh-Hant.lucene |  |
+| クロアチア語 | hr.microsoft |  |  |
+| チェコ語 | cs.microsoft | cs.lucene |  |
+| デンマーク語 | da.microsoft | da.lucene |  |
+| オランダ語 | nl.microsoft | nl.lucene |  |
+| 英語 | en.microsoft | en.lucene |  |
+| エストニア語 | et.microsoft |  |  |
+| フィンランド語 | fi.microsoft | fi.lucene |  |
+| フランス語 | fr.microsoft | fr.lucene |  |
+| ガリシア語 |  | gl.lucene |  |
+| ドイツ語 | de.microsoft | de.lucene |  |
+| ギリシャ語 | el.microsoft | el.lucene |  |
+| グジャラート語 | gu.microsoft |  |  |
+| ヘブライ語 | he.microsoft |  |  |
+| ヒンディー語 | hi.microsoft | hi.lucene |  |
+| ハンガリー語 | hu.microsoft | hu.lucene |  |
+| アイスランド語 | is.microsoft |  |  |
+| インドネシア語 | id.microsoft | id.lucene |  |
+| アイルランド語 |  | ga.lucene |  |
+| イタリア語 | it.microsoft | it.lucene |  |
+| 日本語 | ja.microsoft | ja.lucene |  |
+| カンナダ語 | kn.microsoft |  |  |
+| 韓国語 | ko.microsoft | ko.lucene |  |
+| ラトビア語 | lv.microsoft | lv.lucene |  |
+| リトアニア語 | lt.microsoft |  |  |
+| マラヤーラム語 | ml.microsoft |  |  |
+| マレー語 (ラテン) | ms.microsoft |  |  |
+| マラーティー語 | mr.microsoft |  |  |
+| ノルウェー語 | nb.microsoft | no.lucene |  |
+| ペルシャ語 |  | fa.lucene |  |
+| ポーランド語 | pl.microsoft | pl.lucene |  |
+| ポルトガル語 (ブラジル) | pt-Br.microsoft | pt-Br.lucene |  |
+| ポルトガル語 (ポルトガル) | pt-Pt.microsoft | pt-Pt.lucene |  |
+| パンジャーブ語 | pa.microsoft |  |  |
+| ルーマニア語 | ro.microsoft | ro.lucene |  |
+| ロシア語 | ru.microsoft | ru.lucene |  |
+| セルビア語 (キリル) | sr-cyrillic.microsoft |  |  |
+| セルビア語 (ラテン) | sr-latin.microsoft |  |  |
+| スロバキア語 | sk.microsoft |  |  |
+| スロベニア語 | sl.microsoft |  |  |
+| スペイン語 | es.microsoft | es.lucene |  |
+| スウェーデン語 | sv.microsoft | sv.lucene |  |
+| タミル語 | ta.microsoft |  |  |
+| テルグ語 | te.microsoft |  |  |
+| タイ語 | th.microsoft | th.lucene |  |
+| トルコ語 | tr.microsoft | tr.lucene |  |
+| ウクライナ語 | uk.microsoft |  |  |
+| ウルドゥ語 | ur.microsoft |  |  |
+| ベトナム語 | vi.microsoft |  |  |
 
  名前に **Lucene** が含まれるすべてのアナライザーでは、[Apache Lucene の言語アナライザー](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )が利用されています。
 
@@ -133,4 +133,4 @@ Azure Cognitive Search では、Lucene によって提供される 35 個の言�
 
 + [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index)  
 
-+ [AnalyzerName クラス](/dotnet/api/microsoft.azure.search.models.analyzername)
++ [LexicalAnalyzerName Class](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)

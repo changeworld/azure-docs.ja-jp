@@ -5,12 +5,12 @@ author: usha-rathnavel
 ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
-ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5863dcc20fb13f1bb203c68ad168655371130601
+ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79479561"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92674557"
 ---
 # <a name="install-azure-farmbeats"></a>Azure FarmBeats をインストールする
 
@@ -18,9 +18,9 @@ ms.locfileid: "79479561"
 
 Azure FarmBeats は、Azure Marketplace で入手できる企業間オファリングです。 複数のプロバイダーにまたがる農業データ セットを集約し、アクションにつながる分析情報を生成することができます。 これを Azure FarmBeats を使用して実行するには、合成したデータ セットに基づいて人工知能 (AI) または機械学習 (ML) モデルを構築します。 Azure FarmBeats の 2 つの主要なコンポーネントは次のとおりです。
 
-- **データ ハブ**:さまざまなプロバイダーにまたがるさまざまな農業データ セットの集計、正規化、およびコンテキスト化を可能にする API レイヤー。
+- **データ ハブ** :さまざまなプロバイダーにまたがるさまざまな農業データ セットの集計、正規化、およびコンテキスト化を可能にする API レイヤー。
 
-- **アクセラレータ**:データ ハブ上に構築された Web アプリケーション。 これを使うと、モデルの開発と視覚化をすぐに始められます。 アクセラレータでは、Azure FarmBeats API を使って、取り込まれたセンサー データのグラフとしての視覚化とモデル出力のマップとしての視覚化の例を示します。
+- **アクセラレータ** :データ ハブ上に構築された Web アプリケーション。 これを使うと、モデルの開発と視覚化をすぐに始められます。 アクセラレータでは、Azure FarmBeats API を使って、取り込まれたセンサー データのグラフとしての視覚化とモデル出力のマップとしての視覚化の例を示します。
 
 ## <a name="general-information"></a>一般情報
 
@@ -87,7 +87,7 @@ Azure FarmBeats をインストールするには、Azure テナントで次の�
 
 FarmBeats をマーケットプレースからインストールするユーザーは、FarmBeats がインストールされるリソース グループの所有者である必要があります。 サブスクリプションの所有者については、リソース グループの作成時にこの内容が自動的に発生します。 その他については、リソース グループを事前に作成し、リソース グループの所有者になるようにサブスクリプションの所有者に依頼してください。
 
-Azure portal でアクセス許可を確認するには、[ロール ベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/check-access)の手順に従います。
+Azure portal でアクセス許可を確認するには、[Azure ロール ベースのアクセス制御](../../role-based-access-control/check-access.md)に関する記事の手順に従います。
 
 ### <a name="decide-subscription-and-region"></a>サブスクリプションとリージョンを決定する
 
@@ -124,11 +124,11 @@ PowerShell 環境を使用して、Cloud Shell インスタンスで次の手順
 
 4. このスクリプトでは、次の 3 つの入力を求められます。
 
-    - **FarmBeats Web サイト名**:これは FarmBeats Web アプリケーションの一意の URL プレフィックスです。 プレフィックスが既に取得されている場合、スクリプトはエラーを表示します。インストールされると、FarmBeats のデプロイは https://\<FarmBeats-website-name>.azurewebsites.net からアクセス可能になり、Swagger API の場所は https://\<FarmBeats-website-name>-api.azurewebsites.net になります。
+    - **FarmBeats Web サイト名** :これは FarmBeats Web アプリケーションの一意の URL プレフィックスです。 プレフィックスが既に取得されている場合、スクリプトはエラーを表示します。インストールされると、FarmBeats のデプロイは https://\<FarmBeats-website-name>.azurewebsites.net からアクセス可能になり、Swagger API の場所は https://\<FarmBeats-website-name>-api.azurewebsites.net になります。
 
-    - **Azure ログイン ID**:FarmBeats の管理者として追加するユーザーに Azure ログイン ID を入力します。 その後、このユーザーは、FarmBeats Web アプリケーションへのアクセス権を他のユーザーに付与することができます。 ログイン ID は、通常、john.doe@domain.comの形式となります。 Azure UPN もサポートされています。
+    - **Azure ログイン ID** :FarmBeats の管理者として追加するユーザーに Azure ログイン ID を入力します。 その後、このユーザーは、FarmBeats Web アプリケーションへのアクセス権を他のユーザーに付与することができます。 ログイン ID は、通常、john.doe@domain.comの形式となります。 Azure UPN もサポートされています。
 
-    - **サブスクリプション ID**:これは、Azure FarmBeats をインストールするサブスクリプションの ID です。
+    - **サブスクリプション ID** :これは、Azure FarmBeats をインストールするサブスクリプションの ID です。
 
 5. 実行時間は約 2 分です。この AAD スクリプトでは、画面上と、同じディレクトリ内の json ファイルに値が出力されます。 他のユーザーがスクリプトを実行していた場合は、その出力を共有するよう依頼してください。
 
@@ -142,7 +142,7 @@ Azure FarmBeats の設定を使用すると、欧州宇宙機関の [Sentinel-2]
 2. 必要な詳細 (名、姓、ユーザー名、パスワード、およびメール ID) を入力し、フォームを完成させます。
 3. 登録されているメール ID に確認リンクが送信されます。 メールに記載されているリンクを選択し、検証を完了します。
 
-登録プロセスが完了しました。 確認も完了したら、**Sentinel ユーザー名**と **Sentinel パスワード**をメモしておきます。
+登録プロセスが完了しました。 確認も完了したら、 **Sentinel ユーザー名** と **Sentinel パスワード** をメモしておきます。
 
 ## <a name="install"></a>インストール
 
@@ -170,7 +170,7 @@ Azure FarmBeats の設定を使用すると、欧州宇宙機関の [Sentinel-2]
 
 インストールが完了したら、インストールを確認し、インストール中に指定した Web サイト名 (https://\<FarmBeats-website-name>.azurewebsites.net) に移動することによって FarmBeats ポータルの使用を開始できます。 FarmBeats ユーザー インターフェイスと、ファームを作成するためのオプションが表示されます。
 
-**データ ハブ**は、 https://\<FarmBeats-website-name>-api.azurewebsites.net/swagger にあります。 ここでは、さまざまな FarmBeats API オブジェクトを表示し、API に対して REST 操作を実行することができるようになります。
+**データ ハブ** は、 https://\<FarmBeats-website-name>-api.azurewebsites.net/swagger にあります。 ここでは、さまざまな FarmBeats API オブジェクトを表示し、API に対して REST 操作を実行することができるようになります。
 
 ## <a name="upgrade"></a>アップグレード
 
@@ -202,9 +202,9 @@ input.json ファイルへのパスは省略可能です。 指定しなかっ�
 
 Azure FarmBeats データ ハブ または アクセラレータ をアンインストールするには、次の手順を実行します。
 
-1. Azure portal にログインし、これらのコンポーネントがインストールされている**リソース グループを削除**します。
+1. Azure portal にログインし、これらのコンポーネントがインストールされている **リソース グループを削除** します。
 
-2. Azure Active Directory に移動し、Azure FarmBeats のインストールにリンクされている **Azure AD アプリケーション削除**します。
+2. Azure Active Directory に移動し、Azure FarmBeats のインストールにリンクされている **Azure AD アプリケーション削除** します。
 
 ## <a name="next-steps"></a>次のステップ
 

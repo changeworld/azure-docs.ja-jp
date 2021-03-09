@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory から MapReduce プログラムを起動する
 description: Azure Data Factory から Azure HDInsight クラスターで MapReduce プログラムを実行してデータを処理する方法について説明します。
-services: data-factory
-documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-ms.assetid: c34db93f-570a-44f1-a7d6-00390f4dc0fa
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5ad917609d6f9ea401abc898f80631474a44475
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74703149"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100371075"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Data Factory から MapReduce プログラムを起動する
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -26,8 +21,8 @@ ms.locfileid: "74703149"
 > * [MapReduce アクティビティ](data-factory-map-reduce.md)
 > * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 > * [Spark アクティビティ](data-factory-spark.md)
-> * [Machine Learning バッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
-> * [Machine Learning 更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ](data-factory-azure-ml-batch-execution-activity.md)
+> * [Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ](data-factory-azure-ml-update-resource-activity.md)
 > * [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL アクティビティ](data-factory-usql-activity.md)
 > * [.NET カスタム アクティビティ](data-factory-use-custom-activities.md)
@@ -118,7 +113,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 このチュートリアルのパイプラインでは、Azure HDInsight クラスターで Word Count Map/Reduce プログラムを実行します。   
 
 ### <a name="linked-services"></a>リンクされたサービス
-最初に、Azure HDInsight クラスターによって使用される Azure Storage を Azure データ ファクトリにリンクする、リンクされたサービスを作成します。 次のコードをコピー/貼り付けする場合は、**アカウント名**と**アカウント キー**を、使用する Azure Storage のアカウント名とアカウント キーに必ず置き換えてください。 
+最初に、Azure HDInsight クラスターによって使用される Azure Storage を Azure データ ファクトリにリンクする、リンクされたサービスを作成します。 次のコードをコピー/貼り付けする場合は、**アカウント名** と **アカウント キー** を、使用する Azure Storage のアカウント名とアカウント キーに必ず置き換えてください。 
 
 #### <a name="azure-storage-linked-service"></a>Azure Storage のリンクされたサービス
 
@@ -183,7 +178,7 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 
 | プロパティ | メモ |
 |:--- |:--- |
-| type |type には、 **HDInsightMapReduce**を設定する必要があります。 |
+| type |type には、 **HDInsightMapReduce** を設定する必要があります。 |
 | className |クラスの名前は **wordcount** |
 | jarFilePath |クラスを含む jar ファイルのパス。 次のコードをコピー/貼り付けする場合は、クラスターの名前を必ず変更してください。 |
 | jarLinkedService |jar ファイルが含まれるAzure Storage のリンクされたサービス。 このリンクされたサービスは、HDInsight クラスターに関連付けられるストレージです。 |
@@ -235,14 +230,14 @@ HDInsight アクティビティの JSON の定義で、以下を設定します�
 ## <a name="run-spark-programs"></a>Spark プログラムの実行
 MapReduce アクティビティを使用して、HDInsight Spark クラスターで Spark プログラムを実行することができます。 詳細については、「 [Invoke Spark programs from Azure Data Factory (Azure Data Factory から Spark プログラムを呼び出す)](data-factory-spark.md) 」を参照してください。  
 
-[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[developer-reference]: /previous-versions/azure/dn834987(v=azure.100)
 [cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
 [adfgetstartedmonitoring]:data-factory-copy-data-from-azure-blob-storage-to-sql-database.md#monitor-pipelines 
 
-[Developer Reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[Developer Reference]: /previous-versions/azure/dn834987(v=azure.100)
 [Azure Portal]: https://portal.azure.com
 
 ## <a name="see-also"></a>参照
@@ -251,4 +246,3 @@ MapReduce アクティビティを使用して、HDInsight Spark クラスター
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 * [Spark プログラムを呼び出す](data-factory-spark.md)
 * [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
-

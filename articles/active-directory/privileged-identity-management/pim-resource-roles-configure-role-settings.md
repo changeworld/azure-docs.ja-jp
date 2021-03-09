@@ -15,12 +15,12 @@ ms.date: 01/01/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0a38194c46fa1f5bf7a6a0683e85776abb1f93b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4ded81389fae5954c0e488f634945b4f1c1fe4c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743798"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009043"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールの設定を構成する
 
@@ -30,7 +30,7 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 次の手順を実行して、Azure リソース ロールの設定を開きます。
 
-1. [特権ロール管理者](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)ロールのユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. [特権ロール管理者](../roles/permissions-reference.md#privileged-role-administrator)ロールのユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 
@@ -40,7 +40,7 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
     ![管理できるリソースを一覧表示する [Azure リソース] ページ](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-1. **ロール設定**を選択します。
+1. **ロール設定** を選択します。
 
     ![Azure リソース ロールを一覧表示する [ロールの設定] ページ](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
@@ -76,14 +76,14 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 ロールの設定を構成するときに、各割り当ての種類 (対象とアクティブ) に 2 つの割り当て期間オプションから選択できます。 これらのオプションは、Privileged Identity Management でユーザーがロールに割り当てられるときの既定の最大期間になります。
 
-このような**資格のある**割り当て期間のオプションからいずれかを選択することができます。
+このような **資格のある** 割り当て期間のオプションからいずれかを選択することができます。
 
 | | |
 | --- | --- |
 | **永続的に資格のある割り当てを許可する** | リソース管理者は、永続的に資格のある割り当てを行うことができます。 |
 | **次の後に、資格のある割り当ての有効期限が切れる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
-また、このような**アクティブな**割り当て期間のオプションからいずれかを選択することができます。
+また、このような **アクティブな** 割り当て期間のオプションからいずれかを選択することができます。
 
 | | |
 | --- | --- |
@@ -95,7 +95,7 @@ Azure リソース ロールの設定を構成するときに、Azure Active Dir
 
 ## <a name="require-multi-factor-authentication"></a>多要素認証が必要です
 
-Privileged Identity Management では、2 つの異なるシナリオで、必要に応じて Azure Multi-factor Authentication を強制できます。
+Privileged Identity Management では、2 つの異なるシナリオで、Azure AD Multi-factor Authentication の強制を選択できます。
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>アクティブな割り当てに多要素認証が必要
 
@@ -105,7 +105,7 @@ Privileged Identity Management では、2 つの異なるシナリオで、必�
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
 
-ロールの資格を持つユーザーに対して、アクティブ化する前に Azure Multi-Factor Authentication を使用していることを証明するように要求することができます。 Multi-Factor Authentication により、ユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
+ロールの資格を持つユーザーに対して、アクティブ化する前に Azure AD Multi-Factor Authentication を使用していることを証明するように要求することができます。 Multi-Factor Authentication により、ユーザーが、確かに本人が言うような人物であることが合理的かつ確実に保証されます。 このオプションを強制すると、ユーザー アカウントが侵害された可能性がある状況で、重要なリソースが保護されます。
 
 アクティブ化には多要素認証の実行を必須にするには、 **[アクティブ化には Multi-Factor Authentication が必要です]** チェックボックスをオンにします。
 

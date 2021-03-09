@@ -4,10 +4,10 @@ description: Service Bus スロットルの概要 - Standard および Premium �
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 436f9a40269f7eea4e31b55b9657d38849876eb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85340956"
 ---
 # <a name="throttling-operations-on-azure-service-bus"></a>Azure Service Bus でのスロットル操作

@@ -3,17 +3,19 @@ title: BI 分析ツールを使用して Azure Cosmos DB に接続する
 description: Azure Cosmos DB の ODBC ドライバーを使用して表とビューを作成し、正規化されたデータを BI とデータ分析ソフトウェアで表示できるようにする方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: 1bda235e5f3f867762457d0dc8214bbadc88059e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e7d6a67f5322c5bb640430f66ccb0917f6faada1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084825"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003499"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB の ODBC ドライバーを使用すると、SQL Server Integration Services、Power BI Desktop、Tableau などの BI 分析ツールを使って Azure Cosmos DB に接続できるため、これらのソリューションで Azure Cosmos DB データを分析したり視覚化したりできます。
 
@@ -39,12 +41,12 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
     |[Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/cosmos-odbc-32x64) (64 ビット上の 32 ビット Windows 用)| Windows 8.1 以降、Windows 8、Windows 7、Windows XP、Windows Vista、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2、Windows Server 2003 の 64 ビット バージョン。| 
     |[Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/cosmos-odbc-32x32) (32 ビット Windows 用)|Windows 8.1 以降、Windows 8、Windows 7、Windows XP、Windows Vista の 32 ビット バージョン。|
 
-    msi ファイルをローカルで実行すると、**Microsoft Azure Cosmos DB ODBC ドライバーのインストール ウィザード**が開始されます。 
+    msi ファイルをローカルで実行すると、**Microsoft Azure Cosmos DB ODBC ドライバーのインストール ウィザード** が開始されます。 
 
 1. 既定の入力を使用して ODBC ドライバーをインストールし、インストール ウィザードを完了します。
 
-1. **ODBC データ ソース管理者**アプリをコンピューターで開きます。 これを行うには、Windows の検索ボックスに「**ODBC データ ソース**」と入力します。 
-    ドライバーがインストールされたことを確認するには、 **[ドライバー]** タブをクリックして **Microsoft Azure Cosmos DB ODBC ドライバー**が一覧に記載されていることを確認します。
+1. **ODBC データ ソース管理者** アプリをコンピューターで開きます。 これを行うには、Windows の検索ボックスに「**ODBC データ ソース**」と入力します。 
+    ドライバーがインストールされたことを確認するには、 **[ドライバー]** タブをクリックして **Microsoft Azure Cosmos DB ODBC ドライバー** が一覧に記載されていることを確認します。
 
     :::image type="content" source="./media/odbc-driver/odbc-driver.png" alt-text="Azure Cosmos DB ODBC データ ソース管理者":::
 
@@ -73,11 +75,11 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
         - レジストリ エディターで、次のパスに移動します。**Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
         - DSN と同じ名前の新しいサブキーを作成します。例: "Contoso Account ODBC DSN"
         - "Contoso Account ODBC DSN" サブキーに移動します。
-        - 右クリックして、新しい**文字列**値を追加します。
+        - 右クリックして、新しい **文字列** 値を追加します。
             - 値の名前: **IgnoreSessionToken**
             - 値のデータ:**1**
             :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="レジストリ エディターの設定":::
-    - **Query Consistency (クエリの一貫性)** :操作の[一貫性レベル](consistency-levels.md)を選択します。 既定ではセッションです。
+    - **Query Consistency (クエリの一貫性)** :操作の [一貫性レベル](consistency-levels.md)を選択します。 既定ではセッションです。
     - **再試行回数**:サービス レートの制限のために最初の要求が完了しない場合、操作を再試行する回数を入力します。
     - **スキーマ ファイル**:これにはオプションがいくつかあります。
         - 既定では、このエントリをそのまま (空白) にすると、ドライバーですべてのコンテナーのデータの最初のページがスキャンされ、各コンテナーのスキーマが判定されます。 これは、コンテナー マッピングとして知られています。 スキーマ ファイルが定義されていないと、ドライバーはドライバー セッションごとにスキャンを実行する必要があるため、DSN を使ったアプリケーションの起動に時間がかかることがあります。 スキーマ ファイルを DSN と常に関連付けることをお勧めします。
@@ -90,7 +92,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 ## <a name="step-3-create-a-schema-definition-using-the-container-mapping-method"></a><a id="#container-mapping"></a>手順 3:コンテナー マッピングの方法を使ってスキーマ定義を作成する
 
-使用できるサンプリング方法は、**コンテナー マッピング**と**テーブル区切り記号**の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 次の手順では、コンテナー マッピングの方法を使って 1 つまた複数のコンテナー内のデータのスキーマを作成します。 このサンプリング方法では、コンテナーのページのデータを取得して、データの構造を判定します。 それにより、ODBC 側のテーブルにコンテナーを入れ替えます。 このサンプリング方法は、コンテナーのデータの種類が同じ場合は効率的で迅速です。 コンテナーに異なる型のデータが含まれる場合は、[テーブル区切り記号のマッピング方法](#table-mapping)を使用することをお勧めします。この方法は、コンテナー内のデータ構造を判定するより堅牢なサンプリング方法を提供します。 
+使用できるサンプリング方法は、**コンテナー マッピング** と **テーブル区切り記号** の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 次の手順では、コンテナー マッピングの方法を使って 1 つまた複数のコンテナー内のデータのスキーマを作成します。 このサンプリング方法では、コンテナーのページのデータを取得して、データの構造を判定します。 それにより、ODBC 側のテーブルにコンテナーを入れ替えます。 このサンプリング方法は、コンテナーのデータの種類が同じ場合は効率的で迅速です。 コンテナーに異なる型のデータが含まれる場合は、[テーブル区切り記号のマッピング方法](#table-mapping)を使用することをお勧めします。この方法は、コンテナー内のデータ構造を判定するより堅牢なサンプリング方法を提供します。 
 
 1. 「[Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、 **[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\)** ウィンドウの **[スキーマ エディター]** をクリックします。
 
@@ -111,9 +113,9 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 ## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>手順 4:テーブル区切り記号のマッピング方法を使ってスキーマ定義を作成する
 
-使用できるサンプリング方法は、**コンテナー マッピング**と**テーブル区切り記号**の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 
+使用できるサンプリング方法は、**コンテナー マッピング** と **テーブル区切り記号** の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コンテナーが使用できるのは特定のサンプリング方法のみになります。 
 
-次の手順では、**テーブル区切り記号**のマッピング方法を使って 1 つまたは複数のコンテナー内のデータのスキーマを作成します。 コンテナーに異なる型のデータが含まれる場合は、このサンプリング方法を使用することをお勧めします。 この方法を使って、サンプリングのスコープを一連の属性と対応する値に設定できます。 たとえば、ドキュメントに "型" のプロパティが含まれる場合は、サンプリングのスコープをこのプロパティの値に設定できます。 サンプリングの最終的な結果は、指定した型の各値が記載されたテーブルのセットになります。 たとえば、型が自動車の場合は自動車のテーブルが生成され、型が飛行機の場合は飛行機のテーブルが生成されます。
+次の手順では、**テーブル区切り記号** のマッピング方法を使って 1 つまたは複数のコンテナー内のデータのスキーマを作成します。 コンテナーに異なる型のデータが含まれる場合は、このサンプリング方法を使用することをお勧めします。 この方法を使って、サンプリングのスコープを一連の属性と対応する値に設定できます。 たとえば、ドキュメントに "型" のプロパティが含まれる場合は、サンプリングのスコープをこのプロパティの値に設定できます。 サンプリングの最終的な結果は、指定した型の各値が記載されたテーブルのセットになります。 たとえば、型が自動車の場合は自動車のテーブルが生成され、型が飛行機の場合は飛行機のテーブルが生成されます。
 
 1. 「[Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\) ウィンドウの **[スキーマ エディター]** をクリックします。
 
@@ -126,7 +128,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
     b. サンプリングのスコープを前の手順で入力した属性の特定の値に設定する場合は、[選択] ボックスで属性を選択し、 **[値]** ボックスに値 (例: シアトル) を入力して Enter キーを押します。 引き続き属性に複数の値を追加できます。 値を入力するときは、適切な属性が選択されていることを確認してください。
 
-    たとえば、市区町村の**属性**値を含めて、テーブルにニューヨークとドバイの都市の値の行のみを含めるよう制限する場合は、[属性] ボックスに「市区町村」と入力し、 **[値]** ボックスには「ニューヨーク」と「ドバイ」を入力します。
+    たとえば、市区町村の **属性** 値を含めて、テーブルにニューヨークとドバイの都市の値の行のみを含めるよう制限する場合は、[属性] ボックスに「市区町村」と入力し、 **[値]** ボックスには「ニューヨーク」と「ドバイ」を入力します。
 
 1. **[OK]** をクリックします。 
 
@@ -145,7 +147,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 1. [手順 2.](#connect) の説明に従って、たとえば `SDS Name` という名前のシステム データ ソースを作成します。
 
-1. [SQL Server Management Studio をインストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)し、サーバーに接続します。 
+1. [SQL Server Management Studio をインストール](/sql/ssms/download-sql-server-management-studio-ssms)し、サーバーに接続します。 
 
 1. SSMS クエリ エディターで、次のコマンドを使用して、データ ソースのリンク サーバー オブジェクト `DEMOCOSMOS` を作成します。 `DEMOCOSMOS` をリンク サーバーの名前に、`SDS Name` をシステム データ ソースの名前に置き換えます。
 
@@ -203,7 +205,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. **[新規]** をクリックしてビューの名前 (例：EmployeesfromSeattleView) を入力し、 **[OK]** をクリックします。
 
-1. **[ビューの編集]** ウィンドウで、Azure Cosmos DB クエリを入力します。 これは、たとえば `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` のような [Azure Cosmos DB SQL](how-to-sql-query.md) クエリである必要があります。次に **[OK]** をクリックします。
+1. **[ビューの編集]** ウィンドウで、Azure Cosmos DB クエリを入力します。 これは、たとえば `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"` のような [Azure Cosmos DB SQL](./sql-query-getting-started.md) クエリである必要があります。次に **[OK]** をクリックします。
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-create-view-2.png" alt-text="ビューの作成時にクエリを追加する":::
 
@@ -228,7 +230,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Power BI の [データの取得] でデータ ソース名 (DSN) を選択する":::
 
-1. **[ODBC ドライバーを使用してデータ ソースにアクセスします]** ウィンドウで、 **[既定またはカスタム]** を選択し、 **[接続]** をクリックします。 **資格情報の接続文字列プロパティ**を含める必要はありません。
+1. **[ODBC ドライバーを使用してデータ ソースにアクセスします]** ウィンドウで、 **[既定またはカスタム]** を選択し、 **[接続]** をクリックします。 **資格情報の接続文字列プロパティ** を含める必要はありません。
 
 1. **[ナビゲーター]** ウィンドウの左ペインでデータベースとスキーマを展開し、テーブルを選択します。 結果ペインには作成したスキーマを使用するデータが含まれています。
 
@@ -242,7 +244,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-次のエラーが発生した場合は、[手順 2](#connect) で、Azure Portal からコピーした**ホスト**と**アクセス キー**の値が正しいことを確認して再度試してください。 Azure Portal の**ホスト**と**アクセス キー**の値の右側にある [コピー] ボタンを使って、値を正しくコピーします。
+次のエラーが発生した場合は、[手順 2](#connect) で、Azure Portal からコピーした **ホスト** と **アクセス キー** の値が正しいことを確認して再度試してください。 Azure Portal の **ホスト** と **アクセス キー** の値の右側にある [コピー] ボタンを使って、値を正しくコピーします。
 
 ```output
 [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: d806d8a04dc1bd8547808d20c77bfec310f7dd06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85507485"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992998"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array のジョブを表示する
 ## <a name="overview"></a>概要
@@ -32,8 +32,8 @@ ms.locfileid: "85507485"
 * **時間範囲** - 日付と時刻の範囲に基づいて、ジョブにフィルターを適用できます。
 * **デバイス** - ジョブは、サービスに接続されている特定のデバイスで開始されます。 フィルター処理されたジョブは、次の属性に基づいて表形式で表示されます。
   
-  * **名前** - ジョブの名前には、**すべて**、**バックアップ**、**複製**、**フェールオーバー**、**更新プログラムのダウンロード**、**更新プログラムのインストール**があります。
-  * **状態** - **すべて**、**進行中**、**成功**、**失敗**、**キャンセル済み**のいずれかです。
+  * **名前** - ジョブの名前には、**すべて**、**バックアップ**、**複製**、**フェールオーバー**、**更新プログラムのダウンロード**、**更新プログラムのインストール** があります。
+  * **状態** - **すべて**、**進行中**、**成功**、**失敗**、**キャンセル済み** のいずれかです。
   * **エンティティ** - ジョブは、ボリューム、共有、デバイスに関連付けることができます。
   * **デバイス** - ジョブが開始されたデバイスの名前。
   * **開始日** - ジョブが開始された日時。

@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
 ms.openlocfilehash: e64aa10d8ddadd367d04b2b480770a99f3ece1dc
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88826533"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure で仮想マシンをバックアップする
@@ -43,7 +43,7 @@ ms.locfileid: "88826533"
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-テンプレートをデプロイするには、 **[試してみる]** を選択し、Azure Cloud Shell を開いて、シェル ウィンドウに次の PowerShell スクリプトを貼り付けます。 コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
+テンプレートをデプロイするには、 **[使ってみる]** を選択し、Azure Cloud Shell を開いて、シェル ウィンドウに次の PowerShell スクリプトを貼り付けます。 コードを貼り付けるには、シェル ウィンドウを右クリックして、 **[貼り付け]** を選択します。
 
 ```azurepowershell-interactive
 $projectName = Read-Host -Prompt "Enter a project name (limited to eight characters) that is used to generate Azure resource names"

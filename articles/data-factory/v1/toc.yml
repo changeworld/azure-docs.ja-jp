@@ -139,9 +139,9 @@
           href: data-factory-hadoop-streaming-activity.md
         - name: HDInsight Spark アクティビティ
           href: data-factory-spark.md
-        - name: Machine Learning バッチ実行アクティビティ
+        - name: Azure Machine Learning スタジオ (クラシック) のバッチ実行アクティビティ
           href: data-factory-azure-ml-batch-execution-activity.md
-        - name: Machine Learning 更新リソース アクティビティ
+        - name: Azure Machine Learning スタジオ (クラシック) の更新リソース アクティビティ
           href: data-factory-azure-ml-update-resource-activity.md
         - name: ストアド プロシージャ アクティビティ
           href: data-factory-stored-proc-activity.md
@@ -200,7 +200,7 @@
     - name: ケース スタディ
       href: data-factory-customer-case-studies.md
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
+      href: /answers/topics/azure-data-factory.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/data-factory/'
     - name: 料金計算ツール

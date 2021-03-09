@@ -5,16 +5,16 @@ author: philmea
 ms.author: phil
 ms.service: iot-fundamentals
 services: iot-fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 6/10/2020
-ms.openlocfilehash: b41e3d729fa6e5b0be9a55cc45de38f81bed494b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b9b3b30592237e1bbe1b08b0ed1d118131b15a26
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061134"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92206052"
 ---
-# <a name="azure-iot-support-and-help-options"></a>Azure IoT のサポートとヘルプのオプション
+# <a name="what-are-the-azure-iot-support-and-help-options"></a>Azure IoT のサポートとヘルプのオプションとは何ですか。
 
 ここでは、Azure IoT ソリューションを開発する際に助けを求める方法を示します。
 
@@ -31,21 +31,21 @@ ms.locfileid: "87061134"
 
 ## <a name="post-a-question-on-microsoft-qa"></a>Microsoft Q&A に質問を投稿する
 
-製品に関する技術的な質問については、Azure に関するコミュニティ サポートの場である [Microsoft Q&A](https://aka.ms/azureqa) をぜひご利用ください。Microsoft のエンジニアや Azure Most Valuable Professional (MVP)、エキスパート コミュニティからすばやく、信頼できる回答が得られます。 
+製品に関する技術的な質問については、Azure に関するコミュニティ サポートの場である [Microsoft Q&A](/answers/products/azure) をぜひご利用ください。Microsoft のエンジニアや Azure Most Valuable Professional (MVP)、エキスパート コミュニティからすばやく、信頼できる回答が得られます。 
 
 問題に対する回答が検索で見つからない場合は、Microsoft Q&A に新しい質問を送信してください。 質問するときは、次のタグのいずれかを使います。
 
-- [Azure IoT](https://docs.microsoft.com/answers/topics/azure-iot.html)
-- [Azure IoT Central](https://docs.microsoft.com/answers/topics/azure-iot-central.html)
-- [Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
-- [Azure IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
-- [Azure IoT Hub Device Provisioning Service (DPS)](https://docs.microsoft.com/answers/topics/azure-iot-dps.html)
-- [Azure IoT SDK](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)
-- [Azure Digital Twins](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
-- [Azure RTOS](https://docs.microsoft.com/answers/topics/azure-rtos.html)
-- [Azure Sphere](https://docs.microsoft.com/answers/topics/azure-sphere.html)
-- [Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
-- [Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
+- [Azure IoT](/answers/topics/azure-iot.html)
+- [Azure IoT Central](/answers/topics/azure-iot-central.html)
+- [Azure IoT Edge](/answers/topics/azure-iot-edge.html)
+- [Azure IoT Hub](/answers/topics/azure-iot-hub.html)
+- [Azure IoT Hub Device Provisioning Service (DPS)](/answers/topics/azure-iot-dps.html)
+- [Azure IoT SDK](/answers/topics/azure-iot-sdk.html)
+- [Azure Digital Twins](/answers/topics/azure-digital-twins.html)
+- [Azure RTOS](/answers/topics/azure-rtos.html)
+- [Azure Sphere](/answers/topics/azure-sphere.html)
+- [Azure Time Series Insights](/answers/topics/azure-time-series-insights.html)
+- [Azure Maps](/answers/topics/azure-maps.html)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Stack Overflow に質問を投稿する
 
@@ -63,7 +63,7 @@ Stack Overflow に新しい質問を送信する場合は、次のいずれか�
  - [Azure IoT SDK](https://stackoverflow.com/questions/tagged/azure-iot-sdk)
  - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
  - [Azure RTOS](https://stackoverflow.com/questions/tagged/azure-rtos)
- - [Azure Sphere](https://stackoverflow.com/questions/tagged/azuresphere)
+ - [Azure Sphere](https://stackoverflow.com/questions/tagged/azure-sphere)
  - [Azure Time Series Insights](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
  - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
 
@@ -101,5 +101,4 @@ Azure IoT に関するニュースと情報は、[Azure ブログ](https://azure
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [Azure IoT とは](iot-introduction.md)
+[Azure IoT とは](iot-introduction.md)

@@ -1,14 +1,16 @@
 ---
 title: 予測スコア - LUIS
 description: 予測スコアは、LUIS API サービスがユーザーの発話に基づいて予測結果に対して持つ信頼度を示します。
+ms.service: cognitive-services
+ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 709a34f0a278d8a17267c7544583798d54167dad
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: d836273e61752ff208133466016ce7c6ff9c28fa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81382373"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91316462"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>意図とエンティティの予測精度を示す予測スコア
 

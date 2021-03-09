@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 01/27/2020
-ms.openlocfilehash: b0def12582dd3795e1b17334406e28d77c3c5656
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5206565b85d1551e5e551f1dfe75d28c93bc53f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477444"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90898206"
 ---
 # <a name="summarize-data"></a>データの集計
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では、Azure Machine Learning デザイナーのモジュールについて説明します。
 
 Summarize Data (データの要約) モジュールを使用して、入力テーブル内の各列を記述する一連の標準的な統計的尺度を作成します。
 

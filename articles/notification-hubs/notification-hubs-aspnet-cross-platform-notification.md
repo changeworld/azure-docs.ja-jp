@@ -5,24 +5,23 @@ services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 11d2131b-f683-47fd-a691-4cdfc696f62b
+editor: thsomasu
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 09/14/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 10/02/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3acfc9e3a856ec777bfada68d535b6a1e9878a08
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3f8f9357fff4773467dd93046ece8533514eb444
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89017925"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92313900"
 ---
 # <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Azure Notification Hubs を使用してクロスプラットフォーム通知を送信する
 
@@ -38,9 +37,9 @@ ms.locfileid: "89017925"
 
 ## <a name="send-cross-platform-notifications-using-templates"></a>テンプレートを使用したクロスプラットフォーム通知の送信
 
-このセクションでは、「[Azure Notification Hubs を使用して特定のユーザーに通知を送信する]」で作成したサンプル コードを使用します。 サンプルは [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers) からダウンロードできます。
+このセクションでは、「[Azure Notification Hubs を使用して特定のユーザーに通知を送信する]」で作成したサンプル コードを使用します。 [GitHub から完全なサンプルをダウンロード](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)することができます。
 
-テンプレートを使用してクロスプラットフォーム通知を送信するには、次の手順を行います。
+テンプレートを使用してクロスプラットフォーム通知を送信するには、次の手順を実行します。
 
 1. Visual Studio の**ソリューション エクスプローラー**で、**Controllers** フォルダーを展開して、*RegisterController.cs* ファイルを開きます。
 
@@ -77,7 +76,7 @@ ms.locfileid: "89017925"
 
     このコードは、プラットフォーム固有のメソッドを呼び出して、ネイティブ登録の代わりにテンプレート登録を作成します。 テンプレート登録はネイティブ登録から派生しているため、既存の登録を変更する必要はありません。
 
-1. **ソリューション エクスプローラー**で **Controllers** フォルダーを展開し、*NotificationsController.cs* ファイルを開きます。 `Post` メソッドを次のコードに置き換えます。
+1. **ソリューション エクスプローラー**で **Controllers** フォルダーを展開し、**NotificationsController.cs** ファイルを開きます。 `Post` メソッドを次のコードに置き換えます。
 
     ```csharp
     public async Task<HttpResponseMessage> Post()
@@ -119,5 +118,5 @@ ms.locfileid: "89017925"
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: https://go.microsoft.com/fwlink/p/?LinkId=314257
 [Azure Notification Hubs を使用して特定のユーザーに通知を送信する]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[Templates]: https://go.microsoft.com/fwlink/p/?LinkId=317339
+[Templates]: /previous-versions/azure/azure-services/jj927170(v=azure.100)
 [Notification Hub How to for Windows Store]: /previous-versions/azure/azure-services/jj927170(v=azure.100)

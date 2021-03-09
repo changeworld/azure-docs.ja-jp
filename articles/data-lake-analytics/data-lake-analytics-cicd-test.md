@@ -1,21 +1,18 @@
 ---
 title: Azure Data Lake Analytics コードをテストする方法
 description: Azure Data Lake Analytics 用の U-SQL および拡張 C# コードのテスト ケースを追加する方法について説明します。
-services: data-lake-analytics
 author: liudan66
 ms.author: liud
 ms.reviewer: jasonh
-ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: how-to
-ms.workload: big-data
 ms.date: 08/30/2019
-ms.openlocfilehash: 44426598daf1808ef0aee233968b04d2dc7c165f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 7310c67ef20a4134d4f613ea969c96802958bf62
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129918"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96015232"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics コードのテスト
 
@@ -37,7 +34,7 @@ Azure Data Lake Tools for Visual Studio では、U-SQL スクリプトのテス�
 
 ### <a name="manage-the-test-data-source"></a>テスト データ ソースの管理
 
-U-SQL スクリプトをテストするときは、テスト入力ファイルが必要です。 テスト データを管理するには、**ソリューション エクスプローラー**で、U-SQL プロジェクトを右クリックし、 **[プロパティ]** を選択します。 **[Test Data Source]\(テスト データ ソース\)** にソースを入力できます。
+U-SQL スクリプトをテストするときは、テスト入力ファイルが必要です。 テスト データを管理するには、**ソリューション エクスプローラー** で、U-SQL プロジェクトを右クリックし、 **[プロパティ]** を選択します。 **[Test Data Source]\(テスト データ ソース\)** にソースを入力できます。
 
 ![Data Lake Tools for Visual Studio - プロジェクトのテスト データ ソースを構成する](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
@@ -55,7 +52,7 @@ U-SQL プロジェクトの U-SQL データベース プロジェクト参照を
 
 ### <a name="run-test-cases-in-visual-studio"></a>Visual Studio でのテスト ケースの実行
 
-U-SQL スクリプトのテスト プロジェクトは、C# 単体テスト フレームワークの上に構築されます。 プロジェクトをビルドしたら、 **[テスト]**  >  **[Windows]**  >  **[テスト エクスプローラー]** の順に選択します。 **テスト エクスプローラー**からテスト ケースを実行できます。 または、単体テスト内で .cs ファイルを右クリックし、 **[テストの実行]** を選択します。
+U-SQL スクリプトのテスト プロジェクトは、C# 単体テスト フレームワークの上に構築されます。 プロジェクトをビルドしたら、 **[テスト]**  >  **[Windows]**  >  **[テスト エクスプローラー]** の順に選択します。 **テスト エクスプローラー** からテスト ケースを実行できます。 または、単体テスト内で .cs ファイルを右クリックし、 **[テストの実行]** を選択します。
 
 ## <a name="test-c-udos"></a>C# UDO のテスト
 
@@ -104,15 +101,15 @@ C# 単体テスト フレームワークを使用して C# ユーザー定義演
 
 ### <a name="verify-test-results"></a>テスト結果の検証
 
-UDO 関数を呼び出した後、C# assert 関数を使用したスキーマおよび Rowset 値検証によって結果を検証することができます。 **U-SQL C# UDO 単体テスト プロジェクト**をソリューションに追加することができます。 これを行うには、Visual Studio で **[ファイル] > [新規作成] > [プロジェクト]** を選択します。
+UDO 関数を呼び出した後、C# assert 関数を使用したスキーマおよび Rowset 値検証によって結果を検証することができます。 **U-SQL C# UDO 単体テスト プロジェクト** をソリューションに追加することができます。 これを行うには、Visual Studio で **[ファイル] > [新規作成] > [プロジェクト]** を選択します。
 
 ### <a name="run-test-cases-in-visual-studio"></a>Visual Studio でのテスト ケースの実行
 
-プロジェクトをビルドしたら、 **[テスト]**  >  **[Windows]**  >  **[テスト エクスプローラー]** の順に選択します。 **テスト エクスプローラー**からテスト ケースを実行できます。 または、単体テスト内で .cs ファイルを右クリックし、 **[テストの実行]** を選択します。
+プロジェクトをビルドしたら、 **[テスト]**  >  **[Windows]**  >  **[テスト エクスプローラー]** の順に選択します。 **テスト エクスプローラー** からテスト ケースを実行できます。 または、単体テスト内で .cs ファイルを右クリックし、 **[テストの実行]** を選択します。
 
 ## <a name="run-test-cases-in-azure-pipelines"></a>Azure Pipelines でのテスト ケースの実行<a name="run-test-cases-in-azure-devops"></a>
 
-**U-SQL スクリプト テスト プロジェクト**と **C# UDO テスト プロジェクト**はどちらも、C# 単体テスト プロジェクトを継承します。 Azure Pipelines の [Visual Studio テスト タスク](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts)では、これらのテスト ケースを実行できます。
+**U-SQL スクリプト テスト プロジェクト** と **C# UDO テスト プロジェクト** はどちらも、C# 単体テスト プロジェクトを継承します。 Azure Pipelines の [Visual Studio テスト タスク](/azure/devops/pipelines/test/getting-started-with-continuous-testing)では、これらのテスト ケースを実行できます。
 
 ### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Azure Pipelines での U-SQL テスト ケースの実行
 

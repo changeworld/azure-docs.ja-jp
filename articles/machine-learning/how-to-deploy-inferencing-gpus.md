@@ -10,23 +10,23 @@ author: csteegz
 ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e4c2426d5248582a1255b9d3702bdb1e6d046936
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.custom: how-to, devx-track-python, deploy
+ms.openlocfilehash: 8480a0b8722fbfff0f1d8a8fafc1a64f38d21d6e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751659"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307211"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>GPU を使用した推論のためのディープ ラーニング モデルをデプロイする
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この記事では、Azure Machine Learning を使用して GPU 対応のモデルを Web サービスとしてデプロイする方法について説明します。 この記事の情報は、Azure Kubernetes Service (AKS) へのモデルのデプロイに基づいています。 AKS クラスターは、モデルが推論に使用する GPU リソースを提供します。
 
 推論、つまりモデルによるスコア付けは、デプロイしたモデルを使用して予測を行うフェーズです。 CPU の代わりに GPU を使用すると、高度に並列化可能な計算によってパフォーマンスが向上します。
 
 > [!IMPORTANT]
-> Web サービスのデプロイでは、GPU による推論がサポートされるのは、Azure Kubernetes Service のみです。 __機械学習パイプライン__ を使用した推論では、GPU は Azure Machine Learning コンピューティングでのみサポートされます。 ML パイプラインの使用方法の詳細については、[バッチ予測の実行](how-to-use-parallel-run-step.md)に関する記事を参照してください。 
+> Web サービスのデプロイでは、GPU による推論がサポートされるのは、Azure Kubernetes Service のみです。 __機械学習パイプライン__ を使用した推論では、GPU は Azure Machine Learning コンピューティングでのみサポートされます。 ML パイプラインの使用方法の詳細については、「[チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する](tutorial-pipeline-batch-scoring-classification.md)」に従います。 
 
 > [!TIP]
 > この記事のコード スニペットでは TensorFlow モデルが使用されていますが、ここに記載されている情報は GPU をサポートする任意の機械学習フレームワークに適用できます。
@@ -38,7 +38,7 @@ ms.locfileid: "88751659"
 
 * Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
-* Azure Machine Learning SDK がインストールされた Python 開発環境。 詳細については、[Azure Machine Learning Web サービス](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関するページを参照してください。  
+* Azure Machine Learning SDK がインストールされた Python 開発環境。 詳細については、[Azure Machine Learning Web サービス](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)に関するページを参照してください。  
 
 * GPU を使用する登録済みのモデル。
 
@@ -176,7 +176,7 @@ gpu_aks_config = AksWebservice.deploy_configuration(autoscale_enabled=False,
                                                     memory_gb=4)
 ```
 
-詳細については、リファレンス ドキュメントで [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) に関するページをご覧ください。
+詳細については、リファレンス ドキュメントで [AksService.deploy_configuration](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) に関するページをご覧ください。
 
 ## <a name="define-the-inference-configuration"></a>推論構成を定義する
 
@@ -192,7 +192,7 @@ inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
 ```
 
 環境の詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関する記事を参照してください。
-詳細については、リファレンス ドキュメントで [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) に関するページをご覧ください。
+詳細については、リファレンス ドキュメントで [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) に関するページをご覧ください。
 
 ## <a name="deploy-the-model"></a>モデルをデプロイする
 
@@ -217,7 +217,7 @@ aks_service.wait_for_deployment(show_output=True)
 print(aks_service.state)
 ```
 
-詳細については、リファレンス ドキュメントで [Model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py) に関するページをご覧ください。
+詳細については、リファレンス ドキュメントで [Model](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py) に関するページをご覧ください。
 
 ## <a name="issue-a-sample-query-to-your-service"></a>サービスにサンプル クエリを発行する
 

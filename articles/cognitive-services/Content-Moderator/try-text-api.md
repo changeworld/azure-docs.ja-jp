@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: ad365c2d4c171105d8dec89d818ef481361d1ff8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81272595"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002002"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API コンソールからテキストをモデレートする
 
@@ -46,9 +46,9 @@ Azure Content Moderator の [Text Moderation API](https://westus.dev.cognitive.m
 テキスト画面で使用するクエリ パラメーターを選択します。 この例の場合、**language** には既定値を使用します。 この操作では実行の一環として、可能性の高い言語が自動的に検出されるため、これは空白のままにしておくこともできます。
 
 > [!NOTE]
-> **language** パラメーターについては、`eng` を割り当てるか、パラメーターを空のままにして、コンピューター支援による**分類**応答を表示します (プレビュー機能)。 **この機能でサポートされているのは英語のみです**。
+> **language** パラメーターについては、`eng` を割り当てるか、パラメーターを空のままにして、コンピューター支援による **分類** 応答を表示します (プレビュー機能)。 **この機能でサポートされているのは英語のみです**。
 >
-> **不適切用語**の検出については、この記事の一覧に示したサポート対象言語の [ISO 639-3 コード](http://www-01.sil.org/iso639-3/codes.asp)を使用するか、空のままにします。
+> **不適切用語** の検出については、この記事の一覧に示したサポート対象言語の [ISO 639-3 コード](http://www-01.sil.org/iso639-3/codes.asp)を使用するか、空のままにします。
 
 **[autocorrect]** 、 **[PII]** 、および **[classify]** (プレビュー) については、 **[true]** を選択します。 **[ListId]** フィールドは空白のままにしておきます。
 
@@ -137,4 +137,4 @@ JSON 応答に含まれるすべてのセクションの詳細説明について
 
 ## <a name="next-steps"></a>次のステップ
 
-コードで REST API を使用するか、[.NET SDK のクイックスタート](dotnet-sdk-quickstart.md)に従って、アプリケーションと統合します。
+コードで REST API を使用するか、[.NET SDK のクイックスタート](./client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)に従って、アプリケーションと統合します。

@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 81fad94dc02bd57f839d7ab8653bec7074e41800
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 5f5db3fd88f04e7fe569cd675936445dcf730288
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89076342"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705338"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする
 
@@ -75,13 +75,13 @@ New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -Te
 特定の "*Azure リソース グループ*" にデプロイするには、次のコマンドを使用します。
 
 ```azurecli
-az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+az deployment group create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
 詳細については、以下のトピックを参照してください。
 
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-cli.md)
-* [`az group deployment create`](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [`az deployment group create`](/cli/azure/deployment/group#az_deployment_group_create)
 
 <a name="azure-pipelines"></a>
 

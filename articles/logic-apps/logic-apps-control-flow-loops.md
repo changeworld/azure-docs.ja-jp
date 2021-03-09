@@ -6,21 +6,21 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: aa4be5852b4f8af00346a3ea9a86b13a85f99824
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495609"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358458"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Azure Logic Apps 内のワークフロー アクションを繰り返す、または配列を処理するループを作成する
 
-ロジック アプリで配列を処理するために、["Foreach" ループ](#foreach-loop)を作成できます。 このループでは、配列の項目ごとに 1 つ以上のアクションが繰り返されます。 "Foreach" ループで処理できる配列項目の数に対する制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。 
+ロジック アプリで配列を処理するために、["Foreach" ループ](#foreach-loop)を作成できます。 このループでは、配列の項目ごとに 1 つ以上のアクションが繰り返されます。 "Foreach" ループで処理できる配列項目の数に対する制限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
 
-条件が満たされるか、状態が変更されるまでアクションを繰り返すには、["Until" ループ](#until-loop)を作成できます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。 ロジック アプリの実行での "Until" ループの数に対する制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページを参照してください。 
+条件が満たされるか、状態が変更されるまでアクションを繰り返すには、["Until" ループ](#until-loop)を作成できます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。 ロジック アプリの実行で処理できる "Until" ループの数の既定値と上限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
 
 > [!TIP]
-> 配列を受け取るトリガーがあり、各配列項目のワークフローを実行する場合は、[**SplitOn** トリガー プロパティ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)を使用してその配列を "*バッチ解除*" できます。 
+> 配列を受け取るトリガーがあり、各配列項目のワークフローを実行する場合は、[**SplitOn** トリガー プロパティ](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)を使用してその配列を "*バッチ解除*" できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,6 +34,8 @@ ms.locfileid: "87495609"
 
 "Foreach" ループは、配列項目ごとに 1 つ以上のアクションを繰り返し、配列でのみ動作します。 "Foreach" ループを使用する場合の考慮事項のいくつかを次に示します。
 
+* "Foreach" ループは、制限された数の配列項目を処理できます。 この制限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
+
 * 既定では、"Foreach" ループ内のイテレーションは同時または並列に実行されます。 この動作は、[Power Automate の **Apply to each** ループ](/power-automate/apply-to-each)とは異なっています。このループ内では、イテレーションは一度に 1 つずつ、つまり順番に実行されます。 ただし、[シーケンシャル "Foreach" ループ イテレーションを設定する](#sequential-foreach-loop)こともできます。 たとえば、"Foreach" ループ内の次のイテレーションを[遅延アクション](../connectors/connectors-native-delay.md)を使用して一時停止するには、そのループが順番に実行されるように設定する必要があります。
 
   この既定の動作の例外は、入れ子になったループです。このループでは、イテレーションは常に、並列ではなく順番に実行されます。 入れ子になったループ内の項目に対して並列で操作を実行するには、[子ロジック アプリ](../logic-apps/logic-apps-http-endpoint.md)を作成して呼び出します。
@@ -45,12 +47,12 @@ ms.locfileid: "87495609"
 
 このロジック アプリの例では、Web サイトの RSS フィードの日次サマリーを送信します。 アプリは、新しい項目ごとに電子メールを送信する "Foreach" ループを使用します。
 
-1. Outlook.com や Office 365 の Outlook アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
+1. Outlook.com アカウントや職場または学校アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
 2. RSS トリガーと電子メール送信アクションの間に、"Foreach" ループを追加します。 
 
    1. ステップの間にループを追加するには、これらのステップ間の矢印の上にポインターを移動します。 
-   表示される**プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
+   表示される **プラス記号** ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
       ![[アクションの追加] を選択](media/logic-apps-control-flow-loops/add-for-each-loop.png)
 
@@ -150,7 +152,7 @@ ms.locfileid: "87495609"
 
 ## <a name="until-loop"></a>"Until" ループ
   
-アクションを実行し、条件が満たされるか、状態が変更されるまで繰り返すには、これらのアクションを "Until" ループに入れます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。
+アクションを実行し、条件が満たされるか、状態が変更されるまで繰り返すには、これらのアクションを "Until" ループに入れます。 ロジック アプリでは最初にループ内部のすべてのアクションが実行されて、条件または状態がチェックされます。 条件が満たされると、ループが停止します。 そうでない場合は、ループが繰り返されます。 ロジック アプリの実行で処理できる "Until" ループの数の既定値と上限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
 
 "Until" ループを使用できる一般的なシナリオをいくつか紹介します。
 
@@ -189,7 +191,7 @@ ms.locfileid: "87495609"
 
    ![変数のプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | [値] | 説明 |
    | -------- | ----- | ----------- |
    | **名前** | 制限 | 変数の名前 | 
    | **Type** | Integer | 変数のデータ型 | 
@@ -230,7 +232,7 @@ ms.locfileid: "87495609"
 
       ![電子メールのプロパティを設定する](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | プロパティ | 値 | 説明 |
+      | プロパティ | [値] | 説明 |
       | -------- | ----- | ----------- | 
       | **To** | *\<email-address\@domain>* | 受信者の電子メール アドレス。 テストのために、自分の電子メール アドレスを使用します。 | 
       | **件名** | "Limit" の現在の値は **Limit** | 電子メールの件名を指定します。 この例では、**Limit** 変数が含まれていることを確認してください。 | 
@@ -243,17 +245,19 @@ ms.locfileid: "87495609"
 
       ![受信した電子メール](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
+<a name="prevent-endless-loops"></a>
+
 ## <a name="prevent-endless-loops"></a>無限ループを防ぐ
 
-"Until" ループには既定の制限が設定されており、次のいずれかの条件が発生すると実行が中止されます。
+"Until" ループは、これらのプロパティに基づいて実行を停止するため、これらの値を適宜設定してください。
 
-| プロパティ | 既定値 | 説明 | 
-| -------- | ------------- | ----------- | 
-| **Count** | 60 | ループが終了するまでに実行されるループの最大数。 既定値は、60 サイクルです。 | 
-| **タイムアウト** | PT1H | ループが終了するまでにループが実行される最大時間数。 既定値は 1 時間で、ISO 8601 形式で指定されます。 <p>タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。 | 
-|||| 
+* **Count**:この値は、ループが終了するまでに実行されるループの最大数です。 ロジック アプリの実行で処理できる "Until" ループの数の既定値と上限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
 
-既定の制限を変更するには、ループ アクションのシェイプで **[詳細オプションを表示する]** を選択します。
+* **タイムアウト**:この値は、ループを終了するまでに実行できる最大時間数であり、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定されます。 **Timeout** 値の既定値と上限については、「[コンカレンシー、ループ、および分割処理の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)」を参照してください。
+
+  タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。
+
+これらの制限を変更するには、ループ アクションで **[制限の変更]** を選択します。
 
 <a name="until-json"></a>
 

@@ -1,20 +1,19 @@
 ---
-title: Azure SQL Database への Azure Stream Analytics の出力
+title: Azure Stream Analytics から Azure SQL Database へのスループットのパフォーマンスを向上させる
 description: Azure Stream Analytics から Azure SQL Database にデータを出力し、より高い書き込みスループット レートを実現する方法について説明します。
 author: chetanmsft
 ms.author: chetang
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: b760ad03318b3c31b39b6470251847150dc5a70a
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 8baa33c8d9622ff76db04345f5c6c465f026e261
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88869424"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020232"
 ---
-# <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure SQL Database への Azure Stream Analytics の出力
+# <a name="increase-throughput-performance-to-azure-sql-database-from-azure-stream-analytics"></a>Azure Stream Analytics から Azure SQL Database へのスループットのパフォーマンスを向上させる
 
 この記事では、Azure Stream Analytics を使用して Azure SQL Database にデータを読み込むときに、よりよい書き込みスループット パフォーマンスを実現するためのヒントについて説明します。
 
@@ -27,17 +26,17 @@ Azure Stream Analytics の SQL 出力では、オプションとして並列書�
 - **パーティション分割の継承** – この SQL 出力構成オプションを使用すると、前のクエリ ステップや入力のパーティション構成を継承できます。 これを有効にして、ディスク ベースのテーブルに書き込み、ジョブを[完全並列](stream-analytics-parallelization.md#embarrassingly-parallel-jobs)トポロジにすると、スループットの向上を期待できます。 他の多くの[出力](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs)に対しては、このパーティション分割は既に自動的に行われています。 このオプションで行われる一括挿入に対しては、テーブル ロック (TABLOCK) も無効になります。
 
 > [!NOTE] 
-> 入力パーティションが 8 個より多い場合、入力パーティション構成の継承は適切な選択ではない可能性があります。 この上限は、ID 列とクラスター化インデックスが 1 つだけのテーブルにおいて観察されたものです。 この場合、出力ライターの数を明示的に指定するために、クエリで [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 を使用することを検討してください。 スキーマとインデックスの選択によっては、結果が異なる場合があります。
+> 入力パーティションが 8 個より多い場合、入力パーティション構成の継承は適切な選択ではない可能性があります。 この上限は、ID 列とクラスター化インデックスが 1 つだけのテーブルにおいて観察されたものです。 この場合、出力ライターの数を明示的に指定するために、クエリで [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 を使用することを検討してください。 スキーマとインデックスの選択によっては、結果が異なる場合があります。
 
-- **バッチ サイズ** - SQL の出力構成では、書き込み先テーブル/ワークロードの特性に基づいて、Azure Stream Analytics SQL 出力の最大バッチ サイズを指定することができます。 バッチ サイズは、すべての一括挿入トランザクションで送信されるレコードの最大数です。 クラスター化された列ストア インデックスでは、バッチ サイズを約 [100 K](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) にすると、並列化を高くし、ログ記録を最小にし、ロックを最適にできます。 ディスク ベースのテーブルでは、10 K (既定値) 以下にするとソリューションに最適な場合があります。バッチ サイズを大きくすると、一括挿入中にロックのエスカレーションがトリガーされる可能性があります。
+- **バッチ サイズ** - SQL の出力構成では、書き込み先テーブル/ワークロードの特性に基づいて、Azure Stream Analytics SQL 出力の最大バッチ サイズを指定することができます。 バッチ サイズは、すべての一括挿入トランザクションで送信されるレコードの最大数です。 クラスター化された列ストア インデックスでは、バッチ サイズを約 [100 K](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) にすると、並列化を高くし、ログ記録を最小にし、ロックを最適にできます。 ディスク ベースのテーブルでは、10 K (既定値) 以下にするとソリューションに最適な場合があります。バッチ サイズを大きくすると、一括挿入中にロックのエスカレーションがトリガーされる可能性があります。
 
 - **入力メッセージのチューニング** – パーティション分割の継承とバッチ サイズの使用を最適化している場合、1 つのパーティションのメッセージあたりの入力イベントの数を増やすと、書き込みスループットをさらに上げるのに役立ちます。 入力メッセージのチューニングにより、Azure Stream Analytics 内のバッチ サイズを指定したバッチ サイズまで上げることができ、それによってスループットが向上します。 これは、[圧縮](stream-analytics-define-inputs.md)を使用するか、または EventHub または BLOB での入力メッセージ サイズを増やすことによって実現できます。
 
 ## <a name="sql-azure"></a>SQL Azure
 
-- **パーティション テーブルとパーティション インデックス** – パーティション キー (たとえば PartitionId) と同じ列を含むテーブルで[パーティション分割された](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) SQL テーブルとパーティション分割されたインデックスを使用すると、書き込み中のパーティション間の競合を大幅に減らすことができます。 パーティション テーブルの場合は、プライマリ ファイル グループに[パーティション関数](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017)と[パーティション構成](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017)を作成する必要があります。 これにより、新しいデータの読み込み中の既存データの可用性も向上します。 パーティションの数によってはログ IO の上限に達する可能性があり、これは SKU をアップグレードすることで増やすことができます。
+- **パーティション テーブルとパーティション インデックス** – パーティション キー (たとえば PartitionId) と同じ列を含むテーブルで [パーティション分割された](/sql/relational-databases/partitions/partitioned-tables-and-indexes) SQL テーブルとパーティション分割されたインデックスを使用すると、書き込み中のパーティション間の競合を大幅に減らすことができます。 パーティション テーブルの場合は、プライマリ ファイル グループに[パーティション関数](/sql/t-sql/statements/create-partition-function-transact-sql)と[パーティション構成](/sql/t-sql/statements/create-partition-scheme-transact-sql)を作成する必要があります。 これにより、新しいデータの読み込み中の既存データの可用性も向上します。 パーティションの数によってはログ IO の上限に達する可能性があり、これは SKU をアップグレードすることで増やすことができます。
 
-- **一意キー違反の回避** – Azure Stream Analytics のアクティビティ ログで[複数キー違反の警告メッセージ](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)が発生する場合は、復旧の間に発生する可能性がある一意制約違反によってジョブが影響を受けていないことを確認します。 インデックスに対して [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) オプションを設定することでこれを回避できます。
+- **一意キー違反の回避** – Azure Stream Analytics のアクティビティ ログで [複数キー違反の警告メッセージ](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output)が発生する場合は、復旧の間に発生する可能性がある一意制約違反によってジョブが影響を受けていないことを確認します。 インデックスに対して [IGNORE\_DUP\_KEY](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) オプションを設定することでこれを回避できます。
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Azure Data Factory とインメモリ テーブル
 

@@ -3,203 +3,102 @@ title: クイックスタート - Azure Key Vault Python クライアント ラ�
 description: Python クライアント ライブラリを使用して Azure キー コンテナーから証明書を作成、取得、削除する方法について学習します
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 3/30/2020
+ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: d0d1ed2b082abe5930f358a2551a967dd158aa41
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: 6ae20c55a16b12f7543af3f08d96400a8e5f20c9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89376589"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934919"
 ---
-# <a name="quickstart-azure-key-vault-certificates-client-library-for-python"></a>クイック スタート:クイックスタート - Python 用 Azure Key Vault 証明書クライアント ライブラリ
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault 証明書クライアント ライブラリ
 
-Python 用 Azure Key Vault クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
+Python 用 Azure Key Vault 証明書クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Key Vault を使用して証明書を保存することで、証明書をコードに保存しなくて済むため、アプリのセキュリティが向上します。
 
-Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 Python 用 Key Vault クライアント ライブラリは、次の目的で使用します。
-
-- キーとパスワードのセキュリティと制御を強化する。
-- 暗号化キーの作成とインポートを数分で実行する。
-- クラウド スケールおよびグローバルな冗長性により待ち時間を短縮する。
-- TLS または SSL 証明書のタスクを簡略化および自動化する。
-- FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
-
-[API のリファレンスのドキュメント](/python/api/overview/azure/keyvault-certificates-readme?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-keyvault/)
+[API のリファレンスのドキュメント](/python/api/overview/azure/keyvault-certificates-readme) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-certificates) | [パッケージ (Python Package Index)](https://pypi.org/project/azure-keyvault-certificates)
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- Python 2.7、3.5.3 以降
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/)。
+- [Python 2.7 以降または 3.5.3 以降](/azure/developer/python/configure-local-development-environment)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
-このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) を実行していることを前提としています。
+このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli) を実行していることを前提としています。
 
-## <a name="setting-up"></a>設定
+## <a name="set-up-your-local-environment"></a>ローカル環境を設定する
 
-### <a name="install-the-package"></a>パッケージをインストールする
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
 
-コンソール ウィンドウから、Python 用 Azure Key Vault 証明書ライブラリをインストールします。
+### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-```console
-pip install azure-keyvault-certificates
-```
+1. `login` コマンドを実行します。
 
-このクイックスタートでは、azure.identity パッケージもインストールする必要があります。
+    ```azurecli-interactive
+    az login
+    ```
 
-```console
-pip install azure.identity
-```
+    CLI で既定のブラウザーを開くことができる場合、開いたブラウザに Azure サインイン ページが読み込まれます。
+
+    それ以外の場合は、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) でブラウザー ページを開き、ターミナルに表示されている認証コードを入力します。
+
+2. ブラウザーでアカウントの資格情報を使用してサインインします。
+
+### <a name="install-the-packages"></a>パッケージのインストール
+
+1. ターミナルまたはコマンド プロンプトで、適切なプロジェクト フォルダーを作成したら、「[Python 仮想環境を使用する](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments)」で説明されているように、Python 仮想環境を作成し、アクティブ化します。
+
+1. Azure Active Directory ID ライブラリをインストールします。
+
+    ```terminal
+    pip install azure.identity
+    ```
+
+
+1. Key Vault 証明書クライアント ライブラリをインストールします。
+
+    ```terminal
+    pip install azure-keyvault-certificates
+    ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
 
-このクイックスタートでは、あらかじめ作成しておいた Azure キー コンテナーを使用します。 キー コンテナーは、[Azure CLI のクイックスタート](quick-create-cli.md)、[Azure PowerShell のクイックスタート](quick-create-powershell.md)、または [Azure portal のクイックスタート](quick-create-portal.md)の手順に従って作成できます。 または、以下の Azure CLI コマンドを実行することもできます。
+[!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-python-qs-rg-kv-creation.md)]
 
-> [!Important]
-> 各キー コンテナーには一意の名前が必要です。 次の例では、<your-unique-keyvault-name> をお使いのキー コンテナーの名前に置き換えてください。
+### <a name="grant-access-to-your-key-vault"></a>キー コンテナーへのアクセス許可を付与する
 
-```azurecli
-az group create --name "myResourceGroup" -l "EastUS"
-
-az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
-```
-
-### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
-
-クラウドベースのアプリケーションの認証を行うための最も簡単な方法は、マネージド ID を使用することです。詳細については、[Key Vault に対する認証](../general/authentication.md)に関するページを参照してください。
-
-ただし簡潔にするために、このクイックスタートではデスクトップ アプリケーションを作成します。デスクトップ アプリケーションでは、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。 サービス プリンシパルは、"http://&lt;my-unique-service-principal-name&gt;" の形式で一意の名前にする必要があります。
-
-Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用してサービス プリンシパルを作成します。
-
-```azurecli
-az ad sp create-for-rbac -n "http://&lt;my-unique-service-principal-name&gt;" --sdk-auth
-```
-
-この操作では、一連のキーと値のペアが返されます。 
+自分のユーザー アカウントに証明書のアクセス許可を付与するアクセス ポリシーをキー コンテナーに対して作成します
 
 ```console
-{
-  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
-  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
-  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
-  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
-  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
-  "resourceManagerEndpointUrl": "https://management.azure.com/",
-  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
-  "galleryEndpointUrl": "https://gallery.azure.com/",
-  "managementEndpointUrl": "https://management.core.windows.net/"
-}
+az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certificate-permissions delete get list create
 ```
 
-clientId および clientSecret を書き留めておきます。これらは、下記の手順「[環境変数の設定](#set-environmental-variables)」で使用します。
+#### <a name="set-environment-variables"></a>環境変数の設定
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
+このアプリケーションでは、`KEY_VAULT_NAME` という環境変数にキー コンテナーの名前を使用します。
 
-[az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドに clientId を渡すことでご利用のサービス プリンシパルにアクセス許可を付与するアクセス ポリシーをご利用のキー コンテナー用に作成します。 証明書に対する get、list、create の各アクセス許可をサービス プリンシパルに付与します。
-
-```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --certificate-permissions delete get list create 
-```
-
-#### <a name="set-environmental-variables"></a>環境変数の設定
-
-アプリケーションの DefaultAzureCredential メソッドは、3 つの環境変数 (`AZURE_CLIENT_ID`、`AZURE_CLIENT_SECRET`、`AZURE_TENANT_ID`) に依存しています。 これらの変数を、`export VARNAME=VALUE` 形式を使用して「[サービス プリンシパルの作成](#create-a-service-principal)」の手順に記載されている clientId、clientSecret、tenantId の値に設定します。 (この方法では、現在のシェルの変数とシェルから作成されたプロセスのみが設定されます。これらの変数を環境に永続的に追加するには、`/etc/environment ` ファイルを編集します。) 
-
-また、キー コンテナー名を `KEY_VAULT_NAME` という環境変数として保存する必要もあります。
-
-```console
-export AZURE_CLIENT_ID=<your-clientID>
-
-export AZURE_CLIENT_SECRET=<your-clientSecret>
-
-export AZURE_TENANT_ID=<your-tenantId>
-
-export KEY_VAULT_NAME=<your-key-vault-name>
+Windows
+```cmd
+set KEY_VAULT_NAME=<your-key-vault-name>
 ````
-
-## <a name="object-model"></a>オブジェクト モデル
-
-Python 用 Azure Key Vault クライアント ライブラリを使用すると、キーおよび関連するアセット (証明書、シークレットなど) を管理できます。 以下のコード サンプルでは、クライアントの作成、証明書の作成、証明書の取得、証明書の削除を行う方法を示します。
-
-## <a name="code-examples"></a>コード例
-
-### <a name="add-directives"></a>ディレクティブの追加
-
-コードの先頭に次のディレクティブを追加します。
-
-```python
-import os
-from azure.keyvault.certificates import CertificateClient, CertificatePolicy,CertificateContentType, WellKnownIssuerNames 
-from azure.identity import DefaultAzureCredential
+Windows PowerShell
+```powershell
+$Env:KEY_VAULT_NAME="<your-key-vault-name>"
 ```
 
-### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
-
-キー コンテナーに対する認証とキー コンテナー クライアントの作成は、上記の「[環境変数の設定](#set-environmental-variables)」の手順にある環境変数によって異なります。 キー コンテナーの名前は、"https://<your-key-vault-name>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。
-
-```python
-credential = DefaultAzureCredential()
-
-client = CertificateClient(vault_url=KVUri, credential=credential)
+macOS または Linux
+```cmd
+export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
-### <a name="save-a-certificate"></a>証明書の保存
+## <a name="create-the-sample-code"></a>サンプル コードを作成する
 
-アプリケーションが認証されたら、キー コンテナーに自己署名証明書を設定できます 
+Python 用 Azure Key Vault 証明書クライアント ライブラリを使用すると、証明書を管理できます。 次のコード サンプルは、クライアントの作成、証明書の設定、証明書の取得、証明書の削除を行う方法を示しています。
 
-```python
-certificate_operation_poller = client.begin_create_certificate(
-    certificate_name=certificateName, policy=CertificatePolicy.get_default()
-)
-certificate = certificate_operation_poller.result()
-```
-
-[az keyvault certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) コマンドを使用して、証明書が設定されたことを確認できます。
-
-```azurecli
-az keyvault certificate show --vault-name <your-unique-keyvault-name> --name myCertificate
-```
-
-### <a name="retrieve-a-certificate"></a>証明書の取得
-
-以前に作成した証明書を取得できます
-
-```python
-retrieved_certificate = client.get_certificate(certificateName)
- ```
-
-これで、証明書が `retrieved_certificate` として保存されます。
-
-### <a name="delete-a-certificate"></a>証明書の削除
-
-最後に、キー コンテナーから証明書を削除してみましょう
-
-```python
-client.delete_certificate(certificateName)
-```
-
-[az keyvault certificate show](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-show) コマンドを使用して、証明書が削除されたことを確認できます。
-
-```azurecli
-az keyvault certifcate show --vault-name <your-unique-keyvault-name> --name myCertificate
-```
-
-## <a name="clean-up-resources"></a>リソースをクリーンアップする
-
-不要になったら、Azure CLI または Azure PowerShell を使用して、キー コンテナーとそれに対応するリソース グループを削除できます。
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
-```
-
-## <a name="sample-code"></a>サンプル コード
+このコードを含めた *kv_certificates.py* という名前のファイルを作成します。
 
 ```python
 import os
@@ -212,33 +111,109 @@ KVUri = "https://" + keyVaultName + ".vault.azure.net"
 credential = DefaultAzureCredential()
 client = CertificateClient(vault_url=KVUri, credential=credential)
 
-certificateName = "myCertificate"
+certificateName = input("Input a name for your certificate > ")
 
-print("Creating a certificate in " + keyVaultName + " called '" + certificateName  + "` ...")
+print(f"Creating a certificate in {keyVaultName} called '{certificateName}' ...")
 
-certificate_operation_poller = client.begin_create_certificate(
-    certificate_name=certificateName, policy=CertificatePolicy.get_default()
-
-certificate = certificate_operation_poller.result()
+policy = CertificatePolicy.get_default()
+poller = client.begin_create_certificate(certificate_name=certificateName, policy=policy)
+certificate = poller.result()
 
 print(" done.")
 
-print("Retrieving your certificate from " + keyVaultName + ".")
+print(f"Retrieving your certificate from {keyVaultName}.")
 
 retrieved_certificate = client.get_certificate(certificateName)
 
-print("Certificate with name '{0}' was found'.".format(retrieved_certificate.name))
-print("Deleting your certificate from " + keyVaultName + " ...")
+print(f"Certificate with name '{retrieved_certificate.name}' was found'.")
+print(f"Deleting your certificate from {keyVaultName} ...")
 
-client.delete_certificate(certificateName)
+poller = client.begin_delete_certificate(certificateName)
+deleted_certificate = poller.result()
 
 print(" done.")
 ```
 
+## <a name="run-the-code"></a>コードの実行
+
+前のセクションのコードが *kv_certificates.py* という名前のファイルに含まれていることを確認します。 次のコマンドを使用して、コードを実行します。
+
+```terminal
+python kv_certificates.py
+```
+
+- アクセス許可エラーが発生した場合は、[`az keyvault set-policy` コマンド](#grant-access-to-your-key-vault)を実行したことを確認してください。
+- 同じキー名を使用してコードを再実行すると、"(競合) 証明書 <name> は現在削除されているが、回復可能な状態です" というエラーが生成されることがあります。 別のキー名を使用してください。
+
+## <a name="code-details"></a>コードの詳細
+
+### <a name="authenticate-and-create-a-client"></a>クライアントの認証と作成
+
+このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
+
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、["DefaultAzureCredential()"](/python/api/azure-identity/azure.identity.defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 詳細については、[DefaultAzureCredential 認証](https://docs.microsoft.com/python/api/overview/azure/identity-readme)に関するセクションを参照してください。 
+
+```python
+credential = DefaultAzureCredential()
+client = CertificateClient(vault_url=KVUri, credential=credential)
+```
+
+### <a name="save-a-certificate"></a>証明書の保存
+
+キー コンテナーのクライアント オブジェクトを取得したら、[begin_create_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#begin-create-certificate-certificate-name--policy----kwargs-) メソッドを使用して証明書を作成できます。 
+
+```python
+policy = CertificatePolicy.get_default()
+poller = client.begin_create_certificate(certificate_name=certificateName, policy=policy)
+certificate = poller.result()
+```
+
+ここでは、証明書に [CertificatePolicy.get_default](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificatepolicy?#get-default--) メソッドを使用して取得したポリシーが必要です。
+
+`begin_create_certificate` メソッドを呼び出すと、キー コンテナーに対する Azure REST API への非同期呼び出しが生成されます。 この非同期呼び出しにより、ポーラー オブジェクトが返されます。 操作の結果を待機するには、ポーラーの `result` メソッドを呼び出します。
+
+要求を処理するとき、クライアントに提供した資格情報オブジェクトを使用して、Azure により、呼び出し元の ID (サービス プリンシパル) が認証されます。
+
+
+### <a name="retrieve-a-certificate"></a>証明書の取得
+
+証明書を Key Vault から読み取るには、[get_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#get-certificate-certificate-name----kwargs-) メソッドを使用します。
+
+```python
+retrieved_certificate = client.get_certificate(certificateName)
+ ```
+
+Azure CLI コマンド [az keyvault certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show) を使用して、証明書が設定されていることを確認することもできます。
+
+### <a name="delete-a-certificate"></a>証明書の削除
+
+証明書を削除するには、[begin_delete_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#begin-delete-certificate-certificate-name----kwargs-) メソッドを使用します。
+
+```python
+poller = client.begin_delete_certificate(certificateName)
+deleted_certificate = poller.result()
+```
+
+`begin_delete_certificate` メソッドは非同期であり、ポーラー オブジェクトを返します。 ポーラーの `result` メソッドを呼び出して、その完了を待機します。
+
+Azure CLI コマンド [az keyvault certificate show](/cli/azure/keyvault/certificate?#az-keyvault-certificate-show) を使用して、証明書が削除されていることを確認できます。
+
+削除されると、証明書は削除されたが回復可能な状態がしばらく維持されます。 コードをもう一度実行する場合は、別の証明書名を使用します。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[シークレット](../secrets/quick-create-python.md)と[キー](../keys/quick-create-python.md)も試してみる場合は、この記事で作成した Key Vault を再利用できます。
+
+それ以外の場合は、この記事で作成したリソースが完了したら、次のコマンドを使用して、リソース グループとそれに含まれるすべてのリソースを削除します。
+
+```azurecli
+az group delete --resource-group KeyVault-PythonQS-rg
+```
+
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、キー コンテナーを作成し、証明書を格納して、その証明書を取得しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
-
 - [Azure Key Vault の概要](../general/overview.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)
 - [Azure Key Vault 開発者ガイド](../general/developers-guide.md)
-- [Azure Key Vault のベスト プラクティス](../general/best-practices.md)
+- [Key Vault のセキュリティの概要](../general/security-overview.md)
+- [Key Vault を使用した認証](../general/authentication.md)

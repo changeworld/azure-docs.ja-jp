@@ -4,17 +4,22 @@ description: このドキュメントでは、Azure Cosmos DB の仮想ネット
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/04/2020
+ms.date: 10/13/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 995e5a1a87ee332c48641f42c4134e3e58f11cfa
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1d63d21f4c49e3c7aef035208477ac9fc79f2e51
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495422"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637185"
 ---
-# <a name="configure-access-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からのアクセスの構成
+# <a name="configure-access-to-azure-cosmos-db-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からの Azure Cosmos DB へのアクセスを構成する
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+Azure Cosmos アカウントは、仮想ネットワーク (VNet) の特定のサブネットからのアクセスのみを許可するように構成することができます。 [サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)が仮想ネットワーク内のサブネット上の Azure Cosmos DB にアクセスできるようにすることで、そのサブネットからのトラフィックは、サブネットと仮想ネットワークの ID を使用して Azure Cosmos DB に送信されます。 Azure Cosmos DB サービス エンドポイントが有効になると、Azure Cosmos アカウントにサブネットを追加することで、サブネットへのアクセスを制限できます。
+
+既定で、有効な承認トークンと共に要求が送信される場合、任意のソースから Azure Cosmos アカウントにアクセスできます。 VNet 内に 1 つまたは複数のサブネットを追加した場合、それらのサブネットから送信された要求のみが有効な応答を受け取ります。 その他のソースから送信された要求は、403 (禁止) 応答を受け取ります。 
 
 Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワークの特定のサブネットのみからアクセスを許可するよう構成できます。 Azure Cosmos DB アカウントへの仮想ネットワーク内のサブネットからの接続をアクセス制限するには、次を実行します。
 
@@ -29,8 +34,6 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 以下のセクションでは、Azure Cosmos DB アカウント用の仮想ネットワーク サービス エンドポイントを構成する方法について説明します。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="configure-a-service-endpoint-by-using-the-azure-portal"></a><a id="configure-using-portal"></a>Azure portal を使用してサービス エンドポイントを構成する
 
 ### <a name="configure-a-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>既存の Azure 仮想ネットワークとサブネット用のサービス エンドポイントを構成する
@@ -41,7 +44,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. 既存の仮想ネットワークにあるサブネットへのアクセスを許可するには、 **[仮想ネットワーク]** で **[Add existing Azure virtual network]\(既存の Azure 仮想ネットワークを追加\)** を選択します。
 
-1. 追加する Azure 仮想ネットワークの**サブスクリプション**を選択します。 Azure Cosmos DB アカウントへのアクセスを提供する Azure **仮想ネットワーク**と**サブネット**を選択します。 次に、 **[有効化]** を選択して、サービス エンドポイントを持つ選択したネットワークを "Microsoft.AzureCosmosDB" に対して有効にします。 完了したら、 **[追加]** を選択します。
+1. 追加する Azure 仮想ネットワークの **サブスクリプション** を選択します。 Azure Cosmos DB アカウントへのアクセスを提供する Azure **仮想ネットワーク** と **サブネット** を選択します。 次に、 **[有効化]** を選択して、サービス エンドポイントを持つ選択したネットワークを "Microsoft.AzureCosmosDB" に対して有効にします。 完了したら、 **[追加]** を選択します。
 
    :::image type="content" source="./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png" alt-text="仮想ネットワークとサブネットを選択する":::
 
@@ -87,12 +90,11 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 ## <a name="configure-a-service-endpoint-by-using-azure-powershell"></a><a id="configure-using-powershell"></a>Azure PowerShell を使用してサービス エンドポイントを構成する
 
-> [!NOTE]
-> PowerShell または Azure CLI を使用している場合、追加の必要があるもののみではなく、IP フィルターとの仮想ネットワーク ACL の完全な一覧をパラメーターに指定するようにしてください。
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサービス エンドポイントを構成するには、次の手順を実行します。  
 
-1. [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) をインストールして Azure に[サインイン](https://docs.microsoft.com/powershell/azure/authenticate-azureps)します。  
+1. [Azure PowerShell](/powershell/azure/install-Az-ps) をインストールして Azure に[サインイン](/powershell/azure/authenticate-azureps)します。  
 
 1. 仮想ネットワークにある、既存のサブネット用のサービス エンドポイントを有効にします。  
 
@@ -110,6 +112,9 @@ Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサー�
       -AddressPrefix $subnetPrefix `
       -ServiceEndpoint $serviceEndpoint | Set-AzVirtualNetwork
    ```
+
+   > [!NOTE]
+   > PowerShell または Azure CLI を使用している場合、追加の必要があるもののみではなく、IP フィルターとの仮想ネットワーク ACL の完全な一覧をパラメーターに指定するようにしてください。
 
 1. 仮想ネットワークの情報を取得します。
 
@@ -307,6 +312,54 @@ Azure Cosmos DB アカウントを移行するには、IP ファイアウォー�
 
 1. Azure Cosmos DB アカウントのファイアウォール規則から、サブネットの IP ファイアウォール規則を削除します。
 
+## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+仮想ネットワークからのアクセスを構成する場合についてよく寄せられる質問を次に示します。
+
+### <a name="are-notebooks-and-mongocassandra-shell-currently-compatible-with-virtual-network-enabled-accounts"></a>Notebook と Mongo/Cassandra シェルは、現在、Virtual Network が有効になっているアカウントと互換性がありますか。
+
+現在、Cosmos DB Data Explorer での [Mongo シェル](https://devblogs.microsoft.com/cosmosdb/preview-native-mongo-shell/)と [Cassandra シェル](https://devblogs.microsoft.com/cosmosdb/announcing-native-cassandra-shell-preview/)統合、および [Jupyter Notebook サービス](./cosmosdb-jupyter-notebooks.md)は、VNET アクセスではサポートされていません。 これは現在開発が進められています。
+
+### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Azure Cosmos アカウントに対して仮想ネットワーク サービス エンドポイントと IP アクセス制御ポリシーの両方を指定できますか。 
+
+Azure Cosmos アカウントに対して、仮想ネットワーク サービス エンドポイントと IP アクセス制御ポリシー (ファイアウォールとも呼ばれます) の両方を有効にすることができます。 この 2 つの機能は補完的であり、組み合わせることで Azure Cosmos アカウントの分離とセキュリティを達成できます。 IP ファイアウォールを使用すると、確実に静的 IP からアカウントにアクセスできます。 
+
+### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>仮想ネットワーク内のサブネットへのアクセスを制限するにはどうすればよいですか。 
+
+サブネットから Azure Cosmos アカウントへのアクセスを制限するには、2 つの手順が必要です。 まず、サブネットからのトラフィックで、そのサブネットおよび仮想ネットワーク ID を Azure Cosmos DB に伝達できるようにします。 このために、サブネット上で Azure Cosmos DB のサービス エンドポイントを有効にします。 次に、Azure Cosmos アカウントにアクセスできるソースとしてサブネットを指定する規則を Azure Cosmos アカウントに追加します。
+
+### <a name="will-virtual-network-acls-and-ip-firewall-reject-requests-or-connections"></a>仮想ネットワーク ACL と IP ファイアウォールは要求または接続を拒否しますか。 
+
+IP ファイアウォールまたは仮想ネットワークのアクセス規則が追加されると、許可されたソースからの要求のみが有効な応答を受け取ります。 他の要求は 403 (禁止) で拒否されます。 Azure Cosmos アカウントのファイアウォールを接続レベルのファイアウォールと区別することが重要です。 ソースは引き続きサービスに接続でき、接続自体は拒否されません。
+
+### <a name="my-requests-started-getting-blocked-when-i-enabled-service-endpoint-to-azure-cosmos-db-on-the-subnet-what-happened"></a>サブネット上の Azure Cosmos DB に対してサービス エンドポイントを有効にすると、要求がブロックされ始めました。 なぜでしょうか?
+
+Azure Cosmos DB 用のサービス エンドポイントがサブネット上で有効になると、アカウントに到達するトラフィックのソースが、パブリック IP から、仮想ネットワークとサブネットに切り替わります。 IP ベースのファイアウォールのみが Azure Cosmos アカウントに設定されている場合、サービスで有効なサブネットからのトラフィックは IP ファイアウォール規則と一致しなくなるため、拒否されるようになります。 IP ベースのファイアウォールから仮想ネットワーク ベースのアクセス制御にシームレスに移行するための手順を実行してください。
+
+### <a name="are-additional-azure-rbac-permissions-needed-for-azure-cosmos-accounts-with-vnet-service-endpoints"></a>Azure Cosmos アカウントと VNET サービス エンドポイントの組み合わせには、追加の Azure RBAC アクセス許可が必要ですか。
+
+VNet サービス エンドポイントを Azure Cosmos アカウントに追加した後、アカウント設定を変更する場合、自分の Azure Cosmos アカウントで構成されているすべての VNET について、`Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action` アクションの権限が必要になります。 このアクセス許可が必要になるのは、あらゆるプロパティを評価する前に、リソース (データベースや仮想ネットワーク リソースなど) へのアクセス権限が認証プロセスで検証されるためです。
+ 
+この認証では、ユーザーが Azure CLI を使用して VNET ACL を指定しない場合でも、VNet リソース アクションのアクセス許可が検証されます。 現在のところ、Azure Cosmos アカウントのコントロール プレーンでは、Azure Cosmos アカウントの完全な状態を設定できます。 コントロール プレーン呼び出しのパラメーターの 1 つは `virtualNetworkRules` です。 このパラメーターが指定されていない場合、Azure CLI では、`virtualNetworkRules` を取得する目的でデータベースの取得呼び出しを行い、更新呼び出しでこの値を使用します。
+
+### <a name="do-the-peered-virtual-networks-also-have-access-to-azure-cosmos-account"></a>ピアリングされた仮想ネットワークも Azure Cosmos アカウントにアクセスできますか。 
+Azure Cosmos アカウントに追加された仮想ネットワークとそのサブネットのみがアクセスできます。 ピアリングされた仮想ネットワーク内のサブネットをアカウントに追加するまで、ピアリングされた VNet はアカウントにアクセスできません。
+
+### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>1 つの Cosmos アカウントにアクセスできるサブネットの最大数はいくつですか。 
+現在、Azure Cosmos アカウントでは最大 256 のサブネットが許可されています。
+
+### <a name="can-i-enable-access-from-vpn-and-express-route"></a>VPN と Express Route からのアクセスを有効にすることはできますか。 
+オンプレミスから Express Route 経由で Azure Cosmos アカウントにアクセスするには、Microsoft ピアリングを有効にする必要があります。 IP ファイアウォールまたは仮想ネットワーク アクセス規則を設定すると、Azure Cosmos アカウントの IP ファイアウォールに Microsoft ピアリングに使用するパブリック IP アドレスを追加して、オンプレミス サービスが Azure Cosmos アカウントにアクセスできるようにすることができます。 
+
+### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>ネットワーク セキュリティ グループ (NSG) の規則を更新する必要はありますか。 
+NSG 規則は、仮想ネットワークを使用したサブネットとの接続を制限するために使用されます。 Azure Cosmos DB のサービス エンドポイントをサブネットに追加する場合、Azure Cosmos アカウントのために NSG で送信接続を開く必要はありません。 
+
+### <a name="are-service-endpoints-available-for-all-vnets"></a>サービス エンドポイントはすべての VNet に使用できますか。
+いいえ。サービス エンドポイントを有効にすることができるのは Azure Resource Manager 仮想ネットワークのみです。 クラシック仮想ネットワークはサービス エンドポイントをサポートしていません。
+
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Azure Cosmos DB のサービス エンドポイント アクセスが有効になっているときに "パブリック Azure データセンター内からの接続を受け入れる" ことはできますか?  
+これは、Azure Data Factory、Azure Cognitive Search、または特定の Azure リージョンにデプロイされるサービスのような他の Azure ファースト パーティ サービスによって Azure Cosmos DB アカウントがアクセスされる場合にのみ必要です。
+
 ## <a name="next-steps"></a>次のステップ
 
-* Azure Cosmos DB 用のファイアウォールの構成については、[ファイアウォールのサポート](firewall-support.md)に関する記事を参照してください。
+* Azure Cosmos DB 用のファイアウォールの構成については、[ファイアウォールのサポート](how-to-configure-firewall.md)に関する記事を参照してください。

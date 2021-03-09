@@ -4,6 +4,8 @@
   items:
     - name: Azure Cache for Redis について
       href: cache-overview.md
+    - name: 新機能
+      href: cache-whats-new.md
 - name: クイックスタート
   expanded: true
   items:
@@ -27,6 +29,10 @@
           href: cache-nodejs-get-started.md
         - name: Python アプリ
           href: cache-python-get-started.md
+        - name: Go アプリ
+          href: cache-go-get-started.md
+        - name: Rust アプリ
+          href: cache-rust-get-started.md
 - name: チュートリアル
   items:
     - name: ASP.NET
@@ -38,50 +44,70 @@
     - name: Java Spring
       items:
         - name: Spring Boot Initializer の使用
-          href: cache-java-spring-boot-initializer-with-redis-cache.md
+          href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
+    - name: Azure Event Grid
+      items:
+        - name: Azure portal でイベントをルーティングする
+          href: cache-event-grid-quickstart-portal.md
+        - name: Azure CLI でイベントをルーティングする
+          href: cache-event-grid-quickstart-cli.md
+        - name: PowerShell でイベントをルーティングする
+          href: cache-event-grid-quickstart-powershell.md
     - name: ランキングの作成
       href: cache-web-app-cache-aside-leaderboard.md
+    - name: 機械学習モデルのデプロイ
+      href: cache-ml.md
     - name: Azure PowerShell を使用して管理する
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI で管理する
       href: cli-samples.md
 - name: 概念
   items:
+    - name: 高可用性
+      href: cache-high-availability.md
     - name: フェールオーバーと修正プログラムの適用
       href: cache-failover.md
     - name: ベスト プラクティス
       href: cache-best-practices.md
     - name: セキュリティ
       items:
+        - name: ネットワークの分離のオプション
+          href: cache-network-isolation.md
         - name: Azure Policy によるセキュリティ制御
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
     - name: キャッシュ アーキテクチャ
-      href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
+      href: /azure/architecture/best-practices/caching?toc=%2fazure%2fredis-cache%2ftoc.json
 - name: 操作方法ガイド
   items:
     - name: プラン
       items:
         - name: キャッシュ レベルを選択する
           href: cache-overview.md#choosing-the-right-tier
+        - name: Redis バージョンを設定する
+          href: cache-how-to-version.md
         - name: クラスタリングによってキャッシュを分散する
           href: cache-how-to-premium-clustering.md
         - name: Redis データ永続化でキャッシュを保持する
           href: cache-how-to-premium-persistence.md
+        - name: レプリカをさらに追加する
+          href: cache-how-to-multi-replicas.md
         - name: 仮想ネットワークでキャッシュをセキュリティ保護する
           href: cache-how-to-premium-vnet.md
         - name: キャッシュに非公開で接続する
           href: cache-private-link.md
-        - name: geo レプリケーションの設定
+        - name: ゾーン冗長性を有効にする
+          href: cache-how-to-zone-redundancy.md
+        - name: OSS の geo レプリケーションを設定する
           href: cache-how-to-geo-replication.md
+        - name: エンタープライズ アクティブ geo レプリケーションを設定する
+          href: cache-how-to-active-geo-replication.md
         - name: 予約容量で保存する
           href: cache-reserved-pricing.md
         - name: Azure Cache for Redis への移行
           href: cache-migration-guide.md
-        - name: Managed Cache Service からの移行 (非推奨)
-          href: cache-migrate-to-redis.md
         - name: 計画に関する FAQ
           href: cache-planning-faq.md
     - name: ビルド
@@ -112,6 +138,8 @@
           href: cache-administration.md#schedule-updates
         - name: redis-cli.exe アクセスの構成
           href: cache-how-to-redis-cli-tool.md
+        - name: Azure Cache for Redis イベントの発行
+          href: cache-event-grid.md
         - name: TLS 1.0 および 1.1 の削除
           href: cache-remove-tls-10-11.md
         - name: 管理に関する FAQ
@@ -157,7 +185,7 @@
     - name: Azure CLI
       href: /cli/azure/redis
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/redis/'
+      href: /rest/api/redis/
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.cache/allversions
     - name: Azure Policy の組み込み
@@ -172,7 +200,7 @@
     - name: ビデオ
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'
     - name: Microsoft Q&A 質問ページ
-      href: 'https://docs.microsoft.com/answers/topics/azure-cache-redis.html'
+      href: /answers/topics/azure-cache-redis.html
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cache/'
     - name: Microsoft Learn でスキルを身に付ける

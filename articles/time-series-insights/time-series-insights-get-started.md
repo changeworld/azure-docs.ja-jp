@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 09/29/2020
 ms.custom: seodec18
-ms.openlocfilehash: 02997b421a57363e04a0d988685b76f59954439e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 61af7922318514a7b86a349d1970c59d4d168d85
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495144"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023328"
 ---
 # <a name="create-a-new-azure-time-series-insights-gen1-environment-in-the-azure-portal"></a>Azure Portal で新しい Azure Time Series Insights Gen1 環境を作成する
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この記事では、Azure Portal を使用して新しい Azure Time Series Insights 環境を作成する方法について説明します。
 
@@ -61,13 +64,13 @@ Azure Time Series Insights では、Azure IoT Hub や Event Hubs に送信され
 
    [![Azure Time Series Insights の作成の [ダッシュボードにピン留めする]](media/time-series-insights-get-started/tsi-verify-deployment.png)](media/time-series-insights-get-started/tsi-verify-deployment.png#lightbox)
 
-1. **(オプション)** 右上隅にある**ピン アイコン**を選択すると、Azure Time Series Insights 環境に簡単にアクセスできます。
+1. **(オプション)** 右上隅にある **ピン アイコン** を選択すると、Azure Time Series Insights 環境に簡単にアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 環境をセキュリティで保護するために、[データ アクセス ポリシーを定義](time-series-insights-data-access.md)する。
+* 環境をセキュリティで保護するために、[データ アクセス ポリシーを定義](./concepts-access-policies.md)する。
 
-* Azure Time Series Insights 環境に[イベント ハブ イベント ソースを追加](time-series-insights-how-to-add-an-event-source-eventhub.md)する。
+* Azure Time Series Insights 環境に[イベント ハブ イベント ソースを追加](./how-to-ingest-data-event-hub.md)する。
 
 * イベント ソースに[イベントを送信](time-series-insights-send-events.md)します。
 

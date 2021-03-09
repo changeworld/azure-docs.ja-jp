@@ -9,14 +9,15 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bf8563274d7aa677249335612d0156d6a5ecbd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: eee59d906da46e315ede52796bd89c7827833ede
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018452"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095732"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 > [!div class="op_single_selector"]
 > 
 > * [.NET](table-sdk-dotnet.md)
@@ -95,7 +96,7 @@ ms.locfileid: "89018452"
    >  Azure Storage Table のエンドポイントは、0.9.1-preview バージョンではまだサポートされていません。
 
 ## <a name="release-and-retirement-dates"></a>リリース日と提供終了日
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
 
 このクロスプラットフォーム対応の .NET Standard ライブラリ [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) は、.NET Framework ライブラリ [Microsoft.Azure.CosmosDB.Table](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) を置き換えます。
 

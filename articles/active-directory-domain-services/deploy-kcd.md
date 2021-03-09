@@ -2,7 +2,7 @@
 title: Azure AD Domain Services に対する Kerberos の制約付き委任 | Microsoft Docs
 description: Azure Active Directory Domain Services のマネージド ドメインでリソースベースの Kerberos の制約付き委任 (KCD) を有効にする方法を説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
@@ -10,13 +10,13 @@ ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.author: iainfou
-ms.openlocfilehash: 7f1640f74c3fca27e1d992f3e2cc538f6e2c7fef
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: 138b90a33ff1dbc4b014f17fa0098112e1da66e4
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88722995"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619778"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services で Kerberos の制約付き委任 (KCD) を構成する
 

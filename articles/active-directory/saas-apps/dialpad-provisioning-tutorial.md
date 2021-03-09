@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 86fedfc75d95ef8d864a50d2425e329cec3ec84f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b88e618da3f8a23c0517aaeb251e54bf559fc468
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536579"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014518"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>チュートリアル:Dialpad を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -54,13 +54,13 @@ Azure AD での自動ユーザー プロビジョニング用に Dialpad を構�
 
 1. [Dialpad 管理コンソール](https://dialpadbeta.com/login)にサインインし、 **[Admin settings]\(管理者設定\)** を選択します。 ドロップダウンから **[My Company]\(自分の会社\)** が選択されていることを確認します。 **[Authentication]\(認証\) > [API Keys]\(API キー\)** に移動します。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad01.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Dialpad 管理コンソールのスクリーンショット。設定アイコン、[My Company]\(自分の会社\)、[Authentication]\(認証\)、[A P I keys]\(A P I キー\) が強調表示され、[My Company]\(自分の会社\) が選択されています。" border="false":::
 
 2. **[Add a key]\(キーの追加\)** をクリックし、シークレット トークンのプロパティを構成することで、新しいキーを生成します。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad02.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Dialpad 管理コンソールの [A P I keys]\(A P I キー\) ページのスクリーンショット。[Add a key]\(キーの追加\) が強調表示されています。" border="false":::
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad03.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Dialpad 管理コンソールの [Edit A P I key]\(A P I キーの編集\) ページのスクリーンショット。[保存] ボタンが強調表示されています。" border="false":::
 
 3. 直近で作成した API キーの **[Click to show value]\(クリックして値を表示\)** ボタンをクリックし、表示された値をコピーします。 この値を、Azure portal の Dialpad アプリケーションの [プロビジョニング] タブにある **[シークレット トークン]** フィールドに入力します。 
 
@@ -89,19 +89,19 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Dialpa
 
 5. 個別のブラウザーで、以下で強調表示されている **URL** に移動します。 
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad05.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Dialpad アプリについての情報を表示するページのスクリーンショット。[U R L] にアドレスがリストされて強調表示されています。" border="false":::
 
 6. 右上隅で、 **[Log In]\(ログイン)\ > [Use Dialpad online]\(Dialpad オンラインを使用する\)** を選択します。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/dialpad06.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Dialpad Web サイトのスクリーンショット。[Log in]\(ログイン\) が強調表示され、[Log in]\(ログイン\) タブが開いています。[Use Dialpad online]\(Dialpad オンラインを使用する\) も強調表示されています。" border="false":::
 
 7. Dialpad は OpenIDConnect アプリであるため、Microsoft の職場アカウントを使用して Dialpad にログインすることを選択します。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/loginpage.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Dialpad Web サイトの [Start making calls]\(通話の開始\) ページのスクリーンショット。[Log in with Office 365]\(Office 365 でログイン\) ボタンが強調表示されています。" border="false":::
 
 8. 認証に成功した後、同意ページの同意プロンプトを受け入れます。 その後、ご使用のテナントにアプリケーションが自動的に追加され、Dialpad アカウントにリダイレクトされます。
 
-    ![Dialpad で SCIM を追加する](media/dialpad-provisioning-tutorial/redirect.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Microsoft の認証ページを示すスクリーンショット。いくつかのデータへのアクセスを Dialpad アプリが要求しています。[承諾] ボタンが強調表示されています。" border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Dialpad への自動ユーザー プロビジョニングを構成する
 
@@ -119,11 +119,11 @@ Azure AD を使用した自動ユーザー プロビジョニング用に Dialpa
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://dialpad.com/scim`」と入力します。 前の手順で Dialpad から取得して保存した値を **[シークレット トークン]** に入力します。 **[接続テスト]** をクリックして、Azure AD から Dialpad に接続できることを確認します。 接続できない場合は、使用中の Dialpad アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 

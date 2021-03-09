@@ -1,5 +1,6 @@
 ---
 title: Microsoft ID プラットフォームの概要 - Azure
+titleSuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームのコンポーネントの概要と、それらを使用してアプリケーションに ID およびアクセス管理 (IAM) のサポートを組み込む方法について説明します。
 services: active-directory
 author: rwike77
@@ -11,15 +12,15 @@ ms.workload: identity
 ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
-ms.custom: identityplatformtop40
-ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: identityplatformtop40, contperf-fy21q2
+ms.openlocfilehash: 662523b1544fe3ca9e8bda993efa7b578b9f69cc
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119557"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752573"
 ---
-# <a name="microsoft-identity-platform-overview"></a>Microsoft ID プラットフォームの概要
+# <a name="what-is-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームとは
 
 Microsoft ID プラットフォームにより、開発者は、ユーザーや顧客が各自の Microsoft ID やソーシャル アカウントを使用してサインインできるアプリケーションを構築できます。また、独自の API または Microsoft Graph などの Microsoft API への承認されたアクセスを提供できます。
 
@@ -73,8 +74,7 @@ Microsoft IDプラットフォーム を使用してアプリに認証と承認�
 
 [Azure AD B2B](../external-identities/what-is-b2b.md) - 外部ユーザーを自分の Azure AD テナントに "ゲスト" ユーザーとして招待し、認可のためにアクセス許可を割り当てますが、認証にはユーザー自身の既存の資格情報を使用します。
 
-> [!TIP]
-> *Azure Active Directory 開発者プラットフォーム (v1.0)* のドキュメントをお探しの場合は、 「[開発者向け Azure Active Directory (v1.0) の概要](../azuread-dev/v1-overview.md)」を参照してください。
+[開発者向け Azure Active Directory (v1.0)](../azuread-dev/v1-overview.md) - 以前の v1.0 エンドポイントを使用する既存のアプリがある開発者向けに、ここに表示されます。 新しいプロジェクトには、v1.0 を使用 **しないでください**。
 
 ## <a name="next-steps"></a>次のステップ
 

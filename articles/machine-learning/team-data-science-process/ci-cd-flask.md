@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: af7900faff18d526686b80f23b9de3b3bce5ec5c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76721831"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309612"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Azure Pipelines、Docker、Kubernetes を使用して AI アプリ用の CI/CD パイプラインを作成する
 
@@ -34,9 +34,9 @@ ms.locfileid: "76721831"
 - お使いの GitHub アカウントにフォークされた[ソース コード リポジトリ](https://github.com/Azure/DevOps-For-AI-Apps)
 - [Azure DevOps 組織](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 - [Azure CLI](/cli/azure/install-azure-cli)
-- [Azure Container Service for Kubernetes (AKS) クラスター](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+- [Azure Container Service for Kubernetes (AKS) クラスター](/previous-versions/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
 - コマンドを実行して AKS クラスターから構成をフェッチするための [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 
-- [Azure Container Registry (ACR) アカウント](/azure/container-registry/container-registry-get-started-portal)
+- [Azure Container Registry (ACR) アカウント](../../container-registry/container-registry-get-started-portal.md)
 
 ## <a name="cicd-pipeline-summary"></a>CI/CD パイプラインの概要
 
@@ -62,7 +62,7 @@ ms.locfileid: "76721831"
 
 ## <a name="see-also"></a>関連項目
 
-- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
-- [Azure Machine Learning (AML)](/azure/machine-learning/)
+- [Team Data Science Process (TDSP)](./index.yml)
+- [Azure Machine Learning (AML)](../index.yml)
 - [Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Azure Kubernetes Services (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Services (AKS)](../../aks/intro-kubernetes.md)

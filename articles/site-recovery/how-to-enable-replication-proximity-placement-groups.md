@@ -4,13 +4,13 @@ description: Azure Site Recovery を使用して、近接配置グループで�
 author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
-ms.date: 05/25/2020
-ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 02/11/2021
+ms.openlocfilehash: 681b635099d450f061e0bcdb5b2c5d60d56c20a3
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827675"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380750"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>近接配置グループで実行されている Azure 仮想マシンを別のリージョンにレプリケートする
 
@@ -25,21 +25,72 @@ ms.locfileid: "87827675"
 ## <a name="considerations"></a>考慮事項
 
 - ベスト エフォートは、仮想マシンを近接配置グループにフェールオーバー/フェールバックすることです。 ただし、フェールオーバー/フェールバックの際に近接配置グループ内で VM を稼働できない場合でも、フェールオーバー/フェールバックは行われ、近接配置グループの外部に仮想マシンが作成されます。
--  近接配置グループに可用性セットが固定されていて、かつフェールオーバー/フェールバックの際に可用性セット内の VM の間に割り当て制約が適用される場合は、可用性セットと近接配置グループの外部に仮想マシンが作成されます。
--  アンマネージド ディスクでは、近接配置グループでの Site Recovery がサポートされません。
+- 近接配置グループに可用性セットが固定されていて、かつフェールオーバー/フェールバックの際に可用性セット内の VM の間に割り当て制約が適用される場合は、可用性セットと近接配置グループの外部に仮想マシンが作成されます。
+- アンマネージド ディスクでは、近接配置グループでの Site Recovery がサポートされません。
 
 > [!NOTE]
 > Azure Site Recovery は、Hyper-V から Azure へのシナリオでマネージド ディスクからのフェールバックをサポートしていません。 そのため、Azure の近接配置グループから Hyper-V へのフェールバックはサポートされていません。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-portal"></a>ポータル経由で近接配置グループの VM に対するディザスター リカバリーを設定する
+
+### <a name="azure-to-azure-via-portal"></a>Azure から Azure へ (ポータル経由)
+
+仮想マシンのレプリケーションを有効にするには、VM ディザスター リカバリー ページを使用するか、または事前に作成したコンテナーに移動して [Site Recovery] セクションに移動してからレプリケーションを有効にするかを選択できます。 両方の手法を使用して、PPG 内の VM に対して Site Recovery を設定する方法を見てみましょう。
+
+- IaaS VM DR ブレードを介してレプリケーションを有効にしながら DR リージョンの PPG を選択する方法:
+  1. 仮想マシンに移動します。 左側のブレードの [操作] で、[ディザスター リカバリー] を選択します。
+  2. [基本] タブで、VM のレプリケート先となる DR リージョンを選択します。 [詳細設定] へ移動します。
+  3. ここには、お使いの VM の近接配置グループと、DR リージョンの PPG を選択するオプションが表示されます。 Site Recovery には、新しい近接配置グループを使用するオプションも用意されており、この既定のオプションの使用を選択すると自動的に作成されます。 必要な近接配置グループを自由に選択してから [Review + Start replication]\(レプリケーションの確認と開始\) に移動して、最後にレプリケーションを有効にします。
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-1.png" alt-text="レプリケーションを有効にする。":::
+
+- コンテナー ブレードを介してレプリケーションを有効にしながら DR リージョンの PPG を選択する方法:
+  1. Recovery Services コンテナーに移動し、[Site Recovery] タブに移動します。
+  2. [+ Enable Site Recovery]\(+ Site Recovery の有効化\) をクリックしてから、Azure 仮想マシンで [1:Enable Replication]\(1: レプリケーションの有効化\) を選択します (Azure VM をレプリケートしようとしている場合)
+  3. [ソース] タブの必須フィールドに入力して、[次へ] をクリックします。
+  4. レプリケーションを有効にする VM の一覧を [仮想マシン] タブで選択して、[次へ] をクリックします。
+  5. ここには、DR リージョンの PPG を選択するオプションが表示されます。 Site Recovery には、新しい PPG を使用するオプションも用意されており、この既定のオプションの使用を選択すると自動的に作成されます。 必要な PPG を自由に選択してから、レプリケーションの有効化に進みます。
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-group-a2a-2.png" alt-text="レプリケーションをコンテナー経由で有効にする。":::
+
+VM に対してレプリケーションを有効にした後、DR リージョンの PPG の選択を簡単に更新できることに留意してください。
+
+1. 仮想マシンに移動して左側のブレードの [操作] で、[ディザスター リカバリー] を選択します
+2. [Compute and Network]\(コンピューティングとネットワーク\) ブレードに移動して、ページ上部の [編集] をクリックします
+3. ターゲットの PPG を含む複数のターゲット設定を編集するためのオプションが表示されます。 VM のフェールオーバー先となる PPG を選択して、[保存] をクリックします。
+
+### <a name="vmware-to-azure-via-portal"></a>VMware から Azure へ (ポータル経由)
+
+ターゲット VM の近接配置グループは、VM のレプリケーションを有効にした後に設定できます。 ターゲット リージョンの PPG は、お客様の要件に応じて個別に作成してください。 その後、VM に対してレプリケーションを有効にした後、DR リージョンの PPG の選択を簡単に更新できます。
+
+1. 仮想マシンをコンテナーから選択し、左側のブレードの [操作] で、[ディザスター リカバリー] を選択します。
+2. [Compute and Network]\(コンピューティングとネットワーク\) ブレードに移動して、ページ上部の [編集] をクリックします
+3. ターゲットの PPG を含む複数のターゲット設定を編集するためのオプションが表示されます。 VM のフェールオーバー先となる PPG を選択して、[保存] をクリックします。
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-v2a.png" alt-text="PPG V2A の更新":::
+
+### <a name="hyper-v-to-azure-via-portal"></a>Hyper-V から Azure へ (ポータル経由)
+
+ターゲット VM の近接配置グループは、VM のレプリケーションを有効にした後に設定できます。 ターゲット リージョンの PPG は、お客様の要件に応じて個別に作成してください。 その後、VM に対してレプリケーションを有効にした後、DR リージョンの PPG の選択を簡単に更新できます。
+
+1. 仮想マシンをコンテナーから選択し、左側のブレードの [操作] で、[ディザスター リカバリー] を選択します。
+2. [Compute and Network]\(コンピューティングとネットワーク\) ブレードに移動して、ページ上部の [編集] をクリックします
+3. ターゲットの PPG を含む複数のターゲット設定を編集するためのオプションが表示されます。 VM のフェールオーバー先となる PPG を選択して、[保存] をクリックします。
+
+   :::image type="content" source="media/how-to-enable-replication-proximity-placement-groups/proximity-placement-groups-update-h2a.png" alt-text="PPG H2A の更新":::
+
+## <a name="set-up-disaster-recovery-for-vms-in-proximity-placement-groups-via-powershell"></a>PowerShell 経由で近接配置グループの VM に対するディザスター リカバリーを設定する
+
+### <a name="prerequisites"></a>前提条件 
 
 1. Azure PowerShell Az モジュールがあることを確認します。 Azure PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成のガイド](/powershell/azure/install-az-ps)に関するページをご覧ください。
 2. Azure PowerShell Az のバージョンは 4.1.0 以上である必要があります。 現在のバージョンを確認するには、次のコマンドを使用します。
+
     ```
     Get-InstalledModule -Name Az
     ```
 
-## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>近接配置グループ内の仮想マシンに対する Site Recovery の設定
+### <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>近接配置グループ内の仮想マシンに対する Site Recovery の設定
 
 > [!NOTE]
 > ターゲットの近接配置グループの一意の ID が手元にあることを確認します。 新しい近接配置グループを作成している場合は、[こちら](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group)のコマンドを確認し、既存の近接配置グループを使用している場合は、[こちら](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)のコマンドを使用します。
@@ -62,17 +113,20 @@ ms.locfileid: "87827675"
 $RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
+#Make sure to replace the variables $OSdiskName with OS disk name.
 
 #OS Disk
-$OSdisk = Get-AzDisk -DiskName $OSdiskName -ResourceGroupName $OSdiskResourceGroup
+$OSdisk = Get-AzDisk -DiskName $OSdiskName -ResourceGroupName "A2AdemoRG"
 $OSdiskId = $OSdisk.Id
 $RecoveryOSDiskAccountType = $OSdisk.Sku.Name
 $RecoveryReplicaDiskAccountType = $OSdisk.Sku.Name
 
 $OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $OSdiskId -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
+#Make sure to replace the variables $datadiskName with data disk name.
+
 #Data disk
-$datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName $datadiskResourceGroup
+$datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName "A2AdemoRG"
 $datadiskId1 = $datadisk[0].Id
 $RecoveryReplicaDiskAccountType = $datadisk[0].Sku.Name
 $RecoveryTargetDiskAccountType = $datadisk[0].Sku.Name
@@ -88,6 +142,53 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 $TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
 ```
+
+複数のデータ ディスクに対してレプリケーションを有効にする場合は、次の PowerShell コマンドレットを使用します。
+
+```azurepowershell
+#Get the resource group that the virtual machine must be created in when failed over.
+$RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
+
+#Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
+#Make sure to replace the variables $OSdiskName with OS disk name.
+
+#OS Disk
+$OSdisk = Get-AzDisk -DiskName $OSdiskName -ResourceGroupName "A2AdemoRG"
+$OSdiskId = $OSdisk.Id
+$RecoveryOSDiskAccountType = $OSdisk.Sku.Name
+$RecoveryReplicaDiskAccountType = $OSdisk.Sku.Name
+
+$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id -DiskId $OSdiskId -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
+
+$diskconfigs = @()
+$diskconfigs.Add($OSDiskReplicationConfig)
+
+#Data disk
+
+# Add data disks
+Foreach( $disk in $VM.StorageProfile.DataDisks)
+{
+    $datadisk = Get-AzDisk -DiskName $datadiskName -ResourceGroupName "A2AdemoRG"
+    $dataDiskId1 = $datadisk[0].Id
+    $RecoveryReplicaDiskAccountType = $datadisk[0].Sku.Name
+    $RecoveryTargetDiskAccountType = $datadisk[0].Sku.Name
+    $DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id `
+         -DiskId $dataDiskId1 -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType $RecoveryReplicaDiskAccountType `
+         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+    $diskconfigs.Add($DataDisk1ReplicationConfig)
+}
+
+#Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
+
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id
+```
+
+PPG によるゾーン間レプリケーションを有効にすると、レプリケーションを開始するコマンドが次のように PowerShell コマンドレットと交換されます。
+
+```azurepowershell
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId -RecoveryProximityPlacementGroupId $targetPpg.Id -RecoveryAvailabilityZone "2"
+```
+
 レプリケーションの開始操作が成功すると、仮想マシンのデータが復旧リージョンにレプリケートされます。
 
 レプリケーション プロセスは、最初に、復旧リージョン内で仮想マシンのレプリケートする側のディスクのコピーをシード処理することによって始まります。 このフェーズは、初期レプリケーション フェーズと呼ばれます。
@@ -115,7 +216,7 @@ Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $Repli
 
 14. レプリケーションを無効にします (手順は[こちら](./azure-to-azure-powershell.md#disable-replication))。
 
-### <a name="vmware-to-azure"></a>VMware から Azure
+### <a name="vmware-to-azure-via-powershell"></a>VMware から Azure へ (PowerShell 経由)
 
 1. Azure へのディザスター リカバリーのために[オンプレミス VMware サーバーを準備](./vmware-azure-tutorial-prepare-on-premises.md)してください。
 2. お使いのアカウントにサインインし、[こちら](./vmware-azure-disaster-recovery-powershell.md#log-into-azure)で指定されているようにサブスクリプションを設定します。
@@ -153,7 +254,7 @@ Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $Protecti
 10. テスト フェールオーバーを[実行](./vmware-azure-disaster-recovery-powershell.md#run-a-test-failover)します。
 11. Azure にフェールオーバーします (手順は[こちら](./vmware-azure-disaster-recovery-powershell.md#fail-over-to-azure))。
 
-### <a name="hyper-v-to-azure"></a>Hyper-V から Azure
+### <a name="hyper-v-to-azure-via-powershell"></a>Hyper-V から Azure へ (PowerShell 経由)
 
 1. Azure へのディザスター リカバリーのために[オンプレミス Hyper-V サーバーを準備](./hyper-v-prepare-on-premises-tutorial.md)します。
 2. Azure に[サインイン](./hyper-v-azure-powershell-resource-manager.md#step-1-sign-in-to-your-azure-account)します。

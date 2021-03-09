@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 056cc023c63ae2cc90f6fcc6ef1222ec8e33cab5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4209e609420e610b9f3456da26b0afe0bf839d43
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542702"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-corptax"></a>チュートリアル:Azure Active Directory と Corptax の統合
 
@@ -27,7 +27,7 @@ Corptax と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Corptax に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -103,13 +103,13 @@ Corptax で Azure AD シングル サインオンを構成するには、次の�
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://asp.corptax.com`」と入力します。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードし、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして **フェデレーション メタデータ XML** をダウンロードし、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
 ### <a name="configure-corptax-single-sign-on"></a>Corptax のシングル サインオンを構成する
 
-**Corptax** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** を [Corptax サポート チーム](https://connect.corptax.com/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Corptax** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** を [Corptax サポート チーム](https://connect.corptax.com/)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -129,8 +129,7 @@ Corptax で Azure AD シングル サインオンを構成するには、次の�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
 
-    b. **[ユーザー名]** フィールドに `brittasimon\@yourcompanydomain.extension` と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
+    b. **[ユーザー名]** フィールドに「`brittasimon@<yourcompanydomain.extension>`」と入力します。 (例: `brittasimon@contoso.com`)。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -164,7 +163,7 @@ Corptax で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-corptax-test-user"></a>Corptax のテスト ユーザーを作成する
 
-このセクションでは、Corptax で Britta Simon というユーザーを作成します。  [Corptax サポート チーム](https://connect.corptax.com/)と連携し、Corptax プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Corptax で Britta Simon というユーザーを作成します。 [Corptax サポート チーム](https://connect.corptax.com/)と連携して、Corptax プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
@@ -173,12 +172,12 @@ Corptax で Azure AD シングル サインオンを構成するには、次の�
 
 ![image](media/corptax-tutorial/corptaxlogin.png)
 
-**[Environment]\(環境\)** テキスト ボックスに適切な環境を入力すると、SSO を設定した Corptax に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+**[Environment]\(環境\)** テキスト ボックスに適切な環境を入力すると、SSO を設定した Corptax に自動的にサインインされます。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

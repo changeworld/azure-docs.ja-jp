@@ -1,32 +1,31 @@
 ---
 title: Linux 上に Azure IoT Edge デバイスを作成するクイック スタート | Microsoft Docs
-description: このクイック スタートでは、IoT Edge デバイスを作成した後、Azure portal から事前作成されたコードをリモートで展開する方法を学習します。
+description: このクイックスタートでは、Linux で IoT Edge デバイスを作成した後、Azure portal から事前作成されたコードをリモートで展開する方法を学習します。
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/30/2020
+ms.date: 12/02/2020
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 36bebe829ccf81ef5b1832b90b2f73d15d5499af
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: ff9ba73e71e4525fe56a3cbb54626030f57e990b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87384805"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920801"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする
 
 このクイックスタートでは、コンテナー化されたコードを Linux IoT Edge 仮想デバイスに配置して、Azure IoT Edge をテストします。 IoT Edge を使用すると、ご利用のデバイス上のコードをリモートで管理できるため、より多くのワークロードをエッジに送信できます。 このクイックスタートでは、IoT Edge デバイス用に Azure 仮想マシンを使用することをお勧めします。これにより、IoT Edge サービスがインストールされているテスト マシンをすばやく作成でき、さらにテストが完了したら削除することができます。
 
 このクイック スタートでは、次の方法について説明します。
-> [!div class="checklist"]
->
-> * IoT Hub を作成します。
-> * IoT Edge デバイスを IoT ハブに登録します。
-> * IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
-> * モジュールを IoT Edge デバイスにリモートで展開する。
+
+* IoT Hub を作成します。
+* IoT Edge デバイスを IoT ハブに登録します。
+* IoT Edge ランタイムをご自分の仮想デバイスにインストールして開始します。
+* モジュールを IoT Edge デバイスにリモートで展開する。
 
 ![図 - デバイスとクラウドのクイック スタートのアーキテクチャ](./media/quickstart-linux/install-edge-full.png)
 
@@ -34,23 +33,15 @@ ms.locfileid: "87384805"
 
 アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free)を作成してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-このクイック スタートの多くの手順は、Azure CLI を使用して実行します。Azure IoT には、追加機能を有効にする拡張機能が用意されています。
-
-Azure IoT の拡張機能を Cloud Shell インスタンスに追加します。
-
-   ```azurecli-interactive
-   az extension add --name azure-iot
-   ```
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 ## <a name="prerequisites"></a>前提条件
+
+Azure CLI の環境を準備します。
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 クラウド リソース:
 
-* このクイック スタートで使用するすべてのリソースを管理するためのリソース グループです。 このクイックスタートと以下のチュートリアルでは、リソース グループ名の例 **IoTEdgeResources** を使用しています。
+- このクイック スタートで使用するすべてのリソースを管理するためのリソース グループです。 このクイックスタートと以下のチュートリアルでは、リソース グループ名の例 **IoTEdgeResources** を使用しています。
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -93,7 +84,7 @@ IoT Edge デバイスは、一般的な IoT デバイスとは異なる動作を
 2. デバイスの接続文字列を確認します。この接続文字列により、IoT Hub 内で物理デバイスとその ID をリンクさせます。 これには、IoT ハブの名前、デバイスの名前、2 つの間の接続を認証する共有キーが含まれています。 次のセクションで IoT Edge デバイスを設定するときに、この接続文字列についてもう一度触れます。
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name {hub_name}
+   az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name {hub_name}
    ```
 
    ![CLI の出力の接続文字列を確認する](./media/quickstart/retrieve-connection-string.png)
@@ -104,20 +95,28 @@ Azure IoT Edge ランタイムがインストールされた仮想マシンを�
 
 ![図 - デバイス上でランタイムを開始する](./media/quickstart-linux/start-runtime.png)
 
-IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 *IoT Edge セキュリティ デーモン*は、IoT Edge デバイスが起動するたびに開始され、IoT Edge エージェントを起動してデバイスをブートストラップします。 *IoT Edge エージェント*は、IoT Edge ハブなど、IoT Edge デバイス上のモジュールの展開と監視を容易にします。 *IoT Edge ハブ*は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。
+IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 3 つのコンポーネントで構成されます。 *IoT Edge セキュリティ デーモン* は、IoT Edge デバイスが起動するたびに開始され、IoT Edge エージェントを起動してデバイスをブートストラップします。 *IoT Edge エージェント* は、IoT Edge ハブなど、IoT Edge デバイス上のモジュールの展開と監視を容易にします。 *IoT Edge ハブ* は、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。
 
 ランタイムの構成中に、デバイスの接続文字列を入力します。 これは、Azure CLI から取得した文字列です。 この文字列によって、Azure 内の IoT Edge デバイス ID と物理デバイスとが関連付けられます。
 
 ### <a name="deploy-the-iot-edge-device"></a>IoT Edge デバイスを展開する
 
-このセクションでは、Azure Resource Manager テンプレートを使用して新しい仮想マシンを作成し、そこに IoT Edge ランタイムをインストールします。 代わりに独自の Linux デバイスを使用する場合は、[Linux への Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge-linux.md)に関するページのインストール手順を行ってから、このクイックスタートに戻ることができます。
+このセクションでは、Azure Resource Manager テンプレートを使用して新しい仮想マシンを作成し、そこに IoT Edge ランタイムをインストールします。 代わりに独自の Linux デバイスを使用する場合は、[Azure IoT Edge ランタイムのインストール](how-to-install-iot-edge.md)に関するページのインストール手順を行ってから、このクイックスタートに戻ることができます。
 
 次の CLI コマンドを使用して、構築済みの [iotedge-vm-deploy](https://github.com/Azure/iotedge-vm-deploy) テンプレートに基づいて IoT Edge デバイスを作成します。
 
 * bash または Cloud Shell ユーザーの場合は、次のコマンドをテキスト エディターにコピーし、プレースホルダーのテキストを実際の情報に置き換えてから、bash または Cloud Shell ウィンドウにコピーします。
 
    ```azurecli-interactive
-   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://aka.ms/iotedge-vm-deploy" \
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' \
+   --parameters adminUsername='azureUser' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
+   <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters authenticationType='password' \
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * PowerShell ユーザーの場合は、次のコマンドを PowerShell ウィンドウにコピーし、プレースホルダーのテキストを実際の情報に置き換えます。
@@ -126,9 +125,9 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
    az deployment group create `
    --resource-group IoTEdgeResources `
    --template-uri "https://aka.ms/iotedge-vm-deploy" `
-   --parameters dnsLabelPrefix='my-edge-vm1' `
+   --parameters dnsLabelPrefix='<REPLACE_WITH_VM_NAME>' `
    --parameters adminUsername='azureUser' `
-   --parameters deviceConnectionString=$(az iot hub device-identity show-connection-string --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) `
    --parameters authenticationType='password' `
    --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
@@ -139,7 +138,7 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 | --------- | ----------- |
 | **resource-group** | リソースが作成されるリソース グループ。 この記事全体で使用してきた既定の **IoTEdgeResources** を使用するか、サブスクリプションの既存のリソース グループの名前を指定します。 |
 | **template-uri** | 使用している Resource Manager テンプレートへのポインター。 |
-| **dnsLabelPrefix** | 仮想マシンのホスト名を作成するために使用される文字列。 例の **my-edge-vm** を使用するか、新しい文字列を指定します。 |
+| **dnsLabelPrefix** | 仮想マシンのホスト名を作成するために使用される文字列。 プレースホルダー テキストを仮想マシンの名前に置き換えます。 |
 | **adminUsername** | 仮想マシンの管理者アカウントのユーザー名。 例の **azureUser** を使用するか、新しいユーザー名を入力します。 |
 | **deviceConnectionString** | 仮想マシンで IoT Edge ランタイムを構成するために使用される IoT Hub のデバイス ID の接続文字列。 このパラメーター内の CLI コマンドで、接続文字列を取得します。 プレースホルダーのテキストを実際の IoT ハブ名に置き換えます。 |
 | **authenticationType** | 管理者アカウントの認証方法。 このクイックスタートでは **password** 認証を使用しますが、このパラメーターを **sshPublicKey** に設定することもできます。 |

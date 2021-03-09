@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 2439bec08c16ce109b271844dc72b8fd2569aa07
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e5ab583330b46b8f53223500076aa04780e6deac
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755910"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108723"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>ストレージ アカウントへの要求に必要な最小バージョンのトランスポート層セキュリティ (TLS) を適用する
 
@@ -33,13 +33,12 @@ ms.locfileid: "88755910"
 
 ストレージ アカウントに対して TLS の最小バージョンを適用すると、それより古いバージョンの TLS を使用してデータを送信するクライアントからの要求が拒否される危険があります。 TLS の最小バージョンの構成がクライアント アプリケーションにどのように影響する可能性があるかを理解するために、Microsoft では、Azure Storage アカウントのログ記録を有効にし、一定期間後にログを分析して、クライアント アプリケーションによって使用される TLS のバージョンを検出することをお勧めします。
 
-Azure Storage アカウントに対する要求をログに記録し、クライアントによって使用される TLS のバージョンを特定するために、Azure Monitor の Azure Storage ログ記録 (プレビュー) を使用することができます。 詳細については、「[Azure Storage を監視する](monitor-storage.md)」を参照してください。
+Azure Storage アカウントに対する要求をログに記録し、クライアントによって使用される TLS のバージョンを特定するために、Azure Monitor の Azure Storage ログ記録 (プレビュー) を使用することができます。 詳細については、「[Azure Storage を監視する](../blobs/monitor-blob-storage.md)」を参照してください。
 
-Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/get-started-portal.md)」を参照してください。
+Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
 
-Azure Monitor で Azure Storage のデータをログに記録し、Azure Log Analytics で分析するには、まず、データをログに記録する要求の種類とストレージ サービスを示す診断設定を作成する必要があります。 Azure portal で診断設定を作成するには、これらの手順に従います。
+Azure Monitor で Azure Storage のデータをログに記録し、Azure Log Analytics で分析するには、まず、データをログに記録する要求の種類とストレージ サービスを示す診断設定を作成する必要があります。 Azure Monitor の Azure Storage ログはパブリック プレビュー段階にあり、すべてのパブリック クラウド リージョンでプレビュー テスト用に使用できます。 このプレビューでは、BLOB (Azure Data Lake Storage Gen2 を含む)、ファイル、キュー、テーブルに対してログが有効になります。 Azure portal で診断設定を作成するには、これらの手順に従います。
 
-1. [Azure Monitor の Azure Storage ログ記録 (プレビュー)](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u) に登録します。
 1. ご利用の Azure Storage アカウントが含まれるサブスクリプションに、新しい Log Analytics ワークスペースを作成します。 ストレージ アカウントのログ記録を構成した後、Log Analytics ワークスペースでログを使用できるようになります。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
 1. Azure Portal のストレージ アカウントに移動します。
 1. [監視] セクションで、 **[診断設定 (プレビュー)]** を選択します。
@@ -53,7 +52,7 @@ Azure Monitor で Azure Storage のデータをログに記録し、Azure Log An
 
 診断設定を作成した後、ストレージ アカウントに対する要求が、その設定に従ってログに記録されるようになります。 詳細については、[Azure でリソース ログとメトリックを収集するための診断設定の作成](../../azure-monitor/platform/diagnostic-settings.md)に関するページを参照してください。
 
-Azure Monitor の Azure Storage ログで使用できるフィールドのリファレンスについては、「[リソース ログ (プレビュー)](monitor-storage-reference.md#resource-logs-preview)」を参照してください。
+Azure Monitor の Azure Storage ログで使用できるフィールドのリファレンスについては、「[リソース ログ (プレビュー)](../blobs/monitor-blob-storage-reference.md#resource-logs-preview)」を参照してください。
 
 ### <a name="query-logged-requests-by-tls-version"></a>TLS バージョンでログに記録された要求に対してクエリを実行する
 
@@ -87,16 +86,20 @@ StorageBlobLogs
 
 古いバージョンの TLS を使用しているクライアントからのトラフィックが最小限であること、または古いバージョンの TLS で行われた要求を失敗させても構わないことが確実である場合は、ストレージ アカウントで最小 TLS バージョンの適用を開始できます。 最小バージョンの TLS を使用してストレージ アカウントに対する要求を行うようクライアントに要求することは、データに対するセキュリティ リスクを最小限に抑えるための戦略の一部です。
 
+> [!IMPORTANT]
+> Azure Storage に接続するサービスを使用している場合は、ストレージ アカウントに必要な最低バージョンを設定する前に、そのサービスが適切なバージョンの TLS を使用して Azure Storage に要求を送信していることを確認してください。
+
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>ストレージ アカウントの最小 TLS バージョンを構成する
 
 ストレージ アカウントの TLS の最小バージョンを構成するには、アカウントに対して **MinimumTlsVersion** バージョンを設定します。 このプロパティは、Azure Resource Manager デプロイ モデルで作成されたすべてのストレージ アカウントで使用できます。 Azure Resource Manager デプロイ モデルの詳細については、「[ストレージ アカウントの概要](storage-account-overview.md)」を参照してください。
 
-> [!NOTE]
-> **minimumTlsVersion** プロパティは既定では設定されず、明示的に設定するまで値は返されません。 プロパティ値が **null** の場合は、ストレージ アカウントでは TLS バージョン 1.0 以降で送信された要求が許可されます。
+**MinimumTlsVersion** プロパティは既定では設定されず、明示的に設定するまで値は返されません。  プロパティ値が **null** の場合は、ストレージ アカウントで TLS バージョン 1.0 以降で送信された要求が許可されます。
 
 # <a name="portal"></a>[ポータル](#tab/portal)
 
-Azure portal を使用してストレージ アカウントの TLS の最小バージョンを構成するには、これらの手順に従います。
+Azure portal でストレージ アカウントを作成する場合、TLS の最小バージョンは既定で 1.2 に設定されます。
+
+Azure portal を使用して既存のストレージ アカウントの TLS の最小バージョンを構成するには、これらの手順に従います。
 
 1. Azure Portal のストレージ アカウントに移動します。
 1. **[構成]** 設定を選択します。
@@ -116,18 +119,18 @@ $accountName = "<storage-account>"
 $location = "<location>"
 
 # Create a storage account with MinimumTlsVersion set to TLS 1.1.
-New-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
-    -Location $location \
-    -SkuName Standard_GRS \
+New-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
+    -Location $location `
+    -SkuName Standard_GRS `
     -MinimumTlsVersion TLS1_1
 
 # Read the MinimumTlsVersion property.
 (Get-AzStorageAccount -ResourceGroupName $rgName -Name $accountName).MinimumTlsVersion
 
 # Update the MinimumTlsVersion version for the storage account to TLS 1.2.
-Set-AzStorageAccount -ResourceGroupName $rgName \
-    -AccountName $accountName \
+Set-AzStorageAccount -ResourceGroupName $rgName `
+    -AccountName $accountName `
     -MinimumTlsVersion TLS1_2
 
 # Read the MinimumTlsVersion property.
@@ -215,7 +218,7 @@ az storage account show \
 
 ### <a name="check-the-minimum-required-tls-version-for-multiple-accounts"></a>複数のアカウントに必要な TLS の最小バージョンを調べる
 
-最適なパフォーマンスの一連のストレージ アカウント全体で必要な TLS の最小バージョンを確認するために、Azure portal の Azure Resource Graph エクスプローラーを使用できます。 Resource Graph エクスプローラーの使用の詳細については、「[クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](/azure/governance/resource-graph/first-query-portal)」を参照してください。
+最適なパフォーマンスの一連のストレージ アカウント全体で必要な TLS の最小バージョンを確認するために、Azure portal の Azure Resource Graph エクスプローラーを使用できます。 Resource Graph エクスプローラーの使用の詳細については、「[クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する](../../governance/resource-graph/first-query-portal.md)」を参照してください。
 
 Resource Graph エクスプローラーで次のクエリを実行すると、ストレージ アカウントの一覧が返され、各アカウントの TLS の最小バージョンが表示されます。
 
@@ -338,6 +341,23 @@ Deny 効果を持つポリシーを作成し、これをスコープに割り当
 次の図では、Deny 効果を持つポリシーで、最小 TLS バージョンを TLS 1.2 に設定することが要求されているときに、最小 TLS バージョンを TLS 1.0 に設定して (新しいアカウントの既定) ストレージ アカウントを作成しようとした場合に発生するエラーが示されています。
 
 :::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="ポリシーに違反するストレージ アカウントを作成したときに発生したエラーを示すスクリーンショット":::
+
+## <a name="permissions-necessary-to-require-a-minimum-version-of-tls"></a>最低バージョンの TLS を要求するために必要なアクセス許可
+
+ストレージ アカウントの **MinimumTlsVersion** プロパティを設定するには、ストレージ アカウントを作成および管理するためのアクセス許可が必要です。 これらのアクセス許可を提供する Azure ロールベースのアクセス制御 (Azure RBAC) ロールには、**Microsoft.Storage/storageAccounts/write** または *Microsoft.Storage/storageAccounts/\** アクションが含まれます。 このアクションの組み込みロールには、次のようなロールがあります。
+
+- Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール
+- Azure Resource Manager の[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール
+- [Storage Account の共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)ロール
+
+これらのロールでは、Azure Active Directory (Azure AD) を使用してストレージ アカウントのデータにアクセスすることはできません。 ただし、アカウント アクセス キーへのアクセスを許可する Microsoft.Storage/storageAccounts/listkeys/action が含まれています。 このアクセス許可では、ユーザーがアカウント アクセス キーを使用して、ストレージ アカウント内のすべてのデータにアクセスできます。
+
+ユーザーがストレージ アカウントに対する最低バージョンの TLS を要求できるようにするには、ロール割り当てのスコープをストレージ アカウント以上のレベルにする必要があります。 ロール スコープの詳細については、「[Azure RBAC のスコープについて](../../role-based-access-control/scope-overview.md)」をご覧ください。
+
+これらのロールを割り当てる際には、ストレージ アカウントを作成したり、そのプロパティを更新したりする機能を必要とするユーザーにのみ割り当てるように、注意してください。 最小限の特権の原則を使用して、ユーザーに、それぞれのタスクを実行するのに必要な最小限のアクセス許可を割り当てるようにします。 Azure RBAC でアクセスを管理する方法の詳細については、「[Azure RBAC のベスト プラクティス](../../role-based-access-control/best-practices.md)」を参照してください。
+
+> [!NOTE]
+> 従来のサブスクリプション管理者ロールであるサービス管理者と共同管理者には、Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールと同等のものが含まれています。 **所有者** ロールにはすべてのアクションが含まれているため、これらの管理者ロールのいずれかを持つユーザーも、ストレージ アカウントを作成および管理できます。 詳細については、[従来のサブスクリプション管理者ロール、Azure ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#classic-subscription-administrator-roles)に関する記事を参照してください。
 
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
 

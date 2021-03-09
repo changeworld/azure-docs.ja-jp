@@ -2,13 +2,13 @@
 title: よく寄せられる質問 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs に関するよく寄せられる質問 (FAQ) とその回答の一覧を示します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: bec50da97bc826eb1bd26452e8f69f5c11f2d65d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 01/20/2021
+ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537182"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696110"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
@@ -42,77 +42,23 @@ Azure Event Hubs の Standard レベルは、Basic レベルでは使用でき�
 
 Azure Event Hubs は、サポートされているすべての Azure リージョンで利用できます。 一覧については、「[Azure リージョン](https://azure.microsoft.com/regions/)」ページを参照してください。  
 
-### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>単一の AMQP 接続を使用して、複数の イベント ハブから送受信を実行できますか。
+### <a name="can-i-use-a-single-advanced-message-queuing-protocol-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>単一の Advanced Message Queuing Protocol (AMQP) 接続を使用して、複数のイベント ハブから送受信を実行できますか。
 
 はい。すべてのイベント ハブが同じ名前空間にある限り可能です。
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>イベントの最大保有期間は何日ですか。
 
-Event Hubs Standard レベルは現在、最大 7 日間の保有期間をサポートしています。 イベント ハブは、永続的なデータ ストアとしては考慮されていません。 24 時間を超える保有期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオ (たとえば既存データで新しい機械学習モデルのトレーニングや検証を行うこと) に対応することです。 7 日間を超えるメッセージの保有期間が必要な場合は、イベント ハブで [Event Hubs Capture](event-hubs-capture-overview.md) を有効にすると、イベント ハブのデータが、選択したストレージ アカウントまたは Azure Data Lake サービス アカウントにプルされます。 Capture を有効にすると、購入済みのスループット ユニットに基づく料金が発生します。
+Event Hubs Standard レベルは現在、最大 7 日間の保有期間をサポートしています。 イベント ハブは、永続的なデータ ストアとしては考慮されていません。 24 時間を超える保有期間の目的は、同じシステムでイベント ストリームを再生すると便利なシナリオに対応することです。 たとえば、既存データで新しい機械学習モデルのトレーニングや検証を行う場合です。 7 日間を超えるメッセージの保有期間が必要な場合は、イベント ハブで [Event Hubs Capture](event-hubs-capture-overview.md) を有効にすると、イベント ハブのデータが、選択したストレージ アカウントまたは Azure Data Lake サービス アカウントにプルされます。 Capture を有効にすると、購入済みのスループット ユニットに基づく料金が発生します。
 
 ストレージアカウントでキャプチャされたデータの保有期間を構成できます。 Azure Storage の **ライフサイクル管理** 機能には、汎用 v2 アカウントと BLOB ストレージ アカウントのためのルール ベースのポリシーが豊富に用意されています。 このポリシーを使用して、適切なアクセス層にデータを移行します。または、データのライフサイクルの終了時に期限切れにします。 詳細については、「[Azure Blob Storage のライフサイクルの管理](../storage/blobs/storage-lifecycle-management-concepts.md)」を参照してください。 
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Event Hubs を監視するにはどうしたらよいですか。
 Event Hubs は、リソースの状態を示す網羅的なメトリックを [Azure Monitor](../azure-monitor/overview.md) に出力します。 また、Event Hubs サービスの全体的な正常性を名前空間レベルだけでなく、エンティティ レベルでも評価することができます。 どのような監視が提供されるかについては、[Azure Event Hubs](event-hubs-metrics-azure-monitor.md) に関するページを参照してください。
 
-### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>ファイアウォールで開く必要があるのはどのポートですか。 
-Azure Service Bus でメッセージを送受信する場合、次のプロトコルを使用できます。
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Azure Event Hubs ではデータはどこに格納されますか。
+Azure Event Hubs の Standard および Dedicated レベルでは、選択されたリージョンにメタデータとデータが格納されます。 Azure Event Hubs 名前空間に対して geo ディザスター リカバリーを設定すると、メタデータは、選択されたセカンダリ リージョンにコピーされます。 したがって、このサービスによって、[トラスト センター](https://azuredatacentermap.azurewebsites.net/)に指定されているものも含めて、リージョンのデータ所在地の要件が自動的に満たされます。
 
-- Advanced Message Queuing Protocol (AMQP)
-- HTTP
-- Apache Kafka
-
-これらのプロトコルを使用して Azure Event Hubs と通信するために開く必要がある送信ポートについては、次の表を参照してください。 
-
-| Protocol | Port | 詳細 | 
-| -------- | ----- | ------- | 
-| AMQP | 5671 と 5672 | [AMQP プロトコル ガイド](../service-bus-messaging/service-bus-amqp-protocol-guide.md)に関するページを参照してください | 
-| HTTP、HTTPS | 80、443 |  |
-| Kafka | 9093 | [Kafka アプリケーションからの Event Hubs の使用](event-hubs-for-kafka-ecosystem-overview.md)に関するページをご覧ください
-
-### <a name="what-ip-addresses-do-i-need-to-whitelist"></a>どのような IP アドレスをホワイトリストに登録する必要がありますか。
-接続のためにホワイトリストに登録する必要がある適切な IP アドレスを検索するには、次の手順に従います。
-
-1. コマンド プロンプトで、次のコマンドを実行します。 
-
-    ```
-    nslookup <YourNamespaceName>.servicebus.windows.net
-    ```
-2. `Non-authoritative answer` で返された IP アドレスをメモします。 これが変更されるのは、名前空間を別のクラスターに復元する場合のみです。
-
-名前空間にゾーン冗長性を使用している場合は、次の追加手順を実行する必要があります。 
-
-1. まず、名前空間に対して nslookup を実行します。
-
-    ```
-    nslookup <yournamespace>.servicebus.windows.net
-    ```
-2. **non-authoritative answer** セクションの名前をメモします。これは、次のいずれかの形式になります。 
-
-    ```
-    <name>-s1.cloudapp.net
-    <name>-s2.cloudapp.net
-    <name>-s3.cloudapp.net
-    ```
-3. s1、s2、s3 のサフィックスが付いているそれぞれについて nslookup を実行し、3 つの可用性ゾーンで実行されている 3 つのインスタンスすべての IP アドレスを取得します。 
-
-### <a name="where-can-i-find-client-ip-sending-or-receiving-msgs-to-my-namespace"></a>名前空間へのメッセージの送信または受信を行うクライアント IP はどこで確認できますか。
-まず、名前空間で [IP フィルター](event-hubs-ip-filtering.md)を有効にします。 
-
-次に、「[診断ログを有効にする](event-hubs-diagnostic-logs.md#enable-diagnostic-logs)」の手順に従って、[Event Hubs 仮想ネットワーク接続イベント](event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema)の診断ログを有効にします。 接続が拒否された IP アドレスが表示されます。
-
-```json
-{
-    "SubscriptionId": "0000000-0000-0000-0000-000000000000",
-    "NamespaceName": "namespace-name",
-    "IPAddress": "1.2.3.4",
-    "Action": "Deny Connection",
-    "Reason": "IPAddress doesn't belong to a subnet with Service Endpoint enabled.",
-    "Count": "65",
-    "ResourceId": "/subscriptions/0000000-0000-0000-0000-000000000000/resourcegroups/testrg/providers/microsoft.eventhub/namespaces/namespace-name",
-    "Category": "EventHubVNetConnectionEvent"
-}
-```
+[!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka の統合
 
@@ -122,12 +68,23 @@ Event Hubs は、既存の Apache Kafka ベースのアプリケーションが�
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>既存のアプリケーションが Event Hubs に接続するにはどのような構成変更を行う必要がありますか。
 イベント ハブに接続するには、Kafka クライアントの構成を更新する必要があります。 これは、Event Hubs 名前空間を作成し、[接続文字列](event-hubs-get-connection-string.md)を取得することによって実行されます。 Event Hubs の FQDN を指すように bootstrap.servers を変更し、ポートを 9093 に変更します。 以下に示す正しい認証を使用し、sasl.jaas.config を更新して、Kafka クライアントを Event Hubs エンドポイント (取得した接続文字列) に転送します。
 
-bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+```properties
+bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
+```
 
 例:
 
-bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=";
-
+```properties
+bootstrap.servers=dummynamespace.servicebus.windows.net:9093
+request.timeout.ms=60000
+security.protocol=SASL_SSL
+sasl.mechanism=PLAIN
+sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXX";
+```
 注:sasl.jaas.config がフレームワークでサポートされる構成ではない場合、SASL のユーザー名とパスワードを設定に使用される構成を見つけ、代わりにそれらを使用します。 ユーザー名を $ConnectionString に、パスワードを Event Hubs の接続文字列に設定します。
 
 ### <a name="what-is-the-messageevent-size-for-event-hubs"></a>Event Hubs のメッセージ/イベント サイズはどれくらいですか。
@@ -153,60 +110,71 @@ Event Hubs でのスループットは、Event Hubs 経由で入出力される�
 最初は 1 スループット ユニット (TU) から始め、[自動インフレ](event-hubs-auto-inflate.md)を有効にすることができます。 自動インフレ機能を使用すると、トラフィック/ペイロードの増加に従って TU を増やすことができます。 また、TU の数に上限を設定することもできます。
 
 ### <a name="how-does-auto-inflate-feature-of-event-hubs-work"></a>Event Hubs の自動インフレ機能はどのように働くのですか。
-自動インフレ機能を使用すると、スループット ユニット (TU) をスケールアップできます。 つまり、最初は少ない TU を購入し、イングレスが増加したら自動インフレで TU をスケールアップすることが可能です。 これにより、コスト効率に優れたオプションと、管理する TU の数の完全な制御が提供されます。 この機能は**スケールアップのみ**の機能であり、それを更新することによって TU の数のスケールダウンを完全に制御できます。 
+自動インフレ機能を使用すると、スループット ユニット (TU) をスケールアップできます。 つまり、最初は少ない TU を購入し、イングレスが増加したら自動インフレで TU をスケールアップすることが可能です。 これにより、コスト効率に優れたオプションと、管理する TU の数の完全な制御が提供されます。 この機能は **スケールアップのみ** の機能であり、それを更新することによって TU の数のスケールダウンを完全に制御できます。 
 
 少ないスループット ユニット (TU) (2 TU など) で始めることもできます。 トラフィックが 15 TU に増える可能性が予測される場合は、名前空間で自動インフレ機能を有効にし、上限を 15 TU に設定します。 これで、トラフィックの増加に従って TU を自動的に増やすことができます。
 
 ### <a name="is-there-a-cost-associated-when-i-turn-on-the-auto-inflate-feature"></a>自動インフレ機能を有効にした場合、関連するコストは発生しますか。
-この機能に関連して生じる**コストはありません**。 
+この機能に関連して生じる **コストはありません**。 
 
 ### <a name="how-are-throughput-limits-enforced"></a>スループットの制限はどのように適用されるのですか。
-名前空間内のすべてのイベント ハブの合計**イングレス** スループットまたは合計イングレス イベント レートがスループット ユニットの上限の総計を超過した場合は、送信側が調整され、受信クォータを超えたことを示すエラーを受信します。
+名前空間内のすべてのイベント ハブの合計 **イングレス** スループットまたは合計イングレス イベント レートがスループット ユニットの上限の総計を超過した場合は、送信側が調整され、受信クォータを超えたことを示すエラーを受信します。
 
-名前空間内のすべてのイベント ハブの合計**エグレス** スループットまたは合計イベント エグレス レートがスループット ユニットの上限の総計を超過した場合は、受信側が調整されますが、調整エラーは生成されません。 
+名前空間内のすべてのイベント ハブの合計 **エグレス** スループットまたは合計イベント エグレス レートがスループット ユニットの上限の総計を超過した場合は、受信側が調整されますが、調整エラーは生成されません。 
 
 送信側でイベントの使用速度が低下しないようにするため、また受信側でイベント ハブにイベントを送信できなくなることを避けるために、イングレス クォータとエグレス クォータは別々に適用されます。
 
-### <a name="is-there-a-limit-on-the-number-of-throughput-units-tus-that-can-be-reservedselected"></a>予約または選択できるスループット ユニット (TU) の数に制限はありますか。
-マルチテナント オファリングでは、スループット ユニットは 40 TU まで増やすことができます (ポータルで最大 20 TU を選択し、同じ名前空間でそれを 40 TU に増やすためのサポート チケットを生成できます)。 40 TU を超える場合、Event Hubs には、**Event Hubs Dedicated クラスター**と呼ばれるリソース/容量ベースのモデルが用意されています。 Dedicated クラスターは、容量ユニット (CU) で販売されます。
+### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-reservedselected"></a>予約または選択できるスループット ユニットの数に制限はありますか。
+
+Azure portal で Basic または Standard レベルの名前空間を作成する場合、名前空間に対して最大 20 個の TU を選択できます。 これを **正確に** 40 TU に上げるには、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を送信します。  
+
+1. **[Event Bus Namespace]\(イベント バス名前空間\)** ページで、左側のメニューの **[新しいサポート リクエスト]** を選択します。 
+1. **[新しいサポート リクエスト]** ページで、次の手順を行います。
+    1. **[概要]** には、いくつかの単語で問題を説明してください。 
+    1. **[問題の種類]** で、**[クォータ]** を選択します。 
+    1. **[問題のサブタイプ]** には、 **[スループット ユニットの増減を要求する]** を選択します。 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-throughput-units.png" alt-text="サポート リクエスト ページ":::
+
+40 TU を超える場合、Event Hubs には、Event Hubs Dedicated クラスターと呼ばれるリソース/容量ベースのモデルが用意されています。 Dedicated クラスターは、容量ユニット (CU) で販売されます。 詳細については、「[Event Hubs Dedicated の概要](event-hubs-dedicated-overview.md)」を参照してください。
 
 ## <a name="dedicated-clusters"></a>Dedicated クラスター
 
 ### <a name="what-are-event-hubs-dedicated-clusters"></a>Event Hubs Dedicated クラスターとは何ですか。
 Event Hubs Dedicated クラスターは、最も要求の厳しい要件を持つ顧客にシングルテナント デプロイを提供します。 このオファリングは、スループット ユニットで縛られない容量ベースのクラスターを構築します。 つまり、このクラスターを利用すると、クラスターの CPU とメモリの使用量に応じてデータを取り込み、ストリーミングできます。 詳細については、[Event Hubs Dedicated クラスター](event-hubs-dedicated-overview.md)に関するページを参照してください。
 
-### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>1 容量ユニットではどれだけの容量を実現できますか。
-専用クラスターの場合、取り込みおよびストリーミングできる量は、プロデューサー、コンシューマー、取り込みおよび処理速度など、さまざまな要因によって異なります。 
-
-次の表は、当社でのテスト中に実現したベンチマーク結果を示しています。
-
-| ペイロードの形態 | 受信者 | イングレス帯域幅| イングレス メッセージ | エグレス帯域幅 | エグレス メッセージ | 合計 TU 数 | CU あたりの TU 数 |
-| ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| 100x1KB のバッチ | 2 | 400 MB/秒 | 400,000 メッセージ/秒 | 800 MB/秒 | 800,000 メッセージ/秒 | 400 TU | 100 TU | 
-| 10x10KB のバッチ | 2 | 666 MB/秒 | 66,600 メッセージ/秒 | 1.33 GB/秒 | 133,000 メッセージ/秒 | 666 TU | 166 TU |
-| 6x32KB のバッチ | 1 | 1.05 GB/秒 | 34,000 メッセージ/秒 | 1.05 GB/秒 | 34,000 メッセージ/秒 | 1000 TU | 250 TU |
-
-このテストでは、次の条件が使用されました。
-
-- 4 容量ユニット (CU) を持つ専用の Event Hubs クラスターが使用されました。 
-- 取り込みに使用されたイベント ハブには 200 パーティションが存在しました。 
-- 取り込まれたデータは、すべてのパーティションから受信している 2 つの受信側アプリケーションによって受信されました。
-
-これらの結果は、専用の Event Hubs クラスターでどれだけの容量を実現できるかを示しています。 さらに、マイクロバッチおよび長期保有シナリオで有効になる Event Hubs Capture には専用クラスターが付属しています。
-
 ### <a name="how-do-i-create-an-event-hubs-dedicated-cluster"></a>Event Hubs Dedicated クラスターを作成するにはどうしたらよいですか。
-Event Hubs Dedicated クラスターは、[クォータ引き上げサポート要求](https://portal.azure.com/#create/Microsoft.Support)を送信するか、または [Event Hubs チーム](mailto:askeventhubs@microsoft.com)に連絡することによって作成します。 通常、クラスターをデプロイし、ユーザーが使用できるようにして渡すには約 2 週間かかります。 このプロセスは、Azure portal を通じて完全なセルフサービスが利用可能になるまでの一時的なものです。
+詳細な手順と Event Hubs Dedicated クラスターの設定の詳細については、「[クイックスタート: Azure portal を使用して専用の Event Hubs クラスターを作成する](event-hubs-dedicated-cluster-create-portal.md)」を参照してください。 
 
-## <a name="best-practices"></a>ベスト プラクティス
+
+[!INCLUDE [event-hubs-dedicated-clusters-faq](../../includes/event-hubs-dedicated-clusters-faq.md)]
+
+
+## <a name="partitions"></a>メジャー グループ
 
 ### <a name="how-many-partitions-do-i-need"></a>パーティションはいくつ必要ですか。
-パーティションの数は作成時に 2 ～ 32 の間で指定する必要があります。 パーティション数は変更できないため、パーティション数を設定する際には、長期的な規模を考慮する必要があります。 パーティションはデータ編成メカニズムであり、コンシューマー アプリケーションで必要とされるダウンストリーム並列処理に関連します。 イベント ハブでのパーティションの数は、予想される同時接続のリーダー数に直接関連します。 パーティションの詳細については、[パーティション](event-hubs-features.md#partitions)に関するページをご覧ください。
+パーティションの数は作成時に 1 - 32 の間で指定する必要があります。 パーティション数は[専用レベル](event-hubs-dedicated-overview.md)以外のすべてのレベルで変更できないため、パーティション数を設定する際には、長期的な規模を考慮する必要があります。 パーティションはデータ編成メカニズムであり、コンシューマー アプリケーションで必要とされるダウンストリーム並列処理に関連します。 イベント ハブでのパーティションの数は、予想される同時接続のリーダー数に直接関連します。 パーティションの詳細については、[パーティション](event-hubs-features.md#partitions)に関するページをご覧ください。
 
 作成時点では、選択可能な最大値 (32) に設定しておくとよいでしょう。 複数のパーティションがある場合、イベントは、その順序を維持せずに、複数のパーティションに送信されることに注意してください (ただし、32 個中 1 つのパーティションにのみ送信し、残りの 31 個を冗長パーティションとするように送信側を構成した場合を除く)。 前者の場合、32 個のパーティションすべてにわたってイベントを読み取る必要があります。 後者の場合は、イベント プロセッサ ホストで行う必用のある構成が生じること以外、特別な追加コストは発生しません。
 
 Event Hubs は、コンシューマー グループ 1 つにつきパーティション リーダーを 1 つ許可するように設計されています。 ほとんどのユース ケースでは、既定の設定の 4 つのパーティションで十分です。 イベント処理のスケール設定を予定している場合は、パーティションを追加したほうが良い場合があります。 パーティションには、特定のスループット制限はありませんが、名前空間の総スループットは、スループット ユニットの数によって制限されます。 名前空間内のスループット ユニットの数を増やすときは、独自の最大スループットを実現するために、同時読み取りを許可するための追加のパーティションが必要になる場合があります。
 
 ただし、アプリケーションで特定のパーティションに対してアフィニティが設定されているモデルがある場合は、パーティションの数を増やすことによる利点がない場合があります。 詳細については、[可用性と一貫性](event-hubs-availability-and-consistency.md)に関するページを参照してください。
+
+### <a name="increase-partitions"></a>パーティションを増やす
+サポート リクエストを送信することで、パーティション数を 40 (ちょうど) に増やすように依頼できます。 
+
+1. **[Event Bus Namespace]\(イベント バス名前空間\)** ページで、左側のメニューの **[新しいサポート リクエスト]** を選択します。 
+1. **[新しいサポート リクエスト]** ページで、次の手順を行います。
+    1. **[概要]** には、いくつかの単語で問題を説明してください。 
+    1. **[問題の種類]** で、**[クォータ]** を選択します。 
+    1. **[問題のサブタイプ]** には、 **[Request for partition change]\(パーティションの変更を要求する\)** を選択します。 
+    
+        :::image type="content" source="./media/event-hubs-faq/support-request-increase-partitions.png" alt-text="パーティション数を増やす":::
+
+パーティション数は、正確に 40 に増やすことができます。 この場合は、TU の数も 40 に増やす必要があります。 後で TU の制限を 20 以下に下げることにした場合、パーティションの最大数も 32 に減ります。 
+
+パーティションの減少は、既存のイベント ハブには影響しません。これは、パーティションがイベント ハブ レベルで適用されており、ハブの作成後は変更できないためです。 
 
 ## <a name="pricing"></a>価格
 
@@ -264,6 +232,20 @@ Event Hubs では、Capture エラー ログと運用ログの 2 種類の[診�
 Event Hubs のテクニカル サポートについては、[Microsoft Q&A の Azure Service Bus に関する質問ページ](/answers/topics/azure-service-bus.html)を参照してください。 課金とサブスクリプション管理のサポートは無料で提供されます。
 
 SLA の詳細については、「 [サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/) 」ページを参照してください。
+
+## <a name="azure-stack-hub"></a>Azure Stack Hub
+
+### <a name="how-can-i-target-a-specific-version-of-azure-storage-sdk-when-using-azure-blob-storage-as-a-checkpoint-store"></a>Azure Blob Storage をチェックポイント ストアとして使用するときに、特定のバージョンの Azure Storage SDK を対象にするにはどうすればよいですか?
+このコードを Azure Stack Hub で実行すると、特定の Storage API バージョンを対象としている場合を除き、実行時エラーが発生します。 これは、Event Hubs SDK では、Azure で利用できる最新の Azure Storage API が使用されますが、Azure Stack Hub プラットフォームではこれを利用できない可能性があるためです。 Azure Stack Hub でサポートされる Storage Blob SDK のバージョンは、Azure で一般的に利用できるバージョンと異なる場合があります。 チェックポイント ストアとして Azure Blob Storage を使用している場合は、[Azure Stack Hub ビルドでサポートされている Azure Storage API バージョン](/azure-stack/user/azure-stack-acs-differences?#api-version)を確認し、コード内でそのバージョンを対象にします。 
+
+たとえば、Azure Stack Hub バージョン 2005 上で実行している場合、Storage サービスで利用できる最も高いバージョンは 2019-02-02 となります。 既定では、Event Hubs SDK クライアント ライブラリでは、Azure で利用できる最も高いバージョン (SDK のリリース時点では 2019-07-07) が使用されます。 この場合は、このセクションの手順に従うことに加え、Storage サービス API バージョン 2019-02-02 を対象とするコードを追加する必要もあります。 特定の Storage API バージョンを対象にする方法の例については、次の C#、Java、Python、および JavaScript/TypeScript 用のサンプルを参照してください。  
+
+コードから特定の Storage API バージョンを対象にする方法の例については、次の GitHub 上のサンプルを参照してください。 
+
+- [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/)
+- [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)
+- Python - [同期](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py)、[非同期](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py)
+- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript/receiveEventsWithApiSpecificStorage.js) および [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript/src/receiveEventsWithApiSpecificStorage.ts)
 
 ## <a name="next-steps"></a>次のステップ
 

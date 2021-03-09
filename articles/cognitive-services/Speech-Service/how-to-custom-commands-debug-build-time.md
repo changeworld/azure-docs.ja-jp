@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 9c84b35318637f5b89e6c88c0ebb3fd6616533fc
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: aeb90e8e064c44f4d17f920261ed58310f0e55f0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023127"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025703"
 ---
 # <a name="debug-errors-when-authoring-a-custom-commands-application"></a>カスタム コマンド アプリケーションの作成時にエラーをデバッグする
 
@@ -24,7 +24,7 @@ ms.locfileid: "86023127"
 ## <a name="errors-when-creating-an-application"></a>アプリケーションを作成する際のエラー
 カスタム コマンドでは、カスタム コマンド アプリケーションを作成するとき、アプリケーションが [LUIS](https://www.luis.ai/) でも作成されます。 
 
-[LUIS には作成リソースごとに 500 のアプリケーションという制限があります](https://docs.microsoft.com/azure/cognitive-services/luis/luis-limits)。 既に 500 のアプリケーションが存在する作成リソースを使用している場合、LUIS アプリケーションの作成が失敗する可能性があります。 
+[LUIS には作成リソースごとに 500 のアプリケーションという制限があります](../luis/luis-limits.md)。 既に 500 のアプリケーションが存在する作成リソースを使用している場合、LUIS アプリケーションの作成が失敗する可能性があります。 
 
 選択した LUIS 作成リソースに含まれるアプリケーションが 500 未満であることを確認してください。 そうでない場合は、新しい LUIS 作成リソースを作成してそれに切り替えるか、またはご利用の LUIS アプリケーションのクリーンアップを試みます。  
 
@@ -61,7 +61,7 @@ LUIS には、肯定または否定の意図が組み込まれています。 "y
 
 異なるコマンド間で共有される共通の例文がないことを確認してください。 
 
-異なるコマンド間で例文のバランスを取るベスト プラクティスについては、[LUIS のベスト プラクティス](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)に関するページを参照してください。
+異なるコマンド間で例文のバランスを取るベスト プラクティスについては、[LUIS のベスト プラクティス](../luis/luis-concept-best-practices.md)に関するページを参照してください。
 
 ### <a name="empty-sample-sentences"></a>空の例文
 各コマンドには、少なくとも 1 つの例文が必要です。
@@ -82,7 +82,7 @@ LUIS トレーニングは、より少ない例をすばやく学習するよう
 | Book a flight | {車両} を予約する |
 | タクシーを予約する | {車両} を予約する |
 
-LUIS トレーニングのベスト プラクティスについては、[LUIS のベスト プラクティス](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-best-practices)に関するページを参照してください。
+LUIS トレーニングのベスト プラクティスについては、[LUIS のベスト プラクティス](../luis/luis-concept-best-practices.md)に関するページを参照してください。
 
 ## <a name="cant-update-luis-key"></a>LUIS キーを更新できない
 ### <a name="reassign-to-e0-authoring-resource"></a>E0 作成リソースへの再割り当て

@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4c57ec2edf43bf0a710f3c15f30836f751c4d52b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a96c0f7c6fb767b96be273a615149143043e8bc1
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500165"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91975129"
 ---
 # <a name="open-ports-and-endpoints-to-a-vm-with-the-azure-cli"></a>Azure CLI 使用した VM へのポートの開放とエンドポイント
 
@@ -89,4 +89,4 @@ az network vnet subnet update \
 この例では、HTTP トラフィックを許可する単純な規則を作成します。 より精密な環境の作成については、次の記事で確認できます。
 
 * [Azure リソース マネージャーの概要](../../azure-resource-manager/management/overview.md)
-* [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/security-overview.md)
+* [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/network-security-groups-overview.md)

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: efec40e4236c00fd4792e9d6aa51943cf43838ca
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: effb193e54be7331c9dc2874a4a34ef55442ed30
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001418"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96021743"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ v11
 
@@ -33,7 +33,7 @@ ms.locfileid: "89001418"
 
 その他のリソース:
 
-* [API リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)
+* [API リファレンス ドキュメント](/dotnet/api/overview/azure/storage)
 * [ライブラリ ソース コード](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 * [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
 * [サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
@@ -43,7 +43,7 @@ ms.locfileid: "89001418"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
-* Azure Storage アカウント - [ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage アカウント - [ストレージ アカウントを作成する](../common/storage-account-create.md)
 * 使用するオペレーティング システム用の最新の [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。 ランタイムではなく、必ず SDK を入手してください。
 
 ## <a name="setting-up"></a>設定
@@ -205,7 +205,7 @@ Azure Blob Storage は、大量の非構造化データを格納するために�
 
 ### <a name="authenticate-the-client"></a>クライアントを認証する
 
-次のコードでは、ストレージ アカウントを指す [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するには、[TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet) メソッドを使用します。 `TryParse` が成功すると、`storageAccount` 変数が初期化され、`true` が返されます。
+次のコードでは、ストレージ アカウントを指す [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount) オブジェクトを作成するために解析できる接続文字列が環境変数に含まれていることを確認します。 接続文字列が有効であることを確認するには、[TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) メソッドを使用します。 `TryParse` が成功すると、`storageAccount` 変数が初期化され、`true` が返されます。
 
 このコードを `ProcessAsync` メソッド内に追加します。
 
@@ -248,7 +248,7 @@ else
 この場合、コードはコンテナーを作成するために [CreateAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createasync) メソッドを呼び出します。 コンテナー名には、一意になるように、GUID 値が追加されます。 運用環境では、コンテナーがまだ存在していない場合にだけ作成するために、[CreateIfNotExistsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.createifnotexistsasync) メソッドの使用が望ましいことがよくあります。
 
 > [!IMPORTANT]
-> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前付けの詳細については、「[Naming and Referencing Containers, Blobs, and Metadata (コンテナー、BLOB、メタデータの名前付けと参照)](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
+> コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前付けの詳細については、「[Naming and Referencing Containers, Blobs, and Metadata (コンテナー、BLOB、メタデータの名前付けと参照)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
 ```csharp
 // Create the CloudBlobClient that represents the 

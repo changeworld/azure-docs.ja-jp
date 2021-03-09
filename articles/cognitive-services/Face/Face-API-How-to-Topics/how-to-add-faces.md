@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 06c353cf5fbd5c2b1058d99e7f91e9fcc3853cb1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3643fad1c9e821a78df6d78edeede2341ec79ea8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929046"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91303763"
 ---
 # <a name="add-faces-to-a-persongroup"></a>顔を PersonGroup に追加する
 
@@ -138,6 +138,5 @@ Parallel.For(0, PersonCount, async i =>
 
 ## <a name="related-topics"></a>関連トピック
 
-- [画像内の顔を識別する](HowtoIdentifyFacesinImage.md)
 - [画像内の顔を検出する](HowtoDetectFacesinImage.md)
 - [大規模なフィーチャーを使用する](how-to-use-large-scale.md)

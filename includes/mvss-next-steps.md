@@ -4,12 +4,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: include
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 633f7f9231e08acdb0e08ee97067d2a469bbdb45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff3434a7d1b5b4643d9aca5fae03ac03fe65b514
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75980168"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027575"
 ---
 上記のテンプレートは、[Azure Resource Manager のドキュメント](../articles/azure-resource-manager/templates/deploy-powershell.md)に従ってデプロイできます。
 
@@ -21,4 +21,4 @@ ms.locfileid: "75980168"
 
 [ゲストベースの自動スケーリングで Linux スケール セットをデプロイする](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)ように[基本スケール セット テンプレート](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-mvss-start.md)を変更する方法を確認できます。
 
-スケール セットの詳細については、[スケール セットの概要](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)に関するページを参照してください。
+スケール セットの詳細については、[スケール セットの概要](../articles/virtual-machine-scale-sets/overview.md)に関するページを参照してください。

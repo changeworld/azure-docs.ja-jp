@@ -9,16 +9,19 @@ manager: diviso
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 09/30/2020
 ms.custom: seodec18
-ms.openlocfilehash: 57e99dfd0cec4ee396cc90173f1f22715c7ba760
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d80d97a609aa3a464b9b114439fe7f4058e287c3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168186"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001832"
 ---
 # <a name="create-a-reference-data-set-for-your-azure-time-series-insights-gen1-environment-using-the-azure-portal"></a>Azure portal を使用して Azure Time Series Insights Gen1 環境の参照データ セットを作成する
+
+> [!CAUTION]
+> これは Gen1 の記事です。
 
 この記事では、Azure Time Series Insights 環境に参照データ セットを追加する方法について説明します。 参照データは、ソース データに結合することにより値を増幅するのに役立ちます。
 
@@ -112,10 +115,10 @@ ms.locfileid: "88168186"
    > 一意のキーを別の行と共有する行は、その一意のキーを共有する最後に追加された行によってオーバーライドされる列を含みます。
 
    > [!NOTE]
-   > 追加された行は、*長方形*である**必要**はありません - 参照データセット内の他のエントリの列の数が少なくなったり、大きくたり、変化したりする可能性があります。
+   > 追加された行は、*長方形* である **必要** はありません - 参照データセット内の他のエントリの列の数が少なくなったり、大きくたり、変化したりする可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 - プログラムで[参照データを管理](time-series-insights-manage-reference-data-csharp.md)する。
 
-- 詳細な API リファレンスについては、[参照データ API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api) に関するドキュメントを参照してください。
+- 詳細な API リファレンスについては、[参照データ API](/rest/api/time-series-insights/gen1-reference-data-api) に関するドキュメントを参照してください。

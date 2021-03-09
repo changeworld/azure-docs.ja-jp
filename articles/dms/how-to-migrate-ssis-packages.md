@@ -10,20 +10,20 @@ ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 483f60138dcaa6252999b9d15e846fbd1c68e9a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e6f94c006de8914fe3ae27cdb8ac4d75a0ac49cc
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021519"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962996"
 ---
 # <a name="redeploy-ssis-packages-to-azure-sql-database-with-azure-database-migration-service"></a>Azure Database Migration Service を使用して SSIS パッケージを Azure SQL Database に再配置する
 
 SQL Server Integration Services (SSIS) を使用していて、その SSIS プロジェクト/パッケージを、SQL Server によってホストされている配置元の SSISDB から、Azure SQL Database によってホストされている配置先の SSISDB に移行したい場合は、Integration Services 展開ウィザードを使用して、それらを再デプロイできます。 そのウィザードは、SQL Server Management Studio (SSMS) 内から起動することができます。
 
-2012 より前のバージョンの SSIS を使用している場合は、ご利用の SSIS プロジェクト/パッケージをプロジェクト デプロイ モデルに再デプロイする前に、まず、Integration Services プロジェクトの変換ウィザードを使用してそれらを変換する必要があります。このウィザードは、SSMS から起動することもできます。 詳細については、[プロジェクト デプロイ モデルへのプロジェクトの変換](https://docs.microsoft.com/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)に関する記事を参照してください。
+2012 より前のバージョンの SSIS を使用している場合は、ご利用の SSIS プロジェクト/パッケージをプロジェクト デプロイ モデルに再デプロイする前に、まず、Integration Services プロジェクトの変換ウィザードを使用してそれらを変換する必要があります。このウィザードは、SSMS から起動することもできます。 詳細については、[プロジェクト デプロイ モデルへのプロジェクトの変換](/sql/integration-services/packages/deploy-integration-services-ssis-projects-and-packages?view=sql-server-2017#convert)に関する記事を参照してください。
 
 > [!NOTE]
 > Azure Database Migration Service (DMS) では現在、配置元の SSISDB の Azure SQL Database への移行はサポートされていませんが、次のプロセスを使用すれば、ご利用の SSIS プロジェクトまたはパッケージを再デプロイできます。
@@ -40,7 +40,7 @@ SQL Server Integration Services (SSIS) を使用していて、その SSIS プ�
 
 * SSMS バージョン 17.2 以降。
 * SSISDB をホストするご利用のターゲット データベース サーバーのインスタンス。 [論理 SQL サーバー](../azure-sql/database/logical-servers.md) (データベースなし) がまだない場合は、Azure portal を使用し、SQL Server (論理サーバーのみ) [フォーム](https://ms.portal.azure.com/#create/Microsoft.SQLServer)に移動して作成します。
-* 配置先の SSISDB が SQL Database でホストされている場合は、Azure-SSIS Integration Runtime (IR) を含む Azure Data Factory (ADF) で SSIS をプロビジョニングする必要があります (「[Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure)」の記事に記載されています)。
+* 配置先の SSISDB が SQL Database でホストされている場合は、Azure-SSIS Integration Runtime (IR) を含む Azure Data Factory (ADF) で SSIS をプロビジョニングする必要があります (「[Azure Data Factory に Azure-SSIS Integration Runtime をプロビジョニングする](../data-factory/tutorial-deploy-ssis-packages-azure.md)」の記事に記載されています)。
 
 ## <a name="assess-source-ssis-projectspackages"></a>配置元の SSIS プロジェクト/パッケージを評価する
 

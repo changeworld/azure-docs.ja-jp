@@ -3,23 +3,25 @@ title: Azure Cosmos DB の地理空間データと GeoJSON 位置データ
 description: Azure Cosmos DB と SQL API を使用して空間オブジェクトを作成する方法について説明します。
 author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 02/25/2021
 ms.author: tisande
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 25150722e2d42625731cb741be80b86645c857e0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: b20c72ae3ed8a8fffa02fc3a2c86f9f73ba2663b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420092"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692132"
 ---
 # <a name="geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB の地理空間データと GeoJSON 位置データ
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-この記事では、Azure Cosmos DB の地理空間機能を紹介します。 現在、地理空間データの保存とアクセスは、Azure Cosmos DB SQL API アカウントのみでサポートされます。 地理空間インデックスに関するドキュメントを読むと、次の質問に答えられるようになります。
+この記事では、Azure Cosmos DB の地理空間機能を紹介します。 地理空間インデックスに関するドキュメントを読むと、次の質問に答えられるようになります。
 
 * 空間データを Azure Cosmos DB に保存する方法
-* Azure Cosmos DB 内の地理空間データを SQL や LINQ で照会する方法
+* Azure Cosmos DB 内の空間データを SQL や LINQ で照会する方法
 * Azure Cosmos DB の空間インデックスを有効または無効にする方法
 
 ## <a name="spatial-data-use-cases"></a>空間データのユース ケース
@@ -119,9 +121,9 @@ Azure Cosmos DB では座標が WGS-84 測地系で解釈されます。 座標�
     "type":"Polygon",
     "coordinates":[ [
         [ 31.8, -5 ],
-        [ 31.8, -4.7 ],
-        [ 32, -4.7 ],
         [ 32, -5 ],
+        [ 32, -4.7 ],
+        [ 31.8, -4.7 ],
         [ 31.8, -5 ]
     ] ]
 }
@@ -210,7 +212,7 @@ await container.CreateItemAsync( new UserProfile
     });
 ```
 
-緯度情報と経度情報がなくても、物理的な住所や所在地名 (都市、国や地域など) があれば、Bing マップ REST サービスなどのジオコーディング サービスを使って実際の座標を検索することができます。 Bing マップのジオコーディングの詳細については、 [こちら](https://msdn.microsoft.com/library/ff701713.aspx)を参照してください。
+緯度情報と経度情報がなくても、物理的な住所や所在地名 (都市、国や地域など) があれば、Bing マップ REST サービスなどのジオコーディング サービスを使って実際の座標を検索することができます。 Bing マップのジオコーディングの詳細については、 [こちら](/bingmaps/rest-services/)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

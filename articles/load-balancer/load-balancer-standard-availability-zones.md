@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 55a86eeee4f819955e3f8adfcc0f55f24d58bed0
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: fca6b40f4bd871041d14d119eb44e8366d8562ee
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420313"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700462"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer と可用性ゾーン
 
@@ -67,7 +67,7 @@ Azure Standard Load Balancer は、可用性ゾーンのシナリオをサポー
   <img src="./media/az-zonal/zonal-lb-1.svg" alt="Figure depicts three zonal standard load balancers each directing traffic in a zone to three different subnets in a zonal configuration." width="512" title="Virtual Network NAT">
 </p>
 
-*図:ゾーン冗長ロード バランサー*
+*図:ゾーン ロード バランサー*
 
 これらの概念を組み合わせる (同じバックエンドでゾーン冗長とゾーン ベースを使う) 場合は、[Azure Load Balancer での複数のフロントエンド](load-balancer-multivip-overview.md)に関するページをご覧ください。
 
@@ -151,11 +151,11 @@ Load Balancer を使うと、ゾーン冗長フロントエンドとして 1 つ
   - ゾーンで障害が発生した場合、サービスではこの障害が認識されますか。また、状態が失われた場合、どのようにして復旧しますか。
   - ゾーンが復帰したとき、アプリケーションは安全に収束する方法を認識しますか。
 
-障害シナリオに対するアプリケーションの回復性を向上させるには、[Azure クラウド設計パターン](https://docs.microsoft.com/azure/architecture/patterns/)に関する記事を参照してください。
+障害シナリオに対するアプリケーションの回復性を向上させるには、[Azure クラウド設計パターン](/azure/architecture/patterns/)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を確認する
-- [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する
-- [ゾーン フロントエンドによる Standard Load Balancer を使用した単一のゾーン内での VM の負荷分散](load-balancer-standard-public-zonal-cli.md)を確認する
-- [ゾーン冗長フロントエンドによる Standard Load Balancer を使用したゾーン間での VM の負荷分散](load-balancer-standard-public-zone-redundant-cli.md)を確認する
-- 障害シナリオに対するアプリケーションの回復性を向上させるために、[Azure クラウド設計パターン](https://docs.microsoft.com/azure/architecture/patterns/)についての記事を確認する。
+- [Standard Load Balancer](./load-balancer-overview.md) の詳細を確認する
+- [ゾーン フロントエンドによる Standard Load Balancer を使用した単一のゾーン内での VM の負荷分散](./quickstart-load-balancer-standard-public-cli.md)を確認する
+- [ゾーン冗長フロントエンドによる Standard Load Balancer を使用したゾーン間での VM の負荷分散](./quickstart-load-balancer-standard-public-cli.md)を確認する
+- 障害シナリオに対するアプリケーションの回復性を向上させるために、[Azure クラウド設計パターン](/azure/architecture/patterns/)についての記事を確認する。

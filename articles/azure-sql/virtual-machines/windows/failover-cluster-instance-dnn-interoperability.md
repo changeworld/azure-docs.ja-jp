@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
-ms.topic: article
+ms.subservice: hadr
+ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: f9c4f58c3318d9d030637f85f3c1597b98d458c7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 3c92aa3b35240831fad14919dc73609d803c610a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965377"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358216"
 ---
 # <a name="feature-interoperability-with-sql-server-fci--dnn"></a>SQL Server FCI および DNN との機能の相互運用性
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

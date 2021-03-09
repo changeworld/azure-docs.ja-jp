@@ -1,19 +1,16 @@
 ---
 title: PowerShell を使用して HDInsight 上で Apache Hive を使用する - Azure
 description: PowerShell を使用して、Azure HDInsight の Apache Hadoop で Apache Hive クエリを実行します
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
-ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43cac81717027b39210d6cd9cb9ad0baa596f50d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081051"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943182"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>PowerShell を使用して Apache Hive クエリを実行する
 
@@ -28,7 +25,7 @@ ms.locfileid: "87081051"
 
 * HDInsight の Apache Hadoop クラスター。 [Linux での HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
-* インストール済みの PowerShell [Az モジュール](https://docs.microsoft.com/powershell/azure/)。
+* インストール済みの PowerShell [Az モジュール](/powershell/azure/)。
 
 ## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
@@ -84,7 +81,7 @@ Azure PowerShell では、HDInsight で Hive クエリをリモートに実行�
    >
    > `Invoke-AzHDInsightHiveJob -File "wasbs://<ContainerName>@<StorageAccountName>/<Path>/query.hql"`
    >
-   > **Here-Strings** の詳細については、<a href="https://technet.microsoft.com/library/ee692792.aspx" target="_blank">Windows PowerShell Here-Strings の使用</a>に関するページをご覧ください。
+   > **Here-Strings** の詳細については、「[HERE-STRINGS](/powershell/module/microsoft.powershell.core/about/about_quoting_rules#here-strings)」を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

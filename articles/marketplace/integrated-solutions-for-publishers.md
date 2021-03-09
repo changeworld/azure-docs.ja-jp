@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2020
-ms.openlocfilehash: a1fcaced7783d09f1733fbee8744ba725b639a02
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 0a3188d5dc2c34c9959ae488ad5a5f962a99f02f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119533"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880272"
 ---
 # <a name="publish-an-integrated-solution"></a>統合ソリューションを公開する
 
-この記事では、統合されたソリューションをコマーシャル マーケットプレースに発行するための全体的なプロセスと要件について説明します。 単一のオファーにバンドルされた統合ソリューションでは、ソフトウェア ベンダーのポイント ソリューション テクノロジと、サービス パートナーの展開とサポートを組み合わせます。 サービス パートナーは、このオファーを Microsoft AppSource または Azure Marketplace に[コンサルティング サービス](./consulting-services.md)として一覧表示します。
+この記事では、統合されたソリューションをコマーシャル マーケットプレースに発行するための全体的なプロセスと要件について説明します。 単一のオファーにバンドルされた統合ソリューションでは、ソフトウェア ベンダーのポイント ソリューション テクノロジと、サービス パートナーの展開とサポートを組み合わせます。 サービス パートナーは、このオファーを Microsoft AppSource または Azure Marketplace に[コンサルティング サービス](./plan-consulting-service-offer.md)として一覧表示します。
 
 統合ソリューションは、特定の顧客のニーズやシナリオに対応することを目的としています。 プロバイダーは最初に、業界の課題や問題点を把握します。 その後、2 つ以上の最善のテクノロジーを統合して、お客様のために一元管理された再現性のあるデプロイ エクスペリエンスを作成します。 プロバイダーは、お客様の迅速な稼働を支援します。 お客様に対して単一の問い合わせ窓口を提供し、関連するカスタマイズ、コンサルティング、およびソリューションのサポートを提供します。 その成果が、テクノロジとサービスを含む統合ソリューションです。
 
@@ -32,18 +32,17 @@ ms.locfileid: "86119533"
 ## <a name="eligibility-criteria"></a>対象となる条件
 
 * 参加するパートナーには MPN ID が必要です。
-* 参加するサービス プロバイダーは、共同販売の準備ができている必要があります。
-* 参加するソフトウェア ベンダーは、IP 共同販売の準備ができている必要があります。
+* 参加するサービス プロバイダーは、[共同販売の準備](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)ができている必要があります。
+* 参加するソフトウェア ベンダーは、[IP 共同販売の準備](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)ができている必要があります。
 * 少なくとも 1 社の参加パートナーが、次のいずれかの分野で Gold コンピテンシーを取得している必要があります。
-
-    * アプリケーション開発
-    * アプリケーションの統合
-    * アプリケーション ライフサイクル管理
-    * クラウド プラットフォーム
-    * データ分析
-    * データセンター
-    * データ プラットフォーム
-    * DevOps
+    - アプリケーション開発
+    - アプリケーションの統合
+    - アプリケーション ライフサイクル管理
+    - クラウド プラットフォーム
+    - データ分析
+    - データセンター
+    - データ プラットフォーム
+    - DevOps
 
 * ソリューションに少なくとも 2 つの取引先組織が含まれ、完全な顧客ソリューションとエクスペリエンスのために IP とサービスが統合されている必要があります。
 * パートナー IP は、Azure、Dynamics 365、または Power Platform に構築する必要があります。
@@ -104,7 +103,7 @@ ms.locfileid: "86119533"
 
 ## <a name="publish-your-integrated-solution"></a>統合ソリューションを公開する
 
-技術的な統合とマーケティング資料が終了したら、[Microsoft AppSource および Azure Marketplace 向けコンサルティング サービス](./consulting-services.md)の公開元ガイドを参照してください。 このリソースを使用して、ソリューションを Microsoft AppSource と Azure Marketplace のいずれで公開するかを決定します。 また、このガイドを使用して、公開成果物を準備し、公開プロセスを完了します。
+技術的な統合とマーケティング資料が終了したら、[Microsoft AppSource および Azure Marketplace 向けコンサルティング サービス](./plan-consulting-service-offer.md)の公開元ガイドを参照してください。 このリソースを使用して、ソリューションを Microsoft AppSource と Azure Marketplace のいずれで公開するかを決定します。 また、このガイドを使用して、公開成果物を準備し、公開プロセスを完了します。
 
 コンサルティング サービス オファーには 5 種類のサービスが用意されていますが、統合ソリューションは概念実証または完全な実装のいずれかである必要があります。
 
@@ -114,4 +113,4 @@ ms.locfileid: "86119533"
 
 ## <a name="next-steps"></a>次のステップ
 
-マーケットプレースでの統合ソリューションの購入については、[統合ソリューション](./integrated-solutions.md)に関する記事を参照してください。
+- [統合ソリューション申請フォーム](https://aka.ms/AA5qicu)

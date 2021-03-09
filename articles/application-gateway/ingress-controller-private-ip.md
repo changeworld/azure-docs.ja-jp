@@ -7,19 +7,19 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 33b70ba8ab7ffef90c42f53e58a2d27e619862f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8be37ed1da0da4da3db43ef4c1cd01ed962f24ed
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84806794"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397310"
 ---
 # <a name="use-private-ip-for-internal-routing-for-an-ingress-endpoint"></a>イングレス エンドポイントの内部ルーティングにプライベート IP を使用する 
 
 この機能を使って、プライベート IP を使用して `Virtual Network` 内のイングレス エンドポイントを公開できます。
 
 ## <a name="pre-requisites"></a>前提条件  
-[プライベート IP 構成](https://docs.microsoft.com/azure/application-gateway/configure-application-gateway-with-private-frontend-ip)を使用した Application Gateway
+[プライベート IP 構成](./configure-application-gateway-with-private-frontend-ip.md)を使用した Application Gateway
 
 イングレスにプライベート IP を使用するようにコントローラーを構成するには、次の 2 つの方法があります。
 
@@ -66,4 +66,4 @@ appgw:
 `usePrivateIP: true` とプライベート IP が割り当てられていない場合、AGIC はパニック状態になり、クラッシュします。
 
 > [!NOTE]
-> Application Gateway v2 SKU にはパブリック IP が必要です。 Application Gateway をプライベートにする必要がある場合は、[`Network Security Group`](https://docs.microsoft.com/azure/virtual-network/security-overview) を Application Gateway のサブネットにアタッチしてトラフィックを制限します。
+> Application Gateway v2 SKU にはパブリック IP が必要です。 Application Gateway をプライベートにする必要がある場合は、[`Network Security Group`](../virtual-network/network-security-groups-overview.md) を Application Gateway のサブネットにアタッチしてトラフィックを制限します。

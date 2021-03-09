@@ -10,16 +10,16 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e58cef5ae1fc727235539a91e80e424e6ed3be34
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2ecc2bfe6bdc06ede61e6c4d1e6eccfc9ef6323a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496374"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878004"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLI で特殊化されたイメージ バージョンを使用してスケール セットを作成する
 
-共有イメージ ギャラリーに格納されている[特殊化されたイメージ バージョン](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images)からスケール セットを作成します。 一般化されたイメージ バージョンを使用してスケール セットを作成する場合は、「[一般化されたイメージからスケール セットを作成する](instance-generalized-image-version-cli.md)」を参照してください。
+共有イメージ ギャラリーに格納されている[特殊化されたイメージ バージョン](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images)からスケール セットを作成します。 一般化されたイメージ バージョンを使用してスケール セットを作成する場合は、「[一般化されたイメージからスケール セットを作成する](instance-generalized-image-version-cli.md)」を参照してください。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.4.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -49,12 +49,12 @@ az vmss create \
    --resource-group myResourceGroup \
    --name myScaleSet \
    --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
-   --Specialized
+   --specialized
 ```
 
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Image Builder (プレビュー)](../virtual-machines/linux/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](../virtual-machines/linux/image-builder-gallery-update-image-version.md)に使用することさえできます。 
+[Azure Image Builder (プレビュー)](../virtual-machines/image-builder-overview.md) は、イメージ バージョンの作成の自動化に役立ちます。イメージ バージョンの更新や、[既存のイメージ バージョンからの新しいイメージ バージョンの作成](../virtual-machines/linux/image-builder-gallery-update-image-version.md)に使用することさえできます。 
 
 共有イメージ ギャラリー リソースは、テンプレートを使用して作成することもできます。 いくつかの Azure クイック スタート テンプレートが用意されています。 
 

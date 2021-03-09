@@ -1,20 +1,20 @@
 ---
-title: Azure IoT Hub デバイス ストリームを使用して C# でデバイス アプリと通信する
+title: クイックスタート - Azure IoT Hub デバイス ストリームを使用して C# でデバイス アプリと通信する
 description: このクイックスタートでは、IoT Hub を通じて確立されたデバイス ストリームを介して通信する 2 つのサンプル C# アプリケーションを実行します。
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 64af62cb6c2c56ca8c7e67e2f1467d4a7e8335a0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3eb65db27e5b96f4b12973154bc860a2ab3df020
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675516"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624610"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>クイック スタート:IoT Hub デバイス ストリームを介して C# でデバイス アプリケーションと通信する (プレビュー)
 
@@ -24,9 +24,7 @@ Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/su
 
 [IoT Hub デバイス ストリーム](./iot-hub-device-streams-overview.md)を使用すると、サービス アプリケーションとデバイス アプリケーションが、安全でファイアウォールに対応した方法で通信できます。 このクイックスタートには、デバイス ストリームを利用してデータをやり取り (エコー) する 2 つの C# アプリケーションが含まれています。
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,22 +35,20 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
   * 東南アジア
 
 * このクイックスタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発マシン上に .NET Core SDK 2.1.0 以降が必要です。
-  * [複数のプラットフォームに対応する .NET Core SDK を .NET から](https://www.microsoft.com/net/download/all)ダウンロードします。
-  * 次のコマンドを使用して、開発マシンの C# の現在のバージョンを確認します。
 
-   ```
-   dotnet --version
-   ```
+    [複数のプラットフォームに対応する .NET Core SDK を .NET から](https://www.microsoft.com/net/download/all)ダウンロードします。
 
-* 次のコマンドを実行して、Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+    次のコマンドを使用して、開発マシンの C# の現在のバージョンを確認します。
 
-    ```azurecli-interactive
-    az extension add --name azure-iot
+    ```
+    dotnet --version
     ```
 
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
 * [Azure IoT C# サンプルをダウンロード](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip)し、ZIP アーカイブを展開します。 デバイス側とサービス側の両方で必要になります。
+
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -78,7 +74,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    > *YourIoTHubName* プレースホルダーを、IoT ハブ用に選択した名前に置き換えます。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     このクイックスタートの後の方で使用できるように、返されたデバイス接続文字列を書き留めておきます。 次の例のようになります。

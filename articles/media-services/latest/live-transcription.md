@@ -1,26 +1,9 @@
 ---
-title: ライブ文字起こし
-titleSuffix: Azure Media Services
-description: Azure Media Services のライブ文字起こしについて学習します。
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: c3465e294af104c4d9c3b34960f5e95cf41e7cb8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89291417"
+title:ライブ文字起こし :Azure Media Services の説明:Azure Media Services のライブ文字起こしについて学習します。  
+services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: '' ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: ne ms.topic: how-to ms.date:08/31/2020 ms.author: inhenkel
+
 ---
+
 # <a name="live-transcription-preview"></a>ライブ文字起こし (プレビュー)
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -133,7 +116,7 @@ PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:r
 ライブ文字起こしを有効にするか、または文字起こし言語を更新するには、ライブ イベントに "transcriptions" プロパティが含まれるように修正プログラムを適用します。 ライブ文字起こしを無効にするには、ライブ イベント オブジェクトから "transcriptions" プロパティを削除します。  
 
 > [!NOTE]
-> ライブ イベント中に文字起こしを**複数回**オンまたはオフにするシナリオは、サポートされていません。
+> ライブ イベント中に文字起こしを **複数回** オンまたはオフにするシナリオは、サポートされていません。
 
 これは、ライブ 文字起こしを有効にするための呼び出しの例です。
 

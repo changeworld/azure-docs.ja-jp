@@ -3,18 +3,20 @@ title: Azure Cosmos DB の未承認の例外をトラブルシューティング
 description: 未承認の例外を診断して修正する方法について説明します。
 author: j82w
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a4f51b641ca38b2b6f74bb77928537270d12f1e8
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: aa9bf1fd706ccf6064893f1141be5e5b2f185ff3
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88870852"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411169"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-unauthorized-exceptions"></a>Azure Cosmos DB の未承認の例外を診断してトラブルシューティングする
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 HTTP 401: HTTP 要求で見つかった MAC 署名は、計算された署名と同じではありません。
 "HTTP 要求で見つかった MAC 署名は、計算された署名と同じではありません" という 401 エラー メッセージを受け取った場合は、原因として次のシナリオが考えられます。
@@ -51,3 +53,5 @@ HTTP 401: HTTP 要求で見つかった MAC 署名は、計算された署名と
 ## <a name="next-steps"></a>次のステップ
 * Azure Cosmos DB .NET SDK 使用時の問題を[診断してトラブルシューティングする](troubleshoot-dot-net-sdk.md)。
 * [.NET v3](performance-tips-dotnet-sdk-v3-sql.md) と [.NET v2](performance-tips.md) のパフォーマンス ガイドラインを確認する。
+* Azure Cosmos DB Java v4 SDK 使用時の問題を[診断してトラブルシューティングする](troubleshoot-java-sdk-v4-sql.md)。
+* [Java v4 SDK](performance-tips-java-sdk-v4-sql.md) のパフォーマンス ガイドラインを確認する。

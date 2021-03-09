@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: a18cb583b246c3cfbf09f43b9921497de37a3613
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3688dc2db67c0c1343a74be4652cb52466ef762e
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88524270"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92520440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>チュートリアル:Azure Active Directory と TOPdesk - Public の統合
 
@@ -27,7 +27,7 @@ TOPdesk - Public と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントで TOPdesk - Public (シングル サインオン) に自動的にサインインするように設定できます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ TOPdesk - Public と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* TOPdesk - Public では、**SP** によって開始される SSO がサポートされます
+* TOPdesk - Public では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-topdesk---public-from-the-gallery"></a>ギャラリーから TOPdesk - Public を追加する
 
@@ -61,13 +61,13 @@ Azure AD への TOPdesk - Public の統合を構成するには、管理対象�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**TOPdesk - Public**」と入力して、結果パネルで **[TOPdesk - Public]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **TOPdesk - Public** 」と入力して、結果パネルで **[TOPdesk - Public]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の TOPdesk - Public](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、TOPdesk - Public で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、TOPdesk - Public で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと TOPdesk - Public 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 TOPdesk - Public で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -97,20 +97,20 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4.  **[基本的な SAML 構成]** セクションで、**サービス プロバイダー メタデータ ファイル**がある場合は、次の手順に従います。
+4.  **[基本的な SAML 構成]** セクションで、 **サービス プロバイダー メタデータ ファイル** がある場合は、次の手順に従います。
 
     >[!NOTE]
-    >チュートリアルで後述する **[Configure TOPdesk - Public Single Sign-On]** (TOPdesk - Public シングル サインオンの構成) セクションから**サービス プロバイダー メタデータ ファイル**を取得します。
+    >チュートリアルで後述する **[Configure TOPdesk - Public Single Sign-On]** (TOPdesk - Public シングル サインオンの構成) セクションから **サービス プロバイダー メタデータ ファイル** を取得します。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
     
     ![メタデータ ファイルをアップロードする](common/upload-metadata.png)
 
-    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
+    b. **フォルダー ロゴ** をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
     ![メタデータ ファイルを選択する](common/browse-upload-metadata.png)
 
-    c. メタデータ ファイルが正常にアップロードされると、**識別子**と**応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
+    c. メタデータ ファイルが正常にアップロードされると、 **識別子** と **応答 URL** の値が、[基本的な SAML 構成] セクションに自動的に設定されます。
 
     ![[TOPdesk - Public のドメインと URL] のシングル サインオン情報](common/sp-identifier-reply.png)
 
@@ -123,7 +123,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
     > [!NOTE] 
     > **[識別子]** と **[応答 URL]** の値が自動的に入力されない場合は、手動で入力する必要があります。 [識別子] については前述のパターンに従い、チュートリアルで後述する **[Configure TOPdesk - Public Single Sign-On]** (TOPdesk - Public シングル サインオンの構成) セクションから [応答 URL] の値を取得します。 この **[サインオン URL]** の値は実際のものとは異なるので、実際のサインオン URL で更新する必要があります。 この値を取得するには、[TOPdesk - Public クライアント サポート チーム](https://help.topdesk.com/saas/enterprise/user/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -159,7 +159,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
    
     a. **[Download]** をクリックしてパブリック メタデータ ファイルをダウンロードし、コンピューターにローカルに保存します。
    
-    b. ダウンロードしたメタデータ ファイルを開いて、**AssertionConsumerService** ノードを探します。
+    b. ダウンロードしたメタデータ ファイルを開いて、 **AssertionConsumerService** ノードを探します。
 
     ![AssertionConsumerService](./media/topdesk-public-tutorial/ic790619.png "AssertionConsumerService")
    
@@ -213,7 +213,7 @@ TOPdesk - Public で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「brittasimon@yourcompanydomain.extension」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -278,12 +278,12 @@ Azure AD ユーザーが TOPdesk - Public にサインインできるように�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [TOPdesk - Public] タイルをクリックすると、SSO を設定した TOPdesk - Public に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [TOPdesk - Public] タイルをクリックすると、SSO を設定した TOPdesk - Public に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

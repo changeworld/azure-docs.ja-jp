@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d99d211ec48a507b205c4cef21618054c11aec9b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 85f17897c0e3089a2d2bc5b172e98fa24e8085ff
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224861"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920442"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -37,7 +37,7 @@ ms.locfileid: "86224861"
 
 **手順 1** - 証明機関 (CA) プロバイダー  
 -   特定の会社 (たとえば、 Contoso など) の IT 管理者、PKI 管理者または CA のアカウントを管理する任意のユーザーとしてのオンボーディングは、Key Vault 証明書を使用するための前提条件です。  
-    次の CA は、現在 Key Vault と提携しているプロバイダーです。  
+    次の CA は、現在 Key Vault と提携しているプロバイダーです。 詳しくは[こちら](./create-certificate.md#partnered-ca-providers)をご覧ください   
     -   DigiCert - Key Vault は、DigiCert による OV TLS/SSL 証明書を提供します。  
     -   GlobalSign - Key Vault は、GlobalSign による OV TLS/SSL 証明書を提供します。  
 
@@ -50,9 +50,9 @@ ms.locfileid: "86224861"
     -   プロバイダー  
     -   資格情報 - CA アカウント資格情報。 各 CA が固有の特定のデータを持ちます。  
 
-    CA プロバイダーでのアカウントの作成について詳しくは、[Key Vault のブログ](https://aka.ms/kvcertsblog)で関連する投稿をご覧ください。  
+    CA プロバイダーでのアカウントの作成について詳しくは、[Key Vault のブログ](/archive/blogs/kv/manage-certificates-via-azure-key-vault)で関連する投稿をご覧ください。  
 
-**手順 3.1** - 通知用の[証明書連絡先](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)を設定します。 これは、Key Vault ユーザーの連絡先です。 Key Vault はこの手順を適用しません。  
+**手順 3.1** - 通知用の [証明書連絡先](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts)を設定します。 これは、Key Vault ユーザーの連絡先です。 Key Vault はこの手順を適用しません。  
 
 注 - 手順 3.1 までのこのプロセスは、1 回のみの操作です。  
 
@@ -82,7 +82,7 @@ ms.locfileid: "86224861"
       -   作成の遅延のため、キャンセル操作を開始できます。 キャンセルは、有効な場合と有効でない場合とがあります。  
 
 ### <a name="network-security-and-access-policies-associated-with-integrated-ca"></a>統合 CA に関連付けられたネットワーク セキュリティとアクセス ポリシー
-Key Vault サービスは要求を CA に送信します (送信トラフィック)。 したがって、ファイアウォール対応のキー コンテナーと完全に互換性があります。 Key Vault はアクセス ポリシーを CA と共有しません。 署名要求を個別に受け入れるように CA を構成する必要があります。 [信頼された CA の統合に関するガイド](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
+Key Vault サービスは要求を CA に送信します (送信トラフィック)。 したがって、ファイアウォール対応のキー コンテナーと完全に互換性があります。 Key Vault はアクセス ポリシーを CA と共有しません。 署名要求を個別に受け入れるように CA を構成する必要があります。 [信頼された CA の統合に関するガイド](./how-to-integrate-certificate-authority.md)
 
 ## <a name="import-a-certificate"></a>証明書のインポート  
  代わりに、証明書を Key Vault にインポートできます (PFX または PEM)。  
@@ -113,7 +113,6 @@ AKV では、2 つの PEM ベースの形式がサポートされています。
 
 -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
 
-PEM 形式の EC キーは現在サポートされていません。
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Key Vault と提携していない CA での証明書の作成  
  この方法では、Key Vault の提携プロバイダー以外の CA を使用できます。つまり、組織は任意の CA を使用できます。  

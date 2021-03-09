@@ -4,10 +4,10 @@ description: Azure DevTest Labs でカスタム タグを作成し、タグを�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270735"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボにタグを追加する

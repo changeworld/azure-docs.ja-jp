@@ -1,14 +1,17 @@
 ---
 title: Azure Migrate アプライアンスのアーキテクチャ
 description: サーバーの評価と移行に使用される Azure Migrate アプライアンスの概要について説明します。
+author: vikram1988
+ms.author: vibansa
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a83e044acc329572a5f3bfd4856f90379319ba1d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 42d4a722be25eec4b3e27012350346018fdba0f3
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88919745"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754115"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate アプライアンスのアーキテクチャ
 
@@ -51,8 +54,8 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 **操作** | **詳細** | **アクセス許可**
 --- | --- | ---
 **ソース プロバイダーの登録** | これらのリソース プロバイダーは、アプライアンスのセットアップ時に選択した次のサブスクリプションに登録されます。Microsoft.OffAzure、Microsoft.Migrate、および Microsoft.KeyVault。<br/><br/> リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。 | リソースプロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
-**Azure AD アプリ通信を作成する** | Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信 (認証と承認) に使用される Azure Active Directory (Azure AD) アプリが作成されます。<br/><br/> このアプリには、任意のリソースに対して Azure Resource Manager 呼び出しや RBAC アクセスを行うための特権はありません。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](tutorial-prepare-vmware.md#assign-permissions-to-create-azure-ad-apps)が必要です。
-**Azure AD アプリの作成 - Key Vault** | このアプリは、VMware VM を Azure にエージェントレスで移行する場合にのみ作成されます。<br/><br/> エージェントレス移行の目的でユーザーのサブスクリプション内に作成されたキー コンテナーにアクセスするためにのみ使用されます。<br/><br/> アプライアンスから検出が開始されると、(顧客のテナント内で作成された) Azure キー コンテナーで RBAC アクセスが可能になります。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](tutorial-prepare-vmware.md#assign-permissions-to-create-a-key-vault)が必要です。
+**Azure AD アプリ通信を作成する** | Azure Migrate によって、アプライアンス上で実行されているエージェントと Azure 上で実行されているそれぞれのサービスとの間の通信 (認証と承認) に使用される Azure Active Directory (Azure AD) アプリが作成されます。<br/><br/> このアプリには、任意のリソースに対して Azure Resource Manager 呼び出しや Azure RBAC アクセスを行うための特権はありません。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](./tutorial-discover-vmware.md#prepare-an-azure-user-account)が必要です。
+**Azure AD アプリの作成 - Key Vault** | このアプリは、VMware VM を Azure にエージェントレスで移行する場合にのみ作成されます。<br/><br/> エージェントレス移行の目的でユーザーのサブスクリプション内に作成されたキー コンテナーにアクセスするためにのみ使用されます。<br/><br/> アプライアンスから検出が開始されると、(顧客のテナント内で作成された) Azure キー コンテナーで Azure RBAC アクセスが可能になります。 | Azure Migrate でアプリを作成するには、[これらのアクセス許可](./tutorial-discover-vmware.md#prepare-an-azure-user-account)が必要です。
 
 
 
@@ -62,17 +65,17 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 
 ## <a name="discovery-and-collection-process"></a>検出と収集のプロセス
 
-![Architecture](./media/migrate-appliance-architecture/architecture.png)
+![Architecture](./media/migrate-appliance-architecture/architecture1.png)
 
 アプライアンスは、次のプロセスを使用して、vCenter サーバーおよび Hyper-V ホスト/クラスターと通信します。
 
 1. **検出を開始する**:
-    - Hyper-V アプライアンスで検出を開始すると、WinRM ポート 5985 (HTTP) および 5986 (HTTPS) で Hyper-V ホストとの通信が行われます。
+    - Hyper-V アプライアンスで検出を開始すると、WinRM ポート 5985 (HTTP) で Hyper-V ホストとの通信が行われます。
     - VMware アプライアンスで検出を開始すると、既定では TCP ポート 443 で vCenter サーバーとの通信が行われます。 vCenter サーバーが別のポートでリッスンしている場合は、それをアプライアンス Web アプリで構成できます。
 2. **メタデータとパフォーマンス データを収集する**:
-    - アプライアンスは、Common Information Model (CIM) セッションを使用して、ポート 5985 および 5986 で Hyper-V ホストから Hyper-V VM のデータを収集します。
+    - アプライアンスは、Common Information Model (CIM) セッションを使用して、ポート 5985 で Hyper-V ホストから Hyper-V VM のデータを収集します。
     - アプライアンスは、既定ではポート 443 を使用して通信を行い、vCenter サーバーから VMware VM のデータを収集します。
-3. **データを送信する**:アプライアンスは、SSL ポート 443 を介して、収集したデータを Azure Migrate Server Assessment と Azure Migrate Server Migration に送信します。 アプライアンスはインターネット経由で Azure に接続できます。または、ExpressRoute をパブリックまたは Microsoft ピアリングで使用できます。
+3. **データを送信する**:アプライアンスは、SSL ポート 443 を介して、収集したデータを Azure Migrate Server Assessment と Azure Migrate Server Migration に送信します。 アプライアンスは、インターネット経由または ExpressRoute 経由で Azure に接続できます (Microsoft ピアリングが必要です)。
     - パフォーマンス データの場合、アプライアンスはリアルタイムの使用状況データを収集します。
         - パフォーマンス データは、各パフォーマンス メトリックについて、VMware では 20 秒ごとに収集され、Hyper-V では 30 秒ごとに収集されます。
         - 収集されたデータは、10 分間に 1 つのデータ ポイントを作成するためにロールアップされます。
@@ -81,19 +84,13 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
     - Server Migration の場合、アプライアンスは VM データの収集を開始し、それを Azure にレプリケートします。
 4. **評価および移行する**:これで、Azure Migrate Server Assessment を使用して、アプライアンスによって収集されたメタデータから評価を作成できます。 また、Azure Migrate Server Migration を使用して VMware VM の移行を開始し、エージェントレスの VM レプリケーションを調整することもできます。
 
-
-
-
-
 ## <a name="appliance-upgrades"></a>アプライアンスのアップグレード
 
 アプライアンスで実行されている Azure Migrate エージェントが更新されると、アプライアンスがアップグレードされます。 アプライアンスでは既定で自動更新が有効になっているため、これは自動的に行われます。 エージェントを手動で更新するために、この既定の設定を変更できます。
 
 レジストリで自動更新をオフにするには、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance の "AutoUpdate" キーを 0 (ダブルワード) に設定します。
 
- 
 
 ## <a name="next-steps"></a>次のステップ
 
 アプライアンスのサポート マトリックスを[確認](migrate-appliance.md)します。
-

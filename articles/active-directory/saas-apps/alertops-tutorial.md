@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d820a3fc9b12a36a76e2eb887b32d27acc156c76
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 094b1a029c8e10abce3ca282de0cc99be34d313a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522340"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318856"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>チュートリアル:AlertOps の Azure Active Directory との統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88522340"
 * ユーザーが自分の Azure AD アカウントを使用して AlertOps に自動的にサインインできます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,11 +108,11 @@ AlertOps で Azure AD SSO を構成してテストするには、次の構成要
 
 4. 左側のナビゲーション パネルから **[Account settings]\(アカウント設定\)** をクリックします。
 
-    ![AlertOps の構成](./media/alertops-tutorial/configure1.png)
+    ![このスクリーンショットは、[Account Settings]\(アカウント設定\) がコールアウトされた状態の AlertOps メニューを示しています。](./media/alertops-tutorial/configure1.png)
 
 5. **[Subscription Settings]\(サブスクリプションの設定\)** ページで **[SSO]** を選択し、次の手順を実行します。
 
-    ![AlertOps の構成](./media/alertops-tutorial/configure2.png)
+    ![このスクリーンショットは、この手順で説明されている値が入力された状態の [Subscription Settings]\(サブスクリプションの設定\) ウィンドウの [S S O] を示しています。](./media/alertops-tutorial/configure2.png)
 
     a. **[Use Single Sign-On(SSO)]\(シングル サインオン (SSO) を使用する\)** チェック ボックスをオンにします。
 
@@ -164,15 +164,15 @@ AlertOps で Azure AD SSO を構成してテストするには、次の構成要
 
 2. 左側のナビゲーション パネルから、 **[Users]\(ユーザー\)** をクリックします。
 
-    ![AlertOps の構成](./media/alertops-tutorial/user1.png)
+    ![このスクリーンショットは、[Users]\(ユーザー\) がコールアウトされた状態の AlertOps メニューを示しています。](./media/alertops-tutorial/user1.png)
 
 3. **[Add User]\(ユーザーの追加\)** を選択します。
 
-    ![AlertOps の構成](./media/alertops-tutorial/user2.png)
+    ![このスクリーンショットは、[Add User]\(ユーザーの追加\) ボタンを備えた [Users]\(ユーザー\) ウィンドウを示しています。](./media/alertops-tutorial/user2.png)
 
 4. **[Add User]** ダイアログで、次の手順を実行します。
 
-    ![AlertOps の構成](./media/alertops-tutorial/user3.png)
+    ![このスクリーンショットは、この手順で説明されている値が入力された状態の [Add User]\(ユーザーの追加\) ペインを示しています。](./media/alertops-tutorial/user3.png)
 
     a. **[Login User Name]\(ログイン ユーザー名\)** ボックスにユーザー名を入力します (例: **Brittasimon**)。
 
@@ -190,12 +190,12 @@ AlertOps で Azure AD SSO を構成してテストするには、次の構成要
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネル上で [AlertOps] タイルを選択すると、SSO を設定した AlertOps に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [AlertOps] タイルを選択すると、SSO を設定した AlertOps に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

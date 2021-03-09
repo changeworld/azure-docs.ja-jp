@@ -13,23 +13,23 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdd26307dfdf75717a48eda034efeedd7465a63a
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1b4d1041b9d330227fadf31f6afc1804174ea2ad
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89277478"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340851"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Azure AD がオンプレミスのワークロードに対してクラウド ガバナンス管理を提供する方法
 
 Azure Active Directory (Azure AD) は、何百万もの組織に使用されている包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。 Azure AD は 10 億を超えるユーザー ID を保持しており、ユーザーはサインインすると、以下の両方に安全にアクセスすることができます。
 
-* 外部リソース。Microsoft Office 365、Azure portal、その他何千という サービスとしてのソフトウェア (SaaS) アプリケーションなどです。
+* Microsoft 365、Azure portal、およびその他の何千というサービスとしてのソフトウェア (SaaS) アプリケーションなどの外部リソース。
 * 内部リソース。組織の企業ネットワークとイントラネット上のアプリケーションや、自分の組織で開発したクラウド アプリケーションなどです。
 
 組織が "純粋なクラウド" である場合は Azure AD を使用できます。また、オンプレミス ワークロードがある場合は "ハイブリッド" デプロイとして使用できます。 Azure AD のハイブリッド デプロイは、組織が IT 資産をクラウドに移行するため、または既存のオンプレミス インフラストラクチャを新しいクラウド サービスに統合し続けるための戦略の一部になることがあります。
 
-従来、"ハイブリッド" な組織は、Azure AD を既存のオンプレミス インフラストラクチャの拡張機能と見なしてきました。 これらのデプロイでは、オンプレミス ID ガバナンス管理、Windows Server Active Directory、または他の社内ディレクトリ システムが制御ポイントとなり、ユーザーとグループはそれらのシステムから Azure AD などのクラウド ディレクトリに同期されます。 これらの ID は、クラウドに移行されると、Office 365、Azure、およびその他のアプリケーションで利用できるようになります。
+従来、"ハイブリッド" な組織は、Azure AD を既存のオンプレミス インフラストラクチャの拡張機能と見なしてきました。 これらのデプロイでは、オンプレミス ID ガバナンス管理、Windows Server Active Directory、または他の社内ディレクトリ システムが制御ポイントとなり、ユーザーとグループはそれらのシステムから Azure AD などのクラウド ディレクトリに同期されます。 これらの ID は、クラウドに移行されると、Microsoft 365、Azure、およびその他のアプリケーションで利用できるようになります。
 
 ![ID ライフサイクル](media/cloud-governed-management-for-on-premises//image1.png)
 
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) は、何百万もの組織に使用されて�
 
 ID ガバナンスを取り入れることで、組織はクラウド ガバナンス管理への移行が容易になり、IT 担当者はスケール、ゲストとの新たな課題への対処、およびオンプレミス インフラストラクチャの場合よりも深い分析情報と自動化を実現できます。 この新しい世界のガバナンスとは、組織内のリソースへのアクセスに対して、透明性、可視性、および適切な統制力を持つ組織の能力を意味します。 Azure AD を使用すると、セキュリティ運用および監査チームは、組織内の (どのデバイス上の) どのリソースに対してどのユーザーがアクセス権を持っているか (また持つべきか)、それらのユーザーがそのアクセス権を使用して何を実行するか、組織が会社または規制によるポリシーに従ってアクセス権を削除または制限する適切な統制力を持ち、使用しているかどうかを把握できます。
 
-新しい管理モデルは、SaaS と基幹業務 (LOB) アプリケーションの両方を使用している組織にとってメリットがあります。これは、こうしたアプリケーションへのアクセスの管理とセキュリティ保護がより簡単になるためです。 アプリケーションを Azure AD と統合することで、組織はクラウドとオンプレミスが元の ID 両方のアクセスを一貫して使用および管理できるようになります。 アプリケーションのライフサイクル管理はより自動化され、オンプレミスの ID 管理では簡単に達成できなかったアプリケーションの使用状況に関する豊富な分析情報が Azure AD から提供されます。 組織は、Azure AD、Office 365 グループ、および Teams のセルフサービス機能を使用して、アクセス管理とコラボレーションのためのグループを簡単に作成し、クラウド内のユーザーを追加または削除してコラボレーションとアクセス管理の要件を満たすことができます。
+新しい管理モデルは、SaaS と基幹業務 (LOB) アプリケーションの両方を使用している組織にとってメリットがあります。これは、こうしたアプリケーションへのアクセスの管理とセキュリティ保護がより簡単になるためです。 アプリケーションを Azure AD と統合することで、組織はクラウドとオンプレミスが元の ID 両方のアクセスを一貫して使用および管理できるようになります。 アプリケーションのライフサイクル管理はより自動化され、オンプレミスの ID 管理では簡単に達成できなかったアプリケーションの使用状況に関する豊富な分析情報が Azure AD から提供されます。 組織は、Azure AD、Microsoft 365 グループ、および Teams のセルフサービス機能を使用して、アクセス管理とコラボレーションのためのグループを簡単に作成し、クラウド内のユーザーを追加または削除してコラボレーションとアクセス管理の要件を満たすことができます。
 
 クラウド ガバナンス管理のための適切な Azure AD 機能の選択は、使用するアプリケーションと、それらのアプリケーションを Azure AD に統合する方法によって変わります。 以下のセクションでは、AD 統合アプリケーションと、フェデレーション プロトコルを使用するアプリケーション (SAML、OAuth、OpenID Connect など) に採用するアプローチについて概要を説明します。
 
@@ -77,7 +77,7 @@ Azure AD Premium には Microsoft Identity Manager も含まれていて、SAP�
 
 Azure AD では、必要に応じて[ゲスト ユーザー用のアカウントを自動的に AD に作成](../external-identities/hybrid-cloud-to-on-premises.md)し、ビジネス ゲストが別のパスワードを必要とせずにオンプレミスの AD 統合アプリケーションにアクセスできるようにすることができます。 組織は[ゲスト ユーザーの多要素認証 (MFA) ポリシー](../external-identities/conditional-access.md)を設定できるので、MFA チェックはアプリケーション プロキシ認証中に行われます。 また、クラウド B2B ユーザーに対して行われた[アクセスのレビュー](../governance/manage-guest-access-with-access-reviews.md)は、オンプレミス ユーザーにも適用されます。 たとえば、ライフサイクル管理ポリシーを使用してクラウド ユーザーが削除された場合、オンプレミス ユーザーも削除されます。
 
-**Active Directory アカウントの資格情報管理** Azure AD のセルフサービス パスワード リセットにより、パスワードを忘れたユーザーは再認証され、変更されたパスワードが[オンプレミスの Active Directory に書き込まれます](../authentication/concept-sspr-writeback.md)。 パスワードのリセット プロセスは、オンプレミス Active Directory のパスワード ポリシーも使用できます。ユーザーが自分のパスワードをリセットするとき、パスワードがオンプレミスの Active Directory ポリシーに準拠していることを確認してから、そのディレクトリにコミットします。 セルフサービス パスワード リセットの[デプロイ計画](https://aka.ms/deploymentplans/sspr)では、Web および Windows 統合エクスペリエンスを介してセルフサービス パスワード リセットをユーザーにロールアウトするためのベスト プラクティスの概要を示します。
+**Active Directory アカウントの資格情報管理** Azure AD のセルフサービス パスワード リセットにより、パスワードを忘れたユーザーは再認証され、変更されたパスワードが [オンプレミスの Active Directory に書き込まれます](../authentication/concept-sspr-writeback.md)。 パスワードのリセット プロセスは、オンプレミス Active Directory のパスワード ポリシーも使用できます。ユーザーが自分のパスワードをリセットするとき、パスワードがオンプレミスの Active Directory ポリシーに準拠していることを確認してから、そのディレクトリにコミットします。 セルフサービス パスワード リセットの[デプロイ計画](../authentication/howto-sspr-deployment.md)では、Web および Windows 統合エクスペリエンスを介してセルフサービス パスワード リセットをユーザーにロールアウトするためのベスト プラクティスの概要を示します。
 
 ![Azure AD SSPR のアーキテクチャ](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -89,7 +89,7 @@ Azure AD では、必要に応じて[ゲスト ユーザー用のアカウント
 
 ## <a name="cloud-governed-management-for-on-premises-federation-based-applications"></a>オンプレミスのフェデレーションベースのアプリケーションのクラウド ガバナンス管理
 
-オンプレミスの ID プロバイダーを既に使用している組織の場合、アプリケーションを Azure AD に移動することで、フェデレーション管理のアクセスがより安全になり、管理エクスペリエンスが簡単になります。 Azure AD では、Azure AD の条件付きアクセスを使用して、アプリケーションごとのきめ細かなアクセス制御 (Azure Multi-Factor Authentication を含む) を構成できます。 Azure AD は、アプリケーション固有のトークン署名証明書や構成可能な証明書の有効期限など、その他の機能をサポートしています。 組織は、これらの機能、ツール、およびガイダンスを使用して、オンプレミスの ID プロバイダーを廃止することができます。 一例を挙げると、Microsoft の IT 部門は、17,987 個のアプリケーションを Microsoft 社内の Active Directory フェデレーション サービス (AD FS) から Azure AD に移行しました。
+オンプレミスの ID プロバイダーを既に使用している組織の場合、アプリケーションを Azure AD に移動することで、フェデレーション管理のアクセスがより安全になり、管理エクスペリエンスが簡単になります。 Azure AD では、Azure AD の条件付きアクセスを使用して、アプリケーションごとのきめ細かなアクセス制御 (Azure AD Multi-Factor Authentication を含む) を構成できます。 Azure AD は、アプリケーション固有のトークン署名証明書や構成可能な証明書の有効期限など、その他の機能をサポートしています。 組織は、これらの機能、ツール、およびガイダンスを使用して、オンプレミスの ID プロバイダーを廃止することができます。 一例を挙げると、Microsoft の IT 部門は、17,987 個のアプリケーションを Microsoft 社内の Active Directory フェデレーション サービス (AD FS) から Azure AD に移行しました。
 
 ![Azure AD の進化](media/cloud-governed-management-for-on-premises/image5.png)
 
@@ -97,7 +97,7 @@ Azure AD では、必要に応じて[ゲスト ユーザー用のアカウント
 
 * ホワイト ペーパー「[Migrating Your Applications to Azure Active Directory (Azure Active Directory へのアプリケーションの移行)](https://aka.ms/migrateapps/whitepaper)」は、移行のメリットを示し、4 つのおおまかなフェーズ (検出、分類、移行、および継続的な管理) を経て移行するための計画を立案する方法について説明します。 プロセスの考え方とプロジェクトを実行しやすいピースに分割する方法について案内します。 ドキュメント全体に、作業中に役立つ重要なリソースへのリンクがあります。
 
-* ソリューション ガイド「[Migrating Application Authentication from Active Directory Federation Services to Azure Active Directory (Active Directory フェデレーション サービスから Azure Active Directory へのアプリケーション認証の移行)](https://aka.ms/migrateapps/adfssolutionguide)」では、アプリケーション移行プロジェクトの計画と実行の同じ 4 つのフェーズについて詳しく説明しています。 このガイドでは、アプリケーションを Active Directory フェデレーション サービス (AD FS) から Azure AD に移行するための具体的な目標に対してこれらのフェーズを適用する方法について説明します。
+* ソリューション ガイド「[Migrating Application Authentication from Active Directory Federation Services to Azure Active Directory (Active Directory フェデレーション サービスから Azure Active Directory へのアプリケーション認証の移行)](../manage-apps/migrate-adfs-apps-to-azure.md)」では、アプリケーション移行プロジェクトの計画と実行の同じ 4 つのフェーズについて詳しく説明しています。 このガイドでは、アプリケーションを Active Directory フェデレーション サービス (AD FS) から Azure AD に移行するための具体的な目標に対してこれらのフェーズを適用する方法について説明します。
 
 * [Active Directory フェデレーション サービスの移行準備スクリプト](https://aka.ms/migrateapps/adfstools)を既存のオンプレミスの Active Directory フェデレーション サービス (AD FS) サーバー上で実行し、Azure AD への移行のためのアプリケーションの準備状況を判断できます。
 
@@ -107,7 +107,7 @@ Azure AD では、必要に応じて[ゲスト ユーザー用のアカウント
 
 通常、IT 部門は、アクセス承認の決定を管理職意思決定者に委任します。 さらに、ユーザー自身が IT 部門に関与していることがあります。 たとえば、ヨーロッパで会社のマーケティング アプリケーションで顧客の機密データにアクセスするユーザーは、会社のポリシーを把握している必要があります。 また、ゲスト ユーザーは、招待されている組織のデータの処理要件を理解していない可能性もあります。
 
-組織では、[動的グループ](../users-groups-roles/groups-dynamic-membership.md)などのテクノロジを [SaaS アプリケーション](../saas-apps/tutorial-list.md)や、[System for Cross-Domain Identity Management (SCIM) 標準を使用して統合されたアプリケーション](../app-provisioning/use-scim-to-provision-users-and-groups.md)へのユーザー プロビジョニングと組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。 また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](../external-identities/hybrid-cloud-to-on-premises.md)を制御することもできます。 それにより、[Azure AD アクセス レビュー](../governance/access-reviews-overview.md)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。
+組織では、[動的グループ](../enterprise-users/groups-dynamic-membership.md)などのテクノロジを [SaaS アプリケーション](../saas-apps/tutorial-list.md)や、[System for Cross-Domain Identity Management (SCIM) 標準を使用して統合されたアプリケーション](../app-provisioning/use-scim-to-provision-users-and-groups.md)へのユーザー プロビジョニングと組み合わせて使用して、アクセスのライフサイクル プロセスを自動化することができます。 また、組織では、[オンプレミス アプリケーションへのアクセス権を持つゲスト ユーザー](../external-identities/hybrid-cloud-to-on-premises.md)を制御することもできます。 それにより、[Azure AD アクセス レビュー](../governance/access-reviews-overview.md)を定期的に利用して、これらのアクセス権を定期的にレビューすることができます。
 
 ## <a name="future-directions"></a>今後の方向性
 

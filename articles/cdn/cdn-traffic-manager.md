@@ -1,62 +1,81 @@
 ---
-title: Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバー
-description: Azure Traffic Manager を使用して、複数の Azure Content Delivery Network エンドポイントでフェールオーバーを設定する方法について説明します。
+title: Traffic Manager を使用した複数のエンドポイント間でのフェールオーバー
+titleSuffix: Azure Content Delivery Network
+description: Azure Traffic Manager を使用して、複数の Azure Content Delivery Network エンドポイントでフェールオーバーを構成する方法について説明します。
 services: cdn
-documentationcenter: ''
 author: asudbring
-manager: danielgi
-editor: ''
-ms.assetid: ''
 ms.service: azure-cdn
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 03/18/2019
+ms.date: 10/08/2020
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: b55e418393d6d446ae0d3557f2d1f4cf98d89293
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: d2d3bd43a0f17167e855d7e678a96cd79fe42237
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192501"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92777743"
 ---
-# <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバーの設定
+# <a name="failover-across-multiple-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数のエンドポイント間でのフェールオーバー
 
-Azure Content Delivery Network (CDN) を構成するときに、お客様のニーズに最適なプロバイダーと価格レベルを選択できます。 グローバルに分散したインフラストラクチャを備えた Azure CDN は、既定でローカルおよび地理的冗長性とグローバル負荷分散を作成して、サービスの可用性とパフォーマンスを向上させます。 コンテンツを提供するために場所を利用できない場合、要求は自動的に別の場所にルーティングされ、(要求の場所やサーバーの負荷などの要因に基づいて) 最適な POP が各クライアント要求を処理するために使用されます。 
+Azure Content Delivery Network (CDN) を構成するときに、お客様のニーズに最適なプロバイダーと価格レベルを選択できます。 
+
+グローバルに分散したインフラストラクチャを備えた Azure CDN は、既定でローカルおよび地理的冗長性とグローバル負荷分散を作成して、サービスの可用性とパフォーマンスを向上させます。 
+
+コンテンツを提供できない場所がある場合、要求は自動的に別の場所にルーティングされます。 各クライアント要求を処理するための最適なポイント オブ プレゼンス (POP) が使用されます。 自動ルーティングは、要求の場所とサーバーの負荷としての要因に基づいています。
  
-複数の CDN プロファイルがある場合は、Azure Traffic Manager を使用して可用性とパフォーマンスをさらに向上させることができます。 Azure CDN で Azure Traffic Manager を使用すると、フェールオーバー、geo 負荷分散、およびその他のシナリオで複数の CDN エンドポイント間で負荷分散を実現できます。 一般的なフェールオーバーのシナリオでは、すべてのクライアント要求が最初にプライマリ CDN プロファイルに転送されます。プロファイルを使用できない場合、プライマリ CDN プロファイルがオンラインに戻るまで、要求はセカンダリ CDN プロファイルに渡されます。 この方法で Azure Traffic Manager を使用することで、Web アプリケーションが常に利用可能になります。 
+複数の CDN プロファイルがある場合は、Azure Traffic Manager を使用して可用性とパフォーマンスをさらに向上させることができます。 
 
-この記事では、**Azure CDN Standard from Verizon** と **Azure CDN Standard from Akamai** のプロファイルを使用してフェールオーバーを設定する方法に関するガイダンスと例を示します。
+Azure CDN で Azure Traffic Manager を使用すると、以下について複数の CDN エンドポイント間で負荷分散を実現できます。
+ 
+* [フェールオーバー]
+* geo 負荷分散 
 
-## <a name="set-up-azure-cdn"></a>Azure CDN を設定する 
+一般的なフェールオーバー シナリオでは、すべてのクライアント要求がプライマリ CDN プロファイルに送られます。 
+
+このプロファイルが使用できない場合、要求はセカンダリ プロファイルに送られます。  プライマリ プロファイルがオンラインに戻ると、要求はこれを使用して再開されます。
+
+この方法で Azure Traffic Manager を使用することで、Web アプリケーションが常に利用可能になります。 
+
+この記事では、次からのプロファイルを使用してフェールオーバーを構成する方法のガイダンスと例を示します。 
+
+* **Azure CDN Standard from Verizon**
+* **Azure CDN Standard from Akamai**
+
+**Azure CDN from Microsoft** もサポートされています。
+
+## <a name="create-azure-cdn-profiles"></a>Azure CDN プロファイルを作成する
 異なるプロバイダーを使用した 2 つ以上の Azure CDN プロファイルとエンドポイントを作成します。
 
-1. 「[新しい CDN プロファイルを作成する](cdn-create-new-endpoint.md#create-a-new-cdn-profile)」の手順に従って、**Azure CDN Standard from Verizon** および **Azure CDN Standard from Akamai** プロファイルを作成します。
+1. 2 つの CDN プロファイルを作成します。
+    * **Azure CDN Standard from Verizon**
+    * **Azure CDN Standard from Akamai** 
+
+    「[新しい CDN エンドポイントの作成](cdn-create-new-endpoint.md#create-a-new-cdn-profile)」の手順に従ってプロファイルを作成します。
  
    ![複数の CDN プロファイル](./media/cdn-traffic-manager/cdn-multiple-profiles.png)
 
 2. 「[新しい CDN エンドポイントの作成](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint)」の手順に従って、新しいプロファイルのそれぞれに少なくとも 1 つのエンドポイントを作成します。
 
-## <a name="set-up-azure-traffic-manager"></a>Azure Traffic Manager を設定する
-Azure Traffic Manager プロファイルを作成し、CDN エンドポイント間での負荷分散を設定します。 
+## <a name="create-traffic-manager-profile"></a>Traffic Manager プロファイルを作成する
+Azure Traffic Manager プロファイルを作成し、CDN エンドポイント間での負荷分散を構成します。 
 
-1. 「[Traffic Manager プロファイルの作成](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile)」の手順に従って、Azure Traffic Manager プロファイルを作成します。 
+1. 「[Traffic Manager プロファイルの作成](../traffic-manager/quickstart-create-traffic-manager-profile.md)」の手順に従って、Azure Traffic Manager プロファイルを作成します。 
 
-    **[ルーティング方法]** で、 **[優先度]** を選択します。
+    * **[ルーティング方法]** で、 **[優先度]** を選択します。
 
-2. 「[Traffic Manager エンドポイントの追加](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-create-profile#add-traffic-manager-endpoints)」の手順に従って、Traffic Manager プロファイルに CDN エンドポイントを追加します
+2. 「[Traffic Manager エンドポイントの追加](../traffic-manager/quickstart-create-traffic-manager-profile.md#add-traffic-manager-endpoints)」の手順に従って、Traffic Manager プロファイルに CDN エンドポイントを追加します
 
-    **[Type]\(種類\)** で、 **[外部エンドポイント]** を選択します。 **[優先度]** に数字を入力します。
+    * **[Type]\(種類\)** で、 **[外部エンドポイント]** を選択します。
+    * **[優先度]** に数字を入力します。
 
-    たとえば、優先度が *1* の *cdndemo101akamai.azureedge.net* と優先度が *2* の *cdndemo101verizon.azureedge.net* を作成します。
+    たとえば、優先度が **1** の **cdndemo101akamai.azureedge.net** と優先度が **2** の **cdndemo101verizon.azureedge.net** を作成します。
 
    ![CDN Traffic Manager エンドポイント](./media/cdn-traffic-manager/cdn-traffic-manager-endpoints.png)
 
 
-## <a name="set-up-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Azure CDN と Azure Traffic Manager にカスタム ドメインを設定する
-CDN および Traffic Manager プロファイルを設定したら、次の手順に従って DNS マッピングを追加し、カスタム ドメインを CDN エンドポイントに登録します。 この例では、*cdndemo101.dustydogpetcare.online* というカスタム ドメイン名を使用します。
+## <a name="configure-custom-domain-on-azure-cdn-and-azure-traffic-manager"></a>Azure CDN と Azure Traffic Manager にカスタム ドメインを構成する
+CDN および Traffic Manager プロファイルを構成したら、次の手順に従って DNS マッピングを追加し、カスタム ドメインを CDN エンドポイントに登録します。 この例では、 **cdndemo101.dustydogpetcare.online** というカスタム ドメイン名を使用します。
 
 1. カスタム ドメインのドメイン プロバイダー (GoDaddy など) の Web サイトにアクセスし、2 つの DNS CNAME エントリを作成します。 
 
@@ -77,26 +96,29 @@ CDN および Traffic Manager プロファイルを設定したら、次の手�
     >
 
 
-2.  Azure CDN プロファイルから、最初の CDN エンドポイント (Akamai) を選択します。 **[カスタム ドメインの追加]** を選択して、「*cdndemo101.dustydogpetcare.online*」と入力します。 カスタム ドメインを検証するためのチェックマークが緑色で表示されていることを確認します。 
+2.  Azure CDN プロファイルから、最初の CDN エンドポイント (Akamai) を選択します。 **[カスタム ドメインの追加]** を選択して、「 **cdndemo101.dustydogpetcare.online** 」と入力します。 カスタム ドメインを検証するためのチェックマークが緑色で表示されていることを確認します。 
 
-    Azure CDN は、*cdnverify* サブドメインを使用して DNS マッピングを検証し、この登録プロセスを完了します。 詳細については、「[CNAME DNS レコードを作成する](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)」を参照してください。 この手順により、Azure CDN がカスタム ドメインを認識し、要求に応答できるようになります。
+    Azure CDN は、 **cdnverify** サブドメインを使用して DNS マッピングを検証し、この登録プロセスを完了します。 詳細については、「[CNAME DNS レコードを作成する](cdn-map-content-to-custom-domain.md#create-a-cname-dns-record)」を参照してください。 この手順により、Azure CDN がカスタム ドメインを認識し、要求に応答できるようになります。
     
     > [!NOTE]
     > **Akamai プロファイルの Azure CDN** で TLS を有効にするには、cname でカスタム ドメインをエンドポイントに直接指定する必要があります。 TLS を有効にするための cdnverify はまだサポートされていません。 
     >
 
-3.  カスタム ドメインのドメイン プロバイダーの Web サイトに戻り、作成した最初の DNS マッピングを更新して、カスタム ドメインが 2 番目の CDN エンドポイントにマップされるようにします。
+3.  カスタム ドメインのドメイン プロバイダーの Web サイトに戻ります。 作成した最初の DNS マッピングを更新します。 カスタム ドメインを 2 番目の CDN エンドポイントにマップします。
                              
     次に例を示します。 
 
     `cdnverify.cdndemo101.dustydogpetcare.online  CNAME  cdnverify.cdndemo101verizon.azureedge.net`  
 
-4. Azure CDN プロファイルから、2 番目の CDN エンドポイント (Verizon) を選択し、手順 2 を繰り返します。 **[カスタム ドメインの追加]** を選択して、「*cdndemo101.dustydogpetcare.online*」と入力します。
+4. Azure CDN プロファイルから、2 番目の CDN エンドポイント (Verizon) を選択し、手順 2 を繰り返します。 **[カスタム ドメインの追加]** を選択して、「 **cdndemo101.dustydogpetcare.online** 」と入力します。
  
-これらの手順を完了すると、フェールオーバー機能を備えたマルチ CDN サービスが Azure Traffic Manager で設定されます。 カスタム ドメインからテスト URL にアクセスできます。 機能をテストするには、プライマリ CDN エンドポイントを無効にして、要求がセカンダリ CDN エンドポイントに正しく渡されることを確認します。 
+これらの手順を完了すると、フェールオーバー機能を備えたマルチ CDN サービスが Azure Traffic Manager で構成されます。 
+
+カスタム ドメインからテスト URL にアクセスできます。 
+
+機能をテストするには、プライマリ CDN エンドポイントを無効にして、要求がセカンダリ CDN エンドポイントに正しく渡されることを確認します。 
 
 ## <a name="next-steps"></a>次のステップ
-他のルーティング方法 (地理的な方法など) を設定して、異なる CDN エンドポイント間で負荷を分散させることもできます。 詳細については、「[Traffic Manager を使用した地理的トラフィック ルーティング方法の構成](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-configure-geographic-routing-method)」を参照してください。
+他のルーティング方法 (地理的な方法など) を構成して、異なる CDN エンドポイント間で負荷を分散させることができます。 
 
-
-
+詳細については、「[Traffic Manager を使用した地理的トラフィック ルーティング方法の構成](../traffic-manager/traffic-manager-configure-geographic-routing-method.md)」を参照してください。

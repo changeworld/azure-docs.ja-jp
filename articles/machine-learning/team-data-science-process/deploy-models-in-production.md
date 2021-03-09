@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89ea1e991df46b4e4d23305b6118980b80c2f917
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722239"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321189"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>ビジネス意思決定を行う上で有効な役割を果たすために、実稼働環境にモデルを展開します
 
@@ -26,15 +26,15 @@ ms.locfileid: "76722239"
 モデルを運用環境にデプロイするには、さまざまな方法とプラットフォームがあります。 いくつかの選択肢を次に示します。
 
 - [Azure Machine Learning を使用するモデルのデプロイ先](../how-to-deploy-and-where.md)
-- [SQL server でのモデルのデプロイ](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
-- [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
+- [SQL server でのモデルのデプロイ](/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Microsoft Machine Learning Server](/sql/advanced-analytics/r/r-server-standalone)
 
 >[!NOTE]
 >デプロイの前に、モデル スコアリングの待機時間が、運用環境で使用できるほど十分に低いことを保証する必要があります。
 >
 
 >[!NOTE]
->Azure Machine Learning Studio を使用したデプロイについては、「[Azure Machine Learning Web サービスをデプロイする](../studio/deploy-a-machine-learning-web-service.md)」をご覧ください。
+>Azure Machine Learning Studio を使用したデプロイについては、「[Azure Machine Learning Web サービスをデプロイする](../classic/deploy-a-machine-learning-web-service.md)」をご覧ください。
 >
 
 ## <a name="ab-testing"></a>A/B テスト
@@ -43,4 +43,4 @@ ms.locfileid: "76722239"
  
 ## <a name="next-steps"></a>次のステップ
 
-また、**特定のシナリオ**のプロセスにおけるすべての手順を説明するチュートリアルも用意されています。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
+また、 **特定のシナリオ** のプロセスにおけるすべての手順を説明するチュートリアルも用意されています。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。

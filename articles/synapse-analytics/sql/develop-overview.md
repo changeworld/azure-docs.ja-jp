@@ -6,26 +6,26 @@ author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 85b0137f8d89def2f38ffe82199950c9158888d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d47b4847a12b63532e44a8a1a47101dd065f811b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070054"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446588"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL 機能の設計上の決定とコーディング技法
-この記事では、Synapse SQL の SQL プールと SQL オンデマンド (プレビュー) 機能に関するリソースの一覧を紹介します。 推奨される記事は、次の 2 つのセクションに分かれています。重要な設計上の決定と、開発およびコーディング技法。
+この記事では、Synapse SQL の専用 SQL プールとサーバーレス SQL プール の機能に関するリソースの一覧を紹介します。 推奨される記事は、次の 2 つのセクションに分かれています。重要な設計上の決定と、開発およびコーディング技法。
 
-これらの記事の目的は、Synapse Analytics 内の Synapse SQL コンポーネントの最適な技術的手法を開発するために役立つことです。
+これらの記事の目的は、Azure Synapse Analytics 内の Synapse SQL コンポーネントの最適な技術的手法を開発するために役立つことです。
 
 ## <a name="key-design-decisions"></a>主要な設計上の決定
 以下の記事では、Synapse SQL 開発の概念と設計上の決定について説明します。
 
-| [アーティクル] | SQL プール | SQL オンデマンド |
+| [アーティクル] | 専用 SQL プール | サーバーレス SQL プール |
 | ------- | -------- | ------------- |
 | [接続](connect-overview.md)                    | ○ | ○ |
 | [リソース クラスとコンカレンシー](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | [はい]    | いいえ |
@@ -44,7 +44,7 @@ ms.locfileid: "87070054"
 
 次に、開発のための特定のコーディング技法、ヒント、およびレコメンデーションに焦点を合わせた重要な記事を紹介します。
 
-| [アーティクル] | SQL プール | SQL オンデマンド |
+| [アーティクル] | 専用 SQL プール | サーバーレス SQL プール |
 | ------- | -------- | ------------- |
 | [ストアド プロシージャ](develop-stored-procedures.md)  | [はい]                | いいえ                      |
 | [ラベル](develop-label.md)                           | [はい]                | いいえ                      |

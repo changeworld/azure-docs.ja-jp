@@ -4,18 +4,18 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1085daca153431a28fdcc2583d0e31308214bf91
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010978"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95561177"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory を使用して認証する
 
 > [!IMPORTANT]
-> 1. 現時点では、Computer Vision API、Face API、Text Analytics API、Immersive Reader、Form Recognizer、Anomaly Detector、Bing Custom Search を除くすべての Bing **のみ**において、Azure Active Directory (AAD) を使用した認証がサポートされています。
-> 2. AAD 認証は常に、Azure リソースのカスタム サブドメイン名と共に使用される必要があります。 [リージョン エンドポイント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints)では、AAD 認証はサポートされません。
+> 1. 現時点では、Computer Vision API、Face API、Text Analytics API、Immersive Reader、Form Recognizer、Anomaly Detector、Bing Custom Search を除くすべての Bing **のみ** において、Azure Active Directory (AAD) を使用した認証がサポートされています。
+> 2. AAD 認証は常に、Azure リソースのカスタム サブドメイン名と共に使用される必要があります。 [リージョン エンドポイント](../articles/cognitive-services/cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)では、AAD 認証はサポートされません。
 
 前のセクションでは、Azure Cognitive Services に対して単一サービスまたはマルチサービスのサブスクリプション キーを使用して認証する方法を説明しました。 これらのキーを使用すると、開発を迅速かつ簡単に開始できますが、Azure ロールベースのアクセス制御 (Azure RBAC) を必要とするより複雑なシナリオでは不十分です。 Azure Active Directory (AAD) を使用して認証を行うために何が必要なのかを確認しましょう。
 
@@ -23,21 +23,21 @@ ms.locfileid: "88010978"
 
 ### <a name="create-a-resource-with-a-custom-subdomain"></a>カスタム サブドメインを使用してリソースを作成する
 
-最初の手順で、カスタム サブドメインを作成します。 カスタム サブドメイン名のない既存の Cognitive Services リソースを使用する場合は、[Cognitive Services カスタム サブドメイン](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources)に関する記事の手順に従って、リソースのカスタム サブドメインを有効にします。
+最初の手順で、カスタム サブドメインを作成します。 カスタム サブドメイン名のない既存の Cognitive Services リソースを使用する場合は、[Cognitive Services カスタム サブドメイン](../articles/cognitive-services/cognitive-services-custom-subdomains.md#how-does-this-impact-existing-resources)に関する記事の手順に従って、リソースのカスタム サブドメインを有効にします。
 
-1. まず、Azure Cloud Shell を開きます。 [サブスクリプションを選択](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0)します。
+1. まず、Azure Cloud Shell を開きます。 [サブスクリプションを選択](/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0)します。
 
    ```powershell-interactive
    Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
-2. 次に、カスタム サブドメインを使用して [Cognitive Services リソースを作成](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0)します。 サブドメイン名は、グローバルに一意である必要があり、"."、"!"、"," などの特殊文字を含めることはできません。
+2. 次に、カスタム サブドメインを使用して [Cognitive Services リソースを作成](/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0)します。 サブドメイン名は、グローバルに一意である必要があり、"."、"!"、"," などの特殊文字を含めることはできません。
 
    ```powershell-interactive
    $account = New-AzCognitiveServicesAccount -ResourceGroupName <RESOURCE_GROUP_NAME> -name <ACCOUNT_NAME> -Type <ACCOUNT_TYPE> -SkuName <SUBSCRIPTION_TYPE> -Location <REGION> -CustomSubdomainName <UNIQUE_SUBDOMAIN>
    ```
 
-3. 成功すると、**エンドポイント**にリソースに固有のサブドメイン名が表示されます。
+3. 成功すると、**エンドポイント** にリソースに固有のサブドメイン名が表示されます。
 
 
 ### <a name="assign-a-role-to-a-service-principal"></a>サービス プリンシパルにロールを割り当てる
@@ -47,7 +47,7 @@ ms.locfileid: "88010978"
 > [!NOTE]
 > Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
 
-1. まず、[AAD アプリケーション](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)を登録してみましょう。
+1. まず、[AAD アプリケーション](/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)を登録してみましょう。
 
    ```powershell-interactive
    $SecureStringPassword = ConvertTo-SecureString -String <YOUR_PASSWORD> -AsPlainText -Force
@@ -57,7 +57,7 @@ ms.locfileid: "88010978"
 
    次の手順では、**ApplicationId** が必要になります。
 
-2. 次に、AAD アプリケーションの[サービス プリンシパルを作成](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0)する必要があります。
+2. 次に、AAD アプリケーションの[サービス プリンシパルを作成](/powershell/module/az.resources/new-azadserviceprincipal?view=azps-1.8.0)する必要があります。
 
    ```powershell-interactive
    New-AzADServicePrincipal -ApplicationId <APPLICATION_ID>
@@ -66,7 +66,7 @@ ms.locfileid: "88010978"
    >[!NOTE]
    > Azure portal でアプリケーションを登録したら、この手順は完了です。
 
-3. 最後の手順では、(リソースにスコープが設定された) サービス プリンシパルに ["Cognitive Services ユーザー" ロールを割り当て](https://docs.microsoft.com/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0)ます。 ロールを割り当てて、このリソースにサービス プリンシパル アクセス権を付与します。 同じサービス プリンシパル アクセスをサブスクリプション内の複数のリソースに対して許可できます。
+3. 最後の手順では、(リソースにスコープが設定された) サービス プリンシパルに ["Cognitive Services ユーザー" ロールを割り当て](/powershell/module/az.Resources/New-azRoleAssignment?view=azps-1.8.0)ます。 ロールを割り当てて、このリソースにサービス プリンシパル アクセス権を付与します。 同じサービス プリンシパル アクセスをサブスクリプション内の複数のリソースに対して許可できます。
    >[!NOTE]
    > アプリケーションの ObjectId ではなく、サービス プリンシパルの ObjectId が使用されます。
    > ACCOUNT_ID は、作成した Cognitive Services アカウントの Azure リソース ID になります。 Azure portal でリソースの "プロパティ" から Azure リソース ID を検索できます。
@@ -119,16 +119,16 @@ ms.locfileid: "88010978"
 
 ## <a name="authorize-access-to-managed-identities"></a>マネージド ID へのアクセスを認証する
  
-Cognitive Services では、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID では、Azure Virtual Machines (VMs)、Function Apps、Virtual Machine Scale Sets などのサービスで実行されているアプリケーションから Cognitive Services リソースへのアクセスを、Azure AD 資格情報を使用して承認することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。  
+Cognitive Services では、[Azure リソースのマネージド ID](../articles/active-directory/managed-identities-azure-resources/overview.md) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID では、Azure Virtual Machines (VMs)、Function Apps、Virtual Machine Scale Sets などのサービスで実行されているアプリケーションから Cognitive Services リソースへのアクセスを、Azure AD 資格情報を使用して承認することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。  
 
 ### <a name="enable-managed-identities-on-a-vm"></a>VM 上のマネージド ID を有効にする
 
 Azure リソースのマネージド ID を使用して、ご利用の VM から Cognitive Services リソースへのアクセスを承認するには、VM 上で Azure リソースのマネージド ID を有効にする必要があります。 Azure リソースのマネージド ID を有効にする方法については、次を参照してください。
 
-- [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
-- [Azure PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-- [Azure CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
-- [Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
-- [Azure Resource Manager クライアント ライブラリ](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
+- [Azure Portal](../articles/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)
+- [Azure PowerShell](../articles/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure CLI](../articles/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Azure Resource Manager テンプレート](../articles/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Azure Resource Manager クライアント ライブラリ](../articles/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-マネージド ID の詳細については、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) に関するページを参照してください。
+マネージド ID の詳細については、[Azure リソースのマネージド ID](../articles/active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。

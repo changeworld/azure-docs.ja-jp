@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
-ms.openlocfilehash: 2fa969b6dd89000b4d669bc5d42aa09b3cf3a2b2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84751691"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90907852"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Latent Dirichlet Allocation モジュール
 
-この記事では Azure Machine Learning デザイナー (プレビュー) の Latent Dirichlet Allocation モジュールを使用して、他の方法では分類されないテキストをカテゴリにグループ化する方法について説明します。 
+この記事では Azure Machine Learning デザイナーの Latent Dirichlet Allocation モジュールを使用して、他の方法では分類されないテキストをカテゴリにグループ化する方法について説明します。 
 
 Latent Dirichlet Allocation (LDA) は、類似したテキストを検索するために自然言語処理でよく使用されます。 もう 1 つの一般的な用語は "*トピック モデリング*" です。
 
@@ -75,7 +75,7 @@ LDA は、通常、分類の方法ではありません。 しかし、生成的
     + 特徴トピック マトリックス内の値は、`P(word|topic)` の確率として表されます。
 
     > [!NOTE] 
-    > Azure Machine Learning デザイナー (プレビュー) では、scikit-learn ライブラリで、バージョン 0.19 からの正規化されていない *doc_topic_distr* 出力がサポートされなくなりました。 このモジュールでは、**Normalize** パラメーターは "*機能トピック マトリックス*" 出力にのみ適用できます。 "*変換されたデータセット*" 出力は常に正規化されます。
+    > Azure Machine Learning デザイナーの scikit-learn ライブラリは、バージョン 0.19 からの正規化されていない *doc_topic_distr* 出力をサポートしなくなりました。 このモジュールでは、**Normalize** パラメーターは "*機能トピック マトリックス*" 出力にのみ適用できます。 "*変換されたデータセット*" 出力は常に正規化されます。
 
 7. 次の高度なパラメーターを設定する場合は、 **[Show all options]\(すべてのオプションを表示\)** オプションを選択し、**TRUE** に設定します。
 

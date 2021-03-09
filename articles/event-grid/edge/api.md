@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171756"
 ---
 # <a name="rest-api"></a>REST API
@@ -693,7 +693,7 @@ TopicName:
 * connectionString:共有アクセス ポリシーを介して生成された、対象となる特定のイベント ハブの接続文字列。
 
     >[!NOTE]
-    > 接続文字列はエンティティ固有である必要があります。 名前空間の接続文字列を使用すると機能しません。 エンティティ固有の接続文字列を生成するには、Azure portal で発行する特定のイベント ハブに移動し、 **[Shared access policies]\(共有アクセス ポリシー\)** をクリックして、新しいエンティティ固有の接続文字列を生成します。
+    > 接続文字列はエンティティ固有である必要があります。 名前空間の接続文字列を使用すると機能しません。 エンティティ固有の接続文字列を生成するには、Azure portal で発行する特定のイベント ハブに移動し、 **[Shared access policies]/(共有アクセス ポリシー/)** をクリックして、新しいエンティティ固有の接続文字列を生成します。
 
     ```json
         {
@@ -715,7 +715,7 @@ Service Bus キューに発行するには、`endpointType` を `serviceBusQueue
 * connectionString:共有アクセス ポリシーを介して生成された、対象となる特定の Service Bus キューの接続文字列。
 
     >[!NOTE]
-    > 接続文字列はエンティティ固有である必要があります。 名前空間の接続文字列を使用すると機能しません。 エンティティ固有の接続文字列を生成するには、Azure portal で発行する特定の Service Bus キューに移動し、 **[Shared access policies]\(共有アクセス ポリシー\)** をクリックして、新しいエンティティ固有の接続文字列を生成します。
+    > 接続文字列はエンティティ固有である必要があります。 名前空間の接続文字列を使用すると機能しません。 エンティティ固有の接続文字列を生成するには、Azure portal で発行する特定の Service Bus キューに移動し、 **[Shared access policies]/(共有アクセス ポリシー/)** をクリックして、新しいエンティティ固有の接続文字列を生成します。
 
     ```json
         {
@@ -737,7 +737,7 @@ Service Bus トピックに発行するには、`endpointType` を `serviceBusTo
 * connectionString:共有アクセス ポリシーを介して生成された、対象となる特定の Service Bus トピックの接続文字列。
 
     >[!NOTE]
-    > 接続文字列はエンティティ固有である必要があります。 名前空間の接続文字列を使用すると機能しません。 エンティティ固有の接続文字列を生成するには、Azure portal で発行する特定の Service Bus トピックに移動し、 **[Shared access policies]\(共有アクセス ポリシー\)** をクリックして、新しいエンティティ固有の接続文字列を生成します。
+    > 接続文字列はエンティティ固有である必要があります。 名前空間の接続文字列を使用すると機能しません。 エンティティ固有の接続文字列を生成するには、Azure portal で発行する特定の Service Bus トピックに移動し、 **[Shared access policies]/(共有アクセス ポリシー/)** をクリックして、新しいエンティティ固有の接続文字列を生成します。
 
     ```json
         {

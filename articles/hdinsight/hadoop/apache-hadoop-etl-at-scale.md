@@ -1,19 +1,16 @@
 ---
 title: 大規模な抽出、変換、および読み込み (ETL) - Azure HDInsight
 description: HDInsight で Apache Hadoop によって抽出、変換、および読み込みを使用する方法について説明します。
-author: ashishthaps
-ms.author: ashishth
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: e048365ca589d452385607b902ee6b285de8165f
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: fc488cecb762ff13bcb2999bb06521ebb70b44fb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084122"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946587"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -48,7 +45,7 @@ Azure Data Factory を使用すると、以下を行うことができます。
 
 1. データ駆動型ワークフローを作成およびスケジュールする。 これらのパイプラインによって、さまざまなデータ ストアからデータが取り込まれます。
 1. HDInsight や Hadoop などのコンピューティング サービスを使用してデータを処理および変換する。 この手順では、Spark、Azure Data Lake Analytics、Azure Batch、または Azure Machine Learning も使用できます。
-1. BI アプリケーションから利用できるよう、Azure SQL Data Warehouse などのデータ ストアに出力データをパブリッシュする。
+1. BI アプリケーションから利用できるよう、Azure Synapse Analytics などのデータ ストアに出力データを公開する。
 
 Azure Data Factory の詳細については、[こちらのドキュメント](../../data-factory/introduction.md)を参照してください。
 
@@ -82,13 +79,13 @@ Data Lake Storage は、Azure Event Hubs または Apache Storm を使用した�
 
 - **Azure ExpressRoute:** Azure データセンターとオンプレミスのインフラストラクチャの間でプライベート接続を作成します。 これらの接続により、大量のデータを転送するための信頼性の高いオプションが提供されます。 詳細については、 [Azure ExpressRoute のドキュメント](../../expressroute/expressroute-introduction.md)をご覧ください。
 
-- **ハード ディスク ドライブからのデータのアップロード:** [Azure Import/Export サービス](../../storage/common/storage-import-export-service.md)を使用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送できます。 データは最初に Azure BLOB Storage にアップロードされます。 その後、Azure Data Factory または AdlCopy ツールを使用して、Azure BLOB Storage から Data Lake Storage にデータをコピーできます。
+- **ハード ディスク ドライブからのデータのアップロード:** [Azure Import/Export サービス](../../import-export/storage-import-export-service.md)を使用して、データが格納されたハード ディスク ドライブを Azure データ センターに発送できます。 データは最初に Azure BLOB Storage にアップロードされます。 その後、Azure Data Factory または AdlCopy ツールを使用して、Azure BLOB Storage から Data Lake Storage にデータをコピーできます。
 
-### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 
-Azure SQL Data Warehouse は、準備された結果を格納するための適切な選択肢です。 Azure HDInsight を使用して、それらのサービスを SQL Data Warehouse に対して実行できます。
+Azure Synapse Analytics は、準備された結果を格納するための適切な選択肢です。 Azure HDInsight を使用して、それらのサービスを Azure Synapse Analytics に対して実行できます。
 
-Azure SQL Data Warehouse は、分析ワークロード用に最適化されたリレーショナル データベース ストアです。 これにより、パーティション分割されたテーブルに基づいてスケーリングが行われます。 テーブルは、複数のノードにパーティション分割できます。 ノードは作成時に選択されます。 それらは後でスケーリングできますが、データ移動が必要になるのはアクティブ プロセスです。 詳細については、[SQL Data Warehouse でのコンピューティングの管理](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)に関する記事を参照してください。
+Azure Synapse Analytics は、分析ワークロード用に最適化されたリレーショナル データベース ストアです。 これにより、パーティション分割されたテーブルに基づいてスケーリングが行われます。 テーブルは、複数のノードにパーティション分割できます。 ノードは作成時に選択されます。 それらは後でスケーリングできますが、データ移動が必要になるのはアクティブ プロセスです。 詳細については、「[Azure Synapse Analytics でのコンピューティングの管理](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」をご覧ください。
 
 ### <a name="apache-hbase"></a>Apache HBase
 

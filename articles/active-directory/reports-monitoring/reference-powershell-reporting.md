@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 9ff923d0231a1b00493a54996c2fcd489012bbe7
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89231131"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862039"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>レポート用の Azure AD PowerShell コマンドレット
 
@@ -36,7 +36,7 @@ ms.locfileid: "89231131"
 Install-module AzureADPreview
 ```
 
-PowerShell を使用して Azure AD に接続する方法の詳細については、[Azure AD PowerShell for Graph](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) に関する記事を参照してください。  
+PowerShell を使用して Azure AD に接続する方法の詳細については、[Azure AD PowerShell for Graph](/powershell/azure/active-directory/install-adv2) に関する記事を参照してください。  
 
 Azure Active Directory (Azure AD) レポートを使用すると、自分の方向のすべての書き込み操作 (監査ログ) および認証データ (サインイン ログ) に関するアクティビティの詳細を取得できます。 この情報は MS Graph API を使用して入手できますが、レポート用の Azure AD PowerShell コマンドレットを使用して、同じデータを取得できるようになりました。
 
@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、自分の方�
 
 次の図は、このコマンドの例を示しています。 
 
-![[Data Summary]\(データの概要\) ボタン](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![スクリーンショットには、Get-AzureADAuditDirectoryLogs コマンドの結果が示されています。](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) レポートを使用すると、自分の方�
 
 次の図は、このコマンドの例を示しています。 
 
-![[Data Summary]\(データの概要\) ボタン](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![スクリーンショットには、Get-AzureADAuditSignInLogs コマンドの結果が示されています。](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 

@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 02/21/2020
 ms.author: rdhillon
 ms.openlocfilehash: bdf0e87c92a55d0dbb5bbe34334a6de4580cb350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708180"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004961"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Azure portal を使用してサービス エンドポイント ポリシーを作成、変更、または削除する
 
@@ -93,7 +93,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 5. ポリシーをサブネットに関連付ける
 
 >[!WARNING] 
-> 指定されたサブネットにポリシーを関連付ける前に、サブネットからアクセスするすべてのリソースがポリシーの定義に追加されていることを確認します。 ポリシーが関連付けられると、*許可された*リソースへのアクセスのみがサービス エンドポイントで許可されます。 
+> 指定されたサブネットにポリシーを関連付ける前に、サブネットからアクセスするすべてのリソースがポリシーの定義に追加されていることを確認します。 ポリシーが関連付けられると、*許可された* リソースへのアクセスのみがサービス エンドポイントで許可されます。 
 >
 > また、サービス エンドポイント ポリシーに関連付けられているサブネットに、マネージド Azure サービスが存在しないことを確認します。
 

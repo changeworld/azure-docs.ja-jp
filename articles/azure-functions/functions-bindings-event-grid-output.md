@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
-ms.openlocfilehash: 6bd4d5d82af213063b2000693e46d22744604480
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 888afdc2764fed9f0b2c8b548c3e2b1c48e9a31e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214120"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094678"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions の Azure Event Grid 出力バインディング
 
@@ -100,6 +100,10 @@ public static void Run(TimerInfo myTimer, ICollector<EventGridEvent> outputEvent
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Event Grid 出力バインディングは、Java では使用できません。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイル内の Event Grid 出力バインディング データを示しています。
@@ -160,6 +164,70 @@ module.exports = function(context) {
 };
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+次の例は、Event Grid イベント メッセージを出力するように関数を構成する方法を示しています。 `type` が `eventGrid` に設定されているセクションでは、Event Grid 出力バインディングを確立するのに必要な値が構成されます。
+
+```powershell
+{
+  "bindings": [
+    {
+      "type": "eventGrid",
+      "name": "outputEvent",
+      "topicEndpointUri": "MyEventGridTopicUriSetting",
+      "topicKeySetting": "MyEventGridTopicKeySetting",
+      "direction": "out"
+    },
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "Request",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "Response"
+    }
+  ]
+}
+```
+
+関数では、`Push-OutputBinding` を使用して、Event Grid 出力バインディングを介してカスタム トピックにイベントを送信します。
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$message = $Request.Query.Message
+
+Push-OutputBinding -Name outputEvent -Value  @{
+    id = "1"
+    EventType = "testEvent"
+    Subject = "testapp/testPublish"
+    EventTime = "2020-08-27T21:03:07+00:00"
+    Data = @{
+        Message = $message
+    }
+    DataVersion = "1.0"
+}
+
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = 200
+    Body = "OK"
+})
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Python 関数](functions-reference-python.md)を示しています。 次に、`topicEndpointUri` によって指定されたとおり、イベントがカスタム トピックに送信されます。
@@ -194,7 +262,6 @@ import logging
 import azure.functions as func
 import datetime
 
-
 def main(eventGridEvent: func.EventGridEvent, 
          outputEvent: func.Out[func.EventGridOutputEvent]) -> None:
 
@@ -209,10 +276,6 @@ def main(eventGridEvent: func.EventGridEvent,
             event_time=datetime.datetime.utcnow(),
             data_version="1.0"))
 ```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Event Grid 出力バインディングは、Java では使用できません。
 
 ---
 
@@ -239,17 +302,21 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 属性は、C# スクリプトではサポートされていません。
 
+# <a name="java"></a>[Java](#tab/java)
+
+Event Grid 出力バインディングは、Java では使用できません。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 属性は、JavaScript ではサポートされていません。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+属性は、PowerShell ではサポートされていません。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Event Grid 出力バインディングは、Python では使用できません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-Event Grid 出力バインディングは、Java では使用できません。
 
 ---
 
@@ -280,17 +347,21 @@ Event Grid 出力バインディングは、Java では使用できません。
 
 `out EventGridEvent paramName` などのメソッド パラメーターを使用してメッセージを送信します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 複数のメッセージを書き込むには、`out EventGridEvent` の代わりに `ICollector<EventGridEvent>` または `IAsyncCollector<EventGridEvent>` を使用します。
 
+# <a name="java"></a>[Java](#tab/java)
+
+Event Grid 出力バインディングは、Java では使用できません。
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `context.bindings.<name>` を使用して出力イベントにアクセスします。`<name>` は *function.json* の `name` プロパティで指定された値です。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+`Push-OutputBinding` コマンドレットを使用して出力イベントにアクセスし、Event Grid 出力バインディングにイベントを送信します。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Event Grid 出力バインディングは、Python では使用できません。
-
-# <a name="java"></a>[Java](#tab/java)
-
-Event Grid 出力バインディングは、Java では使用できません。
 
 ---
 

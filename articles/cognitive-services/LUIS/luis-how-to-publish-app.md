@@ -3,27 +3,27 @@ title: アプリの発行 - LUIS
 titleSuffix: Azure Cognitive Services
 description: アクティブな LUIS アプリの構築とテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。
 services: cognitive-services
-author: diberry
+author: aahill
 manager: nitinme
+ms.author: aahi
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: e9c8b607b1dc3f7f67ee1fdad353d15023318947
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.date: 01/12/2021
+ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340693"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558912"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
 アクティブな LUIS アプリの構築、トレーニングおよびテストが終了したら、それをエンドポイントに発行して、クライアント アプリケーションが使用できるようにします。
 
 ## <a name="publishing"></a>発行
-1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の**サブスクリプション**と**作成リソース**を選択して、その作成リソースに割り当てられているアプリを表示します。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、自分の **サブスクリプション** と **作成リソース** を選択して、その作成リソースに割り当てられているアプリを表示します。
 1. **[マイ アプリ]** ページで自分のアプリの名前を選択して、そのアプリを開きます。
 1. エンドポイントを発行するには、右パネル上部の **[Publish]\(発行)** を選択します。
 
@@ -57,7 +57,6 @@ ms.locfileid: "84340693"
 スロットを選択したら、次のように発行の設定を構成します。
 
 * センチメント分析
-* [スペル修正](luis-tutorial-bing-spellcheck.md) - v2 予測エンドポイントのみ
 * 音声認識の準備
 
 発行後、これらの設定は **[管理]** セクションの **[Publish settings]\(発行の設定\)** ページで確認できます。 発行ごとに設定を変更できます。 発行を取り消すと、発行中に加えた変更も取り消されます。
@@ -79,12 +78,6 @@ Text Analytics キーを指定する必要はなく、Azure アカウントに�
 センチメント データは 1 と 0 の間のスコアで、1 に近いほどポジティブなセンチメントを示し、0 に近いほどネガティブな感情を示します。 `positive`、`neutral`、`negative` のセンチメント ラベルは、サポートされているカルチャによって異なります。 現時点では、センチメント ラベルがサポートされているのは英語のみです。
 
 感情分析での JSON エンドポイントの応答の詳細については、「[Sentiment analysis](luis-reference-prebuilt-sentiment.md)」(感情分析) をご覧ください。
-
-## <a name="spelling-correction"></a>スペル修正
-
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
-
-スペル修正は、LUIS ユーザーの発話予測の前に行われます。 応答では、元の発話 (スペルを含む) に対するすべての変更を確認できます。
 
 ## <a name="speech-priming"></a>音声認識の準備
 

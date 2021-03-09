@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: bd952449cb088a383f0b9241fb7856522fbeeb10
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257663"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581549"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Monitor ログを使用したイベントの分析と視覚化
  Azure Monitor ログでは、クラウド内でホストされているアプリケーションとサービスからテレメトリが収集および分析され、それらの可用性とパフォーマンスを最大限に高めるために役立つ分析ツールが提供されます。 この記事では、Azure Monitor ログでクエリを実行して分析情報を取得し、クラスター内の処理をトラブルシューティングする方法について説明します。 次のような一般的な質問に対応します。
@@ -28,7 +28,7 @@ ms.locfileid: "86257663"
 
 Azure Monitor ログでは、Azure ストレージ テーブルやエージェントなどの管理対象リソースからデータを収集し、中央レポジトリで管理します。 それらのデータは分析、アラート、および視覚化、さらにエクスポートに使用できます。 Azure Monitor ログでは、イベント、パフォーマンス データ、またはその他のカスタム データがサポートされます。 [診断の拡張機能を設定してイベントを集計する手順](service-fabric-diagnostics-event-aggregation-wad.md)および [Log Analytics ワークスペースを作成してストレージ内のイベントから読み取りを行う手順](service-fabric-diagnostics-oms-setup.md)を確認して、データが確実に Azure Monitor ログに送信されるようにしてください。
 
-Azure Monitor ログによってデータが受信されたら、Azure に用意されている*管理ソリューション* (パッケージ済みのソリューションまたは運用ダッシュボード) を使用して、さまざまなシナリオに合わせて受信データを監視します。 *Service Fabric Analytics* ソリューションと*コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 この記事では、ワークスペースを使って作成される、Service Fabric Analytics ソリューションを使用する方法について説明します。
+Azure Monitor ログによってデータが受信されたら、Azure に用意されている *管理ソリューション* (パッケージ済みのソリューションまたは運用ダッシュボード) を使用して、さまざまなシナリオに合わせて受信データを監視します。 *Service Fabric Analytics* ソリューションと *コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 この記事では、ワークスペースを使って作成される、Service Fabric Analytics ソリューションを使用する方法について説明します。
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Service Fabric Analytics ソリューションへのアクセス
 
@@ -42,7 +42,7 @@ Azure Monitor ログによってデータが受信されたら、Azure に用意
 
 次の画像には、Service Fabric Analytics ソリューションのホーム ページが示されています。 このホーム ページでは、クラスター内で行われている処理のスナップショット ビューが提供されます。
 
-![Service Fabric ソリューション](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+![Service Fabric Analytics ソリューションのホーム ページを示すスクリーンショット。](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
  クラスター作成時に診断を有効にした場合は、以下に対するイベントが表示されます。 
 
@@ -103,7 +103,7 @@ Kusto クエリ言語は優れています。 実行可能なもう 1 つの重�
 ## <a name="next-steps"></a>次のステップ
 
 * インフラストラクチャの監視、つまりパフォーマンス カウンターを有効にするために、[Log Analytics エージェントの追加](service-fabric-diagnostics-oms-agent.md)に関するページにアクセスしてください。 エージェントによって、パフォーマンス カウンターが収集され、既存のワークスペースに追加されます。
-* オンプレミス クラスター向けに、Azure Monitor ログでは、データを Azure Monitor ログに送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供されています。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って Azure Monitor ログに接続する](../azure-monitor/platform/gateway.md)」を参照してください。
-* 検出と診断に役立つ[自動アラート](../azure-monitor/platform/alerts-overview.md)を構成します。
-* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/log-query/log-query-overview.md)機能をよく理解します。
+* オンプレミス クラスター向けに、Azure Monitor ログでは、データを Azure Monitor ログに送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供されています。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って Azure Monitor ログに接続する](../azure-monitor/agents/gateway.md)」を参照してください。
+* 検出と診断に役立つ[自動アラート](../azure-monitor/alerts/alerts-overview.md)を構成します。
+* Azure Monitor ログの一部として提供されている[ログ検索とクエリ](../azure-monitor/logs/log-query-overview.md)機能をよく理解します。
 * Azure Monitor ログとそれが提供するサービスの詳しい概要について、[Azure Monitor ログとは何か](../azure-monitor/overview.md)に関するページで確認します。

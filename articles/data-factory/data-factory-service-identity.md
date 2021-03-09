@@ -1,21 +1,17 @@
 ---
 title: Data Factory のマネージド ID
 description: Azure Data Factory のマネージド ID について説明します。
-services: data-factory
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 7c1de2b6ef59efdaaed64fcf687fed0c834683c0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e0d3b551265a480a700f374ddfcf89dd4d93333f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037598"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389163"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 
@@ -32,7 +28,7 @@ ms.locfileid: "86037598"
 Data Factory のマネージド ID は次の機能に役立ちます。
 
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)。この場合、データ ファクトリのマネージド ID は Azure Key Vault の認証に使用されます。
-- [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure SQL Database](connector-azure-sql-database.md)、および [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) を含むコネクタ。
+- [Azure Blob Storage](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure SQL Database](connector-azure-sql-database.md)、および [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) を含むコネクタ。
 - [Web アクティビティ](control-flow-web-activity.md)。
 
 ## <a name="generate-managed-identity"></a>マネージド ID の生成
@@ -57,7 +53,7 @@ Data Factory のマネージド ID は、次のように生成されます。
 
 ### <a name="generate-managed-identity-using-powershell"></a>PowerShell を使用したマネージド ID の生成
 
-**Set-AzDataFactoryV2** コマンドを再度呼び出すと、"Identity" フィールドが新たに生成されます。
+**Set-AzDataFactoryV2** コマンドを呼び出すと、"Identity" フィールドが新たに生成されます。
 
 ```powershell
 PS C:\WINDOWS\system32> Set-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName> -Location <region>
@@ -252,4 +248,4 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 - [Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)
 - [Azure リソース認証用のマネージド ID を使用して Azure Data Lake Store との間でデータを双方向にコピーする](connector-azure-data-lake-store.md)
 
-データ ファクトリのマネージド ID の基になっている Azure リソースのマネージド ID の詳細については、[Azure リソースのマネージド ID の概要](/azure/active-directory/managed-identities-azure-resources/overview)に関する記事をご覧ください。 
+データ ファクトリのマネージド ID の基になっている Azure リソースのマネージド ID の詳細については、[Azure リソースのマネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関する記事をご覧ください。

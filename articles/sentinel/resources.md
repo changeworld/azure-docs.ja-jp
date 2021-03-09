@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/02/2019
+ms.date: 01/27/2021
 ms.author: yelevin
-ms.openlocfilehash: 2110d3319cebf693ef06deec26a29fa655e35035
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c404aa93669cd95dccb0ad185d71d2ec16256d0d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77585273"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570437"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
@@ -28,11 +28,11 @@ ms.locfileid: "77585273"
 
 この記事には、Azure Sentinel の操作の詳細を入手するのに役立つリソースをまとめています。
 
-Azure Logic Apps コネクタ: <https://docs.microsoft.com/connectors/>
+- **Azure Logic Apps コネクタ**: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>監査とレポート
-Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に保持されます。
+Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)に保持されます。
 
 次のサポートされている操作を監査できます。
 
@@ -61,25 +61,39 @@ Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azur
 
 このデータを表示するには、Azure アクティビティ ログから Azure Sentinel にそれをストリーミングし、そこで調査と分析を実行します。
 
-1. [Azure アクティビティ](connect-azure-activity.md) データ ソースに接続します。 この操作を実行すると、監査イベントは、AzureActivity という名前の**ログ**画面で新しいテーブルにストリームされます。
-2. 次に、他のテーブルの場合と同様に、KQL を使用してデータに対してクエリを実行します。
+1. [Azure アクティビティ](connect-azure-activity.md) データ ソースに接続します。 この操作を実行すると、監査イベントは、AzureActivity という名前の **ログ** 画面で新しいテーブルにストリームされます。
 
+1. 次に、他のテーブルの場合と同様に、KQL を使用してデータに対してクエリを実行します。
 
+    たとえば、特定の分析ルールを最後に編集したユーザーを確認するには、次のクエリを使用します (`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` を、確認するルールのルール ID に置き換えます)。
 
-## <a name="vendor-documentation"></a>ベンダーのドキュメント
+    ```kusto
+    AzureActivity
+    | where OperationNameValue startswith "MICROSOFT.SECURITYINSIGHTS/ALERTRULES/WRITE"
+    | where Properties contains "alertRules/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    | project Caller , TimeGenerated , Properties
+    ```
 
-| **ベンダー名**  | **Azure Sentinel でインシデントを使用する** | **リンク**|
-|----|----|----|
-| GitHub| コミュニティ ページにアクセスするために使用| <https://github.com/Azure/Azure-Sentinel> |
-| PaloAlto| CEF を構成| <https://www.paloaltonetworks.com/documentation/misc/cef.html>|
-| PluralSight | Kusto クエリ言語コース| [https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch](https://www.pluralsight.com/courses/kusto-query-language-kql-from-scratch)|
 
 ## <a name="blogs-and-forums"></a>ブログとフォーラム
 
-ご質問は、Azure Sentinel の [TechCommunity スペース](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)に投稿してください。
+ユーザーの方のご意見をお待ちしています。
 
-[TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) と [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/) から Azure Sentinel のブログ投稿を表示します。
+- Azure Sentinel の [TechCommunity スペース](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bd-p/AzureSentinel)に **ご質問を投稿** してください。 
+
+- [User Voice](https://feedback.azure.com/forums/920458-azure-sentinel) プログラムを使用して、**改善のためのご提案を送信** してください。
+
+- Azure Sentinel のブログ投稿を **閲覧し、コメントをお寄せください**:
+
+    - [TechCommunity](https://techcommunity.microsoft.com/t5/Azure-Sentinel/bg-p/AzureSentinelBlog) 
+    - [Microsoft Azure](https://azure.microsoft.com/blog/tag/azure-sentinel/)
 
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、Azure Sentinel の使用時に役立つリソースの一覧を示します。 Azure のセキュリティとコンプライアンスに関する追加情報については、[Microsoft Azure Security とコンプライアンスに関するブログ](https://blogs.msdn.com/b/azuresecurity/)を参照してください。
+
+> [!div class="nextstepaction"]
+> [認定を受ける](/learn/paths/security-ops-sentinel/)
+
+> [!div class="nextstepaction"]
+> [お客様のユース ケース ストーリーを読む](https://customers.microsoft.com/en-us/search?sq=%22Azure%20Sentinel%20%22&ff=&p=0&so=story_publish_date%20desc)
+

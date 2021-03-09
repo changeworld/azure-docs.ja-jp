@@ -5,22 +5,22 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/19/2020
-ms.author: keferna
-author: keferna
-ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.author: trkeya
+author: trkeya
+ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287942"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730373"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
 この種類は、Azure Marketplace または AppSource にオファーがあっても、体験版は Azure リソースだけでビルドさせたい場合に使用します。 Azure Resource Manager (ARM) テンプレートは、ソリューションが最適に表現されるように設計する Azure リソースのコード化されたコンテナーです。 体験版では、提供された ARM テンプレートが取得されて、必要なすべてのリソースがリソース グループにデプロイされます。 これは、仮想マシンまたは Azure アプリのオファーの唯一の体験版オプションです。
 
-ARM テンプレートについてよく知らない場合は、「[Azure Resource Manager とは](../azure-resource-manager/resource-group-overview.md)」および「[ARM テンプレートの構造と構文について](../azure-resource-manager/resource-group-authoring-templates.md)」を読み、独自のテンプレートをビルドしてテストする方法をよく理解してください。
+ARM テンプレートについてよく知らない場合は、「[Azure Resource Manager とは](../azure-resource-manager/management/overview.md)」および「[ARM テンプレートの構造と構文について](../azure-resource-manager/templates/template-syntax.md)」を読み、独自のテンプレートをビルドしてテストする方法をよく理解してください。
 
-**ホストされた**体験版または**ロジック アプリ**の体験版については、「[体験版とは](what-is-test-drive.md)」を参照してください。
+**ホストされた** 体験版または **ロジック アプリ** の体験版については、「[体験版とは](what-is-test-drive.md)」を参照してください。
 
 ## <a name="technical-configuration"></a>技術的な構成
 
@@ -34,7 +34,10 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
   - **コールド** – この種類のインスタンスは、リージョンごとにデプロイできる可能性があるインスタンスの総数を表します。 コールド インスタンスでは、顧客が体験版を要求したときのデプロイ用に体験版の完全な Resource Manager テンプレートが必要です。そのため、"*コールド*" インスタンスでは、読み込みが "*ホット*" インスタンスよりもはるかに遅くなります。 トレードオフとして、体験版の期間のみの支払いで済みます。"*ホット*" インスタンスのように Azure サブスクリプションで常に実行されていることは "*ありません*"。
 
-- **体験版の Azure Resource Manager テンプレート** – 目的の Azure Resource Manager テンプレートが含まれている .zip をアップロードします。 Azure Resource Manager テンプレートの作成については、記事「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)」を参照してください。
+- **体験版の Azure Resource Manager テンプレート** – 目的の Azure Resource Manager テンプレートが含まれている .zip をアップロードします。 Azure Resource Manager テンプレートの作成については、記事「[クイック スタート: Azure portal を使用した Azure Resource Manager テンプレートの作成とデプロイ](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)」を参照してください。
+
+    > [!note]
+    > 正常に公開するには、ARM テンプレートのフォーマットを検証することが重要です。 これを行うには、(1) [オンライン API ツール](/rest/api/resources/deployments/validate)を使用するか、(2) [テスト配置](../azure-resource-manager/templates/deploy-portal.md)を使用するという 2 つの方法があります。
 
 - **[体験版の期間]** (必須) – 体験版が有効である時間数を入力します。 この期間が終わると、体験版は自動的に終了します。 整数のみを使用します (たとえば、"2" 時間は有効ですが、"1.5" は無効です)。
 
@@ -72,14 +75,14 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
 | メタデータの種類   | パラメーターの型  | 説明     | 値の例    |
 |---|---|---|---|
-| **baseuri**     | string          | デプロイ パッケージのベース URI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **baseuri**     | string          | デプロイ パッケージのベース URI| `https://<..>.blob.core.windows.net/<..>` |
 | **username**    | string          | 新しいランダムなユーザー名。| admin68876      |
 | **password**    | secure string    | 新しいランダムなパスワード | Lp!ACS\^2kh     |
 | **session id**   | string          | 一意の体験版セッション ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="baseuri"></a>baseuri
 
-体験版では、このパラメーターがデプロイ パッケージの**ベース URI** で初期化されるので、このパラメーターを使用して、パッケージに含まれるファイルの URI を作成できます。
+体験版では、このパラメーターがデプロイ パッケージの **ベース URI** で初期化されるので、このパラメーターを使用して、パッケージに含まれるファイルの URI を作成できます。
 
 ```JSON
 "parameters": {
@@ -327,7 +330,7 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
       ![新しいアクセス制御プリンシパルを追加する](media/test-drive/access-control-principal.jpg)
 
-   1. 示されているように、 **[ロール]** および **[アクセスの割り当て先]** を設定します。 **[選択]** フィールドに、Azure AD アプリケーションの名前を入力します。 **共同作成者**ロールを割り当てるアプリケーションを選択します。
+   1. 示されているように、 **[ロール]** および **[アクセスの割り当て先]** を設定します。 **[選択]** フィールドに、Azure AD アプリケーションの名前を入力します。 **共同作成者** ロールを割り当てるアプリケーションを選択します。
 
       ![アクセス許可を追加する](media/test-drive/access-control-permissions.jpg)
 
@@ -339,7 +342,7 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
 ## <a name="republish"></a>再発行
 
-これで、体験版のすべてのフィールドを設定したので、オファーを**再発行**します。 体験版が認定に合格したら、オファーのプレビューで顧客エクスペリエンスをテストします。
+これで、体験版のすべてのフィールドを設定したので、オファーを **再発行** します。 体験版が認定に合格したら、オファーのプレビューで顧客エクスペリエンスをテストします。
 
 1. UI で体験版を開始します。
 1. Azure portal で Azure サブスクリプションを開きます。
@@ -349,7 +352,7 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
 顧客用にプロビジョニングされた体験版のインスタンスを削除しないでください。顧客がその使用を終了すると、体験版サービスによってこれらのリソース グループは自動的にクリーンアップされます。
 
-プレビューのオファリングに問題がなければ、**稼働**を開始します。 エンド ツー エンドのエクスペリエンス全体を再確認する最終的なレビュー プロセスがあります。 オファーが却下された場合は、修正が必要な点を説明するメールがエンジニアリング担当者に送信されます。
+プレビューのオファリングに問題がなければ、**稼働** を開始します。 エンド ツー エンドのエクスペリエンス全体を再確認する最終的なレビュー プロセスがあります。 オファーが却下された場合は、修正が必要な点を説明するメールがエンジニアリング担当者に送信されます。
 
 ## <a name="next-steps"></a>次のステップ
 

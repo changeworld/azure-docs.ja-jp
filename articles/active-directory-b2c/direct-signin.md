@@ -7,17 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/18/2018
+ms.date: 12/14/2020
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a9e7c537e85039675f27fa3e276b6b964ce1679b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: b2342ed978204284bee4d2be0f1c983aa10ade36
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388597"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585039"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用した直接サインインの設定
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Azure Active Directory (AD) B2C を使用してアプリケーションのサインインを設定する場合、サインイン名を事前入力することも、Facebook、LinkedIn、Microsoft アカウントなどの特定のソーシャル ID プロバイダーに直接サインインすることもできます。
 
@@ -29,7 +33,9 @@ Azure Active Directory (AD) B2C を使用してアプリケーションのサイ
 
 ユーザーはサインイン テキストボックスの値を変更できます。
 
-カスタム ポリシーを使用している場合は、`SelfAsserted-LocalAccountSignin-Email` 技術プロファイルをオーバーライドします。 `<InputClaims>` セクションで、signInName 要求の DefaultValue を `{OIDC:LoginHint}` に設定します。 `{OIDC:LoginHint}` 変数には、`login_hint` パラメーターの値が含まれています。 Azure AD B2C は、signInName 要求の値を読み取って、signInName テキストボックスに事前入力します。
+::: zone pivot="b2c-custom-policy"
+
+ログイン ヒント パラメーターをサポートするには、`SelfAsserted-LocalAccountSignin-Email` 技術プロファイルをオーバーライドします。 `<InputClaims>` セクションで、signInName 要求の DefaultValue を `{OIDC:LoginHint}` に設定します。 `{OIDC:LoginHint}` 変数には、`login_hint` パラメーターの値が含まれています。 Azure AD B2C は、signInName 要求の値を読み取って、signInName テキストボックスに事前入力します。
 
 ```xml
 <ClaimsProvider>
@@ -45,13 +51,35 @@ Azure Active Directory (AD) B2C を使用してアプリケーションのサイ
 </ClaimsProvider>
 ```
 
+::: zone-end
+
 ## <a name="redirect-sign-in-to-a-social-provider"></a>サインインをソーシャル プロバイダーにリダイレクトする
 
 Facebook、LinkedIn、Google などのソーシャル アカウントを含むようにアプリケーションのサインイン プロセスを構成した場合は、`domain_hint` パラメーターを指定できます。 このクエリ パラメーターは、サインインに使用する必要があるソーシャル ID プロバイダーに関するヒントを Azure AD B2C に提供します。 たとえば、アプリケーションで `domain_hint=facebook.com` を指定した場合、サインインは Facebook のサインイン ページに直接移動します。
 
 ![URL 内の domain_hint クエリ パラメーターが強調表示されているサインアップ サインイン ページ](./media/direct-signin/domain-hint.png)
 
-カスタム ポリシーを使用している場合は、任意の `<ClaimsProvider>` の `<Domain>domain name</Domain>` XML 要素を使用してドメイン名を構成できます。
+::: zone pivot="b2c-user-flow"
+
+ドメイン ヒント クエリ文字列パラメーターは、次のドメインのいずれかに設定できます。
+
+- amazon.com
+- facebook.com
+- github.com
+- google.com
+- linkedin.com
+- microsoft.com
+- qq.com
+- twitter.com
+- wechat.com
+- weibo.com 
+- [汎用 OpenID 接続](identity-provider-generic-openid-connect.md)については、「[ドメインのヒント](identity-provider-generic-openid-connect.md#response-mode)」をご覧ください。
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+ドメイン ヒンジ パラメーターをサポートするには、任意の `<ClaimsProvider>` の `<Domain>domain name</Domain>` XML 要素を使用してドメイン名を構成できます。
 
 ```xml
 <ClaimsProvider>
@@ -62,4 +90,5 @@ Facebook、LinkedIn、Google などのソーシャル アカウントを含む�
     ...
 ```
 
+::: zone-end
 

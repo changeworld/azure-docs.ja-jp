@@ -22,6 +22,8 @@
       href: set-up-service-alerts-2019.md
 - name: 操作方法
   items:
+    - name: 手動で移行する
+      href: ../manual-migration.md
     - name: Windows Virtual Desktop リソースに接続する
       items:
         - name: Windows デスクトップ クライアントを使用して接続する
@@ -70,7 +72,7 @@
           href: diagnostics-log-analytics-2019.md
     - name: 組み込みアプリの公開
       href: publish-apps-2019.md
-    - name: Azure Multi-Factor Authentication を設定する
+    - name: Azure AD の Multi-Factor Authentication を設定する
       href: ../set-up-mfa.md
 - name: 概念
   items:

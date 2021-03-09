@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: c9c8aa86aa8a374a33750e306529ef212c9a8bfc
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 77a795b8f704084b612a2dcbd364b8d5be0a3333
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012332"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852152"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protocol Buffers を使用してテレメトリをシリアル化する
 
@@ -40,7 +40,7 @@ Protobuf では、データをシリアル化するためにコンパイル済�
 * .NET Core。 [Mac、Linux、および Windows 用の .NET Core をダウンロード](https://www.microsoft.com/net/download)できます。
 * Postman。 [Mac、Windows、または Linux 用の Postman をダウンロード](https://www.getpostman.com/apps)できます。
 * [Azure サブスクリプションにデプロイされた IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。 このガイドの手順を完了するには、IoT ハブの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
-* SQL API を使用し、かつ[強力な一貫性](../cosmos-db/manage-account.md)を確保するように構成された、[Azure サブスクリプションにデプロイ済みの Cosmos DB データベース](../cosmos-db/create-sql-api-dotnet.md#create-account)。 このガイドの手順を完了するには、Cosmos DB データベースの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
+* SQL API を使用し、かつ[強力な一貫性](../cosmos-db/how-to-manage-database-account.md)を確保するように構成された、[Azure サブスクリプションにデプロイ済みの Cosmos DB データベース](../cosmos-db/create-sql-api-dotnet.md#create-account)。 このガイドの手順を完了するには、Cosmos DB データベースの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 * [Azure サブスクリプションにデプロイされた Azure ストレージ アカウント](../storage/common/storage-account-create.md)。 このガイドの手順を完了するには、ストレージ アカウントの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 
 ## <a name="prepare-your-development-environment"></a>開発環境を準備する
@@ -70,7 +70,7 @@ Visual Studio Code で **remote-monitoring-services-dotnet-master\storage-adapte
 
 ストレージ アダプター マイクロサービスをローカルで実行するために、 **[デバッグ] \> [デバッグの開始]** をクリックします。
 
-Visual Studio Code の**ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。これに、Web サービスの正常性チェック用の URL (<http://127.0.0.1:9022/v1/status>) が含まれます。 このアドレスに移動すると、状態が "OK: Alive and well" と表示されます。
+Visual Studio Code の **ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。これに、Web サービスの正常性チェック用の URL (<http://127.0.0.1:9022/v1/status>) が含まれます。 このアドレスに移動すると、状態が "OK: Alive and well" と表示されます。
 
 ストレージ アダプター マイクロサービスは、以下の手順を実行している間もこの Visual Studio Code のインスタンスで実行したままにしておきます。
 
@@ -180,7 +180,7 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
     protoc -I c:\temp\device-simulation-dotnet-master\Services\Models\Protobuf\proto --csharp_out=C:\temp\device-simulation-dotnet-master\Services\Models\Protobuf assettracker.proto
     ```
 
-    このコマンドは、**Services\Models\Protobuf**フォルダーに **Assettracker.cs** ファイルを生成します。
+    このコマンドは、**Services\Models\Protobuf** フォルダーに **Assettracker.cs** ファイルを生成します。
 
 ## <a name="test-protobuf-locally"></a>Protobuf をローカルでテストする
 
@@ -219,7 +219,7 @@ Visual Studio Code の新しいインスタンスで、GitHub からダウンロ
 
 マイクロサービスをローカルで実行するために、 **[デバッグ] \> [デバッグの開始]** をクリックします。
 
-Visual Studio Code の**ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。
+Visual Studio Code の **ターミナル** ウィンドウに、実行中のマイクロサービスからの出力が表示されます。
 
 デバイス シミュレーション マイクロサービスは、次の手順を実行している間もこの Visual Studio Code のインスタンスで実行したままにしておきます。
 
@@ -277,4 +277,4 @@ IoT Hub および Cosmos DB のインスタンスが必要でなくなった場�
 
 ## <a name="next-steps"></a>次のステップ
 
-Protobuf を使用してテレメトリを送信するようにデバイス シミュレーションをカスタマイズする方法がわかったら、次は、[カスタム イメージをクラウドにデプロイする](iot-accelerators-device-simulation-deploy-image.md)方法について学習しましょう。
+ここでは、Protobuf を使用してテレメトリを送信するようにデバイス シミュレーションをカスタマイズする方法について学習しました。次の手順では、GitHub リポジトリにアクセスし、[デバイス シミュレーション](https://github.com/Azure/device-simulation-dotnet)の詳細について説明します。

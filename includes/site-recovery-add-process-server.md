@@ -4,12 +4,12 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 31e61069c95be9bd1c7a684bb83ebcd93bcb14be
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67180880"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019145"
 ---
 1. Azure Site Recovery UnifiedSetup.exe の起動
 2. **[開始する前に]** で **[Add additional process servers to scale out deployment] \(デプロイをスケールアウトするためにプロセス サーバーを追加する)** を選択します。
@@ -30,7 +30,7 @@ ms.locfileid: "67180880"
      * カスタム プロキシを使用する場合、アドレス、ポート、資格情報を指定する必要があります。
      * プロキシを使用する場合は、サービス URL へのアクセスを許可しておく必要があります。
 
-5. **[前提条件の確認]** では、インストールを実行できることを確認するためのチェックが実行されます。 **グローバル時刻の同期チェック**に関する警告が表示された場合は、システム クロックの時刻 ( **[日付と時刻]** 設定) がタイム ゾーンと同じであることを確認します。
+5. **[前提条件の確認]** では、インストールを実行できることを確認するためのチェックが実行されます。 **グローバル時刻の同期チェック** に関する警告が表示された場合は、システム クロックの時刻 ( **[日付と時刻]** 設定) がタイム ゾーンと同じであることを確認します。
 
      ![プロセス サーバーの追加 4](./media/site-recovery-add-process-server/ps-page-4.png)
 
@@ -39,7 +39,7 @@ ms.locfileid: "67180880"
      ![プロセス サーバーの追加 5](./media/site-recovery-add-process-server/ps-page-5.png)
 
 7. **[インストール場所]** で、バイナリをインストールしキャッシュを格納する場所を選択します。 選択するドライブには使用可能なディスク領域が 5 GB 以上必要ですが、600 GB 以上の空き領域があるキャッシュ ドライブを使用することをお勧めします。
-     ![プロセス サーバーの追加 5](./media/site-recovery-add-process-server/ps-page-6.png)
+     ![バイナリとキャッシュ ストレージのインストール先を示すスクリーンショット。](./media/site-recovery-add-process-server/ps-page-6.png)
 
 8. **[ネットワークの選択]** で、構成サーバーがレプリケーション データを送受信するリスナー (ネットワーク アダプターと SSL ポート) を指定します。 既定では、ポート 9443 がレプリケーション トラフィックの送受信用に使用されます。このポート番号は、実際の環境の要件に合わせて変更できます。 ポート 9443 に加え、ポート 443 も開きます。このポートは、Web サーバーがレプリケーション操作を調整するために使用されます。 ポート 443 はレプリケーション トラフィックの送受信用に使用しないでください。
 

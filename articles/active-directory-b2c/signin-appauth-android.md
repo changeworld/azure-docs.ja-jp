@@ -11,19 +11,19 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 79219d7a7b59818d54acc6a2b0b4c8093ead3a6a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: acbd2918bd311cec1c27018763ad10771d779d85
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85385231"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953323"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で Android アプリケーションを使用してサインインする
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 これらの標準により、Azure Active Directory B2C と統合する任意のライブラリを活用できます。 他のライブラリを使用できるように、このようなチュートリアルを使用して、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を示すことができます。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 
 > [!WARNING]
-> Microsoft では、サード パーティ製のライブラリ用の修正プログラムは提供していません。また、これらのライブラリのレビューも実施していません。 このサンプルでは、Azure AD B2C を使用する基本的なシナリオでの互換性がテスト済みである、AppAuth と呼ばれるサード パーティ製のライブラリを使用しています。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)をご覧ください。
+> Microsoft では、サード パーティ製のライブラリ用の修正プログラムは提供していません。また、これらのライブラリのレビューも実施していません。 このサンプルでは、Azure AD B2C を使用する基本的なシナリオでの互換性がテスト済みである、AppAuth と呼ばれるサード パーティ製のライブラリを使用しています。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。 詳細については、[こちらの記事](../active-directory/develop/reference-v2-libraries.md)をご覧ください。
 >
 >
 

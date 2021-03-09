@@ -1,18 +1,16 @@
 ---
 title: U-SQL ジョブのデバッグ - Azure Data Lake Tools for Visual Studio Code
 description: Azure Data Lake Tools for Visual Studio Code を使用して U-SQL　ジョブをローカルで実行およびデバッグを行う方法について説明します。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.reviewer: jasonh
-ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: how-to
 ms.date: 07/14/2017
-ms.openlocfilehash: 4b8285281119121b509c62b11bf48a5f70a9f0f0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 194fe3494915be9f6784e1596e647885634817ad
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125702"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97969012"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>U-SQL を実行し、Visual Studio Code のローカルでデバッグする
 このアーティクルは、ローカルの開発コンピューター上で U-SQL ジョブを実行して、初期のコーディング フェーズを迅速化したり、Visual Studio Code でローカルにコードをデバッグしたりする方法について説明します。 Azure Data Lake Tools for Visual Studio Code に関する手順については、「[Azure Data Lake Tools for Visual Studio Code の使用](data-lake-analytics-data-lake-tools-for-vscode.md)」をご覧ください。
@@ -43,7 +41,7 @@ U-SQL ジョブをローカルで実行したり U-SQL をローカルでデバ�
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>ローカル実行サービスを開始してローカル アカウントに U-SQL ジョブを送信する 
-初めてのユーザーの場合は、**ADL:Download Local Run Package** を使用してローカルの実行パッケージをダウンロードします ( [U-SQL ローカル実行環境を設定](#set-up-the-u-sql-local-run-environment)していない場合)。
+初めてのユーザーで、[U-SQL ローカル実行環境を設定](#set-up-the-u-sql-local-run-environment)していない場合は、**ADL: Download Local Run Package** を使用して、ローカルの実行パッケージをダウンロードします。
 
 1. Ctrl + Shift + P キーを押してコマンド パレットを開き、「**ADL:Start Local Run Service**」と入力します。   
 2. 初回使用時は、 **[同意する]** を選択し、マイクロソフト ソフトウェア ライセンス条項に同意します。 
@@ -64,13 +62,13 @@ U-SQL ジョブをローカルで実行したり U-SQL をローカルでデバ�
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>U-SQL ジョブのローカル デバッグを開始する  
 初めてのユーザーは、次の手順を実行します。
 
-1. **ADL:Download Local Run Package** を使用してローカルの実行パッケージをダウンロードします ( [U-SQL ローカル実行環境を設定](#set-up-the-u-sql-local-run-environment)していない場合)。
+1. [U-SQL ローカル実行環境を設定](#set-up-the-u-sql-local-run-environment)していない場合は、**ADL: Download Local Run Package** を使用して、ローカルの実行パッケージをダウンロードします。
 2. .NET Core SDK 2.0 をまだインストールしていない場合は、メッセージ ボックスの提示に従ってインストールします。
- 
+ 
   ![リマインダーが Dotnet をインストールする](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
-3. Visual Studio Code 向けの C# をまだインストールしていない場合は、メッセージ ボックスの提示に従ってインストールします。  **[インストール]** をクリックして続行し、VSCode を再起動します。
+3. Visual Studio Code 向けの C# をまだインストールしていない場合は、メッセージ ボックスの提示に従ってインストールします。   **[インストール]** をクリックして続行し、VSCode を再起動します。
 
-    ![リマインダーによる C# のインストール](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
+![リマインダーによる C# のインストール](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
 ローカル デバッグを実行するには、次の手順に従います。
   
@@ -87,4 +85,4 @@ U-SQL ジョブをローカルで実行したり U-SQL をローカルでデバ�
 * [PowerShell で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
 * [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
 * [U-SQL アプリケーションを開発するための Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)
-* [Data Lake Analytics(U-SQL) カタログの使用](data-lake-analytics-use-u-sql-catalog.md)
+* [Data Lake Analytics(U-SQL) カタログの使用](./data-lake-analytics-u-sql-get-started.md)

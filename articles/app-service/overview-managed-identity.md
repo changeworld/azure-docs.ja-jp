@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 98cec9fc30b4840a763358c0b3cd76659ff865d7
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 16cd4685f513eb628372802cc158195b81bce72a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89070362"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736173"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -39,7 +39,7 @@ ms.locfileid: "89070362"
 
 4. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えます。 **[保存]** をクリックします。
 
-    ![App Service のマネージド ID](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+    ![[状態] を [オン] に切り替えて [保存] を選択する場所を示すスクリーンショット。](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
@@ -51,7 +51,7 @@ ms.locfileid: "89070362"
 Azure CLI を使用してマネージド ID を設定するには、既存のアプリケーションに対して `az webapp identity assign` コマンドを使用する必要があります。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
 
 - Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
-- 以下の各コード ブロックの右上隅にある [試してみる] ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
+- 以下の各コード ブロックの右上隅にある [使ってみる] ボタンを利用して、埋め込まれた Azure Cloud Shell を使用します。
 - ローカル CLI コンソールを使用する場合、[Azure CLI の最新バージョン (2.0.31 以降) をインストール](/cli/azure/install-azure-cli)します。 
 
 次の手順では、CLI を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
@@ -109,7 +109,7 @@ Azure CLI を使用してマネージド ID を設定するには、既存のア
 
 1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
 
-2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/?view=azps-4.1.0#functions)を参照してください。
+2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/#functions)を参照してください。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -219,7 +219,7 @@ tenantId プロパティは、その ID が属する Azure AD テナントを示
 
 1. 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/)の手順に従って Azure PowerShell をインストールし、`Login-AzAccount` を実行して、Azure との接続を作成します。
 
-2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/?view=azps-4.1.0#functions)を参照してください。 次のスクリプトでは、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」に従って個別にインストールする必要がある `New-AzUserAssignedIdentity` を活用しています。
+2. Azure PowerShell を使用して関数アプリを作成します。 Azure Functions で Azure PowerShell を使用する方法の他の例については、[Az.Functions リファレンス](/powershell/module/az.functions/#functions)を参照してください。 次のスクリプトでは、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」に従って個別にインストールする必要がある `New-AzUserAssignedIdentity` を活用しています。
 
     ```azurepowershell-interactive
     # Create a resource group.
@@ -308,7 +308,7 @@ principalId は、Azure AD の管理に使用される ID の一意識別子で�
 アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault にアクセスするためのトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 Azure Active Directory トークンをサポートしているリソースの詳細については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 
 > [!IMPORTANT]
-> マネージド ID のバックエンド サービスは、リソース URI ごとのキャッシュを約 8 時間保持します。 特定のターゲット リソースのアクセス ポリシーを更新し、そのリソースのトークンをすぐに取得した場合、そのトークンの有効期限が切れるまで、期限切れのアクセス許可を持つキャッシュされたトークンを取得し続ける可能性があります。 現在、トークンの更新を強制する方法はありません。
+> マネージド ID のバックエンド サービスは、リソース URI ごとのキャッシュを約 24 時間保持します。 特定のターゲット リソースのアクセス ポリシーを更新し、そのリソースのトークンをすぐに取得した場合、そのトークンの有効期限が切れるまで、期限切れのアクセス許可を持つキャッシュされたトークンを取得し続ける可能性があります。 現在、トークンの更新を強制する方法はありません。
 
 App Service と Azure Functions には、トークンを取得するための簡単な REST プロトコルがあります。 これは、すべてのアプリケーションと言語で使用できます。 .NET と Java では、Azure SDK によってこのプロトコルが抽象化され、ローカル開発エクスペリエンスを支援します。
 
@@ -345,7 +345,7 @@ App Service と Azure Functions には、トークンを取得するための簡
 > | expires_on    | アクセス トークンが期限切れになるまでの期間。 日付は "1970-01-01T0:0:0Z UTC" からの秒数として表されます (トークンの `exp` 要求に対応)。                                                                                |
 > | not_before    | アクセス トークンが有効になり、承認されるまでの期間。 日付は "1970-01-01T0:0:0Z UTC" からの秒数として表されます (トークンの `nbf` 要求に対応)。                                                      |
 > | resource      | アクセス トークンの要求対象リソース。要求の `resource` クエリ文字列パラメーターと一致します。                                                                                                                               |
-> | token_type    | トークン タイプ値を指定します。 Azure AD でサポートされるのは FBearer のタイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
+> | token_type    | トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。 |
 
 この応答は、[Azure AD のサービス間アクセス トークン要求に対する応答](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)と同じです。
 
@@ -395,7 +395,7 @@ public async Task<HttpResponseMessage> GetToken(string resource)  {
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
-const rp = require('request-promise');
+const rp = require('request-promise');
 const getToken = function(resource, cb) {
     let options = {
         uri: `${process.env["IDENTITY_ENDPOINT"]}/?resource=${resource}&api-version=2019-08-01`,
@@ -440,7 +440,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリの使用
 
-.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](/cli/azure)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 クラウドでホストされている場合は、システムによって割り当てられた ID が既定で使用されますが、この動作は、ユーザー割り当て ID のクライアント ID を参照する接続文字列環境変数を使用してカスタマイズできます。 このライブラリでの開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication の参照]に関する記事をご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
+.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](/cli/azure)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 クラウドでホストされている場合は、システムによって割り当てられた ID が既定で使用されますが、この動作は、ユーザー割り当て ID のクライアント ID を参照する接続文字列環境変数を使用してカスタマイズできます。 このライブラリでの開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication reference]に関する記事をご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) とその他の必要な NuGet パッケージに対する参照をアプリケーションに追加します。 下の例では [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) も使用されています。
 
@@ -466,7 +466,7 @@ $accessToken = $tokenResponse.access_token
     var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
 ```
 
-AzureServiceTokenProvider の構成とそれによって公開される操作の詳細については、[Microsoft.Azure.Services.AppAuthentication の参照]に関するページと [MSI .NET での App Service と KeyVault のサンプル](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)に関するページをご覧ください。
+AzureServiceTokenProvider の構成とそれによって公開される操作の詳細については、[Microsoft.Azure.Services.AppAuthentication reference]に関するページと [MSI .NET での App Service と KeyVault のサンプル](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)に関するページをご覧ください。
 
 ### <a name="using-the-azure-sdk-for-java"></a>Azure SDK for Java を使用する
 
@@ -522,7 +522,8 @@ Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupNam
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [マネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
+- [マネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
+- [マネージド ID を使用して Azure Storage に安全にアクセスする](scenario-secure-app-access-storage.md)
+- [マネージド ID を使用して Microsoft Graph を安全に呼び出す](scenario-secure-app-access-microsoft-graph-as-app.md)
 
-[Microsoft.Azure.Services.AppAuthentication のリファレンス]: https://go.microsoft.com/fwlink/p/?linkid=862452
+[Microsoft.Azure.Services.AppAuthentication のリファレンス]: /dotnet/api/overview/azure/service-to-service-authentication

@@ -6,15 +6,17 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 76016da2ec542091aa57d5081e275a1f9f6671cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04de6dce6cbab4dc0716ae841707b1d61d6bc375
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85114267"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073759"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
-この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。
 
 この記事を読むと、次の質問に回答できるようになります。 
 
@@ -24,9 +26,10 @@ ms.locfileid: "85114267"
 * Web およびモバイル アプリケーションで Azure Cosmos DB を使用する利点は何ですか?
 
 ## <a name="introduction"></a>はじめに
-[Azure Cosmos DB](../cosmos-db/introduction.md) は、Microsoft のグローバルに分散されたデータベース サービスです。 このサービスは、顧客が任意の数の地理的リージョン間でスループットとストレージを弾力的に (かつ独立して) スケーリングできるように設計されています。 Azure Cosmos DB は、スループット、待機時間、可用性、整合性を含む包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db/)を提供するための、今日の市場で最初のグローバルに分散されたデータベース サービスです。 
 
-Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](https://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)、[SQL API](documentdb-introduction.md)、[Gremlin API](graph-introduction.md)、[Table API](table-introduction.md) を含むデータ アクセス用の多くの API を、ネイティブおよび拡張可能な方法でサポートします。 
+[Azure Cosmos DB](../cosmos-db/introduction.md) は、あらゆる規模に対応する、オープン API を備えた Microsoft の高速 NoSQL データベースです。 このサービスは、顧客が任意の数の地理的リージョン間でスループットとストレージを弾力的に (かつ独立して) スケーリングできるように設計されています。 Azure Cosmos DB は、スループット、待機時間、可用性、整合性を含む包括的な[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/cosmos-db/)を提供するための、今日の市場で最初のグローバルに分散されたデータベース サービスです。
+
+Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](https://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [Azure Cosmos DB の MongoDB 用 API](mongodb-introduction.md)、[SQL API](./introduction.md)、[Gremlin API](graph-introduction.md)、[Table API](table-introduction.md) を含むデータ アクセス用の多くの API を、ネイティブおよび拡張可能な方法でサポートします。 
 
 Azure Cosmos DB を、グローバルな展開を視野に入れた高性能アプリケーションに最適なものにしている属性のいくつかを次に示します。
 
@@ -40,6 +43,7 @@ Azure Cosmos DB を、グローバルな展開を視野に入れた高性能ア�
 このように、DocumentDB は大量の読み取り/書き込みを迅速に処理する必要がある Web アプリケーション、モバイル アプリケーション、ゲーム アプリケーション、IoT アプリケーションに有用です。
 
 ## <a name="iot-and-telematics"></a>IoT とテレマティックス
+
 IoT のユース ケースでは、データの取り込み、処理、および格納の方法にいくつかの共通パターンがあります。  まず、これらのシステムでは、さまざまなロケールのデバイス センサーから大量のデータを取り込む必要があります。 次に、これらのシステムではストリーミング データを処理および分析して、インサイトをリアルタイムで導き出しています。 その後、データはバッチ分析用にコールド ストレージにアーカイブされます。 Microsoft Azure では、Azure Cosmos DB、Azure Event Hubs、Azure Stream Analytics、Azure Notification Hub、Azure Machine Learning、Azure HDInsight、Power BI など、IoT のユース ケースに適用できる豊富なサービスを提供しています。 
 
 :::image type="content" source="./media/use-cases/iot.png" alt-text="Azure Cosmos DB IoT リファレンス アーキテクチャ" border="false":::
@@ -88,7 +92,7 @@ Azure Cosmos DB の一般的なユース ケースは、Web、モバイル、ソ
 
 ソーシャル アプリケーションの多くが世界規模で実行されており、予測できない使用パターンが発生することがあります。 アプリケーション層は使用ニーズを満たすようにスケールするため、データ ストアを柔軟にスケールできることがきわめて重要です。  Cosmos DB では、Cosmos DB アカウントにデータのパーティションを追加することでスケールアウトできます。  また、複数のリージョンにわたって追加の Cosmos DB アカウントを作成することもできます。 Cosmos DB サービス リージョンの可用性については、「[Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
-:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Azure Cosmos DB Web アプリ リファレンス アーキテクチャ" border="false":::
+:::image type="content" source="./media/use-cases/apps-with-global-reach.png" alt-text="Azure Cosmos DB Web アプリ リファレンス アーキテクチャを示す図。" border="false":::
 
 ### <a name="personalization"></a>パーソナル化
 今日では、最新のアプリケーションは複雑なビューとエクスペリエンスを備えています。 それらはたいてい動的で、ユーザーの設定や気分、ブランドのニーズに対応します。 そのため、アプリケーションは、UI 要素とエクスペリエンスをすばやく表示するために、個人用設定を効率的に取得できる必要があります。 

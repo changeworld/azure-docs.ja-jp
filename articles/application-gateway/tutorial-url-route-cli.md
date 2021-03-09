@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8e8fed99fe0b1de52d2e2d0018dfd8867b54b63b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502700"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566522"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Azure CLI を使用して URL に基づいて Web トラフィックをルーティングする
 
@@ -23,21 +23,20 @@ ms.locfileid: "87502700"
 
 この記事では、次のことについて説明します。
 
-> [!div class="checklist"]
-> * 必要なネットワーク リソースのリソース グループを作成する
-> * ネットワーク リソースを作成する
-> * アプリケーションから着信するトラフィックのアプリケーション ゲートウェイを作成する
-> * 各種トラフィックのサーバー プールとルーティング規則を指定する
-> * プールを自動的にスケーリングできるよう各プールのスケール セットを作成する
-> * 各種のトラフィックが適切なプールに誘導されることを確認するためのテストを実行する
+* 必要なネットワーク リソースのリソース グループを作成する
+* ネットワーク リソースを作成する
+* アプリケーションから着信するトラフィックのアプリケーション ゲートウェイを作成する
+* 各種トラフィックのサーバー プールとルーティング規則を指定する
+* プールを自動的にスケーリングできるよう各プールのスケール セットを作成する
+* 各種のトラフィックが適切なプールに誘導されることを確認するためのテストを実行する
 
 好みに応じて、[Azure PowerShell](tutorial-url-route-powershell.md) または [Azure portal](create-url-route-portal.md) を使用してこの手順を実行することもできます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+ - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -98,7 +97,7 @@ az network application-gateway create \
  アプリケーション ゲートウェイの作成には数分かかる場合があります。 アプリケーション ゲートウェイを作成すると、新たに次の機能が確認できます。
 
 
-|機能  |説明  |
+|特徴量  |Description  |
 |---------|---------|
 |appGatewayBackendPool     |アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。|
 |appGatewayBackendHttpSettings     |通信に使用するポート 80 と HTTP プロトコルを指定します。|

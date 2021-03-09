@@ -7,16 +7,16 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 0a19a0ed359cae61778866303d864d60e0e7606e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: aea2196671a136145671b977a6d925849b635b73
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229363"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92018697"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル:サーバー管理者とユーザー ロールを構成する
 
- このチュートリアルでは、SQL Server Management Studio (SSMS) を使用して Azure 内のサーバーに接続し、サーバー管理者とモデル データベースのロールを構成します。 また、[Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) についても紹介します。 TMSL は、1200 以上の互換性レベルの表形式モデル用 JSON ベース スクリプト言語です。 多くの表形式モデリング タスクの自動化に使用できます。 TMSL は PowerShell でよく使用されますが、このチュートリアルでは SSMS で XMLA クエリ エディターを使用します。 このチュートリアルでは、以下のタスクを実行します。 
+ このチュートリアルでは、SQL Server Management Studio (SSMS) を使用して Azure 内のサーバーに接続し、サーバー管理者とモデル データベースのロールを構成します。 また、[Tabular Model Scripting Language (TMSL)](/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200) についても紹介します。 TMSL は、1200 以上の互換性レベルの表形式モデル用 JSON ベース スクリプト言語です。 多くの表形式モデリング タスクの自動化に使用できます。 TMSL は PowerShell でよく使用されますが、このチュートリアルでは SSMS で XMLA クエリ エディターを使用します。 このチュートリアルでは、以下のタスクを実行します。 
   
 > [!div class="checklist"]
 > * ポータルからサーバー名を取得する
@@ -33,7 +33,7 @@ Azure Analysis Services のユーザー セキュリティの詳細について�
 - サブスクリプションで [Azure Analysis Services サーバー](../analysis-services-create-server.md)が作成されている。
 - [サーバー管理者アクセス許可](../analysis-services-server-admins.md)を持っている。
 - [adventureworks サンプル モデル](../analysis-services-create-sample-model.md)をサーバーに追加する。
-- [最新バージョンの SQL Server Management Studio (SSMS) をインストールする](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
+- [最新バージョンの SQL Server Management Studio (SSMS) をインストールする](/sql/ssms/download-sql-server-management-studio-ssms)。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -82,7 +82,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 ## <a name="add-a-user-to-the-model-database-administrator-role"></a>モデル データベース管理者ロールにユーザーを追加する
 
-このタスクでは、モデルに既に存在する Internet Sales Administrator ロールにユーザーまたはグループ アカウントを追加します。 このロールには、adventureworks サンプル モデル データベースのフル コントロール (管理者) アクセス許可があります。 このタスクでは、作成されたスクリプトで [CreateOrReplace](https://docs.microsoft.com/analysis-services/tmsl/createorreplace-command-tmsl) TMSL コマンドを使用します。
+このタスクでは、モデルに既に存在する Internet Sales Administrator ロールにユーザーまたはグループ アカウントを追加します。 このロールには、adventureworks サンプル モデル データベースのフル コントロール (管理者) アクセス許可があります。 このタスクでは、作成されたスクリプトで [CreateOrReplace](/analysis-services/tmsl/createorreplace-command-tmsl) TMSL コマンドを使用します。
 
 1. **オブジェクト エクスプローラー**で、 **[データベース]**  >  **[adventureworks]**  >  **[ロール]** を展開します。 
 2. **Internet Sales Administrator** を右クリックし、 **[ロールをスクリプト化]**  >  **[作成または置換]**  >  **[新しいクエリ エディター ウィンドウ]** をクリックします。
@@ -98,7 +98,7 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 ## <a name="add-a-new-model-database-role-and-add-a-user-or-group"></a>新しいモデル データベース ロールを追加し、ユーザーまたはグループを追加する
 
-このタスクでは、TMSL スクリプトで [Create](https://docs.microsoft.com/analysis-services/tmsl/create-command-tmsl) コマンドを使用して新しい Internet Sales Global ロールを作成し、そのロールに対して*読み取り*アクセス許可を指定し、Azure AD のユーザーまたはグループ アカウントを追加します。
+このタスクでは、TMSL スクリプトで [Create](/analysis-services/tmsl/create-command-tmsl) コマンドを使用して新しい Internet Sales Global ロールを作成し、そのロールに対して*読み取り*アクセス許可を指定し、Azure AD のユーザーまたはグループ アカウントを追加します。
 
 1. **オブジェクト エクスプローラー**で **[adventureworks]** を右クリックし、 **[新しいクエリ]**  >  **[XMLA]** の順にクリックします。 
 2. 次の TMSL スクリプトをコピーしてクエリ エディターに貼り付けます。
@@ -144,4 +144,3 @@ SSMS からサーバーに接続するには、まずサーバー名が必要で
 
 > [!div class="nextstepaction"]
 > [チュートリアル:Power BI Desktop を使用して接続する](analysis-services-tutorial-pbid.md)
-

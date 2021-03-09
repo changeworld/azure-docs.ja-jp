@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: juliako
-ms.openlocfilehash: c98d265f2d21c1e16ca787d4055eb4c2b1a89133
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: d6e64ed7476b3f9fd5427c2f3d26855bc4d5f97d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269084"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695765"
 ---
 # <a name="overview-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの概要
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-from-v2-to-v3.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 <br/>最新のバージョンである [Media Services v3](../latest/index.yml) をご確認ください。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Azure Media Services には、クラウド内のメディア エンコーディングに使用できる複数のオプションが用意されています。
 
@@ -34,14 +34,13 @@ Media Services を使い始める場合、コーデックとファイル形式�
 
 Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはSmooth Streamingでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
 
-Media Services アカウントの作成時に、**既定**のストリーミング エンドポイントが**停止**状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 ストリーミング エンドポイントの課金は、エンドポイントが**実行中**状態のときに発生します。
+Media Services アカウントの作成時に、**既定** のストリーミング エンドポイントが **停止** 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。 ストリーミング エンドポイントの課金は、エンドポイントが **実行中** 状態のときに発生します。
 
-Media Services は次のオンデマンド エンコーダーをサポートしてます。これらについてはこの記事で説明します。
+Media Services では、次のオンデマンド エンコーダーがサポートされています。
 
 * [メディア エンコーダー スタンダード](media-services-encode-asset.md#media-encoder-standard)
-* [メディア エンコーダー Premium ワークフロー](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-この記事には、オンデマンド メディア エンコーダーの簡単な説明と、詳しい情報を提供する記事のリンクが含まれています。 また、このトピックではエンコーダーを比較します。
+この記事には、オンデマンド メディア エンコーダーの簡単な説明と、詳しい情報を提供する記事のリンクが含まれています。
 
 既定では、1 つの Media Services アカウントにつき、同時に 1 つのアクティブなエンコーディング タスクを実行できます。 エンコード ユニットを予約して、複数のエンコード タスク (購入したエンコード予約ユニットごとに 1 つ) を同時に実行できます。 詳細については、「 [エンコード ユニットの拡大/縮小](media-services-scale-media-processing-overview.md)」を参照してください。
 
@@ -54,7 +53,7 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 [形式とコーデック](media-services-media-encoder-standard-formats.md)
 
 ### <a name="presets"></a>プリセット
-Media Encoder Standard は、 [ここ](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
+Media Encoder Standard は、 [ここ](./media-services-mes-presets-overview.md)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。
 
 ### <a name="input-and-output-metadata"></a>入力メタデータと出力メタデータ
 エンコーダーの入力メタデータの説明は [ここ](media-services-input-metadata-schema.md)にあります。
@@ -70,17 +69,8 @@ Media Encoder Standard は、 [ここ](https://go.microsoft.com/fwlink/?linkid=6
 ### <a name="create-overlays"></a>オーバーレイを作成する
 詳細については、「 [オーバーレイを作成する](media-services-advanced-encoding-with-mes.md#overlay)」をご覧ください。
 
-### <a name="see-also"></a>参照
+### <a name="see-also"></a>関連項目
 [Media Services ブログ](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
-
-## <a name="media-encoder-premium-workflow"></a>メディア エンコーダー Premium ワークフロー
-### <a name="overview"></a>概要
-[Azure Media Services の Premium Encoding の紹介 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
-
-### <a name="how-to-use"></a>使用方法
-メディア エンコーダー プレミアム ワークフロー は複雑なワークフローを使用して構成されています。 Workflow ファイルは、 [Workflow Designer](media-services-workflow-designer.md) ツールを使用して作成して更新できます。
-
-[Azure Media Services で Premium Encoding を使用する方法 (ブログの投稿)](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
 ### <a name="known-issues"></a>既知の問題
 入力ビデオにクローズド キャプションが含まれない場合でも、出力アセットには空の TTML ファイルが含まれます。

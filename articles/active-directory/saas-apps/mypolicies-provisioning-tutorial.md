@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: ea9a0e52ce424459b6c402eb136d06dd370bab7d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 221f63ab9a7eb3f71a4c730a11565dda64c9edc9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548046"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353587"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>チュートリアル:myPolicies を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -97,11 +97,11 @@ Azure AD で自動ユーザー プロビジョニング用に myPolicies を構�
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
 5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://<myPoliciesCustomDomain>.mypolicies.com/scim`」と入力します。`<myPoliciesCustomDomain>` は自分の myPolicies のカスタム ドメインです。 myPolicies のカスタム ドメインは URL から取得できます
 (例: `<demo0-qa>`.mypolicies.com)。
@@ -118,15 +118,26 @@ Azure AD で自動ユーザー プロビジョニング用に myPolicies を構�
 
 9. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to myPolicies]\(Azure Active Directory ユーザーを myPolicies に同期する\)** を選択します。
 
-    ![myPolicies のユーザー マッピング](media/mypolicies-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="[マッピング] セクションのスクリーンショット。[名前] の下に、[Synchronize Azure Active Directory Users to customappsso]\(Azure Active Directory ユーザーを customappsso に同期する\) が表示されています。" border="false":::
 
 10. **[属性マッピング]** セクションで、Azure AD から myPolicies に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で myPolicies のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-    ![myPolicies のユーザー マッピング](media/mypolicies-provisioning-tutorial/userattribute.png)
+   |属性|Type|
+   |---|---|
+   |userName|String|
+   |active|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |name.formatted|String|
+   |externalId|String|
+   |addresses[type eq "work"].country|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|リファレンス|
+
 
 11. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
 
-12. myPolicies に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+12. myPolicies に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
@@ -146,6 +157,10 @@ Azure AD プロビジョニング ログの読み取りの詳細については�
 
 * myPolicies では常に **userName**、**email**、**externalId** が必須です。
 * myPolicies では、ユーザー属性の物理的な削除はサポートされていません。
+
+## <a name="change-log"></a>ログの変更
+
+* 2020 年 9 月 15 日 - Users に "country" 属性のサポートを追加しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

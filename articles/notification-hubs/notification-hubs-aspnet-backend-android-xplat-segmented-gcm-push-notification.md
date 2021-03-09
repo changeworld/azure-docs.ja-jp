@@ -15,12 +15,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: f7f716e6b31afc882f7fcd1d6c8faa92afa82540
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c0c0018ac3007f77da820b9b0cecbb69c68bef31
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88004096"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92308303"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-android-devices-using-google-cloud-messaging-deprecated"></a>チュートリアル:Google Cloud Messaging (非推奨) を使用して特定の Android デバイスにプッシュ通知を送信する
 
@@ -342,4 +342,4 @@ ms.locfileid: "88004096"
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Azure portal]: https://portal.azure.com
-[wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
+[wns object]: /previous-versions/azure/reference/jj860484(v=azure.100)

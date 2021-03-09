@@ -3,15 +3,15 @@ title: PowerShell を使用した RDP プロパティのカスタマイズ - Azu
 description: PowerShell コマンドレットを使用して Windows Virtual Desktop 用の RDP プロパティをカスタマイズする方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/09/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 439f009d70775428a00f627160bf4d6b8ab9b089
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: cc3a08f383368b189e41bebd204707f2483e77c0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009105"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018309"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>ホスト プールのリモート デスクトップ プロトコル (RDP) プロパティをカスタマイズする
 
@@ -20,7 +20,17 @@ ms.locfileid: "88009105"
 
 マルチ モニター エクスペリエンスやオーディオ リダイレクトなど、ホスト プールのリモート デスクトップ プロトコル (RDP) のプロパティをカスタマイズすると、ニーズに基づいてユーザーに最適なエクスペリエンスを提供できます。 Azure portal を使用するか、**Update-AzWvdHostPool** コマンドレットで *-CustomRdpProperty* パラメーターを使用して、Windows Virtual Desktop の RDP プロパティをカスタマイズできます。
 
-サポートされているプロパティとその既定値の全リストについては、「[サポートされるリモート デスクトップ RDP ファイルの設定](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context)」を参照してください。
+サポートされているプロパティとその既定値の全リストについては、「[サポートされるリモート デスクトップ RDP ファイルの設定](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext)」を参照してください。
+
+## <a name="default-rdp-file-properties"></a>既定の RDP ファイルのプロパティ
+
+RDP ファイルには、既定で次のプロパティがあります。
+
+|RDP プロパティ|デスクトップ上|RemoteApp として|
+|---|---|---|
+|マルチモニター モード|無効|Enabled|
+|ドライブ リダイレクト有効|ドライブ、クリップボード、プリンター、COM ポート、およびスマート カード|ドライブ、クリップボード、プリンター|
+|リモート オーディオ モード|ローカルで再生|ローカルで再生|
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,9 +44,10 @@ Azure portal で RDP プロパティを構成するには
 2. 検索バーに「**windows virtual desktop**」と入力します。
 3. サービスの下で **[Windows Virtual Desktop]** を選択します。
 4. [Windows Virtual Desktop] ページで、画面の左側にあるメニューの **[ホスト プール]** を選択します。
-5. 更新する**ホスト プールの名前**を選択します。
-6. 画面の左側にあるメニューで **[プロパティ]** を選択します。
-7. **[プロパティ]** タブで、 **[RDP 設定]** に移動して、RDP のプロパティの編集を開始します。 プロパティは、PowerShell の例のように、セミコロンで区切られた形式にする必要があります。
+5. 更新する **ホスト プールの名前** を選択します。
+6. 画面の左側にあるメニューで **[RDP プロパティ]** を選択します。
+7. 必要なプロパティを設定します。
+   - または、 **[詳細]** タブを開き、次のセクションの PowerShell の例のように、セミコロンで区切られた形式で RDP プロパティを追加できます。
 8. 完了したら、 **[保存]** を選択して変更を保存します。
 
 次のセクションでは、PowerShell でカスタム RDP プロパティを手動で編集する方法について説明します。

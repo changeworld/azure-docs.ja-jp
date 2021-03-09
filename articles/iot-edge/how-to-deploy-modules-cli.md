@@ -4,32 +4,34 @@ description: Azure CLI を Azure IoT Extension と共に使用して、デプロ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/16/2019
+ms.date: 10/13/2020
 ms.topic: conceptual
-ms.reviewer: menchi
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 222e3e75d61096dc7aebb409213b8016e478c72b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6e4782ad25886c4121742634e9e73f62ff4f0a2c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501578"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370242"
 ---
 # <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI を使用して Azure IoT Edge モジュールをデプロイする
 
 ビジネス ロジックで IoT Edge モジュールを作成したら、それらをデバイスにデプロイしてエッジで動作させます。 連携してデータを収集および処理する複数のモジュールがある場合は、一度にそのすべてをデプロイし、それらを接続するルーティング規則を宣言できます。
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 これを使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。 新しい IoT 拡張機能によって、Azure CLI には、デバイス管理、完全な IoT Edge 対応などの機能が追加されました。
+[Azure CLI](/cli/azure) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 これを使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。 新しい IoT 拡張機能によって、Azure CLI には、デバイス管理、完全な IoT Edge 対応などの機能が追加されました。
 
 この記事では、JSON 配置マニフェストを作成し、そのファイルを使用して IoT Edge デバイスにデプロイをプッシュする方法を示します。 共有タグに基づいて複数のデバイスをターゲットとするデプロイの作成については、「[大規模な IoT Edge モジュールの展開と監視](how-to-deploy-cli-at-scale.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。
-* IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device.md#register-with-the-azure-cli)。
-* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az --version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。
+* IoT Edge デバイス
+
+  IoT Edge デバイスがセットアップされていない場合は、Azure 仮想マシンで作成できます。 クイックスタートの記事のいずれかの手順に従って、[仮想 Linux デバイスを作成](quickstart-linux.md)するか、[仮想 Windows デバイスを作成](quickstart.md)します。
+
+* ご使用の環境内の [Azure CLI](/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.70 以降である必要があります。 検証するには、`az --version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。
 * [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
@@ -40,13 +42,16 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 
 例として、1 つのモジュールでの基本的な配置マニフェストを次に示します。
 
+>[!NOTE]
+>このサンプルの配置マニフェストでは、IoT Edge エージェントとハブにスキーマ バージョン 1.1 を使用します。 スキーマ バージョン 1.1 は IoT Edge バージョン 1.0.10 と共にリリースされており、モジュールの起動順序やルートの優先順位付けなどの機能を使用できます。
+
 ```json
 {
   "content": {
     "modulesContent": {
       "$edgeAgent": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "runtime": {
             "type": "docker",
             "settings": {
@@ -59,7 +64,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
             "edgeAgent": {
               "type": "docker",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-agent:1.1",
                 "createOptions": "{}"
               }
             },
@@ -68,7 +73,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
               "status": "running",
               "restartPolicy": "always",
               "settings": {
-                "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+                "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
                 "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"5671/tcp\":[{\"HostPort\":\"5671\"}],\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
               }
             }
@@ -89,7 +94,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
       },
       "$edgeHub": {
         "properties.desired": {
-          "schemaVersion": "1.0",
+          "schemaVersion": "1.1",
           "routes": {
             "upstream": "FROM /messages/* INTO $upstream"
           },

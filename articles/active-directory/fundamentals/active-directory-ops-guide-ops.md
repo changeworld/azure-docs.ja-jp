@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: edb35986fcfc0e8855fa712b519ee7a8ca2f0ed8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: d5a8fe4192c3778e259ed18239a4198398d8807b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321958"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836837"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Azure Active Directory 一般的な運用ガイド リファレンス
 
@@ -43,13 +43,13 @@ Azure Active Directory を管理するには、ロールアウト プロジェ�
 | ハイブリッド ログの監視:パススルー認証エージェント | IAM 運用チーム |
 | ハイブリッド ログの監視:パスワード ライトバック サービス | IAM 運用チーム |
 | ハイブリッド ログの監視:オンプレミスのパスワード保護ゲートウェイ | IAM 運用チーム |
-| ハイブリッド ログの監視:Azure MFA NPS 拡張機能 (該当する場合) | IAM 運用チーム |
+| ハイブリッド ログの監視:Azure AD MFA NPS 拡張機能 (該当する場合) | IAM 運用チーム |
 
 リストを確認する際には、所有者が空のタスクに所有者を割り当てるか、上記の推奨事項に一致しない所有者を持つタスクの所有権を調整する必要がある場合があります。
 
 #### <a name="owners-recommended-reading"></a>所有者向けの推奨資料
 
-- [Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)
+- [Azure Active Directory での管理者ロールの割り当て](../roles/permissions-reference.md)
 - [Azure でのガバナンス](../../governance/index.yml)
 
 ## <a name="hybrid-management"></a>ハイブリッド管理
@@ -86,15 +86,15 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 ### <a name="on-premises-agents-logs"></a>オンプレミスのエージェント ログ
 
-一部の ID 管理とアクセス管理サービスでは、ハイブリッドシナリオを有効にするためにオンプレミスのエージェントが必要です。 例としては、パスワードのリセット、パススルー認証 (PTA)、Azure AD アプリケーション プロキシ、Azure MFA NPS 拡張機能などがあります。 運用チームが、System Center Operations Manager や SIEM などのソリューションを使用して、コンポーネント エージェントのログをアーカイブおよび分析することで、これらのコンポーネントのベースラインを設定して正常性を監視することが重要です。 また、エラーのパターンをトラブルシューティングする方法については、Infosec 運用チームまたはヘルプデスクにとっても重要です。
+一部の ID 管理とアクセス管理サービスでは、ハイブリッドシナリオを有効にするためにオンプレミスのエージェントが必要です。 例としては、パスワードのリセット、パススルー認証 (PTA)、Azure AD アプリケーション プロキシ、Azure AD MFA NPS 拡張機能などがあります。 運用チームが、System Center Operations Manager や SIEM などのソリューションを使用して、コンポーネント エージェントのログをアーカイブおよび分析することで、これらのコンポーネントのベースラインを設定して正常性を監視することが重要です。 また、エラーのパターンをトラブルシューティングする方法については、Infosec 運用チームまたはヘルプデスクにとっても重要です。
 
 #### <a name="on-premises-agents-logs-recommended-reading"></a>オンプレミスのエージェント ログに関する推奨資料
 
 - [アプリケーション プロキシのトラブルシューティング](../manage-apps/application-proxy-troubleshoot.md)
-- [セルフサービス パスワード リセット のトラブルシューティング - Azure Active Directory](../authentication/active-directory-passwords-troubleshoot.md#password-writeback-event-log-error-codes)
+- [セルフサービス パスワード リセット のトラブルシューティング - Azure Active Directory](../authentication/troubleshoot-sspr.md)
 - [Azure AD アプリケーション プロキシ コネクタについて](../manage-apps/application-proxy-connectors.md)
 - [Azure AD Connect:パススルー認証のトラブルシューティング](../hybrid/tshoot-connect-pass-through-authentication.md#collecting-pass-through-authentication-agent-logs)
-- [Azure MFA NPS 拡張機能のエラー コードのトラブルシューティング](../authentication/howto-mfa-nps-extension-errors.md)
+- [Azure AD MFA NPS 拡張機能のエラー コードのトラブルシューティング](../authentication/howto-mfa-nps-extension-errors.md)
 
 ### <a name="on-premises-agents-management"></a>オンプレミスのエージェント管理
 
@@ -125,9 +125,9 @@ Azure AD Connect および AD FS を監視するために組織は [Azure AD Con
 
 ### <a name="notifications"></a>通知
 
-Microsoft は、管理者に電子メール通知を送信して、サービスのさまざまな変更、必要な構成の更新、および管理者の介入が必要なエラーを通知します。 お客様は、通知の電子メールアドレスを設定して、すべての通知を確認して対処することができる適切なチームメンバーに通知を送信することが重要です。 [Office 365 メッセージ センター](/office365/admin/manage/message-center) に複数の受信者を追加し、通知 (Azure AD Connect Health 通知を含む) を配布リストまたは共有メールボックスに送信するように要求することをお勧めします。 メール アドレスを持つグローバル管理者アカウントが 1 つしかない場合は、メールに対応しているアカウントを少なくとも 2 つ構成してください。
+Microsoft は、管理者に電子メール通知を送信して、サービスのさまざまな変更、必要な構成の更新、および管理者の介入が必要なエラーを通知します。 お客様は、通知の電子メールアドレスを設定して、すべての通知を確認して対処することができる適切なチームメンバーに通知を送信することが重要です。 [メッセージ センター](/office365/admin/manage/message-center) に複数の受信者を追加し、通知 (Azure AD Connect Health 通知を含む) を配布リストまたは共有メールボックスに送信するように要求することをお勧めします。 メール アドレスを持つグローバル管理者アカウントが 1 つしかない場合は、メールに対応しているアカウントを少なくとも 2 つ構成してください。
 
-Azure AD によって使用される "差出人" アドレスは 2 つあります。<o365mc@email2.microsoft.com> は、Office 365 のメッセージ センターの通知に使用され、<azure-noreply@microsoft.com> 以下に関連する通知を送信します。
+Azure AD によって使用される "差出人" アドレスは 2 つあります。<o365mc@email2.microsoft.com> は、メッセージ センターの通知に使用され、<azure-noreply@microsoft.com> 以下に関連する通知を送信します。
 
 - [Azure AD アクセス レビュー](../governance/access-reviews-overview.md)
 - [Azure AD Connect Health](../hybrid/how-to-connect-health-operations.md#enable-email-notifications)
@@ -141,20 +141,20 @@ Azure AD によって使用される "差出人" アドレスは 2 つありま�
 | 通知の送信元 | 送信内容 | 確認する場所 |
 |:-|:-|:-|
 | 技術部連絡先 | 同期エラー | Azure portal - プロパティ ブレード |
-| Office 365 メッセージ センター | Identity Services および O365 バックエンド サービスのインシデントと低下の通知 | Office ポータル |
+| メッセージ センター | Identity Services および Microsoft 365 バックエンド サービスのインシデントと低下の通知 | Office ポータル |
 | Identity Protection の毎週のダイジェスト | Identity Protection のダイジェスト | Azure AD Identity Protection ブレード |
 | Azure AD Connect Health | アラート通知 | Azure Portal - Azure AD Connect Health ブレード |
 | エンタープライズ アプリケーションの通知 | 証明書の有効期限が近い場合、およびプロビジョニング エラーが発生したときの通知 | Azure portal - エンタープライズ アプリケーション ブレード (各アプリには独自のメール アドレス設定があります) |
 
 #### <a name="notifications-recommended-reading"></a>通知に関する推奨資料
 
-- [組織の住所、技術部連絡先、およびその他の情報を変更する - Office 365](/office365/admin/manage/change-address-contact-and-more)
+- [組織の住所、技術部連絡先、およびその他の情報を変更する](/office365/admin/manage/change-address-contact-and-more)
 
 ## <a name="operational-surface-area"></a>運用における外部からのアクセス
 
 ### <a name="ad-fs-lockdown"></a>AD FS のロックダウン
 
-Azure AD で直接認証されるようアプリケーションを構成している組織は、 [Azure AD スマート ロックアウト](../authentication/concept-sspr-howitworks.md)を利用できます。 Windows Server 2012 R2 で AD FS を使っている場合は、AD FS の [エクストラネット ロックアウト保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)を実装します。 Windows Server 2016 以降で AD FS を使っている場合は、 [エクストラネット スマート ロックアウト](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)を実装します。 少なくとも、オンプレミスの Active Directory へのブルート フォース攻撃のリスクを含むように、エクストラネット ロックアウトを有効にすることをお勧めします。 ただし、Windows 2016 以降で AD FS を利用している場合は、[パスワード スプレー](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)攻撃を軽減するのに役立つ、エクストラネットのスマート ロックアウトも有効にする必要があります。
+Azure AD で直接認証されるようアプリケーションを構成している組織は、[Azure AD スマート ロックアウト](../authentication/concept-sspr-howitworks.md)を利用できます。 Windows Server 2012 R2 で AD FS を使っている場合は、AD FS の[エクストラネット ロックアウト保護](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)を実装します。 Windows Server 2016 以降で AD FS を使っている場合は、[エクストラネット スマート ロックアウト](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016)を実装します。 少なくとも、オンプレミスの Active Directory へのブルート フォース攻撃のリスクを含むように、エクストラネット ロックアウトを有効にすることをお勧めします。 ただし、Windows 2016 以降で AD FS を利用している場合は、[パスワード スプレー](https://www.microsoft.com/microsoft-365/blog/2018/03/05/azure-ad-and-adfs-best-practices-defending-against-password-spray-attacks/)攻撃を軽減するのに役立つ、エクストラネットのスマート ロックアウトも有効にする必要があります。
 
 AD FS が Azure AD フェデレーションにのみ使用される場合、攻撃対象を最小限に抑えるために無効にできるエンドポイントがいくつかあります。 たとえば、AD FS が Azure AD にのみ使用される場合、**usernamemixed** および **windowstransport** に対して有効になっているエンドポイント以外の WS-Trust エンドポイントを無効にする必要があります。
 
@@ -166,9 +166,9 @@ Active Directory 管理階層モデルは、環境のフル コントロール (
 
 [階層モデル](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)は 3 つのレベルで構成され、管理者アカウントのみが含まれ、標準ユーザー アカウントは含まれません。
 
-- **階層 0** - 環境内のエンタープライズ ID を直接管理します。 階層 0 には、Active Directory フォレスト、ドメイン、ドメイン コントローラー、それに含まれるすべての資産を直接的または間接的に管理するアカウント、グループ、その他の資産が含まれます。 階層 0 のすべての資産は、事実上相互に管理しあっているため、セキュリティの機密性は同じです。
-- **階層 1** - エンタープライズ サーバーとアプリケーションを管理します。 階層 1 の資産には、サーバーのオペレーティング システム、クラウド サービス、エンタープライズ アプリケーションが含まれます。 階層 1 の管理者アカウントによって、これらの資産でホストされている多くのビジネス価値を管理します。 一般的なロールの例として、すべてのエンタープライズ サービスに影響する機能を持つこれらのオペレーティング システムを管理しているサーバー管理者があります。
-- **階層 2** - ユーザーのワークステーションとデバイスを管理します。 階層 2 の管理者アカウントによって、ユーザーのワークステーションやデバイスでホストされている多くのビジネス価値を管理します。 例としては、ヘルプ デスクやコンピューター サポートの管理者が挙げられます。ほとんどのユーザー データの整合性に影響を及ぼす可能性があるためです。
+- **階層 0**: 環境内のエンタープライズ ID を直接管理します。 階層 0 には、Active Directory フォレスト、ドメイン、ドメイン コントローラー、それに含まれるすべての資産を直接的または間接的に管理するアカウント、グループ、その他の資産が含まれます。 階層 0 のすべての資産は、事実上相互に管理しあっているため、セキュリティの機密性は同じです。
+- **階層 1**: エンタープライズ サーバーとアプリケーションを管理します。 階層 1 の資産には、サーバーのオペレーティング システム、クラウド サービス、エンタープライズ アプリケーションが含まれます。 階層 1 の管理者アカウントによって、これらの資産でホストされている多くのビジネス価値を管理します。 一般的なロールの例として、すべてのエンタープライズ サービスに影響する機能を持つこれらのオペレーティング システムを管理しているサーバー管理者があります。
+- **階層 2**: - ユーザーのワークステーションとデバイスを管理します。 階層 2 の管理者アカウントによって、ユーザーのワークステーションやデバイスでホストされている多くのビジネス価値を管理します。 例としては、ヘルプ デスクやコンピューター サポートの管理者が挙げられます。ほとんどのユーザー データの整合性に影響を及ぼす可能性があるためです。
 
 ドメイン コントローラーの場合と同じ方法で、Azure AD Connect、AD FS、SQL サービスなどのオンプレミスの ID コンポーネントへのアクセスをロックダウンします。
 

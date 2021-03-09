@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
-ms.openlocfilehash: eaada1981929cec890ce3c8ca89fe47393730b05
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f324ef44d002f50bf27c08072e904c1d92b5512f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136678"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026235"
 ---
 # <a name="functions-in-the-hyperscale-citus-sql-api"></a>Hyperscale (Citus) SQL API の関数
 
@@ -20,7 +20,7 @@ ms.locfileid: "88136678"
 
 > [!NOTE]
 >
-> 以前のバージョンの Citus エンジンを実行している Hyperscale サーバー グループでは、以下に示す機能の一部が提供されない場合があります。
+> 以前のバージョンの Citus エンジンを実行している Hyperscale (Citus) サーバー グループでは、以下に示す機能の一部が提供されない場合があります。
 
 ## <a name="table-and-shard-ddl"></a>テーブルおよびシャードの DDL
 
@@ -40,7 +40,7 @@ create\_distributed\_table() 関数は、分散テーブルを定義し、それ
 
 **colocate\_with:** (省略可能) 現在のテーブルを別のテーブルのコロケーション グループに含めます。 既定では、テーブルが同じ型の列によって分散され、同じシャード数を持ち、レプリケーション係数が同じ場合にそのテーブルは併置されます。 `colocate_with` に使用できる値は `default`、新しいコロケーション グループを開始する場合の `none`、またはそのテーブルと併置する別のテーブルの名前です。  ([テーブル コロケーション](concepts-hyperscale-colocation.md)に関するページを参照してください。)
 
-`colocate_with` の既定値を使用すると、暗黙的にコロケーションが行われることに注意してください。 [コロケーション](concepts-hyperscale-colocation.md)は、テーブルが関連付けられている場合や結合される場合に便利です。  ただし、2 つのテーブルが互いに関連付けられておらず、ディストリビューション列に同じデータ型を使用する場合、誤って併置すると[シャード再調整](howto-hyperscale-scaling.md#rebalance-shards)中のパフォーマンスが低下する可能性があります。  テーブルのシャードは、\"カスケード形式\" で不必要に関連付けられて移動されます。
+`colocate_with` の既定値を使用すると、暗黙的にコロケーションが行われることに注意してください。 [コロケーション](concepts-hyperscale-colocation.md)は、テーブルが関連付けられている場合や結合される場合に便利です。  ただし、2 つのテーブルが互いに関連付けられておらず、ディストリビューション列に同じデータ型を使用する場合、誤って併置すると[シャード再調整](howto-hyperscale-scale-rebalance.md)中のパフォーマンスが低下する可能性があります。  テーブルのシャードは、\"カスケード形式\" で不必要に関連付けられて移動されます。
 
 新しい分散テーブルが他のテーブルに関連付けられていない場合は、`colocate_with => 'none'` を指定することをお勧めします。
 
@@ -713,7 +713,7 @@ SELECT replicate_table_shards('github_events', max_shard_copies:=10);
 
 **tenant\_id:** 新しいシャードに割り当てられるディストリビューション列の値。
 
-**cascade\_option:** (省略可能) \"CASCADE\" に設定すると、現在のテーブルの[コロケーション グループ](concepts-hyperscale-colocation.md)内のすべてのテーブルからもシャードが分離されます。
+**cascade\_option:** (省略可能) \"CASCADE\" に設定すると、現在のテーブルの [コロケーション グループ](concepts-hyperscale-colocation.md)内のすべてのテーブルからもシャードが分離されます。
 
 #### <a name="return-value"></a>戻り値
 

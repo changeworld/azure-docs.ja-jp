@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: af75c80c4380754ef1b0020108d3b6ad953f242f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dc4ef937a032a5156164eaee59908c9ee0319fdb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88541971"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350162"
 ---
 # <a name="tutorial-configure-templafy-for-automatic-user-provisioning"></a>チュートリアル:Templafy を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -58,11 +58,11 @@ Azure AD での自動ユーザー プロビジョニング用に Templafy を構
 
 2. **[認証方法]** をクリックします。
 
-    ![Templafy の SCIM の追加](media/templafy-provisioning-tutorial/image01.png)
+    ![Templafy 管理セクションのスクリーンショット。[認証方法] オプションが選択されています。](media/templafy-provisioning-tutorial/image01.png)
 
-3. **SCIM Api キー**の値をコピーします。 この値を、Azure portal 上で Templafy アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
+3. **SCIM Api キー** の値をコピーします。 この値を、Azure portal 上で Templafy アプリケーションの [プロビジョニング] タブ内の **[シークレット トークン]** フィールドに入力します。
 
-    ![Templafy の SCIM の追加](media/templafy-provisioning-tutorial/image02.png)
+    ![SCIM API キーのスクリーンショット。](media/templafy-provisioning-tutorial/image02.png)
 
 ## <a name="add-templafy-from-the-gallery"></a>ギャラリーからの Templafy の追加
 
@@ -91,7 +91,7 @@ Azure AD で自動ユーザー プロビジョニング用に Templafy を構成
 このセクションでは、Azure AD でのユーザーやグループの割り当てに基づいて Templafy のユーザーやグループを作成、更新、無効化するように Azure AD プロビジョニング サービスを構成する手順について説明します。
 
 > [!TIP]
-> Templafy では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Templafy シングル サインオンのチュートリアル](templafy-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Templafy で SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Templafy シングル サインオンのチュートリアル](templafy-tutorial.md)で説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
 ### <a name="to-configure-automatic-user-provisioning-for-templafy-in-azure-ad"></a>Azure AD 内で Templafy の自動ユーザー プロビジョニングを構成するには、次の操作を実行します。
 
@@ -105,13 +105,13 @@ Azure AD で自動ユーザー プロビジョニング用に Templafy を構成
 
 3. **[プロビジョニング]** タブを選択します。
 
-    ![[プロビジョニング] タブ](common/provisioning.png)
+    ![[プロビジョニング] オプションが強調表示された [管理] オプションのスクリーンショット。](common/provisioning.png)
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-    ![[プロビジョニング] タブ](common/provisioning-automatic.png)
+    ![[自動] オプションが強調表示された [プロビジョニング モード] ドロップダウン リストのスクリーンショット。](common/provisioning-automatic.png)
 
-5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://scim.templafy.com/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM API キー**の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Templafy への接続を確保します。 接続できない場合は、使用中の Templafy アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+5. **[管理者資格情報]** セクションの **[テナントの URL]** に「`https://scim.templafy.com/scim`」と入力します。 **[シークレット トークン]** に先ほど取得した **SCIM API キー** の値を入力します。 **[テスト接続]** をクリックして、Azure AD から Templafy への接続を確保します。 接続できない場合は、使用中の Templafy アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
     ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
 

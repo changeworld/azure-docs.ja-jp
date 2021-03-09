@@ -1,15 +1,14 @@
 ---
 title: 'アプリケーションのアップグレード: データのシリアル化'
 description: データのシリアル化のベスト プラクティスとデータのシリアル化がアプリケーションのローリング アップグレードに与える影響
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: d502e74139c543d4183a75faa6bea1948d9f3e56
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9474a0bf8041ac541389f782f60bf1220d690cde
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247984"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575637"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>データのシリアル化がアプリケーションのアップグレードに与える影響
 [アプリケーションのローリング アップグレード](service-fabric-application-upgrade.md)では、アップグレードはノードのサブセットに、一度に 1 つのアップグレード ドメインのみに適用されます。 このプロセス中に、一部のアップグレード ドメインがアプリケーションの新しいバージョンになり、一部のアップグレード ドメインはアプリケーションの以前のバージョンになります。 ロールアウト時に、アプリケーションの新しいバージョンは、古いバージョンのデータを、アプリケーションの古いバージョンは新しいバージョンのデータを読み取ることができる必要があります。 データ形式の上位互換性と下位互換性がない場合は、アップグレードが失敗するか、データが失われたり、破損したりするおそれがあります。 この記事では、データ形式の構成要素と、データが上位互換性と下位互換性を確保するためのベスト プラクティスについて説明します。

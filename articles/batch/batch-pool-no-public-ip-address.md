@@ -3,14 +3,15 @@ title: パブリック IP アドレスのない Azure Batch プールを作成�
 description: パブリック IP アドレスのないプールを作成する方法について説明します
 author: pkshultz
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 12/9/2020
 ms.author: peshultz
-ms.openlocfilehash: 30792314f5bffaf4d40fc4bf60a2706acdaad34b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.custom: references_regions
+ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85962443"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007672"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>パブリック IP アドレスのない Azure Batch プールを作成する
 
@@ -18,13 +19,14 @@ Azure Batch プールを作成する場合は、パブリック IP アドレス�
 
 ## <a name="why-use-a-pool-without-public-ip-addresses"></a>パブリック IP アドレスのないプールを使用する理由
 
-既定では、Azure Batch 仮想マシン構成プール内のすべてのコンピューティング ノードに、パブリック IP アドレスが割り当てられます。 このアドレスは、タスクをスケジュールするため、およびコンピューティング ノードとの通信 (インターネットへの送信アクセスなど) を行うために Batch サービスによって使用されます。 
+既定では、Azure Batch 仮想マシン構成プール内のすべてのコンピューティング ノードに、パブリック IP アドレスが割り当てられます。 このアドレスは、タスクをスケジュールするため、およびコンピューティング ノードとの通信 (インターネットへの送信アクセスなど) を行うために Batch サービスによって使用されます。
 
 これらのノードへのアクセスを制限し、インターネットからのこれらのノードの探索可能性を低く抑えるには、パブリック IP アドレスのないプールをプロビジョニングできます。
 
 > [!IMPORTANT]
-> Azure Batch でのパブリック IP アドレスのないプールのサポートについては現在、米国中西部、米国東部、米国中南部、米国西部 2、US Gov バージニア、US Gov アリゾナの各リージョンでパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> 現在、次のリージョンでは、パブリック IP アドレスがない Azure Batch プールのサポートは、パブリックプレビュー段階にあります。フランス中部、東アジア、米国中西部、米国中南部、米国西部 2、米国東部、北ヨーロッパ、米国東部 2、米国中部、西ヨーロッパ、米国中北部、米国西部、オーストラリア東部、東日本、西日本
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
+> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,8 +35,8 @@ Azure Batch プールを作成する場合は、パブリック IP アドレス�
 - **Azure VNet**。 [仮想ネットワーク](batch-virtual-network.md)内にプールを作成する場合は、次の要件と構成に従ってください。 1 つまたは複数のサブネットを持つ VNet を前もって用意するために、Azure Portal、Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、その他の方法を利用できます。
   - VNET が存在するサブスクリプションとリージョンは、プールの作成に使用する Batch アカウントと同じである必要があります。
   - プールに指定されたサブネットには、プールの対象となる VM 数 (つまり、プールの `targetDedicatedNodes` および `targetLowPriorityNodes` プロパティの合計) に対応できる十分な未割り当て IP アドレスが必要です。 サブネットの未割り当て IP アドレスが十分でない場合、プールによってコンピューティング ノードが部分的に割り当てられ、サイズ変更エラーが発生します。
-  - プライベート リンク サービスとエンドポイントのネットワーク ポリシーを無効にする必要があります。 これを行うには Azure CLI を使用します: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
-  
+  - プライベート リンク サービスとエンドポイントのネットワーク ポリシーを無効にする必要があります。 これを行うには Azure CLI を使用します: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --resouce-group <resourcegroup> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
+
 > [!IMPORTANT]
 > 100 の専用ノードまたは優先順位の低いノードごとに、プライベート リンク サービスが 1 つおよびロード バランサーが 1 つ、Batch によって割り当てられます。 これらのリソースは、サブスクリプションの[リソース クォータ](../azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 大規模なプールでは、これらの 1 つまたは複数のリソースについて、[クォータの引き上げの要求](batch-quota-limit.md#increase-a-quota)が必要になる場合があります。 また、Batch によって作成されたリソースにはリソース ロックを適用しないでください。そうしないと、プールの削除やゼロへのサイズ変更など、ユーザーが開始した操作の結果として、リソースのクリーンアップが妨げられるからです。
 
@@ -46,7 +48,7 @@ Azure Batch プールを作成する場合は、パブリック IP アドレス�
 
 ## <a name="create-a-pool-without-public-ip-addresses-in-the-azure-portal"></a>Azure portal でパブリック IP アドレスのないプールを作成する
 
-1. Azure Portal の Batch アカウントに移動します。 
+1. Azure Portal の Batch アカウントに移動します。
 1. 左側の **[設定]** ウィンドウで、 **[プール]** を選択します。
 1. **[プール]** ウィンドウで、 **[追加]** を選択します。
 1. **[プールの追加]** ウィンドウで、 **[イメージの種類]** ドロップダウンから、使用する予定のオプションを選択します。
@@ -55,7 +57,7 @@ Azure Batch プールを作成する場合は、パブリック IP アドレス�
 1. 必要に応じて、使用する仮想ネットワークとサブネットを選択します。 この仮想ネットワークは、作成するプールと同じリソース グループに存在する必要があります。
 1. **[IP アドレスのプロビジョニングの種類]** で、 **[NoPublicIPAddresses]** を選択します。
 
-![NoPublicIPAddresses が選択された [プールの追加] 画面](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
+![NoPublicIPAddresses が選択された [プールの追加] 画面のスクリーンショット。](./media/batch-pool-no-public-ip-address/create-pool-without-public-ip-address.png)
 
 ## <a name="use-the-batch-rest-api-to-create-a-pool-without-public-ip-addresses"></a>Batch REST API を使用して、パブリック IP アドレスなしのプールを作成する
 
@@ -91,7 +93,7 @@ client-request-id: 00000000-0000-0000-0000-000000000000
      "resizeTimeout": "PT15M",
      "targetDedicatedNodes": 5,
      "targetLowPriorityNodes": 0,
-     "maxTasksPerNode": 3,
+     "taskSlotsPerNode": 3,
      "taskSchedulingPolicy": {
           "nodeFillType": "spread"
      },

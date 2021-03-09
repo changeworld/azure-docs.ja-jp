@@ -1,17 +1,17 @@
 ---
 title: Advanced Threat Protection - Azure Database for MariaDB
 description: Advanced Threat Protection は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 8485907eba75f80c8f0ed4fd0cc7368c6147b9fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 98eacad1b8a10be175846401eaa733c888f765e1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79532180"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661621"
 ---
 # <a name="azure-database-for-mariadb-advanced-threat-protection"></a>Azure Database for MariaDB Advanced Threat Protection
 
@@ -23,7 +23,7 @@ Azure Database for MariaDB 用の Advanced Threat Protection は、データベ�
 Advanced Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Data Security オファリングの一部です。 Advanced Threat Protection は、[Azure portal](https://portal.azure.com) 経由でアクセスおよび管理できます。 この機能は、General Purpose サーバーとメモリ最適化サーバーでご利用いただけます。
 
 > [!NOTE]
-> Advanced Threat Protection 機能は、次の Azure Government およびソブリン クラウド リージョンでは使用**できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
+> Advanced Threat Protection 機能は、次の Azure Government およびソブリン クラウド リージョンでは使用 **できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
 
 
 ## <a name="what-is-advanced-threat-protection"></a>Advanced Threat Protection とは
@@ -42,6 +42,6 @@ Azure Database for MariaDB 用の Advanced Threat Protection は、データベ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について参照してください
+* [Azure Security Center](../security-center/security-center-introduction.md) の詳細について参照してください
 * 価格の詳細については、「[Azure Database for MariaDB の価格](https://azure.microsoft.com/pricing/details/mariadb/)」ページを参照してください 
-* Azure portal を使用して [Azure Database for MariaDB Advanced Threat Protection](howto-database-threat-protection-portal.md) を構成する  
+* Azure portal を使用して [Azure Database for MariaDB Advanced Threat Protection](howto-database-threat-protection-portal.md) を構成する

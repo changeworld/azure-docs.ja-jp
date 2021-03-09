@@ -1,14 +1,16 @@
 ---
 title: ナレッジ ベースの編集 - QnA Maker
 description: QnA Maker では、使いやすい編集環境で、ナレッジ ベースのコンテンツを管理することができます。
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 52aaaf630806ed6c71101860a1286f88a23ec3fa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8d9f54c1fcd142c77fb73c294b81bf0f11ee083f
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054013"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557698"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>ナレッジベースで QnA ペアを編集する
 
@@ -18,7 +20,26 @@ QnA ペアは、ファイルや URL などのデータソースから追加さ�
 
 <a name="add-an-editorial-qna-set"></a>
 
+## <a name="question-and-answer-pairs"></a>質問と回答のペア
+
+ナレッジ ベースは、複数の質問と回答 (QnA) のペアで構成されています。  各ペアには 1 つの回答が含まれています。また、1 つのペアには、その "_回答_" に関連付けられているすべての情報が含まれます。 回答は、おおまかに言うと、データベースの行またはデータ構造インスタンスと似ています。 質問と回答 (QnA) のペアで **必須の** 設定は次のとおりです。
+
+* **質問** - ユーザー クエリのテキスト。表現は異なっても回答は同じになるユーザーの質問のテキストに合わせるために、QnA Maker の機械学習で使用されます
+* **回答** - ペアの回答は、ユーザーのクエリが関連付けられている質問と一致するときに返される応答です
+
+各ペアは、**ID** で表されます。
+
+ペアの **省略可能な** 設定は次のとおりです。
+
+* **別の形式の質問** - これは、QnA Maker からさまざまな質問の表現に対して正しい回答を返すために役立ちます
+* **Metadata**:メタデータは、QnA ペアに関連付けられたタグであり、キーと値のペアとして表されます。 メタデータ タグは、QnA ペアをフィルター処理してクエリとのマッチングを行う対象を制限するために使用されます。
+* **複数ターンのプロンプト** は複数ターンの会話を続けるために使用されます
+
+![QnA Maker ナレッジ ベース](../media/qnamaker-concepts-knowledgebase/knowledgebase.png)
+
 ## <a name="add-an-editorial-qna-pair"></a>編集 QnA ペアを追加する
+
+ナレッジ ベースの内容にする既存のコンテンツがない場合は、QnA Maker ポータルで編集という形で QnA ペアを追加することができます。
 
 1. [QnA ポータル](https://www.qnamaker.ai/)にサインインし、QnA ペアを追加するナレッジ ベースを選択します。
 1. ナレッジ ベースの **[編集]** ページで、 **[QnA ペアの追加]** を選択し、新しい QnA ペアを追加します。
@@ -72,7 +93,7 @@ QnA ペアは、ファイルや URL などのデータソースから追加さ�
 
 
     > [!div class="mx-imgBorder"]
-    > ![リッチテキスト エディターを使用して、パブリックにアクセスできるイメージと、その代替テキストを追加します。](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+    > ![インプレース エディターのスクリーンショット。パブリック アクセスできるイメージの URL を確認できます。イメージの代替テキストが入力されています。](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
 
 1. 回答のテキストを選択してからツールバーの [リンク] アイコンを選択するか、ツールバーのリンク アイコンを選択してから新しいテキストと URL を入力して、URL へのリンクを追加します。
 
@@ -85,7 +106,7 @@ QnA ペアは、ファイルや URL などのデータソースから追加さ�
 
 ## <a name="delete-a-qna-pair"></a>QnA ペアの削除
 
-QnA を削除するには、QnA 行の右端にある**削除**アイコンをクリックします。 これは、永続的な操作です。 この操作を元に戻すことはできません。 ペアを削除する前に、 **[パブリッシュ]** ページから KB をエクスポートすることを検討してください。
+QnA を削除するには、QnA 行の右端にある **削除** アイコンをクリックします。 これは、永続的な操作です。 この操作を元に戻すことはできません。 ペアを削除する前に、 **[パブリッシュ]** ページから KB をエクスポートすることを検討してください。
 
 ![QnA ペアの削除](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
@@ -126,11 +147,19 @@ QnA ペアのリンクは、[フォローアップ プロンプト](multiturn-co
 
 回答の[リッチテキスト編集](#add-an-editorial-qna-set)では、作成者は、書式設定ツールバーを使用して、テキストをすばやく選択し、書式設定することができます。
 
-[Markdown](../reference-markdown-format.md) は、CI/CD パイプラインの一部として、または[バッチ テスト](../Quickstarts/batch-testing.md)のためにインポートされるナレッジ ベースを作成するために、コンテンツを自動生成する必要がある場合に適しています。
+[Markdown](../reference-markdown-format.md) は、CI/CD パイプラインの一部として、または[バッチ テスト](../index.yml)のためにインポートされるナレッジ ベースを作成するために、コンテンツを自動生成する必要がある場合に適しています。
+
+## <a name="editing-your-knowledge-base-locally"></a>ナレッジ ベースのローカルな編集
+
+ナレッジ ベースを作成した後は、ローカル ファイルにエクスポートして再インポートするのではなく、[QnA Maker ポータル](https://qnamaker.ai)でナレッジ ベースのテキストを編集することをお勧めします。 ただし、ローカル環境でナレッジ ベースを編集することが必要になる場合があります。
+
+**[設定]** ページからナレッジ ベースをエクスポートした後、Microsoft Excel でナレッジ ベースを編集します。 エクスポートしたファイルを別のアプリケーションで編集した場合、アプリケーションが TSV に完全に準拠していないため、構文エラーが発生する可能性があります。 Microsoft Excel の TSV ファイルでは一般に、書式エラーが発生することはありません。
+
+編集が終わったら、 **[設定]** ページから TSV ファイルを再インポートします。 これにより、現在のナレッジ ベースが、インポートしたナレッジ ベースに完全に置き換えられます。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの共同作業](./collaborate-knowledge-base.md)
+> [ナレッジ ベースの共同作業](../index.yml)
 
 * [QnA Maker によって使用される Azure リソースを管理する](set-up-qnamaker-service-azure.md)

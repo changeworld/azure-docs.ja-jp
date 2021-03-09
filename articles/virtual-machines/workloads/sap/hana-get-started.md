@@ -10,17 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: c51a2a06-6e97-429b-a346-b433a785c9f0
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 83c149e92276265b5b5236ae56c475d7307c18e4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509962"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093912"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines への SAP HANA のインストール
 ## <a name="introduction"></a>はじめに
@@ -87,7 +88,7 @@ Azure 固有の手順の 1 つは、SAP Host Agent の監視データを提供�
 -  [SAP NetWeaver のための Azure Virtual Machines のデプロイ](./deployment-guide.md#d98edcd3-f2a1-49f7-b26a-07448ceb60ca)
 
 ## <a name="sap-hana-installation"></a>SAP HANA のインストール
-Azure Virtual Machine をデプロイし、オペレーティング システムを登録して構成したら、SAP のインストールに従って SAP HANA をインストールできます。 このドキュメントを取得するには、まず、SAP の [HANA リソース](https://www.sap.com/products/hana/implementation/resources.html)の Web サイトをご覧ください。
+Azure Virtual Machine をデプロイし、オペレーティング システムを登録して構成したら、SAP のインストールに従って SAP HANA をインストールできます。 このドキュメントを取得するには、まず、SAP の [HANA リソース](https://www.sap.com/products/s4hana-erp.html?btp=9d3e6f82-d8ab-4122-8d2d-bf4971217afd)の Web サイトをご覧ください。
 
 Azure Premium Storage または Ultra ディスクの直接接続ディスクを使用する SAP HANA スケールアウト構成については、「[Azure における SAP HANA インフラストラクチャの構成と運用](./hana-vm-operations.md#configuring-azure-infrastructure-for-sap-hana-scale-out)」ドキュメントで詳細を確認してください。
 

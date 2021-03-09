@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Azure Digital Twins プレビューのドキュメント
+title: Azure Digital Twins のドキュメント
 summary: Azure Digital Twins を使用して資産、環境、ビジネス システムのデジタル版を作成し、現実世界を模した次世代の IoT ソリューションを構築する方法を説明します。
 metadata:
-  title: Azure Digital Twins プレビューのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  title: Azure Digital Twins のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: Azure Digital Twins を使って、人、場所、物を繋ぎ、空間インテリジェンスにより IoT ソリューションを構築します。
   ms.service: digital-twins
   ms.topic: landing-page
@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: eabae1050b4892de8c30f460834d1ae4da934198
-  ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+  ms.openlocfilehash: 29f3b0bf0a00c9e4e238e8bb514f80e7451d30a6
+  ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/26/2020
-  ms.locfileid: "88890938"
+  ms.lasthandoff: 02/09/2021
+  ms.locfileid: "100007756"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
@@ -23,6 +23,14 @@ landingContent:
     links:
     - text: Azure Digital Twins とは
       url: overview.md
+  - linkListType: concept
+    links:
+    - text: カスタム モデル
+      url: concepts-models.md
+    - text: デジタル ツインとツイン グラフ
+      url: concepts-twins-graph.md
+    - text: クエリ言語
+      url: concepts-query-language.md
 - title: クイックスタートの概要
   linkLists:
   - linkListType: quickstart
@@ -43,20 +51,6 @@ landingContent:
     links:
     - text: エンドツーエンドのソリューションを接続する
       url: tutorial-end-to-end.md
-- title: 学習する
-  linkLists:
-  - linkListType: concept
-    links:
-    - text: カスタム モデル
-      url: concepts-models.md
-  - linkListType: concept
-    links:
-    - text: デジタル ツインとツイン グラフ
-      url: concepts-twins-graph.md
-  - linkListType: concept
-    links:
-    - text: クエリ言語
-      url: concepts-query-language.md
 - title: 開発
   linkLists:
   - linkListType: how-to-guide
@@ -66,22 +60,68 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: インスタンスと認証を設定する
-      url: how-to-set-up-instance-scripted.md
+      url: how-to-set-up-instance-portal.md
   - linkListType: how-to-guide
     links:
     - text: アプリ認証コードを作成する
       url: how-to-authenticate-client.md
-- title: API リファレンス
+- title: API を調べる
   linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: /rest/api/azure-digitaltwins/
   - linkListType: how-to-guide
     links:
     - text: Azure Digital Twins の API および SDK を使用する
       url: how-to-use-apis-sdks.md
   - linkListType: how-to-guide
     links:
+    - text: Postman で要求を行う
+      url: how-to-use-postman.md
+  - linkListType: how-to-guide
+    links:
     - text: AutoRest を使用してカスタム SDK を作成する
       url: how-to-create-custom-sdks.md
-  - linkListType: reference
+- title: コード サンプルを確認する
+  linkLists:
+  - linkListType: sample
     links:
-    - text: REST API
-      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/
+    - text: エンドツーエンドのサンプル
+      url: /samples/azure-samples/digital-twins-samples/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: Azure Digital Twins エクスプローラー (サンプル)
+      url: /samples/azure-samples/digital-twins-explorer/digital-twins-explorer
+  - linkListType: sample
+    links:
+    - text: DTDL 検証ツール (サンプル)
+      url: /samples/azure-samples/dtdl-validator/dtdl-validator/
+  - linkListType: sample
+    links:
+    - text: DPS と IoT Hub の統合サンプル
+      url: /samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/
+  - linkListType: sample
+    links:
+    - text: SignalR 統合のサンプル
+      url: /samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/
+  - linkListType: sample
+    links:
+    - text: Logic Apps コネクタ用のカスタム Swagger
+      url: /samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/
+- title: Microsoft Learn を使用したシナリオベースの学習
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: ラーニング パス:Azure Digital Twins を使用した開発
+      url: /learn/paths/develop-azure-digital-twins/
+  - linkListType: learn
+    links:
+    - text: 'Learn モジュール: Azure Digital Twins の概要'
+      url: /learn/modules/develop-with-azure-digital-twins/introduction-to-azure-digital-twins/
+    - text: 'Learn モジュール: チョコレート工場生産ライン用に Azure Digital Twins のグラフを作成する'
+      url: /learn/modules/develop-with-azure-digital-twins/build-azure-digital-twins-graph-for-chocolate-factory/
+    - text: 'Learn モジュール: Azure Digital Twins にデータを取り込む'
+      url: /learn/modules/develop-with-azure-digital-twins/ingest-data-into-azure-digital-twins/
+    - text: 'Learn モジュール: Azure Digital Twins からダウンストリーム サービスに出力する'
+      url: /learn/modules/develop-with-azure-digital-twins/route-output-from-azure-digital-twins-to-downstream-services/

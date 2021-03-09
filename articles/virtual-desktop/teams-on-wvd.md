@@ -3,20 +3,20 @@ title: Windows Virtual Desktop での Microsoft Teams - Azure
 description: Windows Virtual Desktop で Microsoft Teams を使用する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 07/28/2020
+ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 049b962740abc98a6ac7d029c1419d40aa722165
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88922567"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743119"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
 >[!IMPORTANT]
->Teams のメディア最適化は、Microsoft 365 Government (GCC) 環境ではサポートされています。 Teams のメディア最適化は、GCC-High または DoD ではサポートされていません。
+>Teams のメディア最適化は、Microsoft 365 Government (GCC) と　GCC-High　環境ではサポートされています。 Teams のメディア最適化は、GCC-High または DoD ではサポートされていません。
 
 >[!NOTE]
 >Microsoft Teams のメディア最適化は、Windows 10 マシン上の Windows デスクトップ クライアントのみ利用できます。 メディア最適化の利用には、Windows デスクトップ クライアントのバージョン 1.2.1026.0 以降が必要です。
@@ -32,7 +32,6 @@ Windows Virtual Desktop で Microsoft Teams を使用するには、次の操作
 - Microsoft Teams 用の[ネットワークを準備します](/microsoftteams/prepare-network/)。
 - [Windows PC 上で Microsoft Teams を使用するためのハードウェア要件](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)を満たしている Windows 10 または Windows 10 IoT Enterprise デバイスに [Windows デスクトップ クライアント](connect-windows-7-10.md)をインストールします。
 - Windows 10 マルチセッションまたは Windows 10 Enterprise 仮想マシン (VM) に接続します。
-- マシン単位のインストールを使用し、ホストに Teams のデスクトップ アプリを[ダウンロード](https://www.microsoft.com/microsoft-365/microsoft-teams/download-app)し、インストールします。 Microsoft Teams のメディア最適化の利用には、Teams デスクトップ アプリのバージョン 1.3.00.4461 以降が必要です。
 
 ## <a name="install-the-teams-desktop-app"></a>Teams デスクトップ アプリをインストールする
 
@@ -42,7 +41,8 @@ Windows Virtual Desktop で Microsoft Teams を使用するには、次の操作
 
 Teams でメディアの最適化を有効にするには、ホストで次のレジストリ キーを設定します。
 
-1. スタート メニューから、**RegEdit** を管理者として実行します。 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams** に移動します。
+1. スタート メニューから、**RegEdit** を管理者として実行します。 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams** に移動します。 Teams のキーがまだ存在しない場合は作成します。
+
 2. Teams のキー用に以下の値を作成します。
 
 | 名前             | Type   | データ/値  |
@@ -51,7 +51,7 @@ Teams でメディアの最適化を有効にするには、ホストで次の�
 
 ### <a name="install-the-teams-websocket-service"></a>Teams WebSocket Service をインストールする
 
-VM イメージに最新の [WebSocket Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) をインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
+最新の [Remote Desktop WebRTC Redirector Service](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4AQBt) を VM イメージにインストールします。 インストール エラーが発生した場合には、[最新の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールして、もう一度やり直してください。
 
 #### <a name="latest-websocket-service-versions"></a>最新の WebSocket サービスのバージョン
 
@@ -92,9 +92,9 @@ VM イメージに最新の [WebSocket Service](https://query.prod.cms.rt.micros
         msiexec /i <path_to_msi> /l*v <install_logfile_name> ALLUSER=1
         ```
 
-        これにより、64 ビット オペレーティング システム上の Program Files (x86) フォルダーと、32 ビット オペレーティング システム上の Program Files フォルダーに Teams がインストールされます。 この時点で、ゴールデン イメージのセットアップが完了しています。 非永続的なセットアップのためには、マシン単位で Teams をインストールする必要があります。
+        これにより、32 ビット オペレーティング システム上の Program Files (x86) フォルダーと、64 ビット オペレーティング システム上の Program Files フォルダーに Teams がインストールされます。 この時点で、ゴールデン イメージのセットアップが完了しています。 非永続的なセットアップのためには、マシン単位で Teams をインストールする必要があります。
 
-        Teams のインストール時に設定できるフラグには、**ALLUSER=1** と **ALLUSERS=1** の 2 つがあります。 これらのパラメーターの違いを理解することが重要です。 **ALLUSER=1** パラメーターは、コンピューターごとのインストールを指定するために VDI 環境でのみ使用されます。 **ALLUSERS=1** パラメーターは、VDI 以外の環境と VDI 環境で使用できます。 このパラメーターを設定すると、[Teams Machine-Wide Installer] がコントロール パネルの [プログラムと機能] のほか [Windows の設定] の [アプリと機能] に表示されます。 コンピューターの管理者資格情報を持つすべてのユーザーが Teams をアンインストールできます。
+        Teams のインストール時に設定できるフラグには、**ALLUSER=1** と **ALLUSERS=1** の 2 つがあります。 これらのパラメーターの違いを理解することが重要です。 **ALLUSER=1** パラメーターは、コンピューターごとのインストールを指定するために VDI 環境でのみ使用されます。 **ALLUSERS=1** パラメーターは、VDI 以外の環境と VDI 環境で使用できます。 このパラメーターを設定すると、 **[Teams Machine-Wide Installer]** がコントロール パネルの [プログラムと機能] のほか [Windows の設定] の [アプリと機能] に表示されます。 コンピューターの管理者資格情報を持つすべてのユーザーが Teams をアンインストールできます。
 
         > [!NOTE]
         > この時点では、ユーザーと管理者がサインイン中に Teams の自動起動を無効にすることはできません。
@@ -114,14 +114,19 @@ VM イメージに最新の [WebSocket Service](https://query.prod.cms.rt.micros
 
 WebSocket Service と Teams デスクトップ アプリのインストールが終わったら、以下の手順に従って Teams のメディア最適化が読み込まれていることを確認します。
 
-1. ユーザー プロファイル画像を選択し、 **[情報]** を選択します。
-2. **[バージョン]** を選択します。
+1. Teams アプリケーションを終了し、再起動します。
+
+2. ユーザー プロファイル画像を選択し、 **[情報]** を選択します。
+
+3. **[バージョン]** を選択します。
 
       メディアの最適化が読み込まれている場合、バナーに **"WVD Media optimized" (WVD メディアは最適化されています)** と表示されます。 バナーに **"WVD Media not connected" (WVD メディアが接続されていません)** と表示された場合には、Teams アプリを終了し、もう一度やり直してください。
 
-3. ユーザー プロファイル画像を選択し、 **[設定]** を選択します。
+4. ユーザー プロファイル画像を選択し、 **[設定]** を選択します。
 
       メディア最適化が読み込まれていると、デバイス メニューにローカルで利用できるオーディオ デバイスとカメラが列挙されます。 メニューに **[リモート オーディオ]** が表示されている場合は、Teams アプリを終了し、もう一度やり直してください。 それでもデバイスがメニューに表示されない場合は、ローカル PC のプライバシー設定を確認してください。 **[設定]**  >  **[プライバシー]**  >  **[アプリのアクセス許可]** の下にある **[Allow apps to access your microphone]** \(アプリからのマイクへのアクセスを許可する\) のトグルが **[オン]** になっていることを確認します。 リモート セッションから切断してから、もう一度オーディオ デバイスとビデオ デバイスを再接続します。 ビデオを使用して通話やミーティングに参加するには、アプリがカメラにアクセスするためのアクセス許可も付与する必要があります。
+
+      最適化が読み込まれない場合は、Teams をアンインストールしてから再インストールし、もう一度確認してください。
 
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
@@ -135,12 +140,13 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 
 ### <a name="calls-and-meetings"></a>通話と会議
 
-- Windows Virtual Desktop 環境内の Teams デスクトップ クライアントは、ライブ イベントをサポートしていません。 現時点でライブ イベントに参加する場合には、代わりにリモート セッション内で [Teams Web クライアント](https://teams.microsoft.com)を使用することをお勧めします。
+- Windows Virtual Desktop 環境内の Teams デスクトップ クライアントでは、ライブ イベントの作成はサポートされませんが、ライブ イベントに参加することはできます。 現時点でライブ イベントを作成する場合には、代わりにリモート セッション内で [Teams Web クライアント](https://teams.microsoft.com)を使用することをお勧めします。
 - 通話、会議とも、現時点ではアプリケーションの共有をサポートしていません。 デスクトップ セッションは、デスクトップ共有をサポートしています。
 - 制御の付与と取得は、現時点ではサポートされていません。
 - Windows Virtual Desktop 上の Teams は、一度に 1 つの着信ビデオ入力のみをサポートしています。 つまり、だれかが画面を共有しようとすると、そのたびに会議リーダーの画面に代わってそのユーザーの画面が表示されます。
 - WebRTC の制約により、ビデオ ストリームの解像度は着信、発信とも 720p となっています。
 - Teams アプリでは、HID ボタンや他のデバイスを使った LED コントロールはサポートされていません。
+- New Meeting Experience (NME) は、現在、VDI 環境ではサポートされていません。
 
 Teams の既知の問題のうち、仮想環境に関係のないものについては、[組織における Teams のサポート](/microsoftteams/known-issues)に関するページを参照してください。
 

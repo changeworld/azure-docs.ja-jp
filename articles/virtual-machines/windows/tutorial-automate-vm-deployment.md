@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 14d0190a97c22a805065ceaf41dcd655b9e8182b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c5a89b6a376a5938a42b8ba945cdd5269ca54e4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065294"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730125"
 ---
 # <a name="tutorial---deploy-applications-to-a-windows-virtual-machine-in-azure-with-the-custom-script-extension"></a>チュートリアル - カスタム スクリプト拡張機能を使って Azure 内の Windows 仮想マシンにアプリケーションを展開する
 
@@ -39,7 +39,7 @@ Cloud Shell を開くには、コード ブロックの右上隅にある **[使
 
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
-次のように、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) を使用して VM の管理者のユーザー名とパスワードを設定します。
+次のように、[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) を使用して VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -94,7 +94,7 @@ Get-AzPublicIPAddress `
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、仮想マシンへの IIS のインストールを自動化しました。 以下の方法を学習しました。
+このチュートリアルでは、仮想マシンへの IIS のインストールを自動化しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]
 > * カスタム スクリプト拡張機能を使用して IIS をインストールする

@@ -8,21 +8,22 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/28/2020
 ms.author: sngun
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 2243ff73f72666013fa4d01cbc6b1cabe02c8c41
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: a9f5a307bfefedf74f884e39b482bd90454fc5c8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418663"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096871"
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>クイック スタート:Node.js と Azure Cosmos DB での Table API アプリの構築
+[!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](create-table-dotnet.md)
 > * [Java](create-table-java.md)
 > * [Node.js](create-table-nodejs.md)
-> * [Python](create-table-python.md)
+> * [Python](./table-storage-how-to-use-python.md)
 > 
 
 このクイックスタートでは、Azure Cosmos DB Table API アカウントを作成し、データ エクスプローラーと GitHub からクローンした Node.js アプリを使用してテーブルとエンティティを作成します。 Azure Cosmos DB は、マルチモデル データベース サービスです。グローバルな分散と水平方向のスケーリング機能により、ドキュメント データベースやテーブル データベース、キーと値のデータベース、グラフ データベースをすばやく作成し、クエリを実行することができます。

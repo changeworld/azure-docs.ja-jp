@@ -1,23 +1,20 @@
 ---
 title: HDInsight 上の Spark MLlib を使用した Machine Learning の例 - Azure
 description: Spark MLlib を使用して、ロジスティック回帰による分類を使用してデータセットを分析する Machine Learning アプリを作成する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, devx-track-python
 ms.date: 04/27/2020
-ms.openlocfilehash: 2ab996c3f3310656e7b85dded8e57a129b901660
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d2054058bb00b0801aa1c3694c73b6a2edb46c80
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873808"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98930031"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Apache Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
 
-Apache Spark MLlib を使用し、機械学習アプリケーションを作成する方法について説明します。 このアプリケーションでは、オープン データセットで予測分析を行います。 Spark の組み込みの Machine Learning ライブラリから、この例ではロジスティック回帰による*分類*を使用します。
+Apache Spark MLlib を使用し、機械学習アプリケーションを作成する方法について説明します。 このアプリケーションでは、オープン データセットで予測分析を行います。 Spark の組み込みの Machine Learning ライブラリから、この例ではロジスティック回帰による *分類* を使用します。
 
 MLlib は、次のような機械学習タスクに役立つ多数のユーティリティを提供する、コア Spark ライブラリです。
 
@@ -30,7 +27,7 @@ MLlib は、次のような機械学習タスクに役立つ多数のユーテ�
 
 ## <a name="understand-classification-and-logistic-regression"></a>分類およびロジスティック回帰について
 
-一般的な Machine Learning タスクである*分類*は、入力データをカテゴリに分類するプロセスです。 ユーザーが指定した入力データに "ラベル" を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。 たとえば、入力として在庫情報を受け取る機械学習アルゴリズムを思い浮かべてください。 在庫を 2 つのカテゴリに分割します。販売する在庫と取っておく在庫です。
+一般的な Machine Learning タスクである *分類* は、入力データをカテゴリに分類するプロセスです。 ユーザーが指定した入力データに "ラベル" を割り当てる方法を決定するのは、分類アルゴリズムの仕事です。 たとえば、入力として在庫情報を受け取る機械学習アルゴリズムを思い浮かべてください。 在庫を 2 つのカテゴリに分割します。販売する在庫と取っておく在庫です。
 
 ロジスティック回帰は、分類に使用するアルゴリズムです。 Spark のロジスティック回帰 API は、 *二項分類*(入力データを 2 つのグループのいずれかに分類する) に適しています。 ロジスティック回帰の詳細については、 [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression)を参照してください。
 
@@ -44,7 +41,7 @@ MLlib は、次のような機械学習タスクに役立つ多数のユーテ�
 
 ## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Apache Spark MLlib 機械学習アプリを作成する
 
-1. PySpark カーネルを使用して Jupyter Notebook を作成します。 手順については、[Jupyter Notebook の作成](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)に関するページをご覧ください。
+1. PySpark カーネルを使用して Jupyter Notebook を作成します。 手順については、「[Jupyter Notebook ファイルの作成](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook-file)」を参照してください。
 
 2. このアプリケーションに必要な型をインポートします。 次のコードをコピーして空のセルに貼り付け、**Shift + Enter** キーを押します。
 
@@ -174,7 +171,7 @@ Spark コンテキストを使用し、未加工の CSV データを非構造化
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    `%%sql` マジックの後に `-o countResultsdf` と入力して、クエリの出力が Jupyter サーバー (通常はクラスターのヘッドノード) にローカルに保持されるようにします。 出力は、指定された [countResultsdf](https://pandas.pydata.org/) という名前で **Pandas**データフレームとして保存されます。 `%%sql` マジックや、PySpark カーネルで使用可能なその他のマジックの詳細については、[Apache Spark HDInsight クラスターの Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関するページを参照してください。
+    `%%sql` マジックの後に `-o countResultsdf` と入力して、クエリの出力が Jupyter サーバー (通常はクラスターのヘッドノード) にローカルに保持されるようにします。 出力は、指定された [countResultsdf](https://pandas.pydata.org/) という名前で **Pandas** データフレームとして保存されます。 `%%sql` マジックや、PySpark カーネルで使用可能なその他のマジックの詳細については、[Apache Spark HDInsight クラスターの Jupyter Notebook で使用可能なカーネル](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)に関するページを参照してください。
 
     出力は次のようになります。
 
@@ -194,7 +191,7 @@ Spark コンテキストを使用し、未加工の CSV データを非構造化
     plt.axis('equal')
     ```
 
-    食品検査の結果を予測するには、違反に基づくモデルを開発する必要があります。 ロジスティック回帰は二項分類メソッドであるため、結果データを**Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。
+    食品検査の結果を予測するには、違反に基づくモデルを開発する必要があります。 ロジスティック回帰は二項分類メソッドであるため、結果データを **Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。
 
    - 合格
        - 合格
@@ -335,7 +332,7 @@ model = pipeline.fit(labeledData)
     SELECT count(*) AS cnt FROM Predictions WHERE prediction = 1 AND (results = 'Pass' OR results = 'Pass w/ Conditions')
     ```
 
-1. 最後に、次のスニペットを使用して、 **Matplotlib**を使ってプロットを生成します。
+1. 最後に、次のスニペットを使用して、 **Matplotlib** を使ってプロットを生成します。
 
     ```PySpark
     %%local

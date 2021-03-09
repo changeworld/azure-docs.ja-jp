@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 8723aea00adb1a37d0649b36f9d49782b1e86d8c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f383b661d682242f6d60761827ee5b86e5ed4a2
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552940"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92459851"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ipass-smartconnect"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と iPass SmartConnect の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88552940"
 * ユーザーが自分の Azure AD アカウントを使用して iPass SmartConnect に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,8 +39,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* iPass SmartConnect では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* iPass SmartConnect では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* iPass SmartConnect では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* iPass SmartConnect では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 > [!NOTE]
 > このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
@@ -53,7 +53,7 @@ Azure AD への iPass SmartConnect の統合を構成するには、ギャラリ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**iPass SmartConnect**」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **iPass SmartConnect** 」と入力します。
 1. 結果ウィンドウで **[iPass SmartConnect]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-ipass-smartconnect"></a>iPass SmartConnect に使用する Azure AD シングル サインオンの構成とテスト
@@ -140,7 +140,7 @@ iPass SmartConnect に対する Azure AD SSO を構成してテストするに�
 
 ## <a name="configure-ipass-smartconnect-sso"></a>iPass SmartConnect の SSO の構成
 
-**iPass SmartConnect** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [iPass SmartConnect サポート チーム](mailto:help@ipass.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**iPass SmartConnect** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [iPass SmartConnect サポート チーム](mailto:help@ipass.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-ipass-smartconnect-test-user"></a>iPass SmartConnect のテスト ユーザーの作成
 
@@ -150,15 +150,14 @@ iPass SmartConnect に対する Azure AD SSO を構成してテストするに�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [iPass SmartConnect] タイルをクリックすると、SSO を設定した iPass SmartConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [iPass SmartConnect] タイルをクリックすると、SSO を設定した iPass SmartConnect に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で iPass SmartConnect を試す](https://aad.portal.azure.com/)
-

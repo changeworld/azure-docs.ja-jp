@@ -1,23 +1,17 @@
 ---
 title: Azure Data Factory の Delete アクティビティ
 description: Azure Data Factory の Delete アクティビティを使用して、さまざまなファイル ストア内のファイルを削除する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: bcc7ebd8d9a6e61425ba7cd980a400c3fe756492
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 3021d29f472dbbf43ae53981287b1f4676e8f932
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762336"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100392716"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
 
@@ -52,6 +46,7 @@ Azure Data Factory の Delete アクティビティを使用して、オンプ�
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
 -   [Google Cloud Storage](connector-google-cloud-storage.md)
+-   [HDFS](connector-hdfs.md)
 
 ## <a name="syntax"></a>構文
 

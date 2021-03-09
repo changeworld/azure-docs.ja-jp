@@ -1,20 +1,22 @@
 ---
 title: Azure Cosmos コンテナーの一意のキーを定義する
-description: Azure portal、PowerShell、.Net、Java、およびその他のさまざまな SDK を使用して、Azure Cosmos コンテナーの一意のキーを定義する方法について説明します。
+description: Azure portal、PowerShell、.NET、Java、およびその他のさまざまな SDK を使用して、Azure Cosmos コンテナーの一意のキーを定義する方法について説明します。
 author: ThomasWeiss
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.custom: devx-track-python, devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 413664b790423fb5eafb58e2baaee46e10c6a929
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: 55fc5222c1c245c56ba0a26caa816c5c845147c1
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019965"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93336624"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos コンテナーの一意のキーを定義する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 この記事では、Azure Cosmos コンテナーを作成するときに、[一意のキー](unique-keys.md) を定義するさまざまな方法を示します。 現在、Azure portal を使用するか、Sdk のいずれかでこの操作を実行することになります。
 
@@ -151,5 +153,5 @@ client.CreateContainer('dbs/' + config['DATABASE'], {
 
 ## <a name="next-steps"></a>次のステップ
 
-- [パーティション分割](partition-data.md)の詳細を学習する
+- [パーティション分割](partitioning-overview.md)の詳細を学習する
 - [インデックス作成の動作方法](index-overview.md)の詳細を確認する

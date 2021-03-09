@@ -2,18 +2,17 @@
 title: Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する - Linux 仮想マシン | Microsoft Docs
 description: RHEL クラスター環境における高可用性の設定について学習し、STONITH を設定します
 ms.service: virtual-machines-linux
-ms.subservice: ''
 ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533f5c9e38818a8e37482cbbb3a90602366eca6f
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086797"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587215"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>チュートリアル:Azure の RHEL 仮想マシンで SQL Server の可用性グループを構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,9 +36,9 @@ ms.locfileid: "87086797"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+- この記事では、Azure CLI のバージョン 2.0.30 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -242,7 +241,7 @@ az vm availability-set create \
     done
     ```
 
-上記のコマンドでは、VM を作成し、それらの VM 用に既定の VNet を作成します。 さまざまな構成の詳細については、[az vm create](https://docs.microsoft.com/cli/azure/vm) に関する記事を参照してください。
+上記のコマンドでは、VM を作成し、それらの VM 用に既定の VNet を作成します。 さまざまな構成の詳細については、[az vm create](/cli/azure/vm) に関する記事を参照してください。
 
 各 VM のコマンドが完了すると、次のような結果が得られます。
 
@@ -263,7 +262,7 @@ az vm availability-set create \
 > [!IMPORTANT]
 > 上記のコマンドで作成される既定のイメージでは、既定で 32 GB の OS ディスクが作成されます。 この既定のインストールでは、領域が不足する可能性があります。 たとえば、パラメーター `--os-disk-size-gb 128` を上記の `az vm create` コマンドに追加して使用すると、128 GB の OS ディスクを作成できます。
 >
-> その後、インストールに合わせて適切なフォルダー ボリュームを拡張する必要がある場合は、[論理ボリューム マネージャー (LVM) を構成](../../../virtual-machines/linux/configure-lvm.md)できます。
+> その後、インストールに合わせて適切なフォルダー ボリュームを拡張する必要がある場合は、[論理ボリューム マネージャー (LVM) を構成](/previous-versions/azure/virtual-machines/linux/configure-lvm)できます。
 
 ### <a name="test-connection-to-the-created-vms"></a>作成された VM への接続をテストする
 
@@ -324,7 +323,7 @@ ssh <username>@publicipaddress
     sudo vi /etc/hosts
     ```
 
-    **vi** エディターで、テキストを挿入するために「`i`」と入力します。空白行に、対応する VM の**プライベート IP** を追加します。 次に、IP アドレスの後にスペースを入れ、VM 名を追加します。 1 行ごとに別のエントリを入れていきます。
+    **vi** エディターで、テキストを挿入するために「`i`」と入力します。空白行に、対応する VM の **プライベート IP** を追加します。 次に、IP アドレスの後にスペースを入れ、VM 名を追加します。 1 行ごとに別のエントリを入れていきます。
 
     ```output
     <IP1> <VM1>
@@ -333,7 +332,7 @@ ssh <username>@publicipaddress
     ```
 
     > [!IMPORTANT]
-    > 上記の**プライベート IP** アドレスを使用することをお勧めします。 この構成でパブリック IP アドレスを使用すると、設定が失敗します。また、VM を外部ネットワークに公開することはお勧めしません。
+    > 上記の **プライベート IP** アドレスを使用することをお勧めします。 この構成でパブリック IP アドレスを使用すると、設定が失敗します。また、VM を外部ネットワークに公開することはお勧めしません。
 
     **vi** エディターを終了するには、まず **Esc** キーを押し、コマンド `:wq` を入力してファイルを書き込み、終了します。
 
@@ -486,7 +485,7 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  
  1. [https://resources.azure.com](https://portal.azure.com ) に移動します
  2. [[Azure Active Directory] ブレード](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)を開きます。 [プロパティ] に移動し、ディレクトリ ID をメモします。 これは `tenant ID` です
- 3. [ **[アプリの登録]** ](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) をクリックします
+ 3. [ **[アプリの登録]**](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) をクリックします
  4. **[新規登録]** をクリックします
  5. **名前** (たとえば、`<resourceGroupName>-app`) を入力し、 **[Accounts in this organization directory only]\(この組織ディレクトリ内のアカウントのみ\)** を選択します
  6. アプリケーションの種類として **[Web]** を選択します。サインオン URL (たとえば http://localhost) ) を入力し、[追加] をクリックします。 サインオン URL は使用されず、任意の有効な URL を指定することができます。 完了したら、 **[登録]** をクリックします
@@ -699,7 +698,7 @@ sudo systemctl restart mssql-server
 
 現在、AG エンドポイントに対する AD 認証はサポートされていません。 そのため、AG エンドポイントの暗号化には証明書を使用する必要があります。
 
-1. SQL Server Management Studio (SSMS) または SQL CMD を使用して、**すべてのノード**に接続します。 次のコマンドを実行して、AlwaysOn_health セッションを有効にし、マスター キーを作成します。
+1. SQL Server Management Studio (SSMS) または SQL CMD を使用して、**すべてのノード** に接続します。 次のコマンドを実行して、AlwaysOn_health セッションを有効にし、マスター キーを作成します。
 
     > [!IMPORTANT]
     > 自分の SQL Server インスタンスにリモートで接続する場合は、ファイアウォールでポート 1433 を開いておく必要があります。 さらに、各 VM の NSG でポート 1433 へのインバウンド接続を許可する必要があります。 インバウンド セキュリティ規則の作成の詳細については、「[セキュリティ規則を作成する](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)」を参照してください。
@@ -908,7 +907,7 @@ GO
 
 1. セカンダリ レプリカを参加させたら、 **[Always On 高可用性]** ノードを展開して、SSMS オブジェクト エクスプローラーでそれらを確認できます。
 
-    ![availability-group-joined.png](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
+    ![スクリーンショットは、プライマリとセカンダリの可用性レプリカを示しています。](./media/rhel-high-availability-stonith-tutorial/availability-group-joined.png)
 
 ### <a name="add-a-database-to-the-availability-group"></a>可用性グループにデータベースを追加する
 
@@ -946,6 +945,9 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Pacemaker クラスター内に可用性グループのリソースを作成する
 
 ガイドに従って、[Pacemaker クラスター内に可用性グループのリソースを作成](/sql/linux/sql-server-linux-create-availability-group#create-the-availability-group-resources-in-the-pacemaker-cluster-external-only)します。
+
+> [!NOTE]
+> この記事には、Microsoft が使用しなくなった "スレーブ" という用語への言及が含まれています。 ソフトウェアからこの用語が削除された時点で、この記事から削除します。
 
 ### <a name="create-the-ag-cluster-resource"></a>AG クラスター リソースを作成する
 
@@ -1132,6 +1134,34 @@ Daemon Status:
     sudo pcs resource move ag_cluster-clone <VM2> --master
     ```
 
+   また、リソースを目的のノードに移動するために作成された一時的な制約を自動的に無効にし、下の手順 2. および 3. を実行する必要がなくなるように、追加のオプションを指定することもできます。
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master lifetime=30S
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master lifetime=30S
+    ```
+
+   また、下の手順 2. および 3. を自動化する別の方法もあります。これにより、リソース移動コマンド自体で一時的な制約が解除されます。そのためには、複数のコマンドを 1 行に結合します。 
+
+   **RHEL 7**
+
+    ```bash
+    sudo pcs resource move ag_cluster-master <VM2> --master && sleep 30 && pcs resource clear ag_cluster-master
+    ```
+
+   **RHEL 8**
+
+    ```bash
+    sudo pcs resource move ag_cluster-clone <VM2> --master && sleep 30 && pcs resource clear ag_cluster-clone
+    ```
+    
 2. もう一度制約を確認すると、手動フェールオーバーが理由で別の制約が追加されたことがわかります。
     
     **RHEL 7**

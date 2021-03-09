@@ -1,16 +1,14 @@
 ---
 title: ローカル Azure Service Fabric クラスター セットアップのトラブルシューティング
 description: この記事には、ローカル開発クラスターのトラブルシューティングに関する推奨事項が記載されています。
-author: mikkelhegn
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mikhegn
-ms.openlocfilehash: 76ca0bb7b81b3896538f08ff2ef52ed1ac6b363f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20948cd1626c02d73fb6e9ef096b552bbab627fb
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091608"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575909"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>ローカル開発クラスターのセットアップをトラブルシューティングする
 Azure Service Fabric のローカル開発クラスターとの対話中に問題が発生した場合は、次の推奨事項を確認して解決の参考にしてください。

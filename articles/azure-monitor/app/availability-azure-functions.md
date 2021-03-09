@@ -2,22 +2,20 @@
 title: Azure Functions を使用してカスタム可用性テストを作成して実行する
 description: このドキュメントでは、TimerTrigger 関数で指定された構成に従って定期的に実行される Azure 関数を TrackAvailability() で作成する方法について説明します。 このテストの結果は、Application Insights リソースに送信されます。そこでは、可用性の結果データに対してクエリを実行し、アラートを生成することができます。 カスタマイズされたテストを使用すると、ポータル UI を使用してできるものより複雑な可用性テストを記述したり、Azure VNET 内のアプリを監視したり、エンドポイントのアドレスを変更したり、リージョンで利用できない場合に可用性テストを作成したりすることができます。
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: e2603d921973aefdcc1a6f4a76bdf70d69dcb68f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 98d9eaadb31ffdeabe85752f7c76bdd4f7c0d4f3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320631"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589932"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Azure Functions を使用してカスタム可用性テストを作成して実行する
 
 この記事では、独自のビジネス ロジックを使用して TimerTrigger 関数で指定された構成に従って定期的に実行される Azure 関数を TrackAvailability() で作成する方法について説明します。 このテストの結果は、Application Insights リソースに送信されます。そこでは、可用性の結果データに対してクエリを実行し、アラートを生成することができます。 これにより、ポータルでの[可用性の監視](./monitor-web-app-availability.md)を使用して実行できるものと同様のカスタマイズされたテストを作成できます。 カスタマイズされたテストを使用すると、ポータル UI を使用してできるものより複雑な可用性テストを記述したり、Azure VNET 内のアプリを監視したり、エンドポイントのアドレスを変更したり、リージョンでこの機能を利用できない場合でも可用性テストを作成したりすることができます。
 
 > [!NOTE]
-> この例は、Azure 関数内で TrackAvailability () API 呼び出しが機能する仕組みを示すためだけに設計されています。 基になる HTTP テスト コード/ビジネス ロジックを記述する方法を示すものではありません (それは、これを完全に機能する可用性テストにする場合に必要になります)。 既定で、この例を実行すると、常にエラーを生成する可用性テストが作成されます。
+> この例は、Azure Functions 内で TrackAvailability () API 呼び出しが機能する仕組みを示すためだけに設計されています。 基になる HTTP テスト コード/ビジネス ロジックを記述する方法を示すものではありません (それは、これを完全に機能する可用性テストにする場合に必要になります)。 既定で、この例を実行すると、常にエラーを生成する可用性テストが作成されます。
 
 ## <a name="create-timer-triggered-function"></a>タイマーによってトリガーされる関数を作成する
 
@@ -135,7 +133,7 @@ public async static Task Run(TimerInfo myTimer, ILogger log)
         <TargetFramework>netstandard2.0</TargetFramework>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.8.2" /> <!-- Ensure you’re using the latest version -->
+        <PackageReference Include="Microsoft.ApplicationInsights" Version="2.15.0" /> <!-- Ensure you’re using the latest version -->
     </ItemGroup>
 </Project>
 
@@ -177,13 +175,13 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 
 ## <a name="query-in-logs-analytics"></a>ログ (Analytics) でのクエリ
 
-ログ (Analytics) を使用して、可用性の結果、依存関係、その他を見ることができます。 ログの詳細については、[ログ クエリの概要](../log-query/log-query-overview.md)に関するページを参照してください。
+ログ (Analytics) を使用して、可用性の結果、依存関係、その他を見ることができます。 ログの詳細については、[ログ クエリの概要](../logs/log-query-overview.md)に関するページを参照してください。
 
 >[!div class="mx-imgBorder"]
 >![可用性の結果](media/availability-azure-functions/availabilityresults.png)
 
 >[!div class="mx-imgBorder"]
->![依存関係](media/availability-azure-functions/dependencies.png)
+>![依存関係が 50 に制限された [新しいクエリ] タブが表示されたスクリーンショット。](media/availability-azure-functions/dependencies.png)
 
 ## <a name="next-steps"></a>次のステップ
 

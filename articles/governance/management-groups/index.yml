@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 08/31/2020
-  ms.openlocfilehash: a2d736b2706b3b0958bb544c6d0e4434c78e6791
-  ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+  ms.date: 09/30/2020
+  ms.openlocfilehash: 0f799ecd13258b683acd112b01c5d63425dab99c
+  ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/01/2020
-  ms.locfileid: "89231335"
+  ms.lasthandoff: 02/10/2021
+  ms.locfileid: "100094170"
 landingContent:
 - title: Azure のガバナンスについて
   linkLists:
@@ -39,6 +39,14 @@ landingContent:
       url: ./create-management-group-azure-cli.md
     - text: 管理グループの作成 (Azure PowerShell)
       url: ./create-management-group-powershell.md
+    - text: 管理グループの作成 (.NET)
+      url: ./create-management-group-dotnet.md
+    - text: 管理グループの作成 (Go)
+      url: ./create-management-group-go.md
+    - text: 管理グループの作成 (JavaScript)
+      url: ./create-management-group-javascript.md
+    - text: 管理グループの作成 (Python)
+      url: ./create-management-group-python.md
     - text: 管理グループの作成 (REST)
       url: ./create-management-group-rest-api.md
     - text: 管理グループへのリソースのデプロイ (ARM テンプレート)
@@ -59,8 +67,12 @@ landingContent:
       url: /powershell/module/az.resources/#resources
     - text: Azure SDK for .NET
       url: /dotnet/api/overview/azure/managementgroups
+    - text: Azure SDK for Go
+      url: https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/preview/resources/mgmt/2018-03-01-preview/managementgroups
     - text: Azure SDK for JavaScript
       url: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - text: Azure SDK for Python
+      url: /python/api/azure-mgmt-managementgroups/azure.mgmt.managementgroups
     - text: REST
       url: /rest/api/resources/managementgroups
     - text: Resource Manager テンプレート

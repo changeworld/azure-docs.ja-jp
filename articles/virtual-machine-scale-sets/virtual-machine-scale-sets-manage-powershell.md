@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 05/29/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurepowershell
-ms.openlocfilehash: 45bace9ac174b353bb4662a27e800c0de4eada4b
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: eee4dd7fae872f6b3ddd01f60aba732edc170766
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89072725"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91570574"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを管理する
 
@@ -45,6 +45,15 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
+また、1 回の API 呼び出しですべてのインスタンスに対する詳細な *instanceView* 情報を取得することもできます。これは、大規模なインストールで API が調整されるのを回避するのに役立ちます。
+
+```powershell
+Get-AzVmssVM -InstanceView -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+```
+
+```rest
+GET "https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/virtualMachineScaleSets/<VMSSName>/virtualMachines?api-version=2019-03-01&%24expand=instanceView"
+```
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>スケール セットの容量を変更する
 前のコマンドでは、スケール セットと VM インスタンスに関する情報を表示しました。 スケール セット内のインスタンスの数を増やすか、または減らすために、その容量を変更できます。 スケール セットは、必要な数の VM を自動的に作成または削除した後、アプリケーション トラフィックを受信するようにそれらの VM を構成します。

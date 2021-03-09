@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: dd0cf450ca63349d29aba3d65f3c76f40a44be2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503635"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683057"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>チュートリアル:Azure CLI を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -27,15 +27,15 @@ ms.locfileid: "87503635"
 > * イメージ ギャラリーを共有する
 
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.4.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+- この記事では、Azure CLI のバージョン 2.4.0 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="overview"></a>概要
 
-[共有イメージ ギャラリー](shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
+[共有イメージ ギャラリー](../virtual-machines/shared-image-galleries.md)により、組織全体でのカスタム イメージの共有が簡素化されます。 カスタム イメージは Marketplace のイメージに似ていますが、カスタム イメージは自分で作成します。 カスタム イメージは、アプリケーションのプリロード、アプリケーションの構成、その他の OS 構成などの構成のブートストラップを実行するために使用できます。 
 
 共有イメージ ギャラリーを使用すると、カスタム VM イメージを他のユーザーと共有できます。 どのイメージを共有するか、どのリージョンでそのイメージを使用できるようにするか、および、だれと共有するかを選択することができます。 
 
@@ -92,11 +92,11 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 イメージ定義の種類が適切であることを確認します。 (Windows の場合は Sysprep、Linux の場合は waagent -deprovision を使用して) VM を一般化している場合は、`--os-state generalized` を使用して、一般化されたイメージ定義を作成する必要があります。 既存のユーザー アカウントを削除せずに VM を使用する場合は、`--os-state specialized` を使用して、特殊化されたイメージ定義を作成します。
 
-イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/linux/shared-image-galleries.md#image-definitions)に関するページを参照してください。
+イメージ定義に指定できる値の詳細については、[イメージ定義](../virtual-machines/shared-image-galleries.md#image-definitions)に関するページを参照してください。
 
 [az sig image-definition create](/cli/azure/sig/image-definition#az-sig-image-definition-create) を使用して、ギャラリー内にイメージ定義を作成します。
 
-この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
+この例では、イメージ定義は *myImageDefinition* という名前で、[特殊化された](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) Linux OS イメージ用です。 Windows OS を使用してイメージの定義を作成するには、`--os-type Windows` を使用します。 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -197,7 +197,7 @@ az network public-ip show \
 
 ## <a name="share-the-gallery"></a>ギャラリーを共有する
 
-ロールベースのアクセス制御 (RBAC) を使用して、サブスクリプション全体でイメージを共有できます。 イメージは、ギャラリー、イメージ定義、またはイメージ バージョンで共有できます。 イメージ バージョンへの読み取りアクセス許可があるユーザーは、サブスクリプション間でも、そのイメージ バージョンを使用して VM をデプロイできます。
+Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サブスクリプション全体でイメージを共有できます。 イメージは、ギャラリー、イメージ定義、またはイメージ バージョンで共有できます。 イメージ バージョンへの読み取りアクセス許可があるユーザーは、サブスクリプション間でも、そのイメージ バージョンを使用して VM をデプロイできます。
 
 他のユーザーとは、ギャラリー レベルで共有することをお勧めします。 ギャラリーのオブジェクト ID を取得するには、[az sig show](/cli/azure/sig#az-sig-show) を使用します。
 
@@ -217,7 +217,7 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-RBAC を使用してリソースを共有する方法の詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](../role-based-access-control/role-assignments-cli.md)」を参照してください。
+Azure RBAC を使用してリソースを共有する方法の詳細については、「[Azure CLI を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-cli.md)」をご覧ください。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする

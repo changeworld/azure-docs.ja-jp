@@ -1,5 +1,5 @@
 ---
-title: Python を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
+title: クイック スタート - Python を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
 description: このクイック スタートでは、グループ登録を使用します。 このクイックスタートでは、Python を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service (DPS) に登録します
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f3ac856b3817bb63c53a36505cf89065a8650154
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 6997c8af3034483c6278023627dd79f8108b135c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875406"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959749"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>クイック スタート:Python を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -37,9 +37,9 @@ ms.locfileid: "87875406"
 
 このクイック スタートでは、中間またはルートの CA の X.509 証明書の公開部分が含まれる .pem ファイルまたは .cer が必要です。 この証明書はプロビジョニング サービスにアップロードされ、サービスによって検証される必要があります。
 
-Azure IoT Hub と Device Provisioning Service と共に X.509 証明書ベースの公開キー基盤 (PKI) を使用する方法について詳しくは、[X.509 CA 証明書セキュリティの概要](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview)に関するページを参照してください。
+Azure IoT Hub と Device Provisioning Service と共に X.509 証明書ベースの公開キー基盤 (PKI) を使用する方法について詳しくは、[X.509 CA 証明書セキュリティの概要](../iot-hub/iot-hub-x509ca-overview.md)に関するページを参照してください。
 
-[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) には、X.509 証明書チェーンを作成し、そのチェーンからルートまたは中間証明書をアップロードし、サービスで所有証明を実行して証明書を検証するために役立つテスト ツールが含まれています。 SDK ツールで作成される証明書は、**開発テストにのみ**使用するよう設計されています。 これらの証明書は**運用環境では使用しないでください**。 30 日後に有効期限が切れるハード コーディングされたパスワード ("1234") が含まれます。 運用環境での使用に適した証明書の取得について詳しくは、Azure IoT Hub ドキュメントの「[X.509 CA 証明書の入手方法](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate)」をご覧ください。
+[Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) には、X.509 証明書チェーンを作成し、そのチェーンからルートまたは中間証明書をアップロードし、サービスで所有証明を実行して証明書を検証するために役立つテスト ツールが含まれています。 SDK ツールで作成される証明書は、**開発テストにのみ** 使用するよう設計されています。 これらの証明書は **運用環境では使用しないでください**。 30 日後に有効期限が切れるハード コーディングされたパスワード ("1234") が含まれます。 運用環境での使用に適した証明書の取得について詳しくは、Azure IoT Hub ドキュメントの「[X.509 CA 証明書の入手方法](../iot-hub/iot-hub-x509ca-overview.md#how-to-get-an-x509-ca-certificate)」をご覧ください。
 
 このテスト ツールを使用して証明書を生成するには、次の手順を実行します。
 
@@ -122,7 +122,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 - [登録グループ](concepts-service.md#enrollment-group)：複数の関連するデバイスを登録するために使用します。
 - [個別登録](concepts-service.md#individual-enrollment): 単一デバイスを登録するために使用します。
 
-[Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) を使用した個々の登録はまだ開発中です。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](./concepts-security.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。
+[Python Provisioning Service SDK](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated/provisioning_service_client) を使用した個々の登録はまだ開発中です。 詳細については、「[X.509 証明書を使用してプロビジョニング サービスへのデバイスのアクセスを制御する](./concepts-x509-attestation.md#controlling-device-access-to-the-provisioning-service-with-x509-certificates)」を参照してください。
 
 1. コマンド プロンプトを開き、次のコマンドを実行して [azure-iot-provisioning-device-client](https://pypi.org/project/azure-iot-provisioning-device-client) をインストールします。
 

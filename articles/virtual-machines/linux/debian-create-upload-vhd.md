@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 11/13/2018
 ms.author: guybo
-ms.openlocfilehash: 80272896bd314a1f5f05094afa83568e077ab480
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d822aa30926c473d08bc5d785211c82d038ef652
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87368202"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203186"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure 用の Debian VHD の準備
 ## <a name="prerequisites"></a>前提条件
@@ -20,7 +20,7 @@ ms.locfileid: "87368202"
 ## <a name="installation-notes"></a>インストールに関する注記
 * Azure で Linux を使用するためのその他のヒントについては、「[Linux のインストールに関する一般的な注記](create-upload-generic.md#general-linux-installation-notes)」も参照してください。
 * 新しい VHDX 形式は、Azure ではサポートされていません。 Hyper-V マネージャーまたは **convert-vhd** コマンドレットを使用して、ディスクを VHD 形式に変換できます。
-* Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。 必要な場合は、[LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
+* Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 これにより、特に OS ディスクをトラブルシューティングのために別の VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。 必要な場合は、[LVM](/previous-versions/azure/virtual-machines/linux/configure-lvm) または [RAID](/previous-versions/azure/virtual-machines/linux/configure-raid) をデータ ディスク上で使用できます。
 * OS ディスクにスワップ パーティションを構成しないでください。 Azure Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。 詳細については、以下の手順を参照してください。
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、「[Linux のインストールに関する一般的な注記](create-upload-generic.md#general-linux-installation-notes)」に関する記事を参照してください。
 
@@ -58,7 +58,7 @@ ms.locfileid: "87368202"
     # sudo update-grub
     ```
 
-6. Debian 8 または 9 については、/etc/apt/sources.list に Debian の Azure リポジトリを追加します。
+6. Debian 8、9、または 10 の場合は、/etc/apt/sources.list に Debian の Azure リポジトリを追加します。
 
     **Debian 8.x "Jessie"**
 
@@ -85,7 +85,18 @@ ms.locfileid: "87368202"
     deb http://debian-archive.trafficmanager.net/debian stretch-backports main
     deb-src http://debian-archive.trafficmanager.net/debian stretch-backports main
     ```
-
+    
+    **Debian 10.x "Buster"**
+    ```config-grub
+    deb http://debian-archive.trafficmanager.net/debian buster main
+    deb-src http://debian-archive.trafficmanager.net/debian buster main
+    deb http://debian-archive.trafficmanager.net/debian-security buster/updates main
+    deb-src http://debian-archive.trafficmanager.net/debian-security buster/updates main
+    deb http://debian-archive.trafficmanager.net/debian buster-updates main
+    deb-src http://debian-archive.trafficmanager.net/debian buster-updates main
+    deb http://debian-archive.trafficmanager.net/debian buster-backports main
+    deb-src http://debian-archive.trafficmanager.net/debian buster-backports main
+    ```
 
 7. Azure Linux エージェントをインストールします。
 

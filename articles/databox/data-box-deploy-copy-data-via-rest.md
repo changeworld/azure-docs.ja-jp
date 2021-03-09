@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 71f966cd62ffd2c735259dcfa98b9b97f87d9a19
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cb0a90db0595c655191006969071bc5b9cceaa75
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926197"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337595"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>チュートリアル:REST API を使用して Azure Data Box BLOB ストレージにデータをコピーする  
 
@@ -85,7 +85,7 @@ Azure portal を使用して証明書をダウンロードします。
 
 1. Azure portal にサインインします。
 2. お客様の Data Box の注文に移動し、 **[全般]、[デバイスの詳細]** の順に移動します。
-3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、 **\<your order name>.cer** 証明書ファイルがダウンロードされます。 このファイルを**保存**します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
+3. **[デバイスの資格情報]** で **[デバイスの API アクセス]** に移動します。 **[Download]** をクリックします。 この操作によって、 **\<your order name>.cer** 証明書ファイルがダウンロードされます。 このファイルを **保存** します。 デバイスに接続するために使用するクライアントまたはホスト コンピューターにこの証明書をインストールします。
 
     ![Azure portal での証明書のダウンロード](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
 
@@ -111,15 +111,15 @@ HTTPS 経由で Data Box BLOB ストレージにアクセスするには、デ�
 1. `.cer` ファイルを右クリックし、 **[証明書のインストール]** を選択します。 このアクションにより、証明書のインポート ウィザードが開始されます。
 2. **[ストアの場所]** で **[ローカル マシン]** を選択し、 **[次へ]** をクリックします。
 
-    ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
+    ![証明書インポート ウィザード、Windows Server](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
 
 3. **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** をクリックします。 リモート ホストのルート ストアに移動し、 **[次へ]** をクリックします。
 
-    ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![証明書インポート ウィザード、証明書ストア](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4. **[完了]** をクリックします。 インポートが成功したことを通知するメッセージが表示されます。
 
-    ![PowerShell を使用した証明書のインポート](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![証明書インポート ウィザード、インポートの完了](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Linux システムを使用する
 
@@ -143,7 +143,7 @@ RHEL、Fedora、および CentOS の最近のバージョンでは、`update-ca-
 
 ### <a name="configure-partner-software-and-verify-connection"></a>パートナー ソフトウェアを構成し、接続を確認する
 
-[*http* 経由での接続時に使用したパートナー ソフトウェアの構成](#verify-connection-and-configure-partner-software)手順に従います。 唯一の違いは、*http を使用するオプション*をオフにしておく必要があることです。
+[*http* 経由での接続時に使用したパートナー ソフトウェアの構成](#verify-connection-and-configure-partner-software)手順に従います。 唯一の違いは、*http を使用するオプション* をオフにしておく必要があることです。
 
 ## <a name="copy-data-to-data-box"></a>Data Box にデータをコピーする
 
@@ -169,11 +169,11 @@ Data Box BLOB ストレージに接続したら、次の手順はデータをコ
 
 BLOB は常にコンテナーにアップロードされるため、最初の手順はコンテナーを作成することです。 コンテナーを使用すると、お客様のコンピューター上のフォルダーにファイルを整理するように、BLOB のグループを整理できます。 BLOB コンテナーを作成するには、以下の手順に従います。
 
-1. ストレージ エクスプローラーを開きます。
+1. Storage Explorer を開きます。
 2. 左側のウィンドウで、BLOB コンテナーを作成するストレージ アカウントを展開します。
 3. **[BLOB コンテナー]** を右クリックし、コンテキスト メニューの **[BLOB コンテナーの作成]** を選択します。
 
-   ![Create blob containers context menu](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
+   ![[BLOB コンテナー] のコンテキスト メニュー、[BLOB コンテナーの作成]](media/data-box-deploy-copy-data-via-rest/create-blob-container-1.png)
 
 4. **[BLOB コンテナー]** フォルダーの下にテキスト ボックスが表示されます。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限については、「[コンテナーを作成し、アクセス許可を設定する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」を参照してください。
 5. 作業を終えたら、**Enter** キーを押して BLOB コンテナーを作成するか、**Esc** キーを押して取り消します。 BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。

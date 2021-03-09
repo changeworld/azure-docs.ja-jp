@@ -1,6 +1,10 @@
 ### YamlMime:Landing
 title: 開発者のための Azure Active Directory
-summary: Azure Active Directory (Azure AD) はクラウドの ID サービスです。開発者はこのサービスを使って、Microsoft の職場または学校アカウントによる安全なサインインをユーザーに提供するアプリを構築できます。 Azure AD は、シングル テナント アプリと基幹業務 (LOB) アプリを構築する開発者、さらには、マルチテナント アプリの開発を目指す開発者を支援します。 Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開発者プラットフォームの進化版です。 新しいアプリケーションでは、Microsoft ID プラットフォーム (v2.0) と MSAL を使用してトークンを取得し、セキュリティで保護された Web API にアクセスすることをお勧めします。
+summary: >
+  Azure Active Directory (Azure AD) はクラウドの ID サービスです。開発者はこれを使って、Microsoft の職場または学校アカウントでユーザーをサインインさせるアプリを構築できます。 Azure AD は、シングル テナントの基幹業務 (LOB) アプリとマルチテナント アプリの構築をサポートしています。
+
+
+  重要:このコンテンツは、以前の Azure AD v1.0 エンドポイント用です。新しいプロジェクトには Microsoft ID プラットフォームを使用してください。
 metadata:
   ms.topic: landing-page
   ms.date: 01/27/2020
@@ -9,12 +13,13 @@ metadata:
   ms.service: active-directory
   ms.subservice: azuread-dev
   ms.workload: identity
-  ms.openlocfilehash: 113a28ca5b4152ca8beedc7bdc3f1027c5acdf17
-  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+  ROBOTS: NOINDEX
+  ms.openlocfilehash: 9089b944402c31135b32b3304ecf7cf69d86ad93
+  ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88116072"
+  ms.lasthandoff: 10/14/2020
+  ms.locfileid: "92055122"
 landingContent:
 - title: 開発者のための Azure Active Directory
   linkLists:
@@ -22,33 +27,19 @@ landingContent:
     links:
     - text: 開発者のための Azure Active Directory (v1.0)
       url: v1-overview.md
-    - text: Microsoft ID プラットフォームの進化
-      url: ./about-microsoft-identity-platform.md
-    - text: Microsoft ID プラットフォーム (v2.0)
-      url: ../develop/v2-overview.md
-  - linkListType: concept
-    links:
-    - text: Microsoft ID プラットフォーム (v2.0) に更新する理由
-      url: azure-ad-endpoint-comparison.md
-    - text: アプリケーションの種類とシナリオ
-      url: app-types.md
-- title: 認証プロトコル
+- title: プラットフォームの比較
   linkLists:
   - linkListType: overview
     links:
-    - text: 認証の基本
-      url: v1-authentication-scenarios.md
-  - linkListType: concept
-    links:
-    - text: OAuth 2.0 承認コード フロー
-      url: v1-protocols-oauth-code.md
-    - text: OpenID Connect コード フロー
-      url: v1-protocols-openid-connect-code.md
-    - text: OAuth 2.0 クライアント資格情報の付与フロー
-      url: v1-oauth2-client-creds-grant-flow.md
-- title: サンプル
+    - text: Microsoft ID プラットフォームの進化
+      url: about-microsoft-identity-platform.md
+    - text: v2.0 に更新する理由
+      url: azure-ad-endpoint-comparison.md
+- title: Microsoft ID プラットフォーム
   linkLists:
-  - linkListType: download
+  - linkListType: overview
     links:
-    - text: サンプル アプリ
-      url: sample-v1-code.md
+    - text: Microsoft ID プラットフォームとは
+      url: ../develop/v2-overview.md
+    - text: ADAL から MSAL へのアプリの移行
+      url: ../develop/msal-migration.md

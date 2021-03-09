@@ -6,18 +6,22 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
-ms.openlocfilehash: f6dd9d1290ea9d18fc6a5f18196585926b2ab91a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eb84684201ddf79f2a73fd1bcba1a0f69899bea8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505214"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684320"
 ---
 # <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-db-account-using-powershell"></a>PowerShell を使用する、Azure Cosmos DB アカウントの接続文字列とアカウント キーの操作
+[!INCLUDE[appliesto-all-apis](../../../includes/appliesto-all-apis.md)]
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
-[!INCLUDE [sample-powershell-install](../../../../../includes/sample-powershell-install-no-ssh.md)]
+このサンプルには、Azure PowerShell Az 5.4.0 以降が必要です。 `Get-Module -ListAvailable Az` を実行して、インストールされているバージョンを確認します。
+インストールする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-az-ps)に関するページを参照してください。
+
+[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) を実行して Azure にサインインします。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -41,14 +45,12 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | command | Notes |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) | Cosmos DB アカウントの接続文字列またはキー (読み取り/書き込みまたは読み取り専用) を取得します。 |
-| [New-AzCosmosDBAccountKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccountkey) | Cosmos DB アカウントの、指定されたキーを再生成します。 |
+| [Get-AzCosmosDBAccountKey](/powershell/module/az.cosmosdb/get-azcosmosdbaccountkey) | Cosmos DB アカウントの接続文字列またはキー (読み取り/書き込みまたは読み取り専用) を取得します。 |
+| [New-AzCosmosDBAccountKey](/powershell/module/az.cosmosdb/new-azcosmosdbaccountkey) | Cosmos DB アカウントの、指定されたキーを再生成します。 |
 |**Azure リソース グループ**| |
-| [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/)を参照してください。
-
-Azure Cosmos DB のその他の PowerShell サンプル スクリプトについては、[Azure Cosmos DB の PowerShell スクリプト](../../../powershell-samples.md)に関する記事をご覧ください。
+Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/)を参照してください。

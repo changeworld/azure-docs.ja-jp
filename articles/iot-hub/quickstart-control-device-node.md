@@ -14,14 +14,15 @@ ms.custom:
 - seo-javascript-october2019
 - mqtt
 - 'Role: Cloud Development'
-- devx-track-javascript
+- devx-track-js
+- devx-track-azurecli
 ms.date: 06/21/2019
-ms.openlocfilehash: 5f3064b9be35d9b9d02be3e18469ed12b33757a6
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 460ac94e8e72659614eac9477fbad76ce12b16fb
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421554"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070723"
 ---
 # <a name="quickstart-use-nodejs-to-control-a-device-connected-to-an-azure-iot-hub"></a>クイック スタート:Node.js を使用して、Azure IoT ハブに接続されたデバイスを制御する
 
@@ -35,37 +36,29 @@ ms.locfileid: "87421554"
 
 * [Node.js 10 以上](https://nodejs.org)。
 
+    開発コンピューターに現在インストールされている Node.js のバージョンは、次のコマンドを使って確認できます。
+
+    ```cmd/sh
+    node --version
+    ```
+
 * [サンプル Node.js プロジェクト](https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip)。
 
 * ファイアウォールでポート 8883 が開放されていること。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
-開発コンピューターに現在インストールされている Node.js のバージョンは、次のコマンドを使って確認できます。
-
-```cmd/sh
-node --version
-```
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-### <a name="add-azure-iot-extension"></a>Azure IoT 拡張機能を追加する
-
-次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-node.md)を完了した場合は、この手順を省略できます。
+前の「[クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)」を完了した場合は、この手順を省略できます。
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-前出の[デバイスから IoT ハブへの利用統計情報の送信に関するクイック スタート](quickstart-send-telemetry-node.md)を完了した場合は、この手順を省略できます。
+前の「[クイック スタート: デバイスから IoT ハブへの利用統計情報の送信](quickstart-send-telemetry-node.md)」を完了した場合は、この手順を省略できます。
 
 デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
@@ -85,7 +78,7 @@ az extension add --name azure-iot
     **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show \
       --hub-name {YourIoTHubName} \
       --device-id MyNodeDevice \
       --output table
@@ -102,7 +95,7 @@ az extension add --name azure-iot
     **YourIoTHubName**: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub show-connection-string \
+    az iot hub connection-string show \
       --policy-name service --name {YourIoTHubName} --output table
 
     ```

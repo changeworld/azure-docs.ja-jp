@@ -2,28 +2,26 @@
 title: Azure AD Domain Services のレプリカ セットの概念 | Microsoft Docs
 description: Azure Active Directory Domain Services のレプリカ セットと、これが ID サービスを必要とするアプリケーションにどのようにして冗長性を提供するかについて説明します。
 services: active-directory-ds
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2020
-ms.author: iainfou
-ms.openlocfilehash: 698009ee8a57ed5d30e01376b4f2c63b0a27ead8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 02/26/2021
+ms.author: justinha
+ms.openlocfilehash: 8eb1560887c08c3f64fa599c39e5577242d2a1e8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505539"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689064"
 ---
-# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services-preview"></a>Azure Active Directory Domain Services (プレビュー) のレプリカ セットの概念と機能
+# <a name="replica-sets-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services のレプリカ セットの概念と機能
 
 Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメインを作成する場合は、一意の名前空間を定義します。 この名前空間はドメイン名 (*aaddscontoso.com* など) であり、2 つのドメイン コントローラー (DC) はその後、選択した Azure リージョンにデプロイされます。 この DC のデプロイは、レプリカ セットと呼ばれます。
 
 マネージド ドメインを拡張して、Azure AD テナントごとに複数のレプリカ セットを使用できます。 レプリカ セットは、Azure AD DS がサポートされている任意の Azure リージョンの、ピアリングされた任意の仮想ネットワークに追加できます。 異なる Azure リージョンにレプリカ セットを追加することで、1 つの Azure リージョンがオフラインになった場合に、レガシ アプリケーションの地理的なディザスター リカバリーが実現されます。
-
-レプリカ セットは現在プレビュー段階です。
 
 > [!NOTE]
 > レプリカ セットでは、1 つの Azure テナント内に複数の一意のマネージド ドメインをデプロイすることはできません。 各レプリカ セットには、同じデータが含まれます。
@@ -54,17 +52,13 @@ Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメ�
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
-マネージド ドメインの既定の SKU は *Enterprise* SKU で、複数のレプリカ セットをサポートします。 *Standard* SKU に変更した場合に追加のレプリカ セットを作成するには、マネージド ドメインを *Enterprise* または *Premium* に[アップグレード](change-sku.md)します。
+マネージド ドメインの既定の SKU は *Enterprise* SKU で、複数のレプリカ セットをサポートします。 *Standard* SKU に変更した場合に追加のレプリカ セットを作成するには、マネージド ドメインを *Enterprise* または *Premium* に [アップグレード](change-sku.md)します。
 
-プレビュー期間中にサポートされるレプリカ セットの最大数は 4 です。これには、マネージド ドメインの作成時に作成された最初のレプリカが含まれます。
+サポートされるレプリカ セットの最大数は、マネージド ドメインを作成したときに作成された最初のレプリカを含めて 4 つです。
 
 各レプリカ セットに対する課金は、ドメイン構成 SKU に基づきます。 たとえば、*Enterprise* SKU を使用し、3 つのレプリカ セットがあるマネージド ドメインがある場合、3 つのレプリカ セットごとに、1 時間単位でサブスクリプションに請求されます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
-
-### <a name="can-i-use-my-production-managed-domain-with-this-preview"></a>このプレビューで運用環境のマネージド ドメインを使用できますか?
-
-レプリカ セットは、Azure AD Domain Services のパブリック プレビュー機能です。 運用環境のマネージド ドメインを使用することはできますが、まだプレビュー段階にある機能については、サポートの相違点に注意してください。 プレビューの詳細については、[Azure Active Directory のプレビュー SLA](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) に関するページを参照してください。
 
 ### <a name="can-i-create-a-replica-set-in-subscription-different-from-my-managed-domain"></a>マネージド ドメインとは異なるサブスクリプションにレプリカ セットを作成できますか?
 
@@ -72,7 +66,7 @@ Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメ�
 
 ### <a name="how-many-replica-sets-can-i-create"></a>レプリカ セットはいくつ作成できますか?
 
-プレビューでは、最大 4 つのレプリカ セット (マネージド ドメインの初期レプリカ セットと 3 つの追加レプリカ セット) に制限されています。
+最大 4 つのレプリカ セットを作成できます。つまり、マネージド ドメインの初期レプリカ セットに加えて、3 つのレプリカ セットを追加できます。
 
 ### <a name="how-does-user-and-group-information-get-synchronized-to-my-replica-sets"></a>ユーザーとグループの情報はレプリカ セットにどのように同期されますか?
 

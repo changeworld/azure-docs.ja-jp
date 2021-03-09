@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: tilarso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77c673ec52873d854647cf49c0efcbd650fb6aa8
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 8c319489fe4c884cd5de48ac2d3e47e7beb3026f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89320649"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90705488"
 ---
 # <a name="what-is-the-identity-secure-score-in-azure-active-directory"></a>Azure Active Directory の ID セキュリティ スコアとは
 
@@ -102,7 +102,7 @@ ID セキュリティ スコアは、次のロールが使用できます。
 
 スコアの履歴を表示するには、[Microsoft 365 セキュリティ センター](https://security.microsoft.com/)に移動して、ご自身の全体的な Microsoft セキュリティ スコアをご確認ください。 全体的なセキュリティ スコアへの変更を確認するには、[履歴の表示] をクリックします。 特定の日付を選択すると、その日どのコントロールが有効になっていて、コントロールごとにどれだけのポイントを得たかを確認できます。
 
-### <a name="how-does-the-identity-secure-score-relate-to-the-office-365-secure-score"></a>ID セキュリティ スコアは Office 365 のセキュリティ スコアにどのように関連していますか?
+### <a name="how-does-the-identity-secure-score-relate-to-the-microsoft-365-secure-score"></a>ID セキュリティ スコアは Microsoft 365 のセキュリティ スコアにどのように関連していますか?
 
 [Microsoft のセキュリティ スコア](/office365/securitycompliance/microsoft-secure-score)には、次の 5 つのコントロールとスコア カテゴリがあります。
 

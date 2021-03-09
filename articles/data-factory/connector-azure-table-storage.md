@@ -1,22 +1,18 @@
 ---
 title: Azure Table Storage との間でデータをコピーする
 description: Data Factory を使用して、サポートされるソース ストアから Azure Table Storage にデータをコピーしたり、Table Storage からサポートされるシンク ストアにコピーしたりする方法を説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/27/2019
-ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 10/20/2020
+ms.openlocfilehash: 1448bb3ebf541af047759bc886b2c174d89c1c50
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417496"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383774"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Table Storage との間でのデータのコピー
 
@@ -32,7 +28,7 @@ ms.locfileid: "81417496"
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-この Azure Table ストレージ コネクタは、次のアクティビティでサポートされます。
+この Azure Table Storage コネクタは、次のアクティビティでサポートされます。
 
 - [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
@@ -89,13 +85,13 @@ Azure Storage のリンクされたサービスは、アカウント キーを�
         "type": "AzureTableStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
-            "accountKey": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "accountKey": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -110,10 +106,10 @@ Azure Storage のリンクされたサービスは、アカウント キーを�
 
 Shared Access Signature を使用して、Storage のリンクされたサービスを作成することもできます。 これによって、Data Factory は、ストレージ内のすべてまたは特定のリソースへのアクセスが制限付きまたは期限付きになります。
 
-Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature について詳しくは、[Shared Access Signature のモデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
+Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。 アカウントのアクセス キーを共有する必要はありません。 Shared Access Signature とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。 クライアントは、Shared Access Signature 内で適切なコンストラクターまたはメソッドに渡すだけで、Shared Access Signature でストレージ リソースにアクセスできます。 Shared Access Signature について詳しくは、[Shared Access Signature のモデルの概要](../storage/common/storage-sas-overview.md)に関するページをご覧ください。
 
 > [!NOTE]
-> Data Factory で、**サービスの Shared Access Signature** と**アカウントの Shared Access Signature** がサポートされるようになりました。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。 
+> Data Factory で、**サービスの Shared Access Signature** と **アカウントの Shared Access Signature** がサポートされるようになりました。 Shared Access Signature の詳細については、「[Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)」を参照してください。 
 
 > [!TIP]
 > ストレージ アカウントに使用するサービスの Shared Access Signature を生成するには、次の PowerShell コマンドを実行します。 プレースホルダーを置き換えたうえで、必要なアクセス許可を付与してください。
@@ -164,13 +160,13 @@ Shared Access Signature 認証を使用するために、次のプロパティ�
                 "type": "SecureString",
                 "value": "<SAS URI of the Azure Storage resource without token e.g. https://<account>.table.core.windows.net/<table>>"
             },
-            "sasToken": { 
-                "type": "AzureKeyVaultSecret", 
-                "store": { 
-                    "referenceName": "<Azure Key Vault linked service name>", 
-                    "type": "LinkedServiceReference" 
-                }, 
-                "secretName": "<secretName>" 
+            "sasToken": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
             }
         },
         "connectVia": {
@@ -184,7 +180,7 @@ Shared Access Signature 認証を使用するために、次のプロパティ�
 Shared Access Signature の URI を作成する際は、次の点に注意してください。
 
 - リンクされたサービス (読み取り、書き込み、読み取り/書き込み) がデータ ファクトリ内でどのように使用されているかに応じて、オブジェクトに対する適切な読み取り/書き込みアクセス許可を設定します。
-- **有効期限**を適切に設定します。 Storage オブジェクトへのアクセスがパイプラインのアクティブな期間内に期限切れにならないことを確認します。
+- **有効期限** を適切に設定します。 Storage オブジェクトへのアクセスがパイプラインのアクティブな期間内に期限切れにならないことを確認します。
 - URI は、必要に応じて、適切なテーブル レベルで作成する必要があります。
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -222,7 +218,7 @@ Azure Table をコピー先またはコピー元としてデータをコピー�
 
 Azure Table などのスキーマのないデータ ストアの場合、Data Factory は次のいずれかの方法でスキーマを推論します。
 
-* コピー アクティビティで列マッピングを指定した場合、Data Factory は、ソース側の列リストを使用してデータを取得します。 この場合、行に列の値が含まれていないと、null 値が指定されます。
+* コピー アクティビティで列マッピングを指定した場合、Data Factory により、ソース側の列の一覧を使用してデータが取得されます。 この場合、行に列の値が含まれていないと、null 値が指定されます。
 * コピー アクティビティで列マッピングを指定しない場合、Data Factory は、データの最初の行を使用してスキーマを推論します。 この場合、最初の行に完全なスキーマが含まれていない場合 (たとえば、一部の列に null 値がある場合)、コピー操作の結果で一部の列が欠落します。
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
@@ -236,13 +232,13 @@ Azure Table からデータをコピーする場合は、コピー アクティ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **AzureTableSource** に設定する必要があります。 |はい |
-| azureTableSourceQuery |カスタム Table Storage クエリを使用してデータを読み取ります。 次のセクションの例を参照してください。 |いいえ |
+| azureTableSourceQuery |カスタム Table Storage クエリを使用してデータを読み取ります。<br/>ソース クエリは、Azure Table Storage でサポートされている `$filter` クエリ オプションからの直接マップです。[このドキュメント](/rest/api/storageservices/querying-tables-and-entities#supported-query-options)の構文の詳細を確認し、次の [azureTableSourceQuery の例に関するセクション](#azuretablesourcequery-examples)で、例を参照してください。 |いいえ |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。<br/>使用可能な値: **True**、および **False** (既定値)。 |いいえ |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery の例
 
 >[!NOTE]
->Azure Table のクエリ操作は、[Azure Table サービスによって適用される](https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations)とおり、30 秒でタイムアウトとなります。 クエリの最適化方法については、「[クエリに対応した設計](../storage/tables/table-storage-design-for-query.md)」という記事をご覧ください。
+>Azure Table のクエリ操作は、[Azure Table サービスによって適用される](/rest/api/storageservices/setting-timeouts-for-table-service-operations)とおり、30 秒でタイムアウトとなります。 クエリの最適化方法については、「[クエリに対応した設計](../storage/tables/table-storage-design-for-query.md)」という記事をご覧ください。
 
 Azure Data Factory では、datetime 型の列に対してデータをフィルタリングする場合、この例を参照してください。
 
@@ -268,7 +264,7 @@ Azure Table にデータをコピーする場合は、コピー アクティビ�
 | azureTableDefaultPartitionKeyValue |シンクで使用できる既定のパーティション キー値です。 |いいえ |
 | azureTablePartitionKeyName |値をパーティション キーとして使用する列の名前を指定します。 指定しない場合、AzureTableDefaultPartitionKeyValue がパーティション キーとして使用されます。 |いいえ |
 | azureTableRowKeyName |値を行キーとして使用する列の名前を指定します。 指定しない場合、各行に GUID を使用します。 |いいえ |
-| azureTableInsertType |Azure Table にデータを挿入する方法です。 このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。 <br/><br/>使用可能な値: **マージ** (既定値) および**置換**。 <br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。 どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 結合と置換の設定の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](https://msdn.microsoft.com/library/azure/hh452241.aspx)」および「[Insert or Replace Entity (エンティティの挿入または置換)](https://msdn.microsoft.com/library/azure/hh452242.aspx)」をご覧ください。 |いいえ |
+| azureTableInsertType |Azure Table にデータを挿入する方法です。 このプロパティは、一致するパーティションと列キーを持つ出力テーブル内の既存の行で、値を置換するか結合するかを制御します。 <br/><br/>使用可能な値: **マージ** (既定値) および **置換**。 <br/><br> この設定は、テーブル レベルではなく、行レベルで適用されます。 どちらのオプションでも、出力テーブル内の、入力内に存在しない行は削除されません。 結合と置換の設定の機能については、「[Insert or Merge Entity (エンティティの挿入または結合)](/rest/api/storageservices/Insert-Or-Merge-Entity)」および「[Insert or Replace Entity (エンティティの挿入または置換)](/rest/api/storageservices/Insert-Or-Replace-Entity)」をご覧ください。 |いいえ |
 | writeBatchSize |writeBatchSize または writeBatchTimeout に達したときに、Azure Table にデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 10,000) |
 | writeBatchTimeout |writeBatchSize または writeBatchTimeout に達したときに、Azure Table にデータを挿入します。<br/>使用可能な値: 期間。 たとえば "00:20:00" (20 分) を指定できます。 |No (既定値は 90 秒 - ストレージ クライアントの既定のタイムアウト値) |
 
@@ -331,7 +327,7 @@ azureTablePartitionKeyName として宛先列を使用する前に、 **"transla
 
 Azure Table をコピー元またはコピー先としてデータをコピーするとき、次の Azure Table のデータ型から Data Factory の中間データ型へのマッピングが使用されます。 コピー アクティビティでソースのスキーマとデータ型がシンクにマッピングされるしくみについては、[スキーマとデータ型のマッピング](copy-activity-schema-and-type-mapping.md)に関する記事を参照してください。
 
-Azure テーブル間でデータの移動時に、次の [Azure Table により定義されたマッピング](https://msdn.microsoft.com/library/azure/dd179338.aspx)が Azure Table の OData 型と .NET 型との間の移動に利用されます。
+Azure テーブル間でデータの移動時に、次の [Azure Table により定義されたマッピング](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)が Azure Table の OData 型と .NET 型との間の移動に利用されます。
 
 | Azure Table のデータ型 | Data Factory の中間データ型 | 詳細 |
 |:--- |:--- |:--- |

@@ -7,28 +7,28 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 71bffacb3f865ffe487ebdd4bee0c0c229be332d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f55b5d9093e2e8e78d3841c332d67f26e5106d38
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830327"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200823"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 仮想マシンについてのよく寄せられる質問
-この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Windows バージョンについては、「[Windows Virtual Machines についてのよく寄せられる質問](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Windows バージョンについては、「[Windows Virtual Machines についてのよく寄せられる質問](../windows/faq.md)」を参照してください。
 
 ## <a name="what-can-i-run-on-an-azure-vm"></a>Azure VM では何を実行できますか。
-すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。 詳細については、「[Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。 詳細については、「[Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md)」を参照してください。
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>仮想マシンではどれくらいのストレージ容量を使用できますか。
-各データ ディスクで最大 32,767 GiB を使用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+各データ ディスクで最大 32,767 GiB を使用できます。 使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。 詳細については、「 [仮想マシンのサイズ](../sizes.md)」を参照してください。
 
 Azure Managed Disks は、Azure Virtual Machines でデータの永続的な記憶域として使用できる、お勧めのディスク ストレージ サービスです。 各仮想マシンで複数の管理ディスクを使用することができます。 Managed Disks には、次の 2 種類の耐久性ストレージ オプションがあります:Premium Managed Disks と Standard Managed Disks。 価格情報については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」を参照してください。
 
 Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージも利用できます。 各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。 価格の詳細については、「 [Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
 ## <a name="how-can-i-access-my-virtual-machine"></a>仮想マシンへのアクセス方法を教えてください。
-Secure Shell (SSH) を使用して、仮想マシンにサインオンするためのリモート接続を確立します。 [Windows から](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)接続する手順、または [Linux および Mac から](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)接続する手順を参照します。 SSH では、既定で最大 10 のコンカレント接続が可能です。 この接続数は構成ファイルを編集することで増やすことができます。
+Secure Shell (SSH) を使用して、仮想マシンにサインオンするためのリモート接続を確立します。 [Windows から](ssh-from-windows.md)接続する手順、または [Linux および Mac から](mac-create-ssh-keys.md)接続する手順を参照します。 SSH では、既定で最大 10 のコンカレント接続が可能です。 この接続数は構成ファイルを編集することで増やすことができます。
 
 問題がある場合は、「[Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)」を参照してください。
 
@@ -36,7 +36,7 @@ Secure Shell (SSH) を使用して、仮想マシンにサインオンするた�
 データの格納に一時ディスク (/dev/sdb1) を使用しないでください。 一時ディスクは一時的なストレージでしかなく、 データ損失の発生時にデータを復旧できない恐れがあります。
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>既存の Azure VM をコピーまたは複製できますか。
-はい。 詳細については、「[Resource Manager デプロイ モデルで Linux 仮想マシンのコピーを作成する方法](copy-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+はい。 詳細については、「[Resource Manager デプロイ モデルで Linux 仮想マシンのコピーを作成する方法](copy-vm.md)」を参照してください。
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>Azure Resource Manager でカナダ中部およびカナダ東部のリージョンが表示されない理由を教えてください。
 カナダ中部およびカナダ東部の 2 つの新しいリージョンは、既存の Azure サブスクリプションで仮想マシンを作成した場合、自動的には登録されません。 Azure Resource Manager を使用してこれら以外の任意のリージョンに Azure ポータルから仮想マシンをデプロイすると、この登録は自動的に行われます。 その他の任意の Azure リージョンに仮想マシンがデプロイされると、新しいリージョンを後続の仮想マシンで使用できるようになります。
@@ -64,7 +64,7 @@ Secure Shell (SSH) を使用して、仮想マシンにサインオンするた�
 - `admin`
 - `admin1`
 - `admin2`
--`administrator`
+- `administrator`
 - `aspnet`
 - `backup`
 - `console`

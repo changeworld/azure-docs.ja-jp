@@ -7,27 +7,30 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: bce702873fc4e66f283a9785bb408bbfa7fda83c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 577b8527d95a6410deca8002cddfaae31be1fc97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266896"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197491"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>PowerShell を使用して特殊化されたディスクから Windows VM を作成する
 
 OS ディスクとして特殊化されたマネージド ディスクを接続することにより新しい VM を作成します。 特殊化されたディスクは、元の VM のユーザーアカウント、アプリケーション、その他の状態データが保存される、既存の VM の仮想ハードディスク (VHD) のコピーです。 
 
-特殊化された VHD を使用して新しい VM を作成すると、新しい VM は、元の VM のコンピューター名を保持します。 その他のコンピューター固有の情報も保持します。場合によっては、この重複情報によって問題が発生する可能性があります。 VM をコピーするときは、アプリケーションが依存するコンピューター固有の情報の種類を把握しておいてください。
-
 いくつかのオプションがあります。
 * [既存のマネージド ディスクを使用する](#option-1-use-an-existing-disk) このオプションは、正しく機能していない VM がある場合に便利です。 VM を削除してから、マネージド ディスクを再利用して新しい VM を作成できます。 
-* [VHD をアップロードする](#option-2-upload-a-specialized-vhd) 
+* [VHD のアップロード](#option-2-upload-a-specialized-vhd) 
 * [スナップショットを使用して既存の Azure VM をコピーする](#option-3-copy-an-existing-azure-vm)
 
 Azure Portal を使用して、[特殊化された VHD から新しい VM を作成する](create-vm-specialized-portal.md)こともできます。
 
-この記事では、マネージド ディスクの使用方法を説明します。 従来のデプロイメントがストレージ アカウントを使用する必要がある場合、[ストレージ アカウントで特殊化された VHD から VM を作成する](sa-create-vm-specialized.md)に関するページを参照してください。
+この記事では、マネージド ディスクの使用方法を説明します。 従来のデプロイメントがストレージ アカウントを使用する必要がある場合、[ストレージ アカウントで特殊化された VHD から VM を作成する](/previous-versions/azure/virtual-machines/windows/sa-create-vm-specialized)に関するページを参照してください。
+
+> [!IMPORTANT]
+> 
+> 特殊化されたディスクを使用して新しい VM を作成すると、新しい VM で元の VM のコンピューター名が保持されます。 その他のコンピューター固有の情報 (CMID など) も保持されます。場合によっては、この重複情報によって問題が発生する可能性があります。 VM をコピーするときは、アプリケーションが依存するコンピューター固有の情報の種類を把握しておいてください。  
+> そのため、複数の VM を作成する場合は、特殊化されたディスクを使用しないでください。 代わりに、より大規模なデプロイの場合は、[イメージを作成](capture-image-resource.md)してから、[そのイメージを使用して複数の VM を作成](create-vm-generalized-managed.md)します。
 
 1 つの VHD またはスナップショットからの同時デプロイ数は 20 VM を上限とするようお勧めします。 
 
@@ -51,7 +54,7 @@ Hyper-V などのオンプレミスの仮想化ツールを使用して作成さ
 ### <a name="prepare-the-vm"></a>VM を準備する
 VHD をそのまま使用して新しい VM を作成します。 
   
-  * [Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 Sysprep を使用して VM を一般化**しないでください**。
+  * [Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md)。 Sysprep を使用して VM を一般化 **しないでください**。
   * VM にインストールされたゲストの仮想化ツールやエージェント (VMware ツールなど) を削除します。
   * IP アドレスと DNS 設定を DHCP から取得するように VM が構成されていることを確認します。 これにより、サーバーが起動時に仮想ネットワーク内の IP アドレスを確実に取得します。 
 
@@ -159,7 +162,7 @@ VM の[仮想ネットワーク](../../virtual-network/virtual-networks-overview
        -AddressPrefix 10.0.0.0/24
     ```
     
-2. 仮想ネットワークを作成します。 この例では、仮想ネットワーク名を *myVnetName*、場所を*米国西部*、仮想ネットワークのアドレス プレフィックスを *10.0.0.0/16* に設定します。 
+2. 仮想ネットワークを作成します。 この例では、仮想ネットワーク名を *myVnetName*、場所を *米国西部*、仮想ネットワークのアドレス プレフィックスを *10.0.0.0/16* に設定します。 
    
     ```powershell
     $vnetName = "myVnetName"
@@ -190,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
     
 ```
 
-エンドポイントと NSG 規則の詳細については、[PowerShell を使用した Azure の VM へのポートの開放](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+エンドポイントと NSG 規則の詳細については、[PowerShell を使用した Azure の VM へのポートの開放](nsg-quickstart-powershell.md)に関するページを参照してください。
 
 ### <a name="create-a-public-ip-address-and-nic"></a>パブリック IP アドレスと NIC の作成
 仮想ネットワークでの仮想マシンとの通信を有効にするには、[パブリック IP アドレス](../../virtual-network/public-ip-addresses.md)とネットワーク インターフェイスが必要です。

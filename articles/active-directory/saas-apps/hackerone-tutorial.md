@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 530ef271091afc3e646d375ea471d8c48f0f8651
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ac8bdc37bc2572b580deebc35931e324ed107d87
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544198"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92446555"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>チュートリアル: Azure Active Directory と HackerOne の統合
 
@@ -27,7 +27,7 @@ HackerOne と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して HackerOne に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,8 +41,8 @@ Azure AD と HackerOne の統合を構成するには、次のものが必要で
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* HackerOne では、**SP** によって開始される SSO がサポートされます
-* HackerOne では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* HackerOne では、 **SP** によって開始される SSO がサポートされます
+* HackerOne では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-hackerone-from-the-gallery"></a>ギャラリーからの HackerOne の追加
 
@@ -62,13 +62,13 @@ Azure AD への HackerOne の統合を構成するには、ギャラリーから
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**HackerOne**」と入力し、結果パネルで **HackerOne** を選択して、 **[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「 **HackerOne** 」と入力し、結果パネルで **HackerOne** を選択して、 **[追加]** をクリックしてアプリケーションを追加します。
 
      ![結果一覧の HackerOne](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、HackerOne で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、HackerOne で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと HackerOne 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 HackerOne で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -106,7 +106,7 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
     b. **[識別子 (エンティティ ID)]** テキスト ボックスに「`hackerone.com`」と入力します。
 
-5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -126,11 +126,11 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
 2. 上部のメニューで **[Settings]** をクリックします。
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_001.png)
+    ![メニューで [Settings]\(設定\) が選択されているスクリーンショット。](./media/hackerone-tutorial/tutorial_hackerone_001.png)
 
 3. **[Authentication]\(認証\)** に移動し、 **[Add SAML settings]\(SAML 設定の追加\)** をクリックします。
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_003.png)
+    ![[Add SAML settings]\(SAML 設定の追加\) ボタンが選択されている [Authentication Settings]\(認証設定\) ページを示すスクリーンショット。](./media/hackerone-tutorial/tutorial_hackerone_003.png)
 
 4. **[SAML Settings (SAML の設定)]** ダイアログで、次の手順を実行します。
 
@@ -140,13 +140,13 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
     b. **[Single Sign-On URL]\(シングル サインオン URL\)** ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
 
-    c. Azure portal からダウンロードした**証明書ファイル**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X509 Certificate]\(X509 証明書\)** ボックスに貼り付けます。
+    c. Azure portal からダウンロードした **証明書ファイル** をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X509 Certificate]\(X509 証明書\)** ボックスに貼り付けます。
 
     d. **[保存]** をクリックします。
 
 5. [Authentication Settings] ダイアログで、次の手順を実行します。
 
-    ![Configure single sign-on](./media/hackerone-tutorial/tutorial_hackerone_005.png)
+    ![[Run test]\(テストの実行\) ボタンが選択されている [Authentication Settings]\(認証設定\) ダイアログを示すスクリーンショット。](./media/hackerone-tutorial/tutorial_hackerone_005.png)
 
     a. **[テストの実行]** をクリックします。
 
@@ -174,9 +174,9 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
 
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -217,12 +217,12 @@ HackerOne で Azure AD シングル サインオンを構成するには、次�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [HackerOne] タイルをクリックすると、SSO を設定した HackerOne に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [HackerOne] タイルをクリックすると、SSO を設定した HackerOne に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: ca154caf67d8dd715ad1341e9fe3c6cfde20fde0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08cee87d94b20e99bcc46d42cbac7eb4272561bb
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88553072"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92460236"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>チュートリアル: Azure Active Directory と Infinite Campus の統合
 
@@ -27,7 +27,7 @@ Infinite Campus と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Infinite Campus に自動的にサインイン (シングル サインオン) できるようにすることが可能です。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -42,7 +42,7 @@ Infinite Campus と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Infinite Campus では、**SP** によって開始される SSO がサポートされます
+* Infinite Campus では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-infinite-campus-from-the-gallery"></a>ギャラリーからの Infinite Campus の追加
 
@@ -62,13 +62,13 @@ Azure AD への Infinite Campus の統合を構成するには、管理対象の
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Infinite Campus**」と入力し、結果パネルで **Infinite Campus** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Infinite Campus** 」と入力し、結果パネルで **Infinite Campus** を選び、 **[追加]** ボタンをクリックして、アプリケーションを追加します。
 
     ![結果一覧での Infinite Campus](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Infinite Campus で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Infinite Campus で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Infinite Campus 内の関連ユーザーとの間にリンク関係が確立されている必要があります。
 
 Infinite Campus で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -98,7 +98,7 @@ Infinite Campus で Azure AD シングル サインオンを構成するには�
 
     ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-4. [基本的な SAML 構成] セクションで、次の手順を実行します (ドメインはホスティング モデルによって異なりますが、**FULLY-QUALIFIED-DOMAIN** の値は Infinite Campus のインストールと一致する必要があることに注意してください)。
+4. [基本的な SAML 構成] セクションで、次の手順を実行します (ドメインはホスティング モデルによって異なりますが、 **FULLY-QUALIFIED-DOMAIN** の値は Infinite Campus のインストールと一致する必要があることに注意してください)。
 
     a. **[サインオン URL]** ボックスに、`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS` のパターンを使用して URL を入力します。
 
@@ -130,9 +130,9 @@ Infinite Campus で Azure AD シングル サインオンを構成するには�
 
     a. **[Enable SAML Single Sign On]\(SAML シングル サインオンを有効にする\)** チェック ボックスをオンにします。
 
-    b. **[Optional Attribute Name]\(省略可能な属性名\)** を編集して**名前**を含めます
+    b. **[Optional Attribute Name]\(省略可能な属性名\)** を編集して **名前** を含めます
 
-    c. **[Select an option to retrieve Identity Provider (IDP) server data]\(ID プロバイダー (IDP) サーバー データ取得のオプションを選択する\)** セクションで、 **[Metadata URL]\(メタデータ URL\)** を選択し、Azure portal からコピーした**アプリのフェデレーション メタデータ URL** をボックスに貼り付けて、 **[Sync]\(同期\)** をクリックします。
+    c. **[Select an option to retrieve Identity Provider (IDP) server data]\(ID プロバイダー (IDP) サーバー データ取得のオプションを選択する\)** セクションで、 **[Metadata URL]\(メタデータ URL\)** を選択し、Azure portal からコピーした **アプリのフェデレーション メタデータ URL** をボックスに貼り付けて、 **[Sync]\(同期\)** をクリックします。
 
     d. **[Sync]\(同期\)** をクリックすると、 **[SSO Service Provider Configuration]\(SSO サービス プロバイダーの構成\)** ページに値が自動的に設定されます。 これらの値は上記のステップ 4 で示される値と一致することを確認できます。
 
@@ -154,7 +154,7 @@ Infinite Campus で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
 
@@ -199,12 +199,12 @@ Infinite Campus はデモグラフィック中心のアーキテクチャです�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Infinite Campus] タイルをクリックすると、SSO を設定した Infinite Campus に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Infinite Campus] タイルをクリックすると、SSO を設定した Infinite Campus に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

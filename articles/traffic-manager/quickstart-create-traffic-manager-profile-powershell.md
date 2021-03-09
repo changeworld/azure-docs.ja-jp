@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/25/2020
+ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: f3ecdfb03a6e6d1aab355edf7c370b29240e0543
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 9b34a17cc9add0bed4bffb7677aa81bb17f3125b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88929518"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91631564"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Web アプリケーションの高可用性を実現する Traffic Manager プロファイルを作成する
 
@@ -25,17 +25,18 @@ ms.locfileid: "88929518"
 
 このクイック スタートでは、Web アプリケーションの 2 つのインスタンスを作成します。 これらは、それぞれ別の Azure リージョンで実行されています。 皆さんは、[エンドポイントの優先度](traffic-manager-routing-methods.md#priority-traffic-routing-method)に基づいて Traffic Manager プロファイルを作成します。 このプロファイルにより、Web アプリケーションを実行しているプライマリ サイトにユーザー トラフィックを誘導します。 Traffic Manager では、Web アプリケーションが継続的に監視されます。 プライマリ サイトが利用できなくなった場合には、バックアップ サイトへの自動フェールオーバーが実行されます。
 
+## <a name="prerequisites"></a>前提条件
+
 Azure サブスクリプションをお持ちでない場合は、ここで[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 PowerShell をインストールしてローカルで使用する場合、この記事では Azure PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzAccount` を実行して Azure との接続を作成することも必要です。
 
-## <a name="create-a-resource-group"></a>リソース グループを作成します
+## <a name="create-a-resource-group"></a>リソース グループを作成する
 [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用してリソース グループを作成します。
 
 ```azurepowershell-interactive
-
 
 # Variables
 $Location1="WestUS"

@@ -3,16 +3,16 @@ title: M シリーズ - Azure Virtual Machines
 description: M シリーズ VM の仕様。
 author: ayshakeen
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: hpc
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 2dea6ea292b4ed69d89a6e5e03c58f437446561d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b893d2d381ccea286066d6141142c2ab190242bc
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654788"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667034"
 ---
 # <a name="m-series"></a>M シリーズ
 
@@ -20,17 +20,16 @@ M シリーズは、多数の vCPU (最大 128 個の vCPU) と大量のメモ�
 
 M シリーズの VM は、Intel&reg; ハイパー スレッディング テクノロジを利用しています。
 
-ACU: 160-180
-
-Premium Storage: サポートされています
-
-Premium Storage キャッシュ:サポートされています
-
-ライブ マイグレーション: サポートされていません
-
-メモリ保持更新: サポートされていません
-
-書き込みアクセラレータ:[サポートされています](./how-to-enable-write-accelerator.md)
+[ACU](acu.md):160-180<br>
+[Premium Storage](premium-storage-performance.md):サポートされています<br>
+[Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
+[ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
+[メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>
+[VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
+[書き込みアクセラレータ](./how-to-enable-write-accelerator.md): サポートされています<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています<br>
+[エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
+<br>
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数|必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|
@@ -49,7 +48,7 @@ Premium Storage キャッシュ:サポートされています
 | Standard_M128 <sup>1</sup>     | 128 | 2048   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 | Standard_M128m <sup>1</sup>    | 128 | 3892   | 14336 | 64 | 250000/1600 (2456)  | 80000/2000 | 8|32000 |
 
-<sup>1</sup> 64 個を超える vCPU では、Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2、および LIS 4.2.1 が付属する Red Hat Enterprise Linux、CentOS 7.3、または Oracle Linux 7.3 の、サポートされているゲスト OS のいずれかが必要です。
+<sup>1</sup> vCPU が 64 個を超える場合、次のサポートされているゲスト バージョンのいずれかが必要です。Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2、および LIS 4.2.1 が付属する Red Hat Enterprise Linux、CentOS 7.3、または Oracle Linux 7.3 の、サポートされているゲスト OS のいずれかが必要です。
 
 <sup>2</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
@@ -64,9 +63,9 @@ Premium Storage キャッシュ:サポートされています
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
 - [旧世代](sizes-previous-gen.md)
 
-料金計算ツール:[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
-ディスクの種類の詳細情報:[ディスクの種類](./disks-types.md#ultra-disk)
+ディスクの種類の詳細情報: [ディスクの種類](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>次のステップ

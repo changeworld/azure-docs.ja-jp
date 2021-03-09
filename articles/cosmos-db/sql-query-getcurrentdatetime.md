@@ -1,20 +1,22 @@
 ---
 title: Azure Cosmos DB クエリ言語の GetCurrentDateTime
 description: Azure Cosmos DB での SQL システム関数 GetCurrentDateTime について学習します。
-author: ginamr
+author: timsander1
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 08/18/2020
-ms.author: girobins
+ms.date: 02/03/2021
+ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: ec0b8ccaceed4abe3dd2784463f507f3bc76d890
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: b48237b5a7eb836c495612758eeb9eaa45029b26
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606961"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526587"
 ---
 # <a name="getcurrentdatetime-azure-cosmos-db"></a>GetCurrentDateTime (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 UTC (協定世界時) での現在の日付と時刻を ISO 8601 文字列として返します。
   
@@ -46,7 +48,8 @@ GetCurrentDateTime ()
 
 GetCurrentDateTime() は非決定論的関数です。 返される結果は UTC です。 有効桁数は 7 桁で、精度は 100 ナノ秒です。
 
-このシステム関数では、インデックスは使用されません。
+> [!NOTE]
+> このシステム関数では、インデックスは使用されません。 値を現在の時刻と比較する場合は、現在の時刻をクエリ実行前に取得して、その定数文字列値を `WHERE` 句で使用します。
 
 ## <a name="examples"></a>例
   

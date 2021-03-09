@@ -1,19 +1,18 @@
 ---
 title: Azure Stream Analytics ジョブの削除
 description: この記事では、Azure Stream Analytics ジョブを削除するさまざまな方法を示します。
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f078ab217a5c4911fbd132338883504897db899f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 31812ac805bd3465b1b735842b45adb372286d66
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044602"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016067"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブを停止または削除する
 
@@ -53,12 +52,12 @@ Azure Stream Analytics ジョブは、Azure portal、Azure PowerShell、Azure SD
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-PowerShell を使用してジョブを停止するには、[Stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) コマンドレットを使用します。 PowerShell を使用してジョブを削除するには、[Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) コマンドレットを使用します。
+PowerShell を使用してジョブを停止するには、[Stop-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) コマンドレットを使用します。 PowerShell を使用してジョブを削除するには、[Remove-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) コマンドレットを使用します。
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Azure SDK for .NET を使用してジョブを停止または削除する
 
-Azure SDK for .NET を使用してジョブを停止するには、[StreamingJobsOperationsExtensions.BeginStop](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop?view=azure-dotnet) メソッドを使用します。 Azure SDK for .NET を使用してジョブを削除するには、[StreamingJobsOperationsExtensions.BeginDelete](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete?view=azure-dotnet) メソッドを使用します。
+Azure SDK for .NET を使用してジョブを停止するには、[StreamingJobsOperationsExtensions.BeginStop](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.beginstop) メソッドを使用します。 Azure SDK for .NET を使用してジョブを削除するには、[StreamingJobsOperationsExtensions.BeginDelete](/dotnet/api/microsoft.azure.management.streamanalytics.streamingjobsoperationsextensions.begindelete) メソッドを使用します。
 
 ## <a name="stop-or-delete-a-job-using-rest-api"></a>REST API を使用してジョブを停止または削除する
 
-REST API を使用してジョブを停止するには、[Stop](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#stop) メソッドを参照してください。 REST API を使用してジョブを削除するには、[Delete](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job#delete) メソッドを参照してください。
+REST API を使用してジョブを停止するには、[Stop](/rest/api/streamanalytics/2016-03-01/streamingjobs/stop) メソッドを参照してください。 REST API を使用してジョブを削除するには、[Delete](/rest/api/streamanalytics/2016-03-01/streamingjobs/delete) メソッドを参照してください。

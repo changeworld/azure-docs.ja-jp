@@ -1,6 +1,6 @@
 ---
-title: Synapse SQL プールを作成してクエリを実行する (Azure portal)
-description: Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する
+title: 'クイックスタート: 専用 SQL プール (以前の SQL DW) を作成してクエリを実行する (Azure portal)'
+description: Azure portal を使用して専用 SQL プール (以前の SQL DW) を作成してクエリを実行します
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -8,28 +8,28 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: sql-dw
 ms.date: 05/28/2019
-ms.author: Kevin
+ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c1b640fa5104ceb0f330c9aee9813ed8b3914d33
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: ecab573f7a98bcee79231b8e20077bb32bffd48c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166044"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680116"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Synapse SQL プールを作成し、クエリを実行する
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>クイックスタート: Azure portal から Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を作成し、クエリを実行する
 
-Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse SQL プール (データ ウェアハウス) をすばやく作成し、クエリを実行します。
+Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を Azure portal から短時間で作成し、クエリを実行します。
 
 ## <a name="prerequisites"></a>前提条件
 
 1. Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
    > [!NOTE]
-   > Azure Synapse の SQL プールを作成すると、新しい課金対象サービスを使用することになる場合があります。 詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/synapse-analytics/)」を参照してください。
+   > Azure Synapse の専用 SQL プール (以前の SQL DW) を作成すると、課金対象のサービスが新たに生じることがあります。 詳細については、「[Azure Synapse Analytics の価格](https://azure.microsoft.com/pricing/details/synapse-analytics/)」を参照してください。
 
-2. 最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) をダウンロードしてインストールします。
+2. 最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) をダウンロードしてインストールします。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -37,25 +37,25 @@ Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse
 
 ## <a name="create-a-sql-pool"></a>SQL プールを作成する
 
-データ ウェアハウスは、Azure Synapse Analytics の SQL プールを使用して作成されます。 SQL プールは、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内と [論理 SQL サーバー](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に作成されます。
+データ ウェアハウスは、Azure Synapse Analytics の専用 SQL プール (以前の SQL DW) を使用して作成されます。 専用 SQL プール (以前の SQL DW) は、定義された一連の[コンピューティング リソース](memory-concurrency-limits.md)を使用して作成されます。 データベースは、[Azure リソース グループ](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)内と [論理 SQL サーバー](../../azure-sql/database/logical-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に作成されます。
 
-以下の手順で **AdventureWorksDW** サンプル データを含む SQL プールを作成します。
+以下の手順で **AdventureWorksDW** サンプル データを含む専用 SQL プール (以前の SQL DW) を作成します。
 
-1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
+1. Azure Portal の左上隅にある **[リソースの作成]** を選択します。
 
    ![Azure portal でリソースを作成する](./media/create-data-warehouse-portal/create-a-resource.png)
 
-2. **[新規]** ページで **[データベース]** を選択し、 **[おすすめ]** 一覧から **[Azure Synapse Analytics (以前の SQL DW)]** を選択します。
+2. 検索バーに、「専用 SQL プール」と入力し、[専用 SQL プール (以前の SQL DW)] を選択します。 表示されたページで **[作成]** を選択します。
 
    ![空のデータ ウェアハウスを作成する](./media/create-data-warehouse-portal/create-a-data-warehouse.png)
 
-3. **[基本]** で、ご利用のサブスクリプション、リソース グループ、SQL プール名、サーバー名を指定します。
+3. **[基本]** で、ご利用のサブスクリプション、リソース グループ、専用 SQL プール (以前の SQL DW) 名、サーバー名を指定します。
 
    | 設定 | 推奨値 | 説明 |
    | :------ | :-------------- | :---------- |
    | **サブスクリプション** | 該当するサブスクリプション | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
    | **リソース グループ** | myResourceGroup | 有効なリソース グループ名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
-   | **SQL プール名** | グローバルに一意の名前 (例: *mySampleDataWarehouse*) | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)」を参照してください。 SQL プールは、データベースの一種であることに注意してください。 |
+   | **SQL プール名** | グローバルに一意の名前 (例: *mySampleDataWarehouse*) | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。  |
    | **サーバー** | グローバルに一意の名前 | 既存のサーバーを選択するか、新しいサーバー名を付けて **[新規作成]** を選択します。 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)に関するページを参照してください。 |
 
    ![データ ウェアハウスの基本情報を作成する](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
@@ -68,7 +68,7 @@ Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse
 
 5. **[既存のデータの使用]** で **[追加設定]** を選択し、 **[サンプル]** を選択して、AdventureWorksDW が同じサンプル データベースとして作成されるようにします。
 
-    ![[既存のデータの使用] を選択します](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png) 
+    ![[既存のデータの使用] を選択します](./media/create-data-warehouse-portal/create-sql-pool-additional-1.png)
 
 6. Azure Synapse Analytics フォームの [基本] タブの入力が完了したら、 **[確認および作成]** 、 **[作成]** の順に選択して、SQL プールを作成します。 プロビジョニングには数分かかります。
 
@@ -78,7 +78,7 @@ Azure portal を使用して Azure Synapse Analytics (旧称 SQL DW) の Synapse
 
 7. デプロイ プロセスを監視するために、ツール バーの **[通知]** を選択します。
 
-   ![通知 (notification)](./media/create-data-warehouse-portal/notification.png)
+   ![スクリーンショットは、デプロイ中の [通知] を示しています。](./media/create-data-warehouse-portal/notification.png)
 
 ## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
@@ -122,13 +122,13 @@ Azure portal で、サーバーの完全修飾サーバー名を取得します�
 
 2. 左側のメニューから **[Azure Synapse Analytics]** を選択し、 **[Azure Synapse Analytics]** ページで目的のものを選択します。
 
-3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は sqlpoolservername.database.windows.net です。
+3. そのデータベースの Azure Portal ページの **[基本]** ウィンドウで、**サーバー名** を見つけてコピーします。 この例の完全修飾名は sqlpoolservername.database.windows.net です。
 
-    ![接続情報](./media/create-data-warehouse-portal/find-server-name-copy.png)
+    ![接続情報](./media/create-data-warehouse-portal/find-server-name.png)
 
 ## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
 
-このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) を使って、サーバーへの接続を確立します。
+このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) を使って、サーバーへの接続を確立します。
 
 1. SQL Server Management Studio を開きます。
 
@@ -153,9 +153,9 @@ Azure portal で、サーバーの完全修飾サーバー名を取得します�
 
 ## <a name="run-some-queries"></a>クエリを実行する
 
-[制限されたリソース クラス](resource-classes-for-workload-management.md)を使用するため、サーバー管理者としてログに記録されている間は、大規模なクエリを実行しないことをお勧めします。 代わりに、[チュートリアルで説明](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/load-data-wideworldimportersdw#create-a-user-for-loading-data)されているように、[ワークロードの分離](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-tsql)を構成します。
+[制限されたリソース クラス](resource-classes-for-workload-management.md)を使用するため、サーバー管理者としてログに記録されている間は、大規模なクエリを実行しないことをお勧めします。 代わりに、[チュートリアルで説明](./load-data-wideworldimportersdw.md#create-a-user-for-loading-data)されているように、[ワークロードの分離](./quickstart-configure-workload-isolation-tsql.md)を構成します。
 
-SQL Data Warehouse はクエリ言語として T-SQL を使用しています。 クエリ ウィンドウを開いて T-SQL クエリを実行するには、次の手順を実行します。
+Azure Synapse Analytics では、クエリ言語として T-SQL が使用されています。 クエリ ウィンドウを開いて T-SQL クエリを実行するには、次の手順を実行します。
 
 1. **mySampleDataWarehouse** を右クリックして、 **[新しいクエリ]** を選びます。 新しいクエリ ウィンドウが開きます。
 
@@ -180,21 +180,21 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-データ ウェアハウス ユニットと SQL プールに格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
+データ ウェアハウス ユニットと専用 SQL プール (以前の SQL DW) に格納されているデータに対して課金されます。 これらのコンピューティングとストレージのリソースは別々に請求されます。
 
-- データをストレージに保持しておく場合は、SQL プールを使わない間、コンピューティング リソースを一時停止できます。 コンピューティングを一時停止すると、データ ストレージに対してのみ課金されます。 データを使用する準備ができたら、コンピューティングを再開できます。
+- データをストレージに保持しておく場合は、専用 SQL プール (以前の SQL DW) を使わない間、コンピューティング リソースを一時停止できます。 コンピューティングを一時停止すると、データ ストレージに対してのみ課金されます。 データを使用する準備ができたら、コンピューティングを再開できます。
 
-- それ以上課金されないようにする場合は、SQL プールを削除できます。
+- それ以上課金されないようにする場合は、専用 SQL プール (以前の SQL DW) を削除できます。
 
 不要になったリソースをクリーンアップするには、次の手順に従います。
 
-1. [Azure portal](https://portal.azure.com) にサインインし、SQL プールを選択します。
+1. [Azure portal](https://portal.azure.com) にサインインし、専用 SQL プール (以前の SQL DW) を選択します。
 
    ![リソースをクリーンアップする](./media/create-data-warehouse-portal/clean-up-resources.png)
 
-2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンを選択します。 SQL プールを一時停止すると、ボタンの表示が **[再開]** になります。 コンピューティングを再開するには、 **[再開]** をクリックします。
+2. コンピューティング リソースを一時停止するには、 **[一時停止]** ボタンを選択します。 専用 SQL プール (以前の SQL DW) が一時停止すると、ボタンの表示が **[再開]** になります。 コンピューティングを再開するには、 **[再開]** をクリックします。
 
-3. コンピューティングやストレージに課金されないように SQL プールを削除するには、 **[削除]** を選択します。
+3. コンピューティング リソースやストレージに課金されないように専用 SQL プール (以前の SQL DW) を削除するには、 **[削除]** を選択します。
 
 4. 作成したサーバーを削除するには、前の画像の **sqlpoolservername.database.windows.net** を選択して、 **[削除]** を選択します。 サーバーを削除すると、サーバーに割り当てられているすべてのデータベースが削除されるので、削除には注意してください。
 
@@ -206,4 +206,4 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 
 ## <a name="next-steps"></a>次のステップ
 
-SQL プールへのデータの読み込みの詳細については、[SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-polybase.md)に関する記事に進んでください。
+専用 SQL プール (以前の SQL DW) へのデータの読み込みの詳細については、[専用 SQL プールへのデータの読み込み](load-data-from-azure-blob-storage-using-copy.md)に関する記事に進んでください。

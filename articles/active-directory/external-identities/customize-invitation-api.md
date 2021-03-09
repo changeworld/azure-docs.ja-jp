@@ -1,26 +1,25 @@
 ---
 title: B2B コラボレーションの API とカスタマイズ - Azure Active Directory
-description: Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします
+description: Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 04/11/2017
+ms.date: 02/03/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f62ece12732c45037bcad328eec162bebb4e6a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8160859bb782ee8ffc4fef5ee03b61b6f54be1bb
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87907731"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548663"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
-多くのお客様から、組織に最適な方法で招待の処理をカスタマイズできるようにしてほしいという要望がありました。 API を使用すると、そのようにすることができます。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
+多くのお客様から、組織に最適な方法で招待の処理をカスタマイズできるようにしてほしいという要望がありました。 API を使用すると、そのようにすることができます。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>招待 API の機能
 
@@ -67,6 +66,16 @@ API には次の機能が用意されています。
     "invitedUserType": "Member"
     ```
 
+## <a name="determine-if-a-user-was-already-invited-to-your-directory"></a>ユーザーが既にディレクトリに招待されたかどうかを判断する
+
+招待 API を使用して、ユーザーがリソース テナントに既に存在するかどうかを判断できます。 これは、招待 API を使用してユーザーを招待するアプリを開発している場合に便利です。 既にリソース ディレクトリに存在する場合、ユーザーは招待を受信しません。したがって、最初にクエリを実行して、メールが UPN またはその他のサインイン プロパティとして既に存在するかどうかを確認できます。
+
+1. ユーザーのメール ドメインが、リソース テナントの確認済みドメインに含まれていないことを確認します。
+2. リソース テナントで、次のユーザーの取得クエリを使用します。ここで、{0} は、招待するメール アドレスです。
+
+   ```
+   “userPrincipalName eq '{0}' or mail eq '{0}' or proxyAddresses/any(x:x eq 'SMTP:{0}') or signInNames/any(x:x eq '{0}') or otherMails/any(x:x eq '{0}')"
+   ```
 
 ## <a name="authorization-model"></a>承認モデル
 
@@ -80,7 +89,7 @@ API は、以下の承認モードで実行できます。
 
 アプリのみのコンテキストで招待を成功させるには、アプリに User.Invite.All スコープが必要です。
 
-詳しくは、 https://developer.microsoft.com/graph/docs/authorization/permission_scopes をご覧ください
+詳しくは、https://developer.microsoft.com/graph/docs/authorization/permission_scopes をご覧ください
 
 
 ## <a name="powershell"></a>PowerShell
@@ -115,9 +124,9 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 > [!NOTE]
 > AzureAD PowerShell モジュールまたは AzureADPreview PowerShell モジュールが最新バージョンであることを確認してください。 
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 
-招待 API のリファレンスは、[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) で確認できます。
+招待 API のリファレンスは、[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](/graph/api/resources/invitation) で確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

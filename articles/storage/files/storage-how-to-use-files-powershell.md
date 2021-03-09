@@ -7,15 +7,15 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 360af0406a816a02540881962ed8794d69ce3bbb
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8b4bd9ece5f010f1294356ad4673543834e5076a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531814"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94626913"
 ---
-# <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用した Azure ファイル共有の作成および管理 
-このガイドでは、PowerShell を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
+# <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>クイック スタート: Azure PowerShell を使用した Azure ファイル共有の作成および管理 
+このガイドでは、PowerShell を使用して [Azure ファイル共有](storage-files-introduction.md)を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の サーバー メッセージ ブロック (SMB) プロトコル、ネットワーク ファイル システム (NFS) プロトコル (プレビュー) をサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -66,13 +66,14 @@ $shareName = "myshare"
 New-AzRmStorageShare `
     -StorageAccount $storageAcct `
     -Name $shareName `
+    -EnabledProtocol SMB `
     -QuotaGiB 1024 | Out-Null
 ```
 
-共有名は、すべて小文字の英字、数字、単一ハイフンにする必要があります。ただし、最初にハイフンを使用することはできません。 ファイル共有とファイルの名前付けの詳細については、「 [共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
+共有名は、すべて小文字の英字、数字、単一ハイフンにする必要があります。ただし、最初にハイフンを使用することはできません。 ファイル共有とファイルの名前付けの詳細については、「 [共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
 
 ## <a name="use-your-azure-file-share"></a>Azure ファイル共有を使用する
-Azure Files では、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)と[ファイル REST プロトコル](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api)の 2 つの方法で Azure ファイル共有内のファイルとフォルダーを操作できます。 
+Azure Files では、業界標準の [Server Message Block (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)と[ファイル REST プロトコル](/rest/api/storageservices/file-service-rest-api)の 2 つの方法で Azure ファイル共有内のファイルとフォルダーを操作できます。 
 
 SMB を使用してファイル共有をマウントするには、お使いの OS に基づいて次のドキュメントを参照してください。
 - [Windows](storage-how-to-use-files-windows.md)
@@ -161,6 +162,7 @@ $otherShareName = "myshare2"
 New-AzRmStorageShare `
     -StorageAccount $storageAcct `
     -Name $otherShareName `
+    -EnabledProtocol SMB `
     -QuotaGiB 1024 | Out-Null
   
 New-AzStorageDirectory `
@@ -191,7 +193,7 @@ Get-AzStorageFile `
 ## <a name="create-and-manage-share-snapshots"></a>共有スナップショットの作成と管理
 さらに、Azure ファイル共有で実行できる便利なタスクの 1 つとして、共有スナップショットの作成があります。 スナップショットでは、特定の時点の Azure ファイル共有が保存されます。 共有スナップショットは、場合によっては既に使い慣れている、次のようなオペレーティング システム テクノロジに類似しています。
 
-- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)。
+- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](/windows/desktop/VSS/volume-shadow-copy-service-portal)。
 - Linux システム用の[論理ボリューム マネージャー (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) スナップショット。
 - macOS 用の [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) スナップショット。 
 
@@ -265,7 +267,7 @@ Remove-AzResourceGroup -Name myResourceGroup
     > [!Note]  
     > 作成した Azure ファイル共有の共有スナップショットは、Azure ファイル共有を削除する前にすべて削除してください。
 
-- ストレージ アカウント自体を削除する場合 (この場合、作成した Azure ファイル共有が暗黙的に削除されます。また、Azure BLOB ストレージ コンテナーなど、作成されたその他のストレージ リソースも暗黙的に削除されます)。
+- ストレージ アカウント自体を削除する場合 (この場合、作成した Azure ファイル共有が暗黙的に削除されます。また、Azure Blob Storage コンテナーなど、作成されたその他のストレージ リソースも暗黙的に削除されます)。
 
     ```azurepowershell-interactive
     Remove-AzStorageAccount `

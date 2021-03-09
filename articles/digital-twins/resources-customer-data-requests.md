@@ -8,12 +8,12 @@ ms.date: 05/05/2020
 ms.topic: conceptual
 ms.service: digital-twins
 services: digital-twins
-ms.openlocfilehash: 31da6a6b5375571f53cd7b478e957cc350ef591c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9942056e59a46c61b4e9da32aab191d4b72db968
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86522348"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92461761"
 ---
 # <a name="azure-digital-twins-customer-data-request-features"></a>Azure Digital Twins の顧客データ要求機能
 
@@ -21,11 +21,11 @@ Azure Digital Twins は、セキュリティで保護されたビジネス環境
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
-Azure Digital Twins の*デジタル ツイン*と呼ばれるデジタル表現は、現実環境のエンティティを表し、識別子に関連付けられています。 Microsoft は、識別子とユーザーを関連付けることができる情報を保持せず、そのようなデータにアクセスすることもできません。 
+Azure Digital Twins の *デジタル ツイン* と呼ばれるデジタル表現は、現実環境のエンティティを表し、識別子に関連付けられています。 Microsoft は、識別子とユーザーを関連付けることができる情報を保持せず、そのようなデータにアクセスすることもできません。 
 
 Azure Digital Twins のデジタル ツインの多くは、個人のエンティティを直接表すものではありません。代表的なオブジェクトは、オフィスの会議室や工場のフロアなどです。 しかし、ユーザーが一部のエンティティで個人を特定できるようにすることを検討し、自己判断で、デジタル ツインと個人を結び付ける独自の資産またはインベントリ追跡方法を維持する場合があります。 Azure Digital Twins はデジタル ツインに関連付けられたすべてのデータを個人データであるかのように管理し、格納します。
 
-データ主体の要求で参照される個人データを表示、エクスポート、および削除するために、Azure Digital Twins 管理者は、ユーザーとロール向けに [**Azure portal**](https://portal.azure.com/) を、また、デジタル ツイン向けに [**Azure Digital Twins REST API**](how-to-use-apis-sdks.md) を使用できます。 Azure portal と REST API には、ユーザーがこのようなデータ主体の要求を処理するためのさまざまな方法が用意されています。
+データ主体の要求で参照される個人データを表示、エクスポート、および削除するために、Azure Digital Twins 管理者は、ユーザーとロール向けに [**Azure portal**](https://portal.azure.com/) を、また、デジタル ツイン向けに [**Azure Digital Twins REST API**](/rest/api/azure-digitaltwins/) を使用できます。 Azure portal と REST API には、ユーザーがこのようなデータ主体の要求を処理するためのさまざまな方法が用意されています。
 
 ## <a name="identifying-customer-data"></a>顧客データの識別
 
@@ -35,7 +35,7 @@ Azure Digital Twins には、環境に対するアクセス権を持つユーザ
 
 ## <a name="deleting-customer-data"></a>顧客データの削除
 
-Azure Digital Twins 管理者は、Azure portal を使用して、ユーザーに関連するデータを削除できます。 また、Azure Digital Twins REST API を使用して、個々のデジタル ツインに対して削除操作を実行することもできます。 使用可能な API の詳細については、[Azure Digital Twins REST API のドキュメント](https://docs.microsoft.com/rest/api/azure-digitaltwins/)を参照してください。
+Azure Digital Twins 管理者は、Azure portal を使用して、ユーザーに関連するデータを削除できます。 また、Azure Digital Twins REST API を使用して、個々のデジタル ツインに対して削除操作を実行することもできます。 使用可能な API の詳細については、[Azure Digital Twins REST API のドキュメント](/rest/api/azure-digitaltwins/)を参照してください。
 
 ## <a name="exporting-customer-data"></a>顧客データのエクスポート
 
@@ -45,4 +45,4 @@ Azure Digital Twins は、デジタル ツインに関連するデータを格�
 
 ## <a name="links-to-additional-documentation"></a>その他のドキュメントへのリンク
 
-Azure Digital Twins サービス API の完全な一覧については、[Azure Digital Twins REST API のドキュメント](https://docs.microsoft.com/rest/api/azure-digitaltwins/)を参照してください。
+Azure Digital Twins サービス API の完全な一覧については、[Azure Digital Twins REST API のドキュメント](/rest/api/azure-digitaltwins/)を参照してください。

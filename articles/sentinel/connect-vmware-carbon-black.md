@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: e13b251c9bd95a5b52d63d8ea1bbf265c9c46fd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c26931db617109c36c19b73bd3ec9263f4b40cc
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094769"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100096448"
 ---
 # <a name="connect-your-vmware-carbon-black-cloud-endpoint-standard-to-azure-sentinel-with-azure-function"></a>Azure Function を使用して、VMware Carbon Black Cloud Endpoint Standard を Azure Sentinel に接続します
 
@@ -47,7 +47,7 @@ Azure Functions では、VMware Carbon Black Cloud Endpoint Standard から直�
 接続が正常に確立されると、**CarbonBlackAuditLogs_CL**、**CarbonBlackNotifications_CL**、および ****CarbonBlackEvents_CL**** テーブルの下の Log Analytics にデータが表示されます。
 
 ## <a name="validate-connectivity"></a>接続の検証
-ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
+ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。 
 
 
 ## <a name="next-steps"></a>次のステップ

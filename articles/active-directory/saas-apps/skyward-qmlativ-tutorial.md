@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ae28a796d7f58583e2e9f7874f53adbcf115fbdb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c57205fda785e3b925e648fee548f7e31a2322d9
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528133"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92515969"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyward-qmlativ"></a>チュートリアル:Azure Active Directory と Skyward Qmlativ の統合
 
@@ -27,7 +27,7 @@ Skyward Qmlativ と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Skyward Qmlativ に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -41,7 +41,7 @@ Skyward Qmlativ と Azure AD の統合を構成するには、次のものが必
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Skyward Qmlativ では、**SP** によって開始される SSO がサポートされます
+* Skyward Qmlativ では、 **SP** によって開始される SSO がサポートされます
 
 ## <a name="adding-skyward-qmlativ-from-the-gallery"></a>ギャラリーからの Skyward Qmlativ の追加
 
@@ -61,13 +61,13 @@ Azure AD への Skyward Qmlativ の統合を構成するには、ギャラリー
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Skyward Qmlativ**」と入力し、結果パネルで **[Skyward Qmlativ]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「 **Skyward Qmlativ** 」と入力し、結果パネルで **[Skyward Qmlativ]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果一覧の Skyward Qmlativ](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Skyward Qmlativ で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Skyward Qmlativ で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Skyward Qmlativ 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Skyward Qmlativ で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -114,7 +114,7 @@ Skyward Qmlativ で Azure AD シングル サインオンを構成するには�
 
 ### <a name="configure-skyward-qmlativ-single-sign-on"></a>Skyward Qmlativ シングル サインオンの構成
 
-**Skyward Qmlativ** 側にシングル サインオンを構成するには、作成された**アプリケーション フェデレーション メタデータ URL** を [Skyward Qmlativ サポート チーム](mailto:steveb@skyward.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Skyward Qmlativ** 側にシングル サインオンを構成するには、作成された **アプリケーション フェデレーション メタデータ URL** を [Skyward Qmlativ サポート チーム](mailto:steveb@skyward.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -132,9 +132,9 @@ Skyward Qmlativ で Azure AD シングル サインオンを構成するには�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
@@ -169,19 +169,18 @@ Skyward Qmlativ で Azure AD シングル サインオンを構成するには�
 
 ### <a name="create-skyward-qmlativ-test-user"></a>Skyward Qmlativ のテスト ユーザーの作成
 
-このセクションでは、Skyward Qmlativ で Britta Simon というユーザーを作成します。  [Skyward Qmlativ サポート チーム](mailto:steveb@skyward.com)と連携し、Skyward Qmlativ プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Skyward Qmlativ で Britta Simon というユーザーを作成します。 [Skyward Qmlativ サポート チーム](mailto:steveb@skyward.com)と連携して、Skyward Qmlativ プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Skyward Qmlativ] タイルをクリックすると、SSO を設定した Skyward Qmlativ に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Skyward Qmlativ] タイルをクリックすると、SSO を設定した Skyward Qmlativ に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

@@ -1,18 +1,23 @@
 ---
 title: Azure Service Fabric Mesh の概要
 description: Azure Service Fabric Mesh について説明します。 Service Fabric Mesh では、アプリケーションのインフラストラクチャに関するニーズについて心配することなく、アプリケーションをデプロイしてスケーリングできます。
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: b7061a178a3f5a9d126afab3fc1f9aa77d5cc050
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 64880a9ac3d6d48ce6d39d0b3a7a3aff6587f328
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927030"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626979"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Service Fabric Mesh とは
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 このビデオでは、Service Fabric Mesh の概要を簡単に説明します。
 > [!VIDEO https://www.youtube.com/embed/7qWeVGzAid0]

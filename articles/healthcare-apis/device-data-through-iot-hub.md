@@ -6,24 +6,24 @@ author: ms-puneet-nagpal
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: tutorial
-ms.date: 08/03/2020
+ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 04c732b857c06246bdc636f01afd2689c98c2b0d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6c364cf84bada2a951ef3f224ea836885f0e3c1e
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831619"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636318"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>チュートリアル:Azure IoT Hub を通じてデバイス データを受信する
 
-Azure IoT Connector for FHIR* を使用すると、Internet of Medical Things (IoMT) デバイスから Azure API for FHIR にデータを取り込むことができます。 [Azure portal を使用した Azure IoT Connector for FHIR (プレビュー) のデプロイ](iot-fhir-portal-quickstart.md)に関するクイックスタートには、Azure IoT Central で管理されているデバイスから Azure IoT Connector for FHIR に[テレメトリを送信](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot)する例が示されています。 Azure IoT Connector for FHIR は、Azure IoT Hub を介してプロビジョニングおよび管理されているデバイスでも使用できます。 このチュートリアルでは、Azure IoT Hub から Azure IoT Connector for FHIR に接続し、デバイス データをルーティングする手順について説明します。
+Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソース)* を使用すると、Internet of Medical Things (IoMT) デバイスから Azure API for FHIR にデータを取り込むことができます。 [Azure portal を使用した Azure IoT Connector for FHIR (プレビュー) のデプロイ](iot-fhir-portal-quickstart.md)に関するクイックスタートには、Azure IoT Central で管理されているデバイスから Azure IoT Connector for FHIR に[テレメトリを送信](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot)する例が示されています。 Azure IoT Connector for FHIR は、Azure IoT Hub を介してプロビジョニングおよび管理されているデバイスでも使用できます。 このチュートリアルでは、Azure IoT Hub から Azure IoT Connector for FHIR に接続し、デバイス データをルーティングする手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブな Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - 少なくとも 1 つの Azure IoT Connector for FHIR を備えた Azure API for FHIR リソース - [Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする](iot-fhir-portal-quickstart.md)
-- 実際のデバイスまたはシミュレートされたデバイスに接続されている Azure IoT Hub リソース - [Azure portal を使用して IoT ハブを作成する](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-dotnet)
+- 実際のデバイスまたはシミュレートされたデバイスに接続されている Azure IoT Hub リソース - [Azure portal を使用して IoT ハブを作成する](../iot-hub/quickstart-send-telemetry-dotnet.md)
 
 > [!TIP]
 > Azure IoT Hub でシミュレートされたデバイス アプリケーションを使用する場合は、サポートされている各種言語およびシステムの中から任意のアプリケーションを選択できます。
@@ -36,15 +36,15 @@ Azure IoT Connector for FHIR は、内部で Azure Event Hub インスタンス�
 
 ## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>Azure IoT Hub を Azure IoT Connector for FHIR (プレビュー) に接続する
 
-Azure IoT Hub は、[メッセージ ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c)と呼ばれる機能をサポートしています。これは、イベント ハブ、ストレージ アカウント、Service Bus などのさまざまな Azure サービスにデバイス データを送信する機能です。 Azure IoT Connector for FHIR は、この機能を利用して、Azure IoT Hub からそのイベント ハブ エンドポイントに接続し、デバイス データを送信します。
+Azure IoT Hub は、[メッセージ ルーティング](../iot-hub/iot-hub-devguide-messages-d2c.md)と呼ばれる機能をサポートしています。これは、イベント ハブ、ストレージ アカウント、Service Bus などのさまざまな Azure サービスにデバイス データを送信する機能です。 Azure IoT Connector for FHIR は、この機能を利用して、Azure IoT Hub からそのイベント ハブ エンドポイントに接続し、デバイス データを送信します。
 
 > [!NOTE] 
-> 現在、[メッセージ ルーティングの作成](https://docs.microsoft.com/azure/iot-hub/tutorial-routing)に使用できるのは PowerShell または CLI コマンドのみです。これは、Azure IoT Connector for FHIR のイベント ハブが顧客サブスクリプションではホストされておらず、Azure portal に表示されないからです。 ただし、PowerShell または CLI を使用してメッセージ ルート オブジェクトを追加すると、それらのオブジェクトが Azure portal に表示され、そこから管理できるようになります。
+> 現在、[メッセージ ルーティングの作成](../iot-hub/tutorial-routing.md)に使用できるのは PowerShell または CLI コマンドのみです。これは、Azure IoT Connector for FHIR のイベント ハブが顧客サブスクリプションではホストされておらず、Azure portal に表示されないからです。 ただし、PowerShell または CLI を使用してメッセージ ルート オブジェクトを追加すると、それらのオブジェクトが Azure portal に表示され、そこから管理できるようになります。
 
 メッセージ ルーティングの設定は、2 つの手順から成ります。
 
 ### <a name="add-an-endpoint"></a>エンドポイントの追加
-この手順では、IoT ハブによるデータのルーティング先のエンドポイントを定義します。 このエンドポイントを作成するには、好みに応じて、PowerShell の [Add-AzIotHubRoutingEndpoint](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) コマンドか、CLI の [az iot hub routing-endpoint create](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?#az-iot-hub-routing-endpoint-create) コマンドを使用します。
+この手順では、IoT ハブによるデータのルーティング先のエンドポイントを定義します。 このエンドポイントを作成するには、好みに応じて、PowerShell の [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) コマンドか、CLI の [az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) コマンドを使用します。
 
 エンドポイントの作成コマンドで使用するパラメーターの一覧を次に示します。
 
@@ -59,9 +59,9 @@ Azure IoT Hub は、[メッセージ ルーティング](https://docs.microsoft.
 |ConnectionString|connection-string|Azure IoT Connector for FHIR への接続文字列。 前の手順で取得した値を使用します。|
 
 ### <a name="add-a-message-route"></a>メッセージ ルートを追加する
-この手順では、上で作成したエンドポイントを使用してメッセージ ルートを定義します。 ルートを作成するには、好みに応じて、PowerShell の [Add-AzIotHubRoute](https://docs.microsoft.com/powershell/module/az.iothub/Add-AzIoTHubRoute) コマンドか、CLI の [az iot hub route create](https://docs.microsoft.com/cli/azure/iot/hub/route#az-iot-hub-route-create) コマンドを使用します。
+この手順では、上で作成したエンドポイントを使用してメッセージ ルートを定義します。 ルートを作成するには、好みに応じて、PowerShell の [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) コマンドか、CLI の [az iot hub route create](/cli/azure/iot/hub/route#az-iot-hub-route-create) コマンドを使用します。
 
-エンドポイントの作成コマンドで使用するパラメーターの一覧を次に示します。
+メッセージ ルートの追加コマンドで使用するパラメーターの一覧を次に示します。
 
 |PowerShell パラメーター|CLI パラメーター|説明|
 |---|---|---|
@@ -113,6 +113,4 @@ Azure IoT Connector for FHIR 内のさまざまなデータ フロー ステー�
 >[!div class="nextstepaction"]
 >[Azure IoT Connector for FHIR のマッピング テンプレート](iot-mapping-templates.md)
 
-*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。
-
-FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。
+*Azure portal では、Azure IoT Connector for FHIR は IoT Connector (プレビュー) と呼ばれています。 FHIR は HL7 の登録商標であり、HL7 の許可を得て使用しています。

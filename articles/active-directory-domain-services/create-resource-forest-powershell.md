@@ -1,20 +1,20 @@
 ---
 title: Azure PowerShell を使用して Azure AD Domain Services のリソース フォレストを作成する | Microsoft Docs
 description: この記事では、Azure Active Directory Domain Services のリソース フォレスト、およびオンプレミスの Active Directory Domain Services 環境への送信フォレストを、Azure PowerShell を使用して作成および構成する方法について説明します。
-author: iainfoulds
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.author: iainfou
-ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.author: justinha
+ms.openlocfilehash: ebfc2476b7955b926f86094de03973155386eb8f
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723165"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619969"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Azure Active Directory Domain Services のリソース フォレスト、およびオンプレミス ドメインへの送信フォレストの信頼を、Azure PowerShell を使用して作成する
 
@@ -74,12 +74,12 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 Azure AD DS には、Azure AD からのサービス プリンシパル同期データが必要です。 このプリンシパルは、マネージド ドメイン リソース フォレストを作成するより前に、Azure AD テナントに作成する必要があります。
 
-Azure AD DS による通信や、それ自身の認証が行えるようにするため、Azure AD サービス プリンシパルを作成します。 ID *2565bd9d-da50-47d4-8b85-4c97f669dc36* を持つ *Domain Controller Services* という名前の特定のアプリケーション ID が使用されます。 このアプリケーション ID は変更しないでください。
+Azure AD DS による通信や、それ自身の認証が行えるようにするため、Azure AD サービス プリンシパルを作成します。 ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* を持つ *Domain Controller Services* という名前の特定のアプリケーション ID が使用されます。 このアプリケーション ID は変更しないでください。
 
 [New-AzureADServicePrincipal][New-AzureADServicePrincipal] コマンドレットを使用して Azure AD サービス プリンシパルを作成します。
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 ## <a name="create-a-managed-domain-resource-forest"></a>マネージド ドメイン リソース フォレストを作成する
@@ -107,7 +107,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     | サブスクリプション                 | *-azureSubscriptionId*    | Azure AD DS の請求に使用されるサブスクリプション ID。 サブスクリプションの一覧は、[Get-AzureRMSubscription][Get-AzureRMSubscription] コマンドレットを使用して取得できます。 |
     | リソース グループ               | *-aaddsResourceGroupName* | マネージド ドメインおよび関連付けられているリソースのリソース グループの名前。 |
     | 場所                     | *-aaddsLocation*          | 使用しているマネージド ドメインがホストされる Azure リージョン。 利用可能なリージョンについては、[Azure AD DS でサポートされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)を参照してください。 |
-    | Azure AD DS 管理者    | *-aaddsAdminUser*         | 最初のマネージド ドメイン管理者のユーザー プリンシパル名。 このアカウントは、Azure Active Directory の既存のクラウド ユーザー アカウントである必要があります。 このユーザー、およびスクリプトを実行しているユーザーは、*AAD DC 管理者*グループに追加されます。 |
+    | Azure AD DS 管理者    | *-aaddsAdminUser*         | 最初のマネージド ドメイン管理者のユーザー プリンシパル名。 このアカウントは、Azure Active Directory の既存のクラウド ユーザー アカウントである必要があります。 このユーザー、およびスクリプトを実行しているユーザーは、*AAD DC 管理者* グループに追加されます。 |
     | Azure AD DS ドメイン名      | *-aaddsDomainName*        | フォレスト名の選択方法に関する前のガイダンスに基づく、マネージド ドメインの FQDN。 |
 
     Azure 仮想ネットワークと Azure AD DS サブネットがまだ存在しない場合は、`New-AzureAaddsForest` スクリプトを実行することにより、これらのリソースを作成できます。 このスクリプトでは、オプションで次を指定することにより、ワークロード サブネットも作成できます。
@@ -200,7 +200,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 | 信頼フレンドリ名                | *-TrustFriendlyName* | 信頼関係のフレンドリ名。 |
 | オンプレミス AD DS DNS の IP アドレス | *-TrustDnsIPs*       | 一覧表示されている信頼される側のドメインの DNS サーバー IPv4 アドレスの、コンマ区切りの一覧。 |
 | 信頼パスワード                     | *-TrustPassword*     | 信頼関係の複雑なパスワード。 このパスワードは、オンプレミスの AD DS で一方向の受信の信頼を作成するときにも入力されます。 |
-| 資格情報                        | *-Credentials*       | Azure に対する認証に使用される資格情報。 ユーザーは、*AAD DC 管理者グループ*に含まれている必要があります。 指定されていない場合は、スクリプトにより認証が要求されます。 |
+| 資格情報                        | *-Credentials*       | Azure に対する認証に使用される資格情報。 ユーザーは、*AAD DC 管理者グループ* に含まれている必要があります。 指定されていない場合は、スクリプトにより認証が要求されます。 |
 
 次の例では、*myAzureADDSTrust* という名前の信頼関係を *onprem.contoso.com* に対して作成します。 独自のパラメーター名とパスワードを使用してください。
 
@@ -236,9 +236,9 @@ Add-AaddsResourceForestTrust `
 1. *onprem.contoso.com* などのドメインを右クリックし、 **[プロパティ]** を選択します。
 1. **[信頼]** タブ、 **[新しい信頼]** の順に選択します。
 1. マネージド ドメインの名前 (*aaddscontoso.com* など) を入力し、 **[次へ]** を選択します。
-1. **フォレストの信頼**を作成するオプションを選択して、**一方向: 受信**の信頼を作成します。
+1. **フォレストの信頼** を作成するオプションを選択して、**一方向: 受信** の信頼を作成します。
 1. **[This domain only]\(このドメインのみ\)** に信頼を作成することを選択します。 次の手順では、Azure portal でマネージド ドメインに対する信頼を作成します。
-1. **フォレスト全体の認証**を使用することを選択してから、信頼パスワードを入力して確認します。 これと同じパスワードを、次のセクションの Azure portal にも入力します。
+1. **フォレスト全体の認証** を使用することを選択してから、信頼パスワードを入力して確認します。 これと同じパスワードを、次のセクションの Azure portal にも入力します。
 1. 既定のオプションを使用して次のいくつかのウィンドウをステップ実行し、オプションの **[確認しない]** を選択します。 そのマネージド ドメイン リソース フォレストに対する委任された管理者アカウントには、必要なアクセス許可が付与されていないため、この信頼関係は検証できません。 この動作は仕様です。
 1. **[完了]** を選択します。
 

@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory の変数アクティビティの設定
 description: 変数アクティビティの設定を使用して、Data Factory パイプラインで定義されている既存の変数の値を設定する方法について説明します
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/07/2020
-author: djpmsft
-ms.author: daperlov
-manager: jroth
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
-ms.openlocfilehash: a0b5fa16658d3e354bcb4f90ad998997fc844a84
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 122a0a01c420d5efa12fa267a0d3605fc7a25960
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832789"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100385338"
 ---
 # <a name="set-variable-activity-in-azure-data-factory"></a>Azure Data Factory の変数アクティビティの設定
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

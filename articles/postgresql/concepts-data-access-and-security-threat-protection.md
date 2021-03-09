@@ -1,17 +1,17 @@
 ---
 title: Advanced Threat Protection - Azure Database for PostgreSQL - Single Server
 description: データベースへの潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出する Advanced Threat Protection について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 390f44ffebb6531fde2f819fad0d4e9399cba218
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fa136a15e4fa034307e16ef50c2b16060c5af0d2
+ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287516"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92490205"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server での Advanced Threat Protection
 
@@ -23,13 +23,13 @@ Azure Database for PostgreSQL 用の Advanced Threat Protection では、デー�
 Threat Protection は、高度なセキュリティ機能の統合パッケージである Advanced Threat Protection (ATP) オファリングの一部です。 Advanced Threat Protection は [Azure portal](https://portal.azure.com) または [REST API](/rest/api/postgresql) を使ってアクセスおよび管理できます。 この機能は、General Purpose サーバーとメモリ最適化サーバーでご利用いただけます。
 
 > [!NOTE]
-> Advanced Threat Protection 機能は、次の Azure Government およびソブリン クラウド リージョンでは使用**できません**。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
+> Advanced Threat Protection 機能は、次の Azure Government およびソブリン クラウド リージョンでは使用 **できません** 。US Gov テキサス、US Gov アリゾナ、US Gov アイオワ、US Gov バージニア、US DoD 東部、US DoD 中部、ドイツ中部、ドイツ北部、中国東部、中国東部 2。 一般的な製品の可用性については[リージョン毎の製品の可用性](https://azure.microsoft.com/global-infrastructure/services/)を確認してください。
 
 ## <a name="what-is-advanced-threat-protection"></a>Advanced Threat Protection とは
 
 Azure Database for PostgreSQL 用の Advanced Threat Protection では、新しいセキュリティ レイヤーが提供されます。この利用によって、異常なアクティビティに関するセキュリティ アラートが提供されて、発生する潜在的脅威の検出と対応が可能になります。 不審なデータベース アクティビティ、潜在的な脆弱性、異常なデータベース アクセスやクエリのパターンが見つかった場合に、ユーザーはアラートを受信します。 Azure Database for PostgreSQL 用の Advanced Threat Protection では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されます。ここには不審なアクティビティの詳細が含まれていて、脅威を調査して軽減する方法に関するアクションが推奨されます。 Azure Database for PostgreSQL 用の Advanced Threat Protection を利用すると、データベースに対する潜在的な脅威への対処が簡素化されて、セキュリティの専門家である必要や、高度なセキュリティ監視システムを管理する必要がなくなります。 
 
-![Advanced Threat Protection の概念](media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png)
+:::image type="content" source="media/concepts-data-access-and-security-threat-protection/advanced-threat-protection-concept.png" alt-text="Advanced Threat Protection の概念":::
 
 ## <a name="advanced-threat-protection-alerts"></a>Advanced Threat Protection のアラート 
 Azure Database for PostgreSQL 用の Advanced Threat Protection では、普通でなく有害な可能性がある、データベースへのアクセスやその悪用の試みであることを示す不審なアクティビティを検出し、以下のアラートをトリガーすることができます。
@@ -41,6 +41,6 @@ Azure Database for PostgreSQL 用の Advanced Threat Protection では、普通�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について参照してください
+* [Azure Security Center](../security-center/security-center-introduction.md) の詳細について参照してください
 * 価格の詳細については、[Azure Database for PostgreSQL の価格ページ](https://azure.microsoft.com/pricing/details/postgresql/)をご覧ください 
-* Azure portal を使用して [Azure Database for PostgreSQL の Advanced Threat Protection を構成する](howto-database-threat-protection-portal.md)  
+* Azure portal を使用して [Azure Database for PostgreSQL の Advanced Threat Protection を構成する](howto-database-threat-protection-portal.md)

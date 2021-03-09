@@ -4,23 +4,24 @@ description: Azure portal を使用して、仮想ノードを使用する Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.custom: references_regions
-ms.openlocfilehash: 0fe8c4753cef9fa829a2cb696e164dbdf5f2b8f2
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.custom: references_regions, devx-track-azurecli
+ms.openlocfilehash: 4c67d3608d2128385c273425ea495a02fa5a8c45
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297571"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102180906"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
-Azure Kubernetes Service (AKS) クラスターでワークロードをすばやくデプロイするには、仮想ノードを使用します。 仮想ノードを使用すると、ポッドを短時間でプロビジョニングできるため、ポッドの実行時間に対して秒単位の支払いだけで済みます。 スケーリング シナリオでは、Kubernetes クラスターのオートスケーラーが VM コンピューティング ノードをデプロイして追加のポッドを実行するのを待つ必要はありません。 仮想ノードは、Linux のポッドとノードでのみサポートされます。
+この記事では、Azure portal を使用し、仮想ノードを有効にして、仮想ネットワーク リソースと AKS クラスターを作成して構成する方法を示します。
 
-この記事では、仮想ノードを有効にして、仮想ネットワーク リソースと AKS クラスターを作成して構成する方法を示します。
+> [!NOTE]
+> [この記事](virtual-nodes.md)では、仮想ノードを使用したリージョンの可用性と制限の概要について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-仮想ノードを使用すると、Azure Container Instances (ACI) および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 この通信を可能にするために、仮想ネットワーク サブネットが作成され、委任されたアクセス許可が割り当てられます。 仮想ノードは、"*高度*" ネットワークを使用して作成された AKS クラスターに対してのみ機能します。 既定では、AKS クラスターは "*基本*" ネットワークを使用して作成されます。 この記事では、仮想ネットワークとサブネットを作成した後、高度ネットワークを使用した AKS クラスターをデプロイする方法について説明します。
+仮想ノードを使用すると、Azure Container Instances (ACI) および AKS クラスターで実行されているポッド間でのネットワーク通信が可能になります。 この通信を可能にするために、仮想ネットワーク サブネットが作成され、委任されたアクセス許可が割り当てられます。 仮想ノードは、"*高度*" ネットワーク (Azure CNI) を使用して作成された AKS クラスターに対してのみ機能します。 既定では、AKS クラスターは "*基本*" ネットワーク (kubenet) を使用して作成されます。 この記事では、仮想ネットワークとサブネットを作成した後、高度ネットワークを使用した AKS クラスターをデプロイする方法について説明します。
 
 以前に ACI を使用していない場合は、ご使用のサブスクリプションでサービス プロバイダーを登録します。 ACI プロバイダー登録の状態は、次の例で示すように [az provider list][az-provider-list] コマンドを使用して確認できます。
 
@@ -42,34 +43,6 @@ Microsoft.ContainerInstance  Registered           RegistrationRequired
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>リージョン別の提供状況
-
-仮想ノードのデプロイでは、次のリージョンがサポートされています。
-
-* オーストラリア東部 (australiaeast)
-* 米国中部 (centralus)
-* 米国東部 (eastus)
-* 米国東部 2 (eastus2)
-* 東日本 (japaneast)
-* 北ヨーロッパ (northeurope)
-* 東南アジア (southeastasia)
-* 米国中西部 (westcentralus)
-* 西ヨーロッパ (westeurope)
-* 米国西部 (westus)
-* 米国西部 2 (westus2)
-
-## <a name="known-limitations"></a>既知の制限事項
-仮想ノードの機能は、ACI の機能セットに大きく依存します。 [Azure Container Instances のクォータと制限](../container-instances/container-instances-quotas.md)に加えて、次のシナリオは仮想ノードではまだサポートされていません。
-
-* サービス プリンシパルを使用した ACR イメージのプル。 [対処法](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry)は、[Kubernetes シークレット](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)を使用することです
-* [仮想ネットワークの制限事項](../container-instances/container-instances-virtual-network-concepts.md) (VNet ピアリング、Kubernetes ネットワーク ポリシー、およびネットワーク セキュリティ グループを使用したインターネットへの送信トラフィックなど)。
-* Init コンテナー
-* [ホストのエイリアス](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
-* ACI の exec の[引数](../container-instances/container-instances-exec.md#restrictions)
-* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) ではポッドは仮想ノードにデプロイされません
-* 仮想ノードでは、Linux ポッドのスケジュール設定がサポートされています。 オープンソースの [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) プロバイダーを手動でインストールして、Windows Server のコンテナーを ACI にスケジュールすることができます。
-* 仮想ノードには、Azure CNI ネットワークを使用した AKS クラスターが必要です
-
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ( https://portal.azure.com ) にサインインします。
@@ -82,8 +55,8 @@ Azure portal の左上隅で、 **[リソースの作成]**  >  **[Kubernetes Se
 
 - *プロジェクトの詳細*:サブスクリプションを選択し、Azure リソース グループ (たとえば、*myResourceGroup*) を選択または作成します。 **Kubernetes クラスター名** (たとえば、*myAKSCluster*) を入力します。
 - *クラスターの詳細*:AKS クラスターのリージョン、Kubernetes バージョン、および DNS 名プレフィックスを選択します。
-- *プライマリ ノード プール*:AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは**できません**。
-     - クラスターにデプロイするノードの数を選択します。 この記事では、 **[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整**できます**。
+- *プライマリ ノード プール*:AKS ノードの VM サイズを選択します。 AKS クラスターがデプロイされた後に、VM サイズを変更することは **できません**。
+     - クラスターにデプロイするノードの数を選択します。 この記事では、 **[ノード数]** を *1* に設定します。 ノード数は、クラスターをデプロイした後に調整 **できます**。
 
 **[次へ: スケール]** をクリックします。
 
@@ -117,7 +90,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 kubectl get nodes
 ```
 
-次の出力例は、単一の VM ノードが作成されてから、Linux 用の仮想ノード、*virtual-node-aci-linux*が作成されることを示しています。
+次の出力例は、単一の VM ノードが作成されてから、Linux 用の仮想ノード、*virtual-node-aci-linux* が作成されることを示しています。
 
 ```output
 NAME                           STATUS    ROLES     AGE       VERSION
@@ -146,7 +119,7 @@ spec:
     spec:
       containers:
       - name: aci-helloworld
-        image: microsoft/aci-helloworld
+        image: mcr.microsoft.com/azuredocs/aci-helloworld
         ports:
         - containerPort: 80
       nodeSelector:
@@ -237,9 +210,9 @@ curl -L http://10.241.0.4
 
 <!-- LINKS - internal -->
 [aks-network]: ./configure-azure-cni.md
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
 [az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-provider-register]: /cli/azure/provider#az-provider-register

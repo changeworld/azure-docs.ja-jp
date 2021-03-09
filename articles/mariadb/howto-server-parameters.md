@@ -1,21 +1,24 @@
 ---
 title: サーバー パラメーターの構成 - Azure portal - Azure Database for MariaDB
 description: この記事では、Azure portal を使用して Azure Database for MariaDB で使用できる MariaDB サーバー パラメータを構成する方法について説明します。
-author: ajlam
-ms.author: andrela
-ms.service: mariadb
+author: savjani
+ms.author: pariks
+ms.service: jroth
 ms.topic: how-to
-ms.date: 6/11/2020
-ms.openlocfilehash: 53ba3c71679ebda1e8e2bf0a59a6ef69d051df4f
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 10/1/2020
+ms.openlocfilehash: cda6b2bd3d49bd71b4c57d5d459c07b61addb493
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120417"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664802"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB サーバーのサーバー パラメーターを構成する
 
 Azure Database for MariaDB では、いくつかのサーバー パラメーターの構成がサポートされています｡ この記事では、Azure Portal を使用してこれらのパラメーターを構成する方法について説明します。 すべてのサーバー パラメーターを調整できるわけではありません。
+
+>[!Note]
+> サーバー パラメーターは、[Azure CLI](./howto-configure-server-parameters-cli.md)、[PowerShell](./howto-configure-server-parameters-using-powershell.md)、または [Azure portal](./howto-server-parameters.md) を使用して、サーバー レベルでグローバルに更新できます。
 
 ## <a name="configure-server-parameters"></a>サーバー パラメーターの構成
 

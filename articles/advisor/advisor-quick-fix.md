@@ -4,12 +4,12 @@ description: Advisor でクイック修正を使って一括修復を実行す�
 ms.topic: article
 ms.date: 03/13/2020
 ms.author: sagupt
-ms.openlocfilehash: ebd993733c1aca9cd4f7d92f0a75e22d68a87ffe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a9c86a7ae510d9657f64c71db2aa8c4e3e558f52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518064"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90968584"
 ---
 # <a name="quick-fix-remediation-for-advisor"></a>Advisor のクイック修正
 **クイック修正** を使用すると、複数のリソースに対する推奨事項の修復をすばやく簡単に実行できます。 リソースの一括修復を行う機能が用意され、リソースの大規模修復によってサブスクリプションをより迅速に最適化できます。
@@ -18,15 +18,15 @@ ms.locfileid: "86518064"
 
 ## <a name="steps-to-use-quick-fix"></a>"クイック修正" を使用する手順
 
-1. **クイック修正**ラベルが付いている推奨事項の一覧で、推奨事項をクリックします。
+1. **クイック修正** ラベルが付いている推奨事項の一覧で、推奨事項をクリックします。
 
-   ![Advisor のクイック修正](./media/quick-fix-1.png)
+   :::image type="content" source="./media/quick-fix-1.png" alt-text="{レコメンデーションのクイック修正ラベルが表示されている Azure Advisor のスクリーンショット。}":::
    
    "*画像内の価格は例示の目的でのみ使用されています*"
 
 2. 推奨事項の詳細ページに、この推奨事項に対するリソースの一覧が表示されます。 推奨事項に対して修復を行うすべてのリソースを選択します。
 
-   ![Advisor のクイック修正](./media/quick-fix-2.png)
+   :::image type="content" source="./media/quick-fix-2.png" alt-text="リスト アイテムと [クイック修正] ボタンが強調表示された [影響を受けるリソース] ウィンドウのスクリーンショット。":::
    
    "*画像内の価格は例示の目的でのみ使用されています*"
 

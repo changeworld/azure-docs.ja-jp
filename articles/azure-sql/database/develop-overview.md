@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: b099158261de55c829ab2b89a2f994b35b3e50d4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ea3456dbd1d0942cba48c97d70982ae088d73f9
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254040"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92782979"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>アプリケーション開発の概要 - SQL Database & SQL Managed Instance
 
@@ -27,7 +27,7 @@ ms.locfileid: "85254040"
 
 さまざまな[プログラミング言語とプラットフォーム](connect-query-content-reference-guide.md)を使用して、Azure SQL Database に対する接続とクエリを実行することができます。 データベースに接続するために使用できる[サンプル アプリケーション](https://azure.microsoft.com/resources/samples/?service=sql-database&sort=0)を見つけることができます。
 
-[cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS Code](https://code.visualstudio.com/) などのオープン ソース ツールを活用できます。 さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/downloads/)、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) などの Microsoft ツールと連携しています。 また、Azure portal、PowerShell、REST API も使用でき、生産性向上に役立ちます。
+[cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS コード](https://code.visualstudio.com/)などのオープン ソース ツールを活用できます。 さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/downloads/)、[SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) などの Microsoft ツールと連携しています。 また、Azure portal、PowerShell、REST API も使用でき、生産性向上に役立ちます。
 
 ## <a name="authentication"></a>認証
 
@@ -39,7 +39,7 @@ Azure SQL Database へのアクセスは、ログインとファイアウォー�
 
 クライアント接続ロジックの中で、タイムアウトが 30 秒になるように既定値をオーバーライドします。 既定では 15 秒ですが、インターネットに依存する接続の場合、それでは短すぎます。
 
-[接続プール](https://msdn.microsoft.com/library/8xx3tyca.aspx)を使用している場合は、プログラムで接続をアクティブに使用しておらず、再使用の準備をしていない時間は、接続を必ず閉じてください。
+[接続プール](/dotnet/framework/data/adonet/sql-server-connection-pooling)を使用している場合は、プログラムで接続をアクティブに使用しておらず、再使用の準備をしていない時間は、接続を必ず閉じてください。
 
 実行時間の長いトランザクションは避けてください。インフラストラクチャまたは接続のエラーにより、トランザクションがロールバックされる可能性があるためです。 可能であれば、トランザクションを複数のより小さなトランザクションに分割し、[バッチ処理を使用してパフォーマンスを向上させます](../performance-improve-use-batching.md)。
 
@@ -53,7 +53,7 @@ Azure SQL Database の計画メンテナンス イベントに備える方法の
 
 - クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。  詳細情報: [Azure SQL Database ファイアウォールの構成](firewall-configure.md)。
 - クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database に接続する場合、VM で特定のポートの範囲を開く必要があります。 詳細情報: 「[ADO.NET 4.5 用の 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)」を参照してください。
-- Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細については、「[Azure SQL Database connectivity architecture](connectivity-architecture.md)」 (Azure SQL データベース接続アーキテクチャ) および「[ADO.NET 4.5 用の 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)」を参照してください。
+- Azure SQL Database へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。 1433 以外のポートが重要になります。 詳細については、「[Azure SQL Database connectivity architecture](connectivity-architecture.md)」 (Azure SQL Database 接続アーキテクチャ) および「[ADO.NET 4.5 用の 1433 以外のポート](adonet-v12-develop-direct-route-ports.md)」を参照してください。
 - SQL Managed Instance のインスタンスに対するネットワーク構成については、[SQL Managed Instance のネットワーク構成](../managed-instance/how-to-content-reference-guide.md#network-configuration)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ

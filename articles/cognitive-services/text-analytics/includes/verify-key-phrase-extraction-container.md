@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 5c177517ec18d7526b1cc09da74e35cb5434766d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dca4828a5c1127133461ddf9fc06099fc176b68
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876436"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009911"
 ---
 ### <a name="verify-the-key-phrase-extraction-container-instance"></a>キー フレーズ抽出コンテナー インスタンスを確認する
 
@@ -25,7 +26,7 @@ ms.locfileid: "80876436"
 
 1. **[Service API Description]\(サービス API の説明\)** リンクを選択して、コンテナーの Swagger ページに移動します。
 
-1. いずれかの **POST** APIを選択して **[試してみる]** を選択します。次の入力の例を含むパラメーターが表示されます。
+1. いずれかの **POST** APIを選択して **[使ってみる]** を選択します。次の入力の例を含むパラメーターが表示されます。
 
     ```json
     {

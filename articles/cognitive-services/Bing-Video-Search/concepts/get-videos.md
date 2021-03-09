@@ -10,14 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10277efe1f06de3633b2d614e2ee5ec0cc351c76
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218917"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351931"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Bing Video Search API で動画を検索する
+
+> [!WARNING]
+> Bing Search API は、Cognitive Services から Bing Search Services に移行されます。 **2020 年 10 月 30 日** 以降、Bing Search の新しいインスタンスは、[こちら](/bing/search-apis/bing-web-search/create-bing-search-service-resource)に記載されているプロセスに従ってプロビジョニングする必要があります。
+> Cognitive Services を使用してプロビジョニングされた Bing Search API は、次の 3 年間、または Enterprise Agreement の終わり (どちらか先に発生した方) までサポートされます。
+> 移行手順については、[Bing Search Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource) に関する記事を参照してください。
 
 Bing Video Search API を使用すると、Bing のコグニティブ ニュース検索機能を簡単にアプリケーションに統合することができます。 この API は主に、関連する動画を Web から検索して返すものですが、同時に、インテリジェントで的を絞った動画検索を Web 上で行うための機能をいくつか備えています。
 
@@ -39,13 +44,13 @@ Host: api.cognitive.microsoft.com
 
 いずれかの Bing API を初めて呼び出す場合は、クライアント ID ヘッダーを含めないでください。 クライアント ID を含めるのは、過去に Bing API を呼び出したことがあり、かつユーザーとデバイスの組み合わせに対応するクライアント ID が Bing から返されたことがある場合だけです。
 
-特定のドメインから動画を取得するには、[site:](https://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
+特定のドメインから動画を取得するには、[site:](/previous-versions/bing/search/ff795613(v=msdn.10)) というクエリ演算子を使用します。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
-応答として返されるデータには、そのクエリとの関連性が高いと Bing によって判断された一連の動画を格納する [Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 応答が含まれています。 このリスト内の各 [Video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) オブジェクトには、動画の URL、再生時間、大きさ、エンコード形式などの属性が含まれています。 video オブジェクトには、動画のサムネイルの URL やサムネイルの大きさも含まれています。
+応答として返されるデータには、そのクエリとの関連性が高いと Bing によって判断された一連の動画を格納する [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) 応答が含まれています。 このリスト内の各 [Video](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video) オブジェクトには、動画の URL、再生時間、大きさ、エンコード形式などの属性が含まれています。 video オブジェクトには、動画のサムネイルの URL やサムネイルの大きさも含まれています。
 
 ```json
 {
@@ -98,9 +103,9 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/videos/search?q=sailing+dinghi
 
 ## <a name="video-thumbnails"></a>動画のサムネイル
 
-Bing Video Search API から返された動画のサムネイルは、すべて表示することも、サブセットを表示することもできます。 サブセットを表示する場合、残りの動画を表示するためのオプションをユーザーに提供します。 Bing API の[利用と表示の要件](../UseAndDisplayRequirements.md)上、動画は、応答で返された順に表示する必要があります。 サムネイルのサイズ変更については、[サムネイルのサイズ変更とクロップ](../../bing-web-search/resize-and-crop-thumbnails.md)に関するページを参照してください。 
+Bing Video Search API から返された動画のサムネイルは、すべて表示することも、サブセットを表示することもできます。 サブセットを表示する場合、残りの動画を表示するためのオプションをユーザーに提供します。 Bing API の[利用と表示の要件](../../bing-web-search/use-display-requirements.md)上、動画は、応答で返された順に表示する必要があります。 サムネイルのサイズ変更については、[サムネイルのサイズ変更とクロップ](../../bing-web-search/resize-and-crop-thumbnails.md)に関するページを参照してください。 
 
-ユーザーがサムネイルにマウス ポインターを重ねたときに、[motionThumbnailUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) を使用して、サムネイル バージョンの動画を再生することができます。 動画のサムネイルを表示するときは、必ずその帰属を示すようにしてください。
+ユーザーがサムネイルにマウス ポインターを重ねたときに、[motionThumbnailUrl](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-motionthumbnailurl) を使用して、サムネイル バージョンの動画を再生することができます。 動画のサムネイルを表示するときは、必ずその帰属を示すようにしてください。
 
 <!-- Removing until the images can be sanitized.
 ![Motion thumbnail of a video](../bing-web-search/media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
@@ -108,27 +113,27 @@ Bing Video Search API から返された動画のサムネイルは、すべて�
 
 動画の表示に関しては、サムネイルをクリックする際に、次の 3 つのオプションが存在します。
 
-- ホスト Web サイト (YouTube など) で動画を再生する場合は、[hostPageUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) を使用します。
-- Bing の動画ブラウザーで動画を再生する場合は、[webSearchUrl](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) を使用します。
-- 独自に用意したエクスペリエンスに動画を埋め込む場合は、[embdedHtml](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-embedhtml) を使用します。 
+- ホスト Web サイト (YouTube など) で動画を再生する場合は、[hostPageUrl](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-hostpageurl) を使用します。
+- Bing の動画ブラウザーで動画を再生する場合は、[webSearchUrl](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-websearchurl) を使用します。
+- 独自に用意したエクスペリエンスに動画を埋め込む場合は、[embdedHtml](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-embedhtml) を使用します。 
 
 動画を再生するときは、それが発行者や作成者によるものであることがわかるようにします。
 
-[videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) を使用して動画の分析情報を取得する方法については、「[Video Insights (ビデオの分析情報)](../video-insights.md)」を参照してください。
+[videoId](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) を使用して動画の分析情報を取得する方法については、「[Video Insights (ビデオの分析情報)](../video-insights.md)」を参照してください。
 
 ## <a name="filtering-videos"></a>動画のフィルタリング
 
 Video Search API の既定の動作では、クエリとの関連性が高い動画がすべて返されます。 無料動画や長さが 5 分未満の動画のみを必要する場合は、次のフィルター クエリ パラメーターを使用します。
 
-- [pricing](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash; 料金で動画をフィルタリング (例: 無料動画や有料動画など)
-- [resolution](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash; 解像度で動画をフィルタリング (例: 720p 以上の解像度の動画など)
-- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash; 動画の長さで動画をフィルタリング (例: 長さが 5 分未満の動画など)
-- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash; 新しさで動画をフィルタリング (例: この 1 週間に Bing によって検出された動画など)
+- [pricing](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash; 料金で動画をフィルタリング (例: 無料動画や有料動画など)
+- [resolution](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash; 解像度で動画をフィルタリング (例: 720p 以上の解像度の動画など)
+- [videoLength](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash; 動画の長さで動画をフィルタリング (例: 長さが 5 分未満の動画など)
+- [freshness](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash; 新しさで動画をフィルタリング (例: この 1 週間に Bing によって検出された動画など)
 
-特定のドメインから動画を得るには、クエリ文字列に [site:](https://msdn.microsoft.com/library/ff795613.aspx) クエリ演算子を含めます。
+特定のドメインから動画を得るには、クエリ文字列に [site:](/previous-versions/bing/search/ff795613(v=msdn.10)) クエリ演算子を含めます。
 
 > [!NOTE]
-> クエリによっては、`site:` クエリ演算子を使用した場合、[safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#safesearch) 設定にかかわらず、成人向けのコンテンツが応答に含まれることがあります。 `site:` の使用は、そのサイト上のコンテンツを承知していて、なおかつ成人向けのコンテンツが含まれていても問題がないシナリオに限定してください。
+> クエリによっては、`site:` クエリ演算子を使用した場合、[safeSearch](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#safesearch) 設定にかかわらず、成人向けのコンテンツが応答に含まれることがあります。 `site:` の使用は、そのサイト上のコンテンツを承知していて、なおかつ成人向けのコンテンツが含まれていても問題がないシナリオに限定してください。
 
 次の例は、ContosoSailing.com から、Bing が過去 1 か月に検出した 720p 以上の解像度を持つ無料動画を取得する方法を示しています。
 
@@ -144,7 +149,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>クエリの展開
 
-Bing がクエリを展開して元の検索を絞り込むことができる場合、[Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `queryExpansions` フィールドが含まれます。 たとえば、クエリが *Cleaning Gutters* だった場合、展開されるクエリには、Gutter Cleaning **Tools**、Cleaning Gutters **From the Ground**、Gutter Cleaning **Machine**、および **Easy** Gutter Cleaning となる場合があります。
+Bing がクエリを展開して元の検索を絞り込むことができる場合、[Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `queryExpansions` フィールドが含まれます。 たとえば、クエリが *Cleaning Gutters* だった場合、展開されるクエリには、Gutter Cleaning **Tools**、Cleaning Gutters **From the Ground**、Gutter Cleaning **Machine**、および **Easy** Gutter Cleaning となる場合があります。
 
 次の例は、*Cleaning Gutters* の展開されたクエリを示しています。
 
@@ -171,11 +176,11 @@ Bing がクエリを展開して元の検索を絞り込むことができる場
 }
 ```
 
-`queryExpansions` フィールドには、[Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj) オブジェクトのリストが含まれています。 `text` フィールドには、展開されたクエリが格納され、`displayText` フィールドには、展開語句が格納されます。 ユーザーが本当に探しているのは、展開されたクエリ文字列であることも考えられます。そのような場合に備えて、text フィールドと thumbnail フィールドを使用して、展開されたクエリ文字列をユーザーに表示することができます。 サムネイルやテキストは、`webSearchUrl` URL または `searchLink` URL を使用して、クリック可能な状態にしましょう。 ユーザーを Bing の検索結果に誘導する場合は `webSearchUrl` を使用し、独自の結果ページを用意する場合は `searchLink` を使用します。
+`queryExpansions` フィールドには、[Query](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj) オブジェクトのリストが含まれています。 `text` フィールドには、展開されたクエリが格納され、`displayText` フィールドには、展開語句が格納されます。 ユーザーが本当に探しているのは、展開されたクエリ文字列であることも考えられます。そのような場合に備えて、text フィールドと thumbnail フィールドを使用して、展開されたクエリ文字列をユーザーに表示することができます。 サムネイルやテキストは、`webSearchUrl` URL または `searchLink` URL を使用して、クリック可能な状態にしましょう。 ユーザーを Bing の検索結果に誘導する場合は `webSearchUrl` を使用し、独自の結果ページを用意する場合は `searchLink` を使用します。
 
 ## <a name="pivoting-the-query"></a>クエリのピボット
 
-元の検索クエリを Bing が分割できる場合、[Videos](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `pivotSuggestions` フィールドが存在します。 たとえば、元のクエリが「*Cleaning Gutters*」である場合、そのクエリが Bing によって *Cleaning* と *Gutters* に分割される可能性があります。
+元の検索クエリを Bing が分割できる場合、[Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) オブジェクトには `pivotSuggestions` フィールドが存在します。 たとえば、元のクエリが「*Cleaning Gutters*」である場合、そのクエリが Bing によって *Cleaning* と *Gutters* に分割される可能性があります。
 
 次の例は、*Cleaning Gutters* に関するピボット候補を示しています。
 
@@ -222,7 +227,7 @@ Bing がクエリを展開して元の検索を絞り込むことができる場
 }
 ```
 
-応答には、ピボットごとにおすすめクエリを含んだ [Query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj) オブジェクトのリストが格納されます。 `text` フィールドには、おすすめクエリが格納され、`displayText` フィールには、元のクエリ内のピボットを置き換えた語句が格納されます たとえば、Window Cleaning などです。
+応答には、ピボットごとにおすすめクエリを含んだ [Query](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#query_obj) オブジェクトのリストが格納されます。 `text` フィールドには、おすすめクエリが格納され、`displayText` フィールには、元のクエリ内のピボットを置き換えた語句が格納されます  たとえば、Window Cleaning などです。
 
 ユーザーが本当に探しているのは、展開されたクエリ文字列であることも考えられます。そのような場合に備えて、`text` フィールドと `thumbnail` フィールドを使用して、展開されたクエリ文字列をユーザーに表示することができます。 サムネイルやテキストは、`webSearchUrl` URL または `searchLink` URL を使用して、クリック可能な状態にしましょう。 ユーザーを Bing の検索結果に誘導する場合は `webSearchUrl` を使用し、独自の結果ページを用意する場合は `searchLink` を使用します。
 

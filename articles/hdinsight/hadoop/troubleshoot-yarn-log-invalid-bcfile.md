@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight で Apache Yarn ログを読み取ることができない
 description: Azure HDInsight クラスターと対話するときの問題のトラブルシューティング手順と可能な解決策。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
-ms.openlocfilehash: f7861ae4980f13fbd87780ab2d26fa3376f33532
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02a79de8aee169f5f702d5fae67194c62363e8c4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76776040"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943049"
 ---
 # <a name="scenario-unable-to-read-apache-yarn-log-in-azure-hdinsight"></a>シナリオ:Azure HDInsight で Apache Yarn ログを読み取ることができない
 
@@ -30,11 +27,11 @@ java.io.IOException: Not a valid BCFile.
 
 Apache Yarn ログは `IndexFile` 形式に集約されますが、これはファイル パーサーでサポートされていません。
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 1. Web ブラウザーから、`https://CLUSTERNAME.azurehdinsight.net` に移動します。ここで、`CLUSTERNAME` はクラスターの名前です。
 
-1. Ambari UI から **[YARN]**  >  **[Configs]\(構成\)**  >  **[Advanced]\(拡張\)**  >  **[Advanced yarn-site]\(拡張 YARN-サイト\)** に移動します。
+1. Ambari UI から **[YARN]**  >  **[Configs]/(構成/)**  >  **[Advanced]/(拡張/)**  >  **[Advanced yarn-site] /(拡張 YARN-サイト/)** に移動します。
 
 1. WASB ストレージの場合:`yarn.log-aggregation.file-formats` の既定値は `IndexedFormat,TFile` です。 値を `TFile` に変更します。
 
@@ -50,4 +47,4 @@ Apache Yarn ログは `IndexFile` 形式に集約されますが、これはフ�
 
 * [@AzureSupport](https://twitter.com/azuresupport) (カスタマー エクスペリエンスを向上させるための Microsoft Azure の公式アカウント) に連絡する。 Azure コミュニティで適切なリソース (回答、サポート、エキスパートなど) につながる。
 
-* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。
+* さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」を参照してください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: cf32938b534272a13af5891d6a31e64b8136a528
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281465"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92790595"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して REST エンドポイントを呼び出す
 
@@ -27,6 +27,8 @@ ms.locfileid: "87281465"
   通常、コネクタが機能するためには、REST エンドポイントがこの条件を満たしている必要があります。
 
   * Swagger ファイルは、パブリックにアクセス可能な HTTPS URL でホストされている必要があります。
+  
+  * Swagger ファイルでは、定義に各操作の `operationID` が含まれている必要があります。 そうでない場合、コネクタによって Swagger ファイル内の最後の操作のみが表示されます。 
 
   * Swagger ファイルでは、[クロスオリジン リソース共有 (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) が有効になっている必要があります。
 
@@ -54,17 +56,17 @@ ms.locfileid: "87281465"
 
    `https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/export?DocumentFormat=Swagger&ApiName=Face%20API%20-%20V1.0`
 
-   ![Swagger エンドポイントの URL を入力する](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
+   ![ロジック アプリ デザイナーのスクリーンショット。[HTTP + Swagger] トリガーで [Swagger エンドポイント URL] プロパティが URL 値に設定されています。](./media/connectors-native-http-swagger/http-swagger-trigger-parameters.png)
 
 1. Swagger ファイルで記述された操作がデザイナーに表示されたら、使用する操作を選択します。
 
-   ![Swagger ファイル内の操作](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
+   ![ロジック アプリ デザイナーのスクリーンショット。[HTTP + Swagger] トリガーと Swagger 操作を表示する一覧を確認できます。](./media/connectors-native-http-swagger/http-swagger-trigger-operations.png)
 
 1. エンドポイント呼び出しに含めるトリガー パラメーターの値を指定します (パラメーターは、選択した操作によって異なります)。 トリガーでエンドポイントを呼び出す頻度を設定します。
 
    この例では、トリガー名を "HTTP + Swagger trigger: Face - Detect" に変更して、このステップの名前をよりわかりやすくします。
 
-   ![操作の詳細](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
+   ![ロジック アプリ デザイナーのスクリーンショット。[HTTP + Swagger] トリガーに [Face - Detect] 操作が表示されています。](./media/connectors-native-http-swagger/http-swagger-trigger-operation-details.png)
 
 1. その他の使用可能なパラメーターを追加するには、 **[新しいパラメーターの追加]** リストを開き、必要なパラメーターを選択します。
 
@@ -125,7 +127,7 @@ ms.locfileid: "87281465"
    | プロパティ | 値 |
    |----------|-------|
    | **許可されたオリジン** | `*` |
-   | **許可されたメソッド** | `GET`、`HEAD`、`PUT` |
+   | **許可されたメソッド** | `GET`, `HEAD`, `PUT` |
    | **許可されたヘッダー** | `*` |
    | **公開されるヘッダー** | `*` |
    | **最長有効期間** (秒) | `200` |
@@ -166,4 +168,3 @@ ms.locfileid: "87281465"
 ## <a name="next-steps"></a>次のステップ
 
 * 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。
-

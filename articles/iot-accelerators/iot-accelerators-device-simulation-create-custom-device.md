@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1fe86aef832223a7485036343b4b12d8bb526e06
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "61450544"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852389"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>チュートリアル: カスタムのシミュレートされたデバイスの作成
 
@@ -34,15 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを実行するには、Azure サブスクリプションにデバイス シミュレーションのインスタンスがデプロイされている必要があります。
 
-デバイス シミュレーションをまだデプロイしていない場合は、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートを完了する必要があります。
-
-## <a name="open-device-simulation"></a>デバイス シミュレーションを開く
-
-ご利用のブラウザーでデバイス シミュレーションを実行するには、まず、[Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com) に移動します。
-
-Azure サブスクリプションの資格情報を使用してサインインするように求められる場合があります。
-
-次に、[Azure での IoT デバイス シミュレーションのデプロイと実行](quickstart-device-simulation-deploy.md)に関するクイック スタートでデプロイしたデバイス シミュレーションのタイルの **[起動]** をクリックします。
+まだデバイス シミュレーションをデプロイしていない場合は、GitHub の[デバイス シミュレーションのデプロイ](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)に関する記事を参照してください。
 
 ## <a name="view-your-device-models"></a>デバイス モデルを表示する
 
@@ -88,7 +80,7 @@ Azure サブスクリプションの資格情報を使用してサインイン�
 
 デバイス モデルを複製するには、モデルの横にあるボックスをオンにし、操作バーの **[複製]** をクリックします。
 
-![デバイス モデルを削除する](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
+![選択したモデルと [Clone]\(複製\) ボタンが強調表示されているスクリーンショット。](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
 
 ## <a name="delete-a-device-model"></a>デバイス モデルを削除する
 

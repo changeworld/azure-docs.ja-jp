@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4702c68dcda0c794aef34d3c0675e2fd158e6d4f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 2ec166c1df9727052d4980f5d5758ece8c499880
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009411"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526604"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
 
@@ -28,11 +28,11 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 |使用事例|汎用|オンプレミスの NetApp からの Ultra パフォーマンスまたは移行|クロス プラットフォーム|
 |プラットフォーム サービス|はい。Azure ネイティブ ソリューションです。|はい。Azure ネイティブ ソリューションです。|いいえ。自己管理型です。|
 |リージョン別の提供状況|すべてのリージョン|[リージョンの選択](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|すべてのリージョン|
-|冗長性|ローカル冗長/ゾーン冗長/geo 冗長|ローカル冗長|ローカル冗長/ゾーン冗長/geo 冗長|
-|サービス レベルとパフォーマンス|Standard<br>Premium<br>共有あたり最大 100k IOPS と 5 GBps、約 3 ミリ秒の待ち時間|Standard<br>Premium<br>Ultra<br>ボリュームあたり最大 320k (16K) IOPS と 4.5 GBps、約 1 ミリ秒の待ち時間|Standard HDD: ディスクあたり最大 500 IOPS の上限<br>Standard SSD: ディスクあたり最大 4k IOPS の上限<br>Premium SSD: ディスクあたり最大 20k IOPS の上限<br>記憶域スペース ダイレクトには Premium ディスクをお勧めします|
-|容量|共有あたり 100 TiB|ボリュームあたり 100 TiB、サブスクリプションあたり最大 12.5 PiB|ディスクあたりの最大 32 TiB|
+|冗長性|ローカル冗長、ゾーン冗長、地域冗長、地域ゾーン冗長|ローカル冗長|ローカル冗長/ゾーン冗長/geo 冗長|
+|サービス レベルとパフォーマンス| Standard (トランザクション最適化)<br>Premium<br>共有あたり最大 100K IOPS と 10 GBps、約 3 ミリ秒の待ち時間|Standard<br>Premium<br>Ultra<br>ボリュームあたり最大 320k (16K) IOPS と 4.5 GBps、約 1 ミリ秒の待ち時間|Standard HDD: ディスクあたり最大 500 IOPS の上限<br>Standard SSD: ディスクあたり最大 4k IOPS の上限<br>Premium SSD: ディスクあたり最大 20k IOPS の上限<br>記憶域スペース ダイレクトには Premium ディスクをお勧めします|
+|容量|共有あたり 100 TiB、汎用目的アカウントあたり最大 5 PiB |ボリュームあたり 100 TiB、サブスクリプションあたり最大 12.5 PiB|ディスクあたりの最大 32 TiB|
 |必要なインフラストラクチャ|最小共有サイズ 1 GiB|最小容量プール 4 TiB、最小ボリュームサイズ 100 GiB|Azure IaaS (+ Cloud Witness) で 2 つの VM、またはディスクのコストなしで 3 つの VM|
-|プロトコル|SMB 2.1/3. および REST|NFSv3、NFSv4.1 (プレビュー)、SMB 3.x/2.x|NFSv3、NFSv4.1、SMB 3.1|
+|プロトコル|SMB 3.0 または 2.1、NFSv 4.1 (プレビュー)、REST|NFSv3、NFSv4.1 (プレビュー)、SMB 3.x/2.x|NFSv3、NFSv4.1、SMB 3.1|
 
 ## <a name="azure-management-details"></a>Azure 管理の詳細
 
@@ -41,7 +41,7 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 |アクセス|クラウド、オンプレミス、ハイブリッド (Azure ファイル同期)|クラウド、オンプレミス (ExpressRoute 経由)|クラウド、オンプレミス|
 |バックアップ|Azure Backup スナップショット統合|Azure NetApp Files スナップショット|Azure Backup スナップショット統合|
 |セキュリティとコンプライアンス|[Azure でサポートされているあらゆる証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO 完了|[Azure でサポートされているあらゆる証明書](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
-|Azure Active Directory の統合|[Native Active Directory と Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services と Native Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Native Active Directory または Azure Active Directory Domain Services サポートのみ|
+|Azure Active Directory の統合|[Native Active Directory と Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services と Native Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Native Active Directory または Azure Active Directory Domain Services サポートのみ|
 
 ストレージ方法を選択したら、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」で Microsoft の価格設定に関する情報をご覧ください。
 
@@ -51,7 +51,7 @@ FSLogix プロファイル コンテナー、ユーザー プロファイルデ�
 
 独自の FSLogix プロファイル コンテナーを作成する準備ができたら、次のいずれかのチュートリアルを開始してください。
 
-- [Windows Virtual Desktop で Azure Files の FSLogix プロファイル コンテナーを開始する](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-FSLogix-profile-containers-on-Azure-Files/ba-p/746477)
+- [Windows Virtual Desktop で Azure Files の FSLogix プロファイル コンテナーを開始する](create-file-share.md)
 - [Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する](create-fslogix-profile-container.md)
 - ユーザー プロファイル ディスクの代わりに FSLogix プロファイル コンテナーを使用するとき、「[Azure での UPD 記憶域用に 2 ノードの記憶域スペース ダイレクト スケールアウト ファイル サーバーを展開する](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/)」の指示も適用されます。
 

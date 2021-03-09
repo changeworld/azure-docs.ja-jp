@@ -3,12 +3,12 @@ title: Azure Event Hubs でイベント ハブにパーティションを動的�
 description: この記事では、Azure Event Hubs でイベント ハブにパーティションを動的に追加する方法について説明します。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e6efdc7bab309f825032555c97f1e1128f5addd6
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002541"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625267"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Azure Event Hubs でイベント ハブ (Apache Kafka トピック) にパーティションを動的に追加する
 Event Hubs は、パーティション化されたコンシューマー パターンを使用してメッセージ ストリーミングを実現します。このパターンでは、各コンシューマーはメッセージ ストリームの特定のサブセット (またはパーティション) のみを読み取ります。 このパターンでは、イベント処理能力を水平方向に拡張 (スケールアウト) することができ、キューおよびトピックでは利用できない、ストリームに重点を置いたその他の機能が利用できます。 パーティションは、イベント ハブで保持される順序付けされた一連のイベントです。 新しいイベントが到着すると、このシーケンスの末尾に追加されます。 パーティションの概要について詳しくは、「[パーティション](event-hubs-scalability.md#partitions)」を参照してください
@@ -16,24 +16,24 @@ Event Hubs は、パーティション化されたコンシューマー パタ�
 パーティションの数は、イベント ハブの作成時に指定できます。 場合によっては、イベント ハブを作成した後で、パーティションの追加が必要になることもあります。 この記事では、既存のイベント ハブにパーティションを動的に追加する方法について説明します。 
 
 > [!IMPORTANT]
-> パーティションの動的な追加は、**専用**の Event Hubs クラスターでのみ利用できます。
+> パーティションの動的な追加は、**専用** の Event Hubs クラスターでのみ利用できます。
 
 > [!NOTE]
-> Apache Kafka クライアントの場合、**イベント ハブ**は **Kafka トピック**に相当します。 Azure Event Hubs と Apache Kafka の間のマッピングの詳細については、「[Kafka と Event Hubs の概念のマッピング](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)」を参照してください
+> Apache Kafka クライアントの場合、**イベント ハブ** は **Kafka トピック** に相当します。 Azure Event Hubs と Apache Kafka の間のマッピングの詳細については、「[Kafka と Event Hubs の概念のマッピング](event-hubs-for-kafka-ecosystem-overview.md#kafka-and-event-hub-conceptual-mapping)」を参照してください
 
 
 ## <a name="update-the-partition-count"></a>パーティション数の更新
 このセクションでは、イベント ハブのパーティション数を更新するための各種の方法 (PowerShell、CLI など) について説明します。
 
 ### <a name="powershell"></a>PowerShell
-[Set-AzureRmEventHub](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub?view=azurermps-6.13.0) PowerShell コマンドを使用して、イベント ハブのパーティションを更新します。 
+[Set-AzureRmEventHub](/powershell/module/azurerm.eventhub/Set-AzureRmEventHub) PowerShell コマンドを使用して、イベント ハブのパーティションを更新します。 
 
 ```azurepowershell-interactive
 Set-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName -partitionCount 12
 ```
 
 ### <a name="cli"></a>CLI
-イベント ハブでパーティションを更新するには、[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub?view=azure-cli-latest#az-eventhubs-eventhub-update) CLI コマンドを使用します。 
+イベント ハブでパーティションを更新するには、[`az eventhubs eventhub update`](/cli/azure/eventhubs/eventhub#az-eventhubs-eventhub-update) CLI コマンドを使用します。 
 
 ```azurecli-interactive
 az eventhubs eventhub update --resource-group MyResourceGroupName --namespace-name MyNamespaceName --name MyEventHubName --partition-count 12
@@ -71,7 +71,7 @@ Event Hubs には、次の 3 つのセンダー オプションがあります�
 
 - **パーティション センダー** – このシナリオでは、クライアントが直接パーティションにイベントを送信します。 パーティションは識別可能であり、イベントはそれらに直接送信することができますが、このパターンはお勧めしません。 パーティションを追加しても、このシナリオには影響しません。 新しく追加されたパーティションを検出できるように、アプリケーションを再起動することをお勧めします。 
 - **パーティション キー センダー** – このシナリオでは、クライアントがキーを使用してイベントを送信します。これにより、そのキーに属するすべてのイベントが同じパーティションになります。 この場合、サービスはキーをハッシュし、対応するパーティションにルーティングします。 場合によっては、パーティション数の更新により、ハッシュが変更されて順序の問題が発生する可能性があります。 そのため、順序付けを考慮する必要がある場合は、パーティション数を増やす前に、アプリケーションで使用されるのがすべて既存のパーティションのイベントであることを確認してください。
-- **ラウンドロビン センダー (既定)** – このシナリオでは、Event Hubs サービスがパーティション間でイベントをラウンドロビンします。 Event Hubs サービスはパーティション数の変更を認識し、パーティション数が変更されてから数秒以内に、新しいパーティションに送信するようになります。
+- **ラウンドロビン センダー (既定)** – このシナリオでは、Event Hubs サービスがパーティション間でイベントをラウンドロビンします。負荷分散アルゴリズムも使用します。 Event Hubs サービスはパーティション数の変更を認識し、パーティション数が変更されてから数秒以内に、新しいパーティションに送信するようになります。
 
 ### <a name="receiverconsumer-clients"></a>受信者/コンシューマー クライアント
 Event Hubs にはダイレクト レシーバーがあり、[イベント プロセッサ ホスト (旧 SDK)](event-hubs-event-processor-host.md) または [イベント プロセッサ (新 SDK)](event-processor-balance-partition-load.md) と呼ばれる簡単なコンシューマー ライブラリが用意されています。
@@ -99,7 +99,7 @@ Apache Kafka プロトコル経由で Event Hubs を使用する Kafka クライ
     > [!IMPORTANT]
     > 既存のデータの順序は維持されますが、パーティションの追加によってパーティション数が変更された後にハッシュされたメッセージについては、パーティション ハッシュは維持されません。
 - 次の場合は、既存のトピックまたはイベント ハブ インスタンスにパーティションを追加することをお勧めします。
-    - ラウンド ロビン (既定) のイベント送信方法を使用する場合
+    - 既定のイベント送信方法を使用する場合
      - Kafka の既定のパーティション分割戦略 (例: Sticky Assignor 戦略)
 
 

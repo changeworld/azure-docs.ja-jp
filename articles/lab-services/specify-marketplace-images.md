@@ -3,12 +3,12 @@ title: Azure Lab Services でラボ用の Marketplace イメージを指定す�
 description: この記事では、ラボ作成者が Azure Lab Services でラボ アカウントにラボを作成するために使用できる Marketplace イメージを指定する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5a353394fec3dadf0f808a25ec66f6e9028820a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c81c8d7a15d67055729a29e98f5b7e30f3d0764
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445612"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434738"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>ラボ作成者が利用できる Marketplace イメージを指定する
 ラボ アカウント所有者は、ラボ作成者がラボ アカウントにラボを作成するために使用できる Marketplace イメージを指定できます。 
@@ -44,7 +44,7 @@ ms.locfileid: "85445612"
 ## <a name="enable-images-at-the-time-of-lab-creation"></a>ラボの作成時にイメージを有効にする
 ラボの作成時に、さらに多くのイメージを有効にすることができます。 
 
-1. **ラボ アカウント所有者**の資格情報を使用して、[Azure Lab Services Web サイト](https://labs.azure.com)にサインインします。
+1. **ラボ アカウント所有者** の資格情報を使用して、[Azure Lab Services Web サイト](https://labs.azure.com)にサインインします。
 2. 既定の仮想マシン イメージまたは下矢印を選択します。 
 3. **[Enable more image options]\(その他のイメージ オプションを有効にする\)** を選択します。 
 
@@ -60,4 +60,4 @@ ms.locfileid: "85445612"
 - [ラボ所有者としてラボを作成および管理する](how-to-manage-classroom-labs.md)
 - [ラボ所有者としてテンプレートを設定および発行する](how-to-create-manage-template.md)
 - [ラボ所有者としてラボの使用を構成および制御する](how-to-configure-student-usage.md)
-- [ラボ ユーザーとしてクラスルーム ラボにアクセスする](how-to-use-classroom-lab.md)
+- [ラボ ユーザーとしてラボにアクセスする](how-to-use-classroom-lab.md)

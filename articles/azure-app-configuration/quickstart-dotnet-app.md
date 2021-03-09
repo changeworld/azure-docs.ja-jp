@@ -3,18 +3,18 @@ title: .NET Framework を使用した Azure App Configuration のクイック �
 description: この記事では、Azure App Configuration でコードとは別にアプリケーション設定のストレージと管理を一元化して、.NET Framework アプリを作成します。
 services: azure-app-configuration
 documentationcenter: ''
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: lcozzens
-ms.openlocfilehash: 6795d10950ddd7b03dfa505ab44d2f43837c9045
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.date: 09/28/2020
+ms.author: alkemper
+ms.openlocfilehash: 62516218ed2c0249f829ad8d286e4ad8bbc471f8
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590270"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932093"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して .NET Framework アプリを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "88590270"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+- Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/dotnet)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
@@ -30,7 +30,7 @@ ms.locfileid: "88590270"
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
+7. **[構成エクスプローラー]**  >  **[+ 作成]**  >  **[キー値]** の順に選択して、次のキーと値のペアを追加します。
 
     | Key | 値 |
     |---|---|
@@ -38,7 +38,7 @@ ms.locfileid: "88590270"
 
     **[ラベル]** と **[コンテンツの種類]** は、現時点では空にしておきます。
 
-7. **[適用]** を選択します。
+8. **[適用]** を選択します。
 
 ## <a name="create-a-net-console-app"></a>.NET コンソール アプリを作成する
 
@@ -88,23 +88,15 @@ ms.locfileid: "88590270"
         string message = System.Configuration.ConfigurationManager.AppSettings["TestApp:Settings:Message"];
 
         Console.WriteLine(message);
+        Console.ReadKey();
     }
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>アプリをビルドしてローカルで実行する
 
-1. **ConnectionString** という名前の環境変数を App Configuration ストアの接続文字列に設定します。 Windows コマンド プロンプトを使用する場合は、次のコマンドを実行します。
+1. `${ConnectionString}` をアプリケーション構成インスタンスへの実際の接続文字列に置き換えて、**App.config** ファイルを更新します。 これは、Azure portal にあるアプリケーション構成リソースの **[アクセス キー]** タブで確認できます。
 
-    ```cmd
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
-    ```
-
-    Windows PowerShell を使用する場合は、次のコマンドを実行します。
-
-    ```azurepowershell
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
-    ```
-1. 変更を有効にするために、Visual Studio を再起動します。 Ctrl + F5 キーを押して、アプリをビルドし、実行します。
+1. Ctrl + F5 キーを押して、アプリをビルドし、実行します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

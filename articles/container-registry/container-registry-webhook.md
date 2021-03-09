@@ -3,16 +3,18 @@ title: レジストリ アクションに応答するための Webhook
 description: レジストリ リポジトリでプッシュまたはプル アクションが発生したときに、Webhook を使用してイベントをトリガーする方法について説明します。
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 5374b58ba72727500294a173c26e9a131b29fe34
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685037"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722247"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
 Docker Hub で公開 Docker イメージを格納するように、Azure コンテナー レジストリではプライベート Docker コンテナー イメージを格納および管理します。 また、Kubernetes にアプリケーションをデプロイするパッケージ形式である [Helm chart](container-registry-helm-repos.md) (プレビュー) のリポジトリをホストすることもできます。 レジストリ リポジトリで特定のアクションが発生した場合に、webhook を使用してイベントをトリガーできます。 webhook では、レジストリ レベルでイベントに応答したり、特定のリポジトリ タグに範囲を絞ったりできます。 [geo レプリケートされた](container-registry-geo-replication.md)レジストリを使用して、特定のリージョン レプリカ内のイベントに応答するように各 webhook を構成します。
+
+Webhook のエンドポイントはレジストリからパブリックにアクセスできる必要があります。 セキュリティで保護されたエンドポイントに対して認証されるように、レジストリの Webhook 要求を構成できます。
 
 webhook 要求の詳細については、「[Azure Container Registry webhook スキーマ リファレンス](container-registry-webhook-reference.md)」を参照してください。
 
@@ -41,7 +43,7 @@ webhook 要求の詳細については、「[Azure Container Registry webhook �
 
 Webhook フォームの例 :
 
-![Azure Portal の ACR webhook の作成の UI](./media/container-registry-webhook/webhook.png)
+![Azure portal の ACR Webhook 作成 UI のスクリーンショット。](./media/container-registry-webhook/webhook.png)
 
 ## <a name="create-webhook---azure-cli"></a>Webhook の作成 - Azure CLI
 

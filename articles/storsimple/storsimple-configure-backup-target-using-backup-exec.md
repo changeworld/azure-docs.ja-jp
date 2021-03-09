@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 397dac67ea94db22829080a65dfae857bb3706dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 66a1e22282864d0425173504735d6beb42b76ad7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036932"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967263"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
@@ -79,7 +79,7 @@ StorSimple には次の利点があります。
 
 StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
-StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](storsimple-technical-specifications-and-compliance.md)に関するページも参照してください。
+StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション](storsimple-overview.md)」をご覧ください。 また、[StorSimple 8000 シリーズの技術仕様](./storsimple-8000-technical-specifications-and-compliance.md)に関するページも参照してください。
 
 > [!IMPORTANT]
 > バックアップ ターゲットとして StorSimple デバイスを使用できるのは、StorSimple 8000 の Update 3 以降のバージョンのみです。
@@ -170,7 +170,7 @@ StorSimple は Azure クラウドと統合されたソリューションであ�
 
 ### <a name="deploy-storsimple"></a>StorSimple のデプロイ方法
 
-StorSimple のデプロイメントの詳細なガイダンスについては、[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)に関するページをご覧ください。
+StorSimple のデプロイメントの詳細なガイダンスについては、[オンプレミスの StorSimple デバイスのデプロイ](./storsimple-8000-deployment-walkthrough-u2.md)に関するページをご覧ください。
 
 ### <a name="deploy-backup-exec"></a>Backup Exec のデプロイ
 
@@ -185,7 +185,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 | StorSimple のデプロイメント タスク  | その他のコメント |
 |---|---|
 | オンプレミスの StorSimple デバイスのデプロイ。 | サポートされているバージョンは Update 3 以降です。 |
-| バックアップ ターゲットを有効にする。 | バックアップ ターゲット モードの有効化または無効化、および状態の取得には次のコマンドを使用します。 詳細については、[StorSimple デバイスへのリモート接続](storsimple-remote-connect.md)に関するページをご覧ください。</br> バックアップ モードを有効にする: `Set-HCSBackupApplianceMode -enable` </br> バックアップ モードを無効にする: `Set-HCSBackupApplianceMode -disable` </br> バックアップ モード設定の現在の状態を取得する: `Get-HCSBackupApplianceMode` |
+| バックアップ ターゲットを有効にする。 | バックアップ ターゲット モードの有効化または無効化、および状態の取得には次のコマンドを使用します。 詳細については、[StorSimple デバイスへのリモート接続](./storsimple-8000-remote-connect.md)に関するページをご覧ください。</br> バックアップ モードを有効にする: `Set-HCSBackupApplianceMode -enable` </br> バックアップ モードを無効にする: `Set-HCSBackupApplianceMode -disable` </br> バックアップ モード設定の現在の状態を取得する: `Get-HCSBackupApplianceMode` |
 | バックアップ データを格納するボリュームの共通ボリューム コンテナーを作成する。 ボリューム コンテナー内のすべてのデータが重複除去されます。 | StorSimple のボリューム コンテナーでは、重複除去のドメインを定義します。  |
 | StorSimple ボリュームを作成する。 | ボリューム サイズはクラウド スナップショットの実行時間に影響するため、予想される使用量に可能な限り近いサイズのボリュームを作成します。 ボリューム サイズの決定方法については、「[保持ポリシー](#retention-policies)」を参照してください。</br> </br> StorSimple 階層化ボリュームを使用し、 **[アクセス頻度の低いアーカイブ データにこのボリュームを使用します]** チェック ボックスをオンにします。 </br> ローカル固定ボリュームのみの使用はサポートされていません。 |
 | すべてのバックアップ ターゲット ボリュームに対し、一意の StorSimple バックアップ ポリシーを作成する。 | ボリュームの整合性グループは、StorSimple のバックアップ ポリシーで定義されます。 |
@@ -211,25 +211,25 @@ Backup Exec のインストールのベスト プラクティスについては�
 - StorSimple ボリュームでの Windows Server の最適化を無効にします。
 - StorSimple ボリュームでの Windows Server のインデックス作成を無効にします。
 - (StorSimple ボリュームに対してではなく) ソース ホストでウィルス対策スキャンを実行します。
-- タスク マネージャーで、既定の [ Windows Server のメンテナンス](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx)を無効にします。 これは、次の方法のいずれかで実行します。
+- タスク マネージャーで、既定の [ Windows Server のメンテナンス](/windows/win32/w8cookbook/automatic-maintenance)を無効にします。 これは、次の方法のいずれかで実行します。
   - Windows タスク スケジューラでメンテナンス コンフィギュレータを無効にする。
-  - Windows Sysinternals から [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) をダウンロードする。 PsExec のダウンロード後、Azure PowerShell を管理者として実行し、次のように入力します。
+  - Windows Sysinternals から [PsExec](/sysinternals/downloads/psexec) をダウンロードする。 PsExec のダウンロード後、Azure PowerShell を管理者として実行し、次のように入力します。
     ```powershell
     psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
     ```
 
 ### <a name="storsimple-best-practices"></a>StorSimple のベスト プラクティス
 
-  -   StorSimple デバイスが [Update 3 以降](storsimple-install-update-3.md)に更新されていることを確認します。
+  -   StorSimple デバイスが [Update 3 以降](./index.yml)に更新されていることを確認します。
   -   iSCSI とクラウド トラフィックを分離します。 StorSimple とバックアップ サーバーの間のトラフィックには専用の iSCSI 接続を使用します。
   -   StorSimple デバイスが専用のバックアップ ターゲットであることを確認します。 混合ワークロードは、RTO と RPO に影響を与えるため、サポートされていません。
 
 ### <a name="backup-exec-best-practices"></a>Backup Exec のベスト プラクティス
 
 -   Backup Exec は、StorSimple ボリュームではなく、サーバーのローカル ドライブにインストールする必要があります。
--   Backup Exec ストレージの**同時書き込み操作数**を最大値に設定します。
-    -   Backup Exec ストレージの**ブロックとバッファー サイズ**は、512 KB に設定します。
-    -   Backup Exec ストレージの**バッファー読み取りと書き込み**を有効にします。
+-   Backup Exec ストレージの **同時書き込み操作数** を最大値に設定します。
+    -   Backup Exec ストレージの **ブロックとバッファー サイズ** は、512 KB に設定します。
+    -   Backup Exec ストレージの **バッファー読み取りと書き込み** を有効にします。
 -   StorSimple では、Backup Exec の完全バックアップと増分バックアップがサポートされています。 合成バックアップや差分バックアップは使用しないことをお勧めします。
 -   バックアップ データ ファイルに含めるデータは、特定のジョブのものだけに限定する必要があります。 たとえば、複数のジョブにまたがってメディアを追加することはできません。
 -   ジョブの検証を無効にします。 必要に応じて、最近のバックアップ ジョブの後に検証をスケジュールします。 このジョブがバックアップの時間帯に影響を与えることを理解しておくことが重要です。
@@ -409,17 +409,17 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 4.  **[Storage] \(ストレージ)** ドロップダウン リストから、アーカイブ ジョブでデータを格納する StorSimple ボリュームを選択します。
 
-    ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
+    ![[Storage]\(ストレージ\) を選択する必要があるリストを示すスクリーンショット。](./media/storsimple-configure-backup-target-using-backup-exec/image22.png)
 
 5.  **[Verify] \(検証)** を選択し、 **[Do not verify data for this job] \(このジョブのデータは検証しない)** チェック ボックスをオンにします。
 
-    ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
+    ![[Do not verify data for this job]\(このジョブのデータは検証しない\) オプションを選択する場所を示すスクリーンショット。](./media/storsimple-configure-backup-target-using-backup-exec/image23.png)
 
 6.  **[OK]** を選択します。
 
-    ![Backup Exec 管理コンソール、バックアップ定義のプロパティと複製のオプション](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
+    ![バックアップ定義のプロパティを示すスクリーンショット。](./media/storsimple-configure-backup-target-using-backup-exec/image24.png)
 
-7.  **[バックアップ]** の欄で新しいステージを追加します。 ソースには**増分**を使用します。 ターゲットには、増分バックアップ ジョブをアーカイブする StorSimple ボリュームを選択します。 手順 1 - 6 を繰り返します。
+7.  **[バックアップ]** の欄で新しいステージを追加します。 ソースには **増分** を使用します。 ターゲットには、増分バックアップ ジョブをアーカイブする StorSimple ボリュームを選択します。 手順 1 - 6 を繰り返します。
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple クラウド スナップショット
 
@@ -474,7 +474,7 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 
 | シナリオ | 影響 | 復旧方法 | メモ |
 |---|---|---|---|
-| StorSimple デバイスの不具合 | バックアップと復元のオペレーションが中断されます。 | 不具合のあるデバイスを交換し、[StorSimple フェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)を実行します。 | デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 インデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があり、時間のかかる可能性があります。 |
+| StorSimple デバイスの不具合 | バックアップと復元のオペレーションが中断されます。 | 不具合のあるデバイスを交換し、[StorSimple フェールオーバーと障害復旧](./storsimple-8000-device-failover-disaster-recovery.md)を実行します。 | デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 インデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があり、時間のかかる可能性があります。 |
 | Backup Exec サーバーの不具合 | バックアップと復元のオペレーションが中断されます。 | 「[Backup Exec (BEDB) データベースの手動バックアップと復元方法](http://www.veritas.com/docs/000041083)」に従ってバックアップ サーバーを再構築し、データベースの復元を実行します。 | ディザスター リカバリー サイトの Backup Exec サーバーを再構築または復元する必要があります。 データベースを最新の時点に復元します。 復元した Backup Exec データベースと最新のバックアップ ジョブが同期されない場合、インデックスとカタログを作成する必要があります。 このインデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があります。 これにはさらに時間がかかります。 |
 | バックアップ サーバーと StorSimple 両方の損失を招くサイトの不具合 | バックアップと復元のオペレーションが中断されます。 | まず StorSimple を復旧し、次に Backup Exec を復旧します。 | まず StorSimple を復旧し、次に Backup Exec を復旧します。 デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 |
 
@@ -482,12 +482,12 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 
 この記事では次のドキュメントを参考にしています。
 
-- [StorSimple のマルチパス I/O のセットアップ](storsimple-configure-mpio-windows-server.md)
-- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
-- [GPT ドライブを使用する (Using GPT drives)](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
-- [共有フォルダーのシャドウ コピーのセットアップ](https://technet.microsoft.com/library/cc771893.aspx)
+- [StorSimple のマルチパス I/O のセットアップ](./storsimple-8000-configure-mpio-windows-server.md)
+- [ストレージ シナリオ: 仮想プロビジョニング (Storage scenarios: Thin provisioning)](/windows-hardware/drivers/storage/thin-provisioning)
+- [GPT ドライブを使用する (Using GPT drives)](/previous-versions/windows/hardware/design/dn653580(v=vs.85)#EHD)
+- [共有フォルダーのシャドウ コピーのセットアップ](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771893(v=ws.11))
 
 ## <a name="next-steps"></a>次のステップ
 
-- [バックアップ セットからの復元方法](storsimple-restore-from-backup-set-u2.md)について確認します。
-- [デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)の実行方法について確認します。
+- [バックアップ セットからの復元方法](./storsimple-8000-restore-from-backup-set-u2.md)について確認します。
+- [デバイスのフェールオーバーと障害復旧](./storsimple-8000-device-failover-disaster-recovery.md)の実行方法について確認します。

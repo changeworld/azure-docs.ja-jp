@@ -2,18 +2,18 @@
 title: マネージド ID を使用して App Configuration にアクセスする
 titleSuffix: Azure App Configuration
 description: マネージド ID を使用して Azure App Configuration に対して認証する
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: b1efeeef09e7c228eb8fc14de52a6beb2e9ffffe
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 483af51cbaeb8f7b295adb4231e65f742e3f53a1
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88206836"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185463"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
@@ -22,6 +22,9 @@ Azure Active Directory [マネージド ID](../active-directory/managed-identiti
 Azure App Configuration とその .NET Core、.NET Framework、および Java Spring のクライアント ライブラリには、マネージド ID サポートが組み込まれています。 これの使用は必須ではありませんが、マネージド ID によって、シークレットが含まれるアクセス トークンが不要になります。 コードはサービス エンドポイントのみを使用して App Configuration ストアにアクセスできます。 シークレットの流出させることなく、この URL をコードに直接埋め込むことができます。
 
 この記事では、マネージド ID を活用して App Configuration にアクセスする方法について説明します。 これは、クイック スタートで紹介されている Web アプリに基づいています。 先に進む前に、[App Configuration を使用して ASP.NET Core アプリを作成します](./quickstart-aspnet-core-app.md)。
+
+> [!NOTE]
+> この記事では例として Azure App Service を使用しますが、同じ概念は、マネージド ID をサポートする他の Azure サービス ([Azure Kubernetes Service](../aks/use-azure-ad-pod-identity.md)、[Azure 仮想マシン](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)、[Azure Container Instances](../container-instances/container-instances-managed-identity.md) など) にも当てはまります。 ワークロードがこれらのサービスのいずれかでホストされている場合は、そのサービスのマネージド ID サポートも利用できます。
 
 この記事では、App Configuration の Key Vault 参照と共にマネージド ID を使用する方法についても説明します。 1つのマネージド ID を使用して、Key Vault のシークレットと App Configuration の構成値の両方にシームレスにアクセスできます。 この機能を確認する場合は、[ASP.NET Core の Key Vault 参照の使用](./use-key-vault-references-dotnet-core.md)に関するページの手順を最初に完了します。
 
@@ -39,7 +42,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 このチュートリアルを完了するには、以下が必要です。
 
 * [.NET Core SDK](https://www.microsoft.com/net/download/windows)。
-* [構成済みの Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)。
+* [構成済みの Azure Cloud Shell](../cloud-shell/quickstart.md)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -65,7 +68,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
 1. **[アクセスの確認]** タブで、 **[ロールの割り当てを追加する]** カード UI の **[追加]** を選択します。
 
-1. **[ロール]** の中から、**App Configuration データ リーダー**を選択します。 **[アクセスの割り当て先]** で、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。
+1. **[ロール]** の中から、**App Configuration データ リーダー** を選択します。 **[アクセスの割り当て先]** で、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。
 
 1. **[サブスクリプション]** で自分の Azure サブスクリプションを選択します。 アプリの App Service リソースを選択します。
 
@@ -73,13 +76,13 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
 
     ![マネージド ID の追加](./media/add-managed-identity.png)
 
-1. 省略可能:Key Vault へのアクセスも許可する場合は、[マネージド ID で Key Vault の認証を提供する](https://docs.microsoft.com/azure/key-vault/managed-identity)の指示に従ってください。
+1. 省略可能:Key Vault へのアクセスも許可する場合は、「[Key Vault アクセス ポリシーを割り当てる](../key-vault/general/assign-access-policy-portal.md)」の指示に従ってください。
 
 ## <a name="use-a-managed-identity"></a>マネージド ID の使用
 
 1. *Azure.Identity* パッケージの参照を追加します。
 
-    ```cli
+    ```bash
     dotnet add package Azure.Identity
     ```
 
@@ -99,7 +102,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
     using Azure.Identity;
     ```
 
-1. App Configuration に直接格納されている値にのみアクセスしたい場合は、`config.AddAzureAppConfiguration()` メソッドを置換して `CreateWebHostBuilder` メソッドを更新します。
+1. App Configuration に直接格納されている値にのみアクセスしたい場合は、`config.AddAzureAppConfiguration()` メソッド (`Microsoft.Azure.AppConfiguration.AspNetCore` パッケージにあります) を置換して `CreateWebHostBuilder` メソッドを更新します。
 
     > [!IMPORTANT]
     > `CreateHostBuilder` により、.NET Core 3.0 の `CreateWebHostBuilder` が置き換えられます。  お使いの環境に応じて適切な構文を選択します。
@@ -107,85 +110,89 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration((hostingContext, config) =>
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   config.AddAzureAppConfiguration(options =>
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
+               })
+               .UseStartup<Startup>();
+    ```
+
+    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
                 {
                     var settings = config.Build();
                     config.AddAzureAppConfiguration(options =>
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>();
-    ```
-
-    ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
-
-    ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-            {
-                var settings = config.Build();
-                    config.AddAzureAppConfiguration(options =>
-                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential()));
-                })
-                .UseStartup<Startup>());
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
-1. App Configuration と Key Vault 参照の両方を使用するには、以下に示すように、*Program.cs* を更新します。 このコードにより、`AzureServiceTokenProvider` を使用して新しい `KeyVaultClient` が作成され、この参照が `UseAzureKeyVault` メソッドの呼び出しに渡されます。
+1. App Configuration と Key Vault 参照の両方を使用するには、以下に示すように、*Program.cs* を更新します。 このコードは `ConfigureKeyVault` の一部として `SetCredential` を呼び出し、Key Vault に対する認証時に使用する資格情報を構成プロバイダーに伝えます。
 
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
-            public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-                WebHost.CreateDefaultBuilder(args)
-                    .ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+               .ConfigureAppConfiguration((hostingContext, config) =>
+               {
+                   var settings = config.Build();
+                   var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>();
+                   config.AddAzureAppConfiguration(options =>
+                   {
+                       options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                              .ConfigureKeyVault(kv =>
+                              {
+                                 kv.SetCredential(credentials);
+                              });
+                   });
+               })
+               .UseStartup<Startup>();
     ```
 
     ### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
             .ConfigureWebHostDefaults(webBuilder =>
-            webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
-                    {
-                        var settings = config.Build();
-                        var credentials = new ManagedIdentityCredential();
+            {
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    var credentials = new ManagedIdentityCredential();
 
-                        config.AddAzureAppConfiguration(options =>
-                        {
-                            options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                                    .ConfigureKeyVault(kv =>
-                                    {
-                                        kv.SetCredential(credentials);
-                                    });
-                        });
-                    })
-                    .UseStartup<Startup>());
+                    config.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
+                               .ConfigureKeyVault(kv =>
+                               {
+                                   kv.SetCredential(credentials);
+                               });
+                    });
+                });
+            })
+            .UseStartup<Startup>());
     ```
     ---
 
-    他の App Configuration キーと同様に Key Vault 参照にアクセスできるようになりました。 構成プロバイダーは、Key Vault に対して認証して値を取得するように構成した `KeyVaultClient` を使用します。
+    他の App Configuration キーと同様に Key Vault 参照にアクセスできるようになりました。 構成プロバイダーは、`ManagedIdentityCredential` を使用して Key Vault に対して認証し、値を取得します。
 
-> [!NOTE]
-> `ManagedIdentityCredential` では、マネージド ID 認証のみがサポートされます。 ローカル環境では機能しません。 コードをローカルで実行する場合、サービス プリンシパル認証もサポートしている `DefaultAzureCredential` の使用を検討してください。 詳細については、[こちらのリンク](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential)を参照してください。
+    > [!NOTE]
+    > `ManagedIdentityCredential` が機能するのは、マネージド ID 認証をサポートするサービスの Azure 環境内のみです。 ローカル環境では機能しません。 コードをローカルと Azure の両方の環境で動作させるには、[`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential) を使用します。これは、マネージド ID を含むいくつかの認証オプションにフォールバックするからです。
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -206,7 +213,7 @@ git add .
 git commit -m "Initial version"
 ```
 
-Kudu ビルド サーバーを使用したアプリへのローカル Git のデプロイを有効にするには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) を実行します。
+Kudu ビルド サーバーを使用したアプリへのローカル Git のデプロイを有効にするには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/#az-webapp-deployment-source-config-local-git) を実行します。
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -222,7 +229,7 @@ az webapp deployment source config-local-git --name <app_name> --resource-group 
 
 ### <a name="deploy-your-project"></a>プロジェクトのデプロイ
 
-_ローカル ターミナル ウィンドウ_で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
+_ローカル ターミナル ウィンドウ_ で、ローカル Git リポジトリに Azure リモートを追加します。 _\<url>_ を、「[Kudu でローカル Git を有効にする](#enable-local-git-with-kudu)」で取得した Git リモートの URL に置換します。
 
 ```bash
 git remote add azure <url>
@@ -231,7 +238,7 @@ git remote add azure <url>
 アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 パスワードの入力を求められたら、「[デプロイ ユーザーを構成する](#configure-a-deployment-user)」で作成したパスワードを入力します。 Azure portal へのサインインに使用しているパスワードは使用しないでください。
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 出力には、MSBuild (ASP.NET 向け)、`npm install` (Node.js 向け)、`pip install` (Python 向け) など、ランタイム固有のオートメーションが表示される場合があります。

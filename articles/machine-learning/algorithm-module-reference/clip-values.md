@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 6466cea9fe04bb308a670cb03fd3de5314758142
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99fb41542dff28997438881abad71da11e927a78
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79456609"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014892"
 ---
 # <a name="clip-values"></a>クリップの値
 
-この記事では Azure Machine Learning デザイナー (プレビュー) のモジュールについて説明します。
+この記事では、Azure Machine Learning デザイナーのモジュールについて説明します。
 
 [Clip Values] (クリップ値) モジュールを使用して、指定したしきい値を上回るか下回るデータ値を識別し、必要に応じて平均、定数、またはその他の代替値に置き換えます。  
 
@@ -28,7 +28,7 @@ ms.locfileid: "79456609"
 
 開始する前に、クリップする列と使用する方法を識別します。 どのクリップ方法も、最初はデータの小さなサブセットに対してテストすることをお勧めします。
 
-モジュールは、選択に含める**すべて**の列に同じ基準と置換方法を適用します。 そのため、変更したくない列は必ず除外してください。
+モジュールは、選択に含める **すべて** の列に同じ基準と置換方法を適用します。 そのため、変更したくない列は必ず除外してください。
 
 クリップ方法または異なる基準を一部の列に適用する必要がある場合は、類似の列のセットごとに **[Clip Values]\(クリップ値\)** の新しいインスタンスを使用する必要があります。
 

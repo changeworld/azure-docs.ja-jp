@@ -6,13 +6,13 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/01/2020
-ms.openlocfilehash: c82f98df8fb79fa10f2e30b219c1a02bb646e2de
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.date: 02/12/2021
+ms.openlocfilehash: 27552b2c39f2d1e5d9cc1719a9cc2944e088773a
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85937464"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517129"
 ---
 # <a name="managing-public-network-access-for-your-iot-hub"></a>IoT ハブのパブリック ネットワーク アクセスの管理
 
@@ -28,7 +28,13 @@ ms.locfileid: "85937464"
 
 :::image type="content" source="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png" alt-text="パブリック ネットワーク アクセスを無効にしている Azure portal を示す画像" lightbox="media/iot-hub-publicnetworkaccess/turn-off-public-network-access.png":::
 
-パブリック ネットワーク アクセスを有効にするには、 **[有効]** 、 **[保存]** の順に選択します。
+パブリック ネットワーク アクセスを有効にするには、 **[すべてのネットワーク]** 、 **[保存]** の順に選択します。
+
+## <a name="iot-hub-endpoint-ip-address-and-ports-after-disabling-public-network-access"></a>パブリック ネットワーク アクセスを無効にした後の IoT Hub エンドポイント、IP アドレス、およびポート
+
+IoT Hub はマルチテナントのサービスとしてのプラットフォーム (PaaS) であるため、異なる顧客がコンピューティング、ネットワーク、およびストレージのハードウェア リソースの同じプールを共有します。 IoT Hub のホスト名は、インターネット経由でパブリックにルーティング可能な IP アドレスを持つパブリック エンドポイントにマップされます。 この IoT Hub パブリック エンドポイントはさまざまな顧客によって共有され、IoT デバイスはワイドエリア ネットワークやオンプレミス ネットワーク経由ですべてアクセスできます。 
+
+特定の IoT Hub リソースでは、パブリック ネットワーク アクセスの無効化が強制され、分離が保証されます。 パブリック パスを使用して他のカスタマー リソースに対してサービスをアクティブな状態に保つために、パブリック エンドポイントは解決可能な状態のままで、IP アドレスは検出可能で、ポートは開いたままになります。 テナント間の完全な分離を実現するために、Microsoft では複数のセキュリティ層が統合されるため、これは問題ではありません。 詳細については、「[Azure Public Cloud での分離](../security/fundamentals/isolation-choices.md#tenant-level-isolation)」を参照してください。
 
 ## <a name="ip-filter"></a>IP フィルター 
 

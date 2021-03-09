@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: ff612b7c052ead5658ea4bbfafd7aace51ba3c02
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132493"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017442"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -69,7 +69,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
     - プロバイダーから直接接続するように指定する場合は、 **[プロキシを使用せずに直接 Azure Site Recovery に接続する]** を選択します。
     - 既存のプロキシで認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、 **[Connect with custom proxy setting]\(カスタム プロキシ設定を使用して接続する\)** を選択して、アドレス、ポート、資格情報を指定します。
      ![ファイアウォール](./media/physical-manage-configuration-server/combined-wiz4.png)
-6. **[前提条件の確認]** では、インストールを実行できることを確認するためのチェックが実行されます。 **グローバル時刻の同期チェック**に関する警告が表示された場合は、システム クロックの時刻 ( **[日付と時刻]** 設定) がタイム ゾーンと同じであることを確認します。
+6. **[前提条件の確認]** では、インストールを実行できることを確認するためのチェックが実行されます。 **グローバル時刻の同期チェック** に関する警告が表示された場合は、システム クロックの時刻 ( **[日付と時刻]** 設定) がタイム ゾーンと同じであることを確認します。
 
     ![前提条件](./media/physical-manage-configuration-server/combined-wiz5.png)
 7. **[MySQL Configuration (MySQL の構成)]** で、インストールする MySQL サーバー インスタンスにログオンするための資格情報を作成します。

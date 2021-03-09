@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: amishu
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: db7bbfecdb83e12225445905c60afe0999838813
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: f044596cf084e68b6c9ca10e3da4fbdf4c8c2062
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918640"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026524"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>Speech SDK のログの有効化
 
@@ -68,7 +68,7 @@ StorageFile logFile = await storageFolder.CreateFileAsync("logfile.txt", Creatio
 config.SetProperty(PropertyId.Speech_LogFilename, logFile.Path);
 ```
 
-UWP アプリケーションのファイル アクセス許可の詳細については、[こちら](https://docs.microsoft.com/windows/uwp/files/file-access-permissions)を参照してください。
+UWP アプリケーションのファイル アクセス許可の詳細については、[こちら](/windows/uwp/files/file-access-permissions)を参照してください。
 
 ### <a name="android"></a>Android
 

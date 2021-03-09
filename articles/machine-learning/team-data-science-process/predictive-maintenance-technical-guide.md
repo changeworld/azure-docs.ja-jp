@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9520369861623e60a0118baa20a7871437433a4b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3edeee8f41c806c90f32208c0c4f174c76ba38d0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290704"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "93321984"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>航空宇宙の業務における予測メンテナンスのためのソリューション テンプレートに関する技術ガイド
 
@@ -55,10 +55,10 @@ ms.locfileid: "87290704"
 
 ## <a name="data-preparation-and-analysis"></a>データの準備と分析  
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、[Azure イベント ハブ](#azure-event-hub) サービスから取得した入力ストリームをほぼリアルタイムで分析できます。 次に結果を [Power BI](https://powerbi.microsoft.com) ダッシュボード上に公開し、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスによって処理するために、すべての未加工の受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブします。
+[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用して、[Azure Event Hub](#azure-event-hub) サービスから取得した入力ストリームをほぼリアルタイムで分析できます。 次に結果を [Power BI](https://powerbi.microsoft.com) ダッシュボード上に公開し、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスによって処理するために、すべての未加工の受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブします。
 
 ### <a name="hdinsight-custom-aggregation"></a>HDInsight カスタム集計
-HDInsight を使用して、(Azure Data Factory によって調整される) [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行し、Azure Stream Analytics リソースを使用してアーカイブされた未加工のイベントの集計を行います。
+HDInsight を使用して、(Azure Data Factory によって調整される) [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行し、Azure Stream Analytics リソースを使用してアーカイブされた未加工のイベントの集計を行います。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 (Azure Data Factory によって調整される) [Azure Machine Learning サービス](https://azure.microsoft.com/services/machine-learning/)で受け取った入力を使用して、特定の航空機エンジンの残存耐用年数 (RUL) を予測します。 
@@ -98,7 +98,7 @@ Azure Stream Analytics クエリは次によって見つけることができま
   * クエリ自体を表示する場合は ***[クエリ]***
   * 別の出力を表示する場合は ***[出力]***
 
-Azure Stream Analytics クエリの構築については、MSDN の [Stream Analytics クエリ リファレンス](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) を参照してください。
+Azure Stream Analytics クエリの構築については、MSDN の [Stream Analytics クエリ リファレンス](/stream-analytics-query/stream-analytics-query-language-reference) を参照してください。
 
 このソリューションでは、クエリは、このソリューション テンプレートの一部として提供されている Power BI ダッシュボードへの受信データ ストリームに関するほぼリアルタイムの分析情報を含む、3 つのデータセットを出力します。 受信データ形式に関する暗黙的知識があるため、これらのクエリはデータ形式に基づいて変更する必要があります。
 
@@ -113,27 +113,27 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-このファクトリの 2 つのパイプラインには、データのパーティション分割と集計に使用される [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトが含まれます。 このスクリプトは、セットアップ時に作成される [Azure ストレージ](https://azure.microsoft.com/services/storage/) アカウントに置かれます。 その場所は maintenancesascript\\\\script\\\\hive\\\\ (または https://[Your solution name].blob.core.windows.net/maintenancesascript) になります。
+このファクトリの 2 つのパイプラインには、データのパーティション分割と集計に使用される [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトが含まれます。 このスクリプトは、セットアップ時に作成される [Azure ストレージ](https://azure.microsoft.com/services/storage/) アカウントに置かれます。 その場所は maintenancesascript\\\\script\\\\hive\\\\ (または https://[Your solution name].blob.core.windows.net/maintenancesascript) になります。
 
-[Azure Stream Analytics](#azure-stream-analytics-1) クエリと同様に、[Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトは、受信データ形式に関して暗黙的に認識するため、データ形式に基づいて変更する必要があります。
+[Azure Stream Analytics](#azure-stream-analytics-1) クエリと同様に、[Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトは、受信データ形式に関して暗黙的に認識するため、データ形式に基づいて変更する必要があります。
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-この[パイプライン](../../data-factory/concepts-pipelines-activities.md)には、[HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティが含まれます。このアクティビティは、[Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行する [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用して、[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブの実行時に [Azure Storage](https://azure.microsoft.com/services/storage/) に入れられるデータをパーティション分割します。
+この[パイプライン](../../data-factory/concepts-pipelines-activities.md)には、[HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティが含まれます。このアクティビティは、[Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行する [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) を使用して、[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブの実行時に [Azure Storage](https://azure.microsoft.com/services/storage/) に入れられるデータをパーティション分割します。
 
-このパーティション分割タスク用の [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトは ***AggregateFlightInfo.hql*** です
+このパーティション分割タスク用の [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトは ***AggregateFlightInfo.hql*** です
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
 この[パイプライン](../../data-factory/concepts-pipelines-activities.md)には複数のアクティビティが含まれ、それらの最終結果は、このソリューション テンプレートに関連付けられている [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験からのスコア付けされた予測です。
 
 含まれるアクティビティは次のとおりです。
 
-* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティ: [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行する [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用して、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験に必要な集計と特徴エンジニアリングを実行します。
-  このパーティション分割タスク用の [Hive](https://docs.microsoft.com/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトは ***PrepareMLInput.hql*** です。
-* [コピー](https://msdn.microsoft.com/library/azure/dn835035.aspx) アクティビティ: [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティからの結果を、[AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) アクティビティによってアクセスされる 1 つの [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB に移動します。
-* [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) アクティビティ: [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験を呼び出します。この実験の結果は、1 つの [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB に配置されます。
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティ: [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトを実行する [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) を使用して、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験に必要な集計と特徴エンジニアリングを実行します。
+  このパーティション分割タスク用の [Hive](/archive/blogs/uk_faculty_connection/getting-started-with-microsoft-big-data-hive-hdinsight-jump-start) スクリプトは ***PrepareMLInput.hql*** です。
+* [コピー](/previous-versions/azure/dn835035(v=azure.100)) アクティビティ: [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) アクティビティからの結果を、[AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) アクティビティによってアクセスされる 1 つの [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB に移動します。
+* [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) アクティビティ: [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験を呼び出します。この実験の結果は、1 つの [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB に配置されます。
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-この[パイプライン](../../data-factory/concepts-pipelines-activities.md)には[コピー](https://msdn.microsoft.com/library/azure/dn835035.aspx) アクティビティが含まれます。このコピー アクティビティは、[Azure Machine Learning](#azure-machine-learning) の実験の結果を、***MLScoringPipeline*** から、ソリューション テンプレート インストールの一部としてプロビジョニングされた [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) に移動します。
+この [パイプライン](../../data-factory/concepts-pipelines-activities.md)には [コピー](/previous-versions/azure/dn835035(v=azure.100)) アクティビティが含まれます。このコピー アクティビティは、[Azure Machine Learning](#azure-machine-learning) の実験の結果を、***MLScoringPipeline*** から、ソリューション テンプレート インストールの一部としてプロビジョニングされた [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) に移動します。
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 このソリューション テンプレートで使用されている [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験は、航空機のエンジンの残存耐用年数 (RUL) を提供します。 実験は使用されるデータセットに固有であり、取り込まれるデータに固有の変更や置換が必要になります。
@@ -142,7 +142,7 @@ Azure Stream Analytics クエリの構築については、MSDN の [Stream Anal
 データ ジェネレーターを起動すると、データを取り込むパイプラインのデハイドレートが開始され、データ ファクトリによって発行されたコマンドに従ってソリューションのさまざまなコンポーネントがアクションを開始します。 パイプラインを監視する方法は 2 つあります。
 
 * いずれかの Stream Analytics ジョブが、未加工の受信データを Blob Storage に書き込みます。 ソリューションが正常にデプロイされた画面からソリューションの Blob Storage コンポーネントをクリックし、右側のパネルの [開く] をクリックすると、[Azure Portal](https://portal.azure.com/) に移動します。 管理ポータルで、BLOB をクリックします。 次のパネルに、コンテナーの一覧が表示されます。 **maintenancesadata** をクリックします。 次のパネルに **rawdata** フォルダーが表示されます。 rawdata フォルダーの中に、hour=17、hour=18 などの名前の付いたフォルダーが表示されます。 これらのフォルダーの存在は、生データがコンピューター上に生成され、BLOB ストレージに格納されたことを示しています。 これらのフォルダーの中に、有限サイズ (MB 単位) の csv ファイルがあります。
-* パイプラインの最後の手順は、データ (Machine Learning からの予測など) を SQL Database に書き込むことです。 データが SQL Database に表示されるまで、最大 3 時間の待機が必要な場合があります。 SQL Database で使用できるデータの量を監視する 1 つの方法は、[Azure Portal](https://portal.azure.com/) を使用することです。 左側のパネルで、SQL DATABASES ![SQL アイコン](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png)を見つけてそれをクリックします。 次に、データベース **pmaintenancedb** を見つけて、それをクリックします。 次のページの下部にある [管理] をクリックします。
+* パイプラインの最後の手順は、データ (Machine Learning からの予測など) を SQL Database に書き込むことです。 データが SQL Database に表示されるまで、最大 3 時間の待機が必要な場合があります。 SQL Database で使用できるデータの量を監視する 1 つの方法は、[Azure Portal](https://portal.azure.com/) を使用することです。 左側のパネルで、[SQL データベース] :::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-SQL-databases.png" border="false"::: を見つけてそれをクリックします。 次に、データベース **pmaintenancedb** を見つけて、それをクリックします。 次のページの下部にある [管理] をクリックします。
    
     ![管理アイコン](./media/predictive-maintenance-technical-guide/icon-manage.png)
    
@@ -159,7 +159,7 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 
 注: 
 1.    ソリューションをデプロイすると、3 時間以内に予測がデータベース内に現れます。 ジェネレーターのダウンロードに付属する pbix ファイルには、Power BI ダッシュボードをすぐに作成できるようにシード データが含まれています。 
-2.    この手順の前提条件は、無料のソフトウェア [Power BI Desktop](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop) をダウンロードしてインストールしていることです。
+2.    この手順の前提条件は、無料のソフトウェア [Power BI Desktop](/power-bi/fundamentals/desktop-get-the-desktop) をダウンロードしてインストールしていることです。
 
 次の手順は、視覚化するデータ (予測結果など) を含むソリューションのデプロイ時にスピンアップされた SQL Database に、pbix ファイルを接続する方法を示しています。
 
@@ -170,19 +170,19 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
    * ソリューション テンプレート図の **[Azure SQL Database]** が緑色に変わったら、それをクリックしてから **[開く]** をクリックします。
    * 新しいブラウザー タブ/ウィンドウが表示され、Azure portal ページが表示されます。 左側のパネルの **[リソース グループ]** をクリックします。
    * ソリューションのデプロイに使用しているサブスクリプションを選択し、 **[YourSolutionName\_ResourceGroup]** を選択します。
-   * 新しいポップアップ パネルで、![SQL アイコン](./media/predictive-maintenance-technical-guide/icon-sql.png) アイコンをクリックして、データベースにアクセスします。 データベース名はこのアイコンの横にあり (例: **'pmaintenancedb'** )、**データベース サーバー名**は、サーバー名のプロパティの下に **YourSoｌutionName.database.windows.net** のように表示されます。
-   * データベースの**ユーザー名**と**パスワード**は、ソリューションのデプロイ時に記録しておいたユーザー名とパスワードと同じです。
+   * 新しいポップアップ パネルで、:::image type="icon" source="./media/predictive-maintenance-technical-guide/icon-sql.png" border="false"::: アイコンをクリックして、データベースにアクセスします。 データベース名はこのアイコンの横にあり (例: **'pmaintenancedb'** )、**データベース サーバー名** は、サーバー名のプロパティの下に **YourSoｌutionName.database.windows.net** のように表示されます。
+   * データベースの **ユーザー名** と **パスワード** は、ソリューションのデプロイ時に記録しておいたユーザー名とパスワードと同じです。
 2. Power BI Desktop でコールド パス レポート ファイルのデータ ソースを更新します。
    
    * ジェネレーター ファイルをダウンロードして解凍したフォルダー内の **PowerBI\\PredictiveMaintenanceAerospace.pbix** ファイルをダブルクリックします。 ファイルを開くときに警告メッセージが表示された場合、それらを無視します。 ファイルの先頭の **[クエリを編集]** をクリックします。
      
      ![クエリの編集](./media/predictive-maintenance-technical-guide/edit-queries.png)
    * **RemainingUsefulLife** と **PMResult** という 2 つのテーブルが表示されます。 最初のテーブルを選択し、右側の **[クエリの設定]** パネルの **[適用したステップ]** の **[ソース]** の横にある ![クエリの設定アイコン](./media/predictive-maintenance-technical-guide/icon-query-settings.png) をクリックします。 表示される警告メッセージは無視します。
-   * ポップアップ ウィンドウの **[サーバー]** と **[データベース]** を独自のサーバーとデータベースの名前に置き換えて、 **[OK]** をクリックします。 サーバー名については、ポート 1433 (**YourSolutionName.database.windows.net 1433**) を指定していることを確認してください。 [データベース] フィールドは **pmaintenancedb**のままにします。 画面に表示される警告メッセージは無視します。
+   * ポップアップ ウィンドウの **[サーバー]** と **[データベース]** を独自のサーバーとデータベースの名前に置き換えて、 **[OK]** をクリックします。 サーバー名については、ポート 1433 (**YourSolutionName.database.windows.net 1433**) を指定していることを確認してください。 [データベース] フィールドは **pmaintenancedb** のままにします。 画面に表示される警告メッセージは無視します。
    * 次のポップアップ ウィンドウで、左側のウィンドウに 2 つのオプション ( **[Windows]** と **[データベース]** ) が表示されます。 **[データベース]** をクリックし、 **[ユーザー名]** と **[パスワード]** (初めてソリューションをデプロイし、Azure SQL Database を作成したときに入力したユーザー名とパスワード) を入力します。 ***[これらの設定の適用対象レベルの選択]*** で、データベース レベル オプションをオンにします。 次に **[接続]** をクリックします。
    * 2 番目のテーブル **[PMResult]** をクリックし、右側の **[クエリの設定]** パネルの **[適用したステップ]** の **[ソース]** の横にある ![ナビゲーション アイコン](./media/predictive-maintenance-technical-guide/icon-navigation.png) をクリックし、上記の手順と同様に、サーバーとデータベース名を更新して、[OK] をクリックします。
    * 前のページに戻ったら、ウィンドウを閉じます。 メッセージが表示されるので、 **[適用]** をクリックします。 最後に、 **[保存]** ボタンをクリックして、変更を保存します。 これで、Power BI ファイルは、サーバーへの接続を確立しました。 視覚エフェクトが空の場合、凡例の右上隅にある消しゴム アイコンをクリックして、視覚エフェクトの選択をクリアし、すべてのデータを表示します。 更新ボタンを使用して、視覚エフェクトに新しいデータを反映させます。 最初、視覚エフェクトにはシード データのみ表示されます。データ ファクトリは 3 時間ごとに更新されるようにスケジュールされています。 3 時間後、データを更新すると、視覚エフェクトに反映された新しい予測が表示されます。
-3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](https://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (または Office 365 アカウント) が必要です。
+3. (省略可能) コールド パス ダッシュボードを [Power BI オンライン](https://www.powerbi.com/)に公開します。 この手順では、Power BI アカウント (あるいは職場または学校アカウント) が必要です。
    
    * **[公開]** をクリックします。 数秒後、緑色のチェック マークの付いた 「Power BI への公開が成功しました」と表示するウィンドウが表示されます。 "Power BI で PredictiveMaintenanceAerospace.pbix を開く" の下のリンクをクリックします。 詳細な手順については、「 [Power BI Desktop からの発行](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)」を参照してください。
    * 新しいダッシュボードを作成するには、左側のウィンドウで **[ダッシュボード]** セクションの横の **[+]** 記号をクリックします。 この新しいダッシュボードの名前として、「Predictive Maintenance Demo」と入力します。
@@ -208,10 +208,10 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 1. Azure Stream Analytics (ASA) に Power BI 出力を追加します。
    
    * Azure Stream Analytics ジョブの出力を Power BI ダッシュボードとして設定するには、[Azure Stream Analytics と Power BI のストリーミング データをリアルタイムで視覚化する分析ダッシュボード](../../stream-analytics/stream-analytics-power-bi-dashboard.md)に関する記事の手順に従う必要があります。
-   * ASA クエリには、**aircraftmonitor**、**aircraftalert**、**flightsbyhour** の 3 つの出力があります。 [クエリ] タブをクリックすると、クエリを表示できます。これらの各テーブルに合わせ、ASA に出力を追加する必要があります。 最初の出力を追加するとき (**aircraftmonitor**)、**出力の別名**、**データセット名**、**テーブル名**が同じ (**aircraftmonitor**) であることを確認します。 この手順を繰り返し、**aircraftalert** と **flightsbyhour** の出力を追加します。 3 つすべての出力テーブルを追加し、ASA ジョブを開始すると、確認メッセージ ("Stream Analytics ジョブ maintenancesa02asapbi の開始に成功しました") が表示されます。
+   * ASA クエリには、**aircraftmonitor**、**aircraftalert**、**flightsbyhour** の 3 つの出力があります。 [クエリ] タブをクリックすると、クエリを表示できます。これらの各テーブルに合わせ、ASA に出力を追加する必要があります。 最初の出力を追加するとき (**aircraftmonitor**)、**出力の別名**、**データセット名**、**テーブル名** が同じ (**aircraftmonitor**) であることを確認します。 この手順を繰り返し、**aircraftalert** と **flightsbyhour** の出力を追加します。 3 つすべての出力テーブルを追加し、ASA ジョブを開始すると、確認メッセージ ("Stream Analytics ジョブ maintenancesa02asapbi の開始に成功しました") が表示されます。
 2. [Power BI オンライン](https://www.powerbi.com)
    
-   * [マイ ワークスペース] の左側のパネルにある [データセット] セクションには、***データセット***名 **aircraftmonitor**、**aircraftalert**、および **flightsbyhour** が表示されます。 これは、前の手順で Azure Stream Analytics からプッシュ送信したストリーミング データです。 データセット **flightsbyhour** は、その背後にある SQL クエリの性質により、ほかの 2 つのデータセットと同時に表示されない可能性があります。 ただし、1 時間後には表示されるはずです。
+   * [マイ ワークスペース] の左側のパネルにある [データセット] セクションには、***DATASET** _ 名 _*aircraftmonitor**、**aircraftalert**、および **flightsbyhour** が表示されます。 これは、前の手順で Azure Stream Analytics からプッシュ送信したストリーミング データです。 データセット **flightsbyhour** は、その背後にある SQL クエリの性質により、ほかの 2 つのデータセットと同時に表示されない可能性があります。 ただし、1 時間後には表示されるはずです。
    * ***[処理済み]*** ウィンドウが開き、画面の右側に表示されることを確認します。
 3. Power BI にデータが送信されていれば、ストリーミング データの視覚化を開始できます。 いくつかのホット パス視覚エフェクトがピン留めされているサンプル ダッシュボードを次に示します。 適切なデータセットに基づいて他のダッシュボード タイルを作成できます。 データ ジェネレーターの実行時間に応じて、視覚エフェクトの番号が異なる場合があります。
 
@@ -235,4 +235,3 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 
 * [Microsoft Azure 料金計算ツール (オンライン)](https://azure.microsoft.com/pricing/calculator/)
 * [Microsoft Azure 料金計算ツール (デスクトップ)](https://www.microsoft.com/download/details.aspx?id=43376)
-

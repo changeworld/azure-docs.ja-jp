@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233212"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91854649"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>Azure DevOps Starter を使用して GitHub リポジトリ用の CI/CD パイプラインを作成する
 
@@ -118,9 +118,9 @@ Azure DevOps Starter によって、Azure Pipelines に CI/CD パイプライン
 CI/CD パイプラインの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 アプリケーションの監視の詳細については、次のページを参照してください。
   
  > [!div class="nextstepaction"]
- > [Azure Monitor とは](https://docs.microsoft.com/azure/azure-monitor/overview)
+ > [Azure Monitor とは](../azure-monitor/overview.md)

@@ -9,6 +9,8 @@
   items:
     - name: カスタム リソース プロバイダーの作成
       href: create-custom-provider.md
+    - name: カスタム リソース プロバイダーの作成 - Azure PowerShell
+      href: create-custom-provider-quickstart-powershell.md
 - name: チュートリアル
   items:
     - name: カスタム プロバイダーの概要
@@ -45,6 +47,8 @@
       href: /rest/api/customproviders/
     - name: Azure CLI
       href: /cli/azure/ext/custom-providers/custom-providers/
+    - name: Azure PowerShell
+      href: /powershell/module/Az.CustomProviders/
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 05103052308b6dbf1314348f7d45abc9cba79827
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "84706442"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92788623"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Managed Instance のセキュリティ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -74,7 +74,7 @@ SQL Managed Instance に接続する例については、以下の記事を参�
 
 1. [SQL Server Management Studio](point-to-site-p2s-configure.md#connect-with-ssms) を利用し、標準の SQL ログイン アカウント (Azure AD 以外) である `sysadmin` を使用するか、SQL Managed Instance 用の Azure AD 管理者を使用して、マネージド インスタンスにログインします。
 
-2. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
+2. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
 3. クエリ ウィンドウで、次の構文を使用して、ローカルの Azure AD アカウント用のログインを作成します。
 
@@ -104,7 +104,7 @@ SQL Managed Instance に接続する例については、以下の記事を参�
     GO
     ```
 
-    ![native-login.png](./media/aad-security-configure-tutorial/native-login.png)
+    ![SSMS オブジェクト エクスプローラーの [結果] タブのスクリーンショット。新しく追加されたログインの name、principal_id、sid、type、および type_desc が表示されています。](./media/aad-security-configure-tutorial/native-login.png)
 
 詳細については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
 
@@ -127,7 +127,7 @@ SQL Managed Instance に接続する例については、以下の記事を参�
 
 1. マネージド インスタンスにもう一度ログインするか、Azure AD 管理者または SQL プリンシパルである `sysadmin` で既存の接続を使用します。
 
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. 次の T-SQL 構文を使用して、Azure AD サーバー プリンシパル (ログイン) に `sysadmin` サーバー ロールを付与します。
 
@@ -145,7 +145,7 @@ SQL Managed Instance に接続する例については、以下の記事を参�
 
 ## <a name="create-additional-azure-ad-server-principals-logins-using-ssms"></a>SSMS を使用して追加の Azure AD サーバー プリンシパル (ログイン) を作成する
 
-Azure AD サーバー プリンシパル (ログイン) が作成され、`sysadmin` の特権が付与されると、そのログインは、**CREATE LOGIN** で **FROM EXTERNAL PROVIDER** 句を使用して追加のログインを作成できます。
+Azure AD サーバー プリンシパル (ログイン) が作成され、`sysadmin` の特権が付与されると、そのログインは、 **CREATE LOGIN** で **FROM EXTERNAL PROVIDER** 句を使用して追加のログインを作成できます。
 
 1. SQL Server Management Studio を使用して、Azure AD サーバー プリンシパル (ログイン) でマネージド インスタンスに接続します。 SQL Managed Instance のホスト名を入力します。 SSMS での認証の場合、Azure AD アカウントを使ってログインするときに選択できるオプションは 3 つあります。
 
@@ -153,15 +153,15 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
    - Active Directory - パスワード
    - Active Directory - 統合 </br>
 
-     ![ssms-login-prompt.png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
+     ![SSMS の [サーバーへの接続] ダイアログのスクリーンショット。[認証] ドロップダウンで [Active Directory - MFA サポートで汎用] が選択されています。](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
      詳細については、[ユニバーサル認証 (Multi-Factor Authentication 対応の SSMS サポート)](../database/authentication-mfa-ssms-overview.md) に関するページを参照してください。
 
 1. **[Active Directory - MFA サポートで汎用]** を選択します。 これで、Multi-Factor Authentication のログイン ウィンドウが表示されます。 Azure AD のパスワードを使ってサインインします。
 
-    ![mfa-login-prompt.png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
+    ![Multi-Factor Authentication のログイン ウィンドウのスクリーンショット。[パスワードの入力] フィールドにカーソルがあります。](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
-1. SSMS の**オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
+1. SSMS の **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 1. クエリ ウィンドウで、次の構文を使用して、別の Azure AD アカウント用のログインを作成します。
 
     ```sql
@@ -183,8 +183,8 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
     ```
 
 1. [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) 構文を使用して、マネージド インスタンスにデータベースを作成します。 このデータベースは、次のセクションでユーザー ログインをテストする際に使用されます。
-    1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
-    1. クエリ ウィンドウで、次の構文を使用して、**MyMITestDB** という名前のデータベースを作成します。
+    1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
+    1. クエリ ウィンドウで、次の構文を使用して、 **MyMITestDB** という名前のデータベースを作成します。
 
         ```sql
         CREATE DATABASE MyMITestDB;
@@ -195,7 +195,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 1. SQL Server Management Studio で新しいクエリ ウィンドウを開きます。
 
-    この例では、_mygroup_ というグループが Azure AD に存在することを前提としています。 たとえば、次のコマンドを実行します。
+    この例では、 _mygroup_ というグループが Azure AD に存在することを前提としています。 たとえば、次のコマンドを実行します。
 
     ```sql
     USE master
@@ -205,7 +205,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
     ```
 
 1. テストとして、新しく作成したログインまたはグループを使用してマネージド インスタンスにログインします。 マネージド インスタンスへの新しい接続を開き、認証時に新しいログインを使用します。
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、新しい接続に **[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、新しい接続に **[新しいクエリ]** を選択します。
 1. 次のコマンドを実行して、新しく作成した Azure AD サーバー プリンシパル (ログイン) のサーバー アクセス許可を確認します。
 
       ```sql
@@ -214,7 +214,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
       ```
 
 > [!NOTE]
-> Azure AD のゲスト ユーザーは、Azure AD グループの一員として追加されている場合のみ、SQL Managed Instance のログインがサポートされます。 Azure AD のゲスト ユーザーは、マネージド インスタンスが属している Azure AD インスタンスに別の Azure AD インスタンスから招待されるアカウントです。 たとえば、joe@contoso.com (Azure AD アカウント) または steve@outlook.com (Microsoft アカウント) は、Azure AD aadsqlmi インスタンス内のグループに追加できます。 ユーザーがグループに追加されると、**CREATE LOGIN** 構文を使用して、そのグループの SQL Managed Instance **master** データベースにログインを作成できます。 このグループのメンバーであるゲスト ユーザーは、現在のログイン (joe@contoso.com や steve@outlook.com など) を使用してマネージド インスタンスに接続できます。
+> Azure AD のゲスト ユーザーは、Azure AD グループの一員として追加されている場合のみ、SQL Managed Instance のログインがサポートされます。 Azure AD のゲスト ユーザーは、マネージド インスタンスが属している Azure AD インスタンスに別の Azure AD インスタンスから招待されるアカウントです。 たとえば、joe@contoso.com (Azure AD アカウント) または steve@outlook.com (Microsoft アカウント) は、Azure AD aadsqlmi インスタンス内のグループに追加できます。 ユーザーがグループに追加されると、 **CREATE LOGIN** 構文を使用して、そのグループの SQL Managed Instance **master** データベースにログインを作成できます。 このグループのメンバーであるゲスト ユーザーは、現在のログイン (joe@contoso.com や steve@outlook.com など) を使用してマネージド インスタンスに接続できます。
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login"></a>Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成する
 
@@ -222,14 +222,14 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 **MyMITestDB** という名前のデータベースと、既定のアクセス許可のみを持つログインを作成したので、次の手順では、そのログインからユーザーを作成します。 この時点では、ログインはマネージド インスタンスに接続し、すべてのデータベースを表示できますが、そのデータベースを操作することはできません。 既定のアクセス許可を持つ Azure AD アカウントでサインインし、新しく作成したデータベースを展開しようとすると、次のエラーが表示されます。
 
-![ssms-db-not-accessible.png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
+![SSMS オブジェクト エクスプローラー ウィンドウのエラー メッセージのスクリーンショット。"The database MyMITestDB is not accessible. (ObjectExplorer) (データベース MyMITestDB にアクセスできません。(ObjectExplorer))" と表示されています。](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
 データベースのアクセス許可の付与の詳細については、「[データベース エンジンの権限の概要](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions)」を参照してください。
 
 ### <a name="create-an-azure-ad-user-and-create-a-sample-table"></a>Azure AD ユーザーを作成してサンプル テーブルを作成する
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 1. クエリ ウィンドウで、次の構文を使用して、Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成します。
 
     ```sql
@@ -295,7 +295,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
 
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. 次の T-SQL 構文を使用して、Azure AD ユーザーに `db_datareader` データベース ロールを付与します。
 
@@ -324,9 +324,9 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
     ```
 
 1. `db_datareader` ロールに追加されたユーザーを使用して、マネージド インスタンスへの新しい接続を作成します。
-1. **オブジェクト エクスプローラー**でデータベースを展開してテーブルを表示します。
+1. **オブジェクト エクスプローラー** でデータベースを展開してテーブルを表示します。
 
-    ![ssms-test-table.png](./media/aad-security-configure-tutorial/ssms-test-table.png)
+    ![MyMITestDB の [テーブル] のフォルダー構造を示す SSMS のオブジェクト エクスプローラーのスクリーンショット。 dbo.TestTable folder フォルダーが強調表示されています。](./media/aad-security-configure-tutorial/ssms-test-table.png)
 
 1. 新しいクエリ ウィンドウを開き、次の SELECT ステートメントを実行します。
 
@@ -337,7 +337,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
     テーブルのデータを確認できますか。 列が返されていることがわかるはずです。
 
-    ![ssms-test-table-query.png](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
+    ![SSMS のオブジェクト エクスプローラーのスクリーンショット。テーブルの列ヘッダー、AccountNum、City、Name、State が表示されています。](./media/aad-security-configure-tutorial/ssms-test-table-query.png)
 
 ## <a name="impersonate-azure-ad-server-level-principals-logins"></a>Azure AD サーバーレベル プリンシパル (ログイン) を偽装する
 
@@ -347,7 +347,7 @@ SQL Managed Instance では、Azure AD サーバーレベル プリンシパル 
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
 
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
+1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. クエリ ウィンドウで、次のコマンドを使用して新しいストアド プロシージャを作成します。
 
@@ -388,8 +388,8 @@ SQL Managed Instance では、Azure AD サーバーレベル プリンシパル 
 データベース間クエリは、Azure AD サーバー プリンシパル (ログイン) を使用する Azure AD アカウントのためにサポートされています。 Azure AD グループでデータベース間クエリをテストするには、データベースとテーブルをもう 1 つ作成する必要があります。 データベースとテーブルが既にもう 1 つ存在する場合は、作成をスキップできます。
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
-1. **オブジェクト エクスプローラー**で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
-1. クエリ ウィンドウで、次のコマンドを使用して、**MyMITestDB2** という名前のデータベースと **TestTable2** という名前のテーブルを作成します。
+1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
+1. クエリ ウィンドウで、次のコマンドを使用して、 **MyMITestDB2** という名前のデータベースと **TestTable2** という名前のテーブルを作成します。
 
     ```sql
     CREATE DATABASE MyMITestDB2;
@@ -447,7 +447,7 @@ SQL Managed Instance では、Azure AD サーバーレベル プリンシパル 
 - [脅威の検出](threat-detection-configure.md)
 - [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)
 - [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security)
-- [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
+- [透過的なデータ暗号化 (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="sql-managed-instance-capabilities"></a>SQL Managed Instance の機能
 

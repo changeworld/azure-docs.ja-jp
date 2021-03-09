@@ -1,22 +1,17 @@
 ---
 title: コピー アクティビティを監視する
 description: Azure Data Factory でのコピー アクティビティの実行を監視する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 58860e404dff3030e51ff2977eaee081a15247f7
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036370"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388296"
 ---
 # <a name="monitor-copy-activity"></a>コピー アクティビティを監視する
 
@@ -28,9 +23,9 @@ ms.locfileid: "88036370"
 
 Azure Data Factory でパイプラインを作成して公開した後、それをトリガーに関連付けたり、アドホック実行を手動で開始したりできます。 Azure Data Factory ユーザー エクスペリエンスで、すべてのパイプラインの実行をネイティブに監視できます。 Azure Data Factory の監視の全般については、「[Azure Data Factory を視覚的に監視する](monitor-visually.md)」を参照してください。
 
-コピー アクティビティの実行を監視するには、お使いのデータ ファクトリの **[作成と監視]** UI に移動します。 **[監視]** タブに表示されるパイプライン実行の一覧で、**パイプライン名**のリンクをクリックして、パイプライン実行でのアクティビティの実行の一覧にアクセスします。
+コピー アクティビティの実行を監視するには、お使いのデータ ファクトリの **[作成と監視]** UI に移動します。 **[監視]** タブに表示されるパイプライン実行の一覧で、**パイプライン名** のリンクをクリックして、パイプライン実行でのアクティビティの実行の一覧にアクセスします。
 
-![コピー アクティビティの実行を監視する](./media/copy-activity-overview/monitor-pipeline-run.png)
+![パイプラインの実行の監視](./media/copy-activity-overview/monitor-pipeline-run.png)
 
 このレベルでは、コピー アクティビティの入力、出力、エラー (コピー アクティビティの実行が失敗した場合) と、実行時間や状態などの統計情報へのリンクが表示されます。 コピー アクティビティ名の横にある **[詳細]** ボタン (眼鏡) をクリックすると、コピー アクティビティの実行に関する詳細が表示されます。 
 
@@ -40,7 +35,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 
 シナリオによっては、Data Factory でコピー アクティビティを実行すると、例に示すように、コピー アクティビティ監視ページの上部に **[Performance tuning tips]\(パフォーマンス チューニングのヒント\)** が表示されます。 このヒントでは、この特定のコピーの実行について ADF によって特定されたボトルネックと、コピーのスループットを向上させるために変更するものの指摘が示されます。 詳しくは、[自動パフォーマンス チューニングのヒント](copy-activity-performance-troubleshooting.md#performance-tuning-tips)に関する記事を参照してください。
 
-下部の**実行の詳細と実行時間**では、コピー アクティビティで行われた主要な手順が示されます。これは、コピーのパフォーマンスのトラブルシューティングに特に役立ちます。 コピー実行のボトルネックは、実行時間が最も長いものです。 各ステージの内容と詳細なトラブルシューティングのガイダンスについては、[「コピー アクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。
+下部の **実行の詳細と実行時間** では、コピー アクティビティで行われた主要な手順が示されます。これは、コピーのパフォーマンスのトラブルシューティングに特に役立ちます。 コピー実行のボトルネックは、実行時間が最も長いものです。 各ステージの内容と詳細なトラブルシューティングのガイダンスについては、[「コピー アクティビティのパフォーマンスのトラブルシューティング](copy-activity-performance-troubleshooting.md)」を参照してください。
 
 **例:Amazon S3 から Azure Data Lake Storage Gen2 にコピーする**
 
@@ -67,7 +62,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | throughput | データ転送率。 | 浮動小数点数 (KB/秒単位) |
 | sourcePeakConnections | コピー アクティビティの実行中にソース データ ストアに対して確立されたコンカレント接続の最大数。 | Int32 値 (単位なし) |
 | sinkPeakConnections| コピー アクティビティの実行中にシンク データ ストアに対して確立されたコンカレント接続の最大数。| Int32 値 (単位なし) |
-| sqlDwPolyBase | データを SQL Data Warehouse にコピーするときに PolyBase を使用するかどうかを指定します。 | Boolean |
+| sqlDwPolyBase | データを Azure Synapse Analytics にコピーするときに PolyBase を使用するかどうかを指定します。 | Boolean |
 | redshiftUnload | Redshift からデータをコピーするときに UNLOAD を使用するかどうかを指定します。 | Boolean |
 | hdfsDistcp | HDFS からデータをコピーするときに DistCp を使用するかどうかを指定します。 | Boolean |
 | effectiveIntegrationRuntime | アクティビティの実行を強化するために使用される統合ランタイム (IR) またはランタイム (`<IR name> (<region if it's Azure IR>)` 形式)。 | Text (文字列) |

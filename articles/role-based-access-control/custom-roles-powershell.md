@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 540da4103c3f7800521407441d645070e1e3e7ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 799475db567c88f067192d027589e9185ee1782b
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84790213"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369176"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-powershell"></a>Azure PowerShell を使用して Azure カスタム ロールを作成または更新する
 
@@ -63,7 +63,7 @@ API Management Service Contributor                   False
 次の例では、選択したサブスクリプションで割り当て可能なカスタム ロールだけが一覧表示されます。
 
 ```azurepowershell
-Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
+Get-AzRoleDefinition -Custom | FT Name, IsCustom
 ```
 
 ```Example
@@ -163,7 +163,7 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 
 PowerShell を使ってカスタム ロールを作成する場合は、[組み込みのロール](built-in-roles.md)を出発点として使うことも、ゼロから始めることもできます。 このセクションの最初の例では、組み込みのロールから始めて、さらに多くのアクセス許可を持つようにカスタマイズします。 その属性を編集し、必要に応じて `Actions`、`NotActions`、または `AssignableScopes`を追加して、変更内容を新しいロールとして保存します。
 
-以下の例では、[仮想マシンの共同作業者](built-in-roles.md#virtual-machine-contributor)組み込みロールを土台として、*仮想マシン オペレーター*というカスタム ロールを作成しています。 この新しいロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。 カスタム ロールは 2 つのサブスクリプションで使用できます。
+以下の例では、[仮想マシンの共同作業者](built-in-roles.md#virtual-machine-contributor)組み込みロールを土台として、*仮想マシン オペレーター* というカスタム ロールを作成しています。 この新しいロールは、*Microsoft.Compute*、*Microsoft.Storage*、*Microsoft.Network* リソース プロバイダーのすべての読み取り操作を許可し、仮想マシンの起動、再起動、監視を許可します。 カスタム ロールは 2 つのサブスクリプションで使用できます。
 
 ```azurepowershell
 $role = Get-AzRoleDefinition "Virtual Machine Contributor"
@@ -403,4 +403,4 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 - [チュートリアル:Azure PowerShell を使用して Azure カスタム ロールを作成する](tutorial-custom-role-powershell.md)
 - [Azure カスタム ロール](custom-roles.md)
-- [Azure Resource Manager のリソース プロバイダー操作](resource-provider-operations.md)
+- [Azure リソース プロバイダーの操作](resource-provider-operations.md)

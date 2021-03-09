@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fe328de9460efb743037f697c7f564e2c628278d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bc2b72779460c2b7e3999204ace50ca57388b9a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388937"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89594188"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework は、ユーザー体験における RESTful API と統合することができます。 この記事では、[RESTful 技術プロファイル](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster) を使用して RESTful サービスと対話するユーザー体験を作成する方法について説明します。
+Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework は、ユーザー体験における RESTful API と統合することができます。 この記事では、[RESTful 技術プロファイル](restful-technical-profile.md) を使用して RESTful サービスと対話するユーザー体験を作成する方法について説明します。
 
 Azure AD B2C を使用すると、自分の RESTful サービスを呼び出すことで、独自のビジネス ロジックをユーザー体験に追加できます。 Identity Experience Framework は、RESTful サービスからデータを送受信して、要求を交換できます。 たとえば、次のように操作できます。
 
@@ -125,9 +125,9 @@ RESTful 要求プロバイダーが解析する出力要求は、次のような
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts.0.person.name" />
-  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts.0.person.emails.0.email" />
-  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts.0.person.loyaltyNumber" />
+  <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="contacts[0].person.name" />
+  <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="contacts[0].person.emails[0].email" />
+  <OutputClaim ClaimTypeReferenceId="loyaltyNumber" PartnerClaimType="contacts[0].person.loyaltyNumber" />
 </OutputClaims>
 ```
 

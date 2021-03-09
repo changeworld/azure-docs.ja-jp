@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40f4845ecc21d05ca5e8394dccba080f8a1f8936
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066390"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049713"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Azure Logic Apps で 1 つまたは複数の統合サービス環境に対して単一の IP アドレスを設定する
 
@@ -76,7 +76,7 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
    | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **名前** | <*ネットワーク ルール コレクション名*> | ネットワーク ルール コレクションの名前 |
-   | **優先順位** | <*優先順位のレベル*> | ルール コレクションを実行するために使用する優先順位。 詳細については、「[Azure Firewall の概念をいくつか教えてください。](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts)」を参照してください。 |
+   | **優先順位** | <*優先順位のレベル*> | ルール コレクションを実行するために使用する優先順位。 詳細については、「[Azure Firewall の概念をいくつか教えてください。](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)」を参照してください。 |
    | **操作** | **許可** | このルールのために実行するアクションの種類 |
    |||
 
@@ -95,7 +95,7 @@ Azure Logic Apps を使用する場合は、[Azure 仮想ネットワーク](../
 
    * [ネットワーク ルールを構成する](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Azure Firewall ルール処理ロジック](../firewall/rule-processing.md#network-rules-and-applications-rules)
-   * [Azure Firewall に関する FAQ](../firewall/firewall-faq.md)
+   * [Azure Firewall に関する FAQ](../firewall/firewall-faq.yml)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
    * [Azure CLI: az network firewall network-rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 

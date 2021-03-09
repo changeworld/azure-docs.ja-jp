@@ -4,19 +4,19 @@ description: この記事では、Azure portal を使用した Azure Front の�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 02/25/2020
+ms.date: 11/10/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 6ed382e88700e4ecd7f8de20a2c8da7ed3c13566
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c2c84b508ee86ebdd82dbcc7040106142187c506
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921794"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563462"
 ---
 # <a name="web-application-firewall-waf-with-front-door-service-exclusion-lists"></a>Front Door Service の除外リストを使用する Web アプリケーション ファイアウォール (WAF) 
 
-アプリケーションで許可される要求が Web アプリケーション ファイアウォール (WAF) によってブロックされる場合があります。 たとえば、Active Directory によって認証に使用されるトークンが挿入されます。 これらのトークンに、WAF ルールに基づいて誤検知をトリガーする場合がある特殊文字が含まれる可能性があります。 WAF の除外リストを使用すると、WAF の評価から特定の要求属性を省略できます。  除外リストは [PowserShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0)、[Azure CLI](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add)、[Rest API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)、または Azure portal を使用して構成できます。 次の例では、Azure portal での構成を示します。 
+アプリケーションで許可される要求が Web アプリケーション ファイアウォール (WAF) によってブロックされる場合があります。 たとえば、Active Directory によって認証に使用されるトークンが挿入されます。 これらのトークンに、WAF ルールに基づいて誤検知をトリガーする場合がある特殊文字が含まれる可能性があります。 WAF の除外リストを使用すると、WAF の評価から特定の要求属性を省略できます。  除外リストは [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-3.5.0)、[Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-managed-rules-exclusion-add)、[Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)、または Azure portal を使用して構成できます。 次の例では、Azure portal での構成を示します。 
 ## <a name="configure-exclusion-lists-using-the-azure-portal"></a>Azure portal を使用して除外リストを構成する
 WAF ポータルの **[管理されているルール]** から **[除外の管理]** にアクセスできます。
 
@@ -44,8 +44,35 @@ WAF ポータルの **[管理されているルール]** から **[除外の管�
 
 ヘッダーと cookie の名前では大文字と小文字は区別されません。
 
-管理されているルール セット内のすべてのルール、特定のルール グループのルール、または前の例に示したように単一のルールに除外リストを適用できます。 
+ヘッダー値、Cookie 値、POST 引数値、またはクエリの引数値で、一部のルールについて擬陽性が発生する場合は、要求の該当する部分をルールの考慮事項から除外できます。
 
-## <a name="next-steps"></a>次のステップ
+
+|WAF ログの matchVariableName  |ポータルでのルール除外条件  |
+|---------|---------|
+|CookieValue:SOME_NAME        |要求の Cookie 名が SOME_NAME と等しい|
+|HeaderValue:SOME_NAME        |要求のヘッダー名が SOME_NAME と等しい|
+|PostParamValue:SOME_NAME     |要求本文の POST 引数名が SOME_NAME と等しい|
+|QueryParamValue:SOME_NAME    |クエリ文字列の引数名が SOME_NAME と等しい|
+
+
+WAF ログでは現在、上記の matchVariableName のルール除外のみがサポートされています。 その他の matchVariableName については、擬陽性が発生するルールを無効にするか、それらの要求を明示的に許可するカスタム ルールを作成する必要があります。 特に、matchVariableName が CookieName、HeaderName、PostParamName、または QueryParamName である場合は、名前自体によってルールがトリガーされています。 現時点では、これらの matchVariableName でルールの除外はサポートされていません。
+
+
+要求本文の *FOO* という POST 引数を除外した場合、どのルールでも PostParamValue:FOO が WAF ログに matchVariableName として表示されません。 しかし、POST パラメーターの値は InitialBodyContents の一部であるため、POST パラメーター FOO の値と一致する matchVariableName InitialBodyContents を含むルールが表示される場合があります。
+
+管理されているルール セット内のすべてのルール、特定のルール グループのルール、または前の例に示したように単一のルールに除外リストを適用できます。
+
+## <a name="define-exclusion-based-on-web-application-firewall-logs"></a>Web アプリケーション ファイアウォールのログに基づいて除外を定義する
+ 「[Azure Web アプリケーション ファイアウォールの監視とログ記録](waf-front-door-monitor.md)」には、ブロックされた要求に一致したものの詳細が示されています。 ヘッダー値、Cookie 値、POST 引数値、またはクエリの引数値で、一部のルールについて擬陽性が発生する場合は、要求の該当する部分をルールの適用対象から除外できます。 次の表に、WAF ログの値と対応する除外条件の例を示します。
+
+|WAF ログの matchVariableName    |ポータルでのルール除外条件|
+|--------|------|
+|CookieValue:SOME_NAME  |要求の Cookie 名が SOME_NAME と等しい|
+|HeaderValue:SOME_NAME  |要求のヘッダー名が SOME_NAME と等しい|
+|PostParamValue:SOME_NAME|  要求本文の POST 引数名が SOME_NAME と等しい|
+|QueryParamValue:SOME_NAME| クエリ文字列の引数名が SOME_NAME と等しい|
+
+
+## <a name="next-steps"></a>次の手順
 
 WAF 設定を構成したら、WAF ログを表示する方法を確認します。 詳細については、[Front Door の診断](../afds/waf-front-door-monitor.md)に関するページを参照してください。

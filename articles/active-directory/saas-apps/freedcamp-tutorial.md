@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 19378251408d55868ed844a5505ae48ece55dc3b
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551032"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "92451497"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>チュートリアル:Freedcamp と Azure Active Directory の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88551032"
 * ユーザーが自分の Azure AD アカウントを使用して Freedcamp に自動的にサインインできます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Freedcamp では、**SP Initiated SSO と IDP Initiated SSO** をサポートしています。
+このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Freedcamp では、 **SP Initiated SSO と IDP Initiated SSO** をサポートしています。
 
 ## <a name="adding-freedcamp-from-the-gallery"></a>ギャラリーからの Freedcamp の追加
 
@@ -47,8 +47,8 @@ Freedcamp を Azure AD に統合するには、管理している SaaS アプリ
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで検索ボックスに「**Freedcamp**」と入力します。
-1. 結果パネルから「**Freedcamp**」を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
+1. **[ギャラリーから追加する]** セクションで検索ボックスに「 **Freedcamp** 」と入力します。
+1. 結果パネルから「 **Freedcamp** 」を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -96,7 +96,7 @@ Freedcamp で Azure AD SSO を構成してテストするには、次の構成�
 
 ### <a name="configure-freedcamp"></a>Freedcamp の構成
 
-1. Freedcamp 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+1. Freedcamp 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
     ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
 
@@ -108,17 +108,17 @@ Freedcamp で Azure AD SSO を構成してテストするには、次の構成�
 
 4. ページの右上隅の **[プロファイル]** をクリックし、 **[マイ アカウント]** に移動します。
 
-    ![Freedcamp の構成](./media/freedcamp-tutorial/config01.png)
+    ![選択されている [プロファイル] と [マイ アカウント] 示すスクリーンショット。](./media/freedcamp-tutorial/config01.png)
 
 5. メニュー バーの左の **[SSO]** をクリックし、 **[Your SSO connections]\(お使いの SSO 接続\)** ページで次の手順を実行します。
 
-    ![Freedcamp の構成](./media/freedcamp-tutorial/config02.png)
+    ![左側のメニュー バーで選択されている [S S O] と、値が入力され、[送信] ボタンが選択されている [Your S S O connections]\(お使いの S S O 接続\) ページを示すスクリーンショット。](./media/freedcamp-tutorial/config02.png)
 
     a. **[タイトル]** テキスト ボックスに、タイトルを入力します。
 
     b. **[エンティティ ID]** ボックスに、Azure portal からコピーした **Azure AD ID** の値を貼り付けます。
 
-    c. **[ログイン URL]** テキストボックスに、Azure portal からコピーした**ログイン URL** の値を貼り付けます。
+    c. **[ログイン URL]** テキストボックスに、Azure portal からコピーした **ログイン URL** の値を貼り付けます。
 
     d. Base64 でエンコードされた証明書をメモ帳で開き、その内容をコピーして **[証明書]** テキスト ボックスに貼り付けます。
 
@@ -162,13 +162,13 @@ Azure AD ユーザーが Freedcamp にサインインできるようにするに
 
 1. 別の Web ブラウザー ウィンドウで、Freedcamp にセキュリティ管理者としてサインインします。
 
-2. ページの右上隅の **[プロファイル]** をクリックし、 **[Manage System]\(システムの管理\)** に移動します。
+2. ページの右上隅の **[Profile]\(プロファイル\)** をクリックし、 **[Manage System]\(システムの管理\)** に移動します。
 
     ![Freedcamp の構成](./media/freedcamp-tutorial/config03.png)
 
 3. [Manage System]\(システムの管理\) ページの右側で、次の手順を実行します。
 
-    ![Freedcamp の構成](./media/freedcamp-tutorial/config04.png)
+    ![選択されている [Add or invite Users]\(ユーザーの追加または招待\) ボタン、強調表示されている [Email]\(電子メール\) フィールド、選択されている [Add User]\(ユーザーの追加\) ボタン示すスクリーンショット。](./media/freedcamp-tutorial/config04.png)
 
     a. **[Add or invite Users]** \(ユーザーの追加または招待\) をクリックします。
 
@@ -178,12 +178,12 @@ Azure AD ユーザーが Freedcamp にサインインできるようにするに
 
 ### <a name="test-sso"></a>SSO のテスト
 
-アクセス パネルで [Freedcamp] タイルを選択すると、SSO を設定した Freedcamp に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Freedcamp] タイルを選択すると、SSO を設定した Freedcamp に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

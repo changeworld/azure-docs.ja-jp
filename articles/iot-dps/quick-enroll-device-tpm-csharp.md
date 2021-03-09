@@ -1,20 +1,20 @@
 ---
-title: C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する
+title: クイックスタート - C# を使用して TPM デバイスを Azure Device Provisioning Service に登録する
 description: クイックスタート - C# Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service (DPS) に登録します。 このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/08/2019
+ms.date: 09/28/2020
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 6176ff91029817e6891f0ee1e043cc3a827c2d6c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 14f17c6716fe98a11d03e8d1021bcdb1058fe671
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88999055"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968113"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>クイック スタート:C# サービス SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
@@ -47,7 +47,7 @@ ms.locfileid: "88999055"
 
 ## <a name="create-the-individual-enrollment-sample"></a>個々の登録サンプルを作成する
 
-このセクションでは、TPM デバイスの個々の登録をご利用のプロビジョニング サービスに追加する .NET Core コンソール アプリを作成する方法について説明します。 これらの手順を一部変更して実行し、個々の登録を追加する [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) コンソール アプリを作成することもできます。 IoT Core での開発の詳細については、[Windows IoT Core の開発者ドキュメント](https://docs.microsoft.com/windows/iot-core/)に関するページを参照してください。
+このセクションでは、TPM デバイスの個々の登録をご利用のプロビジョニング サービスに追加する .NET Core コンソール アプリを作成する方法について説明します。 これらの手順を一部変更して実行し、個々の登録を追加する [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) コンソール アプリを作成することもできます。 IoT Core での開発の詳細については、[Windows IoT Core の開発者ドキュメント](/windows/iot-core/)に関するページを参照してください。
 
 1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。 **[新しいプロジェクトの作成]** で、C# 用の **[コンソールアプリ (.NET Cor)]** プロジェクト テンプレートを選択し、 **[次へ]** を選択します。
 
@@ -128,12 +128,15 @@ ms.locfileid: "88999055"
    }
    ```
 
-1. 最後に、`Main` メソッドの本体を次の行に置き換えます。
+1. 最後に、`Main` メソッドを次の行に置き換えます。
 
    ```csharp
-   RunSample().GetAwaiter().GetResult();
-   Console.WriteLine("\nHit <Enter> to exit ...");
-   Console.ReadLine();
+    static async Task Main(string[] args)
+    {
+        await RunSample();
+        Console.WriteLine("\nHit <Enter> to exit ...");
+        Console.ReadLine();
+    }
    ```
 
 1. ソリューションをビルドします。

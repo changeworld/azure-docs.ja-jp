@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 2daa88d258e0bf761d9afce48b94e6cd6ff2fb95
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 9a5c5f9a4033b70a664071d6077a69f38c905093
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981437"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452222"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 の使用に関するベスト プラクティス
 
@@ -33,7 +33,7 @@ Azure Data Lake Storage Gen1 には、POSIX アクセス制御と Azure Active D
 
 Data Lake Storage Gen1 でビッグデータを取り扱うときは、ほとんどの場合、サービス プリンシパルを使用して、Azure HDInsight などのサービスによるデータの操作を許可します。 ただし、個々のユーザーがデータにアクセスする必要がある場合もあります。 このようなケースでは、個々のユーザーをフォルダーやファイルに割り当てる代わりに、Azure Active Directory の[セキュリティ グループ](data-lake-store-secure-data.md#create-security-groups-in-azure-active-directory)を使用する必要があります。
 
-一度セキュリティ グループにアクセス許可が割り当てられると、Data Lake Storage Gen1 を更新することなくグループへのユーザーの追加と削除を行うことができます。 また、これによって [32 のアクセスとデフォルトの ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) の制限を超えることがありません。この ACL には、あらゆるファイルとフォルダーに常に関連付けられる 4 つの POSIX スタイル ACL ([所有ユーザー](data-lake-store-access-control.md#the-owning-user)、[所有グループ](data-lake-store-access-control.md#the-owning-group)、[マスク](data-lake-store-access-control.md#the-mask)、その他) が含まれます。
+一度セキュリティ グループにアクセス許可が割り当てられると、Data Lake Storage Gen1 を更新することなくグループへのユーザーの追加と削除を行うことができます。 また、これによって [32 のアクセスとデフォルトの ACL](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-storage-limits) の制限を超えることがありません。この ACL には、あらゆるファイルとフォルダーに常に関連付けられる 4 つの POSIX スタイル ACL ([所有ユーザー](data-lake-store-access-control.md#the-owning-user)、[所有グループ](data-lake-store-access-control.md#the-owning-group)、[マスク](data-lake-store-access-control.md#the-mask)、その他) が含まれます。
 
 ### <a name="security-for-groups"></a>グループのセキュリティ
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen1 には、ファイアウォールを有効にして、ア
 
 ![Data Lake Storage Gen1 のファイアウォール設定](./media/data-lake-store-best-practices/data-lake-store-firewall-setting.png "Data Lake Storage Gen1 のファイアウォール設定")
 
-ファイアウォールを有効にすると、HDInsight、Data Factory、SQL Data Warehouse などの Azure のサービスのみが Data Lake Storage Gen1 にアクセスできます。 Azure で使用される内部ネットワーク アドレス変換により、Data Lake Storage Gen1 のファイアウォールでは IP により特定のサービスを制限することができません。これは、Azure 外のエンドポイント (オンプレミスなど) を制限することのみを意図しています。
+ファイアウォールを有効にすると、HDInsight、Data Factory、Azure Synapse Analytics などの Azure のサービスのみが Data Lake Storage Gen1 にアクセスできます。 Azure で使用される内部ネットワーク アドレス変換により、Data Lake Storage Gen1 のファイアウォールでは IP により特定のサービスを制限することができません。これは、Azure 外のエンドポイント (オンプレミスなど) を制限することのみを意図しています。
 
 ## <a name="performance-and-scale-considerations"></a>パフォーマンスとスケールに関する考慮事項
 
@@ -86,7 +86,7 @@ Hadoop から Data Lake Storage Gen1 に書き込むときのパフォーマン�
 
 ## <a name="resiliency-considerations"></a>回復性に関する考慮事項
 
-Data Lake Storage Gen1 などのクラウド サービスでシステムを構築するときは、可用性の要件と、サービスで中断が発生したときの対応について考慮する必要があります。 ある問題は特定のインスタンスに限定またはリージョン全域にわたる可能性があるため、両方について計画しておくことが重要です。 ワークロードの**目標復旧時間**と**目標復旧ポイント**の SLA によっては、高可用性とディザスター リカバリーのために多少は積極的な戦略を選択することをおすすめします。
+Data Lake Storage Gen1 などのクラウド サービスでシステムを構築するときは、可用性の要件と、サービスで中断が発生したときの対応について考慮する必要があります。 ある問題は特定のインスタンスに限定またはリージョン全域にわたる可能性があるため、両方について計画しておくことが重要です。 ワークロードの **目標復旧時間** と **目標復旧ポイント** の SLA によっては、高可用性とディザスター リカバリーのために多少は積極的な戦略を選択することをおすすめします。
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性とディザスター リカバリー
 
@@ -114,7 +114,7 @@ Distcp (distributed copy の省略形) は Hadoop に付属の Linux のコマ�
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Azure Data Factory を使用してコピー ジョブのスケジュールを設定する
 
-Azure Data Factory は**コピー アクティビティ**を使用してコピー ジョブのスケジュールを設定できるほか、**コピー ウィザード**で頻度を設定することもできます。 Azure Data Factory にはクラウド データ移動単位 (DMU) の制限があり、最終的に大規模なデータ ワークロードのスループット/計算に上限を設定します。 さらに、Azure Data Factory は現在、Data Lake Storage Gen1 アカウント間のデルタの更新は提供しておらず、Hive のテーブルなどのフォルダーをレプリケートするには、完全なコピーが必要になります。 Data Factory のコピーに関する詳細については、[コピー アクティビティのチューニング](../data-factory/copy-activity-performance.md)に関するガイドをご覧ください。
+Azure Data Factory は **コピー アクティビティ** を使用してコピー ジョブのスケジュールを設定できるほか、**コピー ウィザード** で頻度を設定することもできます。 Azure Data Factory にはクラウド データ移動単位 (DMU) の制限があり、最終的に大規模なデータ ワークロードのスループット/計算に上限を設定します。 さらに、Azure Data Factory は現在、Data Lake Storage Gen1 アカウント間のデルタの更新は提供しておらず、Hive のテーブルなどのフォルダーをレプリケートするには、完全なコピーが必要になります。 Data Factory のコピーに関する詳細については、[コピー アクティビティのチューニング](../data-factory/copy-activity-performance.md)に関するガイドをご覧ください。
 
 ### <a name="adlcopy"></a>AdlCopy
 

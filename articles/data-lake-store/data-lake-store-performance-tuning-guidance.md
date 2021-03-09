@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 - パフォーマンス チューニング
 description: 最高のパフォーマンスを得るには、読み取りと書き込みをできるだけ並列実行し、Azure Data Lake Storage Gen1 で利用できるスループットをすべて利用することが重要です。そのしくみについて説明します。
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: stewu
-ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.author: twooley
+ms.openlocfilehash: c7f16dd9ea450185893164e10928c7022d6ab5a6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190243"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724682"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 のパフォーマンス チューニング
 
@@ -25,7 +25,7 @@ Data Lake Storage Gen1 は、あらゆる分析シナリオで必要とされる
 
 ソース システムから Data Lake Storage Gen1 にデータを取り込む場合には、ソース ハードウェア、ソース ネットワーク ハードウェア、Data Lake Storage Gen1 へのネットワークの接続性がボトルネックとなる可能性があることを考慮することが重要です。
 
-![Data Lake Storage Gen1 のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
+![ソース ハードウェア、ソース ネットワーク ハードウェア、および Data Lake Storage Gen1 へのネットワーク接続がボトルネックとなる可能性があることを示す図。](./media/data-lake-store-performance-tuning-guidance/bottleneck.png)
 
 これらの要因がデータの移動に影響を与えないようにすることが重要です。
 
@@ -39,15 +39,15 @@ Data Lake Storage Gen1 は、あらゆる分析シナリオで必要とされる
 
 ### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>データ インジェスト ツールの最大並列化処理の構成
 
-ソース ハードウェアとネットワーク接続性のボトルネックに対処したら、次はデータ インジェスト ツールを構成します。 次の表に、一般的なインジェスト ツールの主要な設定の概要と、それらのパフォーマンス チューニングに関する詳細な記事を示します。 ご自身のシナリオで使用すべきツールの詳細については、この[記事](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-data-scenarios)をご覧ください。
+ソース ハードウェアとネットワーク接続性のボトルネックに対処したら、次はデータ インジェスト ツールを構成します。 次の表に、一般的なインジェスト ツールの主要な設定の概要と、それらのパフォーマンス チューニングに関する詳細な記事を示します。 ご自身のシナリオで使用すべきツールの詳細については、この[記事](./data-lake-store-data-scenarios.md)をご覧ください。
 
 | ツール          | 設定 | 詳細                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| Powershell       | PerFileThreadCount、ConcurrentFileCount | [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-powershell) |
-| AdlCopy    | Azure Data Lake Analytics ユニット | [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
-| DistCp            | -m (マッパー) | [リンク](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
+| Powershell       | PerFileThreadCount、ConcurrentFileCount | [リンク](./data-lake-store-get-started-powershell.md) |
+| AdlCopy    | Azure Data Lake Analytics ユニット | [リンク](./data-lake-store-copy-data-azure-storage-blob.md#performance-considerations-for-using-adlcopy)         |
+| DistCp            | -m (マッパー) | [リンク](./data-lake-store-copy-data-wasb-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies | [リンク](../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size、-m (マッパー) | [リンク](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | fs.azure.block.size、-m (マッパー) | [リンク](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>データ セットの構成
 
@@ -100,7 +100,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 **より多くのノードと大きなサイズの VM、またはそのどちらかで、クラスターを実行します。** 次の図に示すように、クラスターを大きくすると、より多くの YARN コンテナーを実行できます。
 
-![Data Lake Storage Gen1 のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/VM.png)
+![より多くの YARN コンテナーの使用を示す図。](./media/data-lake-store-performance-tuning-guidance/VM.png)
 
 **より大きなネットワーク帯域幅を備えた VM を使用します。** ネットワーク帯域幅が Data Lake Storage Gen1 のスループットよりも小さい場合、ネットワーク帯域幅の容量がボトルネックとなる可能性があります。 VM によって、ネットワーク帯域幅のサイズは異なります。 できる限り大きなネットワーク帯域幅を備えた VM タイプを選択してください。
 
@@ -108,7 +108,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 **より小さい YARN コンテナーを使用します。** 各 YARN コンテナーのサイズを小さくして、同じ容量のリソースを備えたコンテナーの数を増やします。
 
-![Data Lake Storage Gen1 のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
+![より小さい YARN コンテナーの使用を示す図。](./media/data-lake-store-performance-tuning-guidance/small-containers.png)
 
 ワークロードによっては、YARN コンテナーが常に必要とする最小サイズが存在します。 選択したコンテナーが小さすぎる場合、ジョブでメモリ不足の問題が発生します。 通常、YARN コンテナーは 1 GB 以上にする必要があります。 3 GB の YARN コンテナーを検討するのが一般的です。 一部のワークロードでは、それよりも大きい YARN コンテナーが必要な場合もあります。
 
@@ -118,7 +118,7 @@ HDInsight クラスター内には 3 つのレイヤーがあります。これ�
 
 **使用可能なすべてのコンテナーを使用します。** すべてのリソースが使用されるように、タスク数を使用可能なコンテナー数と同じ数、またはそれ以上に設定します。
 
-![Data Lake Storage Gen1 のパフォーマンス](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
+![使用可能なすべてのコンテナーの使用を示す図。](./media/data-lake-store-performance-tuning-guidance/use-containers.png)
 
 **タスクでエラーが発生するとコストがかかります。** 各タスクで大量のデータを処理すると、タスクでエラーが発生した場合、再試行に高いコストがかかることになります。 そのため、多数のタスクを作成し、各タスクで少量のデータを処理するようにすることをお勧めします。
 

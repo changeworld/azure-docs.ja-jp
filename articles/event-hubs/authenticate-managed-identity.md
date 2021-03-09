@@ -2,14 +2,14 @@
 title: Azure Active Directory を使用したマネージド ID の認証
 description: この記事では、Azure Active Directory を使用して Azure Event Hubs リソースにアクセスするためのマネージド ID を認証する方法について説明します
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4d606e6cd035d4dae388d8559d100988a46e8203
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89010020"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805284"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Azure Active Directory を使用して Event Hubs リソースにアクセスするためのマネージド ID を認証する
 Azure Event Hubs では、[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。 Azure リソースのマネージド ID では、Azure Virtual Machines (VMs)、Function Apps、Virtual Machine Scale Sets などのサービスで実行されているアプリケーションから Event Hubs リソースへのアクセスを、Azure AD 資格情報を使用して承認することができます。 Azure リソースのマネージド ID を Azure AD 認証と一緒に使用することで、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。
@@ -26,7 +26,7 @@ Azure リソースのマネージド ID を使用してご利用の VM から Ev
 - [Azure Resource Manager クライアント ライブラリ](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>Azure AD のマネージド ID にアクセス許可を付与する
-ご利用のアプリケーション内のマネージド ID から Event Hubs サービスへの要求を承認するには、最初にそのマネージド ID に対してロールベースのアクセス制御 (RBAC) の設定を構成します。 Azure Event Hubs で、Event Hubs との間で送受信を行うためのアクセス許可を含む Azure ロールを定義します。 Azure ロールがマネージド ID に割り当てられると、適切なスコープでの Event Hubs データへのアクセスが、そのマネージド ID に付与されます。
+ご利用のアプリケーション内のマネージド ID から Event Hubs サービスへの要求を認可するには、最初にそのマネージド ID に対して Azure ロールベースのアクセス制御 (Azure RBAC) の設定を構成します。 Azure Event Hubs で、Event Hubs との間で送受信を行うためのアクセス許可を含む Azure ロールを定義します。 Azure ロールがマネージド ID に割り当てられると、適切なスコープでの Event Hubs データへのアクセスが、そのマネージド ID に付与されます。
 
 Azure ロールの割り当ての詳細については、[Azure Active Directory を使用して認証し、Event Hubs リソースにアクセスする](authorize-access-azure-active-directory.md)ことに関するページを参照してください。
 
@@ -41,11 +41,12 @@ Azure ロールの割り当ての詳細については、[Azure Active Directory
 1. **[状態]** を選択して **[オン]** にします。 
 1. **[保存]** を選択して設定を保存します。 
 
-    ![Web アプリのマネージド ID](./media/authenticate-managed-identity/identity-web-app.png)
+    :::image type="content" source="./media/authenticate-managed-identity/identity-web-app.png" alt-text="Web アプリのマネージド ID":::
+4. 情報メッセージで **[はい]** を選択します。 
 
-この設定を有効にすると、ご利用の Azure Active Directory (Azure AD) に新しいサービス ID が作成され、App Service ホストに構成されます。
+    この設定を有効にすると、ご利用の Azure Active Directory (Azure AD) に新しいサービス ID が作成され、App Service ホストに構成されます。
 
-次に、このサービス ID をご利用の Event Hubs リソースの必要なスコープ内のロールに割り当てます。
+    次に、このサービス ID をご利用の Event Hubs リソースの必要なスコープ内のロールに割り当てます。
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>Azure portal を使用して Azure ロールを割り当てるには
 Event Hubs リソースにロールを割り当てるには、Azure portal でそのリソースに移動します。 リソースの [アクセス制御 (IAM)] 設定を表示し、次の手順に従ってロールの割り当てを管理します。
@@ -56,28 +57,33 @@ Event Hubs リソースにロールを割り当てるには、Azure portal で�
 1. Azure portal でご利用の Event Hubs 名前空間に移動し、その名前空間の **[概要]** を表示します。 
 1. 左側のメニューの **[アクセス制御 (IAM)]** を選択して、イベント ハブのアクセス制御設定を表示します。
 1.  **[ロールの割り当て]** タブを選択して、ロールの割り当ての一覧を表示します。
-3.  **[追加]** を選択して、新しいロールを追加します。
-4.  **[ロールの割り当ての追加]** ページで、割り当てる Event Hubs ロールを選択します。 次に、ロールを割り当てる登録済みのサービス ID を検索して特定します。
+3.  **[追加]** を選択し、 **[ロールの割り当ての追加]** を選択します。
+4.  *[ロールの割り当ての追加]* ページで、次の手順に従います。
+    1. **[ロール]** で、割り当てる Event Hubs ロールを選択します。 この例では、 **[Azure Event Hubs データ所有者]** です。
+    1. **[アクセスの割り当て先]** フィールドで、 **[システム割り当てマネージド ID]** の **[App Service]** を選択します。 
+    1. Web アプリのマネージド ID が作成された **サブスクリプション** を選択します。
+    1. 作成した Web アプリの **マネージド ID** を選択します。 ID の既定の名前は、Web アプリの名前と同じです。 
+    1. 次に、 **[保存]** を選択します。 
     
-    ![[ロールの割り当ての追加] ページ](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  **[保存]** を選択します。 ロールの割り当て先となった ID が、そのロールに一覧表示されます。 たとえば、次の画像は、サービス ID に Event Hubs データ所有者が含まれていることを示しています。
-    
-    ![ロールに割り当てられた ID](./media/authenticate-managed-identity/role-assigned.png)
+        ![[ロールの割り当ての追加] ページ](./media/authenticate-managed-identity/add-role-assignment-page.png)
 
-ロールを割り当てると、Web アプリケーションには、定義されたスコープの下で Event Hubs リソースへのアクセス権が付与されます。 
+    ロールを割り当てると、Web アプリケーションには、定義されたスコープの下で Event Hubs リソースへのアクセス権が付与されます。 
+
+    > [!NOTE]
+    > マネージド ID をサポートするサービスの一覧については、「[Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)」を参照してください。
 
 ### <a name="test-the-web-application"></a>Web アプリケーションをテストする
 1. Event Hubs 名前空間とイベント ハブを作成します。 
 2. Web アプリを Azure にデプロイする。 GitHub 上の Web アプリへのリンクは、次のタブ付きセクションを参照してください。 
 3. SendReceive.aspxがWeb アプリのデフォルトドキュメントとして設定されていることを確認します。 
-3. Web アプリの**ID**を有効にします。 
-4. このIDを名前空間レベルまたはイベント ハブ レベルで**Event Hubs データ所有者**の役割に割り当てます。 
-5. Webアプリケーションを実行し、名前空間名とイベント ハブ名、およびメッセージを入力し、**送信**を選択します。 イベントを受信するには、**受信**を選択します。 
+3. Web アプリの **ID** を有効にします。 
+4. このIDを名前空間レベルまたはイベント ハブ レベルで **Event Hubs データ所有者** の役割に割り当てます。 
+5. Webアプリケーションを実行し、名前空間名とイベント ハブ名、およびメッセージを入力し、**送信** を選択します。 イベントを受信するには、**受信** を選択します。 
 
 #### <a name="azuremessagingeventhubs-latest"></a>[ Azure.Messaging.EventHubs (最新)](#tab/latest)
 これで Web アプリケーションを起動し、ブラウザーで aspx のサンプル ページを参照できるようになりました。 [GitHub リポジトリ](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)には、Event Hubs リソースとの間でデータの送受信を行うサンプル Web アプリケーションがあります。
 
-[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)から最新のパッケージをインストールし、**EventHubProducerClient**を使用してEvent Hubs にイベントの送信を開始し、**EventHubConsumerClient**を使用してイベントの受信を開始します。 
+[NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)から最新のパッケージをインストールし、**EventHubProducerClient** を使用してEvent Hubs にイベントの送信を開始し、**EventHubConsumerClient** を使用してイベントの受信を開始します。 
 
 > [!NOTE]
 > マネージド ID を使用してイベント ハブにイベントを発行する Java サンプルについては、[GitHub 上での Azure ID サンプルを使ったイベントの発行](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)に関するページを参照してください。

@@ -7,12 +7,12 @@ ms.service: application-gateway
 services: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
-ms.openlocfilehash: baa02c4d946a121f26f421af99835ae2bea18847
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59ca7708b24d2e75381290b80adeb671e2b49822
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74130335"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362697"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway での WebSocket のサポートの概要
 
@@ -28,7 +28,7 @@ Application Gateway では、あらゆる規模のゲートウェイで WebSocke
 
 WebSocket の接続を確立するために、特定の HTTP ベースのハンドシェイクがクライアントとサーバーの間で交換されます。 成功すると、アプリケーション レイヤー プロトコルは、以前に確立された TCP 接続を使用して、HTTP から WebSockets に "アップグレード" されます。 これが発生すると、HTTP は完全に無関係になります。WebSocket 接続が閉じられるまで、両方のエンドポイントによって WebSocket プロトコルを使用してデータが送受信されます。 
 
-![WebSocket](./media/application-gateway-websocket/websocket.png)
+![図では、Web サーバーとやりとりするクライアントを WebSocket のやりとりと比較しています。前者では 2 回接続し、2 つの応答を取得しますが、後者ではクライアントがサーバーに 1 回接続し、複数の応答を取得します。](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>リスナーの構成要素
 

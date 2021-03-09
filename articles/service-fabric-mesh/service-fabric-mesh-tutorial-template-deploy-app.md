@@ -1,19 +1,24 @@
 ---
 title: チュートリアル - Azure Service Fabric Mesh にアプリをデプロイする
 description: このチュートリアルでは、テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする方法について説明します。
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.author: dekapur
-ms.custom: mvc, devcenter
-ms.openlocfilehash: f7cb3f75dcaaeb6e0304784941dfcfc81ae6d68f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.author: gwallace
+ms.custom: mvc, devcenter, devx-track-azurecli
+ms.openlocfilehash: 589e881eb48daf7da9cd2a934b14acfcc76dc5f9
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248392"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99625418"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>チュートリアル: テンプレートを使用して Service Fabric Mesh にアプリケーションをデプロイする
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
 
 このチュートリアルは、シリーズの第 1 部です。 テンプレートを使用して Azure Service Fabric Mesh アプリケーションをデプロイする方法について説明します。  アプリケーションは ASP.NET Web フロントエンド サービスと ASP.NET Core Web API バックエンド サービスで構成されており、これらは Docker Hub にあります。  2 つのコンテナー イメージを Docker Hub からプルして、独自のプライベート レジストリにプッシュします。 その後、アプリケーション用の Azure RM テンプレートを作成し、コンテナー レジストリから Service Fabric Mesh にアプリケーションをデプロイします。 完了すると、Service Fabric Mesh で実行される簡単な To Do List アプリケーションができあがります。
 
@@ -103,6 +108,11 @@ az acr create --resource-group myResourceGroup --name myContainerRegistry --sku 
 このチュートリアルでは、例として To Do List サンプル アプリケーションを使います。  [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) および [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) サービスのコンテナー イメージは、Docker Hub にあります。 Visual Studio でアプリケーションをビルドする方法については、[Service Fabric Mesh Web アプリのビルド](service-fabric-mesh-tutorial-create-dotnetcore.md)に関するページを参照してください。 Service Fabric Mesh では、Windows または Linux の Docker コンテナーを実行できます。  Linux コンテナーを使用している場合は、Docker で **[Switch to Linux containers]\(Linux コンテナーに切り替える\)** を選択します。  Windows コンテナーを使用している場合は、Docker で **[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。
 
 ACR のインスタンスにイメージをプッシュするには、まずコンテナー イメージを用意する必要があります。 ローカル コンテナー イメージがまだない場合は、[docker pull](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、[WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) イメージと [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) イメージを Docker Hub からプルします。
+
+>[!NOTE]
+> 2020 年 11 月 2 日より、Docker の無料プラン アカウントから Docker Hub に対する匿名と認証済みの要求に[ダウンロード レート制限](https://docs.docker.com/docker-hub/download-rate-limit/)が適用されるようになり、IP アドレスによって実施されます。 
+> 
+> これらのコマンドには、Docker Hub のパブリック イメージが利用されています。 レート制限を受ける場合があるので注意してください。 詳細については、「[Docker Hub に対する認証](../container-registry/buffer-gate-public-content.md#authenticate-with-docker-hub)」を参照してください。
 
 Windows イメージをプルします。
 
@@ -336,7 +346,7 @@ To Do List アプリケーションの仕様については、[mesh_rp.windows.j
 
 パラメーター ファイルでは、次のパラメーター値を更新します。
 
-|パラメーター|値|
+|パラメーター|[値]|
 |---|---|
 |location|アプリケーションをデプロイするリージョン。  たとえば、"eastus"。|
 |registryPassword|前の「[レジストリの資格情報を取得する](#retrieve-credentials-for-the-registry)」で取得したパスワード。 テンプレートのこのパラメーターはセキュリティで保護された文字列であり、デプロイの状態または `az mesh service show` コマンドでは表示されません。|

@@ -5,17 +5,17 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90d5c2688d20b62a4a5fda78eb67ed01777bc28c
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: ''
+ms.openlocfilehash: 46b32ae7aeb971c9391a69e3ca3d01f669774248
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496884"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106905"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>チュートリアル:Azure クイックスタート テンプレートを使用する
 
-[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)は、コミュニティ提供のテンプレートのリポジトリです。 テンプレート開発にサンプル テンプレートを使用できます。 このチュートリアルでは、Web サイト リソースの定義を見つけて、自分のテンプレートに追加します。 所要時間は約 **12 分**です。
+[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)は、コミュニティ提供のテンプレートのリポジトリです。 テンプレート開発にサンプル テンプレートを使用できます。 このチュートリアルでは、Web サイト リソースの定義を見つけて、自分のテンプレートに追加します。 所要時間は約 **12 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,10 +34,10 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 ## <a name="find-template"></a>テンプレートを検索する
 
 1. [[Azure クイックスタート テンプレート]](https://azure.microsoft.com/resources/templates/) を開きます。
-1. **[検索]** に「**deploy linux web app**」と入力します。
-1. "**Deploy a basic Linux web app**" というタイトルのものを選択します。 見つからない場合は、[直接リンク](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)からアクセスしてください。
+1. **[検索]** に「_deploy linux web app_」と入力します。
+1. "**Deploy a basic Linux web app**" というタイトルのタイルを選択します。 見つからない場合は、[直接リンク](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/)からアクセスしてください。
 1. **[GitHub で参照する]** を選択します。
-1. **azuredeploy.json** を選択します。
+1. _azuredeploy.json_ を選択します。
 1. テンプレートを確認します。 特に、`Microsoft.Web/sites` リソースを探します。
 
     ![Resource Manager テンプレート クイックスタート Web サイト](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
@@ -48,15 +48,15 @@ Visual Studio Code と Resource Manager Tools 拡張機能に加え、Azure Powe
 
 :::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-Web アプリ名は、Azure 全体で一意であることが必要です。 名前の重複を防ぐために、**webAppPortalName** 変数は **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** から **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"** に更新しました。
+Web アプリ名は、Azure 全体で一意であることが必要です。 名前の重複を防ぐために、`webAppPortalName` 変数は `"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"` から `"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"` に更新しました。
 
 `Microsoft.Web/serverfarms` 定義の最後にはコンマを追加します。そうすることで、リソース定義が `Microsoft.Web/sites` 定義と区別されます。
 
 この新しいリソースには、注目すべき重要な機能が 2 つあります。
 
-**dependsOn** という要素があって、App Service プランに設定されていることがわかります。 この設定が必要な理由は、Web アプリを作成するためには、あらかじめ App Service プランが存在していなければならないためです。 **dependsOn** 要素によって、デプロイするリソースの順序が Resource Manager に伝えられます。
+App Service プランに設定された、`dependsOn` という名前の要素があることがわかります。 この設定が必要な理由は、Web アプリを作成するためには、あらかじめ App Service プランが存在していなければならないためです。 `dependsOn` 要素によって、デプロイするリソースの順序が Resource Manager に伝えられます。
 
-**serverFarmId** プロパティには、[resourceId](template-functions-resource.md#resourceid) 関数が使用されています。 この関数によって、リソースの一意識別子が取得されます。 このケースでは、App Service プランの一意識別子を取得しています。 Web アプリは、ある決まった 1 つの App Service プランに関連付けられます。
+`serverFarmId` プロパティには、[resourceId](template-functions-resource.md#resourceid) 関数が使用されています。 この関数によって、リソースの一意識別子が取得されます。 このケースでは、App Service プランの一意識別子を取得しています。 Web アプリは、ある決まった 1 つの App Service プランに関連付けられます。
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
@@ -91,7 +91,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> デプロイに失敗した場合は、デプロイ コマンドで **debug** スイッチを使用してデバッグ ログを表示します。  **verbose** スイッチを使用して、詳細なデバッグ ログを表示することもできます。
+> デプロイに失敗した場合は、`verbose` スイッチを使用して、作成しているリソースに関する情報を取得します。 デバッグの詳細については、`debug` スイッチを使用してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -3,19 +3,19 @@ title: Anomaly Detector API のおすすめのユーザー生成コンテンツ
 titleSuffix: Azure Cognitive Services
 description: おすすめのコンテンツを検索し、他のユーザーが Anomaly Detector API をどのように考え、使用しているかを確認してください。
 services: cognitive-services
-author: aahill
+author: mrbullwinkle
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 06/17/2019
-ms.author: aahi
-ms.openlocfilehash: 81a2cb7ece775bfaffaf1b1932feb12b2da5f08f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 01/22/2021
+ms.author: mbullwin
+ms.openlocfilehash: fcd4f73a9cea75877360b2b537776bf59fb22363
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "74012024"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704458"
 ---
 # <a name="featured-user-generated-content-for-the-anomaly-detector-api"></a>Anomaly Detector API のおすすめのユーザー生成コンテンツ
 
@@ -27,7 +27,7 @@ ms.locfileid: "74012024"
 
 ## <a name="open-source-projects"></a>オープンソース プロジェクト
 
-* [異常検出と Power BI へのストリーミングの方法を示す Jupyter ノートブック](https://github.com/marvinbuss/MS-AnomalyFinder)
+* [異常検出と Power BI へのストリーミングの方法を示す Jupyter ノートブック](https://github.com/marvinbuss/MS-AnomalyDetector)
 
 リソースをノミネートする場合は、[簡単なフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxSkyhztUNZCtaivu8nmhd1UMENTMEJWTkRORkRGQUtGQzlWQ1dSV1JLTS4u)に入力します。
 コンテンツを削除する場合は、AnomalyDetector@microsoft.com に問い合わせるか、GitHub で問題を報告します。

@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor を使用して Splunk を統合する | Microsoft Docs
-description: Azure Monitor を使用して Azure Active Directory のログを SumoLogic と統合する方法について説明します
+description: Azure Monitor を使用して Azure Active Directory のログを Splunk と統合する方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -17,22 +17,22 @@ ms.date: 03/10/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61cae487c588c7649de638d9ea6d3111bfbe9e1a
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.openlocfilehash: 351669453a5ce6930d3eb912e95e530d14febf61
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89229686"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91335852"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>方法:Azure Monitor を使用して Azure Active Directory のログを Splunk と統合する
 
-この記事では、Azure Monitor を使用して Azure Active Directory (Azure AD) のログを Splunk と統合する方法について説明します。 最初にログを Azure イベント ハブにルーティングした後、イベント ハブを Splunk と統合します。
+この記事では、Azure Monitor を使用して Azure Active Directory (Azure AD) のログを Splunk と統合する方法について説明します。 最初にログを Azure Event Hub にルーティングした後、イベント ハブを Splunk と統合します。
 
 ## <a name="prerequisites"></a>前提条件
 
 この機能を使用するには、次が必要です。
 
-- Azure AD のアクティビティ ログを含む Azure イベント ハブ。 [アクティビティ ログをイベント ハブにストリーミングする](./tutorial-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
+- Azure AD のアクティビティ ログを含む Azure Event Hub。 [アクティビティ ログをイベント ハブにストリーミングする](./tutorial-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
 
 -  [Splunk 用 Microsoft Azure アドオン](https://splunkbase.splunk.com/app/3757/)。 
 

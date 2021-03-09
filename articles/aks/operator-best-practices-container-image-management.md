@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でコンテナー イメージを�
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 018dc1802d4f0b4b498d3993b8753990598a16ba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4d90ac5b8ab44925b73be2f22cd7a79458da9f5a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251146"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92073553"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
 
@@ -61,4 +61,4 @@ Azure Kubernetes Service (AKS) でアプリケーションを開発および実�
 [best-practices-pod-security]: developer-best-practices-pod-security.md
 [acr-base-image-update]: ../container-registry/container-registry-tutorial-base-image-update.md
 [security-center-containers]: ../security-center/container-security.md
-[security-center-acr]: ../security-center/azure-container-registry-integration.md
+[security-center-acr]: ../security-center/defender-for-container-registries-introduction.md

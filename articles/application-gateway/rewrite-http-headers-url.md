@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/16/2020
 ms.author: surmb
-ms.openlocfilehash: 2ee34e1a7959aafa5db949b443fd58cca58719c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 81eaf95a4918590c6eaa2c17a45e6925a1a67992
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281193"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726514"
 ---
 # <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Application Gateway で HTTP ヘッダーと URL を書き換える
 
@@ -50,7 +50,7 @@ Application Gateway の URL 書き換え機能を使用すると、次のこと�
 
 Azure portal を使用して Application Gateway で URL を書き換える方法については、[こちら](rewrite-url-portal.md)を参照してください。
 
-![画像](./media/rewrite-http-headers-url/url-rewrite-overview.png)
+![Application Gateway を使用して URL を書き換えるプロセスを説明する図。](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
 >[!NOTE]
 > URL 書き換え機能はプレビュー段階であり、Application Gateway の Standard_v2 および WAF_v2 SKU でのみ使用できます。 運用環境での使用はお勧めしません。 プレビューの詳細については、[使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページを参照してください。
@@ -100,7 +100,7 @@ Application Gateway では、条件のパターン マッチングに正規表�
 
 ## <a name="server-variables"></a>サーバー変数
 
-Application Gateway では、サーバー変数を使用して、サーバー、クライアントとの接続、およびその接続での現在の要求に関する情報が格納されます。 格納される情報には、クライアントの IP アドレスや Web ブラウザーの種類などがあります。 サーバー変数は、たとえば新しいページが読み込まるときや、フォームが投稿されるときに動的に変化します。 これらの変数を使用して、書き換え条件を評価し、ヘッダーを書き換えることができます。 サーバー変数の値を使用してヘッダーを書き換えるには、{var_*serverVariableName*} という構文でこれらの変数を指定する必要があります
+Application Gateway では、サーバー変数を使用して、サーバー、クライアントとの接続、およびその接続での現在の要求に関する情報が格納されます。 格納される情報には、クライアントの IP アドレスや Web ブラウザーの種類などがあります。 サーバー変数は、たとえば新しいページが読み込まるときや、フォームが投稿されるときに動的に変化します。 これらの変数を使用して、書き換え条件を評価し、ヘッダーを書き換えることができます。 サーバー変数の値を使用してヘッダーを書き換えるには、{var_ *serverVariableName*} という構文でこれらの変数を指定する必要があります
 
 アプリケーション ゲートウェイでは、次のサーバー変数がサポートされています。
 
@@ -114,7 +114,7 @@ Application Gateway では、サーバー変数を使用して、サーバー、
 | client_tcp_rtt            | クライアント TCP 接続の情報。 TCP_INFO ソケット オプションをサポートするシステムで使用できます。 |
 | client_user               | HTTP 認証の使用時に、認証のために提供されるユーザー名。 |
 | host                      | 優先順位は次のとおりです: 要求行のホスト名、Host 要求ヘッダー フィールドのホスト名、要求に一致するサーバー名。 例: 要求 `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` では、host 値は `contoso.com` になります |
-| cookie_*name*             | *name* クッキー。                                           |
+| cookie_ *name*             | *name* クッキー。                                           |
 | http_method               | URL 要求を行うために使用されたメソッド。 たとえば、GET、POST などです。 |
 | http_status               | セッションの状態。 たとえば、200、400、403 です。           |
 | http_version              | 要求プロトコル。 通常、HTTP/1.0、HTTP/1.1、または HTTP/2.0 です。 |
@@ -164,7 +164,7 @@ Application Gateway では、要求をバックエンドに転送する前に、
 
 App Service はマルチテナント サービスであるため、要求のホスト ヘッダーを使用して適切なエンドポイントに要求をルーティングします。 アプリ サービスの既定のドメイン名 *.azurewebsites.net (たとえば contoso.azurewebsites.net) は、アプリケーション ゲートウェイのドメイン名 (たとえば contoso.com) とは異なります。 クライアントからの元の要求には、ホスト名としてアプリケーション ゲートウェイのドメイン名 contoso.com が設定されているので、アプリケーション ゲートウェイでホスト名を contoso.azurewebsites.net に変更します。 アプリ サービスが適切なエンドポイントに要求をルーティングできるようにこの変更を行います。
 
-アプリ サービスでは、リダイレクト応答を送信するとき、その応答の場所ヘッダーで、アプリケーション ゲートウェイから受信した要求のものと同じホスト名が使用されます。 そのため、クライアントでは、アプリケーション ゲートウェイ (contoso.com/path2) を経由するのではなく、contoso.azurewebsites.net/path2 に直接要求を行います。 アプリケーション ゲートウェイをバイパスすることは望ましくありません。
+アプリ サービスでは、リダイレクト応答を送信するとき、その応答の場所ヘッダーで、アプリケーション ゲートウェイから受信した要求のものと同じホスト名が使用されます。 そのため、クライアントでは、アプリケーション ゲートウェイ (`contoso.com/path2`) を経由するのではなく、`contoso.azurewebsites.net/path2` に直接要求を行います。 アプリケーション ゲートウェイをバイパスすることは望ましくありません。
 
 この問題は、場所ヘッダーのホスト名をアプリケーション ゲートウェイのドメイン名に設定することで解決できます。
 

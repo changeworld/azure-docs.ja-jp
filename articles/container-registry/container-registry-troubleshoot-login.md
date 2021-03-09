@@ -3,12 +3,12 @@ title: レジストリ ログインのトラブルシューティング
 description: Azure Container Registry にログインするときの一般的な問題の現象、原因、対処法
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 8fbb96be8223001ac52db47788c31609e9b86e35
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 5deb1717cf3886d8ea9c021d92afa358946b16dc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88226982"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052080"
 ---
 # <a name="troubleshoot-registry-login"></a>レジストリ ログインのトラブルシューティング
 
@@ -39,6 +39,8 @@ Azure Container Registry にログインするときに発生する可能性の�
 [az acr check-health](/cli/azure/acr#az-acr-check-health) コマンドを実行して、レジストリ環境の正常性に関する詳細情報を取得し、必要に応じてターゲット レジストリにアクセスします。 たとえば、Docker 構成エラーや Azure Active Directory ログインの問題を診断します。 
 
 コマンドの例については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。 エラーが報告された場合は、推奨される対処法について、[エラー リファレンス](container-registry-health-error-reference.md)と次のセクションを確認してください。
+
+Azure Kubernetes Service でレジストリを使用しているときに問題が発生した場合は、[az aks check-acr](/cli/azure/aks#az_aks_check_acr) コマンドを実行して、AKS クラスターからレジストリにアクセスできることを確認します。
 
 > [!NOTE]
 > また、一部の認証または承認エラーは、レジストリへのアクセスを妨げるファイアウォールまたはネットワーク構成がある場合に発生する可能性があります。 「[レジストリに関するネットワークの問題のトラブルシューティング](container-registry-troubleshoot-access.md)」を参照してください。
@@ -78,9 +80,10 @@ az acr login --name myregistry
 
 * Active Directory サービス プリンシパルを使用している場合は、Active Directory テナントで確実に正しい資格情報を使用します。
   * ユーザー名 - サービス プリンシパルのアプリケーション ID (*クライアント ID* とも呼ばれます)
-  * パスワード - サービス プリンシパルのパスワード (*クライアント シークレット*とも呼ばれます)
-* Azure Kubernetes Service や Azure DevOps などの Azure サービスを使用してレジストリにアクセスする場合は、サービスのレジストリ構成を確認します。
+  * パスワード - サービス プリンシパルのパスワード (*クライアント シークレット* とも呼ばれます)
+* Azure Kubernetes Service や Azure DevOps などの Azure サービスを使用してレジストリにアクセスする場合は、サービスのレジストリ構成を確認します。 
 * `--expose-token` オプションを指定して `az acr login` を実行し、Docker デーモンを使用せずにレジストリをログインできるようにする場合は、確実にユーザー名 `00000000-0000-0000-0000-000000000000` で認証します。
+* レジストリが[匿名プル アクセス](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)用に構成されている場合、以前の Docker ログインから格納されている既存の Docker 資格情報により匿名アクセスを防ぐことができます。 レジストリに対して匿名のプル操作を実行する前に、 `docker logout` を実行してください。
 
 関連リンク:
 
@@ -95,19 +98,21 @@ az acr login --name myregistry
 
 ### <a name="confirm-credentials-are-authorized-to-access-registry"></a>資格情報がレジストリへのアクセスが許可されていることを確認する
 
-レジストリからイメージをプルする `AcrPull` RBAC ロールや、イメージをプッシュする `AcrPush` ロールなど、資格情報に関連付けられているレジストリのアクセス許可を確認します。 
+レジストリからイメージをプルする `AcrPull` Azure ロールや、イメージをプッシュする `AcrPush` ロールなど、資格情報に関連付けられているレジストリのアクセス許可を確認します。 
 
-Azure CLI を使用してポータルまたはレジストリ管理でレジストリにアクセスするには、Azure Resource Manager 操作を実行するために少なくとも `Reader` ロールが必要です。
+Azure CLI を使用してポータルまたはレジストリ管理でレジストリにアクセスするには、Azure Resource Manager 操作を実行するために少なくとも `Reader` ロールまたは同等のアクセス許可が必要です。
+
+ポータルを経由したレジストリへのアクセスを許可するようにアクセス許可が最近変更された場合は、ブラウザーでシークレットまたはプライベート セッションを試して、古いブラウザー キャッシュや Cookie を回避することが必要になる場合があります。
 
 ロールの割り当てを追加または削除するには、自分またはレジストリ所有者がサブスクリプションで十分な権限を持っている必要があります。
 
 関連リンク:
 
-* [RBAC のロールとアクセス許可 - Azure Container Registry](container-registry-roles.md)
+* [Azure のロールとアクセス許可 - Azure Container Registry](container-registry-roles.md)
 * [リポジトリスコープのトークンを使用したログイン](container-registry-repository-scoped-permissions.md)
 * [Azure portal を使用して Azure ロールの割り当てを追加または削除する](../role-based-access-control/role-assignments-portal.md)
 * [リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)
-* [新しいアプリケーション シークレットを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)
+* [新しいアプリケーション シークレットを作成する](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret)
 * [Azure AD 認証と承認のコード](../active-directory/develop/reference-aadsts-error-codes.md)
 
 ### <a name="check-that-credentials-arent-expired"></a>資格情報の有効期限が切れていないことを確認する
@@ -142,7 +147,5 @@ Azure CLI を使用してポータルまたはレジストリ管理でレジス�
   * [レジストリに関するネットワークの問題のトラブルシューティング](container-registry-troubleshoot-access.md)
   * [レジストリのパフォーマンスのトラブルシューティング](container-registry-troubleshoot-performance.md)
 * [コミュニティ サポート](https://azure.microsoft.com/support/community/) オプション
-* [Microsoft Q&A](https://docs.microsoft.com/answers/products/)
+* [Microsoft Q&A](/answers/products/)
 * [サポート チケットを開く](https://azure.microsoft.com/support/create-ticket/) - 入力した情報に基づいて、レジストリで認証エラーが発生した場合にクイック診断が実行される場合があります
-
-

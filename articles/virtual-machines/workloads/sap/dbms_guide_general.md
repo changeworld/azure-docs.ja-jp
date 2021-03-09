@@ -1,26 +1,18 @@
 ---
 title: SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項 | Microsoft Docs
 description: SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
-services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
-manager: patfilot
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 12/04/2018
+ms.date: 09/20/2020
 ms.author: juergent
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15c0368b2d0bd85f6fee65ffa2c9d6776d07f162
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.reviewer: cynthn
+ms.openlocfilehash: 470b6b0c871d91a2a8a584a6efd04605e0afcf88
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650617"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101666832"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -46,9 +38,8 @@ ms.locfileid: "88650617"
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-このガイドは、Microsoft Azure 上で SAP ソフトウェアを実装およびデプロイする方法に関するドキュメントの一部です。 このガイドを読む前に、[計画および実装ガイド][planning-guide]をお読みください。 このドキュメントでは、Azure のサービスとしてのインフラストラクチャ (IaaS) 機能を使用して Microsoft Azure 仮想マシン (VM) 上で SAP 関連の DBMS システムをデプロイする場合の一般的な側面について説明します。
+このガイドは、Microsoft Azure 上で SAP ソフトウェアを実装およびデプロイする方法に関するドキュメントの一部です。 このガイドを読む前に、[計画および実装ガイド][planning-guide]と、計画ガイドに記載されている記事をお読みください。 このドキュメントでは、Azure のサービスとしてのインフラストラクチャ (IaaS) 機能を使用して Microsoft Azure 仮想マシン (VM) 上で SAP 関連の DBMS システムをデプロイする場合の一般的な側面について説明します。
 
 特定のプラットフォームに SAP ソフトウェアをインストールしてデプロイするときの主要なリソースである SAP インストール ドキュメントと SAP Note を補足する内容となっています。
 
@@ -109,58 +100,74 @@ Microsoft Azure のアーキテクチャと Microsoft Azure 仮想マシンの�
 
 
 ## <a name="storage-structure-of-a-vm-for-rdbms-deployments"></a><a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>RDBMS デプロイ用の VM のストレージ構造
-この章に進むにあたって、[デプロイ ガイド][deployment-guide]の[こちらの章][deployment-guide-3]に記載されている情報を読んで理解しておいてください。 この章を読む前に、別の VM シリーズについて把握し、Standard Storage と Premium Storage の違いについて理解しておく必要があります。 
+この章に進むにあたって、以下に記載されている情報を読んで理解しておいてください。
 
-Azure VM 向け Azure Storage の詳細については、[Azure VM のマネージド ディスクの概要](../../managed-disks-overview.md)に関するセクションを参照してください。
+- [SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)
+- [SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)
+- [Azure デプロイでサポートされている SAP ソフトウェア](./sap-supported-product-on-azure.md)
+- [Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ](./sap-planning-supported-configurations.md) 
 
-基本的な構成では、通常、オペレーティング システム、DBMS、および最終的に導入する SAP バイナリとデータベース ファイルとを分けたデプロイ構造にすることをお勧めしています。 Azure 仮想マシン上で実行する SAP システムには、オペレーティング システム、データベース管理システムの実行可能ファイル、および SAP の実行可能ファイルがインストールされたベース VHD またはディスクを使用することをお勧めします。 
+この章を読む前に、別の VM シリーズについて把握し、Standard Storage と Premium Storage の違いについて理解しておく必要があります。 
 
-DBMS のデータおよびログ ファイルは、Standard Storage または Premium Storage に格納されます。 これらは別個のディスクに格納され、元の Azure オペレーティング システム イメージ VM に論理ディスクとして接続されます。 Linux のデプロイでは、特に SAP HANA に関して、異なる推奨事項がドキュメント化されています。
+Azure ブロック ストレージについては、Azure Managed Disks の使用を強くお勧めします。 Azure Managed Disks の詳細については、[Azure VM のマネージド ディスクの概要](../../managed-disks-overview.md)に関する記事を参照してください。
+
+基本的な構成では、通常、オペレーティング システム、DBMS、および最終的に導入する SAP バイナリとデータベース ファイルとを分けたデプロイ構造にすることをお勧めしています。 以前の推奨事項を変更する場合は、次の項目に個別の Azure ディスクを使用することをお勧めします。
+
+- オペレーティング システム (ベース VHD または OS VHD)
+- データベース管理システムの実行可能ファイル
+- /usr/sap のような SAP 実行可能ファイル
+
+これらのコンポーネントを 3 つの異なる Azure ディスクに分離する構成を使用すると、DBMS または SAP 実行可能ファイルによる過剰なログまたはダンプの書き込みによって OS ディスクのディスク クォータが妨げられないため、回復性が向上します。 
+
+DBMS のデータおよびトランザクションまたは再実行ログ ファイルは、Azure でサポートされているブロック ストレージまたは Azure NetApp Files に格納されます。 これらは別個のディスクに格納され、元の Azure オペレーティング システム イメージ VM に論理ディスクとして接続されます。 Linux のデプロイでは、特に SAP HANA に関して、異なる推奨事項がドキュメント化されています。 シナリオに応じたさまざまな種類のストレージの機能とサポートについては、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を参照してください。 
 
 ディスクのレイアウトを計画するときは、次の項目間で最適なバランスを取る必要があります。
 
 * データ ファイルの数。
 * ファイルが含まれているディスクの数。
-* 1 つのディスクの IOPS クォータ。
-* ディスクごとのデータ スループット。
+* 1 つのディスクまたは NFS 共有の IOPS クォータ。
+* ディスクまたは NFS 共有ごとのデータ スループット。
 * VM サイズに対して追加できるデータ ディスクの数。
-* VM が提供できるストレージの全体的なスループット。
+* VM が提供できるストレージまたはネットワークの全体的なスループット。
 * さまざまな種類の Azure Storage で考えられる待機時間。
 * VM の SLA。
 
-Azure はデータ ディスクごとに IOPS クォータを適用します。 これらのクォータは、Standard Storage でホストされているディスクと Premium Storage でホストされているディスクとで異なります。 また、I/O 待機時間は、異なる種類の 2 つのストレージの間で異なります。 Premium Storage では、I/O 待ち時間が短縮されます。 
+Azure によってデータ ディスクまたは NFS 共有ごとに IOPS クォータが適用されます。 これらのクォータは、別の Azure ブロック ストレージ ソリューションまたは共有でホストされているディスクでは異なります。 また、I/O 待機時間は、これらの異なる種類のストレージ間でも異なります。 
 
-VM の種類ごとに、接続できるデータ ディスクの数が制限されています。 もう 1 つの制限は、Premium Storage を使用できるのは特定の種類の VM のみであることです。 通常は、CPU とメモリの要件に基づいて、使用する特定の VM の種類を決定します。 また、通常、Premium Storage ディスクのディスク数や種類に応じてスケーリングされる IOPS、待ち時間、およびディスク スループットの要件も考慮する必要があります。 特に Premium Storage では、各ディスクで実現する必要がある IOPS とスループットの値によってディスクのサイズも決まる場合があります。
-
-> [!NOTE]
-> DBMS デプロイの場合は、すべてのデータ、トランザクション ログ、または redo ファイルに Premium Storage を使用することをお勧めします。 デプロイするシステムが運用環境システムか非運用システムかは重要ではありません。
+VM の種類ごとに、接続できるデータ ディスクの数が制限されています。 もう 1 つの制限は、たとえば Premium Storage を使用できるのは、特定の種類の VM のみであることです。 通常は、CPU とメモリの要件に基づいて、使用する特定の VM の種類を決定します。 また、通常、Premium Storage ディスクのディスク数や種類に応じてスケーリングされる IOPS、待ち時間、およびディスク スループットの要件も考慮する必要があります。 特に Premium Storage では、各ディスクで実現する必要がある IOPS とスループットの値によってディスクのサイズも決まる場合があります。
 
 > [!NOTE]
-> Azure 独自の[単一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) のメリットを活用するためには、ベース VHD を含め、接続されているすべてのディスクが Premium Storage タイプである必要があります。
+> DBMS デプロイの場合は、すべてのデータ、トランザクション ログ、または再実行のファイルに対して、Azure Premium Storage、Ultra ディスク、または Azure NetApp Files ベースの NFS 共有 (SAP HANA 専用) を使用することをお勧めします。 デプロイするシステムが運用環境システムか非運用システムかは重要ではありません。
 
 > [!NOTE]
-> SAP データベースが配置されているストレージ ハードウェアが、Azure データセンターに隣接して併置されているサードパーティ データセンター内にある場合は、その SAP データベースのメイン データベース ファイル (データ ファイルやログ ファイルなど) をホストすることはできません。 SAP ワークロードの場合、SAP データベースのデータおよびトランザクション ログ ファイル用にサポートされるストレージは、ネイティブ Azure サービスとして表現されるストレージに限られます。
+> Azure の[単一 VM の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) を活用するには、接続されているすべてのディスクの種類が Azure Premium Storage または Azure Ultra ディスクである必要があります。これには、ベース VHD (Azure Premium Storage) が含まれます。
 
-データベース ファイル、ログおよび redo ファイルの配置と、使用する Azure Storage の種類は、IOPS、待ち時間、スループットの要件に従って決まります。 十分な IOPS を確保するためには、複数のディスクを使用するか、大容量の Premium Storage ディスクを使用しなければならない場合があります。 複数のディスクを使用する場合は、データ ファイルか、ログおよび redo ファイルが含まれるディスク全体にソフトウェア ストライプを構築します。 この場合、結果のストライプ セットでは、基になる Premium Storage ディスクの IOPS およびディスク スループット SLA、または Standard Storage ディスクの達成可能な最大 IOPS が累積的になります。
+> [!NOTE]
+> SAP データベースが配置されているストレージ ハードウェアが、Azure データセンターに隣接して併置されているサードパーティ データセンター内にある場合は、その SAP データベースのメイン データベース ファイル (データ ファイルやログ ファイルなど) をホストすることはできません。 Azure VM でホストされているソフトウェア アプライアンスを通じて提供されるストレージも、このユース ケースではサポートされていません。 SAP DBMS ワークロードの場合、SAP データベースのデータおよびトランザクション ログ ファイル用にサポートされるストレージは、一般的にはネイティブ Azure サービスとして表現されるストレージに限られます。 異なる DBMS では、それぞれ異なる種類の Azure Storage がサポートされる場合があります。 詳細については、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」の記事を参照してください。
 
-既に述べたように、IOPS の要件が 1 つの VHD で提供可能な容量を超えている場合は、複数の VHD にわたるデータベース ファイルで必要な IOPS の数のバランスを取ります。 IOPS 負荷を複数のディスクに分散する最も簡単な方法は、異なるディスク間でソフトウェア ストライプを構築することです。 そして、ソフトウェア ストライプから分割した LUN に SAP DBMS のデータ ファイルの数を設定します。 ストライプ内のディスクの数は、IOPS の需要、ディスク スループットの需要、およびボリュームの需要によって決まります。
+データベース ファイル、ログおよび再実行ファイルの配置と、使用する Azure Storage の種類は、IOPS、待ち時間、スループットの要件に従って決まります。 特に Azure Premium Storage で十分な IOPS を確保するには、複数のディスクを使用するか、大容量の Premium Storage ディスクを使用しなければならない場合があります。 複数のディスクを使用する場合は、データ ファイルか、ログおよび redo ファイルが含まれるディスク全体にソフトウェア ストライプを構築します。 この場合、結果のストライプ セットでは、基になる Premium Storage ディスクの IOPS およびディスク スループット SLA、または Standard Storage ディスクの達成可能な最大 IOPS が累積的になります。
+
+IOPS の要件が 1 つの VHD で提供可能な容量を超えている場合は、複数の VHD にわたるデータベース ファイルで必要な IOPS の数のバランスを取ります。 IOPS 負荷を複数のディスクに分散する最も簡単な方法は、異なるディスク間でソフトウェア ストライプを構築することです。 そして、ソフトウェア ストライプから分割した LUN に SAP DBMS のデータ ファイルの数を設定します。 ストライプ内のディスクの数は、IOPS の需要、ディスク スループットの需要、およびボリュームの需要によって決まります。
 
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows ストレージ ストライピング][Logo_Windows] Windows
 >
 > Windows 記憶域スペースを使用して複数の Azure VHD にわたってストライプ セットを作成することをお勧めします。 Windows Server 2012 R2 または Windows Server 2016 以上を使用してください。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux ストレージ ストライピング][Logo_Linux] Linux
 >
 > Linux 上でのソフトウェア RAID の構築がサポートされているのは、MDADM および論理ボリューム マネージャー (LVM) のみです。 詳細については、次を参照してください。
 >
-> - MDADM を使用して [Linux 上にソフトウェア RAID を構成する](../../linux/configure-raid.md)
-> - LVM を使用して[ Azure 内の Linux VM 上に LVM を構成する](../../linux/configure-lvm.md)
+> - MDADM を使用して [Linux 上にソフトウェア RAID を構成する](/previous-versions/azure/virtual-machines/linux/configure-raid)
+> - LVM を使用して[ Azure 内の Linux VM 上に LVM を構成する](/previous-versions/azure/virtual-machines/linux/configure-lvm)
 >
 >
 
 ---
+
+Azure Ultra ディスクの場合、ディスクのサイズに依存しない IOPS およびディスク スループットを定義できるため、ストライピングは必要ありません。
+
 
 > [!NOTE]
 > Azure Storage には VHD の 3 つのイメージが保存されるため、ストライプ化するときに冗長性を構成することには意味がありません。 必要なのは、I/O が異なる VHD に分散されるようにストライピングを構成することだけです。
@@ -169,9 +176,9 @@ VM の種類ごとに、接続できるデータ ディスクの数が制限さ�
 ### <a name="managed-or-nonmanaged-disks"></a>マネージド ディスクか非マネージド ディスクか
 Azure ストレージ アカウントは、管理の構成要素であり、制限の対象でもあります。 Standard Storage アカウントと Premium Storage アカウントでは、制限事項が異なります。 機能と制限については、[Azure Storage のスケーラビリティとパフォーマンスのターゲット](../../../storage/common/scalability-targets-standard-account.md)に関するページをご覧ください。
 
-Standard Storage の場合、ストレージ アカウントごとに IOPS の制限があることに注意してください。 [Azure Storage のスケーラビリティとパフォーマンスのターゲット](../../../storage/common/scalability-targets-standard-account.md)に関する記事で、**合計要求レート**を含む行を参照してください。 Azure サブスクリプションあたりのストレージ アカウント数には初期制限もあります。 複数のストレージ アカウントにわたる大規模な SAP ランドスケープの場合は、これらのストレージ アカウントの制限に達しないよう、VHD を分散します。 1,000 を超える VHD が搭載された数百台の仮想マシンでこの作業を行うのは困難です。
+Standard Storage の場合、ストレージ アカウントごとに IOPS の制限があることに注意してください。 [Azure Storage のスケーラビリティとパフォーマンスのターゲット](../../../storage/common/scalability-targets-standard-account.md)に関する記事で、**合計要求レート** を含む行を参照してください。 Azure サブスクリプションあたりのストレージ アカウント数には初期制限もあります。 複数のストレージ アカウントにわたる大規模な SAP ランドスケープの場合は、これらのストレージ アカウントの制限に達しないよう、VHD を分散します。 1,000 を超える VHD が搭載された数百台の仮想マシンでこの作業を行うのは困難です。
 
-DBMS デプロイ用の Standard Storage を SAP ワークロードと組み合わせて使用することは推奨されないため、Standard Storage に関する参照事項と推奨事項は、この短い[記事](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)に限定されます
+SAP ワークロードと共に DBMS デプロイに Standard Storage を使用することはお勧めしません。 したがって、Standard Storage の参照と推奨事項は、この短い[記事](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)に限定されています。
 
 複数の Azure ストレージ アカウントにわたって VHD を計画しデプロイする管理作業を回避するため、Microsoft は、2017 年に [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) を発表しました。 マネージド ディスクは、Standard Storage と Premium Storage で使用できます。 非マネージド ディスクと比較したマネージド ディスクの主なメリットは次のとおりです。
 
@@ -180,7 +187,7 @@ DBMS デプロイ用の Standard Storage を SAP ワークロードと組み合�
 
 
 > [!IMPORTANT]
-> Azure Managed Disks の利点を考えると、一般の DBMS デプロイと SAP デプロイには Azure Managed Disks を使用することをお勧めします。
+> Azure Managed Disks の利点を考えると、一般の DBMS デプロイと SAP デプロイには Azure Managed Disks を使用することを強くお勧めします。
 >
 
 アンマネージド ディスクからマネージド ディスクに変換するには、以下を参照してください。
@@ -190,7 +197,7 @@ DBMS デプロイ用の Standard Storage を SAP ワークロードと組み合�
 
 
 ### <a name="caching-for-vms-and-data-disks"></a><a name="c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f"></a>VM とデータ ディスクのキャッシュ
-ディスクを VM にマウントする場合、Azure ストレージに配置されたこれらのディスクと VM 間の I/O トラフィックをキャッシュするかどうかを選択できます。 Standard Storage および Premium Storage は、この種類のキャッシュに 2 つの異なるテクノロジを使用します。
+ディスクを VM にマウントする場合、Azure ストレージに配置されたこれらのディスクと VM 間の I/O トラフィックをキャッシュするかどうかを選択できます。
 
 以下に示す推奨事項は、次のような標準 DBMS の I/O 特性を前提にしています。
 
@@ -208,7 +215,7 @@ Standard Storage で可能なキャッシュの種類は次のとおりです。
 
 一定の決まったパフォーマンスを得られるようにするには、DBMS 関連のデータ ファイル、ログおよび redo ファイル、およびテーブル スペースを含むすべてのディスクに対する Standard Storage のキャッシュを "**なし**" に設定します。 ベース VHD のキャッシュは既定のままにしておくことができます。
 
-Premium Storage については、次のキャッシュ オプションが存在します。
+Azure Premium Storage については、次のキャッシュ オプションが存在します。
 
 * なし
 * Read
@@ -216,9 +223,11 @@ Premium Storage については、次のキャッシュ オプションが存在
 * なし + 書き込みアクセラレータ (Azure M シリーズ VM の場合のみ)
 * 読み取り + 書き込みアクセラレータ (Azure M シリーズ VM の場合のみ)
 
-Premium Storage の場合は、SAP データベースの**データ ファイルに読み取りキャッシュ**を使用し、**ログ ファイルのディスクにキャッシュなし**を選択することをお勧めします。
+Premium Storage の場合は、SAP データベースの **データ ファイルに読み取りキャッシュ** を使用し、**ログ ファイルのディスクにキャッシュなし** を選択することをお勧めします。
 
 M シリーズのデプロイでは、DBMS のデプロイに Azure 書き込みアクセラレータを使用することをお勧めします。 Azure 書き込みアクセラレータの詳細、制限、およびデプロイについては、「[書き込みアクセラレータを有効にする](../../how-to-enable-write-accelerator.md)」を参照してください。
+
+Ultra ディスクと Azure NetApp Files では、キャッシュ オプションは提供されません。
 
 
 ### <a name="azure-nonpersistent-disks"></a>Azure の非永続的ディスク
@@ -227,11 +236,11 @@ Azure VM は、VM がデプロイされた後に非永続ディスクを提供�
 詳細については、[Azure の Windows VM 上の一時ドライブの解説](/archive/blogs/mast/understanding-the-temporary-drive-on-windows-azure-virtual-machines)に関するページを参照してください。
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows の非永続ディスク][Logo_Windows] Windows
 >
 > Azure VM の D ドライブは、Azure の計算ノード上のいくつかのローカル ディスクによってサポートされる非永続ドライブです。 これは非永続的であるため、ドライブ D の内容に加えられた変更は、VM を再起動すると失われます。 "変更" には、保存されたファイル、作成されたディレクトリ、インストールされたアプリケーションが含まれます。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux の非永続ディスク][Logo_Linux] Linux
 >
 > Linux Azure VM は、Azure の計算ノード上のローカル ディスクによってサポートされる非永続ドライブであるドライブを /mnt/resource に自動的にマウントします。 これは非永続的であるため、/mnt/resource 内のコンテンツに加えられた変更は、VM を再起動すると失われます。 "変更" には、保存されたファイル、作成されたディレクトリ、インストールされたアプリケーションが含まれます。
 >
@@ -247,7 +256,7 @@ Microsoft Azure Storage は、ベース VHD を、OS のほか、接続されて
 これ以外にも冗長化の方法があります。 詳細については、「[Azure Storage のレプリケーション](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)」をご覧ください。
 
 > [!NOTE]
->Premium Storage は、データベースとログおよび redo ファイルを格納するディスクのほか、DBMS VM に推奨される種類のストレージです。 Premium Storage で使用可能な冗長化の方法は LRS のみです。 そのため、別の Azure リージョンまたは可用性ゾーンへのデータベース データのレプリケーションを有効にするようにデータベースの方式を構成する必要があります。 データベースの方式には、SQL Server Always On、Oracle Data Guard、および HANA システム レプリケーションがあります。
+> Azure Premium Storage、Ultra ディスク、および Azure NetApp Files (SAP HANA 専用) は、DBMS VM と、データベース、ログ、および再実行のファイルを格納するディスクに推奨される種類のストレージです。 これらの種類のストレージで使用できる冗長化の方法は LRS のみです。 そのため、別の Azure リージョンまたは可用性ゾーンへのデータベース データのレプリケーションを有効にするようにデータベースの方式を構成する必要があります。 データベースの方式には、SQL Server Always On、Oracle Data Guard、および HANA システム レプリケーションがあります。
 
 
 > [!NOTE]
@@ -256,7 +265,7 @@ Microsoft Azure Storage は、ベース VHD を、OS のほか、接続されて
 
 
 ## <a name="vm-node-resiliency"></a>VM ノードの回復性
-Azure では、VM に複数の異なる SLA を提供しています。 詳細については、「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」の最新リリースを参照してください。 DBMS レイヤーは通常、SAP システムにおける可用性にとって非常に重要であるため、可用性セット、可用性ゾーン、およびメンテナンス イベントについて理解しておく必要があります。 これらの概念の詳細については、「[Azure での Windows 仮想マシンの可用性の管理](../../windows/manage-availability.md)」および [Azure での Linux 仮想マシンの可用性の管理](../../linux/manage-availability.md)に関するページを参照してください。
+Azure では、VM に複数の異なる SLA を提供しています。 詳細については、「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」の最新リリースを参照してください。 DBMS レイヤーは、SAP システムにおける可用性にとって非常に重要であるため、可用性セット、Availability Zones、およびメンテナンス イベントについて理解しておく必要があります。 これらの概念の詳細については、「[Azure での Windows 仮想マシンの可用性の管理](../../manage-availability.md)」および [Azure での Linux 仮想マシンの可用性の管理](../../manage-availability.md)に関するページを参照してください。
 
 SAP ワークロードを含む運用 DBMS シナリオの最小推奨事項は、次のとおりです。
 
@@ -276,9 +285,9 @@ Azure 可用性セットの設定方法については、[このチュートリ�
 これらのベスト プラクティスは、数百件もの顧客デプロイの結果です。
 
 - SAP アプリケーションがデプロイされている仮想ネットワークは、インターネットにアクセスできません。
-- データベース VM は、アプリケーション レイヤーと同じ仮想ネットワーク内で実行されます。
+- データベース VM は、アプリケーション層と同じ仮想ネットワーク内で実行され、SAP アプリケーション層とは別のサブネットに分離されます。
 - 仮想ネットワーク内の VM には、プライベート IP アドレスが静的に割り当てられます。 詳しくは、「[Azure における IP アドレスの種類と割り当て方法](../../../virtual-network/public-ip-addresses.md)」をご覧ください。
-- DBMS VM を出入りする際のルーティングの制限は、ローカルの DBMS VM にインストールされているファイアウォールでは設定 "*されません*"。 代わりに、トラフィック ルーティングは[ネットワーク セキュリティ グループ (NSG)](../../../virtual-network/security-overview.md) を使用して定義されます。
+- DBMS VM を出入りする際のルーティングの制限は、ローカルの DBMS VM にインストールされているファイアウォールでは設定 "*されません*"。 代わりに、トラフィック ルーティングは[ネットワーク セキュリティ グループ (NSG)](../../../virtual-network/network-security-groups-overview.md) を使用して定義されます。
 - DBMS VM へのトラフィックを分離および隔離するには、異なる NIC を VM に割り当てます。 各 NIC は異なる IP アドレスを取得し、異なる仮想ネットワーク サブネットに割り当てられます。 サブネットごとに異なる NSG ルールがあります。 ネットワーク トラフィックを分離または隔離するのは、ルーティングのための 1 つの手段です。 ネットワーク スループットのクォータを設定するためには使用されません。
 
 > [!NOTE]
@@ -286,8 +295,8 @@ Azure 可用性セットの設定方法については、[このチュートリ�
 >
 
 
-> [!IMPORTANT]
-> SAP NetWeaver、Hybris、または S/4HANA ベースの SAP システムの DBMS レイヤーと SAP アプリケーションの間の通信パスに[ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/)を構成することはサポートされていません。 この制限は、機能およびパフォーマンス上の理由からです。 SAP アプリケーション レイヤーと DBMS レイヤーの間の通信パスは、直接的なものである必要があります。 [アプリケーション セキュリティ グループ (ASG) および NSG ルール](../../../virtual-network/security-overview.md)で直接通信パスが許可されている場合、この制限にこれらの Azure ASG および NSG ルールは含まれません。 
+> [!WARNING]
+> SAP NetWeaver、Hybris、または S/4HANA ベースの SAP システムの DBMS レイヤーと SAP アプリケーションの間の通信パスに[ネットワーク仮想アプライアンス](https://azure.microsoft.com/solutions/network-appliances/)を構成することはサポートされていません。 この制限は、機能およびパフォーマンス上の理由からです。 SAP アプリケーション レイヤーと DBMS レイヤーの間の通信パスは、直接的なものである必要があります。 [アプリケーション セキュリティ グループ (ASG) および NSG ルール](../../../virtual-network/network-security-groups-overview.md)で直接通信パスが許可されている場合、この制限にこれらの Azure ASG および NSG ルールは含まれません。 
 >
 > ネットワーク仮想アプライアンスがサポートされないその他のシナリオは次のとおりです。
 >
@@ -298,13 +307,13 @@ Azure 可用性セットの設定方法については、[このチュートリ�
 >
 
 > [!IMPORTANT]
-> サポートされて "*いない*" もう 1 つの設計は、SAP アプリケーション レイヤーと DBMS レイヤーを、相互に[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)されていない異なる Azure 仮想ネットワークに分離することです。 異なる Azure 仮想ネットワークを使用するのではなく、Azure 仮想ネットワーク内のサブネットを使用して SAP アプリケーション レイヤーと DBMS レイヤーを分離することをお勧めします。 
+> サポートされて "*いない*" もう 1 つの設計は、SAP アプリケーション レイヤーと DBMS レイヤーを、相互に [ピアリング](../../../virtual-network/virtual-network-peering-overview.md)されていない異なる Azure 仮想ネットワークに分離することです。 異なる Azure 仮想ネットワークを使用するのではなく、Azure 仮想ネットワーク内のサブネットを使用して SAP アプリケーション レイヤーと DBMS レイヤーを分離することをお勧めします。 
 >
 > 推奨事項に従わず、代わりに 2 つのレイヤーを異なる仮想ネットワークに分離する場合は、2 つの仮想ネットワークを[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)する必要があります。 
 >
 > 2 つの[ピアリング](../../../virtual-network/virtual-network-peering-overview.md)された Azure 仮想ネットワーク間のネットワーク トラフィックは転送コストの影響を受ける点に注意してください。 SAP アプリケーション レイヤーと DBMS レイヤーの間で、数テラバイトもの膨大な量のデータが交換されます。 SAP アプリケーション レイヤーと DBMS レイヤーが 2 つのピアリングされた Azure 仮想ネットワーク間で分離されている場合、相当なコストが蓄積される可能性があります。
 
-Azure 可用性セット内の運用 DBMS デプロイに 2 つの VM を使用します。 また、SAP アプリケーション レイヤーと、2 つの DBMS VM への管理トラフィックおよび運用トラフィック用に別個のルーティングを使用します。 次の図を参照してください。
+Azure 可用性セット内または 2 つの Azure Availability Zones 間で、運用 DBMS デプロイに 2 つの VM を使用します。 また、SAP アプリケーション レイヤーと、2 つの DBMS VM への管理トラフィックおよび運用トラフィック用に別個のルーティングを使用します。 次の図を参照してください。
 
 ![2 つのサブネット内の 2 つの VM のダイアグラム](./media/virtual-machines-shared-sap-deployment-guide/general_two_dbms_two_subnets.PNG)
 
@@ -314,19 +323,13 @@ SQL Server Always On または HANA システム レプリケーションなど�
 
 データベース ノードでフェールオーバーが発生した場合、SAP アプリケーションを再構成する必要はありません。 代わりに、最も一般的な SAP アプリケーション アーキテクチャにより、プライベート仮想 IP アドレスに再接続されます。 その一方で、ロード バランサーはノードのフェールオーバーに反応して、プライベート仮想 IP アドレスへのトラフィックを 2 番目のノードにリダイレクトします。
 
-Azure では 2 つの異なる[ロード バランサーの SKU](../../../load-balancer/load-balancer-overview.md) を提供します。Basic SKU と Standard SKU です。 Azure 可用性ゾーン全体にデプロイする場合を除き、Basic のロード バランサー SKU を問題なく使用できます。
+Azure では 2 つの異なる[ロード バランサーの SKU](../../../load-balancer/load-balancer-overview.md) を提供します。Basic SKU と Standard SKU です。 セットアップと機能の利点に基づいて、Azure ロード バランサーの Standard SKU を使用する必要があります。 Standard バージョンのロード バランサーの大きな利点の 1 つは、データ トラフィックがロード バランサー自体を経由してルーティングされないことです。
 
-DBMS VM と SAP アプリケーション レイヤーの間のトラフィックは、常にロード バランサーを介してルーティングされるのでしょうか。 答えは、ロード バランサーの構成方法によって異なります。 
+内部ロード バランサーを構成する方法の例については、[チュートリアル: Azure Virtual Machines での SQL Server 可用性グループの手動構成](../../../azure-sql/virtual-machines/windows/availability-group-manually-configure-tutorial.md#create-an-azure-load-balancer)に関するページを参照してください。
 
-現時点では、DBMS VM への受信トラフィックは、常にロード バランサーを介してルーティングされます。 DBMS VM からアプリケーション レイヤー VM への送信トラフィック ルートは、ロード バランサーの構成によって異なります。 
+> [!NOTE]
+> パブリック IP アドレスのアクセスに関連する Basic SKU と Standard SKU の動作には違いがあります。 パブリック IP アドレスにアクセスするために Standard SKU の制限事項を回避する方法については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」のドキュメントを参照してください。
 
-ロード バランサーでは、DirectServerReturn のオプションが提供されます。 このオプションが構成されている場合、DBMS VM から SAP アプリケーション レイヤーに転送されるトラフィックは、ロード バランサーを介してルーティング "*されません*"。 代わりに、アプリケーション レイヤーに直接転送されます。 DirectServerReturn が構成されていない場合、SAP アプリケーション レイヤーへの返送トラフィックは、ロード バランサーを介してルーティングされます。
-
-SAP アプリケーション レイヤーと DBMS レイヤーの間に配置されているロード バランサーと組み合わせて DirectServerReturn を構成することをお勧めします。 この構成により、2 つのレイヤー間のネットワーク待ち時間が短縮されます。
-
-SQL Server の Always On でこの構成を設定する方法の例については、「[Azure で Always On 可用性グループの ILB リスナーを構成する](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)」を参照してください。
-
-公開済みの GitHub の JSON テンプレートを Azure 内の SAP インフラストラクチャ デプロイの参照として使用する場合は、この [SAP 3 層システム用テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md)を参考にしてください。 このテンプレートでは、ロード バランサーの適切な設定も確認できます。
 
 ### <a name="azure-accelerated-networking"></a>Azure Accelerated Networking
 Azure VM 間のネットワーク待ち時間をさらに短縮するには、[Azure 高速ネットワーク](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/)を選択することをお勧めします。 これを、(SAP アプリケーション レイヤーと SAP DBMS レイヤーの場合は特に) SAP ワークロード用の Azure VM をデプロイするときに使用します。
@@ -336,11 +339,11 @@ Azure VM 間のネットワーク待ち時間をさらに短縮するには、[A
 >
 
 ---
-> ![Windows][Logo_Windows] Windows
+> ![Windows 高速ネットワーク][Logo_Windows] Windows
 >
 > Windows 用の高速ネットワークを使用して VM をデプロイする方法については、「[高速ネットワークを使った Windows 仮想マシンの作成](../../../virtual-network/create-vm-accelerated-networking-powershell.md)」を参照してください。
 >
-> ![Linux][Logo_Linux] Linux
+> ![Linux 高速ネットワーク][Logo_Linux] Linux
 >
 > Linux ディストリビューションの詳細については、「[高速ネットワークを使った Linux 仮想マシンの作成](../../../virtual-network/create-vm-accelerated-networking-cli.md)」を参照してください。
 >

@@ -7,12 +7,12 @@ keywords: Azure Automation, DSC, PowerShell, State Configuration, Update Managem
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d10570efe49203f879cdceae776af5c3bc6991c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: e3986b7e8fc70f8662bed40b076897caa6165744
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448072"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182820"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 
@@ -35,7 +35,7 @@ Azure Automation の構成管理では、次の 2 つの機能にアクセスで
 
 ### <a name="change-tracking-and-inventory"></a>変更履歴とインベントリ
 
-変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。 この機能の詳細については、[変更履歴とインベントリ](change-tracking.md)に関する記事を参照してください。
+変更履歴とインベントリでは、変更履歴とインベントリの機能を組み合わせて、仮想マシンとサーバー インフラストラクチャの変更を追跡できます。 このサービスを利用すれば、環境内のサービス、デーモン、ソフトウェア、レジストリ、ファイル全体にわたって変更を追跡し、不要な変更を診断したりアラートを生成したりすることができます。 インベントリのサポートにより、ゲスト リソースでクエリを実行して、インストール済みのアプリケーションやその他の構成アイテムを可視化できます。 この機能の詳細については、[変更履歴とインベントリ](change-tracking/overview.md)に関する記事を参照してください。
 
 ### <a name="azure-automation-state-configuration"></a>Azure Automation State Configuration
 
@@ -43,7 +43,7 @@ Azure Automation の構成管理では、次の 2 つの機能にアクセスで
 
 ## <a name="update-management"></a>更新管理
 
-Azure Automation には、Windows システムと Linux システムのハイブリッド環境全体に対する[更新管理](update-management/update-mgmt-overview.md)機能が含まれています。 更新管理を使用することで、Azure を始めとするクラウドとオンプレミスの垣根を越えて更新の準拠状態を可視化することができます。 この機能を使用すると、デプロイ スケジュールを作成して、定義済みのメンテナンス期間中に更新プログラムがインストールされるように調整できます。 マシンにインストールすべきでない更新プログラムは、更新管理機能を使用して、デプロイから除外することができます。
+Azure Automation には、Windows システムと Linux システムのハイブリッド環境全体に対する[更新管理](./update-management/overview.md)機能が含まれています。 更新管理を使用することで、Azure を始めとするクラウドとオンプレミスの垣根を越えて更新の準拠状態を可視化することができます。 この機能を使用すると、デプロイ スケジュールを作成して、定義済みのメンテナンス期間中に更新プログラムがインストールされるように調整できます。 マシンにインストールすべきでない更新プログラムは、更新管理機能を使用して、デプロイから除外することができます。
 
 ## <a name="shared-capabilities"></a>共有機能
 
@@ -64,7 +64,7 @@ Azure Automation は、環境を大きな規模で容易に自動化して構成
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-Azure Automation では、Automation アカウントとそのリソースへのアクセスを制限するロールベースのアクセス制御 (RBAC) がサポートされています。 Automation アカウント、Runbook、ジョブに対する RBAC の構成について詳しくは、[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)に関するページを参照してください。
+Azure Automation では、Automation アカウントとそのリソースへのアクセスを制限する Azure ロールベースのアクセス制御 (Azure RBAC) がサポートされています。 Automation アカウント、Runbook、ジョブに対する Azure RBAC の構成について詳しくは、[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)に関するページを参照してください。
 
 ### <a name="source-control-integration"></a>ソース管理の統合
 
@@ -86,7 +86,7 @@ Azure Automation は、インフラストラクチャとアプリケーション
 * **変更の検出** - 構成エラーを引き起こす可能性がある変更を識別し、運用上のコンプライアンスを向上させます。
 * **監視** - 問題の原因となっているマシンの変更を特定し、修復するか管理システムにエスカレートします。
 * **保護する** - セキュリティ アラートが発生した場合にマシンを検疫します。 ゲスト要件を設定します。
-* **設定** - チーム用の RBAC を設定します。 未使用のリソースを回収します。
+* **設定** - チーム用の Azure RBAC を設定します。 未使用のリソースを回収します。
 
 [!INCLUDE [azure-lighthouse-supported-service](../../includes/azure-lighthouse-supported-service.md)]
 

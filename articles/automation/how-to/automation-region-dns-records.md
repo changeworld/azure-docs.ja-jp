@@ -3,14 +3,14 @@ title: Azure Automation で使用される Azure データセンターの DNS �
 description: この記事では、その Automation アカウントをホストしている特定の Azure リージョンへの通信を制限するときに Azure Automation 機能に必要とされる DNS レコードについて説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 07/23/2020
+ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 8630afa7410aad81a7a3c61540fc74702fc6481c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117185"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576002"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure Automation によって使用される Azure リージョンの DNS レコード
 
@@ -21,7 +21,7 @@ ms.locfileid: "87117185"
 * Webhooks
 
 >[!NOTE]
->新しいレコードでは、バージョン 1.6.10.2 以上でない限り、Linux Hybrid Runbook Worker の登録が失敗します。 マシンが更新されたバージョンの worker ロールを受信し、それらの新しいレコードを使用するには、より新しいバージョンの [Linux 用の Log Analytics エージェント](../../azure-monitor/platform/agent-linux.md)にアップグレードする必要があります。 既存のマシンは、引き続き問題なく動作します。  
+>新しいレコードでは、バージョン 1.6.10.2 以上でない限り、Linux Hybrid Runbook Worker の登録が失敗します。 マシンが更新されたバージョンの worker ロールを受信し、それらの新しいレコードを使用するには、より新しいバージョンの [Linux 用の Log Analytics エージェント](../../azure-monitor/agents/agent-linux.md)にアップグレードする必要があります。 既存のマシンは、引き続き問題なく動作します。  
 
 ## <a name="dns-records-per-region"></a>リージョンあたりの DNS レコード数
 
@@ -89,6 +89,9 @@ DNS レコードの `<accountId>` は、**URL** の値の Automation アカウ�
 ![Automation アカウントの主キーのページ](./media/automation-region-dns-records/automation-account-keys.png)
 
 **[URL]** フィールド - `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>` から、*accounts/* の後の値をコピーします。
+
+> [!NOTE]
+> Webhook および agentservice DNS のすべてのレコードは、Private Link をサポートするために新しいスタイルの DNS レコードに更新されています。 JRDS DNS レコードの場合、古いスタイルと新しいスタイル両方の DNS レコードがサポートされます。 Private Link を使用していない場合は、古いスタイルの DNS レコードが表示されますが、Private Link を使用している場合は、新しいスタイルの DNS レコードが表示されます。
 
 [例外](../automation-runbook-execution.md#exceptions)を定義するときは、一覧に示されているアドレスを使用することをお勧めします。 リージョン名の代わりにリージョン IP アドレスの一覧を入手するには、Microsoft ダウンロード センターから次のクラウド環境の JSON ファイルをダウンロードします。
 

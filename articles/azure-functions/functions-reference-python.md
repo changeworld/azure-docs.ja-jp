@@ -2,20 +2,27 @@
 title: Azure Functions の Python 開発者向けリファレンス
 description: Python を使用して関数を開発する方法について説明します
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642199"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044257"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
 この記事では、Python を使用した Azure Functions の開発について紹介します。 以下の内容は、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。
 
-Python でのスタンドアロンの関数のサンプル プロジェクトについては、[Python 関数のサンプル](/samples/browse/?products=azure-functions&languages=python)を参照してください。
+Python 開発者は、次のいずれかの記事にも興味があるかもしれません。
+
+| 作業の開始 | 概念| シナリオとサンプル |
+| -- | -- | -- | 
+| <ul><li>[Visual Studio Code を使用した Python 関数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[ターミナルとコマンド プロンプトを使用した Python 関数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch を使用した画像の分類](machine-learning-pytorch.md)</li><li>[Azure Automation サンプル](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow を使用した機械学習](functions-machine-learning-tensorflow.md)</li><li>[Python サンプルの参照](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+
+> [!NOTE]
+> [Python ベースの Azure 関数を Windows 上のローカルで開発](create-first-function-vs-code-python.md#run-the-function-locally)できますが、Python は、Azure で実行されている場合、Linux ベースのホスティング プランでのみサポートされます。 サポートされている[オペレーティング システムとランタイム](functions-scale.md#operating-systemruntime)の組み合わせの一覧を参照してください。
 
 ## <a name="programming-model"></a>プログラミング モデル
 
@@ -44,7 +51,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-[azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
+[azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
 
 ## <a name="alternate-entry-point"></a>代替エントリ ポイント
 
@@ -65,72 +72,70 @@ def main(req: azure.functions.HttpRequest) -> str:
 Python 関数プロジェクトの推奨フォルダー構造は、次の例のようになります。
 
 ```
- __app__
- | - my_first_function
+ <project_root>/
+ | - .venv/
+ | - .vscode/
+ | - my_first_function/
  | | - __init__.py
  | | - function.json
  | | - example.py
- | - my_second_function
+ | - my_second_function/
  | | - __init__.py
  | | - function.json
- | - shared_code
+ | - shared_code/
+ | | - __init__.py
  | | - my_first_helper_function.py
  | | - my_second_helper_function.py
+ | - tests/
+ | | - test_my_second_function.py
+ | - .funcignore
  | - host.json
+ | - local.settings.json
  | - requirements.txt
  | - Dockerfile
- tests
 ```
-メイン プロジェクト フォルダー (\_\_app\_\_) には、次のファイルを含めることができます。
+メイン プロジェクト フォルダー (<project_root>) には、次のファイルを含めることができます。
 
 * *local.settings.json*:ローカルで実行するときに、アプリの設定と接続文字列を格納するために使用されます。 このファイルは Azure に公開されません。 詳細については、「[local.settings.file](functions-run-local.md#local-settings-file)」に関するページを参照してください。
-* *requirements.txt*:Azure に公開するときにシステムによってインストールされるパッケージの一覧が含まれます。
+* *requirements.txt*:Azure に公開するときにシステムによってインストールされる Python パッケージの一覧が含まれます。
 * *host.json*:関数アプリ内のすべての関数に影響するグローバル構成オプションが含まれます。 このファイルは Azure に公開されます。 ローカルで実行する場合は、すべてのオプションがサポートされるわけではありません。 詳細については、「[host.json](functions-host-json.md)」に関するページを参照してください。
-* *.funcignore*:(省略可能) Azure に発行しないファイルを宣言します。
+* *.vscode/* :(省略可能) ストア VSCode 構成が含まれます。 詳細については、[VSCode 設定](https://code.visualstudio.com/docs/getstarted/settings)に関するページを参照してください。
+* *.venv/* :(省略可能) ローカル開発で使用される Python 仮想環境が含まれます。
 * *Dockerfile*:(省略可能) [カスタム コンテナー](functions-create-function-linux-custom-image.md)でプロジェクトを発行するときに使用されます。
+* *tests/* :(省略可能) 関数アプリのテスト ケースが含まれます。
+* *.funcignore*:(省略可能) Azure に発行しないファイルを宣言します。 通常、このファイルには、エディター設定を無視する場合は `.vscode/`、ローカルの Python 仮想環境を無視する場合は `.venv/`、テスト ケースを無視する場合は `tests/`、ローカル アプリの設定を発行しない場合は `local.settings.json` が含まれます。
 
 各関数には、独自のコード ファイルとバインディング構成ファイル (function.json) があります。
 
-Azure の関数アプリにプロジェクトをデプロイする場合は、メイン プロジェクト ( *\_\_app\_\_* ) フォルダーの内容全体をパッケージに含める必要がありますが、フォルダー自体は含めないでください。 テストは、プロジェクト フォルダーとは別のフォルダー (この例では `tests`) に保存することをお勧めします。 これにより、アプリでテスト コードをデプロイすることを防ぐことができます。 詳細については、「[単体テスト](#unit-testing)」を参照してください。
+Azure の関数アプリにプロジェクトをデプロイする場合は、メイン プロジェクト ( *<project_root>* ) フォルダーの内容全体をパッケージに含める必要がありますが、フォルダー自体は含めないでください。つまり、`host.json` はパッケージ ルートに存在する必要があります。 テストは、他の関数と一緒に 1 つのフォルダーに保存することをお勧めします (この例では `tests/`)。 詳細については、「[単体テスト](#unit-testing)」を参照してください。
 
 ## <a name="import-behavior"></a>インポートの動作
 
-明示的な相対参照と絶対参照の両方を使用して、関数コードにモジュールをインポートすることができます。 以下のインポートは、上記のフォルダー構造に基づいて、関数ファイル *\_\_app\_\_\my\_first\_function\\_\_init\_\_.py* 内から機能します。
+絶対と相対の各参照の両方を使用して、関数コードにモジュールをインポートすることができます。 次のインポートは、上記のフォルダー構造に基づいて、関数ファイル *<project_root>\my\_first\_function\\_\_init\_\_.py* 内から機能します。
 
 ```python
-from . import example #(explicit relative)
+from shared_code import my_first_helper_function #(absolute)
 ```
 
 ```python
-from ..shared_code import my_first_helper_function #(explicit relative)
+import shared_code.my_second_helper_function #(absolute)
 ```
 
 ```python
-from __app__ import shared_code #(absolute)
+from . import example #(relative)
+```
+
+> [!NOTE]
+>  *shared_code/* フォルダーには、絶対インポート構文を使用するときに Python パッケージとしてマークするための \_\_init\_\_.py ファイルが含まれている必要があります。
+
+次の \_\_app\_\_ インポートおよび最上位を超える相対インポートは、静的な型チェッカーでサポートされておらず、Python テスト フレームワークでサポートされていないため非推奨です。
+
+```python
+from __app__.shared_code import my_first_helper_function #(deprecated __app__ import)
 ```
 
 ```python
-import __app__.shared_code #(absolute)
-```
-
-以下のインポートは、同じファイル内からは "*機能しません*"。
-
-```python
-import example
-```
-
-```python
-from example import some_helper_code
-```
-
-```python
-import shared_code
-```
-
-共有コードは、 *\_\_app\_\_* 内の別のフォルダーに保管する必要があります。 *shared\_code* フォルダー内のモジュールを参照するには、次の構文を使用します。
-
-```python
-from __app__.shared_code import my_first_helper_function
+from ..shared_code import my_first_helper_function #(deprecated beyond top-level relative import)
 ```
 
 ## <a name="triggers-and-inputs"></a>トリガーと入力
@@ -194,7 +199,7 @@ def main(req: func.HttpRequest,
 
 出力バインディングの値として関数の戻り値を使用するには、バインディングの `name` プロパティを `function.json` 内の `$return` に設定する必要があります。
 
-複数の出力を生成するには、[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python) インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
+複数の出力を生成するには、[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
 
 ```json
 {
@@ -295,47 +300,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 同様に、返される [HttpResponse] オブジェクトに応答メッセージの `status_code` および `headers` を設定できます。
 
-## <a name="scaling-and-concurrency"></a>スケーリングとコンカレンシー
+## <a name="scaling-and-performance"></a>スケーリングとパフォーマンス
 
-既定では、Azure Functions は、アプリケーションの負荷を自動的に監視し、必要に応じて Python 用に追加のホスト インスタンスを作成します。 関数は、さまざまなトリガー型の組み込み（ユーザー設定不可）しきい値を使用して、メッセージの経過時間や QueueTrigger のキューサイズなど、インスタンスを追加するタイミングを決定します。 詳細については、「[従量課金プランと Premium プランのしくみ](functions-scale.md#how-the-consumption-and-premium-plans-work)」をご覧ください。
-
-多くのアプリケーションでは、このスケーリング動作で十分です。 ただし、次のいずれかの特性を持つアプリケーションは、効果的にスケーリングできない場合があります。
-
-- アプリケーションで多くの同時呼び出しを処理する必要がある。
-- アプリケーションが大量の I/O イベントを処理する。
-- アプリケーションが I/O バインドされている。
-
-そのような場合、非同期パターンを採用し、複数の言語ワーカー プロセスを使用することで、パフォーマンスをさらに向上させることができます。
-
-### <a name="async"></a>非同期
-
-Python はシングルスレッド ランタイムであるため、Python のホスト インスタンスは一度に 1 つの関数呼び出ししか処理できません。 大量の I/O イベントを処理するアプリケーションや、I/O バインドされているアプリケーションでは、関数を非同期に実行することによってパフォーマンスを向上させることができます。
-
-関数を非同期に実行するには、`async def` ステートメントを使用します。これにより、[asyncio](https://docs.python.org/3/library/asyncio.html) を使用して関数が直接実行されます。
-
-```python
-async def main():
-    await some_nonblocking_socket_io_op()
-```
-
-`async` キーワードを持たない関数は、自動的に asyncio スレッド プールで実行されます。
-
-```python
-# Runs in an asyncio thread-pool
-
-def main():
-    some_blocking_socket_io()
-```
-
-### <a name="use-multiple-language-worker-processes"></a>複数の言語ワーカー プロセスを使用する
-
-既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用して、ホストごとのワーカー プロセスの数を増やすことができます (最大 10)。 次に、Azure Functions は、これらのワーカー間で同時関数呼び出しを均等に分散しようとします。
-
-FUNCTIONS_WORKER_PROCESS_COUNT は、需要に応じてアプリケーションをスケールアウトするときに Functions が作成する各ホストに適用されます。
+Python 関数アプリのスケーリングとパフォーマンスのベスト プラクティスについては、[Python のスケーリングとパフォーマンスに関する記事](python-scale-performance-reference.md)をご覧ください。
 
 ## <a name="context"></a>Context
 
-実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) 引数を含めます。
+実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) 引数を含めます。
 
 次に例を示します。
 
@@ -348,7 +319,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python) クラスには次の文字列属性が含まれています。
+[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) クラスには次の文字列属性が含まれています。
 
 `function_directory` 関数が実行されるディレクトリです。
 
@@ -398,7 +369,7 @@ Azure Functions では次の Python バージョンがサポートされてい�
 
 | Functions バージョン | Python<sup>*</sup> バージョン |
 | ----- | ----- |
-| 3.x | 3.8<br/>3.7<br/>3.6 |
+| 3.x | 3.9 (プレビュー) <br/> 3.8<br/>3.7<br/>3.6 |
 | 2.x | 3.7<br/>3.6 |
 
 <sup>*</sup>公式 CPython ディストリビューション
@@ -443,7 +414,7 @@ func azure functionapp publish <APP_NAME>
 
 `<APP_NAME>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。
 
-[Visual Studio Code の Azure Functions 拡張機能](functions-create-first-function-vs-code.md#publish-the-project-to-azure)も、既定ではリモート ビルドを要求します。
+[Visual Studio Code の Azure Functions 拡張機能](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure)も、既定ではリモート ビルドを要求します。
 
 ### <a name="local-build"></a>ローカル ビルド
 
@@ -489,12 +460,14 @@ func azure functionapp publish <APP_NAME> --no-build
 
 Python で記述された関数は、標準的なテスト フレームワークを使用して、他の Python コードのようにテストできます。 ほとんどのバインドでは、`azure.functions` パッケージから適切なクラスのインスタンスを作成することにより、モック入力オブジェクトを作成できます。 [`azure.functions`](https://pypi.org/project/azure-functions/) パッケージはすぐには利用できないため、上記の「[パッケージ管理](#package-management)」セクションの説明に従って、`requirements.txt` ファイルを使用してインストールしてください。
 
-たとえば、次に示すのは、HTTP によってトリガーされる関数のモック テストです。
+*my_second_function* を例にとると、次に示すのは、HTTP によってトリガーされる関数のモック テストです。
+
+最初に、 *<project_root>/my_second_function/function.json* ファイルを作成し、この関数を http トリガーとして定義する必要があります。
 
 ```json
 {
   "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
+  "entryPoint": "main",
   "bindings": [
     {
       "authLevel": "function",
@@ -515,106 +488,72 @@ Python で記述された関数は、標準的なテスト フレームワーク
 }
 ```
 
+これで、*my_second_function* と *shared_code.my_second_helper_function* を実装できます。
+
 ```python
-# __app__/HttpTrigger/__init__.py
+# <project_root>/my_second_function/__init__.py
 import azure.functions as func
 import logging
 
-def my_function(req: func.HttpRequest) -> func.HttpResponse:
-    logging.info('Python HTTP trigger function processed a request.')
+# Use absolute import to resolve shared_code modules
+from shared_code import my_second_helper_function
 
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
+# Define an http trigger which accepts ?value=<int> query parameter
+# Double the value and return the result in HttpResponse
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Executing my_second_function.')
 
-    if name:
-        return func.HttpResponse(f"Hello {name}")
-    else:
-        return func.HttpResponse(
-             "Please pass a name on the query string or in the request body",
-             status_code=400
-        )
+    initial_value: int = int(req.params.get('value'))
+    doubled_value: int = my_second_helper_function.double(initial_value)
+
+    return func.HttpResponse(
+      body=f"{initial_value} * 2 = {doubled_value}",
+      status_code=200
+    )
 ```
 
 ```python
-# tests/test_httptrigger.py
+# <project_root>/shared_code/__init__.py
+# Empty __init__.py file marks shared_code folder as a Python package
+```
+
+```python
+# <project_root>/shared_code/my_second_helper_function.py
+
+def double(value: int) -> int:
+  return value * 2
+```
+
+http トリガーのテスト ケースの記述を開始できます。
+
+```python
+# <project_root>/tests/test_my_second_function.py
 import unittest
 
 import azure.functions as func
-from __app__.HttpTrigger import my_function
+from my_second_function import main
 
 class TestFunction(unittest.TestCase):
-    def test_my_function(self):
+    def test_my_second_function(self):
         # Construct a mock HTTP request.
         req = func.HttpRequest(
             method='GET',
             body=None,
-            url='/api/HttpTrigger',
-            params={'name': 'Test'})
+            url='/api/my_second_function',
+            params={'value': '21'})
 
         # Call the function.
-        resp = my_function(req)
+        resp = main(req)
 
         # Check the output.
         self.assertEqual(
             resp.get_body(),
-            b'Hello Test',
+            b'21 * 2 = 42',
         )
 ```
 
-キューによってトリガーされる関数の別の例を次に示します。
+`.venv` の Python 仮想環境内で、任意の Python テストフレームワーク (例: `pip install pytest`) をインストールします。 単純に `pytest tests` を実行して、テスト結果を確認します。
 
-```json
-{
-  "scriptFile": "__init__.py",
-  "entryPoint": "my_function",
-  "bindings": [
-    {
-      "name": "msg",
-      "type": "queueTrigger",
-      "direction": "in",
-      "queueName": "python-queue-items",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
-
-```python
-# __app__/QueueTrigger/__init__.py
-import azure.functions as func
-
-def my_function(msg: func.QueueMessage) -> str:
-    return f'msg body: {msg.get_body().decode()}'
-```
-
-```python
-# tests/test_queuetrigger.py
-import unittest
-
-import azure.functions as func
-from __app__.QueueTrigger import my_function
-
-class TestFunction(unittest.TestCase):
-    def test_my_function(self):
-        # Construct a mock Queue message.
-        req = func.QueueMessage(
-            body=b'test')
-
-        # Call the function.
-        resp = my_function(req)
-
-        # Check the output.
-        self.assertEqual(
-            resp,
-            'msg body: test',
-        )
-```
 ## <a name="temporary-files"></a>一時ファイル
 
 `tempfile.gettempdir()` メソッドは一時フォルダーを返します。Linux では `/tmp` です。 アプリケーションは、実行中に関数が生成および使用する一時ファイルを格納するためにこのディレクトリを使用できます。
@@ -652,6 +591,7 @@ Python 標準ライブラリには、各 Python ディストリビューショ�
 * [Python 3.6 標準ライブラリ](https://docs.python.org/3.6/library/)
 * [Python 3.7 標準ライブラリ](https://docs.python.org/3.7/library/)
 * [Python 3.8 標準ライブラリ](https://docs.python.org/3.8/library/)
+* [Python 3.9 標準ライブラリ](https://docs.python.org/3.9/library/)
 
 ### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python worker の依存関係
 
@@ -679,7 +619,7 @@ Python worker の Docker イメージにプレインストールされている�
 |  Functions ランタイム  | Debian のバージョン | Python のバージョン |
 |------------|------------|------------|
 | バージョン 2.x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| バージョン 3.x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| バージョン 3.x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile)<br/> [Python 3.9](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python39/python39.Dockerfile)|
 
 ## <a name="cross-origin-resource-sharing"></a>クロス オリジン リソース共有
 
@@ -700,7 +640,7 @@ CORS は、Python 関数アプリでは完全にサポートされています�
 
 詳細については、次のリソースを参照してください。
 
-* [Azure Functions パッケージ API のドキュメント](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Azure Functions パッケージ API のドキュメント](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Blob Storage のバインド](functions-bindings-storage-blob.md)
@@ -708,6 +648,8 @@ CORS は、Python 関数アプリでは完全にサポートされています�
 * [Queue Storage のバインド](functions-bindings-storage-queue.md)
 * [タイマー トリガー](functions-bindings-timer.md)
 
+[問題がある場合は、お知らせください。](https://aka.ms/python-functions-ref-survey)
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true

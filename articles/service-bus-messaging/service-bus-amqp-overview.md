@@ -2,23 +2,25 @@
 title: Azure Service Bus での AMQP 1.0 の概要
 description: オープン標準プロトコルである Advanced Message Queuing Protocol (AMQP) が Azure Service Bus によってどのようにサポートされているかについて説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.date: 02/17/2021
+ms.openlocfilehash: b2ca126312f5fc3da2a7ff6e20a9ade252f489f1
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066340"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100653885"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>Service Bus での AMQP 1.0 サポート
-Azure Service Bus クラウド サービスとオンプレミスの [Service Bus for Windows Server (Service Bus 1.1)](/previous-versions/service-bus-archive/dn282144(v=azure.100)) では、Advanced Message Queueing Protocol (AMQP) 1.0 をサポートしています。 AMQP を使用すると、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。 異なる言語とフレームワークを使用して作成され、異なるオペレーティング システムで実行可能であるコンポーネントを使用して、アプリケーションを構築できます。 これらのコンポーネントはすべて Service Bus に接続でき、構造化されたビジネス メッセージを効率よく完全な忠実度でシームレスに交換できます。
+Azure Service Bus クラウド サービスでは、主要な通信手段として [Advanced Message Queuing Protocol (AMQP) 1.0](http://docs.oasis-open.org/amqp/core/v1.0/amqp-core-overview-v1.0.html) が使用されています。 Microsoft は、AMQP を開発および進化させるために、過去 10 年間にわたって、お客様および競合するメッセージング ブローカーのベンダーの両方を含む、業界全体のパートナーと協力して、[OASIS AMQP 技術委員会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)において新しい拡張機能を開発してきました。 AMQP 1.0 は、ISO/IEC 標準です ([ISO 19464:20149](https://www.iso.org/standard/64955.html))。 
+
+AMQP を使用すると、ベンダーおよび実装に中立で、オープンな標準プロトコルを使用したクロス プラットフォームのハイブリッド アプリケーションをビルドできます。 異なる言語とフレームワークを使用して作成され、異なるオペレーティング システムで実行可能であるコンポーネントを使用して、アプリケーションを構築できます。 これらのコンポーネントはすべて Service Bus に接続でき、構造化されたビジネス メッセージを効率よく完全な忠実度でシームレスに交換できます。
 
 ## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>概要: AMQP 1.0 の紹介とその重要な理由
-これまで、メッセージ指向のミドルウェア製品では、クライアント アプリケーションとブローカーの間の通信に独自プロトコルが使用されてきました。 つまり、特定のベンダーのメッセージング ブローカーを選択すると、そのベンダーのライブラリを使用してクライアント アプリケーションをそのブローカーに接続する必要があります。 この結果、アプリケーションを別の製品に移植するには、接続するすべてのアプリケーションをコード変更する必要があるため、そのベンダーへの依存の度合いが高くなります。 
+これまで、メッセージ指向のミドルウェア製品では、クライアント アプリケーションとブローカーの間の通信に独自プロトコルが使用されてきました。 つまり、特定のベンダーのメッセージング ブローカーを選択すると、そのベンダーのライブラリを使用してクライアント アプリケーションをそのブローカーに接続する必要があります。 この結果、アプリケーションを別の製品に移植するには、接続するすべてのアプリケーションをコード変更する必要があるため、そのベンダーへの依存の度合いが高くなります。 Java コミュニティでは、Java Message Service (JMS) や Spring Framework の抽象化などの言語固有の API 標準によってその苦労がいくらか軽減されていますが、機能の範囲が非常に狭く、他の言語を使用する開発者は考慮されていません。
 
-さらに、異なるベンダーのメッセージング ブローカーを接続するのは面倒であり、 通常は、システム間でメッセージを移動し、独自のメッセージ形式間で変換を行うためにアプリケーション レベルのブリッジが必要になります。 これは頻繁に見られる要件です。たとえば、以前の異種システムに新しい統合インターフェイスを提供した場合や、合併後に IT システムを統合した場合などです。
+さらに、異なるベンダーのメッセージング ブローカーを接続するのは面倒であり、 通常は、システム間でメッセージを移動し、独自のメッセージ形式間で変換を行うためにアプリケーション レベルのブリッジが必要になります。 これは頻繁に見られる要件です。たとえば、以前の異種システムに新しい統合インターフェイスを提供した場合や、合併後に IT システムを統合した場合などです。 AMQP を使用すると、接続ブローカーを直接相互接続できます。たとえば、[Apache Qpid Dispatch Router](https://qpid.apache.org/components/dispatch-router/index.html) のようなルーターや、[RabbitMQ](service-bus-integrate-with-rabbitmq.md) のようなブローカーネイティブの "shovels" などのルーターを使用できます。
 
-ソフトウェア業界は動きの速いビジネスです。新しいプログラミング言語やアプリケーション フレームワークがときには困惑するほどのペースで導入されます。 同様に、IT システムの要件は時間の経過と共に進化しているため、開発者は最新のプラットフォームの機能を活用しようとします。 また、選択したメッセージング ベンダーがプラットフォームをサポートしていないこともあります。 独自のメッセージング プロトコルのため、他のベンダーが新しいプラットフォームのライブラリを提供することはできません。 このため、メッセージング製品を継続して使用できるようにするには、ゲートウェイまたはブリッジの構築などの方法を使用する必要があります。
+ソフトウェア業界は動きの速いビジネスです。新しいプログラミング言語やアプリケーション フレームワークがときには困惑するほどのペースで導入されます。 同様に、IT システムの要件は時間の経過と共に進化しているため、開発者は最新のプラットフォームの機能を活用しようとします。 また、選択したメッセージング ベンダーがプラットフォームをサポートしていないこともあります。 メッセージング プロトコルが独自のものである場合、他のベンダーが新しいプラットフォームのライブラリを提供することはできません。 このため、メッセージング製品を継続して使用できるようにするには、ゲートウェイまたはブリッジの構築などの方法を使用する必要があります。
 
 AMQP (Advanced Message Queuing Protocol) 1.0 はこのような問題に促されて開発されました。 ほとんどの金融サービス企業と同じようにメッセージ指向ミドルウェアのヘビー ユーザーである JP Morgan Chase で生み出されました。 目的はシンプルです。つまり、さまざまな言語、フレームワーク、オペレーティング システムを使用して構築されたコンポーネント (すべて広範なサプライヤーの最良のコンポーネントを使用) を使用してメッセージ ベースのアプリケーションを作成できるようにする、オープン標準メッセージング プロトコルを作ることです。
 
@@ -40,6 +42,8 @@ AMQP 1.0 は、2008 年以降、20 社を超える企業 (テクノロジ サプ
 * **テクノロジ ベンダー**: Axway Software、Huawei Technologies、IIT Software、INETCO Systems、Kaazing、Microsoft、Mitre Corporation、Primeton Technologies、Progress Software、Red Hat、SITA、Software AG、Solace Systems、VMware、WSO2、Zenika。
 * **ユーザー企業**: Bank of America、Credit Suisse、Deutsche Boerse、Goldman Sachs、JPMorgan Chase。
 
+[OASIS AMQP 技術委員会](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)の現在の議長は、Red Hat と Microsoft です。
+
 オープン標準の利点としては、次のような点がよく挙げられます。
 
 * ベンダー ロックインの可能性が下がる
@@ -50,7 +54,7 @@ AMQP 1.0 は、2008 年以降、20 社を超える企業 (テクノロジ サプ
 * リスクが低く扱いやすい
 
 ## <a name="amqp-10-and-service-bus"></a>AMQP 1.0 と Service Bus
-Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッセージング機能 (Service Bus キューとトピック発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できるようになります。 さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
+Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッセージング機能 (Service Bus キューと発行/サブスクライブ) をさまざまなプラットフォームから効率的なバイナリ プロトコルを使って利用できます。 さらに、さまざまな言語、フレームワーク、およびオペレーティング システムを使って作成されたコンポーネントで構成されたアプリケーションを作成できます。
 
 次の図は、標準の Java Message Service (JMS) API を使用して記述された Linux で実行される Java クライアントと、Windows で実行される .NET クライアントが、AMQP 1.0 を使用して Service Bus 経由でメッセージを交換する、サンプルのデプロイメントを示しています。
 
@@ -58,32 +62,30 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 
 **図 1: Service Bus と AMQP 1.0 を使用したクロスプラットフォーム メッセージングを示すサンプルのデプロイメント シナリオ**
 
-現時点では、次のクライアント ライブラリが Service Bus で機能することがわかっています。
+Azure SDK 経由でサポートされているすべての Service Bus クライアント ライブラリが AMQP 1.0 を使用します。
 
-| 言語 | ライブラリ |
-| --- | --- |
-| Java |Apache Qpid Java Message Service (JMS) クライアント<br/>IIT Software SwiftMQ Java クライアント |
-| C |Apache Qpid Proton-C |
-| PHP |Apache Qpid Proton-PHP |
-| Python |Apache Qpid Proton-Python |
-| C# |AMQP .NET Lite |
+- [.NET 用 Azure Service Bus](/dotnet/api/overview/azure/service-bus?preserve-view=true)
+- [Java 用 Azure Service Bus ライブラリ](/java/api/overview/azure/servicebus?preserve-view=true)
+- [Java JMS 2.0 用 Azure Service Bus プロバイダー](how-to-use-java-message-service-20.md)
+- [JavaScript および TypeScript 用の Azure Service Bus モジュール](/javascript/api/overview/azure/service-bus?preserve-view=true)
+- [Python 用 Azure Service Bus ライブラリ](/python/api/overview/azure/servicebus?preserve-view=true)
 
-**図 2: AMQP 1.0 クライアント ライブラリの表**
+[!INCLUDE [service-bus-websockets-options](../../includes/service-bus-websockets-options.md)]
+
+また、AMQP 1.0 準拠の任意のプロトコル スタックから Service Bus を使用することもできます。
+
+[!INCLUDE [messaging-oss-amqp-stacks.md](../../includes/messaging-oss-amqp-stacks.md)]
 
 ## <a name="summary"></a>まとめ
 * AMQP 1.0 は、プラットフォーム間共通のハイブリッド アプリケーションを構築するために使用できる、信頼性の高いオープンなメッセージング プロトコルです。 AMQP 1.0 は OASIS の標準です。
-* AMQP 1.0 サポートは、Azure Service Bus と Windows Server の Service Bus (Service Bus 1.1) で利用できるようになりました。 料金は、既存のプロトコルと同じです。
 
 ## <a name="next-steps"></a>次のステップ
 さらに詳しい情報については、 次のリンク先を参照してください。
 
 * [AMQP で .NET から Service Bus を使用する]
 * [AMQP で Java から Service Bus を使用する]
-* [Azure Linux VM に Apache Qpid Proton-C をインストールする]
-* [Windows Server 用 Service Bus の AMQP]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
 [AMQP で .NET から Service Bus を使用する]: service-bus-amqp-dotnet.md
 [AMQP で Java から Service Bus を使用する]: ./service-bus-java-how-to-use-jms-api-amqp.md
-[Azure Linux VM に Apache Qpid Proton-C をインストールする]: 
-[AMQP in Service Bus for Windows Server]: /previous-versions/service-bus-archive/dn574799(v=azure.100)
+

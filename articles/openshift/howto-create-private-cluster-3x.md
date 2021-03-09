@@ -3,18 +3,24 @@ title: Azure Red Hat OpenShift 3.11 を使用してプライベート クラス�
 description: Azure Red Hat OpenShift 3.11 を使用してプライベート クラスターを作成する
 author: sakthi-vetrivel
 ms.author: suvetriv
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/02/2020
 keywords: ARO, OpenShift, プライベート クラスター, Rad Hat
-ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 28a21635da770a990a21e0da2a8034c754f4f7aa
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83727450"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633242"
 ---
 # <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Azure Red Hat OpenShift 3.11 を使用してプライベート クラスターを作成する
+
+> [!IMPORTANT]
+> Azure Red Hat OpenShift 3.11 は 2022 年 6 月 30 日に廃止されます。 新しい Azure Red Hat OpenShift 3.11 クラスターの作成のサポートは、2020 年 11 月 30 日まで継続されます。 廃止された後、残っている Azure Red Hat OpenShift 3.11 クラスターは、セキュリティの脆弱性を防ぐためにシャットダウンされます。
+> 
+> このガイドに従って、[Azure Red Hat OpenShift 4 クラスターを作成](tutorial-create-cluster.md)します。
+> ご質問がある場合は、[お問い合わせください](mailto:arofeedback@microsoft.com)。
 
 プライベート クラスターには、次のような利点があります。
 

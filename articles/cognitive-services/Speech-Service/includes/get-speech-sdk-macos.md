@@ -4,17 +4,17 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 82c45919892721d689bd90b7480158c4eea16c03
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e7714dcc3e14e3659ca1943507d55d20dfb28fa6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374905"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214604"
 ---
 MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
 
 - Objective-C S音声SDK は、Cocoアポストロフィ d パッケージとしてネイティブに使用できます。
-- .NET音声SDKは **.NET Standard 2.0**を実装しているため Xamarin. Mac と共に使用できます
+- .NET音声SDKは **.NET Standard 2.0** を実装しているため Xamarin. Mac と共に使用できます
 - Python音声SDK は PyPI モジュールとして提供されています。
 
 > [!TIP]
@@ -28,7 +28,7 @@ MacOS 用に開発する場合は、3つの音声Sdk を利用できます。
 
 :::row:::
     :::column span="3":::
-        macOS Cocoアポストロフィ d パッケージは、 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (またはそれ以降) <span class="docon docon-navigate-external x-hidden-focus"></span></a>統合開発環境 (IDE) と共にダウンロードして使用することができます。 <a href="https://aka.ms/csspeech/macosbinary" target="_blank">まず、バイナリ Cocoアポストロフィ <span class="docon docon-navigate-external x-hidden-focus"></span></a>をダウンロードします。 使用目的に合わせて同じディレクトリ内のポッドを抽出し、*Podfile*を作成して、`pod`を `target`として一覧表示します。
+        macOS Cocoアポストロフィ d パッケージは、 <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (またはそれ以降) <span class="docon docon-navigate-external x-hidden-focus"></span></a>統合開発環境 (IDE) と共にダウンロードして使用することができます。 <a href="https://aka.ms/csspeech/macosbinary" target="_blank">まず、バイナリ Cocoアポストロフィ <span class="docon docon-navigate-external x-hidden-focus"></span></a>をダウンロードします。 使用目的に合わせて同じディレクトリ内のポッドを抽出し、*Podfile* を作成して、`pod`を `target`として一覧表示します。
     :::column-end:::
     :::column:::
         <br>
@@ -43,7 +43,7 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.13.0'
+  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.15.0'
 end
 ```
 

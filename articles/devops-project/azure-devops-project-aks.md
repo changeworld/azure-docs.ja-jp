@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9ccf28f5431a92f71b1c18e609639d0abf309c06
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233331"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590862"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>Azure DevOps Starter を使用して ASP.NET Core アプリを Azure Kubernetes Service にデプロイする
 
@@ -24,7 +24,7 @@ DevOps Starter では次のこともできます。
 * Azure Kubernetes Service (AKS) などの Azure リソースを自動的に作成する。
 * CI/CD 用のビルドおよびリリース パイプラインを設定するリリース パイプラインを Azure DevOps に作成し、構成する。
 * 監視のために Azure Application Insights リソースを作成する。
-* [コンテナーに対する Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) で、AKS クラスター上のコンテナー ワークロードに対するパフォーマンスを監視できるようにする
+* [コンテナーに対する Azure Monitor](../azure-monitor/containers/container-insights-overview.md) で、AKS クラスター上のコンテナー ワークロードに対するパフォーマンスを監視できるようにする
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -113,7 +113,7 @@ DevOps Starter では、Azure DevOps 組織から Azure サブスクリプショ
 
 1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。  DevOps Starter により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する*パイプライン*が含まれています。
+1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する *パイプライン* が含まれています。
 
 1. **[成果物]** で、 **[ドロップ]** を選択します。 前の手順で調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
@@ -146,7 +146,7 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した AKS クラスターと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで**削除**機能を使用します。
+テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した AKS クラスターと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 > [!IMPORTANT]
 > 次の手順で、リソースが完全に削除されます。 "*削除*" 機能では、DevOps Starter のプロジェクトによって作成されたデータが Azure と Azure DevOps の両方で破棄され、取得できなくなります。 画面に表示される説明を慎重に読んでから、この手順を行ってください。
@@ -171,4 +171,4 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 Kubernetes ダッシュボードの使い方の詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [Kubernetes ダッシュボードを使用する](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
+> [Kubernetes ダッシュボードを使用する](../aks/kubernetes-dashboard.md)

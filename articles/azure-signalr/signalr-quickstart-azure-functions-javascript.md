@@ -1,19 +1,19 @@
 ---
 title: JavaScript を使って Azure Functions と SignalR Service を使用するチャット ルームを作成する
-description: Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
+description: JavaScript で Azure SignalR Service と Azure Functions を使ってチャット ルームを作成する方法について説明します。
 author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: zhshang
-ms.custom: devx-track-javascript
-ms.openlocfilehash: 74f0a1c163380b88986b6866e346a5f044772a0e
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.custom: devx-track-js
+ms.openlocfilehash: 061dce01d2437d04d371ac65c115a1d95136fb5d
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89050558"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874697"
 ---
 # <a name="quickstart-use-javascript-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:JavaScript を使って Azure Functions と SignalR Service を使用するチャット ルームを作成する
 
@@ -32,21 +32,21 @@ Azure SignalR Service を使用すると、アプリケーションに対して�
 > [!NOTE]
 > このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサインインします。
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Clone application](includes/signalr-quickstart-clone-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 ## <a name="configure-and-run-the-azure-function-app"></a>Azure Function アプリを構成して実行する
 
@@ -58,7 +58,7 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 
 1. プライマリ接続文字列を選択してコピーします。
 
-    ![SignalR Service の作成](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
+    ![プライマリ接続文字列が強調表示されているスクリーンショット。](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
 1. コード エディターで、複製したリポジトリの *src/chat/javascript* フォルダーを開きます。
 
@@ -78,16 +78,16 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
     ```
 
     ![SignalR Service の作成](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-run-application.png)
-
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+    
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)
+問題がある場合は、 [トラブルシューティング ガイド](signalr-howto-troubleshoot-guide.md)をお試しになるか、[ご連絡ください](https://aka.ms/asrs/qsjs)。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -96,4 +96,3 @@ Azure アカウントで Azure Portal (<https://portal.azure.com/>) にサイン
 > [!div class="nextstepaction"]
 > [VS Code で Azure Functions をデプロイする](/azure/developer/javascript/tutorial-vscode-serverless-node-01)
 
-[問題がある場合は、お知らせください。](https://aka.ms/asrs/qsjs)

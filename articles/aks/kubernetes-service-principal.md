@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスター用の Azure Activ
 services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7f8060666612049026f2602ab7c8511aea22757
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298550"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475439"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
@@ -23,7 +23,7 @@ Azure AD サービス プリンシパルを作成するには、アプリケー�
 
 別の Azure AD テナントのサービス プリンシパルを使用している場合は、クラスターのデプロイ時に使用できるアクセス許可について追加の考慮事項があります。 ディレクトリ情報の読み取りと書き込みを行うために適切なアクセス許可がない可能性があります。 詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは][azure-ad-permissions]」を参照してください。
 
-また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、 `az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「 [Azure CLI のインストール][install-azure-cli]」を参照してください。
+また、Azure CLI バージョン 2.0.59 以降がインストールされ、構成されている必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="automatically-create-and-use-a-service-principal"></a>サービス プリンシパルを自動的に作成して使用する
 
@@ -100,19 +100,7 @@ Azure Container Registry (ACR) をコンテナーのイメージ ストアとし
 
 ### <a name="networking"></a>ネットワーク
 
-仮想ネットワークとサブネットまたはパブリック IP アドレスが別のリソース グループに存在する高度なネットワークを使用することも考えられます。 ロールの一連のアクセス許可として、次のいずれかを割り当てます。
-
-- [カスタム ロール][rbac-custom-role]を作成し、次のロールのアクセス許可を定義します。
-  - *Microsoft.Network/virtualNetworks/subnets/join/action*
-  - *Microsoft.Network/virtualNetworks/subnets/read*
-  - *Microsoft.Network/virtualNetworks/subnets/write*
-  - *Microsoft.Network/publicIPAddresses/join/action*
-  - *Microsoft.Network/publicIPAddresses/read*
-  - *Microsoft.Network/publicIPAddresses/write*
-  - [Kubernet クラスター上のカスタム ルート テーブル](configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet)を使用する場合は、次の追加のアクセス許可を追加します。
-    - *Microsoft.Network/routeTables/write*
-    - *Microsoft.Network/routeTables/read*
-- または、仮想ネットワーク内のサブネットに[ネットワーク共同作成者][rbac-network-contributor]の組み込みロールを割り当てます。
+仮想ネットワークとサブネットまたはパブリック IP アドレスが別のリソース グループに存在する高度なネットワークを使用することも考えられます。 仮想ネットワーク内のサブネットに[ネットワーク共同作成者][rbac-network-contributor]の組み込みロールを割り当てます。 または、そのリソース グループ内のネットワーク リソースにアクセスするためのアクセス許可を持つ[カスタム ロール][rbac-custom-role]を作成することもできます。 詳細については、「[AKS サービスのアクセス許可][aks-permissions]」を参照してください。
 
 ### <a name="storage"></a>ストレージ
 
@@ -134,13 +122,13 @@ AKS と Azure AD サービス プリンシパルを使用する場合は、以�
 - Kubernetes のサービス プリンシパルは、クラスター構成の一部です。 ただし、クラスターのデプロイに ID を使用しないでください。
 - 既定では、このサービス プリンシパル資格情報は 1 年間有効です。 [サービス プリンシパルの資格情報はいつでも更新または回転][update-credentials]できます。
 - すべてのサービス プリンシパルは、Azure AD アプリケーションに関連付けられています。 Kubernetes クラスターのサービス プリンシパルは、有効な任意の Azure AD アプリケーション名 (たとえば *https://www.contoso.org/example* ) に関連付けることができます。 アプリケーションの URL は、実際のエンドポイントである必要はありません。
-- サービス プリンシパルの**クライアント ID** を指定するときには、`appId` の値を使用します。
+- サービス プリンシパルの **クライアント ID** を指定するときには、`appId` の値を使用します。
 - Kubernetes クラスター内のエージェント ノード VM では、サービス プリンシパルの資格情報が `/etc/kubernetes/azure.json` ファイルに格納されます
 - [az aks create][az-aks-create] コマンドを使用してサービス プリンシパルを自動的に生成すると、サービス プリンシパルの資格情報は、コマンドの実行に使用されたコンピューター上の `~/.azure/aksServicePrincipal.json` ファイルに書き込まれます。
 - 追加の AKS CLI コマンドでサービス プリンシパルを明示的に渡さない場合は、`~/.azure/aksServicePrincipal.json` にある既定のサービス プリンシパルが使用されます。  
 - 必要に応じて、aksServicePrincipal.json ファイルを削除することもできます。これにより、AKS は新しいサービス プリンシパルを作成します。
 - [az aks create][az-aks-create] によって作成された AKS クラスターを削除しても、自動的に作成されたサービス プリンシパルは削除されません。
-    - サービス プリンシパルを削除するには、まずクラスターの *servicePrincipalProfile.clientId* を照会し、[az ad app delete][az-ad-app-delete] で削除します。 次のリソース グループとクラスターの名前は、実際の値に置き換えてください。
+    - サービス プリンシパルを削除するには、まずクラスターの *servicePrincipalProfile.clientId* を照会し、[az ad sp delete][az-ad-sp-delete] で削除します。 次のリソース グループとクラスターの名前は、実際の値に置き換えてください。
 
         ```azurecli
         az ad sp delete --id $(az aks show -g myResourceGroup -n myAKSCluster --query servicePrincipalProfile.clientId -o tsv)
@@ -189,3 +177,4 @@ Azure Active Directory サービス プリンシパルの詳細については�
 [aks-to-acr]: cluster-container-registry-integration.md
 [update-credentials]: update-credentials.md
 [azure-ad-permissions]: ../active-directory/fundamentals/users-default-permissions.md
+[aks-permissions]: concepts-identity.md#aks-service-permissions

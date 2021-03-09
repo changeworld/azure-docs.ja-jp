@@ -8,19 +8,21 @@ ms.topic: sample
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.custom: devx-track-javascript
-ms.openlocfilehash: deb0ca935cd01a0d86eea007711f65e439d4da00
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.custom: devx-track-js
+ms.openlocfilehash: c2117c535cca679d3a7a3b75491bf60ab9567ceb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421979"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098214"
 ---
 # <a name="build-an-app-using-nodejs-and-azure-cosmos-dbs-api-for-mongodb"></a>Node.js および Azure Cosmos DB の MongoDB 用 API を使用してアプリを構築する 
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
-> * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [Java](sql-api-java-get-started.md)
+> * [.NET Core](./sql-api-get-started.md)
+> * [Java](./create-sql-api-java.md)
 > * [MongoDB 用 Node.js](mongodb-samples.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
 >
@@ -116,7 +118,7 @@ ms.locfileid: "87421979"
     });
     ```
     
-    **省略可能**: **MongoDB Node.js 2.2 ドライバー**を使用する場合、次のコード スニペットを置き換えてください。
+    **省略可能** : **MongoDB Node.js 2.2 ドライバー** を使用する場合、次のコード スニペットを置き換えてください。
 
     元のコード:
 
@@ -153,14 +155,14 @@ ms.locfileid: "87421979"
     });
     ```
     
-2. アカウント設定に従って、*app.js* ファイル内の次の変数を変更します (接続文字列を確認する方法は[こちら](connect-mongodb-account.md)を参照)。
+2. アカウント設定に従って、 *app.js* ファイル内の次の変数を変更します (接続文字列を確認する方法は [こちら](connect-mongodb-account.md)を参照)。
 
     > [!IMPORTANT]
-    > **MongoDB Node.js 3.0 ドライバー**では、Cosmos DB パスワード内の特殊文字をエンコードする必要があります。 '=' 文字を必ず %3D としてエンコードします。
+    > **MongoDB Node.js 3.0 ドライバー** では、Cosmos DB パスワード内の特殊文字をエンコードする必要があります。 '=' 文字を必ず %3D としてエンコードします。
     >
-    > 例: パスワード *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* は、*jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D* にエンコードされます。
+    > 例: パスワード *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* は、 *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D* にエンコードされます。
     >
-    > **MongoDB Node.js 2.2 ドライバー**では、Cosmos DB パスワード内の特殊文字をエンコードする必要はありません。
+    > **MongoDB Node.js 2.2 ドライバー** では、Cosmos DB パスワード内の特殊文字をエンコードする必要はありません。
     >
     >
    
@@ -168,7 +170,7 @@ ms.locfileid: "87421979"
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
      
-3. お好きなターミナルを開き、**npm install mongodb --save** を実行してから、**node app.js** でアプリを実行します。
+3. お好きなターミナルを開き、 **npm install mongodb --save** を実行してから、 **node app.js** でアプリを実行します。
 
 ## <a name="next-steps"></a>次のステップ
 

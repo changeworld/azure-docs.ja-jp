@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight (Apache Hadoop) での Apache Sqoop ジョブの実行
 description: ワークステーションから Azure PowerShell を使用して、Hadoop クラスターと Azure SQL データベース間で Sqoop インポートとエクスポートを実行する方法について説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
-ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 1c34b673cd970a9e7577b7ff01d27eb0e4cc1ac1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86076880"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946427"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Apache Sqoop の使用
 
@@ -120,6 +117,6 @@ HDInsight では、さまざまな方法を使用して Sqoop ジョブを実行
 
 ここでは Sqoop の使用方法を学習しました。 詳細については、次を参照してください。
 
-* [HDInsight での Apache Hive の使用](../hdinsight-use-hive.md)
+* [HDInsight での Apache Hive の使用](./hdinsight-use-hive.md)
 * [HDInsight へのデータのアップロード](../hdinsight-upload-data.md):HDInsight/Azure Blob Storage にデータをアップロードするその他の方法を説明します。
 * [Apache Sqoop を使用して、HDInsight 上の Apache Hadoop と SQL Database の間でデータをインポートおよびエクスポートする](./apache-hadoop-use-sqoop-mac-linux.md)

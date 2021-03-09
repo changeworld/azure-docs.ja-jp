@@ -4,16 +4,16 @@
     - name: Video Indexer とは
       href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: 概念
-      href: ../../media-services/video-indexer/video-indexer-concepts.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
 - name: クイックスタート
   expanded: true
   items:
-    - name: はじめに
+    - name: 作業開始
       href: ../../media-services/video-indexer/video-indexer-get-started.md
 - name: ハウツー ガイド
   items:
     - name: v1 から v2 への移行
-      href: ../../media-services/video-indexer/migrate-from-v1-to-v2.md
+      href: ../../media-services/video-indexer/video-indexer-overview.md
     - name: Azure に接続する
       href: ../../media-services/video-indexer/connect-to-azure.md
     - name: Azure に接続されたアカウントの管理
@@ -29,7 +29,7 @@
     - name: Video Indexer の分析情報の表示と編集
       href: ../../media-services/video-indexer/video-indexer-view-edit.md
     - name: 既存のビデオからのビデオの分析情報の作成
-      href: ../../media-services/video-indexer/video-indexer-create-new.md
+      href: ../../media-services/video-indexer/use-editor-create-project.md
     - name: アプリケーションへのウィジェットの埋め込み
       href: ../../media-services/video-indexer/video-indexer-embed-widgets.md
 - name: リファレンス
@@ -42,7 +42,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
-    - name: スタック オーバーフロー
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'

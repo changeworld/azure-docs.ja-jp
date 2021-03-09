@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cb2654c2854692d120cf6dea7fa8fb901e14688e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9975533e00b0ca184e7cc16c5d8ea51d4eafa0a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203512"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361708"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk の制限
 
@@ -35,9 +35,9 @@ USB 3.0 で接続したディスクでテストしたところ、ディスクの
 
 Azure Storage サービスの制限と共有、コンテナー、およびファイルの名前付けのベスト プラクティスに関する最新情報については、以下のページをご覧ください。
 
-- [Naming and referencing containers](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (コンテナーの名前付けと参照)
-- [Naming and referencing shares](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) (共有の名前付けと参照)
-- [Block blobs and page blob conventions](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) (ブロック BLOB とページ BLOB に関する規則)
+- [Naming and referencing containers](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (コンテナーの名前付けと参照)
+- [Naming and referencing shares](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata) (共有の名前付けと参照)
+- [Block blobs and page blob conventions](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) (ブロック BLOB とページ BLOB に関する規則)
 
 > [!IMPORTANT]
 > Azure Storage サービスの制限を超えているファイル/ディレクトリ、または Azure Files/BLOB の名前付け規則に準拠していないファイル/ディレクトリは、Data Box サービスを通じて Azure Storage に取り込まれません。
@@ -50,7 +50,7 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 - *BlockBlob* 共有と *PageBlob* 共有に書き込まれる各ファイルは、それぞれブロック BLOB およびページ BLOB としてアップロードされます。
 - *BlockBlob* フォルダーと *PageBlob* フォルダーの下に作成される空のディレクトリ階層 (ファイルを含まない) はアップロードされません。
 - Azure へのデータのアップロード時にエラーが発生した場合は、ターゲット ストレージ アカウントにエラー ログが作成されます。 このエラー ログへのパスは、アップロードが完了するとポータルに表示されます。ログを確認して、是正措置を行うことができます。 アップロードしたデータを確認せずにソースからデータを削除しないでください。
-- データが Azure Files にアップロードされた場合、ファイル メタデータと NTFS のアクセス許可は保持されません。 たとえば、ファイルの*最後に変更された属性*は、データがコピーされるときに保持されません。
+- データが Azure Files にアップロードされた場合、ファイル メタデータと NTFS のアクセス許可は保持されません。 たとえば、ファイルの *最後に変更された属性* は、データがコピーされるときに保持されません。
 - マネージド ディスクを順に指定した場合は、以下の追加の考慮事項を確認してください。
 
     - 事前に作成されたすべてのフォルダーにわたり、また、すべての Data Box Disk にわたって 1 つのリソース グループ内で特定の名前を持つマネージド ディスクを 1 つだけ保持できます。 これは、事前に作成されたフォルダーにアップロードされた VHD は一意の名前でなければならないことを意味します。 指定した名前が、リソース グループ内の既存のマネージド ディスクと一致しないようにしてください。 VHD の名前が同じである場合、1 つの VHD のみがその名前を持つマネージド ディスクに変換されます。 その他の VHD は、ステージング ストレージ アカウントにページ BLOB としてアップロードされます。
@@ -64,7 +64,7 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 
 | データの種類             | 既定の制限          |
 |--------------------------|------------------------|
-| ブロック BLOB、ページ BLOB    | これらの制限に関する最新の情報については、[Azure BLOB ストレージのスケール ターゲット](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage)、[Azure Standard Storage のスケール ターゲット](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts)、[Azure Files のスケール ターゲット](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#file-share-and-file-scale-targets)に関するページを参照してください。 <br /><br /> この制限には、Data Box Disk を含むすべてのソースのデータが含まれます。|
+| ブロック BLOB、ページ BLOB    | これらの制限に関する最新の情報については、[Azure BLOB ストレージのスケール ターゲット](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage)、[Azure Standard Storage のスケール ターゲット](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)、[Azure Files のスケール ターゲット](../storage/files/storage-files-scale-targets.md)に関するページを参照してください。 <br /><br /> この制限には、Data Box Disk を含むすべてのソースのデータが含まれます。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure オブジェクトのサイズ制限
@@ -76,7 +76,7 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 | ブロック BLOB        | ~ 4.75 TiB                                                 |
 | ページ BLOB         | 8 TiB <br> (ページ BLOB 形式でアップロードするファイルには 512 バイトをアラインする必要があります。さもないと、アップロードは失敗します。 <br> VHD と VHDX の両方には 512 バイトがアラインされます。) |
 |Azure Files        | 1 TiB <br> 最大 共有のサイズは 5 TiB     |
-| マネージド ディスク     |4 TiB <br> サイズと制限の詳細については、以下をご覧ください。 <li>[マネージド ディスクのスケーラビリティ ターゲット](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
+| マネージド ディスク     |4 TiB <br> サイズと制限の詳細については、以下をご覧ください。 <li>[マネージド ディスクのスケーラビリティ ターゲット](../virtual-machines/disks-scalability-targets.md#managed-virtual-machine-disks)</li>|
 
 
 ## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure ブロック BLOB、ページ BLOB およびファイルの名前付け規則

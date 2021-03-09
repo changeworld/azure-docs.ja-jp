@@ -2,13 +2,13 @@
 title: Azure Event Hubs のネットワーク セキュリティ
 description: この記事では、プライベート エンドポイントからのアクセスを構成する方法について説明します
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 10/20/2020
+ms.openlocfilehash: 9503fc26c22d7dbff13c5754288f577b7bb3242f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521855"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010998"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure Event Hubs のネットワーク セキュリティ 
 この記事では、Azure Event Hubs で次のセキュリティ機能を使用する方法について説明します。 
@@ -16,13 +16,13 @@ ms.locfileid: "86521855"
 - サービス タグ
 - IP ファイアウォール規則
 - ネットワーク サービス エンドポイント
-- プライベート エンドポイント (プレビュー)
+- プライベート エンドポイント
 
 
 ## <a name="service-tags"></a>サービス タグ
 サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。これにより、ネットワーク セキュリティ規則に対する頻繁な更新の複雑さを最小限に抑えられます。 サービス タグの詳細については、[サービス タグの概要](../virtual-network/service-tags-overview.md)に関する記事を参照してください。
 
-サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md#security-rules) または  [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な "*ソース* " または " *宛先* " フィールドにサービス タグ名 (たとえば **EventHub**) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
+サービス タグを使用して、[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules)または [Azure Firewall](../firewall/service-tags.md) でのネットワーク アクセス制御を定義できます。 セキュリティ規則を作成するときに、特定の IP アドレスの代わりにサービス タグを使用します。 規則の適切な "*ソース*" フィールドまたは "*ターゲット*" フィールドにサービス タグ名 (たとえば **EventHub**) を指定することにより、対応するサービスのトラフィックを許可または拒否できます。
 
 | サービス タグ | 目的 | 受信または送信で使用できるか | リージョン別か | Azure Firewall と共に使用できるか |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -32,7 +32,7 @@ ms.locfileid: "86521855"
 ## <a name="ip-firewall"></a>IP ファイアウォール 
 既定では、要求に有効な認証と承認がある限り、Event Hubs 名前空間にはインターネットからアクセスできます。 これは IP ファイアウォールを使用して、さらに [CIDR (クラスレス ドメイン間ルーティング)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) 表記の一連の IPv4 アドレスまたは IPv4 アドレス範囲のみに制限できます。
 
-この機能は、Azure Event Hubs へのアクセスを特定の既知のサイトからのみに制限したいシナリオで役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure ExpressRoute](../expressroute/expressroute-faqs.md#supported-services) で Event Hubs を使用する場合、オンプレミス インフラストラクチャ IP アドレスからのトラフィックのみ許可する**ファイアウォール規則**を作成できます。 
+この機能は、Azure Event Hubs へのアクセスを特定の既知のサイトからのみに制限したいシナリオで役立ちます。 ファイアウォール規則を使用すると、特定の IPv4 アドレスから送信されたトラフィックを受け入れる規則を構成できます。 たとえば、[Azure ExpressRoute](../expressroute/expressroute-faqs.md#supported-services) で Event Hubs を使用する場合、オンプレミス インフラストラクチャ IP アドレスからのトラフィックのみ許可する **ファイアウォール規則** を作成できます。 
 
 IP ファイアウォール規則は、Event Hubs 名前空間レベルで適用されます。 したがって、規則は、サポートされているプロトコルを使用するクライアントからのすべての接続に適用されます。 Event Hubs 名前空間上の許可 IP 規則に一致しない IP アドレスからの接続試行は、未承認として拒否されます。 IP 規則に関する記述は応答に含まれません。 IP フィルター規則は順に適用され、IP アドレスと一致する最初の規則に基づいて許可アクションまたは拒否アクションが決定されます。
 
@@ -60,7 +60,7 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 
 "**仮想ネットワーク規則**" は、Azure Event Hubs 名前空間が特定の仮想ネットワーク サブネットからの接続を許可するかどうかを制御するファイアウォール セキュリティ機能です。
 
-仮想ネットワークへの Event Hubs 名前空間のバインドは、2 ステップのプロセスです。 まず、仮想ネットワークのサブネット上に**仮想ネットワーク サービス エンドポイント**を作成し、[サービス エンドポイントの概要](../virtual-network/virtual-network-service-endpoints-overview.md)の記事で説明されているように、それを **Microsoft.EventHub** に対して有効にする必要があります。 サービス エンドポイントを追加した後、Event Hubs 名前空間を "**仮想ネットワーク規則**" にバインドします。
+仮想ネットワークへの Event Hubs 名前空間のバインドは、2 ステップのプロセスです。 まず、仮想ネットワークのサブネット上に **仮想ネットワーク サービス エンドポイント** を作成し、[サービス エンドポイントの概要](../virtual-network/virtual-network-service-endpoints-overview.md)の記事で説明されているように、それを **Microsoft.EventHub** に対して有効にする必要があります。 サービス エンドポイントを追加した後、Event Hubs 名前空間を "**仮想ネットワーク規則**" にバインドします。
 
 仮想ネットワーク規則は、Event Hubs 名前空間と仮想ネットワーク サブネットの関連付けです。 ルールが存在する間、サブネットにバインドされているすべてのワークロードには、Event Hubs 名前空間へのアクセス権が付与されます。 Event Hubs 自体は送信接続を確立することはなく、アクセス許可を取得する必要はないので、この規則を有効にすることでサブネットへのアクセス権が付与されることはありません。
 
@@ -68,15 +68,12 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 
 ## <a name="private-endpoints"></a>プライベート エンドポイント
 
-[Azure Private Link サービス](../private-link/private-link-overview.md)を使用すると、仮想ネットワーク内の**プライベート エンドポイント**経由で、Azure サービス (Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
+[Azure Private Link サービス](../private-link/private-link-overview.md)を使用すると、仮想ネットワーク内の **プライベート エンドポイント** 経由で、Azure サービス (Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナー サービスにアクセスできます。
 
 プライベート エンドポイントとは、Azure Private Link を使用するサービスにプライベートかつ安全に接続するネットワーク インターフェイスです。 プライベート エンドポイントは、ご自分の VNet からのプライベート IP アドレスを使用して、サービスを実質的に VNet に取り込みます。 サービスへのすべてのトラフィックをプライベート エンドポイント経由でルーティングできるため、ゲートウェイ、NAT デバイス、ExpressRoute または VPN 接続、パブリック IP アドレスは必要ありません。 仮想ネットワークとサービスの間のトラフィックは、Microsoft のバックボーン ネットワークを経由して、パブリック インターネットからの公開を排除します。 最高レベルの細分性でアクセスを制御しながら Azure リソースのインスタンスに接続できます。
 
-> [!NOTE]
-> この機能は、**Dedicated** レベルでのみサポートされています。 Dedicated レベルの詳細については、「[Event Hubs Dedicated の概要](event-hubs-dedicated-overview.md)」を参照してください。 
->
-> 現在、この機能は**プレビュー**段階にあります。 
-
+> [!IMPORTANT]
+> この機能は、**Standard** と **Dedicated** レベルの両方でサポートされています。 **Basic** レベルではサポートされません。
 
 詳細については、[イベント ハブのプライベート エンドポイントを構成する方法](private-link-service.md)に関する記事を参照してください。
 

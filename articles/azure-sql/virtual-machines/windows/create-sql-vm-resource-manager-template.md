@@ -7,12 +7,13 @@ ms.custom: subject-armqs
 ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
-ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.subservice: deployment
+ms.openlocfilehash: a20cb27ac91a0b01ed9cc3a5ac4c5c57f90ceda1
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660209"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359644"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して SQL Server VM を作成する
 
@@ -45,14 +46,14 @@ SQL Server VM ARM テンプレートには、次のものが必要です。
 - [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups): ネットワーク セキュリティ グループを作成します。 
 - [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces): ネットワーク インターフェイスを構成します。 
 - [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines): Azure に仮想マシンを作成します。 
-- [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): 仮想マシンを SQL VM リソース プロバイダーに登録します。 
+- [Microsoft.SqlVirtualMachine/SqlVirtualMachines](/azure/templates/microsoft.sqlvirtualmachine/sqlvirtualmachines): 仮想マシンを SQL IaaS Agent 拡張機能に登録します。 
 
 その他の Azure VM 上の SQL Server のテンプレートについては、[クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Sqlvirtualmachine&pageNumber=1&sort=Popular)をご覧ください。
 
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートでは、目的の SQL Server バージョンがインストールされており、SQL VM リソース プロバイダーに登録されている仮想マシンが作成されます。 
+1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートでは、目的の SQL Server バージョンがインストールされており、SQL IaaS Agent 拡張機能に登録されている仮想マシンが作成されます。 
 
    [![Azure へのデプロイ](../../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-sql-vm-new-storage%2fazuredeploy.json)
 
@@ -120,7 +121,7 @@ Write-Host "Press [ENTER] to continue..."
 テンプレートの作成手順について説明したチュートリアルについては、次のページを参照してください。
 
 > [!div class="nextstepaction"]
-> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [ チュートリアル: 初めての ARM テンプレートを作成してデプロイする](../../../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 SQL Server VM をデプロイするその他の方法については、以下を参照してください。 
 - [Azure Portal](create-sql-vm-portal.md)

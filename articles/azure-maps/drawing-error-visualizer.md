@@ -1,23 +1,28 @@
 ---
 title: Azure Maps Drawing Error Visualizer を使用する
-description: この記事では、Creator Conversion API から返された警告とエラーを視覚化する方法について説明します。
+description: この記事では、Creator (プレビュー) Conversion API から返された警告とエラーを視覚化する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b3f9451a5ffd13c67232107d8db1e2da4a3891ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: db88e347e12783205ea8c31fed0bb374fccb4736
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524745"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903583"
 ---
-# <a name="using-the-azure-maps-drawing-error-visualizer"></a>Azure Maps Drawing Error Visualizer の使用
+# <a name="using-the-azure-maps-drawing-error-visualizer-with-creator-preview"></a>Creator (プレビュー) での Azure Maps Drawing Error Visualizer の使用
 
-Drawing Error Visualizer は、変換プロセス中に検出された [Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)を表示するスタンドアロンの Web アプリケーションです。 Error Visualizer Web アプリケーションは、インターネットに接続せずに使用できる静的ページで構成されています。  Error Visualizer を使用すると、[Drawing パッケージの要件](drawing-requirements.md)に従ってエラーと警告を修正できます。 [Azure Maps Conversion API](https://docs.microsoft.com/rest/api/maps/conversion) からは、エラーが検出された場合にのみ、Error Visualizer のリンクを含む応答が返されます。
+> [!IMPORTANT]
+> Azure Maps Creator サービスは、現在パブリック プレビューの段階にあります。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+
+Drawing Error Visualizer は、変換プロセス中に検出された [Drawing パッケージの警告とエラー](drawing-conversion-error-codes.md)を表示するスタンドアロンの Web アプリケーションです。 Error Visualizer Web アプリケーションは、インターネットに接続せずに使用できる静的ページで構成されています。  Error Visualizer を使用すると、[Drawing パッケージの要件](drawing-requirements.md)に従ってエラーと警告を修正できます。 [Azure Maps Conversion API](/rest/api/maps/conversion) からは、エラーが検出された場合にのみ、Error Visualizer のリンクを含む応答が返されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -25,13 +30,13 @@ Drawing Error Visualizer をダウンロードする前に、次のことを行�
 
 1. [Azure Maps アカウントを作成します](quick-demo-map-app.md#create-an-azure-maps-account)
 2. [プライマリ サブスクリプション キー (主キーまたはサブスクリプション キーとも呼ばれます) を取得します](quick-demo-map-app.md#get-the-primary-key-for-your-account)。
-3. [Creator リソースを作成します](how-to-manage-creator.md)
+3. [Creator (プレビュー) リソースを作成します](how-to-manage-creator.md)
 
 このチュートリアルでは [Postman](https://www.postman.com/) アプリケーションを使用していますが、別の API 開発環境を選択することもできます。
 
 ## <a name="download"></a>ダウンロード
 
-1. Drawing パッケージを Azure Maps Creator サービスにアップロードして、アップロードされたパッケージの `udid` を取得します。 パッケージをアップロードする手順については、「[Drawing パッケージのアップロード](tutorial-creator-indoor-maps.md#upload-a-drawing-package)」を参照してください。
+1. Drawing パッケージを Azure Maps Creator サービス (プレビュー) にアップロードして、アップロードされたパッケージの `udid` を取得します。 パッケージをアップロードする手順については、「[Drawing パッケージのアップロード](tutorial-creator-indoor-maps.md#upload-a-drawing-package)」を参照してください。
 
 2. 図面パッケージがアップロードされたので、アップロードされたパッケージに `udid` を使用して、パッケージをマップ データに変換します。 パッケージを変換する手順については、「[Drawing パッケージの変換](tutorial-creator-indoor-maps.md#convert-a-drawing-package)」を参照してください。
 
@@ -90,13 +95,13 @@ _ConversionWarningsAndErrors.json_ ファイルが読み込まれると、Drawin
 
 ## <a name="next-steps"></a>次のステップ
 
-[Drawing パッケージが要件を満たしたら](drawing-requirements.md)、[Azure Maps Dataset サービス](https://docs.microsoft.com/rest/api/maps/conversion)を使用して、Drawing パッケージをデータセットに変換できます。 その後、屋内マップ Web モジュールを使用してアプリケーションを開発できます。 詳細については、次の記事を参照してください。
+[Drawing パッケージが要件を満たしたら](drawing-requirements.md)、[Azure Maps Dataset サービス](/rest/api/maps/conversion)を使用して、Drawing パッケージをデータセットに変換できます。 その後、屋内マップ Web モジュールを使用してアプリケーションを開発できます。 詳細については、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
 > [Drawing Conversion のエラー コード](drawing-conversion-error-codes.md)
 
 > [!div class="nextstepaction"]
-> [屋内マップ用の Creator](creator-indoor-maps.md)
+> [屋内マップ用の Creator (プレビュー)](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [Indoor Maps モジュールを使用する](how-to-use-indoor-module.md)

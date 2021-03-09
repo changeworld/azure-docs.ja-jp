@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sideeksh
 ms.openlocfilehash: 569af28f5773d843f49dd9c8143b45e308ae142e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87420415"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>セカンダリサイトに対して Hyper-V VM の DR ドリルを実行する

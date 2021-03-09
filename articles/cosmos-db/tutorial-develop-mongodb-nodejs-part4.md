@@ -8,16 +8,17 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: jopapa
-ms.custom: seodec18, devx-track-javascript
+ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
-ms.openlocfilehash: e4127024404489d0aa8478a9cbd073773f8b512a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4ca7286676c441b2fa96883e0c187497f59d6222
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423934"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93082629"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---create-a-cosmos-account"></a>Azure Cosmos DB の MongoDB 用 API を使用して Angular アプリを作成する - Cosmos アカウントを作成する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 複数のパートから成るこのチュートリアルでは、Express と Angular を使用して Node.js で新しいアプリを作成した後、[Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウント](mongodb-introduction.md)にそれを接続する方法を紹介します。
 
@@ -35,7 +36,7 @@ ms.locfileid: "87423934"
 
 本チュートリアルのこのパートに取り組む前に、[パート 3](tutorial-develop-mongodb-nodejs-part3.md) の手順を済ませておいてください。 
 
-このチュートリアル セクションでは、インターネット ブラウザーから Azure Cloud Shell を使用するか、ローカルにインストールされた [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用できます。
+このチュートリアル セクションでは、インターネット ブラウザーから Azure Cloud Shell を使用するか、ローカルにインストールされた [Azure CLI](/cli/azure/install-azure-cli) を使用できます。
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -64,11 +65,11 @@ Azure Cosmos DB アカウントの作成後、次の手順を実行します。
 1. 左側のバーにある Azure Cosmos DB ロゴ (:::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-icon.png":::) をクリックして、自分が所有しているすべての Azure Cosmos DB を表示します。
 1. 先ほど作成した Azure Cosmos DB アカウントをクリックして **[概要]** タブを選択し、下へスクロールして、データベースが置かれている場所のマップを表示します。 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Azure portal の新しい Azure Cosmos DB アカウント":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-angular-portal.png" alt-text="Azure Cosmos D B アカウントの [概要] を示すスクリーンショット。":::
 
 4. 左側のナビゲーションで下へスクロールし、 **[データをグローバルにレプリケートする]** タブをクリックして表示されるマップで、レプリケート先として利用できるさまざまな地域を確認できます。 たとえば [オーストラリア南東部] または [オーストラリア東部] をクリックすれば、オーストラリアにデータをレプリケートすることができます。 グローバル レプリケーションの詳細については、「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法](distribute-data-globally.md)」を参照してください。 差し当たり、以前のインスタンスを単に保持しておき、実際に必要が生じたときに、前述の方法でレプリケート先を選ぶことにしましょう。
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="Azure portal の新しい Azure Cosmos DB アカウント":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png" alt-text="[データをグローバルにレプリケートする] が選択されている Azure Cosmos D B アカウントを示すスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

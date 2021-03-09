@@ -10,15 +10,15 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 17a60ae604a74cf98f3a11e0cbee6d22898c1336
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121950"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592524"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Application Insights でアラートとデバッグ用に機械学習パイプラインのログ ファイルを収集する
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 [OpenCensus](https://opencensus.io/quickstart/python/) の Python ライブラリを使用して、スクリプトから Application Insights にログをルーティングできます。 パイプラインの実行のログを 1 か所に集約することで、クエリを作成し、イシューを診断することができます。 Application Insights を使用すると、ログを経時的に追跡し、実行全体のパイプライン ログを比較することができます。
 
@@ -26,7 +26,7 @@ ms.locfileid: "88121950"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 手順に従って [Azure Machine Learning](./how-to-manage-workspace.md) ワークスペースを作成し、[最初のパイプラインを作成](./how-to-create-your-first-pipeline.md)します
+* 手順に従って [Azure Machine Learning](./how-to-manage-workspace.md) ワークスペースを作成し、[最初のパイプラインを作成](./how-to-create-machine-learning-pipelines.md)します
 * Azure Machine Learning SDK をインストールするための[開発環境を構成](./how-to-configure-environment.md)します。
 * [OpenCensus の Azure Monitor エクスポーター](https://pypi.org/project/opencensus-ext-azure/)のパッケージをローカルにインストールします。
   ```python
@@ -38,7 +38,7 @@ ms.locfileid: "88121950"
 
 このセクションでは、Azure Machine Learning パイプラインから OpenCensus を使用する方法のみを説明します。 詳細なチュートリアルについては、「[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)」(OpenCensus の Azure Monitor エクスポーター) を参照してください
 
-PythonScriptStep を Azure ML パイプラインに追加します。 opencensus-ext-azure での依存関係を使用して [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) を構成します。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 環境変数を構成します。
+PythonScriptStep を Azure ML パイプラインに追加します。 opencensus-ext-azure での依存関係を使用して [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) を構成します。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 環境変数を構成します。
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -134,7 +134,7 @@ custom_dimensions = {
 }
 
 # Assumes AzureLogHandler was already registered above
-logger.info("I will be sent to Application Insights with Custom Dimensions", custom_dimensions)
+logger.info("I will be sent to Application Insights with Custom Dimensions", extra= {"custom_dimensions":custom_dimensions})
 ```
 
 ## <a name="opencensus-python-logging-considerations"></a>OpenCensus の Python ログに関する考慮事項
@@ -153,7 +153,7 @@ Application Insights の結果には、ログ メッセージとレベル、フ�
 
 ### <a name="additional-helpful-queries"></a>その他の便利なクエリ
 
-以下のクエリの中には 'customDimensions.Level' が使用されているものがあります。 これらの重大度レベルは、Python ログが最初に送信されたレベルに対応します。 その他のクエリ情報については、「[Azure Monitor ログクエリ](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)」を参照してください。
+以下のクエリの中には 'customDimensions.Level' が使用されているものがあります。 これらの重大度レベルは、Python ログが最初に送信されたレベルに対応します。 その他のクエリ情報については、「[Azure Monitor ログクエリ](/azure/data-explorer/kusto/query/)」を参照してください。
 
 | 使用事例                                                               | クエリ                                                                                              |
 |------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------|
@@ -164,6 +164,6 @@ Application Insights の結果には、ログ メッセージとレベル、フ�
 
 ## <a name="next-steps"></a>次の手順
 
-Application Insights インスタンスに作成されたログは、クエリ結果に基づいて [Azure Monitor アラート](../azure-monitor/platform/alerts-overview.md#what-you-can-alert-on)の設定で使用できます。
+Application Insights インスタンスに作成されたログは、クエリ結果に基づいて [Azure Monitor アラート](../azure-monitor/alerts/alerts-overview.md#what-you-can-alert-on)の設定で使用できます。
 
-また、クエリの結果を [Azure ダッシュボード](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-app-dashboards#add-logs-analytics-query)に追加して、詳細な分析情報を得ることもできます。
+また、クエリの結果を [Azure ダッシュボード](../azure-monitor/app/tutorial-app-dashboards.md#add-logs-query)に追加して、詳細な分析情報を得ることもできます。

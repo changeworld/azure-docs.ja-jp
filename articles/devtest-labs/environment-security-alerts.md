@@ -3,12 +3,12 @@ title: Azure DevTest Labs での環境のセキュリティの警告
 description: この記事では、DevTest Labs で環境のセキュリティの警告を表示し、適切なアクションを実行する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9eea06066cfca5f67d920456f16e2eb7893dce39
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c9f7cf9fe7ab0e3f573470228ee1962aa92ccaef
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483977"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308692"
 ---
 # <a name="security-alerts-for-environments-in-azure-devtest-labs"></a>Azure DevTest Labs での環境のセキュリティの警告
 ラボ ユーザーは、ラボ環境の Azure Security Center の警告を表示できるようになりました。 Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。 [Azure Security Center のセキュリティの警告の詳細についてご覧ください](../security-center//security-center-alerts-overview.md)。  
@@ -24,7 +24,7 @@ ms.locfileid: "85483977"
     ![セキュリティの警告 - 概要](./media/environment-security-alerts/security-alerts-overview-page.png)
 2. 最後の列の 3 つのドット (...) を右クリックし、 **[セキュリティの警告の表示]** を選択します。 
 
-    ![セキュリティの警告の表示](./media/environment-security-alerts/view-security-alerts-menu.png)
+    ![[セキュリティの警告] ページのスクリーンショット。[セキュリティの警告の表示] が選択されています。](./media/environment-security-alerts/view-security-alerts-menu.png)
     
 3. 警告と Advisor の推奨事項の詳細が表示されます。 [Azure Security Center でのセキュリティの警告の管理と対応](../security-center/security-center-managing-and-responding-alerts.md)について詳細を確認してください。
 

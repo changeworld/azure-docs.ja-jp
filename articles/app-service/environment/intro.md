@@ -7,15 +7,14 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e9bd97dc4afe0937ebd0553117640e008a72722e
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 6fff19498e9ca70991d3190165df70a48136f502
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88961749"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631140"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Environment の概要 #
- 
 ## <a name="overview"></a>概要 ##
 
 Azure App Service Environment は、App Service アプリを大規模かつ安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の機能です。 この機能は、以下をホストできます。
@@ -32,7 +31,7 @@ App Service Environment (ASE) は、以下を必要とするアプリケーシ�
 * 分離およびセキュリティで保護されたネットワーク アクセス。
 * 高いメモリ使用率。
 
-顧客は、複数の ASE を 1 つの Azure リージョン内に作成することも、複数の Azure リージョンにわたって作成することもできます。 この柔軟性により、ASE は、高 RPS のワークロードをサポートするステートレス アプリケーション層の水平方向のスケーリングに最適です。
+顧客は、複数の ASE を 1 つの Azure リージョン内に作成することも、複数の Azure リージョンにわたって作成することもできます。 この柔軟性により、ASE は、高 RPS (1 秒あたりの要求数) のワークロードをサポートするステートレス アプリケーション層の水平方向のスケーリングに最適です。
 
 ASE では、単一の顧客のアプリケーションは VNet の 1 つでホストされます。 顧客は、受信と送信の両方のアプリケーション ネットワーク トラフィックをきめ細かく制御することができます。 アプリケーションは VPN を介した、オンプレミスの企業リソースへのセキュリティで保護された高速な接続を確立することができます。
 
@@ -91,7 +90,7 @@ ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 �
 [ASENetwork]: ./network-info.md
 [UsingASE]: ./using-an-ase.md
 [UDRs]: ../../virtual-network/virtual-networks-udr-overview.md
-[NSGs]: ../../virtual-network/security-overview.md
+[NSGs]: ../../virtual-network/network-security-groups-overview.md
 [ConfigureASEv1]: app-service-web-configure-an-app-service-environment.md
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [webapps]: ../overview.md

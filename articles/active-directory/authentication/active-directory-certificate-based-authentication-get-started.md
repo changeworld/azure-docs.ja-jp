@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: iainfou
-author: iainfoulds
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051354"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861342"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Azure Active Directory の証明書ベースの認証の概要
 
@@ -31,7 +31,7 @@ ms.locfileid: "87051354"
 このトピックの内容と前提条件:
 
 - Office 365 Enterprise、Business、Education、および US Government の各プランのテナントのユーザー向けに証明書ベースの認証 (CBA) を構成し、使用する方法について説明します。 Office 365 China、US Government Defense、および US Government Federal の各プランでは、この機能はプレビュー版として提供されています。
-- [公開キー基盤 (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) と [AD FS](../hybrid/how-to-connect-fed-whatis.md) が構成されていることを前提としています。
+- [公開キー基盤 (PKI)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831740(v=ws.11)) と [AD FS](../hybrid/how-to-connect-fed-whatis.md) が構成されていることを前提としています。
 
 ## <a name="requirements"></a>必要条件
 
@@ -93,7 +93,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
     }
 ```
 
-構成には、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) を使用できます。
+構成には、[Azure Active Directory PowerShell バージョン 2](/powershell/azure/active-directory/install-adv2) を使用できます。
 
 1. Windows PowerShell を管理者特権で起動します。
 2. Azure AD モジュール バージョン [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) 以降をインストールします。
@@ -106,7 +106,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="connect"></a>接続する
 
-テナントとの接続を確立するには、[Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) コマンドレットを使用します。
+テナントとの接続を確立するには、[Connect-AzureAD](/powershell/module/azuread/connect-azuread) コマンドレットを使用します。
 
 ```azurepowershell
     Connect-AzureAD
@@ -114,7 +114,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="retrieve"></a>取得
 
-ディレクトリに定義されている信頼された証明機関を取得するには、[Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
+ディレクトリに定義されている信頼された証明機関を取得するには、[Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority) コマンドレットを使用します。
 
 ```azurepowershell
     Get-AzureADTrustedCertificateAuthority
@@ -122,7 +122,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="add"></a>追加
 
-信頼された証明機関を作成するには、[New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用し、**crlDistributionPoint** 属性に正しい値を設定します。
+信頼された証明機関を作成するには、[New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority) コマンドレットを使用し、**crlDistributionPoint** 属性に正しい値を設定します。
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
@@ -135,7 +135,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="remove"></a>[削除]
 
-信頼された証明機関を削除するには、[Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
+信頼された証明機関を削除するには、[Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority) コマンドレットを使用します。
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -144,7 +144,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="modify"></a>変更
 
-信頼された証明機関を変更するには、[Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) コマンドレットを使用します。
+信頼された証明機関を変更するには、[Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority) コマンドレットを使用します。
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -158,7 +158,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 即時の失効が必要な場合 (たとえば、ユーザーがデバイスを紛失した場合) は、ユーザーの認証トークンを無効にできます。 認証トークンを無効にするには、Windows PowerShell を使用してこの特定のユーザーの **StsRefreshTokenValidFrom** フィールドを設定します。 アクセスを無効にする各ユーザーの **StsRefreshTokenValidFrom** フィールドを更新する必要があります。
 
-失効状態が継続していることを確認するには、CRL の**発効日**を **StsRefreshTokenValidFrom** で設定した値より後の日付に設定し、対象の証明書が CRL にあることを確認する必要があります。
+失効状態が継続していることを確認するには、CRL の **発効日** を **StsRefreshTokenValidFrom** で設定した値より後の日付に設定し、対象の証明書が CRL にあることを確認する必要があります。
 
 次の手順は、 **StsRefreshTokenValidFrom** フィールドを設定することで認証トークンを更新し、無効にするプロセスを簡単に示したものです。
 
@@ -190,7 +190,7 @@ Azure Active Directory で証明機関を構成するには、証明機関ごと
 
 ### <a name="testing-your-certificate"></a>証明書のテスト
 
-構成の最初のテストとして、**デバイス上のブラウザー**を使用して [Outlook Web Access](https://outlook.office365.com) または [SharePoint Online](https://microsoft.sharepoint.com) へのサインインを試みます。
+構成の最初のテストとして、**デバイス上のブラウザー** を使用して [Outlook Web Access](https://outlook.office365.com) または [SharePoint Online](https://microsoft.sharepoint.com) へのサインインを試みます。
 
 サインインが成功した場合、次のことがわかります。
 

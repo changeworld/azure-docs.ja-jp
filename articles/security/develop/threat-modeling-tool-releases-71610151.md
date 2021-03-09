@@ -1,17 +1,17 @@
 ---
 title: Microsoft Threat Modeling Tool のリリース 2019 年 10 月 16 日 - Azure
-description: Threat Modeling Tool のリリース ノートです
+description: Threat Modeling Tool リリース 7.1.61015.1 のリリース ノートです。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.topic: article
 ms.date: 10/16/2019
-ms.openlocfilehash: 410da29d8c119111d1ec9b4e60bf8fb1ca661f70
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 761ad45496e799a555b60480ff575b9d8f30e984
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259388"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516987"
 ---
 # <a name="threat-modeling-tool-update-release-71610151---10162019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.61015.1 - 2019 年 10 月 16 日
 
@@ -60,7 +60,7 @@ System.ArgumentOutOfRangeException: Accepted values are 'High', 'Medium', and 'L
 
 ## <a name="documentation-and-feedback"></a>ドキュメントとフィードバック
 
-- Threat Modeling Tool のドキュメントは [docs.microsoft.com](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool) にあり、[ツールの使用について](https://docs.microsoft.com/azure/security/azure-security-threat-modeling-tool-getting-started)の情報が含まれます。
+- Threat Modeling Tool のドキュメントは [docs.microsoft.com](./threat-modeling-tool.md) にあり、[ツールの使用について](./threat-modeling-tool-getting-started.md)の情報が含まれます。
 
 ## <a name="next-steps"></a>次のステップ
 

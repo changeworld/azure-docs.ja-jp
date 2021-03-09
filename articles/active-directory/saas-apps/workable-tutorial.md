@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 0f153fbe8df22cf22ec637d5fd536cb0825f3d1e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f705ca1e001d3b7852c5bec5b494f23eb7943626
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88541455"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>チュートリアル:Azure Active Directory と Workable の統合
 
@@ -27,7 +27,7 @@ Workable と Azure AD の統合には、次の利点があります。
 * ユーザーが自分の Azure AD アカウントを使用して Workable に自動的にサインイン (シングル サインオン) できるようにすることができます。
 * 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="prerequisites"></a>前提条件
@@ -100,20 +100,20 @@ Workable で Azure AD シングル サインオンを構成するには、次の
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![[Workable のドメインと URL] のシングル サインオン情報](common/both-replyurl.png)
+    ![[基本的な SAML 構成] を示すスクリーンショット。ここに応答 URL を入力することができます。](common/both-replyurl.png)
 
     **[応答 URL]** ボックスに、`https://www.workable.com/auth/saml/<SUBDOMAIN>/callback` のパターンを使用して URL を入力します
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![[Workable のドメインと URL] のシングル サインオン情報](common/both-signonurl.png)
+    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/both-signonurl.png)
 
     **[サインオン URL]** テキスト ボックスに URL として「`https://www.workable.com/sso/signin`」と入力します。
 
     > [!NOTE]
     > 応答 URL 値は、実際の値ではありません。 応答 URL 値を実際の応答 URL で更新します。 この値を取得するには、[Workable クライアント サポート チーム](mailto:support@workable.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの**証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
+6. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
@@ -157,7 +157,7 @@ Workable 内で SSO を有効にするには、専任の Workable アカウン�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します (例: `brittasimon@contoso.com`)。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 
@@ -197,12 +197,12 @@ Workable 内で SSO を有効にするには、専任の Workable アカウン�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネル上で [Workable] タイルをクリックすると、SSO を設定した Workable に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネル上で [Workable] タイルをクリックすると、SSO を設定した Workable に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)

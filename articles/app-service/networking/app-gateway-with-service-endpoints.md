@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
-ms.custom: seodec18
-ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 58886a8f7dc505a7e68d69eb00b4a2ebd776dd5a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958935"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209860"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>サービス エンドポイントと Application Gateway の統合
 App Service には、Azure Application Gateway との統合において少し異なる構成を必要とする 3 つのバリエーションがあります。 バリエーションには、通常の App Service (マルチテナント、内部ロード バランサー (ILB) App Service Environment (ASE)、外部 ASE とも呼ばれます) が含まれます。 この記事では、App Service (マルチテナント) を使用して構成し、ILB と外部 ASE に関する考慮事項について説明します。
@@ -27,20 +27,20 @@ App Service には、Azure Application Gateway との統合において少し異
 ## <a name="integration-with-app-service-multi-tenant"></a>App Service (マルチテナント) との統合
 App Service (マルチテナント) には、インターネットに接続するパブリック エンドポイントがあります。 [サービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)を使用すると、Azure Virtual Network 内の特定のサブネットからのトラフィックのみを許可し、他のすべてのトラフィックをブロックすることができます。 次のシナリオでは、この機能を使用して、App Service インスタンスが特定の Application Gateway インスタンスからのトラフィックのみを受信できるようにします。
 
-![App Service と Application Gateway の統合](./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png)
+:::image type="content" source="./media/app-gateway-with-service-endpoints/service-endpoints-appgw.png" alt-text="図には、インターネットが Azure Virtual Network 内の Application Gateway に流れ、そこからファイアウォール アイコンを経由して App Service 内のアプリのインスタンスに送信されることが示されています。":::
 
 この構成には、App Service と Application Gateway の作成以外に 2 つの部分があります。 最初の部分は、Application Gateway がデプロイされている Virtual Network のサブネットでサービス エンドポイントを有効にすることです。 サービス エンドポイントは、サブネットから App Service に向かうすべてのネットワーク トラフィックに、特定のサブネット ID でタグ付けされるようにします。 2 つ目の部分は、特定の Web アプリのアクセス制限を設定して、この特定のサブネット ID でタグ付けされたトラフィックのみが許可されるようにすることです。 設定に応じて、さまざまなツールを使用して構成できます。
 
 ## <a name="using-azure-portal"></a>Azure Portal の使用
 Azure portal では、4 つの手順に従ってセットアップのプロビジョニングと構成を行います。 既存のリソースがある場合は、最初の手順を省略できます。
-1. [.Net Core のクイック スタート](../quickstart-dotnetcore.md)などの App Service ドキュメントのクイック スタートのいずれかを使用して、App Service を作成します。
+1. [.NET Core のクイック スタート](../quickstart-dotnetcore.md)などの App Service ドキュメントのクイック スタートのいずれかを使用して、App Service を作成します。
 2. [ポータルのクイック スタート](../../application-gateway/quick-create-portal.md)を使用して Application Gateway を作成します。この際、[バックエンド ターゲットの追加] セクションはスキップします。
 3. [Application Gateway で App Service をバックエンドとして](../../application-gateway/configure-web-app-portal.md)構成します。この際、[アクセスを制限する] セクションはスキップします。
-4. 最後に、[サービス エンドポイントを使用してアクセス制限](../../app-service/app-service-ip-restrictions.md#service-endpoints)を作成します。
+4. 最後に、[サービス エンドポイントを使用してアクセス制限](../../app-service/app-service-ip-restrictions.md#set-a-service-endpoint-based-rule)を作成します。
 
 Application Gateway を通じて App Service にアクセスできるようになりましたが、App Service に直接アクセスしようとすると、Web サイトが停止していることを示す 403 HTTP エラーが表示されます。
 
-![App Service と Application Gateway の統合](./media/app-gateway-with-service-endpoints/web-site-stopped.png)
+![[エラー 403 - 許可されていません] のテキストを示すスクリーンショット。](./media/app-gateway-with-service-endpoints/website-403-forbidden.png)
 
 ## <a name="using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 [Resource Manager デプロイ テンプレート][template-app-gateway-app-service-complete]では、完全なシナリオがプロビジョニングされます。 このシナリオでは Application Gateway からのトラフィックのみを受信するため、サービス エンドポイントおよびアクセス制限を使用してロックダウンされた App Service インスタンスが含まれます。 このテンプレートには、簡単にするために、リソース名に追加された多数のスマート既定値と固有の接尾辞が含まれています。 これらをオーバーライドするには、リポジトリを複製するか、テンプレートをダウンロードして編集する必要があります。 

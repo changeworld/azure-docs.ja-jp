@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:シングルページ アプリ (SPA) のサインインの設定
+title: 'クイックスタート: シングルページ アプリ (SPA) のサインインの設定'
 titleSuffix: Azure AD B2C
 description: このクイックスタートでは、Azure Active Directory B2C を使用してアカウント サインインを提供するサンプル シングルページ アプリケーションを実行します。
 services: active-directory-b2c
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6471d1b5a5ad2b8ba34080ae1220872fa0e2e232
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921760"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421058"
 ---
-# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイック スタート:Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
+# <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>クイックスタート: Azure Active Directory B2C を使用したシングルページ アプリのサインインの設定
 
 Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。 Azure AD B2C に対応したアプリケーションは、オープンな標準プロトコルを使用し、ソーシャル アカウントやエンタープライズ アカウントで認証を行うことができます。 このクイック スタートでは、シングル ページ アプリケーションにソーシャル ID プロバイダーを使ってサインインし、Azure AD B2C で保護された Web API を呼び出します。
 
@@ -29,12 +29,12 @@ Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビ�
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js](https://nodejs.org/en/download/)
 - Facebook、Google、または Microsoft のソーシャル アカウント
-- GitHub のコード サンプル: [active-directory-b2c-javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)
+- GitHub からのコード サンプル: [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa)
 
-    [zip アーカイブをダウンロードする](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)か、リポジトリを複製することができます。
+    [zip アーカイブをダウンロードする](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa/archive/main.zip)か、リポジトリを複製することができます。
 
     ```console
-    git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+    git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
     ```
 
 ## <a name="run-the-application"></a>アプリケーションの実行
@@ -42,7 +42,6 @@ Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビ�
 1. Node.js のコマンド プロンプトから次のコマンドを実行してサーバーを起動します。
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
     npm install && npm update
     npm start
     ```
@@ -60,7 +59,7 @@ Azure Active Directory B2C (Azure AD B2C) は、アプリケーション、ビ�
 ## <a name="sign-in-using-your-account"></a>自分のアカウントを使用してサインインする
 
 1. **[サインイン]** を選択して、ユーザー体験を開始します。
-1. Azure AD B2C では、サンプルの Web アプリケーションに対する Fabrikam と呼ばれる架空の会社のサインイン ページが提供されます。 ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンを選択します。
+1. Azure AD B2C には、サンプルの Web アプリケーション用に "Fabrikam" という名前の架空の会社のサインイン ページが用意されています。 ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンを選択します。
 
     ![ID プロバイダー ボタンが表示されたサインインまたはサインアップ ページ](./media/quickstart-single-page-app/sign-in-or-sign-up-spa.png)
 

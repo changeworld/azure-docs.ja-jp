@@ -4,21 +4,21 @@ description: Azure Maps Web SDK で提供される、空間 IO モジュール�
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/28/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f848274f67b5ebf5349cbef24a769aaae39b9955
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-js
+ms.openlocfilehash: cd64c80acceb1542c080fc45efbce59f287d448a
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287042"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680695"
 ---
 # <a name="how-to-use-the-azure-maps-spatial-io-module"></a>Azure Maps の空間 IO モジュールの使用方法
 
-Azure Maps Web SDK には、JavaScript または TypeScript を使用して、空間データを Azure Maps Web SDK に統合する、**空間 IO モジュール**が用意されています。 開発者は、このモジュールの堅牢な機能により、次のことを行うことができます。
+Azure Maps Web SDK には、JavaScript または TypeScript を使用して、空間データを Azure Maps Web SDK に統合する、**空間 IO モジュール** が用意されています。 開発者は、このモジュールの堅牢な機能により、次のことを行うことができます。
 
 - [一般的な空間データ ファイルに対する読み取りと書き込み](spatial-io-read-write-spatial-data.md)。 サポートされているファイル形式は以下の通りです｡空間情報を含む列がある、KML、KMZ、GPX、GeoRSS、GML、CSV ファイル。 また、Well-Known Text (WKT) もサポートされています。
 - [Open Geospatial Consortium (OGC) サービスに接続し、Azure Maps Web SDK と統合する。Web Map Service (WMS) と Web Map Tile Service (WMTS) をマップにレイヤーとしてオーバーレイする。](spatial-io-add-ogc-map-layer.md)
@@ -30,17 +30,16 @@ Azure Maps Web SDK には、JavaScript または TypeScript を使用して、�
 
 この動画では、Azure Maps Web SDK での空間 IO モジュールの概要を示します。
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0" title="空間データを Azure Maps に簡単に統合する - Microsoft Channel 9 の動画"></iframe>
-
+> [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Easily-integrate-spatial-data-into-the-Azure-Maps/player?format=ny]
 
 > [!WARNING]
 > 特に別のドメインから参照する場合は、信頼できるソースからのデータとサービスのみを使用します。 空間 IO モジュールではリスクを最小限に抑えるための手順を行いますが、最初にアプリケーションに危険なデータを許可しないことが最も安全な方法です。 
 
 ## <a name="prerequisites"></a>前提条件
 
-空間 IO モジュールを使用する前に、[Azure Maps アカウントを作成](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#create-an-azure-maps-account)し、[お使いのアカウントのプライマリ サブスクリプション キーを取得](https://docs.microsoft.com/azure/azure-maps/quick-demo-map-app#get-the-primary-key-for-your-account)する必要があります。
+空間 IO モジュールを使用する前に、[Azure Maps アカウントを作成](./quick-demo-map-app.md#create-an-azure-maps-account)し、[お使いのアカウントのプライマリ サブスクリプション キーを取得](./quick-demo-map-app.md#get-the-primary-key-for-your-account)する必要があります。
 
 ## <a name="installing-the-spatial-io-module"></a>空間 IO モジュールのインストール
 
@@ -68,7 +67,7 @@ Azure Maps 空間 IO モジュールは、次の 2 つのオプションのい�
 
 1. 新しい HTML ファイルを作成します。
 
-2. Azure Maps Web SDK を読み込んで、マップ コントロールを初期化します。 詳細については、[Azure Maps のマップ コントロール](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control) ガイドに関するページを参照してください。 この手順を完了すると、お使いの HTML ファイルは次のようになります。
+2. Azure Maps Web SDK を読み込んで、マップ コントロールを初期化します。 詳細については、[Azure Maps のマップ コントロール](./how-to-use-map-control.md) ガイドに関するページを参照してください。 この手順を完了すると、お使いの HTML ファイルは次のようになります。
 
     ```html
     <!DOCTYPE html>
@@ -256,4 +255,4 @@ Azure Maps 空間 IO モジュールは、次の 2 つのオプションのい�
 以下の Azure Maps 空間 IO のドキュメントを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Maps 空間 IO パッケージ](https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/)
+> [Azure Maps 空間 IO パッケージ](/javascript/api/azure-maps-spatial-io/)

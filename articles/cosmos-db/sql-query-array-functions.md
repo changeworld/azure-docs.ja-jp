@@ -3,18 +3,20 @@ title: Azure Cosmos DB クエリ言語の配列関数
 description: 配列関数を使用して、Azure Cosmos DB 内の配列に対して演算を実行する方法について説明します
 author: ginamr
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2a4033088a9152363a91c368109136062cace4ce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e27f9c0af62c4cbdd550fd9907a0dd88d72bba6e
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563511"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549210"
 ---
 # <a name="array-functions-azure-cosmos-db"></a>配列関数 (Azure Cosmos DB)
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 配列関数を使用すると、Azure Cosmos DB 内の配列に対する演算を実行できます。
 
@@ -36,4 +38,4 @@ ms.locfileid: "85563511"
 - [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)
 - [ユーザー定義関数](sql-query-udfs.md)
-- [集計](sql-query-aggregates.md)
+- [集計](sql-query-aggregate-functions.md)

@@ -9,18 +9,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/10/2018
+ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 9593a6c4fa45d9810aabb2bbb3123428930c5891
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 67940db973f494cd4a12c2f16db528e0b113d656
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89401573"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91449210"
 ---
-# <a name="how-front-door-matches-requests-to-a-routing-rule"></a>Front Door が要求をルーティング規則と照合する方法
+# <a name="how-requests-are-matched-to-a-routing-rule"></a>ルーティング規則に対する要求の照合方法
 
-接続の確立と TLS ハンドシェイクが行われ、要求が Front Door 環境に届いたときに、Front Door で最初に行われることの 1 つとして、すべての構成情報から、その要求と一致する特定のルーティング規則が決定され、定義されているアクションが実行されます。 以下のドキュメントは、HTTP 要求の処理において、Front Door がどのルート構成を使用するかを判断する方法について説明します。
+接続の確立と TLS ハンドシェイクが行われ、要求が Front Door 環境に届いたときに、Front Door で最初に行われることの 1 つとして、その要求と一致する特定のルーティング規則が決定され、構成内で定義されているアクションが実行されます。 以下のドキュメントは、HTTP 要求の処理において、Front Door がどのルート構成を使用するかを判断する方法について説明します。
 
 ## <a name="structure-of-a-front-door-route-configuration"></a>Front Door のルート構成の構造
 Front Door のルーティング規則の構成は、大きく分けて「左側」と「右側」の 2 つの部分から成っています。 ルートの左側への着信要求は照合を実行し、右側はその要求をどう処理するかを定義します。
@@ -41,7 +41,7 @@ Front Door のルーティング規則の構成は、大きく分けて「左側
 このセクションは、Front Door のルーティング規則への照合方法に焦点を当てます。 基本的な概念は、まず「左側」のみを見て、**もっとも一致率が高いもの**を常に照合するということです。  まず HTTP プロトコル、フロント エンドのホスト、Path の順で照合します。
 
 ### <a name="frontend-host-matching"></a>フロント エンド ホストの照合
-フロント エンドのホストを照合するときは、次に示すロジックを使用します。
+フロント エンドのホストを照合するときは、次に定義するロジックを使用します。
 
 1. ホストに完全に一致するルートを探します。
 2. 完全に一致するフロント エンドのホストが存在しない場合は、要求を拒否し、400 Bad Request エラーを送信します。

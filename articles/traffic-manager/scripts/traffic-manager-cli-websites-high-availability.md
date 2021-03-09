@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: duau
-ms.openlocfilehash: 86151efdc6d2b17c9eef722f2dc3c6306d5aa1b8
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: abac2e5b1fcba65db92edd2bcc2f390ec0114f59
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89400230"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185346"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Azure CLI を使用した高可用性アプリケーションのためのトラフィックのルーティング
 
@@ -49,14 +49,14 @@ az group delete --name myResourceGroup2 --yes
 
 | command | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
-| [az webapp web create](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | App Service プラン内に Azure Web アプリを作成します。 |
-| [az network traffic-manager profile create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Azure Traffic Manager プロファイルを作成します。 |
-| [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Azure Traffic Manager プロファイルにエンドポイントを追加します。 |
+| [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az appservice plan create](/cli/azure/appservice/plan) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
+| [az webapp web create](/cli/azure/webapp#az-webapp-create) | App Service プラン内に Azure Web アプリを作成します。 |
+| [az network traffic-manager profile create](/cli/azure/network/traffic-manager/profile) | Azure Traffic Manager プロファイルを作成します。 |
+| [az network traffic-manager endpoint create](/cli/azure/network/traffic-manager/endpoint) | Azure Traffic Manager プロファイルにエンドポイントを追加します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
 その他の App Service の CLI サンプル スクリプトは、[Azure のネットワークに関するドキュメント](../cli-samples.md)のページにあります。

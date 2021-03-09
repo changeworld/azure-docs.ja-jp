@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 でオフライン PlayReady ストリーミングを構成する
-description: この記事では、オフラインの Windows 10 のために PlayReady ストリーミング用の Azure Media Services アカウントを構成する方法を示します。
+title: オフラインの PlayReady ストリーミングを構成する
+description: この記事では、オフラインの Windows 10 のために PlayReady ストリーミング用の Azure Media Services v3 アカウントを構成する方法を示します。
 services: media-services
 keywords: DASH, DRM, Widevine オフライン モード, ExoPlayer, Android
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e0c4daeae9884bdb5feaceccc23046866f0d59c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: ea3d895970c6a18286d719471a693f774efaa387
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89266682"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955231"
 ---
 # <a name="offline-playready-streaming-for-windows-10-with-media-services-v3"></a>Media Services v3 を使用した Windows 10 用のオフラインの PlayReady ストリーミング
 
@@ -38,7 +38,7 @@ Azure Media Services は、DRM 保護を適用したオフラインでのダウ�
 
 このセクションでは、オフライン モードでの再生に関する背景情報をいくつか示します。特に、必要な理由を説明します。
 
-* 一部の国/地域では、インターネットの使用や帯域幅がまだ制限されています。 ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題は、ネットワークを使えるかどうかではなく、ネットワーク帯域幅の制限です。 OTT/OVP プロバイダーは、オフライン モードのサポートを求めています。
+* 一部の国/地域では、インターネットの使用や帯域幅がまだ制限されています。  ユーザーは先にダウンロードしておくことで、満足できる十分に高い解像度でコンテンツを視聴できます。 通常、この場合の問題は、ネットワークを使えるかどうかではなく、ネットワーク帯域幅の制限です。 OTT/OVP プロバイダーは、オフライン モードのサポートを求めています。
 * Netflix の 2016 年第 3 四半期株主会議で公表されたように、コンテンツのダウンロードは、"よく求められる機能" であり、"検討の余地がある" と Netflix CEO の Reed Hastings 氏は述べています。
 * コンテンツ プロバイダーによっては、国/地域の境を超えた DRM ライセンス配信を許可しないことがあります。 ユーザーが海外旅行する必要があり、そこでもコンテンツを見たい場合は、オフライン ダウンロードが必要です。
  

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 3f5fd8433f8de4dab39a73e889a71c4b262dc924
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: 48756b43e64576a5dd38467bb1dd97e91c168a06
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394501"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360856"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>高可用性のクロスプレミス接続および VNet 間接続
 この記事では、Azure VPN Gateway を使用したクロスプレミス接続と VNet 間接続の高可用性構成オプションの概要を説明します。
@@ -20,7 +20,7 @@ ms.locfileid: "89394501"
 ## <a name="about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>Azure VPN Gateway の冗長性について
 すべての Azure VPN Gateway は、アクティブ/スタンバイ構成の 2 つのインスタンスから成ります。 アクティブなインスタンスに対して計画的なメンテナンスまたは計画外の中断が発生すると、スタンバイ インスタンスが自動的に引き継ぎ (フェールオーバーし)、S2S VPN または VNet 間接続が再開されます。 切り替わる際に、短い中断が発生します。 計画的なメンテナンスの場合は、10 ～ 15 秒以内に接続が復元されます。 予期しない問題の場合は、接続の復旧にかかる時間は長くなり、約 1 分から最悪の場合は 1 分 30 秒かかります。 ゲートウェイへの P2S VPN クライアント接続の場合、P2S 接続が切断されるため、ユーザーがクライアント コンピューターから再接続する必要があります。
 
-![Active-Standby](./media/vpn-gateway-highlyavailable/active-standby.png)
+![Azure でホストされているサブネットに接続するために、プライベート IP サブネットとオンプレミス VPN がアクティブな Azure VPN ゲートウェイに接続され、スタンバイのゲートウェイが使用可能なオンプレミス サイトを示す図。](./media/vpn-gateway-highlyavailable/active-standby.png)
 
 ## <a name="highly-available-cross-premises-connectivity"></a>高可用性のクロスプレミス接続
 クロスプレミス接続の可用性を向上させるには、いくつかのオプションがあります。
@@ -49,7 +49,7 @@ ms.locfileid: "89394501"
 ### <a name="active-active-azure-vpn-gateway"></a>アクティブ/アクティブの Azure VPN Gateway
 次の図に示すように、ゲートウェイ VM の両方のインスタンスでオンプレミスの VPN デバイスへの S2S VPN トンネルを確立するアクティブ/アクティブ構成の Azure VPN Gateway を作成できます。
 
-![アクティブ/アクティブ](./media/vpn-gateway-highlyavailable/active-active.png)
+![Azure でホストされているサブネットに接続するために、プライベート IP サブネットとオンプレミス VPN がアクティブな Azure VPN ゲートウェイに接続されているオンプレミス サイトを示す図。](./media/vpn-gateway-highlyavailable/active-active.png)
 
 この構成では、各 Azure ゲートウェイ インスタンスが一意のパブリック IP アドレスを持ち、ローカル ネットワーク ゲートウェイと接続で指定されたオンプレミスの VPN デバイスへの IPsec/IKE S2S VPN トンネルを確立します。 両方の VPN トンネルは実際には同じ接続の一部であることに注意してください。 この構成でも、これら 2 つの Azure VPN Gateway のパブリック IP アドレスへの 2 つの S2S VPN トンネルを受け入れるか確立するようにオンプレミスの VPN デバイスを構成する必要があります。
 
@@ -71,7 +71,7 @@ Azure ゲートウェイ インスタンスがアクティブ/アクティブ構
 ## <a name="highly-available-vnet-to-vnet-connectivity-through-azure-vpn-gateways"></a>Azure VPN Gateway を介した高可用性の VNet 間接続
 同じアクティブ/アクティブ構成を Azure VNet 間接続にも適用できます。 両方の仮想ネットワークにアクティブ/アクティブ VPN ゲートウェイを作成し、両方を接続して、次の図に示すように、2 つの VNet 間に 4 つのトンネルが存在する同じフル メッシュ接続を構成できます。
 
-![VNet 間](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
+![2 つの仮想サイトの接続を通じてプライベート IP サブネットと 2 つの Azure VPN ゲートウェイをホストしている 2 つの Azure リージョンを示す図。](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
 
 これにより、すべての計画的なメンテナンス イベントに備えて 2 つの仮想ネットワーク間にトンネルのペアが常に存在し、より高い可用性が実現されます。 クロスプレミス接続の同じトポロジには 2 つの接続が必要ですが、前に示した VNet 間トポロジではゲートウェイごとに必要な接続は 1 つだけです。 さらに、VNet 間接続経由のトランジット ルーティングが必要でない限り、BGP はオプションです。
 

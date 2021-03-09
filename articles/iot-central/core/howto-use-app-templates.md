@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 39bb129d6edba168ed1ed45b1de205a206c83ed2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aec72644f708d6363a80da28c5e571d0165fcdfa
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678173"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651838"
 ---
 # <a name="export-your-application"></a>アプリケーションのエクスポート
 
@@ -30,7 +30,7 @@ ms.locfileid: "84678173"
 
 **[コピー]** を選択します。 ダイアログ ボックスに、新しいアプリケーションの詳細を入力します。 **[コピー]** を選択して、続行することを確認します。 このフォームのフィールドの詳細については、[アプリケーションの作成](quick-deploy-iot-central.md)に関するクイックスタートを参照してください。
 
-![[Application Settings] (アプリケーション設定) ページ](media/howto-use-app-templates/appcopy2.png)
+![[アプリケーションのコピー] 設定ページが示されているスクリーンショット。](media/howto-use-app-templates/appcopy2.png)
 
 アプリのコピー操作が成功したら、リンクを使用して新しいアプリケーションに移動できます。
 

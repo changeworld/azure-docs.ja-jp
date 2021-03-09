@@ -3,19 +3,21 @@ title: Azure Cosmos DB 変更フィードを使用してリアルタイムのデ
 description: この記事では、小売企業が変更フィードを活用してユーザーのパターンを理解し、リアルタイムでのデータ分析を実行して視覚化する方法について説明します。
 author: SnehaGunda
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: how-to
 ms.date: 05/28/2019
 ms.author: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: c9abc4dc89651eec7df635fb415314b2c12da3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e7b75c71d64054e38630677ecd38f8e3e2483c12
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319764"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97606336"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Azure Cosmos DB 変更フィードを使用してリアルタイムのデータ分析を視覚化する
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコードが作成または変更されるたびに、それらのレコードのフィードを継続的かつ増分的に取得するメカニズムです。 変更フィードのサポートは、コンテナーに加えられた変更をリッスンすることで機能します。 変更されたドキュメントは、変更された順に並べ替えられた一覧に出力されます。 変更フィードについて詳しくは、[変更フィードでの作業](change-feed.md)に関する記事をご覧ください。 
 
@@ -33,24 +35,24 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコー
  
 1. **データの生成:** データ シミュレーターは、ユーザーが商品を閲覧する、カートに商品を追加する、商品を購入するなどのイベントを表す小売データを生成するために使用します。 データ ジェネレーターを使用して、大規模なサンプル データのセットを生成できます。 生成されたサンプル データには、次の形式のドキュメントが含まれています。
    
-   ```json
-   {      
-     "CartID": 2486,
-     "Action": "Viewed",
-     "Item": "Women's Denim Jacket",
-     "Price": 31.99
-   }
-   ```
+    ```json
+    {
+      "CartID": 2486,
+      "Action": "Viewed",
+      "Item": "Women's Denim Jacket",
+      "Price": 31.99
+    }
+    ```
 
 2. **Cosmos DB:** 生成されたデータは、Azure Cosmos コンテナーに格納されます。  
 
-3. **変更フィード:** 変更フィードでは、Azure Cosmos コンテナーに対する変更がリッスンされます。 新しいドキュメントがコレクションに追加されるたびに (つまりユーザーが商品を閲覧する、カートに商品を追加する、商品を購入するなどのイベントが発生したとき)、変更フィードは [Azure 関数](../azure-functions/functions-overview.md)をトリガーします。  
+3. **変更フィード:** 変更フィードでは、Azure Cosmos コンテナーに対する変更がリッスンされます。 新しいドキュメントがコレクションに追加されるたびに (つまりユーザーが商品を閲覧する、カートに商品を追加する、商品を購入するなどのイベントが発生したとき)、変更フィードは [Azure Function](../azure-functions/functions-overview.md)をトリガーします。  
 
-4. **Azure 関数:** Azure 関数が新しいデータを処理して [Azure イベント ハブ](../event-hubs/event-hubs-about.md)に送信します。  
+4. **Azure Function:** Azure 関数が新しいデータを処理して [Azure Event Hub](../event-hubs/event-hubs-about.md)に送信します。  
 
-5. **イベント ハブ:** Azure イベント ハブがそれらのイベントを格納し、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) に送信してさらに分析します。  
+5. **Event Hub:** Azure Event Hub がそれらのイベントを格納し、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) に送信してさらに分析します。  
 
-6. **Azure Stream Analytics:** Azure Stream Analytics がイベントを処理し、リアルタイムでデータ分析を実行するクエリを定義します。 その後、このデータは [Microsoft Power BI](https://docs.microsoft.com/power-bi/desktop-what-is-desktop) に送信されます。  
+6. **Azure Stream Analytics:** Azure Stream Analytics がイベントを処理し、リアルタイムでデータ分析を実行するクエリを定義します。 その後、このデータは [Microsoft Power BI](/power-bi/desktop-what-is-desktop) に送信されます。  
 
 7. **Power BI:** Power BI は、Azure Stream Analytics によって送信されたデータを視覚化します。 ダッシュボードをビルドしてメトリックがリアルタイムでどのように変化するかを確認できます。  
 
@@ -94,7 +96,7 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコー
 
 次は e コマース サイトのイベントを保持するコレクションを作成します。 ユーザーが商品を閲覧する、カートに商品を追加する、または商品を購入すると、コレクションはアクション (「閲覧」、「追加」、または「購入」)、関連する商品の名前、関連する商品の価格、関連するユーザーのカートの ID 番号などのレコードを受け取ります。
 
-1. [Azure portal](https://portal.azure.com/) に移動し、テンプレートのデプロイによって作成された **Azure Cosmos DB アカウント**を探します。  
+1. [Azure portal](https://portal.azure.com/) に移動し、テンプレートのデプロイによって作成された **Azure Cosmos DB アカウント** を探します。  
 
 2. **[データ エクスプローラー]** ペインで、 **[新しいコレクション]** を選択し、次の詳細でフォームに入力します。  
 
@@ -118,9 +120,9 @@ Azure Cosmos DB 変更フィードは、Azure Cosmos コンテナーのレコー
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>Azure Cosmos DB 接続文字列を取得する
 
-1. [Azure portal](https://portal.azure.com/) に移動し、テンプレートのデプロイによって作成された **Azure Cosmos DB アカウント**を探します。  
+1. [Azure portal](https://portal.azure.com/) に移動し、テンプレートのデプロイによって作成された **Azure Cosmos DB アカウント** を探します。  
 
-2. **[キー]** ペインに移動し、PRIMARY CONNECTION STRING をコピーしてノートパッドやラボを通じてアクセスできる別のドキュメントに貼り付けます。 これは **Cosmos DB 接続文字列**とラベル付けしてください。 後でこの文字列をコードにコピーする必要があるため、保存する場所をメモして覚えておきます。
+2. **[キー]** ペインに移動し、PRIMARY CONNECTION STRING をコピーしてノートパッドやラボを通じてアクセスできる別のドキュメントに貼り付けます。 これは **Cosmos DB 接続文字列** とラベル付けしてください。 後でこの文字列をコードにコピーする必要があるため、保存する場所をメモして覚えておきます。
 
 ### <a name="get-the-storage-account-key-and-connection-string"></a>ストレージ アカウントのキーと接続文字列を取得する
 
@@ -130,17 +132,17 @@ Azure Storage のアカウントではユーザーがデータを格納できま
 
 2. 左側のメニューで、 **[アクセス キー]** を選択します。  
 
-3. **[key 1]** の下の値をノートパッドやラボを通じてアクセスできる別のドキュメントにコピーします。 **キー**は**ストレージ キー**、**接続文字列**は**ストレージ接続文字列**としてラベル付けしてください。 後でこれらの文字列をコードにコピーする必要があるため、保存する場所をメモして覚えておきます。  
+3. **[key 1]** の下の値をノートパッドやラボを通じてアクセスできる別のドキュメントにコピーします。 **キー** は **ストレージ キー**、**接続文字列** は **ストレージ接続文字列** としてラベル付けしてください。 後でこれらの文字列をコードにコピーする必要があるため、保存する場所をメモして覚えておきます。  
 
 ### <a name="get-the-event-hub-namespace-connection-string"></a>イベント ハブの名前空間の接続文字列を取得する
 
-Azure イベント ハブは、イベント データを取得し、そのデータを格納、処理、および転送します。 このラボでは、Azure イベント ハブは新しいイベント (ユーザーが商品を閲覧した、ユーザーのカートに追加した、購入したなど) が発生するたびにドキュメントを取得し、そのドキュメントを Azure Stream Analytics に転送します。
+Azure Event Hub は、イベント データを取得し、そのデータを格納、処理、および転送します。 このラボでは、Azure Event Hub は新しいイベント (ユーザーが商品を閲覧した、ユーザーのカートに追加した、購入したなど) が発生するたびにドキュメントを取得し、そのドキュメントを Azure Stream Analytics に転送します。
 
-1. リソース グループに戻り、プレラボで作成して名前を付けた**イベント ハブの名前空間**を開きます。  
+1. リソース グループに戻り、プレラボで作成して名前を付けた **イベント ハブの名前空間** を開きます。  
 
 2. 左側のメニューで、 **[共有アクセス ポリシー]** を選択します。  
 
-3. **[RootManageSharedAccessKey]** を選択します。 **[接続文字列 – 主キー]** をノートパッドやラボを通じてアクセスできる別のドキュメントにコピーします。 これを**イベント ハブの名前空間**の接続文字列とラベル付けしてください。 後でこの文字列をコードにコピーする必要があるため、保存する場所をメモして覚えておきます。
+3. **[RootManageSharedAccessKey]** を選択します。 **[接続文字列 – 主キー]** をノートパッドやラボを通じてアクセスできる別のドキュメントにコピーします。 これを **イベント ハブの名前空間** の接続文字列とラベル付けしてください。 後でこの文字列をコードにコピーする必要があるため、保存する場所をメモして覚えておきます。
 
 ## <a name="set-up-azure-function-to-read-the-change-feed"></a>変更フィードを読み取るように Azure 関数を設定する
 
@@ -166,9 +168,9 @@ Cosmos コンテナーで新しいドキュメントが作成されるか、ま�
 
 1. エクスプローラーのリポジトリに戻り、 **[ChangeFeedFunction.sln]** を右クリックして、それを Visual Studio の新しいウィンドウでもう一度開きます。  
 
-2. **App.config** ファイルに移動します。`<appSettings>` ブロックに、前に取得した Azure Cosmos DB アカウントのエンドポイントおよび一意の**主キー**を追加します。  
+2. **App.config** ファイルに移動します。`<appSettings>` ブロックに、前に取得した Azure Cosmos DB アカウントのエンドポイントおよび一意の **主キー** を追加します。  
 
-3. **コレクション**名と**データベース**名を追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabcollection** と **changefeedlabdatabase** にしてください)。
+3. **コレクション** 名と **データベース** 名を追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabcollection** と **changefeedlabdatabase** にしてください)。
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/update-connection-string.png" alt-text="接続文字列を更新する":::
  
@@ -178,7 +180,7 @@ Cosmos コンテナーで新しいドキュメントが作成されるか、ま�
  
 6. プログラムが実行されるのを待ちます。 星はデータを受信していることを意味します。 プログラムを引き続き実行します。大量のデータを収集することが重要です。  
 
-7. [Azure portal](https://portal.azure.com/)、リソース グループ内の Cosmos DB アカウント、**データ エクスプローラー**の順に移動すると、**changefeedlabcollection** にランダム化されたデータがインポートされたことが確認できます。
+7. [Azure portal](https://portal.azure.com/)、リソース グループ内の Cosmos DB アカウント、**データ エクスプローラー** の順に移動すると、**changefeedlabcollection** にランダム化されたデータがインポートされたことが確認できます。
  
    :::image type="content" source="./media/changefeed-ecommerce-solution/data-generated-in-portal.png" alt-text="ポータルで生成されたデータ":::
 
@@ -259,7 +261,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
    b. **出力のエイリアス:** top5Output、データセット名: top5、テーブル名: top5  
    c. **出力のエイリアス:** uniqueVisitorCountOutput、データセット名: uniqueVisitorCount、テーブル名: uniqueVisitorCount
 
-   その後、 **[クエリの編集]** を選択し、既に記述したクエリの**上**に次のクエリを貼り付けます。
+   その後、 **[クエリの編集]** を選択し、既に記述したクエリの **上** に次のクエリを貼り付けます。
 
    ```sql
     /*TOP 5*/
@@ -315,13 +317,13 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
    これらのグラフを表示するダッシュボードの例は次のようになります。
 
-   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="視覚化":::
+   :::image type="content" source="./media/changefeed-ecommerce-solution/visualizations.png" alt-text="スクリーンショットには、[Average Price of Items by Action]\(アクションごとの品目の平均価格)、[Unique Visitors]\(一意の訪問者)、[Revenue]\(収益)、および [Top 5 Items Purchased]\(上位 5 つの購入品目) という名前のグラフを含むサンプルのダッシュボードが表示されています。":::
 
 ## <a name="optional-visualize-with-an-e-commerce-site"></a>省略可能:eコマース サイトの視覚化
 
 ここでは、実際の e コマース サイトで新しいデータ分析ツールをどのように使用できるかについて観察します。 eコマース サイトをビルドするには、Azure Cosmos データベースを使用して商品カテゴリ (女性、男性、ユニセックス) のリスト、商品カタログ、最も人気のある商品のリストを格納します。
 
-1. [Azure portal](https://portal.azure.com/) に戻り、**Cosmos DB アカウント**、**データ エクスプローラー**と移動します。  
+1. [Azure portal](https://portal.azure.com/) に戻り、**Cosmos DB アカウント**、**データ エクスプローラー** と移動します。  
 
    **changefeedlabdatabase** - **products** と **categories** の下に、2 つのコレクションを、[固定] のストレージ容量で追加します。
 
@@ -331,7 +333,7 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
    :::image type="content" source="./media/changefeed-ecommerce-solution/time-to-live.png" alt-text="Time to Live":::
 
-3. **topItems** コレクションに最も頻繁に購入された商品のデータを入力するには、**streamjob1** に戻り、新しい**出力**を追加します。 **[Cosmos DB]** を選択します。
+3. **topItems** コレクションに最も頻繁に購入された商品のデータを入力するには、**streamjob1** に戻り、新しい **出力** を追加します。 **[Cosmos DB]** を選択します。
 
 4. 以下の図に示すように、必須フィールドに入力します。
 
@@ -375,15 +377,15 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
    FROM arrayselect
    ```
 
-6. **EcommerceWebApp.sln** を開き、**ソリューション エクスプローラー**の **Web.config** ファイルに移動します。  
+6. **EcommerceWebApp.sln** を開き、**ソリューション エクスプローラー** の **Web.config** ファイルに移動します。  
 
-7. `<appSettings>` ブロック内に、**your URI here** と **your primary key here** と書かれている位置に、前に保存した **URI** と**主キー**を追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。
+7. `<appSettings>` ブロック内に、**your URI here** と **your primary key here** と書かれている位置に、前に保存した **URI** と **主キー** を追加します。 その後、**データベース名** と **コレクション名** を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。
 
-   **製品のコレクション名**、**カテゴリのコレクション名**、**人気の商品のコレクション名**を示されているとおりに入力します (別の名前にすることを選択していない限り、これらの名前は **products、categories、および topItems** にしてください)。  
+   **製品のコレクション名**、**カテゴリのコレクション名**、**人気の商品のコレクション名** を示されているとおりに入力します (別の名前にすることを選択していない限り、これらの名前は **products、categories、および topItems** にしてください)。  
 
 8. **EcommerceWebApp.sln** 内の **[チェックアウト フォルダー]** に移動して開きます。 その後、そのフォルダー内の **Web.config** ファイルを開きます。  
 
-9. `<appSettings>` ブロック内で、以前に保存した **URI** と**主キー**を示されている位置に追加します。 その後、**データベース名**と**コレクション名**を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
+9. `<appSettings>` ブロック内で、以前に保存した **URI** と **主キー** を示されている位置に追加します。 その後、**データベース名** と **コレクション名** を示されているとおりに追加します (別の名前にすることを選択していない限り、これらの名前は **changefeedlabdatabase** と **changefeedlabcollection** にしてください)。  
 
 10. ページ上部の **[開始]** を押してプログラムを実行します。  
 
@@ -395,4 +397,4 @@ Power BI は、データを分析し、洞察を共有する一連のビジネ�
 
 ## <a name="next-steps"></a>次のステップ 
   
-* 変更フィードについて詳しくは、「[Azure Cosmos DB での変更フィード サポートの使用](change-feed.md)」をご覧ください。 
+* 変更フィードについて詳しくは、「[Azure Cosmos DB での変更フィード サポートの使用](change-feed.md)」をご覧ください。

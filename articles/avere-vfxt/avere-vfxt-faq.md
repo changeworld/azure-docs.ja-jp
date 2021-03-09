@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
-ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 647a9792384a21dfc191371ef444cbdc098bc819
+ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272693"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92342367"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ
 
@@ -160,7 +160,7 @@ SSD のデタッチと再アタッチはサポートされていません。 そ
 
 ### <a name="does-the-system-encrypt-the-cache"></a>キャッシュは暗号化されますか?
 
-データはディスク間にストライピングされますが、暗号化はされません。 ただし、ディスク自体を暗号化することはできます。 詳細については、[Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する](https://docs.microsoft.com/azure/virtual-machines/linux/security-policy#encryption)に関するページをご覧ください。
+データはディスク間にストライピングされますが、暗号化はされません。 ただし、ディスク自体を暗号化することはできます。 詳細については、[Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する](../virtual-machines/security-policy.md#encryption)に関するページをご覧ください。
 
 ## <a name="technical-networking"></a>技術: ネットワーク
 
@@ -259,7 +259,7 @@ Avere vFXT では、プライベート オブジェクト ストレージはサ�
 
 通常、クール層の Blob ストレージは、Avere vFXT for Azure コア ファイラーには推奨されません。 クール層では、ストレージコストはより低くなりますが、運用コストはより高くなります。 (詳細については、「[ブロック BLOB の価格](<https://azure.microsoft.com/pricing/details/storage/blobs/>)」を参照してください。)頻繁にデータにアクセスし、変更または削除する場合は、ホット層の使用を検討してください。
 
-「[アクセス層](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#cool-access-tier)」では、vFXT コア ファイラーとしてクール層ストレージを使用すると便利な場合の詳細情報を提供します。
+「[アクセス層](../storage/blobs/storage-blob-storage-tiers.md#cool-access-tier)」では、vFXT コア ファイラーとしてクール層ストレージを使用すると便利な場合の詳細情報を提供します。
 
 ### <a name="how-do-i-encrypt-the-blob-container"></a>BLOB コンテナーはどのようにして暗号化すればよいですか?
 

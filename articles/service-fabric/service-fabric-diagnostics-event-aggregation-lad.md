@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259190"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002172"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Linux Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]

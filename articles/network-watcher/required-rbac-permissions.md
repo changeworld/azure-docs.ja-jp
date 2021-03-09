@@ -1,5 +1,5 @@
 ---
-title: 機能を使用するために必須の RBAC のアクセス許可
+title: 機能を使用するために必要な Azure RBAC のアクセス許可
 titleSuffix: Azure Network Watcher
 description: Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可について説明します。
 services: network-watcher
@@ -10,16 +10,16 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: de345578b2cade18d126a113937f2eede8e8157e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 47418b9c5235255ff7dbf4a1a151e51e4c9aba58
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497309"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019671"
 ---
-# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可
+# <a name="azure-role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可
 
 Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、割り当てられた職務を遂行するために必要な特定のアクションのみを組織内のメンバーに割り当てることができます。 Network Watcher 機能を使用するには、Azure にログインするアカウントを、[所有者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)、[共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)、または[ネットワーク共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor)の組み込みのロールに割り当てるか、Network Watcher 機能の各セクションの下に一覧表示されているアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に割り当てる必要があります。 Network Watcher の機能の詳細については、「[Network Watcher とは](network-watcher-monitoring-overview.md)」を参照してください。
 
@@ -90,6 +90,7 @@ Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、
 | アクション                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | トポロジを取得する                                                   |
+| Microsoft.Network/networkWatchers/topology/read                     | 同上                                                  |
 
 ## <a name="reachability-report"></a>到達可能性レポート
 
@@ -107,7 +108,7 @@ Network Watcher 機能には、次のアクションも必要です。
 | Microsoft.Authorization/\*/Read                                     | Azure ロールの割り当てとポリシー定義のフェッチに使用されます          |
 | Microsoft.Resources/subscriptions/resourceGroups/Read               | サブスクリプションのすべてのリソース グループの列挙に使用されます    |
 | Microsoft.Storage/storageAccounts/Read                              | 指定したストレージ アカウントのプロパティの取得に使用されます   |
-| Microsoft.Storage/storageAccounts/listServiceSas/Action、 </br> Microsoft.Storage/storageAccounts/listAccountSas/Action、 <br> Microsoft.Storage/storageAccounts/listKeys/Action| [ストレージ アカウントへのセキュリティで保護されたアクセス](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)およびストレージ アカウントへの書き込みを有効にした、Shared Access Signature (SAS) のフェッチに使用されます |
+| Microsoft.Storage/storageAccounts/listServiceSas/Action、 </br> Microsoft.Storage/storageAccounts/listAccountSas/Action、 <br> Microsoft.Storage/storageAccounts/listKeys/Action| [ストレージ アカウントへのセキュリティで保護されたアクセス](../storage/common/storage-sas-overview.md)およびストレージ アカウントへの書き込みを有効にした、Shared Access Signature (SAS) のフェッチに使用されます |
 | Microsoft.Compute/virtualMachines/Read、 </br> Microsoft.Compute/virtualMachines/Write| VM へのログイン、パケットの取得、そのストレージ アカウントへのアップロードに使用されます|
 | Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| Network Watcher 拡張機能が存在するかどうかの確認と必要に応じたインストールに使用されます |
 | Microsoft.Compute/virtualMachineScaleSets/Read、 </br> Microsoft.Compute/virtualMachineScaleSets/Write| 仮想マシンのスケール セットへのアクセス、パケットの取得、およびそのストレージ アカウントへのアップロードに使用されます|

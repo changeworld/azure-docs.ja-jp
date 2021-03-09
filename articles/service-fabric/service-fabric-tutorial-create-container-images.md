@@ -1,17 +1,15 @@
 ---
 title: Azure の Service Fabric 上でコンテナー イメージを作成する
 description: このチュートリアルでは、複数コンテナーの Service Fabric アプリケーションのコンテナー イメージを作成する方法を説明します。
-author: suhuruli
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: suhuruli
-ms.custom: mvc
-ms.openlocfilehash: fe06da759a1ad42ef5cef888f98c440cdfb9569c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 31b5f870465bc1dff9d6ff7827a4efed084bcf62
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "78252785"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92739068"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>チュートリアル: Linux Service Fabric クラスター上にコンテナー イメージを作成する
 
@@ -78,13 +76,13 @@ tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
-最初に、**az login** コマンドを実行して Azure アカウントにサインインします。
+最初に、 **az login** コマンドを実行して Azure アカウントにサインインします。
 
 ```azurecli
 az login
 ```
 
-次に、**az account** コマンドを使って、Azure Container Registry を作成するためのサブスクリプションを選びます。 <subscription_id> には、お使いの Azure サブスクリプションのサブスクリプション ID を入力する必要があります。
+次に、 **az account** コマンドを使って、Azure Container Registry を作成するためのサブスクリプションを選びます。 <subscription_id> には、お使いの Azure サブスクリプションのサブスクリプション ID を入力する必要があります。
 
 ```azurecli
 az account set --subscription <subscription_id>
@@ -92,7 +90,7 @@ az account set --subscription <subscription_id>
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-**az group create** コマンドを使用して、リソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *westus* リージョンに作成されます。
+**az group create** コマンドを使用して、リソース グループを作成します。 この例では、 *myResourceGroup* という名前のリソース グループが *westus* リージョンに作成されます。
 
 ```azurecli
 az group create --name <myResourceGroup> --location westus
@@ -140,7 +138,7 @@ loginServer 名を取得するには、次のコマンドを実行します。
 az acr show --name <acrName> --query loginServer --output table
 ```
 
-これにより、以下のような結果がテーブルに出力されます。 この結果は、次の手順でコンテナー レジストリにプッシュする前に、**azure-vote-front** イメージのタグ付けに使用されます。
+これにより、以下のような結果がテーブルに出力されます。 この結果は、次の手順でコンテナー レジストリにプッシュする前に、 **azure-vote-front** イメージのタグ付けに使用されます。
 
 ```output
 Result
@@ -148,7 +146,7 @@ Result
 <acrName>.azurecr.io
 ```
 
-ここでは、*azure-vote-front* イメージにお使いのコンテナー レジストリの loginServer をタグ付けします。 また、イメージ名の末尾に `:v1` を付加します。 このタグは、イメージのバージョンを示します。
+ここでは、 *azure-vote-front* イメージにお使いのコンテナー レジストリの loginServer をタグ付けします。 また、イメージ名の末尾に `:v1` を付加します。 このタグは、イメージのバージョンを示します。
 
 ```bash
 docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1

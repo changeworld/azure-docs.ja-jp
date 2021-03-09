@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 01/22/2021
 ms.author: victorh
-ms.openlocfilehash: 97d8d10e30d0d0c1654c82651220489785a37059
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 6910fda855402d2f99994da1e835560be84ca2dd
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460220"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703379"
 ---
 # <a name="ip-groups-in-azure-firewall"></a>Azure Firewall での IP グループ
 
@@ -26,6 +26,9 @@ IP グループを使用すると、次の方法で Azure Firewall 規則の IP 
 IP グループは、1 つの IP アドレス、複数の IP アドレス、または 1 つ以上の IP アドレス範囲を持つことができます。
 
 IP グループは、Azure のリージョンとサブスクリプションにまたがる複数のファイアウォールに対する Azure Firewall DNAT 規則、ネットワーク規則、アプリケーション規則で再利用できます。 グループ名は一意である必要があります。 IP グループの構成は、Azure portal、Azure CLI、または REST API で行うことができます。 使い始めるときに役に立つサンプル テンプレートが用意されています。
+
+> [!NOTE]
+> IP グループは、Azure の各国のクラウド環境では現在利用できません。
 
 ## <a name="sample-format"></a>サンプル形式
 
@@ -70,19 +73,19 @@ IP グループは、すべてのパブリック クラウド リージョンで
 
 ## <a name="ip-address-limits"></a>IP アドレスの制限
 
-ファイアウォールあたり最大 100 個の IP グループを割り当てることができ、各 IP グループには最大 5000 個の個別の IP アドレスまたは IP プレフィックスを含めることができます。
+各 IP グループごとに最大 5000 個の個別の IP アドレスまたは IP プレフィックスを使用して、ファイアウォールあたり最大 100 個の IP グループを所有することができます。
 
 ## <a name="related-azure-powershell-cmdlets"></a>関連する Azure PowerShell コマンドレット
 
 次の Azure PowerShell コマンドレットを使用して、IP グループを作成および管理できます。
 
-- [New-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
-- [Remove-AzIPGroup](https://docs.microsoft.com/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
-- [Get-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
-- [Set-AzIpGroup](https://docs.microsoft.com/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
-- [New-AzFirewallNetworkRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule?view=azps-3.4.0)
-- [New-AzFirewallApplicationRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallapplicationrule?view=azps-3.4.0)
-- [New-AzFirewallNatRule](https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnatrule?view=azps-3.4.0)
+- [New-AzIpGroup](/powershell/module/az.network/new-azipgroup?view=azps-3.4.0)
+- [Remove-AzIPGroup](/powershell/module/az.network/remove-azipgroup?view=azps-3.4.0)
+- [Get-AzIpGroup](/powershell/module/az.network/get-azipgroup?view=azps-3.4.0)
+- [Set-AzIpGroup](/powershell/module/az.network/set-azipgroup?view=azps-3.4.0)
+- [New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule?view=azps-3.4.0)
+- [New-AzFirewallApplicationRule](/powershell/module/az.network/new-azfirewallapplicationrule?view=azps-3.4.0)
+- [New-AzFirewallNatRule](/powershell/module/az.network/new-azfirewallnatrule?view=azps-3.4.0)
 
 ## <a name="next-steps"></a>次のステップ
 

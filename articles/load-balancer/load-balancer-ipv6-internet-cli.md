@@ -9,17 +9,17 @@ keywords: ipv6, azure load balancer, デュアル スタック, パブリック 
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: how-to
-ms.custom: seodec18
+ms.custom: seodec18, devx-track-azurecli
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001575"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696865"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI を使用して IPv6 のパブリック ロード バランサーを作成する
 
@@ -58,7 +58,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
 
 この例では、PowerShell コマンド ウィンドウで Azure CLI ツールを実行しています。 読みやすさを改善し、再利用できるようにするために、Azure PowerShell コマンドレットではなく、PowerShell のスクリプト機能を使用します。
 
-1. リンクされている記事の手順に従って [Azure CLI をインストールして構成](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)し、Azure アカウントにサインインします。
+1. リンクされている記事の手順に従って [Azure CLI をインストールして構成](/cli/azure/install-azure-cli?view=azure-cli-latest)し、Azure アカウントにサインインします。
 
 2. Azure CLI コマンドで使用するために PowerShell 変数を設定します。
 
@@ -122,7 +122,7 @@ Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーで�
     > [!IMPORTANT]
     > ロード バランサーはその完全修飾ドメイン名 (FQDN) としてパブリック IP のドメイン ラベルを使用します。 これはロード バランサー FQDN としてクラウド サービス名を使用する従来のデプロイメントからの変更点です。
     >
-    > この例では、FQDN は *contoso09152016.southcentralus.cloudapp.azure.com*です。
+    > この例では、FQDN は *contoso09152016.southcentralus.cloudapp.azure.com* です。
 
 ## <a name="create-front-end-and-back-end-pools"></a>フロントエンド プールとバックエンド プールの作成
 
@@ -284,7 +284,7 @@ VM を作成するには、ストレージ アカウントが必要です。 負
     ```
 
     > [!WARNING]
-    > この例では、VM のユーザー名とパスワードをクリア テキストで使用します。 クリア テキストでこれらの資格情報を使用するときは、適切な注意を払ってください。 PowerShell で資格情報を処理するより安全な方法については、[`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) コマンドレットを参照してください。
+    > この例では、VM のユーザー名とパスワードをクリア テキストで使用します。 クリア テキストでこれらの資格情報を使用するときは、適切な注意を払ってください。 PowerShell で資格情報を処理するより安全な方法については、[`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential) コマンドレットを参照してください。
 
 2. 可用性セットを作成します。
 
@@ -299,5 +299,3 @@ VM を作成するには、ストレージ アカウントが必要です。 負
 
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
-
-

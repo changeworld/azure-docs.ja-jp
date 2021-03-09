@@ -1,19 +1,16 @@
 ---
 title: Apache Kafka による高可用性 - Azure HDInsight
 description: Azure HDInsight 上の Apache Kafka で高可用性を確保する方法を説明します。 Kafka でパーティションのレプリカを再調整し、HDInsight が含まれている Azure リージョン内のさまざまな障害ドメインに配置されるようにする方法を説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/09/2019
-ms.openlocfilehash: a90be471ca068869ee26fb02bba77dfdd476a44e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e3f31bc1876a0c1f90ad4882ff782be25b4b6ed6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75435288"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932749"
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka によるデータの高可用性
 
@@ -23,7 +20,7 @@ ms.locfileid: "75435288"
 
 障害ドメインとは、Azure データ センター内にある基になるハードウェアの論理的なグループです。 各障害ドメインは、一般的な電源とネットワーク スイッチを共有します。 HDInsight クラスター内のノードを実装する仮想マシンと管理ディスクは、これらの障害ドメインに分散されます。 このアーキテクチャにより、物理的なハードウェア障害の潜在的な影響が制限されます。
 
-各 Azure リージョンには、特定の数の障害ドメインがあります。 ドメインと、それに含まれる障害ドメインの数の一覧については、「[可用性セット](../../virtual-machines/windows/availability.md#availability-sets)」を参照してください。
+各 Azure リージョンには、特定の数の障害ドメインがあります。 ドメインと、それに含まれる障害ドメインの数の一覧については、「[可用性セット](../../virtual-machines/availability.md#availability-sets)」を参照してください。
 
 > [!IMPORTANT]  
 > Kafka は、障害ドメインを認識しません。 Kafka でトピックを作成すると、パーティションのレプリカすべてが同じ障害ドメインに格納される可能性があります。 この問題を解決するために、HDInsight には [Kafka パーティション再調整ツール](https://github.com/hdinsight/hdinsight-kafka-tools)が用意されています。

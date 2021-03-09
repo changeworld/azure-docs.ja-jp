@@ -12,12 +12,12 @@ ms.subservice: sql-dw
 ms.date: 05/11/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e18a3628a2fbb9eee248851f2295000fd1f82532
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: b70694011aa0467d8ca037ac309ffb0811c79c01
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027292"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737950"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 の概要
 
@@ -32,7 +32,7 @@ Visual Studio **2019** SQL Server Data Tools (SSDT) は次のことを可能に�
 
 ## <a name="install-visual-studio-2019"></a>Visual Studio 2019 をインストールする
 
-Visual Studio **16.3 以上**をダウンロードし、インストールする方法については、[Visual Studio 2019 のダウンロード](https://visualstudio.microsoft.com/downloads/) ページをご覧ください。 インストール中、データ ストレージと処理ワークロードを選択します。 スタンドアロン SSDT インストールは Visual Studio 2019 では必須でなくなりました。
+Visual Studio **16.3 以上** をダウンロードし、インストールする方法については、[Visual Studio 2019 のダウンロード](https://visualstudio.microsoft.com/downloads/) ページをご覧ください。 インストール中、データ ストレージと処理ワークロードを選択します。 スタンドアロン SSDT インストールは Visual Studio 2019 では必須でなくなりました。
 
 ## <a name="unsupported-features-in-ssdt"></a>SSDT でサポートされていない機能
 
@@ -40,11 +40,12 @@ Synapse SQL の機能リリースに SSDT のサポートが含まれない場�
 
 
 - [ワークロード管理](sql-data-warehouse-workload-management.md) - ワークロード グループと分類子
-- [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
+- [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (テーブル値関数を含む)
   - この機能がサポートされるようにするには、[サポート チケットを送信するか投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)してください。
-- [動的データ マスク](/sql/relational-databases/security/dynamic-data-masking?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#defining-a-dynamic-data-mask)
-   - この機能がサポートされるようにするには、[サポート チケットを送信するか投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)してください。
-- [ID 列](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql-identity-property?view=sql-server-ver15)があるテーブル
+  - この機能がサポートされるようにするには、[サポート チケットを送信するか投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)してください。
+- [ID 列](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest&preserve-view=true)があるテーブル
+- 次のような特定の T-SQL 機能:
+   - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql) 文字列関数内の *WITHIN GROUP* 句。
 
 ## <a name="next-steps"></a>次のステップ
 

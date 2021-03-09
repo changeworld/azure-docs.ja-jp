@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 2809ff6abe36956123e0e581e16aa85edeb40395
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c7429108f70d735cb6e314a0d4daa27ba0d31637
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094651"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090413"
 ---
 # <a name="connect-your-symantec-vip-to-azure-sentinel"></a>Azure Sentinel に Symantec VIP を接続する
 
@@ -48,7 +48,7 @@ Syslog のエージェントを介して Azure ワークスペースに Syslog �
 
 ## <a name="validate-connectivity"></a>接続の検証
 
-ログが Log Analytics に表示され始めるまで、20 分以上かかる場合があります。 
+ログが Log Analytics に表示され始めるまで、最大 20 分かかることがあります。 
 
 ## <a name="next-steps"></a>次のステップ
 

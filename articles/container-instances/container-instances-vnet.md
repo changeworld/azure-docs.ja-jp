@@ -3,14 +3,13 @@ title: Azure 仮想ネットワークへのコンテナー グループのデプ
 description: Azure コマンド ライン インターフェイスを使用して、新規または既存の Azure 仮想ネットワークにコンテナー グループをデプロイする方法について説明します。
 ms.topic: article
 ms.date: 07/02/2020
-ms.author: danlep
-ms.custom: devx-track-javascript
-ms.openlocfilehash: f1678dee9c43d2ce9652018f0d09fe1738659f54
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-js, devx-track-azurecli
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407151"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028881"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -21,7 +20,7 @@ ms.locfileid: "87407151"
 ネットワークのシナリオと制限事項については、[Azure Container Instances の仮想ネットワークのシナリオとリソース](container-instances-virtual-network-concepts.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> 仮想ネットワークへのコンテナー グループのデプロイは、一般に Azure Container Instances が利用可能なほとんどのリージョンでは、Linux コンテナーで使用できます。 詳細については、[リージョンとリソースの可用性](container-instances-virtual-network-concepts.md#where-to-deploy)に関するページをご覧ください。 
+> 仮想ネットワークへのコンテナー グループのデプロイは、一般に Azure Container Instances が利用可能なほとんどのリージョンでは、Linux コンテナーで使用できます。 詳細については、[リージョンとリソースの可用性][container-regions]に関するページをご覧ください。 
 
 この記事の例は、Bash シェル形式で示してあります。 PowerShell やコマンド プロンプトなど、別のシェルを使用する場合は、行継続文字を適切に調整してください。
 
@@ -37,11 +36,11 @@ ms.locfileid: "87407151"
 
 仮想ネットワークとサブネットのアドレス プレフィックスでは、仮想ネットワークとサブネットそれぞれのアドレス空間を指定します。 これらの値は、CIDR (Classless Inter-domain Routing) 表記法で表されます (例: `10.0.0.0/16`)。 サブネットの操作について詳しくは、「[仮想ネットワーク サブネットの追加、変更、削除](../virtual-network/virtual-network-manage-subnet.md)」をご覧ください。
 
-この方法を使用して最初のコンテナー グループをデプロイした後は、仮想ネットワーク名とサブネット名を指定するか、Azure によって自動作成されたネットワーク プロファイルを指定して、同じサブネットへのデプロイを実行できます。 サブネットは Azure によって Azure Container Instances に委任されるので、サブネットにデプロイできるのは、コンテナー グループ*のみ*となります。
+この方法を使用して最初のコンテナー グループをデプロイした後は、仮想ネットワーク名とサブネット名を指定するか、Azure によって自動作成されたネットワーク プロファイルを指定して、同じサブネットへのデプロイを実行できます。 サブネットは Azure によって Azure Container Instances に委任されるので、サブネットにデプロイできるのは、コンテナー グループ *のみ* となります。
 
 ### <a name="example"></a>例
 
-次の [az container create][az-container-create] コマンドは、新しい仮想ネットワークとサブネットの設定を指定します。 仮想ネットワーク内のコンテナー グループのデプロイが[利用できる](container-instances-region-availability.md#availability---virtual-network-deployment)リージョンで作成されたリソース グループの名前を指定します。 このコマンドにより、パブリックの Microsoft [aci-helloworld][aci-helloworld] コンテナーがデプロイされます。これは、静的 Web ページを提供する小規模な Node.js Web サーバーを実行するコンテナーです。 次のセクションでは、同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信をテストします。
+次の [az container create][az-container-create] コマンドは、新しい仮想ネットワークとサブネットの設定を指定します。 仮想ネットワーク内のコンテナー グループのデプロイが[利用できる](container-instances-region-availability.md)リージョンで作成されたリソース グループの名前を指定します。 このコマンドにより、パブリックの Microsoft [aci-helloworld][aci-helloworld] コンテナーがデプロイされます。これは、静的 Web ページを提供する小規模な Node.js Web サーバーを実行するコンテナーです。 次のセクションでは、同じサブネットに 2 つ目のコンテナー グループをデプロイし、2 つのコンテナー インスタンス間の通信をテストします。
 
 ```azurecli
 az container create \
@@ -60,7 +59,7 @@ az container create \
 
 コンテナー グループを既存の仮想ネットワークにデプロイするには:
 
-1. 既存の仮想ネットワーク内にサブネットを作成し、コンテナー グループが既にデプロイされている既存のサブネットを使用するか、または、他のリソースが*いっさい入っていない*空の既存のサブネットを使用します。
+1. 既存の仮想ネットワーク内にサブネットを作成し、コンテナー グループが既にデプロイされている既存のサブネットを使用するか、または、他のリソースが *いっさい入っていない* 空の既存のサブネットを使用します。
 1. [az container create][az-container-create] を使用してコンテナー グループをデプロイし、次のいずれかを指定します。
    * 仮想ネットワーク名とサブネット名
    * 仮想ネットワーク リソース ID、およびサブネット リソース ID (これにより、別のリソース グループから仮想ネットワークを使用できます)
@@ -205,7 +204,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 スクリプトを実行する前に、`RES_GROUP` 変数を、削除する仮想ネットワークとサブネットを含んだリソース グループの名前に設定してください。 以前に提案された `aci-vnet` の名前を使用しなかった場合は、仮想ネットワークの名前を更新します。 スクリプトは Bash シェル用に書式設定されています。 別のシェル (PowerShell やコマンド プロンプトなど) を使用する場合は、変数の割り当てとアクセサーを適宜調整する必要があります。
 
 > [!WARNING]
-> このスクリプトを実行すると、リソースが削除されます。 仮想ネットワークと、それに含まれているすべてのサブネットが削除されます。 このスクリプトを実行する前に、仮想ネットワーク (およびそれに含まれるすべてのサブネット) 内の*いずれの*リソースも、今後必要でないことを確認してください。 一度削除すると、**それらのリソースを復旧することはできません**。
+> このスクリプトを実行すると、リソースが削除されます。 仮想ネットワークと、それに含まれているすべてのサブネットが削除されます。 このスクリプトを実行する前に、仮想ネットワーク (およびそれに含まれるすべてのサブネット) 内の *いずれの* リソースも、今後必要でないことを確認してください。 一度削除すると、**それらのリソースを復旧することはできません**。
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -239,3 +238,4 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

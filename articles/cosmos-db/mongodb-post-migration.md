@@ -1,20 +1,21 @@
 ---
 title: Azure Cosmos DB の MongoDB 用 API での移行後の最適化手順
 description: このドキュメントでは、MongoDB から Azure Cosmos DB の MongoDB 用 API に移行した後の最適化手法について説明します。
-author: LuisBosquez
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/20/2020
-ms.author: lbosq
-ms.openlocfilehash: 055604c399aa1641e823f24af499102bfff3ed0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: chrande
+ms.openlocfilehash: 300177b9d5a20ce8082db57837be3ff461fd51a0
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263094"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361658"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API 使用時の移行後の最適化手順
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 MongoDB データベースに格納されているデータを Azure Cosmos DB の MongoDB 用 API に移行した後、Azure Cosmos DB に接続してデータを管理できます。 このガイドでは、移行後に考慮すべき手順を提供します。 移行手順については、[MongoDB を Azure Cosmos DB の MongoDB 用 API に移行するためのチュートリアル](../dms/tutorial-mongodb-cosmos-db.md)をご覧ください。
 
@@ -35,7 +36,7 @@ MongoDB データベースに格納されているデータを Azure Cosmos DB �
 2. [Azure portal](https://www.portal.azure.com/) の左側のウィンドウで **[すべてのリソース]** メニューを開き、データを移行した Azure Cosmos DB アカウントを見つけます。
 3. **[接続文字列]** ブレードを開きます。 右側のウィンドウに、自分のアカウントに正常に接続するために必要なすべての情報が表示されます。
 4. アプリケーションの構成 (または、その他の関連する場所) で接続情報を使用し、アプリで Azure Cosmos DB の MongoDB 用 API 接続を反映させます。
-:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="接続文字列":::
+:::image type="content" source="./media/mongodb-post-migration/connection-string.png" alt-text="接続文字列の設定が示されているスクリーンショット。":::
 
 詳細については、「[Azure Cosmos DB への MongoDB アプリケーションの接続](connect-mongodb-account.md)」ページを参照してください。
 
@@ -53,12 +54,12 @@ Azure Cosmos DB は世界中のすべての [Azure リージョン](https://azur
 
 ## <a name="set-consistency-level"></a>整合性レベルを設定する
 
-Azure Cosmos DB では、5 つの[整合性レベル](consistency-levels.md)が明確に定義されています。 MongoDB と Azure Cosmos DB の各種整合性レベル間でマッピングする方法については、「[整合性レベルと Azure Cosmos DB API](consistency-levels-across-apis.md)」を参照してください。 既定の整合性レベルは、セッション整合性レベルです。 整合性レベルの変更は任意であり、アプリに合わせて最適なレベルを選択できます。 Azure portal を使用して整合性レベルを変更する方法:
+Azure Cosmos DB では、5 つの[整合性レベル](consistency-levels.md)が明確に定義されています。 MongoDB と Azure Cosmos DB の各種整合性レベル間でマッピングする方法については、「[整合性レベルと Azure Cosmos DB API](./consistency-levels.md)」を参照してください。 既定の整合性レベルは、セッション整合性レベルです。 整合性レベルの変更は任意であり、アプリに合わせて最適なレベルを選択できます。 Azure portal を使用して整合性レベルを変更する方法:
 
 1. [設定] の **[既定の整合性]** に進みます。
 2. [整合性レベル](consistency-levels.md)を選択します。
 
-ほとんどのユーザーは、整合性レベルを既定のセッション整合性設定のままにします。 しかしながら、[さまざまな整合性レベルでの可用性とパフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)があります。
+ほとんどのユーザーは、整合性レベルを既定のセッション整合性設定のままにします。 しかしながら、[さまざまな整合性レベルでの可用性とパフォーマンスのトレードオフ](./consistency-levels.md)があります。
 
 ## <a name="next-steps"></a>次のステップ
 

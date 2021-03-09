@@ -1,15 +1,15 @@
 ---
 title: クイック スタート:Python を使用した新しいポリシー割り当て
 description: このクイックスタートでは、Python を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 08/10/2020
+ms.date: 10/14/2020
 ms.topic: quickstart
-ms.custom: devx-track-python
-ms.openlocfilehash: a160b9bc389bc0c902f9644887aa478f80822e60
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.custom: devx-track-python, devx-track-azurecli
+ms.openlocfilehash: aa67b3a2bae2beb62daa6e64871411ee760f802b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134622"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832200"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-python"></a>クイック スタート:Python を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -32,7 +32,7 @@ Python で Azure Policy を使用できるようにするには、ライブラ�
 1. 最新の Azure CLI がインストールされていることを確認します (**2.5.1** 以降)。 まだインストールされていない場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
    > [!NOTE]
-   > 次の例で、Python で **CLI ベースの認証**を使用できるようにするには、Azure CLI が必要です。 その他のオプションの詳細については、[Python 用 Azure 管理ライブラリを使用した認証](/azure/developer/python/azure-sdk-authenticate)に関するページを参照してください。
+   > 次の例で、Python で **CLI ベースの認証** を使用できるようにするには、Azure CLI が必要です。 その他のオプションの詳細については、[Python 用 Azure 管理ライブラリを使用した認証](/azure/developer/python/azure-sdk-authenticate)に関するページを参照してください。
 
 1. Azure CLI から認証します。
 

@@ -16,12 +16,12 @@ ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a859a10e02a5738ee023db5d653ea14403b9bcad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85358448"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89657117"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>次のステップと Azure AD Connect の管理方法
 この記事の操作手順を使用して、組織のニーズや要件を満たすように Azure Active Directory (Azure AD) Connect をカスタマイズします。  
@@ -30,7 +30,7 @@ ms.locfileid: "85358448"
 既定では、インストールを行ったユーザーとローカルの管理者のみが、インストールされている同期エンジンを管理できます。 同期エンジンにアクセスして管理できるその他のユーザーを追加するには、ローカル サーバーで ADSyncAdmins というグループを見つけ、そのグループにユーザーを追加します。
 
 ## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Azure AD Premium および Enterprise Mobility Suite のユーザーにライセンスを割り当てる
-ユーザーがクラウドに同期されたため、Office 365 などのクラウド アプリを利用できるように、そのユーザーにライセンスを割り当てる必要があります。
+ユーザーがクラウドに同期されたため、Microsoft 365 などのクラウド アプリを利用できるように、そのユーザーにライセンスを割り当てる必要があります。
 
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>Azure AD Premium または Enterprise Mobility Suite のライセンスを割り当てるには
 

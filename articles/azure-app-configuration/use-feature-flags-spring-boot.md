@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0dcf85add4e1c9f1d701c4ce4a122c8d6b31382a
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326598"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92077832"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>チュートリアル:Spring Boot アプリ内で機能フラグを使用する
 
@@ -185,5 +185,5 @@ public String getOldFeature() {
 
 このチュートリアルでは、Spring Boot アプリケーションで `spring-cloud-azure-feature-management-web` ライブラリを使用して機能フラグを実装する方法について説明しました。 Spring Boot と App Configuration での機能管理サポートの詳細については、次のリソースを参照してください。
 
-* [Spring Boot の機能フラグのサンプル コード](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
+* [Spring Boot の機能フラグのサンプル コード](./quickstart-feature-flag-spring-boot.md)
 * [機能フラグを管理する](./manage-feature-flags.md)

@@ -1,19 +1,16 @@
 ---
 title: HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション - Azure
 description: HDInsight の ML Services でユーザーが使用できるさまざまなコンピューティング コンテキスト オプションについて説明します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087607"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943958"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>HDInsight 上の ML Services 向けのコンピューティング コンテキスト オプション
 
@@ -23,7 +20,7 @@ Azure HDInsight 上の ML Services は、コンピューティング コンテ�
 
 ## <a name="ml-services-on-azure-hdinsight"></a>Azure HDInsight 上の ML Services
 
-[Azure HDInsight の ML Services](r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 Apache Hadoop HDFS 内の [Azure Blob](../../storage/common/storage-introduction.md "Azure BLOB ストレージ") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 ML Services はオープンソース R が基になっているため、構築する R ベースのアプリケーションでは、8,000 を超えるオープンソース R パッケージのどれでも適用できます。 また、[RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) (ML Services に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
+[Azure HDInsight の ML Services](r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 Apache Hadoop HDFS 内の [Azure Blob](../../storage/common/storage-introduction.md "Azure BLOB ストレージ") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 ML Services はオープンソース R が基になっているため、構築する R ベースのアプリケーションでは、8,000 を超えるオープンソース R パッケージのどれでも適用できます。 また、[RevoScaleR](/machine-learning-server/r-reference/revoscaler/revoscaler) (ML Services に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>エッジ ノードに対する計算コンテキスト
 
@@ -77,7 +74,7 @@ RevoScaleR コンピューティング コンテキストの詳細と例につ�
 > ?rxSetComputeContext
 ```
 
-「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](https://docs.microsoft.com/machine-learning-server/)」の「[Distributed computing overview (分散コンピューティングの概要)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)」にも関連情報があります。
+「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](/machine-learning-server/)」の「[Distributed computing overview (分散コンピューティングの概要)](/machine-learning-server/r/how-to-revoscaler-distributed-computing)」にも関連情報があります。
 
 ## <a name="next-steps"></a>次のステップ
 

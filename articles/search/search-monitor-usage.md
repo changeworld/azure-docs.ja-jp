@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 3f348a5005f28fdd1d02be706ca2742d77368288
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88935009"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592369"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Azure Cognitive Search の操作とアクティビティを監視する
 
@@ -59,15 +59,15 @@ Azure Cognitive Search は、サービスの正常性とクエリのメトリッ
 
 ### <a name="activity-logs-and-service-health"></a>アクティビティ ログとサービス正常性
 
-ポータルの [ **[アクティビティ ログ]** ](../azure-monitor/platform/activity-log.md#view-the-activity-log) ページでは、Azure Resource Manager から情報を収集し、サービス正常性の変化をレポートします。 アクティビティ ログを監視して、サービス正常性に関連したクリティカル、エラー、警告の各状態を把握することができます。
+ポータルの [ **[アクティビティ ログ]**](../azure-monitor/essentials/activity-log.md#view-the-activity-log) ページでは、Azure Resource Manager から情報を収集し、サービス正常性の変化をレポートします。 アクティビティ ログを監視して、サービス正常性に関連したクリティカル、エラー、警告の各状態を把握することができます。
 
 共通エントリには、API キー ("*管理者キーの取得*" や "*クエリ キーの取得*" など、情報提供を目的とした一般的な通知) への参照が含まれています。 これらのアクティビティは、クエリ キーまたは、管理者キーを使用して作成された要求 (オブジェクトの作成または削除) を示しますが、要求自体は表示されません。 この粒度の情報については、診断ログを構成する必要があります。
 
-**アクティビティ ログ**には、左側のナビゲーション ウィンドウ、上部ウィンドウのコマンド バーの通知、または **[問題の診断と解決]** ページからアクセスすることができます。
+**アクティビティ ログ** には、左側のナビゲーション ウィンドウ、上部ウィンドウのコマンド バーの通知、または **[問題の診断と解決]** ページからアクセスすることができます。
 
 ### <a name="monitor-storage-in-the-usage-tab"></a>[Usage]\(使用状況\) タブでストレージを監視する
 
-ポータルで視覚的に監視できるように、 **[Usage]\(使用状況\)** タブには、リソースの空き状況が、サービス レベルによる現在の[制限](search-limits-quotas-capacity.md)と比較して表示されます。 [運用環境のワークロードに使用するレベル](search-sku-tier.md)について、または[アクティブなレプリカとパーティションの数を調整する](search-capacity-planning.md)かどうかについて最終的に判断する場合、これらのメトリックを見ると、リソースが消費される速さや、現在の構成で既存の負荷がどの程度うまく処理されているかがわかるので、これらの決定を下すのに役立ちます。
+ポータルで視覚的に監視できるように、 **[Usage]\(使用状況\)** タブには、リソースの空き状況が、サービス レベルによる現在の [制限](search-limits-quotas-capacity.md)と比較して表示されます。 [運用環境のワークロードに使用するレベル](search-sku-tier.md)について、または[アクティブなレプリカとパーティションの数を調整する](search-capacity-planning.md)かどうかについて最終的に判断する場合、これらのメトリックを見ると、リソースが消費される速さや、現在の構成で既存の負荷がどの程度うまく処理されているかがわかるので、これらの決定を下すのに役立ちます。
 
 次の図は、オブジェクトが種類ごとに 3 つ、ストレージが 50 MB に制限されている Free サービスを示したものです。 Basic または Standard サービスでは上限がこれより高く、パーティションの数を増やすと最大ストレージがそれに比例して増加します。
 
@@ -90,7 +90,7 @@ Azure Monitor にはいくつかのストレージ オプションが用意さ�
 * Power BI レポートで[ログ データを視覚化](search-monitor-logs-powerbi.md)する場合は、[Azure Blob Storage] を選択します。
 * Kusto クエリを使用してデータを探索する場合は、[Log Analytics] を選択します。
 
-Azure Monitor には独自の課金体系があり、このセクションで参照される診断ログには関連コストがあります。 詳細については、[Azure Monitor での使用量と推定コスト](../azure-monitor/platform/usage-estimated-costs.md)に関する記事を参照してください。
+Azure Monitor には独自の課金体系があり、このセクションで参照される診断ログには関連コストがあります。 詳細については、[Azure Monitor での使用量と推定コスト](../azure-monitor//usage-estimated-costs.md)に関する記事を参照してください。
 
 ## <a name="monitor-user-access"></a>ユーザー アクセスの監視
 
@@ -107,4 +107,4 @@ $filter パラメーターを含んだクエリ文字列とは別に、この情
 Azure Cognitive Search などのリソースを含む Azure サービスを監視するうえで、Azure Monitor を使いこなすことが欠かせません。 Azure Monitor を十分に理解していない場合は、時間を取ってリソースに関連した記事を確認してください。 チュートリアルのほか、次の記事からお読みいただくことをお勧めします。
 
 > [!div class="nextstepaction"]
-> [Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)
+> [Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)

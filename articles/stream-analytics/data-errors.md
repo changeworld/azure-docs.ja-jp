@@ -1,17 +1,17 @@
 ---
 title: Azure Stream Analytics リソース ログ データ エラー
 description: この記事では、Azure Stream Analytics の使用時に発生することがあるさまざまな入力および出力データ エラーについて説明します。
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 08/07/2020
-ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 2ca289cd52b9a406e486ee9c186be683e71f02d0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053152"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020113"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure Stream Analytics データ エラー
 
@@ -168,7 +168,7 @@ ms.locfileid: "88053152"
 * 原因: アプリケーション時間と到着時刻の差が到着遅延許容範期間を超えています。
 * ポータル通知提供:いいえ
 * リソース ログ レベル:Information
-* 影響:遅延入力イベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
+* 影響:遅延入力イベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
 * ログの詳細
    * アプリケーション時間と到着時刻 
    * 実際のペイロードは最大で数キロバイトです。
@@ -184,7 +184,7 @@ ms.locfileid: "88053152"
 * 原因: アプリケーション時間と到着時刻の差が 5 分以上あります。
 * ポータル通知提供:いいえ
 * リソース ログ レベル:Information
-* 影響:早期入力イベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
+* 影響:早期入力イベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
 * ログの詳細
    * アプリケーション時間と到着時刻 
    * 実際のペイロードは最大で数キロバイトです。
@@ -200,7 +200,7 @@ ms.locfileid: "88053152"
 * 原因: 定義されている許容範囲が正しくないため、イベントが順序逸脱であると見なされます。
 * ポータル通知提供:いいえ
 * リソース ログ レベル:Information
-* 影響:順不同のイベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](https://docs.microsoft.com/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
+* 影響:順不同のイベントは、ジョブ構成の [イベント順序] セクションの [Handle other events]\(他のイベントの処理\) 設定に従って処理されます。 詳細については、[時間処理ポリシー](/stream-analytics-query/time-skew-policies-azure-stream-analytics)に関するページを参照してください。
 * ログの詳細
    * 実際のペイロードは最大で数キロバイトです。
 
@@ -212,12 +212,16 @@ ms.locfileid: "88053152"
 
 ## <a name="output-data-errors"></a>出力データ エラー
 
+Azure Stream Analytics では、構成に応じて、出力シンクへの I/O 要求の有無にかかわらず、出力データ エラーを特定できます。 たとえば、Azure テーブル出力を使用するときに、`PartitionKey` などの必須の列が不足していることを、I/O 要求を行わずに特定できます。 ただし、SQL 出力の制約違反には、I/O 要求が必要です。
+
+出力シンクへの呼び出しを行った後にのみ検出できるデータ エラーがいくつかあり、これにより、処理が遅くなる可能性があります。 これを解決するには、ジョブの構成またはデータ エラーを引き起こしているクエリを変更します。
+
 ### <a name="outputdataconversionerrorrequiredcolumnmissing"></a>OutputDataConversionError.RequiredColumnMissing
 
 * 原因: 出力に必要な列が存在しません。 たとえば、Azure Table PartitionKey として定義されている列が存在しません。
 * ポータル通知提供:はい
 * リソース ログ レベル:警告
-* 影響:必須列の欠落を含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
+* 影響:必須列の欠落を含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](./stream-analytics-output-error-policy.md) 設定に従って処理されます。
 * ログの詳細
    * 列の名前と、レコード ID またはレコードの一部。
 
@@ -232,7 +236,7 @@ ms.locfileid: "88053152"
 * 原因: 列の値が出力に準拠していません。 たとえば、列名が有効な Azure テーブル列ではありません。
 * ポータル通知提供:はい
 * リソース ログ レベル:警告
-* 影響:無効な列名を含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
+* 影響:無効な列名を含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](./stream-analytics-output-error-policy.md) 設定に従って処理されます。
 * ログの詳細
    * 列の名前と、レコード ID またはレコードの一部。
 
@@ -247,7 +251,7 @@ ms.locfileid: "88053152"
 * 原因: 列を出力で有効な型に変換できません。 たとえば、列の値が、SQL テーブルに定義されている制約や型と互換性がありません。
 * ポータル通知提供:はい
 * リソース ログ レベル:警告
-* 影響:型変換エラーを含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
+* 影響:型変換エラーを含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](./stream-analytics-output-error-policy.md) 設定に従って処理されます。
 * ログの詳細
    * 列の名前です。
    * レコード ID またはレコードの一部。
@@ -263,7 +267,7 @@ ms.locfileid: "88053152"
 * 原因: メッセージの値がサポートされている出力サイズを超えています。 たとえば、イベント ハブ出力のレコードが 1 MB を超えています。
 * ポータル通知提供:はい
 * リソース ログ レベル:警告
-* 影響:レコードのサイズ制限超過を含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
+* 影響:レコードのサイズ制限超過を含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](./stream-analytics-output-error-policy.md) 設定に従って処理されます。
 * ログの詳細
    * レコード ID またはレコードの一部。
 
@@ -278,7 +282,7 @@ ms.locfileid: "88053152"
 * 原因: あるレコードに、System 列と同じ名前の列が既に含まれています。 たとえば、CosmosDB 出力に ID という名前の列がありますが、ID 列は別の列の名前です。
 * ポータル通知提供:はい
 * リソース ログ レベル:警告
-* 影響:重複キーを含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-output-error-policy) 設定に従って処理されます。
+* 影響:重複キーを含むすべての出力データ変換エラーは、[[Output Data Policy]\(出力データ ポリシー\)](./stream-analytics-output-error-policy.md) 設定に従って処理されます。
 * ログの詳細
    * 列の名前です。
    * レコード ID またはレコードの一部。

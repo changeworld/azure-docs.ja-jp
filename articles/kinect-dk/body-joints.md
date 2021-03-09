@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: kinect, 移植, ボディ, トラッキング, 関節, 階層, ボーン, 接続
 ms.openlocfilehash: 4cf6ac13a93d0674f9fa144abcc3153a2d7c3350
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85276999"
 ---
 # <a name="azure-kinect-body-tracking-joints"></a>Azure Kinect ボディ トラッキングの関節

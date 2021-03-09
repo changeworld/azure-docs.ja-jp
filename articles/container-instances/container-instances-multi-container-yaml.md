@@ -3,12 +3,12 @@ title: チュートリアル - 複数コンテナー グループをデプロイ
 description: このチュートリアルでは、複数のコンテナーを含むコンテナー グループを YAML ファイルと Azure CLI を使用して Azure Container Instances にデプロイする方法を説明します。
 ms.topic: article
 ms.date: 07/01/2020
-ms.openlocfilehash: f6ba9152003c68192ddc0fdffa5652bc0b6daa86
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6f9dda7735587dfee1dde86c85375efcf057daa7
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750907"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97605163"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>チュートリアル:YAML ファイルを使用して複数コンテナー グループをデプロイする
 
@@ -29,9 +29,9 @@ Azure Container Instances では、[コンテナー グループ](container-inst
 > [!NOTE]
 > 複数コンテナー グループは、現在、Linux コンテナーに限定されています。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="configure-a-yaml-file"></a>YAML ファイルを構成する
 
@@ -115,7 +115,7 @@ az container show --resource-group myResourceGroup --name myContainerGroup --out
 
 実行中のアプリケーションを表示するには、ご利用のブラウザーでその IP アドレスにアクセスします。 たとえば、次の出力例では IP は `52.168.26.124` です。
 
-```bash
+```console
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
 ----------------  ---------------  --------  --------------------------------------------------------------------------------------------------  --------------------  ---------  ---------------  --------  ----------
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
@@ -178,7 +178,6 @@ Connection: keep-alive
 [Resource Manager テンプレート](container-instances-multi-container-group.md)を使用して、マルチコンテナー グループを指定することもできます。 Resource Manager テンプレートは、追加の Azure サービス リソースをコンテナー グループを使用してデプロイする必要があるシナリオに簡単に適応できます。
 
 <!-- LINKS - External -->
-
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

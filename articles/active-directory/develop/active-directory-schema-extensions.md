@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0127c8d796126d1e99b1fa38a9506df477c7eb49
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88115613"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755730"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>要求でディレクトリ スキーマ拡張属性を使用する
 
@@ -35,13 +35,13 @@ ms.locfileid: "88115613"
 ディレクトリ スキーマ拡張属性は、次の 2 つの方法のいずれかで登録および設定できます。
 
 - AD Connect を構成して、オンプレミス AD からそれらを作成し、データを同期する。 詳細については、[Azure AD Connect 同期のディレクトリ拡張](../hybrid/how-to-connect-sync-feature-directory-extensions.md)に関する記事を参照してください。
-- Microsoft Graph を使用してディレクトリ スキーマ拡張属性の登録、値の設定、および読み取りを行う。詳細については、[ディレクトリ スキーマ拡張 | Graph API の概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)に関する記事、および PowerShell+ [AzureAD PowerShell コマンドレットを使用した拡張属性の管理](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0)に関する記事を参照してください。
+- Microsoft Graph を使用して、[スキーマ拡張](/graph/extensibility-overview)を登録し、その値を設定して、そこから読み取る。 [PowerShell コマンドレット](/powershell/azure/active-directory/using-extension-attributes-sample)も使用できます。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>AD Connect を使用して作成されたディレクトリ スキーマ拡張属性からのデータを使用して要求を出力する
 AD Connect を使用して作成および同期されるディレクトリ スキーマ拡張属性は、AD Connect によって使用されるアプリケーション ID と常に関連付けられます。 これらは、**Enterprise Applications** の Gallery または Gallery 以外のアプリケーション構成エクスペリエンスを使用して登録された SAML アプリケーションにある Portal UI の **Enterprise Applications** 構成でそれらを要求として構成するか、アプリケーションの登録エクスペリエンスを使用して登録されたアプリケーションの要求のマッピング ポリシー経由で、要求のソースとして使用することができます。  AD Connect を使用して作成されたディレクトリ拡張属性がディレクトリ内にあると、SAML SSO 要求の構成 UI に表示されます。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>Graph または PowerShell を使用してアプリケーション用に作成されたディレクトリ スキーマ拡張属性からのデータを使用して要求を出力する
-Microsoft Graph または PowerShell を使用してアプリケーションにディレクトリ スキーマ拡張属性が登録された場合 (たとえば、アプリケーションの初期セットアップまたはプロビジョニング手順を使用)、ユーザーがサインインしたときに、ユーザー オブジェクトからその属性のデータを要求で受信するように Azure Active Directory で同じアプリケーションを構成できます。  このアプリケーションは、[オプションの要求](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)を使用して同じアプリケーションに登録されているディレクトリ スキーマ拡張でデータを受信するように構成できます。  これらは、アプリケーション マニフェストで設定できます。  これにより、マルチテナント アプリケーションで、独自に使用するディレクトリ スキーマ拡張属性を登録できます。 アプリケーションがテナントにプロビジョニングされると、関連付けられているディレクトリ スキーマ拡張が、そのテナント内のユーザーに設定でき、使用できるようになります。  これがテナントで構成され、同意が付与されると、Graph を使用してデータの格納と取得を行ったり、Microsoft ID プラットフォームからアプリケーションに出力されるトークン内の要求にマッピングしたりすることができます。
+Microsoft Graph または PowerShell を使用してアプリケーションにディレクトリ スキーマ拡張属性が登録された場合 (たとえば、アプリケーションの初期セットアップまたはプロビジョニング手順を使用)、ユーザーがサインインしたときに、ユーザー オブジェクトからその属性のデータを要求で受信するように Azure Active Directory で同じアプリケーションを構成できます。  このアプリケーションは、[オプションの要求](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)を使用して同じアプリケーションに登録されているディレクトリ スキーマ拡張でデータを受信するように構成できます。  これらは、アプリケーション マニフェストで設定できます。  これにより、マルチテナント アプリケーションで、独自に使用するディレクトリ スキーマ拡張属性を登録できます。 アプリケーションがテナントにプロビジョニングされると、関連付けられているディレクトリ スキーマ拡張が、そのテナント内のユーザーに設定でき、使用できるようになります。  これがテナントで構成され、同意が付与されると、Graph を使用してデータの格納と取得を行うことや、Microsoft ID プラットフォームからアプリケーションに出力されるトークン内の要求にマッピングすることができます。
 
 ディレクトリ スキーマ拡張属性は、任意のアプリケーションに対して登録および設定できます。
 
@@ -58,7 +58,7 @@ Microsoft Graph または PowerShell を使用してアプリケーションに�
                 "Source": "User",
                 "ExtensionID": "extension_xxxxxxx_test",
                 "JWTClaimType": "http://schemas.contoso.com/identity/claims/exampleclaim"
-            }, 
+            },
         ]
     }
 }
@@ -72,5 +72,5 @@ Microsoft Graph または PowerShell を使用してアプリケーションに�
 > 組み込みのディレクトリ属性に使用される要求スキーマの "Id" パラメーターは、ディレクトリ拡張属性の "ExtensionID" です。
 
 ## <a name="next-steps"></a>次のステップ
-- [SAML 2.0 および JSON Web Token (JWT) トークンに、カスタムまたは追加の要求を追加する](active-directory-optional-claims.md)方法について確認します。 
+- [SAML 2.0 および JSON Web Token (JWT) トークンに、カスタムまたは追加の要求を追加する](active-directory-optional-claims.md)方法について確認します。
 - [特定のアプリ用のトークンに生成された要求をカスタマイズ](active-directory-claims-mapping.md)する方法について確認します。

@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 405ebbbfa4a662dd9ee3c8d10dde8f28e5ce9c66
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: de67e356e54328944c55f41dc0c9670e2540e82e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830446"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694378"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
-Azure Disk Encryption は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、Azure 仮想マシン (VM) の OS とデータ ディスクにボリューム暗号化が提供されます。これは、ディスク暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](../../key-vault/index.yml) に統合されています。 
+Azure Disk Encryption は、データを保護して、組織のセキュリティおよびコンプライアンス コミットメントを満たすのに役立ちます。 Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を使用して、Azure 仮想マシン (VM) の OS とデータ ディスクにボリューム暗号化が提供されます。これは、ディスク暗号化キーとシークレットを制御および管理できるように、[Azure Key Vault](../../key-vault/index.yml) に統合されています。
+
+Azure Disk Encryption は、Virtual Machines と同じように、ゾーン回復性を備えています。 詳細については、「[Availability Zones をサポートする Azure サービス](../../availability-zones/az-region.md)」を参照してください。
 
 [Azure Security Center](../../security-center/index.yml) を使用している場合、暗号化されていない VM があると警告を受け取ります。 アラートは高重要度として表示され、このような VM は暗号化することをお勧めします。
 
@@ -26,7 +28,6 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 > [!WARNING]
 > - これまで Azure AD で Azure Disk Encryption を使用して VM を暗号化していた場合は、引き続きこのオプションを使用して VM を暗号化する必要があります。 詳細については、「[Azure AD での Azure Disk Encryption (以前のリリース)](disk-encryption-overview-aad.md)」を参照してください。 
 > - 特定の推奨事項により、データ、ネットワーク、またはコンピューティング リソースの使用量が増え、その結果、ライセンスまたはサブスクリプション コストの追加が必要になる可能性があります。 サポートされているリージョンにおいて Azure でリソースを作成するための有効なアクティブ Azure サブスクリプションが必要です。
-> - 現在、第 2 世代 VM では Azure Disk Encryption はサポートされていません。 詳細については、「[Azure での第 2 世代 VM のサポート](../windows/generation-2.md)」を参照してください。
 
 「[クイックスタート: Azure CLI で Linux VM を作成して暗号化する](disk-encryption-cli-quickstart.md)」または「[クイックスタート: Azure PowerShell で Linux VM を作成して暗号化する](disk-encryption-powershell-quickstart.md)」では、Linux 用 Azure Disk Encryption の基礎について数分で学習できます。
 
@@ -34,7 +35,11 @@ Azure Disk Encryption は、データを保護して、組織のセキュリテ�
 
 ### <a name="supported-vms"></a>サポート対象の VM
 
-Linux VM は、[さまざまなサイズ](../sizes.md)で利用できます。 Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) または次の最小メモリ要件を満たしていない仮想マシンでは利用できません。
+Linux VM は、[さまざまなサイズ](../sizes.md)で利用できます。 Azure Disk Encryption は、第 1 世代と第 2 世代の VM でサポートされています。 Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
+
+「[ローカル一時ディスクを持たない Azure VM のサイズ](../azure-vms-no-temp-disk.md)」を参照してください。
+
+また、Azure Disk Encryption は、[Basic、A シリーズ VM](https://azure.microsoft.com/pricing/details/virtual-machines/series/) または次の最小メモリ要件を満たしていない仮想マシンでは利用できません。
 
 | 仮想マシン | 最小メモリ要件 |
 |--|--|
@@ -42,11 +47,9 @@ Linux VM は、[さまざまなサイズ](../sizes.md)で利用できます。 A
 | Linux VM (データ ボリュームと OS ボリュームの両方を暗号化し、なおかつルート (/) ファイル システムの使用量が 4 GB 以下の場合) | 8 GB |
 | Linux VM (データ ボリュームと OS ボリュームの両方を暗号化し、なおかつルート (/) ファイル システムの使用量が 4 GB を超える場合) | ルート ファイル システムの使用量 * 2。 たとえば、ルート ファイル システムの使用量が 16 GB の場合、32 GB 以上の RAM が必要となります。 |
 
-Linux 仮想マシンの OS ディスクの暗号化プロセスが完了すると、より少ないメモリで VM を実行するように構成できます。 
+Linux 仮想マシンの OS ディスクの暗号化プロセスが完了すると、より少ないメモリで VM を実行するように構成できます。
 
-Azure Disk Encryption は、Premium Storage を使用した VM でも利用できます。
-
-Azure Disk Encryption は、[Generation 2 VM](generation-2.md#generation-1-vs-generation-2-capabilities) と [Lsv2 シリーズ VM](../lsv2-series.md) では使用できません。 例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-linux.md#unsupported-scenarios)に関する記事を参照してください。
+例外の詳細については、「[Azure Disk Encryption:サポートされていないシナリオ](disk-encryption-linux.md#unsupported-scenarios)に関する記事を参照してください。
 
 ### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
@@ -56,6 +59,7 @@ Azure Disk Encryption は [Azure での動作が保証された一部の Linux �
 
 Azure での動作が保証されていない Linux サーバー ディストリビューションでは Azure Disk Encryption がサポートされておらず、動作が保証されているディストリビューションの中でも、次のディストリビューションとバージョンだけで Azure Disk Encryption がサポートされています。
 
+
 | Publisher | プラン | SKU | URN | 暗号化がサポートされているボリュームの種類 |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18.04-LTS | Canonical:UbuntuServer:18.04-LTS:latest | OS とデータ ディスク |
@@ -63,9 +67,12 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | Canonical | Ubuntu 16.04 | 16.04-DAILY-LTS | Canonical:UbuntuServer:16.04-DAILY-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical:UbuntuServer:14.04.5-LTS:latest | OS とデータ ディスク |
 | Canonical | Ubuntu 14.04.5</br>[カーネルが 4.15 以降に調整されている Azure](disk-encryption-troubleshooting.md) | 14.04.5-DAILY-LTS | Canonical:UbuntuServer:14.04.5-DAILY-LTS:latest | OS とデータ ディスク |
+| RedHat | RHEL 8-LVM | 8-LVM | RedHat:RHEL:8-LVM:latest | OS とデータ ディスク (後述する注を参照してください) |
+| RedHat | RHEL 8.2 | 8.2 | RedHat:RHEL:8.2:latest | OS とデータ ディスク (後述する注を参照してください) |
+| RedHat | RHEL 8.1 | 8.1 | RedHat:RHEL:8.1:latest | OS とデータ ディスク (後述する注を参照してください) |
+| RedHat | RHEL 7-LVM | 7-LVM | RedHat:RHEL:7-LVM:7.8.2020111201 | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7.8 | 7.8 | RedHat:RHEL:7.8:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7.7 | 7.7 | RedHat:RHEL:7.7:latest | OS とデータ ディスク (後述する注を参照してください) |
-| RedHat | RHEL 7.7 | 7-LVM | RedHat:RHEL:7-LVM:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7.6 | 7.6 | RedHat:RHEL:7.6:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7.5 | 7.5 | RedHat:RHEL:7.5:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 7.4 | 7.4 | RedHat:RHEL:7.4:latest | OS とデータ ディスク (後述する注を参照してください) |
@@ -73,8 +80,12 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 | RedHat | RHEL 7.2 | 7.2 | RedHat:RHEL:7.2:latest | OS とデータ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 6.8 | 6.8 | RedHat:RHEL:6.8:latest | データ ディスク (後述する注を参照してください) |
 | RedHat | RHEL 6.7 | 6.7 | RedHat:RHEL:6.7:latest | データ ディスク (後述する注を参照してください) |
+| OpenLogic | CentOS 8-LVM | 8-LVM | OpenLogic:CentOS-LVM:8-LVM:latest | OS とデータ ディスク |
+| OpenLogic | CentOS 8.2 | 8_2 | OpenLogic:CentOS:8_2:latest | OS とデータ ディスク |
+| OpenLogic | CentOS 8.1 | 8_1 | OpenLogic:CentOS:8_1:latest | OS とデータ ディスク |
+| OpenLogic | CentOS 7-LVM | 7-LVM | OpenLogic:CentOS-LVM:7-LVM:7.8.2020111100 | OS とデータ ディスク |
+| OpenLogic | CentOS 7.8 | 7.8 | OpenLogic:CentOS:7_8:latest | OS とデータ ディスク |
 | OpenLogic | CentOS 7.7 | 7.7 | OpenLogic:CentOS:7.7:latest | OS とデータ ディスク |
-| OpenLogic | CentOS 7.7 | 7-LVM | OpenLogic:CentOS:7-LVM:latest | OS とデータ ディスク |
 | OpenLogic | CentOS 7.6 | 7.6 | OpenLogic:CentOS:7.6:latest | OS とデータ ディスク |
 | OpenLogic | CentOS 7.5 | 7.5 | OpenLogic:CentOS:7.5:latest | OS とデータ ディスク |
 | OpenLogic | CentOS 7.4 | 7.4 | OpenLogic:CentOS:7.4:latest | OS とデータ ディスク |
@@ -90,7 +101,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 > [!NOTE]
 > RHEL7 の従量課金制イメージについては、RHEL OS とデータ ディスクに新しい Azure Disk Encryption の実装がサポートされます。  
 >
-> ADE は、RHEL のサブスクリプション持ち込み Gold Image でもサポートされています。ただし、サブスクリプションが登録された**後**でのみサポートされます。 詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)」を参照してください。
+> ADE は、RHEL のサブスクリプション持ち込み Gold Image でもサポートされています。ただし、サブスクリプションが登録された **後** でのみサポートされます。 詳細については、「[Azure での Red Hat Enterprise Linux のサブスクリプション持ち込み Gold Image](../workloads/redhat/byos.md#encrypt-red-hat-enterprise-linux-bring-your-own-subscription-gold-images)」を参照してください。
 
 ## <a name="additional-vm-requirements"></a>追加の VM 要件
 
@@ -108,8 +119,8 @@ Azure Disk Encryption では、dm-crypt モジュールと vfat モジュール�
 データ ディスクをマウントし、必要な /etc/fstab エントリを作成するために使用できるコマンドの例は、次のとおりです。
 
 ```bash
-UUID0="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun0)"
-UUID1="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun1)"
+UUID0="$(blkid -s UUID -o value /dev/sda1)"
+UUID1="$(blkid -s UUID -o value /dev/sda2)"
 mkdir /data0
 mkdir /data1
 echo "UUID=$UUID0 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
@@ -145,7 +156,7 @@ Azure Disk Encryption では、ディスク暗号化キーとシークレット�
 ## <a name="next-steps"></a>次のステップ
 
 - [クイック スタート - Azure CLI を使用して Linux VM を作成、暗号化する](disk-encryption-cli-quickstart.md)
-- [クイック スタート - Azure PowerShell を使用して Linux VM を作成、暗号化する](disk-encryption-powershell-quickstart.md)
+- [クイック スタート - Azure PowerShell を使用して Linux VM を作成、暗号化する](disk-encryption-powershell-quickstart.md) 
 - [Linux VM での Azure Disk Encryption シナリオ](disk-encryption-linux.md)
 - [Azure Disk Encryption の前提条件の CLI スクリプト](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption の前提条件の PowerShell スクリプト](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)

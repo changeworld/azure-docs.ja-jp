@@ -1,16 +1,15 @@
 ---
 title: Azure Data Lake Analytics で利用でき、閲覧できる診断ログ
 description: Azure Data Lake Analytics の診断ログの設定方法およびアクセス方法の解釈
-services: data-lake-analytics
 ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 02/12/2018
-ms.openlocfilehash: c8c24134c4694a9a2df36ac278452a532a5125ad
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cd339729f2300ff7e13e7422bf73373b4ce4658e
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132604"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221011"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
@@ -26,7 +25,7 @@ ms.locfileid: "87132604"
 
 2. Data Lake Analytics アカウントを開き、 __[監視]__ セクションから **[診断ログ]** を選択します。 次に、 __[診断を有効にする]__ を選択します。
 
-    ![診断を有効にして、監査ログと要求ログを収集する](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
+    ![[診断ログ] アクションが選択され、[Turn on diagnostics to collect the following logs]\(診断をオンにして次のログを収集する\) が強調表示されていることを示すスクリーンショット。](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
 3. __[診断設定]__ で、このログ構成の __名前__ を入力し、ログ オプションを選択します。
 
@@ -36,7 +35,7 @@ ms.locfileid: "87132604"
 
      * __[Archive to a storage account]__ (ストレージ アカウントへのアーカイブ) を選択して、Azure ストレージ アカウントにログを保存します。 データをアーカイブする場合には、このオプションを使用します。 このオプションを選択する場合は、ログの保存先の Azure ストレージ アカウントを指定する必要があります。
 
-     * **[Stream to an event hub]** (イベント ハブへのストリーム) オプションを選択して、Azure イベント ハブにログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合には、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
+     * **[Stream to an event hub]** (イベント ハブへのストリーム) オプションを選択して、Azure Event Hub にログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合には、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
      * __[Send to Log Analytics]\(Log Analytics に送信\)__ を選択して、Azure Monitor サービスにデータを送信します。 Azure Monitor ログを使ってログを収集し分析する場合は、このオプションを使用します。
    * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。  要求ログは、すべての API 要求をキャプチャします。 監査ログは、その API 要求によってトリガーされるすべての操作を記録します。
@@ -130,7 +129,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Requests**など。 |
+| category |String |ログのカテゴリ。 **Requests** など。 |
 | operationName |String |ログに記録される操作の名前。 GetAggregatedJobHistory など。 |
 | resultType |String |操作の状態。200 など。 |
 | callerIpAddress |String |要求を行うクライアントの IP アドレス |
@@ -180,7 +179,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | resourceId |String |操作が行われたリソースの ID |
-| category |String |ログのカテゴリ。 **Audit**など。 |
+| category |String |ログのカテゴリ。 **Audit** など。 |
 | operationName |String |ログに記録される操作の名前。 JobSubmitted など。 |
 | resultType |String |ジョブの状態 (operationName) の副状態。 |
 | resultSignature |String |ジョブの状態 (operationName) に関する追加の詳細。 |

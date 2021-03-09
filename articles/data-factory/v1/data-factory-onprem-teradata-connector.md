@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory を使用して Teradata からデータを移動する
 description: Teradata データベースからデータを移動できる Data Factory サービスの Teradata コネクタについて学習する
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84707312"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387208"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -45,14 +40,14 @@ Data Management Gateway で Teradata データベースに接続するには、[
 ## <a name="getting-started"></a>作業の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。
 
-- パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+- パイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 - また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
-1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
-2. コピー操作用の入力データと出力データを表す**データセット**を作成します。
-3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。
+1. **リンクされたサービス** を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
+2. コピー操作用の入力データと出力データを表す **データセット** を作成します。
+3. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む **パイプライン** を作成します。
 
 ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの Teradata データ ストアからデータをコピーするために使用される Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の「[JSON サンプル: Teradata から Azure BLOB にデータをコピーする](#json-example-copy-data-from-teradata-to-azure-blob)」のセクションを参照してください。
 
@@ -135,7 +130,7 @@ source の種類が **RelationalSource** (Teradata を含む) である場合は
 
 **Teradata の入力データセット:**
 
-このサンプルでは、Teradata で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestamp」という名前の列が含まれているものと想定しています。
+このサンプルでは、Teradata で "MyTable" という名前のテーブルを作成し、それに時系列データ用の "timestamp" という名前の列が含まれていることを前提にしています。
 
 "external": true の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 

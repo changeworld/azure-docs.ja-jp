@@ -3,12 +3,12 @@ title: Azure DevTest Labs でデータ ディスクを仮想マシンにアタ�
 description: Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする方法について説明します
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 222bf06dc07cc2538bc0512b4a41b7bd91bc1ebf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 8eebfbda421233bcec780d441a4020acce740618
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653921"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91328515"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Azure DevTest Labs でデータ ディスクを仮想マシンにアタッチまたはデタッチする
 [Azure Managed Disks](../virtual-machines/managed-disks-overview.md) は、仮想マシンのデータ ディスクに関連付けられているストレージ アカウントを管理します。 ユーザーが新しいデータ ディスクを VM にアタッチし、必要なディスクの種類とサイズを指定すると、Azure によってディスクが自動的に作成され、管理されます。 データ ディスクはその後 VM からデタッチできます。後で同じ VM に再アタッチすることも、同じユーザーが所有する別の VM にアタッチすることもできます。
@@ -46,7 +46,7 @@ Azure DevTest Labs で新しいマネージド データ ディスクを作成�
 1. 左側のメニューで **[ディスク]** を選択します。
 1. **[Attach existing]\(既存のディスクのアタッチ\)** を選択して、使用可能なデータ ディスクを VM にアタッチします。
 
-    ![既存のデータ ディスクを仮想マシンにアタッチする](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
+    ![[ディスク] 設定が選択されて [Attach existing]\(既存のディスクのアタッチ\) が選択されたことを示すスクリーンショット。](./media/devtest-lab-attach-detach-data-disk/devtest-lab-attach-existing-button.png)
 
 1. **[Attach existing disk]\(既存のディスクのアタッチ\)** ウィンドウで、[OK] を選択します。
 
@@ -67,7 +67,7 @@ VM にアタッチされたデータ ディスクは、不要になった場合�
     ![仮想マシンのデータ ディスクを選択する](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-button.png) 
 1. ディスクの詳細ウィンドウの上部で **[Detach]\(デタッチ\)** を選択します。
 
-    ![データ ディスクの切断](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
+    ![[Detach]\(デタッチ\) 操作が強調表示されているディスクの詳細ペインを示すスクリーンショット。](./media/devtest-lab-attach-detach-data-disk/devtest-lab-detach-data-disk2.png)
 1. **[はい]** を選択して、データ ディスクをアタッチすることを確認します。
 
 ディスクがデタッチされ、別の VM にアタッチできるようになります。 

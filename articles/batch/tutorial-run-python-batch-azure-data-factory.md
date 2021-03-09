@@ -1,22 +1,22 @@
 ---
-title: Data Factory から Python スクリプトを実行する
-description: チュートリアル - Azure Batch を使用して Azure Data Factory のパイプラインから Python スクリプトを実行する方法について説明します。
-author: mammask
+title: チュートリアル - Data Factory から Python スクリプトを実行する
+description: Azure Batch を使用して Azure Data Factory のパイプラインから Python スクリプトを実行する方法について説明します。
+author: pkshultz
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 08/12/2020
-ms.author: komammas
+ms.author: peshultz
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: f4c71cffe00faa6dd8cc440c59f94b8c2d60f712
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 6cc6e6a9739b8b06ab3c48dd3fd75f19de8d0787
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185113"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106276"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>チュートリアル:Azure Batch を使用して Azure Data Factory から Python スクリプトを実行する
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Batch アカウントおよびストレージ アカウントで認証する
@@ -33,7 +33,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="prerequisites"></a>前提条件
 
 * ローカル テスト用にインストールされた [Python](https://www.python.org/downloads/) ディストリビューション。
-* [Azure](https://pypi.org/project/azure/) `pip` パッケージ。
+* [azure-storage-blob](https://pypi.org/project/azure-storage-blob/) `pip` パッケージ。
 * [iris.csv データセット](https://www.kaggle.com/uciml/iris/version/2#Iris.csv)
 * Azure Batch アカウントおよびリンクされた Azure ストレージ アカウント。 Batch アカウントを作成してストレージ アカウントにリンクさせる方法の詳細については、「[Batch アカウントを作成する](quick-create-portal.md#create-a-batch-account)」を参照してください。
 * Azure Data Factory アカウント。 Azure portal からデータ ファクトリを作成する方法の詳細については、「[Data Factory の作成](../data-factory/quickstart-create-data-factory-portal.md#create-a-data-factory)」を参照してください。
@@ -57,7 +57,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     1. スケールの種類を **[Fixed size]\(固定サイズ\)** に設定し、専用ノードの数を 2 に設定します。
     1. **[データ サイエンス]** で、オペレーティング システムとして **[Dsvm Windows]** を選択します。
     1. 仮想マシンのサイズとして [`Standard_f2s_v2`] を選択します。
-    1. 開始タスクを有効にし、コマンド `cmd /c "pip install pandas"` を追加します。 ユーザー ID は、既定値の **Pool user** のままでかまいません。
+    1. 開始タスクを有効にし、コマンド `cmd /c "pip install azure-storage-blob pandas"` を追加します。 ユーザー ID は、既定値の **Pool user** のままでかまいません。
     1. **[OK]** を選択します。
 
 ## <a name="create-blob-containers"></a>BLOB コンテナーを作成する
@@ -75,17 +75,17 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ``` python
 # Load libraries
-from azure.storage.blob import BlockBlobService
+from azure.storage.blob import BlobServiceClient
 import pandas as pd
 
 # Define parameters
-storageAccountName = "<storage-account-name>"
+storageAccountURL = "<storage-account-url>"
 storageKey         = "<storage-account-key>"
 containerName      = "output"
 
 # Establish connection with the blob storage account
-blobService = BlockBlobService(account_name=storageAccountName,
-                               account_key=storageKey
+blob_service_client = BlockBlobService(account_url=storageAccountURL,
+                               credential=storageKey
                                )
 
 # Load iris dataset from the task node
@@ -98,10 +98,12 @@ df = df[df['Species'] == "setosa"]
 df.to_csv("iris_setosa.csv", index = False)
 
 # Upload iris dataset
-blobService.create_blob_from_path(containerName, "iris_setosa.csv", "iris_setosa.csv")
+container_client = blob_service_client.get_container_client(containerName)
+with open("iris_setosa.csv", "rb") as data:
+    blob_client = container_client.upload_blob(name="iris_setosa.csv", data=data)
 ```
 
-このスクリプトを `main.py` として保存し、**Azure Storage** コンテナーにアップロードします。 BLOB コンテナーにアップロードする前に、必ずその機能をローカルでテスト、検証してください。
+このスクリプトを `main.py` として保存し、**Azure Storage** `input` コンテナーにアップロードします。 BLOB コンテナーにアップロードする前に、必ずその機能をローカルでテスト、検証してください。
 
 ``` bash
 python main.py
@@ -121,7 +123,7 @@ python main.py
 1. **[全般]** タブで、[名前] に「**testPipeline**」と指定します。
 
     ![[全般] タブで、[名前] に「testPipeline」を指定する](./media/run-python-batch-azure-data-factory/create-custom-task.png)
-1. **[Azure Batch]** タブで、前の手順で作成した **Batch アカウント**を追加し、**接続をテスト**して成功することを確認します。
+1. **[Azure Batch]** タブで、前の手順で作成した **Batch アカウント** を追加し、**接続をテスト** して成功することを確認します。
 
     ![[Azure Batch] タブで、前の手順で作成した Batch アカウントを追加し、接続をテストする](./media/run-python-batch-azure-data-factory/integrate-pipeline-with-azure-batch.png)
 
@@ -146,13 +148,23 @@ python main.py
 1. 終了コードがエラーとなったタスクをクリックします。
 1. `stdout.txt` および `stderr.txt` を見て、問題を調査、診断します。
 
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは課金対象です。 そのため、必要な場合にのみプールを割り当てることをお勧めします。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 ただし、入力ファイルと出力ファイルはストレージ アカウントに残ります。 Batch アカウントとストレージ アカウントも、不要になったら削除できます。
+
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Azure Batch を使用して Azure Data Factory のパイプラインから Python スクリプトを実行する例を詳しく見てきました。
+このチュートリアルでは、次の作業を行う方法を学びました。
+
+> [!div class="checklist"]
+> * Batch アカウントおよびストレージ アカウントで認証する
+> * Python スクリプトを開発して実行する
+> * アプリケーションを実行するコンピューティング ノードのプールを作成する
+> * Python ワークロードをスケジュールする
+> * 分析パイプラインを監視する
+> * ログファイルにアクセスする
 
 Azure Data Factory についてさらに学習するには、次の記事を参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure Data Factory](../data-factory/introduction.md)
-> [パイプラインとアクティビティ](../data-factory/concepts-pipelines-activities.md)
-> [カスタム アクティビティ](../data-factory/transform-data-using-dotnet-custom-activity.md)
+> [Azure Data Factory の概要](../data-factory/introduction.md)

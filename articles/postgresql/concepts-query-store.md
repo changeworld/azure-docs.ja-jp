@@ -1,17 +1,17 @@
 ---
 title: クエリ ストア - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server でのクエリ ストア機能について説明します。
-author: rachel-msft
-ms.author: raagyema
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 49eea969f987a72872cda58ae6a7c41e50a14c10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1779df1c5f9baf2aa46ff809ecae9ec5e3cd7adb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85830283"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581565"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
@@ -29,11 +29,11 @@ Azure Database for PostgreSQL のクエリ ストア機能では、一定期間�
 1. Azure portal にサインインし、ご利用の Azure Database for PostgreSQL サーバーを選択します。
 2. メニューの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
 3. `pg_qs.query_capture_mode` パラメーターを検索します。
-4. 値を `TOP` に設定して**保存**します。
+4. 値を `TOP` に設定して **保存** します。
 
 クエリ ストアでの待機統計を有効にするには、次の手順に従います。 
 1. `pgms_wait_sampling.query_capture_mode` パラメーターを検索します。
-1. 値を `ALL` に設定して**保存**します。
+1. 値を `ALL` に設定して **保存** します。
 
 
 または Azure CLI を使用して、これらのパラメーターを設定することもできます。
@@ -149,25 +149,25 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 ### <a name="query_storequery_texts_view"></a>query_store.query_texts_view
 このビューでは、クエリ ストア内のクエリ テキスト データが返されます。 個別の query_text ごとに 1 つの行があります。
 
-|**名前**|  **Type**|   **説明**|
-|---|---|---|
-|query_text_id  |bigint     |query_texts テーブルの ID|
-|query_sql_text |Varchar(10000)     |代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
+| **名前** | **Type** | **説明** |
+|--|--|--|
+| query_text_id | bigint | query_texts テーブルの ID |
+| query_sql_text | Varchar(10000) | 代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。 |
 
 ### <a name="query_storepgms_wait_sampling_view"></a>query_store.pgms_wait_sampling_view
 このビューでは、クエリ ストア内の待機イベント データが返されます。 個別のデータベース ID、ユーザー ID、クエリ ID、イベントごとに 1 つの行があります。
 
-|**名前**|  **Type**|   **参照**| **説明**|
-|---|---|---|---|
-|user_id    |oid    |pg_authid.oid  |ステートメントを実行したユーザーの OID|
-|db_id  |oid    |pg_database.oid    |ステートメントが実行されたデータベースの OID|
-|query_id   |bigint     ||ステートメントの解析ツリーから計算される内部ハッシュ コード|
-|event_type |text       ||バックエンドによって待機されているイベントの種類|
-|イベント  |text       ||バックエンドによって現在待機されている場合に、待機イベントの名前|
-|calls  |Integer        ||同じイベントがキャプチャされた回数|
-
+| **名前** | **Type** | **参照** | **説明** |
+|--|--|--|--|
+| user_id | oid | pg_authid.oid | ステートメントを実行したユーザーの OID |
+| db_id | oid | pg_database.oid | ステートメントが実行されたデータベースの OID |
+| query_id | bigint |  | ステートメントの解析ツリーから計算される内部ハッシュ コード |
+| event_type | text |  | バックエンドによって待機されているイベントの種類 |
+| イベント | text |  | バックエンドによって現在待機されている場合に、待機イベントの名前 |
+| calls | Integer |  | 同じイベントがキャプチャされた回数 |
 
 ### <a name="functions"></a>関数
+
 Query_store.qs_reset() returns void
 
 `qs_reset` では、クエリ ストアによってこれまでに収集されたすべての統計が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
@@ -178,7 +178,7 @@ Query_store.staging_data_reset() returns void
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Database for PostgreSQL は、[Azure Monitor の診断設定](../azure-monitor/platform/diagnostic-settings.md)に統合されています。 診断設定を使用すると、ご自分の Postgres ログを、分析とアラート用の [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)、ストリーミング用の Event Hubs、アーカイブ用の Azure Storage に JSON 形式で送信できます。
+Azure Database for PostgreSQL は、[Azure Monitor の診断設定](../azure-monitor/essentials/diagnostic-settings.md)に統合されています。 診断設定を使用すると、ご自分の Postgres ログを、分析とアラート用の [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)、ストリーミング用の Event Hubs、アーカイブ用の Azure Storage に JSON 形式で送信できます。
 
 >[!IMPORTANT]
 > この診断機能は、General Purpose 価格レベルとメモリ最適化価格レベルにのみあります。
@@ -195,7 +195,7 @@ Azure portal を使用してリソース ログを有効にするには
 5. ログの種類として **QueryStoreRuntimeStatistics** と **QueryStoreWaitStatistics** を選択します。
 6. 設定を保存します。
 
-この設定を、PowerShell、CLI、または REST API を使用して有効にするには、[診断の設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事をご覧ください。
+この設定を、PowerShell、CLI、または REST API を使用して有効にするには、[診断の設定](../azure-monitor/essentials/diagnostic-settings.md)に関する記事をご覧ください。
 
 ### <a name="json-log-format"></a>JSON ログの形式
 次の表では、2 つのログの種類のフィールドについて説明します。 選択した出力エンドポイントに応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。
@@ -250,7 +250,7 @@ Azure portal を使用してリソース ログを有効にするには
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 - PostgreSQL サーバーのパラメーター default_transaction_read_only がオンの場合、クエリ ストアはデータをキャプチャできません。
 - 時間がかかる Unicode クエリ (> = 6000 バイト) が発生した場合は、クエリ ストア機能の実行が中断されることがあります。
-- [読み取りレプリカ](concepts-read-replicas.md)には、マスター サーバーからクエリ ストア データがレプリケートされます。 つまり、読み取りレプリカのクエリ ストアでは、読み取りレプリカで実行されるクエリに関する統計情報は提供されません。
+- [読み取りレプリカ](concepts-read-replicas.md)には、プライマリ サーバーからクエリ ストア データがレプリケートされます。 つまり、読み取りレプリカのクエリ ストアでは、読み取りレプリカで実行されるクエリに関する統計情報は提供されません。
 
 
 ## <a name="next-steps"></a>次のステップ

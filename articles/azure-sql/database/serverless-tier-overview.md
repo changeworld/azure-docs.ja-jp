@@ -4,19 +4,19 @@ description: この記事では、新しいサーバーレス コンピューテ
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: test sqldbrb=1
+ms.custom: test sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
 ms.author: moslake
-ms.reviewer: sstein, carlrab
-ms.date: 8/7/2020
-ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.reviewer: sstein
+ms.date: 12/8/2020
+ms.openlocfilehash: 1b8be7fc6295c6332d26718b5752d2fd8f2a6f73
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121359"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393243"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,14 +25,14 @@ ms.locfileid: "88121359"
 
 ## <a name="serverless-compute-tier"></a>サーバーレス コンピューティング レベル
 
-Azure SQL Database の単一データベースのサーバーレス コンピューティング レベルは、コンピューティングの自動スケーリング範囲と自動一時停止遅延でパラメーター化されます。 これらのパラメーターの構成によって、データベース パフォーマンス エクスペリエンスとコンピューティング コストが決まります。
+Azure SQL Database の単一データベースに対するサーバーレス コンピューティング レベルは、コンピューティングの自動スケーリング範囲と自動一時停止遅延によってパラメーター化されます。 これらのパラメーターの構成によって、データベース パフォーマンス エクスペリエンスとコンピューティング コストが決まります。
 
 ![サーバーレスの請求](./media/serverless-tier-overview/serverless-billing.png)
 
 ### <a name="performance-configuration"></a>パフォーマンス構成
 
-- **最小仮想コア**と**最大仮想コア**は、データベースに使用可能なコンピューティング容量の範囲を定義する構成可能なパラメーターです。 メモリと IO の上限は、指定された仮想コアの範囲に比例します。  
-- **自動一時停止遅延**は、データベースが自動的に一時停止するために必要な非アクティブ期間を定義する構成可能なパラメーターです。 次のログインまたはその他のアクティビティが発生すると、データベースは自動的に再開されます。  自動一時停止を無効にすることもできます。
+- **最小仮想コア** と **最大仮想コア** は、データベースに使用可能なコンピューティング容量の範囲を定義する構成可能なパラメーターです。 メモリと IO の上限は、指定された仮想コアの範囲に比例します。  
+- **自動一時停止遅延** は、自動的に一時停止するためにデータベースで必要な非アクティブ期間を定義する構成可能なパラメーターです。 次のログインまたはその他のアクティビティが発生すると、データベースは自動的に再開されます。  または、自動一時停止を無効にすることもできます。
 
 ### <a name="cost"></a>コスト
 
@@ -48,16 +48,16 @@ Azure SQL Database の単一データベースのサーバーレス コンピュ
 
 サーバーレスは、アイドル使用期間後のコンピューティング ウォームアップにおいてある程度の遅延を許容できる一時的な予測できない使用パターンの単一データベースに対して価格とパフォーマンスが最適化されています。 これに対し、プロビジョニング済みコンピューティング レベルは、コンピューティング ウォームアップの遅延を許容できない平均的に使用量が多いエラスティック プール内の単一データベースまたは複数のデータベースに対して価格とパフォーマンスが最適化されています。
 
-### <a name="scenarios-well-suited-for-serverless-compute"></a>サーバーレス コンピューティングに最適なシナリオ
+### <a name="scenarios-well-suited-for-serverless-compute"></a>サーバーレス コンピューティングに適したシナリオ
 
 - 間欠的で予測できない使用パターンの単一データベースで、長期にわたってアクティブではない期間と平均コンピューティング使用率が低い期間が散在している場合。
 - 頻繁に再スケールされるプロビジョニング済みコンピューティング レベル内の単一データベースと、コンピューティングの再スケールをサービスに委任することを好むお客様。
 - SQL Database へのデプロイ前にコンピューティング サイズを見積もることが困難か不可能な、使用履歴のない新しい単一データベース。
 
-### <a name="scenarios-well-suited-for-provisioned-compute"></a>プロビジョニング済みコンピューティングに最適なシナリオ
+### <a name="scenarios-well-suited-for-provisioned-compute"></a>プロビジョニング済みコンピューティングに適したシナリオ
 
 - より定期的で予測できる使用パターンを持ち、長期にわたって平均コンピューティング使用率が高い単一データベース。
-- 頻繁なメモリ トリミングまたは一時停止状態からの自動再開での遅延によるパフォーマンスのトレードオフを許容できないデータベース。
+- 頻繁なメモリ トリミング、または一時停止状態からの再開遅延によるパフォーマンスのトレードオフを許容できないデータベース。
 - 価格とパフォーマンスの最適化向上のためにエラスティック プールに統合できる、間欠的な予測できない使用パターンを持つ複数のデータベース。
 
 ## <a name="comparison-with-provisioned-compute-tier"></a>プロビジョニング済みコンピューティング レベルとの比較
@@ -97,15 +97,15 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 サーバーレス コンピューティング データベースとプロビジョニング済みコンピューティング データベースの両方で、使用可能なメモリがすべて使用されている場合、キャッシュ エントリを削除できます。
 
-CPU 使用率が低い場合、使用パターンによってはアクティブなキャッシュの使用率が高いままになり、メモリの再利用が妨げられる可能性があることに注意してください。  また、以前のユーザー アクティビティに定期的なバックグラウンド プロセスが応答するために、ユーザー アクティビティが停止した後、メモリが再利用される前に、遅延時間が追加で発生する可能性があります。  たとえば、削除操作では、削除対象としてマークされるゴースト レコードが生成されますが、キャッシュへのデータ ページの読み取りを伴うゴースト クリーンアップ プロセスが実行されるまで、物理的には削除されません。
+CPU 使用率が低い場合、使用パターンによってはアクティブなキャッシュの使用率が高いままになり、メモリの再利用が妨げられる可能性があることに注意してください。  また、以前のユーザー アクティビティに定期的なバックグラウンド プロセスが応答するために、ユーザー アクティビティが停止した後、メモリが再利用される前に、遅延時間が追加で発生する可能性があります。  たとえば、削除対象としてマークされるゴースト レコードは、削除操作と QDS クリーンアップ タスクによって生成されますが、キャッシュへのデータ ページの読み取りを伴うゴースト クリーンアップ プロセスが実行されるまで、物理的には削除されません。
 
 #### <a name="cache-hydration"></a>キャッシュのハイドレーション
 
 データがディスクからフェッチされると、SQL キャッシュは、プロビジョニング済みデータベースと同じ方法および速度で拡大します。 データベースがビジー状態の場合、キャッシュは、最大メモリ制限に達するまで制約なしで拡大できます。
 
-## <a name="autopausing-and-autoresuming"></a>自動一時停止と自動再開
+## <a name="auto-pause-and-auto-resume"></a>自動一時停止と自動再開
 
-### <a name="autopausing"></a>自動一時停止
+### <a name="auto-pause"></a>自動一時停止
 
 自動一時停止遅延の期間を通して次のすべての条件が満たされた場合、自動一時停止がトリガーされます。
 
@@ -114,16 +114,17 @@ CPU 使用率が低い場合、使用パターンによってはアクティブ�
 
 必要な場合に自動一時停止を無効にするオプションが用意されています。
 
-次の機能では自動一時停止はサポートされていませんが、自動スケールはサポートされています。  つまり、次の機能のいずれかを使用する場合、データベースの非アクティブな期間に関係なくデータベースはオンラインのままになります。
+次の機能では自動一時停止はサポートされていませんが、自動スケーリングはサポートされています。  次の機能のいずれかが使用されている場合、自動一時停止を無効にする必要があります。データベースは、データベースの非アクティブ期間に関係なくオンラインのままとなります。
 
 - geo レプリケーション (アクティブ geo レプリケーションと自動フェールオーバー グループ)
 - 長期的なバックアップ保有期間 (LTR)。
-- SQL データ同期で使用される同期データベース。同期データベースとは異なり、ハブ データベースとメンバー データベースでは自動一時停止がサポートされています。
+- SQL データ同期で使用される同期データベース。同期データベースとは異なり、ハブとメンバー データベースでは自動一時停止がサポートされています。
+- DNS エイリアシング
 - エラスティック ジョブで使用されるジョブ データベース (プレビュー)。
 
 データベースをオンラインにする必要がある一部のサービス更新プログラムのデプロイ中は、自動一時停止は一時的に回避されます。  このような場合、サービス更新プログラムが完了すると、自動一時停止は再び許可されます。
 
-### <a name="autoresuming"></a>自動再開
+### <a name="auto-resuming"></a>自動再開
 
 次の条件のいずれかに該当した場合は常に、自動再開がトリガーされます。
 
@@ -137,7 +138,8 @@ CPU 使用率が低い場合、使用パターンによってはアクティブ�
 |透過的なデータ暗号化|透過的データ暗号化の状態またはステータスの表示|
 |脆弱性評価|アドホック スキャンと定期的なスキャン (有効な場合)|
 |クエリ (パフォーマンス) データ ストア|クエリ ストアの設定の変更または表示|
-|自動調整|自動インデックス作成などの自動調整の推奨事項の適用と検証|
+|パフォーマンスに関する推奨事項|パフォーマンスに関する推奨事項の表示または適用|
+|自動チューニング|自動インデックス作成などの自動チューニングの推奨事項の適用と検証|
 |データベースのコピー|コピーとしてのデータベースの作成。<br>BACPAC ファイルへのエクスポート。|
 |SQL データ同期|構成可能なスケジュールまたは手動で実行される、ハブとメンバー データベースの間の同期|
 |特定のデータベース メタデータの変更|新しいデータベース タグの追加。<br>最大仮想コア数、最小仮想コア数、または自動一時停止遅延の変更。|
@@ -153,7 +155,7 @@ CPU 使用率が低い場合、使用パターンによってはアクティブ�
 
 ### <a name="latency"></a>Latency
 
-サーバーレス データベースの自動再開および自動一時停止の待機時間は、通常、自動再開までに 1 分、自動停止までに 1 - 10 分かかります。
+サーバーレス データベースの自動再開および自動一時停止の待機時間は、通常、自動再開までに 1 分、自動停止までに 1 分から 10 分かかります。
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>お客様が管理する透過的なデータ暗号化 (BYOK)
 
@@ -194,7 +196,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
-  -e GeneralPurpose -f Gen5 -min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
+  -e GeneralPurpose -f Gen5 --min-capacity 0.5 -c 2 --compute-model Serverless --auto-pause-delay 720
 ```
 
 
@@ -207,7 +209,7 @@ CREATE DATABASE testdb
 ( EDITION = 'GeneralPurpose', SERVICE_OBJECTIVE = 'GP_S_Gen5_1' ) ;
 ```
 
-詳細については、「[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current)」を参照してください。  
+詳細については、「[CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true)」を参照してください。  
 
 ### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動する
 
@@ -239,7 +241,7 @@ ALTER DATABASE testdb
 MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 ```
 
-詳細については、「[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current)」を参照してください。
+詳細については、「[ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current&preserve-view=true)」を参照してください。
 
 ### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>サーバーレス コンピューティング レベルからプロビジョニングされたコンピューティング レベルにデータベースを移動する
 

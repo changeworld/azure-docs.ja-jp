@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: a25658677e436edf4d001599bb4981f527016596
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84697444"
 ---
 # <a name="azure-functions-http-output-bindings"></a>Azure Functions での HTTP 出力バインド

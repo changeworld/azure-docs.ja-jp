@@ -8,14 +8,15 @@ ms.date: 03/20/2020
 author: timsander1
 ms.author: tisande
 ms.custom: seodec18
-ms.openlocfilehash: 18a9f97d2cee9dd17345a1c8c0ae0efe442d79a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a02aaadf8c774557eb182acf041b6f19337a0de8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799396"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096515"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Studio 3T を使用して Azure Cosmos アカウントに接続する
+[!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
 
 Studio 3T を使用して Azure Cosmos DB の MongoDB 用 API に接続するには、次のことを行う必要があります。
 
@@ -32,7 +33,7 @@ Studio 3T 接続マネージャーに Azure Cosmos アカウントを追加す�
 
 2. **[Connect (接続)]** をクリックして接続マネージャーを開き、 **[New Connection (新しい接続)]** をクリックします。
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="Studio 3T 接続マネージャーのスクリーンショット":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="Studio 3T 接続マネージャーのスクリーンショット。[New Connection]\(新しい接続\) ボタンが強調表示されています。":::
 3. **[新しい接続]** ウィンドウの **[サーバー]** タブで、Azure Cosmos アカウントのホスト (FQDN) とポートを入力します。
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="Studio 3T 接続マネージャーの [Server]\(サーバー\) タブのスクリーンショット":::
@@ -49,7 +50,7 @@ Studio 3T 接続マネージャーに Azure Cosmos アカウントを追加す�
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Studio 3T を使用してデータベース、コレクション、およびドキュメントを作成する
 Studio 3T を使用してデータベース、コレクション、およびドキュメントを作成するには、次の手順を実行します。
 
-1. **接続マネージャー**で目的の接続を強調表示し、 **[Connect (接続)]** をクリックします。
+1. **接続マネージャー** で目的の接続を強調表示し、 **[Connect (接続)]** をクリックします。
 
     :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Studio 3T 接続マネージャーのスクリーンショット":::
 2. ホストを右クリックし、 **[データベースの追加]** を選択します。  データベースの名前を指定し、 **[OK]** をクリックします。

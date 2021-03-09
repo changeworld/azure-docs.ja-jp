@@ -1,17 +1,17 @@
 ---
 title: 外部エラー コード - Azure Stream Analytics
 description: 外部エラー コードに関する Azure Stream Analytics の問題のトラブルシューティングを行います。
-ms.author: mamccrea
-author: mamccrea
+ms.author: sidram
+author: sidramadoss
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: f963f4c3538146b7f9929960092a18294659be5d
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9f55a715b11b126ea340e665e008d7245e578190
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045248"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016390"
 ---
 # <a name="azure-stream-analytics-external-error-codes"></a>Azure Stream Analytics の外部エラー コード
 
@@ -85,11 +85,11 @@ ms.locfileid: "86045248"
 
 ## <a name="sqldwoutputinitializationerror"></a>SQLDWOutputInitializationError
 
-* **原因**:Synapse SQL プール出力を初期化しているときにエラーが発生しました。
+* **原因**:専用 SQL プール出力を初期化しているときにエラーが発生しました。
 
 ## <a name="sqldwoutputwriteerror"></a>SQLDWOutputWriteError
 
-* **原因**:Synapse SQL プールに出力を書き込んでいるときにエラーが発生しました。
+* **原因**:専用 SQL プールに出力を書き込んでいるときにエラーが発生しました。
 
 ## <a name="next-steps"></a>次のステップ
 

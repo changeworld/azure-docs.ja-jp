@@ -10,17 +10,17 @@ author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 8682342d23c37d527528de0b525dbdd49a52676e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: how-to, devx-track-python, responsible-ml
+ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853400"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222753"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
 
-[!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
 
 この攻略ガイドでは、Azure Machine Learning Python SDK の解釈可能性パッケージを使用して次のタスクを実行する方法について学習します。
 
@@ -42,13 +42,12 @@ ms.locfileid: "87853400"
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>個人用コンピューターで特徴量の重要度の値を生成する 
 次の例は、Azure サービスに接続することなく、個人用コンピューターで解釈可能性パッケージを使用する方法を示しています。
 
-1. `azureml-interpret` パッケージと `azureml-contrib-interpret` パッケージをインストールします。
+1. `azureml-interpret` パッケージをインストールします。
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 
-2. ローカルの Jupyter ノートブックでサンプル モデルをトレーニングします。
+2. ローカルの Jupyter Notebook でサンプル モデルをトレーニングします。
 
     ```python
     # load breast cancer dataset, a well-known small dataset that comes with scikit-learn
@@ -239,15 +238,14 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 * リモート実行では、`ExplanationClient` を使用して解釈可能性のコンテキストをアップロードします。
 * ローカル環境では、後でコンテキストをダウンロードします。
 
-1. `azureml-interpret` パッケージと `azureml-contrib-interpret` パッケージをインストールします。
+1. `azureml-interpret` パッケージをインストールします。
     ```bash
     pip install azureml-interpret
-    pip install azureml-contrib-interpret
     ```
 1. ローカルの Jupyter Notebook でトレーニング スクリプトを作成します。 たとえば、「 `train_explain.py` 」のように入力します。
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     from azureml.core.run import Run
     from interpret.ext.blackbox import TabularExplainer
 
@@ -275,12 +273,12 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-1. Azure Machine Learning コンピューティングをコンピューティング先として設定し、トレーニング実行を送信します。 手順については、[モデル トレーニング用のコンピューティング先の設定](how-to-set-up-training-targets.md#amlcompute)に関するページを参照してください。 [ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)も役立つ可能性があります。
+1. Azure Machine Learning コンピューティングをコンピューティング先として設定し、トレーニング実行を送信します。 手順については、「[Azure Machine Learning コンピューティング クラスターの作成と管理](how-to-create-attach-compute-cluster.md)」を参照してください。 [ノートブックの例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model/azure-integration/remote-explanation)も役立つ可能性があります。
 
 1. ローカル環境の Jupyter Notebook で説明をダウンロードします。
 
     ```python
-    from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
+    from azureml.interpret import ExplanationClient
     
     client = ExplanationClient.from_run(run)
     
@@ -298,70 +296,66 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>視覚化
 
-ローカルの Jupyter ノートブックに説明をダウンロードしたら、視覚化ダッシュボードを使用してモデルを理解および解釈できます。
-
-### <a name="understand-entire-model-behavior-global-explanation"></a>モデルの動作全体を理解する (グローバル説明) 
-
-次のプロットで、トレーニング済みモデルの全体像を、その予測および説明と共に示します。
-
-|プロット|説明|
-|----|-----------|
-|データ探索| データセットの概要を予測値と共に表示します。|
-|グローバルな重要度|個々のデータポイントの特徴量の重要度の値を集約して、モデルの総合的な上位 K (構成可能な K) の特徴量の重要度を示します。 基になるモデルの総合的な動作の理解に役立ちます。|
-|説明の探索|特徴がモデルの予測値の変化、または予測値の確率にどのような影響を与えるかを示します。 特徴の操作の影響を表示します。|
-|重要度の概要|すべてのデータ ポイントにまたがる個々の特徴量の重要度の値を使用して、各特徴が予測値に与える影響の分布を表示します。 この図を使用して、特徴値が予測値に与える影響を調べることができます。
-|
-
-[![視覚化ダッシュ ボード グローバル](./media/how-to-machine-learning-interpretability-aml/global-charts.png)](./media/how-to-machine-learning-interpretability-aml/global-charts.png#lightbox)
-
-### <a name="understand-individual-predictions-local-explanation"></a>個々の予測を理解する (ローカル説明) 
-
-総合プロットのいずれかで個々のデータ ポイントのいずれかをクリックすることで、任意のデータ ポイントの個々の特徴量の重要度のプロットを読み込むことができます。
-
-|プロット|説明|
-|----|-----------|
-|ローカルな重要度|個々の予測の上位 K 個 (構成可能な K) の重要な特徴量を示します。 特定のデータ ポイントでの基になるモデルのローカルな動作を示すのに役立ちます。|
-|摂動探索 (What-if 分析)|選択されたデータ ポイントの特徴値への変更を許可し、予測値への結果の変更を観察します。|
-|個別条件付き期待値 (ICE)| 特徴値の最小値から最大値への変更を許可します。 特徴が変化したときにデータ ポイントの予測がどのように変化するかを示すのに役立ちます。|
-
-[![視覚化ダッシュボードのローカルな特徴の重要度](./media/how-to-machine-learning-interpretability-aml/local-charts.png)](./media/how-to-machine-learning-interpretability-aml/local-charts.png#lightbox)
-
-
-[![視覚化ダッシュボードの特徴の補正](./media/how-to-machine-learning-interpretability-aml/perturbation.gif)](./media/how-to-machine-learning-interpretability-aml/perturbation.gif#lightbox)
-
-
-[![視覚化ダッシュボードの ICE プロット](./media/how-to-machine-learning-interpretability-aml/ice-plot.png)](./media/how-to-machine-learning-interpretability-aml/ice-plot.png#lightbox)
-
-> [!NOTE]
-> Jupyter カーネルが起動する前に、視覚化ダッシュボードのウィジェット拡張機能を必ず有効にしてください。
-
-* Jupyter Notebook
-
-    ```shell
-    jupyter nbextension install --py --sys-prefix azureml.contrib.interpret.visualize
-    jupyter nbextension enable --py --sys-prefix azureml.contrib.interpret.visualize
-    ```
-
-* JupyterLab
-
-    ```shell
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install microsoft-mli-widget
-    ```
-
-視覚化ダッシュボードを読み込むには、次のコードを使用します。
+ローカルの Jupyter Notebook に説明をダウンロードしたら、視覚化ダッシュボードを使用してモデルを理解および解釈できます。 Jupyter Notebook に視覚化ダッシュボード ウィジェットを読み込むには、次のコードを使用します。
 
 ```python
 from interpret_community.widget import ExplanationDashboard
 
-ExplanationDashboard(global_explanation, model, dataset=x_test)
+ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
+
+視覚化では、エンジニアリングされたものと未加工の特徴の両方に関する説明をサポートします。 未加工の説明は元のデータセットの特徴に基づいており、エンジニアリングされた説明は特徴エンジニアリングが適用されたデータセットの特徴に基づいています。
+
+元のデータセットに関してモデルを解釈しようとする場合、各特徴量の重要度は元のデータセットの列に対応するため、未加工の説明を使用することをお勧めします。 エンジニアリングされた説明が役立つ可能性がある 1 つのシナリオは、カテゴリ特徴から個々のカテゴリの影響を調べる場合です。 ワンホット エンコーディングがカテゴリ特徴に適用される場合、結果として得られるエンジニアリングされた説明には、カテゴリごとに異なる重要度の値が、ワンホット エンジニアリングされた特徴ごとに 1 つずつ含まれます。 これは、データセットのどの部分がモデルに最も有益な情報を提供するかを絞り込む場合に役立ちます。
+
+> [!NOTE]
+> エンジニアリング説明と未加工の説明は、順番に計算されます。 まず、モデルと特徴量化パイプラインに基づいて、エンジニアリングされた説明が作成されます。 次に、同じ未加工の特徴から得られた、エンジニアリングされた特徴量の重要度を集計することにより、そのエンジニアリングされた説明に基づいて未加工の説明が作成されます。
+
+### <a name="create-edit-and-view-dataset-cohorts"></a>データセットのコーホートの作成、編集、表示
+
+上部のリボンには、モデルとデータに関する総合的な統計が表示されます。 データをデータセットのコーホート (サブグループ) に細分化して、これらの定義されたサブグループ全体でモデルのパフォーマンスと説明を調査または比較できます。 これらのサブグループ間でデータセットの統計と説明を比較することにより、あるグループと別のグループで発生する可能性のあるエラーの理由を把握できます。
+
+[![データセットのコーホートの作成、編集、表示](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif#lightbox)
+
+### <a name="understand-entire-model-behavior-global-explanation"></a>モデルの動作全体を理解する (グローバル説明) 
+
+説明ダッシュボードの最初の 3 つのタブでは、トレーニングされたモデルの全体的な分析と共にその予測および説明が提供されます。
+
+#### <a name="model-performance"></a>モデル パフォーマンス
+得られた予測値とご使用のモデルのパフォーマンス メトリックの値の分布を調べて、モデルのパフォーマンスを評価します。 データセットのさまざまなコーホートまたはサブグループにおけるパフォーマンスの比較分析を確認して、モデルを詳しく調べることができます。 さまざまなディメンションを横断するには、y 値と x 値に沿ったフィルターを選択します。 正確性、精度、リコール、擬陽性率 (FPR)、偽陰性率 (FNR) などのメトリックを表示できます。
+
+[![説明の視覚化での [モデル パフォーマンス] タブ](./media/how-to-machine-learning-interpretability-aml/model-performance.gif)](./media/how-to-machine-learning-interpretability-aml/model-performance.gif#lightbox)
+
+#### <a name="dataset-explorer"></a>データセット エクスプローラー
+X、Y、色の各軸に沿ってさまざまなフィルターを選択し、さまざまな次元に沿ってデータをスライスすることにより、データセットの統計を調べます。 上記のデータセットのコーホートを作成し、予測結果、データセットの特徴、エラー グループなどのフィルターを使用してデータセットの統計を分析します。 グラフの種類を変更するには、グラフの右上隅にある歯車のアイコンを使用します。
+
+[![説明の視覚化での [データセット エクスプローラー] タブ](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif#lightbox)
+
+#### <a name="aggregate-feature-importance"></a>特徴量の重要度の集計
+モデル全体の予測に影響を与える上位 k 個の重要な特徴を調べます (グローバル説明とも呼ばれます)。 特徴量の重要度の値を降順で表示するには、スライダーを使用します。 最大 3 つのコーホートを選択すると、それらの特徴量の重要度の値が並べて表示されます。 グラフ内の特徴バーのいずれかをクリックすると、選択した特徴量の値が次の依存関係プロットのモデル予測にどのように影響するかを確認できます。
+
+[![説明の視覚化での [特徴量の重要度の集計] タブ](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif)](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif#lightbox)
+
+### <a name="understand-individual-predictions-local-explanation"></a>個々の予測を理解する (ローカル説明) 
+
+説明タブの 4 番目のタブでは、個々のデータポイントとそれらの個々の特徴量の重要度を詳しく調べることができます。 メインの散布図で個々のデータ ポイントのいずれかをクリックするか、右側のパネル ウィザードで特定のデータ ポイントを選択することにより、任意のデータ ポイントの個々の特徴量の重要度プロットを読み込むことができます。
+
+|プロット|説明|
+|----|-----------|
+|個々の特徴量の重要度|個々の予測の上位 k 個の重要な特徴量を示します。 特定のデータ ポイントでの基になるモデルのローカルな動作を示すのに役立ちます。|
+|What-if 分析|選択した実際のデータ ポイントの特徴量の値を変更し、新しい特徴量の値を使用して仮想データ ポイントを生成することにより、変更の結果として生じる予測値の変化を観察できます。|
+|個別条件付き期待値 (ICE)|特徴値の最小値から最大値への変更を許可します。 特徴が変化したときにデータ ポイントの予測がどのように変化するかを示すのに役立ちます。|
+
+[![説明ダッシュボードの [個々の特徴量の重要度と What-If] タブ](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif)](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif#lightbox)
+
+> [!NOTE]
+> これらは多くの近似値に基づく説明であり、予測の "原因" ではありません。 因果推論の厳密な数学的堅牢性がなければ、ユーザーが What-If ツールの特徴量の摂動に基づいて実際の決定を行うことはお勧めしません。 このツールは、主としてモデルの理解とデバッグに使用します。
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での視覚化
 
-[リモートの解釈可能性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)の手順 (生成された説明の Azure Machine Learning 実行履歴へのアップロード) を完了すると、[Azure Machine Learning Studio](https://ml.azure.com) に視覚化ダッシュボードが表示されます。 このダッシュボードは、前述した視覚化ダッシュボードの簡易バージョンです (リアル タイム計算を実行できるアクティブなコンピューティングが Studio に存在しないため、説明の探索と ICE プロットは無効になっています)。
+[リモートの解釈可能性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)の手順 (生成された説明の Azure Machine Learning 実行履歴へのアップロード) を完了すると、[Azure Machine Learning Studio](https://ml.azure.com) に視覚化ダッシュボードが表示されます。 このダッシュボードは、上で説明した視覚化ダッシュボードのより単純なバージョンです。 Azure Machine Learning スタジオには、リアルタイムの計算を実行できるアクティブなコンピューティングがないため、What-If データ ポイントの生成と ICE プロットは無効になります。
 
-データセット、グローバル説明、およびローカル説明を使用できる場合は、すべてのタブにデータが入力されます (摂動探索と ICE は除きます)。 グローバル説明のみを使用できる場合は、[重要度の概要] タブとすべてのローカル説明タブは無効になります。
+データ セット、グローバルおよびローカルの説明が使用可能な場合、すべてのタブにデータが入力されます。 グローバル説明のみを使用できる場合、[個々の特徴量の重要度] タブは無効になります。
 
 Azure Machine Learning Studio の視覚化ダッシュボードにアクセスするには、次のパスのいずれかに従います。
 
@@ -370,15 +364,15 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
   1. 特定の実験を選択して、その実験内のすべての実行を表示します。
   1. 実行を選択してから **[説明]** タブを選択して、説明の視覚化ダッシュボードを表示します。
 
-   [![視覚化ダッシュボードのローカルな特徴の重要度](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png)](./media/how-to-machine-learning-interpretability-aml/amlstudio-experiments.png#lightbox)
+   [![実験の AzureML スタジオ内の視覚化ダッシュボードと [特徴量の重要度の集計]](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png)](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png#lightbox)
 
 * **[モデル]** ウィンドウ
-  1. 「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
+  1. 「[Azure Machine Learning を使用してモデルをデプロイする](./how-to-deploy-and-where.md)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
   1. モデルを選択してから **[説明]** タブを選択して、説明の視覚化ダッシュボードを表示します。
 
 ## <a name="interpretability-at-inference-time"></a>推論時の解釈可能性
 
-元のモデルと共に Explainer をデプロイし、推論時にそれを使用して、新しいデータポイントに対する個々の特徴量の重要度の値を指定できます。 また、推論時の解釈可能性のパフォーマンスを向上させるために、軽量のスコアリング Explainer も用意されています。 軽量のスコアリング Explainer をデプロイするプロセスはモデルのデプロイと同様で、次の手順が含まれます。
+元のモデルと共に Explainer をデプロイし、推論時にそれを使用して、新しいデータ ポイントに対する個々の特徴量の重要度の値 (ローカル説明) を指定できます。 また、推論時の解釈可能性のパフォーマンスを向上させるために、軽量のスコアリング Explainer も用意されています。これは、現在、Azure Machine Learning SDK でのみサポートされています。 軽量のスコアリング Explainer をデプロイするプロセスはモデルのデプロイと同様で、次の手順が含まれます。
 
 1. 説明オブジェクトを作成します。 たとえば、`TabularExplainer` を使用できます。
 
@@ -438,7 +432,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 
 1. 次の手順に従って、コンピューティング先にイメージをデプロイします。
 
-   1. 必要に応じて、「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)」の手順に従って元の予測モデルを登録します。
+   1. 必要に応じて、「[Azure Machine Learning を使用してモデルをデプロイする](./how-to-deploy-and-where.md)」の手順に従って元の予測モデルを登録します。
 
    1. スコアリング ファイルを作成します。
 
@@ -497,7 +491,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 
          # WARNING: to install this, g++ needs to be available on the Docker image and is not by default (look at the next cell)
 
-         azureml_pip_packages = ['azureml-defaults', 'azureml-contrib-interpret', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
+         azureml_pip_packages = ['azureml-defaults', 'azureml-core', 'azureml-telemetry', 'azureml-interpret']
  
 
          # specify CondaDependencies obj
@@ -567,9 +561,19 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 
    デプロイされた Web サービスを削除するには、`service.delete()` を使用します。
 
+## <a name="troubleshooting"></a>トラブルシューティング
+
+* **スパース データがサポートされない**: モデルの説明ダッシュボードでは、特徴の数が多いと機能が中断するか、速度が大幅に低下するため、現在、スパース データ形式はサポートされていません。 さらに、データ セットが大きい場合や特徴の数が多い場合、一般的なメモリの問題が発生します。 
+
+* **モデルの説明で予測モデルがサポートされない**: 解釈可能性、最適なモデルの説明は、最適なモデルとして TCNForecaster、AutoArima、Prophet、ExponentialSmoothing、Average、Naive、Seasonal Average、Seasonal Naive のアルゴリズムを推奨する AutoML 予測実験では利用できません。 AutoML 予測には、説明をサポートする回帰モデルが用意されています。 ただし、説明ダッシュボードでは、データ パイプラインが複雑なため、[個々の特徴量の重要度] タブは予測に対してサポートされていません。
+
+* **データ インデックスのローカル説明**: 説明ダッシュボードでは、データをランダムにダウンサンプリングするため、そのデータ セットのデータ ポイントが 5,000 個を超える場合、ローカルの重要度値を元の検証データ セットの行識別子に関連付けることをサポートしていません。 ただし、ダッシュボードには、[個別の特徴量の重要度] タブでダッシュボードに渡された各データ ポイントについて未加工のデータ セットの特徴量値が表示されます。ユーザーは、未加工のデータ セットの特徴量値を照合することで、ローカルの重要度を元のデータ セットにマッピングできます。 検証データ セットのサイズが 5,000 サンプル未満の場合、AzureML スタジオの `index` 機能は検証データ セットのインデックスに対応します。
+
+* **スタジオで What-if または ICE のプロットがサポートされない**: アップロードされた説明には、摂動された特徴量の予測と確率を再計算するためのアクティブな計算が必要であるため、Azure Machine Learning スタジオの [説明] タブでは、What-If および Individual Conditional Expectation (ICE) プロットはサポートされていません。 現在、これは、SDK を使用してウィジェットとして実行すると、Jupyter ノートブックでサポートされます。
+
+
 ## <a name="next-steps"></a>次のステップ
 
 [モデルの解釈可能性の詳細について学習する](how-to-machine-learning-interpretability.md)
 
 [Azure Machine Learning の解釈可能性サンプル ノートブックを確認する](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
-

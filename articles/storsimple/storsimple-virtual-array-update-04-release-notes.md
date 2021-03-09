@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 06a3469507631d032535bce62b01d964e99dc603
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 392e930dcb69392b6f9425abba0efa516d5c82b8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60334796"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967059"
 ---
 # <a name="storsimple-virtual-array-update-04-release-notes"></a>StorSimple Virtual Array Update 0.4 のリリース ノート
 
@@ -92,5 +92,4 @@ StorSimple Virtual Array に [Update 0.4 をインストール](storsimple-virtu
 
 * [StorSimple Virtual Array Update 0.3 のリリース ノート](storsimple-ova-update-03-release-notes.md)
 * [StorSimple Virtual Array Update 0.1 および 0.2 のリリース ノート](storsimple-ova-update-01-release-notes.md)
-* [StorSimple Virtual Array 一般公開リリース ノート](storsimple-ova-pp-release-notes.md)
-
+* [StorSimple Virtual Array 一般公開リリース ノート](./storsimple-virtual-array-update-06-release-notes.md)

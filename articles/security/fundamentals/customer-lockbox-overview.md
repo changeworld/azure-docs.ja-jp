@@ -7,13 +7,13 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.author: terrylan
 manager: rkarlin
-ms.date: 11/04/2019
-ms.openlocfilehash: 5330c751aaa3fcbd5c7fc268e4a4de08d336d474
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 02/19/2021
+ms.openlocfilehash: 04fc020b2b08d4d3dc68b62c417eb8e2d2e85b97
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82735438"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101720615"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス
 
@@ -22,9 +22,38 @@ ms.locfileid: "82735438"
 
 Microsoft Azure 用カスタマー ロックボックスには、お客様が顧客データへのアクセス要求を承認または拒否するインターフェイスが用意されています。 これは、Microsoft のエンジニアがサポート リクエストの際に顧客データにアクセスする必要がある場合に使用されます。
 
-この記事では、カスタマー ロックボックス要求の開始、追跡、後のレビューと監査のための保存の方法について説明します。
+この記事では、カスタマー ロックボックスを有効にする方法、およびロックボックス要求を開始する、追跡する、後のレビューと監査のために保存する方法について説明します。
 
-カスタマー ロックボックスは一般提供が開始され、現在は仮想マシンへのリモート デスクトップ アクセスに使用できます。
+<a id='supported-services-and-scenarios-in-preview'>## サポートされるサービスとシナリオ (一般提供)
+
+カスタマー ロックボックスで一般提供されるようになったサービスは次のとおりです。
+
+- Azure API Management
+- Azure App Service
+- Azure Cognitive Services
+- Azure Container Registry
+- Azure Database for MySQL
+- Azure Databricks
+- Azure Data Box
+- Azure Data Explorer
+- Azure Data Factory
+- Azure Database for PostgreSQL
+- Azure Functions
+- Azure HDInsight
+- Azure Kubernetes Service
+- Azure Monitor
+- Azure Storage
+- Azure SQL Database
+- Azure サブスクリプションの譲渡
+- Azure Synapse Analytics
+- Azure の仮想マシン (リモート デスクトップ アクセス、メモリ ダンプへのアクセス、マネージド ディスクを含む)
+
+## <a name="enable-customer-lockbox"></a>カスタマー ロックボックスを有効にする
+
+カスタマー ロックボックス ブレードの [[Adminisitration]\(管理\) モジュール](https://aka.ms/customerlockbox/administration)からカスタマー ロックボックスを有効にできるようになりました。  
+
+> [!NOTE]
+> カスタマー ロックボックスを有効にするには、ユーザー アカウントに[全体管理者の役割が割り当てられている](../../active-directory/roles/manage-roles-portal.md)必要があります。
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -36,7 +65,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
 3. Azure サポート エンジニアがサービス要求を確認し、問題を解決するための次の手順を判断します。
 
-4. サポート エンジニアが標準のツールとテレメトリを使用して問題のトラブルシューティングを行うことができない場合、次の手順は、Just-In-Time (JIT) アクセス サービスを使用して管理者特権のアクセス許可を要求することです。 この要求は、元のサポート エンジニアが行うことができます。 また、問題が Azure DevOps チームにエスカレートされるため、別のエンジニアが行うこともあります。
+4. サポート エンジニアが標準のツールとテレメトリを使用して問題のトラブルシューティングを行うことができない場合、次の手順は、Just-In-Time (JIT) アクセス サービスを使用して管理者特権のアクセス許可を要求することです。 問題は Azure DevOps チームにエスカレートされているため、これは元のサポート エンジニアまたは別のエンジニアからの要求である可能性があります。
 
 5. Azure エンジニアがアクセス要求を送信した後、Just-In-Time サービスは次のような要素を考慮して要求を評価します。
     - リソースのスコープ
@@ -55,7 +84,7 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
     ![Azure カスタマー ロックボックス - メール通知](./media/customer-lockbox-overview/customer-lockbox-email-notification.png)
 
-8. メール通知には、Azure portal の**カスタマー ロックボックス** ブレードへのリンクが記載されます。 指定された承認者は、このリンクを使用し、Azure portal にサインインして、組織がカスタマー ロックボックスについて保留しているすべての要求を表示します。
+8. メール通知には、**カスタマー ロックボックス** ブレードの [Administration]\(管理\) モジュールへのリンクが記載されます。 指定された承認者は、このリンクを使用し、Azure portal にサインインして、組織がカスタマー ロックボックスについて保留しているすべての要求を表示します。
 
     ![Azure カスタマー ロックボックス - ランディング ページ](./media/customer-lockbox-overview/customer-lockbox-landing-page.png)
 
@@ -91,51 +120,19 @@ Microsoft Azure 用カスタマー ロックボックスには、お客様が顧
 
 ![Azure カスタマー ロックボックス - アクティビティ ログ](./media/customer-lockbox-overview/customer-lockbox-activitylogs.png)
 
-## <a name="supported-services-and-scenarios-in-general-availability"></a>一般提供でサポートされるサービスとシナリオ
+## <a name="customer-lockbox-integration-with-azure-security-benchmark"></a>カスタマー ロックボックスと Azure セキュリティ ベンチマークとの統合
 
-次のサービスとシナリオは、現在、カスタマー ロックボックスで一般提供されています。
-
-### <a name="remote-desktop-access-to-virtual-machines"></a>仮想マシンへのリモート デスクトップ アクセス
-
-カスタマー ロックボックスは、現在、仮想マシンへのリモート デスクトップ アクセス要求に対して使用できます。 次のワークロードがサポートされています。
-- サービスとしてのプラットフォーム (PaaS) - Azure Cloud Services (Web ロールと worker ロール)
-- サービスとしてのインフラストラクチャ (IaaS) - Windows と Linux (Azure Resource Manager のみ)
-- 仮想マシン スケール セット - Windows と Linux
-
-> [!NOTE]
-> IaaS クラシック インスタンスは、カスタマー ロックボックスではサポートされていません。 IaaS Classic インスタンス上でワークロードを実行している場合は、それらを Classic から Resource Manager デプロイ モデルに移行することをお勧めします。 手順については、「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](../../virtual-machines/windows/migration-classic-resource-manager-overview.md)」を参照してください。
-
-#### <a name="detailed-audit-logs"></a>詳細な監査ログ
-
-リモート デスクトップ アクセスが関係するシナリオでは、Windows イベント ログを使用して Microsoft のエンジニアが行ったアクションを確認できます。 Azure Security Center を使用してイベント ログを収集し、データをワークスペースにコピーして分析することを検討してください。 詳細については、「[Azure Security Center でのデータ収集](../../security-center/security-center-enable-data-collection.md)」を参照してください。
-
-## <a name="supported-services-and-scenarios-in-preview"></a>プレビューでサポートされるサービスとシナリオ
-
-カスタマー ロックボックスのプレビューで現在提供されているサービスは次のとおりです。
-
-- Azure Storage
-
-- Azure SQL DB
-
-- Azure Data Explorer
-
-- 仮想マシン (現在、メモリ ダンプとマネージド ディスクへのアクセスも含まれます)
-
-- Azure サブスクリプションの譲渡
-
-組織でこれらのプレビュー オファリングのカスタマー ロックボックスを有効にするには、[Azure パブリック プレビュー用カスタマー ロックボックス](https://aka.ms/customerlockbox/insiderprogram)にサインアップします。
-
+カスタマー ロックボックス適用性を対象とする新しいベースライン コントロール ([3.13](../benchmarks/security-control-identity-access-control.md#313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios)) が Azure セキュリティ ベンチマークに導入されました。 お客様は、ベンチマークを利用して、サービスのカスタマー ロックボックス適用性を確認できるようになりました。
 
 ## <a name="exclusions"></a>除外
 
 カスタマー ロックボックス要求は、次のエンジニアリング サポート シナリオではトリガーされません。
 
 - Microsoft のエンジニアは、標準的な操作手順から外れるアクティビティを実行する必要があります。 たとえば、予期しないシナリオや予測不可能なシナリオでサービスを回復または復元する場合などです。
-
-- Microsoft のエンジニアは、トラブルシューティングの一環として Azure プラットフォームにアクセスし、意図せずに顧客データへのアクセス権を持ちます。 たとえば、Azure Network チームはトラブルシューティングを行い、その結果、ネットワーク デバイスでパケット キャプチャが行われます。 ただし、お客様が送信中のデータを暗号化した場合、エンジニアはデータを読み取ることができません。
+- Microsoft のエンジニアは、トラブルシューティングの一環として Azure プラットフォームにアクセスし、意図せずに顧客データへのアクセス権を持ちます。 たとえば、Azure Network チームはトラブルシューティングを行い、その結果、ネットワーク デバイスでパケット キャプチャが行われます。 このシナリオでは、お客様が送信中のデータを暗号化した場合、エンジニアはデータを読み取ることができません。
 
 ## <a name="next-steps"></a>次のステップ
 
-カスタマー ロックボックスは、**Developer** レベル以上の [Azure サポート プラン](https://azure.microsoft.com/support/plans/)をお持ちのすべてのお客様が自動的に利用できます。
+カスタマー ロックボックスは、**Developer** レベル以上の [Azure サポート プラン](https://azure.microsoft.com/support/plans/)をお持ちのすべてのお客様が利用できます。 カスタマー ロックボックス ブレードの [[Adminisitration]\(管理\) モジュール](https://aka.ms/customerlockbox/administration)からカスタマー ロックボックスを有効にできます。
 
-対象となるサポート プランをお持ちの場合は、カスタマー ロックボックスを有効にするための操作は不要です。 カスタマー ロックボックス要求は、組織内の誰かから提出されたサポート チケットを進めるためにこの操作が必要な場合に Microsoft のエンジニアによって開始されます。
+サポート ケースを進めるためにこのアクションが必要な場合は、Microsoft のエンジニアによってカスタマー ロックボックス要求が開始されます。

@@ -5,10 +5,10 @@ ms.date: 09/05/2019
 ms.topic: article
 ms.reviewer: mmercuri
 ms.openlocfilehash: e715bd2297c1e051ae92b15d73c945c9e80c3d94
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87003323"
 ---
 # <a name="azure-blockchain-workbench-database-views"></a>Azure Blockchain Workbench のデータベース ビュー

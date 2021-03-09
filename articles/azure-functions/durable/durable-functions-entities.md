@@ -5,16 +5,16 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 496b315e23beeb97d08befca13e05c4797268f36
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: 8b1c4077c036cbb75738115437d29ffd14b160ff
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341561"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101723675"
 ---
 # <a name="entity-functions"></a>エンティティ関数
 
-エンティティ関数では、"*持続エンティティ*" と呼ばれる小さい状態の読み取りと更新のための操作が定義されています。 オーケストレーター関数と同様、エンティティ関数は特殊なトリガー型である*エンティティ トリガー*を含む関数です。 オーケストレーター関数とは異なり、エンティティ関数では、制御フローを介して状態を暗黙的に表すのではなく、エンティティの状態を明示的に管理します。
+エンティティ関数では、"*持続エンティティ*" と呼ばれる小さい状態の読み取りと更新のための操作が定義されています。 オーケストレーター関数と同様、エンティティ関数は特殊なトリガー型である *エンティティ トリガー* を含む関数です。 オーケストレーター関数とは異なり、エンティティ関数では、制御フローを介して状態を暗黙的に表すのではなく、エンティティの状態を明示的に管理します。
 エンティティは、それぞれが適度なサイズの状態を備えた多数のエンティティ全体に作業を分散することにより、アプリケーションをスケールアウトする手段を提供します。
 
 > [!NOTE]
@@ -24,7 +24,10 @@ ms.locfileid: "85341561"
 
 エンティティは、メッセージを介して通信する小さなサービスと同じように動作します。 各エンティティは、一意の ID と内部状態 (存在する場合) を備えています。 サービスやオブジェクトと同様に、エンティティは、要求されたときに操作を実行します。 操作を実行すると、エンティティの内部状態が更新されることがあります。 また、外部サービスを呼び出して応答を待つこともあります。 エンティティは、リライアブル キューを介して暗黙的に送信されるメッセージを使用して、他のエンティティ、オーケストレーション、およびクライアントと通信します。 
 
-競合を防ぐために、1 つのエンティティに対するすべての操作は、直列に (つまり順番に) 実行されることが保証されます。 
+競合を防ぐために、1 つのエンティティに対するすべての操作は、直列に (つまり順番に) 実行されることが保証されます。
+
+> [!NOTE]
+> 呼び出されたエンティティにより、ペイロードが完了に処理された後、後で入力が到着したらアクティブになるように新しい実行がスケジュールされます。 その結果、エンティティの実行ログで、各エンティティの呼び出しの後に追加の実行が示されることがあります。これは想定されることです。
 
 ### <a name="entity-id"></a>エンティティ ID
 エンティティには、一意の識別子である "*エンティティ ID*" を介してアクセスします。 エンティティ ID は単に、エンティティのインスタンスを一意に示す文字列のペアです。 構成は次のとおりです。
@@ -38,7 +41,7 @@ ms.locfileid: "85341561"
 
 エンティティで操作を呼び出すには、次を指定します。
 
-* ターゲット エンティティの**エンティティ ID**。
+* ターゲット エンティティの **エンティティ ID**。
 * **操作名**: 実行する操作を指定する文字列です。 たとえば、`Counter` エンティティでは、`add`、`get`、または `reset` 操作をサポートする場合があります。
 * **操作の入力**: 操作のオプションの入力パラメーターです。 たとえば、add 操作では入力として整数値を受け取ることができます。
 * **スケジュール時刻**: 操作の配信時刻を指定するためのオプション パラメーターです。 たとえば、将来、数日間にわたって操作を実行するよう確実にスケジュールすることができます。
@@ -149,15 +152,56 @@ module.exports = df.entity(function(context) {
     }
 });
 ```
+# <a name="python"></a>[Python](#tab/python)
 
+### <a name="example-python-entity"></a>例: Python エンティティ
+
+次のコードは、Python で記述されている持続的関数として実装された `Counter` エンティティです。
+
+**Counter (function.json)**
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "context",
+      "type": "entityTrigger",
+      "direction": "in"
+    }
+  ]
+}
+```
+
+**Counter/__init__.py**
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def entity_function(context: df.DurableEntityContext):
+    current_value = context.get_state(lambda: 0)
+    operation = context.operation_name
+    if operation == "add":
+        amount = context.get_input()
+        current_value += amount
+    elif operation == "reset":
+        current_value = 0
+    elif operation == "get":
+        context.set_result(current_value)
+    context.set_state(current_value)
+
+
+
+main = df.Entity.create(entity_function)
+```
 ---
 
 ## <a name="access-entities"></a>エンティティへのアクセス
 
 エンティティには、一方向または双方向の通信を使用してアクセスできます。 次の用語は、2 つの通信の形式を区別します。 
 
-* エンティティの**呼び出し**では、双方向 (ラウンドトリップ) 通信が使われます。 操作メッセージをエンティティに送信し、応答メッセージを待機してから続行します。 応答メッセージでは、結果値またはエラー結果 (JavaScript エラーや .NET 例外など) を提供できます。 この結果またはエラーは、呼び出し元によって確認されます。
-* エンティティの**シグナル通知**では、一方向 (ファイア アンド フォーゲット) 通信が使われます。 操作メッセージを送信しますが、応答を待ちません。 最終的にメッセージが配信されることは保証されますが、送信側は、それがいつかを認識せず、結果値やエラーを確認することもできません。
+* エンティティの **呼び出し** では、双方向 (ラウンドトリップ) 通信が使われます。 操作メッセージをエンティティに送信し、応答メッセージを待機してから続行します。 応答メッセージでは、結果値またはエラー結果 (JavaScript エラーや .NET 例外など) を提供できます。 この結果またはエラーは、呼び出し元によって確認されます。
+* エンティティの **シグナル通知** では、一方向 (ファイア アンド フォーゲット) 通信が使われます。 操作メッセージを送信しますが、応答を待ちません。 最終的にメッセージが配信されることは保証されますが、送信側は、それがいつかを認識せず、結果値やエラーを確認することもできません。
 
 エンティティには、クライアント関数内、オーケストレーター関数内、またはエンティティ関数内からアクセスできます。 すべての形式の通信がすべてのコンテキストでサポートされるわけではありません。
 
@@ -169,7 +213,7 @@ module.exports = df.entity(function(context) {
 
 ### <a name="example-client-signals-an-entity"></a>例:クライアントがエンティティにシグナル通知を出す
 
-通常の Azure Functions (クライアント関数とも呼ばれます) からエンティティにアクセスするには、[エンティティ クライアントのバインド](durable-functions-bindings.md#entity-client)を使用します。 次の例では、このバインドを使用してエンティティにシグナル通知する、キューによってトリガーされた関数を示します。
+通常の Azure 関数 (クライアント関数とも呼ばれます) からエンティティにアクセスするには、[エンティティ クライアントのバインド](durable-functions-bindings.md#entity-client)を使用します。 次の例では、このバインドを使用してエンティティにシグナル通知する、キューによってトリガーされた関数を示します。
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -199,6 +243,19 @@ module.exports = async function (context) {
     const entityId = new df.EntityId("Counter", "myCounter");
     await client.signalEntity(entityId, "add", 1);
 };
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+from azure.durable_functions import DurableOrchestrationClient
+import azure.functions as func
+
+
+async def main(req: func.HttpRequest, starter: str, message):
+    client = DurableOrchestrationClient(starter)
+    entityId = df.EntityId("Counter", "myCounter")
+    await client.signal_entity(entityId, "add", 1)
 ```
 
 ---
@@ -235,6 +292,11 @@ module.exports = async function (context) {
     return stateResponse.entityState;
 };
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> 現在、Python でクライアントからエンティティの状態を読み取ることはできません。 代わりに、オーケストレーターの `callEntity` を使用してください。
 
 ---
 
@@ -279,6 +341,21 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > JavaScript では現在、オーケストレーターからのエンティティのシグナル通知はサポートされていません。 代わりに `callEntity` を使用してください
 
+# <a name="python"></a>[Python](#tab/python)
+
+```Python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def orchestrator_function(context: df.DurableOrchestrationContext):
+    entityId = df.EntityId("Counter", "myCounter")
+    current_value = yield context.call_entity(entityId, "get")
+    if current_value < 10:
+        context.signal_entity(entityId, "add", 1)
+    return state
+```
+
 ---
 
 エンティティを呼び出して応答 (戻り値または例外) を取得できるのは、オーケストレーションだけです。 [クライアント バインド](durable-functions-bindings.md#entity-client)を使用するクライアント関数は、エンティティに対するシグナル通知だけが可能です。
@@ -318,6 +395,11 @@ module.exports = df.orchestrator(function*(context){
         context.df.setState(currentValue + amount);
         break;
 ```
+
+# <a name="python"></a>[Python](#tab/python)
+
+> [!NOTE]
+> Python では、エンティティ間の通知はまだサポートされていません。 エンティティの通知には、代わりにオーケストレーターを使用してください。
 
 ---
 
@@ -421,7 +503,6 @@ public static async Task<bool> TransferFundsAsync(
 * エンティティでの要求 - 応答パターンは、オーケストレーションに制限されます。 エンティティ内からは、元のアクター モデルのように、そして Orleans のグレインとは異なり、一方向のメッセージ (シグナル通知とも呼ばれます) のみが許可されます。 
 * 持続エンティティではデッドロックは発生しません。 Orleans では、デッドロックが発生する可能性があり、メッセージがタイムアウトするまで解決されません。
 * 持続エンティティは、持続オーケストレーションと組み合わせて使用でき、分散ロック メカニズムがサポートされます。 
-
 
 ## <a name="next-steps"></a>次のステップ
 

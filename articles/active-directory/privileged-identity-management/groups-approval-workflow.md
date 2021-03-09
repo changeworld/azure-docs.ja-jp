@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3fbb92c2e3623f5fd9571cd94ae521a41139dd6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0a3b6dad33ce678478a201dc8b7b612f4b8507c0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505579"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91536989"
 ---
 # <a name="approve-activation-requests-for-privileged-access-group-members-and-owners-preview"></a>特権アクセス グループのメンバーと所有者のアクティブ化要求を承認する (プレビュー)
 
@@ -46,7 +46,7 @@ Azure リソース ロールの要求を承認または拒否するには、こ�
 
 1. 承認する要求を見つけて選択し、 **[承認]** を選択します。
 
-    ![申請の承認 - 詳細と [根拠] ボックスを含む承認または拒否のウィンドウ](./media/groups-approval-workflow/groups-confirm-approval.png)
+    ![[要求の承認] ページを示すスクリーンショット。[承認] ボタンと [確認] ボタンが強調表示されています。](./media/groups-approval-workflow/groups-confirm-approval.png)
 
 1. **[理由]** ボックスに、業務上の正当な理由を入力します。
 

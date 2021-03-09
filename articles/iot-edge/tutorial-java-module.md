@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 51b7f6e814a9fad286a934466daeb1ffced225c1
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829987"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968062"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Java IoT Edge モジュールを開発する
 
@@ -34,9 +34,9 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>ソリューション スコープ
+## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、**Visual Studio Code** を使用して **Java** でモジュールを開発し、それを **Linux デバイス**にデプロイする方法について説明します。 IoT Edge では、Windows デバイス用の Java モジュールはサポートされていません。
+このチュートリアルでは、**Visual Studio Code** を使用して **Java** でモジュールを開発し、それを **Linux デバイス** にデプロイする方法について説明します。 IoT Edge では、Windows デバイス用の Java モジュールはサポートされていません。
 
 次の表を使用し、Java モジュールを開発してデプロイする際のオプションをご確認ください。
 
@@ -45,20 +45,18 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 | **Linux AMD64** | ![Linux AMD64 の Java モジュールに VS Code を使用する](./media/tutorial-c-module/green-check.png) |  |
 | **Linux ARM32** | ![Linux ARM32 の Java モジュールに VS Code を使用する](./media/tutorial-c-module/green-check.png) |  |
 
-## <a name="prerequisites"></a>前提条件
-
 このチュートリアルを開始する前に、前のチュートリアルを完了して、Linux コンテナー開発用の開発環境を設定しておく必要があります。[Linux デバイス用の IoT Edge モジュールを開発する](tutorial-develop-for-linux.md)。 これらのチュートリアルのいずれかを完了すると、次の前提条件が満たされます。
 
 * Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
 * [Azure IoT Edge を実行している Linux デバイス](quickstart-linux.md)
-* コンテナー レジストリ ([Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) など)。
+* コンテナー レジストリ ([Azure Container Registry](../container-registry/index.yml) など)。
 * [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して構成された [Visual Studio Code](https://code.visualstudio.com/)。
 * Linux コンテナーを実行するように構成された [Docker CE](https://docs.docker.com/install/)。
 
 Java で IoT Edge モジュールを開発するには、開発マシンに次の追加の前提条件をインストールします。 
 
 * Visual Studio Code 向け [Java 拡張機能パック](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)。
-* [Java SE Development Kit 10](https://aka.ms/azure-jdks) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
+* [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]
@@ -80,9 +78,9 @@ Java で IoT Edge モジュールを開発するには、開発マシンに次�
    | ----- | ----- |
    | フォルダーの選択 | VS Code によってソリューション ファイルが作成される、開発マシン上の場所を選択します。 |
    | Provide a solution name (ソリューション名の指定) | ソリューションのためにわかりやすい名前を入力するか、既定値の **EdgeSolution** をそのまま使用します。 |
-   | Select module template (モジュール テンプレートの選択) | **Java モジュール**を選択します。 |
+   | Select module template (モジュール テンプレートの選択) | **Java モジュール** を選択します。 |
    | Provide a module name (モジュール名の指定) | モジュールに **JavaModule** という名前を付けます。 |
-   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの**ログイン サーバー**の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/javamodule のようになります。 |
+   | Provide Docker image repository for the module (モジュールの Docker イメージ リポジトリの指定) | イメージ リポジトリには、コンテナー レジストリの名前とコンテナー イメージの名前が含まれます。 前の手順で指定した名前がコンテナー イメージに事前設定されます。 **localhost:5000** を、Azure コンテナー レジストリの **ログイン サーバー** の値に置き換えます。 Azure portal で、コンテナー レジストリの概要ページからログイン サーバーを取得できます。 <br><br>最終的なイメージ リポジトリは、\<registry name\>.azurecr.io/javamodule のようになります。 |
    | Provide value for groupId (groupId の値の指定) | グループ ID の値を入力するか、既定値の **com.edgemodule** をそのまま使用します。 |
 
    ![Docker イメージ リポジトリを指定する](./media/tutorial-java-module/repository.png)
@@ -104,7 +102,7 @@ Java モジュールを初めて作成する場合は、maven パッケージの
 IoT Edge 拡張機能は、Azure からコンテナー レジストリの資格情報をプルし、それらを環境ファイルに取り込もうとします。 資格情報が既に含まれているかどうかを確認します。 含まれていない場合は、次のようにして追加します。
 
 1. VS Code エクスプローラーで、.env ファイルを開きます。
-2. ご自身の Azure コンテナー レジストリからコピーした**ユーザー名**と**パスワード**の値を使用して、フィールドを更新します。
+2. ご自身の Azure コンテナー レジストリからコピーした **ユーザー名** と **パスワード** の値を使用して、フィールドを更新します。
 3. このファイルを保存します。
 
 ### <a name="select-your-target-architecture"></a>ターゲット アーキテクチャを選択する
@@ -306,7 +304,7 @@ IoT Edge デバイスに配置マニフェストを適用すると、デバイ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、お使いの IoT Edge デバイスによって生成された生データをフィルター処理する IoT Edge モジュールを作成しました。 独自のモジュールをビルドする準備ができたら、[IoT Edge モジュールの開発](module-development.md)または [Visual Studio Code を使用してモジュールを開発](how-to-vs-code-develop-module.md)する方法の詳細をご確認ください。 シミュレートされた温度モジュールを含むコード例については、[IoT Edge モジュールのサンプル](https://github.com/Azure/iotedge/tree/master/edge-modules)を参照してください。
+このチュートリアルでは、お使いの IoT Edge デバイスによって生成された生データをフィルター処理する IoT Edge モジュールを作成しました。
 
 次のチュートリアルに進んで、Azure のクラウド サービスをデプロイしてエッジでデータの処理と分析を行ううえで Azure IoT Edge がどのように役立つかを学習します。
 

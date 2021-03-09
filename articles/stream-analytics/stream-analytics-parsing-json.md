@@ -2,24 +2,24 @@
 title: Azure Stream Analytics で JSON と AVRO を解析する
 description: この記事では、配列、JSON、CSV 形式のデータなどの複雑なデータ型を操作する方法について説明します。
 ms.service: stream-analytics
-author: mamccrea
-ms.author: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.custom: devx-track-javascript
-ms.openlocfilehash: ff3ae9a787586a4d3f7c27353aca37326be32448
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-js
+ms.openlocfilehash: f6cb131fb3ff3cab4122aac5e1c6960dee4f8421
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432553"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012242"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Azure Stream Analytics で JSON データと Avro データを解析する
 
 Azure Stream Analytics では、CSV、JSON、および Avro データ形式のイベントの処理をサポートしています。 JSON データと Avro データのどちらも、入れ子になったオブジェクト (レコード) や配列などの複合型を含む構造にすることができます。 
 
 >[!NOTE]
->Event Hub Capture によって作成される AVRO ファイルは、*カスタム逆シリアライザー* 機能を使用する必要がある特定の形式を使用します。 詳細については、[.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples)を参照してください。
+>Event Hub Capture によって作成される AVRO ファイルは、*カスタム逆シリアライザー* 機能を使用する必要がある特定の形式を使用します。 詳細については、[.NET カスタム逆シリアライザーを使用して任意の形式の入力を読み取る](./custom-deserializer-examples.md)を参照してください。
 >
 >Stream Analytics AVRO 逆シリアル化では、マップの種類はサポートされません。 EventHub キャプチャでマップが使用されるため、Stream Analytics は EventHub キャプチャ BLOB を読み取ることができません。
 
@@ -89,9 +89,9 @@ FROM input
 
 ### <a name="access-nested-fields-when-property-name-is-a-variable"></a>プロパティ名が変数であるときに入れ子のフィールドにアクセスする
 
-プロパティ名が変数の場合は、[GetRecordPropertyValue](https://docs.microsoft.com/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) 関数を使用します。 これにより、プロパティ名をハードコーディングすることなく、動的なクエリを作成できます。
+プロパティ名が変数の場合は、[GetRecordPropertyValue](/stream-analytics-query/getrecordpropertyvalue-azure-stream-analytics) 関数を使用します。 これにより、プロパティ名をハードコーディングすることなく、動的なクエリを作成できます。
 
-たとえば、サンプル データ ストリームを、各デバイス センサーのしきい値を含む**参照データと結合する**必要があるとします。 そのような参照データのスニペットを次に示します。
+たとえば、サンプル データ ストリームを、各デバイス センサーのしきい値を含む **参照データと結合する** 必要があるとします。 そのような参照データのスニペットを次に示します。
 
 ```json
 {
@@ -121,7 +121,7 @@ WHERE
     GetRecordPropertyValue(input.SensorReadings, thresholds.SensorName) > thresholds.Value
 ```
 
-**GetRecordPropertyValue**により、 *SensorReadings*のプロパティを選択します。この名前は参照データから取得したプロパティ名と一致します。 次に、*SensorReadings* の関連する値が抽出されます。
+**GetRecordPropertyValue** により、 *SensorReadings* のプロパティを選択します。この名前は参照データから取得したプロパティ名と一致します。 次に、*SensorReadings* の関連する値が抽出されます。
 
 結果は次のとおりです。
 
@@ -131,7 +131,7 @@ WHERE
 
 ### <a name="convert-record-fields-into-separate-events"></a>レコード フィールドを個々のイベントに変換する
 
-レコード フィールドを個々のイベントに変換するには、[APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 演算子を [GetRecordProperties](https://docs.microsoft.com/stream-analytics-query/getrecordproperties-azure-stream-analytics) 関数と組み合わせて使用します。
+レコード フィールドを個々のイベントに変換するには、[APPLY](/stream-analytics-query/apply-azure-stream-analytics) 演算子を [GetRecordProperties](/stream-analytics-query/getrecordproperties-azure-stream-analytics) 関数と組み合わせて使用します。
 
 元のサンプルデータでは、次のクエリを使用して、さまざまなイベントにプロパティを抽出できます。
 
@@ -154,7 +154,7 @@ CROSS APPLY GetRecordProperties(event.SensorReadings) AS sensorReading
 |12345|CustomSensor02|99|
 |12345|SensorMetadata|[object Object]|
 
-[WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)を使用すると、これらのイベントを異なる宛先にルーティングできます。
+[WITH](/stream-analytics-query/with-azure-stream-analytics)を使用すると、これらのイベントを異なる宛先にルーティングできます。
 
 ```SQL
 WITH Stage0 AS
@@ -205,9 +205,9 @@ return JSON.parse(string);
 
 ## <a name="array-data-types"></a>配列データ型
 
-配列データ型は、順序が付けられた値のコレクションです。 配列値の一般的な操作の詳細を以下に示します。 これらの例では、関数 [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)、および [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 演算子を使用しています。
+配列データ型は、順序が付けられた値のコレクションです。 配列値の一般的な操作の詳細を以下に示します。 これらの例では、関数 [GetArrayElement](/stream-analytics-query/getarrayelement-azure-stream-analytics)、[GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics)、[GetArrayLength](/stream-analytics-query/getarraylength-azure-stream-analytics)、および [APPLY](/stream-analytics-query/apply-azure-stream-analytics) 演算子を使用しています。
 
-1 つのイベントの例を以下に示します。 `CustomSensor03` と `SensorMetadata` のどちらも **配列**型です。
+1 つのイベントの例を以下に示します。 `CustomSensor03` と `SensorMetadata` のどちらも **配列** 型です。
 
 ```json
 {
@@ -265,7 +265,7 @@ FROM input
 
 ### <a name="convert-array-elements-into-separate-events"></a>配列要素を個々のイベントに変換する
 
-配列のすべての要素を個々のイベントとして選択します。 [APPLY](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) 演算子が [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics) 組み込み関数と組み合わされて、配列のすべての要素を個々のイベントとして抽出します。
+配列のすべての要素を個々のイベントとして選択します。 [APPLY](/stream-analytics-query/apply-azure-stream-analytics) 演算子が [GetArrayElements](/stream-analytics-query/getarrayelements-azure-stream-analytics) 組み込み関数と組み合わされて、配列のすべての要素を個々のイベントとして抽出します。
 
 ```SQL
 SELECT
@@ -301,7 +301,7 @@ CROSS APPLY GetArrayElements(SensorMetadata) AS SensorMetadataRecords
 |12345|Manufacturer|ABC|
 |12345|Version|1.2.45|
 
-抽出されたフィールドを列に表示する必要がある場合は、[JOIN](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics) 操作に加えて、[WITH](https://docs.microsoft.com/stream-analytics-query/with-azure-stream-analytics)構文を使用してデータセットをピボットすることができます。 この結合では、重複を防ぐ[時間境界](https://docs.microsoft.com/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) 条件が必要になります。
+抽出されたフィールドを列に表示する必要がある場合は、[JOIN](/stream-analytics-query/join-azure-stream-analytics) 操作に加えて、[WITH](/stream-analytics-query/with-azure-stream-analytics)構文を使用してデータセットをピボットすることができます。 この結合では、重複を防ぐ[時間境界](/stream-analytics-query/join-azure-stream-analytics#BKMK_DateDiff) 条件が必要になります。
 
 ```SQL
 WITH DynamicCTE AS (
@@ -330,4 +330,4 @@ LEFT JOIN DynamicCTE M ON M.smKey = 'Manufacturer' and M.DeviceId = i.DeviceId A
 |12345|47|122|1.2.45|ABC|
 
 ## <a name="see-also"></a>参照
-[Azure Stream Analytics でのデータ型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)
+[Azure Stream Analytics でのデータ型](/stream-analytics-query/data-types-azure-stream-analytics)

@@ -1,23 +1,18 @@
 ---
 title: 制御テーブルを使用してデータベースから増分コピーを行う
 description: Azure Data Factory でソリューション テンプレートを使用して、データベースから新規行または更新行のみを増分コピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/24/2018
-ms.openlocfilehash: 4da54318bea21daf9ec363be61bea18adaa2ce63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 12/09/2020
+ms.openlocfilehash: b3b5679b254a07b275cc7fd1295ba4ca5b405fbc
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82629033"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362014"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>データベースから制御テーブルを使用して差分コピーを行う
 
@@ -45,7 +40,7 @@ ms.locfileid: "82629033"
 - *Data_Source_WaterMarkColumn* は、新規行や更新行を識別するために使用されるソース テーブル内の列の名前です。 通常、この列の型は *datetime* や *INT* などです。
 - *Data_Destination_Container* は、コピー先ストア内でデータがコピーされる場所のルート パスです。
 - *Data_Destination_Directory* は、コピー先ストア内でデータがコピーされる場所のルートの下のディレクトリ パスです。
-- *Data_Destination_Table_Name* は、コピー先ストア内でデータがコピーされる場所です (データのコピー先として "Azure Synapse Analytics (旧称 SQL DW)" が選択されている場合に適用されます)。
+- *Data_Destination_Table_Name* は、コピー先ストア内でデータがコピーされる場所です (データのコピー先として "Azure Synapse Analytics" が選択されている場合に適用されます)。
 - *Data_Destination_Folder_Path* は、コピー先ストア内でデータがコピーされる場所です (データのコピー先として "ファイル システム" または "Azure Data Lake Storage Gen1" が選択されている場合に適用されます)。
 - *Control_Table_Table_Name* は、高基準値を格納する外部制御テーブルです。
 - *Control_Table_Column_Name* は、高基準値を格納する外部制御テーブル内の列です。
@@ -92,15 +87,15 @@ ms.locfileid: "82629033"
             END
     ```
     
-4. **[データベースからの差分コピー]** テンプレートに移動します。 データのコピー元となるソース データベースへの**新しい**接続を作成します。
+4. **[データベースからの差分コピー]** テンプレートに移動します。 データのコピー元となるソース データベースへの **新しい** 接続を作成します。
 
     ![ソース テーブルへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png)
 
-5. データのコピー先となるコピー先データ ストアへの**新しい**接続を作成します。
+5. データのコピー先となるコピー先データ ストアへの **新しい** 接続を作成します。
 
     ![宛先テーブルへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable5.png)
 
-6. 手順 2 と 3 で作成した外部制御テーブルとストアド プロシージャへの**新しい**接続を作成します。
+6. 手順 2 と 3 で作成した外部制御テーブルとストアド プロシージャへの **新しい** 接続を作成します。
 
     ![制御テーブル データ ストアへの新しい接続の作成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable6.png)
 
@@ -140,7 +135,7 @@ ms.locfileid: "82629033"
 
     宛先に新規行のみがコピーされたことがわかります。
 
-15. (省略可能:)データの宛先として Azure Synapse Analytics (旧称 SQL DW) を選択した場合、ステージング用に Azure BLOB ストレージへの接続も指定する必要があります。これは SQL Data Warehouse の Polybase に必要です。 テンプレートによって、コンテナーのパスが生成されます。 パイプラインの実行後、コンテナーが BLOB ストレージに作成されているかどうかを確認します。
+15. (省略可能:)データの宛先として Azure Synapse Analytics を選択した場合、ステージング用に Azure BLOB ストレージへの接続も指定する必要があります。これは Azure Synapse Analytics の Polybase に必要です。 テンプレートによって、コンテナーのパスが生成されます。 パイプラインの実行後、コンテナーが BLOB ストレージに作成されているかどうかを確認します。
     
     ![PolyBase の構成](media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable15.png)
     

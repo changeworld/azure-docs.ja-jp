@@ -7,14 +7,16 @@ ms.topic: how-to
 ms.date: 10/31/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: c21a6a2a42aa7417ddb53afd3beda735b54cff3d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: ef77ba6e34f2a699c8c4f06fde8cb602ae98c728
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89299135"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90885668"
 ---
 # <a name="bind-azure-cache-for-redis-to-your-azure-spring-cloud-application"></a>Azure Cache for Redis を Azure Spring Cloud アプリケーションにバインドする 
+
+**この記事の適用対象:** ✔️ Java
 
 Spring Boot アプリケーションを手動で構成するのではなく、Azure Spring Cloud を使用して、選択した Azure サービスをアプリケーションに自動的にバインドすることができます。 この記事では、アプリケーションを Azure Cache for Redis にバインドする方法について説明します。
 

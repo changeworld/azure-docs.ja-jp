@@ -6,15 +6,15 @@ documentationcenter: ''
 author: johndowns
 ms.service: api-management
 ms.topic: article
-ms.date: 06/12/2020
+ms.date: 02/10/2021
 ms.author: jodowns
 ms.custom: fasttrack-new
-ms.openlocfilehash: 578bb511175d88a1507af9520265a1acd068b27c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9dc44b4b898603df88d1bdd8c36ddfb6449335ac
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094662"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547198"
 ---
 # <a name="versions-in-azure-api-management"></a>Azure API Management のバージョン
 
@@ -64,9 +64,13 @@ ms.locfileid: "87094662"
 
 ## <a name="how-versions-are-represented"></a>バージョンを表す方法
 
-Azure API Management には、1 つの論理的な API の一連のバージョンを表す、*バージョン セット*と呼ばれるリソースが保持されています。 Azure portal を使用してバージョンを管理する場合、バージョン セットは表示されませんが、PowerShell、Resource Manager テンプレート、または Azure Resource Manager API を使用して API Management サービスを操作する場合は、バージョン セットを直接表示して管理できます。 バージョン セットには、バージョン管理された API の表示名のほか、指定されたバージョンに要求を送信するために[使用されるバージョン管理スキーム](#versioning-schemes)が含まれています。
+Azure API Management には、1 つの論理的な API の一連のバージョンを表す、*バージョン セット* と呼ばれるリソースが保持されています。 バージョン セットには、バージョン管理された API の表示名と、指定されたバージョンに要求を送信するために[使用されるバージョン管理スキーム](#versioning-schemes)が含まれています。
 
-API の各バージョンは独自の API リソースとして保持された後、バージョン セットに関連付けられます。 1 つのバージョン セットに、非常に異なる操作またはポリシーを持つ API が含まれていることがあります。これは、API のバージョン間で大幅な変更を行う可能性がある事実を反映しています。
+API の各バージョンは独自の API リソースとして保持された後、バージョン セットに関連付けられます。 バージョン セットには、操作またはポリシーが異なる API が含まれている場合があります。 セット内のバージョン間で大幅な変更を行う場合があります。
+
+Azure portal によって、バージョン セットが作成されます。 Azure portal でバージョン セットの名前と説明を変更できます。
+
+[Azure CLI](/cli/azure/apim/api/versionset)、[Azure PowerShell](/powershell/module/az.apimanagement/#api-management)、[Resource Manager テンプレート](/azure/templates/microsoft.apimanagement/service/apiversionsets)、または [Azure Resource Manager API](/rest/api/apimanagement/2020-06-01-preview/apiversionset) を使用して、バージョン セットを直接表示および管理できます。
 
 ### <a name="migrating-a-non-versioned-api-to-a-versioned-api"></a>バージョン管理されていない API からバージョン管理された API への移行
 

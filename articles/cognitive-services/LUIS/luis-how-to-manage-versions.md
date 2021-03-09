@@ -3,24 +3,22 @@ title: バージョンの管理 - LUIS
 titleSuffix: Azure Cognitive Services
 description: バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別のバージョンに複製することをお勧めします。
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/17/2020
-ms.author: diberry
-ms.openlocfilehash: 3aa7958ea4edf6cf3e3c1b170e2351f49f719983
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: b93e9fd4047ee3731ef6fe4652bb92ce5145987d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782842"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018822"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>バージョンを使用してステージング アプリまたは運用環境アプリに影響を与えることなく編集とテストを行う
 
-バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別の[バージョン](luis-concept-version.md)に複製することをお勧めします。
+バージョンを使用して、さまざまなモデルを構築および公開できます。 モデルに変更を加える前に、現在のアクティブなモデルをアプリの別の[バージョン](./luis-concept-app-iteration.md)に複製することをお勧めします。
 
 アクティブなバージョンは、意図、エンティティ、特徴、およびパターンについて LUIS ポータル上の **[ビルド]** セクションで編集しているバージョンです。 オーサリング API を使用している場合、バージョン固有の REST API の呼び出しではルートにそのバージョンが含まれているため、アクティブなバージョンを設定する必要はありません。
 
@@ -59,13 +57,12 @@ ms.locfileid: "84782842"
 
 ### <a name="import-errors"></a>インポート エラー
 
-* トークナイザー エラー:インポート中に**トークナイザー エラー**が発生した場合、アプリで現在使用しているものと異なる[トークナイザー](luis-language-support.md#custom-tokenizer-versions)を使用しているバージョンをインポートしようとしています。 これを修正するには、「[トークナイザーのバージョン間の移行](luis-language-support.md#migrating-between-tokenizer-versions)」を参照してください。
+* トークナイザー エラー:インポート中に **トークナイザー エラー** が発生した場合、アプリで現在使用しているものと異なる [トークナイザー](luis-language-support.md#custom-tokenizer-versions)を使用しているバージョンをインポートしようとしています。 これを修正するには、「[トークナイザーのバージョン間の移行](luis-language-support.md#migrating-between-tokenizer-versions)」を参照してください。
 
 <a name = "export-version"></a>
 
 ## <a name="other-actions"></a>その他のアクション
 
-* バージョンを**削除**するには、一覧からバージョンを選択し、ツール バーから **[削除]** を選択します。 **[OK]** を選択します。
-* バージョンの**名前を変更**するには、一覧からバージョンを選択し、ツール バーから **[名前の変更]** を選択します。 新しい名前を入力して **[完了]** を選択します。
-* バージョンを**エクスポート**するには、一覧からバージョンを選択し、ツール バーから **[Export app]\(アプリのエクスポート\)** を選択します。 [このアプリを LUIS コンテナーで使用](luis-container-howto.md)するには、バックアップ用にエクスポートする、またはソース管理に保存する JSON または LU を選択し、 **[Export for container]\(コンテナー用にエクスポート\)** を選択します。
-
+* バージョンを **削除** するには、一覧からバージョンを選択し、ツール バーから **[削除]** を選択します。 **[OK]** を選択します。
+* バージョンの **名前を変更** するには、一覧からバージョンを選択し、ツール バーから **[名前の変更]** を選択します。 新しい名前を入力して **[完了]** を選択します。
+* バージョンを **エクスポート** するには、一覧からバージョンを選択し、ツール バーから **[Export app]\(アプリのエクスポート\)** を選択します。 [このアプリを LUIS コンテナーで使用](luis-container-howto.md)するには、バックアップ用にエクスポートする、またはソース管理に保存する JSON または LU を選択し、 **[Export for container]\(コンテナー用にエクスポート\)** を選択します。

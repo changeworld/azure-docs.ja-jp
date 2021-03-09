@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory のファイル形式と圧縮形式
 description: Azure Data Factory でサポートされるファイル形式について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 33f67e1bfa27f4314f64cbcc4d472905fcb15099
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7b53d9cd64c50d8305714878324dd355eb6d1840
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318766"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100368729"
 ---
 # <a name="file-and-compression-formats-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮形式
 *このトピックが適用されるコネクタは、[Amazon S3](data-factory-amazon-simple-storage-service-connector.md)、[Azure Blob](data-factory-azure-blob-connector.md)、[Azure Data Lake Store](data-factory-azure-datalake-connector.md)、[ファイル システム](data-factory-onprem-file-system-connector.md)、[FTP](data-factory-ftp-connector.md)、[HDFS](data-factory-hdfs-connector.md)、[HTTP](data-factory-http-connector.md)、[SFTP](data-factory-sftp-connector.md) です。*
@@ -33,16 +29,16 @@ Azure Data Factory は次のファイル形式をサポートしています。
 * [Parquet 形式](#parquet-format)
 
 ## <a name="text-format"></a>テキスト形式
-テキスト ファイルからの読み取りまたはテキスト ファイルへの書き込みを行うには、データセットの `format` セクション で `type` プロパティを **TextFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[TextFormat の例](#textformat-example)」セクションを参照してください。
+テキスト ファイルからの読み取りまたはテキスト ファイルへの書き込みを行うには、データセットの `format` セクション で `type` プロパティを **TextFormat** に設定します。 `format` セクションに **オプションの** プロパティを指定することもできます。 構成方法については、「[TextFormat の例](#textformat-example)」セクションを参照してください。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| columnDelimiter |ファイル内の列を区切るために使用する文字。 データ内に存在する可能性が低い、出力できないような珍しい文字を使用することを検討します。 たとえば、"\u0001" を指定します。これは、見出しの先頭 (SOH) を表します。 |許可される文字は 1 つだけです。 **既定**値は**コンマ (,)** です。 <br/><br/>Unicode 文字を使用するには、[Unicode 文字](https://en.wikipedia.org/wiki/List_of_Unicode_characters)に関するページを参照して、対応するコードを取得してください。 |いいえ |
-| rowDelimiter |ファイルの行を区切るための文字。 |許可される文字は 1 つだけです。 読み取り時の**既定**値は **["\r\n"、"\r"、"\n"]** のいずれかになり、書き込み時の既定値は **"\r\n"** になります。 |いいえ |
+| columnDelimiter |ファイル内の列を区切るために使用する文字。 データ内に存在する可能性が低い、出力できないような珍しい文字を使用することを検討します。 たとえば、"\u0001" を指定します。これは、見出しの先頭 (SOH) を表します。 |許可される文字は 1 つだけです。 **既定** 値は **コンマ (,)** です。 <br/><br/>Unicode 文字を使用するには、[Unicode 文字](https://en.wikipedia.org/wiki/List_of_Unicode_characters)に関するページを参照して、対応するコードを取得してください。 |いいえ |
+| rowDelimiter |ファイルの行を区切るための文字。 |許可される文字は 1 つだけです。 読み取り時の **既定** 値は **["\r\n"、"\r"、"\n"]** のいずれかになり、書き込み時の既定値は **"\r\n"** になります。 |いいえ |
 | escapeChar |入力ファイルの列区切り記号をエスケープするための特殊文字。 <br/><br/>escapeChar と quoteChar の両方をテーブルに指定することはできません。 |許可される文字は 1 つだけです。 既定値はありません。 <br/><br/>例:列区切り記号としてコンマ (,) を使用しているときに、テキストにもコンマ文字を含める必要がある場合 (例:"Hello, world")、エスケープ文字として "$" を定義し、ソースで文字列 "Hello$, world" を使用できます。 |いいえ |
 | quoteChar |文字列値を引用符で囲むための文字。 引用符文字内の列区切り記号と行区切り記号は文字列値の一部として扱われます。 このプロパティは、入力と出力の両方のデータセットに適用できます。<br/><br/>escapeChar と quoteChar の両方をテーブルに指定することはできません。 |許可される文字は 1 つだけです。 既定値はありません。 <br/><br/>たとえば、列の区切り文字としてコンマ (,) を使用しているときにテキストにもコンマ文字が必要な場合 (例: Hello, world)、引用符文字として " (二重引用符) を定義し、ソースで文字列 "Hello, world" を使用できます。 |いいえ |
-| nullValue |null 値を表すための 1 つまたは複数の文字。 |1 つ以上の文字。 **既定**値は、読み取り時は **"\N" および "NULL"** 、書き込み時は **"\N"** です。 |いいえ |
-| encodingName |エンコーディング名を指定します。 |有効なエンコード名。 詳細については、[Encoding.EncodingName プロパティ](https://msdn.microsoft.com/library/system.text.encoding.aspx)に関するページを参照してください。 例: windows-1250 または shift_jis。 **既定**値は **UTF-8** です。 |いいえ |
+| nullValue |null 値を表すための 1 つまたは複数の文字。 |1 つ以上の文字。 **既定** 値は、読み取り時は **"\N" および "NULL"** 、書き込み時は **"\N"** です。 |いいえ |
+| encodingName |エンコーディング名を指定します。 |有効なエンコード名。 詳細については、[Encoding.EncodingName プロパティ](/dotnet/api/system.text.encoding)に関するページを参照してください。 例: windows-1250 または shift_jis。 **既定** 値は **UTF-8** です。 |いいえ |
 | firstRowAsHeader |先頭行をヘッダーと見なすかどうかを指定します。 入力データセットでは、Data Factory は先頭行をヘッダーとして読み取ります。 出力データセットでは、Data Factory は先頭行をヘッダーとして書き込みます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |True<br/><b>False (既定値)</b> |いいえ |
 | skipLineCount |入力ファイルからのデータ読み取り時にスキップする行数を示します。 skipLineCount と firstRowAsHeader の両方が指定されている場合、行が最初にスキップされ、次に、入力ファイルからヘッダー情報が読まれます。 <br/><br/>サンプル シナリオについては、「[`firstRowAsHeader` と `skipLineCount` を使用するシナリオ](#scenarios-for-using-firstrowasheader-and-skiplinecount)」を参照してください。 |Integer |いいえ |
 | treatEmptyAsNull |入力ファイルからデータを読むとき、null 値として null または空の文字列を扱うことを指定します。 |**True (既定値)**<br/>False |いいえ |
@@ -81,16 +77,16 @@ Azure Data Factory は次のファイル形式をサポートしています。
 * テキスト ファイルからコピーして、データやヘッダー情報を含まない先頭の数行をスキップする: `skipLineCount` を指定して、スキップする行数を示します。 ファイルの残りの部分にヘッダー行が含まれている場合は、`firstRowAsHeader` も指定できます。 `skipLineCount` と `firstRowAsHeader` の両方を指定した場合は、まず行がスキップされ、次に入力ファイルからヘッダー情報が読み取られます。
 
 ## <a name="json-format"></a>JSON 形式
-**Azure Cosmos DB との間で JSON ファイルをそのままインポート/エクスポートする**場合は、[Azure Cosmos DB との間でのデータの移動](data-factory-azure-documentdb-connector.md)に関する記事の「[JSON ドキュメントのインポート/エクスポート](data-factory-azure-documentdb-connector.md#importexport-json-documents)」をご覧ください。
+**Azure Cosmos DB との間で JSON ファイルをそのままインポート/エクスポートする** 場合は、[Azure Cosmos DB との間でのデータの移動](data-factory-azure-documentdb-connector.md)に関する記事の「[JSON ドキュメントのインポート/エクスポート](data-factory-azure-documentdb-connector.md#importexport-json-documents)」をご覧ください。
 
-JSON ファイルを解析するか、JSON 形式でデータを書き込む場合は、`format` セクションの `type` プロパティを **JsonFormat** に設定します。 `format` セクションに**オプションの**プロパティを指定することもできます。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。
+JSON ファイルを解析するか、JSON 形式でデータを書き込む場合は、`format` セクションの `type` プロパティを **JsonFormat** に設定します。 `format` セクションに **オプションの** プロパティを指定することもできます。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** と **arrayOfObjects** です。 **既定**値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
+| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** と **arrayOfObjects** です。 **既定** 値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
 | jsonNodeReference | 同じパターンを持つ配列フィールド内のオブジェクトからのデータの反復処理と抽出を行う場合は、その配列の JSON のパスを指定します。 このプロパティは、JSON ファイルからデータをコピーするときにのみサポートされます。 | いいえ |
 | jsonPathDefinition | カスタマイズされた列名 (先頭が小文字) での列マッピングごとに JSON のパス式を指定します。 このプロパティは JSON ファイルからデータをコピーするときにのみサポートされ、オブジェクトまたは配列からデータを抽出することができます。 <br/><br/> ルート オブジェクトの直下のフィールドの場合、ルートの $ から記述します。`jsonNodeReference` プロパティによって選択された配列内のフィールドの場合、配列要素から記述します。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。 | いいえ |
-| encodingName |エンコーディング名を指定します。 有効なエンコード名の一覧については、[Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定** 値は、**UTF-8** です。 |いいえ |
+| encodingName |エンコーディング名を指定します。 有効なエンコード名の一覧については、[Encoding.EncodingName](/dotnet/api/system.text.encoding) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定** 値は、**UTF-8** です。 |いいえ |
 | nestingSeparator |入れ子レベルの分割に使用される文字。 既定値は "." (ドット) です。 |いいえ |
 
 ### <a name="json-file-patterns"></a>JSON ファイルのパターン
@@ -225,7 +221,7 @@ JSON ファイルからデータをコピーするときは、次の 2 つのサ
 
 **JsonFormat** 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には次のとおりです。
 
-- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳しくは、「[ソース データセット列を変換先のデータセット列にマップする](data-factory-map-columns.md)」をご覧ください。
+- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は **省略可能** です。 詳しくは、「[ソース データセット列を変換先のデータセット列にマップする](data-factory-map-columns.md)」をご覧ください。
 - `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 配列からデータをコピーするには、**array[x].property** を使用して x 番目のオブジェクトから特定のプロパティの値を抽出するか、**array[*].property** を使用してこのようなプロパティを含むオブジェクトから値を見つけることができます。
 
 ```json
@@ -298,8 +294,8 @@ JSON ファイルからデータをコピーするときは、次の 2 つのサ
 
 **JsonFormat** 型の入力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には次のとおりです。
 
-- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は**省略可能**です。 詳しくは、「[ソース データセット列を変換先のデータセット列にマップする](data-factory-map-columns.md)」をご覧ください。
-- `jsonNodeReference` は、orderlines という**配列**の直下にある同じパターンのオブジェクトからのデータの反復処理と抽出を行うことを示します。
+- `structure` セクションでは、表形式データへの変換中に、カスタマイズされた列名と、対応するデータ型を定義します。 このセクションは、列マッピングを行う必要がない場合は **省略可能** です。 詳しくは、「[ソース データセット列を変換先のデータセット列にマップする](data-factory-map-columns.md)」をご覧ください。
+- `jsonNodeReference` は、orderlines という **配列** の直下にある同じパターンのオブジェクトからのデータの反復処理と抽出を行うことを示します。
 - `jsonPathDefinition` は、データを抽出する位置を示す各列の JSON のパスを指定します。 この例での "ordernumber"、"orderdate"、"city" は、"$." から始まる JSON のパスが含まれるルート オブジェクトの直下にあります。"order_pd" と "order_price" は、"$." のない配列要素から派生したパスで定義されています。
 
 ```json
@@ -367,7 +363,7 @@ SQL Database 内に次のテーブルが含まれているとします。
 }
 ```
 
-**JsonFormat** 型の出力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には、`structure` セクションでは、目的のファイル内のカスタマイズされたプロパティ名を定義します。`nestingSeparator` (既定では ".") は、入れ子のレイヤーを名前から識別するために使用されます。 このセクションは、ソース列名と比較してプロパティ名を変更したり、一部のプロパティを入れ子にしたりする必要がない場合は**省略可能**です。
+**JsonFormat** 型の出力データセットは次のように定義されます (関連する部分のみでの部分的な定義)。 具体的には、`structure` セクションでは、目的のファイル内のカスタマイズされたプロパティ名を定義します。`nestingSeparator` (既定では ".") は、入れ子のレイヤーを名前から識別するために使用されます。 このセクションは、ソース列名と比較してプロパティ名を変更したり、一部のプロパティを入れ子にしたりする必要がない場合は **省略可能** です。
 
 ```json
 "properties": {
@@ -408,7 +404,7 @@ Avro ファイルを解析するか、Avro 形式でデータを書き込む場�
 }
 ```
 
-Hive テーブルで Avro 形式を使用するには、 [Apache Hive のチュートリアルに関するページ](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
+Hive テーブルで Avro 形式を使用するには、[Apache Hive のチュートリアル](https://cwiki.apache.org/confluence/display/Hive/AvroSerDe)を参照してください。
 
 以下の点に注意してください。  
 
@@ -493,7 +489,7 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
   * **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。
   * **Optimal**:圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。
 
-    詳細については、 [圧縮レベル](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) に関するトピックをご覧ください。
+    詳細については、 [圧縮レベル](/dotnet/api/system.io.compression.compressionlevel) に関するトピックをご覧ください。
 
 `compression` プロパティを入力データセットの JSON で指定すると、パイプラインでソースから圧縮データを読み取ることができます。このプロパティを出力データセットの JSON で指定すると、コピー アクティビティにより出力先に圧縮データを書き込むことができます。 いくつかのサンプル シナリオを次に示します。
 

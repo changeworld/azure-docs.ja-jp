@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: e65fecb70b7e3adf009396c0daa00fc50b81b519
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: d921bddf90c415cb244e2cc9ad98354392a537ee
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604529"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90530150"
 ---
 # <a name="manage-the-mobility-agent"></a>モビリティ エージェントを管理する 
 
@@ -26,7 +26,7 @@ Azure への VMware VM と物理サーバーのディザスター リカバリ�
 ## <a name="update-mobility-service-from-azure-portal"></a>Azure portal からモビリティ サービスを更新する
 
 1. 保護されたマシン上のモビリティ サービスの更新を開始する前に、デプロイの一部である、構成サーバー、スケールアウト プロセス サーバー、マスター ターゲット サーバーを必ず更新します。
-    1. [9.36 バージョン](https://support.microsoft.com/help/4578241/)以降の SUSE Linux Enterprise Server 11 SP4 については、最新のインストーラーが[構成サーバーとスケールアウト プロセス サーバーで使用できる](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)ことを確認してください。
+    1. 9\.36 バージョン以降の SUSE Linux Enterprise Server 11 SP3、RHEL 5、CentOS 5、Debian 7 については、最新のインストーラーが[構成サーバーとスケールアウト プロセス サーバーで確実に使用できる](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-rhel-5-debian-7-server)ようにしてください。
 1. ポータルでコンテナーを開き、 **[レプリケートされたアイテム]** を開きます。
 1. 構成サーバーが最新版の場合、"Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。 クリックしてインストールしてください" という通知が表示されます。
 

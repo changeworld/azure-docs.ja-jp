@@ -4,13 +4,13 @@ description: ZIP ファイル (Java 開発者の場合は WAR ファイル) を�
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
-ms.custom: seodec18
-ms.openlocfilehash: e2959403d2e5db38d03013e798fe299d56837227
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.custom: seodec18, devx-track-azurecli
+ms.openlocfilehash: 150f6b57f1dec0b6d925ef53b4a7001ae9f23607
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962113"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007910"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 
@@ -44,7 +44,7 @@ WAR ファイルの展開では、Java Web アプリを実行するために [WA
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>Azure CLI を使って ZIP ファイルを展開する
 
-[az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) コマンドを使用して、アップロードされた ZIP ファイルを Web アプリにデプロイします。  
+[az webapp deployment source config-zip](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-zip) コマンドを使用して、アップロードされた ZIP ファイルを Web アプリにデプロイします。  
 
 次に示すのは、アップロードした ZIP ファイルをデプロイするコマンドの例です。 Azure CLI のローカル インストールを使用する場合は、`--src` にローカル ZIP ファイルのパスを指定します。
 

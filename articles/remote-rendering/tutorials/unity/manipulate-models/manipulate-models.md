@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 07b5b81dd7e23f25e7bfba90bbab7083090724d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: cec97134173cfc7879baf1d914d8f224a0736430
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018860"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593046"
 ---
 # <a name="tutorial-manipulating-models"></a>チュートリアル:モデルの操作
 
@@ -37,7 +37,7 @@ ms.locfileid: "89018860"
 1. **RemoteRenderedModel** と同じディレクトリに新しいスクリプトを作成し、**RemoteBounds** という名前を付けます。
 1. スクリプトの内容を、次のコードに置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -51,8 +51,6 @@ ms.locfileid: "89018860"
     {
         //Remote bounds works with a specific remotely rendered model
         private BaseRemoteRenderedModel targetModel = null;
-
-        private BoundsQueryAsync remoteBoundsQuery = null;
 
         private RemoteBoundsState currentBoundsState = RemoteBoundsState.NotReady;
 
@@ -94,14 +92,8 @@ ms.locfileid: "89018860"
             }
         }
 
-        // Create a query using the model entity
-        private void QueryBounds()
-        {
-            //Implement me
-        }
-
-        // Check the result and apply it to the local Unity bounding box if it was successful
-        private void ProcessQueryResult(BoundsQueryAsync remoteBounds)
+        // Create an async query using the model entity
+        async private void QueryBounds()
         {
             //Implement me
         }
@@ -113,31 +105,21 @@ ms.locfileid: "89018860"
 
     このスクリプトは、**BaseRemoteRenderedModel** を実装するスクリプトと同じ GameObject に追加する必要があります。 つまり、この場合は、**RemoteRenderedModel** です。 前のスクリプトと同様に、リモート境界に関連するすべての状態変化、イベント、データは、この初期コードによって処理されます。
 
-    別途実装すべきメソッドは 2 つあります。**QueryBounds** と **ProcessQueryResult** です。 **QueryBounds** が境界を取得し、**ProcessQueryResult** がクエリの結果を受け取って、それをローカルの **BoxCollider** に適用します。
+    別途実装すべきメソッドは 1 つだけです。**QueryBounds** です。 **QueryBounds** が非同期的に境界を取得し、クエリの結果を受け取って、それをローカルの **BoxCollider** に適用します。
 
-    **QueryBounds** メソッドは、リモート レンダリング セッションにクエリを送信して、`Completed` イベントをリッスンするだけの簡単なものです。
+    **QueryBounds** メソッドは、リモート レンダリング セッションにクエリを送信して、結果を待つだけの簡単なものです。
 
 1. **QueryBounds** メソッドを次の完成したメソッドに置き換えます。
 
-    ```csharp
+    ```cs
     // Create a query using the model entity
-    private void QueryBounds()
+    async private void QueryBounds()
     {
         remoteBoundsQuery = targetModel.ModelEntity.QueryLocalBoundsAsync();
         CurrentBoundsState = RemoteBoundsState.Updating;
-        remoteBoundsQuery.Completed += ProcessQueryResult;
-    }
-    ```
+        await remoteBounds;
 
-    **ProcessQueryResult** も単純です。 結果をチェックして、成功したかどうかを確認します。 成功した場合は、返された境界を、**BoxCollider** で使用できる形式に変換して適用します。    
-
-1. **ProcessQueryResult** メソッドを次の完成したメソッドに置き換えます。
-
-    ```csharp
-    // Check the result and apply it to the local Unity bounding box if it was successful
-    private void ProcessQueryResult(BoundsQueryAsync remoteBounds)
-    {
-        if (remoteBounds.IsRanToCompletion)
+        if (remoteBounds.IsCompleted)
         {
             var newBounds = remoteBounds.Result.toUnity();
             BoundsBoxCollider.center = newBounds.center;
@@ -152,6 +134,8 @@ ms.locfileid: "89018860"
     }
     ```
 
+    クエリの結果をチェックして、成功したかどうかを確認します。 成功した場合は、返された境界を、**BoxCollider** で使用できる形式に変換して適用します。
+
 ここで、**RemoteBounds** スクリプトを **RemoteRenderedModel** と同じゲーム オブジェクトに追加すると、必要に応じて **BoxCollider** が追加され、モデルが `Loaded` 状態になったときに、境界が自動的に照会されて **BoxCollider** に適用されます。
 
 1. 前に作成した **TestModel** GameObject を使用して、**RemoteBounds** コンポーネントを追加します。
@@ -161,7 +145,7 @@ ms.locfileid: "89018860"
 
 1. アプリケーションをもう一度実行する モデルが読み込まれるとすぐに、リモート オブジェクトの境界が表示されます。 以下のような値が表示されます。
 
-     ![境界が更新されたところ](./media/updated-bounds.png)
+     ![リモート オブジェクトの境界の例を示すスクリーンショット。](./media/updated-bounds.png)
 
 Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCollider** を構成しました。 この境界を利用すれば、ローカルにレンダリングされたオブジェクトと同じ方法を使用して、ビジュアル化とインタラクションを実行することができます。 たとえば、トランスフォームや物理演算などを変更するスクリプトです。
 
@@ -176,7 +160,7 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
 1. Unity の [Play]\(再生\) ボタンを押してシーンを再生し、**AppMenu** 内の **[Model Tools]\(モデル ツール\)** メニューを開きます。
 ![ビュー コントローラー](./media/model-with-view-controller.png)
 
-**AppMenu** には、モデルとのバインドに使用されるビュー コントローラーを実装した **[Model Tools]\(モデル ツール\)** サブメニューがあります。 この GameObject に **RemoteBounds** コンポーネントが含まれている場合、[**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) コンポーネント (**BoxCollider** を使用してオブジェクトの周囲に境界ボックスをレンダリングする MRTK コンポーネント) がビュー コントローラーによって追加されます。 ハンド インタラクションは、[**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.3.0/api/Microsoft.MixedReality.Toolkit.Experimental.UI.ObjectManipulator.html?q=ObjectManipulator) が担います。 これらのスクリプトを組み合わせることで、リモートでレンダリングされたモデルの移動、回転、拡大縮小を行うことができます。
+**AppMenu** には、モデルとのバインドに使用されるビュー コントローラーを実装した **[Model Tools]\(モデル ツール\)** サブメニューがあります。 この GameObject に **RemoteBounds** コンポーネントが含まれている場合、[**BoundingBox**](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/README_BoundingBox.html) コンポーネント (**BoxCollider** を使用してオブジェクトの周囲に境界ボックスをレンダリングする MRTK コンポーネント) がビュー コントローラーによって追加されます。 ハンド インタラクションは、[**ObjectManipulator**](https://microsoft.github.io/MixedRealityToolkit-Unity/version/releases/2.5.1/api/Microsoft.MixedReality.Toolkit.UI.ObjectManipulator.html) が担います。 これらのスクリプトを組み合わせることで、リモートでレンダリングされたモデルの移動、回転、拡大縮小を行うことができます。
 
 1. ゲーム パネルにマウスを移動し、その中でクリックしてフォーカスを設定します。
 1. [MRTK のハンド シミュレーション](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/InputSimulation/InputSimulationService.html#hand-simulation)を使用して、左 Shift キーを長押しします。
@@ -198,7 +182,7 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
 
 1. **RemoteRayCaster** という新しいスクリプトを作成し、その内容を次のコードに置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -220,7 +204,8 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
             if(RemoteRenderingCoordinator.instance.CurrentCoordinatorState == RemoteRenderingCoordinator.RemoteRenderingState.RuntimeConnected)
             {
                 var rayCast = new RayCast(origin.toRemotePos(), dir.toRemoteDir(), maxDistance, hitPolicy);
-                return await RemoteRenderingCoordinator.CurrentSession.Actions.RayCastQueryAsync(rayCast).AsTask();
+                var result = await RemoteRenderingCoordinator.CurrentSession.Connection.RayCastQueryAsync(rayCast);
+                return result.Hits;
             }
             else
             {
@@ -237,13 +222,13 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
     ```
 
     > [!NOTE]
-    > Unity には [**RaycastHit**](https://docs.unity3d.com/ScriptReference/RaycastHit.html) という名前のクラスがあり、また、Azure Remote Rendering には [**RayCastHit**](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.raycasthit) という名前のクラスがあります。 コンパイル エラーを防ぐうえで、**C** の大文字と小文字の区別が重要となります。
+    > Unity には [**RaycastHit**](https://docs.unity3d.com/ScriptReference/RaycastHit.html) という名前のクラスがあり、また、Azure Remote Rendering には [**RayCastHit**](/dotnet/api/microsoft.azure.remoterendering.raycasthit) という名前のクラスがあります。 コンパイル エラーを防ぐうえで、**C** の大文字と小文字の区別が重要となります。
 
     **RemoteRayCaster** は、リモート レイを現在のセッションにキャストするための共通のアクセス ポイントとなります。 この後、実際に MRTK ポインター ハンドラーを実装します。 このスクリプトに `IMixedRealityPointerHandler` インターフェイスを実装することにより、[Mixed Reality Pointer](https://microsoft.github.io/MixedRealityToolkit-Unity/Documentation/Input/Pointers.html) イベントをリッスンしたいという意図が MRTK に伝えられます。
 
 1. **RemoteRayCastPointerHandler** という新しいスクリプトを作成し、そのコードを次のコードに置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -308,13 +293,13 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
 
 クリック時にレイ キャスト要求を送信するのは、リモート オブジェクトにクエリを実行する効率的な方法です。 しかし理想的なユーザー エクスペリエンスではありません。なぜなら、カーソルが衝突するのはボックス コライダーであって、モデルそのものではないためです。
 
-リモート セッションでもっと頻繁にレイをキャストする新しい MRTK ポインターを作成することもできます。 これはより複雑なアプローチですが、ユーザー エクスペリエンスは向上するでしょう。 この手法は、このチュートリアルの範囲外ですが、[ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/AzureRemoteRenderingShowcase)にあるショーケース アプリで、このアプローチの例を確認できます。
+リモート セッションでもっと頻繁にレイをキャストする新しい MRTK ポインターを作成することもできます。 これはより複雑なアプローチですが、ユーザー エクスペリエンスは向上するでしょう。 この手法は、このチュートリアルの範囲外ですが、[ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering/tree/master/Unity/Showcase)にあるショーケース アプリで、このアプローチの例を確認できます。
 
 **RemoteRayCastPointerHandler** でレイ キャストが正常に完了すると、ヒットした `Entity` が `OnRemoteEntityClicked` Unity イベントから生成されます。 そのイベントに応答するには、`Entity` を受け取って、それに対するアクションを実行するヘルパー スクリプトを作成します。 まず、スクリプトで `Entity` の名前をデバッグ ログに出力してみましょう。
 
 1. **RemoteEntityHelper** という名前の新しいスクリプトを作成し、その内容を次のように置き換えます。
 
-    ```csharp
+    ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
     
@@ -359,7 +344,7 @@ Unity オブジェクトで境界を厳密に指定して、ローカル **BoxCo
 
 1. **RemoteEntityHelper** スクリプトに次のメソッドを追加します。
 
-    ```csharp
+    ```cs
     public void MakeSyncedGameObject(Entity entity)
     {
         var entityGameObject = entity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);

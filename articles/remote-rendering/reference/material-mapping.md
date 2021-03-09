@@ -6,11 +6,11 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: reference
 ms.openlocfilehash: 8313243bf680ea1a1d63f2719b647149a04935a9
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88893096"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96024046"
 ---
 # <a name="material-mapping-for-model-formats"></a>モデル形式の素材マッピング
 
@@ -62,7 +62,7 @@ glTF の各テクスチャには `texCoord` 値を指定することができま
 FBX 形式はクローズドソースであり、FBX 素材は一般に PBR 素材と互換性がありません。 FBX では、一意のパラメーターとプロパティを多く用いた表面の複雑な説明が使用されます。**Azure Remote Rendering パイプラインでは、これらのすべてが使用されるわけではありません**。
 
 > [!IMPORTANT]
-> Azure Remote Rendering モデル変換パイプラインでサポートされるのは、**FBX 2011 以降**のみです。
+> Azure Remote Rendering モデル変換パイプラインでサポートされるのは、**FBX 2011 以降** のみです。
 
 FBX 形式では、素材の保守的なアプローチが定義されます。公式の FBX 仕様には次の 2 種類しかありません。
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 796558c2579504b673fd15c468ce635c6b1cca8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066363"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89657389"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションを制御する条件付きステートメントを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "87066363"
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-* この記事の例に従うには、Outlook.com や Office 365 の Outlook アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
+* この記事の例に従うには、Outlook.com アカウント、または職場または学校アカウントを使用して、[このサンプルのロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)します。
 
 ## <a name="add-condition"></a>条件を追加する
 

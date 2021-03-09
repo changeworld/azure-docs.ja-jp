@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 402b5a975b3ded8327edcea81b680e9990bac39e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587958"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686569"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Spotinst の統合
 
@@ -26,7 +26,7 @@ ms.locfileid: "88587958"
 * ユーザーが自分の Azure AD アカウントを使用して Spotinst に自動的にサインインできるように設定できます。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](../manage-apps/what-is-single-sign-on.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -137,9 +137,9 @@ Spotinst に対する Azure AD SSO を構成してテストするには、次の
 
 1. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Spotinst にサインインします。
 
-2. 画面の右上にある**ユーザー アイコン**をクリックして、**[設定]** をクリックします。
+2. 画面の右上にある **ユーザー アイコン** をクリックして、**[設定]** をクリックします。
 
-    ![Spotinst の設定](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![ユーザー アイコンから [設定] が選択された画面のスクリーンショット。](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
 3. 上部の **[SECURITY]\(セキュリティ\)** タブをクリックし、**[Identity Providers]\(ID プロバイダー\)** を選択して、以下の手順を実行します。
 
@@ -159,21 +159,21 @@ Spotinst に対する Azure AD SSO を構成してテストするには、次の
 
    a. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Spotinst にサインインします。
 
-   b. 画面の右上にある**ユーザー アイコン**をクリックして、**[設定]** をクリックします。
+   b. 画面の右上にある **ユーザー アイコン** をクリックして、**[設定]** をクリックします。
 
-    ![Spotinst の設定](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![ユーザー アイコンから [設定] が選択された画面のスクリーンショット。](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
     c. **[Users]\(ユーザー\)** をクリックして、**[ADD USER]\(ユーザーの追加\)** を選択します。
 
-    ![Spotinst の設定](./media/spotinst-tutorial/adduser1.png)
+    ![[Users]\(ユーザー\) から [ADD USER]\(ユーザーの追加\) が選択された画面のスクリーンショット。](./media/spotinst-tutorial/adduser1.png)
 
     d. ユーザーの追加セクションで、次の手順を実行します。
 
-    ![Spotinst の設定](./media/spotinst-tutorial/adduser2.png)
+    ![[Add user]\(ユーザーの追加\) セクションを示すスクリーンショット。ここで、説明されている値を入力できます。](./media/spotinst-tutorial/adduser2.png)
 
-    * **[Full Name]\(フルネーム\)** ボックスに、ユーザーの氏名 (**BrittaSimon** など) を入力します。
+    * **[Full Name]\(フルネーム\)** ボックスに、ユーザーの氏名 (`BrittaSimon` など) を入力します。
 
-    * **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレスを入力します (`brittasimon\@contoso.com` など)。
+    * **[Email]\(電子メール\)** テキスト ボックスに、ユーザーのメール アドレスを入力します (`brittasimon@contoso.com` など)。
 
     * **[Organization Role, Account Role, and Accounts]\(組織ロール、アカウント ロール、アカウント\)** で組織に固有の詳細を選択します。
 
@@ -183,15 +183,14 @@ Spotinst に対する Azure AD SSO を構成してテストするには、次の
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Spotinst] タイルをクリックすると、SSO を設定した Spotinst に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関する記事を参照してください。
+アクセス パネルで [Spotinst] タイルをクリックすると、SSO を設定した Spotinst に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
 
-- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-- [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
 
 - [Azure AD で Spotinst を試す](https://aad.portal.azure.com/)
-

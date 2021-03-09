@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
-ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd30c7ec15eadd3d7945349a8aae4ac824bfdc7f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68965015"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954088"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>StorSimple デバイス上の 10 GbE ネットワーク インターフェイスでサポートされているハードウェア
 
@@ -125,5 +125,4 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 | 7. |1 GbE |6120G |HP ProCurve 6120G/XG 1 GbE スイッチ ブレード |HP |
 
 ## <a name="next-steps"></a>次のステップ
-[StorSimple ハードウェア コンポーネントと状態の詳細](storsimple-monitor-hardware-status.md)
-
+[StorSimple ハードウェア コンポーネントと状態の詳細](./storsimple-8000-monitor-hardware-status.md)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 29a889fc15b1889711d08d3386920652a8bc8f57
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89269048"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92017235"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>メディア エンコーダー プレミアム ワークフローでの高度なエンコード
 
@@ -35,7 +35,7 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
 
 次のトピックでは、 **メディア エンコーダー プレミアム ワークフロー**に関連する詳細の概要を説明します。
 
-* [メディア エンコーダー プレミアム ワークフローでサポートされる形式](media-services-premium-workflow-encoder-formats.md) – **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイルの形式とコーデックについて説明します。
+* [メディア エンコーダー プレミアム ワークフローでサポートされる形式](./media-services-encode-asset.md) – **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイルの形式とコーデックについて説明します。
 * 「[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)」では、**Media Encoder Premium Workflow** と **Media Encoder Standard** のエンコード機能を比較しています。
 
 この記事では、.NET を使って **Media Encoder Premium Workflow** でエンコードする方法を示します。

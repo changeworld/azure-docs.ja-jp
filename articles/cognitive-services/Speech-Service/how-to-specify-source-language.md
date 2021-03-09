@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.custom: devx-track-javascript, devx-track-csharp
-ms.openlocfilehash: 3d761bbad4cb2cd2cdd1c34459f25c811bb41c7e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.custom: devx-track-js, devx-track-csharp
+ms.openlocfilehash: 1b134fd3d09eeda340e7323638a36b68336242c2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88918691"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91362029"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>音声テキスト変換のソース言語を指定する
 
@@ -27,20 +27,20 @@ ms.locfileid: "88918691"
 
 ## <a name="how-to-specify-source-language-in-c"></a>C# でソース言語を指定する方法
 
-この例では、`SpeechRecognizer` コンストラクトを使って、ソース言語をパラメーターとして明示的に指定します。
+次の例では、`SpeechRecognizer` コンストラクトを使って、ソース言語をパラメーターとして明示的に指定します。
 
 ```csharp
 var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-この例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、`sourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
+次の例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、`sourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
 var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-この例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 次に、`sourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
+次の例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 次に、`sourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
 
 ```csharp
 var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -57,20 +57,20 @@ var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioC
 
 ## <a name="how-to-specify-source-language-in-c"></a>C++ でソース言語を指定する方法
 
-この例では、`FromConfig` メソッドを使って、ソース言語をパラメーターとして明示的に指定します。
+次の例では、`FromConfig` メソッドを使って、ソース言語をパラメーターとして明示的に指定します。
 
 ```C++
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, "de-DE", audioConfig);
 ```
 
-この例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、`recognizer` を作成するときに、`sourceLanguageConfig` をパラメーターとして `FromConfig` に渡します。
+次の例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、`recognizer` を作成するときに、`sourceLanguageConfig` をパラメーターとして `FromConfig` に渡します。
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE");
 auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-この例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 `recognizer` を作成するときに、`sourceLanguageConfig` をパラメーターとして `FromConfig` に渡します。
+次の例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 `recognizer` を作成するときに、`sourceLanguageConfig` をパラメーターとして `FromConfig` に渡します。
 
 ```C++
 auto sourceLanguageConfig = SourceLanguageConfig::FromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -86,20 +86,20 @@ auto recognizer = SpeechRecognizer::FromConfig(speechConfig, sourceLanguageConfi
 
 ## <a name="how-to-specify-source-language-in-java"></a>Java でソース言語を指定する方法
 
-この例では、新しい `SpeechRecognizer` を作成するときに、ソース言語を明示的に指定します。
+次の例では、新しい `SpeechRecognizer` を作成するときに、ソース言語を明示的に指定します。
 
 ```Java
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-この例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、新しい `SpeechRecognizer` を作成するときに、`sourceLanguageConfig` をパラメーターとして渡します。
+次の例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、新しい `SpeechRecognizer` を作成するときに、`sourceLanguageConfig` をパラメーターとして渡します。
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE");
 SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-この例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 次に、新しい `SpeechRecognizer` を作成するときに、`sourceLanguageConfig` をパラメーターとして渡します。
+次の例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 次に、新しい `SpeechRecognizer` を作成するときに、`sourceLanguageConfig` をパラメーターとして渡します。
 
 ```Java
 SourceLanguageConfig sourceLanguageConfig = SourceLanguageConfig.fromLanguage("de-DE", "The Endpoint ID for your custom model.");
@@ -115,14 +115,14 @@ SpeechRecognizer recognizer = new SpeechRecognizer(speechConfig, sourceLanguageC
 
 ## <a name="how-to-specify-source-language-in-python"></a>Python でソース言語を指定する方法
 
-この例では、`SpeechRecognizer` コンストラクトを使って、ソース言語をパラメーターとして明示的に指定します。
+次の例では、`SpeechRecognizer` コンストラクトを使って、ソース言語をパラメーターとして明示的に指定します。
 
 ```Python
 speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, language="de-DE", audio_config=audio_config)
 ```
 
-この例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、`SourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
+次の例では、`SourceLanguageConfig` を使ってソース言語を提供します。 次に、`SourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE")
@@ -130,7 +130,7 @@ speech_recognizer = speechsdk.SpeechRecognizer(
         speech_config=speech_config, source_language_config=source_language_config, audio_config=audio_config)
 ```
 
-この例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 次に、`SourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
+次の例では、`SourceLanguageConfig` を使ってソース言語とカスタム エンドポイントを提供します。 次に、`SourceLanguageConfig` をパラメーターとして `SpeechRecognizer` コンストラクトに渡します。
 
 ```Python
 source_language_config = speechsdk.languageconfig.SourceLanguageConfig("de-DE", "The Endpoint ID for your custom model.")
@@ -167,14 +167,14 @@ speechConfig.endpointId = "The Endpoint ID for your custom model.";
 
 ## <a name="how-to-specify-source-language-in-objective-c"></a>Objective-C でソース言語を指定する方法
 
-この例では、`SPXSpeechRecognizer` コンストラクトを使って、ソース言語をパラメーターとして明示的に指定します。
+次の例では、`SPXSpeechRecognizer` コンストラクトを使って、ソース言語をパラメーターとして明示的に指定します。
 
 ```Objective-C
 SPXSpeechRecognizer* speechRecognizer = \
     [[SPXSpeechRecognizer alloc] initWithSpeechConfiguration:speechConfig language:@"de-DE" audioConfiguration:audioConfig];
 ```
 
-この例では、`SPXSourceLanguageConfiguration` を使ってソース言語を提供します。 次に、`SPXSourceLanguageConfiguration` をパラメーターとして `SPXSpeechRecognizer` コンストラクトに渡します。
+次の例では、`SPXSourceLanguageConfiguration` を使ってソース言語を提供します。 次に、`SPXSourceLanguageConfiguration` をパラメーターとして `SPXSpeechRecognizer` コンストラクトに渡します。
 
 ```Objective-C
 SPXSourceLanguageConfiguration* sourceLanguageConfig = [[SPXSourceLanguageConfiguration alloc]init:@"de-DE"];
@@ -183,7 +183,7 @@ SPXSpeechRecognizer* speechRecognizer = [[SPXSpeechRecognizer alloc] initWithSpe
                                                                               audioConfiguration:audioConfig];
 ```
 
-この例では、`SPXSourceLanguageConfiguration` を使ってソース言語とカスタム エンドポイントを提供します。 次に、`SPXSourceLanguageConfiguration` をパラメーターとして `SPXSpeechRecognizer` コンストラクトに渡します。
+次の例では、`SPXSourceLanguageConfiguration` を使ってソース言語とカスタム エンドポイントを提供します。 次に、`SPXSourceLanguageConfiguration` をパラメーターとして `SPXSpeechRecognizer` コンストラクトに渡します。
 
 ```Objective-C
 SPXSourceLanguageConfiguration* sourceLanguageConfig = \

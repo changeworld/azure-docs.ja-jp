@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 1bec42dabde64fed8126e47e39f19536b28014f1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692441"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714835"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>ストレージ アカウントのスループットと待機時間のメトリックの確認
 
@@ -24,11 +24,11 @@ ms.locfileid: "82692441"
 > * Azure ポータルでのグラフの構成
 > * スループットと待機時間のメトリックの確認
 
-[Azure Storage のメトリック](../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)は、Azure Monitor を使用して、ストレージ アカウントのパフォーマンスと可用性に関する統合ビューを提供します。
+[Azure Storage のメトリック](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)は、Azure Monitor を使用して、ストレージ アカウントのパフォーマンスと可用性に関する統合ビューを提供します。
 
 ## <a name="configure-metrics"></a>メトリックを構成する
 
-ストレージ アカウントの **[設定]** にある **[メトリック (プレビュー)]** に移動します。
+ストレージ アカウントの **[設定]** にある **[メトリック]** に移動します。
 
 **[SUB SERVICE]\(サブ サービス\)** ドロップダウンから BLOB を選択します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "82692441"
 
 ## <a name="dimensions"></a>Dimensions
 
-[ディメンション](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)は、グラフをさらに詳しく調べて詳細な情報を得るために使用します。 メトリックごとにさまざまなディメンションがあります。 利用可能なディメンションの 1 つに、 **[API 名]** ディメンションがあります。 このディメンションは、グラフを各 API 呼び出しごとに分割します。 下の 1 番目の図は、ストレージ アカウントの合計トランザクション数のグラフの例を示しています。 2 番目の図も同じグラフですが、[API 名] ディメンションを選択した場合を示しています。 ご覧のとおり、各トランザクションが一覧表示され、API 名ごとの呼び出し回数を詳細に把握できます。
+[ディメンション](./monitor-blob-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions)は、グラフをさらに詳しく調べて詳細な情報を得るために使用します。 メトリックごとにさまざまなディメンションがあります。 利用可能なディメンションの 1 つに、 **[API 名]** ディメンションがあります。 このディメンションは、グラフを各 API 呼び出しごとに分割します。 下の 1 番目の図は、ストレージ アカウントの合計トランザクション数のグラフの例を示しています。 2 番目の図も同じグラフですが、[API 名] ディメンションを選択した場合を示しています。 ご覧のとおり、各トランザクションが一覧表示され、API 名ごとの呼び出し回数を詳細に把握できます。
 
 ![ストレージ アカウントのメトリック - ディメンションを指定しない場合のトランザクション数](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 

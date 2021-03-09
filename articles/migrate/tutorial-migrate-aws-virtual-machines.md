@@ -1,15 +1,18 @@
 ---
 title: アマゾン ウェブ サービス (AWS) の EC2 VM を検出して評価し、Azure に移行する
 description: この記事では、Azure Migrate を使用して、AWS VM を Azure に移行する方法について説明します。
+author: deseelam
+ms.author: deseelam
+ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 72579c103102196e641244600ce9add64d6e20a4
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89419012"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878191"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -40,15 +43,20 @@ Azure に移行する前に、VM の検出と移行の評価を行うことが�
 
 次のとおりに評価を設定します。
 
-1. [チュートリアル](./tutorial-prepare-physical.md)に従って、評価のために Azure の設定と AWS VM の準備を行います。 以下の点に注意してください。
+1. [チュートリアル](./tutorial-discover-physical.md)に従って、評価のために Azure の設定と AWS VM の準備を行います。 以下の点に注意してください。
 
     - Azure Migrate では、AWS インスタンスを検出するときにパスワード認証が使用されます。 AWS インスタンスは、既定ではパスワード認証をサポートしていません。 インスタンスを検出するには、パスワード認証を有効にする必要があります。
-        - Windows マシンの場合は、WinRM ポート 5986 (HTTPS) と 5985 (HTTP) を許可します。 これにより、リモート WMI 呼び出しが可能になります。 設定した場合。 
+        - Windows マシンの場合、WinRM ポート 5985 (HTTP) を許可します。 これにより、リモート WMI 呼び出しが可能になります。
         - Linux マシンの場合:
             1. 各 Linux マシンにサインインします。
             2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
             3. ファイルで、**PasswordAuthentication** 行を見つけ、値を **yes** に変更します。
             4. ファイルを保存して閉じます。 sshdサービスを再起動します。
+    - ルート ユーザーを使用して Linux VM を検出する場合、VM でルート ログインが許可されることを確認してください。
+        1. 各 Linux マシンにサインインします。
+        2. 次のようにして sshd_config ファイルを開きます。vi /etc/ssh/sshd_config
+        3. ファイルで、**PermitRootLogin** 行を見つけ、値を **yes** に変更します。
+        4. ファイルを保存して閉じます。 sshdサービスを再起動します。
 
 2. 次に、[このチュートリアル](./tutorial-assess-physical.md)に従って Azure Migrate プロジェクトとアプライアンスを設定し、お使いの AWS VM を検出して評価します。
 
@@ -72,14 +80,14 @@ Azure Migrate: Server Migration ツールを使用した移行のために Azure
 
 **タスク** | **詳細**
 --- | ---
-**Azure Migrate プロジェクトの作成** | Azure アカウントには、プロジェクトを作成するために共同作成者または所有者のアクセス許可が必要です。
+**Azure Migrate プロジェクトの作成** | Azure アカウントには、[新規プロジェクトを作成する](./create-manage-projects.md)ために共同作成者または所有者のアクセス許可が必要です。
 **Azure アカウントのアクセス許可の確認** | ご使用の Azure アカウントには、VM を作成するためのアクセス許可と Azure マネージド ディスクへの書き込みアクセス許可が必要です。
 
 ### <a name="assign-permissions-to-create-project"></a>プロジェクトを作成するためのアクセス許可を割り当てる
 
 1. Azure portal でサブスクリプションを開き、 **[アクセス制御 (IAM)]** を選択します。
 2. **[アクセスの確認]** で関連するアカウントを探し、それをクリックしてアクセス許可を表示します。
-3. **共同作成者**または**所有者**のアクセス許可を持っている必要があります。
+3. **共同作成者** または **所有者** のアクセス許可を持っている必要があります。
     - 無料の Azure アカウントを作成したばかりであれば、自分のサブスクリプションの所有者になっています。
     - サブスクリプションの所有者でない場合は、所有者と協力してロールを割り当てます。
 
@@ -120,30 +128,6 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 - レプリケーション アプライアンスでは MySQL が使用されます。 アプライアンスに MySQL をインストールするためのいくつかの[方法](migrate-replication-appliance.md#mysql-installation)を確認します。
 - [パブリック](migrate-replication-appliance.md#url-access) クラウドおよび[政府機関向け](migrate-replication-appliance.md#azure-government-url-access)クラウドにアクセスするレプリケーション アプライアンスに必要な Azure URL を確認します。
-
-## <a name="add-the-server-migration-tool"></a>Server Migration ツールを追加する
-
-Azure Migrate プロジェクトを設定し、そこに Server Migration ツールを追加します。
-
-1. Azure portal の **[すべてのサービス]** で、**Azure Migrate** を検索します。
-2. **[サービス]** で **[Azure Migrate]** を選択します。
-3. **[概要]** で **[サーバーの評価と移行]** をクリックします。
-4. **[サーバーの検出、評価、移行]** で、 **[サーバーの評価と移行]** をクリックします。
-
-    ![サーバーの検出と評価](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. **[サーバーの検出、評価、移行]** で、 **[ツールの追加]** をクリックします。
-6. **[移行プロジェクト]** で、自分の Azure サブスクリプションを選択し、リソース グループがない場合は作成します。
-7. **[プロジェクトの詳細]** で、プロジェクト名と、プロジェクトを作成したい地域を指定し、 **[次へ]** をクリックします。 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
-    - プロジェクトの地理的な場所は、AWS マシンから収集されたメタデータを格納するためにのみ使用されます。
-    - 移行を実行するときは、任意のターゲット リージョンを選択できます。
-
-    ![Azure Migrate プロジェクトの作成](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. **[評価ツールの選択]** で、 **[今は評価ツールの追加をスキップします]**  >  **[次へ]** の順に選択します。
-9. **[移行ツールの選択]** で、次を選択します: **[Azure Migrate: Server Migration]**  >  **[次へ]** 。
-10. **[ツールの確認と追加]** で設定を確認し、 **[ツールの追加]** をクリックします
-11. ツールを追加すると、Azure Migrate プロジェクトの **[サーバー]**  >  **[移行ツール]** に表示されます。
 
 ## <a name="set-up-the-replication-appliance"></a>レプリケーション アプライアンスを設定する
 
@@ -251,7 +235,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 2. **[レプリケート]** で、 **[ソースの設定]**  >  **[マシンは仮想化されていますか?]** で、 **[非仮想化/その他]** を選択します。
 3. **[オンプレミスのアプライアンス]** で、自分が設定した Azure Migrate アプライアンスの名前を選択します。
 4. **[プロセス サーバー]** で、レプリケーション アプライアンスの名前を選択します。 
-5. **[ゲストの資格情報]** では、前の[レプリケーション インストーラーのセットアップ](#download-the-replication-appliance-installer)の間に作成したダミー アカウントを選択して、Mobility Service を手動でインストールしてください (プッシュ インストールはサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。   
+5. **[ゲストの資格情報]** では、前の [レプリケーション インストーラーのセットアップ](#download-the-replication-appliance-installer)の間に作成したダミー アカウントを選択して、Mobility Service を手動でインストールしてください (プッシュ インストールはサポートされていません)。 その後、 **[次へ:仮想マシン]** をクリックします。   
  
     ![[レプリケート] 設定](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
 6. **[仮想マシン]** の **[評価から移行設定をインポートしますか?]** は、既定の設定である **[いいえ。移行設定を手動で指定します]** のままにしておきます。
@@ -265,13 +249,23 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
     -  可用性ゾーン。移行されたマシンをリージョン内の特定の可用性ゾーンにピン留めします。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションを選択した場合は、[コンピューティング] タブで選択した各マシンに使用する可用性ゾーンを指定する必要があります。このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。
     -  可用性セット。移行されたマシンを可用性セットに配置します。 このオプションを使用するには、選択されたターゲット リソース グループに 1 つ以上の可用性セットが必要です。
     - [インフラストラクチャ冗長は必要ありません] オプション (移行されたマシンに対してこれらの可用性構成がいずれも不要な場合)。
-11. **[Azure ハイブリッド特典]** で、
+    
+11. **[Disk encryption type]\(ディスク暗号化の種類\)** で、以下を選択します。
+    - プラットフォーム マネージド キーを使用した保存時の暗号化
+    - カスタマー マネージド キーを使用した保存時の暗号化
+    - プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化
+
+   > [!NOTE]
+   > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
+  
+12. **[Azure ハイブリッド特典]** で、
+
     - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 続けて、 **[次へ]** をクリックします。
     - アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 **[はい]** を選択します。 続けて、 **[次へ]** をクリックします。
 
-    ![ターゲットの設定](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
+    ![ターゲットの設定](./media/tutorial-migrate-vmware/target-settings.png)
 
-12. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
+13. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
 
     - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
     - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
@@ -280,13 +274,13 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
 
 ![コンピューティングの設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
+14. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
     - レプリケーションからディスクを除外できます。
     - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。 
 
     ![ディスクの設定](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-14. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
+15. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
 
 > [!NOTE]
 > レプリケーションが開始される前であれば、 **[管理]**  >  **[マシンのレプリケート]** でレプリケーションの設定をいつでも更新できます。 レプリケーションの開始後は、設定を変更することができません。
@@ -322,7 +316,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
     ![テスト移行](./media/tutorial-migrate-physical-virtual-machines/test-migrate.png)
 
 3. **[テスト移行]** で、移行後に Azure VM が配置される Azure VNet を選択します。 非運用環境の VNet を使用することをお勧めします。
-4. **テスト移行**ジョブが開始されます。 ポータルの通知でジョブを監視します。
+4. **テスト移行** ジョブが開始されます。 ポータルの通知でジョブを監視します。
 5. 移行の完了後、Azure portal の **[仮想マシン]** で、移行された Azure VM を確認します。 マシン名には、サフィックス **-Test** が含まれています。
 6. テストが完了したら、 **[マシンのレプリケート]** で Azure VM を右クリックし、 **[テスト移行をクリーンアップ]** をクリックします。
 
@@ -365,7 +359,7 @@ Azure Migrate プロジェクトを設定し、そこに Server Migration ツー
     - Azure VM を Site Recovery のセカンダリ リージョンにレプリケートし、継続的にワークロードを実行して利用可能にします。 [詳細については、こちらを参照してください](../site-recovery/azure-to-azure-tutorial-enable-replication.md)。
 - セキュリティの強化：
     - [Azure Security Center のジャスト イン タイム管理](../security-center/security-center-just-in-time.md)を利用して、インバウンド トラフィック アクセスをロックダウンして制限します。
-    - [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
+    - [ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md)を使って、ネットワーク トラフィックを管理エンドポイントに制限します。
     - [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) をデプロイして、ディスクをセキュリティ保護し、盗難や不正アクセスからデータを安全に保護します。
     - [IaaS リソースのセキュリティ保護](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/)に関する詳細を読み、[Azure Security Center](https://azure.microsoft.com/services/security-center/) を確認してください。
 - 監視と管理：

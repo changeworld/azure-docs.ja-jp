@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 03/18/2020
 ms.author: v-erkel
 ms.openlocfilehash: efa163a2c10a7dc93bf5d26865a0e7eb43f11dea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87082768"
 ---
 # <a name="troubleshoot-nas-configuration-and-nfs-storage-target-issues"></a>NAS 構成および NFS ストレージ ターゲットに関する問題のトラブルシューティング

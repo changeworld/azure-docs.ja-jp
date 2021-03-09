@@ -14,11 +14,11 @@ ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
 ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850153"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000438"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。

@@ -8,26 +8,27 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5a9cc1ebbe8cfea2548f61ee1d88180ed39a75eb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 8dc2eb898c12e374bc503c5a05f00eb20667443b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002438"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701842"
 ---
-# <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>クイック スタート:Microsoft.Azure.Search v10 クライアント ライブラリを使用して検索インデックスを作成する
+# <a name="quickstart-create-a-search-index-using-the-legacy-microsoftazuresearch-v10-client-library"></a>クイックスタート: レガシ Microsoft.Azure.Search v10 クライアント ライブラリを使用して検索インデックスを作成する
 
-この記事は、レガシ Microsoft.Azure.Search (バージョン 10) クライアント ライブラリ用の C# クイックスタートであり、現在は Azure.Search.Documents (バージョン 11) クライアント ライブラリに置き換えられています。 Microsoft.Azure.Search ライブラリを使用する既存の検索ソリューションがある場合は、このクイックスタートを使用して、それらの API の詳細を確認できます。 
+この記事は、レガシ [**Microsoft.Azure.Search**](/dotnet/api/overview/azure/search/client10) (バージョン 10) クライアント ライブラリ用の C# クイックスタートであり、現在は [**Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) (バージョン 11) クライアント ライブラリに置き換えられています。
 
-新しいソリューションには、新しい Azure.Search.Documents ライブラリが推奨されます。 概要については、「[クイックスタート:Azure.Search.Documents ライブラリを使用して検索インデックスを作成する](search-get-started-dotnet.md)」をご覧ください。
+> [!NOTE]
+> 既存または開発中のプロジェクトがある場合は、引き続きバージョン 10 を使用してください。 ただし、新しいプロジェクトの場合、または新しい機能を使用する場合は、[新しいライブラリ](/dotnet/api/overview/azure/search.documents-readme)に移行する必要があります。
 
 ## <a name="about-this-quickstart"></a>このクイック スタートについて
 
-Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/dotnet/api/overview/azure/search/client10?view=azure-dotnet)を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う .NET Core コンソール アプリケーションを C# で作成します。 
+Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/dotnet/api/overview/azure/search/client10)を使用して Azure Cognitive Search インデックスの作成、読み込み、およびクエリの実行を行う .NET Core コンソール アプリケーションを C# で作成します。 
 
-この記事では、アプリケーションを作成する方法について説明します。 [完全なアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)という方法もあります。
+この記事では、アプリケーションを作成する方法について説明します。 [完全なアプリケーションをダウンロードして実行する](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v10)という方法もあります。
 
 > [!NOTE]
 > この記事のデモ コードでは、わかりやすくするため、Azure Cognitive Search バージョン 10 の .NET SDK の同期メソッドを使用します。 ただし、運用環境シナリオの実際のアプリケーションでは、スケーラビリティと応答性を維持するため、非同期メソッドを使用することをお勧めします。 たとえば、`Create` と `Delete` の代わりに、`CreateAsync` および `DeleteAsync` を使用できます。
@@ -54,7 +55,7 @@ Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/d
 
    クエリ キーも入手します。 読み取り専用アクセスを使用してクエリ要求を発行することをお勧めします。
 
-![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-postman/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
+![HTTP エンドポイントとアクセス キーを取得する](media/search-get-started-rest/get-url-key.png "HTTP エンドポイントとアクセス キーを取得する")
 
 すべての要求では、サービスに送信されるすべての要求に API キーが必要です。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
@@ -103,13 +104,13 @@ Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/d
 
 ### <a name="add-class-method-files-to-your-project"></a>クラス ".Method" ファイルをご自分のプロジェクトに追加する
 
-この手順は、コンソールで意味のある出力を生成するために必要です。 コンソール ウィンドウに結果を出力するときに、Hotel オブジェクトから個々のフィールドが文字列として返される必要があります。 この手順では、[ToString ()](/dotnet/api/system.object.tostring?view=netframework-4.8) を実装してこのタスクを実行します。これは、必要なコードを 2 つの新しいファイルにコピーすることによって行います。
+この手順は、コンソールで意味のある出力を生成するために必要です。 コンソール ウィンドウに結果を出力するときに、Hotel オブジェクトから個々のフィールドが文字列として返される必要があります。 この手順では、[ToString ()](/dotnet/api/system.object.tostring) を実装してこのタスクを実行します。これは、必要なコードを 2 つの新しいファイルにコピーすることによって行います。
 
 1. 2 つの空のクラス定義をご自分のプロジェクトに追加します。Address.Methods.cs、Hotel.Methods.cs
 
-1. Address.Methods.cs で、既定のコンテンツを次のコードの[行 1 から 25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25) で上書きします。
+1. Address.Methods.cs で、既定のコンテンツを次のコードの[行 1 から 25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25) で上書きします。
 
-1. Hotel.Methods.cs に、[行 1 から 68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68) をコピーします。
+1. Hotel.Methods.cs に、[行 1 から 68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart/v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68) をコピーします。
 
 ## <a name="1---create-index"></a>1 - インデックスの作成
 
@@ -198,15 +199,15 @@ Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/d
     フィールドは、その属性によって、アプリケーション内でどのように使用できるかが決まります。 たとえば、フルテキスト検索に含める必要があるすべてのフィールドに、`IsSearchable` 属性を割り当てる必要があります。 
     
     > [!NOTE]
-    > .NET SDK では、フィールドに [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable?view=azure-dotnet)、[`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet)、[`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable?view=azure-dotnet)、[`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable?view=azure-dotnet) の属性を明示的に付ける必要があります。 この動作は、データ型に基づいて暗黙的に属性が有効になる REST API とは対照的です (たとえば、単純な文字列フィールドは自動的に検索可能です)。
+    > .NET SDK では、フィールドに [`IsSearchable`](/dotnet/api/microsoft.azure.search.models.field.issearchable)、[`IsFilterable`](/dotnet/api/microsoft.azure.search.models.field.isfilterable)、[`IsSortable`](/dotnet/api/microsoft.azure.search.models.field.issortable)、[`IsFacetable`](/dotnet/api/microsoft.azure.search.models.field.isfacetable) の属性を明示的に付ける必要があります。 この動作は、データ型に基づいて暗黙的に属性が有効になる REST API とは対照的です (たとえば、単純な文字列フィールドは自動的に検索可能です)。
 
     実際のインデックス内の `string` 型のフィールドを 1 つだけ、各ドキュメントを一意に識別する "*キー*" フィールドにする必要があります。 このスキーマでは、キーは `HotelId` です。
 
-    このインデックスの説明フィールドでは、既定の標準 Lucene アナライザーをオーバーライドする場合に指定する、オプションの [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) プロパティを使用します。 `description_fr` フィールドでは、フランス語のテキストを格納するため、フランス語の Lucene アナライザー ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)) を使用します。 `description` では、オプションの Microsoft 言語アナライザー ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)) を使用します。
+    このインデックスの説明フィールドでは、既定の標準 Lucene アナライザーをオーバーライドする場合に指定する、オプションの [`analyzer`](/dotnet/api/microsoft.azure.search.models.field.analyzer) プロパティを使用します。 `description_fr` フィールドでは、フランス語のテキストを格納するため、フランス語の Lucene アナライザー ([FrLucene](/dotnet/api/microsoft.azure.search.models.analyzername.frlucene)) を使用します。 `description` では、オプションの Microsoft 言語アナライザー ([EnMicrosoft](/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft)) を使用します。
 
-1. Program.cs で、アプリケーションの構成ファイル (appsettings.json) に格納されている値を使用して、サービスに接続する [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) クラスのインスタンスを作成します。 
+1. Program.cs で、アプリケーションの構成ファイル (appsettings.json) に格納されている値を使用して、サービスに接続する [`SearchServiceClient`](/dotnet/api/microsoft.azure.search.searchserviceclient) クラスのインスタンスを作成します。 
 
-   `SearchServiceClient` には、Azure Cognitive Search インデックスの作成、一覧表示、更新、または削除に必要なすべてのメソッドを提供する [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) プロパティがあります。 
+   `SearchServiceClient` には、Azure Cognitive Search インデックスの作成、一覧表示、更新、または削除に必要なすべてのメソッドを提供する [`Indexes`](/dotnet/api/microsoft.azure.search.searchserviceclient.indexes) プロパティがあります。 
 
     ```csharp
     using System;
@@ -306,7 +307,7 @@ Visual Studio と [Microsoft.Azure.Search クライアント ライブラリ](/d
 
 Azure Cognitive Search では、ドキュメントにはインデックス作成の入力とクエリからの出力があり、どちらもデータ構造です。 外部データ ソースから取得するドキュメント入力には、データベース内の行、Blob storage 内の BLOB、ディスク上の JSON ドキュメントがあります。 この例では、手短な方法として、4 つのホテルの JSON ドキュメントをコード自体に埋め込みます。 
 
-ドキュメントをアップロードするときは、[`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch?view=azure-dotnet) オブジェクトを使用する必要があります。 `IndexBatch` には [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction?view=azure-dotnet) オブジェクトのコレクションが含まれています。各オブジェクトには、ドキュメント 1 つと、実行するアクション ([upload、merge、delete、mergeOrUpload](search-what-is-data-import.md#indexing-actions)) を Azure Cognitive Search に指示するプロパティが 1 つ含まれています。
+ドキュメントをアップロードするときは、[`IndexBatch`](/dotnet/api/microsoft.azure.search.models.indexbatch) オブジェクトを使用する必要があります。 `IndexBatch` には [`IndexAction`](/dotnet/api/microsoft.azure.search.models.indexaction) オブジェクトのコレクションが含まれています。各オブジェクトには、ドキュメント 1 つと、実行するアクション ([upload、merge、delete、mergeOrUpload](search-what-is-data-import.md#indexing-actions)) を Azure Cognitive Search に指示するプロパティが 1 つ含まれています。
 
 1. Program.cs で、ドキュメントとインデックス アクションの配列を作成し、その配列を `IndexBatch` に渡します。 以下のドキュメントは、Hotel と Address クラスで定義されている hotel-quickstart インデックスに準拠しています。
 
@@ -428,7 +429,7 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
     }
     ```
 
-    `IndexBatch` オブジェクトは、初期化した後、ご自分の [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) オブジェクトに対して [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index?view=azure-dotnet) を呼び出すことで、インデックスに送信できます。 `Documents` は、実際のインデックス内のドキュメントの追加、変更、削除、クエリの実行を行うためのメソッドを提供する `SearchIndexClient` のプロパティです。
+    `IndexBatch` オブジェクトは、初期化した後、ご自分の [`SearchIndexClient`](/dotnet/api/microsoft.azure.search.searchindexclient) オブジェクトに対して [`Documents.Index`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.index) を呼び出すことで、インデックスに送信できます。 `Documents` は、実際のインデックス内のドキュメントの追加、変更、削除、クエリの実行を行うためのメソッドを提供する `SearchIndexClient` のプロパティです。
 
     `Index` メソッドの呼び出しを囲む `try`/`catch` では、ご使用のサービスへの負荷が大きい場合に発生する可能性があるインデックス作成エラーをキャッチします。 運用環境のコードでは、しばらく待ってから失敗したドキュメントのインデックス作成を再試行したり、サンプルと同じようにログに記録してから続けることができます。または、ご自分のアプリケーションのデータ整合性要件に合った他の方法で処理することもできます。
 
@@ -446,16 +447,15 @@ Azure Cognitive Search では、ドキュメントにはインデックス作成
 
     プロジェクトが正常にビルドされると、コンソール ウィンドウが開き、状態メッセージが画面に書き込まれます。今回はドキュメントのアップロードに関するメッセージです。 これで、Azure portal 内にある検索サービスの **[概要]** ページで、hotels-quickstart インデックスに 4 つのドキュメントがあるはずです。
 
-ドキュメント処理の詳細については、「[How the .NET SDK handles documents (.NET SDK がドキュメントを処理する方法)](search-howto-dotnet-sdk.md#how-dotnet-handles-documents)」を参照してください。
+ドキュメント処理の詳細については、「[How the .NET SDK handles documents (.NET SDK がドキュメントを処理する方法)](search-howto-dotnet-sdk-v10.md#how-dotnet-handles-documents)」を参照してください。
 
 ## <a name="3---search-an-index"></a>3 - インデックスの検索
 
 最初のドキュメントのインデックスが作成されるとすぐにクエリの結果を取得できますが、インデックスの実際のテストではすべてのドキュメントのインデックスが作成されるまで待つ必要があります。 
 
-このセクションでは、クエリ ロジックと結果の 2 つの機能を追加します。 クエリには、[`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search?view=azure-dotnet
-) メソッドを使います。 このメソッドは、検索テキストとその他の[パラメーター](/dotnet/api/microsoft.azure.search.models.searchparameters?view=azure-dotnet)を受け取ります。 
+このセクションでは、クエリ ロジックと結果の 2 つの機能を追加します。 クエリには、[`Search`](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.search) メソッドを使います。 このメソッドは、検索テキストとその他の[パラメーター](/dotnet/api/microsoft.azure.search.models.searchparameters)を受け取ります。 
 
-[`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1?view=azure-dotnet) クラスは結果を表します。
+[`DocumentsSearchResult`](/dotnet/api/microsoft.azure.search.models.documentsearchresult-1) クラスは結果を表します。
 
 
 1. Program.cs で、検索結果をコンソールに出力する WriteDocuments メソッドを作成します。

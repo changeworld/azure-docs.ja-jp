@@ -3,25 +3,25 @@ title: Windows のグループ ポリシー ベースラインからゲスト構
 description: Windows Server 2019 セキュリティ ベースラインからグループ ポリシーをポリシー定義に変換する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f7e2af70efa6771d94d7ceaa14d1408175b1d12
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547770"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348646"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows のグループ ポリシー ベースラインからゲスト構成ポリシー定義を作成する方法
 
 カスタム ポリシー定義を作成する前に、[Azure Policy ゲスト構成](../concepts/guest-configuration.md)に関するページで、概念上の概要情報を読むことをお勧めします。 Linux のカスタムのゲスト構成ポリシー定義を作成する方法の詳細については、「[Linux 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create-linux.md)」を参照してください。 Windows のカスタムのゲスト構成ポリシー定義を作成する方法の詳細については、「[Windows 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create.md)」を参照してください。
 
-Windows の監査時に、ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使用して構成ファイルが作成されます。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が**準拠していない**場合、ポリシー効果 *auditIfNotExists* がトリガーされます。
+Windows の監査時に、ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使用して構成ファイルが作成されます。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が **準拠していない** 場合、ポリシー効果 *auditIfNotExists* がトリガーされます。
 [Azure Policy ゲスト構成](../concepts/guest-configuration.md)では、マシン内の設定の監査のみが行われます。
 
 > [!IMPORTANT]
-> ゲスト構成を使用したカスタム ポリシー定義はプレビュー機能です。
->
 > Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Windows マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
 > - [Windows VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> 
+> カスタム コンテンツ パッケージでは、秘密や機密情報を使用しないでください。
 
 DSC コミュニティでは、エクスポートされたグループ ポリシー テンプレートを DSC 形式に変換できる [BaselineManagement モジュール](https://github.com/microsoft/BaselineManagement)を公開しています。 BaselineManagement モジュールと GuestConfiguration コマンドレットを組み合わせて使用すると、グループ ポリシー コンテンツから Windows 用の Azure Policy ゲスト構成パッケージを作成できます。 BaselineManagement モジュールの使用方法の詳細については、「[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/scripting/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
 
@@ -29,7 +29,7 @@ DSC コミュニティでは、エクスポートされたグループ ポリシ
 
 ## <a name="download-windows-server-2019-security-baseline-and-install-related-powershell-modules"></a>Windows Server 2019 セキュリティ ベースラインをダウンロードし、関連する PowerShell モジュールをインストールする
 
-PowerShell で **DSC**、**GuestConfiguration**、**Baseline Management**、および関連する Azure モジュールをインストールするには:
+PowerShell で **DSC** 、 **GuestConfiguration** 、 **Baseline Management** 、および関連する Azure モジュールをインストールするには:
 
 1. PowerShell プロンプトから、次のコマンドを実行します。
 
@@ -87,78 +87,12 @@ PowerShell で **DSC**、**GuestConfiguration**、**Baseline Management**、お�
 
 ## <a name="create-azure-policy-guest-configuration"></a>Azure Policy ゲスト構成を作成する
 
-次の手順では、ファイルを BLOB ストレージに発行します。 
-
-1. 次のスクリプトには、このタスクを自動化するために使用できる関数が含まれています。 `publish` 関数で使用されるコマンドには `Az.Storage` モジュールが必要であることに注意してください。
+1. 次の手順はファイルを Azure Blob Storage に発行することです。 コマンド `Publish-GuestConfigurationPackage` には `Az.Storage` モジュールが必要です。
 
    ```azurepowershell-interactive
-    function Publish-Configuration {
-        param(
-        [Parameter(Mandatory=$true)]
-        $resourceGroup,
-        [Parameter(Mandatory=$true)]
-        $storageAccountName,
-        [Parameter(Mandatory=$true)]
-        $storageContainerName,
-        [Parameter(Mandatory=$true)]
-        $filePath,
-        [Parameter(Mandatory=$true)]
-        $blobName
-        )
-
-        # Get Storage Context
-        $Context = Get-AzStorageAccount -ResourceGroupName $resourceGroup `
-            -Name $storageAccountName | `
-            ForEach-Object { $_.Context }
-
-        # Upload file
-        $Blob = Set-AzStorageBlobContent -Context $Context `
-            -Container $storageContainerName `
-            -File $filePath `
-            -Blob $blobName `
-            -Force
-
-        # Get url with SAS token
-        $StartTime = (Get-Date)
-        $ExpiryTime = $StartTime.AddYears('3')  # THREE YEAR EXPIRATION
-        $SAS = New-AzStorageBlobSASToken -Context $Context `
-            -Container $storageContainerName `
-            -Blob $blobName `
-            -StartTime $StartTime `
-            -ExpiryTime $ExpiryTime `
-            -Permission rl `
-            -FullUri
-
-        # Output
-        return $SAS
-    }
+   Publish-GuestConfigurationPackage -Path ./AuditBitlocker.zip -ResourceGroupName  myResourceGroupName -StorageAccountName myStorageAccountName
    ```
 
-1. 一意のリソース グループ、ストレージ アカウント、およびコンテナーを定義するパラメーターを作成します。 
-   
-   ```azurepowershell-interactive
-    # Replace the $resourceGroup, $storageAccount, and $storageContainer values below.
-    $resourceGroup = 'rfc_customguestconfig'
-    $storageAccount = 'guestconfiguration'
-    $storageContainer = 'content'
-    $path = 'c:\git\policyfiles\Server2019Baseline\Server2019Baseline.zip'
-    $blob = 'Server2019Baseline.zip' 
-    ```
-
-1. パラメーターが割り当てられた発行関数を使用して、ゲスト構成パッケージをパブリック BLOB ストレージに発行します。
-
-
-   ```azurepowershell-interactive
-   $PublishConfigurationSplat = @{
-       resourceGroup = $resourceGroup
-       storageAccountName = $storageAccount
-       storageContainerName = $storageContainer
-       filePath = $path
-       blobName = $blob
-       FullUri = $true
-   }
-   $uri = Publish-Configuration @PublishConfigurationSplat
-    ```
 1. ゲスト構成のカスタム ポリシー パッケージを作成してアップロードした後、ゲスト構成ポリシー定義を作成します。 `New-GuestConfigurationPolicy` コマンドレットを使用してゲスト構成を作成します。
 
    ```azurepowershell-interactive
@@ -172,7 +106,7 @@ PowerShell で **DSC**、**GuestConfiguration**、**Baseline Management**、お�
    New-GuestConfigurationPolicy @NewGuestConfigurationPolicySplat
    ```
     
-1. `Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。 Publish コマンドを実行するには、Azure でポリシー定義を作成できるアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md#getting-started)に関するページに記載されています。 最適な組み込みロールは、**リソース ポリシーの共同作成者**です。
+1. `Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。 Publish コマンドを実行するには、Azure でポリシー定義を作成できるアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md#getting-started)に関するページに記載されています。 最適な組み込みロールは、 **リソース ポリシーの共同作成者** です。
 
    ```azurepowershell-interactive
    Publish-GuestConfigurationPolicy -Path C:\git\policyfiles\policy\ -Verbose
@@ -183,9 +117,9 @@ PowerShell で **DSC**、**GuestConfiguration**、**Baseline Management**、お�
 Azure で作成されるポリシーに関する最後のステップでは、イニシアティブを割り当てます。 [ポータル](../assign-policy-portal.md)、[Azure CLI](../assign-policy-azurecli.md)、および [Azure PowerShell](../assign-policy-powershell.md) でイニシアティブを割り当てる方法について確認できます。
 
 > [!IMPORTANT]
-> ゲスト構成ポリシー定義は**常に**、"_AuditIfNotExists_" ポリシーと "_DeployIfNotExists_" ポリシーを組み合わせたイニシアティブを使って割り当てる必要があります。 "_AuditIfNotExists_" ポリシーのみを割り当てた場合は、前提条件がデプロイされず、ポリシーでは、準拠しているサーバーが常に "0" と示されます。
+> ゲスト構成ポリシー定義は **常に** 、" _AuditIfNotExists_ " ポリシーと " _DeployIfNotExists_ " ポリシーを組み合わせたイニシアティブを使って割り当てる必要があります。 " _AuditIfNotExists_ " ポリシーのみを割り当てた場合は、前提条件がデプロイされず、ポリシーでは、準拠しているサーバーが常に "0" と示されます。
 
-_DeployIfNotExists_ 効果でポリシー定義を割り当てるには、追加のレベルのアクセス権が必要です。 最小限の権限を付与するために、**リソース ポリシーの共同作成者**を拡張するカスタム ロール定義を作成できます。 次の例では、追加のアクセス許可 _Microsoft.Authorization/roleAssignments/write_ を持つ **リソース ポリシーの共同作成者 DINE** という名前のロールを作成します。
+_DeployIfNotExists_ 効果でポリシー定義を割り当てるには、追加のレベルのアクセス権が必要です。 最小限の権限を付与するために、 **リソース ポリシーの共同作成者** を拡張するカスタム ロール定義を作成できます。 次の例では、追加のアクセス許可 _Microsoft.Authorization/roleAssignments/write_ を持つ **リソース ポリシーの共同作成者 DINE** という名前のロールを作成します。
 
    ```azurepowershell-interactive
    $subscriptionid = '00000000-0000-0000-0000-000000000000'

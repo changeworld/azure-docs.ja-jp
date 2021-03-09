@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/16/2020
   ms.author: trbye
-  ms.openlocfilehash: 1766174d053b480674da26ef3e915bcf3fdf280a
-  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+  ms.openlocfilehash: 9cb8c769074dea9ed75a9282c41c24437d17d5ab
+  ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "81401482"
+  ms.lasthandoff: 10/23/2020
+  ms.locfileid: "92756996"
 landingContent:
 - title: 会話の文字起こしについて (会議のシナリオ)
   linkLists:
@@ -24,10 +24,12 @@ landingContent:
     links:
     - text: 会議での会話の文字起こしとは
       url: conversation-transcription.md
+  - linkListType: quickstart
+    links:
+    - text: リアルタイムでの会話の文字起こしのクイックスタート
+      url: how-to-use-conversation-transcription.md
   - linkListType: how-to-guide
     links:
-    - text: リアルタイムでの会話の文字起こし
-      url: how-to-use-conversation-transcription.md
     - text: 非同期での会話の文字起こし
       url: how-to-async-conversation-transcription.md
 - title: マルチデバイスの会話について (会議のシナリオ)
@@ -56,3 +58,9 @@ landingContent:
       url: multi-device-conversation.md#language-support
     - text: 音声の文字起こしの価格
       url: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: サポート オプションとヘルプ オプション
+      url: ../cognitive-services-support-options.md?context=/azure/cognitive-services/speech-service/context/context

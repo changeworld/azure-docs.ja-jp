@@ -11,12 +11,12 @@ metadata:
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 02/27/2020
-  ms.openlocfilehash: fdda3f72c9ed70130a5f5d3877e677ee625a024d
-  ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+  ms.openlocfilehash: b02a1a1e2f6407b2ac59735fb6f202e10c64a6c4
+  ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/02/2020
-  ms.locfileid: "89393532"
+  ms.lasthandoff: 10/26/2020
+  ms.locfileid: "92534755"
 landingContent:
 - title: HDInsight について
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Azure HDInsight を使用した分析ソリューションの構築
-      url: https://docs.microsoft.com/learn/paths/build-oss-analytical-solutions-az-hdinsight/
+      url: /learn/paths/build-oss-analytical-solutions-az-hdinsight/
     - text: HDInsight クラスターの作成
       url: ./hdinsight-hadoop-provision-linux-clusters.md
     - text: HDInsight での監視

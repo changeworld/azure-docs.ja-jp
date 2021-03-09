@@ -1,6 +1,6 @@
 ---
 title: StorSimple 8000 デバイスをトラブルシューティングする診断ツール | Microsoft Docs
-description: StorSimple デバイスのモードについて、また StorSimple 用 Windows PowerShell を使用してデバイスのモードを変更する方法について説明します。
+description: この記事では、診断ツールの概要を示し、StorSimple デバイスでのツールの使用方法について説明します。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d3e9aff1a38bbabc4f878a4d2e2fb96dafe59c92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf0570cd62a2c329407cfb6dd087020f53cdc991
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504459"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94954071"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>StorSimple 診断ツールを使用して、8000 シリーズ デバイスに関する問題のトラブルシューティングを行います。
 
@@ -332,7 +332,7 @@ hcs_startup                                   Stopped hcs_startup
 * このポータルでは DATA 2 ～ 5 は有効になっていません。
 * DNS サーバーの構成が有効であり、DNS サーバーを介してデバイスを接続できます。
 * NTP サーバーの接続も問題ありません。
-* ポート 80 および 443 が開いています。 しかし、ポート 9354 はブロックされています。 [システムのネットワーク要件](storsimple-system-requirements.md)に基づいて、このポートを Service Bus 通信のために開く必要があります。
+* ポート 80 および 443 が開いています。 しかし、ポート 9354 はブロックされています。 [システムのネットワーク要件](./storsimple-8000-system-requirements.md)に基づいて、このポートを Service Bus 通信のために開く必要があります。
 * TLS/SSL 証明書は有効です。
 * ストレージ アカウント _myss8000storageacct_ にデバイスを接続できます。
 * 更新サーバーへの接続は有効です。
@@ -388,7 +388,7 @@ Web proxy                               Not enabled         Web proxy is not...
 
     診断ツールによって報告された読み取り/書き込み待機時間が長い場合:
 
-    1. BLOB サービスに対して Storage Analytics を構成し、出力を分析して Azure ストレージ アカウントの待機時間を理解します。 詳細な手順については、「[Storage Analytics の有効化と構成](../storage/common/storage-enable-and-view-metrics.md)」を参照してください。 これらの待機時間が長く、StorSimple 診断ツールが示した数値と同程度である場合は、Azure Storage に対するサービス要求を作成する必要があります。
+    1. BLOB サービスに対して Storage Analytics を構成し、出力を分析して Azure ストレージ アカウントの待機時間を理解します。 詳細な手順については、「[Storage Analytics の有効化と構成](../storage/blobs/monitor-blob-storage.md)」を参照してください。 これらの待機時間が長く、StorSimple 診断ツールが示した数値と同程度である場合は、Azure Storage に対するサービス要求を作成する必要があります。
 
     2. ストレージ アカウントの待機時間が短い場合は、ネットワーク管理者に連絡して、ネットワーク内の待機時間に関する問題を調査してください。
 
@@ -440,6 +440,6 @@ Controller0>
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Invoke-HcsDiagnostics コマンドレットの構文](https://technet.microsoft.com/library/mt795371.aspx)を確認します。
+* [Invoke-HcsDiagnostics コマンドレットの構文](/previous-versions/windows/powershell-scripting/mt795371(v=wps.630))を確認します。
 
-* StorSimple デバイスの[デプロイメントに関する問題のトラブルシューティングを行う](storsimple-troubleshoot-deployment.md)方法について理解します。
+* StorSimple デバイスの[デプロイメントに関する問題のトラブルシューティングを行う](./storsimple-8000-troubleshoot-deployment.md)方法について理解します。

@@ -1,20 +1,20 @@
 ---
 title: Speech サービスによる保存データの暗号化
 titleSuffix: Azure Cognitive Services
-description: Speech サービスによる保存データの暗号化。
+description: Microsoft からは Microsoft が管理する暗号化キーが提供されます。また、カスタマー マネージド キー (CMK) と呼ばれている独自のキーで自分の Cognitive Services サブスクリプションを管理することをお客様に許可します。 この記事では、音声サービスによる保存データの暗号化について説明します。
 author: erindormier
 manager: venkyv
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 08/28/2020
 ms.author: egeaney
-ms.openlocfilehash: c2e52fbab8d984f7442d8a336e90e9f22c0bf061
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aa0fe33dff0161767b74546aad49003d8fc70c16
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198664"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015258"
 ---
 # <a name="speech-service-encryption-of-data-at-rest"></a>Speech サービスによる保存データの暗号化
 
@@ -33,11 +33,11 @@ Custom Speech とカスタム音声を使用すると、Speech サービスに�
 
 既定では、データは Microsoft のストレージに格納され、サブスクリプションでは Microsoft のマネージド暗号化キーが使用されます。 独自のストレージ アカウントを準備するオプションもあります。 ストアへのアクセスはマネージド ID によって管理され、Speech サービスでは、音声トレース データ、カスタマイズ トレーニング データ、カスタム モデルなど、独自のデータに直接アクセスすることはできません。
 
-詳しくは、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関する記事をご覧ください。
+詳しくは、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関する記事をご覧ください。
 
 ## <a name="bring-your-own-storage-byos-for-customization-and-logging"></a>カスタマイズとログ記録のための独自ストレージの持ち込み (BYOS)
 
-独自ストレージの持ち込みへのアクセスを要求するには、 [Speech サービス - 独自ストレージの持ち込み (BYOS) 要求フォーム](https://aka.ms/cogsvc-cmk)に記入して送信します。 承認されたら、カスタマイズとログ記録に必要なデータを格納するために、独自のストレージ アカウントを作成する必要があります。 ストレージ アカウントを追加すると、Speech サービス リソースによって、システム割り当てのマネージド ID が有効になります。 システム割り当てのマネージド ID が有効になると、このリソースは Azure Active Directory (AAD) に登録されます。 登録された後、そのストレージ アカウントへのアクセス権がマネージド ID に付与されます。 マネージド ID について詳しくは、こちらをご覧ください。 詳しくは、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関する記事をご覧ください。
+独自ストレージの持ち込みへのアクセスを要求するには、 [Speech サービス - 独自ストレージの持ち込み (BYOS) 要求フォーム](https://aka.ms/cogsvc-cmk)に記入して送信します。 承認されたら、カスタマイズとログ記録に必要なデータを格納するために、独自のストレージ アカウントを作成する必要があります。 ストレージ アカウントを追加すると、Speech サービス リソースによって、システム割り当てのマネージド ID が有効になります。 システム割り当てのマネージド ID が有効になると、このリソースは Azure Active Directory (AAD) に登録されます。 登録された後、そのストレージ アカウントへのアクセス権がマネージド ID に付与されます。 マネージド ID について詳しくは、こちらをご覧ください。 詳しくは、[マネージド ID の概要](../../active-directory/managed-identities-azure-resources/overview.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
 > システム割り当てのマネージド ID を無効にすると、ストレージ アカウントへのアクセス権が削除されます。 これにより、ストレージ アカウントへのアクセスを必要とする Speech サービスの部分は動作を停止します。  
@@ -45,9 +45,9 @@ Custom Speech とカスタム音声を使用すると、Speech サービスに�
 Speech サービスでは、現在、カスタマー ロックボックスはサポートされていません。 ただし、BYOS を使用すれば顧客データを格納することができるため、[カスタマー ロックボックス](../../security/fundamentals/customer-lockbox-overview.md)と類似のデータ管理を実現できます。 Speech サービスのデータは保持され、Speech リソースが作成されたリージョンで処理されることに注意してください。 これは、保存データと転送中のデータに適用されます。 Custom Speech や Custom Voice などのカスタマイズ機能を使用する場合、顧客データはすべて、BYOS (使用されている場合) と Speech サービス リソースが存在しているのと同じリージョンで転送、格納、および処理されます。
 
 > [!IMPORTANT]
-> Microsoft では、Speech モデルを改善するためにお客様のデータを**使用するということはありません**。 また、エンドポイントのログ記録が無効になっていて、カスタマイズが使用されていない場合、顧客データは格納されません。 
+> Microsoft では、Speech モデルを改善するためにお客様のデータを **使用するということはありません**。 また、エンドポイントのログ記録が無効になっていて、カスタマイズが使用されていない場合、顧客データは格納されません。 
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Speech サービス - 独自ストレージの持ち込み (BYOS) 要求フォーム](https://aka.ms/cogsvc-cmk)
-* [マネージド ID とは](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+* [マネージド ID とは](../../active-directory/managed-identities-azure-resources/overview.md)

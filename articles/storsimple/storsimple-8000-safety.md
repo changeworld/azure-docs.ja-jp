@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 556a84acb3461fb39b3eb0390b54878254bafabf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3adbd292d42fd6fd2a0e149e103c17968a6f084b
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514537"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94950756"
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>StorSimple デバイスを安全にインストールして操作する
 ![警告アイコン](./media/storsimple-safety/IC740879.png)
@@ -114,7 +114,7 @@ Microsoft Azure StorSimple デバイスを設定および実行していると�
 
 けが、感電、または死亡事故を招く可能性を低減する方法
 
-* PCM からカバーを取り外さないでください。 内部で感電する危険性があります。 PCM を返却して交換品を受け取るには、 [Microsoft サポートに連絡](storsimple-contact-microsoft-support.md)してください。
+* PCM からカバーを取り外さないでください。 内部で感電する危険性があります。 PCM を返却して交換品を受け取るには、 [Microsoft サポートに連絡](./storsimple-8000-contact-microsoft-support.md)してください。
 
 ![通知のアイコン](./media/storsimple-safety/IC740881.png) **通知:**
 

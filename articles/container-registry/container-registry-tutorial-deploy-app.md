@@ -4,12 +4,12 @@ description: コンテナー イメージを使用し、Geo レプリケート�
 ms.topic: tutorial
 ms.date: 08/20/2018
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7a203bfc9b1317bc258e4a93ae4ac03ecbdc7a15
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74456112"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92148433"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>チュートリアル:Geo レプリケートされている Azure コンテナー レジストリから Web アプリをデプロイする
 
@@ -27,7 +27,7 @@ geo レプリケーション レジストリの作成と、コンテナー化さ
 
 ## <a name="automatic-deployment-to-web-apps-for-containers"></a>Web App for Containers への自動デプロイ
 
-Azure Container Registry では、コンテナー化されたアプリケーションの [Web App for Containers](../app-service/containers/index.yml) への直接デプロイがサポートされています。 このチュートリアルでは、Azure Portal を使用して、前のチュートリアルで作成したコンテナー イメージを異なる Azure リージョンにある 2 つの Web アプリ プランにデプロイします。
+Azure Container Registry では、コンテナー化されたアプリケーションの [Web App for Containers](../app-service/index.yml) への直接デプロイがサポートされています。 このチュートリアルでは、Azure Portal を使用して、前のチュートリアルで作成したコンテナー イメージを異なる Azure リージョンにある 2 つの Web アプリ プランにデプロイします。
 
 レジストリのコンテナー イメージから Web アプリをデプロイし、同じリージョンに geo レプリケーション レジストリがある場合、Azure Container Registry はイメージのデプロイの [webhook](container-registry-webhook.md) を自動的に作成します。 コンテナー リポジトリに新しいイメージをプッシュすると、webhook によって変更が取得され、新しいコンテナー イメージが Web アプリに自動的にデプロイされます。
 
@@ -58,7 +58,7 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 
 **[作成]** を選択して、 *[米国西部]* リージョンに Web アプリをプロビジョニングします。
 
-![Azure Portal での Web app on Linux の構成][deploy-app-portal-02]
+![[作成] ボタンが強調表示されている Web App for Containers を示すスクリーンショット。][deploy-app-portal-02]
 
 ## <a name="view-the-deployed-web-app"></a>デプロイされた Web アプリの表示
 
@@ -68,11 +68,11 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 
 **App Service** の [概要] の右上で Web アプリのハイパーリンク URL を選択して、実行中のアプリケーションをブラウザーで表示します。
 
-![Azure Portal での Web app on Linux の構成][deploy-app-portal-04]
+![Web アプリの URL が強調表示された App Service の [概要] を示すスクリーンショット。][deploy-app-portal-04]
 
 geo レプリケーション コンテナー レジストリから Docker イメージがデプロイされると、コンテナー レジストリをホストしている Azure リージョンを表すイメージがサイトに表示されます。
 
-![ブラウザーに表示された、デプロイされた Web アプリケーション][deployed-app-westus]
+![ブラウザーに表示された、デプロイされた Web アプリケーションを示すスクリーンショット。][deployed-app-westus]
 
 ## <a name="deploy-second-web-app-for-containers-instance"></a>2 つめの Web App for Containers インスタンスのデプロイ
 
@@ -88,9 +88,9 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 
 **[作成]** を選択して、 *[米国東部]* リージョンに Web アプリをプロビジョニングします。
 
-![Azure Portal での Web app on Linux の構成][deploy-app-portal-06]
+![[作成] ボタンが強調表示された Web App for Containers の [作成] ウィンドウを示すスクリーンショット。][deploy-app-portal-06]
 
-## <a name="view-the-deployed-web-app"></a>デプロイされた Web アプリの表示
+## <a name="view-the-second-deployed-web-app"></a>2 番目にデプロイされた Web アプリの表示
 
 前と同様に、ブラウザーでアプリケーションの URL に移動して、実行中のアプリケーションを表示できます。
 

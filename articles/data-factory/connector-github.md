@@ -3,16 +3,15 @@ title: GitHub に接続する
 description: GitHub を使用して Common Data Model エンティティ参照を指定する
 author: djpmsft
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: daperlov
-ms.openlocfilehash: 0e17580524d6a67934aed83c6f745583b92e2422
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5d555d7bc4d3aae9c016cacbe17b68c30859d99a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84771038"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372282"
 ---
 # <a name="use-github-to-read-common-data-model-entity-references"></a>GitHub を使用して Common Data Model エンティティ参照を読み取る
 

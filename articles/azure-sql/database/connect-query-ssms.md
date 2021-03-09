@@ -1,7 +1,7 @@
 ---
 title: 'SSMS: データに接続してクエリを実行する'
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: SQL Server Management Studio (SSMS) を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
+description: SQL Server Management Studio (SSMS) を使用して Azure SQL Database または Azure SQL Managed Instance に接続してクエリを実行する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
 keywords: SQL データベースへの接続、SQL Server Management Studio
 services: sql-database
 ms.service: sql-database
@@ -12,18 +12,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: f1fad6554a347acb1de72bfe1e5c3413e6f74d9f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 09/28/2020
+ms.openlocfilehash: 60977b9388af3a93d0ebbbc6aad50628b79e0e44
+ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004157"
+ms.lasthandoff: 09/30/2020
+ms.locfileid: "91598259"
 ---
-# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:SSMS を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続してクエリを実行する
+# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>クイック スタート:SSMS を使用して Azure SQL Database または Azure SQL Managed Instance に接続してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-このクイックスタートでは、SQL Server Management Studio (SSMS) を使用して Azure SQL データベースまたは Azure SQL マネージド インスタンスに接続し、いくつかのクエリを実行する方法について説明します。
+このクイックスタートでは、SQL Server Management Studio (SSMS) を使用して Azure SQL Database または Azure SQL Managed Instance に接続し、いくつかのクエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,7 +55,7 @@ SSMS をインストールせずにいくつかのアドホック クエリを�
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 
-2. クエリを実行する**データベース**または**マネージド インスタンス**に移動します。
+2. クエリを実行する **データベース** または **マネージド インスタンス** に移動します。
 
 3. **[概要]** ページで、SQL Database 内のデータベースの場合は **[サーバー名]** の横の完全修飾サーバー名を確認し、SQL マネージド インスタンスまたは VM 上の SQL Server インスタンスの場合は **[ホスト]** の横の完全修飾サーバー名 (または IP アドレス) を確認します。 サーバー名またはホスト名をコピーするには、名前をポイントして **[コピー]** アイコンを選択します。
 
@@ -63,6 +63,8 @@ SSMS をインストールせずにいくつかのアドホック クエリを�
 > Azure VM 上の SQL Server の接続情報については、「[SQL Server に接続する](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)」を参照してください
 
 ## <a name="connect-to-your-database"></a>データベースに接続する
+
+[!INCLUDE[ssms-connect-azure-ad](../includes/ssms-connect-azure-ad.md)]
 
 SSMS で、目的のサーバーに接続します。
 
@@ -83,6 +85,9 @@ SSMS で、目的のサーバーに接続します。
    ||||
 
    ![[サーバーに接続]](./media/connect-query-ssms/connect.png)  
+
+> [!NOTE]
+> このチュートリアルでは SQL Server 認証を利用します。
 
 3. **[サーバーに接続]** ダイアログ ボックスの **[オプション]** を選択します。 **[データベースへの接続]** ドロップダウン メニューで、**mySampleDatabase** を選択します。 「[前提条件](#prerequisites)」セクションのクイックスタートを完了すると、mySampleDatabase という名前の AdventureWorksLT データベースが作成されます。 AdventureWorks データベースの作業コピーの名前が mySampleDatabase と異なっている場合は、代わりにそれを選択します。
 
@@ -155,7 +160,7 @@ SSMS で、目的のサーバーに接続します。
 
 ### <a name="update-data"></a>データの更新
 
-次の [UPDATE](/sql/t-sql/queries/update-transact-sql?view=sql-server-ver15) Transact-SQL コードを実行して、新しい製品を変更します。
+次の [UPDATE](/sql/t-sql/queries/update-transact-sql) Transact-SQL コードを実行して、新しい製品を変更します。
 
 1. 上記のクエリを、前に作成した新しいレコードを返す次のクエリに置き換えます。
 

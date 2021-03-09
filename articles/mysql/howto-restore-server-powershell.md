@@ -1,19 +1,19 @@
 ---
 title: バックアップと復元 - Azure PowerShell - Azure Database for MySQL
 description: Azure PowerShell を使用して Azure Database for MySQL サーバーをバックアップおよび復元する方法について説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: how-to
 ms.date: 4/28/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5571d5a937fc48030c38ebe78c86ef27d6727a67
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 43ce39a1fc05c8ffedd1ae8404cc20c1a498a73f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837280"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539024"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>PowerShell を使用して Azure Database for MySQL サーバーをバックアップおよび復元する方法
 
@@ -75,9 +75,9 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `Restore-AzMySqlServer` コマンドレットの **PointInTimeRestore** パラメーター セットには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
-| ResourceGroupName |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| ResourceGroupName |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | 名前 | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | RestorePointInTime | 2020-03-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、**2020-03-13T05:59:00-08:00** など自身のローカル タイム ゾーンを使用できます。 また、**2018-03-13T13:59:00Z** など UTC Zulu 形式も使用できます。 |
 | UsePointInTimeRestore | `<SwitchParameter>` | ポイントインタイム モードを使用して復元します。 |
@@ -106,7 +106,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
   Restore-AzMySqlServer -Name mydemoserver-georestored -ResourceGroupName myresourcegroup -Location eastus -Sku GP_Gen5_8 -UseGeoRestore
 ```
 
-この例は、**myresourcegroup** に属する **mydemoserver-georestored** という名前の新しいサーバーを米国東部リージョンに作成します。 これは、8 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 サーバーは **mydemoserver** の geo 冗長バックアップ (これもリソース グループ**myresourcegroup** に含まれます) から作成されます。
+この例は、**myresourcegroup** に属する **mydemoserver-georestored** という名前の新しいサーバーを米国東部リージョンに作成します。 これは、8 個の仮想コアを備えた General Purpose Gen 5 サーバーです。 サーバーは **mydemoserver** の geo 冗長バックアップ (これもリソース グループ **myresourcegroup** に含まれます) から作成されます。
 
 既存のサーバーとは異なるリソース グループに新しいサーバーを作成するには、次の例のように **ResourceGroupName** パラメーターを使用して新しいリソース グループ名を指定します。
 
@@ -117,7 +117,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 `Restore-AzMySqlServer` コマンドレットの **GeoRestore** パラメーター セットには、次のパラメーターが必要です。
 
-| 設定 | 推奨値 | 説明  |
+| 設定 | 推奨値 | 説明  |
 | --- | --- | --- |
 |ResourceGroupName | myresourcegroup | 新しいサーバーが属するリソース グループの名前。|
 |名前 | mydemoserver-georestored | 新しいサーバーの名前。 |

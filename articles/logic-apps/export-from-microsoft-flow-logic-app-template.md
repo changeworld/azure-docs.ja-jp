@@ -3,17 +3,19 @@ title: Power Automate からフローを Azure Logic Apps にエクスポート�
 description: Azure Resource Manager テンプレートとしてエクスポートすることによって Power Automate から Azure Logic Apps にフローを移行する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: b2a45218118282f4f1cadb29c9022fc05b30f907
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 01/20/2021
+ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078730"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380136"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
+
+> 2020 年 10 月以降に作成されたフローでは、Power Automate からエクスポートして Azure Logic Apps にデプロイすることはできなくなりました。
 
 フローの機能を拡張するために、そのフローを [Power Automate](https://flow.microsoft.com) から [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に移行することができます。 フローをロジック アプリの Azure Resource Manager テンプレートとしてエクスポートし、そのロジック アプリ テンプレートを Azure リソース グループにデプロイした後、Logic App Designer でそのロジック アプリを開くことができます。
 
@@ -22,7 +24,7 @@ ms.locfileid: "87078730"
 >
 > * Logic Apps に同等のコネクタを持たない Power Automate コネクタを見つけるには、[Power Automate コネクタ](/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
 >
-> * Power Automate に同等のコネクタを持たない Logic Apps コネクタを見つけるには、[Logic Apps コネクタ](/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
+> * Power Automate に同等のコネクタを持たない Logic Apps コネクタを見つけるには、[Logic Apps コネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -80,7 +82,7 @@ ms.locfileid: "87078730"
 
       ![テンプレートの入力パラメーターを指定する](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
-   1. 完了したら、必要な Azure リソースの作成とそれに応じた Azure サブスクリプションへの課金に関する**使用条件**を確認します。
+   1. 完了したら、必要な Azure リソースの作成とそれに応じた Azure サブスクリプションへの課金に関する **使用条件** を確認します。
 
    1. 準備ができたら、 **[上記の使用条件に同意する]**  >  **[購入]** の順に選択します。
 
@@ -96,7 +98,7 @@ ms.locfileid: "87078730"
 
    1. 承認された接続が必要な手順ごとに、その手順を展開して **[Add new]\(新規追加\)** を選択します。
 
-      ![新しい接続を追加する](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
+      ![[新規追加] ボタンが選択された Outlook の [接続] ウィンドウを示すスクリーンショット。](./media/export-from-microsoft-flow-logic-app-template/add-new-connection.png)
 
    1. 各サービスにサインインするか、接続を承認するために必要な資格情報を指定します。
 
@@ -148,7 +150,7 @@ ms.locfileid: "87078730"
 
 1. ソリューション エクスプローラーで、プロジェクトのショートカット メニューを開き、 **[デプロイ]**  >  **[新規作成]** の順に選択します。 メッセージに従って Azure アカウントでサインインします。
 
-1. メッセージが表示されたら、Azure サブスクリプション、Azure リソース グループ、および、デプロイに使用するその他の設定 (テンプレートのパラメーター値を渡すために使用する[パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)など) を確認して、 **[デプロイ]** を選択します。
+1. メッセージが表示されたら、Azure サブスクリプション、Azure リソース グループ、および、デプロイに使用するその他の設定 (テンプレートのパラメーター値を渡すために使用する [パラメーター ファイル](../azure-resource-manager/templates/parameter-files.md)など) を確認して、 **[デプロイ]** を選択します。
 
    ![デプロイの設定を確認する](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 

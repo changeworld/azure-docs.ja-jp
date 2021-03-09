@@ -4,10 +4,10 @@ description: C# と .NET Core 2.0 を使用して、Service Fabric アプリケ�
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82193651"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する

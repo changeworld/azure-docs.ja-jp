@@ -8,12 +8,12 @@ ms.date: 08/10/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 76591b9f397bd84e5afac19a56dd2c6467f4650f
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: c1de8ebbd9ad381628cfeb19413baa295b42b3db
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962232"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739835"
 ---
 # <a name="create-two-web-apps-connected-securely-with-private-endpoint-and-vnet-integration"></a>プライベート エンドポイントおよび VNet 統合と安全に接続された 2 つの Web アプリを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "88962232"
 - VNet をデプロイします
 - 統合用の最初のサブネットを作成します
 - プライベート エンドポイント用の 2 番目のサブネットを作成します。特定のパラメーターを設定して、ネットワーク ポリシーを無効にする必要があります
-- PremiumV2 タイプ (プライベート エンドポイント機能に必要な最小 SKU) の App Service プランを 1 つデプロイします
+- プライベート エンドポイント機能に必要な、PremiumV2 または PremiumV3 タイプの App Service プランを 1 つデプロイします
 - プライベート DNS ゾーンを使用する特定のアプリ設定を使用して、フロントエンド Web アプリを作成します。詳細は[こちら](../web-sites-integrate-with-vnet.md#azure-dns-private-zones)を参照してください
 - フロントエンド Web アプリを統合サブネットに接続します
 - バックエンド Web アプリを作成します

@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: c80823513dd65d68d74be62ca1194f843623d2dc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3286b464051b8fea88d2797d4f82b20fe432b4b8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323028"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90019531"
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
@@ -28,6 +28,8 @@ IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT
 デバイスから IoT Hub にファイルをアップロードするには、[Azure Storage アカウントを関連付ける](iot-hub-devguide-file-upload.md#associate-an-azure-storage-account-with-iot-hub)ことによってハブを構成する必要があります。
 
 その後、デバイスは、[アップロードを開始](iot-hub-devguide-file-upload.md#initialize-a-file-upload)し、アップロードの完了時に [IoT Hub に通知](iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload)できます。 必要に応じて、デバイスがアップロードの完了を IoT Hub に通知するときに、サービスによって[通知メッセージ](iot-hub-devguide-file-upload.md#file-upload-notifications)を生成できます。
+
+[!INCLUDE [iot-hub-include-x509-ca-signed-file-upload-support-note](../../includes/iot-hub-include-x509-ca-signed-file-upload-support-note.md)]
 
 ### <a name="when-to-use"></a>使用する場合
 

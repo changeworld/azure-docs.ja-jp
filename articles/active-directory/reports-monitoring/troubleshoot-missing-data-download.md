@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5003d7b644a0c75401a17ed6a37f31acd8180aa9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85608077"
 ---
 # <a name="i-cant-find-all-the-data-in-the-azure-active-directory-activity-logs-i-downloaded"></a>ダウンロードした Azure Active Directory アクティビティ ログにすべてのデータが表示されません。
@@ -36,7 +36,7 @@ ms.locfileid: "85608077"
 
 Azure portal でアクティビティ ログをダウンロードする場合は、新しい順に並べ替えられた最新の 250,000 件のレコードに制限されます。 
 
-## <a name="resolution"></a>解決策
+## <a name="resolution"></a>解像度
 
 [Azure AD Reporting API](concept-reporting-api.md) を利用すると、任意の時点のレコードを最大 100 万件取得できます。
 

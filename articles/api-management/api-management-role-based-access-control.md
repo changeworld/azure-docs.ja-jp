@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: faef2721b48ffab12264c585d2dec55ab9334016
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015291"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Azure API Management でロールベースのアクセス制御を使用する方法

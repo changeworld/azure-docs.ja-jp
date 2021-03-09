@@ -5,18 +5,18 @@ author: vhorne
 ms.service: web-application-firewall
 services: web-application-firewall
 ms.topic: tutorial
-ms.date: 03/10/2020
+ms.date: 09/15/2020
 ms.author: victorh
-ms.openlocfilehash: be66a93ea4a518b26d973d222caf58e73b6986a3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ba344c3b1570c041e1602bdfcde1b3a4055dc396
+ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79475843"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92132756"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して Azure Front Door で Web アプリケーション ファイアウォール ポリシーを作成する
 
-このチュートリアルでは、基本的な Azure Web アプリケーション ファイアウォール (WAF) ポリシーを作成し、Azure Front Door でフロントエンド ホストに適用する方法について説明します。
+このチュートリアルでは、基本的な Azure Web Application Firewall (WAF) ポリシーを作成し、Azure Front Door でフロントエンド ホストに適用する方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -33,7 +33,7 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 
 最初に、ポータルを使用して管理された既定の規則セット (DRS) で基本的な WAF ポリシーを作成します。 
 
-1. 画面の左上で **[リソースの作成]** を選択し、**WAF** を検索して、 **[Web application firewall (Preview)]\(Web アプリケーション ファイアウォール (プレビュー)\)** を選択して、 **[作成]** を選択します。
+1. 画面の左上で **[リソースの作成]** を選択し、 **WAF** を検索して、 **[Web application firewall (Preview)]\(Web アプリケーション ファイアウォール (プレビュー)\)** を選択して、 **[作成]** を選択します。
 2. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページの **[基本]** タブで、次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[確認と作成]** を選択します。
 
     | 設定                 | Value                                              |
@@ -42,7 +42,7 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
     | Resource group          |Front Door のリソース グループの名前を選択します。|
     | ポリシー名             |WAF ポリシーの一意の名前を入力します。|
 
-   ![WAF ポリシーを作成する](../media/waf-front-door-create-portal/basic.png)
+   :::image type="content" source="../media/waf-front-door-create-portal/basic.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、サブスクリプション、リソース グループ、ポリシー名の各リスト ボックスが表示されています。" border="false":::
 
 3. **[Create a WAF policy]\(WAF ポリシーの作成\)** ページの **[関連付け]** タブで、 **[フロントエンド ホストの追加]** を選択し、次の設定を入力して、 **[追加]** を選択します。
 
@@ -59,25 +59,28 @@ Front Door プロファイルを作成するには、[Front Door プロファイ
 
 ### <a name="change-mode"></a>モードを変更する
 
-WAF ポリシーを作成するとき、既定では WAF ポリシーは**検出**モードになります。 **検出**モードでは、WAF はすべての要求をブロックせず、代わりに、WAF 規則に一致する要求は WAF ログに記録されます。
-WAF の動作を確認するには、モードの設定を **[検出]** から **[防止]** に変更できます。 **防止**モードでは、既定の規則セット (DRS) で定義されている規則に一致する要求はブロックされ、WAF ログに記録されます。
+WAF ポリシーを作成するとき、既定では WAF ポリシーは **検出** モードになります。 **検出** モードでは、WAF はすべての要求をブロックせず、代わりに、WAF 規則に一致する要求は WAF ログに記録されます。
+WAF の動作を確認するには、モードの設定を **[検出]** から **[防止]** に変更できます。 **防止** モードでは、既定の規則セット (DRS) で定義されている規則に一致する要求はブロックされ、WAF ログに記録されます。
 
- ![WAF ポリシー モードを変更する](../media/waf-front-door-create-portal/policy.png)
+ :::image type="content" source="../media/waf-front-door-create-portal/policy.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、サブスクリプション、リソース グループ、ポリシー名の各リスト ボックスが表示されています。" border="false":::
 
 ### <a name="custom-rules"></a>カスタム規則
 
 **[カスタム ルール]** セクションの下の **[Add custom rule]\(カスタム ルールの追加\)** を選択することで、カスタム ルールを作成できます。 これで、カスタム ルールの構成ページが起動されます。 次に示すのは、クエリ文字列に **blockme** が含まれているときに要求をブロックするというカスタム ルールの構成方法の例です。
 
-![WAF ポリシー モードを変更する](../media/waf-front-door-create-portal/customquerystring2.png)
+:::image type="content" source="../media/waf-front-door-create-portal/customquerystring2.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、サブスクリプション、リソース グループ、ポリシー名の各リスト ボックスが表示されています。" border="false":::
 
 ### <a name="default-rule-set-drs"></a>既定の規則セット (DRS)
 
-Azure で管理される既定の規則セットは既定で有効になります。 規則グループ内の個々の規則を無効にするには、その規則グループ内の規則を展開し、規則番号の前の**チェック ボックス**をオンにして、上のタブの **[無効]** を選択します。 規則セット内の個々の規則のアクションの種類を変更するには、規則番号の前にあるチェック ボックスをオンにして、上のタブの **[Change action]\(アクションの変更\)** を選択します。
+Azure で管理される既定の規則セットは既定で有効になります。 規則グループ内の個々の規則を無効にするには、その規則グループ内の規則を展開し、規則番号の前の **チェック ボックス** をオンにして、上のタブの **[無効]** を選択します。 規則セット内の個々の規則のアクションの種類を変更するには、規則番号の前にあるチェック ボックスをオンにして、上のタブの **[Change action]\(アクションの変更\)** を選択します。
 
- ![WAF 規則セットを変更する](../media/waf-front-door-create-portal/managed2.png)
+ :::image type="content" source="../media/waf-front-door-create-portal/managed2.png" alt-text="[Create a W A F policy]\(W A F ポリシーの作成\) ページのスクリーンショット。[確認と作成] ボタンのほか、サブスクリプション、リソース グループ、ポリシー名の各リスト ボックスが表示されています。" border="false":::
 
-## <a name="next-steps"></a>次のステップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソース グループおよび関連するすべてのリソースは、不要になったら削除します。
+
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure Web アプリケーション ファイアウォールについて確認する](../overview.md)
-> [Azure Front Door の詳細を確認する](../../frontdoor/front-door-overview.md)
+> [Azure Front Door の詳細](../../frontdoor/front-door-overview.md)を確認する

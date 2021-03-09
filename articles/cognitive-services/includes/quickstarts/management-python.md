@@ -8,16 +8,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 7cc76ab7c9ce2191a54d5bd61282267467603694
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 521f6c39a10259b09d741a61dcd8e81d8a0c35b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321596"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948267"
 ---
-[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [パッケージ (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
+[リファレンス ドキュメント](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices) | [パッケージ (PyPi)](https://pypi.org/project/azure-mgmt-cognitiveservices/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-mgmt-cognitiveservices/tests)
 
-## <a name="prerequisites"></a>前提条件
+## <a name="python-prerequisites"></a>Python の前提条件
 
 * 有効な Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)。
 * [Python 3.x](https://www.python.org/)
@@ -56,7 +56,11 @@ Python スクリプトを開き、以下のライブラリをインポートし�
 
 [!code-python[](~/cognitive-services-quickstart-code/python/azure_management_service/create_delete_resource.py?name=snippet_auth)]
 
-## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
+## <a name="create-a-cognitive-services-resource-python"></a>Cognitive Services リソースを作成する (Python)
+
+新しい Cognitive Services リソースを作成してサブスクライブするには、**Create** 関数を使用します。 この関数で、渡したリソース グループに新しい課金対象リソースが追加されます。 新しいリソースを作成するときには、使用するサービスの "種類"、その価格レベル (つまり SKU)、および Azure の場所を把握している必要があります。 次の関数は、これらのすべての引数を受け取り、リソースを作成します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/azure_management_service/create_delete_resource.py?name=snippet_create)]
 
 ### <a name="choose-a-service-and-pricing-tier"></a>サービスと価格レベルを選択する
 
@@ -67,12 +71,6 @@ Python スクリプトを開き、以下のライブラリをインポートし�
 [!INCLUDE [cognitive-services-subscription-types](../../../../includes/cognitive-services-subscription-types.md)]
 
 [!INCLUDE [SKUs and pricing](./sku-pricing.md)]
-
-## <a name="create-a-cognitive-services-resource"></a>Cognitive Services リソースの作成
-
-新しい Cognitive Services リソースを作成してサブスクライブするには、**Create** 関数を使用します。 この関数で、渡したリソース グループに新しい課金対象リソースが追加されます。 新しいリソースを作成するときには、使用するサービスの "種類"、その価格レベル (つまり SKU)、および Azure の場所を把握している必要があります。 次の関数は、これらのすべての引数を受け取り、リソースを作成します。
-
-[!code-python[](~/cognitive-services-quickstart-code/python/azure_management_service/create_delete_resource.py?name=snippet_create)]
 
 ## <a name="view-your-resources"></a>リソースを表示する
 
@@ -102,7 +100,7 @@ python <your-script-name>.py
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Management SDK のリファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices?view=azure-python)
-* [Azure Cognitive Services とは](../../Welcome.md)
+* [Azure Management SDK のリファレンス ドキュメント](/python/api/azure-mgmt-cognitiveservices/azure.mgmt.cognitiveservices)
+* [Azure Cognitive Services とは](../../what-are-cognitive-services.md)
 * [Azure Cognitive Services に対する要求の認証](../../authentication.md)
 * [Azure portal を使用して新しいリソースを作成する](../../cognitive-services-apis-create-account.md)

@@ -9,15 +9,15 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: aca3c9c52260d3ea2ab8def37566377fa67e712d
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: b215dfff3bf62b67b89aa260b0134381de6edeae
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705930"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97695713"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>クイック スタート:Azure CDN のプロファイルとエンドポイントの作成 - ARM テンプレート
 
@@ -46,7 +46,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 テンプレートには、1 つの Azure リソースが定義されています。
 
-* **[Microsoft.Cdn/profiles](https://docs.microsoft.com/azure/templates/microsoft.cdn/profiles)**
+* **[Microsoft.Cdn/profiles](/azure/templates/microsoft.cdn/profiles)**
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -61,7 +61,7 @@ az group create \
 --name $resourceGroupName \
 --location $location
 
-az group deployment create \
+az deployment group create \
 --resource-group $resourceGroupName \
 --template-uri  $templateUri
 ```
@@ -107,7 +107,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 ### <a name="powershell"></a>PowerShell
 
-必要がなくなったら、[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) コマンドを使用して、リソース グループと、その内部に含まれているすべてのリソースを削除できます。
+必要がなくなったら、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) コマンドを使用して、リソース グループと、その内部に含まれているすべてのリソースを削除できます。
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN

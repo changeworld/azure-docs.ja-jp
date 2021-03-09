@@ -3,17 +3,17 @@ title: Azure IoT Central でルールとアクションを構成する | Microso
 description: このハウツー記事では、作成者として Azure IoT Central アプリケーションでテレメトリベースのルールとアクションを構成する方法について説明します。
 author: vavilla
 ms.author: vavilla
-ms.date: 11/27/2019
+ms.date: 12/23/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 378a1dbcfbc89cdf9b24dc2490db583f1135b9a2
+ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659356"
+ms.lasthandoff: 12/28/2020
+ms.locfileid: "97796790"
 ---
 # <a name="configure-rules"></a>ルールを構成する
 
@@ -33,11 +33,11 @@ IoT Central のルールは、接続されているデバイスからアクテ�
 
 次のスクリーンショットでは、温度が 70&deg; F より高く、かつ湿度が 10 未満になるタイミングを条件で確認します。 これらのステートメントが両方とも true である場合、ルールの評価結果は true になり、アクションがトリガーされます。
 
-![条件](media/howto-configure-rules/conditions.png)
+![温度と湿度の条件が指定された冷蔵庫モニターを示すスクリーンショット。](media/howto-configure-rules/conditions.png)
 
 ### <a name="use-a-cloud-property-in-a-value-field"></a>値フィールドでクラウド プロパティを使用する
 
-クラウド プロパティは、条件の**値**フィールドにあるデバイス テンプレートから参照できます。 クラウド プロパティとテレメトリ値は、類似した型である必要があります。 たとえば、**温度**が double の場合、 **[値]** ドロップダウンには、double 型のクラウド プロパティのみがオプションとして表示されます。
+クラウド プロパティは、条件の **値** フィールドにあるデバイス テンプレートから参照できます。 クラウド プロパティとテレメトリ値は、類似した型である必要があります。 たとえば、**温度** が double の場合、 **[値]** ドロップダウンには、double 型のクラウド プロパティのみがオプションとして表示されます。
 
 イベントの種類のテレメトリ値を選択する場合、 **[値]** ドロップダウンには、 **[任意]** オプションが表示されます。 **[任意]** オプションは、ペイロードの内容にかかわらず、アプリケーションがその種類のイベントを受信するときに規則が適用されることを意味します。
 

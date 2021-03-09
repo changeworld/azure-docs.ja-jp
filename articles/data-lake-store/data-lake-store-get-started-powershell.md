@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: twooley
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ba51c96e3195f75a0ccf49baded67737f4665615
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.openlocfilehash: 485b14f85d68290c5447c885b9bc4974318f7952
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89077740"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92103732"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Azure PowerShell を使用して Azure Data Lake Storage Gen1 の使用を開始する
 
@@ -36,7 +36,7 @@ Azure PowerShell を使用して、Azure Data Lake Storage Gen1 アカウント�
 
 ## <a name="authentication"></a>認証
 
-この記事では、Data Lake Storage Gen1 に対する認証に、Azure アカウントの資格情報を入力する比較的単純な方法を使用しています。 その後、Data Lake Storage Gen1 アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。 ただし、Data Lake Storage Gen1 には他の認証方法も存在します (エンド ユーザー認証とサービス間認証)。 認証方法の詳細については、[エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)または[サービス間認証](data-lake-store-authenticate-using-active-directory.md)に関するページを参照してください。
+この記事では、Data Lake Storage Gen1 に対する認証に、Azure アカウントの資格情報を入力する比較的単純な方法を使用しています。 その後、Data Lake Storage Gen1 アカウントとファイル システムに対するアクセス レベルは、そのログイン ユーザーのアクセス レベルで管理されます。 ただし、Data Lake Storage Gen1 には他の認証方法も存在します (エンド ユーザー認証とサービス間認証)。 認証方法の詳細については、[エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)または[サービス間認証](./data-lake-store-service-to-service-authenticate-using-active-directory.md)に関するページを参照してください。
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントを作成する
 

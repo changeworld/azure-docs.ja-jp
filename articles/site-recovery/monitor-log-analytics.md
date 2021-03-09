@@ -7,16 +7,16 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 766d0a763f7d69ec58851116e18510235f39b364
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 308e1bcf042feb15179d32844d8c569af6166619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495065"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571681"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Azure Monitor ログを使用した Site Recovery の監視
 
-この記事では、Azure [Site Recovery](site-recovery-overview.md) によってレプリケートされたマシンを [Azure Monitor ログ](../azure-monitor/platform/data-platform-logs.md)と [Log Analytics](../azure-monitor/log-query/log-query-overview.md) を使って監視する方法を説明します。
+この記事では、Azure [Site Recovery](site-recovery-overview.md) によってレプリケートされたマシンを [Azure Monitor ログ](../azure-monitor/logs/data-platform-logs.md)と [Log Analytics](../azure-monitor/logs/log-query-overview.md) を使って監視する方法を説明します。
 
 Azure Monitor ログは、アクティビティ ログとリソース ログを他の監視データと共に収集するログ データ プラットフォームです。 Azure Monitor ログ内で Log Analytics を使用し、ログ クエリを記述してテストしたり、ログ データを対話形式で分析したりすることができます。 ログの結果を可視化してクエリを実行したり、監視対象データに基づいてアクションを実行するようにアラートを構成したりすることが可能です。
 
@@ -25,7 +25,7 @@ Site Recovery では、Azure Monitor ログを次の目的に使用できます�
 - **Site Recovery の正常性と状態を監視する**。 たとえば、レプリケーションの正常性、テスト フェールオーバーの状態、Site Recovery のイベント、保護対象マシンの RPO (目標復旧ポイント)、ディスク (またはデータ) の変更量を監視することができます。
 - **Site Recovery のアラートを設定する**。 たとえば、マシンの正常性、テスト フェールオーバーの状態、Site Recovery ジョブの状態に対するアラートを構成することができます。
 
-Site Recovery での Azure Monitor ログの使用は、**Azure から Azure への**レプリケーションと **VMware VM (または物理サーバー) から Azure への**レプリケーションでサポートされます。
+Site Recovery での Azure Monitor ログの使用は、**Azure から Azure への** レプリケーションと **VMware VM (または物理サーバー) から Azure への** レプリケーションでサポートされます。
 
 > [!NOTE]
 > チャーン データ ログを取得し、VMware と物理マシンのレート ログをアップロードするには、プロセス サーバーに Microsoft 監視エージェントをインストールする必要があります。 このエージェントからワークスペースに、複製を行うコンピューターのログが送信されます。 この機能は、モビリティ エージェントのバージョン 9.30 以降でのみ利用できます。
@@ -35,8 +35,8 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 次のものが必要です。
 
 - Recovery Services コンテナー内で保護された少なくとも 1 つのマシン。
-- Site Recovery のログを格納するための Log Analytics ワークスペース。 ワークスペースの設定に関する[説明](../azure-monitor/learn/quick-create-workspace.md)を参照してください。
-- Log Analytics におけるログ クエリの記述、実行、分析の方法に関する基本的な理解。 [詳細については、こちらを参照してください](../azure-monitor/log-query/get-started-portal.md)。
+- Site Recovery のログを格納するための Log Analytics ワークスペース。 ワークスペースの設定に関する[説明](../azure-monitor/logs/quick-create-workspace.md)を参照してください。
+- Log Analytics におけるログ クエリの記述、実行、分析の方法に関する基本的な理解。 [詳細については、こちらを参照してください](../azure-monitor/logs/log-analytics-tutorial.md)。
 
 最初に、[監視についての一般的な質問](monitoring-common-questions.md)を確認しておくことをお勧めします。
 
@@ -62,9 +62,9 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 1. [Log Analytics] ワークスペースに移動し、 **[詳細設定]** をクリックします。
 2. **[接続されたソース]** ページをクリックし、 **[Windows サーバー]** を選択します。
 3. Windows エージェント (64 ビット) をプロセスサーバーにダウンロードします。 
-4. [ワークスペース ID とキーを取得する](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
-5. [TLS 1.2 を使用するようにエージェントを構成する](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
-6. 取得したワークスペース ID とキーを指定し、[エージェントのインストールを完了します](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。
+4. [ワークスペース ID とキーを取得する](../azure-monitor/agents/log-analytics-agent.md#workspace-id-and-key)
+5. [TLS 1.2 を使用するようにエージェントを構成する](../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12)
+6. 取得したワークスペース ID とキーを指定し、[エージェントのインストールを完了します](../azure-monitor/agents/agent-windows.md#install-agent-using-setup-wizard)。
 7. インストールが完了したら、Log Analytics ワークスペースに移動し、 **[詳細設定]** をクリックします。 **[データ]** ページに移動し、 **[Windows パフォーマンス カウンター]** をクリックします。 
 8. **+** をクリックすると、次の 2 つのカウンターが 300 秒のサンプル間隔で追加されます。
 
@@ -76,7 +76,7 @@ Site Recovery での Azure Monitor ログの使用は、**Azure から Azure へ
 
 ## <a name="query-the-logs---examples"></a>ログのクエリを実行する - 例
 
-ログからデータを取得するには、[Kusto 照会言語](../azure-monitor/log-query/get-started-queries.md)で記述されたログ クエリを使用します。 このセクションでは、Site Recovery の監視で一般的に使用されるクエリの例をいくつか紹介します。
+ログからデータを取得するには、[Kusto 照会言語](../azure-monitor/logs/get-started-queries.md)で記述されたログ クエリを使用します。 このセクションでは、Site Recovery の監視で一般的に使用されるクエリの例をいくつか紹介します。
 
 > [!NOTE]
 > 一部の例では、**replicationProviderName_s** を **A2A** に設定しています。 この場合、Site Recovery を使用してセカンダリ Azure リージョンにレプリケートされた Azure VM が取得されます。 それらの例で、Site Recovery を使用して Azure にレプリケートされたオンプレミスの VMware VM または物理サーバーを取得したい場合は、**A2A** を **InMageAzureV2** に置き換えてください。
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>アラートを設定する - 例
 
-Azure Monitor のデータに基づいて Site Recovery のアラートを設定できます。 ログ アラートの設定に関する[詳細情報](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)を参照してください。 
+Azure Monitor のデータに基づいて Site Recovery のアラートを設定できます。 ログ アラートの設定に関する[詳細情報](../azure-monitor/alerts/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal)を参照してください。 
 
 > [!NOTE]
 > 一部の例では、**replicationProviderName_s** を **A2A** に設定しています。 この場合、セカンダリ Azure リージョンにレプリケートされた Azure VM のアラートが設定されます。 それらの例で、Azure にレプリケートされたオンプレミスの VMware VM または物理サーバーのアラートを設定したい場合は、**A2A** を **InMageAzureV2** に置き換えてください。
@@ -269,7 +269,7 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count() 
 ```
-このアラートでは、**しきい値**を 20 に設定します。
+このアラートでは、**しきい値** を 20 に設定します。
 
 ### <a name="single-machine-in-a-critical-state"></a>1 つのマシンがクリティカル状態
 
@@ -284,7 +284,7 @@ AzureDiagnostics  
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 1 に設定します。
+このアラートでは、**しきい値** を 1 に設定します。
 
 ### <a name="multiple-machines-exceed-rpo"></a>複数のマシンが RPO を超過
 
@@ -298,7 +298,7 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 20 に設定します。
+このアラートでは、**しきい値** を 20 に設定します。
 
 ### <a name="single-machine-exceeds-rpo"></a>1 つのマシンが RPO を超過
 
@@ -314,7 +314,7 @@ AzureDiagnostics  
 | project name_s , rpoInSeconds_d   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 1 に設定します。
+このアラートでは、**しきい値** を 1 に設定します。
 
 ### <a name="test-failover-for-multiple-machines-exceeds-90-days"></a>複数のマシンのテスト フェールオーバーが 90 日を超過
 
@@ -329,7 +329,7 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 20 に設定します。
+このアラートでは、**しきい値** を 20 に設定します。
 
 ### <a name="test-failover-for-single-machine-exceeds-90-days"></a>1 つのマシンのテスト フェールオーバーが 90 日を超過
 
@@ -344,7 +344,7 @@ AzureDiagnostics 
 | summarize hint.strategy=partitioned arg_max(TimeGenerated, *) by name_s   
 | summarize count()  
 ```
-このアラートでは、**しきい値**を 1 に設定します。
+このアラートでは、**しきい値** を 1 に設定します。
 
 ### <a name="site-recovery-job-fails"></a>Site Recovery ジョブの失敗
 
@@ -357,7 +357,7 @@ AzureDiagnostics  
 | summarize count()  
 ```
 
-このアラートでは、**しきい値**を 1 に、**期間**を 1,440 分に設定して、直近 24 時間の失敗をチェックします。
+このアラートでは、**しきい値** を 1 に、**期間** を 1,440 分に設定して、直近 24 時間の失敗をチェックします。
 
 ## <a name="next-steps"></a>次のステップ
 

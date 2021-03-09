@@ -6,18 +6,19 @@ services: cognitive-services
 author: dylankil
 manager: guillasi
 ms.service: cognitive-services
+ms.subservice: immersive-reader
 ms.topic: include
-ms.date: 06/10/2020
-ms.custom: devx-track-java, devx-track-javascript
+ms.date: 09/14/2020
+ms.custom: devx-track-java, devx-track-js
 ms.author: dylankil
-ms.openlocfilehash: 63a7e7756eee80b8d57c168890ba3613bbd11f01
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 29bacfff2e7b555143c0483f9b7e4b4f61c9e973
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88602438"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97612594"
 ---
-[イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
+[Immersive Reader](https://www.onenote.com/learningtools) は、新しい読者、言語学習者、ディスレクシア (失読症) などの学習障碍者の読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。 アプリケーションに Immersive Reader を使用すると、テキストを分離することによって、集中しやすくする、よく用いられる単語に画像を表示する、品詞を強調表示する、選択テキストを読み上げる、単語や文章をリアルタイムで翻訳する、といったことができます。
 
 このクイックスタートでは、Android アプリを一から作成してイマーシブ リーダーを統合します。 このクイックスタートの完全なサンプルは [GitHub](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) で入手できます。
 
@@ -25,6 +26,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * Azure Active Directory 認証用に構成されたイマーシブ リーダー リソース。 設定するには、[これらの手順](../../how-to-create-immersive-reader.md)に従ってください。 環境のプロパティを構成する際に、ここで作成した値のいくつかが必要になります。 後で参照するために、実際のセッションの出力をテキスト ファイルに保存します。
 * [Git](https://git-scm.com/).
 * [イマーシブ リーダー SDK](https://github.com/microsoft/immersive-reader-sdk)。
@@ -34,27 +36,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Android Studio で新しいプロジェクトを開始する この例のソース コードは、[イマーシブ リーダー SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-java-android) の一部として提供されています。
 
-![新しいプロジェクト](../../media/android/java/android-studio-create-project.png)
+![新しいプロジェクト - Android](../../media/android/java/android-studio-create-project.png)
 
 **[Choose your project]\(プロジェクトの選択\)** ページで **[Empty Activity]\(空のアクティビティ\)** を選択し、 **[Next]\(次へ\)** を選択します。
 
-![[Empty Activity]\(空のアクティビティ\) プロジェクト](../../media/android/java/android-studio-empty-activity.png)
+![[Empty Activity]\(空のアクティビティ\) プロジェクト - Android](../../media/android/java/android-studio-empty-activity.png)
 
 ## <a name="configure-the-project"></a>プロジェクトを構成する
 
 プロジェクトに「**QuickstartJava**」という名前を付け、保存する場所を選択します。 プログラミング言語として **[Java]** を選択し、 **[完了]** を選択します。
 
-![プロジェクトを構成する](../../media/android/java/android-studio-configure-project.png)
+![プロジェクトを構成する - Android](../../media/android/java/android-studio-configure-project.png)
 
 ## <a name="set-up-assets-and-authentication"></a>資産と認証を設定する
 
 新しい **/assets** フォルダーを作成します。
 
-![新しい assets フォルダーを作成する](../../media/android/java/android-studio-assets-folder.png)
+![新しい assets フォルダーを作成する - Android](../../media/android/java/android-studio-assets-folder.png)
 
  Assets フォルダー内に **env** という名前のファイルを作成します。 次の名前と値を追加し、適切な値を指定します。 この env ファイルには公開してはいけないシークレットが含まれているので、ソース管理にコミットしないでください。
 
-![新しい env ファイルを作成する](../../media/android/java/android-studio-create-env-file.png)
+![新しい env ファイルを作成する - Android](../../media/android/java/android-studio-create-env-file.png)
 
 ```text
 TENANT_ID=<YOUR_TENANT_ID>
@@ -62,7 +64,7 @@ CLIENT_ID=<YOUR_CLIENT_ID>
 CLIENT_SECRET=<YOUR_CLIENT_SECRET>
 SUBDOMAIN=<YOUR_SUBDOMAIN>
 ```
-![Android Studio での環境変数](../../media/android/java/android-studio-assets-and-env-file.png)
+![Android Studio での環境変数を示すスクリーンショット。](../../media/android/java/android-studio-assets-and-env-file.png)
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
@@ -81,13 +83,13 @@ dependencies {
 }
 ```
 
-![アプリ gradle の実装](../../media/android/java/android-studio-build-gradle.png)
+![アプリ gradle の実装 - Android](../../media/android/java/android-studio-build-gradle.png)
 
 ## <a name="update-app-strings-and-layout-resources"></a>アプリ文字列とレイアウト リソースを更新する
 
 **res/strings/strings.xml** の内容を、アプリで使用される以下の文字列で置き換えます。
 
-![アプリ strings.xml](../../media/android/java/android-studio-strings.png)
+![アプリ strings.xml - Android](../../media/android/java/android-studio-strings.png)
 
 ```strings.xml
 <resources>
@@ -97,7 +99,7 @@ dependencies {
 
     <string name="app_name">ImmersiveReaderSDK</string>
     <string name="geographyTitle">Geography</string>
-    <string name="geographyTextEn">The study of Earth’s landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians.Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
+    <string name="geographyTextEn">The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers. Landforms are sometimes called physical features. It is important for students to know about the physical geography of Earth. The seasons, the atmosphere and all the natural processes of Earth affect where people are able to live. Geography is one of a combination of factors that people use to decide where they want to live. The physical features of a region are often rich in resources. Within a nation, mountain ranges become natural borders for settlement areas. In the U.S., major mountain ranges are the Sierra Nevada, the Rocky Mountains, and the Appalachians. Fresh water sources also influence where people settle. People need water to drink. They also need it for washing. Throughout history, people have settled near fresh water. Living near a water source helps ensure that people have the water they need. There was an added bonus, too. Water could be used as a travel route for people and goods. Many Americans live near popular water sources, such as the Mississippi River, the Colorado River and the Great Lakes.Mountains and deserts have been settled by fewer people than the plains areas. However, they have valuable resources of their own.</string>
     <string name="geographyTextFr">L\'étude des reliefs de la Terre est appelée géographie physique. Les reliefs peuvent être des montagnes et des vallées. Il peut aussi s\'agira de glaciers, delacs ou de rivières. Les reliefs sont parfois appelés caractéristiques physiques. Il est important que les élèves connaissent la géographie physique de laTerre. Les saisons, l\'atmosphère et tous les processus naturels de la Terre affectent l\'endroit où les gens sont capables de vivre. La géographie est l\'un desfacteurs que les gens utilisent pour décider où ils veulent vivre. Les caractéristiques physiques d\'une région sont souvent riches en ressources. Àl\'intérieur d\'une nation, les chaînes de montagnes deviennent des frontières naturelles pour les zones de peuplement. Aux États-Unis, les principaleschaînes de montagnes sont la Sierra Nevada, les montagnes Rocheuses et les Appalaches.Les sources d\'eau douce influencent également l\'endroit où lesgens s\'installent. Les gens ont besoin d\'eau pour boire. Ils en ont aussi besoin pour se laver. Tout au long de l\'histoire, les gens se sont installés près del\'eau douce. Vivre près d\'une source d\'eau permet de s\'assurer que les gens ont l\'eau dont ils ont besoin. Il y avait un bonus supplémentaire, aussi. L\'eaupourrait être utilisée comme voie de voyage pour les personnes et les marchandises. Beaucoup d\'Américains vivent près des sources d\'eau populaires,telles que le fleuve Mississippi, le fleuve Colorado et les Grands Lacs.Mountains et les déserts ont été installés par moins de gens que les zones desplaines. Cependant, ils disposent de ressources précieuses.Les gens ont une réponse.</string>
     <string name="immersiveReaderButtonText">Immersive Reader</string>
 </resources>
@@ -105,7 +107,7 @@ dependencies {
 
 **res/layout/activity_main.xml** の内容を、アプリで使用される以下の XML で置き換えます。 この XML はアプリの UI レイアウトです。
 
-![アプリ activity_main.xml](../../media/android/java/android-studio-activity-main-xml.png)
+![アプリ activity_main.xml - Android](../../media/android/java/android-studio-activity-main-xml.png)
 
 ```activity_main.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -206,9 +208,9 @@ dependencies {
 
 **res/layout/** フォルダーで新しいレイアウト リソース ファイルを作成し、「**activity_immersive_reader**」という名前を付けます。 次に、その内容を下の XML で置き換えます。 この XML により、後の手順で作成する IRActivity Java コードによって使用される WebView コンポーネントが追加されます。 これは現時点では定義されていないため、エラーが発生します。
 
-![新しいレイアウト リソース ファイルを作成する](../../media/android/java/android-studio-new-layout-resource.png)
+![新しいレイアウト リソース ファイルを作成する - Android](../../media/android/java/android-studio-new-layout-resource.png)
 
-![新しいレイアウト リソースを構成する](../../media/android/java/android-studio-activity-immersive-reader.png)
+![新しいレイアウト リソースを構成する - Android](../../media/android/java/android-studio-activity-immersive-reader.png)
 
 ```activity_immersive_reader.xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -235,7 +237,7 @@ dependencies {
 
 **/Java/com.example.quickstartjava** フォルダーで、既存の **MainActivity.java** Java クラス ファイルを確認できるようになります。 このフォルダーで、アプリ ロジックが作成されます。
 
-![MainActivity](../../media/android/java/android-studio-main-activity-java.png)
+![MainActivity - Android](../../media/android/java/android-studio-main-activity-java.png)
 
 **MainActivity.java** の内容を次のコードに置き換えます。 コード内で参照されるクラスのうちのいくつかはまだ存在しておらず、後で作成します。
 
@@ -292,7 +294,7 @@ public class MainActivity extends Activity {
 
 新しい **ImmersiveReader.java** Java クラス ファイルを作成するには、Android Studio でフォルダーを右クリックし、 **[新規]** を選択してから、 **[Java クラス]** を選択します。 これと同じ方法を使用して、作成する新しい Java クラスごとに Java クラス ファイルを作成します。
 
-![ImmersiveReader](../../media/android/java/android-studio-immersivereader-java.png)
+![ImmersiveReader - Android](../../media/android/java/android-studio-immersivereader-java.png)
 
 **ImmersiveReader.java** の内容を次のコードで置き換えます。
 
@@ -316,7 +318,6 @@ import java.lang.ref.WeakReference;
  * ImmersiveReader immersiveReader = new ImmersiveReader(Activity, IRAuthenticator);
  * immersiveReader.read(ReadableTextChunk);
  */
-
 
 @Keep
 public class ImmersiveReader {
@@ -376,7 +377,7 @@ public class ImmersiveReader {
 
 新しい **IRActivity.java** Java クラス ファイルを作成します。
 
-![IRActivity](../../media/android/java/android-studio-iractivity-java.png)
+![IRActivity - Android](../../media/android/java/android-studio-iractivity-java.png)
 
 **IRActivity.java** の内容を次のコードで置き換えます。
 
@@ -400,7 +401,6 @@ import java.lang.ref.WeakReference;
  * ImmersiveReader immersiveReader = new ImmersiveReader(Activity, IRAuthenticator);
  * immersiveReader.read(ReadableTextChunk);
  */
-
 
 @Keep
 public class ImmersiveReader {
@@ -460,7 +460,7 @@ public class ImmersiveReader {
 
 新しい **IRError.java** Java クラス ファイルを作成します。
 
-![IRError](../../media/android/java/android-studio-irerror-java.png)
+![IRError - Android](../../media/android/java/android-studio-irerror-java.png)
 
 **IRError.java** の内容を次のコードで置き換えます。
 
@@ -539,7 +539,7 @@ public class IRError implements Parcelable {
 
 新しい **Error.java** Java クラス ファイルを作成します。
 
-![エラー](../../media/android/java/android-studio-error-java.png)
+![Error - Android](../../media/android/java/android-studio-error-java.png)
 
 **Error.java** の内容を次のコードで置き換えます。
 
@@ -570,7 +570,7 @@ public class Error {
 
 新しい **ReadableContent.java** Java クラス ファイルを作成します。
 
-![ReadableContent](../../media/android/java/android-studio-readablecontent-java.png)
+![ReadableContent - Android](../../media/android/java/android-studio-readablecontent-java.png)
 
 **ReadableContent.java** の内容を次のコードで置き換えます。
 
@@ -614,7 +614,7 @@ public class ReadableContent {
 
 新しい **ReadableTextChunk.java** Java クラス ファイルを作成します。
 
-![ReadableTextChunk](../../media/android/java/android-studio-readabletextchunk-java.png)
+![ReadableTextChunk - Android](../../media/android/java/android-studio-readabletextchunk-java.png)
 
 **ReadableTextChunk.java** の内容を次のコードで置き換えます。
 
@@ -646,7 +646,7 @@ public class ReadableTextChunk {
 
 新しい **IRDataHolder.java** Java クラス ファイルを作成します。
 
-![IRDataHolder](../../media/android/java/android-studio-irdataholder-java.png)
+![IRDataHolder - Android](../../media/android/java/android-studio-irdataholder-java.png)
 
 **IRDataHolder.java** の内容を次のコードで置き換えます。
 
@@ -711,7 +711,7 @@ public class IRDataHolder {
 
 新しい **IRAuthenticator.java** Java クラス ファイルを作成します。
 
-![IRAuthenticator](../../media/android/java/android-studio-irauthenticator-java.png)
+![IRAuthenticator - Android](../../media/android/java/android-studio-irauthenticator-java.png)
 
 **IRAuthenticator.java** の内容を次のコードで置き換えます。
 
@@ -768,7 +768,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             urlStringBuilder.append("/oauth2/token");
             URL tokenUrl = new URL(urlStringBuilder.toString());
 
-
             StringBuilder formStringBuilder = new StringBuilder();
             formStringBuilder.append("grant_type=client_credentials&resource=https://cognitiveservices.azure.com/&client_id=");
             formStringBuilder.append(clientId);
@@ -791,7 +790,6 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
             if (responseCode == HTTP_OK) {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
                 StringBuffer response = new StringBuffer();
-
 
                 String line = bufferedReader.readLine();
                 while (!TextUtils.isEmpty(line)) {
@@ -822,7 +820,7 @@ public class IRAuthenticator implements ImmersiveReader.IAuthenticator {
 
 新しい **IRLauncher.java** Java クラス ファイルを作成します。
 
-![IRLauncher](../../media/android/java/android-studio-irlauncher-java.png)
+![IRLauncher - Android](../../media/android/java/android-studio-irlauncher-java.png)
 
 **IRLauncher.java** の内容を次のコードで置き換えます。
 
@@ -1015,7 +1013,7 @@ public class IRLauncher {
 
 新しい **IRStore.jav** Java クラス ファイルを作成します。
 
-![IRStore](../../media/android/java/android-studio-irstore-java.png)
+![IRStore - Android](../../media/android/java/android-studio-irstore-java.png)
 
 **IRStore.java** の内容を次のコードで置き換えます。
 
@@ -1097,7 +1095,7 @@ public class AuthenticationTask extends AsyncTask<Void, Void, String> {
 
 新しい **Chunk.java** Java クラス ファイルを作成します。
 
-![チャンク](../../media/android/java/android-studio-chunk-java.png)
+![Chunk - Android](../../media/android/java/android-studio-chunk-java.png)
 
 **Chunk.java** の内容を次のコードで置き換えます。
 
@@ -1134,7 +1132,7 @@ public class Chunk {
 
 新しい **Content.java** Java クラス ファイルを作成します。
 
-![コンテンツ](../../media/android/java/android-studio-content-java.png)
+![Content - Android](../../media/android/java/android-studio-content-java.png)
 
 **Content.java** の内容を次のコードで置き換えます。
 
@@ -1170,7 +1168,7 @@ public class Content {
 
 新しい **Options.java** Java クラス ファイルを作成します。
 
-![Options](../../media/android/java/android-studio-options-java.png)
+![Options - Android](../../media/android/java/android-studio-options-java.png)
 
 **Options.java** の内容を次のコードで置き換えます。
 
@@ -1204,7 +1202,7 @@ public class Options {
 
 新しい **Message.java** Java クラス ファイルを作成します。
 
-![Message](../../media/android/java/android-studio-message-java.png)
+![Message - Android](../../media/android/java/android-studio-message-java.png)
 
 **Message.java** の内容を次のコードで置き換えます。
 
@@ -1242,7 +1240,7 @@ public class Message {
 
 新しい **WebAppInterface.java** Java クラス ファイルを作成します。
 
-![WebAppInterface](../../media/android/java/android-studio-webappinterface-java.png)
+![WebAppInterface - Android](../../media/android/java/android-studio-webappinterface-java.png)
 
 **WebAppInterface.java** の内容を次のコードで置き換えます。
 
@@ -1293,9 +1291,9 @@ public class WebAppInterface {
 
 Web ビューの実装では、HTML が機能する必要があります。 **/assets** フォルダーを右クリックし、新しいファイルを作成して、「**immersiveReader.html**」という名前を付けます。
 
-![新しい html ファイルを作成する](../../media/android/java/android-studio-immersive-reader-html.png)
+![新しい html ファイルを作成する - Android](../../media/android/java/android-studio-immersive-reader-html.png)
 
-![HTML 資産の場所](../../media/android/java/android-studio-immersive-reader-html-assets.png)
+![HTML 資産の場所 - Android](../../media/android/java/android-studio-immersive-reader-html-assets.png)
 
 次の HTML と JavaScript を追加します。 このコードにより、イマーシブ リーダー SDK がアプリに追加されます。そして、作成済みのアプリ コードを使用してイマーシブ リーダーを開くために使用されます。
 
@@ -1352,7 +1350,7 @@ Licensed under the MIT License. -->
 
 ## <a name="set-up-app-permissions"></a>アプリのアクセス許可を設定する
 
-![AndroidManifest](../../media/android/java/android-studio-android-manifest-xml.png)
+![AndroidManifest - Android](../../media/android/java/android-studio-android-manifest-xml.png)
 
 アプリケーションが機能するためには、イマーシブ リーダー SDK へのネットワーク呼び出しを行う必要があるので、ネットワーク アクセスを許可するようにアプリのアクセス許可が構成されていることを確認する必要があります。 **/manifests/AndroidManifest.xml** の内容を次の XML で置き換えます。
 
@@ -1389,7 +1387,7 @@ Licensed under the MIT License. -->
 
 デバイス エミュレーター上でアプリを実行するには、Android Studio を使用します。 **[イマーシブ リーダー]** を選択すると、アプリのコンテンツがイマーシブ リーダーで開きます。
 
-![Immersive Reader](../../media/android/java/android-studio-device-emulator.png)
+![Immersive Reader - Android](../../media/android/java/android-studio-device-emulator.png)
 
 ## <a name="next-steps"></a>次のステップ
 

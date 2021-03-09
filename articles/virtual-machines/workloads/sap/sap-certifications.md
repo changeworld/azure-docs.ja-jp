@@ -9,19 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
-ms.openlocfilehash: f78d5f839c5dd7816ae28eeed175503427abb43c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 76f67204b41a36d10541974e78a22f7d065e144b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035844"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669687"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azure で実行されているSAP の認定と構成
 

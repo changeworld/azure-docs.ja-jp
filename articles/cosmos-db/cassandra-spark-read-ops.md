@@ -10,14 +10,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4ecb7758ee5f58345fccc2c490cee4d23043a20c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ceede96cbf3be12a6129e27d34e318e4c4163458
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85257416"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93073498"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Spark を使用して Azure Cosmos DB の Cassandra API テーブルからデータを読み取る
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
  この記事では、Spark から Azure Cosmos DB Cassandra API に格納されたデータを読み取る方法について説明します。
 
@@ -86,17 +87,10 @@ readBooksDF.show
 データベースに述語をプッシュ ダウンすると、より適切に最適化された Spark クエリを実行できます。 述語とは true または false を返すクエリに対する条件で、通常は WHERE 句に配置されます。 述語プッシュ ダウンは、データベース クエリのデータをフィルター処理することで、データベースから取得されるエントリの数を減らしてクエリのパフォーマンスを向上させます。 既定では、Spark データセット API は有効な WHERE 句をデータベースに自動的にプッシュダウンします。 
 
 ```scala
-val readBooksDF = spark
-  .read
-  .format("org.apache.spark.sql.cassandra")
-  .options(Map( "table" -> "books", "keyspace" -> "books_ks"))
-  .load
-  .select("book_name","book_author", "book_pub_year")
-  .filter("book_pub_year > 1891")
-//.filter("book_name IN ('A sign of four','A study in scarlet')")
-//.filter("book_name='A sign of four' OR book_name='A study in scarlet'")
-//.filter("book_author='Arthur Conan Doyle' AND book_pub_year=1890")
-//.filter("book_pub_year=1903")  
+val df = spark.read.cassandraFormat("books", "books_ks").load
+df.explain
+val dfWithPushdown = df.filter(df("book_pub_year") > 1891)
+dfWithPushdown.explain
 
 readBooksDF.printSchema
 readBooksDF.explain

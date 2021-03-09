@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 7964f96afc59464c28cabb9e1d5c7961fc765a3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e4e80990b32175842556059d005563a220d14688
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501774"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878462"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている TLS/SSL 証明書を使用して Azure 内の Linux 仮想マシン上の Web サーバーをセキュリティで保護する
 Web サーバーをセキュリティ保護するには、従来より SSL (Secure Sockets Layer) として知られていたトランスポート層セキュリティ (TLS) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの TLS/SSL 証明書は Azure Key Vault に格納できるため、Azure 上の仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -157,4 +157,4 @@ Web ブラウザーを開き、アドレス バーに「*https:\/\/\<publicIpAdd
 次のリンクをクリックして、あらかじめ用意されている仮想マシン スクリプト サンプルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [Windows 仮想マシンのスクリプト サンプル](./cli-samples.md)
+> [Windows 仮想マシンのスクリプト サンプル](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

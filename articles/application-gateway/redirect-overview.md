@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8c2bac1bee5a2301a29589f15d72d0f69b4a05b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb01d5a4923410f693b682d66be8d5d09f9019d0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253853"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90561580"
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway のリダイレクトの概要
 
@@ -37,7 +37,7 @@ Application Gateway のリダイレクトのサポートでは、次の機能が
    このタイプのリダイレクトを使うと、特定のサイト領域でのみ HTTP から HTTPS へのリダイレクトが可能になります (たとえば、/cart/* で示されたショッピング カート領域など)。
 - **外部サイトへのリダイレクト**
 
-![リダイレクト](./media/redirect-overview/redirect.png)
+![図はユーザー、アプリ ゲートウェイ、2 者間の接続を示しています。鍵がかかっていない HTTP の赤矢印、許可されていない 301 リダイレクト、鍵がかかっている HPPS の緑矢印などがあります。](./media/redirect-overview/redirect.png)
 
 この変更により、お客様は、リダイレクト先のターゲット リスナーまたは外部サイトを指定する新しいリダイレクト構成オブジェクトを作成する必要があります。 構成要素は、リダイレクトされる URL に URI パスとクエリ文字列を追加できるオプションもサポートしています。 リダイレクトの種類を選択することもできます。 このリダイレクト構成は、作成されると、新しいルールによってソース リスナーに関連付けられます。 基本的なルールを使うと、リダイレクト構成はソース リスナーに関連付けられて、グローバル リダイレクトになります。 パスベース ルールを使用する場合、リダイレクトの構成は URL パス マップで定義されます。 したがって、サイトの特定のパス領域にのみ適用されます。
 

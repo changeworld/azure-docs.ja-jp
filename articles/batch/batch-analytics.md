@@ -2,16 +2,17 @@
 title: Azure Batch 分析
 description: 一括分析のトピックには、Batch サービスのリソースで使用できるイベントとアラートに関するリファレンス情報が含まれています。
 ms.topic: reference
-ms.date: 04/20/2017
-ms.openlocfilehash: 9d0e5c90c7bade82d76c7dbdfd4276e9671c961c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 10/08/2020
+ms.openlocfilehash: 0d55ecd7f10e267a9cb469dffcdf26c131c8ce41
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958108"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91849513"
 ---
 # <a name="batch-analytics"></a>一括分析
-一括分析のトピックには、Batch サービスのリソースで使用できるイベントとアラートに関するリファレンス情報が含まれています。
+
+このセクションのトピックには、Batch サービスのリソースで使用できるイベントとアラートに関するリファレンス情報が含まれています。
 
 Batch 診断ログの有効化と利用の詳細については「[Azure Batch 診断ログ](./batch-diagnostics.md)」を参照してください。
 
@@ -19,12 +20,15 @@ Batch 診断ログの有効化と利用の詳細については「[Azure Batch �
 
 Azure Batch サービスは、特定の Batch リソースの有効期間中に、次の診断ログ イベントを出力します。
 
-**サービス ログ イベント**
-* [プール作成](batch-pool-create-event.md)
-* [プール削除の開始](batch-pool-delete-start-event.md)
-* [プール削除の完了](batch-pool-delete-complete-event.md)
-* [プールのサイズ変更の開始](batch-pool-resize-start-event.md)
-* [プールのサイズ変更の完了](batch-pool-resize-complete-event.md)
-* [タスク開始](batch-task-start-event.md)
-* [タスク完了](batch-task-complete-event.md)
-* [タスク失敗](batch-task-fail-event.md)
+### <a name="service-log-events"></a>サービス ログ イベント
+
+- [プール作成](batch-pool-create-event.md)
+- [プール削除の開始](batch-pool-delete-start-event.md)
+- [プール削除の完了](batch-pool-delete-complete-event.md)
+- [プールのサイズ変更の開始](batch-pool-resize-start-event.md)
+- [プールのサイズ変更の完了](batch-pool-resize-complete-event.md)
+- [プールの自動スケーリング](batch-pool-autoscale-event.md)
+- [タスク開始](batch-task-start-event.md)
+- [タスク完了](batch-task-complete-event.md)
+- [タスク失敗](batch-task-fail-event.md)
+- [タスク スケジュール失敗](batch-task-schedule-fail-event.md)

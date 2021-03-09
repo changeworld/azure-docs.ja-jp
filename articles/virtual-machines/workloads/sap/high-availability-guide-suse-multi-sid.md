@@ -9,18 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
-ms.service: virtual-machines-windows
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 10/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 16c37c1492b042e9f2f19e631f7801bfbed2d247
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 74606909a0bc87caa6acfb0eaf35c05cf35b1858
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761214"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676935"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド
 
@@ -93,10 +93,10 @@ ms.locfileid: "87761214"
 
 高可用性を実現するには、SAP NetWeaver に高可用性の NFS 共有が必要です。 この例では、SAP NFS 共有が次のどちらかであることを前提としています。共有は高可用性の [NFS ファイル サーバー](./high-availability-guide-suse-nfs.md)でホストされており、複数の SAP システムで使用できます。 または、[Azure NetApp Files NFS ボリューム](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)に共有がデプロイされます。  
 
-![SAP NetWeaver の高可用性の概要](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
+![Pacemaker クラスターは、2 つのマルチ SID クラスター (msidcl1 と msidcl2) に関する詳しい情報を示しています。](./media/high-availability-guide-suse/ha-suse-multi-sid.png)
 
 > [!IMPORTANT]
-> Azure VM でゲスト オペレーティング システムとして SUSE Linux を使用する SAP ASCS/ERS のマルチ SID クラスタリングのサポートでは、同じクラスター上の SAP SID は **5 個**に制限されています。 新しい SID が追加されるたびに、複雑さが増します。 SAP エンキュー レプリケーション サーバー 1 とエンキュー レプリケーション サーバー 2 を同じクラスター上に配置することは、**サポートされていません**。 マルチ SID クラスタリングとは、1 つの Pacemaker クラスター内での異なる SID を持つ複数の SAP ASCS/ERS インスタンスのインストールを指します。 現在、マルチ SID クラスタリングは ASCS/ERS に対してのみサポートされています。  
+> Azure VM でゲスト オペレーティング システムとして SUSE Linux を使用する SAP ASCS/ERS のマルチ SID クラスタリングのサポートでは、同じクラスター上の SAP SID は **5 個** に制限されています。 新しい SID が追加されるたびに、複雑さが増します。 SAP エンキュー レプリケーション サーバー 1 とエンキュー レプリケーション サーバー 2 を同じクラスター上に配置することは、**サポートされていません**。 マルチ SID クラスタリングとは、1 つの Pacemaker クラスター内での異なる SID を持つ複数の SAP ASCS/ERS インスタンスのインストールを指します。 現在、マルチ SID クラスタリングは ASCS/ERS に対してのみサポートされています。  
 
 > [!TIP]
 > SAP ASCS/ERS のマルチ SID クラスタリングは、さらに複雑なソリューションです。 実装するのがいっそう複雑になります。 また、メンテナンス作業 (OS の修正プログラムの適用など) を行うときの管理労力も増加します。 実際の実装を始める前に、デプロイと、VM、NFS マウント、VIP、ロード バランサーの構成などの関連するすべてのコンポーネントを、時間をかけて慎重に計画してください。  
@@ -112,7 +112,7 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
   * NW2 の IP アドレス: 10.3.1.16
   * NW3 の IP アドレス: 10.3.1.13
 * プローブ ポート
-  * ポート 620<strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、NW3 のプローブ ポートの場合は、620**00**、620**10**、620**20**
+  * ポート 620 <strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、NW3 のプローブ ポートの場合は、620 **00**、620 **10**、620 **20**
 * 負荷分散規則 - 
 * インスタンス (つまり、NW1/ASCS、NW2/ASCS、NW3/ASCS) ごとに 1 つ作成します。
   * Standard Load Balancer を使用する場合は、 **[HA ポート]** を選択します
@@ -132,7 +132,7 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
   * NW2 10.3.1.17 の IP アドレス
   * NW3 10.3.1.19 の IP アドレス
 * プローブ ポート
-  * ポート 621<strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、N# のプローブ ポートの場合は、621**02**、621**12**、621**22**
+  * ポート 621 <strong>&lt;nr&gt;</strong>。したがって、NW1、NW2、N# のプローブ ポートの場合は、621 **02**、621 **12**、621 **22**
 * 負荷分散規則 - インスタンス (つまり、NW1/ERS、NW2/ERS、NW3/ERS) ごとに 1 つ作成します。
   * Standard Load Balancer を使用する場合は、 **[HA ポート]** を選択します
   * Basic Load Balancer を使用する場合は、次のポートの負荷分散規則を作成します
@@ -145,6 +145,8 @@ NFS サーバー、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、
 * バックエンドの構成
   * (A)SCS/ERS クラスターに含める必要のあるすべての仮想マシンのプライマリ ネットワーク インターフェイスに接続済み
 
+> [!IMPORTANT]
+> フローティング IP は、負荷分散シナリオの NIC セカンダリ IP 構成ではサポートされていません。 詳細については、[Azure Load Balancer の制限事項](../../../load-balancer/load-balancer-multivip-overview.md#limitations)に関する記事を参照してください。 VM に追加の IP アドレスが必要な場合は、2 つ目の NIC をデプロイします。  
 
 > [!Note]
 > パブリック IP アドレスのない VM が、内部 (パブリック IP アドレスがない) Standard の Azure Load Balancer のバックエンド プール内に配置されている場合、パブリック エンドポイントへのルーティングを許可するように追加の構成が実行されない限り、送信インターネット接続はありません。 送信接続を実現する方法の詳細については、「[SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した Virtual Machines のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)」を参照してください。  
@@ -296,7 +298,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
       sudo swpm/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=virtual_hostname
      ```
 
-   インストールで /usr/sap/**SID**/ASCS**Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid**adm に設定し、グループを ASCS**Instance#** の sapsys に設定して、もう一度試してください。
+   インストールで /usr/sap/**SID**/ASCS **Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid** adm に設定し、グループを ASCS **Instance#** の sapsys に設定して、もう一度試してください。
 
 3. **[1]** クラスターにデプロイする追加の SAP システムの ERS インスタンス用に、仮想 IP と正常性プローブのクラスター リソースを作成します。 次に示す例は、高可用性 NFS サーバーを使用する、**NW2** と **NW3** の ERS に対するものです。 
 
@@ -349,7 +351,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
    > [!NOTE]
    > SWPM SP 20 PL 05 以降を使用します。 これより下位のバージョンではアクセス許可が正しく設定されないため、インストールが失敗します。
 
-   インストールで /usr/sap/**NW2**/ERS**Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid**adm に設定し、グループを ERS**Instance#** フォルダーの sapsys に設定して、もう一度試してください。
+   インストールで /usr/sap/**NW2**/ERS **Instance#** へのサブフォルダーの作成が失敗する場合は、所有者を **sid** adm に設定し、グループを ERS **Instance#** フォルダーの sapsys に設定して、もう一度試してください。
 
    新しくデプロイした SAP システムの ERS グループを別のクラスター ノードに移行する必要があった場合は、ERS グループに対する場所の制約を忘れずに削除してください。 制約を削除するには、次のコマンドを実行します (この例は、SAP システム **NW2** と **NW3** に対するものです)。  
 
@@ -770,7 +772,7 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
          rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl1
    ```
 
-   次のコマンドを **nw2**adm として実行して、NW2 ASCS インスタンスを移行します。
+   次のコマンドを **nw2** adm として実行して、NW2 ASCS インスタンスを移行します。
 
    ```
     slesmsscl2:nw2adm 53> sapcontrol -nr 10 -host msnw2ascs -user nw2adm password -function HAFailoverToNode ""
@@ -915,17 +917,20 @@ SAP NFS 共有のアーキテクチャが決まったら、対応するドキュ
 
    次のコマンドを使用して、強制終了されたノードで Pacemaker を起動し、SBD メッセージをクリーンアップし、失敗したリソースを除去します。
 
-   ```# run as root
+   ```bash
+   # run as root
    # list the SBD device(s)
-   slesmsscl2:~ # cat /etc/sysconfig/sbd | grep SBD_DEVICE=
+   cat /etc/sysconfig/sbd | grep SBD_DEVICE=
+
+   # output is like:
    # SBD_DEVICE="/dev/disk/by-id/scsi-36001405772fe8401e6240c985857e116;/dev/disk/by-id/scsi-36001405034a84428af24ddd8c3a3e9e1;/dev/disk/by-id/scsi-36001405cdd5ac8d40e548449318510c3"
    
-   slesmsscl2:~ # sbd -d /dev/disk/by-id/scsi-36001405772fe8401e6240c985857e116 -d /dev/disk/by-id/scsi-36001405034a84428af24ddd8c3a3e9e1 -d /dev/disk/by-id/scsi-36001405cdd5ac8d40e548449318510c3 message slesmsscl2 clear
+   sbd -d /dev/disk/by-id/scsi-36001405772fe8401e6240c985857e116 -d /dev/disk/by-id/scsi-36001405034a84428af24ddd8c3a3e9e1 -d /dev/disk/by-id/scsi-36001405cdd5ac8d40e548449318510c3 message slesmsscl2 clear
    
-   slesmsscl2:~ # systemctl start pacemaker
-   slesmsscl2:~ # crm resource cleanup rsc_sap_NW1_ERS02
-   slesmsscl2:~ # crm resource cleanup rsc_sap_NW2_ERS12
-   slesmsscl2:~ # crm resource cleanup rsc_sap_NW3_ERS22
+   systemctl start pacemaker
+   crm resource cleanup rsc_sap_NW1_ERS02
+   crm resource cleanup rsc_sap_NW2_ERS12
+   crm resource cleanup rsc_sap_NW3_ERS22
    ```
 
    テスト後のリソースの状態:

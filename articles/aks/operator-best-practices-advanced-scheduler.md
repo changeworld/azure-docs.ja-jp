@@ -5,12 +5,12 @@ description: テイントと容認、ノード セレクターとアフィニテ
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1a8138b4b2fdab2cdef8d2cb4c27de8d12ef38cd
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530063"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107348"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -33,8 +33,8 @@ AKS クラスターを作成するときは、GPU のサポートや多数の強
 
 Kubernetes スケジューラでは、テイントと容認を使用して、ノードで実行できるワークロードを制限できます。
 
-* **テイント**は、ノードに適用されて、特定のポッドのみをそのノードでスケジュールできることを示します。
-* **容認**は、ポッドに適用されて、ポッドがノードのテイントを "*許容する*" ことを許可します。
+* **テイント** は、ノードに適用されて、特定のポッドのみをそのノードでスケジュールできることを示します。
+* **容認** は、ポッドに適用されて、ポッドがノードのテイントを "*許容する*" ことを許可します。
 
 ポッドを AKS クラスターにデプロイするときは、容認とテイントが一致している場合にのみ、ノードでポッドがスケジュールされます。 たとえば、GPU のサポートを備えたノード用のノード プールが AKS クラスターにあると仮定します。 *gpu* などの名前と、スケジュールのための値を定義します。 この値を *NoSchedule* に設定した場合、ポッドで適切な容認が定義されていない場合、そのノードをポッドにスケジュールすることはできません。
 
@@ -52,7 +52,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -113,7 +113,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -131,7 +131,7 @@ spec:
 
 ### <a name="node-affinity"></a>ノード アフィニティ
 
-ノード セレクターは、特定のノードにポッドを割り当てる基本的な方法です。 "*ノード アフィニティ*" を使用すると柔軟性が増します。 ノード アフィニティでは、ポッドがノードと一致しない場合の動作を定義します。 ポッドがラベル付けされたホストと一致することを、"*必須*" として指定できます。 または、一致することが "*望ましい*" けれども、一致するものがない場合は別のホストでのポッドのスケジュールを許可することもできます。
+ノード セレクターは、特定のノードにポッドを割り当てる基本的な方法です。 "*ノード アフィニティ*" を使用すると柔軟性が増します。 ノード アフィニティでは、ポッドがノードと一致しない場合の動作を定義します。 ポッドがラベル付けされたホストと一致することを、"*必須*" として指定できます。 または、一致することが "*望ましい*" が、一致するものがない場合は別のホストでのポッドのスケジュールを許可することもできます。
 
 次の例では、ノード アフィニティを *requiredDuringSchedulingIgnoredDuringExecution* に設定しています。 このアフィニティでは、一致するラベルを持つノードを使用することが要求されます。 使用できるノードがない場合、ポッドはスケジュールの継続を待機する必要があります。 別のノードでポッドをスケジュールできるようにするには、代わりに値を *preferredDuringSchedulingIgnoreDuringExecution* に設定します。
 
@@ -143,7 +143,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: mcr.microsoft.com/azuredocs/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5

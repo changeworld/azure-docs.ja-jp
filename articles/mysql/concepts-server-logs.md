@@ -1,22 +1,24 @@
 ---
 title: 低速クエリ ログ - Azure Database for MySQL
 description: Azure Database for MySQL で利用できる低速クエリ ログと、さまざまなログ記録レベルを有効にするため利用可能なパラメーターについて説明します。
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 11/6/2020
+ms.openlocfilehash: efabb3de69e96ec1a8955b2691af20a36fbabfe4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81271983"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595948"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL での低速クエリ ログ
 Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。
 
 MySQL の低速クエリ ログの詳細については、MySQL のリファレンス マニュアルの[低速クエリ ログに関するセクション](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)を参照してください。
+
+サーバーで[クエリ ストア](concepts-query-store.md)が有効になっている場合、低速クエリ ログに "`CALL mysql.az_procedure_collect_wait_stats (900, 30);`" のようなクエリが記録されている可能性があります。 この動作は、クエリ ストア機能によってクエリに関する統計情報を収集するために必要です。 
 
 ## <a name="configure-slow-query-logging"></a>低速クエリ ログを構成する 
 既定では、低速クエリ ログは無効です。 有効にするには、`slow_query_log` を ON に設定します。 これは、Azure portal または Azure CLI を使用して有効にすることができます。 
@@ -51,7 +53,7 @@ Azure Monitor 診断ログを使用すると、低速クエリ ログを Azure M
 > 上記のログ保持期間は、Azure Monitor 診断ログを使用してパイプ処理されたログには適用されません。 出力先のデータ シンク (Azure Storage など) の保持期間を変更することが できます。
 
 ## <a name="diagnostic-logs"></a>診断ログ
-Azure Database for MySQL は、Azure Monitor の診断ログと統合されます。 MySQL サーバーで低速クエリ ログを有効にしたら、Azure Monitor ログ、Event Hubs、または Azure Storage に対して、それらが出力されるように選択できます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/platform/platform-logs-overview.md)の操作方法のセクションを参照してください。
+Azure Database for MySQL は、Azure Monitor の診断ログと統合されます。 MySQL サーバーで低速クエリ ログを有効にしたら、Azure Monitor ログ、Event Hubs、または Azure Storage に対して、それらが出力されるように選択できます。 診断ログを有効にする方法の詳細については、[診断ログのドキュメント](../azure-monitor/essentials/platform-logs-overview.md)の操作方法のセクションを参照してください。
 
 次の表は、各ログの内容を説明しています。 出力方法に応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。
 

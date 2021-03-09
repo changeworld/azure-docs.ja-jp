@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/22/2017
+ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: b73727e6bd824b80fbc3897055d71f6b9c632a61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084366"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521681"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
 ## <a name="introduction"></a>はじめに
 
-[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) (NSG) のフロー ログは、NSG を使用した IP トラフィックに関する情報をログに記録できる Azure Network Watcher の機能です。 フロー データは、アクセスできる場所から Azure Storage アカウントに送信され、選択した視覚化ツール (SIEM またはIDS) にエクスポートされます。
+[ネットワーク セキュリティ グループ](../virtual-network/network-security-groups-overview.md#security-rules) (NSG) のフロー ログは、NSG を使用した IP トラフィックに関する情報をログに記録できる Azure Network Watcher の機能です。 フロー データは、アクセスできる場所から Azure Storage アカウントに送信され、選択した視覚化ツール (SIEM またはIDS) にエクスポートされます。
 
 ![フロー ログの概要](./media/network-watcher-nsg-flow-logging-overview/homepage.jpg)
 
@@ -48,18 +48,18 @@ ms.locfileid: "87084366"
 **キーのプロパティ**
 
 - フロー ログは[第 4 層](https://en.wikipedia.org/wiki/OSI_model#Layer_4:_Transport_Layer)で動作し、NSG との間で送受信されるすべての IP フローを記録します
-- ログは Azure プラットフォームを通じて収集され、顧客のリソースやネットワークのパフォーマンスには一切影響しません。
+- ログは Azure プラットフォームを通じて **1 分間隔** で収集され、顧客のリソースやネットワークのパフォーマンスには一切影響しません。
 - ログは JSON 形式で書き込まれ、NSG ルールごとに送信フローと受信フローを表示します。
-- 各ログ レコードには、フローが適用されたネットワーク インターフェイス (NIC)、5 タプル情報、トラフィックに関する決定、スループット情報 (バージョン 2 のみ) が含まれています。 詳しくは、以下の_ログ形式_をご覧ください。
+- 各ログ レコードには、フローが適用されたネットワーク インターフェイス (NIC)、5 タプル情報、トラフィックに関する決定、スループット情報 (バージョン 2 のみ) が含まれています。 詳しくは、以下の _ログ形式_ をご覧ください。
 - フロー ログには、作成後最長 1 年間ログを自動的に削除できる保持機能があります。 
 
 > [!NOTE]
-> 保持機能は、[汎用 v2 ストレージ アカウント (GPv2)](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts) を使用している場合にのみ利用できます。 
+> 保持機能は、[汎用 v2 ストレージ アカウント (GPv2)](../storage/common/storage-account-overview.md#types-of-storage-accounts) を使用している場合にのみ利用できます。 
 
 **主要な概念**
 
 - ソフトウェア定義ネットワークは、仮想ネットワーク (VNet) とサブネットを中心に編成されています。 これらの VNet とサブネットのセキュリティは、NSG を使用して管理できます。
-- ネットワーク セキュリティ グループ (NSG) には、それが接続されているリソース内でネットワーク トラフィックを許可または拒否する一連の_セキュリティ規則_が含まれています。 NSG はサブネットや個々の VM に関連付けることができるほか、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](https://docs.microsoft.com/azure/virtual-network/security-overview?toc=%2Fazure%2Fnetwork-watcher%2Ftoc.json)に関する記事をご覧ください。
+- ネットワーク セキュリティ グループ (NSG) には、それが接続されているリソース内でネットワーク トラフィックを許可または拒否する一連の _セキュリティ規則_ が含まれています。 NSG はサブネットや個々の VM に関連付けることができるほか、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
 - ネットワーク内のすべてのトラフィック フローは、該当する NSG のルールを使用して評価されます。
 - これらの評価の結果が NSG フロー ログです。 フロー ログは Azure プラットフォームを通じて収集され、顧客のリソースに変更を加える必要はありません。
 - 注:ルールには、終了するものと、終了しないものの 2 つの種類があり、それぞれログ記録の動作が異なります。
@@ -294,7 +294,7 @@ ms.locfileid: "87084366"
 ```
 **ログ タプルの説明**
 
-![フロー ログの概要](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
+![フロー ログ タプル](./media/network-watcher-nsg-flow-logging-overview/tuple.png)
 
 **帯域幅の計算のサンプル**
 
@@ -309,11 +309,11 @@ ms.locfileid: "87084366"
 
 フロー ログを有効にするためのガイドについては、以下の関連リンクをご使用ください。
 
-- [Azure Portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
-- [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
-- [CLI](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
-- [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-rest)
-- [Azure Resource Manager](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-azure-resource-manager)
+- [Azure Portal](./network-watcher-nsg-flow-logging-portal.md)
+- [PowerShell](./network-watcher-nsg-flow-logging-powershell.md)
+- [CLI](./network-watcher-nsg-flow-logging-cli.md)
+- [REST](./network-watcher-nsg-flow-logging-rest.md)
+- [Azure Resource Manager](./network-watcher-nsg-flow-logging-azure-resource-manager.md)
 
 ## <a name="updating-parameters"></a>パラメーターの更新
 
@@ -329,8 +329,8 @@ Azure portal で、Network Watcher の [NSG フロー ログ] セクションに
 
 *フロー ログの読み取りとエクスポート*
 
-- [ポータルからフロー ログをダウンロードして表示する](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log)
-- [PowerShell 関数を使用してフロー ログを読み取る](https://docs.microsoft.com/azure/network-watcher/network-watcher-read-nsg-flow-logs)
+- [ポータルからフロー ログをダウンロードして表示する](./network-watcher-nsg-flow-logging-portal.md#download-flow-log)
+- [PowerShell 関数を使用してフロー ログを読み取る](./network-watcher-read-nsg-flow-logs.md)
 - [NSG フロー ログを Splunk にエクスポートする](https://www.splunk.com/en_us/blog/tips-and-tricks/splunking-microsoft-azure-network-watcher-data.html)
 
 フロー ログは NSG を対象としていますが、その他のログと同じようには表示されません。 フロー ログは、次の例で示すようにストレージ アカウント内と下記のログ記録パスにのみ格納されます。
@@ -341,11 +341,11 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 *フロー ログの視覚化*
 
-- [Azure Traffic analytics](https://docs.microsoft.com/azure/network-watcher/traffic-analytics) は、フロー ログを処理し、分析情報を抽出し、フロー ログを視覚化する Azure ネイティブ サービスです。 
-- [[チュートリアル] Power BI を使用して NSG フロー ログを 視覚化する](https://docs.microsoft.com/azure/network-watcher/network-watcher-visualize-nsg-flow-logs-power-bi)
-- [[チュートリアル] Elastic Stack を使用して NSG フロー ログを視覚化する](https://docs.microsoft.com/azure/network-watcher/network-watcher-visualize-nsg-flow-logs-open-source-tools)
-- [[チュートリアル] Grafana を使用して NSG フロー ログを管理および分析する](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-grafana)
-- [[チュートリアル] Graylog を使用して NSG フロー ログを管理および分析する](https://docs.microsoft.com/azure/network-watcher/network-watcher-analyze-nsg-flow-logs-graylog)
+- [Azure Traffic analytics](./traffic-analytics.md) は、フロー ログを処理し、分析情報を抽出し、フロー ログを視覚化する Azure ネイティブ サービスです。 
+- [[チュートリアル] Power BI を使用して NSG フロー ログを 視覚化する](./network-watcher-visualize-nsg-flow-logs-power-bi.md)
+- [[チュートリアル] Elastic Stack を使用して NSG フロー ログを視覚化する](./network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+- [[チュートリアル] Grafana を使用して NSG フロー ログを管理および分析する](./network-watcher-nsg-grafana.md)
+- [[チュートリアル] Graylog を使用して NSG フロー ログを管理および分析する](./network-watcher-analyze-nsg-flow-logs-graylog.md)
 
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG フロー ログ記録の考慮事項
@@ -353,21 +353,34 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **ストレージ アカウントに関する考慮事項**: 
 
 - 場所:使用するストレージ アカウントは、NSG と同じリージョンに存在する必要があります。
+- パフォーマンス レベル:現在、Standard レベルのストレージ アカウントしかサポートされていません。
 - キー ローテーションの自己管理: アクセス キーをストレージ アカウントに変更/ローテーションすると、NSG フローログの動作が停止します。 この問題を修正するには、NSG フロー ログを無効にしてから再度有効にする必要があります。
 
-**フロー ログ記録のコスト**:NSG フロー ログ記録は、生成されたログの量に対して課金されます。 トラフィック量が多いと、フロー ログの量が大きくなり、それに関連してコストがかかる可能性があります。 NSG フロー ログの価格には、基礎となるストレージのコストは含まれていません。 保持ポリシー機能と NSG フロー ログ記録を併用すると、長期間にわたって個別のストレージ コストが発生します。 アイテム保持ポリシー機能が不要な場合は、この値を 0 に設定することをお勧めします。 詳細については、「[Network Watcher の価格](https://azure.microsoft.com/pricing/details/network-watcher/)」 と 「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」 を参照してください。
+**フロー ログ記録のコスト**:NSG フロー ログ記録は、生成されたログの量に対して課金されます。 トラフィック量が多いと、フロー ログの量が大きくなり、それに関連してコストがかかる可能性があります。 NSG フロー ログの価格には、基礎となるストレージのコストは含まれていません。 保持ポリシー機能と NSG フロー ログ記録を併用すると、長期間にわたって個別のストレージ コストが発生します。 アイテム保持ポリシーを適用せず、データを永続的に保持する場合は、リテンション期間 (日) を 0 に設定してください。 詳細については、「[Network Watcher の価格](https://azure.microsoft.com/pricing/details/network-watcher/)」 と 「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」 を参照してください。
 
-**ユーザー定義の受信 TCP ルールの問題**:[ネットワークセキュリティグループ (NSGs)](https://docs.microsoft.com/azure/virtual-network/security-overview) は [ ステートフルファイアウォール](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) として実装されます。 ただし、現行のプラットフォームの制限により、受信 TCP フローを制御するユーザー定義ルールはステートレスな方法で実装されます。 これに起因し、ユーザー定義受信ルールに制御されるフローは終了しなくなります。 また、これらのフローのバイト数やパケット数は記録されません。 結果として、NSG フローログ (および Traffic Analytics) で報告されるバイト数とパケット数は、実際の数とは異なる可能性があります。 これらの問題を修正するオプトイン フラグは遅くとも 2020 年 12 月までに利用できるようになります。 その間、お客様がこの動作に起因して深刻な問題に直面した場合、サポート経由でオプトインを要求できます。[Network Watcher] の [NSG フロー ログ] でサポート リクエストを提出してください。  
+**ユーザー定義の受信 TCP ルールの問題**:[ネットワークセキュリティグループ (NSGs)](../virtual-network/network-security-groups-overview.md) は [ ステートフルファイアウォール](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) として実装されます。 ただし、現行のプラットフォームの制限により、受信 TCP フローを制御するユーザー定義ルールはステートレスな方法で実装されます。 これに起因し、ユーザー定義受信ルールに制御されるフローは終了しなくなります。 また、これらのフローのバイト数やパケット数は記録されません。 結果として、NSG フローログ (および Traffic Analytics) で報告されるバイト数とパケット数は、実際の数とは異なる可能性があります。 これらの問題を修正するオプトイン フラグは遅くとも 2021 年 3 月までに利用できるようになります。 その間、お客様がこの動作に起因する深刻な問題に直面した場合は、サポート経由でオプトインをリクエストできます。[Network Watcher] の [NSG フロー ログ] でサポート リクエストを提出してください。  
 
 **インターネット IP からパブリック IP のない VM へのインバウンド フローのログ記録**:インスタンスレベル パブリック IP として NIC に関連付けられているパブリック IP アドレス経由で割り当てられたパブリック IP アドレスがない VM、または基本的なロード バランサー バックエンド プールの一部である VM では、[既定の SNAT](../load-balancer/load-balancer-outbound-connections.md) が使用され、アウトバウンド接続を容易にするために Azure によって割り当てられた IP アドレスがあります。 その結果、フローが SNAT に割り当てられたポート範囲内のポートに向かう場合、インターネット IP アドレスからのフローのフロー ログ エントリが表示されることがあります。 Azure では VM へのこれらのフローは許可されませんが、試行はログに記録され、設計上、Network Watcher の NSG フロー ログに表示されます。 不要なインバウンド インターネット トラフィックは、NSG で明示的にブロックすることをお勧めします。
+
+**Application Gateway V2 サブネット NSG の問題**: Application Gateway V2 サブネット NSG のフロー ログは、現時点では [サポートされていません](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet)。 この問題は Application Gateway V1 には影響しません。
+
+**互換性のないサービス**:プラットフォームの現行の制約に起因し、一部の Azure サービスは NSG フロー ログでサポートされていません。 互換性のないサービスには現在、次が含まれます。
+- [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/)
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
 
 ## <a name="best-practices"></a>ベスト プラクティス
 
 **重要な VNet/サブネットで有効にする**:フロー ログは、監査機能とセキュリティのベスト プラクティスとして、サブスクリプション内のすべての重要な VNet/サブネットで有効にする必要があります。 
 
-**リソースに接続されているすべての NSG 上で NSG フロー ログ記録を有効にする**:Azure のフロー ログ記録は NSG リソースに対して構成されています。 1 つのフローは 1 つの NSG ルールにのみ関連付けられます。 複数の NSG が利用されるシナリオでは、リソースのサブネットまたはネットワーク インターフェイスに適用されたすべての NSG で NSG フロー ログを有効にして、すべてのトラフィックを確実に記録することをお勧めします。 詳細については、「ネットワーク セキュリティ グループ」の「[トラフィックの評価方法](../virtual-network/security-overview.md#how-traffic-is-evaluated)」 をご覧ください。
+**リソースに接続されているすべての NSG 上で NSG フロー ログ記録を有効にする**:Azure のフロー ログ記録は NSG リソースに対して構成されています。 1 つのフローは 1 つの NSG ルールにのみ関連付けられます。 複数の NSG が利用されるシナリオでは、リソースのサブネットまたはネットワーク インターフェイスで適用されるすべての NSG で NSG フロー ログを有効にして、すべてのトラフィックを確実に記録することをお勧めします。 詳細については、「ネットワーク セキュリティ グループ」の「[トラフィックの評価方法](../virtual-network/network-security-group-how-it-works.md)」 をご覧ください。 
+
+一般的なシナリオは次のとおりです。
+1. **VM での複数の NIC**:複数の NIC が仮想マシンに接続されている場合は、そのすべてでフロー ログを有効にする必要があります
+1. **NIC とサブネット レベルの両方で NSG**: NIC およびサブネット レベルで NSG が構成されている場合は、両方の NSG でフロー ログを有効にする必要があります。 
 
 **ストレージのプロビジョニング**:ストレージは、想定されるフロー ログ ボリュームでチューニングする必要があります。
+
+**名前付け**: NSG 名は最大 80 文字で、NSG 規則名は最大 65 文字である必要があります。 名前が文字数の上限を超えると、ログ記録中に切り捨てられることがあります。
 
 ## <a name="troubleshooting-common-issues"></a>一般的な問題のトラブルシューティング
 
@@ -375,13 +388,13 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 - **Microsoft.Insights** リソース プロバイダーが登録されていません
 
-_AuthorizationFailed_ または _GatewayAuthenticationFailed_ エラーを受け取った場合は、サブスクリプションで Microsoft Insights リソース プロバイダーを有効にしていない可能性があります。 [こちらの指示に従って](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#register-insights-provider)、Microsoft Insights プロバイダーを有効にしてください。
+_AuthorizationFailed_ または _GatewayAuthenticationFailed_ エラーを受け取った場合は、サブスクリプションで Microsoft Insights リソース プロバイダーを有効にしていない可能性があります。 [こちらの指示に従って](./network-watcher-nsg-flow-logging-portal.md#register-insights-provider)、Microsoft Insights プロバイダーを有効にしてください。
 
 **NSG フロー ログを有効にしたが、ストレージ アカウントにデータが表示されない**
 
 - **セットアップ時間**
 
-NSG フロー ログがストレージ アカウントに表示されるまでに、最大 5 分かかる場合があります (正しく構成されている場合)。 PT1H.json が表示されます。このファイルには、[こちらの説明に従って](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal#download-flow-log)アクセスできます。
+NSG フロー ログがストレージ アカウントに表示されるまでに、最大 5 分かかる場合があります (正しく構成されている場合)。 PT1H.json が表示されます。このファイルには、[こちらの説明に従って](./network-watcher-nsg-flow-logging-portal.md#download-flow-log)アクセスできます。
 
 - **NSG にトラフィックがない**
 
@@ -395,7 +408,7 @@ NSG フロー ログがストレージ アカウントに表示されるまで�
 
 **NSG フロー ログでは何ができますか?**
 
-Azure ネットワーク リソースは、[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) を使用して結合および管理できます。 NSG フロー ログを使用すると、NSG を介してすべてのトラフィックに関する 5 組のフロー情報をログに記録できます。 未処理のフロー ログは Azure ストレージ アカウントに書き込まれ、必要に応じてさらに処理、分析、クエリ実行、またはエクスポートできます。
+Azure ネットワーク リソースは、[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md) を使用して結合および管理できます。 NSG フロー ログを使用すると、NSG を介してすべてのトラフィックに関する 5 組のフロー情報をログに記録できます。 未処理のフロー ログは Azure ストレージ アカウントに書き込まれ、必要に応じてさらに処理、分析、クエリ実行、またはエクスポートできます。
 
 **フロー ログを使用すると、ネットワークの待機時間やパフォーマンスに影響しますか?**
 
@@ -415,15 +428,14 @@ Azure ネットワーク リソースは、[ネットワーク セキュリテ�
 
 **サービス エンドポイントの背後にあるストレージ アカウントで NSG フロー ログを使用するにはどうしたらよいですか?**
 
-NSG フロー ログはサービス エンドポイントと互換性があります。追加の構成は不要です。 仮想ネットワークの[サービス エンドポイントを有効にする方法に関するチュートリアル](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint)をご覧ください。
+NSG フロー ログはサービス エンドポイントと互換性があります。追加の構成は不要です。 仮想ネットワークの[サービス エンドポイントを有効にする方法に関するチュートリアル](../virtual-network/tutorial-restrict-network-access-to-resources.md#enable-a-service-endpoint)をご覧ください。
 
 **フロー ログのバージョン 1 と 2 の違いは何ですか?**
 
-フロー ログ バージョン 2 では、"_フロー状態_" という概念が導入されており、転送するバイトとパケットに関する情報が保存されます。 [詳細については、こちらを参照してください。](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file)
+フロー ログ バージョン 2 では、"_フロー状態_" という概念が導入されており、転送するバイトとパケットに関する情報が保存されます。 [詳細については、こちらを参照してください。](#log-format)
 
 ## <a name="pricing"></a>価格
 
 NSG フロー ログは、収集されるログ (GB 単位) ごとに課金され、1 つのサブスクリプションにつき 1 か月あたり 5 GB までは無料になります。 お客様のリージョンでの現在の価格については、[Network Watcher の価格に関するページ](https://azure.microsoft.com/pricing/details/network-watcher/)をご覧ください。
 
 ログの保存には別途料金が発生します。関連する価格については、[Azure Storage のブロック BLOB の価格](https://azure.microsoft.com/pricing/details/storage/blobs/)に関するページをご覧ください。
- 

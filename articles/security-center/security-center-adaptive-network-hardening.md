@@ -8,72 +8,80 @@ manager: rkarlin
 ms.assetid: 09d62d23-ab32-41f0-a5cf-8d80578181dd
 ms.service: security-center
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: d12df01fe1506f7f5ade9cce60ae7af0412e3010
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080813"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916186"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
-Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。
+Security Center でアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。
+
+## <a name="availability"></a>可用性
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般提供 (GA)|
+|価格:|[Azure Defender for servers](defender-for-servers-introduction.md) が必要|
+|必要なロールとアクセス許可:|コンピューターの NSG の書き込みアクセス許可|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|||
 
 ## <a name="what-is-adaptive-network-hardening"></a>アダプティブ ネットワークのセキュリティ強化機能とは
-[ネットワーク セキュリティ グループ (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview) を適用してリソースとの間でやり取りされるトラフィックをフィルター処理することにより、ネットワーク セキュリティ ポスチャを向上させることができます。 ただし、NSG を通過する実際のトラフィックが、定義される NSG ルールのサブセットとなる場合もあります。 このような場合は、実際のトラフィック パターンに基づいて NSG ルールを強化することによって、セキュリティ ポスチャをさらに向上させることができます。
+[ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md) を適用してリソースとの間でやり取りされるトラフィックをフィルター処理することにより、ネットワーク セキュリティ ポスチャを向上させることができます。 ただし、NSG を通過する実際のトラフィックが、定義される NSG ルールのサブセットとなる場合もあります。 このような場合は、実際のトラフィック パターンに基づいて NSG ルールを強化することによって、セキュリティ ポスチャをさらに向上させることができます。
 
 アダプティブ ネットワークのセキュリティ強化機能によって、NSG ルールをさらに強化するための推奨事項が提供されます。 実際のトラフィック、既知の信頼された構成、脅威インテリジェンス、および侵害に関するその他のインジケーターを考慮する機械学習アルゴリズムを使用し、特定の IP/ポート タプルからのトラフィックのみを許可する推奨事項を提示します。
 
-たとえば、既存の NSG ルールがポート 22 の 140.20.30.10/24 からのトラフィックを許可するとします。 アダプティブ ネットワークのセキュリティ強化機能の推奨事項は、分析に基づいて、範囲を狭め、140.23.30.10/29 からのトラフィックを許可します。これは、より狭い IP 範囲で、そのポートへのその他すべてのトラフィックを拒否します。
+たとえば、既存の NSG ルールがポート 22 の 140.20.30.10/24 からのトラフィックを許可するとします。 トラフィック分析に基づき、アダプティブ ネットワークのセキュリティ強化では、140.23.30.10/29 からのトラフィックを許可する範囲を絞り込み、またそのポートへの他のすべてのトラフィックを拒否することを推奨される場合があります。
 
->[!TIP]
+>[!Note]
 > アダプティブ ネットワークのセキュリティ強化機能の推奨事項は、(UDP と TCP の両方において) 次の特定のポートでのみサポートされています。13、17、19、22、23、53、69、81、111、119、123、135、137、138、139、161、162、389、445、512、514、593、636、873、1433、1434、1900、2049、2301、2323、2381、3268、3306、3389、4333、5353、5432、5555、5800、5900、5900、5985、5986、6379、6379、7000、7001、7199、8081、8089、8545、9042、9160、9300、11211、16379、26379、27017、37215
 
 
-![ネットワーク強化のビュー](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+## <a name="view-and-manage-hardening-alerts-and-rules"></a>セキュリティ強化に関するアラートおよびルールの表示と管理
 
+1. Security Center のメニューで、 **[Azure Defender]** ダッシュボードを開き、[アダプティブ ネットワーク強化] タイル (1)、またはアダプティブ ネットワークのセキュリティ強化に関連する [分析情報] パネル項目 (2) を選択します。 
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>アダプティブ ネットワークのセキュリティ強化機能のアラートとルールの表示
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/traffic-hardening.png" alt-text="アダプティブ ネットワーク セキュリティ強化ツールへのアクセス" lightbox="./media/security-center-adaptive-network-hardening/traffic-hardening.png":::
 
-1. Security Center で、 **[ネットワーク]**  ->  **[Adaptive Network Hardening]** \(アダプティブ ネットワークのセキュリティ強化機能\) を選択します。 ネットワーク VM は 3 つの別個のタブの下に表示されます。
+    > [!TIP]
+    > 分析情報パネルには、現在、アダプティブ ネットワークのセキュリティ強化によって保護されている VM の割合が表示されます。 
+
+1. **[アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある]** 推奨事項の詳細ページが、ネットワーク VM を次の 3 つのタブにグループ化して開きます。
    * **異常なリソース**:アダプティブ ネットワークのセキュリティ強化アルゴリズムを実行することによってトリガーされた推奨事項とアラートが存在する VM。 
    * **正常なリソース**:アラートと推奨事項がない VM。
    * **スキャンされていないリソース**:以下のいずれかの理由でアダプティブ ネットワークのセキュリティ強化アルゴリズムを実行できない VM。
       * **VM がクラシック VM である**:Azure Resource Manager VM のみがサポートされています。
       * **使用できる十分なデータがない**:トラフィック強化に関する正確な推奨事項を生成するには、Security Center に少なくとも 30 日間のトラフィック データが必要です。
-      * **VM が ASC 標準によって保護されていない**:Security Center の Standard 価格レベルに設定された VM のみ、この機能を利用できます。
+      * **VM が Azure Defender によって保護されていない**:この機能の対象となるのは、[Azure Defender for servers](defender-for-servers-introduction.md) で保護されている VM のみです。
 
-     ![異常なリソース](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="推奨事項 [アダプティブ ネットワーク強化の推奨事項をインターネット接続仮想マシンに適用する必要がある] の詳細ページ":::
 
-2. **[異常なリソース]** タブから、そのアラートと適用する推奨されるセキュリティ強化ルールを表示する VM を選択します。
+1. **[異常なリソース]** タブから、そのアラートと適用する推奨されるセキュリティ強化ルールを表示する VM を選択します。
 
-    ![強化アラート](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
+    - **[ルール]** タブには、アダプティブ ネットワークのセキュリティ強化機能が推奨するルールがリストされます。
+    - **[アラート]** タブには、推奨されるルールで許可されている IP 範囲内ではないリソースを通過するトラフィックのために生成されたアラートが一覧表示されます。
 
+1. 必要に応じて、ルールを編集します。
 
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>アダプティブ ネットワークのセキュリティ強化機能の推奨されるルールの確認と適用
-
-1. **[異常なリソース]** タブから、VM を選択します。 アラートと推奨される強化ルールが一覧表示されます。
-
-     ![強化ルール](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
-
-   > [!NOTE]
-   > **[ルール]** タブには、アダプティブ ネットワークのセキュリティ強化機能が推奨するルールがリストされます。 **[アラート]** タブには、推奨されるルールで許可されている IP 範囲内ではないリソースを通過するトラフィックのために生成されたアラートが一覧表示されます。
-
-2. ルールのパラメーターの一部を変更する場合は、「[ルールの変更](#modify-rule)」で説明されているように、変更できます。
-   > [!NOTE]
-   > ルールを[削除](#delete-rule)することも[追加](#add-rule)することもできます。
+    - [ルールを変更する](#modify-rule)
+    - [規則を削除する](#delete-rule) 
+    - [ルールの追加](#add-rule)
 
 3. NSG を適用する VM を選択し、 **[適用]** をクリックします。
 
+    > [!TIP]
+    > 許可されているソース IP の範囲が "なし" である場合は、推奨されるルールが "*拒否*" ルールであることを意味します。それ以外の場合は、"*許可*" ルールです。
+
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="アダプティブ ネットワークのセキュリティ強化機能ルールの管理":::
+
       > [!NOTE]
       > 適用されるルールは、VM を保護する NSG に追加されます。 (VM は、その NIC に関連付けられている NSG、VM が置かれているサブネット、またはその両方によって保護されます)
-
-    ![ルールの適用](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
-
 
 ### <a name="modify-a-rule"></a>ルールの変更  <a name ="modify-rule"> </a>
 
@@ -85,7 +93,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 * "許可" ルールを "拒否" ルールに変更することはできません。 
 
   > [!NOTE]
-  > "拒否" ルールの作成と変更は、NSG で直接実行されます。 詳細については、「[ネットワーク セキュリティ グループを作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)」をご覧ください。
+  > "拒否" ルールの作成と変更は、NSG で直接実行されます。 詳細については、「[ネットワーク セキュリティ グループを作成、変更、削除](../virtual-network/manage-network-security-group.md)」をご覧ください。
 
 * **"すべてのトラフィックを拒否"** ルールは、ここで表示される唯一の "拒否" ルールのタイプで、変更することはできません。 ただし、そのルールを削除することはできます (「[ルールの削除](#delete-rule)」をご覧ください)。
   > [!NOTE]
@@ -95,14 +103,14 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
 1. ルールのパラメーターの一部を変更するには、 **[ルール]** タブで、ルールの行の最後にある 3 つのドット (...) をクリックし、 **[編集]** をクリックします。
 
-   ![ルールの編集](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
+   ![S ルールの編集](./media/security-center-adaptive-network-hardening/edit-hard-rule.png)
 
 1. **[ルールの編集]** ウィンドウで、変更する詳細を更新し、 **[保存]** をクリックします。
 
    > [!NOTE]
-   > **[保存]** をクリックすると、ルールは正常に変更されます。 *ただし、NSG にはまだ適用されていません。* そのルールを適用するには、一覧でそのルールを選択し、 **[適用]** をクリックする必要があります (次の手順で説明します)。
+   > **[保存]** をクリックすると、ルールは正常に変更されます。 *ただし、NSG にはまだ適用されていません。* そのルールを適用するには、一覧でそのルールを選択し、 **[適用]** を選択する必要があります (次の手順で説明します)。
 
-   ![ルールの編集](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
+   ![保存を選択](./media/security-center-adaptive-network-hardening/edit-hard-rule3.png)
 
 3. 更新されたルールを適用するには、一覧から更新されたルールを選択し、 **[適用]** をクリックします。
 
@@ -113,7 +121,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 Security Center によって推奨されていない "許可" ルールを追加することができます。
 
 > [!NOTE]
-> ここでは、"許可" ルールのみを追加できます。 "拒否" ルールを追加する場合は、NSG で直接行うことができます。 詳細については、「[ネットワーク セキュリティ グループを作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)」をご覧ください。
+> ここでは、"許可" ルールのみを追加できます。 "拒否" ルールを追加する場合は、NSG で直接行うことができます。 詳細については、「[ネットワーク セキュリティ グループを作成、変更、削除](../virtual-network/manage-network-security-group.md)」をご覧ください。
 
 *アダプティブ ネットワークのセキュリティ強化機能ルールを追加するには:*
 
@@ -139,4 +147,4 @@ Security Center によって推奨されていない "許可" ルールを追加
 
 1. **[ルール]** タブで、ルールの行の最後にある 3 つのドット (...) をクリックし、 **[削除]** をクリックします。  
 
-    ![強化ルール](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)
+    ![ルールの削除](./media/security-center-adaptive-network-hardening/delete-hard-rule.png)

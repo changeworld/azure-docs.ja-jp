@@ -6,22 +6,22 @@ ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: d597d5d1e86a2ea13363bc270fb55304d77dee5c
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 01c34304ac0e3e7faa42611758d77893e149a2f8
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88184875"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92218733"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>Azure FXT Edge Filer ハードウェアの電源を安全に切る方法
 
 個々のノードの電源をオンにするために物理的な電源ボタンを使用することはできますが、通常の状況では、電源ボタンを使用してユニットをシャットダウンしてはいけません。
 
-Azure FXT Edge Filer ノードがクラスターの一部として使用された後は、クラスターのコントロール パネル ソフトウェアを使用して、ハードウェアをシャットダウンする必要があります。 
+Azure FXT Edge Filer ノードがクラスターの一部として使用された後は、クラスターのコントロール パネル ソフトウェアを使用して、ハードウェアをシャットダウンする必要があります。
 
-> [!NOTE] 
+> [!NOTE]
 > データの損失や破損を避けるには、必ずコントロール パネル ソフトウェアを使用して、Azure FXT Edge Filer をシャットダウンしてください。 Microsoft カスタマー サービスおよびサポートから指示されない限り、物理的な電源ボタンを使用してシャットダウンしないでください。
-> 
+>
 > 電気的非常時には、電源コードを外すか、データ センターの電気切断メカニズムを使用します。
 
 ## <a name="shut-down-a-node-from-the-control-panel"></a>コントロール パネルからノードをシャットダウンする
@@ -30,7 +30,7 @@ Azure FXT Edge Filer ノードの電源を安全に切るには、次の手順�
 
 1. クラスターのコントロール パネルにサインインします。 (「[[設定] ページを開く](fxt-cluster-create.md#open-the-settings-pages)」の手順)
 1. **[設定]** タブをクリックし、 **[クラスター]**  >  **[FXT Nodes]\(FXT ノード\)** ページを読み込みます。
-1. クラスター ノードの一覧で、シャットダウンするノードを見つけます。 **[アクション]** 列の **[Power down]\(電源切断\)** ボタンをクリックします。 
+1. クラスター ノードの一覧で、シャットダウンするノードを見つけます。 **[アクション]** 列の **[Power down]\(電源切断\)** ボタンをクリックします。
 1. 数分待ちます。 ノードがシャットダウンし、電源が切れます。
 
 ## <a name="next-steps"></a>次のステップ

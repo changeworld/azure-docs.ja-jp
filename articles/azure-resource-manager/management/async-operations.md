@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723454"
 ---
 # <a name="track-asynchronous-azure-operations"></a>非同期 Azure 操作の追跡

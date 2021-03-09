@@ -5,16 +5,16 @@ services: key-vault
 author: ghogen
 manager: jillfra
 ms.service: key-vault
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 52c9584ca94117db58a5427c46269d7f2612861a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 9c62534acdbfbff7fd4e718bad1f07a92c641626
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88588485"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92792397"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -24,15 +24,15 @@ ms.locfileid: "88588485"
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション**。 サブスクリプションをお持ちでない場合には、[無料のアカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。
-- **Visual Studio 2019 バージョン 16.3** 以降。[ここからダウンロードできます](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- **Azure サブスクリプション** 。 サブスクリプションをお持ちでない場合には、[無料のアカウントにサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。
+- **Visual Studio 2019 バージョン 16.3** 以降。 [ここからダウンロードできます](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 
 ## <a name="add-key-vault-support-to-your-project"></a>Key Vault のサポートをプロジェクトに追加する
 
 開始する前に、必ず Visual Studio にサインインしてください。 Azure サブスクリプションに使用するものと同じアカウントでサインインします。 次に、ASP.NET 4.7.1 以降か、ASP.NET Core 2.0 Web プロジェクトを開き、次の手順を行います。
 
-1. **ソリューション エクスプローラー**で、Key Vault のサポートを追加するプロジェクトを右クリックし、 **[追加]**  >  **[接続済みサービス]**  >  **[追加]** の順に選択します。
+1. **ソリューション エクスプローラー** で、Key Vault のサポートを追加するプロジェクトを右クリックし、 **[追加]**  >  **[接続済みサービス]**  >  **[追加]** の順に選択します。
    [接続済みサービス] ページが開いて、プロジェクトに追加できるサービスが表示されます。
 1. 使用可能なサービスのメニューから、 **[Azure Key Vault]** を選択し、 **[次へ]** をクリックします。
 
@@ -46,7 +46,7 @@ ms.locfileid: "88588485"
 
 ## <a name="access-your-secrets-in-code-aspnet-core"></a>コードでシークレットにアクセスする (ASP.NET Core)
 
-1. いずれかのページ ファイル (*Index.cshtml.cs* など) を開き、次のコードを記述します。
+1. いずれかのページ ファイル ( *Index.cshtml.cs* など) を開き、次のコードを記述します。
    1. この using ディレクティブによって `Microsoft.Extensions.Configuration` の参照を含めます。
 
        ```csharp
@@ -115,7 +115,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
          <add key="<secretNameInYourKeyVault>" value="dummy"/>
         ```
 
-1. 確認のために値が表示されるように、*HomeController.cs* の `About` メソッドを編集します。
+1. 確認のために値が表示されるように、 *HomeController.cs* の `About` メソッドを編集します。
 
    ```csharp
    public ActionResult About()
@@ -123,7 +123,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
        ViewBag.Message = "Key vault value = " + ConfigurationManager.AppSettings["<secretNameInYourKeyVault>"];
    }
    ```
-1. デバッガーの下でアプリをローカルで実行し、**[About]\(概要\)** タブに切り替えて、キー コンテナーの値が表示されていることを確認します。
+1. デバッガーの下でアプリをローカルで実行し、 **[About]\(概要\)** タブに切り替えて、キー コンテナーの値が表示されていることを確認します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -131,7 +131,7 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
 
 1. [Azure portal](https://portal.azure.com) に移動してお使いのキー コンテナーを開きます。
 
-1. **[アクセス ポリシー]**、**[アクセス ポリシーの追加]** の順に選択して、プリンシパルとしてログインしているアカウントを選択します。
+1. **[アクセス ポリシー]** 、 **[アクセス ポリシーの追加]** の順に選択して、プリンシパルとしてログインしているアカウントを選択します。
 
 1. Visual Studio で、 **[ファイル]**  >  **[アカウント設定]** の順に選択します。
 **[すべてのアカウント]** セクションから **[アカウントの追加]** を選択します。 お使いのアクセス ポリシーのプリンシパルとして選択したアカウントでサインインします。
@@ -190,6 +190,9 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
 | .NET; NuGet | Azure.Security.KeyVault.Keys |
 | .NET; NuGet | Azure.Security.KeyVault.Secrets |
 
+> [!IMPORTANT] 
+> 既定では、Azure.Identity 1.1.1 がインストールされます。これは、Visual Studio 資格情報をサポートしていません。 パッケージ参照を手動で 1.2+ に更新すると、Visual Studio 資格情報を使用することができます。
+
 ### <a name="added-files-for-aspnet-framework"></a>ASP.NET Framework の追加されるファイル
 
 - `ConnectedService.json` が追加されます。このファイルには、接続済みサービス プロバイダー、バージョン、ドキュメントのリンクに関する情報が記録されます。
@@ -201,6 +204,6 @@ web.config ファイルの `appSettings` 要素のダミーの値が実行時に
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルに従っている場合、お使いのキー コンテナーへのアクセス許可は、ご自分の Azure サブスクリプションで実行するように設定されますが、これは運用環境のシナリオには適していない可能性があります。 マネージド ID を作成して、アプリの Key Vault へのアクセスを管理できます。 「[マネージド ID で Key Vault の認証を提供する](/azure/key-vault/managed-identity)」を参照してください。
+このチュートリアルに従っている場合、お使いのキー コンテナーへのアクセス許可は、ご自分の Azure サブスクリプションで実行するように設定されますが、これは運用環境のシナリオには適していない可能性があります。 マネージド ID を作成して、アプリの Key Vault へのアクセスを管理できます。 [Key Vault に対して認証を行う方法](./authentication.md)および [Key Vault アクセス ポリシーの割り当て](./assign-access-policy-portal.md)に関するページを参照してください。
 
 Key Vault の開発の詳細については、「[Key Vault 開発者ガイド](developers-guide.md)」を参照してください。

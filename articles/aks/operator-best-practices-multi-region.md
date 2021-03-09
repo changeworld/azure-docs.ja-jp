@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 3ff8406a3634fa946ab8ce7aca694bbc57d556a5
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653998"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976403"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -89,7 +89,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 **ベスト プラクティス**: 可能な場合、サービスの状態をコンテナー内に格納しないでください。 代わりに、マルチリージョン レプリケーションをサポートする Azure のサービスとしてのプラットフォーム (PaaS) を使用します。
 
-*サービスの状態*とは、サービスが機能するために必要な、メモリ内またはディスク上のデータのことです。 これには、サービスによって読み書きされるデータ構造やメンバー変数が含まれます。 サービスの設計方法に応じて、状態には、ディスクに格納されているファイルやその他のリソースも含まれることがあります。 たとえば、状態には、データとトランザクション ログを格納するためにデータベースで使用されるファイルが含まれる場合があります。
+*サービスの状態* とは、サービスが機能するために必要な、メモリ内またはディスク上のデータのことです。 これには、サービスによって読み書きされるデータ構造やメンバー変数が含まれます。 サービスの設計方法に応じて、状態には、ディスクに格納されているファイルやその他のリソースも含まれることがあります。 たとえば、状態には、データとトランザクション ログを格納するためにデータベースで使用されるファイルが含まれる場合があります。
 
 状態は、外部化することも、状態を操作するコードと同じ場所に配置することもできます。 通常、状態の外部化は、ネットワーク上のさまざまなコンピューターで実行されている、または同一コンピューター上でアウト オブ プロセスを実行しているデータベースやその他のデータ ストアを使用して行います。
 
@@ -113,16 +113,13 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 アプリケーションには、ポッドが削除された後も、永続的ストレージが必要な場合があります。 Kubernetes では、永続ボリュームを使用してデータ ストレージを保持することができます。 永続ボリュームはノード VM にマウントされてから、ポッドに公開されます。 永続ボリュームは、ポッドが同じクラスター内の別のノードに移動されても、ポッドに従います。
 
-使用するレプリケーションの方法は、お使いのストレージ ソリューションによって決まります。 [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/)、[Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)、[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) などの一般的なストレージ ソリューションには、ディザスター リカバリーとレプリケーションに関する独自のガイダンスがあります。
+使用するレプリケーションの方法は、お使いのストレージ ソリューションによって決まります。 [Gluster](https://docs.gluster.org/en/latest/Administrator-Guide/Geo-Replication/)、[Ceph](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/)、[Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html)、[Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) などの一般的なストレージ ソリューションには、ディザスター リカバリーとレプリケーションに関する独自のガイダンスがあります。
 
 一般的な方法は、アプリケーションがデータを書き込める共通のストレージ ポイントを提供するというものです。 これらのデータは、その後リージョン間でレプリケートされ、ローカルにアクセスされます。
 
 ![インフラストラクチャベースの非同期レプリケーション](media/operator-best-practices-bc-dr/aks-infra-based-async-repl.png)
 
-Azure Managed Disks を使用している場合は、次のようなレプリケーションと DR ソリューションを選択することができます。
-
-* [Azure での Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure Backup](../backup/backup-overview.md)
+Azure Managed Disks を使用する場合は、レプリケーションとディザスター リカバリーの処理に使用できるいくつかのオプションがあります。 [Velero on Azure][velero] と [Kasten][kasten] は、Kubernetes ネイティブのバックアップ ソリューションですが、サポートされていません。
 
 ### <a name="application-based-asynchronous-replication"></a>アプリケーションベースの非同期レプリケーション
 
@@ -140,3 +137,6 @@ Azure Managed Disks を使用している場合は、次のようなレプリケ
 <!-- INTERNAL LINKS -->
 [aks-best-practices-scheduler]: operator-best-practices-scheduler.md
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
+
+[velero]: https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md
+[kasten]: https://www.kasten.io/

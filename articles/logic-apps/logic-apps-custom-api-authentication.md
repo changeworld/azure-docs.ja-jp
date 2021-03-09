@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80656229"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993185"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティの向上
 
@@ -81,7 +81,7 @@ API の呼び出しのセキュリティを向上させるために、Azure port
    ![ロジック アプリ ID のキーを作成する](./media/logic-apps-custom-api-authentication/create-logic-app-identity-key-secret-password.png)
 
 8. ツールバーで、 **[保存]** を選択します。 **[値]** にキーが表示されます。 
-後で使用するために**キーをコピーし、保存します**。 **[キー]** ページを閉じるとキーが非表示になるためです。
+後で使用するために **キーをコピーし、保存します**。 **[キー]** ページを閉じるとキーが非表示になるためです。
 
    パート 3 でロジック アプリを構成するとき、このキーを "シークレット" またはパスワードとして指定します。
 
