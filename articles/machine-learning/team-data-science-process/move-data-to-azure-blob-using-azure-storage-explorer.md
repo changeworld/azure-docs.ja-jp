@@ -19,7 +19,7 @@ ms.lasthandoff: 01/26/2021
 ms.locfileid: "98788911"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Azure Storage Explorer を使用して Azure BLOB Storage 間でデータを移動する
-Azure Storage Explorer は、Windows、MacOS、Linux で Azure Storage のデータを操作できる Microsoft の無料ツールです。 このトピックでは、Azure ストレージ エクスプローラーを使用して Azure BLOB Storage からデータをアップロードおよびダウンロードする方法について説明します。 このツールは、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/)のページからダウンロードできます。
+Azure Storage Explorer は、Windows、MacOS、Linux で Azure Storage のデータを操作できる Microsoft の無料ツールです。 このトピックでは、Azure Storage Explorer を使用して Azure Blob Storage からデータをアップロードおよびダウンロードする方法について説明します。 このツールは、 [Microsoft Azure Storage Explorer](https://storageexplorer.com/)のページからダウンロードできます。
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
