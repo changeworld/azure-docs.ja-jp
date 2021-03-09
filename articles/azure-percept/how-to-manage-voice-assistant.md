@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 593d2ccadf814cb5af27a4bb738f28132f39ab7d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5e41dea3b47c608b9e82ac57fa1cfe5247ea6cc2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660587"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099014"
 ---
 # <a name="managing-your-voice-assistant"></a>音声アシスタントを管理する
 
@@ -28,7 +28,7 @@ ms.locfileid: "101660587"
 
 1. デモ ページの **[Custom Keyword]\(カスタム キーワード\)** の横にある **[変更]** をクリックします。
 
-    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="画像。":::
+    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Hospitality (接客) デモ ウィンドウのスクリーンショット。":::
 
     デモ ページを開いていない場合は、デバイス ページ (下記参照) に移動し、 **[アクション]** の **[音声アシスタントのテスト]** をクリックしてデモにアクセスします。
 
@@ -40,17 +40,17 @@ ms.locfileid: "101660587"
 
 1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) の概要ページで、左側のメニュー ペインにある **[デバイス]** をクリックします。
 
-    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="画像。":::
+    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="デバイスが強調表示された Azure Percept Studio の概要ページのスクリーンショット。":::
 
 1. 音声アシスタント アプリケーションのデプロイ先となったデバイスを選択します。
 
 1. **[Speech]\(音声\)** タブを開きます。
 
-    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="画像。":::
+    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="[音声] タブが強調表示されたエッジ デバイス ページのスクリーンショット。":::
 
 1. **[キーワード]** の横にある **[変更]** をクリックします。
 
-    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="画像。":::
+    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="使用可能な音声ソリューションのアクションのスクリーンショット。":::
 
 1. 対象となるいずれかのキーワードを選択し、 **[Save]\(保存\)** をクリックして変更を適用します。
 

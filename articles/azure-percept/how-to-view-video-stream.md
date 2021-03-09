@@ -1,22 +1,22 @@
 ---
 title: Azure Percept DK の RTSP ビデオ ストリームを表示する
-description: Azure Percept DK の Vision SoM からの RTSP ビデオ ストリームを表示する方法について説明します。
+description: Azure Percept DK からの RTSP ビデオ ストリームを表示する方法を調べる
 author: elqu20
 ms.author: v-elqu
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/12/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 20fb8495e17d4294351a50c3bc97436de9f03450
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5f77e99dc5c34867fef2b0ac47c709824fa4477d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660563"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102096005"
 ---
 # <a name="view-your-azure-percept-dks-rtsp-video-stream"></a>Azure Percept DK の RTSP ビデオ ストリームを表示する
 
-Azure Percept Studio 内で Azure Percept DK の Vision SoM からの RTSP ビデオ ストリームを表示するには、このガイドに従ってください。 デバイスにデプロイされたビジョン AI モデルからの推論が、Web ストリームで表示できるようになります。
+Azure Percept Studio 内で Azure Percept DK からの RTSP ビデオ ストリームを表示するには、このガイドに従ってください。 デバイスにデプロイされたビジョン AI モデルからの推論が Web ストリームで表示できるようになります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,15 +36,15 @@ Azure Percept Studio 内で Azure Percept DK の Vision SoM からの RTSP ビ�
 
 1. 一覧から開発キットを選択します。
 
-    :::image type="content" source="./media/how-to-view-video-stream/select-device.png" alt-text="Azure Percept Studio の概要画面。":::
+    :::image type="content" source="./media/how-to-view-video-stream/select-device.png" alt-text="Azure Percept Studio で使用可能なデバイスのスクリーンショット。":::
 
 1. **[View your device stream]\(デバイス ストリームの表示\)** をクリックします。
 
-    :::image type="content" source="./media/how-to-view-video-stream/view-device-stream.png" alt-text="Azure Percept Studio の概要画面。":::
+    :::image type="content" source="./media/how-to-view-video-stream/view-device-stream.png" alt-text="使用可能なビジョン プロジェクト アクションを示すデバイス ページのスクリーンショット。":::
 
-    新しいタブが開き、Azure Percept DK の Vision SoM からのライブ Web ストリームが表示されます。
+    新しいタブが開き、Azure Percept DK からのライブ Web ストリームが表示されます。
 
-    :::image type="content" source="./media/how-to-view-video-stream/webstream.png" alt-text="Azure Percept Studio の概要画面。":::
+    :::image type="content" source="./media/how-to-view-video-stream/webstream.png" alt-text="デバイス Web ストリームのスクリーンショット。":::
 
 ## <a name="next-steps"></a>次のステップ
 

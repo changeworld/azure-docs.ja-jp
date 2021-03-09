@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/18/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 02292d4559697bc38d47811fe392dc86427515b4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d684311ef959ac13f3be8bac7ffbbb06a741962a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660543"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102097705"
 ---
 # <a name="dev-tools-pack-installer-overview"></a>Dev Tools Pack Installer の概要
 
@@ -84,6 +84,8 @@ Dev Tools Pack Installer は、インテリジェント エッジ ソリュー�
 
         > [!NOTE]
         > Docker は、macOS の最近のバージョンで Docker Desktop をサポートしています。 macOS の最新リリースとその前の 2 つのリリースが該当します。 macOS の新しいメジャーバージョンが一般提供されると、Docker は最も古いバージョンのサポートを終了し、(前の 2 つのリリースに加えて) macOS の最新バージョンをサポートします。 Docker Desktop では、現在、macOS Mojave、macOS Catalina、macOS Big Sur がサポートされています。
+        > 
+        - インストーラーは、Apple M1 ではサポートされていません。
 
 ## <a name="instructions"></a>Instructions
 
@@ -99,7 +101,7 @@ Dev Tools Pack Installer は、インテリジェント エッジ ソリュー�
     
         1. ダウンロード後、Dev-Tools-Pack-Installer.app ファイルを Applications フォルダーに移動します。
         
-        1. "Dev-Tools-Pack-Installer.app" をクリックしてインストール ウィザードを開きます。
+        1. **Dev-Tools-Pack-Installer.app** をクリックしてインストール ウィザードを開きます。
         
         1. "開発元が未確認" のセキュリティ ダイアログが表示された場合:
         
@@ -123,7 +125,7 @@ Dev Tools Pack Installer は、インテリジェント エッジ ソリュー�
                 
             1. ターミナルで次のように入力して、AppImage を実行可能にします。
             
-                1. chmod +x Dev-Tools-Pack-Installer.AppImage
+                1. chmod +x **Dev-Tools-Pack-Installer.AppImage**
                 
             1. ターミナルで次のように入力して、インストーラーを実行します。
             
@@ -141,11 +143,11 @@ Dev Tools Pack Installer は、インテリジェント エッジ ソリュー�
 
 1. **[Install Dev Tools Pack Installer]\(Dev Tools Pack Installer のインストール\)** ページで、 **[View license]\(ライセンスの表示\)** をクリックして、このインストーラーに含まれる各ソフトウェア パッケージのライセンス契約を表示します。 ライセンス契約の条項に同意する場合は、このチェック ボックスをオンにし、 **[Next]\(次へ\)** をクリックします。
 
-    ![インストーラーのライセンス契約画面。](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_license_agreements.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-license-agreements.png" alt-text="インストーラーのライセンス契約画面。":::
 
 1. **[Privacy Statement]\(プライバシーに関する声明\)** をクリックして、Microsoft プライバシーに関する声明を確認します。 プライバシーに関する声明に同意し、診断データを Microsoft に送信する場合は、 **[Yes]\(はい\)** を選択して、 **[Next]\(次へ\)** をクリックします。 それ以外の場合は、 **[No]\(いいえ\)** を選択して、 **[Next]\(次へ)** をクリックします。
 
-    ![インストーラーのプライバシーに関する声明の同意画面。](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_privacy_statement.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-privacy-statement.png" alt-text="インストーラーのプライバシーに関する声明の同意画面。":::
 
 1. **[Configure Components]\(コンポーネントの構成)** ページで、インストールするオプションのツールを選択します (必須のツールは既定でインストールされます)。
 
@@ -153,11 +155,11 @@ Dev Tools Pack Installer は、インテリジェント エッジ ソリュー�
 
     1. **[Install]\(インストール\)** をクリックしてインストールを続行します。
 
-    ![入手可能なソフトウェア パッケージを示すインストーラー画面。](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_configure_components.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-configure-components.png" alt-text="入手可能なソフトウェア パッケージを示すインストーラー画面。":::
 
 1. 選択したすべてのコンポーネントが正常にインストールされると、ウィザードは **[Completing the Setup Wizard]\(セットアップ ウィザードの完了\)** ページに進みます。 **[Finish]\(完了\)** をクリックして、ウィザードを終了します。
 
-    ![インストーラーの完了画面。](https://github.com/microsoft/Project-Santa-Cruz-Private-Preview/blob/main/user-guides/prototyping/article_images/dev_tools_finish.png)
+    :::image type="content" source="./media/dev-tools-installer/dev-tools-finish.png" alt-text="インストーラーの完了画面。":::
 
 ## <a name="docker-status-check"></a>Docker の状態の確認
 
@@ -168,12 +170,12 @@ Docker Desktop が良好な状態で実行されていることを確認する�
       1. システム トレイの非表示アイコンを展開します。
       
          1. システム トレイの非表示アイコンを展開します (非表示の場合)。
-         
-            * ![システム トレイ](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/SystemTray.png)
+
+            :::image type="content" source="./media/dev-tools-installer/system-tray.png" alt-text="システム トレイ。":::
          
          1. Docker Desktop アイコンで "Docker Desktop is Running (Docker Desktop が実行中)" と示されていることを確認します。
-         
-            * ![Docker の状態](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/article_images/DockerStatusRunning.png)
+
+            :::image type="content" source="./media/dev-tools-installer/docker-status-running.png" alt-text="Docker の状態。":::
          
          1. 上のアイコンがシステム トレイに表示されていない場合は、[スタート] メニューから Docker Desktop を起動します。
          
@@ -181,4 +183,4 @@ Docker Desktop が良好な状態で実行されていることを確認する�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Percept DK 向けの高度な開発を始めるには、「[高度な開発チュートリアル (ローカル)](./advanced-development-local.md)」を参照してください。
+Azure Percept DK 向けの高度な開発を始めるには、「[Azure Percept の高度な開発リポジトリ](https://github.com/microsoft/azure-percept-advanced-development)」を参照してください。
