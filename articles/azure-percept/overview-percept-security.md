@@ -7,25 +7,25 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: b5a345139114842c83cb1f11792076efb1461870
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a08876cde9fac64c3a361b469049b4e33678a86f
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678619"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098147"
 ---
 # <a name="azure-percept-security-overview"></a>Azure Percept セキュリティの概要
 
-Azure Percept DK デバイスは信頼のハードウェア ルートに基づいて設計されており、各デバイスにセキュリティが組み込まれています。 これは、機密性の高いセンサー (カメラやマイクなど) と推論データの保護に役立つほか、Azure Percept Studio サービスでのデバイスの認証と承認を可能にします。
+Azure Percept DK デバイスはハードウェア Root of Trust (信頼の基点) に基づいて設計されており、各デバイスに追加のセキュリティが組み込まれています。 これは、機密性の高いセンサー (カメラやマイクなど) と推論データの保護に役立つほか、Azure Percept Studio サービスでのデバイスの認証と承認を可能にします。
 
 > [!NOTE]
-> Azure Percept DK は、開発およびテスト環境での使用、または概念実証のシナリオを目的としています。
+> Azure Percept DK は、開発およびテスト環境での使用向けにライセンスされています。
 
 ## <a name="devices"></a>デバイス
 
 ### <a name="azure-percept-dk"></a>Azure Percept DK
 
-Azure Percept DK にはトラステッド プラットフォーム モジュール (TPM) バージョン 2.0 が搭載されています。これを利用して、デバイスを Azure デバイス プロビジョニング サービスに安全に接続できます。 TPM は、業界で広く採用されている Trusted Computing Group の ISO 標準です。TPM の詳細については、[完全な TPM 2.0 仕様](https://trustedcomputinggroup.org/resource/tpm-library-specification/)または ISO/IEC 11889 仕様を参照してください。DPS でデバイスを安全にプロビジョニングする方法の詳細については、[Azure IoT Hub Device Provisioning Service - TPM の構成証明](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)に関するページを参照してください。
+Azure Percept DK にはトラステッド プラットフォーム モジュール (TPM) バージョン 2.0 が搭載されています。これを使用して、セキュリティが強化された Azure デバイス プロビジョニング サービスにデバイスを接続できます。 TPM は、業界で広く採用されている Trusted Computing Group の ISO 標準です。TPM の詳細については、[完全な TPM 2.0 仕様](https://trustedcomputinggroup.org/resource/tpm-library-specification/)または ISO/IEC 11889 仕様を参照してください。DPS でデバイスを安全にプロビジョニングする方法の詳細については、[Azure IoT Hub Device Provisioning Service - TPM の構成証明](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation)に関するページを参照してください。
 
 ### <a name="azure-percept-system-on-module-som"></a>Azure Percept システム オン モジュール (SOM)
 
@@ -37,11 +37,11 @@ Azure Percept デバイスでは、信頼のハードウェアルートを使用
 
 ### <a name="iot-edge"></a>IoT Edge
 
-Azure Percept DK では、トランスポート層セキュリティ (TLS) プロトコルを利用して Azure Percept Studio およびその他の Azure サービスに安全に接続します。 Azure Percept DK は Azure IoT Edge に対応したデバイスです。 IoT Edge ランタイムは、デバイスを IoT Edge デバイスに変えるプログラムのコレクションです。 これらの IoT Edge ランタイム コンポーネントを使用することにより、IoT Edge デバイスは、エッジで実行するコードを受信し、結果を通信できます。 Azure Percept DK では、Docker コンテナーを利用してホスト オペレーティング システムとエッジ対応アプリケーションから IoT Edge ワークロードを分離します。 Azure IoT Edge セキュリティ フレームワークについて詳しくは、[IoT Edge セキュリティ マネージャー](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06)に関する記事をご覧ください。
+Azure Percept DK では、トランスポート層セキュリティ (TLS) プロトコルを使用して、セキュリティが強化された Azure Percept Studio  と、その他の Azure サービスに接続します。 Azure Percept DK は Azure IoT Edge に対応したデバイスです。 IoT Edge ランタイムは、デバイスを IoT Edge デバイスに変えるプログラムのコレクションです。 これらの IoT Edge ランタイム コンポーネントを使用することにより、IoT Edge デバイスは、エッジで実行するコードを受信し、結果を通信できます。 Azure Percept DK では、Docker コンテナーを利用してホスト オペレーティング システムとエッジ対応アプリケーションから IoT Edge ワークロードを分離します。 Azure IoT Edge セキュリティ フレームワークについて詳しくは、[IoT Edge セキュリティ マネージャー](https://docs.microsoft.com/azure/iot-edge/iot-edge-security-manager?view=iotedge-2018-06)に関する記事をご覧ください。
 
 ### <a name="device-update-for-iot-hub"></a>Device Update for IoT Hub
 
-Device Update for IoT Hub を使用すると、Azure Percept デバイスでの再生可能なセキュリティを実現する無線更新を安全、スケーラブル、確実に行うことが可能です。 分析情報を通じて豊富な管理コントロールを実施し、更新プログラムのコンプライアンスを確保できます。 Azure Percept DK にはデバイス更新ソリューションがあらかじめ統合されていて、回復性がある方法でファームウェアから OS のレイヤーに更新 (A/B) できます。
+Device Update for IoT Hub を使用すると、Azure Percept デバイスでの再生可能なセキュリティを実現する無線更新をさらに安全、スケーラブル、確実に行うことができます。 分析情報を通じて豊富な管理コントロールを実施し、更新プログラムのコンプライアンスを確保できます。 Azure Percept DK にはデバイス更新ソリューションがあらかじめ統合されていて、回復性がある方法でファームウェアから OS のレイヤーに更新 (A/B) できます。
 
 <!---I think the below topics need to be somewhere else, (i.e. not on the main page)
 --->
@@ -59,14 +59,17 @@ Device Update for IoT Hub を使用すると、Azure Percept デバイスでの�
 
 さらに、[Azure IoT Edge で使用される接続](https://docs.microsoft.com/azure/iot-edge/production-checklist?view=iotedge-2018-06#allow-connections-from-iot-edge-devices)の一覧を確認します。
 
-## <a name="additional-recommendations-for-deployment-to-production"></a>運用環境にデプロイする場合の追加の推奨事項
+<!---
+## Additional Recommendations for Deployment to Production
 
-Azure Percept DK には、すぐに使用できるセキュリティ機能が豊富に備わっています。 運用デプロイを検討している場合、現在のリリースに含まれているこれらの強力なセキュリティ機能に加えて、Microsoft はさらに以下をガイドラインとして推奨します。
+Azure Percept DK offers a great variety of security capabilities out of the box. In addition to those powerful security features included in the current release, Microsoft also suggests the following guidelines when considering production deployments:
 
-- デバイス自体の強力な物理的保護
-- 保存データの暗号化の確実な有効化
-- デバイスの状況の継続的な監視とアラートへの迅速な対応
-- デバイスへのアクセス権を持つ管理者の数の制限
+- Strong physical protection of the device itself
+- Ensuring data at rest encryption is enabled
+- Continuously monitoring the device posture and quickly responding to alerts
+- Limiting the number of administrators who have access to the device
+--->
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4c2ace609d67cc48d1b73bdb044e7048ebda21e7
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: c93ecdc138e757f84e995a69a6c3d7f1b5460abe
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098334"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179376"
 ---
 # <a name="azure-percept-dk-overview"></a>Azure Percept DK の概要
 
@@ -24,7 +24,7 @@ Azure Percept DK は、ビジョンおよびオーディオ AI 概念実証の�
 
 - **AI をエッジで実行する機能**。 組み込みのハードウェア アクセラレータを使用すると、クラウドに接続しなくても、ビジョン AI モデルを実行できます。
 - **信頼のハードウェア ルート セキュリティを組み込み**。 詳細については、[Azure Percept のセキュリティ](./overview-percept-security.md)の概要を参照してください。
-- **[Azure Percept Studio](./overview-azure-percept-studio.md)** およびその他の Azure サービスとシームレスに統合。 Azure IoT Hub、Azure Cognitive Services、[Live Video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview) など
+- **[Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819)** およびその他の Azure サービスとシームレスに統合。 Azure IoT Hub、Azure Cognitive Services、[Live Video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview) など
 - **オプションの [Azure Percept Audio](./overview-azure-percept-audio.md) とのシームレスな統合**
 - **主要な AI プラットフォームをサポート**。 ONNX や TensorFlow など。
 - **80/20 レーリング システムとの統合**。 運用環境でプロトタイプを簡単に構築できます。 [80/20 統合](./overview-8020-integration.md)について詳しくは、こちらをご覧ください。
