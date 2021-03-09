@@ -6,14 +6,14 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: e5efbf695b85f474e5d7c84c86809acb2f5a1035
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 0218bfef66e779a31d999c8d58bc1ce2691f46d4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429604"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179223"
 ---
 # <a name="backend-pool-management"></a>バックエンド プールの管理
 バックエンド プールは、ロード バランサーの重要なコンポーネントです。 バックエンド プールは、指定された負荷分散規則のトラフィックを処理するリソースのグループを定義します。
@@ -181,9 +181,11 @@ JSON 要求本文:
           "subnet": {
             "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
           },
-          "loadBalancerBackendAddressPools": {
-                                    "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
-          }
+          "loadBalancerBackendAddressPools": [
+            {
+              "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
+            }
+          ]
         }
       }
     ]
@@ -255,8 +257,16 @@ JSON 要求本文:
 
 バックエンド プールのすべての管理は、次の例で強調されているように、バックエンド プール オブジェクトで直接実行されます。
 
-  >[!IMPORTANT] 
-  >現在、この機能はプレビュー段階にあります。 この機能の現在の制限については、「[制限事項](#limitations)」を参照してください。
+### <a name="limitations"></a>制限事項
+IP アドレスで構成されたバックエンド プールには、次の制限があります。
+  * 使用できるのは Standard ロード バランサーのみ
+  * バックエンド プール内の IP アドレスの上限は 100 個
+  * バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
+  * IP ベースのバックエンド プールを使用するロード バランサーは、Private Link サービスとして機能することはできない
+  * この機能は Azure portal では現在サポートされていない
+  * この機能では、ACI コンテナーは現在サポートされていない
+  * ロード バランサーまたはロード バランサーに面するサービスは、ロード バランサーのバックエンド プールに配置できない
+  * インバウンド NAT 規則を IP アドレスで指定することはできない
 
 ### <a name="powershell"></a>PowerShell
 新しいバックエンド プールを作成します。
@@ -517,17 +527,6 @@ JSON 要求本文:
   }
 }
 ```
-
-## <a name="limitations"></a>制限事項
-IP アドレスで構成されたバックエンド プールには、次の制限があります。
-  * 標準のロード バランサーのみ
-  * バックエンド プール内の IP アドレスの上限は 100 個
-  * バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
-  * IP ベースのバックエンド プールを使用するロード バランサーは、Private Link サービスとして機能することはできない
-  * この機能は Azure portal では現在サポートされていない
-  * この機能では、ACI コンテナーは現在サポートされていない
-  * ロード バランサーまたはロード バランサーに面するサービスは、ロード バランサーのバックエンド プールに配置できない
-  * インバウンド NAT 規則を IP アドレスで指定することはできない
   
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Load Balancer のバックエンド プール管理についてと、IP アドレスと仮想ネットワークを使用してバックエンド プールを構成する方法について学習しました。

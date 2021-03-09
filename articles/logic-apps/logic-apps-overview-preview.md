@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 02/01/2021
-ms.openlocfilehash: 5db0214e9b985df5c5aedb1dbe9878e484af2a55
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.date: 03/02/2021
+ms.openlocfilehash: 9d8d3cb4bf68f7da2bddabd21272d1011ce92f66
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430799"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101715209"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>概要:Azure Logic Apps プレビュー
 
@@ -38,7 +38,7 @@ Azure Logic Apps プレビューを使用すると、アプリ、データ、ク
 
 * [Azure Logic Apps プレビューの制限](#limits)。
 
-詳細については、これらの他の記事を参照してください。
+詳細については、これらの他のトピックを参照してください。
 
 * [あらゆる場所で実行される Azure Logic Apps - ランタイムの詳細](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
 
@@ -50,7 +50,7 @@ Azure Logic Apps プレビューを使用すると、アプリ、データ、ク
 
 Azure Logic Apps プレビュー ランタイムには、[Azure Functions](../azure-functions/functions-overview.md) 機能拡張が使用されます。このランタイムは、Azure Functions ランタイムの拡張機能としてホストされます。 このアーキテクチャは、Azure Functions が実行されるあらゆる場所で、新しいロジック アプリの種類を実行できることを意味します。 Azure Logic Apps プレビューのランタイムをほぼすべてのネットワーク トポロジでホストし、使用可能なコンピューティング サイズを選択してワークフローに必要なワークロードを処理することができます。 Azure Functions 拡張機能の詳細については、[Web ジョブ SDK: カスタムの入力および出力バインドの作成](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings)に関するページを参照してください。
 
-この新しいアプローチの場合、Azure Logic Apps プレビュー ランタイムとワークフローの両方が、同時にパッケージ化できるアプリの一部となります。 この機能を使用すると、ホスティング環境に成果物をコピーしてアプリを起動するだけで、ワークフローをデプロイして実行できます。 また、このアプローチの場合、運用環境に変更をデプロイする前に必要なテストと検証を行うために、ワークフロー プロジェクトに関連する DevOps パイプラインを構築するためのより標準化されたエクスペリエンスが提供されます。 詳細については、「[あらゆる場所で実行される Azure Logic Apps - ランタイムの詳細](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)」を参照してください。
+この新しいアプローチの場合、Azure Logic Apps プレビュー ランタイムとワークフローの両方が、同時にパッケージ化できるアプリの一部となります。 この機能を使用すると、ホスティング環境に成果物をコピーしてアプリを起動するだけで、ワークフローをデプロイして実行できます。 また、このアプローチの場合、運用環境に変更をデプロイする前に必要なテストと検証を行うために、ワークフロー プロジェクトに関連するデプロイ パイプラインを構築するためのより標準化されたエクスペリエンスが提供されます。 詳細については、「[あらゆる場所で実行される Azure Logic Apps - ランタイムの詳細](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)」を参照してください。
 
 次の表は、ワークフローが実行されている環境に基づいて、リソースを共有する方法の違いを簡単にまとめたものです。 制限の違いについては、[Azure Logic Apps プレビューの制限](#limits)に関するページを参照してください。
 
@@ -139,10 +139,17 @@ Azure Logic Apps プレビューには、現在および追加の機能が多数
 
 * Azure サブスクリプションとロジック アプリの設定でサポートされている場合は、[Application Insights](../azure-monitor/app/app-insights-overview.md) を使用してロジック アプリに対して診断ログとトレース機能を有効にします。
 
+* [Azure Functions Premium プラン](../azure-functions/functions-premium-plan.md)を使用して、ロジック アプリを作成してデプロイする場合の Azure Functions と同様に、Azure 仮想ネットワークとのプライベートな接続や統合などのネットワーク機能にアクセスします。 詳細については、次のトピックをご覧ください。
+
+  * [Azure Functions のネットワーク オプション](../azure-functions/functions-networking-options.md)
+
+  * [あらゆる場所で実行される Azure Logic Apps - Azure Logic Apps プレビューによるネットワークの可能性](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+
 * **Logic Apps (プレビュー)** リソースの個々のワークフローで使用されるマネージド接続のアクセス キーを再生成します。 このタスクでは、[**Logic Apps** リソースに対して同じ手順を実行しますが、ロジック アプリのリソース レベルではなく、個々のワークフロー レベルで実行します](logic-apps-securing-a-logic-app.md#regenerate-access-keys)。
 
-> [!NOTE]
-> 現在の既知の問題の詳細については、[GitHub の Logic Apps パブリック プレビューでの既知の問題に関するページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)を参照してください。
+* プレビュー以外のデザイナーと同じ手順に従って、新しいデザイナーで並列分岐を追加します。
+ 
+詳細については、「[変更された、制限付き、使用できない、またはサポートされていない機能](#limited-unavailable-unsupported)」と、[GitHub の Logic Apps パブリック プレビューでの既知の問題に関するページ](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)を参照してください。
 
 <a name="pricing-model"></a>
 
@@ -171,7 +178,9 @@ Azure Logic Apps プレビューでは、これらの機能が変更されてい
 
 * **OS のサポート**: 現在、Visual Studio Code のデザイナーは Linux OS で動作しませんが、Logic Apps Preview ランタイムを使用するロジック アプリを Linux ベースの仮想マシンにデプロイすることはできます。 現在のところ、Windows または macOS の Visual Studio Code でロジック アプリを構築してから、Linux ベースの仮想マシンにデプロイすることができます。
 
-* **トリガーとアクション**: スライディング ウィンドウやバッチなど、一部の組み込みトリガーは使用できません。 ワークフローを開始するには、[組み込みの Recurrence、Request、HTTP、HTTP Webhook、Event Hubs、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 組み込みのトリガーとアクションは、Azure Logic Apps プレビュー ランタイムでネイティブに実行されますが、マネージド コネクタは Azure にデプロイされます。 デザイナーでは、組み込みのトリガーとアクションは **[組み込み]** タブに表示されますが、マネージド コネクタのトリガーとアクションは **[Azure]** タブに表示されます。
+* **トリガーとアクション**: 組み込みのトリガーとアクションは、Azure Logic Apps プレビュー ランタイムでネイティブに実行されますが、マネージド コネクタは Azure にデプロイされます。 スライディング ウィンドウやバッチなど、一部の組み込みトリガーは使用できません。
+
+  ワークフローを開始するには、[組み込みの Recurrence、Request、HTTP、HTTP Webhook、Event Hubs、または Service Bus トリガー](../connectors/apis-list.md)を使用します。 デザイナーでは、組み込みのトリガーとアクションは **[組み込み]** タブに表示されますが、マネージド コネクタのトリガーとアクションは **[Azure]** タブに表示されます。
 
   > [!NOTE]
   > Visual Studio Code でローカルに実行するには、Webhook ベースのトリガーとアクションに追加の設定が必要です。 詳細については、[Visual Studio Code でのステートフルおよびステートレス ワークフローの作成](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup)に関するページを参照してください。
@@ -199,11 +208,11 @@ Azure Logic Apps プレビューでは、これらの機能が変更されてい
 
       * インライン コードの操作アクションでは、統合アカウントは不要になりました。
 
-      * macOS または Linux を使う場合、Visual Studio Code で Azure Logic Apps (プレビュー) 拡張機能を使用するときに、 **[Inline Code Operations]\(インライン コードの操作\)** は現在、利用できません。
+      * macOS および Linux の場合、**インライン コードの操作** は現在、Visual Studio Code で Azure Logic Apps (プレビュー) 拡張機能を使用する場合にサポートされます。
 
-      * インライン コード操作アクションで変更を行う場合は、ロジック アプリを再起動する必要があります。
+      * **インライン コード操作** アクションで変更を行う場合に、ロジック アプリを再起動する必要がなくなりました。
 
-      * インライン コード操作アクションには[更新された制限](logic-apps-overview-preview.md#inline-code-limits)があります。
+      * **インライン コード操作** アクションには[更新された制限](logic-apps-overview-preview.md#inline-code-limits)があります。
 
     * [統合アカウントに対する組み込みの B2B トリガーとアクション](../connectors/apis-list.md#integration-account-connectors)の一部は使用できません。たとえば、**フラット ファイル** のエンコードやデコード アクションです。
 
@@ -211,17 +220,15 @@ Azure Logic Apps プレビューでは、これらの機能が変更されてい
 
 * **ホスティング プランの可用性**: Azure portal で新しい **ロジック アプリ (プレビュー)** リソースの種類を作成するか、Visual Studio Code からデプロイするかにかかわらず、Azure で使用できるのは Premium または App Service ホスティング プランのみとなります。 このリソースの種類のデプロイについては、従量課金ホスティング プランは使用できず、サポートもされていません。 Visual Studio Code から Docker コンテナーにデプロイできますが、[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) にはデプロイできません。
 
-* **並列分岐**: 現在、新しいデザイナー エクスペリエンスを通じて並列分岐を追加することはできません。 しかし、元のデザイナー エクスペリエンスを通じてこれらの分岐を引き続き追加し、新しいデザイナーに表示することはできます。
-
-  1. デザイナーの下部にある **[新しいキャンバス]** コントロールを選択して、新しいエクスペリエンスを無効にします。
-
-  1. 並列分岐をワークフローに追加します。
-
-  1. **[新しいキャンバス]** コントロールをもう一度選択して、新しいエクスペリエンスを有効にします。
+* **Visual Studio Code でのデバッグのブレークポイント**: ワークフローの **workflow.json** ファイル内にブレークポイントを追加して使用することはできますが、ブレークポイントは現時点ではトリガーではなく、アクションに対してのみサポートされます。 詳細については、[Visual Studio Code でのステートフルおよびステートレス ワークフローの作成](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints)に関するページを参照してください。
 
 * **ズーム コントロール**: 現在、デザイナーでズーム コントロールは使用できません。
 
-* **Visual Studio Code でのデバッグのブレークポイント**: ワークフローの **workflow.json** ファイル内にブレークポイントを追加して使用することはできますが、ブレークポイントは現時点ではトリガーではなく、アクションに対してのみサポートされます。 詳細については、[Visual Studio Code でのステートフルおよびステートレス ワークフローの作成](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints)に関するページを参照してください。
+* **トリガーの履歴と実行履歴**: **ロジック アプリ (プレビュー)** のリソースの種類の場合、トリガーの履歴と実行履歴は、Azure portal でロジック アプリ レベルではなくワークフロー レベルで表示されます。 この履歴データを見つけるには、これらの手順に従います。
+
+   * 実行履歴を表示するには、ロジック アプリでワークフローを開きます。 ワークフローのメニューで、 **[開発者]** の下の **[モニター]** を選択します。
+
+   * トリガーの履歴を確認するには、ロジック アプリでワークフローを開きます。 ワークフローのメニューで、 **[開発者]** の下の **[トリガー履歴]** を選択します。
 
 <a name="limits"></a>
 

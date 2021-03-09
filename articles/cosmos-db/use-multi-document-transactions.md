@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: gahllevy
-ms.openlocfilehash: 4d7dcc829f25b7f1b7c6cb6b1d13a664d301bfe6
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: f319db76c8aee5a2a35ff8ca9670c42089350ede
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678609"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692472"
 ---
 # <a name="use-multi-document-transactions-in-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API でマルチドキュメント トランザクションを使用する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -32,11 +32,13 @@ Azure Cosmos DB の MongoDB 用 API では、1 つのドキュメントに対す
 
 ## <a name="requirements"></a>要件
 
-バージョン 4.0 では、シャード化されていないコレクション内でマルチドキュメント トランザクションがサポートされています。 マルチドキュメント トランザクションは、コレクションまたはシャード コレクションではサポートされていません。
+API バージョン 4.0 では、シャード化されていないコレクション内でマルチドキュメント トランザクションがサポートされています。 コレクションをまたいだマルチドキュメント トランザクションやシャード化されたコレクションにおけるマルチドキュメント トランザクションは、4.0 ではサポートされません。 トランザクションのタイムアウトは 5 秒に固定されています。
 
 ワイヤ プロトコル バージョン 4.0 以上をサポートするすべてのドライバーで、Azure Cosmos DB の MongoDB 用 API がサポートされます。
 
 ## <a name="run-multi-document-transactions-in-mongodb-shell"></a>MongoDB シェルでマルチドキュメント トランザクションを実行する
+> [!Note]
+> MongoDB Compass に埋め込まれた MongoSH ベータ版 (シェル) では、この例は機能しません。
 
 1. コマンド プロンプトを開き、Mongo シェル バージョン 4.0 以降がインストールされているディレクトリに移動します。
 

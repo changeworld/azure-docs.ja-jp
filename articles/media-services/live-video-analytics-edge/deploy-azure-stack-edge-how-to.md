@@ -3,12 +3,12 @@ title: Live Video Analytics を Azure Stack Edge にデプロイする
 description: この記事では、Live Video Analytics を Azure Stack Edge にデプロイするときに役立つ手順を示します。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: cc3dcfaa96034e807d3d82e75eedc0f6a82eff08
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d49167890009d58b21c3678cb89f608bad665abd
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551010"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730271"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Live Video Analytics を Azure Stack Edge にデプロイする
 
@@ -42,7 +42,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 * [Azure Stack Edge および Data Box Gateway リソースの作成](../../databox-online/azure-stack-edge-deploy-prep.md)
 * [インストールと設定](../../databox-online/azure-stack-edge-deploy-install.md)
 * [接続とアクティブ化](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
-* [Azure Stack Edge への IoT ハブのアタッチ](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-deploy-configure-compute#configure-compute)
+* [Azure Stack Edge への IoT ハブのアタッチ](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Azure Stack Edge ローカル UI でのコンピューティングに関する前提条件の有効化
 
 続行する前に以下を確認します。
@@ -234,17 +234,22 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
     
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-* Kubernetes API アクセス (kubectl)。
+* **Kubernetes API アクセス (kubectl)**
 
-    * ドキュメントに従って、[Kubernetes クラスターにアクセス](https://review.docs.microsoft.com/azure/databox-online/azure-stack-edge-j-series-create-kubernetes-cluster?toc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Ftoc.json&bc=%2Fazure%2Fdatabox-online%2Fazure-stack-edge-gpu%2Fbreadcrumb%2Ftoc.json&branch=release-tzl#debug-kubernetes-issues)できるように自分のマシンを構成します。
-    * デプロイしたすべての IoT Edge モジュールでは、`iotedge` 名前空間が使用されます。 kubectl の使用時にそれを含めるようにしてください。
-* モジュール ログ
+    * ドキュメントに従って、[Kubernetes クラスターにアクセス](https://docs.microsoft.com/azure/databox-online/azure-stack-edge-gpu-create-kubernetes-cluster)できるように自分のマシンを構成します。
+    * デプロイしたすべての IoT Edge モジュールでは、`iotedge` 名前空間が使用されます。 kubectl の使用時にそれを含めるようにしてください。  
 
-    `iotedge` ツールは、ログを取得するためにアクセスすることができません。 ログを表示したり、ファイルにパイプしたりするには、[kubectl logs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs) を使用する必要があります。 例: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`
-* ポッドとノードのメトリック
+* **モジュール ログ**
 
-    ポッドとノードのメトリックを確認するには、[kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top) を使用します。 (この機能は、次の Azure Stack Edge リリース (バージョン 2008 以上) で使用できるようになる予定です) >v2007)<br/>`kubectl top pods -n iotedge`
-* モジュールのネットワーク Azure Stack Edge でモジュールを検出するには、モジュールに createOptions のホスト ポート バインドがなければなりません。 このモジュールは、`moduleName:hostport` を介してアドレス指定できるようになります。
+    `iotedge` ツールは、ログを取得するためにアクセスすることができません。 ログを表示したり、ファイルにパイプしたりするには、[kubectl logs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs) を使用する必要があります。 例: <br/>  `kubectl logs deployments/mediaedge -n iotedge --all-containers`  
+
+* **ポッドとノードのメトリック**
+
+    ポッドとノードのメトリックを確認するには、[kubectl top](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#top) を使用します。
+    <br/>`kubectl top pods -n iotedge` 
+
+* **モジュールのネットワーク**   
+Azure Stack Edge でモジュールを検出するには、モジュールに createOptions のホスト ポート バインドがなければなりません。 このモジュールは、`moduleName:hostport` を介してアドレス指定できるようになります。
     
     ```json
     "createOptions": {
@@ -256,10 +261,11 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
     }
     ```
     
-* ボリュームのマウント
+* **ボリュームのマウント**
 
     空でない既存のディレクトリに対してコンテナーがボリュームのマウントを試行している場合、モジュールの起動は失敗します。
-* 共有メモリ
+
+* **gRPC を使用する際の共有メモリ**
 
     Azure Stack Edge リソース上の共有メモリは、ホスト IPC を使用して、任意の名前空間のポッド全体でサポートされます。
     IoT Hub を介してデプロイを行うために、エッジ モジュール上の共有メモリを構成します。
@@ -272,7 +278,7 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
         }
     ...
         
-    (Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API.
+    //(Advanced) Configuring shared memory on a K8s Pod or Deployment manifest for deployment via K8s API
     spec:
         ...
         template:
@@ -281,14 +287,14 @@ Azure IoT Tools 拡張機能を使用して IoT ハブに接続するには、�
         ...
     ```
     
-* (高度) ポッドのコロケーション
+* **(高度) ポッドのコロケーション**
 
     K8s を使用し、gRPC 経由で Live Video Analytics と通信するカスタム推論ソリューションをデプロイしている場合は、必ず Live Video Analytics モジュールと同じノードにポッドがデプロイされている必要があります。
 
-    * オプション 1 - コロケーションにノード アフィニティと組み込みノード ラベルを使用する。
+    * **オプション 1** - コロケーションにノード アフィニティと組み込みノード ラベルを使用する。
 
     ノードにラベルを設定するためのアクセス権をユーザーが持っていないため、現在は NodeSelector カスタム構成を利用できないように思えるかもしれません。 しかし、お客様のトポロジと名前付け規則によっては、[組み込みノード ラベル](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#built-in-node-labels)を使用できる場合もあります。 Azure Stack Edge リソースと Live Video Analytics を参照する nodeAffinity セクションは、コロケーションを実現するために推論ポッド マニフェストに追加できます。
-    * オプション 2 - コロケーションにポッド アフィニティを使用する (推奨)。
+    * **オプション 2** - コロケーションにポッド アフィニティを使用する (推奨)。
 Kubernetes では、同じノードでポッドをスケジュールできる[ポッド アフィニティ](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#inter-pod-affinity-and-anti-affinity)をサポートしています。 コロケーションを実現するために、Live Video Analytics モジュールを参照する podAffinity セクションを推論ポッド マニフェストに追加できます。
 
     ```json   
@@ -310,6 +316,31 @@ Kubernetes では、同じノードでポッドをスケジュールできる[�
                 values:
                 - mediaedge
             topologyKey: "kubernetes.io/hostname"
+    ```
+* **`rtspsim` モジュールの使用中に発生する 404 エラー コード**  
+このコンテナーは、そこに含まれる 1 つのフォルダーからのみビデオを読み取ります。 コンテナー イメージ内の既存のフォルダーに外部のフォルダーをマッピング (バインド) した場合、そのコンテナー イメージに存在するファイルが、Docker によって非表示にされます。  
+ 
+    たとえば、バインディングがない状態で、コンテナーに次のファイルが存在するとします。  
+    ```
+    root@rtspsim# ls /live/mediaServer/media  
+    /live/mediaServer/media/camera-300s.mkv  
+    /live/mediaServer/media/win10.mkv  
+    ```
+     
+    また、ホストには次のファイルが存在するとします。
+    ```    
+    C:\MyTestVideos> dir
+    Test1.mkv
+    Test2.mkv
+    ```
+     
+    ところが、次のバインディングを配置マニフェスト ファイルに追加すると、/live/mediaServer/media の内容が、ホスト側と一致するように Docker によって上書きされます。
+    `C:\MyTestVideos:/live/mediaServer/media`
+    
+    ```
+    root@rtspsim# ls /live/mediaServer/media
+    /live/mediaServer/media/Test1.mkv
+    /live/mediaServer/media/Test2.mkv
     ```
 
 ## <a name="next-steps"></a>次のステップ

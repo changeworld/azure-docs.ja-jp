@@ -3,12 +3,12 @@ title: 監視とログ記録 - Azure
 description: この記事では、Live Video Analytics on IoT Edge での監視とログ記録の概要について説明します。
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: a77ca6cf9dc66d1efda5741266f1a2eecc2599c0
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: e81b1e98fb30bb8876c78c8c911585f5448db8f2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99507822"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730246"
 ---
 # <a name="monitoring-and-logging"></a>監視およびログ記録
 
@@ -305,27 +305,70 @@ IoT Edge モジュールでの Live Video Analytics からメトリックを収�
      `AZURE_CLIENT_SECRET`:使用するアプリ シークレットを指定します。  
      
      >[!TIP]
-     > サービス プリンシパルには、**監視メトリック パブリッシャー** ロールを指定できます。 「 **[サービス プリンシパルを作成する](https://docs.microsoft.com/azure/azure-arc/data/upload-metrics-and-logs-to-azure-monitor?pivots=client-operating-system-macos-and-linux#create-service-principal)** 」の手順に従って、サービス プリンシパルを作成し、ロールを割り当てます。
+     > サービス プリンシパルには、**監視メトリック パブリッシャー** ロールを指定できます。 「 **[サービス プリンシパルを作成する](../../azure-arc/data/upload-metrics-and-logs-to-azure-monitor.md?pivots=client-operating-system-macos-and-linux#create-service-principal)** 」の手順に従って、サービス プリンシパルを作成し、ロールを割り当てます。
 
 1. モジュールがデプロイされると、Azure Monitor で 1 つの名前空間の下にメトリックが表示されます。 メトリック名は、Prometheus によって出力されたものと一致します。 
 
    この場合は、Azure portal で IoT ハブに移動し、左側のペインで **[メトリック]** を選択します。 ここでメトリックが表示されます。
 
-Prometheus を [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial) と一緒に使用すると、CPUPercent、MemoryUsedPercent などのメトリックを生成して[監視](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)できます。Kusto クエリ言語を使用すると、次のようにクエリを記述し、IoT Edge のモジュールで使用される CPU 使用率を取得できます。
-```kusto
-let cpu_metrics = promMetrics_CL
-| where Name_s == "edgeAgent_used_cpu_percent"
-| extend dimensions = parse_json(Tags_s)
-| extend module_name = tostring(dimensions.module_name)
-| where module_name in ("lvaEdge","yolov3","tinyyolov3")
-| summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
-cpu_metrics
-| summarize cpu_percent = sum(cpu_percent) by TimeGenerated
-| extend module_name = "Total"
-| union cpu_metrics
-```
+### <a name="log-analytics-metrics-collection"></a>Log Analytics メトリックの収集
+[Prometheus エンドポイント](https://prometheus.io/docs/practices/naming/)を [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-analytics-tutorial) と一緒に使用すると、CPUPercent、MemoryUsedPercent などのメトリックを生成して[それらを監視](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)できます。   
 
-[ ![Kusto クエリを使用したメトリックを示す図。](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
+> [!NOTE]
+> 以下の構成で収集されるのは **メトリックのみ** です。ログは収集されません。 コレクター モジュールを拡張すれば、ログの収集とアップロードも行うことができます。
+
+[ ![Log Analytics を使用したメトリックの収集を示す図。](./media/telemetry-schema/log-analytics.png)](./media/telemetry-schema/log-analytics.png#lightbox)
+
+1. [メトリックの収集](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector)方法を確認します。
+1. Docker CLI のコマンドを使用して [Docker ファイル](https://github.com/Azure/iotedge/tree/master/edge-modules/MetricsCollector/docker/linux)をビルドし、イメージを Azure コンテナー レジストリに発行します。
+    
+   Docker CLI を使用してコンテナー レジストリにプッシュする方法の詳細については、[Docker イメージのプッシュとプル](../../container-registry/container-registry-get-started-docker-cli.md)に関する記事を参照してください。 Azure Container Registry のその他の情報については、[こちらのドキュメント](../../container-registry/index.yml)を参照してください。
+
+1. Azure Container Registry へのプッシュが完了すると、配置マニフェストに次の内容が挿入されます。
+    ```json
+    "azmAgent": {
+      "settings": {
+        "image": "{AZURE_CONTAINER_REGISTRY_LINK_TO_YOUR_METRICS_COLLECTOR}"
+      },
+      "type": "docker",
+      "version": "1.0",
+      "status": "running",
+      "restartPolicy": "always",
+      "env": {
+        "LogAnalyticsWorkspaceId": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_ID}" },
+        "LogAnalyticsSharedKey": { "value": "{YOUR_LOG_ANALYTICS_WORKSPACE_SECRET}" },
+        "LogAnalyticsLogType": { "value": "IoTEdgeMetrics" },
+        "MetricsEndpointsCSV": { "value": "http://edgeHub:9600/metrics,http://edgeAgent:9600/metrics,http://lvaEdge:9600/metrics" },
+        "ScrapeFrequencyInSecs": { "value": "30 " },
+        "UploadTarget": { "value": "AzureLogAnalytics" }
+      }
+    }
+    ```
+    > [!NOTE]
+    > `edgeHub`、`edgeAgent`、`lvaEdge` の各モジュールは、配置マニフェスト ファイルに定義されているモジュールの名前です。 モジュールの名前が一致していることを確認してください。   
+
+    `LogAnalyticsWorkspaceId` と `LogAnalyticsSharedKey` の値は、次の手順に従って取得できます。
+    1. Azure portal にアクセスします
+    1. Log Analytics ワークスペースを検索します
+    1. Log Analytics ワークスペースが見つかったら、左側のナビゲーション ペインの `Agents management` オプションに移動します。
+    1. 使用できるワークスペース ID とシークレット キーが表示されます。
+
+1. 次に、左側のナビゲーション ペインにある [`Workbooks`] タブをクリックしてブックを作成します。
+1. Kusto クエリ言語を使用すると、次のようにクエリを記述し、IoT Edge のモジュールで使用される CPU 使用率を取得できます。
+    ```kusto
+    let cpu_metrics = IoTEdgeMetrics_CL
+    | where Name_s == "edgeAgent_used_cpu_percent"
+    | extend dimensions = parse_json(Tags_s)
+    | extend module_name = tostring(dimensions.module_name)
+    | where module_name in ("lvaEdge","yolov3","tinyyolov3")
+    | summarize cpu_percent = avg(Value_d) by bin(TimeGenerated, 5s), module_name;
+    cpu_metrics
+    | summarize cpu_percent = sum(cpu_percent) by TimeGenerated
+    | extend module_name = "Total"
+    | union cpu_metrics
+    ```
+
+    [ ![Kusto クエリを使用したメトリックを示す図。](./media/telemetry-schema/metrics.png)](./media/telemetry-schema/metrics.png#lightbox)
 ## <a name="logging"></a>ログ記録
 
 他の IoT Edge モジュールと同様に、エッジ デバイスで[コンテナーのログを調べる](../../iot-edge/troubleshoot.md#check-container-logs-for-issues)こともできます。 ログに書き込まれる情報は、[次のモジュール ツイン](module-twin-configuration-schema.md) プロパティを使用して構成できます。

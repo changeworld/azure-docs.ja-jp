@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 652be939136139620f6ec024fe98463113c6fb4a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 61c034d6365909ca6255adcdc0c75e5a8ddd6cb4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657521"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101692251"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Azure Cosmos DB の MongoDB (3.2 バージョン) 用 API: サポートされる機能と構文
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -22,7 +22,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 Azure Cosmos DB の MongoDB 用 API を使用すれば、使い慣れた MongoDB API を活用できます。[グローバル配信](distribute-data-globally.md)、[自動シャーディング](partitioning-overview.md)、可用性や待ち時間の保証、すべてのフィールドの自動インデックス作成、保存時の暗号化、バックアップを始めとする Cosmos DB のエンタープライズ機能も、すべて利用できます。
 
 > [!NOTE]
-> この記事では、Azure Cosmos DB の MongoDB 3.2 用 API を対象にしています。 MongoDB バージョン 3.6 および 4.0 については、[MongoDB 3.6 でサポートされる機能と構文](mongodb-feature-support-36.md)および [MongoDB 4.0 でサポートされる機能と構文](mongodb-feature-support-40.md)に関する記事を参照してください。
+> バージョン 3.2 の MongoDB 用 Cosmos DB API には現在、EOL (End Of Life: サポート終了) のプランがありません。 将来の EOL に関する通知は最低でも 3 年となります。
 
 ## <a name="protocol-support"></a>プロトコルのサポート
 
