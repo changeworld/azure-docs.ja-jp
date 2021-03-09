@@ -7,7 +7,7 @@
     - name: コア ストレージ サービスの比較
       href: ../common/storage-introduction.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
   expanded: true
-- name: BLOB ストレージ
+- name: Blob Storage
   items:
     - name: 概要
       items:
