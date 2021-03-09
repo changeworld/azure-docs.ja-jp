@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
-ms.openlocfilehash: e24a2a19eb39e2c6c7612631ad98f95cb4c5b9ef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4430ed34858077b13b4fec69756c1c7e9f3ef7ac
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250166"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652372"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>チュートリアル:Gatsby サイトを Azure Static Web Apps プレビューに発行する
 
@@ -75,7 +75,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 1. ローカル リポジトリを GitHub にプッシュします。
 
    ```bash
-   git push --set-upstream origin master
+   git push --set-upstream origin main
    ```
 
 ## <a name="deploy-your-web-app"></a>Web アプリのデプロイ
@@ -102,7 +102,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
 1. _[SKU]_ で、 **[Free]** を選択します。
 
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
+   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="詳細情報の入力":::
 
 1. **[GitHub でサインイン]** ボタンをクリックします。
 
@@ -110,9 +110,9 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
 1. _[リポジトリ]_ として、**gatsby-static-web-app** を選択します。
 
-1. _[ブランチ]_ では、**master** を選択します。
+1. _[ブランチ]_ では、**main** を選択します。
 
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
+   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="入力済みの GitHub 情報":::
 
 ### <a name="build"></a>Build
 
@@ -126,7 +126,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
    この時点では API をデプロイしていないため _[API location]\(アプリの場所\)_ の値は必要ありません。
 
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
+   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="ビルド設定":::
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
@@ -138,7 +138,7 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
 1. リソース画面で、 _[URL]_ リンクをクリックして、デプロイしたアプリケーションを開きます。 GitHub アクションが完了するまで 1 - 2 分かかることがあります。
 
-   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
+   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="デプロイされたアプリケーション":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

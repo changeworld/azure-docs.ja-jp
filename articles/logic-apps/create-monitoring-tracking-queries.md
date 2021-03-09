@@ -6,20 +6,20 @@ ms.suite: integration
 ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 01/30/2020
-ms.openlocfilehash: d1f575d9d588ccd99523c6b6d5d2ceba6369dc3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5de795811923c965a1473f8d91e3fd654aeef266
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309911"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574548"
 ---
 # <a name="view-and-create-queries-for-monitoring-and-tracking-in-azure-monitor-logs-for-azure-logic-apps"></a>Azure Logic Apps の Azure Monitor ログで監視と追跡を行うクエリを表示および作成します
 
-[Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)から結果を生成する基になるクエリを表示し、特定の条件に基づいて結果をフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。 クエリには [Kusto クエリ言語](/azure/data-explorer/kusto/query/)が使用されます。これは、他の結果を表示するために編集できます。 詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。
+[Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)から結果を生成する基になるクエリを表示し、特定の条件に基づいて結果をフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。 クエリには [Kusto クエリ言語](/azure/data-explorer/kusto/query/)が使用されます。これは、他の結果を表示するために編集できます。 詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Log Analytics ワークスペース。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/learn/quick-create-workspace.md)に関するページを参照してください。
+* Log Analytics ワークスペース。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../azure-monitor/logs/quick-create-workspace.md)に関するページを参照してください。
 
 * Azure Monitor ログ記録が設定され、その情報を Log Analytics ワークスペースに送信するロジック アプリ。 [ロジック アプリの Azure Monitor ログを設定する方法](../logic-apps/monitor-logic-apps.md)を確認してください。
 
@@ -45,7 +45,7 @@ ms.locfileid: "92309911"
 
 ## <a name="create-your-own-query"></a>独自のクエリを作成する
 
-特定のプロパティまたは値に基づいて結果を検索する、またはフィルター処理するには、空のクエリから開始するか既存のクエリを使用して、独自のクエリを作成できます。 詳細については、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)」を参照してください。
+特定のプロパティまたは値に基づいて結果を検索する、またはフィルター処理するには、空のクエリから開始するか既存のクエリを使用して、独自のクエリを作成できます。 詳細については、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/logs/get-started-queries.md)」を参照してください。
 
 1. [Azure portal](https://portal.azure.com) で、Log Analytics ワークスペースを検索して選択します。
 

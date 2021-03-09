@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
-ms.openlocfilehash: 902bd46fcf6efc20c81992e29fd463781fecc15e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98731431"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526427"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>チュートリアル:Parsable を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -32,6 +32,7 @@ ms.locfileid: "98731431"
 > * Parsable でユーザーを作成する
 > * アクセスが不要になった Parsable のユーザーを削除する
 > * Azure AD と Parsable の間でのユーザー属性の同期を維持する
+> * Parsable にグループとグループ メンバーシップをプロビジョニングする
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -107,17 +108,25 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |userName|String|&check;|
    |displayName|String|
 
-10. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+10. **[マッピング]** セクションで、 **[Azure Active Directory グループを Parsable に同期する]** を選択します。
 
-11. Parsable に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+11. **[属性マッピング]** セクションで、Azure AD から Parsable に同期されるグループ属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Parsable のグループとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+
+      |属性|Type|フィルター処理のサポート|
+      |---|---|---|
+      |displayName|String|&check;|
+      |members|リファレンス|
+12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+
+13. Parsable に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
     ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
 
-12. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Parsable にプロビジョニングするユーザーやグループを定義します。
+14. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Parsable にプロビジョニングするユーザーやグループを定義します。
 
     ![プロビジョニングのスコープ](common/provisioning-scope.png)
 
-13. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
 
     ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
 
@@ -129,6 +138,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
+
+## <a name="change-log"></a>ログの変更
+
+* 2021 年 2 月 15 日 - グループ プロビジョニングが有効になりました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

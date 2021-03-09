@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b951dab1ad01187c7612fad047bc52eb6aa9700e
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e01ddf0690f11d41021e0a5ae5958c7c80646743
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701876"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594419"
 ---
 # <a name="textures"></a>テクスチャ
 
@@ -35,66 +35,54 @@ ARR に提供されるすべてのテクスチャは、[DDS 形式](https://en.w
 
 モデルの読み込みと同様に、ソース BLOB ストレージにテクスチャ資産をアドレス指定するには、次の 2 つのバリアントがあります。
 
-* テクスチャ資産は、その SAS URI でアドレス指定できます。 関連する読み込み関数は、`LoadTextureFromSASAsync` とパラメーター `LoadTextureFromSASParams` です。 [組み込みのテクスチャ](../overview/features/sky.md#built-in-environment-maps)を読み込む場合にもこのバリアントを使用します。
-* [BLOB ストレージがアカウントにリンクされている](../how-tos/create-an-account.md#link-storage-accounts)場合、BLOB ストレージ パラメーターによってテクスチャを直接アドレス指定することができます。 この場合、関連する読み込み関数は、`LoadTextureAsync` とパラメーター `LoadTextureParams` です。
+* [BLOB ストレージがアカウントにリンクされている](../how-tos/create-an-account.md#link-storage-accounts)場合、BLOB ストレージ パラメーターによってテクスチャを直接アドレス指定することができます。 この場合、関連する読み込み関数は、`LoadTextureAsync` とパラメーター `LoadTextureOptions` です。
+* テクスチャ資産は、その SAS URI でアドレス指定できます。 関連する読み込み関数は、`LoadTextureFromSasAsync` とパラメーター `LoadTextureFromSasOptions` です。 [組み込みのテクスチャ](../overview/features/sky.md#built-in-environment-maps)を読み込む場合にもこのバリアントを使用します。
 
-次のサンプル コードは、SAS URI (または組み込みテクスチャ) を使用してテクスチャを読み込む方法を示しています。他のケースでは、読み込む関数とパラメーターだけが異なることに注意してください。
+次のサンプル コードは、テクスチャを読み込む方法を示しています。
 
 ```cs
-LoadTextureAsync _textureLoad = null;
-void LoadMyTexture(AzureSession session, string textureUri)
+async void LoadMyTexture(RenderingSession session, string storageContainer, string blobName, string assetPath)
 {
-    _textureLoad = session.Actions.LoadTextureFromSASAsync(new LoadTextureFromSASParams(textureUri, TextureType.Texture2D));
-    _textureLoad.Completed +=
-        (LoadTextureAsync res) =>
-        {
-            if (res.IsRanToCompletion)
-            {
-                //use res.Result
-            }
-            else
-            {
-                System.Console.WriteLine("Texture loading failed!");
-            }
-            _textureLoad = null;
-        };
+    try
+    {
+        LoadTextureOptions options = new LoadTextureOptions(storageContainer, blobName, assetPath, TextureType.Texture2D);
+        Texture texture = await session.Connection.LoadTextureAsync(options);
+    
+        // use texture...
+    }
+    catch (RRException ex)
+    {
+    }
 }
 ```
 
 ```cpp
-void LoadMyTexture(ApiHandle<AzureSession> session, std::string textureUri)
+void LoadMyTexture(ApiHandle<RenderingSession> session, std::string storageContainer, std::string blobName, std::string assetPath)
 {
-    LoadTextureFromSASParams params;
+    LoadTextureOptions params;
     params.TextureType = TextureType::Texture2D;
-    params.TextureUrl = std::move(textureUri);
-    ApiHandle<LoadTextureAsync> textureLoad = *session->Actions()->LoadTextureFromSASAsync(params);
-    textureLoad->Completed([](ApiHandle<LoadTextureAsync> res)
+    params.Blob.StorageAccountName = std::move(storageContainer);
+    params.Blob.BlobContainerName = std::move(blobName);
+    params.Blob.AssetPath = std::move(assetPath);
+    session->Connection()->LoadTextureAsync(params, [](Status status, ApiHandle<Texture> texture)
     {
-        if (res->GetIsRanToCompletion())
-        {
-            //use res->Result()
-        }
-        else
-        {
-            printf("Texture loading failed!");
-        }
+        // use texture...
     });
 }
 ```
 
-用途に対してサポートされるテクスチャの種類によっては、テクスチャの種類とコンテンツに制限がある場合があります。 たとえば、[PBR 素材](../overview/features/pbr-materials.md)の粗さマップはグレースケールである必要があります。
+SAS バリアントを使用する場合は、読み込み関数またはパラメーターのみが異なることに注意してください。
 
-> [!CAUTION]
-> ARR ではすべての *Async* 関数が非同期操作オブジェクトを返します。 操作が完了するまで、これらのオブジェクトへの参照を保存する必要があります。 そうしないと、C# ガベージ コレクターによって操作が早期に削除されて、完了できなくなる場合があります。 上のサンプル コードでは、*Completed* イベントが到着するまで参照を保持するために、メンバー変数 ' _textureLoad ' が使用されています。
+用途に対してサポートされるテクスチャの種類によっては、テクスチャの種類とコンテンツに制限がある場合があります。 たとえば、[PBR 素材](../overview/features/pbr-materials.md)の粗さマップはグレースケールである必要があります。
 
 ## <a name="api-documentation"></a>API のドキュメント
 
 * [C# Texture クラス](/dotnet/api/microsoft.azure.remoterendering.texture)
-* [C# RemoteManager.LoadTextureAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtextureasync)
-* [C# RemoteManager.LoadTextureFromSASAsync()](/dotnet/api/microsoft.azure.remoterendering.remotemanager.loadtexturefromsasasync)
+* [C# RenderingConnection.LoadTextureAsync()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadtextureasync)
+* [C# RenderingConnection.LoadTextureFromSasAsync()](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.loadtexturefromsasasync)
 * [C++ Texture クラス](/cpp/api/remote-rendering/texture)
-* [C++ RemoteManager::LoadTextureAsync()](/cpp/api/remote-rendering/remotemanager#loadtextureasync)
-* [C++ RemoteManager::LoadTextureFromSASAsync()](/cpp/api/remote-rendering/remotemanager#loadtexturefromsasasync)
+* [C++ RenderingConnection::LoadTextureAsync()](/cpp/api/remote-rendering/renderingconnection#loadtextureasync)
+* [C++ RenderingConnection::LoadTextureFromSasAsync()](/cpp/api/remote-rendering/renderingconnection#loadtexturefromsasasync)
 
 ## <a name="next-steps"></a>次のステップ
 

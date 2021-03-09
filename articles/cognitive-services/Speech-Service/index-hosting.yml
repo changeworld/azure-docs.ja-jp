@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/23/2020
   ms.author: trbye
-  ms.openlocfilehash: ff8f98b67b2d9cab5745b141364c42ff49751413
-  ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+  ms.openlocfilehash: 7ea71d7a65970e1a3b666cb46567f1d3e7bdca18
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/26/2021
-  ms.locfileid: "98786258"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101739448"
 landingContent:
 - title: ホスティングについて
   linkLists:
@@ -45,7 +45,7 @@ landingContent:
     - text: ソブリン クラウド
       url: sovereign-clouds.md
     - text: コンテナーの FAQ
-      url: speech-container-faq.md
+      url: ./speech-container-howto.md
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

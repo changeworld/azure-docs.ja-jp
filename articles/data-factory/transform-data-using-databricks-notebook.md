@@ -1,28 +1,24 @@
 ---
 title: アクティビティを使用して Databricks Notebook を実行する
-description: Azure Data Factory で Databricks Notebook アクティビティを使用して、Databricks ジョブ クラスターに対して Databricks ノートブックを実行する方法について説明します。
-services: data-factory
+description: Azure Data Factory で Databricks Notebook アクティビティを使用して、Databricks ジョブ クラスターに対して Databricks Notebook を実行する方法について説明します。
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
-ms.openlocfilehash: 27425717f6d96953326edde621966530d240c015
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 20253954035798187f28c18c8207c114d27bc9c6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632364"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374084"
 ---
-# <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks ノートブックを実行する
+# <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks Notebook を実行する
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-このチュートリアルでは、Azure Portal を使用して、Databricks ジョブ クラスターに対して Databricks ノートブックを実行する Azure Data Factory パイプラインを作成します。 また、Databricks ノートブックの実行中に、Azure Data Factory パラメーターを渡します。
+このチュートリアルでは、Azure Portal を使用して、Databricks ジョブ クラスターに対して Databricks Notebook を実行する Azure Data Factory パイプラインを作成します。 また、Databricks Notebook の実行中に、Azure Data Factory パラメーターを渡します。
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -42,17 +38,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-  - **Azure Databricks ワークスペース** 。 [Databricks ワークスペースを作成する](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)か、既存のワークスペースを使用します。 Azure Databricks ワークスペースに、Python ノートブックを作成します。 その後、Azure Data Factory を使用してノートブックを実行し、パラメーターを渡します。
+  - **Azure Databricks ワークスペース**。 [Databricks ワークスペースを作成する](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal)か、既存のワークスペースを使用します。 Azure Databricks ワークスペースに、Python ノートブックを作成します。 その後、Azure Data Factory を使用してノートブックを実行し、パラメーターを渡します。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1.  Web ブラウザー ( **Microsoft Edge** または **Google Chrome** ) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+1.  Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 
 1.  左側のメニューの **[リソースの作成]** を選択し、 **[分析]** を選択して、 **[Data Factory]** を選択します。
 
     ![新しいデータ ファクトリの作成](media/transform-data-using-databricks-notebook/new-azure-data-factory-menu.png)
 
-1.  **[新しいデータ ファクトリ]** ウィンドウで、 **[名前]** に「 **ADFTutorialDataFactory** 」と入力します。
+1.  **[新しいデータ ファクトリ]** ウィンドウで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。
 
     Azure データ ファクトリの名前は *グローバルに一意* にする必要があります。 次のエラーが発生した場合は、データ ファクトリの名前を変更してください (たとえば、 **\<yourname\>ADFTutorialDataFactory** を使用します)。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](./naming-rules.md)に関する記事を参照してください。
 
@@ -66,13 +62,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     - **[新規作成]** を選択し、リソース グループの名前を入力します。
 
-    このクイックスタートの一部の手順は、 **ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。
+    このクイックスタートの一部の手順は、**ADFTutorialResourceGroup** という名前のリソース グループを使用することを前提としています。 リソース グループの詳細については、 [リソース グループを使用した Azure のリソースの管理](../azure-resource-manager/management/overview.md)に関するページを参照してください。
 
 1.  **[バージョン]** で、 **[V2]** を選択します。
 
 1.  **[場所]** で、データ ファクトリの場所を選択します。
 
-    現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。 [リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+    現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 1.  **［作成］** を選択します
 
 
@@ -100,9 +96,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1.  **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を完了します。
     
-    1.  **[名前]** に「* *_AzureDatabricks\_LinkedService_* _」と入力します。
+    1.  **[名前]** に「**_AzureDatabricks\_LinkedService_**」と入力します。
     
-    1.  ノートブックを実行する適切な "_ *Databricks ワークスペース* " を選択します
+    1.  ノートブックを実行する適切な **Databricks ワークスペース** を選択します
 
     1.  **[Select cluster]\(クラスターの選択)** で **[New job cluster]\(新しいジョブ クラスター)** を選択します
     
@@ -114,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     1.  このチュートリアルでは、 **[Cluster node type]\(クラスター ノードの種類)** で、 **[General Purpose (HDD)]\(一般的な目的 (HDD))** カテゴリの **[Standard\_D3\_v2]** を選択します。 
     
-    1.  **[ワーカー]** に「 **2** 」と入力します。
+    1.  **[ワーカー]** に「**2**」と入力します。
     
     1.  **[完了]** を選択します。
 
@@ -126,7 +122,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![新しいパイプラインを作成するためのボタン](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image9.png)
 
-1.  **パイプライン** で使用される **パラメーター** を作成します。 後で、このパラメーターを Databricks Notebook アクティビティに渡します。 空のパイプラインで **[パラメーター]** タブをクリックし、次に **[新規]** をクリックして、" **name** " という名前を付けます。
+1.  **パイプライン** で使用される **パラメーター** を作成します。 後で、このパラメーターを Databricks Notebook アクティビティに渡します。 空のパイプラインで **[パラメーター]** タブをクリックし、次に **[新規]** をクリックして、"**name**" という名前を付けます。
 
     ![新しいパラメーターを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image10.png)
 
@@ -148,11 +144,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
        1. Azure Databricks ワークスペースを起動します。
 
-       1. ワークスペースで **新しいフォルダー** を作成し、 **adftutorial** という名前にします。
+       1. ワークスペースで **新しいフォルダー** を作成し、**adftutorial** という名前にします。
 
           ![新しいフォルダーを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       1. [新しいノートブックを作成します](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python)。 **adftutorial** フォルダー以下で **mynotebook** という名前にして、 **[作成]** をクリックします。
+       1. [新しいノートブックを作成します](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook) (Python)。**adftutorial** フォルダー以下で **mynotebook** という名前にして、 **[作成]** をクリックします。
 
           ![新しいノートブックを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
@@ -171,7 +167,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
            ![パラメーターのウィジェットを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image16.png)
 
-       1. ここでの **Notebook パス** は、 **adftutorial/mynotebook** です。
+       1. ここでの **Notebook パス** は、**adftutorial/mynotebook** です。
 
 1.  **Data Factory UI 作成ツール** に戻ります。 **Notebook1 アクティビティ** の **[設定]** タブに移動します。
 
@@ -195,7 +191,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![[Trigger Now]\(今すぐトリガー\) コマンドを選択する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image20.png)
 
-**[Pipeline Run]\(パイプラインの実行\)** ダイアログ ボックスで、 **name** パラメーターの指定が求められます。 ここでは、パラメーターとして **/path/filename** を使用します。 **[完了]** をクリックします。
+**[Pipeline Run]\(パイプラインの実行\)** ダイアログ ボックスで、**name** パラメーターの指定が求められます。 ここでは、パラメーターとして **/path/filename** を使用します。 **[完了]** をクリックします。
 
 ![name パラメーターの値を指定する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image21.png)
 
@@ -215,7 +211,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="verify-the-output"></a>出力を検証する
 
-**Azure Databricks ワークスペース** にログオンし、 **[クラスター]** に移動すると、 **ジョブ** の状態 ( *実行の保留中、実行中、または終了* ) を確認できます。
+**Azure Databricks ワークスペース** にログオンし、 **[クラスター]** に移動すると、**ジョブ** の状態 (*実行の保留中、実行中、または終了*) を確認できます。
 
 ![ジョブ クラスターとジョブを表示する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image24.png)
 

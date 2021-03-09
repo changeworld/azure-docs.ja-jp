@@ -1,26 +1,22 @@
 ---
 title: PowerShell を使用してテーブルを増分コピーする
 description: このチュートリアルでは、Azure SQL Database から Azure Blob Storage にデータを増分コピーする Azure Data Factory パイプラインを作成します。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 01/22/2018
-ms.openlocfilehash: 50608870fa397ad5586c626f1d1fe5c9d893b4ca
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 02/18/2021
+ms.openlocfilehash: f4cb4807e6f2620bb76649fc7c7dcce7363cf4a4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222821"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740989"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 このチュートリアルでは、Azure Data Factory を使用して、Azure SQL Database 内のテーブルから Azure Blob Storage に差分データを読み込むパイプラインを作成します。
 

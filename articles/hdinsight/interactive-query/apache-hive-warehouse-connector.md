@@ -3,16 +3,15 @@ title: Apache Spark & Hive - Hive Warehouse Connector - Azure HDInsight
 description: Azure HDInsight 上で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する方法について説明します。
 author: nis-goel
 ms.author: nisgoel
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 24968511d038b2cea41a59187c0a361684c6720e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6611f5ca7ddae243c4bc314be73a9030311cec89
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511893"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594436"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -39,7 +38,11 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 ## <a name="hive-warehouse-connector-setup"></a>Hive Warehouse Connector の設定
 
 > [!IMPORTANT]
-> Spark 2.4 Enterprise セキュリティ パッケージ クラスターにインストールされている HiveServer2 Interactive インスタンスは、Hive Warehouse Connector での使用がサポートされていません。 代わりに、HiveServer2 Interactive ワークロードをホストするために、別の HiveServer2 Interactive クラスターを構成する必要があります。 単一の Spark 2.4 クラスターを利用する Hive Warehouse Connector の構成はサポートされていません。
+> - Spark 2.4 Enterprise セキュリティ パッケージ クラスターにインストールされている HiveServer2 Interactive インスタンスは、Hive Warehouse Connector での使用がサポートされていません。 代わりに、HiveServer2 Interactive ワークロードをホストするために、別の HiveServer2 Interactive クラスターを構成する必要があります。 単一の Spark 2.4 クラスターを利用する Hive Warehouse Connector の構成はサポートされていません。
+> - Hive Warehouse Connector (HWC) ライブラリは、ワークロード管理 (WLM) 機能が有効にされた Interactive Query クラスターでの使用がサポートされていません。 <br>
+Spark ワークロードのみが存在し、HWC ライブラリを使用するシナリオでは、Interactive Query クラスターでワークロード管理機能が有効にされていないことを確認してください (`hive.server2.tez.interactive.queue` 構成は、ハイブ構成で設定されません)。 <br>
+Spark ワークロード (HWC) と LLAP ネイティブ ワークロードの両方が存在するシナリオでは、共有メタストア データベースを使用して、2 つの個別の Interactive Query クラスターを作成する必要があります。 必要に応じて WLM 機能を有効にできるネイティブ LLAP ワークロード用の 1 つのクラスターと WLM 機能を構成しない HWC のみのワークロード用の他方のクラスター。
+1 つのクラスターでのみ有効にされている場合でも、両方のクラスターから WLM リソース プランを表示できることに注意してください。 WLM 機能が無効にされているクラスターのリソース プランの変更は、他方のクラスターの WLM 機能に影響する可能性があるため、行わないでください。
 
 Hive Warehouse Connector には、Spark ワークロードと Interactive Query ワークロード用に、個別のクラスターが必要です。 次の手順に従って、Azure HDInsight にこれらのクラスターを設定します。
 

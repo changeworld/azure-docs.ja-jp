@@ -6,16 +6,18 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 0656a9eabb692453331c5c4b229ce26f41ecfdf3
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567787"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730203"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Azure Migrate プロジェクトの作成と管理
 
-この記事では、[Azure Migrate](migrate-services-overview.md) プロジェクトを作成、管理、および削除する方法について説明します。 従来の Azure Migrate プロジェクトを使用している場合は、それらのプロジェクトを削除し、手順に従って新しい Azure Migrate プロジェクトを作成してください。 従来の Azure Migrate プロジェクトまたはコンポーネントは Azure Migrate にアップグレードできません。
+この記事では、[Azure Migrate](migrate-services-overview.md) プロジェクトを作成、管理、および削除する方法について説明します。 
+
+従来の Azure Migrate は 2024 年 2 月に廃止されます。 2024 年 2 月以降、クラシック バージョンの Azure Migrate はサポートされなくなり、クラシック プロジェクトのインベントリ メタデータは削除されます。 従来の Azure Migrate プロジェクトを使用している場合は、それらのプロジェクトを削除し、手順に従って新しい Azure Migrate プロジェクトを作成してください。 従来の Azure Migrate プロジェクトまたはコンポーネントは Azure Migrate にアップグレードできません。 作成プロセスを開始する前に、[よくあるご質問](./resources-faq.md#i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version)を参照してください。
 
 Azure Migrate のプロジェクトは、評価または移行しようとしている環境から収集された検出、評価、移行のメタデータを格納するために使用されます。 プロジェクト内で、検出された資産を追跡し、評価を作成して、Azure への移行を調整することができます。  
 
@@ -85,7 +87,7 @@ Azure Migrate プロジェクトが既にあり、追加のプロジェクトを
 3. 適切なサブスクリプションと Azure Migrate プロジェクトを選択します。
 
 
-### <a name="find-a-legacy-project"></a>レガシ プロジェクトを検索する
+### <a name="find-a-classic-azure-migrate-project"></a>従来の Azure Migrate プロジェクトを検索する
 
 [以前のバージョン](migrate-services-overview.md#azure-migrate-versions)の Azure Migrate でプロジェクトを作成した場合は、次のようにプロジェクトを検索します。
 
@@ -125,7 +127,7 @@ Azure Migrate プロジェクトが既にあり、追加のプロジェクトを
        
     - 既に Azure Migrate プロジェクトを削除した場合は、Azure portal の左側のウィンドウの **[リソース グループ]** を選択して、ワークスペースを見つけます。
        
-2. [こちらの手順に従って](../azure-monitor/platform/delete-workspace.md)、ワークスペースを削除します。
+2. [こちらの手順に従って](../azure-monitor/logs/delete-workspace.md)、ワークスペースを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

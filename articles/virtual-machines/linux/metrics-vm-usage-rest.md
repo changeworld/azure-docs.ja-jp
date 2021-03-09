@@ -8,12 +8,12 @@ ms.custom: REST
 ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 9430eaeb3ba22bd0d9fc0675ab97c84944a0cf7c
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a7237bfc82a932b774b4b6ef293c242a84fd75af
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737848"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591219"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>REST API を使用して仮想マシンの使用状況のメトリックを取得する
 
@@ -23,7 +23,7 @@ ms.locfileid: "98737848"
 
 ## <a name="build-the-request"></a>要求を作成する
 
-仮想マシンから [CPU の割合メトリック](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)を収集するには、次の GET 要求を使用します。
+仮想マシンから [CPU の割合メトリック](../../azure-monitor/essentials/metrics-supported.md#microsoftcomputevirtualmachines)を収集するには、次の GET 要求を使用します。
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmname}/providers/microsoft.insights/metrics?api-version=2018-01-01&metricnames=Percentage%20CPU&timespan=2018-06-05T03:00:00Z/2018-06-07T03:00:00Z
@@ -40,7 +40,7 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="uri-parameters"></a>URI パラメーター
 
-| Name | 説明 |
+| 名前 | 説明 |
 | :--- | :---------- |
 | subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli)を参照してください｡ |
 | resourceGroupName | リソースに関連付けられている Azure リソース グループの名前。 この値は、Azure Resource Manager API、CLI、またはポータルから取得できます。 |

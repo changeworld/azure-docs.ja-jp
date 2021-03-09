@@ -2,18 +2,18 @@
 title: Azure 上の Red Hat Enterprise Linux イメージのインプレース アップグレード
 description: Red Hat Enterprise 7.x イメージから最新の 8.x バージョンへのインプレース アップグレードを実行する方法について説明します。
 author: mathapli
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines
+ms.subservice: redhat
+ms.collection: linux
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
-ms.reviewer: cynthn
-ms.openlocfilehash: 9b35a3cbe23af91f7f0b8aceecfb8ba3c9720461
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1be0904cc640eff5af7a77bba3abd6aa062991a8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484415"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676069"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>インプレース アップグレードの Red Hat Enterprise Linux
 
@@ -49,7 +49,7 @@ Red Hat と Azure では、インプレース アップグレードを使用し�
 
 * */etc/ssh/sshd_config* で SSH の root アクセスを有効にします。
     1. */etc/ssh/sshd_config* ファイルを開きます。
-    1. `#PermitRootLogin yes` を探します。
+    1. `#PermitRootLogin yes` を検索します。
     1. 番号記号 (`#`) を削除して、文字列をコメント解除します。
 
 ## <a name="upgrade-steps"></a>アップグレードの手順
@@ -91,7 +91,7 @@ Red Hat と Azure では、インプレース アップグレードを使用し�
 
 1. アップグレードが完了したら、root の SSH アクセスを削除します。
     1. */etc/ssh/sshd_config* ファイルを開きます。
-    1. `#PermitRootLogin yes` を探します。
+    1. `#PermitRootLogin yes` を検索します。
     1. 番号記号 (`#`) を追加して、文字列をコメントにします。
 
 1. SSHD サービスを再起動して、変更を適用します。

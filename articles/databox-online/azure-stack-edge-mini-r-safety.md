@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/13/2020
+ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: 507ceef0f13951eafdcb02d586f35c1d61764c4e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465635"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382628"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Azure Stack Edge Mini R の安全性のための指示
 
@@ -37,6 +37,7 @@ Azure Stack Edge Mini R デバイスを設定して実行する際に表示さ�
 | アイコン | 説明 |
 |:--- |:--- |
 | ![最初にすべての手順をお読みください](./media/azure-stack-edge-mini-r-safety/icon-safety-read-all-instructions.png) | 最初にすべての手順をお読みください |
+| ![注意アイコン](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **注意:** | 重要だが、危険に関連するものではない情報を示します。 |
 | ![危険シンボル](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) | 危険シンボル |
 | ![感電を示すアイコン](./media/azure-stack-edge-mini-r-safety/icon-safety-electric-shock.png) | 感電の危険 |
 | ![室内使用のみ](./media/azure-stack-edge-mini-r-safety/icon-safety-indoor-use-only.png) | 室内使用のみ |
@@ -142,22 +143,74 @@ Azure Stack Edge Mini R デバイスは、NRTL にリストされている (UL�
 | 相対湿度 (RH) の仕様 | <ul><li>ストレージ:5% から 95% の相対湿度</li><li>運転中:10% から 90% の相対湿度</li></ul>|
 | 最大高度の仕様 | <ul><li>運転中:15,000 フィート (4,572 メートル)</li><li>非運用時:40,000 フィート (12,192 メートル)</li></ul>|
 
-> ![通知のアイコン](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **通知:** &nbsp;Microsoft から明示的な承認を受けずに機器を変更すると、機器を操作するユーザーの権限が無効になる可能性があります。
+> ![通知のアイコン - 2](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **通知:** &nbsp;Microsoft から明示的な承認を受けずに機器を変更すると、機器を操作するユーザーの権限が無効になる可能性があります。
 
-カナダと米国の場合:
+#### <a name="canada-and-usa"></a>カナダと米国の場合:
 
-注意:この装置は、FCC 規則のパート 15 に従ってテストされ、クラス A デジタル デバイスの制限に準拠することが確認されています。 これらの制限は、装置が商用環境で使用されるときに、有害な干渉に対して適切に保護されるように設計されています。 この装置は、無線周波数エネルギーを生成および使用し、また放射する場合があり、取扱説明書に従って設置および使用しないと、無線通信に有害な干渉を及ぼす可能性があります。 住宅地域でこの装置を動作させると、有害な干渉が発生する可能性があり、その場合はユーザーが自費で干渉を是正する必要があります。
+> ![通知のアイコン - 3](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **通知:** &nbsp; この装置は、FCC 規則のパート 15 に従ってテストされ、クラス A デジタル デバイスの制限に準拠することが確認されています。 これらの制限は、装置が商用環境で使用されるときに、有害な干渉に対して適切に保護されるように設計されています。 この装置は、無線周波数エネルギーを生成および使用し、また放射する場合があり、取扱説明書に従って設置および使用しないと、無線通信に有害な干渉を及ぼす可能性があります。 住宅地域でこの装置を動作させると、有害な干渉が発生する可能性があり、その場合はユーザーが自費で干渉を是正する必要があります。
+
+この装置に付属している Netgear A6150 WiFi USB アダプターは、身体の近くで動作させることが想定されており、装着時の比吸収率 (SAR) への準拠がテストされています。 FCC で定められている SAR の許容値は、組織 1 g あたりで平均した場合、1.6 W/kg です。 身体に装着した状態での携帯や使用時には、RF 曝露要件に準拠するために、身体から 10 mm 離してください。
+
+Netgear A6150 WiFi USB アダプターは、ANSI/IEEE C95.1-1999 に準拠しており、OET Bulletin 65 Supplement C にて規定されている測定方法と手順に基づいてテストされています。
+
+Netgear A6150 の比吸収率 (SAR):組織 1 g あたり平均 1.18 W/kg
+
+Netgear A6150 WiFi USB アダプターは、承認されたアンテナでのみ使用してください。 このデバイスとそのアンテナは、FCC マルチトランスミッター製品の手順に準拠している場合を除き、他のアンテナやトランスミッターと一緒に設置したり、動作させたりしないでください。 米国市場で利用可能な製品の場合は、チャンネル 1 から 11 のみ運用することができます。 他のチャンネルを選択することはできません。
+
+5150 から 5250 MHz 帯での運用は、同一チャンネルのモバイル サテライト システムへの有害な干渉の可能性を減らすために、屋内での使用に限定されます。
+
+![規制情報に関する警告 - 室内使用](./media/azure-stack-edge-mini-r-safety/regulatory-information-indoor-use-only.png)
+
+高出力レーダーは、5250 から 5350 MHz 帯および 5650 から 5850 MHz 帯のプライマリ ユーザー (優先ユーザー) として割り当てられており、これらのレーダーが LE-LAN デバイスに干渉したり損傷を与える可能性があることをご承知おき下さい。
+
+この装置は、無線周波数エネルギーを生成および使用し、また放射する場合があり、手順に従って設置および使用しないと、無線通信に有害な干渉を及ぼす可能性があります。 ただし、特定の設置により干渉が発生しないことを保証するものではありません。
+
+本装置によってラジオまたはテレビの受信に有害な干渉が引き起こされた場合 (これは装置の電源のオンとオフを切り替えることで判断できます)、ユーザーには、以下のいずれかの方法で干渉を修正することを試みることをお勧めします。
+
+- 受信アンテナの向きを変えるか、再配置します。
+- 装置と受信機を遠ざけます。
+- 機器を、受信機が接続されている回路とは異なる回路のコンセントに接続します。
+- 販売店または経験豊富なラジオまたは TV 技術者に相談します。
+
+干渉の問題の詳細については、[fcc.gov/cgb/consumerfacts/interference.html](https://www.fcc.gov/consumers/guides/interference-radio-tv-and-telephone-signals) にある FCC の Web サイトを参照してください。 また、1-888-CALL FCC から FCC に電話して、干渉や電話の干渉についてのファクトシートを要求することもできます。
+
+無線周波数の安全性に関する追加情報については、FCC の Web サイト ([https://www.fcc.gov/general/radio-frequency-safety-0](https://www.fcc.gov/general/radio-frequency-safety-0)) および Industry Canada の Web サイト ([http://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf01904.html](http://www.ic.gc.ca/eic/site/smt-gst.nsf/eng/sf01904.html)) を参照してください。
+
+本製品は、準拠した周辺機器とシステム コンポーネント間のシールド ケーブルの使用に関する条件に基づいて、EMC への適合性が実証されています。 ラジオ、テレビ セット、およびその他の電子機器への干渉の可能性を低減するため、準拠した周辺機器、およびシステム コンポーネント間のシールド ケーブルを使用することが重要です。
 
 このデバイスは、FCC 規則のパート 15 およびカナダ産業省ライセンス適用外 RSS 標準に準拠しています。 動作は次の 2 つの条件に従います:(1) このデバイスは有害な干渉の原因にならない。(2) このデバイスは、デバイスの望ましくない動作を引き起こす可能性のある障害を含む、受信した任意の干渉を受け入れる必要がある。
 
 ![規制情報に関する警告 1](./media/azure-stack-edge-mini-r-safety/regulatory-information-1.png)
 
-CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
-米国:(800) 426-9400 カナダ:(800) 933-4750
+CAN ICES-3(A)/NMB-3(A)
 
-欧州連合:EU 適合宣言のコピーを要求します。
+Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA
 
-> ![警告アイコン 13](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) これは、クラス A 製品です。 国内環境では、この製品は無線干渉を起こす可能性があり、その場合はユーザーが適切な対策を講じることが必要な場合があります。
+米国:(800) 426-9400
+
+カナダ:(800) 933-4750
+
+Netgear A6150 WiFi USB アダプター FCC ID:PY318300429
+ 
+Netgear A6150 WiFi USB アダプター IC ID:4054A-18300429
+
+この装置に付属している Netgear A6150 WiFi USB アダプターは、IC RSS-102 の一般公衆/非管理環境暴露の SAR 制限に準拠しており、IEEE 1528 に規定されている測定方法および手順に準拠してテストされています。 身体に装着した状態では、10 mm 以上の距離を保ってください。
+
+Netgear A6150 WiFi USB アダプターは、管理されていない環境のために規定されているカナダ ポータブル RF の暴露限度に準拠しており、マニュアルで説明されている所定の操作を行っても安全です。 本製品を身体からできるだけ遠ざける、または本装置の出力を下げる (そのような機能がある場合) ことによって、RF 暴露をさらに低減させることができます。
+
+1 g あたりで平均した各製品の比吸収率 (SAR) の表は、上記の米国のセクションに記載されています。
+
+![規制情報に関する警告 2](./media/azure-stack-edge-mini-r-safety/regulatory-information-2.png)
+
+#### <a name="european-union"></a>欧州連合:
+
+この装置の EU 適合宣言のコピーを要求します。 [CSI_Compliance@microsoft.com](mailto:CSI_Compliance@microsoft.com) に電子メールを送信します。
+
+この装置に付属している Netgear A6150 WiFi USB アダプターは、指令 2014/53/EU に準拠しており、要求に応じて提供することも可能です。
+
+![警告アイコン 13](./media/azure-stack-edge-mini-r-safety/icon-safety-warning.png) **警告:**
+
+これは、クラス A 製品です。 国内環境では、この製品は無線干渉を起こす可能性があり、その場合はユーザーが適切な対策を講じることが必要な場合があります。
 
 廃棄バッテリと電気電子機器の廃棄:
 
@@ -166,7 +219,37 @@ CAN ICES-3(A)/NMB-3(A) Microsoft Corporation, One Microsoft Way, Redmond, WA 980
 製品、そのバッテリ、またはそのパッケージに記載されているこのシンボルは、この製品およびそれに含まれるすべてのバッテリを、家庭ごみとして廃棄してはならないことを意味します。 代わりに、ユーザーは責任を持って、バッテリおよび電気電子機器のリサイクル用の適用な収集場所にこれを渡す必要があります。 この個別回収とリサイクルは、天然資源の節約に役立ち、不適切な廃棄によって生じる可能性のある、バッテリおよび電気電子機器内に存在する可能性がある有害物質による、人の健康および自然への潜在的な悪影響を防ぎます。 バッテリおよび電気電子機器を廃棄する場所について詳しくは、最寄りの都市/自治体の窓口、家庭内廃棄物処理サービス、またはこの製品を購入した店にお問い合わせください。 WEEE での追加情報については、erecycle@microsoft.com にお問い合わせください。
 
 この製品には、コイン電池バッテリが含まれています。
-Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL 電話番号: +353 1 295 3826 ファックス番号: +353 1 706 4110
+
+この装置に付属している Netgear A6150 WiFi USB アダプターは、身体の近くで動作させることが想定されており、装着時の比吸収率 (SAR) への準拠がテストされています (以下の値を参照してください)。 身体に装着した状態での携帯や使用時には、RF 曝露要件に準拠するために、身体から 10 mm 離してください。
+
+**Netgear A6150 の比吸収率 (SAR):** 組織 10 g あたり平均 0.54 W/kg
+
+ 
+このデバイスは、EU のすべての加盟国で動作する可能性があります。 デバイスが使用される国と地域の規制を順守してください。 このデバイスは、次の国で 5150 から 5350 MHz の周波数の範囲内で動作している場合、屋内のみの使用に制限されます。  
+
+![室内のみの使用が義務付けられている EU 諸国](./media/azure-stack-edge-mini-r-safety/mini-r-safety-eu-indoor-use-only.png)
+
+次の表に、RED の第 10.8(a) 項および第 10.8(b) 項に従って、EU 内で販売される Netgear ワイヤレス製品の周波数帯域と最大高周波伝送電力を示します。
+
+**WiFi**
+
+| 周波数範囲 (MHz) | 使用チャンネル | 最大伝送電力 (dBm/mW) |
+| --------------------- | ------------- | --------------------------- |
+| 2400 から 2483.5 | 1 から 13    | ODFM:19.9 dBm (97.7 mW) <br> CCK:17.9 dBm (61.7 mW) |
+| 5150 から 5320   | 36 から 48   | 22.9 dBm (195 mW) |
+| 5250 から 5350   | 52 から 64   | 22.9 dBm (195 mW) TPC あり <br> 19.9 dBm (97.7 mW) TPC なし |
+| 5470 から 5725   | 100 から 140 | 29.9 dBm (977 mW) TPC あり <br> 29.6 dBm (490 mW) TPC なし |
+
+Microsoft Ireland Sandyford Ind Est Dublin D18 KX32 IRL
+
+電話番号: +353 1 295 3826
+
+FAX 番号: +353 1 706 4110
+
+#### <a name="singapore"></a>シンガポール:
+
+この装置に付属している Netgear A6150 WiFi USB アダプターは、IMDA 標準に準拠しています。
+
 
 ## <a name="next-steps"></a>次の手順
 

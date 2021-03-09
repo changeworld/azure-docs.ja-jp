@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ca00785bfe8a99b8a3d620559c4fa492ee60c63
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: f2bbc1c555824d4c632c5bf85a9cd0aa83087fc8
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741747"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648727"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>トラブルシューティング:オンプレミスの Azure AD パスワード保護
 
@@ -259,6 +259,146 @@ Azure AD パスワード保護ソフトウェアをアンインストールし�
    `%windir%\sysvol\domain\Policies\AzureADPasswordProtection`
 
    sysvol 共有が既定以外の場所に設定されている場合は、別のパスになります。
+
+## <a name="health-testing-with-powershell-cmdlets"></a>PowerShell コマンドレットを使用した正常性テスト
+
+AzureADPasswordProtection PowerShell モジュールには、ソフトウェアがインストールされて動作していることの基本的な検証を実行する、2 つの正常性に関連するコマンドレットが含まれています。 新しいデプロイを設定した後、その後も定期的に、そして問題の調査時に、これらのコマンドレットを実行することをお勧めします。
+
+個々の正常性テストでは、成功または失敗の基本的な結果と、失敗の場合はオプションのメッセージが返されます。 失敗の原因が明確でない場合は、失敗の説明を示す可能性のあるエラー イベント ログ メッセージを探してください。 テキスト ログ メッセージを有効にすることも役立つ場合があります。 詳細については、[Azure AD のパスワード保護の監視](howto-password-ban-bad-on-premises-monitor.md)に関する記事を参照してください。
+
+## <a name="proxy-health-testing"></a>プロキシの正常性テスト
+
+Test-AzureADPasswordProtectionProxyHealth コマンドレットは、個別に実行できる 2 つの正常性テストをサポートしています。 3 番目のモードでは、パラメーター入力を必要としないすべてのテストを実行できます。
+
+### <a name="proxy-registration-verification"></a>プロキシ登録の検証
+
+このテストでは、プロキシ エージェントが Azure に適切に登録され、Azure に対して認証できることを確認します。 成功した実行はこのようになります。
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Passed
+```
+
+エラーが検出された場合、そのテストでは、失敗の結果とオプションのエラー メッセージが返されます。 ここでは、考えられる失敗の一例を示します。
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyProxyRegistration
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyRegistration Failed No proxy certificates were found - please run the Register-AzureADPasswordProtectionProxy cmdlet to register the proxy.
+```
+
+### <a name="proxy-verification-of-end-to-end-azure-connectivity"></a>エンド ツー エンドの Azure 接続のプロキシ検証
+
+このテストは、-VerifyProxyRegistration テストのスーパーセットです。 ここでは、プロキシ エージェントが Azure に適切に登録されていること、Azure に対して認証できること、そして最後に Azure にメッセージを正常に送信できることのチェックを追加することで、完全なエンド ツー エンドの通信が機能していることを確認する必要があります。
+
+成功した実行はこのようになります。
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -VerifyAzureConnectivity
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyAzureConnectivity Passed
+```
+
+### <a name="proxy-verification-of-all-tests"></a>すべてのテストのプロキシ検証
+
+このモードでは、パラメーター入力を必要としない、コマンドレットでサポートされているすべてのテストを一括実行できます。 成功した実行はこのようになります。
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionProxyHealth -TestAll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyTLSConfiguration  Passed
+VerifyProxyRegistration Passed
+VerifyAzureConnectivity Passed
+```
+
+## <a name="dc-agent-health-testing"></a>DC エージェントの正常性テスト
+
+Test-AzureADPasswordProtectionDCAgentHealth コマンドレットは、個別に実行できるいくつかの正常性テストをサポートしています。 3 番目のモードでは、パラメーター入力を必要としないすべてのテストを実行できます。
+
+### <a name="basic-dc-agent-health-tests"></a>基本的な DC エージェントの正常性テスト
+
+次のテストはすべて個別に実行でき、受け入れません。 簡単な説明
+
+|DC エージェントの正常性テスト|説明|
+| --- | :---: |
+|-VerifyPasswordFilterDll|パスワード フィルター dll が現在読み込まれており、DC エージェント サービスを呼び出せることを確認します。|
+|-VerifyForestRegistration|フォレストが現在登録されていることを確認します。|
+|-VerifyEncryptionDecryption|Microsoft KDS サービスを使用して、基本的な暗号化と復号化が機能していることを確認します。|
+|-VerifyDomainIsUsingDFSR|現在のドメインで sysvol レプリケーションに DFSR が使用されていることを確認します|
+|-VerifyAzureConnectivity|使用可能なプロキシを使用して、Azure とのエンド ツー エンド通信が機能していることを確認します。|
+
+ここでは、-VerifyPasswordFilterDll テストの成功の例を示します。他のテストも、成功の場合は同様になります。
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyPasswordFilterDll
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyPasswordFilterDll Passed
+```
+
+### <a name="dc-agent-verification-of-all-tests"></a>すべてのテストの DC エージェント検証
+
+このモードでは、パラメーター入力を必要としない、コマンドレットでサポートされているすべてのテストを一括実行できます。 成功した実行はこのようになります。
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -TestAll
+
+DiagnosticName             Result AdditionalInfo
+--------------             ------ --------------
+VerifyPasswordFilterDll    Passed
+VerifyForestRegistration   Passed
+VerifyEncryptionDecryption Passed
+VerifyDomainIsUsingDFSR    Passed
+VerifyAzureConnectivity    Passed
+```
+
+### <a name="connectivity-testing-using-specific-proxy-servers"></a>特定のプロキシ サーバーを使用した接続テスト
+
+多くのトラブルシューティング状況には、DC エージェントとプロキシ間のネットワーク接続の調査が含まれます。 このような問題に特化した 2 つの正常性テストを利用できます。 これらのテストでは、特定のプロキシ サーバーを指定する必要があります。
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-a-specific-proxy"></a>DC エージェントと特定のプロキシ間の接続の確認
+
+このテストでは、DC エージェントからプロキシへの最初の通信間隔の接続を確認します。 これは、プロキシが呼び出しを受信したことを確認しますが、Azure との通信は行われません。 成功した実行はこのようになります。
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Passed
+```
+
+ここでは、ターゲット サーバーで実行されているプロキシ サービスが停止している場合の失敗状態の例を示します。
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyProxyConnectivity bpl2.bpl.com
+
+DiagnosticName          Result AdditionalInfo
+--------------          ------ --------------
+VerifyProxyConnectivity Failed The RPC endpoint mapper on the specified proxy returned no results; please check that the proxy service is running on that server.
+```
+
+#### <a name="verifying-connectivity-between-a-dc-agent-and-azure-using-a-specific-proxy"></a>DC エージェントと Azure 間の接続の確認 (特定のプロキシを使用)
+
+このテストでは、特定のプロキシを使用して、DC エージェントと Azure 間の完全なエンド ツー エンド接続を確認します。 成功した実行はこのようになります。
+
+```powershell
+PS C:\> Test-AzureADPasswordProtectionDCAgentHealth -VerifyAzureConnectivityViaSpecificProxy bpl2.bpl.com
+
+DiagnosticName                          Result AdditionalInfo
+--------------                          ------ --------------
+VerifyAzureConnectivityViaSpecificProxy Passed
+```
 
 ## <a name="next-steps"></a>次の手順
 

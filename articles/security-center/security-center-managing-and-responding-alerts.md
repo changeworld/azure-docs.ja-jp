@@ -11,25 +11,20 @@ ms.topic: how-to
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2020
+ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 3f319c35631f8c85cab4613df0f1c14f98356caa
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 490f94c71611e07e765f5882cb4e3eec13033a6a
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563349"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102099337"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Azure Security Center でのセキュリティ アラートの管理と対応
 
-> [!TIP]
-> このページの情報は、セキュリティ アラート ページの上部にあるバナーから使用できる新しいアラート エクスペリエンス (プレビュー) について説明します。 
->
-> :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="新しいアラート エクスペリエンス (プレビュー) へのリンクが表示されたバナー":::
-
 このトピックでは、Security Center のアラートを表示および処理し、リソースを保護する方法について説明します。
 
-セキュリティ アラートをトリガーする高度な検出は、Azure Defender でのみ使用できます。 無料試用版が提供されています。 アップグレードするには、「[Azure Defender を有効にする](security-center-pricing.md#enable-azure-defender)」をご覧ください。
+セキュリティ アラートをトリガーする高度な検出は、Azure Defender でのみ使用できます。 無料試用版が提供されています。 アップグレードするには、「[Azure Defender を有効にする](enable-azure-defender.md)」をご覧ください。
 
 ## <a name="what-are-security-alerts"></a>セキュリティの警告とは何か
 Security Center は、真の脅威を検出し、偽陽性を減らすために、Azure のリソースやネットワークのほか、接続されているパートナー ソリューション (ファイアウォールやエンドポイント保護ソリューションなど) から、自動的にログ データを収集、分析、統合します。 Security Center には、優先順位の付いたセキュリティの警告の一覧が表示されます。また、すぐに問題を調査する必要がある情報や、攻撃を受けたものを修復する方法についての推奨事項も表示されます。

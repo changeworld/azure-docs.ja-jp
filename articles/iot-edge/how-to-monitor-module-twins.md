@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1a11d3a9a972188af4cf8f054349da98d69691a3
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: d968fb066e68fe1bb6986c63ce750c5de5c98cf9
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876160"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633180"
 ---
 # <a name="monitor-module-twins"></a>モジュール ツインの監視
 
@@ -213,7 +213,7 @@ Azure IoT Hub 上、Visual Studio Code 上で、また、Azure CLI を使用し�
 
 IoT Edge が実行中かどうかを確認するには、[az iot hub invoke-module-method](how-to-edgeagent-direct-method.md#ping) を使用して IoT Edge エージェントに ping を実行します。
 
-[az iot hub module-twin](/cli/azure/ext/azure-cli-iot-ext/iot/hub/module-twin) 構造では、以下のコマンドが提供されています。
+[az iot hub module-twin](/cli/azure/ext/azure-iot/iot/hub/module-twin) 構造では、以下のコマンドが提供されています。
 
 * **az iot hub module-twin show** - モジュール ツインの定義を表示します。
 * **az iot hub module-twin update** - モジュール ツインの定義を更新します。

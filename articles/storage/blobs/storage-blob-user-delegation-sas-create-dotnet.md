@@ -1,27 +1,27 @@
 ---
-title: .NET を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する
+title: .NET を使用してコンテナー、ディレクトリ、または BLOB のユーザー委任 SAS を作成する
 titleSuffix: Azure Storage
 description: Azure Storage 用の .NET クライアント ライブラリを使用して、Azure Active Directory 資格情報によるユーザー委任 SAS を作成する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/13/2021
+ms.date: 02/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 13491735f73cb1696f3c36f3434cc781a1e2b739
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199259"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526807"
 ---
-# <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>.NET を使用してコンテナーまたは BLOB 用のユーザー委任 SAS を作成する
+# <a name="create-a-user-delegation-sas-for-a-container-directory-or-blob-with-net"></a>コンテナー、ディレクトリ、または BLOB のユーザー委任 SAS を .NET で作成する
 
 [!INCLUDE [storage-auth-sas-intro-include](../../../includes/storage-auth-sas-intro-include.md)]
 
-この記事では、Azure Active Directory (Azure AD) 資格情報を使用して バージョン 12 の .NET 用 Azure Storage クライアント ライブラリを使用するコンテナーまたは BLOB のユーザー委任 SAS を作成する方法について説明します。
+この記事では、Azure Active Directory (Azure AD) 資格情報を使用して、コンテナー、ディレクトリ、または BLOB のユーザー委任 SAS を、バージョン 12 の .NET 用 Azure Storage クライアント ライブラリで作成する方法について説明します。
 
 [!INCLUDE [storage-auth-user-delegation-include](../../../includes/storage-auth-user-delegation-include.md)]
 
@@ -99,7 +99,7 @@ Console.WriteLine("Key signed version: {0}", key.SignedVersion);
 
 ## <a name="get-a-user-delegation-sas-for-a-directory"></a>ディレクトリ用のユーザー委任 SAS を取得する
 
-次のコード例は、階層型名前空間が有効にされているときに、ディレクトリ用のユーザー委任 SAS を生成する方法を示しています。
+次のコード例は、階層型名前空間がストレージ アカウントに対して有効のときに、ディレクトリ用のユーザー委任 SAS を生成する方法を示しています。
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
 

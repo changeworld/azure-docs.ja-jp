@@ -3,16 +3,16 @@ title: Azure での PowerShell を使用した Application Insights の設定 | 
 description: Application Insights にデータをパイプするための Azure Diagnostics の構成を自動化します。
 ms.topic: conceptual
 ms.date: 08/06/2019
-ms.openlocfilehash: 0fd69b90ce6329041f96b8e3173f1f17270f68ee
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c7c385888d7322b212cdd62497c9bbbabb970d65
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699731"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100583848"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-azure-cloud-services"></a>PowerShell を使用して Azure Cloud Services 向けの Application Insights を設定する
 
-[Microsoft Azure](https://azure.com) は、[Azure Application Insights](./app-insights-overview.md) に [Azure Diagnostics を送信するように構成](../platform/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
+[Microsoft Azure](https://azure.com) は、[Azure Application Insights](./app-insights-overview.md) に [Azure Diagnostics を送信するように構成](../agents/diagnostics-extension-to-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
 
 ## <a name="azure-template"></a>Azure テンプレート
 Web アプリが Azure に存在するとき、Azure Resource Manager テンプレートを使用してリソースを作成する場合、resources ノードに次のコードを追加することで Application Insights を構成できます。
@@ -123,8 +123,8 @@ Remove-AzureServiceDiagnosticsExtension -ServiceName "MyService" -Role "WebRole"
 ```
 
 
-## <a name="see-also"></a>参照
+## <a name="see-also"></a>関連項目
 * [Application Insights で Azure Cloud Services アプリを監視する](./cloudservices.md)
-* [Azure Diagnostics を Application Insights に送信する](../platform/diagnostics-extension-to-application-insights.md)
+* [Azure Diagnostics を Application Insights に送信する](../agents/diagnostics-extension-to-application-insights.md)
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 9194f38ddea5570d94ba6c87ea6a537cb41fb98c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854616"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051380"
 ---
 # <a name="data-encryption-models"></a>データ暗号化モデル
 
@@ -199,8 +199,8 @@ Azure Key Vault のユーザー管理キーを使用するサーバー側暗号�
 | Azure Databricks                 | はい                | はい                | -                  |
 | Azure Database Migration Service | はい                | 該当なし\*              | -                  |
 | **DevOps**                       |                    |                    |                    |
-| Azure DevOps Services            | はい                | -                  | はい                |
-| Azure Repos                      | はい                | -                  | はい                |
+| Azure DevOps Services            | はい                | -                  | -                  |
+| Azure Repos                      | はい                | -                  | -                  |
 | **ID**                     |                    |                    |                    |
 | Azure Active Directory           | はい                | -                  | -                  |
 | Azure Active Directory Domain Services | はい          | はい                | -                  |

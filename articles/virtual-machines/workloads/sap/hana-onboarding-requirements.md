@@ -6,20 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f72342a318e3436fb80fb06b2312f664c9d04969
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 16608facab27fc18924cf3a5c6da7e35db048f76
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967620"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101675602"
 ---
 # <a name="onboarding-requirements"></a>オンボードの要件
 
@@ -42,16 +41,16 @@ SAP HANA on Azure (L インスタンス) を実行するための要件を以下
    > [!NOTE] 
    > Microsoft が提供するオペレーティング システムは SUSE に登録されません。 また、Subscription Management Tool インスタンスにも接続されません。
 
-- Azure の VM にデプロイされた SUSE Linux Subscription Management Tool。 このツールにより、SAP HANA on Azure (L インスタンス) を SUSE で登録し、個々に更新できるようになります (HANA L インスタンス データ センター内ではインターネットにアクセスできません)。 
+- Azure の VM にデプロイされた SUSE Linux Subscription Management Tool。 このツールにより、SAP HANA on Azure (L インスタンス) を SUSE で登録し、個々に更新できるようになります  (HANA L インスタンス データ センター内ではインターネットにアクセスできません)。 
 - SAP HANA 用の Red Hat Enterprise Linux 6.7 または 7.x のライセンス。
 
    > [!NOTE]
    > Microsoft が提供するオペレーティング システムは Red Hat に登録されません。 また、Red Hat Subscription Manager インスタンスにも接続されません。
 
-- Azure の VM にデプロイされた Red Hat Subscription Manager。 Red Hat Subscription Manager により、SAP HANA on Azure (L インスタンス) を Red Hat で登録し、個々に更新できるようになります (Azure L インスタンス スタンプにデプロイされたテナント内からインターネットに直接アクセスすることはできません)。
+- Azure の VM にデプロイされた Red Hat Subscription Manager。 Red Hat Subscription Manager により、SAP HANA on Azure (L インスタンス) を Red Hat で登録し、個々に更新できるようになります  (Azure L インスタンス スタンプにデプロイされたテナント内からインターネットに直接アクセスすることはできません)。
 - SAP が定める要件上、Linux プロバイダーとのサポート契約も必要です。 HANA L インスタンスのソリューションであること、または Azure で Linux を実行するという事実によって、この要件がなくなるわけではありません。 一部の Linux Azure ギャラリー イメージとは異なり、HANA L インスタンスのソリューション プランにサービス料金は *含まれません*。 Linux ディストリビューターとのサポート契約に関する SAP の要件を満たすのは、お客様の責任になります。 
    - SUSE Linux については、「[SAP Note #1984787 - SUSE Linux Enterprise Server 12: Installation notes (SAP ノート #1984787 - SUSE Linux Enterprise Server 12: インストールに関する注意事項)](https://launchpad.support.sap.com/#/notes/1984787)」および「[SAP Note #1056161 - SUSE priority support for SAP applications (SAP ノート #1056161 - SAP アプリケーションの SUSE 優先サポート)](https://launchpad.support.sap.com/#/notes/1056161)」でサポート契約の要件を確認してください。
-   - Red Hat Linux の場合、HANA L インスタンスのオペレーティング システムに対するサポートとサービスの更新を含む適切なサブスクリプション レベルが必要になります。 Red Hat では、SAP ソリューションとして Red Hat Enterprise Linux のサブスクリプションを推奨しています。 [https://access.redhat.com/solutions/3082481](https://access.redhat.com/solutions/3082481 ) を参照してください。 
+   - Red Hat Linux の場合、HANA L インスタンスのオペレーティング システムに対するサポートとサービスの更新を含む適切なサブスクリプション レベルが必要になります。 Red Hat では、SAP ソリューションとして Red Hat Enterprise Linux のサブスクリプションを推奨しています。 [https://access.redhat.com/solutions/3082481](https://access.redhat.com/solutions/3082481) を参照してください。 
 
 各種 Linux バージョンと各種 SAP HANA バージョンのサポート マトリックスについては、[SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581) を確認してください。
 

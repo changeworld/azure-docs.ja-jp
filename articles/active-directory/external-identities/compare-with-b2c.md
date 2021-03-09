@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 10/23/2020
+ms.date: 03/02/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6be0720b7eafb251b262d5cd182bdf06e201402d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 78fd91e2ba7badb1936b8603c8ed089130b29ffb
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173075"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101644067"
 ---
 # <a name="what-are-external-identities-in-azure-active-directory"></a>Azure Active Directory の外部 ID とは
 
@@ -27,7 +27,7 @@ Azure AD 内で外部 ID を使用すると、ご自身の組織外のユーザ�
 
 Azure AD External Identities は、ユーザーと組織の関係はあまり重視せず、ユーザーが組織のアプリやリソースにサインインする方法を重視します。 Azure AD はこのフレームワーク内で、企業間 (B2B) コラボレーションから、消費者や顧客または一般ユーザー向けアプリケーションのアクセス管理 (企業-顧客間すなわち B2C) まで、さまざまなシナリオをサポートします。
 
-- **外部ユーザーとアプリやリソースを共有する (B2B コラボレーション)** 。 外部ユーザーを自分のテナントに "ゲスト" ユーザーとして招待します。このユーザーには、アクセス許可を割り当てる (承認) と同時に、自分の既存の資格情報を使用させる (認証) ことができます。 ユーザーは、職場、学校などのメール アカウントによる単純な招待と引き換えプロセスを使用して、共有リソースにサインインします。 また、[Azure AD のエンタイトルメント管理](../governance/entitlement-management-overview.md)を使用して、[外部ユーザーのアクセスを管理する](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)ポリシーを構成することもできます。 さらに、[セルフサービス サインアップのユーザー フロー (プレビュー)](self-service-sign-up-overview.md) を利用できるようになったので、外部ユーザーが自分でアプリケーションにサインアップできるようにすることができます。 このエクスペリエンスは、職場、学校、またはソーシャル ID (Google や Facebook など) によるサインアップを許可するようにカスタマイズできます。 サインアップ プロセスでユーザーに関する情報を収集することもできます。 詳細については、[Azure AD B2B のドキュメント](index.yml)を参照してください。
+- **外部ユーザーとアプリやリソースを共有する (B2B コラボレーション)** 。 外部ユーザーを自分のテナントに "ゲスト" ユーザーとして招待します。このユーザーには、アクセス許可を割り当てる (承認) と同時に、自分の既存の資格情報を使用させる (認証) ことができます。 ユーザーは、職場、学校などのメール アカウントによる単純な招待と引き換えプロセスを使用して、共有リソースにサインインします。 また、[Azure AD のエンタイトルメント管理](../governance/entitlement-management-overview.md)を使用して、[外部ユーザーのアクセスを管理する](../governance/entitlement-management-external-users.md#how-access-works-for-external-users)ポリシーを構成することもできます。 さらに、[セルフサービス サインアップのユーザー フロー](self-service-sign-up-overview.md)を利用できるようになったので、外部ユーザーが自分でアプリケーションにサインアップできるようにすることができます。 このエクスペリエンスは、職場、学校、またはソーシャル ID (Google や Facebook など) によるサインアップを許可するようにカスタマイズできます。 サインアップ プロセスでユーザーに関する情報を収集することもできます。 詳細については、[Azure AD B2B のドキュメント](index.yml)を参照してください。
 
 - **消費者および顧客向けアプリのホワイトラベルの ID 管理ソリューションでユーザー体験を構築する (Azure AD B2C)** 。 顧客向けアプリを作成している企業または開発者であれば、Azure AD B2C を使用することで、多数の消費者、顧客、または一般ユーザーへと範囲を拡張できます。 開発者は、フル機能を備えた顧客 ID およびアクセス管理 (CIAM) システムとして Azure AD を自身のアプリケーションに使用できます。 顧客は、既に作成している ID (Facebook や Gmail など) を使用してサインインできます。 Azure AD B2C を使用すると、顧客のサインアップ、サインイン、アプリケーション使用時のプロファイルの管理を、完全にカスタマイズして制御できます。 詳細については、[Azure AD B2C のドキュメント](../../active-directory-b2c/index.yml)を参照してください。
 

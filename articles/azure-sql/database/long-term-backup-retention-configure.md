@@ -11,35 +11,39 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/16/2020
-ms.openlocfilehash: 49dfed7faac1e55a40bc7b7ddd5e9555519350a2
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: fad19d360f7c476ba71a9bbe00b58387b92f8ac4
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617308"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690560"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Azure SQL Database では、[長期的なバックアップ保有期間](long-term-retention-overview.md)ポリシー (LTR) を使用してデータベースを構成し、別々の Azure Blob Storage コンテナーに最大 10 年間自動的にデータベースのバックアップを保持することができます。 Azure Portal または PowerShell でこのようなバックアップを使用して、データベースを復旧できます。 [Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) の長期的な保有期間を構成することもできますが、この機能は現時点では制限のあるパブリック プレビュー段階です。
+Azure SQL Database を使用すると、バックアップが別々の Azure Blob Storage コンテナーに最長 10 年間自動的に保持されるように、[長期的なバックアップ保有期間](long-term-retention-overview.md)ポリシー (LTR) を設定できます。 Azure Portal または PowerShell でこのようなバックアップを使用して、データベースを復旧できます。 長期保有ポリシーは、[Azure SQL Managed Instance](../managed-instance/long-term-backup-retention-configure.md) でもサポートされています。
 
 ## <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-以下のセクションでは、Azure Portal を使用して長期保存を構成し、長期保存のバックアップを表示し、長期保存からバックアップを復元する方法について説明します。
+以下のセクションでは、Azure portal を使用して長期保有ポリシーを設定する方法、使用可能な長期保有バックアップを管理する方法、使用可能なバックアップから復元する方法について説明します。
 
 ### <a name="configure-long-term-retention-policies"></a>長期保存ポリシーを構成する
 
 ご利用のサービス レベルのリテンション期間より長く[自動バックアップを保持](long-term-retention-overview.md)するように SQL Database を構成できます。
 
-1. Azure portal で SQL Server インスタンスを選択し、 **[バックアップの管理]** をクリックします。 **[ポリシーの構成]** タブで、長期的なバックアップ保有期間ポリシーを設定または変更するデータベースのチェックボックスをオンにします。 データベースの横にあるチェックボックスがオンになっていない場合、そのデータベースにはポリシーの変更が適用されません。  
+1. Azure portal で、ご自分のサーバーに移動してから、 **[バックアップ]** を選択します。 **[保持ポリシー]** タブを選択して、バックアップの保持設定を変更します。
 
-   ![バックアップの管理リンク](./media/long-term-backup-retention-configure/ltr-configure-ltr.png)
+   ![保持ポリシーのエクスペリエンス](./media/long-term-backup-retention-configure/ltr-policies-tab.png)
 
-2. **[ポリシーの構成]** ウィンドウで、毎週、毎月、または毎年のバックアップを保持するかどうかを選択し、それぞれの保有期間を指定します。
+2. [保持ポリシー] タブで、長期的なバックアップ保持ポリシーを設定または変更するデータベースを選択します。 選択されていないデータベースへの影響はありません。
 
-   ![ポリシーを構成する](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+   ![バックアップ保持ポリシーを構成するデータベースを選択する](./media/long-term-backup-retention-configure/ltr-policies-tab-configure.png)
 
-3. 完了したら、 **[適用]** をクリックします。
+3. **[ポリシーの構成]** ウィンドウで、週単位、月単位、または年単位のバックアップに必要な保有期間を指定します。 長期的なバックアップ保有期間を設定しないことを示すには、保有期間を "0" にします。
+
+   ![ポリシーの構成ウィンドウ](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
+
+4. **[適用]** を選択して、指定した保有期間設定を選択したすべてのデータベースに適用します。
 
 > [!IMPORTANT]
 > 長期的なバックアップ保有期間ポリシーを有効にすると、初回バックアップが表示されて復元に利用できる状態になるまでに、最大 7 日かかる場合があります。 LTR バックアップ周期の詳細については、[長期的なバックアップ保有期間](long-term-retention-overview.md)に関するページを参照してください。
@@ -48,21 +52,23 @@ Azure SQL Database では、[長期的なバックアップ保有期間](long-te
 
 LTR ポリシーを使用して保持されている特定のデータベースのバックアップを表示し、それらのバックアップから復元します。
 
-1. Azure portal でサーバーを選択し、 **[バックアップの管理]** をクリックします。 **[利用可能なバックアップ]** タブで、利用可能なバックアップを表示するデータベースを選択します。
+1. Azure portal で、ご自分のサーバーに移動してから、 **[バックアップ]** を選択します。 特定のデータベースに使用可能な LTR バックアップを表示するには、[使用可能な LTR バックアップ] 列の下にある **[管理]** を選択します。 選択したデータベースに使用可能な LTR バックアップの一覧を示すウィンドウが表示されます。
 
-   ![データベースを選択する](./media/long-term-backup-retention-configure/ltr-available-backups-select-database.png)
+   ![使用可能なバックアップのエクスペリエンス](./media/long-term-backup-retention-configure/ltr-available-backups-tab.png)
 
-1. **[利用可能なバックアップ]** ウィンドウで、利用可能なバックアップを確認します。
+1. 表示されている **[使用可能な LTR バックアップ]** ウィンドウで、使用可能なバックアップを確認します。 復元元のバックアップまたは削除するバックアップを選択できます。
 
-   ![バックアップを確認する](./media/long-term-backup-retention-configure/ltr-available-backups.png)
+   ![使用可能な LTR バックアップを表示する](./media/long-term-backup-retention-configure/ltr-available-backups-manage.png)
 
-1. 復元するバックアップを選択し、新しいデータベース名を指定します。
+1. 使用可能な LTR バックアップから復元するには、復元元のバックアップを選択してから、 **[復元]** を選択します。
 
-   ![復元](./media/long-term-backup-retention-configure/ltr-restore.png)
+   ![使用可能な LTR バックアップから復元する](./media/long-term-backup-retention-configure/ltr-available-backups-restore.png)
 
-1. **[OK]** をクリックして、Azure ストレージ内にあるバックアップから新しいデータベースにデータベースを復元します。
+1. 新しいデータベースの名前を選択してから、 **[確認と作成]** を選択して、復元の詳細を確認します。 **[作成]** を選択して、選択したバックアップからデータベースを復元します。
 
-1. ツール バーの通知アイコンをクリックして、復元ジョブの状態を確認します。
+   ![復元の詳細を構成する](./media/long-term-backup-retention-configure/restore-ltr.png)
+
+1. ツール バーの通知アイコンを選択して、復元ジョブの状態を確認します。
 
    ![復元ジョブの進行状況](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
 
@@ -183,7 +189,7 @@ Remove-AzSqlDatabaseLongTermRetentionBackup -ResourceId $ltrBackup.ResourceId
 ```
 
 > [!IMPORTANT]
-> LTR バックアップの削除は、元に戻せません。 サーバーが削除された後に LTR バックアップを削除するには、サブスクリプション スコープのアクセス許可が必要です。 Azure Monitor では、"長期保有バックアップを削除します" という操作をフィルター処理することで、それぞれの削除に関する通知を設定できます。 アクティビティ ログには、どのユーザーがいつ要求を行ったかに関する情報が含まれています。 詳しい手順については、[アクティビティ ログ アラートの作成](../../azure-monitor/platform/alerts-activity-log.md)に関するページを参照してください。
+> LTR バックアップの削除は、元に戻せません。 サーバーが削除された後に LTR バックアップを削除するには、サブスクリプション スコープのアクセス許可が必要です。 Azure Monitor では、"長期保有バックアップを削除します" という操作をフィルター処理することで、それぞれの削除に関する通知を設定できます。 アクティビティ ログには、どのユーザーがいつ要求を行ったかに関する情報が含まれています。 詳しい手順については、[アクティビティ ログ アラートの作成](../../azure-monitor/alerts/alerts-activity-log.md)に関するページを参照してください。
 
 ### <a name="restore-from-ltr-backups"></a>LTR バックアップから復元する
 
@@ -196,7 +202,7 @@ Restore-AzSqlDatabase -FromLongTermRetentionBackup -ResourceId $ltrBackup.Resour
 ```
 
 > [!IMPORTANT]
-> サーバーが削除された後に LTR バックアップから復元するには、サーバーのサブスクリプションをスコープとしたアクセス許可が必要であり、そのサブスクリプションがアクティブである必要があります。 また、オプションの -ResourceGroupName パラメーターを省略する必要もあります。
+> サーバーまたはリソース グループが削除された後に LTR バックアップから復元するには、サーバーのサブスクリプションをスコープとしたアクセス許可が必要であり、そのサブスクリプションがアクティブである必要があります。 また、オプションの -ResourceGroupName パラメーターを省略する必要もあります。
 
 > [!NOTE]
 > ここから、SQL Server Management Studio を使用して、復元されたデータベースに接続し、必要なタスクを実行できます。たとえば、復元されたデータベースからデータを少し抽出して既存のデータベースにコピーしたり、既存のデータベースを削除し、復元されたデータベースの名前を既存のデータベース名に変更したりできます。 [ポイントインタイム リストア](recovery-using-backups.md#point-in-time-restore)をご覧ください。

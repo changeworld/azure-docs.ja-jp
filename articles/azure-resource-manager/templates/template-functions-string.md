@@ -2,13 +2,13 @@
 title: テンプレート関数 - 文字列
 description: Azure Resource Manager テンプレート (ARM テンプレート) で文字列の操作に使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: a70aaff91f701c0ba8d26db2488b82e052dd905d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 03/02/2021
+ms.openlocfilehash: e823acc07ce0618c064f30e103ec52b7133cea18
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920008"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731121"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM テンプレート用の文字列関数
 
@@ -306,6 +306,8 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 複数の文字列値を結合して連結された文字列を返します。または複数の配列を結合して連結された配列を返します。
 
+文字列の連結を簡略化するために、Bicep では [文字列補間](https://en.wikipedia.org/wiki/String_interpolation#)の構文がサポートされています。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | Type | 説明 |
@@ -351,6 +353,14 @@ output toJsonOutput object = base64ToJson(base64Object)
 param prefix string = 'prefix'
 
 output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id))
+```
+
+or
+
+```bicep
+param prefix string = 'prefix'
+
+output concatOutput string = '${prefix}-${uniqueString(resourceGroup().id)}'
 ```
 
 ---
@@ -1530,7 +1540,7 @@ output guidOutput string = guidValue
 ```bicep
 param guidValue string = newGuid()
 
-var storageName = concat('storage', uniqueString(guidValue))
+var storageName = 'storage${uniqueString(guidValue)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
   name: storageName
@@ -2468,7 +2478,7 @@ uniqueString(resourceGroup().id, deployment().name)
 
 ```bicep
 resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
-  name: concat('storage, uniqueString(resourceGroup().id)')
+  name: 'storage${uniqueString(resourceGroup().id)}'
   ...
 }
 ```

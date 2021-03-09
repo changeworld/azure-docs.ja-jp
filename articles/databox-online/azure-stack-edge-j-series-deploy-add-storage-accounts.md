@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to storage accounts on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: c24970b30e522d593a491194dbbabb0421ad7f4b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b346cf37a8275b1783e94e0f51859b8c87eb9b67
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185563"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546824"
 ---
 # <a name="tutorial-transfer-data-via-storage-accounts-with-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU でストレージ アカウントを使用してデータを転送する 
 
@@ -137,9 +137,9 @@ https 経由の Azure Blob Storage REST API への接続では、以下の手順
 
 HTTPS 経由で Blob Storage にアクセスするには、デバイスの SSL 証明書が必要です。 また、この証明書を、秘密キーが添付された *.pfx* ファイルとして、Azure Stack Edge Pro デバイスにアップロードします。 これらの証明書を (テストと開発の目的のみで) 作成して Azure Stack Edge Pro デバイスにアップロードする方法の詳細については、次の記事を参照してください。
 
-- [BLOB エンドポイント証明書を作成する](azure-stack-edge-j-series-manage-certificates.md#create-certificates-optional)。
-- [BLOB エンドポイント証明書をアップロードする](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)。
-- [デバイスにアクセスするクライアントで証明書をインポートする](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)。
+- [BLOB エンドポイント証明書を作成する](azure-stack-edge-gpu-manage-certificates.md#create-certificates-optional)。
+- [BLOB エンドポイント証明書をアップロードする](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)。
+- [デバイスにアクセスするクライアントで証明書をインポートする](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)。
 
 ### <a name="import-certificate"></a>証明書のインポート
 

@@ -1,19 +1,19 @@
 ---
 title: Synapse Studio で Synapse RBAC の割り当てを管理する方法
 description: この記事では、AAD セキュリティ プリンシパルに Synapse RBAC ロールを割り当てたり、取り消したりする方法について説明します。
-author: billgib
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: security
 ms.date: 12/1/2020
-ms.author: billgib
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: bed0c00b8cb5718456302dff06e98ff2f7f2b4e8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218197"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102191"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Synapse Studio で Synapse RBAC ロールの割り当てを管理する方法
 

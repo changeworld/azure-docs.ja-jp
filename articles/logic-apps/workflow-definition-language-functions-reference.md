@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: reference
 ms.date: 01/13/2021
-ms.openlocfilehash: fe40cbe84e8e3341b03c6c8e11701fe3db6bc3d0
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 4ed5a26e1f871f7ac5fd8f29f0a66bc39a8013a1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234224"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507250"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Azure Logic Apps および Power Automate の式で関数を使用するためのリファレンス ガイド
 
@@ -569,10 +569,10 @@ addDays('<timestamp>', <days>, '<format>'?)
 この例は、指定したタイムスタンプに 10 日を加算します。
 
 ```
-addDays('2018-03-15T13:00:00Z', 10)
+addDays('2018-03-15T00:00:00Z', 10)
 ```
 
-返される結果: `"2018-03-25T00:00:0000000Z"`
+返される結果: `"2018-03-25T00:00:00.0000000Z"`
 
 *例 2*
 
@@ -582,7 +582,7 @@ addDays('2018-03-15T13:00:00Z', 10)
 addDays('2018-03-15T00:00:00Z', -5)
 ```
 
-返される結果: `"2018-03-10T00:00:0000000Z"`
+返される結果: `"2018-03-10T00:00:00.0000000Z"`
 
 <a name="addHours"></a>
 
@@ -614,7 +614,7 @@ addHours('<timestamp>', <hours>, '<format>'?)
 addHours('2018-03-15T00:00:00Z', 10)
 ```
 
-返される結果: `"2018-03-15T10:00:0000000Z"`
+そして、"2018-03-15T10:00:00.0000000Z" という結果を返します。
 
 *例 2*
 
@@ -624,7 +624,7 @@ addHours('2018-03-15T00:00:00Z', 10)
 addHours('2018-03-15T15:00:00Z', -5)
 ```
 
-返される結果: `"2018-03-15T10:00:0000000Z"`
+返される結果: `"2018-03-15T10:00:00.0000000Z"`
 
 <a name="addMinutes"></a>
 
@@ -2263,7 +2263,7 @@ guid('<format>')
 
 | パラメーター | 必須 | 種類 | 説明 |
 | --------- | -------- | ---- | ----------- |
-| <*format*> | いいえ | String | 返される GUID の単一の[形式指定子](/dotnet/api/system.guid.tostring?view=netcore-3.1#system_guid_tostring_system_string_)。 規定の形式は "D" ですが、"N"、"D"、"B"、"P"、"X" も指定できます。 |
+| <*format*> | いいえ | String | 返される GUID の単一の[形式指定子](/dotnet/api/system.guid.tostring#system_guid_tostring_system_string_)。 規定の形式は "D" ですが、"N"、"D"、"B"、"P"、"X" も指定できます。 |
 |||||
 
 | 戻り値 | Type | 説明 |
@@ -4011,7 +4011,7 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 subtractFromTime('2018-01-02T00:00:00Z', 1, 'Day')
 ```
 
-返される結果: `"2018-01-01T00:00:00:0000000Z"`
+返される結果: `"2018-01-01T00:00:00.0000000Z"`
 
 *例 2*
 
@@ -4063,7 +4063,7 @@ take(createArray(0, 1, 2, 3, 4), 3)
 
 ### <a name="ticks"></a>ticks
 
-1 月 1 日 0001 12:00:00 午前 0 時から指定したタイムスタンプまでの 100 ナノ秒間隔のティック数 (または C# の DateTime.Ticks) を返します。 詳細については、[DateTime.Ticks プロパティ (システム)](/dotnet/api/system.datetime.ticks?view=netframework-4.7.2#remarks) のトピックを参照してください。
+1 月 1 日 0001 12:00:00 午前 0 時から指定したタイムスタンプまでの 100 ナノ秒間隔のティック数 (または C# の DateTime.Ticks) を返します。 詳細については、[DateTime.Ticks プロパティ (システム)](/dotnet/api/system.datetime.ticks) のトピックを参照してください。
 
 ```
 ticks('<timestamp>')

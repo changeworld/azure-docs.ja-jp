@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory を使用して Machine Learning モデルを更新する
 description: Azure Data Factory v1 と Azure Machine Learning スタジオ (クラシック) を使用して予測パイプラインを作成する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: dcstwh
 ms.author: weetok
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 556936eb6e8c1c1c2dd1fab4ce7dfc1b648710b7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 7a27ed657ba21d9e2125df903b40d74cd81eacf6
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496604"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100379303"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>更新リソース アクティビティを使用して Azure Machine Learning スタジオ (クラシック) モデルを更新する
 

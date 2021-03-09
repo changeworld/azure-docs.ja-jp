@@ -4,21 +4,23 @@ description: この記事では、Azure portal、PowerShell、または REST API
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/30/2020
+ms.date: 2/4/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9fdd6b6a195d0c6d4c4bf0489a037cb138a23a42
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 62acb526a247362b17c4dfd4e26c52760deecd71
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351726"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99573502"
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
 
 サーバー管理者は、サーバーが存在するテナントについて、Azure Active Directory (Azure AD) 内で有効なユーザー、サービス プリンシパル、またはセキュリティ グループである必要があります。 Azure portal でご利用のサーバーの **[Analysis Services 管理者]** を使用するか、SSMS、PowerShell、または REST API のサーバー プロパティを使用して、サーバー管理者を管理できます。 
 
 **セキュリティ グループ** を追加するときは、`obj:groupid@tenantid` を使用します。 サービス プリンシパルは、サーバー管理者ロールに追加されたセキュリティ グループ内ではサポートされません。
+
+サーバー管理者ロールにサービス プリンシパルを追加する方法の詳細については、「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。
 
 サーバーのファイアウォールが有効になっている場合は、サーバー管理者のクライアント コンピューターの IP アドレスがファイアウォール規則に含まれている必要があります。 詳細については、「[サーバーのファイアウォールの構成](analysis-services-qs-firewall.md)」を参照してください。
 

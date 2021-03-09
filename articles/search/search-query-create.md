@@ -1,5 +1,5 @@
 ---
-title: 基本的なクエリの作成
+title: クエリを作成する
 titleSuffix: Azure Cognitive Search
 description: Cognitive Search でクエリ要求を作成する方法、テストおよびコードに使用するツールと API、およびどのようにしてインデックスのデザインからクエリ決定が開始されるのかについて説明します。
 manager: nitinme
@@ -7,74 +7,80 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/14/2020
-ms.openlocfilehash: 9bee391ddb0fa6c270c6d833fb7e81d5f4880497
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.date: 02/03/2021
+ms.openlocfilehash: b013c66feefade077c85194ba3b1ff04ff4c4aa5
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118644"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536834"
 ---
-# <a name="create-a-query-in-azure-cognitive-search"></a>Azure Cognitive Search でクエリを作成する
+# <a name="creating-queries-in-azure-cognitive-search"></a>Azure Cognitive Search でのクエリの作成
 
-クエリを初めて作成する場合、この記事では、必要なツールおよび API、クエリの作成に使用されるメソッド、およびインデックスの構造とコンテンツがクエリ結果に与える影響について説明します。 クエリ要求の概要については、[クエリの種類と構成](search-query-overview.md)に関するページをご覧ください。
+クエリを初めて作成する場合、この記事ではクエリを設定するためのアプローチとメソッドについて説明します。 また、クエリ要求の概要を示し、フィールド属性と言語アナライザーによってクエリ結果がどのような影響を受けるかについても説明します。
 
-## <a name="choose-tools-and-apis"></a>ツールと API を選択する
+## <a name="whats-a-query-request"></a>クエリ要求とは
 
-クエリを作成するには、ツールまたは API が必要です。 次の推奨事項はいずれも、テストおよび運用ワークロードに役立ちます。
+クエリとは、単一の検索インデックスのドキュメント コレクションに対する読み取り専用の要求です。 これは "queryType" と、"search" パラメーターによるクエリ式を指定します。 クエリ式には、検索語句、引用符で囲まれたフレーズ、および演算子を含めることができます。
 
-| 手法 | 説明 |
-|-------------|-------------|
-| ポータル| [検索エクスプローラー (ポータル)](search-explorer.md) は、Azure portal のクエリ インターフェイスで、基になる検索サービスでインデックスに対してクエリを実行します。 このポータルでは、バックグラウンドで[ドキュメントの検索](/rest/api/searchservice/search-documents)操作に対して REST API 呼び出しを行いますが、オートコンプリート、提案、またはドキュメント検索を呼び出すことはできません。<br/><br/> プレビューを含む、任意のインデックスと REST API バージョンを選択できます。 クエリ文字列では、すべてのクエリ パラメーター (filter、select、searchFields など) をサポートする単純な構文または完全な構文を使用できます。 ポータルでは、インデックスを開くと、フィールド属性に簡単にアクセスできるように、横に並んだタブでインデックス JSON 定義と共に検索エクスプローラーを操作できます。 クエリのテスト中に、検索可能、並べ替え可能、フィルター可能、およびファセット可能の各フィールドを確認します。 <br/>早期調査、テスト、検証用に推奨されます。 [詳細情報。](search-explorer.md) |
-| Web テスト ツール| [Postman](search-get-started-rest.md) または [Visual Studio Code](search-get-started-vs-code.md) は、[ドキュメントの検索](/rest/api/searchservice/search-documents)要求、およびその他の要求を REST で作成するための強力な選択肢です。 REST API は、Azure Cognitive Search での考えられるすべてのプログラム操作をサポートしており、Postman や Visual Studio Code などのツールを使用すると、要求を対話的に発行して、コードで使用する前にこの機能の動作を理解できます。 Azure portal で共同作成者または管理者の権限がない場合は、Web テストツールを選択することをお勧めします。 検索 URL とクエリ API キーがある限り、ツールを使用して既存のインデックスに対してクエリを実行できます。 |
-| Azure SDK | コードを記述する準備ができたら、.NET、Python、JavaScript、または Java 用の Azure SDK 内の Azure.Search.Document クライアント ライブラリを使用できます。 各 SDK は独自のリリース スケジュールに基づいていますが、すべての SDK でインデックスを作成し、インデックスに対してクエリを実行できます。 <br/><br/>[SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) を使用すると、C# で検索インデックスのクエリを実行できます。  [詳細情報。](search-howto-dotnet-sdk.md)<br/><br/>[SearchClient (Python)](/dotnet/api/azure.search.documents.searchclient) を使用すると、Python で検索インデックスのクエリを実行できます。 [詳細情報。](search-get-started-python.md)<br/><br/>[SearchClient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) を使用すると、JavaScript で検索インデックスのクエリを実行できます。 [詳細情報。](search-get-started-javascript.md) |
-
-## <a name="set-up-a-search-client"></a>検索クライアントを設定する
-
-検索クライアントは、検索サービスに対して認証を行い、要求を送信し、応答を処理します。 使用するツールまたは API に関係なく、検索クライアントには次のプロパティが必要です。
-
-| Properties | 説明 |
-|------------|-------------|
-| エンドポイント | 検索サービスは、`https://[service-name].search.windows.net` の形式でアドレス指定可能な URL です。 |
-| API アクセスキー (管理者またはクエリ) | 検索サービスに対する要求の認証に使用されます。 |
-| インデックス名 | クエリは、常に単一のインデックスのドキュメント コレクションを対象とします。 複数のインデックスを結合したり、カスタム データ構造や一時的なデータ構造をクエリの対象にしたりすることはできません。 |
-| API バージョン | REST 呼び出しでは、要求に対して `api-version` が明示的に要求されます。 これに対し、Azure SDK 内のクライアント ライブラリは、特定の REST API バージョンに対してバージョン管理されます。 SDK の場合、`api-version` は暗黙的です。 |
-
-### <a name="in-the-portal"></a>ポータルで
-
-Search エクスプローラーとその他のポータル ツールには、サービスへのクライアント接続が組み込まれており、ポータルページからインデックスや他のオブジェクトに直接アクセスできます。 ツール、ウィザード、およびオブジェクトへのアクセスには、サービスに対する共同作成者ロール以上のメンバーシップが必要です。 
-
-### <a name="using-rest"></a>REST の使用
-
-REST 呼び出しの場合は、[Postman または類似のツール](search-get-started-rest.md)をクライアントとして使用して、[ドキュメントの検索](/rest/api/searchservice/search-documents)要求を指定できます。 各要求はスタンドアロンであるため、要求ごとにエンドポイント、インデックス名、および API バージョンを指定する必要があります。 その他のプロパティ、Content-Type、API キーは、要求ヘッダーで渡されます。 
-
-POST または GET を使用して、インデックスのクエリを実行できます。 POST は、パラメーターを要求本文で指定して、簡単に操作できます。 POST を使用する場合は、URL に必ず `docs/search` を含めてください。
+クエリには、インデックスで見つかった一致の数を返すための "count"、検索結果で返されるフィールドを選択するための "select"、結果を並べ替えるための "orderby" を含めることもできます。 次の例では、使用可能なパラメーターのサブセットを示すことにより、クエリ要求の一般的な概念を示します。 クエリの構成の詳細については、[クエリの種類と構成](search-query-overview.md)および[ドキュメントの検索 (REST)](/rest/api/searchservice/search-documents) に関する記事を参照してください。
 
 ```http
-POST https://myservice.search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
+POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 {
-    "count": true,
-    "queryType": "simple",
-    "search": "*"
+    "queryType": "simple"
+    "search": "`New York` +restaurant",
+    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
+    "count": "true",
+    "orderby": "Rating desc"
 }
 ```
 
-### <a name="using-azure-sdks"></a>Azure SDK の使用
+## <a name="choose-a-client"></a>クライアントを選択する
 
-Azure SDK を使用している場合は、コードでクライアントを作成します。 すべての SDK には、状態を保持できる検索クライアントが用意されており、接続を再利用できます。 クエリ操作の場合は **`SearchClient`** をインスタンス化し、エンドポイント、キー、インデックスのプロパティの値を指定します。 その後、 **`Search method`** を呼び出して、クエリ文字列を渡すことができます。 
+Azure portal や Postman などのツール、または API を使用してクエリ クライアントをインスタンス化するコードが必要です。 早期の開発と概念実証のテストには、Azure portal または REST API をお勧めします。
 
-| 言語 | クライアント | 例 |
-|----------|--------|---------|
-| C# および .NET | [SearchClient](/dotnet/api/azure.search.documents.searchclient) | [C# で最初の検索クエリを送信する](/dotnet/api/overview/azure/search.documents-readme#send-your-first-search-query) |
-| Python      | [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) | [Python での最初の検索クエリを送信する](/python/api/overview/azure/search-documents-readme#send-your-first-search-request) |
-| Java        | [SearchClient](/java/api/com.azure.search.documents.searchclient) | [Java で最初の検索クエリを送信する](/java/api/overview/azure/search-documents-readme#send-your-first-search-query)  |
-| JavaScript  | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | [JavaScript で最初の検索クエリを送信する](/javascript/api/overview/azure/search-documents-readme#send-your-first-search-query)  |
+### <a name="permissions"></a>アクセス許可
 
-## <a name="choose-a-parser-simple--full"></a>パーサーの選択: simple | full
+クエリ要求を含むすべての操作は[管理 API キー](search-security-api-keys.md)で動作しますが、クエリ要求は必要に応じて[クエリ API キー](search-security-api-keys.md#create-query-keys)を使用できます。 クエリ API キーを強くお勧めします。 サービスあたり最大 50 個作成でき、アプリケーションごとに異なるキーを割り当てることができます。
 
-クエリがフルテキスト検索の場合は、検索パラメーターの内容を処理するためにパーサーが使用されます。 Azure Cognitive Search には、2 つのクエリ パーサーが用意されています。 単純なパーサーは、[単純なクエリ構文](query-simple-syntax.md)を認識します。 このパーサーは、自由形式のテキスト クエリの速度と有効性により既定で選択されています。 この構文では、用語検索と語句検索に共通の検索演算子 (AND、OR、NOT) とプレフィックス (`*`) 検索をサポートしています (Seattle や Seaside に対する "sea*" など)。 一般的には、最初に単純なパーサーを試してから、アプリケーションの要件でより強力なクエリが必要になる場合に完全なパーサーに移行することをお勧めします。
+Azure portal では、ツール、ウィザード、およびオブジェクトへのアクセスには、サービスに対する共同作成者ロール以上のメンバーシップが必要です。 
 
-[完全な Lucene クエリ構文](query-Lucene-syntax.md#bkmk_syntax)は、`queryType=full` を要求に追加したときに有効になり、[Apache Lucene パーサー](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)に基づいています。
+### <a name="use-azure-portal-to-query-an-index"></a>Azure portal を使用してインデックスに対してクエリを実行する
+
+[検索エクスプローラー (ポータル)](search-explorer.md) は、Azure portal のクエリ インターフェイスで、基になる検索サービスでインデックスに対してクエリを実行します。 内部的には、ポータルは[ドキュメントの検索](/rest/api/searchservice/search-documents)要求を行いますが、オートコンプリート、提案、またはドキュメント検索を呼び出すことはできません。 
+
+プレビューを含む、任意のインデックスと REST API バージョンを選択できます。 クエリ文字列では、すべてのクエリ パラメーター (filter、select、searchFields など) をサポートする単純な構文または完全な構文を使用できます。 ポータルでは、インデックスを開くと、フィールド属性に簡単にアクセスできるように、横に並んだタブでインデックス JSON 定義と共に検索エクスプローラーを操作できます。 クエリのテスト中に、検索可能、並べ替え可能、フィルター可能、およびファセット可能の各フィールドを確認します。
+
+### <a name="use-a-rest-client"></a>REST クライアントを使用する
+
+Postman と Visual Studio Code (Azure Cognitive Search 用の拡張機能を備えているもの) はどちらも、クエリ クライアントとして機能できます。 どちらのツールを使用しても、検索サービスに接続し、[ドキュメントの検索 (REST)](/rest/api/searchservice/search-documents) 要求を送信できます。 インデックスに対するクエリの実行のための REST クライアントを示すチュートリアルと例が多数提供されています。 
+
+各クライアントの詳細については、最初にこれらのいずれかの記事を参照してください (どちらにもクエリの説明が含まれています)。
+
++ [REST と Postman を使用して検索インデックスを作成する](search-get-started-rest.md)
++ [Visual Studio Code と Azure Cognitive Search の使用を開始する](search-get-started-vs-code.md)
+
+各要求はスタンドアロンであるため、要求ごとにエンドポイント、インデックス名、および API バージョンを指定する必要があります。 その他のプロパティ、Content-Type、API キーは、要求ヘッダーで渡されます。 詳細については、[ドキュメントの検索 (REST)](/rest/api/searchservice/search-documents) に関する記事で、クエリ要求の作成について参照してください。
+
+### <a name="use-an-sdk"></a>SDK を使用する
+
+Cognitive Search の場合、一般公開される機能は Azure SDK によって実装されています。 そのため、いずれかの SDK を使用してインデックスに対するクエリを実行できます。 これらのすべてには、ドキュメントの検索を使用したインデックスの読み込みから、クエリ要求の作成に至るまでの、インデックスと対話するためのメソッドを持つ **SearchClient** が用意されています。
+
+| Azure SDK | Client | 例 |
+|-----------|--------|----------|
+| .NET | [SearchClient](/dotnet/api/azure.search.documents.searchclient) | [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) |
+| Java | [SearchClient](/java/api/com.azure.search.documents.searchclient) | [SearchForDynamicDocumentsExample.java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/SearchForDynamicDocumentsExample.java) |
+| JavaScript | [SearchClient](/javascript/api/@azure/search-documents/searchclient) | [readonlyQuery.js](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/search/search-documents/samples/javascript/src/readonlyQuery.js) |
+| Python | [SearchClient](/python/api/azure-search-documents/azure.search.documents.searchclient) | [sample_simple_query.py ](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_simple_query.py) |
+
+## <a name="choose-a-query-type-simple--full"></a>クエリの種類を選択する: simple | full
+
+クエリがフルテキスト検索の場合、検索語句やフレーズとして渡されたテキストを処理するためにクエリ パーサーが使用されます。Azure Cognitive Search には 2 つのクエリ パーサーが用意されています。 
+
++ 単純なパーサーは、[単純なクエリ構文](query-simple-syntax.md)を認識します。 このパーサーは、自由形式のテキスト クエリの速度と有効性により既定で選択されています。 この構文では、用語検索と語句検索に共通の検索演算子 (AND、OR、NOT) とプレフィックス (`*`) 検索をサポートしています (Seattle や Seaside に対する "sea*" など)。 一般的には、最初に単純なパーサーを試してから、アプリケーションの要件でより強力なクエリが必要になる場合に完全なパーサーに移行することをお勧めします。
+
++ [完全な Lucene クエリ構文](query-Lucene-syntax.md#bkmk_syntax)は、`queryType=full` を要求に追加したときに有効になり、[Apache Lucene パーサー](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)に基づいています。
 
 完全な構文と単純な構文は、両方が同じプレフィックスとブール演算をサポートしているという点で重複しますが、完全な構文のほうがより多くの演算子を用意しています。 完全では、ブール式の演算子や、あいまい検索、ワイルドカード検索、近接検索、正規表現などの高度なクエリ用の演算子が多数用意されています。
 
@@ -92,7 +98,7 @@ Azure SDK を使用している場合は、コードでクライアントを作�
 
 ## <a name="know-your-field-attributes"></a>フィールド属性を把握する
 
-以前に[クエリ要求の基本](search-query-overview.md)を確認していた場合は、クエリ要求のパラメーターは、インデックスでフィールドにどのような属性が付けられているかによって異なるということを覚えているかもしれません。 たとえば、クエリ、フィルター、または並べ替え順序で使用するには、フィールドを *検索可能*、*フィルター可能*、および *並べ替え可能* にする必要があります。 同様に、*取得可能* としてマークされたフィールドのみを結果に表示することができます。 要求で `search`、`filter`、および `orderby` パラメーターを指定し始めるときには、予期しない結果を避けるために、必ず属性を確認してください。
+以前に[クエリの種類と構成](search-query-overview.md)を確認した場合、クエリ要求のパラメーターは、インデックスでフィールドにどのような属性が付けられているかによって異なるということを覚えているかもしれません。 たとえば、クエリ、フィルター、または並べ替え順序で使用するには、フィールドを *検索可能*、*フィルター可能*、および *並べ替え可能* にする必要があります。 同様に、*取得可能* としてマークされたフィールドのみを結果に表示することができます。 要求で `search`、`filter`、および `orderby` パラメーターを指定し始めるときには、予期しない結果を避けるために、必ず属性を確認してください。
 
 [ホテルのサンプル インデックス](search-get-started-portal.md)の下にあるポータルのスクリーンショットでは、`"$orderby"` だけの句で使用できるのは、"LastRenovationDate" と "Rating" の最後の 2 つのフィールドだけです。
 
@@ -102,13 +108,13 @@ Azure SDK を使用している場合は、コードでクライアントを作�
 
 ## <a name="know-your-tokens"></a>トークンを把握する
 
-インデックス作成中、クエリ エンジンはアナライザーを使用して文字列のテキスト分析を実行し、クエリ時の照合の可能性を最大化します。 少なくとも文字列は小文字に変換されますが、レンマ化とストップ ワードの削除も行われる可能性があります。 通常、長い文字列や複合語は、空白、ハイフン、またはダッシュによって分割され、個別のトークンとしてインデックスが付けられます。 
+インデックス作成中、検索エンジンは文字列のテキスト分析を実行するためにアナライザーを使用し、クエリ時の照合の可能性を最大限に高めます。 少なくとも文字列は小文字に変換されますが、レンマ化とストップ ワードの削除も行われる可能性があります。 通常、長い文字列や複合語は、空白、ハイフン、またはダッシュによって分割され、個別のトークンとしてインデックスが付けられます。 
 
 ここでの要点は、インデックスに含まれていると思われることと、実際に含まれていることは異なる場合があるということです。 クエリで予想された結果が返されない場合は、[分析テキスト (REST API)](/rest/api/searchservice/test-analyzer) を通じてアナライザーによって作成されたトークンを検査できます。 トークン化とクエリへの影響の詳細については、「[部分的な用語検索と特殊文字を含むパターン](search-query-partial-matching.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、クエリ要求の作成方法の理解が深まったので、次のクイックスタートで実際に体験してみてください。
+これで、クエリ要求のしくみについての理解が深まったので、次のクイックスタートで実際に体験してみてください。
 
 + [Search エクスプローラー](search-explorer.md)
 + [REST におけるクエリの実行方法](search-get-started-rest.md)

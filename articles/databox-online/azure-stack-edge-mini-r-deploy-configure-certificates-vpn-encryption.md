@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/21/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Mini R  so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1e81ab61b04f9cca6aff57de1736eac25a871c97
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c3a09242b895234c96c64d9e23449d980e47e387
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465069"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546739"
 ---
 # <a name="tutorial-configure-certificates-vpn-encryption-for-your-azure-stack-edge-mini-r"></a>チュートリアル:Azure Stack Edge Mini R 用の証明書、VPN、暗号化を構成する
 
@@ -38,10 +38,10 @@ ms.locfileid: "96465069"
 * [Azure Stack Edge Mini R の設置](azure-stack-edge-mini-r-deploy-install.md)に関する記事の説明に従って、物理デバイスが設置されていること。
 
 * 独自の証明書を持ち込む予定の場合:
-    - 署名チェーン証明書を含む適切な形式で証明書を準備しておく必要があります。 証明書の詳細については、「[証明書の管理](azure-stack-edge-j-series-manage-certificates.md)」を参照してください。
+    - 署名チェーン証明書を含む適切な形式で証明書を準備しておく必要があります。 証明書の詳細については、「[証明書の管理](azure-stack-edge-gpu-manage-certificates.md)」を参照してください。
 
     - ご利用のデバイスが Azure Government、Azure Government Secret、または Azure Government のトップ シークレット クラウドに配置されていて、Azure パブリック クラウドに配置されていない場合は、デバイスをアクティブにする前に署名チェーン証明書が必要になります。 
-    証明書の詳細については、[証明書の管理](azure-stack-edge-j-series-manage-certificates.md)に関するページを参照してください。
+    証明書の詳細については、[証明書の管理](azure-stack-edge-gpu-manage-certificates.md)に関するページを参照してください。
 
 
 ## <a name="configure-certificates-for-device"></a>デバイスの証明書を構成する

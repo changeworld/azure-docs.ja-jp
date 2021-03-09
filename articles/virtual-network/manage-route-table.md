@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: a8c38f4e84a6a653c3a4d887c82340409fc363af
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 642a9a9f798492d85ee2a9784a1fe5ad4f854d58
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220594"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574125"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 
@@ -59,7 +59,7 @@ Azure の場所とサブスクリプションごとに作成できるルート �
 
 ### <a name="create-route-table---commands"></a>ルート テーブルの作成 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create) |
 | PowerShell | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) |
@@ -70,7 +70,7 @@ Azure の場所とサブスクリプションごとに作成できるルート �
 
 ### <a name="view-route-table---commands"></a>ルート テーブルの表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table list](/cli/azure/network/route-table#az-network-route-table-list) |
 | PowerShell | [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
@@ -85,7 +85,7 @@ Azure の場所とサブスクリプションごとに作成できるルート �
 
 Azure の一般的な設定の詳細については、次の情報を参照してください。
 
-- [アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)
+- [アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)
 - [アクセス制御 (IAM)](../role-based-access-control/overview.md)
 - [タグ](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Locks](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -93,7 +93,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 ### <a name="view-details-of-route-table---commands"></a>ルート テーブルの詳細の表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table show](/cli/azure/network/route-table#az-network-route-table-show) |
 | PowerShell | [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable) |
@@ -108,7 +108,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 ### <a name="change-a-route-table---commands"></a>ルート テーブルの変更 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table update](/cli/azure/network/route-table#az-network-route-table-update) |
 | PowerShell | [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) |
@@ -133,7 +133,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 ### <a name="associate-a-route-table---commands"></a>ルート テーブルの関連付け - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
@@ -156,7 +156,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 ### <a name="dissociate-a-route-table---commands"></a>ルート テーブルの関連付けの解除 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) |
 | PowerShell | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) |
@@ -173,7 +173,7 @@ Azure の一般的な設定の詳細については、次の情報を参照し�
 
 ### <a name="delete-a-route-table---commands"></a>ルート テーブルの削除 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table delete](/cli/azure/network/route-table#az-network-route-table-delete) |
 | PowerShell | [Remove-AzRouteTable](/powershell/module/az.network/remove-azroutetable) |
@@ -200,7 +200,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="create-a-route---commands"></a>ルートの作成 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create) |
 | PowerShell | [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig) |
@@ -217,7 +217,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="view-routes---commands"></a>ルートの表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route list](/cli/azure/network/route-table/route#az-network-route-table-route-list) |
 | PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
@@ -234,7 +234,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="view-details-of-a-route---commands"></a>ルートの詳細の表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route show](/cli/azure/network/route-table/route#az-network-route-table-route-show) |
 | PowerShell | [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig) |
@@ -253,7 +253,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="change-a-route---commands"></a>ルートの変更 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route update](/cli/azure/network/route-table/route#az-network-route-table-route-update) |
 | PowerShell | [Set-AzRouteConfig](/powershell/module/az.network/set-azrouteconfig) |
@@ -272,7 +272,7 @@ Azure の場所およびサブスクリプションあたりの作成可能な�
 
 ### <a name="delete-a-route---commands"></a>ルートの削除 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network route-table route delete](/cli/azure/network/route-table/route#az-network-route-table-route-delete) |
 | PowerShell | [Remove-AzRouteConfig](/powershell/module/az.network/remove-azrouteconfig) |
@@ -295,7 +295,7 @@ VM に接続されている各ネットワーク インターフェイスの有�
 
 ### <a name="view-effective-routes---commands"></a>有効なルートの表示 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table) |
 | PowerShell | [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable) |
@@ -324,7 +324,7 @@ VM に接続されている各ネットワーク インターフェイスの有�
 
 ### <a name="validate-routing-between-two-endpoints---commands"></a>2 つのエンドポイント間のルーティングの検証 - コマンド
 
-| ツール | command |
+| ツール | コマンド |
 | ---- | ------- |
 | Azure CLI | [az network watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) |
 | PowerShell | [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop) |

@@ -10,12 +10,12 @@ metadata:
   author: JBCook
   ms.author: jencook
   ms.date: 09/22/2020
-  ms.openlocfilehash: 0d3a800b376edfe7f5c9380fd5b198d4a46362e6
-  ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+  ms.openlocfilehash: d41addbcf1c7e5bf673ba0082e5eaa216b5f946d
+  ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/16/2020
-  ms.locfileid: "92124345"
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "100652634"
 landingContent:
 - title: Azure のコンフィデンシャル コンピューティングについて
   linkLists:
@@ -67,7 +67,7 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: Azure Kubernetes Service (AKS) のコンフィデンシャル コンピューティング ノード (プレビュー)
+    - text: AKS (Azure Kubernetes Service) のコンフィデンシャル コンピューティング ノード
       url: confidential-nodes-aks-overview.md
   - linkListType: concept
     links:
@@ -86,11 +86,11 @@ landingContent:
     - text: 機密コンテナーのサンプル (SGX 上の未変更のコンテナー)
       url: https://github.com/Azure-Samples/confidential-container-samples
     - text: エンクレーブ対応コンテナーのサンプル
-      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+      url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md
   - linkListType: reference
     links:
     - text: AKS 上の機密ノードに関する FAQ
-      url: confidential-nodes-aks-overview.md
+      url: confidential-nodes-aks-faq.md
     - text: Azure Kubernetes Service (AKS) について
       url: ../aks/intro-kubernetes.md
 - title: 機密クラウド サービス
@@ -108,7 +108,7 @@ landingContent:
     - text: AKS での機密医療のデモ
       url: https://github.com/Azure-Samples/confidential-container-samples
     - text: AKS 上で Open Enclave を使用して構成証明された相互 TLS
-      url: https://github.com/Azure-Samples/enclave-aware-container-samples
+      url: https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/confidential-computing/enclave-aware-containers.md
   - linkListType: reference
     links:
     - text: Open Enclave (OE) SDK

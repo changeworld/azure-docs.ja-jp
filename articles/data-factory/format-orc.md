@@ -2,25 +2,22 @@
 title: Azure Data Factory での ORC 形式
 description: このトピックでは、Azure Data Factory で ORC 形式を処理する方法について説明します。
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 4a25a1ec5f2d650501a7c5da8bb1c60f57ad549d
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 8973692b90cc9d6caa852616bf2962371d25abfa
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945789"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100386460"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>Azure Data Factory での ORC 形式
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-**ORC ファイルを解析する場合や、ORC 形式にデータを書き込む場合**は、この記事に従ってください。 
+**ORC ファイルを解析する場合や、ORC 形式にデータを書き込む場合** は、この記事に従ってください。 
 
 ORC 形式は、以下のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。
 
@@ -82,7 +79,7 @@ Azure Blob Storage 上の ORC データセットの例を次に示します。
 | プロパティ      | 説明                                                  | 必須 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | コピー アクティビティのシンクの type プロパティには **OrcSink** を設定する必要があります。 | はい      |
-| formatSettings | プロパティのグループ。 後の **ORC の書き込み設定**に関する表を参照してください。 |    いいえ      |
+| formatSettings | プロパティのグループ。 後の **ORC の書き込み設定** に関する表を参照してください。 |    いいえ      |
 | storeSettings | データ ストアにデータを書き込む方法を指定するプロパティのグループ。 ファイル ベースの各コネクタには、`storeSettings` に、固有のサポートされる書き込み設定があります。 **詳細については、コネクタの記事でコピー アクティビティのプロパティに関するセクションを参照してください**。 | いいえ       |
 
 `formatSettings` でサポートされている **ORC の書き込み設定**:

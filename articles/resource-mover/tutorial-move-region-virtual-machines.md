@@ -5,22 +5,20 @@ manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: tutorial
-ms.date: 09/09/2020
+ms.date: 02/04/2021
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6f21db00ecc9ff2668698f53a4d20f5bae525721
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: d1ac17c93bdf95e36f68af678d2ee38b896ef1e7
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520443"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979744"
 ---
 # <a name="tutorial-move-azure-vms-across-regions"></a>チュートリアル:リージョン間で Azure VM を移動する
 
 この記事では、[Azure Resource Mover](overview.md) を使用して、Azure VM、および関連するネットワークまたはストレージ リソースを別の Azure リージョンに移動する方法について学習します。
-
-> [!NOTE]
-> Azure Resource Mover は現在、パブリックプレビュー段階にあります。
+.
 
 
 このチュートリアルでは、以下の内容を学習します。
@@ -40,26 +38,21 @@ ms.locfileid: "95520443"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を作成してください。 次に、[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="prerequisites"></a>前提条件
-
--  移動するリソースを含むサブスクリプションに "*所有者*" アクセス権があることを確認します。
-    - Azure サブスクリプションの特定のソースと宛先のペアに対してリソースを初めて追加すると、Resource Mover では、サブスクリプションによって信頼されている[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (旧称: Managed Service ID (MSI)) が作成されます。
-    - ID を作成し、必要なロール (ソース サブスクリプションの共同作成者またはユーザー アクセス管理者) に割り当てるには、リソースを追加するのに使用するアカウントに、サブスクリプションに対する "*所有者*" 権限が必要です。 Azure ロールの詳細については、[こちらを参照してください](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。
-- サブスクリプションには、ターゲット リージョンで移動するリソースを作成するのに十分なクォータが必要です。 クォータがない場合は、[追加の制限を要求](../azure-resource-manager/management/azure-subscription-service-limits.md)します。
-- VM の移動先となるターゲット リージョンに関連付する料金と課金を確認します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用すると便利です。
+**要件** | **説明**
+--- | ---
+**サブスクリプションのアクセス許可** | 移動するリソースを含むサブスクリプションに "*所有者*" アクセス権があることを確認します<br/><br/> **所有者アクセスが必要な理由:** Azure サブスクリプションの特定のソースと宛先のペアに対してリソースを初めて追加すると、Resource Mover では、サブスクリプションによって信頼されている[システム割り当てマネージド ID](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types) (旧称: Managed Service ID (MSI)) が作成されます。 ID を作成し、必要なロール (ソース サブスクリプションの共同作成者またはユーザー アクセス管理者) に割り当てるには、リソースを追加するのに使用するアカウントに、サブスクリプションに対する "*所有者*" 権限が必要です。 Azure ロールの詳細については、[こちらを参照してください](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles)。
+**VM のサポート** |  移動する VM がサポートされていることを確認します。<br/><br/> - サポートされている Windows VM を[確認](support-matrix-move-region-azure-vm.md#windows-vm-support)します。<br/><br/> - サポートされている Linux VM とカーネルのバージョンを[確認](support-matrix-move-region-azure-vm.md#linux-vm-support)します。<br/><br/> - サポートされている[コンピューティング](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings)、[ストレージ](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)、[ネットワーク](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings)の設定を確認します。
+**宛先サブスクリプション** | 宛先リージョンのサブスクリプションには、ターゲット リージョンで移動するリソースを作成するのに十分なクォータが必要です。 クォータがない場合は、[追加の制限を要求](../azure-resource-manager/management/azure-subscription-service-limits.md)します。
+**宛先リージョンの料金** | VM の移動先となるターゲット リージョンに関連付する料金と課金を確認します。 [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用すると便利です。
     
 
-## <a name="check-vm-requirements"></a>VM の要件を確認する
+## <a name="prepare-vms"></a>VM を準備する
 
-1. 移動する VM がサポートされていることを確認します。
-
-    - サポートされている Windows VM を[確認](support-matrix-move-region-azure-vm.md#windows-vm-support)します。
-    - サポートされている Linux VM とカーネルのバージョンを[確認](support-matrix-move-region-azure-vm.md#linux-vm-support)します。
-    - サポートされている[コンピューティング](support-matrix-move-region-azure-vm.md#supported-vm-compute-settings)、[ストレージ](support-matrix-move-region-azure-vm.md#supported-vm-storage-settings)、[ネットワーク](support-matrix-move-region-azure-vm.md#supported-vm-networking-settings)の設定を確認します。
-2. 移動する VM が有効になっていることを確認します。
-3. VM に最新の信頼されたルート証明書と、更新された証明書失効リスト (CRL) があることを確認します。 これを行うには、次の手順を実行します。
+1. VM が要件を満たしていることを確認したら、移動する VM をオンにします。 宛先リージョンで利用するすべての VM ディスクを VM にアタッチし、初期化する必要があります。
+1. VM に最新の信頼されたルート証明書と、更新された証明書失効リスト (CRL) があることを確認します。 これを行うには、次の手順を実行します。
     - Windows VM で、最新の Windows 更新プログラムをインストールします。
     - Linux VM では、ディストリビューター ガイダンスに従って、マシンに最新の証明書と CRL が存在するようにします。 
-4. VM からの送信接続を許可します。
+1. VM からの送信接続を許可します。
     - 送信接続を制御するために URL ベースのファイアウォール プロキシを使用する場合は、これらの [URL](support-matrix-move-region-azure-vm.md#url-access) へのアクセスを許可します
     - ネットワーク セキュリティ グループ (NSG) ルールを使用して送信接続を制御する場合は、これらの[サービス タグ ルール](support-matrix-move-region-azure-vm.md#nsg-rules)を作成します。
 
@@ -85,12 +78,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![ソースと宛先のリージョンを選択するページ](./media/tutorial-move-region-virtual-machines/source-target.png)
 
 6. **[移動するリソース]** で、 **[リソースの選択]** をクリックします。
-7. **[リソースの選択]** で、VM を選択します。 [移動がサポートされているリソース](#check-vm-requirements)のみを追加できます。 次に、 **[Done]** をクリックします。
+7. **[リソースの選択]** で、VM を選択します。 [移動がサポートされているリソース](#prepare-vms)のみを追加できます。 次に、 **[Done]** をクリックします。
 
     ![移動する VM を選択するページ](./media/tutorial-move-region-virtual-machines/select-vm.png)
 
 8.  **[移動するリソース]** で、 **[次へ]** をクリックします。
-9. **[確認 + 追加]** で、ソースと宛先の設定を確認します。 
+9. **[確認]** で、ソースと宛先の設定を確認します。 
 
     ![設定を確認し、移動を続行するためのページ](./media/tutorial-move-region-virtual-machines/review.png)
 10. **[続行]** をクリックして、リソースの追加を開始します。
@@ -99,25 +92,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!NOTE]
 > - 追加されたリソースは、"*準備が保留中*" の状態にあります。
+> - VM のリソース グループが自動的に追加されます。
 > - 移動コレクションからリソースを削除する場合、その方法は移動プロセスのどの段階であるかによって異なります。 [詳細については、こちらを参照してください](remove-move-resources.md)。
 
 ## <a name="resolve-dependencies"></a>依存関係を解決する
 
 1. リソースの **[問題]** 列に *[依存関係の検証]* メッセージが表示されている場合は、 **[依存関係の検証]** ボタンをクリックします。 検証プロセスが開始されます。
 2. 依存関係が見つかった場合は、 **[依存関係の追加]** をクリックします。 
-3. **[依存関係の追加]** で、依存リソース、 **[依存関係の追加]** の順に選択します。 通知で進行状況を監視します。
+3. **[依存関係の追加]** では、既定の **[Show all dependencies]\(すべての依存関係を表示する\)** オプションのままにしてください。
+
+    - [Show all dependencies]\(すべての依存関係を表示する\) を選択すると、リソースの直接の依存関係と間接の依存関係がすべて反復処理されます。 たとえば、VM について、NIC、仮想ネットワーク、ネットワーク セキュリティ グループ (NSG) などが表示されます。
+    - [Show first level dependencies only]\(第 1 レベルの依存関係のみ表示する\) を選択すると、直接の依存関係のみが表示されます。 たとえば、VM について、NIC は表示されますが、仮想ネットワークは表示されません。
+
+
+4. 追加する依存リソースを選択し、 **[依存関係の追加]** を選択します。 通知で進行状況を監視します。
 
     ![依存関係を追加する](./media/tutorial-move-region-virtual-machines/add-dependencies.png)
 
-4. 必要に応じて依存関係をさらに追加し、依存関係をもう一度検証します。 
+4. もう一度、依存関係を検証します。 
     ![依存関係をさらに追加するためのページ](./media/tutorial-move-region-virtual-machines/add-additional-dependencies.png)
 
-4. **[Across regions]\(リージョン間\)** ページで、リソースが現在、"*準備が保留中*" の状態になっており、問題がないことを確認します。
 
-    !["準備が保留中" の状態のリソースを示すページ](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
-
-> [!NOTE]
-> 移動を開始する前にターゲット設定を編集する場合は、リソースの **[Destination configuration]\(宛先の構成\)** 列にあるリンクを選択し、その設定を編集します。 ターゲット VM の設定を編集する場合、ターゲット VM のサイズをソース VM のサイズより小さくすることはできません。  
 
 ## <a name="move-the-source-resource-group"></a>ソース リソース グループを移動する 
 
@@ -158,9 +153,17 @@ VM の準備と移動を行う前に、VM リソース グループがターゲ�
 
 ## <a name="prepare-resources-to-move"></a>移動するリソースを準備する
 
+ソース リソース グループを移動したら、"*準備が保留中*" の状態になっている他のリソースを移動するための準備を行うことができます。
+
+1. **[Across regions]\(リージョン間\)** で、リソースが現在、"*準備が保留中*" の状態になっており、問題がないことを確認します。 そのようになっていない場合は、再度検証を実行し、未解決の問題があれば解決します。
+
+    !["準備が保留中" の状態のリソースを示すページ](./media/tutorial-move-region-virtual-machines/prepare-pending.png)
+
+2. 移動を開始する前にターゲット設定を編集する場合は、リソースの **[Destination configuration]\(宛先の構成\)** 列にあるリンクを選択し、その設定を編集します。 ターゲット VM の設定を編集する場合、ターゲット VM のサイズをソース VM のサイズより小さくすることはできません。  
+
 これでソース リソース グループが移動されたので、他のリソースを移動する準備を行うことができます。
 
-1. **[Across regions]\(リージョン間\)** で、準備するリソースを選択します。 
+3. 準備するリソースを選択します。 
 
     ![その他のリソースの準備を選択するためのページ](./media/tutorial-move-region-virtual-machines/prepare-other.png)
 
@@ -238,12 +241,16 @@ VM の準備と移動を行う前に、VM リソース グループがターゲ�
 - Mobility Service は VM から自動的にアンインストールされません。 手動でアンインストールします。あるいは、サーバーをもう一度移動する予定であれば、そのままにしておきます。
 - 移動後、Azure ロールベースのアクセス制御 (Azure RBAC) 規則を変更します。
 
+
 ## <a name="delete-source-resources-after-commit"></a>コミット後にソース リソースを削除する
 
 移動後に、必要に応じて、ソース リージョンのリソースを削除できます。 
 
-1. **[Across Regions]\(リージョン間\)** で、削除する各ソース リソースの名前をクリックします。
-2. 各リソースのプロパティ ページで、 **[削除]** を選択します。
+> [!NOTE]
+> いくつかのリソース (キー コンテナー、SQL Server サーバーなど) はポータルからは削除できません。リソースのプロパティ ページから削除する必要があります。
+
+1. **[Across Regions]\(リージョン間\)** で、削除するソース リソースの名前をクリックします。
+2. **[ソースの削除]** を選択します。
 
 ## <a name="delete-additional-resources-created-for-move"></a>移動用に作成されたその他のリソースを削除する
 

@@ -1,20 +1,20 @@
 ---
 title: チュートリアル - リンク済みテンプレートをデプロイする
 description: リンク済みテンプレートをデプロイする方法について説明します
-ms.date: 01/12/2021
+ms.date: 02/12/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 4ec49fad35e958f010461abf2ee0e3dab8077d55
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 8f2bbd327adca6eef62d5e79f422f61d460ea7a5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134196"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589274"
 ---
 # <a name="tutorial-deploy-a-linked-template"></a>チュートリアル:リンク済みテンプレートをデプロイする
 
-[前のチュートリアル](./deployment-tutorial-local-template.md)では、ローカル コンピューターに保存されたテンプレートをデプロイする方法について説明しました。 複雑なソリューションをデプロイするする場合は、テンプレートを複数に分割し、メイン テンプレートを使用してそれらをデプロイすることができます。 このチュートリアルでは、リンク済みテンプレートへの参照を含んだメイン テンプレートをデプロイする方法について説明します。 メイン テンプレートがデプロイされると、そこからリンク済みテンプレートのデプロイがトリガーされます。 リンク済みテンプレートを保存し、SAS トークンを使用してそのセキュリティを確保する方法についても説明します。 所要時間は約 **12 分** です。
+[前のチュートリアル](./deployment-tutorial-local-template.md)では、ローカル コンピューターに保存されたテンプレートをデプロイする方法について説明しました。 複雑なソリューションをデプロイするする場合は、テンプレートを複数に分割し、メイン テンプレートを使用してそれらをデプロイすることができます。 このチュートリアルでは、リンク済みテンプレートへの参照を含んだメイン テンプレートをデプロイする方法について説明します。 メイン テンプレートがデプロイされると、そこからリンク済みテンプレートのデプロイがトリガーされます。 テンプレートを保存し、SAS トークンを使用してそのセキュリティを確保する方法についても説明します。 所要時間は約 **12 分** です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,15 +32,18 @@ ms.locfileid: "98134196"
 
 :::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/linkedStorageAccount.json":::
 
-次のテンプレートがメイン テンプレートです。 強調表示された `Microsoft.Resources/deployments` オブジェクトは、リンク済みテンプレートの呼び出し方法を示しています。 リンク済みテンプレートはローカル ファイルに保存できず、また、ローカル ネットワーク上でしか利用できないファイルに保存することもできません。 HTTP または HTTPS を含む URI 値のみを指定できます。 Resource Manager は、テンプレートにアクセスできる必要があります。 1 つと選択肢として、ストレージ アカウントにリンク済みテンプレートを配置し、その項目の URI を使用できます。 URI は、パラメーターを使用してテンプレートに渡されます。 強調表示されたパラメーターの定義を参照してください。
+次のテンプレートがメイン テンプレートです。 強調表示された `Microsoft.Resources/deployments` オブジェクトは、リンク済みテンプレートの呼び出し方法を示しています。 リンク済みテンプレートはローカル ファイルに保存できず、また、ローカル ネットワーク上でしか利用できないファイルに保存することもできません。 HTTP または HTTPS のいずれかを含むリンク済みテンプレートの URI 値を指定するか、_relativePath_ プロパティを使用して、親テンプレートに対して相対的な場所にリモートのリンク済みテンプレートを配置することができます。 1 つの選択肢として、メイン テンプレートとリンク済みテンプレートの両方を同じストレージ アカウントに配置する方法があります。
 
-:::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="27-32,40-58":::
-
-メイン テンプレートのコピーに _.json_ という拡張子を付けてローカル コンピューターに保存します (例: _azuredeploy.json_)。 リンク済みテンプレートのコピーを保存する必要はありません。 リンク済みテンプレートは GitHub リポジトリからストレージ アカウントにコピーされます。
+:::code language="json" source="~/resourcemanager-templates/get-started-deployment/linked-template/azuredeploy.json" highlight="34-52":::
 
 ## <a name="store-the-linked-template"></a>リンク済みテンプレートを保存する
 
-以下の PowerShell スクリプトは、ストレージ アカウントとコンテナーを作成し、そのコンテナーに GitHub リポジトリからリンク済みテンプレートをコピーするものです。 [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json) には、リンク済みテンプレートのコピーが格納されています。
+メイン テンプレートとリンク済みテンプレートは、どちらも GitHub に保存されてい。
+
+次の PowerShell スクリプトにより、ストレージ アカウントとコンテナーが作成され、GitHub リポジトリからそのコンテナーに 2 つのテンプレートがコピーされます。 2 つのテンプレートは以下のとおりです。
+
+- メイン テンプレート: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json
+- リンク済みテンプレート: https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json
 
 **[使ってみる]** を選択して Cloud Shell を開き、 **[コピー]** を選択して PowerShell スクリプトをコピーしたら、シェル ペインを右クリックしてスクリプトを貼り付けます。
 
@@ -55,11 +58,15 @@ $resourceGroupName = $projectName + "rg"
 $storageAccountName = $projectName + "store"
 $containerName = "templates" # The name of the Blob container to be created.
 
-$linkedTemplateURL = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json" # A completed linked template used in this tutorial.
-$fileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
+$mainTemplateURL = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/azuredeploy.json"
+$linkedTemplateURL = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-deployment/linked-template/linkedStorageAccount.json"
 
-# Download the template
-Invoke-WebRequest -Uri $linkedTemplateURL -OutFile "$home/$fileName"
+$mainFileName = "azuredeploy.json" # A file name used for downloading and uploading the main template.Add-PSSnapin
+$linkedFileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
+
+# Download the templates
+Invoke-WebRequest -Uri $mainTemplateURL -OutFile "$home/$mainFileName"
+Invoke-WebRequest -Uri $linkedTemplateURL -OutFile "$home/$linkedFileName"
 
 # Create a resource group
 New-AzResourceGroup -Name $resourceGroupName -Location $location
@@ -76,11 +83,17 @@ $context = $storageAccount.Context
 # Create a container
 New-AzStorageContainer -Name $containerName -Context $context -Permission Container
 
-# Upload the template
+# Upload the templates
 Set-AzStorageBlobContent `
     -Container $containerName `
-    -File "$home/$fileName" `
-    -Blob $fileName `
+    -File "$home/$mainFileName" `
+    -Blob $mainFileName `
+    -Context $context
+
+Set-AzStorageBlobContent `
+    -Container $containerName `
+    -File "$home/$linkedFileName" `
+    -Blob $linkedFileName `
     -Context $context
 
 Write-Host "Press [ENTER] to continue ..."
@@ -88,7 +101,7 @@ Write-Host "Press [ENTER] to continue ..."
 
 ## <a name="deploy-template"></a>テンプレートのデプロイ
 
-ストレージ アカウントにプライベートのテンプレートをデプロイするため、SAS トークンを生成してテンプレートの URI に含めます。 デプロイの完了に必要な時間を確保できるように有効期限を設定します。 テンプレートを含む BLOB は、アカウントの所有者のみがアクセスできます。 ただし、BLOB の SAS トークンを作成すると、その URI を持つ誰もが BLOB にアクセスできるようになります。 もし別のユーザーが URI を傍受した場合、そのユーザーは、テンプレートにアクセスできます。 SAS トークンはお使いのテンプレートへのアクセスを制限する有効な方法ですが、パスワードのような機密データをテンプレートに直接含めないでください。
+ストレージ アカウントにテンプレートをデプロイするには、SAS トークンを生成し、これを _-QueryString_ パラメーターに指定します。 デプロイの完了に必要な時間を確保できるように有効期限を設定します。 テンプレートを含む BLOB は、アカウントの所有者のみがアクセスできます。 ただし、BLOB の SAS トークンを作成すると、その SAS トークンを持つ任意のユーザーが BLOB にアクセスできるようになります。 別のユーザーが URI と SAS トークンを傍受した場合、そのユーザーはテンプレートにアクセスできます。 SAS トークンはお使いのテンプレートへのアクセスを制限する有効な方法ですが、パスワードのような機密データをテンプレートに直接含めないでください。
 
 まだリソース グループを作成していない場合は、「[リソース グループの作成](./deployment-tutorial-local-template.md#create-resource-group)」を参照してください。
 
@@ -97,69 +110,66 @@ Write-Host "Press [ENTER] to continue ..."
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-```azurepowershell
+```azurepowershell-interactive
 
-$projectName = Read-Host -Prompt "Enter a project name:"   # This name is used to generate names for Azure resources, such as storage account name.
-$templateFile = Read-Host -Prompt "Enter the main template file and path"
+$projectName = Read-Host -Prompt "Enter the same project name:"   # This name is used to generate names for Azure resources, such as storage account name.
 
 $resourceGroupName="${projectName}rg"
 $storageAccountName="${projectName}store"
 $containerName = "templates"
-$fileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
 
 $key = (Get-AzStorageAccountKey -ResourceGroupName $resourceGroupName -Name $storageAccountName).Value[0]
 $context = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $key
 
-# Generate a SAS token
-$linkedTemplateUri = New-AzStorageBlobSASToken `
+$mainTemplateUri = $context.BlobEndPoint + "$containerName/azuredeploy.json"
+$sasToken = New-AzStorageContainerSASToken `
     -Context $context `
     -Container $containerName `
-    -Blob $fileName `
     -Permission r `
-    -ExpiryTime (Get-Date).AddHours(2.0) `
-    -FullUri
+    -ExpiryTime (Get-Date).AddHours(2.0)
+$newSas = $sasToken.substring(1)
 
-# Deploy the template
+
 New-AzResourceGroupDeployment `
   -Name DeployLinkedTemplate `
   -ResourceGroupName $resourceGroupName `
-  -TemplateFile $templateFile `
+  -TemplateUri $mainTemplateUri `
+  -QueryString $newSas `
   -projectName $projectName `
-  -linkedTemplateUri $linkedTemplateUri `
   -verbose
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azurecli
+```azurecli-interactive
+echo "Enter a project name that is used to generate resource names:" &&
+read projectName &&
 
-echo "Enter a project name that is used to generate resource names:"
-read projectName
-echo "Enter the main template file:"
-read templateFile
+resourceGroupName="${projectName}rg" &&
+storageAccountName="${projectName}store" &&
+containerName="templates" &&
 
-resourceGroupName="${projectName}rg"
-storageAccountName="${projectName}store"
-containerName="templates"
-fileName="linkedStorageAccount.json"
+key=$(az storage account keys list -g $resourceGroupName -n $storageAccountName --query [0].value -o tsv) &&
 
-key=$(az storage account keys list -g $resourceGroupName -n $storageAccountName --query [0].value -o tsv)
-
-linkedTemplateUri=$(az storage blob generate-sas \
+sasToken=$(az storage container generate-sas \
   --account-name $storageAccountName \
   --account-key $key \
-  --container-name $containerName \
-  --name $fileName \
+  --name $containerName \
   --permissions r \
-  --expiry `date -u -d "120 minutes" '+%Y-%m-%dT%H:%MZ'` \
-  --full-uri)
+  --expiry `date -u -d "120 minutes" '+%Y-%m-%dT%H:%MZ'`) &&
+sasToken=$(echo $sasToken | sed 's/"//g')&&
 
-linkedTemplateUri=$(echo $linkedTemplateUri | sed 's/"//g')
+blobUri=$(az storage account show -n $storageAccountName -g $resourceGroupName -o tsv --query primaryEndpoints.blob) &&
+templateUri="${blobUri}${containerName}/azuredeploy.json" &&
+
 az deployment group create \
   --name DeployLinkedTemplate \
   --resource-group $resourceGroupName \
-  --template-file $templateFile \
-  --parameters projectName=$projectName linkedTemplateUri=$linkedTemplateUri \
+  --template-uri $templateUri \
+  --parameters projectName=$projectName \
+  --query-string $sasToken \
   --verbose
 ```
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: e8420f68fba40ddb61d06770f9f5bc2fafe5616a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ceed171b0516e293ffe58bca0225d3d3dfdb414
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560527"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094656"
 ---
 # <a name="managing-azure-enterprise-agreement-roles"></a>Azure におけるマイクロソフト エンタープライズ契約のロールの管理
 
@@ -197,12 +197,12 @@ Azure portal に表示される価格は管理者ロールによって異なる�
 |アカウント所有者または部門管理者|✘ 無効 |なし|価格設定なし|
 |なし|適用なし |所有者|小売価格|
 
-Enterprise portal でエンタープライズ管理者ロールと請求金額の表示ポリシーを設定します。 Azure ロールは Azure portal で更新できます。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+Enterprise portal でエンタープライズ管理者ロールと請求金額の表示ポリシーを設定します。 Azure ロールは Azure portal で更新できます。 詳細については、[Azure portal を使用して Azure ロールを割り当てる方法](../../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
 
 
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure の課金情報へのアクセスの管理](manage-billing-access.md)
-- [RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)
+- [Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)
 - [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)

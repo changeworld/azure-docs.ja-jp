@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: f8d366554634444db16eb3292f100540f3808e8a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 488de7114d80e6a88cc619ba3b42f867c985ea11
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992870"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833917"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>クイック スタート:IoT Central アプリケーションにシミュレートされたデバイスを追加する
 
@@ -165,6 +165,10 @@ IoT Central アプリケーションにデバイス モデルを追加する場�
 1. 一覧からシミュレートされたデバイスを選択します。 次に、 **[適用]** を選択します。 これで、デバイス テンプレート ビューの作成エクスペリエンスで、同じシミュレートされたデバイスを確認できるようになりました。 このビューは、グラフやその他の視覚化に役立ちます。
 
     :::image type="content" source="media/quick-create-simulated-device/configure-preview.png" alt-text="構成済みのプレビュー デバイスを示すスクリーンショット":::
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

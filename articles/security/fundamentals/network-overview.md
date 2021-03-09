@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 17d48b6093d88a926569d5cfe84475fc0c306a0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4fb4981925593a22ed65df9d3ed0da5f45062f23
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874385"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578938"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
@@ -395,7 +395,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 ネットワーク レベルにおけるログ記録は、あらゆるネットワーク セキュリティ シナリオの主要な機能です。 Azure では、NSG に関して入手した情報をログに記録して、ネットワーク レベルのログ情報を取得できます。 NSG ログ記録によって、次のログから情報を取得します。
 
-* [アクティビティ ログ](../../azure-monitor/platform/platform-logs-overview.md)。 これらのログは、Azure サブスクリプションに送信されたすべての操作を表示するときに使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。 以前は監査ログや操作ログと呼ばれていました。
+* [アクティビティ ログ](../../azure-monitor/essentials/platform-logs-overview.md)。 これらのログは、Azure サブスクリプションに送信されたすべての操作を表示するときに使用します。 このログは既定で有効になっており、Azure ポータルで使用できます。 以前は監査ログや操作ログと呼ばれていました。
 * イベント ログ。 これらのログは、適用された NSG ルールについての情報を提供します。
 * カウンター ログ。 このログを使用すると、トラフィックを拒否または許可するために各 NSG ルールが適用された回数が分かります。
 

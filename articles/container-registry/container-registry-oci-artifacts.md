@@ -4,14 +4,14 @@ description: Azure のプライベート コンテナー レジストリを使�
 author: SteveLasker
 manager: gwallace
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 02/03/2021
 ms.author: stevelas
-ms.openlocfilehash: 7c95766cc12b281521fa52ab113fadd4321d0815
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a73f295999888dab20531ffdd0fb042790a5357
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89485005"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988229"
 ---
 # <a name="push-and-pull-an-oci-artifact-using-an-azure-container-registry"></a>Azure コンテナー レジストリを使用して OCI 成果物をプッシュおよびプルする
 
@@ -46,7 +46,7 @@ Stdin からパスワードを読み取るには、`--password-stdin` を使用�
 
 コンテナー レジストリに対して成果物のプッシュとプルを行うために、ご自分の ID で Azure CLI に[サインイン](/cli/azure/authenticate-azure-cli)します。
 
-次に、Acure CLI コマンド [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) を使用して、レジストリにアクセスします。 たとえば、"*myregistry*" という名前のレジストリに対して認証を行うには、次のように入力します。
+次に、Acure CLI コマンド [az acr login](/cli/azure/acr#az-acr-login) を使用して、レジストリにアクセスします。 たとえば、"*myregistry*" という名前のレジストリに対して認証を行うには、次のように入力します。
 
 ```azurecli
 az login
@@ -61,12 +61,12 @@ az acr login --name myregistry
 サンプル テキストを使用して、ローカル作業用の作業ディレクトリにテキスト ファイルを作成します。 たとえば、Bash シェルで次のように入力します。
 
 ```bash
-echo "Here is an artifact!" > artifact.txt
+echo "Here is an artifact" > artifact.txt
 ```
 
 `oras push` コマンドを使用して、このテキスト ファイルをレジストリにプッシュします。 次の例では、サンプルのテキスト ファイルを `samples/artifact` リポジトリにプッシュします。 レジストリは、レジストリの完全修飾名 "*myregistry.azurecr.io*" (すべて小文字) で識別されます。 成果物にはタグ `1.0` が付けられます。 成果物の型は既定では未定義で、ファイル名 `artifact.txt` に続く "*メディアの種類*" の文字列によって識別されます。 追加の型については、「[OCI Artifacts](https://github.com/opencontainers/artifacts)」 (OCI 成果物) を参照してください。 
 
-**Linux**
+**Linux または macOS**
 
 ```bash
 oras push myregistry.azurecr.io/samples/artifact:1.0 \
@@ -137,7 +137,7 @@ oras pull myregistry.azurecr.io/samples/artifact:1.0 \
 
 ```bash
 $ cat artifact.txt
-Here is an artifact!
+Here is an artifact
 ```
 
 ## <a name="remove-the-artifact-optional"></a>成果物を削除する (省略可能)
@@ -157,7 +157,7 @@ az acr repository delete \
 たとえば、1 行の Dockerfile を作成します。
 
 ```bash
-echo "FROM hello-world" > hello-world.dockerfile
+echo "FROM mcr.microsoft.com/hello-world" > hello-world.dockerfile
 ```
 
 ターゲットのコンテナー レジストリにログインします。
@@ -170,14 +170,15 @@ az acr login --name myregistry
 新しい OCI 成果物を作成し、`oras push` コマンドを使用してターゲット レジストリにプッシュします。 この例では、成果物の既定のメディアの種類を設定します。
 
 ```bash
-oras push myregistry.azurecr.io/hello-world:1.0 hello-world.dockerfile
+oras push myregistry.azurecr.io/dockerfile:1.0 hello-world.dockerfile
 ```
 
 [az acr build](/cli/azure/acr#az-acr-build) コマンドを実行して、新しい成果物をビルド コンテキストとして使用する hello-world イメージをビルドします。
 
 ```azurecli
-az acr build --registry myregistry --file hello-world.dockerfile \
-  oci://myregistry.azurecr.io/hello-world:1.0
+az acr build --registry myregistry --image builds/hello-world:v1 \
+  --file hello-world.dockerfile \
+  oci://myregistry.azurecr.io/dockerfile:1.0
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -4,23 +4,29 @@ description: アプリケーション シークレットを管理して、Servic
 ms.date: 4/2/2019
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 379560b73c38558fe0b712ed5e036c7a3736b600
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3be0c2b21c3405f4f42b2ff4d02ca95c78956de
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500710"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99626962"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Azure Service Fabric Mesh アプリケーションのシークレットを管理する
+
+> [!IMPORTANT]
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API による新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> 
+> 詳細については、「[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)」を参照してください。
+
 Service Fabric Mesh では、Azure リソースとしてシークレットがサポートされています。 Service Fabric Mesh のシークレットには、格納や送信を安全に行う必要がある、機密性の高いテキスト情報を指定できます (ストレージ接続文字列やパスワードなど)。 この記事では、Service Fabric Secure Store Service を使用して、シークレットをデプロイし、保持する方法について説明します。
 
 Mesh アプリケーションのシークレットは、次の要素で構成されます。
 * **シークレット** リソース: シークレットのテキストを格納するコンテナーです。 **シークレット** リソース内に含まれている機密情報は、安全に格納、送信されます。
-* 1 つ以上の**シークレット/値**リソース: **シークレット** リソース コンテナーに格納されます。 各**シークレット/値**リソースは、バージョン番号によって区別されます。 **シークレット/値**リソースのバージョンを変更することはできません (新しいバージョンを追加することしかできません)。
+* 1 つ以上の **シークレット/値** リソース: **シークレット** リソース コンテナーに格納されます。 各 **シークレット/値** リソースは、バージョン番号によって区別されます。 **シークレット/値** リソースのバージョンを変更することはできません (新しいバージョンを追加することしかできません)。
 
 シークレットの管理は、次の手順で行います。
-1. kind の定義として inlinedValue、contentType の定義として SecretsStoreRef を使用し、Azure Resource Model の YAML または JSON ファイル内で Mesh の**シークレット**を宣言します。
-2. **シークレット** リソース (手順 1. で宣言したもの) に格納される**シークレット/値**リソースを、Azure Resource Model の YAML または JSON ファイル内で宣言します。
+1. kind の定義として inlinedValue、contentType の定義として SecretsStoreRef を使用し、Azure Resource Model の YAML または JSON ファイル内で Mesh の **シークレット** を宣言します。
+2. **シークレット** リソース (手順 1. で宣言したもの) に格納される **シークレット/値** リソースを、Azure Resource Model の YAML または JSON ファイル内で宣言します。
 3. Mesh のシークレット値を参照するように Mesh アプリケーションを変更します。
 4. Mesh アプリケーションをデプロイするかローリング アップグレードして、シークレット値が使用されるようにします。
 5. Azure の CLI コマンド "az" を使用して、Secure Store Service のライフ サイクルを管理します。

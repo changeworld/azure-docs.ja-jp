@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0326eef86b42fa8b06c336bbf2b1c6f2f9df0bcf
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530864"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730356"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>デバイス プロビジョニング サービスで X.509 CA 証明書の所有証明を行う方法
 
@@ -42,7 +42,7 @@ ms.locfileid: "90530864"
 
 6. **[証明書の詳細]** で、 **[確認コードを生成します]** をクリックします。
 
-7. プロビジョニング サービスにより、証明書の所有権の検証に使うことができる**確認コード**が作成されます。 このコードをクリップボードにコピーします。 
+7. プロビジョニング サービスにより、証明書の所有権の検証に使うことができる **確認コード** が作成されます。 このコードをクリップボードにコピーします。 
 
    ![証明書の確認](./media/how-to-verify-certificates/verify-cert.png)  
 
@@ -53,12 +53,12 @@ ms.locfileid: "90530864"
 Microsoft では、署名された検証証明書の作成に役立つツールとサンプルが提供されています。 
 
 - **Azure IoT Hub C SDK** は、開発用の CA 証明書とリーフ証明書を作成し、確認コードを使って所有証明を実行するための、PowerShell (Windows) スクリプトと Bash (Linux) スクリプトを提供します。 システムに関連する[ファイル](https://github.com/Azure/azure-iot-sdk-c/tree/master/tools/CACertificates)を作業フォルダーにダウンロードし、[CA 証明書の管理の readme](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) の説明に従って、CA 証明書で所有証明を実行します。 
-- **Azure IoT Hub C# SDK** には[グループ証明書の検証のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)が含まれており、所有証明に使うことができます。
+- **Azure IoT Hub C# SDK** には [グループ証明書の検証のサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/service/GroupCertificateVerificationSample)が含まれており、所有証明に使うことができます。
  
 > [!IMPORTANT]
 > 所有証明の実行に加えて、前に示した PowerShell スクリプトと Bash スクリプトでは、デバイスの認証とプロビジョニングに使うことができるルート証明書、中間証明書、およびリーフ証明書も作成できます。 これらの証明書は開発にのみ使ってください。 運用環境では使わないでください。 
 
-ドキュメントと SDK で提供されている PowerShell スクリプトおよび Bash スクリプトは、[OpenSSL](https://www.openssl.org/) に依存します。 また、OpenSSL または他のサードパーティ製ツールを使って、所有証明を行うこともできます。 SDK で提供されているツールについて詳しくは、「[SDK に付属するツールを使用してプロビジョニング用の開発を簡略化する方法](how-to-use-sdk-tools.md)」をご覧ください。 
+ドキュメントと SDK で提供されている PowerShell スクリプトおよび Bash スクリプトは、[OpenSSL](https://www.openssl.org/) に依存します。 また、OpenSSL または他のサードパーティ製ツールを使って、所有証明を行うこともできます。 SDK で提供されているツールの使用例については、「[X.509 証明書チェーンを作成する](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain)」を参照してください。 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>署名された検証証明書をアップロードする
@@ -72,14 +72,4 @@ Microsoft では、署名された検証証明書の作成に役立つツール�
 ## <a name="next-steps"></a>次のステップ
 
 - ポータルを使って登録グループを作成する方法について詳しくは、「[Azure Portal でデバイス登録を管理する方法](how-to-manage-enrollments.md)」をご覧ください。
-- サービス SDK を使って登録グループを作成する方法について詳しくは、「[Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法](how-to-manage-enrollments-sdks.md)」をご覧ください。
-
-
-
-
-
-
-
-
-
-
+- サービス SDK を使って登録グループを作成する方法について詳しくは、「[Azure デバイス プロビジョニング サービス SDK でデバイスの登録を管理する方法](./quick-enroll-device-x509-java.md)」をご覧ください。

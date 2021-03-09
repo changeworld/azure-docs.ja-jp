@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c70c575464d82f714022291406418cdd1ca0f8d
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223382"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102094968"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ゲートウェイ リソースを使用した仮想ネットワークの設計
 
@@ -224,7 +224,7 @@ a) 仮想マシン インスタンスのゾーンとゾーン NAT ゲートウ�
 >NAT ゲートウェイ リソースのゾーン プロパティは変更できません。  意図したリージョンまたはゾーンを選んで NAT ゲートウェイ リソースを再デプロイしてください。
 
 >[!NOTE] 
->ゾーンが指定されていない場合、IP アドレスそのものはゾーン冗長ではありません。  [Standard Load Balancer のフロントエンドは、IP アドレスが特定のゾーンに作成されていなければゾーン冗長](../load-balancer/load-balancer-standard-availability-zones.md#frontend)となります。  NAT にはこれが当てはまりません。  サポートされるのは、リージョン単位の分離とゾーン単位の分離だけです。
+>ゾーンが指定されていない場合、IP アドレスそのものはゾーン冗長ではありません。  [Standard Load Balancer のフロントエンドは、IP アドレスが特定のゾーンに作成されていなければゾーン冗長](../load-balancer/load-balancer-standard-availability-zones.md)となります。  NAT にはこれが当てはまりません。  サポートされるのは、リージョン単位の分離とゾーン単位の分離だけです。
 
 ## <a name="performance"></a>パフォーマンス
 
@@ -339,6 +339,7 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
 - NAT は、Standard SKU のパブリック IP、パブリック IP プレフィックス、ロード バランサーの各リソースと共に利用することができます。   Basic リソース (Basic Load Balancer など) やそれらから派生した製品を NAT と共存させることはできません。  Basic リソースは、NAT が構成されていないサブネットに配置する必要があります。
 - サポートされるアドレス ファミリーは IPv4 です。  IPv6 アドレス ファミリーを NAT で扱うことはできません。  IPv6 プレフィックスを持つサブネットに NAT をデプロイすることはできません。
 - NAT を複数の仮想ネットワークにまたがって使用することはできません。
+- IP の断片化はサポートされていません。
 
 ## <a name="suggestions"></a>検索候補
 
@@ -349,20 +350,3 @@ SNAT ポートは、同じ送信先 IP アドレスおよび同じ送信先ポ�
 * [仮想ネットワーク NAT](nat-overview.md) について学習する。
 * [NAT ゲートウェイ リソースのメトリックとアラート](nat-metrics.md)について学習する。
 * [NAT ゲートウェイ リソースのトラブルシューティング](troubleshoot-nat.md)について学習する。
-* NAT ゲートウェイを検証するためのチュートリアル
-  - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
-  - [ポータル](tutorial-create-validate-nat-gateway-portal.md)
-* NAT ゲートウェイ リソースをデプロイするためのクイックスタート
-  - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  - [ポータル](./quickstart-create-nat-gateway-portal.md)
-  - [テンプレート](./quickstart-create-nat-gateway-template.md)
-* NAT ゲートウェイ リソース API について学習する
-  - [REST API](/rest/api/virtualnetwork/natgateways)
-  - [Azure CLI](/cli/azure/network/nat/gateway)
-  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
-* [可用性ゾーン](../availability-zones/az-overview.md)について学習する。
-* [Standard Load Balancer ](../load-balancer/load-balancer-overview.md) について学習する。
-* [可用性ゾーンと Standard Load Balancer](../load-balancer/load-balancer-standard-availability-zones.md) について学習する。
-* [UserVoice で Virtual Network NAT の新機能の構築を提案する](https://aka.ms/natuservoice)。

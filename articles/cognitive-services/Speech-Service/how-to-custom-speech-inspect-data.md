@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 02/12/2021
 ms.author: erhopf
-ms.openlocfilehash: 87bc411903604a7068f346604853a2a61c9a6f1c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9ce0d3a06846cbc3aa37ab836564150e6f2c34ee
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499188"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362813"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech データを検査する
 
 > [!NOTE]
 > このページは、「[Prepare test data for Custom Speech (Custom Speech 用のテスト データを準備する)](./how-to-custom-speech-test-and-train.md)」を読んでおり、検査用のデータセットをアップロードしていることを前提としています。
 
-Custom Speech には、オーディオ データを対応する認識結果と比較することによって、モデルの認識品質を視覚的に検査するツールがあります。 [Custom Speech ポータル](https://speech.microsoft.com/customspeech)から、アップロードされたオーディオを再生し、提供された認識結果が正しいかどうかを判断できます。 このツールは、Microsoft のベースライン音声テキスト変換モデルの品質検査、トレーニング済みのカスタム モデルの検査、2 つのモデルでの文字起こしの比較に役立ちます。
+Custom Speech には、オーディオ データを対応する認識結果と比較することによって、モデルの認識品質を視覚的に検査するツールがあります。 [Speech Studio](https://speech.microsoft.com/customspeech) から、アップロードされたオーディオを再生し、提供された認識結果が正しいかどうかを判断できます。 このツールは、Microsoft のベースライン音声テキスト変換モデルの品質検査、トレーニング済みのカスタム モデルの検査、2 つのモデルでの文字起こしの比較に役立ちます。
 
 このドキュメントでは、Microsoft のベースラインの音声テキスト変換モデルやトレーニングしたカスタム モデルの品質を視覚的に検査する方法について説明します。 また、オンライン文字起こしエディターを使用して、ラベル付けされたオーディオ データセットを作成および調整する方法についても説明します。
 
@@ -30,7 +30,7 @@ Custom Speech には、オーディオ データを対応する認識結果と�
 
 テストを作成するには、以下の手順を実行します。
 
-1. [Custom Speech ポータル](https://speech.microsoft.com/customspeech)にサインインします。
+1. [Speech Studio](https://speech.microsoft.com/customspeech) にサインインします。
 2. **[音声テキスト変換]、[Custom Speech]、[<プロジェクト名>]、[テスト]** の順に移動します。
 3. **[テストの追加]** をクリックします。
 4. **[Inspect quality (Audio-only data)]\(品質の検査 (オーディオのみのデータ)\)** を選択します。 テストの名前と説明を設定し、オーディオ データセットを選択します。

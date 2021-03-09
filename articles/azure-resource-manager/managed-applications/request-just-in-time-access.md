@@ -5,16 +5,16 @@ author: MSEvanhi
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: evanhi
-ms.openlocfilehash: f839eb04e0c036b5059e35fac16d9c702646cbd7
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b7c067ca82ea7fbe7eb9c0f3d50b7fe75dfb47df
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435690"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377365"
 ---
 # <a name="enable-and-request-just-in-time-access-for-azure-managed-applications"></a>Azure Managed Applications でジャストインタイム アクセスを有効にして要求する
 
-マネージド アプリケーションのコンシューマーが、マネージド リソース グループへの永続的なアクセスを発行元に許可することに消極的な場合があります。 マネージャー アプリケーションの発行元として、マネージド リソースにいつアクセスする必要があるかをコンシューマーに正確に知らせることができます。 コンシューマーが管理対象リソースへのアクセス権の付与を制御できるようにするため、Azure Managed Applications には、ジャストインタイム (JIT) アクセスと呼ばれる機能が提供されています。 現在、この機能はプレビュー段階にあります。
+マネージド アプリケーションのコンシューマーが、マネージド リソース グループへの永続的なアクセスを発行元に許可することに消極的な場合があります。 マネージド アプリケーションの発行元としては、管理対象リソースに厳密にいつアクセスする必要があるかをコンシューマーに知らせることが望ましい場合があります。 コンシューマーが管理対象リソースへのアクセス権の付与を制御できるようにするため、Azure Managed Applications には、ジャストインタイム (JIT) アクセスと呼ばれる機能が提供されています。 現在、この機能はプレビュー段階にあります。
 
 JIT アクセスによって、発行元は、トラブルシューティングやメンテナンスを行うために、マネージド アプリケーションのリソースに対して昇格されたアクセス権を要求することができます。 発行元は、リソースへの読み取り専用アクセス権を常に所有していますが、特定の期間にさらに大きなアクセス権を持つことができます。
 

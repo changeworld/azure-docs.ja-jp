@@ -45,6 +45,14 @@
       items:
         - name: Spring Boot Initializer の使用
           href: /azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache
+    - name: Azure Event Grid
+      items:
+        - name: Azure portal でイベントをルーティングする
+          href: cache-event-grid-quickstart-portal.md
+        - name: Azure CLI でイベントをルーティングする
+          href: cache-event-grid-quickstart-cli.md
+        - name: PowerShell でイベントをルーティングする
+          href: cache-event-grid-quickstart-powershell.md
     - name: ランキングの作成
       href: cache-web-app-cache-aside-leaderboard.md
     - name: 機械学習モデルのデプロイ
@@ -92,8 +100,10 @@
           href: cache-private-link.md
         - name: ゾーン冗長性を有効にする
           href: cache-how-to-zone-redundancy.md
-        - name: geo レプリケーションの設定
+        - name: OSS の geo レプリケーションを設定する
           href: cache-how-to-geo-replication.md
+        - name: エンタープライズ アクティブ geo レプリケーションを設定する
+          href: cache-how-to-active-geo-replication.md
         - name: 予約容量で保存する
           href: cache-reserved-pricing.md
         - name: Azure Cache for Redis への移行
@@ -128,6 +138,8 @@
           href: cache-administration.md#schedule-updates
         - name: redis-cli.exe アクセスの構成
           href: cache-how-to-redis-cli-tool.md
+        - name: Azure Cache for Redis イベントの発行
+          href: cache-event-grid.md
         - name: TLS 1.0 および 1.1 の削除
           href: cache-remove-tls-10-11.md
         - name: 管理に関する FAQ

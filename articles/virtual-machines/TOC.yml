@@ -75,8 +75,6 @@
       href: ./workloads/redhat/overview.md
     - name: Cloud Foundry
       href: ../cloudfoundry/index.yml
-    - name: Cassandra
-      href: /azure/architecture/reference-architectures/n-tier/n-tier-cassandra
     - name: OpenShift
       items:
         - name: OpenShift の概要
@@ -98,360 +96,17 @@
         - name: OKD をデプロイする
           href: ./linux/openshift-okd.md
     - name: SAP on Azure
-      items:
-        - name: はじめに
-          href: ./workloads/sap/get-started.md
-        - name: 認定
-          href: ./workloads/sap/sap-certifications.md
-        - name: SAP HANA on Azure (L インスタンス)
-          items:
-            - name: 概要
-              items:
-                - name: SAP HANA on Azure (L インスタンス) とは
-                  href: ./workloads/sap/hana-overview-architecture.md
-                - name: 用語の確認
-                  href: ./workloads/sap/hana-know-terms.md
-                - name: 認定
-                  href: ./workloads/sap/hana-certification.md
-                - name: HLI で利用可能な SKU
-                  href: ./workloads/sap/hana-available-skus.md
-                - name: サイズ変更
-                  href: ./workloads/sap/hana-sizing.md
-                - name: オンボードの要件
-                  href: ./workloads/sap/hana-onboarding-requirements.md
-                - name: SAP HANA のデータ階層化と拡張ノード
-                  href: ./workloads/sap/hana-data-tiering-extension-nodes.md
-                - name: 運用モデルと責任
-                  href: ./workloads/sap/hana-operations-model.md
-                - name: 互換性のあるオペレーティング システム
-                  href: ./workloads/sap/os-compatibility-matrix-hana-large-instance.md
-        - name: Architecture
-          items:
-            - name: 全般的なアーキテクチャ
-              href: ./workloads/sap/hana-architecture.md
-            - name: ネットワーク アーキテクチャ
-              href: ./workloads/sap/hana-network-architecture.md
-            - name: ストレージ アーキテクチャ
-              href: ./workloads/sap/hana-storage-architecture.md
-            - name: HLI でサポートされるシナリオ
-              href: ./workloads/sap/hana-supported-scenario.md
-        - name: インフラストラクチャと接続性
-          items:
-            - name: HLI のデプロイ
-              href: ./workloads/sap/hana-overview-infrastructure-connectivity.md
-            - name: HANA L インスタンスへの Azure VM の接続
-              href: ./workloads/sap/hana-connect-azure-vm-large-instances.md
-            - name: HANA L インスタンスの ExpressRoute への VNet の接続
-              href: ./workloads/sap/hana-connect-vnet-express-route.md
-            - name: 追加のネットワーク要件
-              href: ./workloads/sap/hana-additional-network-requirements.md
-        - name: SAP HANA のインストール
-          items:
-            - name: 構成の検証
-              href: ./workloads/sap/hana-installation.md
-            - name: HANA のインストールの例
-              href: ./workloads/sap/hana-example-installation.md
-        - name: 高可用性とディザスター リカバリー
-          items:
-            - name: オプションと考慮事項
-              href: ./workloads/sap/hana-overview-high-availability-disaster-recovery.md
-            - name: バックアップと復元
-              href: ./workloads/sap/hana-backup-restore.md
-            - name: 原則と準備
-              href: ./workloads/sap/hana-concept-preparation.md
-            - name: ディザスター リカバリーのフェールオーバー手順
-              href: ./workloads/sap/hana-failover-procedure.md
-        - name: トラブルシューティングと監視
-          items:
-            - name: HLI の監視
-              href: ./workloads/sap/troubleshooting-monitoring.md
-            - name: HANA 側からの監視とトラブルシューティング
-              href: ./workloads/sap/hana-monitor-troubleshoot.md
-        - name: 方法
-          items:
-            - name: Azure portal を介した Azure HANA L インスタンスの制御
-              href: ./workloads/sap/hana-li-portal.md
-            - name: STONITH を使用した HA セットアップ
-              href: ./workloads/sap/ha-setup-with-stonith.md
-            - name: Type II SKU 向けの OS バックアップ
-              href: ./workloads/sap/os-backup-type-ii-skus.md
-            - name: HANA Large Instances の kdump の有効化
-              href: ./workloads/sap/hana-large-instance-enable-kdump.md
-            - name: HANA Large Instances 向けの OS アップグレード
-              href: ./workloads/sap/os-upgrade-hana-large-instance.md
-            - name: SUSE Linux 用 SMT サーバーの設定
-              href: ./workloads/sap/hana-setup-smt.md
-            - name: HLI から Azure VM への移行
-              href: ./workloads/sap/hana-large-instance-virtual-machine-migration.md
-            - name: SAP HANA Large Instances の予約の購入
-              href: ../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md?context=/azure/virtual-machines/context/context
-    - name: Azure Virtual Machines 上の SAP HANA
-      items:
-        - name: Azure VM への SAP HANA のインストール
-          href: ./workloads/sap/hana-get-started.md
-        - name: S/4 HANA または BW/4 HANA SAP CAL のデプロイ ガイド
-          href: ./workloads/sap/cal-s4h.md
-        - name: Azure における SAP HANA インフラストラクチャの構成と運用
-          href: ./workloads/sap/hana-vm-operations.md
-        - name: SAP HANA Azure 仮想マシンのストレージ構成
-          href: ./workloads/sap/hana-vm-operations-storage.md
-        - name: SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム
-          href: ./workloads/sap/hana-vm-operations-netapp.md
-        - name: Azure Virtual Machines での SAP HANA の可用性
-          items:
-            - name: SAP HANA on Azure の可用性の概要
-              href: ./workloads/sap/sap-hana-availability-overview.md
-            - name: 1 つの Azure リージョン内での SAP HANA on Azure の可用性
-              href: ./workloads/sap/sap-hana-availability-one-region.md
-            - name: Azure リージョンの枠を超えた SAP HANA on Azure の可用性
-              href: ./workloads/sap/sap-hana-availability-across-regions.md
-            - name: SLES での SAP HANA システム レプリケーションの設定
-              href: ./workloads/sap/sap-hana-high-availability.md
-            - name: RHEL での SAP HANA システム レプリケーションの設定
-              href: ./workloads/sap/sap-hana-high-availability-rhel.md
-            - name: RHEL での ANF を使用した SAP HANA システム レプリケーションの設定
-              href: ./workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md
-            - name: SLES での SAP HANA スケールアウトと Pacemaker のトラブルシューティング
-              href: ./workloads/sap/hana-vm-troubleshoot-scale-out-ha-on-sles.md
-            - name: RHEL での Pacemaker を使用した SAP HANA スケールアウト HSR
-              href: ./workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md
-            - name: SLES で Azure NetApp Files を使用したスタンバイ ノードでの SAP HANA スケールアウト
-              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md
-            - name: RHEL で Azure NetApp Files を使用したスタンバイ ノードでの SAP HANA スケールアウト
-              href: ./workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md
-        - name: SAP HANA のバックアップの概要
-          href: ./workloads/sap/sap-hana-backup-guide.md
-        - name: SAP HANA のファイル レベルのバックアップ
-          href: ./workloads/sap/sap-hana-backup-file-level.md
-    - name: Azure Virtual Machines 上の SAP NetWeaver と SAP Business One
-      items:
-        - name: SAP ワークロードの計画とデプロイ チェックリスト
-          href: ./workloads/sap/sap-deployment-checklist.md
-        - name: Azure での SAP NetWeaver の計画と実装
-          href: ./workloads/sap/planning-guide.md
-          items:
-            - name: SAP ワークロードの Azure Storage の種類
-              href: ./workloads/sap/planning-guide-storage.md
-            - name: Azure 仮想マシンの SAP ワークロードでサポートされるシナリオ
-              href: ./workloads/sap/sap-planning-supported-configurations.md
-            - name: Azure デプロイでサポートされている SAP ソフトウェア
-              href: ./workloads/sap/sap-supported-product-on-azure.md
-        - name: SAP NetWeaver のデプロイ ガイド
-          href: ./workloads/sap/deployment-guide.md
-        - name: SAP ワークロード向け DBMS デプロイ ガイド
-          items:
-            - name: SAP ワークロードのための一般的な Azure Virtual Machines DBMS のデプロイ
-              href: ./workloads/sap/dbms_guide_general.md
-            - name: SAP ワークロードのための SQL Server Azure Virtual Machines DBMS のデプロイ
-              href: ./workloads/sap/dbms_guide_sqlserver.md
-            - name: SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ
-              href: ./workloads/sap/dbms_guide_oracle.md
-            - name: SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
-              href: ./workloads/sap/dbms_guide_ibm.md
-            - name: SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性
-              href: ./workloads/sap/dbms-guide-ha-ibm.md
-            - name: Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性
-              href: ./workloads/sap/high-availability-guide-rhel-ibm-db2-luw.md
-            - name: SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
-              href: ./workloads/sap/dbms_guide_sapase.md
-            - name: Azure 上の SAP MaxDB、liveCache、コンテンツ サーバーのデプロイ
-              href: ./workloads/sap/dbms_guide_maxdb.md
-            - name: Azure Virtual Machines での SAP HANA の可用性
-              items:
-                - name: SAP HANA on Azure の可用性の概要
-                  href: ./workloads/sap/sap-hana-availability-overview.md
-                - name: 1 つの Azure リージョン内での SAP HANA on Azure の可用性
-                  href: ./workloads/sap/sap-hana-availability-one-region.md
-                - name: Azure リージョンの枠を超えた SAP HANA on Azure の可用性
-                  href: ./workloads/sap/sap-hana-availability-across-regions.md
-        - name: Azure Virtual Machines 上の SAP Business One
-          href: ./workloads/sap/business-one-azure.md
-        - name: Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド
-          href: ./workloads/sap/cal-ides-erp6-erp7-sp3-sql.md
-        - name: Azure 用の SAP LaMa コネクタ
-          href: ./workloads/sap/lama-installation.md
-        - name: Windows と Linux での高可用性 (HA)
-          items:
-            - name: 概要
-              href: ./workloads/sap/sap-high-availability-guide-start.md
-            - name: 高可用性アーキテクチャ
-              items:
-                - name: HA アーキテクチャとシナリオ
-                  href: ./workloads/sap/sap-high-availability-architecture-scenarios.md
-                - name: さらに高い可用性アーキテクチャとシナリオ
-                  href: ./workloads/sap/sap-higher-availability-architecture-scenarios.md
-                - name: Azure Availability Zones での SAP ワークロードの構成
-                  href: ./workloads/sap/sap-ha-availability-zones.md
-                - name: (A)SCS インスタンス用の共有ディスクを使用した Windows の HA
-                  href: ./workloads/sap/sap-high-availability-guide-wsfc-shared-disk.md
-                - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows の HA
-                  href: ./workloads/sap/sap-high-availability-guide-wsfc-file-share.md
-                - name: Azure NetApp Files (SMB) を使用した Windows での SAP NetWeaver の HA
-                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
-                - name: (A)SCS インスタンス用の SUSE Linux の HA
-                  href: ./workloads/sap/high-availability-guide-suse.md
-                - name: Azure NetApp Files を使用した (A)SCS インスタンス用の SUSE Linux の HA
-                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
-                - name: (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
-                  href: ./workloads/sap/high-availability-guide-rhel.md
-                - name: Azure NetApp Files を使用した (A)SCS インスタンス用の Red Hat Enterprise Linux の HA
-                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
-            - name: Azure インフラストラクチャの準備
-              items:
-                - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
-                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk.md
-                - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows
-                  href: ./workloads/sap/sap-high-availability-infrastructure-wsfc-file-share.md
-                - name: SLES における Azure VM での NFS の高可用性
-                  href: ./workloads/sap/high-availability-guide-suse-nfs.md
-                - name: Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS
-                  href: ./workloads/sap/high-availability-guide-rhel-glusterfs.md
-                - name: SLES における Pacemaker
-                  href: ./workloads/sap/high-availability-guide-suse-pacemaker.md
-                - name: RHEL における Pacemaker
-                  href: ./workloads/sap/high-availability-guide-rhel-pacemaker.md
-                - name: SAP の高可用性シナリオにおける Azure Standard Load Balancer を使用した VM のパブリック エンドポイント接続
-                  href: ./workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections.md
-            - name: SAP のインストール
-              items:
-                - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
-                  href: ./workloads/sap/sap-high-availability-installation-wsfc-shared-disk.md
-                - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows
-                  href: ./workloads/sap/sap-high-availability-installation-wsfc-file-share.md
-                - name: Azure NetApp Files (SMB) を使用した Windows での SAP NetWeaver の HA
-                  href: ./workloads/sap/high-availability-guide-windows-netapp-files-smb.md
-                - name: (A)SCS インスタンス用の NFS を使用した SUSE Linux
-                  href: ./workloads/sap/high-availability-guide-suse.md
-                - name: Azure NetApp Files を使用した (A)SCS インスタンス用の NFS を使用した SUSE Linux
-                  href: ./workloads/sap/high-availability-guide-suse-netapp-files.md
-                - name: Red Hat Enterprise Linux での SAP NetWeaver の高可用性
-                  href: ./workloads/sap/high-availability-guide-rhel.md
-                - name: Azure NetApp Files を使用した (A)SCS インスタンス用の NFS を使用した Red Hat Enterprise Linux
-                  href: ./workloads/sap/high-availability-guide-rhel-netapp-files.md
-            - name: SAP マルチ SID
-              items:
-                - name: (A)SCS インスタンス用の Azure 共有ディスクを使用した Windows
-                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
-                - name: (A)SCS インスタンス用の共有ディスクを使用した Windows
-                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk.md
-                - name: (A)SCS インスタンス用の SOFS ファイル共有を使用した Windows
-                  href: ./workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share.md
-                - name: (A)SCS インスタンス用の Pacemaker マルチ SID を使用した SLES
-                  href: ./workloads/sap/high-availability-guide-suse-multi-sid.md
-                - name: A(SCS) インスタンス用の Pacemaker マルチ SID を使用した RHEL
-                  href: ./workloads/sap/high-availability-guide-rhel-multi-sid.md
-        - name: SAP のディザスター リカバリーのための Azure Site Recovery
-          href: ../site-recovery/site-recovery-workload.md#protect-sap
-        - name: SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ
-          href: ./workloads/sap/sap-proximity-placement-scenarios.md
-        - name: Azure の SAP BusinessObjects ビジネス インテリジェンス プラットフォーム
-          items:
-            - name: Azure の SAP BusinessObjects BI プラットフォームの計画および実装ガイド
-              href: ./workloads/sap/businessobjects-deployment-guide.md
-            - name: Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
-              href: ./workloads/sap/businessobjects-deployment-guide-linux.md
-        - name: Azure AD と SAP アプリケーションの統合
-          items:
-            - name: SAP SuccessFactors から Active Directory へのユーザーのプロビジョニング
-              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP SuccessFactors から Azure AD へのユーザーのプロビジョニング
-              href: ../active-directory/saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: Azure AD から SAP SuccessFactors へのユーザーの書き戻し
-              href: ../active-directory/saas-apps/sap-successfactors-writeback-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Cloud Platform Identity Authentication サービスへのユーザーのプロビジョニング
-              href: ../active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Cloud Platform Identity Authentication サービスとの SSO の構成
-              href: ../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP SuccessFactors との SSO の構成
-              href: ../active-directory/saas-apps/successfactors-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Analytics Cloud との SSO の構成
-              href: ../active-directory/saas-apps/sapboc-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Fiori との SSO の構成
-              href: ../active-directory/saas-apps/sap-fiori-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Qualtrics との SSO の構成
-              href: ../active-directory/saas-apps/qualtrics-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Ariba との SSO の構成
-              href: ../active-directory/saas-apps/ariba-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Concur Travel and Expense との SSO の構成
-              href: ../active-directory/saas-apps/concur-travel-and-expense-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Cloud Platform との SSO の構成
-              href: ../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP NetWeaver との SSO の構成
-              href: ../active-directory/saas-apps/sap-netweaver-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Business ByDesign との SSO の構成
-              href: ../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP HANA との SSO の構成
-              href: ../active-directory/saas-apps/saphana-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Cloud for Customer との SSO の構成
-              href: ../active-directory/saas-apps/sap-customer-cloud-tutorial.md?context=/azure/virtual-machines/context/context
-            - name: SAP Fiori Launchpad との SSO の構成
-              href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
-        - name: SAP への Azure サービスの統合
-          items:
-            - name: Power BI Desktop での SAP HANA の使用
-              href: /power-bi/desktop-sap-hana
-            - name: DirectQuery と SAP HANA
-              href: /power-bi/desktop-directquery-sap-hana
-            - name: Power BI Desktop での SAP BW コネクタの使用
-              href: /power-bi/desktop-sap-bw-connector
-            - name: Azure Data Factory による SAP HANA と Business Warehouse データの統合
-              href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
-        - name: SAP ソリューション向け Azure Monitor
-          items:
-            - name: SAP ソリューション向け Azure Monitor の概要
-              href: ./workloads/sap/azure-monitor-overview.md
-            - name: SAP ソリューション向け Azure Monitor のプロバイダー
-              href: ./workloads/sap/azure-monitor-providers.md
-            - name: SAP ソリューション向け Azure Monitor の構成 - ポータル
-              href: ./workloads/sap/azure-monitor-sap-quickstart.md
-            - name: SAP ソリューション向け Azure Monitor の構成 - Azure PowerShell
-              href: ./workloads/sap/azure-monitor-sap-quickstart-powershell.md
-            - name: SAP ソリューション向け Azure Monitor に関する FAQ
-              href: ./workloads/sap/azure-monitor-faq.md
-        - name: リファレンス
-          items:
-            - name: Azure CLI
-              href: /cli/azure/ext/sap-hana/hanainstance
-            - name: Azure PowerShell
-              href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
+      href: ./workloads/sap/get-started.md
     - name: Oracle
       href: ./workloads/oracle/oracle-database-quick-create.md
     - name: Elasticsearch
       href: ./linux/tutorial-elasticsearch.md
-    - name: FreeBSD のパケット フィルター
-      href: ./linux/freebsd-pf-nat.md
-    - name: データベース
-      items:
-        - name: MySQL on SUSE
-          href: ./linux/mysql-on-opensuse.md
-        - name: MongoDB
-          items:
-            - name: Linux
-              href: ./linux/install-mongodb.md
-            - name: Windows
-              href: ./windows/install-mongodb.md
-        - name: PostgreSQL
-          href: ./linux/postgresql-install.md
-        - name: Linux 上の MS SQL
-          href: /sql/linux/sql-server-linux-azure-virtual-machine
+    - name: メインフレームのホスト変更
+      href: ./workloads/mainframe-rehosting/overview.md
+    - name: Virtual Machines 上の SQL
+      href: ../azure-sql/virtual-machines/index.yml
     - name: ハイ パフォーマンス コンピューティング (HPC)
       href: /azure/architecture/topics/high-performance-computing/
-    - name: IBM Db2 pureScale
-      items:
-        - name: Architecture
-          href: ./linux/ibm-db2-purescale-azure.md
-        - name: デプロイ
-          href: ./linux/deploy-ibm-db2-purescale-azure.md
-    - name: コンテナー
-      items:
-        - name: Docker ホストの作成
-          href: 'https://github.com/Azure/azure-docker-extension/blob/master/README.md'
-        - name: Docker マシンの使用
-          href: ./linux/docker-machine.md
-        - name: Docker Compose の使用
-          href: ./linux/docker-compose-quickstart.md
-    - name: "Visual\_Studio"
-      href: ./windows/using-visual-studio-vm.md
 - name: インスタンス
   items:
     - name: サイズ
@@ -509,6 +164,8 @@
               href: ev4-esv4-series.md
             - name: M シリーズ
               href: m-series.md
+            - name: Msv2 および Mdsv2 ミディアム メモリ シリーズ
+              href: msv2-mdsv2-series.md
             - name: Mv2 シリーズ
               href: mv2-series.md
             - name: 制約付き vCPU
@@ -555,6 +212,12 @@
                   href: ./windows/n-series-driver-setup.md
             - name: AMD GPU ドライバーの設定
               href: ./windows/n-series-amd-driver-setup.md
+        - name: FPGA - 高速コンピューティング
+          items:
+            - name: 概要
+              href: sizes-field-programmable-gate-arrays.md?context=/azure/virtual-machines/context/context
+            - name: NP シリーズ
+              href: np-series.md
         - name: ハイ パフォーマンス コンピューティング
           displayName: H-series
           items:
@@ -594,14 +257,14 @@
     - name: 専用ホスト
       items:
         - name: 概要
-          href: ./linux/dedicated-hosts.md
+          href: dedicated-hosts.md
         - name: CLI
           href: ./linux/dedicated-hosts-cli.md
         - name: ポータル
           href: dedicated-hosts-portal.md
         - name: PowerShell
           href: ./windows/dedicated-hosts-powershell.md
-    - name: スポット仮想マシン
+    - name: Azure スポット仮想マシン
       displayName: 'pre-empt, preempt, spot'
       items:
         - name: 概要
@@ -632,7 +295,7 @@
         - name: 予約インスタンス
           items:
             - name: VM の前払い
-              href: ./linux/prepay-reserved-vm-instances.md
+              href: ./prepay-reserved-vm-instances.md
             - name: 専用ホストの前払い
               href: prepay-dedicated-hosts-reserved-instances.md
             - name: Azure の予約とは
@@ -666,12 +329,13 @@
           href: ./linux/tutorial-build-deploy-azure-pipelines.md
         - name: LAMP スタックの作成
           href: ./linux/tutorial-lamp-stack.md
-        - name: SSL による Web サーバーのセキュリティ保護
+        - name: TLS および SSL による Web サーバーのセキュリティ保護
           items:
             - name: Linux
               href: ./linux/tutorial-secure-web-server.md
             - name: Windows
               href: ./windows/tutorial-secure-web-server.md
+          displayname: SSL TLS
     - name: Linux VM への接続
       items:
         - name: Linux VM の SSH
@@ -700,8 +364,8 @@
           href: /azure/developer/chef/windows-vm-configure
         - name: Java の使用
           href: ./windows/java.md
-        - name: Python の使用
-          href: ./windows/python.md
+        - name: Python
+          href: /samples/azure-samples/virtual-machines-python-manage/azure-virtual-machines-management-samples---python/?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Resource Manager テンプレートの使用
           displayName: Azure Resource Manager template
           href: ./windows/ps-template.md
@@ -783,9 +447,9 @@
         - name: Azure Monitor
           items:
             - name: Azure Monitor エージェント
-              href: ../azure-monitor/platform/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/azure-monitor-agent-install.md?context=/azure/virtual-machines/context/context
             - name: 診断拡張機能
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Log Analytics
               items:
                 - name: Linux
@@ -929,6 +593,8 @@
               href: ./linux/flatcar-create-upload-vhd.md
             - name: FreeBSD
               href: ./linux/freebsd-intro-on-azure.md
+            - name: FreeBSD のパケット フィルター
+              href: ./linux/freebsd-pf-nat.md
             - name: Oracle Linux
               href: ./linux/oracle-create-upload-vhd.md
             - name: OpenBSD
@@ -957,8 +623,6 @@
               href: ./linux/cloudinit-configure-swapfile.md
             - name: 既存の Bash スクリプトの実行
               href: ./linux/cloudinit-bash-script.md
-            - name: cloud-init のための既存の VM の準備
-              href: ./linux/cloudinit-prepare-custom-image.md
         - name: プロビジョニング エージェントを使用せずに Linux イメージを作成する
           href: ./linux/no-agent.md
         - name: Linux エージェントのプロビジョニングを無効にする
@@ -975,10 +639,12 @@
           href: ./windows/capture-image-resource.md
         - name: 管理イメージから VM を作成する
           href: ./windows/create-vm-generalized-managed.md
+        - name: "Visual\_Studio"
+          href: ./windows/using-visual-studio-vm.md
     - name: Shared Image Gallery
       items:
         - name: 概要
-          href: ./linux/shared-image-galleries.md
+          href: ./shared-image-galleries.md
         - name: CLI
           items:
             - name: ギャラリーの作成
@@ -1070,6 +736,10 @@
               href: ./windows/image-builder.md
         - name: PowerShell
           href: ./windows/image-builder-powershell.md
+        - name: セキュリティ
+          items:
+            - name: Azure Policy によるセキュリティ制御
+              href: ./security-controls-policy-image-builder.md
         - name: VNET を使用する
           items:
             - name: CLI
@@ -1118,13 +788,13 @@
     - name: 可用性
       href: availability.md
     - name: コロケーション
-      href: ./linux/co-location.md
+      href: co-location.md
     - name: ネットワーク パフォーマンス
       href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
     - name: 状態とライフサイクル
       href: states-lifecycle.md
     - name: 自動スケール
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
     - name: 高可用性
       href: manage-availability.md
     - name: 可用性セット
@@ -1154,6 +824,8 @@
       href: managed-disks-overview.md
     - name: IaaS VM 用のディスクの種類の選択
       href: disks-types.md
+    - name: ディスク冗長オプション
+      href: disks-redundancy.md
     - name: 共有ディスク
       href: disks-shared.md
     - name: 共有ディスクを有効にする
@@ -1188,87 +860,71 @@
                   href: windows/disks-enable-double-encryption-at-rest-powershell.md
                 - name: CLI
                   href: linux/disks-enable-double-encryption-at-rest-cli.md
-        - name: Azure Disk Encryption シナリオ
+        - name: Azure Disk Encryption
           items:
-            - name: Azure Disk Encryption の概要
-              items:
-                - name: Windows
-                - name: Linux
             - name: Linux
-              href: ./linux/disk-encryption-linux.md
-            - name: Windows
-              href: ./windows/disk-encryption-windows.md
-            - name: CLI
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-cli-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-cli-quickstart.md
-            - name: PowerShell
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-powershell-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-powershell-quickstart.md
-            - name: ポータル
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-portal-quickstart.md
-                - name: Windows
-                  href: ./windows/disk-encryption-portal-quickstart.md
-            - name: Azure Disk Encryption に対応したキー コンテナー
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-key-vault.md
-                - name: Windows
-                  href: ./windows/disk-encryption-key-vault.md
-            - name: サンプルのスクリプト
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-sample-scripts.md
-                - name: Windows
-                  href: ./windows/disk-encryption-sample-scripts.md
-            - name: 分離されたネットワークでの Azure Disk Encryption
-              href: ./linux/disk-encryption-isolated-network.md
-            - name: 暗号化の状態を確認する方法
-              href: ./linux/how-to-verify-encryption-status.md
-            - name: crypt で LVM RAID を構成する方法
-              href: ./linux/how-to-configure-lvm-raid-on-crypt.md
-            - name: 暗号化された LVM ボリュームのサイズを変更する方法
-              href: ./linux/how-to-resize-encrypted-lvm.md
-            - name: Linux GPT パーティションのサイズを変更する
-              href: linux/resize-os-disk-gpt-partition.md
-            - name: トラブルシューティング
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-troubleshooting.md
-                - name: Windows
-                  href: ./windows/disk-encryption-troubleshooting.md
-            - name: よく寄せられる質問
-              items:
-                - name: Linux
-                  href: ./linux/disk-encryption-faq.md
-                - name: Windows
-                  href: ./windows/disk-encryption-faq.md
-            - name: Azure Disk Encryption - 以前のバージョン
               items:
                 - name: 概要
+                  href: ./linux/disk-encryption-overview.md
+                - name: クイックスタート
                   items:
-                    - name: Linux
-                      href: ./linux/disk-encryption-overview-aad.md
-                    - name: Windows
-                      href: ./windows/disk-encryption-overview-aad.md
+                    - name: Azure CLI
+                      href: ./linux/disk-encryption-cli-quickstart.md
+                    - name: Azure PowerShell
+                      href: ./linux/disk-encryption-powershell-quickstart.md
+                    - name: Azure portal
+                      href: ./linux/disk-encryption-portal-quickstart.md
                 - name: Azure Disk Encryption に対応したキー コンテナー
+                  href: ./linux/disk-encryption-key-vault.md
+                - name: ディスク暗号化のサンプル スクリプト
+                  href: ./linux/disk-encryption-sample-scripts.md
+                - name: 分離されたネットワークでのディスク暗号化
+                  href: ./linux/disk-encryption-isolated-network.md
+                - name: 暗号化の状態を確認する方法
+                  href: ./linux/how-to-verify-encryption-status.md
+                - name: crypt で LVM RAID を構成する方法
+                  href: ./linux/how-to-configure-lvm-raid-on-crypt.md
+                - name: 暗号化された LVM ボリュームのサイズを変更する方法
+                  href: ./linux/how-to-resize-encrypted-lvm.md
+                - name: ディスク暗号化のトラブルシューティング
+                  href: ./linux/disk-encryption-troubleshooting.md
+                - name: ディスク暗号化の FAQ
+                  href: ./linux/disk-encryption-faq.md
+                - name: ディスク暗号化 - 以前のバージョン
                   items:
-                    - name: Linux
+                    - name: 概要
+                      href: ./linux/disk-encryption-overview-aad.md
+                    - name: Azure Disk Encryption に対応したキー コンテナー
                       href: ./linux/disk-encryption-key-vault-aad.md
-                    - name: Windows
-                      href: ./windows/disk-encryption-key-vault-aad.md
-                - name: ディスク暗号化のシナリオ
-                  items:
-                    - name: Linux
+                    - name: Linux のディスク暗号化のシナリオ
                       href: ./linux/disk-encryption-linux-aad.md
-                    - name: Windows
+            - name: Windows
+              items:
+                - name: Windows のディスク暗号化のシナリオ
+                  href: ./windows/disk-encryption-windows.md
+                - name: クイックスタート
+                  items:
+                    - name: Azure CLI
+                      href: ./windows/disk-encryption-cli-quickstart.md
+                    - name: Azure PowerShell
+                      href: ./windows/disk-encryption-powershell-quickstart.md
+                    - name: Azure portal
+                      href: ./windows/disk-encryption-portal-quickstart.md
+                - name: Azure Disk Encryption に対応したキー コンテナー
+                  href: ./windows/disk-encryption-key-vault.md
+                - name: ディスク暗号化のサンプル スクリプト
+                  href: ./windows/disk-encryption-sample-scripts.md
+                - name: ディスク暗号化のトラブルシューティング
+                  href: ./windows/disk-encryption-troubleshooting.md
+                - name: ディスク暗号化の FAQ
+                  href: ./windows/disk-encryption-faq.md
+                - name: ディスク暗号化 - 以前のバージョン
+                  items:
+                    - name: 概要
+                      href: ./windows/disk-encryption-overview-aad.md
+                    - name: Azure Disk Encryption に対応したキー コンテナー
+                      href: ./windows/disk-encryption-key-vault-aad.md
+                    - name: Windows のディスク暗号化のシナリオ
                       href: ./windows/disk-encryption-windows-aad.md
     - name: パフォーマンスとコストの最適化
       items:
@@ -1282,8 +938,12 @@
           href: disks-reserved-capacity.md
         - name: 高パフォーマンス用の設計
           href: premium-storage-performance.md
-        - name: ディスク バースト
+        - name: ディスク関連のメトリック
+          href: disks-metrics.md
+        - name: ディスク バースト モデル
           href: disk-bursting.md
+        - name: オンデマンド バーストを有効にする
+          href: disks-enable-bursting.md
         - name: ディスクのパフォーマンス レベル
           href: disks-change-performance.md
         - name: ディスクのパフォーマンス レベルを変更する
@@ -1300,10 +960,18 @@
       href: disks-scalability-targets.md
     - name: バックアップとデータ保護
       items:
-        - name: ディスクのバックアップとディザスター リカバリー
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 増分スナップショットを有効にする
           href: disks-incremental-snapshots.md
+        - name: Azure ディスク バックアップ
+          items:
+            - name: 概要
+              href: ../backup/disk-backup-overview.md?context=/azure/virtual-machines/context/context
+            - name: Azure ディスク バックアップの構成
+              href: ../backup/backup-managed-disks.md?context=/azure/virtual-machines/context/context
+            - name: Azure ディスク バックアップによるディスクの復元
+              href: ../backup/restore-managed-disks.md?context=/azure/virtual-machines/context/context
+        - name: ディスクのバックアップとディザスター リカバリー
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: ディスクのスナップショットの作成 - CLI
           href: ./linux/snapshot-copy-managed-disk.md
         - name: ディスクのスナップショットの作成 - PowerShell
@@ -1314,7 +982,7 @@
       href: ephemeral-os-disks.md
     - name: 移行と変換
       items:
-        - name: Standard と Premium 間でディスクを変換する
+        - name: ディスクを別のディスクの種類に変換する
           items:
             - name: CLI
               href: ./linux/convert-disk-storage.md
@@ -1467,6 +1135,8 @@
       href: ./linux/static-dns-name-resolution-for-linux-on-azure.md
 - name: Security
   items:
+    - name: 概要
+      href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
     - name: Azure Security Center
       href: ../security-center/security-center-introduction.md
     - name: セキュリティ ベースライン
@@ -1477,6 +1147,12 @@
           href: ./windows/security-baseline.md
     - name: 推奨事項
       href: security-recommendations.md
+    - name: トラステッド起動
+      items:
+        - name: 概要
+          href: trusted-launch.md
+        - name: ポータルを使用したデプロイ
+          href: trusted-launch-portal.md
     - name: ジャストインタイム アクセス
       href: ../security-center/security-center-just-in-time.md
     - name: のポリシー
@@ -1501,14 +1177,13 @@
         - name: Bastion ホストの作成
           items:
             - name: ポータル
-              href: ../bastion/bastion-create-host-portal.md
+              href: ../bastion/tutorial-create-host-portal.md
             - name: PowerShell
               href: ../bastion/bastion-create-host-powershell.md
             - name: CLI
               href: ../bastion/create-host-cli.md
             - name: Bastion SSH 接続
               href: ../bastion/bastion-connect-vm-ssh.md
-              items: null
             - name: Bastion RDP 接続
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: アクセス制御の使用
@@ -1552,7 +1227,9 @@
     - name: 概要
       href: maintenance-and-updates.md
     - name: VM ゲストの自動修正プログラム (プレビュー)
-      href: ./windows/automatic-vm-guest-patching.md
+      href: automatic-vm-guest-patching.md
+    - name: 拡張機能の自動アップグレード (プレビュー)
+      href: automatic-extension-upgrade.md
     - name: メンテナンス管理
       items:
         - name: メンテナンスの通知
@@ -1600,102 +1277,102 @@
 - name: 監視
   items:
     - name: 概要
-      href: ../azure-monitor/insights/monitor-vm-azure.md?context=/azure/virtual-machines/context/context
+      href: ../azure-monitor/vm/monitor-vm-azure.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: VM の監視
       items:
-        - name: Linux
-          href: ./linux/tutorial-monitor.md
         - name: Windows
           href: ./windows/tutorial-monitor.md
     - name: エージェント
       items:
         - name: エージェントの概要
-          href: ../azure-monitor/platform/agents-overview.md?context=/azure/virtual-machines/context/context
+          href: ../azure-monitor/agents/agents-overview.md?context=/azure/virtual-machines/context/context
         - name: よく寄せられる質問
           href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#agents
         - name: Azure Diagnostics 拡張機能
           items:
             - name: 概要
-              href: ../azure-monitor/platform/diagnostics-extension-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/diagnostics-extension-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux Diagnostics 拡張機能
               items:
-                - name: 概要
+                - name: Version 4.0
                   href: ../virtual-machines/extensions/diagnostics-linux.md?context=/azure/virtual-machines/context/context
+                - name: Version 3.0
+                  href: ../virtual-machines/extensions/diagnostics-linux-v3.md?context=/azure/virtual-machines/context/context
                 - name: Telegraf を使用したメトリックの収集
-                  href: ../azure-monitor/platform/collect-custom-metrics-linux-telegraf.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/essentials/collect-custom-metrics-linux-telegraf.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                   displayname: diagnostics extension
         - name: Log Analytics エージェント
           items:
             - name: 概要
-              href: ../azure-monitor/platform/log-analytics-agent.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/log-analytics-agent.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: Linux エージェント
-              href: ../azure-monitor/platform/agent-linux.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/agent-linux.md?context=/azure/virtual-machines/context/context
             - name: Log Analytics ゲートウェイ
-              href: ../azure-monitor/platform/gateway.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/gateway.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: エージェント管理
-              href: ../azure-monitor/platform/agent-manage.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/agent-manage.md?context=/azure/virtual-machines/context/context
             - name: エージェントの正常性
               href: ../azure-monitor/insights/solution-agenthealth.md?context=/azure/virtual-machines/context/context
             - name: データ ソース
               items:
                 - name: 概要
-                  href: ../azure-monitor/platform/agent-data-sources.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/agent-data-sources.md?context=/azure/virtual-machines/context/context
                 - name: カスタム JSON データ
-                  href: ../azure-monitor/platform/data-sources-json.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-json.md?context=/azure/virtual-machines/context/context
                 - name: collectd のパフォーマンス データ
-                  href: ../azure-monitor/platform/data-sources-collectd.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-collectd.md?context=/azure/virtual-machines/context/context
                 - name: syslog
-                  href: ../azure-monitor/platform/data-sources-syslog.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-syslog.md?context=/azure/virtual-machines/context/context
                 - name: パフォーマンス カウンター
-                  href: ../azure-monitor/platform/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-performance-counters.md?context=/azure/virtual-machines/context/context
                 - name: Linux アプリケーション パフォーマンス
-                  href: ../azure-monitor/platform/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-linux-applications.md?context=/azure/virtual-machines/context/context
                 - name: カスタム ログ
-                  href: ../azure-monitor/platform/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/agents/data-sources-custom-logs.md?context=/azure/virtual-machines/context/context
                 - name: カスタム フィールド
-                  href: ../azure-monitor/platform/custom-fields.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/logs/custom-fields.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: トラブルシューティング
           items:
             - name: Log Analytics VM 拡張機能
-              href: ../azure-monitor/platform/vmext-troubleshoot.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/visualize/vmext-troubleshoot.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
               displayname: 'troubleshoot, troubleshooting'
             - name: Log Analytics Linux エージェント
-              href: ../azure-monitor/platform/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/agents/agent-linux-troubleshoot.md?context=/azure/virtual-machines/context/context
               displayname: 'troubleshoot, troubleshooting'
         - name: VM に対する Azure Monitor
           items:
             - name: 概要
-              href: ../azure-monitor/insights/vminsights-overview.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 一般提供の FAQ
-              href: ../azure-monitor/insights/vminsights-ga-release-faq.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: よく寄せられる質問
-              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context#azure-monitor-for-vms
+              href: ../azure-monitor/faq.md
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要
-                  href: ../azure-monitor/insights/vminsights-enable-overview.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-overview.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: 単一の Azure VM での有効化
-                  href: ../azure-monitor/insights/vminsights-enable-portal.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Azure Policy を使用して有効にする
-                  href: ../azure-monitor/insights/vminsights-enable-policy.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-policy.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: Azure PowerShell を使用して有効にする
-                  href: ../azure-monitor/insights/vminsights-enable-powershell.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
                 - name: ハイブリッド環境対応にする
-                  href: ../azure-monitor/insights/vminsights-enable-hybrid.md?context=/azure/virtual-machines/context/context
+                  href: ../azure-monitor/vm/vminsights-enable-hybrid.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 依存関係のマップ
-              href: ../azure-monitor/insights/vminsights-maps.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-maps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: パフォーマンスの監視
-              href: ../azure-monitor/insights/vminsights-performance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-performance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: ログ クエリによるデータの分析
-              href: ../azure-monitor/insights/vminsights-log-search.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-log-search.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: ブックを使用したデータの視覚化
-              href: ../azure-monitor/insights/vminsights-workbooks.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-workbooks.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: アラート ルールの作成
-              href: ../azure-monitor/insights/vminsights-alerts.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-alerts.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 依存関係エージェントのアップグレード
-              href: ../azure-monitor/insights/vminsights-dependency-agent-maintenance.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-dependency-agent-maintenance.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: 監視を無効にする
-              href: ../azure-monitor/insights/vminsights-optout.md?context=/azure/virtual-machines/context/context
+              href: ../azure-monitor/vm/vminsights-optout.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
     - name: VM の使用状況
       href: vm-usage.md
     - name: VM にタグを付ける
@@ -1741,7 +1418,7 @@
         - name: 複数の VM のバックアップ
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: 復元オプション
-          href: /backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: サポート マトリックス
           href: ../backup/backup-support-matrix-iaas.md
         - name: 価格
@@ -1772,6 +1449,8 @@
               href: ./linux/move-vm.md
             - name: PowerShell
               href: ./windows/move-vm.md
+            - name: Marketplace VM のサブスクリプションを変更する
+              href: azure-cli-change-subscription-marketplace.md
         - name: VM を別のリージョンに移行する
           href: ../site-recovery/azure-to-azure-tutorial-migrate.md
         - name: 可用性ゾーンに移動する
@@ -1796,34 +1475,15 @@
     - name: カスタム データ
       href: custom-data.md
     - name: Ansible
-      items:
-        - name: インストールと構成
-          href: /azure/developer/ansible/install-on-linux-vm
-        - name: Linux VM の作成
-          href: /azure/developer/ansible/vm-configure
-        - name: Linux VM の管理
-          href: /azure/developer/ansible/vm-manage
+      href: /azure/developer/ansible/
     - name: Terraform
-      items:
-        - name: インストールと構成
-          href: /azure/developer/terraform/install-configure
-        - name: 完全な VM の作成
-          href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
+      href: /azure/developer/terraform/
     - name: Jenkins
-      href: /azure/developer/jenkins/overview
-      items:
-        - name: Jenkins サーバーを作成する
-          href: /azure/developer/jenkins/configure-on-linux-vm
-        - name: Azure VM エージェントでスケーリングする
-          href: /azure/developer/jenkins/scale-deployments-using-vm-agents
-        - name: アーティファクトをストレージに発行する
-          href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
-        - name: Jenkins をセキュリティ保護する
-          href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
+      href: /azure/developer/jenkins/
     - name: Azure DevOps
       href: ./linux/tutorial-azure-devops-blue-green-strategy.md
 - name: トラブルシューティング
-  href: ./troubleshooting/index.yml
+  href: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
 - name: リソース
   items:
     - name: クラウド導入フレームワーク

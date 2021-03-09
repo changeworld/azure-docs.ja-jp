@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2020
 ms.author: memildin
-ms.openlocfilehash: f9b3be69ab57c0abf7523169303def899f325229
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 7778607b533a836eb5a47a12b73374c2a8299621
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789218"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590564"
 ---
 # <a name="security-alerts-schemas"></a>セキュリティ アラートのスキーマ
 
@@ -24,7 +24,7 @@ ms.locfileid: "92789218"
 
 こうしたセキュリティ アラートは、Azure Security Center の **[脅威に対する保護]** ページで確認できるほか、次のような外部ツールを使用して確認することができます。
 
-- [Azure Sentinel](../sentinel/index.yml) - Microsoft のクラウドネイティブの SIEM です。 Sentinel コネクタは、Azure Security Center からアラートを受け取ると、それらを Azure Sentinel の [[Log Analytics ワークスペース]](../azure-monitor/learn/quick-create-workspace.md) に送信します。
+- [Azure Sentinel](../sentinel/index.yml) - Microsoft のクラウドネイティブの SIEM です。 Sentinel コネクタは、Azure Security Center からアラートを受け取ると、それらを Azure Sentinel の [[Log Analytics ワークスペース]](../azure-monitor/logs/quick-create-workspace.md) に送信します。
 - サードパーティの SIEM - [Azure Event Hubs](../event-hubs/index.yml) にデータを送信します。 その後、Event Hub のデータをサードパーティの SIEM に統合します。 詳細については、「[SIEM、SOAR、または IT サービス管理ソリューションにアラートをストリーミングする](export-to-siem.md)」を参照してください。
 - [REST API](/rest/api/securitycenter/) - REST API を使用してアラートにアクセスする場合は、[Alerts API のオンライン ドキュメント](/rest/api/securitycenter/alerts)を参照してください。
 
@@ -187,4 +187,4 @@ Security Center の外部からセキュリティ アラートにアクセスす
 - [Azure Sentinel](../sentinel/index.yml) - Microsoft のクラウドネイティブの SIEM
 - [Azure Event Hubs](../event-hubs/index.yml) - Microsoft のフル マネージドのリアルタイム データ インジェスト サービス
 - [継続的に Security Center データをエクスポートする](continuous-export.md)
-- [Log Analytics ワークスペース](../azure-monitor/learn/quick-create-workspace.md) - Azure Monitor のログ データは、Log Analytics ワークスペースという、データと構成情報を含んだコンテナーに格納されます。
+- [Log Analytics ワークスペース](../azure-monitor/logs/quick-create-workspace.md) - Azure Monitor のログ データは、Log Analytics ワークスペースという、データと構成情報を含んだコンテナーに格納されます。

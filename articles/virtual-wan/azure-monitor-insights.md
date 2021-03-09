@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: d14ae86d41caec3c1bd897c2c81bee748dcc312c
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6ead00a0979d81ef11ac81fb13a1abe31317691d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050886"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571321"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan"></a>Virtual WAN に関する Azure Monitor の分析情報
 
@@ -87,5 +87,5 @@ Virtual WAN の **[依存関係]** ビューによって、ハブ アンド ス�
 
 ## <a name="next-steps"></a>次のステップ
 
-* 詳細については、「[Azure Monitor のメトリック](../azure-monitor/platform/data-platform-metrics.md)」を参照してください。
+* 詳細については、「[Azure Monitor のメトリック](../azure-monitor/essentials/data-platform-metrics.md)」を参照してください。
 * すべての Virtual WAN メトリックの詳細については、[Virtual WAN のログとメトリック](logs-metrics.md)に関する記事を参照してください。

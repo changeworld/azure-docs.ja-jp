@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
-ms.openlocfilehash: 89e64b6e8018fafb22820e8594bc2b3c888bb04a
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 43b783d9462205b01d3ac4de0c5779fdc9864470
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98732158"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550458"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために Fortes Change Cloud を構成する
 
@@ -50,11 +50,11 @@ ms.locfileid: "98732158"
 
 ## <a name="step-2-configure-fortes-change-cloud-to-support-provisioning-with-azure-ad"></a>手順 2. Azure AD でのプロビジョニングをサポートするように Fortes Change Cloud を構成する
 
-1. 管理者アカウントを使用して Fortes Change Cloud にログインします。 **[設定]** アイコンをクリックし、 **[SCIM Settings]\(SCIM の設定\)** に移動します。
+1. 管理者アカウントを使用して Fortes Change Cloud にログインします。 **[設定]** アイコンをクリックし、 **[ユーザー プロビジョニング (SCIM)]** に移動します。
 
     [ ![Fortes Change Cloud の SCIM の設定](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png) ](media/fortes-change-cloud-provisioning-tutorial/scim-settings.png#lightbox)
 
-2. 新しいウィンドウで、**プライマリ トークン** をコピーして保存します。 この値を、Azure portal で Fortes Change Cloud アプリケーションの [プロビジョニング] タブ内の [シークレット トークン] フィールドに入力します。
+2. 新しいウィンドウで、**テナント URL** と **プライマリ トークン**.をコピーして保存します。 Azure portal の Fortes Change Cloud アプリケーションの [プロビジョニング] タブで、テナント URL は **[テナント URL]** * フィールドに入力し、プライマリ トークンは **[シークレット** * トークン] フィールドに入力します。
      
       [ ![Fortes Change Cloud のプライマリ トークン](media/fortes-change-cloud-provisioning-tutorial/primary-token.png)](media/fortes-change-cloud-provisioning-tutorial/primary-token.png#lightbox)
 

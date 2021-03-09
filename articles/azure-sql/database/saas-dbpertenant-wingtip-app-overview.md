@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 0efc8105295ca7f97e6f465071c31b193173c5cd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447087"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100588732"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL Database によるテナントごとのデータベース パターンを使用するマルチテナント SaaS アプリケーションの概要
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -46,7 +46,7 @@ Wingtip SaaS アプリでは、テナントごとのデータベース モデル
 |[Wingtip SaaS アプリケーションをデプロイして調査する](./saas-dbpertenant-get-started-deploy.md)|  Wingtip SaaS アプリケーションをお使いの Azure サブスクリプションにデプロイして調査します。 |
 |[テナントのプロビジョニングおよびカタログ登録を行う](./saas-dbpertenant-provision-and-catalog.md)| アプリケーションがカタログ データベースを使用してテナントに接続する方法と、カタログがテナントを各自のデータにマッピングする方法について説明します。 |
 |[パフォーマンスを監視および管理する](./saas-dbpertenant-performance-monitoring.md)| SQL Database の監視機能の使用方法と、パフォーマンスのしきい値を超過した場合のアラートの設定方法について説明します。 |
-|[Azure Monitor ログを使用した監視](./saas-dbpertenant-log-analytics.md) | [Azure Monitor ログ](../../azure-monitor/log-query/log-query-overview.md)を使用して、複数のプールにある大量のリソースを監視する方法を説明します。 |
+|[Azure Monitor ログを使用した監視](./saas-dbpertenant-log-analytics.md) | [Azure Monitor ログ](../../azure-monitor/logs/log-query-overview.md)を使用して、複数のプールにある大量のリソースを監視する方法を説明します。 |
 |[シングル テナントを復元する](./saas-dbpertenant-restore-single-tenant.md)| テナント データベースを前のポイント イン タイムに復元する方法を説明します。 既存のテナント データベースをオンラインにしたまま、並列のデータベースに復元する手順についても説明します。 |
 |[テナント データベースのスキーマの管理に関するページ](saas-tenancy-schema-management.md)| すべてのテナント データベースに対してスキーマの更新と参照データの更新を行う方法について説明します。 |
 |[テナント間で分散クエリを実行する](saas-tenancy-cross-tenant-reporting.md) | アドホック分析データベースを作成し、すべてのテナントに対して実行されるリアルタイムの分散クエリを実行します。  |

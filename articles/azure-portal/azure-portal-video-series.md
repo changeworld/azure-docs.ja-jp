@@ -4,12 +4,12 @@ description: ポータルで Azure サービスを使用する方法のビデオ
 keywords: ''
 ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 131ec94e321388a3578cd2fd59fdb2fd75339c5e
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: d0b356729f2fab418b2322aeb20a44fc74cb199c
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852610"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550443"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure portal の使い方に関するビデオ シリーズ
 
@@ -17,17 +17,17 @@ Azure portal のハウツー ビデオ シリーズでは、Azure portal で Azu
 
 ## <a name="featured-video"></a>注目のビデオ
 
-このおすすめのビデオでは、Azure クイックスタート センターを使用して Azure を開始する方法を説明します。
+このおすすめビデオでは、Azure Cost Management ビューの使用方法について説明します。
 
-> [!VIDEO https://www.youtube.com/embed/mb5k9nXMtBM]
+> [!VIDEO https://www.youtube.com/embed/VRJA5bn2VH0]
 
-[Azure クイックスタート センターを使用して Azure の使用を開始する方法](https://www.youtube.com/watch?v=mb5k9nXMtBM)
+[Azure Cost Management ビューの使用方法](https://www.youtube.com/watch?v=VRJA5bn2VH0)
 
 見逃したかもしれない以下の最近のビデオを確認してください。
 
-| [Azure Kubernetes Service でアプリケーションを管理する方法](https://www.youtube.com/watch?v=YfARHb52Bp4)  | [ログとパラメーターを使用して Azure ブックを作成する方法](https://www.youtube.com/watch?v=EC7n1Oo6D-o)  | [App Service Web アプリでカスタム ドメインを追加し、セキュリティで保護する方法](https://www.youtube.com/watch?v=bXP6IvNYISw) |
+| [ピルを使用して Azure portal をフィルター処理する方法](https://www.youtube.com/watch?v=XyKh_3NxUlM)  | [リソースの視覚化ビューを取得する方法](https://www.youtube.com/watch?v=wudqkkJd5E4)  | [Azure portal ダッシュボードにコンテンツをピン留めする方法](https://www.youtube.com/watch?v=eyOJkhYItSg) |
 | ------| ------ | ------ |
-| [![Azure Kubernetes Service でアプリケーションを管理する方法に関する YouTube ビデオの画像](https://i.ytimg.com/vi/YfARHb52Bp4/hqdefault.jpg)](https://www.youtube.com/watch?YfARHb52Bp4) | [![ログとパラメーターを使用して Azure ブックを作成する方法に関する YouTube ビデオの画像](https://i.ytimg.com/vi/EC7n1Oo6D-o/hqdefault.jpg)](http://www.youtube.com/watch?v=EC7n1Oo6D-o) | [![App Service Web アプリでカスタム ドメインを追加し、セキュリティで保護する方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/bXP6IvNYISw/hqdefault.jpg)](http://www.youtube.com/watch?v=bXP6IvNYISw) |
+| [![ピルを使用して Azure portal をフィルター処理する方法に関する YouTube ビデオの画像](https://i.ytimg.com/vi/XyKh_3NxUlM/hqdefault.jpg)](https://www.youtube.com/watch?XyKh_3NxUlM) | [![リソースの視覚化ビューを取得する方法に関する YouTube ビデオの画像](https://i.ytimg.com/vi/wudqkkJd5E4/hqdefault.jpg)](http://www.youtube.com/watch?v=wudqkkJd5E4) | [![Azure portal ダッシュボードにコンテンツをピン留めする方法に関する YouTube ビデオの画像](https://i.ytimg.com/vi/eyOJkhYItSg/hqdefault.jpg)](http://www.youtube.com/watch?v=eyOJkhYItSg) |
 
 ## <a name="video-playlist"></a>ビデオのプレイリスト
 

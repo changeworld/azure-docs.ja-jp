@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2021
+ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 9e537bfa782569fb8fa2a7957c6874bda69d8c06
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 845697b9d2fd8d43caa3a9992fea8a780b7d9b7c
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805360"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522871"
 ---
 # <a name="pricing-of-azure-security-center"></a>Azure Security Center の価格
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー リスクへの対応に役立つインテリジェント検出などの機能が提供されます。
@@ -118,10 +118,18 @@ Microsoft Defender for Endpoint のライセンスを既に取得している場
 割引を確認するには、Security Center のサポート チームに連絡し、関連するライセンスごとに、関連するワークスペース ID、リージョン、ライセンス情報を提示してください。
 
 ### <a name="my-subscription-has-azure-defender-for-servers-enabled-do-i-pay-for-not-running-servers"></a>私のサブスクリプションでは Azure Defender for servers が有効になっています。実行していないサーバーは課金されますか? 
-いいえ。 サブスクリプションで[サーバー用 Azure Defender](defender-for-servers-introduction.md) を有効にすると、動作中のサーバーについてのみ時間単位で課金されます。 オフになっているサーバーについては (オフになっている間)、料金を請求されません。 
+いいえ。 サブスクリプションで [Azure Defender for servers](defender-for-servers-introduction.md) を有効にしても、割り当て解除済みの電源状態のマシンは課金されません。 マシンは電源の状態に基づいて課金されます。次の表を参照してください。
 
-> [!TIP]
-> このことは、Security Center によって保護される他の種類のリソースにも当てはまります。 
+| State        | 説明                                                                                                                                      | 課金されたインスタンスの使用 |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
+| 開始中     | VM を起動中です。                                                                                                                               | 課金されません            |
+| 実行中      | VM の通常の動作状態です                                                                                                                    | 課金されます                |
+| 停止中     | これは過渡的な状態です。 完了すると、Stopped と表示されます。                                                                           | 課金されます                |
+| 停止済み      | ゲスト OS 内から、または PowerOff API によって、VM がシャットダウンされています。 ハードウェアは引き続き VM に割り当てられ、VM はホスト上に残ります。 | 課金されます                |
+| 割り当て解除中 | 過渡的な状態です。 完了すると、VM は割り当て解除済みと表示されます。                                                                             | 課金されません            |
+| 割り当て解除済み  | VM は正常に停止され、ホストから削除されました。                                                                                  | 課金されません            |
+
+:::image type="content" source="media/security-center-pricing/deallocated-virtual-machines.png" alt-text="割り当て解除状態のマシンを示す Azure Virtual Machines":::
 
 ### <a name="will-i-be-charged-for-machines-without-the-log-analytics-agent-installed"></a>Log Analytics エージェントがインストールされていないマシンは課金されますか?
 はい。 サブスクリプションで[サーバー用 Azure Defender](defender-for-servers-introduction.md) を有効にすると、そのサブスクリプション内のマシンには、Log Analytics エージェントがインストールされていなくても一連の保護が適用されます。

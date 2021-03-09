@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 57fda08a996b7d46da74c0ce35bff0df20821b31
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 708c70a5144e4e38dd5de9524711c80ef28cd839
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654831"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100092130"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -34,6 +34,16 @@ Text Analytics API を使用する前に、アプリケーションのキーと�
 2.  エンドポイントに使用するリージョンを選択します。  `/analyze` と `/health` のエンドポイントは、次のリージョンでのみご利用いただけます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。
 
 3.  Text Analytics リソースを作成し、ページの左側にある "キーとエンドポイントのブレード" に移動します。 後で API を呼び出すときに使用するキーをコピーします。 後で `Ocp-Apim-Subscription-Key` ヘッダーの値としてこの値を追加します。
+
+## <a name="change-your-pricing-tier"></a>価格レベルを変更する 
+
+S0 から S4 の価格レベルを使用している既存の Text Analytics リソースがある場合は、Standard (S) [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)を使用するようにそれを更新できます。
+
+1. [Azure portal](https://portal.azure.com/) で Text Analytics リソースに移動します。
+2. 左側のナビゲーション メニューから、 **[価格レベル]** を選択します。 これは **[リソース管理]** の下にあります。 
+3. Standard (S) 価格レベルを選択します。 **[選択]** をクリックします。
+
+Standard (S) 価格レベルで新しい Text Analytics リソースを作成し、新しいリソースの資格情報を使用するようにアプリケーションを移行することもできます。 
 
 ## <a name="using-the-api-synchronously"></a>API の同期的な使用
 

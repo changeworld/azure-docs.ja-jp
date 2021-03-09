@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: fd0c7b74bea979737644824f93b4dce7a2364b99
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977015"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522344"
 ---
 # <a name="about-defender-for-iot-console-users"></a>About Defender for IoT コンソール ユーザーについて
 
@@ -265,7 +265,7 @@ CyberX またはサポート ユーザーのパスワードをリセットする
 
 1. **[更新]** を選択します。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 [センサーをアクティブにしてセットアップする](how-to-activate-and-set-up-your-sensor.md)
 [オンプレミス管理コンソールをアクティブにしてセットアップする](how-to-activate-and-set-up-your-on-premises-management-console.md)

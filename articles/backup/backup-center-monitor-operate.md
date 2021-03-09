@@ -3,12 +3,12 @@ title: バックアップ センターを使用してバックアップを監視
 description: この記事では、バックアップ センターを使用して、バックアップを大規模に監視および操作する方法について説明します。
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 29e09e502e83ea67af290f206ee0e68b847b2069
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c40f7804a0f0bb7694e6df205648d3ad20ad80e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993166"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719544"
 ---
 # <a name="monitor-and-operate-backups-using-backup-center"></a>バックアップ センターを使用してバックアップを監視および操作する
 
@@ -16,7 +16,7 @@ ms.locfileid: "90993166"
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 
-* バックアップ センターは現在、Azure VM バックアップと Azure Database for PostgreSQL サーバーのバックアップでサポートされています。
+* バックアップ センターでは現在、Azure VM のバックアップ、Azure VM 内の SQL のバックアップ、Azure VM 内の SAP HANA のバックアップ、Azure Files のバックアップ、Azure BLOB のバックアップ、Azure Managed Disks のバックアップ、および Azure Database for PostgreSQL サーバーのバックアップがサポートされています。
 * サポートされるシナリオとサポートされないシナリオの詳細な一覧については、[サポート マトリックス](backup-center-support-matrix.md)を参照してください。
 
 ## <a name="backup-instances"></a>バックアップ インスタンス
@@ -70,7 +70,7 @@ ms.locfileid: "90993166"
 
 ## <a name="vaults"></a>コンテナー
 
-バックアップ センターで **[コンテナー]** メニュー項目を選択すると、アクセスできるすべての [Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)と[バックアップ コンテナー](backup-vault-overview.md)の一覧を表示できます。 この一覧は、次のパラメーターでフィルター処理できます。
+バックアップ センターで **[コンテナー]** メニュー項目を選択すると、アクセスできるすべての [Recovery Services コンテナー](backup-azure-recovery-services-vault-overview.md)と [バックアップ コンテナー](backup-vault-overview.md)の一覧を表示できます。 この一覧は、次のパラメーターでフィルター処理できます。
 
 * コンテナーのサブスクリプション
 * コンテナーのリソース グループ

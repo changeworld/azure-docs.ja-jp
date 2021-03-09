@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 34a947a2a0f6d8c87c0580f273130b671b4f17fc
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 4990f0d0a10709f2c1c5a17806020cd685f999fc
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722234"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593335"
 ---
 # <a name="troubleshoot"></a>トラブルシューティング
 
@@ -191,9 +191,9 @@ C++ NuGet パッケージ内には、使用するバイナリ フレーバーを
 
 レンダリングされたオブジェクトが頭部の動きに連動して動くように見える場合は、*Late Stage Reprojection* (LSR) に関する問題が発生している可能性があります。 このような状況への対処方法のガイダンスについては、[Late Stage Reprojection](../overview/features/late-stage-reprojection.md) に関するセクションをご覧ください。
 
-不安定なホログラム (揺れ、ゆがみ、ジッター、ジャンプなどが発生しているホログラム) のもう 1 つの理由として、ネットワーク接続の問題、特にネットワーク帯域幅が不足していたり、待機時間が長すぎたりすることがあります。 ネットワーク接続の品質を示す適切な指標の 1 つは、[パフォーマンス統計](../overview/features/performance-queries.md)値 `ARRServiceStats.VideoFramesReused` です。 再利用されたフレームは、クライアント側で (パケットの損失やネットワーク待機時間のばらつきなどにより) 新しいビデオ フレームが利用できなかったために、前のビデオ フレームを再利用する必要があったという状況を示しています。 `ARRServiceStats.VideoFramesReused` が 0 より大きいことが多い場合は、ネットワークの問題を示しています。
+不安定なホログラム (揺れ、ゆがみ、ジッター、ジャンプなどが発生しているホログラム) のもう 1 つの理由として、ネットワーク接続の問題、特にネットワーク帯域幅が不足していたり、待機時間が長すぎたりすることがあります。 ネットワーク接続の品質を示す適切な指標の 1 つは、[パフォーマンス統計](../overview/features/performance-queries.md)値 `ServiceStatistics.VideoFramesReused` です。 再利用されたフレームは、クライアント側で (パケットの損失やネットワーク待機時間のばらつきなどにより) 新しいビデオ フレームが利用できなかったために、前のビデオ フレームを再利用する必要があったという状況を示しています。 `ServiceStatistics.VideoFramesReused` が 0 より大きいことが多い場合は、ネットワークの問題を示しています。
 
-確認すべきもう 1 つの値は `ARRServiceStats.LatencyPoseToReceiveAvg` です。 この値は、常に 100 ミリ秒未満である必要があります。 値がそれよりも大きい場合は、接続されているデータ センターが離れすぎていることを示しています。
+確認すべきもう 1 つの値は `ServiceStatistics.LatencyPoseToReceiveAvg` です。 この値は、常に 100 ミリ秒未満である必要があります。 値がそれよりも大きい場合は、接続されているデータ センターが離れすぎていることを示しています。
 
 考えられる軽減策の一覧については、[ネットワーク接続のガイドライン](../reference/network-requirements.md#guidelines-for-network-connectivity)をご覧ください。
 

@@ -4,12 +4,12 @@ description: Application Insights でシステムとカスタムの .NET/.NET Co
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: d1ae0937c25a68798acd87fe8b2a0a54aa765b35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803645"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579525"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter の概要
 
@@ -88,14 +88,14 @@ WorkerService SDK にも同様の方法を使用できますが、次の例に�
 
 ## <a name="event-counters-in-metric-explorer"></a>メトリック エクスプローラーのイベント カウンター
 
-[メトリック エクスプローラー](../platform/metrics-charts.md)で EventCounter メトリックを表示するには、Application Insights リソースを選択し、メトリック名前空間として [ログベースのメトリック] を選択します。 これにより、EventCounter メトリックがカスタム カテゴリの下に表示されます。
+[メトリック エクスプローラー](../essentials/metrics-charts.md)で EventCounter メトリックを表示するには、Application Insights リソースを選択し、メトリック名前空間として [ログベースのメトリック] を選択します。 これにより、EventCounter メトリックがカスタム カテゴリの下に表示されます。
 
 > [!div class="mx-imgBorder"]
 > ![Application Insights メトリックス エクスプローラーで報告されるイベント カウンター](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Analytics のイベント カウンター
 
-また、[Analytics](../log-query/log-query-overview.md) 内で **customMetrics** テーブルのイベント カウンター レポートを検索して表示することもできます。
+また、[Analytics](../logs/log-query-overview.md) 内で **customMetrics** テーブルのイベント カウンター レポートを検索して表示することもできます。
 
 たとえば、次のクエリを実行して、どのカウンターが収集され、クエリに使用できるかを確認します。
 
@@ -121,7 +121,7 @@ customMetrics
 他のテレメトリと同様に、**customMetrics** にも、アプリを実行しているホスト サーバー インスタンスの ID を示す列 `cloud_RoleInstance` があります。 上記のクエリは、インスタンスごとのカウンター値を示しており、さまざまなサーバー インスタンスのパフォーマンスを比較するために使用できます。
 
 ## <a name="alerts"></a>警告
-他のメトリックと同様に、指定した制限をイベント カウンターが超えた場合に警告する[アラートを設定](../platform/alerts-log.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
+他のメトリックと同様に、指定した制限をイベント カウンターが超えた場合に警告する[アラートを設定](../alerts/alerts-log.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

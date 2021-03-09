@@ -13,12 +13,12 @@ ms.date: 10/09/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 4475ec02d4cb179b75c4c2ffcb1b6abf114fae70
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 8bc9773fa7e1b3db2e249e803f4d2a3cf39edb48
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509497"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100102548"
 ---
 # <a name="microsoft-identity-web-authentication-library"></a>Microsoft Identity Web 認証ライブラリ
 
@@ -70,7 +70,7 @@ dotnet new blazorserver2 --auth SingleOrg --calls-graph --client-id "00000000-00
 
 #### <a name="github"></a>GitHub
 
-Microsoft Identity Web は、GitHub でホストされているオープンソース プロジェクトです。<a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/microsoft-identity-web<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+Microsoft Identity Web は、GitHub でホストされているオープンソース プロジェクトです。<a href="https://github.com/AzureAD/microsoft-identity-web" target="_blank">AzureAD/microsoft-identity-web</a>
 
 [リポジトリ wiki](https://github.com/AzureAD/microsoft-identity-web/wiki) には追加のドキュメントが含まれています。ヘルプが必要な場合、またはバグを発見した場合は、[問題を報告](https://github.com/AzureAD/microsoft-identity-web/issues)できます。
 
@@ -99,8 +99,8 @@ Microsoft ID Web の動作を確認するには、次の Blazor Server のチュ
 
 GitHub の Microsoft Identity Web wiki には、ライブラリのさまざまな側面に関する広範なリファレンス ドキュメントが含まれています。 たとえば、証明書の使用状況、増分同意、条件付きアクセスのリファレンスは、次の場所にあります。
 
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Microsoft.Identity.Web での証明書の使用<span class="docon docon-navigate-external x-hidden-focus"></span></a> (GitHub)
-- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">増分同意と条件付きアクセス<span class="docon docon-navigate-external x-hidden-focus"></span></a> (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Using-certificates" target="_blank">Microsoft.Identity.Web での証明書の使用</a> (GitHub)
+- <a href="https://github.com/AzureAD/microsoft-identity-web/wiki/Managing-incremental-consent-and-conditional-access" target="_blank">増分同意と条件付きアクセス</a> (GitHub)
 
 <!-- LINKS -->
 <!--  [miw-certs]: microsoft-identity-web-certificates.md  -->

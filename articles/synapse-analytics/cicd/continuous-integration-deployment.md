@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5f82e8b7359b90d5127e2c20a2b89cc5ad739a56
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223688"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99624761"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse ワークスペースの継続的インテグレーションとデリバリー
 
@@ -101,7 +101,7 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
 
      ![拡張機能のインストール](media/install-extension.png)
 
-1. Azure DevOps パイプラインのサービス プリンシパルにサブスクリプションのアクセス許可が付与され、ターゲット ワークスペースのワークスペース管理者としても割り当てられていることを確認します。 
+1. Azure DevOps パイプラインのサービス プリンシパルにサブスクリプションのアクセス許可が付与され、ターゲットのワークスペースのワークスペース管理者としても割り当てられていることを確認します。 
 
 1. 新しいタスクを作成します。 **[Synapse ワークスペースのデプロイ]** を探して **[追加]** を選択します。
 
@@ -134,3 +134,13 @@ Synapse ワークスペースとの Git 統合を使用していて、変更を�
 -   **アーティファクトの移行前にプールを準備します**。 SQL スクリプトまたはノートブックが開発ワークスペース内のプールにアタッチされている場合は、別の環境にも同じ名前のプールが必要です。 
 -   **コードとしてのインフラストラクチャ (IaC)** 。 記述型モデルでのインフラストラクチャ (ネットワーク、仮想マシン、ロード バランサー、接続トポロジ) の管理であり、DevOps チームがソース コードに使用するものと同じバージョン管理を使用します。 
 -   **その他**。 [ADF アーティファクトのベスト プラクティス](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)に関するページを参照してください
+
+## <a name="troubleshooting-artifacts-deployment"></a>アーティファクト デプロイのトラブルシューティング 
+
+### <a name="use-the-synapse-workspace-deployment-task"></a>Synapse ワークスペース デプロイ タスクを使用する
+
+Synapse には、ARM リソースではない複数のアーティファクトがあります。 これは、Azure Data Factory とは異なります。 Synapse アーティファクトをデプロイするために、ARM テンプレート デプロイ タスクを使用しても正しく機能しません。
+ 
+### <a name="unexpected-token-error-in-release"></a>リリースにおける予期しないトークン エラー
+
+エスケープ処理されていないパラメーター値がパラメーター ファイルに含まれる場合、リリース パイプラインでファイルを解析できず、"予期しないトークン" エラーが生成されます。 パラメーターをオーバーライドすること、または Azure KeyVault を使用してパラメーター値を取得することをお勧めします。 対処法としてダブル エスケープ文字を使用することもできます。

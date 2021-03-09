@@ -3,33 +3,33 @@ title: 'ML Studio (classic): モデルが Web サービスになるまでの過�
 description: Azure Machine Learning Studio (クラシック) モデルが開発中の実験から Web サービスになるまでにたどる過程の概要。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: c92f8c74da76b2ac938892e27f3d6be9c70c3238
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4e0f5786047977a319825aae9f3c7b89c0aa118b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95507267"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518625"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Machine Learning Studio (クラシック) モデルが実験から Web サービスになるまでの過程
 
 **適用対象:** ![これはチェック マークです。つまり、この記事は Machine Learning Studio (クラシック) を対象としています。](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (クラシック)   ![これは X 印です。つまり、この記事は Azure Machine Learning を対象としています。](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
-Azure Machine Learning Studio (クラシック) によって提供される対話形式のキャンバスで、予測分析モデルを表す "**_実験_* _" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
+Azure Machine Learning Studio (クラシック) によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
 
-_ 実験にデータを入力する
+* 実験にデータを入力
 * データを操作します。
 * 機械学習アルゴリズムを使用してモデルをトレーニング
 * モデルにスコアを付ける
 * 結果を評価
 * 最終的な値を出力
 
-実験で問題がなければ、ユーザーが新しいデータを送信して折り返し結果を受信できるように、"***従来の Azure Machine Learning Web サービス** _" または "_*_新しい Azure Machine Learning Web サービス_*_" としてデプロイできます。
+実験で問題がなければ、ユーザーが新しいデータを送信して折り返し結果を受信できるように、"***従来の Azure Machine Learning Web サービス** _" または "_ *_新しい Azure Machine Learning Web サービス_**" としてデプロイできます。
 
 この記事では、Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程について、概要を説明します。
 
@@ -38,7 +38,7 @@ _ 実験にデータを入力する
 >
 >
 
-Azure Machine Learning Studio (クラシック) は "_予測分析モデル*" の開発とデプロイを目的に設計されていますが、予測分析モデルを含まない実験の開発に Studio (クラシック) を使用することもできます。 たとえば、データを入力して操作し、結果を出力するだけの実験などです。 この非予測実験は、予測分析実験と同様に、Web サービスとしてデプロイすることができますが、この実験では機械学習モデルのトレーニングやスコア付けが実施されないため、より簡単なプロセスになります。 これは Studio (クラシック) の一般的な使用方法ではありません。一般的な使用方法についてこれから説明し、Studio (クラシック) の機能を網羅することにします。
+Azure Machine Learning Studio (クラシック) は "*予測分析モデル*" の開発とデプロイを目的に設計されていますが、予測分析モデルを含まない実験の開発に Studio (クラシック) を使用することもできます。 たとえば、データを入力して操作し、結果を出力するだけの実験などです。 この非予測実験は、予測分析実験と同様に、Web サービスとしてデプロイすることができますが、この実験では機械学習モデルのトレーニングやスコア付けが実施されないため、より簡単なプロセスになります。 これは Studio (クラシック) の一般的な使用方法ではありません。一般的な使用方法についてこれから説明し、Studio (クラシック) の機能を網羅することにします。
 
 ## <a name="developing-and-deploying-a-predictive-web-service"></a>予測 Web サービスの開発とデプロイ
 Machine Learning Studio (クラシック) を使用して予測 Web サービスを開発し、デプロイする場合、一般的なソリューションがたどる段階は次のようになります。
@@ -48,14 +48,14 @@ Machine Learning Studio (クラシック) を使用して予測 Web サービス
 *図 1 - 一般的な予測分析モデルの段階*
 
 ### <a name="the-training-experiment"></a>トレーニング実験
-"***トレーニング実験** _" は、Machine Learning Studio (クラシック) で Web サービスを開発する最初のフェーズです。 トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。 最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。 予測分析実験の開発の例については、[Azure Machine Learning Studio (クラシック) での信用リスク評価のための予測分析ソリューション開発](tutorial-part1-credit-risk.md)に関する記事を参照してください。
+"***トレーニング実験***" は、Machine Learning Studio (クラシック) で Web サービスを開発する最初のフェーズです。 トレーニング実験の目的は、機械学習モデルの開発、テスト、反復処理、そしてトレーニングの場所を提供することです。 最適なソリューションを見つけるために複数のモデルを同時にトレーニングすることもできますが、実験が終わったら、トレーニング済みのモデルを 1 つ選択し、残りのモデルを実験から除外することになります。 予測分析実験の開発の例については、[Azure Machine Learning Studio (クラシック) での信用リスク評価のための予測分析ソリューション開発](tutorial-part1-credit-risk.md)に関する記事を参照してください。
 
 ### <a name="the-predictive-experiment"></a>予測実験
-トレーニング実験でモデルをトレーニングした後で、Machine Learning Studio (クラシック) で _*[Web サービスの設定]* * をクリックし、 **[Predictive Web Service]\(予測 Web サービス\)** を選択すると、トレーニング実験を "**_予測実験_*_" に変換する処理が開始します。 予測実験の目的は、トレーニング済みのモデルを使用して新しいデータにスコアを付け、最終的に Azure Web サービスとして運用できる状態にすることです。
+トレーニング実験でモデルをトレーニングしたら、Machine Learning Studio (クラシック) で **[Web サービスの設定]** をクリックし、 **[Predictive Web Service]\(予測 Web サービス\)** を選択して、トレーニング実験を "**_予測実験_**" に変換する処理を開始します。 予測実験の目的は、トレーニング済みのモデルを使用して新しいデータにスコアを付け、最終的に Azure Web サービスとして運用できる状態にすることです。
 
 この変換は、次の手順で行われます。
 
-_ トレーニングに使用したモジュールのセットを単一のモジュールに変換し、トレーニング済みのモデルとして保存する
+* トレーニングに使用したモジュールのセットを単一のモジュールに変換し、トレーニング済みのモデルとして保存する
 * スコア付けに関係しない余分なモジュールをすべて除外する
 * 最終的な Web サービスで使用する入力ポートと出力ポートを追加する
 

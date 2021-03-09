@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: d7d34b61e584b63c517b6c0f8af4cb4adcc7fefe
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289499"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202167"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault 証明書のインポートに関する FAQ
 
@@ -43,7 +43,7 @@ ms.locfileid: "93289499"
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Azure portal を使用して証明書をインポートすると、"問題が発生しました" というエラーが発生します。 詳しく調査するにはどうすればよいですか?
     
-さらにわかりやすいエラーを表示するには、[Azure CLI](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) または [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0) を使用して証明書ファイルをインポートします。
+さらにわかりやすいエラーを表示するには、[Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) または [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0) を使用して証明書ファイルをインポートします。
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>次のエラーはどうすれば解決できますか: "エラーの種類: アクセスが拒否されたか、ユーザーに証明書をインポートする権限がない" ?
     
@@ -62,6 +62,10 @@ ms.locfileid: "93289499"
 このエラーは次の 2 つの理由により発生する場合があります。    
 * 証明書のサブジェクト名は、200 文字までに制限されています。
 * 証明書のパスワードは、200 文字までに制限されています。
+
+
+### <a name="error-the-specified-pem-x509-certificate-content-is-in-an-unexpected-format-please-check-if-certificate-is-in-valid-pem-format"></a>エラー "指定された PEM X.509 証明書の内容は、予期しない形式です。 証明書が有効な PEM 形式かどうかをご確認ください"。
+PEM ファイルのコンテンツが UNIX スタイルの行区切り記号 `(\n)` を使用していることを確認してください。
 
 ### <a name="can-i-import-an-expired-certificate-to-azure-key-vault"></a>有効期限が切れた証明書を Azure Key Vault にインポートできますか?
     

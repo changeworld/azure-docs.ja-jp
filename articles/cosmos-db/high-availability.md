@@ -4,15 +4,15 @@ description: この記事では、Azure Cosmos DB で高可用性を実現する
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/18/2021
+ms.date: 02/05/2021
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: d827011c4f831433a7446c90eed0c30c7b1e94d7
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 16d2bf39d61961e2f83910735db1d0ddf1c91849
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600561"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627384"
 ---
 # <a name="how-does-azure-cosmos-db-provide-high-availability"></a>Azure Cosmos DB で高可用性を実現する方法
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,7 +80,7 @@ Azure Cosmos DB は、スループット、99 パーセンタイルの待ち時�
 
 * 読み取りリージョンの停止中、整合性レベルを使用しているか、3 つ以上の読み取りリージョンとの厳密な整合性を持つ Azure Cosmos アカウントでは、読み取りと書き込みの高可用性が維持されます。
 
-* 2 つ以下の読み取りリージョン (読み取りおよび書き込みリージョンを含む) との強力な整合性を使用する Azure Cosmos アカウントでは、読み取りリージョンの停止中は読み取りおよび書き込みの可用性が失われます。
+* 3 つ以下の全リージョン (書き込み 1 つ、読み取り 2 つ) との強力な整合性を使用する Azure Cosmos アカウントでは、読み取りリージョンの停止中は書き込みの可用性が失われます。 ただし、4 つ以上のリージョンをお持ちのお客様は、サポート チケットを送信することで、動的読み取りクォーラムを使用することを選択できます。 この構成を持つ少なくとも 2 つの読み取りリージョンを維持するアカウントでは、書き込みの可用性が維持されます。
 
 * 影響を受けるリージョンは自動的に切断され、オフラインとマークされます。 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) は、読み取り呼び出しを、優先リージョンの一覧にある次の使用可能なリージョンにリダイレクトします。
 
@@ -112,15 +112,15 @@ Azure Cosmos アカウントに複数リージョンの書き込みを構成す�
 |ゾーンの障害 - 可用性 | 可用性の損失 | 可用性の損失なし | 可用性の損失なし | 可用性の損失なし |
 |リージョンの障害 - データ損失 | データ損失 |  データ損失 | 整合性レベルによって決まります。 詳細については、[整合性、可用性、パフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)に関するページを参照してください。 | 整合性レベルによって決まります。 詳細については、[整合性、可用性、パフォーマンスのトレードオフ](consistency-levels-tradeoffs.md)に関するページを参照してください。
 |リージョンの障害 - 可用性 | 可用性の損失 | 可用性の損失 | 読み取りリージョンの障害に関して可用性の損失なし、書き込みリージョンの障害に関しては一時的 | 可用性の損失なし |
-|価格 (**_1_* _) | なし | プロビジョニングされた RU/秒 x 1.25 レート | プロビジョニングされた RU/秒 x 1.25 レート (_*_2_*_) | 複数リージョン書き込みレート |
+|価格 (***1** _) | なし | プロビジョニングされた RU/秒 x 1.25 レート | プロビジョニングされた RU/秒 x 1.25 レート (_*_2_**) | 複数リージョン書き込みレート |
 
-_*_1_*_ サーバーレス アカウントの要求ユニット (RU) には、1.25 の係数が乗算されます。
+***1*** サーバーレス アカウントの要求ユニット (RU) には、1.25 の係数が乗算されます。
 
-_*_2_*_ 1.25 のレートは、AZ が有効になっているリージョンにのみ適用されます。
+***2*** 1.25 のレートは、AZ が有効になっているリージョンにのみ適用されます。
 
 可用性ゾーンは、次の方法で有効にできます。
 
-_ [Azure portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Azure Portal](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 
 * [Azure PowerShell](manage-with-powershell.md#create-account)
 

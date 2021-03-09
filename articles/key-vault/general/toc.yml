@@ -43,9 +43,11 @@
   items:
     - name: 基本的な概念
       href: basic-concepts.md
-    - name: Security
+    - name: ベスト プラクティス
+      href: best-practices.md
+    - name: セキュリティ
       items:
-        - name: セキュリティの概要
+        - name: 概要
           href: security-overview.md
         - name: キー コンテナーへのアクセスをセキュリティで保護する
           href: secure-your-key-vault.md
@@ -94,10 +96,12 @@
               href: assign-access-policy-powershell.md
             - name: ポータル
               href: assign-access-policy-portal.md
-        - name: キー、シークレット、証明書へのアクセスを管理するための Azure RBAC の使用 (プレビュー)
-          href: rbac-guide.md
-        - name: コンテナー アクセス ポリシーの Azure RBAC への移行ガイド
-          href: rbac-migration.md
+        - name: Azure RBAC アクセス許可モデル
+          items:
+            - name: キー、シークレット、証明書へのアクセスを管理するための Azure RBAC の使用
+              href: rbac-guide.md
+            - name: コンテナー アクセス ポリシーの Azure RBAC への移行ガイド
+              href: rbac-migration.md
         - name: アクセスに関する問題のトラブルシューティング
           href: troubleshooting-access-issues.md
     - name: 開発

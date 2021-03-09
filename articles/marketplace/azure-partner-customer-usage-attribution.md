@@ -4,16 +4,16 @@ description: Azure Marketplace ソリューションの顧客の使用状況を�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-author: vikrambmsft
-ms.author: vikramb
+author: cpercy737
+ms.author: camper
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 99e1e77a37afbdc1ed54767700574316ed03fae3
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436693"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525247"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>コマーシャル マーケットプレース パートナーと顧客の使用状況の属性
 
@@ -248,10 +248,8 @@ foreach ($deployment in $deployments){
 
 }
 ```
-
 ## <a name="report"></a>レポート
-
-顧客の使用状況属性のレポートは、パートナー センター ダッシュ ボードで確認できます ([https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview))。 レポートを表示するには、パートナー センターの資格情報を使用してサインインする必要があります。 レポートまたはサインインで問題が発生した場合は、[サポート リクエスト](#get-support)を作成します。
+現在 ISV パートナーは、顧客の利用状況属性によって記録された Azure 使用状況のレポートを利用することはできません。 顧客の利用状況属性を対象としたレポートがパートナー センターのコマーシャル マーケットプレース プログラムに追加されるのは、2021 年下半期の予定です。
 
 ## <a name="notify-your-customers"></a>顧客に通知する
 

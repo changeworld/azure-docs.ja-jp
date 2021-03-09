@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 04/12/2019
 ms.author: absha
-ms.openlocfilehash: 6938ad55915286af397fee6d72a333e3bb39a1e6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 29ca3aff7d75c7a14bf7b325719924936762d191
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397917"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711690"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-powershell"></a>Azure Application Gateway で HTTP の要求および応答ヘッダーを書き換える - Azure PowerShell
 
@@ -31,23 +31,23 @@ HTTP ヘッダーの書き換えを構成するには、次の手順のように
 
 1. HTTP ヘッダーの書き換えに必要なオブジェクトを作成します。
 
-   - **RequestHeaderConfiguration** : 書き換えようとしている要求ヘッダー フィールド、およびヘッダーの新しい値を指定するために使用されます。
+   - **RequestHeaderConfiguration**: 書き換えようとしている要求ヘッダー フィールドとヘッダーの新しい値を指定するために使用されます。
 
-   - **ResponseHeaderConfiguration** : 書き換えようとしている応答ヘッダー フィールド、およびヘッダーの新しい値を指定するために使用されます。
+   - **ResponseHeaderConfiguration**: 書き換えようとしている応答ヘッダー フィールドとヘッダーの新しい値を指定するために使用されます。
 
-   - **ActionSet** : 上で指定した要求ヘッダーと応答ヘッダーの構成が格納されます。
+   - **ActionSet**: 上で指定した要求ヘッダーと応答ヘッダーの構成が格納されます。
 
-   - **条件** : オプションの構成。 書き換え条件では、HTTP(S) の要求と応答の内容が評価されます。 HTTP(S) の要求または応答が書き換え条件に一致する場合、書き換えアクションが発生します。
+   - **Condition**: オプション構成です。 書き換え条件では、HTTP(S) の要求と応答の内容が評価されます。 HTTP(S) の要求または応答が書き換え条件に一致する場合、書き換えアクションが発生します。
 
      複数の条件を 1 つのアクションと関連付けた場合は、すべての条件が満たされた場合にのみアクションが発生します。 つまり、操作は論理 AND 操作です。
 
-   - **RewriteRule** : 複数の書き換えアクション/書き換え条件の組み合わせが含まれます。
+   - **RewriteRule**: 複数の書き換えアクションまたは書き換え条件の組み合わせが含まれます。
 
-   - **RuleSequence** :書き換え規則の実行順序の決定に役立つオプションの構成です。 この構成は、書き換えセットに複数の書き換え規則がある場合に便利です。 規則のシーケンスの値が小さい書き換え規則から先に実行されます。 2 つの書き換え規則に同じ規則のシーケンスの値を割り当てた場合、実行順序は非決定論的となります。
+   - **RuleSequence**: 書き換え規則の実行順序の決定に役立つオプションの構成です。 この構成は、書き換えセットに複数の書き換え規則がある場合に便利です。 規則のシーケンスの値が小さい書き換え規則から先に実行されます。 2 つの書き換え規則に同じ規則のシーケンスの値を割り当てた場合、実行順序は非決定論的となります。
 
      RuleSequence を明示的に指定しない場合、既定値の 100 が設定されます。
 
-   - **RewriteRuleSet** : 要求ルーティング規則に関連付けられる複数の書き換え規則が含まれます。
+   - **RewriteRuleSet**: 要求ルーティング規則に関連付けられる複数の書き換え規則が含まれます。
 
 2. RewriteRuleSet をルーティング規則にアタッチします。 書き換え構成が、ルーティング規則によってソース リスナーにアタッチされます。 基本ルーティング規則を使うと、ヘッダー書き換え構成はソース リスナーに関連付けられ、グローバルなヘッダーの書き換えになります。 パスベースのルーティング規則を使うと、ヘッダー書き換え構成は URL パス マップで定義されます。 その場合、サイトの特定のパス領域にのみ適用されます。
 
@@ -62,7 +62,7 @@ Select-AzSubscription -Subscription "<sub name>"
 
 ## <a name="specify-the-http-header-rewrite-rule-configuration"></a>HTTP ヘッダーの書き換え規則の構成を指定する
 
-この例では、場所ヘッダーに azurewebsites.net への参照が含まれている場合は常に、HTTP 応答の場所ヘッダーを書き換えて、リダイレクト URL を変更します。 これを行うには、応答の場所ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件を追加します。 ここでは、パターン `(https?):\/\/.*azurewebsites\.net(.*)$` を使います。 そして、ヘッダー値として `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` を使います。 この値により、場所ヘッダーの *azurewebsites.net* が *contoso.com* に置き換えられます。
+この例では、場所ヘッダーに azurewebsites.net への参照が含まれている場合は常に、HTTP 応答の場所ヘッダーを書き換えて、リダイレクト URL を変更します。 これを行うには、応答の場所ヘッダーに azurewebsites.net が含まれているかどうかを評価する条件を追加します。 ここでは、パターン `(https?)://.*azurewebsites.net(.*)$` を使います。 そして、ヘッダー値として `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` を使います。 この値により、場所ヘッダーの *azurewebsites.net* が *contoso.com* に置き換えられます。
 
 ```azurepowershell
 $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Location" -HeaderValue "{http_resp_Location_1}://contoso.com{http_resp_Location_2}"

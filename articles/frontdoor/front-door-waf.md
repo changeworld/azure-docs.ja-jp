@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: a5d51a77b1da0ae44c76d0187113105c4e53c9b4
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279220"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201058"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>チュートリアル:Azure Front Door と Azure Web Application Firewall (WAF) を使用して、Web アプリケーションをすばやくスケーリングし、保護する
 
@@ -36,7 +36,7 @@ ms.locfileid: "92279220"
 
 ## <a name="prerequisites"></a>前提条件
 
-- このチュートリアルの手順では Azure CLI を使用します。 Azure CLI の使用方法については、[こちらのガイドを参照してください](/cli/azure/get-started-with-azure-cli?preserve-view=true&view=azure-cli-latest)。
+- このチュートリアルの手順では Azure CLI を使用します。 Azure CLI の使用方法については、[こちらのガイドを参照してください](/cli/azure/get-started-with-azure-cli)。
 
   > [!TIP] 
   > [Bash in Azure Cloud Shell](../cloud-shell/quickstart.md) を使用すると、Azure CLI をすばやく簡単に使い始めることができます。
@@ -48,7 +48,7 @@ ms.locfileid: "92279220"
    ```
 
 > [!NOTE] 
-> このチュートリアルで使用されているコマンドの詳細については、[Front Door 用の Azure CLI のリファレンス](/cli/azure/ext/front-door/?preserve-view=true&view=azure-cli-latest)に関する記事を参照してください。
+> このチュートリアルで使用されているコマンドの詳細については、[Front Door 用の Azure CLI のリファレンス](/cli/azure/ext/front-door)に関する記事を参照してください。
 
 ## <a name="create-an-azure-front-door-resource"></a>Azure Front Door リソースを作成する
 
@@ -144,7 +144,7 @@ Azure Front Door のエッジのみが確実に Web アプリケーションと�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このチュートリアルで使用したリソースが不要になったら、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) コマンドを使用して、リソース グループ、Front Door、WAF ポリシーを削除してください。
+このチュートリアルで使用したリソースが不要になったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、Front Door、WAF ポリシーを削除してください。
 
 ```azurecli-interactive
   az group delete \

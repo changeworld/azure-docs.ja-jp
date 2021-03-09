@@ -2,15 +2,15 @@
 title: Linux Python アプリを構成する
 description: Azure portal と Azure CLI の両方を使用して、Web アプリが実行される Python コンテナーを構成する方法について説明します。
 ms.topic: quickstart
-ms.date: 11/16/2020
+ms.date: 02/01/2021
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 7589b5c66bf4fa86db243574f551ec585ccccea1
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: cfbbb7064fcadc06714b237066bb6a009246baac
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855058"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709089"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Azure App Service 向けの Linux Python アプリを構成する
 
@@ -67,10 +67,13 @@ App Service デプロイ エンジンでは、[Git リポジトリ](deploy-local
 
 Oryx と呼ばれる App Service のビルド システムでは、Git または ZIP パッケージを使用してアプリをデプロイする際に、次のステップを実行します。
 
-1. `PRE_BUILD_COMMAND` 設定を指定した場合は、カスタムのビルド前スクリプトを実行します。
+1. `PRE_BUILD_COMMAND` 設定を指定した場合は、カスタムのビルド前スクリプトを実行します。 このスクリプトはそれ自体で、他の Python スクリプトや Node.js スクリプト、pip コマンド、npm コマンド、さらに、yarn など Node ベースのツール (例: `yarn install`、`yarn build`) を実行できます。
+
 1. `pip install -r requirements.txt` を実行します。 *requirements.txt* ファイルがプロジェクトのルート フォルダーに存在していなければなりません。 そうでないと、ビルド プロセスでエラーがレポートされます: "Could not find setup.py or requirements.txt; Not running pip install." (setup.py または requirements.txt が見つかりませんでした; pip install が実行されていません。)
+
 1. (Django アプリを示す) リポジトリのルートに *manage.py* がある場合は、*manage.py collectstatic* を実行します。 ただし、`DISABLE_COLLECTSTATIC` 設定が `true` の場合、この設定はスキップされます。
-1. `POST_BUILD_COMMAND` 設定を指定した場合は、カスタムのビルド後スクリプトを実行します。
+
+1. `POST_BUILD_COMMAND` 設定を指定した場合は、カスタムのビルド後スクリプトを実行します。 (前述のように、このスクリプトは、他の Python スクリプトや Node.js スクリプト、pip コマンド、npm コマンド、さらに、Node ベースのツールを実行できます。)
 
 既定では、`PRE_BUILD_COMMAND`、`POST_BUILD_COMMAND`、`DISABLE_COLLECTSTATIC` の設定は空です。 
 
@@ -131,6 +134,52 @@ Azure App Service などの運用環境の場合、Django アプリは Django �
 | `ALLOWED_HOSTS` | 運用環境の Django では、*settings.py* の `ALLOWED_HOSTS` 配列にアプリの URL が含まれている必要があります。 この URL は、`os.environ['WEBSITE_HOSTNAME']` というコードを使用して実行時に取得できます。 App Service によって、`WEBSITE_HOSTNAME` 環境変数がアプリの URL に自動的に設定されます。 |
 | `DATABASES` | データベースに接続するための App Service の設定を定義し、それらを環境変数として読み込んで [`DATABASES`](https://docs.djangoproject.com/en/3.1/ref/settings/#std:setting-DATABASES) ディクショナリを設定します。 または、値 (特にユーザー名とパスワード) を [Azure Key Vault シークレット](../key-vault/secrets/quick-create-python.md)として格納することもできます。 |
 
+## <a name="serve-static-files-for-django-apps"></a>Django アプリの静的ファイルを応答として返す
+
+Django Web アプリに静的なフロントエンド ファイルが含まれる場合はまず、Django ドキュメントの「[静的ファイルの管理](https://docs.djangoproject.com/en/3.1/howto/static-files/)」に記載の手順に従います。
+
+次に、App Service に対して次の変更を行います。
+
+1. 環境変数 (ローカル開発の場合) およびアプリ設定 (クラウドにデプロイする場合) を使用して、Django の `STATIC_URL` 変数と `STATIC_ROOT` 変数を動的に設定することを検討してください。 次に例を示します。    
+
+    ```python
+    STATIC_URL = os.environ.get("DJANGO_STATIC_URL", "/static/")
+    STATIC_ROOT = os.environ.get("DJANGO_STATIC_ROOT", "./static/")    
+    ```
+
+    ローカル環境とクラウド環境の `DJANGO_STATIC_URL` と `DJANGO_STATIC_ROOT` は、必要に応じて変更できます。 たとえば静的ファイルのビルド プロセスで、それらを `django-static` という名前のフォルダーに配置した場合、`DJANGO_STATIC_URL` を `/django-static/` に設定することで既定値の使用を避けることができます。
+
+1. ビルド前のスクリプトで、静的ファイルが別のフォルダーに生成されるようになっている場合は、Django の `collectstatic` プロセスで検出されるように、そのフォルダーを Django の `STATICFILES_DIRS` 変数に追加してください。 たとえば、フロントエンド フォルダーで `yarn build` を実行し、静的ファイルを含んだ `build/static` フォルダーが yarn によって生成される場合、次のようにしてそのフォルダーを追加します。
+
+    ```python
+    FRONTEND_DIR = "path-to-frontend-folder" 
+    STATICFILES_DIRS = [os.path.join(FRONTEND_DIR, 'build', 'static')]    
+    ```
+
+    ここでは、yarn などのビルド ツールが実行される場所のパスを構築して `FRONTEND_DIR` に代入しています。 ここでも、必要に応じて環境変数とアプリ設定を使用できます。
+
+1. *requirements.txt* ファイルに `whitenoise` を追加します。 [Whitenoise](http://whitenoise.evans.io/en/stable/) (whitenoise.evans.io) は、運用環境の Django アプリから応答として静的ファイルを返すための作業を省力化する Python パッケージです。 具体的に言うと、Django の `STATIC_ROOT` 変数で指定されたフォルダーに見つかったファイルを Whitenoise が応答として返します。
+
+1. Whitenoise に関する次の行を *settings.py* ファイルに追加します。
+
+    ```python
+    STATICFILES_STORAGE = ('whitenoise.storage.CompressedManifestStaticFilesStorage')
+    ```
+
+1. さらに、`MIDDLEWARE` リストと `INSTALLED_APPS` リストに Whitenoise を追加します。
+
+    ```python
+    MIDDLEWARE = [
+        "whitenoise.middleware.WhiteNoiseMiddleware",
+        # Other values follow
+    ]
+
+    INSTALLED_APPS = [
+        "whitenoise.runserver_nostatic",
+        # Other values follow
+    ]
+    ```
+
 ## <a name="container-characteristics"></a>コンテナーの特性
 
 Python アプリは App Service にデプロイされると、[App Service Python GitHub リポジトリ](https://github.com/Azure-App-Service/python)で定義された Linux Docker コンテナー内で動作します。 イメージの構成は、バージョン固有のディレクトリ内で見つけることができます。
@@ -150,6 +199,8 @@ Python アプリは App Service にデプロイされると、[App Service Pytho
 
 - App Service では、Web アプリの URL (`msdocs-hello-world.azurewebsites.net` など) を使用して、`WEBSITE_HOSTNAME` という名前の環境変数が自動的に定義されます。 また、アプリの名前 (`msdocs-hello-world` など) を使用して `WEBSITE_SITE_NAME` も定義されます。 
    
+- Node ベースのビルド ツール (yarn など) を実行できるよう、コンテナーには npm と Node.js がインストールされます。
+
 ## <a name="container-startup-process"></a>コンテナーのスタートアップ プロセス
 
 App Service on Linux コンテナーでは、起動中に次の手順が実行されます。
@@ -270,7 +321,7 @@ App Service では、カスタム スタートアップ コマンドまたはフ
 ```python
 db_server = os.environ['DATABASE_SERVER']
 ```
-    
+
 ## <a name="detect-https-session"></a>HTTPS セッションの検出
 
 App Service では、[SSL 終了](https://wikipedia.org/wiki/TLS_termination_proxy) (wikipedia.org) がネットワーク ロード バランサーで発生するため、すべての HTTPS リクエストは暗号化されていない HTTP リクエストとしてアプリに到達します。 ユーザー要求が暗号化されているかどうかをアプリ ロジックが確認する必要がある場合は、`X-Forwarded-Proto` ヘッダーを調べます。
@@ -321,6 +372,7 @@ SSH セッションへの接続に成功すると、ウィンドウ下部に "SS
 - [アプリが表示されない - 既定のアプリが表示される](#app-doesnt-appear)
 - [アプリが表示されない - "サービスを利用できません" というメッセージ](#service-unavailable)
 - [setup.py または requirements.txt が見つからない](#could-not-find-setuppy-or-requirementstxt)
+- [スタートアップ時の ModuleNotFoundError](#modulenotfounderror-when-app-starts)
 - [SSH セッションで、入力したパスワードが表示されない](#other-issues)
 - [SSH セッションで、コマンドが途切れたように表示される](#other-issues)
 - [Django アプリに静的資産が表示されない](#other-issues)
@@ -353,6 +405,10 @@ SSH セッションへの接続に成功すると、ウィンドウ下部に "SS
 - **ログ ストリームに "Could not find setup.py or requirements.txt; Not running pip install." (setup.py または requirements.txt が見つかりませんでした; pip install が実行されていません。) と表示される。** Oryx のビルド プロセスで、*requirements.txt* ファイルの検出が失敗しました。
 
     - [SSH](#open-ssh-session-in-browser) を介して Web アプリのコンテナーに接続し、*requirements.txt* が正しい名前になっていることと *site/wwwroot* の直下に存在することを確認します。 存在しない場合は、ファイルが自分のリポジトリに存在していて、自分のデプロイに含まれている場所を作ります。 別のフォルダーに存在する場合は、それをルートに移動させてください。
+
+#### <a name="modulenotfounderror-when-app-starts"></a>アプリ起動時の ModuleNotFoundError
+
+`ModuleNotFoundError: No module named 'example'` のようなエラーが表示される場合、これは Python の起動時に 1 つ以上のモジュールが見つからなかったことを意味します。 これは、コードを使用して仮想環境をデプロイする場合によく発生します。 仮想環境は移植可能ではないため、アプリケーション コードを使用して仮想環境をデプロイしないでください。 代わりに、Oryx を使用して仮想環境を作成し、アプリ設定 `SCM_DO_BUILD_DURING_DEPLOYMENT` を作成し、それを `1` に設定して、Web アプリにパッケージをインストールします。 こうすることで、App Service にデプロイするたびに、Oryx によってパッケージが強制的にインストールされます。 詳細については、[仮想環境の移植性に関するこの記事](https://azure.github.io/AppService/2020/12/11/cicd-for-python-apps.html)を参照してください。
 
 #### <a name="other-issues"></a>その他の問題
 

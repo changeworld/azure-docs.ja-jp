@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 7b53b0bc8c7cc3df2123d327bf87a85081f88f50
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855075"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589543"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -478,7 +478,7 @@ JavaScript ベースの Web ページは、Application Insights を使用する�
 
 ## <a name="knowing-whether-sampling-is-in-operation"></a>サンプリングが動作しているかどうかを把握する
 
-適用されている場所に関係なく、実際のサンプリング レートを検出するには、次のように [Analytics クエリ](../log-query/log-query-overview.md) を使用します。
+適用されている場所に関係なく、実際のサンプリング レートを検出するには、次のように [Analytics クエリ](../logs/log-query-overview.md) を使用します。
 
 ```kusto
 union requests,dependencies,pageViews,browserTimings,exceptions,traces

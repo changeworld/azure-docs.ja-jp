@@ -1,6 +1,6 @@
 ---
 title: Microsoft Authenticator アプリを使用したパスワードなしのサインイン - Azure Active Directory
-description: Microsoft Authenticator アプリを使用した Azure AD へのパスワードなしのサインインを有効にする (プレビュー)
+description: Microsoft Authenticator アプリを使用した Azure AD へのパスワードなしのサインインを有効にする
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35eff46a0470d429c8ec6f364ffa836501c65f47
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 51e6cd7efcd0e851c15975aba5ff9b99c615eb7d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743600"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653475"
 ---
-# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしのサインインを有効にする (プレビュー)
+# <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリでパスワードなしのサインインを有効にする 
 
 Microsoft Authenticator アプリを使用すると、パスワードを使用せずに Azure AD アカウントにサインインできます。 Microsoft Authenticator では、キーベースの認証を使用して、デバイスに関連付けられているユーザー資格情報を有効にします。なお、このデバイスでは PIN または生体認証が使用されます。 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) でも、同様のテクノロジが使用されます。
 
@@ -40,7 +40,7 @@ Microsoft Authenticator アプリでパスワードなしの電話によるサ�
 - iOS 8.0 以降、または Android 6.0 以降を実行しているデバイスにインストールされている最新バージョンの Microsoft Authenticator。
 
 > [!NOTE]
-> Azure AD PowerShell を使用して Microsoft Authenticator のパスワードなしのサインイン プレビューを有効にした場合は、それがディレクトリ全体に対して有効になっています。 この新しい方法の使用を有効にすると、それが PowerShell ポリシーよりも優先されます。 新しい "*認証方法*" メニューを使用して、テナント内のすべてのユーザーに対して有効にすることをお勧めします。そうしないと、新しいポリシーに含まれていないユーザーは、パスワードなしでサインインできなくなります。
+> Azure AD PowerShell を使用して Microsoft Authenticator のパスワードなしのサインインを有効にした場合は、それがディレクトリ全体に対して有効になっています。 この新しい方法の使用を有効にすると、それが PowerShell ポリシーよりも優先されます。 新しい "*認証方法*" メニューを使用して、テナント内のすべてのユーザーに対して有効にすることをお勧めします。そうしないと、新しいポリシーに含まれていないユーザーは、パスワードなしでサインインできなくなります。
 
 ## <a name="enable-passwordless-authentication-methods"></a>パスワードなしの認証方法を有効にする
 
@@ -57,10 +57,13 @@ Azure AD では、サインイン プロセス中に使用できる認証方法�
 パスワードなしの電話によるサインインの認証方法を有効にするには、次の手順を実行します。
 
 1. "*全体管理者*" アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
-1. *[Azure Active Directory]* を検索および選択してから、 **[セキュリティ]**  >  **[認証方法]**  >  **[認証方法ポリシー (プレビュー)]** の順に移動します。
-1. **[Passwordless phone sign-in]\(パスワードなしの電話によるサインイン\)** で、次のオプションを選択します。
+1. *Azure Active Directory* を検索して選択し、 **[セキュリティ]**  >  **[認証方法]**  >  **[ポリシー]** の順に移動します。
+1. **[Microsoft Authenticator]** で、次のオプションを選択します。
    1. **有効にする** - [はい] または [いいえ]
    1. **ターゲット** - [すべてのユーザー] または [ユーザーの選択]
+1. 追加された各グループまたはユーザーは既定で、パスワードレスとプッシュ通知の両方のモード ("任意" モード) で Microsoft Authenticator が使用できるようになっています。 これを変更するには、各行に対して次のことを行います。
+   1. **[...]**  >  **[構成]** の順に移動します。
+   1. **認証モード** - [任意]、[パスワードレス]、または [プッシュ]
 1. 新しいポリシーを適用するには、 **[保存]** を選択します。
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator"></a>Microsoft Authenticator のユーザー登録と管理
@@ -101,7 +104,7 @@ Azure AD のパスワードなし認証方法にユーザーが自分自身を�
 
 ## <a name="known-issues"></a>既知の問題
 
-現在のプレビュー エクスペリエンスには、次の既知の問題があります。
+次の既知の問題点があります。
 
 ### <a name="not-seeing-option-for-passwordless-phone-sign-in"></a>パスワードなしの電話によるサインインのオプションが表示されない
 

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: e4485e4f8e873b1b49dc3d6df72eb04a1cbe8c17
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 4c63a9833e6b9a9b243d289d79428ddef1468253
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992756"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833883"
 ---
 # <a name="quickstart-use-azure-iot-central-to-monitor-your-devices"></a>クイック スタート:Azure IoT Central を使用してデバイスを監視する
 
@@ -50,6 +50,10 @@ Azure IoT Central では、デバイスに関する通知を電子メール メ�
 **[Target temperature]\(目標温度\)** を 80 に変更してデバイスを温め、湿度を下げます。 **[保存]** を選択してデバイスを更新します。 デバイスで設定の変更が確認されると、プロパティの状態が **[同期済み]** に変わります。
 
 :::image type="content" source="media/quick-monitor-devices/change-settings.png" alt-text="デバイスの更新された目標温度設定を示すスクリーンショット":::
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

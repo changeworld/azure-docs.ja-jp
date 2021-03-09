@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: f2ea7af0ec9c740c07cd3a5e4ebd88a9ad1a031d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: c2faf8e8b6a814989fa9e1693fddeedb525df13a
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542645"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100006855"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。
@@ -43,16 +43,16 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 ## <a name="management-tools"></a>管理ツール
 互換性の利点は、データベース管理ツールにも拡張されています。 データベース操作がユーザーのアクセス許可の範囲内で動作する限り、既存のツールは引き続き Azure Database for MySQL でも機能します。 テストによって Azure Database for MySQL 5.6 および 5.7 と互換性のあることがわかっている 3 つの一般的なデータベース管理ツールの一覧を次の表に示します。
 
-|                                     | **MySQL Workbench 6.x 以降** | **Navicat 12** | **PHPMyAdmin 4.x 以降** |
-| :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| **作成、更新、読み取り、書き込み、削除** | X | X | X |
-| **SSL 接続** | X | X | X |
-| **SQL クエリのオート コンプリート** | X | X |  |
-| **データのインポートとエクスポート** | X | X | X |
-| **複数の形式へのエクスポート** | X | X | X |
-| **バックアップと復元** |  | X |  |
-| **サーバー パラメーターの表示** | X | X | X |
-| **クライアント接続の表示** | X | X | X |
+|                                     | **MySQL Workbench 6.x 以降** | **Navicat 12** | **PHPMyAdmin 4.x 以降** | **dbForge Studio for MySQL 9.0** |
+| :---------------------------------- | :----------------------------- | :------------- | :-------------------------| :------------------------------- |
+| **作成、更新、読み取り、書き込み、削除** | X | X | X | X |
+| **SSL 接続** | X | X | X | X |
+| **SQL クエリのオート コンプリート** | X | X |  | X |
+| **データのインポートとエクスポート** | X | X | X | X |
+| **複数の形式へのエクスポート** | X | X | X | X |
+| **バックアップと復元** |  | X |  | X |
+| **サーバー パラメーターの表示** | X | X | X | X |
+| **クライアント接続の表示** | X | X | X | X |
 
 ## <a name="next-steps"></a>次のステップ
 

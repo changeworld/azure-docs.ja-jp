@@ -3,14 +3,14 @@ title: Azure Automation で Python 3 Runbook (プレビュー) を作成する
 description: この記事では、シンプルな Python 3 Runbook (プレビュー) を作成、テスト、発行する方法を説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 12/22/2020
+ms.date: 02/16/2021
 ms.topic: tutorial
-ms.openlocfilehash: cf028722c8c7174aac42f9485e31a599d7713ba3
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: c19f7e177d51a3de75e7d7ae2b83442e23efd243
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734064"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546144"
 ---
 # <a name="tutorial-create-a-python-3-runbook-preview"></a>チュートリアル:Python 3 Runbook (プレビュー) を作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "97734064"
    * Python 2 と Python 3 の両方がインストールされていて、両方の種類の Runbook を実行する場合は、次の環境変数を構成する必要があります。
 
      * Python 2 - `PYTHON_2_PATH` という新しい環境変数を作成し、インストール フォルダーを指定します。 たとえば、インストール フォルダーが `C:\Python27` の場合、このパスを変数に追加する必要があります。
-     
+
      * Python 3 - `PYTHON_3_PATH` という新しい環境変数を作成し、インストール フォルダーを指定します。 たとえば、インストール フォルダーが `C:\Python3` の場合、このパスを変数に追加する必要があります。
 
 ## <a name="create-a-new-runbook"></a>新しい Runbook の作成
@@ -128,44 +128,34 @@ Runbook をテストして発行しましたが、これまでのところ役に
 
 2. Azure への認証に、次のコードを追加します。
 
-   ```python
-   import os
-   from azure.mgmt.compute import ComputeManagementClient
-   import azure.mgmt.resource 
-   import automationassets 
-   
-   def get_automation_runas_credential(runas_connection): 
-   from OpenSSL import crypto 
-   import binascii 
-   from msrestazure import azure_active_directory 
-   import adal 
+    ```python
+    from OpenSSL import crypto 
+    import binascii 
+    from msrestazure import azure_active_directory 
+    import adal 
+
+    # Get the Azure Automation RunAs service principal certificate 
+    cert = automationassets.get_automation_certificate("AzureRunAsCertificate") 
+    pks12_cert = crypto.load_pkcs12(cert) 
+    pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM,pks12_cert.get_privatekey()) 
     
-   # Get the Azure Automation RunAs service principal certificate 
-   cert = automationassets.get_automation_certificate("AzureRunAsCertificate") 
-   pks12_cert = crypto.load_pkcs12(cert) 
-   pem_pkey = crypto.dump_privatekey(crypto.FILETYPE_PEM,pks12_cert.get_privatekey()) 
+    # Get run as connection information for the Azure Automation service principal 
+    application_id = runas_connection["ApplicationId"] 
+    thumbprint = runas_connection["CertificateThumbprint"] 
+    tenant_id = runas_connection["TenantId"] 
     
-   # Get run as connection information for the Azure Automation service principal 
-   application_id = runas_connection["ApplicationId"] 
-   thumbprint = runas_connection["CertificateThumbprint"] 
-   tenant_id = runas_connection["TenantId"] 
-    
-   # Authenticate with service principal certificate 
-   resource ="https://management.core.windows.net/" 
-   authority_url = ("https://login.microsoftonline.com/"+tenant_id) 
-   context = adal.AuthenticationContext(authority_url) 
-   return azure_active_directory.AdalAuthentication( 
-   lambda: context.acquire_token_with_client_certificate( 
-           resource, 
-           application_id, 
-           pem_pkey, 
-           thumbprint) 
-   ) 
-    
-   # Authenticate to Azure using the Azure Automation RunAs service principal 
-   runas_connection = automationassets.get_automation_connection("AzureRunAsConnection") 
-   azure_credential = get_automation_runas_credential(runas_connection) 
-   ```
+    # Authenticate with service principal certificate 
+    resource ="https://management.core.windows.net/" 
+    authority_url = ("https://login.microsoftonline.com/"+tenant_id) 
+    context = adal.AuthenticationContext(authority_url) 
+    return azure_active_directory.AdalAuthentication( 
+      lambda: context.acquire_token_with_client_certificate( 
+          resource, 
+          application_id, 
+          pem_pkey, 
+          thumbprint) 
+    ) 
+    ```
 
 ## <a name="add-code-to-create-python-compute-client-and-start-the-vm"></a>コードを追加して、Python Compute クライアントを作成し、VM を起動する
 

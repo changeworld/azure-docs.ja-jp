@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120956"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671606"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio ノートブックを作成、開発、管理する
 
@@ -304,6 +304,8 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 ```%run <notebook path>``` マジック コマンドを使用して、現在のノートブックのコンテキスト内で別のノートブックを参照することができます。 参照ノートブックで定義されているすべての変数を、現在のノートブックで使用できます。 ```%run``` マジック コマンドでは、入れ子になった呼び出しはサポートされますが、再帰呼び出しはサポートされません。 ステートメントの深さが 5 を超えると、例外が発生します。 現在 ```%run``` コマンドでは、ノートブック パスをパラメーターとして渡すことのみが可能です。 
 
+例: ``` %run /path/notebookA ```.
+
 ---
 
 
@@ -552,5 +554,5 @@ Jupyter Notebook と同様に、Azure Synapse Studio ノートブックにはモ
 - [クイック スタート:Web ツールを使用して Azure Synapse Analytics で Apache Spark プールを作成する](../quickstart-apache-spark-notebook.md)
 - [Azure Synapse Analytics の Apache Spark とは](apache-spark-overview.md)
 - [Azure Synapse Analytics で .NET for Apache Spark を使用する](spark-dotnet.md)
-- [.NET for Apache Spark のドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark のドキュメント](/dotnet/spark)
 - [Azure Synapse Analytics](../index.yml)

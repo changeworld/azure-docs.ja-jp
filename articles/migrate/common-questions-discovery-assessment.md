@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 944d867ef888e70faa659adcc0e2d4c02f003c97
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 40afa1d743b8d074fa46dde46163f6479ebf87c2
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567414"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589076"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -150,9 +150,9 @@ CSV ファイルを介してインポートされたマシンの場合、AVS の
 **要件** | **エージェントレス** | **エージェント ベース**
 --- | --- | ---
 サポート | このオプションは現在プレビュー段階であり、VMware VM でのみ使用できます。 サポートされているオペレーティング システムについては[こちらを確認してください](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。 | 一般提供 (GA) 中。
-エージェント | クロスチェックを行うマシンにエージェントをインストールする必要はありません。 | 分析するオンプレミスの各マシンにエージェントをインストールします。[Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md) と[依存関係エージェント](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
+エージェント | クロスチェックを行うマシンにエージェントをインストールする必要はありません。 | 分析するオンプレミスの各マシンにエージェントをインストールします。[Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md) と[依存関係エージェント](../azure-monitor/agents/agents-overview.md#dependency-agent)。 
 前提条件 | 前提条件とデプロイの要件については[こちらを確認してください](concepts-dependency-visualization.md#agentless-analysis)。 | 前提条件とデプロイの要件については[こちらを確認してください](concepts-dependency-visualization.md#agent-based-analysis)。
-Log Analytics | 不要。 | Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)の [Service Map](../azure-monitor/insights/service-map.md) ソリューションを使用します。 [詳細については、こちらを参照してください](concepts-dependency-visualization.md#agent-based-analysis)。
+Log Analytics | 不要。 | Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)の [Service Map](../azure-monitor/vm/service-map.md) ソリューションを使用します。 [詳細については、こちらを参照してください](concepts-dependency-visualization.md#agent-based-analysis)。
 しくみ | 依存関係の視覚化が有効になっているコンピューター上の TCP 接続データをキャプチャします。 検出後は、5 分間隔でデータが収集されます。 | マシンにインストールされている Service Map エージェントにより、TCP プロセスと、各プロセスの受信/送信接続に関するデータが収集されます。
 Data | ソース マシンのサーバー名、プロセス、アプリケーション名。<br/><br/> ターゲット マシンのサーバー名、プロセス、アプリケーション名、ポート。 | ソース マシンのサーバー名、プロセス、アプリケーション名。<br/><br/> ターゲット マシンのサーバー名、プロセス、アプリケーション名、ポート。<br/><br/> 接続数、待機時間、データ転送に関する情報が収集され、Log Analytics クエリで使用できます。 
 グラフ | 1 つのサーバーの依存関係マップを、1 時間から 30 日までの範囲で表示できます。 | 1 つのサーバーの依存関係マップ。<br/><br/> マップは 1 時間についてのみ表示できます。<br/><br/> サーバーのグループの依存関係マップ。<br/><br/> マップ ビューからグループのサーバーを追加および削除します。
@@ -171,8 +171,8 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 
 エージェントベースの依存関係の視覚化を使用するには、評価するオンプレミスの各マシンにエージェントをダウンロードしてインストールします。
 
-- [Microsoft Monitoring Agent (MMA)](../azure-monitor/platform/agent-windows.md)
-- [依存関係エージェント](../azure-monitor/platform/agents-overview.md#dependency-agent)
+- [Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md)
+- [依存関係エージェント](../azure-monitor/agents/agents-overview.md#dependency-agent)
 - インターネットに接続されていないマシンがある場合、それらのマシンに Log Analytics ゲートウェイをダウンロードしてインストールします。
 
 エージェントベースの依存関係の視覚化を使用している場合にのみ、これらのエージェントが必要です。
@@ -189,14 +189,14 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 
 エージェントベースの依存関係の視覚化の場合:
 
-- [依存関係エージェントをインストールするスクリプト](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)を使用してください。
-- MMA の場合は、[コマンドラインまたはオートメーションを使用](../azure-monitor/platform/log-analytics-agent.md#installation-options)するか、[スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
+- [依存関係エージェントをインストールするスクリプト](../azure-monitor/vm/vminsights-enable-hybrid.md#dependency-agent)を使用してください。
+- MMA の場合は、[コマンドラインまたはオートメーションを使用](../azure-monitor/agents/log-analytics-agent.md#installation-options)するか、[スクリプト](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)を使用します。
 - スクリプトのほか、デプロイ ツール (Microsoft Endpoint Configuration Manager と [Intigua](https://www.intigua.com/intigua-for-azure-migration)) を利用して、エージェントをデプロイすることもできます。
 
 ## <a name="what-operating-systems-does-mma-support"></a>MMA ではどのようなオペレーティング システムがサポートされていますか?
 
-- [MMA でサポートする Windows オペレーティング システムの一覧はこちら](../azure-monitor/platform/log-analytics-agent.md#installation-options)を参照してください。
-- [MMA でサポートする Linux オペレーティング システムの一覧はこちら](../azure-monitor/platform/log-analytics-agent.md#installation-options)を参照してください。
+- [MMA でサポートする Windows オペレーティング システムの一覧はこちら](../azure-monitor/agents/log-analytics-agent.md#installation-options)を参照してください。
+- [MMA でサポートする Linux オペレーティング システムの一覧はこちら](../azure-monitor/agents/log-analytics-agent.md#installation-options)を参照してください。
 
 ## <a name="can-i-visualize-dependencies-for-more-than-one-hour"></a>1 時間以上にわたる依存関係を視覚化することはできますか?
 

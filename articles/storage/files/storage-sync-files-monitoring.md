@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1cc2cd1a7c5c16b1f9d1542e3f2d14dc030bb090
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d1e51552acdd869a3f304a6d48e18e9d2aa6c782
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586552"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576776"
 ---
 # <a name="monitor-azure-file-sync"></a>Azure File Sync の監視
 
@@ -56,7 +56,7 @@ Azure Monitor では、Azure File Sync の次のメトリックを使用でき�
 
 ### <a name="alerts"></a>警告
 
-アラートは、監視データで重要な状態が見つかると事前に通知します。 Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/platform/alerts-overview.md)」をご覧ください。
+アラートは、監視データで重要な状態が見つかると事前に通知します。 Azure Monitor でのアラートの構成の詳細については、「[Microsoft Azure のアラートの概要](../../azure-monitor/alerts/alerts-overview.md)」をご覧ください。
 
 **Azure File Sync のアラートを作成する方法**
 

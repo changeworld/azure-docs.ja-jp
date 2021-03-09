@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: f753010eb994c9f3c286ad6eca6392ca7b643075
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 30328db465e0d9bf8c1ce67d92e48c688c51e043
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97932913"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574610"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>Cosmos DB 用 Azure Functions トリガーによるログと接続を構成する方法
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -44,7 +44,7 @@ Cosmos DB 用 Azure Functions トリガーの使用時にログ記録を有効�
 
 ### <a name="query-the-logs"></a>ログのクエリを実行する
 
-[Azure Application Insights の Analytics](../azure-monitor/log-query/log-query-overview.md) で Cosmos DB 用 Azure Functions トリガーによって生成されたログを照会するには、次のクエリを実行します。
+[Azure Application Insights の Analytics](../azure-monitor/logs/log-query-overview.md) で Cosmos DB 用 Azure Functions トリガーによって生成されたログを照会するには、次のクエリを実行します。
 
 ```sql
 traces

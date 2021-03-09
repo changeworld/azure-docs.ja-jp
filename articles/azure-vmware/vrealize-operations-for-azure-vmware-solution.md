@@ -2,13 +2,13 @@
 title: Azure VMware Solution 向け vRealize Operations の設定
 description: Azure VMware Solution のプライベート クラウド向けに vRealize Operations を設定する方法について説明します。
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 25469089cf1fef076711bfaf1492fad43edbcf33
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.date: 01/26/2021
+ms.openlocfilehash: 3d2617f893c34fde6a154f9f93b5bda520c5a91a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371785"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101738431"
 ---
 # <a name="set-up-vrealize-operations-for-azure-vmware-solution"></a>Azure VMware Solution 向け vRealize Operations の設定
 
@@ -27,8 +27,8 @@ vRealize Operations Manager は、VMware インフラストラクチャ管理者
 * Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開オプションでは、必要に応じて、[vRealize Operations Remote Controller](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-263F9219-E801-4383-8A59-E84F3D01ED6B.html) の製品ドキュメントを確認します。 
 
 
-
 ## <a name="prerequisites"></a>前提条件
+* [vRealize Operations Manager](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html) がインストールされている。
 * オンプレミスと Azure VMware Solution SDDC の間で構成されている VPN または Azure ExpressRoute。
 * Azure VMware Solution のプライベート クラウドが Azure にデプロイされていること。
 
@@ -37,7 +37,7 @@ vRealize Operations Manager は、VMware インフラストラクチャ管理者
 ## <a name="on-premises-vrealize-operations-managing-azure-vmware-solution-deployment"></a>Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開
 ほとんどの顧客には、1 つ以上のオンプレミスの vCenter ドメインを管理するために既存のオンプレミスの vRealize Operations の展開があります。 彼らは、Azure VMware Solution プライベート クラウドをプロビジョニングするときに、Azure ExpressRoute またはレイヤー 3 VPN ソリューションを使用して、オンプレミス環境をプライベート クラウドに接続します。  
 
-:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開"  border="false":::
+:::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-1.png" alt-text="Azure VMware Solution を管理するオンプレミスの vRealize Operations の展開" border="false":::
 
 vRealize Operations 機能を Azure VMware Solution プライベート クラウドにまで拡張するには、[プライベート クラウド リソース用のアダプター インスタンス](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.config.doc/GUID-640AD750-301E-4D36-8293-1BFEB67E2600.html)を作成します。 これにより、Azure VMware Solution プライベート クラウドからデータが収集され、オンプレミスの vRealize Operations に取り込まれます。 オンプレミスの vRealize Operations Manager インスタンスは、Azure VMware Solution 上の vCenter および NSX-T Manager に直接接続できます。 必要に応じて、Azure VMware Solution プライベート クラウドに vRealize Operations Remote Collector をデプロイできます。 このコレクターにより、プライベート クラウドから収集したデータが圧縮して暗号化された後、ExpressRoute または VPN ネットワークを経由して、オンプレミスで実行されている vRealize Operations Manager に送信されます。 
 
@@ -50,12 +50,13 @@ vRealize Operations 機能を Azure VMware Solution プライベート クラウ
 
 もう 1 つのオプションは、vRealize Operations Manager のインスタンスを、プライベート クラウド内の vSphere クラスターにデプロイする方法です。 
 
+>[!IMPORTANT]
+>現在、このオプションは VMware ではサポートされていません。
+
 :::image type="content" source="media/vrealize-operations-manager/vrealize-operations-deployment-option-2.png" alt-text="Azure VMware Solution で動作する vRealize Operations" border="false":::
 
 インスタンスがデプロイされたら、vCenter、ESXi、NSX-T、vSAN、HCX からデータを収集するように vRealize Operations を構成できます。 
 
-> [!TIP]
-> vRealize Operations Manager をインストールするためのステップ バイ ステップ ガイドについては、[VMware のドキュメント](https://docs.vmware.com/en/vRealize-Operations-Manager/8.1/com.vmware.vcom.vapp.doc/GUID-7FFC61A0-7562-465C-A0DC-46D092533984.html)を参照してください。
 
 
 ## <a name="known-limitations"></a>既知の制限事項

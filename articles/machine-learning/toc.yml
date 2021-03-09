@@ -172,6 +172,10 @@
           href: concept-enterprise-security.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
+        - name: Azure Policy によるセキュリティ制御
+          href: ./security-controls-policy.md
+        - name: データの暗号化
+          href: concept-data-encryption.md
     - name: 信頼できる ML
       items:
         - name: 信頼できる ML の概要
@@ -276,8 +280,16 @@
         - name: 開発環境をセットアップする
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Jupyter ノートブックの実行
-          href: how-to-run-jupyter-notebooks.md
+        - name: スタジオ環境の設定
+          items:
+            - name: ファイルの作成と管理
+              href: how-to-manage-files.md
+              displayName: 'Jupyter, notebooks, clone, samples'
+            - name: Jupyter ノートブックの実行
+              href: how-to-run-jupyter-notebooks.md
+            - name: ターミナルの使用
+              href: how-to-access-terminal.md
+              displayName: 'git, github, clone, kernel, package'
         - name: ソフトウェア環境をセットアップする
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
@@ -309,11 +321,14 @@
             - name: ラベル付きのデータセットを作成する
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md
-        - name: データを取得する
+        - name: データを取得および準備する
           items:
             - name: Azure Data Factory を使用したデータ インジェスト
               displayName: 'data, ingestion, adf'
               href: how-to-data-ingest-adf.md
+            - name: Azure Synapse を使用したデータ準備
+              displayName: 'data, data prep, spark, spark pool, cluster, spark cluster,dataset, datastore'
+              href: how-to-data-prep-synapse-spark-pool.md
             - name: データ インジェスト用 DevOps
               displayName: 'data, ingestion, devops'
               href: how-to-cicd-data-ingestion.md
@@ -325,6 +340,9 @@
             - name: Azure ストレージに接続する (Python)
               displayName: 'blob, get, fileshare, access, mount, download, data lake, datastore'
               href: how-to-access-data.md
+            - name: ストレージへの ID ベースのデータ アクセス
+              displayName: 'blob, access, data lake, datastore, managed identity'
+              href: how-to-identity-based-data-access.md
             - name: データストアからデータを取得する (Python)
               displayName: 'data, data set, register, access data'
               href: how-to-create-register-datasets.md
@@ -373,8 +391,8 @@
             - name: ログの有効化
               displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
-            - name: ログを表示する
-              displayName: 'troubleshoot, log, files, tracing'
+            - name: 実行のログとメトリックを表示する
+              displayName: 'troubleshoot, log, files, tracing, metrics'
               href: how-to-monitor-view-training-logs.md
             - name: TensorBoard を使用して実行を視覚化する
               displayName: 'log, monitor, metrics'
@@ -519,6 +537,8 @@
           href: how-to-move-data-in-out-of-pipelines.md
         - name: ML パイプラインをデプロイする (Python)
           href: how-to-deploy-pipelines.md
+        - name: Azure Synapse Apache Spark プールを ML パイプラインで使用する (Python)
+          href: how-to-use-synapsesparkstep.md
         - name: パイプラインをトリガーする
           href: how-to-trigger-published-pipeline.md
         - name: デザイナー (ドラッグアンドドロップ)
@@ -609,6 +629,8 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: ユーザー フォーラム
       href: /answers/topics/azure-machine-learning.html
+    - name: Microsoft Learn
+      href: /learn/browse/?expanded=azure&products=azure-machine-learning
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Microsoft の ML 製品の比較

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure certificates for Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 7854aff0b4194efae7c4df653dee18e2676fdd41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8d21f9eea0258175195529c4d8b72ee9085dc77
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91446324"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546977"
 ---
 # <a name="tutorial-configure-certificates-for-your-azure-stack-edge-pro-with-gpu"></a>チュートリアル:GPU 搭載の Azure Stack Edge Pro 用の証明書を構成する
 
@@ -35,10 +35,10 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
 * [Azure Stack Edge Pro の設置](azure-stack-edge-gpu-deploy-install.md)に関する記事の詳細に従って、物理デバイスを設置していること。
 * 独自の証明書を持ち込む予定の場合:
-    - 署名チェーン証明書を含む適切な形式で証明書を準備しておく必要があります。 証明書の詳細については、「[証明書の管理](azure-stack-edge-j-series-manage-certificates.md)」を参照してください。
+    - 署名チェーン証明書を含む適切な形式で証明書を準備しておく必要があります。 証明書の詳細については、「[証明書の管理](azure-stack-edge-gpu-manage-certificates.md)」を参照してください。
 
 <!--    - If your device is deployed in Azure Government or Azure Government Secret or Azure Government top secret cloud and not deployed in Azure public cloud, a signing chain certificate is required before you can activate your device. 
-    For details on certificate, go to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).-->
+    For details on certificate, go to [Manage certificates](azure-stack-edge-gpu-manage-certificates.md).-->
 
 
 ## <a name="configure-certificates-for-device"></a>デバイスの証明書を構成する
@@ -120,13 +120,13 @@ GPU 搭載の Azure Stack Edge Pro デバイスの構成と設定を行う前に
 
 ASE デバイス上のエンドポイントへのアクセスに使用しているクライアント システムにこれらの証明書をインストールする必要があります。 これらの証明書によって、クライアントとデバイス間に信頼が確立します。
 
-デバイスへのアクセスに使用しているクライアントにこれらの証明書をインポートしてインストールするには、[Azure Stack Edge Pro デバイスにアクセスするクライアントに証明書をインポートする](azure-stack-edge-j-series-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)方法の手順を実行します。 
+デバイスへのアクセスに使用しているクライアントにこれらの証明書をインポートしてインストールするには、[Azure Stack Edge Pro デバイスにアクセスするクライアントに証明書をインポートする](azure-stack-edge-gpu-manage-certificates.md#import-certificates-on-the-client-accessing-the-device)方法の手順を実行します。 
 
 Azure Storage Explorer を使用する場合、クライアントに PEM 形式で証明書をインストールする必要があります。また、デバイスで生成された証明書を PEM 形式に変換する必要があります。 
 
 > [!IMPORTANT]
 > - ダウンロード リンクは、デバイスで生成された証明書にのみ使用できます。独自の証明書を持ち込む場合は使用できません。
-> - 他の証明書の要件が満たされている限り、デバイスで生成された証明書を組み合わせて独自の証明書を持ち込むことができます。 詳細については、「[証明書の要件](azure-stack-edge-j-series-certificate-requirements.md)」を参照してください。
+> - 他の証明書の要件が満たされている限り、デバイスで生成された証明書を組み合わせて独自の証明書を持ち込むことができます。 詳細については、「[証明書の要件](azure-stack-edge-gpu-certificate-requirements.md)」を参照してください。
     
 
 ### <a name="bring-your-own-certificates"></a>独自の証明書を持ち込む

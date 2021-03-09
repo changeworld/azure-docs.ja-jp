@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 02/02/2021
+ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591346"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509369"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Cognitive Search におけるサービスの制限
 
@@ -125,21 +125,13 @@ ms.locfileid: "97591346"
 | シノニムマップの最大数 |3 |3|5 |10 |20 |20 | 10 | 10 |
 | マップごとの規則の最大数 |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
-## <a name="queries-per-second-qps"></a>秒間クエリ (QPS)
-
-QPS の見積もりは、すべての顧客ごとに個別に開発する必要があります。 インデックスのサイズと複雑さ、クエリのサイズと複雑さ、およびトラフィックの量が QPS を決定する主な要因です。 このような要因が不明な場合は、意義のある見積もりを用意する方法はありません。
-
-見積もりは、専用リソース (Basic および Standard レベル) 上で実行されるサービスに基づいて計算される場合、予測可能性がより高くなります。 より多くのパラメーターを制御できるため、さらに厳密に QPS を見積もることができます。 見積もりを行う方法のガイダンスについては、[Azure Cognitive Search のパフォーマンスと最適化](search-performance-optimization.md)に関する記事を参照してください。
-
-ストレージ最適化レベル (L1 および L2) では、Standard レベルよりもクエリ スループットが低く、待機時間が長くなります。
-
 ## <a name="data-limits-ai-enrichment"></a>データの制限 (AI エンリッチメント)
 
 [エンティティ認識](cognitive-search-skill-entity-recognition.md)、[キー フレーズ抽出](cognitive-search-skill-keyphrases.md)、[センチメント分析](cognitive-search-skill-sentiment.md)、[言語検出](cognitive-search-skill-language-detection.md)、および[個人情報検出](cognitive-search-skill-pii-detection.md)の Text Analytics リソースに対して呼び出しを行う [AI エンリッチメント パイプライン](cognitive-search-concept-intro.md)は、データの制限を受ける可能性があります。 レコードのサイズは、[`String.Length`](/dotnet/api/system.string.length) で測定して 50,000 文字以下にする必要があります。 データをセンチメント アナライザーに送信する前に分割する必要がある場合は、[テキスト分割スキル](cognitive-search-skill-textsplit.md)を使用します。
 
 ## <a name="throttling-limits"></a>スロットルの制限
 
-システムがピーク時の容量に近づくにつれて、検索クエリとインデックス作成要求が調整されます。 スロットルの動作は API によって異なります。 クエリ API (検索/提案/オートコンプリート) とインデックス作成 API は、サービスの負荷に基づいて動的に調整されます。 インデックス API には、静的な要求レート制限があります。 
+システムがピーク時の容量に近づくにつれて、API 要求が調整されます。 スロットルの動作は API によって異なります。 クエリ API (検索/提案/オートコンプリート) とインデックス作成 API は、サービスの負荷に基づいて動的に調整されます。 インデックス API とサービス操作 API には、静的な要求レート制限があります。 
 
 インデックスに関連する操作の静的なレート要求の制限:
 
@@ -148,6 +140,10 @@ QPS の見積もりは、すべての顧客ごとに個別に開発する必要�
 + インデックスの作成 (POST /indexes):1 分あたり 12 件 (検索単位あたり)
 + インデックスの作成または更新 (PUT /indexes/myindex):1 秒あたり 6 件 (検索単位あたり)
 + インデックスの削除 (DELETE /indexes/myindex):1 分あたり 12 件 (検索単位あたり) 
+
+サービスに関連する操作の静的なレート要求の制限:
+
++ サービス統計情報 (GET /servicestats):1 秒あたり 4 件 (検索単位あたり)
 
 ## <a name="api-request-limits"></a>API 要求の制限
 * 要求あたりの最大値: 16 MB<sup>1</sup>

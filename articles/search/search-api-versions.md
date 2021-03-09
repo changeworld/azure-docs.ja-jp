@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: feca2e83646264b28e42125b3fdebf41266c06bd
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d2308d065755df834a224ef3b1df202d7b7dc5ae
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422724"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518948"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>Azure Cognitive Search の API のバージョン
 
@@ -87,7 +87,7 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 | SDK バージョン | Status | 説明 |
 |-------------|--------|------------------------------|
-| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2020-06-30 REST API を対象としていますが、geo フィルターはまだサポートされていません。 |
+| [Azure.Search.Documents 11](/dotnet/api/overview/azure/search.documents-readme) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2020-06-30 REST API を対象としていますが、geo フィルターのネイティブ サポートはまだ提供されていません。 地理的な操作には、[Microsoft.Spatial](https://www.nuget.org/packages/Microsoft.Spatial/) パッケージをお勧めします。 [System.Text.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial/README.md) および [Newtonsoft.Json](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/core/Microsoft.Azure.Core.Spatial.NewtonsoftJson/README.md) についての例があります。 |
 | [Microsoft.Azure.Search 10](https://www.nuget.org/packages/Microsoft.Azure.Search/) | Stable | リリース日: 2019 年 5 月。 Search REST api-version=2019-05-06 を対象としています。|
 | [Microsoft.Azure.Management.Search 4.0.0](/dotnet/api/overview/azure/search/management) | Stable | Management REST api-version=2020-08-01 を対象としています。  |
 | Microsoft.Azure.Management.Search 3.0.0 | Stable | Management REST api-version=2015-08-19 を対象としています。  |
@@ -96,19 +96,19 @@ Azure Cognitive Search サービスのインスタンスでは、最新のバー
 
 | SDK バージョン | Status | 説明  |
 |-------------|--------|------------------------------|
-| [Java azure-search-documents 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
+| [Java azure-search-documents 11](https://newreleases.io/project/github/Azure/azure-sdk-for-java/release/azure-search-documents_11.1.0) | Stable | 2020 年 7 月にリリースされた、Azure Java SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
 | [Java Management Client 1.35.0](/java/api/overview/azure/search/management) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
 
 ## <a name="azure-sdk-for-javascript"></a>Azure SDK for JavaScript
 
 | SDK バージョン | Status | 説明  |
 |-------------|--------|------------------------------|
-| [JavaScript azure-search 11.0](https://azure.github.io/azure-sdk-for-node/azure-search/latest/) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2016-09-01 を対象としています。 |
-| [JavaScript azure-arm-search](https://azure.github.io/azure-sdk-for-node/azure-arm-search/latest/) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
+| [JavaScript @azure/search-documents 11.0](https://www.npmjs.com/package/@azure/search-documents) | Stable | 2020 年 7 月にリリースされた、Azure JavaScript と TypesScript SDK の新しいクライアント ライブラリです。 Search REST api-version=2016-09-01 を対象としています。 |
+| [JavaScript @azure/arm-search](https://www.npmjs.com/package/@azure/arm-search) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
 
 ## <a name="azure-sdk-for-python"></a>Azure SDK for Python
 
 | SDK バージョン | Status | 説明  |
 |-------------|--------|------------------------------|
-| [Python azure-search-documents 11.0](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-search-documents/11.0.0/index.html) | Stable | 2020 年 7 月にリリースされた、Azure .NET SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
-| [Python azure-mgmt-search 1.0](/python/api/overview/azure/search) | Stable | Management REST api-version=2015-08-19 を対象としています。 |
+| [Python azure-search-documents 11.0](https://pypi.org/project/azure-search-documents/) | Stable | 2020 年 7 月にリリースされた、Azure Python SDK の新しいクライアント ライブラリです。 Search REST api-version=2019-05-06 を対象としています。 |
+| [Python azure-mgmt-search 8.0](https://pypi.org/project/azure-mgmt-search/) | Stable | Management REST api-version=2015-08-19 を対象としています。 |

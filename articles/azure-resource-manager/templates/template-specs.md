@@ -2,15 +2,15 @@
 title: テンプレート スペックの作成とデプロイ
 description: テンプレート スペックを作成し、組織内の他のユーザーと共有する方法について説明します。
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/02/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 762c483883d391c436065b13b54f127f1618d7f9
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: e4efc63ffa49b1c8ca44fc806e37e4aa91cd76c8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734917"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700390"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager テンプレート スペック (プレビュー)
 
@@ -246,6 +246,78 @@ az deployment group create \
 
 ---
 
+## <a name="versioning"></a>バージョン管理
+
+テンプレート スペックを作成するときは、そのバージョン名を指定します。 テンプレート コードを反復処理するときは、既存のバージョンを更新する (修正プログラムの場合) か、または新しいバージョンを発行することができます。 バージョンはテキスト文字列です。 セマンティック バージョン管理など、任意のバージョン管理システムに従うことを選択できます。 テンプレート スペックのユーザーは、デプロイ時に使用するバージョン名を指定できます。
+
+## <a name="use-tags"></a>タグを使用する
+
+[タグ](../management/tag-resources.md)は、リソースを論理的に整理するために役立ちます。 Azure PowerShell と Azure CLI を使用して、テンプレート スペックにタグを追加できます。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az ts create \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzTemplateSpec `
+  -Name storageSpec `
+  -Version 1.0a `
+  -ResourceGroupName templateSpecsRg `
+  -Location westus2 `
+  -TemplateFile ./mainTemplate.json `
+  -Tag @{Dept="Finance";Environment="Production"}
+```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az ts update \
+  --name storageSpec \
+  --version "1.0a" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json" \
+  --tags Dept=Finance Environment=Production
+```
+
+---
+
+テンプレート スペックを作成または変更するときに、version パラメーターは指定するが、tag/tags パラメーターは指定しない場合:
+
+- テンプレート スペックが存在し、タグはあるがバージョンが存在しない場合、新しいバージョンでは既存のテンプレート スペックと同じタグが継承されます。
+
+テンプレート スペックを作成または変更するときに、tag/tags パラメーターと version パラメーターの両方を指定する場合:
+
+- テンプレート スペックとバージョンの両方が存在しない場合、新しいテンプレート スペックと新しいバージョンの両方にタグが追加されます。
+- テンプレート スペックは存在するが、バージョンが存在しない場合、タグは新しいバージョンにのみ追加されます。
+- テンプレート スペックとバージョンの両方が存在する場合、タグはバージョンにのみ適用されます。
+
+テンプレートを変更するときに、tag/tags パラメーターは指定するが、version パラメーターは指定しない場合、タグはテンプレート スペックにのみ追加されます。
+
 ## <a name="create-a-template-spec-with-linked-templates"></a>リンクされたテンプレートを使用してテンプレート スペックを作成する
 
 テンプレート スペックのメイン テンプレートがリンクされたテンプレートを参照している場合は、PowerShell コマンドと CLI コマンドで、リンクされたテンプレートをローカル ドライブから自動的に検索してパッケージ化することができます。 テンプレート スペックをホストするために、ストレージ アカウントまたはリポジトリを手動で構成する必要はありません。テンプレート スペック リソースにすべて含まれています。
@@ -331,10 +403,6 @@ az deployment group create \
 ```
 
 テンプレート スペックのリンクの詳細については、「[チュートリアル: テンプレート スペックをリンクされたテンプレートとしてデプロイする](template-specs-deploy-linked-template.md)」を参照してください。
-
-## <a name="versioning"></a>バージョン管理
-
-テンプレート スペックを作成するときは、そのバージョン名を指定します。 テンプレート コードを反復処理するときは、既存のバージョンを更新する (修正プログラムの場合) か、または新しいバージョンを発行することができます。 バージョンはテキスト文字列です。 セマンティック バージョン管理など、任意のバージョン管理システムに従うことを選択できます。 テンプレート スペックのユーザーは、デプロイ時に使用するバージョン名を指定できます。
 
 ## <a name="next-steps"></a>次のステップ
 

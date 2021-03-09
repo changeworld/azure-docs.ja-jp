@@ -11,12 +11,12 @@ ms.custom:
 ms.author: dobett
 author: dominicbetts
 ms.date: 11/12/2019
-ms.openlocfilehash: fca9a72fa237a11a02b6d4fbe30ebba5857384cf
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 2695b34745ff02d55f18cebbe87a468f807ca77a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346369"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831690"
 ---
 # <a name="tutorial-export-data-from-azure-iot-central-and-visualize-insights-in-power-bi"></a>チュートリアル:Azure IoT Central からデータをエクスポートし、Power BI で分析情報を視覚化する
 
@@ -504,6 +504,4 @@ Power BI のワークスペースの設定ページでワークスペースを�
 以上の 3 つのチュートリアルでは、**ストア内の分析 - チェックアウト** IoT Central アプリケーション テンプレートを使用するエンドツーエンドのソリューションについて説明しました。 デバイスをアプリケーションに接続し、IoT Central を使用してデバイスを監視し、Power BI を使用してデバイスのテレメトリから分析情報を表示するダッシュボードを作成しました。 次のステップとして、他の IoT Central アプリケーション テンプレートのいずれかを調べることをお勧めします。
 
 > [!div class="nextstepaction"]
-> * [IoT Central を使用してエネルギー ソリューションを構築する](../energy/overview-iot-central-energy.md)
-> * [IoT Central を使用して政府機関ソリューションを構築する](../government/overview-iot-central-government.md)
-> * [IoT Central を使用してヘルスケア ソリューションを構築する](../healthcare/overview-iot-central-healthcare.md)
+> [IoT Central を使用してエネルギー ソリューションを構築する](../energy/overview-iot-central-energy.md)

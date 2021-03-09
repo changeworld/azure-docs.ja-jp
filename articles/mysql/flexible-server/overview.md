@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 46b056c22a6d1c70a729f5b9558f53c685a878f0
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348289"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732855"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -24,7 +24,7 @@ MySQL コミュニティ エディションを搭載した Azure Database for My
 
 ## <a name="overview"></a>概要
 
-Azure Database for MySQL フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 一般に、サービスでは、ユーザーの要件に基づいて、より高い柔軟性とサーバー構成のカスタマイズが提供されます。 フレキシブル サーバー アーキテクチャにより、ユーザーは単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性を選択できます。 また、フレキシブル サーバーでは、サーバーを停止および開始する機能と、負荷の急増に対応できる SKU を備えた、優れたコスト最適化制御が提供され、完全なコンピューティング容量を継続的には必要としないワークロードに最適です。 現在、このサービスでは、MySQL 5.7 のコミュニティ バージョンがサポートされています。 このサービスは現在プレビュー段階にあり、現時点ではさまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
+Azure Database for MySQL フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 一般に、サービスでは、ユーザーの要件に基づいて、より高い柔軟性とサーバー構成のカスタマイズが提供されます。 フレキシブル サーバー アーキテクチャにより、ユーザーは単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性を選択できます。 また、フレキシブル サーバーでは、サーバーを停止および開始する機能と、負荷の急増に対応できる SKU を備えた、優れたコスト最適化制御が提供され、完全なコンピューティング容量を継続的には必要としないワークロードに最適です。 現在、このサービスでは、MySQL 5.7 と 8.0 のコミュニティ バージョンがサポートされています。 このサービスは現在プレビュー段階にあり、現時点ではさまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
 
 フレキシブル サーバーは、以下に適しています 
 - より優れた制御とカスタマイズが必要なアプリケーション開発。
@@ -132,20 +132,22 @@ MySQL は、インターネット規模の Web およびモバイル アプリ�
 
 Azure でワークロードを実行する利点の 1 つは、グローバルに展開できることです。 Azure Database for MySQL フレキシブル サーバーは、現在、次の Azure リージョンで提供されています。
 
-- 西ヨーロッパ
-- 北ヨーロッパ
-- 英国南部
-- 米国東部 2
-- 米国西部 2
-- 米国中部
-- 米国東部
-- カナダ中部
-- 東南アジア
-- 韓国中部
-- 東日本
-- オーストラリア東部
+| Region | 可用性 | ゾーン冗長 HA | 
+| --- | --- | --- |
+| 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
+| 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
+| 英国南部 | :heavy_check_mark: | :x: | 
+| 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
+| 米国中部 | :heavy_check_mark: | :x: | 
+| 米国東部 | :heavy_check_mark: | :heavy_check_mark: |
+| カナダ中部 | :heavy_check_mark: | :x: | 
+| Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
+| 韓国中部 | :heavy_check_mark: | :x: | 
+| Japan East | :heavy_check_mark: | :x: | 
+| オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: |
 
-近日中に新しいサーバーを追加できるよう取り組んでいます。
+近日中に新しいリージョンを追加できるよう取り組んでいます。
 
 ## <a name="contacts"></a>連絡先
 Azure Database for MySQL フレキシブル サーバーについてのご質問やご提案については、Azure Database for MySQL チームまでメール ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)) でお送りください。 このメール アドレスはテクニカル サポートのエイリアスではありません。

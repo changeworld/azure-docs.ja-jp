@@ -51,4 +51,4 @@ Remove-AzResourceGroup -Name containerdeletetestrg
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/)を参照してください。
 
-その他のストレージ PowerShell サンプル スクリプトは、[Azure Blob ストレージ用 PowerShell サンプル](../blobs/storage-samples-blobs-powershell.md)のページにあります。
+その他のストレージ PowerShell サンプル スクリプトは、[Azure Blob Storage 用 PowerShell サンプル](../blobs/storage-samples-blobs-powershell.md)のページにあります。

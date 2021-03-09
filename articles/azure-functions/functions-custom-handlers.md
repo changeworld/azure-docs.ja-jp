@@ -5,23 +5,23 @@ author: anthonychu
 ms.author: antchu
 ms.date: 12/1/2020
 ms.topic: article
-ms.openlocfilehash: f527b387afc01eb60bd582adc13a4ad3d516055b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dd112c74ea9f013a0e14bddd735060ddbf73c14e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936993"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578528"
 ---
 # <a name="azure-functions-custom-handlers"></a>Azure Functions のカスタム ハンドラー
 
-すべての関数アプリは、言語固有のハンドラーによって実行されます。 Azure Functions では多くの[言語ハンドラー](./supported-languages.md)が既定でサポートされていますが、他の言語やランタイムを使用したい場合もあります。
+すべてのFunction App は、言語固有のハンドラーによって実行されます。 Azure Functions では多くの[言語ハンドラー](./supported-languages.md)が既定でサポートされていますが、他の言語やランタイムを使用したい場合もあります。
 
 カスタム ハンドラーは、Functions ホストからイベントを受信する軽量の Web サーバーです。 HTTP プリミティブをサポートするすべての言語で、カスタム ハンドラーを実装できます。
 
 カスタム ハンドラーは、次のような場合に最適です。
 
-- Go や Rust など、現在サポートされていない言語で関数アプリを実装する。
-- Deno など、現在サポートされていないランタイムで関数アプリを実装する。
+- Go や Rust など、現在サポートされていない言語でFunction App を実装する。
+- Deno など、現在サポートされていないランタイムでFunction App を実装する。
 
 カスタム ハンドラーを使用すると、[拡張バンドル](./functions-bindings-register.md)を介して、[トリガーと入出力バインド](./functions-triggers-bindings.md)を使用できます。
 
@@ -109,7 +109,7 @@ ms.locfileid: "97936993"
 
 #### <a name="localsettingsjson"></a>local.settings.json
 
-*local.settings.json* では、関数アプリをローカルで実行する際に使用されるアプリケーション設定を定義します。 シークレットが含まれる可能性があるため、*local.settings.json* はソース管理から除外する必要があります。 Azure では、代わりにアプリケーション設定を使用します。
+*local.settings.json* では、Function App をローカルで実行する際に使用されるアプリケーション設定を定義します。 シークレットが含まれる可能性があるため、*local.settings.json* はソース管理から除外する必要があります。 Azure では、代わりにアプリケーション設定を使用します。
 
 カスタム ハンドラーの場合、*local.settings.json* で `FUNCTIONS_WORKER_RUNTIME` を `Custom` に設定します。
 
@@ -121,9 +121,6 @@ ms.locfileid: "97936993"
   }
 }
 ```
-
-> [!NOTE]
-> `Custom` は、Linux Premium または App Service プランでは有効なランタイムとして認識されない可能性があります。 それがデプロイ ターゲットの場合は、`FUNCTIONS_WORKER_RUNTIME` を空の文字列に設定します。
 
 ### <a name="function-metadata"></a>関数のメタデータ
 
@@ -521,7 +518,7 @@ func main() {
 
 カスタム ハンドラーは、すべての Azure Functions ホスティング オプションにデプロイできます。 ハンドラーにオペレーティング システムまたはプラットフォームの依存関係 (言語のランタイムなど) が必要な場合は、[カスタム コンテナー](./functions-create-function-linux-custom-image.md)を使用する必要がある場合があります。
 
-カスタム ハンドラー用に Azure で関数アプリを作成する場合は、スタックとして .NET Core を選択することをお勧めします。 カスタム ハンドラー用の "カスタム" スタックは、今後追加される予定です。
+カスタム ハンドラー用に Azure でFunction App を作成する場合は、スタックとして .NET Core を選択することをお勧めします。 カスタム ハンドラー用の "カスタム" スタックは、今後追加される予定です。
 
 Azure Functions Core Tools を使用してカスタム ハンドラー アプリをデプロイするには、次のコマンドを実行します。
 
@@ -544,9 +541,9 @@ func azure functionapp publish $functionAppName
 
 ### <a name="trace-logging"></a>Trace logging
 
-カスタム ハンドラー プロセスの起動に失敗した場合、または Functions ホストとの通信に問題がある場合は、関数アプリのログ レベルを `Trace` に上げて、ホストからの診断メッセージをさらに表示できます。
+カスタム ハンドラー プロセスの起動に失敗した場合、または Functions ホストとの通信に問題がある場合は、Function App のログ レベルを `Trace` に上げて、ホストからの診断メッセージをさらに表示できます。
 
-関数アプリの既定のログ レベルを変更するには、*host.json* の `logging` セクションで `logLevel` 設定を構成します。
+Function App の既定のログ レベルを変更するには、*host.json* の `logging` セクションで `logLevel` 設定を構成します。
 
 ```json
 {
@@ -582,7 +579,7 @@ Azure では、ログ メッセージを表示するには [Application Insights
 
 ### <a name="get-support"></a>サポートを受ける
 
-カスタム ハンドラーがある関数アプリに関するヘルプが必要な場合は、通常のサポート チャネルを通じてリクエストを送信できます。 ただし、カスタム ハンドラー アプリのビルドにはさまざまな言語が使用されるため、サポートは無制限ではありません。
+カスタム ハンドラーがあるFunction App に関するヘルプが必要な場合は、通常のサポート チャネルを通じてリクエストを送信できます。 ただし、カスタム ハンドラー アプリのビルドにはさまざまな言語が使用されるため、サポートは無制限ではありません。
 
 Functions ホストの起動またはカスタム ハンドラー プロセスとの通信に問題がある場合は、サポートを利用できます。 選択した言語またはフレームワークに関する問題など、カスタム ハンドラー プロセスの内部動作に固有の問題については、このコンテキストでサポート チームが支援を行うことができません。
 

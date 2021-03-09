@@ -3,7 +3,7 @@ title: Azure AD B2C (MSAL Android) | Azure
 titleSuffix: Microsoft identity platform
 description: Android 用 Microsoft Authentication Library (MSAL.Android) で Azure AD B2C を使用する場合の固有の考慮事項について説明します
 services: active-directory
-author: brianmel
+author: iambmelt
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,16 +13,19 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: f87f2e79bd9439fddb52fad82c7ab4712fc68fb9
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 1a9b9481d0b4086505bbfd3c2cd654ce228d1ae2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680367"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688877"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Android 用 MSAL と B2C を一緒に使用する
 
 Microsoft Authentication Library (MSAL) を使用すると、アプリケーション開発者は、[Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) を使用してソーシャルおよびローカル ID でユーザーを認証できます。 Azure AD B2C は、ID 管理サービスです。 それを使用すると、貴社のアプリケーションを顧客が使用するときに、顧客がサインアップ、サインイン、およびプロファイル管理を行う方法をカスタマイズおよび制御することができます。
+
+## <a name="choosing-a-compatible-authorization_user_agent"></a>互換性のある authorization_user_agent の選択
+B2C ID 管理システムでは、Google、Facebook、Twitter、Amazon など、多数のソーシャル アカウント プロバイダーによる認証がサポートされています。 アプリでこのような種類のアカウントをサポートする予定の場合は、一部の外部 ID プロバイダーで WebView ベースの認証の使用が禁止されているためにマニフェストの [`authorization_user_agent`](msal-configuration.md#authorization_user_agent) を指定するときには、`DEFAULT` または `BROWSER` のいずれか値を使用するように MSAL パブリック クライアント アプリケーションを構成することをお勧めします。
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>既知の機関とリダイレクト URI を構成する
 
@@ -39,21 +42,24 @@ Android 用 MSAL では、B2C ポリシー (ユーザー体験) は個々の機�
 >注:B2C アプリケーションの場合、`account_mode` を **MULTIPLE** に設定する必要があります。 [複数のアカウントのパブリック クライアント アプリ](./single-multi-account.md#multiple-account-public-client-application)の詳細については、ドキュメントを参照してください。
 
 ### `app/src/main/res/raw/msal_config.json`
+
 ```json
 {
-    "client_id": "<your_client_id_here>",
-    "redirect_uri": "<your_redirect_uri_here>",
-    "account_mode" : "MULTIPLE",
-    "authorities": [{
-            "type": "B2C",
-            "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/",
-            "default": true
-        },
-        {
-            "type": "B2C",
-            "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_EditProfile/"
-        }
-    ]
+  "client_id": "<your_client_id_here>",
+  "redirect_uri": "<your_redirect_uri_here>",
+  "account_mode" : "MULTIPLE",
+  "authorization_user_agent" : "DEFAULT",
+  "authorities": [
+    {
+      "type": "B2C",
+      "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/",
+      "default": true
+    },
+    {
+      "type": "B2C",
+      "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_EditProfile/"
+    }
+  ]
 }
 ```
 
@@ -118,7 +124,7 @@ pca.acquireToken(parameters);
 MSAL を使用してトークンをサイレントで取得するには、`AcquireTokenSilentParameters` インスタンスを作成し、それを `acquireTokenSilentAsync` メソッドに指定します。 `acquireToken` メソッドとは異なり、トークンをサイレントで取得するには、`authority` を指定する必要があります。
 
 ```java
-IMultilpeAccountPublicClientApplication pca = ...; // Initialization not shown
+IMultipleAccountPublicClientApplication pca = ...; // Initialization not shown
 AcquireTokenSilentParameters parameters = new AcquireTokenSilentParameters.Builder()
     .withScopes(Arrays.asList("https://contoso.onmicrosoft.com/contosob2c/read")) // Provide your registered scope here
     .forAccount(account)

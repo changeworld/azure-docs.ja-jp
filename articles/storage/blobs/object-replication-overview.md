@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/13/2021
+ms.date: 02/08/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 391c33e72f45e7c0c0b56128b32a8e73399e417a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178978"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834325"
 ---
 # <a name="object-replication-for-block-blobs"></a>ブロック BLOB のオブジェクト レプリケーション
 
@@ -42,6 +42,8 @@ ms.locfileid: "98178978"
 - [BLOB のバージョン管理](versioning-overview.md):ソース アカウントと宛先アカウントの両方で有効にする必要があります。 BLOB のバージョン管理を有効にする方法については、「[BLOB のバージョン管理を有効にして管理する](versioning-enable.md)」をご覧ください。
 
 変更フィードと BLOB バージョン管理を有効にすると、追加のコストが発生する場合があります。 詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
+
+オブジェクト レプリケーションは、汎用 v2 ストレージ アカウントでのみサポートされます。 ソース アカウントと宛先のアカウントの両方が汎用 v2 である必要があります。 
 
 ## <a name="how-object-replication-works"></a>オブジェクト レプリケーションのしくみ
 
@@ -88,7 +90,9 @@ ms.locfileid: "98178978"
 
 また、レプリケーション ルールの一部として 1 つ以上のフィルターを指定して、ブロック BLOB をプレフィックスでフィルター処理することもできます。 プレフィックスを指定すると、ソース コンテナー内のそのプレフィックスと一致する BLOB のみが宛先コンテナーにコピーされます。
 
-ルールでソースと宛先のコンテナーを指定する前に、それらの両方が存在している必要があります。 レプリケーション ポリシーを作成すると、宛先コンテナーは読み取り専用になります。 宛先コンテナーへの書き込みを試みると、エラー コード 409 (競合) で失敗します。 ただし、宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それをアーカイブ層に移動することはできます。 アーカイブ層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md#archive-access-tier)」を参照してください。
+ルールでソースと宛先のコンテナーを指定する前に、それらの両方が存在している必要があります。 レプリケーション ポリシーを作成した後、宛先コンテナーへの書き込み操作は許可されません。 宛先コンテナーへの書き込みを試みると、エラー コード 409 (競合) で失敗します。 レプリケーション ルールが構成されている宛先コンテナーに書き込むには、そのコンテナーに対して構成されているルールを削除するか、レプリケーション ポリシーを削除する必要があります。 レプリケーション ポリシーがアクティブになっている場合、宛先コンテナーに対する読み取りおよび削除操作は許可されます。
+
+宛先コンテナーの BLOB で [Set Blob Tier](/rest/api/storageservices/set-blob-tier) 操作を呼び出して、それをアーカイブ層に移動できます。 アーカイブ層の詳細については、「[Azure Blob Storage: ホット、クール、アーカイブ ストレージ層](storage-blob-storage-tiers.md#archive-access-tier)」を参照してください。
 
 ## <a name="replication-status"></a>レプリケーションの状態
 

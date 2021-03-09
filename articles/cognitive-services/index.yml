@@ -12,12 +12,12 @@ metadata:
   manager: nitinme
   ms.custom: custom-portals-hub
   ms.date: 08/28/2020
-  ms.openlocfilehash: 059d5545c71bef3465dc634f8fdad2396a6d9a7e
-  ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+  ms.openlocfilehash: 2d2fe422b9b19e69e2f4e919041e6d50e0616308
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98681572"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102182742"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -52,7 +52,7 @@ conceptualContent:
     - url: ./computer-vision/index.yml
       itemType: overview
       text: Computer Vision
-    - url: ./Custom-Vision-Service/index.yml
+    - url: ./custom-vision-service/index.yml
       itemType: overview
       text: Custom Vision
     - url: ./face/index.yml
@@ -61,9 +61,6 @@ conceptualContent:
     - url: ./form-recognizer/index.yml
       itemType: overview
       text: Form Recognizer
-    - url: ./ink-recognizer/index.yml
-      itemType: overview
-      text: Ink Recognizer (廃止)
     - url: ../media-services/video-indexer/index.yml
       itemType: overview
       text: Video Indexer
@@ -84,7 +81,7 @@ conceptualContent:
       text: Text Analytics
     - url: ./translator/index.yml
       itemType: overview
-      text: Translator
+      text: '[変換者]'
   - title: 音声
     summary: 音声をテキストに変換し、テキストを自然な音声に変換します。 ある言語を別の言語に翻訳し、話者の認証と認識を可能にします。
     links:
@@ -136,7 +133,7 @@ conceptualContent:
     - url: ./containers/docker-compose-recipe.md
       itemType: get-started
       text: Docker Compose を使用して複数のコンテナーをデプロイする
-    - url: ./containers/container-faq.md
+    - url: ./containers/container-faq.yml
       itemType: reference
       text: Cognitive Services コンテナーに関する FAQ
   - title: ビッグ データの Cognitive Services
@@ -188,6 +185,6 @@ additionalContent:
     - title: ツール
       links:
       - text: Azure CLI
-        url: /cli/azure/cognitiveservices?view=azure-cli-latest
+        url: /cli/azure/cognitiveservices
       - text: PowerShell
         url: /powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services

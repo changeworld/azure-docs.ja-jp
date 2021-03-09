@@ -4,12 +4,12 @@ description: Azure コンテナー レジストリの保存時の暗号化、お
 ms.topic: article
 ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: bc692dc8df133aa5fae352a7667062f81ceed350
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620448"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526444"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>カスタマー マネージド キーを使用してレジストリを暗号化する
 
@@ -127,11 +127,11 @@ az keyvault set-policy \
   --key-permissions get unwrapKey wrapKey
 ```
 
-または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) (プレビュー) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) コマンドを使用して、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
+または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) コマンドを使用して、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
 
 ```azurecli 
 az role assignment create --assignee $identityPrincipalID \
-  --role "Key Vault Crypto Service Encryption (preview)" \
+  --role "Key Vault Crypto Service Encryption User" \
   --scope $keyvaultID
 ```
 
@@ -267,12 +267,12 @@ ID でキー コンテナーにアクセスできるように、キー コンテ
 
 :::image type="content" source="media/container-registry-customer-managed-keys/add-key-vault-access-policy.png" alt-text="キー コンテナーのアクセス ポリシーを作成する":::
 
-または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) (プレビュー) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
+または、[Key Vault 用の Azure RBAC](../key-vault/general/rbac-guide.md) を使用して、キー コンテナーにアクセスするためのアクセス許可を ID に割り当てます。 たとえば、Key Vault Crypto Service Encryption ロールを ID に割り当てます。
 
 1. お使いのキー コンテナーに移動します。
 1. **[アクセス制御 (IAM)]**  >  **[+ 追加]**  >  **[ロールの割り当ての追加]** の順に選択します。
 1. **[ロールの割り当ての追加]** ウィンドウで、次の手順に従います。
-    1. **[Key Vault Crypto Service Encryption (プレビュー)]** ロールを選択します。 
+    1. **[Key Vault Crypto Service Encryption User]** ロールを選択します。 
     1. **ユーザー割り当てマネージド ID** にアクセス権を割り当てます。
     1. ユーザー割り当てマネージド ID のリソース名を選択し、 **[保存]** を選択します。
 
@@ -566,21 +566,31 @@ Key Vault ファイアウォールを使用して構成されたキー コンテ
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-### <a name="removing-user-assigned-identity"></a>ユーザー割り当て ID を削除する
+### <a name="removing-managed-identity"></a>マネージド ID の削除
 
-暗号化に使用されるユーザー割り当て ID をレジストリから削除しようとすると、次のようなエラー メッセージが表示されることがあります。
+
+暗号化の構成に使用されるユーザー割り当てまたはシステム割り当てのマネージド ID をレジストリから削除しようとすると、次のようなエラー メッセージが表示されることがあります。
  
 ```
 Azure resource '/subscriptions/xxxx/resourcegroups/myGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry' does not have access to identity 'xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx' Try forcibly adding the identity to the registry <registry name>. For more information on bring your own key, please visit 'https://aka.ms/acr/cmk'.
 ```
  
-暗号化キーを変更 (ローテーション) することもできません。 この問題が発生した場合、まず、エラー メッセージに表示されている GUID を使用して ID の再割り当てを行ってください。 次に例を示します。
+暗号化キーを変更 (ローテーション) することもできません。 解決手順は、暗号化に使用される ID の種類によって異なります。
+
+**ユーザー割り当て ID**
+
+ユーザー割り当て ID でこの問題が発生した場合、まず、エラー メッセージに表示されている GUID を使用して ID の再割り当てを行ってください。 次に例を示します。
 
 ```azurecli
 az acr identity assign -n myRegistry --identities xxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx
 ```
         
 その後、キーを変更して異なる ID を割り当てれば、元のユーザー割り当て ID を削除することができます。
+
+**システム割り当て ID**
+
+システム割り当て ID でこの問題が発生した場合は、[Azure サポート チケットを作成](https://azure.microsoft.com/support/create-ticket/)して ID の復元の支援を求めてください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

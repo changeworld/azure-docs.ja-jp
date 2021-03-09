@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: ba8a82ed1113bfb3e71560ca9a6c713602df21f2
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590649"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576683"
 ---
 # <a name="azure-queue-storage-monitoring-data-reference"></a>Azure Queue Storage 監視データのリファレンス
 
@@ -36,7 +36,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 
 #### <a name="queue-storage-metrics"></a>Queue Storage メトリック
 
-この表は、[Queue Storage のメトリック](../../azure-monitor/platform/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)を示しています。
+この表は、[Queue Storage のメトリック](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices)を示しています。
 
 | メトリック | 説明 |
 | ------------------- | ----------------- |
@@ -80,4 +80,4 @@ Azure Storage では、Azure Monitor の次のメトリック ディメンショ
 ## <a name="see-also"></a>関連項目
 
 - Azure Queue Storage 監視の詳細については、「[Azure Queue Storage の監視](monitor-queue-storage.md)」を参照してください。
-- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+- Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。

@@ -10,12 +10,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 11/05/2020
-  ms.openlocfilehash: 2672ad70ad76e12870a2a176331e58579443b952
-  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.openlocfilehash: 5b2495f2cf5dbe6714796a4e1f6516cd3a3fe7f4
+  ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98702089"
+  ms.lasthandoff: 03/02/2021
+  ms.locfileid: "101668216"
 landingContent:
 - title: 最新の機能
   linkLists:
@@ -27,6 +27,8 @@ landingContent:
       url: dedicated-hosts.md
     - text: 近接通信配置グループ
       url: co-location.md
+    - text: Virtual Machine Scale Sets のオーケストレーション モード
+      url: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md
 - title: Linux のクイックスタート
   linkLists:
   - linkListType: quickstart
@@ -66,7 +68,7 @@ landingContent:
     - text: Linux VM が起動しない
       url: ./troubleshooting/boot-error-troubleshoot-linux.md
     - text: Windows VM が起動しない
-      url: /troubleshooting/boot-error-troubleshoot.md
+      url: ./troubleshooting/boot-error-troubleshoot.md
     - text: Microsoft Q&A
       url: /answers/topics/azure-virtual-machines.html
 - title: リソース

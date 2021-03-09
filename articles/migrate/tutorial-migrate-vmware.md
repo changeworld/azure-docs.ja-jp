@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: a858bcc0e6f6364a1eb5c37d555f5f1e7064b650
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 17d9d3bf787b67716fb2270cd055e30a4fefbe0f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879463"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702200"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -57,7 +57,7 @@ Azure Migrate Server Migration は、VMware VM の検出、評価、エージェ
 
 アプライアンスを設定して検出を完了すると、Azure への VMware VM のレプリケーションを開始できます。 
 
-- 最大 300 件のレプリケーションを同時に実行できます。
+- 最大 500 件のレプリケーションを同時に実行できます。
 - ポータルでは、移行の対象として一度に最大 10 台の VM を選択できます。 より多くのマシンを移行するには、10 台のバッチでグループに追加します。
 
 レプリケーションを有効にするには、次の手順に従います。
@@ -88,9 +88,10 @@ Azure Migrate Server Migration は、VMware VM の検出、評価、エージェ
 9. **[Disk encryption type]\(ディスク暗号化の種類\)** で、以下を選択します。
     - プラットフォーム マネージド キーを使用した保存時の暗号化
     - カスタマー マネージド キーを使用した保存時の暗号化
+    - プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化
 
    > [!NOTE]
-   > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
+   > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](https://go.microsoft.com/fwlink/?linkid=2151800)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
   
 10. **[Azure ハイブリッド特典]** で、
 

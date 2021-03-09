@@ -7,12 +7,16 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: b45e1fbaf912cc045ba51a79db434baecbabdf43
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+adobe-target: true
+adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
+adobe-target-experience: Experience B
+adobe-target-content: ./app-service-web-tutorial-custom-domain-uiex
+ms.openlocfilehash: 79599ce04b93409c67342be73cf88d5e20621c1d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608267"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102182589"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -140,7 +144,7 @@ CNAME レコードと TXT レコードを追加した後の DNS レコード ペ
 
 1. Azure Portal のアプリ ページの左側に表示されるウィンドウで、 **[カスタム ドメイン]** を選択します。
 
-    ![[カスタム ドメイン] メニューを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[カスタム ドメイン] メニューを示しているスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. アプリの **[カスタム ドメイン]** ページで、完全修飾カスタム DNS 名 (`www.contoso.com`) を一覧に追加します。
 
@@ -181,7 +185,7 @@ A レコードをマップするには、アプリの外部 IP アドレスが�
 
 1. Azure Portal のアプリ ページの左側に表示されるウィンドウで、 **[カスタム ドメイン]** を選択します。
 
-   ![[カスタム ドメイン] メニューを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+   ![[カスタム ドメイン] メニューを示しているスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. **[カスタム ドメイン]** ページで、アプリの IP アドレスをコピーします。
 
@@ -273,7 +277,7 @@ CNAME が追加されると、DNS レコード ページは次の例のように
 
 1. Azure Portal のアプリ ページの左側に表示されるウィンドウで、 **[カスタム ドメイン]** を選択します。
 
-    ![[カスタム ドメイン] メニューを示すスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
+    ![[カスタム ドメイン] メニューを示しているスクリーンショット。](./media/app-service-web-tutorial-custom-domain/custom-domain-menu.png)
 
 1. **[カスタム ドメインの追加]** を選択します。
 
@@ -304,22 +308,22 @@ CNAME が追加されると、DNS レコード ページは次の例のように
 
 ## <a name="resolve-404-not-found"></a>404 "Not Found" (見つかりません) を解決する
 
-カスタム ドメインの URL 参照時に HTTP 404 (Not Found) エラーが発生した場合は、<a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a> を使用して、ご利用のドメインがアプリの IP アドレスに解決されることを確認します。 解決されない場合は、次のいずれかの理由が考えられます。
-
-- 構成されているカスタム ドメインに A レコードまたは CNAME レコードがない。
-- クライアントのブラウザーが、ドメインの古い IP アドレスをキャッシュしている。 キャッシュをクリアして、DNS 解決をもう一度テストします。 Windows コンピューターでは、`ipconfig /flushdns` でキャッシュをクリアします。
-
-<a name="virtualdir" aria-hidden="true"></a>
+カスタム ドメインの URL 参照時に HTTP 404 (Not Found) エラーが発生した場合は、<a href="https://www.nslookup.io/" target="_blank">nslookup.io</a> を使用して、ご利用のドメインがアプリの IP アドレスに解決されることを確認します。 されない場合は、A および CNAME レコードが同じサイトを使用して正しく構成されていることを確認します。 IP が正しく解決されても 404 が表示されている場合は、お使いのブラウザーにドメインの古い IP アドレスがキャッシュされている可能性があります。 キャッシュをクリアして、DNS 解決をもう一度テストします。 Windows コンピューターでは、`ipconfig /flushdns` でキャッシュをクリアします。
 
 ## <a name="migrate-an-active-domain"></a>アクティブなドメインの移行
 
 ライブ サイトとその DNS ドメイン名を App Service にダウンタイムなしで移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](manage-custom-dns-migrate-domain.md)」をご覧ください。
 
+<a name="virtualdir" aria-hidden="true"></a>
+
 ## <a name="redirect-to-a-custom-directory"></a>カスタム ディレクトリにリダイレクトする
 
 既定では、App Service は Web 要求をアプリ コードのルート ディレクトリに送信します。 しかし、特定の Web フレームワークはルート ディレクトリで開始されません。 たとえば、[Laravel](https://laravel.com/) は `public` サブディレクトリで開始されます。 `contoso.com` の DNS の例を引き続き使用すると、このようなアプリには `http://contoso.com/public` でアクセスできますが、代わりに`http://contoso.com` を `public` ディレクトリにダイレクトするという方法もあります。 この手順は、DNS 解決に関わるものではなく、仮想ディレクトリのカスタマイズに関するものです。
 
-仮想ディレクトリをカスタマイズするには、Web アプリ ページの左側のウィンドウで、 **[アプリケーション設定]** を選択します。
+Windows アプリの仮想ディレクトリをカスタマイズするには、Web アプリ ページの左ペインで、 **[アプリケーション設定]** を選択します。 
+
+> [!NOTE]
+> Linux アプリにはこのページがありません。 Linux アプリのサイト ルートを変更するには、言語固有の構成ガイド ([PHP](configure-language-php.md?pivots=platform-linux#change-site-root) など) を参照してください。
 
 ページの下部でルート仮想ディレクトリ `/` が既定で `site\wwwroot` をポイントしていますが、これがお客様のアプリ コードのルート ディレクトリです。 たとえば、代わりに `site\wwwroot\public` をポイントするように変更して、変更内容を保存できます。
 

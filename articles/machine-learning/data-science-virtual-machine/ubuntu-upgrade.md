@@ -4,18 +4,17 @@ titleSuffix: Azure Data Science Virtual Machine
 description: CentOS および Ubuntu 16.04 から最新の Ubuntu 18.04 Data Science Virtual Machine にアップグレードする方法について説明します。
 keywords: ディープ ラーニング, AI, データ サイエンス ツール, データ サイエンス仮想マシン, チーム データ サイエンス プロセス
 services: machine-learning
-ms.service: machine-learning
-ms.subservice: data-science-vm
+ms.service: data-science-vm
 author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 5b98384d4d735f4c124c6af40d6edbff896900ce
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b897ff7527d2d60234162ccbdeb08a00260bb1d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320985"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659462"
 ---
 # <a name="upgrade-your-data-science-virtual-machine-to-ubuntu-1804"></a>Data Science Virtual Machine を Ubuntu 18.04 にアップグレードする
 
@@ -65,7 +64,7 @@ Azure portal で、検索バーを使用して **[スナップショット]** �
 
 VM をアップグレードし、再起動したら、SSH を介して VM に再度アクセスしてみてください。 再起動中に IP アドレスが変更された可能性があるため、接続を試みる前に、それを確認します。
 
-エラー「 **REMOTE HOST IDENTIFICATION HAS CHANGED** 」 (リモート ホスト ID が変更されました) が発生した場合は、SSH 資格情報を再生成する必要があります。
+エラー「**REMOTE HOST IDENTIFICATION HAS CHANGED**」 (リモート ホスト ID が変更されました) が発生した場合は、SSH 資格情報を再生成する必要があります。
 
 :::image type="content" source="media/ubuntu_upgrade/remote-host-warning.png" alt-text="リモート ホスト ID が変更されたという警告を示す PowerShell のスクリーンショット":::
 

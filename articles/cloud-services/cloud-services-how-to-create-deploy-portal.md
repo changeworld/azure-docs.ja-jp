@@ -1,27 +1,31 @@
 ---
-title: クラウド サービスを作成してデプロイする方法 | Microsoft Docs
+title: クラウド サービス (クラシック) を作成してデプロイする方法 | Microsoft Docs
 description: 簡易作成の方法を使用してクラウド サービスを作成し、その後、[アップロード] を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 05/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 879b86714adf50b5a4da4398389405063ac046dc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164166"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743408"
 ---
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>クラウド サービスを作成してデプロイする方法
-Azure portal には、クラウド サービスを作成してデプロイする方法が 2 つ用意されています。" *簡易作成* " と " *カスタム作成* " です。
+# <a name="how-to-create-and-deploy-an-azure-cloud-service-classic"></a>Azure Cloud Service (クラシック) を作成してデプロイする方法
 
-このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、 **[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。 この方法を使うと、Azure ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。 クラウド サービスの作成時にデプロイする準備が整っている場合は、[カスタム作成] を使用して作成とデプロイを同時に実行できます。
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そのため、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
+
+Azure Portal には、クラウド サービスを作成してデプロイする方法が 2 つ用意されています。"*簡易作成*" と "*カスタム作成*" です。
+
+このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、 **[アップロード]** を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。 この方法を使うと、Azure Portal に、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。 クラウド サービスの作成時にデプロイする準備が整っている場合は、[カスタム作成] を使用して作成とデプロイを同時に実行できます。
 
 > [!NOTE]
-> Azure DevOps からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、[Azure クイック スタート] またはダッシュボードから Azure DevOps 発行を設定する必要があります。 詳細については、 [Azure DevOps を使用した Azure への継続的デリバリー][TFSTutorialForCloudService]に関するページを参照するか、 **[クイック スタート]** ページのヘルプを参照してください。
+> Azure DevOps からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、[Azure クイック スタート] またはダッシュボードから Azure DevOps 発行を設定する必要があります。 詳細については、[Azure DevOps を使用した Azure への継続的デリバリー][TFSTutorialForCloudService]に関するページを参照するか、 **[クイック スタート]** ページのヘルプを参照してください。
 >
 >
 
@@ -56,7 +60,8 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. **[Create a resource > Compute] (リソースの作成 > 計算)** をクリックし、下へスクロールして **[クラウド サービス]** をクリックします。
 
-    ![[リソースの作成] > [計算] で [クラウド サービス] オプションが強調表示されているスクリーンショット。](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![クラウド サービスの発行 1](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+
 3. 新しい **[クラウド サービス]** ウィンドウで、 **[DNS 名]** の値を入力します。
 4. 新しい **リソース グループ** を作成するか、または既存のリソース グループを選択します。
 5. **[場所]** を選択します。
@@ -65,7 +70,7 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 8. **[OK]** をクリックして、 **[パッケージのアップロード]** ウィンドウを閉じます。
 9. 追加する証明書がない場合は、 **[作成]** をクリックします。
 
-    ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+    ![クラウド サービスの発行 2](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>証明書のアップロード
 デプロイメント パッケージが [証明書を使用するように構成](cloud-services-configure-ssl-certificate-portal.md#modify)されている場合は、ここで証明書をアップロードできます。
@@ -74,7 +79,7 @@ Web ロールまたは worker ロールのデプロイを伴うクラウド サ�
 2. **[証明書のアタッチ]** をクリックし、 **[証明書の追加]** ウィンドウで **[OK]** をクリックします。
 3. **[クラウド サービス]** ウィンドウで **[作成]** をクリックします。 デプロイの状態が **[準備完了]** になったら、次の手順に進むことができます。
 
-    ![証明書をアップロードするプロセスを強調表示したスクリーンショット。](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![クラウド サービスの発行 3](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>デプロイが正常に完了したことを確認する
 1. クラウド サービス インスタンスをクリックします。

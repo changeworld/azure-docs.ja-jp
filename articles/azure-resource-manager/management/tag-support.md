@@ -3,12 +3,12 @@ title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 12a57577241e3b2206aab9c3badb29502e7b0301
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: b1f9e61b409c395a13cc6a18d21d17530f38ac7e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656973"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722893"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -1565,6 +1565,9 @@ ms.locfileid: "97656973"
 > | workspaces / models / versions | いいえ | いいえ |
 > | workspaces / onlineEndpoints | はい | はい |
 > | workspaces / onlineEndpoints / deployments | はい | はい |
+ 
+> [!NOTE]
+> ワークスペース タグは、コンピューティング クラスターとコンピューティング インスタンスに伝達されません。 
 
 ## <a name="microsoftmaintenance"></a>Microsoft.Maintenance
 
@@ -2262,6 +2265,7 @@ ms.locfileid: "97656973"
 > | managedInstances / keys | いいえ | いいえ |
 > | managedInstances / restorableDroppedDatabases / backupShortTermRetentionPolicies | いいえ | いいえ |
 > | managedInstances / vulnerabilityAssessments | いいえ | いいえ |
+> | longtermRetentionManagedInstance/longtermRetentionDatabase/longtermRetentionBackup | いいえ | いいえ |
 > | servers | はい | はい |
 > | servers / administrators | いいえ | いいえ |
 > | servers / communicationLinks | いいえ | いいえ |
@@ -2272,6 +2276,7 @@ ms.locfileid: "97656973"
 > | servers / restorableDroppedDatabases | いいえ | いいえ |
 > | servers / serviceobjectives | いいえ | いいえ |
 > | servers / tdeCertificates | いいえ | いいえ |
+> | longtermRetentionServer/longtermRetentionDatabase/longtermRetentionBackup | いいえ | いいえ |
 > | virtualClusters | いいえ | いいえ |
 
 <a id="sqlnote"></a>

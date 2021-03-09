@@ -1,30 +1,31 @@
 ---
-title: Azure スポット VM を使用する
-description: Azure スポット VM を使用してコストを節約する方法について説明します。
-author: cynthn
+title: Azure Spot Virtual Machines を使用する
+description: Azure Spot Virtual Machines を使用してコストを節約する方法について説明します。
+author: JagVeerappan
+ms.author: jagaveer
 ms.service: virtual-machines
+ms.subservice: spot
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 10/05/2020
-ms.author: cynthn
-ms.reviewer: jagaveer
-ms.openlocfilehash: 1e3934a8ff91d764a5148b3d490b44f30983a284
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.reviewer: cynthn
+ms.openlocfilehash: 0ed079dbfef50ae74914998c6b2e558b7e41aeae
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202132"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101673945"
 ---
-# <a name="use-spot-vms-in-azure"></a>Azure でスポット VM を使用する
+# <a name="use-azure-spot-virtual-machines"></a>Azure Spot Virtual Machines を使用する 
 
-スポット VM を使うと、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャはスポット VM を削除します。 したがって、スポット VM は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
+Azure Spot Virtual Machines を使用すると、大幅にコストを削減して未使用の容量を利用できます。 Azure で容量の回復が必要になると、Azure インフラストラクチャによって Azure Spot Virtual Machines が削除されます。 そのため、Azure Spot Virtual Machines は、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断に対応できるワークロードに最適です。
 
-利用可能な容量は、サイズ、リージョン、時刻などによって異なります。 スポット VM を展開すると、利用可能な容量がある場合は Azure は VM を割り当てますが、このような VM には SLA はありません。 スポット VM は、高可用性の保証を提供しません。 Azure インフラストラクチャは、Azure の容量が必要になった時点で、30 秒前通知の後スポット VM が削除されます。 
+利用可能な容量は、サイズ、リージョン、時刻などによって異なります。 Azure Spot Virtual Machines をデプロイすると、利用可能な容量がある場合に Azure によって VM が割り当てられますが、このような VM には SLA がありません。 Azure Spot Virtual Machine は、高可用性を保証するものではありません。 Azure で容量の回復が必要になると、30 秒前通知の後、Azure インフラストラクチャによって Azure Spot Virtual Machines が削除されます。 
 
 
 ## <a name="eviction-policy"></a>削除ポリシー
 
-VM は、容量または設定した最大価格に基づいて削除できます。 スポット VM を作成するときは､この排除ポリシーを *[割り当てを解除する]* (既定値) または *[削除]* に設定できます｡ 
+VM は、容量または設定した最大価格に基づいて削除できます。 Azure Spot Virtual Machine の作成では､削除ポリシーを *[割り当て解除]* (既定値) または *[削除]* に設定できます｡ 
 
 *[割り当てを解除する]* ポリシーでは､VM が停止済み/割り当て解除済み状態に移行され､後でもう一度デプロイすることができます｡ ただし､割り当てが成功する保証はありません｡ 割り当てを解除された VM はクォータに影響を及ぼし、基になるディスクのストレージ コストが課金されます。 
 
@@ -47,25 +48,25 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 
 ## <a name="limitations"></a>制限事項
 
-次の VM サイズは、スポット VM ではサポートされていません。
+次の VM サイズは、Azure Spot Virtual Machines ではサポートされていません。
  - B シリーズ
  - 任意のサイズのキャンペーン バージョン (Dv2、NV、NC、H キャンペーン サイズなど)
 
-スポット VM は、Microsoft Azure China 21Vianet を除き、任意のリージョンにデプロイできます。
+Azure Spot Virtual Machines は、Microsoft Azure China 21Vianet を除き、任意のリージョンにデプロイできます。
 
 <a name="channel"></a>
 
 現在サポートされている[オファーの種類](https://azure.microsoft.com/support/legal/offer-details/)は次のとおりです。
 
 -   Enterprise Agreement
--   従量課金制
+-   従量課金制 (プラン コード: 003P)
 -   スポンサー
 - クラウド サービス プロバイダー (CSP) の場合、パートナーにお問い合わせください
 
 
 ## <a name="pricing"></a>価格
 
-スポット VM の価格は、リージョンと SKU に基づいて変化します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。 
+Azure Spot Virtual Machines の価格は、リージョンと SKU に基づいて変動します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。 
 
 [Azure 小売価格 API](/rest/api/cost-management/retail-prices/azure-retail-prices) を使用してスポット価格に関する情報を問い合わせるという方法で価格情報を問い合わせることもできます。 `meterName` と `skuName` の両方に `Spot` が含まれています。
 
@@ -87,24 +88,24 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 
 ##  <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-**質問:** 作成後、スポット VM は通常の標準の VM と同じになりますか。
+**Q:** 作成後、Azure Spot Virtual Machine は通常の標準の VM と同じになりますか?
 
-**A:** はい。ただし、スポット VM に対する SLA はなく、いつでも排除される可能性があります。
+**A:** はい。ただし、Azure Spot Virtual Machines に対する SLA はなく、いつでも排除される可能性があります。
 
 
 **質問:** 排除された後も容量が必要な場合はどうすればよいですか?
 
-**A:** 容量がすぐに必要な場合は、スポット VM ではなく、標準の VM を使用することをお勧めします。
+**A:** 容量がすぐに必要な場合は、Azure Spot Virtual Machines ではなく、標準の VM を使用することをお勧めします。
 
 
-**質問:** スポット VM のクォータはどのように管理されますか?
+**Q:** Azure Spot Virtual Machines のクォータはどのように管理されますか?
 
-**A:** スポット VM には、個別のクォータ プールがあります。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
+**A:** Azure Spot Virtual Machines には、個別のクォータ プールがあります。 スポット クォータは、VM とスケール セット インスタンスの間で共有されます。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」をご覧ください。
 
 
-**質問:** スポットに追加のクォータを要求することはできますか。
+**Q:** Azure Spot Virtual Machines に追加のクォータを要求することはできますか?
 
-**A:** はい。[標準のクォータ要求プロセス](../azure-portal/supportability/per-vm-quota-requests.md)を通じて、スポット VM のクォータを増やす要求を送信することができます。
+**A:** はい。[標準のクォータ要求プロセス](../azure-portal/supportability/per-vm-quota-requests.md)を通じて、Azure Spot Virtual Machines のクォータを増やす要求を送信することができます。
 
 
 **質問:** どこで質問を投稿できますか。
@@ -117,8 +118,8 @@ VM が排除されるときに、VM を削除したい場合は、排除ポリ�
 **A:** 最大価格を変更する前に、VM の割り当てを解除する必要があります。 その後、VM の **[Configuration]\(構成\)** セクションで、ポータルの最大価格を変更できます。 
 
 ## <a name="next-steps"></a>次のステップ
-[CLI](./linux/spot-cli.md)、[ポータル](spot-portal.md)、[ARM テンプレート](./linux/spot-template.md)、または [PowerShell](./windows/spot-powershell.md) を使用して、スポット VM をデプロイします。
+[CLI](./linux/spot-cli.md)、[ポータル](spot-portal.md)、[ARM テンプレート](./linux/spot-template.md)、または [PowerShell](./windows/spot-powershell.md) を使用して、Azure Spot Virtual Machines をデプロイします。
 
-また、[スポット VM インスタンスを使用したスケール セット](../virtual-machine-scale-sets/use-spot.md)をデプロイすることもできます。
+また、[Azure Spot Virtual Machine インスタンスを使用したスケール セット](../virtual-machine-scale-sets/use-spot.md)をデプロイすることもできます。
 
 エラーが発生した場合は、[エラー コード](./error-codes-spot.md)を参照してください。

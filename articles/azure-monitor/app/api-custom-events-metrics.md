@@ -4,12 +4,12 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 881c657b25d04834d83221c738c578b8281752b7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678114"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100593746"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -108,7 +108,7 @@ Node.js のプロジェクトでは、`new applicationInsights.TelemetryClient(i
 
 ## <a name="trackevent"></a>TrackEvent
 
-Application Insights の *カスタム イベント* はデータ ポイントであり、[メトリックス エクスプローラー](../platform/metrics-charts.md)では集計カウントとして、[診断検索](./diagnostic-search.md)では個々の発生として表示できます。 (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
+Application Insights の *カスタム イベント* はデータ ポイントであり、[メトリックス エクスプローラー](../essentials/metrics-charts.md)では集計カウントとして、[診断検索](./diagnostic-search.md)では個々の発生として表示できます。 (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
 
 さまざまなイベントをカウントするために、`TrackEvent` 呼び出しを挿入します。 これによって、ユーザーが特定の機能を使用する頻度や、特定の目標を達成する頻度、特定の種類の間違いを起こす頻度をカウントできます。
 
@@ -146,7 +146,7 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Analytics でのカスタム イベント
 
-テレメトリは、[Application Insights ログのタブ](../log-query/log-query-overview.md)または[使用エクスペリエンス](usage-overview.md)の `customEvents` テーブルにあります。 イベントは、`trackEvent(..)` または[クリック分析自動収集プラグイン](javascript-click-analytics-plugin.md)から取得できます。
+テレメトリは、[Application Insights ログのタブ](../logs/log-query-overview.md)または[使用エクスペリエンス](usage-overview.md)の `customEvents` テーブルにあります。 イベントは、`trackEvent(..)` または[クリック分析自動収集プラグイン](javascript-click-analytics-plugin.md)から取得できます。
 
  
 
@@ -204,7 +204,7 @@ telemetry.trackMetric({name: "queueLength", value: 42.0});
 
 ### <a name="custom-metrics-in-analytics"></a>Analytics でのカスタム メトリック
 
-テレメトリは、[Application Insights Analytics](../log-query/log-query-overview.md) の `customMetrics` テーブルにあります。 各行は、アプリでの `trackMetric(..)` に対する呼び出しを表します。
+テレメトリは、[Application Insights Analytics](../logs/log-query-overview.md) の `customMetrics` テーブルにあります。 各行は、アプリでの `trackMetric(..)` に対する呼び出しを表します。
 
 * `valueSum`: これは測定値の合計です。 平均値を取得するには、`valueCount` で除算します。
 * `valueCount`: この `trackMetric(..)` 呼び出しで集計された測定値の数。
@@ -274,7 +274,7 @@ appInsights.stopTrackPage("Page1", url, properties, measurements);
 
 ### <a name="page-telemetry-in-analytics"></a>Analytics でのページ テレメトリ
 
-[Analytics](../log-query/log-query-overview.md) では、2 つのテーブルに、ブラウザー操作からのデータが表示されます。
+[Analytics](../logs/log-query-overview.md) では、2 つのテーブルに、ブラウザー操作からのデータが表示されます。
 
 * `pageViews` テーブルには、URL とページ タイトルに関するデータが含まれます。
 * `browserTimings` テーブルには、受信データの処理にかかった時間などのクライアントのパフォーマンスに関するデータが含まれます。
@@ -310,7 +310,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 ## <a name="operation-context"></a>操作コンテキスト
 
-テレメトリ項目を操作コンテキストと関連付けることで、それらの項目を互いに相関させることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [検索](./diagnostic-search.md)と[分析](../log-query/log-query-overview.md)では、操作 ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
+テレメトリ項目を操作コンテキストと関連付けることで、それらの項目を互いに相関させることができます。 標準の要求追跡モジュールでは、HTTP 要求の処理中に送信される例外や他のイベントに対してこの関連付けが行われます。 [検索](./diagnostic-search.md)と[分析](../logs/log-query-overview.md)では、操作 ID を使用して、要求に関連付けられたイベントを簡単に見つけることができます。
 
 相関の詳細については、「[Application Insights におけるテレメトリの相関付け](./correlation.md)」を参照してください。
 
@@ -348,7 +348,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 ### <a name="requests-in-analytics"></a>Analytics での要求
 
-[Application Insights Analytics](../log-query/log-query-overview.md) で、要求は `requests` テーブルに表示されます。
+[Application Insights Analytics](../logs/log-query-overview.md) で、要求は `requests` テーブルに表示されます。
 
 [サンプリング](./sampling.md) を操作中の場合は、itemCount プロパティに 1 より大きい値が表示されます。 たとえば itemCount==10 は trackRequest() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 要求の正しい数と要求名別にセグメント化された平均所要時間を取得するには、次のようなコードを使用します。
 
@@ -361,7 +361,7 @@ requests
 
 次の目的で例外を Application Insights に送信します。
 
-* 問題の頻度の指標として[例外の件数](../platform/metrics-charts.md)を数える。
+* 問題の頻度の指標として[例外の件数](../essentials/metrics-charts.md)を数える。
 * [個々の発生を確認する](./diagnostic-search.md)。
 
 レポートにはスタック トレースが含まれます。
@@ -430,7 +430,7 @@ SDK が多数の例外を自動的にキャッチするため、常に TrackExce
 
 ### <a name="exceptions-in-analytics"></a>Analyticsでの例外
 
-[Application Insights Analytics](../log-query/log-query-overview.md) で、例外は `exceptions` テーブルに表示されます。
+[Application Insights Analytics](../logs/log-query-overview.md) で、例外は `exceptions` テーブルに表示されます。
 
 [サンプリング](./sampling.md)が実行中の場合は、`itemCount` プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackException() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 例外の種類別にセグメント化された例外の正しい数を取得するには、次のようなコードを使用します。
 
@@ -525,7 +525,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 ### <a name="traces-in-analytics"></a>Analytics でのトレース
 
-[Application Insights Analytics](../log-query/log-query-overview.md) で、TrackTrace への呼び出しは `traces` テーブルに表示されます。
+[Application Insights Analytics](../logs/log-query-overview.md) で、TrackTrace への呼び出しは `traces` テーブルに表示されます。
 
 [サンプリング](./sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば、itemCount==10 は、サンプリング プロセスで転送されたのは `trackTrace()` への 10 回の呼び出しのうち 1 回だけであることを意味します。 トレース呼び出しの正確な数を取得するには、`traces | summarize sum(itemCount)` などのコードを使用する必要があります。
 
@@ -607,7 +607,7 @@ C# の標準の依存関係追跡モジュールを無効にするには、[Appl
 
 ### <a name="dependencies-in-analytics"></a>Analytics での依存関係
 
-[Application Insights Analytics](../log-query/log-query-overview.md) で、trackDependency 呼び出しは `dependencies` テーブルに表示されます。
+[Application Insights Analytics](../logs/log-query-overview.md) で、trackDependency 呼び出しは `dependencies` テーブルに表示されます。
 
 [サンプリング](./sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackDependency() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 ターゲット コンポーネント別にセグメント化された依存関係の正しい数を取得するには、次のようなコードを使用します。
 
@@ -695,7 +695,7 @@ ASP.NET Web MVC アプリケーションでの例:
 appInsights.setAuthenticatedUserContext(validatedId, accountId);
 ```
 
-[メトリックス エクスプローラー](../platform/metrics-charts.md)で、**ユーザー、認証アカウント**、**ユーザー アカウント** をカウントするグラフを作成できます。
+[メトリックス エクスプローラー](../essentials/metrics-charts.md)で、**ユーザー、認証アカウント**、**ユーザー アカウント** をカウントするグラフを作成できます。
 
 また、特定のユーザー名とアカウントを持つクライアント データ ポイントを[検索する](./diagnostic-search.md)こともできます。
 
@@ -816,7 +816,7 @@ telemetry.TrackEvent(event);
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Analytics でのカスタム測定とプロパティ
 
-[Analytics](../log-query/log-query-overview.md) で、カスタム メトリックとプロパティは、各テレメトリ レコードの `customMeasurements` および `customDimensions` 属性に表示されます。
+[Analytics](../logs/log-query-overview.md) で、カスタム メトリックとプロパティは、各テレメトリ レコードの `customMeasurements` および `customDimensions` 属性に表示されます。
 
 たとえば、要求テレメトリに "game" というプロパティを追加した場合、このクエリは "game" のさまざまな値の出現数をカウントし、カスタム メトリック "score" の平均を表示します。
 
@@ -1098,8 +1098,8 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [ASP.NET リファレンス](/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [Java リファレンス](/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [ASP.NET リファレンス](/dotnet/api/overview/azure/insights)
+* [Java リファレンス](/java/api/overview/azure/appinsights)
 * [JavaScript リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK コード

@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 15209bc9dae1f10e1158c805ba7903b9f946766f
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593950"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178076"
 ---
 このステップでは、AdventureWorksLT サンプル データを使用する[論理 SQL サーバー](../database/logical-servers.md)と[単一データベース](../database/single-database-overview.md)を作成します。 データベースを作成するには、Azure portal のメニューと画面を使用するか、Azure Cloud Shell で Azure CLI または PowerShell スクリプトを使用します。
 
@@ -69,6 +69,8 @@ Azure portal でリソース グループ、サーバー、単一データベー
    ファイアウォール設定の詳細については、[[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]](../database/network-access-controls-overview.md) および[プライベート エンドポイントの追加](../database/private-endpoint-overview.md)に関するページを参照してください。
 
 1. **[追加設定]** タブにある **[データ ソース]** セクションの **[既存のデータを使用します]** で、 **[サンプル]** を選択します。
+1. 必要に応じて、[Azure Defender for SQL](../database/azure-defender-for-sql.md) を有効にします。
+1. 必要に応じて、[メンテナンス期間](../database/maintenance-window.md)を設定して、ご利用のデータベースに対して計画メンテナンスが最適なタイミングで実行されるようにします。
 1. ページ下部にある **[確認と作成]** を選択します。
 
    ![[追加設定] タブ](./media/sql-database-create-single-database/additional-settings.png)
@@ -147,13 +149,13 @@ az sql db create \
 
 前述のコードでは、次の Azure CLI コマンドを使用しています。
 
-| コマンド | 説明 |
+| command | 説明 |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
+| [az account set](/cli/azure/account#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | データベースとエラスティック プールをホストするサーバーを作成します。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | サーバーレベルのファイアウォール規則を作成します。 |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | データベースを作成します。 |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | データベースを作成します。 |
 
 他の Azure SQL Database の Azure CLI サンプルについては、[Azure CLI サンプル](../database/az-cli-script-samples-content-guide.md)に関するページをご覧ください。
 
@@ -235,11 +237,11 @@ Azure Cloud Shell で次のコード サンプルを実行するには、コー�
 
 前述のコードでは、次の PowerShell コマンドレットを使用しています。
 
-| コマンド | Notes |
+| command | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | データベースとエラスティック プールをホストするサーバーを作成します。 |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | サーバーにサーバーレベルのファイアウォール規則を作成します。 |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | サーバーレベルのファイアウォール規則をサーバーに作成します。 |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | データベースを作成します。 |
 
 Azure SQL Database の他の PowerShell サンプルについては、[Azure PowerShell サンプル](../database/powershell-script-content-guide.md) に関するページをご覧ください。

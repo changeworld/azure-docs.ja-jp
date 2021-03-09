@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: cf8b0e1fda03a74d30ec77c911d705bf12cf0126
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: e048e4c17092c71a5adaf29f342546b9258837c5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763810"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100586234"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Azure App Service でのアプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、[Azure App Service](./overview.md) でのアプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
@@ -61,7 +61,7 @@ Web アプリに問題が発生しているかどうかは、アプリを監視�
 詳細については、次を参照してください。
 
 * [Azure App Service のアプリの監視](web-sites-monitor.md)
-* [アラート通知を受け取る](../azure-monitor/platform/alerts-overview.md)
+* [アラート通知を受け取る](../azure-monitor/alerts/alerts-overview.md)
 
 #### <a name="monitor-web-endpoint-status"></a>Web エンドポイントの状態を監視する
 アプリを **Standard** 価格レベルで実行している場合、App Service で 3 つの地域から 2 つのエンドポイントを監視することができます。

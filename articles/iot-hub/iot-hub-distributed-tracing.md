@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - fasttrack-edit
 - iot
-ms.openlocfilehash: f8d37cf8f23de1d0535c7a9ff4a95ac217eddf74
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: adcbf4efc4dfaa7701c18440531327949640cb53
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452395"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581987"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -260,7 +260,7 @@ IoT Hub によって記録されたすべてのトレースを表示するには
 
 ### <a name="query-using-log-analytics"></a>Log Analytics を使用してクエリを実行する
 
-[リソース ログで Log Analytics](../azure-monitor/platform/resource-logs.md#send-to-azure-storage) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
+[リソース ログで Log Analytics](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
 
 ```Kusto
 // All distributed traces 

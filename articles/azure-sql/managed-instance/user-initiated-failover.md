@@ -9,15 +9,16 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 12/16/2020
-ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 02/27/2021
+ms.openlocfilehash: 3c969c1898e67361e37a825d7976b1c52d08dd24
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825911"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691146"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance でユーザーによって開始される手動フェールオーバー
+[!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 この記事では、SQL Managed Instance の General Purpose (GP) および Business Critical (BC) サービス レベルでプライマリ ノードを手動でフェールオーバーする方法と、BC サービス レベルのみでセカンダリ読み取り専用レプリカ ノードを手動でフェールオーバーする方法について説明します。
 
@@ -33,7 +34,7 @@ ms.locfileid: "97825911"
 - クエリのパフォーマンスが低下した場合、手動フェールオーバーがパフォーマンスの問題の軽減に役立つ場合があります。
 
 > [!NOTE]
-> 運用環境にデプロイする前にアプリケーションがフェールオーバー回復性を備えていることを確認するのは、運用環境でのアプリケーションの障害のリスクを軽減するのに役立ち、顧客に対するアプリケーションの可用性に寄与します。
+> 運用環境にデプロイする前にアプリケーションがフェールオーバー回復性を備えていることを確認するのは、運用環境でのアプリケーションの障害のリスクを軽減するのに役立ち、顧客に対するアプリケーションの可用性に寄与します。 アプリケーションのクラウド対応状況をテストする方法については、「[SQL Managed Instance によるフェールオーバー回復性のためのアプリ クラウドの準備のテスト](https://youtu.be/FACWYLgYDL8)」という動画をご覧ください。
 
 ## <a name="initiate-manual-failover-on-sql-managed-instance"></a>SQL Managed Instance で手動フェールオーバーを開始する
 
@@ -42,7 +43,7 @@ ms.locfileid: "97825911"
 フェールオーバーを開始するユーザーには、次のいずれかの Azure ロールが必要です。
 
 - サブスクリプションの所有者ロール、または
-- マネージド インスタンス共同作成者ロール、または
+- [Managed Instance 共同作成者](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor)ロール、または
 - 次のアクセス許可を持つカスタム ロール:
   - `Microsoft.Sql/managedInstances/failover/action`
 
@@ -125,7 +126,7 @@ API 応答は、次の 2 つのいずれかになります。
 
 ## <a name="monitor-the-failover"></a>フェールオーバーを監視する
 
-ユーザーが開始した手動フェールオーバーの進行状況を監視するには、任意のクライアント (SSMS など) で SQL Managed Instance に対して次の T-SQL クエリを実行します。 システム ビュー dm_hadr_fabric_replica_states が読み取られて、インスタンスで使用可能なレプリカがレポートされます。 手動フェールオーバーを開始した後、同じクエリを更新します。
+BC インスタンスに関するユーザーが開始したフェールオーバーの進行状況を監視するには、任意のクライアント (SSMS など) で SQL Managed Instance に対して次の T-SQL クエリを実行します。 システム ビュー dm_hadr_fabric_replica_states が読み取られて、インスタンスで使用可能なレプリカがレポートされます。 手動フェールオーバーを開始した後、同じクエリを更新します。
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -133,7 +134,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 フェールオーバーを開始する前の出力では、AlwaysOn 可用性グループ内の 1 つのプライマリと 3 つのセカンダリを含む BC サービス レベルの現在のプライマリ レプリカが示されています。 フェールオーバーを実行して、このクエリをもう一度実行すると、プライマリ ノードの変更が示される必要があります。
 
-GP サービス レベルでは、上記の BC で示されているものと同じ出力を表示することはできません。 これは、GP サービス レベルは 1 つのノードのみに基づいているためです。 GP サービス レベルに対する T-SQL クエリの出力では、フェールオーバーの前後で 1 つのノードのみが表示されます。 フェールオーバー中にクライアントからの接続が失われた場合 (通常は 1 分未満)、フェールオーバーが実行されていることを示します。
+GP サービス レベルでは、上記の BC で示されているものと同じ出力を表示することはできません。 これは、GP サービス レベルは 1 つのノードのみに基づいているためです。 GP サービス レベル インスタンスのノードで SQL プロセスが開始された時刻を示す、次の代わりの T-SQL クエリを使用できます。
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+フェールオーバー中にクライアントからの接続が短時間 (通常は 1 分未満) 失われる場合は、サービス レベルに関係なくフェールオーバーが実行されていることを示します。
 
 > [!NOTE]
 > (実際の短い使用不可ではなく) フェールオーバー プロセスが完了するには、**高負荷** のワークロードで一度に数分かかることがあります。 これは、フェールオーバーが行われる前に、インスタンス エンジンによって、プライマリ上のすべての現在のトランザクションが処理され、セカンダリ ノードでキャッチアップされるためです。
@@ -143,8 +150,10 @@ GP サービス レベルでは、上記の BC で示されているものと同
 > - 同じ Managed Instance 上では、**15 分** ごとに 1 つのフェールオーバーを開始できます。
 > - BC インスタンスの場合、フェールオーバー要求が受け入れられるには、レプリカのクォーラムが存在している必要があります。
 > - BC インスタンスの場合、フェールオーバーを開始する読み取り可能セカンダリ レプリカを指定することはできません。
+> - フェールオーバーは、新しいデータベースの最初の完全バックアップが自動バックアップ システムによって完了されるまで許可されません。
+> - データベースの復元が進行中のとき、フェールオーバーは許可されません。
 
 ## <a name="next-steps"></a>次のステップ
-
+- アプリケーションのクラウド対応状況をテストする方法については、「[SQL Managed Instance によるフェールオーバー回復性のためのアプリ クラウドの準備のテスト](https://youtu.be/FACWYLgYDL8)」という動画をご覧ください。
 - マネージド インスタンスの高可用性の詳細については、[Azure SQL Managed Instance での高可用性](../database/high-availability-sla.md)に関する記事を参照してください。
 - 概要については、「[Azure SQL Managed Instance とは](sql-managed-instance-paas-overview.md)」を参照してください。

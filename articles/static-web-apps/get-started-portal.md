@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
-ms.openlocfilehash: aab99721b61ababe218e509ab1078198b5f4152b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c54a56843be5121e16449d95fb18c24901a95a8d
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030367"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650569"
 ---
 # <a name="quickstart-building-your-first-static-site-in-the-azure-portal"></a>クイックスタート: Azure portal で最初の静的サイトを構築する
 
@@ -55,7 +55,7 @@ GitHub にサインインした後、リポジトリ情報を入力します。
 
 1. 希望する "_組織_" を選択します
 1. _[リポジトリ]_ ドロップダウンから **my-first-web-static-app** を選択します
-1. _[ブランチ]_ ドロップダウンから **[master]** を選択します
+1. _[ブランチ]_ ドロップダウンから **[main]** を選択します
 
 > [!NOTE]
 > リポジトリが表示されない場合は、GitHub で Azure Static Web Apps を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]、[アプリケーション]、[認可された OAuth アプリ]** の順に移動して、 **[Azure Static Web Apps]** 、 **[許可]** の順に選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。

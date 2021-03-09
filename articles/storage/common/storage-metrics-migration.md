@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 4a4624a94a27f00201c55a320f1745783b06d169
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: ff4c3c5ae8629879fca6e9e683a9c77d0e2f144b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781925"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596109"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Azure Monitor のメトリックに移行する
 
-**2023 年 8 月 31 日** をもって、Storage Analytics メトリック (" *クラシック メトリック* " とも呼ばれます) は廃止されます。 詳細については、[公式告知](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)を参照してください。 クラシック メトリックを使用している場合は、その日より前に Azure Monitor のメトリックに移行するようにしてください。 この記事は、移行を行う際に役立ちます。 
+**2023 年 8 月 31 日** をもって、Storage Analytics メトリック ("*クラシック メトリック*" とも呼ばれます) は廃止されます。 詳細については、[公式告知](https://azure.microsoft.com/updates/azure-storage-classic-metrics-will-be-retired-on-31-august-2023/)を参照してください。 クラシック メトリックを使用している場合は、その日より前に Azure Monitor のメトリックに移行するようにしてください。 この記事は、移行を行う際に役立ちます。 
 
 ## <a name="steps-to-complete-the-transition"></a>移行を行うための手順
 
@@ -35,7 +35,7 @@ Azure Monitor のメトリックに移行するには、次の方法をお勧め
    > [!NOTE]
    > Azure Monitor のメトリックは既定で有効になるので、メトリックのキャプチャを開始するために行う必要があることはありません。 ただし、それらのメトリックを表示するには、グラフまたはダッシュボードを作成する必要があります。 
  
-5. クラシック ストレージ メトリックに基づく警告ルールを作成してある場合は、Azure Monitor のメトリックに基づいて[警告ルールを作成](../../azure-monitor/platform/alerts-overview.md)します。 
+5. クラシック ストレージ メトリックに基づく警告ルールを作成してある場合は、Azure Monitor のメトリックに基づいて[警告ルールを作成](../../azure-monitor/alerts/alerts-overview.md)します。 
 
 6. Azure Monitor のすべてのメトリックを表示できるようになったら、クラシック ログをオフにすることができます。 
 
@@ -53,7 +53,7 @@ Azure Monitor のメトリックに移行するには、次の方法をお勧め
 
 アカウントのアクティビティによってメトリックがトリガーされない場合、クラシック メトリックではそのメトリックに対してゼロ (0) という値が表示されます。 Azure Monitor のメトリックの場合は、データが完全に除外され、レポートがわかりやすくなります。 たとえば、クラシック メトリックでは、サーバー タイムアウト エラーが報告されない場合、メトリック テーブルの `ServerTimeoutError` の値は 0 に設定されます。 Azure Monitor では、ディメンション `ResponseType` が `ServerTimeoutError` に等しいメトリック `Transactions` の値に対してクエリを実行すると、データは返されません。 
 
-Azure Monitor のメトリックの詳細については、「[Azure Monitor のメトリック](../../azure-monitor/platform/data-platform-metrics.md)」を参照してください。
+Azure Monitor のメトリックの詳細については、「[Azure Monitor のメトリック](../../azure-monitor/essentials/data-platform-metrics.md)」を参照してください。
 
 <a id="metrics-mapping-between-old-metrics-and-new-metrics"></a>
 

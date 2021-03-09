@@ -6,14 +6,14 @@ services: load-balancer
 author: asudbring
 ms.service: load-balancer
 ms.topic: how-to
-ms.date: 07/07/2020
+ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 8887474f07928462afe7863ffe2b3667ece536dc
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0218bfef66e779a31d999c8d58bc1ce2691f46d4
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575301"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179223"
 ---
 # <a name="backend-pool-management"></a>バックエンド プールの管理
 バックエンド プールは、ロード バランサーの重要なコンポーネントです。 バックエンド プールは、指定された負荷分散規則のトラフィックを処理するリソースのグループを定義します。
@@ -25,6 +25,8 @@ ms.locfileid: "96575301"
 既存の仮想マシンと仮想マシン スケール セットを使用する場合は、NIC によってバックエンド プールを構成します。 この方法では、リソースとバックエンド プールの間に最も直接的なリンクが構築されます。 
 
 後で仮想マシンと仮想マシン スケール セットを作成する予定の IP アドレス範囲を使用してバックエンド プールを事前に割り当てる場合は、IP アドレスと VNET ID の組み合わせによってバックエンド プールを構成します。
+
+同じロード バランサーに対して IP ベースおよび NIC ベースのバックエンド プールを構成することはできますが、NIC の対象となる背景のアドレスと IP アドレスとが同じプール内に混在する単一のバックエンド プールを作成することはできません。
 
 この記事の構成セクションでは、次のことに焦点を当てます。
 
@@ -179,9 +181,11 @@ JSON 要求本文:
           "subnet": {
             "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualNetworks/{vnet-name}/subnets/{subnet-name}"
           },
-          "loadBalancerBackendAddressPools": {
-                                    "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
-          }
+          "loadBalancerBackendAddressPools": [
+            {
+              "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/loadBalancers/{load-balancer-name}/backendAddressPools/{backend-pool-name}"
+            }
+          ]
         }
       }
     ]
@@ -253,8 +257,16 @@ JSON 要求本文:
 
 バックエンド プールのすべての管理は、次の例で強調されているように、バックエンド プール オブジェクトで直接実行されます。
 
-  >[!IMPORTANT] 
-  >現在、この機能はプレビュー段階にあります。 この機能の現在の制限については、「[制限事項](#limitations)」を参照してください。
+### <a name="limitations"></a>制限事項
+IP アドレスで構成されたバックエンド プールには、次の制限があります。
+  * 使用できるのは Standard ロード バランサーのみ
+  * バックエンド プール内の IP アドレスの上限は 100 個
+  * バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
+  * IP ベースのバックエンド プールを使用するロード バランサーは、Private Link サービスとして機能することはできない
+  * この機能は Azure portal では現在サポートされていない
+  * この機能では、ACI コンテナーは現在サポートされていない
+  * ロード バランサーまたはロード バランサーに面するサービスは、ロード バランサーのバックエンド プールに配置できない
+  * インバウンド NAT 規則を IP アドレスで指定することはできない
 
 ### <a name="powershell"></a>PowerShell
 新しいバックエンド プールを作成します。
@@ -515,17 +527,6 @@ JSON 要求本文:
   }
 }
 ```
-
-## <a name="limitations"></a>制限事項
-IP アドレスで構成されたバックエンド プールには、次の制限があります。
-  * 標準のロード バランサーのみ
-  * バックエンド プール内の IP アドレスの上限は 100 個
-  * バックエンド リソースは、ロード バランサーと同じ仮想ネットワークに存在する必要がある
-  * IP ベースのバックエンド プールを使用するロード バランサーは、Private Link サービスとして機能することはできない
-  * この機能は Azure portal では現在サポートされていない
-  * この機能では、ACI コンテナーは現在サポートされていない
-  * ロード バランサーまたはロード バランサーに面するサービスは、ロード バランサーのバックエンド プールに配置できない
-  * インバウンド NAT 規則を IP アドレスで指定することはできない
   
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure Load Balancer のバックエンド プール管理についてと、IP アドレスと仮想ネットワークを使用してバックエンド プールを構成する方法について学習しました。

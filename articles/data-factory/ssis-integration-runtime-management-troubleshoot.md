@@ -1,22 +1,19 @@
 ---
 title: SSIS Integration Runtime 管理のトラブルシューティング
 description: この記事では、SSIS Integration Runtime (SSIS IR) の管理に関する問題のトラブルシューティング ガイダンスを提供します
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
-manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 5f1332255ae83a32f9b71d24d812b00fad9b7fa1
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 917bcce641cfd5178f868e4338354edb78062ab8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637923"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361844"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Azure Data Factory で SSIS Integration Runtime 管理のトラブルシューティングを行う
 
@@ -151,7 +148,7 @@ SSIS IR は定期的に自動的に更新されます。 アップグレード�
 
 SSIS IR プロビジョニングに失敗した場合、作成されたすべてのリソースが削除されます。 ただし、サブスクリプションまたはリソース グループ レベルでリソース削除ロックがある場合、Virtual Network リソースは想定どおりに削除されません。 このエラーを修正するには、削除ロックを解除し、IR を再起動してください。
 
-### <a name="vnetresourcegrouplockedduringstop"></a>VNetResourceGroupLockedDuringStop
+### <a name="vnetresourcegrouplockedduringstopvnetdeletelock"></a>VNetResourceGroupLockedDuringStop/VNetDeleteLock
 
 SSIS IR を停止すると、Virtual Network に関連するすべてのリソースが削除されます。 ただし、サブスクリプションまたはリソース グループ レベルでリソース削除ロックがある場合、削除が失敗する可能性があります。 ここでも、削除ロックの制御と設定はお客様が行います。 そのため、お客様は削除ロックを削除してから、SSIS IR を再度停止する必要があります。
 

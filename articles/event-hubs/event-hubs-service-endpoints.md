@@ -2,17 +2,17 @@
 title: 仮想ネットワーク サービス エンドポイント - Azure Event Hubs | Microsoft Docs
 description: この記事では、Microsoft.EventHub サービス エンドポイントを仮想ネットワークに追加する方法について説明します。
 ms.topic: article
-ms.date: 07/29/2020
-ms.openlocfilehash: 029338e3835d03b1a66ff6629e872c84113b0ff2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/12/2021
+ms.openlocfilehash: 1deef5b8bb4b883ec9c01c50a2a603d254b9caef
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015582"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100556525"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>特定の仮想ネットワークから Azure Event Hubs 名前空間へのアクセスを許可する 
 
-Event Hubs と[仮想ネットワーク (VNet) サービス エンドポイント][vnet-sep]の統合により、仮想ネットワークにバインドされた仮想マシンなどのワークロードからメッセージング機能へのセキュリティで保護されたアクセスが可能になり、ネットワーク トラフィック パスは両端でセキュリティ保護されます。
+Event Hubs と[仮想ネットワーク (VNet) サービス エンドポイント][vnet-sep]の統合により、仮想ネットワークにバインドされた仮想マシンなどのワークロードからメッセージング機能へのセキュリティで保護されたアクセスが可能になり、ネットワーク トラフィック パスは両端でセキュリティ保護されます。 仮想ネットワークは、**Standard** レベルと **Dedicated** レベルの Event Hubs でサポートされます。 **Basic** レベルではサポートされません。
 
 少なくとも 1 つの仮想ネットワーク サブネット サービス エンドポイントにバインドするように構成した後、それぞれの Event Hubs 名前空間は、仮想ネットワークの承認されたサブネットを除くどこからのトラフィックも受け入れなくなります。 仮想ネットワークの観点からは、サービス エンドポイントに Event Hubs 名前空間をバインドすると、仮想ネットワーク サブネットからメッセージング サービスへの分離されたネットワーク トンネルが構成されます。 
 
@@ -21,8 +21,8 @@ Event Hubs と[仮想ネットワーク (VNet) サービス エンドポイン�
 >[!WARNING]
 > 許可されている仮想ネットワークで稼働中のサービスから要求が送信される場合を除き、Event Hubs 名前空間に対して仮想ネットワークを有効にすると、着信要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。 例外として、仮想ネットワークが有効になっている場合でも、特定の信頼できるサービスからの Event Hubs リソースへのアクセスを許可できます。 信頼できるサービスの一覧については、[信頼できるサービス](#trusted-microsoft-services)に関するセクションを参照してください。
 
-> [!NOTE]
-> 仮想ネットワークは、**Standard** レベルと **Dedicated** レベルの Event Hubs でサポートされます。 **Basic** レベルではサポートされません。
+> [!IMPORTANT]
+> 指定された IP アドレスまたは仮想ネットワークのサブネットからのトラフィックのみを許可するには、名前空間に少なくとも 1 つの IP 規則または仮想ネットワーク規則を指定します。 IP 規則も仮想ネットワーク規則も指定しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。  
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet の統合によって有効になる高度なセキュリティのシナリオ 
 
@@ -46,8 +46,8 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 1. [Azure portal](https://portal.azure.com) で **Event Hubs 名前空間** に移動します。
 4. 左側のメニューの **[設定]** で **[ネットワーク]** を選択します。 **Standard** または **Dedicated** 名前空間のみの **[ネットワーク]** タブが表示されます。 
 
-    > [!NOTE]
-    > 既定では、次の図に示すように、 **[選択されたネットワーク]** オプションが選択されています。 このページで IP ファイアウォール規則を指定しない、または仮想ネットワークを追加しない場合は、**パブリック インターネット** から (アクセス キーを使用して) 名前空間にアクセスできます。 
+    > [!WARNING]
+    > このページで **[選択されたネットワーク]** オプションを選択し、1 つ以上の IP ファイアウォール規則または仮想ネットワークを追加しない場合は、**パブリック インターネット** 経由で (アクセス キーを使用して) 名前空間にアクセスできます。 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="[ネットワーク] タブ - [選択されたネットワーク] オプション" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
@@ -58,6 +58,9 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 2. ページの **[仮想ネットワーク]** セクションで、 **[+ 既存の仮想ネットワークを追加]** _ を選択します。 新しい VNet を作成する場合は、_ *[+ 新しい仮想ネットワークの作成]* * を選択します。 
 
     ![既存の仮想ネットワークを追加する](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
+
+    >[!WARNING]
+    > このページで **[選択されたネットワーク]** オプションを選択し、1 つ以上の IP ファイアウォール規則または仮想ネットワークを追加しない場合は、パブリック インターネット経由で (アクセス キーを使用して) 名前空間にアクセスできます。
 3. 仮想ネットワークの一覧から仮想ネットワークを選択し、**サブネット** を選択します。 仮想ネットワークを一覧に追加する前に、サービス エンドポイントを有効にする必要があります。 サービス エンドポイントが有効になっていない場合は、有効にするよう求められます。
    
    ![サブネットを選択する](./media/event-hubs-tutorial-vnet-and-firewalls/select-subnet.png)
@@ -79,28 +82,12 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 [!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
+次の Resource Manager テンプレートの例では、既存の Event Hubs 名前空間に仮想ネットワーク規則を追加します。 ネットワーク規則では、仮想ネットワーク内のサブネットの ID を指定します。 
 
-次の Resource Manager テンプレートでは、既存の Event Hubs 名前空間に仮想ネットワーク規則を追加できます。
+この ID は、仮想ネットワーク サブネットの Resource Manager の完全修飾パスです。 たとえば、仮想ネットワークの既定のサブネットの場合は `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` です。
 
-テンプレート パラメーター:
+仮想ネットワークまたはファイアウォール規則を追加する場合は、`defaultAction` の値を `Deny` に設定します。
 
-* `namespaceName`:Event Hubs 名前空間。
-* `vnetRuleName`:作成する仮想ネットワーク規則の名前。
-* `virtualNetworkingSubnetId`:仮想ネットワーク サブネットの Resource Manager の完全修飾パス。たとえば、仮想ネットワークの既定のサブネットの場合は `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` です。
-
-> [!NOTE]
-> 可能な拒否ルールはありませんが、Azure Resource Manager テンプレートには、接続を制限しない **"Allow"** に設定された既定のアクション セットがあります。
-> 仮想ネットワークまたはファイアウォールのルールを作成するときは、**_"defaultAction"_** を変更する必要があります
-> 
-> from
-> ```json
-> "defaultAction": "Allow"
-> ```
-> to
-> ```json
-> "defaultAction": "Deny"
-> ```
->
 
 ```json
 {
@@ -202,6 +189,9 @@ TCP/IP 上で HTTPS を搬送するものを含め、コンパートメント間
 ```
 
 テンプレートをデプロイするには、[Azure Resource Manager][lnk-deploy] の手順に従います。
+
+> [!IMPORTANT]
+> IP 規則も仮想ネットワーク規則も指定されていない場合は、`defaultAction` を `deny` に設定しても、すべてのトラフィックが名前空間に送られます。  名前空間には、パブリック インターネット経由で (アクセス キーを使用して) アクセスできます。 指定された IP アドレスまたは仮想ネットワークのサブネットからのトラフィックのみを許可するには、名前空間に少なくとも 1 つの IP 規則または仮想ネットワーク規則を指定します。  
 
 ## <a name="next-steps"></a>次のステップ
 

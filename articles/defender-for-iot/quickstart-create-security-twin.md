@@ -1,26 +1,26 @@
 ---
-title: クイック スタート:セキュリティ モジュール ツインを作成する
+title: セキュリティ モジュール ツインを作成する
 description: このクイックスタートでは、Azure Defender for IoT で使用する Defender for IoT モジュール ツインを作成する方法について説明します。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2019
-ms.author: mlottner
-ms.openlocfilehash: 3e48ed870bf405a82441678b5e8c01d199e7ebff
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 1/21/2021
+ms.author: shhazam
+ms.openlocfilehash: 68d137caeed91e9dea2dbf3883929d85c25382aa
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835008"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523262"
 ---
-# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
+# <a name="create-an-azureiotsecurity-module-twin"></a>azureiotsecurity モジュール ツインを作成する
 
 このクイックスタートでは、新しいデバイス用に個々の _azureiotsecurity_ モジュール ツインを作成する方法と、IoT Hub 内のすべてのデバイス用にモジュール ツインをバッチ作成する方法について説明します。
 
@@ -37,7 +37,7 @@ Defender for IoT では、モジュール ツイン メカニズムを利用し�
 
 セキュリティ モジュール ツインでは、各デバイスのデバイス セキュリティに関連するすべての情報が保持されます。
 
-Defender for IoT の機能を最大限に活用するには、サービス内のすべてのデバイスに対してこれらのセキュリティ モジュール ツインを作成、構成、および使用する必要があります。
+Defender for IoT の機能を最大限に活用するには、サービス内のすべてのデバイスに対してこのセキュリティ モジュール ツインを作成、構成、および使用する必要があります。
 
 ## <a name="create-azureiotsecurity-module-twin"></a>azureiotsecurity モジュール ツインを作成する
 
@@ -51,23 +51,30 @@ _azureiotsecurity_ モジュール ツインは、次の 2 つの方法で作成
 
 既存のモジュール ツインの構成を変更する方法については、[エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。
 
-デバイス用の新しい _azureiotsecurity_ モジュール ツインを手動で作成するには、次の手順を使用します。
+デバイス用の新しい _azureiotsecurity_ モジュール ツインを手動で作成するには:
 
 1. IoT Hub で、セキュリティ モジュール ツインの作成対象のデバイスを探して選択します。
-1. デバイスをクリックし、 **[モジュール ID の追加]** をクリックします。
+
+1. デバイスを選択し、 **[モジュール ID の追加]** を選択します。
+
 1. **[モジュール ID 名]** フィールドで、「**azureiotsecurity**」と入力します。
 
-1. **[保存]** をクリックします。
+1. **[保存]** を選択します。
 
 ## <a name="verify-creation-of-a-module-twin"></a>モジュール ツインの作成の確認
 
 特定のデバイスのセキュリティ モジュール ツインが存在するかどうかを確認するには、以下の操作を行います。
 
 1. Azure IoT Hub で、 **[エクスプローラー]** メニューの **[IoT デバイス]** を選択します。
-1. デバイス ID を入力するか、 **[デバイスのクエリ] フィールド** のオプションを選択して、 **[デバイスのクエリ]** をクリックします。
+
+1. デバイス ID を入力するか、 **[デバイスのクエリ] フィールド** のオプションを選択して、 **[デバイスのクエリ]** を選択します。
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin.png" alt-text="デバイスのクエリ":::
+
 1. デバイスを選択するか、またはダブルクリックして、[デバイスの詳細] ページを開きます。
+
 1. **[モジュール ID]** メニューを選択し、デバイスに関連付けられているモジュール ID の一覧に **azureiotsecurity** モジュールが存在することを確認します。
+
     :::image type="content" source="./media/quickstart/verify-security-module-twin-3.png" alt-text="デバイスに関連付けられているモジュール":::
 
 Defender for IoT モジュール ツインのプロパティに対するカスタマイズの詳細については、[エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。

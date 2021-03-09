@@ -4,12 +4,12 @@ description: Azure Application Insights データを利用して 日/週/月 1 �
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
-ms.openlocfilehash: da465fbc899cb52fc48dbde830d3db4f3b58c68b
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 39970227fc94d3073688b23cc530462f368a6ecf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680452"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590041"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
 
@@ -31,7 +31,7 @@ ms.locfileid: "98680452"
 
 [Application Insights データに対してプログラムからクエリを実行する](https://dev.applicationinsights.io/) ことで、スケジュールに従ってカスタム レポートを作成できます。 次のオプションを利用して、すぐに始めることができます。
 
-* [Power Automate を利用してレポートを自動化する](../platform/logicapp-flow-connector.md)
+* [Power Automate を利用してレポートを自動化する](../logs/logicapp-flow-connector.md)
 * [Logic Apps を利用してレポートを自動化する](automate-with-logic-apps.md)
 * Monitoring シナリオで "Application Insights scheduled digest" [Azure 関数](../../azure-functions/functions-get-started.md)テンプレートを利用する。 この関数は SendGrid を使って電子メールを配信します。 
 
@@ -150,7 +150,7 @@ availabilityResults
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Analytics クエリ](../log-query/get-started-queries.md)の作成についての詳細を見る
+* [Analytics クエリ](../logs/get-started-queries.md)の作成についての詳細を見る
 * [Application Insights データに対してプログラムからクエリを実行する](https://dev.applicationinsights.io/)の詳細を見る
 * [Logic Apps](../../logic-apps/logic-apps-overview.md) の詳細を見る
 * [Microsoft Power Automate](https://ms.flow.microsoft.com) についての詳細を見る。

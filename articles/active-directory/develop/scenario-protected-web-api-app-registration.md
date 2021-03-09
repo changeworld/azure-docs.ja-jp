@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: dcfedf2cceddb59d456d421c4846f3cd252a65b3
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443944"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101651866"
 ---
 # <a name="protected-web-api-app-registration"></a>保護された Web API: アプリの登録
 
@@ -27,7 +27,7 @@ ms.locfileid: "94443944"
 
 ## <a name="accepted-token-version"></a>承認済みトークンのバージョン
 
-Microsoft ID プラットフォームのエンドポイントでは、v1.0 トークンと v2.0 トークンを発行できます。 これらのトークンの詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
+Microsoft ID プラットフォームでは、v1.0 トークンと v2.0 トークンを発行できます。 これらのトークンの詳細については、[アクセス トークン](access-tokens.md)に関するページを参照してください。
 
 API で承認できるトークンのバージョンは、Azure portal で Web API アプリケーションの登録を作成するときの **[サポートされているアカウントの種類]** の選択によって異なります。
 
@@ -44,7 +44,7 @@ API で承認できるトークンのバージョンは、Azure portal で Web A
 1. トークンのバージョンを変更した場合は、 **[保存]** を選択します。
 
 > [!NOTE]
-> Web API で受け入れられるトークンのバージョンを指定します。 クライアントで、Microsoft ID プラットフォーム (v2.0) エンドポイントに Web API 用のトークンを要求すると、クライアントは Web API によって受け入れられるトークンのバージョンを示すトークンを受け取ります。
+> Web API で受け入れられるトークンのバージョンを指定します。 クライアントで、Microsoft ID プラットフォームに Web API 用のトークンを要求すると、クライアントは Web API が受け入れるトークンのバージョンを示すトークンを受け取ります。
 
 ## <a name="no-redirect-uri"></a>リダイレクト URI なし
 
@@ -58,7 +58,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 通常、スコープの形式は `resourceURI/scopeName` です。 Microsoft Graph の場合、スコープにはショートカットがあります。 たとえば、`User.Read` は `https://graph.microsoft.com/user.read` のショートカットです。
 
-アプリの登録時に、次のパラメーターを定義する必要があります。
+アプリの登録時に、これらのパラメーターを定義します。
 
 - リソース URI
 - 1 つまたは複数のスコープ
@@ -68,7 +68,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 クライアント アプリケーションに対して、スコープは Web API に対する "*委任されたアクセス許可*" として表示され、アプリ ロールは "*アプリケーション アクセス許可*" として表示されます。
 
-スコープは、アプリのユーザーに提示される同意ウィンドウにも表示されます。 そのため、次の場合にスコープについて説明する、対応する文字列を指定する必要があります。
+スコープは、アプリのユーザーに提示される同意ウィンドウにも表示されます。 そのため、次の場合にスコープについて説明する、対応する文字列を指定します。
 
 - ユーザーに表示される場合。
 - 管理者の同意を許可できる、テナント管理者に表示される場合。
@@ -99,7 +99,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 #### <a name="exposing-application-permissions-app-roles"></a>アプリケーションのアクセス許可 (アプリ ロール) の公開
 
-アプリケーションのアクセス許可を公開するには、マニフェストを編集する必要があります。
+アプリケーションのアクセス許可を公開するには、マニフェストを編集します。
 
 1. ご利用のアプリケーションのアプリケーション登録の場合は、 **[マニフェスト]** を選択します。
 1. マニフェストを編集するには、`appRoles` の設定を見つけて、アプリケーション ロールを追加します。 ロールの定義は、次のサンプル JSON ブロックで提供されています。
@@ -112,7 +112,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
 
 ```json
 "appRoles": [
-    {
+  {
     "allowedMemberTypes": [ "Application" ],
     "description": "Accesses the TodoListService-Cert as an application.",
     "displayName": "access_as_application",
@@ -121,7 +121,7 @@ Web API に固有の他の設定は、公開されている API と公開され�
     "lang": null,
     "origin": "Application",
     "value": "access_as_application"
-    }
+  }
 ],
 ```
 

@@ -3,19 +3,19 @@ title: Azure Application Gateway のドキュメント
 summary: アプリケーション ゲートウェイを作成する方法を説明します。 このドキュメントは、ご自分の Azure リソースへの Web トラフィックを計画、デプロイ、および管理するのに役立ちます。
 metadata:
   title: Azure Application Gateway のドキュメント
-  description: クラウドベースのネットワーク セキュリティ サービスである Azure Firewall をデプロイする方法について説明します。
+  description: Web アプリケーションへのトラフィックを管理できる Web トラフィック ロード バランサーである Azure Application Gateway について説明します。
   services: application-gateway
   ms.service: application-gateway
   ms.topic: landing-page
   author: vhorne
   ms.author: victorh
-  ms.date: 03/24/2020
-  ms.openlocfilehash: df125820d56aa5c2edda29306c69cef00e012a12
-  ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+  ms.date: 02/08/2021
+  ms.openlocfilehash: 25604a7be6f0be94a2742751829f68e3f5353696
+  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/10/2021
-  ms.locfileid: "98059536"
+  ms.lasthandoff: 03/03/2021
+  ms.locfileid: "101711622"
 landingContent:
 - title: Application Gateway について
   linkLists:
@@ -73,8 +73,8 @@ landingContent:
       url: ingress-controller-overview.md
   - linkListType: tutorial
     links:
-    - text: AKS のイングレス コントローラーを作成する
-      url: ingress-controller-install-new.md
+    - text: AKS 用 Ingress Controller AKS アドオンを作成する
+      url: tutorial-ingress-controller-add-on-new.md
 - title: Application Gateway を使用して HTTP ヘッダーと URL を書き換える
   linkLists:
   - linkListType: overview

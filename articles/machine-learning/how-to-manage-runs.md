@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 12/04/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ec006636ed7e975b696aa32300b32089e3209bb5
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 3eaab31d3948e41a216eaa402c2a11e470a6545d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600474"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691503"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 
@@ -112,17 +112,7 @@ ms.locfileid: "96600474"
         > runconfig ファイルのその他の例については、[https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) を参照してください。
     
         詳しくは、「[az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)」をご覧ください。
-    
-    # <a name="studio"></a>[スタジオ](#tab/azure-studio)
-    
-    デザイナーでパイプラインの実行の送信を開始するには、以下の手順を使用します。
-    
-    1. パイプラインの既定のコンピューティング先を設定します。
-    
-    1. パイプライン キャンバス上部の **[実行]** を選択します。
-    
-    1. パイプラインの実行をグループ化する実験を選択します。
-    
+
     ---
 
 * 実行の状態を監視する
@@ -183,24 +173,128 @@ ms.locfileid: "96600474"
     
     # <a name="studio"></a>[スタジオ](#tab/azure-studio)
     
-    Studio で実験のアクティブな実行の数を表示するには、次の手順に従います。
+    自分の実行をスタジオで表示するには、次のようにします。 
     
-    1. **[実験]** セクションに移動します。
+    1. **[実験]** タブに移動します。
     
-    1. 実験を選択します。
+    1. 実験のすべての実行を表示するには、 **[All experiments]** \(すべての実験\) を選択し、ワークスペースで送信したすべての実行を表示するには、 **[すべての実行]** を選択します。
     
-        実験ページでは、アクティブなコンピューティング先の数と各実行の期間を確認できます。 
+        **[すべての実行]** ページでは、タグ、実験、コンピューティング ターゲットなどで実行の一覧をフィルター処理し、自分の作業を整理したり、範囲を絞り込んだりすることができます。  
     
-    1. 比較する実行を選択するか、グラフを追加するか、フィルターを適用することにより、実験のカスタマイズを行います。 これらの変更は **カスタム ビュー** として保存できるので、簡単に作業に戻ることができます。 ワークスペースのアクセス許可を持つユーザーは、カスタム ビューを編集または表示できます。 また、ブラウザーで URL をコピーして貼り付けることにより、カスタム ビューを他のユーザーと共有することもできます。  
+    1. このページでは、比較する実行を選択したり、グラフを追加したり、フィルターを適用して、カスタマイズすることが可能です。 これらの変更は **カスタム ビュー** として保存できるので、簡単に作業に戻ることができます。 ワークスペースのアクセス許可を持つユーザーは、カスタム ビューを編集または表示できます。 また、 **[共有ビュー]** を選択すると、カスタム ビューをチームメンバーと共有して、連携を強化できます。   
     
         :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="スクリーンショット: カスタム ビューを作成する":::
     
-    1. 特定の実行番号を選択します。
-    
-    1. **[ログ]** タブで、パイプラインの実行に関する診断ログとエラー ログを確認できます。
+    1. 実行ログを表示するには、特定の実行を選択し、自分の実行の診断ログとエラー ログを **[Outputs + logs]** \(出力 + ログ\) タブから確認します。
     
     ---
+
+## <a name="run-description"></a>実行の説明 
+
+実行に実行の説明を追加し、その実行に関するコンテキストおよび情報をより多く指定できます。 また、実行の一覧でこれらの説明を検索し、実行の一覧の列として実行の説明を追加することもできます。 
+
+自分の実行の **[実行の詳細]** ページに移動し、編集または鉛筆アイコンを選択して、自分の実行の説明を追加、編集または削除します。 お使いの既存のカスタム ビューまたは新しいカスタム ビューに変更を保存すると、この変更を実行の一覧に保存できます。 実行の説明には、次に示すように、イメージを埋め込んだり、ディープ リンクを設定したりすることができる Markdown 形式がサポートされています。
+
+:::image type="content" source="media/how-to-manage-runs/rundescription.gif" alt-text="スクリーンショット: 実行の説明を作成する"::: 
     
+
+## <a name="tag-and-find-runs"></a>実行のタグ付けおよび検索
+
+Azure Machine Learning では、実行の整理にプロパティとタグを使用したり、自分の実行に対し重要な情報をクエリしたりできます。
+
+* プロパティとタグの追加
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    検索可能なメタデータを自分の実行に追加するには、[`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) メソッドを使用します。 たとえば、次のコードでは実行に `"author"` プロパティが追加されます。
+    
+    ```Python
+    local_run.add_properties({"author":"azureml-user"})
+    print(local_run.get_properties())
+    ```
+    
+    プロパティは変更不可であるため、プロパティによって監査目的の恒久的な記録が作成されます。 次のコード例は、前のコードで `"author"` プロパティ値として `"azureml-user"` が既に追加されているためエラーとなります。
+    
+    ```Python
+    try:
+        local_run.add_properties({"author":"different-user"})
+    except Exception as e:
+        print(e)
+    ```
+    
+    プロパティとは異なり、タグは変更可能です。 自分の実験のコンシューマーに検索可能で意味のある情報を追加するには、[`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) メソッドを使用します。
+    
+    ```Python
+    local_run.tag("quality", "great run")
+    print(local_run.get_tags())
+    
+    local_run.tag("quality", "fantastic run")
+    print(local_run.get_tags())
+    ```
+    
+    単純な文字列のタグを追加することもできます。 これらのタグがタグ辞書にキーとして表示されると、値は `None` になります。
+    
+    ```Python
+    local_run.tag("worth another look")
+    print(local_run.get_tags())
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    > [!NOTE]
+    > CLI の使用では、タグの追加または更新のみが可能です。
+    
+    タグの追加または更新を行うには、次のコマンドを使用します。
+    
+    ```azurecli-interactive
+    az ml run update -r runid --add-tag quality='fantastic run'
+    ```
+    
+    詳しくは、「[az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)」をご覧ください。
+    
+    # <a name="studio"></a>[スタジオ](#tab/azure-studio)
+    
+    スタジオから実行のタグを追加、編集、または削除できます。 自分の実行の **[実行の詳細]** ページに移動し、編集または鉛筆アイコンを選択して、自分の実行を追加、編集または削除します。 実行の一覧ページから、これらのタグを検索したり、フィルター処理したりすることもできます。
+    
+    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="スクリーンショット: 実行タグを追加、編集、または削除する":::
+    
+    ---
+
+* クエリ プロパティおよびタグ
+
+    特定のプロパティとタグに一致する実行の一覧が返されるように、実験内の実行をクエリできます。
+
+    # <a name="python"></a>[Python](#tab/python)
+    
+    ```Python
+    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
+    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
+    ```
+    
+    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+    
+    Azure CLI では、プロパティとタグに基づいて実行をフィルター処理するために使用できる [JMESPath](http://jmespath.org) クエリがサポートされています。 Azure CLI で JMESPath クエリを使用するには、`--query` パラメーターでそれを指定します。 次の例は、プロパティとタグを使用したクエリのいくつかを示しています。
+    
+    ```azurecli-interactive
+    # list runs where the author property = 'azureml-user'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
+    # list runs where the tag contains a key that starts with 'worth another look'
+    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
+    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
+    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
+    ```
+    
+    Azure CLI 結果のクエリ実行の詳細については、「[Azure CLI コマンドの出力のクエリ](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest)」を参照してください。
+    
+    # <a name="studio"></a>[スタジオ](#tab/azure-studio)
+    
+    1. **[すべての実行]** 一覧に移動します。
+    
+    1. タグ、説明、実験名、送信者名などの実行のメタデータをフィルター処理するには、検索バーを使用します。 タグのフィルター処理には、タグのフィルターを使用することもできます。 
+    
+    ---
+
+
 ## <a name="cancel-or-fail-runs"></a>実行のキャンセルまたは失敗
 
 間違いに気付いた場合、または実行の完了に時間がかかりすぎる場合は、実行をキャンセルできます。
@@ -344,101 +438,6 @@ current_child_run = Run.get_context()
 root_run(current_child_run).log("MyMetric", f"Data from child run {current_child_run.id}")
 
 ```
-
-
-## <a name="tag-and-find-runs"></a>実行のタグ付けおよび検索
-
-Azure Machine Learning では、実行の整理にプロパティとタグを使用したり、自分の実行に対し重要な情報をクエリしたりできます。
-
-* プロパティとタグの追加
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    検索可能なメタデータを自分の実行に追加するには、[`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueadd-properties-properties-) メソッドを使用します。 たとえば、次のコードでは実行に `"author"` プロパティが追加されます。
-    
-    ```Python
-    local_run.add_properties({"author":"azureml-user"})
-    print(local_run.get_properties())
-    ```
-    
-    プロパティは変更不可であるため、プロパティによって監査目的の恒久的な記録が作成されます。 次のコード例は、前のコードで `"author"` プロパティ値として `"azureml-user"` が既に追加されているためエラーとなります。
-    
-    ```Python
-    try:
-        local_run.add_properties({"author":"different-user"})
-    except Exception as e:
-        print(e)
-    ```
-    
-    プロパティとは異なり、タグは変更可能です。 自分の実験のコンシューマーに検索可能で意味のある情報を追加するには、[`tag()`](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truetag-key--value-none-) メソッドを使用します。
-    
-    ```Python
-    local_run.tag("quality", "great run")
-    print(local_run.get_tags())
-    
-    local_run.tag("quality", "fantastic run")
-    print(local_run.get_tags())
-    ```
-    
-    単純な文字列のタグを追加することもできます。 これらのタグがタグ辞書にキーとして表示されると、値は `None` になります。
-    
-    ```Python
-    local_run.tag("worth another look")
-    print(local_run.get_tags())
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    > [!NOTE]
-    > CLI の使用では、タグの追加または更新のみが可能です。
-    
-    タグの追加または更新を行うには、次のコマンドを使用します。
-    
-    ```azurecli-interactive
-    az ml run update -r runid --add-tag quality='fantastic run'
-    ```
-    
-    詳しくは、「[az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)」をご覧ください。
-    
-    # <a name="studio"></a>[スタジオ](#tab/azure-studio)
-    
-    Studio を使用するとプロパティとタグを表示することはできますが、変更することはできません。
-    
-    ---
-
-* クエリ プロパティおよびタグ
-
-    特定のプロパティとタグに一致する実行の一覧が返されるように、実験内の実行をクエリできます。
-
-    # <a name="python"></a>[Python](#tab/python)
-    
-    ```Python
-    list(exp.get_runs(properties={"author":"azureml-user"},tags={"quality":"fantastic run"}))
-    list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"))
-    ```
-    
-    # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-    
-    Azure CLI では、プロパティとタグに基づいて実行をフィルター処理するために使用できる [JMESPath](http://jmespath.org) クエリがサポートされています。 Azure CLI で JMESPath クエリを使用するには、`--query` パラメーターでそれを指定します。 次の例は、プロパティとタグを使用したクエリのいくつかを示しています。
-    
-    ```azurecli-interactive
-    # list runs where the author property = 'azureml-user'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user']
-    # list runs where the tag contains a key that starts with 'worth another look'
-    az ml run list --experiment-name experiment [?tags.keys(@)[?starts_with(@, 'worth another look')]]
-    # list runs where the author property = 'azureml-user' and the 'quality' tag starts with 'fantastic run'
-    az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
-    ```
-    
-    Azure CLI 結果のクエリ実行の詳細については、「[Azure CLI コマンドの出力のクエリ](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest)」を参照してください。
-    
-    # <a name="studio"></a>[スタジオ](#tab/azure-studio)
-    
-    1. **[パイプライン]** セクションに移動します。
-    
-    1. タグ、説明、実験名、および送信者名を使用してパイプラインをフィルター処理するには、検索バーを使用します。
-    
-    ---
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
 

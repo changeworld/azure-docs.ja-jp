@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 54da62ce961156b64c917b448557c17e7516e222
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: ef753043218f259c69082dbb8682517be79cf95c
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862136"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099797"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスとは
 
@@ -51,7 +51,7 @@ Azure Machine Learning コンピューティング インスタンスを使用�
 
 SSH を必要としないリモート サーバーとしてコンピューティング インスタンスを使用して、[VS Code](https://techcommunity.microsoft.com/t5/azure-ai/power-your-vs-code-notebooks-with-azml-compute-instances/ba-p/1629630) で Jupyter Notebook を実行できます。 [リモート SSH 拡張機能](https://devblogs.microsoft.com/python/enhance-your-azure-machine-learning-experience-with-the-vs-code-extension/)を使用して、VS Code 統合を有効にすることもできます。
 
-[パッケージをインストール](how-to-create-manage-compute-instance.md#install-packages)して、コンピューティング インスタンスに[カーネルを追加](how-to-create-manage-compute-instance.md#add-new-kernels)することができます。  
+[パッケージをインストール](how-to-access-terminal.md#install-packages)して、コンピューティング インスタンスに[カーネルを追加](how-to-access-terminal.md#add-new-kernels)することができます。  
 
 コンピューティング インスタンスには、次のツールと環境が既にインストールされています。 
 
@@ -77,7 +77,7 @@ SSH を必要としないリモート サーバーとしてコンピューティ
 |Anaconda Python||
 |Jupyter と拡張機能||
 |Jupyterlab と拡張機能||
-[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>PyPI から|ほとんどの azureml 追加パッケージが含まれています。  完全な一覧を表示するには [コンピューティング インスタンスでターミナル ウィンドウを開き](how-to-run-jupyter-notebooks.md#terminal)、以下を実行します <br/> `conda list -n azureml_py36 azureml*` |
+[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)</br>PyPI から|ほとんどの azureml 追加パッケージが含まれています。  完全な一覧を表示するには [コンピューティング インスタンスでターミナル ウィンドウを開き](how-to-access-terminal.md)、以下を実行します <br/> `conda list -n azureml_py36 azureml*` |
 |その他の PyPI パッケージ|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda パッケージ|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |ディープ ラーニング パッケージ|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|

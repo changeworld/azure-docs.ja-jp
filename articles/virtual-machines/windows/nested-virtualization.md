@@ -7,12 +7,12 @@ ms.date: 10/09/2017
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 03df7db13ebd3ebec407bb046cc735c835e01068
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 924ee745804ef31e42dc21437dbb0459f6d37701
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074258"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693749"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Azure VM で入れ子になった仮想化を有効にする方法
 
@@ -22,11 +22,9 @@ ms.locfileid: "87074258"
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>入れ子対応の Azure VM を作成する
 
-新しい Windows Server 2016 Azure VM を作成します。 入れ子をサポートしている仮想マシンのサイズの完全な一覧については、「[Azure コンピューティング ユニット (ACU)](../acu.md)」をご覧ください。
+ホスト用に新しい Windows Server 2016 または Windows Server 2019 の Azure VM を作成します。 入れ子をサポートする VM のサイズを選択し、ゲスト VM の要件を満たすのに十分な大きさであることを確認してください。 入れ子をサポートしている仮想マシンのサイズの一覧については、「[Azure コンピューティング ユニット (ACU)](../acu.md)」をご覧ください。
 
-必ずゲスト仮想マシンの要求をサポートするのに十分な大きさの VM サイズを選択してください。 この例では、D3_v3 サイズの Azure VM を使用しています。 
-
-Dv3 または Ev3 シリーズの仮想マシンのリージョン別提供状況については、[こちら](https://azure.microsoft.com/regions/services/)をご覧ください。
+リージョン別の利用可能な VM サイズについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」ページで確認できます。
 
 >[!NOTE]
 >
@@ -94,7 +92,7 @@ Windows Server 2016 ホストの入れ子になった仮想化を有効にする
 4. NAT ゲートウェイの IP アドレスを作成します。
     
 ゲートウェイを構成するには、ネットワークに関する情報がいくつか必要です。    
-  * IPAddress - NAT ゲートウェイ IP は、仮想ネットワーク サブネットの既定のゲートウェイ アドレスとして使用する IPv4 または IPv6 アドレスを指定します。 一般的な形式は a.b.c.1 ("192.168.0.1" など) です。 末尾は .1 である必要はありませんが、通常は .1 です (プレフィックス長に基づきます)。 一般的には、RFC 1918 プライベート ネットワーク アドレス空間を使用する必要があります。 
+  * IP アドレス - NAT Gateway IP によって、仮想ネットワーク サブネットの既定のゲートウェイ アドレスとして使用する IPv4 または IPv6 アドレスが指定されます。 一般的な形式は a.b.c.1 ("192.168.0.1" など) です。 末尾は .1 である必要はありませんが、通常は .1 です (プレフィックス長に基づきます)。 一般的には、RFC 1918 プライベート ネットワーク アドレス空間を使用する必要があります。 
   * PrefixLength - サブネット プレフィックス長は、ローカル サブネット サイズ (サブネット マスク) を定義します。 サブネット プレフィックス長は 0 ～ 32 の整数値になります。 0 は、インターネット全体をマップし、32 は、マップされた IP を 1 つのみ許可します。 一般的な値は 24 ～ 12 で、NAT に接続する必要がある IP 数によって異なります。 通常、PrefixLength は 24 です。これは 255.255.255.0 のサブネット マスクです。
   * InterfaceIndex - **ifIndex** は、前の手順で作成した仮想スイッチのインターフェイス インデックスです。 
 

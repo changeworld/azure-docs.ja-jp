@@ -1,23 +1,18 @@
 ---
 title: コピー アクティビティのパフォーマンスのトラブルシューティング
 description: Azure Data Factory でのコピー アクティビティのパフォーマンスをトラブルシューティングする方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 07be5d29ccb55fe97f38123ff4a850d28cd39ead
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968893"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387684"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>コピー アクティビティのパフォーマンスのトラブルシューティング
 
@@ -194,7 +189,7 @@ ms.locfileid: "97968893"
 
     - Azure SQL Database のレベルが十分ではありません。
 
-    - Azure SQL Database の DTU の使用率が 100% に近づいています。 [パフォーマンスを監視](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview)して、Azure SQL Database のレベルをアップグレードすることを検討できます。
+    - Azure SQL Database の DTU の使用率が 100% に近づいています。 [パフォーマンスを監視](../azure-sql/database/monitor-tune-overview.md)して、Azure SQL Database のレベルをアップグレードすることを検討できます。
 
     - インデックスが正しく設定されていません。 データが読み込まれる前にすべてのインデックスを削除し、読み込みの完了後に再作成します。
 
@@ -202,7 +197,6 @@ ms.locfileid: "97968893"
 
     - 一括埋め込みではなく、ストアド プロシージャが使用されているため、パフォーマンスが低下することが予想されます。 
 
-- **解決方法**:「[コピー アクティビティのパフォーマンスのトラブルシューティング](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)」を参照してください。
 
 ### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>大きな Excel ファイルを解析するときのタイムアウトまたはパフォーマンスの低下
 
@@ -230,8 +224,8 @@ ms.locfileid: "97968893"
 
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報を示します。
 
-* Azure Blob ストレージ:[BLOB ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [BLOB ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
-* Azure Table ストレージ:[Table ストレージのスケーラビリティとパフォーマンスのターゲット](../storage/tables/scalability-targets.md)および [Table ストレージのパフォーマンスとスケーラビリティのチェックリスト](../storage/tables/storage-performance-checklist.md)。
+* Azure Blob Storage:[Blob Storage のスケーラビリティとパフォーマンスのターゲット](../storage/blobs/scalability-targets.md)および [Blob Storage のパフォーマンスとスケーラビリティのチェックリスト](../storage/blobs/storage-performance-checklist.md)。
+* Azure Table Storage:[Table Storage のスケーラビリティとパフォーマンスのターゲット](../storage/tables/scalability-targets.md)および [Table Storage のパフォーマンスとスケーラビリティのチェックリスト](../storage/tables/storage-performance-checklist.md)。
 * Azure SQL Database:[パフォーマンスを監視](../azure-sql/database/monitor-tune-overview.md)し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure Synapse Analytics:その機能は、データ ウェアハウス単位 (DWU) で測定されます。 「[Azure Synapse Analytics のコンピューティング能力の管理 (概要)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB:[Azure Cosmos DB のパフォーマンス レベル](../cosmos-db/performance-levels.md)。

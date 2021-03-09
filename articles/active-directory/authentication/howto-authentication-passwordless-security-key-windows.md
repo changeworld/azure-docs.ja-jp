@@ -1,36 +1,33 @@
 ---
 title: Windows のパスワードレス セキュリティ キー サインイン - Azure Active Directory
-description: FIDO2 セキュリティ キーを使用して Azure Active Directory へのパスワードレス セキュリティ キー サインインを有効にする方法について説明します (プレビュー)
+description: FIDO2 セキュリティ キーを使用して Azure Active Directory へのパスワードレス セキュリティ キー サインインを有効にする方法について説明します
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 11/24/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04a46a691b2f629b64cfe09c22813b05c593af1c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 190e9c857f1ec9d19eb89493dc4b4a9fb68fac87
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743464"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101653509"
 ---
-# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory-preview"></a>Azure Active Directory を使用して Windows 10 デバイスへのパスワードレス セキュリティ キー サインインを有効にする (プレビュー)
+# <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-with-azure-active-directory"></a>Azure Active Directory を使用して Windows 10 デバイスへのパスワードレス セキュリティ キー サインインを有効にする 
 
 このドキュメントでは、FIDO2 セキュリティ キーに基づくパスワードレス認証を、Windows 10 デバイスとの間で有効にする方法について説明します。 この記事を最後まで読むと、FIDO2 セキュリティ キーを使用して、お使いの Azure AD アカウントで Azure AD とHybrid Azure AD 参加済み Windows 10 デバイスの両方にサインインできるようになります。
-
-> [!NOTE]
-> FIDO2 セキュリティ キーは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="requirements"></a>必要条件
 
 | デバイスの種類 | Azure AD 参加済み | ハイブリッド Azure AD 参加済み |
 | --- | --- | --- |
 | [Azure AD Multi-Factor Authentication](howto-mfa-getstarted.md) | X | X |
-| [統合されたセキュリティ情報の登録 (プレビュー)](concept-registration-mfa-sspr-combined.md) | X | X |
+| [統合されたセキュリティ情報の登録](concept-registration-mfa-sspr-combined.md) | X | X |
 | 互換性のある [FIDO2 セキュリティ キー](concept-authentication-passwordless.md#fido2-security-keys) | X | X |
 | WebAuthN には、Windows 10 バージョン 1903 以降が必要です | X | X |
 | [Azure AD 参加済みデバイス](../devices/concept-azure-ad-join.md)には、Windows 10 バージョン 1909 以降が必要です | X |   |
@@ -54,9 +51,9 @@ ms.locfileid: "96743464"
 - 複数の Azure AD アカウントが含まれるセキュリティ キーで Windows 10 デバイスにサインインするか、ロックを解除します。 このシナリオでは、セキュリティ キーに最後に追加されたアカウントが利用されます。 WebAuthN の場合、ユーザーは自分が使用するアカウントを選択できます。
 - Windows 10 バージョン 1809 を実行しているデバイスのロックを解除します。 最適なエクスペリエンスを得るには、Windows 10 バージョン 1903 以降を使用してください。
 
-## <a name="prepare-devices-for-preview"></a>プレビュー用にデバイスを準備する
+## <a name="prepare-devices"></a>デバイスを準備する
 
-機能のプレビュー中に使用している Azure AD 参加済みデバイスでは、Windows 10 バージョン 1909 以降が動作している必要があります。
+Azure AD 参加済みデバイスでは、Windows 10 バージョン 1909 以降が実行されている必要があります。
 
 Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004 以降が実行されている必要があります。
 
@@ -150,13 +147,13 @@ Intune で管理されていないデバイスの場合は、プロビジョニ�
 
 ## <a name="troubleshooting-and-feedback"></a>トラブルシューティングとフィードバック
 
-この機能のプレビュー中に、フィードバックを共有したい場合、または問題が発生した場合は、次の手順を使用して Windows フィードバック ハブ アプリ経由で共有してください。
+この機能についてフィードバックを共有したい場合、または問題が発生した場合は、次の手順を使用して Windows フィードバック Hub アプリ経由で共有してください。
 
 1. **フィードバック ハブ** を起動し、サインインしていることを確認します。
 1. 次の分類でフィードバックを送信します。
    - カテゴリ:セキュリティとプライバシー
    - サブカテゴリ: FIDO
-1. ログをキャプチャするには、 **[Recreate my Problem]\(問題の再現\)** オプションを使用します
+1. ログをキャプチャするには、 **[Recreate my Problem]\(問題の再現\)** オプションを使用します。
 
 ## <a name="next-steps"></a>次のステップ
 

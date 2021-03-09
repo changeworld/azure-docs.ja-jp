@@ -2,17 +2,17 @@
 title: Azure VMware Solution のプライベート クラウドに GitHub Enterprise Server を設定する
 description: Azure VMware Solution のプライベート クラウドに GitHub Enterprise Server を設定する方法について説明します。
 ms.topic: how-to
-ms.date: 09/22/2020
-ms.openlocfilehash: 00b3acf721dd7f7a1a15bcd0d24eccf3ca27ff58
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.date: 02/11/2021
+ms.openlocfilehash: 59a76c3976f6fcda88423b7b78344f2abed1ea84
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326915"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382023"
 ---
 # <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドに GitHub Enterprise Server を設定する
 
-この記事では、Azure VMware Solution のプライベート クラウドに [GitHub.com](https://github.com/) の "オンプレミス" バージョンである GitHub Enterprise Server を設定する手順について説明します。 このチュートリアルで取り上げているシナリオは、GitHub Actions 上で 1 分あたり最大 25 個のジョブを実行し、最大 3,000 人の開発者にサービスを提供できる GitHub Enterprise Server インスタンスのためのものです。 これには GitHub Actions などの "*プレビュー*" 機能 (本書の執筆時点) の設定が含まれます。 特定のニーズに合わせて設定をカスタマイズするには、「[VMware への GitHub Enterprise Server のインストール](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)」に記載されている要件をご確認ください。
+この記事では、Azure VMware Solution のプライベート クラウドに [GitHub.com](https://github.com/) の "オンプレミス" バージョンである GitHub Enterprise Server を設定する手順について説明します。 ここで取り上げるシナリオは、GitHub Actions で 1 分あたり最大 25 個のジョブを実行する、最大 3,000 人の開発者にサービスを提供できる GitHub Enterprise Server インスタンスです。 これには GitHub Actions などの "*プレビュー*" 機能 (本書の執筆時点) の設定が含まれます。 特定のニーズに合わせて設定をカスタマイズするには、「[VMware への GitHub Enterprise Server のインストール](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations)」に記載されている要件をご確認ください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -51,7 +51,7 @@ VMware ESXi/vSphere (OVA) 用の [GitHub Enterprise Server の最新リリース
 
 1. 管理コンソールに公開 SSH キーをアップロードして、[SSH 経由で管理シェルにアクセス](https://docs.github.com/en/enterprise/admin/configuration/accessing-the-administrative-shell-ssh)できるようにします。 
 
-2. [ご使用のインスタンスの TLS を構成して](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls)、信頼された証明機関によって署名された証明書を使用できるようにします。
+2. [お使いのインスタンスの TLS を構成して](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls)、信頼された証明機関によって署名された証明書を使用できるようにします。
 
 :::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="インスタンスを構成します。":::
 
@@ -59,9 +59,9 @@ VMware ESXi/vSphere (OVA) 用の [GitHub Enterprise Server の最新リリース
 
 :::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="管理者アカウントを作成します。":::
 
-インスタンスが再起動したら、インスタンスの新しい管理者アカウントを作成します。 このユーザーのパスワードもメモしておいてください。
+インスタンスが再起動したら、インスタンスの新しい管理者アカウントを作成できます。 このユーザーのパスワードもメモしておいてください。
 
-### <a name="additional-configuration-steps"></a>追加の構成手順
+### <a name="other-configuration-steps"></a>その他の構成手順
 
 実稼働環境で使用するためにインスタンスを強化するには、次のオプションのセットアップ手順を実行することをお勧めします。
 
@@ -182,7 +182,7 @@ run.sh コマンドを使用して、ランナーを "*実行*" します。
 
 ## <a name="optional-configuring-github-connect"></a>(省略可能) GitHub Connect の構成
 
-この手順は省略可能ですが、GitHub.com で提供されているオープン ソース アクションを使用する予定の場合にお勧めします。 これにより、これらの再利用可能なアクションをワークフロー内で参照することによって、他の人の作業に基づいて構築できます。
+この手順は省略可能ですが、GitHub.com で提供されているオープンソース アクションを使用する予定の場合にお勧めします。 これにより、これらの再利用可能なアクションをワークフロー内で参照することによって、他の人の作業に基づいて構築できます。
 
 GitHub Connect を有効にするには、「[GitHub Connect を使用した GitHub.com アクションへの自動アクセスを有効にする](https://docs.github.com/en/enterprise/admin/github-actions/enabling-automatic-access-to-githubcom-actions-using-github-connect)」の手順に従います。
 
@@ -223,14 +223,12 @@ GitHub Connect を有効にしないことを選択した場合は、次の代�
 
 おめでとうございます。 Azure VMware Solution のプライベート クラウドで実行されている GitHub Enterprise Server 上の最初のアクション ワークフローを完了しました。
 
-ここまでは、GitHub Actions でできることをほんの少し学んだだけです。 詳細については、[GitHub の Marketplace](https://github.com/marketplace) で Actions の一覧を確認するか、[独自に作成してください](https://docs.github.com/en/actions/creating-actions)。
+この記事では、Azure VMware Solution のプライベート クラウド上に、GitHub.com の自己ホスト型に相当する GitHub Enterprise Server の新しいインスタンスを設定しました。 このインスタンスには、GitHub Actions のサポートが含まれており、ログと成果物を永続化するために Azure Blob Storage を使用します。 しかしながら、ここまでは、GitHub Actions でできることをほんの少し学んだだけです。 [GitHub の Marketplace](https://github.com/marketplace) で Actions の一覧を確認したり、[独自に作成](https://docs.github.com/en/actions/creating-actions)したりしてください。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure VMware Solution のプライベート クラウド上に、GitHub.com の自己ホスト型に相当する GitHub Enterprise Server の新しいインスタンスを設定しました。 このインスタンスには、GitHub Actions のサポートが含まれており、ログと成果物を永続化するために Azure Blob Storage を使用します。 これは、コラボレーションに対応した、セキュリティで保護された最新式のソフトウェア開発エクスペリエンスのための優れた組み合わせです。 Azure VMware Solution の堅固な基盤に基づき、使い慣れた設定でクラウド リソースを活用できます。
+Azure VMware Solution のプライベート クラウドでの GitHub Enterprise Server のセットアップについて理解したら、次の事項の学習に進むことができます。 
 
-詳細については、次の情報をご覧ください。
-
-- [GitHub Actions の概要](https://docs.github.com/en/actions)
-- [ベータ プログラムに参加する](https://resources.github.com/beta-signup/)
-- [GitHub Enterprise Server の管理についての詳細情報](https://githubtraining.github.io/admin-training/#/00_getting_started)
+- [GitHub Actions の概要](https://docs.github.com/en/actions)。
+- [ベータ プログラムに参加する](https://resources.github.com/beta-signup/)。
+- [GitHub Enterprise Server の管理](https://githubtraining.github.io/admin-training/#/00_getting_started)。

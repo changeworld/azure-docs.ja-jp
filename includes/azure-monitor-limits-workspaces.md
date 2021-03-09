@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 86c5c6fff06f43bf66427ba1935852fcf97a71c6
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: c55314764f973a5a015a2bfc02815a58ce659901
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96356212"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101734061"
 ---
 **データの収集量と保持期間** 
 
@@ -56,21 +56,27 @@ ms.locfileid: "96356212"
 | クエリの最大実行時間 | 10 分 | 詳細については、[タイムアウト](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts)に関するページをご覧ください。  |
 | 最大要求レート | Azure AD ユーザーまたはクライアントの IP アドレスごとに、30 秒あたり 200 件の要求 | 詳細については、[レート制限](https://dev.loganalytics.io/documentation/Using-the-API/Limits)に関するページをご覧ください。 |
 
+**Azure Monitor Logs コネクタ**
+| カテゴリ | 制限 | 説明 |
+|:---|:---|:---|
+| レコードの最大数 | 500,000 | |
+| クエリ タイムアウトの最大値 | 110 秒 | |
+| グラフ | | [ログ] ページとコネクタの視覚化で使用されているグラフ ライブラリは異なり、現在、コネクタでは一部機能が使用できません。 |
+
 **一般的なワークスペースの制限**
 
 | カテゴリ | 制限 | 説明 |
 |:---|:---|:---|
 | テーブルの最大列数         | 500 | |
 | 列名の最大文字数 | 500 | |
-| データのエクスポート | 現在、利用できません | データの集計とエクスポートには Azure Function または Logic App を使用してください。 | 
 
 **<a name="data-ingestion-volume-rate">データ インジェストのボリューム レート</a>**
 
-Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ボリューム レート制限は、マルチテナント環境における突然のインジェスト スパイクから Azure Monitor の顧客を隔離するためのものです。 ワークスペースでは、既定のインジェスト ボリューム レートのしきい値である 500 MB (圧縮) が定義されており、これは約 **6 GB/分** (非圧縮) に変換されます。実際のサイズは、ログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 ボリューム レート制限は、[診断設定](../articles/azure-monitor/platform/diagnostic-settings.md)を使用して、Azure リソースから取り込まれたデータに適用されます。 ボリューム レート制限に達すると、再試行メカニズムは 30 分間に 4 回データを取り込もうとし、操作が失敗した場合はそれを削除しようとします。 [エージェント](../articles/azure-monitor/platform/agents-overview.md)または[データ コレクター API](../articles/azure-monitor/platform/data-collector-api.md) から取り込まれたデータには適用されません。
+Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ボリューム レート制限は、マルチテナント環境における突然のインジェスト スパイクから Azure Monitor の顧客を隔離するためのものです。 ワークスペースでは、既定のインジェスト ボリューム レートのしきい値である 500 MB (圧縮) が定義されており、これは約 **6 GB/分** (非圧縮) に変換されます。実際のサイズは、ログの長さとその圧縮率に左右され、データの種類によって異なることがあります。 ボリューム レート制限は、[診断設定](../articles/azure-monitor/essentials/diagnostic-settings.md)を使用して、Azure リソースから取り込まれたデータに適用されます。 ボリューム レート制限に達すると、再試行メカニズムは 30 分間に 4 回データを取り込もうとし、操作が失敗した場合はそれを削除しようとします。 [エージェント](../articles/azure-monitor/agents/agents-overview.md)または[データ コレクター API](../articles/azure-monitor/logs/data-collector-api.md) から取り込まれたデータには適用されません。
 
 ワークスペースに構成されているしきい値の 80% を超えるボリューム レートでワークスペースにデータが送信される場合、しきい値を超え続けている間、6 時間ごとにワークスペースの *操作* テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超えると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの "*操作*" テーブルにイベントが送信されます。 インジェスト ボリューム レートがしきい値を超え続けている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開いて、その引き上げをリクエストできます。 
 
-インジェストの制限に達するときに事前に通知されるようアラート ルールを作成するには、「[Azure Monitor で Log Analytics ワークスペースの正常性を監視する](../articles/azure-monitor/platform/monitor-workspace.md)」を参照してください。
+インジェストの制限に達するときに事前に通知されるようアラート ルールを作成するには、「[Azure Monitor で Log Analytics ワークスペースの正常性を監視する](../articles/azure-monitor/logs/monitor-workspace.md)」を参照してください。
 
 >[!NOTE]
->Log Analytics を使用してきた期間の長さによっては、レガシ価格レベルにアクセスできることがあります。 詳細については、[Log Analytics のレガシ価格レベル](../articles/azure-monitor/platform/manage-cost-storage.md#legacy-pricing-tiers)に関するページを参照してください。
+>Log Analytics を使用してきた期間の長さによっては、レガシ価格レベルにアクセスできることがあります。 詳細については、[Log Analytics のレガシ価格レベル](../articles/azure-monitor/logs/manage-cost-storage.md#legacy-pricing-tiers)に関するページを参照してください。

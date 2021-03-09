@@ -2,17 +2,17 @@
 title: Azure Container Registry でのリポジトリに対するアクセス許可
 description: イメージのプルやプッシュまたは他のアクションを実行するための、Premium レジストリ内の特定のリポジトリをスコープとするアクセス許可を持つトークンを作成します。
 ms.topic: article
-ms.date: 05/27/2020
-ms.openlocfilehash: b65b1bf69337cb172a17043490a5d13c7bd7afc2
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.date: 02/04/2021
+ms.openlocfilehash: ceec69d746f77ea7a23bc70d029c8b3736e7f292
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381237"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988259"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>リポジトリ スコープのアクセス許可を持つトークンを作成する
 
-この記事では、コンテナー レジストリでリポジトリ スコープのアクセス許可を管理するためのトークンとスコープ マップを作成する方法について説明します。 レジストリの所有者は、トークンを作成することにより、イメージのプルやプッシュまたは他のアクションを実行するための、リポジトリをスコープとする期間限定のアクセス権を、ユーザーまたはサービスに提供することができます。 トークンを使うと、レジストリ全体がアクセス許可のスコープである他のレジストリ[認証オプション](container-registry-authentication.md)より、きめ細かいアクセス許可を提供できます。 
+この記事では、コンテナー レジストリで特定のリポジトリへのアクセスを管理するためのトークンとスコープ マップを作成する方法について説明します。 レジストリの所有者は、トークンを作成することにより、イメージのプルやプッシュまたは他のアクションを実行するための、リポジトリをスコープとする期間限定のアクセス権を、ユーザーまたはサービスに提供することができます。 トークンを使うと、レジストリ全体がアクセス許可のスコープである他のレジストリ[認証オプション](container-registry-authentication.md)より、きめ細かいアクセス許可を提供できます。 
 
 トークンの作成には次のようなシナリオがあります。
 
@@ -20,7 +20,7 @@ ms.locfileid: "94381237"
 * 特定のリポジトリへのアクセス許可を外部組織に付与する 
 * リポジトリ アクセスを組織内の異なるユーザー グループに制限する。 たとえば、特定のリポジトリをターゲットとしたイメージを構築する開発者に書き込みおよび読み取りアクセス権を付与し、それらのリポジトリからデプロイするチームに読み取りアクセス権を付与します。
 
-この機能は、 **Premium** コンテナー レジストリ サービス レベルで使用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry のサービス レベル](container-registry-skus.md)」を参照してください。
+この機能は、**Premium** コンテナー レジストリ サービス レベルで使用できます。 レジストリ サービスのレベルと制限については、「[Azure Container Registry のサービス レベル](container-registry-skus.md)」を参照してください。
 
 > [!IMPORTANT]
 > この機能は現在プレビュー段階であり、一定の[制限事項が適用されます](#preview-limitations)。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
@@ -32,11 +32,11 @@ ms.locfileid: "94381237"
 
 ## <a name="concepts"></a>概念
 
-リポジトリ スコープのアクセス許可を構成するには、" *スコープ マップ* " が関連付けられた " *トークン* " を作成します。 
+リポジトリ スコープのアクセス許可を構成するには、"*スコープ マップ*" が関連付けられた "*トークン*" を作成します。 
 
 * **トークン** と生成されたパスワードを使用して、ユーザーはレジストリでの認証を行うことができます。 トークンのパスワードに有効期限を設定したり、トークンをいつでも無効にしたりできます。  
 
-  トークンを使用して認証を行った後、ユーザーまたはサービスは、1 つ以上のリポジトリをスコープとする 1 つ以上の " *アクション* " を実行できます。
+  トークンを使用して認証を行った後、ユーザーまたはサービスは、1 つ以上のリポジトリをスコープとする 1 つ以上の "*アクション*" を実行できます。
 
   |アクション  |説明  | 例 |
   |---------|---------|--------|
@@ -61,7 +61,7 @@ ms.locfileid: "94381237"
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure CLI** - トークンを作成および管理するための Azure CLI コマンドは、Azure CLI バージョン2.0.76 以降で使用できます。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
+* **Azure CLI** - この記事の Azure CLI コマンドのコマンド例には、Azure CLI バージョン 2.17.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 * **Docker** - イメージをプルまたはプッシュするためにレジストリで認証を行うには、ローカル環境に Docker をインストールする必要もあります。 Docker では、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、および [Linux](https://docs.docker.com/engine/installation/#supported-platforms) システム向けのインストールの指示を提供しています。
 * **コンテナー レジストリ** - Premium コンテナー レジストリがない場合は、Azure サブスクリプションで作成するか、または既存のレジストリをアップグレードします。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。 
 
@@ -79,7 +79,7 @@ az acr token create --name MyToken --registry myregistry \
   content/write content/read
 ```
 
-出力には、トークンの詳細が表示されます。 既定では、2 つのパスワードが生成されます。 パスワードは、後で認証に使用するので、安全な場所に保存することをお勧めします。 そのパスワードを再度取得することはできませんが、新しいパスワードを生成することはできます。
+出力には、トークンの詳細が表示されます。 既定では、有効期限がない 2 つのパスワードが生成されますが、必要に応じて有効期限を設定することもできます。 パスワードは、後で認証に使用するので、安全な場所に保存することをお勧めします。 そのパスワードを再度取得することはできませんが、新しいパスワードを生成することはできます。
 
 ```console
 {
@@ -113,7 +113,7 @@ az acr token create --name MyToken --registry myregistry \
 ```
 
 > [!NOTE]
-> トークンのパスワードを再生成し、パスワードの有効期限を設定する場合は、この記事の後半の「[トークンのパスワードを再生成する](#regenerate-token-passwords)」を参照してください。
+> トークンのパスワードと有効期限を再生成するには、この記事の後半の「[トークンのパスワードを再生成する](#regenerate-token-passwords)」を参照してください。
 
 出力には、コマンドによって作成されたスコープ マップに関する詳細が含まれます。 スコープ マップ (ここでは `MyToken-scope-map` という名前) を使用することで、同じリポジトリ アクションを他のトークンにも適用できます。 または、後でスコープ マップを更新して、関連付けられているトークンのアクセス許可を変更します。
 
@@ -130,7 +130,7 @@ az acr scope-map create --name MyScopeMap --registry myregistry \
   --description "Sample scope map"
 ```
 
-[az acr token create][az-acr-token-create] を実行してトークンを作成し、 *MyScopeMap* スコープ マップを指定します。 前の例と同様に、このコマンドではトークンの既定の状態が `enabled` に設定されます。
+[az acr token create][az-acr-token-create] を実行してトークンを作成し、*MyScopeMap* スコープ マップを指定します。 前の例と同様に、このコマンドではトークンの既定の状態が `enabled` に設定されます。
 
 ```azurecli
 az acr token create --name MyToken \
@@ -141,7 +141,7 @@ az acr token create --name MyToken \
 出力には、トークンの詳細が表示されます。 既定では、2 つのパスワードが生成されます。 パスワードは、後で認証に使用するので、安全な場所に保存することをお勧めします。 そのパスワードを再度取得することはできませんが、新しいパスワードを生成することはできます。
 
 > [!NOTE]
-> トークンのパスワードを再生成し、パスワードの有効期限を設定する場合は、この記事の後半の「[トークンのパスワードを再生成する](#regenerate-token-passwords)」を参照してください。
+> トークンのパスワードと有効期限を再生成するには、この記事の後半の「[トークンのパスワードを再生成する](#regenerate-token-passwords)」を参照してください。
 
 ## <a name="create-token---portal"></a>トークンを作成する - ポータル
 
@@ -172,7 +172,7 @@ Azure portal を使用して、トークンとスコープ マップを作成で
 
 1. ポータルで、自分のコンテナー レジストリに移動します。
 1. **[リポジトリのアクセス許可]** で **[トークン (プレビュー)]** を選択し、トークンを選択します。
-1. トークンの詳細で、 **password1** または **password2** を選択し、[生成] アイコンを選択します。
+1. トークンの詳細で、**password1** または **password2** を選択し、[生成] アイコンを選択します。
 1. パスワード画面で、必要に応じてパスワードの有効期限を設定し、 **[生成]** を選択します。 有効期限を設定することをお勧めします。
 1. パスワードが生成されたら、それをコピーして安全な場所に保存します。 画面を閉じてしまうと生成されたパスワードを取得できなくなりますが、新しいパスワードを生成することはできます。
 
@@ -198,13 +198,13 @@ Azure portal を使用して、トークンとスコープ マップを作成で
 
 ### <a name="pull-and-tag-test-images"></a>テスト イメージをプルしてタグを付ける
 
-次の例では、`hello-world` イメージと `alpine` イメージを Docker Hub からプルし、レジストリとリポジトリのタグを付けます。
+次の例では、パブリックの `hello-world` イメージと `nginx` イメージを Microsoft Container Registry からプルし、レジストリとリポジトリのタグを付けます。
 
 ```bash
-docker pull hello-world
-docker pull alpine
-docker tag hello-world myregistry.azurecr.io/samples/hello-world:v1
-docker tag alpine myregistry.azurecr.io/samples/alpine:v1
+docker pull mcr.microsoft.com/hello-world
+docker pull mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
+docker tag mcr.microsoft.com/hello-world myregistry.azurecr.io/samples/hello-world:v1
+docker tag mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine myregistry.azurecr.io/samples/nginx:v1
 ```
 
 ### <a name="authenticate-using-token"></a>トークンを使用して認証を行う
@@ -234,17 +234,17 @@ Login Succeeded
 docker push myregistry.azurecr.io/samples/hello-world:v1
 ```
 
-トークンには `samples/alpine` リポジトリに対するアクセス許可がないため、次のプッシュの試行は失敗し、`requested access to the resource is denied` のようなエラーが発生します。
+トークンには `samples/nginx` リポジトリに対するアクセス許可がないため、次のプッシュの試行は失敗し、`requested access to the resource is denied` のようなエラーが発生します。
 
 ```bash
-docker push myregistry.azurecr.io/samples/alpine:v1
+docker push myregistry.azurecr.io/samples/nginx:v1
 ```
 
 ### <a name="update-token-permissions"></a>トークンのアクセス許可を更新する
 
 トークンのアクセス許可を更新するには、関連付けられているスコープ マップでアクセス許可を更新します。 更新したスコープ マップは、関連付けられているすべてのトークンに直ちに適用されます。 
 
-たとえば、`samples/alpine` リポジトリに対する `content/write` アクションと `content/read` アクションで `MyToken-scope-map` を更新し、`samples/hello-world` リポジトリに対する `content/write` アクションを削除します。  
+たとえば、`samples/ngnx` リポジトリに対する `content/write` アクションと `content/read` アクションで `MyToken-scope-map` を更新し、`samples/hello-world` リポジトリに対する `content/write` アクションを削除します。  
 
 Azure CLI を使って行うには、[az acr scope-map update][az-acr-scope-map-update] を実行して、スコープ マップを更新します。
 
@@ -252,21 +252,21 @@ Azure CLI を使って行うには、[az acr scope-map update][az-acr-scope-map-
 az acr scope-map update \
   --name MyScopeMap \
   --registry myregistry \
-  --add samples/alpine content/write content/read \
-  --remove samples/hello-world content/write 
+  --add-repository samples/nginx content/write content/read \
+  --remove-repository samples/hello-world content/write 
 ```
 
 Azure Portal で次の操作を行います。
 
 1. お使いのコンテナー レジストリに移動します。
 1. **[リポジトリのアクセス許可]** で **[スコープ マップ (プレビュー)]** を選択し、更新するスコープ マップを選択します。
-1. **[リポジトリ]** に「`samples/alpine`」と入力し、 **[アクセス許可]** で [`content/read`] と [`content/write`] を選択します。 次に、 **[+追加]** を選択します。
+1. **[リポジトリ]** に「`samples/nginx`」と入力し、 **[アクセス許可]** で [`content/read`] と [`content/write`] を選択します。 次に、 **[+追加]** を選択します。
 1. **[リポジトリ]** で `samples/hello-world` を選択し、 **[アクセス許可]** で [`content/write`] を削除します。 次に、 **[保存]** を選択します。
 
 スコープ マップを更新した後は、次のプッシュが成功するようになります。
 
 ```bash
-docker push myregistry.azurecr.io/samples/alpine:v1
+docker push myregistry.azurecr.io/samples/nginx:v1
 ```
 
 スコープ マップには `samples/hello-world` リポジトリに対する `content/read` アクセス許可のみがあるため、`samples/hello-world` リポジトリへのプッシュの試行は失敗します。
@@ -278,12 +278,12 @@ docker push myregistry.azurecr.io/samples/hello-world:v1
 このスコープ マップでは両方のリポジトリに対して `content/read` アクセス許可が提供されるため、両方のリポジトリからのイメージのプルは成功します。
 
 ```bash
-docker pull myregistry.azurecr.io/samples/alpine:v1
+docker pull myregistry.azurecr.io/samples/nginx:v1
 docker pull myregistry.azurecr.io/samples/hello-world:v1
 ```
 ### <a name="delete-images"></a>イメージを削除する
 
-`alpine` リポジトリに対する `content/delete` アクションを追加することにより、スコープ マップを更新します。 このアクションにより、リポジトリ内のイメージまたはリポジトリ全体を削除できます。
+`nginx` リポジトリに対する `content/delete` アクションを追加することにより、スコープ マップを更新します。 このアクションにより、リポジトリ内のイメージまたはリポジトリ全体を削除できます。
 
 簡潔にするため、[az acr scope-map update][az-acr-scope-map-update] コマンドによるスコープ マップの更新のみを示しします。
 
@@ -291,16 +291,16 @@ docker pull myregistry.azurecr.io/samples/hello-world:v1
 az acr scope-map update \
   --name MyScopeMap \
   --registry myregistry \
-  --add samples/alpine content/delete
+  --add-repository samples/nginx content/delete
 ``` 
 
 ポータルを使用したスコープ マップの更新については、[前のセクション](#update-token-permissions)を参照してください。
 
-`samples/alpine` リポジトリを削除するには、次の [az acr repository delete][az-acr-repository-delete] コマンドを使用します。 イメージまたはリポジトリを削除するには、トークンの名前とパスワードをコマンドに渡します。 次の例では、前の記事で作成した環境変数を使用します。
+`samples/nginx` リポジトリを削除するには、次の [az acr repository delete][az-acr-repository-delete] コマンドを使用します。 イメージまたはリポジトリを削除するには、トークンの名前とパスワードをコマンドに渡します。 次の例では、前の記事で作成した環境変数を使用します。
 
 ```azurecli
 az acr repository delete \
-  --name myregistry --repository samples/alpine \
+  --name myregistry --repository samples/nginx \
   --username $TOKEN_NAME --password $TOKEN_PWD
 ```
 
@@ -314,7 +314,7 @@ az acr repository delete \
 az acr scope-map update \
   --name MyScopeMap \
   --registry myregistry \
-  --add samples/hello-world metadata/read 
+  --add-repository samples/hello-world metadata/read 
 ```  
 
 ポータルを使用したスコープ マップの更新については、[前のセクション](#update-token-permissions)を参照してください。
@@ -341,7 +341,7 @@ az acr repository show-tags \
 
 ### <a name="list-scope-maps"></a>スコープ マップの一覧を表示する
 
-レジストリに構成されているすべてのスコープ マップの一覧を表示するには、 [az acr scope-map list][az-acr-scope-map-list] コマンドまたはポータルの **[スコープ マップ (プレビュー)]** 画面を使用します。 次に例を示します。
+レジストリに構成されているすべてのスコープ マップの一覧を表示するには、[az acr scope-map list][az-acr-scope-map-list] コマンドまたはポータルの **[スコープ マップ (プレビュー)]** 画面を使用します。 次に例を示します。
 
 ```azurecli
 az acr scope-map list \
@@ -361,14 +361,14 @@ MyScopeMap           UserDefined    2019-11-15T21:17:34Z  Sample scope map
 
 ### <a name="show-token-details"></a>トークンの詳細を表示する
 
-状態やパスワードの有効期限など、トークンの詳細を表示するには、 [az acr token show][az-acr-token-show] コマンドを実行するか、ポータルの **[トークン (プレビュー)]** 画面でトークンを選択します。 次に例を示します。
+状態やパスワードの有効期限など、トークンの詳細を表示するには、[az acr token show][az-acr-token-show] コマンドを実行するか、ポータルの **[トークン (プレビュー)]** 画面でトークンを選択します。 次に例を示します。
 
 ```azurecli
 az acr scope-map show \
   --name MyScopeMap --registry myregistry
 ```
 
-レジストリに構成されているすべてのトークンの一覧を表示するには、 [az acr token list][az-acr-token-list] コマンドまたはポータルの **[トークン (プレビュー)]** 画面を使用します。 次に例を示します。
+レジストリに構成されているすべてのトークンの一覧を表示するには、[az acr token list][az-acr-token-list] コマンドまたはポータルの **[トークン (プレビュー)]** 画面を使用します。 次に例を示します。
 
 ```azurecli
 az acr token list --registry myregistry --output table
@@ -378,11 +378,11 @@ az acr token list --registry myregistry --output table
 
 トークンのパスワードを生成しなかった場合、または新しいパスワードを生成する場合は、[az acr token credential generate][az-acr-token-credential-generate] コマンドを実行します。 
 
-次の例では、 *MyToken* トークンに対する password1 の新しい値が、30 日の有効期間で生成されます。 パスワードは、環境変数 `TOKEN_PWD` に格納されます。 この例は Bash シェル用にフォーマットされています。
+次の例では、*MyToken* トークンに対する password1 の新しい値が、30 日の有効期間で生成されます。 パスワードは、環境変数 `TOKEN_PWD` に格納されます。 この例は Bash シェル用にフォーマットされています。
 
 ```azurecli
 TOKEN_PWD=$(az acr token credential generate \
-  --name MyToken --registry myregistry --days 30 \
+  --name MyToken --registry myregistry --expiration-in-days 30 \
   --password1 --query 'passwords[0].value' --output tsv)
 ```
 

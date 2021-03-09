@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b36a4089a15118499b0ce57500f221b74af82242
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a5db000ad76f23be60d279923a590204c2fcf5e5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753750"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377382"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: 一般的な質問
 
@@ -35,7 +35,7 @@ Azure Migrate を使用して、オンプレミスのインフラストラクチ
 - Azure Migrate を使用すると、Azure Migrate ツール、その他の Azure サービス、サードパーティ製のツールによって相互運用性と将来の拡張性が確保されます。
 - Azure Migrate: Server Migration ツールは、サーバーを Azure に移行するための専用ツールです。 これは移行のために最適化されています。 移行とは直接関係ない概念やシナリオを理解する必要はありません。 
 - VM のレプリケーションが開始された時点から 180 日間の移行に関して、ツールの使用料金は発生しません。 これにより、移行を完了する時間を確保できます。 料金は、レプリケーションで使用されるストレージとネットワークのリソース、およびテスト移行時に使用されるコンピューティング料金に対してのみ発生します。
-- Azure Migrate では、Site Recovery でサポートされているすべての移行シナリオがサポートされます。 さらに、VMware VM の場合、Azure Migrate にはエージェントレスの移行オプションが用意されています。
+- Azure Migrate では、Site Recovery でサポートされているすべての移行シナリオがサポートされます。 さらに、VMware VM の場合、Azure Migrate にはエージェントレスの移行オプションも用意されています。
 - 新しい移行機能は、Azure Migrate: Server Migration ツールでのみ優先的に使用できます。 これらの機能は、Site Recovery を対象としたものではありません。
 
 [Azure Site Recovery](../site-recovery/site-recovery-overview.md) は、ディザスター リカバリーにのみ使用する必要があります。
@@ -44,7 +44,7 @@ Azure Migrate: Server Migration ツールは、一部のオンプレミス マ�
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>Azure Migrate の従来のエクスペリエンスを使用するプロジェクトがあります。 新しいバージョンを使い始めるにはどうすればよいですか。
 
-旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](./create-manage-projects.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
+従来の Azure Migrate は 2024 年 2 月に廃止されます。 2024 年 2 月以降、クラシック バージョンの Azure Migrate はサポートされなくなり、クラシック プロジェクトのインベントリ メタデータは削除されます。 旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](./create-manage-projects.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate:Server Assessment と Map Toolkit の違いは何ですか。
 

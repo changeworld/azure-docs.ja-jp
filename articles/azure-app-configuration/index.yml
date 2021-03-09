@@ -9,12 +9,12 @@ metadata:
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
-  ms.openlocfilehash: 45b249dbe8e95a063cdeb30c3b7389eb1dcf2001
-  ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+  ms.openlocfilehash: e994dbb9932dd661486fa37511db79178be826ca
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/09/2020
-  ms.locfileid: "96929533"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102182215"
 landingContent:
 - title: Azure App Configuration について
   linkLists:
@@ -23,7 +23,9 @@ landingContent:
     - text: 'Azure App Configuration とは '
       url: overview.md
     - text: よく寄せられる質問
-      url: faq.md
+      url: faq.yml
+    - text: ベスト プラクティス
+      url: howto-best-practices.md
   - linkListType: video
     links:
     - text: Azure App Configuration の概要
@@ -52,16 +54,18 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
+    - text: ASP.NET Core アプリをコーディングする
+      url: quickstart-aspnet-core-app.md
     - text: .NET Core アプリをコーディングする
       url: quickstart-dotnet-core-app.md
     - text: .NET Framework アプリをコーディングする
       url: quickstart-dotnet-app.md
-    - text: ASP.NET Core アプリをコーディングする
-      url: quickstart-aspnet-core-app.md
     - text: C# で Azure Functions アプリをコーディングする
       url: quickstart-azure-functions-csharp.md
-    - text: Spring Boot アプリをコーディングする
+    - text: Java Spring アプリをコーディングする
       url: quickstart-java-spring-app.md
+    - text: Python アプリをコーディングする
+      url: quickstart-python.md
     - text: Azure Resource Manager テンプレート
       url: quickstart-resource-manager.md
   - linkListType: tutorial
@@ -76,6 +80,8 @@ landingContent:
       url: enable-dynamic-configuration-azure-functions-csharp.md
     - text: Spring Boot で動的な構成を使用する
       url: enable-dynamic-configuration-java-spring-app.md
+    - text: プッシュ モデルを使用した動的な構成の統合
+      url: enable-dynamic-configuration-dotnet-core-push-refresh.md
   - linkListType: tutorial
     links:
     - text: CI/CD パイプラインとの統合
@@ -100,10 +106,10 @@ landingContent:
       url: concept-feature-management.md
   - linkListType: quickstart
     links:
-    - text: .NET Core アプリ
-      url: use-feature-flags-dotnet-core.md
     - text: ASP.NET Core アプリ
       url: quickstart-feature-flag-aspnet-core.md
+    - text: .NET Core アプリ
+      url: use-feature-flags-dotnet-core.md
     - text: .NET Framework アプリ
       url: quickstart-feature-flag-dotnet.md
     - text: Spring Boot アプリ
@@ -112,6 +118,12 @@ landingContent:
     links:
     - text: 機能フラグを管理する
       url: manage-feature-flags.md
+    - text: ASP.NET Core 内で機能フラグを使用する
+      url: use-feature-flags-dotnet-core.md
+    - text: Spring Boot 内で機能フラグを使用する
+      url: use-feature-flags-spring-boot.md
+    - text: 指定したユーザー/グループの機能を有効にする
+      url: howto-targetingfilter-aspnet-core.md
   - linkListType: reference
     links:
     - text: .NET Core ライブラリ
@@ -127,7 +139,7 @@ landingContent:
   - linkListType: reference
     links:
     - text: Azure CLI
-      url: /cli/azure/appconfig?view=azure-cli-latest
+      url: /cli/azure/appconfig
     - text: PowerShell
       url: /powershell/module/az.appconfiguration/
     - text: Terraform

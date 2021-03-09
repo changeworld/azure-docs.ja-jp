@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: 0b564ddfdea2cf24b7f9b1bc608d47fa4cfe541b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632152"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591389"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Azure Time Series Insights データの監視のリファレンス
 
@@ -23,7 +23,7 @@ ms.locfileid: "97632152"
 
 ## <a name="metrics"></a>メトリック
 
-このセクションには、Azure Time Series Insights 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 すべての Azure Monitor サポート メトリック (Azure Time Series Insights を含む) の一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/platform/metrics-supported.md)に関する記事を参照してください。 これらのメトリックのリソース プロバイダーは、[Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) および [Microsoft.TimeSeriesInsights/environments](../azure-monitor/platform/metrics-supported.md#microsofttimeseriesinsightsenvironments) です。
+このセクションには、Azure Time Series Insights 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 すべての Azure Monitor サポート メトリック (Azure Time Series Insights を含む) の一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/essentials/metrics-supported.md)に関する記事を参照してください。 これらのメトリックのリソース プロバイダーは、[Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) および [Microsoft.TimeSeriesInsights/environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments) です。
 
 
 ### <a name="ingress"></a>イングレス

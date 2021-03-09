@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 02/05/2021
 ms.author: alkohli
-ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff6d1f46299875354a72a6a93a828df7960169ad
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742028"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831546"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Azure Stack Edge Pro に関する問題をトラブルシューティングする
 
@@ -26,6 +26,7 @@ ms.locfileid: "91742028"
 > * 診断の実行
 > * サポート パッケージの収集
 > * ログを使用したトラブルシューティング
+> * IoT Edge のエラーのトラブルシューティング
 
 ## <a name="run-diagnostics"></a>診断の実行
 
@@ -82,6 +83,10 @@ ms.locfileid: "91742028"
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
+## <a name="troubleshoot-iot-edge-errors"></a>IoT Edge のエラーのトラブルシューティング
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
-* [このリリースの既知の問題](data-box-gateway-release-notes.md)について学習します。
+* [このリリースの既知の問題](../databox-gateway/data-box-gateway-release-notes.md)について学習します。

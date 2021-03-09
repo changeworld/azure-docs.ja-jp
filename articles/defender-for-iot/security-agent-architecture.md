@@ -1,24 +1,24 @@
 ---
-title: セキュリティ エージェントのアーキテクチャ
+title: セキュリティ エージェントの概要
 description: Azure Defender for IoT サービスで使用されるエージェントのセキュリティ エージェントのアーキテクチャについて説明します。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 5773f7af3bb065976e8f05d7b54c58b90da2d3d2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 01/24/2021
+ms.author: shhazam
+ms.openlocfilehash: ff837fe88f878c522366b2b6bc19a1ef3954b667
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835127"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820655"
 ---
 # <a name="security-agent-reference-architecture"></a>セキュリティ エージェントの参照アーキテクチャ
 
@@ -28,11 +28,11 @@ Azure Defender for IoT には、IoT Hub を介してセキュリティ データ
 
 セキュリティ エージェントは、次の機能をサポートしています。
 
+- 既存のデバイス ID、または専用のモジュール ID で認証する。 詳細については、 [セキュリティ エージェントの認証方法](concept-security-agent-authentication-methods.md)に関するページを参照してください。
+
 - 基になるオペレーティング システム (Linux、Windows) から未処理のセキュリティ イベントを収集する。 使用可能なセキュリティ データ コレクターの詳細については、[Defender for IoT エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。
 
 - 未加工のセキュリティ イベントを収集して、IoT Hub を介して送信されるメッセージにする。
-
-- 既存のデバイス ID、または専用のモジュール ID で認証する。 詳細については、[セキュリティ エージェントの認証方法](concept-security-agent-authentication-methods.md)に関するページを参照してください。
 
 - **azureiotsecurity** モジュール ツインを使用してリモートで構成する。 詳細については、[Defender for IoT エージェントの構成](how-to-agent-configuration.md)に関するページを参照してください。
 
@@ -53,7 +53,7 @@ Defender for IoT では、32 ビットと 64 ビットの Windows のエージ�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Defender for IoT セキュリティ エージェントのアーキテクチャと利用できるインストーラーについて学習しました。
+この記事では、Defender for IoT セキュリティ モジュールのアーキテクチャと利用できるインストーラーについて概要を学習しました。
 
 Defender for IoT のデプロイの概要について引き続き学習するには、次の記事を参照してください。
 

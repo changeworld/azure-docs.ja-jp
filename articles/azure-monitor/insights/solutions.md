@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor での監視ソリューション | Microsoft Docs
 description: Azure Monitor の監視ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。  この記事では、監視ソリューションのインストールと使用について説明します。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a63db154d055675b834e2949a330375633a5761d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186866"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728588"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 
@@ -29,7 +28,7 @@ Azure Monitor のソリューションの **[概要]** ページには、Log Ana
 
 [![スクリーンショットには、[ソリューション] が選択され、[ソリューション] ウィンドウにソリューションが表示された Azure portal メニューが示されています。](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-監視ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれているすべてのログ クエリは [クエリ エクスプローラー](../log-query/log-analytics-tutorial.md)の **[ソリューション クエリ]** に表示されます。 これらのクエリは、[ログ クエリ](../log-query/log-query-overview.md)を使用してアドホック分析を実行するときに使用できます。
+監視ソリューションには、複数の種類の Azure リソースが含まれる可能性があり、ソリューションに含まれる任意のリソースは、他のリソースと同様に表示できます。 たとえば、ソリューションに含まれているすべてのログ クエリは [クエリ エクスプローラー](../logs/log-analytics-tutorial.md)の **[ソリューション クエリ]** に表示されます。 これらのクエリは、[ログ クエリ](../logs/log-query-overview.md)を使用してアドホック分析を実行するときに使用できます。
 
 ## <a name="list-installed-monitoring-solutions"></a>インストールされている監視ソリューションを一覧表示する
 
@@ -83,7 +82,7 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 ### <a name="portal"></a>[ポータル](#tab/portal)
 
-Microsoft およびパートナーの監視ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com) から入手できます。 次の手順を使用して、使用可能なソリューションを検索し、インストールできます。 ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../platform/manage-access.md)と、データが収集される場所を選択する必要があります。
+Microsoft およびパートナーの監視ソリューションは、[Azure Marketplace](https://azuremarketplace.microsoft.com) から入手できます。 次の手順を使用して、使用可能なソリューションを検索し、インストールできます。 ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../logs/manage-access.md)と、データが収集される場所を選択する必要があります。
 
 1. [お使いのサブスクリプションのソリューションの一覧](#list-installed-monitoring-solutions)で、 **[追加]** をクリックします。
 1. ソリューションを参照または検索します。 [この検索リンク](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions)からソリューションを参照することもできます。
@@ -141,7 +140,7 @@ Microsoft およびパートナーの監視ソリューションは、[Azure Mar
 
 ### <a name="install-a-solution-with-the-azure-cli"></a>Azure CLI を使用したソリューションのインストール
 
-ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../platform/manage-access.md)と、データが収集される場所を選択する必要があります。  Azure CLI では、[az monitor log-analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace) 参照コマンドを使用して、ワークスペースを管理します。  「[Log Analytics ワークスペースと Automation アカウント](#log-analytics-workspace-and-automation-account)」で説明されているプロセスに従って、ワークスペースとアカウントをリンクします。
+ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../logs/manage-access.md)と、データが収集される場所を選択する必要があります。  Azure CLI では、[az monitor log-analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace) 参照コマンドを使用して、ワークスペースを管理します。  「[Log Analytics ワークスペースと Automation アカウント](#log-analytics-workspace-and-automation-account)」で説明されているプロセスに従って、ワークスペースとアカウントをリンクします。
 
 [az monitor log-analytics solution create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) を使用して、監視ソリューションをインストールします。  角かっこで囲まれているパラメーターは省略可能です。
 
@@ -196,7 +195,7 @@ az monitor log-analytics solution create --resource-group MyResourceGroup \
 
 ### <a name="install-a-solution-with-azure-powershell"></a>Azure PowerShell を使用したソリューションのインストール
 
-ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../platform/manage-access.md)と、データが収集される場所を選択する必要があります。 Azure PowerShell では、[Az.MonitoringSolutions](/powershell/module/az.monitoringsolutions) PowerShell モジュールのコマンドレットを使用してワークスペースを管理します。 「[Log Analytics ワークスペースと Automation アカウント](#log-analytics-workspace-and-automation-account)」で説明されているプロセスに従って、ワークスペースとアカウントをリンクします。
+ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../logs/manage-access.md)と、データが収集される場所を選択する必要があります。 Azure PowerShell では、[Az.MonitoringSolutions](/powershell/module/az.monitoringsolutions) PowerShell モジュールのコマンドレットを使用してワークスペースを管理します。 「[Log Analytics ワークスペースと Automation アカウント](#log-analytics-workspace-and-automation-account)」で説明されているプロセスに従って、ワークスペースとアカウントをリンクします。
 
 [New-AzMonitorLogAnalyticsSolution の](/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution) コマンドレットを使用し、監視ソリューションをインストールします。 角かっこで囲まれているパラメーターは省略可能です。
 
@@ -219,7 +218,7 @@ New-AzMonitorLogAnalyticsSolution -Type Containers -ResourceGroupName MyResource
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics ワークスペースと Automation アカウント
 
-ソリューションによって収集されたデータを格納し、ログ検索とビューをホストするために、すべての監視ソリューションでは [Log Analytics ワークスペース](../platform/manage-access.md)が必要です。 また、一部のソリューションでは、Runbook と関連するリソースを格納するために、[Automation アカウント](../../automation/automation-security-overview.md)も必要になります。 ワークスペースとアカウントは、次の要件を満たす必要があります。
+ソリューションによって収集されたデータを格納し、ログ検索とビューをホストするために、すべての監視ソリューションでは [Log Analytics ワークスペース](../logs/manage-access.md)が必要です。 また、一部のソリューションでは、Runbook と関連するリソースを格納するために、[Automation アカウント](../../automation/automation-security-overview.md)も必要になります。 ワークスペースとアカウントは、次の要件を満たす必要があります。
 
 * ソリューションの各インストールで使うことができる Log Analytics ワークスペースと Automation アカウントは、それぞれ 1 つのみです。 複数のワークスペースにソリューションを個別にインストールできます。
 * ソリューションに Automation アカウントが必要な場合は、Log Analytics ワークスペースと Automation アカウントを互いにリンクさせる必要があります。 1 つの Automation アカウントにリンクできる Log Analytics ワークスペースは 1 つのみであり、同様に 1 つの Log Analytics ワークスペースにリンクできる Automation アカウントは 1 つのみです。
@@ -264,5 +263,5 @@ Remove-AzMonitorLogAnalyticsSolution  -ResourceGroupName MyResourceGroup -Name W
 ## <a name="next-steps"></a>次のステップ
 
 * [Microsoft の監視ソリューションの一覧](../monitor-reference.md)を取得します。
-* 監視ソリューションで収集されたデータを分析するための[クエリを作成する](../log-query/log-query-overview.md)方法を確認します。
+* 監視ソリューションで収集されたデータを分析するための[クエリを作成する](../logs/log-query-overview.md)方法を確認します。
 * [Azure Monitor のすべての Azure CLI コマンド](/cli/azure/azure-cli-reference-for-monitor)を確認します。

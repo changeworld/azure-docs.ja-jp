@@ -3,17 +3,17 @@ title: Microsoft Azure Maps Creator (プレビュー) を管理する
 description: この記事では Microsoft Azure Maps Creator (プレビュー) を管理する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 02/16/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1ed3a9033f9be39774e1c52982f63259cc477d29
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: d26df4287032bc59cc58dd1d832d9d5a9c40afcd
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906099"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559112"
 ---
 # <a name="manage-azure-maps-creator-preview"></a>Azure Maps Creator (プレビュー) を管理する 
 
@@ -33,15 +33,15 @@ Azure Maps Creator を使用すると、プライベートな屋内マップ デ
 
     ![Azure Maps ポータルのホーム ページ](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Azure Maps アカウントのページに移動したら、 **[Creator]** の下にある **[概要]** オプションに移動します。 **[作成]** をクリックして、Azure Maps Creator リソースを作成します。
+3. Azure Maps アカウントのページに移動したら、 **[Creator]** の下にある **[概要]** オプションに移動します。 **[作成]** を選択して、Azure Maps Creator リソースを作成します。
 
     ![Azure Maps Creator 作成ページ](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. Creator リソースの名前と場所を入力します。 現在、Creator は米国でのみサポートされています。 **[Review + create]\(レビュー + 作成\)** をクリックします。
+4. Creator リソースの名前と場所を入力します。 現在、Creator は米国でのみサポートされています。 **[Review + create]\(レビュー + 作成\)** を選択します。
 
    ![Creator アカウント情報入力ページ](./media/how-to-manage-creator/creator-creation-dialog.png)
 
-5. 設定を確認し、 **[作成]** をクリックします。
+5. 設定を確認し、 **[作成]** を選択します。
 
     ![Creator アカウント設定確認ページ](./media/how-to-manage-creator/creator-create-dialog.png)
 
@@ -49,25 +49,25 @@ Azure Maps Creator を使用すると、プライベートな屋内マップ デ
 
    ![リソース デプロイ状態ページ](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. **[リソースに移動]** をクリックします。 Creator リソース ビュー ページには、Creator リソースの状態と選択されている地域が表示されます。
+7. **[リソースに移動]** を選択します。 Creator リソース ビュー ページには、Creator リソースの状態と選択されている地域が表示されます。
 
     ![Creator 状態ページ](./media/how-to-manage-creator/creator-resource-view.png)
 
    >[!NOTE]
-   >Creator リソース ページからは、[Azure Maps アカウント] をクリックすることにより、それが属している Azure Maps アカウントに戻ることができます。
+   >Creator リソース ページからは、[Azure Maps アカウント] を選択して、それが属している Azure Maps アカウントに戻ることができます。
 
 ## <a name="delete-creator-preview-resource"></a>Creator (プレビュー) リソースを削除する
 
-Creator リソースを削除するには、Azure Maps アカウントに移動します。 **[Creator]** の下の **[概要]** を選択します。 **[削除]** ボタンをクリックします。
+Creator リソースを削除するには、Azure Maps アカウントに移動します。 **[Creator]** の下の **[概要]** を選択します。 **[削除]** ボタンを選択します。
 
 >[!WARNING]
 >Azure Maps アカウントの Creator リソースを削除すると、Creator サービスを使用して作成したデータセット、タイルセット、地物状態セットも削除されます。
 
 ![削除ボタンがある Creator ページ](./media/how-to-manage-creator/creator-delete.png)
 
-**[削除]** ボタンをクリックして Creator 名を入力し、削除を確認します。 リソースが削除されると、次の図のような確認ページが表示されます。
+**[削除]** ボタンを選択して Creator 名を入力し、削除を確認します。 リソースが削除されると、次の図のような確認ページが表示されます。
 
-![削除の確認が表示された Creator ページ](./media/how-to-manage-creator/creator-confirmdelete.png)
+![削除の確認が表示された Creator ページ](./media/how-to-manage-creator/creator-confirm-delete.png)
 
 ## <a name="authentication"></a>認証
 
@@ -77,7 +77,7 @@ Creator の使用状況データは、Azure Maps の使用状況グラフとア�
 
 ## <a name="access-to-creator-services"></a>Creator サービスにアクセスする
 
-Creator サービス (プレビュー) には、作成時に選択した場所からのみアクセスできます。 選択した場所の外部から Creator サービスに対する呼び出しが行われると、ユーザー エラー メッセージが返されます。 選択した場所の外部から呼び出しを行うには、サービス URL に、選択した場所の地理プレフィックスを含める必要があります。 たとえば、Creator を米国に作成した場合は、変換サービスへのすべての呼び出しを `us.atlas.microsoft.com/conversion/convert` に送信する必要があります。
+Creator サービス (プレビュー) と、Creator でホストされるデータを使用するサービス (Render Service など) には、地理的な URL でアクセスできます。 地理的な URL は、作成時に選択した場所によって決まります。 たとえば、Creator を米国の地理的な場所に作成した場合は、変換サービスへのすべての呼び出しを `us.atlas.microsoft.com/conversion/convert` に送信する必要があります。
 
 また、Creator にインポートされたすべてのデータは、Creator リソースと同じ地理的な場所にアップロードされる必要があります。 たとえば、Creator が米国でプロビジョニングされている場合、すべての生データを `us.atlas.microsoft.com/mapData/upload` 経由でアップロードする必要があります。
 

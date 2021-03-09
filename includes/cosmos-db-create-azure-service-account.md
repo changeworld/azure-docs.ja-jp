@@ -15,4 +15,4 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171926"
 ---
-Azure Table ストレージまたは Azure Cosmos DB を使用してテーブルを操作できます。 これらの 2 つのサービスのテーブル サービスの違いの詳細については、[Table のサービス](../articles/cosmos-db/table-introduction.md#table-offerings)に関する記事をご覧ください。 使用するサービスのアカウントを作成する必要があります。 以下のセクションでは、Azure Table ストレージと Azure Cosmos DB アカウントの両方を作成する方法について説明しますが、そのうちの 1 つのみを使用できます。 
+Azure Table Storage または Azure Cosmos DB を使用してテーブルを操作できます。 これらの 2 つのサービスのテーブル サービスの違いの詳細については、[Table のサービス](../articles/cosmos-db/table-introduction.md#table-offerings)に関する記事をご覧ください。 使用するサービスのアカウントを作成する必要があります。 以下のセクションでは、Azure Table Storage と Azure Cosmos DB アカウントの両方を作成する方法について説明しますが、そのうちの 1 つのみを使用できます。 

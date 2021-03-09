@@ -40,8 +40,18 @@
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: 概念
       items:
-        - name: HDInsight の Apache コンポーネント
-          href: ./hdinsight-component-versioning.md
+        - name: バージョン管理
+          items:
+            - name: バージョン管理の概要
+              href: ./hdinsight-overview-versioning.md
+            - name: HDInsight のバージョン
+              href: ./hdinsight-component-versioning.md
+            - name: HDInsight バージョン 4.0
+              href: ./hdinsight-40-component-versioning.md
+            - name: HDInsight Version 3.6
+              href: ./hdinsight-36-component-versioning.md
+            - name: 廃止された HDInsight のバージョン
+              href: ./hdinsight-retired-versions.md
         - name: Enterprise セキュリティ パッケージ
           href: ./enterprise-security-package.md
         - name: Hortonworks リリース ノート
@@ -278,6 +288,8 @@
           href: /rest/api/hdinsightspark/
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.hdinsight/allversions
+        - name: Azure Policy の組み込み
+          href: ./policy-reference.md
     - name: リソース
       items:
         - name: リリース
@@ -648,7 +660,7 @@
             - name: IoT Hub と共に Apache Kafka を使用する
               href: ./kafka/apache-kafka-connector-iot-hub.md
             - name: Confluent スキーマ レジストリ
-              href: ./kafka/schema-registry.md
+              href: ./kafka/apache-kafka-producer-consumer-api.md
             - name: ストリーミング パイプラインを作成する
               items:
                 - name: Apache Spark、Apache Kafka、Azure Cosmos DB
@@ -815,6 +827,10 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: 管理する
           items:
+            - name: ストレージ アカウント間で Hive テーブルをコピーする
+              href: ./interactive-query/hive-migration-across-storage-accounts.md
+            - name: Azure HDInsight で既定の Hive メタストアを外部メタストアに移行する
+              href: ./interactive-query/hive-default-metastore-export-import.md
             - name: Hive ワークロードを HDInsight 4.0 に移行する
               href: ./interactive-query/apache-hive-migrate-workloads.md
             - name: Apache Hive クエリの最適化

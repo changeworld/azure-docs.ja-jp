@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory を使用して Teradata からデータを移動する
 description: Teradata データベースからデータを移動できる Data Factory サービスの Teradata コネクタについて学習する
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ef992ed907bc070643f290e7fd536de05ebf9242
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019601"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387208"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -135,7 +130,7 @@ source の種類が **RelationalSource** (Teradata を含む) である場合は
 
 **Teradata の入力データセット:**
 
-このサンプルでは、Teradata で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestamp」という名前の列が含まれているものと想定しています。
+このサンプルでは、Teradata で "MyTable" という名前のテーブルを作成し、それに時系列データ用の "timestamp" という名前の列が含まれていることを前提にしています。
 
 "external": true の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 

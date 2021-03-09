@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4fe22e0dae73df7af4fc24ba508ecbecf72dfd05
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: b6a0dee4c3fef1be4f4b9f910b4c6256b4924a2d
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795378"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101700220"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>NSG アクセスと Azure Bastion を使用する
 
@@ -32,11 +32,15 @@ Azure Bastion の使用時にネットワーク セキュリティ グループ 
 
 このセクションでは、ユーザーと Azure Bastion との間のネットワーク トラフィックと、仮想ネットワーク内のターゲット VM へのネットワークトラフィックについて説明します。
 
+> [!IMPORTANT]
+> Azure Bastion リソースで NSG を使用することを選択した場合は、次のイングレスとエグレスのトラフィック規則をすべて作成する **必要があります**。 NSG で次の規則のいずれかを省略すると、将来的に Azure Bastion リソースで必要な更新プログラムが受信できなくなり、その結果、今後リソースでセキュリティの脆弱性が発生します。
+> 
+
 ### <a name="azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet
 
-Azure Bastion は、***AzureBastionSubnet** に対して明示的にデプロイされます。
+Azure Bastion は、***AzureBastionSubnet*** に対して明示的にデプロイされます。
 
-**イングレス トラフィック:**
+* **イグレス トラフィック:**
 
    * **パブリック インターネットからのイグレス トラフィック:** Azure Bastion によってパブリック IP が作成されます。このパブリック IP では、イグレス トラフィック用にポート 443 が有効になっている必要があります。 AzureBastionSubnet でポート 3389/22 が開かれている必要はありません。
    * **Azure Bastion からのイグレス トラフィックのコントロール プレーン:** コントロール プレーン接続の場合は、**GatewayManager** サービス タグからのポート 443 受信を有効にします。 これにより、コントロール プレーン、つまりゲートウェイ マネージャーから Azure Bastion への通信が可能になります。

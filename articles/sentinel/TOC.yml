@@ -2,6 +2,8 @@
   href: index.yml
 - name: 概要
   href: overview.md
+- name: Azure Sentinel の新着情報
+  href: whats-new.md
 - name: クイックスタート
   expanded: true
   items:
@@ -23,8 +25,12 @@
       href: tutorial-respond-threats-playbook.md
 - name: 概念
   items:
-    - name: ロールを使用したアクセス許可の割り当て
-      href: roles.md
+    - name: アクセスを管理する
+      items:
+        - name: Azure Sentinel のアクセス許可
+          href: roles.md
+        - name: リソースによるアクセスの管理
+          href: resource-context-rbac.md
     - name: 高度なマルチステージ攻撃の検出
       href: fusion.md
     - name: 独自の機械学習プラットフォームを使用する
@@ -35,6 +41,8 @@
       href: identify-threats-with-entity-behavior-analytics.md
     - name: 脅威インテリジェンスの Azure Sentinel へのインポート
       href: import-threat-intelligence.md
+    - name: Microsoft 365 Defender と Azure Sentinel の統合
+      href: microsoft-365-defender-sentinel-integration.md
     - name: ウォッチリストで外部データを使用する
       href: watchlists.md
     - name: 複数のテーブルにわたってデータを正規化する
@@ -94,8 +102,14 @@
               href: connect-windows-security-events.md
         - name: 外部ソリューションの接続
           items:
+            - name: Agari のフィッシング対策とブランド保護
+              href: connect-agari-phishing-defense.md
             - name: Alcide kAudit
               href: connect-alcide-kaudit.md
+            - name: Active Directory 用の Alsid
+              href: connect-alsid-active-directory.md
+            - name: Apache HTTP Server
+              href: connect-apache-http-server.md
             - name: Barracuda WAF
               href: connect-barracuda.md
             - name: Barracuda CloudGen Firewall
@@ -104,6 +118,10 @@
               href: connect-better-mtd.md
             - name: Beyond Security beSECURE
               href: connect-besecure.md
+            - name: Cisco Meraki
+              href: connect-cisco-meraki.md
+            - name: Cisco Umbrella
+              href: connect-cisco-umbrella.md
             - name: Cisco Unified Computing System
               href: connect-cisco-ucs.md
             - name: Citrix Analytics (セキュリティ)
@@ -112,10 +130,16 @@
               href: connect-f5-big-ip.md
             - name: Forcepoint DLP
               href: connect-forcepoint-dlp.md
+            - name: Google ワークスペース (G Suite)
+              href: connect-google-workspace.md
             - name: Infoblox NIOS
               href: connect-infoblox.md
             - name: Juniper SRX
               href: connect-juniper-srx.md
+            - name: NXLog DNS ログ
+              href: connect-nxlog-dns.md
+            - name: NXLog LinuxAudit
+              href: connect-nxlog-linuxaudit.md
             - name: Okta SSO
               href: connect-okta-single-sign-on.md
             - name: Orca Security
@@ -132,6 +156,8 @@
               href: connect-qualys-vm.md
             - name: Salesforce Service Cloud
               href: connect-salesforce-service-cloud.md
+            - name: Sophos Cloud Optix
+              href: connect-sophos-cloud-optix.md
             - name: Sophos XG Firewall
               href: connect-sophos-xg-firewall.md
             - name: Squadra Technologies secRMM
@@ -148,6 +174,8 @@
               href: connect-syslog.md
             - name: VMware Carbon Black Cloud Endpoint Standard
               href: connect-vmware-carbon-black.md
+            - name: VMware ESXi
+              href: connect-vmware-esxi.md
             - name: Zimperium Mobile Threat Defense
               href: connect-zimperium-mtd.md
             - name: Logstash を使用して接続する
@@ -162,6 +190,12 @@
                   items:
                     - name: AI Vectra 検出
                       href: connect-ai-vectra-detect.md
+                    - name: Akamai セキュリティ イベント
+                      href: connect-akamai-security-events.md
+                    - name: Aruba ClearPass
+                      href: connect-aruba-clearpass.md
+                    - name: Broadcom Symantec DLP
+                      href: connect-broadcom-symantec-dlp.md
                     - name: Check Point
                       href: connect-checkpoint.md
                     - name: Cisco ASA
@@ -180,6 +214,8 @@
                       href: connect-fortinet.md
                     - name: Illusive Networks AMS
                       href: connect-illusive-attack-management-system.md
+                    - name: Imperva WAF Gateway
+                      href: connect-imperva-waf-gateway.md
                     - name: One Identity Safeguard
                       href: connect-one-identity.md
                     - name: Palo Alto Networks
@@ -196,6 +232,8 @@
                       href: connect-zscaler.md
                 - name: 手順 3 接続を検証する
                   href: connect-cef-verify.md
+        - name: カスタム コネクタを作成する
+          href: create-custom-connector.md
         - name: 脅威インテリジェンスの接続
           href: connect-threat-intelligence.md
         - name: Azure Stack VM の接続
@@ -214,6 +252,8 @@
       href: create-incidents-from-alerts.md
     - name: インシデント メトリックを使用して SOC をより適切に管理する
       href: manage-soc-with-incident-metrics.md
+    - name: Azure Sentinel クエリとアクティビティの監査
+      href: audit-sentinel-data.md
     - name: 検出
       href: hunting.md
       items:
@@ -225,14 +265,16 @@
           href: livestream.md
     - name: Azure Sentinel の削除
       href: offboard.md
-- name: リファレンス (新規)
+    - name: 高度な RBAC を実装する
+      items: null
+- name: リファレンス
   items:
     - name: Azure RBAC ロール
       items:
         - name: すべての Azure ロール
-          href: /azure/role-based-access-control/built-in-roles#all
+          href: ../role-based-access-control/built-in-roles.md#all
         - name: Azure Sentinel のロール
-          href: /azure/role-based-access-control/built-in-roles#security
+          href: ../role-based-access-control/built-in-roles.md#security
     - name: REST API
       items:
         - name: Azure Sentinel REST-API
@@ -245,16 +287,22 @@
       href: /connectors/azuresentinel/
     - name: ネットワーク正規化スキーマ
       href: normalization-schema.md
+    - name: データ ソース スキーマ リファレンス
+      href: data-source-schema-reference.md
+    - name: Kusto クエリ言語
+      items:
+        - name: Kusto クエリの概要
+          href: /azure/data-explorer/kusto/query/
+        - name: Kusto クエリ言語のクイック リファレンス
+          href: /azure/data-explorer/kql-quick-reference
     - name: UEBA エンリッチメント
       href: ueba-enrichments.md
 - name: リソース
   items:
     - name: 有用なリソース
       href: resources.md
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/updates/?updateType=security&category=security&query=sentinel'
-    - name: Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ
-      href: /archive/blogs/azuresecurity/
+    - name: Azure Sentinel ブログ
+      href: 'https://techcommunity.microsoft.com/t5/azure-sentinel/bg-p/AzureSentinelBlog'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-sentinel'
     - name: 価格

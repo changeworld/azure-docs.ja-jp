@@ -7,14 +7,14 @@ author: vladvino
 ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.topic: article
-ms.date: 11/23/2020
+ms.date: 02/26/2021
 ms.author: apimpm
-ms.openlocfilehash: e38dcf1e12629405ae5f28a987ba20557037ee67
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 882d96271b6976db1ffc0dde181d5699c5cc27de
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683422"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688248"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 
@@ -80,7 +80,7 @@ ms.locfileid: "97683422"
 
 ## <a name="limit-call-rate-by-subscription"></a><a name="LimitCallRate"></a> 呼び出しレートをサブスクリプション別に制限する
 
-`rate-limit` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、サブスクリプションごとに API 使用量の急増を防ぎます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。
+`rate-limit` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、サブスクリプションごとに API 使用量の急増を防ぎます。 この呼び出しレートを超えると、呼び出し元は `429 Too Many Requests` 応答状態コードを受信します。
 
 > [!IMPORTANT]
 > このポリシーは、ポリシー ドキュメントごとに 1 回のみ使用できます。
@@ -98,18 +98,25 @@ ms.locfileid: "97683422"
 ```xml
 <rate-limit calls="number" renewal-period="seconds">
     <api name="API name" id="API id" calls="number" renewal-period="seconds" />
-        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" />
+        <operation name="operation name" id="operation id" calls="number" renewal-period="seconds" 
+        retry-after-header-name="header name" 
+        retry-after-variable-name="policy expression variable name"
+        remaining-calls-header-name="header name"  
+        remaining-calls-variable-name="policy expression variable name"
+        total-calls-header-name="header name"/>
     </api>
 </rate-limit>
 ```
 
 ### <a name="example"></a>例
 
+次の例では、サブスクリプションあたりのレート上限が 90 秒ごとに 20 回です。 ポリシーを実行するたびに、その期間内に許可されている残りの呼び出しが変数 `remainingCallsPerSubscription` に格納されます。
+
 ```xml
 <policies>
     <inbound>
         <base />
-        <rate-limit calls="20" renewal-period="90" />
+        <rate-limit calls="20" renewal-period="90" remaining-calls-variable-name="remainingCallsPerSubscription"/>
     </inbound>
     <outbound>
         <base />
@@ -130,8 +137,13 @@ ms.locfileid: "97683422"
 | 名前           | 説明                                                                                           | 必須 | Default |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | レート制限の適用対象になる API の名前。                                                | はい      | 該当なし     |
-| calls          | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 | はい      | 該当なし     |
-| renewal-period | クォータのリセット間隔 (秒単位)。                                              | はい      | 該当なし     |
+| calls          | `renewal-period` で指定された期間中に許可される最大の呼び出し合計数。 | はい      | 該当なし     |
+| renewal-period | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                              | はい      | 該当なし     |
+| retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
+| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
+| remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
+| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
 ### <a name="usage"></a>使用法
 
@@ -146,7 +158,7 @@ ms.locfileid: "97683422"
 > [!IMPORTANT]
 > この機能は、API Management の **従量課金** レベルでは使用できません。
 
-`rate-limit-by-key` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、キーごとに API 使用量の急増を防ぎます。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、制限に対してカウントする要求を指定することもできます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。
+`rate-limit-by-key` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、キーごとに API 使用量の急増を防ぎます。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、制限に対してカウントする要求を指定することもできます。 この呼び出しレートを超えると、呼び出し元は `429 Too Many Requests` 応答状態コードを受信します。
 
 このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](./api-management-sample-flexible-throttling.md)」を参照してください。
 
@@ -162,13 +174,16 @@ ms.locfileid: "97683422"
 <rate-limit-by-key calls="number"
                    renewal-period="seconds"
                    increment-condition="condition"
-                   counter-key="key value" />
+                   counter-key="key value" 
+                   retry-after-header-name="header name" retry-after-variable-name="policy expression variable name"
+                   remaining-calls-header-name="header name"  remaining-calls-variable-name="policy expression variable name"
+                   total-calls-header-name="header name"/> 
 
 ```
 
 ### <a name="example"></a>例
 
-次のサンプルでは、レート制限のキーに呼び出し元 IP を設定しています。
+次の例では、60 秒ごとに 10 回のレート制限のキーに呼び出し元 IP を設定しています。 ポリシーを実行するたびに、その期間内に許可されている残りの呼び出しが変数 `remainingCallsPerIP` に格納されます。
 
 ```xml
 <policies>
@@ -177,7 +192,8 @@ ms.locfileid: "97683422"
         <rate-limit-by-key  calls="10"
               renewal-period="60"
               increment-condition="@(context.Response.StatusCode == 200)"
-              counter-key="@(context.Request.IpAddress)"/>
+              counter-key="@(context.Request.IpAddress)"
+              remaining-calls-variable-name="remainingCallsPerIP"/>
     </inbound>
     <outbound>
         <base />
@@ -197,8 +213,13 @@ ms.locfileid: "97683422"
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。 | はい      | 該当なし     |
 | counter-key         | レート制限ポリシーに使用するキー。                                                             | はい      | 該当なし     |
-| increment-condition | クォータに対して要求の件数をカウントするかどうかを指定するブール式です (`true`)。        | いいえ       | 該当なし     |
-| renewal-period      | クォータのリセット間隔 (秒単位)。                                              | はい      | 該当なし     |
+| increment-condition | レートに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)。        | いいえ       | 該当なし     |
+| renewal-period      | 許可された要求の数が、`calls` で指定された値を超えてはならないスライディング ウィンドウの長さ (秒単位)。                                           | はい      | 該当なし     |
+| retry-after-header-name    | 値が指定された呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) である応答ヘッダーの名前。 |  いいえ | N/A  |
+| retry-after-variable-name    | 指定した呼び出しレートを超えた後の推奨される再試行間隔 (秒単位) を格納するポリシー式変数の名前。 |  いいえ | N/A  |
+| remaining-calls-header-name    | 各ポリシーの実行後の値が、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数である応答ヘッダーの名前。 |  いいえ | 該当なし  |
+| remaining-calls-variable-name    | 各ポリシーの実行後に、`renewal-period` で指定された時間間隔に対して許可されている残りの呼び出しの数を格納する、ポリシー式変数の名前。 |  いいえ | N/A  |
+| total-calls-header-name    | 値が `calls` で指定された値である応答ヘッダーの名前。 |  いいえ | 該当なし  |
 
 ### <a name="usage"></a>使用法
 
@@ -244,7 +265,7 @@ ms.locfileid: "97683422"
 
 | 名前                                      | 説明                                                                                 | 必須                                           | Default |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
-| address-range from="address" to="address" | アクセスを許可または拒否する IP アドレスの範囲。                                        | `address-range` 要素を使用する場合は必須です。 | なし     |
+| address-range from="address" to="address" | アクセスを許可または拒否する IP アドレスの範囲。                                        | `address-range` 要素を使用する場合は必須です。 | 該当なし     |
 | ip-filter action="allow &#124; forbid"    | 指定した IP アドレスおよび IP アドレス範囲に対する呼び出しを許可するかどうかを指定します。 | はい                                                | 該当なし     |
 
 ### <a name="usage"></a>使用法
@@ -296,16 +317,16 @@ ms.locfileid: "97683422"
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | ルート要素。                                                                                                                                                                                                                                                                                | はい      |
 | api       | 製品内の API に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品と API の呼び出しクォータは別々に適用されます。 API は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。                    | いいえ       |
-| 操作 | API 内の操作に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しクォータは別々に適用されます。 操作は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。 | いいえ       |
+| 操作 | API 内の操作に対して呼び出しクォータをかけるには、これらの要素を 1 つまたは複数追加します。 製品、API、および操作の呼び出しクォータは別々に適用されます。 操作は `name` または `id` のいずれかによって参照できます。 両方の属性が提供された場合、`id` が使用されて `name` は無視されます。 | いいえ      |
 
 ### <a name="attributes"></a>属性
 
 | 名前           | 説明                                                                                               | 必須                                                         | Default |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | クォータを適用する API または操作の名前。                                             | はい                                                              | 該当なし     |
-| bandwidth      | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | なし     |
-| calls          | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | なし     |
-| renewal-period | クォータのリセット間隔 (秒単位)。                                                  | はい                                                              | 該当なし     |
+| bandwidth      | `renewal-period` で指定した期間中に許可する最大合計キロバイト数。 | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
+| calls          | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
+| renewal-period | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。 | はい                                                              | 該当なし     |
 
 ### <a name="usage"></a>使用法
 
@@ -319,7 +340,7 @@ ms.locfileid: "97683422"
 > [!IMPORTANT]
 > この機能は、API Management の **従量課金** レベルでは使用できません。
 
-`quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。 複数のポリシーによって同じキー値が増分される場合は、要求ごとに 1 回だけ増分されます。 この呼び出し制限に達すると、呼び出し元は `403 Forbidden` 応答状態コードを受信します。
+`quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。 複数のポリシーによって同じキー値が増分される場合は、要求ごとに 1 回だけ増分されます。 この呼び出しレートを超えると、呼び出し元は `403 Forbidden` 応答状態コードを受信します。
 
 このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](./api-management-sample-flexible-throttling.md)」を参照してください。
 
@@ -369,7 +390,7 @@ ms.locfileid: "97683422"
 | calls               | `renewal-period` で指定した期間中に許容する最大呼び出し総数。     | `calls` と `bandwidth` のいずれかまたは両方と同時に指定する必要があります。 | 該当なし     |
 | counter-key         | クォータ ポリシーに使用するキー。                                                                      | はい                                                              | 該当なし     |
 | increment-condition | クォータに対して要求の件数をカウントするかどうかを指定するブール式 (`true`)             | いいえ                                                               | 該当なし     |
-| renewal-period      | クォータのリセット間隔 (秒単位)。                                                  | はい                                                              | 該当なし     |
+| renewal-period      | クォータのリセット間隔 (秒単位)。 `0` に設定すると、この期間は無限に設定されます。                                                   | はい                                                              | 該当なし     |
 
 ### <a name="usage"></a>使用法
 

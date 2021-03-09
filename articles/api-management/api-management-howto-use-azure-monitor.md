@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 1cb902c4b59193c46dbeca47bb355f0695a0f2c7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779245"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572792"
 ---
 # <a name="tutorial-monitor-published-apis"></a>チュートリアル:発行された API を監視する
 
@@ -39,7 +39,7 @@ API Management の組み込みの[分析](howto-use-analytics.md)を使用して
 
 ## <a name="view-metrics-of-your-apis"></a>API のメトリックを表示する
 
-API Management は[メトリック](../azure-monitor/platform/data-platform-metrics.md)を 1 分ごとに出力するので、API の状態と正常性をほぼリアルタイムで把握できます。 最も頻繁に使用される 2 つのメトリックを次に示します。 使用可能なすべてのメトリックの一覧については、[サポートされているメトリック](../azure-monitor/platform/metrics-supported.md#microsoftapimanagementservice)に関する記事をご覧ください。
+API Management は[メトリック](../azure-monitor/essentials/data-platform-metrics.md)を 1 分ごとに出力するので、API の状態と正常性をほぼリアルタイムで把握できます。 最も頻繁に使用される 2 つのメトリックを次に示します。 使用可能なすべてのメトリックの一覧については、[サポートされているメトリック](../azure-monitor/essentials/metrics-supported.md#microsoftapimanagementservice)に関する記事をご覧ください。
 
 * **容量** - APIM サービスのアップグレードとダウングレードについて判断する際に役立ちます。 このメトリックは 1 分ごとに出力され、報告時のゲートウェイの容量を反映しています。 メトリックの範囲は 0 から 100 で、CPU やメモリの使用率などのゲートウェイ リソースに基づいて計算されます。
 * **要求** - 対象の API Management サービスを通過する API トラフィックを分析する際に役立ちます。 メトリックは 1 分ごとに出力され、応答コード、場所、ホスト名、エラーなどのディメンションと共にゲートウェイ要求の数を報告します。 
@@ -62,7 +62,7 @@ API Management は[メトリック](../azure-monitor/platform/data-platform-metr
 
 ## <a name="set-up-an-alert-rule"></a>アラート ルールを設定する 
 
-メトリックとアクティビティ ログに基づいて、[アラート](../azure-monitor/platform/alerts-metric-overview.md)を受け取ることができます。 Azure Monitor では、アラートがトリガーされたときに次の処理を実行するように[アラートを構成](../azure-monitor/platform/alerts-metric.md)できます。
+メトリックとアクティビティ ログに基づいて、[アラート](../azure-monitor/alerts/alerts-metric-overview.md)を受け取ることができます。 Azure Monitor では、アラートがトリガーされたときに次の処理を実行するように[アラートを構成](../azure-monitor/alerts/alerts-metric.md)できます。
 
 * 電子メール通知を送信する
 * Webhook を呼び出す
@@ -140,7 +140,7 @@ API Management は[メトリック](../azure-monitor/platform/data-platform-metr
 
    リソース ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Log Analytics ワークスペースに送信したりできます。 
 
-詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 ## <a name="view-diagnostic-data-in-azure-monitor"></a>Azure Monitor で診断データを表示する
 
@@ -151,7 +151,7 @@ Log Analytics ワークスペースで GatewayLogs またはメトリックの�
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="[監視] メニューの [ログ] 項目のスクリーンショット":::
 
-クエリを実行してデータを表示します。 [サンプル クエリ](../azure-monitor/log-query/example-queries.md)がいくつか用意されています。自分で用意したものを実行してもかまいません。 たとえば、次のクエリでは、GatewayLogs テーブルから直近の 24 時間のデータを取得します。
+クエリを実行してデータを表示します。 [サンプル クエリ](../azure-monitor/logs/example-queries.md)がいくつか用意されています。自分で用意したものを実行してもかまいません。 たとえば、次のクエリでは、GatewayLogs テーブルから直近の 24 時間のデータを取得します。
 
 ```kusto
 ApiManagementGatewayLogs
@@ -160,9 +160,9 @@ ApiManagementGatewayLogs
 
 API Management にリソース ログを使用する方法の詳細については、以下を参照してください。
 
-* [Azure Monitor Log Analytics の使用を開始する](../azure-monitor/log-query/log-analytics-tutorial.md)か、[Log Analytics のデモ環境](https://portal.loganalytics.io/demo)を試します。
+* [Azure Monitor Log Analytics の使用を開始する](../azure-monitor/logs/log-analytics-tutorial.md)か、[Log Analytics のデモ環境](https://portal.loganalytics.io/demo)を試します。
 
-* [Azure Monitor のログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)。
+* [Azure Monitor のログ クエリの概要](../azure-monitor/logs/log-query-overview.md)。
 
 次の JSON は、API 要求を成功させるための GatewayLogs のサンプル エントリを示しています。 詳細については、[スキーマ リファレンス](gateway-log-schema-reference.md)を参照してください。 
 

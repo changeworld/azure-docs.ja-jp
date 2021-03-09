@@ -80,7 +80,7 @@
           href: redirect-overview.md
         - name: HTTP ヘッダーと URL を書き換える
           href: rewrite-http-headers-url.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -158,6 +158,8 @@
           href: ingress-controller-install-existing.md
         - name: Helm 経由の AKS のイングレス (グリーンフィールド)
           href: ingress-controller-install-new.md
+        - name: Helm デプロイから AKS アドオンに移行する
+          href: ingress-controller-migration.md
         - name: AKS イングレス コントローラー アドオンの無効化と再有効化
           href: ingress-controller-disable-addon.md
         - name: Cookie のアフィニティを有効にする

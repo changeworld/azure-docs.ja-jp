@@ -1,22 +1,18 @@
 ---
 title: ソース管理
 description: Azure Data Factory でソース管理を構成する方法について説明します
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/02/2020
-ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.date: 02/26/2021
+ms.openlocfilehash: 7691c285bcc1c490878f5055468b0a57b6248679
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127738"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719374"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -30,7 +26,7 @@ ms.locfileid: "98127738"
 効率的に作成できるよう、Azure Data Factory では、Azure Repos または GitHub のいずれかで Git リポジトリを構成することができます。 Git はバージョン管理システムであり、変更追跡や共同作業を簡単にします。 この記事では、Git リポジトリを構成し、そこで作業する方法を簡単に説明し、ベスト プラクティスとトラブルシューティング ガイドを提示します。
 
 > [!NOTE]
-> Azure Data Factory Git 統合は、Azure Government クラウドの GitHub Enterprise でのみ使用できます。
+> Azure Government クラウドの場合、GitHub Enterprise のみを使用できます。
 
 Azure Data Factory を Git と統合する方法の詳細については、次の 15 分のチュートリアル ビデオをご覧ください。
 
@@ -59,19 +55,19 @@ Azure Repos と GitHub の両方で Git リポジトリをデータ ファクト
 
 ### <a name="configuration-method-1-home-page"></a>構成方法 1:ホーム ページ
 
-Azure Data Factory のホームページで、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
+Azure Data Factory のホームページで、 **[Set up code repository]\(コード リポジトリの設定\)** を選択します。
 
 ![ホーム ページからコード リポジトリを構成する](media/author-visually/configure-repo.png)
 
 ### <a name="configuration-method-2-authoring-canvas"></a>構成方法 2:作成キャンバス
 
-Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロップダウン メニューを選択し、 **[Set up Code Repository]\(コード リポジトリの設定\)** を選択します。
+Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロップダウン メニューを選択し、 **[Set up code repository]\(コード リポジトリの設定\)** を選択します。
 
 ![コード リポジトリ設定を作成から構成する](media/author-visually/configure-repo-2.png)
 
 ### <a name="configuration-method-3-management-hub"></a>構成方法 3:管理ハブ
 
-ADF UX で管理ハブに移動します。 **[ソース管理]** セクションで **[Git 構成]** を選択します。 接続されているリポジトリがない場合は、 **[Set up Code Repository]\(コード リポジトリの設定\)** をクリックします。
+ADF UX で管理ハブに移動します。 **[ソース管理]** セクションで **[Git 構成]** を選択します。 接続されているリポジトリがない場合は、 **[構成]** をクリックします。
 
 ![コード リポジトリ設定を管理ハブから構成する](media/author-visually/configure-repo-3.png)
 
@@ -99,7 +95,7 @@ Azure Repos Git 統合を使ったビジュアルの作成では、データ フ
 
 | 設定 | 説明 | 値 |
 |:--- |:--- |:--- |
-| **Repository Type** | Azure Repos コード リポジトリの種類。<br/> | Azure DevOps Git または GitHub |
+| **リポジトリの種類** | Azure Repos コード リポジトリの種類。<br/> | Azure DevOps Git または GitHub |
 | **Azure Active Directory** | Azure AD テナントの名前。 | `<your tenant name>` |
 | **Azure Repos Organization** | Azure Repos 組織の名前｡ Azure Repos 組織名は`https://{organization name}.visualstudio.com`で確認することができます｡ [Azure Repos 組織にサインイン](https://www.visualstudio.com/team-services/git/)し、お使いの Visual Studio プロファイルにアクセスして、リポジトリとプロジェクトを確認してください。 | `<your organization name>` |
 | **ProjectName** | Azure Repos プロジェクトの名前。 Azure Repos プロジェクトの名前は `https://{organization name}.visualstudio.com/{project name}` で確認することができます｡ | `<your Azure Repos project name>` |
@@ -107,7 +103,7 @@ Azure Repos Git 統合を使ったビジュアルの作成では、データ フ
 | **コラボレーション ブランチ** | 発行に使用する Azure Repos コラボレーション ブランチ。 既定では、これは `main` です。 別のブランチからのリソースを発行する場合は、この設定を変更します。 | `<your collaboration branch name>` |
 | **ルート フォルダー** | Azure Repos コラボレーション ブランチのルート フォルダー。 | `<your root folder name>` |
 | **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス** からの既存のデータ ファクトリ リソースを Azure Repos Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
-| **ソースをインポートするブランチ** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
+| **Branch to import resource into** | データ ファクトリのリソース (パイプライン、データセット、リンクされたサービスなど) をインポートするブランチを指定します。 次のブランチのいずれかにリソースをインポートできます。a. コラボレーション b. 新規作成 c. 既存のものを使用 |  |
 
 > [!NOTE]
 > Microsoft Edge を使用していて、Azure DevOps アカウントのドロップダウンに値が表示されない場合は、 https://*.visualstudio.com を信頼済みサイト一覧に追加します。
@@ -135,7 +131,7 @@ Azure Repos を組織の Active Directoryに接続する方法について詳し
 
 ## <a name="author-with-github-integration"></a>GitHub 統合での作成
 
-GitHub 統合を使用したビジュアルの作成では、データ ファクトリ パイプラインの使用にあたりソース管理とコラボレーションがサポートされています。 データ ファクトリを GitHub アカウント リポジトリと関連付けて、ソース管理、コラボレーション、バージョン管理などを行うことができます。 1 つの GitHub アカウントで複数のリポジトリを使用できますが、1 つの GitHub リポジトリに関連付けられるのは 1 つのデータ ファクトリのみです。 GitHub アカウントまたはリポジトリがない場合は、[こちらの手順](https://github.com/join)に従ってリソースを作成します。
+GitHub 統合を使用したビジュアルの作成では、データ ファクトリ パイプラインの使用にあたりソース管理とコラボレーションがサポートされています。 データ ファクトリを GitHub account リポジトリと関連付けて、ソース管理、コラボレーション、バージョン管理などを行うことができます。 1 つの GitHub アカウントで複数のリポジトリを使用できますが、1 つの GitHub リポジトリに関連付けられるのは 1 つのデータ ファクトリのみです。 GitHub アカウントまたはリポジトリがない場合は、[こちらの手順](https://github.com/join)に従ってリソースを作成します。
 
 Data Factory と GitHub の統合では、パブリック GitHub (つまり [https://github.com](https://github.com)) と GitHub Enterprise の両方がサポートされます。 GitHub のリポジトリの読み取りおよび書き込みアクセス許可があれば、パブリックおよびプライベートの両方の GitHub リポジトリを Data Factory で使用できます。
 
@@ -206,9 +202,9 @@ GitHub 組織に接続するには、Azure Data Factory のアクセス許可を
 
 開発者は、バージョン コントロール (_ソース管理_ とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
 
-### <a name="creating-feature-branches"></a>feature ブランチの作成
+### <a name="creating-feature-branches"></a>機能ブランチの作成
 
-データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`main`) は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして feature ブランチを作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
+データ ファクトリに関連付けられている各 Azure Repos Git リポジトリには、コラボレーション ブランチが存在します。 (`main`) は既定のコラボレーション ブランチです)。 ユーザーは、ブランチのドロップダウンで **[+ New Branch]\(新しいブランチ\)** をクリックして機能分岐を作成することもできます。 新しいブランチのウィンドウが表示されたら、機能ブランチの名前を入力します。
 
 ![新しいブランチを作成する](media/author-visually/new-branch.png)
 
@@ -253,7 +249,7 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 *   Data Factory に対する読み取りアクセス許可は、チーム メンバー全員に必要です。
 *   Data Factory への発行は、一部の選ばれたメンバーにのみ許可するようにします。 そのためには、Data Factory がある **リソース グループ** で、**Data Factory 共同作成者** ロールを持つ必要があります。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
 
-コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[feature ブランチの作成](source-control.md#creating-feature-branches)」に記載されている pull request のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
+コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[機能ブランチの作成](source-control.md#creating-feature-branches)」に記載されている pull request のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Azure Key Vault からのパスワードの使用
 
@@ -272,7 +268,7 @@ Data Factory のリンクされたサービスのすべての接続文字列ま�
 1. 変更をコラボレーション ブランチにマージする pull request を作成します 
 
 以下に、古い発行ブランチが発生する可能性がある状況の例をいくつか示します。
-- ユーザーに複数のブランチがある。 ユーザーが 1 つの feature ブランチで、AKV 関連ではないリンクされたサービスを削除し (非 AKV のリンクされたサービスは、Git にあるかどうかに関係なく、直ちに発行されます)、feature ブランチをコラボレーション ブランチにマージしませんでした。
+- ユーザーに複数のブランチがある。 ユーザーが 1 つの機能ブランチで、AKV 関連ではないリンクされたサービスを削除し (非 AKV のリンクされたサービスは、Git にあるかどうかに関係なく、直ちに発行されます)、機能ブランチをコラボレーション ブランチにマージしませんでした。
 - ユーザーが SDK または PowerShell を使用してデータ ファクトリを変更した
 - ユーザーがすべてのリソースを新しいブランチに移動し、初めて発行を試みた。 リンクされたサービスは、リソースをインポートするときに手動で作成する必要があります。
 - ユーザーが、非 AKV のリンクされたサービスまたは Integration Runtime JSON を手動でアップロードする。 それらは、データセット、リンクされたサービス、パイプラインなどの別のリソースからそのリソースを参照します。 UX を使用して作成された非 AKV のリンクされたサービスは、資格情報を暗号化する必要があるため、直ちに発行されます。 そのリンクされたサービスを参照しているデータセットをアップロードして発行しようとすると、git 環境に存在するために UX はそれを許可します。 これは、データ ファクトリ サービスに存在しないため、発行時に拒否されます。

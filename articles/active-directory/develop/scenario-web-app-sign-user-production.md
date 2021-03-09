@@ -1,5 +1,6 @@
 ---
-title: ユーザーをサインインさせる Web アプリを運用環境に移行する - Microsoft ID プラットフォーム | Azure
+title: ユーザーをサインインさせる Web アプリを運用環境に移行する | Azure
+titleSuffix: Microsoft identity platform
 description: ユーザーをサインインさせる Web アプリをビルドする方法について説明します (運用環境への移行)
 services: active-directory
 author: jmprieur
@@ -11,27 +12,22 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: fd9890cb94bf6bb4b82ebbb585ab8bbb9d5ba46a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e4a47112d2f66edc8af9b7f100d48bc205f2e85e
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169292"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584299"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>ユーザーをサインインさせる Web アプリ:運用環境に移行する
 
-Web API を呼び出すトークンの取得方法がわかったので、次にそれを運用環境に移行する方法について説明します。
+Web API を呼び出すためにトークンを取得する方法について説明しました。ここでは、アプリケーションを運用環境に移行する際に考慮すべき点をいくつか示します。
 
-[!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
+[!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-
-> [!NOTE]
-> ユーザーが初めて Web アプリケーションにサインインするときは、同意する必要があります。 しかし、組織によっては、次のようなメッセージがユーザーに表示される場合があります。
->
-> *AppName では、組織内のリソースにアクセスするために、管理者しか付与できないアクセス許可が必要になります。使用するには、まず、このアプリへのアクセス許可の付与を管理者に依頼してください。*
->
-> これは、テナント管理者によって、ユーザーが同意する機能が **無効化されている** ためです。 その場合は、アプリケーションから要求されるスコープに対して管理者の同意を得るために、テナント管理者に連絡する必要があります。
+ユーザーが初めて Web アプリケーションにサインインするときは、同意する必要があります。 しかし、組織によっては、次のようなメッセージがユーザーに表示される場合があります。*AppName では、組織内のリソースにアクセスするために、管理者しか付与できないアクセス許可が必要になります。使用するには、まず、このアプリへのアクセス許可の付与を管理者に依頼してください。*
+これは、テナント管理者によって、ユーザーが同意する機能が **無効化されている** ためです。 その場合は、アプリケーションから要求されるスコープに対して管理者の同意を得るために、テナント管理者に連絡します。
 
 ## <a name="same-site"></a>SameSite
 

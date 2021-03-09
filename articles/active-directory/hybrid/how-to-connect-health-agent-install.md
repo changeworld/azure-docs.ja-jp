@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 57362aa84886d7b7d764617ce5a43ca2393bed52
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0e644b7937f6ccb23b4833405b8f4ed3119879a5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018243"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362286"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 
@@ -34,7 +34,7 @@ ms.locfileid: "98018243"
 
 | 要件 | 説明 |
 | --- | --- |
-| Azure AD Premium がインストールされている。 |Azure AD Connect Health は Azure AD Premium の機能です。 詳細については、[Azure AD Premium へのサインアップ](../fundamentals/active-directory-get-started-premium.md)に関する記事を参照してください。 <br /><br />30 日間の無料試用版の利用を開始する場合は、[試用版の開始](https://azure.microsoft.com/trial/get-started-active-directory/)に関するページを参照してください。 |
+| Azure AD Premium (P1 または P2) サブスクリプションがあります。  |Azure AD Connect Health は Azure AD Premium (P1 または P2) の機能です。 詳細については、[Azure AD Premium へのサインアップ](../fundamentals/active-directory-get-started-premium.md)に関する記事を参照してください。 <br /><br />30 日間の無料試用版の利用を開始する場合は、[試用版の開始](https://azure.microsoft.com/trial/get-started-active-directory/)に関するページを参照してください。 |
 | 自分が Azure AD の全体管理者である。 |既定では、正常性エージェントのインストールと構成、ポータルへのアクセス、および Azure AD Connect Health 内での任意の操作を行うことができるのは、全体管理者のみです。 詳細については、[Azure AD ディレクトリの管理](../fundamentals/active-directory-whatis.md)に関するページを参照してください。 <br /><br /> Azure ロールベースのアクセス制御 (Azure RBAC) を使用することで、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。 詳細については、[Azure AD Connect Health の Azure RBAC](how-to-connect-health-operations.md#manage-access-with-azure-rbac) に関するページを参照してください。 <br /><br />**重要**:職場または学校アカウントを使用してエージェントをインストールしてください。 Microsoft アカウントは使用できません。 詳細については、[Azure への組織としてのサインアップ](../fundamentals/sign-up-organization.md)に関するページを参照してください。 |
 | Azure AD Connect Health エージェントが対象となる個々のサーバーにインストールされている。 | Health エージェントがデータを受信し、監視および分析の機能を提供できるように、対象となるサーバーにそれらがインストールおよび構成されている必要があります。 <br /><br />たとえば、Active Directory フェデレーション サービス (AD FS) インフラストラクチャからデータを取得するには、AD FS サーバーと Web アプリケーション プロキシ サーバーにエージェントをインストールする必要があります。 同様に、オンプレミスの Azure AD Domain Services (Azure AD DS) インフラストラクチャからデータを取得するには、ドメイン コントローラーにエージェントをインストールする必要があります。  |
 | Azure サービス エンドポイントに送信接続がある。 | エージェントをインストールしたり実行したりするためには、Azure AD Connect Health サービスのエンド ポイントへの接続が必要となります。 ファイアウォールにより送信接続がブロックされている場合は、[送信接続エンドポイント](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints)を許可リストに追加します。 |
@@ -195,7 +195,7 @@ Sync 用 Azure AD Connect Health エージェントは、最新バージョン�
 ![サーバーで実行中の Azure AD Connect Health for Sync サービスを示すスクリーンショット。](./media/how-to-connect-health-agent-install/services.png)
 
 > [!NOTE]
-> Azure AD Connect Health を使用するには Azure AD Premium が必要であることに注意してください。 Azure AD Premium がない場合、Azure portal で構成を完了できません。 詳細については、「[要件](how-to-connect-health-agent-install.md#requirements)」を参照してください。
+> Azure AD Connect Health を使用するには Azure AD Premium (P1 または P2) が必要であることに注意してください。 Azure AD Premium がない場合、Azure portal で構成を完了できません。 詳細については、「[要件](how-to-connect-health-agent-install.md#requirements)」を参照してください。
 >
 >
 

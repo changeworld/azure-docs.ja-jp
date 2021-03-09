@@ -3,12 +3,12 @@ title: Azure Service Bus の重複メッセージの検出 | Microsoft Docs
 description: この記事では、Azure Service Bus メッセージの重複を検出する方法について説明します。 重複したメッセージは無視して、破棄することができます。
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 527c2dea34b02733907372b6e75a40a5ef5fc289
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184681"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711927"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -17,6 +17,9 @@ ms.locfileid: "98184681"
 また、直前にクライアントまたはネットワーク レベルでエラーが発生し、送信されたメッセージがキューにコミットされ、クライアントに受信確認が正常に返されない場合もあります。 このシナリオでは、送信操作の結果についてクライアントは確認が取れないままになります。
 
 重複メッセージの検出機能は、送信側が同じメッセージを再送信する一方でキューまたはトピックで重複メッセージを削除できるようにすることで、このような状況から不確実性を排除します。
+
+> [!NOTE]
+> Service Bus の Basic レベルでは、重複検出はサポートされません。 Standard と Premium レベルでは、重複検出はサポートされます。 これらのレベルの違いについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
 ## <a name="how-it-works"></a>動作のしくみ 
 重複メッセージ検出を有効にすることにより、アプリケーションによって制御され、指定した時間枠内のキューまたはトピックに送信されたすべてのメッセージの *MessageId* を追跡できます。 その時間枠内にログに記録された *MessageId* が付いた新しいメッセージが送信されると、メッセージは受信済み (送信操作成功) としてレポートされ、新しく送信されたメッセージは瞬時に無視され破棄されます。 メッセージの *MessageId* 以外の部分は考慮されません。
@@ -45,7 +48,7 @@ ID のアプリケーションによる制御は、アプリケーションが *
 
 プログラム上では、フル フレームワーク .NET API の [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) プロパティにフラグを設定します。 Azure Resource Manager API では、値は [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) プロパティで設定されます。
 
-重複検出時間の履歴は、既定では、キューおよびトピックで 30 秒に設定され、最大値は 7 日間に設定されています。 この設定は、Azure ポータルの [キューおよびトピックのプロパティ] ウィンドウで変更することができます。
+重複検出時間の履歴は、既定では、キューとトピックで 10 秒に設定され、最小値は 20 秒、最大値は 7 分です。 この設定は、Azure ポータルの [キューおよびトピックのプロパティ] ウィンドウで変更することができます。
 
 ![Service Bus 機能のスクリーンショット。[プロパティ] 設定が強調表示され、[重複データ検出の履歴] オプションが赤の枠線で囲まれています。][2]
 

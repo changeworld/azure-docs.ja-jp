@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
 description: Azure Data Factory パイプラインで Copy アクティビティを使用して、クラウドまたはオンプレミスの REST ソースからサポートされているシンク データ ストアへ、またはサポートされているデータ ストアから REST シンクへデータをコピーする方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 972a7b32e6308c3aa8a3b42705038838dae9b2be
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931306"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369885"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントとの間でデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,7 +21,7 @@ ms.locfileid: "96931306"
 この REST コネクタ、[REST コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
 - **REST コネクタ** では、特に RESTful API からのデータのコピーがサポートされています。 
-- **HTTP コネクタ** は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
+- **HTTP コネクタ** は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタの前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
 - **Web テーブル コネクタ** では、HTML Web ページからテーブルの内容を抽出します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
@@ -385,7 +380,7 @@ REST API からデータをコピーするとき、通常、REST API では、1 
 
 **例:**
 
-Facebook Graph API によって、次の構造で応答が返されます。この場合、次のページの URL は **_paging.next_* _ で表されます。
+Facebook Graph API によって、次の構造で応答が返されます。この場合、次のページの URL は ***paging.next*** で表されます。
 
 ```json
 {
@@ -440,7 +435,7 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 ### <a name="about-the-solution-template"></a>ソリューション テンプレートについて
 
 このテンプレートには、2 つのアクティビティが含まれています。
-- _ *Web** アクティビティでは、ベアラー トークンを取得し、それを後の Copy アクティビティに認証として渡します。
+- **Web** アクティビティでは、ベアラー トークンを取得し、それを後のコピー アクティビティに認証として渡します。
 - **コピー** アクティビティでは、データを REST から Azure Data Lake Storage にコピーします。
 
 このテンプレートには、次の 2 つのパラメーターが定義されています。

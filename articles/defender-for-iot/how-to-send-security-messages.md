@@ -4,26 +4,26 @@ description: Defender for IoT を使用してセキュリティ メッセージ�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
+ms.date: 2/8/2021
+ms.author: shhazam
 ms.custom: devx-track-js
-ms.openlocfilehash: 5217940a3696bd001db421e61be8313453807c8b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d59121f2dbae208ba045a9c2e6d66245296537a0
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318519"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820689"
 ---
 # <a name="send-security-messages-sdk"></a>セキュリティ メッセージの送信 SDK
 
-この攻略ガイドでは、Defender for IoT エージェントを使用せずにデバイス セキュリティ メッセージを収集して送信する場合の Defender for IoT サービスの機能と、それを行う方法を説明します。
+この攻略ガイドでは、Defender for IoT エージェントを使用せずにデバイス セキュリティ メッセージを収集して送信する場合の Defender for IoT サービスの機能と、それを行う方法について説明します。
 
 このガイドでは、以下の方法について説明します。
 
@@ -91,7 +91,7 @@ Defender for IoT では、次の条件を使用してセキュリティ メッ�
 
 ## <a name="send-security-messages"></a>セキュリティ メッセージの送信
 
-Defender for IoT エージェント*なしで*セキュリティ メッセージを送信するか、[Azure IoT C デバイス SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、[Azure IoT C# デバイス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、[Azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、[Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)、または [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java) を使用して送信します。
+Defender for IoT エージェント *なしで* セキュリティ メッセージを送信するか、[Azure IoT C デバイス SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)、[Azure IoT C# デバイス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)、[Azure IoT Node.js SDK](https://github.com/Azure/azure-iot-sdk-node)、[Azure IoT Python SDK](https://github.com/Azure/azure-iot-sdk-python)、または [Azure IoT Java SDK](https://github.com/Azure/azure-iot-sdk-java) を使用して送信します。
 
 Defender for IoT で処理するためにデバイスからデバイス データを送信するには、以下のいずれかの API を使用して、Defender for IoT 処理パイプラインへの正しいルーティングが行われるようにメッセージをマークします。
 

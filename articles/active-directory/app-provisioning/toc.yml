@@ -10,8 +10,10 @@
 - name: チュートリアル
   expanded: true
   items:
-    - name: SCIM エンドポイントの構築とプロビジョニングの構成
+    - name: SCIM エンドポイントのプロビジョニングを計画する
       href: use-scim-to-provision-users-and-groups.md
+    - name: サンプルの SCIM エンドポイントを開発する
+      href: use-scim-to-build-users-and-groups-endpoints.md
     - name: 属性マッピングのカスタマイズ
       href: customize-application-attributes.md
     - name: アプリ固有のプロビジョニングに関するチュートリアル

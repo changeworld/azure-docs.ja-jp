@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f3e1ea8861646490875667f6238b3f8813bd6c4b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222889"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518166"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>仮想ネットワーク ピアリングの問題をトラブルシューティングする
 
@@ -87,7 +87,7 @@ ms.locfileid: "98222889"
 詳細については、「[サービス チェイニング](./virtual-network-peering-overview.md#service-chaining)」を参照してください。
 
 > [!Note]
-> NVA の設定に関するヘルプが必要な場合は、[NVA のベンダーにお問い合わせください](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)。
+> NVA の設定に関するヘルプが必要な場合は、[NVA のベンダーにお問い合わせください](https://mskb.pkisolutions.com/kb/2984655)。
 
 NVA デバイスの設定とルーティングのトラブルシューティングに関するヘルプについては、「[Azure でのネットワーク仮想アプライアンスの問題](./virtual-network-troubleshoot-nva.md)」を参照してください。
 
@@ -190,7 +190,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 ハブ ネットワークに NVA がある必要があります。 NVA が次ホップとして設定されているスポークで UDR を構成し、ハブ仮想ネットワークで **[転送されたトラフィックを許可する]** を有効にします。
 
-詳細については、「[サービス チェイニング](./virtual-network-peering-overview.md#service-chaining)」を参照し、選択した [NVA ベンダー](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines)とこれらの要件について相談してください。
+詳細については、「[サービス チェイニング](./virtual-network-peering-overview.md#service-chaining)」を参照し、選択した [NVA ベンダー](https://mskb.pkisolutions.com/kb/2984655)とこれらの要件について相談してください。
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>異なるリージョンのスポーク仮想ネットワーク間のハブスポーク ネットワーク接続に関する問題のトラブルシューティング
 
@@ -233,7 +233,7 @@ NVA デバイスの設定とルーティングのトラブルシューティン�
 
 ### <a name="failed-to-peer-a-databricks-virtual-network"></a>Databricks 仮想ネットワークをピアリングできませんでした
 
-この問題を解決するには、 **[Azure Databricks]** から仮想ネットワーク ピアリングを構成し、 **[リソース ID]** を使用してターゲット仮想ネットワークを指定します。 詳細については、「[Databricks 仮想ネットワークからリモート仮想ネットワークへのピアリング](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-peering.html#id2)」を参照してください。
+この問題を解決するには、 **[Azure Databricks]** から仮想ネットワーク ピアリングを構成し、 **[リソース ID]** を使用してターゲット仮想ネットワークを指定します。 詳細については、「[Databricks 仮想ネットワークからリモート仮想ネットワークへのピアリング](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-peering#id2)」を参照してください。
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>リモート仮想ネットワークにゲートウェイがありません
 

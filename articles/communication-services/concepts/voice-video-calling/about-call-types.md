@@ -9,16 +9,14 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 515921c4e69b7c2cff8e1055182503b5ce89971c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028762"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657147"
 ---
 # <a name="voice-and-video-concepts"></a>音声とビデオの概念
-
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Azure Communication Services を使用すると、一対一またはグループでの音声通話やビデオ通話をかけたり受けたりすることができます。 通話は、インターネットに接続されている他のデバイスや、普通の従来の電話に対しても行うことができます。 Communication Services の JavaScript、Android、または iOS クライアント ライブラリを使用して、ユーザーが個人的な会話やグループ ディスカッションで相互に対話できるアプリケーションを構築できます。 Azure Communication Services は、サービスやボットとの通話をサポートしています。
 
@@ -26,7 +24,7 @@ Azure Communication Services を使用すると、一対一またはグループ
 
 Azure Communication Services では、複数の種類の通話を行うことができます。 行う通話の種類によって、信号スキーマ、メディア トラフィック フロー、価格モデルが決まります。
 
-### <a name="voice-over-ip-voip"></a>ボイス オーバー IP 通話 (VoIP) 
+### <a name="voice-over-ip-voip"></a>ボイス オーバー IP 通話 (VoIP)
 
 お使いのアプリケーションのユーザーがインターネットまたはデータ接続を使用してそのアプリケーションの別のユーザーを呼び出すと、ボイス オーバー IP 通話 (VoIP) を介して通話が行われます。 この場合、信号とメディアの両方がインターネットを介して流れます。
 
@@ -43,14 +41,14 @@ Azure Communication Services での一対一の通話は、いずれかのユー
 Azure Communication Services でのグループ通話は、3 名以上の参加者が相互に接続したときに行われます。 VoIP および PSTN で接続されたユーザーの任意の組み合わせで、グループ通話に参加することができます。 一対一の通話をグループ通話に変換するには、通話に参加者を追加します。 これらの参加者のいずれかをボットにすることができます。
 
 ### <a name="supported-video-standards"></a>サポートされるビデオ標準
-H.264 (MPEG-4) がサポートされます。 
+H.264 (MPEG-4) がサポートされます。
 
 ### <a name="video-quality"></a>ビデオ品質
-ネイティブ (iOS、Android) SDK では、フル HD 1080p までサポートされます。 Web (JS) SDK では、標準 HD 720p がサポートされます。 品質は、使用可能な帯域幅によって異なります。  
+ネイティブ (iOS、Android) SDK では、フル HD 1080p までサポートされます。 Web (JS) SDK では、標準 HD 720p がサポートされます。 品質は、使用可能な帯域幅によって異なります。
 
 ### <a name="rooms-concept"></a>ルームの概念
 ルームは、お使いの Web サイトまたはネイティブ アプリケーションにオーディオ、ビデオ、画面共有、PSTN、SMS の対話を簡単に追加できる API と SDK のセットです。
-プレビュー中に、グループ ID を使用して同じ会話に参加できます。 必要な数だけグループ ID を作成し、ユーザーを "ルーム" で分けることができます。 今後、"ルーム" に関するより多くのコントロールが導入される予定です。 
+プレビュー中に、グループ ID を使用して同じ会話に参加できます。 必要な数だけグループ ID を作成し、ユーザーを "ルーム" で分けることができます。 今後、"ルーム" に関するより多くのコントロールが導入される予定です。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -59,5 +57,5 @@ H.264 (MPEG-4) がサポートされます。
 
 詳細については、次の記事を参照してください。
 - 一般的な[通話のフロー](../call-flows.md)を理解する
-- [PSTN ソリューションを計画する](../telephony-sms/plan-solution.md)
+- [電話番号の種類](../telephony-sms/plan-solution.md)
 - [通話クライアント ライブラリ機能](../voice-video-calling/calling-sdk-features.md)について学習する

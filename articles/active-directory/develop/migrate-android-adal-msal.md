@@ -14,12 +14,12 @@ ms.date: 10/14/2020
 ms.author: marsma
 ms.reviewer: shoatman
 ms.custom: aaddev
-ms.openlocfilehash: bf9b3a154e19fab08c46f9838f555e223f10e8a0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: ba639bc023affc7c2e6b2b675cdedc1229636893
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672289"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581042"
 ---
 # <a name="adal-to-msal-migration-guide-for-android"></a>Android 用の ADAL から MSAL への移行に関するガイド
 
@@ -71,7 +71,7 @@ MSAL を使用するために既存アプリの登録を変更する必要はあ
 ADAL と Azure AD v1 エンドポイントでは、ユーザーが所有しているリソースに対するそのユーザーの同意が、最初の使用時に許可されました。 MSAL と Microsoft ID プラットフォームでは、同意を段階的に要求できます。 増分同意は、ユーザーが高い特権を検討する可能性があるか、アクセス許可が必要な理由について明確な説明が提供されていない場合はそれが問われる可能性があるアクセス許可の際に便利です。 ADAL では、これらのアクセス許可によって、アプリへのユーザーのサインインが中止された可能性があります。
 
 > [!TIP]
-> アプリでアクセス許可を必要とする理由についてユーザーに追加のコンテキストを提供する必要がある場合は、増分同意を使用することをお勧めします。
+> 増分同意を使用して、アプリがアクセス許可を必要とする理由についてユーザーに追加のコンテキストを提供します。
 
 ### <a name="admin-consent"></a>管理者の同意
 

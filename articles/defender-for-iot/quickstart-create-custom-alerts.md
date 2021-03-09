@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:カスタム アラートの作成
-description: Azure Defender for IoT セキュリティ サービスのカスタム デバイス アラートを取り上げます。それらを作成し、割り当てる方法について説明します。
+title: カスタム アラートの作成
+description: Azure Defender for IoT セキュリティ サービスのカスタム デバイス アラートについて理解し、それらの作成と割り当てができるようにします。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: 48682e465374c1a0e1fb74fc6627016696ff6d2c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e59bcca9561c33610170f4bc3674eef307cf0de9
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90946246"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809048"
 ---
-# <a name="quickstart-create-custom-alerts"></a>クイック スタート:カスタム アラートの作成
+# <a name="create-custom-alerts"></a>カスタム アラートの作成
 
 カスタムのセキュリティ グループおよびアラートを使用することで、エンド ツー エンドのセキュリティ情報とカテゴリ別のデバイス知識を最大限に活用し、IoT ソリューション全体のセキュリティを確実に向上させます。
 
@@ -65,17 +65,23 @@ ms.locfileid: "90946246"
 
 ## <a name="customize-an-alert"></a>アラートのカスタマイズ
 
-1. ご利用の IoT Hub を開き、 **[セキュリティ]** メニューから **[設定]** メニューを選択します。 
-1. **[カスタム アラート]** をクリックします。
+1. ご利用の IoT Hub を開き、 **[セキュリティ]** メニューから **[設定]** メニューを選択します。
+
+1. **[カスタム アラート]** を選択します。
+
 1. カスタマイズの適用先にしたいセキュリティ グループを選択します。
-1. **[Add a custom alert]\(カスタム アラートの追加\)** をクリックします。
+
+1. **[Add a custom alert]\(カスタム アラートの追加\)** を選択します。
+
 1. ドロップダウン リストからカスタムのアラートを選択します。
-1. 必須のプロパティを編集して、 **[OK]** をクリックします。
-1. 必ず **[保存]** をクリックします。 新しいアラートは、保存しないと IoT ハブを次に閉じたときに削除されます。
+
+1. 必須のプロパティを編集して、 **[OK]** を選択します。
+
+1. 必ず **[SAVE]\(保存\)** を選択してください。 新しいアラートは、保存しないと IoT ハブを次に閉じたときに削除されます。
 
 ## <a name="alerts-available-for-customization"></a>カスタマイズに使用できるアラート
 
-Defender for IoT には、ユーザーの特定のニーズに応じてカスタマイズできるアラートが多数用意されています。 アラートの重要度、データ ソース、説明、および各アラートを受信した場合の推奨される修復手順については、[カスタマイズ可能なアラートの表](concept-customizable-security-alerts.md)を確認してください。
+Defender for IoT には、アラートが多数用意されており、特定のニーズに応じてカスタマイズできます。 アラートの重要度、データ ソース、説明、および各アラートを受信した場合の推奨される修復手順については、[カスタマイズ可能なアラートの表](concept-customizable-security-alerts.md)を確認してください。
 
 ## <a name="next-steps"></a>次のステップ
 

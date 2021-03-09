@@ -83,6 +83,8 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: C++/WinRT の場合
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
+    - name: アンカー セッションなしで粗い再局在化を使用する
+      href: how-tos/use-coarse-relocalization-without-anchor-session.md
     - name: プロジェクトの設定
       items:
         - name: C++/WinRT

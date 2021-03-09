@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: f76a05757f86308785d4ca678675b87b3fa9d63e
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c176fcafe13749ba89c04b34854f036aa5aea516
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550793"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101677649"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Azure Purview での接続のトラブルシューティング
 
@@ -34,7 +34,7 @@ ms.locfileid: "96550793"
 - [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
 - [SQL Server](register-scan-on-premises-sql-server.md#setting-up-authentication-for-a-scan)
 - [Power BI](register-scan-power-bi-tenant.md)
-
+- [Amazon S3](register-scan-amazon-s3.md#create-a-purview-credential-for-your-aws-bucket-scan)
 ## <a name="storing-your-credential-in-your-key-vault-and-using-the-right-secret-name-and-version"></a>キー コンテナーへの資格情報の格納と、適切なシークレット名およびバージョンの使用
 
 資格情報を Azure Key Vault インスタンスに格納し、適切なシークレット名およびバージョンを使用する必要があります。
@@ -53,7 +53,10 @@ Azure Key Vault にアクセスするために、Purview が管理する ID に�
 これを確認するには、次の手順を実行します。
 
 1. 使用するキー コンテナーに移動し、 **[アクセス ポリシー]** セクションに移動します。
-1. Purview が管理する ID が *[現在のアクセス ポリシー]* セクションに表示され、少なくともシークレットに対する **get** アクセス許可が付与されていることを確認します。
+
+1. Purview が管理する ID が *[現在のアクセス ポリシー]* セクションに表示され、少なくともシークレットに対する **Get** および **List** アクセス許可が付与されていることを確認します。
+
+   :::image type="content" source="./media/troubleshoot-connections/verify-minimum-permissions.png" alt-text="Get と List の両方のアクセス許可についてドロップダウンの選択を示す画像":::
 
 Purview が管理する ID が一覧に表示されない場合は、「[スキャン用の資格情報を作成して管理する](manage-credentials.md)」に記載されている手順に従って追加します。 
 

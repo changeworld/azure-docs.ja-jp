@@ -25,7 +25,7 @@ ms.locfileid: "93395225"
 - Azure SQL Edge のインスタンスは、パブリッシャーのプッシュ サブスクライバーである必要があります。
 - パブリッシャーとディストリビューターは、次のいずれかが可能です。
    - オンプレミスで実行されている SQL Server のインスタンス、または Azure 仮想マシンで実行されている SQL Server のインスタンス。 詳細については、[Azure Virtual Machines 上の SQL Server の概要](../azure-sql/virtual-machines/index.yml)に関するページをご覧ください。 SQL Server インスタンスでは、SQL Server 2016 よりも大きいバージョンが使用されている必要があります。
-   - Azure SQL Managed Instance のインスタンス。 SQL マネージド インスタンスでは、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 詳細については、「[Replication with SQL Database Managed Instance (SQL Database Managed Instance でのレプリケーション)](/azure/sql-database/replication-with-sql-database-managed-instance/)」を参照してください。
+   - Azure SQL Managed Instance のインスタンス。 SQL Managed Instance では、パブリッシャー、ディストリビューター、サブスクライバーの各データベースをホストできます。 詳細については、「[Replication with SQL Database Managed Instance (SQL Database Managed Instance でのレプリケーション)](/azure/sql-database/replication-with-sql-database-managed-instance/)」を参照してください。
 
 - ディストリビューション データベースとレプリケーション エージェントを Azure SQL Edge のインスタンスに配置することはできません。  
 
@@ -51,7 +51,7 @@ ms.locfileid: "93395225"
 時間の経過と共に変化する参照データを使用して、インスタンスを初期化できます。 たとえば、SQL Server インスタンスで機械学習モデルのトレーニングを行った後、ご自身の Azure SQL Edge のインスタンスでそれらを更新できます。 このようなシナリオでインスタンスを初期化する方法を次に示します。
 
 1. SQL Server データベースで、トランザクション レプリケーション パブリケーションを作成します。  
-2. SQL Server インスタンスで、 **新しいサブスクリプション ウィザード** または Transact-SQL ステートメントを使用して、Azure SQL Edge のサブスクリプションに対するプッシュを作成します。  
+2. SQL Server インスタンスで、**新しいサブスクリプション ウィザード** または Transact-SQL ステートメントを使用して、Azure SQL Edge のサブスクリプションに対するプッシュを作成します。  
 3. スナップショット エージェントによって生成され、ディストリビューション エージェントによって配布および配信されたスナップショットを使用して、Azure SQL Edge 上のレプリケートされたデータベースを初期化できます。 別の方法として、パブリッシャーからのデータベースのバックアップを使用して初期化できます。 データベースのバックアップに Azure SQL Edge でサポートされていないオブジェクトまたは機能が含まれていた場合、復元操作は失敗することを忘れないでください。
 
 ## <a name="limitations"></a>制限事項
@@ -83,7 +83,7 @@ Azure SQL Edge サブスクリプションでは、次のオプションはサ�
 パブリケーションおよびプッシュ サブスクリプションを作成します。 詳細については、次を参照してください。
   
 - [パブリケーションの作成](/sql/relational-databases/replication/publish/create-a-publication)
-- Azure SQL Edge サーバー名と IP (例: **myEdgeinstance、1433** ) をサブスクライバーとして使用し、Azure SQL Edge インスタンスのデータベース名 (例: **AdventureWorks** ) を宛先データベースとして使用することで、 [プッシュ サブスクリプションを作成します](/sql/relational-databases/replication/create-a-push-subscription/)。  
+- Azure SQL Edge サーバー名と IP (例: **myEdgeinstance、1433**) をサブスクライバーとして使用し、Azure SQL Edge インスタンスのデータベース名 (例: **AdventureWorks**) を宛先データベースとして使用することで、[プッシュ サブスクリプションを作成します](/sql/relational-databases/replication/create-a-push-subscription/)。  
 
 ## <a name="next-steps"></a>次のステップ  
 

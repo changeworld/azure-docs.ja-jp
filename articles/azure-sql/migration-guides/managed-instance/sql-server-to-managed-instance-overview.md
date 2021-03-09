@@ -9,13 +9,13 @@ ms.topic: how-to
 author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
-ms.date: 11/06/2020
-ms.openlocfilehash: d1360589fe2c2ec13c341dd14793db0ca8b809c4
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.date: 02/18/2020
+ms.openlocfilehash: 1f619e1eac58f70642117dabafc266d1bc250609
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358879"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690415"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>移行の概要: SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -90,6 +90,7 @@ SQL Server を SQL Managed Instance に移行する主な利点の 1 つは、�
 |---------|---------|
 |[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md)  | ファースト パーティの Azure サービス。移行プロセス時のダウンタイムを許容できるアプリケーションのオフライン モードでの移行をサポートします。 オンライン モードでの継続的な移行とは異なり、オフライン モードの移行では、ソースからターゲットへのデータベースの完全バックアップの 1 回限りの復元が実行されます。 | 
 |[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | SQL Managed Instance では、ネイティブの SQL Server データベース バックアップ (.bak ファイル) の復元がサポートされています。このため、これが Azure Storage にデータベースの完全バックアップを提供できるお客様にとって最も簡単な移行オプションとなります。 完全バックアップと差分バックアップもサポートされており、この記事の後半の「[移行資産](#migration-assets)」セクションで説明しています。| 
+|[ログ再生サービス (LRS)](../../managed-instance/log-replay-service-migrate.md) | これは SQL Server ログ配布テクノロジに基づくクラウド サービスであり、Managed Instance に対して有効にすることができます。Azure ストレージに完全、差分、ログのデータベース バックアップを提供できる顧客にとって移行オプションとなります。 LRS は、バックアップ ファイルを Azure Blob Storage から SQL Managed Instance に復元するのに使用されます。| 
 | | |
 
 ### <a name="alternative-tools"></a>代替ツール
@@ -114,8 +115,9 @@ SQL Server を SQL Managed Instance に移行する主な利点の 1 つは、�
 
 |移行オプション  |使用する場合  |考慮事項  |
 |---------|---------|---------|
-|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 単一のデータベースまたは複数のデータベースを大規模に移行する。 </br> - 移行プロセス中のダウンタイムを許容できる。 </br> </br> サポートされているソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM |  - 大規模な移行を [PowerShell](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md) を使用して自動化できます。 </br> - 移行が完了するまでの時間は、データベースのサイズによって異なり、バックアップと復元の時間に左右されます。 </br> - 十分なダウンタイムが必要になる可能性があります。 |
+|[Azure Database Migration Service (DMS)](../../../dms/tutorial-sql-server-to-managed-instance.md) | - 単一のデータベースまたは複数のデータベースを大規模に移行する。 </br> - 移行プロセス中のダウンタイムを許容できる。 </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM |  - 大規模な移行を [PowerShell](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md) を使用して自動化できます。 </br> - 移行が完了するまでの時間は、データベースのサイズによって異なり、バックアップと復元の時間に左右されます。 </br> - 十分なダウンタイムが必要になる可能性があります。 |
 |[ネイティブ バックアップと復元](../../managed-instance/restore-sample-database-quickstart.md) | - 個々の基幹業務アプリケーション データベースを移行する。  </br> - 個別の移行サービスまたはツールを使用せずに素早く簡単に移行する。  </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP Compute SQL Server VM | - データベース バックアップでは、Azure Blob Storage へのデータ転送を最適化するために複数のスレッドが使用されますが、ISV 帯域幅とデータベース サイズが転送速度に影響する可能性があります。 </br> - ダウンタイムには、完全バックアップと復元を実行するために必要な時間 (データ操作のサイズ) を考慮する必要があります。| 
+|[ログ再生サービス (LRS)](../../managed-instance/log-replay-service-migrate.md) | - 個々の基幹業務アプリケーション データベースを移行する。  </br> - データベース移行には、さらに多くのコントロールが必要になります。  </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2008 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM | - 移行すると、SQL Server で完全なデータベース バックアップが行われ、Azure Blob Storage にバックアップ ファイルがコピーされます。 LRS は、バックアップ ファイルを Azure Blob Storage から SQL Managed Instance に復元するのに使用されます。 </br> - 移行プロセス中に復元されるデータベースは復元中モードに入り、プロセスが完了するまで読み取りや書き込みに使用することはできません。| 
 | | | |
 
 ### <a name="alternative-options"></a>代替オプション
@@ -125,7 +127,7 @@ SQL Server を SQL Managed Instance に移行する主な利点の 1 つは、�
 |方法/テクノロジ |使用する場合 |考慮事項  |
 |---------|---------|---------|
 |[トランザクション レプリケーション](../../managed-instance/replication-transactional-overview.md) | - ソース データベース テーブルからターゲット SQL Managed Instance データベース テーブルに変更を継続的にパブリッシュすることで移行する。 </br> - データベースを完全に、または選択したテーブル (データベースのサブセット) について部分的に移行する。  </br> </br> サポートされるソース: </br> - SQL Server (2012 - 2019) (一部制限あり) </br> - AWS EC2  </br> - GCP コンピューティングの SQL Server VM | </br> - セットアップは、他の移行オプションと比べて比較的複雑です。   </br> - (データベースをオフラインにせずに) データを移行するための継続的レプリケーション オプションが提供されます。</br> - トランザクション レプリケーションには、ソース SQL Server にパブリッシャーを設定するときに考慮べきいくつかの制限があります。 詳細については、「[オブジェクトのパブリッシュに関する制限事項](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects)」を参照してください。  </br> - [レプリケーション アクティビティを監視](/sql/relational-databases/replication/monitor/monitoring-replication)する機能を利用できます。    |
-|[一括コピー](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - 完全または部分的にデータを移行する。 </br> - ダウンタイムを許容できる。 </br> </br> サポートされているソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM   | - データをソースからエクスポートするため、およびターゲットにインポートするためのダウンタイムが必要です。 </br> - エクスポート/インポートで使用するファイル形式とデータ型は、テーブル スキーマと一致している必要があります。 |
+|[一括コピー](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| - 完全または部分的にデータを移行する。 </br> - ダウンタイムを許容できる。 </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM   | - データをソースからエクスポートするため、およびターゲットにインポートするためのダウンタイムが必要です。 </br> - エクスポート/インポートで使用するファイル形式とデータ型は、テーブル スキーマと一致している必要があります。 |
 |[インポートおよびエクスポート ウィザード/BACPAC](../../database/database-import.md)| - 個々の基幹業務アプリケーション データベースを移行する。 </br>- 比較的小規模なデータベースに適している。  </br>  個別の移行サービスやツールを必要としない。 </br> </br> サポートされるソース: </br> - オンプレミスの SQL Server (2005 - 2019) または Azure VM </br> - AWS EC2 </br> - AWS RDS </br> - GCP コンピューティングの SQL Server VM  |   </br> - データをソースでエクスポートし、転送先でインポートする必要があるため、ダウンタイムが必要です。   </br> - 切り捨てやデータ型不一致のエラーを回避するために、エクスポート/インポートで使用されるファイル形式とデータ型は、テーブル スキーマと一致している必要があります。 </br> - 多数のオブジェクトを含むデータベースをエクスポートする場合、エクスポート時間が大幅に長くなる可能性があります。 |
 |[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| - ソース SQL Server データベースからデータを移行/変換する。</br> - 複数のデータ ソースのデータを Azure SQL Managed Instance にマージする (通常はビジネス インテリジェンス (BI) ワークロードの目的で)。   </br> - ソースからターゲットにデータを移動するために、ADF でデータ移動パイプラインを作成する必要がある。   </br> - [コスト](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)が重要な考慮事項であり、パイプライン トリガー回数、アクティビティの実行数、データ移動の期間などに応じて変わる。 |
 | | | |
@@ -161,7 +163,7 @@ SQL Managed Instance に含まれる高可用性アーキテクチャに加え�
 
 #### <a name="sql-agent-jobs"></a>SQL エージェント ジョブ
 
-オフライン Azure Database Migration Service (DMS) オプションを使用して [SQL エージェント ジョブ](../../../dms/howto-sql-server-to-azure-sql-mi-powershell.md#offline-migrations)を移行します。 これを行わない場合、SQL Server Management Studio を使用して Transact-SQL (T-SQL) でジョブをスクリプト化し、その後、ターゲット SQL Managed Instance でそれらを手動で再作成します。 
+オフライン Azure Database Migration Service (DMS) オプションを使用して [SQL エージェント ジョブ](../../../dms/howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md)を移行します。 これを行わない場合、SQL Server Management Studio を使用して Transact-SQL (T-SQL) でジョブをスクリプト化し、その後、ターゲット SQL Managed Instance でそれらを手動で再作成します。 
 
 > [!IMPORTANT]
 > 現時点では、Azure DMS では、T-SQL サブシステムのステップを使用したジョブのみサポートされています。 SSIS パッケージのステップを使用したジョブは、手動で移行する必要があります。 
@@ -172,7 +174,7 @@ SQL Managed Instance に含まれる高可用性アーキテクチャに加え�
 
 既定では Azure Database Migration Service でサポートされているのは、SQL ログインの移行のみです。 ただし、次の方法により Windows ログインを移行する機能を有効にすることができます。
 
-ターゲット SQL Managed Instance に Azure AD 読み取りアクセス権が付与されていることを確認します。これは、**会社の管理者** または **グローバル管理者** のロールを持つユーザーが Azure portal を介して構成できます。
+ターゲット SQL Managed Instance に Azure AD 読み取りアクセス権が付与されていることを確認します。これは、**全体管理者** のロールを持つユーザーが Azure portal を介して構成できます。
 Azure portal ([構成] ページ) を介して設定された Windows ユーザーまたはグループのログイン移行を有効にするように、ご利用の Azure Database Migration Service インスタンスを構成します。 この設定を有効にしたら、サービスを再起動して変更を有効にします。
 
 サービスを再起動すると、Windows ユーザーまたはグループのログインが、移行可能なログインの一覧に表示されます。 移行する Windows ユーザーまたはグループのログインについては、関連付けられているドメイン名を指定するように求められます。 サービス ユーザー アカウント (ドメイン名 NT AUTHORITY を含むアカウント) と仮想ユーザー アカウント (ドメイン名 NT SERVICE を含むアカウント名) はサポートされていません。

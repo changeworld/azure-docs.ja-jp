@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory のコピー アクティビティからストアド プロシージャを呼び出す
 description: Azure Data Factory のコピー アクティビティから、Azure SQL Database または SQL Server のストアド プロシージャを呼び出す方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-editor: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d2b10744222da8e5d85b19e1ded5aa24cf9c9706
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 6f06b84ac0807a37c7adc603a557894be85a4cea
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637855"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374968"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティからのストアド プロシージャの呼び出し
 > [!NOTE]
@@ -29,7 +24,7 @@ ms.locfileid: "92637855"
 次の例は、Data Factory パイプライン (コピー アクティビティ) から SQL Server データベースのストアド プロシージャを呼び出す方法を示しています。  
 
 ## <a name="output-dataset-json"></a>出力データセット JSON
-出力データセットの JSON で、 **type** を **SqlServerTable** に設定します。 Azure SQL Database で使用するには、 **AzureSqlTable** に設定します。 **tableName** プロパティの値は、ストアド プロシージャの最初のパラメーターの名前と一致する必要があります。  
+出力データセットの JSON で、**type** を **SqlServerTable** に設定します。 Azure SQL Database で使用するには、**AzureSqlTable** に設定します。 **tableName** プロパティの値は、ストアド プロシージャの最初のパラメーターの名前と一致する必要があります。  
 
 ```json
 {
@@ -49,7 +44,7 @@ ms.locfileid: "92637855"
 ```
 
 ## <a name="sqlsink-section-in-copy-activity-json"></a>コピー アクティビティ JSON の SqlSink セクション
-次のように、コピー アクティビティ JSON の **SqlSink** セクションを定義します。 シンク/対象データベースにデータを挿入しているときにストアド プロシージャを呼び出すには、 **SqlWriterStoredProcedureName** プロパティと **SqlWriterTableType** プロパティの両方の値を指定します。 このプロパティについては、[SQL Server コネクタに関する記事の「SqlSink」セクション](data-factory-sqlserver-connector.md#sqlsink)を参照してください。
+次のように、コピー アクティビティ JSON の **SqlSink** セクションを定義します。 シンク/対象データベースにデータを挿入しているときにストアド プロシージャを呼び出すには、**SqlWriterStoredProcedureName** プロパティと **SqlWriterTableType** プロパティの両方の値を指定します。 このプロパティについては、[SQL Server コネクタに関する記事の「SqlSink」セクション](data-factory-sqlserver-connector.md#sqlsink)を参照してください。
 
 ```json
 "sink":
@@ -68,7 +63,7 @@ ms.locfileid: "92637855"
 ```
 
 ## <a name="stored-procedure-definition"></a>ストアド プロシージャの定義 
-データベース内で、 **SqlWriterStoredProcedureName** と同じ名前のストアド プロシージャを定義します。 ストアド プロシージャは、ソース データ ストアから入力データを処理して、対象データベースのテーブルにデータを挿入します。 ストアド プロシージャの最初のパラメーター名は、データセット JSON (Marketing) で定義された tableName と同じにする必要があります。
+データベース内で、**SqlWriterStoredProcedureName** と同じ名前のストアド プロシージャを定義します。 ストアド プロシージャは、ソース データ ストアから入力データを処理して、対象データベースのテーブルにデータを挿入します。 ストアド プロシージャの最初のパラメーター名は、データセット JSON (Marketing) で定義された tableName と同じにする必要があります。
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @stringData varchar(256)
@@ -81,7 +76,7 @@ END
 ```
 
 ## <a name="table-type-definition"></a>テーブル型の定義
-データベースで、 **SqlWriterTableType** と同じ名前のテーブル型を定義します。 テーブル型のスキーマは、入力データセットのスキーマと同じにする必要があります。
+データベースで、**SqlWriterTableType** と同じ名前のテーブル型を定義します。 テーブル型のスキーマは、入力データセットのスキーマと同じにする必要があります。
 
 ```sql
 CREATE TYPE [dbo].[MarketingType] AS TABLE(

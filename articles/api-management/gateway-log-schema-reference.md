@@ -8,16 +8,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 064ac21e01239f7be3ddca9e48089ce880c6af58
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: df0018e323bc0c5725c9752b25b77612f035c196
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379898"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582499"
 ---
 # <a name="reference-api-management-resource-log-schema"></a>リファレンス: API Management リソース ログのスキーマ
 
-この記事では、Azure API Management GatewayLogs リソース ログのスキーマ リファレンスを提供します。 ログ エントリには、[上位の共通スキーマ](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)のフィールドも含まれています。
+この記事では、Azure API Management GatewayLogs リソース ログのスキーマ リファレンスを提供します。 ログ エントリには、[上位の共通スキーマ](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)のフィールドも含まれています。
 
 API Management のリソース ログの収集を有効にする方法については、「[発行された API を監視する](api-management-howto-use-azure-monitor.md#resource-logs)」の該当セクションを参照してください。
 
@@ -49,5 +49,5 @@ API 要求ごとに、次のプロパティがログに記録されます。
 ## <a name="next-steps"></a>次の手順
 
 * API Management の API を監視する方法については、「[発行された API を監視する](api-management-howto-use-azure-monitor.md)」を参照してください
-* [Azure リソース ログの共通およびサービス固有のスキーマ](../azure-monitor/platform/resource-logs-schema.md)について、さらに学習してください
+* [Azure リソース ログの共通およびサービス固有のスキーマ](../azure-monitor/essentials/resource-logs-schema.md)について、さらに学習してください
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 description: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c192f881dd4a8544b9c833eece56fb3765cd07f8
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789906"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100582016"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 
@@ -34,7 +34,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 ### <a name="22-configure-central-security-log-management"></a>2.2:セキュリティ ログの一元管理を構成する
 **ガイダンス:** Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログにより、管理プレーン レベルで Azure DevTest Labs インスタンスで実行された操作に関する分析情報が提供されます。 Azure アクティビティ ログのデータを使用すると、DevTest Labs インスタンスの管理プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを特定することができます。
 
-詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -43,7 +43,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3:Azure リソースの監査ログ記録を有効にする
 **ガイダンス:** Azure アクティビティ ログの診断設定を有効にして、Log Analytics ワークスペース、Azure イベント ハブ、または Azure ストレージア カウントにログを送信してアーカイブします。 アクティビティ ログにより、管理プレーン レベルで Azure DevTest Labs インスタンスで実行された操作に関する分析情報が提供されます。 Azure アクティビティ ログのデータを使用すると、DevTest Labs インスタンスの管理プレーン レベルで実行された書き込み操作 (PUT、POST、DELETE) について、"いつだれが何を" 行ったのかを特定することができます。
 
-詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+詳細については、「[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -54,7 +54,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 
 詳細については、次の記事を参照してください。 
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 - [Azure Security Center のデータ収集について](../security-center/security-center-enable-data-collection.md)
 
 **Azure Security Center の監視**: はい
@@ -62,9 +62,9 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 **責任:** Customer
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
-**_ガイダンス:_* Azure Monitor で、組織のコンプライアンス規則に従って、Azure DevTest Labs インスタンスに関連付けられている Log Analytics ワークスペースのログの保有期間を設定します。
+***ガイダンス:** Azure Monitor で、組織のコンプライアンス規則に従って、Azure DevTest Labs インスタンスに関連付けられている Log Analytics ワークスペースのログの保有期間を設定します。
 
-詳細については、次の記事を参照してください。[ログ保持期間のパラメーターを設定する方法](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+詳細については、次の記事を参照してください。[ログ保持期間のパラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -75,8 +75,8 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 
 詳細については、次の記事を参照してください。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/diagnostic-settings.md)
-- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/diagnostic-settings.md)
+- [Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する方法](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -85,7 +85,7 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7:異常なアクティビティについてのアラートを有効にする
 **ガイダンス:** Azure Log Analytics ワークスペースを使用して、Azure DevTest Labs に関連するセキュリティ ログやイベントでの異常なアクティビティを監視し、アラート通知を行います。
 
-詳細については、次の記事を参照してください。[Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+詳細については、次の記事を参照してください。[Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -109,8 +109,8 @@ Azure コンピューティング リソースの時刻同期を構成する方�
 **ガイダンス:** Azure DevTest Labs によって、顧客によって所有および管理されている Azure Compute マシンが作成されます。 サポートされているすべての Azure Windows VM で Microsoft Monitoring Agent を使用して、プロセス作成イベントと `CommandLine` フィールドをログに記録します。 サポートされている Azure Linux VM では、ノード単位でコンソール ログを手動で構成し、Syslog を使用してデータを格納することができます。 さらに、Azure Monitor の Log Analytics ワークスペースを使用してログを確認し、Azure VM からログ データに対してクエリを実行します。
 
 - [Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
-- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/log-query/get-started-queries.md)
-- [Azure Monitor の Syslog データ ソース](../azure-monitor/platform/data-sources-syslog.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
+- [Azure Monitor の Syslog データ ソース](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center の監視**: はい
 
@@ -175,9 +175,9 @@ DevTest Labs には、既定のパスワードという概念がありません�
 - [Azure で MFA を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)  
 - [Azure Security Center で ID とアクセスを監視する方法](../security-center/security-center-identity-access.md)
 
-**Azure Security Center の監視:** _ はい
+**Azure Security Center の監視:** * はい
 
-_ *責任:* * お客様
+**責任:** Customer
 
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
@@ -353,7 +353,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9:重要な Azure リソースへの変更に関するログとアラート
 **ガイダンス:** DevTest Labs インスタンスおよび他の重要なリソースまたは関連リソースへの変更が発生したときにアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 - [DevTest Labs アクティビティ ログ イベントのアラートを作成する方法](create-alerts.md)
 
 **Azure Security Center の監視:** 適用なし
@@ -387,7 +387,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 **責任:** Customer
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3:サードパーティの自動化されたソフトウェア修正プログラム管理ソリューションを展開する
-**_ガイダンス:_* _ ラボ管理者は、[DevTest Labs 成果物](add-artifact-vm.md)を使用して、セキュリティ更新プログラムやその他の更新プログラムを含むラボ カスタム イメージの更新を自動化できます。 
+***ガイダンス:*** ラボ管理者は、[DevTest Labs 成果物](add-artifact-vm.md)を使用して、セキュリティ更新プログラムやその他の更新プログラムを含むラボ カスタム イメージの更新を自動化できます。 
 
 [DevTest Labs イメージ ファクトリ](image-factory-create.md)の詳細について説明します。これは、イメージを定期的に、すべての必要な構成と共に、ビルドして配布する、コードとしての構成のソリューションです。 
 
@@ -396,7 +396,7 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 - [Azure の Update Management ソリューション](../automation/update-management/overview.md)
 - [VM の更新プログラムとパッチを管理する](../automation/update-management/overview.md)
 
-_ *Azure Security Center の監視:* * 適用なし
+**Azure Security Center の監視:** 適用なし
 
 **責任:** Customer
 

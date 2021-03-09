@@ -5,15 +5,15 @@ author: ginamr
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 02/17/2021
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2fca6e94f61ff4d21886bf81a56afa032c8773c1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c123446c7d7f654f0e3ace6c9d92983558509c75
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004451"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559941"
 ---
 # <a name="st_intersects-azure-cosmos-db"></a>ST_INTERSECTS (Azure Cosmos DB)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -56,7 +56,7 @@ WHERE ST_INTERSECTS(a.location, {
 
 ## <a name="remarks"></a>解説
 
-このシステム関数は、[地理空間インデックス](index-policy.md#spatial-indexes)の恩恵を受けます。
+このシステム関数は、集計を使用したクエリを除き、[地理空間インデックス](index-policy.md#spatial-indexes)の恩恵を受けます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e003d0121721838bd5ae038a3a8b4d1b8cd9d1eb
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 9975533e00b0ca184e7cc16c5d8ea51d4eafa0a8
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573192"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100361708"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box Disk の制限
 
@@ -64,7 +64,7 @@ Azure Storage サービスの制限と共有、コンテナー、およびファ
 
 | データの種類             | 既定の制限          |
 |--------------------------|------------------------|
-| ブロック BLOB、ページ BLOB    | これらの制限に関する最新の情報については、[Azure BLOB ストレージのスケール ターゲット](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage)、[Azure Standard Storage のスケール ターゲット](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)、[Azure Files のスケール ターゲット](../storage/files/storage-files-scale-targets.md#file-share-and-file-scale-targets)に関するページを参照してください。 <br /><br /> この制限には、Data Box Disk を含むすべてのソースのデータが含まれます。|
+| ブロック BLOB、ページ BLOB    | これらの制限に関する最新の情報については、[Azure BLOB ストレージのスケール ターゲット](../storage/blobs/scalability-targets.md#scale-targets-for-blob-storage)、[Azure Standard Storage のスケール ターゲット](../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts)、[Azure Files のスケール ターゲット](../storage/files/storage-files-scale-targets.md)に関するページを参照してください。 <br /><br /> この制限には、Data Box Disk を含むすべてのソースのデータが含まれます。|
 
 
 ## <a name="azure-object-size-limits"></a>Azure オブジェクトのサイズ制限

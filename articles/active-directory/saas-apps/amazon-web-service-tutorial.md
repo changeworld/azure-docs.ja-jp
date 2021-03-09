@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/08/2020
 ms.author: jeedes
-ms.openlocfilehash: 286dc20ba70c78f8248f611abd75e0acc303c068
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 81b57563899fe4babecbdb66cf1dbd876ec5bdf9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736190"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689013"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合
 
@@ -26,9 +26,26 @@ ms.locfileid: "98736190"
 * ユーザーが自分の Azure AD アカウントを使用して自動的にアマゾン ウェブ サービス (AWS) にサインインできるようにする。
 * 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
-> [!Note]
-> Azure AD では、AWS SSO とのシングル サインオン統合はサポートされていません。これは AWS とは異なる製品です。 AWS ではこの点について[こちら](https://docs.aws.amazon.com/singlesignon/latest/userguide/azure-ad-idp.html)で説明していますが、Azure AD では代わりに AWS IAM 統合を使用することをお勧めします。これにより、個々のアカウントで条件付きアクセス ポリシーを使用してより優れたセキュリティ制御を実現でき、これらのアプリケーションのガバナンスを向上させることもできます。
+## <a name="understanding-the-different-aws-applications-in-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーのさまざまな AWS アプリケーションについて
+下記の情報を利用して、Azure AD アプリケーション ギャラリーの AWS Single Sign-On アプリケーションと AWS Single-Account Access アプリケーションのどちらを使用するかを判断します。
 
+**AWS Single Sign-On**
+
+[AWS Single Sign-On](https://docs.microsoft.com/azure/active-directory/saas-apps/aws-single-sign-on-tutorial) は、2021 年 2 月に Azure AD アプリケーション ギャラリーに追加されました。 Microsoft Azure AD を通してサインインすると、複数の AWS アカウントや AWS アプリケーションへのアクセスを一元的に管理しやすくなります。 一度 Microsoft Azure AD と AWS SSO とのフェデレーションを行って、1 つの場所から AWS SSO を使用して、すべての AWS アカウントにわたってアクセス許可を管理します。 AWS SSO では、アクセス許可が自動的にプロビジョニングされ、それらは、ポリシーやアクセスの割り当てを更新するときに最新の状態に維持されます。 エンド ユーザーは、自分の Azure AD 資格情報を使用して認証し、AWS コンソール、コマンド ライン インターフェイス、AWS SSO 統合アプリケーションにアクセスすることができます。
+
+**AWS Single-Account Access**
+
+[AWS Single-Account Access](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial) は、これまで数年間にわたってお客様に使用されており、これを使用すると、Azure AD を 1 つの AWS アカウントにフェデレーションし、Azure AD を使用して AWS IAM ロールへのアクセスを管理できます。 AWS IAM 管理者は、各 AWS アカウントにロールとポリシーを定義します。 各 AWS アカウントのために、Azure AD 管理者は、AWS IAM へのフェデレーション、アカウントへのユーザーまたはグループの割り当て、ロールのアクセスを承認するアサーションを送信するための Azure AD の構成を行います。  
+
+| 機能 | AWS Single Sign-On | AWS Single-Account Access |
+|:--- |:---:|:---:|
+|条件付きアクセス| すべての AWS アカウントに対する単一の条件付きアクセス ポリシーがサポートされます。 | すべてのアカウントに対する単一の条件付きアクセス ポリシーまたはアカウントごとのカスタム ポリシーがサポートされます。|
+| CLI アクセス | サポートされています | サポートされています|
+| Privileged Identity Management | まだサポートされていません | まだサポートされていません |
+| アカウント管理の一元化 | AWS でのアカウント管理を一元化します。 | Azure AD でのアカウント管理を一元化します (おそらく、アカウントごとに Azure AD のエンタープライズ アプリケーションが必要になります)。 |
+| SAML 証明書| 単一の証明書| アプリやアカウントごとに別個の証明書 | 
+
+## <a name="aws-single-account-access-architecture"></a>AWS Single-Account Access のアーキテクチャ
 ![Azure AD と AWS の関係の図](./media/amazon-web-service-tutorial/tutorial_amazonwebservices_image.png)
 
 複数のインスタンスに対して複数の識別子を構成できます。 次に例を示します。

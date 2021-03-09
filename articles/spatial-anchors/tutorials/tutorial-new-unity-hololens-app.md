@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 2/3/2021
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ee0bf9b4ce009f37dd1931d4ed030defa24e7d38
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 0233e58a404721586af0ae2fbdf78dbab6d424ed
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95996264"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550390"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>チュートリアル:Azure Spatial Anchors を使用して新しい HoloLens Unity アプリを作成する詳細な手順
 
@@ -140,36 +140,13 @@ Update() ループを使用すれば、キューに入れられたアクショ�
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>Azure Spatial Anchors SDK の取得
 
-## <a name="via-unity-package-manager-upm-package"></a>[Unity パッケージ マネージャー (UPM) を使用](#tab/UPMPackage)
+### <a name="download-packages"></a>パッケージのダウンロード
+[!INCLUDE [Download Unity Packages](../../../includes/spatial-anchors-unity-download-packages.md)]
 
-このメソッドは、Unity バージョン 2019.1+ と互換性があります。
+### <a name="import-packages"></a>パッケージをインポートする
+[!INCLUDE [Import Unity Packages](../../../includes/spatial-anchors-unity-import-packages.md)]
 
-### <a name="add-the-registry-to-your-unity-project"></a>Unity プロジェクトにレジストリを追加する
-
-1. ファイル エクスプローラーで、ご利用の Unity プロジェクトの `Packages` フォルダーに移動します。 テキスト エディターでプロジェクト マニフェスト ファイル `manifest.json` を開きます。
-2. ファイルの上部の `dependencies` セクションと同じレベルで、次のエントリを追加して、Azure Spatial Anchors レジストリをプロジェクトに含めます。 `scopedRegistries` エントリにより、Azure Spatial Anchors SDK パッケージを検索する場所が Unity に指示されます。
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-19&highlight=2-10)]
-
-### <a name="add-the-sdk-package-to-your-unity-project"></a>SDK パッケージを Unity プロジェクトに追加する
-
-1. Azure Spatial Anchors Windows の SDK パッケージ名 (`com.microsoft.azure.spatial-anchors-sdk.windows`) とパッケージ バージョンを含むエントリを、自分のプロジェクト マニフェスト内の `dependencies` セクションに追加します。 下記の例をご覧ください。
-
-    [!code-json[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-unity-scoped-registry-setup.md?range=9-20&highlight=12)]
-
-2. `manifest.json` ファイルを保存して閉じます。 Unity に戻ると、Unity によってプロジェクト マニフェストの変更が自動的に検出され、指定したパッケージが取得されます。 プロジェクト ビュー内で `Packages` フォルダーを展開すれば、適切なパッケージがインポートされていることを確認できます。
-
-## <a name="via-unity-asset-package"></a>[Unity アセット パッケージを使用](#tab/UnityAssetPackage)
-
-> [!WARNING]
-> Azure Spatial Anchors SDK の Unity アセット パッケージの配布は、SDK バージョン 2.5.0 後に非推奨とされます。
-
-Azure Spatial Anchors SDK をダウンロードしましょう。 [GitHub の Azure Spatial Anchors リリース ページ](https://github.com/Azure/azure-spatial-anchors-samples/releases)に移動します。 **[Assets]\(アセット\)** で、**AzureSpatialAnchors.unitypackage** をダウンロードします。 Unity で **[Assets]\(アセット\)** に移動し、 **[Import Package]\(パッケージのインポート\)**  >  **[Custom Package...]\(カスタム パッケージ\)** の順に選択します。パッケージに移動して、 **[Open]\(開く\)** を選択します。
-
-表示される新しい **[Import Unity Package]\(Unity パッケージのインポート\)** ウィンドウで、 **[Plugins]\(プラグイン\)** の選択を解除し、右下隅の **[Import]\(インポート\)** を選択します。
-
----
-
+### <a name="prepare-code"></a>コードを準備する
 自分の **Visual Studio** ソリューションで、次のインポートを `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs` に追加します。
 
 [!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]

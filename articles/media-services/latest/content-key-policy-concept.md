@@ -1,5 +1,5 @@
 ---
-title: Media Services のコンテンツ キー ポリシー - Azure | Microsoft Docs
+title: Media Services のコンテンツ キー ポリシー - Azure
 description: この記事では、コンテンツ キー ポリシーとは何か、および Azure Media Services でそれらを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: dd19d0730b25685b008af16d1c1eac6537750612
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1333bbcc7e2ea9219d28fcc1e63f21a833c2bc6f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297271"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101709565"
 ---
 # <a name="content-key-policies"></a>コンテンツ キー ポリシー
 
@@ -64,4 +64,4 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 
 * [AES-128 動的暗号化とキー配信サービスの使用](protect-with-aes128.md)
 * [DRM 動的暗号化とライセンス配信サービスの使用](protect-with-drm.md)
-* [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted)
+* [基本的な AES クリア キー暗号化とストリーミングのサンプル コード](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/BasicAESClearKey)

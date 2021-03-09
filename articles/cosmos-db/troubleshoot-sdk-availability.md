@@ -3,17 +3,17 @@ title: 複数リージョン環境での Azure Cosmos SDK の可用性の診断�
 description: 複数リージョン環境で操作する場合の Azure Cosmos SDK の可用性の動作について、詳しく説明します。
 author: ealsur
 ms.service: cosmos-db
-ms.date: 10/20/2020
+ms.date: 02/16/2021
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b1c2377ba26b4ca64f5028fb1a51ca4e64f6a67c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 34c6e7ad8473f02f2772c84ea63aee2a41b97306
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097891"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559701"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>複数リージョン環境での Azure Cosmos SDK の可用性の診断とトラブルシューティング
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -47,7 +47,7 @@ ms.locfileid: "93097891"
 
 通常の状況下では、SDK クライアントは優先リージョン (リージョンの優先設定が設定されている場合) またはプライマリ リージョン (優先設定が設定されていない場合) に接続され、以下のいずれかのシナリオが発生しない限り、操作はそのリージョンに限定されます。
 
-これらの場合、Azure Cosmos SDK を使用するクライアントではログが公開され、 **操作の診断情報** の一部として再試行情報が含まれます。
+これらの場合、Azure Cosmos SDK を使用するクライアントではログが公開され、**操作の診断情報** の一部として再試行情報が含まれます。
 
 * .NET V2 SDK の応答の *RequestDiagnosticsString* プロパティ。
 * .NET V3 SDK の応答と例外の *Diagnostics* プロパティ。
@@ -83,9 +83,9 @@ Azure Cosmos アカウントに割り当てられていないリージョンに�
 
 ## <a name="transient-connectivity-issues-on-tcp-protocol"></a>TCP プロトコルでの一時的な接続の問題
 
-Azure Cosmos SDK クライアントが TCP プロトコルを使用するように構成されているシナリオでは、特定の要求に対して、ネットワークの状態が特定のエンドポイントとの通信に一時的に影響を与える場合があります。 このような一時的なネットワーク状態は、TCP タイムアウトとして表面化する可能性があります。 クライアントでは、同じエンドポイントに対して数秒間要求がローカルで再試行されます。
+Azure Cosmos SDK クライアントが TCP プロトコルを使用するように構成されているシナリオでは、特定の要求に対して、ネットワークの状態が特定のエンドポイントとの通信に一時的に影響を与える場合があります。 このような一時的なネットワーク状態は、TCP タイムアウトおよびサービス利用不可 (HTTP 503) エラーとして表面化する可能性があります。 クライアントでは、エラーが表面化する前に、同じエンドポイントに対して要求が数秒間ローカルで再試行されます。
 
-ユーザーが複数のリージョンを含む優先リージョン一覧を構成し、Azure Cosmos アカウントが複数書き込みリージョンまたは単一書き込みリージョンであり、操作が読み取り要求である場合、クライアントでは優先設定一覧の次のリージョンでその 1 つの操作が再試行されます。
+ユーザーが複数のリージョンを含む優先リージョン一覧を構成済みで、Azure Cosmos アカウントが複数書き込みリージョンまたは単一書き込みリージョンであり、操作が読み取り要求である場合、クライアントではローカル障害が検出され、優先設定一覧の次のリージョンでその 1 つの操作が再試行されます。
 
 ## <a name="next-steps"></a>次の手順
 
