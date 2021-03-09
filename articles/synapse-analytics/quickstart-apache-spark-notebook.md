@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
-ms.openlocfilehash: 38b0f23a44a16125726e7810b2045d244a2e6b06
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 060c78621b82f4698d4596383cd155d85d483d8e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454654"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101669498"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>クイックスタート: Web ツールを使用して Azure Synapse Analytics でサーバーレス Apache Spark プールを作成する
 
@@ -148,7 +148,7 @@ Spark インスタンスがシャットダウンされるようにするには�
 このクイックスタートでは、サーバーレス Apache Spark プールを作成し、基本的な Spark SQL クエリを実行する方法を学習しました。
 
 - [Azure Synapse Analytics](overview-what-is.md)
-- [.NET for Apache Spark のドキュメント](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+- [.NET for Apache Spark のドキュメント](/dotnet/spark)
 
 
 

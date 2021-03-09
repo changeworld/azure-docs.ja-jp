@@ -6,12 +6,12 @@ ms.author: lagayhar
 author: lgayhardt
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 3a2765e9dcf3b0e7bf28191e6ecbb069f26c42f5
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: a823b5e2ae31e62ff6d876f0b3468953c0ed9c35
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208524"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587158"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>ブックベースの分析情報のトラブルシューティング
 
@@ -72,4 +72,4 @@ ms.locfileid: "98208524"
 
 ## <a name="next-steps"></a>次のステップ
 
-ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などの詳細については、「[Azure Monitor ブックを使用した対話型レポートの作成](../platform/workbooks-overview.md)」で学習してください。
+ブックがサポートするように設計されているシナリオ、新規レポートの作成方法と既存レポートのカスタマイズ方法などの詳細については、「[Azure Monitor ブックを使用した対話型レポートの作成](../visualize/workbooks-overview.md)」で学習してください。

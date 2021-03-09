@@ -3,53 +3,106 @@ title: Azure ゲスト OS に適用される更新プログラムの一覧 | Mic
 description: この記事では、さまざまな Azure ゲスト OS に適用される Microsoft Security Response Center の更新プログラムを一覧で示します。 使用しているゲスト OS に更新プログラムが適用されるかどうかを確認します。
 services: cloud-services
 documentationcenter: na
-author: yohaddad
+author: gunnarcms
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/26/2021
-ms.author: yohaddad
-ms.openlocfilehash: 7384b902e1bde46c55bcfa30b2aa46122445b05e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 2/17/2021
+ms.author: gunnarcms
+ms.openlocfilehash: 1a77ab15bc4d1095f47d9d411b5a0fd64bb568de
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98877511"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100650798"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
 
-## <a name="january-2021-guest-os"></a>2021 年 1 月のゲスト OS
->[!NOTE]
->1 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 1 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。
+## <a name="february-2021-guest-os"></a>2021 年 2 月のゲスト OS
+
+>[!NOTE] 
+
+>2 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 2 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。 
 
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
 | --- | --- | --- | --- | --- |
-|  Rel 21-01 |  [4598230]  |  最新の累積的な更新プログラム (LCU) | 6.27 | 2021 年 1 月 12 日 |
-|  Rel 21-01 |  [4580325]  |  Flash の更新プログラム | 3.93、4.86、5.51、6.27 | 2020 年 10 月 13 日 |
-|  Rel 21-01 |  [4586768]  |  IE の累積的な更新プログラム | 2.106、3.93、4.86 | 2020 年 11 月 10 日 |
-|  Rel 21-01 |  [4598243]  |  最新の累積的な更新プログラム (LCU) | 5.51 | 2021 年 1 月 12 日 |
-|  Rel 21-01 |  [4578952]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 2.106 | 2021 年 1 月 12 日 |
-|  Rel 21-01 |  [4578955]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 2.106 | 2021 年 1 月 12 日 |
-|  Rel 21-01 |  [4578953]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 4.86 | 2021 年 1 月 12 日 |
-|  Rel 21-01 |  [4578956]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 4.86 | 2021 年 1 月 12 日 |
-|  Rel 21-01 |  [4578950]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 3.93 | 2021 年 1 月 12 日 |
-|  Rel 21-01 |  [4578954]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 3.93 | 2021 年 1 月 12 日 |
-|  Rel 21-01 |  [4578966]  |  .NET Framework 3.5 と 4.7.2 の累積的な更新プログラム | 6.27 | 2020 年 10 月 13 日 |
-|  Rel 21-01 |  [4598279]  |  マンスリー ロールアップ | 2.106 | 2020 年 1 月 12 日 |
-|  Rel 21-01 |  [4598278]  |  マンスリー ロールアップ | 3.93 | 2020 年 1 月 12 日 |
-|  Rel 21-01 |  [4598285]  |  マンスリー ロールアップ | 4.86 | 2020 年 1 月 12 日 |
-|  Rel 21-01 |  [4566426]  |  サービス スタック更新プログラム | 3.93 | 2020 年 7 月 14 日 |
-|  Rel 21-01 |  [4566425]  |  サービス スタック更新プログラム | 4.86 | 2020 年 7 月 14 日 |
-|  Rel 21-01 OOB |  [4578013]  |  スタンドアロンのセキュリティ更新プログラム | 4.86 | 2020 年 8 月 19 日 |
-|  Rel 21-01 |  [4576750]  |  サービス スタック更新プログラム | 5.51 | 2020 年 9 月 8 日 |
-|  Rel 21-01 |  [4592510]  |  サービス スタック更新プログラム | 2.106 | 2020 年 12 月 8 日 |
-|  Rel 21-01 |  [4598480]  |  サービス スタック更新プログラム | 6.27 | 2021 年 1 月 12 日 |
-|  Rel 21-01 |  [4494175]  |  マイクロコード | 5.51 | 2020 年 9 月 1 日 |
-|  Rel 21-01 |  [4494174]  |  マイクロコード | 6.27 | 2020 年 9 月 3 日 |
+|  Rel 21-02 |  [4601345]  |  最新の累積的な更新プログラム (LCU) | 6.28 | 2021 年 2 月 9 日 |
+|  Rel 21-02 |  [4580325]  |  Flash の更新プログラム | 3.94、4.87、5.52、6.28 | 2020 年 10 月 13 日 |
+|  Rel 21-02 |  [4586768]  |  IE の累積的な更新プログラム | 2.107、3.94、4.87 | 2020 年 11 月 10 日 |
+|  Rel 21-02 |  [4601318]  |  最新の累積的な更新プログラム (LCU) | 5.52 | 2021 年 2 月 9 日 |
+|  Rel 21-02 |  [4578952]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 2.107 | 2021 年 1 月 12 日 |
+|  Rel 21-02 |  [4578955]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 2.107 | 2021 年 1 月 12 日 |
+|  Rel 21-02 |  [4578953]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 4.87 | 2021 年 1 月 12 日 |
+|  Rel 21-02 |  [4578956]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 4.87 | 2021 年 1 月 12 日 |
+|  Rel 21-02 |  [4578950]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | 3.94 | 2021 年 1 月 12 日 |
+|  Rel 21-02 |  [4578954]  |  . .NET Framework 4.5.2 のセキュリティと品質のロールアップ | 3.94 | 2021 年 1 月 12 日 |
+|  Rel 21-02 |  [4578966]  |  . NET Framework 3.5 と 4.7.2 の累積的な更新プログラム | 6.28 | 2020 年 10 月 13 日 |
+|  Rel 21-02 |  [4601347]  |  マンスリー ロールアップ | 2.107 | 2021 年 2 月 9 日 |
+|  Rel 21-02 |  [4601348]  |  マンスリー ロールアップ | 3.94 | 2021 年 2 月 9 日 |
+|  Rel 21-02 |  [4601384]  |  マンスリー ロールアップ | 4.87 | 2021 年 2 月 9 日 |
+|  Rel 21-02 |  [4566426]  |  サービス スタック更新プログラム | 3.94 | 2020 年 7 月 14 日 |
+|  Rel 21-02 |  [4566425]  |  サービス スタック更新プログラム | 4.87 | 2020 年 7 月 14 日 |
+|  Rel 21-02 OOB |  [4578013]  |  スタンドアロンのセキュリティ更新プログラム | 4.87 | 2020 年 8 月 19 日 |
+|  Rel 21-02 |  [4601392]  |  サービス スタック更新プログラム | 5.52 | 2021 年 2 月 9 日 |
+|  Rel 21-02 |  [4592510]  |  サービス スタック更新プログラム | 2.107 | 2020 年 12 月 8 日 |
+|  Rel 21-02 |  [4601393]  |  サービス スタック更新プログラム | 6.28 | 2021 年 2 月 9 日 |
+|  Rel 21-02 |  [4494175]  |  マイクロコード | 5.52 | 2020 年 9 月 1 日 |
+|  Rel 21-02 |  [4494174]  |  マイクロコード | 6.28 | 2020 年 9 月 1 日 |
+
+[4601345]: https://support.microsoft.com/kb/4601345
+[4580325]: https://support.microsoft.com/kb/4580325
+[4586768]: https://support.microsoft.com/kb/4586768
+[4601318]: https://support.microsoft.com/kb/4601318
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4578966]: https://support.microsoft.com/kb/4578966
+[4601347]: https://support.microsoft.com/kb/4601347
+[4601348]: https://support.microsoft.com/kb/4601348
+[4601384]: https://support.microsoft.com/kb/4601384
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4601392]: https://support.microsoft.com/kb/4601392
+[4592510]: https://support.microsoft.com/kb/4592510
+[4601393]: https://support.microsoft.com/kb/4601393
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
+## <a name="january-2021-guest-os"></a>2021 年 1 月のゲスト OS
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 21-01 |  [4598230]  |  最新の累積的な更新プログラム (LCU) | [6.27] | 2021 年 1 月 12 日 |
+|  Rel 21-01 |  [4580325]  |  Flash の更新プログラム | [3.93]、[4.86]、[5.51]、[6.27] | 2020 年 10 月 13 日 |
+|  Rel 21-01 |  [4586768]  |  IE の累積的な更新プログラム | [2.106]、[3.93]、[4.86] | 2020 年 11 月 10 日 |
+|  Rel 21-01 |  [4598243]  |  最新の累積的な更新プログラム (LCU) | [5.51] | 2021 年 1 月 12 日 |
+|  Rel 21-01 |  [4578952]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | [2.106] | 2021 年 1 月 12 日 |
+|  Rel 21-01 |  [4578955]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | [2.106] | 2021 年 1 月 12 日 |
+|  Rel 21-01 |  [4578953]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | [4.86] | 2021 年 1 月 12 日 |
+|  Rel 21-01 |  [4578956]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | [4.86] | 2021 年 1 月 12 日 |
+|  Rel 21-01 |  [4578950]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ | [3.93] | 2021 年 1 月 12 日 |
+|  Rel 21-01 |  [4578954]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ | [3.93] | 2021 年 1 月 12 日 |
+|  Rel 21-01 |  [4578966]  |  .NET Framework 3.5 と 4.7.2 の累積的な更新プログラム | [6.27] | 2020 年 10 月 13 日 |
+|  Rel 21-01 |  [4598279]  |  マンスリー ロールアップ | [2.106] | 2020 年 1 月 12 日 |
+|  Rel 21-01 |  [4598278]  |  マンスリー ロールアップ | [3.93] | 2020 年 1 月 12 日 |
+|  Rel 21-01 |  [4598285]  |  マンスリー ロールアップ | [4.86] | 2020 年 1 月 12 日 |
+|  Rel 21-01 |  [4566426]  |  サービス スタック更新プログラム | [3.93] | 2020 年 7 月 14 日 |
+|  Rel 21-01 |  [4566425]  |  サービス スタック更新プログラム | [4.86] | 2020 年 7 月 14 日 |
+|  Rel 21-01 OOB |  [4578013]  |  スタンドアロンのセキュリティ更新プログラム | [4.86] | 2020 年 8 月 19 日 |
+|  Rel 21-01 |  [4576750]  |  サービス スタック更新プログラム | [5.51] | 2020 年 9 月 8 日 |
+|  Rel 21-01 |  [4592510]  |  サービス スタック更新プログラム | [2.106] | 2020 年 12 月 8 日 |
+|  Rel 21-01 |  [4598480]  |  サービス スタック更新プログラム | [6.27] | 2021 年 1 月 12 日 |
+|  Rel 21-01 |  [4494175]  |  マイクロコード | [5.51] | 2020 年 9 月 1 日 |
+|  Rel 21-01 |  [4494174]  |  マイクロコード | [6.27] | 2020 年 9 月 3 日 |
 
 [4598230]: https://support.microsoft.com/kb/4598230
 [4580325]: https://support.microsoft.com/kb/4580325
@@ -73,7 +126,11 @@ ms.locfileid: "98877511"
 [4598480]: https://support.microsoft.com/kb/4598480
 [4494175]: https://support.microsoft.com/kb/4494175
 [4494174]: https://support.microsoft.com/kb/4494174
-
+[2.106]: ./cloud-services-guestos-update-matrix.md#family-2-releases
+[3.93]: ./cloud-services-guestos-update-matrix.md#family-3-releases
+[4.86]: ./cloud-services-guestos-update-matrix.md#family-4-releases
+[5.51]: ./cloud-services-guestos-update-matrix.md#family-5-releases
+[6.27]: ./cloud-services-guestos-update-matrix.md#family-6-releases
 
 ## <a name="december-2020-guest-os"></a>2020 年 12 月のゲスト OS
 
@@ -1578,7 +1635,7 @@ ms.locfileid: "98877511"
 | 該当なし | [4014511] |.NET の 5 月のセキュリティ以外のロールアップ |2.63 |2017 年 5 月 9 日 |
 | 該当なし | [4014514] |.NET の 5 月のセキュリティ以外のロールアップ |2.63 |2017 年 5 月 9 日 |
 | 該当なし | [4019216] |5 月のセキュリティ以外のロールアップ |3.50 |2017 年 5 月 9 日 |
-| 該当なし | [4014503] |.NET の 5 月のセキュリティ以外のロールアップ |3.50 |2017 年 5 月 9 日 |
+| 該当なし | 4014503 |.NET の 5 月のセキュリティ以外のロールアップ |3.50 |2017 年 5 月 9 日 |
 | 該当なし | [4014506] |.NET の 5 月のセキュリティ以外のロールアップ |3.50 |2017 年 5 月 9 日 |
 | 該当なし | [4014509] |.NET の 5 月のセキュリティ以外のロールアップ |3.50 |2017 年 5 月 9 日 |
 | 該当なし | [4014513] |.NET の 5 月のセキュリティ以外のロールアップ |3.50 |2017 年 5 月 9 日 |
@@ -2327,7 +2384,6 @@ ms.locfileid: "98877511"
 [4014511]: https://support.microsoft.com/kb/4014511
 [4014514]: https://support.microsoft.com/kb/4014514
 [4019216]: https://support.microsoft.com/kb/4019216
-[4014503]: https://support.microsoft.com/kb/4014503
 [4014506]: https://support.microsoft.com/kb/4014506
 [4014509]: https://support.microsoft.com/kb/4014509
 [4014513]: https://support.microsoft.com/kb/4014513
@@ -2679,7 +2735,7 @@ ms.locfileid: "98877511"
 [3035126]: https://support.microsoft.com/kb/3035126
 
 [3049563]:https://support.microsoft.com/kb/3049563
-[3057110]:https://support.microsoft.com/kb/3057110
+[3057110]:https://mskb.pkisolutions.com/kb/3057110
 [3046002]:https://support.microsoft.com/kb/3046002
 [3057134]:https://support.microsoft.com/kb/3057134
 [3055642]:https://support.microsoft.com/kb/3055642
@@ -2689,7 +2745,7 @@ ms.locfileid: "98877511"
 [3051768]:https://support.microsoft.com/kb/3051768
 [3061518]:https://support.microsoft.com/kb/3061518
 
-[3038314]:https://support.microsoft.com/kb/3038314
+[3038314]:https://web.archive.org/web/20180920122209/https:/support.microsoft.com/en-us/help/3038314/ms15-032-cumulative-security-update-for-internet-explorer-april-14-201
 [3042553]:https://support.microsoft.com/kb/3042553
 [3046306]:https://support.microsoft.com/kb/3046306
 [3046269]:https://support.microsoft.com/kb/3046269

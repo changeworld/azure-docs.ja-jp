@@ -7,22 +7,22 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: b1b7069cb723bffd758c3603cc957329dd6d2a9b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3dbb6ca64451cb60d5a8ec67ecdc528865a4438c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463274"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101719085"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>チュートリアル:スマート インベントリの管理アプリケーション テンプレートをデプロイして調べる
 
-
-
 このチュートリアルでは、IoT Central の **スマート インベントリの管理** アプリケーション テンプレートをデプロイする方法について説明します。 テンプレートをデプロイする方法、既定で含まれるもの、次にできることについて説明します。
 
-このチュートリアルで学習する内容は次のとおりです。 
-* スマート インベントリの管理アプリケーションを作成する 
-* アプリケーションを調べる 
+このチュートリアルで学習する内容は次のとおりです。
+
+> [!div class="checklist"]
+> * スマート インベントリの管理アプリケーションを作成する 
+> * アプリケーションを調べる 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -110,8 +110,8 @@ ms.locfileid: "96463274"
 > ![使い終えたアプリケーションを削除する方法を示す画面のスクリーンショット](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
 ## <a name="next-steps"></a>次のステップ
-* スマート在庫管理についてさらに詳しく学習します 
+
+スマート在庫管理についてさらに詳しく学習します。
+
 > [!div class="nextstepaction"]
 > [スマート在庫管理の概念](./architecture-smart-inventory-management.md)
-* 他の [IoT Central 小売りテンプレート](./overview-iot-central-retail.md)についてさらに詳しく学習します
-* [IoT Central の概要](../core/overview-iot-central.md)に関する記事を参照し、IoT Central についてさらに詳しく学習します

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 1f8673b5830cc149bcebd994631732a7d0d08c65
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: c6a695030d399cb1609c63ef5652419a9bef1bbf
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852287"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198984"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -125,7 +125,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>シミュレーションがクラウドにデータを送信していることを確認するにはどうすればいいですか
 
-[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) または [Azure IoT CLI Extension monitor-events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events&preserve-view=true) コマンドを使用すると、特定のデバイスから IoT Hub に送信されるデータを検査できます。 これらのツールを使用するには、デプロイ環境の IoT ハブ用の接続文字列を知っている必要があります。 「[ソリューションで使用される IoT ハブの接続文字列を探すにはどうすればいいですか](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)」をご覧ください。
+[Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) または [Azure IoT CLI Extension monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) コマンドを使用すると、特定のデバイスから IoT Hub に送信されるデータを検査できます。 これらのツールを使用するには、デプロイ環境の IoT ハブ用の接続文字列を知っている必要があります。 「[ソリューションで使用される IoT ハブの接続文字列を探すにはどうすればいいですか](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)」をご覧ください。
 
 発行元デバイスの 1 つから送信されるデータを検査します。
 

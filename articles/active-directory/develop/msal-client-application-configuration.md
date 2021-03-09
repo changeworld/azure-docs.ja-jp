@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9ec8a5fe5de751e40ebaa17629ff72c5f6b2adca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 00768f363d08bc476350e57a8eac69eafd9c3589
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979989"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580940"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 
@@ -73,7 +73,7 @@ Azure AD クラウド機関には、2 つの部分があります。
 
 サインイン対象ユーザーは、アプリのビジネス ニーズによって異なります。
 
-- 基幹業務 (LOB) 開発者であれば、ご自分の組織内でのみ使用されるシングル テナント アプリケーションを作成することになると思われます。 その場合、テナント ID (Azure AD インスタンスの ID) か、Azure AD インスタンスに関連付けられたドメイン名で組織を指定する必要があります。
+- 基幹業務 (LOB) 開発者であれば、ご自分の組織内でのみ使用されるシングル テナント アプリケーションを作成することになると思われます。 その場合、テナント ID (Azure AD インスタンスの ID) か、Azure AD インスタンスに関連付けられたドメイン名で組織を指定します。
 - ISV の方であれば、ユーザーに、すべての組織または一部の組織で職場および学校アカウントを使用してサインインしてもらうケースが考えられます (マルチテナント アプリ)。 ただし、ユーザーに個人用 Microsoft アカウントでサインインしてもらうこともあります。
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>コード/構成で対象ユーザーを指定する方法
@@ -122,9 +122,9 @@ MSAL を使用してパブリック クライアント アプリを開発して�
   | UWP | `WebAuthenticationBroker.GetCurrentApplicationCallbackUri()` の値。 これは、登録する必要がある WebAuthenticationBroker.GetCurrentApplicationCallbackUri() の結果に値を設定することによって、ブラウザーでの SSO を有効にします |
   | .NET Core | `https://localhost`. 今のところ、埋め込み Web ビュー用の UI が .NET Core には存在しないため、これによって、ユーザーはシステム ブラウザーを使用して対話型認証を実行できるようになります。 |
 
-- ブローカーをサポートしていない Xamarin Android および iOS アプリケーションを構築している場合は、リダイレクト URI を追加する必要はありません (Xamarin Android および iOS では、リダイレクト URI は自動的に `msal{ClientId}://auth` に設定されます)
+- ブローカーのリダイレクト URI をサポートしていない Xamarin Android および iOS アプリケーションを構築する場合は、リダイレクト URI を追加する必要はありません。 Xamarin Android および iOS では、自動的に `msal{ClientId}://auth` に設定されます。
 
-- [アプリの登録](https://aka.ms/appregistrations)でリダイレクト URI を構成する必要があります。
+- [アプリの登録](https://aka.ms/appregistrations)でリダイレクト URI を構成します。
 
    ![アプリの登録でのリダイレクト URI](media/msal-client-application-configuration/redirect-uri.png)
 
@@ -147,8 +147,20 @@ Web アプリの場合、リダイレクト URI (または応答 URL) は、Azur
 このオプションでは、機密性の高いクライアント アプリ用のクライアント シークレットを指定します。 このシークレット (アプリ パスワード) は、アプリケーション登録ポータルによって提供されるか、PowerShell AzureAD、PowerShell AzureRM、Azure CLI のいずれかを使用したアプリの登録時に Azure AD に対して提供されます。
 
 ## <a name="logging"></a>ログ記録
+デバッグと認証エラーのトラブルシューティングのシナリオを支援するために、Microsoft Authentication Library は組み込みのログ記録をサポートしています。 各ライブラリでのログ記録については、次の記事で説明されています。
 
-その他の構成オプションを使用して、ログ記録とトラブルシューティングを有効にすることができます。 これらの使用方法の詳細については、「[ログの記録](msal-logging.md)」の記事を参照してください。
+:::row:::
+    :::column:::
+        - [MSAL.NET でのログ](msal-logging-dotnet.md)
+        - [Android 用の MSAL でのログ記録](msal-logging-android.md)
+        - [MSAL.js でのログ記録](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [iOS および macOS 用の MSAL でのログ記録](msal-logging-ios.md)
+        - [MSAL for Java でのログ記録](msal-logging-java.md)
+        - [Python 用の MSAL でのログ記録](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>次のステップ
 

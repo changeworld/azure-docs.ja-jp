@@ -2,13 +2,13 @@
 title: コンテナー イメージのインポート
 description: Azure API を使用することで、Docker コマンドを実行することなく、Azure コンテナー レジストリにコンテナー イメージをインポートします。
 ms.topic: article
-ms.date: 09/18/2020
-ms.openlocfilehash: 3950b9fb24b80db4d9654a615521c0eb82914499
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/15/2021
+ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019975"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988251"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>コンテナー レジストリにコンテナー イメージをインポートする
 
@@ -35,6 +35,11 @@ Azure コンテナー レジストリにイメージをインポートするや�
 > [!NOTE]
 > 複数の Azure リージョンに同じコンテナー イメージを配布する必要がある場合、Azure Container Registry では [geo レプリケーション](container-registry-geo-replication.md)もサポートされます。 レジストリの geo レプリケーション (Premium サービス レベルが必要) を行うと、1 つのレジストリに含まれる同一のイメージとタグ名を、複数のリージョンで使用できます。
 >
+
+> [!IMPORTANT]
+> 2 つの Azure コンテナー レジストリ間でのイメージのインポートに対する変更は、2021 年 1 月の時点で導入されました。
+> * ネットワーク制限付きの Azure コンテナー レジストリとの間でインポートを行うには、ネットワークをバイパスできるように、制限付きレジストリで [**信頼されたサービスによるアクセスを許可**](allow-access-trusted-services.md)する必要があります。 既定では、この設定は有効で、インポートが可能になっています。 プライベート エンドポイントまたはレジストリ ファイアウォール規則を使用する新しく作成されたレジストリで設定が有効になっていない場合、インポートは失敗します。 
+> * インポートのソースまたはターゲットとして使用される既存のネットワーク制限付き Azure コンテナー レジストリでは、このネットワーク セキュリティ機能を有効にすることは、任意ですが推奨されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,13 +68,15 @@ az acr repository show-manifests \
   --repository hello-world
 ```
 
-次の例では、Docker Hub の `tensorflow` リポジトリからパブリック イメージをインポートします。
+[Docker Hub アカウント](https://www.docker.com/pricing)がある場合は、Docker Hub からイメージをインポートするときに資格情報を使用することをお勧めします。 Docker Hub のユーザー名とパスワード、または[個人用アクセストークン](https://docs.docker.com/docker-hub/access-tokens/)をパラメーターとして `az acr import` に渡します。 次の例では、Docker Hub 資格情報を使用して、Docker Hub の `tensorflow` リポジトリからパブリック イメージをインポートします。
 
 ```azurecli
 az acr import \
   --name myregistry \
   --source docker.io/tensorflow/tensorflow:latest-gpu \
   --image tensorflow:latest-gpu
+  --username <Docker Hub user name>
+  --password <Docker Hub token>
 ```
 
 ### <a name="import-from-microsoft-container-registry"></a>Microsoft Container Registry からインポートする
@@ -92,6 +99,8 @@ az acr import \
 * レジストリの場所は、同じ Active Directory テナント内であれば、同じ Azure サブスクリプション内でも、別の Azure サブスクリプション内でも構いません。
 
 * ソース レジストリへの[パブリック アクセス](container-registry-access-selected-networks.md#disable-public-network-access)は無効になっている場合があります。 パブリック アクセスが無効になっている場合、レジストリ ログイン サーバー名ではなく、リソース ID でソース レジストリを指定します。
+
+* ソース レジストリまたはターゲット レジストリにプライベート エンドポイントがある場合、またはレジストリ ファイアウォール規則が適用される場合は、制限付きレジストリでネットワークにアクセスできるよう[信頼されたサービスが許可されている](allow-access-trusted-services.md)ことを確認します。
 
 ### <a name="import-from-a-registry-in-the-same-subscription"></a>同じサブスクリプション内のレジストリからインポートする
 

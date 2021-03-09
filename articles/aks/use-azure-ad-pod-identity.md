@@ -4,16 +4,19 @@ description: Azure Kubernetes Service (AKS) で AAD ポッドマネージド ID 
 services: container-service
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: d992c5c5384c04fe39511481550ab7b0ea47069e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 22b7a03a8598aa6e4b7c392567905d467776360c
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217874"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99557360"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)
 
 Azure Active Directory ポッドマネージド ID では、Kubernetes プリミティブを使用して [Azure リソース用マネージド ID][az-managed-identities] と Azure Active Directory (AAD) の ID をポッドに関連付けます。 管理者は、ID とバインドを Kubernetes プリミティブとして作成し、ID プロバイダーとして AAD に依存する Azure リソースにポッドがアクセスできるようにします。
+
+> [!NOTE]
+> AADPODIDENTITY が既にインストールされている場合、既存のインストールを削除する必要があります。 この機能を有効にすると、MIC コンポーネントは不要になります。
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 

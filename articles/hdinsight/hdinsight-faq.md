@@ -4,17 +4,16 @@ description: HDInsight についてよく寄せられる質問
 keywords: よく寄せられる質問、FAQ
 author: Ramakoni1
 ms.author: ramakoni
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 120a73c7bf2ea9ee61d1fe1aef9ffa39a3cb3f76
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 84124f33f6aa02f63c0c47a24bd7d2a71ced2d11
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882400"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699302"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: よく寄せられる質問
 
@@ -62,7 +61,7 @@ HDInsight クラスターの種類とプロビジョニング方法を確認す�
 
 - アプリケーションをインストールする [HDInsight アプリケーション プラットフォーム](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)。
 
-サポートされるコンポーネントの一覧については、「[HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions)」を参照してください。
+サポートされるコンポーネントの一覧については、「[HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは](./hdinsight-component-versioning.md)」を参照してください。
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>クラスターにプレインストールされている個々のコンポーネントをアップグレードできますか。
 
@@ -235,7 +234,7 @@ Cron ジョブを設定して実行する方法の詳細については、「[Cr
 
 ### <a name="how-can-i-set-up-auditing-for-my-blob-storage-account"></a>BLOB ストレージ アカウントの監査を設定するにはどうすればよいですか。
 
-BLOB ストレージ アカウントを監査するには、「[Azure ポータルでのストレージ アカウントの監視](../storage/common/storage-monitor-storage-account.md)」の手順を使用して監視を構成します。 HDFS 監査ログでは、ローカルの HDFS ファイルシステムのみの監査情報のみが提供されます (hdfs://mycluster)。  リモート ストレージで実行される操作は含まれません。
+BLOB ストレージ アカウントを監査するには、「[Azure ポータルでのストレージ アカウントの監視](../storage/common/manage-storage-analytics-logs.md)」の手順を使用して監視を構成します。 HDFS 監査ログでは、ローカルの HDFS ファイルシステムのみの監査情報のみが提供されます (hdfs://mycluster)。  リモート ストレージで実行される操作は含まれません。
 
 ### <a name="how-can-i-transfer-files-between-a-blob-container-and-an-hdinsight-head-node"></a>BLOB コンテナーと HDInsight ヘッド ノードの間でファイルを転送する方法を教えてください。
 

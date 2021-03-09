@@ -3,21 +3,23 @@ title: Azure Image Builder を使用して、既存のイメージ バージョ�
 description: Windows で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成します。
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.openlocfilehash: 4779abfa92876c0d5a9b045963778a9d2440bf3f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
+ms.openlocfilehash: 0a53e8de8dd832e793ae12034c96ce9fe634ed7a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878750"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101694106"
 ---
 # <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder-in-windows"></a>プレビュー:Windows で Azure Image Builder を使用して既存のイメージ バージョンから新しい VM イメージ バージョンを作成する
 
 この記事では、[共有イメージ ギャラリー](../shared-image-galleries.md)で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
 
-サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json) です。 
+サンプルの .json テンプレートを使用して、イメージを構成します。 使用する .json ファイルは、[helloImageTemplateforSIGfromWinSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json) です。 
 
 > [!IMPORTANT]
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
@@ -43,6 +45,7 @@ az provider show -n Microsoft.VirtualMachineImages | grep registrationState
 az provider show -n Microsoft.KeyVault | grep registrationState
 az provider show -n Microsoft.Compute | grep registrationState
 az provider show -n Microsoft.Storage | grep registrationState
+az provider show -n Microsoft.Network | grep registrationState
 ```
 
 登録されていない場合、次のコマンドを実行します。
@@ -52,6 +55,7 @@ az provider register -n Microsoft.VirtualMachineImages
 az provider register -n Microsoft.Compute
 az provider register -n Microsoft.KeyVault
 az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Network
 ```
 
 
@@ -107,13 +111,13 @@ imgBuilderId=$(az identity list -g $sigResourceGroup --query "[?contains(name, '
 
 
 ## <a name="modify-helloimage-example"></a>helloImage の例の変更
-.json ファイル [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) と [Image Builder テンプレートのリファレンス](../linux/image-builder-json.md)を開いて、使用しようとしている例を確認できます。 
+.json ファイル [helloImageTemplateforSIGfromSIG.json](https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/2_Creating_a_Custom_Linux_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromSIG.json) と [Image Builder テンプレートのリファレンス](../linux/image-builder-json.md)を開いて、使用しようとしている例を確認できます。 
 
 
 .json の例をダウンロードし、変数を使用して構成します。 
 
 ```azurecli-interactive
-curl https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json -o helloImageTemplateforSIGfromWinSIG.json
+curl https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/8_Creating_a_Custom_Win_Shared_Image_Gallery_Image_from_SIG/helloImageTemplateforSIGfromWinSIG.json -o helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<subscriptionID>/$subscriptionID/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<rgName>/$sigResourceGroup/g" helloImageTemplateforSIGfromWinSIG.json
 sed -i -e "s/<imageDefName>/$imageDefName/g" helloImageTemplateforSIGfromWinSIG.json

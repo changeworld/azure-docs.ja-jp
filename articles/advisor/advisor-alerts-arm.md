@@ -4,12 +4,12 @@ description: Azure Resource Manager テンプレート (ARM テンプレート) 
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 06/29/2020
-ms.openlocfilehash: f03bf6eaf4f3045e00fc67efe6faa9f53d962089
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7b10ad06e5397ab733987373a3bd18de981c8c97
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91629898"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590063"
 ---
 # <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して新しい推奨事項に基づいて Azure Advisor アラートを作成する
 
@@ -17,7 +17,7 @@ ms.locfileid: "91629898"
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出されるたびに、イベントが [Azure アクティビティ ログ](../azure-monitor/platform/platform-logs-overview.md)に格納されます。 これらのイベントのアラートは、Azure Advisor から推奨事項固有のアラート作成操作を使用して設定できます。 サブスクリプションを選択し、必要に応じてリソース グループを選択して、アラートを受信するリソースを指定することができます。
+Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出されるたびに、イベントが [Azure アクティビティ ログ](../azure-monitor/essentials/platform-logs-overview.md)に格納されます。 これらのイベントのアラートは、Azure Advisor から推奨事項固有のアラート作成操作を使用して設定できます。 サブスクリプションを選択し、必要に応じてリソース グループを選択して、アラートを受信するリソースを指定することができます。
 
 また、次のプロパティを使用して、推奨事項の種類を指定することもできます。
 
@@ -30,7 +30,7 @@ Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出
 - 既存のアクション グループを選択する
 - 新しいアクション グループを作成する
 
-アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/platform/action-groups.md)に関するページを参照してください。
+アクション グループの詳細については、[アクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)に関するページを参照してください。
 
 > [!NOTE]
 > 現在、Advisor アラートは、高可用性、パフォーマンス、コストに関する推奨事項にのみ使用できます。 セキュリティに関する推奨事項はサポートされていません。
@@ -146,7 +146,7 @@ Azure Advisor でリソースの 1 つに対して新しい推奨事項が検出
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-CLI と PowerShell を使用する次の例のような、[ARM テンプレートをデプロイする](../azure-resource-manager/templates/deploy-portal.md)ための標準的な方法を使ってテンプレートをデプロイします。 **リソース グループ**と **emailAddress** のサンプルの値を、ご利用の環境に適した値に置き換えます。 ワークスペース名は、すべての Azure サブスクリプションで一意である必要があります。
+CLI と PowerShell を使用する次の例のような、[ARM テンプレートをデプロイする](../azure-resource-manager/templates/deploy-portal.md)ための標準的な方法を使ってテンプレートをデプロイします。 **リソース グループ** と **emailAddress** のサンプルの値を、ご利用の環境に適した値に置き換えます。 ワークスペース名は、すべての Azure サブスクリプションで一意である必要があります。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -167,7 +167,7 @@ New-AzResourceGroupDeployment -Name CreateAdvisorAlert -ResourceGroupName my-res
 
 ## <a name="validate-the-deployment"></a>デプロイの検証
 
-次のコマンドのいずれかを使用して、ワークスペースが作成されたことを確認します。 **リソース グループ**のサンプルの値を、先ほど使用した値に置き換えます。
+次のコマンドのいずれかを使用して、ワークスペースが作成されたことを確認します。 **リソース グループ** のサンプルの値を、先ほど使用した値に置き換えます。
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -203,5 +203,5 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>次のステップ
 
-- [アクティビティ ログ アラートの概要](../azure-monitor/platform/alerts-overview.md)を把握し、アラートを受信する方法について学習します。
-- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。
+- [アクティビティ ログ アラートの概要](../azure-monitor/alerts/alerts-overview.md)を把握し、アラートを受信する方法について学習します。
+- [アクション グループ](../azure-monitor/alerts/action-groups.md)について学習します。

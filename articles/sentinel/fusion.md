@@ -12,19 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
-ms.openlocfilehash: 5c715804693571bc421951de1288fc884d2eae8d
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 23e116eba6393f834b3368901d4440e668b16fca
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746186"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724287"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Azure Sentinel の高度なマルチステージ攻撃の検出
 
-
 > [!IMPORTANT]
-> Azure Sentinel の一部の Fusion 機能は、現在 **パブリック プレビュー** 段階にあります。
-> これらの機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> 一部の Fusion 検出 (以下でそのように示されているものを参照) は、現在 **プレビュー** 段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 機械学習を基盤とする Fusion テクノロジを利用することで、Azure Sentinel では、キルチェーンのさまざまな段階で観察される異常な動作と疑わしい行動の組み合わせを特定し、マルチステージ攻撃を自動的に検出することができます。 これらの検出を基に、Azure Sentinel では、Azure Sentinel 以外では検出が困難であろうインシデントが生成されます。 このインシデントは、2 つ以上のアラートまたはアクティビティで構成されています。 設計上、このようなインシデントでは、ボリュームが低、忠実度が高、重大度が高になります。
 
@@ -60,12 +58,12 @@ ms.locfileid: "97746186"
 これらの Fusion による攻撃検出シナリオを有効にするには、一覧にあるデータ ソースを関連付けられている Azure Sentinel データ コネクタを使用して取り込む必要があります。
 
 > [!NOTE]
-> これらのシナリオの一部は **パブリック プレビュー** 段階です。 そのように明記されています。
+> これらのシナリオの一部は **プレビュー** 段階です。 そのように明記されています。
 
 ## <a name="compute-resource-abuse"></a>Compute リソース プールの不正使用
 
 ### <a name="multiple-vm-creation-activities-following-suspicious-azure-active-directory-sign-in"></a>疑わしい Azure Active Directory サインインの後の複数の VM 作成アクティビティ
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 初期アクセス、影響 
 
@@ -214,7 +212,7 @@ ms.locfileid: "97746186"
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>疑わしい Azure AD サインインの後の疑わしい受信トレイ操作ルールの設定
 このシナリオは、このリストで 2 つの脅威の分類 (**データ流出** と **侵入拡大**) に含まれています。 わかりやすくするために、両方のセクションに記載されています。
 
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 初期アクセス、侵入拡大、流出
 
@@ -235,7 +233,7 @@ ms.locfileid: "97746186"
 - **資格情報が漏洩したユーザーからサインインされた後の、疑わしい受信トレイ操作ルール**
 
 ### <a name="multiple-power-bi-report-sharing-activities-following-suspicious-azure-ad-sign-in"></a>疑わしい Azure AD サインインの後の複数の Power BI レポート共有アクティビティ 
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 初期アクセス、流出 
 
@@ -256,7 +254,7 @@ ms.locfileid: "97746186"
 - **資格情報が漏洩したユーザーからサインインされた後の、複数の Power BI レポート共有アクティビティ**
 
 ### <a name="suspicious-power-bi-report-sharing-following-suspicious-azure-ad-sign-in"></a>疑わしい Azure AD サインインの後の疑わしい Power BI レポート共有
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 初期アクセス、流出 
 
@@ -299,7 +297,7 @@ ms.locfileid: "97746186"
 - **資格情報が漏洩したユーザーからサインインされた後の、大量のファイルの削除**
 
 ### <a name="suspicious-email-deletion-activity-following-suspicious-azure-ad-sign-in"></a>疑わしい Azure AD サインインの後の疑わしい電子メール削除アクティビティ
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 初期アクセス、影響 
 
@@ -322,7 +320,7 @@ ms.locfileid: "97746186"
 ## <a name="denial-of-service"></a>サービス拒否
 
 ### <a name="multiple-vm-delete-activities-following-suspicious-azure-ad-sign-in"></a>疑わしい Azure AD サインインの後の複数の VM 削除アクティビティ
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 初期アクセス、影響
 
@@ -367,7 +365,7 @@ ms.locfileid: "97746186"
 ### <a name="suspicious-inbox-manipulation-rules-set-following-suspicious-azure-ad-sign-in"></a>疑わしい Azure AD サインインの後の疑わしい受信トレイ操作ルールの設定
 このシナリオは、このリストで 2 つの脅威の分類 (**侵入拡大** と **データ流出**) に含まれています。 わかりやすくするために、両方のセクションに記載されています。
 
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 初期アクセス、侵入拡大、流出
 
@@ -412,7 +410,7 @@ ms.locfileid: "97746186"
 ## <a name="malicious-execution-with-legitimate-process"></a>正当なプロセスによる悪意のある実行
 
 ### <a name="powershell-made-a-suspicious-network-connection-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>PowerShell で疑わしいネットワーク接続が行われた後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続きます。
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 実行
 
@@ -423,7 +421,7 @@ ms.locfileid: "97746186"
 **説明:** この種類の Fusion インシデントは、PowerShell コマンドを使用して送信接続要求が行われ、その後、Palo Alto Networks ファイアウォールによって異常な受信アクティビティが検出されたことを示しています。 これは、攻撃者がネットワークへのアクセスを取得した可能性があり、悪意のあるアクションを実行しようとしていることを示しています。 このパターンに従う PowerShell による接続の試行は、マルウェアのコマンド アンド コントロール アクティビティ、追加のマルウェアのダウンロード要求、またはリモートの対話型アクセスを確立する攻撃者を示している可能性があります。 すべての "現地調達型" 攻撃と同様、このアクティビティは PowerShell を正当に使用している可能性があります。 ただし、PowerShell コマンドの実行後に疑わしい受信ファイアウォール アクティビティが続く場合、より高い信頼度で PowerShell が悪意のある方法で使用されていることを示しており、さらに詳しく調査する必要があります。 Palo Alto ログでは、Azure Sentinel は[脅威ログ](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)に焦点を当てており、脅威 (疑わしいデータ、ファイル、フラッド、パケット、スキャン、スパイウェア、URL、ウイルス、脆弱性、wildfire ウイルス、wildfire) が許可されている場合、トラフィックは疑わしいと見なされます。 アラートのその他の詳細について、Fusion インシデントの説明に記載されている[脅威/コンテンツ タイプ](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html)に対応する Palo Alto 脅威ログも参照してください。
 
 ### <a name="suspicious-remote-wmi-execution-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>疑わしいリモート WMI 実行後の、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィック
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 実行、検出
 
@@ -456,7 +454,7 @@ ms.locfileid: "97746186"
 ## <a name="malware-c2-or-download"></a>マルウェア C2 またはダウンロード
 
 ### <a name="network-request-to-tor-anonymization-service-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>TOR 匿名化サービスに対するネットワーク要求の後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続きます。
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** コマンドと制御
 
@@ -467,7 +465,7 @@ ms.locfileid: "97746186"
 **説明:** この種類の Fusion インシデントは、TOR 匿名化サービスへの送信接続要求が行われ、その後、Palo Alto Networks ファイアウォールによって異常な受信アクティビティが検出されたことを示しています。 これは、攻撃者がネットワークへのアクセスを取得した可能性があり、アクションと意図を隠そうとしていることを示しています。 このパターンに従う TOR ネットワークへの接続は、マルウェアのコマンド アンド コントロール アクティビティ、追加のマルウェアのダウンロード要求、またはリモートの対話型アクセスを確立する攻撃者を示している可能性があります。 Palo Alto ログでは、Azure Sentinel は[脅威ログ](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/view-and-manage-logs/log-types-and-severity-levels/threat-logs)に焦点を当てており、脅威 (疑わしいデータ、ファイル、フラッド、パケット、スキャン、スパイウェア、URL、ウイルス、脆弱性、wildfire ウイルス、wildfire) が許可されている場合、トラフィックは疑わしいと見なされます。 アラートのその他の詳細について、Fusion インシデントの説明に記載されている[脅威/コンテンツ タイプ](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/syslog-field-descriptions/threat-log-fields.html)に対応する Palo Alto 脅威ログも参照してください。
 
 ### <a name="outbound-connection-to-ip-with-a-history-of-unauthorized-access-attempts-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>承認されていないアクセス試行の履歴がある IP への送信接続の後に、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィックが続く
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** コマンドと制御
 
@@ -502,7 +500,7 @@ ms.locfileid: "97746186"
 ## <a name="remote-exploitation"></a>リモートの悪用
 
 ### <a name="suspected-use-of-attack-framework-followed-by-anomalous-traffic-flagged-by-palo-alto-networks-firewall"></a>疑わしい攻撃フレームワーク使用後の、Palo Alto Networks ファイアウォールによってフラグが設定された異常なトラフィック
-現在、このシナリオは **パブリック プレビュー** 段階です。
+現在、このシナリオは **プレビュー** 段階です。
 
 **MITRE ATT&CK の方針:** 初期アクセス、実行、侵入拡大、特権エスカレーション
 

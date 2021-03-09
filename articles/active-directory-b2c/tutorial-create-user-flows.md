@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ca023af0666899ae94d5bf82fc6f0736d5a8efa5
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 6b0bdc5a5b58c205d888c8892a4333225a9b316f
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614270"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100557138"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
 
@@ -133,7 +133,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > * プロファイル編集ユーザー フローを作成する
 > * パスワードのリセット ユーザー フローを作成する
 
-次に、ユーザーが Azure AD、Amazon、Facebook、GitHub、LinkedIn、Microsoft、Twitter などのプロバイダーにサインインできるように、お使いのアプリケーションに ID プロバイダーを追加する手順について確認します。
+次に、Azure AD B2C を使用して、アプリケーションでユーザーをサインインおよびサインアップする方法を学習します。 下記のリンクを使用して ASP.NET Web アプリケーションに移動するか、目次の「**ユーザーを認証する**」の下にある別のアプリケーションに移動してください。
 
 > [!div class="nextstepaction"]
-> [お使いのアプリケーションに ID プロバイダーを追加する >](tutorial-add-identity-providers.md)
+> [チュートリアル: Azure AD B2C を使用して Web アプリケーションで認証を有効にする >](tutorial-web-app-dotnet.md)

@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cf1d8f89de61a548f6c542d6d8a73fde93675e95
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 0829ef9a6b63866c2527e521ed7edf48a3249392
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97895412"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102044257"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -20,6 +20,9 @@ Python 開発者は、次のいずれかの記事にも興味があるかもし�
 | 作業の開始 | 概念| シナリオとサンプル |
 | -- | -- | -- | 
 | <ul><li>[Visual Studio Code を使用した Python 関数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[ターミナルとコマンド プロンプトを使用した Python 関数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch を使用した画像の分類](machine-learning-pytorch.md)</li><li>[Azure Automation サンプル](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow を使用した機械学習](functions-machine-learning-tensorflow.md)</li><li>[Python サンプルの参照](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+
+> [!NOTE]
+> [Python ベースの Azure 関数を Windows 上のローカルで開発](create-first-function-vs-code-python.md#run-the-function-locally)できますが、Python は、Azure で実行されている場合、Linux ベースのホスティング プランでのみサポートされます。 サポートされている[オペレーティング システムとランタイム](functions-scale.md#operating-systemruntime)の組み合わせの一覧を参照してください。
 
 ## <a name="programming-model"></a>プログラミング モデル
 
@@ -366,7 +369,7 @@ Azure Functions では次の Python バージョンがサポートされてい�
 
 | Functions バージョン | Python<sup>*</sup> バージョン |
 | ----- | ----- |
-| 3.x | 3.8<br/>3.7<br/>3.6 |
+| 3.x | 3.9 (プレビュー) <br/> 3.8<br/>3.7<br/>3.6 |
 | 2.x | 3.7<br/>3.6 |
 
 <sup>*</sup>公式 CPython ディストリビューション
@@ -588,6 +591,7 @@ Python 標準ライブラリには、各 Python ディストリビューショ�
 * [Python 3.6 標準ライブラリ](https://docs.python.org/3.6/library/)
 * [Python 3.7 標準ライブラリ](https://docs.python.org/3.7/library/)
 * [Python 3.8 標準ライブラリ](https://docs.python.org/3.8/library/)
+* [Python 3.9 標準ライブラリ](https://docs.python.org/3.9/library/)
 
 ### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions Python worker の依存関係
 
@@ -615,7 +619,7 @@ Python worker の Docker イメージにプレインストールされている�
 |  Functions ランタイム  | Debian のバージョン | Python のバージョン |
 |------------|------------|------------|
 | バージョン 2.x | Stretch  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| バージョン 3.x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| バージョン 3.x | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile)<br/> [Python 3.9](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python39/python39.Dockerfile)|
 
 ## <a name="cross-origin-resource-sharing"></a>クロス オリジン リソース共有
 

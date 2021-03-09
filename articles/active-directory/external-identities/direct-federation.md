@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/24/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5beae56a5d38c4620481c27c3f42c52602984e6b
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 598cbf303c8a87675833b8d87f05055771e46f55
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860628"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687245"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 
@@ -26,9 +26,7 @@ ms.locfileid: "96860628"
 
 この記事では、B2B コラボレーションのために別の組織との直接フェデレーションを設定する方法について説明します。 任意の組織の ID プロバイダー (IdP) が SAML 2.0 または WS-Fed プロトコルをサポートしていれば、その組織との直接フェデレーションを設定することができます。
 パートナーの IdP との直接フェデレーションを設定すると、そのドメインに属する新しいゲスト ユーザーがご自身の Azure AD テナントに、そのユーザー自身の組織アカウント (IdP が管理する) を使用してサインインし、コラボレーションを開始できます。 ゲスト ユーザーが別個の Azure AD アカウントを作成する必要はありません。
-> [!NOTE]
-> 直接フェデレーションのゲスト ユーザーは、テナント コンテキストが含まれたリンク (例: `https://myapps.microsoft.com/?tenantid=<tenant id>` または `https://portal.azure.com/<tenant id>`、または検証済みのドメインの場合は `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`) を使用してサインインする必要があります。 アプリケーションとリソースへの直接リンクも、テナント コンテキストが含まれている限り機能します。 直接フェデレーションのユーザーは現在、テナント コンテキストが含まれていない共通エンドポイントを使用してサインインできません。 たとえば、`https://myapps.microsoft.com`、`https://portal.azure.com`、または `https://teams.microsoft.com` を使用するとエラーが発生します。
- 
+
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>ゲスト ユーザーが直接フェデレーションを使用で認証されるタイミング
 組織との直接フェデレーションを設定した後、招待した新しいゲスト ユーザーは、直接フェデレーションを使用して認証されます。 重要なこととして、直接フェデレーションを設定しても、ご自身からの招待を既に利用済みのゲスト ユーザーに対する認証方法は変更されないことに注意してください。 次に例をいくつか示します。
  - ゲスト ユーザーがご自身からの招待を既に利用済みであり、その後にゲスト ユーザーの組織との直接フェデレーションを設定した場合、それらのゲスト ユーザーは、直接フェデレーション設定前に使用していたのと同じ認証方法を引き続き使用することになります。
@@ -42,10 +40,22 @@ ms.locfileid: "96860628"
 ## <a name="end-user-experience"></a>エンド ユーザー エクスペリエンス 
 直接フェデレーションを使用すると、ご自身の Azure AD テナントに、ゲスト ユーザーが各自の組織アカウントを使用してサインインします。 共有リソースへのアクセス時にサインインを求められると、直接フェデレーションのユーザーは IdP にリダイレクトされます。 サインインが成功した後、Azure AD に戻ってリソースにアクセスします。 直接フェデレーションのユーザーの更新トークン有効期間は 12 時間です。これは、Azure AD での[パススルー更新トークンの既定の長さ](../develop/active-directory-configurable-token-lifetimes.md#exceptions)です。 連携した IdP で SSO が有効な場合、ユーザーは SSO を体験することになり、初回認証後にサインインを求めるメッセージは表示されません。
 
+## <a name="sign-in-endpoints"></a>サインインのエンドポイント
+
+直接フェデレーションのゲスト ユーザーは、[共通のエンドポイント](redemption-experience.md#redemption-and-sign-in-through-a-common-endpoint) (つまり、テナント コンテキストを含まない一般的なアプリ URL) を使用して、マルチテナントまたは Microsoft のファーストパーティ アプリにサインインできるようになりました。 サインイン プロセス中に、ゲスト ユーザーは **[サインイン オプション]** を選択してから、 **[Sign in to an organization]\(組織にサインイン\)** を選択します。 次に、ユーザーは組織の名前を入力し、自分の資格情報を使用してサインインを続行します。
+
+直接フェデレーションのゲスト ユーザーは、テナント情報を含むアプリケーション エンドポイントを使用することもできます。次に例を示します。
+
+  * `https://myapps.microsoft.com/?tenantid=<your tenant ID>`
+  * `https://myapps.microsoft.com/<your verified domain>.onmicrosoft.com`
+  * `https://portal.azure.com/<your tenant ID>`
+
+また、`https://myapps.microsoft.com/signin/Twitter/<application ID?tenantId=<your tenant ID>` のようにテナント情報を含めることによって、アプリケーションまたはリソースへの直接リンクを直接フェデレーションのゲスト ユーザーに提供することもできます。
+
 ## <a name="limitations"></a>制限事項
 
 ### <a name="dns-verified-domains-in-azure-ad"></a>Azure AD での DNS 検証済みドメイン
-フェデレーションを行うドメインは、Azure AD で DNS 検証済み***でない** _ことが必要です。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントで設定できます。理由は、それらが DNS で検証されないためです。
+フェデレーションを行うドメインは、Azure AD で DNS 検証済み ***でない*** ことが必要です。 直接フェデレーションは、アンマネージド (電子メールで検証済み、または "バイラル") の Azure AD テナントで設定できます。理由は、それらが DNS で検証されないためです。
 
 ### <a name="authentication-url"></a>認証 URL
 直接フェデレーションをポリシーで使用できるのは、認証 URL のドメインがターゲット ドメインと一致する場合か、認証 URL がこれらの許可されている ID プロバイダーのうちの 1 つである場合のみです (この一覧は変更される場合があります)。
@@ -60,7 +70,7 @@ ms.locfileid: "96860628"
 -   federation.exostar.com
 -   federation.exostartest.com
 
-たとえば、_*fabrikam.com** に対して直接フェデレーションを設定する場合、`https://fabrikam.com/adfs` という認証 URL は検証に合格します。 同じドメイン内のホストも合格します (たとえば `https://sts.fabrikam.com/adfs`)。 ただし、同じドメインの `https://fabrikamconglomerate.com/adfs` または `https://fabrikam.com.uk/adfs` という認証 URL は、合格しません。
+たとえば、**fabrikam.com** に対して直接フェデレーションを設定する場合、`https://fabrikam.com/adfs` という認証 URL は検証に合格します。 同じドメイン内のホストも合格します (たとえば `https://sts.fabrikam.com/adfs`)。 ただし、同じドメインの `https://fabrikamconglomerate.com/adfs` または `https://fabrikam.com.uk/adfs` という認証 URL は、合格しません。
 
 ### <a name="signing-certificate-renewal"></a>署名証明書の更新
 ID プロバイダーの設定でメタデータ URL を指定した場合、署名証明書が有効期限切れになると、Azure AD によって自動的に更新されます。 ただし、証明書が有効期限切れになる前に何らかの理由でローテーションされた場合、またはメタデータ URL を指定しなかった場合には、Azure AD による更新はできません。 この場合、署名証明書を手動で更新する必要があります。
@@ -78,7 +88,8 @@ ID プロバイダーの設定でメタデータ URL を指定した場合、署
 取引先組織との直接フェデレーションが確立すると、その組織に属する新しいゲスト ユーザーに対して、電子メールのワンタイム パスコード認証よりも直接フェデレーションが優先されます。 直接フェデレーションを設定する前に、ゲスト ユーザーがワンタイム パスコード認証を使用して招待を利用した場合、それらのゲスト ユーザーは引き続きワンタイム パスコード認証を使用することになります。 
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>直接フェデレーションは、部分的に同期されたテナントに起因するサインインの問題に対応していますか。
 いいえ。このシナリオでは、[電子メールのワンタイム パスコード](one-time-passcode.md)機能を使用する必要があります。 "部分的に同期されたテナント" とは、オンプレミスのユーザー ID がクラウドに完全には同期されていないパートナーの Azure AD テナントのことです。 クラウド上に ID がまだ存在していないゲストが、B2B の招待を利用しようとした場合、そのゲストはサインインできません。 ワンタイム パスコード機能であれば、このゲストをサインインさせることができます。 直接フェデレーション機能は、IdP によって管理される独自の組織アカウントをゲストが持っているが、その組織に Azure AD の存在がまったくないというシナリオに対応しています。
-
+### <a name="once-direct-federation-is-configured-with-an-organization-does-each-guest-need-to-be-sent-and-redeem-an-individual-invitation"></a>組織で直接フェデレーションを構成した場合、各ゲストに個別の招待を送り、ゲストはその招待を利用する必要がありますか。
+直接フェデレーションを設定しても、ご自身からの招待を既に利用済みのゲスト ユーザーに対する認証方法は変更されません。 ご自身のディレクトリからゲスト ユーザー アカウントを削除してから再招待することで、ゲスト ユーザーの認証方法を更新できます。
 ## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>手順 1:取引先組織の ID プロバイダーを構成する
 最初に、取引先組織において、必須の要求と証明書利用者信頼を指定して ID プロバイダーを構成する必要があります。 
 
@@ -146,7 +157,7 @@ IdP によって発行される WS-Fed トークンに必須の要求:
 
 1. [Azure ポータル](https://portal.azure.com/)にアクセスします。 左ウィンドウで、 **[Azure Active Directory]** を選択します。 
 2. **[外部 ID]**  >  **[すべての ID プロバイダー]** を選択します。
-3. 選択し、次に **[新しい SAML/WS-Fed IdP]** を選択します。
+3. **[新しい SAML/WS-Fed IdP]** を選択します。
 
     ![新しい SAML または WS-Fed IdP を追加するためのボタンを示すスクリーンショット](media/direct-federation/new-saml-wsfed-idp.png)
 

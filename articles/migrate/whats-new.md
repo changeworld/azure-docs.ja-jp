@@ -7,21 +7,19 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: fbafed60019005fe2d81c96fb9557e3c307669ac
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233765"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834037"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
 
 ## <a name="update-january-2021"></a>更新 (2021 年 1 月)
--  プラットフォーム マネージド キーとカスタマー マネージド キー (CMK) による二重暗号化を使用してディスクが暗号化された Azure 仮想マシンに対し、Azure Migrate Server Migration (エージェントレス レプリケーション) を使用して VMware VM を移行する方法が Azure portal から利用できるようになりました。
-- カスタマー マネージド キー (CMK) によるサーバー側暗号化 (SSE) およびプラットフォーム マネージド キーとカスタマー マネージド キーによる二重暗号化を使用してディスクが暗号化された Azure 仮想マシンに対し、Azure Migrate Server Migration (エージェントベース レプリケーション) を使用して VMware VM を移行する方法が Azure portal から利用できるようになりました。
-- カスタマー マネージド キー (CMK) によるサーバー側暗号化 (SSE) およびプラットフォーム マネージド キーとカスタマー マネージド キーによる二重暗号化を使用してディスクが暗号化された Azure 仮想マシンに対し、Azure Migrate Server Migration (エージェントベース レプリケーション) を使用して、AWS や GCP といった他のクラウドの VM と物理サーバーを移行する方法が Azure portal から利用できるようになりました。
+-  Azure Migrate: カスタマー マネージド キー (CMK) によるサーバー側暗号化でディスクが暗号化された Azure 仮想マシンに、Server Migration ツールを使用して、VMware 仮想マシンや物理サーバー、さらに他のクラウドの仮想マシンを移行できるようになりました。
 
 ## <a name="update-december-2020"></a>更新 (2020 年 12 月)
 - Azure Migrate で、エージェントレスの移行手法を使用して VMware VM を Azure に移行する間、VMware VM に Azure VM エージェントが自動的にインストールされるようになりました。

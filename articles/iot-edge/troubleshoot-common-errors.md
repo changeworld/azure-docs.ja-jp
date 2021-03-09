@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 98ee865a3ddf6c26ffe9cb77767f3872b42018d8
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e1605f45dc8a7a1c03b5481ea17478064414df59
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442363"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382210"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -174,7 +174,7 @@ deployment.json ファイルで次の操作を行います。
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
            "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}]}}}"
        },
        "type": "docker",
@@ -188,7 +188,7 @@ deployment.json ファイルで次の操作を行います。
    ```json
    "edgeHub": {
        "settings": {
-           "image": "mcr.microsoft.com/azureiotedge-hub:1.0"
+           "image": "mcr.microsoft.com/azureiotedge-hub:1.1"
        },
        "type": "docker",
        "status": "running",
@@ -286,7 +286,7 @@ IoT Hub で、IoT Edge デバイスを選択し、[デバイスの詳細] ペー
 "edgeHub": {
   "type": "docker",
   "settings": {
-    "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+    "image": "mcr.microsoft.com/azureiotedge-hub:1.1",
     "createOptions": <snipped>
   },
   "env": {

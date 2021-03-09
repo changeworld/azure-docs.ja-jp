@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b8dc91851ee736fd15f1fed8ef50c2cd7c7ab778
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: bec5cafaf7d506d9ab25228c680d00af91dbf3d0
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98788300"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102200140"
 ---
 # <a name="azure-security-baseline-for-azure-firewall-manager"></a>Azure Firewall Manager 用の Azure セキュリティ ベースライン
 
@@ -129,7 +129,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1:高い特権を持つユーザーを保護および制限する
 
 **ガイダンス**:Azure Firewall Manager は、Azure Active Directory (Azure AD) を ID およびアクセスのために使用します。 Azure AD で最も重要な組み込みロールは、全体管理者と特権ロール管理者です。これは、これら 2 つのロールが割り当てられたユーザーが、管理者ロールを委任できるためです。
-- 全体管理者または会社の管理者:このロールが割り当てられたユーザーは、Azure AD のすべての管理機能に加え、Azure AD ID を使用するサービスにもアクセスできます。
+- グローバル管理者:このロールが割り当てられたユーザーは、Azure AD のすべての管理機能に加え、Azure AD ID を使用するサービスにもアクセスできます。
 - 特権ロール管理者:このロールが割り当てられたユーザーは、Azure AD と Azure AD Privileged Identity Management (PIM) 内でロールの割り当てを管理できます。 さらに、このロールは、PIM と管理単位のすべての側面を管理できます。
 
 特定の特権アクセス許可を割り当てられたカスタム ロールを使用する場合は、管理する必要のある他の重要なロールがある場合があります。 また、重要なビジネス資産の管理者アカウントに同様のコントロールを適用することもできます。
@@ -220,13 +220,13 @@ Azure Privileged Identity Management (PIM) を使用して、Azure リソース�
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7:Just Enough Administration (最小限の特権の原則) に従う 
 
-**ガイダンス**:Azure Firewall Manager は、Azure ロールベースのアクセス制御 (RBAC) との統合により、そのリソースを管理します。 Azure RBAC を使用すると、ロールの割り当てによって Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 Azure RBAC を使用してリソースに割り当てる特権は、常に、ロールで必要なものに制限する必要があります。 これは、Azure AD Privileged Identity Management (PIM) のジャスト イン タイム (JIT) アプローチを補完するものであり、定期的に見直す必要があります。
+**ガイダンス**:Azure Firewall Manager は、Azure ロールベースのアクセス制御 (RBAC) との統合により、そのリソースを管理します。 Azure RBAC を使用すると、ロールの割り当てによって Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 Azure RBAC を使用してリソースに割り当てる特権は、常に、ロールで必要なものに制限する必要があります。 これは、Azure Active Directory Privileged Identity Management (PIM) のジャスト イン タイム (JIT) アプローチを補完するものであり、定期的に見直す必要があります。
 
 組み込みのロールを使用してアクセス許可を割り当て、カスタム ロールは必要な場合にのみ作成します。
 
 - [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md) 
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -338,7 +338,7 @@ Azure リソース、リソース グループ、サブスクリプションに�
 
 **ガイダンス**:Azure Firewall Manager リソースが不要になった場合は、それを削除して、攻撃対象領域を最小限に抑えます。 ユーザーは、Azure portal、CLI、または REST API を使用して Azure Firewall Manager リソースを管理できます。
 
-- [Azure Firewall ポリシー CLI](/cli/azure/ext/azure-firewall/network/firewall/policy?preserve-view=true&view=azure-cli-latest)
+- [Azure Firewall ポリシー CLI](/cli/azure/ext/azure-firewall/network/firewall/policy)
 
 - [Azure ネットワーク CLI](/powershell/module/az.network/?preserve-view=true&view=azps-5.1.0#networking)
 
@@ -403,9 +403,9 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 現在、ファイアウォール ポリシー規則コレクション グループに関連する操作は、アクティビティ ログではサポートされていません。これは既知の問題であり、今後の更新で対処されます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -421,7 +421,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 多くの組織では、頻繁に使用される "ホット" データに対しては Azure Sentinel を、使用頻度の低い "コールド" データに対しては Azure Storage を使用することを選択しています。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -435,9 +435,9 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 Azure Monitor で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定できます。 長期およびアーカイブ ストレージには、Azure Storage、Data Lake、または Log Analytics ワークスペースのアカウントを使用します。
 
-- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/platform/manage-cost-storage.md)
+- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
-- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -557,7 +557,7 @@ Azure Security Center によって各アラートに重大度が割り当てら�
 
 - [Azure Firewall ポリシー テンプレートのリファレンス](/azure/templates/microsoft.network/firewallpolicies)
 
-- [Azure Firewall ポリシー CLI](/cli/azure/ext/azure-firewall/network/firewall/policy?preserve-view=true&view=azure-cli-latest)
+- [Azure Firewall ポリシー CLI](/cli/azure/ext/azure-firewall/network/firewall/policy)
 
 - [エンタープライズ規模のランディング ゾーンでのガードレールの実装の図](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 

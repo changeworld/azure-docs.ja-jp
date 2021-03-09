@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: b3ec3e96aa1ba4bce3893c1af2446bb509a867b6
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 07a3deaf67c4f269b01d62ea25ddb212c1e01f6f
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333598"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101657538"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Azure Cosmos DB と Power BI を使用してリアルタイム ダッシュボードを作成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,7 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Azure Cosmos DB に気象データを取り込む
 
-[気象データ](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729)を Azure Cosmos DB に読み込むためのインジェスト パイプラインを設定します。 HTTP ソースと Cosmos DB シンクを使用して最新の気象データを Azure Cosmos DB に定期的に読み込むように [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) ジョブを設定できます。
+[気象データ](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation)を Azure Cosmos DB に読み込むためのインジェスト パイプラインを設定します。 HTTP ソースと Cosmos DB シンクを使用して最新の気象データを Azure Cosmos DB に定期的に読み込むように [Azure Data Factory (ADF)](../data-factory/connector-azure-cosmos-db.md) ジョブを設定できます。
 
 
 ### <a name="connect-power-bi-to-azure-cosmos-db"></a>Power BI を Azure Cosmos DB に接続する
@@ -57,7 +57,7 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/cosmosdb-powerbi-connector.png" alt-text="Azure Cosmos DB Power BI コネクタ":::
 
-1. **増分更新を構成する** - [Power BI での増分更新](/power-bi/service-premium-incremental-refresh)に関する記事の手順に従って、データセットの増分更新を構成します。 次のスクリーンショットに示すように、 **RangeStart** パラメーターと **RangeEnd** パラメーターを追加します。
+1. **増分更新を構成する** - [Power BI での増分更新](/power-bi/service-premium-incremental-refresh)に関する記事の手順に従って、データセットの増分更新を構成します。 次のスクリーンショットに示すように、**RangeStart** パラメーターと **RangeEnd** パラメーターを追加します。
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/configure-range-parameters.png" alt-text="範囲のパラメーターを構成する":::
 
@@ -94,7 +94,7 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
 ### <a name="ingest-weather-data-into-azure-cosmos-db"></a>Azure Cosmos DB に気象データを取り込む 
 
-[気象データ](https://catalog.data.gov/dataset/local-weather-archive/resource/c28974a2-fc83-4722-8977-9a701323f729)を Azure Cosmos DB に読み込むためのインジェスト パイプラインを設定します。 HTTP ソースと Cosmos DB シンクを使用して最新の気象データを Azure Cosmos DB に定期的に読み込むように Azure Data Factory (ADF) ジョブを設定できます。
+[気象データ](https://catalog.data.gov/dataset?groups=climate5434&#topic=climate_navigation)を Azure Cosmos DB に読み込むためのインジェスト パイプラインを設定します。 HTTP ソースと Cosmos DB シンクを使用して最新の気象データを Azure Cosmos DB に定期的に読み込むように Azure Data Factory (ADF) ジョブを設定できます。
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Azure Analysis Services を Azure Cosmos アカウントに接続する
 
@@ -112,7 +112,7 @@ Azure Analysis Services は、エンタープライズ レベルのデータ モ
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/add-data-source.png" alt-text="Cosmos DB データ ソースを追加する":::
 
-   **アカウント URI** 、 **データベース名** 、および **コンテナー名** を指定して、Azure Cosmos DB に接続します。 Azure Cosmos コンテナーからのデータが Power BI にインポートされていることを確認できます。
+   **アカウント URI**、**データベース名**、および **コンテナー名** を指定して、Azure Cosmos DB に接続します。 Azure Cosmos コンテナーからのデータが Power BI にインポートされていることを確認できます。
 
    :::image type="content" source="./media/create-real-time-weather-dashboard-powerbi/preview-cosmosdb-data.png" alt-text="Azure Cosmos DB データをプレビューする":::
 

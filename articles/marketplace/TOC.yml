@@ -47,12 +47,19 @@
       items:
         - name: Marketplace のベネフィット
           href: gtm-your-marketplace-benefits.md
-        - name: 共同販売のパートナー エンゲージメント
-          href: marketplace-co-sell.md
-        - name: 'パートナー センターの [共同販売] オプション'
-          href: commercial-marketplace-co-sell.md
-        - name: OCP GTM からの共同販売ソリューションの移行
-          href: co-sell-solution-migration.md
+          items: null
+        - name: Microsoft と共同販売する
+          items:
+            - name: 共同販売の概要
+              href: marketplace-co-sell.md
+            - name: 共同販売の要件
+              href: co-sell-requirements.md
+            - name: 共同販売を構成する
+              href: commercial-marketplace-co-sell.md
+            - name: 共同販売の状態を確認する
+              href: co-sell-status.md
+            - name: OCP GTM からの共同販売ソリューションの移行
+              href: co-sell-solution-migration.md
         - name: CSP パートナーによる再販
           href: cloud-solution-providers.md
         - name: コネクト プログラムのオンボード ガイド
@@ -203,6 +210,8 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: IoT Edge モジュールの技術資産の準備
           href: partner-center-portal/create-iot-edge-module-asset.md
+        - name: 事前認定のチェックリスト
+          href: iot-edge-checklist.md
     - name: 管理サービス オファー
       items:
         - name: 管理サービス オファーの計画
@@ -299,6 +308,8 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: '[評価とレビュー] ダッシュボード'
       href: partner-center-portal/ratings-reviews.md
+    - name: 従量制課金の異常を管理する
+      href: anomaly-detection.md
     - name: Analytics の一般的な質問
       href: analytics-faq.md
 - name: ポリシーと利用規約
@@ -393,6 +404,8 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: 共同販売の州コード
       href: commercial-marketplace-co-sell-states.md
+    - name: 参照アーキテクチャ図
+      href: reference-architecture-diagram.md
     - name: カテゴリとサブカテゴリ
       href: categories.md
     - name: サポートされる HTML タグ

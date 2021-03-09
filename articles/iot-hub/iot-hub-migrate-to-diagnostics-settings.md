@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: kgremban
-ms.openlocfilehash: dfd819d82f5e35183802e33e5d423cad4de36c38
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 48b646881b12047b28490999a96326f6076af2c1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461585"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100591843"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-azure-monitor-resource-logs"></a>IoT Hub を操作監視から Azure Monitor リソース ログに移行する
 
-[操作監視](iot-hub-operations-monitoring.md)を使用して IoT Hub での操作の状態を追跡するユーザーは、そのワークフローを、Azure Monitor の機能である [Azure Monitor リソース ログ](../azure-monitor/platform/platform-logs-overview.md)に移行することができます。 リソース ログは、多数の Azure サービスについてリソースレベルの診断情報を提供します。
+[操作監視](iot-hub-operations-monitoring.md)を使用して IoT Hub での操作の状態を追跡するユーザーは、そのワークフローを、Azure Monitor の機能である [Azure Monitor リソース ログ](../azure-monitor/essentials/platform-logs-overview.md)に移行することができます。 リソース ログは、多数の Azure サービスについてリソースレベルの診断情報を提供します。
 
 **IoT Hub の操作の監視機能は非推奨となっており**、今後 Portal から削除される予定です。 この記事では、ワークロードを操作監視から Azure Monitor リソース ログに移動する手順について説明します。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health/)」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 
@@ -49,9 +49,9 @@ Azure portal で IoT Hub を更新するには、まず診断設定を作成し�
 
 1. **[保存]** を選択して設定を保存します。
 
-新しい設定は、10 分ほどで有効になります。 その後、構成された宛先にログが表示されます。 診断を構成することの詳細については、[Azure リソースからログ データを収集して使用する](../azure-monitor/platform/platform-logs-overview.md)ことに関するページを参照してください。
+新しい設定は、10 分ほどで有効になります。 その後、構成された宛先にログが表示されます。 診断を構成することの詳細については、[Azure リソースからログ データを収集して使用する](../azure-monitor/essentials/platform-logs-overview.md)ことに関するページを参照してください。
 
-PowerShell や Azure CLI などによる診断設定の作成方法の詳細については、Azure Monitor のドキュメントの「[診断設定](../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+PowerShell や Azure CLI などによる診断設定の作成方法の詳細については、Azure Monitor のドキュメントの「[診断設定](../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 ### <a name="turn-off-operations-monitoring"></a>操作の監視を無効にする
 

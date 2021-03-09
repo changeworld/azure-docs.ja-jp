@@ -1,6 +1,6 @@
 ---
-title: AzCopy v10 を使用して Azure BLOB ストレージにファイルをアップロードする | Microsoft Docs
-description: この記事には、Azure BLOB ストレージにファイルをアップロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
+title: AzCopy v10 を使用して Azure Blob Storage にファイルをアップロードする | Microsoft Docs
+description: この記事には、Azure Blob Storage にファイルをアップロードするために役立つ AzCopy コマンドの例のコレクションが含まれています。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -15,7 +15,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 12/12/2020
 ms.locfileid: "97358760"
 ---
-# <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure BLOB ストレージにファイルをアップロードする
+# <a name="upload-files-to-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure Blob Storage にファイルをアップロードする
 
 AzCopy v10 コマンド ライン ユーティリティを使用して、BLOB ストレージにファイルやディレクトリをアップロードできます。 
 

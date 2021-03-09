@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/18/2021
+ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562320"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555132"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -33,9 +33,7 @@ ms.locfileid: "98562320"
 
 - ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL データ分類の推奨事項を改善](#enhancements-to-sql-data-classification-recommendation)
-- [Azure Policy の評価で "適用除外" であったリソースは "準拠" とレポートされる](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
-- [Azure セキュリティ ベンチマークのカバレッジを広げるために追加される、35 個のプレビュー推奨事項](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
-
+- [11 個の Azure Defender アラートの非推奨化](#deprecation-of-11-azure-defender-alerts)
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化 
 
@@ -55,49 +53,38 @@ ms.locfileid: "98562320"
 
 **変更予定日:** 2021 年第 2 四半期
 
-"**データ分類の適用**" セキュリティ コントロールにおける現行バージョンの推奨事項 "**SQL データベースの機密データを分類する必要がある**" は非推奨となり、より Microsoft のデータ分類戦略に沿った新しいバージョンに置き換えられる予定です。 その結果、次のような影響が出ています。
-
-- 今後、推奨事項はセキュア スコアに影響しません。
-- 今後、セキュリティ コントロール ("データ分類の適用") はセキュア スコアに影響しません。
-- 推奨事項の ID も変更されます (現在は b0df6f56-862d-4730-8597-38c0fd4ebd59)。
+"**データ分類の適用**" セキュリティ コントロールにおける推奨事項 "**SQL データベースの機密データを分類する必要がある**" は、より Microsoft のデータ分類戦略に沿った新しいバージョンで置き換えられる予定です。 そのため、推奨事項の ID も変更されます (現在は b0df6f56-862d-4730-8597-38c0fd4ebd59)。
 
 
+### <a name="deprecation-of-11-azure-defender-alerts"></a>11 個の Azure Defender アラートの非推奨化
 
-### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>Azure Policy の評価で "適用除外" であったリソースは "準拠" とレポートされる
+**変更予定日:** 2021 年 3 月
 
-**変更予定日:** 2021 年 1 月
+来月、以下に示す 11 個の Azure Defender アラートが非推奨となります。
 
-現在、Azure Policy の推奨事項で **適用除外** と評価されるリソースは、"非準拠" と表示されています。 ユーザー アクションによって状態を "準拠" に変更することはできません。 今回計画されている変更以降、わかりやすくするためにこれらは "準拠" としてレポートされます。
+- 次の 2 つのアラートは、新しいアラートで置き換えられ、より適切なカバレッジが提供されます。
 
-Azure Policy への影響は 1 つだけで、準拠しているリソースの数が増えます。 Azure Security Center のセキュア スコアには影響はありません。
+    | AlertType                | AlertDisplayName                                                         |
+    |--------------------------|--------------------------------------------------------------------------|
+    | ARM_MicroBurstDomainInfo | PREVIEW - MicroBurst toolkit "Get-AzureDomainInfo" function run detected (プレビュー - MicroBurst ツールキット "Get-AzureDomainInfo" 関数の実行が検出されました) |
+    | ARM_MicroBurstRunbook    | PREVIEW - MicroBurst toolkit "Get-AzurePasswords" function run detected (プレビュー - MicroBurst ツールキット "Get-AzurePasswords" 関数の実行が検出されました)  |
+    |                          |                                                                          |
 
-### <a name="35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure セキュリティ ベンチマークのカバレッジを広げるために追加される、35 個のプレビュー推奨事項
+- 次の 9 つのアラートは、既に非推奨になっている Azure Active Directory Identity Protection コネクタに関連したものです。
 
-**変更予定日:** 2021 年 1 月
-
-Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 [Azure セキュリティ ベンチマークの詳細を確認してください](../security/benchmarks/introduction.md)。
-
-ベンチマークのカバレッジを拡大するために、次の 35 個のプレビュー推奨事項が Security Center に追加されています。
-
-プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
-
-| セキュリティ コントロール                     | 新しい推奨事項                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 保存時の暗号化を有効にする            | - Azure Cosmos DB アカウントでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある<br>- Azure Machine Learning ワークスペースは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある<br>- MySQL サーバーに対して Bring Your Own Key データ保護を有効にする必要がある<br>- PostgreSQL サーバーに対して Bring Your Own Key データ保護を有効にする必要がある<br>- Cognitive Services アカウントでカスタマー マネージド キー (CMK) によるデータ暗号化を有効にする必要がある<br>- コンテナー レジストリは、カスタマー マネージド キー (CMK) を使用して暗号化する必要がある<br>- SQL マネージド インスタンスでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある<br>- SQL サーバーでは保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある<br>- ストレージ アカウントでは暗号化にカスタマー マネージド キー (CMK) を使用する必要がある                                                                                                                                                              |
-| セキュリティのベストプラクティスを実装する    | - サブスクリプションには、セキュリティの問題に備えて連絡先メール アドレスが用意されている必要がある<br> - 自分のサブスクリプションで Log Analytics エージェントの自動プロビジョニングを有効にする必要がある<br> - 重要度が高いアラートの電子メール通知を有効にする必要がある<br> - 重要度が高いアラートについて、サブスクリプション所有者に対する電子メール通知を有効にする必要がある<br> - キー コンテナーで消去保護が有効になっている必要がある<br> - キー コンテナーで論理的な削除が有効になっている必要がある |
-| アクセスおよびアクセス許可の管理        | - 関数アプリで "クライアント証明書 (着信クライアント証明書)" を有効にする必要がある |
-| DDoS 攻撃からアプリケーションを保護する | - Application Gateway に対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある<br> - Azure Front Door Service サービスに対して Web アプリケーション ファイアウォール (WAF) を有効にする必要がある |
-| 承認されていないネットワーク アクセスの制限 | - キー コンテナーでファイアウォールを有効にする必要がある<br> - キー コンテナー用にプライベート エンドポイントを構成する必要がある<br> - App Configuration ではプライベート リンクを使用する必要がある<br> - Azure Cache for Redis は仮想ネットワーク内に存在しなければならない<br> - Azure Event Grid ドメインではプライベート リンクを使用する必要がある<br> - Azure Event Grid トピックではプライベート リンクを使用する必要がある<br> - Azure Machine Learning ワークスペースではプライベート リンクを使用する必要がある<br> - Azure SignalR Service ではプライベート リンクを使用する必要がある<br> - Azure Spring Cloud ではネットワークの挿入を使用する必要がある<br> - コンテナー レジストリでは無制限のネットワーク アクセスを許可しない<br> - コンテナー レジストリではプライベート リンクを使用する必要がある<br> - MariaDB サーバーでは、公衆ネットワーク アクセスを無効にする必要がある<br> - MySQL サーバーでは、公衆ネットワーク アクセスを無効にする必要がある<br> - PostgreSQL サーバーでは、公衆ネットワーク アクセスを無効にする必要がある<br> - ストレージ アカウントではプライベート リンク接続を使用する必要がある<br> - ストレージ アカウントでは、仮想ネットワーク ルールを使用してネットワーク アクセスを制限する必要がある<br> - VM Image Builder テンプレートでは、プライベート リンクを使用する必要がある|
-|                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-
-関連リンク:
-
-- [Azure セキュリティ ベンチマークについての詳細情報](../security/benchmarks/introduction.md)
-- [Azure Database for MariaDB についての詳細情報](../mariadb/overview.md)
-- [Azure Database for MySQL についての詳細情報](../mysql/overview.md)
-- [Azure Database for PostgreSQL についての詳細情報](../postgresql/overview.md)
-
-
+    | AlertType           | AlertDisplayName              |
+    |---------------------|-------------------------------|
+    | UnfamiliarLocation  | 通常とは異なるサインイン プロパティ |
+    | AnonymousLogin      | 匿名 IP アドレス          |
+    | InfectedDeviceLogin | マルウェアにリンクした IP アドレス     |
+    | ImpossibleTravel    | 特殊な移動               |
+    | MaliciousIP         | 悪意のある IP アドレス          |
+    | LeakedCredentials   | 漏洩した資格情報            |
+    | PasswordSpray       | パスワード スプレー                |
+    | LeakedCredentials   | Azure AD 脅威インテリジェンス  |
+    | AADAI               | Azure AD AI                   |
+    |                     |                               |
+ 
 
 
 

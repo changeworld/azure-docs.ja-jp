@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2ead7291f52f33c271768ae2f470af65aca98030
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: d45b2ec8814ec2b7f02da99500aa1e72ec525d65
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734749"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695704"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -97,6 +97,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , PARSER_VERSION = 'parser_version' ]
 [ , HEADER_ROW = { TRUE | FALSE } ]
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
+[ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
 ```
 
 ## <a name="arguments"></a>引数
@@ -121,7 +122,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 | Azure Blob Storage         | wasb[s]  | \<container>@\<storage_account>.blob.core.windows.net/path/file |
 | Azure Data Lake Store Gen1 | http[s]  | \<storage_account>.azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | http[s]  | \<storage_account>.dfs.core.windows.net /path/file   |
-| Azure Data Lake Store Gen2 | aufs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
+| Azure Data Lake Store Gen2 | abfs[s]  | [\<file_system>@\<account_name>.dfs.core.windows.net/path/file](../../storage/blobs/data-lake-storage-introduction-abfs-uri.md#uri-syntax)              |
 ||||
 
 '\<storage_path>'
@@ -222,6 +223,7 @@ CSV パーサー バージョン 1.0 の詳細:
 CSV パーサー バージョン 2.0 の詳細:
 
 - すべてのデータ型がサポートされているわけではありません。
+- 列の最大長は 8,000 文字です。
 - 行の最大サイズの上限は 8 MB です。
 - 次のオプションはサポートされていません。DATA_COMPRESSION
 - 引用符で囲まれた空の文字列 ("") は、空の文字列として解釈されます。
@@ -236,6 +238,10 @@ CSV ファイルにヘッダー行を含めるかどうかを指定します。 
 DATAFILETYPE = { 'char' | 'widechar' }
 
 エンコードを指定します。UTF8 にはchar が使用され、UTF16 ファイルには widechar が使用されます。
+
+CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
+
+データ ファイル内のデータのコード ページを指定します。 既定値は 65001 (UTF-8 エンコード) です。 このオプションの詳細については、[こちら](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15#codepage)を参照してください。
 
 ## <a name="fast-delimited-text-parsing"></a>高速の区切りテキスト解析
 

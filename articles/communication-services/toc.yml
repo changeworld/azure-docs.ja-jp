@@ -5,6 +5,8 @@
   items:
     - name: Azure Communication Services とは
       href: overview.md
+    - name: サポート オプションとヘルプ オプション
+      href: support.md
 - name: クイックスタート
   expanded: true
   items:
@@ -12,6 +14,8 @@
       href: quickstarts/create-communication-resource.md
     - name: アクセス トークンを作成して管理する
       href: quickstarts/access-tokens.md
+    - name: マネージド ID を使用する (.NET)
+      href: quickstarts/managed-identity.md
     - name: チャット
       items:
         - name: チャットをアプリに追加する
@@ -34,15 +38,29 @@
       items:
         - name: 音声通話をアプリに追加する
           href: quickstarts/voice-video-calling/getting-started-with-calling.md
+        - name: 音声通話をアプリに追加する (JavaScript)
+          href: quickstarts/voice-video-calling/get-started-with-video-calling.md
         - name: 通話クライアント ライブラリを使用する
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: 通話アプリを Teams の会議に参加させる
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
+    - name: UI フレームワーク
+      items:
+        - name: 複合コンポーネントの概要
+          href: quickstarts/ui-framework/get-started-with-composites.md
+        - name: 基本コンポーネントの概要
+          href: quickstarts/ui-framework/get-started-with-components.md
+        - name: 独自の UI フレームワーク コンポーネントを作成する
+          href: quickstarts/ui-framework/create-your-own-components.md
 - name: チュートリアル
   expanded: false
   items:
     - name: Azure Functions を使用して、信頼される認証サービスを構築する
       href: tutorials/trusted-service-tutorial.md
+    - name: C# を使用して HMAC 署名で HTTP 要求に署名する
+      href: tutorials/hmac-header-tutorial.md
+    - name: Communication Services 用の Web アプリを準備する (Node.js)
+      href: tutorials/building-app-start.md
 - name: 概念
   expanded: false
   items:
@@ -58,20 +76,32 @@
           href: concepts/telephony-sms/sdk-features.md
         - name: SMS に関する概念
           href: concepts/telephony-sms/concepts.md
-        - name: テレフォニーと SMS ソリューションの計画
+        - name: テレフォニーの概念
+          href: concepts/telephony-sms/telephony-concept.md
+        - name: 電話番号の種類
           href: concepts/telephony-sms/plan-solution.md
+        - name: SIP インターフェイスのインフラストラクチャ要件
+          href: concepts/telephony-sms/sip-interface-infrastructure.md
     - name: 音声およびビデオによる通話
       items:
         - name: 通話クライアント ライブラリの概要
           href: concepts/voice-video-calling/calling-sdk-features.md
         - name: 音声とビデオに関する概念
           href: concepts/voice-video-calling/about-call-types.md
-        - name: Teams の相互運用性
-          href: concepts/voice-video-calling/teams-interop.md
+    - name: UI フレームワーク
+      items:
+        - name: UI フレームワークの概要
+          href: concepts/ui-framework/ui-sdk-overview.md
+        - name: UI フレームワークの機能
+          href: concepts/ui-framework/ui-sdk-features.md
+    - name: Teams の相互運用性
+      href: concepts/teams-interop.md
     - name: クライアントとサーバーのアーキテクチャ
       href: concepts/client-and-server-architecture.md
     - name: 通話のフロー
       href: concepts/call-flows.md
+    - name: 通話フローのトポロジ
+      href: concepts/detailed-call-flows.md
     - name: クライアント ライブラリと REST API
       href: concepts/sdk-options.md
     - name: 価格モデル
@@ -92,6 +122,8 @@
       href: concepts/metrics.md
     - name: トラブルシューティング
       href: concepts/troubleshooting-info.md
+    - name: 既知の問題
+      href: concepts/known-issues.md
 - name: サンプル
   items:
     - name: グループ通話のヒーロー サンプル

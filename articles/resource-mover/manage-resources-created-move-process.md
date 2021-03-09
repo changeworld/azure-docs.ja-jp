@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 6d6f56fb47bfdaadc6704e2a13ebcf0e893b8b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3c4c4e86e2461ea1d05af284e724a5a2991f040
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90602355"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727041"
 ---
 # <a name="manage-resources-created-for-the-vm-move"></a>VM 移動用に作成されたリソースを管理する
 
@@ -24,11 +24,11 @@ ms.locfileid: "90602355"
 
 移動コレクションと、VM 移動用に作成された Site Recovery リソースを手動で削除します。
 
-1. リソース グループ ```ResourceMoverRG-<sourceregion>-<target-region>``` でリソースを確認します。
+1. リソース グループ ```ResourceMoverRG-<sourceregion>-<target-region>-<metadataRegionShortName>``` でリソースを確認します。
 2. VM、および移動コレクション内の他のすべてのソース リソースが移動または削除されていることを確認します。 これにより、それらを使用している保留中のリソースがないことが保証されます。
 2. これらのリソースを削除します。
 
-    - 移動コレクションの名前は ```movecollection-<sourceregion>-<target-region>``` です。
+    - 移動コレクションの名前は ```movecollection-<sourceregion>-<target-region>-<metadata-region>``` です。
     - キャッシュ ストレージ アカウントの名前は ```resmovecache<guid>``` です
     - コンテナーの名前は ```ResourceMove-<sourceregion>-<target-region>-GUID``` です。
 

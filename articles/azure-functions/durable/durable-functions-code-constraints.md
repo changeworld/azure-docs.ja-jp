@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: dc301cf7149ad9fcd5bd5c02226afedc4df5e3ee
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 63db8375379144b2ede78d9e7010a350b3f69b12
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833097"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101726412"
 ---
 # <a name="orchestrator-function-code-constraints"></a>オーケストレーター関数コードの制約
 
@@ -31,7 +31,7 @@ Durable Functions は、ステートフル アプリの構築を可能にする�
 | API のカテゴリ | 理由 | 回避策 |
 | ------------ | ------ | ---------- |
 | 日付と時刻  | 現在の日付または時刻を返す API は、再生ごとに異なる値が返されるため、非決定論的です。 | .NET の [CurrentUtcDateTime](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.currentutcdatetime) プロパティ、JavaScript の `currentUtcDateTime` API、または Python の `current_utc_datetime` API を使用します。これらは再生時に安全です。 |
-| GUID と UUID  | ランダムな GUID または UUID を返す API は、再生のたびに異なる値が生成されるため、非決定論的です。 | ランダムな GUID を安全に生成するには、[NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) (.NET) または `newGuid` (JavaScript) を使用します。 |
+| GUID と UUID  | ランダムな GUID または UUID を返す API は、再生のたびに異なる値が生成されるため、非決定論的です。 | ランダムな GUID を安全に生成するには、[NewGuid](/dotnet/api/microsoft.azure.webjobs.extensions.durabletask.idurableorchestrationcontext.newguid) (.NET)、`newGuid` (JavaScript)、`new_guid` (Python) を使用します。 |
 | ランダムな数値 | ランダムな数値を返す API は、再生のたびに異なる値が生成されるため、非決定論的です。 | アクティビティ関数を使用してオーケストレーションに乱数を返します。 アクティビティ関数の戻り値は、常に安全に再生できます。 |
 | バインド | 入力および出力のバインドでは、通常、I/O が実行され、非決定論的です。 [オーケストレーション クライアント](durable-functions-bindings.md#orchestration-client)および[エンティティ クライアント](durable-functions-bindings.md#entity-client)のバインドも、オーケストレーター関数で直接使用することはできません。 | クライアント関数またはアクティビティ関数内では、入力および出力のバインドを使用します。 |
 | ネットワーク | ネットワーク呼び出しには外部システムが関わるため、非決定論的です。 | ネットワーク呼び出しを行うには、アクティビティ関数を使用します。 オーケストレーター関数から HTTP 呼び出しを行う必要がある場合は、[持続的 HTTP API](durable-functions-http-features.md#consuming-http-apis) を使用できます。 |

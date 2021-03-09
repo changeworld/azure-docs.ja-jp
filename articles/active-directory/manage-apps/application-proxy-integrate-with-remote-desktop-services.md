@@ -3,7 +3,7 @@ title: Azure Active Directory アプリケーション プロキシを使用し�
 description: リモート デスクトップ サービス (RDS) でアプリ プロキシを構成する方法について説明します
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 666b3c609224c1665c150718b2b89c4bac72577e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5e5d5370057449d1877c31b249d3fe47fd60bf2a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882230"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101687670"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
@@ -57,7 +57,7 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
 ### <a name="publish-the-rd-host-endpoint"></a>RD ホスト エンドポイントを発行する
 
 1. 次の値で[新しいアプリケーション プロキシ アプリケーションを発行](application-proxy-add-on-premises-application.md)します。
-   - [内部 URL]: `https://\<rdhost\>.com/`。 `\<rdhost\>` は、RD Web と RD ゲートウェイが共有する共通のルートです。
+   - [内部 URL]: `https://<rdhost>.com/`。 `<rdhost>` は、RD Web と RD ゲートウェイが共有する共通のルートです。
    - 外部 URL:このフィールドは、アプリケーションの名前に基づいて自動的に設定されますが、変更することもできます。 ユーザーは、RDS にアクセスするときにこの URL に移動します。
    - [事前認証方法]:Azure Active Directory
    - [ヘッダーの URL を変換する]:いいえ
@@ -69,7 +69,7 @@ RDS と Azure AD アプリケーション プロキシを自分の環境用に�
 
 4. **[Azure Active Directory]** を選択してから、 **[アプリの登録]** を選択します。 一覧からアプリを選択します。
 5. **[管理]** 下にある **[ブランド]** を選択します。
-6. RD Web エンドポイント (`https://\<rdhost\>.com/RDWeb` など) を参照するように **[ホーム ページ URL]** フィールドを更新します。
+6. RD Web エンドポイント (`https://<rdhost>.com/RDWeb` など) を参照するように **[ホーム ページ URL]** フィールドを更新します。
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>RDS トラフィックをアプリケーション プロキシに転送する
 

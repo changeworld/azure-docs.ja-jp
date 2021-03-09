@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e52f0f22065d89788d08659476d14af0351cc493
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492354"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590579"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL のログの構成とアクセス - フレキシブル サーバー
 
@@ -40,13 +40,13 @@ Azure portal を使用してリソース ログを有効にするには
 
 7. 設定を保存します。
 
-PowerShell、CLI、または REST API を使用してリソース ログを有効にするには、[診断の設定](../../azure-monitor/platform/diagnostic-settings.md)に関する記事をご覧ください。
+PowerShell、CLI、または REST API を使用してリソース ログを有効にするには、[診断の設定](../../azure-monitor/essentials/diagnostic-settings.md)に関する記事をご覧ください。
 
 ### <a name="access-resource-logs"></a>リソース ログへのアクセス
 
-ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)に関する記事を参照してください。
+ログへのアクセス方法は、選択したエンドポイントによって異なります。 Azure Storage については、[ログ ストレージ アカウント](../../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)に関する記事を参照してください。 Event Hubs の場合は、[Azure ログのストリーミング](../../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs)に関する記事を参照してください。
 
-Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../../azure-monitor/log-query/log-query-overview.md)の概要に関する記事を参照してください。
+Azure Monitor ログの場合は、選択したワークスペースにログが送信されます。 Postgres ログでは **AzureDiagnostics** コレクション モードが使用されるため、AzureDiagnostics テーブルからクエリを実行できます。 表内のフィールドについては、以下で説明します。 クエリとアラートの詳細については、[Azure Monitor のログ クエリ](../../azure-monitor/logs/log-query-overview.md)の概要に関する記事を参照してください。
 
 次に、作業を開始するために試すことのできるクエリを示します。 クエリに基づいてアラートを構成できます。
 
@@ -71,5 +71,5 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Log Analytics クエリの使用方法](../../azure-monitor/log-query/log-analytics-tutorial.md)
+- [Log Analytics クエリの使用方法](../../azure-monitor/logs/log-analytics-tutorial.md)
 - [Azure Event Hubs](../../event-hubs/event-hubs-about.md) について

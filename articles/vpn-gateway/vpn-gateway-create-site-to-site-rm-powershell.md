@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0295f1687a328980ccf8ceeb6d6a1f1cbd2b4bad
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 1488aa6f48c05a8c2dfa2c6162c1bd1df35d4f58
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878072"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380496"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>PowerShell を使用してサイト間 VPN 接続を備えた VNet を作成する
 
@@ -242,7 +242,7 @@ VPN 接続を検証する方法はいくつかあります。
 
 ## <a name="to-modify-ip-address-prefixes-for-a-local-network-gateway"></a><a name="modify"></a>ローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更するには
 
-オンプレミスの場所にルーティングする IP アドレス プレフィックスが変更された場合には、ローカル ネットワーク ゲートウェイを変更できます。 2 種類の手順があります。 どちらの手順を選択するかは、既にゲートウェイ接続を作成しているかどうかによって異なります。 このような例を使用するときは、実際の環境に合わせて値を変更してください。
+オンプレミスの場所にルーティングする IP アドレス プレフィックスが変更された場合には、ローカル ネットワーク ゲートウェイを変更できます。 このような例を使用するときは、実際の環境に合わせて値を変更してください。
 
 [!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 

@@ -6,12 +6,12 @@ ms.author: jeanb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: d4053cd02dd11922a402971c7f3934a8b818eaa4
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015905"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560221"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 
@@ -23,16 +23,16 @@ ms.locfileid: "98015905"
 ```SQL  
 SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
 FROM Input1 I1 TIMESTAMP BY EntryTime  
-JOIN Registration R  
+JOIN Registration R   
 ON I1.LicensePlate = R.LicensePlate  
 WHERE R.Expired = '1'
 ```  
 
-Stream Analytics は、参照データの格納レイヤーとして Azure BLOB ストレージおよび Azure SQL Database をサポートします。 [任意の数のクラウド ベースおよびオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)を使用するために、Azure Data Factory から参照データを BLOB ストレージに変換またはコピー (あるいは両方) することもできます。
+Stream Analytics は、参照データの格納レイヤーとして Azure Blob Storage および Azure SQL Database をサポートします。 [任意の数のクラウド ベースおよびオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)を使用するために、Azure Data Factory から参照データを BLOB ストレージに変換またはコピー (あるいは両方) することもできます。
 
-## <a name="azure-blob-storage"></a>Azure BLOB ストレージ
+## <a name="azure-blob-storage"></a>Azure Blob Storage
 
-参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より **新しい** 日付/時刻を使用してシーケンスの末尾に追加することがサポートされている **だけ** です。
+参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より **新しい** 日付/時刻を使用してシーケンスの末尾に追加することがサポートされている **だけ** です。 詳細については、[Blob Storage からの参照データの Azure Stream Analytics ジョブでの使用](data-protection.md)に関するページを参照してください。
 
 ### <a name="configure-blob-reference-data"></a>BLOB 参照データを構成する
 

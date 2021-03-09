@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d83a2bc4723686920b487998a2040e5be02d4e1a
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456961"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101689115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル: Azure Active Directory と Bonusly の統合
 
@@ -41,7 +41,7 @@ Bonusly と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Bonusly では、 **IDP** によって開始される SSO がサポートされます
+* Bonusly では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-bonusly-from-the-gallery"></a>ギャラリーからの Bonusly の追加
 
@@ -61,13 +61,13 @@ Azure AD への Bonusly の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Bonusly** 」と入力し、結果ウィンドウで **Bonusly** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Bonusly**」と入力し、結果ウィンドウで **Bonusly** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Bonusly](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Bonusly で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Bonusly で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Bonusly 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Bonusly で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
@@ -126,7 +126,7 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-bonusly-single-sign-on"></a>Bonusly シングル サインオンの構成
 
-1. 別のブラウザー ウィンドウで、 **Bonusly** テナントにサインインします。
+1. 別のブラウザー ウィンドウで、**Bonusly** テナントにサインインします。
 
 1. 上部のツール バーの **[Settings]\(設定\)** をクリックし、 **[Integrations and apps]\(統合とアプリ\)** を選択します。
 
@@ -163,7 +163,7 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
     b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します。 たとえば、BrittaSimon@contoso.com のように指定します。
 
@@ -228,11 +228,11 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
     ![スクリーンショットは、この情報を入力できる [Add User]\(ユーザーの追加\) ダイアログ ボックスを示しています。](./media/bonus-tutorial/ic781045.png "ユーザーの追加")  
 
-    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta** )。
+    a. **[First name]\(名\)** ボックスに、ユーザーの名前を入力します (この例では **Britta**)。
 
-    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon** )。
+    b. **[Last name]\(姓\)** ボックスに、ユーザーの姓を入力します (この例では **Simon**)。
 
-    c. **[メール]** ボックスに、ユーザーのメール (`brittasimon\@contoso.com` など) を入力します。
+    c. **[メール]** ボックスに、ユーザーのメール (`brittasimon@contoso.com` など) を入力します。
 
     d. **[保存]** をクリックします。
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d0973682a62b17a21557727a8d5eb8fcb7ec7ef1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9113abe14af942700a073626c5aad19dc2ebcd06
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98203373"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101665976"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -51,10 +51,6 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
 | REST API |[場所の一覧表示](/rest/api/resources/subscriptions)操作を使用します。 |
 | Azure CLI |[az account list-locations](/cli/azure/account) 操作を使用します。 |
-
-### <a name="singapore-data-residency"></a>シンガポールのデータ所在地
-
-Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
 
 ## <a name="availability"></a>可用性
 Azure は、単一インスタンス仮想マシン向けに、業界をリードする 99.9% というサービス レベル アグリーメントを発表しました。ただし、すべてのディスクに Premium Storage を使用した VM をデプロイすることが条件となります。  デプロイが、VM に適用される 99.95% という標準のサービス レベル アグリーメントの要件を満たすためには、可用性セット内でワークロードを実行する複数の VM をデプロイする必要があります。 可用性セットにより、Azure データ センターにある複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
@@ -108,7 +104,7 @@ VM の[拡張機能](../extensions/features-windows.md?toc=/azure/virtual-machin
 
 ## <a name="data-residency"></a>データの保存場所
 
-Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azuredatacentermap.azurewebsites.net/)に関するページを参照してください。
+Azure では、顧客データを 1 つのリージョンに格納できるようにする機能は現在、アジア太平洋地域の東南アジア リージョン (シンガポール) と、ブラジル地域のブラジル南部リージョン (サンパウロ州) でのみ使用できます。 その他のすべてのリージョンでは、顧客データは geo 内に格納されます。 詳細については、[セキュリティ センター](https://azure.microsoft.com/global-infrastructure/data-residency/)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: bcbff131706854c079a5af2f38cad98f97018167
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 2109705116c323fd3632b7230a81ccd9158c1a64
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753326"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582321"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Web API を呼び出す Web アプリ: コード構成
 
@@ -44,7 +44,7 @@ Microsoft 認証ライブラリ (MSAL) の次のライブラリでは、Web ア�
 
 ## <a name="client-secrets-or-client-certificates"></a>クライアント シークレットまたはクライアント証明書
 
-Web アプリでダウンストリーム Web API を呼び出すようになったので、クライアント シークレットまたはクライアント証明書を *appsettings.json* ファイルに指定する必要があります。 次を指定するセクションを追加することもできます。
+ご利用の Web アプリでダウンストリーム Web API を呼び出すことができるようになったため、クライアント シークレットまたはクライアント証明書を *appsettings.json* ファイルに指定してください。 次を指定するセクションを追加することもできます。
 
 - ダウンストリーム Web API の URL
 - API の呼び出しに必要なスコープ
@@ -184,7 +184,7 @@ Web API と同様に、さまざまなトークン キャッシュの実装を�
 :::image type="content" source="media/scenarios/microsoft-identity-web-startup-cs.svg" alt-text="Web API を呼び出し、トークン キャッシュの実装を指定するための Startup.cs のサービス構成オプションを示すブロック図":::
 
 > [!NOTE]
-> これらのコード例を完全に理解するには、[ASP.NET Core の基礎](/aspnet/core/fundamentals)、特に[依存関係の挿入](/aspnet/core/fundamentals/dependency-injection)と[オプション](/aspnet/core/fundamentals/configuration/options)について熟知している必要があります。
+> これらのコード例を完全に理解するために、[ASP.NET Core の基礎](/aspnet/core/fundamentals)、特に[依存関係の挿入](/aspnet/core/fundamentals/dependency-injection)と[オプション](/aspnet/core/fundamentals/configuration/options)についてよく理解してください。
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

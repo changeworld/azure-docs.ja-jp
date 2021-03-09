@@ -3,17 +3,17 @@ title: 'ML Studio (classic): モデル結果の解釈 - Azure'
 description: モデルのスコア付け出力を使用して視覚化し、アルゴリズムに最適なパラメーター セットを選択する方法。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
-ms.openlocfilehash: 74210475cc8c0efd274d6e80c3f1c89b5206a97d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f824cf6e30ed795ef0fe4468542ae16c801bd61b
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509504"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516126"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデル結果を解釈する
 

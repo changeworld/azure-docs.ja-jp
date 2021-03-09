@@ -4,15 +4,15 @@ description: Azure Red Hat OpenShift クラスター管理者に対するセキ�
 services: container-service
 author: troy0820
 ms.author: b-trconn
-ms.service: container-service
+ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: eb5c568f056a99187a0e7a78a6f89b206f2d8dec
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 977504c1faec9bd8134646a8cbe31f9eea665edd
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220246"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100636205"
 ---
 # <a name="manage-security-context-constraints-in-azure-red-hat-openshift"></a>Azure Red Hat OpenShift でセキュリティ コンテンツ制約を管理する
 
@@ -43,7 +43,7 @@ restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs 
 
 ## <a name="examine-an-object-for-security-context-constraints"></a>セキュリティ コンテキスト制約のオブジェクトを調べる
 
-特定の SCC を調べるには、`oc get`、`oc describe`、または `oc edit` を使用します。  たとえば、 **制約付き** SCC を調べるには、次のコマンドを使用します。
+特定の SCC を調べるには、`oc get`、`oc describe`、または `oc edit` を使用します。  たとえば、**制約付き** SCC を調べるには、次のコマンドを使用します。
 ```bash
 $ oc describe scc restricted
 Name:                    restricted

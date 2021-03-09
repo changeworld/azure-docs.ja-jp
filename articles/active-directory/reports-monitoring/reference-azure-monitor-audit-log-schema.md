@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc7a5e2e45cd3d76c0d8af612291ecaf9893b5b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b4d32e0b939731d64f3ef2495ab606b5dc0780e4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231097"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592290"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>Azure Monitor の Azure AD 監査ログ スキーマを解釈する (プレビュー)
 
@@ -161,7 +161,7 @@ ms.locfileid: "89231097"
 | callerIpAddress | 要求を行ったクライアントの IP アドレス。 | 
 | correlationId | クライアントから渡される省略可能な GUID。 クライアント側の操作をサーバー側の操作と関連付けるために役立ちます。また、複数のサービスにまたがるログをトレースする場合に便利です。 |
 | identity | 要求を行ったときに提示されたトークンからの ID。 この ID は、ユーザー アカウント、システム アカウント、またはサービス プリンシパルになります。 |
-| level | メッセージの種類。 監査ログの場合、レベルは常に *Informational* です。 |
+| level | メッセージの型。 監査ログの場合、レベルは常に *Informational* です。 |
 | location | データセンターの場所。 |
 | properties | サポートされているプロパティのうち、監査ログに関連するプロパティを一覧表示します。 詳細については、次の表を参照してください。 | 
 
@@ -179,5 +179,5 @@ ms.locfileid: "89231097"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor でサインイン ログのスキーマを解釈する](reference-azure-monitor-sign-ins-log-schema.md)
-* [Azure Diagnostics ログ](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure Diagnostics ログ](../../azure-monitor/essentials/platform-logs-overview.md)
 * [よく寄せられる質問と既知の問題](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

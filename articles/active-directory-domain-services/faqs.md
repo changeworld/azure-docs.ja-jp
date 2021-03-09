@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: justinha
-ms.openlocfilehash: e4e7a64b9f9d7283de728216934854f4ef8f8fd1
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 3d0f2b44f37cb318be2117b5dc5d8b42b418ff19
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619735"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090991"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)
 
@@ -106,7 +106,7 @@ ms.locfileid: "96619735"
 いいえ。 マネージド ドメインの管理特権は付与されません。 "*ドメイン管理者*" 特権と "*エンタープライズ管理者*" 特権は、ドメイン内では使用できません。 また、オンプレミスの Active Directory 内のドメイン管理者グループまたはエンタープライズ管理者グループのメンバーにも、マネージド ドメインのドメイン/エンタープライズ管理者特権は付与されません。
 
 ### <a name="can-i-modify-group-memberships-using-ldap-or-other-ad-administrative-tools-on-managed-domains"></a>マネージド ドメインで LDAP または他の AD 管理ツールを使用してグループ メンバーシップを変更できますか。
-Azure Active Directory から Azure AD Domain Services に同期されるユーザーとグループは、元のソースが Azure Active Directory であるため変更できません。 マネージド ドメインがソースのユーザーまたはグループは変更できます。
+Azure Active Directory から Azure AD Domain Services に同期されるユーザーとグループは、元のソースが Azure Active Directory であるため変更できません。 これには、AADDC Users のマネージド組織単位からカスタム組織単位へのユーザーまたはグループの移動が含まれます。 マネージド ドメインがソースのユーザーまたはグループは変更できます。  
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Azure AD ディレクトリに対して行った変更がマネージド ドメインに反映されるまで、どのくらいの時間がかかりますか。
 Azure AD UI または PowerShell を使用して Azure AD ディレクトリに対して行った変更は、マネージド ドメインに自動的に同期されます。 この同期プロセスはバック グラウンドで実行されます。 この同期ですべてのオブジェクトの変更を完了するための期間は定義されていません。
@@ -152,7 +152,7 @@ Azure AD Domain Services は Azure の無料試用版に含まれています。
 いいえ。 Azure AD Domain Services のマネージド ドメインを有効にすると、マネージド ドメインを削除するまで、選択した仮想ネットワーク内でサービスを使用できます。 サービスを一時停止する方法はありません。 課金は、マネージド ドメインを削除するまで、1 時間ごとに続行されます。
 
 ### <a name="can-i-fail-over-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>DR イベント時に Azure AD Domain Services を別のリージョンにフェールオーバーできますか。
-いいえ。 Azure AD Domain Services では現在、geo 冗長デプロイ モデルは提供されていません。 Azure リージョン内の 1 つの仮想ネットワークに限定されます。 複数の Azure リージョンを利用する場合、Azure IaaS VM 上で Active Directory ドメイン コントローラーを実行する必要があります。 アーキテクチャのガイダンスについては、「[オンプレミスにある Active Directory ドメインを Azure に拡張する](/azure/architecture/reference-architectures/identity/adds-extend-domain)」を参照してください。
+はい。マネージド ドメインの地理的な回復性を実現するために、Azure AD DS をサポートする任意の Azure リージョン内のピアリングされた仮想ネットワークに対して追加の[レプリカ セット](tutorial-create-replica-set.md)を作成できます。 レプリカ セットとマネージド ドメインとで、同じ名前空間および構成が共有されます。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。 Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。
 いいえ。 Azure AD Domain Services は従量課金制の Azure サービスであり、EMS の一部ではありません。 Azure AD Domain Services は、Azure AD のすべてのエディション (Free および Premium) で使用できます。 使用量に応じて、時間単位で課金されます。

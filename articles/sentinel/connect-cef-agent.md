@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 617599e3eb6dcca74324a7bdfd51e604904a2fa1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: a4303f43dffa98f842bd3daf9e3a0cd5214932b1
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897503"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100585371"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>手順 1:ログ フォワーダーをデプロイする
 
@@ -42,6 +42,11 @@ ms.locfileid: "97897503"
 
 - Log Analytics エージェントをインストールする前に Linux マシンを Azure ワークスペースに接続することは避けてください。
 
+- Linux マシンには、少なくとも **4 つの CPU コアと 8 GB の RAM** が必要です。
+
+    > [!NOTE]
+    > - **rsyslog** デーモンを使用している 1 つのログ フォワーダー マシンには、収集される **最大 8500 EPS (1 秒あたりのイベント数)** のサポートされる容量があります。
+
 - このプロセスのある時点で、ワークスペース ID とワークスペースの主キーが必要になる場合があります。 それらはワークスペース リソースの **[エージェント管理]** で確認できます。
 
 ## <a name="run-the-deployment-script"></a>展開スクリプトを実行する
@@ -51,7 +56,7 @@ ms.locfileid: "97897503"
 1. **[1.2 Linux マシンへの CEF コレクターのインストール]** で、 **[Run the following script to install and apply the CEF collector]\(CEF コレクターをインストールして適用するには、次のスクリプトを実行します\)** の下にあるリンクをコピーします。または、次のテキストからコピーしてください (プレースホルダーをワークスペース ID と主キーに置き換えます)。
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
+    sudo wget -O cef_installer.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]
     ```
 
 1. スクリプトの実行中に、エラーまたは警告メッセージが表示されないことを確認してください。
@@ -65,7 +70,7 @@ ms.locfileid: "97897503"
 >
 > このログ フォワーダー マシンを使用して [Syslog メッセージ](connect-syslog.md)と CEF を転送する予定であれば、Syslog および CommonSecurityLog テーブルへのイベントの重複を回避するために、以下を実行します。
 >
-> 1. CEF 形式でフォワーダーにログを送信する各ソース マシンで、Syslog 構成ファイルを編集し、CEF メッセージの送信に使用されているファシリティを削除する必要があります。 これで、CEF で送信されるファシリティは、Syslog で送信されません。 この方法の詳細については、「[Linux エージェントでの Syslog の構成](../azure-monitor/platform/data-sources-syslog.md#configure-syslog-on-linux-agent)」を参照してください。
+> 1. CEF 形式でフォワーダーにログを送信する各ソース マシンで、Syslog 構成ファイルを編集し、CEF メッセージの送信に使用されているファシリティを削除する必要があります。 これで、CEF で送信されるファシリティは、Syslog で送信されません。 この方法の詳細については、「[Linux エージェントでの Syslog の構成](../azure-monitor/agents/data-sources-syslog.md#configure-syslog-on-linux-agent)」を参照してください。
 >
 > 1. これらのマシンで次のコマンドを実行して、エージェントと Azure Sentinel の Syslog 構成との同期を無効にする必要があります。 これで、前の手順で構成に加えた変更が上書きされなくなります。<br>
 > `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
@@ -94,8 +99,8 @@ syslog デーモンを選択して、適切な説明を表示してください�
     - Log Analytics (OMS) Linux エージェントのインストール スクリプトをダウンロードします。
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Log Analytics エージェントをインストールします。
@@ -160,8 +165,8 @@ syslog デーモンを選択して、適切な説明を表示してください�
     - Log Analytics (OMS) Linux エージェントのインストール スクリプトをダウンロードします。
 
         ```bash
-        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
-            onboard_agent.sh
+        wget -O onboard_agent.sh https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/
+            master/installer/scripts/onboard_agent.sh
         ```
 
     - Log Analytics エージェントをインストールします。

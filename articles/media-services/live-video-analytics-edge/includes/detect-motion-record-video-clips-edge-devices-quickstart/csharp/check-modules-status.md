@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: e46a56742ab8b98c53c1cd05e840e8ad4b8a73da
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3f92bae608284c8b619be34a0e08f15e831bf88e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682230"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750394"
 ---
 「[IoT Edge の配置マニフェストを生成してデプロイする](../../../detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest)」の手順で、Visual Studio Code で **AZURE IOT HUB** の下にある **lva-sample-device** ノード (左下のセクション内) を展開します。 次のモジュールがデプロイされていることを確認できます。
 
@@ -14,11 +14,11 @@ ms.locfileid: "88682230"
   ![モジュール](../../../media/quickstarts/lva-sample-device-node.png)
 
 > [!NOTE]
-> セットアップ スクリプトによってプロビジョニングされたものではなく、独自のエッジ デバイスを使用している場合は、エッジ デバイスにアクセスし、**管理者権限**で次のコマンドを実行して、このクイックスタートで使用するサンプル ビデオ ファイルをプルして保存します。  
+> 上記の手順は、セットアップ スクリプトによって作成された仮想マシンの使用を前提としています。 独自のエッジ デバイスを使用している場合は、エッジ デバイスにアクセスし、**管理者権限** で次のコマンドを実行して、このクイックスタートで使用するサンプル ビデオ ファイルをプルして保存します。  
 
 ```
-mkdir /home/lvaadmin/samples
-mkdir /home/lvaadmin/samples/input    
-curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-chown -R lvaadmin /home/lvaadmin/samples/  
+mkdir /home/lvaedgeuser/samples
+mkdir /home/lvaedgeuser/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
 ```

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b4f0c64abf150165e3239e78e8cf9b824b34eed6
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1ba497094a28e056d5984f1e58e2f15c9d21eae2
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202370"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094444"
 ---
 # <a name="azure-security-baseline-for-azure-resource-manager"></a>Azure Resource Manager 用の Azure セキュリティ ベースライン
 
@@ -31,9 +31,9 @@ ms.locfileid: "98202370"
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md) 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../../azure-monitor/learn/quick-collect-azurevm.md) 
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../../azure-monitor/vm/quick-collect-azurevm.md) 
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -45,9 +45,9 @@ ms.locfileid: "98202370"
 
 **ガイダンス**:Azure Resource Manager では、アクティビティ ログ (自動的に有効になります) を使用して、イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素が記録されます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](../../azure-monitor/platform/platform-logs-overview.md)
+- [Azure でのログ記録とログのさまざまな種類について](../../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -61,9 +61,9 @@ ms.locfileid: "98202370"
 
 - [Azure Sentinel をオンボードする方法](../../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics クエリの使用方法](../../azure-monitor/log-query/log-analytics-tutorial.md) 
+- [Log Analytics クエリの使用方法](../../azure-monitor/logs/log-analytics-tutorial.md) 
 
-- [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/log-query/get-started-queries.md)
+- [Azure Monitor でカスタム クエリを実行する方法](../../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -77,7 +77,7 @@ ms.locfileid: "98202370"
 
 - [Azure Security Center でアラートを管理する方法](../../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -241,7 +241,7 @@ ms.locfileid: "98202370"
 
 **ガイダンス**:Azure AD RBAC を使用してデータとリソースへのアクセスを制御します。それ以外の場合は、サービス固有のアクセス制御方法を使用します。
 
-- [Azure で RBAC を構成する方法](../../role-based-access-control/role-assignments-portal.md)
+- [Azure RBAC を構成する方法](../../role-based-access-control/role-assignments-portal.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -261,7 +261,7 @@ ms.locfileid: "98202370"
 
 **ガイダンス**:Azure アクティビティ ログで Azure Monitor を使用して、重要な Azure リソースに変更が加えられたときのアラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f0c9a01e43f12e8fbe597c85c22b79c0994305e3
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 41662c5e4cc0ed9458f8b1b1279e2753daed789f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938870"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518455"
 ---
 # <a name="supported-postgresql-major-versions"></a>サポートされる PostgreSQL のメジャー バージョン
 
@@ -29,11 +29,8 @@ Azure Database for PostgreSQL では現在、次のメジャー バージョン�
 ## <a name="postgresql-version-96"></a>PostgreSQL バージョン 9.6
 現在のマイナー リリースは 9.6.16 です。 このマイナー リリースの機能強化と修正の詳細については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.6/static/release-9-6-16.html)を参照してください。
 
-## <a name="postgresql-version-95"></a>PostgreSQL バージョン 9.5
-現在のマイナー リリースは 9.5.20 です。 このマイナー リリースの機能強化と修正については、[PostgreSQL のドキュメント](https://www.postgresql.org/docs/9.5/static/release-9-5-20.html)を参照してください。
-
-> [!NOTE]
-> Postgres コミュニティの[バージョン管理ポリシー](https://www.postgresql.org/support/versioning/)に従って、Azure Database for PostgreSQL では、2021 年 2 月 11 日に Postgres バージョン 9.5 が廃止される予定です。 詳細と制限については、「[Azure Database for PostgreSQL のバージョン管理ポリシー](concepts-version-policy.md)」をご覧ください。
+## <a name="postgresql-version-95-retired"></a>PostgreSQL バージョン 9.5 (廃止)
+Postgres コミュニティの[バージョン管理ポリシー](https://www.postgresql.org/support/versioning/)に従って、Azure Database for PostgreSQL では、2021 年 2 月 11 日に Postgres バージョン 9.5 が廃止されました。 詳細と制限については、「[Azure Database for PostgreSQL のバージョン管理ポリシー](concepts-version-policy.md)」をご覧ください。 このメジャー バージョンを実行している場合は、より新しいバージョンにアップグレードしてください (できるだけ早く PostgreSQL 11 にアップグレードすることをお勧めします)。
 
 ## <a name="managing-upgrades"></a>アップグレードの管理
 PostgreSQL プロジェクトでは、報告されたバグを修正するためにマイナー リリースを定期的に発行しています。 Azure Database for PostgreSQL は、サービスの月次デプロイ中に、マイナー リリースのサーバーに自動的に修正を適用します。 

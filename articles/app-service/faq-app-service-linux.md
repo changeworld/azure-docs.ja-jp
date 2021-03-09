@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2ab39f090124aaf590798795f446bda5b0fe48a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008556"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100094000"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -110,7 +110,7 @@ const io = require('socket.io')(server,{
 
 **自分が所有するカスタム コンテナーを使用しています。プラットフォームを SMB 共有の `/home/` ディレクトリにマウントさせたいと考えています。**
 
-`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が **指定されていない** 場合や *true* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で **共有され**、書き込まれたファイルは再起動後も **保持されます**。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を明示的に *false* に設定すると、マウントが無効になります。
+`WEBSITES_ENABLE_APP_SERVICE_STORAGE` 設定が **指定されていない** 場合や *false* に設定されている場合、`/home/` ディレクトリはスケール インスタンス間で **共有されず**、書き込まれたファイルは再起動後は **保持されません**。 `WEBSITES_ENABLE_APP_SERVICE_STORAGE` を明示的に *true* に設定すると、マウントが有効になります。
 
 **カスタム コンテナーの起動に時間がかかり、起動が終了する前にプラットフォームがコンテナーを再起動します。**
 

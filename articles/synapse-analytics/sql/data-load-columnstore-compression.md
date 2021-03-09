@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f98d00477b7dc8fbbbe7d17705e398a708ce2af
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 18350dc39fceaf6f4c50f8e1053a2972bbce7f44
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120939"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101676637"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>列ストア インデックスのパフォーマンスのために行グループの品質を最大化する
 
@@ -26,7 +26,7 @@ ms.locfileid: "98120939"
 
 列ストアインデックスは個別の行グループの列セグメントをスキャンすることでテーブルをスキャンし、各行グループの行の数を最大限にしてクエリ パフォーマンスを向上させます。 行グループに多くの行がある場合、データ圧縮が向上します。つまり、ディスクから読み取るデータが少なくなります。
 
-行グループの詳細については、「[列ストア インデックス ガイド](/sql/relational-databases/indexes/columnstore-indexes-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)」を参照してください。
+行グループの詳細については、「[列ストア インデックス ガイド](/sql/relational-databases/indexes/columnstore-indexes-overview?view=azure-sqldw-latest&preserve-view=true)」を参照してください。
 
 ## <a name="target-size-for-rowgroups"></a>行グループのターゲット サイズ
 
@@ -38,11 +38,11 @@ ms.locfileid: "98120939"
 
 それぞれの行グループに 10,000 行以上を圧縮する十分なメモリがない場合、エラーが生成されます。
 
-一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#Bulk&preserve-view=true )」セクションを参照してください。
+一括読み込みの詳細については、「[クラスター化列ストア インデックスへの一括読み込み](/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance?view=azure-sqldw-latest#bulk&preserve-view=true)」セクションを参照してください。
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>行グループの品質を監視する方法
 
-行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats があります ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) には、SQL DB に一致するビュー定義が含まれます)。 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
+行グループの行数や、トリミングがあった場合はトリミングの理由など、役立つ情報を示す DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats があります ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) には、SQL DB に一致するビュー定義が含まれます)。 次のビューを作成します。これは、この DMV に対してクエリを実行し、行グループのトリミングに関する情報を取得できる便利な方法です。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -142,5 +142,5 @@ DWU のサイズとユーザー リソースのクラスによって、ユーザ
 
 ## <a name="next-steps"></a>次のステップ
 
-Synapse SQL でパフォーマンスを向上させるその他の方法については、[パフォーマンスの概要](../overview-terminology.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)に関する記事を参照してください。
+Synapse SQL でパフォーマンスを向上させるその他の方法については、[パフォーマンスの概要](../overview-terminology.md)に関する記事を参照してください。
 

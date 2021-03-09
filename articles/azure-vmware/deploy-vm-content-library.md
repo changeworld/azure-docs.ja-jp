@@ -2,13 +2,13 @@
 title: Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリを作成する
 description: コンテンツ ライブラリを作成して、Azure VMware Solution プライベート クラウドに VM をデプロイします。
 ms.topic: how-to
-ms.date: 09/21/2020
-ms.openlocfilehash: 57db8ac4da8eef826d85feb11680c9c87823ee36
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.date: 02/03/2021
+ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461687"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100382006"
 ---
 # <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリを作成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "92461687"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、NSX-T 論理スイッチ セグメントと管理された DHCP サービスが必要です。  詳細については、[Azure VMware Solution で DHCP を管理する方法](manage-dhcp.md)に関する記事を参照してください。
+このチュートリアルを完了するには、NSX-T セグメント (論理スイッチ) とマネージド DHCP サービスが必要です。  詳細については、[Azure VMware Solution で DHCP を管理する方法](manage-dhcp.md)に関する記事を参照してください。
 
 ## <a name="create-a-content-library"></a>コンテンツ ライブラリを作成する
 
@@ -92,7 +92,10 @@ ms.locfileid: "92461687"
 
 ## <a name="next-steps"></a>次のステップ
 
-VMware HCX を使用して VM ワークロードをプライベート クラウドに移行する予定がある場合は、[VMware HCX のデプロイと構成](tutorial-deploy-vmware-hcx.md)を行う手順を使用します。
+Azure VMware Solution で VM をデプロイするためのコンテンツ ライブラリの作成について理解したので、次のことについて学習できます。
+
+- VM ワークロードをプライベート クラウドに移行するための [VMware HCX のデプロイと構成](tutorial-deploy-vmware-hcx.md)。
+- [Azure VMware Solution VM のライフサイクル管理](lifecycle-management-of-azure-vmware-solution-vms.md)。
 
 <!-- LINKS - external-->
 

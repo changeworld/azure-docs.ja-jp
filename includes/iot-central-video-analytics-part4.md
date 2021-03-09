@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: d9c2aea284a2ab84b5d45fe35a35785adfc88123
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763465"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832073"
 ---
 ### <a name="publish-the-device-template"></a>デバイス テンプレートを発行する
 
@@ -61,16 +61,3 @@ ms.locfileid: "96763465"
 
 1. **[閉じる]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
-
-**ビデオ分析 (物体とモーションの検出)** アプリケーション テンプレートを使用して IoT Central アプリケーションを作成し、ゲートウェイ デバイス用のデバイス テンプレートを作成して、ゲートウェイ デバイスをアプリケーションに追加しました。
-
-クラウド VM を実行する IoT Edge モジュールとシミュレートされたビデオ ストリームを使用して、ビデオ分析 (物体とモーションの検出) アプリケーションを試したい場合:
-
-> [!div class="nextstepaction"]
-> [ビデオ分析用の IoT Edge インスタンスを作成する (Linux VM)](../articles/iot-central/retail/tutorial-video-analytics-iot-edge-vm.md)
-
-実デバイスを実行する IoT Edge モジュールと実際の **ONVIF** カメラを使用して、ビデオ分析 (物体とモーションの検出) アプリケーションを試したい場合:
-
-> [!div class="nextstepaction"]
-> [ビデオ分析用の IoT Edge インスタンスを作成する (Intel NUC)](../articles/iot-central/retail/tutorial-video-analytics-iot-edge-nuc.md)

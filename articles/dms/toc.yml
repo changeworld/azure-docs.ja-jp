@@ -37,18 +37,12 @@
   items:
     - name: SQL Server の移行
       items:
-        - name: Azure SQL Database へ (オフライン)
+        - name: Azure SQL Database へ
           href: tutorial-sql-server-to-azure-sql.md
-        - name: Azure SQL Database へ (オンライン)
-          href: tutorial-sql-server-azure-sql-online.md
         - name: Azure SQL Managed Instance へ (オフライン)
           href: tutorial-sql-server-to-managed-instance.md
         - name: Azure SQL Managed Instance へ (オンライン)
           href: tutorial-sql-server-managed-instance-online.md
-    - name: RDS SQL Server の移行
-      items:
-        - name: Azure SQL Database または SQL Managed Instance へ
-          href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: MySQL の移行
       items:
         - name: Azure Database for MySQL へ
@@ -139,8 +133,6 @@
               href: known-issues-dms-hybrid-mode.md
         - name: 移行に関する既知の問題
           items:
-            - name: SQL Database
-              href: known-issues-azure-sql-online.md
             - name: SQL Managed Instance
               href: known-issues-azure-sql-db-managed-instance-online.md
             - name: Azure DB for MySQL

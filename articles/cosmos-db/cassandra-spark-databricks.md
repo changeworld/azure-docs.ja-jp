@@ -8,17 +8,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
-ms.openlocfilehash: 5aaf31d8c629e0770b913485de175c38f708390c
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 0a83dd143ae626108fdf8d2645b8cc368a3f3e05
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359627"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100516568"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Databricks から Azure Cosmos DB Cassandra API のデータにアクセスする
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
-この記事では、[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) 上の Spark からAzure Cosmos DB Cassandra API を使用する方法について説明します。
+この記事では、[Azure Databricks](/azure/databricks/scenarios/what-is-azure-databricks) 上の Spark から Azure Cosmos DB Cassandra API を使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +62,7 @@ Azure Databricks 上で自動化されたプロセスとして実行させる Sp
 
 以下は、Azure Cosmos DB Cassandra API との連携に向けて Spark Scala プログラムを構築し始めるときに参考となるリンクです。
 * [Spark Scala から Azure Cosmos DB Cassandra API に接続する方法](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-api-spark-connector-sample/blob/main/src/main/scala/com/microsoft/azure/cosmosdb/cassandra/SampleCosmosDBApp.scala)
-* [Spark Scala プログラムを Azure Databricks 上の自動化されたジョブとして実行する方法](https://docs.azuredatabricks.net/user-guide/jobs.html)
+* [Spark Scala プログラムを Azure Databricks 上の自動化されたジョブとして実行する方法](/azure/databricks/jobs)
 * [Cassandra API を使用する場合のサンプルコードの一覧](cassandra-spark-generic.md#next-steps)
 
 ## <a name="next-steps"></a>次のステップ

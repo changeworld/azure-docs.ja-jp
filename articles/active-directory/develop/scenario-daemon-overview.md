@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出すデスクトップ アプリをビルドする - Microsoft ID プラットフォーム | Azure
+title: Web API を呼び出すデーモン アプリのビルド | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出すデーモン アプリをビルドする方法について学習します
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e63a948260863c93a92e4241044be5e0baf8afca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 00a70b585ddf522a25e81703fe5bdf55efbcb7e1
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443264"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582776"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデーモン アプリケーション
 
@@ -45,13 +46,13 @@ Web API を呼び出すデーモン アプリをビルドするために必要�
 
 > [!IMPORTANT]
 >
-> - ユーザーは、デーモン アプリケーションと対話できません。 デーモン アプリケーションには独自の ID が必要です。 この種のアプリケーションは、アプリケーション ID を使用し、アプリケーション ID、資格情報 (パスワードまたは証明書)、アプリケーション ID の URI を Azure AD に提示して、アクセス トークンを要求します。 認証が成功すると、デーモンは Microsoft ID プラットフォーム エンドポイントからアクセス トークン (および更新トークン) を受け取ります。 このトークンは、Web API の呼び出しに使用されます (必要に応じて更新されます)。
+> - ユーザーは、デーモン アプリケーションと対話できません。 デーモン アプリケーションには独自の ID が必要です。 この種のアプリケーションは、アプリケーション ID を使用し、アプリケーション ID、資格情報 (パスワードまたは証明書)、アプリケーション ID の URI を Azure AD に提示して、アクセス トークンを要求します。 認証が成功すると、デーモンは Microsoft ID プラットフォームからアクセス トークン (および更新トークン) を受け取ります。 このトークンは、Web API の呼び出しに使用されます (必要に応じて更新されます)。
 > - ユーザーはデーモン アプリケーションと対話できないため、増分の同意を実行できません。 必要なすべての API アクセス許可は、アプリケーションの登録時に構成する必要があります。 このアプリケーションのコードでは、静的に定義されたアクセス許可のみが要求されます。 これは、デーモン アプリケーションが増分同意をサポートしないことも意味します。
 
 開発者にとって、このシナリオのエンドツーエンドのエクスペリエンスには、次の側面があります。
 
 - デーモン アプリケーションは Azure AD テナントでのみ機能します。 Microsoft の個人アカウントを操作しようとするデーモン アプリケーションをビルドする意味はありません。 基幹業務 (LOB) アプリの開発者の場合は、自分のテナント内でデーモン アプリを作成します。 ISV の場合は、マルチテナントのデーモン アプリケーションを作成した方がよいでしょう。 各テナント管理者は、同意を示す必要があります。
-- [アプリケーションの登録](./scenario-daemon-app-registration.md)時に、応答 URI は必要ありません。 Azure AD でシークレット、証明書、または署名付きアサーションを共有する必要があります。 また、アプリケーションのアクセス許可を要求し、それらのアプリのアクセス許可を使用できるように管理者の同意を与える必要があります。
+- [アプリケーションの登録](./scenario-daemon-app-registration.md)時に、応答 URI は必要ありません。 Azure AD でシークレット、証明書、または署名付きアサーションを共有します。 また、アプリケーションのアクセス許可を要求し、それらのアプリのアクセス許可を使用できるように管理者の同意を与える必要があります。
 - [アプリケーションの構成](./scenario-daemon-app-configuration.md)で、アプリケーションの登録時に Azure AD と共有されるようにクライアントの資格情報を提供する必要があります。
 - クライアント資格情報フローでトークンを取得するために使用される[スコープ](scenario-daemon-acquire-token.md#scopes-to-request)は、静的スコープである必要があります。
 

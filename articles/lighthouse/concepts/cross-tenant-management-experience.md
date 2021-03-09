@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 01/07/2020
+ms.date: 02/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 644cac70ef6459a1b0be45e9ab8f2757fafddeed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131765"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699251"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -97,9 +97,10 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - すべてのサブスクリプションにわたるアラートを表示する機能を使って、委任されたサブスクリプションに対するアラートを表示および更新する
 - 委任されたサブスクリプションのアクティビティ ログの詳細を表示する
-- ログ分析: 複数のテナントにあるリモートのワークスペースからデータを照会する (顧客テナントのワークスペースからデータにアクセスするために使用される Automation アカウントは、同じテナント内に作成する必要があることに注意してください)
+- [ログ分析](../../azure-monitor/logs/service-providers.md):複数のテナントにあるリモートのワークスペースからデータを照会する (顧客テナントのワークスペースからデータにアクセスするために使用される Automation アカウントは、同じテナント内に作成する必要があることに注意してください)
+- [顧客のテナント内でアクティビティ ログ アラートの作成、表示、および管理を行う](../../azure-monitor/alerts/alerts-activity-log.md)
 - 顧客のテナント内に、Webhook を使用して管理側テナントで Azure Automation Runbook や Azure Functions などの自動化をトリガーするアラートを作成する
-- 顧客テナント内で[診断設定](../..//azure-monitor/platform/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
+- 顧客テナント内で[診断設定](../..//azure-monitor/essentials/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
 - SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
 [Azure のネットワーク](../../networking/networking-overview.md):
@@ -142,7 +143,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 
 - [顧客テナントで](../../sentinel/multiple-tenants-service-providers.md) Azure Sentinel リソースを管理する
 - [複数のテナントにわたる攻撃を追跡し、セキュリティ アラートを表示する](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- テナント間に分散している複数の Sentinel ワークスペースにわたる[インシデントを表示する](../../sentinel/multiple-workspace-view.md)
+- テナント間に分散している複数の Azure Sentinel ワークスペースにわたる[インシデントを表示する](../../sentinel/multiple-workspace-view.md)
 
 [Azure Service Health](../../service-health/index.yml):
 
@@ -164,6 +165,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 サポート リクエスト:
 
 - Azure portal で、委任されたリソースに対する [サポート リクエストを **[ヘルプとサポート]** で開く](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) (委任されたスコープで利用可能なサポート プランを選択する)
+- [Azure クォータ API](/rest/api/reserved-vm-instances/quotaapi) を使用して、委任された顧客リソースの Azure サービス クォータを表示および管理する
 
 ## <a name="current-limitations"></a>現在の制限
 
@@ -173,6 +175,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - ロールの割り当てには [Azure 組み込みロール](../../role-based-access-control/built-in-roles.md)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理によってサポートされています。ただし、所有者または [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) アクセス許可を持つ組み込みロールは除きます。 [マネージド ID へのロールの割り当て](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)において、ユーザー アクセス管理者ロールは、限定された用途のみに対してサポートされています。  カスタム ロールと[従来のサブスクリプション管理者ロール](../../role-based-access-control/classic-administrators.md)はサポートされていません。
 - Azure Databricks を使用するサブスクリプションをオンボードすることはできますが、現時点では、管理テナントのユーザーは、委任されたサブスクリプションで Azure Databricks ワークスペースを起動することはできません。
 - リソース ロックがあるサブスクリプションとリソース グループをオンボードすることはできますが、このようなロックがあっても、管理テナントのユーザーによるアクションの実行は妨げられません。 Azure マネージド アプリケーションまたは Azure Blueprints (システム割り当ての拒否割り当て) によって作成されたものなど、システムの管理対象リソースを保護する[拒否割り当て](../../role-based-access-control/deny-assignments.md)がある場合、管理テナントのユーザーはそれらのリソースを操作できません。ただし、現時点では、顧客テナントのユーザーは自分の拒否割り当て (ユーザー割り当て拒否割り当て) を作成できません。
+- [各国のクラウド](../../active-directory/develop/authentication-national-cloud.md)と Azure パブリック クラウドにわたって行われる、または 2 つの独立した国内クラウドにわたって行われるサブスクリプションの委任はサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 

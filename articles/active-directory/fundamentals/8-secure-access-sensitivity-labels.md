@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dcb6d24eacbe594a907f084874e76fea963c561
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 0ac3141823eb72b17754a771cd63264fe851949d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725130"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100365363"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>秘密度ラベルを使用してアクセスを制御する 
 
@@ -66,7 +66,7 @@ ms.locfileid: "98725130"
 
 * HBI データ、サイト、または Microsoft 365 グループにはどのような既定値を設定する必要がありますか?
 
-* 秘密度ラベルを使用して、[ラベルを付け、監視](/microsoft-365/compliance/label-analytics?view=o365-worldwide)しますか、それとも[暗号化を適用](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)または[コンテナー アクセス制限を適用](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)しますか?
+* 秘密度ラベルを使用して、[ラベルを付け、監視](/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide)しますか、それとも[暗号化を適用](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)または[コンテナー アクセス制限を適用](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)しますか?
 
 **電子メールおよびコンテンツについて**
 

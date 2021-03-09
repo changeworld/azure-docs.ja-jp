@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 055448eacf1cc12c6d021c6571a0478cb35442ba
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 94044e95e83742487a0d4d650814a5324f07011a
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89566911"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101750528"
 ---
 エッジ デバイスにデプロイされるモジュールは、配置マニフェストによって定義されます。 また、これらのモジュールの構成設定も定義されます。 
 
@@ -14,6 +14,13 @@ ms.locfileid: "89566911"
 1. **[Azure IoT Hub]** ペインの横にある **[その他のアクション]** アイコンを選択して、IoT Hub 接続文字列を設定します。 この文字列は、*src/cloud-to-device-console-app/appsettings.json* ファイルからコピーすることができます。 
 
     ![IOT 接続文字列を設定する](../../../media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> IoT ハブに使用する組み込みのエンドポイント情報を入力するよう求められる場合があります。 この情報を入手するには、Azure portal で IoT ハブに移動し、左側のナビゲーション ペインで **[組み込みのエンドポイント]** オプションを探します。 それをクリックし、 **[イベント ハブ互換エンドポイント]** セクションの **[イベント ハブ互換エンドポイント]** を探します。 ボックス内のテキストをコピーして使用します。 エンドポイントは次のようになります。  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. **src/edge/deployment.template.json** を右クリックして、 **[Generate IoT Edge deployment manifest]\(IoT Edge 配置マニフェストの生成\)** を選択します。
 
     ![IoT Edge 配置マニフェストの生成](../../../media/quickstarts/generate-iot-edge-deployment-manifest.png)
@@ -35,9 +42,9 @@ RTSP シミュレーター モジュールは、[Live Video Analytics リソー�
 > セットアップ スクリプトによってプロビジョニングされたものではなく、独自のエッジ デバイスを使用している場合は、エッジ デバイスにアクセスし、**管理者権限** で次のコマンドを実行して、このクイックスタートで使用するサンプル ビデオ ファイルをプルして保存します。  
 
 ```
-mkdir /home/lvaadmin/samples      
-mkdir /home/lvaadmin/samples/input    
-curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
-chown -R lvaadmin /home/lvaadmin/samples/  
+mkdir /home/lvaedgeuser/samples      
+mkdir /home/lvaedgeuser/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaedgeuser/samples/input/camera-300s.mkv  
+chown -R lvalvaedgeuser:localusergroup /home/lvaedgeuser/samples/  
 ```
 この段階でモジュールはデプロイされていますが、メディア グラフはアクティブになっていません。

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: d03177e3224bbd3f53320871efc6a0d6b3ea479d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 13cbc2e9451221fef951eb6fac4c6b2772275122
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922639"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556424"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>管理グループ、サブスクリプション、およびテナント全体の可視性を整理する
 
@@ -81,12 +81,14 @@ Azure の管理グループを使用すると、一連のサブスクリプシ�
 
 ## <a name="grant-tenant-wide-permissions-to-yourself"></a>テナント全体のアクセス許可を自分に付与する
 
-Azure Active Directory ロールが **グローバル管理者** であるユーザーは、テナント全体の責任を持つ場合がありますが、Azure Security Center でその組織全体の情報を表示するための Azure アクセス許可がありません。 
+Azure Active Directory (AD) ロールが **グローバル管理者** であるユーザーは、テナント全体の責任を持つ場合がありますが、Azure Security Center でその組織全体の情報を表示するための Azure アクセス許可がありません。 Azure AD ロールの割り当てでは Azure リソースへのアクセス権が付与されないため、アクセス許可の昇格が必要です。 
 
 > [!TIP]
-> 組織が [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md) またはその他の PIM ツールを使用してリソースへのアクセスを管理している場合は、これらの変更を行うユーザーに対して、グローバル管理者ロールが有効になっている必要があります。
+> グローバル管理者ロールのアクセス許可の昇格の詳細については、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](../role-based-access-control/elevate-access-global-admin.md)」を参照してください。
 
 テナント レベルのアクセス許可を自分に割り当てるには、次の手順を実行します。
+
+1. 組織が [Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-configure.md) またはその他の PIM ツールを使用してリソースへのアクセスを管理している場合は、下の手順に従い、ユーザーに対してグローバル管理者ロールが有効になっている必要があります。
 
 1. テナントのルート管理グループに割り当てられていないグローバル管理者ユーザーとして、Security Center の **[概要]** ページを開き、バナーの **[テナント全体の可視性]** リンクを選択します。 
 
@@ -106,6 +108,36 @@ Azure Active Directory ロールが **グローバル管理者** であるユー
 1. Azure portal からログアウトした後に、もう一度ログインします。
 
 1. 昇格されたアクセス権を取得できたら、Azure Security Center を開くか更新して、Azure AD テナントの配下にあるすべてのサブスクリプションに対する可視性が確保されていることを確認します。 
+
+
+## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>テナント全体のアクセス許可が不十分な場合に要求する
+
+Security Center にログインした場合に、ビューが制限されていることを示すバナーが表示されるときは、クリックスルーすることで、組織のグローバル管理者に要求を送信できます。 この要求には、自分に割り当ててもらいたいロールを含めることができます。グローバル管理者は付与するロールを決定します。 
+
+これらの要求を受け入れるか拒否するかは、グローバル管理者が決定します。 
+
+> [!IMPORTANT]
+> 要求は 7 日ごとに 1 回だけ送信できます。
+
+昇格されたアクセス許可をグローバル管理者に要求するには、次のようにします。
+
+1. Azure portal から Azure Security Center を開きます。
+
+1. "情報が制限されています。" という内容のバナーが表示される場合は、 それを選択します。
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="テナント全体のアクセス許可を要求できることをユーザーに通知するバナー。":::
+
+1. 詳細な要求フォームで、目的のロールを選択し、これらのアクセス許可が必要である正当な理由を選択します。
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="Azure グローバル管理者にテナント全体のアクセス許可を要求するための詳細ページ":::
+
+1. **[アクセス権の要求]** を選択します。
+
+    グローバル管理者に電子メールが送信されます。 電子メールには Security Center へのリンクが含まれ、それを使用して要求を承認または拒否することができます。
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="新しいアクセス許可についてグローバル管理者に電子メールで送信する":::
+
+    グローバル管理者が **[要求の確認]** を選択してプロセスを完了したら、決定内容が要求元のユーザーに電子メールで送信されます。 
 
 ## <a name="assign-azure-roles-to-other-users"></a>Azure ロールを他のユーザーに割り当てる
 
@@ -149,6 +181,7 @@ Azure Active Directory ロールが **グローバル管理者** であるユー
     ```
 
 ## <a name="remove-elevated-access"></a>昇格されたアクセス権を削除する 
+
 Azure ロールがユーザーに割り当てられたら、テナント管理者は自身をユーザー アクセス管理者ロールから削除する必要があります。
 
 1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。

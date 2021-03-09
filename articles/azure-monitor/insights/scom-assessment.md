@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor を使用して System Center Operations Manager を評価する
 description: System Center Operations Manager Health Check ソリューションを使用すると、環境のリスクと正常性を定期的に評価できます。
-ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2018
-ms.openlocfilehash: 97d7d21374062462248e1b86f2bde2fef2d25331
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 35ae1e09fd0a06014a747cef99631a7bfe2dee1c
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004910"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101731410"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -229,7 +228,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](../log-query/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](../logs/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -254,7 +253,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](../log-query/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](../logs/log-query-overview.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -295,5 +294,5 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログの検索](../log-query/log-query-overview.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。
+- [ログの検索](../logs/log-query-overview.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。
 

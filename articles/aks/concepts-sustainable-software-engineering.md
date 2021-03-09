@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) での持続可能なソフトウェ
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: e179b49879b78b2bab738407984c0f50d161114b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346896"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572686"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での持続可能なソフトウェア エンジニアリングの原則
 
@@ -61,7 +61,7 @@ AKS クラスターの炭素排出量を削減するには、クラスターの�
 * [可用性ゾーン][availability-zones]
 
 [availability-zones]: availability-zones.md
-[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md
+[azure-monitor]: ../azure-monitor/containers/container-insights-overview.md
 [azure-traffic-manager]: ../traffic-manager/traffic-manager-overview.md
 [proiximity-placement-groups]: reduce-latency-ppg.md
 [regions]: faq.md#which-azure-regions-currently-provide-aks

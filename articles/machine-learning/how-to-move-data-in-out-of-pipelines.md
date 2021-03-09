@@ -7,19 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 01/11/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 8f1cea6e9bc833c6d441c39c401f60d872cd9099
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871538"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174939"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
-
-
 
 この記事では、Azure Machine Learning パイプラインのステップ間でデータをインポート、変換、および移動するためのコードを示します。 Azure Machine Learning でデータがどのように動作するかの概要については、[Azure ストレージ サービスのデータへのアクセス](how-to-access-data.md)に関する記事を参照してください。 Azure Machine Learning パイプラインの利点と構造については、「[Azure Machine Learning パイプラインとは](concept-ml-pipelines.md)」を参照してください。
 
@@ -30,7 +28,7 @@ ms.locfileid: "98871538"
 - トレーニングや検証のサブセットなど、`Dataset` データをサブセットに分割する
 - 次のパイプライン ステップにデータを転送する `OutputFileDatasetConfig` オブジェクトを作成する
 - パイプライン ステップへの入力として `OutputFileDatasetConfig` オブジェクトを使用する
-- 永続化する `OutputFileDatasetConfig` から新しい `Dataset` オブジェクトを作成する
+- 永続化させる新しい `Dataset` オブジェクトを `OutputFileDatasetConfig` から作成する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,10 +63,12 @@ ms.locfileid: "98871538"
 datastore = Datastore.get(workspace, 'training_data')
 iris_dataset = Dataset.Tabular.from_delimited_files(DataPath(datastore, 'iris.csv'))
 
-cats_dogs_dataset = Dataset.File.from_files(
-    paths='https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip',
-    archive_options=ArchiveOptions(archive_type=ArchiveType.ZIP, entry_glob='**/*.jpg')
-)
+datastore_path = [
+    DataPath(datastore, 'animals/dog/1.jpg'),
+    DataPath(datastore, 'animals/dog/2.jpg'),
+    DataPath(datastore, 'animals/cat/*.jpg')
+]
+cats_dogs_dataset = Dataset.File.from_files(path=datastore_path)
 ```
 
 各種のオプションとさまざまなソースからのデータセットの作成、それらの登録と Azure Machine Learning UI での確認、データ サイズがコンピューティング能力とどのように相互作用するかの理解、およびそれらのバージョン管理についての詳細は、「[Azure Machine Learning データセットを作成する](how-to-create-register-datasets.md)」を参照してください。 
@@ -176,7 +176,7 @@ dataprep_step = PythonScriptStep(
 ```python
 #get blob datastore already registered with the workspace
 blob_store= ws.datastores['my_blob_store']
-OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(overwrite=False)
+OutputFileDatasetConfig(name="clean_data", destination=(blob_store, 'outputdataset')).as_upload(overwrite=False)
 ```
 
 > [!NOTE]
@@ -201,7 +201,7 @@ with open(args.output_path, 'w') as f:
 
 最初のパイプライン ステップで `OutputFileDatasetConfig` パスにデータが書き込まれ、それがその最初のステップの出力になった場合、それを後のステップへの入力として使用できます。 
 
-次のコードで、 
+次のコードの内容は以下のとおりです。 
 
 * `step1_output_data` は、PythonScriptStep の出力である `step1` が、アップロード アクセス モードで、ADLS Gen 2 データストア `my_adlsgen2` に書き込まれることを示します。 ADLS Gen 2 データストアにデータを書き戻すには、[ロールのアクセス許可を設定する](how-to-access-data.md#azure-data-lake-storage-generation-2)方法を参照してください。 
 
@@ -210,7 +210,7 @@ with open(args.output_path, 'w') as f:
 ```python
 # get adls gen 2 datastore already registered with the workspace
 datastore = workspace.datastores['my_adlsgen2']
-step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=datastore).as_upload()
+step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=(datastore, "mypath/{run-id}/{output-name}")).as_upload()
 
 step1 = PythonScriptStep(
     name="generate_data",
@@ -224,7 +224,7 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
+    arguments = ["--pd", step1_output_data.as_input()]
 
 )
 
@@ -240,6 +240,15 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
                                                          description = 'files from step1`)
 ```
 
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>不要になったときに `OutputFileDatasetConfig` のコンテンツを削除する
+
+`OutputFileDatasetConfig` で書き込まれた中間データは、Azure によって自動的に削除されません。 大量の不要なデータに対するストレージの課金を回避するには、次のいずれかを行う必要があります。
+
+* パイプライン実行の終了時に中間データをプログラムで削除する (不要になった場合)
+* 中間データの短期的な記憶域ポリシーを設定して BLOB ストレージを使用する (「[Azure Blob Storage アクセス層の自動化によるコストの最適化](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts?tabs=azure-portal)」を参照してください) 
+* 不要になったデータを定期的に確認して削除する
+
+詳細については、「[Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

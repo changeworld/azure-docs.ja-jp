@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 6bf0da8716233178889d47ec3d57e9b29bc2658f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0b4a31200b99062a72a02ca62ac8f3bf1206f9c9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763219"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101722094"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスの Azure Resource Manager に接続する
 
@@ -93,9 +93,9 @@ Azure Resource Manager に接続するには、署名チェーンとエンドポ
 
 テストと開発に使用する場合にのみ、Windows PowerShell を使用して、ローカル システムで証明書を作成できます。 クライアントの証明書を作成するときは、次のガイドラインに従ってください。
 
-1. 最初に、署名チェーンのルート証明書を作成する必要があります。 詳細については、「[署名チェーン証明書を作成する](azure-stack-edge-j-series-manage-certificates.md#create-signing-chain-certificate)」の手順を参照してください。
+1. 最初に、署名チェーンのルート証明書を作成する必要があります。 詳細については、「[署名チェーン証明書を作成する](azure-stack-edge-gpu-manage-certificates.md#create-signing-chain-certificate)」の手順を参照してください。
 
-2. 次に、BLOB と Azure Resource Manager のエンドポイント証明書を作成できます。 これらのエンドポイントは、ローカル Web UI の **[デバイス]** ページから取得できます。 [エンドポイント証明書の作成](azure-stack-edge-j-series-manage-certificates.md#create-signed-endpoint-certificates)手順を参照してください。
+2. 次に、BLOB と Azure Resource Manager のエンドポイント証明書を作成できます。 これらのエンドポイントは、ローカル Web UI の **[デバイス]** ページから取得できます。 [エンドポイント証明書の作成](azure-stack-edge-gpu-manage-certificates.md#create-signed-endpoint-certificates)手順を参照してください。
 
 3. これらのすべての証明書について、サブジェクト名とサブジェクトの別名が、次のガイドラインに準拠していることを確認します。
 
@@ -105,32 +105,32 @@ Azure Resource Manager に接続するには、署名チェーンとエンドポ
     |BLOB ストレージ|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |両方のエンドポイントに対するマルチ SAN の単一の証明書|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
-証明書の詳細については、[証明書の管理](azure-stack-edge-j-series-manage-certificates.md)方法に関するページを参照してください。
+証明書の詳細については、[証明書の管理](azure-stack-edge-gpu-manage-certificates.md)方法に関するページを参照してください。
 
 ### <a name="upload-certificates-on-the-device"></a>デバイスに証明書をアップロードする
 
 前の手順で作成した証明書は、クライアントの個人用ストアに保存されます。 これらの証明書は、デバイスにアップロードできるように、クライアントで適切なフォーマット ファイルにエクスポートする必要があります。
 
-1. ルート証明書は、 *.cer* ファイル拡張子を持つ DER フォーマット ファイルとしてエクスポートする必要があります。 詳細な手順については、[証明書を .cer フォーマット ファイルとしてエクスポート](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-der-format)に関するセクションを参照してください。
+1. ルート証明書は、 *.cer* ファイル拡張子を持つ DER フォーマット ファイルとしてエクスポートする必要があります。 詳細な手順については、[証明書を .cer フォーマット ファイルとしてエクスポート](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-der-format)に関するセクションを参照してください。
 
-2. エンドポイント証明書は、秘密キーを使用して *.pfx* ファイルとしてエクスポートする必要があります。 詳細な手順については、[秘密キーを使用して証明書を .pfx ファイルとしてエクスポート](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)に関するセクションを参照してください。
+2. エンドポイント証明書は、秘密キーを使用して *.pfx* ファイルとしてエクスポートする必要があります。 詳細な手順については、[秘密キーを使用して証明書を .pfx ファイルとしてエクスポート](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key)に関するセクションを参照してください。
 
-3. 次に、ローカル Web UI の **[証明書]** ページの **[+ 証明書の追加]** オプションを使用して、ルート証明書とエンドポイント証明書をデバイスにアップロードします。 証明書をアップロードするには、「[証明書のアップロード](azure-stack-edge-j-series-manage-certificates.md#upload-certificates)」の手順に従います。
+3. 次に、ローカル Web UI の **[証明書]** ページの **[+ 証明書の追加]** オプションを使用して、ルート証明書とエンドポイント証明書をデバイスにアップロードします。 証明書をアップロードするには、「[証明書のアップロード](azure-stack-edge-gpu-manage-certificates.md#upload-certificates)」の手順に従います。
 
 
 ### <a name="import-certificates-on-the-client-running-azure-powershell"></a>Azure PowerShell を実行しているクライアントで証明書をインポートする
 
 Azure Resource Manager API を呼び出す Windows クライアントで、デバイスとの信頼関係を確立する必要があります。 このためには、前の手順で作成した証明書を、Windows クライアントの適切な証明書ストアにインポートする必要があります。
 
-1. *.cer* 拡張子を持つ DER 形式としてエクスポートしたルート証明書は、クライアント システムの信頼されたルート証明機関にインポートされるはずです。 詳細な手順については、[信頼されたルート証明機関ストアへの証明書のインポート](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
+1. *.cer* 拡張子を持つ DER 形式としてエクスポートしたルート証明書は、クライアント システムの信頼されたルート証明機関にインポートされるはずです。 詳細な手順については、[信頼されたルート証明機関ストアへの証明書のインポート](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
 
-2. *.pfx* としてエクスポートしたエンドポイント証明書は、 *.cer* としてエクスポートする必要があります。 この *.cer* は、お使いのシステム上の **個人用** 証明書ストアにインポートされます。 詳細な手順については、[個人用ストアへの証明書のインポート](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
+2. *.pfx* としてエクスポートしたエンドポイント証明書は、 *.cer* としてエクスポートする必要があります。 この *.cer* は、お使いのシステム上の **個人用** 証明書ストアにインポートされます。 詳細な手順については、[個人用ストアへの証明書のインポート](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)に関するページを参照してください。
 
 ## <a name="step-3-install-powershell-on-the-client"></a>手順 3:クライアントに PowerShell をインストールする 
 
 Windows クライアントが、次の前提条件を満たしている必要があります。
 
-1. PowerShell バージョン 5.0 を実行している。 PowerShell バージョン 5.0 以降が必要です。 お使いのシステムの PowerShell のバージョンを確認するには、次のコマンドレットを実行します。
+1. PowerShell バージョン 5.0 を実行している。 PowerShell バージョン 5.0 が必要です。 PowerShell Core はサポートされていません。 お使いのシステムの PowerShell のバージョンを確認するには、次のコマンドレットを実行します。
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -138,9 +138,9 @@ Windows クライアントが、次の前提条件を満たしている必要が
 
     **メジャー** バージョンを比較し、それが確実に 5.0 以降であるようにします。
 
-    バージョンが古い場合は、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell)」をご覧ください。
+    バージョンが古い場合は、「[既存の Windows PowerShell をアップグレードする](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell)」をご覧ください。
 
-    PowerShell 5.0 をお持ちでない場合は、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)」に従います。
+    PowerShell 5.0 をお持ちでない場合は、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true)」に従います。
 
     サンプル出力を次に示します。
 
@@ -156,7 +156,7 @@ Windows クライアントが、次の前提条件を満たしている必要が
     
 2. PowerShell ギャラリーにアクセスできる。
 
-    PowerShell を管理者として実行します。 PSGallery がリポジトリとして登録されているかどうかを確認します。
+    PowerShell を管理者として実行します。 `PSGallery` がリポジトリとして登録されているかどうかを確認します。
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -175,7 +175,7 @@ Windows クライアントが、次の前提条件を満たしている必要が
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-リポジトリが信頼されていない場合、または詳細情報が必要な場合は、「[PowerShell ギャラリーにアクセスできるか検証する](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility)」を参照してください。
+リポジトリが信頼されていない場合、または詳細情報が必要な場合は、「[PowerShell ギャラリーにアクセスできるか検証する](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908&preserve-view=true&preserve-view=true#2-validate-the-powershell-gallery-accessibility)」を参照してください。
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>手順 4:クライアントで Azure PowerShell を設定する 
 
@@ -327,7 +327,7 @@ Azure Resource Manager 環境を設定し、Azure Resource Manager を使用し�
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    詳細については 「[Set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0)」を参照してください。
+    詳細については 「[Set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0&preserve-view=true)」を参照してください。
 
     - 実行するすべてのコマンドレットに対して、環境をインラインで定義します。 これにより、すべての API 呼び出しが確実に正しい環境を経由するようになります。 既定では、呼び出しは Azure パブリックを経由しますが、Azure Stack Edge Pro デバイス用に設定した環境を経由する必要があります。
 

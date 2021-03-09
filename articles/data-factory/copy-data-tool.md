@@ -1,22 +1,17 @@
 ---
 title: Azure Data Factory のデータのコピー ツール
 description: Azure Data Factory の UI にあるデータのコピー ツールについて説明します
-services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: yexu
-ms.openlocfilehash: b0ba14a05ac42e9fccc1a146ad5943716652104d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 18d61c7f51547a524e64fc44c98e70e0f5bc2752
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89434199"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372996"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Azure Data Factory のデータのコピー ツール
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -43,12 +38,12 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 ## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Data lake にデータを読み込むための直感的なフロー
 このツールを使うと、直感的なフローに従って、さまざまなコピー元からコピー先にデータを数分以内で簡単に移動することができます。  
 
-1. **コピー元**の設定を構成します。
-2. **コピー先**の設定を構成します。 
-3. 列のマッピング、パフォーマンスの設定、フォールト トレランスの設定など、コピー操作の**詳細な設定**を構成します。 
-4. データ読み込みタスクの**スケジュール**を指定します。 
-5. 作成される Data Factory のエンティティの**概要**を確認します。 
-6. 必要に応じてパイプラインを**編集**し、コピー アクティビティの設定を更新します。 
+1. **コピー元** の設定を構成します。
+2. **コピー先** の設定を構成します。 
+3. 列のマッピング、パフォーマンスの設定、フォールト トレランスの設定など、コピー操作の **詳細な設定** を構成します。 
+4. データ読み込みタスクの **スケジュール** を指定します。 
+5. 作成される Data Factory のエンティティの **概要** を確認します。 
+6. 必要に応じてパイプラインを **編集** し、コピー アクティビティの設定を更新します。 
 
    このツールは最初からビッグ データを考慮して設計されており、さまざまな種類のデータとオブジェクトをサポートしています。 何百ものフォルダー、ファイル、テーブルの移動に使うことができます。 このツールは、自動データ プレビュー、スキーマのキャプチャと自動マッピング、およびデータのフィルター処理にも対応しています。
 
@@ -69,7 +64,7 @@ Azure Data Factory のデータのコピー ツールを使うと、通常はエ
 データのコピー ツールは、ユーザーがコピー元ストアとコピー先ストアの間で列をマッピングするときの操作を監視して学習します。 ユーザーがコピー元データ ストアから 1 つまたはいくつかの列を選び、それをコピー先スキーマにマップすると、データのコピー ツールはユーザーが両方の側で選んだ列ペアのパターンの分析を開始します。 その後、ツールは残りの列に同じパターンを適用します。 そのため、数クリックするだけで、すべての列が望ましい方法でコピー先にマップされることがわかります。  データのコピー ツールによって行われた列マッピングの選択に満足できない場合は、それを無視し、手動で列のマッピングを続けることができます。 その間もデータのコピー ツールはパターンの学習と更新を続けており、最終的にはユーザーが望む正しい列マッピングのパターンになります。 
 
 > [!NOTE]
-> SQL Server または Azure SQL Database から Azure Synapse Analytics (旧称 SQL Data Warehouse) にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合は、データのコピー ツールで、コピー元のスキーマを使ったテーブルの自動作成がサポートされます。 
+> SQL Server または Azure SQL Database から Azure Synapse Analytics にデータをコピーするとき、コピー先ストアにテーブルが存在しない場合、データのコピー ツールではコピー元のスキーマを使用したテーブルの自動作成がサポートされます。 
 
 ## <a name="filter-data"></a>データのフィルター処理
 ソース データをフィルター処理して、シンク データ ストアにコピーする必要があるデータのみを選択できます。 フィルター処理によって、シンク データ ストアにコピーするデータの量が削減されるため、コピー操作のスループットが向上します。 データのコピー ツールは、SQL クエリ言語を使うことで、リレーショナル データベース内のデータまたは Azure Blob フォルダー内のファイルを、柔軟にフィルター処理できます。 

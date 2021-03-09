@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-ms.date: 12/21/2020
+ms.date: 02/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 36ae081f939cbf865db7755a2f766a7ccd87d619
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724376"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587628"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -34,7 +34,31 @@ Azure Arc 対応サーバーで管理する必要がなくなったサーバー�
 
     * [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) または [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource) を使用する。 `ResourceType` パラメーターには `Microsoft.HybridCompute/machines` を使用します。
 
-3. マシンまたはサーバーからエージェントをアンインストールします。 以下の手順に従います。
+3. 以下の手順に従って、マシンまたはサーバーから[エージェントをアンインストール](#remove-the-agent)します。
+
+## <a name="renaming-a-machine"></a>マシンの名前変更
+
+Azure Arc 対応サーバーに接続されている Linux または Windows マシンの名前を変更しても、Azure のリソース名は変更不可であるため、新しい名前は自動的には認識されません。 他の Azure リソースと同様に、新しい名前を使用するためにリソースを削除して再作成する必要があります。
+
+Arc 対応サーバーの場合、マシンの名前を変更する前に、VM 拡張機能を削除してから続行する必要があります。
+
+> [!NOTE]
+> インストール済みの拡張機能は引き続き実行され、この手順の完了後に通常の操作が実行されますが、管理することはできません。 マシンに拡張機能を再デプロイしようとすると、予期しない動作が発生することがあります。
+
+> [!WARNING]
+> そのマシンのコンピューター名を変更せずに、どうしても必要な場合にのみこの手順を行うことをお勧めします。
+
+1. マシンにインストールされている VM 拡張機能を監査し、それらの構成をメモしておきます。そのためには、[Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) を使用するか、[Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed) を使用します。
+
+2. [Azure portal](manage-vm-extensions-portal.md#uninstall-extension) から、または [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) を使用するか [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) を使用して、インストールされた VM 拡張機能を削除します。
+
+3. **azcmagent** ツールと [Disconnect](manage-agent.md#disconnect) パラメーターを使用して、Azure Arc からマシンを切断し、Azure からマシン リソースを削除します。 マシンを Arc 対応サーバーから切断しても、Connected Machine エージェントは削除されず、このプロセスの一環としてエージェントを削除する必要はありません。 これは、対話形式でログオンしているときに手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォームの[アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化できます。 サービス プリンシパルを使用してマシンを Azure Arc 対応サーバーに登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
+
+4. コンピューター名を変更します。
+
+5. もう一方のリージョンで Arc 対応サーバーに Connected Machine エージェントを再登録します。 [Connect](manage-agent.md#connect) パラメーターを指定して `azcmagent` ツールを実行し、この手順を完了します。
+
+6. Arc 対応サーバーからマシンに最初にデプロイされた VM 拡張機能を再デプロイします。 Azure ポリシーを使用して Azure Monitor for VMs (分析情報) エージェントまたは Log Analytics エージェントをデプロイした場合、それらのエージェントは、次の[評価サイクル](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers)の後に再デプロイされます。
 
 ## <a name="upgrading-agent"></a>エージェントのアップグレード
 
@@ -288,7 +312,7 @@ Azure のサポート サービスを利用してマシンの管理を行う予�
 プロキシ サーバー経由でサービスと通信するようにエージェントを構成するか、デプロイ後にこの構成を削除するには、次のいずれかの方法を使用してこのタスクを完了します。
 
 > [!NOTE]
-> Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/platform/gateway.md)を使用することはサポートされていません。
+> Arc 対応サーバーでは、Connected Machine エージェントのプロキシとして [Log Analytics ゲートウェイ](../../azure-monitor/agents/gateway.md)を使用することはサポートされていません。
 >
 
 ### <a name="windows"></a>Windows
@@ -331,6 +355,6 @@ sudo azcmagent_proxy remove
 
 * トラブルシューティング情報は、[Connected Machine エージェントの問題解決ガイド](troubleshoot-agent-onboard.md)を参照してください。
 
-* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
+* [Azure Policy](../../governance/policy/overview.md) を使用してマシンを管理する方法を確認します。VM の[ゲスト構成](../../governance/policy/concepts/guest-configuration.md)、マシンの報告先が、予期された Log Analytics ワークスペースであることの確認、[VM での Azure Monitor](../../azure-monitor/vm/vminsights-enable-policy.md) を使用した監視の有効化などの方法です。
 
-* [Log Analytics エージェント](../../azure-monitor/platform/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-introduction.md) などの他の Azure サービスを使用する場合に必要になります。
+* [Log Analytics エージェント](../../azure-monitor/agents/log-analytics-agent.md)の詳細を確認します。 Windows および Linux 用の Log Analytics エージェントは、オペレーティング システムやワークロードの監視データを収集し、Automation Runbook や Update Management などの機能を使用してそれを管理するか、または [Azure Security Center](../../security-center/security-center-introduction.md) などの他の Azure サービスを使用する場合に必要になります。

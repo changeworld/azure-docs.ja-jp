@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: b4f828c675df9625d6d4889dbc31bbc4b9f887ed
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 9b18b24686908ac92f97ea0cae892369919ae4d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386716"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721022"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
@@ -29,7 +29,7 @@ Azure Database for MySQL では、サーバー パラメーターの値のチュ
 
 ## <a name="storage-engines"></a>ストレージ エンジン
 
-MySQL では多くのストレージ エンジンがサポートされています。 Azure Database for MySQL フレキシブル サーバーでサポートされている、およびサポートされていないストレージ エンジンは次のとおりです。
+MySQL では多くのストレージ エンジンがサポートされています。 Azure Database for MySQL でサポートされている、およびサポートされていないストレージ エンジンは次のとおりです。
 
 ### <a name="supported"></a>サポートされています
 - [InnoDB](https://dev.mysql.com/doc/refman/5.7/en/innodb-introduction.html)

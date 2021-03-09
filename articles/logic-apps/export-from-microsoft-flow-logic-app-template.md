@@ -3,17 +3,19 @@ title: Power Automate からフローを Azure Logic Apps にエクスポート�
 description: Azure Resource Manager テンプレートとしてエクスポートすることによって Power Automate から Azure Logic Apps にフローを移行する
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: a90f75db6961ea06b1cf9c2958556c1c2ef24805
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014416"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100380136"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Power Automate からフローをエクスポートして Azure Logic Apps にデプロイする
+
+> 2020 年 10 月以降に作成されたフローでは、Power Automate からエクスポートして Azure Logic Apps にデプロイすることはできなくなりました。
 
 フローの機能を拡張するために、そのフローを [Power Automate](https://flow.microsoft.com) から [Azure Logic Apps](../logic-apps/logic-apps-overview.md) に移行することができます。 フローをロジック アプリの Azure Resource Manager テンプレートとしてエクスポートし、そのロジック アプリ テンプレートを Azure リソース グループにデプロイした後、Logic App Designer でそのロジック アプリを開くことができます。
 
@@ -22,7 +24,7 @@ ms.locfileid: "96014416"
 >
 > * Logic Apps に同等のコネクタを持たない Power Automate コネクタを見つけるには、[Power Automate コネクタ](/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
 >
-> * Power Automate に同等のコネクタを持たない Logic Apps コネクタを見つけるには、[Logic Apps コネクタ](/connectors/connector-reference/connector-reference-powerautomate-connectors)に関する記事を参照してください。
+> * Power Automate に同等のコネクタを持たない Logic Apps コネクタを見つけるには、[Logic Apps コネクタ](/connectors/connector-reference/connector-reference-logicapps-connectors)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

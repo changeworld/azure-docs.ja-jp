@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 0d759b3af097067ba0c9215b65b212d50474d571
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 60a29efc4d2daa9d1bc90f00e71094da382a83b9
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178349"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101686888"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>チュートリアル:Windows デスクトップ アプリから Microsoft Graph API を呼び出す
 
@@ -47,7 +47,7 @@ ms.locfileid: "98178349"
 
 ## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>保護された Web API にアクセスするためのトークン取得処理
 
-ユーザーが認証されると、サンプル アプリケーションは、開発者用の Microsoft ID プラットフォームによって保護されている Microsoft Graph API または Web API のクエリに使用できるトークンを受け取ります。
+ユーザーが認証されると、サンプル アプリケーションは、Microsoft Graph API または Microsoft ID プラットフォームによって保護されている Web API でのクエリに使用できるトークンを受け取ります。
 
 Microsoft Graph などの API では、特定のリソースへのアクセスを許可するためにトークンが必要になります。 たとえば、トークンは、ユーザーのプロファイルの読み取り、ユーザーの予定表へのアクセス、メールの送信などに必要です。 アプリケーションでは、MSAL を使用してアクセス トークンを要求し、API スコープを指定することによってこれらのリソースにアクセスできます。 このアクセス トークンは、保護されたリソースに対するすべての呼び出しで HTTP Authorization ヘッダーに追加されます。
 
@@ -97,14 +97,14 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 ### <a name="option-1-express-mode"></a>オプション 1: 簡易モード
 
 次の手順を実行すると、アプリケーションをすばやく登録できます。
-1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
+1. <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 
 ### <a name="option-2-advanced-mode"></a>オプション 2:詳細設定モード
 
 アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
-1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+1. <a href="https://portal.azure.com/" target="_blank">Azure portal</a> にサインインします。
 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 1. **Azure Active Directory** を検索して選択します。
 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -141,6 +141,7 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
         {
             _clientApp = PublicClientApplicationBuilder.Create(ClientId)
                 .WithAuthority(AzureCloudInstance.AzurePublic, Tenant)
+                .WithDefaultRedirectUri()
                 .Build();
         }
 

@@ -3,15 +3,15 @@ title: Azure Kubernetes Service (AKS) でのクラスター構成
 description: Azure Kubernetes Service (AKS) でクラスターを構成する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 01/13/2020
+ms.date: 02/09/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: eaf512915532b482c25e830cd9f2e01d61aa4524
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201112"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100572777"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -19,13 +19,19 @@ AKS クラスターの作成の一環として、ニーズに合わせてクラ�
 
 ## <a name="os-configuration"></a>OS 構成
 
-AKS では現在、1.18.8 以降のバージョンの Kubernetes のクラスターについては、一般提供において、ノードのオペレーティング システム (OS) として Ubuntu 18.04 をサポートしています。 1\.18.x より前のバージョンについては、AKS Ubuntu 16.04 が引き続き既定のベース イメージになります。 Kubernetes v1.18.x 以降、既定のベースは AKS Ubuntu 18.04 です。
+AKS では現在、1.18 以降のバージョンの Kubernetes のクラスターについては、一般提供 (GA) において、既定のノードのオペレーティング システム (OS) として Ubuntu 18.04 をサポートしています。1.18 より前のバージョンの場合、AKS Ubuntu 16.04 は引き続き既定の基本イメージです。 Kubernetes v1.18 以降、既定のベースは AKS Ubuntu 18.04 です。
 
-### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>一般公開された AKS Ubuntu 18.04 を新しいクラスターで使用する
+> [!IMPORTANT]
+> Kubernetes v1.18 以降で作成されたノード プールは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 サポートされている 1.18 より前の Kubernetes バージョンのノード プールは、ノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、ノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
+> 
+> 1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。
+
+
+### <a name="use-aks-ubuntu-1804-ga-on-new-clusters"></a>新しいクラスターで AKS Ubuntu 18.04 (GA) を使用する
 
 Kubernetes v1.18 以降で作成されたクラスターは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 1\.18 より前のサポートされている Kubernetes バージョンのノード プールでは、引き続きノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、クラスターまたはノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
 
-1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。 [Ubuntu 18.04 ノード プールをテストする](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)方法を参照してください。
+1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。
 
 `AKS Ubuntu 18.04` ノード イメージを使用してクラスターを作成するには、下に示すように、kubernetes v1.18 以降を実行するクラスターを作成するだけです。
 
@@ -33,11 +39,11 @@ Kubernetes v1.18 以降で作成されたクラスターは、`AKS Ubuntu 18.04`
 az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>一般公開された AKS Ubuntu 18.04 を既存のクラスターで使用する
+### <a name="use-aks-ubuntu-1804-ga-on-existing-clusters"></a>既存のクラスターで AKS Ubuntu 18.04 (GA) を使用する
 
 Kubernetes v1.18 以降で作成されたクラスターは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 1\.18 より前のサポートされている Kubernetes バージョンのノード プールでは、引き続きノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、クラスターまたはノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
 
-1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。 [Ubuntu 18.04 ノード プールをテストする](#test-aks-ubuntu-1804-generally-available-on-existing-clusters)方法を参照してください。
+1\.18 以降でクラスターを使用する前に、AKS Ubuntu 18.04 ノード プールでワークロードをテストすることを強くお勧めします。
 
 クラスターまたはノード プールで `AKS Ubuntu 18.04` ノード イメージを使用する準備ができている場合は、単純に下のように 1.18 以降にアップグレードできます。
 
@@ -51,7 +57,7 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
 
-### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>一般公開された AKS Ubuntu 18.04 を既存のクラスターでテストする
+### <a name="test-aks-ubuntu-1804-ga-on-existing-clusters"></a>既存のクラスターで AKS Ubuntu 18.04 (GA) をテストする
 
 Kubernetes v1.18 以降で作成されたノード プールは、`AKS Ubuntu 18.04` ノード イメージに既定で設定されます。 サポートされている 1.18 より前の Kubernetes バージョンのノード プールでは、引き続きノード イメージとして `AKS Ubuntu 16.04` を受け取りますが、ノード プールの Kubernetes バージョンが v1.18 以降に更新されると、`AKS Ubuntu 18.04` に更新されます。
 
@@ -65,58 +71,6 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 
 az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>新しいクラスターで AKS Ubuntu 18.04 を使用する (プレビュー)
-
-次のセクションでは、Kubernetes バージョン 1.18.x をまだ使用していない、あるいはこの機能が一般提供される前、OS の構成プレビューで作成されたクラスター上で AKS Ubuntu 18.04 を使用し、テストする方法について説明します。
-
-次のリソースがインストールされている必要があります。
-
-- [Azure CLI][azure-cli-install] バージョン 2.2.0 以降
-- aks-preview 0.4.35 拡張機能
-
-aks-preview 0.4.35 以降の拡張機能をインストールするには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-`UseCustomizedUbuntuPreview` 機能を登録します。
-
-```azurecli
-az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
-```
-
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature#az-feature-list) コマンドを使用して登録状態を確認できます。
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
-```
-
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-クラスターが作成されるときに Ubuntu 18.04 を使用するようにクラスターを構成します。 `--aks-custom-headers` フラグを使用して、Ubuntu 18.04 を既定の OS として設定します。
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
-```
-
-AKS Ubuntu 16.04 イメージを使用してクラスターを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
-
-### <a name="use-aks-ubuntu-1804-existing-clusters-preview"></a>既存の AKS Ubuntu 18.04 クラスターを使用する (プレビュー)
-
-Ubuntu 18.04 を使用するように新しいノード プールを構成します。 `--aks-custom-headers` フラグを使用して、Ubuntu 18.04 をそのノード プールの既定の OS として設定します。
-
-```azurecli
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804
-```
-
-AKS Ubuntu 16.04 イメージを使用してノード プールを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
 
 ## <a name="container-runtime-configuration"></a>コンテナー ランタイム構成
 
@@ -139,85 +93,20 @@ AKS ノードに `containerd` を使用することで、ポッドの起動時�
 > 
 > 1\.19 以降でクラスターを使用する前に、`containerD` を使用する AKS ノード プールでワークロードをテストすることを強くお勧めします。
 
-次のセクションでは、Kubernetes バージョン 1.19 以降をまだ使用していないクラスター上、またはこの機能が一般提供される前に、コンテナー ランタイム構成プレビューを使用して作成されたクラスター上で `containerD` を使用することで、AKS を使用してテストする方法について説明します。
-
-### <a name="use-containerd-as-your-container-runtime-preview"></a>コンテナー ランタイムとして `containerd` を使用する (プレビュー)
-
-次の前提条件が必要です。
-
-- [Azure CLI][azure-cli-install] バージョン 2.8.0 以降がインストールされていること
-- aks-preview 拡張機能バージョン 0.4.53 以降
-- `UseCustomizedContainerRuntime` 機能フラグが登録されていること
-- `UseCustomizedUbuntuPreview` 機能フラグが登録されていること
-
-aks-preview 拡張機能 0.4.53 以降をインストールするには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension add --name aks-preview
-az extension list
-```
-
-`UseCustomizedContainerRuntime` および `UseCustomizedUbuntuPreview` 機能を登録します。
-
-```azurecli
-az feature register --name UseCustomizedContainerRuntime --namespace Microsoft.ContainerService
-az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
-
-```
-
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature#az-feature-list) コマンドを使用して登録状態を確認できます。
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
-```
-
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```  
-
-### <a name="use-containerd-on-new-clusters-preview"></a>新しいクラスターで `containerd` を使用する (プレビュー)
-
-クラスターの作成時に、`containerd` を使用するようにクラスターを構成します。 `--aks-custom-headers` フラグを使用して、`containerd` をコンテナー ランタイムとして設定します。
-
-> [!NOTE]
-> `containerd` ランタイムは、AKS Ubuntu 18.04 イメージを使用するノードおよびノード プールでのみサポートされています。
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
-```
-
-Moby (Docker) ランタイムを使用してクラスターを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
-
-### <a name="use-containerd-on-existing-clusters-preview"></a>既存のクラスターで `containerd` を使用する (プレビュー)
-
-`containerd` を使用するように新しいノード プールを構成します。 `--aks-custom-headers` フラグを使用して、`containerd` をそのノード プールのランタイムとして設定します。
-
-```azurecli
-az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --aks-custom-headers CustomizedUbuntu=aks-ubuntu-1804,ContainerRuntime=containerd
-```
-
-Moby (Docker) ランタイムを使用してノード プールを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
-
-
 ### <a name="containerd-limitationsdifferences"></a>`Containerd` の制限事項と相違点
 
 * コンテナー ランタイムとして `containerd` を使用するには、ベース OS イメージとして AKS Ubuntu 18.04 を使用する必要があります。
 * ノードに Docker ツールセットがまだ存在していても、Kubernetes ではコンテナー ランタイムとして `containerd` を使用します。 したがって、ノード上の Kubernetes で作成されたコンテナーは Moby (Docker) によって管理されないため、Docker コマンド (`docker ps` など) や Docker API を使用してコンテナーを表示したり、操作したりすることはできません。
-
 * `containerd` では、Kubernetes ノード上のポッド、コンテナー、コンテナー イメージの **トラブルシューティング** に、Docker CLI (`crictl ps` など) ではなく、代替 CLI として [`crictl`](https://kubernetes.io/docs/tasks/debug-application-cluster/crictl) を使用することをお勧めします。 
-
    * Docker CLI の完全な機能は提供されません。 トラブルシューティングのみを目的としています。
    * `crictl` では、ポッドなどの概念が存在する、Kubernetes により適したコンテナー ビューが提供されます。
-* `Containerd` では、標準化された `cri` ログ形式を使用してログを設定します (これは、Docker の JSON ドライバーから現在取得しているものとは異なります)。 ログ ソリューションでは、([Azure Monitor for Containers](../azure-monitor/insights/container-insights-enable-new-cluster.md) のように) `cri` ログ形式をサポートする必要があります。
+* `Containerd` では、標準化された `cri` ログ形式を使用してログを設定します (これは、Docker の JSON ドライバーから現在取得しているものとは異なります)。 ログ ソリューションでは、([Azure Monitor for Containers](../azure-monitor/containers/container-insights-enable-new-cluster.md) のように) `cri` ログ形式をサポートする必要があります。
 * Docker エンジン (`/var/run/docker.sock`) にアクセスすることも、Docker-in-Docker (DinD) を使用することもできなくなります。
-  * 現在、アプリケーション ログや監視データを Docker エンジンから抽出している場合は、代わりに [Azure Monitor for Containers](../azure-monitor/insights/container-insights-enable-new-cluster.md) などを使用してください。 さらに、AKS では、不安定になる可能性のある、エージェント ノードでの帯域外コマンドの実行はサポートされていません。
+  * 現在、アプリケーション ログや監視データを Docker エンジンから抽出している場合は、代わりに [Azure Monitor for Containers](../azure-monitor/containers/container-insights-enable-new-cluster.md) などを使用してください。 さらに、AKS では、不安定になる可能性のある、エージェント ノードでの帯域外コマンドの実行はサポートされていません。
   * Moby (Docker) を使用している場合でも、上記の方法でイメージをビルドしたり、Docker エンジンを直接利用したりすることは極力避けてください。 Kubernetes では、使用されたリソースが完全に認識されるわけではなく、これらの方法では、たとえば[こちら](https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/)と[こちら](https://securityboulevard.com/2018/05/escaping-the-whale-things-you-probably-shouldnt-do-with-docker-part-1/)で詳述されている多くの問題が生じます。
 * イメージの構築 - AKS クラスター内でイメージを構築する場合を除き、現在の Docker ビルド ワークフローを通常どおりに引き続き使用できます。 この場合は、[ACR タスク](../container-registry/container-registry-quickstart-task-cli.md)を使用してイメージを構築するための推奨される方法に切り替えるか、[docker buildx](https://github.com/docker/buildx) のようなより安全なクラスター内オプションを選択することを検討してください。
 
-## <a name="generation-2-virtual-machines-preview"></a>第 2 世代仮想マシン (プレビュー)
+## <a name="generation-2-virtual-machines"></a>第 2 世代仮想マシン
 
 Azure では、[第 2 世代 (Gen2) 仮想マシン (VM)](../virtual-machines/generation-2.md) がサポートされています。 第 2 世代 VM では、第 1 世代 (Gen1) VM でサポートされていない重要な機能がサポートされています。 これらの機能には、メモリの増加、Intel ソフトウェア ガード エクステンションズ (Intel SGX)、および仮想化された永続メモリ (vPMEM) が含まれます。
 
@@ -225,59 +114,6 @@ Azure では、[第 2 世代 (Gen2) 仮想マシン (VM)](../virtual-machines/ge
 Gen2 VM は、特定の SKU とサイズでのみサポートされています。 ご自分の SKU で Gen2 がサポートされているかどうかや、Gen2 が必要かどうかを確認するには、[サポートされているサイズの一覧](../virtual-machines/generation-2.md#generation-2-vm-sizes)をご覧ください。
 
 また、すべての VM イメージで Gen2 がサポートされているわけでありません。AKS の Gen2 VM では、新しい [AKS Ubuntu 18.04 イメージ](#os-configuration)を使用します。 このイメージでは、すべての Gen2 SKU およびサイズがサポートされています。
-
-プレビュー期間中に Gen2 VM を使用するには、次の要件があります。
-- `aks-preview` CLI 拡張機能をインストールする。
-- `Gen2VMPreview` 機能フラグを登録する。
-
-`Gen2VMPreview` 機能を登録します。
-
-```azurecli
-az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
-```
-
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature#az-feature-list) コマンドを使用して登録状態を確認できます。
-
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
-```
-
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
-
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
-
-aks-preview CLI 拡張機能をインストールするには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension add --name aks-preview
-```
-
-aks-preview CLI 拡張機能を更新するには、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-gen2-vms-on-new-clusters-preview"></a>新しいクラスターで Gen2 VM を使用する (プレビュー)
-クラスターの作成時に、選択した SKU で Gen2 VM を使用するようにクラスターを構成します。 `--aks-custom-headers` フラグを使用して、新しいクラスターの VM の世代として Gen2 を設定します。
-
-```azurecli
-az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
-```
-
-第 1 世代 (Gen1) VM を使用して通常のクラスターを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。 以下のように、Gen1 または Gen2 VM を追加することもできます。
-
-### <a name="use-gen2-vms-on-existing-clusters-preview"></a>既存のクラスターで Gen2 VM を使用する (プレビュー)
-Gen2 VM を使用するように新しいノード プールを構成します。 `--aks-custom-headers` フラグを使用して、そのノード プールの VM の世代として Gen2 を設定します。
-
-```azurecli
-az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_D2s_v3 --aks-custom-headers usegen2vm=true
-```
-
-通常の Gen1 ノード プールを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
-
 
 ## <a name="ephemeral-os"></a>エフェメラル OS
 

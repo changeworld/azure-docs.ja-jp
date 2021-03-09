@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 07/17/2019
-ms.openlocfilehash: 017698975706aa8501cd059351cf9a9d88594f77
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a54907dd3f7b3fbc06033624f14b12de14d9afb9
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779902"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831503"
 ---
 # <a name="configure-a-custom-dns-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance のカスタム DNS を構成する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ SQL Managed Instance の内部の処理にも同じ DNS が使用されるため
 > プライベート DNS ゾーン内にある場合でも、メール サーバー、SQL Server インスタンス、およびその他のサービスには、常に完全修飾ドメイン名 (FQDN) を使用します。 たとえば、`smtp` は正しく解決されないため、メール サーバーには `smtp.contoso.com` を使用します。 同じ仮想ネットワーク内の SQL Server VM を参照するリンク サーバーまたはレプリケーションを作成する場合も、FQDN と既定の DNS サフィックスが必要です。 たとえば、「 `SQLVM.internal.cloudapp.net` 」のように入力します。 詳細については、「[独自の DNS サーバーを使用する名前解決](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
 
 > [!IMPORTANT]
-> 仮想ネットワークの DNS サーバーを更新しても、すぐには SQL Managed Instance に影響しません。 SQL Managed Instance の DNS 構成が更新されるのは、DHCP リースの有効期限が切れた後、またはプラットフォームのアップグレード後のどちらか先に発生したときになります。 **ユーザーには、最初のマネージド インスタンスを作成する前に、仮想ネットワークの DNS 構成を設定しておくことをお勧めします。**
+> 仮想ネットワークの DNS サーバーを更新しても、すぐには SQL Managed Instance に影響しません。 詳細については、[SQL Managed Instance 仮想クラスター上で仮想ネットワーク DNS サーバーの設定を同期する方法](synchronize-vnet-dns-servers-setting-on-virtual-cluster.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,18 +8,18 @@ ms.service: web-application-firewall
 ms.date: 08/31/2020
 ms.author: victorh
 ms.topic: how-to
-ms.openlocfilehash: 1e2fb98d83d1246c54ccb37d68d9b4282701677e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3956c06a0120ad28599c47279b60e6f5dd30204e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89225188"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174514"
 ---
 # <a name="enable-web-application-firewall-using-azure-powershell"></a>Azure PowerShell を使用して Web アプリケーション ファイアウォールを有効にする
 
 [Web アプリケーション ファイアウォール](ag-overview.md) (WAF) でアプリケーション ゲートウェイ上のトラフィックを制限できます。 WAF は、[OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) ルールを使用してアプリケーションを保護します。 こうしたルールには、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの攻撃に対する保護が含まれます。 
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 * ネットワークのセットアップ
 * WAF 対応のアプリケーション ゲートウェイの作成
@@ -277,7 +277,7 @@ $store = Get-AzStorageAccount `
 Set-AzDiagnosticSetting `
   -ResourceId $appgw.Id `
   -StorageAccountId $store.Id `
-  -Categories ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog, ApplicationGatewayFirewallLog `
+  -Category ApplicationGatewayAccessLog, ApplicationGatewayPerformanceLog, ApplicationGatewayFirewallLog `
   -Enabled $true `
   -RetentionEnabled $true `
   -RetentionInDays 30

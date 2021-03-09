@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90b2cd4521613a7b449598f0d097a7ec1c2958c6
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a834d4d30c40b618b1601a7f8901c68143ef4912
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724544"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648519"
 ---
 # <a name="resilience-through-monitoring-and-analytics"></a>監視と分析による回復性
 
@@ -49,7 +49,7 @@ ms.locfileid: "98724544"
 
    - **前の期間**:参照目的で、前の期間 (先週など) における要求の総数と成功率 (%) の変化を示す一時的なグラフを作成します。
 
-- **アラート**:Log Analytics を使用して、主要指標が急激に変化したときにトリガーされる [アラート](../../azure-monitor/platform/alerts-log.md)を定義します。 このような変化は SLO に悪影響を与える可能性があります。 アラートには、電子メール、SMS、Webhook などのさまざまな形式の通知方法が使用されます。 まず、アラートがトリガーされるしきい値として機能する条件を定義します。 次に例を示します。
+- **アラート**:Log Analytics を使用して、主要指標が急激に変化したときにトリガーされる [アラート](../../azure-monitor/alerts/alerts-log.md)を定義します。 このような変化は SLO に悪影響を与える可能性があります。 アラートには、電子メール、SMS、Webhook などのさまざまな形式の通知方法が使用されます。 まず、アラートがトリガーされるしきい値として機能する条件を定義します。 次に例を示します。
   - 要求の総数の急激な減少に対するアラート: 要求の総数が急激に減少したときにアラートをトリガーします。 たとえば、要求の総数が直前の期間と比べて 25% 減少した場合にアラートを生成します。  
   - 成功率 (%) の著しい低下に対するアラート: 選択したポリシーの成功率が著しく低下したときにアラートをトリガーします。
   - アラートを受信したら、[Log Analytics](../reports-monitoring/howto-install-use-log-analytics-views.md)、[Application Insights](../../active-directory-b2c/troubleshoot-with-application-insights.md)、および Azure AD B2C 用 [VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c)を使用して問題のトラブルシューティングを行います。 問題を解決し、更新したアプリケーションやポリシーをデプロイした後は、通常の範囲に戻るまで主要指標の監視が継続されます。
@@ -57,7 +57,7 @@ ms.locfileid: "98724544"
 - **サービス アラート**: [Azure AD B2C のサービス レベル アラート](../../service-health/service-health-overview.md)を使用して、サービスの問題、計画メンテナンス、正常性に関するアドバイザリ、セキュリティ アドバイザリの通知を受けることができます。
 
 - **レポート**: [Log Analytics](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) を使用して、ユーザー分析情報、技術的な課題、および成長機会の把握に役立つレポートを作成します。
-  - **正常性ダッシュボード**: [Azure ダッシュボード機能を使用してカスタム ダッシュボード](../../azure-monitor/learn/tutorial-app-dashboards.md)を作成します。これにより、Log Analytics クエリを使用してグラフを追加することができます。 たとえば、成功および失敗したサインインのパターン、失敗した理由、要求を行うために使用されたデバイスに関するテレメトリを確認します。
+  - **正常性ダッシュボード**: [Azure ダッシュボード機能を使用してカスタム ダッシュボード](../../azure-monitor/app/tutorial-app-dashboards.md)を作成します。これにより、Log Analytics クエリを使用してグラフを追加することができます。 たとえば、成功および失敗したサインインのパターン、失敗した理由、要求を行うために使用されたデバイスに関するテレメトリを確認します。
   - **Azure AD B2C 体験の破棄**:[ブック](https://github.com/azure-ad-b2c/siem#list-of-abandon-journeys)を使用して、破棄された Azure AD B2C 体験 (ユーザーがサインインまたはサインアップ体験を開始したまま完了していないケース) の一覧を追跡できます。 ここから、ポリシー ID や、ユーザーが体験を破棄するまでに実行したステップに関する詳細を確認できます。
   - **Azure AD B2C 監視ブック**:[監視ブック](https://github.com/azure-ad-b2c/siem) (Azure AD B2C ダッシュボード、多要素認証 (MFA) 操作、条件付きアクセス レポート、および correlationId によるログの検索を含む) を使用して、Azure AD B2C 環境の正常性に関する詳細な分析情報を得ることができます。
   

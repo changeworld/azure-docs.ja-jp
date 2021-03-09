@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 02/19/2021
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 228595bf633ef0545a13abe19308e49da82cf75a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 412e5ac661761d5fda1d375c59511c053a6354a6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714784"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>ストレージ アカウントがレプリケートされる方法を変更する
 
@@ -39,16 +39,17 @@ Azure Storage には、以下の種類のレプリケーションが用意され
 
 | 切り替え | 先: LRS | 先: GRS/RA-GRS | 先: ZRS | 先: GZRS/RA-GZRS |
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
-| <b>元: LRS</b> | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1</sup> | 手動の移行を実行する <br /><br /> OR <br /><br /> ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> まず GRS/RA-GRS に切り替えてから、ライブ マイグレーションを要求する<sup>1</sup> |
+| <b>元: LRS</b> | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1、2</sup> | 手動の移行を実行する <br /><br /> OR <br /><br /> ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> まず GRS/RA-GRS に切り替えてから、ライブ マイグレーションを要求する<sup>1</sup> |
 | <b>元: GRS/RA-GRS</b> | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし | 手動の移行を実行する <br /><br /> OR <br /><br /> まず LRS に切り替えてから、ライブ マイグレーションを要求する | 手動の移行を実行する <br /><br /> OR <br /><br /> ライブ マイグレーションを要求する |
-| <b>元: ZRS</b> | 手動の移行を実行する | 手動の移行を実行する | 該当なし | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する<sup>1、2</sup> |
+| <b>元: ZRS</b> | 手動の移行を実行する | 手動の移行を実行する | 該当なし | ライブ マイグレーションを要求する |
 | <b>元: GZRS/RA-GZRS</b> | 手動の移行を実行する | 手動の移行を実行する | Azure portal、PowerShell、または CLI を使用してレプリケーション設定を変更する | 該当なし |
 
 <sup>1</sup> 1 回限りのエグレス料金が発生します。<br />
-<sup>2</sup> ZRS から GZRS/RA-GZRS への変換またはその逆の変換は、次のリージョンではサポートされていません: 米国東部 2、米国東部、西ヨーロッパ。
+<sup>2</sup> ストレージ アカウントにアーカイブ層の BLOB が含まれる場合、LRS から GRS への移行はサポートされません。<br />
+<sup>3</sup> ZRS から GZRS/RA-GZRS への変換またはその逆の変換は、次のリージョンではサポートされていません: 米国東部 2、米国東部、西ヨーロッパ。
 
 > [!CAUTION]
-> (RA-)GRS または (RA-)GZRS アカウントに対して[アカウントのフェールオーバー](storage-disaster-recovery-guidance.md)を実行した場合、アカウントはフェールオーバー後の新しいプライマリ リージョンでローカル冗長になります。 フェールオーバーによって作成される LRS アカウントに対する ZRS または GZRS へのライブ マイグレーションは、サポートされていません。 これは、いわゆるフェールバック操作の場合にも当てはまります。 たとえば、RA-GZRS からセカンダリ リージョンの LRS へのアカウントのフェールオーバーを実行してから、それをもう一度 RA-GRS に構成し、元のプライマリ リージョンへの別のアカウントのフェイルオーバーを実行した場合、プライマリ リージョンの RA-GZRS への元のライブ マイグレーションについて、サポートに問い合わせることはできません。 代わりに、ZRS または GZRS への手動移行を実行する必要があります。
+> (RA-)GRS または (RA-)GZRS アカウントに対して[アカウントのフェールオーバー](storage-disaster-recovery-guidance.md)を実行した場合、アカウントはフェールオーバー後の新しいプライマリ リージョンでローカル冗長 (LRS) になります。 フェールオーバーによって作成される LRS アカウントに対する ZRS または GZRS へのライブ マイグレーションは、サポートされていません。 これは、いわゆるフェールバック操作の場合にも当てはまります。 たとえば、RA-GZRS からセカンダリ リージョンの LRS へのアカウントのフェールオーバーを実行してから、それをもう一度 RA-GRS に構成し、元のプライマリ リージョンへの別のアカウントのフェイルオーバーを実行した場合、プライマリ リージョンの RA-GZRS への元のライブ マイグレーションについて、サポートに問い合わせることはできません。 代わりに、ZRS または GZRS への手動移行を実行する必要があります。
 
 ## <a name="change-the-replication-setting"></a>レプリケーション設定を変更する
 

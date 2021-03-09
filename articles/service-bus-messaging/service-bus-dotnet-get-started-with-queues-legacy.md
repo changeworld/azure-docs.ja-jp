@@ -1,16 +1,16 @@
 ---
 title: Azure Service Bus キューの使用 | Microsoft Docs
 description: このチュートリアルでは、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/01/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c862fda5ee2bb5b7418fda1b4e45cd06742cf95
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: e8e70884838d56003694e2da09668527ce5b6c7b
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95819051"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652991"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 このチュートリアルでは、.NET Core コンソール アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信します。

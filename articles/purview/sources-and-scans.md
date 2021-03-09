@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6432cc9affd34c0fa9b832aea91932a2b9e7540f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: references_regions
+ms.openlocfilehash: 9a73f9b734d5404d07e05dd37d5ad8571c1aab2e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576674"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100383893"
 ---
 # <a name="supported-data-sources-and-file-types-in-azure-purview"></a>Azure Purview でサポートされているデータ ソースとファイルの種類
 
@@ -70,6 +71,28 @@ Purview の用語では、
 - **その他の構造化されたファイルの種類 (JSON、XML、TXT)** - 'リソース セット' と見なされるフォルダーまたはパーティション ファイルのグループ内で、100 個中 1 個のファイルがサンプリングされます (L3 スキャン)。
 - **SQL オブジェクトと CosmosDB エンティティ** - 各ファイルが L3 スキャンされます。
 - **ドキュメント ファイルの種類** - 各ファイルが L3 スキャンされます。 リソース セットのパターンは、これらのファイルの種類には適用されません。
+
+## <a name="scan-regions"></a>スキャンのリージョン
+Purview スキャナーが実行されるすべての Azure データ ソース (データセンター) リージョンの一覧を次に示します。 Azure データ ソースがこの一覧にないリージョンにある場合、スキャナーは Purview インスタンスのリージョンで実行されます。
+ 
+### <a name="purview-scanner-regions"></a>Purview スキャナーのリージョン
+
+- EastUs
+- EastUs2 
+- SouthCentralUS
+- WestUs
+- WestUs2
+- SoutheastAsia
+- 西ヨーロッパ
+- NorthEurope
+- UkSouth
+- AustraliaEast
+- CanadaCentral
+- BrazilSouth
+- CentralIndia
+- JapanEast
+- SouthAfricaNorth
+- FranceCentral
 
 ## <a name="classification"></a>分類
 

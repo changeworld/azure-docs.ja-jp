@@ -12,14 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3c094bf5397d15e24c3b1a58369a74438c99017e
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98018413"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730033"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>接続モニター (クラシック) から接続モニターに移行する
+
+> [!IMPORTANT]
+> 2021 年 7 月 1 日以降、接続モニター (クラシック) に新しい接続モニターを追加することはできませんが、2021 年 7 月 1 日より前に作成された既存の接続モニターは引き続き使用することができます。 現在のワークロードに対するサービスの中断を最小限に抑えるには、2024 年 2 月 29 日より前に、[接続モニター (クラシック) から Azure Network Watcher の新しい接続モニターにテストを移行](migrate-to-connection-monitor-from-connection-monitor-classic.md)します。
 
 数回のクリックで、既存の接続モニターを改善された新しい接続モニターにダウンタイムなしで移行できます。 利点の詳細については、[接続モニター](./connection-monitor-overview.md)に関する記事を参照してください。
 
@@ -29,7 +32,7 @@ ms.locfileid: "98018413"
 
 * エージェントとファイアウォールの設定は現状のままです。 変更の必要はありません。 
 * 既存の接続モニターは、接続モニター -> テストグループ -> テスト形式にマップされます。 **[編集]** を選択することで、新しい接続モニターのプロパティを表示して変更したり、テンプレートをダウンロードして接続モニターの変更を行い、それを Azure Resource Manager 経由で送信したりできます。 
-* Network Watcher 拡張機能を備えた Azure 仮想マシンでは、ワークスペースとメトリックの両方にデータが送信します。 接続モニターでは、古いメトリック(ProbesFailedPercent と AverageRoundtripMs) の代わりに、新しいメトリック (ChecksFailedPercent と RoundTripTimeMs) 経由でデータを使用できるようになります。 
+* Network Watcher 拡張機能を備えた Azure 仮想マシンでは、ワークスペースとメトリックの両方にデータが送信します。 接続モニターでは、古いメトリック(ProbesFailedPercent と AverageRoundtripMs) の代わりに、新しいメトリック (ChecksFailedPercent と RoundTripTimeMs) 経由でデータを使用できるようになります。 古いメトリックは、ProbesFailedPercent -> ChecksFailedPercent および AverageRoundtripMs -> RoundTripTimeMs として、新しいメトリックに移行されます。
 * データの監視:
    * **アラート**:新しいメトリックに自動的に移行されます。
    * **ダッシュボードと統合**:メトリック セットを手動で編集する必要があります。 
@@ -46,7 +49,7 @@ ms.locfileid: "98018413"
     
 1. 移行するサブスクリプションと接続モニターを選択し、 **[Migrate selected]\(選択したものを移行\)** を選択します。 
 
-数回のクリックで、既存の接続モニターが接続モニターに移行されます。 
+数回のクリックで、既存の接続モニターが接続モニターに移行されます。 CM (クラシック) から CM に移行すると、CM (クラシック) でのモニターは表示できなくなります
 
 これで、接続モニターのプロパティのカスタマイズ、既定のワークスペースの変更、テンプレートのダウンロード、および移行の状態を確認できます。 
 

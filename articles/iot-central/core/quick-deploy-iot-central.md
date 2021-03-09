@@ -3,21 +3,24 @@ title: クイックスタート - Azure IoT Central アプリケーションを�
 description: クイックスタート - 新しい Azure IoT Central アプリケーションを作成します。 無料プランまたはいずれかの標準料金プランを使用して、アプリケーションを作成します。
 author: viv-liu
 ms.author: viviali
-ms.date: 11/23/2020
+ms.date: 12/28/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: a2d48a6f4e451e2a9b4140618c7c590293cb5ef5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: c5e357824652077acab299e0e27678f528f23b9a
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548530"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99833900"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>クイックスタート - Azure IoT Central アプリケーションを作成する
 
 このクイックスタートでは、Azure IoT Central アプリケーションを作成する方法を説明します。
+
+
+[!INCLUDE [Warning About Access Required](../../../includes/iot-central-warning-contribitorrequireaccess.md)]
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
@@ -41,15 +44,14 @@ ms.locfileid: "96548530"
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png" alt-text="Azure IoT Central の課金情報":::
 
-    > [!NOTE]
+    > [!Tip]
     > 前のページで **[カスタム アプリ]** を選択した場合は、 **[アプリケーション テンプレート]** ドロップダウンが表示されます。 ドロップダウンには、組織によってユーザーが使用できるようにされている他のテンプレートが表示される場合もあります。
-
-    >[!IMPORTANT]
-    >**カスタム アプリケーション (レガシ)** テンプレート (V2) は廃止されました。これまで、レガシ アプリケーション テンプレートで使用できたすべての機能は、最新の **カスタム アプリケーション** テンプレート (V3) で使用できるようになっています。
 
 1. 7 日間の無料試用料金プラン、またはいずれかの標準料金プランを使用して、アプリケーションを作成することを選択します。
 
     - "*無料*" のプランを使用して作成したアプリケーションは 7 日間無料で、最大 5 台のデバイスがサポートされます。 期限切れになるまでは、いつでも標準の料金プランを使用するように変換できます。
+        > [!NOTE]
+        > "*無料*" プランを使用して作成されたアプリケーションは、Azure サブスクリプションを必要としないため、Azure portal の Azure サブスクリプション一覧にも表示されません。 無料のアプリは、IoT Central ポータルからのみ表示して管理することができます。          
     - "*標準*" のプランを使用して作成したアプリケーションは、デバイス単位で課金されます。**Standard 0**、**Standard 1**、**Standard 2** のいずれかの価格プランから選択でき、どちらも最初の 2 つのデバイスが無料となります。 無料と標準の料金プランについては、[Azure IoT Central の価格に関するページ](https://azure.microsoft.com/pricing/details/iot-central/)で確認できます。 標準の料金プランを使用してアプリケーションを作成する場合は、"*ディレクトリ*"、"*Azure サブスクリプション*"、および "*場所*" を選択する必要があります。
         - "*ディレクトリ*" は、アプリケーションを作成する Azure Active Directory です。 Azure Active Directory には、ユーザー ID、資格情報、およびその他の組織情報が含まれています。 Azure Active Directory を持っていない場合は、Azure サブスクリプションを作成するときに自動的に作成されます。
         - "*Azure サブスクリプション*" を使用すると、Azure サービスのインスタンスを作成できます。 IoT Central では、リソースが自分のサブスクリプション内にプロビジョニングされます。 Azure サブスクリプションがない場合は、[Azure サインアップ ページ](https://aka.ms/createazuresubscription)で無料で作成できます。 Azure サブスクリプションを作成したら、 **[新しいアプリケーション]** ページに戻ります。 新しいサブスクリプションが **[Azure サブスクリプション]** ドロップダウンに表示されるようになりました。
@@ -58,6 +60,10 @@ ms.locfileid: "96548530"
 1. 使用条件を確認し、ページの下部にある **[作成]** を選択します。 数分後に、IoT Central アプリケーションを使用できるようになります。
 
     :::image type="content" source="media/quick-deploy-iot-central/iotcentral-application.png" alt-text="Azure IoT Central アプリケーション":::
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+[!INCLUDE [iot-central-clean-up-resources](../../../includes/iot-central-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

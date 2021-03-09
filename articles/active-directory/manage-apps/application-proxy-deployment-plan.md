@@ -3,19 +3,19 @@ title: Azure Active Directory アプリケーション プロキシのデプロ�
 description: 組織内でアプリケーション プロキシのデプロイを計画するためのエンド ツー エンド ガイド
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/31/2020
 ms.author: kenwith
-ms.openlocfilehash: 08289987dac81905584ee65b808cfcbf35525728
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: c08ce3bc8b722f2ea417c854a606f1060aa174e3
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835144"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100580064"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -302,7 +302,7 @@ Azure AD は、[監査ログとレポート](../reports-monitoring/concept-provi
 
 #### <a name="windows-event-logs-and-performance-counters"></a>Windows イベント ログおよびパフォーマンス カウンター
 
-コネクタには管理者ログとセッション ログがあります。 管理者ログには主要なイベントとそのエラーが含まれます。 セッション ログには、すべてのトランザクションとその処理の詳細が含まれます。 ログとカウンターは Windows イベント ログにあります。詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](./application-proxy-connectors.md#under-the-hood)」を参照してください。 [Azure Monitor でイベント ログのデータ ソースを構成するにはこのチュートリアル](../../azure-monitor/platform/data-sources-windows-events.md)に従ってください。
+コネクタには管理者ログとセッション ログがあります。 管理者ログには主要なイベントとそのエラーが含まれます。 セッション ログには、すべてのトランザクションとその処理の詳細が含まれます。 ログとカウンターは Windows イベント ログにあります。詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](./application-proxy-connectors.md#under-the-hood)」を参照してください。 [Azure Monitor でイベント ログのデータ ソースを構成するにはこのチュートリアル](../../azure-monitor/agents/data-sources-windows-events.md)に従ってください。
 
 ### <a name="troubleshooting-guide-and-steps"></a>トラブルシューティングのガイドと手順
 

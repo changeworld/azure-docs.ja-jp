@@ -4,12 +4,12 @@ description: サービス正常性イベントについて個人用に設定さ�
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 3/27/2018
-ms.openlocfilehash: 05b0572c89a29fddc881f9977ee437d1319e6254
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a70c4fcd01a1a95c598d980004ee60292a6cf24b
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86518930"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594608"
 ---
 # <a name="use-a-webhook-to-configure-health-notifications-for-problem-management-systems"></a>Webhook を使用して問題管理システム用に正常性通知を構成する
 
@@ -31,7 +31,7 @@ Azure サービス インシデントの影響を受けた場合にテキスト 
 ## <a name="configure-a-custom-notification-by-using-the-service-health-webhook-payload"></a>Service Health の Webhook ペイロードを使用してカスタム通知を構成する
 独自のカスタム Webhook 統合を設定するには、Service Health の通知を介して送信される JSON ペイロードを解析する必要があります。
 
-Webhook ペイロードの[例](../azure-monitor/platform/activity-log-alerts-webhook.md) `ServiceHealth` を参照してください。
+Webhook ペイロードの[例](../azure-monitor/alerts/activity-log-alerts-webhook.md) `ServiceHealth` を参照してください。
 
 それがサービス正常性アラートであることを確認するには、`context.eventSource == "ServiceHealth"` を探します。 以下のプロパティが最も関連性があります。
 - **data.context.activityLog.status**
@@ -46,7 +46,7 @@ Webhook ペイロードの[例](../azure-monitor/platform/activity-log-alerts-we
 ## <a name="create-a-link-to-the-service-health-dashboard-for-an-incident"></a>インシデントに関する Service Health ダッシュボードへのリンクを作成する
 ご利用の Service Health ダッシュボードへの直接リンクをデスクトップまたはモバイル上に作成するには、特別な URL を生成します。 *trackingId* と、ご利用の *subscriptionId* の最初の 3 桁と最後の 3 桁を次の形式で使用します。
 
-https<i></i>://app.azure.com/h/ *&lt;trackingId&gt;* / *&lt;subscriptionId の最初の 3 桁と最後の 3 桁&gt;*
+https <i></i>://app.azure.com/h/ *&lt;trackingId&gt;* / *&lt;subscriptionId の最初の 3 桁と最後の 3 桁&gt;*
 
 たとえば、ご利用の *subscriptionId* が bba14129-e895-429b-8809-278e836ecdb3 であり、ご利用の *trackingId* が 0DET-URB の場合、Service Health の URL は次のようになります。
 
@@ -98,7 +98,7 @@ Service Health アラートによって通知される内容は、複数のリ�
 
 次の手順に従います。
 
-1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 Webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための Webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)」を参照してください。
+1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 Webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための Webhook](../azure-monitor/alerts/activity-log-alerts-webhook.md)」を参照してください。
 
 1. 次のような HTTP POST 要求を作成します。
 
@@ -114,6 +114,6 @@ Service Health アラートによって通知される内容は、複数のリ�
 1. [PagerDuty](https://www.pagerduty.com/) に移動して、統合が正常に設定されたことを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
+- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/alerts/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](./service-notifications.md)について学習します。
-- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。
+- [アクション グループ](../azure-monitor/alerts/action-groups.md)について学習します。

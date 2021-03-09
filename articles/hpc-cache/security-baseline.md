@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 850171a4f1f303ef344fa5007325093c6363615b
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: e5a395f71ed1b1ab06d97b8aa6d83278d59d15c0
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789079"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101091954"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure HPC Cache 用の Azure セキュリティ ベースライン
 
@@ -381,7 +381,7 @@ Azure RBAC を使用してリソースに割り当てる特権は、常に、ロ
 
 - [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md) 
 
-- [Azure で RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
+- [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md) 
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -613,9 +613,9 @@ Azure HPC Cache リソースがデプロイされているネットワーク上�
 
 また、Azure Security Center と Azure Policy を使用して、HPC Cache の Azure リソース ログとログ データの収集を有効にすることもできます。 これらのログは、後でセキュリティ インシデントを調査し、フォレンジック演習を実行するために重要な場合があります。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/platform/platform-logs-overview.md) 
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md) 
 
 - [Azure Security Center のデータ収集について](../security-center/security-center-enable-data-collection.md)
 
@@ -633,7 +633,7 @@ Azure アクティビティ ログを一元的なログ記録に統合してい�
 
 多くの組織では、頻繁に使用される "ホット" データに対しては Azure Sentinel を、使用頻度の低い "コールド" データに対しては Azure Storage を使用することを選択しています。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 

@@ -1,23 +1,18 @@
 ---
 title: Azure Data Factory を使用して DB2 からデータを移動する
 description: Azure Data Factory のコピー アクティビティを使用して、オンプレミスの DB2 データベースからデータを移動する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: c1644e17-4560-46bb-bf3c-b923126671f1
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bcd1e6f9f9be1765e76399707ae36776a9f1987d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001067"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100387361"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

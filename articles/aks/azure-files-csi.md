@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: b29f4034b12ce43e6c051e454601f196365469f3
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 93f7f7a3c59beca362145ac16f7cf727df773f81
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636982"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102174063"
 ---
 # <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure Files の Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 
@@ -226,7 +226,7 @@ az provider register --namespace Microsoft.Storage
 
 ### <a name="create-a-storage-account-for-the-nfs-file-share"></a>NFS ファイル共有のストレージ アカウントを作成する
 
-NFS 共有をサポートするために、次の構成で [`Premium_LRS` Azure ストレージ アカウントを作成](../storage/files/storage-how-to-create-premium-fileshare.md)します。
+NFS 共有をサポートするために、次の構成で [`Premium_LRS` Azure ストレージ アカウントを作成](../storage/files/storage-how-to-create-file-share.md)します。
 - アカウントの種類: FileStorage
 - 安全な転送が必須 (HTTPS トラフィックのみを有効にする): false
 - [ファイアウォールと仮想ネットワーク] でお使いのエージェント ノードの仮想ネットワークを選択します。そのため、MC_ リソース グループにストレージ アカウントを作成することが適している場合があります。
@@ -334,10 +334,10 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register&preserve-view=true
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [storage-skus]: ../storage/common/storage-redundancy.md

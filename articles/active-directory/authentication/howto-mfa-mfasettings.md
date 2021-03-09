@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 02/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 209125a5cc8d86c1af07966d52681aa91ea7dc19
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8f2bd316c733f4680a266d609e1cc95a4879016d
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027001"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102198525"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -57,7 +57,7 @@ Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使�
 
 ## <a name="block-and-unblock-users"></a>ユーザーのブロックおよびブロック解除
 
-ユーザーのデバイスが紛失するか、盗難にあった場合は、関連付けられているアカウントに対する Azure AD Multi-Factor Authentication の試行をブロックできます。 ブロックされているユーザーに対する Azure AD Multi-Factor Authentication の試行は自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。
+ユーザーのデバイスが紛失するか、盗難にあった場合は、関連付けられているアカウントに対する Azure AD Multi-Factor Authentication の試行をブロックできます。 ブロックされているユーザーに対する Azure AD Multi-Factor Authentication の試行は自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 その方法を説明するために、[テナントでユーザーをブロックおよびブロック解除する方法](https://www.youtube.com/watch?v=WdeE1On4S1o)に関するビデオを公開しています。
 
 ### <a name="block-a-user"></a>ユーザーのブロック
 
@@ -65,9 +65,7 @@ Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使�
 
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[MFA]**  >  **[ユーザーのブロック/ブロック解除]** の順に移動します。
 1. **[追加]** を選択してユーザーをブロックします。
-1. **[レプリケーション グループ]** を選択し、"*Azure Default*" を選択します。
-
-    ブロックされるユーザーのユーザー名を `username\@domain.com` のように入力し、 *[理由]* フィールドにコメントを入力します。
+1. ブロックされるユーザーのユーザー名を `username@domain.com` のように入力し、 *[理由]* フィールドにコメントを入力します。
 1. 準備ができたら、 **[OK]** を選択して、ユーザーをブロックします。
 
 ### <a name="unblock-a-user"></a>ユーザーのブロック解除
@@ -122,8 +120,6 @@ Azure AD では、30 秒または 60 秒ごとにコードを更新する OATH-T
 OATH TOTP ハードウェア トークンには、通常、トークンで事前にプログラミングされた秘密鍵 (シード) が付属しています。 これらのキーは、次の手順に従って Azure AD に入力する必要があります。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密キーに含めることができるのは、文字 *a-z* または *A-Z* と数字 *1-7* のみです。また、*Base32* でエンコードする必要があります。
 
 再シードできるプログラミング可能な OATH TOTP ハードウェア トークンは、ソフトウェア トークンのセットアップ フローで Azure AD に設定することもできます。
-
-OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ![OATH トークンの MFA OATH トークン ブレードへのアップロード](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 

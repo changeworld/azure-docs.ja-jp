@@ -1,27 +1,22 @@
 ---
 title: プライベート エンドポイントを使用して Azure Data Factory パイプラインを作成する
 description: このチュートリアルでは、Azure Portal を使用してパイプラインを備えたデータ ファクトリを作成するための詳細な手順について説明します。 パイプラインでコピー アクティビティを使用して、Azure Blob Storage から Azure SQL データベースにデータをコピーします。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/15/2021
+ms.date: 02/18/2021
 ms.author: jingwang
-ms.openlocfilehash: dfd2ed47c3fd963d7e119d235719771b25bdaf34
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a3cc3686d4b256fc7b8702f34cdf393dc1b0e25f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249518"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740394"
 ---
-# <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure BLOB ストレージから SQL データベースに安全にデータをコピーする
+# <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure Blob Storage から SQL データベースに安全にデータをコピーする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 *このデータ ファクトリのパイプラインでは、[Azure Data Factory マネージド仮想ネットワーク](managed-virtual-network-private-endpoint.md)のプライベート エンドポイントを使用して、Azure Blob Storage から Azure SQL データベースに安全にデータをコピーします (どちらも、選択したネットワークへのアクセスのみを許可します)。* このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](./copy-activity-overview.md)」の表を参照してください。
 
@@ -137,7 +132,7 @@ CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
 ### <a name="configure-a-source"></a>ソースを構成する
 
 >[!TIP]
->このチュートリアルでは、ソース データ ストアの認証の種類として "**アカウント キー**" を使用します。 また、必要に応じて、**SAS URI**、**サービス プリンシパル**、**マネージド ID** など、サポートされている他の認証方法を選ぶこともできます。 詳細については、「[Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する](./connector-azure-blob-storage.md#linked-service-properties)」の対応するセクションを参照してください。
+>このチュートリアルでは、ソース データ ストアの認証の種類として "**アカウント キー**" を使用します。 また、必要に応じて、**SAS URI**、**サービス プリンシパル**、**マネージド ID** など、サポートされている他の認証方法を選ぶこともできます。 詳細については、「[Azure Data Factory を使用して Azure Blob Storage のデータをコピーおよび変換する](./connector-azure-blob-storage.md#linked-service-properties)」の対応するセクションを参照してください。
 >
 >さらに、データ ストアのシークレットを安全に格納するために、Azure Key Vault の使用をお勧めします。 詳細な説明と図解については、「[Azure Key Vault への資格情報の格納](./store-credentials-in-key-vault.md)」を参照してください。
 

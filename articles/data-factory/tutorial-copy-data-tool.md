@@ -1,23 +1,18 @@
 ---
 title: データのコピー ツールを使用して Azure Blob Storage から SQL にデータをコピーする
 description: Azure データ ファクトリを作成し、データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーします。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: de01a8a8522f93684ed428fd4ef19963b1af2059
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/18/2021
+ms.openlocfilehash: 13aa907a8c5b394fbda8d8998928016c09b5524f
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008346"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101740003"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 
@@ -25,7 +20,7 @@ ms.locfileid: "96008346"
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](tutorial-copy-data-tool.md)
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 このチュートリアルでは、Azure Portal を使用してデータ ファクトリを作成します。 次に、データのコピー ツールを使用して、Azure Blob Storage から SQL データベースにデータをコピーするパイプラインを作成します。
 

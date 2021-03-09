@@ -1,21 +1,17 @@
 ---
 title: Azure-SSIS Integration Runtime のパフォーマンスを構成する
 description: Azure-SSIS 統合ランタイムのプロパティを高パフォーマンス用に構成する方法について説明します。
-services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
 ms.service: data-factory
-ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: ''
-manager: anandsub
-ms.openlocfilehash: f0fcd61230d68d7b26017237e2b7e0465fcb1f07
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5d275100124660b901504b7e7f71cf93518fd077
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635322"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364394"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 
@@ -118,11 +114,11 @@ Y 軸は、1 時間に実行が完了したパッケージの数です。 これ
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** は、統合ランタイムのスケーラビリティを調整します。 統合ランタイムのスループットは、 **AzureSSISNodeNumber** に比例します。 最初は **AzureSSISNodeNumber** に小さい値は設定した後、統合ランタイムのスループットを監視しながら、シナリオに合った値に調整します。 worker ノードの数の再構成については、「[Azure-SSIS 統合ランタイムを管理する](manage-azure-ssis-integration-runtime.md)」をご覧ください。
+**AzureSSISNodeNumber** は、統合ランタイムのスケーラビリティを調整します。 統合ランタイムのスループットは、**AzureSSISNodeNumber** に比例します。 最初は **AzureSSISNodeNumber** に小さい値は設定した後、統合ランタイムのスループットを監視しながら、シナリオに合った値に調整します。 worker ノードの数の再構成については、「[Azure-SSIS 統合ランタイムを管理する](manage-azure-ssis-integration-runtime.md)」をご覧ください。
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-既に強力な worker ノードを使ってパッケージを実行している場合、 **AzureSSISMaxParallelExecutionsPerNode** の値を大きくすると、統合ランタイムの全体的なスループットが上がる可能性があります。 最大値を増やす場合は、Azure PowerShell を使用して **AzureSSISMaxParallelExecutionsPerNode** を更新する必要があります。 パッケージのコストと、worker ノードの次の構成に基づいて、適切な値を予測できます。 詳しくは、「[汎用仮想マシンのサイズ](../virtual-machines/sizes-general.md)」をご覧ください。
+既に強力な worker ノードを使ってパッケージを実行している場合、**AzureSSISMaxParallelExecutionsPerNode** の値を大きくすると、統合ランタイムの全体的なスループットが上がる可能性があります。 最大値を増やす場合は、Azure PowerShell を使用して **AzureSSISMaxParallelExecutionsPerNode** を更新する必要があります。 パッケージのコストと、worker ノードの次の構成に基づいて、適切な値を予測できます。 詳しくは、「[汎用仮想マシンのサイズ](../virtual-machines/sizes-general.md)」をご覧ください。
 
 | サイズ             | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク パフォーマンス (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8d14b8b83fd784956091e738a38d6851d5edacd9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 1d505c8f363e908a43c751c6253ed0f3a14b3b51
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927133"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101671542"
 ---
 # <a name="create-a-nat-gateway-using-azure-cli"></a>Azure CLI を使用した NAT ゲートウェイの作成
 
@@ -59,7 +59,7 @@ ms.locfileid: "98927133"
 
 ### <a name="create-a-public-ip-prefix"></a>パブリック IP プレフィックスの作成
 
-NAT ゲートウェイでは、1 つまたは複数のパブリック IP アドレス リソース、パブリック IP プレフィックス、またはその両方を使用できます。 このシナリオでは、デモンストレーションとしてパブリック IP プレフィックス リソースを追加することにします。   [az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) を使用して、**myResourceGroupNAT** に **myPublicIPprefix** というパブリック IP プレフィックス リソースを作成します。
+NAT ゲートウェイでは、1 つまたは複数のパブリック IP アドレス リソース、パブリック IP プレフィックス、またはその両方を使用できます。 このシナリオでは、デモンストレーションとしてパブリック IP プレフィックス リソースを追加することにします。 [az network public-ip prefix create](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create) を使用して、**myResourceGroupNAT** に **myPublicIPprefix** というパブリック IP プレフィックス リソースを作成します。
 
 ```azurecli-interactive
   az network public-ip prefix create \

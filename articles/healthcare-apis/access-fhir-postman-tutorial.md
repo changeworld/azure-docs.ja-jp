@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
-ms.date: 02/07/2019
-ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.date: 02/01/2021
+ms.openlocfilehash: 6c4d63862f4e02f3fd525021921b02cde6d10f61
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145652"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101699336"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Postman を使用して Azure API for FHIR にアクセスする
 
@@ -23,7 +23,8 @@ ms.locfileid: "93145652"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure 内の FHIR エンドポイント。 これは、マネージド Azure API for FHIR またはオープンソースの FHIR Server for Azure を使用して設定できます。 [Azure portal](fhir-paas-portal-quickstart.md)、[PowerShell](fhir-paas-powershell-quickstart.md)、または [Azure CLI](fhir-paas-cli-quickstart.md) を使用して、マネージド Azure API for FHIR を設定します。
-- FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)
+- FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)。
+- FHIR サービスにアクセスするためのアクセス許可 ("FHIR データ共同作成者" など) をクライアント アプリケーションに付与済みである。 詳細については、「[FHIR 用に Azure RBAC を構成する](./configure-azure-rbac.md)」を参照してください。
 - Postman がインストールされている。 これは [https://www.getpostman.com](https://www.getpostman.com) から入手できます
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR サーバーと認証の詳細
@@ -32,7 +33,7 @@ Postman を使用するには、次の詳細情報が必要です。
 
 - ご使用の FHIR サーバーの URL (例: `https://MYACCOUNT.azurehealthcareapis.com`)
 - ご使用の FHIR サーバーの ID プロバイダー `Authority` (例: `https://login.microsoftonline.com/{TENANT-ID}`)
-- 構成済みの `audience`。 通常、これは FHIR サーバーの URL です (例: `https://MYACCOUNT.azurehealthcareapis.com` や `https://azurehealthcareapis.com` のみ)。
+- 構成済みの `audience`。 通常、これは FHIR サーバーの URL です (例: `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` や `https://azurehealthcareapis.com` のみ)。
 - FHIR サービスへのアクセスに使用する[クライアント アプリケーション](register-confidential-azure-ad-client-app.md)の `client_id` (またはアプリケーション ID)。
 - クライアント アプリケーションの `client_secret` (またはアプリケーション シークレット)。
 

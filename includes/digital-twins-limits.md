@@ -5,16 +5,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 183d12b5e9d32c777c8acf01177c8cbbe1b6ca00
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025885"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370107"
 ---
 ### <a name="functional-limits"></a>機能制限
 
-下の表は、Azure Digital Twins の機能制限を示しています。
+次の表に、Azure Digital Twins の機能制限の一覧を示します。 
+
+> [!TIP]
+> これらの機能制限内で運用するためのモデリングの推奨事項については、「[モデルの設計に関するベスト プラクティス](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models)」を参照してください。
 
 | 領域 | 機能 | 既定の制限 | 調整可能? |
 | --- | --- | --- | --- |
@@ -22,12 +25,13 @@ ms.locfileid: "96025885"
 | Digital Twins | Azure Digital Twins インスタンス内のツインの数 | 200,000 | はい |
 | Digital Twins | 1 つのツインに対する着信リレーションシップの数 | 5,000 | いいえ |
 | Digital Twins | 1 つのツインからの発信リレーションシップの数 | 5,000 | いいえ |
-| Digital Twins | 1 つのツインの最大サイズ | 32 KB | いいえ |
+| Digital Twins | 1 つのツインの最大サイズ (PUT または PATCH 要求の JSON 本文) | 32 KB | いいえ |
 | Digital Twins | 要求ペイロードの最大サイズ | 32 KB | いいえ | 
 | ルーティング | 1 つの Azure Digital Twins インスタンスのエンドポイントの数 | 6 | いいえ |
 | ルーティング | 1 つの Azure Digital Twins インスタンスのルート数 | 6 | はい |
 | モデル | 1 つの Azure Digital Twins インスタンス内のモデルの数 | 10,000 | はい |
 | モデル | 1 回の API 呼び出しでアップロードできるモデルの数 | 250 | いいえ |
+| モデル | 1 つのモデルの最大サイズ (PUT または PATCH 要求の JSON 本文) | 1 MB | いいえ |
 | モデル | 1 つのページで返される項目の数 | 100 | いいえ |
 | クエリ | 1 つのページで返される項目の数 | 100 | はい |
 | クエリ | クエリ内の `AND` / `OR` 式の数 | 50 | はい |

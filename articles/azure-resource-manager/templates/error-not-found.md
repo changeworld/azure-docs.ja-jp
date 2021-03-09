@@ -3,12 +3,12 @@ title: リソースが見つからないエラー
 description: リソースが見つからない場合のエラーを解決する方法について説明します。 このエラーは、Azure Resource Manager テンプレートをデプロイするとき、または管理アクションを実行するときに発生する可能性があります。
 ms.topic: troubleshooting
 ms.date: 06/10/2020
-ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84667949"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526248"
 ---
 # <a name="resolve-resource-not-found-errors"></a>リソースが見つからないエラーを解決する
 
@@ -105,7 +105,7 @@ Reference 関数では、`Full` を使用して、マネージド ID を含む�
 
 パターンは次のとおりです。
 
-`"[reference(resourceId(<resource-provider-namespace>, <resource-name>, <API-version>, 'Full').Identity.propertyName]"`
+`"[reference(resourceId(<resource-provider-namespace>, <resource-name>), <API-version>, 'Full').Identity.propertyName]"`
 
 > [!IMPORTANT]
 > 次のパターンは使用しません。

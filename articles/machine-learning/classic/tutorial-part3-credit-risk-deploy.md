@@ -6,15 +6,15 @@ author: likebupt
 ms.author: keli19
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 3afcf87c360651ac314450910fbf5ab72afd289a
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 68a5f6773543b922d024336556e4de24dd96fd33
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503913"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100517384"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>チュートリアル 3:信用リスク モデルをデプロイする - Azure Machine Learning Studio (クラシック)
 
@@ -48,12 +48,12 @@ ms.locfileid: "95503913"
 ## <a name="prepare-for-deployment"></a>展開を準備する
 このチュートリアルで作成した予測モデルを他のユーザーが使用できるように、Web サービスとして Azure にデプロイできます。
 
-これまでは、モデルのトレーニングを実験してきました。 ただし、デプロイするサービスのトレーニングはこれ以上行われません。サービスは、モデルに基づいてユーザーの入力をスコア付けすることで新しい予測を生成します。 そのため、この実験を "***トレーニング** _" 実験から "_*_予測_*_" 実験に変換するための準備をします。 
+これまでは、モデルのトレーニングを実験してきました。 ただし、デプロイするサービスのトレーニングはこれ以上行われません。サービスは、モデルに基づいてユーザーの入力をスコア付けすることで新しい予測を生成します。 そのため、この実験を "***トレーニング** _" 実験から "_ *_予測_**" 実験に変換するための準備をします。 
 
 デプロイの準備は、3 ステップのプロセスです。  
 
 1. モデルのいずれかを削除する
-1. 作成した "_トレーニング実験*" を "*予測実験*" に変換する
+1. 作成した "*トレーニング実験*" を "*予測実験*" に変換する
 1. Web サービスとして予測実験をデプロイする
 
 ### <a name="remove-one-of-the-models"></a>モデルのいずれかを削除する

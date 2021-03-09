@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/01/2020
 ms.author: allensu
 ms.custom: include file
-ms.openlocfilehash: 81db46b52c9b4fe800f2fbfeadad966995d66e12
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e1d4d29f8edca87ec1cca0ffced7b3e1bca90717
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012078"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99808483"
 ---
-## <a name="create-the-virtual-network"></a>仮想ネットワークの作成
+## <a name="create-the-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
 
 このセクションでは、仮想ネットワークとサブネットを作成します。
 

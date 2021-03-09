@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/25/2020
 ms.topic: conceptual
-ms.openlocfilehash: b4b8f48afc75c0a96937575bdad5bb884d0cb4d8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8630afa7410aad81a7a3c61540fc74702fc6481c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183721"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576002"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Azure Automation によって使用される Azure リージョンの DNS レコード
 
@@ -21,7 +21,7 @@ ms.locfileid: "96183721"
 * Webhooks
 
 >[!NOTE]
->新しいレコードでは、バージョン 1.6.10.2 以上でない限り、Linux Hybrid Runbook Worker の登録が失敗します。 マシンが更新されたバージョンの worker ロールを受信し、それらの新しいレコードを使用するには、より新しいバージョンの [Linux 用の Log Analytics エージェント](../../azure-monitor/platform/agent-linux.md)にアップグレードする必要があります。 既存のマシンは、引き続き問題なく動作します。  
+>新しいレコードでは、バージョン 1.6.10.2 以上でない限り、Linux Hybrid Runbook Worker の登録が失敗します。 マシンが更新されたバージョンの worker ロールを受信し、それらの新しいレコードを使用するには、より新しいバージョンの [Linux 用の Log Analytics エージェント](../../azure-monitor/agents/agent-linux.md)にアップグレードする必要があります。 既存のマシンは、引き続き問題なく動作します。  
 
 ## <a name="dns-records-per-region"></a>リージョンあたりの DNS レコード数
 

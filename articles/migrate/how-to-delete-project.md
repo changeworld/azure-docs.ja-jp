@@ -6,12 +6,12 @@ ms.author: panshar
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 10/22/2019
-ms.openlocfilehash: face3d02ee72d1e05c6c08330dae4fffc2fd0e0b
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: bfb4db5d3ebf69f9c7f552c175d33a8b817d1562
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754251"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100595137"
 ---
 # <a name="delete-an-azure-migrate-project"></a>Azure Migrate プロジェクトの削除
 
@@ -27,7 +27,7 @@ ms.locfileid: "96754251"
     - ワークスペースは自動的には削除されません。 手動で削除してください。
     - ワークスペースを削除する前に、その使用目的を確認します。 同じ Log Analytics ワークスペースが、複数のシナリオで使用されている可能性があります。
     - プロジェクトを削除する前に、 **[Azure Migrate - Servers]\(Azure Migrate - サーバー\)**  >  **[Azure Migrate - Server Assessment]\(Azure Migrate - サーバー評価\)** の **[OMS ワークスペース]** でワークスペースへのリンクを確認できます。
-    - プロジェクトを削除した後にワークスペースを削除するには、関連するリソース グループからワークスペースを探して、[ここに記載の手順](../azure-monitor/platform/delete-workspace.md)に従います。
+    - プロジェクトを削除した後にワークスペースを削除するには、関連するリソース グループからワークスペースを探して、[ここに記載の手順](../azure-monitor/logs/delete-workspace.md)に従います。
 
 
 ## <a name="delete-a-project"></a>プロジェクトを削除する

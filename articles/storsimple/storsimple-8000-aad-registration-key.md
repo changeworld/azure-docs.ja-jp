@@ -6,14 +6,14 @@ ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 0e071a20051f047efbd040dfc01a30e3c1381367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b09d68e7859a787c05a2fc62294f081c4345ae08
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631326"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805042"
 ---
-# <a name="use-azuer-active-directory-ad-authentication-for-your-storsimple"></a>StorSimple に Azure Active Directory (AD) 認証を使用する
+# <a name="use-azure-active-directory-ad-authentication-for-your-storsimple"></a>StorSimple に Azure Active Directory (AD) 認証を使用する
 
 [!INCLUDE [storsimple-8000-eol-banner](../../includes/storsimple-8000-eol-banner.md)]
 
@@ -75,7 +75,7 @@ AAD サービス登録キーを生成するには、次の手順を実行しま�
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>AAD サービス登録キーを生成するには
 
-1. **StorSimple デバイス マネージャー**で、 **[管理] &gt;** **[キー]** の順に移動します。 検索バーを使用して、"_キー_" を検索することもできます。
+1. **StorSimple デバイス マネージャー** で、 **[管理] &gt;** **[キー]** の順に移動します。 検索バーを使用して、"_キー_" を検索することもできます。
     
 2. **[キーの生成]** をクリックします。
 

@@ -3,19 +3,19 @@ title: Translator V3.0 リファレンス
 titleSuffix: Azure Cognitive Services
 description: Translator V3.0 のリファレンス ドキュメント。 Translator のバージョン 3 には、最新の JSON ベースの Web API が用意されています。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
-ms.author: swmachan
-ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: 021a65ba69b9d1909df4a86d92b660c0c1033a3b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024502"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895460"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -39,9 +39,9 @@ Microsoft Translator のサービスは、複数のデータセンター拠点�
 
 Microsoft Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その Azure 地域以外に要求がルーティングされます。
 
-要求を特定の Azure 地域に強制的に処理させるには、API 要求内のグローバル エンドポイントを目的のリージョンのエンドポイントに変更します。
+要求を特定の Azure 地域に強制的に処理させるには、API 要求内のグローバル エンドポイントを目的の地域のエンドポイントに変更します。
 
-|説明|Azure 地域|ベース URL|
+|説明|Azure 地域|ベース URL (地域のエンドポイント)|
 |:--|:--|:--|
 |Azure|グローバル (リージョンなし)|   api.cognitive.microsofttranslator.com|
 |Azure|米国|   api-nam.cognitive.microsofttranslator.com|

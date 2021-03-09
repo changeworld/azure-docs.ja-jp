@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/01/2020
-ms.openlocfilehash: 5dff78989eef17f95d8b8dd108baafc53a3f761a
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1779df1c5f9baf2aa46ff809ecae9ec5e3cd7adb
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657024"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581565"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
@@ -178,7 +178,7 @@ Query_store.staging_data_reset() returns void
 
 
 ## <a name="azure-monitor"></a>Azure Monitor
-Azure Database for PostgreSQL は、[Azure Monitor の診断設定](../azure-monitor/platform/diagnostic-settings.md)に統合されています。 診断設定を使用すると、ご自分の Postgres ログを、分析とアラート用の [Azure Monitor ログ](../azure-monitor/log-query/log-query-overview.md)、ストリーミング用の Event Hubs、アーカイブ用の Azure Storage に JSON 形式で送信できます。
+Azure Database for PostgreSQL は、[Azure Monitor の診断設定](../azure-monitor/essentials/diagnostic-settings.md)に統合されています。 診断設定を使用すると、ご自分の Postgres ログを、分析とアラート用の [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)、ストリーミング用の Event Hubs、アーカイブ用の Azure Storage に JSON 形式で送信できます。
 
 >[!IMPORTANT]
 > この診断機能は、General Purpose 価格レベルとメモリ最適化価格レベルにのみあります。
@@ -195,7 +195,7 @@ Azure portal を使用してリソース ログを有効にするには
 5. ログの種類として **QueryStoreRuntimeStatistics** と **QueryStoreWaitStatistics** を選択します。
 6. 設定を保存します。
 
-この設定を、PowerShell、CLI、または REST API を使用して有効にするには、[診断の設定](../azure-monitor/platform/diagnostic-settings.md)に関する記事をご覧ください。
+この設定を、PowerShell、CLI、または REST API を使用して有効にするには、[診断の設定](../azure-monitor/essentials/diagnostic-settings.md)に関する記事をご覧ください。
 
 ### <a name="json-log-format"></a>JSON ログの形式
 次の表では、2 つのログの種類のフィールドについて説明します。 選択した出力エンドポイントに応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。

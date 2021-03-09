@@ -4,12 +4,12 @@ description: Azure Monitor を使用した Azure Blockchain Service の監視
 ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
-ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 05147f48c4cde4cc97bf6cc9cae5c8220a389ebd
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87076924"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594921"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Azure Monitor を使用して Azure Blockchain Service を監視する  
 
@@ -17,20 +17,20 @@ ms.locfileid: "87076924"
 
 ## <a name="what-is-azure-monitor"></a>Azure Monitor とは
 
-Azure Blockchain Service では、監視データの作成に Azure Monitor が使用されます。これは、Azure リソースを監視するための機能が一式そろっている Azure のフル スタック監視サービスです。 Azure Monitor の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+Azure Blockchain Service では、監視データの作成に Azure Monitor が使用されます。これは、Azure リソースを監視するための機能が一式そろっている Azure のフル スタック監視サービスです。 Azure Monitor の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
  
 
 以下のセクションでは、この記事を基に、Azure Blockchain Service から収集される特定のデータについて説明します。また、Azure のツールを使用してデータの収集を構成し、このデータを分析するための例を示します。
 
 ## <a name="monitor-data-collected-from-azure-blockchain-service"></a>Azure Blockchain Service から収集されたデータを監視する  
 
-Azure Blockchain Service は、他の Azure リソースと同じ種類の監視データを収集します。これについては、[Azure リソースの監視データ](../../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)に関する記事を参照してください。 Azure Blockchain Service によって作成されるログとメトリックの詳細については、「[Azure Blockchain Service データのリファレンスを監視する](#monitor-azure-blockchain-service-data-reference)」を参照してください。
+Azure Blockchain Service は、他の Azure リソースと同じ種類の監視データを収集します。これについては、[Azure リソースの監視データ](../../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)に関する記事を参照してください。 Azure Blockchain Service によって作成されるログとメトリックの詳細については、「[Azure Blockchain Service データのリファレンスを監視する](#monitor-azure-blockchain-service-data-reference)」を参照してください。
 
 各 Azure Blockchain Service メンバー リソースの Azure portal の概要ページには、ハンドルされている要求と処理されたブロックを含むトランザクションの簡単なビューが含まれています。 このデータの一部は、Azure Blockchain Service メンバー リソースを作成すると自動的に収集され、分析に使用できますが、追加の構成で追加のデータ収集を有効にすることができます。
 
 ## <a name="diagnostic-settings"></a>診断設定  
 
-プラットフォーム メトリックとアクティビティ ログは自動的に収集されますが、リソース ログを収集したり、それらを Azure Monitor の外部に転送したりするには、診断設定を作成する必要があります。 Azure portal、CLI、または PowerShell を使用して診断設定を作成するプロセスの詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../../azure-monitor/platform/diagnostic-settings.md)」を参照してください。
+プラットフォーム メトリックとアクティビティ ログは自動的に収集されますが、リソース ログを収集したり、それらを Azure Monitor の外部に転送したりするには、診断設定を作成する必要があります。 Azure portal、CLI、または PowerShell を使用して診断設定を作成するプロセスの詳細については、「[Azure でプラットフォーム ログとメトリックを収集するための診断設定を作成する](../../azure-monitor/essentials/diagnostic-settings.md)」を参照してください。
 
 診断設定を作成するときは、収集するログのカテゴリを指定します。 Azure Blockchain Service のカテゴリを以下に示します。
 
@@ -42,13 +42,13 @@ Azure Blockchain Service は、他の Azure リソースと同じ種類の監視
 
 ## <a name="analyze-metric-data"></a>メトリック データを分析する  
 
-メトリックス エクスプローラーを使用して Azure Blockchain Service のメトリックを分析し、ABS リソース ブレードの [監視] セクションの [メトリック] タブに移動できます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」を参照してください。 Azure Blockchain Service の完全なメトリックは、Azure Blockchain Service の標準メトリックの名前空間に含まれています。
+メトリックス エクスプローラーを使用して Azure Blockchain Service のメトリックを分析し、ABS リソース ブレードの [監視] セクションの [メトリック] タブに移動できます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/essentials/metrics-getting-started.md)」を参照してください。 Azure Blockchain Service の完全なメトリックは、Azure Blockchain Service の標準メトリックの名前空間に含まれています。
 
-フィルターを追加するとき、またはメトリックを分割するときに、**ノード**のディメンションを使用できます。これにより、基本的に、ABS メンバーのトランザクション ノードおよび検証ノードごとにメトリック値が提供されます。
+フィルターを追加するとき、またはメトリックを分割するときに、**ノード** のディメンションを使用できます。これにより、基本的に、ABS メンバーのトランザクション ノードおよび検証ノードごとにメトリック値が提供されます。
 
 ## <a name="analyze-log-data"></a>ログ データの分析
 
-ログ検索バーに入力して Azure Blockchain Service メンバーを監視するときに役立つクエリをいくつか紹介します。 これらのクエリは[新しい言語](../../azure-monitor/log-query/log-query-overview.md)で使用できます。
+ログ検索バーに入力して Azure Blockchain Service メンバーを監視するときに役立つクエリをいくつか紹介します。 これらのクエリは[新しい言語](../../azure-monitor/logs/log-query-overview.md)で使用できます。
 
 Blockchain アプリケーション ログのエラー状態のクエリを実行するには、次のクエリを使用します。
 
@@ -74,7 +74,7 @@ Azure ログで使用できる時間フィルターを使用して、特定の�
 
 ### <a name="resource-logs"></a>リソース ログ
 
-すべてのリソース ログは、ブロックチェーン サービスに固有の一意のプロパティがほとんどない最上位の共通スキーマを共有します。 記事「[リソース ログの上位スキーマ](../../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)」を参照してください。Azure Blockchain Service 固有のプロパティの詳細については、以下で説明します  
+すべてのリソース ログは、ブロックチェーン サービスに固有の一意のプロパティがほとんどない最上位の共通スキーマを共有します。 記事「[リソース ログの上位スキーマ](../../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)」を参照してください。Azure Blockchain Service 固有のプロパティの詳細については、以下で説明します  
 
 次の表に、Azure Monitor ログまたは Azure Storage で Azure Blockchain プロキシ ログが収集される場合のそれらのプロパティを示します。  
 
@@ -124,7 +124,7 @@ Azure ログで使用できる時間フィルターを使用して、特定の�
 
 Azure Blockchain Service について収集されたプラットフォーム メトリックを次の表に示します。 すべてのメトリックは、名前空間 **Azure Blockchain Service** 標準メトリックに格納されます。
 
-(Azure Blockchain Service など) Azure Monitor がサポートするすべてのメトリックの一覧については、「[Azure Monitor のサポートされるメトリック](../../azure-monitor/platform/metrics-supported.md)」を参照してください。
+(Azure Blockchain Service など) Azure Monitor がサポートするすべてのメトリックの一覧については、「[Azure Monitor のサポートされるメトリック](../../azure-monitor/essentials/metrics-supported.md)」を参照してください。
 
 ### <a name="blockchain-metrics"></a>Blockchain のメトリック
 

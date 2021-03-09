@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: c5c89b285e8ef98f83d0bfa923aaca402491315d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 99dcd81cd24f762a5c2b55f5f2977aaf61bc26e8
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754224"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103538"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>クイック スタート:トークンを取得し、コンソール アプリの ID を使用して Microsoft Graph API を呼び出す
 
@@ -39,7 +39,7 @@ ms.locfileid: "98754224"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>オプション 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 >
-> 1. <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録<span class="docon docon-navigate-external x-hidden-focus"></span></a>クイックスタート エクスペリエンスに移動します。
+> 1. <a href="https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs" target="_blank">Azure portal のアプリの登録</a>クイックスタート エクスペリエンスに移動します。
 > 1. アプリケーションの名前を入力し、 **[登録]** を選択します。
 > 1. 画面の指示に従ってダウンロードし、1 回クリックするだけで、新しいアプリケーションが自動的に構成されます。
 >
@@ -49,7 +49,7 @@ ms.locfileid: "98754224"
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
-> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> にサインインします。
+> 1. <a href="https://portal.azure.com/" target="_blank">Azure Portal</span></a> にサインインします。
 > 1. 複数のテナントにアクセスできる場合は、トップ メニューの **[ディレクトリとサブスクリプション]** フィルター:::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::を使用して、アプリケーションを登録するテナントを選択します。
 > 1. **Azure Active Directory** を検索して選択します。
 > 1. **[管理]** で **[アプリの登録]**  >  **[新規登録]** の順に選択します。
@@ -65,7 +65,7 @@ ms.locfileid: "98754224"
 > ### <a name="download-and-configure-your-quickstart-app"></a>クイックスタート アプリをダウンロードして構成する
 >
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイック スタート用サンプル コードを動作させるには、クライアント シークレットを作成し、Graph API の **User.Read.All** アプリケーションのアクセス許可を追加します。
+> このクイックスタート用サンプル コードを動作させるには、クライアント シークレットを作成し、Graph API の **User.Read.All** アプリケーションのアクセス許可を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >
@@ -130,7 +130,7 @@ ms.locfileid: "98754224"
 
 ##### <a name="standard-user"></a>標準ユーザー
 
-テナントの標準ユーザーの場合は、お使いのアプリケーションに管理者の同意を与えるようグローバル管理者に依頼する必要があります。 これを行うには、次の URL を管理者に知らせます。
+テナントの標準ユーザーの場合は、お使いのアプリケーションに管理者の同意を与えるようグローバル管理者に依頼してください。 これを行うには、次の URL を管理者に知らせます。
 
 ```url
 https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_id=Enter_the_Application_Id_Here

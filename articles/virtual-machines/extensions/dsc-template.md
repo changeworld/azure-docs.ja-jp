@@ -2,8 +2,7 @@
 title: Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 description: Resource Manager テンプレートによる Azure の Desired State Configuration (DSC) 拡張機能の定義について説明します。
 services: virtual-machines-windows
-author: bobbytreed
-manager: carmonm
+author: mgoedtel
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
@@ -12,14 +11,14 @@ ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 10/05/2018
-ms.author: robreed
-ms.openlocfilehash: 8b862238c0c04fae72659d644dbaf882d00cca19
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/09/2021
+ms.author: magoedte
+ms.openlocfilehash: 4e9133697cda4a46a895c7e41eff6d17ccd01e4a
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735692"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100093660"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
@@ -37,7 +36,7 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 ```json
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
-  "name": "Microsoft.Powershell.DSC",
+  "name": "[concat(parameters('VMName'), '/Microsoft.Powershell.DSC')]",
   "apiVersion": "2018-06-01",
   "location": "[parameters('location')]",
   "dependsOn": [

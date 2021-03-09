@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 5e44c2cfc81256a8715c7c625648b6ec25bcd319
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91929219"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183830"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>手動 QoS 容量プールを管理する
 
@@ -44,7 +44,7 @@ QoS の種類に関する考慮事項を理解するためには、「[Azure Net
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
     ```
-また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>手動 QoS 容量プールを設定する 
 
@@ -59,7 +59,8 @@ QoS の種類に関する考慮事項を理解するためには、「[Azure Net
 現在は自動 QoS の種類を使用している容量プールを、手動 QoS の種類を使用するように変更できます。  
 
 > [!IMPORTANT]
-> 容量の種類を手動 QoS に設定することは、永続的な変更です。 種類が手動 QoS である容量プールを、自動 QoS 容量プール変換することはできません。 
+> 容量の種類を手動 QoS に設定することは、永続的な変更です。 種類が手動 QoS である容量プールを、自動 QoS 容量プール変換することはできません。  
+> 変換時には、手動 QoS の種類のボリュームのスループット制限に準拠するために、スループット レベルが制限される可能性があります。 「[Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md#resource-limits)」を参照してください。
 
 1. NetApp アカウントの管理ブレードで、 **[容量プール]** をクリックして既存の容量プールを表示します。   
  
@@ -80,7 +81,7 @@ QoS の種類に関する考慮事項を理解するためには、「[Azure Net
 
 1. **[ボリューム]** ページで、スループットを変更するボリュームを選択します。   
 
-2. **[スループットの変更]** をクリックします。 必要な**スループット (MiB/S)** を指定します。 **[OK]** をクリックします。 
+2. **[スループットの変更]** をクリックします。 必要な **スループット (MiB/S)** を指定します。 **[OK]** をクリックします。 
 
     ![QoS スループットを変更する](../media/azure-netapp-files/change-qos-throughput.png)
 

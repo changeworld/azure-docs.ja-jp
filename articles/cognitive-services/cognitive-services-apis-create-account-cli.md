@@ -7,36 +7,36 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 keywords: Cognitive Services, コグニティブ インテリジェンス, コグニティブ ソリューション, AI サービス
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.openlocfilehash: e276d96e8a81b435ec4d0c270cf818555d512ae0
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 95d74601ca912647eadd1bd4e1045108be6b2adb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368901"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102050071"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>クイックスタート: Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
-このクイックスタートでは、[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest) を使用した Azure Cognitive Services の基本操作について説明します。
+このクイックスタートでは、[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用した Azure Cognitive Services の基本操作について説明します。
 
 Azure Cognitive Services は、開発者が直接的な人工知能 (AI) またはデータ サイエンスのスキルや知識がなくてもコグニティブかつインテリジェントなアプリケーションを構築できる、REST API シリーズとクライアント ライブラリ SDK を含むクラウドベースのサービスです。 開発者は Azure Cognitive Services を使用して、見たり、聞いたり、話したり、理解したり、推論し始めたりできるコグニティブ ソリューションを使用したコグニティブ機能をそのアプリケーションに容易に追加することができます。
 
 Cognitive Services は、ご利用の Azure サブスクリプションに作成した Azure [リソース](../azure-resource-manager/management/manage-resources-portal.md)によって表されます。 リソースの作成後、自動的に生成されたキーとエンドポイントを使用して、自分のアプリケーションの認証を行います。
 
-このクイックスタートでは、[Azure コマンドライン インターフェイス (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、Azure Cognitive Services にサインアップし、単一サービスまたはマルチサービスを持つアカウントを作成する方法を学習します。 これらのサービスは Azure [リソース](../azure-resource-manager/management/manage-resources-portal.md)によって表され、Azure Cognitive Services APIs の中の 1 つ以上の API に接続できます。
+このクイックスタートでは、[Azure コマンドライン インターフェイス (CLI)](/cli/azure/install-azure-cli) を使用して、Azure Cognitive Services にサインアップし、単一サービスまたはマルチサービスを持つアカウントを作成する方法を学習します。 これらのサービスは Azure [リソース](../azure-resource-manager/management/manage-resources-portal.md)によって表され、Azure Cognitive Services APIs の中の 1 つ以上の API に接続できます。
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 * 有効な Azure サブスクリプション - 無料[アカウントを作成](https://azure.microsoft.com/free/cognitive-services)します。
-* [Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli?view=azure-cli-latest)
+* [Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli)
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Azure CLI をインストールしてサインインする
 
-[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。 CLI のローカル インストールにサインインするには、[az login](/cli/azure/reference-index#az-login) コマンドを実行します。
+[Azure CLI](/cli/azure/install-azure-cli) をインストールします。 CLI のローカル インストールにサインインするには、[az login](/cli/azure/reference-index#az-login) コマンドを実行します。
 
 ```azurecli-interactive
 az login
@@ -134,7 +134,7 @@ az group create \
 | Content Moderator | `ContentModerator` |
 | Personalizer      | `Personalizer`     |
 
-使用できる Cognitive Services の "種類" の一覧を確認するには、[az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-kinds) コマンドを使用します。
+使用できる Cognitive Services の "種類" の一覧を確認するには、[az cognitiveservices account list-kinds](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-kinds) コマンドを使用します。
 
 ```azurecli-interactive
 az cognitiveservices account list-kinds
@@ -142,7 +142,7 @@ az cognitiveservices account list-kinds
 
 ### <a name="add-a-new-resource-to-your-resource-group"></a>リソース グループに新しいリソースを追加する
 
-新しい Cognitive Services リソースを作成してサブスクライブするには、[az cognitiveservices account create](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-create) コマンドを使用します。 このコマンドで、以前に作成したリソース グループに新しい課金対象リソースが追加されます。 新しいリソースを作成するときには、使用するサービスの種類、その価格レベル (つまり sku)、および Azure の場所を把握している必要があります。
+新しい Cognitive Services リソースを作成してサブスクライブするには、[az cognitiveservices account create](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-create) コマンドを使用します。 このコマンドで、以前に作成したリソース グループに新しい課金対象リソースが追加されます。 新しいリソースを作成するときには、使用するサービスの種類、その価格レベル (つまり sku)、および Azure の場所を把握している必要があります。
 
 次のコマンドで、`anomaly-detector-resource` という名前の Anomaly Detector 用の F0 (無料) リソースを作成できます。
 
@@ -160,13 +160,13 @@ az cognitiveservices account create \
 
 ## <a name="get-the-keys-for-your-resource"></a>リソースのキーを取得する
 
-コマンドライン インターフェイス (CLI) のローカル インストールにログインするには、[az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) コマンドを使用します。
+コマンドライン インターフェイス (CLI) のローカル インストールにログインするには、[az login](/cli/azure/reference-index#az-login) コマンドを使用します。
 
 ```azurecli-interactive
 az login
 ```
 
-Cognitive Service リソースのキーを取得するには、[az cognitiveservices account keys list](/cli/azure/cognitiveservices/account/keys?view=azure-cli-latest#az-cognitiveservices-account-keys-list) コマンドを使用します。
+Cognitive Service リソースのキーを取得するには、[az cognitiveservices account keys list](/cli/azure/cognitiveservices/account/keys#az-cognitiveservices-account-keys-list) コマンドを使用します。
 
 ```azurecli-interactive
     az cognitiveservices account keys list \
@@ -185,7 +185,7 @@ Cognitive Service リソースのキーを取得するには、[az cognitiveserv
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>現在のリソースのクォータ使用量を取得する
 
-Cognitive Service リソースのキーを取得するには、[az cognitiveservices account list-usage](/cli/azure/cognitiveservices/account?view=azure-cli-latest#az-cognitiveservices-account-list-usage) コマンドを使用します。
+Cognitive Service リソースのキーを取得するには、[az cognitiveservices account list-usage](/cli/azure/cognitiveservices/account#az-cognitiveservices-account-list-usage) コマンドを使用します。
 
 ```azurecli-interactive
 az cognitiveservices account list-usage \

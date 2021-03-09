@@ -1,22 +1,18 @@
 ---
 title: Azure Databricks Delta Lake との間でデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Azure Databricks Delta Lake との間で双方向にデータをコピーする方法について説明します。
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: c7e8f96e7917173aaec308b8ae5218684a722483
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: bdf71276d59dec9a19e29ae7f49cb92a0512c05a
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507474"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364241"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Databricks Delta Lake をコピー先またはコピー元としてデータをコピーする
 
@@ -41,8 +37,8 @@ ms.locfileid: "97507474"
 
 この Azure Databricks Delta Lake コネクタを使用するには、Azure Databricks でクラスターを設定する必要があります。
 
-- Delta Lake にデータをコピーする場合、コピー アクティビティは Azure Databricks クラスターを呼び出して、Azure Storage からデータを読み取ります。これは元のソースまたはステージング領域で、Data Factory が組み込みのステージング コピーを介してソース データを最初に書き込みます。 詳細については、「[ソースとしての Delta Lake](#delta-lake-as-source)」を参照してください。
-- 同様に、Delta Lake からデータをコピーする場合、コピー アクティビティは Azure Databricks クラスターを呼び出して、Azure Storage にデータを書き込みます。これは元のシンクまたはステージング領域で、Data Factory が引き続き組み込みのステージング コピーを介して最終的なシンクにデータを書き込みます。 詳細については、「[シンクとしての Delta Lake](#delta-lake-as-sink)」を参照してください。
+- Delta Lake にデータをコピーする場合、コピー アクティビティは Azure Databricks クラスターを呼び出して、Azure Storage からデータを読み取ります。これは元のソースまたはステージング領域で、Data Factory が組み込みのステージング コピーを介してソース データを最初に書き込みます。 詳細については、「[シンクとしての Delta Lake](#delta-lake-as-sink)」を参照してください。
+- 同様に、Delta Lake からデータをコピーする場合、コピー アクティビティは Azure Databricks クラスターを呼び出して、Azure Storage にデータを書き込みます。これは元のシンクまたはステージング領域で、Data Factory が引き続き組み込みのステージング コピーを介して最終的なシンクにデータを書き込みます。 詳細については、「[ソースとしての Delta Lake](#delta-lake-as-source)」を参照してください。
 
 Databricks クラスターは、Azure Blob または Azure Data Lake Storage Gen2 アカウントにアクセスできる必要があります。これは、ソース/シンク/ステージングに使用されるストレージ コンテナー/ファイル システムと、Data Lake テーブルを書き込むコンテナー/ファイル システムの両方です。
 
@@ -151,8 +147,8 @@ Azure Databricks Delta Lake からデータをコピーするために、コピ�
 | type                         | コピー アクティビティのソースの type プロパティは **AzureDatabricksDeltaLakeSource** を設定する必要があります。 | はい      |
 | query          | データを読み取るための SQL クエリを指定します。 タイム トラベル制御については、次のパターンに従います。<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | いいえ       |
 | exportSettings | デルタ テーブルからデータを取得するために使用される詳細設定。 | いいえ       |
-| * **`exportSettings` の下:** _ |  |  |
-| type | エクスポート コマンドの種類。_*AzureDatabricksDeltaLakeExportCommand** に設定します。 | Yes |
+| ***`exportSettings` の下:*** |  |  |
+| type | エクスポート コマンドの種類。**AzureDatabricksDeltaLakeExportCommand** に設定します。 | Yes |
 | dateFormat | 日付型を日付形式の文字列に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd` が使用されます。 | いいえ |
 | timestampFormat | タイムスタンプ型をタイムスタンプ形式の文字列に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` が使用されます。 | いいえ |
 
@@ -265,8 +261,8 @@ Azure Databricks Delta Lake にデータをコピーするために、コピー 
 | type          | コピー アクティビティのシンクの type プロパティ。**AzureDatabricksDeltaLakeSink** に設定します。 | はい      |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Databricks Delta テーブルに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップしたり、TRUNCATE TABLE ステートメントまたは VACUUM ステートメントを追加したりできます。 | いいえ       |
 | importSettings | デルタ テーブルにデータを書き込むために使用される詳細設定。 | いいえ |
-| **_`importSettings` の下:_* _ |                                                              |  |
-| type | インポート コマンドの種類。_*AzureDatabricksDeltaLakeImportCommand** に設定します。 | Yes |
+| ***`importSettings` の下:*** |                                                              |  |
+| type | インポート コマンドの種類。**AzureDatabricksDeltaLakeImportCommand** に設定します。 | Yes |
 | dateFormat | 日付形式の文字列を日付型に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd` が使用されます。 | いいえ |
 | timestampFormat | タイムスタンプ形式の文字列をタイムスタンプ型に書式設定します。 カスタム日付形式は [datetime パターン](https://spark.apache.org/docs/latest/sql-ref-datetime-pattern.html)の形式に従います。 指定しない場合は、既定値の `yyyy-MM-dd'T'HH:mm:ss[.SSS][XXX]` が使用されます。 | いいえ |
 

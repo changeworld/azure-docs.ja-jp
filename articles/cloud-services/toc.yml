@@ -1,211 +1,212 @@
 - name: Cloud Services (クラシック) のドキュメント
   href: index.yml
-- name: 概要
   items:
-    - name: Cloud Services (クラシック) とは
-      href: cloud-services-choose-me.md
-    - name: クラウド サービスの構成ファイルとパッケージ化
-      href: cloud-services-model-and-package.md
-- name: 開始するには
-  items:
-    - name: .NET クラウド サービスの例
-      href: cloud-services-dotnet-get-started.md
-    - name: Python for Visual Studio クラウド サービスの例
-      href: cloud-services-python-ptvs.md
-- name: 概念
-  items:
-    - name: Security
+    - name: 概要
       items:
-        - name: セキュリティ ベースライン
-          href: security-baseline.md
-- name: 操作方法
-  items:
-    - name: プラン
+        - name: Cloud Services (クラシック) とは
+          href: cloud-services-choose-me.md
+        - name: クラウド サービスの構成ファイルとパッケージ化
+          href: cloud-services-model-and-package.md
+    - name: 開始するには
       items:
-        - name: 仮想マシン サイズ
-          href: cloud-services-sizes-specs.md
-        - name: 更新プログラム
-          href: cloud-services-update-azure-service.md
-    - name: 開発
+        - name: .NET クラウド サービスの例
+          href: cloud-services-dotnet-get-started.md
+        - name: Python for Visual Studio クラウド サービスの例
+          href: cloud-services-python-ptvs.md
+    - name: 概念
       items:
-        - name: PHP Web ロールと worker ロールの作成
-          href: ../cloud-services-php-create-web-role.md
-        - name: Node.js アプリケーションの作成とデプロイ
-          href: cloud-services-nodejs-develop-deploy-app.md
-        - name: Express を使用した Node.js Web アプリケーションの作成
-          href: cloud-services-nodejs-develop-deploy-express-app.md
-        - name: Storage と Visual Studio
+        - name: Security
           items:
-            - name: Blob Storage および接続されたサービス
-              href: ../visual-studio/vs-storage-cloud-services-getting-started-blobs.md
-            - name: Queue Storage および接続されたサービス
-              href: ../visual-studio/vs-storage-cloud-services-getting-started-queues.md
-            - name: Table Storage および接続されたサービス
-              href: ../visual-studio/vs-storage-cloud-services-getting-started-tables.md
-        - name: ロールのトラフィック規則を構成する
-          href: cloud-services-enable-communication-role-instances.md
-        - name: クラウド サービスのライフサイクル イベントを処理する
-          href: cloud-services-role-lifecycle-dotnet.md
-        - name: Socket.io (Node.js)
-          href: cloud-services-nodejs-chat-app-socketio.md
-        - name: Twilio を使用した通話 (.NET)
-          href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
-        - name: スタートアップ タスクの構成
-          items:
-            - name: スタートアップ タスクの作成
-              href: cloud-services-startup-tasks.md
-            - name: 一般的なスタートアップ タスク
-              href: cloud-services-startup-tasks-common.md
-            - name: タスクを使用してクラウド サービス ロールで .NET タスクをインストールする
-              href: cloud-services-dotnet-install-dotnet.md
-        - name: リモート デスクトップの構成
-          items:
-            - name: ポータル
-              href: cloud-services-role-enable-remote-desktop-new-portal.md
-            - name: PowerShell
-              href: cloud-services-role-enable-remote-desktop-powershell.md
-            - name: "Visual\_Studio"
-              href: cloud-services-role-enable-remote-desktop-visual-studio.md
-    - name: 配置
+            - name: セキュリティ ベースライン
+              href: security-baseline.md
+    - name: 操作方法
       items:
-        - name: ポータルでのクラウド サービスの作成とデプロイ
-          href: cloud-services-how-to-create-deploy-portal.md
-        - name: PowerShell での空のクラウド サービス コンテナーの作成
-          href: cloud-services-powershell-create-cloud-container.md
-        - name: カスタム ドメイン名の構成
-          href: cloud-services-custom-domain-name-portal.md
-        - name: カスタム ドメイン コントローラーへの接続
-          href: cloud-services-connect-to-custom-domain.md
-    - name: サービスの管理
-      items:
-        - name: 一般的な管理タスク
-          href: cloud-services-how-to-manage-portal.md
-        - name: クラウド サービスの構成
-          href: cloud-services-how-to-configure-portal.md
-        - name: Azure Automation を使用してクラウド サービスを管理する
-          href: automation-manage-cloud-services.md
-        - name: 自動スケールの構成
-          href: cloud-services-how-to-scale-portal.md
-        - name: Python を使用して Azure リソースを管理する
-          href: cloud-services-python-how-to-use-service-management.md
-        - name: 予測実行の軽減
-          href: mitigate-se.md
-        - name: ゲスト OS の修正プログラム
-          href: cloud-services-guestos-msrc-releases.md
-        - name: ゲスト OS の提供終了
+        - name: プラン
           items:
-            - name: 提供終了ポリシー
-              href: cloud-services-guestos-retirement-policy.md
-            - name: ファミリ 1 の提供終了に関する通知
-              href: cloud-services-guestos-family1-retirement.md
-        - name: ゲスト OS のリリース ニュース
-          href: cloud-services-guestos-update-matrix.md
-        - name: Cloud Services ロール構成の XPath チート シート
-          href: cloud-services-role-config-xpath.md
-    - name: 証明書の管理
-      items:
-        - name: Cloud Services と管理証明書
-          href: cloud-services-certs-create.md
-        - name: SSL の構成
-          href: cloud-services-configure-ssl-certificate-portal.md
-    - name: モニター
-      items:
-        - name: クラウド サービスの監視
-          href: cloud-services-how-to-monitor.md
-        - name: パフォーマンス カウンターの使用
-          href: diagnostics-performance-counters.md
-        - name: パフォーマンスのテスト
-          href: /visualstudio/azure/vs-azure-tools-performance-profiling-cloud-services?toc=/azure/cloud-services/toc.json
+            - name: 仮想マシン サイズ
+              href: cloud-services-sizes-specs.md
+            - name: 更新プログラム
+              href: cloud-services-update-azure-service.md
+        - name: 開発
           items:
-            - name: Visual Studio プロファイラーを使用したテスト
-              href: cloud-services-performance-testing-visual-studio-profiler.md
-        - name: 診断を有効化する
+            - name: PHP Web ロールと worker ロールの作成
+              href: ../cloud-services-php-create-web-role.md
+            - name: Node.js アプリケーションの作成とデプロイ
+              href: cloud-services-nodejs-develop-deploy-app.md
+            - name: Express を使用した Node.js Web アプリケーションの作成
+              href: cloud-services-nodejs-develop-deploy-express-app.md
+            - name: Storage と Visual Studio
+              items:
+                - name: Blob Storage および接続されたサービス
+                  href: ../visual-studio/vs-storage-cloud-services-getting-started-blobs.md
+                - name: Queue Storage および接続されたサービス
+                  href: ../visual-studio/vs-storage-cloud-services-getting-started-queues.md
+                - name: Table Storage および接続されたサービス
+                  href: ../visual-studio/vs-storage-cloud-services-getting-started-tables.md
+            - name: ロールのトラフィック規則を構成する
+              href: cloud-services-enable-communication-role-instances.md
+            - name: クラウド サービスのライフサイクル イベントを処理する
+              href: cloud-services-role-lifecycle-dotnet.md
+            - name: Socket.io (Node.js)
+              href: cloud-services-nodejs-chat-app-socketio.md
+            - name: Twilio を使用した通話 (.NET)
+              href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
+            - name: スタートアップ タスクの構成
+              items:
+                - name: スタートアップ タスクの作成
+                  href: cloud-services-startup-tasks.md
+                - name: 一般的なスタートアップ タスク
+                  href: cloud-services-startup-tasks-common.md
+                - name: タスクを使用してクラウド サービス ロールで .NET タスクをインストールする
+                  href: cloud-services-dotnet-install-dotnet.md
+            - name: リモート デスクトップの構成
+              items:
+                - name: ポータル
+                  href: cloud-services-role-enable-remote-desktop-new-portal.md
+                - name: PowerShell
+                  href: cloud-services-role-enable-remote-desktop-powershell.md
+                - name: "Visual\_Studio"
+                  href: cloud-services-role-enable-remote-desktop-visual-studio.md
+        - name: 配置
           items:
-            - name: Azure PowerShell
-              href: cloud-services-diagnostics-powershell.md
-            - name: .NET
-              href: cloud-services-dotnet-diagnostics.md
-            - name: "Visual\_Studio"
-              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
-        - name: Azure Storage への診断データの保存と表示
-          href: diagnostics-extension-to-storage.md
-        - name: 診断を使用したクラウド サービスのトレース
-          href: cloud-services-dotnet-diagnostics-trace-flow.md
-    - name: トラブルシューティング
-      items:
-        - name: デバッグ
+            - name: ポータルでのクラウド サービスの作成とデプロイ
+              href: cloud-services-how-to-create-deploy-portal.md
+            - name: PowerShell での空のクラウド サービス コンテナーの作成
+              href: cloud-services-powershell-create-cloud-container.md
+            - name: カスタム ドメイン名の構成
+              href: cloud-services-custom-domain-name-portal.md
+            - name: カスタム ドメイン コントローラーへの接続
+              href: cloud-services-connect-to-custom-domain.md
+        - name: サービスの管理
           items:
-            - name: クラウド サービスのオプション
-              href: /visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview?toc=/azure/cloud-services/toc.json
-            - name: Visual Studio を使用したローカルのクラウド サービス
-              href: /visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines?toc=/azure/cloud-services/toc.json
-            - name: Visual Studio を使用した発行済みのクラウド サービス
-              href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
-        - name: クラウド サービスの割り当てエラー
-          href: cloud-services-allocation-failures.md
-        - name: クラウド サービス ロールがリサイクルされる一般的な原因
-          href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
-        - name: アプリケーションで TLS 1.2 がサポートされていない
-          href: applications-dont-support-tls-1-2.md
-        - name: ロールに対する既定の一時フォルダーのサイズが小さすぎる
-          href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
-        - name: 一般的なデプロイの問題
-          href: cloud-services-troubleshoot-deployment-problems.md
-        - name: ロールが起動しない
-          href: cloud-services-troubleshoot-roles-that-fail-start.md
-        - name: 復旧ガイダンス
-          href: cloud-services-disaster-recovery-guidance.md
-        - name: クラシック VM アーキテクチャのワークフロー
-          href: cloud-services-workflow-process.md
-        - name: Cloud Services のリソース正常性のサポート
-          href: resource-health-for-cloud-services.md
-        - name: Cloud Services に関する FAQ
+            - name: 一般的な管理タスク
+              href: cloud-services-how-to-manage-portal.md
+            - name: クラウド サービスの構成
+              href: cloud-services-how-to-configure-portal.md
+            - name: Azure Automation を使用してクラウド サービスを管理する
+              href: automation-manage-cloud-services.md
+            - name: 自動スケールの構成
+              href: cloud-services-how-to-scale-portal.md
+            - name: Python を使用して Azure リソースを管理する
+              href: cloud-services-python-how-to-use-service-management.md
+            - name: 予測実行の軽減
+              href: mitigate-se.md
+            - name: ゲスト OS の修正プログラム
+              href: cloud-services-guestos-msrc-releases.md
+            - name: ゲスト OS の提供終了
+              items:
+                - name: 提供終了ポリシー
+                  href: cloud-services-guestos-retirement-policy.md
+                - name: ファミリ 1 の提供終了に関する通知
+                  href: cloud-services-guestos-family1-retirement.md
+            - name: ゲスト OS のリリース ニュース
+              href: cloud-services-guestos-update-matrix.md
+            - name: Cloud Services ロール構成の XPath チート シート
+              href: cloud-services-role-config-xpath.md
+        - name: 証明書の管理
           items:
-            - name: アプリケーションとサービスの可用性に関する FAQ
-              href: cloud-services-application-and-service-availability-faq.md
-            - name: 構成と管理に関する FAQ
-              href: cloud-services-configuration-and-management-faq.md
-            - name: 接続とネットワークに関する FAQ
-              href: cloud-services-connectivity-and-networking-faq.md
-            - name: デプロイに関する FAQ
-              href: cloud-services-deployment-faq.md
-- name: リファレンス
-  items:
-    - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
-    - name: .csdef XML スキーマ
-      href: schema-csdef-file.md
+            - name: Cloud Services と管理証明書
+              href: cloud-services-certs-create.md
+            - name: SSL の構成
+              href: cloud-services-configure-ssl-certificate-portal.md
+        - name: モニター
+          items:
+            - name: クラウド サービスの監視
+              href: cloud-services-how-to-monitor.md
+            - name: パフォーマンス カウンターの使用
+              href: diagnostics-performance-counters.md
+            - name: パフォーマンスのテスト
+              href: /visualstudio/azure/vs-azure-tools-performance-profiling-cloud-services?toc=/azure/cloud-services/toc.json
+              items:
+                - name: Visual Studio プロファイラーを使用したテスト
+                  href: cloud-services-performance-testing-visual-studio-profiler.md
+            - name: 診断を有効化する
+              items:
+                - name: Azure PowerShell
+                  href: cloud-services-diagnostics-powershell.md
+                - name: .NET
+                  href: cloud-services-dotnet-diagnostics.md
+                - name: "Visual\_Studio"
+                  href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+            - name: Azure Storage への診断データの保存と表示
+              href: diagnostics-extension-to-storage.md
+            - name: 診断を使用したクラウド サービスのトレース
+              href: cloud-services-dotnet-diagnostics-trace-flow.md
+        - name: トラブルシューティング
+          items:
+            - name: デバッグ
+              items:
+                - name: クラウド サービスのオプション
+                  href: /visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview?toc=/azure/cloud-services/toc.json
+                - name: Visual Studio を使用したローカルのクラウド サービス
+                  href: /visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines?toc=/azure/cloud-services/toc.json
+                - name: Visual Studio を使用した発行済みのクラウド サービス
+                  href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
+            - name: クラウド サービスの割り当てエラー
+              href: cloud-services-allocation-failures.md
+            - name: クラウド サービス ロールがリサイクルされる一般的な原因
+              href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+            - name: アプリケーションで TLS 1.2 がサポートされていない
+              href: applications-dont-support-tls-1-2.md
+            - name: ロールに対する既定の一時フォルダーのサイズが小さすぎる
+              href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
+            - name: 一般的なデプロイの問題
+              href: cloud-services-troubleshoot-deployment-problems.md
+            - name: ロールが起動しない
+              href: cloud-services-troubleshoot-roles-that-fail-start.md
+            - name: 復旧ガイダンス
+              href: cloud-services-disaster-recovery-guidance.md
+            - name: クラシック VM アーキテクチャのワークフロー
+              href: cloud-services-workflow-process.md
+            - name: Cloud Services のリソース正常性のサポート
+              href: resource-health-for-cloud-services.md
+            - name: Cloud Services に関する FAQ
+              items:
+                - name: アプリケーションとサービスの可用性に関する FAQ
+                  href: cloud-services-application-and-service-availability-faq.md
+                - name: 構成と管理に関する FAQ
+                  href: cloud-services-configuration-and-management-faq.md
+                - name: 接続とネットワークに関する FAQ
+                  href: cloud-services-connectivity-and-networking-faq.md
+                - name: デプロイに関する FAQ
+                  href: cloud-services-deployment-faq.md
+    - name: リファレンス
       items:
-        - name: LoadBalancerProbe スキーマ
-          href: schema-csdef-loadbalancerprobe.md
-        - name: WebRole スキーマ
-          href: schema-csdef-webrole.md
-        - name: WorkerRole スキーマ
-          href: schema-csdef-workerrole.md
-        - name: NetworkTrafficRules スキーマ
-          href: schema-csdef-networktrafficrules.md
-    - name: .cscfg XML スキーマ
-      href: schema-cscfg-file.md
+        - name: コード サンプル
+          href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
+        - name: .csdef XML スキーマ
+          href: schema-csdef-file.md
+          items:
+            - name: LoadBalancerProbe スキーマ
+              href: schema-csdef-loadbalancerprobe.md
+            - name: WebRole スキーマ
+              href: schema-csdef-webrole.md
+            - name: WorkerRole スキーマ
+              href: schema-csdef-workerrole.md
+            - name: NetworkTrafficRules スキーマ
+              href: schema-csdef-networktrafficrules.md
+        - name: .cscfg XML スキーマ
+          href: schema-cscfg-file.md
+          items:
+            - name: Role スキーマ
+              href: schema-cscfg-role.md
+            - name: NetworkConfiguration スキーマ
+              href: schema-cscfg-networkconfiguration.md
+        - name: REST
+          href: /rest/api/compute/cloudservices/
+    - name: リソース
       items:
-        - name: Role スキーマ
-          href: schema-cscfg-role.md
-        - name: NetworkConfiguration スキーマ
-          href: schema-cscfg-networkconfiguration.md
-    - name: REST
-      href: /rest/api/compute/cloudservices/
-- name: リソース
-  items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=compute'
-    - name: ラーニング パス
-      href: /learn/paths/azure-fundamentals/
-    - name: Microsoft Q&A 質問ページ
-      href: /answers/topics/azure-cloud-services.html
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
-    - name: 料金計算ツール
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'
+        - name: Azure のロードマップ
+          href: 'https://azure.microsoft.com/roadmap/?category=compute'
+        - name: ラーニング パス
+          href: /learn/paths/azure-fundamentals/
+        - name: Microsoft Q&A 質問ページ
+          href: /answers/topics/azure-cloud-services.html
+        - name: 価格
+          href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+        - name: 料金計算ツール
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: サービスの更新情報
+          href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+        - name: ビデオ
+          href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

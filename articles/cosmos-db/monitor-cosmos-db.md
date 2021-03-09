@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: f18d1850cb6ccf28ff70f826e3d4bfe74ae05c40
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532059"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178730"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB を監視する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -44,7 +44,7 @@ Azure Cosmos DB を使用すると、クライアント側で、要求の料金�
 
 Azure Cosmos DB では、[Azure Monitor](../azure-monitor/overview.md) を使用して監視データを作成します。Azure Monitor は Azure のフルスタックの監視サービスであり、他のクラウドやオンプレミスのリソースに加えて、Azure リソースを監視するための完全な機能セットが提供されます。
 
-Azure サービスの監視について理解が十分でない場合は、まず「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」の記事にある次の概念の説明をお読みください。
+Azure サービスの監視について理解が十分でない場合は、まず「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」の記事にある次の概念の説明をお読みください。
 
 * Azure Monitor とは
 * 監視に関連するコスト
@@ -56,14 +56,14 @@ Azure サービスの監視について理解が十分でない場合は、ま�
 
 ## <a name="azure-monitor-for-azure-cosmos-db"></a>Azure Monitor for Azure Cosmos DB
 
-Azure Monitor for Azure Cosmos DB は、[Azure Monitor のブック機能](../azure-monitor/platform/workbooks-overview.md)に基づいており、以下のセクションで説明している、Azure Cosmos DB のために収集されるのと同じ監視データを使用します。 Azure Monitor は、すべての Azure Cosmos DB リソースの全体的なパフォーマンス、障害、容量、および運用の正常性を、一元的な対話型エクスペリエンスで表示するために使用します。また、詳細な分析とアラート生成のために、Azure Monitor のその他の機能を利用します。 詳細については、[Azure Monitor for Azure Cosmos DB の詳細](../azure-monitor/insights/cosmosdb-insights-overview.md)に関するページを参照してください。
+Azure Monitor for Azure Cosmos DB は、[Azure Monitor のブック機能](../azure-monitor/visualize/workbooks-overview.md)に基づいており、以下のセクションで説明している、Azure Cosmos DB のために収集されるのと同じ監視データを使用します。 Azure Monitor は、すべての Azure Cosmos DB リソースの全体的なパフォーマンス、障害、容量、および運用の正常性を、一元的な対話型エクスペリエンスで表示するために使用します。また、詳細な分析とアラート生成のために、Azure Monitor のその他の機能を利用します。 詳細については、[Azure Monitor for Azure Cosmos DB の詳細](../azure-monitor/insights/cosmosdb-insights-overview.md)に関するページを参照してください。
 
 > [!NOTE]
 > コンテナーを作成するときは、同じ名前で大文字と小文字が異なる 2 つのコンテナーを作成しないようにしてください。 これは、Azure プラットフォームの一部で大文字と小文字が区別されないため、このような名前のコンテナーでテレメトリとアクションの混同や衝突が発生する可能性があるためです。
 
 ## <a name="monitoring-data"></a><a id="monitoring-from-azure-cosmos-db"></a> データの監視 
 
-Azure Cosmos DB は、他の Azure リソースと同じ種類の監視データを収集します。これについては、[Azure リソースの監視データ](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)に関する記事を参照してください。 Azure Cosmos DB によって作成されるログおよびメトリックの詳細なリファレンスについては、[Azure Cosmos DB 監視データ リファレンス](monitor-cosmos-db-reference.md)を参照してください。
+Azure Cosmos DB は、他の Azure リソースと同じ種類の監視データを収集します。これについては、[Azure リソースの監視データ](../azure-monitor/essentials/monitor-azure-resource.md#monitoring-data)に関する記事を参照してください。 Azure Cosmos DB によって作成されるログおよびメトリックの詳細なリファレンスについては、[Azure Cosmos DB 監視データ リファレンス](monitor-cosmos-db-reference.md)を参照してください。
 
 Azure portal で、各 Azure Cosmos データベースの **[概要]** ページでは、データベースの要求や時間ごとの課金使用量など、データベースの使用状況の要約を表示します。 これは有用な情報ですが、見ることのできる監視データはごくわずかです。 このデータの一部は自動的に収集され、データベースを作成するとすぐに分析に使用できるようになりますが、一部の構成では追加のデータ収集を有効にすることができます。
 
@@ -81,7 +81,7 @@ Azure portal といくつかの診断クエリ例を使用して診断設定を�
 
 ## <a name="analyzing-metrics"></a><a id="analyze-metric-data"></a> メトリックの分析
 
-Azure Cosmos DB は、メトリックを操作するためのカスタム エクスペリエンスを提供します。 **Azure Monitor** のメニューから **[Metrics]\(メトリック\)** を開き、メトリックス エクスプローラーを使用して、Azure Cosmos DB のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)」を参照してください。 また、Azure Cosmos DB リソースの[サーバー側の待機時間](monitor-server-side-latency.md)、[要求ユニットの使用状況](monitor-request-unit-usage.md)、[正規化された要求ユニットの使用状況](monitor-normalized-request-units.md)を監視する方法についても確認できます。
+Azure Cosmos DB は、メトリックを操作するためのカスタム エクスペリエンスを提供します。 **Azure Monitor** のメニューから **[Metrics]\(メトリック\)** を開き、メトリックス エクスプローラーを使用して、Azure Cosmos DB のメトリックを、他の Azure サービスからのメトリックと一緒に分析することができます。 このツールの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../azure-monitor/essentials/metrics-getting-started.md)」を参照してください。 また、Azure Cosmos DB リソースの[サーバー側の待機時間](monitor-server-side-latency.md)、[要求ユニットの使用状況](monitor-request-unit-usage.md)、[正規化された要求ユニットの使用状況](monitor-normalized-request-units.md)を監視する方法についても確認できます。
 
 Azure Cosmos DB 用に収集されるプラットフォーム メトリックの一覧については、[「Azure Cosmos DB 監視データのリファレンス」記事の「メトリック」](monitor-cosmos-db-reference.md#metrics)を参照してください。
 
@@ -93,7 +93,7 @@ Azure Cosmos DB のすべてのメトリックは、**Cosmos DB standard metrics
 * リージョン
 * StatusCode
 
-参考のために、[Azure Monitor でサポートされているすべてのリソース メトリック](../azure-monitor/platform/metrics-supported.md)の一覧を確認できます。
+参考のために、[Azure Monitor でサポートされているすべてのリソース メトリック](../azure-monitor/essentials/metrics-supported.md)の一覧を確認できます。
 
 ### <a name="view-operation-level-metrics-for-azure-cosmos-db"></a>Azure Cosmos DB の操作レベルのメトリックを表示する
 
@@ -125,11 +125,11 @@ Azure Cosmos DB のすべてのメトリックは、**Cosmos DB standard metrics
 
 ## <a name="analyzing-logs"></a><a id="analyze-log-data"></a> ログの分析
 
-Azure Monitor のログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。
+Azure Monitor ログのデータはテーブルに格納され、各テーブルには独自の一意のプロパティ セットがあります。
 
-Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema)に関する記事をご覧ください。 Azure Cosmos DB 用に収集されるリソース ログの種類の一覧については、「[Azure Cosmos DB 監視データのリファレンス](monitor-cosmos-db-reference.md#resource-logs)」を参照してください。
+Azure Monitor 内のすべてのリソース ログには、同じフィールドの後にサービス固有のフィールドがあります。 共通のスキーマの概要については、[Azure Monitor リソース ログのスキーマ](../azure-monitor/essentials/resource-logs-schema.md#top-level-common-schema)に関する記事をご覧ください。 Azure Cosmos DB 用に収集されるリソース ログの種類の一覧については、「[Azure Cosmos DB 監視データのリファレンス](monitor-cosmos-db-reference.md#resource-logs)」を参照してください。
 
-[アクティビティ ログ](/azure/azure-monitor/platform/activity-log)は、サブスクリプション レベルのイベントの分析情報を提供するプラットフォーム ログイン Azure です。 個別に表示できるほか、Azure Monitor ログにルーティングして、Log Analytics を使用してより複雑なクエリを実行することもできます。  
+[アクティビティ ログ](../azure-monitor/essentials/activity-log.md)は、サブスクリプション レベルのイベントの分析情報を提供するプラットフォーム ログイン Azure です。 個別に表示できるほか、Azure Monitor ログにルーティングして、Log Analytics を使用してより複雑なクエリを実行することもできます。  
 
 Azure Cosmos DB は、次のテーブルにデータを格納します。
 
@@ -141,9 +141,9 @@ Azure Cosmos DB は、次のテーブルにデータを格納します。
 ### <a name="sample-kusto-queries"></a>サンプル Kusto クエリ
 
 > [!IMPORTANT]
-> Azure Cosmos DB のメニューから **[ログ]** を選択すると、クエリのスコープが現在の Azure Cosmos DB アカウントに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソースからのデータのみが含まれます。 他のアカウントのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **[Azure Monitor]** メニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../azure-monitor/log-query/scope.md)」を参照してください。
+> Azure Cosmos DB のメニューから **[ログ]** を選択すると、クエリのスコープが現在の Azure Cosmos DB アカウントに設定された状態で Log Analytics が開きます。 つまり、ログ クエリには、そのリソースからのデータのみが含まれます。 他のアカウントのデータや他の Azure サービスのデータを含むクエリを実行する場合は、 **[Azure Monitor]** メニューから **[ログ]** を選択します。 詳細については、「[Azure Monitor Log Analytics のログ クエリのスコープと時間範囲](../azure-monitor/logs/scope.md)」を参照してください。
 
-**[ログ検索]** 検索バーに入力して Azure Cosmos リソースの監視に利用できるクエリを紹介します。 これらのクエリは[新しい言語](../azure-monitor/log-query/log-query-overview.md)で使用できます。
+**[ログ検索]** 検索バーに入力して Azure Cosmos リソースの監視に利用できるクエリを紹介します。 これらのクエリは[新しい言語](../azure-monitor/logs/log-query-overview.md)で使用できます。
 
 * 指定した期間の Azure Cosmos DB のすべての診断ログをクエリするには:
 
@@ -172,7 +172,7 @@ Azure Cosmos DB は、次のテーブルにデータを格納します。
 
 ## <a name="alerts"></a>警告
 
-Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](../azure-monitor/platform/alerts-metric-overview.md)、[ログ](../azure-monitor/platform/alerts-unified-log.md)、[アクティビティ ログ](../azure-monitor/platform/activity-log-alerts.md)に対して設定できます。 アラートの種類に応じて、さまざまな利点と欠点があります。
+Azure Monitor のアラートは、監視データで重要な状態が見つかると事前に通知します。 これにより、ユーザーが気付く前に、管理者が問題を識別して対処できます。 アラートは[メトリック](../azure-monitor/alerts/alerts-metric-overview.md)、[ログ](../azure-monitor/alerts/alerts-unified-log.md)、[アクティビティ ログ](../azure-monitor/alerts/activity-log-alerts.md)に対して設定できます。 アラートの種類に応じて、さまざまな利点と欠点があります。
 
 例として、リソースに関するアラート ルールをいくつか次の表に示します。 アラート ルールの詳細な一覧は、Azure portal にあります。 詳細については、[アラートの構成方法](create-alerts.md)に関する記事を参照してください。  
 
@@ -202,9 +202,9 @@ https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{Reso
 https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/providers/microsoft.insights/metrics?timespan={StartTime}/{EndTime}&interval={AggregationInterval}&metricnames={MetricName}&aggregation={AggregationType}&`$filter={Filter}&api-version=2018-01-01
 ```
 
-詳細については、[Azure 監視 REST API](../azure-monitor/platform/rest-api-walkthrough.md) に関する記事をご覧ください。
+詳細については、[Azure 監視 REST API](../azure-monitor/essentials/rest-api-walkthrough.md) に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Cosmos DB によって作成されるログおよびメトリックのリファレンスについては、[Azure Cosmos DB 監視データ リファレンス](monitor-cosmos-db-reference.md)を参照してください。
-* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+* Azure リソースの監視の詳細については、「[Azure Monitor を使用した Azure リソースの監視](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。

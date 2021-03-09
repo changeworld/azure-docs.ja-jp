@@ -1,22 +1,22 @@
 ---
-title: カスタム モデル
+title: DTDL モデル
 titleSuffix: Azure Digital Twins
-description: Azure Digital Twins でユーザー定義モデルを使用して環境内のエンティティを記述する方法について説明します。
+description: Azure Digital Twins でカスタム モデルを使用して環境内のエンティティを記述する方法について説明します。
 author: baanders
 ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9abf389eb7f8862440f860c53a0dbd8b10315c67
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131391"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558149"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
-Azure Digital Twins の重要な特性は、独自のボキャブラリを定義し、ビジネスの自己定義用語でツイン グラフを構築できることです。 この機能は、ユーザー定義 **モデル** を通じて提供されます。 モデルは、世界を説明するための名詞と考えることができます。 
+Azure Digital Twins の重要な特性は、独自のボキャブラリを定義し、ビジネスの自己定義用語でツイン グラフを構築できることです。 この機能は、ユーザー提供の **モデル** を通じて提供されます。 モデルは、世界を説明するための名詞と考えることができます。 
 
 モデルは、オブジェクト指向プログラミング言語の **クラス** に似ており、実際の作業環境における 1 つの特定の概念のデータ シェイプを定義します。 モデルには名前 (*Room* や *TemperatureSensor* など) があり、プロパティ、テレメトリまたはイベント、環境内でこの型のエンティティに何ができるかを説明するコマンドなどの要素が含まれています。 後で、これらのモデルを使用して、この型の説明と一致する特定のエンティティを表す [**デジタル ツイン**](concepts-twins-graph.md)を作成します。
 
@@ -136,23 +136,31 @@ DTDL によると、*Property* および *Telemetry* 属性のスキーマは、
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
-## <a name="integrating-with-industry-standard-models"></a>業界標準モデルとの統合
+## <a name="tools-for-models"></a>モデル用のツール 
 
-業界標準に基づくモデルや、RDF または OWL などの標準的なオントロジー表現を使用するモデルを使用すると、Azure Digital Twins モデルを設計する場合に充実した出発点を利用できます。 業界モデルの利用は、標準化と情報共有にも役立ちます。
+モデルとオントロジをさらに簡単に処理できるように、いくつかのサンプルが用意されています。 これらは、このリポジトリにあります。[Digital Twins Definition Language (DTDL) のツール](https://github.com/Azure/opendigitaltwins-tools).
 
-Azure Digital Twins で使用するモデルは、JSON-LD ベースの [**Digital Twins Definition Language (DTDL)**](concepts-models.md) で表現する必要があります。 そのため、業界標準モデルを使用するには、まずそれを DTDL に変換して、Azure Digital Twins で使用できるようにする必要があります。 DTDL モデルは、その後、Azure Digital Twins 内で、モデルの信頼できるソースとして使用されます。
+このセクションでは、サンプルの現在のセットについて詳しく説明します。
 
-業界標準モデルを DTDL と統合するには、状況によりますが、次の主要な 2 つのパスがあります。
-* モデルをまだ作成していない場合は、業界固有の言語を含む **既存のスターター DTDL オントロジー** に基づいて設計できます。
-* 業界標準に基づく既存のモデルがある場合は、Azure Digital Twins で使用するために、**それらを DTDL に変換** する必要があります。
+### <a name="model-uploader"></a>モデルのアップローダー 
 
-これら両方のプロセスの詳細については、["*方法: 業界標準モデルの統合*"](how-to-integrate-models.md) に関する記事を参照してください。
+_**Azure Digital Twins にモデルをアップロードするには**_
+
+モデルの作成、拡張、または選択が完了したら、それらを Azure Digital Twins インスタンスにアップロードして、ソリューションで使用できるようにすることができます。 これを行うには、[Azure Digital Twins API](how-to-use-apis-sdks.md) を使用します。詳細については、[*方法: DTDL モデルの管理*](how-to-manage-model.md#upload-models)に関する記事を参照してください。
+
+ただし、アップロードするモデルが多数ある場合 (またはモデルに多数の相互依存性があり、それにより個々のアップロードの順序付けが複雑になる場合)、このサンプルを使用して多数のモデルを一度にアップロードできます。[**Azure Digital Twins のモデル アップローダー**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader). サンプルで示されている手順に従って、このプロジェクトを構成し、独自のインスタンスにモデルをアップロードするために使用します。
+
+### <a name="model-visualizer"></a>モデルのビジュアライザー 
+
+_**モデルを視覚化するには**_
+
+Azure Digital Twins インスタンスにモデルをアップロードした後、[**ADT Model Visualizer**](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/AdtModelVisualizer) を使用して、Azure Digital Twins インスタンスでモデルを表示できます。これには、継承やモデルのリレーションシップも含まれます。 このサンプルは、現在ドラフト状態です。 弊社は、デジタル ツインの開発コミュニティに対して、このサンプルを拡張して寄与するように奨励しています。 
 
 ## <a name="next-steps"></a>次のステップ
 
-DigitalTwinModels API を使用してモデルを管理する方法を参照してください。
-* [*方法: カスタム モデルを管理する*](how-to-manage-model.md)"
+* 業界標準のオントロジに基づいてモデルを作成する方法について学習してください。"[*概念: オントロジとは*](concepts-ontologies.md)" に関する記事
 
-または、モデルに基づいてデジタル ツインがどのように作成されるかについて学習してください。
-* "[*概念: デジタル ツインとツイン グラフ*](concepts-twins-graph.md)"
+* API 操作によるモデルの管理について詳しく学習してください。[*方法: DTDL モデルの管理*](how-to-manage-model.md)に関する記事
+
+* モデルを使用してデジタル ツインを作成する方法について学習してください。"[*概念: デジタル ツインとツイン グラフ*](concepts-twins-graph.md)"
 

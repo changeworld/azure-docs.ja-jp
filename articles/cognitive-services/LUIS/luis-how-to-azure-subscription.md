@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 168833ea0a451913f4ed019cba832a16207e0d9c
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348069"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988166"
 ---
 # <a name="create-luis-resources"></a>LUIS リソースの作成
 
@@ -173,7 +173,7 @@ LUIS 予測ランタイム エンドポイント キーを表示できるユー�
 
 ### <a name="create-resources-in-the-azure-cli"></a>Azure CLI でリソースを作成する
 
-[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) を使用し、各リソースを個別に作成します。
+[Azure CLI](/cli/azure/install-azure-cli) を使用し、各リソースを個別に作成します。
 
 リソース `kind`:
 
@@ -236,6 +236,10 @@ CI/CD パイプラインのような自動化されたプロセスの場合、LU
 
 1. [こちらの Web サイト](https://resources.azure.com/api/token?plaintext=true)から、Azure Resource Manager トークンを取得します。 このトークンには有効期限があるため、すぐに使用してください。 この要求からは、Azure Resource Manager トークンが返されます。
 
+    ```azurecli
+    az account get-access-token --resource=https://management.core.windows.net/ --query accessToken --output tsv
+    ```
+    
     ![Azure Resource Manager トークンを要求するための Web サイトを示すスクリーンショット。](./media/luis-manage-keys/get-arm-token.png)
 
 1. そのトークンを使用して、サブスクリプション間の LUIS ランタイム リソースを要求します。 ユーザー アカウントでアクセスできる [LUIS ユーザー アカウント取得 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c) を使用します。

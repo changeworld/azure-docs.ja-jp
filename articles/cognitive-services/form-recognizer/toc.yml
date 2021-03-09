@@ -75,10 +75,6 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/form-recognizer/context/context
     - name: 料金と制限
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/form-recognizer/'
-    - name: UserVoice
-      href: 'https://go.microsoft.com/fwlink/?linkid=2090535'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/form-recognizer'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: リージョン別の提供状況
@@ -88,4 +84,4 @@
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 暗号化
-      href: form-recognizer-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md

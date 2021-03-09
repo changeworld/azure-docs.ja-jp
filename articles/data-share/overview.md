@@ -5,13 +5,14 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: overview
-ms.date: 10/30/2020
-ms.openlocfilehash: b9fb5d6537d2c8dffef397c56128dd4891c939b7
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.date: 02/23/2021
+ms.custom: references_regions
+ms.openlocfilehash: 3a7c73e4a5ba00155ab905f28edbcb0eb42c0539
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578129"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101724865"
 ---
 # <a name="what-is-azure-data-share"></a>Azure Data Share とは
 
@@ -47,7 +48,7 @@ Azure Data Share は、現在、スナップショットベースの共有とイ
 
 データ コンシューマーは、データ共有を受け入れると、自分で選択したデータ ストアでデータを受け取ることができます。 たとえば、データ プロバイダーが Azure Blob Storage を使ってデータを共有している場合、データ コンシューマーは Azure Data Lake Store でこのデータを受け取ることができます。 同様に、データ プロバイダーが Azure Synapse Analytics からのデータを共有する場合、データ コンシューマーは、データを Azure Data Lake Store、Azure SQL Database、または Azure Synapse Analytics に受信するかどうかを選択できます。 SQL ベースのソースから共有する場合、データ コンシューマーは、parquet または csv でデータを受信するかどうかを選択することもできます。 
 
-インプレース共有では、データ プロバイダーがデータをコピーすることなく、データが置かれている場所でデータを共有できます。 招待フローを通じて共有関係が確立されると、データ プロバイダーのソース データ ストアとデータのコンシューマーのターゲット データ ストアとの間でシンボリック リンクが作成されます。 データ コンシューマーは、その独自のデータ ストアを使用してリアルタイムにデータを読み取り、照会することができます。 ソース データ ストアに対する変更は、データ コンシューマーに対して即座に提供されます。 インプレース共有は現在、Azure Data Explorer 向けのプレビューの段階です。
+インプレース共有では、データ プロバイダーがデータをコピーすることなく、データが置かれている場所でデータを共有できます。 招待フローを通じて共有関係が確立されると、データ プロバイダーのソース データ ストアとデータのコンシューマーのターゲット データ ストアとの間でシンボリック リンクが作成されます。 データ コンシューマーは、その独自のデータ ストアを使用してリアルタイムにデータを読み取り、照会することができます。 ソース データ ストアに対する変更は、データ コンシューマーに対して即座に提供されます。 インプレース共有は現在、Azure Data Explorer で利用可能です。
 
 ## <a name="key-capabilities"></a>主な機能
 
@@ -81,7 +82,7 @@ Azure Data Share は、現在、スナップショットベースの共有とイ
 
 Azure Data Share を利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=data-share)」ページで Azure Data Share を検索してください。 
 
-Azure Data Share 自体にはデータのコピーは保存されません。 データは、共有されている基礎のデータ ストアに格納されます。 たとえば、データ プロデューサーが米国西部にある Azure Data Lake Store アカウントにデータを格納した場合は、それがデータの格納場所です。 西ヨーロッパにある Azure Storage アカウントで、スナップショットを介してデータを共有している場合は、通常、データは西ヨーロッパにある Azure Storage アカウントに直接転送されます。
+東南アジア (シンガポール) では、Azure Data Share によって格納されるメタデータはこのリージョン内に格納され、その他のすべてのサポートされているリージョンでは geo に格納されます。 Azure Data Share には、共有データ自体のコピーは格納されません。 データは、共有されている基礎のデータ ストアに格納されます。 たとえば、データ プロバイダーが米国西部にある Azure Data Lake Store アカウントにデータを格納した場合は、そこがデータの格納場所です。 西ヨーロッパにある Azure Storage アカウントで、スナップショットを介してデータを共有している場合は、通常、データは西ヨーロッパにある Azure Storage アカウントに直接転送されます。 
 
 サービスを利用するために、Azure Data Share サービスが自分のリージョンで使用できる必要はありません。 たとえば、Azure Data Share をまだ利用できないリージョンにある Azure Storage アカウントにデータが格納されている場合でも、サービスを利用してデータを共有できます。 
 

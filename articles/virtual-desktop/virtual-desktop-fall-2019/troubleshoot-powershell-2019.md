@@ -6,19 +6,19 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 23d1e4b06c9c0278742da0cec8ac565b5f80a362
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 08c9f7a6c5f8fd4a51c464018438bf6e7db119fb
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88004911"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374900"
 ---
 # <a name="windows-virtual-desktop-classic-powershell"></a>Windows Virtual Desktop (クラシック) PowerShell
 
 >[!IMPORTANT]
 >この内容は、Azure Resource Manager Windows Virtual Desktop オブジェクトをサポートしていない Windows Virtual Desktop (クラシック) に適用されます。 Azure Resource Manager Windows Virtual Desktop オブジェクトを管理しようとしている場合は、[こちらの記事](../troubleshoot-powershell.md)を参照してください。
 
-Windows Virtual Desktop で PowerShell を使用するときに発生するエラーと問題を解決する際、この記事を参考にしてください。 リモート デスクトップ サービスの PowerShell については、「[Windows Virtual Desktop PowerShell](/powershell/module/windowsvirtualdesktop/)」を参照してください。
+Windows Virtual Desktop で PowerShell を使用するときに発生するエラーと問題を解決する際、この記事を参考にしてください。 リモート デスクトップ サービスの PowerShell については、「[Windows Virtual Desktop PowerShell](/powershell/windows-virtual-desktop/overview)」を参照してください。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 

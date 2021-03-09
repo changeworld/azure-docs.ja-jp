@@ -7,22 +7,23 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8c4753b2041c2ab15fd586a8b1add6c4dd1a167b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251925"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102124025"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>クイックスタート: チャット アプリを Teams の会議に参加させる
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+> [!IMPORTANT]
+> [チームのテナント相互運用性](../../concepts/teams-interop.md)を有効または無効にするには、[このフォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR21ouQM6BHtHiripswZoZsdURDQ5SUNQTElKR0VZU0VUU1hMOTBBMVhESS4u)を完成させてください。
 
 Azure Communication Services の入門として、JavaScript クライアント ライブラリを使用してチャット ソリューションを Microsoft Teams に接続してみましょう。 
 
 ## <a name="prerequisites"></a>前提条件 
 
-1.  [Teams のデプロイ](https://docs.microsoft.com/deployoffice/teams-install)。 
+1.  [Teams のデプロイ](/deployoffice/teams-install)。 
 2. 実際に動作する[チャット アプリ](./get-started.md)。 
 
 ## <a name="enable-teams-interoperability"></a>Teams の相互運用性を有効にする 

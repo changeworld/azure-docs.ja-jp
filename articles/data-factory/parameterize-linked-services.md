@@ -1,21 +1,17 @@
 ---
 title: Azure Data Factory のリンクされたサービスのパラメーター化
 description: Azure Data Factory のリンクされたサービスをパラメーター化し、実行時に動的な値を渡す方法について説明します。
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/15/2021
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: e463328df195b5a91db8ce272d138f980d000e79
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: fbb7cb6fd0041ab77e649b14712907d916eaa449
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232065"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100372928"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
 
@@ -27,6 +23,9 @@ ms.locfileid: "98232065"
 
 > [!TIP]
 > パスワードやシークレットはパラメーター化しないようにすることをお勧めします。 接続文字列はすべて Azure Key Vault 内に格納し、*シークレット名* をパラメーター化するようにしてください。
+
+> [!Note]
+> パラメーター名に "-" を使用する未解決のバグがあります。バグが解決されるまでは、"-" を含まない名前を使用することをお勧めします。
 
 この機能の概要とデモンストレーションについては、以下の 7 分間の動画を視聴してください。
 
@@ -43,7 +42,7 @@ ms.locfileid: "98232065"
 - Azure Database for MySQL
 - Azure Databricks
 - Azure Key Vault
-- Azure SQL Database
+- Azure SQL Database 
 - Azure SQL Managed Instance
 - Azure Synapse Analytics 
 - MySQL

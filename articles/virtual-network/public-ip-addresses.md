@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f2818965013e44cbbe3202887bf79a737dbbbb58
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223229"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806964"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -54,7 +54,7 @@ Standard SKU のパブリック IP アドレス:
 - インバウンドから発生するフローの調整可能なアイドル タイムアウトとして4分から30 分 (既定値は 4 分) が、またアウトバウンドから発生するフローの固定アイドル タイムアウトとして 4 分が割り当てられます。
 - 既定でセキュリティ保護され、受信トラフィックに対して閉じられています。 [ネットワーク セキュリティ グループ](./network-security-groups-overview.md#network-security-groups)を使用した受信トラフィックの一覧表示を許可します。
 - ネットワーク インターフェイス、Standard パブリック ロード バランサー、またはアプリケーション ゲートウェイに割り当てられます。 Standard Load Balancer の詳細については、[Azure Standard Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) に関するページを参照してください。
-- ゾーン冗長 (3 つすべてのゾーンからアドバタイズ)、またはゾーン (ゾーンとして作成でき、特定の可用性ゾーンで保証できます) にすることができます。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 **ゾーン冗長 IP は、[3 つの可用性ゾーン](../availability-zones/az-region.md)が有効になっているリージョンでのみ作成できます。** ゾーンが有効になる前に作成された IP は、ゾーン冗長にはなりません。
+- ゾーン冗長 (3 つすべてのゾーンからアドバタイズ)、ゾーン ベース (特定の事前に選択された可用性ゾーンで保証)、またはゾーンなし (特定の事前に選択された可用性ゾーンに関連付けられていない) にすることができます。 可用性ゾーンに関する詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページと「[Standard Load Balancer と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 **ゾーン冗長 IP は、[3 つの可用性ゾーン](../availability-zones/az-region.md)が有効になっているリージョンでのみ作成できます。** ゾーンが有効になる前に作成された IP は、ゾーン冗長にはなりません。
 - [リージョン間ロード バランサー ](../load-balancer/cross-region-overview.md)(プレビュー機能) のためのエニーキャスト フロントエンド IP として使用できます。
  
 > [!NOTE]
@@ -62,6 +62,9 @@ Standard SKU のパブリック IP アドレス:
 
 > [!NOTE]
 > [インスタンス メタデータ サービス (IMDS)](../virtual-machines/windows/instance-metadata-service.md) を使用している場合は、Basic SKU のパブリック IP アドレスのみを使用できます。 Standard SKU はサポートされていません。
+
+> [!NOTE]
+> Standard SKU のパブリック IP アドレスを使用している場合、診断設定は [リソース] ブレードに表示されません。 標準パブリック IP アドレス リソースのログ記録を有効にするには、[Azure Monitor] ブレードの [診断設定] に移動し、IP アドレス リソースを選択します。
 
 ### <a name="basic"></a>Basic
 

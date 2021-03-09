@@ -4,19 +4,18 @@ description: Azure Machine Learning Web サービスを使用して、Web サー
 services: machine-learning
 author: likebupt
 ms.author: keli19
-editor: cgronlun
 ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.workload: data-services
 ms.topic: how-to
 ms.date: 01/12/2017
-ms.openlocfilehash: 4a5857e44623f545f2807592c0f6f7b6dae366f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49814d01209b58666c011a6bbd7fe6c328d460f8
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308631"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100518336"
 ---
 # <a name="use-azure-machine-learning-studio-classic-web-service-parameters"></a>Azure Machine Learning Studio Web (クラシック) サービスのパラメーターの使用
 

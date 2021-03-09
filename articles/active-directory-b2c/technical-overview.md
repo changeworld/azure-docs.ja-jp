@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fef192ab273a0e53958cda315932f91b427a5d7d
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 77dab865b2b023f59e6776349b4045107bdb3a29
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108385"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102095495"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C の技術と機能の概要
 
@@ -79,7 +79,7 @@ Azure AD B2C でのユーザー アカウントの種類について詳しくは
 
 ![ソーシャル アカウント (Facebook) でのモバイル サインインの例](media/technical-overview/external-idp.png)
 
-Azure AD B2C で ID プロバイダーを追加する方法については、「[チュートリアル: Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する](tutorial-add-identity-providers.md)」をご覧ください。
+Azure AD B2C で ID プロバイダーを追加する方法については、[Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する方法](add-identity-provider.md)に関するページを参照してください。
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>ID エクスペリエンス: ユーザー フローまたはカスタム ポリシー
 
@@ -134,7 +134,7 @@ Identity Experience Framework を使用すると、手順を自由に組み合�
 
 ## <a name="protocols-and-tokens"></a>プロトコルとトークン
 
-- アプリケーションのユーザー体験に関して、Azure AD B2C では、[OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md)、[SAML プロトコル](connect-with-saml-service-providers.md)がサポートされています。 アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。 Azure AD B2C に対する要求の結果として、[ID トークンやアクセス トークン](tokens-overview.md)、SAML トークンなどのセキュリティ トークンが作成されます。 このセキュリティ トークンでは、アプリケーションにおけるユーザーの ID が定義されています。
+- アプリケーションのユーザー体験に関して、Azure AD B2C では、[OAuth 2.0](protocols-overview.md)、[OpenID Connect](openid-connect.md)、[SAML プロトコル](saml-service-provider.md)がサポートされています。 アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。 Azure AD B2C に対する要求の結果として、[ID トークンやアクセス トークン](tokens-overview.md)、SAML トークンなどのセキュリティ トークンが作成されます。 このセキュリティ トークンでは、アプリケーションにおけるユーザーの ID が定義されています。
 
 - 外部 ID の場合、Azure AD B2C では、OAuth 1.0、OAuth 2.0、OpenID Connect、SAML ID プロバイダーとのフェデレーションがサポートされています。
 

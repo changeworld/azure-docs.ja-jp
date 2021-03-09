@@ -3,12 +3,12 @@ title: OpsGenie で webhook を使用して Azure サービス正常性アラー
 description: OpsGenie インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 112774cb1f9e16b08225471e8dbc1bb79b1bd37d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8867d442d0c7fe563f6429fc1ff4edb212737c5
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86529099"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594603"
 ---
 # <a name="send-azure-service-health-alerts-with-opsgenie-using-webhooks"></a>OpsGenie で webhook を使用して Azure サービス正常性アラートを構成する
 
@@ -25,9 +25,9 @@ ms.locfileid: "86529099"
 
     ![OpsGenie の[Azure Service Health] ボタン](./media/webhook-alerts/opsgenie-azureservicehealth-button.png)
 
-1.  **[Name (名前)]** にアラートの名前を入力し、 **[Assigned to Team (チームに割り当て)]** フィールドを指定します。
+1.  **[Name (名前)]** にアラートの名前を入力し、**[Assigned to Team (チームに割り当て)]** フィールドを指定します。
 
-1.  **[Recipients (受信者)]** 、 **[Enabled (有効)]** 、 **[Suppress Notifications (通知を抑制)]** などの他のフィールドに入力します。
+1.  **[Recipients (受信者)]**、**[Enabled (有効)]**、**[Suppress Notifications (通知を抑制)]** などの他のフィールドに入力します。
 
 1.  **[Integration URL (統合 URL)]** をコピーして保存します。これには既に `apiKey` が末尾に追加されています。
 
@@ -43,7 +43,7 @@ ms.locfileid: "86529099"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **[詳細]:** 先ほど保存した OpsGenie の**統合 URL**。
+    b. **詳細:** 先ほど保存した OpsGenie の **統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 
@@ -60,14 +60,14 @@ ms.locfileid: "86529099"
 
     a. **[アクションの種類]:** *webhook*
 
-    b. **[詳細]:** 先ほど保存した OpsGenie の**統合 URL**。
+    b. **詳細:** 先ほど保存した OpsGenie の **統合 URL**。
 
     c. **[名前]:** Webhook の名前、別名、または識別子。
 
 1. 完了したら **[保存]** を選択して、アクション グループを更新します。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
-1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/platform/activity-log-alerts-webhook.md)」を参照してください。
+1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../azure-monitor/alerts/activity-log-alerts-webhook.md)」を参照してください。
 
 1. 次のような HTTP POST 要求を作成します。
 
@@ -84,6 +84,6 @@ ms.locfileid: "86529099"
 
 ## <a name="next-steps"></a>次のステップ
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
-- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/platform/activity-log-alerts-webhook.md)を確認します。 
+- [アクティビティ ログ アラート webhook スキーマ](../azure-monitor/alerts/activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](./service-notifications.md)について学習します。
-- [アクション グループ](../azure-monitor/platform/action-groups.md)について学習します。
+- [アクション グループ](../azure-monitor/alerts/action-groups.md)について学習します。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/31/2020
-ms.openlocfilehash: 1c1ddeb8cafd8aa7584da48a715139c5d12eeb10
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: fbfef094cd062e437f2a28369162de96631ef41b
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91874800"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99832608"
 ---
 # <a name="tutorial-monitor-and-manage-a-video-analytics---object-and-motion-detection-application"></a>チュートリアル:ビデオ分析 (物体とモーションの検出) アプリケーションを監視、管理する
 
@@ -61,7 +61,7 @@ IoT Central アプリケーションで、以前作成した **LVA Gateway 001**
 
 先ほど追加したカメラ デバイスを表示するには、**LVA Gateway 001** デバイスの **[Downstream Devices]\(ダウンストリーム デバイス\)** タブを選択します。
 
-:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="カメラを追加する":::
+:::image type="content" source="media/tutorial-video-analytics-manage/inspect-downstream.png" alt-text="検査":::
 
 カメラ デバイスは、アプリケーションの **[デバイス]** ページの一覧にも表示されます。
 
@@ -98,7 +98,7 @@ IoT Central アプリケーションで、以前作成した **LVA Gateway 001**
 
 数秒後、各設定について、"**Accepted (受理されました)** " という確認メッセージが表示されます。
 
-:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="カメラを追加する":::
+:::image type="content" source="media/tutorial-video-analytics-manage/object-detection.png" alt-text="物体検出":::
 
 ## <a name="start-lva-processing"></a>LVA 処理を開始する
 
@@ -108,13 +108,13 @@ IoT Central アプリケーションで、以前作成した **LVA Gateway 001**
 
 コマンドが完了したら、コマンド履歴を見てエラーがないことを確認します。
 
-:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="カメラを追加する":::
+:::image type="content" source="media/tutorial-video-analytics-manage/start-processing.png" alt-text="[Start LVA Processing]\(LVA 処理を開始する\) コマンド":::
 
 ## <a name="monitor-the-cameras"></a>カメラを監視する
 
 **camera-003** デバイスに移動し、 **[ダッシュボード]** タブを選択します。
 
-:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="カメラを追加する":::
+:::image type="content" source="media/tutorial-video-analytics-manage/camera-dashboard.png" alt-text="カメラ ダッシュボード":::
 
 **[検出数]** タイルには、選択した検出クラスの物体ごとに、1 秒の検出間隔における平均検出数が表示されます。
 
@@ -157,7 +157,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 **camera-003** デバイスに移動し、 **[ダッシュボード]** タブを選択します。次に、 **[Inference Event Video]\(推論イベント ビデオ\)** タイルで、キャプチャされた物体検出のいずれかのハイパーリンクをクリックします。 ローカル ビデオ プレーヤーによって表示されたページにビデオが表示されます。
 
-:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="カメラを追加する":::
+:::image type="content" source="media/tutorial-video-analytics-manage/video-snippet.png" alt-text="ビデオ スニペット":::
 
 ## <a name="change-the-simulated-devices-in-application-dashboards"></a>アプリケーション ダッシュボードのシミュレートされたデバイスを変更する
 
@@ -182,7 +182,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
 
 **[Real Camera Monitor]\(実際のカメラ モニター\)** ダッシュボードに、実際のカメラ デバイスからの値が表示されます。
 
-:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="カメラを追加する":::
+:::image type="content" source="media/tutorial-video-analytics-manage/update-real-cameras.png" alt-text="実際のカメラのアプリケーション ダッシュボード":::
 
 ## <a name="pause-processing"></a>処理を一時停止する
 
@@ -195,7 +195,7 @@ docker run -it --rm -e amsAadClientId="<FROM_AZURE_PORTAL>" -e amsAadSecret="<FR
     * **ストリーミング エンドポイント** リソースをクリックします。
     * **[ストリーミング エンドポイントの詳細情報]** ページで **[停止]** を選択します。
 
-## <a name="tidy-up"></a>片付ける
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 アプリケーションを使い終えたら、次の手順で、作成したリソースをすべて削除することができます。
 

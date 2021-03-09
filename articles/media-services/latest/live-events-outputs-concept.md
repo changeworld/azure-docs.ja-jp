@@ -1,6 +1,5 @@
 ---
-title: Azure Media Services v3 のライブ イベントとライブ出力の概念
-titleSuffix: Azure Media Services
+title: ライブ イベントとライブ出力の概念
 description: このトピックでは、Azure Media Services v3 のライブ イベントとライブ出力の概要について説明します。
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: a74dcb3cae74605e747a63f8fbb102404d8cc80e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: fac823cc43ed4606db3e7f86bc5c1e36ee50fadb
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741826"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730305"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Media Services のライブ イベントとライブ出力
 
@@ -54,7 +53,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 > 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。 [価格](https://azure.microsoft.com/pricing/details/media-services/)の詳細を参照してください。
 >
 
-[MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126) の .NET のコード例を参照してください。
+[DVR を使用したライブ イベント](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/4a436376e77bad57d6cbfdc02d7df6c615334574/Live/LiveEventWithDVR/Program.cs#L214)で、パススルー ライブ イベントの作成に関する .NET コードの例を参照してください。
 
 ### <a name="live-encoding"></a>ライブ エンコード  
 
@@ -150,7 +149,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
     |---|---|---|
     |REST|[properties.vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |CLI|[--vanity-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.md?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>ライブ取り込み URL の名前付け規則
 

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: b42aa3bfaeaa454b5d870dbae3bce539b682028f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: a5fa6b1c75bee562394af42fcea9ebfabeb732f0
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754081"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389537"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -121,7 +121,7 @@ Azure Migrate には Azure のツールとパートナー ISV のツールの両
 Azure Migrate サービスには、次の 2 つのバージョンがあります。
 
 - **現在のバージョン**: Azure Migrate プロジェクトの作成、オンプレミス マシンの検出、評価と移行の調整を行う場合はこちらのバージョンを使用します。 このバージョンの新機能については[こちらを参照してください](whats-new.md)。
-- **以前のバージョン**: 以前のバージョンの Azure Migrate では、オンプレミスの VMware VM の評価のみがサポートされています。 以前のバージョンを使用していた場合は、最新バージョンを使用する必要があります。 以前のバージョンを使用して Azure Migrate プロジェクトを作成することはできなくなりました。 また、以前のバージョンを使用して、新たに検出を行わないでください。
+- **以前のバージョン**: 以前のバージョンの Azure Migrate (クラシック Azure Migrate) では、オンプレミスの VMware VM の評価のみがサポートされています。 従来の Azure Migrate は 2024 年 2 月に廃止されます。 2024 年 2 月以降、クラシック バージョンの Azure Migrate はサポートされなくなり、クラシック プロジェクトのインベントリ メタデータは削除されます。 旧バージョンのプロジェクトやコンポーネントを新バージョンにアップグレードすることはできません。 [新しい Azure Migrate プロジェクトを作成](create-manage-projects.md)して、それに[評価と移行ツールを追加する](./create-manage-projects.md)必要があります。 チュートリアルを利用して、使用可能な評価と移行ツールの使用方法を理解してください。 Log Analytics ワークスペースがクラシック プロジェクトにアタッチされている場合は、クラシック プロジェクトを削除した後で、そのワークスペースを現在のバージョンのプロジェクトにアタッチできます。
 
     Azure portal で既存のプロジェクトにアクセスするには、「**Azure Migrate**」を検索して選択します。 **Azure Migrate** ダッシュボードに、通知と、過去の Azure Migrate プロジェクトにアクセスするためのリンクが表示されます。
 

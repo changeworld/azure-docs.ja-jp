@@ -6,20 +6,20 @@ ms.author: flborn
 ms.date: 02/06/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 37a665c776a64558a13910875f221462fb7d0ef8
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: fea9deae3948b36732b5ea5203fceea6bec07fb9
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205066"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594080"
 ---
 # <a name="no-loc-textsingle-sided-rendering"></a>:::no-loc text="Single-sided"::: レンダリング
 
 ほとんどのレンダラーでは、パフォーマンスを向上させるために[バックフェイス カリング](https://en.wikipedia.org/wiki/Back-face_culling)を使用します。 ただし、[切断面](cut-planes.md)を使用してメッシュが切り開かれると、多くの場合、三角形の裏面が見えるようになります。 それらの三角形がカリングされている場合、表示される結果は納得のいくものではありません。
 
-この問題を確実に回避する方法は、三角形の*両面*をレンダリングすることです。 バックフェイス カリングを使用しないとパフォーマンスに影響があるため、既定では、Azure Remote Rendering でのみ、切断面と交差しているメッシュについて両面レンダリングに切り替わります。
+この問題を確実に回避する方法は、三角形の *両面* をレンダリングすることです。 バックフェイス カリングを使用しないとパフォーマンスに影響があるため、既定では、Azure Remote Rendering でのみ、切断面と交差しているメッシュについて両面レンダリングに切り替わります。
 
-この動作は、 *:::no-loc text="single-sided"::: レンダリング*の設定を使用してカスタマイズできます。
+この動作は、 *:::no-loc text="single-sided"::: レンダリング* の設定を使用してカスタマイズできます。
 
 > [!CAUTION]
 > :::no-loc text="single-sided"::: レンダリングの設定は試験的な機能です。 将来、再度削除される可能性があります。 アプリケーション内の重大な問題を実際に解決する場合を除き、既定の設定は変更しないでください。
@@ -41,9 +41,9 @@ ms.locfileid: "92205066"
 :::no-loc text="single-sided"::: レンダリングの設定の変更は、次のように行うことができます。
 
 ```cs
-void ChangeSingleSidedRendering(AzureSession session)
+void ChangeSingleSidedRendering(RenderingSession session)
 {
-    SingleSidedSettings settings = session.Actions.SingleSidedSettings;
+    SingleSidedSettings settings = session.Connection.SingleSidedSettings;
 
     // Single-sided geometry is rendered as is
     settings.Mode = SingleSidedMode.Normal;
@@ -54,9 +54,9 @@ void ChangeSingleSidedRendering(AzureSession session)
 ```
 
 ```cpp
-void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
+void ChangeSingleSidedRendering(ApiHandle<RenderingSession> session)
 {
-    ApiHandle<SingleSidedSettings> settings = session->Actions()->GetSingleSidedSettings();
+    ApiHandle<SingleSidedSettings> settings = session->Connection()->GetSingleSidedSettings();
 
     // Single-sided geometry is rendered as is
     settings->SetMode(SingleSidedMode::Normal);
@@ -68,8 +68,8 @@ void ChangeSingleSidedRendering(ApiHandle<AzureSession> session)
 
 ## <a name="api-documentation"></a>API のドキュメント
 
-* [C# RemoteManager.SingleSidedSettings プロパティ](/dotnet/api/microsoft.azure.remoterendering.remotemanager.singlesidedsettings)
-* [C++ RemoteManager::SingleSidedSettings()](/cpp/api/remote-rendering/remotemanager#singlesidedsettings)
+* [C# RenderingConnection.SingleSidedSettings プロパティ](/dotnet/api/microsoft.azure.remoterendering.renderingconnection.singlesidedsettings)
+* [C++ RenderingConnection::SingleSidedSettings()](/cpp/api/remote-rendering/renderingconnection#singlesidedsettings)
 
 ## <a name="next-steps"></a>次のステップ
 

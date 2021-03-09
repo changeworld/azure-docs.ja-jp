@@ -1,24 +1,19 @@
 ---
 title: Azure Data Factory のトラブルシューティング
 description: Azure Data Factory の使用に関する問題のトラブルシューティングを行う方法について説明します。
-services: data-factory
-documentationcenter: ''
-ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
-manager: anandsub
 robots: noindex
-ms.openlocfilehash: bd18a26a1c199e1ecc32cfc371d2931b1dee0c3f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: ed831e5f07eb29110b858dfb16b73f276926424f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96494972"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388245"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]
@@ -35,14 +30,15 @@ ms.locfileid: "96494972"
 1. Azure PowerShell を起動します。
 2. 次のコマンドを使用して、Azure アカウントにログインします。
 
-    ```powershell
-    Connect-AzAccount
-    ```
+   ```powershell
+   Connect-AzAccount
+   ```
+
 3. 次のコマンドを実行して、Azure Data Factory プロバイダーを登録します。
 
-    ```powershell        
-    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
-    ```
+   ```powershell
+   Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
+   ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>問題: Data Factory コマンドレットを実行する際の未承認エラー
 Azure PowerShell で使用する Azure アカウントまたはサブスクリプションが正しくない可能性があります。 次のコマンドレットを使用して、Azure PowerShell で使用する適切な Azure アカウントとサブスクリプションを選択してください。
@@ -67,7 +63,7 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 ### <a name="problem-input-slices-are-in-waiting-state-forever"></a>問題: 入力スライスの状態が Waiting のままになっている
 このスライスの状態は、さまざまな理由から **Waiting** になっている可能性があります。 一般的な理由の 1 つとして、**external** プロパティが **true** に設定されていないことが挙げられます。 Azure Data Factory の範囲外で生成されるデータセットの場合、 **external** プロパティによるマーキングが必要です。 このプロパティは、データが外部データであり、データ ファクトリ内のパイプラインでサポートされていないことを示します。 それぞれのストアでデータが使用可能になると、データ スライスは **Ready** とマーキングされます。
 
-**external** プロパティの使用方法については、次の例を参照してください。 external を true に設定するときに、必要に応じて **externalData** _ を指定できます。
+**external** プロパティの使用方法については、次の例を参照してください。 external を true に設定するときに、必要に応じて **externalData*** を指定できます。
 
 このプロパティの詳細については、 [データセット](data-factory-create-datasets.md) に関する記事を参照してください。
 
@@ -97,7 +93,7 @@ Data Management Gateway の高速セットアップを起動するには、Inter
 }
 ```
 
-このエラーを解決するには、入力テーブルの JSON 定義に _ *external** プロパティと **externalData** セクション (省略可能) を追加し、テーブルをもう一度作成します。
+このエラーを解決するには、入力テーブルの JSON 定義に **external** プロパティと **externalData** セクション (省略可能) を追加し、テーブルをもう一度作成します。
 
 ### <a name="problem-hybrid-copy-operation-fails"></a>問題: ハイブリッド コピー操作に失敗する
 Data Management Gateway を使用したオンプレミス データ ストアへのコピーや、それからのコピーの問題をトラブルシューティングする手順については、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)に関するセクションを参照してください。

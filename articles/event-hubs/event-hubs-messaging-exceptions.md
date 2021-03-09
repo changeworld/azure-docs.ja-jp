@@ -2,13 +2,13 @@
 title: Azure Event Hubs - 例外 (レガシ)
 description: この記事では、Azure Event Hubs メッセージングの例外と推奨アクションの一覧を示します。
 ms.topic: article
-ms.date: 11/02/2020
-ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.date: 02/10/2021
+ms.openlocfilehash: a76c98ec7d6d1f3370ed8787bf10d1d16a7baaa5
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340969"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100390897"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs メッセージングの例外 - .NET (レガシ)
 このセクションでは、.NET Framework API によって生成される .NET 例外を示します。 
@@ -125,14 +125,14 @@ Event Hubs では、タイムアウトは接続文字列の一部として、ま
 
     TU × 制限 (イングレスの場合は 1 MB/秒、またはイングレスに対する要求数 1000/秒、エグレスの場合は 2 MB/秒) の数よりも大きい値が表示される場合は、Event Hubs 名前空間の **[スケール]** (左側のメニュー) ページを使用して手動でスケールアップするか、Event Hubs の [自動インフレ機能](event-hubs-auto-inflate.md)を使用して TU の数を増やします。 自動インフレで増やせるのは、最大 20 TU までであることに注意してください。 これを正確に 40 TU に上げるには、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を送信します。
 
-### <a name="error-code-50001"></a>エラー コード 50001
+### <a name="error-code-50008"></a>エラー コード 50008
 
 このエラーはあまり発生しません。 名前空間に対してコードを実行しているコンテナーの CPU が不足している場合、つまり、Event Hubs ロード バランサーの開始前の時間が数秒もないときに発生します。
 
-**解決方法**:GetRuntimeInformation メソッドの呼び出しの制限。 Azure Event Hubs は、GetRuntimeInfo に対して 1 秒あたり最大 50 の呼び出しをサポートしています。 制限に達すると、次のような例外が表示される可能性があります。
+**解決方法**:GetRuntimeInformation メソッドの呼び出しを制限します。 Azure Event Hubs は、GetRuntimeInfo に対してコンシューマー グループごとに 1 秒あたり最大 50 回の呼び出しをサポートしています。 制限に達すると、次のような例外が表示される可能性があります。
 
 ```
-ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50001. Please wait 10 seconds and try again.
+ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The request was terminated because the namespace 75248:aaa-default-eventhub-ns-prodb2b is being throttled. Error code : 50008. Please wait 10 seconds and try again.
 ```
 
 

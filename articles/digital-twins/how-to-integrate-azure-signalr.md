@@ -7,12 +7,12 @@ ms.author: aymarqui
 ms.date: 09/02/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d84acc5501b3d40f6db85d0ee6ee369aec5a6aa4
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 86d0c75d8b4c7c331e3e7ad90271e3fb42ff1964
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051107"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980730"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-signalr-service"></a>Azure Digital Twins を Azure SignalR Service と統合する
 
@@ -40,7 +40,11 @@ ms.locfileid: "98051107"
 
 最初に、必要なサンプル アプリをダウンロードします。 次の両方が必要になります。
 * [**Azure Digital Twins のエンドツーエンド サンプル**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/):このサンプルには、Azure Digital Twins インスタンスにデータを移動するための 2 つの Azure 関数を保持する *AdtSampleApp* が含まれています (このシナリオの詳細については、[*チュートリアル:エンド ツー エンドのソリューションの接続*](tutorial-end-to-end.md)に関するページを参照)。 また、IoT デバイスをシミュレートし、1 秒ごとに新しい温度値を生成する *DeviceSimulator* サンプル アプリケーションも含まれています。 
-    - サンプル リンクに移動し、 *[ZIP のダウンロード]* ボタンをクリックしてサンプルのコピーをお使いのコンピューターに _**Azure_Digital_Twins_end_to_end_samples.zip**_ としてダウンロードします。 フォルダーを解凍します。
+    - "[*前提条件*](#prerequisites)" にあるチュートリアルの一部としてサンプルをまだダウンロードしていない場合は、サンプルのリンクに移動し、タイトルの下にある *[コードの参照]* ボタンを選択してください。 これにより、サンプル用の GitHub リポジトリに移動します。 *[Code]\(コード\)* ボタンと、 *[Download ZIP]\(ZIP のダウンロード\)* を選択することによって、 *.ZIP* 形式でこれをダウンロードできます。
+
+    :::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub の digital-twins-samples リポジトリの図。[Code]\(コード\) ボタンが選択されて、小さなダイアログ ボックスが生成されます。ここでは、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="media/includes/download-repo-zip.png":::
+
+    これにより、お使いのマシンにサンプル リポジトリのコピーが **digital-twins-samples-master.zip** としてダウンロードされます。 フォルダーを解凍します。
 * [**SignalR 統合 Web アプリのサンプル**](/samples/azure-samples/digitaltwins-signalr-webapp-sample/digital-twins-samples/):これは、Azure SignalR Service からの Azure Digital Twins テレメトリ データを使用する React の Web アプリのサンプルです。
     -  サンプル リンクに移動し、 *[ZIP のダウンロード]* ボタンをクリックしてサンプルのコピーをお使いのコンピューターに _**Azure_Digital_Twins_SignalR_integration_web_app_sample.zip**_ としてダウンロードします。 フォルダーを解凍します。
 
@@ -63,22 +67,24 @@ ms.locfileid: "98051107"
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/signalr-keys.png" alt-text="SignalR インスタンスの [キー] ページが表示された Azure portal のスクリーンショット。プライマリ接続文字列の横にある [クリップボードにコピー] アイコンが強調表示されています。" lightbox="media/how-to-integrate-azure-signalr/signalr-keys.png":::
 
-次に、Visual Studio (またはご自身で選んだ別のコード エディター) を起動し、*Azure_Digital_Twins_end_to_end_samples > ADTSampleApp* フォルダー内のコード ソリューションを開きます。 その後、次の手順を実行して関数を作成します。
+次に、Visual Studio (またはご自身で選んだ別のコード エディター) を起動し、*digital-twins-samples-master > ADTSampleApp* フォルダー内のコード ソリューションを開きます。 その後、次の手順を実行して関数を作成します。
 
-1. *SampleFunctionsApp* プロジェクトに **SignalRFunctions.cs** と呼ばれる新しい C# シャープ クラスを作成します。
+1. *SampleFunctionsApp* プロジェクトに **SignalRFunctions.cs** と呼ばれる新しい C# クラスを作成します。
 
 1. このクラス ファイルの内容を次のコードに置き換えます。
     
     :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/signalRFunction.cs":::
 
-1. Visual Studio の "*パッケージ マネージャー コンソール*" ウィンドウ、またはコンピューター上の *Azure_Digital_Twins_end_to_end_samples\AdtSampleApp\SampleFunctionsApp* フォルダー内の任意のコマンド ウィンドウで、次のコマンドを実行して `SignalRService` NuGet パッケージをプロジェクトにインストールします。
+1. Visual Studio の "*パッケージ マネージャー コンソール*" ウィンドウ、またはお使いマシン上の *digital-twins-samples-master\AdtSampleApp\SampleFunctionsApp* フォルダー内の任意のコマンド ウィンドウで、次のコマンドを実行して `SignalRService` NuGet パッケージをプロジェクトにインストールします。
     ```cmd
     dotnet add package Microsoft.Azure.WebJobs.Extensions.SignalRService --version 1.2.0
     ```
 
     これにより、そのクラスに含まれる依存関係の問題が解決されます。
 
-次に、*エンド ツー エンドのソリューションの接続* のチュートリアルの「[*アプリの発行*」セクション](tutorial-end-to-end.md#publish-the-app)で説明されている手順を使用して、関数を Azure に発行します。 エンド ツー エンドのチュートリアルの事前準備で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 さらに、次の手順に従って、アプリの発行を完了します。
+次に、*エンド ツー エンドのソリューションの接続* のチュートリアルの「[*アプリの発行*」セクション](tutorial-end-to-end.md#publish-the-app)で説明されている手順を使用して、関数を Azure に発行します。 エンド ツー エンドのチュートリアルの[前提条件](#prerequisites)で使用したものと同じ App Service や関数アプリにそれを発行することも、新しいものを作成することもできます。ただし、重複を最小限に抑えるために同じものを使用することをお勧めします。 
+
+次に、次の手順に従って、アプリの発行を完了します。
 1. *negotiate* 関数の **HTTP エンドポイント URL** を収集します。 そのためには、Azure portal の [[関数アプリ]](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Web%2Fsites/kind/functionapp) ページにアクセスし、一覧から関数アプリを選択します。 アプリ メニューで、 *[関数]* を選択し、*negotiate* 関数を選択します。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/functions-negotiate.png" alt-text="メニューで [関数] が強調表示されている、関数アプリの Azure portal ビュー。このページには関数の一覧が表示され、&quot;negotiate&quot; 関数も強調表示されています。":::
@@ -120,23 +126,11 @@ ms.locfileid: "98051107"
 
 ## <a name="configure-and-run-the-web-app"></a>Web アプリの構成と実行
 
-このセクションでは、動作中の結果を見ていきます。 まず、Azure Digital Twins インスタンスを介してテレメトリ データを送信する **シミュレートされたデバイス サンプル アプリ** を起動します。 次に、設定しておいた Azure SignalR のフローに接続するように **サンプル クライアント Web アプリ** を構成します。 その後、サンプル Web アプリをリアルタイムで更新するデータを確認できます。
-
-### <a name="run-the-device-simulator"></a>デバイス シミュレーターを実行する
-
-エンド ツー エンドのチュートリアルの事前準備では、IoT Hub を介してデータを Azure Digital Twins インスタンスに送信するように[デバイス シミュレーターを構成](tutorial-end-to-end.md#configure-and-run-the-simulation)しました。
-
-ここでは、*Azure_Digital_Twins_end_to_end_samples > DeviceSimulator > DeviceSimulator.sln* にあるシミュレーター プロジェクトを開始するだけで済みます。 Visual Studio を使用している場合は、プロジェクトを開いてから、ツール バーにあるこのボタンを使用して実行できます。
-
-:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio のスタート ボタン (DeviceSimulator プロジェクト)":::
-
-コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらは Azure Digital Twins インスタンスを介して送信され、そこでその後、Azure 関数と SignalR によって取得されます。
-
-このコンソールで行うべき作業は他にありませんが、次のステップに取り組む間、コンソールは実行したままにしておいてください。
+このセクションでは、動作中の結果を見ていきます。 まず、設定しておいた Azure SignalR のフローに接続するように **サンプル クライアント Web アプリ** を構成します。 次に、Azure Digital Twins インスタンスを介してテレメトリ データを送信する **シミュレートされたデバイス サンプル アプリ** を起動します。 その後、サンプル Web アプリを表示して、サンプル Web アプリをリアルタイムで更新するシミュレートされたデバイス データを確認します。
 
 ### <a name="configure-the-sample-client-web-app"></a>サンプル クライアント Web アプリを構成する
 
-次に、以下の手順に従って、**SignalR 統合 Web アプリのサンプル** を設定します。
+以下の手順に従って、**SignalR 統合 Web アプリのサンプル** を設定します。
 1. Visual Studio または任意のコード エディターを使用して、「[*サンプル アプリケーションのダウンロード*](#download-the-sample-applications)」セクションでダウンロードした解凍済みの _**Azure_Digital_Twins_SignalR_integration_web_app_sample**_ フォルダーを開きます。
 
 1. *src/App.js* ファイルを開き、`HubConnectionBuilder` 内の URL を、前に保存した **negotiate** 関数の HTTP エンドポイント URL に置き換えます。
@@ -157,6 +151,18 @@ ms.locfileid: "98051107"
 1. インスタンスのメニューを下にスクロールし、 *[CORS]* を選択します。 [CORS] ページで、空のボックスに `http://localhost:3000` を入力して、許可された配信元として追加します。 *[Access-Control-Allow-Credentials を有効にする]* ボックスをオンにして、 *[保存]* をクリックします。
 
     :::image type="content" source="media/how-to-integrate-azure-signalr/cors-setting-azure-function.png" alt-text="Azure 関数での CORS 設定":::
+
+### <a name="run-the-device-simulator"></a>デバイス シミュレーターを実行する
+
+エンド ツー エンドのチュートリアルの事前準備では、IoT Hub を介してデータを Azure Digital Twins インスタンスに送信するように[デバイス シミュレーターを構成](tutorial-end-to-end.md#configure-and-run-the-simulation)しました。
+
+ここでは、*digital-twins-samples-master > DeviceSimulator > DeviceSimulator.sln* にあるシミュレーター プロジェクトを開始するだけで済みます。 Visual Studio を使用している場合は、プロジェクトを開いてから、ツール バーにあるこのボタンを使用して実行できます。
+
+:::image type="content" source="media/how-to-integrate-azure-signalr/start-button-simulator.png" alt-text="Visual Studio のスタート ボタン (DeviceSimulator プロジェクト)":::
+
+コンソール ウィンドウが開いて、シミュレートされた温度のテレメトリ メッセージが表示されます。 これらは Azure Digital Twins インスタンスを介して送信され、そこでその後、Azure 関数と SignalR によって取得されます。
+
+このコンソールで行うべき作業は他にありませんが、次のステップに取り組む間、コンソールは実行したままにしておいてください。
 
 ### <a name="see-the-results"></a>結果を見る
 
@@ -188,7 +194,7 @@ Azure Cloud Shell またはローカルの Azure CLI から [az group delete](/c
 az group delete --name <your-resource-group>
 ```
 
-最後に、ローカル コンピューターにダウンロードしたプロジェクトのサンプル フォルダー (*Azure_Digital_Twins_end_to_end_samples.zip* と *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) を削除します。
+最後に、ローカル マシンにダウンロードしたプロジェクトのサンプル フォルダー (*digital-twins-samples-master.zip* と *Azure_Digital_Twins_SignalR_integration_web_app_sample.zip*) を削除します。
 
 ## <a name="next-steps"></a>次の手順
 

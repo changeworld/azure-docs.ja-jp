@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6825fee4cfb78ab54d782cd4d942bb994bedae9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5367fbcb88e19253eead58d8f99933fdadc41898
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195723"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101714716"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure Storage 用の Azure セキュリティ ベースライン
 
@@ -158,7 +158,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 - [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Monitor でアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -180,7 +180,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Monitor を介してログを取り込み、エンドポイント デバイス、ネットワーク リソース、およびその他のセキュリティ システムによって生成されたセキュリティ データを集計します。 Azure Monitor 内で Log Analytics ワークスペースを使用してクエリを発行し、分析を実行して、長期/アーカイブ ストレージには Azure Storage アカウントを使用します。必要に応じて、不変ストレージや保有期間の保持の強制などのセキュリティ機能を使用できます。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../../azure-monitor/essentials/diagnostic-settings.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -190,7 +190,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**: Azure Storage Analytics には、BLOB、キュー、およびテーブル用のログが用意されています。 Azure portal を使用して、アカウントに対してどのログが記録されるかを構成できます。 
 
-- [Azure Storage アカウントの監視を構成する方法](./storage-monitor-storage-account.md#configure-monitoring-for-a-storage-account)
+- [Azure Storage アカウントの監視を構成する方法](./manage-storage-analytics-logs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -208,9 +208,9 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 **ガイダンス**:Azure Storage アカウントまたは Log Analytics ワークスペースにセキュリティ イベント ログを保存する場合は、組織の要件に従ってアイテム保持ポリシーを設定することができます。 
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](./storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](./manage-storage-analytics-logs.md#configure-logging)
 
-- [Log Analytics でデータ保持期間を変更する](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -238,7 +238,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 - [Azure Security Center でアラートを管理する方法](../../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../../azure-monitor/alerts/tutorial-response.md)
 
 - [Azure Storage Analytics のログ](./storage-analytics-logging.md)
 
@@ -362,7 +362,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 - [Azure AD のリスク検出について](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../../azure-monitor/platform/action-groups.md)
+- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../../azure-monitor/alerts/action-groups.md)
 
 **Azure Security Center の監視**: はい
 
@@ -414,7 +414,7 @@ Azure Storage 用の Azure セキュリティ ベースラインには、ご自�
 
 - [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/anonymous-read-access-configure.md)
 
-- [Azure Portal でのストレージ アカウントの監視](./storage-monitor-storage-account.md)
+- [Azure Portal でのストレージ アカウントの監視](./manage-storage-analytics-logs.md)
 
 - [ストレージ アカウント アクセス キーを管理する](./storage-account-keys-manage.md)
 
@@ -432,7 +432,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 - [Azure アクティビティ ログを Azure Monitor に統合する方法](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Azure Storage アカウントのメトリック アラートを構成する方法](./storage-monitor-storage-account.md)
+- [Azure Storage アカウントのメトリック アラートを構成する方法](./manage-storage-analytics-logs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -572,11 +572,11 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、ストレージ アカウント リソースに変更が加えられたときのアラートを作成します。 また、Azure Storage のログ記録を有効にして、Azure Storage に対する各要求がどのように承認されたかを追跡することもできます。 このログでは、OAuth 2.0 トークン、共有キー、または共有アクセス署名 (SAS) を使用して、要求が匿名で行われたかどうかが示されます。 さらに、Azure Monitor を使用して、匿名認証の条件を使用してストレージ アカウントへの匿名アクセスに対するアラートを生成できます。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure Storage Analytics のログ](./storage-analytics-logging.md)
 
-- [Azure Storage アカウントのメトリック アラートを構成する方法](./storage-monitor-storage-account.md)
+- [Azure Storage アカウントのメトリック アラートを構成する方法](./manage-storage-analytics-logs.md)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -956,7 +956,7 @@ Azure Active Directory ユーザー アカウントの診断設定を作成し�
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1:定期的な自動バックアップを保証する
 
-**ガイダンス**: Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、常に自動的にレプリケートされます。 Azure Storage では、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止または停電、大規模な自然災害など) から保護するためにデータがコピーされます。 同じデータ センター内、同じリージョン内の複数のゾーン データ センター間、または地理的に分離されたリージョン間でデータをレプリケートすることもできます。 
+**ガイダンス**: Microsoft Azure Storage アカウント内のデータは、持続性と高可用性を保証するため、常に自動的にレプリケートされます。 Azure Storage では、計画されたイベントや計画外のイベント (一時的なハードウェア障害、ネットワークの停止または停電、大規模な自然災害など) から保護するためにデータがコピーされます。 同じデータ センター内、同じリージョン内の複数のゾーン データ センター間、または地理的に分離されたリージョン間でデータをレプリケートすることもできます。 
 
 また、Azure Automation を有効にして、BLOB のスナップショットを定期的に取得することもできます。
 

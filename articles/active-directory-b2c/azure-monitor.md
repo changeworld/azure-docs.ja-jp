@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
-ms.date: 11/12/2020
-ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/29/2021
+ms.openlocfilehash: 712a933276393890bf017a2517196031306233ad
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170618"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100573009"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
@@ -25,16 +25,20 @@ Azure Monitor を使用して、Azure Active Directory B2C (Azure AD B2C) のサ
 ログ イベントは次の場所にルーティングできます。
 
 * Azure [ストレージ アカウント](../storage/blobs/storage-blobs-introduction.md)。
-* [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (データの分析、ダッシュボードの作成、特定のイベントに対するアラートの作成を行う)。
+* [Log Analytics ワークスペース](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace) (データの分析、ダッシュボードの作成、特定のイベントに対するアラートの作成を行う)。
 * Azure [イベント ハブ](../event-hubs/event-hubs-about.md) (Splunk および Sumo Logic のインスタンスと統合できます)。
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
 この記事では、Azure Log Analytics ワークスペースにログを転送する方法について説明します。 そうすると、ダッシュボードを作成したり、Azure AD B2C ユーザーのアクティビティに基づいてアラートを作成したりできるようになります。
 
+> [!IMPORTANT]
+> Azure AD B2C のログを別の監視ソリューションまたはリポジトリに転送することを計画している場合は、次の点を考慮してください。 Azure AD B2C のログには個人データが含まれています。 そのようなデータは、未承認または違法な処理に対する保護など、個人データの適切なセキュリティを保証する方法で、適切な技術的または組織的手段を使用して処理する必要があります。
+
+
 ## <a name="deployment-overview"></a>デプロイの概要
 
-Azure AD B2C では、[Azure Active Directory 監視](../active-directory/reports-monitoring/overview-monitoring.md)が利用されます。 Azure AD B2C テナント内の Azure Active Directory で "*診断設定*" を有効にするには、[Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) を使用して [リソースを委任](../lighthouse/concepts/azure-delegated-resource-management.md)します。これにより、Azure AD B2C (**サービス プロバイダー**) が Azure AD (**顧客**) のリソースを管理できるようになります。 この記事の手順を完了すると、**Azure AD B2C** ポータル内の [Log Analytics ワークスペース](../azure-monitor/learn/quick-create-workspace.md)が含まれる *azure-ad-b2c-monitor* リソース グループにアクセスできるようになります。 また、Azure AD B2C から Log Analytics ワークスペースにログを転送することもできます。
+Azure AD B2C では、[Azure Active Directory 監視](../active-directory/reports-monitoring/overview-monitoring.md)が利用されます。 Azure AD B2C テナント内の Azure Active Directory で "*診断設定*" を有効にするには、[Azure Lighthouse](../lighthouse/concepts/azure-delegated-resource-management.md) を使用して [リソースを委任](../lighthouse/concepts/azure-delegated-resource-management.md)します。これにより、Azure AD B2C (**サービス プロバイダー**) が Azure AD (**顧客**) のリソースを管理できるようになります。 この記事の手順を完了すると、**Azure AD B2C** ポータル内の [Log Analytics ワークスペース](../azure-monitor/logs/quick-create-workspace.md)が含まれる *azure-ad-b2c-monitor* リソース グループにアクセスできるようになります。 また、Azure AD B2C から Log Analytics ワークスペースにログを転送することもできます。
 
 このデプロイ中、Azure サブスクリプションが含まれるテナント内の Log Analytics ワークスペース インスタンスを構成するために、Azure AD B2C ディレクトリでユーザーまたはグループを承認します。 承認を作成するには、サブスクリプションが含まれる Azure AD テナントに [Azure Resource Manager](../azure-resource-manager/index.yml) テンプレートをデプロイします。
 
@@ -58,7 +62,7 @@ Azure AD B2C では、[Azure Active Directory 監視](../active-directory/report
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. ポータル ツールバーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、**Azure AD テナント** が含まれているディレクトリを選択します。
-1. [Log Analytics ワークスペースを作成します](../azure-monitor/learn/quick-create-workspace.md)。 この例では、*AzureAdB2C* という名前の Log Analytics ワークスペースを *azure-ad-b2c-monitor* という名前のリソース グループで使用します。
+1. [Log Analytics ワークスペースを作成します](../azure-monitor/logs/quick-create-workspace.md)。 この例では、*AzureAdB2C* という名前の Log Analytics ワークスペースを *azure-ad-b2c-monitor* という名前のリソース グループで使用します。
 
 ## <a name="3-delegate-resource-management"></a>3. リソース管理を委任する
 
@@ -140,9 +144,9 @@ Azure AD B2C では、[Azure Active Directory 監視](../active-directory/report
 
 診断設定では、リソースのログとメトリックを送信する場所を定義します。 使用できる送信先は次のとおりです。
 
-- [Azure Storage アカウント](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
-- [イベント ハブ](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs) ソリューション
-- [Log Analytics ワークスペース](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
+- [Azure Storage アカウント](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+- [イベント ハブ](../azure-monitor/essentials/resource-logs.md#send-to-azure-event-hubs) ソリューション
+- [Log Analytics ワークスペース](../azure-monitor/essentials/resource-logs.md#send-to-log-analytics-workspace)
 
 この例では、Log Analytics ワークスペースを使用してダッシュボードを作成します。
 
@@ -167,7 +171,7 @@ Azure AD B2C のアクティビティ ログの監視設定を構成するには
 1. **[保存]** を選択します。
 
 > [!NOTE]
-> イベントが生成されて [Log Analytics ワークスペースに表示される](../azure-monitor/platform/data-ingestion-time.md)までに最大で 15 分かかる可能性があります。 [Active Directory レポートの待機時間](../active-directory/reports-monitoring/reference-reports-latencies.md)の詳細についても確認してください。これは、データの陳腐化に影響し、レポートで重要な役割を果たす可能性があります。
+> イベントが生成されて [Log Analytics ワークスペースに表示される](../azure-monitor/logs/data-ingestion-time.md)までに最大で 15 分かかる可能性があります。 [Active Directory レポートの待機時間](../active-directory/reports-monitoring/reference-reports-latencies.md)の詳細についても確認してください。これは、データの陳腐化に影響し、レポートで重要な役割を果たす可能性があります。
 
 Azure AD B2C ディレクトリで Azure Monitor を使用するための診断設定を指定するには、委任リソース管理を設定する必要があります" というエラー メッセージが表示される場合は、[セキュリティ グループ](#32-select-a-security-group)のメンバーであるユーザーでサインインしていることと、ご使用の[サブスクリプションを選択](#4-select-your-subscription)していることを確認してください。
 
@@ -177,7 +181,7 @@ Azure AD B2C ディレクトリで Azure Monitor を使用するための診断�
 
 ### <a name="61-create-a-query"></a>6.1 クエリを作成する
 
-ログ クエリは、Azure Monitor ログ内に収集されたデータの価値を最大限に活用するのに役立ちます。 強力なクエリ言語により、複数のテーブルのデータを結合したり、大量のデータ セットを集約したり、最小限のコードによって複雑な操作を実行したりできます。 有用なデータが収集されていて、適切なクエリを作成する方法を理解していれば、ほぼすべての疑問に答えたり、分析を実行したりすることができます。 詳細については、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/log-query/get-started-queries.md)」を参照してください。
+ログ クエリは、Azure Monitor ログ内に収集されたデータの価値を最大限に活用するのに役立ちます。 強力なクエリ言語により、複数のテーブルのデータを結合したり、大量のデータ セットを集約したり、最小限のコードによって複雑な操作を実行したりできます。 有用なデータが収集されていて、適切なクエリを作成する方法を理解していれば、ほぼすべての疑問に答えたり、分析を実行したりすることができます。 詳細については、「[Azure Monitor でログ クエリの使用を開始する](../azure-monitor/logs/get-started-queries.md)」を参照してください。
 
 1. **Log Analytics ワークスペース** から、 **[ログ]** を選択します。
 1. クエリ エディターで、次の [Kusto クエリ言語](/azure/data-explorer/kusto/query/)のクエリを貼り付けます。 このクエリは、過去 x 日間の操作によるポリシーの使用状況を示します。 既定の期間は、90 日間 (90d) に設定されています。 このクエリは、ポリシーによってトークン/コードが発行される操作のみに注目していることに注意してください。
@@ -224,7 +228,7 @@ AuditLogs
 
 ### <a name="62-create-a-workbook"></a>6.2 ブックを作成する
 
-ブックは、Azure portal 内でデータを分析し、高度な視覚的レポートを作成するための柔軟なキャンバスを提供します。 Azure 全体から複数のデータ ソースを活用し、それらを結合して、統合された対話型エクスペリエンスにすることができます。 詳細については、「[Azure Monitor ブック](../azure-monitor/platform/workbooks-overview.md)」を参照してください。
+ブックは、Azure portal 内でデータを分析し、高度な視覚的レポートを作成するための柔軟なキャンバスを提供します。 Azure 全体から複数のデータ ソースを活用し、それらを結合して、統合された対話型エクスペリエンスにすることができます。 詳細については、「[Azure Monitor ブック](../azure-monitor/visualize/workbooks-overview.md)」を参照してください。
 
 JSON ギャラリー テンプレートを使用して新しいブックを作成するには、次の手順に従います。 このブックには、Azure AD B2C テナントの **[User Insights]\(ユーザー分析情報\)** と **[Authentication]\(認証\)** ダッシュボードが用意されています。
 
@@ -255,10 +259,10 @@ JSON ギャラリー テンプレートを使用して新しいブックを作�
 
 ## <a name="create-alerts"></a>アラートを作成する
 
-アラートは Azure Monitor のアラート ルールによって作成され、保存済みのクエリまたはカスタム ログ検索を一定の間隔で自動的に実行できます。 特定のパフォーマンス メトリック、特定のイベントが作成されたとき、イベントが欠如しているとき、または特定の時間枠内に作成されたイベントの数に基づくアラートを作成できます。 たとえば、アラートを使用して、サインインの平均数が特定のしきい値を超えたら通知を受けるようにできます。 詳細については、[アラートの作成](../azure-monitor/learn/tutorial-response.md)に関するページをご覧ください。
+アラートは Azure Monitor のアラート ルールによって作成され、保存済みのクエリまたはカスタム ログ検索を一定の間隔で自動的に実行できます。 特定のパフォーマンス メトリック、特定のイベントが作成されたとき、イベントが欠如しているとき、または特定の時間枠内に作成されたイベントの数に基づくアラートを作成できます。 たとえば、アラートを使用して、サインインの平均数が特定のしきい値を超えたら通知を受けるようにできます。 詳細については、[アラートの作成](../azure-monitor/alerts/tutorial-response.md)に関するページをご覧ください。
 
 
-次の手順を使用して、**合計要求数** が前の期間と比較して 25% 低下したら [電子メール通知](../azure-monitor/platform/action-groups.md#configure-notifications)を送信する新しい Azure アラートを作成します。 アラートは 5 分ごとに実行され、過去 24 時間以内の低下が調べられます。 アラートは、Kusto クエリ言語を使用して作成されます。
+次の手順を使用して、**合計要求数** が前の期間と比較して 25% 低下したら [電子メール通知](../azure-monitor/alerts/action-groups.md#configure-notifications)を送信する新しい Azure アラートを作成します。 アラートは 5 分ごとに実行され、過去 24 時間以内の低下が調べられます。 アラートは、Kusto クエリ言語を使用して作成されます。
 
 
 1. **Log Analytics ワークスペース** から、 **[ログ]** を選択します。 
@@ -292,7 +296,7 @@ JSON ギャラリー テンプレートを使用して新しいブックを作�
 
 ### <a name="configure-action-groups"></a>アクション グループを構成する
 
-Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 音声通話、SMS、電子メールの送信やさまざまな種類の自動アクションのトリガーを含めることができます。 「[Azure portal でのアクション グループの作成および管理](../azure-monitor/platform/action-groups.md)」ガイダンスに従ってください。
+Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 音声通話、SMS、電子メールの送信やさまざまな種類の自動アクションのトリガーを含めることができます。 「[Azure portal でのアクション グループの作成および管理](../azure-monitor/alerts/action-groups.md)」ガイダンスに従ってください。
 
 アラート通知電子メールの例を次に示します。 
 
@@ -302,7 +306,7 @@ Azure Monitor および Service Health のアラートでは、アクション �
 
 複数の Azure AD B2C テナント ログを同じ Log Analytics ワークスペース (あるいは Azure ストレージ アカウント、またはイベント ハブ) にオンボードするには、異なる **Msp オファー名** の値を使用する別々のデプロイが必要になります。 Log Analytics ワークスペースが、「[リソース グループの作成または選択](#1-create-or-choose-resource-group)」で構成したものと同じリソース グループに含まれていることを確認してください。
 
-複数の Log Analytics ワークスペースで作業している場合は、[クロス ワークスペース クエリ](../azure-monitor/log-query/cross-workspace-query.md)を使用して、複数のワークスペースで動作するクエリを作成します。 たとえば、次のクエリでは、同じカテゴリ (たとえば、認証) に基づいて、異なるテナントからの 2 つの監査ログの結合が実行されます。
+複数の Log Analytics ワークスペースで作業している場合は、[クロス ワークスペース クエリ](../azure-monitor/logs/cross-workspace-query.md)を使用して、複数のワークスペースで動作するクエリを作成します。 たとえば、次のクエリでは、同じカテゴリ (たとえば、認証) に基づいて、異なるテナントからの 2 つの監査ログの結合が実行されます。
 
 ```kusto
 workspace("AD-B2C-TENANT1").AuditLogs
@@ -312,12 +316,12 @@ workspace("AD-B2C-TENANT1").AuditLogs
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
-Azure Monitor ログは、企業内の、または Azure にデプロイされた任意のソースから毎日大量のデータを収集し、インデックスを付けて、格納する処理をスケーリングおよびサポートするように設計されています。 既定では、ログは 30 日間保持されますが、データ保持期間は最大 2 年間まで延長できます。 [Azure Monitor ログで使用量とコストを管理する](../azure-monitor/platform/manage-cost-storage.md)方法について説明します。 価格レベルを選択したら、[データ保持期間を変更](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)できます。
+Azure Monitor ログは、企業内の、または Azure にデプロイされた任意のソースから毎日大量のデータを収集し、インデックスを付けて、格納する処理をスケーリングおよびサポートするように設計されています。 既定では、ログは 30 日間保持されますが、データ保持期間は最大 2 年間まで延長できます。 [Azure Monitor ログで使用量とコストを管理する](../azure-monitor/logs/manage-cost-storage.md)方法について説明します。 価格レベルを選択したら、[データ保持期間を変更](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 * その他のサンプルについては、Azure AD B2C の [SIEM ギャラリー](https://aka.ms/b2csiem)を参照してください。 
 
-* Azure Monitor での診断設定の追加と構成の詳細については、「[チュートリアル: Azure リソースからリソース ログを収集して分析する](../azure-monitor/insights/monitor-azure-resource.md)」を参照してください。
+* Azure Monitor での診断設定の追加と構成の詳細については、「[チュートリアル: Azure リソースからリソース ログを収集して分析する](../azure-monitor/essentials/monitor-azure-resource.md)」を参照してください。
 
 * イベント ハブへの Azure AD ログのストリーム配信の詳細については、「[チュートリアル: Azure Active Directory ログを Azure イベント ハブにストリーム配信する](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)」を参照してください。

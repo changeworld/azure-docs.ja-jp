@@ -154,8 +154,12 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: エージェントのバージョン履歴
           href: howto-password-ban-bad-on-premises-agent-versions.md
+    - name: 一時アクセス パス (プレビュー) の使用
+      href: howto-authentication-temporary-access-pass.md
     - name: SMS ベースの認証を使用する
       href: howto-authentication-sms-signin.md
+    - name: 双方向 SMS のサポート終了
+      href: how-to-authentication-two-way-sms-unsupported.md
     - name: メール アドレスのサインインを使用する
       href: howto-authentication-use-email-signin.md
     - name: Azure AD スマート ロックアウト
@@ -171,8 +175,8 @@
               href: active-directory-certificate-based-authentication-ios.md
     - name: レポーティング
       items:
-        - name: 使用状況と分析情報
-          href: howto-authentication-methods-usage-insights.md
+        - name: 認証方法のアクティビティ
+          href: howto-authentication-methods-activity.md
         - name: SSPR レポート
           href: howto-sspr-reporting.md
         - name: MFA レポート
@@ -245,6 +249,8 @@
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: サービスの制限と制約
       href: ../enterprise-users/directory-service-limits-restrictions.md
+    - name: FIDO2 互換性
+      href: fido2-compatibility.md
 - name: リソース
   items:
     - name: Azure フィードバック フォーラム

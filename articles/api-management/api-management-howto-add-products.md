@@ -4,14 +4,14 @@ description: このチュートリアルでは、Azure API Management で製品�
 author: mikebudzynski
 ms.service: api-management
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 2f298f240d8aa7a38b42a8c78ee3c90fe3423d10
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d0420b92fc94e0a1a9c8a4057f419a57a9909223
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993552"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "100545158"
 ---
 # <a name="tutorial-create-and-publish-a-product"></a>チュートリアル:製品を作成して発行する  
 
@@ -34,6 +34,8 @@ Azure API Management の "[*製品*](api-management-terminology.md#term-definiti
 
 ## <a name="create-and-publish-a-product"></a>製品を作成して発行する
 
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 1. Azure portal にサインインして、API Management インスタンスに移動します。
 1. 左側のナビゲーションで **[製品]**  >  **[+ 追加]** を選択します。
 1.  **[製品の追加]** ウィンドウで、以下の表に記載されている値を入力して製品を作成します。
@@ -53,10 +55,53 @@ Azure API Management の "[*製品*](api-management-terminology.md#term-definiti
 
 3. **[作成]** を選択して新しい製品を作成します。
 
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の使用を開始するには:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+製品を作成するには、[az apim product create](/cli/azure/apim/product#az_apim_product_create) コマンドを実行します。
+
+```azurecli
+az apim product create --resource-group apim-hello-word-resource-group \
+    --product-name "Contoso product" --product-id contoso-product \
+    --service-name apim-hello-world --subscription-required true \
+    --state published --description "This is a test."
+```
+
+作成した製品にさまざまな値を指定できます。
+
+   | パラメーター | 説明 |
+   |-----------|-------------|
+   | `--product-name` | [開発者ポータル](api-management-howto-developer-portal.md)で表示する名前です。 |
+   | `--description`  | 製品の目的、アクセスできる API、その他の詳細など、製品に関する情報を入力します。 |
+   | `--state`        | 製品を発行する場合は **[発行済み]** を選択します。 製品に含まれる API を呼び出すには、あらかじめ製品を発行しておく必要があります。 新しい製品は、既定では発行されず、**Administrators** グループのみに表示されます。 |
+   | `--subscription-required` | ユーザーが製品を使用するにはサブスクリプションが必要である場合はオンにします。 |
+   | `--approval-required` | この製品に対するサブスクリプションの申し込みを管理者の審査の下で承認または拒否する場合はオンにします。 オフの場合、サブスクリプションの申し込みは自動承認されます。 |
+   | `--subscriptions-limit` | 必要に応じて、複数同時に利用できるサブスクリプションの数を制限します。|
+   | `--legal-terms`         | サブスクライバーが製品を使用するにあたって同意する必要がある製品の使用条件を入力できます。 |
+
+現在の製品を表示するには、[az apim product list](/cli/azure/apim/product#az_apim_product_list) コマンドを使用します。
+
+```azurecli
+az apim product list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+製品を削除するには、[az apim product delete](/cli/azure/apim/product#az_apim_product_delete) コマンドを使用します。
+
+```azurecli
+az apim product delete --product-id contoso-product \
+    --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --delete-subscriptions true
+```
+
+---
+
 ### <a name="add-more-configurations"></a>構成をさらに追加する
 
 製品を保存した後、続けてその構成を行います。 API Management インスタンスで、 **[製品]** ウィンドウから製品を選択します。 次の項目を追加または更新します。
-
 
 |アイテム   |説明  |
 |---------|---------|
@@ -74,6 +119,7 @@ Azure API Management の "[*製品*](api-management-terminology.md#term-definiti
 
 ### <a name="add-an-api-to-an-existing-product"></a>既存の製品に API を追加する
 
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. API Management インスタンスの左側のナビゲーションで **[製品]** を選択します。
 1. 製品を選択し、 **[API]** を選択します。
@@ -81,6 +127,40 @@ Azure API Management の "[*製品*](api-management-terminology.md#term-definiti
 1. 少なくとも 1 つの API を選択し、 **[選択]** を選択します。
 
 :::image type="content" source="media/api-management-howto-add-products/02-create-publish-product-02.png" alt-text="既存の製品に API を追加する":::
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. マネージド API を表示するには、[az apim api list](/cli/azure/apim/api#az_apim_api_list) コマンドを使用します。
+
+   ```azurecli
+   az apim api list --resource-group apim-hello-word-resource-group \
+       --service-name apim-hello-world --output table
+   ```
+
+1. 製品に API を追加するには、[az apim product api add](/cli/azure/apim/product/api#az_apim_product_api_add) コマンドを実行します。
+
+   ```azurecli
+   az apim product api add --resource-group apim-hello-word-resource-group \
+       --api-id demo-conference-api --product-id contoso-product \
+       --service-name apim-hello-world
+   ```
+
+1. 追加を確認するには、[az apim product api list](/cli/azure/apim/product/api#az_apim_product_api_list) コマンドを使用します。
+
+   ```azurecli
+   az apim product api list --resource-group apim-hello-word-resource-group \
+       --product-id contoso-product --service-name apim-hello-world --output table
+   ```
+
+製品から API を削除するには、[az apim product api delete](/cli/azure/apim/product/api#az_apim_product_api_delete) コマンドを使用します。
+
+```azurecli
+az apim product api delete --resource-group apim-hello-word-resource-group \
+    --api-id demo-conference-api --product-id contoso-product \
+    --service-name apim-hello-world
+```
+
+---
 
 > [!TIP]
 > [REST API](/rest/api/apimanagement/2019-12-01/subscription/createorupdate) または PowerShell コマンドを通じてカスタム サブスクリプション キーを使用して、製品へのユーザーのサブスクリプションを作成または更新できます。

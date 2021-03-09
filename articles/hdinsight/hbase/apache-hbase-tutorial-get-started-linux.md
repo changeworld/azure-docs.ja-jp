@@ -1,19 +1,16 @@
 ---
 title: チュートリアル - Azure HDInsight で Apache HBase を使用する
 description: この Apache HBase のチュートリアルに従って、HDInsight で Hadoop を使い始めることができます。 HBase シェルからテーブルを作成し、Hive を使用したクエリを実行します。
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/14/2020
-ms.openlocfilehash: d24c63e3a2989173e718cd27fa43cecc50181047
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 01/22/2021
+ms.openlocfilehash: 5de98f5bf57626a408dd5bec8575856074f434c7
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533497"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101705672"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache HBase を使用する
 
@@ -136,7 +133,7 @@ HBase ([クラウド BigTable](https://cloud.google.com/bigtable/) の実装) �
 
 HBase では、いくつかの方法でテーブルにデータを読み込ことができます。  詳細については、 [一括読み込み](https://hbase.apache.org/book.html#arch.bulk.load)に関するページを参照してください。
 
-サンプルのデータ ファイルは、パブリック BLOB コンテナー `wasb://hbasecontacts\@hditutorialdata.blob.core.windows.net/contacts.txt` にあります。  このデータ ファイルの内容は次のとおりです。
+サンプルのデータ ファイルは、パブリック BLOB コンテナー `wasb://hbasecontacts@hditutorialdata.blob.core.windows.net/contacts.txt` にあります。  このデータ ファイルの内容は次のとおりです。
 
 `8396    Calvin Raji      230-555-0191    230-555-0191    5415 San Gabriel Dr.`
 
@@ -344,12 +341,18 @@ HDInsight の HBase には、クラスターを監視するための Web UI が�
    - tasks
    - ソフトウェア属性
 
+## <a name="cluster-recreation"></a>クラスターの再作成
+
+HBase クラスターを削除したら、同じ既定の BLOB コンテナーを使用して別の HBase クラスターを作成できます。 新しいクラスターでは、元のクラスターで作成した HBase テーブルを選択します。 ただし、不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。 
+
+HBase コマンド `disable 'Contacts'` を使用できます。 
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-不整合を回避するために、クラスターを削除する前に HBase テーブルを無効にしておくことをお勧めします。 HBase コマンド `disable 'Contacts'` を使用できます。 このアプリケーションを引き続き使用しない場合は、次の手順で作成した HBase クラスターを削除します。
+このアプリケーションを引き続き使用しない場合は、次の手順で作成した HBase クラスターを削除します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-1. 上部の **検索** ボックスに「 **HDInsight** 」と入力します。
+1. 上部の **検索** ボックスに「**HDInsight**」と入力します。
 1. **[サービス]** の下の **[HDInsight クラスター]** を選択します。
 1. 表示される HDInsight クラスターの一覧で、このチュートリアル用に作成したクラスターの横にある **[...]** をクリックします。
 1. **[削除]** をクリックします。 **[はい]** をクリックします。

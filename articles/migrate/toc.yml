@@ -36,6 +36,8 @@
           items:
             - name: Azure VM への移行のために VMware VM を評価する
               href: tutorial-assess-vmware-azure-vm.md
+            - name: Azure SQL への移行のために SQL インスタンスを評価する
+              href: tutorial-assess-sql.md
             - name: AVS への移行のために VMware VM を評価する
               href: tutorial-assess-vmware-azure-vmware-solution.md
         - name: Azure への移行のために Hyper-V VM を評価する
@@ -68,6 +70,12 @@
           href: tutorial-migrate-aws-virtual-machines.md
         - name: GCP インスタンスを移行する
           href: tutorial-migrate-gcp-virtual-machines.md
+    - name: コンテナー化
+      items:
+        - name: ASP.NET アプリのコンテナー化と AKS への移行
+          href: tutorial-containerize-aspnet-kubernetes.md
+        - name: Java Web アプリのコンテナー化と AKS への移行
+          href: tutorial-containerize-java-kubernetes.md
 - name: 概念
   items:
     - name: 全般
@@ -96,6 +104,8 @@
       items:
         - name: 評価の概要 (Azure VM への移行)
           href: concepts-assessment-calculation.md
+        - name: 評価の概要 (Azure SQL への移行)
+          href: concepts-azure-sql-assessment-calculation.md
         - name: 評価の概要 (AVS への移行)
           href: concepts-azure-vmware-solution-assessment-calculation.md
         - name: 評価のベスト プラクティス
@@ -138,8 +148,12 @@
               href: deploy-appliance-script-government.md
         - name: VMware VM の検出スコープの制限
           href: set-discovery-scope.md
+        - name: サーバーの資格情報を追加する方法
+          href: add-server-credentials.md
         - name: アプリケーション/ロール/機能の検出
           href: how-to-discover-applications.md
+        - name: 既存のプロジェクト内の SQL インスタンスの検出
+          href: how-to-discover-sql-existing-project.md
         - name: マシンの依存関係の分析 (エージェントベース)
           href: how-to-create-group-machine-dependencies.md
         - name: マシンの依存関係の分析 (エージェントレス)
@@ -152,6 +166,8 @@
           href: how-to-create-a-group.md
         - name: Azure VM の評価を作成する
           href: how-to-create-assessment.md
+        - name: Azure SQL の評価を作成する
+          href: how-to-create-azure-sql-assessment.md
         - name: AVS の評価を作成する
           href: how-to-create-azure-vmware-solution-assessment.md
         - name: SQL Server データベースにアクセスする
@@ -170,6 +186,8 @@
       items:
         - name: 移行ツールの追加
           href: how-to-migrate.md
+        - name: ExpressRoute を使用してレプリケートする
+          href: replicate-using-expressroute.md
         - name: マシンの移行の準備
           href: prepare-for-migration.md
         - name: Windows 2003 サーバーの移行を準備する
@@ -180,6 +198,8 @@
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
         - name: 移行をスケーリングする
           items:
+            - name: エージェントレス レプリケーション方式を使用して大規模な VMware VM を移行する方法
+              href: how-to-scale-out-for-migration.md
             - name: 多数の VM の移行の自動化
               href: how-to-migrate-at-scale.md
             - name: VMware の移行を自動化する方法

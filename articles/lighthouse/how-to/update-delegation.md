@@ -1,14 +1,14 @@
 ---
 title: 委任を更新する
 description: Azure Lighthouse に以前オンボードされた顧客の委任を更新する方法について説明します。
-ms.date: 12/03/2020
+ms.date: 02/16/2021
 ms.topic: how-to
-ms.openlocfilehash: eec5d1f2d34e8e3c9e0ded59cb111624b1981873
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: f0ed5222cdbac3d0e4d193941c2a6f233d15938c
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791341"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555770"
 ---
 # <a name="update-a-delegation"></a>委任を更新する
 
@@ -48,7 +48,7 @@ ms.locfileid: "98791341"
 委任へのアクセスの削除は、元の委任で[マネージド サービスの登録割り当て削除ロール](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)を付与された管理テナントのすべてのユーザーが実行できます。 管理テナントにこのロールを所有しているユーザーがいない場合は、[Azure portal でオファーへのアクセスを削除する](view-manage-service-providers.md#add-or-remove-service-provider-offers)ことを顧客に依頼できます。
 
 > [!TIP]
-> 上記の手順に従って前の委任を削除しても、新しい ARM テンプレートをデプロイできない場合は、[登録定義を完全に削除する](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)必要がある場合があります。 これは、顧客テナントの所有者ロールを持つすべてのユーザーが実行できます。  
+> 上記の手順に従って前の委任を削除しても、新しい ARM テンプレートをデプロイできない場合は、[登録定義を完全に削除する](/powershell/module/az.managedservices/remove-azmanagedservicesdefinition)必要がある場合があります。 これは、`Microsoft.Authorization/roleAssignments/write` のアクセス許可を持つ[所有者](../../role-based-access-control/built-in-roles.md#owner)などのロールが割り当てられている、顧客テナント内のすべてのユーザーが実行できます。  
 
 ## <a name="deploy-the-arm-template"></a>ARM テンプレートをデプロイする
 

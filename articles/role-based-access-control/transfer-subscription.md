@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 81224b5e16f3bca5da641bbb2e9c82dd59000e79
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185888"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555908"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
@@ -307,9 +307,9 @@ ms.locfileid: "98185888"
     az role definition create --role-definition <role_definition>
     ```
 
-### <a name="create-role-assignments"></a>ロールの割り当ての作成
+### <a name="assign-roles"></a>ロールを割り当てる
 
-- [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、ユーザー、グループ、サービス プリンシパルに対するロールの割り当てを作成します。 詳細については、「[AAzure RBAC と Azure CLI を使用してロールの割り当てを追加または削除する](role-assignments-cli.md)」を参照してください。
+- [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、ユーザー、グループ、サービス プリンシパルにロールを割り当てます。 詳細については、「[Azure CLI を使用して Azure ロールを割り当てる](role-assignments-cli.md)」を参照してください。
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
@@ -325,7 +325,7 @@ ms.locfileid: "98185888"
     | 仮想マシン スケール セット | [Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | その他のサービス | [Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、システム割り当てのマネージド ID に対するロールの割り当てを作成します。 詳細については、「[Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)」を参照してください。
+1. [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、システム割り当てマネージド ID にロールを割り当てます。 詳細については、「[Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)」を参照してください。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
@@ -341,7 +341,7 @@ ms.locfileid: "98185888"
     | 仮想マシン スケール セット | [Azure CLI を使用して仮想マシン スケール セットで Azure リソースのマネージド ID を構成する](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
     | その他のサービス | [Azure リソースのマネージド ID をサポートするサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Azure CLI を使用してユーザー割り当てマネージド ID を作成、一覧表示、または削除する](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、ユーザー割り当てのマネージド ID に対するロールの割り当てを作成します。 詳細については、「[Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)」を参照してください。
+1. [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、ユーザー割り当てマネージド ID にロールを割り当てます。 詳細については、「[Azure CLI を使用して、リソースにマネージド ID アクセスを割り当てる](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)」を参照してください。
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>

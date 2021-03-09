@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 30852b6b3f9a4b490c4b58fe07f34ee49c60fa9f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 250c1ef837793c2149ff653f395f40272cf43335
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955248"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384947"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Kubernetes ツールを使用して PostgreSQL Hyperscale サーバー グループを作成する
 
@@ -44,14 +44,14 @@ data:
   password: <your base64 encoded password>
 kind: Secret
 metadata:
-  name: example-login-secret
+  name: pg1-login-secret
 type: Opaque
 ---
 apiVersion: arcdata.microsoft.com/v1alpha1
 kind: postgresql-12
 metadata:
   generation: 1
-  name: example
+  name: pg1
 spec:
   engine:
     extensions:
@@ -107,7 +107,7 @@ echo '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>名前のカスタマイズ
 
-テンプレートにおいては、name 属性の値が "example" になっています。  これを変更できますが、DNS 名前付け標準に従う文字を使用する必要があります。  また、シークレットの名前も一致するように変更する必要があります。  たとえば、PostgreSQL Hyperscale サーバー グループの名前を "postgres1" に変更する場合は、シークレットの名前を "example-login-secret" から "postgres1-login-secret" に変更する必要があります
+このテンプレートには、name 属性の値として "pg1" が指定されています。  これを変更できますが、DNS 名前付け標準に従う文字を使用する必要があります。  また、シークレットの名前も一致するように変更する必要があります。  たとえば、PostgreSQL Hyperscale サーバー グループの名前を "pg2" に変更した場合は、シークレットの名前を "pg1-login-secret" から "pg2-login-secret" に変更する必要があります。
 
 ### <a name="customizing-the-engine-version"></a>エンジン バージョンのカスタマイズ
 
@@ -152,10 +152,10 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 PostgreSQL Hyperscale サーバー グループの作成が完了するまで数分間かかります。 次のコマンドを使用して、別のターミナル ウィンドウで進行状況を監視できます。
 
 > [!NOTE]
->  以下のコマンド例は、"postgres1" という名前の PostgreSQL Hyperscale サーバー グループと、"arc" という名前の Kubernetes 名前空間が作成済みであることを前提としています。  異なる名前空間や PostgreSQL Hyperscale サーバー グループ名を使用した場合は、"arc" と "postgres1" を実際の名前に置き換えることができます。
+>  下のコマンド例では、"pg1" という名前の PostgreSQL Hyperscale サーバー グループと、"arc" という名前の Kubernetes 名前空間を作成していることを前提としています。  異なる名前空間や PostgreSQL Hyperscale サーバー グループ名を使用した場合は、"arc" と "pg1" を実際の名前に置き換えることができます。
 
 ```console
-kubectl get postgresql-12/postgres1 --namespace arc
+kubectl get postgresql-12/pg1 --namespace arc
 ```
 
 ```console
@@ -168,7 +168,7 @@ kubectl get pods --namespace arc
 kubectl describe po/<pod name> --namespace arc
 
 #Example:
-#kubectl describe po/postgres1-0 --namespace arc
+#kubectl describe po/pg1-0 --namespace arc
 ```
 
 ## <a name="troubleshooting-creation-problems"></a>作成の問題のトラブルシューティング

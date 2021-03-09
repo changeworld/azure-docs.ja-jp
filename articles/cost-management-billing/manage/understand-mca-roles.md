@@ -5,14 +5,14 @@ author: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 02/05/2021
 ms.author: banders
-ms.openlocfilehash: 511c0ecdef45a882bcc3a427d5ec602b3ebabc66
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 00ac61567502984759c5db9837060c86aaee378d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673833"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593588"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Azure での Microsoft 顧客契約の管理ロールを理解する
 
@@ -100,6 +100,8 @@ Microsoft 顧客契約の請求先アカウントを管理するには、以下�
 |課金プロファイル プロパティを更新する |✔|✔|✘|✘|✘|✘|✘|
 |Azure の予約の購入を有効にする、Azure Marketplace での購入を有効にするなど、課金プロファイルで適用されるポリシーを表示する|✔|✔|✔|✔|✔|✔|✔|
 |課金プロファイルにポリシーを適用する |✔|✔|✘|✘|✘|✘|✘|
+|予約注文を管理する |✔|✔|✘|✘|✘|✘|✘|
+|予約注文を表示する |✔|✔|✔|✘|✘|✘|✘|
 
 ### <a name="manage-invoices-for-billing-profile"></a>課金プロファイルの請求書を管理する
 

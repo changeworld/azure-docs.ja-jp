@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/19/2020
 ms.author: trkeya
 author: trkeya
-ms.openlocfilehash: fd3fa04d2d7e868476838788dd9cf0e27c07aeca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2addf415c39691b4e662f304522a418aa8a778c2
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461751"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101730373"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
@@ -75,7 +75,7 @@ ARM テンプレートについてよく知らない場合は、「[Azure Resour
 
 | メタデータの種類   | パラメーターの型  | 説明     | 値の例    |
 |---|---|---|---|
-| **baseuri**     | string          | デプロイ パッケージのベース URI| `https:\//\<\..\>.blob.core.windows.net/\<\..\>` |
+| **baseuri**     | string          | デプロイ パッケージのベース URI| `https://<..>.blob.core.windows.net/<..>` |
 | **username**    | string          | 新しいランダムなユーザー名。| admin68876      |
 | **password**    | secure string    | 新しいランダムなパスワード | Lp!ACS\^2kh     |
 | **session id**   | string          | 一意の体験版セッション ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |

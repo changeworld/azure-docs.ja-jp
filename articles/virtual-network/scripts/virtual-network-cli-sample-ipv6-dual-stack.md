@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 537252af6fbcdcb77043ec055ac22db1904790a2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9058fb4b9b92719f7abcc534632f983cafe2aae8
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98217551"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550812"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-preview"></a>仮想ネットワークのサンプル スクリプト (プレビュー) で IPv6 エンドポイントを構成する
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample"></a>仮想ネットワークのサンプル スクリプトで IPv6 エンドポイントを構成する
 
 この記事では、Azure でデュアル スタック (IPv4 と IPv6) アプリケーションを展開する方法を示します。これには、デュアル スタック のサブネットを持つデュアル スタック仮想ネットワーク、デュアル (IPv4 と IPv6) のフロントエンド構成を持つロード バランサー、デュアル IP 構成、デュアル ネットワーク セキュリティ グループのルール、およびデュアル パブリック IP を持つ NIC の仮想マシンが含まれます。
 

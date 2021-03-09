@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/12/2021
-ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8e78fc5bd49aaf2b31fdc83ced132e2a39ca83d5
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180032"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100558912"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>アクティブでトレーニング済みのアプリをステージング エンドポイントまたは運用環境エンドポイントに発行する
 
@@ -57,7 +57,6 @@ ms.locfileid: "98180032"
 スロットを選択したら、次のように発行の設定を構成します。
 
 * センチメント分析
-* [スペル修正](luis-tutorial-bing-spellcheck.md)
 * 音声認識の準備
 
 発行後、これらの設定は **[管理]** セクションの **[Publish settings]\(発行の設定\)** ページで確認できます。 発行ごとに設定を変更できます。 発行を取り消すと、発行中に加えた変更も取り消されます。
@@ -79,37 +78,6 @@ Text Analytics キーを指定する必要はなく、Azure アカウントに�
 センチメント データは 1 と 0 の間のスコアで、1 に近いほどポジティブなセンチメントを示し、0 に近いほどネガティブな感情を示します。 `positive`、`neutral`、`negative` のセンチメント ラベルは、サポートされているカルチャによって異なります。 現時点では、センチメント ラベルがサポートされているのは英語のみです。
 
 感情分析での JSON エンドポイントの応答の詳細については、「[Sentiment analysis](luis-reference-prebuilt-sentiment.md)」(感情分析) をご覧ください。
-
-## <a name="spelling-correction"></a>スペル修正
-
-V3 Prediction API で、Bing Spellcheck API がサポートされるようになりました。 要求のヘッダーに Bing 検索リソースのキーを含めることで、アプリケーションにスペル チェックを追加できます。 既存の Bing リソースを既に所有している場合はそれを使用できます。または、[新規に作成](https://portal.azure.com/#create/Microsoft.BingSearch)してこのフィーチャーを使用できます。 
-
-|ヘッダー キー|ヘッダー値|
-|--|--|
-|`mkt-bing-spell-check-key`|リソースの **[Keys and Endpoint]\(キーとエンドポイント\)** ブレードにあるキー|
-
-スペルミスのあるクエリの予測出力の例:
-
-```json
-{
-  "query": "bouk me a fliht to kayro",
-  "prediction": {
-    "alteredQuery": "book me a flight to cairo",
-    "topIntent": "book a flight",
-    "intents": {
-      "book a flight": {
-        "score": 0.9480589
-      }
-      "None": {
-        "score": 0.0332136229
-      }
-    },
-    "entities": {}
-  }
-}
-```
-
-スペル修正は、LUIS ユーザーの発話予測の前に行われます。 応答では、元の発話 (スペルを含む) に対するすべての変更を確認できます。
 
 ## <a name="speech-priming"></a>音声認識の準備
 

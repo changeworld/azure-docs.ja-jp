@@ -3,18 +3,18 @@ title: Android マップ コントロールの概要 | Microsoft Azure Maps
 description: Azure Maps Android SDK について理解を深めます。 Android Studio でプロジェクトを作成する方法、SDK をインストールする方法、および対話型のマップを作成する方法を確認します。
 author: rbrundritt
 ms.author: richbrun
-ms.date: 12/10/2020
+ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.custom: mvc
-ms.openlocfilehash: a7533e079ca13f8ac891fa96f11f740a21c1a3dc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+zone_pivot_groups: azure-maps-android
+ms.openlocfilehash: 5888a5f34ef65fc1015b6e73af1d03368a8329b2
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680382"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102098521"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Maps Android SDK の概要
 
@@ -30,10 +30,15 @@ Azure Maps Android SDK には、マップの言語と地域ビューを設定す
 
 最初のオプションでは、静的な `setLanguage` メソッドと `setView` メソッドをグローバルに使用して、言語とビューの地域情報を `AzureMaps` クラスに渡します。 これにより、アプリに読み込まれたすべての Azure Maps コントロールに対して、既定の言語と地域ビューが設定されます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 static {
     //Set your Azure Maps Key.
     AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+
+    //Alternatively use Azure Active Directory authenticate.
+    //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
 
     //Set the language to be used by Azure Maps.
     AzureMaps.setLanguage("fr-FR");
@@ -42,6 +47,30 @@ static {
     AzureMaps.setView("Auto");
 }
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+companion object {
+    init {
+        //Set your Azure Maps Key.
+        AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+
+        //Alternatively use Azure Active Directory authenticate.
+        //AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+    
+        //Set the language to be used by Azure Maps.
+        AzureMaps.setLanguage("fr-FR");
+    
+        //Set the regional view to be used by Azure Maps.
+        AzureMaps.setView("Auto");
+    }
+}
+```
+
+::: zone-end
 
 2 つ目のオプションでは、言語とビュー情報をマップ コントロール XML に渡します。
 
@@ -57,6 +86,8 @@ static {
 
 3 つ目のオプションでは、マップの `setStyle` メソッドを使用して、マップの言語と地域ビューをプログラムで設定します。 これは、マップの言語と地域ビューを変更するときにいつでも実行できます。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 mapControl.onReady(map -> {
     map.setStyle(
@@ -65,6 +96,21 @@ mapControl.onReady(map -> {
     );
 });
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+mapControl.onReady(OnReady { map: AzureMap ->
+    map.setStyle(
+        language("fr-FR"),
+        view("Auto")
+    )
+})
+```
+
+::: zone-end
 
 言語が "fr-FR" に設定され、地域ビューが "Auto" に設定されている Azure Maps の例を次に示します。
 
@@ -101,9 +147,21 @@ Azure Maps Android SDK では、Azure Government クラウドがサポートさ�
 
 Azure Maps 認証の詳細が指定されているのと同じ場所で、次のコード行を追加して、Azure Maps Government クラウド ドメインを使用するようにマップに指示します。
 
+::: zone pivot="programming-language-java-android"
+
 ```java
 AzureMaps.setDomain("atlas.azure.us");
 ```
+
+::: zone-end
+
+::: zone pivot="programming-language-kotlin"
+
+```kotlin
+AzureMaps.setDomain("atlas.azure.us")
+```
+
+::: zone-end
 
 マップとサービスを認証するときは、Azure Government クラウド プラットフォームからの Azure Maps 認証の詳細を必ず使用してください。
 

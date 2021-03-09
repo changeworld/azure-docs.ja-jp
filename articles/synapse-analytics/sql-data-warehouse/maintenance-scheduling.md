@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 02/02/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1c5bc4400e99fb1c24e321e623aaee523b9c7383
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 886e99d6f56a008c694b3bcb366cfb4049f3528e
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85210985"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100590218"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>メンテナンス スケジュールを使用してサービスの更新とメンテナンスを管理する
 
@@ -38,7 +38,7 @@ Service Health 通知とリソース ヘルス チェック モニターとの�
 すべてのメンテナンス イベントの 24 時間前に事前通知が発行されますが、DWC400c と下位層はその対象ではありません。
 
 > [!NOTE]
-> 時間が重要な更新プログラムをデプロイする必要がある場合、高度な通知の時間が大幅に短縮されることがあります。
+> 時間が重要な更新プログラムをデプロイする必要がある場合、高度な通知の時間が大幅に短縮されることがあります。 これは、更新プログラムの重大な特質により、指定のメンテナンス期間外に行われる場合があります。
 
 メンテナンスが行われるという事前通知を受けても、通知にある期間中にメンテナンスを実行できない場合、キャンセル通知が届きます。 メンテナンスは、次の定期メンテナンス期間中に再開されます。
 
@@ -96,7 +96,7 @@ Synapse SQL プールに対するメンテナンス スケジュールを変更�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Monitor を使用してアラートを作成、表示、管理する方法について[詳しく知る](../../azure-monitor/platform/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
-- ログ アラート ルール用の Webhook アクションについて[詳しく知る](../..//azure-monitor/platform/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
-- アクション グループの作成と管理について[詳しく知る](../..//azure-monitor/platform/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+- Azure Monitor を使用してアラートを作成、表示、管理する方法について[詳しく知る](../../azure-monitor/alerts/alerts-metric.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+- ログ アラート ルール用の Webhook アクションについて[詳しく知る](../..//azure-monitor/alerts/alerts-log-webhook.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+- アクション グループの作成と管理について[詳しく知る](../..//azure-monitor/alerts/action-groups.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 - Azure Service Health について[詳しく知る](../../service-health/service-health-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。

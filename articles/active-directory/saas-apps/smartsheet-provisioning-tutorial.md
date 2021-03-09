@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: aa4e8c2baaaa0c8ccc9bcdda595f040fac72682f
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e9ee994564e175d3c41cfd5ce415ead8c67df353
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181444"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103551"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Smartsheet を構成する
 
@@ -137,22 +137,20 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 
 9. **[属性マッピング]** セクションで、Azure AD から Smartsheet に同期されるユーザー属性を確認します。 **[照合]** プロパティとして選択されている属性は、更新処理で Smartsheet のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
 
-   |属性|Type|
-   |---|---|
+   |属性|Type|フィルター処理のサポート|
+   |---|---|---|
+   |userName|String|&check;|
    |active|Boolean|
    |title|String|
-   |userName|String|
    |name.givenName|String|
    |name.familyName|String|
    |phoneNumbers[type eq "work"].value|String|
    |phoneNumbers[type eq "mobile"].value|String|
    |phoneNumbers[type eq "fax"].value|String|
+   |emails[type eq "work"].value|String|
    |externalId|String|
-   |roles[primary eq "True"].display|String|
-   |roles[primary eq "True"].type|String|
-   |roles[primary eq "True"].value|String|
    |roles|String|
-   urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|String|
@@ -188,6 +186,7 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 ## <a name="change-log"></a>ログの変更
 
 * 2020/06/16 - ユーザー向けにエンタープライズ拡張属性 "Cost Center"、"Division"、"Manager"、および "Department" のサポートが追加されました。
+* 2021/02/10 - ユーザー向けにコア属性 "emails[type eq "work"]" のサポートが追加されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

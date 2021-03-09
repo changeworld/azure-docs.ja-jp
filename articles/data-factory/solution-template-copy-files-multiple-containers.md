@@ -1,22 +1,18 @@
 ---
 title: 複数のコンテナーからのファイルのコピー
 description: Azure Data Factory を使用して複数のコンテナーからファイルをコピーするための、ソリューション テンプレート の使用方法について説明します。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-ms.reviewer: douglasl
-manager: anandsub
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: f78d0b02c9790234a63ef64200dcab72bc64c033
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ec7af1e81e0b295491420597636c8443f4d36512
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629427"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100376090"
 ---
 # <a name="copy-multiple-folders-with-azure-data-factory"></a>Azure Data Factory で複数のフォルダーをコピーする
 
@@ -33,7 +29,7 @@ ms.locfileid: "92629427"
 
 このテンプレートには、3 つのアクティビティが含まれています。
 - **GetMetadata** はソース ストレージ ストアをスキャンし、指定された親フォルダーからサブフォルダーの一覧を取得します。
-- **ForEach** は、 **GetMetadata** アクティビティからサブフォルダーの一覧を取得し、その一覧を反復処理して、各フォルダーを Copy アクティビティに渡します。
+- **ForEach** は、**GetMetadata** アクティビティからサブフォルダーの一覧を取得し、その一覧を反復処理して、各フォルダーを Copy アクティビティに渡します。
 - **Copy** は、各フォルダーをソース ストレージ ストアからコピー先ストアにコピーします。
 
 このテンプレートでは、次のパラメーターを定義します。

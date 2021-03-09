@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 02/26/2021
 ms.author: jushiman
-ms.openlocfilehash: 61897a790da8a5f52b1b8f8e208629e7755690fa
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 356afea7573b24649f682205d26823b4e24e7fbe
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97759740"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695194"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Azure での第 2 世代 VM のサポート
 
@@ -79,11 +79,13 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 
 | 第 2 世代の機能                | オンプレミス Hyper-V | Azure |
 |-------------------------------------|---------------------|-------|
-| セキュア ブート                         | :heavy_check_mark:  | :x:   |
+| セキュア ブート                         | :heavy_check_mark:  | トラステッド起動 (プレビュー) を使用   |
 | シールドされた VM                         | :heavy_check_mark:  | :x:   |
-| vTPM                                | :heavy_check_mark:  | :x:   |
-| 仮想化ベースのセキュリティ (VBS) | :heavy_check_mark:  | :x:   |
+| vTPM                                | :heavy_check_mark:  | トラステッド起動 (プレビュー) を使用  |
+| 仮想化ベースのセキュリティ (VBS) | :heavy_check_mark:  | トラステッド起動 (プレビュー) を使用   |
 | VHDX 形式                         | :heavy_check_mark:  | :x:   |
+
+詳細については、[トラステッド起動 (プレビュー)](trusted-launch.md) に関するページを参照してください。
 
 ## <a name="features-and-capabilities"></a>特徴と機能
 
@@ -105,7 +107,7 @@ Azure では現在、オンプレミスの Hyper-V が第 2 世代 VM に対し�
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | バックアップ/復元                    | :heavy_check_mark: | :heavy_check_mark: |
 | 共有イメージ ギャラリー              | :heavy_check_mark: | :heavy_check_mark: |
-| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :x:                |
+| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :heavy_check_mark:                |
 | [サーバー側暗号化](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>第 2 世代 VM の作成
@@ -206,7 +208,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     はい。 詳細については、[高速ネットワークを使用した VM の作成](../virtual-network/create-vm-accelerated-networking-cli.md)に関するページを参照してください。
 
 * **Azure の第 2 世代 VM では、セキュア ブートまたは vTPM がサポートされますか?**
-    Azure の第 1 世代と第 2 世代の VM では、どちらもセキュア ブートと vTPM はサポートされません。 
+    vTPM とセキュア ブートはどちらも、第 2 世代 VM のトラステッド起動 (プレビュー) の機能です。 詳細については、[トラステッド起動](trusted-launch.md)に関するページを参照してください。
     
 * **第 2 世代では VHDX はサポートされていますか?**  
     いいえ。第 2 世代 VM では VHD のみがサポートされています。
@@ -225,5 +227,7 @@ az vm image list --publisher Canonical --sku gen2 --output table --all
     1. [Gen2 VM をサポートする VM サイズ](#generation-2-vm-sizes)を検索していることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
+
+第 2 世代 VM での[トラステッド起動 (プレビュー)](trusted-launch-portal.md) の詳細を確認します。
 
 [Hyper-V の第 2 世代仮想マシン](/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)について学習します。

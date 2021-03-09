@@ -1,35 +1,57 @@
 ### YamlMime:Landing
-title: Azure Arc Kubernetes (プレビュー)
+title: Azure Arc 対応 Kubernetes
 summary: Azure Arc を使用して Kubernetes クラスターを管理する方法について説明します
 metadata:
-  title: Azure Arc Kubernetes
+  title: Azure Arc 対応 Kubernetes
   description: Azure でオンプレミスのマシンを管理する方法について説明します
-  author: 
+  author: shashankbarsin
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
-  ms.author: 
-  ms.openlocfilehash: 9eeddfefe451eb524484df8a1986c7ec736c4c0f
-  ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+  ms.date: 03/02/2021
+  ms.author: shasb
+  ms.openlocfilehash: e9acbb8206985fbc9edebba8d4183ca1a97736f7
+  ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97674374"
+  ms.lasthandoff: 03/04/2021
+  ms.locfileid: "102121662"
 landingContent:
-- title: Azure Arc を使用して Kubernetes クラスターを Azure に接続する
+- title: Azure Arc 対応 Kubernetes について
   linkLists:
   - linkListType: overview
     links:
     - text: Azure Arc 対応 Kubernetes とは
       url: overview.md
+    - text: Azure Arc 検証プログラム
+      url: validation-program.md
+  - linkListType: concept
+    links:
+    - text: エージェントのアーキテクチャ
+      url: conceptual-agent-architecture.md
+    - text: 構成と GitOps
+      url: conceptual-configurations.md
+    - text: GitOps を使用した CI/CD ワークフロー
+      url: conceptual-gitops-ci-cd.md
+    - text: よく寄せられる質問
+      url: faq.md
+- title: 作業開始
+  linkLists:
   - linkListType: quickstart
     links:
-    - text: クラスターの接続
-      url: connect-cluster.md
-  - linkListType: how-to-guide
+    - text: Azure Arc にクラスターを接続する
+      url: quickstart-connect-cluster.md
+- title: GitOps を使用して構成をデプロイする
+  linkLists:
+  - linkListType: tutorial
     links:
     - text: GitOps を使用して構成をデプロイする
-      url: use-gitops-connected-cluster.md
+      url: tutorial-use-gitops-connected-cluster.md
+    - text: GitOps を使用して CI/CD を実装する
+      url: tutorial-gitops-ci-cd.md
+- title: クラスタの構成、管理、監視
+  linkLists:
+  - linkListType: how-to-guide
+    links:
     - text: GitOps を使用して Helm グラフをデプロイする
       url: use-gitops-with-helm.md
     - text: Azure Policy を使用して GitOps を適用する

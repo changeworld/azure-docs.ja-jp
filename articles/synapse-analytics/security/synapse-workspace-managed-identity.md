@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7790bc2895449e8ab21cbd30d7da0e5529eb0562
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461306"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670681"
 ---
 # <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse ワークスペース マネージド ID
 
@@ -23,7 +23,7 @@ ms.locfileid: "96461306"
 
 Azure リソースのマネージド ID は、Azure Active Directory の機能です。 Azure AD で自動的に管理される ID を Azure サービスに提供する機能となります。 マネージド ID 機能を使用して、Azure AD 認証をサポートする任意のサービスを認証できます。
 
-Azure リソースのマネージド ID は、以前のマネージド サービス ID (MSI) の新しい名前です。 詳細については、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) に関するページを参照してください。
+Azure リソースのマネージド ID は、以前のマネージド サービス ID (MSI) の新しい名前です。 詳細については、[マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
 
 ## <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse ワークスペース マネージド ID
 

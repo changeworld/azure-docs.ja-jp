@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 64cdb41540d9750be8664dc60c2b6ceda6c324ca
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427991"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831928"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>チュートリアル:ビデオ分析用の IoT Edge インスタンスを作成する (Intel NUC)
 
@@ -148,6 +148,14 @@ IoT Edge デバイスに接続されたカメラの RTSP ストリームの URL 
 
 > [!TIP]
 > IoT Edge コンピューターで、VLC などのメディア プレーヤーを使用してカメラ ストリームを表示してみましょう。
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+アプリケーションを使い終えたら、次の手順で、作成したリソースをすべて削除することができます。
+
+1. IoT Central アプリケーションの **[管理]** セクションの **[お客様のアプリケーション]** ページに移動します。 次に、 **[削除]** を選択します。
+1. Azure portal で、**lva-rg** リソース グループを削除します。
+1. ローカル コンピューターで、**amp-viewer** Docker コンテナーを停止します。
 
 ## <a name="next-steps"></a>次のステップ
 

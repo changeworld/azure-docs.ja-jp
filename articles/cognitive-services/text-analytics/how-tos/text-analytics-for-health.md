@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 02/03/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 8159010486371d619aa14a845050a0eb38aaeda8
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: f7ba6363ec3a38d37ea3df0f76409289069638e8
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683532"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99537798"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>方法:Text Analytics for Health (プレビュー) を使用する
 
@@ -26,8 +26,8 @@ ms.locfileid: "97683532"
 
 Text Analytics for Health は、医師のメモ、退院要約、臨床ドキュメント、電子健康記録などの非構造化テキストからの、関連する医療情報の抽出とラベル付けが行われる、Text Analytics API サービスの機能です。  このサービスを利用するには、次の 2 つの方法があります。 
 
-* Web ベースの API (非同期) 
-* Docker コンテナー (同期)   
+* [Web ベースの API (非同期)](#structure-the-api-request-for-the-hosted-asynchronous-web-api)
+* [Docker コンテナー (同期)](#hosted-asynchronous-web-api-response)   
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Introducing-Text-Analytics-for-Health/player]
 
@@ -113,6 +113,9 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 ### <a name="structure-the-api-request-for-the-hosted-asynchronous-web-api"></a>ホストされた非同期 Web API に対する API 要求を作成する
 
 コンテナーとホストされた Web API の両方について、POST 要求を作成する必要があります。 [Postman](text-analytics-how-to-call-api.md)、cURL コマンド、または [Text Analytics for Health のホストされた API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health)の **API テスト コンソール** を使用して、POST 要求をすばやく作成し、目的のリージョンのホストされた Web API に送信することができます。 
+
+> [!NOTE]
+> 非同期 `/analyze` と `/health` の両方のエンドポイントは、次のリージョンでのみ使用できます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。  これらのエンドポイントへの要求を成功させるには、これらのリージョンのいずれかでリソースが作成されていることを確認してください。
 
 次に示すのは、Text Analytics for Health API 要求の POST 本文に添付される JSON ファイルの例です。
 

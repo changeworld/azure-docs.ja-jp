@@ -3,19 +3,16 @@ title: 予測データ パイプラインを作成する
 description: Azure Data Factory で Azure Machine Learning Studio (classic) のバッチ実行アクティビティを使用して、予測パイプラインを作成する方法について説明します。
 author: nabhishek
 ms.author: abnarain
-manager: shwang
-services: data-factory
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/16/2020
-ms.openlocfilehash: 50ef97bca0a5359c49ba2f18b1ec789ab076350a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 37a31891c3c1d812b396548036c4b59cc6523c2d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637736"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100375665"
 ---
 # <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Azure Machine Learning Studio (classic) と Azure Data Factory を使用して予測パイプラインを作成する
 
@@ -27,9 +24,9 @@ ms.locfileid: "92637736"
 
 [Azure Machine Learning Studio (classic)](https://azure.microsoft.com/documentation/services/machine-learning/) では、予測分析ソリューションをビルド、テスト、デプロイできます。 大まかに次の 3 つの手順で行われます。
 
-1. **トレーニング実験を作成する** 。 この手順を実行するには、Azure Machine Learning Studio (クラシック) を使用します。 Azure Machine Learning Studio (クラシック) は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
-2. **トレーニング実験を予測実験に変換する** 。 既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
-3. **Web サービスとしてデプロイする** 。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
+1. **トレーニング実験を作成する**。 この手順を実行するには、Azure Machine Learning Studio (クラシック) を使用します。 Azure Machine Learning Studio (クラシック) は、トレーニング データを活用した予測分析モデルのトレーニングとテストに使用できる、コラボレーションと視覚化に対応した開発環境です。
+2. **トレーニング実験を予測実験に変換する**。 既存のデータでモデルがトレーニングされ、それを使用して新しいデータをスコア付けする準備ができると、スコア付け用に実験を用意し、合理化します。
+3. **Web サービスとしてデプロイする**。 Azure Web サービスとしてスコア付け実験を発行できます。 この Web サービスのエンドポイントを使用して、モデルにデータを送信し、モデルの予測を受信できます。
 
 ### <a name="data-factory-and-azure-machine-learning-studio-classic-together"></a>Data Factory と Azure Machine Learning Studio (classic) の併用
 Azure Data Factory を使用すると、公開された [Azure Machine Learning Studio (classic)](https://azure.microsoft.com/documentation/services/machine-learning) Web サービスを利用して予測分析を行うパイプラインを簡単に作成できます。 Azure Data Factory パイプラインで **バッチ実行アクティビティ** を使用すると、Azure Machine Learning Studio (クラシック) Web サービスを呼び出して、データの予測をバッチで行うことができます。
@@ -39,7 +36,7 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning 
 1. 予測実験ではなく、トレーニング実験を Web サービスとして発行します。 前のシナリオで予測実験を Web サービスとして公開したのと同様にこの手順を Azure Machine Learning Studio (クラシック) で行います。
 2. Azure Machine Learning Studio (クラシック) バッチ実行アクティビティを使用して、トレーニング実験用 Web サービスを呼び出します。 基本的には、Azure Machine Learning Studio (クラシック) バッチ実行アクティビティを使用して、トレーニング Web サービスとスコア付け Web サービスの両方を呼び出すことができます。
 
-再トレーニングを実行したら、 **Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](update-machine-learning-models.md)」をご覧ください。
+再トレーニングを実行したら、**Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](update-machine-learning-models.md)」をご覧ください。
 
 ## <a name="azure-machine-learning-studio-classic-linked-service"></a>Azure Machine Learning Studio (classic) のリンクされたサービス
 
@@ -68,7 +65,7 @@ Azure Data Factory を使用すると、公開された [Azure Machine Learning 
 
 JSON 定義のプロパティについては、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。
 
-Azure Machine Learning Studio (classic) では、予測実験用にクラシック Web サービスと新しい Web サービスの両方がサポートされています。 Data Factory から使用する適切なサービスを選択できます。 Azure Machine Learning Studio (classic) のリンクされたサービスを作成するために必要な情報を取得するには、 https://services.azureml.net に移動します。ここには、(新しい) Web サービスとクラシック Web サービスがすべて表示されます。 アクセスする Web サービスをクリックし、 **[使用]** ページをクリックします。 **apiKey** プロパティの **主キー** と、 **mlEndpoint** プロパティの **バッチ要求** をコピーします。
+Azure Machine Learning Studio (classic) では、予測実験用にクラシック Web サービスと新しい Web サービスの両方がサポートされています。 Data Factory から使用する適切なサービスを選択できます。 Azure Machine Learning Studio (classic) のリンクされたサービスを作成するために必要な情報を取得するには、 https://services.azureml.net に移動します。ここには、(新しい) Web サービスとクラシック Web サービスがすべて表示されます。 アクセスする Web サービスをクリックし、 **[使用]** ページをクリックします。 **apiKey** プロパティの **主キー** と、**mlEndpoint** プロパティの **バッチ要求** をコピーします。
 
 ![Azure Machine Learning Studio (classic) Web サービス](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -213,7 +210,7 @@ Web サービス パラメーターを使用するシナリオを見てみまし
 > [!NOTE]
 > Web サービス パラメーターでは大文字と小文字が区別されるため、アクティビティ JSON に指定した名前が Web サービスによって公開されている名前と一致していることを確認してください。
 
-再トレーニングを実行したら、 **Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](update-machine-learning-models.md)」をご覧ください。
+再トレーニングを実行したら、**Azure Machine Learning Studio (クラシック) 更新リソース アクティビティ** を使用して、スコア付け Web サービス (Web サービスとして公開した予測実験) を、新しくトレーニングを行ったモデルで更新します。 詳しくは、「[更新リソース アクティビティを使用してモデルを更新する](update-machine-learning-models.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 別の手段でデータを変換する方法を説明している次の記事を参照してください。

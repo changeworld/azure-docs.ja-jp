@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5bfa4bf8a9d20cc1a7baf1b5432e68501d65a509
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a848c7c15bf786ba26b8a1fdb1dab41b9aa20b8d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221872"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575766"
 ---
 # <a name="integrate-update-management-with-microsoft-endpoint-configuration-manager"></a>Microsoft Endpoint Configuration Manager と Update Management を統合する
 
@@ -25,7 +25,7 @@ Microsoft Endpoint Configuration Manager でソフトウェア更新プログラ
 
 * [Azure Automation Update Management](overview.md) を Automation アカウントに追加しておく必要があります。
 * ご利用の Microsoft Endpoint Configuration Manager 環境で現在管理されている Windows サーバーも、Update Management が有効になっている Log Analytics ワークスペースにレポートを行う必要があります。
-* この機能は、Microsoft Endpoint Configuration Manager の現在のブランチ バージョン 1606 以降で有効になります。 Microsoft Endpoint Configuration Manager の中央管理サイトまたはスタンドアロンのプライマリ サイトを Azure Monitor ログと統合してコレクションをインポートするには、[Configuration Manager と Azure Monitor ログの接続](../../azure-monitor/platform/collect-sccm.md)に関するページをご確認ください。  
+* この機能は、Microsoft Endpoint Configuration Manager の現在のブランチ バージョン 1606 以降で有効になります。 Microsoft Endpoint Configuration Manager の中央管理サイトまたはスタンドアロンのプライマリ サイトを Azure Monitor ログと統合してコレクションをインポートするには、[Configuration Manager と Azure Monitor ログの接続](../../azure-monitor/logs/collect-sccm.md)に関するページをご確認ください。  
 * Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するように構成するか、Microsoft Endpoint Configuration Manager からセキュリティ更新プログラムを受信しない場合は Microsoft Update にアクセスできるように構成する必要があります。
 
 Azure IaaS でホストされているクライアントを既存の Microsoft Endpoint Configuration Manager 環境でどのように管理するかは、主に Azure データセンターとインフラストラクチャの間の接続に依存します。 この接続は、Microsoft Endpoint Configuration Manager インフラストラクチャに必要となる可能性のある設計変更や、これらの必要な変更をサポートするための関連コストに影響します。 続行する前に評価する必要がある計画上の考慮事項を把握するには、「[Azure の Configuration Manager - よく寄せられる質問](/configmgr/core/understand/configuration-manager-on-azure#networking)」を参照してください。

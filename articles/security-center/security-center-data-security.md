@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2020
 ms.author: memildin
-ms.openlocfilehash: 49533947ff01aea07eaacd9d761b6414fb672a1c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0c21c916d152188031212b47704dfb41d3f64a82
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92339477"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596281"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Security Center のデータ セキュリティ
 
@@ -82,8 +82,8 @@ Azure Defender を使用していない場合は、セキュリティ ポリシ�
 
 | ストリーム                                                                                | データ型                                                                                                                                                                                                          |
 |---------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md)                       | セキュリティに関するすべてのアラート、承認された Security Center の [Just-In-Time](security-center-just-in-time.md) アクセス要求、[適応型アプリケーション制御](security-center-adaptive-application.md)によって生成されたすべてのアラート。|
-| [Azure Monitor ログ](../azure-monitor/platform/data-platform.md)                      | すべてのセキュリティ アラート。                                                                                                                                                                                                |
+| [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)                       | セキュリティに関するすべてのアラート、承認された Security Center の [Just-In-Time](security-center-just-in-time.md) アクセス要求、[適応型アプリケーション制御](security-center-adaptive-application.md)によって生成されたすべてのアラート。|
+| [Azure Monitor ログ](../azure-monitor/data-platform.md)                      | すべてのセキュリティ アラート。                                                                                                                                                                                                |
 | [Azure Resource Graph](../governance/resource-graph/overview.md)                      | セキュリティ アラート、セキュリティに関する推奨事項、脆弱性評価の結果、セキュリティで保護されたスコア情報、コンプライアンス チェックのステータスなど。                                                                       |
 | [Azure Security Center REST API](/rest/api/securitycenter/) | セキュリティ アラート、セキュリティに関する推奨事項など。                                                                                                                                                                |
 |                                                                                       |                                                                                                                                                                                                                     |

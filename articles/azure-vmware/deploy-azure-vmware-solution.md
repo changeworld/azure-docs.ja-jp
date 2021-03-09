@@ -1,32 +1,27 @@
 ---
 title: Azure VMware Solution をデプロイして構成する
-description: 計画ステージで収集した情報を使用して、Azure VMware Solution プライベート クラウドをデプロイする方法について説明します。
+description: 計画ステージで収集した情報を使用して、Azure VMware Solution プライベート クラウドをデプロイして構成する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/09/2020
-ms.openlocfilehash: 7e31b9236a3c75009d15bde35019036b6db55cab
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.custom: contperf-fy21q3
+ms.date: 02/17/2021
+ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861522"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652736"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
-この記事では、[計画セクション](production-ready-deployment-steps.md)の情報を使用して、Azure VMware Solution をデプロイします。 情報を定義していない場合は、続行する前に[計画セクション](production-ready-deployment-steps.md)に戻ってください。
+この記事では、[計画セクション](production-ready-deployment-steps.md)の情報を使用して、Azure VMware Solution をデプロイおよび構成します。 
 
-## <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
+>[!IMPORTANT]
+>情報をまだ定義していない場合は、続行する前に[計画セクション](production-ready-deployment-steps.md)に戻ってください。
 
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
+## <a name="create-an-azure-vmware-solution-private-cloud"></a>Azure VMware Solution のプライベート クラウドを作成する
 
-## <a name="deploy-azure-vmware-solution"></a>Azure VMware Solution のデプロイ
-
-「[Azure VMware Solution のデプロイの計画](production-ready-deployment-steps.md)」という記事で収集した情報を使用します。
-
->[!NOTE]
->Azure VMware Solution をデプロイするには、サブスクリプションで、少なくとも共同作成者レベルである必要があります。
-
-[!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
+[Azure VMware Solution プライベート クラウドの作成](tutorial-create-private-cloud.md)に関するチュートリアルの前提条件と手順に従います。 [Azure portal](tutorial-create-private-cloud.md#azure-portal) または [Azure CLI](tutorial-create-private-cloud.md#azure-cli) を使用して、Azure VMware Solution のプライベート クラウドを作成できます。  
 
 >[!NOTE]
 >この手順全体の概要については、ビデオ「[Azure VMware Solution: デプロイ](https://www.youtube.com/embed/gng7JjxgayI)」をご覧ください。
@@ -40,15 +35,16 @@ Azure VMware Solution のデプロイ後に、vCenter および NSX に接続す
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Azure VMware Solution のジャンプ ボックスを作成する" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-[デプロイ プロセスの一部として識別または作成した](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution)仮想ネットワーク内に仮想マシン (VM) を作成するには、以下の手順に従います。 
+[デプロイ プロセスの一部として特定または作成した](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution)仮想ネットワーク内に仮想マシン (VM) を作成するには、次の手順に従います。 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
 ## <a name="connect-to-a-virtual-network-with-expressroute"></a>ExpressRoute を使用して仮想ネットワークに接続する
 
-デプロイ手順で仮想ネットワークを定義しておらず、Azure VMware Solution の ExpressRoute を既存の ExpressRoute ゲートウェイに接続する予定の場合は、以下の手順に従います。
+>[!IMPORTANT]
+>Azure のデプロイ画面で既に仮想ネットワークを定義した場合は、次のセクションに進んでください。
 
-Azure のデプロイ画面で既に仮想ネットワークを定義した場合は、次のセクションに進んでください。
+デプロイ手順で仮想ネットワークを定義しておらず、Azure VMware Solution の ExpressRoute を既存の ExpressRoute ゲートウェイに接続する予定の場合は、次の手順に従います。
 
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
@@ -56,7 +52,7 @@ Azure のデプロイ画面で既に仮想ネットワークを定義した場�
 
 ジャンプ ボックスは、Azure VMware Solution が ExpressRoute 回線を介して接続する仮想ネットワーク内にあります。  Azure で、ジャンプ ボックスのネットワーク インターフェイスに移動し、[有効なルートを表示](../virtual-network/manage-route-table.md#view-effective-routes)します。
 
-有効なルートの一覧には、Azure VMware Solution のデプロイの一部として作成されたネットワークが表示されるはずです。 この記事の、以前の[デプロイ手順](#deploy-azure-vmware-solution)の間に[定義した `/22` ネットワーク](production-ready-deployment-steps.md#ip-address-segment)から派生した複数のネットワークが表示されます。
+有効なルートの一覧には、Azure VMware Solution のデプロイの一部として作成されたネットワークが表示されるはずです。 [プライベート クラウドの作成](#create-an-azure-vmware-solution-private-cloud)時に[定義した `/22` ネットワーク](production-ready-deployment-steps.md#ip-address-segment)から派生した複数のネットワークが表示されます。  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware Solution から Azure Virtual Network にアドバタイズされたネットワーク ルートを確認する" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 
@@ -64,13 +60,13 @@ Azure のデプロイ画面で既に仮想ネットワークを定義した場�
 
 ## <a name="connect-and-sign-in-to-vcenter-and-nsx-t"></a>VCenter と NSX-T に接続してサインインする
 
-前の手順で作成したジャンプ ボックスにログインします。 ログインしたら Web ブラウザーを開き、vCenter および NSX の両方の管理コンソールに移動してログインします。  
+前の手順で作成したジャンプ ボックスにログインします。 ログインしたら Web ブラウザーを開き、vCenter および NSX-T Manager の両方に移動してログインします。  
 
-Azure portal で、vCenter と NSX-T の、管理コンソールの IP アドレスと資格情報を識別できます。  お使いのプライベート クラウドを選択してから、 **[概要]** ビューで **[ID]> [既定値]** を選択します。 
+Azure portal で、vCenter および NSX-T Manager コンソールの IP アドレスと資格情報を識別できます。  お使いのプライベート クラウドを選択してから、 **[概要]** ビューで **[ID]> [既定値]** を選択します。 
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Azure VMware Solution 上にネットワーク セグメントを作成する
 
-Azure VMware Solution 環境に新しいネットワーク セグメントを作成するには、NSX-T を使用します。  作成するネットワークは、[計画セクション](production-ready-deployment-steps.md)で定義しました。  それらを定義していない場合は、続行する前に[計画セクション](production-ready-deployment-steps.md)に戻ってください。
+Azure VMware Solution 環境に新しいネットワーク セグメントを作成するには、NSX-T Manager を使用します。  作成するネットワークは、[計画セクション](production-ready-deployment-steps.md)で定義しました。  それらを定義していない場合は、続行する前に[計画セクション](production-ready-deployment-steps.md)に戻ってください。
 
 >[!IMPORTANT]
 >定義した CIDR ネットワーク アドレス ブロックが、Azure 内やオンプレミス環境内のものと重複していないことを確認してください。  
@@ -79,7 +75,7 @@ Azure VMware Solution 環境に新しいネットワーク セグメントを作
 
 ## <a name="verify-advertised-nsx-t-segment"></a>アドバタイズされる NSX-T セグメントを確認する
 
-「[アドバタイズされるネットワーク ルートを確認する](#verify-network-routes-advertised)」の手順に戻ります。 一覧に、前の手順で作成したネットワーク セグメントを表す追加のルートが表示されます。  
+「[アドバタイズされるネットワーク ルートを確認する](#verify-network-routes-advertised)」の手順に戻ります。 前の手順で作成したネットワーク セグメントを表す他のルートが一覧に表示されます。  
 
 仮想マシンには、「[Azure VMware Solution 上にネットワーク セグメントを作成する](#create-a-network-segment-on-azure-vmware-solution)」の手順で作成したセグメントを割り当てます。  
 
@@ -104,7 +100,7 @@ NSX-T ネットワーク セグメントを作成したら、Azure VMware Soluti
 
 ## <a name="add-a-vm-on-the-nsx-t-network-segment"></a>NSX-T ネットワーク セグメントに VM を追加する
 
-Azure VMware Solution vCenter で VM をデプロイし、それを使用して、Azure VMware Solution ネットワークから以下への接続性を確認します。
+Azure VMware Solution vCenter で VM をデプロイし、それを使用して、Azure VMware Solution ネットワークから以下への接続を確認します。
 
 - インターネット
 - Azure 仮想ネットワーク
@@ -123,10 +119,9 @@ Azure VMware Solution vCenter で VM をデプロイし、それを使用して�
 2. Web ブラウザーでインターネット サイトに移動します。
 3. Azure Virtual Network にあるジャンプ ボックスに ping を実行します。
 
->[!IMPORTANT]
->この時点で、Azure VMware Solution が稼働しており、Azure Virtual Network とインターネットとの間に接続性が正常に確立されました。
+Azure VMware Solution が稼働しており、Azure Virtual Network およびインターネットとの間に接続が正常に確立されました。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 次のセクションでは、ExpressRoute 経由で Azure VMware Solution をオンプレミス ネットワークに接続します。
 > [!div class="nextstepaction"]

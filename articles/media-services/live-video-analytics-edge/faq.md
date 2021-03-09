@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge に関する FAQ - Azure
 description: この記事では、Live Video Analytics on IoT Edge に関してよく寄せられる質問に回答します。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880052"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101702251"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Live Video Analytics on IoT Edge の FAQ
 
@@ -230,7 +230,7 @@ microsoft.azure.media.live_video_analytics.extensibility.grpc.v1
 
 **Azure Monitor を使用して、クラウドまたは Edge のメディア グラフの正常性、メトリック、およびパフォーマンスを表示できますか。**
 
-はい、この方法はサポートされています。 詳細については、「[Azure Monitor メトリックの概要](../../azure-monitor/platform/data-platform-metrics.md)」を参照してください。
+はい、この方法はサポートされています。 詳細については、「[Azure Monitor メトリックの概要](../../azure-monitor/essentials/data-platform-metrics.md)」を参照してください。
 
 **Media Services IoT Edge モジュールを簡単に監視できるツールはありますか。**
 

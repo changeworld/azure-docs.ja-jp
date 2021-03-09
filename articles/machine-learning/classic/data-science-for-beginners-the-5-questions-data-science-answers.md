@@ -3,22 +3,22 @@ title: 'ML Studio (classic): 初心者向けデータ サイエンス解説 - Az
 description: 初心者向けデータ サイエンス解説では、「データ サイエンスが回答する 5 つの質問」から始まる 5 つのショート ビデオで基本的な概念を説明します。 Azure Machine Learning。
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: studio
+ms.subservice: studio-classic
 ms.topic: conceptual
 author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: ae4eca82df498f1aa8f9ef84691cecdf719d0d76
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e9bbadc95be3479da82d91e9a4a4f712fbc32c57
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307480"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100520393"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>初心者向けデータ サイエンス解説ビデオ 1:データ サイエンスが回答する 5 つの質問
 
-トップ データ サイエンティストによる " *初心者向けデータ サイエンス* " の 5 本の短いビデオでは、データ サイエンスの概要を簡単に説明します。 基本的な内容を扱っているビデオですが、データ サイエンスの実行に関心を持っている場合や、データ サイエンティストと共に作業する場合に便利です。
+トップ データ サイエンティストによる "*初心者向けデータ サイエンス*" の 5 本の短いビデオでは、データ サイエンスの概要を簡単に説明します。 基本的な内容を扱っているビデオですが、データ サイエンスの実行に関心を持っている場合や、データ サイエンティストと共に作業する場合に便利です。
 
 この最初のビデオでは、データ サイエンスが回答できる質問の種類について説明します。 このシリーズを最大限に活用するには、このビデオをすべて視聴してください。 [ビデオの一覧に移動する](#other-videos-in-this-series)
 <br>

@@ -3,17 +3,18 @@ title: PowerShell から Azure Image Builder を使用して Windows VM を作�
 description: Azure Image Builder PowerShell モジュールを使用して Windows VM を作成します。
 author: cynthn
 ms.author: cynthn
-ms.date: 06/17/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.service: virtual-machines-windows
-ms.subservice: imaging
+ms.service: virtual-machines
+ms.subervice: image-builder
+ms.colletion: windows
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f94147a09a6d9da75a0d04630822f1e6f738700a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 90d09763f2c9e167d6a0a34adbbc444ebad14c46
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200942"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101693460"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>プレビュー:PowerShell から Azure Image Builder を使用して Windows VM を作成する
 
@@ -65,10 +66,11 @@ Azure サブスクリプションで使用する次のリソースプロバイ�
 - Microsoft.Compute
 - Microsoft.KeyVault
 - Microsoft.Storage
+- Microsoft.Network
 - Microsoft.VirtualMachineImages
 
 ```azurepowershell-interactive
-Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages |
+Get-AzResourceProvider -ProviderNamespace Microsoft.Compute, Microsoft.KeyVault, Microsoft.Storage, Microsoft.VirtualMachineImages, Microsoft.Network |
   Where-Object RegistrationState -ne Registered |
     Register-AzResourceProvider
 ```
@@ -139,7 +141,7 @@ $identityNamePrincipalId = (Get-AzUserAssignedIdentity -ResourceGroupName $image
 .json 構成ファイルをダウンロードし、この記事で定義した設定に基づいてファイルに変更を加えます。
 
 ```azurepowershell-interactive
-$myRoleImageCreationUrl = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json'
+$myRoleImageCreationUrl = 'https://raw.githubusercontent.com/azure/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json'
 $myRoleImageCreationPath = "$env:TEMP\myRoleImageCreation.json"
 
 Invoke-WebRequest -Uri $myRoleImageCreationUrl -OutFile $myRoleImageCreationPath -UseBasicParsing
@@ -231,13 +233,25 @@ $disSharedImg = New-AzImageBuilderDistributorObject @disObjParams
 Azure Image Builder のカスタマイズ オブジェクトを作成します。
 
 ```azurepowershell-interactive
-$ImgCustomParams = @{
+$ImgCustomParams01 = @{
   PowerShellCustomizer = $true
   CustomizerName = 'settingUpMgmtAgtPath'
   RunElevated = $false
-  Inline = @("mkdir c:\\buildActions", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
+  Inline = @("mkdir c:\\buildActions", "mkdir c:\\buildArtifacts", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
 }
-$Customizer = New-AzImageBuilderCustomizerObject @ImgCustomParams
+$Customizer01 = New-AzImageBuilderCustomizerObject @ImgCustomParams01
+```
+
+2 番目の Azure Image Builder のカスタマイズ オブジェクトを作成します。
+
+```azurepowershell-interactive
+$ImgCustomParams02 = @{
+  FileCustomizer = $true
+  CustomizerName = 'downloadBuildArtifacts'
+  Destination = 'c:\\buildArtifacts\\index.html'
+  SourceUri = 'https://raw.githubusercontent.com/azure/azvmimagebuilder/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
+}
+$Customizer02 = New-AzImageBuilderCustomizerObject @ImgCustomParams02
 ```
 
 Azure Image Builder テンプレートを作成します。
@@ -248,7 +262,7 @@ $ImgTemplateParams = @{
   ResourceGroupName = $imageResourceGroup
   Source = $srcPlatform
   Distribute = $disSharedImg
-  Customize = $Customizer
+  Customize = $Customizer01, $Customizer02
   Location = $location
   UserAssignedIdentityId = $identityNameResourceId
 }
@@ -306,7 +320,7 @@ $ArtifactId = (Get-AzImageBuilderRunOutput -ImageTemplateName $imageTemplateName
 New-AzVM -ResourceGroupName $imageResourceGroup -Image $ArtifactId -Name myWinVM01 -Credential $Cred
 ```
 
-## <a name="verify-the-customization"></a>カスタマイズの確認
+## <a name="verify-the-customizations"></a>カスタマイズを確認する
 
 VM を作成したときに設定したユーザー名とパスワードを使用して、VM へのリモート デスクトップ接続を作成します。 VM 内で PowerShell を開き、次の例のように `Get-Content` を実行します。
 
@@ -319,6 +333,23 @@ Get-Content -Path C:\buildActions\buildActionsOutput.txt
 ```Output
 Azure-Image-Builder-Was-Here
 ```
+
+同じ PowerShell セッションから、次の例に示すように、ファイル `c:\buildArtifacts\index.html` が存在するか調べて、2 番目のカスタマイズが正常に完了したことを確認します。
+
+```azurepowershell-interactive
+Get-ChildItem c:\buildArtifacts\
+```
+
+結果は、イメージのカスタマイズ プロセス中にダウンロードされたファイルを示すディレクトリの一覧になります。
+
+```Output
+    Directory: C:\buildArtifacts
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          29/01/2021    10:04            276 index.html
+```
+
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 01/12/2020
+ms.date: 01/28/2020
 ms.author: b-juche
-ms.openlocfilehash: c914ab007f482e4d2b560b1cb461e27d4f4442ec
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 0079c123f908a38cc1e4923790439f18352bf3ce
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133159"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574642"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
@@ -35,7 +35,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
 
 ## <a name="considerations"></a>考慮事項
 
-* 「[Active Directory 接続の要件](azure-netapp-files-create-volumes-smb.md#requirements-for-active-directory-connections)」を満たしていることを確認します。 
+* 「[Active Directory 接続の要件](create-active-directory-connections.md#requirements-for-active-directory-connections)」を満たしていることを確認します。 
 * DNS サーバーに逆引き参照ゾーンを作成してから、その逆引き参照ゾーンに AD ホストマシンのポインター (PTR) レコードを追加します。 そうしないと、デュアルプロトコル ボリュームの作成は失敗します。
 * NFS クライアントが最新であり、オペレーティング システムの最新の更新プログラムが実行されていることを確認します。
 * AD で Active Directory (AD) LDAP サーバーが稼働していることを確認します。 そのためには、AD マシンで [Active Directory ライトウェイト ディレクトリ サービス (AD LDS)](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/hh831593(v=ws.11)) ロールをインストールして構成します。
@@ -51,6 +51,8 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
     | `Unix`    | NFS   | NFSv3 モード ビット   | UNIX  | NFS と Windows   |
     | `Ntfs`    | Windows   | NTFS ACL     | NTFS  |NFS と Windows|
 * NFS を使用して NTFS セキュリティ スタイル ボリュームをマウントする UNIX ユーザーは、UNIX `root` の場合は Windows ユーザー `root`、その他のすべてのユーザーの場合は `pcuser` として認証されます。 NFS の使用中、ボリュームをマウントする前に、これらのユーザー アカウントが Active Directory に存在していることを確認してください。 
+* 大規模なトポロジがあり、デュアル プロトコル ボリュームを使用した `Unix` セキュリティ スタイル、または拡張グループを使用した LDAP を使用する場合、Azure NetApp Files がトポロジ内のすべてのサーバーにはアクセスできなくなる可能性があります。  この状況が発生した場合は、アカウント チームに問い合わせて支援を受けてください。  <!-- NFSAAS-15123 --> 
+* デュアルプロトコル ボリュームを作成するために、サーバー ルート CA 証明書は必要ありません。 これは、LDAP over TLS が有効になっている場合にのみ必要です。
 
 
 ## <a name="create-a-dual-protocol-volume"></a>デュアルプロトコル ボリュームを作成する
@@ -138,4 +140,4 @@ NFS クライアントを構成するには、「[Azure NetApp Files 用に NFS 
 ## <a name="next-steps"></a>次の手順  
 
 * [Azure NetApp Files 用に NFS クライアントを構成する](configure-nfs-clients.md)
-* [デュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)
+* [SMB またはデュアルプロトコル ボリュームのトラブルシューティング](troubleshoot-dual-protocol-volumes.md)

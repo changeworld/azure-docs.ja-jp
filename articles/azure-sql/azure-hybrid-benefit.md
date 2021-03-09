@@ -5,18 +5,18 @@ description: Azure SQL Database と SQL Managed Instance の割引に既存の S
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: features
-ms.custom: sqldbrb=4, devx-track-azurecli
+ms.custom: sqldbrb=4
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 11/13/2019
-ms.openlocfilehash: 872b36eae9142473885885d5bf5ad3fa10ae5ccb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 51cf4a4d3aa3cb4654b141a98064460a7152fcec
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841599"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737457"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure ハイブリッド特典 - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -89,8 +89,8 @@ SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特�
 
 |ライセンス フットプリント|SQL Server 向け Azure ハイブリッド特典の内容|
 |---|---|
-|SA を含む SQL Server Enterprise Edition の中核的なお客様|<li>General Purpose SKU または Business Critical SKU のいずれかで基本料金を支払うことができる</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
-|SA を含む SQL Server Standard Edition の中核的なお客様|<li>General Purpose SKU のみで基本料金を支払うことができる</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
+|SA を含む SQL Server Enterprise Edition の中核的なお客様|<li>Hyperscale、General Purpose または Business Critical SKU で基本料金を支払うことができる</li><br><li>オンプレミスの 1 コア = Hyperscale SKU の 4 コア</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
+|SA を含む SQL Server Standard Edition の中核的なお客様|<li>Hyperscale および General Purpose SKU のみで基本料金を支払うことができる</li><br><li>オンプレミスの 1 コア = Hyperscale SKU の 1 コア</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
 |||
 
 

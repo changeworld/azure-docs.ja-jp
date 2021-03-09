@@ -17,7 +17,7 @@ ms.locfileid: "97937044"
 
 このチュートリアルでは、Azure Functions の[プライベート サイト アクセス](./functions-networking-options.md#private-endpoint-connections)を有効にする方法について説明します。 プライベート サイト アクセスを使用すると、自分の関数コードを特定の仮想ネットワークからしかトリガーできないように設定できます。
 
-プライベート サイト アクセスは、関数アプリへのアクセスを特定の仮想ネットワークに限定する必要があるような状況で役立ちます。 たとえば、関数アプリの対象を特定の組織の従業員や、特定の仮想ネットワーク内のサービス (別の Azure 関数、Azure 仮想マシン、AKS クラスターなど) に限定することができます。
+プライベート サイト アクセスは、Function App へのアクセスを特定の仮想ネットワークに限定する必要があるような状況で役立ちます。 たとえば、Function App の対象を特定の組織の従業員や、特定の仮想ネットワーク内のサービス (別の Azure 関数、Azure 仮想マシン、AKS クラスターなど) に限定することができます。
 
 Function App が仮想ネットワーク内の Azure リソースにアクセスする必要がある (つまり[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)経由で接続されている) 場合、[仮想ネットワークの統合](./functions-create-vnet.md)が必要となります。
 
@@ -130,11 +130,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="create-an-azure-functions-app"></a>Azure Functions アプリを作成する
 
-次の手順では、[従量課金プラン](consumption-plan.md)を使用して Azure に関数アプリを作成します。 後からこのチュートリアルの中で、このリソースに自分の関数コードをデプロイします。
+次の手順では、[従量課金プラン](consumption-plan.md)を使用して Azure にFunction App を作成します。 後からこのチュートリアルの中で、このリソースに自分の関数コードをデプロイします。
 
 1. ポータルで、リソース グループ ビューの上部にある **[追加]** を選択します。
 1. **[Compute] > [Function App]** の順に選択します。
-1. _[基本]_ セクションで、下の表で指定されている Function App の設定を使用します。
+1. _[基本]_ セクションで、下の表で指定されているFunction App の設定を使用します。
 
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |
@@ -159,7 +159,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 次の手順では、仮想ネットワーク上のリソースだけが関数を呼び出せるように[アクセス制限](../app-service/app-service-ip-restrictions.md)を構成します。
 
-[プライベート サイト](functions-networking-options.md#private-endpoint-connections) アクセスは、関数アプリと特定の仮想ネットワークとの間に Azure 仮想ネットワークの[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を作成することによって実現します。 アクセス制限は、サービス エンドポイントを用いて導入されます。 特定の仮想ネットワーク内から発信されたトラフィックしか、指定されたリソースにアクセスできないようサービス エンドポイントによって制限されます。 指定されたリソースとは、このケースで言えば Azure 関数が該当します。
+[プライベート サイト](functions-networking-options.md#private-endpoint-connections) アクセスは、Function App と特定の仮想ネットワークとの間に Azure 仮想ネットワークの[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を作成することによって実現します。 アクセス制限は、サービス エンドポイントを用いて導入されます。 特定の仮想ネットワーク内から発信されたトラフィックしか、指定されたリソースにアクセスできないようサービス エンドポイントによって制限されます。 指定されたリソースとは、このケースで言えば Azure 関数が該当します。
 
 1. Function App 内で、 _[設定]_ セクションのヘッダーの下にある **[ネットワーク]** リンクを選択します。
 1. _[ネットワーク]_ ページは、Azure Front Door、Azure CDN、アクセス制限を構成するための出発点となります。
@@ -172,16 +172,16 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. _[アクセス制限]_ ページを見ると、新しい制限が存在することがわかります。 _[エンドポイントの状態]_ が Disabled から Provisioning になり、最終的に Enabled になるまでに数秒かかる場合があります。
 
     >[!IMPORTANT]
-    > 関数アプリにはそれぞれ、関数アプリのデプロイを管理するための [[高度なツール (Kudu)] サイト](../app-service/app-service-ip-restrictions.md#restrict-access-to-an-scm-site)があります。 このサイトには、`<FUNCTION_APP_NAME>.scm.azurewebsites.net` 形式の URL からアクセスします。 Kudu サイトでアクセス制限を有効にすると、ローカルの開発者ワークステーションからプロジェクト コードがデプロイされなくなり、デプロイを実行するには仮想ネットワーク内にエージェントが必要になります。
+    > Function App にはそれぞれ、Function App のデプロイを管理するための [[高度なツール (Kudu)] サイト](../app-service/app-service-ip-restrictions.md#restrict-access-to-an-scm-site)があります。 このサイトには、`<FUNCTION_APP_NAME>.scm.azurewebsites.net` 形式の URL からアクセスします。 Kudu サイトでアクセス制限を有効にすると、ローカルの開発者ワークステーションからプロジェクト コードがデプロイされなくなり、デプロイを実行するには仮想ネットワーク内にエージェントが必要になります。
 
 ## <a name="access-the-functions-app"></a>Function App にアクセスする
 
-1. 先ほど作成した Function App に戻ります。  _[概要]_ セクションで URL をコピーします。
+1. 先ほど作成したFunction App に戻ります。  _[概要]_ セクションで URL をコピーします。
 
     >[!div class="mx-imgBorder"]
-    >![関数アプリの URL を取得する](./media/functions-create-private-site-access/access-function-overview.png)
+    >![Function App の URL を取得する](./media/functions-create-private-site-access/access-function-overview.png)
 
-    次に、仮想ネットワークの外部にあるコンピューターから Function App にアクセスしようとすると、アクセスが禁止されていることを示す HTTP 403 ページが返されます。
+    次に、仮想ネットワークの外部にあるコンピューターからFunction App にアクセスしようとすると、アクセスが禁止されていることを示す HTTP 403 ページが返されます。
 1. リソース グループに戻り、以前に作成した仮想マシンを選択します。 VM からサイトにアクセスするためには、Azure Bastion サービス経由で VM に接続する必要があります。
 1. **[接続]** を選択し、 **[Bastion]** を選択します。
 1. 適切なユーザー名とパスワードを入力して仮想マシンにログインします。
@@ -199,7 +199,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     * [コマンド ライン](./create-first-function-cli-csharp.md)
     * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
-1. Azure Functions プロジェクトを発行するときに、このチュートリアルの中で作成した Function App リソースを選択します。
+1. Azure Functions プロジェクトを発行するときに、このチュートリアルの中で作成したFunction App  リソースを選択します。
 1. 関数がデプロイされていることを確認します。
 
     >[!div class="mx-imgBorder"]
@@ -212,7 +212,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     >[!div class="mx-imgBorder"]
     >![関数の URL をコピーする](./media/functions-create-private-site-access/get-function-url.png)
 
-1. URL を Web ブラウザーに貼り付けます。 次に、仮想ネットワークの外部にあるコンピューターから Function App にアクセスしようとすると、アプリへのアクセスが禁止されていることを示す HTTP 403 応答が返されます。
+1. URL を Web ブラウザーに貼り付けます。 次に、仮想ネットワークの外部にあるコンピューターからFunction App にアクセスしようとすると、アプリへのアクセスが禁止されていることを示す HTTP 403 応答が返されます。
 
 ## <a name="invoke-the-function-from-the-virtual-network"></a>仮想ネットワークから関数を呼び出す
 

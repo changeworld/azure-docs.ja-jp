@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: dde9575a70ea80ad262bc01bb9d5d0015c803427
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d311ea3158e1f9d53c51fe239103039849597d11
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94543019"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579191"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバーの低速クエリ ログ (プレビュー)
 
@@ -39,7 +39,7 @@ MySQL の低速クエリ ログの詳細については、MySQL エンジンの�
 
 ## <a name="access-slow-query-logs"></a>低速クエリ ログにアクセスする
 
-低速クエリ ログは、Azure Monitor 診断設定と統合されています。 MySQL フレキシブル サーバーで低速クエリ ログを有効にしたら、そのログを Azure Monitor ログ、Event Hubs、または Azure Storage に出力できます。 診断設定の詳細については、[診断ログのドキュメント](../../azure-monitor/platform/platform-logs-overview.md)を参照してください。 Azure portal で診断設定を有効にする方法の詳細については、[低速クエリ ログに関するポータルの記事](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)を参照してください。
+低速クエリ ログは、Azure Monitor 診断設定と統合されています。 MySQL フレキシブル サーバーで低速クエリ ログを有効にしたら、そのログを Azure Monitor ログ、Event Hubs、または Azure Storage に出力できます。 診断設定の詳細については、[診断ログのドキュメント](../../azure-monitor/essentials/platform-logs-overview.md)を参照してください。 Azure portal で診断設定を有効にする方法の詳細については、[低速クエリ ログに関するポータルの記事](how-to-configure-slow-query-logs-portal.md#set-up-diagnostics)を参照してください。
 
 次の表に、低速クエリ ログの出力を示します。 出力方法に応じて、含まれるフィールドとそれらが表示される順序が異なることがあります。
 

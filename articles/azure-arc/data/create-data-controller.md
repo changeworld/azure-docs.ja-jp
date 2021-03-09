@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 329df78bb5829695b95fcca5b7ed7e1439ced821
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608784"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101688367"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーを作成する
 
@@ -37,7 +37,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 
 > [!IMPORTANT]
 > * Kubernetes のサポートされている最小バージョンは 1.17 です。 追加情報については、[既知の問題](./release-notes.md#known-issues)を参照してください。 
-> * サポートされる OCP の最小バージョンは 4.3 です。
+> * サポートされる OCP の最小バージョンは 4.5 です。
 > * 環境と Azure の間に必要な接続については、「[接続要件](connectivity.md)」を参照してください。
 > * 永続ストレージを構成する方法の詳細については、「[ストレージ構成ガイダンス](storage-configuration.md)」を参照してください。
 > * Azure Kubernetes Service を使用している場合は、クラスターのワーカー ノードの VM サイズが少なくとも **Standard_D8s_v3** であり、**Premium ディスク** を使用している必要があります。 クラスターは複数の可用性ゾーンにまたがることはできません。 
@@ -54,7 +54,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 - **データ コントローラーのユーザー名** - データ コントローラー管理者ユーザーの任意のユーザー名。
 - **データ コントローラーのパスワード** - データ コントローラー管理者ユーザーのパスワード。
 - **Kubernetes 名前空間の名前** - データ コントローラーを作成する Kubernetes 名前空間の名前。
-- **接続モード** - クラスターの [接続モード](./connectivity.md)。 現時点では、"間接" のみサポートされています。
+- **接続モード** - 接続モードによって、Azure Arc 対応データ サービス環境から Azure への接続の程度が決定されます。 現在、プレビューでは、間接接続モードと直接接続モードのみがサポートされています。  詳細については、[接続モード](./connectivity.md)に関するページを参照してください。 
 - **Azure サブスクリプション ID** - Azure 内のデータ コントローラー リソースを作成する場所の Azure サブスクリプション GUID。
 - **Azure リソース グループ名** - Azure 内のデータ コントローラー リソースを作成するリソース グループの名前。
 - **Azure の場所** - Azure でデータ コントローラー リソース メタデータが格納される Azure の場所。 利用可能なリージョンの一覧については、「[Azure グローバル インフラストラクチャ/リージョン別の製品](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc)」を参照してください。

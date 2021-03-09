@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出す Web API を登録する - Microsoft ID プラットフォーム | Azure
+title: Web API を呼び出す Web API を登録する | Azure
+titleSuffix: Microsoft identity platform
 description: ダウンストリーム Web API を呼び出す Web API を構築する方法について説明します (アプリの登録)
 services: active-directory
 author: jmprieur
@@ -11,16 +12,16 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 790580160ec236d1923dc28b9990d2675c253b44
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: af1047c5f890b1b88ae6d043a30704e84b8dc079
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442686"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584316"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>Web API を呼び出す Web API: アプリの登録
 
-ダウンストリーム Web API を呼び出す Web API は、保護された Web API と同じ登録を持ちます。 そのため、「[保護された Web API: アプリの登録](scenario-protected-web-api-app-registration.md)」の手順に従う必要があります。
+ダウンストリーム Web API を呼び出す Web API は、保護された Web API と同じ登録を持ちます。 「[保護された Web API: アプリの登録](scenario-protected-web-api-app-registration.md)」の手順に従う必要があります。
 
 Web アプリは現在 Web API を呼び出すため、機密クライアント アプリケーションになります。 そのため、追加の登録情報が必要になります。このアプリでは、Microsoft ID プラットフォームとシークレット (クライアントの資格情報) を共有する必要があります。
 

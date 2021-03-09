@@ -7,12 +7,12 @@ manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 4ab32cd37d732cd9f177363da547edd22bd5af77
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1fc21b6338accef8e22b2e41ad2017d24ab8bd38
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349267"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710466"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -97,7 +97,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 |[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
 |[Immersive Reader](./immersive-reader/overview.md)|x|||
-|[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
+|[Ink Recognizer](/previous-versions/azure/cognitive-services/Ink-Recognizer/overview)|x|x||
 |[Language Understanding (LUIS)](./LUIS/what-is-luis.md)||x||
 |[Personalizer](./personalizer/what-is-personalizer.md)|○*|○*|x|
 |[QnA Maker](./QnAMaker/Overview/overview.md)||x||
@@ -127,7 +127,7 @@ Cognitive Services では、ユーザーに対してトレーニング済みの�
 
 |Cognitive Service|モデル情報|
 |--|--|
-|[Custom Vision](./custom-vision-service/overview.md)|Tensorflow for Android、CoreML for iOS11、ONNX for Windows ML に対して[エクスポート](./Custom-Vision-Service/export-model-python.md)|
+|[Custom Vision](./custom-vision-service/overview.md)|Tensorflow for Android、CoreML for iOS11、ONNX for Windows ML に対して[エクスポート](./custom-vision-service/export-model-python.md)|
 
 ## <a name="learn-more"></a>詳細情報
 

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 55814dff5cba572e2e22b5a0f9971bc920e32372
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786041"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526641"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Azure Key Vault のシークレットについて
 
@@ -74,7 +74,7 @@ Key Vault でアクセスを制御するための攻略ガイドについては�
 - [CLI を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-cli.md)
 - [PowerShell を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-powershell.md)
 - [Azure portal を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-portal.md)
-- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する (プレビュー)](../general/rbac-guide.md)
+- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../general/rbac-guide.md)
 
 ## <a name="secret-tags"></a>シークレットのタグ  
 タグの形式で、アプリケーション固有の追加メタデータを指定できます。 Key Vault は最大 15 個のタグをサポートし、それぞれが 256 文字の名前と 256 文字の値を持つことができます。  
@@ -124,7 +124,7 @@ Key Vault でアクセスを制御するための攻略ガイドについては�
 - [CLI を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-cli.md)
 - [PowerShell を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-powershell.md)
 - [Azure portal を使用して Key Vault アクセス ポリシーを割り当てる](../general/assign-access-policy-portal.md)
-- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する (プレビュー)](../general/rbac-guide.md)
+- [Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../general/rbac-guide.md)
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9457c610b256dd4602ef0dc51a47eeffb3c63b49
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705151"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936200"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Anomaly Detector API の使用に関するベスト プラクティス
 
@@ -34,9 +34,9 @@ Anomaly Detector API のバッチの検出エンドポイントにより、時�
 * 季節による時系列。不定期異常あり。
 * フラットな傾向のある時系列。不定期に上昇/下落あり。 
 
-リアルタイム データ監視にバッチの異常検出を使用したり、上記の特性を持たない時系列データで使用することはお勧めしません。 
+バッチの異常検出をリアルタイム データ監視に使用したり、上記の特性を持たない時系列データで使用したりすることはお勧めしません。 
 
-* バッチの検出が作成され、1 つのモデルのみに適用されます。各ポイントの検出は、一連のコンテキストで実行されます。 時系列データが季節に関係なく上下する傾向がある場合、ある時点での変化 (データの下落と上昇) はモデルで見落とされる可能性があります。 同様に、データ セット内の後からのものよりも重要性が低い一部の変更ポイントは、モデルに組み込まれるだけの重要性がないとみなされる可能性があります。
+* バッチの検出では 1 つのモデルのみが作成され、適用されます。各ポイントの検出は、全系列のコンテキストで実行されます。 時系列データが季節に関係なく上下する傾向がある場合、ある時点での変化 (データの下落と上昇) はモデルで見落とされる可能性があります。 同様に、データ セット内の後からのものよりも重要性が低い一部の変更ポイントは、モデルに組み込まれるだけの重要性がないとみなされる可能性があります。
 
 * バッチの検出は、分析対象のポイント数により、リアルタイムのデータ監視を実施する際に、直近ポイントの異常状態の検出よりも遅くなります。
 
@@ -52,7 +52,7 @@ Anomaly Detector API のバッチの検出エンドポイントにより、時�
 
 ## <a name="data-preparation"></a>データの準備
 
-Anomaly Detector API では、JSON 要求オブジェクトへフォーマットされた時系列データを受け入れます。 時系列データは、一定期間にわたって順番に記録された数値データです。 API のパフォーマンスを改善するために、複数の時間枠の時系列データを Anomaly Detector API エンドポイントに送信できます。 送信できるデータ ポイントの最小数は 12 ポイントで、最大数は 8640 ポイントです。 [粒度](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview)は、データがサンプリングされる速度と定義されています。 
+Anomaly Detector API では、JSON 要求オブジェクトへフォーマットされた時系列データを受け入れます。 時系列データは、一定期間にわたって順番に記録された数値データです。 API のパフォーマンスを改善するために、複数の時間枠の時系列データを Anomaly Detector API エンドポイントに送信できます。 送信できるデータ ポイントの最小数は 12 ポイントで、最大数は 8640 ポイントです。 [粒度](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity)は、データがサンプリングされる速度と定義されています。 
 
 Anomaly Detector API に送信されるデータ ポイントには、有効な協定世界時 (UTC) のタイムスタンプと、数値が含まれている必要があります。 
 
@@ -87,7 +87,7 @@ Anomaly Detector API に送信されるデータ ポイントには、有効な�
 
 ### <a name="aggregate-distributed-data"></a>分散データを集計する
 
-Anomaly Detector API は均等に分散された時系列に最適です。 データがランダムに分散されている場合は、時間の単位 (たとえば、分単位、時間単位、日単位など) 別に集計する必要があります。
+Anomaly Detector API は均等に分散された時系列に最適です。 データがランダムに分散されている場合は、時間の単位 (分単位、時間単位、日単位など) 別に集計する必要があります。
 
 ## <a name="anomaly-detection-on-data-with-seasonal-patterns"></a>季節性パターンを使用したデータの異常検出
 
@@ -95,7 +95,7 @@ Anomaly Detector API は均等に分散された時系列に最適です。 デ�
 
 JSON 要求を作成するときに `period` を指定すると、異常検出の待機時間を最大で 50% 短縮できます。 `period` は、時系列でパターンが繰り返されるまでのデータ ポイント数を大まかに指定する整数です。 たとえば、1 日あたり 1 つのデータ ポイントを持つ時系列の `period` は `7` となり、1 時間あたり 1 つのデータ ポイントを (毎週同じパターンで) 持つ時系列の `period` は `7*24` となります。 データのパターンが不明な場合は、このパラメーターを指定する必要はありません。
 
-最良の結果を得るには、4 つの`period` に相当するデータ ポイントと、追加で 1 つのデータ ポイントを指定します。 たとえば、上記で説明した毎週のパターンを持つ時間単位のデータでは、要求本文で 673 個のデータ ポイント (`7 * 24 * 4 + 1`) を指定する必要があります。
+最良の結果を得るには、4 つの `period` に相当するデータ ポイントと、追加で 1 つのデータ ポイントを指定します。 たとえば、上記で説明した毎週のパターンを持つ時間単位のデータでは、要求本文で 673 個のデータ ポイント (`7 * 24 * 4 + 1`) を指定する必要があります。
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>リアルタイム監視用のデータのサンプリング
 

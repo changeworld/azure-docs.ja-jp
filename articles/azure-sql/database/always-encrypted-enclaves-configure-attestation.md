@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 664733f3d4c4e4bf17440db0323580c5d2c8c2ce
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733822"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100555656"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Azure SQL 論理サーバー用に Azure Attestation を構成する
 
@@ -114,7 +114,7 @@ Write-Host "Your attestation URL is: " $attestationUrl
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Azure portal を使用してアクセス許可を割り当てる
 
-構成証明プロバイダーの構成証明リーダー ロールに Azure SQL サーバーの ID を割り当てるには、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」の一般的な手順に従います。 **[ロールの割り当ての追加]** ペインで、次のようにします。
+構成証明プロバイダーの構成証明リーダー ロールに Azure SQL サーバーの ID を割り当てるには、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」の一般的な手順に従います。 **[ロールの割り当ての追加]** ペインで、次のようにします。
 
 1. **[Role]\(ロール\)** ドロップダウンで、 **[Attestation Reader]\(構成証明リーダー\)** ロールを選択します。
 1. **[選択]** フィールドに、検索する Azure SQL サーバーの名前を入力します。
@@ -143,7 +143,7 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-詳細については、「[Azure PowerShell を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples)」を参照してください。
+詳細については、「[Azure PowerShell を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-powershell.md#assign-role-examples)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

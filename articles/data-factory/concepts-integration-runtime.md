@@ -1,22 +1,18 @@
 ---
 title: 統合ランタイム
 description: Azure Data Factory の統合ランタイムについて。
-services: data-factory
 ms.author: abnarain
 author: nabhishek
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: d5e20b1fc0ce32eae8dc2888fdda982f0de95d90
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 911674a80b531a50cfb429c5dc0ff41f1aaceb08
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636648"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389945"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム 
 
@@ -24,10 +20,10 @@ ms.locfileid: "92636648"
 
 Integration Runtime (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
 
-- **Data Flow** : マネージド Azure コンピューティング環境で [データ フロー](concepts-data-flow-overview.md)を実行します。  
-- **データ移動** :パブリック ネットワーク内のデータ ストアとプライベート ネットワーク (オンプレミスまたは仮想プライベート ネットワーク) 内のデータ ストアをまたいでデータをコピーします。 組み込みコネクタ、形式の変換、列のマッピング、パフォーマンスとスケーラビリティに優れたデータ転送に関するサポートを提供します。
-- **アクティビティのディスパッチ** :Azure Databricks、Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server などのさまざまなコンピューティング サービスで実行される変換アクティビティをディスパッチして監視します。
-- **SSIS パッケージの実行** :マネージド Azure コンピューティング環境で SQL Server Integration Services (SSIS) パッケージをネイティブに実行します。
+- **Data Flow**: マネージド Azure コンピューティング環境で [データ フロー](concepts-data-flow-overview.md)を実行します。  
+- **データ移動**:パブリック ネットワーク内のデータ ストアとプライベート ネットワーク (オンプレミスまたは仮想プライベート ネットワーク) 内のデータ ストアをまたいでデータをコピーします。 組み込みコネクタ、形式の変換、列のマッピング、パフォーマンスとスケーラビリティに優れたデータ転送に関するサポートを提供します。
+- **アクティビティのディスパッチ**:Azure Databricks、Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server などのさまざまなコンピューティング サービスで実行される変換アクティビティをディスパッチして監視します。
+- **SSIS パッケージの実行**:マネージド Azure コンピューティング環境で SQL Server Integration Services (SSIS) パッケージをネイティブに実行します。
 
 Data Factory で、アクティビティは、実行されるアクションを定義します。 リンクされたサービスは、ターゲットのデータ ストアやコンピューティング サービスを定義します。 統合ランタイムは、アクティビティとリンクされたサービスとを橋渡しします。  リンクされたサービスまたはアクティビティによって参照され、アクティビティが実行されたりディスパッチされたりするコンピューティング環境を提供します。 これにより、できるだけターゲットのデータ ストアやコンピューティング サービスに近いリージョンでアクティビティを実行して効率を最大化できる一方、セキュリティとコンプライアンスの必要も満たせます。
 
@@ -180,9 +176,9 @@ Azure IR の特定の場所を設定することができます。その場合�
 
 コピー アクティビティの場合、データ フローの方向を定義するのに、ソースとシンクのリンクされたサービスが必要です。 どの統合ランタイム インスタンスを使用してコピーを実行するかを決めるために、次のロジックが使用されます。 
 
-- **2 つのクラウド データ ソース間でのコピー** : ソースとシンクの両方のリンクされたサービスで Azure IR を使用している場合、ADF では、場所が指定されている場合は、そのリージョンの Azure IR が使用されます。自動解決 IR (既定) が選択されている場合は、「 [統合ランタイムの場所](#integration-runtime-location)」セクションで説明したとおり、Azure IR の場所が自動的に決定されます。
-- **クラウド データ ソースとプライベート ネットワーク内のデータ ソースの間でのコピー** : ソースかシンクのいずれかのリンクされたサービスがセルフホステッド IR を指している場合、そのセルフホステッド統合ランタイム上でコピー アクティビティが実行されます。
-- **プライベート ネットワーク内の 2 つのデータ ソース間でのコピー** : ソースとシンクの両方のリンクされたサービスが同じ統合ランタイム インスタンスを指す必要があり、その統合ランタイムを使用してコピー アクティビティが実行されます。
+- **2 つのクラウド データ ソース間でのコピー**: ソースとシンクの両方のリンクされたサービスで Azure IR を使用している場合、ADF では、場所が指定されている場合は、そのリージョンの Azure IR が使用されます。自動解決 IR (既定) が選択されている場合は、「[統合ランタイムの場所](#integration-runtime-location)」セクションで説明したとおり、Azure IR の場所が自動的に決定されます。
+- **クラウド データ ソースとプライベート ネットワーク内のデータ ソースの間でのコピー**: ソースかシンクのいずれかのリンクされたサービスがセルフホステッド IR を指している場合、そのセルフホステッド統合ランタイム上でコピー アクティビティが実行されます。
+- **プライベート ネットワーク内の 2 つのデータ ソース間でのコピー**: ソースとシンクの両方のリンクされたサービスが同じ統合ランタイム インスタンスを指す必要があり、その統合ランタイムを使用してコピー アクティビティが実行されます。
 
 ### <a name="lookup-and-getmetadata-activity"></a>Lookup および GetMetadata アクティビティ
 

@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: cdd32185d1ffddb4c6bc3d62b91690f68dec17ca
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 902348063a24b50d1de0a821d9d6e67931cc53cd
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014724"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99582538"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Web API を呼び出すモバイル アプリを登録する
 
@@ -79,9 +79,9 @@ B2C の機関およびポリシーを渡すソーシャル ID を使用してユ
 
 ### <a name="username-password-authentication"></a>ユーザー名とパスワード認証
 
-アプリでユーザー名とパスワード認証のみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 このフローは、Microsoft ID プラットフォーム バージョン 2.0 エンドポイントへのラウンドトリップを実行します。 アプリケーションが特定の URI でコールバックされることはありません。
+アプリでユーザー名とパスワード認証のみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 このフローによって、Microsoft ID プラットフォームへのラウンド トリップが実行されます。 アプリケーションが特定の URI でコールバックされることはありません。
 
-ただし、アプリケーションをパブリック クライアント アプリケーションとして識別する必要があります。 そのためには次を行います。
+ただし、アプリケーションはパブリック クライアント アプリケーションとして識別してください。 そのためには次を行います。
 
 1. 引き続き <a href="https://portal.azure.com/" target="_blank">Azure portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> の **[アプリの登録]** でアプリを選択し、 **[認証]** を選択します。
 1. **[詳細設定]**  >  **[Allow public client flows]\(パブリック クライアント フローを許可する\)**  >  **[Enable the following mobile and desktop flows:]\(次のモバイルとデスクトップのフローを有効にする\)** で **[はい]** を選択します。

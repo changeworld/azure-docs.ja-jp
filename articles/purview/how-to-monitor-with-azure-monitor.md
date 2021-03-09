@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 22c69288479e0247e499a33c2e818c19f7edb2ae
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 4cb3965d359980856c238cd563ed8b761754660b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879950"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101667746"
 ---
 # <a name="azure-purview-metrics-in-azure-monitor"></a>Azure Monitor での Azure Purview メトリック
 
@@ -24,7 +24,7 @@ Azure Purview の管理者は、Azure Monitor を使用して、Purview アカ�
 
 ## <a name="aggregated-metrics"></a>集計されたメトリック
 
-メトリックには、Purview アカウントの Azure portal からアクセスできます。 メトリックへのアクセスは、Purview アカウントのロールの割り当てによって制御されます。 ユーザーはメトリックを確認するためには、Azure Purview の "監視閲覧者" ロールに属している必要があります。 ロールのアクセス レベルの詳細については、[監視閲覧者ロールのアクセス許可](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles)に関する記事をご覧ください。
+メトリックには、Purview アカウントの Azure portal からアクセスできます。 メトリックへのアクセスは、Purview アカウントのロールの割り当てによって制御されます。 ユーザーはメトリックを確認するためには、Azure Purview の "監視閲覧者" ロールに属している必要があります。 ロールのアクセス レベルの詳細については、[監視閲覧者ロールのアクセス許可](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles)に関する記事をご覧ください。
 
 Purview アカウントを作成したユーザーは、メトリックを表示するためのアクセス許可を自動的に取得します。 他のユーザーがメトリックを表示できるようにするには、次の手順に従って **監視閲覧者** ロールに追加します。
 
@@ -58,7 +58,7 @@ Azure Purview ユーザーは、Azure Purview アカウントの管理センタ�
 
 ### <a name="available-metrics"></a>使用可能なメトリック
 
-Azure portal のメトリック セクションの使用方法を理解するには、次の 2 つのドキュメントを事前に確認してください。 [メトリックス エクスプローラーの概要](../azure-monitor/platform/metrics-getting-started.md)に関する記事と、[メトリックス エクスプローラーの高度な機能](../azure-monitor/platform/metrics-charts.md)に関する記事です。
+Azure portal のメトリック セクションの使用方法を理解するには、次の 2 つのドキュメントを事前に確認してください。 [メトリックス エクスプローラーの概要](../azure-monitor/essentials/metrics-getting-started.md)に関する記事と、[メトリックス エクスプローラーの高度な機能](../azure-monitor/essentials/metrics-charts.md)に関する記事です。
 
 次の表に、Azure portal で確認できるメトリックの一覧を示します。
 
@@ -75,7 +75,7 @@ Azure portal のメトリック セクションの使用方法を理解するに
 
 手順に従って、Azure Purview アカウントの診断設定を作成します。
 
-1. 次の記事に従って、プラットフォーム ログとメトリックを収集するための新しい診断設定を作成します。[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/platform/diagnostic-settings.md) 宛先は Azure ストレージ アカウントとしてのみ選択します。
+1. 次の記事に従って、プラットフォーム ログとメトリックを収集するための新しい診断設定を作成します。[プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する](../azure-monitor/essentials/diagnostic-settings.md) 宛先は Azure ストレージ アカウントとしてのみ選択します。
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png" alt-text="診断ログの作成を示すスクリーンショット。" lightbox="./media/how-to-monitor-with-azure-monitor/step-one-diagnostic-setting.png":::
 
@@ -83,7 +83,7 @@ Azure portal のメトリック セクションの使用方法を理解するに
 
    :::image type="content" source="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png" alt-text="診断ログ用のストレージ アカウントの割り当てを示すスクリーンショット。" lightbox="./media/how-to-monitor-with-azure-monitor/step-two-diagnostic-setting.png":::
 
-新しく作成されたストレージ アカウントでログの受信が開始されるまでに最大 15 分かかります。 [Azure Storage アカウントでのリソース ログのデータ保持とスキーマを確認します](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)。 診断ログが構成されると、イベントがストレージ アカウントに送られるようになります。
+新しく作成されたストレージ アカウントでログの受信が開始されるまでに最大 15 分かかります。 [Azure Storage アカウントでのリソース ログのデータ保持とスキーマを確認します](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)。 診断ログが構成されると、イベントがストレージ アカウントに送られるようになります。
 
 ### <a name="scanstatuslogevent"></a>ScanStatusLogEvent
 

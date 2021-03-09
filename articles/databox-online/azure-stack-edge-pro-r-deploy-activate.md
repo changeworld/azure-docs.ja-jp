@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/19/2020
+ms.date: 02/23/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro R device so I can use it to transfer data to Azure.
-ms.openlocfilehash: c1408c25ea7e5d805d17e084899b0ffeb6cfec28
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bae12b5ad7ce6c079161f42e1d6fe3e6c08e3f4b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96464436"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101727534"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-r-device"></a>チュートリアル:Azure Stack Edge Pro R デバイスをアクティブにする
 
 このチュートリアルでは、ローカル Web UI を使用してご利用の Azure Stack Edge Pro R デバイスをアクティブにする方法について説明します。
 
-このアクティブ化プロセスの所要時間は約 5 分です。
+このアクティブ化プロセスの所要時間は約 5 分です。  
 
 このチュートリアルで学習した内容は次のとおりです。
 
@@ -48,7 +48,7 @@ ms.locfileid: "96464436"
 
     ![ローカル Web UI の [Cloud details]\(クラウドの詳細\) ページ 1](./media/azure-stack-edge-pro-r-deploy-activate/activate-1.png)
     
-3. **[アクティブ化]** ペインで次の操作を実行します。
+3. **[アクティブ化]** ウィンドウで次の操作を実行します。
     1. [Azure Stack Edge Pro R のアクティブ化キーの取得](azure-stack-edge-pro-r-deploy-prep.md#get-the-activation-key)に関するセクションの説明に従って取得した **アクティブ化キー** を入力します。
 
     1. デバイスの正常性状態に基づいて Microsoft がログを収集できるようにするために、プロアクティブなログ収集を有効にすることができます。 この方法で収集されたログは、Azure Storage アカウントにアップロードされます。

@@ -3,24 +3,24 @@ title: チュートリアル:WPF (C#) を使って翻訳アプリを作成する
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、単一のサブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックを実行するための WPF アプリを作成します。
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 0665dcbc8de518c5759c52a8fc3aec26859566d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023618"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728010"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
 
-このチュートリアルでは、単一サブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックに Azure Cognitive Service API を利用する [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf?view=vs-2019) アプリを作成します。 具体的には、アプリから Translator と [Bing Spell Check](https://azure.microsoft.com/services/cognitive-services/spell-check/) の API を呼び出します。
+このチュートリアルでは、単一サブスクリプション キーを使ってテキスト翻訳、言語検出、スペル チェックに Azure Cognitive Service API を利用する [Windows Presentation Foundation (WPF)](/visualstudio/designers/getting-started-with-wpf) アプリを作成します。 具体的には、アプリから Translator と [Bing Spell Check](https://azure.microsoft.com/services/cognitive-services/spell-check/) の API を呼び出します。
 
 WPF とは デスクトップ クライアント アプリを作成する UI フレームワークです。 WPF 開発プラットフォームでは、アプリ モデル、リソース、コントロール、グラフィックス、レイアウト、データ バインディング、ドキュメント、セキュリティなど、広範なアプリ開発機能がサポートされています。 .NET Framework のサブセットなので、以前に ASP.NET または Windows フォームを使って .NET Framework でアプリを作成したことがある場合、そのプログラミングの経験を活かすことができます。 WPF では、Extensible Application Markup Language (XAML) を使って、アプリ プログラミングの宣言型モデルを提供します。これについては、後のセクションで確認します。
 
@@ -41,7 +41,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 | サービス | 機能 | 説明 |
 |---------|---------|-------------|
 | [変換者] | [言語の取得](./reference/v3-0-languages.md) | テキスト翻訳がサポートされている言語の完全な一覧を取得します。 |
-| [変換者] | [Translate](./reference/v3-0-translate.md) | 70 を超す言語にテキストを翻訳できます。 |
+| [変換者] | [Translate](./reference/v3-0-translate.md) | 90 の言語と方言にテキストを翻訳できます。 |
 | [変換者] | [Detect](./reference/v3-0-detect.md) | 入力テキストの言語を検出します。 検出の信頼度スコアが含まれます。 |
 | Bing Spell Check | [スペル チェック](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | スペル ミスを修正して、翻訳精度を向上させます。 |
 
@@ -90,7 +90,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 1. これらの参照をプロジェクトに追加したら、 **[OK]** をクリックして、 **[参照マネージャー]** を閉じることができます。
 
 > [!NOTE]
-> アセンブリ参照の詳細については、「[方法:参照マネージャーを使用して参照を追加または削除する](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019)」を参照してください。
+> アセンブリ参照の詳細については、「[方法:参照マネージャーを使用して参照を追加または削除する](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager)」を参照してください。
 
 ### <a name="install-newtonsoftjson"></a>NewtonSoft.Json をインストールする
 
@@ -264,7 +264,7 @@ Visual Studio に、アプリのユーザー インターフェイスのプレ�
 
 ## <a name="get-supported-languages"></a>サポートされている言語を取得する
 
-Translator では、現在、70 を超える言語がサポートされています。 今後も新しい言語のサポートが追加される予定なので、作成するアプリでは、言語の一覧をハードコーディングせずに、Translator によって公開される Languages リソースを呼び出すことをお勧めします。
+Translator では、現在、90 の言語と方言がサポートされています。 今後も新しい言語のサポートが追加される予定なので、作成するアプリでは、言語の一覧をハードコーディングせずに、Translator によって公開される Languages リソースを呼び出すことをお勧めします。
 
 このセクションでは、翻訳可能な言語の一覧が必要であることを指定した、Languages リソースへの `GET` 要求を作成します。
 

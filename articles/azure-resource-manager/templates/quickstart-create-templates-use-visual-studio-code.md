@@ -5,18 +5,18 @@ author: neilpeterson
 ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: d8fd44a1e4c1ddfd78b2afa3280bb05c8fde91e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 97f956c1b1c1ea18242dc656c533451eda29dc6d
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350145"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102179053"
 ---
 # <a name="quickstart-create-arm-templates-with-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して ARM テンプレートを作成する
 
 Visual Studio Code 用の Azure Resource Manager ツールでは、言語サポート、リソース スニペット、およびリソース オートコンプリートが提供されます。 これらのツールは、Azure Resource Manager テンプレート (ARM テンプレート) を作成および検証するのに役立ちます。 このクイックスタートでは、拡張機能を使用して ARM テンプレートを一から作成します。 操作では、ARM テンプレート スニペット、検証、入力候補、パラメーター ファイルのサポートなどの拡張機能を使用します。
 
-このクイックスタートを完了するには、[Azure Resource Manager ツールの拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)がインストールされている [Visual Studio Code](https://code.visualstudio.com/) が必要です。 また、[Azure CLI](/cli/azure/?view=azure-cli-latest) か [Azure PowerShell モジュール](/powershell/azure/new-azureps-module-az?view=azps-3.7.0)のどちらかがインストールされて認証されている必要があります。
+このクイックスタートを完了するには、[Azure Resource Manager ツールの拡張機能](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)がインストールされている [Visual Studio Code](https://code.visualstudio.com/) が必要です。 また、[Azure CLI](/cli/azure/) か [Azure PowerShell モジュール](/powershell/azure/new-azureps-module-az?view=azps-3.7.0)のどちらかがインストールされて認証されている必要があります。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 

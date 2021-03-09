@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: c1406e6a1f2f36c5d42544c52ade3f991fe2ba0a
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: a8cb997337d26a166b4c73d33965820da5ae2a86
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433021"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100596313"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラート
 
@@ -91,11 +91,11 @@ Azure Security Center では、脅威に関する状況の変化を継続的に�
 
 - アラート ダッシュボードの **[CSV レポートのダウンロード]** により、1 回で CSV にエクスポートできます。
 - [価格と設定] の **[連続エクスポート]** を使用すると、セキュリティ アラートと推奨設定の Log Analytics ワークスペースおよび Event Hubs へのストリームを構成できます。 [連続エクスポートの詳細](continuous-export.md)
-- **Azure Sentinel コネクタ** は、セキュリティ アラートを Azure Security Center から Azure Sentinel にストリーミングします。 [Sentinel を使用した Azure Security Center の接続に関する詳細](../sentinel/connect-azure-security-center.md)
+- **Azure Sentinel コネクタ** は、セキュリティ アラートを Azure Security Center から Azure Sentinel にストリーミングします。 [Azure Sentinel を使用した Azure Security Center の接続に関する詳細](../sentinel/connect-azure-security-center.md)
 
 
 ## <a name="next-steps"></a>次のステップ
 
 この記事では、Security Center で利用できるさまざまな種類のアラートについて説明しました。 詳細については、次を参照してください。
 
-- **Azure Activity Log 内のセキュリティ アラート** - Azure portal またはプログラムで利用できるだけでなく、セキュリティ アラートとインシデントは [Azure アクティビティ ログ](../azure-monitor/platform/activity-log.md#view-the-activity-log)でイベントとして監査されます。 イベント スキーマの詳細については、「[Azure アクティビティ ログでのセキュリティ アラート](https://go.microsoft.com/fwlink/?linkid=2114113)」を参照してください
+- **Azure Activity Log 内のセキュリティ アラート** - Azure portal またはプログラムで利用できるだけでなく、セキュリティ アラートとインシデントは [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md#view-the-activity-log)でイベントとして監査されます。 イベント スキーマの詳細については、「[Azure アクティビティ ログでのセキュリティ アラート](https://go.microsoft.com/fwlink/?linkid=2114113)」を参照してください

@@ -3,15 +3,15 @@ title: Confluent Cloud を管理する - Azure パートナー ソリューシ�
 description: この記事では、Azure portal での Confluent Cloud の管理について説明します。 シングル サインオンをセットアップし、Confluent 組織を削除し、サポートを受ける方法。
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/08/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: 2d13c183f0b3891fa92b5e2a6534acbf8102e032
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f8a54096ecda4729f7070120a02be3055f933cea
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253276"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99989114"
 ---
 # <a name="manage-the-confluent-cloud-resource"></a>Confluent Cloud リソースを管理する
 
@@ -66,13 +66,23 @@ Confluent Cloud 上のリソースを削除するには、[Confluent Cloud 環�
 > [!NOTE]
 > 初めて使用するユーザーの場合、Confluent サポート ポータルにサインインする前にパスワードをリセットします。 Confluent Cloud のアカウントを持っていない場合は、`cloud-support@confluent.io` にメールを送信して、支援を受けてください。
 
+ポータルでは、Azure の [ヘルプとサポート] を通じて要求を送信することも、Azure 上の Apache Kafka for Confluent Cloud のインスタンスから直接それを送信することもできます。
+
+Azure の [ヘルプとサポート] を通じて要求を送信するには、次のようにします。
+
+1. **[ヘルプとサポート]** を選択します。
+1. **[サポート リクエストの作成]** を選択します。
+1. フォーム内で、 **[問題の種類]** として **[技術]** を選択します。 サブスクリプションを選択します。 サービスの一覧で、 **[Confluent on Azure]\(Azure での Confluent\)** を選択します。
+
+    :::image type="content" source="media/support-request-help.png" alt-text="ヘルプからサポート リクエストを作成する。":::
+
 リソースから要求を送信するには、次の手順を実行します。
 
 1. Azure portal で、Confluent 組織を選択します。
 1. 画面の左側にあるメニューから、 **[新しいサポート リクエスト]** を選択します。
 1. サポート リクエストを作成するには、**Confluent ポータル** へのリンクを選択します。
 
-    :::image type="content" source="media/support-request.png" alt-text="サポート リクエストの作成。":::
+    :::image type="content" source="media/support-request.png" alt-text="インスタンスからサポート リクエストを作成する。":::
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: 4deda838d229081ccd23c123f75d0c0ada2383bb
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878665"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521681"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -356,9 +356,9 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 - パフォーマンス レベル:現在、Standard レベルのストレージ アカウントしかサポートされていません。
 - キー ローテーションの自己管理: アクセス キーをストレージ アカウントに変更/ローテーションすると、NSG フローログの動作が停止します。 この問題を修正するには、NSG フロー ログを無効にしてから再度有効にする必要があります。
 
-**フロー ログ記録のコスト**:NSG フロー ログ記録は、生成されたログの量に対して課金されます。 トラフィック量が多いと、フロー ログの量が大きくなり、それに関連してコストがかかる可能性があります。 NSG フロー ログの価格には、基礎となるストレージのコストは含まれていません。 保持ポリシー機能と NSG フロー ログ記録を併用すると、長期間にわたって個別のストレージ コストが発生します。 アイテム保持ポリシー機能が不要な場合は、この値を 0 に設定することをお勧めします。 詳細については、「[Network Watcher の価格](https://azure.microsoft.com/pricing/details/network-watcher/)」 と 「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」 を参照してください。
+**フロー ログ記録のコスト**:NSG フロー ログ記録は、生成されたログの量に対して課金されます。 トラフィック量が多いと、フロー ログの量が大きくなり、それに関連してコストがかかる可能性があります。 NSG フロー ログの価格には、基礎となるストレージのコストは含まれていません。 保持ポリシー機能と NSG フロー ログ記録を併用すると、長期間にわたって個別のストレージ コストが発生します。 アイテム保持ポリシーを適用せず、データを永続的に保持する場合は、リテンション期間 (日) を 0 に設定してください。 詳細については、「[Network Watcher の価格](https://azure.microsoft.com/pricing/details/network-watcher/)」 と 「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」 を参照してください。
 
-**ユーザー定義の受信 TCP ルールの問題**:[ネットワークセキュリティグループ (NSGs)](../virtual-network/network-security-groups-overview.md) は [ ステートフルファイアウォール](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) として実装されます。 ただし、現行のプラットフォームの制限により、受信 TCP フローを制御するユーザー定義ルールはステートレスな方法で実装されます。 これに起因し、ユーザー定義受信ルールに制御されるフローは終了しなくなります。 また、これらのフローのバイト数やパケット数は記録されません。 結果として、NSG フローログ (および Traffic Analytics) で報告されるバイト数とパケット数は、実際の数とは異なる可能性があります。 これらの問題を修正するオプトイン フラグは遅くとも 2020 年 12 月までに利用できるようになります。 その間、お客様がこの動作に起因する深刻な問題に直面した場合は、サポート経由でオプトインをリクエストできます。[Network Watcher] の [NSG フロー ログ] でサポート リクエストを提出してください。  
+**ユーザー定義の受信 TCP ルールの問題**:[ネットワークセキュリティグループ (NSGs)](../virtual-network/network-security-groups-overview.md) は [ ステートフルファイアウォール](https://en.wikipedia.org/wiki/Stateful_firewall?oldformat=true) として実装されます。 ただし、現行のプラットフォームの制限により、受信 TCP フローを制御するユーザー定義ルールはステートレスな方法で実装されます。 これに起因し、ユーザー定義受信ルールに制御されるフローは終了しなくなります。 また、これらのフローのバイト数やパケット数は記録されません。 結果として、NSG フローログ (および Traffic Analytics) で報告されるバイト数とパケット数は、実際の数とは異なる可能性があります。 これらの問題を修正するオプトイン フラグは遅くとも 2021 年 3 月までに利用できるようになります。 その間、お客様がこの動作に起因する深刻な問題に直面した場合は、サポート経由でオプトインをリクエストできます。[Network Watcher] の [NSG フロー ログ] でサポート リクエストを提出してください。  
 
 **インターネット IP からパブリック IP のない VM へのインバウンド フローのログ記録**:インスタンスレベル パブリック IP として NIC に関連付けられているパブリック IP アドレス経由で割り当てられたパブリック IP アドレスがない VM、または基本的なロード バランサー バックエンド プールの一部である VM では、[既定の SNAT](../load-balancer/load-balancer-outbound-connections.md) が使用され、アウトバウンド接続を容易にするために Azure によって割り当てられた IP アドレスがあります。 その結果、フローが SNAT に割り当てられたポート範囲内のポートに向かう場合、インターネット IP アドレスからのフローのフロー ログ エントリが表示されることがあります。 Azure では VM へのこれらのフローは許可されませんが、試行はログに記録され、設計上、Network Watcher の NSG フロー ログに表示されます。 不要なインバウンド インターネット トラフィックは、NSG で明示的にブロックすることをお勧めします。
 

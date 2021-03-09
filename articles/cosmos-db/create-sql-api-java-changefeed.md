@@ -35,7 +35,7 @@ ms.locfileid: "93096854"
 
 ## <a name="background"></a>バックグラウンド
 
-Azure Cosmos DB の変更フィードには、ドキュメントの挿入に応答してアクションをトリガーするイベントドリブン インターフェイスが用意されています。 これには多くの用途があります。 たとえば、読み取りと書き込みの両方の負荷が高いアプリケーションでは、変更フィードは主に、ドキュメントを取り込んでいるときに、コンテナーの **具体化されたビュー** をリアルタイムで作成するために使用されます。 具体化されたビューのコンテナーは、同じデータを保持しますが、効率的な読み取りのためにパーティション分割されているため、アプリケーションの読み取りと書き込みの両方を効率的に行うことができます。
+Azure Cosmos DB の変更フィードには、ドキュメントの挿入に応答してアクションをトリガーするイベントドリブン インターフェイスが用意されています。 これには多くの用途があります。 たとえば、読み取りと書き込みの両方の負荷が高いアプリケーションでは、変更フィードは主に、ドキュメントを取り込んでいるときに、コンテナーの **マテリアライズドビュー** をリアルタイムで作成するために使用されます。 マテリアライズドビューのコンテナーは、同じデータを保持しますが、効率的な読み取りのためにパーティション分割されているため、アプリケーションの読み取りと書き込みの両方を効率的に行うことができます。
 
 変更フィードのイベントを管理する作業は、主に、SDK に組み込まれている変更フィード プロセッサ ライブラリによって行われます。 このライブラリは、必要に応じて変更フィードのイベントを複数のワーカー間に配布するのに十分な性能を備えています。 変更フィード ライブラリにコールバックを提供するだけで利用できます。
 
@@ -95,11 +95,11 @@ mvn clean package
 
     ```"SampleHost_1"``` は、変更フィード プロセッサ ワーカーの名前です。 ```changeFeedProcessorInstance.start()``` が実際に変更フィード プロセッサを開始します。
 
-    ブラウザーで Azure portal のデータ エクスプローラーに戻ります。 **InventoryContainer-leases** コンテナーで、 **[items]\(項目\)** をクリックして内容を表示します。 変更フィード プロセッサによってリース コンテナーが設定されたことがわかります。つまり、プロセッサが ```SampleHost_1``` ワーカーに、 **InventoryContainer** の一部のパーティションに対するリースを割り当てました。
+    ブラウザーで Azure portal のデータ エクスプローラーに戻ります。 **InventoryContainer-leases** コンテナーで、 **[items]\(項目\)** をクリックして内容を表示します。 変更フィード プロセッサによってリース コンテナーが設定されたことがわかります。つまり、プロセッサが ```SampleHost_1``` ワーカーに、**InventoryContainer** の一部のパーティションに対するリースを割り当てました。
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_leases.JPG" alt-text="リース":::
 
-1. ターミナルでもう一度 Enter キーを押します。 これにより、 **InventoryContainer** への 10 個のドキュメントの挿入がトリガーされます。 各ドキュメントの挿入は JSON として変更フィードに表示されます。次のコールバック コードは、JSON ドキュメントを具体化されたビューにミラーリングすることによって、これらのイベントを処理します。
+1. ターミナルでもう一度 Enter キーを押します。 これにより、**InventoryContainer** への 10 個のドキュメントの挿入がトリガーされます。 各ドキュメントの挿入は JSON として変更フィードに表示されます。次のコールバック コードは、JSON ドキュメントをマテリアライズドビューにミラーリングすることによって、これらのイベントを処理します。
 
     ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK V4 (Maven com.azure::azure-cosmos) 非同期 API
 
@@ -109,11 +109,11 @@ mvn clean package
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_items.JPG" alt-text="フィード コンテナー":::
 
-1. 次に、データ エクスプローラーで、 **[InventoryContainer-pktype] > [items]\(項目\)** に移動します。 これは具体化されたビューです。このコンテナー内の項目は、変更フィードによってプログラムで挿入されたため、 **InventoryContainer** をミラーリングしています。 パーティション キー (```type```) に注意してください。 したがって、この具体化されたビューは、```type``` をフィルター処理するクエリ用に最適化されています。これは、```id``` でパーティション分割されている **InventoryContainer** では効率が悪くなります。
+1. 次に、データ エクスプローラーで、 **[InventoryContainer-pktype] > [items]\(項目\)** に移動します。 これはマテリアライズドビューです。このコンテナー内の項目は、変更フィードによってプログラムで挿入されたため、**InventoryContainer** をミラーリングしています。 パーティション キー (```type```) に注意してください。 したがって、このマテリアライズドビューは、```type``` をフィルター処理するクエリ用に最適化されています。これは、```id``` でパーティション分割されている **InventoryContainer** では効率が悪くなります。
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG" alt-text="スクリーンショットには、項目が選択された Azure Cosmos DB アカウントのデータ エクスプローラー ページが示されています。":::
 
-1. 1 つの ```upsertItem()``` 呼び出しだけを使用して、 **InventoryContainer** と **InventoryContainer-pktype** の両方からドキュメントを削除します。 まず、Azure portal のデータ エクスプローラーを見てみましょう。 ```/type == "plums"``` のドキュメント (下で赤で囲まれている) を削除します。
+1. 1 つの ```upsertItem()``` 呼び出しだけを使用して、**InventoryContainer** と **InventoryContainer-pktype** の両方からドキュメントを削除します。 まず、Azure portal のデータ エクスプローラーを見てみましょう。 ```/type == "plums"``` のドキュメント (下で赤で囲まれている) を削除します。
 
     :::image type="content" source="media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG" alt-text="スクリーンショットには、特定の項目 I D が選択された Azure Cosmos DB アカウントのデータ エクスプローラー ページが示されています。":::
 

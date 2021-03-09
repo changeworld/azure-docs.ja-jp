@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: f99a3110880626b3a809e6bab5edc02398094547
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426227"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575857"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge BLOB ストレージの要件
 
@@ -25,7 +25,7 @@ Azure Stack Edge BLOB ストレージに接続する前にこの情報をよく�
 
 |     機能                                             |     Azure Storage                                     |     Azure Stack Edge BLOB ストレージ |
 |---------------------------------------------------------|-------------------------------------------------------|---------------------------|
-|    Azure File ストレージ                                   |    クラウド ベースの SMB ファイル共有のサポート              |    サポートされていません      |
+|    Azure File Storage                                    |    クラウド ベースの SMB ファイル共有のサポート              |    サポートされていません      |
 |    ストレージ アカウントの種類                                 |    汎用アカウントと Azure Blob Storage アカウント    |    汎用 v1 のみ|
 |    BLOB 名                                            |    1,024 文字 (2,048 バイト)                     |    880 文字 (1,760 バイト)|
 |    ブロック BLOB の最大サイズ                              |    4.75 TB (100 MB X 50,000 ブロック)                   |    Azure Stack Edge の場合、4.75 TB (100 MB x 50,000 ブロック)|

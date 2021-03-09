@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 989520e079988e1821d8bb9a936f857e1f62c11a
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 5c7491a0e0ba2a3bf604988c613e1fd8937f277d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567756"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752164"
 ---
 # <a name="connect-your-trend-micro-tippingpoint-solution-to-azure-sentinel"></a>Trend Micro TippingPoint ソリューションを Azure Sentinel に接続する
 
 > [!IMPORTANT]
 > Trend Micro TippingPoint コネクタは、現在 **プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
-この記事では、お使いの Trend Micro TippingPoint Threat Protection System ソリューションを Azure Sentinel に接続する方法について説明します。 Trend Micro TippingPoint データ コネクタを使用すると、TippingPoint Security Management System (SMS) のログを Azure Sentinel に簡単に接続できます。これにより、そのデータをブックで表示したり、カスタム アラートの作成に利用したり、調査の改善のために取り込んだりできます。 
+この記事では、お使いの Trend Micro TippingPoint Threat Protection System ソリューションを Azure Sentinel に接続する方法について説明します。 Trend Micro TippingPoint データ コネクタを使用すると、TippingPoint Security Management System (SMS) のログを Azure Sentinel に簡単に接続できます。これにより、そのデータをブックで表示したり、カスタム アラートの作成に利用したり、調査の改善のために取り込んだりできます。
 
 > [!NOTE]
 > データは、Azure Sentinel を実行しているワークスペースの地理的な場所に格納されます。
@@ -40,7 +40,7 @@ ms.locfileid: "98567756"
 
 ## <a name="send-trend-micro-tippingpoint-logs-to-azure-sentinel"></a>Trend Micro TippingPoint のログを Azure Sentinel に送信する
 
-ログを Azure Sentinel に送るには、Linux ベースのログ転送サーバー (rsyslog または syslog-ng を実行) に Syslog メッセージを CEF 形式で送信するように お使いの TippingPoint TPS ソリューションを構成します。 このサーバーには Log Analytics エージェントをインストールします。このエージェントで、ログをお使いの Azure Sentinel ワークスペースに転送します。
+ログを Azure Sentinel に送るには、Linux ベースのログ転送サーバー (rsyslog または syslog-ng を実行) に Syslog メッセージを CEF 形式で送信するように お使いの TippingPoint TPS ソリューションを構成します。 このサーバーには Log Analytics エージェントをインストールします。このエージェントで、ログをお使いの Azure Sentinel ワークスペースに転送します。 コネクタは、パーサー関数を使用して、受信したデータを正規化されたスキーマに変換します。 
 
 1. Azure Sentinel のナビゲーション メニューで、 **[データ コネクタ]** を選択します。
 
@@ -64,11 +64,11 @@ ms.locfileid: "98567756"
 
 接続が正常に確立されると、 *[CommonSecurityLog]* テーブルにある **[Azure Sentinel]** セクションの **[ログ]** にデータが表示されます。
 
-Log Analytics で TrendMicro TippingPoint のデータのクエリを実行するには、以下をクエリ ウィンドウにコピーし、選択した他のフィルターを適用します。
+Log Analytics で Trend Micro TippingPoint データを取得するには、テーブルではなく、パーサー関数に対してクエリを実行します。 次のものをクエリ ウィンドウにコピーし、選択した他のフィルターを適用します。
 
 ```kusto
-CommonSecurityLog 
-| where DeviceVendor == "TrendMicroTippingPoint"
+TrendMicroTippingPoint
+| sort by TimeGenerated
 ```
 
 その他のクエリの例については、コネクタ ページの **[Next steps]\(次の手順\)** タブを参照してください。
@@ -76,6 +76,7 @@ CommonSecurityLog
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、Trend Micro TippingPoint を Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 - [ブックを使用](tutorial-monitor-your-data.md)してデータを監視する。

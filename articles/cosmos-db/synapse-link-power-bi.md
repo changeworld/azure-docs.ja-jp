@@ -6,22 +6,19 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: f0111228b9b0030cbbceb9fc70d829a7a22fda01
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: a16d22a49e42408271c91d961bcdb004536e3980
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247014"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659751"
 ---
-# <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Synapse Link で Azure Cosmos DB データを分析するための Power BI とサーバーレス Synapse SQL プール (プレビュー) を使用する 
+# <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Power BI とサーバーレス Synapse SQL プールを使用して Synapse Link で Azure Cosmos DB データを分析する 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
 この記事では、Azure Cosmos DB の Synapse Link 上にサーバーレス SQL プール データベースおよびビューを構築する方法について説明します。 Azure Cosmos DB コンテナーに対してクエリを実行し、そのクエリを反映するために、それらのビュー上に Power BI でモデルを構築します。
 
 このシナリオでは、パートナー小売店での Surface 製品の売上に関するダミー データを使用します。 大所帯への近さと、特定の週の広告の効果に基づいた店舗ごとの収益を分析します。 この記事では **RetailSales** と **StoreDemographics** という名前の 2 つのビューと、それらの間のクエリを作成します。 この [GitHub](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData) リポジトリからサンプル製品データを取得できます。
-
-> [!IMPORTANT]
-> Azure Synapse Link for Azure Cosmos DB の Synapse サーバーレス SQL プールのサポートは現在プレビュー段階にあります。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f7d7bff1bc85e0dec78a69422d126b86f61b7704
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783982"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737649"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -54,8 +54,8 @@ Azure Storage での冗長性の詳細については、「[Azure Storage の冗
 さらに、Azure Storage のデータの高可用性を維持するためには、次のベスト プラクティスに留意してください。
 
 - **ディスク:** [Azure Backup](https://azure.microsoft.com/services/backup/) を使用して、Azure 仮想マシンで使用される VM ディスクをバックアップします。 また、[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) を使用して地域的な災害が発生した場合の VM の保護も検討します。
-- **ブロック BLOB:** [ソフト削除](../blobs/soft-delete-blob-overview.md)を有効にしてオブジェクトレベルの削除および上書きから保護するか、 [AzCopy](./storage-use-azcopy-v10.md)、 [Azure PowerShell](/powershell/module/az.storage/)、または [Azure Data Movement Library](storage-use-data-movement-library.md) を使用して、他のリージョンの別のストレージ アカウントにブロック BLOB をコピーします。
-- **ファイル:** [AzCopy](./storage-use-azcopy-v10.md) または [Azure PowerShell](/powershell/module/az.storage/) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
+- **ブロック BLOB:** [ソフト削除](../blobs/soft-delete-blob-overview.md)を有効にしてオブジェクトレベルの削除および上書きから保護するか、[AzCopy](./storage-use-azcopy-v10.md)、[Azure PowerShell](/powershell/module/az.storage/)、または [Azure Data Movement Library](storage-use-data-movement-library.md) を使用して、他のリージョンの別のストレージ アカウントにブロック BLOB をコピーします。
+- **ファイル:** [Azure Backup](../../backup/azure-file-share-backup-overview.md) を使用して、ファイル共有をバックアップします。 また、予期しないファイル共有の削除を防ぐために、[論理的な削除](../files/storage-files-prevent-file-share-deletion.md)も有効にします。 GRS を使用できないときの geo 情報の場合は、[AzCopy](./storage-use-azcopy-v10.md) または [Azure PowerShell](/powershell/module/az.storage/) を使用して、異なるリージョンの別のストレージ アカウントにファイルをコピーすることができます。
 - **テーブル:** [AzCopy](./storage-use-azcopy-v10.md) を使用して、テーブル データを、他のリージョンの別のストレージ アカウントにエクスポートします。
 
 ## <a name="track-outages"></a>障害を追跡する
@@ -102,7 +102,7 @@ geo 冗長アカウントの場合は、DNS エントリが更新されて、要
 
 ベスト プラクティスとしては、最終同期時刻を使用して予想されるデータ損失を評価できるようにアプリケーションを設計します。 たとえば、すべての書き込み操作をログに記録している場合は、最後の書き込み操作の時刻を最終同期時刻と比較することで、セカンダリに同期されていない書き込みを特定できます。
 
-**[最終同期時刻]** プロパティの詳細については、「 [ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
+**[最終同期時刻]** プロパティの詳細については、「[ストレージ アカウントの最終同期時刻プロパティを確認する](last-sync-time-get.md)」を参照してください。
 
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>元のプライマリにフェールバックするときは注意が必要である
 

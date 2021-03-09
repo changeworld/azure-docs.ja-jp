@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/19/2021
 ms.author: zhchia
-ms.openlocfilehash: 0e7275ee92431e791fec7bd2c9ec07dd623b0f9e
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 4cc89c1ad94ae738b25e4ea18d5fe687880969c1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696010"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101648222"
 ---
 # <a name="tutorial-configure-templafy-saml2-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Templafy SAML2 を構成する
 
@@ -37,9 +37,9 @@ ms.locfileid: "98696010"
 * 管理者アクセス許可がある Templafy のユーザー アカウント。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>手順 1. プロビジョニングのデプロイを計画する
-1. [プロビジョニング サービスのしくみ](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)を確認します。
-2. [プロビジョニングの対象](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)となるユーザーを決定します。
-3. [Azure AD と Templafy SAML2 の間でマップする](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)データを決定します。 
+1. [プロビジョニング サービスのしくみ](../app-provisioning/user-provisioning.md)を確認します。
+2. [プロビジョニングの対象](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)となるユーザーを決定します。
+3. [Azure AD と Templafy SAML2 の間でマップする](../app-provisioning/customize-application-attributes.md)データを決定します。 
 
 ## <a name="assigning-users-to-templafy-saml2"></a>Templafy SAML2 へのユーザーの割り当て
 
@@ -186,9 +186,9 @@ Azure AD での自動ユーザー プロビジョニングに対応するよう�
 ## <a name="step-5-monitor-your-deployment"></a>手順 5. デプロイを監視する
 プロビジョニングを構成したら、次のリソースを使用してデプロイを監視します。
 
-* [プロビジョニング ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
-* [進行状況バー](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
-* プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)を参照してください。
+* [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
+* [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
+* プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

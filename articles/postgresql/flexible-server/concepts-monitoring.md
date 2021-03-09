@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 1519e0b5cef6055cf8d8b0aded0d8ad323d548a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e7063cd1ae560fa077bd0b1b1279e4515e70464
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707848"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100579020"
 ---
 # <a name="monitor-metrics-on-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーでメトリックを監視する
 
@@ -21,7 +21,7 @@ ms.locfileid: "91707848"
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for PostgreSQL には、サーバーの動作の分析情報を提供する各種の監視オプションが用意されています。
 
 ## <a name="metrics"></a>メトリック
-Azure Database for PostgreSQL には、PostgreSQL サーバーをサポートするリソースの動作に関する洞察を提供する各種のメトリックが用意されています。 各メトリックは 1 分間隔で出力され、最大 [93 日分の履歴](../../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics)が保持されます。 メトリックにアラートを構成できます。 その他のオプションには、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../../azure-monitor/platform/data-platform-metrics.md)に関する記事をご覧ください。
+Azure Database for PostgreSQL には、PostgreSQL サーバーをサポートするリソースの動作に関する洞察を提供する各種のメトリックが用意されています。 各メトリックは 1 分間隔で出力され、最大 [93 日分の履歴](../../azure-monitor/essentials/data-platform-metrics.md#retention-of-metrics)が保持されます。 メトリックにアラートを構成できます。 その他のオプションには、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../../azure-monitor/essentials/data-platform-metrics.md)に関する記事をご覧ください。
 
 ### <a name="list-of-metrics"></a>メトリックの一覧
 PostgreSQL フレキシブル サーバーでは以下のメトリックを使用できます。

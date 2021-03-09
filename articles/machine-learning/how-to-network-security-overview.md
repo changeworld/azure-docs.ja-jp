@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 1a73988b66ba7b47f18ecaaa07df59e9047a933b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060012"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691826"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
 
@@ -71,7 +71,7 @@ ms.locfileid: "98060012"
 1. [Private Link が有効なワークスペース](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint)を作成し、VNet とワークスペース間の通信を有効にします。
 1. [サービス エンドポイント](../key-vault/general/overview-vnet-service-endpoints.md)または[プライベート エンドポイント](../key-vault/general/private-link-service.md)を使用して、Azure Key Vault を仮想ネットワークに追加します。 Key Vault を ["信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する"](how-to-secure-workspace-vnet.md#secure-azure-key-vault) に設定します。
 1. [サービス エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints)または[プライベート エンドポイント](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints)を使用して、Azure ストレージ アカウントを仮想ネットワークに追加します。
-1. [プライベート エンドポイントを使用するように Azure Container Registry を構成](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)し、[Azure Container Instances でサブネットの委任を有効にします](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci)。
+1. [プライベート エンドポイントを使用するように Azure Container Registry を構成します](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)。
 
 ![ワークスペースと関連するリソースが、VNet 内のサービス エンドポイントまたはプライベート エンドポイントを介して相互に通信する方法を示すアーキテクチャ図](./media/how-to-network-security-overview/secure-workspace-resources.png)
 
@@ -137,6 +137,15 @@ ms.locfileid: "98060012"
 ### <a name="limitations"></a>制限事項
 - AKS クラスターは、ワークスペースおよび関連するリソースと同じ VNet に属している必要があります。 
 
+## <a name="optional-enable-public-access"></a>省略可能:パブリック アクセスを有効にする
+
+プライベート エンドポイントを使用して VNet の背後にあるワークスペースをセキュリティで保護しながら、パブリック インターネット経由のアクセスを許可することができます。 初期構成は、[ワークスペースと関連するリソースをセキュリティで保護する](#secure-the-workspace-and-associated-resources)場合と同じです。 
+
+プライベート リンクを使用してワークスペースをセキュリティで保護した後、[パブリック アクセスを有効](how-to-configure-private-link.md#enable-public-access)にします。 その後、パブリック インターネットと VNet の両方からこのワークスペースにアクセスできます。
+
+### <a name="limitations"></a>制限事項
+
+- パブリック インターネット経由で Azure Machine Learning スタジオを使用する場合、デザイナーなどの一部の機能から自分のデータにアクセスできないことがあります。 この問題は、データが VNet の背後でセキュリティ保護されているサービスに格納されている場合に発生します。 たとえば、Azure Storage アカウントです。
 ## <a name="optional-enable-studio-functionality"></a>省略可能: Studio の機能を有効にする
 
 [ワークスペースをセキュリティで保護する](#secure-the-workspace-and-associated-resources) > [トレーニング環境をセキュリティで保護する](#secure-the-training-environment) > [推論環境をセキュリティで保護する](#secure-the-inferencing-environment) > **Studio の機能を有効にする** > [ファイアウォール設定を構成する](#configure-firewall-settings)

@@ -3,18 +3,18 @@ title: PowerShell での Azure Application Insights の自動化 | Microsoft Doc
 description: Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成および管理を自動化します。
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: c380880845c162a1e8fb38e699a439ac04fb3b5a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c2e3d33be487b6a92cb7038d814e17fcd5a10064
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186271"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100589804"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの管理
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-この記事では、Azure Resource 管理を使用して [Application Insights](./app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](./monitor-web-app-availability.md)の作成、[アラート](../platform/alerts-log.md)の設定、[価格の詳細](pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
+この記事では、Azure Resource 管理を使用して [Application Insights](./app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](./monitor-web-app-availability.md)の作成、[アラート](../alerts/alerts-log.md)の設定、[価格の詳細](pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
 
 これらのリソースを作成する際に重要となるのが、[Azure Resource Manager](../../azure-resource-manager/management/manage-resources-powershell.md) の JSON テンプレートです。 基本的な手順は、既存のリソースの JSON 定義をダウンロードし、名前などの特定の値をパラメーター化して、新しいリソースを作成するときに、テンプレートを実行するといった手順になります。 いくつかのリソースをまとめてパッケージ化することで、すべてを一度に作成できます (例、可用性テスト、アラート、および連続エクスポート用の記憶域を使用したアプリの監視)。 パラメーター化の一部には、いくつか細かい点があります。それについては、以降で説明します。
 
@@ -404,12 +404,12 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 
 ## <a name="add-a-metric-alert"></a>メトリック アラートの追加
 
-メトリック アラートの作成を自動化するには、[メトリック アラート テンプレートに関する記事](../platform/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)を参照してください
+メトリック アラートの作成を自動化するには、[メトリック アラート テンプレートに関する記事](../alerts/alerts-metric-create-templates.md#template-for-a-simple-static-threshold-metric-alert)を参照してください
 
 
 ## <a name="add-an-availability-test"></a>可用性テストの追加
 
-可用性テストを自動化するには、[メトリック アラート テンプレートに関する記事](../platform/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)を参照してください。
+可用性テストを自動化するには、[メトリック アラート テンプレートに関する記事](../alerts/alerts-metric-create-templates.md#template-for-an-availability-test-along-with-a-metric-alert)を参照してください。
 
 ## <a name="add-more-resources"></a>リソースの追加
 
@@ -469,6 +469,6 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 自動化に関するその他の記事:
 
 * [Application Insights リソースを作成するための PowerShell スクリプト](./create-new-resource.md#creating-a-resource-automatically) - テンプレートを使用しない簡単な方法
-* [Web テストを作成する](../samples/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
+* [Web テストを作成する](../alerts/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [Azure Diagnostics を Application Insights に送信する](powershell-azure-diagnostics.md)
 * [リリースの注釈を作成する](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

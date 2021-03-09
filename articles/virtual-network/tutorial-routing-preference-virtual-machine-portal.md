@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/02/2020
+ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: beb670106690645a80aa12b930e3a005efb4282a
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0559d02ec603d12578fa46d9790d0711fde5e38b
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221648"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101670901"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Azure portal を使用して VM 用にルーティング優先設定を構成する
 
@@ -25,13 +25,9 @@ ms.locfileid: "98221648"
 
 この記事では、Azure portal を使用して、パブリック インターネット経由でトラフィックをルーティングするように設定されたパブリック IP を持つ仮想マシンを作成する方法について説明します。
 
-> [!IMPORTANT]
-> 現在、ルーティング優先設定はパブリック プレビューの段階です。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure portal](https://preview.portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 

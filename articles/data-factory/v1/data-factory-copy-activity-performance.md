@@ -1,23 +1,18 @@
 ---
 title: コピー アクティビティのパフォーマンスとチューニングに関するガイド
 description: コピー アクティビティを使用する場合に、Azure Data Factory でのデータ移動のパフォーマンスに影響する主な要因について説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 4b9a6a4f-8cf5-4e0a-a06f-8133a2b7bc58
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5910b94dba03f105197a94cf1ea1805f45249f3f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a890719de39a71d8336d39f9932e73f7baccf87
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451342"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100377212"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 
@@ -28,7 +23,7 @@ ms.locfileid: "96451342"
 > [!NOTE]
 > この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[Data Factory のコピー アクティビティのパフォーマンスとチューニングに関するガイド](../copy-activity-performance.md)に関するページを参照してください。
 
-Azure Data Factory コピー アクティビティは、優れたセキュリティで保護された、信頼性とパフォーマンスに優れたデータ読み込みソリューションを提供します。 これにより、数十テラバイトのデータを、さまざまなクラウドおよびオンプレミスのデータ ストアの間で毎日コピーすることができます。 データ読み込みのパフォーマンスを劇的に高めることが、高度な分析ソリューションを構築してすべてのデータから深い洞察を得るという、"ビッグ データ" の中心的問題に集中するための鍵となります。
+Azure Data Factory コピー アクティビティは、優れたセキュリティで保護された、信頼性とパフォーマンスに優れたデータ読み込みソリューションを提供します。 これにより、数十テラバイトのデータを、さまざまなクラウドおよびオンプレミスのデータ ストアの間で毎日コピーすることができます。 データ読み込みのパフォーマンスを劇的に高めることが、高度な分析ソリューションを構築してすべてのデータから深い分析情報を得るという、"ビッグ データ" の中心的問題に集中するための鍵となります。
 
 Azure によりエンタープライズ クラスのデータ ストレージおよびデータ ウェアハウスのソリューション セットが提供されます。また、コピー アクティビティにより、構成とセットアップが簡単な、大幅に最適化されたデータ読み込み環境がもたらされます。 1 つのコピー アクティビティで次のことを実現できます。
 

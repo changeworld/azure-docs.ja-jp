@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6735b3377650c900a7b7d18933180991a6a2c9fd
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1ee4e19a3e76a001a66f6498530fab4f4703fa85
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930890"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381607"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー
 
@@ -323,7 +323,7 @@ def main(myblob: func.InputStream):
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 例外は、[使用方法](#usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。 |
 |**path** | **BlobPath** |監視する[コンテナー](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)。  [BLOB 名パターン](#blob-name-patterns)の場合があります。 |
-|**connection** | **接続** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**connection** | **接続** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。<br><br>接続文字列の代わりに[バージョン 5.x またはそれ以降の拡張機能](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)を使用している場合は、接続を定義する構成セクションへの参照を指定できます。 「[接続](./functions-reference.md#connections)」を参照してください。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -463,9 +463,16 @@ BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテ�
 
 BLOB トリガーはキューを内部的に使用するため、関数の同時呼び出しの最大数が [host.json のキュー構成設定](functions-host-json.md#queues)によって制御されます。 既定の設定では、コンカレンシーの数は 24 までに制限されています。 この制限は、BLOB トリガーを使用する各関数に個別に適用されます。
 
+> [!NOTE]
+> [バージョン 5.0.0 以降の Storage 拡張機能](functions-bindings-storage-blob.md#storage-extension-5x-and-higher)を使用しているアプリの場合、host.js のキューの構成はキュー トリガーにのみ適用されます。 BLOB トリガーのコンカレンシーは、代わりに [host.js の BLOB 構成](functions-host-json.md#blobs)によって制御されます。
+
 [従量課金プラン](event-driven-scaling.md)では、1 つの仮想マシン (VM) の関数アプリのメモリが 1.5 GB に制限されています。 メモリは、同時実行される各関数インスタンスと、Functions ランタイム自体によって使用されます。 BLOB によってトリガーされる関数が BLOB 全体をメモリに読み込む場合、その関数が BLOB 用にのみ使用するメモリの最大量は 24 * 最大 BLOB サイズです。 たとえば、BLOB によってトリガーされる 3 つの関数を含む関数アプリの場合、既定の設定では、VM あたりの最大コンカレンシー数 3*24 = 72 関数呼び出しとなります。
 
 JavaScript と Java の関数では BLOB 全体がメモリに読み込まれますが、C# 関数では `string`、または `Byte[]` にバインドした場合にこれが行われます。
+
+## <a name="hostjson-properties"></a>host.json プロパティ
+
+[host.json](functions-host-json.md#blobs) ファイルには、BLOB トリガーの動作を制御する設定が含まれています。 使用可能な設定の詳細については、「[host.json 設定](functions-bindings-storage-blob.md#hostjson-settings)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

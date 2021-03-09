@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 1fd177273c9dafb04add64d8a8bfef1d81cc65d0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 06b871d29c26241c38be27c4ace8ab7461834fd1
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319317"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101655719"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 
@@ -29,9 +29,6 @@ Azure Machine Learning は、モデルのトレーニング、モデルのデプ
 * モデルの登録後に Azure 関数を使用する
 * Azure Machine Learning からさまざまなエンドポイントへのイベントのストリーミング
 * 誤差が検出されたときに ML パイプラインをトリガーする
-
-> [!NOTE] 
-> 現在、runStatusChanged イベントは、実行状態が **failed** の場合にのみトリガーされます
 
 ## <a name="prerequisites"></a>前提条件
 Event Grid を使用するには、イベントを作成する Azure Machine Learning ワークスペースへの共同作成者または所有者アクセスが必要です。
@@ -74,7 +71,7 @@ Azure Machine Learning イベントのサブスクリプションは、Azure ロ
 
 + **イベントの種類でフィルター処理する:** イベント サブスクリプションでは、1 つまたは複数の Azure Machine Learning イベントの種類を指定できます。
 
-+ **イベントの件名でフィルター処理する:** Azure Event Grid は、 __次で始まる__ と __次で終わる__ という一致に基づく件名フィルターをサポートするため、件名が一致するイベントはサブスクライバーに配信されます。 機械学習イベントが異なると、件名の形式も異なります。
++ **イベントの件名でフィルター処理する:** Azure Event Grid は、__次で始まる__ と __次で終わる__ という一致に基づく件名フィルターをサポートするため、件名が一致するイベントはサブスクライバーに配信されます。 機械学習イベントが異なると、件名の形式も異なります。
 
   | イベントの種類 | 件名の形式 | 件名の例 |
   | ---------- | ----------- | ----------- |
@@ -84,7 +81,7 @@ Azure Machine Learning イベントのサブスクリプションは、Azure ロ
   | `Microsoft.MachineLearningServices.DatasetDriftDetected` | `datadrift/{data.DataDriftId}/run/{data.RunId}` | `datadrift/4e694bf5-712e-4e40-b06a-d2a2755212d4/run/my_driftrun1_1550564444_fbbcdc0f` |
   | `Microsoft.MachineLearningServices.RunStatusChanged` | `experiments/{ExperimentId}/runs/{RunId}` | `experiments/b1d7966c-f73a-4c68-b846-992ace89551f/runs/my_exp1_1554835758_38dbaa94` | 
 
-+ **高度なフィルター処理** :Azure Event Grid は、発行されたイベント スキーマに基づく高度なフィルター処理もサポートしています。 Azure Machine Learning のイベント スキーマの詳細については、「[Azure Machine Learning の Azure Event Grid イベント スキーマ](../event-grid/event-schema-machine-learning.md)」を参照してください。  実行できる高度なフィルター処理の例をいくつか次に示します。
++ **高度なフィルター処理**:Azure Event Grid は、発行されたイベント スキーマに基づく高度なフィルター処理もサポートしています。 Azure Machine Learning のイベント スキーマの詳細については、「[Azure Machine Learning の Azure Event Grid イベント スキーマ](../event-grid/event-schema-machine-learning.md)」を参照してください。  実行できる高度なフィルター処理の例をいくつか次に示します。
 
   `Microsoft.MachineLearningServices.ModelRegistered` イベントの場合、モデルのタグ値をフィルター処理するには、次のようにします。
 
@@ -222,7 +219,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
     ![[イベントの種類] 項目が選択された [リソース イベントが発生したとき] を示すスクリーンショット。](./media/how-to-use-event-grid/login-and-add-event.png)
 
-1. 新しいステップを追加し、 __Azure Data Factory__ を検索します。 __[パイプラインの実行の作成]__ を選択します。 
+1. 新しいステップを追加し、__Azure Data Factory__ を検索します。 __[パイプラインの実行の作成]__ を選択します。 
 
     ![[パイプラインの実行の作成] が選択された [アクションの選択] ペインを示すスクリーンショット。](./media/how-to-use-event-grid/create-adfpipeline-run.png)
 
@@ -230,7 +227,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
     ![さまざまな値がある [パイプラインの実行の作成] ペインを示すスクリーンショット。](./media/how-to-use-event-grid/specify-adf-pipeline.png)
 
-1. ページの左上にある **[保存]** ボタンを使用して、ロジック アプリを保存して作成します。 アプリを表示するには、 [Azure portal](https://portal.azure.com) のワークスペースにアクセスし、 **[イベント]** をクリックします。
+1. ページの左上にある **[保存]** ボタンを使用して、ロジック アプリを保存して作成します。 アプリを表示するには、[Azure portal](https://portal.azure.com) のワークスペースにアクセスし、 **[イベント]** をクリックします。
 
     ![ロジック アプリが強調表示されているイベントを示すスクリーンショット。](./media/how-to-use-event-grid/show-logic-app-webhook.png)
 
@@ -242,7 +239,7 @@ az eventgrid event-subscription create --name {eventGridFilterName} \
 
 Azure Machine Learning モデルオブジェクトには、モデルの名前、バージョン、タグ、プロパティなど、デプロイをピボットできるパラメーターが含まれています。 モデル登録イベントはエンドポイントをトリガーでき、Azure 関数を使用して、これらのパラメーターの値に基づいてモデルを配置できます。
 
-例については、 [https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) リポジトリを参照し、 **readme** ファイルの手順に従ってください。
+例については、[https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid](https://github.com/Azure-Samples/MachineLearningSamples-NoCodeDeploymentTriggeredByEventGrid) リポジトリを参照し、**readme** ファイルの手順に従ってください。
 
 ## <a name="next-steps"></a>次のステップ
 

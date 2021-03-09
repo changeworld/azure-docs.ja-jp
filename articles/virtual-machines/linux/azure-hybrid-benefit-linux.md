@@ -5,17 +5,19 @@ services: virtual-machines
 documentationcenter: ''
 author: mathapli
 manager: westonh
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: azure-hybrid-benefit
+ms.collection: linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 44d78d9a47f86520a3a4778806c4ddc0f96eec94
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 346d58dbe06a29a4ba114ae788dee16e80b8f9df
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737899"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101695483"
 ---
 # <a name="how-azure-hybrid-benefit-applies-for-linux-virtual-machines"></a>Azure ハイブリッド特典を Linux 仮想マシンに適用する方法
 
@@ -175,7 +177,7 @@ Red Hat サブスクリプションのコンプライアンス、ソフトウェ
 
 ### <a name="suse"></a>SUSE
 
-SLES VM での Azure ハイブリッド特典の使用方法について、および SLES PAYG から BYOS への移行または SLES BYOS から PAYG への移行については、「[SUSE Linux Enterprise and Azure Hybrid Benefit](https://www.suse.com/c/suse-linux-enterprise-and-azure-hybrid-benefit/)」 (SUSE Linux Enterprise と Azure ハイブリッド特典) を参照してください。 
+SLES VM での Azure ハイブリッド特典の使用方法について、および SLES PAYG から BYOS への移行または SLES BYOS から PAYG への移行については、「[SUSE Linux Enterprise and Azure Hybrid Benefit](https://www.suse.com/support/kb/doc/?id=000019868)」 (SUSE Linux Enterprise と Azure ハイブリッド特典) を参照してください。 
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 *Q:`RHEL_BYOS` の種類のライセンスを SLES イメージと共に使用する、またはその逆は可能ですか。*
@@ -226,5 +228,5 @@ A:いいえ、できません。 VDC は、AHB を含め、Azure ではサポー
 | ----- | ---------- |
 | "The action could not be completed because our records show that you have not successfully enabled Red Hat Cloud Access on your Azure subscription…."\(お使いの Azure サブスクリプションで Red Hat Cloud Access が正常に有効化されていないと記録されているため、この操作を完了できませんでした……\) | RHEL VM で特典を使用するには、まず [Azure サブスクリプションを Red Hat Cloud Access に登録する](https://access.redhat.com/management/cloud)必要があります。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * [Azure CLI を使用して、VM を作成および更新し、Azure ハイブリッド特典のライセンスの種類 (RHEL_BYOS、SLES_BYOS) を追加する方法を確認する](/cli/azure/vm)

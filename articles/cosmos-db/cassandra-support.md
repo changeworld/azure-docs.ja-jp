@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 771cf97a5c938fb987c66555c92c23f42b302a10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f48935edd5746b0f3f3440e249024cbe2901317b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134230"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374373"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB の Cassandra API でサポートされる Apache Cassandra の機能 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -43,7 +43,7 @@ Azure Cosmos DB の Cassandra API では、次のバージョンの Cassandra �
 
 Azure Cosmos DB の Cassandra API では、次の CQL データ型がサポートされています。
 
-|コマンド  |サポートされています |
+|Type  |サポートされています |
 |---------|---------|
 | ascii  | はい |
 | bigint  | はい |
@@ -82,13 +82,14 @@ Azure Cosmos DB の Cassandra API では、次の CQL 関数がサポートさ�
 |コマンド  |サポートされています |
 |---------|---------|
 | Token * | はい |
-| ttl | はい |
-| writetime | はい |
+| ttl *** | はい |
+| writetime *** | はい |
 | cast ** | はい |
 
 > [!NOTE] 
 > \* Cassandra API は、プロジェクション/セレクターとしてトークンをサポートし、where 句の左辺でのみ token(pk) を許可します。 たとえば、`WHERE token(pk) > 1024` はサポートされていますが、`WHERE token(pk) > token(100)` はサポートされて **いません**。  
-> \*\*`cast()` 関数は、Cassandra API では入れ子にすることはできません。 たとえば、`SELECT cast(count as double) FROM myTable` はサポートされていますが、`SELECT avg(cast(count as double)) FROM myTable` はサポートされて **いません**。
+> \*\*`cast()` 関数は、Cassandra API では入れ子にすることはできません。 たとえば、`SELECT cast(count as double) FROM myTable` はサポートされていますが、`SELECT avg(cast(count as double)) FROM myTable` はサポートされて **いません**。    
+> \*\*\* `USING` オプションで指定されたカスタム タイムスタンプおよび TTL は、(セルごとではなく) 行レベルで適用されます。
 
 
 
@@ -159,7 +160,6 @@ Azure Cosmos DB は、Cassandra API アカウントで以下のデータベー�
 | CREATE ROLE | いいえ |
 | CREATE USER (ネイティブの Apache Cassandra では非推奨) | いいえ |
 | DELETE | はい |
-| DELETE (IF 条件での軽量トランザクション)| はい |
 | DISTINCT | いいえ |
 | DROP AGGREGATE | いいえ |
 | DROP FUNCTION | いいえ |
@@ -173,17 +173,25 @@ Azure Cosmos DB は、Cassandra API アカウントで以下のデータベー�
 | DROP USER (ネイティブの Apache Cassandra では非推奨) | いいえ |
 | GRANT | いいえ |
 | INSERT | はい |
-| INSERT (IF 条件での軽量トランザクション)| はい |
 | LIST PERMISSIONS | いいえ |
 | LIST ROLES | いいえ |
 | LIST USERS (ネイティブの Apache Cassandra では非推奨) | いいえ |
 | REVOKE | いいえ |
 | SELECT | はい |
-| SELECT (IF 条件での軽量トランザクション)| いいえ |
 | UPDATE | はい |
-| UPDATE (IF 条件での軽量トランザクション)| いいえ |
 | TRUNCATE | いいえ |
 | USE | はい |
+
+## <a name="lightweight-transactions-lwt"></a>軽量トランザクション (LWT)
+
+| コンポーネント  |サポートされています |
+|---------|---------|
+| DELETE IF EXISTS | はい |
+| DELETE <条件> | いいえ |
+| INSERT IF NOT EXISTS | はい |
+| UPDATE IF EXISTS | はい |
+| UPDATE IF NOT EXISTS | はい |
+| UPDATE <条件> | いいえ |
 
 ## <a name="cql-shell-commands"></a>CQL シェル コマンド
 
@@ -230,7 +238,7 @@ Azure Cosmos DB の Cassandra API は、管理されたサービス プラット
 
 ## <a name="hosted-cql-shell-preview"></a>ホステッドされる CQL シェル (プレビュー)
 
-ホストされるネイティブ Cassandra シェル (CQLSH v5.0.1) を [Azure portal](data-explorer.md) のデータ エクスプローラーまたは [Azure Cosmos DB Explorer](https://cosmos.azure.com/) で直接開くことができます。 CQL シェルを有効にする前に、アカウントで[ノートブック機能を有効にする](enable-notebooks.md) 必要があります (まだ有効になっていない場合、`Open Cassandra Shell` をクリックしたときにメッセージが表示されます)。 サポートされている Azure リージョンについては、「[Azure Cosmos DB アカウントのノートブックを有効にする](enable-notebooks.md)」で強調表示されている注意点を確認します。
+ホストされるネイティブ Cassandra シェル (CQLSH v5.0.1) を [Azure portal](data-explorer.md) のデータ エクスプローラーまたは [Azure Cosmos DB Explorer](https://cosmos.azure.com/) で直接開くことができます。 CQL シェルを有効にする前に、アカウントで[ノートブック機能を有効にする](enable-notebooks.md) 必要があります (まだ有効になっていない場合、`Open Cassandra Shell` をクリックしたときにメッセージが表示されます)。 サポートされている Azure リージョンについては、「[Azure Cosmos DB アカウントのノートブックを有効にする](enable-notebooks.md#supported-regions)」の記事を参照してください。
 
 :::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH を開く":::
 

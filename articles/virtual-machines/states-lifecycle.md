@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 8c9641e722cf3892450bbfbea54f169ac6dc764b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7f91d5eebfae990f60b47f2c98f364046bafbf04
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963297"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100594361"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>仮想マシンのライフサイクルと状態
 
@@ -164,7 +164,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
    :::column-end:::
    :::column span="":::
 
-   過渡的な状態です。 完了すると、VM は**割り当て解除済み**と表示されます。
+   過渡的な状態です。 完了すると、VM は **割り当て解除済み** と表示されます。
 
    ```json
    "statuses": [
@@ -365,7 +365,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
    :::column-end:::
    :::column span="2":::
    
-   有効期間の短い状態。 何らかの拡張機能をインストールする必要が生じない限り、VM の状態はすぐに**成功**に遷移します。 拡張機能のインストールには時間がかかる場合があります。
+   有効期間の短い状態。 何らかの拡張機能をインストールする必要が生じない限り、VM の状態はすぐに **成功** に遷移します。 拡張機能のインストールには時間がかかる場合があります。
    
    ```json
    "statuses": [
@@ -377,7 +377,7 @@ Azure Virtual Machines (VM) はさまざまな状態に変化し、それらは 
    [
    ```
    
-   **注**: OS でエラーが発生するか、時間内に OS をインストールできない場合、OS のプロビジョニングが**失敗**に移行する場合があります。 お客様は、インフラストラクチャ上にデプロイした VM に対して課金されます。
+   **注**: OS でエラーが発生するか、時間内に OS をインストールできない場合、OS のプロビジョニングが **失敗** に移行する場合があります。 お客様は、インフラストラクチャ上にデプロイした VM に対して課金されます。
 
    :::column-end:::
 
@@ -424,8 +424,8 @@ Azure リソース エクスプローラーは、VM の実行状態を表示す�
 
 プロビジョニング状態は、VM のプロパティとインスタンス ビューから確認できます。 電源の状態は、VM のインスタンス ビューから確認できます。
 
-自分のサブスクリプション内のすべての VM の電源状態を取得するには、**statusOnly** パラメーターを *true* に設定して[Virtual Machines の List All API](/rest/api/compute/virtualmachines/listall) を使用します。
+自分のサブスクリプション内のすべての VM の電源状態を取得するには、**statusOnly** パラメーターを *true* に設定して [Virtual Machines の List All API](/rest/api/compute/virtualmachines/listall) を使用します。
 
 ## <a name="next-steps"></a>次のステップ
 
-VM の監視について詳しくは、[Azure で仮想マシンを監視する方法](../azure-monitor/insights/monitor-vm-azure.md)に関するページをご覧ください。
+VM の監視について詳しくは、[Azure で仮想マシンを監視する方法](../azure-monitor/vm/monitor-vm-azure.md)に関するページをご覧ください。

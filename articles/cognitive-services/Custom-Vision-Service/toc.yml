@@ -31,7 +31,7 @@
   items:
     - name: モデルのテスト
       href: test-your-model.md
-    - name: 分類子の改善
+    - name: アプリを改善する
       href: getting-started-improving-your-classifier.md
     - name: ドメインの選択
       href: select-domain.md
@@ -87,10 +87,6 @@
       href: /samples/browse/?products=azure&term=vision
     - name: 制限とクォータ
       href: limits-and-quotas.md
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598141-custom-vision-service'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: リージョン別の提供状況
@@ -98,6 +94,6 @@
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 暗号化
-      href: custom-vision-encryption-of-data-at-rest.md
+      href: encrypt-data-at-rest.md
     - name: リリース ノート
       href: release-notes.md

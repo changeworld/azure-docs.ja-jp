@@ -3,15 +3,15 @@ title: Key Vault 参照を使用する
 description: Azure Key Vault 参照を使用するように Azure App Service と Azure Functions を設定する方法について説明します。 Key Vault シークレットをアプリケーション コードで使用できるようにします。
 author: mattchenderson
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: bb220da0b906c9d7a5f45dcc841129e14c7c6c51
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 69fc0d6f3c4e18b34555a099f4e28e278ca3bdad
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205848"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100635389"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service と Azure Functions の Key Vault 参照を使用する
 
@@ -40,24 +40,24 @@ Key Vault 参照の形式は `@Microsoft.KeyVault({referenceString})` です。`
 > [!div class="mx-tdBreakAll"]
 > | 参照文字列                                                            | 説明                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri= _secretUri_                                                       | **SecretUri** は、バージョン (例: https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931 ) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
-> | VaultName= _vaultName_ ;SecretName= _secretName_ ;SecretVersion= _secretVersion_ | **VaultName** は Key Vault リソースの名前になります。 **SecretName** はターゲット シークレットの名前になります。 **SecretVersion** は使用するシークレットのバージョンになります。 |
+> | SecretUri=_secretUri_                                                       | **SecretUri** は、省略可能でバージョン (例: `https://myvault.vault.azure.net/secrets/mysecret/` または `https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`) を含む、Key Vault におけるシークレットのフル データプレーン URI になります。  |
+> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** は必須で、Key Vault リソースの名前になります。 **SecretName** は必須で、ターゲット シークレットの名前になります。 **SecretVersion** は省略可能ですが、存在する場合は、使用するシークレットのバージョンを示します。 |
 
-> [!NOTE] 
-> バージョンは現在必須項目です。 シークレットをローテーションするとき、アプリケーション構成でバージョンを更新する必要があります。
 たとえば、完全な参照は次のようになります。
 
-
 ```
-@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
+@Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/)
 ```
 
 あるいは:
 
 ```
-@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret;SecretVersion=ec96f02080254f109c51a1f14cdb1931)
+@Microsoft.KeyVault(VaultName=myvault;SecretName=mysecret)
 ```
 
+## <a name="rotation"></a>回転
+
+参照でバージョンが指定されていない場合、アプリでは Key Vault に存在する最新バージョンを使用します。 回転イベントなどにより新しいバージョンが利用可能になると、アプリは自動的に更新され、1 日以内に最新バージョンの使用が開始されます。 アプリに対して行われた構成の変更により、参照されているすべてのシークレットの最新バージョンが即座に更新されます。
 
 ## <a name="source-application-settings-from-key-vault"></a>Key Vault からのソース アプリケーション設定
 

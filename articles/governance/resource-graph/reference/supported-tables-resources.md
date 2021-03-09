@@ -1,15 +1,15 @@
 ---
 title: サポートされている Azure Resource Manager のリソースの種類
 description: Azure Resource Graph でサポートされている Azure Resource Manager のリソースの種類と変更履歴の一覧を示します。
-ms.date: 01/06/2021
+ms.date: 02/04/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: 4198c60bc298eb6a1b9902bb92e3df44648b2c0b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 865aed468f8a6bcb848b77a82467efc2c531398b
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251779"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594335"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Azure Resource Graph のテーブルとリソースの種類のリファレンス
 
@@ -130,6 +130,9 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.azurestack/linkedsubscriptions
 - Microsoft.Azurestack/registrations (Azure Stack Hub)
 - Microsoft.AzureStackHCI/clusters (Azure Stack HCI)
+- microsoft.azurestackhci/galleryimages
+- microsoft.azurestackhci/networkinterfaces
+- microsoft.azurestackhci/virtualnetworks
 - microsoft.baremetal/consoleconnections
 - Microsoft.BareMetal/crayServers (Cray サーバー)
 - Microsoft.BareMetal/monitoringServers (監視サーバー)
@@ -331,6 +334,9 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - microsoft.insights/workbooktemplates (Azure ブック テンプレート)
 - Microsoft.IntelligentITDigitalTwin/digitalTwins (Minervas)
 - microsoft.intelligentitdigitaltwin/digitaltwins/assets
+- microsoft.intelligentitdigitaltwin/digitaltwins/executionplans
+- microsoft.intelligentitdigitaltwin/digitaltwins/testplans
+- microsoft.intelligentitdigitaltwin/digitaltwins/tests
 - Microsoft.IoTCentral/IoTApps (IoT Central アプリケーション)
 - Microsoft.IoTSpaces/Graph (Digital Twins (非推奨))
 - microsoft.keyvault/hsmpools
@@ -494,6 +500,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Resources/templateSpecs (テンプレート スペック)
 - microsoft.resources/templatespecs/versions
 - Microsoft.SaaS/applications (サービスとしてのソフトウェア (クラシック))
+- Microsoft.SaaS/resources (CPX-Placeholder)
 - Microsoft.Scheduler/jobCollections (スケジューラ ジョブ コレクション)
 - microsoft.scvmm/clouds
 - Microsoft.scvmm/virtualMachines (SCVMM 仮想マシン - Azure Arc)
@@ -588,6 +595,7 @@ Azure Resource Graph では、[Azure Resource Manager](../../../azure-resource-m
 - Microsoft.Web/StaticSites (Static Web Apps (プレビュー))
 - Microsoft.WindowsESU/multipleActivationKeys (Windows マルチ ライセンス認証キー)
 - Microsoft.WindowsIoT/DeviceServices (Windows 10 IoT Core Services)
+- microsoft.workloadbuilder/migrationagents
 - microsoft.workloadbuilder/workloads
 - MyGet.PackageManagement/services (MyGet - ホスト型 NuGet、NPM、Bower、Vsix)
 - Paraleap.CloudMonix/services (CloudMonix)

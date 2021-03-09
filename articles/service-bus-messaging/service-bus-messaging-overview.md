@@ -2,13 +2,13 @@
 title: Azure Service Bus メッセージングの概要 | Microsoft Docs
 description: この記事では、フル マネージド エンタープライズ統合メッセージ ブローカーである Azure Service Bus の概要を簡単に説明します。
 ms.topic: overview
-ms.date: 11/20/2020
-ms.openlocfilehash: 7453e8dd300ad754fb58489f059670af209314ab
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 02/16/2021
+ms.openlocfilehash: 897729b9748d69ad3c6de507e800dbb3a1a3619c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881603"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570461"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 Microsoft Azure Service Bus は、メッセージ キューとパブリッシュとサブスクライブ トピックを備えたフル マネージド エンタープライズ統合メッセージ ブローカーです。 Service Bus は、アプリケーションとサービスを相互に分離するために使用され、次のような利点があります。
@@ -118,11 +118,10 @@ Service Bus のすべてのキューおよびトピック サブスクリプシ�
 トランザクションにより、複数の操作が 1 つの *実行スコープ* にグループ化されます。 Service Bus では、単一トランザクションのスコープ内の複数のメッセージング エンティティに対してグループ化操作を実行できます。 メッセージ エンティティは、キュー、トピック、またはサブスクリプションとすることができます。 詳しくは、「[Service Bus のトランザクション処理の概要](service-bus-transactions.md)」を参照してください。
 
 ### <a name="autodelete-on-idle"></a>アイドル状態時の自動削除
-
-アイドル状態時の自動削除機能を使用すると、アイドル間隔を指定できます。この間隔が経過すると、キューまたはトピックス サブスクリプションが自動的に削除されます。 最小時間は、5 分です。 詳細については、「[QueueDescription.AutoDeleteOnIdle プロパティ](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle)」を参照してください。
+アイドル状態時の自動削除機能を使用すると、アイドル間隔を指定できます。この間隔が経過すると、キューまたはトピックス サブスクリプションが自動的に削除されます。 最小時間は、5 分です。 
 
 ### <a name="duplicate-detection"></a>重複検出
-重複検出機能を使用すると、送信側は同じメッセージを再送信し、重複する可能性のあるものをブローカーが削除できます。 重複検出は、メッセージの `message-id` プロパティの追跡に基づいています。そのため、アプリケーションではメッセージを再送信するときに同じ値を使用するように注意する必要があります。その値は、アプリケーション固有のコンテキストから直接派生することがあります。 詳しくは、「[重複検出](duplicate-detection.md)」をご覧ください。
+重複検出機能を使用すると、送信側は同じメッセージを再送信し、重複する可能性のあるものをブローカーが削除できます。 詳しくは、「[重複検出](duplicate-detection.md)」をご覧ください。
 
 ### <a name="geo-disaster-recovery"></a>geo ディザスター リカバリー
 
@@ -152,12 +151,12 @@ Service Bus は、[AMQP 1.0](service-bus-amqp-overview.md) 標準および [HTTP
 
 Service Bus は、次のような多くの Microsoft および Azure サービスと完全に統合されています。
 
-* [Event Grid](https://azure.microsoft.com/services/event-grid/)
-* [Logic Apps](https://azure.microsoft.com/services/logic-apps/)
-* [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Power Platform](https://powerplatform.microsoft.com/)
-* [Dynamics 365](https://dynamics.microsoft.com)
-* [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
+* [Event Grid](service-bus-to-event-grid-integration-example.md)
+* [Logic Apps](../connectors/connectors-create-api-servicebus.md)
+* [Azure Functions](../azure-functions/functions-bindings-service-bus.md)
+* [Power Platform](../connectors/connectors-create-api-servicebus.md)
+* [Dynamics 365](/dynamics365/fin-ops-core/dev-itpro/business-events/how-to/how-to-servicebus)
+* [Azure Stream Analytics](../stream-analytics/stream-analytics-define-outputs.md)
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 02/04/2021
 ms.author: alexeyo
-ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: c9af0cda14261e8eab7f1ecc05c50a289d7ddfdb
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786844"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99559649"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>プライベート エンドポイント経由で Speech Services を使用する
 
@@ -268,8 +268,6 @@ az cognitiveservices account update --name my-speech-resource-name --resource-gr
              westeurope.prod.vnet.cog.trafficmanager.net
    ```
 
-3. IP アドレスがプライベート エンドポイントの IP アドレスと一致していることを確認します。
-
 > [!NOTE]
 > 解決された IP アドレスは、仮想ネットワーク プロキシ エンドポイントを指しています。これにより、ネットワーク トラフィックが Cognitive Services リソースのプライベート エンドポイントにディスパッチされます。 この動作は、カスタム ドメイン名が有効になっていても、プライベート エンドポイントが有効になって *いない* リソースでは異なります。 詳細については、[このセクション](#dns-configuration)を参照してください。
 
@@ -288,17 +286,17 @@ Speech リソースでカスタム ドメイン名とプライベート エン�
 
 このセクションでは、Speech リソースの DNS 名 (カスタム ドメイン) のサンプルとして `my-private-link-speech.cognitiveservices.azure.com` を使用します。
 
-Speech Services には、[音声テキスト変換](rest-speech-to-text.md)および[テキスト読み上げ](rest-text-to-speech.md)用の REST API があります。 プライベート エンドポイントが有効なシナリオでは、次の情報を考慮します。
+Speech Service には、[Speech to Text](rest-speech-to-text.md) および [Text to Speech](rest-text-to-speech.md) の REST API があります。 プライベート エンドポイントが有効なシナリオでは、次の情報を考慮します。
 
 音声テキスト変換には、2 つの REST API があります。 各 API は、異なる目的に対応し、使用するエンドポイントが異なり、プライベート エンドポイントが有効なシナリオで使用するときは異なるアプローチを必要とします。
 
-Speech to Text REST API は次のとおりです。
+以下に、Speech to Text REST API を示します。
 - [Speech to Text REST API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) は、[バッチ文字起こし](batch-transcription.md)と [Custom Speech](custom-speech-overview.md) に使用されます。 v3.0 は、[v2.0 の後継](./migrate-v2-to-v3.md)です
 - [Speech to Text REST API for short audio](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) は、オンライン文字起こしに使用されます 
 
 プライベート エンドポイントのシナリオでは、Speech to Text REST API for short audio と Text to Speech REST API の使用方法は同じです。 これは、この記事で後ほど説明する [Speech SDK の場合](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)と同じです。 
 
-Speech to Text REST API v3.0 により使用されるエンドポイントが異なるため、プライベート エンドポイントが有効になっているシナリオには別のアプローチが必要になります。
+Speech to Text REST API v3.0 により使用されるエンドポイント セットが異なるため、プライベート エンドポイントが有効になっているシナリオには別のアプローチが必要になります。
 
 次のサブセクションでは、両方のケースについて説明します。
 
@@ -311,6 +309,10 @@ Speech to Text REST API v3.0 により使用されるエンドポイントが異
 ```http
 https://westeurope.api.cognitive.microsoft.com/speechtotext/v3.0/transcriptions
 ```
+
+> [!NOTE]
+> Azure Government と Azure China のエンドポイントについては、[こちらの記事](sovereign-clouds.md)を参照してください。
+
 Speech リソースのカスタム ドメインを有効にした後 (プライベート エンドポイントに必要)、そのリソースでは基本的な REST API エンドポイントに次の DNS 名パターンが使用されます。 <p/>`{your custom name}.cognitiveservices.azure.com`.
 
 つまり、この例の REST API エンドポイント名は次のようになります。 <p/>`my-private-link-speech.cognitiveservices.azure.com`.
@@ -334,42 +336,35 @@ Speech リソースのカスタム ドメイン名を有効にした後は、通
 - 認証トークンを取得するために Cognitive Services REST API と通信するための [Cognitive Services リージョン エンドポイント](../cognitive-services-custom-subdomains.md#is-there-a-list-of-regional-endpoints)
 - 他のすべての操作のための特別なエンドポイント
 
-特別なエンドポイントの詳細と、プライベート エンドポイントが有効になっている Speech リソースに応じて URL を変換する方法の詳細については、Speech SDK での使用方法に関する[こちらのサブセクション](#general-principles)を参照してください。 SDK について説明されているものと同じ原則が、Speech to Text REST API v1.0 および Text to Speech REST API に適用されます。
+> [!NOTE]
+> Azure Government と Azure China のエンドポイントについては、[こちらの記事](sovereign-clouds.md)を参照してください。
+
+特別なエンドポイントの詳細と、プライベート エンドポイントが有効になっている Speech リソースに応じて URL を変換する方法の詳細については、Speech SDK での使用方法に関する[こちらのサブセクション](#construct-endpoint-url)を参照してください。 SDK について説明されているものと同じ原則が、Speech to Text REST API for short audio および Text to Speech REST API に適用されます。
 
 前の段落で説明したサブセクションの資料を理解し、次の例をご覧ください。 この例では、Text to Speech REST API について説明します。 Speech to Text REST API for short audio の使用方法はまったく同じです。
 
 > [!NOTE]
-> プライベート エンドポイントのシナリオで Speech to Text REST API for short audio を使用するときは、`Authorization` [ヘッダー](rest-speech-to-text.md#request-headers)を[通して渡された](rest-speech-to-text.md#request-headers)承認トークンを使用します。 `Ocp-Apim-Subscription-Key` ヘッダーを使用して特殊なエンドポイントに Speech サブスクリプション キーを渡すと、動作 "*せず*" にエラー 401 が生成されます。
+> プライベート エンドポイントのシナリオで Speech to Text REST API for short audio と Text to Speech REST API を使用している場合は、`Ocp-Apim-Subscription-Key` ヘッダーを介して渡されたサブスクリプション キーを使用します。 (詳細は、[Speech to Text REST API for short audio](rest-speech-to-text.md#request-headers) および [Text to Speech REST API](rest-text-to-speech.md#request-headers) を参照)
+>
+> 認証トークンを使用してそれを `Authorization` ヘッダーを介して特殊なエンドポイントに渡すことは、音声リソースの **[ネットワーク]** セクションで **[すべてのネットワーク]** アクセス オプションを有効にした場合に "*のみ*" 機能します。 それ以外の場合は、認証トークンを取得しようとすると、`Forbidden` または `BadRequest` エラーが発生します。
 
 **Text to Speech REST API の使用例**
 
 Azure リージョンのサンプルとして西ヨーロッパを、Speech リソースの DNS 名 (カスタム ドメイン) のサンプルとして `my-private-link-speech.cognitiveservices.azure.com` を使用します。 この例のカスタム ドメイン名 `my-private-link-speech.cognitiveservices.azure.com` は、西ヨーロッパ リージョンに作成された Speech リソースに属しています。
 
-リージョンでサポートされている音声の一覧を取得するには、次の 2 つの操作を行います。
+リージョンでサポートされている音声の一覧を取得するには、次の要求を実行します。
 
-- 承認トークンを取得します。
-  ```http
-  https://westeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
-  ```
-- トークンを使用して、音声の一覧を取得します。
-  ```http
-  https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
-  ```
-上記の手順の詳細については、[Text to Speech REST API に関するドキュメント](rest-text-to-speech.md)を参照してください。
+```http
+https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list
+```
+詳細については、[Text to Speech REST API のドキュメント](rest-text-to-speech.md)を参照してください。
 
-プライベート エンドポイントが有効になっている Speech リソースの場合、同じ操作シーケンスのエンドポイント URL を変更する必要があります。 同じシーケンスは次のようになります。
+プライベート エンドポイントが有効になっている Speech リソースの場合、同じ操作のエンドポイント URL を変更する必要があります。 同じ要求は次のようになります。
 
-- 承認トークンを取得します。
-  ```http
-  https://my-private-link-speech.cognitiveservices.azure.com/v1.0/issuetoken
-  ```
-  詳細については、前の「[Speech to Text REST API v3.0](#speech-to-text-rest-api-v30)」サブセクションを参照してください。
-
-- 取得したトークンを使用して、音声の一覧を取得します。
-  ```http
-  https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices/voices/list
-  ```
-  Speech SDK の詳細については、「[一般的な原則](#general-principles)」サブセクションを参照してください。
+```http
+https://my-private-link-speech.cognitiveservices.azure.com/tts/cognitiveservices/voices/list
+```
+Speech SDK については、「[エンドポイント URL の構築](#construct-endpoint-url)」サブセクションの詳細な説明を参照してください。
 
 #### <a name="speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk"></a>カスタム ドメイン名とプライベート エンドポイントが有効な Speech リソース: Speech SDK での使用方法
 
@@ -377,9 +372,9 @@ Azure リージョンのサンプルとして西ヨーロッパを、Speech リ�
 
 このセクションでは、Speech リソースの DNS 名 (カスタム ドメイン) のサンプルとして `my-private-link-speech.cognitiveservices.azure.com` を使用します。
 
-##### <a name="general-principles"></a>一般的な原則
+##### <a name="construct-endpoint-url"></a>エンドポイント URL の構築
 
-通常、SDK のシナリオ (および Text to Speech REST API のシナリオ) では、Speech リソースにより、異なるサービス内容ごとに専用のリージョン エンドポイントが使用されます。 これらのエンドポイントの DNS 名の形式は次のとおりです。
+通常、SDK のシナリオ (および Speech to Text REST API for short audio と Text to Speech REST API のシナリオ) では、Speech リソースにより、異なるサービス内容ごとに専用のリージョン エンドポイントが使用されます。 これらのエンドポイントの DNS 名の形式は次のとおりです。
 
 `{region}.{speech service offering}.speech.microsoft.com`
 
@@ -387,7 +382,7 @@ DNS 名の例を次に示します。
 
 `westeurope.stt.speech.microsoft.com`
 
-リージョン (DNS 名の最初の要素) に使用可能なすべての値は、「[Speech サービスがサポートされているリージョン](regions.md)」の一覧に示されています。 次の表では、Speech Services オファリング (DNS 名の 2 番目の要素) に使用できる値を示します。
+リージョン (DNS 名の最初の要素) に使用可能なすべての値は、「[Speech サービスがサポートされているリージョン](regions.md)」の一覧に示されています。 Azure Government と Azure China のエンドポイントについては、[こちらの記事](sovereign-clouds.md)を参照してください。次の表では、Speech Services オファリング (DNS 名の 2 番目の要素) に使用できる値を示します。
 
 | DNS 名値 | Speech Services オファリング                                    |
 |----------------|-------------------------------------------------------------|
@@ -395,7 +390,7 @@ DNS 名の例を次に示します。
 | `convai`       | [会話の文字起こし](conversation-transcription.md) |
 | `s2s`          | [音声翻訳](speech-translation.md)                 |
 | `stt`          | [音声テキスト変換](speech-to-text.md)                         |
-| `tts`          | [音声合成](text-to-speech.md)                         |
+| `tts`          | [テキスト読み上げ](text-to-speech.md)                         |
 | `voice`        | [Custom Voice](how-to-custom-voice.md)                      |
 
 そのため、前の例 (`westeurope.stt.speech.microsoft.com`) は、西ヨーロッパの音声テキスト変換エンドポイントを表します。
@@ -459,7 +454,7 @@ https://my-private-link-speech.cognitiveservices.azure.com/voice/cognitiveservic
 
 2. エンドポイントの完全な URL を使用して、`SpeechConfig` インスタンスを作成します。
 
-   1. 前の「[一般的な原則](#general-principles)」セクションで説明したように、先ほど特定したエンドポイントを変更します。
+   1. 前の「[エンドポイント URL の構築](#construct-endpoint-url)」セクションの説明に従って、先ほど特定したエンドポイントを変更します。
 
    1. `SpeechConfig` のインスタンスの作成方法を変更します。 通常、アプリケーションでは次のようなものが使用されています。
       ```csharp
@@ -537,70 +532,28 @@ Speech to Text REST API v3.0 の使用方法は、[プライベート エンド�
 
 ##### <a name="speech-to-text-rest-api-for-short-audio-and-text-to-speech-rest-api"></a>Speech to Text REST API for short audio と Text to Speech REST API
 
-この場合、Speech to Text REST API for short audio と Text to Speech REST API の使用方法は、一般的な場合では違いはありませんが、Speech to Text REST API for short audio には例外が 1 つあります。 (下記の注を参照)。どちらの API も、[Speech to Text REST API for short audio](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) および [Text to Speech REST API](rest-text-to-speech.md) のドキュメントで説明されているように使用する必要があります。
+この場合、Speech to Text REST API for short audio と Text to Speech REST API の使用方法は、一般的な場合では違いはありませんが、例外が 1 つあります。 (下記の注を参照)。どちらの API も、[Speech to Text REST API for short audio](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) および [Text to Speech REST API](rest-text-to-speech.md) のドキュメントで説明されているように使用する必要があります。
 
 > [!NOTE]
-> カスタム ドメインのシナリオで Speech to Text REST API for short audio を使用しているときは、`Authorization` [ヘッダー](rest-speech-to-text.md#request-headers)を[通して渡された](rest-speech-to-text.md#request-headers)承認トークンを使用します。 `Ocp-Apim-Subscription-Key` ヘッダーを使用して特殊なエンドポイントに Speech サブスクリプション キーを渡すと、動作 "*せず*" にエラー 401 が生成されます。
+> カスタム ドメインのシナリオで Speech to Text REST API for short audio と Text to Speech REST API を使用している場合は、`Ocp-Apim-Subscription-Key` ヘッダーを介して渡されたサブスクリプション キーを使用します。 (詳細は、[Speech to Text REST API for short audio](rest-speech-to-text.md#request-headers) および [Text to Speech REST API](rest-text-to-speech.md#request-headers) を参照)
+>
+> 認証トークンを使用してそれを `Authorization` ヘッダーを介して特殊なエンドポイントに渡すことは、音声リソースの **[ネットワーク]** セクションで **[すべてのネットワーク]** アクセス オプションを有効にした場合に "*のみ*" 機能します。 それ以外の場合は、認証トークンを取得しようとすると、`Forbidden` または `BadRequest` エラーが発生します。
 
 #### <a name="speech-resource-with-a-custom-domain-name-and-without-private-endpoints-usage-with-the-speech-sdk"></a>カスタム ドメイン名は有効だがプライベート エンドポイントは有効でない Speech リソースSpeech SDK での使用方法
 
-カスタム ドメインが有効になっていて、プライベート エンドポイントが有効になって "*いない*" Speech リソースで Speech SDK を使用する場合は、アプリケーション コードを確認し、おそらくは変更することが必要になります。 これらの変更は、[プライベート エンドポイントが有効になっている Speech リソース](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)の場合とは異なることに注意してください。 プライベート エンドポイントとカスタム ドメインのシナリオのサポートをいっそうシームレスにするための作業が行われています。
+プライベート エンドポイントを "*使用せずに*"、カスタム ドメイン対応の音声リソースで Speech SDK を使用することは、[Speech SDK ドキュメント](speech-sdk.md)に記載されている一般的なケースと同じです。
 
-このセクションでは、Speech リソースの DNS 名 (カスタム ドメイン) のサンプルとして `my-private-link-speech.cognitiveservices.azure.com` を使用します。
+[プライベート エンドポイント対応の音声リソース](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)と一緒に使用するようにコードを変更した場合は、次の点を考慮してください。
 
 [プライベート エンドポイントが有効になっている Speech リソース](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk)に関するセクションでは、エンドポイント URL を特定し、それを変更して、`SpeechConfig` クラス インスタンスの "エンドポイントから" および "エンドポイントで" の初期化を通じて機能させる方法について説明しました。
 
 ただし、すべてのプライベート エンドポイントが削除された後で同じアプリケーションを実行しようとすると (対応する DNS レコードが再プロビジョニングされるまでしばらく時間をおきます)、内部サービス エラー (404) が発生します。 この理由は、[DNS レコード](#dns-configuration)が仮想ネットワーク プロキシではなく、Cognitive Services のリージョン エンドポイントを指すようになって、`/stt/speech/recognition/conversation/cognitiveservices/v1?language=en-US` のような URL パスが見つからないためです。
 
-次のコードのスタイルで `SpeechConfig` の標準のインスタンス化にアプリケーションをロールバックすると、アプリケーションは認証エラー (401) で終了するようになります。
+次のコードのスタイルで `SpeechConfig` の標準のインスタンス化にアプリケーションをロールバックする必要があります。
 
 ```csharp
 var config = SpeechConfig.FromSubscription(subscriptionKey, azureRegion);
 ```
-
-##### <a name="modifying-applications"></a>アプリケーションの変更
-
-アプリケーションでカスタム ドメイン名を持つ Speech リソースを使用し、プライベート エンドポイントを使用しないようにするには、次の手順を実行します。
-
-1. Cognitive Services REST API から承認トークンを要求します。 [この記事](../authentication.md#authenticate-with-an-authentication-token)では、トークンを取得する方法が示されています。
-
-   エンドポイント URL でカスタム ドメイン名を使用します。 この例では、この URL は次のようになります。
-   ```http
-   https://my-private-link-speech.cognitiveservices.azure.com/sts/v1.0/issueToken
-   ```
-   > [!TIP]
-   > この URL は Azure portal で確認できます。 Speech リソース ページの **[リソース管理]** グループで、 **[Keys and Endpoint]\(キーとエンドポイント\)** を選択します。
-
-1. 前のセクションで取得した承認トークンを使用して、`SpeechConfig` インスタンスを作成します。 次の変数が定義されているとします。
-
-   - `token`: 前のセクションで取得した認証トークン
-   - `azureRegion`: Speech リソース [リージョン](regions.md)の名前 (例: `westeurope`)
-   - `outError`: ([Objective C](/objectivec/cognitive-services/speech/spxspeechconfiguration#initwithauthorizationtokenregionerror) の場合のみ)
-
-   次のような `SpeechConfig` インスタンスを作成します。
-
-   ```csharp
-   var config = SpeechConfig.FromAuthorizationToken(token, azureRegion);
-   ```
-   ```cpp
-   auto config = SpeechConfig::FromAuthorizationToken(token, azureRegion);
-   ```
-   ```java
-   SpeechConfig config = SpeechConfig.fromAuthorizationToken(token, azureRegion);
-   ```
-   ```python
-   import azure.cognitiveservices.speech as speechsdk
-   speech_config = speechsdk.SpeechConfig(auth_token=token, region=azureRegion)
-   ```
-   ```objectivec
-   SPXSpeechConfiguration *speechConfig = [[SPXSpeechConfiguration alloc] initWithAuthorizationToken:token region:azureRegion error:outError];
-   ```
-> [!NOTE]
-> 呼び出し元は、認証トークンが有効であることを確認する必要があります。 認証トークンの有効期限が切れる前に、呼び出し元は、新しい有効なトークンを使用してこのセッターを呼び出すことによって、認証トークンを更新する必要があります。 新しい認識エンジンまたはシンセサイザーを作成するときに構成値がコピーされるため、既に作成されている認識エンジンまたはシンセサイザーに新しいトークン値は適用されません。
->
-> これらの場合、トークンを更新するには、対応する認識エンジンまたはシンセサイザーの認証トークンを設定します。 トークンを更新しないと、認識エンジンまたはシンセサイザーの動作中にエラーが発生します。
-
-この変更を行った後、アプリケーションは、プライベート エンドポイントなしでカスタム ドメイン名を使用する Speech リソースで動作するようになります。
 
 ## <a name="pricing"></a>価格
 

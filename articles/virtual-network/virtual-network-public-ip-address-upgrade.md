@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: d6e8c4f4b6646254aeea12cf587f47047e661e3f
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 33c767d847d9e70e95b3ee1648be7852aa5cec98
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222872"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522888"
 ---
 # <a name="upgrade-public-ip-addresses"></a>パブリック IP アドレスのアップグレード
 
-Azure パブリック IP アドレスは、SKU (Basic または Standard) を使用して作成され、SKU によって機能の側面 (割り当て方法、可用性ゾーン間の使用量、関連付けることができるリソースを含む) が決まります。 
+Azure パブリック IP アドレスは、SKU (Basic または Standard) を使用して作成され、SKU によって機能の側面 (割り当て方法、機能のサポート、関連付けることができるリソースを含む) が決まります。 
 
 この記事では、次のシナリオを確認します。
-* Basic SKU パブリック IP を Standard SKU パブリック IP にアップグレードする方法 (ポータル、PowerShell、または CLI を使用)
+* Basic SKU パブリック IP を Standard SKU パブリック IP にアップグレードする方法 (PowerShell または CLI を使用)
 * 従来の Azure 予約済み IP を Azure Resource Manager の Basic SKU パブリック IP に移行する方法
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>パブリック IP アドレスを Basic SKU から Standard SKU にアップグレードする
@@ -36,7 +36,7 @@ Azure パブリック IP アドレスは、SKU (Basic または Standard) を使
 パブリック IP をアップグレードする場合、その IP をリソースに関連付けることはできません (パブリック IP の関連付けを解除する方法の詳細については、[このページ](./virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address)をご覧ください)。
 
 >[!IMPORTANT]
->Basic から Standard にアップグレードされたパブリック IP は、引き続き[可用性ゾーン](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)を使用できません。  つまり、ゾーン冗長である Azure リソース、または事前に指定されたゾーンに関連付けられている Azure リソースに関連付けることはできません。
+>Basic から Standard SKU にアップグレードされたパブリック IP には引き続き、[可用性ゾーン](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones)の保証はありません。  IP アドレスを関連付けるリソースを選択するときは、この点に留意してください。
 
 ---
 # <a name="basic-to-standard---powershell"></a>[**Basic から Standard へ - PowerShell**](#tab/option-upgrade-powershell)

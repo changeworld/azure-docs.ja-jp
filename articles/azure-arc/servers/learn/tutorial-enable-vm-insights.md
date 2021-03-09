@@ -3,16 +3,16 @@ title: チュートリアル - Azure Monitor for VMs を使用してハイブリ
 description: Azure Monitor でハイブリッド マシンからデータを収集して分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/23/2020
-ms.openlocfilehash: 76565e40a8d85003c5a03be5fa48f83459657f29
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 409ad0976e02e42e385e22a103cfc06af5a4f3f4
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94738086"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100587701"
 ---
 # <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>チュートリアル:Azure Monitor for VMs を使用してハイブリッド マシンを監視する
 
-[Azure Monitor](../overview.md) は、詳細な分析と相関のために、ハイブリッド マシンから Log Analytics ワークスペースに直接データを収集できます。 通常、この作業には、スクリプト、手動、自動のいずれかの方法で、実際の構成管理基準に従って [Log Analytics エージェント](../../../azure-monitor/platform/agents-overview.md#log-analytics-agent)をマシンにインストールする作業が伴います。 最近、Arc 対応サーバーが、Windows と Linux 用の [VM 拡張機能](../manage-vm-extensions.md)である Log Analytics エージェントと Dependency Agent のインストールに対応するようになったため、Azure Monitor で Azure 以外の VM からデータを収集することが可能になりました。
+[Azure Monitor](../overview.md) は、詳細な分析と相関のために、ハイブリッド マシンから Log Analytics ワークスペースに直接データを収集できます。 通常、この作業には、スクリプト、手動、自動のいずれかの方法で、実際の構成管理基準に従って [Log Analytics エージェント](../../../azure-monitor/agents/agents-overview.md#log-analytics-agent)をマシンにインストールする作業が伴います。 最近、Arc 対応サーバーが、Windows と Linux 用の [VM 拡張機能](../manage-vm-extensions.md)である Log Analytics エージェントと Dependency Agent のインストールに対応するようになったため、Azure Monitor で Azure 以外の VM からデータを収集することが可能になりました。
 
 このチュートリアルでは、簡単な一連の手順に従って Azure Monitor for VMs を有効にし、Linux マシンまたは Windows マシンを構成して、それらの VM からデータを収集する方法について説明します。こうすることによって、エクスペリエンスが効率化され、所要時間が短縮されます。  
 
@@ -22,9 +22,9 @@ ms.locfileid: "94738086"
 
 * VM 拡張機能の機能は、[サポートされているリージョン](../overview.md#supported-regions)の一覧でのみ使用できます。
 
-* 「[サポートされるオペレーティング システム](../../../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)」を参照し、有効にするサーバーのオペレーティング システムが Azure Monitor for VMs でサポートされていることを確認してください。
+* 「[サポートされるオペレーティング システム](../../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems)」を参照し、有効にするサーバーのオペレーティング システムが Azure Monitor for VMs でサポートされていることを確認してください。
 
-* 「[Log Analytics エージェントの概要](../../../azure-monitor/platform/log-analytics-agent.md#network-requirements)」で、Log Analytics エージェントのファイアウォールの要件を確認します。 Azure Monitor for VMs マップの Dependency Agent でデータ自体が送信されることはないため、ファイアウォールやポートを変更する必要はありません。
+* 「[Log Analytics エージェントの概要](../../../azure-monitor/agents/log-analytics-agent.md#network-requirements)」で、Log Analytics エージェントのファイアウォールの要件を確認します。 Azure Monitor for VMs マップの Dependency Agent でデータ自体が送信されることはないため、ファイアウォールやポートを変更する必要はありません。
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 

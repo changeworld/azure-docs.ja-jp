@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd14c7911676768a61d2b2c0e366d2c227455be8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 562c90dcc4f802290b0ed8b4d544fce9d526fa10
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678206"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524670"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -48,7 +48,7 @@ CAE を使用するようにアプリケーションを準備する方法につ�
 - ユーザーのパスワードが変更またはリセットされた
 - ユーザーに対して多要素認証が有効化された
 - 管理者が、ユーザーのすべての更新トークンを明示的に取り消した
-- Azure AD Identity Protection によって管理者特権のユーザー リスクが検出された
+- Azure AD Identity Protection によって高いユーザー リスクが検出された
 
 このプロセスにより、これらの重大なイベントのいずれかが発生してから数分以内に、Microsoft 365 クライアント アプリから組織の SharePoint Online ファイル、電子メール、予定表、タスク、および Teams にアクセスできなくなるというシナリオが可能になります。 
 

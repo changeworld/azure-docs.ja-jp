@@ -4,18 +4,14 @@ description: データ ファクトリの作成および子リソースの操作
 ms.date: 11/5/2018
 ms.topic: conceptual
 ms.service: data-factory
-services: data-factory
-documentationcenter: ''
-ms.workload: data-services
 author: dcstwh
 ms.author: weetok
-manager: anandsub
-ms.openlocfilehash: 70be8d8be48f2b1e1cc275c06e4abff09e3e62f6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cec5df9a5046e912ab8542c91bde4344affa0925
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498576"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364479"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 
@@ -54,8 +50,13 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 
 Azure Repos や GitHub に対するアクセス許可は、Data Factory のアクセス許可から独立しています。 結果として、閲覧者ロールのメンバーにすぎない、リポジトリのアクセス許可を持つユーザーは、Data Factory の子リソースを編集して変更内容をリポジトリにコミットすることは可能ですが、それらの変更を発行することはできません。
 
+
 > [!IMPORTANT]
 > **Data Factory 共同作成者** ロールで Resource Manager テンプレートをデプロイする場合にアクセス許可が昇格されることはありません。 たとえば、Azure 仮想マシンを作成するテンプレートをデプロイするときに、仮想マシンを作成するアクセス許可がない場合、デプロイは認可エラーで失敗します。
+
+   発行コンテキストでは、**Microsoft.DataFactory/factories/write** アクセス許可は次のモードに適用されます。
+- そのアクセス許可は、顧客がグローバル パラメーターを変更するときにライブ モードでのみ必要になります。
+- そのアクセス許可は、顧客が発行を行うたびに、最新のコミット ID を持つファクトリ オブジェクトを更新する必要があるため、Git モードで常に必要になります。
 
 ### <a name="custom-scenarios-and-custom-roles"></a>カスタム シナリオとカスタム ロール
 
@@ -89,6 +90,7 @@ Azure Repos や GitHub に対するアクセス許可は、Data Factory のア�
 - ユーザーが PowerShell または SDK からデータ ファクトリを更新できるようにし、Azure portal では更新を行えないようにします。
 
   ユーザーのためにデータ ファクトリ リソースの **共同作成者** 組み込みロールを割り当てます。 このロールを持つユーザーは、Azure portal でリソースを閲覧することはできますが、 **[公開]** ボタンと **[すべてを公開]** ボタンにアクセスすることはできません。
+
 
 ## <a name="next-steps"></a>次のステップ
 

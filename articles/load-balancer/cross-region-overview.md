@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8a2ad6cea4ab97742261b1cfd84975b243a46e87
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 89bf920a5a5dd833425f1b41bd206beaae9d30fd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938717"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946262"
 ---
 # <a name="cross-region-load-balancer-preview"></a>リージョン間ロード バランサー (プレビュー)
 
@@ -35,7 +35,7 @@ Azure Standard Load Balancer では、リージョン間の負荷分散がサポ
 * 学習曲線のない、[既存のロード バランサーに基づく](#build-cross-region-solution-on-existing-azure-load-balancer)ソリューション
 
 > [!IMPORTANT]
-> 現在、リージョン間ロード バランサーはプレビュー段階であり、プレビュー ポータルでは非表示になっています。 この機能を表示してデプロイするには、 **https://preview.portal.azure.com** にサインインします。 </br> </br>
+> リージョン間ロード バランサーは現在プレビュー段階であり、ポータルでデプロイできます。 この機能を表示してデプロイするには、 **https://preview.portal.azure.com** にサインインします。 </br> </br>
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 リージョン間の負荷分散では、リージョンの標準的なロード バランサーと同等のハイ パフォーマンスと低待機時間の利点を得られます。 
@@ -142,6 +142,8 @@ Azure のリージョン間ロード バランサーでは、ルーティング�
 * リージョン間 IPv6 フロントエンド IP 構成はサポートされていません。 
 
 * 現在、正常性プローブを構成することはできません。 既定の正常性プローブによって、リージョン ロード バランサーに関する可用性情報が 20 秒ごとに自動的に収集されます。 
+
+* 現在、Azure Kubernetes Service (AKS) は、リージョン間ロード バランサーと統合できません。 AKS を使用してデプロイされたパブリック ロード バランサーの前にリージョン間ロード バランサーを設定する場合は、接続が失われることが予想されます。
 
 ## <a name="pricing-and-sla"></a>料金と SLA
 リージョン間ロード バランサーでは、標準のロード バランサーの [SLA](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/ ) が共有されます。

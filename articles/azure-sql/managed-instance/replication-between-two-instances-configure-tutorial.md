@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: 67902073b1484835d23566c91cbfae6f1d80d249
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47ea5ea73c581313f90791ca6d7892ebad3f666b
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900462"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690687"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>チュートリアル:2 つのマネージド インスタンス間でのレプリケーションの構成
 
@@ -51,7 +51,7 @@ SQL Managed Instance をパブリッシャー、ディストリビューター�
 - パブリッシャー マネージド インスタンスがディストリビューターおよびサブスクライバーと同じ仮想ネットワーク上にあるか、[VPN ゲートウェイ](../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)が 3 つのエンティティすべての仮想ネットワーク間に構成されています。 
 - 接続では、レプリケーション参加者間で SQL 認証を使用します。
 - レプリケーションの作業ディレクトリとしての Azure ストレージ アカウント共有。
-- Azure ファイル共有にアクセスするために、マネージド インスタンスの NSG のセキュリティ規則でポート 445 (TCP 送信) を開く必要があります。  「`failed to connect to azure storage \<storage account name> with os error 53`」のエラーが発生する場合、適切な SQL Managed Instance サブネットの NSG にアウトバウンド規則を追加する必要があります。
+- Azure ファイル共有にアクセスするために、マネージド インスタンスの NSG のセキュリティ規則でポート 445 (TCP 送信) を開く必要があります。  「`failed to connect to azure storage <storage account name> with os error 53`」のエラーが発生する場合、適切な SQL Managed Instance サブネットの NSG にアウトバウンド規則を追加する必要があります。
 
 ## <a name="1---create-a-resource-group"></a>1 - リソース グループを作成する
 

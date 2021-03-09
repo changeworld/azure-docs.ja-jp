@@ -13,15 +13,15 @@ ms.date: 10/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 2b6266f308fce75f136aa4a2482c5b1be6eedb8e
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 55cecc658b11b7a09665af7128df25fbbff800ef
+ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063367"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100559516"
 ---
 # <a name="overview-of-the-microsoft-authentication-library-msal"></a>Microsoft Authentication Library (MSAL) の概要
-Microsoft Authentication Library (MSAL) を使用すると、ユーザーを認証し、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォーム エンドポイントから[トークン](developer-glossary.md#security-token)を取得できます。 これは、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API へのセキュリティで保護されたアクセスを提供するために使用できます。 MSAL は、.NET、JavaScript、Java、Python、Android、iOS などの、さまざまなアプリケーション アーキテクチャとプラットフォームをサポートします。
+Microsoft Authentication Library (MSAL) を使用すると、ユーザーを認証し、セキュリティで保護された Web API にアクセスする目的で、開発者は Microsoft ID プラットフォームから[トークン](developer-glossary.md#security-token)を取得できます。 これは、Microsoft Graph、その他の Microsoft API、サード パーティの Web API、または、独自の Web API へのセキュリティで保護されたアクセスを提供するために使用できます。 MSAL は、.NET、JavaScript、Java、Python、Android、iOS などの、さまざまなアプリケーション アーキテクチャとプラットフォームをサポートします。
 
 MSAL では、多くのプラットフォームで API に一貫性があり、さまざまな方法でトークンを取得できます。 MSAL の使用には次のような利点があります。
 
@@ -50,15 +50,18 @@ MSAL は次のような多くのアプリケーション シナリオで使用�
 
 | ライブラリ | サポートされているプラットフォームとフレームワーク|
 | --- | --- |
-| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework、.NET Core、Xamarin Android、Xamarin iOS、ユニバーサル Windows プラットフォーム|
-| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)| AngularJS、Ember.js、Durandal.js など、JavaScript/TypeScript フレームワーク|
 | [MSAL for Android](https://github.com/AzureAD/microsoft-authentication-library-for-android)|Android|
+| [MSAL Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-angular)| Angular と Angular.js のフレームワークを使用したシングルページ アプリ|
 | [iOS および macOS 用の MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|iOS と macOS|
 | [MSAL Java](https://github.com/AzureAD/microsoft-authentication-library-for-java)|Windows、macOS、Linux|
+| [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)| Vue.js、Ember.js、Durandal.js など、JavaScript と TypeScript のフレームワーク|
+| [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet)| .NET Framework、.NET Core、Xamarin Android、Xamarin iOS、ユニバーサル Windows プラットフォーム|
+| [MSAL Node](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-node)|Express を使用した Web アプリ、Electron を使用したデスクトップ アプリ、クロスプラットフォーム コンソール アプリ|
 | [MSAL Python](https://github.com/AzureAD/microsoft-authentication-library-for-python)|Windows、macOS、Linux|
+| [MSAL React](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-react)| React と React ベースのライブラリ (Next.js、Gatsby.js) を使用したシングルページ アプリ|
 
 ## <a name="differences-between-adal-and-msal"></a>ADAL と MSAL の違い
 
-Active Directory Authentication Library (ADAL) は開発者向け Azure AD (v1.0) エンドポイントと統合されます。このエンドポイントでは、MSAL が Microsoft ID プラットフォーム (v2.0) エンドポイントと統合されます。 v1.0 エンドポイントでは職場アカウントがサポートされますが、個人アカウントはサポートされません。 v2.0 エンドポイントは、Microsoft の個人アカウントと職場アカウントを 1 つの認証システムに統合します。 また、MSAL を使用するとき、Azure AD B2C の認証も取得できます。
+Active Directory Authentication Library (ADAL) は開発者向け Azure AD (v1.0) エンドポイントと統合されます。そこでは、MSAL が Microsoft ID プラットフォームと統合されます。 v1.0 エンドポイントでは職場アカウントがサポートされますが、個人アカウントはサポートされません。 v2.0 エンドポイントは、Microsoft の個人アカウントと職場アカウントを 1 つの認証システムに統合します。 また、MSAL を使用するとき、Azure AD B2C の認証も取得できます。
 
 詳細については、「[migrating to MSAL.NET from ADAL.NET](msal-net-migration.md)」 (ADAL.NET から MSAL.NET に移行する) と「[migrating to MSAL.js from ADAL.js](msal-compare-msal-js-and-adal-js.md)」 (ADAL.js から MSAL.js に移行する) をお読みください。

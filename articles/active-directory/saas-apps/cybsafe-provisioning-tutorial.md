@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: b79a63d16229c761b29776667c771e940d8f69d7
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673379"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100527124"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングのために CybSafe を構成する
 
@@ -121,6 +121,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
    |locale|String|
    |timezone|String|
    |userType|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|String|
+   
 
 10. **[マッピング]** セクションで、 **[Azure Active Directory グループを CybSafe に同期する]** を選択します。
 
@@ -153,6 +157,10 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 1. [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 2. [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 3. プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
+
+## <a name="change-log"></a>ログの変更
+
+* 2021 年 2 月 15 日 - ユーザー エンタープライズ拡張属性 **department**、**division**、および **organization** が追加されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

@@ -3,24 +3,26 @@ title: Azure AD での SaaS アプリ ユーザー プロビジョニングの�
 description: Azure AD を使用して、複数のサードパーティ SaaS アプリケーション間でユーザー アカウントを自動的にプロビジョニング、プロビジョニング解除、継続的に更新する方法の紹介。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: overview
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.author: kenwith
-ms.reviewer: arvinh, celested
-ms.openlocfilehash: c15e92a28de55e5e8bc331fb4398790984439a01
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.reviewer: arvinh
+ms.openlocfilehash: f899c4d67321482dab62729632fe031bb23f71ea
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107431"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830670"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Azure AD での SaaS アプリ ユーザー プロビジョニングの自動化とは
 
 Azure Active Directory (Azure AD) での **アプリ プロビジョニング** という用語は、ユーザーがアクセスする必要のあるクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションにおいてユーザーの ID とロールを自動的に作成することを意味します。 自動プロビジョニングには、ユーザー ID の作成に加えて、状態または役割が変化したときのユーザー ID のメンテナンスおよび削除が含まれます。 一般的なシナリオには、[Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md)、[Salesforce](../saas-apps/salesforce-provisioning-tutorial.md)、[ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) などのアプリケーションへの Azure AD ユーザーのプロビジョニングが含まれます。
+
+Azure AD におけるアプリケーション管理とシングル サインオン (SSO) が初めてである方は、 [一連のクイックスタート](../manage-apps/view-applications-portal.md)をご覧ください。
 
 SCIM についての詳しい情報を入手し、Tech Community のスレッドに参加するには、[SCIM でのプロビジョニングに関するテクニカル コミュニティ](https://aka.ms/scimoverview)のページを参照してください。
 

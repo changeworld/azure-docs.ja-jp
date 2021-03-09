@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: c468f289c9dbfe949890c5462dd7c9be3e548d5a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 8347dcd60dcdfbf03f52e25eb24744909c69465a
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938762"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99804872"
 ---
 # <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 > [!IMPORTANT]
@@ -49,7 +49,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 ### <a name="network-packet-brokers"></a>ネットワーク パケット ブローカー
 
-- [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
+- [GigaVUE Cloud Suite for Azure](https://www.gigamon.com/solutions/cloud/public-cloud/gigavue-cloud-suite-azure.html)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
 - [Nubeva Prisms](https://www.nubeva.com/azurevtap)
 - [Big Switch Big Monitoring Fabric](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)

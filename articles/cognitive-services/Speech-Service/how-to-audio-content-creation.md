@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: 7d4d1acac591bfe6ce40efcf6166357d43718363
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024961"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388585"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Audio Content Creation ツールを使用して合成を向上させる
 
@@ -125,7 +125,7 @@ Welcome to use Audio Content Creation to customize audio output for your product
 
 ## <a name="how-to-addremove-audio-content-creation-users"></a>Audio Content Creation ユーザーを追加または削除する方法
 
-複数のユーザーが Audio Content Creation を使用する場合は、Azure アカウントとパスワードをそのユーザーと共有するか、そのユーザーに Azure サブスクリプションと音声リソースへのアクセス権を付与することができます。 ユーザーを Azure サブスクリプションに追加した場合、そのユーザーはその Azure サブスクリプションの下のすべてのリソースにアクセスできます。 しかし、ユーザーをある音声リソースのみに追加した場合、ユーザーはその音声リソースにしかアクセスできず、この Azure サブスクリプションの下の他のリソースにはアクセスできません。 音声リソースへのアクセス権を持つユーザーは、Audio Content Creation を使用できます。
+複数のユーザーが Audio Content Creation を使用する場合は、そのユーザーに Azure サブスクリプションと音声リソースへのアクセス権を付与できます。 ユーザーを Azure サブスクリプションに追加した場合、そのユーザーはその Azure サブスクリプションの下のすべてのリソースにアクセスできます。 しかし、ユーザーをある音声リソースのみに追加した場合、ユーザーはその音声リソースにしかアクセスできず、この Azure サブスクリプションの下の他のリソースにはアクセスできません。 音声リソースへのアクセス権を持つユーザーは、Audio Content Creation を使用できます。
 
 ### <a name="add-users-to-a-speech-resource"></a>ユーザーを音声リソースに追加する
 

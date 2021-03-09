@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d954d4c20dc267a8f62349b5e450710a78af8d9f
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: bfcd1e600c722cf3a4951da60097c7c373f9b1a6
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724619"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592043"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>チュートリアル:リモートでレンダリングされたモデルの表示
 
@@ -180,7 +180,7 @@ Unity プロジェクト フォルダーにある `Packages/manifest.json` フ�
 
 1. コード エディターで **RemoteRenderingCoordinator** を開き、内容全体を次のコードで置き換えます。
 
-```csharp
+```cs
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License. See LICENSE in the project root for license information.
 
@@ -292,7 +292,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    public delegate Task<AzureFrontendAccountInfo> AccountInfoGetter();
+    public delegate Task<SessionConfiguration> AccountInfoGetter();
 
     public static AccountInfoGetter ARRCredentialGetter
     {
@@ -317,7 +317,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     public static event Action<RemoteRenderingState> CoordinatorStateChange;
 
-    public static AzureSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
+    public static RenderingSession CurrentSession => instance?.ARRSessionService?.CurrentActiveSession;
 
     private ARRServiceUnity arrSessionService;
 
@@ -331,10 +331,10 @@ public class RemoteRenderingCoordinator : MonoBehaviour
         }
     }
 
-    private async Task<AzureFrontendAccountInfo> GetDevelopmentCredentials()
+    private async Task<SessionConfiguration> GetDevelopmentCredentials()
     {
         Debug.LogWarning("Using development credentials! Not recommended for production.");
-        return await Task.FromResult(new AzureFrontendAccountInfo(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
+        return await Task.FromResult(new SessionConfiguration(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
     }
 
     /// <summary>
@@ -462,8 +462,8 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     private async Task<bool> IsSessionAvailable(string sessionID)
     {
-        var allSessions = await ARRSessionService.Frontend.GetCurrentRenderingSessionsAsync().AsTask();
-        return allSessions.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
+        var allSessions = await ARRSessionService.Client.GetCurrentRenderingSessionsAsync();
+        return allSessions.SessionProperties.Any(x => x.Id == sessionID && (x.Status == RenderingSessionStatus.Ready || x.Status == RenderingSessionStatus.Starting));
     }
 
     /// <summary>
@@ -481,11 +481,11 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     /// <summary>
     /// The session must have its runtime pump updated.
-    /// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+    /// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
     /// </summary>
     private void LateUpdate()
     {
-        ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+        ARRSessionService?.CurrentActiveSession?.Connection?.Update();
     }
 
     /// <summary>
@@ -495,17 +495,17 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Implement me
         return null;
     }
 
-    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, AzureSession session)
+    private async void OnRemoteSessionStatusChanged(ARRServiceUnity caller, RenderingSession session)
     {
-        var properties = await session.GetPropertiesAsync().AsTask();
+        var properties = await session.GetPropertiesAsync();
 
-        switch (properties.Status)
+        switch (properties.SessionProperties.Status)
         {
             case RenderingSessionStatus.Error:
             case RenderingSessionStatus.Expired:
@@ -566,7 +566,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
 1. **InitializeARR** と **InitializeSessionService** の内容を、次の完成したコードで置き換えます。
 
- ```csharp
+ ```cs
 /// <summary>
 /// Initializes ARR, associating the main camera
 /// Note: This must be called on the main Unity thread
@@ -624,7 +624,7 @@ public async void InitializeSessionService()
 
 1. 新しいセッションに参加するには、コードを変更して、**JoinRemoteSession()** および **StopRemoteSession()** メソッドを完成した次のコードで置き換えます。
 
-```csharp
+```cs
 /// <summary>
 /// Attempts to join an existing session or start a new session
 /// </summary>
@@ -640,7 +640,7 @@ public async void JoinRemoteSession()
     else
     {
         CurrentCoordinatorState = RemoteRenderingState.ConnectingToNewRemoteSession;
-        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationParams(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
+        joinResult = await ARRSessionService.StartSession(new RenderingSessionCreationOptions(renderingSessionVmSize, maxLeaseHours, maxLeaseMinutes));
     }
 
     if (joinResult.Status == RenderingSessionStatus.Ready || joinResult.Status == RenderingSessionStatus.Starting)
@@ -682,7 +682,7 @@ public void StopRemoteSession()
  1. **ConnectRuntimeToRemoteSession()** および **DisconnectRuntimeFromRemoteSession()** メソッドを、次の完成版で置き換えます。
  1. Unity メソッド **LateUpdate** をメモし、これによって現在のアクティブなセッションが更新されていることを確認することが重要です。 これにより、現在のセッションでメッセージを送受信し、リモート セッションから受信したフレームを使用してフレーム バッファーを更新できます。 これは ARR が正常に機能するうえで非常に重要です。
 
-```csharp
+```cs
 /// <summary>
 /// Connects the local runtime to the current active session, if there's a session available
 /// </summary>
@@ -698,7 +698,7 @@ public void ConnectRuntimeToRemoteSession()
     //This session is set when connecting to a new or existing session
 
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged += OnLocalRuntimeStatusChanged;
-    ARRSessionService.CurrentActiveSession.ConnectToRuntime(new ConnectToRuntimeParams());
+    ARRSessionService.CurrentActiveSession.ConnectAsync(new RendererInitOptions());
     CurrentCoordinatorState = RemoteRenderingState.ConnectingToRuntime;
 }
 
@@ -710,18 +710,18 @@ public void DisconnectRuntimeFromRemoteSession()
         return;
     }
 
-    ARRSessionService.CurrentActiveSession.DisconnectFromRuntime();
+    ARRSessionService.CurrentActiveSession.Disconnect();
     ARRSessionService.CurrentActiveSession.ConnectionStatusChanged -= OnLocalRuntimeStatusChanged;
     CurrentCoordinatorState = RemoteRenderingState.RemoteSessionReady;
 }
 
 /// <summary>
 /// The session must have its runtime pump updated.
-/// The Actions.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
+/// The Connection.Update() will push messages to the server, receive messages, and update the frame-buffer with the remotely rendered content.
 /// </summary>
 private void LateUpdate()
 {
-    ARRSessionService?.CurrentActiveSession?.Actions?.Update();
+    ARRSessionService?.CurrentActiveSession?.Connection?.Update();
 }
 ```
 
@@ -738,7 +738,7 @@ private void LateUpdate()
 
 1. **LoadModel** メソッド全体を次のコードで置き換えます。
 
-    ```csharp
+    ```cs
     /// <summary>
     /// Loads a model into the remote session for rendering
     /// </summary>
@@ -746,10 +746,10 @@ private void LateUpdate()
     /// <param name="parent">The parent Transform for this remote entity</param>
     /// <param name="progress">A call back method that accepts a float progress value [0->1]</param>
     /// <returns>An awaitable Remote Rendering Entity</returns>
-    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, ProgressHandler progress = null)
+    public async Task<Entity> LoadModel(string modelPath, Transform parent = null, Action<float> progress = null)
     {
         //Create a root object to parent a loaded model to
-        var modelEntity = ARRSessionService.CurrentActiveSession.Actions.CreateEntity();
+        var modelEntity = ARRSessionService.CurrentActiveSession.Connection.CreateEntity();
 
         //Get the game object representation of this entity
         var modelGameObject = modelEntity.GetOrCreateGameObject(UnityCreationMode.DoNotCreateUnityComponents);
@@ -778,11 +778,9 @@ private void LateUpdate()
     #endif
 
         //Load a model that will be parented to the entity
-        var loadModelParams = new LoadModelFromSASParams(modelPath, modelEntity);
-        var loadModelAsync = ARRSessionService.CurrentActiveSession.Actions.LoadModelFromSASAsync(loadModelParams);
-        if(progress != null)
-            loadModelAsync.ProgressUpdated += progress;
-        var result = await loadModelAsync.AsTask();
+        var loadModelParams = new LoadModelFromSasParams(modelPath, modelEntity);
+        var loadModelAsync = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams, progress);
+        var result = await loadModelAsync;
         return modelEntity;
     }
     ```
@@ -804,7 +802,7 @@ private void LateUpdate()
 
 1. 次のコードを **RemoteRenderingCoordinator** クラスの **LoadModel** メソッドのすぐ下に追加します。
 
-    ```csharp
+    ```cs
     private bool loadingTestModel = false;
     [ContextMenu("Load Test Model")]
     public async void LoadTestModel()

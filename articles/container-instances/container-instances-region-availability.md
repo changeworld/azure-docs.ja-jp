@@ -4,12 +4,12 @@ description: さまざまな Azure リージョンにある Azure Container Inst
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 63ec7c9027f957714108263dcbb4300a3cc68388
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: a415a739cd9c1e2ca39ebeaef1d8903ab72cf0c4
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661376"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99831282"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Azure リージョンの Azure Container Instances のリソースの可用性
 
@@ -34,7 +34,7 @@ ms.locfileid: "98661376"
 | オーストラリア東部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
 | ブラジル南部 | 4 | 16 | 2 | 8 | 50 | 該当なし |
 | カナダ中部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
-| インド中部 | 4 | 16 | 該当なし | 該当なし | 50 | V100 |
+| インド中部 | 4 | 16 | 4 | 4 | 50 | V100 |
 | 米国中部 | 4 | 16 | 4 | 16 | 50 | 該当なし |
 | 東アジア | 4 | 16 | 4 | 16 | 50 | 該当なし |
 | 米国東部 | 4 | 16 | 4 | 16 | 50 | K80、P100、V100 |

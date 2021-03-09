@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/22/2020
-  ms.openlocfilehash: cc986f0b29798cef62df2746a5af9a5d34bcef16
-  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+  ms.openlocfilehash: 4f93df526275e55524a9a4b67462e47eaa1a73d0
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/23/2021
-  ms.locfileid: "98737712"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102182011"
 landingContent:
 - title: Computer Vision について
   linkLists:
@@ -112,6 +112,8 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
+    - text: 空間分析の概要
+      url: intro-to-spatial-analysis-public-preview.md
     - text: コンテナーのインストールと実行
       url: spatial-analysis-container.md
     - text: 操作を構成する
@@ -146,14 +148,26 @@ landingContent:
       url: quickstarts-sdk/client-library.md?pivots=programming-language-javascript
     - text: Go SDK の使用
       url: quickstarts-sdk/client-library.md?pivots=programming-language-go
+- title: AI の責任ある使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 空間分析の透明性に関するメモ
+      url: /legal/cognitive-services/computer-vision/transparency-note-spatial-analysis?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+  - linkListType: concept
+    links:
+    - text: AI デプロイでの責任ある使用
+      url: /legal/cognitive-services/computer-vision/responsible-use-deployment?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
+    - text: データ、プライバシー、セキュリティ
+      url: /legal/cognitive-services/computer-vision/compliance-privacy-security-2?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext
 - title: リファレンス
   linkLists:
   - linkListType: reference
     links:
+    - text: Computer Vision API v3.2 プレビュー
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005
     - text: Computer Vision API v3.1
       url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005
-    - text: Computer Vision API v3.0
-      url: https://aka.ms/computer-vision-v3-ref
     - text: Computer Vision API v2.1
       url: https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641/operations/56f91f2e778daf14a499f21b
     - text: .NET SDK
@@ -169,7 +183,7 @@ landingContent:
     - text: Azure PowerShell
       url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: /cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

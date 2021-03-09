@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e1b4a0b1279130250938b900b47a98cf52f7bb6
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: fe6e7277761c670d5af8743e6330ffe2340d235c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064438"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101647457"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>指定の API のアクセス許可を選択する方法
 
@@ -29,4 +29,4 @@ ms.locfileid: "98064438"
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure AD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD Microsoft Q&A](/answers/topics/azure-active-directory.html)

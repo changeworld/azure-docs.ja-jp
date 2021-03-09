@@ -1,26 +1,22 @@
 ---
 title: Azure portal を使用してテーブルを増分コピーする
 description: このチュートリアルでは、Azure SQL Database 内のテーブルから Azure Blob Storage に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。
-services: data-factory
 author: dearandyxu
 ms.author: yexu
-manager: anandsub
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
-ms.date: 11/09/2020
-ms.openlocfilehash: d1a7f47b1cdccb02952bd7d9d333855f5eec27d5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.date: 02/18/2021
+ms.openlocfilehash: 6f586cacaa983ea1e53b34f602f882c530a9bf28
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508528"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716331"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 このチュートリアルでは、Azure SQL Database 内のテーブルから Azure Blob Storage に差分データを読み込むパイプラインを使用して Azure データ ファクトリを作成します。
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 40405607e7f7198f190f621121022537ac3b3171
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046041"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100581103"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation データの管理
 
@@ -28,7 +28,7 @@ Azure Automation に転送中のデータのセキュリティを確保するに
 
 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 エージェントで TLS 1.2 のみを使用するように明示的に設定することは、絶対に必要な場合を除いてお勧めしません。なぜなら、そうすることで、TLS 1.3 などのより新しいよくより安全なプロトコルを自動的に検出して利用できるようにするプラットフォーム レベルのセキュリティ機能が無効になる可能性があるためです。
 
-Windows および Linux 用の Log Analytics エージェントでの TLS 1.2 サポート (これは Hybrid Runbook Worker ロールの依存関係です) については、[Log Analytics エージェントの概要の TLS 1.2 に関する記述](..//azure-monitor/platform/log-analytics-agent.md#tls-12-protocol)を参照してください。
+Windows および Linux 用の Log Analytics エージェントでの TLS 1.2 サポート (これは Hybrid Runbook Worker ロールの依存関係です) については、[Log Analytics エージェントの概要の TLS 1.2 に関する記述](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol)を参照してください。
 
 ### <a name="platform-specific-guidance"></a>プラットフォーム固有のガイダンス
 

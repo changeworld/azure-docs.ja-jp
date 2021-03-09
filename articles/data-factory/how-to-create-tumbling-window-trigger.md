@@ -1,22 +1,18 @@
 ---
 title: Azure Data Factory でのタンブリング ウィンドウ トリガーの作成
 description: タンブリング ウィンドウでパイプラインを実行するトリガーを Azure Data Factory で作成する方法について説明します。
-services: data-factory
-documentationcenter: ''
 author: chez-charlie
 ms.author: chez
-manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2020
-ms.openlocfilehash: 4c40d394e48cb0cd8bc02ef7b37e7ed2b27e13c4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: f5bc9951229c61dd988f44b06b8fcd40881226ae
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511554"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393702"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>タンブリング ウィンドウでパイプラインを実行するトリガーの作成
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

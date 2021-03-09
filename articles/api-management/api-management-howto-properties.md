@@ -6,14 +6,14 @@ documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: article
-ms.date: 12/14/2020
+ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 2bc9b1c5724fa7bab1fdf5ac9332d87ba03a6d11
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504734"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100545821"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーで名前付きの値を使用する
 
@@ -43,7 +43,7 @@ API Management のセキュリティ向上に役立つため、キー コンテ�
 
 * キー　コンテナーに格納されているシークレットは、サービス間で再利用できます
 * きめ細かい[アクセス ポリシー](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)をシークレットに適用できます
-* キー コンテナーで更新されたシークレットは、API Management で自動的にローテーションされます。 キー コンテナー内で更新が行われると、4 時間以内に API Management 内の名前付きの値が更新されます。 
+* キー コンテナーで更新されたシークレットは、API Management で自動的にローテーションされます。 キー コンテナー内で更新が行われると、4 時間以内に API Management 内の名前付きの値が更新されます。 また、Azure portal または管理 REST API を使用して、シークレットを手動で更新することもできます。
 
 ### <a name="prerequisites-for-key-vault-integration"></a>キー コンテナー統合の前提条件
 
@@ -58,25 +58,16 @@ API Management のセキュリティ向上に役立つため、キー コンテ�
 
 キー コンテナーのシークレットを使用するには、[名前付きの値を追加または編集](#add-or-edit-a-named-value)し、**キー コンテナー** の種類を指定します。 キー コンテナーからシークレットを選択します。
 
-> [!CAUTION]
-> API Management でキー コンテナーのシークレットを使用する場合は、シークレット、キー コンテナー、またはキー コンテナーにアクセスするために使用するマネージド ID を削除しないように注意してください。
-
-キー コンテナーで [Key Vault ファイアウォール](../key-vault/general/network-security.md)が有効になっている場合、キー コンテナーのシークレットを使用するための追加要件は次のとおりです。
-
-* キー コンテナーにアクセスするには、API Management インスタンスの **システムによって割り当てられた** マネージド ID を使用する必要があります。
-* Key Vault ファイアウォールで、 **[Allow Trusted Microsoft Services to bypass this firewall]\(信頼された Microsoft サービスがこのファイアウォールをバイパスすることを許可する\)** オプションを有効にします。
-
-API Management インスタンスが仮想ネットワークにデプロイされている場合は、次のネットワーク設定も構成してください。
-* API Management サブネットで Azure Key Vault への[サービス エンドポイント](../key-vault/general/overview-vnet-service-endpoints.md)を有効にします。
-* AzureKeyVault と AzureActiveDirectory の[サービス タグ](../virtual-network/service-tags-overview.md)への送信トラフィックを許可するネットワーク セキュリティ グループ (NSG) 規則を構成します。 
-
-詳細については、[仮想ネットワークへの接続](api-management-using-with-vnet.md#-common-network-configuration-issues)に関するページに含まれているネットワーク構成の詳細を参照してください。
+[!INCLUDE [api-management-key-vault-network](../../includes/api-management-key-vault-network.md)]
 
 ## <a name="add-or-edit-a-named-value"></a>名前付きの値を追加または編集する
 
 ### <a name="add-a-key-vault-secret"></a>キー コンテナーのシークレットを追加する
 
 「[キー コンテナー統合の前提条件](#prerequisites-for-key-vault-integration)」を参照してください。
+
+> [!CAUTION]
+> API Management でキー コンテナーのシークレットを使用する場合は、シークレット、キー コンテナー、またはキー コンテナーにアクセスするために使用するマネージド ID を削除しないように注意してください。
 
 1. [Azure portal](https://portal.azure.com) で、API Management インスタンスに移動します。
 1. **[API]** で、 **[名前付きの値]**  >  **[+追加]** を選択します。
@@ -95,6 +86,8 @@ API Management インスタンスが仮想ネットワークにデプロイさ�
 
 ### <a name="add-a-plain-or-secret-value"></a>プレーンまたはシークレットの値を追加する
 
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 1. [Azure portal](https://portal.azure.com) で、API Management インスタンスに移動します。
 1. **[API]** で、 **[名前付きの値]**  >  **[+追加]** を選択します。
 1. **[名前]** 識別子を入力し、ポリシー内でプロパティを参照するために使用される **[表示名]** を入力します。
@@ -104,6 +97,50 @@ API Management インスタンスが仮想ネットワークにデプロイさ�
 1. **［作成］** を選択します
 
 名前付きの値が作成されたら、名前を選択して編集できます。 表示名を変更すると、その名前付きの値を参照するすべてのポリシーが、その新しい表示名を使用するように自動的に更新されます。
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI の使用を開始するには:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+名前付きの値を追加するには、[az apim nv create](/cli/azure/apim/nv#az_apim_nv_create) コマンドを使用します。
+
+```azurecli
+az apim nv create --resource-group apim-hello-word-resource-group \
+    --display-name "named_value_01" --named-value-id named_value_01 \
+    --secret true --service-name apim-hello-world --value test
+```
+
+名前付きの値を作成したら、[az apim nv update](/cli/azure/apim/nv#az_apim_nv_update) コマンドを使用して更新できます。 すべての名前付きの値を表示するには、[az apim nv list](/cli/azure/apim/nv#az_apim_nv_list) コマンドを実行します。
+
+```azurecli
+az apim nv list --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --output table
+```
+
+この例で作成した名前付きの値の詳細を表示するには、[az apim nv show](/cli/azure/apim/nv#az_apim_nv_show) コマンドを実行します。
+
+```azurecli
+az apim nv show --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+この例は、シークレット値です。 上記のコマンドで値は返されません。 値を表示するには、[az apim nv show-secret](/cli/azure/apim/nv#az_apim_nv_show_secret) コマンドを実行します。
+
+```azurecli
+az apim nv show-secret --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+名前付きの値を削除するには、[az apim nv delete](/cli/azure/apim/nv#az_apim_nv_delete) コマンドを使用します。
+
+```azurecli
+az apim nv delete --resource-group apim-hello-word-resource-group \
+    --service-name apim-hello-world --named-value-id named_value_01
+```
+
+---
 
 ## <a name="use-a-named-value"></a>名前付きの値を使用する
 

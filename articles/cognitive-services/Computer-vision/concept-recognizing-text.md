@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 37a989082b63dc101bb519fea1cc4ef16c76ae49
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 2833fd44b75f4bebf41b5100eb2350ca69436520
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621537"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100362796"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
@@ -36,15 +36,16 @@ Computer Vision の [Read API](https://westcentralus.dev.cognitive.microsoft.com
 * ファイル サイズは 50 MB 未満 (Free レベルの場合は 4 MB)、寸法は 50 x 50 ピクセル以上 10,000 x 10,000 ピクセル以下にする必要があります。 
 * PDF の寸法は、17 x 17 インチ以下である必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。
 
-### <a name="read-32-preview-allows-selecting-pages"></a>Read 3.2 プレビューではページの選択が可能
-[Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) では、大規模な複数ページのドキュメントに対して、特定のページ番号またはページ範囲を入力パラメーターとして指定して、それらのページからのみテキストを抽出することができます。 これは、省略可能な言語パラメーターに加えて、新しい入力パラメーターです。
-
 > [!NOTE]
 > **言語の入力** 
 >
-> [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)には、言語に対する省略可能な要求パラメーターがあります。 これは、ドキュメント内のテキストの BCP-47 言語コードです。 読み取りでは、言語の自動識別と多言語ドキュメントがサポートされるため、言語コードの指定は、その特定の言語としてドキュメントを処理するように強制する場合にのみ行ってください。
+> [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)には、言語に対する省略可能な要求パラメーターがあります。 読み取りでは、言語の自動識別と多言語ドキュメントがサポートされるため、言語コードの指定は、その特定の言語としてドキュメントを処理するように強制する場合にのみ行ってください。
 
-## <a name="the-read-call"></a>Read 呼び出し
+## <a name="ocr-demo-examples"></a>OCR のデモ (例)
+
+![OCR のデモ](./Images/ocr-demo.gif)
+
+## <a name="step-1-the-read-operation"></a>手順 1: 読み取り操作
 
 Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005)は、画像または PDF ドキュメントを入力として受け取り、非同期でテキストを抽出します。 この呼び出しにより、`Operation-Location` という応答ヘッダー フィールドが返されます。 `Operation-Location` 値は、次の手順で使用する操作 ID を含む URL です。
 
@@ -57,7 +58,7 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
 >
 > 「[Computer Vision の価格](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/)」ページには、Read の価格レベルが含まれています。 分析された画像またはページはそれぞれ 1 つのトランザクションです。 100 ページを含む PDF または TIFF ドキュメントを使用して操作を呼び出した場合、Read 操作ではそれは 100 トランザクションとしてカウントされ、100 トランザクションに対して課金されます。 操作に対して 50 回の呼び出しを行い、各呼び出しで 100 ページのドキュメントが送信された場合、50 X 100 = 5000 トランザクションに対して課金されます。
 
-## <a name="the-get-read-results-call"></a>読み取り結果の取得呼び出し
+## <a name="step-2-the-get-read-results-operation"></a>手順 2:読み取り結果の取得操作
 
 2 番目のステップでは、[読み取り結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750)操作を呼び出します。 この操作は、読み取り操作によって作成された操作 ID を入力として受け取ります。 これにより、次の設定可能な値を持つ **status** フィールドが含まれた JSON 応答が返されます。 **succeeded** の値が返されるまで、この操作を対話形式で呼び出します。 1 秒あたりの要求 (RPS) レートを超えないようにするために、1 秒から 2 秒の間隔を使用してください。
 
@@ -74,7 +75,7 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
 **status** フィールドに **succeeded** 値が指定されている場合、JSON 応答には、画像またはドキュメントから抽出されたテキスト コンテンツが含まれます。 JSON の応答では、認識された単語の元の行グループが維持されます。 抽出されたテキスト行とその境界ボックスの座標が含まれます。 各テキスト行には、抽出されたすべての単語と、その座標および信頼度スコアが含まれています。
 
 > [!NOTE]
-> `Read` 操作に送信されたデータは一時的に暗号化されて保存され、48 時間以内に削除されます。 これにより、アプリケーションからは、サービス応答の一部として抽出されたテキストを取得できます。
+> `Read` 操作に送信されたデータは一時的に暗号化され、しばらくの間保存されてから削除されます。 これにより、アプリケーションからは、サービス応答の一部として抽出されたテキストを取得できます。
 
 ## <a name="sample-json-output"></a>サンプル JSON 出力
 
@@ -130,67 +131,33 @@ Read API の [Read 呼び出し](https://westcentralus.dev.cognitive.microsoft.c
   }
 }
 ```
-### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Read 3.2 プレビューでのテキスト行スタイルの追加 (ラテン語系の言語のみ)
-[Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) では、各テキスト行のスタイルが印刷または手書きかどうかを分類する **外観** オブジェクトが、信頼スコアとともに出力されます。 この機能は、ラテン語系の言語でのみサポートされています。
 
-[Computer Vision REST API またはクライアント ライブラリ クイックスタート](./quickstarts-sdk/client-library.md)を使用して、アプリケーションへの OCR 機能の統合を開始します。
+## <a name="natural-reading-order-output-latin-only"></a>自然な読み取り順序の出力 (ラテンのみ)
+[Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) では、`readingOrder` クエリ パラメーターを使用して、テキスト行の出力順序を指定します。 次の例に示すように、`natural` を使用して、よりわかりやすい読み取り順序の出力を行います。 この機能は、ラテン語系の言語でのみサポートされています。
 
-## <a name="supported-languages-for-print-text"></a>印刷テキストでサポートされている言語
-[Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) の印刷テキストの抽出でサポートされている言語は、英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、オランダ語です。
+:::image border type="content" source="./Images/ocr-reading-order-example.png" alt-text="OCR の読み取り順序の例":::
 
-OCR でサポートされている言語の完全な一覧については、[サポートされている言語](./language-support.md#optical-character-recognition-ocr)に関する記事をご覧ください。
+## <a name="handwritten-classification-for-text-lines-latin-only"></a>テキスト行の手書き分類 (ラテンのみ)
+[Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) 応答には、各テキスト行が手書きスタイルであるかどうかと、信頼度スコアが分類されます。 この機能は、ラテン語系の言語でのみサポートされています。 次の例は、画像内のテキストの手書き分類を示しています。
 
-### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Read 3.2 プレビューで追加された簡体字中国語と日本語
-[Read 3.2 API パブリック プレビュー](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005)では、簡体字中国語と日本語のサポートが追加されています。 お客様のシナリオでさらに多くの言語をサポートする必要がある場合は、「[OCR API](#ocr-api)」セクションを参照してください。 
+:::image border type="content" source="./Images/ocr-handwriting-classification.png" alt-text="OCR の手書き分類の例":::
 
-## <a name="supported-languages-for-handwritten-text"></a>手書きテキストに対してサポートされている言語
-現在、読み取り操作の手書きテキストの抽出でサポートされているのは、英語だけです。
+## <a name="select-pages-or-page-ranges-for-text-extraction"></a>テキスト抽出のページまたはページ範囲の選択
+[Read 3.2 プレビュー API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) では、大規模なマルチページ ドキュメントに対し、`pages` クエリ パラメーターを使用して、ページ番号またはページ範囲を指定し、それらのページからのみテキストを抽出します。 次の例は、10 ページを含むドキュメントを示しています。ここには、すべてのページ (1 から 10) と選択したページ (3 から 6) の両方に対して抽出されたテキストがあります。
 
-## <a name="use-the-rest-api-and-sdk"></a>REST API と SDK を使用する
-[Read 3.x REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) は、統合が簡単で、すぐに生産性を上げることができるため、ほとんどのお客様にとって推奨される選択肢です。 Azure と Computer Vision サービスがスケール、パフォーマンス、データ セキュリティ、コンプライアンスのニーズに対応する一方で、お客様は顧客のニーズを満たすことに集中できます。
+:::image border type="content" source="./Images/ocr-select-pages.png" alt-text="選択されたページの出力":::
 
-## <a name="deploy-on-premise-with-docker-containers"></a>Docker コンテナーを使用したオンプレミスのデプロイ
-[Read Docker コンテナー (プレビュー)](./computer-vision-how-to-install-containers.md) を使用すると、独自のローカル環境に新しい OCR 機能をデプロイできます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
+## <a name="supported-languages"></a>サポートされている言語
+読み取り API では、印刷スタイルのテキストとして合計 73 言語がサポートされています。 [OCR でサポートされている言語](./language-support.md#optical-character-recognition-ocr)の完全な一覧を参照してください。 手書きスタイルの OCR は、英語でのみサポートされています。
 
-## <a name="example-outputs"></a>出力例
+## <a name="use-the-cloud-api-or-deploy-on-premise"></a>クラウド API の使用またはオンプレミスでのデプロイ
+Read 3.x クラウド API は、統合が簡単で、すぐに生産性を上げることができるため、ほとんどのお客様にとって推奨される選択肢です。 Azure と Computer Vision サービスがスケール、パフォーマンス、データ セキュリティ、コンプライアンスのニーズに対応する一方で、お客様は顧客のニーズを満たすことに集中できます。
 
-### <a name="text-from-images"></a>画像からのテキスト
-
-次の Read API の出力は、さまざまなテキスト角度、色、フォントが含まれる、画像から抽出されたテキストを示しています。
-
-![抽出されたテキストが一覧表示された、さまざまな色と角度を持つ複数の単語の画像](./Images/text-from-images-example.png)
-
-### <a name="text-from-documents"></a>ドキュメントからのテキスト
-
-Read API は、PDF ドキュメントを入力として取ることもできます。
-
-![抽出されたテキストが一覧表示された請求書ドキュメント](./Images/text-from-pdf-example.png)
-
-### <a name="handwritten-text"></a>手書きのテキスト
-
-読み取り操作では、画像から手書きのテキストが抽出されます (現在は英語のみ)。
-
-![抽出されたテキストが一覧表示された手書きのメモの画像](./Images/handwritten-example.png)
-
-### <a name="printed-text"></a>印刷されたテキスト
-
-読み取り操作では、複数の異なる言語で印刷されたテキストを抽出できます。
-
-![抽出されたテキストが一覧表示されたスペイン語の教科書の画像](./Images/supported-languages-example.png)
-
-### <a name="mixed-language-documents"></a>混合言語ドキュメント
-
-Read API は、一般に混合言語ドキュメントと呼ばれる、複数の異なる言語を含む画像とドキュメントをサポートしています。 これは、テキスト コンテンツを抽出する前に、ドキュメント内の各テキスト行を検出された言語に分類することによって機能します。
-
-![抽出されたテキストが一覧表示された、複数言語の語句の画像](./Images/mixed-language-example.png)
+オンプレミスでのデプロイの場合、[Read Docker コンテナー (プレビュー)](./computer-vision-how-to-install-containers.md) を使用すると、独自のローカル環境に新しい OCR 機能をデプロイできます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。
 
 ## <a name="ocr-api"></a>OCR API
 
 [OCR API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) では、古い認識モデルが使用されており、画像のみがサポートされ、同期的に実行されて、検出されたテキストは直ちに返されます。 [OCR でサポートされている言語](./language-support.md#optical-character-recognition-ocr)と Read API に関する記事をご覧ください。
-
-## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
-
-Cognitive Services 全般に言えることですが、読み取り/OCR サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに注意する必要があります。 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/trust-center/product-overview)の Cognitive Services のページを参照してください。
 
 > [!NOTE]
 > Computer Vison 2.0 RecognizeText 操作は非推奨になる予定であり、この記事で取り上げている新しい Read API がその代わりになります。 既存顧客の皆様には、[読み取り操作をご利用いただくように](upgrade-api-versions.md)お願いします。
@@ -198,5 +165,5 @@ Cognitive Services 全般に言えることですが、読み取り/OCR サー�
 ## <a name="next-steps"></a>次のステップ
 
 - [Computer Vision REST API またはクライアント ライブラリ クイックスタート](./quickstarts-sdk/client-library.md)を始めます。
-- [Read REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) について学習します。
-- 簡体字中国語と日本語のサポートが追加された [Read 3.2 パブリック プレビュー REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) について学習します。
+- [Read 3.1 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) について学習します。
+- 合計 73 言語に対応した [Read 3.2 パブリック プレビュー REST API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005) について説明します。

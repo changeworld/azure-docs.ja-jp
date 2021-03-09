@@ -2,17 +2,14 @@
 title: Azure Data Lake Analytics のクォータと 制限を調整します
 description: Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整する方法と引き上げる方法を説明します。
 ms.service: data-lake-analytics
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/15/2018
-ms.openlocfilehash: fd032235f286b5db1930e9c9c6d730b5424aa4eb
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 416b77fd86316acb8098531257e12b591a0ff052
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220841"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101710177"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics のクォータと 制限を調整します
 
@@ -53,7 +50,7 @@ Azure Data Lake Analytics (ADLA) アカウントのクォータ制限を調整�
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. 既存の ADLA アカウントを選びます。
 3. **[プロパティ]** をクリックします。
-4. **最大 AU** 、 **実行ジョブの最大数** 、 **ジョブ送信の制限** の値を必要に応じて調整します。
+4. **最大 AU**、**実行ジョブの最大数**、**ジョブ送信の制限** の値を必要に応じて調整します。
 
 ## <a name="increase-maximum-quota-limits"></a>最大クォータ制限を増やす
 

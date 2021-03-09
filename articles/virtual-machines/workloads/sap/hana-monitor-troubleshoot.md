@@ -6,20 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e560fc996393969eecb45a3fdda24bc940436dc0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 83743a6985bef8ce6c03e01ed8d10aa740852106
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967722"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101668810"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 側からの監視とトラブルシューティング
 
@@ -27,18 +26,18 @@ SAP HANA on Azure (L インスタンス) に関連した問題を効果的に分
 
 SAP HANA のパフォーマンスに関連した FAQ は、以下の SAP Note で参照できます。
 
-- [SAP Note #2222200 – FAQ:SAP HANA ネットワーク](https://launchpad.support.sap.com/#/notes/2222200)
-- [SAP Note #2100040 – FAQ:SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
-- [SAP Note #199997 – FAQ:SAP HANA メモリ](https://launchpad.support.sap.com/#/notes/2177064)
-- [SAP Note #200000 – FAQ:SAP HANA パフォーマンスの最適化](https://launchpad.support.sap.com/#/notes/2000000)
-- [SAP Note #199930 – FAQ:SAP HANA I/O の分析](https://launchpad.support.sap.com/#/notes/1999930)
-- [SAP Note #2177064 – FAQ:SAP HANA のサービスの再起動とクラッシュ](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP Note #2222200 – FAQ: SAP HANA のネットワーク](https://launchpad.support.sap.com/#/notes/2222200)
+- [SAP Note #2100040 – FAQ: SAP HANA の CPU](https://launchpad.support.sap.com/#/notes/0002100040)
+- [SAP Note #199997 – FAQ: SAP HANA のメモリ](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP Note #200000 – FAQ: SAP HANA のパフォーマンス最適化](https://launchpad.support.sap.com/#/notes/2000000)
+- [SAP Note #199930 – FAQ: SAP HANA の I/O 分析](https://launchpad.support.sap.com/#/notes/1999930)
+- [SAP Note #2177064 – FAQ: SAP HANA のサービスの再起動とクラッシュ](https://launchpad.support.sap.com/#/notes/2177064)
 
 ## <a name="sap-hana-alerts"></a>SAP HANA アラート
 
-最初の手順として、現在の SAP HANA アラート ログを確認します。 SAP HANA Studio で、 **[管理コンソール]:[アラート]:[表示]: [すべてのアラート]** に進みます。 このタブには、設定されている最小および最大しきい値から外れる特定の値 (空き物理メモリ、CPU 使用率など) のすべての SAP HANA アラートが表示されます。 既定では、チェックが 15 分ごとに自動更新されます。
+最初の手順として、現在の SAP HANA アラート ログを確認します。 SAP HANA Studio で、 **[Administration Console (管理コンソール)]、[Alerts (アラート)]、[Show (表示)]、[all alerts (すべてのアラート)]** の順に移動します。 このタブには、設定されている最小および最大しきい値から外れる特定の値 (空き物理メモリ、CPU 使用率など) のすべての SAP HANA アラートが表示されます。 既定では、チェックが 15 分ごとに自動更新されます。
 
-![SAP HANA Studio で、[管理コンソール]:[アラート]:[表示]: [すべてのアラート] に進みます。](./media/troubleshooting-monitoring/image1-show-alerts.png)
+![SAP HANA Studio で、[Administration Console (管理コンソール)]、[Alerts (アラート)]、[Show (表示)]、[all alerts (すべてのアラート)] の順に移動する](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
 ## <a name="cpu"></a>CPU
 
@@ -65,7 +64,7 @@ SAP HANA のパフォーマンスに関連した FAQ は、以下の SAP Note �
 
 高い CPU 使用率が原因でトリガーされるアラートには、いくつかの理由が考えられます。たとえば、特定のトランザクションの実行、データの読み込み、応答していないジョブ、SQL ステートメントの長時間実行、クエリの低パフォーマンス (例: HANA キューブでの BW の場合) などです。
 
-トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングの CPU 関連の原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) に関するサイトを参照してください。
+トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングの CPU 関連の原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false)に関するサイトを参照してください。
 
 ## <a name="operating-system"></a>オペレーティング システム
 
@@ -87,7 +86,7 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 - 列ストア テーブルのメイン ストレージのメモリ使用量 (アラート 45)
 - ランタイム ダンプ ファイル (アラート 46)
 
-トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングのメモリの問題](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) に関するサイトを参照してください。
+トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングのメモリの問題](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false)に関するサイトを参照してください。
 
 ## <a name="network"></a>ネットワーク
 
@@ -104,7 +103,7 @@ SAP HANA データベースによって割り当てられたメモリの量が�
 
 さらに、オープン ソースの [IPERF](https://iperf.fr/) ツール (または同様のツール) を使用して、実際のアプリケーション ネットワーク パフォーマンスを測定します。
 
-トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングのネットワークのパフォーマンスと接続の問題](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) に関するサイトを参照してください。
+トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングのネットワークのパフォーマンスと接続の問題](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false)に関するサイトを参照してください。
 
 ## <a name="storage"></a>ストレージ
 
@@ -116,7 +115,7 @@ I/O パフォーマンスに問題がある場合、エンドユーザーから�
 
 ![画面下部では、接続されたボリュームの詳細 (ファイルや I/O の統計など) を確認できる](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングの I/O 関連の原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) および [SAP HANA トラブルシューティングのディスク関連の原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) に関するサイトを参照してください。
+トラブルシューティングの詳細な手順については、[SAP HANA トラブルシューティングの I/O 関連の根本原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false)に関するサイトと [SAP HANA トラブルシューティングのディスク関連の根本原因と解決策](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false)に関するサイトを参照してください。
 
 ## <a name="diagnostic-tools"></a>診断ツール
 
@@ -138,7 +137,7 @@ SAP HANA Studio の **[System Information (システム情報)]** タブで、 *
 
 別の例では、 **[Replication: Overview (レプリケーション: 概要)]** の下のステートメントを右クリックします。 コンテキスト メニューで **[Execute (実行)]** を選択します。
 
-![別の例では、[Replication: Overview (レプリケーション:概要)] の下のステートメントを右クリックします。 コンテキスト メニューで [Execute (実行)] を選択する](./media/troubleshooting-monitoring/image9-import-statements-c.png)
+![別の例では、[Replication: Overview (レプリケーション: 概要)] の下のステートメントを右クリックし、 コンテキスト メニューで [Execute (実行)] を選択する](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
 その結果、次のように、トラブルシューティングに役立つ情報が表示されます。
 
@@ -160,7 +159,7 @@ SAP HANA のサービス情報 (CPU、メモリなど) を示す **HANA\_Service
 
 ![SAP HANA のサービス情報を示す HANA\_Services\_Statistics](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-SAP HANA インスタンスの全般的な情報を示す **HANA\_Configuration\_Overview\_Rev110+** 。
+SAP HANA インスタンスの全般的な情報を示す **HANA\_Configuration\_Overview\_Rev110+**。
 
 ![SAP HANA インスタンスの全般的な情報を示す HANA\_Configuration\_Overview\_Rev110+](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 

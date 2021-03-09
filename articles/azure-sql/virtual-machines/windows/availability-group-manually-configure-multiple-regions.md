@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 60bb5ac652a80b5ae52c91f91fa0c80440e9cc82
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 314404ef132c55a783ce4d2d0069eb8a930439a1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359083"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101691452"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>複数の Azure リージョンにまたがる SQL Server Always On 可用性グループを構成する
 
@@ -86,6 +86,7 @@ ms.locfileid: "97359083"
    - IP アドレスに固有の TCP ポート プローブを使用していること。
    - 同じリージョン内の SQL Server に固有の負荷分散ルールがあること。  
    - バックエンド プール内の仮想マシンが単一の可用性セットまたは仮想マシン スケール セットの一部でない場合は、Standard ロード バランサーであること。 詳細については、「[Azure Load Balancer Standard の概要](../../../load-balancer/load-balancer-overview.md)」をご覧ください。
+   - 2 つの異なるリージョンにある 2 つの仮想ネットワークがグローバル VNet ピアリングを介してピアリングされている場合は、Standard Load Balancer であること。 詳細については、「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](../../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)」を参照してください。
 
 1. [新しい SQL Server にフェールオーバー クラスタリング機能を追加します](availability-group-manually-configure-prerequisites-tutorial.md#add-failover-clustering-features-to-both-sql-server-vms)。
 
@@ -201,6 +202,6 @@ ms.locfileid: "97359083"
 ## <a name="next-steps"></a>次のステップ
 
 * [Always On 可用性グループ](/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)
-* [Azure Virtual Machines](../../../virtual-machines/windows/index.yml)
+* [Azure Virtual Machines](../../../virtual-machines/index.yml)
 * [Azure Load Balancer](availability-group-manually-configure-tutorial.md#configure-internal-load-balancer)
 * [Azure の可用性セット](../../../virtual-machines/manage-availability.md)

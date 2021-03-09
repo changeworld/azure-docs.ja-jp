@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878123"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101737411"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web Application Firewall の Azure セキュリティ ベースライン
 
@@ -111,9 +111,9 @@ Azure PowerShell または Azure CLI を選択して、タグに基づいたリ�
 
 **ガイダンス**:Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Web Application Firewall (WAF) デプロイに関連するネットワーク設定とリソースの変更を検出します。 重要なネットワーク設定またはリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -135,7 +135,7 @@ Azure PowerShell または Azure CLI を選択して、タグに基づいたリ�
 
 **ガイダンス**:Azure Sentinel、サードパーティ SIEM などの中央のセキュリティ ログ管理ソリューションに送信されるように、Azure Web Application Firewall (WAF) のログを構成します。 これらのログには、Azure アクティビティ、診断、およびリアルタイムの WAF ログが含まれます。これらのログは、Azure Monitor、Excel、Power BI などのさまざまなツールで表示できます。 Azure Web Application Firewall のログでは、Azure WAF で評価、照合、ブロックされているデータについての分析情報が提供されます。
 
-Azure Sentinel には、Azure WAF のセキュリティ イベントの概要を提供する組み込みの Azure WAF ブックがあります。 このブックにはイベントや一致したルール、ブロックされたルールなど、ファイアウォールのログに記録されるあらゆる情報が含まれます。 このテレメトリを使用して、Sentinel によって収集された WAF イベントに基づいて、プレイブックの自動化を開始し、通知または修復アクションを実行することができます。
+Azure Sentinel には、Azure WAF のセキュリティ イベントの概要を提供する組み込みの Azure WAF ブックがあります。 このブックにはイベントや一致したルール、ブロックされたルールなど、ファイアウォールのログに記録されるあらゆる情報が含まれます。 このテレメトリを使用して、Azure Sentinel によって収集された WAF イベントに基づいて、プレイブックの自動化を開始し、通知または修復アクションを実行できます。
 
 - [アクティビティ ログを表示する](../azure-resource-manager/management/view-activity-logs.md)
 
@@ -153,9 +153,9 @@ Azure Sentinel には、Azure WAF のセキュリティ イベントの概要を
 
 - [ログ記録の概要](ag/ag-overview.md#logging)
 
-- [Azure Monitor ログ クエリの概要](../azure-monitor/log-query/log-query-overview.md)
+- [Azure Monitor ログ クエリの概要](../azure-monitor/logs/log-query-overview.md)
 
-- [Azure プラットフォーム ログの概要](../azure-monitor/platform/platform-logs-overview.md)
+- [Azure プラットフォーム ログの概要](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -164,7 +164,7 @@ Azure Sentinel には、Azure WAF のセキュリティ イベントの概要を
 ### <a name="25-configure-security-log-storage-retention"></a>2.5:セキュリティ ログのストレージ保持を構成する
 
 **ガイダンス**:Azure Web Application Firewall (WAF) のログをカスタム ストレージ アカウントに送信し、保持ポリシーを定義します。 Azure Monitor を使用して、組織のコンプライアンス要件に基づいて Log Analytics ワークスペースの保持期間を設定します。
-- [ストレージ アカウントの監視の設定](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [ストレージ アカウントの監視の設定](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -192,9 +192,9 @@ Azure Sentinel には、WAF のセキュリティ イベントの概要を提供
 
 **ガイダンス**:Azure アクティビティ ログの診断設定と Azure WAF の診断設定を有効にし、Log Analytics ワークスペースにログを送信します。 Log Analytics でクエリを実行して、用語の検索、傾向の特定、パターンの分析を行い、収集されたデータに基づいて他の多くの分析情報を提供します。 WAF メトリックに基づいて異常なアクティビティについてのアラートを作成します。 たとえば、ブロックされた要求の数が 'X' を超えた場合に 'Y' を実行します。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/platform/activity-log.md)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-- [Azure 内でアラートを作成する方法](../azure-monitor/learn/tutorial-response.md)
+- [Azure 内でアラートを作成する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: 適用なし
 

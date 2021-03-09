@@ -4,30 +4,30 @@ description: Azure RTOS 用のセキュリティ モジュールのサポート�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2020
-ms.author: mlottner
-ms.openlocfilehash: 9950f3727aac365205e979d9590edacebd32f1fc
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.date: 01/14/2021
+ms.author: shhazam
+ms.openlocfilehash: 47b2b49a21a82be13c987b95c7c775f5014a532e
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832745"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809084"
 ---
 # <a name="overview-defender-for-iot-security-module-for-azure-rtos-preview"></a>概要:Azure RTOS 用の Defender for IoT セキュリティ モジュール (プレビュー)
 
-Azure Defender for IoT セキュリティ モジュールでは、Azure RTOS を使用するデバイス向けの包括的なセキュリティ ソリューションが提供されます。 リアルタイム オペレーティング システム (RTOS) デバイスに関する一般的な脅威と潜在的な悪意のあるアクティビティへの対応が提供されます。 現在、Azure RTOS には Azure IoT セキュリティ モジュールが組み込みで付属しています。
+Azure Defender for IoT マイクロ モジュールでは、Azure RTOS を使用するデバイス向けの包括的なセキュリティ ソリューションが提供されます。 リアルタイム オペレーティング システム (RTOS) デバイスに関する一般的な脅威と潜在的な悪意のあるアクティビティへの対応が提供されます。 現在、Azure RTOS には Azure IoT セキュリティ モジュールが組み込みで付属しています。
 
 :::image type="content" source="./media/architecture/azure-rtos-security-monitoring.png" alt-text="Defender for IoT Azure RTOS の図示。":::
 
 
-Azure RTOS 用のセキュリティ モジュールには、次の機能があります。
+Azure RTOS 用のマイクロ モジュールには、次の機能があります。
 
 - 悪意のあるネットワーク アクティビティの検出
 - カスタム アラート ベースのデバイス動作基準

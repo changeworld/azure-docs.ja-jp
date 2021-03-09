@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: b5f7f494c9d0969fbf9431d0b552dafa21a5eace
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: f46a0938ebb8d9fe7e032162120056dca96b9567
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705406"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979764"
 ---
 # <a name="azure-resources-for-qna-maker"></a>QnA Maker 用の Azure リソース
 
@@ -134,6 +134,94 @@ QnA Maker マネージドは無料サービスであり、現在のスループ�
 
 ---
 
+## <a name="keys-in-qna-maker"></a>QnA Maker のキー
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
+QnA Maker サービスでは、App Service でホストされるランタイムと共に使用される **オーサリング キー** と **クエリ エンドポイント キー** の 2 種類のキーが扱われます。
+
+これらのキーは、API を介してサービスに要求を行うときに使用します。
+
+![キー管理](../media/qnamaker-how-to-key-management/key-management.png)
+
+|名前|場所|目的|
+|--|--|--|
+|オーサリングまたはサブスクリプション キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
+|クエリ エンドポイント キー|[QnA Maker ポータル](https://www.qnamaker.ai)|これらのキーは、公開されたナレッジ ベースのエンドポイントにクエリを実行して、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このクエリ エンドポイントは、QnA Maker サービスに接続するチャット ボットまたはクライアント アプリケーション コードで使用されます。 これらのキーは、QnA Maker ナレッジ ベースを公開するときに作成されます。<br><br>これらのキーは、 **[サービスの設定]** ページで確認できます。 このページは、ページの右上にあるドロップダウン メニュー内のユーザーのメニューに含まれています。|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal でオーサリング キーを確認する
+
+QnA Maker リソースを作成した Azure portal で、オーサリング キーの表示とリセットを実行できます。 これらのキーは、サブスクリプション キーと呼ばれる場合もあります。
+
+1. Azure portal で QnA Maker リソースに移動し、種類が _Cognitive Services_ であるリソースを選択します。
+
+    ![QnA Maker のリソース リスト](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+
+2. **[キーとエンドポイント]** に移動します。
+
+    ![QnA Maker マネージド (プレビュー) サブスクリプション キー](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
+
+### <a name="find-query-endpoint-keys-in-the-qna-maker-portal"></a>QnA Maker ポータルでクエリ エンドポイント キーを確認する
+
+ナレッジ ベースの呼び出しにはエンドポイント キーが使用されるため、エンドポイントはリソースと同じリージョンにあります。
+
+エンドポイント キーは、[QnA Maker ポータル](https://qnamaker.ai)から管理することができます。
+
+1. [QnA Maker ポータル](https://qnamaker.ai)にサインインし、お使いのプロファイルに移動してから、 **[サービスの設定]** を選択します。
+
+    ![エンドポイント キー](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+
+2. キーを表示またはリセットします。
+
+    > [!div class="mx-imgBorder"]
+    > ![エンドポイント キー マネージャー](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+
+    >[!NOTE]
+    >キーが漏えいしていると思われる場合は、キーを更新してください。 それに合わせて、クライアント アプリまたはボットのコードの変更が必要になることがあります。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+QnA Maker マネージド (プレビュー) サービスにより、顧客のサブスクリプションのサービスにアクセスするために、**オーサリング キー** と **Azure Cognitive Search キー** の 2 種類のキーが処理されます。
+
+これらのキーは、API を介してサービスに要求を行うときに使用します。
+
+![キー管理マネージド プレビュー](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
+
+|名前|場所|目的|
+|--|--|--|
+|オーサリングまたはサブスクリプション キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
+|Azure Cognitive Search の管理者キー|[Azure Portal](../../../search/search-security-api-keys.md)|これらのキーは、ユーザーの Azure サブスクリプションにデプロイされている Azure Cognitive Search サービスとの通信に使用されます。 Azure Cognitive Search を QnA Maker マネージド (プレビュー) サービスに関連付けると、管理者キーが QnA Maker サービスに自動的に渡されます。 <br><br>これらのキーは、**Azure Cognitive Search** リソースの **[キー]** ページで確認できます。|
+
+### <a name="find-authoring-keys-in-the-azure-portal"></a>Azure portal でオーサリング キーを確認する
+
+QnA Maker マネージド (プレビュー) リソースを作成した Azure portal で、オーサリング キーの表示とリセットを実行できます。 これらのキーは、サブスクリプション キーと呼ばれる場合もあります。
+
+1. Azure portal で QnA Maker マネージド (プレビュー) リソースに移動し、種類が *Cognitive Services* であるリソースを選択します。
+
+    ![QnA Maker マネージド (プレビュー) リソース リスト](../media/qnamaker-how-to-key-management/qnamaker-v2-resource-list.png)
+
+2. **[キーとエンドポイント]** に移動します。
+
+    ![QnA Maker マネージド (プレビュー) サブスクリプション キー](../media/qnamaker-how-to-key-management/subscription-key-v2.png)
+
+### <a name="update-the-resources"></a>リソースを更新する
+
+ナレッジ ベースによって使用されるリソースをアップグレードする方法について説明します。 QnA Maker マネージド (プレビュー) は、プレビュー期間中、**無料** となります。 
+
+---
+
+## <a name="management-service-region"></a>管理サービスのリージョン
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
+QnA Maker の管理サービスは、QnA Maker ポータルと初期データ処理でのみ使用されます。 このサービスは、**米国西部** リージョンでのみ利用できます。 この米国西部のサービスでは、顧客データは保存されません。
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
+
+QnA Maker マネージド (プレビュー) では、管理サービスと予測サービスの両方が同じリージョンに併置されます。 現在 QnA Maker マネージド (プレビュー) は、**米国中南部、北ヨーロッパ、オーストラリア東部** で利用できます。
+
+---
+
 ## <a name="resource-naming-considerations"></a>リソースの名前付けに関する考慮事項
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
@@ -156,107 +244,6 @@ Azure portal の作成ウィンドウを使うと、QnA Maker リソースを作
 > [!TIP]
 > 名前付け規則を使用して、リソースまたはリソース グループの名前内の価格レベルを示します。 新しいナレッジ ベースの作成または新しいドキュメントの追加でエラーが発生する場合、Cognitive Search の価格レベルの制限が一般的な問題です。
 
-### <a name="resource-purposes"></a>リソースの目的
-
-QnA Maker で作成される各 Azure リソースには特定の目的があります。
-
-* QnA Maker リソース
-* Cognitive Search リソース
-* App Service
-* App Plan サービス
-* Application Insights サービス
-
-
-### <a name="cognitive-search-resource"></a>Cognitive Search リソース
-
-[Cognitive Search](../../../search/index.yml) リソースは次の目的で使用されます。
-
-* QnA ペアを格納する
-* 実行時に QnA ペアの初期順位 (ランカー #1) を指定する
-
-#### <a name="index-usage"></a>インデックスの使用量
-
-リソースには、テスト インデックスとして機能する 1 つのインデックスが保持され、残りのインデックスは、それぞれ 1 つの公開されたナレッジ ベースに関連付けられます。
-
-15 個のインデックスを保持できる価格設定のリソースには、14 個の公開されたナレッジ ベースが保持され、1 つのインデックスがすべてのナレッジ ベースのテストに使用されます。 このテスト インデックスはナレッジ ベースによってパーティション分割されているため、対話型テスト ペインを使用するクエリにはテスト インデックスが使用されますが、特定のナレッジ ベースに関連付けられた特定のパーティションの結果のみが返されます。
-
-#### <a name="language-usage"></a>言語の使用方法
-
-QnA Maker リソースで作成された最初のナレッジ ベースは、Cognitive Search リソースとそのすべてのインデックス用の "_1 つの_" 言語セットを決定するために使用されます。 1 つの QnA Maker サービスには "_1 つの言語セット_" のみを使用できます。
-
-### <a name="qna-maker-resource"></a>QnA Maker リソース
-
-QnA Maker リソースを使うと、オーサリングおよび公開 API だけでなく、実行時に QnA ペアの中で自然言語処理 (NLP) ベースの 2 番目の順位のレイヤー (ランカー #2) にアクセスできます。
-
-2 番目の順位では、メタデータとフォローアップ プロンプトを含めることができるインテリジェント フィルターが適用されます。
-
-#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker リソースの構成設定
-
-[QnA Maker ポータル](https://qnamaker.ai)で新しいナレッジ ベースを作成する場合、リソース レベルで適用される設定は **言語** 設定のみです。 リソースに最初のナレッジ ベースを作成するときに、言語を選択します。
-
-### <a name="app-service-and-app-service-plan"></a>App Service と App Service プラン
-
-[App Service](../../../app-service/index.yml) は、クライアント アプリケーションからランタイム エンドポイントを介して公開されたナレッジ ベースにアクセスするときに使用されます。
-
-公開されたナレッジ ベースのクエリを実行する場合、公開されたナレッジ ベースにはすべて同じ URL エンドポイントが使用されますが、ルート内の **ナレッジ ベース ID** を指定します。
-
-`{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
-
-### <a name="application-insights"></a>Application Insights
-
-[Application Insights](../../../azure-monitor/app/app-insights-overview.md) は、チャット ログとテレメトリを収集するために使用されます。 サービスの詳細については、一般的な [Kusto クエリ](../how-to/get-analytics-knowledge-base.md)に関する記事を参照してください。
-
-## <a name="share-services-with-qna-maker"></a>サービスを QnA Maker と共有する
-
-QnA Maker はいくつかの Azure リソースを作成します。 管理を軽減し、コスト共有のメリットを得るために、次の表を使用して、共有できるものとできないものを理解してください。
-
-|サービス|共有|理由|
-|--|--|--|
-|Cognitive Services|X|仕様により不可能|
-|App Service プラン|✔|App Service プランに対して固定のディスク領域が割り当てられています。 同じ App Service プランを共有している他のアプリによって大量のディスク領域が使用された場合、QnA Maker App Service インスタンスで問題が発生します。|
-|App Service|X|仕様により不可能|
-|Application Insights|✔|共有できます|
-|検索サービス|✔|1. `testkb` は QnA Maker サービス用の予約された名前です。他のサービスで使用することはできません。<br>2.`synonym-map` という名前のシノニム マップは、QnA Maker サービス用に予約されています。<br>3.公開されるナレッジ ベースの数は、Search サービスのレベルによって制限されます。 使用可能な空きインデックスがある場合は、他のサービスでそれらを使用できます。|
-
-### <a name="using-a-single-cognitive-search-service"></a>1 つの Cognitive Search サービスの使用
-
-ポータルを使用して QnA サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker サービスにリンクされます。 これらのリソースが作成された後、既存の Search サービスを使用するように App Service 設定を更新して、先ほど作成されたサービスを削除できます。
-
-QnA Maker リソース作成プロセスの一環で作成されたものとは異なる Cognitive Service リソースを使用するように QnA Maker を[構成する方法](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)を確認してください。
-
-## <a name="management-service-region"></a>管理サービスのリージョン
-
-QnA Maker の管理サービスは、QnA Maker ポータルと初期データ処理でのみ使用されます。 このサービスは、**米国西部** リージョンでのみ利用できます。 この米国西部のサービスでは、顧客データは保存されません。
-
-## <a name="keys-in-qna-maker"></a>QnA Maker のキー
-
-QnA Maker サービスでは、App Service でホストされるランタイムと共に使用される **オーサリング キー** と **クエリ エンドポイント キー** の 2 種類のキーが扱われます。
-
-**サブスクリプション キー** をお探しの場合は [用語が変わっています](#subscription-keys)。
-
-これらのキーは、API を介してサービスに要求を行うときに使用します。
-
-![キー管理](../media/qnamaker-how-to-key-management/key-management.png)
-
-|名前|場所|目的|
-|--|--|--|
-|オーサリング キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
-|クエリ エンドポイント キー|[QnA Maker ポータル](https://www.qnamaker.ai)|これらのキーは、公開されたナレッジ ベースのエンドポイントにクエリを実行して、ユーザーの質問に対する回答を取得する目的で使用されます。 通常、このクエリ エンドポイントは、QnA Maker サービスに接続するチャット ボットまたはクライアント アプリケーション コードで使用されます。 これらのキーは、QnA Maker ナレッジ ベースを公開するときに作成されます。<br><br>これらのキーは、 **[サービスの設定]** ページで確認できます。 このページは、ページの右上にあるドロップダウン メニュー内のユーザーのメニューに含まれています。|
-
-### <a name="subscription-keys"></a>サブスクリプション キー
-
-オーサリングおよびクエリ エンドポイント キーという用語は修正用語です。 以前の用語は **サブスクリプション キー** でした。 他のドキュメントにサブスクリプション キーと書かれている場合、それらは (ランタイムで使用される) オーサリングおよびクエリ エンドポイント キーに相当します。
-
-どのキーを見つける必要があるかを知るには、キーが何にアクセスしているか (ナレッジ ベースの管理またはナレッジ ベースのクエリ) を把握する必要があります。
-
-### <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定
-
-* [仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
-* App Service (QnA Runtime) をパブリック アクセスから保護します。
-    * Cognitive Services IP からのトラフィックのみを許可します。 これらは、既にサービス タグ "CognitiveServicesManagement" に含まれています。 これは、オーサリング API シリーズ (KB の作成/更新) で App Service を起動し、それに応じて Azure Search Service を更新するために必要です。
-    * Bot Service、QnA Maker ポータル (ご使用の企業ネットワークなど) のような他のエントリポイントも予測 "GenerateAnswer" API アクセスを許可していることを確認します。
-    * [サービス タグに関する詳細](../../../virtual-network/service-tags-overview.md)を確認します。
-
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
 `qna-westus-f0-b` などの QnA Maker マネージド (プレビュー) リソースのリソース名は、他のリソースの名前付けにも使用されます。
@@ -275,12 +262,87 @@ Azure portal の作成ウィンドウを使用すると、QnA Maker マネージ
 > [!TIP]
 > 名前付け規則を使用して、リソースまたはリソース グループの名前内の価格レベルを示します。 新しいナレッジ ベースの作成または新しいドキュメントの追加でエラーが発生する場合、Cognitive Search の価格レベルの制限が一般的な問題です。
 
-### <a name="resource-purposes"></a>リソースの目的
+---
+
+## <a name="resource-purposes"></a>リソースの目的
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
+
+QnA Maker で作成される各 Azure リソースには特定の目的があります。
+
+* QnA Maker リソース
+* Cognitive Search リソース
+* App Service
+* App Plan サービス
+* Application Insights サービス
+
+### <a name="qna-maker-resource"></a>QnA Maker リソース
+
+QnA Maker リソースを使うと、オーサリングおよび公開 API だけでなく、実行時に QnA ペアの中で自然言語処理 (NLP) ベースの 2 番目の順位のレイヤー (ランカー #2) にアクセスできます。
+
+2 番目の順位では、メタデータとフォローアップ プロンプトを含めることができるインテリジェント フィルターが適用されます。
+
+#### <a name="qna-maker-resource-configuration-settings"></a>QnA Maker リソースの構成設定
+
+[QnA Maker ポータル](https://qnamaker.ai)で新しいナレッジ ベースを作成する場合、リソース レベルで適用される設定は **言語** 設定のみです。 リソースに最初のナレッジ ベースを作成するときに、言語を選択します。
+
+### <a name="cognitive-search-resource"></a>Cognitive Search リソース
+
+[Cognitive Search](../../../search/index.yml) リソースは次の目的で使用されます。
+
+* QnA ペアを格納する
+* 実行時に QnA ペアの初期順位 (ランカー #1) を指定する
+
+#### <a name="index-usage"></a>インデックスの使用量
+
+リソースには、テスト インデックスとして機能する 1 つのインデックスが保持され、残りのインデックスは、それぞれ 1 つの公開されたナレッジ ベースに関連付けられます。
+
+15 個のインデックスを保持できる価格設定のリソースには、14 個の公開されたナレッジ ベースが保持され、1 つのインデックスがすべてのナレッジ ベースのテストに使用されます。 このテスト インデックスはナレッジ ベースによってパーティション分割されているため、対話型テスト ペインを使用するクエリにはテスト インデックスが使用されますが、特定のナレッジ ベースに関連付けられた特定のパーティションの結果のみが返されます。
+
+#### <a name="language-usage"></a>言語の使用方法
+
+QnA Maker リソースで作成された最初のナレッジ ベースは、Cognitive Search リソースとそのすべてのインデックス用の "_1 つの_" 言語セットを決定するために使用されます。 1 つの QnA Maker サービスには "_1 つの言語セット_" のみを使用できます。
+
+#### <a name="using-a-single-cognitive-search-service"></a>1 つの Cognitive Search サービスの使用
+
+ポータルを使用して QnA サービスとその依存関係 (Search など) を作成すると、Search サービスが自動的に作成され、QnA Maker サービスにリンクされます。 これらのリソースが作成された後、既存の Search サービスを使用するように App Service 設定を更新して、先ほど作成されたサービスを削除できます。
+
+QnA Maker リソース作成プロセスの一環で作成されたものとは異なる Cognitive Service リソースを使用するように QnA Maker を[構成する方法](../How-To/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)を確認してください。
+
+### <a name="app-service-and-app-service-plan"></a>App Service と App Service プラン
+
+[App Service](../../../app-service/index.yml) は、クライアント アプリケーションからランタイム エンドポイントを介して公開されたナレッジ ベースにアクセスするときに使用されます。
+
+公開されたナレッジ ベースのクエリを実行する場合、公開されたナレッジ ベースにはすべて同じ URL エンドポイントが使用されますが、ルート内の **ナレッジ ベース ID** を指定します。
+
+`{RuntimeEndpoint}/qnamaker/knowledgebases/{kbId}/generateAnswer`
+
+### <a name="application-insights"></a>Application Insights
+
+[Application Insights](../../../azure-monitor/app/app-insights-overview.md) は、チャット ログとテレメトリを収集するために使用されます。 サービスの詳細については、一般的な [Kusto クエリ](../how-to/get-analytics-knowledge-base.md)に関する記事を参照してください。
+
+### <a name="share-services-with-qna-maker"></a>サービスを QnA Maker と共有する
+
+QnA Maker はいくつかの Azure リソースを作成します。 管理を軽減し、コスト共有のメリットを得るために、次の表を使用して、共有できるものとできないものを理解してください。
+
+|サービス|共有|理由|
+|--|--|--|
+|Cognitive Services|X|仕様により不可能|
+|App Service プラン|✔|App Service プランに対して固定のディスク領域が割り当てられています。 同じ App Service プランを共有している他のアプリによって大量のディスク領域が使用された場合、QnA Maker App Service インスタンスで問題が発生します。|
+|App Service|X|仕様により不可能|
+|Application Insights|✔|共有できます|
+|検索サービス|✔|1. `testkb` は QnA Maker サービス用の予約された名前です。他のサービスで使用することはできません。<br>2.`synonym-map` という名前のシノニム マップは、QnA Maker サービス用に予約されています。<br>3.公開されるナレッジ ベースの数は、Search サービスのレベルによって制限されます。 使用可能な空きインデックスがある場合は、他のサービスでそれらを使用できます。|
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
 QnA Maker マネージド (プレビュー) で作成される各 Azure リソースには特定の目的があります。
 
 * QnA Maker リソース
 * Cognitive Search リソース
+
+### <a name="qna-maker-resource"></a>QnA Maker リソース
+
+QnA Maker マネージド (プレビュー) リソースにより、作成および発行 API へのアクセスが提供され、ランク付けランタイムがホストされ、テレメトリが提供されます。
 
 ### <a name="azure-cognitive-search-resource"></a>Azure Cognitive Search リソース
 
@@ -298,39 +360,6 @@ QnA Maker マネージド (プレビュー) で作成される各 Azure リソ�
 #### <a name="language-usage"></a>言語の使用方法
 
 QnA Maker マネージド (プレビュー) を使用するときは、ナレッジ ベース用の QnA Maker サービスを 1 つの言語または複数の言語のどちらで設定するかを選択できます。 この選択は、QnA Maker サービスで最初のナレッジ ベースを作成するときに行います。 ナレッジ ベースごとに言語の設定を有効にする方法については、[こちら](#pricing-tier-considerations)を参照してください。
-
-### <a name="qna-maker-resource"></a>QnA Maker リソース
-
-QnA Maker マネージド (プレビュー) リソースにより、作成および発行 API へのアクセスが提供され、ランク付けランタイムがホストされ、テレメトリが提供されます。
-
-## <a name="region-support"></a>リージョンのサポート
-
-QnA Maker マネージド (プレビュー) では、管理サービスと予測サービスの両方が同じリージョンに併置されます。 現在 QnA Maker マネージド (プレビュー) は、**米国中南部、北ヨーロッパ、オーストラリア東部** で利用できます。
-
-### <a name="keys-in-qna-maker-managed-preview"></a>QnA Maker マネージド (プレビュー) でのキー
-
-QnA Maker マネージド (プレビュー) サービスにより、顧客のサブスクリプションのサービスにアクセスするために、**オーサリング キー** と **Azure Cognitive Search キー** の 2 種類のキーが処理されます。
-
-**サブスクリプション キー** をお探しの場合は [用語が変わっています](#subscription-keys)。
-
-これらのキーは、API を介してサービスに要求を行うときに使用します。
-
-![キー管理マネージド プレビュー](../media/qnamaker-how-to-key-management/qnamaker-v2-key-management.png)
-
-|名前|場所|目的|
-|--|--|--|
-|オーサリング キー|[Azure Portal](https://azure.microsoft.com/free/cognitive-services/)|これらのキーは、[QnA Maker 管理サービス API](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase) へのアクセスに使用されます。 これらの API を使用して、ナレッジ ベース内の質問と回答を編集したり、ナレッジ ベースを公開したりできます。 これらのキーは、新しい QnA Maker サービスを作成するときに作成されます。<br><br>これらのキーは、 **[キー]** ページの **Cognitive Services** リソースで確認できます。|
-|Azure Cognitive Search の管理者キー|[Azure Portal](../../../search/search-security-api-keys.md)|これらのキーは、ユーザーの Azure サブスクリプションにデプロイされている Azure Cognitive Search サービスとの通信に使用されます。 Azure Cognitive Search を QnA Maker マネージド (プレビュー) サービスに関連付けると、管理者キーが QnA Maker サービスに自動的に渡されます。 <br><br>これらのキーは、**Azure Cognitive Search** リソースの **[キー]** ページで確認できます。|
-
-### <a name="subscription-keys"></a>サブスクリプション キー
-
-オーサリングおよびクエリ エンドポイント キーという用語は修正用語です。 以前の用語は **サブスクリプション キー** でした。 他のドキュメントにサブスクリプション キーと書かれている場合、それらは (ランタイムで使用される) オーサリングおよびクエリ エンドポイント キーに相当します。
-
-どのキーを見つける必要があるかを知るには、キーが何にアクセスしているか (ナレッジ ベースの管理またはナレッジ ベースのクエリ) を把握する必要があります。
-
-### <a name="recommended-settings-for-network-isolation"></a>ネットワーク分離の推奨設定 
-
-[仮想ネットワークを構成](../../cognitive-services-virtual-networks.md?tabs=portal)して、Cognitive Services リソースをパブリック アクセスから保護します。
 
 ---
 

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d59d5de0d98380be215747c7daa33721fcebf33c
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: dccb99c43e53231c15fbf158411c87e91bc96f84
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533827"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576749"
 ---
 # <a name="set-up-autoscale-for-microservice-applications"></a>マイクロサービス アプリケーションの自動スケーリングを設定する
 
@@ -70,5 +70,5 @@ Basic レベルを使用していて、その 1 つ以上の制限により制�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Microsoft Azure の自動スケーリングの概要](../azure-monitor/platform/autoscale-overview.md)
+* [Microsoft Azure の自動スケーリングの概要](../azure-monitor/autoscale/autoscale-overview.md)
 * [Azure CLI での自動スケーリングの監視](/cli/azure/monitor/autoscale?preserve-view=true&view=azure-cli-latest)

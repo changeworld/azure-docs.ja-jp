@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 458c801e1434832bf65da669ca89cb5c5eebe2e8
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900894"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807565"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Azure Sentinel のユーザーとエンティティの行動分析 (UEBA) を使用して高度な脅威を特定する
 
 > [!IMPORTANT]
 >
-> - UEBA およびエンティティ ページ機能は、次の Azure Sentinel の地域とリージョンで **一般提供** になりました。
->    - 米国地域
->    - 西ヨーロッパ リージョン
->    - オーストラリア地域
->
-> - 他のすべての地域およびリージョンでは、これらの機能は当分の間、**プレビュー** 段階のままです。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[**Microsoft Azure プレビューの追加使用条件**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> - UEBA およびエンティティ ページ機能は、Azure Sentinel の "**_すべて_**" の地域とリージョンで **一般提供** になりました。
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>ユーザーとエンティティの行動分析 (UEBA) の概要
 
@@ -40,7 +35,7 @@ ms.locfileid: "97900894"
 
 Azure Sentinel の UEBA 機能は、アナリストのワークロードから面倒な作業を、またその取り組みから不確実性を排除し、忠実度が高い、すぐに使用可能なインテリジェンスを提供するため、アナリストは調査と修復に集中することができます。
 
-Azure Sentinel は、接続されているすべてのデータ ソースからログとアラートを収集すると、それらを分析して、時間とピア グループの期間全体にわたる組織のエンティティ (ユーザー、ホスト、IP アドレス、アプリケーションなど) のベースライン行動プロファイルを構築します。 Sentinel はその後、さまざまな手法や機械学習機能を使用して異常なアクティビティを特定できるため、資産が侵害されているかどうかを判定するために役立ちます。 それだけではなく、特定の資産の相対的な機密性を見つけたり、資産のピア グループを識別したり、特定の侵害された資産の潜在的な影響 (その "影響範囲") を評価したりすることもできます。 これらの情報を利用して、調査やインシデント処理に効果的に優先順位を付けることができます。 
+Azure Sentinel は、接続されているすべてのデータ ソースからログとアラートを収集すると、それらを分析して、時間とピア グループの期間全体にわたる組織のエンティティ (ユーザー、ホスト、IP アドレス、アプリケーションなど) のベースライン行動プロファイルを構築します。 Azure Sentinel はその後、さまざまな手法や機械学習機能を使用して異常なアクティビティを特定できるため、資産が侵害されているかどうかを判定するために役立ちます。 それだけではなく、特定の資産の相対的な機密性を見つけたり、資産のピア グループを識別したり、特定の侵害された資産の潜在的な影響 (その "影響範囲") を評価したりすることもできます。 これらの情報を利用して、調査やインシデント処理に効果的に優先順位を付けることができます。 
 
 ### <a name="architecture-overview"></a>アーキテクチャの概要
 

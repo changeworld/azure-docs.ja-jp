@@ -9,12 +9,12 @@ ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
-ms.openlocfilehash: 3c7f171a2b4957b687831ec2777ecc40b5913a15
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 4fda626581265b4b1f6541a3b453b164ccd27963
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938649"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101690449"
 ---
 # <a name="quickstart-get-a-phone-number-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して電話番号を取得する
 
@@ -117,7 +117,9 @@ Azure portal を使用して電話番号を購入することで、Azure Communi
 
 よくある質問と問題:
 
-- 現在、電話番号の購入がサポートされているのは、米国だけです。 これは、リソースが関連付けられているサブスクリプションの請求先住所に基づきます。 現時点では、リソースを別のサブスクリプションに移動することはできません。
+- 電話の購入は、米国でのみサポートされています。 電話番号を購入する場合は、以下を確認してください。
+  - 関連付けられている Azure サブスクリプションの請求先住所が米国内にあること。 現時点では、リソースを別のサブスクリプションに移動することはできません。
+  - お使いの Communication Services リソースが米国のデータの場所にプロビジョニングされていること。 現時点では、リソースを別のデータの場所に移動することはできません。
 
 - 電話番号を解放しても、請求サイクルが終了するまでその番号は解放されず、再購入することはできません。
 

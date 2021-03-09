@@ -9,22 +9,22 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: bb49523858f07e54887a67d9df68eb894e27ad34
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9e4edbcfd9e4180e727cd885902d9f0150a967ca
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881250"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389401"
 ---
 # <a name="azure-tls-certificate-changes"></a>Azure TLS 証明書の変更  
 
-Microsoft では、異なるルート証明機関 (CA) のセットからの TLS 証明書を使用するように、Azure サービスが更新されています。 この変更は、現在の CA 証明書が CA/ブラウザー フォーラムのベースライン要件の 1 つに準拠していないため行われています。
+Microsoft では、異なるルート証明機関 (CA) のセットからの TLS 証明書を使用するように、Azure サービスが更新されています。 この変更は、現在の CA 証明書が CA/ブラウザー フォーラムのベースライン要件の 1 つに準拠しておらず、2021 年 2 月 15 日に失効するために行われています。
 
 ## <a name="when-will-this-change-happen"></a>この変更はいつ行われますか?
 
 既存の Azure エンドポイントは、2020 年 8 月 13 日以降、段階的に移行されました。 新しく作成されるすべての Azure TLS/SSL エンドポイントには、新しいルート CA にチェーンする更新された証明書が含まれています。
 
-サービス固有の詳細:
+すべての Azure サービスがこの変更の影響を受けます。 ここでは、特定のサービスに関する追加の詳細を示します。
 
 - 2020 年 7 月 7 日に、[Azure Active Directory](../../active-directory/index.yml) (Azure AD) サービスでこの移行が開始されました。
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) と [DPS](../../iot-dps/index.yml) は Baltimore CyberTrust ルート CA に残りますが、中間 CA は変更されます。 詳細については、[こちら](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456)をクリックしてください。

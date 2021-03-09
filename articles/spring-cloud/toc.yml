@@ -59,7 +59,7 @@
   items:
     - name: 開発
       items:
-        - name: Java Spring アプリをデプロイ用に準備する
+        - name: アプリをデプロイ用に準備する
           href: spring-cloud-tutorial-prepare-app-deployment.md
         - name: 構成サーバーを設定する
           href: spring-cloud-tutorial-config-server.md
@@ -147,6 +147,8 @@
       items:
         - name: 問題の自己診断と解決
           href: spring-cloud-howto-self-diagnose-solve.md
+        - name: VNET で実行される自己診断
+          href: spring-cloud-howto-self-diagnose-running-in-vnet.md
         - name: トラブルシューティング ガイド
           href: spring-cloud-troubleshoot.md
     - name: Migrate
@@ -157,7 +159,11 @@
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
           href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
-- name: DevOps の展開
+- name: アーキテクチャ
+  items:
+    - name: 参照アーキテクチャ
+      href: spring-cloud-reference-architecture.md
+- name: DevOps 配置
   items:
     - name: Azure DevOps を使用した CI/CD
       href: spring-cloud-howto-cicd.md
@@ -184,3 +190,6 @@
     - name: Azure Policy の組み込み
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md
+    - name: 新機能
+      displayName: What's New
+      href: 'https://azure.microsoft.com/updates/?query=spring'

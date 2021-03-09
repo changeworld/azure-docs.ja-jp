@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor を使用した Media Services 診断ログの監視 | Microsoft Docs
+title: Azure Monitor を使用して診断ログを監視する
 description: この記事では、Azure Monitor を介して診断ログをルーティングおよび表示する方法を示します。
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e756ff0133e3d3f0f86ea2f592005f2f2986488e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3093d20fbe0a1ded68e34e816b7fc865a237ad92
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707763"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100576314"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services 診断ログの監視
 
@@ -183,9 +183,9 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure Monitor のメトリック](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor 診断ログ](../../azure-monitor/platform/platform-logs-overview.md)
-* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure Monitor のメトリック](../../azure-monitor/data-platform.md)
+* [Azure Monitor 診断ログ](../../azure-monitor/essentials/platform-logs-overview.md)
+* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/essentials/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>次のステップ
 

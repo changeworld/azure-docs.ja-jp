@@ -4,17 +4,20 @@ description: Azure Key Vault で Azure Cosmos DB アカウントのカスタマ�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 08/05/2020
+ms.date: 02/19/2021
 ms.author: thweiss
-ms.openlocfilehash: e87f6f158265fd8ac210a0a071e35b0bb77df4d9
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 3ee566a598ea7fdf060712c934305ef63467e548
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338284"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101656518"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
+
+> [!NOTE]
+> 現在、Azure Cosmos DB の[分析ストア](analytical-store-introduction.md)でカスタマー マネージド キーを使用するためには、ご利用のアカウントに特別な構成が必要となります。 詳細については、[azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) にお問い合わせください。
 
 Azure Cosmos アカウントに格納されているデータは、Microsoft が管理するキー (**サービス マネージド キー**) を使用して自動的かつシームレスに暗号化されます。 自分で管理するキー (**カスタマー マネージド キー**) を使用する暗号化の 2 番目のレイヤーを追加することもできます。
 
@@ -291,6 +294,10 @@ Azure Cosmos DB でカスタマー マネージド キー (CMK) を使用して�
 ### <a name="are-customer-managed-keys-supported-for-existing-azure-cosmos-accounts"></a>カスタマー マネージド キーは既存の Azure Cosmos アカウントでサポートされますか?
 
 この機能は現在、新しいアカウントでのみ使用できます。
+
+### <a name="is-it-possible-to-use-customer-managed-keys-in-conjunction-with-the-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB の[分析ストア](analytical-store-introduction.md)とカスタマー マネージド キーを組み合わせて使用することはできますか?
+
+できます。ただし現時点では、アカウントに特別な構成が必要です。 詳細については、[azurecosmosdbcmk@service.microsoft.com](mailto:azurecosmosdbcmk@service.microsoft.com) にお問い合わせください。
 
 ### <a name="is-there-a-plan-to-support-finer-granularity-than-account-level-keys"></a>アカウント レベルのキーより細かい粒度をサポートする計画はありますか?
 

@@ -1,22 +1,18 @@
 ---
 title: Data Management Gateway に関する問題をトラブルシューティングする
 description: Data Management Gateway に関連する問題のトラブルシューティングを行うためのヒントを示します。
-services: data-factory
 author: nabhishek
-manager: anandsub
-ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 7b12ff431b2d164baf4f70fa5341f538b16bca51
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 284486c5db248ced8ada6e7194c7bc5a9be5689f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896567"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100388347"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。
@@ -99,7 +95,7 @@ Data Management Gateway セットアップのバージョンが最新かどう�
 ### <a name="6-problem"></a>6.問題
 ゲートウェイを登録するときに、次のエラー メッセージが表示される場合があります。
 
-`Error: Gateway has been online for a while, then shows “Gateway is not registered” with the status “Gateway key is invalid”`
+`Error: Gateway has been online for a while, then shows "Gateway is not registered" with the status "Gateway key is invalid"`
 
 ![ゲートウェイ キーが無効または空](media/data-factory-troubleshoot-gateway-issues/gateway-not-registered-key-invalid.png)
 

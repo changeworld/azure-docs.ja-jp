@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: bde7c1adefea88ed5b5d86e2c0e17f475be1bc71
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 1ce9c00cb58253e2cca9a7d60c4cce9b77709688
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654372"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98953854"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LinkedIn アカウントでのサインアップおよびサインインを設定する
 
@@ -36,7 +36,7 @@ ms.locfileid: "97654372"
 
 ## <a name="create-a-linkedin-application"></a>LinkedIn アプリケーションを作成する
 
-Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorization-code-flow.md)として LinkedIn アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ LinkedIn アカウントを持っていない場合は、[https://www.linkedin.com/](https://www.linkedin.com/) でサインアップできます。
+Azure Active Directory B2C (Azure AD B2C) で LinkedIn アカウントを使用してユーザーのサインインを有効にするには [LinkedIn 開発者向け Web サイト](https://www.developer.linkedin.com/)でアプリケーションを作成する必要があります。 詳細については、[承認コード フロー](/linkedin/shared/authentication/authorization-code-flow)に関するセクションを参照してください。 まだ LinkedIn アカウントを持っていない場合は、[https://www.linkedin.com/](https://www.linkedin.com/) でサインアップできます。
 
 1. LinkedIn アカウントの資格情報を使用して、[LinkedIn 開発者の Web サイト](https://www.developer.linkedin.com/)にサインインします。
 1. **[マイ アプリ]** を選択してから、 **[アプリの作成]** をクリックします。
@@ -50,7 +50,7 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorizat
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>ID プロバイダーとして LinkedIn アカウントを構成する
+## <a name="configure-linkedin-as-an-identity-provider"></a>LinkedIn を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
@@ -60,6 +60,16 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorizat
 1. **[クライアント ID]** には、前に作成した LinkedIn アプリケーションのクライアント ID を入力します。
 1. **[クライアント シークレット]** には、記録したクライアント シークレットを入力します。
 1. **[保存]** を選択します。
+
+## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>ユーザー フローに LinkedIn ID プロバイダーを追加する 
+
+1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
+1. LinkedIn ID プロバイダーを追加するユーザー フローをクリックします。
+1. **[ソーシャル ID プロバイダー]** から、 **[LinkedIn]** を選択します。
+1. **[保存]** を選択します。
+1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
+1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[ユーザー フローを実行します]** をクリックします
 
 ::: zone-end
 
@@ -80,7 +90,7 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 9. **[キー使用法]** として [`Signature`] を選択します。
 10. **Create** をクリックしてください。
 
-## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
+## <a name="configure-linkedin-as-an-identity-provider"></a>LinkedIn を ID プロバイダーとして構成する
 
 ユーザーが LinkedIn アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
@@ -95,7 +105,7 @@ LinkedIn アカウントをクレーム プロバイダーとして定義する�
       <Domain>linkedin.com</Domain>
       <DisplayName>LinkedIn</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="LinkedIn-OAUTH">
+        <TechnicalProfile Id="LinkedIn-OAuth2">
           <DisplayName>LinkedIn</DisplayName>
           <Protocol Name="OAuth2" />
           <Metadata>
@@ -181,79 +191,29 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
 </BuildingBlocks>
 ```
 
-### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
-これで、Azure AD B2C が LinkedIn アカウントと通信する方法を認識できるようにポリシーが構成されました。 ポリシーの拡張ファイルをアップロードしてみて、現時点で問題がないことを確認します。
 
-1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、 **[ポリシーのアップロード]** を選択します。
-1. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
-1. **[アップロード]** をクリックします。
-
-## <a name="register-the-claims-provider"></a>クレーム プロバイダーを登録する
-
-この時点で、ID プロバイダーは設定されていますが、まだどのサインアップまたはサインイン画面でも使用できません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、それを LinkedIn ID プロバイダーも含まれるように変更します。
-
-1. スターター パック内の *TrustFrameworkBase.xml* ファイルを開きます。
-1. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
-1. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
-1. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
-1. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInLinkedIn` 」のように入力します。
-
-### <a name="display-the-button"></a>ボタンを表示する
-
-**ClaimsProviderSelection** 要素は、サインアップまたはサインイン画面の ID プロバイダーのボタンに類似しています。 LinkedIn アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
-
-1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
-2. **ClaimsProviderSelections** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`LinkedInExchange` など) に設定します。
-
-    ```xml
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
-    ```
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAuth2" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションは、Azure AD B2C がトークンを受信するために LinkedIn アカウントと通信することです。
+[!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-1. 次の **ClaimsExchange** 要素を追加します。ID には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
-
-    ```xml
-    <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
-    ```
-
-    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの ID に更新します。 たとえば、「 `LinkedIn-OAUTH` 」のように入力します。
-
-1. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
-
-::: zone-end
-
-:: zone pivot = "b2c-user flow"
-
-## <a name="add-linkedin-identity-provider-to-a-user-flow"></a>ユーザー フローに LinkedIn ID プロバイダーを追加する 
-
-1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
-1. LinkedIn ID プロバイダーを追加するユーザー フローをクリックします。
-1. **[ソーシャル ID プロバイダー]** から、 **[LinkedIn]** を選択します。
-1. **[保存]** を選択します。
-1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
-1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
-
-作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
-
-1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、その名前を *SignUpSignInLinkedIn.xml* に変更します。
-1. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInLinkedIn` 」のように入力します。
-1. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_linkedin` にします。
-1. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignLinkedIn) に一致するように更新します。
-1. 変更を保存し、ファイルをアップロードし、一覧から新しいポリシーを選択します。
-1. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、 **[今すぐ実行]** をクリックしてテストします。
-
+[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
 
 ## <a name="migration-from-v10-to-v20"></a>v1.0 から v2.0 に移行する
 

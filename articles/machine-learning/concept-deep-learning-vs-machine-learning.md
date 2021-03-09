@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 01/14/2020
 ms.custom: contperf-fy21q1,contperfq1
-ms.openlocfilehash: 61305e4f9ba45cb7c13a96bee9d1aab81108bb4d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 48de06d28442b4d05cd3a7ab287732c0999e434c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220696"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101659700"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Azure Machine Learning におけるディープ ラーニングと機械学習の違い
 
@@ -121,7 +121,7 @@ Azure Machine Learning でオープンソース フレームワークを使用�
 
 畳み込みニューラル ネットワークは、ビデオ認識、画像認識、レコメンダー システムなどの分野で使用されています。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri) には、オープンソース ディープ ラーニング モデルの使用に関連するオプションが他にもあります。次の記事でそれらを紹介します。
 
@@ -130,4 +130,4 @@ Azure Machine Learning でオープンソース フレームワークを使用�
 
 - [TensorFlow エスティメーターと Keras を使用して手書きの数字を分類する](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 
-- [Chainer モデルを使用して手書きの数字を分類する](./how-to-set-up-training-targets.md)
+- [Chainer モデルを使用して手書きの数字を分類する](./how-to-set-up-training-targets.md?WT.mc_id=docs-article-lazzeri)

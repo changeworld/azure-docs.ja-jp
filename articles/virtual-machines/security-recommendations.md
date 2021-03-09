@@ -10,12 +10,12 @@ ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
-ms.openlocfilehash: 95ba93c4a5d71e6813c1bee144c983e1dfd8c89d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: afb985ecbe91835369738966e39e751f06f8d796
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500327"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571330"
 ---
 # <a name="security-recommendations-for-virtual-machines-in-azure"></a>Azure の仮想マシンについてのセキュリティに関する推奨事項
 
@@ -56,7 +56,7 @@ Azure Security Center の一般的な情報については、「[Azure Security 
 
 | 推奨 | 説明 | Security Center |
 |-|----|--|
-| VM を監視する。 | [Azure Monitor for VMs](../azure-monitor/insights/vminsights-overview.md) を使用して、ご利用の Azure VM および仮想マシン スケール セットを監視できます。 VM のパフォーマンスの問題はサービス中断に発展する場合があり、そうなれば可用性というセキュリティの原則を損ないます。 | - |
+| VM を監視する。 | [Azure Monitor for VMs](../azure-monitor/vm/vminsights-overview.md) を使用して、ご利用の Azure VM および仮想マシン スケール セットを監視できます。 VM のパフォーマンスの問題はサービス中断に発展する場合があり、そうなれば可用性というセキュリティの原則を損ないます。 | - |
 
 ## <a name="networking"></a>ネットワーク
 

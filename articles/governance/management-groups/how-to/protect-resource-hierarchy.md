@@ -1,14 +1,14 @@
 ---
 title: リソース階層を保護する方法 - Azure のガバナンス
 description: 既定の管理グループの設定を含む階層設定を使用して、リソース階層を保護する方法について説明します。
-ms.date: 09/02/2020
+ms.date: 02/05/2021
 ms.topic: conceptual
-ms.openlocfilehash: cfaf7a732b3233536006009613cecd5aa1649dee
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 0f0afb5401fc646d26598a211604790af191f156
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951895"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594588"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>リソース階層を保護する方法
 

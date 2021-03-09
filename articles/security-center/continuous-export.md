@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 12/24/2020
 ms.author: memildin
-ms.openlocfilehash: 823992ba6d3b175c8d20a001f8298a5c4af9a1ae
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9b8dc635781c96dcbd7aa423c77f60ff0556bd71
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832711"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634067"
 ---
 # <a name="continuously-export-security-center-data"></a>Security Center のデータを連続的にエクスポートする
 
@@ -25,6 +25,8 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 - SQL サーバーの脆弱性評価スキャンで検出された重大度が中程度または高いすべての結果を、特定の Log Analytics ワークスペースに送信する
 - 生成されるたびに特定の推奨事項を、イベント ハブまたは Log Analytics ワークスペースに送信する 
 - サブスクリプションのセキュリティ スコアは、特定のコントロールについて 0.01 以上で変化するたびに、Log Analytics ワークスペースに送信されます 
+
+この機能は "*連続*" と呼ばれていますが、セキュリティ スコアや規制コンプライアンス データの週単位のスナップショットをエクスポートするオプションもあります。
 
 この記事では、Log Analytics ワークスペースまたは Azure Event Hubs への連続エクスポートの構成方法について説明します。
 
@@ -78,6 +80,10 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
     ご覧のようにエクスポート オプションが表示されます。 使用可能なエクスポート ターゲットごとにタブがあります。 
 
 1. エクスポートするデータの種類を選択し、それぞれの種類に対するフィルターを選択します (たとえば、重大度が高いアラートのみをエクスポートするなど)。
+1. 適切なエクスポート頻度を選択します。
+    - **ストリーミング** - リソースの正常性状態が更新されたときに評価がリアルタイムで送信されます (更新がなければデータは送信されません)。
+    - **スナップショット** - 規制コンプライアンスの全評価を対象に現在の状態のスナップショットが毎週送信されます (これは、セキュリティ スコアと規制コンプライアンス データの週単位のスナップショットに関するプレビュー機能です)。
+
 1. 必要に応じて、選択範囲に次の推奨事項のいずれかが含まれている場合は、脆弱性評価の結果を含めることができます。
     - SQL データベースの脆弱性評価の結果を修復する必要がある
     - マシン上の SQL サーバーの脆弱性評価の結果を修復する必要がある (プレビュー)
@@ -179,7 +185,7 @@ Azure Security Center のデータを Log Analytics ワークスペースの内�
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>エクスポートされたアラートと推奨事項を Azure Monitor で表示する
 
-エクスポートされたセキュリティ アラートや推奨事項を [Azure Monitor](../azure-monitor/platform/alerts-overview.md) で表示することもできます。 
+エクスポートされたセキュリティ アラートや推奨事項を [Azure Monitor](../azure-monitor/alerts/alerts-overview.md) で表示することもできます。 
 
 Azure Monitor は、診断ログ、メトリック アラート、および Log Analytics ワークスペース クエリに基づくカスタム アラートなど、さまざまな Azure アラートの統合されたアラート エクスペリエンスを提供します。
 
@@ -189,13 +195,13 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 
     ![Azure Monitor の [アラート] ページ](./media/continuous-export/azure-monitor-alerts.png)
 
-1. ルールの作成ページで、([Azure Monitor でログ アラート ルール](../azure-monitor/platform/alerts-unified-log.md)を構成するのと同じ方法で) 新しいルールを構成します。
+1. ルールの作成ページで、([Azure Monitor でログ アラート ルール](../azure-monitor/alerts/alerts-unified-log.md)を構成するのと同じ方法で) 新しいルールを構成します。
 
     * **[リソース]** には、セキュリティ アラートと推奨事項のエクスポート先の Log Analytics ワークスペースを選択します。
 
     * **[条件]** には、 **[Custom log search]\(カスタム ログ検索\)** を選択します。 表示されたページで、クエリ、ルックバック期間、および頻度の期間を構成します。 検索クエリでは、「*SecurityAlert*」または「*Securityalert*」と入力して、Log Analytics への連続エクスポート機能を有効にしたときに Security Center が連続してエクスポートするデータ型に対してクエリを実行できます。 
     
-    * 必要に応じて、トリガーする[アクション グループ](../azure-monitor/platform/action-groups.md)を構成します。 アクション グループは、メール送信、ITSM チケット、Webhook などをトリガーできます。
+    * 必要に応じて、トリガーする[アクション グループ](../azure-monitor/alerts/action-groups.md)を構成します。 アクション グループは、メール送信、ITSM チケット、Webhook などをトリガーできます。
     ![Azure Monitor のアラート ルール](./media/continuous-export/azure-monitor-alert-rule.png)
 
 これで、アクション グループの自動トリガーが設定された (指定されている場合)、新しい Azure Security Center アラートまたは推奨事項 (構成されている連続エクスポート ルールと Azure Monitor アラート ルールに定義されている条件によって決まります) が Azure Monitor アラートに表示されるようになります。
@@ -204,7 +210,7 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 
 アラートまたは推奨事項の CSV レポートをダウンロードするには、 **[セキュリティ アラート]** または **[推奨事項]** ページを開き、 **[レポートを CSV にダウンロード]** ボタンを選択します。
 
-[![アラート データを CSV ファイルとしてダウンロードする](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
+:::image type="content" source="./media/continuous-export/download-alerts-csv.png" alt-text="アラート データを CSV ファイルとしてダウンロードする" lightbox="./media/continuous-export/download-alerts-csv.png":::
 
 > [!NOTE]
 > これらのレポートには、現在選択されているサブスクリプションのリソースに関するアラートと推奨事項が含まれています。

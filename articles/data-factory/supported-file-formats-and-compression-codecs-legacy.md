@@ -2,25 +2,22 @@
 title: Azure Data Factory でサポートされるファイル形式 (レガシ)
 description: このトピックでは、Azure Data Factory 内のファイルベースのコネクタでサポートされている圧縮コードやファイル形式について説明します。
 author: linda33wj
-manager: shwang
-ms.reviewer: craigg
+ms.author: jingwang
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.author: jingwang
-ms.openlocfilehash: b3241bc16c0613189faa169032632303788dac3e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: d95927a9ea7d3084387a9aedb0dcdd86f84b8e7f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634132"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100384828"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック (レガシ)
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-*この記事は、次のコネクターに適用されます。 [Amazon S3](connector-amazon-simple-storage-service.md)、 [Azure Blob](connector-azure-blob-storage.md)、 [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、 [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、 [Azure File Storage](connector-azure-file-storage.md)、 [ファイル システム](connector-file-system.md)、 [FTP](connector-ftp.md)、 [Google Cloud Storage](connector-google-cloud-storage.md)、 [HDFS](connector-hdfs.md)、 [HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。*
+*この記事は、次のコネクターに適用されます。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。*
 
 >[!IMPORTANT]
 >Data Factory では新しいフォーマットベースのデータセット モデルが導入されました。詳細については、対応する書式の記事を参照してください。 <br>- [Avro 形式](format-avro.md)<br>- [バイナリ形式](format-binary.md)<br>- [区切りテキスト形式](format-delimited-text.md)<br>- [JSON 形式](format-json.md)<br>- [ORC 形式](format-orc.md)<br>- [Parquet 形式](format-parquet.md)<br>この記事で以下に説明する構成は、下位互換性のために今後も現状のままサポートされます。 今後は新しいモデルを使用することをお勧めします。 
@@ -84,16 +81,16 @@ ms.locfileid: "92634132"
 >[!NOTE]
 >[JSON 形式](format-json.md)の新しいモデルの記事を参照してください。 ファイル ベースのデータ ストア データセットの次の構成は、後方互換性のためにまだサポートされています。 今後は新しいモデルを使用することをお勧めします。
 
-**Azure Cosmos DB との間で JSON ファイルをそのままインポート/エクスポートする** 場合は、Azure Cosmos DB との間でのデータの移動に関する記事の「 [Import/export JSON documents (JSON ドキュメントのインポート/エクスポート)](connector-azure-cosmos-db.md)」のセクションをご覧ください。
+**Azure Cosmos DB との間で JSON ファイルをそのままインポート/エクスポートする** 場合は、Azure Cosmos DB との間でのデータの移動に関する記事の「[Import/export JSON documents (JSON ドキュメントのインポート/エクスポート)](connector-azure-cosmos-db.md)」のセクションをご覧ください。
 
 JSON ファイルを解析するか、JSON 形式でデータを書き込む場合は、`format` セクションの `type` プロパティを **JsonFormat** に設定します。 `format` セクションに **オプションの** プロパティを指定することもできます。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、 **setOfObjects** と **arrayOfObjects** です。 **既定** 値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
+| filePattern |各 JSON ファイルに格納されたデータのパターンを示します。 使用できる値は、**setOfObjects** と **arrayOfObjects** です。 **既定** 値は **setOfObjects** です。 これらのパターンの詳細については、「[JSON ファイルのパターン](#json-file-patterns)」セクションを参照してください。 |いいえ |
 | jsonNodeReference | 同じパターンを持つ配列フィールド内のオブジェクトからのデータの反復処理と抽出を行う場合は、その配列の JSON のパスを指定します。 このプロパティは、JSON ファイル **から** データをコピーするときにのみサポートされます。 | いいえ |
 | jsonPathDefinition | カスタマイズされた列名 (先頭が小文字) での列マッピングごとに JSON のパス式を指定します。 このプロパティは JSON ファイル **から** データをコピーするときにのみサポートされ、オブジェクトまたは配列からデータを抽出することができます。 <br/><br/> ルート オブジェクトの直下のフィールドの場合、ルートの $ から記述します。`jsonNodeReference` プロパティによって選択された配列内のフィールドの場合、配列要素から記述します。 構成方法については、「[JsonFormat の例](#jsonformat-example)」セクションを参照してください。 | いいえ |
-| encodingName |エンコーディング名を指定します。 有効なエンコード名の一覧については、[Encoding.EncodingName](/dotnet/api/system.text.encoding) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定** 値は、 **UTF-8** です。 |いいえ |
+| encodingName |エンコーディング名を指定します。 有効なエンコード名の一覧については、[Encoding.EncodingName](/dotnet/api/system.text.encoding) プロパティに関する記事を参照してください。 例: windows-1250 または shift_jis。 **既定** 値は、**UTF-8** です。 |いいえ |
 | nestingSeparator |入れ子レベルの分割に使用される文字。 既定値は "." (ドット) です。 |いいえ |
 
 >[!NOTE]
@@ -431,8 +428,8 @@ Parquet ファイルを解析するか、Parquet 形式でデータを書き込�
 
 Parquet ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 
-- **JRE を使用する場合** :64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
-- **OpenJDK を使用する場合** : IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
+- **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
+- **OpenJDK を使用する場合**: IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
 
 >[!TIP]
 >セルフホステッド統合ランタイムを使用して、 Parquet 形式をコピー元またはコピー先にしてデータをコピーしたときに、[An error occurred when invoking java, message: **java.lang.OutOfMemoryError:Java heap space** (java の呼び出し中にエラーが発生しました。メッセージ: java.lang.OutOfMemoryError:Java heap space)] というエラーが発生する場合は、まず、セルフホステッド IR のホストであるマシン内に環境変数 `_JAVA_OPTIONS` を追加してください。次に、JVM の最小/最大ヒープ サイズを調整し、コピーを行えるようにしてから、パイプラインを再実行してください。
@@ -491,8 +488,8 @@ ORC ファイルを解析するか、ORC 形式でデータを書き込む場合
 
 ORC ファイルのシリアル化/逆シリアル化を使用してセルフホステッド IR 上で実行されるコピーでは、ADF は最初に JRE のレジストリ *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* を調べ、見つからない場合は次に OpenJDK のシステム変数 *`JAVA_HOME`* を調べることで、Java ランタイムを見つけます。
 
-- **JRE を使用する場合** :64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
-- **OpenJDK を使用する場合** : IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
+- **JRE を使用する場合**:64 ビット IR には 64 ビット JRE が必要です。 [こちら](https://go.microsoft.com/fwlink/?LinkId=808605)から入手できます。
+- **OpenJDK を使用する場合**: IR バージョン 3.13 以降でサポートされています。 jvm.dll を他のすべての必要な OpenJDK のアセンブリと共にセルフホステッド IR マシンにパッケージ化し、それに応じてシステム環境変数 JAVA_HOME を設定します。
 
 ### <a name="data-type-mapping-for-orc-files"></a>ORC ファイルデータ型マッピング
 
@@ -575,16 +572,16 @@ Azure Data Factory は、コピー中のデータの圧縮/圧縮解除をサポ
 
 **compression** セクションには次の 2 つのプロパティがあります。
 
-* **Type:** 圧縮コーデックです。 **GZIP** 、 **Deflate** 、 **BZIP2** 、または **ZipDeflate** を選択できます。 コピー アクティビティを使用して ZipDeflate ファイルを展開し、ファイル ベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されます。
-* **level:** 圧縮率です。 **Optimal** または **Fastest** を指定できます。
+* **Type:** 圧縮コーデックです。**GZIP**、**Deflate**、**BZIP2**、または **ZipDeflate** を選択できます。 コピー アクティビティを使用して ZipDeflate ファイルを展開し、ファイル ベースのシンク データ ストアに書き込むと、`<path specified in dataset>/<folder named as source zip file>/` フォルダーにファイルが抽出されます。
+* **level:** 圧縮率です。**Optimal** または **Fastest** を指定できます。
 
   * **Fastest:** 圧縮操作は可能な限り短時間で完了しますが、圧縮後のファイルが最適に圧縮されていない場合があります。
-  * **Optimal** :圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。
+  * **Optimal**:圧縮操作で最適に圧縮されますが、操作が完了するまでに時間がかかる場合があります。
 
     詳細については、 [圧縮レベル](/dotnet/api/system.io.compression.compressionlevel) に関するトピックをご覧ください。
 
 > [!NOTE]
-> **AvroFormat** 、 **OrcFormat** 、および **ParquetFormat** のデータの圧縮設定はサポートされていません。 こうした形式でファイルを読み取るとき、Data Factory は、メタデータ内の圧縮コーデックを検出して使用します。 ファイルに書き込むときは、その形式の既定の圧縮コーデックを選択します。 たとえば、OrcFormat には ZLIB、ParquetFormat には SNAPPY が選択されます。
+> **AvroFormat**、**OrcFormat**、および **ParquetFormat** のデータの圧縮設定はサポートされていません。 こうした形式でファイルを読み取るとき、Data Factory は、メタデータ内の圧縮コーデックを検出して使用します。 ファイルに書き込むときは、その形式の既定の圧縮コーデックを選択します。 たとえば、OrcFormat には ZLIB、ParquetFormat には SNAPPY が選択されます。
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>サポートされていないファイル形式と圧縮形式
 

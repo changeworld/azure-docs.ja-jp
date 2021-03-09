@@ -27,8 +27,10 @@
     - name: 1 - 最初の API のインポート
       href: import-and-publish.md
     - name: 2 - 製品の作成と発行
+      displayName: 'Azure CLI, az apim product'
       href: api-management-howto-add-products.md
     - name: 3 - API の応答の模擬テストを実行する
+      displayName: 'Azure CLI, az apim api operation'
       href: mock-api-responses.md
     - name: 4 - API の保護
       href: transform-api.md
@@ -37,8 +39,10 @@
     - name: 6 - API のデバッグ
       href: api-management-howto-api-inspector.md
     - name: 7 - リビジョンの追加
+      displayName: 'Azure CLI, az apim api release'
       href: api-management-get-started-revise-api.md
     - name: 8 - 複数のバージョンの追加
+      displayName: 'Azure CLI, az apim api versionset'
       href: api-management-get-started-publish-versions.md
     - name: 9 - 開発者ポータルのカスタマイズ
       href: api-management-howto-developer-portal-customize.md
@@ -68,6 +72,8 @@
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
           href: security-baseline.md
+    - name: バックエンド
+      href: backends.md
     - name: サブスクリプション
       href: api-management-subscriptions.md
     - name: バージョン
@@ -104,10 +110,10 @@
           href: import-function-app-as-api.md
         - name: ロジック アプリのインポート
           href: import-logic-app-as-api.md
-        - name: Service Fabric アプリのインポート
-          href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
         - name: API の編集
           href: edit-api.md
+        - name: Service Fabric バックエンドを構成する
+          href: how-to-configure-service-fabric-backend.md
     - name: プロビジョニングとスケーリング
       items:
         - name: 容量メトリック
@@ -223,6 +229,7 @@
         - name: 外部サービスの使用
           href: api-management-sample-send-request.md
         - name: 名前付きの値を使用してシークレットを管理する
+          displayName: 'Azure CLI, az apim nv'
           href: api-management-howto-properties.md
         - name: アクセス制限ポリシー
           href: api-management-access-restriction-policies.md
@@ -274,6 +281,8 @@
               href: ../service-fabric/service-fabric-api-management-overview.md
             - name: チュートリアル
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
+        - name: 運用環境の問題を診断する
+          href: diagnose-solve-problems.md
 - name: リファレンス
   items:
     - name: Azure CLI

@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 4d6401c53071235784a5371a4a6315e4e25a438f
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98680267"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979880"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 
@@ -42,7 +42,7 @@ ms.locfileid: "98680267"
 - **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 - **[リダイレクト URI]** ドロップ ダウンは **[Web]** に設定したままにして、「`https://localhost:5001/authentication/login-callback`」と入力します。 Kestrel で実行されているアプリの既定のポートは 5001 です。 アプリが別のポートで使用可能な場合は、`5001` ではなく、そのポート番号を指定します。
 
-登録が完了したら、 **[認証]**  >  **[暗黙の付与]** で、 **[アクセス トークン]** および **[ID トークン]** のチェック ボックスをオンにし、 **[保存]** ボタンを選択します。
+登録されたら、 **[管理]** で、 **[認証]**  >  **[Implicit grant and hybrid flows]\(暗黙的な許可およびハイブリッド フロー\)** を選択します。 **[アクセス トークン]** と **[ID トークン]** を選択し、 **[保存]** を選択します。
 
 ## <a name="create-the-app-using-the-net-core-cli"></a>.NET Core CLI を使用してアプリを作成する
 
@@ -80,7 +80,7 @@ Microsoft ID プラットフォームを使用して Azure AD でのログイン
 
 [Microsoft Graph](/graph/overview) は、Microsoft 365 データへのアクセスをユーザーに提供する API を備え、Microsoft ID プラットフォームによって発行されたトークンをサポートしているため、保護された API の例として使用するのに適しています。 このセクションでは、Microsoft Graph を呼び出して、ユーザーのメールをアプリケーションの [Fetch data]\(データのフェッチ\) ページに表示するコードを追加します。
 
-このセクションは、保護された API を名前付きクライアントから呼び出す一般的なアプローチを使用して記述されています。 同じ方法は、他の保護された API を呼び出す場合にも使用できます。 ただし、Microsoft Graph を自分のアプリケーションから呼び出す予定がある場合は、Graph SDK を使用することで定型的なコードを減らすことができます。 [Graph SDK の使用方法](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0)は、.NET のドキュメントに記載されています。
+このセクションは、保護された API を名前付きクライアントから呼び出す一般的なアプローチを使用して記述されています。 同じ方法は、他の保護された API を呼び出す場合にも使用できます。 ただし、Microsoft Graph を自分のアプリケーションから呼び出す予定がある場合は、Graph SDK を使用することで定型的なコードを減らすことができます。 [Graph SDK の使用方法](/aspnet/core/blazor/security/webassembly/graph-api?view=aspnetcore-5.0&preserve-view=true)は、.NET のドキュメントに記載されています。
 
 開始する前に、必要なアクセス許可を変更するため、アプリからログアウトしてください。そうしないと、現在のトークンは機能しません。 まだしていない場合は、以下のコードを更新する前に、もう一度アプリを実行して **[ログアウト]** を選択します。
 
@@ -102,7 +102,7 @@ Microsoft ID プラットフォームを使用して Azure AD でのログイン
 
 次に、以下のいくつかの手順で指定どおりにコードを変更します。 これらの変更によって、Microsoft Graph API に送信される送信要求に[アクセス トークン](access-tokens.md)が追加されます。 このパターンの詳細については、「[ASP.NET Core Blazor WebAssembly のセキュリティに関するその他のシナリオ](/aspnet/core/blazor/security/webassembly/additional-scenarios)」を参照してください。
 
-まず、次のコードを使用して *GraphAuthorizationMessageHandler.cs* という名前の新しいファイルを作成します。 このハンドラーは、`User.Read` および `Mail.Read` スコープに対するアクセス トークンを Microsoft Graph API への送信要求に追加するユーザーになります。
+まず、次のコードを使用して *GraphAPIAuthorizationMessageHandler.cs* という名前の新しいファイルを作成します。 このハンドラーは、`User.Read` および `Mail.Read` スコープに対するアクセス トークンを Microsoft Graph API への送信要求に追加するユーザーになります。
 
 ```csharp
 using Microsoft.AspNetCore.Components;

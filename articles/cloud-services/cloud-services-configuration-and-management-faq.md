@@ -1,28 +1,24 @@
 ---
 title: 構成と管理に関する問題についてよくあるご質問
-titleSuffix: Azure Cloud Services
 description: この記事では、Microsoft Azure Cloud Services の構成と管理についてよくあるご質問を紹介します。
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: genli
-ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 04a30a2446061df75d133bdbd088b7e71c59cade
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011025"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100578220"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題: よく寄せられる質問 (FAQ)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Azure Cloud Services (クラシック) の構成と管理の問題: よく寄せられる質問 (FAQ)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) は、Azure Cloud Services 製品向けの新しい Azure Resource Manager ベースのデプロイ モデルです。 この変更により、Azure Service Manager ベースのデプロイ モデルで実行されている Azure Cloud Services は Cloud Services (クラシック) という名前に変更されました。そして、すべての新しいデプロイでは [Cloud Services (延長サポート)](../cloud-services-extended-support/overview.md) を使用する必要があります。
 
 この記事では、[Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services) の構成と管理の問題についてよくあるご質問を紹介します。 サイズについては、 [Cloud Services VM サイズのページ](cloud-services-sizes-specs.md) を参照してください。
 
@@ -62,7 +58,7 @@ ms.locfileid: "96011025"
 
 **全般**
 
-- [自分の Web サイトに "nosniff" を追加する方法を教えてください。](#how-do-i-add-nosniff-to-my-website)
+- [Web サイトに `nosniff` を追加する方法を教えてください。](#how-do-i-add-nosniff-to-my-website)
 - [IIS の Web ロールをカスタマイズする方法を教えてください。](#how-do-i-customize-iis-for-a-web-role)
 - [クラウド サービスのクォータ制限とは何ですか。](#what-is-the-quota-limit-for-my-cloud-service)
 - [クラウド サービス VM 上のドライブで表示される空きディスク領域が非常に小さいのはなぜですか。](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -128,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0) を使用して、各場所の値を設定できます。
+csdef および cscfg のアップロード先に blob またはローカルを選択する機能が、リリースされる予定です。 [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true) を使用して、各場所の値を設定できます。
 
 インスタンス レベルでメトリックを監視する機能。 追加の監視機能は、「[クラウド サービスの監視方法](cloud-services-how-to-monitor.md)」に従って利用できます。
 
@@ -148,7 +144,7 @@ Windows Azure Diagnostics (WAD) ログ記録は、次のオプションを使用
 2. [.NET コードを使用して有効にする](./cloud-services-dotnet-diagnostics.md)
 3. [PowerShell を使用して有効にする](./cloud-services-diagnostics-powershell.md)
 
-クラウド サービスの現在の WAD 設定を取得するには、[Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) ps コマンドを使用できます。または、ポータルの [クラウド サービス] --> [拡張機能] ブレードにそれを表示できます。
+Cloud Services の現在の WAD 設定を取得するには、[Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) PowerShell コマンドを使用できます。または、ポータルの [クラウド サービス] --> [拡張機能] ブレードにそれを表示できます。
 
 
 ## <a name="network-configuration"></a>ネットワーク構成
@@ -244,9 +240,9 @@ Cloud Services のメモリ メトリックに基づく自動スケールは、�
 
 この問題を回避するには、Application Insights を使うことができます。 自動スケールは、メトリック ソースとして Application Insights をサポートし、"Memory" のようなゲスト メトリックに基づいてロール インスタンスの数をスケーリングできます。  クラウド サービスのプロジェクト パッケージ ファイル (*.cspkg) で Application Insights を構成し、サービスで Azure Diagnostics 拡張機能を有効にしてこの機能を実装する必要があります。
 
-Application Insights でカスタム メトリックを利用してクラウド サービスに自動スケールを構成する方法について詳しくは、「[Azure でのカスタム メトリックによる自動スケールの概要](../azure-monitor/platform/autoscale-custom-metric.md)」をご覧ください
+Application Insights でカスタム メトリックを利用してクラウド サービスに自動スケールを構成する方法について詳しくは、「[Azure でのカスタム メトリックによる自動スケールの概要](../azure-monitor/autoscale/autoscale-custom-metric.md)」をご覧ください
 
-クラウド サービスの Application Insights に Azure Diagnostics を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../azure-monitor/platform/diagnostics-extension-to-application-insights.md)」をご覧ください
+クラウド サービスの Application Insights に Azure Diagnostics を統合する方法について詳しくは、「[Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する](../azure-monitor/agents/diagnostics-extension-to-application-insights.md)」をご覧ください
 
 Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](../azure-monitor/app/cloudservices.md)」をご覧ください
 
@@ -254,7 +250,7 @@ Cloud Services 用に Azure Diagnostics ログを有効にする方法につい�
 
 ## <a name="generic"></a>ジェネリック
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>自分の Web サイトに "nosniff" を追加する方法を教えてください。
+### <a name="how-do-i-add-nosniff-to-my-website"></a>Web サイトに `nosniff` を追加する方法を教えてください。
 クライアントが MIME の種類をスニッフィングできないように、*web.config* ファイルに設定を追加します。
 
 ```xml
@@ -284,11 +280,11 @@ Cloud Services 用に Azure Diagnostics ログを有効にする方法につい�
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>クラウド サービス VM 上のドライブで表示される空きディスク領域が非常に小さいのはなぜですか。
 これは想定される動作であり、アプリケーションに問題が発生することはないはずです。 Azure PaaS VM の %approot% ドライブでジャーナルがオンになっているため、実質的に、ファイルが通常占有する領域の 2 倍の容量が消費されます。 ただし、この件で問題が起きないようにするには、いくつかの事柄に注意する必要があります。
 
-%approot% ドライブのサイズは、\<size of .cspkg + max journal size + a margin of free space> または 1.5 GB のいずれか大きい方として計算されます。 VM のサイズは、この計算に影響を与えません。 (VM のサイズは、一時的な C: ドライブのサイズにのみ影響を与えます。) 
+%approot% ドライブのサイズは、<.cspkg のサイズ + ジャーナルの最大サイズ + 空き領域のマージン> の計算値と、1.5 GB のうち、どちらか大きいほうになります。 VM のサイズは、この計算に影響を与えません。 (VM のサイズは、一時的な C: ドライブのサイズにのみ影響を与えます。) 
 
 %approot% ドライブへの書き込みはサポートされていません。 Azure VM に対して書き込む場合は、一時的な LocalStorage リソース (または、BLOB ストレージ、Azure Files など、その他のオプション) に対して書き込む必要があります。 したがって、%approot% フォルダー上の空き領域の量は重要ではありません。 アプリケーションが %approot% ドライブに対して書き込んでいるかどうか不明の場合は、サービスを数日間実行し、"実行前" と "実行後" のサイズを比較することができます。 
 
-Azure は、%approot% ドライブに対して何も書き込みません。 .cspkg ファイルから VHD が作成され、Azure VM にマウントされた後、このドライブに書き込むことがある唯一の機能はアプリケーションです。 
+Azure は、%approot% ドライブに対して何も書き込みません。 `.cspkg` から VHD が作成され、Azure VM にマウントされた後、このドライブに書き込むことがある唯一の機能はアプリケーションです。 
 
 ジャーナルの設定は構成不可であるため、オフにすることはできません。
 
@@ -297,7 +293,7 @@ Azure は、%approot% ドライブに対して何も書き込みません。 .cs
 スタートアップ タスクで PowerShell スクリプトを使用してマルウェア対策拡張機能を有効にすることができます。 次の記事の手順に従って実装してください。 
  
 - [PowerShell のスタートアップ タスクを作成する](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
 
 マルウェア対策デプロイ シナリオの詳細とポータルから有効にする方法については、「[マルウェア対策のデプロイ シナリオ](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)」を参照してください。
 

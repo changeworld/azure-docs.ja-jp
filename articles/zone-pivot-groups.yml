@@ -256,8 +256,10 @@ groups:
     title: Go
   - id: programming-language-java
     title: Java
-  - id: programming-language-javascript
-    title: JavaScript
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-browserjs
+    title: JavaScript (ブラウザー)
   - id: programming-languages-objectivec-swift
     title: Objective-C/Swift
   - id: programming-language-python
@@ -496,6 +498,8 @@ groups:
     title: C#
   - id: programming-language-go
     title: Go
+  - id: programming-language-javascript
+    title: JavaScript
   - id: programming-language-python
     title: Python
   - id: programming-language-rest-api
@@ -832,6 +836,40 @@ groups:
     title: Python
   - id: programming-language-swift
     title: Swift
+- id: acs-js-csharp-java-python-swift-android
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-javascript
+    title: JavaScript
+  - id: programming-language-java
+    title: Java
+  - id: programming-language-python
+    title: Python
+  - id: programming-language-swift
+    title: Swift
+  - id: programming-language-android
+    title: Android
+- id: acs-web-ios-android
+  title: プラットフォーム
+  prompt: プラットフォームの選択
+  pivots:
+  - id: platform-web
+    title: Web
+  - id: platform-ios
+    title: iOS
+  - id: platform-android
+    title: Android
+- id: acs-web-ios
+  title: プラットフォーム
+  prompt: プラットフォームの選択
+  pivots:
+  - id: platform-web
+    title: Web
+  - id: platform-ios
+    title: iOS
 - id: acs-js-csharp-ios-android-python
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -894,6 +932,8 @@ groups:
   pivots:
   - id: platform-azp
     title: Azure portal
+  - id: platform-azcli
+    title: Azure CLI
   - id: platform-net
     title: .NET
 - id: acs-plat-azp-arm-net-python-go-powershell
@@ -920,6 +960,14 @@ groups:
     title: Azure Arc
   - id: azure-portal
     title: Security Center のポータル ページ
+- id: manage-asc-initiatives
+  title: Security Center イニシアチブの管理
+  prompt: Security Center イニシアチブはどのように管理しますか?
+  pivots:
+  - id: azure-portal
+    title: Azure Portal で次の操作を行います。
+  - id: rest-api
+    title: REST API を使用した場合
 - id: client-operating-system-macos-and-linux-windows-powershell
   title: オペレーティング システム/コンソール
   prompt: オペレーティング システムとコンソールの選択
@@ -970,6 +1018,16 @@ groups:
     title: Python
   - id: rest-api
     title: REST
+- id: app-service-webjob
+  title: Web ジョブの種類
+  prompt: Web ジョブの種類を選択する
+  pivots:
+  - id: webjob-type-continuous
+    title: 継続的
+  - id: webjob-type-scheduled
+    title: スケジュール済み
+  - id: webjob-type-manual
+    title: 手動
 - id: qnamaker-quickstart
   title: プログラミング言語
   prompt: プログラミング言語を選択する
@@ -988,10 +1046,18 @@ groups:
     title: Ruby
   - id: rest
     title: REST
+- id: azure-maps-android
+  title: プログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-java-android
+    title: Java (Android)
+  - id: programming-language-kotlin
+    title: Kotlin (Android)
 metadata:
-  ms.openlocfilehash: d0b0fc066111d3bd01ba5d810a5b1014981dfb1d
-  ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+  ms.openlocfilehash: 647527256c101e1a0afe37c8dca932228ac10aba
+  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/22/2021
-  ms.locfileid: "98704445"
+  ms.lasthandoff: 03/05/2021
+  ms.locfileid: "102176027"

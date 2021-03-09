@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 11/09/2020
+ms.date: 02/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: e7e65d5d2941765df98b3bf3b7fb8ff2e89b7e9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9d207e2ee0ddff49ab01094626b9af1c8505cb4e
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94411203"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101732490"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用してユーザー VPN 接続を作成する
 
@@ -24,6 +24,7 @@ ms.locfileid: "94411203"
 > * 仮想 WAN を作成する
 > * P2S の構成を作成する
 > * 仮想ハブを作成する
+> * クライアント アドレス プールを選択する
 > * DNS サーバーの指定
 > * VPN クライアント プロファイル構成パッケージを生成する
 > * VPN クライアントの構成
@@ -48,6 +49,10 @@ ms.locfileid: "94411203"
 ## <a name="create-virtual-hub-and-gateway"></a><a name="hub"></a>仮想ハブとゲートウェイを作成する
 
 [!INCLUDE [Create hub](../../includes/virtual-wan-p2s-hub-include.md)]
+
+## <a name="choose-p2s-client-address-pools"></a><a name="chooseclientpools"></a>P2S クライアント アドレス プールを選択する
+
+[!INCLUDE [Choose pools](../../includes/virtual-wan-allocating-p2s-pools.md)]
 
 ## <a name="specify-dns-server"></a><a name="dns"></a>DNS サーバーを指定する
 

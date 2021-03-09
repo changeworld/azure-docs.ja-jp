@@ -9,12 +9,12 @@ ms.author: chpalm
 ms.date: 10/06/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ed9af178c10d033806b05f73372a0642bb28cab4
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 24926640de3b50823dfeaf195500f33b49aebc18
+ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91801659"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "100652719"
 ---
 # <a name="quickstart-send-sms-messages-in-azure-logic-apps-with-azure-communication-services"></a>クイックスタート: Azure Communication Services を使用して Azure Logic Apps で携帯ショートメール (SMS) メッセージを送信する
 
@@ -39,15 +39,17 @@ ms.locfileid: "91801659"
 
 - SMS 対応の電話番号。または、[電話番号を取得](./get-phone-number.md)してください。
 
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
+
 ## <a name="add-an-sms-action"></a>SMS アクションを追加する
 
-Azure Communication Services SMS コネクタを使用して、ワークフローに新しいステップとして**携帯ショートメール (SMS) 送信**アクションを追加するには、[Azure portal](https://portal.azure.com) で次の手順に従います。その際、ロジック アプリ デザイナーでロジック アプリ ワークフローを開いておいてください。
+Azure Communication Services SMS コネクタを使用して、ワークフローに新しいステップとして **携帯ショートメール (SMS) 送信** アクションを追加するには、[Azure portal](https://portal.azure.com) で次の手順に従います。その際、ロジック アプリ デザイナーでロジック アプリ ワークフローを開いておいてください。
 
 1. デザイナーで、新しいアクションの追加先となるステップで **[新しいステップ]** を選択します。 ステップとステップの間に新しいアクションを追加するには、それらのステップ間の矢印にポインターを合わせて、正符号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
 
 1. **[操作の選択]** 検索ボックスに「`Azure Communication Services`」と入力します。 アクションの一覧から **[Send SMS]\(携帯ショートメール (SMS) 送信\)** を選択します。
 
-   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="Azure portal をロジック アプリ デザイナーから開いた画面のスクリーンショット。Azure Communication Services コネクタの携帯ショートメール (SMS) 送信アクションを使用するロジック アプリの例。":::
+   :::image type="content" source="./media/logic-app/select-send-sms-action.png" alt-text="ロジック アプリ デザイナーと Azure Communication Services コネクタが示されているスクリーンショット。携帯ショートメール (SMS) 送信アクションが選択されている。":::
 
 1. Communication Services リソースとの接続を作成します。
 
@@ -57,17 +59,17 @@ Azure Communication Services SMS コネクタを使用して、ワークフロ�
 
    1. **［作成］** を選択します
 
-   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="Azure portal をロジック アプリ デザイナーから開いた画面のスクリーンショット。Azure Communication Services コネクタの携帯ショートメール (SMS) 送信アクションを使用するロジック アプリの例。":::
+   :::image type="content" source="./media/logic-app/send-sms-configuration.png" alt-text="携帯ショートメール (SMS) 送信アクションの構成が示されているスクリーンショット。サンプル情報が入力されている。":::
 
-1. **携帯ショートメール (SMS) 送信**アクションで、次の情報を入力します。 
+1. **携帯ショートメール (SMS) 送信** アクションで、次の情報を入力します。 
 
    * 送信元と送信先の電話番号。 テスト用途では、送信先電話番号としてご自身の電話番号を使用してください。
 
    * 送信するメッセージの内容。たとえば「Hello from Logic Apps!」と入力します。
 
-   **携帯ショートメール (SMS) 送信**アクションの情報の入力例を次に示します。
+   **携帯ショートメール (SMS) 送信** アクションの情報の入力例を次に示します。
 
-   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="Azure portal をロジック アプリ デザイナーから開いた画面のスクリーンショット。Azure Communication Services コネクタの携帯ショートメール (SMS) 送信アクションを使用するロジック アプリの例。":::
+   :::image type="content" source="./media/logic-app/send-sms-action.png" alt-text="携帯ショートメール (SMS) 送信アクションが示されているスクリーンショット。サンプル情報が入力されている。":::
 
 1. 操作が完了したら、デザイナーのツールバーで、 **[保存]** を選択します。
 
@@ -93,5 +95,5 @@ Communication Services サブスクリプションを削除するには、Commun
 Azure Communication Services の SMS について詳しくは、次の記事を参照してください。
 
 - [SMS に関する概念](../../concepts/telephony-sms/concepts.md)
-- [テレフォニーと SMS ソリューションの計画](../../concepts/telephony-sms/plan-solution.md)
+- [電話番号の種類](../../concepts/telephony-sms/plan-solution.md)
 - [SMS SDK](../../concepts/telephony-sms/sdk-features.md)

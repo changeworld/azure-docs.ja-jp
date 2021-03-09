@@ -3,7 +3,7 @@ title: Azure Active Directory アプリケーション プロキシに関して�
 description: Azure AD アプリケーション プロキシを使用して内部のオンプレミス アプリケーションをリモート ユーザーに公開する方法についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49388ee75fa3e5570a906998fdeaa579208fd636
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 19a5d223b587e47c562977cc9fea34f990eb0e46
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588592"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370820"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -102,6 +102,19 @@ SSL 証明書のアップロード後に、ポータルに「証明書が無効�
 
 既定の長さは 85 秒です。 「長い」設定は 180 秒です。 タイムアウト制限を延長することはできません。
 
+### <a name="can-a-service-principal-manage-application-proxy-using-powershell-or-microsoft-graph-apis"></a>サービス プリンシパルでは、Powershell または Microsoft Graph API を使用して Application Proxy を管理できますか。
+
+いいえ。現在これはサポートされていません。
+
+### <a name="what-happens-if-i-delete-cwap_authsecret-the-client-secret-in-the-app-registration"></a>アプリの登録で CWAP_AuthSecret (クライアント シークレット) を削除するとどうなりますか。
+
+クライアント シークレット (*CWAP_AuthSecret* とも呼ばれます) は、Azure AD アプリケーション プロキシ アプリが作成されるときに、アプリケーション オブジェクトに自動的に追加されます (アプリの登録)。
+
+クライアント シークレットは 1 年間有効です。 現在有効なクライアント シークレットの有効期限が切れる前に、新しい 1 年間有効のクライアント シークレットが自動的に作成されます。 アプリケーション オブジェクトには、常に 3 つの CWAP_AuthSecret クライアント シークレットが保持されます。 
+
+> [!IMPORTANT]
+> CWAP_AuthSecret を削除すると Azure AD アプリケーション プロキシの事前認証が中断します。 CWAP_AuthSecret は削除しないでください。
+
 ### <a name="how-do-i-change-the-landing-page-my-application-loads"></a>アプリケーションで読み込むランディング ページを変更する方法を教えてください。
 
 [アプリケーションの登録] ページで、ホームページの URL を任意のランディング ページの外部 URL に変更できます。 アプリケーションがマイ アプリまたは Office 365 ポータルから起動されると、指定したページが読み込まれます。 構成手順については、「[Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する](./application-proxy-configure-custom-home-page.md)」を参照してください
@@ -183,11 +196,11 @@ NTLM 認証は、事前認証またはシングル サインオンの方法と�
 
 ## <a name="websocket"></a>WebSocket
 
-### <a name="does-websocket-support-work-for-applications-other-than-qliksense"></a>WebSocket のサポートは、QlikSense 以外のアプリケーションでも有効ですか。
+### <a name="does-websocket-support-work-for-applications-other-than-qliksense-and-remote-desktop-web-client-html5"></a>WebSocket のサポートは、QlikSense やリモート デスクトップ Web クライアント (HTML5) 以外のアプリケーションでも有効ですか。
 
 現在、WebSocket プロトコルのサポートはパブリック プレビュー段階であり、他のアプリケーションでは機能しない可能性があります。 一部のお客様は、他のアプリケーションと WebSocket プロトコルを組み合わせることで成功した事例もあります。 このようなシナリオをテストする場合は、ぜひ結果についてご報告ください。 フィードバックについては、aadapfeedback@microsoft.comまでご連絡ください。
 
-Windows Admin Center (WAC) または Remote Desktop Web クライアント (HTML5) の機能 (イベント ログ、PowerShell、リモート デスクトップ サービス) は現在、Azure AD アプリケーション プロキシ経由では動作しません。
+Windows Admin Center (WAC) の機能 (イベント ログ、PowerShell、リモート デスクトップ サービス) は現在、Azure AD アプリケーション プロキシ経由では動作しません。
 
 ## <a name="link-translation"></a>リンク変換
 

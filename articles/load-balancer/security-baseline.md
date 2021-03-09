@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/28/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 07dd369ceeefee85f4d9180a0b9b33a0d4c8bbdb
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 1e20ed632ee5b100098f7f35bcca16d157668cad
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698208"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101721363"
 ---
 # <a name="azure-security-baseline-for-azure-load-balancer"></a>Azure Load Balancer の Azure セキュリティ ベースライン
 
@@ -212,9 +212,9 @@ Azure PowerShell または Azure CLI を選択して、タグに基づいたリ�
 
 Azure Monitor でアラートを作成して、重要なリソースへが変更されたときに通知します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -236,13 +236,13 @@ Azure Monitor でアラートを作成して、重要なリソースへが変更
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/platform/diagnostic-settings.md)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/learn/quick-collect-azurevm.md)
+- [Azure Monitor で Azure 仮想マシンの内部ホスト ログを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
-- [プラットフォーム アクティビティ ログ](../azure-monitor/platform/activity-log.md)
+- [プラットフォーム アクティビティ ログ](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center の監視**: はい
 
@@ -294,9 +294,9 @@ Microsoft Power BI を備えた Azure 監査ログ コンテンツ パックを�
 
 - [リソース記事においてアクションを監視するアクティビティ ログを表示します。](../azure-resource-manager/management/view-activity-logs.md)
 
-- [Log Analytics でデータ保持期間を変更する](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/storage-monitor-storage-account.md#configure-logging)
+- [Azure Storage アカウント ログの保持ポリシーを構成する方法](../storage/common/manage-storage-analytics-logs.md#configure-logging)
 
 **Azure Security Center の監視**: はい
 
@@ -346,7 +346,7 @@ Azure Sentinel またはサード パーティの SIEM ツールに対してデ�
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/learn/tutorial-response.md)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center の監視**: はい
 
@@ -426,7 +426,7 @@ Azure 内の顧客データが確実にセキュリティで保護されるよ�
 
 **ガイダンス**:Azure アクティビティ ログで Azure Monitor を使用して、重要な運用ワークロードに使用するロード バランサーなど、重要な Azure リソースに変更が加えられたときのアラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/platform/alerts-activity-log.md)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center の監視**: はい
 

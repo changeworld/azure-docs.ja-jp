@@ -1,23 +1,18 @@
 ---
 title: Azure SQL Database との間でデータをコピーする
 description: Azure Data Factory を使用して Azure SQL Database に、または Azure SQL Database からデータをコピーする方法を説明します。
-services: data-factory
-documentationcenter: ''
 author: linda33wj
-manager: shwang
-ms.assetid: 484f735b-8464-40ba-a9fc-820e6553159e
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 83ab9e212e71ad53007a84ad8c10979bfea4516b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 738b875a273faddd20a67be0f6feb90825f66c9f
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637396"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100370514"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -44,9 +39,9 @@ Azure SQL Database コネクタは基本認証をサポートしています。
 ## <a name="getting-started"></a>作業の開始
 さまざまなツール/API を使用して、Azure SQL Database との間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
 
-パイプラインを作成する最も簡単な方法は、 **コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
+パイプラインを作成する最も簡単な方法は、**コピー ウィザード** を使うことです。 「[チュートリアル:コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md)」を参照してください。データのコピー ウィザードを使用してパイプラインを作成する簡単なチュートリアルです。
 
-また、次のツールを使用してパイプラインを作成することもできます。 **Visual Studio** 、 **Azure PowerShell** 、 **Azure Resource Manager テンプレート** 、 **.NET API** 、 **REST API** 。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+また、次のツールを使用してパイプラインを作成することもできます。**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、 **.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
@@ -64,7 +59,7 @@ Azure SQL のリンクされたサービスは、Azure SQL Database をデータ
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティは、次のように設定する必要があります: **AzureSqlDatabase** |はい |
+| type |type プロパティは、次のように設定する必要があります:**AzureSqlDatabase** |はい |
 | connectionString |connectionString プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 |はい |
 
 > [!IMPORTANT]
@@ -92,7 +87,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 Azure SQL Database からデータを移動する場合は、コピー アクティビティのソースの種類を **SqlSource** に設定します。 同様に、Azure SQL Database にデータを移動する場合は、コピー アクティビティのシンクの種類を **SqlSink** に設定します。 このセクションでは、SqlSource と SqlSink でサポートされるプロパティの一覧を示します。
 
 ### <a name="sqlsource"></a>SqlSource
-コピー アクティビティで、source の種類が **SqlSource** である場合は、 **typeProperties** セクションで次のプロパティを使用できます。
+コピー アクティビティで、source の種類が **SqlSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
@@ -100,7 +95,7 @@ Azure SQL Database からデータを移動する場合は、コピー アクテ
 | sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 |ストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。 |名前と値のペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
 
-SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。 または、 **sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+SqlSource に **sqlReaderQuery** が指定されている場合、コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 
 sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Azure SQL Database に対して実行するクエリを作成する (`select column1, column2 from mytable`) ために、データセット JSON の構造セクションで定義された列が使用されます。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
@@ -220,7 +215,7 @@ GO
 
 このサンプルでは、Azure SQL で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
 
-"external" を "true" に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Azure Data Factory サービスに通知されます。
+"external" を "true" に設定すると、データセットがデータ ファクトリの外部にあり、データ ファクトリのアクティビティによって生成されたものではないことが Azure Data Factory サービスに通知されます。
 
 ```JSON
 {
@@ -312,7 +307,7 @@ GO
 
 **SQL ソースおよび BLOB シンクを使用するパイプラインでのコピー アクティビティ:**
 
-パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、 **source** 型が **SqlSource** に設定され、 **sink** 型が **BlobSink** に設定されています。 **SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** 型が **SqlSource** に設定され、**sink** 型が **BlobSink** に設定されています。 **SqlReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
 
 ```JSON
 {
@@ -360,7 +355,7 @@ GO
   }
 }
 ```
-この例では、SqlSource に **sqlReaderQuery** が指定されています。 コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。 または、 **sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
+この例では、SqlSource に **sqlReaderQuery** が指定されています。 コピー アクティビティでは、データを取得するために Azure SQL Database ソースに対してこのクエリを実行します。 または、**sqlReaderStoredProcedureName** と **storedProcedureParameters** を指定して、ストアド プロシージャを指定することができます (ストアド プロシージャでパラメーターを使用する場合)。
 
 sqlReaderQuery や sqlReaderStoredProcedureName を指定しない場合は、Azure SQL Database に対して実行するクエリを作成するために、データセット JSON の構造セクションで定義された列が使用されます。 (例: `select column1, column2 from mytable`)。 データセット定義に構造がない場合は、すべての列がテーブルから選択されます。
 
@@ -410,7 +405,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 **Azure BLOB の入力データセット:**
 
-データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" 設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
+データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔:1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスでは開始時間の年、月、日の部分を使用し、ファイル名では開始時間の時刻部分を使用します。 "external": "true" 設定では Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
 
 ```JSON
 {
@@ -480,7 +475,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 **Azure SQL Database の出力データセット:**
 
-このサンプルは Azure SQL の「MyTable」というテーブルにデータをコピーします。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルでは Azure SQL の「MyTable」というテーブルにデータがコピーされます。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Azure SQL にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```JSON
 {
@@ -502,7 +497,7 @@ SqlSource と BlobSink でサポートされるプロパティの一覧につい
 
 **BLOB ソースおよび SQL シンクを使用するパイプラインでのコピー アクティビティ:**
 
-パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、 **source** 型が **BlobSource** に設定され、 **sink** 型が **SqlSink** に設定されています。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプラインの JSON 定義で、**source** 型が **BlobSource** に設定され、**sink** 型が **SqlSink** に設定されています。
 
 ```JSON
 {
@@ -621,7 +616,7 @@ create table dbo.TargetTbl
 }
 ```
 
-ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。 このシナリオでは、ターゲット データセット定義で **structure** プロパティを指定する必要があります。ここでは、ID 列は含みません。
+ソースとターゲット テーブルには異なるスキーマがあることに注意してください (ターゲットには ID を持つ追加の列があります)。 このシナリオでは、ID 列を含まないターゲット データセット定義に **structure** プロパティを指定する必要があります。
 
 ## <a name="invoke-stored-procedure-from-sql-sink"></a>SQL シンクからのストアド プロシージャの呼び出し
 パイプラインのコピー アクティビティで SQL シンクからストアド プロシージャを呼び出す例については、[コピー アクティビティでの SQL シンクのストアド プロシージャの呼び出し](data-factory-invoke-stored-procedure-from-copy-activity.md)に関する記事をご覧ください。

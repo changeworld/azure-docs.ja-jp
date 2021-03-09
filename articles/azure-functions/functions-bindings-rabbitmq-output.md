@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 12/17/2020
 ms.author: cachai
 ms.custom: ''
-ms.openlocfilehash: d9e575d68fe4fef607bdf443ece1ddd04f085533
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 1664656f82492e664b7574339893cd688f0a061d
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746458"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097315"
 ---
 # <a name="rabbitmq-output-binding-for-azure-functions-overview"></a>Azure Functions における RabbitMQ の出力バインドの概要
 
@@ -207,7 +207,7 @@ def main(req: func.HttpRequest, outputMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-次の例は、5 分ごとに TimerTrigger によってトリガーされたときに RabbitMQ キューにメッセージを送信する Java 関数を示しています。
+次の Java 関数は、[Java RabbitMQ type](https://mvnrepository.com/artifact/com.microsoft.azure.functions/azure-functions-java-library-rabbitmq) からの `@RabbitMQOutput` 注釈を使用して、RabbitMQ キュー出力バインディングの構成を記述します。 この関数は、5 分ごとに TimerTrigger によってトリガーされたときに RabbitMQ キューにメッセージを送信します。
 
 ```java
 @FunctionName("RabbitMQOutputExample")

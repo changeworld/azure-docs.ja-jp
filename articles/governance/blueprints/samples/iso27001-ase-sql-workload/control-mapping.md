@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール
 description: Azure Policy と Azure RBAC に対する ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルのコントロール マッピング。
-ms.date: 11/05/2020
+ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 4256f401e602a0641247dd06a1537289282f647b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f4bd340e67547ee22a558a63b56619171a1749c7
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842551"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627469"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL ワークロード ブループリント サンプルのコントロール マッピング
 

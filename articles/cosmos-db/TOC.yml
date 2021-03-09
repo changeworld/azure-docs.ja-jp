@@ -78,6 +78,18 @@
           href: synapse-link-use-cases.md
         - name: Synapse Link に関する FAQ
           href: synapse-link-frequently-asked-questions.md
+    - name: バックアップと復元
+      items:
+        - name: バックアップと復元の概要
+          href: online-backup-and-restore.md
+        - name: 継続的バックアップ
+          items:
+            - name: 継続的バックアップ - 概要
+              href: continuous-backup-restore-introduction.md
+            - name: 継続的バックアップ - FAQ
+              href: continuous-backup-restore-frequently-asked-questions.md
+            - name: 継続的バックアップ - リソース モデル
+              href: continuous-backup-restore-resource-model.md
     - name: Azure Cosmos DB コストの最適化
       items:
         - name: コストの計画と管理
@@ -110,8 +122,10 @@
       href: cosmosdb-jupyter-notebooks.md
     - name: サービス クォータ
       href: concepts-limits.md
-    - name: エンタープライズ対応 - コンプライアンス
-      href: compliance.md
+    - name: エンタープライズ対応
+      items:
+        - name: コンプライアンス
+          href: compliance.md
     - name: 自動の推奨事項
       href: automated-recommendations.md
 - name: SQL/Core API
@@ -736,6 +750,8 @@
                   href: troubleshoot-not-found.md
                 - name: 承認されていない問題のトラブルシューティング
                   href: troubleshoot-unauthorized.md
+                - name: 禁止の問題のトラブルシューティング
+                  href: troubleshoot-forbidden.md
                 - name: 複数リージョン環境での可用性の問題
                   href: troubleshoot-sdk-availability.md
             - name: .NET
@@ -786,6 +802,8 @@
               href: enable-notebooks.md
             - name: GitHub からノートブックをインポートする
               href: import-github-notebooks.md
+            - name: ギャラリーにノートブックを発行する
+              href: publish-notebook-gallery.md
             - name: 組み込みの Python ノートブック コマンドを使用する
               href: use-python-notebook-features-and-commands.md
             - name: 組み込みの C# ノートブック コマンドを使用する
@@ -828,6 +846,9 @@
           items:
             - name: クロス オリジン リソース共有 (CORS) の構成
               href: how-to-configure-cross-origin-resource-sharing.md
+            - name: ロールベースのアクセス制御の構成
+              href: how-to-setup-rbac.md
+              displayName: 'aad, active directory, rbac'
             - name: マネージド ID を使用してデータにアクセスする
               href: managed-identity-based-authentication.md
               displayName: 'msi, managed service identity, aad, azure active directory, identity'
@@ -900,7 +921,7 @@
         - name: REST (管理プレーン)
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/sqlresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
           displayName: ARM
@@ -966,8 +987,6 @@
               href: cassandra-migrate-cosmos-db-blitzz.md
             - name: 移行 - Databricks を使用して Apache Cassandra から Cassandra API へ
               href: cassandra-migrate-cosmos-db-databricks.md
-            - name: 移行 - Databricks を使用して Apache Cassandra から Cassandra API へ
-              href: cassandra-migrate-cosmos-db-databricks.md
             - name: 移行 - Apache Kafka を使用して PostgreSQL から Cassandra API へ
               href: postgres-migrate-cosmos-db-kafka.md
         - name: Change Feed
@@ -1020,7 +1039,7 @@
         - name: REST リソース プロバイダー
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/cassandraresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
 - name: MongoDB API
@@ -1038,7 +1057,7 @@
         - name: Node.js
           href: create-mongodb-nodejs.md
         - name: Python
-          href: create-mongodb-flask.md
+          href: ./mongodb-introduction.md
         - name: Xamarin
           href: create-mongodb-xamarin.md
         - name: Golang
@@ -1073,9 +1092,11 @@
           href: tutorial-global-distribution-mongodb.md
     - name: 概念
       items:
-        - name: ワイヤ プロトコルのサポート (3.6)
+        - name: API バージョン 4.0
+          href: mongodb-feature-support-40.md
+        - name: API バージョン 3.6
           href: mongodb-feature-support-36.md
-        - name: ワイヤ プロトコルのサポート (3.2)
+        - name: API バージョン 3.2
           href: mongodb-feature-support.md
         - name: よく寄せられる質問
           href: mongodb-api-faq.md
@@ -1087,13 +1108,15 @@
           items:
             - name: 移行前ガイド
               href: mongodb-pre-migration.md
+            - name: MongoDB ネイティブ ツール (オフライン)
+              href: tutorial-mongotools-cosmos-db.md
             - name: Database Migration Service (オンライン)
               href: ../dms/tutorial-mongodb-cosmos-db-online.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: Database Migration Service (オフライン)
               href: ../dms/tutorial-mongodb-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 移行後ガイド
               href: mongodb-post-migration.md
-        - name: MongoDB 3.2 から 3.6 へのアップグレード
+        - name: API バージョン 4.0 または 3.6 にアップグレードする
           href: mongodb-version-upgrade.md
         - name: 接続文字列を取得する
           href: connect-mongodb-account.md
@@ -1114,6 +1137,8 @@
           href: mongodb-change-streams.md
         - name: データのインデックス作成を管理する
           href: mongodb-indexing.md
+        - name: マルチドキュメント トランザクションを使用する
+          href: use-multi-document-transactions.md
         - name: コンテナーの作成 - MongoDB API
           href: how-to-create-container-mongodb.md
         - name: スループットのプロビジョニング - MongoDB API
@@ -1145,7 +1170,7 @@
         - name: REST リソース プロバイダー
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/mongodbresources
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Resource Manager テンプレート
           href: /azure/templates/microsoft.documentdb/allversions
 - name: Gremlin API
@@ -1223,7 +1248,7 @@
         - name: レスポンス ヘッダー
           href: gremlin-headers.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: REST リソース プロバイダー
           href: /rest/api/cosmos-db-resource-provider/2020-04-01/gremlinresources
         - name: Resource Manager テンプレート
@@ -1309,7 +1334,7 @@
         - name: Python
           href: table-sdk-python.md
         - name: PowerShell
-          href: /powershell/module/az.cosmosdb/?view=azps-5.1.0#cosmos-db&preserve-view=true
+          href: /powershell/module/az.cosmosdb/?view=azps-5.5.0#cosmos-db&preserve-view=true
         - name: Table Storage REST API
           href: /rest/api/storageservices/table-service-rest-api
 - name: 攻略ガイド
@@ -1342,12 +1367,30 @@
           href: configure-synapse-link.md
         - name: Azure Synapse Link に接続する
           href: ../synapse-analytics/synapse-link/how-to-connect-synapse-link-cosmos-db.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: 分析ストアとプライベート エンドポイント
+          href: analytical-store-private-endpoints.md
         - name: Azure Synapse Spark を使用してクエリを実行する
           href: ../synapse-analytics/synapse-link/how-to-query-analytical-store-spark.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: サーバーレス SQL プールを使用してクエリを実行する
           href: ../synapse-analytics/sql/query-cosmos-db-analytical-store.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Synapse Link で Power BI を使用する
           href: synapse-link-power-bi.md
+    - name: バックアップと復元
+      items:
+        - name: 継続的バックアップの管理
+          items:
+            - name: 継続的バックアップ - アクセス許可とロール
+              href: continuous-backup-restore-permissions.md
+            - name: 継続的バックアップ - ポータル
+              href: continuous-backup-restore-portal.md
+            - name: 継続的バックアップ - PowerShell
+              href: continuous-backup-restore-powershell.md
+            - name: 継続的バックアップ - CLI
+              href: continuous-backup-restore-command-line.md
+            - name: 継続的バックアップ - Resource Manager
+              href: continuous-backup-restore-template.md
+        - name: 定期バックアップの管理
+          href: configure-periodic-backup-restore.md
     - name: セキュリティ
       items:
         - name: IP ファイアウォールの構成
@@ -1367,8 +1410,6 @@
           href: how-to-setup-cmk.md
     - name: エンタープライズ対応
       items:
-        - name: オンラインのバックアップとオンデマンドの復元
-          href: online-backup-and-restore.md
         - name: クォータの増加を要求する
           href: create-support-request-quota-increase.md
     - name: モニター
@@ -1377,7 +1418,7 @@
           href: monitor-cosmos-db.md
         - name: Azure Monitor のメトリックを使用する
           items:
-            - name: Azure Monitor for Cosmos (プレビュー)
+            - name: Azure Monitor for Cosmos DB
               href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
             - name: 監視するシナリオ
               href: use-metrics.md

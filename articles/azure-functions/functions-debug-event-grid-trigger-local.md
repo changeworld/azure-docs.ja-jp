@@ -62,7 +62,7 @@ Azure portal を開き、ストレージ アカウントに移動し、 **[イ�
 
 ![ストレージ アカウント イベントを追加する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-add-event.png)
 
-*[イベント]* ウィンドウで、 **[イベント サブスクリプション]** ボタンをクリックします。 *[イベント サブスクリプション]* ウィンドウで、 *[エンドポイントの種類]* ドロップダウンを選択し、 **[webhook]** を選択します。
+*[イベント]* ウィンドウで、 **[イベント サブスクリプション]** ボタンをクリックします。 *[イベント サブスクリプション]* ウィンドウで、 *[エンドポイントの種類]* ドロップダウンを選択し、 **[Web Hook]** を選択します。
 
 ![サブスクリプションの種類を選択する](./media/functions-debug-event-grid-trigger-local/functions-debug-event-grid-trigger-local-event-subscription-type.png)
 

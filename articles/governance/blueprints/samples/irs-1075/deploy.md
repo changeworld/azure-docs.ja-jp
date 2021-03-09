@@ -3,12 +3,12 @@ title: IRS 1075 ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む IRS 1075 (Rev.11-2016) ブループリント サンプルのデプロイ手順です。
 ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: f4be1b642961b9642ea9d638521653dbc33f0334
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 6df2781207c623e10daf0681865b9246be1b1f4c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045208"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571922"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>IRS 1075 ブループリント サンプルをデプロイする
 
@@ -94,7 +94,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
 |IRS 1075 (Rev.11-2016) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|VM で構成する必要がある Log Analytics ワークスペース ID|これは、VM で構成する必要がある Log Analytics ワークスペース ID (GUID) です。|
-|IRS 1075 (Rev.11-2016) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
+|IRS 1075 (Rev.11-2016) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|診断ログを有効にする必要のあるリソースの種類の一覧|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas)に関するページで確認できます。|
 |IRS 1075 (Rev.11-2016) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|Windows VM Administrators グループから除外する必要があるユーザーの一覧|ローカルの Administrators グループで除外する必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |IRS 1075 (Rev.11-2016) コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする|ポリシー割り当て|Windows VM Administrators グループに含める必要があるユーザーの一覧|ローカルの Administrators グループに含める必要があるメンバーのセミコロン区切りリスト。 例:Administrator; myUser1; myUser2|
 |Linux VM スケール セット (VMSS) 用の Log Analytics エージェントのデプロイ|ポリシー割り当て|Linux VM スケール セット (VMSS) 用の Log Analytics ワークスペース|このワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に "Log Analytics 共同作成者" 権限 (または同等の権限) を手動で付与する必要があります。|

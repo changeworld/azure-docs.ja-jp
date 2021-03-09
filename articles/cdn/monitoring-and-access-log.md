@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: yuajia
-ms.openlocfilehash: 43f53d1098e08a0f913e3baec2c6aaf3d65054d0
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a4b48586c564ee5d14a0768156b0477e2935ccf
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501322"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100575448"
 ---
 # <a name="real-time-monitoring-metrics-and-access-logs-for-azure-cdn"></a>Azure CDN にのリアルタイムの監視、メトリック、アクセス ログ
 Microsoft Azure CDN を使用すると、次の方法でリソースを監視して、問題のトラブルシューティング、追跡、デバッグに役立てることができます。 
@@ -215,7 +215,7 @@ Microsoft Azure CDN は Azure Monitor と統合されており、問題の追跡
 
 Microsoft Azure CDN では、メトリックが 60 秒間隔で測定されて送信されます。 メトリックがポータルに表示されるまでに、最大で 3 分かかることがあります。 
 
-詳細については、「[Azure Monitor metrics](../azure-monitor/platform/data-platform-metrics.md)」(Azure Monitor メトリック) を参照してください。
+詳細については、「[Azure Monitor metrics](../azure-monitor/essentials/data-platform-metrics.md)」(Azure Monitor メトリック) を参照してください。
 
 **Microsoft Azure CDN でサポートされているメトリック**
 
@@ -226,7 +226,7 @@ Microsoft Azure CDN では、メトリックが 60 秒間隔で測定されて�
 | ResponseSize | CDN エッジからクライアントに応答として送信されたバイト数。 |エンドポイント </br> クライアントの国。 </br> クライアントのリージョン。 </br> HTTP の状態です。 </br> HTTP 状態コード。 |
 | TotalLatency | クライアント要求が CDN によって受信されてから、**最後の応答バイトが CDN からクライアントに送信されるまで** の合計時間。 |エンドポイント </br> クライアントの国。 </br> クライアントのリージョン。 </br> HTTP の状態です。 </br> HTTP 状態コード。 |
 
-**_バイト ヒット率 = (エッジからのエグレス - オリジンからのエグレス)/エッジからのエグレス_*
+***バイト ヒット率 = (エッジからのエグレス - オリジンからのエグレス)/エッジからのエグレス**
 
 バイト ヒット率の計算で除外されるシナリオ:
 
@@ -265,7 +265,7 @@ Microsoft Azure CDN では、メトリックが 60 秒間隔で測定されて�
 
 :::image type="content" source="./media/cdn-raw-logs/raw-logs-08.png" alt-text="CDN エンドポイントのアラートを構成する。" border="true":::
 
-アラートは Azure Monitor に基づいて課金されます。 アラートの詳細については、[Azure Monitor のアラート](../azure-monitor/platform/alerts-overview.md)に関する記事を参照してください。
+アラートは Azure Monitor に基づいて課金されます。 アラートの詳細については、[Azure Monitor のアラート](../azure-monitor/alerts/alerts-overview.md)に関する記事を参照してください。
 
 ### <a name="additional-metrics"></a>追加のメトリック
 追加のコストがかかりますが、Azure Log Analytics と生ログを使用して、追加のメトリックを有効にすることができます。
@@ -299,4 +299,4 @@ Azure CDN とこの記事で言及しているその他の Azure サービスの
 
 * 詳細については、「[Azure Monitor の概要](../azure-monitor/overview.md)」を参照してください。
 
-* [Azure Monitor で Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) を構成する。
+* [Azure Monitor で Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md) を構成する。

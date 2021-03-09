@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683184"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680605"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>ステートレス専用ノード タイプを使用した Azure Service Fabric クラスターのデプロイ (プレビュー)
 Service Fabric ノード タイプには、ある時点でステートフル サービスがノードに配置されるという固有の前提があります。 ステートレス ノード タイプを使用することで、ノード タイプに対するこの仮定を緩和します。これにより、ノード タイプでスケールアウト操作の高速化、ブロンズ持続性での自動 OS アップグレードのサポート、および単一の仮想マシン スケール セット内の 100 以上のノードへのスケールアウトなどの他の機能を使用することができます。
@@ -253,6 +253,8 @@ Basic SKU で Load Balancer と IP を使用していたクラスターを移行
 
 リソースのデプロイが完了したら、元のクラスターから削除したいノード タイプのノードを無効にしていくことができます。
 
+>[!NOTE]
+> Bronze の持続性を備えたステートレスなノードタイプで自動スケーリングを使用している間、スケールダウン操作後は、ノードの状態は自動的には消去されません。 自動スケーリング時にダウン ノードのノードの状態を消去するには、[Service Fabric 自動スケーリング ヘルパー](https://github.com/Azure/service-fabric-autoscale-helper)を使用することをお勧めします。
 
 ## <a name="next-steps"></a>次の手順 
 * [Reliable Service](service-fabric-reliable-services-introduction.md)

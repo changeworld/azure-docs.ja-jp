@@ -9,33 +9,29 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2018
+ms.date: 02/11/2021
 ms.author: jeedes
-ms.openlocfilehash: f7578972b054747c75cdbbc2371fc0bf35c6039a
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 9cde75440292fffb830656c32181d7be64a55f3d
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672561"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101645525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>チュートリアル: Azure Active Directory と ArcGIS Enterprise の統合
 
-このチュートリアルでは、ArcGIS Enterprise と Azure Active Directory (Azure AD) を統合する方法について説明します。
-ArcGIS Enterprise と Azure AD の統合には、次の利点があります。
+このチュートリアルでは、ArcGIS Enterprise と Azure Active Directory (Azure AD) を統合する方法について説明します。 ArcGIS Enterprise を Azure AD と統合すると、次のことが可能になります。
 
-* Azure AD で誰が ArcGIS Enterprise にアクセスできるかを制御できます。
-* ユーザーが自分の Azure AD アカウントを使用して ArcGIS Enterprise に自動的にサインイン (シングル サインオン) できるようにすることができます。
-* 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
-
-SaaS アプリと Azure AD の統合の詳細については、「 [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」を参照してください。
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+* ArcGIS Enterprise にアクセスできるユーザーを Azure AD で制御できます。
+* ユーザーが自分の Azure AD アカウントを使用して ArcGIS Enterprise に自動的にサインインできるように設定できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 ## <a name="prerequisites"></a>前提条件
 
-ArcGIS Enterprise と Azure AD の統合を構成するには、次のものが必要です。
+開始するには、次が必要です。
 
-* Azure AD サブスクリプション。 Azure AD の環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます
-* ArcGIS Enterprise でのシングル サインオンが有効なサブスクリプション
+* Azure AD サブスクリプション。 サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を取得できます。
+* シングル サインオン (SSO) が有効な ArcGIS Enterprise サブスクリプション。
 
 > [!NOTE]
 > この統合は、Azure AD 米国政府クラウド環境から利用することもできます。 このアプリケーションは、Azure AD 米国政府クラウドのアプリケーション ギャラリーにあります。パブリック クラウドの場合と同じように構成してください。
@@ -44,75 +40,50 @@ ArcGIS Enterprise と Azure AD の統合を構成するには、次のものが�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* ArcGIS Enterprise では、**SP と IDP** によって開始される SSO がサポートされます
-* ArcGIS Enterprise では、**Just In Time** ユーザー プロビジョニングがサポートされます
+* ArcGIS Enterprise では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* ArcGIS Enterprise では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
-
-## <a name="adding-arcgis-enterprise-from-the-gallery"></a>ギャラリーからの ArcGIS Enterprise の追加
+## <a name="add-arcgis-enterprise-from-the-gallery"></a>ギャラリーからの ArcGIS Enterprise の追加
 
 Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ArcGIS Enterprise を追加する必要があります。
 
-**ギャラリーから ArcGIS Enterprise を追加するには、次の手順に従います。**
+1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、Azure portal にサインインします。
+1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
+1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**ArcGIS Enterprise**」と入力します。
+1. 結果パネルから **[ArcGIS Enterprise]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、 **[Azure Active Directory]** アイコンをクリックします。
+## <a name="configure-and-test-azure-ad-sso-for-arcgis-enterprise"></a>ArcGIS Enterprise の Azure AD SSO の構成とテスト
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+**B.Simon** というテスト ユーザーを使用して、ArcGIS Enterprise に対する Azure AD SSO を構成してテストします。 SSO を機能させるには、Azure AD ユーザーと ArcGIS Enterprise の関連ユーザーとの間にリンク関係を確立する必要があります。
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** オプションを選択します。
+ArcGIS Enterprise に対する Azure AD SSO を構成してテストするには、次の手順を実行します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
+    1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[ArcGIS Enterprise の SSO の構成](#configure-arcgis-enterprise-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    1. **[ArcGIS Enterprise のテスト ユーザーの作成](#create-arcgis-enterprise-test-user)** - ArcGIS Enterprise で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
-    ![[新しいアプリケーション] ボタン](common/add-new-app.png)
+これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
 
-4. 検索ボックスに「**ArcGIS Enterprise**」と入力し、結果パネルで **[ArcGIS Enterprise]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+1. Azure portal の **ArcGIS Enterprise** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
+1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
-    ![結果一覧の ArcGIS Enterprise](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
-
-このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストします。
-シングル サインオンを機能させるには、Azure AD ユーザーと [アプリケーション名] 内の関連ユーザー間にリンク関係が確立されている必要があります。
-
-[アプリケーション名] を使用して Azure AD のシングル サインオンを構成し、テストするには、次の構成要素を完了する必要があります。
-
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[ArcGIS Enterprise シングル サインオンの構成](#configure-arcgis-enterprise-single-sign-on)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[ArcGIS Enterprise のテスト ユーザーの作成](#create-arcgis-enterprise-test-user)** - ArcGIS Enterprise で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
-
-このセクションでは、Azure portal 上で Azure AD のシングル サインオンを有効にします。
-
-[アプリケーション名] を使用して Azure AD のシングル サインオンを構成するには、次の手順を実行します。
-
-1. [Azure portal](https://portal.azure.com/) の **ArcGIS Enterprise** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
-
-    ![シングル サインオン構成のリンク](common/select-sso.png)
-
-2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
-
-    ![シングル サインオン選択モード](common/select-saml-option.png)
-
-3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
-
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
-
-    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
 
     a. **[識別子]** ボックスに、`<EXTERNAL_DNS_NAME>.portal` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin2` のパターンを使用して URL を入力します
 
     c. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
     **[サインオン URL]** ボックスに、`https://<EXTERNAL_DNS_NAME>/portal/sharing/rest/oauth2/saml/signin` という形式で URL を入力します。
 
@@ -123,7 +94,31 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
 
-### <a name="configure-arcgis-enterprise-single-sign-on"></a>ArcGIS Enterprise でシングル サインオンを構成する
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
+
+このセクションでは、Azure portal 内で B.Simon というテスト ユーザーを作成します。
+
+1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
+1. 画面の上部にある **[新しいユーザー]** を選択します。
+1. **[ユーザー]** プロパティで、以下の手順を実行します。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
+
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+
+このセクションでは、B.Simon に ArcGIS Enterprise へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. アプリケーションの一覧で、**[ArcGIS Enterprise]\(ArcGIS Enterprise\)** を選択します。
+1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
+1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
+1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
+1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
+
+## <a name="configure-arcgis-enterprise-sso"></a>ArcGIS Enterprise の SSO の構成
 
 1. ArcGIS Enterprise 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能** をインストールする必要があります。
 
@@ -138,19 +133,19 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
 1. **[組織] > [設定の編集]** を選択します。
 
-    ![ArcGIS Enterprise の [組織] タブが表示されているスクリーンショット。[設定の編集] が強調表示されています。](./media/arcgisenterprise-tutorial/configure1.png)
+    ![ArcGIS Enterprise の [組織] タブが表示されているスクリーンショット。[設定の編集] が強調表示されています。](./media/arcgisenterprise-tutorial/configure-1.png)
 
 1. **[セキュリティ]** タブを選びます。
 
-    ![[セキュリティ] タブが選択されている画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure2.png)
+    ![[セキュリティ] タブが選択されている画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure-2.png)
 
 1. **[Enterprise Logins via SAML]\(SAML 経由でのエンタープライズ ログイン\)** セクションまで下へスクロールして **[SET ENTERPRISE LOGIN]\(エンタープライズ ログインの設定\)** を選択します。
 
-    ![[Set Enterprise Login]\(エンタープライズ ログインの設定\) を選択できる [Enterprise Logins via SAML]\(SAML 経由でのエンタープライズ ログイン\) 画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure3.png)
+    ![[Set Enterprise Login]\(エンタープライズ ログインの設定\) を選択できる [Enterprise Logins via SAML]\(SAML 経由でのエンタープライズ ログイン\) 画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure-3.png)
 
 1. **[Set Identity Provider]\(ID プロバイダーの設定\)** セクションで、次の手順に従います。
 
-    ![ここで説明されている手順の実行場所となる [Set Identity Provider]\(ID プロバイダーの設定\) 画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure4.png)
+    ![ここで説明されている手順の実行場所となる [Set Identity Provider]\(ID プロバイダーの設定\) 画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure-4.png)
 
     a. **[名前]** テキスト ボックスに、**Azure Active Directory Test** のような名前を指定します。
 
@@ -158,60 +153,9 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 
     c. **[詳細設定の表示]** をクリックし、**[エンティティ ID]** の値をコピーして、Azure Portal の **[ArcGIS Enterprise Domain and URLs]\(ArcGIS Enterprise のドメインと URL\)** セクションの **[識別子]** テキスト ボックスに貼り付けます。
 
-    ![エンティティ ID を取得して ID プロバイダーを更新する画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure5.png)
+    ![エンティティ ID を取得して ID プロバイダーを更新する画面のスクリーンショット。](./media/arcgisenterprise-tutorial/configure-5.png)
 
     d. **[ID プロバイダーの更新]** をクリックします。
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
-
-このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
-
-1. Azure portal の左側のウィンドウで、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
-
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](common/users.png)
-
-2. 画面の上部にある **[新しいユーザー]** を選択します。
-
-    ![[新しいユーザー] ボタン](common/new-user.png)
-
-3. [ユーザーのプロパティ] で、次の手順を実行します。
-
-    ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
-
-    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
-
-    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
-    たとえば、BrittaSimon@contoso.com のように指定します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
-
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
-
-このセクションでは、ArcGIS Enterprise へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
-
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[ArcGIS Enterprise]** の順に選択します。
-
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
-
-2. アプリケーションの一覧で「**ArcGIS Enterprise**」と入力して選択します。
-
-    ![アプリケーションの一覧の ArcGIS Enterprise のリンク](common/all-applications.png)
-
-3. 左側のメニューで **[ユーザーとグループ]** を選びます。
-
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
-
-4. **[ユーザーの追加]** をクリックし、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
-    ![[割り当ての追加] ウィンドウ](common/add-assign-user.png)
-
-5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
-
-6. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリッします。
-
-7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
 ### <a name="create-arcgis-enterprise-test-user"></a>ArcGIS Enterprise テスト ユーザーを作成する
 
@@ -220,16 +164,22 @@ Azure AD への ArcGIS Enterprise の統合を構成するには、ギャラリ�
 > [!Note]
 > ユーザーを手動で作成する必要がある場合は、[ArcGIS Enterprise のサポート チーム](mailto:support@esri.com)にお問い合わせください。
 
-### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
+## <a name="test-sso"></a>SSO のテスト 
 
-このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+このセクションでは、次のオプションを使用して Azure AD のシングル サインオン構成をテストします。 
 
-アクセス パネルで [ArcGIS Enterprise] タイルをクリックすると、SSO を設定した ArcGIS Enterprise に自動的にサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](../user-help/my-apps-portal-end-user-access.md)に関する記事を参照してください。
+#### <a name="sp-initiated"></a>SP Initiated:
 
-## <a name="additional-resources"></a>その他のリソース
+* Azure portal で **[このアプリケーションをテストします]** をクリックします。 これにより、ログイン フローを開始できる ArcGIS Enterprise のサインオン URL にリダイレクトされます。  
 
-- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](./tutorial-list.md)
+* ArcGIS Enterprise のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
+#### <a name="idp-initiated"></a>IDP Initiated:
 
-- [Azure Active Directory の条件付きアクセスとは](../conditional-access/overview.md)
+* Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した ArcGIS Enterprise に自動的にサインインされます。 
+
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [ArcGIS Enterprise] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した ArcGIS Enterprise に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
+
+## <a name="next-steps"></a>次のステップ
+
+ArcGIS Enterprise を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

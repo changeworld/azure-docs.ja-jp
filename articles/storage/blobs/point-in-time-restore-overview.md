@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/28/2020
+ms.date: 02/01/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 518df665db0ba3770bee757f45d02b6ccd303a00
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 1df2f12d6947734314609dc50787a59a2fa88731
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803869"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980518"
 ---
 # <a name="point-in-time-restore-for-block-blobs"></a>ブロック BLOB のポイントインタイム リストア
 
@@ -32,6 +32,10 @@ ms.locfileid: "97803869"
 ポイントインタイム リストアを開始するには、[Restore Blob Ranges](/rest/api/storagerp/storageaccounts/restoreblobranges) 操作を呼び出し、復元ポイントを UTC 時刻で指定します。 復元するコンテナーおよび BLOB の名前の辞書式範囲を指定することも、範囲を省略して、ストレージ アカウントのすべてのコンテナーを復元することもできます。 復元操作ごとに最大 10 個の辞書式範囲がサポートされます。
 
 Azure Storage では、要求された復元ポイント (UTC 時刻で指定) から現在の時点までの間で、指定された BLOB に対して行われたすべての変更が分析されます。 復元操作はアトミックであるため、すべての変更を完全に復元できるか、または失敗します。 復元できない BLOB がある場合、操作は失敗し、影響を受けるコンテナーに対する読み取りと書き込み操作が再開されます。
+
+次の図は、ポイントインタイム リストアがどのように機能するかを示しています。 1 つ以上のコンテナーまたは BLOB 範囲が *n* 日前のその状態に復元されます。ここでは、*n* はポイントインタイム リストアに定義された保有期間の範囲以下になります。 この効果は、保有期間中に発生した書き込みと削除の操作を元に戻すことです。
+
+:::image type="content" source="media/point-in-time-restore-overview/point-in-time-restore-diagram.png" alt-text="ポイントインタイム リストアによってコンテナーを前の状態に復元する方法を示す図":::
 
 ストレージ アカウントで一度に実行できる復元操作は 1 つだけです。 実行中に復元操作を取り消すことはできませんが、最初の操作を元に戻すために 2 番目の復元操作を実行できます。
 
