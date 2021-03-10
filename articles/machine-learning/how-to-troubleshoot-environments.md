@@ -10,12 +10,12 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: 5b2f62e8e04bddadc7068eb75405bcf1568f5713
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ec0c7d64f2145cdaf594cb903c072984f4d376a9
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657300"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102519131"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>環境イメージのビルドのトラブルシューティング
 
@@ -24,8 +24,8 @@ Docker 環境イメージのビルドとパッケージのインストールに�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
-* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 * ローカルでデバッグするには、ローカル システム上に機能する Docker のインストールが必要です。
 
@@ -158,7 +158,7 @@ pip のサブプロセスのエラー:
 
 ### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>ワークスペース コンテナー レジストリで 401 エラーが発生する
 
-[ws.sync_keys()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--) を使用してストレージ キーを再同期します。
+[ws.sync_keys()](/python/api/azureml-core/azureml.core.workspace.workspace#sync-keys--) を使用してストレージ キーを再同期します。
 
 ### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>環境で "Waiting for other conda operations to finish..." (他の Conda 操作の完了を待機しています...) というエラーが継続してスローされる
 
