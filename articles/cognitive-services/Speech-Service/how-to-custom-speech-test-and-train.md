@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 15f0b01304f3333b8650ab2079cd56271d0095db
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710500"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424497"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -55,7 +55,7 @@ ms.locfileid: "101710500"
 ファイルは、型別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
 
 > [!TIP]
-> すぐに始めるには、サンプルデータの使用を検討してください。 <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">サンプル Custom Speech データ <span class="docon docon-navigate-external x-hidden-focus"></span></a>については、こちらの GitHub リポジトリを参照する
+> すぐに始めるには、サンプルデータの使用を検討してください。 <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">サンプル Custom Speech データ </a>については、こちらの GitHub リポジトリを参照する
 
 > [!NOTE]
 > すべての基本モデルでオーディオのトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない音声サービスは、トランスクリプトのテキストのみを使用し、オーディオを無視します。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。 基本モデルでオーディオ データを使用したトレーニングがサポートされている場合でも、サービスによってオーディオの一部しか使用されないことがあります。 その場合も、すべてのトランスクリプトが使用されます。
@@ -69,7 +69,7 @@ ms.locfileid: "101710500"
 
 ## <a name="upload-data"></a>データをアップロードする
 
-データをアップロードするには、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> に移動します。 ポータルで、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
+データをアップロードするには、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> に移動します。 ポータルで、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
 
 ![Speech ポータルのオーディオ アップロード オプションが強調表示されているスクリーンショット。](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -101,7 +101,7 @@ ms.locfileid: "101710500"
 > [!TIP]
 > トレーニング データとテスト データをアップロードする場合、.zip ファイルのサイズは 2 GB を超えることはできません。 トレーニング用にさらに多くのデータが必要な場合は、複数の .zip ファイルに分割し、個別にアップロードします。 その後、*複数* のデータセットからトレーニングを選択できます。 ただし、*単一* のデータセットからのみテストができます。
 
-<a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX <span class="docon docon-navigate-external x-hidden-focus"></span></a> を使用して、オーディオのプロパティを確認したり、既存のオーディオを適切な形式に変換したりします。 SoX のコマンドラインから、これらのアクティビティ各々を実行する方法の例を、次にいくつか示します:
+<a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX </a> を使用して、オーディオのプロパティを確認したり、既存のオーディオを適切な形式に変換したりします。 SoX のコマンドラインから、これらのアクティビティ各々を実行する方法の例を、次にいくつか示します:
 
 | アクティビティ | 説明 | SoX コマンド |
 |----------|-------------|-------------|
@@ -146,7 +146,7 @@ speech03.wav    the lazy dog was not amused
 
 文字起こしに対しては、システムによって処理できるように、テキストの正規化が行われます。 ただし、データを Speech Studio にアップロードする前に実行する必要がある重要な正規化がいくつかあります。 文字起こしを準備する際に使用する適切な言語については、「[How to create a human-labeled transcription](how-to-custom-speech-human-labeled-transcriptions.md)」(人間とラベル付けされた文字起こしの作成方法) を参照してください。
 
-オーディオ ファイルと対応する文字起こしを収集した後、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアップロードする前に、それらを 1 つの .zip ファイルとしてパッケージ化します。 3 つのオーディオ ファイルと、人間とラベル付けされた文字起こしファイルを含むデータセットの例を示します:
+オーディオ ファイルと対応する文字起こしを収集した後、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> にアップロードする前に、それらを 1 つの .zip ファイルとしてパッケージ化します。 3 つのオーディオ ファイルと、人間とラベル付けされた文字起こしファイルを含むデータセットの例を示します:
 
 > [!div class="mx-imgBorder"]
 > ![Speech ポータルからオーディオを選択する](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -164,7 +164,7 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 | 文 (発話) | 製品名を認識する場合や、文のコンテキスト内で業界固有の語彙を認識する場合の精度を向上させます。 |
 | 発音 | 一般的でない用語、略語、またはその他の発音が定義されていない単語の発音を向上させることができます。 |
 
-発話は、1 つまたは複数のテキスト ファイルとして提供できます。 正確性を高めるには、読み上げられる発話に近いテキスト データを使用します。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1 つの zip ファイルとしてパッケージ化し、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアップロードできます。
+発話は、1 つまたは複数のテキスト ファイルとして提供できます。 正確性を高めるには、読み上げられる発話に近いテキスト データを使用します。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1 つの zip ファイルとしてパッケージ化し、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> にアップロードできます。
 
 通常、関連するテキストを使用したトレーニングは数分で完了します。
 

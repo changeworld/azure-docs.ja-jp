@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/02/2020
-ms.openlocfilehash: f9f25ec2dd8fb8b859f7863c1e695e22cb9a9cec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f130fc0c65c49c33c838812fc2758619e0d1bca0
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575083"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521341"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Azure Machine Learning データの監視のリファレンス
 
@@ -88,7 +88,7 @@ Azure Machine Learning では、次のディメンションがメトリックに
 | NodeId | ジョブが実行されている場所で作成されたノードの ID。 CpuUtilization と GpuUtilization でのみ使用できます。 |
 | RunId | 実行/ジョブの ID。 CpuUtilization と GpuUtilization でのみ使用できます。 |
 | ComputeType | 実行で使用されるコンピューティングの種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
-| PipelineStepType | 実行で使用される [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?preserve-view=true&view=azure-ml-py) の種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
+| PipelineStepType | 実行で使用される [PipelineStep](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep) の種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
 | PublishedPipelineId | 実行で使用される公開済みパイプラインの ID。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
 | RunType | 実行の種類。 完了した実行、失敗した実行、および開始された実行に対してのみ使用できます。 |
 

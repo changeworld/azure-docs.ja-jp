@@ -10,18 +10,18 @@ ms.subservice: core
 ms.date: 01/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: bf1d6f5838e467c5f44a0090a4f1a15cd9d4ac77
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b61050db29ff960b7923f2211b2f09649608b37e
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692455"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520321"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST を使用して Azure ML リソースの作成、実行、削除を行う
 
 
 
-Azure ML リソースを管理するには、いくつかの方法があります。 [ポータル](https://portal.azure.com/)、[コマンド ライン インターフェイス](/cli/azure/?preserve-view=true&view=azure-cli-latest)、または [Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用できます。 または、REST API を選択することもできます。 REST API では、標準的な方法で HTTP 動詞を使用して、リソースの作成、取得、更新、および削除を行います。 REST API は、HTTP 要求を作成できるすべての言語またはツールで使用できます。 REST は構造がわかりやすいため、多くの場合、スクリプト環境や MLOps オートメーションに適しています。 
+Azure ML リソースを管理するには、いくつかの方法があります。 [ポータル](https://portal.azure.com/)、[コマンド ライン インターフェイス](/cli/azure)、または [Python SDK](/python/api/overview/azure/ml/intro) を使用できます。 または、REST API を選択することもできます。 REST API では、標準的な方法で HTTP 動詞を使用して、リソースの作成、取得、更新、および削除を行います。 REST API は、HTTP 要求を作成できるすべての言語またはツールで使用できます。 REST は構造がわかりやすいため、多くの場合、スクリプト環境や MLOps オートメーションに適しています。 
 
 この記事では、次のことについて説明します。
 
@@ -265,7 +265,7 @@ curl -X PUT \
 ```
 
 > [!Note]
-> Windows Terminal では、JSON データを送信するときに、二重引用符記号をエスケープすることが必要になる場合があります。 つまり、`"location"` などのテキストが `\"location\"` になります。 
+> Windows ターミナルでは、JSON データを送信するときに、二重引用符記号をエスケープすることが必要になる場合があります。 つまり、`"location"` などのテキストが `\"location\"` になります。 
 
 要求が成功すると `201 Created` 応答が返されますが、この応答は、プロビジョニング プロセスが開始されたことを意味するにすぎないことに注意してください。 それが正常に完了したことを確認するには、ポーリングする (またはポータルを使用する) 必要があります。
 

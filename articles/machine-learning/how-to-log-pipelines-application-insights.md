@@ -10,12 +10,12 @@ ms.subservice: core
 ms.date: 08/11/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 58e604eccaca4630a235f4ae83724df20d6b1e26
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7ed27eba66b3d18bed8017934fce85928b961392
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100592524"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102520049"
 ---
 # <a name="collect-machine-learning-pipeline-log-files-in-application-insights-for-alerts-and-debugging"></a>Application Insights でアラートとデバッグ用に機械学習パイプラインのログ ファイルを収集する
 
@@ -38,7 +38,7 @@ ms.locfileid: "100592524"
 
 このセクションでは、Azure Machine Learning パイプラインから OpenCensus を使用する方法のみを説明します。 詳細なチュートリアルについては、「[OpenCensus Azure Monitor Exporters](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)」(OpenCensus の Azure Monitor エクスポーター) を参照してください
 
-PythonScriptStep を Azure ML パイプラインに追加します。 opencensus-ext-azure での依存関係を使用して [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) を構成します。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 環境変数を構成します。
+PythonScriptStep を Azure ML パイプラインに追加します。 opencensus-ext-azure での依存関係を使用して [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) を構成します。 `APPLICATIONINSIGHTS_CONNECTION_STRING` 環境変数を構成します。
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies

@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to add and connect to shares on Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 919ec1c3c2b71b7d9aecb90d434aa919c7188d38
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 1964ddb3ca9ecd2b445850c06c10b313a9bcbae9
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897624"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438815"
 ---
 # <a name="tutorial-transfer-data-via-shares-with-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU を使用して共有経由でデータを転送する
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-このチュートリアルでは、お客様の Azure Stack Edge Pro デバイスに共有を追加して接続する方法について説明します。 共有を追加したら、Azure Stack Edge Pro から Azure にデータを転送できます。
+このチュートリアルでは、お客様の Azure Stack Edge Pro デバイスに共有を追加して接続する方法について説明します。 共有を追加した後、Azure Stack Edge Pro から Azure にデータを転送できます。
 
 この手順の所要時間は約 10 分です。
 
@@ -35,7 +35,7 @@ ms.locfileid: "97897624"
 
 共有を Azure Stack Edge Pro に追加する前に、次のことを確認してください。
 
-* [Azure Stack Edge Pro の設置](azure-stack-edge-gpu-deploy-install.md)に関するページで説明されているとおり、物理デバイスが設置されていること。
+* [Azure Stack Edge Pro の設置](azure-stack-edge-gpu-deploy-install.md)に関するページで説明されているように、物理デバイスが設置されていること。
 
 * [Azure Stack Edge Pro のアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関するページの説明に従って物理デバイスがアクティブ化されていること。
 

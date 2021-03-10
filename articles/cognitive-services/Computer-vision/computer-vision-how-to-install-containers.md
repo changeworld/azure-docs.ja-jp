@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: 93d59e78241dcc94785ca139818d72908c7184a4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1c9e681e3c02cb65b2a54070cc778051a0e7ac53
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043917"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102432555"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Read OCR Docker コンテナー (プレビュー) をインストールする 
 
@@ -418,7 +418,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 
 JSON 応答オブジェクトには、非同期バージョンと同じオブジェクト グラフが含まれます。 JavaScript を使用していて、タイプ セーフが必要な場合は、TypeScript を使用して、JSON 応答をキャストすることを検討してください。
 
-ユースケースの例については、<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">こちらの TypeScript サンドボックス <span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照し、 **[Run]\(実行\)** を選択してその使いやすさを確認してください。
+ユースケースの例については、<a href="https://aka.ms/ts-read-api-types" target="_blank" rel="noopener noreferrer">こちらの TypeScript サンドボックス</a>を参照し、 **[Run]\(実行\)** を選択してその使いやすさを確認してください。
 
 ## <a name="stop-the-container"></a>コンテナーの停止
 

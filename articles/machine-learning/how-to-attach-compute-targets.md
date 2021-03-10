@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 10/02/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 850b590ae8aeab822367714fb9a56661306c2387
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 318afced85f3cca0a450d77f8be7b2a1d6c388ed
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100518693"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504935"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 
@@ -43,7 +43,7 @@ Azure Machine Learning によって管理されるコンピューティング先
 
 * Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
-* [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+* [Machine Learning サービス向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
 
 ## <a name="limitations"></a>制限事項
 
@@ -60,7 +60,7 @@ Azure Machine Learning では、さまざまなリソースまたは環境でご
 
 **トレーニング** のためにローカル コンピューターを使用する場合は、コンピューティング先を作成する必要はありません。  ローカル コンピューターから[トレーニング実行を送信する](how-to-set-up-training-targets.md)だけで十分です。
 
-ローカル コンピューターを **推論** に使用する場合は、Docker がインストールされている必要があります。 デプロイを実行するには、[LocalWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice?preserve-view=true&view=azure-ml-py#deploy-configuration-port-none-) を使用して、Web サービスが使用するポートを定義します。 次に、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」の説明に従って通常のデプロイ プロセスを使用します。
+ローカル コンピューターを **推論** に使用する場合は、Docker がインストールされている必要があります。 デプロイを実行するには、[LocalWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.local.localwebservice#deploy-configuration-port-none-) を使用して、Web サービスが使用するポートを定義します。 次に、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」の説明に従って通常のデプロイ プロセスを使用します。
 
 ## <a name="remote-virtual-machines"></a><a id="vm"></a>リモート仮想マシン
 
@@ -325,7 +325,7 @@ except ComputeTargetException:
 > ワークスペースから同じ ADLA に対して複数のアタッチメントを同時に作成することは避けてください。 アタッチを繰り返すたびに、先行する既存のアタッチメントが切断されます。
 
 > [!TIP]
-> Azure Machine Learning パイプラインは、Data Lake Analytics アカウントの既定のデータ ストアに格納されたデータのみ使用できます。 使用する必要があるデータが既定以外のストアにある場合は、[`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?preserve-view=true&view=azure-ml-py) を使用して、トレーニングの前にデータをコピーできます。
+> Azure Machine Learning パイプラインは、Data Lake Analytics アカウントの既定のデータ ストアに格納されたデータのみ使用できます。 使用する必要があるデータが既定以外のストアにある場合は、[`DataTransferStep`](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep) を使用して、トレーニングの前にデータをコピーできます。
 
 ## <a name="azure-container-instance"></a><a id="aci"></a>Azure Container Instances
 

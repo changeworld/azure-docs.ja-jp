@@ -11,12 +11,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 06b871d29c26241c38be27c4ace8ab7461834fd1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 9dc7c0a476f57048c7caefb6001918d314c991ee
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101655719"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102209698"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Azure Machine Learning イベントに基づいてアプリケーション、プロセス、または CI/CD ワークフローをトリガーする (プレビュー)
 
@@ -59,7 +59,7 @@ Azure Machine Learning は、機械学習のライフサイクルのさまざま
 
 イベントを設定するときに、フィルターを適用して、特定のイベント データでのみトリガーするようにできます。 実行状態変更イベントについての次の例では、実行の種類でフィルター処理できます。 イベントは、条件が満たされた場合にのみトリガーされます。 フィルター処理できるイベン トデータの詳細については、[Azure Machine Learning イベント グリッド スキーマ](../event-grid/event-schema-machine-learning.md)に関する記事を参照してください。 
 
-Azure Machine Learning イベントのサブスクリプションは、Azure ロールベースのアクセス制御 (Azure RBAC) によって保護されています。 ワークスペースの[共同作成者または所有者](how-to-assign-roles.md#default-roles)だけが、イベント サブスクリプションの作成、更新、削除を行うことができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest&preserve-view=true)中、または作成後に、イベント サブスクリプションをフィルター処理することができます。 
+Azure Machine Learning イベントのサブスクリプションは、Azure ロールベースのアクセス制御 (Azure RBAC) によって保護されています。 ワークスペースの[共同作成者または所有者](how-to-assign-roles.md#default-roles)だけが、イベント サブスクリプションの作成、更新、削除を行うことができます。  イベント サブスクリプションの[作成](/cli/azure/eventgrid/event-subscription)中、または作成後に、イベント サブスクリプションをフィルター処理することができます。 
 
 
 1. Azure portal にアクセスし、新しいサブスクリプションまたは既存のサブスクリプションを選択します。 
@@ -130,7 +130,7 @@ Azure Event Grid を使用すると、Azure Machine Learning イベントによ�
 
 ### <a name="set-up-with-the-cli"></a>CLI を使用した設定
 
-最新の [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) をインストールするか、Azure サブスクリプションの一部として提供されている Azure Cloud Shell を使用することができます。
+最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールするか、Azure サブスクリプションの一部として提供されている Azure Cloud Shell を使用することができます。
 
 Event Grid 拡張機能をインストールするには、CLI から次のコマンドを使用します。
 
