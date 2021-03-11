@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 06dfa65236bf1aa5cfde626c5574ffdf487eb045
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: d928a86f958e54552f5cc8d030b0fb74fa3bd3c2
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698361"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102214509"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Azure CLI を使用した複数の IP 構成での負荷分散
 
@@ -30,7 +30,7 @@ ms.locfileid: "94698361"
 
 この記事で紹介するシナリオを実現するには、次の手順に従います。
 
-1. リンクされている記事の手順に従って [Azure CLI をインストールして構成](/cli/azure/install-azure-cli?view=azure-cli-latest)し、Azure アカウントにログインします。
+1. リンクされている記事の手順に従って [Azure CLI をインストールして構成](/cli/azure/install-azure-cli)し、Azure アカウントにログインします。
 2. 次のように *contosofabrikam* という名前の [リソース グループを作成](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group)します。
 
     ```azurecli

@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: chrwhit
-ms.openlocfilehash: cb8e6934125630590a337ed7bf7f4c81b2b73bb3
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1c4f3c47e3ac6e1e701b673574bb664237c1a9af
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94915439"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102244736"
 ---
 Communication Services Java SMS クライアント ライブラリを使用して SMS メッセージを送信することによって、Azure Communication Services の使用を開始します。
 
@@ -28,7 +28,7 @@ Communication Services Java SMS クライアント ライブラリを使用し�
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java Development Kit (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) バージョン 8 以降。
+- [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - アクティブな Communication Services リソースと接続文字列。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
 - SMS が有効になっている電話番号。 [電話番号を取得します](../get-phone-number.md)。
@@ -136,7 +136,7 @@ SmsClient client = new SmsClientBuilder()
     .buildClient();
 ```
 
-`com.azure.core.http.HttpClient` インターフェイスを実装する任意のカスタム HTTP クライアントを使用して、クライアントを初期化できます。 上記のコードは、`azure-core` によって提供される [Azure Core Netty HTTP クライアント](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable)の使用方法を示しています。
+`com.azure.core.http.HttpClient` インターフェイスを実装する任意のカスタム HTTP クライアントを使用して、クライアントを初期化できます。 上記のコードは、`azure-core` によって提供される [Azure Core Netty HTTP クライアント](/java/api/overview/azure/core-http-netty-readme)の使用方法を示しています。
 
 エンドポイントとアクセス キーを指定する代わりに、connectionString() 関数を使用して接続文字列全体を指定することもできます。 
 ```java

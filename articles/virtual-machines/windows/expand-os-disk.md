@@ -1,26 +1,27 @@
 ---
 title: Azure で Windows VM の OS ドライブを展開する
 description: Resource Manager デプロイ モデルで Azure PowerShell を使用して仮想マシンの OS ドライブのサイズを拡張します。
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: kirpasingh
 manager: roshar
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: df27d7b25010fa68fc86ffe093318b2b0b7f4e96
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2f991dd93549cf73005127569af496df541eecde
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393831"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549602"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
 
@@ -231,11 +232,11 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 ## <a name="expand-the-volume-within-the-os"></a>OS 内のボリュームを拡張する
 
-VM のディスクを拡張したら、OS に移動して、新しい領域を含めるようにボリュームを拡張する必要があります。 パーティションを拡張するには、いくつかの方法があります。 このセクションには、 **DiskPart** を使用してパーティションを拡張するために、RDP コネクションを使用した VM への接続が含まれています。
+VM のディスクを拡張したら、OS に移動して、新しい領域を含めるようにボリュームを拡張する必要があります。 パーティションを拡張するには、いくつかの方法があります。 このセクションには、**DiskPart** を使用してパーティションを拡張するために、RDP コネクションを使用した VM への接続が含まれています。
 
 1. VM への RDP 接続を開きます。
 
-2. コマンド プロンプトを開き、「 **diskpart** 」と入力します。
+2. コマンド プロンプトを開き、「**diskpart**」と入力します。
 
 3. **DISKPART** プロンプトで「`list volume`」と入力します。 拡張するボリュームをメモします。
 

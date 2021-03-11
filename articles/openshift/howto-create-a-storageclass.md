@@ -8,12 +8,12 @@ author: grantomation
 ms.author: b-grodel
 keywords: aro、openshift、az aro、red hat、cli、azure file
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: daaf6d3042b3b8d050173a87d94f0ff6a4ccb2c7
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 039aa3cce6615e71960db810ae383d22d7bcd909
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633259"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212979"
 ---
 # <a name="create-an-azure-files-storageclass-on-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 で Azure Files StorageClass を作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "100633259"
 > * 前提条件を設定し、必要なツールをインストールする
 > * Azure Files プロビジョナーを使用して Azure Red Hat OpenShift 4 StorageClass を作成する
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 

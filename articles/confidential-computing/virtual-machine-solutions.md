@@ -3,17 +3,17 @@ title: 仮想マシンの Azure Confidential Computing
 description: 仮想マシンの Azure Confidential Computing ソリューションについて説明します。
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: de7eaf40271965d48dc0507e0335e6924bdfb73f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 8621dc8cfc10ab44ecb358a40fdae1a1b2081734
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204186"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566585"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 仮想マシンのソリューション
 
@@ -76,7 +76,7 @@ DCSv2 シリーズの VM ファミリで **Standard_DC8_v2** 仮想マシン サ
 
 Azure で仮想マシンを使用する場合、いかなるダウンタイムも回避するために高可用性とディザスター リカバリー ソリューションを実装する責任があります。 
 
-Azure Confidential Computing では現時点で、可用性ゾーンによるゾーン冗長がサポートされていません。 Confidential Computing で可用性と冗長性を最大にするには、[可用性セット](../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を使用します。 ハードウェアに制約があるため、Confidential Computing インスタンスの可用性セットに指定できる更新ドメインは最大で 10 です。 
+Azure Confidential Computing では現時点で、可用性ゾーンによるゾーン冗長がサポートされていません。 Confidential Computing で可用性と冗長性を最大にするには、[可用性セット](../virtual-machines/availability-set-overview.md)を使用します。 ハードウェアに制約があるため、Confidential Computing インスタンスの可用性セットに指定できる更新ドメインは最大で 10 です。 
 
 ## <a name="deployment-with-azure-resource-manager-arm-template"></a>Azure Resource Manager (ARM) テンプレートを使用したデプロイ
 
