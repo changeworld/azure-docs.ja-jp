@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nabhishek
 ms.author: abnarain
 ms.date: 05/08/2019
-ms.openlocfilehash: 7dae067b5d8648f1441047c26f8792e55591b64d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2b5c053847852cc6090ee94858a5be52275d62fc
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100368525"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101725341"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 
@@ -322,6 +322,9 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 * [Azure Batch の基本](../batch/batch-technical-overview.md) 」をご覧ください。
 * Azure Batch アカウントの作成方法については、[New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) コマンドレットをご覧ください。Azure portal を使用した Azure Batch アカウントの作成方法については、[Azure portal](../batch/batch-account-create-portal.md) をご覧ください。 このコマンドレットの使用方法の詳細については、[PowerShell を使用した Azure Batch アカウントの管理](/archive/blogs/windowshpc/using-azure-powershell-to-manage-azure-batch-account)に関する記事をご覧ください。
 * Azure Batch プールの作成方法については、[New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) コマンドレットをご覧ください。
+
+> [!IMPORTANT]
+> 新しい Azure Batch プールを作成するときは、'CloudServiceConfiguration' ではなく 'VirtualMachineConfiguration' を使用する必要があります。 詳細については、[Azure Batch プールの移行](../batch/batch-pool-cloud-service-to-virtual-machine-configuration.md)に関するガイダンスを参照してください。 
 
 ### <a name="example"></a>例
 

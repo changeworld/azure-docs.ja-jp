@@ -1,25 +1,19 @@
 ---
 title: Azure Desired State Configuration 拡張機能ハンドラー
 description: DSC 拡張機能を使用して Azure VM に PowerShell DSC 構成をアップロード､適用します｡
-services: virtual-machines-windows
-documentationcenter: ''
-author: bobbytreed
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: windows
-ms.workload: ''
-ms.date: 03/26/2018
+ms.service: virtual-machines
+ms.subservice: extensions
+author: bobbytreed
 ms.author: robreed
-ms.openlocfilehash: 5254d83c18ddc9f2a5518ed4f711d4cd73ab6de7
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.collection: windows
+ms.date: 03/26/2018
+ms.openlocfilehash: 72f66aeee64133a13ce0e49155c4b2a90240a3fb
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510942"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102559989"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
@@ -98,7 +92,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 ### <a name="property-values"></a>プロパティ値
 
-| Name | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | string |
@@ -107,7 +101,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 ### <a name="settings-property-values"></a>設定のプロパティ値
 
-| Name | データ型 | 説明
+| 名前 | データ型 | 説明
 | ---- | ---- | ---- |
 | settings.wmfVersion | string | VM にインストールする Windows Management Framework のバージョンを指定します。 このプロパティを "latest" に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、4.0 か 5.0、latest のみです。 これらの設定できる値は更新される可能性があります。 既定値は "latest" です。 |
 | settings.configuration.url | string | DSC 構成 zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL へのアクセスに SAS トークンが必要な場合、protectedSettings.configurationUrlSasToken プロパティに SAS トークンの値を設定する必要があります。 settings.configuration.script または settings.configuration.function を定義する場合、このプロパティは必須です。
@@ -121,7 +115,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 ### <a name="protected-settings-property-values"></a>保護された設定のプロパティ値
 
-| Name | データ型 | 説明
+| 名前 | データ型 | 説明
 | ---- | ---- | ---- |
 | protectedSettings.configurationArguments | string | DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されます｡ |
 | protectedSettings.configurationUrlSasToken | string | configuration.url で定義した URL にアクセスするための SAS トークンを指定します。 このプロパティは暗号化されます｡ |
@@ -136,7 +130,7 @@ Windows 用の DSC 拡張機能を含む Resource Manager テンプレートの�
 
 ## <a name="troubleshoot-and-support"></a>トラブルシューティングとサポート
 
-### <a name="troubleshoot"></a>[トラブルシューティング]
+### <a name="troubleshoot"></a>トラブルシューティング
 
 拡張機能のデプロイ状態に関するデータを取得するには、Azure Portal か Azure CLI を使用します。 特定の VM の拡張機能のデプロイ状態を確認するには、Azure CLI を使用して次のコマンドを実行します。
 

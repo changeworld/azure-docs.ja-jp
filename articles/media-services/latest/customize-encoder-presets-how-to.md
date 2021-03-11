@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 415d50258ce5fc8416dd908bf53f812e72a10f48
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: eb72c34489755dad17700a16a5109824ad892e83
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124501"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553274"
 ---
 # <a name="how-to-encode-with-a-custom-transform---net"></a>カスタム変換を使用してエンコードする方法 - .NET
 
@@ -44,7 +44,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet.git
  ```
  
-カスタム プリセットのサンプルは、[ を使用するカスタム プリセットでのエンコード](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset)に関するフォルダーにあります。
+カスタム プリセットのサンプルは、[ を使用するカスタム プリセットでのエンコード](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/EncodingWithMESCustomPreset_H264)に関するフォルダーにあります。
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>カスタム プリセットを使用して変換を作成する
 
@@ -56,7 +56,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
 
 次の例では、この変換が使用されたときに生成される一連の出力を定義します。 まず、オーディオ エンコードのための AacAudio レイヤーと、ビデオ エンコードのための 2 つの H264Video レイヤーを追加します。 ビデオ レイヤーでは、出力ファイル名で使用できるようにラベルを割り当てます。 次に、出力にサムネイルも含めます。 次の例では、入力ビデオの解像度の 50%、および 3 つのタイムスタンプ (入力ビデオの長さの {25%, 50%, 75%}) で生成された、PNG 形式の画像を指定します。 最後に、出力ファイルの形式 (ビデオとオーディオの形式とサムネイルの形式) を指定します。 複数の H264Layer があるため、レイヤーごとに一意の名前を生成するマクロを使用する必要があります。 `{Label}` または `{Bitrate}` のいずれかのマクロを使用できます。この例では、前者が示されています。
 
-[!code-csharp[Main](../../../media-services-v3-dotnet/VideoEncoding/EncodingWithMESCustomPreset/Program.cs#EnsureTransformExists)]
+[!code-csharp[Main](../../../media-services-v3-dotnet/VideoEncoding/EncodingWithMESCustomPreset_H264/Program.cs#EnsureTransformExists)]
 
 ## <a name="next-steps"></a>次のステップ
 
