@@ -1,5 +1,5 @@
 ---
-title: セキュリティ モジュール ツインを作成する
+title: クイック スタート:セキュリティ モジュール ツインを作成する
 description: このクイックスタートでは、Azure Defender for IoT で使用する Defender for IoT モジュール ツインを作成する方法について説明します。
 services: defender-for-iot
 ms.service: defender-for-iot
@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/21/2021
 ms.author: shhazam
-ms.openlocfilehash: 68d137caeed91e9dea2dbf3883929d85c25382aa
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 832c8e426b57e6b447ef805f2868a6d42abe3d9d
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523262"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449698"
 ---
-# <a name="create-an-azureiotsecurity-module-twin"></a>azureiotsecurity モジュール ツインを作成する
+# <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
 
 このクイックスタートでは、新しいデバイス用に個々の _azureiotsecurity_ モジュール ツインを作成する方法と、IoT Hub 内のすべてのデバイス用にモジュール ツインをバッチ作成する方法について説明します。
+
+## <a name="prerequisites"></a>前提条件
+
+なし
 
 ## <a name="understanding-azureiotsecurity-module-twins"></a>azureiotsecurity モジュール ツインについて
 
