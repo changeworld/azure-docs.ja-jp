@@ -97,10 +97,10 @@
       items:
         - name: API と SDK を使用する
           href: how-to-use-apis-sdks.md
+        - name: AutoRest を使用してカスタム言語の SDK を作成する
+          href: how-to-create-custom-sdks.md
         - name: Postman で要求を行う
           href: how-to-use-postman.md
-        - name: AutoRest を使用してカスタム SDK を作成する
-          href: how-to-create-custom-sdks.md
         - name: Azure SignalR Service と統合する
           href: how-to-integrate-azure-signalr.md
     - name: 入力を接続する
@@ -154,19 +154,19 @@
         - name: コントロール プレーン
           items:
             - name: .NET (C#) SDK
-              href: /dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet
+              href: /dotnet/api/overview/azure/digitaltwins/management
             - name: Java SDK
-              href: /java/api/overview/azure/digitaltwins/resourcemanagement?view=azure-java-stable
+              href: /java/api/overview/azure/digitaltwins/resourcemanagement
         - name: データ プレーン
           items:
             - name: .NET (C#) SDK
-              href: /dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet
+              href: /dotnet/api/overview/azure/digitaltwins/client
             - name: Java SDK
-              href: /java/api/overview/azure/digitaltwins/client?preserve-view=true&view=azure-java-stable
+              href: /java/api/overview/azure/digitaltwins/client
             - name: JavaScript SDK
-              href: /javascript/api/@azure/digital-twins-core/?branch=master&view=azure-node-latest
+              href: /javascript/api/@azure/digital-twins-core/
             - name: Python SDK
-              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core?view=azure-python
+              href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
     - name: Digital Twins CLI
       href: /cli/azure/ext/azure-iot/dt
 - name: リソース

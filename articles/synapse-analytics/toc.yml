@@ -340,15 +340,12 @@
                 - name: ストアド プロシージャ
                   href: sql/develop-stored-procedures.md
                 - name: トランザクション
-                  href: sql/develop-transactions.md
-                - name: トランザクション
                   items:
-                    - name: サーバーレス SQL プール
+                    - name: 専用 SQL プールのトランザクション
+                      href: sql/develop-transactions.md
+                    - name: 専用 SQL プールのベスト プラクティスのトランザクション
                       displayname: 'Transaction, best, practices'
                       href: sql/develop-transaction-best-practices.md
-                    - name: 専用 SQL プール
-                      displayname: 'Transactions, best, practices'
-                      href: ./sql-data-warehouse/sql-data-warehouse-develop-best-practices-transactions.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
                 - name: ユーザー定義スキーマ
                   href: sql/develop-user-defined-schemas.md
                 - name: 変数の代入
@@ -1151,7 +1148,7 @@
 - name: リファレンス
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/synapse/?view=azure-cli-latest
+      href: /cli/azure/ext/synapse/
     - name: データベースの照合順序の種類
       href: sql/reference-collation-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Go

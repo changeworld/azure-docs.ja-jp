@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: b199fdbac4aca7637e07a18383cc7e254f702019
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 40065189f3c1dd52f462985aef344e9cbeb12f0b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804854"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522378"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで kubectl を使用して Kubernetes ステートレス アプリケーションをデプロイする
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、既存の Kubernetes クラスターで kubectl コマンドを使用して、ステートレス アプリケーションをデプロイする方法について説明します。 また、この記事では、ステートレス アプリケーションでポッドを作成および設定するプロセスについて説明します。
 
@@ -25,7 +27,7 @@ Kubernetes クラスターを作成し、`kubectl` コマンドライン ツー�
 
 - 1 ノードの Azure Stack Edge Pro デバイスに対するサインイン資格情報がある。
 
-- Azure Stack Edge Pro デバイスにアクセスするために、Windows クライアント システムに Windows PowerShell 5.0 以降がインストールされている。 オペレーティング システムがサポートされている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 最新バージョンの Windows PowerShell をダウンロードするには、[Windows への PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)に関するページに移動します。
+- Azure Stack Edge Pro デバイスにアクセスするために、Windows クライアント システムに Windows PowerShell 5.0 以降がインストールされている。 オペレーティング システムがサポートされている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 最新バージョンの Windows PowerShell をダウンロードするには、[Windows への PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell)に関するページに移動します。
 
 - Azure Stack Edge Pro デバイスでコンピューティングが有効になっている。 コンピューティングを有効にするには、デバイスのローカル UI で **[コンピューティング]** ページに移動します。 その後、コンピューティングに対して有効にするネットワーク インターフェイスを選択します。 **[有効化]** を選択します。 コンピューティングを有効にすると、そのネットワーク インターフェイスでデバイスの仮想スイッチが作成されます。 詳細については、[Azure Stack Edge Pro でのコンピューティング ネットワークの有効化](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)に関するページを参照してください。
 

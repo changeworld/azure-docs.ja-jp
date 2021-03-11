@@ -1,5 +1,5 @@
 ---
-title: ソース コードから Defender マイクロ エージェントをビルドする
+title: ソース コードから Defender マイクロ エージェントをビルドする (プレビュー)
 titleSuffix: Azure Defender for IoT
 description: マイクロ エージェントには、ディストリビューションをカスタマイズするために使用できるインフラストラクチャが含まれています。
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/18/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 57360d939ea0cda513732cfbcc35c1d22a899f6c
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 29cac544c858b030cff8e9101737b30e96b863bf
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102124535"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506601"
 ---
-# <a name="build-the-defender-micro-agent-from-source-code"></a>ソース コードから Defender マイクロ エージェントをビルドする
+# <a name="build-the-defender-micro-agent-from-source-code-preview"></a>ソース コードから Defender マイクロ エージェントをビルドする (プレビュー)
 
 マイクロ エージェントには、ディストリビューションをカスタマイズするために使用できるインフラストラクチャが含まれています。 使用可能な構成パラメーターの一覧については、`configs/LINUX_BASE.conf` ファイルを参照してください。
 

@@ -3,31 +3,32 @@ title: SSH キーを使用して Linux VM に接続する
 description: SSH キーを生成し、それを使用して Windows コンピューターから、Azure 上の Linux 仮想マシンに接続する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 183b601a4521c3ff3e4578784f7adadd01045b0e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 167ce63931155f5142ed34b41f857505699bc0a6
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147149"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552781"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
-この記事は、 *secure shell* (SSH) キーを [作成](#create-an-ssh-key-pair)し、それを使用して Azure の Linux 仮想マシン (VM) に [接続](#connect-to-your-vm)する Windows ユーザーを対象としています。 また、[Azure portal で SSH キーを生成および保存](../ssh-keys-portal.md)して、このポータルで VM を作成するときに使用することもできます。
+この記事は、*secure shell* (SSH) キーを [作成](#create-an-ssh-key-pair)し、それを使用して Azure の Linux 仮想マシン (VM) に [接続](#connect-to-your-vm)する Windows ユーザーを対象としています。 また、[Azure portal で SSH キーを生成および保存](../ssh-keys-portal.md)して、このポータルで VM を作成するときに使用することもできます。
 
 
 Linux または macOS クライアントから SSH キーを使用するには、[簡単な手順](mac-create-ssh-keys.md)を参照してください。 SSH の詳細については、「[詳細な手順: Azure の Linux VM に対する認証用に SSH キーを作成して管理する](create-ssh-keys-detailed.md)」を参照してください。
 
 ## <a name="overview-of-ssh-and-keys"></a>SSH とキーの概要
 
-[SSH](https://www.ssh.com/ssh/) は、セキュリティで保護されていない接続においてセキュリティで保護されたサインインを可能にする、暗号化された接続プロトコルです。 SSH は、Azure でホストされる Linux VM の既定の接続プロトコルです。 SSH 自体は暗号化された接続を提供しますが、SSH でパスワードを使用すると、VM はブルートフォース攻撃に対して脆弱になります。 SSH を介して VM に接続する場合は、公開/秘密キーの組を使用することをお勧めします。これは " *SSH キー* " とも呼ばれています。 
+[SSH](https://www.ssh.com/ssh/) は、セキュリティで保護されていない接続においてセキュリティで保護されたサインインを可能にする、暗号化された接続プロトコルです。 SSH は、Azure でホストされる Linux VM の既定の接続プロトコルです。 SSH 自体は暗号化された接続を提供しますが、SSH でパスワードを使用すると、VM はブルートフォース攻撃に対して脆弱になります。 SSH を介して VM に接続する場合は、公開/秘密キーの組を使用することをお勧めします。これは "*SSH キー*" とも呼ばれています。 
 
 公開/秘密キーの組は、ご利用のフロント ドアのロックに似ています。 ロックは **パブリック** に公開され、適切なキーを持つユーザーがドアを開くことができます。 キーは **非公開** であり、ドアのロックを解除するために使用できるため、信頼できるユーザーにのみ与えられます。 
 
-- " *公開キー* " は、Linux VM の作成時にその VM 上に配置されます。 
+- "*公開キー*" は、Linux VM の作成時にその VM 上に配置されます。 
 
 - *秘密キー* は、ローカル システム上に残ります。 このキーは安全に保管してください。 このキーは共有しないようにしてください。
 

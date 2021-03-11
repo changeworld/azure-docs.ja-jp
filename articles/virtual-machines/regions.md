@@ -1,18 +1,19 @@
 ---
 title: Azure Azure リージョン
 description: Azure で仮想マシンを実行するためのリージョンについて学習します。
-author: cynthn
-ms.author: cynthn
+author: mimckitt
+ms.author: mimckitt
+ms.reviewer: cynthnn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 05/28/2019
-ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/8/2021
+ms.openlocfilehash: e874a76cc447158127da8482f23bf03d56961818
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88650555"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504611"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure の仮想マシンのリージョン
 
@@ -27,11 +28,11 @@ Azure のリソースは、"米国西部"、"北ヨーロッパ"、"東南アジ
 ## <a name="special-azure-regions"></a>特殊な Azure リージョン
 Azure には、コンプライアンスまたは法的な目的に合致したアプリケーションを構築する際に使用できる特別なリージョンがいくつかあります。 特殊なリージョンは次のとおりです。
 
-* **米国政府バージニア**および **US Gov アイオワ**
+* **米国政府バージニア** および **US Gov アイオワ**
   * 物理的および論理的にネットワークが分離された Azure インスタンス。米国の政府機関やパートナー (選別された米国の担当者が運営する) 向け。 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP)、[DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA) などのその他のコンプライアンス証明書が含まれます。 詳細については [Azure Government](https://azure.microsoft.com/features/gov/) に関するページをご覧ください。
-* **中国東部**および**中国北部**
+* **中国東部** および **中国北部**
   * これらのリージョンは、Microsoft と 21Vianet 間の特異なパートナーシップを通じてご利用いただけます。この契約により、Microsoft はデータ センターを直接管理しません。 [Azure China 21Vianet](https://www.windowsazure.cn/) の詳細を参照してください。
-* **ドイツ中部**および**ドイツ北東部**
+* **ドイツ中部** および **ドイツ北東部**
   * これらのリージョンは、データ トラスティ モデルを通してご利用いただけます。お客様のデータは、ドイツのデータ トラスティを務める Deutsche Telekom 傘下の T-Systems の管理の下、ドイツ国内で保管されます。
 
 ## <a name="region-pairs"></a>リージョンのペア

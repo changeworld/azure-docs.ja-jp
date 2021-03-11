@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/04/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: d172ce98ba93360c621a91fb0e2a55d022470943
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: dfae1a9b02db7e7b9577acdb47a1ba089f1609e8
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935562"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102439053"
 ---
 # <a name="configure-and-run-a-module-on-gpu-on-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイス上の GPU でモジュールを構成して実行する
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 Azure Stack Edge Pro デバイスには、1 つ以上のグラフィックス処理装置 (GPU) が含まれています。 GPU は、並列処理機能を提供し、中央処理装置 (CPU) より画像のレンダリングを速く処理できるため、AI 計算によく使用されます。 Azure Stack Edge Pro デバイスに含まれる GPU の詳細については、[Azure Stack Edge Pro デバイスの技術仕様](azure-stack-edge-gpu-technical-specifications-compliance.md)をご覧ください。
 

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python
-ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bbe28f4fda32ce7d55a437e4ac944dc206f436ee
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378003"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522361"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>チュートリアル:独自のデータを使用する (4 部構成中の第 4 部)
 
@@ -200,7 +200,7 @@ if __name__ == "__main__":
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [データセット](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py)は、Azure Blob Storage にアップロードしたデータを参照するために使用します。 データセットは、ご利用のデータの上にある抽象化レイヤーであり、信頼性および信頼度の向上を目的に設計されています。
+      [データセット](/python/api/azureml-core/azureml.core.dataset.dataset)は、Azure Blob Storage にアップロードしたデータを参照するために使用します。 データセットは、ご利用のデータの上にある抽象化レイヤーであり、信頼性および信頼度の向上を目的に設計されています。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,7 +208,7 @@ if __name__ == "__main__":
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) は、`train.py` に渡す引数のリストを含むように変更されています。 `dataset.as_named_input('input').as_mount()` 引数を使用すると、指定したディレクトリがコンピューティング先に _マウント_ されます。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) は、`train.py` に渡す引数のリストを含むように変更されています。 `dataset.as_named_input('input').as_mount()` 引数を使用すると、指定したディレクトリがコンピューティング先に _マウント_ されます。
    :::column-end:::
 :::row-end:::
 

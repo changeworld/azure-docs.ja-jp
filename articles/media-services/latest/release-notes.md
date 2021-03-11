@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: 14bc7b6f45b04f230252e85cd10b7246529cb751
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: f14328567fdc9840b0a3d07aa23fe2496fd537ca
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095153"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213098"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -294,21 +294,21 @@ V3 API の GA リリースの更新プログラム:
 
 ## <a name="november-2018"></a>2018 年 11 月
 
-CLI 2.0 モジュールが、[Azure Media Services v3 GA](/cli/azure/ams?view=azure-cli-latest&preserve-view=true) – v 2.0.50 で使用できるようになりました。
+CLI 2.0 モジュールが、[Azure Media Services v3 GA](/cli/azure/ams) – v 2.0.50 で使用できるようになりました。
 
 ### <a name="new-commands"></a>新しいコマンド
 
-- [az ams account](/cli/azure/ams/account?view=azure-cli-latest&preserve-view=true)
-- [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest&preserve-view=true)
-- [az ams asset](/cli/azure/ams/asset?view=azure-cli-latest&preserve-view=true)
-- [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest&preserve-view=true)
-- [az ams content-key-policy](/cli/azure/ams/content-key-policy?view=azure-cli-latest&preserve-view=true)
-- [az ams job](/cli/azure/ams/job?view=azure-cli-latest&preserve-view=true)
-- [az ams live-event](/cli/azure/ams/live-event?view=azure-cli-latest&preserve-view=true)
-- [az ams live-output](/cli/azure/ams/live-output?view=azure-cli-latest&preserve-view=true)
-- [az ams streaming-endpoint](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest&preserve-view=true)
-- [az ams streaming-locator](/cli/azure/ams/streaming-locator?view=azure-cli-latest&preserve-view=true)
-- [az ams account mru](/cli/azure/ams/account/mru?view=azure-cli-latest&preserve-view=true) - メディア占有ユニットを管理できます。 詳細については、「[メディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)」を参照してください。
+- [az ams account](/cli/azure/ams/account)
+- [az ams account-filter](/cli/azure/ams/account-filter)
+- [az ams asset](/cli/azure/ams/asset)
+- [az ams asset-filter](/cli/azure/ams/asset-filter)
+- [az ams content-key-policy](/cli/azure/ams/content-key-policy)
+- [az ams job](/cli/azure/ams/job)
+- [az ams live-event](/cli/azure/ams/live-event)
+- [az ams live-output](/cli/azure/ams/live-output)
+- [az ams streaming-endpoint](/cli/azure/ams/streaming-endpoint)
+- [az ams streaming-locator](/cli/azure/ams/streaming-locator)
+- [az ams account mru](/cli/azure/ams/account/mru) - メディア占有ユニットを管理できます。 詳細については、「[メディア占有ユニットをスケーリングする](media-reserved-units-cli-how-to.md)」を参照してください。
 
 ### <a name="new-features-and-breaking-changes"></a>新機能と重大な変更
 
