@@ -2,19 +2,19 @@
 title: Azure Windows VM のコンピューティング ベンチマーク スコア
 description: Windows Server を実行する Azure VM の SPECint コンピューティング ベンチマーク スコアを比較します。
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.subservice: azure-compute-unit
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: b354f6f121e6a055e7db07a587936f3eaff94c33
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: bf809b695e8df14288c2c55e580ee76d37f487d4
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201571"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102550775"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM のコンピューティング ベンチマーク スコア
 次の SPECInt ベンチマーク スコアは、Windows Server を実行している Azure VM の計算性能を示します。 コンピューティング ベンチマーク スコアは [Linux VM](../linux/compute-benchmark-scores.md)にも利用できます。

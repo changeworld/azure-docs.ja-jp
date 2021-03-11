@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 9f3ea595c3cfacc479deea7b7db7689785e3b520
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1f8b7162787e870337918794f353ab8dc94c1965
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694956"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518247"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション、および Azure Active Directory テナント
 
@@ -276,7 +276,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
    }
    ```
 
-3. Azure に UserA としてログインし、[ポータル](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)、[PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) または [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file) を使用してテンプレートをデプロイします。 手順 2 で保存したサンプルの json テキストのファイル名を指定します。
+3. Azure に UserA としてログインし、[ポータル](../azure-resource-manager/templates/deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template)、[PowerShell](../azure-resource-manager/templates/deploy-powershell.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file) または [Azure CLI](../azure-resource-manager/templates/deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template-or-bicep-file) を使用してテンプレートをデプロイします。 手順 2 で保存したサンプルの json テキストのファイル名を指定します。
 4. 手順 2 のサンプル json をコンピューター上のファイルにコピーして、次から始まる行を変更します。
    - **name**:*myVnetA/myVnetAToMyVnetB* を *myVnetB/myVnetBToMyVnetA* に変更します。
    - **id**:`<subscription ID>` を UserB のサブスクリプション ID で置き換え、*myVnetB* を *myVnetA* に変更します。

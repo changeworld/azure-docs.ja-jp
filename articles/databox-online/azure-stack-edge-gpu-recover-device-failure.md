@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: e5734591bfc48469eacc1ad39cbb89f3850bfc8c
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: b32757dddf745e7aaa0ea8276a3527fa464cc0d4
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97367068"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102442164"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>障害が発生した Azure Stack Edge Pro GPU デバイスから回復する 
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 この記事では、Azure Stack Edge Pro GPU デバイスでの許容できない障害から回復する方法について説明します。 Azure Stack Edge Pro GPU デバイスで許容できない障害が発生した場合は、デバイスの交換が必要です。
 

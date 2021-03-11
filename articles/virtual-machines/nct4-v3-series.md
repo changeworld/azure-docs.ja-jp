@@ -2,17 +2,17 @@
 title: NCas T4 v3 シリーズ
 description: NCas T4 v3 シリーズ VM の仕様。
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 author: vikancha-MSFT
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
-ms.openlocfilehash: 0ead1c5772cb4a2e231867ef1e77bfa646cbb29e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2a799fed92bea627d5974f27d5328b6c62825556
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042744"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562403"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 シリーズ 
 

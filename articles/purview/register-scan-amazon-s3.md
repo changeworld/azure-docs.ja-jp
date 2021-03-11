@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d3fd0b1ffb87a84772000702b958c52ed1cc47c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ddd5c5de85da5ae8cec9d24d33dfd2bf035b5b34
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678776"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438730"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Amazon S3 用 Azure Purview コネクタ
 
@@ -61,8 +61,8 @@ ms.locfileid: "101678776"
 | アジア太平洋 (シドニー)           | ヨーロッパ (フランクフルト)                    |
 | アジア太平洋 (東京)            | ヨーロッパ (フランクフルト)                    |
 | カナダ (中部)                | 米国東部 (オハイオ)                        |
-| 中国 (北京)                 | ヨーロッパ (フランクフルト)                    |
-| 中国 (Ningxia)                 | ヨーロッパ (フランクフルト)                    |
+| 中国 (北京)                 | サポートされていません                    |
+| 中国 (Ningxia)                 | サポートされていません                   |
 | ヨーロッパ (フランクフルト)              | ヨーロッパ (フランクフルト)                    |
 | ヨーロッパ (アイルランド)                | ヨーロッパ (フランクフルト)                    |
 | ヨーロッパ (ロンドン)                 | ヨーロッパ (フランクフルト)                    |

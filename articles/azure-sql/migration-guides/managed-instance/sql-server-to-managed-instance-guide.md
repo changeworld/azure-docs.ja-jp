@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ac8b0e0c2cdbd46626677f4be0f78800d839ad28
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 67f5665225bc1297d0eb1b1e1da954fb47660dee
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358896"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488955"
 ---
 # <a name="migration-guide-sql-server-to-sql-managed-instance"></a>移行ガイド:SQL Server から SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -57,6 +57,8 @@ SQL Server を Azure SQL Managed Instance に移行する場合、次の前提�
 検出フェーズで使用できるツールの詳細については、「[データ移行のシナリオで利用できるサービスとツール](../../../dms/dms-tools-matrix.md)」を参照してください。 
 
 ### <a name="assess"></a>アクセス 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 データ ソースが検出された後、Azure SQL Managed Instance に移行できるオンプレミスの SQL Server インスタンスを評価して、移行の阻害要素や互換性の問題を特定します。 
 
@@ -212,7 +214,7 @@ SQL Server の一部の機能は、[データベース互換レベル](/sql/rela
 
 ## <a name="next-steps"></a>次のステップ
 
-- さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールのマトリックスについては、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
+- さまざまなデータベースとデータの移行シナリオ、および特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールの一覧については、[データ移行のサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
 
 - Azure SQL Managed Instance の詳細については、次を参照してください。
    - [Azure SQL Managed Instance のサービス レベル](../../managed-instance/sql-managed-instance-paas-overview.md#service-tiers)

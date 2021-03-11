@@ -5,12 +5,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: 4b4b893b222a62619a36d59c2cf042f1aa5590bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 70b27fec07d074dadb413d1debb098e23b4d33b3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708630"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428730"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Windows Diagnostics 拡張機能のスキーマ
 Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure コンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 仮想マシンおよびその他のコンピューティング リソースで Diagnostics 拡張機能を構成するために使用するスキーマについて詳細に説明します。
@@ -269,7 +269,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 |---------------|----------|-----------------|  
 |**name**|string|シンク名を特定する文字列。|  
 
-|要素|Type|説明|  
+|要素|種類|説明|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
 |**Channels**|string|追加フィルタリングごとに 1 つ|  
@@ -281,7 +281,7 @@ Azure Diagnostics 拡張機能は Azure Monitor のエージェントで、ゲ�
 
  シンクを通過するログ データのストリームのフィルターを定義します。  
 
-|要素|Type|説明|  
+|要素|種類|説明|  
 |-------------|----------|-----------------|  
 |**Channel**|string|このページの他の場所の説明を参照してください。|  
 
@@ -556,7 +556,7 @@ JSON のユース ケースでは、ほとんどの場合、*PublicConfig* と *
     <WadCfg>  
       <DiagnosticMonitorConfiguration overallQuotaInMB="10000">  
 
-        <PerformanceCounters scheduledTransferPeriod="PT1M", sinks="AzureMonitorSink">  
+        <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="AzureMonitorSink">  
           <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />  
         </PerformanceCounters>  
 

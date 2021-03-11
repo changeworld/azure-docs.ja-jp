@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 2c8b77e480f3a4f9ba342c6793a708ca6723ec34
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: bae48dc78eb6973e5bce4d535091bc330c4c897f
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036573"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102509032"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>インターネットにアクセスできないコンピューターを Azure Monitor で Log Analytics ゲートウェイを使って接続する
 
@@ -205,7 +205,7 @@ Windows Server 2016 のネットワーク負荷分散クラスターの設計お
 Azure Load Balancer を設計してデプロイする方法については、「[Azure Load Balancer の概要](../../load-balancer/load-balancer-overview.md)」を参照してください。 基本的なロード バランサーをデプロイするには、この [クイック スタート](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)に記載されている手順 (「**バックエンド サーバーを作成する**」の手順は除く) を実行します。   
 
 > [!NOTE]
-> **Basic SKU** を使用して Azure Load Balancer を構成するには、可用性セットに属する Azure 仮想マシンが必要です。 可用性セットの詳細については、、「[Azure での Windows 仮想マシンの可用性の管理](../../virtual-machines/manage-availability.md)」を参照してください。 既存の仮想マシンを可用性セットに追加するには、「[Set Azure Resource Manager VM Availability Set (Azure Resource Manager VM の可用性セットを設定する)](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)」を参照してください。
+> **Basic SKU** を使用して Azure Load Balancer を構成するには、可用性セットに属する Azure 仮想マシンが必要です。 可用性セットの詳細については、、「[Azure での Windows 仮想マシンの可用性の管理](../../virtual-machines/availability.md)」を参照してください。 既存の仮想マシンを可用性セットに追加するには、「[Set Azure Resource Manager VM Availability Set (Azure Resource Manager VM の可用性セットを設定する)](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)」を参照してください。
 > 
 
 ロード バランサーが作成されたら、バックエンド プールを作成する必要があります。これにより、トラフィックが 1 つ以上のゲートウェイ サーバーに分散されます。 クイック スタートの記事の「[ロード バランサーのリソースを作成する](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)」の手順を実行してください。  
