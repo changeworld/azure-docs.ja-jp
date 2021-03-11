@@ -4,16 +4,16 @@ description: NVv3 シリーズ VM の仕様。
 services: virtual-machines
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: f04847930f078ef506d66784deab4767db0a282d
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 208e8dd63e748c5b558eb3c551fede4bcdc25944
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123974"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102551115"
 ---
 # <a name="nvv3-series"></a>NVv3 シリーズ
 

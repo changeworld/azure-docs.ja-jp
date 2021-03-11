@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 用の組み込みポリシー定義
 description: Azure Cosmos DB 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 02/09/2021
+ms.date: 03/05/2021
 ms.topic: reference
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 19a755a0a7c73439bbe9d9b58628085b327190ce
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 014c45862ae8643ce1e30e259636867196396726
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098480"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102428825"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cosmos-db"></a>Azure Cosmos DB 用の Azure Policy 組み込み定義
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]

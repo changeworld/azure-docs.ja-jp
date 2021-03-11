@@ -6,12 +6,12 @@ ms.author: crtreasu
 ms.date: 02/17/2021
 ms.topic: best-practice
 ms.service: azure-object-anchors
-ms.openlocfilehash: 5b84bfae4a338a15b75e4f61114869aab1e94f87
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da3be6e3d97e50b27ded29ba017164fdbd9a0a5b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101744016"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503047"
 ---
 # <a name="best-practices"></a>ベスト プラクティス
 
@@ -28,6 +28,8 @@ ms.locfileid: "101744016"
 - このモデル変換サービスでは、サイズが大きく、LOD (詳細レベル) が高いモデルの処理には時間がかかることがあります。 効率を高めるために、3D モデルを前処理して内部の面を削除できます。
 
 ## <a name="detection"></a>検出
+
+> [!VIDEO https://channel9.msdn.com/Shows/Docs-Mixed-Reality/Azure-Object-Anchors-Detection-and-Alignment-Best-Practices/player]
 
 - 提供されているランタイム SDK には、物理オブジェクトを検索して検出するために、ユーザー指定の検索領域が必要です。 検索領域は、境界ボックス、球、視錐台、またはそれらを組み合わせたものにすることができます。 誤検出を回避するために、オブジェクトをカバーするのに十分な大きさの検索領域を設定することをお勧めします。 提供されているサンプル アプリを使用するときは、最も近いサーフェスから約 2 メートル離れたところにオブジェクトの片側が来るところに立って、アプリを起動できます。
 - HoloLens 2 デバイスで Object Anchors アプリを開始する前に、デバイスのメイン設定から、"***[設定] -> [システム] -> [ホログラム]***" を使用して、自分のワークプレースの近くにあるホログラムを削除します。

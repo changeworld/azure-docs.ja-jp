@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 5b40cfcde7aa1771c8a4b9025d35b2dc0c728676
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e302cb9da410487dbea4ec5c5b256c4cb5dd186f
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102039786"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102566381"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用してルート サーバーを作成および構成する
 
@@ -130,7 +130,7 @@ Update-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName RouteServ
 Get-AzRouteServerPeerAdvertisedRoute
 Get-AzRouteServerPeerLearnedRoute
 ```
-## <a name="clean-up"></a>クリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 Azure Route Server が不要になった場合は、これらのコマンドを使用して BGP ピアリングを削除してから、ルート サーバーを削除します。 
 

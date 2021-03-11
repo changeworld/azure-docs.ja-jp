@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a440344a93f9dd610774a33b3960ab1a71f57c65
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 757dfc34e3be12d09b8f965a2bb0295adb712c11
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671582"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504237"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 仮想マシンの SAP HANA の高可用性
 
@@ -52,7 +52,7 @@ Azure VM 上の SAP HANA のようなミッション クリティカルなデー
 - [SAP HANA サービスの自動再起動](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
 - [SAP HANA システム レプリケーションの構成](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/676844172c2442f0bf6c8b080db05ae7.html)
 
-Azure での VM デプロイについて理解することも必要ですが、Azure で可用性アーキテクチャを定義する前に、「[Azure での Windows 仮想マシンの可用性の管理](../../manage-availability.md)」を読むことをお勧めします。
+Azure での VM デプロイについて理解することも必要ですが、Azure で可用性アーキテクチャを定義する前に、「[Azure での Windows 仮想マシンの可用性の管理](../../availability.md)」を読むことをお勧めします。
 
 ## <a name="service-level-agreements-for-azure-components"></a>Azure コンポーネントのサービス レベル アグリーメント
 

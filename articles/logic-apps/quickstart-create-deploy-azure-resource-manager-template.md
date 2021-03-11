@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 06/30/2020
-ms.openlocfilehash: 689582d73e29cb60cc2ee5294b568b5db2f73244
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8cee79efd9be53ddb9d450f643c04f21ae5e7fca
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739328"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102213999"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してロジック アプリ ワークフローを作成してデプロイする
 
@@ -30,9 +30,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-このクイック スタートでは、 [**ロジック アプリの作成**](https://azure.microsoft.com/resources/templates/101-logic-app-create/)テンプレートを使用します。これは、 [Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates) にありますが、長すぎるため、ここには表示できません。 代わりに、テンプレート ギャラリーのクイック スタート テンプレートの ["azuredeploy.json ファイル"](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) を確認できます。
+このクイック スタートでは、[**ロジック アプリの作成**](https://azure.microsoft.com/resources/templates/101-logic-app-create/)テンプレートを使用します。これは、[Azure クイック スタート テンプレート ギャラリー](https://azure.microsoft.com/resources/templates) にありますが、長すぎるため、ここには表示できません。 代わりに、テンプレート ギャラリーのクイック スタート テンプレートの ["azuredeploy.json ファイル"](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) を確認できます。
 
-クイック スタート テンプレートでは、1 時間ごとに実行するように設定されている繰り返しトリガーと、Azure の状態を返す URL を呼び出す HTTP の " [*組み込み* " アクション](../connectors/apis-list.md#connector-types)を使用して、ロジック アプリ ワークフローを作成します。 組み込みアクションは、Azure Logic Apps プラットフォームにネイティブなものです。
+クイック スタート テンプレートでは、1 時間ごとに実行するように設定されている繰り返しトリガーと、Azure の状態を返す URL を呼び出す HTTP の "[*組み込み*" アクション](../connectors/apis-list.md#connector-types)を使用して、ロジック アプリ ワークフローを作成します。 組み込みアクションは、Azure Logic Apps プラットフォームにネイティブなものです。
 
 このテンプレートでは、次の Azure リソースを作成します。
 
@@ -49,7 +49,7 @@ Azure Logic Apps の他のクイック スタート テンプレートについ�
 | オプション | 説明 |
 |--------|-------------|
 | [Azure Portal](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-portal#deploy-template) | Azure 環境で前提条件が満たされており、ARM テンプレートの使用に慣れている場合は、これらの手順が、Azure に直接サインインし、Azure portal でクイック スタート テンプレートを開くのに役立ちます。 詳細については、「[ARM テンプレートと Azure portal でリソースをデプロイする](../azure-resource-manager/templates/deploy-portal.md)」を参照してください。 |
-| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azure コマンド ライン インターフェイス (Azure CLI) は、Azure リソースを作成および管理するためのコマンド セットです。 これらのコマンドを実行するには、Azure CLI バージョン 2.6 以降が必要です。 ご利用の CLI のバージョンを確認するには、「`az --version`」と入力します。 詳細については、以下のトピックを参照してください。 <p><p>- [Azure CLI とは](/cli/azure/what-is-azure-cli?view=azure-cli-latest) <br>- [Azure CLI の概要](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) |
+| [Azure CLI](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-cli#deploy-template) | Azure コマンド ライン インターフェイス (Azure CLI) は、Azure リソースを作成および管理するためのコマンド セットです。 これらのコマンドを実行するには、Azure CLI バージョン 2.6 以降が必要です。 ご利用の CLI のバージョンを確認するには、「`az --version`」と入力します。 詳細については、以下のトピックを参照してください。 <p><p>- [Azure CLI とは](/cli/azure/what-is-azure-cli) <br>- [Azure CLI の概要](/cli/azure/get-started-with-azure-cli) |
 | [Azure PowerShell](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=azure-powershell#deploy-template) | Azure PowerShell には、Azure リソースの管理に Azure Resource Manager モデルを使用する一連のコマンドレットが用意されています。 詳細については、以下のトピックを参照してください。 <p><p>- [Azure PowerShell の概要](/powershell/azure/azurerm/overview) <br>- [Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az) <br>- [Azure PowerShell の概要](/powershell/azure/get-started-azureps) |
 | [Azure Resource Management REST API](../logic-apps/quickstart-create-deploy-azure-resource-manager-template.md?tabs=rest-api#deploy-template) | Azure では、サービス リソースに対する作成、取得、更新、または削除アクセスに使用する HTTP 操作 (メソッド) をサポートするサービス エンドポイントである、Representational State Transfer (REST) API が提供されます。 詳細については、[Azure REST API の概要](/rest/api/azure/)に関するページを参照してください。 |
 |||
@@ -64,7 +64,7 @@ Azure Logic Apps の他のクイック スタート テンプレートについ�
 
 1. ポータルの **[テンプレートを使用したロジック アプリの作成]** ページで、これらの値を入力するか選択します。
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | [値] | 説明 |
    |----------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | 使用する Azure サブスクリプションの名前。 |
    | **リソース グループ** | <*Azure-resource-group-name*> | 新規または既存の Azure リソース グループの名前。 この例では、`Check-Azure-Status-RG` を使用します。 |
@@ -186,7 +186,7 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
    }
    ```
 
-   | プロパティ | 値 | 説明 |
+   | プロパティ | [値] | 説明 |
    |----------|-------|-------------|
    | `location`| <*Azure-region*> | デプロイに使用する Azure リージョン。 この例では、`West US` を使用します。 |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | デプロイに使用するクイック スタート テンプレートの URL の場所: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-詳細については、[Azure CLI: az logic workflow show](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-show) に関する記述を参照してください。
+詳細については、[Azure CLI: az logic workflow show](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show) に関する記述を参照してください。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -303,7 +303,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-詳細については、[Azure CLI: az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) に関する記述を参照してください。
+詳細については、[Azure CLI: az group delete](/cli/azure/group#az-group-delete) に関する記述を参照してください。
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 01/22/2021
+ms.date: 03/05/2021
 ms.author: victorh
-ms.openlocfilehash: 47bced3c3c4f01212af6919d51adc5dfc2e6e1b5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: adbc2a9eb6cd3b054df84911604143ddb711ad20
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200069"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102499137"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure Firewall のアクティブ FTP のサポート
 
@@ -20,12 +20,10 @@ ms.locfileid: "102200069"
 
 既定では、Azure Firewall のアクティブ FTP サポートは、FTP `PORT` コマンドを使用した FTP バウンス攻撃から保護するために無効になっています。 ただし、Azure PowerShell、Azure CLI、または Azure ARM テンプレートを使用してデプロイする場合は、アクティブ FTP を有効にすることができます。
 
-> [!NOTE]
-> 現在、アクティブ FTP は、仮想ネットワークにデプロイされたファイアウォールに対してのみサポートされています。 Azure Virtual WAN サポートは、後で追加される予定です。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell を使用してデプロイするには、`AllowActiveFTP` パラメーターを使用します。 詳細については、[アクティブ FTP の許可を使用してファイアウォールを作成する](/powershell/module/az.network/new-azfirewall?view=azps-5.4.0#16---create-a-firewall-with-allow-active-ftp-)方法に関する記事を参照してください。
+Azure PowerShell を使用してデプロイするには、`AllowActiveFTP` パラメーターを使用します。 詳細については、[アクティブ FTP の許可を使用してファイアウォールを作成する](/powershell/module/az.network/new-azfirewall#16---create-a-firewall-with-allow-active-ftp-)方法に関する記事を参照してください。
 
 ## <a name="azure-cli"></a>Azure CLI
 

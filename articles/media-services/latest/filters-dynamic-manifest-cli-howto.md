@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f75b8055757557eadeb98a45196a116e56c5aa35
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 54e99c645b93bfcb3aee4e81cef3b2b5d6589d95
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093446"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102211466"
 ---
 # <a name="creating-filters-with-cli"></a>CLI を使用してフィルターを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "101093446"
 
 この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-overview.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 
-このトピックでは、ビデオ オン デマンド資産用のフィルターを構成し、Media Services v3 用の CLI を使用して[アカウント フィルター](/cli/azure/ams/account-filter?view=azure-cli-latest)と[資産 フィルター](/cli/azure/ams/asset-filter?view=azure-cli-latest)を作成する方法について説明します。
+このトピックでは、ビデオ オン デマンド資産用のフィルターを構成し、Media Services v3 用の CLI を使用して[アカウント フィルター](/cli/azure/ams/account-filter)と[資産 フィルター](/cli/azure/ams/asset-filter)を作成する方法について説明します。
 
 > [!NOTE]
 > [presentationTimeRange](filters-concept.md#presentationtimerange) を必ず確認してください。
@@ -80,7 +80,7 @@ ms.locfileid: "101093446"
 
 ## <a name="create-account-filters"></a>アカウント フィルターの作成
 
-次の [az ams account-filter](/cli/azure/ams/account-filter?view=azure-cli-latest) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含むアカウント フィルターが作成されます。
+次の [az ams account-filter](/cli/azure/ams/account-filter) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含むアカウント フィルターが作成されます。
 
 このコマンドを使用すると、トラック選択を表す JSON を含むオプションの `--tracks` パラメーターを渡すことができます。  ファイルから JSON を読み込むには、@ {ファイル} を使用します。 Azure CLI をローカルで使用している場合は、ファイルのパス全体を指定します。
 
@@ -92,7 +92,7 @@ az ams account-filter create -a amsAccount -g resourceGroup -n filterName --trac
 
 ## <a name="create-asset-filters"></a>アセットフィルターの作成
 
-次の [az ams asset-filter](/cli/azure/ams/asset-filter?view=azure-cli-latest) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含む資産フィルターが作成されます。 
+次の [az ams asset-filter](/cli/azure/ams/asset-filter) コマンドでは、[前に定義した](#define-a-filter)フィルター トラック選択を含む資産フィルターが作成されます。 
 
 ```azurecli
 az ams asset-filter create -a amsAccount -g resourceGroup -n filterName --asset-name assetName --tracks @tracks.json
@@ -132,4 +132,4 @@ az ams streaming-locator create -a amsAccount -g resourceGroup -n streamingLocat
 
 ## <a name="see-also"></a>参照
 
-[Azure CLI](/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](/cli/azure/ams)
