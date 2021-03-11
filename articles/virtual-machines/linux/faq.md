@@ -2,17 +2,18 @@
 title: Azure の Linux VM に関してよく寄せられる質問
 description: Resource Manager モデルで作成された Linux 仮想マシンについてよく寄せられる質問への回答を示します。
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: f55b5d9093e2e8e78d3841c332d67f26e5106d38
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 22be45403a7863328c5f6f2c883886296b734914
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200823"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102549092"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Linux 仮想マシンについてのよく寄せられる質問
 この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。 このトピックの Windows バージョンについては、「[Windows Virtual Machines についてのよく寄せられる質問](../windows/faq.md)」を参照してください。

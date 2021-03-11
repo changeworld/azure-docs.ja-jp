@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e867fee753fb9db530db2b2015c3aea9280bc16f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108673"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448646"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -357,7 +357,7 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 | id | 既定値 |
 | -- | ------------- |
 |intro_msg| 確認が必要です。 [送信] ボタンをクリックしてください。|
-|success_send_code_msg | 確認コードが受信トレイに送信されました。 次の入力ボックスにコピーしてください。|
+|success_send_code_msg | 確認コードが送信されました。 次の入力ボックスにコピーしてください。|
 |failure_send_code_msg | ご使用のメールアドレスの確認に問題があります。 有効なメール アドレスを入力して、もう一度やり直してください。|
 |success_verify_code_msg | 電子メールアドレスが確認されました。 続行することができるようになりました。|
 |failure_verify_code_msg | ご使用のメールアドレスの確認に問題があります。 もう一度やり直してください。|

@@ -13,24 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 8c03f6b882c8b1a64c9f256493c5d586b5fa0f89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6d3f96ed60ca784402b6d24eea7234f37c4fb959
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931638"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449783"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Defender for IoT の C ベースのセキュリティ エージェントをデプロイする
 
 このガイドでは、Defender for IoT の C ベースのセキュリティ エージェントを Linux にインストールおよびデプロイする方法について説明します。
 
-このガイドでは、以下の方法について説明します。
-
-> [!div class="checklist"]
-> * インストール
-> * デプロイの確認
-> * エージェントのアンインストール
-> * トラブルシューティング
+- インストール
+- デプロイの確認
+- エージェントのアンインストール
+- トラブルシューティング
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +45,7 @@ ms.locfileid: "90931638"
 
 1. パッケージの内容を展開し、 _/src/installation_ フォルダーに移動します。
 
-1. 以下のコマンドを実行して、**InstallSecurityAgent スクリプト**に実行アクセス許可を追加します。
+1. 以下のコマンドを実行して、**InstallSecurityAgent スクリプト** に実行アクセス許可を追加します。
 
    ```
    chmod +x InstallSecurityAgent.sh
@@ -68,7 +65,7 @@ ms.locfileid: "90931638"
 
 1. サービス ユーザーを追加する (対話型サインインは無効)。
 
-1. エージェントを**デーモン**としてインストールする - デバイスがサービス管理に **systemd** を使用すると想定します。
+1. エージェントを **デーモン** としてインストールする - デバイスがサービス管理に **systemd** を使用すると想定します。
 
 1. 指定された認証パラメーターでエージェントを構成する。
 

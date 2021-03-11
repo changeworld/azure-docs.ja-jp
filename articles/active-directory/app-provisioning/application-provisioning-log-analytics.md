@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 0593d2b675da533035a70c66784812543909c9db
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f656f55b0c74103053f110b8c66645d353db9fbf
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574198"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561570"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>プロビジョニングを Azure Monitor ログと統合する方法の概要
 
@@ -121,4 +121,4 @@ Microsoft では、アプリケーションのプロビジョニングのクエ�
 - [Azure Monitor ログでクエリの使用を開始する](../../azure-monitor/logs/get-started-queries.md)
 - [Create and manage alert groups in the Azure portal](../../azure-monitor/alerts/action-groups.md)
 - [Azure Active Directory ログ分析用のビューのインストールと使用](../reports-monitoring/howto-install-use-log-analytics-views.md)
-- [プロビジョニング ログ API](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta.md)
+- [プロビジョニング ログ API](/graph/api/resources/provisioningobjectsummary?preserve-view=true&view=graph-rest-beta)

@@ -2,18 +2,18 @@
 title: チュートリアル - Azure PowerShell を使用して Windows VM を作成および管理する
 description: このチュートリアルでは、Azure PowerShell を使用して、Azure で Windows VM を作成し、管理する方法について説明します。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: b9b7fee32ec8d844452cfcb5eba29859467105e4
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ae298562b5d3306cf6c20b4c2fb7b378ba99c986
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520763"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561621"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM を作成および管理する
 

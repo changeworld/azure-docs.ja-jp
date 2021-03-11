@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
-ms.openlocfilehash: 9367cf4324d577e4dd44cb9294a8b82b1bceaf74
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 7be6cf1df15d7afd7cb9447be68ff70ff7b14d03
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522955"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449222"
 ---
 # <a name="security-agent-troubleshoot-guide-linux"></a>セキュリティ エージェントのトラブルシューティング ガイド (Linux)
 
@@ -28,10 +28,9 @@ Azure Defender for IoT エージェントは、インストールの直後に自
 
 このトラブルシューティング ガイドでは、次の方法について説明します。
 
-> [!div class="checklist"]
-> * セキュリティ エージェントが実行されているかどうかを確認する
-> * セキュリティ エージェントのエラーを取得する
-> * セキュリティ エージェントのエラーについて理解し、修復を行う
+- セキュリティ エージェントが実行されているかどうかを確認する
+- セキュリティ エージェントのエラーを取得する
+- セキュリティ エージェントのエラーについて理解し、修復を行う
 
 ## <a name="validate-if-the-security-agent-is-running"></a>セキュリティ エージェントが実行されているかどうかを確認する
 
@@ -108,4 +107,10 @@ Defender for IoT agent encountered an error! Error in: {Error Code}, reason: {Er
 
 ## <a name="next-steps"></a>次の手順
 
-[Defender for IoT サービスの概要を確認する](overview.md) [Defender for IoT のアーキテクチャを確認する](architecture.md) [Defender for IoT サービスを有効にする](quickstart-onboard-iot-hub.md) [Defender for IoT サービスの FAQ を確認する](resources-frequently-asked-questions.md) [未加工のセキュリティ データにアクセスする方法を学習する](how-to-security-data-access.md) [推奨事項について理解する](concept-recommendations.md) [セキュリティ アラートについて理解する](concept-security-alerts.md)
+- Defender for IoT サービスの[概要](overview.md)を確認する
+- Defender for IoT の[アーキテクチャ](architecture.md)を確認します
+- Defender for IoT [サービス](quickstart-onboard-iot-hub.md)を有効にする
+- Defender for IoT サービスの [FAQ](resources-frequently-asked-questions.md) を確認する
+- [未加工のセキュリティ データ](how-to-security-data-access.md)にアクセスする方法を学習します
+- [レコメンデーション](concept-recommendations.md)について理解します
+- セキュリティの[アラート](concept-security-alerts.md)について理解します

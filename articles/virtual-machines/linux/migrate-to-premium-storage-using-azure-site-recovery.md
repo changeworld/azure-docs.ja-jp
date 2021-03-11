@@ -2,17 +2,18 @@
 title: Azure Site Recovery で Linux VM を Azure Premium Storage に移行する
 description: Site Recovery を使用して既存の仮想マシンを Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 author: luywang
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: e00496ad623d534e1fbdcb60f22a1e36f77c4212
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: 8a03637352762646b0f209263769dbdb1ff14b21
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99806174"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562624"
 ---
 # <a name="use-site-recovery-to-migrate-to-premium-storage"></a>Site Recovery を使用して Premium Storage に移行する
 
@@ -165,7 +166,7 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 
    ![[ソース] が選択されている [レプリケーションを有効にする] ウィンドウ][13]
 
-Azure Storage 環境を設計する場合は、可用性セット内の VM ごとに別個のストレージ アカウントを使用することをお勧めします。 ストレージ層のベスト プラクティスに従って、[可用性セットごとに複数のストレージ アカウントを使用する](../manage-availability.md)ことをお勧めします。 VM ディスクを複数のストレージ アカウントに分散することで、ストレージの可用性を向上させ、I/O を Azure ストレージ インフラストラクチャに分散させることができます。
+Azure Storage 環境を設計する場合は、可用性セット内の VM ごとに別個のストレージ アカウントを使用することをお勧めします。 ストレージ層のベスト プラクティスに従って、[可用性セットごとに複数のストレージ アカウントを使用する](../availability.md)ことをお勧めします。 VM ディスクを複数のストレージ アカウントに分散することで、ストレージの可用性を向上させ、I/O を Azure ストレージ インフラストラクチャに分散させることができます。
 
 VM が 1 つの可用性セットに存在する場合には、すべての VM のディスクを 1 つのストレージ アカウントにレプリケートするのではなく、複数の VM を複数回移行することを強くお勧めします。 こうすると、同じ可用性セット内の VM が単一のストレージ アカウントを共有しません。 **[レプリケーションを有効にする]** ウィンドウを使用して、各 VM のターゲット ストレージ アカウントを 1 つずつ設定します。
  
