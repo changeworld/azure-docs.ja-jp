@@ -13,6 +13,9 @@
         - name: Any-to-Any ルーティング
           displayName: Resource Manager Any-to-any routing
           href: quickstart-any-to-any-template.md
+        - name: 共有サービスの VNet へのルート
+          displayName: Resource Manager route to shared services VNets
+          href: quickstart-route-shared-services-vnet-template.md
 - name: チュートリアル
   expanded: true
   items:
@@ -36,7 +39,7 @@
           href: virtual-wan-locations-partners.md
         - name: パートナー向けの自動化ガイドライン
           href: virtual-wan-configure-automation-providers.md
-    - name: Architecture
+    - name: アーキテクチャ
       items:
         - name: Virtual WAN に移行する
           href: migrate-from-hub-spoke-topology.md
@@ -162,7 +165,7 @@
               href: virtual-wan-route-table-nva-portal.md
             - name: Azure PowerShell
               href: virtual-wan-route-table-nva.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: Azure Firewall をハブにデプロイする
           href: howto-firewall.md
