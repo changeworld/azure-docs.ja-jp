@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 59cedb25295770ba4ae4a33aac3287c5fed1297d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f4477a09f151695b826d0becf28e92ceaf3f9e85
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381496"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453208"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Queue storage トリガー
 
@@ -407,7 +407,7 @@ public class QueueTriggerDemo {
 
 # <a name="java"></a>[Java](#tab/java)
 
-[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable&preserve-view=true) 注釈を使用すると、関数をトリガーしたキュー メッセージにアクセスできます。
+[QueueTrigger](/java/api/com.microsoft.azure.functions.annotation.queuetrigger) 注釈を使用すると、関数をトリガーしたキュー メッセージにアクセスできます。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -419,7 +419,7 @@ public class QueueTriggerDemo {
 
 # <a name="python"></a>[Python](#tab/python)
 
-[QueueMessage](/python/api/azure-functions/azure.functions.queuemessage?view=azure-python&preserve-view=true) として型指定されたパラメーターを使用して、キュー メッセージにアクセスします。
+[QueueMessage](/python/api/azure-functions/azure.functions.queuemessage) として型指定されたパラメーターを使用して、キュー メッセージにアクセスします。
 
 ---
 

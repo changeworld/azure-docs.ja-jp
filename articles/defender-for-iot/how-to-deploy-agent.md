@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 2634ed819b8818632c58b9e471b0f26190e5f16b
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 89ecf26778433a3f075f76905183f3fe866cb5db
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339967"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102447267"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>IoT デバイスにセキュリティ エージェントを選択してデプロイする
 
@@ -28,11 +28,9 @@ Defender for IoT を使用すると、IoT デバイスを監視してデータ�
 エージェントはオープン ソース プロジェクトとして開発されており、2 つのフレーバーがあります。 <br> それは、[C](https://aka.ms/iot-security-github-c) と [C#](https://aka.ms/iot-security-github-cs) です。
 
 この記事では、次のことについて説明します。
-
-> [!div class="checklist"]
-> * セキュリティ エージェントのフレーバーを比較します
-> * サポートされているエージェント プラットフォームを確認します
-> * ソリューションに適したエージェントのフレーバーを選択します
+- セキュリティ エージェントのフレーバーを比較します
+- サポートされているエージェント プラットフォームを確認します
+- ソリューションに適したエージェントのフレーバーを選択します
 
 ## <a name="understand-security-agent-options"></a>セキュリティ エージェントのオプションを理解する
 
