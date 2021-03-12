@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5a00ba8000f33e8e50b1a5d01f40a68a7fe2442d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 187c1e60d97e0bebb3b6216b0055ddffe6e6cb4c
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956193"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102454383"
 ---
 # <a name="apple-fairplay-license-requirements-and-configuration"></a>Apple FairPlay ライセンスの要件と構成
 
@@ -86,7 +86,7 @@ FairPlay ライセンスを構成するには、Media Services API を使用し�
 > [!NOTE]
 > 通常、証明書と ASK は 1 組だけなので、FairPlay ポリシー オプションを構成する必要があるのは 1 回のみです。
 
-次の例では、[Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) が使用されてライセンスが構成されています。
+次の例では、[Media Services .NET SDK](/dotnet/api/microsoft.azure.management.media.models) が使用されてライセンスが構成されています。
 
 ```csharp
 private static ContentKeyPolicyFairPlayConfiguration ConfigureFairPlayPolicyOptions()
