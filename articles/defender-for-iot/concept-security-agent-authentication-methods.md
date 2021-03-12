@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: c72fa87201fb0d7fdd526f0e6f4eeb2c35192fc2
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 85a5edc1485cb5a1eeb4428b201380ad9ca89422
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521647"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449171"
 ---
 # <a name="security-agent-authentication-methods"></a>セキュリティ エージェントの認証方法
 
@@ -26,9 +26,8 @@ ms.locfileid: "100521647"
 
 IoT ハブの Defender for IoT にオンボードされるデバイスごとに、セキュリティ モジュールが必要です。 デバイスを認証するために、Defender for IoT では 2 つの方法のいずれかを使用できます。 既存の IoT ソリューションにとって最適な方法を選択してください。
 
-> [!div class="checklist"]
-> * SecurityModule オプション
-> * デバイス オプション
+- SecurityModule オプション
+- デバイス オプション
 
 ## <a name="authentication-methods"></a>認証方法
 
@@ -101,7 +100,8 @@ Defender for IoT AzureIoTSecurity エージェントで認証を実行するた�
     "HostName" : ""
 }
 ```
-## <a name="next-steps"></a>次のステップ
+
+## <a name="see-also"></a>関連項目
 
 - [セキュリティ エージェントの概要](security-agent-architecture.md)
 - [セキュリティ エージェントをデプロイする](how-to-deploy-agent.md)
