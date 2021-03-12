@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d007c104dc53683d49547db582e8de6981ab921f
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 11c65498d5a31c2e2ee997bdaf18037b1f0f9060
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093430"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455214"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Media Services .NET SDK を使用してフィルターを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "101093430"
 
 この機能と、この機能が使用されているシナリオの詳細については、[動的マニフェスト](filters-dynamic-manifest-overview.md)と[フィルター](filters-concept.md)に関する記事を参照してください。
 
-このトピックでは、Media Services .NET SDK を使用してビデオ オン デマンド アセットにフィルターを定義し、[アカウント フィルター](/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet)と[アセット フィルター](/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)を作成する方法について説明します。 
+このトピックでは、Media Services .NET SDK を使用してビデオ オン デマンド アセットにフィルターを定義し、[アカウント フィルター](/dotnet/api/microsoft.azure.management.media.models.accountfilter)と[アセット フィルター](/dotnet/api/microsoft.azure.management.media.models.assetfilter)を作成する方法について説明します。 
 
 > [!NOTE]
 > [presentationTimeRange](filters-concept.md#presentationtimerange) を必ず確認してください。
@@ -43,7 +43,7 @@ ms.locfileid: "101093430"
 
 ## <a name="define-a-filter"></a>フィルターの定義  
 
-.NET では、[FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) クラスと [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) クラスを使用してトラックの選択を構成します。 
+.NET では、[FilterTrackSelection](/dotnet/api/microsoft.azure.management.media.models.filtertrackselection) クラスと [FilterTrackPropertyCondition](/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition) クラスを使用してトラックの選択を構成します。 
 
 次のコードでは、EC-3 であるオーディオ トラックと、0-1000000 の範囲でビットレートであるビデオ トラックを含むフィルターが定義されています。
 
