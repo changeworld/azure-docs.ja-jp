@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 44604f910b3ee6e6ce1b21c736c6ad1f0443e996
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880171"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102500038"
 ---
 # <a name="security-control-secure-configuration"></a>セキュリティ コントロールセキュリティで保護された構成
 
@@ -30,7 +30,7 @@ ms.locfileid: "98880171"
 
 また、ご利用の Azure リソース用の安全な構成基準として Azure Security Center からの推奨事項を使用することもできます。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 - [チュートリアル:コンプライアンスを強制するポリシーの作成と管理](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -114,7 +114,7 @@ Azure コンピューティング リソースに対する脆弱性評価の実�
 
 - [Azure RBAC について](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-- [コンテナー レジストリの Azure RBAC について](../../container-registry/container-registry-roles.md)
+- [コンテナー レジストリの Azure RBAC を理解する](../../container-registry/container-registry-roles.md)
 
 - [Azure RBAC を構成する方法](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 

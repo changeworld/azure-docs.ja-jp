@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0dc015ee1798bb4b9ce632d11f952178156155d6
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 23b0f92a4beca6e1c986993a42cc8ac66e619177
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955188"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102455435"
 ---
 # <a name="media-services-v3-with-playready-license-template"></a>Media Services v3 と PlayReady ライセンス テンプレート
 
@@ -65,7 +65,7 @@ XML は、「[PlayReady ライセンス テンプレート XML スキーマ](#sc
 
 Media Services には、PlayReady ライセンス テンプレートを構成するために使用できる型が用意されています。 
 
-次のスニペットでは、Media Services .NET クラスを使用して PlayReady ライセンス テンプレートを構成します。 これらのクラスは、[Microsoft.Azure.Management.Media.Models](/dotnet/api/microsoft.azure.management.media.models?view=azure-dotnet) 名前空間に定義されています。 このスニペットでは、PlayReady ライセンスの PlayRight を構成します。 PlayRight により、ユーザーは、ライセンスおよび PlayRight 自体で構成された任意の (再生固有ポリシーに関する) 制限の対象となるコンテンツを再生できるようになります。 PlayRight に関するポリシーの多くは、コンテンツを再生できる出力の種類を制御する出力制限に関係しています。 また、特定の出力が使用されたときに適用する必要がある制限も含まれます。 たとえば、DigitalVideoOnlyContentRestriction が有効な場合、DRM ランタイムはデジタル出力でのみビデオを表示できます (アナログ ビデオ出力はコンテンツを渡すことができません)。
+次のスニペットでは、Media Services .NET クラスを使用して PlayReady ライセンス テンプレートを構成します。 これらのクラスは、[Microsoft.Azure.Management.Media.Models](/dotnet/api/microsoft.azure.management.media.models) 名前空間に定義されています。 このスニペットでは、PlayReady ライセンスの PlayRight を構成します。 PlayRight により、ユーザーは、ライセンスおよび PlayRight 自体で構成された任意の (再生固有ポリシーに関する) 制限の対象となるコンテンツを再生できるようになります。 PlayRight に関するポリシーの多くは、コンテンツを再生できる出力の種類を制御する出力制限に関係しています。 また、特定の出力が使用されたときに適用する必要がある制限も含まれます。 たとえば、DigitalVideoOnlyContentRestriction が有効な場合、DRM ランタイムはデジタル出力でのみビデオを表示できます (アナログ ビデオ出力はコンテンツを渡すことができません)。
 
 > [!IMPORTANT]
 > PlayReady ライセンスには、強力な制限があります。 出力保護が極端に限定的な場合、一部のクライアントでコンテンツを再生できなくなる可能性があります。 詳細については、[PlayReady のコンプライアンス ルール](https://www.microsoft.com/playready/licensing/compliance/)に関するドキュメントを参照してください。

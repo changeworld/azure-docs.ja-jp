@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 39cccd270a4947820640940ae43fa0feb3e52028
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 9ef45e804b593f36171907395c564c8c6058c286
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954481"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453735"
 ---
 # <a name="media-services-v3-with-widevine-license-template-overview"></a>Widevine ライセンス テンプレートを使用した Media Services v3 の概要
 
@@ -67,7 +67,7 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 
 ## <a name="json-message"></a>JSON メッセージ
 
-| 名前 | 値 | 説明 |
+| 名前 | [値] | 説明 |
 | --- | --- | --- |
 | payload |Base64 でエンコードされた文字列 |クライアントから送信されたライセンス要求です。 |
 | content_id |Base64 でエンコードされた文字列 |各 content_key_specs.track_type のキー ID およびコンテンツ キーを取得するために使用される識別子です。 |
@@ -85,7 +85,7 @@ Widevine ライセンス要求の形式は、JSON メッセージです。
 
 use_policy_overrides_exclusively オプションに関係なく、各 content_key_specs 値がすべてのトラックに対して指定されている必要があります。 
 
-| 名前 | 値 | 説明 |
+| 名前 | [値] | 説明 |
 | --- | --- | --- |
 | content_key_specs track_type |string |トラックの種類の名前です。 ライセンス要求で content_key_specs が指定されている場合は、すべてのトラックの種類を明示的に指定します。 指定しないと、直前の 10 秒間を再生できません。 |
 | content_key_specs  <br/> security_level |uint32 |再生に関するクライアントの堅牢性の要件を定義します。 <br/> - ソフトウェアベースのホワイトボックス暗号化が必須です。 <br/> - ソフトウェア暗号化と難読化デコーダーが必須です。 <br/> - キー マテリアルと暗号化の操作を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 <br/> - コンテンツの暗号化とデコードを、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。  <br/> - 暗号化、デコード、およびメディア (圧縮済みおよび圧縮解除済み) のすべての処理を、ハードウェアを基盤にした信頼できる実行環境で実行する必要があります。 |
@@ -94,7 +94,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 | content_key_specs.key_id |Base64 でエンコードされた文字列バイナリ、16 バイト |キーの一意識別子です。 |
 
 ## <a name="policy-overrides"></a>ポリシーのオーバーライド
-| 名前 | 値 | 説明 |
+| 名前 | [値] | 説明 |
 | --- | --- | --- |
 | policy_overrides&#46;can_play |ブール値、true または false |コンテンツの再生が許可されていることを示します。 既定値は false です。 |
 | policy_overrides&#46;can_persist |ブール値、true または false |オフラインで使用するために、ライセンスを非揮発性ストレージに保持できることを示します。 既定値は false です。 |
@@ -109,7 +109,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 | policy_overrides&#46;renew_with_usage |ブール値、true または false |使用が開始されたときに、更新のためにライセンスが送信されることを示します。 このフィールドは、can_renew が true の場合にのみ使用されます。 |
 
 ## <a name="session-initialization"></a>セッションの初期化
-| 名前 | 値 | 説明 |
+| 名前 | [値] | 説明 |
 | --- | --- | --- |
 | provider_session_token |Base64 でエンコードされた文字列 |このセッション トークンはライセンスに渡され、後続の更新に含まれます。 セッション トークンは、セッションの範囲を超えて保持されません。 |
 | provider_client_token |Base64 でエンコードされた文字列 |ライセンスの応答で返信されるクライアント トークンです。 ライセンス要求にクライアント トークンが含まれる場合、この値は無視されます。 クライアント トークンは、ライセンス セッションの範囲を超えて保持されます。 |
@@ -117,7 +117,7 @@ use_policy_overrides_exclusively オプションに関係なく、各 content_ke
 
 ## <a name="configure-your-widevine-license-with-net"></a>.NET を使用した Widevine ライセンスの構成 
 
-Media Services には、Widevine ライセンスを構成するためのクラスが用意されています。 ライセンスを構築するには、JSON を [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate) に渡します。
+Media Services には、Widevine ライセンスを構成するためのクラスが用意されています。 ライセンスを構築するには、JSON を [WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate) に渡します。
 
 テンプレートを構成するには、次の操作を実行できます。
 
@@ -263,7 +263,7 @@ public class WidevineTemplate
 
 #### <a name="configure-the-license"></a>ライセンスの構成
 
-前のセクションで定義したクラスを使用して、[WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate) を構成するための JSON を作成します。
+前のセクションで定義したクラスを使用して、[WidevineTemplate](/dotnet/api/microsoft.azure.management.media.models.contentkeypolicywidevineconfiguration.widevinetemplate#Microsoft_Azure_Management_Media_Models_ContentKeyPolicyWidevineConfiguration_WidevineTemplate) を構成するための JSON を作成します。
 
 ```csharp
 private static ContentKeyPolicyWidevineConfiguration ConfigureWidevineLicenseTempate()
