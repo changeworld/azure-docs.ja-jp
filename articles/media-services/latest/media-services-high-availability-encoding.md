@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 81feb5b95578cedea7bf368aa1e0d6c2e9117077
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955853"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102456013"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services とビデオ オン デマンド(VOD) を使用した高可用性
 
@@ -40,7 +40,7 @@ Media Services とビデオ オン デマンド (VOD) を使用した高可用�
 | :--: | ---- | ----------- |
 |![これは Media services アカウントのアイコンです。](media/media-services-high-availability-encoding/azure-media-services.svg)| Media Services アカウント | **説明:**<br>Media Services アカウントは、Azure でメディア コンテンツの管理、暗号化、エンコード、分析、およびストリーミングを行うための出発点です。 これは Azure Storage アカウント リソースに関連付けられています。 このアカウントおよび関連するすべてのストレージは、同じ Azure サブスクリプションに存在する必要があります。<br><br>**VOD での使用:**<br>これらはビデオ資産とオーディオ資産のエンコードと配信に使用するサービスです。  高可用性を実現するには、異なるリージョンにそれぞれ 2 つ以上の Media Services アカウントを設定します。 [Azure Media Services](media-services-overview.md) の詳細を確認してください。 |
 |![これはストレージ アカウントのアイコンです。](media/media-services-high-availability-encoding/storage-account.svg)| ストレージ アカウント | **説明:**<br>Azure ストレージ アカウントには、すべての Azure Storage データ オブジェクト (BLOB、ファイル、キュー、テーブル、およびディスク) が含まれます。 世界中のどこからでも、HTTP または HTTPS 経由でデータにアクセスできます。<br><br>各リージョンの各 Media Services アカウントには、同じリージョンにストレージ アカウントがあります。<br><br>**VOD での使用:**<br>VOD の処理とストリーミングのための入力データと出力データを格納できます。 [Azure Storage](../../storage/common/storage-introduction.md) の詳細を確認してください。 |
-|![これは Azure Storage キューのアイコンです。](media/media-services-high-availability-encoding/storage-account-queue.svg)| Azure Storage キュー | **説明:**<br>Azure Queue Storage は、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。<br><br>**VOD での使用:**<br>キューを使用してメッセージを送受信し、異なるモジュール間でアクティビティを調整できます。 このサンプルでは Azure Storage キューを使用していますが、Azure には、ユーザーのニーズをよりよく満たす可能性がある Service Bus や Service Fabric リライアブル キューなどの他の種類のキューが用意されています。 [Azure Queue](../../storage/queues/storage-queues-introduction.md) の詳細を確認してください。 |
+|![これは Azure Storage キューのアイコンです。](media/media-services-high-availability-encoding/storage-account-queue.svg)| Azure Storage キュー | **説明:**<br>Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。<br><br>**VOD での使用:**<br>キューを使用してメッセージを送受信し、異なるモジュール間でアクティビティを調整できます。 このサンプルでは Azure Storage キューを使用していますが、Azure には、ユーザーのニーズをよりよく満たす可能性がある Service Bus や Service Fabric リライアブル キューなどの他の種類のキューが用意されています。 [Azure Queue](../../storage/queues/storage-queues-introduction.md) の詳細を確認してください。 |
 |![これは Azure Cosmos DB のアイコンです。](media/media-services-high-availability-encoding/azure-cosmos-db.svg)| Azure Cosmos DB  | **説明:**<br>Azure Cosmos DB は Microsoft のグローバル分散マルチモデル データベース サービスです。これにより、世界中の任意の数の Azure リージョン全体で、スループットとストレージを個別にスケーリングできるようになります。<br><br>**VOD での使用:**<br>テーブルを使用して、ジョブ出力状態レコードを格納し、各 Media Services インスタンスの正常性状態を追跡できます。 Media Services API の各呼び出しの状態を追跡し、記録することもできます。 [Azure Cosmos DB](../../cosmos-db/introduction.md) の詳細を確認してください。  |
 |![これはマネージド ID のアイコンです。](media/media-services-high-availability-encoding/managed-identity.svg)| マネージド ID | **説明:**<br>マネージド ID は、Azure AD で自動マネージド ID を提供する Azure AD の機能です。 これを使用すれば、コードに資格情報を格納しなくても、Key Vault を含む、Azure AD の認証をサポートする様々なサービスに対して認証を行うことができます。<br><br>**VOD での使用:**<br>Azure Functions はマネージド ID を使用して、Key Vault に接続するために Media Services インスタンスに対して認証できます。 [マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認してください。 |
 |![これは Key Vault のアイコンです。](media/media-services-high-availability-encoding/key-vault.svg)| Key Vault | **説明:**<br>Azure Key Vault を使用すると、トークン、パスワード、証明書、API キー、その他のシークレットを安全に格納し、それらへのアクセスを厳密に制御できます。 これはキー管理ソリューションとしても使用できます。 Azure Key Vault により、データの暗号化に使用される暗号化キーの作成と制御が簡単になります。 これは、Azure および内部の接続されているリソースで使用するためのパブリックおよびプライベートのトランスポート層セキュリティ/Secure Sockets Layer (TLS/SSL) 証明書を容易にプロビジョニング、管理、デプロイできます。 シークレットとキーは、ソフトウェアまたは FIPS 140-2 レベル 2 検証済み HSM で保護できます。<br><br>**VOD での使用:**<br>Key Vault を使用して、アプリケーションのサービス プリンシパルのアクセス ポリシーを設定できます。  ストレージ アカウントに接続文字列を格納するためにこれを使用できます。 Key Vault を使用して、ストレージ アカウントと Cosmos DB に接続文字列を格納します。 また、Key Vault を使用して、クラスター構成全体を格納することもできます。 Media Service インスタンスごとに、サブスクリプション ID、リソース グループ名、アカウント名を格納できます。 詳細については、サンプルでの使用方法を参照してください。 [Key Vault](../../key-vault/general/overview.md) の詳細を確認してください。 |
@@ -59,23 +59,23 @@ Media Services とビデオ オン デマンド (VOD) を使用した高可用�
 
 ### <a name="regions"></a>リージョン
 
-* 2 つ (以上) の Azure Media Services アカウントを[作成](https://review.docs.microsoft.com/azure/media-services/latest/create-account-cli-how-to)します。 2 つのアカウントは所属するリージョンが異なっている必要があります。 詳細については、「[Azure Media Services サービスがデプロイされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)」を参照してください。
-* ジョブを送信する予定のリージョンにメディアをアップロードします。 エンコードを開始する方法の詳細については、「[HTTPS URL からジョブの入力を作成する](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-http-how-to)」または「[ローカル ファイルからジョブの入力を作成する](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-local-file-how-to)」を参照してください。
-* その後、[ジョブ](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept)を別のリージョンに再送信する必要がある場合、`JobInputHttp` を使用するか、`Copy-Blob` を使用してソース アセット コンテナーから代替リージョンのアセット コンテナーにデータをコピーします。
+* 2 つ (以上) の Azure Media Services アカウントを[作成](/azure/media-services/latest/create-account-cli-how-to)します。 2 つのアカウントは所属するリージョンが異なっている必要があります。 詳細については、「[Azure Media Services サービスがデプロイされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)」を参照してください。
+* ジョブを送信する予定のリージョンにメディアをアップロードします。 エンコードを開始する方法の詳細については、「[HTTPS URL からジョブの入力を作成する](/azure/media-services/latest/job-input-from-http-how-to)」または「[ローカル ファイルからジョブの入力を作成する](/azure/media-services/latest/job-input-from-local-file-how-to)」を参照してください。
+* その後、[ジョブ](/azure/media-services/latest/transforms-jobs-concept)を別のリージョンに再送信する必要がある場合、`JobInputHttp` を使用するか、`Copy-Blob` を使用してソース アセット コンテナーから代替リージョンのアセット コンテナーにデータをコピーします。
 
 ### <a name="monitoring"></a>監視
 
 * Azure Event Grid を介して各アカウントで `JobStateChange` メッセージをサブスクライブします。
-    * Azure portal または CLI を使用して[イベントに登録する](https://review.docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events) (Event Grid Management SDK を使用して行うこともできます)
+    * Azure portal または CLI を使用して[イベントに登録する](/azure/media-services/latest/reacting-to-media-services-events) (Event Grid Management SDK を使用して行うこともできます)
     * [Microsoft.Azure.EventGrid SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) を使用する (ネイティブで Media Services イベントをサポートしています)。
     * Azure Functions を介して Event Grid イベントを使用することもできます。
 
     詳細情報:
 
-    * [オーディオ分析サンプル](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept)を参照すると、Azure Event Grid メッセージが何らかの理由で遅延した場合のフォールバックを追加するなど、Azure Event Grid でジョブを監視する方法がわかります。
-    * [Media Services 用の Azure Event Grid スキーマ](https://review.docs.microsoft.com/azure/media-services/latest/media-services-event-schemas)をご覧ください。
+    * [オーディオ分析サンプル](/azure/media-services/latest/transforms-jobs-concept)を参照すると、Azure Event Grid メッセージが何らかの理由で遅延した場合のフォールバックを追加するなど、Azure Event Grid でジョブを監視する方法がわかります。
+    * [Media Services 用の Azure Event Grid スキーマ](/azure/media-services/latest/media-services-event-schemas)をご覧ください。
 
-* [ジョブ](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept)を作成する場合:
+* [ジョブ](/azure/media-services/latest/transforms-jobs-concept)を作成する場合:
     * 現在使用しているアカウントの一覧からアカウントをランダムに選択します (通常、この一覧には両方のアカウントが含まれますが、問題が検出された場合は、アカウントを 1 つだけ含めることができます)。 一覧が空の場合は、オペレーターが調査できるようにアラートを生成します。
     * 実行中の各ジョブと、使用されているリージョン/アカウントを追跡するレコードを作成します。
 * ジョブがスケジュールされた状態に到達したことを示す通知を `JobStateChange` ハンドラーが受け取ったら、ジョブがスケジュールの状態になった時刻と、使用されているリージョンとアカウントを記録します。
