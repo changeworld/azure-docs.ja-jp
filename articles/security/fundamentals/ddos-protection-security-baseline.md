@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 21ae8986761483658f5ac4254e4bb378e0bc4ba9
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 34b06d2b74c0e13e924ae14e85ccfde0c9847793
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100575054"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102554957"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard 用の Azure セキュリティ ベースライン
 
@@ -98,9 +98,9 @@ Log Analytics ワークスペースを Azure Sentinel にオンボードしま�
 
 - [Azure DDoS Protection のアクセス許可を理解する](../../ddos-protection/manage-permissions.md)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 **Azure Security Center の監視**: はい
 
@@ -294,7 +294,7 @@ Azure AD サインイン アクティビティ、監査、リスク イベント
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription)
 
 **Azure Security Center の監視**: 適用なし
 
@@ -386,7 +386,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:Azure Policy を使用して、Azure DDoS Protection の標準的なセキュリティ構成を定義して実装します。 Recovery Services コンテナーの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias)
 
 - [Azure Policy を構成して管理する方法](../../governance/policy/tutorials/create-and-manage.md)
 
