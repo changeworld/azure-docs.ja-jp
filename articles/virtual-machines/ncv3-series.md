@@ -3,16 +3,16 @@ title: NCv3 シリーズ - Azure Virtual Machines
 description: NCv3 シリーズ VM の仕様。
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 313ca9ddb893ad2d84fdb3f808bdee38dfc9e846
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 7206ebfc1ad44f4deb2e98ddbeba633463f17ee5
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119758"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102562284"
 ---
 # <a name="ncv3-series"></a>NCv3 シリーズ
 
