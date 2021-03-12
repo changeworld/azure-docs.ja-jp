@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 534f9e76cfca4037634cfca089f1131984456636
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: f54156ed8cc4c049e10bada77a66eee084f7c5fb
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820706"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102453276"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -74,8 +74,8 @@ PowerShell 5.1 に Az または AzureRM モジュールをインストールす�
 
 1. 管理者特権のプロンプトで「**powershell**」と入力して、Enter キーを押します。
 2. 次のドキュメントに従って、最新の Az または AzureRM モジュールをインストールします。
-    - [Az モジュール (.NET 4.7.2 が必要)](/powershell/azure/install-az-ps?viewFallbackFrom=azps-1.1.0)
-    - [AzureRM モジュール]( https://go.microsoft.com/fwlink/?linkid=856959)
+    - [Az モジュール (.NET 4.7.2 が必要)](/powershell/azure/install-az-ps)
+    - [AzureRM モジュール](https://go.microsoft.com/fwlink/?linkid=856959)
 3. ServerRegistration.exe を実行し、ストレージ同期サービスにサーバーを登録するウィザードを完了します。
 
 <a id="server-already-registered"></a> **[サーバー登録] に"このサーバーは既に登録されています" というメッセージが表示される** 

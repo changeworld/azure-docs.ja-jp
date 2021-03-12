@@ -2,18 +2,19 @@
 title: チュートリアル - Azure Site Recovery を使用して Linux VM のディザスター リカバリーを設定する
 description: Azure Site Recovery サービスを使用して、別の Azure リージョンへの Linux VM のディザスター リカバリーを設定する方法について説明します。
 author: rayne-wiselman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.subservice: recovery
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d14d276c798e40d417a8038aee5b7550e84f4114
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: fa43f40d4849a8e773241fa17a1e1787ce86a8ff
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379855"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564749"
 ---
 # <a name="tutorial-set-up-disaster-recovery-for-linux-virtual-machines"></a>チュートリアル:Linux 仮想マシンのディザスター リカバリーを設定する
 
