@@ -20,6 +20,8 @@
       href: ../../search/cognitive-search-custom-skill-form.md
     - name: AI Builder で Form Recognizer を使用する
       href: tutorial-ai-builder.md
+    - name: Azure Functions で Form Recognizer を使用する
+      href: tutorial-azure-function.md
     - name: フォーム データを一括で抽出する
       href: tutorial-bulk-processing.md
 - name: 概念
