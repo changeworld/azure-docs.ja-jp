@@ -46,7 +46,7 @@ Application Gateway を ILB App Service Environment と統合するには、次�
     
 * 後で Application Gateway を指すために使われるパブリック DNS 名。 
 
-ILB App Service 環境の作成方法について詳しくは、[ILB App Service 環境の作成と使用][ilbase]に関するページをご覧ください。
+ILB App Service Environment の作成方法について詳しくは、[ILB App Service Environment の作成と使用][ilbase]に関するページをご覧ください。
 
 この記事では、App Service Environment が展開されているのと同じ Azure 仮想ネットワークに Application Gateway を作成するものとします。 Application Gateway の作成を始める前に、ゲートウェイをホストするために使うサブネットを選択または作成します。 
 
