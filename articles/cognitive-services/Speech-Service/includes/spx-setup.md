@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: 1eae40437e06bfb150e202db1f3bb4125baeaa97
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: b985399eb89ae7bbf73d280775157207498f0080
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100515010"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100645342"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -19,11 +19,12 @@ ms.locfileid: "100515010"
 Windows に Speech CLI をインストールするには、次の手順に従います。
 
 1. Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 これを初めてインストールする場合、再起動が必要になる場合があります。
-1. [.NET Core 3.1](/dotnet/core/install/linux) をインストールします。
+1. [.NET Core 3.1 SDK](/dotnet/core/install/linux) をインストールします。
 2. 次のコマンドを入力して、NuGet を使用して Speech CLI をインストールします。
 
-    `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
-
+   ```console
+   dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0
+   ```
 「`spx`」と入力して、Speech CLI のヘルプを表示します。
 
 > [!NOTE]

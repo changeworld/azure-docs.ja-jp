@@ -1,24 +1,24 @@
 ---
 title: クイック スタート - サンプル シナリオを精査する
 titleSuffix: Azure Digital Twins
-description: クイック スタート - ADT Explorer サンプルを使用して、事前構築済みのシナリオを可視化し、精査します。
+description: クイック スタート - Azure Digital Twins Explorer サンプルを使用して、事前構築済みのシナリオを視覚化し、精査します。
 author: baanders
 ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 9d09bca246938f972a212f7ee71f03a618e16ac4
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575690"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102434204"
 ---
-# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>クイック スタート - ADT Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
+# <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>クイック スタート - Azure Digital Twins Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
 Azure Digital Twins を使用すると、現実の環境のライブ モデルを作成して対話的に操作することができます。 最初に、個々の要素を "*デジタル ツイン*" としてモデル化します。 次に、ライブ イベントに応答して情報を照会できるナレッジ "*グラフ*" にそれらを接続します。
 
-このクイックスタートでは、[Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) というサンプル アプリケーションを利用して、事前構築済みの Azure Digital Twins グラフを精査します。 ADT Explorer を使用して、次のことを行います。
+このクイックスタートでは、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) というサンプル アプリケーションを利用して、事前構築済みの Azure Digital Twins グラフを精査します。 Azure Digital Twins Explorer は、次の目的で使用します。
 
 - 環境のデジタル表現をアップロードする。
 - Azure Digital Twins で環境を表すために作成されたツインとグラフのビジュアル イメージを表示する。
@@ -26,7 +26,7 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 
 このクイックスタートには主に次の手順が含まれています。
 
-1. Azure Digital Twins インスタンスと ADT Explorer を設定する。
+1. Azure Digital Twins インスタンスと Azure Digital Twins Explorer を設定する。
 1. 事前構築済みのモデルとグラフ データをアップロードしてサンプル シナリオを構築する。
 1. 作成されたシナリオ グラフを精査する。
 1. グラフに変更を加える。
@@ -41,11 +41,11 @@ Azure Digital Twins を使用すると、現実の環境のライブ モデル�
 
 お使いのコンピューターには **Node.js** も必要になります。 最新バージョンを入手するには、「[Node.js](https://nodejs.org/)」を参照してください。
 
-最後に、クイックスタートの間に使用するサンプルをダウンロードする必要もあります。 サンプル アプリケーションは、**ADT Explorer** です。 このサンプルには、クイックスタートで Azure Digital Twins シナリオを読み込んで精査する際に使用するアプリが含まれています。 また、サンプル シナリオ ファイルも含まれています。 サンプルを入手するには、「[Azure Digital Twins (ADT) Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)」に移動してください。 **[Download ZIP]\(ZIP のダウンロード\)** ボタンを選択して、このサンプル コードの .zip ファイルをご自分のマシンにダウンロードします。 **Azure_Digital_Twins__ADT__explorer.zip** フォルダーを解凍し、ファイルを抽出します。
+最後に、クイックスタートの間に使用するサンプルをダウンロードする必要もあります。 サンプル アプリケーションは **Azure Digital Twins Explorer** です。 このサンプルには、クイックスタートで Azure Digital Twins シナリオを読み込んで精査する際に使用するアプリが含まれています。 また、サンプル シナリオ ファイルも含まれています。 サンプルを入手するには、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページに移動してください。 **[Download ZIP]\(ZIP のダウンロード\)** ボタンを選択して、このサンプル コードの .zip ファイルをご自分のマシンにダウンロードします。 **Azure_Digital_Twins__ADT__explorer.zip** フォルダーを解凍し、ファイルを抽出します。
 
-## <a name="set-up-azure-digital-twins-and-adt-explorer"></a>Azure Digital Twins と ADT エクスプローラーを設定する
+## <a name="set-up-azure-digital-twins-and-azure-digital-twins-explorer"></a>Azure Digital Twins と Azure Digital Twins Explorer を設定する
 
-Azure Digital Twins を操作する際の最初の手順は、Azure Digital Twins インスタンスを設定することです。 サービスのインスタンスを作成し、ADT Explorer で認証する資格情報を設定した後、ADT Explorer でインスタンスに接続し、このクイックスタートの後半でサンプル データを設定できます。
+Azure Digital Twins を操作する際の最初の手順は、Azure Digital Twins インスタンスを設定することです。 サービスのインスタンスを作成し、Azure Digital Twins Explorer で認証する資格情報を設定した後、Azure Digital Twins Explorer でインスタンスに接続し、このクイックスタートの後半でサンプル データを設定できます。
 
 このセクションの残りの部分では、これらの手順について説明します。
 
@@ -55,26 +55,26 @@ Azure Digital Twins を操作する際の最初の手順は、Azure Digital Twin
 
 ### <a name="set-up-local-azure-credentials"></a>ローカルの Azure 資格情報を設定する
 
-ADT Explorer アプリケーションは、ローカル コンピューターで実行された Azure Digital Twins インスタンスに対し、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?preserve-view=true&view=azure-dotnet) (`Azure.Identity` ライブラリの一部) を使用してユーザーの認証を行います。 Azure Digital Twins に対してクライアント アプリの認証を行う各種の方法について詳しくは、「[アプリ認証コードを作成する](how-to-authenticate-client.md)」を参照してください。
+Azure Digital Twins Explorer アプリケーションは、ローカル コンピューターで実行された Azure Digital Twins インスタンスに対し、[DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) (`Azure.Identity` ライブラリの一部) を使用してユーザーの認証を行います。 Azure Digital Twins に対してクライアント アプリの認証を行う各種の方法について詳しくは、「[アプリ認証コードを作成する](how-to-authenticate-client.md)」を参照してください。
 
-この種の認証では、ADT Explorer によってローカル環境内で資格情報が検索されます。たとえば、ローカル [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) や Visual Studio または Visual Studio Code での Azure サインインなどです。 このため、ADT Explorer アプリの資格情報を設定するために、これらのメカニズムのいずれかを使用して、*Azure にローカルでサインイン* する必要があります。
+この種の認証では、Azure Digital Twins Explorer によってローカル環境内で資格情報が検索されます。たとえば、ローカル [Azure CLI](/cli/azure/install-azure-cli) や Visual Studio または Visual Studio Code での Azure サインインなどです。 このため、Azure Digital Twins Explorer アプリの資格情報を設定するために、これらのメカニズムのいずれかを使用して、"*Azure にローカルでサインイン*" する必要があります。
 
-これらの方法のいずれかを使用して既に Azure にサインインしている場合は、[次のセクション](#run-and-configure-adt-explorer)に進むことができます。
+これらの方法のいずれかを使用して既に Azure にサインインしている場合は、[次のセクション](#run-and-configure-azure-digital-twins-explorer)に進むことができます。
 
 それ以外の場合は、これらの手順を使用してローカル Azure CLI をインストールできます。
 
-1. [こちらのインストール リンク](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)のプロセスに従って、お使いの OS に対応したインストールを完了します。
+1. [こちらのインストール リンク](/cli/azure/install-azure-cli)のプロセスに従って、お使いの OS に対応したインストールを完了します。
 1. お使いのコンピューターでコンソール ウィンドウを開きます。
 1. `az login` を実行し、認証プロンプトに従って Azure アカウントにサインインします。
 1. 考えられる最後の手順:このアカウントで複数の Azure サブスクリプションを使用する場合は、`az account set --subscription "<your-subscription-name-or-ID>"` (サブスクリプションの名前または ID 値のいずれか) を実行して、Azure Digital Twins インスタンスを含む Azure サブスクリプションに認証コンテキストを設定します。
 
-サインイン後、次のセクションで ADT Explorer を実行すると、Azure 資格情報が自動的に取得されます。
+サインイン後、次のセクションで Azure Digital Twins Explorer を実行すると、Azure 資格情報が自動的に取得されます。
 
 認証コンソール ウィンドウは、必要に応じて閉じてかまいません。 または、次の手順で使用するために開いたままでもかまいません。
 
-### <a name="run-and-configure-adt-explorer"></a>ADT エクスプローラーを実行して構成する
+### <a name="run-and-configure-azure-digital-twins-explorer"></a>Azure Digital Twins Explorer を実行して構成する
 
-次に、ADT エクスプローラー アプリケーションを実行し、自分の Azure Digital Twins インスタンス用に構成します。
+次に、Azure Digital Twins Explorer アプリケーションを実行し、自分の Azure Digital Twins インスタンス用に構成します。
 
 1. ダウンロードして解凍した **Azure_Digital_Twins__ADT__explorer** フォルダーに移動します。
 コンソール ウィンドウを開いて、**Azure_Digital_Twins__ADT__explorer/client/src** フォルダーの場所に移動します。
@@ -85,11 +85,11 @@ ADT Explorer アプリケーションは、ローカル コンピューターで
 
    数秒後、ブラウザー ウィンドウが開き、ブラウザーにアプリが表示されます。
 
-   :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは ADT Explorer と呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが含まれる。画面上にはまだデータがない。" lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+   :::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは Azure Digital Twins Explorer と呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが含まれる。画面上にはまだデータがない。" lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
-1. 設定したインスタンスを操作できるように ADT Explorer を構成するために、下の図に示されているように、ウィンドウ右上隅の **[サインイン]** ボタンを選択します。
+1. 設定したインスタンスを操作できるように Azure Digital Twins Explorer を構成するために、下の図に示されているように、ウィンドウ右上隅の **[サインイン]** ボタンを選択します。
 
-   :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="ADT エクスプローラーのウィンドウ上部付近にあるサインイン アイコンが強調表示されている。このアイコンには、人のシンプルなシルエットに鍵のシルエットが重なるように表示されている。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
+   :::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Azure Digital Twins Explorer のウィンドウ上部付近にあるサインイン アイコンが強調表示されている。このアイコンには、人のシンプルなシルエットに鍵のシルエットが重なるように表示されている。" lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
 1. 「[Azure Digital Twins インスタンスを設定する](#set-up-an-azure-digital-twins-instance)」セクションで先ほど収集した Azure Digital Twins インスタンスの URL を *https://{インスタンス ホスト名}* の形式で入力します。
 
@@ -103,7 +103,7 @@ Microsoft の **[要求されているアクセス許可]** ポップアップ �
 
 ## <a name="add-the-sample-data"></a>サンプル データを追加する
 
-次に、ADT Explorer にサンプル シナリオとグラフをインポートします。 サンプル シナリオは、先ほどダウンロードした **Azure_Digital_Twins__ADT__explorer** フォルダーにもあります。
+次に、Azure Digital Twins Explorer にサンプル シナリオとグラフをインポートします。 サンプル シナリオは、先ほどダウンロードした **Azure_Digital_Twins__ADT__explorer** フォルダーにもあります。
 
 ### <a name="models"></a>モデル
 
@@ -138,7 +138,7 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 >次のようなエラー メッセージが表示されることがあります。:::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="&quot;Error: Error fetching models: ClientAuthError: Error opening popup window. This can happen if you are using IE or if popups are blocked in the browser. &quot; (エラー: モデルをフェッチしているときにエラーが発生しました: ClientAuthError: ポップアップ ウィンドウを開いているときにエラーが発生しました。これは、IE を使用しているか、ポップアップがブラウザーでブロックされている場合に発生します。) という、一番下に [閉じる] ボタンを備えたポップアップ ボックスが表示される。" border="false"::: 
 > ポップアップ ブロッカーを無効にするか、別のブラウザーを使用してみてください。
 
-ADT Explorer によって、これらのモデル ファイルが Azure Digital Twins インスタンスにアップロードされます。 これらは、フレンドリ名と完全なモデル ID と共に **[モデル ビュー]** ボックスに表示されます。 **[モデルの表示]** という情報アイコンを選択すると、それらの背後にある DTDL コードが表示されます。
+これで、Azure Digital Twins Explorer によって、これらのモデル ファイルが Azure Digital Twins インスタンスにアップロードされます。 これらは、フレンドリ名と完全なモデル ID と共に **[モデル ビュー]** ボックスに表示されます。 **[モデルの表示]** という情報アイコンを選択すると、それらの背後にある DTDL コードが表示されます。
 
 :::row:::
     :::column:::
@@ -173,7 +173,7 @@ ADT Explorer によって、これらのモデル ファイルが Azure Digital 
 
 2. ファイル セレクター ボックスで **Azure_Digital_Twins__ADT__explorer/client/examples** フォルダーに移動し、**buildingScenario.xlsx** スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 **[OK]** を選択します。
 
-   数秒後、ADT Explorer で **[インポート]** ビューが開き、読み込まれるグラフのプレビューが表示されます。
+   数秒後、Azure Digital Twins Explorer で **[インポート]** ビューが開き、読み込まれるグラフのプレビューが表示されます。
 
 3. グラフのアップロードを確認するには、 **[グラフ ビュー]** ボックスの右上隅にある **[保存]** アイコンを選択します。
 
@@ -185,7 +185,7 @@ ADT Explorer によって、これらのモデル ファイルが Azure Digital 
     :::column-end:::
    :::row-end:::
 
-4. これで、アップロードしたファイルを使用して、要求したツインとそれらの間のリレーションシップが ADT Explorer によって作成されます。 終了すると、ダイアログ ボックスが表示されます。 **[閉じる]** を選択します。
+4. これで、アップロードしたファイルを使用して、要求したツインとそれらの間のリレーションシップが Azure Digital Twins Explorer によって作成されます。 終了すると、ダイアログ ボックスが表示されます。 **[閉じる]** を選択します。
 
    :::row:::
     :::column:::
@@ -197,11 +197,11 @@ ADT Explorer によって、これらのモデル ファイルが Azure Digital 
     :::column-end:::
    :::row-end:::
 
-5. これでグラフが ADT エクスプローラーにアップロードされました。 グラフを表示するには、ADT Explorer ウィンドウの上部付近にある **[Graph エクスプローラー]** ボックスの **[クエリの実行]** ボタンを選択します。
+5. これでグラフが Azure Digital Twins Explorer にアップロードされました。 グラフを表示するには、Azure Digital Twins Explorer ウィンドウの上部付近にある **Graph エクスプローラー** ボックスの **[クエリの実行]** ボタンを選択します。
 
    :::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="ウィンドウの右上隅にある [クエリの実行] ボタンが強調表示されている。" lightbox="media/quickstart-adt-explorer/run-query.png":::
 
-このアクションにより、すべてのデジタル ツインを選択して表示する既定のクエリが実行されます。 ADT Explorer によって、すべてのツインとリレーションシップがサービスから取得されます。 これらによって定義されたグラフが **[グラフ ビュー]** ボックスに描画されます。
+このアクションにより、すべてのデジタル ツインを選択して表示する既定のクエリが実行されます。 Azure Digital Twins Explorer によって、サービスからすべてのツインとリレーションシップが取得されます。 これらによって定義されたグラフが **[グラフ ビュー]** ボックスに描画されます。
 
 ## <a name="explore-the-graph"></a>グラフを精査する
 
@@ -262,7 +262,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 ## <a name="edit-data-in-the-graph"></a>グラフのデータを編集する
 
-グラフに表されたツインのプロパティは、ADT エクスプローラーを使用して編集できます。 このセクションでは、Room0 の温度を 76 度に上げます。
+グラフに表されたツインのプロパティは、Azure Digital Twins Explorer を使用して編集できます。 このセクションでは、Room0 の温度を 76 度に上げます。
 
 最初に、 **[PROPERTY EXPLORER]\(プロパティ エクスプローラー\)** ボックスで **Room0** を選択し、そのプロパティ リストを呼び出します。
 
@@ -290,7 +290,7 @@ Room0 の温度が 70 度から 76 度に変更されたので、今度は、両
 
 ## <a name="review-and-contextualize-learnings"></a>学習内容の復習とまとめ
 
-このクイックスタートでは、Azure Digital Twins インスタンスを作成して ADT エクスプローラーに接続し、それにサンプル シナリオを設定しました。
+このクイックスタートでは、Azure Digital Twins インスタンスを作成して Azure Digital Twins Explorer に接続し、それにサンプル シナリオを設定しました。
 
 その後、次のようにしてグラフを精査しました。
 
@@ -304,7 +304,7 @@ Room0 の温度が 70 度から 76 度に変更されたので、今度は、両
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このクイックスタートの作業を終了するために、まず、実行中のコンソール アプリを終了してください。 この操作により、ブラウザーで ADT Explorer アプリへの接続が切断されます。 ブラウザーでライブ データを表示できなくなります。 ブラウザー タブは閉じてかまいません。
+このクイックスタートの作業を終了するために、まず、実行中のコンソール アプリを終了してください。 この操作により、ブラウザーで Azure Digital Twins Explorer アプリへの接続が切断されます。 ブラウザーでライブ データを表示できなくなります。 ブラウザー タブは閉じてかまいません。
 
 次に行う作業に応じて、削除するリソースを選択できます。
 

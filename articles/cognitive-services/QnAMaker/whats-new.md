@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 85a5493e1d1c06a68aa9f4b64cd0f3d55c4f5f63
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 5d64ec925e1d88f8143a85393ceb18ae37c2b917
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99580889"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202282"
 ---
 # <a name="whats-new-in-qna-maker"></a>QnA Maker の新機能
 
@@ -36,7 +36,7 @@ QnA Maker の新機能について説明します。
 ### <a name="july-2020"></a>2020 年 7 月
 
 * [メタデータ: `OR` による複数のメタデータ ペアの論理の組み合わせ](how-to/metadata-generateanswer-usage.md#logical-or-using-strictfilterscompoundoperationtype-property)
-* Cognitive Search エンドポイントをプライベートにしたうえで引き続き QnA Maker にアクセスできるように構成する[手順](how-to/set-up-qnamaker-service-azure.md#recommended-settings-for-network-isolation)。
+* Cognitive Search エンドポイントをプライベートにしたうえで引き続き QnA Maker にアクセスできるように構成する[手順](how-to/network-isolation.md)。
 * Free レベルの Cognitive Search リソースは、[90 日間非アクティブな期間](how-to/set-up-qnamaker-service-azure.md#inactivity-policy-for-free-search-resources)が経過すると削除されます。
 
 ### <a name="june-2020"></a>2020 年 6 月
@@ -64,11 +64,11 @@ QnA Maker の新機能について説明します。
 
 ### <a name="october-2019"></a>2019 年 10 月
 
-* QnA Maker サービスにおけるすべてのナレッジ ベースの[言語を明示的に設定](./index.yml)
+* QnA Maker サービスにおけるすべてのナレッジ ベースの言語を明示的に設定
 
 ### <a name="september-2019"></a>2019 年 9 月
 
-* [XLS ファイル形式](./index.yml)を使用したインポートとエクスポート
+* XLS ファイル形式を使用したインポートとエクスポート。
 
 ### <a name="june-2019"></a>2019 年 6 月
 

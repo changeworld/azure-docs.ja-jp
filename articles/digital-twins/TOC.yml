@@ -13,8 +13,12 @@
   items:
     - name: クライアント アプリをコーディングする
       href: tutorial-code.md
-    - name: サンプル クライアント アプリを使用して基本事項を確認する
-      href: tutorial-command-line-app.md
+    - name: グラフを作成する
+      items:
+        - name: サンプル クライアント アプリを使用する
+          href: tutorial-command-line-app.md
+        - name: Azure CLI コマンドを使用する
+          href: tutorial-command-line-cli.md
     - name: エンドツーエンドのソリューションを接続する
       href: tutorial-end-to-end.md
 - name: 概念
