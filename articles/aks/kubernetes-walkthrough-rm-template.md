@@ -5,12 +5,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/13/2021
 ms.custom: mvc,subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 56bacf1ae68081d5822fdb0e80762926d4eb581c
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: f17e42915968f52aee8bd106b5cadd26457998ff
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102173734"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501322"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -32,7 +32,7 @@ Azure Kubernetes Service (AKS) は、クラスターをすばやくデプロイ�
 
 - この記事では、Azure CLI のバージョン 2.0.61 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
-- Resource Manager テンプレートを使用して AKS クラスターを作成するには、SSH 公開キーと Azure Active Directory サービス プリンシパルを指定します。 または、サービス プリンシパルの代わりに、[マネージド ID](use-managed-identity.md) をアクセス許可に使用することもできます。 これらのリソースのいずれかが必要な場合は、後のセクションを参照してください。それ以外の場合は、「[テンプレートを確認する](#review-the-template)」セクションに進んでください。
+- Resource Manager テンプレートを使用して AKS クラスターを作成するには、SSH 公開キーを指定します。 このリソースが必要な場合は、後のセクションを参照してください。それ以外の場合は、「[テンプレートを確認する](#review-the-template)」セクションに進んでください。
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 
@@ -47,28 +47,6 @@ ssh-keygen -t rsa -b 2048
 ```
 
 SSH キーの作成の詳細については、[Azure での認証用の SSH キーの作成と管理][ssh-keys]に関するページを参照してください。
-
-### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
-
-AKS クラスターが他の Azure リソースと対話できるようにするために、Azure Active Directory のサービス プリンシパルを使用します。 [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] コマンドを使用して、サービス プリンシパルを作成します。 `--skip-assignment` パラメーターで、余分なアクセス許可の割り当てを制限します。 既定では、このサービス プリンシパルは 1 年間有効です。 サービス プリンシパルの代わりにマネージド ID を使用することもできることに注意してください。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
-
-```azurecli-interactive
-az ad sp create-for-rbac --skip-assignment
-```
-
-出力は次の例のようになります。
-
-```json
-{
-  "appId": "8b1ede42-d407-46c2-a1bc-6b213b04295f",
-  "displayName": "azure-cli-2019-04-19-21-42-11",
-  "name": "http://azure-cli-2019-04-19-21-42-11",
-  "password": "27e5ac58-81b0-46c1-bd87-85b4ef622682",
-  "tenant": "73f978cf-87f2-41bf-92ab-2e7ce012db57"
-}
-```
-
-*appId* と *password* を書き留めておいてください。 これらの値は、以降の手順で使用します。
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
@@ -95,13 +73,10 @@ az ad sp create-for-rbac --skip-assignment
     * **[DNS プレフィックス]** : クラスターの一意の DNS プレフィックス (*myakscluster* など) を入力します。
     * **[Linux Admin Username]\(Linux 管理者ユーザー名\)** : SSH を使用して接続するためのユーザー名 (*azureuser* など) を入力します。
     * **[SSH RSA Public Key]\(SSH RSA 公開キー\)** : SSH キー ペアの "*公開*" 部分 (既定では、 *~/.ssh/id_rsa.pub* の内容) をコピーして貼り付けます。
-    * **[サービス プリンシパルのクライアント ID]** : `az ad sp create-for-rbac` コマンドから、サービス プリンシパルの *appId* をコピーして貼り付けます。
-    * **[サービス プリンシパルのクライアント シークレット]** : `az ad sp create-for-rbac` コマンドから、サービス プリンシパルの *password* をコピーして貼り付けます。
-    * **上記の使用条件に同意する**: このボックスをオンにして同意します。
 
     ![ポータルで Azure Kubernetes Service クラスターを作成するための Resource Manager テンプレート](./media/kubernetes-walkthrough-rm-template/create-aks-cluster-using-template-portal.png)
 
-3. **[購入]** を選択します。
+3. **[確認および作成]** を選択します。
 
 AKS クラスターの作成には数分かかります。 クラスターが正常にデプロイされるのを待ってから、次の手順に進みます。
 

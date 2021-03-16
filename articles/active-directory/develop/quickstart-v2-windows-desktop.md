@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81a5f28f0bf2f7f7ea005a4d9fe8d42337f6d0b9
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 02dc2b4e86c9d0bad0c8274967aa4da77440ec01
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103398"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102498763"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す
 
@@ -54,12 +54,12 @@ ms.locfileid: "100103398"
 > 1. **[登録]** を選択して、アプリケーションを作成します。
 > 1. **[管理]** で、 **[認証]** を選択します。
 > 1. **[プラットフォームを追加]**  >  **[モバイル アプリケーションとデスクトップ アプリケーション]** を選択します。
-> 1. **[リダイレクト URI]** セクションで、`https://login.microsoftonline.com/common/oauth2/nativeclient` を選択します。
+> 1. **[リダイレクト URI]** セクションで `https://login.microsoftonline.com/common/oauth2/nativeclient` を選択し、 **[カスタム リダイレクト URI]** セクションに `ms-appx-web://microsoft.aad.brokerplugin/{client_id}` を追加します。`{client_id}` は、登録するアプリケーションのアプリケーション (クライアント) ID です (`msal{client_id}://auth` チェック ボックスに表示される GUID)。
 > 1. **[構成]** をクリックします。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
-> このクイックスタートのコード サンプルを動作させるには、**リダイレクト URI** (`https://login.microsoftonline.com/common/oauth2/nativeclient`) を追加します。
+> このクイックスタートのコード サンプルを動作させるには、**リダイレクト URI** (`https://login.microsoftonline.com/common/oauth2/nativeclient` および `ms-appx-web://microsoft.aad.brokerplugin/{client_id}`) を追加します。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >

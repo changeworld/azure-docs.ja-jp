@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 742cff544886a1499bccfa575684edef708da7bd
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028361"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034678"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure Digital Twins 用のクエリ言語について
 
@@ -33,12 +33,17 @@ Azure Digital Twins クエリ言語を使用し、次に応じて、デジタル
 
 クライアント アプリからサービスにクエリを送信するには、Azure Digital Twins の [**Query API**](/rest/api/digital-twins/dataplane/query) を使用します。 API を使用する方法の 1 つとして、Azure Digital Twins のいずれかの [SDK](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用する方法があります。
 
+### <a name="considerations-for-querying"></a>クエリに関する考慮事項
+
+Azure Digital Twins のクエリを作成する場合は、次の考慮事項に注意してください。
+* **大文字と小文字の区別を忘れない**: すべての Azure Digital Twins クエリ操作では大文字と小文字が区別されるため、モデルで定義されている正確な名前を使用するように注意してください。 プロパティ名のスペルが間違っているか、大文字と小文字が正しくない場合、結果セットは空になり、エラーは返されません。
+* **単一引用符をエスケープする**: クエリ テキストのデータに単一引用符文字が含まれている場合は、`\` 文字を使用して引用符をエスケープする必要があります。 プロパティ値 *D'Souza* を扱う例を次に示します。
+
+  :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="EscapedSingleQuote":::
+
 ## <a name="reference-expressions-and-conditions"></a>リファレンス: 式と条件
 
 このセクションでは、Azure Digital Twins クエリの作成に使用できる演算子と関数について説明します。 これらの機能の使用方法を示すクエリの例については、[*ツイン グラフにクエリを実行する*](how-to-query-graph.md)方法に関する記事を参照してください。
-
-> [!NOTE]
-> すべての Azure Digital Twins クエリ操作では大文字と小文字が区別されるため、モデルで定義されている正確な名前を使用するように注意してください。 プロパティ名のスペルが間違っているか、大文字と小文字が正しくない場合、結果セットは空になり、エラーは返されません。
 
 ### <a name="operators"></a>オペレーター
 

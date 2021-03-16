@@ -11,12 +11,12 @@ author: jhirono
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 2215c47fcd250a9ac1d6621f7e4b434bd33b3832
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 66a709f15191a8142f10f15d825276ea2ba4b83f
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871097"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102487986"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -52,7 +52,7 @@ ms.locfileid: "98871097"
     > [!NOTE]
     > コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできます。
     
-### <a name="these-fqdns-are-in-use-in-all-other-regions"></a>これらの FQDN は、他のすべてのリージョンで使用されています
+### <a name="these-fqdns-are-in-use-in-all-other-public-regions"></a>これらの FQDN は、他のすべてのパブリック リージョンで使用されています
 次のリストには、ワークスペースで使用される完全修飾ドメイン名 (FQDN) が含まれています。
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
@@ -63,6 +63,17 @@ ms.locfileid: "98871097"
     > [!NOTE]
     > コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできます。
 
+### <a name="azure-china-21vianet-regions"></a>Azure China 21Vianet リージョン
+
+次の FQDN は、Azure China 21Vianet リージョン向けです。
+
+* `<workspace-GUID>.workspace.<region>.cert.api.ml.azure.cn`
+* `<workspace-GUID>.workspace.<region>.api.ml.azure.cn`
+* `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.chinacloudapi.cn`
+
+    > [!NOTE]
+    > この FQDN のワークスペース名は切り詰められている可能性があります。 切り詰めは、FQDN が63文字以下になるように行われます。
+* `<instance-name>.<region>.instances.ml.azure.cn`
 ## <a name="find-the-ip-addresses"></a>IP アドレスを検索する
 
 VNet 内の FQDN の内部 IP アドレスを検索するには、次のいずれかの方法を使用します。
@@ -94,7 +105,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 ---
 
-どの方法でも返される情報は同じで、リソースの FQDN とプライベート IP アドレスのリストです。
+どの方法でも返される情報は同じで、リソースの FQDN とプライベート IP アドレスのリストです。 次の例は、グローバル Azure リージョンのものです。
 
 | FQDN | IP アドレス |
 | ----- | ----- |
@@ -112,6 +123,12 @@ $workspaceDns.CustomDnsConfigs | format-table
 >
 > これらの IP アドレスのすべてに対して、前のステップで返された `*.api.azureml.ms` エントリと同じアドレスを使用します。
 
+次の表は、Azure China 21Vianet リージョンの IP の例を示しています。
+
+| FQDN | IP アドレス |
+| ----- | ----- |
+| `52882c08-ead2-44aa-af65-08a75cf094bd.workspace.chinaeast2.api.ml.azure.cn` | `10.1.0.5` |
+| `ml-mype-pltest-chinaeast2-52882c08-ead2-44aa-af65-08a75cf094bd.notebooks.chinacloudapi.cn` | `10.1.0.6` |
 ## <a name="next-steps"></a>次の手順
 
 仮想ネットワークでの Azure Machine Learning の使用の詳細については、[仮想ネットワークの概要](how-to-network-security-overview.md)に関するページを参照してください。

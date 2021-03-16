@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/29/2020
-ms.openlocfilehash: 1ff20ab19390dcdadb9a4aa79822f7ace3d31989
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 3b1e102385f43dd9a1ba6996e657f49d435038a2
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98791174"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503617"
 ---
 # <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning でのコンピューティング ターゲットとは
 
@@ -101,15 +101,21 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | **サポートされている VM シリーズ**  | **制限事項** |
 |------------|------------|
 | D | [なし] : |
+| DDSv4 | [なし] : |
 | Dv2 | [なし] : |  
 | Dv3 | [なし] :|
 | DSv2 | [なし] : | 
 | DSv3 | [なし] :|
+| EAv4 | [なし] : |
+| Ev3 | [なし] : |
 | FSv2 | [なし] : | 
+| H | [なし] : |
+| HB | 承認が必要。 |
 | HBv2 | 承認が必要。 |  
 | HCS | 承認が必要。 |  
 | M | 承認が必要。 |
-| NC | [なし] : |    
+| NC | [なし] : |  
+| NC Promo | [なし] : |
 | NCsv2 | 承認が必要。 |
 | NCsv3 | 承認が必要。 |  
 | NDs | 承認が必要。 |
@@ -123,7 +129,7 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 > [!NOTE]
 > Azure Machine Learning は、Azure Compute がサポートするすべての VM サイズをサポートしているわけではありません。 使用可能な VM サイズを一覧表示するには、次のいずれかのメソッドを使用します。
 > * [REST API](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable/2020-08-01/examples/ListVMSizesResult.json)
-> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py.md#supported-vmsizes-workspace--location-none-)
+> * [Python SDK](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute#supported-vmsizes-workspace--location-none-)
 >
 
 ### <a name="compute-isolation"></a>コンピューティングの分離

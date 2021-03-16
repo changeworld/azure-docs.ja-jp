@@ -10,17 +10,17 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 1881b05c32fb0a7206ba6439db5c44ad909de798
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 391bc24b8468281c0a9e9fd287a0a3ac3d3380b2
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101751100"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102510848"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java Development Kit (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) バージョン 8 以降。
+- [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - デプロイされた Communication Services リソースと接続文字列。 [Communication Services のリソースを作成する](../create-communication-resource.md)。
 
@@ -44,7 +44,7 @@ mvn archetype:generate -DgroupId=com.communication.quickstart -DartifactId=commu
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-identity</artifactId>
-    <version>1.0.0-beta.3</version> 
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -85,7 +85,7 @@ public class App
 `main` メソッドに次のコードを追加します。
 
 ```java
-// Your can find your endpoint and access key from your resource in the Azure Portal
+// Your can find your endpoint and access key from your resource in the Azure portal
 String endpoint = "https://<RESOURCE_NAME>.communication.azure.com";
 String accessKey = "SECRET";
 
@@ -103,11 +103,11 @@ CommunicationIdentityClient communicationIdentityClient = new CommunicationIdent
     .buildClient();
 ```
 
-`com.azure.core.http.HttpClient` インターフェイスを実装する任意のカスタム HTTP クライアントを使用して、クライアントを初期化できます。 上記のコードは、`azure-core` によって提供される [Azure Core Netty HTTP クライアント](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable)の使用方法を示しています。
+`com.azure.core.http.HttpClient` インターフェイスを実装する任意のカスタム HTTP クライアントを使用して、クライアントを初期化できます。 上記のコードは、`azure-core` によって提供される [Azure Core Netty HTTP クライアント](/java/api/overview/azure/core-http-netty-readme)の使用方法を示しています。
 
-エンドポイントとアクセス キーを指定する代わりに、connectionString() 関数を使用して接続文字列全体を指定することもできます。 
+エンドポイントとアクセス キーを指定する代わりに、`connectionString()` 関数を使用して接続文字列全体を指定することもできます。
 ```java
-// Your can find your connection string from your resource in the Azure Portal
+// Your can find your connection string from your resource in the Azure portal
 String connectionString = "<connection_string>";
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .connectionString(connectionString)
@@ -120,42 +120,57 @@ CommunicationIdentityClient communicationIdentityClient = new CommunicationIdent
 Azure Communication Services は、軽量の ID ディレクトリを保持します。 `createUser` メソッドを使用して、一意の `Id` を持つディレクトリに新しいエントリを作成します。 受け取った ID を、アプリケーションのユーザーへのマッピングと共に格納します。 これらは、アプリケーション サーバーのデータベースなどに格納します。 ID は、後でアクセス トークンを発行するために必要になります。
 
 ```java
-CommunicationUser identity = communicationIdentityClient.createUser();
-System.out.println("\nCreated an identity with ID: " + identity.getId());
+CommunicationUserIdentifier user = communicationIdentityClient.createUser();
+System.out.println("\nCreated an identity with ID: " + user.getId());
 ```
 
 ## <a name="issue-access-tokens"></a>アクセス トークンを発行する
 
-既存の Communication Services ID のアクセス トークンを発行するには、`issueToken` メソッドを使用します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。 パラメーター `user` の新しいインスタンスは、Azure Communication Services ID の文字列表現に基づいて作成できます。
+既存の Communication Services ID のアクセス トークンを発行するには、`getToken` メソッドを使用します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。 パラメーター `user` の新しいインスタンスは、Azure Communication Services ID の文字列表現に基づいて作成できます。
 
 ```java
-// Issue an access token with the "voip" scope for an identity
-List<String> scopes = new ArrayList<>(Arrays.asList("voip"));
-CommunicationUserToken response = communicationIdentityClient.issueToken(identity, scopes);
-OffsetDateTime expiresOn = response.getExpiresOn();
-String token = response.getToken();
-System.out.println("\nIssued an access token with 'voip' scope that expires at: " + expiresOn + ": " + token);
+// Issue an access token with the "voip" scope for a user identity
+List<String> scopes = new ArrayList<>(Arrays.asList(CommunicationTokenScope.VOIP));
+AccessToken accessToken = communicationIdentityClient.getToken(user, scopes);
+OffsetDateTime expiresAt = accessToken.getExpiresAt();
+String token = accessToken.getToken();
+System.out.println("\nIssued an access token with 'voip' scope that expires at: " + expiresAt + ": " + token);
 ```
 
-アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expiresAt` 応答プロパティは、アクセス トークンの有効期間を示します。
+## <a name="create-an-identity-and-issue-token-in-one-call"></a>1 回の呼び出しで ID を作成してトークンを発行する
+
+または、"createUserAndToken" メソッドを使用して、ディレクトリに `Id` が一意である新しいエントリを作成し、アクセス トークンを発行します。
+
+```java
+List<CommunicationTokenScope> scopes = Arrays.asList(CommunicationTokenScope.CHAT);
+CommunicationUserIdentifierWithTokenResult result = client.createUserAndToken(scopes);
+CommunicationUserIdentifier user = result.getUser();
+System.out.println("\nCreated a user identity with ID: " + user.getId());
+AccessToken accessToken = result.getUserToken();
+OffsetDateTime expiresAt = accessToken.getExpiresAt();
+String token = accessToken.getToken();
+System.out.println("\nIssued an access token with 'chat' scope that expires at: " + expiresAt + ": " + token);
+```
+
+アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expiresAt` プロパティは、アクセス トークンの有効期間を示します。
 
 ## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 
-アクセス トークンを更新するには、`CommunicationUser` オブジェクトを使用して再発行します。
+アクセス トークンを更新するには、`CommunicationUserIdentifier` オブジェクトを使用して再発行します。
 
-```java  
+```java
 // Value existingIdentity represents identity of Azure Communication Services stored during identity creation
-CommunicationUser identity = new CommunicationUser(existingIdentity);
-response = communicationIdentityClient.issueToken(identity, scopes);
+CommunicationUserIdentifier identity = new CommunicationUserIdentifier(existingIdentity);
+response = communicationIdentityClient.getToken(identity, scopes);
 ```
 
 ## <a name="revoke-access-tokens"></a>アクセス トークンの取り消し
 
 場合によっては、明示的にアクセス トークンを取り消すことがあります。 たとえば、アプリケーションのユーザーが、サービスに対する認証に使用するパスワードを変更するような場合です。 `revokeTokens` メソッドを使用すると、ID に対して発行されたすべてのアクティブなアクセス トークンを無効にできます。
 
-```java  
-communicationIdentityClient.revokeTokens(identity, OffsetDateTime.now());
-System.out.println("\nSuccessfully revoked all access tokens for identity with ID: " + identity.getId());
+```java
+communicationIdentityClient.revokeTokens(user);
+System.out.println("\nSuccessfully revoked all access tokens for user identity with ID: " + user.getId());
 ```
 
 ## <a name="delete-an-identity"></a>ID の削除
@@ -163,8 +178,8 @@ System.out.println("\nSuccessfully revoked all access tokens for identity with I
 ID を削除すると、すべてのアクティブなアクセス トークンが取り消され、その ID に対してアクセス トークンを発行できなくなります。 また、ID に関連付けられているすべての永続化されたコンテンツも削除されます。
 
 ```java
-communicationIdentityClient.deleteUser(identity);
-System.out.println("\nDeleted the identity with ID: " + identity.getId());
+communicationIdentityClient.deleteUser(user);
+System.out.println("\nDeleted the user identity with ID: " + user.getId());
 ```
 
 ## <a name="run-the-code"></a>コードの実行

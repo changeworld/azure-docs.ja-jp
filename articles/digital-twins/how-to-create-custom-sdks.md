@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: e0c0d18dbb3596733d02430554fd40ec16180c64
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: e7239bfdca1dc464048c0db08488029b0868deb5
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980662"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102049799"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する
 
@@ -44,10 +44,10 @@ Azure Digital Twins Swagger ファイルに対して AutoRest を実行するに
 3. 次のコマンドを使用して、AutoRest を実行します。 `<language>` プレースホルダーを、`python`、`java`、`go` などの任意の言語に置き換えてください。 (オプションの完全な一覧は [AutoRest の README](https://github.com/Azure/autorest) に記載されています。)
 
 ```cmd/sh
-autorest --input-file=digitaltwins.json --<language> --output-folder=ADTApi --add-credentials --azure-arm --namespace=ADTApi
+autorest --input-file=digitaltwins.json --<language> --output-folder=DigitalTwinsApi --add-credentials --azure-arm --namespace=DigitalTwinsApi
 ```
 
-その結果、作業ディレクトリに *ADTApi* という名前の新しいフォルダーが表示されます。 生成された SDK ファイルの名前空間は *ADTApi* になります。 この記事の残りの使用例では、その名前空間を使用し続けます。
+その結果、作業ディレクトリに *DigitalTwinsApi* という名前の新しいフォルダーが表示されます。 生成された SDK ファイルの名前空間は *DigitalTwinsApi* になります。 この記事の残りの使用例では、その名前空間を使用し続けます。
 
 AutoRest では、幅広い言語コード ジェネレーターがサポートされています。
 
@@ -60,8 +60,8 @@ AutoRest によって生成されたファイルは、.NET ソリューション
 次に手順を示します。
 
 1. クラス ライブラリ用の新しい Visual Studio ソリューションを作成します
-2. プロジェクト名として「*ADTApi*」を使用します
-3. ソリューション エクスプローラーで、生成されたソリューションの *ADTApi* プロジェクトを右クリックし、 *[追加] > [既存の項目...]* の順に選択します
+2. プロジェクト名として *DigitalTwinsApi* を使用します
+3. ソリューション エクスプローラーで、生成されたソリューションの *DigitalTwinsApi* プロジェクトを右クリックし、 *[追加] > [既存の項目...]* の順に選択します
 4. SDK を生成したフォルダーを検索し、ルート レベルにあるファイルを選択します
 5. [OK] を押します
 6. プロジェクトにフォルダーを追加します (ソリューション エクスプローラーでプロジェクトを右クリックし、 *[追加] > [新しいフォルダー]* の順に選択)

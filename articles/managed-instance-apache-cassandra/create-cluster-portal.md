@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: a05769c66c4b13de5c7197ef5612d64781574987
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d94bedad1ba7a2c6d814021b733404ccc58148ed
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747675"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102424684"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
  
@@ -63,16 +63,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    :::image type="content" source="./media/create-cluster-portal/networking.png" alt-text="ネットワークの詳細を構成する。" lightbox="./media/create-cluster-portal/networking.png" border="true":::
 
-1. 最後の手順で新しい VNet を作成した場合は、手順 9 に進みます。 既存の VNet を選択した場合は、クラスターを作成する前に、仮想ネットワークとサブネットに特別なアクセス許可を適用する必要があります。 これを行うには、既存の仮想ネットワークのリソース ID を取得する必要があります。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) で、次のコマンドを実行します。
+1. 最後の手順で新しい VNet を作成した場合は、手順 8. に進みます。 既存の VNet を選択した場合は、クラスターを作成する前に、仮想ネットワークとサブネットに特別なアクセス許可を適用する必要があります。 そのためには、`az role assignment create` コマンドを使用します。`<subscription ID>`、`<resource group name>`、`<VNet name>`、`<subnet name>` は、適切な値に置き換えてください。
 
    ```azurecli-interactive
-   # get the resource ID of the Virtual Network
-   az network vnet show -n <VNet_name> -g <Resource_Group_Name> --query "id" --output tsv
-
-1. Now apply the special permissions by using the `az role assignment create` command. Replace `<Resource ID>` with the output of previous command:
-
-   ```azurecli-interactive
-   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope <Resource ID>
+   az role assignment create --assignee e5007d2c-4b13-4a74-9b6a-605d99f03501 --role 4d97b98b-1d4f-4787-a291-c67834d212e7 --scope /subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>
    ```
 
    > [!NOTE]
@@ -122,11 +116,11 @@ cqlsh $host 9042 -u cassandra -p cassandra --ssl
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-このマネージド インスタンスを引き続き使用しない場合は、次の手順で削除します。
+このマネージド インスタンス クラスターを引き続き使用しない場合は、次の手順でそれを削除します。
 
 1. Azure portal の左側にあるメニューで、 **[リソース グループ]** を選択します。
 1. 一覧から、このクイック スタートで作成したリソース グループを選択します。
-1. リソース グループの **[概要]** ウィンドウで、 **[リソース グループの削除]** を選択します。
+1. リソース グループの **[概要]** ペインで、 **[リソース グループの削除]** を選択します。
 1. 次のウィンドウで、削除するリソース グループの名前を入力し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ

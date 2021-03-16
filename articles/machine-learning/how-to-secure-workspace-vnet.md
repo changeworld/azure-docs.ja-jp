@@ -11,17 +11,16 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 07b8c130a2a22554e4cd5b33996d5a5ee967d47f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6d23b0204cc597898eb2202a329d93ff349f8c13
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029534"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102518536"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning ワークスペースをセキュリティで保護する
 
 この記事では、仮想ネットワーク内の Azure Machine Learning ワークスペースとそれに関連付けられているリソースをセキュリティで保護する方法について説明します。
-
 
 この記事は、Azure Machine Learning ワークフローをセキュリティで保護する手順を説明する全 5 パートのシリーズのパート 2 です。 まずは[パート 1:VNet の概要](how-to-network-security-overview.md)に関するページを読んで、アーキテクチャ全体を理解することを強くお勧めします。 
 
@@ -66,7 +65,7 @@ Azure Machine Learning では、サービス エンドポイントまたはプ�
 >
 > 既定のストレージ アカウントは、ワークスペースを作成するときに自動的にプロビジョニングされます。
 >
-> 既定以外のストレージ アカウントの場合、[`Workspace.create()` 関数](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-&preserve-view=true)の `storage_account` パラメーターを使用すると、Azure リソース ID によってカスタム ストレージ アカウントを指定できます。
+> 既定以外のストレージ アカウントの場合、[`Workspace.create()` 関数](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-)の `storage_account` パラメーターを使用すると、Azure リソース ID によってカスタム ストレージ アカウントを指定できます。
 
 仮想ネットワーク内のワークスペースに Azure ストレージ アカウントを使用するには、次の手順を使用します。
 
@@ -196,8 +195,6 @@ Azure Machine Learning では、関連付けられた Key Vault インスタン�
 
     ACR が仮想ネットワークの背後にある場合、Azure Machine Learning でそれを使用して Docker イメージを直接構築することはできません。 代わりに、コンピューティング クラスターを使用してイメージが構築されます。
 
-* 仮想ネットワークで Azure Machine Learning と共に ACR を使用する前に、この機能を有効にするため、サポート インシデントを開始する必要があります。 詳細については、[クォータの管理と増加](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases)に関するページを参照してください。
-
 これらの要件が満たされたら、次の手順を使用して Azure Container Registry を有効にします。
 
 1. 次の方法のいずれかを使用して、お使いのワークスペースの Azure Container Registry の名前を見つけます。
@@ -233,72 +230,13 @@ Azure Machine Learning では、関連付けられた Key Vault インスタン�
     > [!IMPORTANT]
     > ストレージ アカウント、コンピューティング クラスター、および Azure Container Registry のすべてが、仮想ネットワークと同じサブネット内に存在する必要があります。
     
-    詳細については、[update()](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-&preserve-view=true) メソッド リファレンスを参照してください。
-
-1. 次の Azure Resource Manager テンプレートを適用します。 このテンプレートによって、お使いのワークスペースで ACR と通信できるようになります。
-
-    ```json
-    {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "keyVaultArmId": {
-        "type": "string"
-        },
-        "workspaceName": {
-        "type": "string"
-        },
-        "containerRegistryArmId": {
-        "type": "string"
-        },
-        "applicationInsightsArmId": {
-        "type": "string"
-        },
-        "storageAccountArmId": {
-        "type": "string"
-        },
-        "location": {
-        "type": "string"
-        }
-    },
-    "resources": [
-        {
-        "type": "Microsoft.MachineLearningServices/workspaces",
-        "apiVersion": "2019-11-01",
-        "name": "[parameters('workspaceName')]",
-        "location": "[parameters('location')]",
-        "identity": {
-            "type": "SystemAssigned"
-        },
-        "sku": {
-            "tier": "basic",
-            "name": "basic"
-        },
-        "properties": {
-            "sharedPrivateLinkResources":
-    [{"Name":"Acr","Properties":{"PrivateLinkResourceId":"[concat(parameters('containerRegistryArmId'), '/privateLinkResources/registry')]","GroupId":"registry","RequestMessage":"Approve","Status":"Pending"}}],
-            "keyVault": "[parameters('keyVaultArmId')]",
-            "containerRegistry": "[parameters('containerRegistryArmId')]",
-            "applicationInsights": "[parameters('applicationInsightsArmId')]",
-            "storageAccount": "[parameters('storageAccountArmId')]"
-        }
-        }
-    ]
-    }
-    ```
-
-    このテンプレートによって、ワークスペースから ACR にネットワーク アクセスするための _プライベート エンドポイント_ が作成されます。 次のスクリーンショットは、このプライベート エンドポイントの例を示しています。
-
-    :::image type="content" source="media/how-to-secure-workspace-vnet/acr-private-endpoint.png" alt-text="ACR プライベート エンドポイントの設定":::
-
-    > [!IMPORTANT]
-    > このエンドポイントを削除しないでください。 誤って削除した場合は、この手順でテンプレートを再適用して新しいテンプレートを作成できます。
+    詳細については、[update()](/python/api/azureml-core/azureml.core.workspace.workspace#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) メソッド リファレンスを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事は、全 4 パートからなる仮想ネットワーク シリーズのパート 1 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
+この記事は、全 5 パートからなる仮想ネットワーク シリーズのパート 2 です。 仮想ネットワークをセキュリティで保護する方法については、記事の残りの部分を参照してください。
 
 * [パート 1: 仮想ネットワークの概要](how-to-network-security-overview.md)
 * [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
 * [パート 4: 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
-* [パート 5: Studio の機能を有効にする](how-to-enable-studio-virtual-network.md)
+* [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
