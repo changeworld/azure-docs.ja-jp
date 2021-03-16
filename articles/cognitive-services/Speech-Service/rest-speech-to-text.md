@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 70c5593f29b5e83d5d3f318179d365a9235849ca
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 24cc7773d281d98b6a0943f5e0a61b6f547991ee
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790615"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102032825"
 ---
 # <a name="speech-to-text-rest-api"></a>Speech to Text REST API
 
@@ -152,7 +152,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 オーディオ データを投稿するときにストリーミング (チャンク) アップロードを行うことを強くお勧めします。これにより、待機時間が大幅に短縮されます。 ストリーミングを有効にする方法については、[さまざまなプログラミング言語のサンプル コード](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)を参照してください。
 
 >[!NOTE]
->現在、発音評価機能は、`westus`、`eastasia` および `centralindia` リージョンでのみ利用できます。 また、現在、この機能は `en-US` 言語でのみ提供されています。
+>現在、発音評価機能は、`en-US` 言語でのみ利用できます。
 
 ### <a name="sample-request"></a>要求のサンプル
 

@@ -52,78 +52,76 @@
     - name: Read 2.x から Read 3.x へのアップグレード
       href: upgrade-api-versions.md
     - name: AAD 認証の構成方法
-      href: /azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory?context=/azure/cognitive-services/computer-vision/context/context
+      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
     - name: カスタマー マネージド キーの使用方法
       href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
-- name: Computer Vision をデプロイする
-  items:
-    - name: Containers
+    - name: Computer Vision をデプロイする
       items:
-        - name: Cognitive Services コンテナーのドキュメント
-          href: ../containers/index.yml
-        - name: API コンテナーの読み取り
+        - name: Containers
           items:
-            - name: コンテナーのインストールと実行
-              href: computer-vision-how-to-install-containers.md
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
-            - name: コンテナーを構成する
-              href: computer-vision-resource-container-config.md
-            - name: 読み取りコンテナーの v3 への移行
-              href: read-container-migration-guide.md
-              displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
-            - name: Kubernetes と Helm での使用
-              href: deploy-computer-vision-on-premises.md
-              displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
-            - name: Container Instances の使用
-              maintainContext: true
-              href: ../containers/azure-container-instance-recipe.md
-              displayName: 'container instances, container, containers, images'
-        - name: 空間分析コンテナー
-          items:
-            - name: 空間分析の概要
-              href: intro-to-spatial-analysis-public-preview.md
-            - name: ホスト マシンをセットアップしてコンテナーを実行する
-              href: spatial-analysis-container.md
-            - name: 操作を構成する
-              href: spatial-analysis-operations.md
-            - name: 人数カウント Web アプリをデプロイする
-              href: Spatial-analysis-web-app.md
-            - name: ロギングおよびトラブルシューティング
-              href: spatial-analysis-logging.md
-            - name: ゾーンとラインの配置
-              href: spatial-analysis-zone-line-placement.md
-            - name: カメラの配置
-              href: spatial-analysis-camera-placement.md
+            - name: Cognitive Services コンテナーのドキュメント
+              href: ../containers/index.yml
+            - name: API コンテナーの読み取り
+              items:
+                - name: コンテナーのインストールと実行
+                  href: computer-vision-how-to-install-containers.md
+                  displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, on-premises'
+                - name: コンテナーを構成する
+                  href: computer-vision-resource-container-config.md
+                - name: 読み取りコンテナーの v3 への移行
+                  href: read-container-migration-guide.md
+                  displayName: 'docker, container, billing, apikey, pull, logging, on-premises'
+                - name: Kubernetes と Helm での使用
+                  href: deploy-computer-vision-on-premises.md
+                  displayName: 'kubectl, docker, helm, kubernetes, K8s, tiller, container, image, on-prem, on-premises'
+                - name: Container Instances の使用
+                  maintainContext: true
+                  href: ../containers/azure-container-instance-recipe.md
+                  displayName: 'container instances, container, containers, images'
+            - name: 空間分析コンテナー
+              items:
+                - name: 空間分析の概要
+                  href: intro-to-spatial-analysis-public-preview.md
+                - name: ホスト マシンをセットアップしてコンテナーを実行する
+                  href: spatial-analysis-container.md
+                - name: 操作を構成する
+                  href: spatial-analysis-operations.md
+                - name: 人数カウント Web アプリをデプロイする
+                  href: Spatial-analysis-web-app.md
+                - name: ロギングおよびトラブルシューティング
+                  href: spatial-analysis-logging.md
+                - name: ゾーンとラインの配置
+                  href: spatial-analysis-zone-line-placement.md
+                - name: カメラの配置
+                  href: spatial-analysis-camera-placement.md
 - name: 概念
   items:
-    - name: モード
-      items:
-        - name: 光学式文字認識 (OCR)
-          href: concept-recognizing-text.md
-        - name: オブジェクトの検出
-          href: concept-object-detection.md
-        - name: ブランド検出
-          href: concept-brand-detection.md
-        - name: コンテンツ タグ
-          href: concept-tagging-images.md
-        - name: 画像の分類
-          href: concept-categorizing-images.md
-        - name: カテゴリの分類
-          href: Category-Taxonomy.md
-        - name: 画像の説明
-          href: concept-describing-images.md
-        - name: 顔検出
-          href: concept-detecting-faces.md
-        - name: 画像の種類の検出
-          href: concept-detecting-image-types.md
-        - name: ドメイン固有のコンテンツ
-          href: concept-detecting-domain-content.md
-        - name: 配色の検出
-          href: concept-detecting-color-schemes.md
-        - name: スマート トリミングされたサムネイル
-          href: concept-generating-thumbnails.md
-        - name: 成人向けコンテンツの検出
-          href: concept-detecting-adult-content.md
+    - name: 光学式文字認識 (OCR)
+      href: concept-recognizing-text.md
+    - name: オブジェクトの検出
+      href: concept-object-detection.md
+    - name: ブランド検出
+      href: concept-brand-detection.md
+    - name: コンテンツ タグ
+      href: concept-tagging-images.md
+    - name: 画像の分類
+      href: concept-categorizing-images.md
+    - name: カテゴリの分類
+      href: Category-Taxonomy.md
+    - name: 画像の説明
+      href: concept-describing-images.md
+    - name: 顔検出
+      href: concept-detecting-faces.md
+    - name: 画像の種類の検出
+      href: concept-detecting-image-types.md
+    - name: ドメイン固有のコンテンツ
+      href: concept-detecting-domain-content.md
+    - name: 配色の検出
+      href: concept-detecting-color-schemes.md
+    - name: スマート トリミングされたサムネイル
+      href: concept-generating-thumbnails.md
+    - name: 成人向けコンテンツの検出
+      href: concept-detecting-adult-content.md
 - name: チュートリアル
   items:
     - name: 画像のメタデータを生成する
