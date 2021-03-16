@@ -1,6 +1,6 @@
 ---
-title: セキュリティ エージェントの概要
-description: Azure Defender for IoT サービスで使用されるエージェントのセキュリティ エージェントのアーキテクチャについて説明します。
+title: 'クイックスタート: セキュリティ エージェントの概要'
+description: このクイックスタートでは、Azure Defender for IoT サービスで使用されるエージェントのセキュリティ エージェントのアーキテクチャについて説明します。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -8,19 +8,19 @@ author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: ff837fe88f878c522366b2b6bc19a1ef3954b667
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: aceeaec63eb637002352f5c503f57890033b0381
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820655"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102449239"
 ---
-# <a name="security-agent-reference-architecture"></a>セキュリティ エージェントの参照アーキテクチャ
+# <a name="quickstart-security-agent-reference-architecture"></a>クイックスタート: セキュリティ エージェントの参照アーキテクチャ
 
 Azure Defender for IoT には、IoT Hub を介してセキュリティ データのログを収集、処理、集計、および送信する、セキュリティ エージェントの参照アーキテクチャがあります。
 
@@ -41,6 +41,10 @@ Defender for IoT セキュリティ エージェントはオープン ソース 
 - [Defender for IoT の C ベースのエージェント](https://github.com/Azure/Azure-IoT-Security-Agent-C)
 - [Defender for IoT の C# ベースのエージェント](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
 
+## <a name="prerequisites"></a>前提条件
+
+なし
+
 ## <a name="agent-supported-platforms"></a>エージェントでサポートされているプラットフォーム
 
 Defender for IoT では、32 ビットと 64 ビットの Windows のエージェントには異なるインストーラー、32 ビットと 64 ビットの Linux のエージェントには同じインストーラーが用意されています。 次の表に従って、ご使用のデバイスごとに適切なエージェント インストーラーがあることを確認してください。
@@ -57,8 +61,5 @@ Defender for IoT では、32 ビットと 64 ビットの Windows のエージ�
 
 Defender for IoT のデプロイの概要について引き続き学習するには、次の記事を参照してください。
 
-- [セキュリティ エージェントの認証方法](concept-security-agent-authentication-methods.md)を理解する
-- [セキュリティ エージェント](how-to-deploy-agent.md)を選択してデプロイする
-- Defender for IoT の[システムの要件](quickstart-system-prerequisites.md)を確認する
-- [IoT Hub で Defender for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)方法について確認する
-- [Defender for IoT についてよく寄せられる質問](resources-frequently-asked-questions.md)からサービスの詳細について確認する
+> [!div class="nextstepaction"]
+> [セキュリティ エージェントの認証方法](concept-security-agent-authentication-methods.md)

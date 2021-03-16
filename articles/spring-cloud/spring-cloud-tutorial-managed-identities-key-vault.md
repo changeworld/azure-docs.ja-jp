@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fc44dd6cf91d687f47afadf1c3378956d838bc9d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 7e02bfb295460797edf46eac57afa628cd1544be
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579506"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212928"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-spring-cloud-app"></a>チュートリアル:マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
 
@@ -25,18 +25,18 @@ Azure Key Vault を使用すると、対象のアプリのトークン、パス�
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure サブスクリプションにサインアップする](https://azure.microsoft.com/free/)
-* [Azure CLI バージョン 2.0.67 以上をインストールする](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+* [Azure CLI バージョン 2.0.67 以上をインストールする](/cli/azure/install-azure-cli)
 * [Maven 3.0 以上をインストールする](https://maven.apache.org/download.cgi)
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
-リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 コマンド [az group create](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az-group-create) を使用して、Key Vault と Spring Cloud の両方を含むリソース グループを作成します。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 コマンド [az group create](/cli/azure/group#az-group-create) を使用して、Key Vault と Spring Cloud の両方を含むリソース グループを作成します。
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
 ```
 
 ## <a name="set-up-your-key-vault"></a>キー コンテナーを設定する
-キー コンテナーを作成するには、コマンド [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest&preserve-view=true#az-keyvault-create) を使用します。
+キー コンテナーを作成するには、コマンド [az keyvault create](/cli/azure/keyvault#az-keyvault-create) を使用します。
 
 > [!Important]
 > 各キー コンテナーには一意の名前が必要です。 次の例の <your-keyvault-name> は、ご自分のキー コンテナーの名前に置き換えてください。
@@ -47,7 +47,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 "https://<your-keyvault-name>.vault.azure.net" 形式で返される `vaultUri` を書き留めます。 これは、後の手順で使用します。
 
-これで、コマンド [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest&preserve-view=true#az-keyvault-secret-set) を使用して、対象のキー コンテナーにシークレットを格納できるようになりました。
+これで、コマンド [az keyvault secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) を使用して、対象のキー コンテナーにシークレットを格納できるようになりました。
 
 ```azurecli-interactive
 az keyvault secret set --vault-name "<your-keyvault-name>" \
@@ -65,11 +65,11 @@ az spring-cloud create -n "myspringcloud" -g "myResourceGroup"
 次の例では、`--assign-identity` パラメーターの要求どおりに、システム割り当てマネージド ID を持つ `springapp` という名前のアプリを作成します。
 
 ```azurecli
-az spring-cloud app create -n "springapp" -s "myspringcloud" -g "myResourceGroup" --is-public true --assign-identity
+az spring-cloud app create -n "springapp" -s "myspringcloud" -g "myResourceGroup" --assign-endpoint true --assign-identity
 export SERVICE_IDENTITY=$(az spring-cloud app show --name "springapp" -s "myspringcloud" -g "myResourceGroup" | jq -r '.identity.principalId')
 ```
 
-"https://<your-app-name>.azuremicroservices.io" 形式で返される `url` を書き留めます。 これは、後の手順で使用します。
+`https://<your-app-name>.azuremicroservices.io` の形式で返される `url` を書き留めます。 これは、後の手順で使用します。
 
 
 ## <a name="grant-your-app-access-to-key-vault"></a>Key Vault へのアクセス許可をアプリに付与する
@@ -169,7 +169,7 @@ az keyvault set-policy --name "<your-keyvault-name>" --object-id ${SERVICE_IDENT
 
 ## <a name="build-sample-spring-boot-app-with-java-sdk"></a>Java SDK を使用してサンプルの Spring Boot アプリをビルドする
 
-このサンプルでは、シークレットを Azure Key Vault に設定したり、Azure Key Vault から取得したりできます。 [Java 用 Azure Key Vault シークレット クライアント ライブラリ](/java/api/overview/azure/security-keyvault-secrets-readme?preserve-view=true&view=azure-java-stablelibrary)は、Azure SDK 全体で Azure Active Directory トークン認証のサポートを提供します。 これには、AAD トークン認証をサポートする Azure SDK クライアントを構築するために使用できる **TokenCredential** 実装のセットが用意されています。
+このサンプルでは、シークレットを Azure Key Vault に設定したり、Azure Key Vault から取得したりできます。 [Java 用 Azure Key Vault シークレット クライアント ライブラリ](/java/api/overview/azure/security-keyvault-secrets-readme)は、Azure SDK 全体で Azure Active Directory トークン認証のサポートを提供します。 これには、AAD トークン認証をサポートする Azure SDK クライアントを構築するために使用できる **TokenCredential** 実装のセットが用意されています。
 
 Azure Key Vault シークレット クライアント ライブラリを使用すると、トークン、パスワード、API キー、その他のシークレットを安全に格納し、それらへのアクセスを厳密に制御できます。 このライブラリは、シークレットとその各種バージョンを作成、取得、更新、削除、パージ、バックアップ、復元、および一覧表示する操作を提供します。
 
@@ -193,7 +193,7 @@ Azure Key Vault シークレット クライアント ライブラリを使用�
     azure.keyvault.uri=https://<your-keyvault-name>.vault.azure.net
     ```
 
-3. Azure Active Directory からトークンを取得するための [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder?preserve-view=true&view=azure-java-stable) と、キー コンテナーからシークレットを設定または取得するための [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder?preserve-view=true&view=azure-java-stable) を対象のコードに含めます。
+3. Azure Active Directory からトークンを取得するための [ManagedIdentityCredentialBuilder](/java/api/com.azure.identity.managedidentitycredentialbuilder) と、キー コンテナーからシークレットを設定または取得するための [SecretClientBuilder](/java/api/com.azure.security.keyvault.secrets.secretclientbuilder) を対象のコードに含めます。
 
     複製されたサンプル プロジェクトの [MainController.java](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/blob/master/managed-identity-keyvault/src/main/java/com/microsoft/azure/MainController.java#L28) から例を取得します。
 

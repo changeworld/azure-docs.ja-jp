@@ -1,24 +1,18 @@
 ---
 title: Azure Security Center でサポートされているプラットフォーム | Microsoft Docs
 description: このドキュメントでは、Azure Security Center でサポートされるプラットフォームの一覧を示します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 4cc8130d34b5f51728fb2e7fb47c1fb0717d2138
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 65f383b37b6fb5c89fb987f179d7900eb667d76e
+ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100595124"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102438286"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 

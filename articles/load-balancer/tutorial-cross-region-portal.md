@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 7fc964abf7e6832341ad8b1ad55711b3a9993506
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9107ef6100a3c362eae982412d54a981851bcb42
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101712515"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102561400"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -52,7 +52,7 @@ Azure プレビュー ポータルに[サインイン](https://preview.portal.az
 3. **[ロード バランサー]** ページで、 **[作成]** を選択します。
 4. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。 
 
-    | 設定                 | 値                                              |
+    | 設定                 | [値]                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択し、テキスト ボックスに「**CreateCRLBTutorial-rg**」と入力します。|
@@ -121,7 +121,7 @@ Azure プレビュー ポータルに[サインイン](https://preview.portal.az
 
 3. これらの値を使用して、正常性プローブを構成します。
 
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | 名前 | 「**myHealthProbe**」と入力します。 |
     | Protocol | **[TCP]** を選択します。 |
@@ -152,7 +152,7 @@ Azure プレビュー ポータルに[サインイン](https://preview.portal.az
 
 3. 負荷分散規則の構成には、以下の値を使用します。
     
-    | 設定 | 値 |
+    | 設定 | [値] |
     | ------- | ----- |
     | 名前 | 「**myHTTPRule**」と入力します。 |
     | IP バージョン | **[IPv4]** を選択します |
@@ -200,9 +200,6 @@ Azure プレビュー ポータルに[サインイン](https://preview.portal.az
 * 負荷分散規則を作成しました。
 * ロード バランサーをテストしました。
 
-リージョン間ロード バランサーの詳細については、「[リージョン間ロード バランサー (プレビュー)](cross-region-overview.md)」を参照してください。
-
-
-次の記事に進み、以下の方法を学習してください。
+リージョン間ロード バランサーの詳細については、次を参照してください。
 > [!div class="nextstepaction"]
-> [可用性ゾーン間での VM の負荷分散](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [リージョン間ロード バランサー (プレビュー)](cross-region-overview.md)

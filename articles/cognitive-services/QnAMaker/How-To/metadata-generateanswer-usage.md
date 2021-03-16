@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 18b70d60ade7cd40f7ed51aa7c219c8c046abfc3
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c2b608107beff2a4f34325f8a6e5be3a0551053
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584743"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051907"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -272,6 +272,44 @@ GenerateAnswer への応答には、一致した質問と回答のペアの対�
   "RankerType":"QuestionOnly"
 }
 ```
+
+## <a name="return-precise-answers"></a>正確な回答を返す
+
+### <a name="generate-answer-api"></a>回答の生成 API 
+
+ユーザーは QnA Maker 管理対象リソースを使用するときに、[正確な回答](../reference-precise-answering.md)を有効にすることができます。 同じ目的で answerSpanRequest パラメーターを更新する必要があります。
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3,
+    "answerSpanRequest": {
+        "enable": true,
+        "topAnswersWithSpan": 1
+    }
+}
+```
+
+同様に、ユーザーは正確な回答を無効にすることを選択できます。そのためには、answerSpanRequest パラメーターを設定しないようにします。
+
+```json
+{
+    "question": "How long it takes to charge surface pro 4?",
+    "top": 3
+}
+```
+### <a name="bot-settings"></a>ボットの設定
+
+ボット サービスに対して正確な回答の設定を構成する場合は、ボットの App Service リソースに移動します。 その後に、次の設定を追加して、構成を更新することが必要です。
+
+- EnablePreciseAnswer
+- DisplayPreciseAnswerOnly
+
+|ディスプレイの構成|EnablePreciseAnswer|DisplayPreciseAnswerOnly|
+|:--|--|--|
+|正確な回答のみ|true|true|
+|長い回答のみ|false|false|
+|長い回答と正確な回答の両方|true|false|
 
 ## <a name="common-http-errors"></a>一般的な HTTP エラー
 

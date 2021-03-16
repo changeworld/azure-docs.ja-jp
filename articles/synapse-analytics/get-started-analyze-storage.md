@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 12/31/2020
-ms.openlocfilehash: ad16b63360364acd88ab12fb4715d1fd3115c0fb
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 71ba3d99ceee89464dafdf5bf4c16e70df146bef
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209374"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102426078"
 ---
 # <a name="analyze-data-in-a-storage-account"></a>ストレージ アカウント内のデータを分析する
 
@@ -45,7 +45,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats_parquetformat")
 対象のワークスペースの既定の ADLS Gen2 アカウントのデータを分析できます。また、 **[管理]** > **[リンクされたサービス]** > **[新規]** を使用して、ADLS Gen2 または BLOB ストレージ アカウントを対象のワークスペースにリンクすることもできます (以下の手順ではプライマリ ADLS Gen2 アカウントを参照します)。
 
 1. Synapse Studio の **[データ]** ハブに移動し、 **[Linked]\(リンク済み\)** を選択します。
-1. **[ストレージ アカウント]**  >  **[myworkspace (プライマリ - contosolake)]** に移動します。
+1. **[Azure Data Lake Storage Gen2]**  >  **[myworkspace (Primary - contosolake)]\(myworkspace (プライマリ - contosolake)\)** に移動します。
 1. **[users (プライマリ)]** を選択します。 **NYCTaxi** フォルダーが表示されます。 その中に、**PassengerCountStats_csvformat** および **PassengerCountStats_parquetformat** という 2 つのフォルダーが表示されます。
 1. **PassengerCountStats_parquetformat** フォルダーを開きます。 内部に、`part-00000-2638e00c-0790-496b-a523-578da9a15019-c000.snappy.parquet` のような名前の parquet ファイルがあります。
 1. **parquet** を右クリックして、 **[新しいノートブック]** を選択し、 **[Load to DataFrame]\(データフレームに読み込む\)** を選択します。 次のようなセルを含む新しいノートブックが作成されます。
