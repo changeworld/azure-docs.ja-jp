@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: b425cd9268b336a8926e4fad9cb1f288f4fe3e87
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 2d388cf6c776e6d30a487ce9e14ba1601dce1d23
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897919"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103491607"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services の用語と概念
 
@@ -26,10 +26,6 @@ ms.locfileid: "98897919"
 このトピックでは、Azure Media Services の用語と概念について簡単に説明します。 また、この記事では、Media Services v3 の概念と機能を詳細に説明する記事へのリンクを提供します。
 
 開発を始める前に、これらのトピックで説明されている基本的な概念を確認する必要があります。
-
-> [!NOTE]
-> 現在、[Azure portal](https://portal.azure.com/) を使用して、Media Services v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示 (管理ではない)、[API へのアクセスに関する情報の取得](./access-api-howto.md)を行うことができます。
-> 他のすべての管理タスク ([変換とジョブ](transforms-jobs-concept.md)や[コンテンツ保護](content-protection-overview.md)など) については、[REST API](/rest/api/media/accountfilters)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,7 +47,7 @@ ms.locfileid: "98897919"
 |コンテンツの保護|Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つの DRM システム (Microsoft PlayReady、Google Widevine、Apple FairPlay) によって動的に暗号化されたライブまたはオンデマンドのコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 <br/><br/>ストリームで暗号化オプションを指定するには、**コンテンツ キー ポリシー** を作成し、それを **ストリーミング ロケーター** に関連付けます。 **クライアント キー ポリシー** では、エンド クライアントにコンテンツ キーを配信する方法を構成できます。<br/><br/> 同じオプションが必要な場合は常に、既存のポリシーを再利用するようにしてください。| [コンテンツ キー ポリシー](content-key-policy-concept.md)<br/><br/>[コンテンツ保護](content-protection-overview.md)|
 |ライブ ストリーミング|Media Services では、Azure クラウドで顧客にライブ イベントを配信することができます。 **ライブ イベント** は、ライブ ビデオ フィードの取り込みと処理を担当します。 **ライブ イベント** を作成するときに、リモートのエンコーダーからライブ信号を送信するために使用できる入力エンドポイントが作成されます。 ストリームが **ライブ イベント** に流れ始めると、**アセット**、**ライブ出力**、**ストリーミング ロケーター** を作成することにより、ストリーミング イベントを開始できます。 **ライブ出力** により、ストリームが **アセット** にアーカイブされ、**ストリーミング エンドポイント** を介して視聴者がストリームを使用できるようになります。 ライブ イベントは、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 |[ライブ ストリーミングの概要](live-streaming-overview.md)<br/><br/>[ライブ イベントとライブ出力](live-events-outputs-concept.md)|
 |Event Grid を使用した監視|ジョブの進行状況を確認するには、**Event Grid** を使用します。 Media Services では、ライブ イベントも出力されます。 Event Grid では、アプリはほぼすべての Azure サービスやカスタム ソースのイベントをリッスンし、対応できます。 |[Event Grid イベントの処理](reacting-to-media-services-events.md)<br/><br/>[スキーマ](media-services-event-schemas.md)|
-|Azure Monitor を使用した監視|Azure Monitor を使用して、アプリの実行状況を理解する上で役立つメトリックと診断ログを監視します。|[メトリックと診断ログ](media-services-metrics-diagnostic-logs.md)<br/><br/>[診断ログのスキーマ](media-services-diagnostic-logs-schema.md)|
+|Azure Monitor を使用した監視|Azure Monitor を使用して、アプリの実行状況を理解する上で役立つメトリックと診断ログを監視します。|[メトリックと診断ログ](monitoring/monitor-media-services-data-reference.md)<br/><br/>[診断ログのスキーマ](monitoring/monitor-media-services-data-reference.md)|
 |Player クライアント|Azure Media Player を使用すると、Media Services によってストリーミングされたメディア コンテンツをさまざまなブラウザーやデバイス上で再生できます。 Azure Media Player では、HTML5、Media Source Extensions (MSE)、Encrypted Media Extensions (EME) といった業界標準を使用して、強化されたアダプティブ ストリーミングを提供します。 |[Azure Media Player の概要](use-azure-media-player.md)|
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手

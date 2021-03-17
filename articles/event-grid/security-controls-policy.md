@@ -1,15 +1,15 @@
 ---
 title: Azure Event Grid 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Event Grid に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: f837d43d2a287e3b28e68321b81937de151f4dc4
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 19400af4932f1ab59aec8546ce1f7c8f1989f40d
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440639"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633337"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-event-grid"></a>Azure Event Grid 用の Azure Policy 規制コンプライアンス コントロール
 

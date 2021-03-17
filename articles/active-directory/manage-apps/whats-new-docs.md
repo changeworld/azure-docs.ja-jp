@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: ebd8839fd17f79bc53b5093af83d457bb23712d9
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102452052"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601765"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
@@ -33,7 +33,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
 - [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
 - [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
-- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](application-sign-in-problem-federated-sso-gallery.md)
 - [テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
@@ -84,7 +83,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="updated-articles"></a>更新された記事
 - [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
-- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](application-sign-in-problem-federated-sso-gallery.md)
 
 
 ## <a name="october-2020"></a>2020 年 10 月
@@ -99,7 +97,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](application-sign-in-problem-federated-sso-gallery.md)
 - [アプリケーション プロキシ エージェント コネクタのインストールに関する問題](application-proxy-connector-installation-problem.md)
 - [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
 - [エンド ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)

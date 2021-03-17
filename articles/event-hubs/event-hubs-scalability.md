@@ -2,13 +2,13 @@
 title: スケーラビリティ - Azure Event Hubs | Microsoft Docs
 description: この記事では、パーティションとスループット ユニットを使用して Azure Event Hubs をスケーリングする方法について説明します。
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 4dacb24ace2332f590db54959cbf1f06694b982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/16/2021
+ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86521957"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601282"
 ---
 # <a name="scaling-with-event-hubs"></a>Event Hubs によるスケーリング
 
@@ -39,11 +39,7 @@ Event Hubs の **自動インフレ** 機能は、使用量のニーズに合わ
 ## <a name="partitions"></a>[パーティション]
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
-### <a name="partition-key"></a>パーティション キー
 
-[パーティション キー](event-hubs-programming-guide.md#partition-key)を使用すると、データ編成を目的として受信イベント データを特定のパーティションにマップすることができます。 パーティション キーは、送信者によって指定され、イベント ハブに渡される値です。 これは、パーティション割り当てを作成する静的なハッシュ関数で処理されます。 イベントを発行するときにパーティション キーを指定しないと、ラウンド ロビン割り当てが使用されます。
-
-イベント発行元は、そのパーティション キーのみを認識し、イベントの発行先となるパーティションは認識しません。 このようにキーとパーティションを分離することにより、送信者はダウンストリーム処理について余分な情報を把握しなくてもよくなります。 デバイスごとまたはユーザーの一意の ID は適切なパーティション キーになりますが、地理的条件などのその他の属性を使用して関連するイベントを 1 つのパーティションにまとめることもできます。
 
 
 ## <a name="next-steps"></a>次のステップ
