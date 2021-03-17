@@ -14,25 +14,25 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ab89c222648a66ad7451f9bb47e254c55b925630
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ab5871749630b047f6498a2439f77693a999c798
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590758"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103493923"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services のメトリックを監視する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-[Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 この機能の詳細な説明と、Azure Media Services のメトリックと診断ログを使用する必要がある理由については、[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)に関するページを参照してください。
+[Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 この機能の詳細な説明と、Azure Media Services のメトリックと診断ログを使用する必要がある理由については、[Media Services のメトリックと診断ログの監視](monitoring/monitor-media-services-data-reference.md)に関するページを参照してください。
 
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、Azure CLI を使ってクエリを実行したりできます。 この記事では、Azure portal のグラフと Azure CLI を使用してメトリックを監視する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Media Services アカウントを作成する](./create-account-howto.md)
-- 「[Media Services のメトリックと診断ログの監視](media-services-metrics-diagnostic-logs.md)」を確認する
+- 「[Media Services のメトリックと診断ログの監視](monitoring/monitor-media-services-data-reference.md)」を確認する
 
 ## <a name="view-metrics-in-azure-portal"></a>Azure portal でメトリックを表示する
 
@@ -46,7 +46,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
     * &lt;Media Services アカウント名&gt;/&lt;ストリーミング エンドポイント名&gt;
     * &lt;ストレージ アカウント名&gt;
 
-    フィルター処理してリソースを選択し、 **[適用]** を押します。 サポートされているリソースとメトリックの詳細については、「[Media Services のメトリックを監視する](media-services-metrics-diagnostic-logs.md)」を参照してください。
+    フィルター処理してリソースを選択し、 **[適用]** を押します。 サポートされているリソースとメトリックの詳細については、「[Media Services のメトリックを監視する](monitoring/monitor-media-services-data-reference.md)」を参照してください。
 
     > [!NOTE]
     > 監視するリソースを切り替えるには、もう一度 **[ソース]** ボックスをクリックして、この手順を繰り返します。

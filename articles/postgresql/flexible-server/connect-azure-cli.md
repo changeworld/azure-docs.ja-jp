@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/06/2021
-ms.openlocfilehash: f10978107f80e7dea4e6d5ad40c078c55f225c2d
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: f4eec89aadee1966271286b9280916af973e4b1c
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102491245"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102614345"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>クイックスタート: Azure CLI から Azure Database for PostgreSQL - フレキシブル サーバーに接続してクエリを実行する
 
@@ -34,7 +34,7 @@ ms.locfileid: "102491245"
 ```azurecli
 az postgres flexible-server create --public-access <your-ip-address>
 ```
-このコマンドは、さらに引数を追加することでカスタマイズできます。 すべての引数については、[az postgres flexible-server create](/cli/azure/postgres/flexible-server?view=azure-cli-latest#az_postgres_flexible_server_create) を参照してください。
+このコマンドは、さらに引数を追加することでカスタマイズできます。 すべての引数については、[az postgres flexible-server create](/cli/azure/postgres/flexible-server#az_postgres_flexible_server_create) を参照してください。
 
 ## <a name="view-all-the-arguments"></a>すべての引数を確認する
 ```--help``` 引数を指定すると、このコマンドのすべての引数を確認できます。 
