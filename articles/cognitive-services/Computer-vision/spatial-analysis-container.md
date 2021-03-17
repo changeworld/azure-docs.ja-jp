@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 9989c6ea6b75203d43c37854caef7fdcbc321779
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519029"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102612900"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -306,7 +306,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-次に、[接続文字列](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06)を使用して、ホスト コンピューターを IoT Edge デバイスとして IoT Hub インスタンスに登録します。
+次に、[接続文字列](../../iot-edge/how-to-register-device.md)を使用して、ホスト コンピューターを IoT Edge デバイスとして IoT Hub インスタンスに登録します。
 
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 
@@ -468,7 +468,7 @@ sudo apt-get update
 sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
-次に、[接続文字列](../../iot-edge/how-to-register-device.md?view=iotedge-2018-06)を使用して、VM を IoT Edge デバイスとして IoT Hub インスタンスに登録します。
+次に、[接続文字列](../../iot-edge/how-to-register-device.md)を使用して、VM を IoT Edge デバイスとして IoT Hub インスタンスに登録します。
 
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 

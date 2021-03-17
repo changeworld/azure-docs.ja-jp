@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9be00fd89234be0a8b5740af9e12811f36a47619
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 4f4f53d4a20397f38b565cb73e74b01d15cc3022
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092334"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633055"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
 
@@ -27,9 +27,6 @@ ms.locfileid: "101092334"
 Microsoft Azure Media Services は、多くのメディア ソース ファイル形式をエンコードするために使用できます。 これは、コンテンツ保護の有無に関係なく、さまざまなストリーミング プロトコルを介して配信され、すべての主要なデバイス (iOS デバイスや Android デバイスなど) に到達します。 これらのクライアントは、さまざまなプロトコルを認識します。 たとえば、iOS では、HTTP ライブ ストリーミング (HLS) 形式でストリームを配信する必要があります。また、Android デバイスでは、HLS と MPEG DASH がサポートされます。
 
 Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md) (配信元) は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できます。 次のセクションで説明する一般的なストリーミング メディア プロトコルのいずれかを使用します。 "*ダイナミック パッケージ*" は、すべてのストリーミング エンドポイントに標準で付属する機能です。
-
-> [!NOTE]
-> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](/rest/api/media/)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>ソース ファイルをデリバリー用に準備するには
 

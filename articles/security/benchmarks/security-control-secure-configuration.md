@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 44604f910b3ee6e6ce1b21c736c6ad1f0443e996
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: b13cc6f8bb50a3c9ec3cae519db387f9f32c950d
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500038"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615280"
 ---
 # <a name="security-control-secure-configuration"></a>セキュリティ コントロールセキュリティで保護された構成
 
@@ -100,7 +100,7 @@ Azure コンピューティング リソースに対する脆弱性評価の実�
 
 カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) で定義された (Azure DevOps に統合されている場合)、または Active Directory で定義された (TFS に統合されている場合) 特定のユーザー、組み込みのセキュリティ グループ、またはグループにアクセス許可を付与したり、そのアクセス許可を拒否したりできます。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
 - [Azure DevOps でのアクセス許可とグループについて](/azure/devops/organizations/security/about-permissions)
 

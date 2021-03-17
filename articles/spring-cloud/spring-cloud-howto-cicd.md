@@ -8,22 +8,22 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: ff54c1dc62189f2a00528c6a82abe26c667c5538
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 331ef39facb9f7cf8f069f2a238be325f53de2d0
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038698"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102618035"
 ---
 # <a name="cicd-for-azure-spring-cloud"></a>Azure Spring Cloud の CI/CD
 
-継続的インテグレーションと継続的デリバリーのツールを使用すると、最小限の労力とリスクで、既存のアプリケーションにすばやく更新プログラムをデプロイできます。 Azure DevOps は、これらの主要なジョブを整理および制御するのに役立ちます。 現在、Azure Spring Cloud では特定の Azure DevOps プラグインは提供されていません。  ただし、[Azure CLI タスク](/azure/devops/pipelines/tasks/deploy/azure-cli?preserve-view=true&view=azure-devops)を使用して、Spring Cloud アプリケーションと DevOps を統合できます。
+継続的インテグレーションと継続的デリバリーのツールを使用すると、最小限の労力とリスクで、既存のアプリケーションにすばやく更新プログラムをデプロイできます。 Azure DevOps は、これらの主要なジョブを整理および制御するのに役立ちます。 現在、Azure Spring Cloud では特定の Azure DevOps プラグインは提供されていません。  ただし、[Azure CLI タスク](/azure/devops/pipelines/tasks/deploy/azure-cli)を使用して、Spring Cloud アプリケーションと DevOps を統合できます。
 
 この記事では、Azure Spring Cloud で Azure CLI タスクを使用して Azure DevOps と統合する方法について説明します。
 
 ## <a name="create-an-azure-resource-manager-service-connection"></a>Azure Resource Manager サービス接続を作成する
 
-Azure DevOps プロジェクトへの Azure Resource Manager サービス接続を作成する方法については、[こちらの記事](/azure/devops/pipelines/library/connect-to-azure?preserve-view=true&view=azure-devops)を参照してください。 Azure Spring Cloud サービス インスタンスに使用しているものと同じサブスクリプションを必ず選択してください。
+Azure DevOps プロジェクトへの Azure Resource Manager サービス接続を作成する方法については、[こちらの記事](/azure/devops/pipelines/library/connect-to-azure)を参照してください。 Azure Spring Cloud サービス インスタンスに使用しているものと同じサブスクリプションを必ず選択してください。
 
 ## <a name="azure-cli-task-templates"></a>Azure CLI タスクのテンプレート
 ::: zone pivot="programming-language-csharp"

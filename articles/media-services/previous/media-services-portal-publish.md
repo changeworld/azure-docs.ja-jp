@@ -3,7 +3,7 @@ title: Azure Portal でのコンテンツの発行 | Microsoft Docs
 description: このチュートリアルでは、Azure Portal を使用してコンテンツを発行する手順について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 92c364eb-5a5f-4f4e-8816-b162c031bb40
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
-ms.openlocfilehash: 9f86f7a0a7eaef7c0dc244a2e089596de3779eae
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: c22570153200b9daeae44701c814faa1a28916c8
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018967"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103009812"
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する
 
@@ -40,7 +40,7 @@ ms.locfileid: "92018967"
 
 コンテンツのストリーミングまたはダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成してアセットを発行する必要があります。 資産ファイルには、ロケーターを通じてアクセスできます。 Azure Media Services では、次の 2 種類のロケーターがサポートされています。 
 
-* **ストリーミング (OnDemandOrigin) ロケーター**。 ストリーミング ロケーターは、アダプティブ ストリーミングに使用されます。 アダプティブ ストリーミングの例としては、Apple HTTP Live Streaming (HLS)、Microsoft Smooth Streaming、Dynamic Adaptive Streaming over HTTP (DASH。MPEG-DASH とも呼ばれます) などがあります。 ストリーミング ロケーターを作成するには、アセットに .ism ファイルが含まれている必要があります。 たとえば、「 `http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest` 」のように入力します。
+* **ストリーミング (OnDemandOrigin) ロケーター**。 ストリーミング ロケーターは、アダプティブ ストリーミングに使用されます。 アダプティブ ストリーミングの例としては、Apple HTTP Live Streaming (HLS)、Microsoft Smooth Streaming、Dynamic Adaptive Streaming over HTTP (DASH。MPEG-DASH とも呼ばれます) などがあります。 ストリーミング ロケーターを作成するには、アセットに .ism ファイルが含まれている必要があります。 たとえば、`http://amstest.streaming.mediaservices.windows.net/61b3da1d-96c7-489e-bd21-c5f8a7494b03/scott.ism/manifest` のようにします。
 * **プログレッシブ (Shared Access Signature) ロケーター**。 プログレッシブ ロケーターは、プログレッシブ ダウンロードを通じてビデオを配信する場合に使用されます。
 
 HLS ストリーミング URL を作成するには、次のように、 *(format=m3u8-aapl)* を URL に追加します。

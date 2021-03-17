@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5695b21a09199a46ab38d887f2127a61507426d3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: ee4dd539119457086c9b109579b7e6ab195fea96
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102562794"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103014385"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
 
@@ -77,10 +77,6 @@ Azure マネージド ディスク内のデータは、利用できる最も強�
 ### <a name="restrictions"></a>制限
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-restrictions](../../includes/virtual-machines-disks-encryption-at-host-restrictions.md)]
-
-#### <a name="supported-regions"></a>サポートされているリージョン
-
-[!INCLUDE [virtual-machines-disks-encryption-at-host-regions](../../includes/virtual-machines-disks-encryption-at-host-regions.md)]
 
 #### <a name="supported-vm-sizes"></a>サポートされる VM のサイズ
 
