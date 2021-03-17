@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7c477655dfb24eebab9a2669697d9ef610088198
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 3fe6ee8336872c04e85b732713494adf0fefa28a
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592026"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103011444"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
 
@@ -79,25 +79,24 @@ ms.locfileid: "99592026"
 
 ボットやその他のクライアント アプリケーションは、次のアーキテクチャの流れを利用してアクティブ ラーニングを使用する必要があります。
 
-* ボットは、GenerateAnswer API で `top` プロパティを使用していくつかの回答を取得することによって、[ナレッジ ベースから回答を取得](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)します。
+1. ボットは、GenerateAnswer API で `top` プロパティを使用していくつかの回答を取得することによって、[ナレッジ ベースから回答を取得](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)します。
 
-    #### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>GenerateAnswer 要求で top プロパティを使用して、一致する回答をいくつか取得する
-
-    回答を求めて QnA Maker に質問を送信すると、JSON 本文の `top` プロパティにより、返す回答の数が設定されます。
-
-    ```json
-    {
-        "question": "wi-fi",
-        "isTest": false,
-        "top": 3
-    }
-    ```
-
-* ボットは次のようにして明示的フィードバックを特定します。
+2. ボットは次のようにして明示的フィードバックを特定します。
     * ユーザー独自の[カスタム ビジネス ロジック](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)を使用して、低いスコアを除外します。
     * ボットまたはクライアント アプリケーションでは、回答候補の一覧をユーザーに表示し、ユーザーが選択した回答を取得します。
-* ボットは [Train API](#train-api) によって、[選択された回答を QnA Maker に送り返します](#bot-framework-sample-code)。
+3. ボットは [Train API](#train-api) によって、[選択された回答を QnA Maker に送り返します](#bot-framework-sample-code)。
 
+### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>GenerateAnswer 要求で top プロパティを使用して、一致する回答をいくつか取得する
+
+回答を求めて QnA Maker に質問を送信すると、JSON 本文の `top` プロパティにより、返す回答の数が設定されます。
+
+```json
+{
+    "question": "wi-fi",
+    "isTest": false,
+    "top": 3
+}
+```
 
 ### <a name="use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user"></a>ビジネス ロジックと一緒に score プロパティを使用して、ユーザーに表示する回答の一覧を取得する
 
@@ -157,7 +156,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP 要求プロパティ|名前|Type|目的|
+|HTTP 要求プロパティ|名前|種類|目的|
 |--|--|--|--|
 |URL ルート パラメーター|ナレッジ ベース ID|string|ナレッジ ベースの GUID。|
 |カスタム サブドメイン|QnAMaker リソース名|string|リソース名は、QnA Maker のカスタム サブドメインとして使用されます。 これは、ナレッジ ベースを公開した後に、[設定] ページで利用できます。 これは `host` として表示されます。|
