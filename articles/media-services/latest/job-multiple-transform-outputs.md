@@ -12,19 +12,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a40ce1fd7b3d9d946641c91f5876d8c73755b005
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: fc3ab64a35c24df2af9d90a5ad348f840610d188
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092258"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635843"
 ---
 # <a name="create-a-job-with-multiple-transform-outputs"></a>複数の変換出力があるジョブを作成する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 このトピックでは、2 つの変換出力がある変換を作成する方法について説明します。 最初の 1 つは、組み込みの [AdaptiveStreaming](encoding-concept.md#builtinstandardencoderpreset) プリセットを使用して、アダプティブ ビットレート ストリーミング用に入力をエンコードするよう呼び出します。 2 つ目は、[AudioAnalyzerPreset](analyzing-video-audio-files-concept.md#built-in-presets) で処理するよう、入力ビデオの音声信号を呼び出します。 変換が作成されたら、それに応じてビデオを処理するジョブを送信できます。 この例では 2 つの変換出力を指定しているため、2 つのジョブ出力を指定する必要があります。 次に示すように、両方のジョブの出力を同じアセットに送るか、別のアセットに結果を書き込むかを選択できます。
- 
 
 > [!TIP]
 > 開発を開始する前に、「[Media Services v3 API を使用した開発](media-services-apis-overview.md)」を確認してください (API や命名規則などへのアクセスに関する情報が含まれています)。

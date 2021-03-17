@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0eeea04cd42498c5ba066a3a3e977c92b2906292
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 681b60ac664a210971f083900b9d8b5ba5df119f
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738035"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617558"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールを対象としたソース管理の統合
 
@@ -51,7 +51,7 @@ ms.locfileid: "98738035"
 
    ![リポジトリの複製](./media/sql-data-warehouse-source-control-integration/4-clone-repo.png "リポジトリをクローンする")
 
-Visual Studio を使用したプロジェクトの接続の詳細については、「[チーム エクスプローラーのプロジェクトに接続する](/visualstudio/ide/connect-team-project?view=vs-2019&preserve-view=true)」を参照してください。 Visual Studio を使用したリポジトリの複製に関するガイダンスは、「[既存の Git リポジトリを複製する](/azure/devops/repos/git/clone?tabs=visual-studio&view=azure-devops&preserve-view=true)」をご確認ください。 
+Visual Studio を使用したプロジェクトの接続の詳細については、「[チーム エクスプローラーのプロジェクトに接続する](/visualstudio/ide/connect-team-project?view=vs-2019&preserve-view=true)」を参照してください。 Visual Studio を使用したリポジトリの複製に関するガイダンスは、「[既存の Git リポジトリを複製する](/azure/devops/repos/git/clone?tabs=visual-studio)」をご確認ください。 
 
 ## <a name="create-and-connect-your-project"></a>プロジェクトを作成して接続する
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: ebdb6a44a1f20ce0835fc5d7358d99c8224d3d77
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 43456655d057ee79ed347e4a94c008d825bfa639
+ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102044937"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103470236"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -194,8 +194,8 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | 英語 (イギリス) | `en-GB` | Female | `en-GB-MiaNeural` | 全般 |
 | 英語 (イギリス) | `en-GB` | Male | `en-GB-RyanNeural` | 全般 |
 | 英語 (米国) | `en-US` | Female | `en-US-AriaNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
-| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` | 全般 |
-| 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | 全般 |
+| 英語 (米国) | `en-US` | Female | `en-US-JennyNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
+| 英語 (米国) | `en-US` | Male | `en-US-GuyNeural` | [SSML の使用により](speech-synthesis-markup.md#adjust-speaking-styles)、全般、複数の音声スタイルを使用可能  |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-NooraNeural` | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Female | `fi-FI-SelmaNeural` <sup>[新規作成]</sup> | 全般 |
 | フィンランド語 (フィンランド) | `fi-FI` | Male | `fi-FI-HarriNeural` <sup>[新規作成]</sup> | 全般 |
