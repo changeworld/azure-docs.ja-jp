@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 77cc509a9fac2a24b3cd70675c1ee4160ecdb24d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6fdcedd19c02251035a838d34ba51e786595134b
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101741856"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102212452"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -87,6 +87,9 @@ Front Door のルートには順序はなく、特定のルートは最適な一
 
 ### <a name="how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door"></a>バックエンドへのアクセスを Azure Front Door のみにロックダウンするにはどうしたらよいですか?
 
+> [!NOTE]
+> 新しい SKU Front Door Premium からはプライベート エンドポイント経由でアプリケーションをロックダウンする方法が提供されていますが、その方法は推奨度が高くなります。 [プライベート エンドポイント](./standard-premium/concept-private-link.md)について詳しく学習する
+
 特定の Front Door からのみトラフィックを受け入れるようにアプリケーションをロックダウンするには、バックエンドの IP ACL を設定してから、Front Door によって送信されるヘッダー "X-Azure-FDID" の特定の値に、バックエンド上のトラフィックを制限する必要があります。 以下に、これらの手順の詳細を示します。
 
 - 使用するバックエンドが、Azure Front Door のバックエンド IP アドレス空間と Azure のインフラストラクチャ サービスからのトラフィックのみを受け入れるように IP ACL 処理を構成します。 バックエンドに対する ACL については、以下の IP の詳細を参照してください。
@@ -99,7 +102,7 @@ Front Door のルートには順序はなく、特定のルートは最適な一
 
 - Front Door ポータル ページの [概要] セクションで、`Front Door ID` の値を探します。 その後、その値を使って、Front Door からバックエンドに送信された受信ヘッダー "**X-Azure FDID**" をフィルター処理することで、独自の Front Door インスタンスのみが許可されていることを確認できます (上記の IP 範囲は、他のお客様の他の Front Door インスタンスと共有されているため)。
 
-- バックエンド Web サーバーでルール フィルターを適用して、結果の "X-Azure-FDID" ヘッダー値に基づいてトラフィックを制限します。 Azure App Service のような一部のサービスでは、アプリケーションやホストを変更することなく、この[ヘッダーベースのフィルター処理](../app-service/app-service-ip-restrictions#restrict-access-to-a-specific-azure-front-door-instance-preview)機能が提供されることに注意してください。
+- バックエンド Web サーバーでルール フィルターを適用して、結果の "X-Azure-FDID" ヘッダー値に基づいてトラフィックを制限します。 Azure App Service のような一部のサービスでは、アプリケーションやホストを変更することなく、この[ヘッダーベースのフィルター処理](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance-preview)機能が提供されることに注意してください。
 
   [Microsoft インターネット インフォメーション サービス (IIS)](https://www.iis.net/) の例を次に示します。
 
