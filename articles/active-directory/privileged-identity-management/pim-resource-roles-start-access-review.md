@@ -11,30 +11,28 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 02/11/2021
+ms.date: 03/09/2021
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f05ca02068c82a3839b22b698e49a7be818a56
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4276b48584ecbad91794de58abafd7e3367f6877
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100370548"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102564035"
 ---
 # <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure リソース ロールのアクセス レビューを作成する
 
-従業員の特権 Azure リソース ロールへのアクセスは、時間の経過に伴って変化します。 古くなったロールの割り当てに関連するリスクを軽減するために、アクセスを定期的に確認する必要があります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、特権 Azure リソース ロールのアクセス レビューを作成できます。 自動的に実行される定期的なアクセス レビューを構成することもできます。
+従業員による特権 Azure リソース ロールへのアクセスの必要性は、時間の経過に伴って変化します。 古くなったロールの割り当てに関連するリスクを軽減するために、アクセスを定期的に確認する必要があります。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用して、Azure リソース ロールへの特権アクセスのアクセス レビューを作成できます。 自動的に実行される定期的なアクセス レビューを構成することもできます。 この記事では、1 つ以上のアクセス レビューを作成する方法について説明します。
 
-この記事では、特権 Azure リソース ロールに対して 1 つ以上のアクセス レビューを作成する方法について説明します。
-
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisite-role"></a>事前に必要なロール
 
  アクセス レビューを作成するには、リソースの Azure ロールの[所有者](../../role-based-access-control/built-in-roles.md#owner)または[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)に割り当てられている必要があります。
 
 ## <a name="open-access-reviews"></a>アクセス レビューを開く
 
-1. 特権ロール管理者ロールのメンバー ユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
+1. いずれかの事前に必要なロールに割り当てられているユーザーで [Azure portal](https://portal.azure.com/) にサインインします。
 
 1. **[Azure AD Privileged Identity Management]** を開きます。
 

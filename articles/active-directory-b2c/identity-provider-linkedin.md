@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 1ce9c00cb58253e2cca9a7d60c4cce9b77709688
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ce5e8cfda4a9f51a90c8f26133a710f4d1c258b6
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953854"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448270"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LinkedIn アカウントでのサインアップおよびサインインを設定する
 
@@ -69,7 +69,10 @@ Azure Active Directory B2C (Azure AD B2C) で LinkedIn アカウントを使用�
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
 1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
+1. **[ユーザー フローを実行します]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[LinkedIn]** を選択して、LinkedIn アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
 
@@ -96,8 +99,8 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 LinkedIn アカウントをクレーム プロバイダーとして定義するには、それをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
-1. エディターで *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _ ファイルを開きます。 このファイルは、前提条件の 1 つの一部としてダウンロードした[カスタム ポリシー スターター パック][starter-pack]に含まれています。
-1. _ *ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
+1. エディターで *SocialAndLocalAccounts/ **TrustFrameworkExtensions.xml*** ファイルを開きます。 このファイルは、前提条件の 1 つの一部としてダウンロードした[カスタム ポリシー スターター パック][starter-pack]に含まれています。
+1. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
 1. 新しい **ClaimsProvider** を次のように追加します。
 
     ```xml
@@ -213,7 +216,14 @@ LinkedIn 技術プロファイルでは、**ExtractGivenNameFromLinkedInResponse
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
+
+1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
+1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[LinkedIn]** を選択して、LinkedIn アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ## <a name="migration-from-v10-to-v20"></a>v1.0 から v2.0 に移行する
 

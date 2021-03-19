@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 22548703b456eb28a30c2d210d21f810d7b3ae6e
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 36bdda4165c7307eaa7837d6208952da7f1d115f
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98952700"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448372"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して GitHub アカウントでのサインアップおよびサインインを設定する
 
@@ -68,7 +68,10 @@ Azure Active Directory B2C (Azure AD B2C) で GitHub アカウントを使用し
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
 1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
+1. **[ユーザー フローを実行します]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[GitHub]** を選択して、GitHub アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
 
@@ -199,6 +202,13 @@ GitHub の技術プロファイルを使用するには、**CreateIssuerUserId**
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
+
+1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
+1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[GitHub]** を選択して、GitHub アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end

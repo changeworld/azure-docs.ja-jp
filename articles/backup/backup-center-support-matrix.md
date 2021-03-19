@@ -1,14 +1,14 @@
 ---
 title: バックアップ センターのサポート マトリックス
-description: この記事では、バックアップ センターがワークロードの種類ごとにサポートするシナリオを要約しています。
+description: この記事では、バックアップ センターがワークロードの種類ごとにサポートするシナリオを要約しています
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: aedf2d071c4f38d2d873383409c11abdf3c0c72d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: d6e5d34e201edda4fd1e9fda85f210fb88211e28
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101700237"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504509"
 ---
 # <a name="support-matrix-for-backup-center"></a>バックアップ センターのサポート マトリックス
 

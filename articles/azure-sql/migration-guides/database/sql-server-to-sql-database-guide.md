@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: a9dfd185af012314ddc481b598f181b6760640ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2d43eda404a5257c0ec28a884b6ebf182330ba51
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690942"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488417"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>移行ガイド:SQL Server から SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -58,6 +58,8 @@ SQL Server を Azure SQL Database に移行するには、次の前提条件が�
 検出フェーズで使用できるツールの詳細については、「[データ移行のシナリオで利用できるサービスとツール](../../../dms/dms-tools-matrix.md)」を参照してください。 
 
 ### <a name="assess"></a>アクセス 
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 データ ソースが検出された後、Azure SQL Database に移行できるオンプレミスの SQL Server データベースを評価して、移行の阻害要素や互換性の問題を明らかにします。 
 

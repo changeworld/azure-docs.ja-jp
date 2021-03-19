@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: cc2a641cb017edace24db5df69bc4adf3a607524
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797890"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102488234"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>移行ガイド:SQL Server から Azure VM 上の SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -58,6 +58,8 @@ Azure Migrate では、オンプレミス コンピューターの移行適合�
 
 
 ### <a name="assess"></a>アクセス
+
+[!INCLUDE [assess-estate-with-azure-migrate](../../../../includes/azure-migrate-to-assess-sql-data-estate.md)]
 
 データ ソースをすべて検出した後、[Data Migration Assistant (DMA)](/sql/dma/dma-overview) を使用して、オンプレミスの SQL Server インスタンスから Azure VM 上の SQL Server インスタンスへの移行を評価します。これにより、ソースとターゲットのインスタンス間のギャップを把握できます。 
 

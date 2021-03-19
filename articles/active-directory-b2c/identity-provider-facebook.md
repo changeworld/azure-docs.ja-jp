@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 03/08/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e0e71bc0e3a81b5ab2f455224ed2ed4281532d55
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: a43551adf8dbe1a03ac7f7b22d58d63aa8c2c503
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98952676"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448423"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -79,7 +79,11 @@ Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウ�
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
 1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
+1. **[ユーザー フローを実行します]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Facebook]** を選択して、Facebook アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
+
 
 ::: zone-end
 
@@ -118,7 +122,10 @@ Azure AD B2C テナントで前に記録したアプリ シークレットを格
 1. *TrustFrameworkExtensions.xml* ファイルをテナントにアップロードします。
 1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
 1. **[アプリケーションの選択]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Facebook]** を選択して、Facebook アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
 

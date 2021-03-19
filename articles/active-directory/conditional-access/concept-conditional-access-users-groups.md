@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4c654f70af2188264465d97abded9cae95e9275
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 9d5671626e05145f79c3ad5fc0ecdb5628ac9421
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364581"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102427132"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件付きアクセス:ユーザーとグループ
 
-条件付きアクセス ポリシーには、決定プロセスのシグナルの 1 つとしてユーザー割り当てが含まれている必要があります。 ユーザーは条件付きアクセス ポリシーに含めることも除外することもできます。 すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。
+条件付きアクセス ポリシーには、決定プロセスのシグナルの 1 つとしてユーザー割り当てが含まれている必要があります。 ユーザーは条件付きアクセス ポリシーに含めることも除外することもできます。 すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。 この記事に加えて、 [条件付きアクセス ポリシーのユーザーを追加または除外する方法](https://www.youtube.com/watch?v=5DsW1hB3Jqs)について、下のようなプロセスを説明した動画を用意しています。 
 
 ![条件付きアクセスによって下される決定のシグナルとしてのユーザー](./media/concept-conditional-access-users-groups/conditional-access-users-and-groups.png)
 

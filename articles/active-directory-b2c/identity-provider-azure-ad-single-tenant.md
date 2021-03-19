@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8a3cca7740adb6fa44b162e8c8740d1be1c7aa6b
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: dc824c7e4caa2a634a60f7d8a69870ddd961998c
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98953888"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448474"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -90,7 +90,7 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 
 1. **[クライアント ID]** には、前に記録したアプリケーション ID を入力します。
 1. **[クライアント シークレット]** には、前に記録したクライアント シークレットを入力します。
-1. **[スコープ]** で、`openid profile` を入力します。
+1. **[スコープ]** には、「`openid profile`」と入力します。
 1. **[応答の種類]** および **[応答モード]** の既定値はそのままにします。
 1. (省略可能) **[ドメインのヒント]** に、「`contoso.com`」と入力します。 詳しくは、「[Azure Active Directory B2C を使用した直接サインインの設定](direct-signin.md#redirect-sign-in-to-a-social-provider)」をご覧ください。
 1. **[ID プロバイダー要求のマッピング]** で、次の要求を入力します。
@@ -111,7 +111,10 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
 1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
+1. **[ユーザー フローを実行します]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Contoso Azure AD]** を選択し、Azure AD Contoso アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
 
@@ -220,7 +223,14 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
+
+1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
+1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Contoso Employee]** を選択し、Azure AD Contoso アカウントでサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 

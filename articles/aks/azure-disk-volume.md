@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のポッドで使用するための
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: d44c8a7241308c26a3f1148ec70a7a5730dd0c89
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 7d8a038926fc6bf3234b43a82c0259ba633df11e
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900848"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506652"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Azure ディスクを含むボリュームの手動での作成および使用
 
@@ -28,9 +28,9 @@ Kubernetes ボリュームの詳細については、[AKS でのアプリケー�
 
 ## <a name="create-an-azure-disk"></a>Azure ディスクを作成する
 
-AKS で使用するための Azure ディスクを作成する場合は、 **ノード** リソース グループ内にディスク リソースを作成することができます。 この方法により、AKS クラスターがディスク リソースにアクセスおよび管理できるようになります。 代わりに独立したリソース グループにディスクを作成する場合は、クラスターの Azure Kubernetes Service (AKS) サービス プリンシパルに、ディスクのリソース グループに対する `Contributor` ロールを付与する必要があります。 または、サービス プリンシパルの代わりに、システム割り当てマネージド ID をアクセス許可のために使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
+AKS で使用するための Azure ディスクを作成する場合は、**ノード** リソース グループ内にディスク リソースを作成することができます。 この方法により、AKS クラスターがディスク リソースにアクセスおよび管理できるようになります。 代わりに独立したリソース グループにディスクを作成する場合は、クラスターの Azure Kubernetes Service (AKS) マネージド ID に、ディスクのリソース グループに対する `Contributor` ロールを付与する必要があります。
 
-この記事では、ノード リソース グループ内にディスクを作成します。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します。 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
+この記事では、ノード リソース グループ内にディスクを作成します。 最初に、[az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、`--query nodeResourceGroup` クエリ パラメーターを追加します｡ 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
 
 ```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -38,7 +38,7 @@ $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeR
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-ここで、[az disk create][az-disk-create] コマンドを使用してディスクを作成します。 上記コマンドで取得したノードのリソース グループ名を指定して､そのディスク リソースに対して､ *myAKSDisk* などの名前を指定します｡ 次の例では、 *20* GiB のディスクを作成し、作成後にそのディスクの ID を出力します。 Windows Server コンテナーで使用するディスクを作成する必要がある場合は、`--os-type windows` パラメーターを追加して、ディスクを適切にフォーマットします。
+ここで、[az disk create][az-disk-create] コマンドを使用してディスクを作成します。 上記コマンドで取得したノードのリソース グループ名を指定して､そのディスク リソースに対して､*myAKSDisk* などの名前を指定します｡ 次の例では、*20* GiB のディスクを作成し、作成後にそのディスクの ID を出力します。 Windows Server コンテナーで使用するディスクを作成する必要がある場合は、`--os-type windows` パラメーターを追加して、ディスクを適切にフォーマットします。
 
 ```azurecli-interactive
 az disk create \
@@ -49,7 +49,7 @@ az disk create \
 ```
 
 > [!NOTE]
-> Azure ディスクは、特定サイズの SKU 単位で課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです (プレビュー中)。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 [Managed Disks の価格とパフォーマンス ][managed-disk-pricing-performance]に関するページを参照してください。
+> Azure ディスクは、特定サイズの SKU 単位で課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです (プレビュー中)。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
 
 次の出力例に示すように、コマンドが正常に完了すると、ディスク リソース ID が表示されます。 このディスク ID は、次の手順でディスクをマウントするために使用します。
 

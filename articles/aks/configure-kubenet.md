@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6cb083e823583105f04aaa59a99357b2b2b2426b
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 639bed3dcd8f3f443b73f51efb60e7c8aeaa00a0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034056"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102504220"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -25,7 +25,7 @@ ms.locfileid: "97034056"
 * AKS クラスターの仮想ネットワークでは、送信インターネット接続を許可する必要があります。
 * 同じサブネット内に複数の AKS クラスターを作成しないでください。
 * AKS クラスターでは、Kubernetes サービスのアドレス範囲、ポッド アドレス範囲、またはクラスターの仮想ネットワーク アドレス範囲に `169.254.0.0/16`、`172.30.0.0/16`、`172.31.0.0/16`、`192.0.2.0/24` を使用することはできません。
-* AKS クラスターで使用されるサービス プリンシパルには、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)ロールが必要です。 また、サービス プリンシパルを作成してアクセス許可を割り当てるには、サブスクリプション所有者などの適切なアクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
+* AKS クラスターで使用されるクラスター ID には、少なくとも、ご利用の仮想ネットワーク内のサブネットに対する[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md#network-contributor)ロールが必要です。 また、クラスター ID を作成してアクセス許可を割り当てるには、サブスクリプション所有者などの適切なアクセス許可が必要です。 組み込みのネットワークの共同作成者ロールを使用する代わりに、[カスタム ロール](../role-based-access-control/custom-roles.md)を定義する場合は、次のアクセス許可が必要です。
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -245,10 +245,9 @@ az aks create -g MyResourceGroup -n MyManagedCluster --vnet-subnet-id MySubnetID
 
 ## <a name="next-steps"></a>次のステップ
 
-既存の仮想ネットワーク サブネットに AKS クラスターをデプロイしたので、通常どおりクラスターを使用できます。 [Azure Dev Spaces を使用してアプリを構築する][dev-spaces]ことから始めるか、[Helm を使用して既存のアプリをデプロイする][use-helm]か、[Helm を使用して新しいアプリを作成します][develop-helm]。
+既存の仮想ネットワーク サブネットに AKS クラスターをデプロイしたので、通常どおりクラスターを使用できます。 [Helm を使用した新しいアプリの作成][develop-helm]、または [Helm を使用した既存のアプリのデプロイ][use-helm]を開始します。
 
 <!-- LINKS - External -->
-[dev-spaces]: ../dev-spaces/index.yml
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy

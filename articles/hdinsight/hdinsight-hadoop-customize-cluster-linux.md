@@ -4,13 +4,13 @@ description: スクリプト アクションを使用して HDInsight クラス�
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
-ms.date: 09/02/2020
-ms.openlocfilehash: 46be3349490f04660d4fc8b69e4cdc295d8ecc1c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.date: 03/09/2021
+ms.openlocfilehash: 00ed8c26bbafeb94b1481e6157a242dad7ed84c6
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945802"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102610265"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 
@@ -25,7 +25,7 @@ Azure HDInsight には、クラスターをカスタマイズするためにカ�
 - HDInsight クラスターからアクセスできる URI に保存されている必要があります。 たとえば保存スペースとして、次の場所を使用できます。
 
     - 通常 (非 ESP) のクラスターの場合:
-      - Data Lake Storage Gen1/Gen2: HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。 Data Lake Storage Gen1 に格納されているスクリプトの URI の形式は、`adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。 Data Lake Storage Gen2 スクリプトの URI の形式は、`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>` になります。
+      - Data Lake Storage Gen1/Gen2: HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。 Data Lake Storage Gen1 に格納されているスクリプトの URI の形式は、`adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。 
       - Azure ストレージ アカウントの BLOB (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。
 
         > [!IMPORTANT]  
@@ -68,7 +68,7 @@ Azure HDInsight には、クラスターをカスタマイズするためにカ�
 アクセス管理の操作について詳しくは、次の記事をご覧ください。
 
 - [Azure Portal でのアクセス管理の概要](../role-based-access-control/overview.md)
-- [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../role-based-access-control/role-assignments-portal.md)
+- [Azure サブスクリプション リソースへのアクセスを管理するための Azure ロールの割り当て](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="methods-for-using-script-actions"></a>スクリプト アクションを使用する方法
 
@@ -198,7 +198,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-hdinsight-net-sdk"></a>クラスターの作成時に HDInsight .NET SDK からスクリプト アクションを使用する
 
-HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡単に操作できるクライアント ライブラリが提供されています。 コード サンプルについては、「[スクリプト操作](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true#script-actions)」を参照してください。
+HDInsight .NET SDK では、.NET アプリケーションから HDInsight を簡単に操作できるクライアント ライブラリが提供されています。 コード サンプルについては、「[スクリプト操作](/dotnet/api/overview/azure/hdinsight#script-actions)」を参照してください。
 
 ## <a name="script-action-to-a-running-cluster"></a>実行中のクラスターに対するスクリプト アクション
 

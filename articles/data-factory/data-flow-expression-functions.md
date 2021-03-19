@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/04/2021
-ms.openlocfilehash: 8b63565457498663250eb6ab5dc1361e43bbffaf
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.date: 03/04/2021
+ms.openlocfilehash: dee896c8e4946cb4f6406d2f9f50547d2723da05
+ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99585009"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102448984"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>マッピング データ フローでのデータ変換式
 
@@ -1196,8 +1196,75 @@ ___
 
 ## <a name="conversion-functions"></a>変換関数
 
-変換関数は、データとデータ型の変換に使用されます
+変換関数は、データの変換とデータ型のテストに使用されます
 
+### <code>isBoolean</code>
+<code><b>isBoolean(<value1> : string) => boolean</b></code><br/><br/>
+文字列値が ``toBoolean()`` の規則に従ったブール値であるかどうかを確認します 
+* ``isBoolean('true') -> true``
+* ``isBoolean('no') -> true``
+* ``isBoolean('microsoft') -> false``
+___
+### <code>isByte</code>
+<code><b>isByte(<value1> : string) => boolean</b></code> <br/><br/>
+文字列値が ``toByte()`` の規則に従った省略可能な形式が指定されたバイト値であるかどうかを確認します 
+* ``isByte('123') -> true``
+* ``isByte('chocolate') -> false``
+___
+### <code>isDate</code>
+<code><b>isDate (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+入力日付文字列が、省略可能な入力日付形式を使用した日付であるかどうかを確認します。 使用可能な形式については、Java の SimpleDateFormat を参照してください。 入力日付形式が省略されている場合、既定の形式は ``yyyy-[M]M-[d]d`` になります。 許容される形式は ``[ yyyy, yyyy-[M]M, yyyy-[M]M-[d]d, yyyy-[M]M-[d]dT* ]`` です 
+* ``isDate('2012-8-18') -> true``
+* ``isDate('12/18--234234' -> 'MM/dd/yyyy') -> false``
+___
+### <code>isShort</code>
+<code><b>isShort (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+文字列値が ``toShort()`` の規則に従った省略可能な形式が指定された 短整数型値であることを確認します 
+* ``isShort('123') -> true``
+* ``isShort('$123' -> '$###') -> true``
+* ``isShort('microsoft') -> false``
+___
+### <code>isInteger</code>
+<code><b>isInteger (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+文字列値が ``toInteger()`` の規則に従った省略可能な形式が指定された整数値であることを確認します 
+* ``isInteger('123') -> true``
+* ``isInteger('$123' -> '$###') -> true``
+* ``isInteger('microsoft') -> false``
+___
+### <code>isLong</code>
+<code><b>isLong (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+文字列値が ``toLong()`` の規則に従った省略可能な形式が指定された 長整数型値であることを確認します 
+* ``isLong('123') -> true``
+* ``isLong('$123' -> '$###') -> true``
+* ``isLong('gunchus') -> false``
+___
+### <code>isFloat</code>
+<code><b>isFloat (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+文字列値が ``toFloat()`` の規則に従った省略可能な形式が指定された浮動小数点値であることを確認します 
+* ``isFloat('123') -> true``
+* ``isFloat('$123.45' -> '$###.00') -> true``
+* ``isFloat('icecream') -> false``
+___
+### <code>isDouble</code>
+<code><b>isDouble (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+文字列値が ``toDouble()`` の規則に従った省略可能な形式が指定された倍精度値であることを確認します 
+* ``isDouble('123') -> true``
+* ``isDouble('$123.45' -> '$###.00') -> true``
+* ``isDouble('icecream') -> false``
+___
+### <code>isDecimal</code>
+<code><b>isDecimal (<value1> : string) => boolean</b></code><br/><br/>
+文字列値が ``toDecimal()`` の規則に従った省略可能な形式が指定された 10 進数値であることを確認します 
+* ``isDecimal('123.45') -> true``
+* ``isDecimal('12/12/2000') -> false``
+___
+### <code>isTimestamp</code>
+<code><b>isTimestamp (<value1> : string, [<format>: string]) => boolean</b></code><br/><br/>
+入力日付文字列が、省略可能な入力タイムスタンプ形式を使用したタイムスタンプであるかどうかを確認します。 使用可能な形式については、Java の SimpleDateFormat を参照してください。 タイムスタンプを省略すると、既定のパターンの ``yyyy-[M]M-[d]d hh:mm:ss[.f...]`` が使用されます。 省略可能なタイムゾーンを 'GMT'、'PST'、'UTC'、'America/Cayman' の形式で渡せます。 タイムスタンプはミリ秒の精度で 999 の値までサポートされます。使用可能な形式については、Java の SimpleDateFormat を参照してください。
+* ``isTimestamp('2016-12-31 00:12:00') -> true``
+* ``isTimestamp('2016-12-31T00:12:00' -> 'yyyy-MM-dd\\'T\\'HH:mm:ss' -> 'PST') -> true``
+* ``isTimestamp('2012-8222.18') -> false``
+___
 ### <code>toBase64</code>
 <code><b>toBase64(<i>&lt;value1&gt;</i> : string) => string</b></code><br/><br/>
 指定された文字列を base64 でエンコードします。  
@@ -1353,6 +1420,15 @@ ___
 * ``toBoolean(byName(4))``  
 * ``toString(byName($colName))``  
 * ``toString(byPosition(1234))``  
+___
+### <code>hex</code>
+<code><b>hex(<value1>: binary) => string</b></code><br/><br/>
+バイナリ値の 16 進数文字列表記を返します * ``hex(toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])) -> '1fadbe'``
+___
+### <code>unhex</code>
+<code><b>unhex(<value1>: string) => binary</b></code><br/><br/>
+バイナリ値を 16 進数文字列表記から数値に変換します。 これは、文字列からバイナリ表記に変換するために、sha2、md5 と組み合わせて使用できます *   ``unhex('1fadbe') -> toBinary([toByte(0x1f), toByte(0xad), toByte(0xbe)])``
+*   ``unhex(md5(5, 'gunchus', 8.2, 'bojjus', true, toDate('2010-4-4'))) -> toBinary([toByte(0x4c),toByte(0xe8),toByte(0xa8),toByte(0x80),toByte(0xbd),toByte(0x62),toByte(0x1a),toByte(0x1f),toByte(0xfa),toByte(0xd0),toByte(0xbc),toByte(0xa9),toByte(0x05),toByte(0xe1),toByte(0xbc),toByte(0x5a)])``
 
 ## <a name="window-functions"></a>ウィンドウ関数
 次の関数は、ウィンドウ変換でのみ使用できます。
