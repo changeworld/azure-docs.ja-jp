@@ -4,15 +4,15 @@ description: Go-To-Market Services - このセクションでは、公開元が�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 01/13/2021
+ms.date: 03/03/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 06f98a8e303d2ff692c0f84314e639c2a51cbcc1
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246249"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102489475"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -38,7 +38,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 プログラムのすべてのベネフィットの詳細については、こちらの [Marketplace Rewards プログラムのプレゼンテーション](https://aka.ms/marketplacerewards)をご覧ください。
 
-簡単に使用を開始できます。
+## <a name="getting-started-is-easy"></a>簡単に使用を開始できます。
 
 1. Microsoft AppSource または Azure Marketplace でオファーを発行します。
 2. パートナー センターで [Marketplace Rewards](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) にアクセスし、 **[Enroll in Marketplace Rewards Program]\(Marketplace Rewards プログラムに登録する\)** を選択します。
@@ -49,19 +49,19 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
     1. このマーケティングの連絡先の窓口となる電話番号と使用する言語を入力します。 この情報の入力が完了したら、 **[ユーザーの割り当て]** を選択します。
     1. マーケティングの連絡先を更新した後、使用を開始するベネフィットに対して **[アクティブにする]** を選択します。 ベネフィットをアクティブにすると、1 週間以内に Rewards チームのメンバーからマーケティングの連絡先に連絡を差し上げます。
 
-### <a name="technical-benefits"></a>技術上のメリット
+> [!NOTE]
+> オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、パートナー センターで検索し、組織内で誰が問題のオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。
 
-1. 技術上のベネフィットを使用すると、クラウドおよびハイブリッド ソリューションのプリセールス、設計、デプロイ、アプリ開発の各段階で技術的なサポートを依頼できます。 サポートを依頼するには、依頼フォームに入力して、 **[要求の送信]** を選択します。
-2. Azure スポンサーのベネフィットを利用する方法は、これらのベネフィットのロックを解除するときにメールで共有されます。
-
->[!NOTE]
->オファーを発行してから 4 週間経ってもメッセージを受け足らない場合は、パートナー センターで検索し、組織内で誰が問題のオファーの所有者であるか確認してください。 その人が通信と次の手順を受け取っているはずです。<br><br>所有者がわからない場合、または所有者が退職した場合は、[ヘルプとサポート](https://aka.ms/marketplacepublishersupport)でサポート チケットを提出できます。
+所有者がわからない場合、または所有者が退職した場合は、[ヘルプとサポート](https://aka.ms/marketplacepublishersupport)でサポート チケットを提出できます。
 
 コマーシャル マーケットプレースでのオファリングの拡大に合わせて、使用可能なアクティビティの範囲が広がります。 リストのすべての項目が、リソースとベスト プラクティスに関するセルフサービスのメールの一部として、基本レベルの最適化に関する推奨事項とプロモーションを受け取ります。
 
 ## <a name="list-trial-and-consulting-benefits"></a>リスト、試用版、コンサルティングのベネフィット
 
-試用版またはコンサルティングの概念実証、実装、またはワークショップを発行した場合は、エンゲージメント マネージャーが 3 か月間割り当てられ、市場投入計画が成功するようにお手伝いします。 新しいオファーを発行するたびに、この 3 か月のエンゲージメントを繰り返すことができ、新しいオファーごとに立ち上げを成功させることができます。
+Microsoft AppSource または Azure Marketplace で発行するたびに、新しい一連のベネフィットにアクセスできるようになります。 オファーが有効になったら、[パートナー センター](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fpartner.microsoft.com%2Fdashboard%2Fmpn%2Fmembership%2Fbenefits%2Fcommercialmarketplace&data=04%7C01%7Cv-kilieb%40microsoft.com%7C3b13a8a6e41a47d6d96008d8c7cb3b50%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637479022971578374%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MF1ZlPX9M5JiJZE2e%2B6kXEsRX1klB5hTcSqcHYDjZq8%3D&reserved=0)に進み、資格のあるマーケティング、セールス、技術のベネフィットなどをアクティブにします。
+
+> [!NOTE]
+> すべての試用版およびコンサルティングのベネフィットは、3 か月後に有効期限が切れます。
 
 次の表は、リスト オファー、試用版オファー、およびコンサルティング オファーの適格要件をまとめたものです。
 

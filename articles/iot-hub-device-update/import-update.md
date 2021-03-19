@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: c83221743e0566d783c38c40aaf92111a0cd80f7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 6502728a14ea825fadfde107e61f235db5619ae0
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102030734"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102507281"
 ---
 # <a name="import-new-update"></a>新しい更新プログラムのインポート
-新しい更新プログラムを Device Update for IoT Hub にインポートする方法について説明します。
+新しい更新プログラムを Device Update for IoT Hub にインポートする方法について説明します。 基本的な[インポートの概念](import-concepts.md)をまだ理解していない場合は、理解しておいてください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,11 +57,11 @@ ms.locfileid: "102030734"
 
     | パラメーター | 説明 |
     | --------- | ----------- |
-    | deviceManufacturer | 更新プログラムと互換性があるデバイスの製造元 (Contoso など)
-    | deviceModel | 更新プログラムと互換性があるデバイスのモデル (toaster など)
-    | updateProvider | 更新プログラム ID のプロバイダー部分 (Fabrikam など)
-    | updateName | 更新プログラム ID の名前部分 (ImageUpdate など)
-    | updateVersion | 更新プログラムのバージョン (2.0 など)
+    | deviceManufacturer | 更新プログラムと互換性があるデバイスの製造元 (Contoso など)。 _製造元_ の[デバイス プロパティ](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)と一致する必要があります
+    | deviceModel | 更新プログラムと互換性があるデバイスのモデル (toaster など)。 _モデル_ の[デバイス プロパティ](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)と一致する必要があります
+    | updateProvider | 更新プログラムを作成または直接担当するエンティティ。 多くの場合、会社名になります。
+    | updateName | 更新プログラムのクラスの識別子。 クラスには、任意のものを選択できます。 多くの場合、デバイス名またはモデル名になります。
+    | updateVersion | 同じプロバイダーと名前を持つ他の更新プログラムとこの更新プログラムを区別するためのバージョン番号。 デバイス上の個々のソフトウェア コンポーネントのバージョンと一致しない場合があります。
     | updateType | <ul><li>イメージの更新には `microsoft/swupdate:1` を指定します</li><li>パッケージの更新には `microsoft/apt:1` を指定します</li></ul>
     | installedCriteria | <ul><li>更新の種類 `microsoft/swupdate:1` には SWVersion の値を指定します</li><li>更新の種類 `microsoft/apt:1` には推奨値を指定します
     | updateFilePath(s) | コンピューター上の更新プログラム ファイルへのパス

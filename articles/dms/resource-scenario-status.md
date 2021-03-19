@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: d51de526205e8ef663dcfd682ec5858e4bc2f645
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 719dcecf3091e03fbcbe6a82d4c618f54243c4e1
+ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183983"
+ms.locfileid: "102215342"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -83,9 +83,12 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | ✔ | GA |
 |   | Azure DB for PostgreSQL - 単一サーバー | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | ✔ | パブリック プレビュー |
+|   | Oracle | ✔ | パブリックプ レビュー (2021 年 5 月 1 以降、非推奨となる予定) |
 | **Azure DB for PostgreSQL - Hyperscale (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
+
+> [!IMPORTANT]
+> 2021 年 5 月 1 以降、「Oracle から Azure Database for PostgreSQL へ」の移行シナリオ (現在プレビュー段階) は使用できなくなります。 引き続き別のツール (Ora2pg など) を使用してサポートを提供し、Oracle から PostgreSQL への移行に最適な移行エクスペリエンスを提供します。 移行のベスト プラクティスについては、[Oracle から Azure Database for PostgreSQL への移行ガイド](https://aka.ms/OracletoPGguide) を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

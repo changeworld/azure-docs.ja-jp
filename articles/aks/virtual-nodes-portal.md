@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 4c67d3608d2128385c273425ea495a02fa5a8c45
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 06a3e7263b2e03cfc37f7ba3c733e07536b5d473
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180906"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102501806"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -64,7 +64,7 @@ Azure portal の左上隅で、 **[リソースの作成]**  >  **[Kubernetes Se
 
 ![AKS クラスターを作成し、仮想ノードを有効にする](media/virtual-nodes-portal/enable-virtual-nodes.png)
 
-既定では、Azure Active Directory サービス プリンシパルが作成されます。 このサービス プリンシパルは、クラスター通信と他の Azure サービスとの統合に使用されます。 または、サービス プリンシパルの代わりに、マネージド ID をアクセス許可に使用できます。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。
+既定では、クラスター ID が作成されます。 このクラスター ID は、クラスター通信と他の Azure サービスとの統合に使用されます。 既定では、このクラスター ID はマネージド ID です。 詳細については、[マネージド ID の使用](use-managed-identity.md)に関するページを参照してください。 また、クラスター ID としてサービス プリンシパルを使用することもできます。
 
 このクラスターは高度なネットワークに対しても構成されます。 仮想ノードは、独自の Azure 仮想ネットワーク サブネットを使用するように構成されます。 このサブネットには、Azure リソースと AKS クラスター間を接続するための委任されたアクセス許可があります。 委任されたサブネットがまだない場合、Azure portal によって仮想ノードで使用するための Azure 仮想ネットワークとサブネットが作成および構成されます。
 

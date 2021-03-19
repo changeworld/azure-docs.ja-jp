@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/14/2020
+ms.date: 03/08/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e181b90219f340a29e818801ee2b53f1ccbd9c23
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 722f3158c8eca4cec4dbf23658f9d8d4cb68c3ed
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660286"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102517992"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -82,7 +82,10 @@ Azure ポータルの左側にあるメニューの [Azure AD B2C] を開く前�
 1. **[名前]** フィールドを変更します。
 1. ページの上部にある **[保存]** をクリックします。
 
-現在、電子メールの送信元フィールドを変更する方法はありません。
+現在、電子メールの "From:" フィールドを変更することはできません。
+
+> [!TIP]
+> Azure AD B2C の[カスタム ポリシー](custom-policy-overview.md)では、ユーザーに送信される電子メール Azure AD B2C (電子メールの "From:" フィールドを含む) をカスタマイズできます。 カスタム メール確認では、[Mailjet](custom-email-mailjet.md)、[SendGrid](custom-email-sendgrid.md)、[SparkPost](https://sparkpost.com) といったサードパーティの電子メール プロバイダーを使用する必要があります。
 
 ### <a name="how-can-i-migrate-my-existing-user-names-passwords-and-profiles-from-my-database-to-azure-ad-b2c"></a>既存のユーザー名、パスワード、およびプロファイルを自分のデータベースから Azure AD B2C に移行するにはどのようにすればいいですか。
 
@@ -142,13 +145,13 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. Azure AD B2C テナント内のすべての **ユーザー フロー (ポリシー)** を削除します。
+1. Azure AD B2C テナントの **ID プロバイダー** をすべて削除します。
 1. **[アプリの登録]** 、 **[すべてのアプリケーション]** タブの順に選択します。
 1. 登録したすべてのアプリケーションを削除します。
 1. **b2c-extensions-app** を削除します。
 1. **[管理]** にある **[ユーザー]** を選択します。
 1. 各ユーザーを順に選択します (ただし、現在サインインに使用している *サブスクリプション管理者* ユーザーは除きます)。 ページ下部の **[削除]** を選択し、確認を求められたら **[はい]** を選択します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
-1. **[管理]** の下で **[ユーザー設定]** を選択します。
 1. **[管理]** の下で、 **[プロパティ]** を選択します。
 1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。
 1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。

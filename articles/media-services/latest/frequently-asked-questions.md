@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a452a056ff2bdbad5d2e461716ee1a56d36c8523
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897562"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102505768"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -25,6 +25,14 @@ ms.locfileid: "98897562"
 この記事では、Azure Media Services v3 についてよく寄せられる質問に対する回答を提供します。
 
 ## <a name="general"></a>全般
+
+### <a name="does-media-services-store-any-customer-data-outside-of-the-service-region"></a>Media Services では、サービス リージョン外に顧客データは格納されますか?
+
+- 顧客は、自身のストレージ アカウントを Azure Media Services アカウントに接続します。  すべてのアセット データは関連付けられているストレージ アカウントに格納され、顧客はこのストレージの場所とレプリケーションの種類を制御します。
+- Media Services アカウントに関連付けられている追加データ (コンテンツ暗号化キー、トークン検証キー、JobInputHttp URL、その他のエンティティ メタデータを含む) は、Media Services アカウント用に選択されたリージョン内の Microsoft 所有ストレージに格納されます。
+    - ブラジル南部と東南アジアでは、[データ所在地の要件](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information)により、追加アカウント データは 1 つのゾーン冗長化方式で、1 つのリージョンに保存されます。 東南アジアの場合、追加アカウント データはすべてシンガポールに保存されます。ブラジル南部の場合、データはブラジルに保存されます。
+    - ブラジル南部と東南アジア以外のリージョンでは、追加アカウント データが、[ペアのリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)にある Microsoft 所有ストレージに格納される場合もあります。
+- Azure Media Services はリージョン サービスであり、[高可用性](media-services-high-availability-encoding.md)またはデータ レプリケーションは提供されません。 これらの機能を必要とする顧客は、複数のリージョンで Media Services アカウントを使用してソリューションを構築することを強くお勧めします。  Media Services ビデオ オン デマンドを使用した、高可用性を実現するためのソリューションの構築方法を示すサンプルが、ガイドとして提供されています。
 
 ### <a name="what-are-the-azure-portal-limitations-for-media-services-v3"></a>Media Services v3 に関する Azure portal の制限事項とは何ですか。
 

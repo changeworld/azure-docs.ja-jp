@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 0eedd5ce67e96c9d732cf24cbe56a8c3c5e92aaa
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28abe5dbd9064fb0a6bc1b3f167830672deacdcc
+ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880493"
+ms.lasthandoff: 03/08/2021
+ms.locfileid: "102452698"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -48,6 +48,7 @@ Service Fabric ランタイムの 7.2 リリースでは、ツールと SDK の�
 | 2020 年 11 月 10 日  | Azure Service Fabric 7.2 の 3 回目の更新リリース | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU3-releasenotes.md) |
 | 2020 年 12 月 2 日 | [Azure Service Fabric 7.2 の 4 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fourth-refresh-release/ba-p/1950584) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU4.md)
 | 2021 年 1 月 25 日 | [Azure Service Fabric 7.2 の 5 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-2-fifth-refresh-release/ba-p/2096575) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU5-ReleaseNotes.md)
+| 2021 年 2 月 17 日 | [Azure Service Fabric 7.2 の 6 回目の更新リリース](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-sixth-refresh-release/ba-p/2144685) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-72CU6-ReleaseNotes.md)
 
 ## <a name="previous-versions"></a>以前のバージョン
 
@@ -70,7 +71,7 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
       -  全体的なコストが削減される (ディスクは無料であり、追加のストレージ コストは発生しません)
 - [**Service Fabric アプリケーションのサービス エンドポイント証明書をサブジェクトの共通名**](./service-fabric-service-manifest-resources.md)で宣言可能。
 - [**コンテナー化されたサービスの正常性プローブをサポート**](./probes-codepackage.md): コンテナー化されたアプリケーションに対する Liveness Probe メカニズムがサポートされます。 Liveness Probe は、コンテナー化されたアプリケーションの活動性を通知するのに役立ちます。また、アプリケーションが適切なタイミングで応答しない場合は、再起動されます。 
-- [コンテナー](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview)と [ゲスト実行可能](https://review.docs.microsoft.com/azure/service-fabric/service-fabric-guest-executables-introduction)アプリケーションの [**初期化子コード パッケージをサポート**](./initializer-codepackages.md)。 指定した順序でコード パッケージ (コンテナーなど) を実行して、サービス パッケージの初期化を実行できるようになります。
+- [コンテナー](/azure/service-fabric/service-fabric-containers-overview)と [ゲスト実行可能](/azure/service-fabric/service-fabric-guest-executables-introduction)アプリケーションの [**初期化子コード パッケージをサポート**](./initializer-codepackages.md)。 指定した順序でコード パッケージ (コンテナーなど) を実行して、サービス パッケージの初期化を実行できるようになります。
 - **FabricObserver と ClusterObserver** は、SF クラスターのさまざまな側面に関連した Service Fabric テレメトリをキャプチャするステートレス アプリケーションです。 そのどちらのアプリケーションも運用環境の Windows クラスターへのデプロイに対応しており、ApplicationInsights、EventSource、LogAnalytics の実装済みのサポートを利用してさまざまなテレメトリをキャプチャできます。
     - [**FabricObserver (FO) 2.0**](https://github.com/microsoft/service-fabric-observer) - すべてのノード上で実行され、正常性イベントを生成します。ユーザーによって構成されたリソース使用量のしきい値に達すると、テレメトリが出力されます。 このリリースでは、監視、データ管理、正常性イベントの詳細、構造化テレメトリ全体にわたり、何点か機能強化が行われています。
      - [**ClusterObserver (CO) 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) - 1 つのノード上で動作し、クラスター レベルの正常性テレメトリをキャプチャします。 このリリースの ClusterObserver は、ノードの状態も監視し、ユーザーが指定した所定の時間、ダウン、無効化中、無効のいずれかの状態が続くと、テレメトリを出力します。

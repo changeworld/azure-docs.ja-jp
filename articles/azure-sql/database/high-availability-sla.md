@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: 5e84831798ec1c5f42facb04a25da9d8631b9d04
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9e292aeb116bd33ce935c951b39015c54dd1a8bc
+ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690585"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102486694"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -64,6 +64,9 @@ General Purpose レベル向けのゾーン冗長構成には、次の 2 つの�
 
 > [!NOTE]
 > 80 個の仮想コアを備えたサイズの General Purpose データベースでは、ゾーン冗長構成によるパフォーマンスの低下が発生する可能性があります。 また、バックアップ、復元、データベース コピー、Geo DR のリレーションシップの設定などの操作では、1 TB を超える単一データベースのパフォーマンスが低下する可能性があります。 
+> 
+> [!NOTE]
+> プレビューは予約インスタンスの対象になりません
 
 ## <a name="premium-and-business-critical-service-tier-locally-redundant-availability"></a>Premium および Business Critical サービス レベルのローカル冗長可用性
 

@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 2214dbc9dcbd4ba7728065ee45471e9f94b9e513
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 6098497e89ad66fad7659aa64c9a7849380f8c43
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95739997"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102547512"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概要 - SMB を使用した Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証
 
@@ -33,10 +33,14 @@ Azure ファイル共有を初めて使用する場合は、次の一連の記�
 
 SMB 経由の Azure ファイル共有に対して AD DS を有効にすると、AD DS に参加しているマシンでは、既存の AD DS 資格情報を使用して Azure ファイル共有をマウントできます。 この機能は、オンプレミス マシンでホストされているか、Azure でホストされている AD DS 環境で有効にすることができます。
 
-> [!NOTE]
-> いくつかの一般的なユース ケースで Azure Files AD 認証を設定できるように、次のシナリオに対して、ステップ バイ ステップ ガイダンスを含む 2 本の動画を公開しました。
-> - [オンプレミスのファイル サーバーを Azure Files に置き換える (ファイルと AD 認証のためのプライベート リンクに関する設定を含む)](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
-> - [Windows Virtual Desktop のプロファイル コンテナーとして Azure Files を使用する (AD 認証と FsLogix 構成に関する設定を含む)](https://www.youtube.com/embed/9S5A1IJqfOQ)
+## <a name="videos"></a>ビデオ
+
+いくつかの一般的なユース ケースで Azure Files AD 認証を設定できるように、次のシナリオに対して、ステップ バイ ステップ ガイダンスを含む 2 本の動画を公開しました。
+
+| オンプレミスのファイル サーバーの Azure Files への置き換え (ファイルと AD 認証のためのプライベート リンクに関する設定を含む) | Windows Virtual Desktop のプロファイル コンテナーとしての Azure Files の使用 (AD 認証と FsLogix 構成に関する設定を含む)  |
+|-|-|
+| [![オンプレミスのファイル サーバーを置き換えるビデオのスクリーンショット - クリックして再生します。](./media/storage-files-identity-auth-active-directory-enable/replace-on-prem-server-thumbnail.png)](https://www.youtube.com/watch?v=jd49W33DxkQ) | [![Azure Files をプロファイル コンテナーとして使用するビデオのスクリーンショット - クリックして再生します。](./media/storage-files-identity-auth-active-directory-enable/files-ad-ds-fslogix-thumbnail.png)](https://www.youtube.com/watch?v=9S5A1IJqfOQ) |
+
 
 ## <a name="prerequisites"></a>前提条件 
 
