@@ -9,14 +9,16 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7924b06b9056a53fa9861fcd0df516845662b34b
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 1a78db821c0fab01ad5d6752216a8f7682fb2c46
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341568"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103200499"
 ---
 # <a name="access-built-in-metrics"></a>組み込みのメトリックにアクセスする
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge ランタイム コンポーネント (IoT Edge ハブと IoT Edge エージェント) を使用すると、[Prometheus の出力フォーマット](https://prometheus.io/docs/instrumenting/exposition_formats/)で組み込みのメトリックが生成されます。 これらのメトリックにリモートでアクセスして、IoT Edge デバイスの正常性を監視および把握します。
 
@@ -44,7 +46,9 @@ IoT Edge ランタイム コンポーネント (IoT Edge ハブと IoT Edge エ�
 edgeHub と edgeAgent の両方のメトリック エンドポイントをマップする場合は、別の一意のホスト ポート番号を選択してください。
 
 > [!NOTE]
-> メトリックを無効にする場合は、**edgeAgent** の環境変数 `MetricsEnabled` を `false` に設定します。
+> 組み込みメトリックをコレクションに使用できるようにするには、環境変数 `httpSettings__enabled` を `false` に設定しないでください。
+>
+> メトリックを無効にするために使用できる環境変数の一覧は、[azure/iotedge リポジトリ ドキュメント](https://github.com/Azure/iotedge/blob/master/doc/EnvironmentVariables.md)にあります。
 
 ## <a name="available-metrics"></a>使用可能なメトリック
 
