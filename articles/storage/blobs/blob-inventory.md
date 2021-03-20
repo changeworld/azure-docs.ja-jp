@@ -4,18 +4,18 @@ description: Azure Storage インベントリは、ストレージ アカウン�
 services: storage
 author: mhopkins-msft
 ms.service: storage
-ms.date: 12/03/2020
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: a41966c2b3ba73d7b68399b1b99d14313e220833
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 7972385ba017059407b994029c37f347b919cad3
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257813"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102435122"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Azure Storage BLOB インベントリを使用して BLOB データを管理する (プレビュー)
 
@@ -24,6 +24,9 @@ Azure Storage BLOB インベントリ機能により、ストレージ アカウ
 ## <a name="availability"></a>可用性
 
 BLOB インベントリは、汎用バージョン 2 (GPv2) と Premium ブロック BLOB ストレージ アカウントの両方でサポートされています。 この機能は、[階層型名前空間](data-lake-storage-namespace.md)機能が有効かどうかに関係なくサポートされます。
+
+> [!IMPORTANT]
+> BLOB インベントリは現在、**プレビュー** の段階にあります。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ### <a name="preview-regions"></a>プレビュー リージョン
 
