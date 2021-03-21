@@ -4,12 +4,12 @@ description: Azure ロールベースのアクセス制御を使用して、Reco
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 03/09/2021
-ms.openlocfilehash: 179cb6efcff4bcf50a64a6d58f861622e853b02b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0b321a5f33bd75ce8615d6d2a90442a83d9fff67
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553410"
+ms.locfileid: "102613444"
 ---
 # <a name="use-azure-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Azure ロール ベースのアクセス制御を使用して Azure Backup 復旧ポイントを管理する
 
@@ -39,7 +39,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | | Virtual Machine Contributor | VM リソース |  または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
 | VM のオンデマンド バックアップ | Backup Operator | Recovery Services コンテナー |   |
 | VM の復元 | Backup Operator | Recovery Services コンテナー |   |
-| | Contributor | VM がデプロイされるリソース グループ |   または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます:  Microsoft.Resources/subscriptions/resourceGroups/write Microsoft.DomainRegistration/domains/write、 Microsoft.Compute/virtualMachines/write  Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/join/action | 
+| | Contributor | VM がデプロイされるリソース グループ |   または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます:  Microsoft.Resources/subscriptions/resourceGroups/write Microsoft.DomainRegistration/domains/write、 Microsoft.Compute/virtualMachines/write  Microsoft.Network/virtualNetworks/read Microsoft.Network/virtualNetworks/subnets/join/action |
 | | Virtual Machine Contributor | バックアップされたソース VM |   または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
 | アンマネージド ディスク VM バックアップの復元 | Backup Operator | Recovery Services コンテナー |
 | | Virtual Machine Contributor | バックアップされたソース VM | または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
@@ -50,6 +50,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | | Contributor | マネージド ディスクの復元先となるリソース グループ | または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Resources/subscriptions/resourceGroups/write|
 | VM バックアップからの個々のファイルの復元 | Backup Operator | Recovery Services コンテナー |
 | | Virtual Machine Contributor | バックアップされたソース VM | または、組み込みロールではなく、次のアクセス許可を持つカスタム ロールを検討できます: Microsoft.Compute/virtualMachines/write |
+| リージョンをまたがる復元 | Backup Operator | Recovery Services コンテナーのサブスクリプション | これは、前述の復元アクセス許可に追加されます。 特に CRR の場合、組み込みのロールではなく、次のアクセス許可を持つカスタム ロールを検討できます:   "Microsoft.RecoveryServices/locations/backupAadProperties/read" "Microsoft.RecoveryServices/locations/backupCrrJobs/action"         "Microsoft.RecoveryServices/locations/backupCrrJob/action" "Microsoft.RecoveryServices/locations/backupCrossRegionRestore/action"          "Microsoft.RecoveryServices/locations/backupCrrOperationResults/read" "Microsoft.RecoveryServices/locations/backupCrrOperationsStatus/read" |
 | Azure VM バックアップのバックアップ ポリシーの作成 | Backup Contributor | Recovery Services コンテナー |
 | Azure VM バックアップのバックアップ ポリシーの変更 | Backup Contributor | Recovery Services コンテナー |
 | Azure VM バックアップのバックアップ ポリシーの削除 | Backup Contributor | Recovery Services コンテナー |

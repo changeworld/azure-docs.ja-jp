@@ -7,16 +7,19 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.custom: template-concept
-ms.openlocfilehash: 85eb4ed0832c9384fcd05154833bc21f83f4adf2
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8f57c63868d6f70094cf040a92c0124b46477758
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102426350"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490196"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Azure Percept Audio の概要
 
 Azure Percept Audio は、音声 AI 機能を Azure Percept DK に追加するアクセサリ デバイスです。 これには、事前に構成された音声プロセッサと 4 つのマイクの線形配列が含まれています。これにより、Azure Cognitive Services を使用して音声コマンド、キーワード認識、および遠距離音声をローカルのリスニング デバイスに適用できます。 Azure Percept Audio を使用すると、デバイス製造元は Azure Percept DK のビジョン機能を、新しいスマート音声アクティブ化デバイスからさらに拡張できます。 Azure Percept DK、Azure Percept Studio、およびその他の Azure エッジ管理サービスに追加設定なしで統合されています。 [Microsoft オンライン ストア](https://go.microsoft.com/fwlink/p/?LinkId=2155270)で購入できます。
+
+> [!div class="nextstepaction"]
+> [今すぐ購入](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
 
 :::image type="content" source="./media/overview-azure-percept-audio/percept-audio.png" alt-text="Azure Percept Audio デバイス。":::
 
@@ -67,4 +70,5 @@ Azure Percept の音声アシスタント テンプレートを使用して、�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Microsoft のオンライン ストア](https://go.microsoft.com/fwlink/p/?LinkId=2155270)で Azure Percept Audio デバイスを注文します。
+> [!div class="nextstepaction"]
+> [Microsoft のオンライン ストアで Azure Percept Audio デバイスを購入する](https://go.microsoft.com/fwlink/p/?LinkId=2155270)

@@ -7,12 +7,12 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 556570b02664a0afd01137f939bea67a1014b680
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: ea33eff30e712c1597c3606d74cb6d56683211ae
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449494"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102615586"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -117,7 +117,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 ### <a name="create-or-update-data-export-rule"></a>データ エクスポート ルールを作成または更新する
 データ エクスポート ルールは、データをエクスポートするテーブルとその宛先を定義します。 現在、その宛先ごとに 1 つのルールを作成できます。
 
-エクスポート ルールを構成するためにワークスペースのテーブルの一覧が必要な場合は、ワークスペースでこのクエリを実行します。
+エクスポート ルールには、ワークスペースにあるテーブルを含める必要があります。 ワークスペース内で使用できるテーブルの一覧を表示するには、このクエリを実行します。
 
 ```kusto
 find where TimeGenerated > ago(24h) | distinct Type
@@ -125,7 +125,7 @@ find where TimeGenerated > ago(24h) | distinct Type
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -401,7 +401,7 @@ PUT https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -433,7 +433,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -480,7 +480,7 @@ Content-type: application/json
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -512,7 +512,7 @@ DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegrou
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
-該当なし
+N/A
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
