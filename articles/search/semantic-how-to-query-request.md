@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: 7f7a09b9e20b461a8a1e448bf4a7b0747a35fbb1
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/12/2021
+ms.openlocfilehash: 9ff98a2613143474afd6041ccf52d4eb509d646b
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487148"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103418880"
 ---
 # <a name="create-a-semantic-query-in-cognitive-search"></a>Cognitive Search でセマンティック クエリを作成する
 
 > [!IMPORTANT]
-> セマンティック クエリ型はパブリック プレビュー段階にあり、プレビューの REST API および Azure portal を通じて利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。 最初のプレビュー期間中は、セマンティック検索に対して料金は発生しません。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
+> セマンティック クエリ型はパブリック プレビュー段階にあり、プレビューの REST API および Azure portal を通じて利用できます。 プレビュー機能は、[補足利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に基づいて、現状のまま提供されます。 詳細については、[可用性と価格](semantic-search-overview.md#availability-and-pricing)に関するページを参照してください。
 
-この記事では、セマンティック ランク付けを使用する検索要求を作成し、セマンティック キャプションと回答を生成する方法について説明します。
+この記事では、セマンティック ランク付けを使用する検索要求を作成する方法について説明します。 この要求を発行すると、セマンティック キャプションと、必要に応じて[セマンティック回答](semantic-answers.md)が返され、最も関連性の高い用語と語句は強調表示されます。
 
-セマンティック クエリは、PDF や大量のテキストを含むドキュメントなど、テキストの多いコンテンツから構築された検索インデックスで最もよく機能する傾向があります。
+キャプションと回答は両方とも、検索ドキュメント内のテキストから逐語的に抽出されます。 セマンティック サブシステムでは、キャプションまたは回答の特性を持つコンテンツは特定されますが、新しい文または語句が作成されることはありません。 このため、セマンティック検索には、説明または定義を含むコンテンツが最も適しています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,13 +36,13 @@ ms.locfileid: "102487148"
 
   検索クライアントは、クエリ要求でプレビューの REST API をサポートする必要があります。 [Postman](search-get-started-rest.md)、[Visual Studio Code](search-get-started-vs-code.md)、または自分で変更したコードを使用して、プレビュー API への REST 呼び出しを行うことができます。 Azure portal で [Search エクスプローラー](search-explorer.md)を使用してセマンティック クエリを送信することもできます。
 
-+ この記事で説明するセマンティック オプションやその他のパラメーターを使用した [Search Documents](/rest/api/searchservice/preview-api/search-documents) 要求。
++ [クエリ要求](/rest/api/searchservice/preview-api/search-documents)には、この記事で説明するセマンティック オプションやその他のパラメーターを含める必要があります。
 
 ## <a name="whats-a-semantic-query"></a>セマンティック クエリとは
 
 Cognitive Search では、クエリは、クエリ処理と応答の形を決定するパラメーター化された要求です。 "*セマンティック クエリ*" では、一致する結果のコンテキストと意味を評価し、関連性の高い一致を最上位に昇格させ、セマンティック回答とキャプションを返すことができるセマンティック再ランク付けモデルを呼び出すパラメーターが追加されます。
 
-次の要求は、基本的なセマンティック クエリ (回答なし) を表しています。
+次の要求は、最小限のセマンティック クエリ (回答なし) を表しています。
 
 ```http
 POST https://[service name].search.windows.net/indexes/[index name]/docs/search?api-version=2020-06-30-Preview      
@@ -54,15 +54,25 @@ POST https://[service name].search.windows.net/indexes/[index name]/docs/search?
 }
 ```
 
-Cognitive Search のすべてのクエリと同様に、要求は、単一インデックスのドキュメント コレクションを対象とします。 さらに、セマンティック クエリでは、非セマンティック クエリと同じ解析、分析、およびスキャンのシーケンスが実行されます。 違いは、関連性の計算方法にあります。 このプレビュー リリースで定義されているように、セマンティック クエリでは、高度なアルゴリズムを使用して "*結果*" が再処理されます。これにより、既定の類似性ランク付けアルゴリズムによって割り当てられるスコアではなく、セマンティック ランカーによって最も関連性があると見なされる一致を明らかにする方法が提供されます。 
+Cognitive Search のすべてのクエリと同様に、要求は、単一インデックスのドキュメント コレクションを対象とします。 さらに、セマンティック クエリによって実行される分析、スキャン、およびスコアリングのシーケンスは、非セマンティック クエリと同じです。 
 
-最初の結果の上位 50 件の一致のみを意味的にランク付けすることができます。すべての結果には応答にキャプションが含まれます。 必要に応じて、要求に **`answer`** パラメーターを指定して、可能性のある回答を抽出できます。 このモデルでは、クエリに対して可能性のある回答を最大で 5 つ作成します。これは、検索ページの最上部に表示するために選択できます。
+違いは、関連性とスコアリングにあります。 このプレビュー リリースで定義されているように、セマンティック クエリとは、その "*結果*" がセマンティック言語モデルを使用して再ランク付けされるものであり、既定の類似性ランク付けアルゴリズムによって割り当てられるスコアではなく、セマンティック ランカーによって最も関連性があると見なされる一致を明らかにする方法がとられます。
 
-## <a name="query-using-rest-apis"></a>REST API を使用してクエリを実行する
+最初の結果の上位 50 件の一致のみを意味的にランク付けすることができます。すべての結果には応答にキャプションが含まれます。 必要に応じて、要求に **`answer`** パラメーターを指定して、可能性のある回答を抽出できます。 詳細については、[セマンティック回答](semantic-answers.md)に関するページを参照してください。
 
-REST API の完全な仕様については、「[Search Documents (REST プレビュー)](/rest/api/searchservice/preview-api/search-documents)」を参照してください。
+## <a name="query-with-search-explorer"></a>検索エクスプローラーを使用したクエリ実行
 
-セマンティック クエリによって、キャプションと強調表示が自動的に提供されます。 応答に回答を含める場合は、省略可能な **`answer`** パラメーターを要求に追加できます。 このパラメーターと、クエリ文字列自体の構築により、応答に回答が生成されます。
+[検索エクスプローラー](search-explorer.md)は更新され、セマンティック クエリ用のオプションが含められました。 プレビューにアクセスすると、これらのオプションがポータルに表示されます。 クエリ オプションでは、セマンティック クエリ、searchFields、およびスペル修正を有効にすることができます。
+
+必要なクエリ パラメーターをクエリ文字列に貼り付けることもできます。
+
+:::image type="content" source="./media/semantic-search-overview/search-explorer-semantic-query-options.png" alt-text="検索エクスプローラー内のクエリ オプション" border="true":::
+
+## <a name="query-using-rest"></a>REST を使用してクエリを実行する
+
+[ドキュメントの検索 (REST プレビュー)](/rest/api/searchservice/preview-api/search-documents) を使用して、プログラムで要求を作成します。
+
+応答には、キャプションと強調表示が自動的に含められます。 スペル修正または回答を応答に含める場合は、省略可能なパラメーターである **`speller`** または **`answers`** を要求に追加します。
 
 次の例では、hotels-sample-index を使用して、セマンティック回答およびキャプションを含むセマンティック クエリ要求を作成します。
 
@@ -81,6 +91,16 @@ POST https://[service name].search.windows.net/indexes/hotels-sample-index/docs/
     "count": true
 }
 ```
+
+次の表は、セマンティック クエリで使用されるクエリ パラメーターを全体的に参照できるようにまとめたものです。 すべてのパラメーターの一覧については、「[Search Documents (REST プレビュー)](/rest/api/searchservice/preview-api/search-documents)」を参照してください
+
+| パラメーター | 種類 | 説明 |
+|-----------|-------|-------------|
+| queryType | String | 有効な値は、simple、full、semantic です。 セマンティック クエリには、"semantic" の値が必要です。 |
+| queryLanguage | String | セマンティック クエリに必要です。 現在、"en-us" のみが実装されています。 |
+| searchFields | String | 検索可能なフィールドのコンマ区切りの一覧。 省略可能ですが、指定することをお勧めします。 セマンティック ランク付けを行うフィールドを指定します。 </br></br>単純および完全なクエリの種類とは対照的に、フィールドの順番によって優先順位が決まります。 使用方法の詳細については、「[手順 2: searchFields を設定する](#searchfields)」を参照してください。 |
+| スペル チェック | String | 検索エンジンに到達する前にスペルミスを修正する省略可能なパラメーターであり、セマンティック クエリに固有のものではない。 詳細については、[クエリへのスペル修正の追加](speller-how-to-add.md)に関するページを参照してください。 |
+| answers |String | セマンティック回答を結果に含めるかどうかを指定する省略可能なパラメーター。 現在、"extractive" のみが実装されています。 回答は、最大 5 つを返すように構成できます。 既定値は 1 です。 この例は、回答の数が 3 であることを示しています: "extractive\|count3"。 詳細については、[セマンティック回答を返す](semantic-answers.md)に関するページを参照してください。|
 
 ### <a name="formulate-the-request"></a>要求を作成する
 
@@ -109,7 +129,7 @@ queryLanguage は、インデックス スキーマのフィールド定義に�
 
 searchFields パラメーターは、クエリに対する "セマンティックの類似性" について評価すべき一節を識別するために使用されます。 プレビューでは、処理すべき最も重要なフィールドに関するヒントがモデルに必要なため、searchFields を空白のままにすることはお勧めしません。
 
-searchFields の順序は重要です。 既存の単純および完全な Lucene クエリで既に searchFields を使用している場合は、セマンティック クエリの種類に切り替えるときにこのパラメーターを再確認してください。
+searchFields の順序は重要です。 既存の単純および完全な Lucene クエリで既に searchFields を使用している場合は、セマンティック クエリの種類に切り替えるときにこのパラメーターに再度アクセスしてフィールドの順序を確認してください。
 
 2 つ以上の searchFields が指定されている場合は、こちらのガイドラインに従って、最適な結果が得られるようにします。
 
@@ -121,7 +141,7 @@ searchFields の順序は重要です。 既存の単純および完全な Lucen
 
 + これらのフィールドの後に、セマンティック クエリの回答が見つかる可能性がある説明フィールドを配置します (ドキュメントの主な内容など)。
 
-フィールドが 1 つしか指定されていない場合は、ドキュメントの主な内容など、セマンティック クエリに対する回答が見つかる可能性のある説明フィールドを使用します。 十分な内容を提供するフィールドを選択します。
+フィールドが 1 つしか指定されていない場合は、ドキュメントの主な内容など、セマンティック クエリに対する回答が見つかる可能性のある説明フィールドを使用します。 十分な内容を提供するフィールドを選択します。 タイムリーな処理を確実に行うために、searchFields の共同コンテンツの約 8000 個のトークンについてのみ、セマンティック評価および優先順序付けが行われます。
 
 #### <a name="step-3-remove-orderby-clauses"></a>手順 3: orderBy 句を削除する
 
@@ -129,15 +149,7 @@ searchFields の順序は重要です。 既存の単純および完全な Lucen
 
 #### <a name="step-4-add-answers"></a>手順 4: 回答を追加する
 
-回答を提供する追加の処理を含める場合は、必要に応じて "answers" を追加します。 回答 (およびキャプション) は、searchFields にリストされているフィールド内の節から作成されます。 応答で最適な回答とキャプションを得るために、十分な内容を持つフィールドを searchFields に含めてください。
-
-回答を生成する条件には、明示的なものと暗黙的なものがあります。 
-
-+ 明示的な条件には、"answers=extractive" の追加が含まれます。 また、応答全体で返される回答数を指定するには、"count" に続けて数値を指定します: `"answers=extractive|count=3"`  既定値は 1 です。 最大値は 5 です。
-
-+ 暗黙的な条件には、回答に適したクエリ文字列の構築が含まれます。 "what hotel has the green room" で構成されるクエリよりも、"hotel with fancy interior" のようなステートメントで構成されるクエリの方が "回答を得られる" 可能性が高いです。 クエリを未指定にすることや、null にすることはできません。
-
-ここで重要な点は、クエリが質問のように見えない場合、"answers" パラメーターが設定されていても、回答処理はスキップされることです。
+回答を提供する追加の処理を含める場合は、必要に応じて "answers" を追加します。 回答 (およびキャプション) は、searchFields にリストされているフィールド内の節から抽出されます。 応答で最適な回答を得るために、十分な内容を持つフィールドを searchFields に含めてください。 詳細については、[セマンティック回答を戻す方法](semantic-answers.md)に関するページを参照してください。
 
 #### <a name="step-5-add-other-parameters"></a>手順 5: その他のパラメーターを追加する
 
@@ -145,129 +157,33 @@ searchFields の順序は重要です。 既存の単純および完全な Lucen
 
 必要に応じて、キャプションに適用される強調表示のスタイルをカスタマイズできます。 キャプションでは、ドキュメント内の重要な一説 (応答を要約する部分) に強調の書式設定が適用されます。 既定では、 `<em>`です。 書式設定の種類 (黄色の背景など) を指定する場合は、highlightPreTag と highlightPostTag を設定できます。
 
-### <a name="review-the-response"></a>応答を確認する
+## <a name="evaluate-the-response"></a>応答を評価する
 
-上記のクエリに対する応答では、最上位の選択として次の一致が返されます。 キャプションについては、プレーンテキスト バージョンと強調表示されたバージョンが自動的に返されます。 セマンティック応答の詳細については、[セマンティック ランク付けと応答](semantic-how-to-query-response.md)に関するページを参照してください。
+すべてのクエリと同様に、応答は、取得可能としてマークされているすべてのフィールド、または select パラメーターに指定されているフィールドのみで構成されます。 これには、元の関連性スコアが含まれます。また、要求の作成方法に応じて、カウントまたはバッチ結果が含まれる場合もあります。
+
+セマンティック クエリでは、次の追加の要素が応答に含められます: 意味的にランク付けされた新しい関連性スコア、プレーン テキスト内の強調表示されたキャプション、および必要に応じて回答。
+
+クライアント アプリでは、特定のフィールドの内容全体ではなく、キャプションを一致の説明として含めるように、検索ページを構成することができます。 これは、検索結果ページにおいて個々のフィールドの密度が高すぎる場合に役立ちます。
+
+上記のクエリ例に対する応答では、最上位の選択として次の一致が返されます。 キャプションについては、プレーンテキスト バージョンと強調表示されたバージョンが自動的に返されます。 この例では回答が省略されています。この特定のクエリとコーパスに対してそれを特定できなかったためです。
 
 ```json
-"@odata.count": 29,
+"@odata.count": 35,
+"@search.answers": [],
 "value": [
     {
-        "@search.score": 1.8920634,
-        "@search.rerankerScore": 1.1091284966096282,
+        "@search.score": 1.8810667,
+        "@search.rerankerScore": 1.1446577133610845,
         "@search.captions": [
             {
-                "text": "Oceanside Resort. Budget. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-                "highlights": "<strong>Oceanside Resort.</strong> Budget. New Luxury Hotel. Be the first to stay.<strong> Bay views</strong> from every room, location near the pier, rooftop pool, waterfront dining & more."
+                "text": "Oceanside Resort. Luxury. New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+                "highlights": "<strong>Oceanside Resort.</strong> Luxury. New Luxury Hotel. Be the first to stay.<strong> Bay</strong> views from every room, location near the pier, rooftop pool, waterfront dining & more."
             }
         ],
-        "HotelId": "18",
         "HotelName": "Oceanside Resort",
-        "Description": "New Luxury Hotel.  Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-        "Category": "Budget"
+        "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
+        "Category": "Luxury"
     },
-```
-
-### <a name="parameters-used-in-a-semantic-query"></a>セマンティック クエリで使用されるパラメーター
-
-次の表は、セマンティック クエリで使用されるクエリ パラメーターを全体的に参照できるようにまとめたものです。 すべてのパラメーターの一覧については、「[Search Documents (REST プレビュー)](/rest/api/searchservice/preview-api/search-documents)」を参照してください
-
-| パラメーター | 種類 | 説明 |
-|-----------|-------|-------------|
-| queryType | String | 有効な値は、simple、full、semantic です。 セマンティック クエリには、"semantic" の値が必要です。 |
-| queryLanguage | String | セマンティック クエリに必要です。 現在、"en-us" のみが実装されています。 |
-| searchFields | String | 検索可能なフィールドのコンマ区切りの一覧。 省略可能ですが、指定することをお勧めします。 セマンティック ランク付けを行うフィールドを指定します。 </br></br>単純および完全なクエリの種類とは対照的に、フィールドの順番によって優先順位が決まります。|
-| answers |String | セマンティック回答を結果に含めるかどうかを指定する省略可能なフィールド。 現在、"extractive" のみが実装されています。 回答は、最大 5 つを返すように構成できます。 既定値は 1 です。 この例は、回答の数が 3 であることを示しています: "extractive\|count3"。 |
-
-## <a name="query-with-search-explorer"></a>検索エクスプローラーを使用したクエリ実行
-
-次のクエリは、API バージョン 2020-06-30-Preview を使用して組み込みの Hotels サンプル インデックスを対象としています。このクエリは、Search エクスプローラーで実行されます。 `$select` 句によって結果が少数のフィールドに制限されます。これにより、Search エクスプローラーの詳細な JSON でのスキャンが容易になります。
-
-### <a name="with-querytypesemantic"></a>With queryType=semantic
-
-```json
-search=nice hotel on water with a great restaurant&$select=HotelId,HotelName,Description,Tags&queryType=semantic&queryLanguage=english&searchFields=Description,Tags
-```
-
-最初の少数の結果は次のようになります。
-
-```json
-{
-    "@search.score": 0.38330218,
-    "@search.rerankerScore": 0.9754053303040564,
-    "HotelId": "18",
-    "HotelName": "Oceanside Resort",
-    "Description": "New Luxury Hotel. Be the first to stay. Bay views from every room, location near the pier, rooftop pool, waterfront dining & more.",
-    "Tags": [
-        "view",
-        "laundry service",
-        "air conditioning"
-    ]
-},
-{
-    "@search.score": 1.8920634,
-    "@search.rerankerScore": 0.8829904259182513,
-    "HotelId": "36",
-    "HotelName": "Pelham Hotel",
-    "Description": "Stunning Downtown Hotel with indoor Pool. Ideally located close to theatres, museums and the convention center. Indoor Pool and Sauna and fitness centre. Popular Bar & Restaurant",
-    "Tags": [
-        "view",
-        "pool",
-        "24-hour front desk service"
-    ]
-},
-{
-    "@search.score": 0.95706713,
-    "@search.rerankerScore": 0.8538530203513801,
-    "HotelId": "22",
-    "HotelName": "Stone Lion Inn",
-    "Description": "Full breakfast buffet for 2 for only $1.  Excited to show off our room upgrades, faster high speed WiFi, updated corridors & meeting space. Come relax and enjoy your stay.",
-    "Tags": [
-        "laundry service",
-        "air conditioning",
-        "restaurant"
-    ]
-},
-```
-
-### <a name="with-querytype-default"></a>With queryType (既定値)
-
-比較のために、`&queryType=semantic&queryLanguage=english&searchFields=Description,Tags` を削除して上記と同じクエリを実行します。 これらの結果に `"@search.rerankerScore"` が含まれていないこと、および上位 3 件に異なるホテルが表示されていることに注意してください。
-
-```json
-{
-    "@search.score": 8.633856,
-    "HotelId": "3",
-    "HotelName": "Triple Landscape Hotel",
-    "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
-    "Tags": [
-        "air conditioning",
-        "bar",
-        "continental breakfast"
-    ]
-},
-{
-    "@search.score": 6.407289,
-    "HotelId": "40",
-    "HotelName": "Trails End Motel",
-    "Description": "Only 8 miles from Downtown.  On-site bar/restaurant, Free hot breakfast buffet, Free wireless internet, All non-smoking hotel. Only 15 miles from airport.",
-    "Tags": [
-        "continental breakfast",
-        "view",
-        "view"
-    ]
-},
-{
-    "@search.score": 5.843788,
-    "HotelId": "14",
-    "HotelName": "Twin Vertex Hotel",
-    "Description": "New experience in the Making.  Be the first to experience the luxury of the Twin Vertex. Reserve one of our newly-renovated guest rooms today.",
-    "Tags": [
-        "bar",
-        "restaurant",
-        "air conditioning"
-    ]
-},
 ```
 
 ## <a name="next-steps"></a>次のステップ
