@@ -1,6 +1,6 @@
 ---
-title: SQL Server から Azure VM 上の SQL Server (移行ガイド)
-description: このガイドに従って、個々の SQL Server データベースを Azure Virtual Machines (VM) 上の SQL Server に移行できます。
+title: 'SQL Server から Azure VM 上の SQL Server へ: 移行ガイド'
+description: このガイドでは、個々の SQL Server データベースを Azure VM 上の SQL Server に移行する方法について説明します。
 ms.custom: ''
 ms.service: virtual-machines-sql
 ms.subservice: migration-guide
@@ -9,13 +9,13 @@ ms.topic: how-to
 author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
-ms.date: 11/06/2020
-ms.openlocfilehash: d95da29b732e2d520b3413628c9b4a1c403abed6
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/19/2021
+ms.openlocfilehash: 0e1b44667a5ff42978b22ab9450d6a8e9870960b
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488234"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563217"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>移行ガイド:SQL Server から Azure VM 上の SQL Server 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -195,7 +195,7 @@ Database Migration Assistant から推奨される修正プログラムをユー
 
 > [!TIP]
 > ターゲット SQL Server パフォーマンスを評価するには、[Database Experimentation Assistant (DEA)](/sql/dea/database-experimentation-assistant-overview) を使用するのが便利です。
->
+
 
 ### <a name="optimize"></a>最適化
 
