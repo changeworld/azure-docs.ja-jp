@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: cc385c3a7ceb0245e3a4acbedb037b1b28bde7b3
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 24377cf02b30a550043ee63267229039d680cd1c
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518111"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489136"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Azure Active Directory B2C を使用して、Apple ID でのサインアップとサインインを設定する (プレビュー)
 
@@ -57,8 +57,8 @@ Azure Active Directory B2C (Azure AD B2C) で Apple ID でのユーザーのサ�
 1. **[Identifiers]\(識別子\)** から、作成した識別子を選択します。
 1. **[Sign In with Apple]\(Apple でサインイン\)** を選択し、 **[Configure]\(構成\)** を選択します。
     1. Apple でのサインインを構成する **[Primary App ID]\(プライマリ アプリ ID\)** を選択します。
-    1. **[Domains and Subdomains]\(ドメインとサブドメイン\)** に `your-tenant-name.b2clogin.com` を入力します。 your-tenant-name をテナントの名前に置き換えます。
-    1. **[Return URLs]\(戻り先 URL\)** に `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` と入力します。 your-tenant-name をテナントの名前に置き換えます。
+    1. **[Domains and Subdomains]\(ドメインとサブドメイン\)** に `your-tenant-name.b2clogin.com` を入力します。 your-tenant-name をテナントの名前に置き換えます。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name`」と入力します。
+    1. **[Return URLs]\(戻り先 URL\)** に `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。
     1. **[次へ]** を選択し、 **[Done]\(完了\)** を選択します。
     1. ポップアップ ウィンドウが閉じたら、 **[続行]** を選択し、 **[保存]** を選択します。
 
