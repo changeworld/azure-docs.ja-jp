@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d2e2680f1d679a4bd1e967e32a409b59ad992c01
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c7538cf052fcf51d03d1ac854d4da50db02004ea
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448100"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488563"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して WeChat アカウントでのサインアップおよびサインインを設定する
 
@@ -40,7 +40,7 @@ Azure Active Directory B2C (Azure AD B2C) で WeChat アカウントを持つユ
 1. WeChat 資格情報を使用して、[https://open.weixin.qq.com/](https://open.weixin.qq.com/) にサインインします。
 1. **[管理中心 (管理センター)]** を選択します。
 1. 新しいアプリケーションを登録するための手順に従います。
-1. **[授权回调域 (コールバック URL)]** に、「`https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、テナント名が contoso の場合、URL を`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`に設定します。
+1. **[授权回调域** (コールバック URL)] に、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。
 1. **アプリ ID** と **アプリ キー** をコピーします。 テナントに対する ID プロバイダーを構成するために、この両方が必要です。
 
 ::: zone pivot="b2c-user-flow"
