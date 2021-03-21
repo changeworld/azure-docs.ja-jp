@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 578a248de3ee6aacc0db7c5116b66031b404c9ae
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: d445a4e1d0fd39788c18f80b25ce02a7c5d0a243
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448168"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488688"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Salesforce アカウントでのサインアップおよびサインインを設定する
 
@@ -48,7 +48,7 @@ Azure Active Directory B2C (Azure AD B2C) で Salesforce アカウントを持�
     1. **[API Name]\(アプリ名\)** 
     1. **[Contact Email]\(連絡先の電子メール\)** - Salesforce での連絡先の電子メール
 1. **[API (Enable OAuth Settings)]\(API (OAuth 設定を有効にする)\)** で、 **[Enable OAuth Settings]\(OAuth 設定を有効にする\)** を選択します。
-    1. **[Callback URL]\(コールバック URL\)** に、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
+    1. **[Callback URL]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
     1. **[Selected OAuth Scopes]\(選択された OAuth のスコープ\)** で、 **[Access your basic information (id, profile, email, address, phone)]\(基本情報 (ID、プロファイル、電子メール、アドレス、電話) にアクセスする\)** と **[Allow access to your unique identifier (openid)]\(一意識別子 (openid) へのアクセスを許可する\)** を選択します。
     1. **[Require Secret for Web Server Flow]\(Web サーバー フロー用のシークレットが必要\)** を選択します。
 1. **[Configure ID Token]\(ID トークンの構成\)** を選択します 
