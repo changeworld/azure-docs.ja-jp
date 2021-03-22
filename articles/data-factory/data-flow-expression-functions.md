@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/04/2021
-ms.openlocfilehash: dee896c8e4946cb4f6406d2f9f50547d2723da05
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.date: 03/10/2021
+ms.openlocfilehash: 0e60ac6da55c11d45e8b691b4883b0f5f93a2498
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102448984"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103563934"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>マッピング データ フローでのデータ変換式
 
@@ -152,14 +152,13 @@ ___
 ___
 ### <code>columnNames</code>
 <code><b>columnNames(<i>&lt;value1&gt;</i> : string) => array</b></code><br/><br/>
-ストリームのすべての出力列を取得します。 省略可能なストリーム名を 2 番目の引数として渡すことができます。  
+ストリームのすべての出力列の名前を取得します。 省略可能なストリーム名を 2 番目の引数として渡すことができます。  
 * ``columnNames()``
 * ``columnNames('DeriveStream')``
-
 ___
 ### <code>columns</code>
 <code><b>columns([<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
-ストリームのすべての出力列を取得します。 省略可能なストリーム名を 2 番目の引数として渡すことができます。   
+ストリームのすべての出力列の値を取得します。 省略可能なストリーム名を 2 番目の引数として渡すことができます。   
 * ``columns()``
 * ``columns('DeriveStream')``
 ___
@@ -1098,9 +1097,18 @@ ___
 * ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
 * ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
 ___
+### <code>mapIf</code>
+<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></code><br/><br/> 配列を、同じ長さまたはそれより短い長さの別の配列に条件付きでマップします。 値は、structTypes など、任意のデータ型とすることができます。 配列内のアイテムを #item として、現在のインデックスを #index としてアドレス指定できるマッピング関数を取ります。 深く入れ子になったマップの場合、#item_[n](#item_1, #index_1...) という表記を使用して親マップを参照できます。t maps using the ``#item_[n](#item_1,...)`` notation.
+*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+* ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'CAKE']``
+___
 ### <code>mapIndex</code>
 <code><b>mapIndex(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => any</b></code><br/><br/> 指定された式を使用して、配列の各要素を新しい要素にマップします。 map は、式関数の 1 つの要素への参照を #item として予期し、要素インデックスへの参照を #index として予期します。index as #index.  
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
+___
+### <code>mapLoop</code>
+<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></code><br/><br/> 1 から length までループさせてその長さの配列を作成します。 これは、配列内のインデックスを #index としてアドレス指定できるマッピング関数を取ります。 深く入れ子になったマップの場合、#index_n(#index_1, #index_2...) という表記を使用して親マップを参照できます。_2...) notation.
+*   ``mapLoop(3, #index * 10) -> [10, 20, 30]``
 ___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/> 配列内の要素を累積します。 reduce は、最初の式関数内のアキュムレータと 1 つの要素への参照を #acc および #item として予期し、結果の値を 2 番目の式関数に使用される #result として予期します。ession function.  
@@ -1139,10 +1147,21 @@ Maps each element of the array to a new element using the provided expression. M
 * ``map([1, 2, 3, 4], #item + 2) -> [3, 4, 5, 6]``  
 * ``map(['a', 'b', 'c', 'd'], #item + '_processed') -> ['a_processed', 'b_processed', 'c_processed', 'd_processed']``  
 ___
+### <code>mapIf</code>
+<code><b>mapIf (<value1> : array, <value2> : binaryfunction, <value3>: binaryFunction) => any</b></code><br/><br/>
+Conditionally maps an array to another array of same or smaller length. The values can be of any datatype including structTypes. It takes a mapping function where you can address the item in the array as #item and current index as #index. For deeply nested maps you can refer to the parent maps using the ``#item_[n](#item_1, #index_1...)`` notation.
+*   ``mapIf([10, 20, 30], #item > 10, #item + 5) -> [25, 35]``
+* ``mapIf(['icecream', 'cake', 'soda'], length(#item) > 4, upper(#item)) -> ['ICECREAM', 'CAKE']``
+___
 ### <code>mapIndex</code>
 <code><b>mapIndex(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : binaryfunction) => any</b></code><br/><br/>
 Maps each element of the array to a new element using the provided expression. Map expects a reference to one element in the expression function as #item and a reference to the element index as #index.  
 * ``mapIndex([1, 2, 3, 4], #item + 2 + #index) -> [4, 6, 8, 10]``  
+___
+### <code>mapLoop</code>
+<code><b>mapLoop(<value1> : integer, <value2> : unaryfunction) => any</b></code><br/><br/>
+Loops through from 1 to length to create an array of that length. It takes a mapping function where you can address the index in the array as #index. For deeply nested maps you can refer to the parent maps using the #index_n(#index_1, #index_2...) notation.
+*   ``mapLoop(3, #index * 10) -> [10, 20, 30]``
 ___
 ### <code>reduce</code>
 <code><b>reduce(<i>&lt;value1&gt;</i> : array, <i>&lt;value2&gt;</i> : any, <i>&lt;value3&gt;</i> : binaryfunction, <i>&lt;value4&gt;</i> : unaryfunction) => any</b></code><br/><br/>
