@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 09/16/2020
-ms.openlocfilehash: da3c70baccc3c86f2ac57d61539456464e3042b6
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/22/2021
+ms.openlocfilehash: 2aba44f6c2f10ead1827e1b1411f3824a0ec2d6c
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493408"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101658556"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースをスケーリングする
 
@@ -112,6 +112,7 @@ else {
 - [geo レプリケーション](active-geo-replication-configure-portal.md)が有効な状態でデータベースをダウングレードする場合、そのプライマリ データベースを目的のサービス レベルとコンピューティング サイズにダウングレードしてから、セカンダリ データベースをダウングレードします (パフォーマンスを最大にするための一般的なガイダンス)。 別のエディションにダウングレードするには、プライマリ データベースを先にダウングレードする必要があります。
 - サービス階層によって、提供されている復元サービスは異なります。 **Basic** レベルにダウングレードする場合は、バックアップのリテンション期間が短くなります。 [Azure SQL Database のバックアップ](automated-backups-overview.md)に関する記事をご覧ください。
 - データベースに対する新しいプロパティは、変更が完了するまで適用されません。
+- サービス レベルを変更するときにデータベースをスケーリングする ( 「[待機時間](#latency)」を参照) 必要がある場合は、スケール操作と並列のリソース使用率が高いと、スケーリング時間が長くなる可能性があります。 [高速データベース復旧 (ADR)](/sql/relational-databases/accelerated-database-recovery-concepts.md) では、長期にわたるトランザクションのロールバックが遅延の主な原因になることはありませんが、並列のリソース使用率が高いと、特に、コンピューティングのサイズが小さい場合に、スケーリングのために残されるコンピューティング、ストレージ、ネットワーク帯域幅のリソースが減ってしまうことがあります。
 
 ## <a name="billing"></a>課金
 

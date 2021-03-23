@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8c63ada9621fc1485742a7683fd6742f0e896854
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ce18e71ced320c408933caeb39b469d5885bd6ba
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954431"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101095935"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する
 
@@ -29,7 +29,7 @@ ms.locfileid: "98954431"
 
 Microsoft の[アダプティブ ストリーミング](autogen-bitrate-ladder.md) プリセットは、ソース ビデオの品質と解像度のばらつきの問題に部分的に対処しています。 お客様のところには、一部が 1080 p でそれ以外が 720 p、またいくつかは SD やそれ以下の解像度というように、さまざまなコンテンツが混在しています。 さらに、すべてのソース コンテンツが映画やテレビ スタジオの高品質メザニンであるとは限りません。 アダプティブ ストリーミング プリセットは、ビットレート ラダーが入力メザニンの解像度または平均ビットレートを絶対に超えないようにすることで、これらの問題を解決します。 ただし、このプリセットでは、解像度とビットレート以外のソース プロパティは確認されません。
 
-## <a name="the-content-aware-encoding"></a>コンテンツに対応したエンコード 
+## <a name="the-content-aware-encoding"></a>コンテンツに対応したエンコード
 
 コンテンツに対応したエンコード プリセットは、広範な計算解析を必要とせずに、エンコーダーに与えられた解像度に対して最適なビットレート値を探させるカスタム ロジックを組み込むことによって、"アダプティブ ビットレート ストリーミング" のメカニズムを拡張します。 このプリセットでは、一連の GOP 配列 MP4 が作成されます。 入力コンテンツを指定すると、サービスによって入力コンテンツに対する最初の簡単な分析が実行され、その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤーの数、適切なビット レートと解像度の設定が決定されます。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビットレートはアダプティブ ストリーミング プリセットよりも低いものの、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります
 
@@ -57,7 +57,7 @@ Microsoft の[アダプティブ ストリーミング](autogen-bitrate-ladder.m
 
 次のようにこのプリセットを使用する変換を作成することができます。 
 
-変換の出力を使用するチュートリアルについては、「[次のステップ](#next-steps)」 セクションを参照してください。 (チュートリアルに示されているように) 出力アセットは、MPEG-DASH や HLS などのプロトコルで Media Services ストリーミング エンドポイントから配信することができます。
+変換の出力を使用するチュートリアルについては、「[次のステップ](#next-steps)」セクションを参照してください。 (チュートリアルに示されているように) 出力アセットは、MPEG-DASH や HLS などのプロトコルで Media Services ストリーミング エンドポイントから配信することができます。
 
 > [!NOTE]
 > ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** プリセットを使用してください。

@@ -2,17 +2,17 @@
 title: 概念 - プライベート クラウドの更新とアップグレード
 description: Azure VMware Solution の主要なアップグレード プロセスと機能について説明します。
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 78d4b566aa9156cdddfdcd69b50ebfd1d10aa784
-ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
+ms.date: 02/16/2021
+ms.openlocfilehash: d93453cbf6ad744844a04cd298cc18ad181cc0b0
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "100006703"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100634994"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware Solution のプライベート クラウドの更新とアップグレード
 
-Azure VMware Solution のプライベート クラウドの主な利点の 1 つは、管理者に代わってプラットフォームのメンテナンスが行われることです。 プラットフォームのメンテナンスには、VMware によって検証されたソフトウェア バンドルに対する自動更新が含まれており、検証済みの Azure VMware Solution プライベート クラウド ソフトウェアの最新バージョンを使用していることを確認するのに役立ちます。
+Azure VMware Solution のプライベート クラウドの利点の 1 つは、管理者に代わってプラットフォームのメンテナンスが行われることです。 メンテナンスには、VMware によって検証されたソフトウェア バンドルに対する自動更新が含まれており、Azure VMware Solution プライベート クラウド ソフトウェアの最新バージョンを使用していることを確認するのに役立ちます。
 
 Azure VMware Solution プライベート クラウドには、具体的に次のものが含まれます。
 
@@ -22,7 +22,7 @@ Azure VMware Solution プライベート クラウドには、具体的に次の
 - VSphere ワークロード VM 用の VMware vSAN データストア  
 - ワークロード モビリティ用の VMware HCX  
 
-これらのコンポーネントに加えて、Azure VMware Solution プライベート クラウドには、Azure アンダーレイに接続やプライベート クラウドの運用に必要なリソースが含まれています。 Azure VMware Solution では、アンダーレイと VMware コンポーネントの両方の正常性が継続的に監視されます。 Azure VMware Solution でエラーが検出されると、失敗したコンポーネントを修復するアクションが実行されます。 
+Azure VMware Solution プライベート クラウドには、Azure アンダーレイに接続やプライベート クラウドの運用に必要なリソースも含まれています。 Azure VMware Solution では、アンダーレイと VMware コンポーネントの両方の正常性が継続的に監視されます。 Azure VMware Solution でエラーが検出されると、失敗したコンポーネントを修復するアクションが実行されます。 
 
 ## <a name="what-components-get-updated"></a>更新されるコンポーネントについて   
 
@@ -46,12 +46,12 @@ Azure VMware Solution では、次の種類の更新プログラムが VMware �
 
 ## <a name="vmware-appliance-backup"></a>VMware アプライアンスのバックアップ 
 
-Azure VMware Solution では、更新に加えて、次の VMware コンポーネントの構成バックアップが作成されます。
+Azure VMware Solution では、次の VMware コンポーネントの構成バックアップも作成されます。
 
 - vCenter Server 
 - NSX-T Manager 
 
-障害が発生した際は、Azure VMware Solution を使用して構成のバックアップからこれらを復元できます。 
+障害が発生した際は、Azure VMware Solution を使用して構成のバックアップからこれらのコンポーネントを復元できます。 
 
 VMware ソフトウェアのバージョンの詳細については、[プライベート クラウドとクラスターの概念に関する記事](concepts-private-clouds-clusters.md)と [FAQ](faq.yml) を参照してください。
 
