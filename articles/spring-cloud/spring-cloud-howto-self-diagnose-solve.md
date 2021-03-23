@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d572545f589475dc2b460db90329fe8b0a838c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c262ba87698c04da69728f7a370040c0679ec44e
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904305"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102122869"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Azure Spring Cloud での問題を自己診断して解決する方法
 
 **この記事の適用対象:** ✔️ Java ✔️ C#
 
-Azure Spring Cloud 診断は、アプリのトラブルシューティングに役立つ対話型エクスペリエンスです。 構成は必要ありません。 問題が見つかった場合、Azure Spring Cloud 診断は問題点を指摘し、問題のトラブルシューティングと解決に役立つ情報にユーザーを導きます。
+Azure Spring Cloud 診断は、構成無しでアプリのトラブルシューティングが可能な対話型エクスペリエンスです。 Azure Spring Cloud 診断は、問題点を特定し、問題のトラブルシューティングと解決に役立つ情報を示します。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、次のものが必要です。
@@ -30,7 +30,7 @@ Azure Spring Cloud 診断は、アプリのトラブルシューティングに�
 ## <a name="navigate-to-the-diagnostics-page"></a>診断ページに移動する
 1. Azure portal にサインインします。
 2. Azure Spring Cloud の **[概要]** ページに移動します。
-3. ページの左側にあるメニューで **[問題の診断と解決]** を開きます。
+3. 左側のナビゲーションから **[問題の診断と解決]** を選択します。
 
  ![診断、解決ダイアログ](media/spring-cloud-diagnose/diagnose-solve-dialog.png)
 

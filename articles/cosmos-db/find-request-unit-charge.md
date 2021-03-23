@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: 9d0694a76bca832887d30601711894b953fe22e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b3e61ca2cee6dd5a2c279b4297e84668729f4ccb
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078443"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178747"
 ---
 # <a name="find-the-request-unit-charge-for-operations-executed-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API で実行された操作の要求ユニット使用量の確認
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
