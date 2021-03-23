@@ -3,14 +3,15 @@ title: Apache Hadoop コンポーネントおよびバージョン - Azure HDIns
 description: Azure HDInsight 内の Apache Hadoop コンポーネントおよびバージョンについて説明します。
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: deshriva
+author: deshriva
+ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 166c52660c9f47b8ecfce10f7e9c3b81ff067f35
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 53ca2ac73fdec9d3b39ffc04cbb24aca707a72eb
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699370"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490451"
 ---
 # <a name="azure-hdinsight-versions"></a>Azure HDInsight のバージョン
 

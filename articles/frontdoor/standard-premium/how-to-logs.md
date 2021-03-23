@@ -5,14 +5,14 @@ services: front-door
 author: duongau
 ms.service: frontdoor
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 03/15/2021
 ms.author: duau
-ms.openlocfilehash: 6a1cf3112cd936ec842c755eb90b2c7b094aa781
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 531f4a9c9f535779e451ca316a8a5867f6cdaba5
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101097864"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103573899"
 ---
 # <a name="azure-front-door-standardpremium-preview-logging"></a>Azure Front Door Standard/Premium (プレビュー) のログ
 
@@ -41,7 +41,7 @@ Azure Front Door には、Front Door の追跡、監視、デバッグに役立�
 
 ## <a name="configure-logs"></a>ログを構成する
 
-1. [Azure portal](https://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 1. Azure Front Door Standard/Premium を検索し、Azure Front Door のプロファイルを選択します。
 
@@ -164,7 +164,7 @@ Azure Front Door には、Front Door の追跡、監視、デバッグに役立�
 
 1. フィルター処理のスコープを選択し、 **[適用]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Front Door Standard/Premium (プレビュー) レポート](how-to-reports.md)について学習します。
 - [Azure Front Door Standard/Premium (プレビュー) リアルタイム監視メトリック](how-to-monitor-metrics.md)について学習します。

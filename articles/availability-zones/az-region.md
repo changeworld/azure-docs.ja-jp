@@ -4,16 +4,16 @@ description: Azure に高可用性で回復力のあるアプリケーション�
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 01/26/2021
+ms.date: 03/16/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: fee000009be90a083406725fe7f1e8c4382af3e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 5152b0ecf6eebe87031a2165d5d8ba11d99209cf
+ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701452"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103601187"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Availability Zones をサポートする Azure サービス
 
@@ -50,12 +50,13 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 | アメリカ           | ヨーロッパ               | アフリカ              | アジア太平洋   |
 |--------------------|----------------------|---------------------|----------------|
 |                    |                      |                     |                |
-| カナダ中部     | フランス中部       | 南アフリカ北部* | 東日本     |
-| 米国中部         | ドイツ中西部 |                     | 東南アジア |
-| 米国東部            | 北ヨーロッパ         |                     | オーストラリア東部 |
-| 米国東部 2          | 英国南部             |                     |                |
-| 米国中南部 | 西ヨーロッパ          |                     |                |
-| US Gov バージニア州    |                      |                     |                |
+| ブラジル南部       | フランス中部       | 南アフリカ北部* | 東日本     |
+| カナダ中部     | ドイツ中西部 |                     | 東南アジア |
+| 米国中部         | 北ヨーロッパ         |                     | オーストラリア東部 |
+| 米国東部            | 英国南部             |                     |                |
+| 米国東部 2          | 西ヨーロッパ          |                     |                |
+| 米国中南部 |                      |                     |                |
+| US Gov バージニア州     |                      |                     |                |
 | 米国西部 2        |                      |                     |                |
 
 
@@ -125,6 +126,7 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 | Azure Database for MySQL – フレキシブル サーバー      |      :large_blue_diamond:  |
 | Azure Database for PostgreSQL – フレキシブル サーバー |      :large_blue_diamond:  |
 | Azure DDoS Protection                           |      :large_blue_diamond:  |
+| Azure Disk Encryption                           |      :large_blue_diamond:  |
 | Azure Firewall                                  |      :large_blue_diamond:  |
 | Azure Firewall Manager                          |      :large_blue_diamond:  |
 | Azure Kubernetes Service (AKS)                  |      :large_blue_diamond:  |
@@ -134,7 +136,6 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 | Azure SQL: 仮想マシン                      |      :large_blue_diamond:  |
 | Azure Search                                    |      :large_blue_diamond:  |
 | Azure Web アプリケーション ファイアウォール                  |      :large_blue_diamond:  |
-| Cognitive Services: Text Analytics              |      :large_blue_diamond:  |
 | Container Registry                              |      :large_blue_diamond:  |
 | Event Grid                                      |      :large_blue_diamond:  |
 | Network Watcher                                 |      :large_blue_diamond:  |
@@ -169,6 +170,7 @@ Azure での包括的なビジネス継続性を実現するには、Availabilit
 |     Azure Advisor                             |     :globe_with_meridians:             |
 |     Azure Blueprint                          |     :globe_with_meridians:             |
 |     Azure Bot Services                        |     :globe_with_meridians:             |
+|     Azure Front Door                          |     :globe_with_meridians:             |
 |     Azure Defender for IoT                  |     :globe_with_meridians:             |
 |     Azure Front Door                           |     :globe_with_meridians:             |
 |     Azure Information Protection            |     :globe_with_meridians:             |

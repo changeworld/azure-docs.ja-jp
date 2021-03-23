@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 388a4f06d79116c42bf80cb25d0b133474c02192
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f858549f36d196c6412aec549d0ab2e2d864145
+ms.sourcegitcommit: df1930c9fa3d8f6592f812c42ec611043e817b3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737632"
+ms.lasthandoff: 03/13/2021
+ms.locfileid: "103417673"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Azure ファイル共有のパフォーマンスに関する問題のトラブルシューティング
 
@@ -39,7 +39,8 @@ ms.locfileid: "101737632"
     Standard ファイル共有の場合、要求がスロットルされると、次の応答の種類がログに記録されます。
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     Premium ファイル共有の場合、要求がスロットルされると、次の応答の種類がログに記録されます。
 
@@ -244,7 +245,8 @@ I/O 集中型ワークロードのために、Azure ファイル共有へのア�
     Standard ファイル共有の場合、次の応答の種類を選択します。
 
     - SuccessWithThrottling
-    - ClientThrottlingError
+    - SuccessWithShareIopsThrottling
+    - ClientShareIopsThrottlingError
 
     Premium ファイル共有の場合、次の応答の種類を選択します。
 
