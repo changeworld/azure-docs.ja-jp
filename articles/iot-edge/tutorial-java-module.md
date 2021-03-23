@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 51b7f6e814a9fad286a934466daeb1ffced225c1
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cbe4942b63389faab00861438a0149b68c0e89c0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968062"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102177302"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の Java IoT Edge モジュールを開発する
 
@@ -56,7 +56,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 Java で IoT Edge モジュールを開発するには、開発マシンに次の追加の前提条件をインストールします。 
 
 * Visual Studio Code 向け [Java 拡張機能パック](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)。
-* [Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
+* [Java SE Development Kit 11](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
 * [Maven](https://maven.apache.org/)
 
    >[!TIP]

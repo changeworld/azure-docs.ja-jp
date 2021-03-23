@@ -4,12 +4,12 @@ description: 計画ステージで収集した情報を使用して、Azure VMwa
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: bfd057a19ebe26a66d11b52ddf17c285a1f9a308
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100652736"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101703862"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
@@ -62,7 +62,14 @@ Azure VMware Solution のデプロイ後に、vCenter および NSX に接続す
 
 前の手順で作成したジャンプ ボックスにログインします。 ログインしたら Web ブラウザーを開き、vCenter および NSX-T Manager の両方に移動してログインします。  
 
-Azure portal で、vCenter および NSX-T Manager コンソールの IP アドレスと資格情報を識別できます。  お使いのプライベート クラウドを選択してから、 **[概要]** ビューで **[ID]> [既定値]** を選択します。 
+Azure portal で、vCenter および NSX-T Manager コンソールの IP アドレスと資格情報を識別できます。  プライベート クラウドを選択し、 **[管理]**  >  **[ID]** を選択します。
+
+>[!TIP]
+>**[Generate a new password]\(新しいパスワードを生成する\)** を選択して、新しい vCenter および NSX-T のパスワードを生成します。
+
+:::image type="content" source="media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="プライベート クラウドの vCenter および NSX Manager の URL と資格情報を表示する。" border="true":::
+
+
 
 ## <a name="create-a-network-segment-on-azure-vmware-solution"></a>Azure VMware Solution 上にネットワーク セグメントを作成する
 

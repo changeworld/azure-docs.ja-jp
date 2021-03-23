@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 02/09/2021
 ms.custom: mvc
-ms.openlocfilehash: 1505366d9a91eac596b21804f93abb8245a84605
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 009244322b7c6625523bf46382a170577593f4e6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590014"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101718371"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -104,9 +104,7 @@ HTTP アプリケーション ルーティング アドオンを利用すると�
 
 Kubernetes には、AKS とシームレスに連携する開発および管理ツールの豊富なエコシステムがあります。 これらのツールには、Helm や Visual Studio Code 用 Kubernetes 拡張機能が含まれます。 これらのツールは、AKS でシームレスに動作します。  
 
-さらに、Azure には、Azure Dev Spaces や DevOps Starter など、Kubernetes の効率化に役立つツールがいくつか用意されています。  
-
-Azure Dev Spaces は、高速で反復的な Kubernetes 開発エクスペリエンスをチームに提供します。 最小限の構成で、AKS 内で直接、コンテナーの実行とデバッグを行えます。 始める際には、[Azure Dev Spaces][azure-dev-spaces] に関するページを参照してください。
+さらに、Azure には、DevOps Starter など、Kubernetes の効率化に役立つツールがいくつか用意されています。  
 
 DevOps Starter では、既存のコードおよび Git リポジトリを Azure に取り込むための簡単なソリューションを提供しています。 DevOps Starter では、次のことが自動的に実行されます。
 * Azure リソース (AKS など) を作成する。 
@@ -157,7 +155,7 @@ Azure CLI のクイックスタートで、AKS のデプロイと管理の詳細
 [azure-disk]: ./azure-disks-dynamic-pv.md
 [azure-files]: ./azure-files-dynamic-pv.md
 [container-health]: ../azure-monitor/containers/container-insights-overview.md
-[aks-master-logs]: view-master-logs.md
+[aks-master-logs]: ./view-control-plane-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [kubernetes-rbac]: concepts-identity.md#kubernetes-role-based-access-control-kubernetes-rbac

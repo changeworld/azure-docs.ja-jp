@@ -1,27 +1,27 @@
 ---
-title: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
+title: Defender for IoT マイクロ エージェントをインストールする
 titleSuffix: Azure Defender for IoT
 description: Defender マイクロ エージェントをインストールして認証する方法について説明します。
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/18/2021
+ms.date: 3/3/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: 8d7e6dffcc40ba1e34a4a84ecccccc1f8b181393
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ccf28c47e2e1438a141e2497da70d32c1832ddb9
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703050"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120438"
 ---
-# <a name="install-defender-for-iot-micro-agent-preview"></a>Defender for IoT マイクロ エージェントをインストールする (プレビュー)
+# <a name="install-defender-for-iot-micro-agent"></a>Defender for IoT マイクロ エージェントをインストールする 
 
 この記事では、Defender マイクロ エージェントをインストールして認証する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Defender for IoT モジュールをインストールする前に、IoT Hub にモジュール ID を作成する必要があります。 モジュール ID の作成方法の詳細については、「[azureiotsecurity モジュール ツインを作成する](quickstart-create-security-twin.md)」を参照してください
+Defender for IoT モジュールをインストールする前に、IoT Hub にモジュール ID を作成する必要があります。 モジュール ID の作成方法の詳細については、[Defender for IoT マイクロ エージェントのモジュール ツインを作成する方法](quickstart-create-micro-agent-module-twin.md)に関するページを参照してください。
 
 ## <a name="install-the-package"></a>パッケージをインストールする
 

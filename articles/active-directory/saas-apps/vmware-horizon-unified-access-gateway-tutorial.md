@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/02/2020
+ms.date: 02/04/2021
 ms.author: jeedes
-ms.openlocfilehash: cfdcc39966e58a845be0096474cb8a3366f3dd7a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: cf1e71d67424258ccae6794f28d37399cd68996e
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503591"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654325"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と VMware Horizon - Unified Access Gateway の統合
 
@@ -37,9 +37,9 @@ ms.locfileid: "92503591"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* VMware Horizon - Unified Access Gateway では、 **SP Initiated SSO と IDP Initiated SSO** がサポートされます
+* VMware Horizon - Unified Access Gateway では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
 
-## <a name="adding-vmware-horizon---unified-access-gateway-from-the-gallery"></a>ギャラリーからの VMware Horizon - Unified Access Gateway の追加
+## <a name="add-vmware-horizon---unified-access-gateway-from-the-gallery"></a>ギャラリーからの VMware Horizon - Unified Access Gateway の追加
 
 Azure AD への VMware Horizon - Unified Access Gateway の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に VMware Horizon - Unified Access Gateway を追加する必要があります。
 
@@ -47,7 +47,7 @@ Azure AD への VMware Horizon - Unified Access Gateway の統合を構成する
 1. 左のナビゲーション ウィンドウで **[Azure Active Directory]** サービスを選択します。
 1. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
-1. **[ギャラリーから追加する]** セクションで、検索ボックスに「 **VMware Horizon - Unified Access Gateway** 」と入力します。
+1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**VMware Horizon - Unified Access Gateway**」と入力します。
 1. 結果のパネルから **VMware Horizon - Unified Access Gateway** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
@@ -70,7 +70,7 @@ VMware Horizon - Unified Access Gateway で Azure AD SSO を構成してテス�
 
 1. Azure portal の **VMware Horizon - Unified Access Gateway** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -145,4 +145,4 @@ VMware Horizon - Unified Access Gateway で Azure AD SSO を構成してテス�
 
 ## <a name="next-steps"></a>次の手順
 
-VMware Horizon - Unified Access Gateway を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+VMware Horizon - Unified Access Gateway を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を強制することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
