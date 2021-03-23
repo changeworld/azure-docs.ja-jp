@@ -3,12 +3,12 @@ title: Azure Service Fabric クラスターの設定を変更する
 description: この記事では、カスタマイズ可能な Fabric の設定と Fabric アップグレード ポリシーについて説明します。
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 34a63a86bc10a787ef077b9067c3fba5a9e4da25
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: fed66c1a1908977fbe9769c1aec77945bc38c3dc
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919784"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183405"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -130,7 +130,7 @@ ms.locfileid: "98919784"
 |EnableTelemetry |ブール値、既定値は true | 動的 |テレメトリを有効または無効にします。 |
 |FailuresOnlyHttpTelemetry | ブール値、既定値は false | 動的 | HTTP テレメトリのキャプチャが有効な場合、失敗した要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
 |HttpTelemetryCapturePercentage | int、既定値は 50 | 動的 | HTTP テレメトリのキャプチャが有効な場合、ランダムな割合の要求のみがキャプチャされます。 これは、テレメトリ用に生成されるイベント数を減らすために役立ちます。 |
-|MaxDiskQuotaInMB |int、既定値は 65536 | 動的 |Windows Fabric のログ ファイルのディスク クォータ (MB)。 |
+|MaxDiskQuotaInMB |int、既定値は 65536 | 動的 |Windows および Linux Fabric のログ ファイルのディスク クォータ (MB)。 |
 |ProducerInstances |String | 動的 |DCA プロデューサー インスタンスのリスト。 |
 
 ## <a name="dnsservice"></a>DnsService
