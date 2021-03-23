@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
-ms.date: 11/13/2019
-ms.openlocfilehash: 51cf4a4d3aa3cb4654b141a98064460a7152fcec
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 02/16/2021
+ms.openlocfilehash: f1761851f91e6d0c0aadb3315dbb7980a00bba5b
+ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737457"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100633820"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Azure ハイブリッド特典 - Azure SQL Database と SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -85,12 +85,12 @@ SQL Server 向け Azure ハイブリッド特典は、次の 2 つの重要な�
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>SQL Server 向け Azure ハイブリッド特典では、具体的にはどのような権限が付与されますか。
 
-SQL Database のお客様には、SQL Server 向け Azure ハイブリッド特典によって次の権限が付与されます。
+SQL Database および SQL Managed Instance のお客様には、SQL Server 向け Azure ハイブリッド特典によって次の権限が付与されます。
 
 |ライセンス フットプリント|SQL Server 向け Azure ハイブリッド特典の内容|
 |---|---|
 |SA を含む SQL Server Enterprise Edition の中核的なお客様|<li>Hyperscale、General Purpose または Business Critical SKU で基本料金を支払うことができる</li><br><li>オンプレミスの 1 コア = Hyperscale SKU の 4 コア</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 4 コア</li><br><li>オンプレミスの 1 コア = Business Critical SKU の 1 コア</li>|
-|SA を含む SQL Server Standard Edition の中核的なお客様|<li>Hyperscale および General Purpose SKU のみで基本料金を支払うことができる</li><br><li>オンプレミスの 1 コア = Hyperscale SKU の 1 コア</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li>|
+|SA を含む SQL Server Standard Edition の中核的なお客様|<li>Hyperscale、General Purpose または Business Critical SKU で基本料金を支払うことができる</li><br><li>オンプレミスの 1 コア = Hyperscale SKU の 1 コア</li><br><li>オンプレミスの 1 コア = General Purpose SKU の 1 コア</li><br><li>オンプレミスの 4 コア = Business Critical SKU の 1 コア</li>|
 |||
 
 

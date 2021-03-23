@@ -6,13 +6,13 @@ author: dcstwh
 ms.author: weetok
 ms.reviewer: maghan
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c0d3ba8d9bea9fade58ed4a65c6d3ae43ef6acb3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 02/18/2021
+ms.openlocfilehash: 2fd8911ca11ee6dfcf795347e1fe7f2c36a2b636
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383604"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101716528"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションとデリバリー
 
@@ -199,7 +199,7 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Resource Manager テンプレートでカスタム パラメーターを使用する
 
-開発ファクトリに Git リポジトリが関連付けられている場合、テンプレートの公開やエクスポートによって生成された Resource Manager テンプレートの既定の Resource Manager テンプレート パラメーターをオーバーライドすることができます。 既定のパラメーター化のテンプレートは、以下のシナリオでオーバーライドすることもできます。
+開発ファクトリに Git リポジトリが関連付けられている場合、テンプレートの公開やエクスポートによって生成された Resource Manager テンプレートの既定の Resource Manager テンプレート パラメーターをオーバーライドすることができます。 既定の Resource Manager パラメーター構成をオーバーライドする必要が生じる例としては、以下のシナリオが考えられます。
 
 * 自動化された CI/CD を使用していて、Resource Manager のデプロイ中にいくつかのプロパティを変更したいが、プロパティが既定でパラメーター化されていない。
 * ファクトリが非常に大きく、既定の Resource Manager テンプレートが許容されるパラメーターの上限 (256) よりも多いために無効である。
@@ -210,11 +210,14 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
     * データフローのロジックをリファクタリングして、パラメーターを減らします。たとえば、パイプライン パラメーターの値がすべて同じである場合は、代わりにグローバル パラメーターを使用できます。
     * 1 つのデータ ファクトリを複数のデータ フローに分割します。
 
-既定のパラメーター化テンプレートをオーバーライドするには、管理ハブにアクセスし、ソース管理セクションの **[パラメーター化テンプレート]** を選択します。 **[テンプレートの編集]** を選択して、パラメーター化テンプレート コード エディターを開きます。 
+既定の Resource Manager パラメーター構成をオーバーライドするには、 **[管理]** ハブに移動し、[ソース管理] セクションで **[ARM テンプレート]** を選択します。 **[ARM パラメーター構成]** セクションで、[パラメーター構成の編集] の **[編集]** アイコンをクリックして、Resource Manager パラメーター構成コード エディターを開きます。
 
 ![カスタム パラメーターの管理](media/author-management-hub/management-hub-custom-parameters.png)
 
-カスタム パラメーター化テンプレートでは、Git ブランチのルート フォルダーに **arm-template-parameters-definition.json** という名前のファイルが作成されます。 正確なファイル名を使用する必要があります。
+> [!NOTE]
+> **[ARM パラメーター構成]** は、"Git モード" でのみ有効になります。 現在のところ、"ライブ モード" や "Data Factory" モードでは無効になります。
+
+カスタムの Resource Manager パラメーター テンプレート構成を作成すると、Git ブランチのルート フォルダーに **arm-template-parameters-definition.json** という名前のファイルが作成されます。 正確なファイル名を使用する必要があります。
 
 ![カスタム パラメーター ファイル](media/continuous-integration-deployment/custom-parameters.png)
 
@@ -223,7 +226,7 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 Resource Manager テンプレートをエクスポートすると、Data Factory により、コラボレーション ブランチでなく、現在作業中のどのブランチからでもこのファイルを読み取られます。 プライベート ブランチからファイルを作成または編集し、UI の **[ARM テンプレートのエクスポート]** を選択して変更内容をテストすることができます。 その後、このファイルをコラボレーション ブランチ内にマージできます。
 
 > [!NOTE]
-> カスタム パラメーター化テンプレートでは、ARM テンプレート パラメーターの制限である 256 が変更されることはありません。 これにより、パラメーター化されたプロパティの数を選択して減らすことができます。
+> カスタムの Resource Manager パラメーター構成では、ARM テンプレート パラメーターの制限である 256 が変更されることはありません。 これにより、パラメーター化されたプロパティの数を選択して減らすことができます。
 
 ### <a name="custom-parameter-syntax"></a>カスタムのパラメーター構文
 
@@ -244,7 +247,7 @@ Resource Manager テンプレートをエクスポートすると、Data Factory
  
 ### <a name="sample-parameterization-template"></a>サンプルのパラメーター化テンプレート
 
-パラメーター化テンプレートの内容例を次に示します。
+次に示すのは、Resource Manager パラメーター構成の例です。
 
 ```json
 {

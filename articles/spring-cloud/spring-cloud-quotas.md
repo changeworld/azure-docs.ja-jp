@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 496f2e812a102e85fea92a535552daaaadf5f31e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: b02ccb3acb4546e08e7d58159ab9d85bca2d0eed
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093431"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101711877"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Azure Spring Cloud のクォータとサービス プラン
 
@@ -22,13 +22,17 @@ ms.locfileid: "92093431"
 
 ## <a name="azure-spring-cloud-service-tiers-and-limits"></a>Azure Spring Cloud のサービス レベルと制限
 
-| リソース | Basic | Standard
+| リソース | Scope | Basic | Standard
 ------- | ------- | -------
-vCPU | サービス インスタンスごとに 1 つ | サービス インスタンスごとに 4 つ
-メモリ | サービス インスタンスごとに 2 GB | サービス インスタンスごとに 8 GB
-サブスクリプション 1 件、1 リージョンあたりの Azure Spring Cloud サービス インスタンスの数 | 10 | 10
-Azure Spring Cloud サービス インスタンスあたりのアプリ インスタンスの合計数 | 25 | 500
-永続ボリューム | 1 GB/アプリ x 10 個のアプリ | 50 GB/アプリ x 10 個のアプリ
+vCPU | アプリ インスタンスごと | 1 | 4
+メモリ | アプリ インスタンスごと | 2 GB | 8 GB
+Azure Spring Cloud サービス インスタンス | サブスクリプションあたりのリージョンごと | 10 | 10
+アプリ インスタンスの合計数 | Azure Spring Cloud サービス インスタンスあたり | 25 | 500
+カスタム ドメイン | Azure Spring Cloud サービス インスタンスあたり | 0 | 25 
+永続ボリューム | Azure Spring Cloud サービス インスタンスあたり | 1 GB/アプリ x 10 個のアプリ | 50 GB/アプリ x 10 個のアプリ
+
+> [!TIP]
+> サービス インスタンスあたりのアプリ インスタンスの合計数について記載されている制限は、停止状態を含むすべての状態のアプリとデプロイに適用されます。 使用されていないアプリやデプロイは削除するようにしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

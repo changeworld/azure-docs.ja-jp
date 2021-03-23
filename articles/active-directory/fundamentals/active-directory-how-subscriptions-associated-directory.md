@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7a39340f44e2c6eeae5b5f1a8e687bc73b3b0fe
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 86395a91c1b2cbba6a93c7b1b7cad487129fff0a
+ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028412"
+ms.lasthandoff: 02/18/2021
+ms.locfileid: "101094287"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Azure サブスクリプションを Azure Active Directory テナントに関連付けるまたは追加する
 
@@ -52,7 +52,7 @@ Azure サブスクリプションには、Azure Active Directory (Azure AD) と�
 
 - 次のようなアカウントを使用してサインインします。
 
-  - サブスクリプションの[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールが割り当てられているアカウント。 所有者ロールを割り当てる方法の詳細については、「[Azure portal を使用して Azure ロールの割り当てを追加または削除する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+  - サブスクリプションの[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールが割り当てられているアカウント。 所有者ロールの割り当て方法について詳しくは、「[Azure portal を使用して Azure ロールを割り当てる](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
   - 現在のディレクトリと新しいディレクトリの両方に存在する。 現在のディレクトリはサブスクリプションに関連付けられています。 新しいディレクトリをそのサブスクリプションに関連付けます。 別のディレクトリへのアクセスを取得する方法について詳しくは、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../external-identities/add-users-administrator.md)」を参照してください。
 
 - Azure クラウド サービス プロバイダー (CSP) サブスクリプション (MS-AZR-0145P、MS-AZR-0146P、MS-AZR-159P)、Microsoft 内部サブスクリプション (MS-AZR-0015P)、Microsoft Imagine サブスクリプション (MS-AZR-0144P) を使用していないことを確認します。

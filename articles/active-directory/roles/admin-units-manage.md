@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 44faaa6f05a325c2c64040938a1c9d0eb3e864e7
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740450"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100574154"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Azure Active Directory で管理単位を管理する
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
     ![[Graph エクスプローラーに管理者の同意を与えます] リンクを示すスクリーンショット。](./media/admin-units-manage/select-graph-explorer.png)
 
 
-1. Azure AD PowerShell のプレビュー版を使用します。
+1. [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) を使用します。
 
 ## <a name="add-an-administrative-unit"></a>管理単位を追加する
 
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) では、きめ細かい管理制御を行う�
 
 ### <a name="use-powershell"></a>PowerShell の使用
 
-次のコマンドを実行する前に Azure AD PowerShell (プレビュー) をインストールします。
+次のコマンドを実行する前に [Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) をインストールします。
 
 ```powershell
 Connect-AzureAD

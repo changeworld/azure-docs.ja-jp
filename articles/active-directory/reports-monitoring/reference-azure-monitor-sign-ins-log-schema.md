@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a881dee50195fe4995c77d793b4f4b75091d20b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d912707a1f41a0c3063d6f3fb67aa6914bd2d390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231114"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100592303"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Azure Monitor での Azure AD サインイン ログ スキーマを解釈する
 
@@ -170,4 +170,4 @@ ms.locfileid: "89231114"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
-* [Azure でのプラットフォーム ログの詳細について読む](../../azure-monitor/platform/platform-logs-overview.md)
+* [Azure でのプラットフォーム ログの詳細について読む](../../azure-monitor/essentials/platform-logs-overview.md)
