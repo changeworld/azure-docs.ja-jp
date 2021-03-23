@@ -2,16 +2,16 @@
 title: チュートリアル - Azure Resource Manager Bicep 開発にクイックスタート テンプレートを使用する
 description: Azure クイックスタート テンプレートを使用して Bicep 開発を行う方法について説明します。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 12dcf4bfc00c299d94d45a5bd02bf9eea576cc73
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: cf655885e01fe6bca99a82c82d6bbbc4c1a080b3
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742877"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632436"
 ---
 # <a name="tutorial-use-azure-quickstart-templates-for-azure-resource-manager-bicep-development"></a>チュートリアル: Azure Resource Manager Bicep 開発にクイックスタート テンプレートを使用する
 

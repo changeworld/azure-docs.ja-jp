@@ -3,12 +3,12 @@ title: Azure Batch のノードとプール
 description: コンピューティング ノードとプールについて、およびそれらが Azure Batch ワークフローで開発の観点からどのように使用されるかについて説明します。
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: be38d4f91afcaa1ac31e9b9bbc6d2547da2ee99e
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741776"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102183660"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch のノードとプール
 
@@ -74,6 +74,9 @@ Batch で使用できるプール構成には、次の 2 種類があります�
 [Batch ノード エージェント](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md)は、プール内の各ノードで実行されるプログラムで、ノードと Batch サービスの間のコマンドと制御のインターフェイスを提供します。 オペレーティング システムに応じてさまざまなノード エージェントの実装 (SKU と呼ばれます) があります。 仮想マシン構成に基づいてプールを作成する場合は、ノードのサイズと使用するイメージのソースだけでなく、ノードにインストールする **仮想マシン イメージの参照** と Batch **ノード エージェント SKU** も指定する必要があります。 プールに関するこれらのプロパティの指定の詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。 必要に応じて、Marketplace イメージから作成される VM をプールするために 1 つまたは複数の空のデータ ディスクをアタッチするか、VM の作成に使用するカスタム イメージにデータ ディスクを含めることができます。 データ ディスクを含める場合は、それらを使用する VM 内からディスクを マウントおよびフォーマットする必要があります。
 
 ### <a name="cloud-services-configuration"></a>Cloud Services の構成
+
+> [!WARNING]
+> クラウド サービス構成プールは非推奨です。 代わりに、仮想マシン構成プールを使用してください。
 
 **Cloud Services の構成** は、プールが Azure Cloud Services ノードで構成されるように指定します。 Cloud Services では Windows 計算ノードのみが提供されます。
 

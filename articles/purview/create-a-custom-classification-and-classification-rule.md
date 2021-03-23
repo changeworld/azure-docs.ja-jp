@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 2/5/2021
-ms.openlocfilehash: 3cc29e0bd806ab76c4980128df5a89761e465fe7
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: d1a0873552ac9043d8f584f38ecd41c5e8543489
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988379"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102202759"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Azure Purview でのカスタム分類 
 
@@ -91,24 +91,50 @@ Contoso は、カスタム分類ルールを作成することによって、こ
 
     :::image type="content" source="media/create-a-custom-classification-and-classification-rule/newclassificationrule.png" alt-text="新しい分類ルールの追加" border="true":::
 
-5. **[New classification rule]\(新しい分類ルール\)** ダイアログ ボックスが表示されます。 新しいルールの構成情報を入力します。
+5. **[New classification rule]\(新しい分類ルール\)** ダイアログ ボックスが表示されます。 フィールドに入力し、**正規表現ルール** と **辞書ルール** のどちらを作成するかを決定します。
 
-    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/createclassificationrule.png" alt-text="新しい分類ルールの作成" border="true":::
+    |フィールド     |説明  |
+    |---------|---------|
+    |名前   |    必須。 最大で 100 文字入力できます。    |
+    |説明      |省略可能。 最大で 256 文字入力できます。    |
+    |［更新の分類］    | 必須。 分類の名前をドロップダウン リストから選択して、一致が見つかった場合にスキャナーがそれを適用できるようにします。        |
+    |State   |  必須。 オプションが有効または無効になっています。 既定では有効になります。    |
 
-|フィールド     |説明  |
-|---------|---------|
-|名前   |    必須。 最大で 100 文字入力できます。    |
-|説明      |省略可能。 最大で 256 文字入力できます。    |
-|［更新の分類］    | 必須。 分類の名前をドロップダウン リストから選択して、一致が見つかった場合にスキャナーがそれを適用できるようにします。        |
-|State   |  必須。 オプションが有効または無効になっています。 既定では有効になります。    |
-|データ パターン    |省略可能。 データ フィールドに格納されているデータを表す正規表現です。 制限は非常に大きく設定されています。 前の例では、従業員 ID のデータ パターン テストは `Employee{GUID}` というワードでした。  |
-|列パターン    |省略可能。 一致する列名を表す正規表現です。 制限は非常に大きく設定されています。          |
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-classification-rule.png" alt-text="新しい分類ルールの作成" border="true":::
 
-**[データ パターン]** には 2 つのオプションがあります。
+### <a name="creating-a-regular-expression-rule"></a>正規表現ルールを作成する
 
-- **[Distinct match threshold]\(個別の一致のしきい値\)** : スキャナーがデータ パターンを実行する前に、列に含まれている必要がある個別のデータ値の合計数です。 推奨値は 8 です。 この値は、2 から 32 の範囲で手動で調整できます。 システムでは、この値を使用して、スキャナーが正確に分類するのに十分なデータが列に含まれていることを確認する必要があります。 たとえば、すべて値 1 が含まれている複数の行を含む列は分類されません。 1 つの行に値が含まれ、残りの行に null 値が含まれている列の場合も分類されません。 複数のパターンを指定すると、この値がそれぞれに適用されます。
+1. 正規表現ルールを作成する場合、次の画面が表示されます。 必要に応じ、ルールに対して **提案された正規表現パターンを生成** するために使用されるファイルをアップロードすることもできます。
 
-- **[Minimum match threshold]\(最小の一致のしきい値\)** : この設定を使用して、分類を適用するためにスキャナーによって検出される必要がある列の、データ値の最小一致率を設定できます。 推奨値は 60% です。 この設定には注意する必要があります。 レベルを 60% 未満に減らすと、誤検知の分類がカタログに導入される可能性があります。 複数のデータ パターンを指定した場合、この設定は無効になり、値は 60% で固定されます。
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/create-new-regex-rule.png" alt-text="新しい正規表現ルールの作成" border="true":::
+
+1. 提案された正規表現パターンを生成する場合は、ファイルをアップロードした後で、提案されたパターンのいずれかを選択し、 **[Add to Patterns]\(パターンに追加\)** をクリックして、提案されたデータと列のパターンを使用します。 推奨されるパターンを調整することも、ファイルをアップロードせずに独自のパターンを入力することもできます。
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/suggested-regex.png" alt-text="提案された正規表現の生成" border="true":::
+
+    |フィールド     |説明  |
+    |---------|---------|
+    |データ パターン    |省略可能。 データ フィールドに格納されているデータを表す正規表現です。 制限は非常に大きく設定されています。 前の例では、従業員 ID のデータ パターン テストは `Employee{GUID}` というワードでした。  |
+    |列パターン    |省略可能。 一致する列名を表す正規表現です。 制限は非常に大きく設定されています。          |
+
+1. **[Data Pattern]\(データ パターン\)** には、次の 2 つのしきい値を設定できます。
+
+    - **[Distinct match threshold]\(個別の一致のしきい値\)** : スキャナーがデータ パターンを実行する前に、列に含まれている必要がある個別のデータ値の合計数です。 推奨値は 8 です。 この値は、2 から 32 の範囲で手動で調整できます。 システムでは、この値を使用して、スキャナーが正確に分類するのに十分なデータが列に含まれていることを確認する必要があります。 たとえば、すべて値 1 が含まれている複数の行を含む列は分類されません。 1 つの行に値が含まれ、残りの行に null 値が含まれている列の場合も分類されません。 複数のパターンを指定すると、この値がそれぞれに適用されます。
+
+    - **[Minimum match threshold]\(最小の一致のしきい値\)** : この設定を使用して、分類を適用するためにスキャナーによって検出される必要がある列の、個別のデータ値の最小一致率を設定できます。 推奨値は 60% です。 この設定には注意する必要があります。 レベルを 60% 未満に減らすと、誤検知の分類がカタログに導入される可能性があります。 複数のデータ パターンを指定した場合、この設定は無効になり、値は 60% で固定されます。
+
+1. これで、ルールを検証して **作成** できるようになりました。
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/verify-rule.png" alt-text="ルールを作成前に検証" border="true":::
+
+### <a name="creating-a-dictionary-rule"></a>辞書ルールを作成する
+
+1.  辞書ルールを作成する場合は、次の画面が表示されます。 作成する分類に使用できるすべての値を含むファイルを 1 つの列にアップロードします。
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-rule.png" alt-text="辞書ルールの作成" border="true":::
+
+1.  辞書が生成された後、個別の一致と最小一致のしきい値を調整して、ルールを送信することができます。
+
+    :::image type="content" source="media/create-a-custom-classification-and-classification-rule/dictionary-generated.png" alt-text="辞書ルールの作成" border="true":::
 
 ## <a name="next-steps"></a>次のステップ
 

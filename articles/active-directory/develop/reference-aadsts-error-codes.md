@@ -12,12 +12,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b948de6ad9e07a650df98ef38104c02462ab532d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: b82d3963ed12e0d5dc6acd75555a3a7e8f20eeb0
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428033"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102175347"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -95,7 +95,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50000 | TokenIssuanceError - サインイン サービスに問題があります。 この問題を解決するには、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
 | AADSTS50001 | InvalidResource - リソースが無効になっているか、存在しません。 アプリのコードをチェックして、アクセスしようとしているリソースの正確なリソース URL を指定していることを確認します。  |
 | AADSTS50002 | NotAllowedTenant - テナントでプロキシ アクセスが制限されているため、サインインが失敗しました。 自分が所有するテナント ポリシーの場合は、制限されたテナント設定を変更して、この問題を解決できます。 |
-| AADSTS500021 | '{tenant}' テナントへのアクセスが拒否されました。 AADSTS500021 は、テナント制限機能が構成されており、ユーザーが、ヘッダー `Restrict-Access-To-Tenant` で指定されている許可されたテナントの一覧にないテナントにアクセスしようとしていることを示します。 詳細については、「[テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](/azure/active-directory/manage-apps/tenant-restrictions)」を参照してください。|
+| AADSTS500021 | '{tenant}' テナントへのアクセスが拒否されました。 AADSTS500021 は、テナント制限機能が構成されており、ユーザーが、ヘッダー `Restrict-Access-To-Tenant` で指定されている許可されたテナントの一覧にないテナントにアクセスしようとしていることを示します。 詳細については、「[テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](../manage-apps/tenant-restrictions.md)」を参照してください。|
 | AADSTS50003 | MissingSigningKey - 署名キーまたは証明書がないために、サインインが失敗しました。 アプリで署名キーが構成されていない可能性があります。 [../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured](../manage-apps/application-sign-in-problem-federated-sso-gallery.md#certificate-or-key-not-configured) で概要が説明されている解決策を確認してください。 問題が引き続き発生する場合は、アプリの所有者またはアプリ管理者に問い合わせてください。 |
 | AADSTS50005 | DevicePolicyError - ユーザーが、条件付きアクセス ポリシーで現在サポートされていないプラットフォームからデバイスにログインしようとしました。 |
 | AADSTS50006 | InvalidSignature - 無効な署名のため、署名の検証が失敗しました。 |
@@ -168,6 +168,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS50168 | ChromeBrowserSsoInterruptRequired - クライアントは、Windows 10 のアカウントの拡張機能を通じて SSO トークンを取得できますが、要求にトークンがないか、指定されたトークンの有効期限が切れています。 |
 | AADSTS50169 | InvalidRequestBadRealm - 領域が、現在のサービス名前空間の構成された領域ではありません。 |
 | AADSTS50170 | MissingExternalClaimsProviderMapping - 外部コントロールのマッピングがありません。 |
+| AADSTS50173 | FreshTokenNeeded - 許可が取り消されたため有効期限切れです。新しい認証トークンが必要です。 管理者またはユーザーがこのユーザーのトークンを取り消したため、後続のトークン更新が失敗し、再認証が必要です。 ユーザーにサインインの再試行を促してください。 |
 | AADSTS50177 | ExternalChallengeNotSupportedForPassthroughUsers - 外部のチャレンジは、パススルー ユーザーに対してサポートされていません。 |
 | AADSTS50178 | ExternalChallengeNotSupportedForPassthroughUsers - セッション制御は、パススルー ユーザーに対してサポートされていません。 |
 | AADSTS50180 | WindowsIntegratedAuthMissing - 統合 Windows 認証が必要です。 シームレス SSO に対してテナントを有効にしてください。 |
@@ -186,6 +187,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp - 使用されているアプリが、条件付きアクセスのために承認されたアプリではありません。 アクセスするには、ユーザーは承認されたアプリの一覧からアプリを 1 つ選んで使用する必要があります。 |
 | AADSTS53003 | BlockedByConditionalAccess - 条件付きアクセス ポリシーにより、アクセスがブロックされました。 アクセス ポリシーでは、トークンの発行が許可されていません。 |
 | AADSTS53004 | ProofUpBlockedDueToRisk - ユーザーは、このコンテンツにアクセスする前に、多要素認証登録プロセスを完了する必要があります。 ユーザーは多要素認証に登録する必要があります。 |
+| AADSTS53011 | ホーム テナントのリスクによりユーザーがブロックされました。 |
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - X という ID でアプリケーションを使用することにユーザーまたは管理者が同意していません。このユーザーとリソースのインタラクティブな承認要求を送信してください。 |
 | AADSTS65004 | UserDeclinedConsent - ユーザーはアプリへのアクセスの同意を拒否しました。 ユーザーに、再度サインインしてアプリに同意させてください|

@@ -4,12 +4,12 @@ description: 計画ステージで収集した情報を使用して、Azure VMwa
 ms.topic: tutorial
 ms.custom: contperf-fy21q3
 ms.date: 02/17/2021
-ms.openlocfilehash: 6f1e587894d51eae2af4e9f76114f53f27ffefe1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 48b6927407a95d41603c3032f298ffc28def9693
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703862"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103462458"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware Solution をデプロイして構成する
 
@@ -35,7 +35,7 @@ Azure VMware Solution のデプロイ後に、vCenter および NSX に接続す
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Azure VMware Solution のジャンプ ボックスを作成する" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-[デプロイ プロセスの一部として特定または作成した](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution)仮想ネットワーク内に仮想マシン (VM) を作成するには、次の手順に従います。 
+[デプロイ プロセスの一部として特定または作成した](production-ready-deployment-steps.md#attach-azure-virtual-network-to-azure-vmware-solution)仮想ネットワーク内に仮想マシン (VM) を作成するには、次の手順に従います。 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
@@ -52,7 +52,7 @@ Azure VMware Solution のデプロイ後に、vCenter および NSX に接続す
 
 ジャンプ ボックスは、Azure VMware Solution が ExpressRoute 回線を介して接続する仮想ネットワーク内にあります。  Azure で、ジャンプ ボックスのネットワーク インターフェイスに移動し、[有効なルートを表示](../virtual-network/manage-route-table.md#view-effective-routes)します。
 
-有効なルートの一覧には、Azure VMware Solution のデプロイの一部として作成されたネットワークが表示されるはずです。 [プライベート クラウドの作成](#create-an-azure-vmware-solution-private-cloud)時に[定義した `/22` ネットワーク](production-ready-deployment-steps.md#ip-address-segment)から派生した複数のネットワークが表示されます。  
+有効なルートの一覧には、Azure VMware Solution のデプロイの一部として作成されたネットワークが表示されるはずです。 [プライベート クラウドの作成](#create-an-azure-vmware-solution-private-cloud)時に[定義した `/22` ネットワーク](production-ready-deployment-steps.md#ip-address-segment-for-private-cloud-management)から派生した複数のネットワークが表示されます。  
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-effective-routes.png" alt-text="Azure VMware Solution から Azure Virtual Network にアドバタイズされたネットワーク ルートを確認する" lightbox="media/pre-deployment/azure-vmware-solution-effective-routes.png":::
 

@@ -2,15 +2,15 @@
 title: チュートリアル - パラメーター ファイルを使用して Azure Resource Manager Bicep ファイルをデプロイする
 description: Bicep ファイルのデプロイに使用する値を含んだパラメーター ファイルを使用します。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 233bab26d659fef2da9a9f5a7080d4b3ecbce7d4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ca3a73cde9549bfcdfd47bc4f1955904fac69d1c
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742949"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632358"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-azure-resource-manager-bicep-file"></a>チュートリアル: パラメーター ファイルを使用して Azure Resource Manager Bicep ファイルをデプロイする
 

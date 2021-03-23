@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/21/2021
 ms.author: baanders
-ms.openlocfilehash: 59506b1d1d3fbbc5a532c597d46dc92ee3c2e98e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 9f8ca9ab6dc184abb8d9dcd25ebe87cbd7761722
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750010"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102630283"
 ---
 プロジェクトを Azure の関数アプリに発行するには、"*ソリューション エクスプローラー*" でプロジェクトを右クリックし、 **[発行]** を選択します。
 
@@ -57,6 +57,4 @@ Visual Studio のメイン ウィンドウに再度 *[発行]* ペインが表�
 >
 > 画面の指示に従って、最新の Azure Functions ランタイム バージョンにアップグレードします。 この問題は、古いバージョンの Visual Studio を使用している場合に発生する可能性があります。
 
-これで、関数アプリが Azure に発行されました。 
-
-関数アプリから Azure Digital Twins にアクセスできるようにするには、Azure Digital Twins インスタンスにアクセスできるアクセス許可を備えたシステム マネージド ID を割り当てる必要があります。 次はその設定をします。
+これで、関数アプリが Azure に発行されました。

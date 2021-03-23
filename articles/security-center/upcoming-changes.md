@@ -1,23 +1,18 @@
 ---
 title: Azure Security Center に対する今後の重要な変更
 description: 知っておく必要があり、計画する必要がある Azure Security Center の今後の変更
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.author: memildin
-ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 49141f7f11c0e8ead090459238e15b56f57b990b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051618"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102633718"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -32,7 +27,6 @@ ms.locfileid: "102051618"
 ## <a name="planned-changes"></a>計画されている変更
 
 - [AWS からの推奨事項を一般提供 (GA) 用にリリース](#recommendations-from-aws-will-be-released-for-general-availability-ga)
-- [従来の 2 つの推奨事項で Azure アクティビティ ログに直接データが書き込まれなくなる](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL データ分類の推奨事項を改善](#enhancements-to-sql-data-classification-recommendation)
 - [11 個の Azure Defender アラートの非推奨化](#deprecation-of-11-azure-defender-alerts)
@@ -53,21 +47,6 @@ Azure Security Center は、Azure、アマゾン ウェブ サービス (AWS)、
 
 これらが一般提供され、AWS リソースで評価が実行されると、結果はすべてのマルチおよびハイブリッド クラウド リソースの統合されたセキュリティ スコアに影響します。 
 
-
-
-### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>従来の 2 つの推奨事項で Azure アクティビティ ログに直接データが書き込まれなくなる 
-
-**変更予定日:** 2021 年 3 月
-
-Security Center は、ほぼすべてのセキュリティに関する推奨事項のデータを Azure Advisor に渡し、Azure Advisor がそれを [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)に書き込みます。
-
-2 つの推奨事項では、データは同時に Azure アクティビティ ログに直接書き込まれます。 この変更により、Security Center は、これらの従来のセキュリティに関する推奨事項のデータをアクティビティ ログに直接書き込まなくなります。 代わりに、他のすべての推奨事項と同様に、Azure Advisor にデータをエクスポートします。 
-
-従来の 2 つの推奨事項は次のとおりです。
--  - お使いのマシンで Endpoint Protection の正常性の問題を解決する必要があります
-- 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
-
-アクティビティ ログの "TaskDiscovery タイプの推奨事項" カテゴリでこの 2 つの推奨事項の情報にアクセスしていた場合、これは使用できなくなります。
 
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化 
 
