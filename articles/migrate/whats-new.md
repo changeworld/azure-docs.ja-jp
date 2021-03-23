@@ -7,16 +7,20 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: cc207522048e3f0491e3aa54f2ae21d2e7e63bc2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: f50737bdefc9065c9b16633ba3360bda1d028cd6
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834037"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102043050"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
 [Azure Migrate](migrate-services-overview.md) を使用すると、オンプレミスのサーバー、アプリ、データを検出して評価し、Microsoft Azure クラウドに移行するのに役立ちます。 この記事では、Azure Migrate の新しいリリースと機能について概要を説明します。
+
+## <a name="update-march-2021"></a>更新 (2021 年 3 月)
+- Azure Migrate アプライアンスでの複数のサーバー資格情報の指定によるインストールされているアプリケーション (ソフトウェア インベントリ) の検出、エージェントレスの依存関係分析、および VMware 環境の SQL Server インスタンスおよびデータベースの検出のサポート。 [詳細情報](tutorial-discover-vmware.md#provide-server-credentials)
+- VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 [詳細情報](concepts-azure-sql-assessment-calculation.md)<br/>この機能を試すには、[このリンク](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 始めるには、[検出](tutorial-discover-vmware.md)と[評価](tutorial-assess-sql.md)に関するチュートリアルを参照してください。
 
 ## <a name="update-january-2021"></a>更新 (2021 年 1 月)
 -  Azure Migrate: カスタマー マネージド キー (CMK) によるサーバー側暗号化でディスクが暗号化された Azure 仮想マシンに、Server Migration ツールを使用して、VMware 仮想マシンや物理サーバー、さらに他のクラウドの仮想マシンを移行できるようになりました。
@@ -84,7 +88,7 @@ Azure Migrate に次のいくつかの新機能が追加されました。
 
 Azure Migrate に新しい評価ツールと移行ツールが追加されました。
 
-- **Rackware**: クラウドへの移行を支援します。
+- **RackWare**: クラウドへの移行を支援します。
 - **Movere**: 評価を支援します。
 
 Azure Migrate での評価と移行については、ツールと ISV 製品の[詳細](migrate-services-overview.md)を参照してください。

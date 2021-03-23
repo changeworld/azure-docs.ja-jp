@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/25/2021
+ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: a2c29049decc056f0d3c8083d21574456610c124
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 6bec9f0a1c22691d818566cec3f59c1ec0f3d3bb
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99555132"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102051618"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -31,13 +31,47 @@ ms.locfileid: "99555132"
 
 ## <a name="planned-changes"></a>計画されている変更
 
+- [AWS からの推奨事項を一般提供 (GA) 用にリリース](#recommendations-from-aws-will-be-released-for-general-availability-ga)
+- [従来の 2 つの推奨事項で Azure アクティビティ ログに直接データが書き込まれなくなる](#two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log)
 - ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
 - [SQL データ分類の推奨事項を改善](#enhancements-to-sql-data-classification-recommendation)
 - [11 個の Azure Defender アラートの非推奨化](#deprecation-of-11-azure-defender-alerts)
 
+
+### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>AWS からの推奨事項を一般提供 (GA) 用にリリース
+
+**変更予定日:** 2021 年 4 月
+
+Azure Security Center は、Azure、アマゾン ウェブ サービス (AWS)、および Google Cloud Platform (GCP) のワークロードを保護します。
+
+クラウド コネクタが導入されて以来、AWS Security Hub からの推奨事項はプレビュー段階にあります。 **プレビュー** としてフラグ付けされた推奨事項は、セキュリティ スコアの計算には含まれませんが、プレビュー期間が終了したときにスコアに貢献できるように、可能な限り修復する必要があります。
+
+この変更により、AWS の推奨事項の 2 つのセットが GA に移行します。
+
+- [Security Hub の PCI DSS コントロール](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
+- [Security Hub の CIS AWS Foundations Benchmark コントロール](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
+
+これらが一般提供され、AWS リソースで評価が実行されると、結果はすべてのマルチおよびハイブリッド クラウド リソースの統合されたセキュリティ スコアに影響します。 
+
+
+
+### <a name="two-legacy-recommendations-will-no-longer-write-data-directly-to-azure-activity-log"></a>従来の 2 つの推奨事項で Azure アクティビティ ログに直接データが書き込まれなくなる 
+
+**変更予定日:** 2021 年 3 月
+
+Security Center は、ほぼすべてのセキュリティに関する推奨事項のデータを Azure Advisor に渡し、Azure Advisor がそれを [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)に書き込みます。
+
+2 つの推奨事項では、データは同時に Azure アクティビティ ログに直接書き込まれます。 この変更により、Security Center は、これらの従来のセキュリティに関する推奨事項のデータをアクティビティ ログに直接書き込まなくなります。 代わりに、他のすべての推奨事項と同様に、Azure Advisor にデータをエクスポートします。 
+
+従来の 2 つの推奨事項は次のとおりです。
+-  - お使いのマシンで Endpoint Protection の正常性の問題を解決する必要があります
+- 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
+
+アクティビティ ログの "TaskDiscovery タイプの推奨事項" カテゴリでこの 2 つの推奨事項の情報にアクセスしていた場合、これは使用できなくなります。
+
 ### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>"システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化 
 
-**変更予定日:** 2021 年 2 月
+**変更予定日:** 2021 年 3 月
 
 次の 2 つの推奨事項が 2021 年 2 月に非推奨化される予定です。
 
@@ -53,7 +87,7 @@ ms.locfileid: "99555132"
 
 **変更予定日:** 2021 年第 2 四半期
 
-"**データ分類の適用**" セキュリティ コントロールにおける推奨事項 "**SQL データベースの機密データを分類する必要がある**" は、より Microsoft のデータ分類戦略に沿った新しいバージョンで置き換えられる予定です。 そのため、推奨事項の ID も変更されます (現在は b0df6f56-862d-4730-8597-38c0fd4ebd59)。
+"**データ分類の適用**" セキュリティ コントロールにおける推奨事項 "**SQL データベースの機密データを分類する必要がある**" は、より Microsoft のデータ分類戦略に沿った新しいバージョンで置き換えられる予定です。 これにより、推奨事項の ID も変更されます (現在は b0df6f56-862d-4730-8597-38c0fd4ebd59)。
 
 
 ### <a name="deprecation-of-11-azure-defender-alerts"></a>11 個の Azure Defender アラートの非推奨化
