@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/16/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: ecc9279b66f7dca431cc8c33a47b07a6349d8ed6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d484802b35ffec26d1248e51b365ac9041fc7934
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100574461"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102100408"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
@@ -57,5 +57,5 @@ Security Center の推奨事項は、[Azure セキュリティ ベンチマー�
 
 推奨事項の詳細については、以下を参照してください。
 
-- [Azure Security Center でのセキュリティに関する推奨事項](security-center-recommendations.md)
-- [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
+- [セキュリティ ポリシー、イニシアティブ、および推奨事項とは](security-policy-concept.md)
+- [セキュリティの推奨事項を確認する](security-center-recommendations.md)

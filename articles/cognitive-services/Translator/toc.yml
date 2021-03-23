@@ -12,7 +12,7 @@
       href: 'https://www.microsoft.com/translator/faq.aspx'
 - name: Text Translation
   items:
-    - name: クイックスタート
+    - name: クイック スタート
       href: quickstart-translator.md
     - name: サンプル
       items:
@@ -84,7 +84,7 @@
   items:
     - name: Custom Translator とは
       href: custom-translator/overview.md
-    - name: クイックスタート
+    - name: クイック スタート
       href: custom-translator/quickstart-build-deploy-custom-model.md
     - name: よく寄せられる質問
       href: custom-translator/faq.md
@@ -138,16 +138,16 @@
   items:
     - name: ドキュメント変換とは
       href: document-translation/overview.md
-    - name: クイックスタート
+    - name: クイック スタート
       href: document-translation/get-started-with-document-translation.md
-    - name: 操作方法ガイド
+    - name: 使い方ガイド
       items:
         - name: ドキュメント翻訳用の SAS トークンを作成する
           href: document-translation/create-sas-tokens.md
     - name: リファレンス
       items:
         - name: ドキュメント翻訳 REST API
-          href: /rest/api/cognitiveservices/translator/translation
+          href: /rest/api/cognitiveservices/translator/documenttranslation
 - name: Translator リソース
   items:
     - name: サポートとヘルプのオプション
