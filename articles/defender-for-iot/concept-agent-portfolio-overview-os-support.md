@@ -1,5 +1,5 @@
 ---
-title: エージェント ポートフォリオの概要と OS サポート (プレビュー)
+title: エージェント ポートフォリオの概要と OS サポート
 description: Azure Defender for IoT では、デバイスの種類に基づいて、エージェントの大規模なポートフォリオが提供されます。
 author: shhazam-ms
 manager: rkarlin
@@ -7,14 +7,14 @@ ms.author: shhazam
 ms.date: 1/20/2021
 ms.topic: quickstart
 ms.service: azure
-ms.openlocfilehash: f731b034b5d4f795bae51107e9ff4e2e90788d7d
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: e2897018d1695bde665e1d1aca180e5268851a0b
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99810106"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120149"
 ---
-# <a name="agent-portfolio-overview-and-os-support-preview"></a>エージェント ポートフォリオの概要と OS サポート (プレビュー)
+# <a name="agent-portfolio-overview-and-os-support"></a>エージェント ポートフォリオの概要と OS サポート 
 
 Azure Defender for IoT では、デバイスの種類に基づいて、エージェントの大規模なポートフォリオが提供されます。 
 
@@ -38,4 +38,4 @@ Azure Defender for IoT マイクロ エージェントは、Azure RTOS NetX Duo 
 
 ## <a name="next-steps"></a>次の手順
 
-[スタンドアロンのマイクロ エージェントの概要 (プレビュー)](concept-standalone-micro-agent-overview.md) についてさらに学習します。
+[スタンドアロンのマイクロ エージェントの概要](concept-standalone-micro-agent-overview.md)についてさらに学習します。

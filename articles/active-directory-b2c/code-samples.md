@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8642f4284770df54704a4e7066054d3bb4640486
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545872"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101654495"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C のサンプル コード
 
@@ -48,7 +48,15 @@ ms.locfileid: "96545872"
 | サンプル | 説明 |
 |--------| ----------- |
 | [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Web API を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。 |
+| [javascript-nodejs-management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | B2C ディレクトリ内のユーザーを管理するために Microsoft Graph を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。|
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Web API を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、暗黙的なフローを使用しています。|
+
+## <a name="consoledaemon-apps"></a>コンソールまたはデーモン アプリ
+
+| サンプル | 説明 |
+|--------| ----------- |
+| [javascript-nodejs-management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter2) | B2C ディレクトリ内のユーザーを管理するために、独自の ID で Microsoft Graph を呼び出す Node.js および Express コンソール デーモン アプリケーション。 認証は、MSAL Node を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フローを使用しています。|
+| [dotnetcore-b2c-account-management](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) | B2C ディレクトリ内のユーザーを管理するために、独自の ID で Microsoft Graph を呼び出す .NET Core コンソール アプリケーション。 認証は、MSAL.NET を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フローを使用しています。|
 
 ## <a name="saml-test-application"></a>SAML テスト アプリケーション
 
