@@ -4,10 +4,10 @@ description: Azure Blueprints の定義と割り当てに使用できる関数�
 ms.date: 01/27/2021
 ms.topic: reference
 ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98919276"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure Blueprints で使用する関数

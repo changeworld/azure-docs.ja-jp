@@ -4,15 +4,15 @@ description: この記事では、お使いのリソースを堅牢化および�
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 02/16/2021
+ms.date: 03/14/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: d484802b35ffec26d1248e51b365ac9041fc7934
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: b4fe575039c6e913ca20198f204b6529f6c482c7
+ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102100408"
+ms.lasthandoff: 03/15/2021
+ms.locfileid: "103466244"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
@@ -28,9 +28,17 @@ Security Center の推奨事項は、[Azure セキュリティ ベンチマー�
 > 推奨事項の説明に "関連ポリシーなし" と表示されている場合、その理由は通常、その推奨事項が別の推奨事項と _その_ ポリシーに依存しているためです。 たとえば、「…で Endpoint Protection の正常性エラーを修復する必要があります」という推奨事項は、エンドポイント保護ソリューションが _インストール済み_ であるかどうかを確認する推奨事項 (「エンドポイント保護ソリューションを...インストールする必要がある」) に依存しています。 基になる推奨事項にはポリシーが _存在します_。
 > ポリシーを基本推奨事項のみに制限すると、ポリシー管理が簡単になります。
 
+## <a name="appservices-recommendations"></a><a name='recs-appservices'></a>AppServices の推奨事項
+
+[!INCLUDE [asc-recs-appservices](../../includes/asc-recs-appservices.md)]
+
 ## <a name="compute-recommendations"></a><a name='recs-compute'></a>コンピューティングの推奨事項
 
 [!INCLUDE [asc-recs-compute](../../includes/asc-recs-compute.md)]
+
+## <a name="container-recommendations"></a><a name='recs-container'></a>コンテナーの推奨事項
+
+[!INCLUDE [asc-recs-container](../../includes/asc-recs-container.md)]
 
 ## <a name="data-recommendations"></a><a name='recs-data'></a>データの推奨事項
 

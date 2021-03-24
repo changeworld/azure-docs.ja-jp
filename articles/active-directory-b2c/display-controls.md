@@ -12,10 +12,10 @@ ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 441a77823c77305e567e9e1436715bc51ca48c11
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97387056"
 ---
 # <a name="display-controls"></a>表示コントロール
@@ -122,7 +122,7 @@ ms.locfileid: "97387056"
 
 **ValidationClaimsExchange** 要素には、次の要素が含まれています。
 
-| 要素 | 発生回数 | 説明 |
+| 要素 | 発生回数 | Description |
 | ------- | ----------- | ----------- |
 | ValidationTechnicalProfile | 1:n | 参照元の技術プロファイルの要求表示の一部またはすべてを検証するために使用する技術プロファイル。 |
 

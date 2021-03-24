@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 08/18/2020
 ms.author: yunjchoi
 ms.openlocfilehash: a409ac944c51d893fc344f82ae83d97559e055ef
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92070658"
 ---
 # <a name="check-for-resource-health-events-impacting-your-aks-cluster-preview"></a>AKS クラスターに影響するリソース正常性イベントを確認する (プレビュー)

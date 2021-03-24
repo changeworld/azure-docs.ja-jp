@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: ddfffb77ca889aea9ff32c7be1ce2e4cb7fc04a7
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d9db86e400d862dd67582ede0bf44b9e9fd1c893
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102037609"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>チュートリアル: Azure Active Directory と LaunchDarkly の統合
 
@@ -159,8 +159,8 @@ LaunchDarkly に対する Azure AD SSO を構成してテストするには、�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した LaunchDarkly に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [LaunchDarkly] タイルをクリックすると、SSO を設定した LaunchDarkly に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [LaunchDarkly] タイルをクリックすると、SSO を設定した LaunchDarkly に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-LaunchDarkly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+LaunchDarkly を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

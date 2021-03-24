@@ -4,10 +4,10 @@ description: VM と PaaS のテスト環境シナリオに Azure DevTest Labs �
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 978071aa160098612a5effebfb30d5d58b777df7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89299832"
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>VM と PaaS のテスト環境に Azure DevTest Labs を使用する

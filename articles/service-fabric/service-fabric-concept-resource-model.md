@@ -4,10 +4,10 @@ description: この記事では、Azure Resource Manager を使用した Azure S
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.openlocfilehash: 0019f154f301d2b688d4c16c9adb36ec386adef2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98790725"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric アプリケーション リソース モデル
