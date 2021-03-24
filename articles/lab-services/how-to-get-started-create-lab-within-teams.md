@@ -4,10 +4,10 @@ description: Teams 内での Azure Lab Services ラボの概要と作成につ�
 ms.topic: article
 ms.date: 10/08/2020
 ms.openlocfilehash: cc4ad604bdf250cc6e4ba2c50c2f7143c921e906
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433973"
 ---
 # <a name="get-started-and-create-a-lab-services-lab-within-teams"></a>Teams 内での Lab Services ラボの概要と作成

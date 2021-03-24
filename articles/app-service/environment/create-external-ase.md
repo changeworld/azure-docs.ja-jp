@@ -8,10 +8,10 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: c953c31792b8d01199d409cbd91124138a6ebb15
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92927449"
 ---
 # <a name="create-an-external-app-service-environment"></a>外部 App Service Environment の作成
@@ -47,9 +47,9 @@ ASE を作成した後は、次の変更は行えません。
 
 ASE を作成する方法は、3 つあります。
 
-- **App Service プランを作成中に作成する** 。 この方法では、1 つの手順で、ASE と App Service プランを作成します。
-- **スタンドアロン アクションとして作成する** 。 この方法では、何も含まない ASE である、スタンドアロン ASE を作成します。 この方法は、ASE を作成するより高度なプロセスです。 これを使用して ILB を備えた ASE を作成します。
-- **Azure Resource Manager テンプレートから作成する** 。 この方法は、高度な知識を持つユーザー向けです。 詳細については、[テンプレートからの ASE の作成][MakeASEfromTemplate]に関するページをご覧ください。
+- **App Service プランを作成中に作成する**。 この方法では、1 つの手順で、ASE と App Service プランを作成します。
+- **スタンドアロン アクションとして作成する**。 この方法では、何も含まない ASE である、スタンドアロン ASE を作成します。 この方法は、ASE を作成するより高度なプロセスです。 これを使用して ILB を備えた ASE を作成します。
+- **Azure Resource Manager テンプレートから作成する**。 この方法は、高度な知識を持つユーザー向けです。 詳細については、[テンプレートからの ASE の作成][MakeASEfromTemplate]に関するページをご覧ください。
 
 外部 ASE はパブリック VIP を持ちます。つまり、ASE 内のアプリへのすべての HTTP/HTTPS トラフィックは、インターネットからアクセス可能な IP アドレスに届きます。 ILB を備えた ASE には、ASE によって使用されるサブネットの IP アドレスがあります。 ILB ASE 内でホストされているアプリは、インターネットに直接は公開されません。
 

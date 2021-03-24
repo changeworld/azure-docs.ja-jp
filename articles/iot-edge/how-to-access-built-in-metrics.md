@@ -10,10 +10,10 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 1a78db821c0fab01ad5d6752216a8f7682fb2c46
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200499"
 ---
 # <a name="access-built-in-metrics"></a>組み込みのメトリックにアクセスする
@@ -114,7 +114,7 @@ Prometheus の出力フォーマットには、カウンター、ゲージ、ヒ
 | `edgeAgent_total_disk_write_bytes` | `module_name` | 種類: ゲージ<br> ディスクに書き込まれたバイト数 |
 | `edgeAgent_metadata` | `edge_agent_version`, `experimental_features`, `host_information` | 種類: ゲージ<br> デバイスに関する一般的なメタデータ。 値は常に 0 です。情報はタグでエンコードされます。 `experimental_features` と `host_information` が json オブジェクトであることに注意してください。 `host_information` は ```{"OperatingSystemType": "linux", "Architecture": "x86_64", "Version": "1.0.10~dev20200803.4", "Provisioning": {"Type": "dps.tpm", "DynamicReprovisioning": false, "AlwaysReprovisionOnStartup": true}, "ServerVersion": "19.03.6", "KernelVersion": "5.0.0-25-generic", "OperatingSystem": "Ubuntu 18.04.4 LTS", "NumCpus": 6, "Virtualized": "yes"}``` のように表示されます。 `ServerVersion` は Docker バージョンで、`Version` は IoT Edge セキュリティ デーモンのバージョンであることに注意してください。 |
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)
 * [IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ](module-edgeagent-edgehub.md)

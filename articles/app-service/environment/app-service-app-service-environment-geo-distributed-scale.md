@@ -8,10 +8,10 @@ ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18, references_regions
 ms.openlocfilehash: 004b32118521f72c5b59ad7bab2d4e41244b85c4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "85833606"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>App Service 環境を使用した geo 分散スケール
@@ -39,7 +39,7 @@ App Service Environment は、水平方向のスケールアウトに最適な�
 分散アプリケーションのフットプリントを構築する前に、いくつかの情報を前もって用意しておくと作業がスムーズになります。
 
 * **アプリのカスタム ドメイン:** 顧客がアプリへのアクセスに使用するカスタム ドメイン名が必要です。  サンプル アプリでは、カスタム ドメイン名は `www.scalableasedemo.com` です。
-* **Traffic Manager ドメイン:** ドメイン名は、[Azure Traffic Manager プロファイル][AzureTrafficManagerProfile]の作成時に選択します。  この名前は、Traffic Manager が管理するドメイン エントリを登録する際に、 *trafficmanager.net* サフィックスと組み合わされます。  サンプル アプリでは、選択される名前は *scalable-ase-demo*です。  そのため、Traffic Manager で管理される完全なドメイン名は、 *scalable-ase-demo.trafficmanager.net*になります。
+* **Traffic Manager ドメイン:** ドメイン名は、[Azure Traffic Manager プロファイル][AzureTrafficManagerProfile]の作成時に選択します。  この名前は、Traffic Manager が管理するドメイン エントリを登録する際に、 *trafficmanager.net* サフィックスと組み合わされます。  サンプル アプリでは、選択される名前は *scalable-ase-demo* です。  そのため、Traffic Manager で管理される完全なドメイン名は、 *scalable-ase-demo.trafficmanager.net* になります。
 * **アプリ フットプリントのスケーリングに関する戦略:** アプリケーションのフットプリントは単一リージョン内の複数の App Service Environment に分散されるのか、  複数のリージョンなのか、  両方のアプローチの最適な組み合わせなのか。  これは、顧客のトラフィックが発生する場所に加えて、アプリをサポートするバックエンド インフラストラクチャの他の部分がどの程度適切にスケーリングできるかという見込みに基づいて決定する必要があります。  たとえば、完全にステートレスなアプリケーションでは、各 Azure リージョンで多数の App Service Environment を組み合わせ、これに多くの Azure リージョンにデプロイされた App Service Environment を掛け合わせることで、大規模なスケーリングを実現できます。  選択できるグローバルな Azure リージョンは 15 以上あるため、顧客はスケーラビリティのきわめて高いアプリケーション フットプリントを世界規模で構築できます。  この記事に使用されるサンプル アプリでは、単一の Azure リージョン (米国中南部) に 3 つの App Service Environment が作成されています。
 * **App Service Environment の名前付け規則:** 各 App Service Environment には一意の名前が必要です。  App Service Environment が 1 つか 2 つ以上になるとき、各 App Service Environment を識別する目的で名前付け規則を用意すると便利です。  サンプル アプリでは、シンプルな名前付け規則が使用されています。  3 つの App Service Environment の名前は *fe1ase*、*fe2ase*、*fe3ase* です。
 * **アプリの名前付け規則**:アプリのインスタンスが複数デプロイされるため、デプロイされたアプリの各インスタンスに名前が必要です。  App Service Environment のあまり知られていない便利な機能の 1 つですが、同じアプリ名を複数の App Service Environment で使用できます。  App Service 環境ごとに一意のドメイン サフィックスがあるため、開発者は各環境でまったく同じアプリ名を再利用できます。  たとえば、開発者は、*myapp.foo1.p.azurewebsites.net*、*myapp.foo2.p.azurewebsites.net*、*myapp.foo3.p.azurewebsites.net* のようなアプリ名を設定できます。ただし、サンプル アプリでは、各アプリ インスタンスに一意の名前を設定しています。  使用されているアプリ インスタンス名は *webfrontend1*、*webfrontend2*、*webfrontend3* です。
