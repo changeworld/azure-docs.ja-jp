@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c43125edab0f5ed097b99798ca22e5543e15a2d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4311d0acc7c417bf31c71f46e6c25c65312b894d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101692928"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034535"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Azure AD サービス アカウントの管理
 
@@ -51,13 +51,13 @@ Azure Active Directory (Azure AD) のサービス アカウントには、[マ�
 
 **アクセス許可**
 
-* サービス アカウントには、組み込みロールを割り当てないでください。 代わりに、[Microsoft Graph の OAuth2 アクセス許可付与モデル](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0)を使用してください。
+* サービス アカウントには、組み込みロールを割り当てないでください。 代わりに、[Microsoft Graph の OAuth2 アクセス許可付与モデル](/graph/api/resources/oauth2permissiongrant)を使用してください。
 
 * サービス プリンシパルに特権ロールを割り当てる必要がある場合は、特定の必要な特権を持つ[カスタム ロール](https://docs.microsoft.com/azure/active-directory/roles/custom-create)を期限付きで割り当てることを検討してください。
 
 * サービス アカウントを、昇格されたアクセス許可を持つグループのメンバーとして含めないでください。 
 
-* [PowerShell を使用して、特権ロールのメンバーを列挙](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)し   
+* [PowerShell を使用して、特権ロールのメンバーを列挙](/powershell/module/azuread/get-azureaddirectoryrolemember)し   
 (`Get-AzureADDirectoryRoleMember` など)、"Service Principal" という objectType でフィルター処理します。
 
    または、  
@@ -117,7 +117,7 @@ Azure AD サインイン ログをエクスポートし、既存のセキュリ�
 
 付与されているアクセス許可と、サービス アカウントによってアクセスされるスコープを定期的に見直して、それらを減らせるかどうかを確認します。
 
-* [PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant?view=azureadps-2.0) を使用して、サービス アカウントに同意が付与されているスコープを[チェックして文書化するための自動化を構築](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09)します。
+* [PowerShell](/powershell/module/azuread/get-azureadserviceprincipaloauth2permissiongrant) を使用して、サービス アカウントに同意が付与されているスコープを[チェックして文書化するための自動化を構築](https://gist.github.com/psignoret/41793f8c6211d2df5051d77ca3728c09)します。
 
 * PowerShell を使用して、[既存のサービス プリンシパルの資格情報を見直し](https://github.com/AzureAD/AzureADAssessment)、その有効性をチェックします。
 
@@ -172,7 +172,7 @@ Microsoft の無料の PowerShell サンプルでは、サービス プリンシ
 
 **プロビジョニング解除のプロセスには、次のタスクが含まれている必要があります。**
 
-1. 関連するアプリケーションまたはスクリプトがプロビジョニング解除されたら、サービス アカウントによる[サインイン](../reports-monitoring/concept-all-sign-ins#sign-ins-report.md)とリソース アクセスを監視します。
+1. 関連するアプリケーションまたはスクリプトがプロビジョニング解除されたら、サービス アカウントによる[サインイン](../reports-monitoring/concept-all-sign-ins.md#sign-ins-report)とリソース アクセスを監視します。
 
    * アカウントがまだアクティブの場合は、それがどのように使用されているかを確認してから、以降の手順を実行します。
  

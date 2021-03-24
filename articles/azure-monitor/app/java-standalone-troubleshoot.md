@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights の Java エージェントの�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 286354ecf508dec7b9ba7633bf3b5c7ddc6bfd91
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 45f45e71546909b71c71c66303c1459edd74548f
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737059"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102199613"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>トラブルシューティング ガイド:Azure Monitor Application Insights for Java
 
@@ -45,7 +45,7 @@ Java 3.0 Preview エージェントからアップグレードする場合は、
 
 特定のログ記録ステートメントがログ記録フレームワークで構成されているしきい値を満たしているかどうかを確認する最善の方法は、通常のアプリケーション ログ (ファイルやコンソールなど) に表示されているかどうかを確認することです。
 
-また、ロガーに例外が渡されると、Azure portal 内で `traces` テーブルではなく `exceptions` テーブルの下にログ メッセージ (および例外) が表示されることにも注意してください。
+また、ロガーに例外オブジェクトが渡されると、Azure portal 内で `traces` テーブルではなく `exceptions` テーブルの下にログ メッセージ (および例外オブジェクトの詳細) が表示されることにも注意してください。
 
 詳細については、[自動収集されたログ記録の構成](./java-standalone-config.md#auto-collected-logging)に関するページをご覧ください。
 
