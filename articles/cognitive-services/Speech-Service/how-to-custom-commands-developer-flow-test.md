@@ -12,10 +12,10 @@ ms.date: 06/18/2020
 ms.author: xiaojul
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9c0bd21f55fee4d8487826deae23093ede293c8c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "95021815"
 ---
 # <a name="test-your-custom-commands-application"></a>カスタム コマンド アプリケーションをテストする
@@ -55,4 +55,4 @@ Speech SDK を使用してユニバーサル Windows プラットフォーム (U
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [GitHub 上のサンプルを参照してください](https://aka.ms/speech/cc-samples)
+> [GitHub のサンプルを参照](https://aka.ms/speech/cc-samples)

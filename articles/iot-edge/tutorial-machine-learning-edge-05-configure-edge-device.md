@@ -9,16 +9,21 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: 0ed085a161ced22efb1e5022e34b6f9b0344f942
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b59f8343c9dff07a32accd471f70ddf9f5309b8d
+ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721431"
+ms.lasthandoff: 03/14/2021
+ms.locfileid: "103463087"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>チュートリアル: Azure IoT Edge デバイスを構成する
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 この記事では、Linux を実行している Azure 仮想マシンを、透過的なゲートウェイとして機能する Azure IoT Edge デバイスになるように構成します。 透過的なゲートウェイの構成では、デバイスはゲートウェイの存在を知らなくても、ゲートウェイを介して Azure IoT Hub に接続できます。 同時に、IoT Hub 内のデバイスを操作するユーザーは中間のゲートウェイ デバイスを意識しません。 最終的には、この透過的なゲートウェイに IoT Edge モジュールを追加することによって、エッジ分析をシステムに追加します。
+
+>[!NOTE]
+>このチュートリアルの概念は IoT Edge のすべてのバージョンに適用されますが、シナリオを試すために作成したサンプル デバイスでは、IoT Edge バージョン 1.1 が実行されます。
 
 この記事の手順は通常、クラウド開発者によって実行されます。
 
@@ -34,7 +39,7 @@ ms.locfileid: "101721431"
 
 この記事は、IoT Edge 上で Azure Machine Learning を使用するためのチュートリアルのシリーズの一部です。 シリーズの各記事は、前の記事の作業に基づいています。 この記事に直接アクセスしている場合は、シリーズの[最初の記事](tutorial-machine-learning-edge-01-intro.md)を参照してください。
 
-## <a name="create-certificates"></a>証明書を作成する
+## <a name="create-certificates"></a>証明書の作成
 
 デバイスがゲートウェイとして機能するためには、ダウンストリーム デバイスに安全に接続できる必要があります。 IoT Edge では、公開キー基盤 (PKI) を使用して、デバイス間にセキュリティで保護された接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリームの IoT デバイスが接続できるようにします。 妥当なセキュリティを維持するには、ダウン ストリーム デバイスで IoT Edge デバイスの ID を確認してください。 IoT Edge デバイスで証明書を使用するしくみの詳細については、[Azure IoT Edge 証明書の使用の詳細](iot-edge-certs.md)に関するページを参照してください。
 

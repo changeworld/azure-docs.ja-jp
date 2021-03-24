@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: 9107ef6100a3c362eae982412d54a981851bcb42
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561400"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576919"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -41,7 +41,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
 
-Azure プレビュー ポータルに[サインイン](https://preview.portal.azure.com)します。
+Azure portal に[サインイン](https://portal.azure.com)します。
 
 ## <a name="create-cross-region-load-balancer"></a>リージョン間ロード バランサーを作成する
 
@@ -52,7 +52,7 @@ Azure プレビュー ポータルに[サインイン](https://preview.portal.az
 3. **[ロード バランサー]** ページで、 **[作成]** を選択します。
 4. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。 
 
-    | 設定                 | [値]                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択し、テキスト ボックスに「**CreateCRLBTutorial-rg**」と入力します。|
@@ -121,7 +121,7 @@ Azure プレビュー ポータルに[サインイン](https://preview.portal.az
 
 3. これらの値を使用して、正常性プローブを構成します。
 
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「**myHealthProbe**」と入力します。 |
     | Protocol | **[TCP]** を選択します。 |
@@ -152,7 +152,7 @@ Azure プレビュー ポータルに[サインイン](https://preview.portal.az
 
 3. 負荷分散規則の構成には、以下の値を使用します。
     
-    | 設定 | [値] |
+    | 設定 | 値 |
     | ------- | ----- |
     | 名前 | 「**myHTTPRule**」と入力します。 |
     | IP バージョン | **[IPv4]** を選択します |

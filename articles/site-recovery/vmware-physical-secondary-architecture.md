@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: d400e6bcda0a2114d798a3289f01f52b677a6f94
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97656497"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>セカンダリ オンプレミス サイトへの VMware または物理サーバーのレプリケーションのためのアーキテクチャ
@@ -33,7 +33,7 @@ ms.locfileid: "97656497"
 
 ## <a name="set-up-outbound-network-connectivity"></a>発信ネットワーク接続を設定する
 
-Site Recovery を期待どおりに動作させるためには、環境でレプリケートが可能になるように、発信ネットワーク接続を変更する必要があります。
+Site Recovery を期待どおりに動作させるためには、環境でレプリケートが可能になるように、送信ネットワーク接続を変更する必要があります。
 
 > [!NOTE]
 > Site Recovery では、ネットワーク接続を制御するための認証プロキシの使用をサポートしていません。
