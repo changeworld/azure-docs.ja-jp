@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 3fe6ee8336872c04e85b732713494adf0fefa28a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103011444"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>ナレッジ ベースでアクティブ ラーニングにより提案された質問を受け入れる
@@ -156,7 +156,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP 要求プロパティ|名前|種類|目的|
+|HTTP 要求プロパティ|名前|Type|目的|
 |--|--|--|--|
 |URL ルート パラメーター|ナレッジ ベース ID|string|ナレッジ ベースの GUID。|
 |カスタム サブドメイン|QnAMaker リソース名|string|リソース名は、QnA Maker のカスタム サブドメインとして使用されます。 これは、ナレッジ ベースを公開した後に、[設定] ページで利用できます。 これは `host` として表示されます。|

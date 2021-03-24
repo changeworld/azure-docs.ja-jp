@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 6adedaacb0cc9d96de8bee77d536e9c12d105b89
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 451ce581cc6101abc9e2271c2f515ac3cf231c1a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102429580"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102611197"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -23,6 +23,7 @@ ms.locfileid: "102429580"
 |[\[プレビュー\]: 証明書は、許可されたキーの種類を使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |証明書に許可されるキーの種類を制限して、組織のコンプライアンス要件を管理します。 |audit、deny、disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json) |
 |[\[プレビュー\]: 楕円曲線暗号を使用する証明書には、許可された曲線名が必要](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd78111f-4953-4367-9fd5-7e08808b54bf) |キー コンテナーに格納される ECC 証明書に対して許可されている楕円曲線名を管理します。 詳細については、[https://aka.ms/akvpolicy](https://aka.ms/akvpolicy)をご覧ください。 |audit、deny、disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_EC_AllowedCurveNames.json) |
 |[\[プレビュー\]: ポリシーの結果: RSA 暗号を使用する証明書に、キーの最小サイズを指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcee51871-e572-4576-855c-047c820360f0) |キー コンテナーに格納される RSA 証明書の最小キー サイズを指定して、組織のコンプライアンス要件を管理します。 |audit、deny、disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_RSA_MinimumKeySize.json) |
+|[デプロイ - Azure Key Vault の診断設定を Log Analytics ワークスペースに構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F951af2fa-529b-416e-ab6e-066fd85ac459) |リソース ログをストリーミングするための Azure Key Vault の診断設定を、この診断設定を持たないキー コンテナーが作成または更新されたときに、Log Analytics ワークスペースにデプロイします。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/DataConnectorsAzureKeyVault_PolicyAssignment.json) |
 |[デプロイ - Azure Key Vault Managed HSM で有効にする診断設定をイベント ハブに構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa6d2c800-5230-4a40-bff3-8268b4987d42) |Azure Key Vault Managed HSM の診断設定をデプロイして、この診断設定がない Azure Key Vault Managed HSM が作成または更新されたときに地域のイベント ハブにストリーミングします。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/ManagedHsm_DiagnosticLog_Deploy.json) |
 |[Key Vault の診断設定をイベント ハブにデプロイする](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed7c8c13-51e7-49d1-8a43-8490431a0da2) |この診断設定がないキー コンテナーが作成または更新されたときに、Key Vault の診断設定をデプロイして、リージョンのイベント ハブにストリーム配信します。 |deployIfNotExists |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_DiagnosticLog_Deploy.json) |
 |[\[プレビュー\]: キー コンテナーでファイアウォールを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490) |キー コンテナーのファイアウォールを使用すると、承認されていないトラフィックはご使用のキー コンテナーに到達できなくなり、シークレットを保護するためのレイヤーが追加されます。 このファイアウォールを有効にして、許可されたネットワークからのトラフィックのみがキー コンテナーにアクセスできるようにします。 |Audit、Disabled |[1.0.2-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVaultFirewallEnabled_Audit.json) |

@@ -1,6 +1,6 @@
 ---
-title: クイック スタート:Azure RTOS 用のセキュリティ モジュールを構成して有効にする
-description: このクイックスタートでは、Azure IoT Hub で Azure RTOS サービス用のセキュリティ モジュールをオンボードし、有効にする方法について説明します。
+title: 'クイックスタート: Azure RTOS 用の Defender-IoT-micro-agent を構成して有効にする'
+description: Azure IoT ハブで Azure RTOS 用の Defender-IoT-micro-agent をオンボードし、有効にする方法について説明します。
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2021
 ms.author: shhazam
-ms.openlocfilehash: 19a439ec48d4a8705ffb46db7ca037b51449083d
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 3c1af1128b99cbd3263ddffc834eb27ab9dec564
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447301"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489847"
 ---
-# <a name="quickstart-security-module-for-azure-rtos"></a>クイック スタート: Azure RTOS 用のセキュリティ モジュール 
+# <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>クイックスタート: Azure RTOS 用の Defender-IoT-micro-agent (プレビュー)
 
-この記事では、使い始める前の前提条件について説明し、IoT Hub で Azure RTOS サービス用のセキュリティ モジュールを有効にする方法について説明します。 現在 IoT Hub がない場合、作業を開始するには、「[Azure portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)」を参照してください。
+この記事では、最初に前提条件について説明し、IoT ハブで Azure RTOS 用の Defender-IoT-micro-agent を有効にする方法について説明します。 現在 IoT Hub がない場合、作業を開始するには、「[Azure portal を使用して IoT Hub を作成する](../iot-hub/iot-hub-create-through-portal.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -32,7 +32,7 @@ ms.locfileid: "102447301"
 - NXP i.MX RT1060 EVK
 - Microchip SAM E54 Xplained Pro EVK
 
-[Azure RTOS 用のセキュリティ モジュール GitHub リソース](https://github.com/azure-rtos/azure-iot-preview/releases)で選択した特定のボードとツール (IAR、セミの IDE、または PC) の .zip ファイルの 1 つをダウンロードしてコンパイルし、実行します。
+[Azure RTOS 用の Defender-IoT-micro-agent GitHub リソース](https://github.com/azure-rtos/azure-iot-preview/releases)から、選択した特定のボードとツール (IAR、セミの IDE、または PC) の .zip ファイルの 1 つをダウンロードしてコンパイルし、実行します。
 
 ### <a name="azure-resources"></a>Azure リソース
 
@@ -52,11 +52,11 @@ ms.locfileid: "102447301"
 
 接続の資格情報は、ユーザー アプリケーション構成の **HOST_NAME**、**DEVICE_ID**、および **DEVICE_SYMMETRIC_KEY** から取得します。
 
-Azure RTOS 用のセキュリティ モジュールでは、**MQTT** プロトコルに基づく Azure IoT ミドルウェア接続が使用されます。
+Azure RTOS 用の Defender-IoT-micro-agent では、**MQTT** プロトコルに基づく Azure IoT ミドルウェア接続が使用されます。
 
 ## <a name="next-steps"></a>次のステップ
 
 次の記事に進んで、ソリューションの構成とカスタマイズを完了します。
 
 > [!div class="nextstepaction"]
-> [Azure RTOS 用のセキュリティ モジュールを構成する](how-to-azure-rtos-security-module.md)
+> [Azure RTOS 用の Defender-IoT-micro-agent を構成およびカスタマイズする (プレビュー)](how-to-azure-rtos-security-module.md)

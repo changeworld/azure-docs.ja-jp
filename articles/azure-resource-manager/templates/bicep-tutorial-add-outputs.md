@@ -2,16 +2,16 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルに出力を追加する
 description: 構文を簡略化するために、Bicep ファイルに出力を追加します。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 279417f22ded89db21abddad7a91a4cce520c6bd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ce2d1044fb0e45a72ce34b14bb654974d29051dc
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742965"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102636232"
 ---
 # <a name="tutorial-add-outputs-to-azure-resource-manager-bicep-file"></a>チュートリアル: Azure Resource Manager Bicep ファイルに出力を追加する
 
@@ -37,7 +37,7 @@ Visual Studio Code と Bicep 拡張機能に加え、Azure PowerShell または 
 
 出力を使用すると、デプロイから値を返すことができます。 たとえば、新しいストレージ アカウントのエンドポイントを取得して利用することが考えられます。
 
-次の例では、Bicep ファイルに出力値を追加するために行った変更箇所が強調表示されています。 ファイル全体をコピーし、その内容で Bicep ファイルを置き換えます。
+次の例では、Bicep ファイルに出力値を追加するために行った変更が示されています。 ファイル全体をコピーし、その内容で Bicep ファイルを置き換えます。
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.bicep" range="1-33" highlight="33":::
 
@@ -45,7 +45,9 @@ Visual Studio Code と Bicep 拡張機能に加え、Azure PowerShell または 
 
 戻り値の型は `object` に設定されています。これはテンプレート オブジェクトが返されることを意味します。
 
-ストレージ アカウントから `primaryEndpoints` プロパティを取得するには、ストレージ アカウントのシンボリック名を使用します。
+ストレージ アカウントから `primaryEndpoints` プロパティを取得するには、ストレージ アカウントのシンボリック名を使用します。 Visual Studio Code のオートコンプリート機能を使用すると、プロパティの完全な一覧が表示されます。
+
+   ![Visual Studio Code の Bicep シンボリック名オブジェクト プロパティ](./media/bicep-tutorial-add-outputs/visual-studio-code-bicep-output-properties.png)
 
 ## <a name="deploy-bicep-file"></a>Bicep ファイルをデプロイする
 

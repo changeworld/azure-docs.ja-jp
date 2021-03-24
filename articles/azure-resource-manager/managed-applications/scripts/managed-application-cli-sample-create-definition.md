@@ -8,10 +8,10 @@ ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7feb00b581732cdc1956c4ac23af571180ff09e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87497836"
 ---
 # <a name="create-a-managed-application-definition-with-azure-cli"></a>Azure CLI を使用してマネージド アプリケーション定義を作成する
@@ -32,7 +32,7 @@ ms.locfileid: "87497836"
 
 このスクリプトは次のコマンドを使用してマネージド アプリケーション定義を作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [az managedapp definition create](/cli/azure/managedapp/definition#az-managedapp-definition-create) | マネージド アプリケーション定義を作成します。 必要なファイルを含むパッケージを提供します。 |
 

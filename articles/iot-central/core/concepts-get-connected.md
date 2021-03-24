@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 828f0ff81048ca0b6f07b7fdee9ed29c87991db4
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032638"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103015457"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -178,7 +178,7 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 ## <a name="associate-a-device-with-a-device-template"></a>デバイス テンプレートへのデバイスの関連付け
 
-デバイスが接続されると、IoT Central によってデバイスがデバイス テンプレートに自動的に関連付けられます。 デバイスは、接続時に[モデル ID](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) を送信します。 IoT Central は、モデル ID を使用して、その特定のデバイス モデルのデバイス テンプレートを識別します。 検出プロセスは次のように実行されます。
+デバイスが接続されると、IoT Central によってデバイスがデバイス テンプレートに自動的に関連付けられます。 デバイスは、接続時に[モデル ID](../../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json#model-id) を送信します。 IoT Central は、モデル ID を使用して、その特定のデバイス モデルのデバイス テンプレートを識別します。 検出プロセスは次のように実行されます。
 
 1. IoT Central アプリケーションでデバイス テンプレートが既に発行されている場合、デバイスはデバイス テンプレートに関連付けられます。
 1. デバイス テンプレートが IoT Central アプリケーション内でまだ公開されていない場合は、IoT Centralにおいて[パブリック モデル リポジトリ](https://github.com/Azure/iot-plugandplay-models)でデバイス モデルが検索されます。 モデルが見つかると、それを使用して基本のデバイス テンプレートが生成されます。
@@ -241,7 +241,7 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 | オフライン コマンド | クラウドからデバイスへのメッセージ |
 | プロパティ | デバイス ツインの報告されるプロパティ |
 | プロパティ (書き込み可能) | デバイス ツインの目的および報告されるプロパティ |
-| command | ダイレクト メソッド |
+| コマンド | ダイレクト メソッド |
 
 ### <a name="protocols"></a>プロトコル
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: f1b25b853977b3a1f4871e232a562d6a3cfd2fae
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: feeb3e63375e918498e704add6dac672d6a46de3
+ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102434204"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103574579"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>クイック スタート - Azure Digital Twins Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
@@ -93,13 +93,15 @@ Azure Digital Twins Explorer アプリケーションは、ローカル コン�
 
 1. 「[Azure Digital Twins インスタンスを設定する](#set-up-an-azure-digital-twins-instance)」セクションで先ほど収集した Azure Digital Twins インスタンスの URL を *https://{インスタンス ホスト名}* の形式で入力します。
 
->[!NOTE]
-> 同じアイコンを選択して **[サインイン]** ボックスを再び開くことで、この情報はいつでも再表示または編集できます。 指定した値は維持されます。
-
 > [!TIP]
 > 接続時に `SignalRService.subscribe` エラー メッセージが表示される場合は、Azure Digital Twins の URL が *https://* で始まっていることを確認してください。
+>
+> 認証エラーが表示された場合は、**環境変数** に含まれている資格情報が Azure Digital Twins に対して有効であることを確認してください。 `DefaultAzureCredential` は、[特定の順序](/dotnet/api/overview/azure/identity-readme#defaultazurecredential)で資格情報の種類に対して認証を試み、環境変数が最初に評価されます。
 
 Microsoft の **[要求されているアクセス許可]** ポップアップ ウィンドウが表示された場合は、このアプリケーションに同意し、承諾して続行します。
+
+>[!NOTE]
+> 同じアイコンを選択して **[サインイン]** ボックスを再び開くことで、この情報はいつでも再表示または編集できます。 指定した値は維持されます。
 
 ## <a name="add-the-sample-data"></a>サンプル データを追加する
 

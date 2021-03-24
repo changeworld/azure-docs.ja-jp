@@ -10,15 +10,15 @@ ms.service: batch
 ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
-ms.date: 01/13/2021
+ms.date: 02/16/2021
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: c625253585cc99c035852b8b9042f939284bad19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: baf146bdd89d45c5d7e1ed359822a35d383b7b6c
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750795"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103561918"
 ---
 ### <a name="general-requirements"></a>一般的な要件
 
@@ -42,10 +42,10 @@ ms.locfileid: "101750795"
 
 **アクセス許可** - VNET のサブスクリプションまたはリソース グループに対するロックまたはセキュリティ ポリシーで、VNET を管理するためのユーザーのアクセス許可が制限されているかどうかを確認します。
 
-**追加のネットワーク リソース** - VNET を含んでいるリソース グループには、Batch によって自動的に追加のネットワーク リソースが割り当てられます。
+**追加のネットワーク リソース** - VNet を含んでいるリソース グループには、Batch によって自動的に追加のネットワーク リソースが作成されます。
 
 > [!IMPORTANT]
-> 専用または低優先度のノード 100 台ごとに、1 つのネットワーク セキュリティ グループ (NSG)、1 つのパブリック IP アドレス、1 つのロード バランサーが Batch によって割り当てられます。 これらのリソースは、サブスクリプションの[リソース クォータ](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 大規模なプールでは、これらの 1 つ以上のリソースについて、クォータの引き上げの要求が必要になる場合があります。
+> 専用または低優先度のノード 100 台ごとに、1 つのネットワーク セキュリティ グループ (NSG)、1 つのパブリック IP アドレス、1 つのロード バランサーが Batch によって作成されます。 これらのリソースは、サブスクリプションの[リソース クォータ](../articles/azure-resource-manager/management/azure-subscription-service-limits.md)によって制限されます。 大規模なプールでは、これらの 1 つ以上のリソースについて、クォータの引き上げの要求が必要になる場合があります。
 
 #### <a name="network-security-groups-batch-default"></a>ネットワーク セキュリティ グループ:Batch の既定値
 

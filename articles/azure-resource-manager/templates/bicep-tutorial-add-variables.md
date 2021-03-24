@@ -2,16 +2,16 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルに変数を追加する
 description: 構文を簡略化するために、Bicep ファイルに変数を追加します。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 1706bafb85834cfd3abae1f5d6a0090da9041bb5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: da2755c1f2c0f9fa891fe1a99b1fed21f64492c8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742932"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102632477"
 ---
 # <a name="tutorial-add-variables-to-azure-resource-manager-bicep-file"></a>チュートリアル: Azure Resource Manager Bicep ファイルに変数を追加する
 
@@ -35,7 +35,7 @@ Visual Studio Code と Bicep 拡張機能に加え、Azure PowerShell または 
 
 ## <a name="use-variable"></a>変数を使用する
 
-次の例で強調表示した部分は、一意のストレージ アカウント名を作成するための変数を Bicep ファイルに追加するにあたって変更した箇所を示しています。 ファイル全体をコピーし、その内容で Bicep ファイルを置き換えます。
+次の例では、一意のストレージ アカウント名を作成するための変数を Bicep ファイルに追加するにあたって変更した箇所を示しています。 ファイル全体をコピーし、その内容で Bicep ファイルを置き換えます。
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.bicep" range="1-31" highlight="1-3,19,22":::
 

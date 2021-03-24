@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: afe62e5cf255df28ea395405fc894ec5c15bb18c
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: e6d83dafbe4b7f7013ab32039acaff7d8faa4a91
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449715"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103487753"
 ---
 # <a name="quickstart-configure-your-azure-defender-for-iot-solution"></a>クイック スタート:Azure Defender for IoT ソリューションを構成する
 
@@ -60,7 +60,7 @@ IoT ソリューションに新しいリソースを追加するには、次の�
 
 ## <a name="next-steps"></a>次のステップ
 
-次の記事に進んで、セキュリティ モジュールの作成方法を学習してください。
+次の記事に進んで、Defender-IoT-micro-agent の作成方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [セキュリティ モジュールを作成する](quickstart-create-security-twin.md)
+> [Defender-IoT-micro-agent の作成](quickstart-create-security-twin.md)
