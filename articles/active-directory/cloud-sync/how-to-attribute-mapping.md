@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cdb043374cf6252da3929c8f0cda6c0a4be558b7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102555212"
 ---
 # <a name="attribute-mapping-in-azure-ad-connect-cloud-sync"></a>Azure AD Connect クラウド同期の属性マッピング
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) Connect のクラウド同期機能を使用�
 2.  **[Azure AD Connect]** を選びます。
 3.  **[Manage cloud sync]\(クラウド同期の管理\)** を選択します。
 
-    ![クラウド同期を管理するためのリンクを示すスクリーンショット。](media/how-to-install/install-6.png)
+    ![クラウドへの同期を管理するリンクを示すスクリーンショット。](media/how-to-install/install-6.png)
 
 4. **[構成]** の下で、自分の構成を選択します。
 5. **[クリックしてマッピングを編集]** を選択します。  このリンクにより、 **[属性マッピング]** 画面が開きます。
