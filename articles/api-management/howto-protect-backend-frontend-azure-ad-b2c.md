@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/18/2021
 ms.author: wieastbu
 ms.custom: fasttrack-new, fasttrack-update, devx-track-js
-ms.openlocfilehash: 812b54d10ea3cc3c405f534e36ac66abf3466808
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: baa6a0a6995e206924d14de25b98700e450f3a0c
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449290"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954923"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>OAuth 2.0、Azure Active Directory B2C、および Azure API Management を使用して SPA バックエンドを保護する
 
@@ -193,7 +193,7 @@ ms.locfileid: "102449290"
 1. 既知の open-id 構成エンドポイントを、サインアップおよびサインイン ポリシーから [発行者 URL] ボックスに貼り付けます (この構成は以前の手順でメモしました)。
 1. [シークレットの表示] をクリックし、バックエンド アプリケーションのクライアント シークレットを適切なボックスに貼り付けます。
 1. [OK] を選択すると、ID プロバイダーの選択ブレード/画面に戻ります。
-1. 詳細設定で、[[トークン ストア]](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization#token-store) を有効のままにします (既定値)。
+1. 詳細設定で、[[トークン ストア]](../app-service/overview-authentication-authorization.md#token-store) を有効のままにします (既定値)。
 1. (ブレードの左上にある) [保存] をクリックします。
 
    > [!IMPORTANT]

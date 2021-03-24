@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7c5fbbd8cdfd75819bffcfb93fc81900feb4a612
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d965ec2f846f09dd61342b3961e7ea8106f6a19f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101652370"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954889"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management 用の Azure セキュリティ ベースライン
 
@@ -52,7 +52,7 @@ API Management がデプロイされるサブネットへの受信トラフィ�
 
 注意:API Management サブネット上で NSG を構成する場合は、開いておく必要のある一連のポートがあります。 これらのポートのいずれかが利用できない場合、API Management は正しく動作しない可能性があり、アクセス不能になる場合があります。
 
-- [Azure API Management の NSG 構成について](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+- [Azure API Management の NSG 構成について](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 - [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -75,7 +75,7 @@ API Management がデプロイされるサブネットへの受信トラフィ�
 
 - [内部 VNet 内の API Management と Application Gateway を統合する方法](api-management-howto-integrate-internal-vnet-appgateway.md)
 
-- [Azure Application Gateway について](/azure/application-gateway/)
+- [Azure Application Gateway について](../application-gateway/index.yml)
 
 **責任**: Customer
 
@@ -96,7 +96,7 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 - [内部 VNet 内の API Management と Application Gateway を統合する方法](api-management-howto-integrate-internal-vnet-appgateway.md)
 
-- [Azure Application Gateway について](/azure/application-gateway/)
+- [Azure Application Gateway について](../application-gateway/index.yml)
 
 - [Azure Security Center の統合された脅威インテリジェンスについて](../security-center/azure-defender.md)
 
@@ -110,7 +110,7 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 注意:API Management サブネット上で NSG を構成する場合は、開いておく必要のある一連のポートがあります。 これらのポートのいずれかが利用できない場合、API Management は正しく動作しない可能性があり、アクセス不能になる場合があります。
 
-- [Azure API Management の NSG 構成について](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+- [Azure API Management の NSG 構成について](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 - [NSG フロー ログを有効にする方法](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -160,7 +160,7 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 - [Azure Application Gateway 上の Azure Web アプリケーション ファイアウォール](../web-application-firewall/ag/ag-overview.md)
 
-- [Azure Application Gateway について](/azure/application-gateway/overview)
+- [Azure Application Gateway について](../application-gateway/overview.md)
 
 **責任**: Customer
 
@@ -174,7 +174,7 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 - [サービス タグの概要と使用方法](../virtual-network/service-tags-overview.md)
 
-- [API Management に必要なポート](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet#-common-network-configuration-issues)
+- [API Management に必要なポート](./api-management-using-with-vnet.md#-common-network-configuration-issues)
 
 **責任**: Customer
 
@@ -198,7 +198,7 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 **ガイダンス**: ネットワーク セキュリティおよびトラフィック フローに関連したネットワーク セキュリティ グループ (NSG) やその他のリソースにタグを使用します。 個々の NSG 規則については、[説明] フィールドを使用して、ネットワークとの間のトラフィックを許可する規則のビジネス ニーズや期間 (など) を指定できます。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 - [仮想ネットワークを作成する方法](../virtual-network/quick-create-portal.md)
 
@@ -212,9 +212,9 @@ Azure Security Center の統合された脅威インテリジェンスを使用�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure API Management のデプロイに関連付けられたネットワーク リソースへの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -232,7 +232,7 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 必要に応じて、Azure Sentinel またはサードパーティのセキュリティ情報イベント管理 (SIEM) に対してデータを有効にしてオンボードします。
 
-- [診断設定を構成する方法](/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal)
+- [診断設定を構成する方法](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -252,9 +252,9 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 データ プレーンの監査ログの場合、診断ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。 アクティビティ ログは、API リソースで実行された操作に関する情報を提供します。 診断ログでは、リソースが実行した操作を調査できます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-- [Azure API Management の診断設定を有効にする方法](/Azure/api-management/api-management-howto-use-azure-monitor#resource-logs)
+- [Azure API Management の診断設定を有効にする方法](./api-management-howto-use-azure-monitor.md#resource-logs)
 
 **責任**: Customer
 
@@ -264,9 +264,9 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics ワークスペースのログの保持期間パラメーターを設定する方法](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics ワークスペースのログの保持期間パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [ログを Azure Storage アカウントにアーカイブする方法](/azure/azure-monitor/platform/resource-logs#send-to-azure-storage)
+- [ログを Azure Storage アカウントにアーカイブする方法](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **責任**: Customer
 
@@ -278,11 +278,11 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 必要に応じて、API Management を Azure Application Insights と統合し、プライマリまたはセカンダリの監視、トレース、レポート、およびアラート ツールとして使用します。
 
-- [Azure API Management のログを監視および確認する方法](/Azure/api-management/api-management-howto-use-azure-monitor)
+- [Azure API Management のログを監視および確認する方法](./api-management-howto-use-azure-monitor.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
-- [Log Analytics ワークスペースについて](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics ワークスペースについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
 - [Azure Application Insights と統合する方法](api-management-howto-app-insights.md)
 
@@ -300,11 +300,11 @@ Azure Monitor に加えて、Azure API Management を 1 つまたは複数の Az
 
 必要に応じて、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
-- [Azure API Management の診断設定を有効にする方法](https://docs.microsoft.com/azure/api-management/api-management-howto-use-azure-monitor#resource-logs)
+- [Azure API Management の診断設定を有効にする方法](./api-management-howto-use-azure-monitor.md#resource-logs)
 
-- [Azure API Management の警告ルールを構成する方法](/Azure/api-management/api-management-howto-use-azure-monitor#set-up-an-alert-rule-for-unauthorized-request)
+- [Azure API Management の警告ルールを構成する方法](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule)
 
 - [Azure API Management インスタンスの容量メトリックを表示する方法](api-management-capacity.md)
 
@@ -338,7 +338,7 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 - [PowerShell を使用して Azure AD でディレクトリ ロール定義を取得する方法](/powershell/module/az.resources/get-azroledefinition)
 
-- [Azure Security Center からの ID とアクセスの推奨事項について](https://docs.microsoft.com/azure/security-center/recommendations-reference#identityandaccess-recommendations)
+- [Azure Security Center からの ID とアクセスの推奨事項について](../security-center/recommendations-reference.md#identityandaccess-recommendations)
 
 **責任**: Customer
 
@@ -419,7 +419,7 @@ Azure Security Center からの推奨事項に従って、管理者アカウン�
 
 - [Privileged Identity Management (PIM) をデプロイする方法](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure AD のリスク検出の概要](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure AD のリスク検出の概要](../active-directory/identity-protection/overview-identity-protection.md)
 
 **責任**: Customer
 
@@ -505,7 +505,7 @@ Azure AD ユーザー アカウントの診断設定を作成し、監査ログ�
 
 **ガイダンス**: コントロール プレーン (Azure portal) でのアカウント ログイン動作の偏差について、Azure Active Directory (Azure AD) Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -519,7 +519,7 @@ Azure AD ユーザー アカウントの診断設定を作成し、監査ログ�
 
 **ガイダンス**:現在は使用できません。Azure API Management ではカスタマー ロックボックスは現在サポートされていません。
 
-- [カスタマー ロックボックスでサポートされているサービスの一覧](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+- [カスタマー ロックボックスでサポートされているサービスの一覧](../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-general-availability)
 
 **責任**: Customer
 
@@ -533,7 +533,7 @@ Azure AD ユーザー アカウントの診断設定を作成し、監査ログ�
 
 **ガイダンス**: 機密情報を格納または処理する Azure リソースを追跡しやすくするには、タグを使用します。
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -543,11 +543,11 @@ Azure AD ユーザー アカウントの診断設定を作成し、監査ログ�
 
 **ガイダンス**:開発、テスト、および運用で別々のサブスクリプションまたは管理グループ、あるいはその両方を実装します。 Azure API Management インスタンスは、仮想ネットワーク (VNet)/サブネットで分離し、適切にタグ付けする必要があります。
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
 - [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 - [仮想ネットワークで Azure API Management を使用する方法](api-management-using-with-vnet.md)
 
@@ -571,7 +571,7 @@ Microsoft では、Azure API Management 用の基になるインフラストラ�
 
 **ガイダンス**: 管理プレーン呼び出しは、TLS 経由で Azure Resource Manager によって行われます。 有効な JSON Web トークン (JWT) が必要です。 データ プレーン呼び出しは、TLS と、サポートされる認証メカニズムのいずれか (例: クライアント証明書や JWT など) で保護できます。
 
-- [Azure API Management でのデータ保護について](/azure/api-management/api-management-security-controls#data-protection)
+- [Azure API Management でのデータ保護について](#data-protection)
 
 - [Azure API Management で TLS 設定を管理する](api-management-howto-manage-protocols-ciphers.md)
 
@@ -621,7 +621,7 @@ Microsoft では、Azure API Management 用の基になるインフラストラ�
 
 **ガイダンス**: Azure Functions の運用アプリおよびその他の重要なリソースまたは関連リソースへの変更がいつ発生したかに関するアラートを作成するには、Azure Monitor と Azure アクティビティ ログを使用します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure API Management で Azure Monitor と Azure アクティビティ ログを使用する方法](api-management-howto-use-azure-monitor.md)
 
@@ -639,7 +639,7 @@ Microsoft では、Azure API Management 用の基になるインフラストラ�
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-- [Azure API Management で利用可能なセキュリティ コントロールについて](/azure/api-management/api-management-security-controls)
+- [Azure API Management で利用可能なセキュリティ コントロールについて]()
 
 **責任**: Customer
 
@@ -675,7 +675,6 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 Microsoft でスキャンおよび修正される、基になるプラットフォーム。 顧客が利用可能なセキュリティ コントロールを確認して、サービス構成関連の脆弱性を軽減します。
 
-- [Azure API Management で利用可能なセキュリティ コントロールについて](/azure/api-management/api-management-security-controls)
 
 **責任**: Customer
 
@@ -693,7 +692,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -705,7 +704,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 **ガイダンス**:メタデータを提供する Azure リソースにタグを適用すると、それらのリソースが各分類に論理的に整理されます。
 
-- [タグを作成して利用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して利用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -719,11 +718,11 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 - 許可されないリソースの種類
 - 許可されるリソースの種類
 
-- [追加の Azure サブスクリプションを作成する方法](/azure/billing/billing-create-subscription)
+- [追加の Azure サブスクリプションを作成する方法](../cost-management-billing/manage/create-subscription.md)
 
 - [管理グループを作成する方法](../governance/management-groups/create-management-group-portal.md)
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -785,7 +784,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -835,7 +834,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:Azure Policy を使用して、Azure API Management サービスの標準的なセキュリティ構成を定義して実装します。 Azure API Management サービスの構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.ApiManagement" 名前空間で Azure Policy エイリアスを使用します。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -939,7 +938,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [API Management インスタンスのマネージド ID を作成する方法](api-management-howto-use-managed-service-identity.md)
 
-- [マネージド ID で認証するためのポリシー](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
+- [マネージド ID で認証するためのポリシー](./api-management-authentication-policies.md#ManagedIdentity)
 
 **責任**: Customer
 
@@ -1001,7 +1000,7 @@ API Management のサービスのバックアップと復元の機能では、�
 
 - [複数のリージョンに API Management データ プレーンをデプロイする方法](api-management-howto-deploy-multi-region.md)
 
-- [Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+- [Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 - [API Management のバックアップ操作を呼び出す方法](/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
 
@@ -1017,9 +1016,9 @@ API Management のサービスのバックアップと復元の機能では、�
 
 マネージド ID を使用すると、API Management のカスタム ドメイン名用に Azure Key Vault から証明書を取得できます。 Azure Key Vault 内に格納されているすべての証明書をバックアップします。
 
-- [Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+- [Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-- [Azure Key Vault の証明書をバックアップする方法](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultcertificate?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure Key Vault の証明書をバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultcertificate?preserve-view=true&view=azps-4.8.0)
 
 **責任**: Customer
 
@@ -1041,7 +1040,7 @@ API Management のサービスのバックアップと復元の機能では、�
 
 **ガイダンス**: Azure API Management では、顧客が所有している Azure Storage アカウントにバックアップを書き込みます。 Azure Storage のセキュリティに関する推奨事項に従って、バックアップを保護します。
 
-- [Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
+- [Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
 - [BLOB ストレージのセキュリティに関する推奨事項](../storage/blobs/security-recommendations.md)
 
@@ -1079,7 +1078,7 @@ Key Vault で論理的な削除を有効にして、偶発的または悪意の�
 
 - [Security alerts in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [タグを使用した Azure リソースの整理](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを使用した Azure リソースの整理](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -1143,5 +1142,5 @@ Key Vault で論理的な削除を有効にして、偶発的または悪意の�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

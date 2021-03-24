@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 97b0a4ca3e4fb94a21cbd30a27a3037f45fed782
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: c088625528190ad116676fbb51cec9f8de4b1578
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487119"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600804"
 ---
 # <a name="querying-in-azure-cognitive-search"></a>Azure Cognitive Search のクエリ
 
@@ -71,7 +71,7 @@ Cognitive Search では、フルテキスト検索は Apache Lucene クエリ �
 
 一致する用語が見つかった場合、クエリ エンジンは、ドキュメント キーまたは ID を使用してフィールド値をアセンブルする一致を含む検索ドキュメントを再構築し、ドキュメントを関連性の順にランク付けし、応答の上位 50 (既定) を返すか、 **`top`** を指定した場合は別の番号を返します。
 
-フルテキスト検索を実装している場合は、コンテンツがトークン化される方法を理解すると、クエリの異常のデバッグに役立ちます。 ハイフンでつながれた文字列または特殊文字に対するクエリでは、既定の Standard Lucene 以外のアナライザーを使用してインデックスに正しいトークンが含まれていることを確認することが必要になります。 既定値をオーバーライドして、[言語アナライザー](index-add-language-analyzers.md#language-analyzer-list)や、字句解析を変更する[特別なアナライザー](index-add-custom-analyzers.md#AnalyzerTable)を使用できます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 詳細については、「[部分的な用語検索と特殊文字を含むパターン](search-query-partial-matching.md)」をご覧ください。
+フルテキスト検索を実装している場合は、コンテンツがトークン化される方法を理解すると、クエリの異常のデバッグに役立ちます。 ハイフンでつながれた文字列または特殊文字に対するクエリでは、既定の Standard Lucene 以外のアナライザーを使用してインデックスに正しいトークンが含まれていることを確認することが必要になります。 既定値をオーバーライドして、[言語アナライザー](index-add-language-analyzers.md#language-analyzer-list)や、字句解析を変更する[特別なアナライザー](index-add-custom-analyzers.md#built-in-analyzers)を使用できます。 たとえば、フィールドの内容全体を 1 つのトークンとして扱う [keyword](https://lucene.apache.org/core/6_6_1/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) です。 これは、郵便番号、ID、製品名などのデータで役立ちます。 詳細については、「[部分的な用語検索と特殊文字を含むパターン](search-query-partial-matching.md)」をご覧ください。
 
 大きなテキスト ブロック (コンテンツ フィールドや長い説明) が含まれているインデックスでブール演算子が頻繁な使用されることが多いですが、これが予想される場合は、 **`searchMode=Any|All`** パラメーターを使用してクエリをテストし、その設定がブール検索に与える影響を評価してください。
 
