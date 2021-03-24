@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.author: jeedes
-ms.openlocfilehash: 5d1c4d05748fd9efdc51e18396c8df14e12df63d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 285aa2e1368b343c4784608d846a1f9af9b84c6b
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102193287"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956233"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-onshape"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Onshape の統合
 
@@ -74,26 +74,12 @@ Onshape に対して Azure AD SSO を構成してテストするには、次の�
 
 1. Azure portal の **Onshape** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
-
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-1. アプリは Azure と事前に統合済みであるため、 **[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
-
-1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
-
-    **[サインオン URL]** ボックスに、`https://<SUBDOMAIN>.onshape.com` という形式で URL を入力します。
-
-    > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Onshape クライアント サポート チーム](mailto:support@onshape.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
-
-1. **[保存]** をクリックします。
-
-1. Onshape アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
+1. シングル サインオン設定を保存するかどうかを確認するメッセージが表示されたら、 **[はい]** を選択します。 
+1. Onshape アプリケーションでは、特定の形式の SAML アサーションが使用されるため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
     ![image](common/default-attributes.png)
 
-1. その他に、Onshape アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
+1. その他に、Onshape アプリケーションでは、下に示すいくつかの属性が SAML 応答で返されることが想定されています。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
     
     | 名前 |  ソース属性|
     | --------------- | --------- |
@@ -102,9 +88,9 @@ Onshape に対して Azure AD SSO を構成してテストするには、次の�
     | companyName | <COMPANY_NAME> |
 
     > [!NOTE]
-    > "companyName" 要求の値は、"ドメイン プレフィックス" で編集してください。 たとえば、顧客が https://acme.onshape.com などの URL を使用して Onshape アプリケーションにアクセスする場合、"acme" がドメイン プレフィックスです。 この属性値は、DNS 名全体ではなくプレフィックスのみとする必要があります。
+    > **companyName** 属性の値を Onshape エンタープライズの "*ドメイン プレフィックス*" に変更する "_必要があります_"。 たとえば、`https://acme.onshape.com` のような URL を使用して Onshape アプリケーションにアクセスしている場合、ドメイン プレフィックスは *acme* です。 この属性値は、DNS 名全体ではなくプレフィックスのみとする必要があります。
 
-1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
@@ -137,7 +123,7 @@ Onshape に対して Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-onshape-sso"></a>Onshape の SSO の構成
 
-**Onshape** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Onshape サポート チーム](mailto:support@onshape.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Onshape** 側でシングル サインオンを構成する方法の詳細については、「[Microsoft Azure AD との統合](https://cad.onshape.com/help/Content/MS_AzureAD.htm)」を参照してください。
 
 ### <a name="create-onshape-test-user"></a>Onshape のテスト ユーザーの作成
 
@@ -157,11 +143,9 @@ Onshape に対して Azure AD SSO を構成してテストするには、次の�
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した Onshape に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Onshape] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Onshape に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [Onshape] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した Onshape に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-Onshape を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Onshape を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

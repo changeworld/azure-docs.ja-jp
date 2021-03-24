@@ -8,10 +8,10 @@ ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: b243fa18b17fdd15f3c39545b7d81f5796bd8429
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "101699863"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Cognitive Services の Azure セキュリティ ベースライン
@@ -273,7 +273,7 @@ Cognitive Services コンテナーの診断設定を構成し、Log Analytics �
 
 Cognitive Services へのデータ プレーン アクセスは、アクセス キーを使用して制御されます。 これらのキーは、キャッシュに接続するクライアントによって使用され、いつでも再生成できます。
 
-アプリケーションに既定のパスワードを組み込むことは推奨されません。 代わりに、パスワードを Azure Key Vault に格納し、Azure AD を使用して取得することができます。
+アプリケーションに既定のパスワードを組み込むことは推奨されません。 代わりに、パスワードを Azure Key Vault に格納し、Azure AD を使用して取得できます。
 
 - [Azure Cache for Redis のアクセス キーを再生成する方法](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#settings)
 
@@ -403,7 +403,7 @@ Cognitive Services へのデータ プレーン アクセスは、アクセス �
 
 ### <a name="312-alert-on-account-sign-in-behavior-deviation"></a>3.12: アカウント サインイン動作の偏差に関するアラートを生成する
 
-**ガイダンス**:コントロール プレーンでのアカウント ログイン動作の偏差について、Azure Active Directory (Azure AD) Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
+**ガイダンス**: コントロール プレーンでのアカウント ログイン動作の偏差について、Azure Active Directory (Azure AD) Identity Protection とリスク検出機能を使用して、ユーザー ID に関連して検出された疑わしいアクションへの自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
 - [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 

@@ -4,10 +4,10 @@ description: この記事では、Microsoft Azure Backup Server (MABS) を使用
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.openlocfilehash: a020559229771fff1ecc8fb512a5b2af70240cdd
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102509508"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Server を使用して Hyper-V 仮想マシンをバックアップする

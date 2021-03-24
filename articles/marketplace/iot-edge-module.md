@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
 ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91708545"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
@@ -44,7 +44,7 @@ IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource 
 
 **課金オプション**
 
-Marketplace は現在、IoT Edge モジュールの**無料**および**ライセンスを持ち込む (BYOL)** 課金オプションをサポートしています。
+Marketplace は現在、IoT Edge モジュールの **無料** および **ライセンスを持ち込む (BYOL)** 課金オプションをサポートしています。
 
 ### <a name="publishing-options"></a>公開オプション
 

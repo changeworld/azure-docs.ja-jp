@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91740872"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Azure Cognitive Search でファセット フィルターを作成する方法 

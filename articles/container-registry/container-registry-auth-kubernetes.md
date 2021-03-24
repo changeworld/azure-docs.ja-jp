@@ -7,10 +7,10 @@ ms.author: karolz
 ms.reviewer: danlep
 ms.date: 05/28/2020
 ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "84309817"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Azure コンテナー レジストリから Kubernetes クラスターにイメージをプルする
@@ -34,7 +34,7 @@ az ad sp credential reset  --name http://<service-principal-name> --query passwo
 
 ## <a name="create-an-image-pull-secret"></a>イメージのプル シークレットを作成する
 
-Kubernetes では、*イメージのプル シークレット*を使用して、認証に必要な情報をレジストリに格納します。 Azure コンテナー レジストリのプル シークレットを作成するには、サービス プリンシパルの ID、パスワード、およびレジストリ URL を指定します。 
+Kubernetes では、*イメージのプル シークレット* を使用して、認証に必要な情報をレジストリに格納します。 Azure コンテナー レジストリのプル シークレットを作成するには、サービス プリンシパルの ID、パスワード、およびレジストリ URL を指定します。 
 
 次の `kubectl` コマンドを使用してイメージのプル シークレットを作成します。
 
