@@ -4,10 +4,10 @@ description: Azure portal を使用して、Azure Backup によって作成さ�
 ms.topic: conceptual
 ms.date: 01/12/2020
 ms.openlocfilehash: 35ca0936ae6efba716adb51f43326cdd5bfa2d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89376776"
 ---
 # <a name="restore-azure-file-shares"></a>Azure ファイル共有を復元する
@@ -158,7 +158,7 @@ ms.locfileid: "89376776"
 
     ![バックアップ ジョブの選択](./media/restore-afs/backup-jobs.png)
 
-1. ファイル共有に対応するワークロード名を選択すると、**転送されたデータ**や**復元されたファイルの数**など、復元操作の詳細が表示されます。
+1. ファイル共有に対応するワークロード名を選択すると、**転送されたデータ** や **復元されたファイルの数** など、復元操作の詳細が表示されます。
 
     ![復元の詳細を表示する](./media/restore-afs/restore-details.png)
 

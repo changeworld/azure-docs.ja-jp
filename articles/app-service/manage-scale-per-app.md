@@ -8,10 +8,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "74672349"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>アプリごとのスケーリングを使って Azure App Service で高密度ホスティングを実現する
@@ -20,7 +20,7 @@ ms.locfileid: "74672349"
 
 App Service を使用するときは、そのアプリを実行する [App Service プラン](overview-hosting-plans.md)をスケーリングすることにより、アプリをスケーリングできます。 同じ App Service プランでアプリを複数実行している場合には、スケールアウトしたインスタンスのそれぞれがプラン内のアプリをすべて実行することになります。
 
-App Service プラン レベルで*アプリごとのスケーリング*を有効にして、アプリをホストする App Service プランとは無関係にそのアプリをスケーリングできます。 これにより、App Service プランを 10 個のインスタンスにスケーリングしながら、5 個のインスタンスだけを使用するようにアプリを設定することが可能になります。
+App Service プラン レベルで *アプリごとのスケーリング* を有効にして、アプリをホストする App Service プランとは無関係にそのアプリをスケーリングできます。 これにより、App Service プランを 10 個のインスタンスにスケーリングしながら、5 個のインスタンスだけを使用するようにアプリを設定することが可能になります。
 
 > [!NOTE]
 > アプリごとのスケーリングは、**Standard**、**Premium**、**Premium V2**、および **Isolated** の価格レベルに限り利用できます。
@@ -74,7 +74,7 @@ Set-AzWebApp $newapp
 - 10 個のインスタンスにスケール アウトされる App Service プラン
 - 最大 5 個のインスタンスまでスケーリングされるように構成されたアプリ
 
-App Service プランは、**PerSiteScaling** プロパティを true に設定します (`"perSiteScaling": true`)。 アプリは、使用する**ワーカーの数**を 5 に設定します (`"properties": { "numberOfWorkers": "5" }`)。
+App Service プランは、**PerSiteScaling** プロパティを true に設定します (`"perSiteScaling": true`)。 アプリは、使用する **ワーカーの数** を 5 に設定します (`"properties": { "numberOfWorkers": "5" }`)。
 
 ```json
 {

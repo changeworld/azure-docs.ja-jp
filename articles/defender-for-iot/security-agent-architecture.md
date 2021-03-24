@@ -1,24 +1,14 @@
 ---
 title: 'クイックスタート: セキュリティ エージェントの概要'
 description: このクイックスタートでは、Azure Defender for IoT サービスで使用されるエージェントのセキュリティ エージェントのアーキテクチャについて説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
-ms.author: shhazam
-ms.openlocfilehash: aceeaec63eb637002352f5c503f57890033b0381
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: 2e7d7d1e6770667b1ce966724611cc003116409d
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102449239"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778510"
 ---
 # <a name="quickstart-security-agent-reference-architecture"></a>クイックスタート: セキュリティ エージェントの参照アーキテクチャ
 
@@ -57,7 +47,7 @@ Defender for IoT では、32 ビットと 64 ビットの Windows のエージ�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Defender for IoT セキュリティ モジュールのアーキテクチャと利用できるインストーラーについて概要を学習しました。
+この記事では、Defender for IoT Defender-IoT-micro-agent アーキテクチャと利用できるインストーラーについて概要を学習しました。
 
 Defender for IoT のデプロイの概要について引き続き学習するには、次の記事を参照してください。
 

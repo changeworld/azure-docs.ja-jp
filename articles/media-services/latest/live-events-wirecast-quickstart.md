@@ -8,10 +8,10 @@ ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 08/31/2020
 ms.openlocfilehash: 76bbb980b6430f7cffc23ec078e2c932128dc637
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "89265271"
 ---
 # <a name="create-an-azure-media-services-live-stream"></a>Azure Media Services のライブ ストリームを作成する
@@ -72,7 +72,7 @@ Web ブラウザーを開き、[Microsoft Azure portal](https://portal.azure.com
 1. Wirecast アプリケーションで、メイン メニューから **[Create Empty Document]\(空のドキュメントの作成\)** を選択し、 **[Continue]\(続行\)** を選択します。
 
    ![Wirecast のスタート画面](media/live-events-wirecast-quickstart/open-empty-document.png)
-1. **Wirecast のレイヤー**領域で、最初のレイヤーにマウス ポインターを合わせます。  表示された **[Add]\(追加\)** アイコンを選択し、ストリーム配信するビデオ入力を選択します。
+1. **Wirecast のレイヤー** 領域で、最初のレイヤーにマウス ポインターを合わせます。  表示された **[Add]\(追加\)** アイコンを選択し、ストリーム配信するビデオ入力を選択します。
 
    ![Wirecast の追加アイコン](media/live-events-wirecast-quickstart/add-icon.png)
 
@@ -82,7 +82,7 @@ Web ブラウザーを開き、[Microsoft Azure portal](https://portal.azure.com
    ![ビデオ キャプチャのプレビュー領域](media/live-events-wirecast-quickstart/video-shot-selection.png)
 
    カメラからのビューがプレビュー領域に表示されます。
-1. **Wirecast のレイヤー**領域で、2 つ目のレイヤーにマウス ポインターを合わせます。 表示された **[Add]\(追加\)** アイコンを選択し、ストリーム配信するオーディオ入力を選択します。 **[Master Layer 2]\(マスター レイヤー 2\)** ダイアログ ボックスが表示されます。
+1. **Wirecast のレイヤー** 領域で、2 つ目のレイヤーにマウス ポインターを合わせます。 表示された **[Add]\(追加\)** アイコンを選択し、ストリーム配信するオーディオ入力を選択します。 **[Master Layer 2]\(マスター レイヤー 2\)** ダイアログ ボックスが表示されます。
 1. メニューから **[Audio capture]\(オーディオ キャプチャ\)** を選択し、使用したいオーディオ入力を選択します。
 
    ![オーディオ キャプチャの入力](media/live-events-wirecast-quickstart/audio-shot-select.png)
@@ -97,11 +97,11 @@ Web ブラウザーを開き、[Microsoft Azure portal](https://portal.azure.com
 1. ポータルの Azure Media Services ページで、 **[開始]** を選択してライブ ストリーム イベントを開始します (この時点で課金が開始されます)。
 
    ![[開始] アイコン](media/live-events-wirecast-quickstart/start.png)
-2. **セキュリティ保護またはセキュリティ保護なし**のトグルを、 **[セキュリティ保護なし]** に設定します。 これでプロトコルが RTMPS ではなく RTMP に設定されます。
+2. **セキュリティ保護またはセキュリティ保護なし** のトグルを、 **[セキュリティ保護なし]** に設定します。 これでプロトコルが RTMPS ではなく RTMP に設定されます。
 3. **[入力 URL]** ボックスの URL をクリップボードにコピーします。
 
    ![入力 URL](media/live-events-wirecast-quickstart/input-url.png)
-4. Wirecast アプリケーションに切り替えて、出力設定の **[Address]\(アドレス\)** ボックスに**入力 URL** を貼り付けます。
+4. Wirecast アプリケーションに切り替えて、出力設定の **[Address]\(アドレス\)** ボックスに **入力 URL** を貼り付けます。
 
    ![Wirecast の入力 URL](media/live-events-wirecast-quickstart/input-url-wirecast.png)
 5. **[OK]** を選択します。
@@ -113,7 +113,7 @@ Web ブラウザーを開き、[Microsoft Azure portal](https://portal.azure.com
 > [!NOTE]
 > この出力をストリーム配信するには、ストリーミング エンドポイントが実行されている必要があります。 この後の「[既定のストリーミング エンドポイントを実行する](#run-the-default-streaming-endpoint)」セクションを参照してください。
 
-1. **出力**ビデオ ビューアーの下にある **[Create outputs]\(出力の作成\)** リンクを選択します。
+1. **出力** ビデオ ビューアーの下にある **[Create outputs]\(出力の作成\)** リンクを選択します。
 1. 必要に応じて、 **[名前]** ボックスで出力の名前を編集して、後で見つけやすいよう、わかりやすい名前に変更します。
    
    ![[出力名] ボックス](media/live-events-wirecast-quickstart/output-name.png)
@@ -131,7 +131,7 @@ Web ブラウザーを開き、[Microsoft Azure portal](https://portal.azure.com
 
    ![配信の開始メニュー項目](media/live-events-wirecast-quickstart/start-broadcast.png)
 
-   ストリームがライブ イベントに送信されると、Azure Media Services のライブ イベント ページにあるビデオ プレーヤーに Wirecast の**ライブ** ウィンドウが表示されます。
+   ストリームがライブ イベントに送信されると、Azure Media Services のライブ イベント ページにあるビデオ プレーヤーに Wirecast の **ライブ** ウィンドウが表示されます。
 
 1. プレビュー ウィンドウの **[Go]\(開始\)** ボタンを選択して、Wirecast のレイヤー用に選択したビデオとオーディオの配信を開始します。
 
@@ -152,11 +152,11 @@ Web ブラウザーを開き、[Microsoft Azure portal](https://portal.azure.com
 
 ## <a name="play-the-output-broadcast-by-using-azure-media-player"></a>Azure Media Player を使用して出力配信を再生する
 
-1. **出力**ビデオ プレーヤーの下にあるストリーミング URL をコピーします。
+1. **出力** ビデオ プレーヤーの下にあるストリーミング URL をコピーします。
 1. Web ブラウザーで、[Azure Media Player のデモ](https://ampdemo.azureedge.net/azuremediaplayer.html)を開きます。
 1. Azure Media Player の **[URL]** ボックスにストリーミング URL を貼り付けます。
 1. **[Update Player]\(プレーヤーの更新\)** ボタンを選択します。
-1. ビデオの**再生**アイコンを選択すると、ライブ ストリームが表示されます。
+1. ビデオの **再生** アイコンを選択すると、ライブ ストリームが表示されます。
 
 ## <a name="stop-the-broadcast"></a>配信を停止する
 
@@ -175,7 +175,7 @@ Web ブラウザーを開き、[Microsoft Azure portal](https://portal.azure.com
 1. 資産のビデオ プレーヤーの下にあるストリーミング URL をコピーします。
 1. ブラウザーで Azure Media Player に戻り、ストリーミング URL を [URL] ボックスに貼り付けます。
 1. **[Update Player]\(プレーヤーの更新\)** を選択します。
-1. ビデオの**再生**アイコンを選択すると、オンデマンド資産が表示されます。
+1. ビデオの **再生** アイコンを選択すると、オンデマンド資産が表示されます。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

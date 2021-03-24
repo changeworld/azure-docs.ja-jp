@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
 ms.openlocfilehash: 9415d66c49992bc31f773dec908a861f1126e714
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92427210"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>チュートリアル:Azure AD を使用したエンド ツー エンドのコンテンツ保護
@@ -146,7 +146,7 @@ DRM (または AES) とストリーミング プロトコルとコンテナー�
 エンド ツー エンドのサンプルに使用する Azure AD テナントを選択します。 2 つのオプションがあります。
 
 * 既存の Azure AD テナント。 どの Azure サブスクリプションにも Azure AD テナントが必ず 1 つ必要ですが、Azure AD テナントは、複数の Azure サブスクリプションで使用することができます。
-* どの Azure サブスクリプションにも使用されて " *いない* " 新しい Azure AD テナント。 新しいテナントを選択する場合、単独の Azure AD テナントを使用する 1 つの Azure サブスクリプションに Media Services アカウントとサンプル プレーヤー アプリが存在する必要があります。 そうすることで、ある程度の柔軟性が生まれます。 たとえば、独自の Azure AD テナントを使用するだけでなく、顧客の Azure サブスクリプションにある顧客の Media Services アカウントを使用することもできます。
+* どの Azure サブスクリプションにも使用されて "*いない*" 新しい Azure AD テナント。 新しいテナントを選択する場合、単独の Azure AD テナントを使用する 1 つの Azure サブスクリプションに Media Services アカウントとサンプル プレーヤー アプリが存在する必要があります。 そうすることで、ある程度の柔軟性が生まれます。 たとえば、独自の Azure AD テナントを使用するだけでなく、顧客の Azure サブスクリプションにある顧客の Media Services アカウントを使用することもできます。
 
 ## <a name="register-the-backend-resource-app"></a>バックエンド リソース アプリを登録する
 
@@ -155,7 +155,7 @@ DRM (または AES) とストリーミング プロトコルとコンテナー�
 1. メニューから **[アプリの登録]** を選択します。
 1. **[+ 新規登録]** をクリックします。
 1. アプリに *LicenseDeliveryResource2* という名前を付けます (2 は AAD v2 エンドポイントを表します)。
-1. **[この組織ディレクトリのみに含まれるアカウント (< *ご利用のテナント名* > のみ - シングル テナント)]** を選択します。 複数のテナントへのアクセスを有効にしたい場合は、他のいずれかのマルチテナント オプションを選択します。
+1. **[この組織ディレクトリのみに含まれるアカウント (<*ご利用のテナント名*> のみ - シングル テナント)]** を選択します。 複数のテナントへのアクセスを有効にしたい場合は、他のいずれかのマルチテナント オプションを選択します。
 1. **[リダイレクト URI]** は省略可能です。また、後で変更することができます。
 1. **[登録]** をクリックします。 [アプリの登録] ビューが表示されます。
 1. メニューから **[マニフェスト]** を選択します。 [マニフェスト] ビューが表示されます。
@@ -181,8 +181,8 @@ DRM (または AES) とストリーミング プロトコルとコンテナー�
 1. メニューから **[Azure Active Directory]** を選択します。
 1. メニューから **[アプリの登録]** を選択します。
 1. **[+ 新規登録]** をクリックします。
-1. クライアント アプリに名前を付けます (例: *AMS AAD Content Protection* )。
-1. **[この組織ディレクトリのみに含まれるアカウント (< *ご利用のテナント名* > のみ - シングル テナント)]** を選択します。 複数のテナントへのアクセスを有効にしたい場合は、他のいずれかのマルチテナント オプションを選択します。
+1. クライアント アプリに名前を付けます (例: *AMS AAD Content Protection*)。
+1. **[この組織ディレクトリのみに含まれるアカウント (<*ご利用のテナント名*> のみ - シングル テナント)]** を選択します。 複数のテナントへのアクセスを有効にしたい場合は、他のいずれかのマルチテナント オプションを選択します。
 1. **[リダイレクト URI]** は省略可能です。また、後で変更することができます。
 1. **[登録]** をクリックします。
 1. メニューから **[API のアクセス許可]** を選択します。
@@ -250,7 +250,7 @@ return objContentKeyPolicyRestriction;
 1. 先ほど使用した AAD テナントを選択し、メニューで **[アプリの登録]** をクリックして、 **[エンドポイント]** リンクをクリックします。
 1. **[OpenIdConnect metadata document]\(OpenIdConnect メタデータ ドキュメント\)** フィールドの値を選択してコピーし、`ida_AADOpenIdDiscoveryDocument` の値としてコードに貼り付けます。
 1. `ida_audience` の値は、登録済みのアプリ *LicenseDeliveryResource2* の [アプリケーション (クライアント) ID] です。
-1. `ida_issuer` の値には、`https://login.microsoftonline.com/[tenant_id]/v2.0` という URL を指定します。 [ *tenant_id* ] は、実際のテナント ID に置き換えてください。
+1. `ida_issuer` の値には、`https://login.microsoftonline.com/[tenant_id]/v2.0` という URL を指定します。 [*tenant_id*] は、実際のテナント ID に置き換えてください。
 
 ## <a name="set-up-the-sample-player-app"></a>サンプル プレーヤー アプリを設定する
 
@@ -264,12 +264,12 @@ return objContentKeyPolicyRestriction;
 ### <a name="option-1"></a>方法 1
 
 1. Visual Studio Code を起動します。
-1. プロジェクトを開くために、[ファイル]、[フォルダーを開く]、[参照] の順にクリックして、 *package.json* ファイルの親フォルダーを選択します。
+1. プロジェクトを開くために、[ファイル]、[フォルダーを開く]、[参照] の順にクリックして、*package.json* ファイルの親フォルダーを選択します。
 1. JavaScript ファイル *public/javascript/constants.js* を開きます。
 1. `OAUTH2_CONST.CLIENT_ID` を、AAD テナントに登録したクライアント アプリの `client_id` に置き換えます。  `client_id` は、Azure portal の登録済みのアプリケーションの [概要] セクションで確認できます。 オブジェクト ID ではなく、クライアント ID であることに注意してください。
 1. `OAUTH2_CONST.TENANT_ID` を、Azure AD テナントの `tenant_id` に置き換えます。 `tenant_id` は、Azure Active Directory メニューをクリックして確認できます。 tenant_id は、[概要] セクションに表示されます。
 1. `OAUTH2_CONST.SCOPE` を、登録済みクライアント アプリに追加したスコープに置き換えます。 スコープは、 **[アプリの登録]** メニューから登録済みクライアント アプリに移動し、自分のクライアント アプリを選択して確認できます。
-    1. クライアント アプリを選択し、 **[API のアクセス許可]** メニューをクリックして、API のアクセス許可 *[LicenseDeliveryResource2]* の *[DRM.License.Delivery]* スコープを選択します。 アクセス許可は、 *api://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM.License.Delivery* のような形式になっている必要があります。 **重要** :`OAUTH2_CONST.SCOPE` の `offline_access` の前のスペースは維持してください。
+    1. クライアント アプリを選択し、 **[API のアクセス許可]** メニューをクリックして、API のアクセス許可 *[LicenseDeliveryResource2]* の *[DRM.License.Delivery]* スコープを選択します。 アクセス許可は、*api://df4ed433-dbf0-4da6-b328-e1fe05786db5/DRM.License.Delivery* のような形式になっている必要があります。 **重要**:`OAUTH2_CONST.SCOPE` の `offline_access` の前のスペースは維持してください。
 1. `AMS_CONST` の 2 つの定数文字列を次のように置き換えます。 1 つは、テスト資産の保護されたストリーミング URL です。FairPlay のテスト ケースを含めたい場合、もう 1 つには、FPS アプリケーションの証明書の URL を指定します。 それ以外の場合、`AMS_CONST.APP_CERT_URL` は、そのままにしてかまいません。 その後、 **[保存]** をクリックします。
 
 ```javascript
@@ -304,7 +304,7 @@ class AMS_CONST {
 * *public/* * (以下に示した JavaScript ファイル、CSS、画像)
 
 1. *view* フォルダー内のファイルを新しいディレクトリのルートにコピーします。
-1. *public* フォルダーにある " *フォルダー* " を新しいディレクトリのルートにコピーします。
+1. *public* フォルダーにある "*フォルダー*" を新しいディレクトリのルートにコピーします。
 1. `.ejs` ファイルの拡張子を `.html` に変更します。 (サーバー側の変数は使用しないので、変更しても問題ありません。)
 1. VSC (または他のコード エディター) で *index.html* を開き、`<script>` と `<link>` のパスを、ファイルの格納場所に合わせて変更します。  これまでの手順に従った場合、パスから `\` を削除するだけです。  たとえば、`<script type="text/javascript" src="/javascript/constants.js"></script>` を `<script type="text/javascript" src="javascript/constants.js"></script>` にします。
 1. *javascript/constants.js* ファイル内の定数を「方法 1」と同じようにカスタマイズします。
@@ -322,13 +322,13 @@ class AMS_CONST {
 #### <a name="set-up-the-azure-ad-tenant"></a>Azure AD テナントを設定する
 
 1. テナントに 2 つのアカウントを設定します。 *premium_user* と *basic_user* などの名前を付けてください。
-1. ユーザー グループを作成し、 *PremiumGroup* という名前を付けます。
-1. *PremiumGroup* のメンバーとして *premium_user* を追加します。ただし、 *basic_user* はこのグループに追加しません。
+1. ユーザー グループを作成し、*PremiumGroup* という名前を付けます。
+1. *PremiumGroup* のメンバーとして *premium_user* を追加します。ただし、*basic_user* はこのグループに追加しません。
 1. *PremiumGroup* の **オブジェクト ID** を書き留めます。
 
 #### <a name="set-up-the-media-services-account"></a>Media Services アカウントを設定する
 
-`ContentKeyPolicyRestriction` (前出の Media Services アカウントの設定に関するセクションを参照) に変更を加えます。 *groups* という名前の要求を追加してください。`ida_EntitledGroupObjectId` の値には、 *PremiumGroup* のオブジェクト ID を指定します。
+`ContentKeyPolicyRestriction` (前出の Media Services アカウントの設定に関するセクションを参照) に変更を加えます。*groups* という名前の要求を追加してください。`ida_EntitledGroupObjectId` の値には、*PremiumGroup* のオブジェクト ID を指定します。
 
 ```dotnetcli
 

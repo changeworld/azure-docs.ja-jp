@@ -5,13 +5,13 @@ description: Kubernetes クラスターの作成、アプリケーションの�
 services: container-service
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.custom: mvc, seo-javascript-october2019, contperfq3
-ms.openlocfilehash: 4763e72e3a50bd6c84f158658b7531a25e4ceec9
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.custom: mvc, seo-javascript-october2019, contperf-fy21q3
+ms.openlocfilehash: 1371fb22b3474e37e50fe0eb67541d9ced69555f
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103492916"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104771874"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Kubernetes Service (AKS) クラスターをデプロイする
 
@@ -77,7 +77,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
-Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 
+Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使います。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 
 
 1. Azure portal の上部にある `>_` ボタンを使用して Cloud Shell を開きます。
 
@@ -100,7 +100,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
     kubectl get nodes
     ```
 
-    出力は、前の手順で作成した単一ノードを示しています。 ノードの状態が *[Ready]* であることを確認してください。
+    出力は、前の手順で作成した単一ノードを示しています。 ノードの状態が "*準備完了*" であることを確認します。
 
     ```output
     NAME                       STATUS    ROLES     AGE       VERSION
@@ -268,7 +268,7 @@ az aks delete --resource-group myResourceGroup --name myAKSCluster --no-wait
 
 このクイック スタートでは、Kubernetes のデプロイを作成するために、既存のコンテナー イメージを使用しました。 関連するアプリケーション コード、Dockerfile、Kubernetes マニフェスト ファイルは、[GitHub で入手できます。][azure-vote-app]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Kubernetes クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。 AKS クラスターの Kubernetes Web ダッシュボードにアクセスします。
 

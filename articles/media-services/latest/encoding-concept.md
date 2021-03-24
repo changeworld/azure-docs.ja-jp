@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 84caa287803fa64b12d9da4c2afb1f8dd1418e13
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: 6a486057a265b02ce30059940c8c98837ec43f8e
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455282"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102617643"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Media Services を使用したビデオとオーディオのエンコード
 
@@ -95,20 +95,25 @@ Media Services は、次の組み込みのエンコード プリセットをサ�
 
 [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) は、Standard Encoder で入力ビデオをエンコードする組み込みのプリセットの設定に使用されます。
 
-現在サポートされているプリセットは次のとおりです。
+現在サポートされている組み込みのプリセットは次のとおりです。
 
 - **EncoderNamedPreset.AACGoodQualityAudio**: 192 kbps でエンコードされたステレオ オーディオのみを含む単一の MP4 ファイルを生成します。
-- **EncoderNamedPreset.AdaptiveStreaming** (推奨):詳細については、[ビットレート ラダーの自動生成](autogen-bitrate-ladder.md)に関するページを参照してください。
-- **EncoderNamedPreset.ContentAwareEncoding**: コンテンツに対応したエンコードのプリセットを公開します。 入力コンテンツを指定すると、サービスにより、アダプティブ ストリーミングによる配信に最適なレイヤーの数と、適切なビットレートおよび解像度の設定の決定が、自動的に試みられます。 基になるアルゴリズムは、時間と共に進化を続けています。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。 詳細については、[コンテンツに対応したエンコード](content-aware-encoding.md)に関する記事を参照してください。
-
+- **EncoderNamedPreset.AdaptiveStreaming** (推奨): これは、H.264 アダプティブ ビットレート エンコーディングをサポートしています。 詳細については、[ビットレート ラダーの自動生成](autogen-bitrate-ladder.md)に関するページを参照してください。
+- **EncoderNamerPreset.H265AdaptiveStreaming**: AdaptiveStreaming プリセットに似ていますが、HEVC (H.265) コーデックを使用します。 H.265 ビデオとステレオ AAC オーディオを使用して、GOP 調整された MP4 ファイルのセットを作成します。 入力解像度、ビットレート、フレーム レートに基づいてビットレート ラダーを自動生成します。 自動生成されたプリセットが、入力解像度を超えることはありません。 たとえば、入力が 720p の場合、出力は最大で 720p のままになります。
+- **EncoderNamedPreset.ContentAwareEncoding**: H.264 のコンテンツに対応したエンコードのプリセットを公開します。 入力コンテンツを指定すると、サービスにより、アダプティブ ストリーミングによる配信に最適なレイヤーの数と、適切なビットレートおよび解像度の設定の決定が、自動的に試みられます。 基になるアルゴリズムは、時間と共に進化を続けています。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。 詳細については、[コンテンツに対応したエンコード](content-aware-encoding.md)に関する記事を参照してください。
+- **EncoderNamedPreset.H265ContentAwareEncoding**: HEVC (H.265) のコンテンツに対応したエンコードのプリセットを公開します。コンテンツ対応のエンコードを使用して、GOP 調整された MP4 のセットを作成します。 入力コンテンツを指定すると、サービスによって入力コンテンツに対する最初の簡単な分析が実行され、その結果を使用して、アダプティブ ストリーミングによる配信に最適なレイヤーの数、適切なビット レートと解像度の設定が決定されます。 このプリセットは、複雑さが低から中程度のビデオに特に有効です。つまり、ビット レートは低くなりますが、視聴者には快適なエクスペリエンスを提供できる品質を備えた出力ファイルということになります。 出力には、ビデオとオーディオがインターリーブされた MP4 ファイルが含まれるようになります。
   > [!NOTE]
-  > ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** を使用してください。
+  > 現在非推奨の ContentAwareEncodingExperimental ではなく、必ず **ContentAwareEncoding** を使用してください。
+
 - **EncoderNamedPreset.H264MultipleBitrate1080p**: GOP がアラインメントされた、ビットレートが 6,000 kbps から 400 kbps、オーディオが AAC ステレオである 8 つの MP4 ファイルを生成します。 解像度の上限は 1080p で下限は 360p です。
 - **EncoderNamedPreset.H264MultipleBitrate720p**: GOP がアラインメントされた、ビットレートが 3,400 kbps から 400 kbps、オーディオが AAC ステレオである 6 つの MP4 ファイルを生成します。 解像度の上限は 720p で下限は 360p です。
 - **EncoderNamedPreset.H264MultipleBitrateSD**: GOP がアラインメントされた、ビットレートが 1,600 kbps から 400 kbps、オーディオが AAC ステレオである 5 つの MP4 ファイルを生成します。 解像度の上限は 480p で下限は 360p です。
 - **EncoderNamedPreset.H264SingleBitrate1080p**: ビデオが 6750 kbps の H.264 コーデックと 1,080 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 64 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
 - **EncoderNamedPreset.H264SingleBitrate720p**: ビデオが 4,500 kbps の H.264 コーデックと 720 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 64 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
 - **EncoderNamedPreset.H264SingleBitrateSD**: ビデオが 2,200 kbps の H.264 コーデックと 480 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 64 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
+- **EncoderNamedPreset.H265SingleBitrate720P**: ビデオが 1,800 kbps の HEVC (H.265) コーデックと 720 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 128 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
+- **EncoderNamedPreset.H265SingleBitrate1080p**: ビデオが 3500 kbps の HEVC (H.265) コーデックと 1,080 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 128 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
+- **EncoderNamedPreset.H265SingleBitrate4K**: ビデオが 9,500 kbps の HEVC (H.265) コーデックと 2,160 ピクセルの画像の高さでエンコードされ、ステレオ オーディオが 128 kbps の AAC-LC コーデックでエンコードされた、MP4 ファイルが生成されます。
 
 最新のプリセットの一覧を見るには、[ビデオのエンコードに使用される組み込みのプリセット](/rest/api/media/transforms/createorupdate#encodernamedpreset)に関する記事をご覧ください。
 
@@ -135,6 +140,7 @@ Media Services では、特定のエンコーディング ニーズと要件を�
 - [CLI でプリセットをカスタマイズする](custom-preset-cli-howto.md)
 - [REST でプリセットをカスタマイズする](custom-preset-rest-howto.md)
 
+
 ## <a name="preset-schema"></a>プリセット スキーマ
 
 Media Services v3 では、プリセットは API 自体で厳密に型指定されたエンティティです。 これらのオブジェクトの "スキーマ" 定義は、[Open API の仕様 (または Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) にあります。 プリセット定義 (**StandardEncoderPreset** など) は、[REST API](/rest/api/media/transforms/createorupdate#standardencoderpreset)、[.NET SDK](/dotnet/api/microsoft.azure.management.media.models.standardencoderpreset) (またはその他の Media Services v3 SDK のリファレンス ドキュメント) でも確認できます。
@@ -142,6 +148,7 @@ Media Services v3 では、プリセットは API 自体で厳密に型指定さ
 ## <a name="scaling-encoding-in-v3"></a>v3 でのエンコードのスケーリング
 
 メディア処理のスケール設定を行うには、[CLI を使用したスケーリング](media-reserved-units-cli-how-to.md)に関するトピックをご覧ください。
+**2020-05-01** バージョンの API または Azure portal を使用して作成されたアカウントの場合、スケーリングとメディア占有ユニットは不要になりました。 スケーリングは自動で行われ、サービスによって内部的に処理されます。
 
 ## <a name="billing"></a>課金
 

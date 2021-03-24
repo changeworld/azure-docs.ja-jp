@@ -4,10 +4,10 @@ description: Azure Resource Manager でリソースをデプロイするとき�
 ms.topic: troubleshooting
 ms.date: 02/18/2020
 ms.openlocfilehash: 5b0bbd653907c109eca526af86979013b3137cfa
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98737152"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>SKU 利用不可エラーを解決する
