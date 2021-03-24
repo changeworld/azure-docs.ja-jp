@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 7e9f4b55945afc04e5c826b26632d68cb75e502f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86260268"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
@@ -17,7 +17,7 @@ ms.locfileid: "86260268"
 
 ## <a name="commands"></a>コマンド
 
-|command|説明|
+|コマンド|説明|
 | --- | --- |
 | config | Service Fabric スタンドアロン クラスターの構成を取得します。 |
 | config-upgrade | Service Fabric スタンドアロン クラスターの構成のアップグレードを開始します。 |
