@@ -8,14 +8,16 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d82f1cac6e437663fa0b1c3e21c65036f3c1d4eb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d8cf3dbe9d1dc2ad329a0b5ab8fa9554c85ae55c
+ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102046042"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103199092"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 ランタイム、モジュール、およびダウンストリーム デバイスとの間の通信をセキュリティで保護するため、IoT Edge デバイスには証明書が必要です。
 必要な証明書を作成するための証明機関がない場合は、デモ用の証明書を使用し、テスト環境で IoT Edge の機能を試すことができます。

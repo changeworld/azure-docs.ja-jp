@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 075b04414c752ce87365d03212fcdabab6eaa7dd
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 43c57950d317de42df666ddd25cbcb2e9a4c9611
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102119826"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103488875"
 ---
 # <a name="configure-saml-identity-provider-options-with-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して SAML ID プロバイダー オプションを構成する
 
@@ -379,7 +379,7 @@ SAML ID プロバイダーとのフェデレーションの構成とデバッグ
 * ID プロバイダーによってエラー メッセージが返されるかどうかを確認します。
 * アサーション セクションが暗号化されているかどうかを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Application Insights](troubleshoot-with-application-insights.md) を使用してカスタム ポリシーに関する問題を診断する方法について説明します。 
 

@@ -1,5 +1,5 @@
 ---
-title: スタンドアロンのマイクロ エージェントの概要 (プレビュー)
+title: スタンドアロンのマイクロ エージェントの概要
 titleSuffix: Azure Defender for IoT
 description: Azure Defender for IoT セキュリティ エージェントを使用すると、新しい IoT デバイスと Azure IoT プロジェクトにセキュリティを直接組み込むことができます。
 author: shhazam-ms
@@ -8,14 +8,14 @@ ms.author: shhazam
 ms.date: 1/19/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 84afa4205b57481efc3ed9df805cfa7a3657a6c8
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: a3f71860801c7f611a10acd4ec4e8f8ed03ab20a
+ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809661"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102120081"
 ---
-# <a name="standalone-micro-agent-overview-preview"></a>スタンドアロンのマイクロ エージェントの概要 (プレビュー)
+# <a name="standalone-micro-agent-overview"></a>スタンドアロンのマイクロ エージェントの概要 
 
 セキュリティは、IoT 実装者にとってほぼ普遍的な問題です。 IoT デバイスには、エンドポイント監視、セキュリティ体制管理、および脅威検出 (これらすべてに非常に独特なパフォーマンス要件があります) に対する固有のニーズがあります。 
 
@@ -47,4 +47,4 @@ Azure Defender for IoT マイクロ エージェントは簡単にデプロイ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[マイクロ エージェントの認証方法 (プレビュー)](concept-security-agent-authentication.md) を確認します。
+[マイクロ エージェントの認証方法](concept-security-agent-authentication.md)を確認します。
