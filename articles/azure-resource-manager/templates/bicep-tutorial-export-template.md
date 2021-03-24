@@ -2,15 +2,15 @@
 title: チュートリアル - Bicep 開発用に Azure portal から JSON テンプレートをエクスポートする
 description: エクスポートした JSON テンプレートを使用して Bicep 開発を行う方法について説明します。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0cba91a8c021f4baa90d1a4264bf84d3c56930ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3bc7ed4ada4f7810e9864778c7f76a0573c9dc89
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742919"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102632551"
 ---
 # <a name="tutorial-use-exported-json-template-from-the-azure-portal"></a>チュートリアル:Azure portal からエクスポートした JSON テンプレートを使用する
 
@@ -79,7 +79,7 @@ Visual Studio Code と Bicep 拡張機能に加え、Azure PowerShell または 
 
 逆コンパイルされてエクスポートされたテンプレートは、必要な Bicep の大部分を含みますが、カスタマイズして独自の Bicep ファイルにする必要があります。 独自の Bicep ファイルとエクスポートされた Bicep ファイルとの間の、パラメーターと変数の違いに特に注意してください。 もちろん、エクスポート プロセスでは、独自の Bicep ファイルで既に定義したパラメーターと変数は認識されません。
 
-次の例では、独自の Bicep ファイルに対する追加箇所が強調表示されています。 それには、エクスポートされたコードに加えていくつかの変更が含まれます。 最初に、独自の名前付け規則に合わせてパラメーターの名前が変更されています。 次に、App Service プランの場所に対する location パラメーターが使用されています。 3 つ目として、既定値で問題がないプロパティがいくつか削除されています。
+次の例では、独自の Bicep ファイルに対する追加箇所が示されています。 それには、エクスポートされたコードに加えていくつかの変更が含まれます。 最初に、独自の名前付け規則に合わせてパラメーターの名前が変更されています。 次に、App Service プランの場所に対する location パラメーターが使用されています。 3 つ目として、既定値で問題がないプロパティがいくつか削除されています。
 
 ファイル全体をコピーし、その内容で Bicep ファイルを置き換えます。
 

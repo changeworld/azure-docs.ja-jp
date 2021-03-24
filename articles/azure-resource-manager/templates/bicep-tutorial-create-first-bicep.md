@@ -2,16 +2,16 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルを作成してデプロイする
 description: Azure リソースをデプロイするための最初の Bicep ファイルを作成します。 このチュートリアルでは、Bicep ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 03/03/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 6a335b554fa0cfc2e12c8ddbe3e24a50fdedec0f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036351"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632579"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>チュートリアル: 最初の Azure Resource Manager Bicep ファイルを作成およびデプロイする
 
@@ -76,7 +76,7 @@ Bicep について学習を始める準備が整いました。
     リソース宣言には、次の 4 つのコンポーネントがあります。
 
     - **resource**: キーワード。
-    - **シンボリック名** (stg): シンボリック名は、bicep ファイルを通してリソースを参照するための識別子です。 これは、デプロイされるときに付けられるリソースの名前ではありません。 リソースの名前は、**name** プロパティによって定義されます。  この一覧の 4 番目のコンポーネントを参照してください。 このチュートリアル シリーズでは、チュートリアルをわかりやすくするために、ストレージ アカウント リソースのシンボリック名として **stg** を使用しています。
+    - **シンボリック名** (stg): シンボリック名は、bicep ファイルを通してリソースを参照するための識別子です。 これは、デプロイされるときに付けられるリソースの名前ではありません。 リソースの名前は、**name** プロパティによって定義されます。  この一覧の 4 番目のコンポーネントを参照してください。 このチュートリアル シリーズでは、チュートリアルをわかりやすくするために、ストレージ アカウント リソースのシンボリック名として **stg** を使用しています。 シンボリック名を使用してオブジェクトのプロパティの完全な一覧を取得する方法については、「[出力の追加](./bicep-tutorial-add-outputs.md)」を参照してください。
     - **リソースの種類** (Microsoft.Storage/storageAccounts@2019-06-01): リソース プロバイダー (Microsoft.Storage)、リソースの種類 (storageAccounts)、および apiVersion (2019-06-01) で構成されます。 リソース プロバイダーからは、それぞれ独自の API バージョンが公開されているため、これはその種類に固有の値となります。 [ARM テンプレート リファレンス](/azure/templates/)で、さまざまな Azure リソースの種類と apiVersion を 見つけることができます。
     - **プロパティ** (= {...} 内のすべてのもの): これらは、特定のリソースの種類に指定する特定のプロパティです。 これらは、ARM テンプレートで使用できるプロパティとまったく同じです。 すべてのリソースに、`name` プロパティがあります。 ほとんどのリソースには、リソースのデプロイ先リージョンを設定する `location` プロパティがあります。 その他のプロパティは、リソースの種類と API バージョンにより異なります。 API バージョンと利用可能なプロパティの関係を理解することが大切ですので、もう少し踏み込んでみましょう。
 

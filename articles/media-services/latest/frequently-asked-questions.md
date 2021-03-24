@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3ebff5a40528e9e3ea0e75c4b51529638de34b5d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: d1c2fd2ac7f809b4a70a0edffbddfb6e733fed57
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505768"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871403"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -47,12 +47,6 @@ ms.locfileid: "102505768"
 ### <a name="how-do-i-stream-to-apple-ios-devices"></a>Apple iOS デバイスにはどのようにしてストリーミングしますか?
 
 パスの終わり (URL の「 **/manifest**」の部分の後) に **(format=m3u8-aapl)** が指定されていることを確認します。これは、Apple iOS ネイティブ デバイスで使用するために HTTP ライブ ストリーミング (HLS) コンテンツを返すようにストリーミング元のサーバーに指示します。 詳細については、「[コンテンツの配信](dynamic-packaging-overview.md)」を参照してください。
-
-### <a name="how-do-i-configure-media-reserved-units"></a>メディア占有ユニットの構成方法を教えてください。
-
-Media Services v3 または Video Indexer によってトリガーされる音声分析と動画分析ジョブでは、お使いのアカウントを 10 個の S3 メディア占有ユニット (MRU) でプロビジョニングすることをお勧めします。 10 個を超える S3 MRU が必要な場合は、[Azure portal](https://portal.azure.com/) を使用してサポート チケットを開いてください。
-
-詳細については、「[メディア処理のスケーリング](media-reserved-units-cli-how-to.md)」を参照してください。
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>推奨される動画の処理方法は?
 
@@ -86,12 +80,12 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 
 #### <a name="server-side"></a>サーバー側
 
-Azure Event Grid イベントをサブスクライブすることで、ライブ イベントを監視できます。 詳細については、「[EventGrid イベント スキーマ](media-services-event-schemas.md#live-event-types)」を参照してください。
+Azure Event Grid イベントをサブスクライブすることで、ライブ イベントを監視できます。 詳細については、「[EventGrid イベント スキーマ](monitoring/media-services-event-schemas.md#live-event-types)」を参照してください。
 
 次のいずれかを実行できます。
 
-* ストリーム レベルの [Microsoft.Media.LiveEventEncoderDisconnected](media-services-event-schemas.md#liveeventencoderdisconnected) を[サブスクライブ](reacting-to-media-services-events.md)して、しばらく再接続を受信していないことを監視し、ライブ イベントを停止して削除します。
-* トラック レベルの[ハートビート](media-services-event-schemas.md#liveeventingestheartbeat) イベントを[サブスクライブ](reacting-to-media-services-events.md)します。 すべてのトラックで受信ビットレートが 0 に低下した場合、または最後のタイム スタンプが増加しなくなった場合は、ライブ イベントを安全にシャットダウンできます。 ハートビート イベントは各トラックで 20 秒ごとに発生するため、若干冗長になる可能性があります。
+* ストリーム レベルの [Microsoft.Media.LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md#liveeventencoderdisconnected) を[サブスクライブ](monitoring/reacting-to-media-services-events.md)して、しばらく再接続を受信していないことを監視し、ライブ イベントを停止して削除します。
+* トラック レベルの[ハートビート](monitoring/media-services-event-schemas.md#liveeventingestheartbeat) イベントを[サブスクライブ](monitoring/reacting-to-media-services-events.md)します。 すべてのトラックで受信ビットレートが 0 に低下した場合、または最後のタイム スタンプが増加しなくなった場合は、ライブ イベントを安全にシャットダウンできます。 ハートビート イベントは各トラックで 20 秒ごとに発生するため、若干冗長になる可能性があります。
 
 ###  <a name="how-do-i-insert-breaksvideos-and-image-slates-during-a-live-stream"></a>ライブ ストリーミング中に中断 / 動画またはイメージ スレートを挿入するにはどうすればいいですか?
 

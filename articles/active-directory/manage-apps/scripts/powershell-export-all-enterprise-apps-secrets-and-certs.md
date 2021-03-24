@@ -11,15 +11,15 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 5c0b661f80bf7100215b25a66e5b5337af01ba75
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 20caefe74a7c047fb8690bb1d9e6f4eb9da7e9b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583416"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102635197"
 ---
 # <a name="export-secrets-and-certificates-for-enterprise-apps"></a>エンタープライズ アプリのシークレットと証明書をエクスポートする
-この PowerShell スクリプトの例では、指定したエンタープライズ アプリのすべてのシークレットと証明書をディレクトリから CSV ファイルにエクスポートします。
+この PowerShell スクリプトの例では、指定したエンタープライズ アプリのすべてのシークレット、証明書、所有者をディレクトリから CSV ファイルにエクスポートします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,10 +34,11 @@ ms.locfileid: "102583416"
 "Add-Member" コマンドは、CSV ファイル内に列を作成する役割を担います。
 エクスポートを非対話的に行う場合は、PowerShell で CSV ファイル パスを使用して "$Path" 変数を直接変更できます。
 
-| コマンド | Notes |
+| コマンド | メモ |
 |---|---|
-| [Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication?view=azureadps-2.0&preserve-view=true) | ディレクトリからアプリケーションを取得します。 |
-| [Get-AzureADApplicationOwner](/powershell/module/azuread/Get-AzureADApplicationOwner?view=azureadps-2.0&preserve-view=true) | ディレクトリからアプリケーションの所有者を取得します。 |
+| [Get-AzureADServicePrincipal](/powershell/module/azuread/Get-azureADServicePrincipal?view=azureadps-2.0&preserve-view=true) | ディレクトリからエンタープライズ アプリケーションを取得します。 |
+| [Get-AzureADServicePrincipalOwner](/powershell/module/azuread/Get-AzureADServicePrincipalOwner?view=azureadps-2.0&preserve-view=true) | ディレクトリからエンタープライズ アプリケーションの所有者を取得します。 |
+
 
 ## <a name="next-steps"></a>次のステップ
 

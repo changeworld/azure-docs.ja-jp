@@ -2,16 +2,16 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルのリソースにタグを追加する
 description: Bicep ファイルでデプロイするリソースにタグを追加します。 タグを使用すると、リソースを論理的に整理できます。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 05bb68609705ac4c13ad77d2c74db7c105ba23fb
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ea5e078eb692d002b3f86cd43663dd042d692611
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742925"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102632606"
 ---
 # <a name="tutorial-add-tags-in-azure-resource-manager-bicep-files"></a>チュートリアル - Azure Resource Manager Bicep ファイルにタグを追加する
 
@@ -37,7 +37,7 @@ Visual Studio Code と Bicep 拡張機能に加え、Azure PowerShell または 
 
 リソースにタグを付けて、使用法を識別するために役立つ値を追加します。 たとえば、環境とプロジェクトを一覧表示するタグを追加できます。 コスト センターまたはリソースを所有するチームを識別するタグを追加できます。 組織にとって意味のある値を追加してください。
 
-次の例では、Bicep ファイルに対する変更箇所が強調表示されています。 ファイル全体をコピーし、その内容で Bicep ファイルを置き換えます。
+次の例では、Bicep ファイルに対する変更箇所が示されています。 ファイル全体をコピーし、その内容で Bicep ファイルを置き換えます。
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.bicep" range="1-81" highlight="27-30,38,51,71":::
 

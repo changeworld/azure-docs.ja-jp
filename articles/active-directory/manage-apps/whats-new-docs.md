@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: cd46bb1c6905747ffb98c7e950f66e648c541534
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601765"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775512"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
@@ -141,7 +141,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="new-articles"></a>新しい記事
 - [SAML ベースのシングル サインオンの構成](configure-saml-single-sign-on.md)
-- [アプリ ギャラリーに記載されていないアプリケーションで Azure AD を使用する](non-gallery-apps.md)
 - [[今すぐ入手する] - Azure Marketplace からアプリを追加する](get-it-now-azure-marketplace.md)
 - [クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する](add-application-portal-configure.md)
 - [クイック スタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへのシングル サインオン (SSO) を設定する](add-application-portal-setup-sso.md)

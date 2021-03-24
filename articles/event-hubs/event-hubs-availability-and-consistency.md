@@ -4,12 +4,12 @@ description: パーティションを使用して Azure Event Hubs で最大限�
 ms.topic: article
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 62249357f8c6aa8521924dceef26a6f2c1e9e296
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: e014a33e94fe7f90569dd2ef1e9b620eef274842
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103600847"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952866"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs における可用性と一貫性
 この記事では、Azure Event Hubs でサポートされる可用性と整合性に関する情報を提供します。 
@@ -43,7 +43,7 @@ Event Hubs サービスで負荷を複数のパーティションに分散でき
 このセクションでは、さまざまなプログラミング言語を使用して、特定のパーティションにイベントを送信する方法について説明します。 
 
 ### <a name="net"></a>[.NET](#tab/dotnet)
-特定のパーティションにイベントを送信するには、[CreateBatchOptions](//dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions) に `PartitionId` または `PartitionKey` を指定して、[EventHubProducerClient.CreateBatchAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) メソッドを使用してバッチを作成します。 次のコードでは、パーティション キーを指定することによって、特定のパーティションにイベントのバッチを送信します。 
+特定のパーティションにイベントを送信するには、[CreateBatchOptions](/dotnet/api/azure.messaging.eventhubs.producer.createbatchoptions) に `PartitionId` または `PartitionKey` を指定して、[EventHubProducerClient.CreateBatchAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.createbatchasync#Azure_Messaging_EventHubs_Producer_EventHubProducerClient_CreateBatchAsync_Azure_Messaging_EventHubs_Producer_CreateBatchOptions_System_Threading_CancellationToken_) メソッドを使用してバッチを作成します。 次のコードでは、パーティション キーを指定することによって、特定のパーティションにイベントのバッチを送信します。 Event Hubs によって、1 つのパーティション キー値を共有するすべてのイベントが一緒に格納され、到着順に配信されます。
 
 ```csharp
 var batchOptions = new CreateBatchOptions { PartitionKey = "cities" };
