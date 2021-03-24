@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 3c1ec38e792987f4bd7208c3bf57a882a05f4f46
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 330c02f15c0818f0a5c69088757c92a91a523589
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101648052"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952645"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-samsung-knox-and-business-services"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Samsung Knox およびビジネス サービスの統合
 
@@ -141,7 +141,7 @@ Samsung Knox およびビジネス サービスに対する Azure AD SSO を構�
 
 * [SamsungKnox.com](https://samsungknox.com/) に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Samsung Knox およびビジネス サービス] タイルをクリックすると、[SamsungKnox.com](https://samsungknox.com/) にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Samsung Knox およびビジネス サービス] タイルをクリックすると、[SamsungKnox.com](https://samsungknox.com/) にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,10 +7,10 @@ ms.date: 05/30/2019
 ms.author: peshultz
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: b441b4c4fcbeb089cef24c3a84fa33021e7840de
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97106384"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>チュートリアル:Azure Functions を使用して Batch ジョブをトリガーする
@@ -30,7 +30,7 @@ ms.locfileid: "97106384"
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
 * Azure Batch アカウントおよびリンクされた Azure ストレージ アカウント。 アカウントを作成およびリンクする方法の詳細については、「[Batch アカウントを作成する](quick-create-portal.md#create-a-batch-account)」を参照してください。
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
-* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+* [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

@@ -5,16 +5,16 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/31/2020
 ms.author: baanders
-ms.openlocfilehash: 7e43ab6d419d6a08973864838c66aef0941d74f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 984739a728f6ac5e28eeb561e0d7b6ec0485ca13
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90606860"
 ---
 まず、次のコマンドを実行して、既にインストールされているすべての拡張機能を一覧表示します。
 
-```azurecli
+```azurecli-interactive
 az extension list
 ```
 
@@ -23,18 +23,18 @@ az extension list
 出力結果を見て、拡張機能のセットアップで実行すべきコマンドを次の中から特定します (実行すべきコマンドが複数ある場合もあります)。
 * 一覧に `azure-iot` が含まれている場合: 拡張機能は既に存在しています。 このコマンドを実行して、最新の更新プログラムが適用されていること、および利用可能な更新プログラムがないことを確認します。
 
-   ```azurecli
+   ```azurecli-interactive
    az extension update --name azure-iot
    ```
 
 * 一覧に `azure-iot` が含まれ **ない** 場合: 拡張機能をインストールする必要があります。 次のコマンドを実行します。
 
-    ```azurecli
+    ```azurecli-interactive
     az extension add --name azure-iot
     ```
 
 * 一覧に `azure-iot-cli-ext` が含まれている場合: これは従来のバージョンの拡張機能です。 同時にインストールする拡張機能のバージョンは 1 つのみとしてください。従来の拡張機能はアンインストールする必要があります。 次のコマンドを実行します。
 
-   ```azurecli
+   ```azurecli-interactive
    az extension remove --name azure-cli-iot-ext
    ```

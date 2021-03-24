@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 12/10/2020
 ms.author: wolfma
 ms.openlocfilehash: 329241c2660ff7828f57fb21daeb6de20caedc43
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "97504459"
 ---
 | [地理的な場所] | リージョン | リージョン識別子 |
 | ----- | ----- | ----- |
 | アメリカ | 米国中部 | `centralus` |
-| アメリカ | East US | `eastus` |
+| アメリカ | 米国東部 | `eastus` |
 | アメリカ | 米国東部 2 | `eastus2` |
 | アメリカ | 米国中北部 | `northcentralus` |
 | アメリカ | 米国中南部 | `southcentralus` |
