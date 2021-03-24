@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: a75896dde7a23ea346e0af73ed145094e78812ca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b09587d90024a8c376be8b0d93f7ef7b6cc51a1e
+ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654495"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103008486"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C のサンプル コード
 
@@ -47,9 +47,10 @@ ms.locfileid: "101654495"
 
 | サンプル | 説明 |
 |--------| ----------- |
+| [ms-identity-javascript-react-tutorial](https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/tree/main/3-Authorization-II/2-call-api-b2c) | Web API を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL React を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。 |
 | [ms-identity-b2c-javascript-spa](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) | Web API を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。 |
-| [javascript-nodejs-management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | B2C ディレクトリ内のユーザーを管理するために Microsoft Graph を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。|
 | [javascript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) | Web API を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、暗黙的なフローを使用しています。|
+| [javascript-nodejs-management](https://github.com/Azure-Samples/ms-identity-b2c-javascript-nodejs-management/tree/main/Chapter1) | B2C ディレクトリ内のユーザーを管理するために Microsoft Graph を呼び出すシングルページ アプリケーション (SPA)。 認証は、MSAL.js を使用して、Azure AD B2C によって行われます。 このサンプルでは、認可コード フロー (PKCE あり) を使用しています。|
 
 ## <a name="consoledaemon-apps"></a>コンソールまたはデーモン アプリ
 

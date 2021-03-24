@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: fc60b838219e73b008f82271353ca75d0d24d2e3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92517193"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>チュートリアル: Azure Active Directory と Mercer BenefitsCentral (MBC) の統合
@@ -41,7 +41,7 @@ Azure AD と Mercer BenefitsCentral (MBC) の統合を構成するには、次�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Mercer BenefitsCentral (MBC) では、 **IDP** によって開始される SSO がサポートされます
+* Mercer BenefitsCentral (MBC) では、**IDP** によって開始される SSO がサポートされます
 
 ## <a name="adding-mercer-benefitscentral-mbc-from-the-gallery"></a>ギャラリーから Mercer BenefitsCentral (MBC) を追加する
 
@@ -61,13 +61,13 @@ Azure AD への Mercer BenefitsCentral (MBC) の統合を構成するには、�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Mercer BenefitsCentral (MBC)** 」と入力し、結果ウィンドウから **[Mercer BenefitsCentral (MBC)]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Mercer BenefitsCentral (MBC)** 」と入力し、結果ウィンドウから **[Mercer BenefitsCentral (MBC)]** を選択し、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
 
      ![結果一覧の Mercer BenefitsCentral (MBC)](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Mercer BenefitsCentral (MBC) を利用した Azure AD のシングル サインオンを構成してテストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Mercer BenefitsCentral (MBC) を利用した Azure AD のシングル サインオンを構成してテストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Mercer BenefitsCentral (MBC) 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Mercer BenefitsCentral (MBC) で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
@@ -142,9 +142,9 @@ Mercer BenefitsCentral (MBC) を利用して Azure AD シングル サインオ�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[User name]\(ユーザー名\)** フィールドに「 **brittasimon\@yourcompanydomain.extension** 」と入力します。  
+    b. **[User name]\(ユーザー名\)** フィールドに「**brittasimon\@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。

@@ -10,10 +10,10 @@ ms.workload: multiple
 ms.topic: sample
 ms.date: 03/19/2018
 ms.openlocfilehash: 750a2100d34e02cac7c613cc6b95160fc348b535
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96576368"
 ---
 # <a name="update-the-rdp-port-range-values"></a>RDP ポート範囲の値の更新
@@ -32,7 +32,7 @@ ms.locfileid: "96576368"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | `Microsoft.Network/loadBalancers` リソースを取得します。 |
 |[Set-AzResource](/powershell/module/az.resources/set-azresource)|`Microsoft.Network/loadBalancers` リソースを更新します。|

@@ -15,10 +15,10 @@ ms.date: 11/28/2017
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: 167fa74b04af7c086c2c95b0fdd56e5932483080
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87076206"
 ---
 # <a name="add-an-inbound-network-security-group-rule"></a>受信ネットワーク セキュリティ グループ ルールの追加
@@ -37,7 +37,7 @@ ms.locfileid: "87076206"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | `Microsoft.Network/networkSecurityGroups` リソースを取得します。 |
 |[Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup)| ネットワーク セキュリティ グループを名前を条件に取得します。|

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 01/08/2020
 ms.custom: sqldbrb=1
 ms.openlocfilehash: e2f240247cbba0f80254d504792df45be55c6a1b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92790408"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>SQLite データベースを Azure SQL Database サーバーレスに移行する
