@@ -78,7 +78,7 @@ Media Services v3 を使用して、コンテンツのエンコードとパッ�
 * [アカウントの作成 - CLI](./create-account-howto.md)
 * [API へのアクセス - CLI](./access-api-howto.md)
 * [HTTPS をジョブの入力とするエンコード - .NET](job-input-from-http-how-to.md)  
-* [イベントの監視 - ポータル](monitor-events-portal-how-to.md)
+* [イベントの監視 - ポータル](monitoring/monitor-events-portal-how-to.md)
 * [マルチ DRM を使用した動的な暗号化 - .NET](protect-with-drm.md) 
 * [カスタム変換を使用してエンコードする方法 - CLI](custom-preset-cli-howto.md)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: f7e371f892fb0796a310be46a402781e8eb57e1a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: f2c66b08d399ddf53686074079665e36be9aace7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103009421"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104870470"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 
@@ -135,7 +135,6 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Mega Fame Electronics Co. Limited
 * MIRC Electronics Limited
 * MOKA INTERNATIONAL LIMITED
-* Nintendo Co., Ltd.
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
 * Qingdao Haier Optronics Co., Ltd.
@@ -149,7 +148,6 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin Industrial Corp.
 * Sky CP Ltd
-* Sky Deutschland Fernsehen GmbH & Co. KG
 * SMARDTV GLOBAL SAS
 * SoftAtHome
 * Sony Corporation

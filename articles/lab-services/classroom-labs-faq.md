@@ -4,10 +4,10 @@ description: この記事では、Azure Lab Services のラボについてよく
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 757af8f30e9a71a3889d9f625c87a002af2e1302
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96437186"
 ---
 # <a name="labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Azure Lab Services のラボ — よく寄せられる質問 (FAQ)
