@@ -4,10 +4,10 @@ description: Azure Event Grid で Service Bus イベント用に提供されて�
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.openlocfilehash: d3e14788d49697a1f86624bbe8d6d0ec2eb072c8
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100363247"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Event Grid ソースとしての Azure Service Bus

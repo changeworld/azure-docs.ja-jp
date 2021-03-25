@@ -4,12 +4,12 @@ description: Enterprise セキュリティ パッケージを使用して Azure 
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/04/2019
-ms.openlocfilehash: b0f8ba4adfa4b08c23d3f69fa4e2b01f4580bb19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: bc31c3d71590a6b8c0b324ffcb8c10129a9f8699
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742213"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104863243"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
 
@@ -116,7 +116,7 @@ HDInsight Enterprise セキュリティ パッケージには次のロールが�
 2. 左側のメニューから、 **[ロール]** を選択します。
 3. 青い疑問符を選択して、アクセス許可を表示します。
 
-    ![ESP HDInsight のロールのアクセス許可](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png" alt-text="ESP HDInsight のロールのアクセス許可" border="true":::
 
 ## <a name="open-the-ambari-management-ui"></a>Ambari Management UI を開く
 
@@ -124,25 +124,25 @@ HDInsight Enterprise セキュリティ パッケージには次のロールが�
 1. クラスター管理者のドメイン ユーザー名とパスワードを使用して、Ambari にサインインします。
 1. 右上隅から **[管理者]** ドロップダウン メニューを選択し、 **[Ambari の管理]** を選択します。
 
-    ![ESP HDInsight の Apache Ambari の管理](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png" alt-text="ESP HDInsight の Apache Ambari の管理" border="true":::
 
     次のような UI になります。
 
-    ![ESP HDInsight Apache Ambari Management UI](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png" alt-text="ESP HDInsight Apache Ambari Management UI" border="true":::
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Active Directory から同期されているドメイン ユーザーの一覧表示
 
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューから、 **[ユーザー]** を選択します。 Active Directory から HDInsight クラスターに同期されているすべてのユーザーが表示されます。
 
-    ![ESP HDInsight での Ambari Management UI によるユーザーの一覧表示](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png" alt-text="ESP HDInsight での Ambari Management UI によるユーザーの一覧表示" border="true":::
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Active Directory から同期されているドメイン グループの一覧表示
 
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューから、 **[グループ]** を選択します。 Active Directory から HDInsight クラスターに同期されているすべてのグループが表示されます。
 
-    ![ESP HDInsight での Ambari Management UI によるグループの一覧表示](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png" alt-text="ESP HDInsight での Ambari Management UI によるグループの一覧表示" border="true":::
 
 ## <a name="configure-hive-views-permissions"></a>Hive ビューのアクセス許可の構成
 
@@ -150,12 +150,12 @@ HDInsight Enterprise セキュリティ パッケージには次のロールが�
 2. 左側のメニューから、 **[ビュー]** を選択します。
 3. **[HIVE]** を選択して、詳細を表示します。
 
-    ![ESP HDInsight での Ambari Management UI による Hive ビュー](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png" alt-text="ESP HDInsight での Ambari Management UI による Hive ビュー" border="true":::
 
 4. **[Hive ビュー]** リンクを選択して、Hive ビューを構成します。
 5. **[Permissions (アクセス許可)]** セクションまで下へスクロールします。
 
-    ![ESP HDInsight での Ambari Management UI による Hive ビューのアクセス許可の構成](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    :::image type="content" source="./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png" alt-text="ESP HDInsight での Ambari Management UI による Hive ビューのアクセス許可の構成" border="true":::
 
 6. **[ユーザーの追加]** または **[グループの追加]** を選択し、Hive ビューを使用できるユーザーまたはグループを指定します。
 

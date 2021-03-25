@@ -4,10 +4,10 @@ description: Microsoft Teams 内での Azure Lab Services の使用の概要を�
 ms.topic: conceptual
 ms.date: 10/07/2020
 ms.openlocfilehash: f39613427ed174dfca80d4a48be9473ab7025e79
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96433915"
 ---
 # <a name="azure-lab-services-within-microsoft-teams"></a>Microsoft Teams 内の Azure Lab Services

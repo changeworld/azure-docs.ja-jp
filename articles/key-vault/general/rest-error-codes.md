@@ -11,10 +11,10 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
 ms.openlocfilehash: 30b7e34f2a791cfd8dec1a6d8e81d706fa07939f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91631224"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API のエラー コード
@@ -55,7 +55,7 @@ Content-Length: 31
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>トークンに適切なリソースが関連付けられていない。 
 
-Azure OAUTH エンドポイントからアクセス トークンを要求するときは、"resource" というパラメーターが必須です。 この値を使うと、用途に合わせてトークンのスコープを決定できるため、トークン プロバイダーにとって重要です。 Key Vault にアクセスする**すべての**トークンのリソースは、*https:\//vault.keyvault.net* (末尾のスラッシュなし) です。
+Azure OAUTH エンドポイントからアクセス トークンを要求するときは、"resource" というパラメーターが必須です。 この値を使うと、用途に合わせてトークンのスコープを決定できるため、トークン プロバイダーにとって重要です。 Key Vault にアクセスする **すべての** トークンのリソースは、*https:\//vault.keyvault.net* (末尾のスラッシュなし) です。
 
 ### <a name="the-token-is-expired"></a>トークンの有効期限が切れている
 
