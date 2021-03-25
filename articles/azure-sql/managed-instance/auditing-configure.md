@@ -211,7 +211,7 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
 - システム関数 `sys.fn_get_audit_file` (T-SQL) を使って、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file のドキュメント](/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)を参照してください。
 
-- [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは、監査ログを格納するために定義されたコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](../database/audit-log-format.md)を参照してください。
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは、監査ログを格納するために定義されたコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](../database/audit-log-format.md)を参照してください。
 
 - 監査ログの使い方の完全な一覧については、[Azure SQL Database 監査の使用](../../azure-sql/database/auditing-overview.md)に関するページをご覧ください。
 
