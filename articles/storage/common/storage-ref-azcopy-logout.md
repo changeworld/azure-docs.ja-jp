@@ -9,17 +9,17 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 987f5de78edc4c0fe2814259a1461e58018ec270
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98879022"
 ---
 # <a name="azcopy-logout"></a>azcopy logout
 
 ユーザーをログアウトし、Azure Storage リソースへのアクセスを終了します。
 
-## <a name="synopsis"></a>概要
+## <a name="synopsis"></a>構文
 
 このコマンドは、現在のユーザーのキャッシュされているすべてのログイン情報を削除します。
 

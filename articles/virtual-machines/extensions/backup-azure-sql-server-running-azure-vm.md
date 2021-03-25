@@ -9,10 +9,10 @@ ms.author: dacurwin
 ms.collection: windows
 ms.date: 07/05/2019
 ms.openlocfilehash: 46cc4b23ca7dd70da3f917a3399406480dc9fdbd
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102557099"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM で実行されている SQL Server 用の Azure Backup

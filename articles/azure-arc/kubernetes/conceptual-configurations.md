@@ -9,10 +9,10 @@ ms.author: shasb
 description: この記事では、Azure Arc 対応 Kubernetes の GitOps と構成の機能の概念的な概要を示します。
 keywords: Kubernetes, Arc, Azure, コンテナー, 構成, GitOps
 ms.openlocfilehash: 88a30876b25730e4cb0b4b1e19fac94b9e556adc
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102121798"
 ---
 # <a name="configurations-and-gitops-with-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes に関する構成と GitOps

@@ -3,12 +3,12 @@ title: Node.js 向け Azure Batch クライアント ライブラリを使用す
 description: Azure Batch の基本的な概念について説明し、Node.js でシンプルなソリューションを作成します。
 ms.topic: how-to
 ms.date: 10/08/2020
-ms.openlocfilehash: 36a127a20014e87554f0d3e3927b05679b6f72f1
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: a2d86582c94804a20a3a9e952bc64d60414e25a5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737288"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656024"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 
@@ -32,9 +32,9 @@ ms.locfileid: "98737288"
 
 Node.js クライアントは、準備タスク (後述) と、ストレージ アカウント内のコンテナーの数に応じた一連のタスクを備えたバッチ ジョブをデプロイします。 スクリプトは、GitHub リポジトリからダウンロードできます。
 
-- [Node.js クライアント](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
-- [準備タスクのシェル スクリプト](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-- [csv から JSON への変換処理スクリプト (Python)](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+- [Node.js クライアント](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/sample.js)
+- [準備タスクのシェル スクリプト](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/startup_prereq.sh)
+- [csv から JSON への変換処理スクリプト (Python)](https://github.com/Azure-Samples/azure-batch-samples/blob/master/JavaScript/Node.js/processcsv.py)
 
 > [!TIP]
 > 上記リンクから入手できる Node.js クライアントには、Azure Function App としてデプロイするための具体的なコードが含まれていません。 Function App を作成するための手順については、以下のリンクを参照してください。

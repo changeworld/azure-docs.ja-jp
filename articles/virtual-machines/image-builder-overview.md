@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: references_regions
 ms.reviewer: cynthn
-ms.openlocfilehash: 0e72c35af1f1990527b0154d2ba47a45d3f8b8c9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 20bb6925f859d497046eb42bbafb5264826b77b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425628"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604068"
 ---
 # <a name="preview-azure-image-builder-overview"></a>プレビュー:Azure Image Builder の概要
 
@@ -70,7 +70,7 @@ Azure VM Image Builder は、Azure リソース プロバイダーからアク�
 
 テンプレート構成は、PowerShell、Az CLI、ARM テンプレートを使用して、および Azure VM Image Builder DevOps タスクを使用して渡すことができ、それをサービスに送信すると、イメージ テンプレートのリソースが作成されます。 イメージ テンプレートのリソースが作成されると、サブスクリプションに作成されたステージング リソース グループが、IT_\<DestinationResourceGroup> _\<TemplateName>_ \(GUID) という形式で表示されます。 ステージング リソース グループには、ScriptURI プロパティの File、Shell、PowerShell カスタマイズで参照されるファイルとスクリプトが含まれています。
 
-イメージ テンプレートのリソースで `Run` を呼び出すビルドを実行するために、サービスにより、ビルドのために追加のリソース (VM、ネットワーク、ディスク、ネットワーク アダプターなど) がデプロイされます。既存の VNET Image Builder を使用せずにイメージをビルドすると、パブリック IP と NSG もデプロイされ、このサービスは SSH または WinRM を使用してビルド VM に接続します。 既存の VNET を選択した場合、サービスは Azure Private Link を使用してデプロイされ、パブリック IP アドレスは必要ありません。Image Builder のネットワークの詳細については、[詳細](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking)に関するページを確認してください。
+イメージ テンプレートのリソースで `Run` を呼び出すビルドを実行するために、サービスにより、ビルドのために追加のリソース (VM、ネットワーク、ディスク、ネットワーク アダプターなど) がデプロイされます。既存の VNET Image Builder を使用せずにイメージをビルドすると、パブリック IP と NSG もデプロイされ、このサービスは SSH または WinRM を使用してビルド VM に接続します。 既存の VNET を選択した場合、サービスは Azure Private Link を使用してデプロイされ、パブリック IP アドレスは必要ありません。Image Builder のネットワークの詳細については、[詳細](./linux/image-builder-networking.md)に関するページを確認してください。
 
 ビルドが完了すると、すべてのリソースが削除されますが、ステージング リソース グループとストレージ アカウントを除きます。これらを削除するには、イメージ テンプレートのリソースを削除するか、そのままにしてビルドを再度実します。
 
@@ -84,7 +84,7 @@ Azure VM Image Builder は、Azure リソース プロバイダーからアク�
 
 Azure VM Image Builder で、マネージド イメージまたは Shared Image Gallery にイメージを配布できるようにするには、イメージの読み取りと書き込みのアクセス許可を持つ Azure ユーザー割り当て ID を作成する必要があります。 Azure Storage にアクセスする場合は、プライベートおよびパブリック コンテナーを読み取るためのアクセス許可が必要です。
 
-アクセス許可の詳細については、[PowerShell](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-powershell) および [AZ CLI](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-permissions-cli) に関するページを参照してください。
+アクセス許可の詳細については、[PowerShell](./linux/image-builder-permissions-powershell.md) および [AZ CLI](./linux/image-builder-permissions-cli.md) に関するページを参照してください。
 
 ## <a name="costs"></a>コスト
 Azure Image Builder を使用してイメージの作成、構築、保存を行うと、コンピューティング、ネットワーク、ストレージのコストがかかります。 これらのコストは、手動でカスタム イメージを作成する際に発生するコストと同様です。 リソースについては、Azure の料金で課金されます。 
@@ -101,4 +101,3 @@ Azure Image Builder によって、選択したリージョンにイメージが
 ## <a name="next-steps"></a>次のステップ 
  
 Azure Image Builder を試すには、[Linux](./linux/image-builder.md) または [Windows](./windows/image-builder.md) イメージの構築に関する記事を参照してください。
-

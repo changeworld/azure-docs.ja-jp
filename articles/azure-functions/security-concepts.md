@@ -4,10 +4,10 @@ description: 一般的な攻撃に対して、Azure で実行される関数コ�
 ms.date: 4/13/2020
 ms.topic: conceptual
 ms.openlocfilehash: 351bdca7ff94b6c058b5ab62fd9c16d707e7dc78
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100368491"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions のセキュリティ保護
@@ -60,7 +60,7 @@ HTTPS を必須にする場合は、最新の TLS バージョンも必須にす
 
 | アクション                                        | Scope                    | 有効なキー         |
 |-----------------------------------------------|--------------------------|--------------------|
-| 関数の実行                            | 当該の関数        | 関数           |
+| 関数の実行                            | 当該の関数        | 機能           |
 | 関数の実行                            | すべての関数             | 関数またはホスト   |
 | 管理エンドポイントの呼び出し                        | 関数アプリ             | ホスト (マスターのみ) |
 | Durable Task 拡張機能 API の呼び出し              | 関数アプリ<sup>1</sup> | システム<sup>2</sup> |
