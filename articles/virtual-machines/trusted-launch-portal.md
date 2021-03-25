@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f5e361d32cf2ab436f92ce2ca86a054a6dd3337e
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: dec9c7581bbcf55196b04e0a76e9e61f81a27244
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553750"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582070"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>トラステッド起動を有効にして VM をデプロイする (プレビュー)
 
@@ -134,13 +134,13 @@ ls: cannot access '/dev/tpm0': No such file or directory
 
 テンプレートは、サブスクリプションごとに 1 回だけデプロイする必要があります。 サポートされているすべての VM に、`GuestAttestation` および `AzureSecurity` 拡張機能が自動的にインストールされます。 エラーが発生する場合は、もう一度テンプレートを再デプロイしてみてください。
 
-トラステッド起動の VM で vTPM とセキュア ブートに関する推奨事項を入手するには、[サブスクリプションへのイニシアティブの追加](https://docs.microsoft.com/azure/security-center/custom-security-policies#to-add-a-custom-initiative-to-your-subscription)に関するページを参照してください。
+トラステッド起動の VM で vTPM とセキュア ブートに関する推奨事項を入手するには、[サブスクリプションへのイニシアティブの追加](../security-center/custom-security-policies.md#to-add-a-custom-initiative-to-your-subscription)に関するページを参照してください。
  
 ## <a name="sign-things-for-secure-boot-on-linux"></a>Linux でセキュア ブートに関するものに署名する
 
 場合によっては、UEFI のセキュア ブートに関するものに署名することが必要になります。  たとえば、Ubuntu では「[How to sign things for Secure Boot](https://ubuntu.com/blog/how-to-sign-things-for-secure-boot)」(セキュア ブートに関するものに署名する方法) の説明に従うことが必要になる場合があります。 このような場合、お使いの VM の MOK ユーティリティ登録キーを入力する必要があります。 これを行うには、Azure シリアル コンソールを使用して MOK ユーティリティにアクセスする必要があります。
 
-1. Linux 用 Azure シリアル コンソールを有効にします。 詳細については、「[Linux 用シリアル コンソール](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/serial-console-linux)」を参照してください。
+1. Linux 用 Azure シリアル コンソールを有効にします。 詳細については、「[Linux 用シリアル コンソール](/troubleshoot/azure/virtual-machines/serial-console-linux)」を参照してください。
 1. [Azure Portal](https://portal.azure.com) にログインします。
 1. **[仮想マシン]** を見つけ、一覧から自分の VM を選択します。
 1. 左側のメニューで、 **[サポート + トラブルシューティング]** の **[シリアル コンソール]** を選択します。 右側にページが開いてシリアル コンソールが表示されます。

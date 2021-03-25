@@ -5,13 +5,13 @@ ms.service: data-factory
 ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
-ms.date: 03/04/2021
-ms.openlocfilehash: 06d04eb8679b4484f330b69a8cffb263d353bdcd
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.date: 03/15/2021
+ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102197873"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492763"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 
@@ -49,7 +49,10 @@ ms.locfileid: "102197873"
 ほとんどのユース ケースでは、ARM テンプレートにグローバル パラメーターを含めることをお勧めします。 これは、[CI/CD ドキュメント](continuous-integration-deployment.md)に記載されているソリューションとネイティブに統合されます。グローバル パラメーターは、環境によって変わることが多いため、既定で ARM テンプレート パラメーターとして追加されます。 **管理** ハブから有効にして、ARM テンプレートにグローバル パラメーターを含めることができます。
 
 > [!NOTE]
-> **ARM テンプレートに含める** 構成は、"Git モード" でのみ使用できます。 現在は "ライブ モード" または "Data Factory" モードのため、これは無効です。
+> **ARM テンプレートに含める** 構成は、"Git モード" でのみ使用できます。 現在は "ライブ モード" または "Data Factory" モードのため、これは無効です。 
+
+> [!WARNING]
+>パラメーター名に '-' を使用することはできません。 エラーコード "{"code":"BadRequest","message":"ErrorCode=InvalidTemplate,ErrorMessage=The expression >'pipeline().globalParameters.myparam-dbtest-url' is not valid: .....}" が表示されます。 ただし、パラメーター名に ‘_’ を使用することはできます。
 
 ![ARM テンプレートに含める](media/author-global-parameters/include-arm-template.png)
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: b985399eb89ae7bbf73d280775157207498f0080
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a995a110c4f777603e5b0273b6025cd68fe55b67
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100645342"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102532700"
 ---
 ## <a name="download-and-install"></a>ダウンロードしてインストールする
 
@@ -19,7 +19,7 @@ ms.locfileid: "100645342"
 Windows に Speech CLI をインストールするには、次の手順に従います。
 
 1. Windows では、お使いのプラットフォームに対応した [Microsoft Visual Studio 2019 の Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)が必要です。 これを初めてインストールする場合、再起動が必要になる場合があります。
-1. [.NET Core 3.1 SDK](/dotnet/core/install/linux) をインストールします。
+1. [.NET Core 3.1 SDK](/dotnet/core/install/windows) をインストールします。
 2. 次のコマンドを入力して、NuGet を使用して Speech CLI をインストールします。
 
    ```console
@@ -52,7 +52,7 @@ Speech CLI を使用する x64 アーキテクチャでは、次の Linux ディ
 
 Linux の x64 CPU で Speech CLI をインストールするには、次の手順に従います。
 
-1. [.NET Core 3.1](/dotnet/core/install/linux) をインストールします。
+1. [.NET Core 3.1 SDK](/dotnet/core/install/linux) をインストールします。
 2. 次のコマンドを入力して、NuGet を使用して Speech CLI をインストールします。
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
@@ -67,7 +67,7 @@ Linux の x64 CPU で Speech CLI をインストールするには、次の手�
 
 Docker コンテナー内に Speech CLI をインストールするには、次の手順に従います。
 
-1. プラットフォームにインストールされていない場合、<a href="https://www.docker.com/get-started" target="_blank">Docker Desktop をインストール<span class="docon docon-navigate-external x-hidden-focus"></span></a>します。
+1. プラットフォームにインストールされていない場合、<a href="https://www.docker.com/get-started" target="_blank">Docker Desktop をインストール</a>します。
 2. 新しいコマンド プロンプトまたはターミナルで、次のコマンドを入力します: 
    ```console   
    docker pull msftspeech/spx
@@ -118,7 +118,7 @@ sudo docker run -it -v ABSOLUTE_PATH:/data --rm msftspeech/spx
 たとえば、Windows では、次のコマンドによってキーが設定されます。
 
 ```console
-docker run -it -v c:\spx-data:/data --rm msftspeech/spx config --set @key SUBSCRIPTION-KEY
+docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY
 ```
 
 コマンド ライン ツールとのより拡張された操作については、entrypoint パラメーターを追加することで、対話型の bash シェルでコンテナーを開始できます。
@@ -171,8 +171,8 @@ Speech CLI の使用を開始するには、Speech サブスクリプション �
 サブスクリプション キーとリージョン識別子 (たとえば、 `eastus`、`westus`) を入手したら、次のコマンドを実行します。
 
 ```console
-spx config --set @key SUBSCRIPTION-KEY
-spx config --set @region REGION
+spx config @key --set SUBSCRIPTION-KEY
+spx config @region --set REGION
 ```
 
 これで、今後の SPX 要求のためのサブスクリプション認証が格納されるようになりました。 これらの格納されている値のいずれかを削除する必要がある場合は、`spx config @region --clear` または `spx config @key --clear` を実行します。

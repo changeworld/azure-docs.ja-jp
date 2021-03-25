@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/18/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 46f117b13909c2d9624b88e9f5d9a62c4c646e51
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: c2aceedd57bcc7cd88c4e822c7b696e36b28bd8f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500294"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579792"
 ---
 # <a name="tutorial-configure-arkose-labs-with-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Arkose Labs を構成する
 
@@ -81,13 +81,13 @@ Arkose Labs 統合には、次のコンポーネントが含まれています�
 
 5. **[作成]** を選択します。
 
-[カスタム属性](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-custom-attributes?pivots=b2c-user-flow)の詳細を確認してください。
+[カスタム属性](./user-flow-custom-attributes.md?pivots=b2c-user-flow)の詳細を確認してください。
 
 ### <a name="part-2---create-a-user-flow"></a>パート 2 - ユーザー フローを作成する
 
 ユーザー フローは、**サインアップ** と **サインイン**、または **サインアップ** のみに使用できます。 Arkose Labs のユーザー フローは、サインアップ中にのみ表示されます。
 
-1. ユーザー フローを作成するには、[手順](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)を参照してください。 既存のユーザー フローを使用する場合は、それが **推奨 (次世代のプレビュー)** バージョンの種類である必要があります。
+1. ユーザー フローを作成するには、[手順](./tutorial-create-user-flows.md)を参照してください。 既存のユーザー フローを使用する場合は、それが **推奨 (次世代のプレビュー)** バージョンの種類である必要があります。
 
 2. ユーザー フローの設定で、 **[ユーザー属性]** に移動し、 **[ArkoseSessionToken]** 要求を選択します。
 
@@ -109,7 +109,7 @@ Arkose Labs 統合には、次のコンポーネントが含まれています�
 
 1. [selfAsserted.html](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose/blob/main/Assets/selfAsserted.html) ファイルを変更して、`<ARKOSE_PUBLIC_KEY>` がクライアント側の検証用に生成した値と一致するようにし、お使いのアカウントに Arkose Labs スクリプトを読み込むために使用されるようにします。
 
-2. クロス オリジン リソース共有 (CORS) が有効になっている Web エンドポイントで HTML ページをホストします。 [Azure BLOB ストレージ アカウントを作成](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)し、[CORS を構成](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)します。
+2. クロス オリジン リソース共有 (CORS) が有効になっている Web エンドポイントで HTML ページをホストします。 [Azure BLOB ストレージ アカウントを作成](../storage/common/storage-account-create.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)し、[CORS を構成](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services)します。
 
   >[!NOTE]
   >独自のカスタム HTML がある場合は、`<script>` 要素をコピーしてご自分の HTML ページに貼り付けます。
@@ -132,7 +132,7 @@ Arkose Labs 統合には、次のコンポーネントが含まれています�
 
    ![ページ レイアウトを示す画像](media/partner-arkose-labs/page-layouts.png)
 
-4. ユーザー フローから **[プロパティ]** に移動し、 **[Enable JavaScript]\(JavaScript を有効にする\)** を選択してページ レイアウト (プレビュー) を適用します。 詳しくは、[こちらの記事](https://docs.microsoft.com/azure/active-directory-b2c/javascript-and-page-layout?pivots=b2c-user-flow)を参照してください。
+4. ユーザー フローから **[プロパティ]** に移動し、 **[Enable JavaScript]\(JavaScript を有効にする\)** を選択してページ レイアウト (プレビュー) を適用します。 詳しくは、[こちらの記事](./javascript-and-page-layout.md?pivots=b2c-user-flow)を参照してください。
 
 ### <a name="part-4---create-and-deploy-your-api"></a>パート 4 - API を作成してデプロイする
 
@@ -157,7 +157,7 @@ Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visual
 
 このサンプルでは、[HTTP 基本認証](https://tools.ietf.org/html/rfc7617)を使用して Web API エンドポイントを保護します。
 
-ユーザー名とパスワードは、リポジトリの一部としてではなく、環境変数として格納されます。 詳細については、[local.settings.js](https://docs.microsoft.com/azure/azure-functions/functions-run-local?tabs=macos%2Ccsharp%2Cbash#local-settings-file) ファイルを参照してください。
+ユーザー名とパスワードは、リポジトリの一部としてではなく、環境変数として格納されます。 詳細については、[local.settings.js](../azure-functions/functions-run-local.md?tabs=macos%2ccsharp%2cbash#local-settings-file) ファイルを参照してください。
 
 1. ルート フォルダー内に local.settings.js ファイルを作成します
 
@@ -186,15 +186,15 @@ Visual Studio Code 用 [Azure Functions 拡張機能](https://marketplace.visual
 
 #### <a name="deploy-the-application-to-the-web"></a>アプリケーションを Web にデプロイする
 
-1. [こちら](https://docs.microsoft.com/azure/javascript/tutorial-vscode-serverless-node-04)のガイドで説明されている手順に従って、Azure 関数をクラウドにデプロイします。 Azure 関数のエンドポイント Web URL をコピーします。
+1. [こちら](/azure/javascript/tutorial-vscode-serverless-node-04)のガイドで説明されている手順に従って、Azure 関数をクラウドにデプロイします。 Azure 関数のエンドポイント Web URL をコピーします。
 
-2. デプロイしたら、 **[Upload settings]\(設定のアップロード\)** オプションを選択します。 これにより、環境変数が App Service の[アプリケーション設定](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#application-settings-in-azure)にアップロードされます。 これらのアプリケーション設定は、[Azure portal を使用して管理](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings)または構成することもできます。
+2. デプロイしたら、 **[Upload settings]\(設定のアップロード\)** オプションを選択します。 これにより、環境変数が App Service の[アプリケーション設定](../azure-functions/functions-develop-vs-code.md?tabs=csharp#application-settings-in-azure)にアップロードされます。 これらのアプリケーション設定は、[Azure portal を使用して管理](../azure-functions/functions-how-to-use-azure-function-app-settings.md)または構成することもできます。
 
-Azure Functions の Visual Studio Code での開発の詳細については、[こちらの記事](https://docs.microsoft.com/azure/azure-functions/functions-develop-vs-code?tabs=csharp#republish-project-files)を参照してください。
+Azure Functions の Visual Studio Code での開発の詳細については、[こちらの記事](../azure-functions/functions-develop-vs-code.md?tabs=csharp#republish-project-files)を参照してください。
 
 #### <a name="configure-and-enable-the-api-connector"></a>API コネクタを構成して有効にする
 
-[API コネクタを作成](https://docs.microsoft.com/azure/active-directory-b2c/add-api-connector)し、ユーザー フローに対して有効にします。 API コネクタの構成は次のようになります。
+[API コネクタを作成](./add-api-connector.md)し、ユーザー フローに対して有効にします。 API コネクタの構成は次のようになります。
 
 ![API コネクタを構成する方法を示す図](media/partner-arkose-labs/configure-api-connector.png)
 
@@ -232,6 +232,6 @@ API コネクタを有効にするには、ユーザー フローの **API コ�
 
 - Azure AD B2C サインアップ ユーザー フローの[サンプル コード](https://github.com/Azure-Samples/active-directory-b2c-node-sign-up-user-flow-arkose)
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 03/15/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ce1a4808833cbd897da17f9ad75af346538d23d1
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.openlocfilehash: e0d8a8e3320b49b6fbe3e8ab66c0b4569fac9afd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103472797"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587935"
 ---
 # <a name="azure-synapse-analytics-connectivity-settings"></a>Azure Synapse Analytics の接続設定
 
@@ -21,7 +21,7 @@ ms.locfileid: "103472797"
 
 
 ## <a name="connection-policy"></a>接続ポリシー
-Azure Synapse Analytics での Synapse SQL の接続ポリシーは、"*既定値*" に設定されています。 Azure Synapse Analytics でこれを変更することはできません。 Azure Synapse Analytics での Synapse SQL への接続に対する影響については、[こちら](https://docs.microsoft.com/azure/azure-sql/database/connectivity-architecture#connection-policy)を参照してください。 
+Azure Synapse Analytics での Synapse SQL の接続ポリシーは、"*既定値*" に設定されています。 Azure Synapse Analytics でこれを変更することはできません。 Azure Synapse Analytics での Synapse SQL への接続に対する影響については、[こちら](../../azure-sql/database/connectivity-architecture.md#connection-policy)を参照してください。 
 
 ## <a name="minimal-tls-version"></a>TLS の最小バージョン
 Azure Synapse Analytics の Synapse SQL では、すべての TLS バージョンを使用した接続が許可されます。 Azure Synapse Analytics の Synapse SQL に対して最小 TLS バージョンを設定することはできません。
