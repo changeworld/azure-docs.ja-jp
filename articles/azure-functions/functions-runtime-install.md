@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86540385"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Azure Functions ランタイム プレビュー 2 をインストールする
@@ -47,27 +47,27 @@ Azure Functions ランタイム プレビュー インストーラーの手順�
     ![Azure Functions ランタイム プレビュー インストーラー][1]
 
 1. **[次へ]** をクリックします。
-1. **使用許諾契約書**の条項を読み終わったら、**チェック ボックスをオン**にして条項に同意し、 **[次へ]** をクリックして先に進みます。
+1. **使用許諾契約書** の条項を読み終わったら、**チェック ボックスをオン** にして条項に同意し、 **[次へ]** をクリックして先に進みます。
 1. このマシンにインストールするロールとして **[Functions Management Role]\(Functions 管理ロール\)** と **[Functions Worker Role]\(Functions worker ロール\)** のどちらか一方または両方を選び、 **[次へ]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー インストーラー - ロールの選択][3]
 
     > [!NOTE]
-    > **Functions worker ロール**は、他の多くのコンピューターにインストールできます。 そのためには、この手順に従い、インストーラーで **[Functions Worker Role]\(Functions worker ロール\)** だけを選びます。
+    > **Functions worker ロール** は、他の多くのコンピューターにインストールできます。 そのためには、この手順に従い、インストーラーで **[Functions Worker Role]\(Functions worker ロール\)** だけを選びます。
 
-1. **[次へ]** をクリックして、**Azure Functions ランタイム セットアップ ウィザード**でコンピューターへのインストール プロセスを開始します。
-1. 完了すると、セットアップ ウィザードによって **Azure Functions ランタイム**構成ツールが起動されます。
+1. **[次へ]** をクリックして、**Azure Functions ランタイム セットアップ ウィザード** でコンピューターへのインストール プロセスを開始します。
+1. 完了すると、セットアップ ウィザードによって **Azure Functions ランタイム** 構成ツールが起動されます。
 
     ![Azure Functions ランタイム プレビュー インストーラーの完了][6]
 
     > [!NOTE]
-    > **Windows 10** にインストールしている場合、**コンテナー**機能が前もって有効にされていないときは、インストールを完了するためにコンピューターを再起動するように **Azure Functions ランタイム セットアップ**から求められます。
+    > **Windows 10** にインストールしている場合、**コンテナー** 機能が前もって有効にされていないときは、インストールを完了するためにコンピューターを再起動するように **Azure Functions ランタイム セットアップ** から求められます。
 
 ## <a name="configure-the-azure-functions-runtime"></a>Azure Functions ランタイムを構成する
 
 Azure Functions ランタイムのインストールを完了するには、構成を完了する必要があります。
 
-1. **Azure Functions ランタイム**構成ツールに、コンピューターにインストールされるロールが表示されます。
+1. **Azure Functions ランタイム** 構成ツールに、コンピューターにインストールされるロールが表示されます。
 
     ![Azure Functions ランタイム プレビュー構成ツール][7]
 
@@ -75,7 +75,7 @@ Azure Functions ランタイムのインストールを完了するには、構�
 
     ![Azure Functions ランタイム プレビュー データベース構成][8]
 
-1. **[資格情報]** タブをクリックします。ここで、すべての関数アプリをホストするために、ファイル共有で使用する目的で新しい資格情報を 2 つ作成する必要があります。  **ファイル共有の所有者**および**ファイル共有のユーザー**の **[ユーザー名]** と **[パスワード]** の組み合わせを指定し、 **[適用]** をクリックします。
+1. **[資格情報]** タブをクリックします。ここで、すべての関数アプリをホストするために、ファイル共有で使用する目的で新しい資格情報を 2 つ作成する必要があります。  **ファイル共有の所有者** および **ファイル共有のユーザー** の **[ユーザー名]** と **[パスワード]** の組み合わせを指定し、 **[適用]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー資格情報][9]
 
@@ -87,11 +87,11 @@ Azure Functions ランタイムのインストールを完了するには、構�
 
     ![Azure Functions ランタイム プレビュー IIS][11]
 
-1. **[サービス]** タブをクリックします。このタブには、Azure Functions ランタイム構成ツールのサービスの状態が表示されます。  初期構成後に **Azure Functions ホスト アクティブ化サービス**が実行されていない場合は、 **[サービスの開始]** をクリックします。
+1. **[サービス]** タブをクリックします。このタブには、Azure Functions ランタイム構成ツールのサービスの状態が表示されます。  初期構成後に **Azure Functions ホスト アクティブ化サービス** が実行されていない場合は、 **[サービスの開始]** をクリックします。
 
     ![Azure Functions ランタイム プレビュー構成の完了][12]
 
-1. **Azure Functions ランタイム ポータル**を `https://<machinename>.<domain>/` として参照します。
+1. **Azure Functions ランタイム ポータル** を `https://<machinename>.<domain>/` として参照します。
 
     ![Azure Functions ランタイム プレビュー ポータル][13]
 
@@ -99,7 +99,7 @@ Azure Functions ランタイムのインストールを完了するには、構�
 
 Azure Functions ランタイム プレビューで最初の関数を作成するには
 
-1. **Azure Functions Runtime ポータル**を `https://<machinename>.<domain>`、たとえば `https://mycomputer.mydomain.com` として参照します。
+1. **Azure Functions Runtime ポータル** を `https://<machinename>.<domain>`、たとえば `https://mycomputer.mydomain.com` として参照します。
 
 1. **ログイン** を要求されます。ドメインにデプロイした場合はドメイン アカウントのユーザー名とパスワードを使用し、それ以外の場合はローカル アカウントのユーザー名とパスワードを使用してポータルにログインします。
 
