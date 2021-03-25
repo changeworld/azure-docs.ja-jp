@@ -1,27 +1,26 @@
 ---
-title: Azure AD アプリ開発者向けのサポート オプションとヘルプ オプション
-description: Microsoft ID (Azure Active Directory および Microsoft アカウント) と連携するアプリケーションを作成するときの開発関連の質問や問題について、ヘルプとサポートを入手する方法について確認します
+title: Microsoft ID プラットフォーム開発者向けのサポートとヘルプのオプション | Azure
+description: Azure Active Directory (Azure AD) および Microsoft ID プラットフォームのその他のコンポーネントと統合される ID およびアクセス管理 (IAM) ソリューションを構築する際に役立つ情報を入手し、質問の答えを見つける方法について説明します。
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/23/2019
-ms.author: ryanwi
+ms.date: 03/09/2021
+ms.author: marsma
 ms.reviewer: jmprieur, saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 43990952f6cbe90c729ac2df421c682fe8d42b1b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 22f6e1c8049acd5dbe548bc49955881e05f0ef0e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102517943"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579044"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
-Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API との連携を開始する場合や、アプリケーションに新しい機能を実装するときに、コミュニティからヘルプを入手し、開発者として使用できるサポートのオプションを把握しておく必要があります。 ここでは、Microsoft ID プラットフォーム ソリューションを開発する際に助けを求める方法を示します。
+ドキュメントに記載されていない問題を解決するために質問する必要がある場合は、専門家にご連絡ください。 ここでは、Microsoft ID プラットフォームと統合するアプリケーションを開発する際に、問題を解決するための推奨事項をいくつか紹介します。
 
 ## <a name="create-an-azure-support-request"></a>Azure サポート要求を作成する
 
@@ -33,9 +32,10 @@ Azure Active Directory (Azure AD)、Microsoft ID、または Microsoft Graph API
 
 - Azure サポート プランをお持ちの場合は、[こちらからサポート要求をオープン](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)します。
 
-- Azure をご利用でない場合、マイクロソフトの[商用サポート](https://support.serviceshub.microsoft.com/supportforbusiness)からサポート要求をオープンすることもできます。
+- Azure のお客様でない場合は、 [ビジネス向け Microsoft サポート](https://support.serviceshub.microsoft.com/supportforbusiness)を使用してサポート リクエストを開くことができます。
 
 ## <a name="post-a-question-to-microsoft-qa"></a>Microsoft Q&A に質問を投稿する
+
 <div class='icon is-large'>
     <img alt='Microsoft Q&A' src='./media/common/question-mark-icon.png'>
 </div>             
@@ -44,17 +44,17 @@ ID アプリの開発に関する質問については、Microsoft のエンジ�
 
 [Microsoft Q&A](/answers/products/) は、Azure のコミュニティ サポートの推奨される情報源です。
 
-Microsoft Q&A を検索しても問題に対する回答が見つからない場合は、新しい質問を送信します。 [質の高い質問](https://docs.microsoft.com/answers/articles/24951/how-to-write-a-quality-question.html)をするときは、次のタグのいずれかを使います。
+Microsoft Q&A を検索しても問題に対する回答が見つからない場合は、新しい質問を送信します。 [質の高い質問](/answers/articles/24951/how-to-write-a-quality-question.html)をするときは、次のタグのいずれかを使います。
 
 | コンポーネント/領域| Tags  |
 |------------|---------------------------|
-| Active Directory Authentication Library (ADAL)                              | [[adal]](https://docs.microsoft.com/answers/topics/azure-ad-adal-deprecation.html)                |
-| Microsoft Authentication Library (MSAL)                                     | [[msal]](https://docs.microsoft.com/answers/topics/azure-ad-msal.html)                            |
-| Open Web Interface for .NET (OWIN) ミドルウェア                               | [[azure-active-directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
-| [Azure AD B2B / 外部 ID](../external-identities/what-is-b2b.md) | [[azure-ad-b2b]](https://docs.microsoft.com/answers/topics/azure-ad-b2b.html)                     |
-| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://docs.microsoft.com/answers/topics/azure-ad-b2c.html)                     |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[azure-ad-graph]](https://docs.microsoft.com/answers/topics/azure-ad-graph.html)                 |
-| 他のすべての認証と承認の分野                            | [[azure-active-directory]](https://docs.microsoft.com/answers/topics/azure-active-directory.html) |
+| Active Directory Authentication Library (ADAL)                              | [[adal]](/answers/topics/azure-ad-adal-deprecation.html)                |
+| Microsoft Authentication Library (MSAL)                                     | [[msal]](/answers/topics/azure-ad-msal.html)                            |
+| Open Web Interface for .NET (OWIN) ミドルウェア                               | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
+| [Azure AD B2B / 外部 ID](../external-identities/what-is-b2b.md) | [[azure-ad-b2b]](/answers/topics/azure-ad-b2b.html)                     |
+| [Azure AD B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](/answers/topics/azure-ad-b2c.html)                     |
+| [Microsoft Graph API](https://developer.microsoft.com/graph/)               | [[azure-ad-graph]](/answers/topics/azure-ad-graph.html)                 |
+| 他のすべての認証と承認の分野                            | [[azure-active-directory]](/answers/topics/azure-active-directory.html) |
 
 ## <a name="create-a-github-issue"></a>GitHub の issue を作成する
 
@@ -98,10 +98,8 @@ Microsoft 認証ライブラリ (MSAL) のいずれかに関するヘルプが�
 
 - [Azure の更新情報](https://azure.microsoft.com/updates/?category=identity): 重要な製品の更新プログラム、ロードマップ、および発表について確認できます。
 
-- [ドキュメントの最新情報](https://docs.microsoft.com/azure/active-directory/develop/whats-new-docs): Microsoft ID プラットフォームのドキュメントの最新情報を確認できます。
+- [ドキュメントの最新情報](./whats-new-docs.md): Microsoft ID プラットフォームのドキュメントの最新情報を確認できます。
 
 - [Azure Active Directory ID ブログ](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity): Azure AD に関するニュースと情報を入手できます。
 
 - [技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity/): 経験を共有し、エキスパートとの交流を通じて学ぶことができます。
-
-

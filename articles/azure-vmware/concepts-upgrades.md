@@ -2,13 +2,13 @@
 title: 概念 - プライベート クラウドの更新とアップグレード
 description: Azure VMware Solution の主要なアップグレード プロセスと機能について説明します。
 ms.topic: conceptual
-ms.date: 02/16/2021
-ms.openlocfilehash: d93453cbf6ad744844a04cd298cc18ad181cc0b0
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.date: 03/17/2021
+ms.openlocfilehash: 9810de40944f70a4efb7ec81d17868ffdf256c7d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100634994"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586150"
 ---
 # <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware Solution のプライベート クラウドの更新とアップグレード
 
@@ -53,7 +53,9 @@ Azure VMware Solution では、次の VMware コンポーネントの構成バ�
 
 障害が発生した際は、Azure VMware Solution を使用して構成のバックアップからこれらのコンポーネントを復元できます。 
 
-VMware ソフトウェアのバージョンの詳細については、[プライベート クラウドとクラスターの概念に関する記事](concepts-private-clouds-clusters.md)と [FAQ](faq.yml) を参照してください。
+## <a name="vmware-software-versions"></a>VMware ソフトウェアのバージョン
+[!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
+
 
 ## <a name="next-steps"></a>次のステップ
 

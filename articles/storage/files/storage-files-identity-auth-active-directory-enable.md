@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 09/13/2020
+ms.date: 03/15/2021
 ms.author: rogarana
-ms.openlocfilehash: 6098497e89ad66fad7659aa64c9a7849380f8c43
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 26932d05cd3d2ef7704b48463c895e05524d87f1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102547512"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103472145"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概要 - SMB を使用した Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証
 
@@ -66,7 +66,7 @@ Azure ファイル共有に対する AD DS 認証を有効にする前に、次�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-AD DS を使用した Azure Files 認証は、[すべての Azure パブリックおよび Gov リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
+AD DS を使用した Azure Files 認証は、[すべての Azure パブリック、China および Gov リージョン](https://azure.microsoft.com/global-infrastructure/locations/)で利用できます。
 
 ## <a name="overview"></a>概要
 

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/18/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 46297f7f0f648c8bebc887a9093e25dfea99f695
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f5f7ec8245a43440a400b9ca6b55bf1093eb62cc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561502"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102636190"
 ---
 # <a name="azure-active-directory-powershell-examples-for-application-management"></a>アプリケーション管理用の Azure Active Directory PowerShell の例
 
@@ -31,5 +31,5 @@ ms.locfileid: "102561502"
 |**アプリケーション管理スクリプト**||
 | [シークレットと証明書のエクスポート (アプリの登録)](scripts/powershell-export-all-app-registrations-secrets-and-certs.md) | Azure Active Directory テナントでのアプリの登録用にシークレットと証明書をエクスポートします。 |
 | [シークレットと証明書のエクスポート (エンタープライズ アプリ)](scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md) | Azure Active Directory テナントのエンタープライズ アプリのシークレットと証明書をエクスポートします。 |
-| [間もなく期限が切れるシークレットと証明書のエクスポート](scripts/powershell-export-apps-with-expriring-secrets.md) | Azure Active Directory テナントで、間もなく期限が切れるシークレットと証明書を含むアプリをエクスポートします。 |
-| [必要な日付を過ぎた後に期限が切れるシークレットと証明書のエクスポート](scripts/powershell-export-apps-with-secrets-beyond-required.md) | Azure Active Directory テナントで、必要な日付を過ぎた後に期限が切れるシークレットと証明書を含むアプリをエクスポートします。 |
+| [間もなく期限が切れるシークレットと証明書のエクスポート](scripts/powershell-export-apps-with-expriring-secrets.md) | Azure Active Directory テナントで、間もなく期限が切れるシークレットと証明書、およびその所有者を含むアプリの登録をエクスポートします。 |
+| [必要な日付を過ぎた後に期限が切れるシークレットと証明書のエクスポート](scripts/powershell-export-apps-with-secrets-beyond-required.md) | Azure Active Directory テナントで、必要な日付を過ぎた後に期限が切れるシークレットと証明書を含むアプリの登録をエクスポートします。 これは、非対話型の Client_Credentials Oauth フローを使用します。 |

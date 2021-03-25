@@ -7,15 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/15/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bcdc8c448a348bf067995bf92615ceab1ac19fb4
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b1c8bf5cb8944b990737d557326b2741716bab3d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198440"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579758"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -145,6 +146,7 @@ ms.locfileid: "102198440"
 | JourneyInsights | 0:1 | 使用される Azure Application Insights のインストルメンテーション キー。 |
 | ContentDefinitionParameters | 0:1 | コンテンツ定義読み込み URI に追加するキー値ペアのリスト。 |
 |ScriptExecution| 0:1| サポートされている [JavaScript](javascript-and-page-layout.md) 実行モード。 指定できる値: `Allow` または `Disallow`(既定値)。
+| JourneyFraming | 0:1| このポリシーのユーザー インターフェイスを iframe に読み込むことができます。 |
 
 ### <a name="singlesignon"></a>SingleSignOn
 
@@ -165,7 +167,7 @@ ms.locfileid: "102198440"
 | --------- | -------- | ----------- |
 | TelemetryEngine | はい | 値は `ApplicationInsights` である必要があります。 |
 | InstrumentationKey | はい | Application Insights 要素のインストルメンテーション キーを含む文字列。 |
-| DeveloperMode | はい | 指定できる値: `true` または `false`。 `true` であれば、Application Insights はパイプラインの処理を通じてテレメトリを迅速化します。 この設定は開発には適していますが、大量の場合は制約があります。 詳細なアクティビティ ログは、カスタム ポリシーの開発を支援することだけを目的として設計されています。 実稼働環境では開発モードを使わないでください。 ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。 実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。 これらの詳細なログは、この値が `true` に設定されている場合のみ収集されます。|
+| DeveloperMode | はい | 指定できる値: `true` または `false`。 `true` であれば、Application Insights はパイプラインの処理を通じてテレメトリを迅速化します。 この設定は開発には適していますが、大量の場合は制約があります。 詳細なアクティビティ ログは、カスタム ポリシーの開発を支援することだけを目的として設計されています。 実稼働環境では開発モードを使わないでください。 ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。 実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに収集された個人データに対して責任を追うことになります。 これらの詳細なログは、この値が `true` に設定されている場合のみ収集されます。|
 | ClientEnabled | はい | 指定できる値: `true` または `false`。 `true` とした場合、ページ ビューとクライアント側エラーを追跡するためのクライアント側スクリプトを Application Insights に送信します。 |
 | ServerEnabled | はい | 指定できる値: `true` または `false`。 `true` では、既存の UserJourneyRecorder JSON をカスタム イベントとして Application Insights に送信します。 |
 | TelemetryVersion | はい | 値は `1.0.0` である必要があります。 |
@@ -193,6 +195,15 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | 名前 | はい | キーと値のペアの名前。 |
 
 詳しくは、[カスタム ポリシーを使用して動的コンテンツを含む UI を構成する](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri)を参照してください
+
+### <a name="journeyframing"></a>JourneyFraming
+
+**JourneyFraming** 要素には、次の属性が含まれています。
+
+| 属性 | 必須 | 説明 |
+| --------- | -------- | ----------- |
+| Enabled | はい | このポリシーを iframe 内に読み込めるようにします。 指定できる値は `false`(既定値) または`true`です。 |
+| 変換元 | はい | iframe を読み込んでホストするドメインが含まれています。 詳細については、[iframe での AZURE B2C の読み込み](embedded-login.md)に関するページを参照してください。 |
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
