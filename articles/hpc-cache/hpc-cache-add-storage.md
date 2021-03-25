@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: bba6745a4cc0be30648e23501f9a9e2f0cc6c8db
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: afb896100ea60c21aaf37890d7b520bf38c6ce18
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563244"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772724"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -164,7 +164,7 @@ NFS ストレージ ターゲットの設定は、Blob Storage ターゲット�
 > NFS ストレージ ターゲットを作成する前に、ストレージ システムが Azure HPC Cache からアクセス可能であり、アクセス許可要件を満たしていることを確認します。 キャッシュからストレージ システムにアクセスできない場合、ストレージ ターゲットの作成は失敗します。 詳細については、「[NFS ストレージの要件](hpc-cache-prerequisites.md#nfs-storage-requirements)」と「[NAS 構成および NFS ストレージ ターゲットに関する問題のトラブルシューティング](troubleshoot-nas.md)」を参照してください。
 
 ### <a name="choose-a-usage-model"></a>使用モデルを選択する
-<!-- referenced from GUI - update aka.ms link to point at new article when published -->
+<!-- referenced from GUI by aka.ms link -->
 
 NFS を使用してストレージ システムにアクセスするストレージ ターゲットを作成するときは、そのターゲットの使用モデルを選択する必要があります。 どのようにデータがキャッシュされるかは、このモデルによって決まります。
 
@@ -195,16 +195,6 @@ NFS を使用してストレージ システムにアクセスするストレー
 次の表は、すべての使用モデルの違いをまとめたものです。
 
 [!INCLUDE [usage-models-table.md](includes/usage-models-table.md)]
-
-<!-- | Usage model | Caching mode | Back-end verification | Maximum write-back delay |
-|--|--|--|--|
-| Read heavy, infrequent writes | Read | Never | None |
-| Greater than 15% writes | Read/write | 8 hours | 20 minutes |
-| Clients bypass the cache | Read | 30 seconds | None |
-| Greater than 15% writes, frequent back-end checking (30 seconds) | Read/write | 30 seconds | 20 minutes |
-| Greater than 15% writes, frequent back-end checking (60 seconds) | Read/write | 60 seconds | 20 minutes |
-| Greater than 15% writes, frequent write-back | Read/write | 30 seconds | 30 seconds |
-| Read heavy, checking the backing server every 3 hours | Read | 3 hours | None | -->
 
 > [!NOTE]
 > **バックエンド検証** の値は、キャッシュ内のファイルとリモート ストレージ内のソース ファイルとの自動比較がどの時点で行われるかを示します。 ただし、バックエンド ストレージ システムで readdirplus 操作を含むクライアント要求を送信することによって、比較をトリガーすることができます。 readdirplus は、ディレクトリ メタデータを返す標準的な NFS API です (拡張読み取りとも呼ばれます)。これにより、キャッシュでファイルが比較され更新されます。

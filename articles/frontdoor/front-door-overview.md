@@ -8,17 +8,17 @@ ms.topic: overview
 ms.workload: infrastructure-services
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 2a5c298c201aa2a1f968c2a96dcfd6963a410cf7
-ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
+ms.openlocfilehash: ef3d415f4f0ca82e79df84ef48acc0323a69099a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103149224"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952152"
 ---
 # <a name="what-is-azure-front-door"></a>Azure Front Door とは
 
 > [!IMPORTANT]
-> このドキュメントは、Azure Front Door を対象としています。 Azure Front Door Standard/Premium (プレビュー) については、 [こちら](/standard-premium/overview.md)を参照してください。
+> このドキュメントは、Azure Front Door を対象としています。 Azure Front Door Standard/Premium (プレビュー) については、 [こちら](standard-premium/overview.md)を参照してください。
 
 Azure Front Door は、Microsoft グローバル エッジ ネットワークを使用して、セキュリティで保護された高速でスケーラビリティの高い Web アプリを作成するためのスケーラブルなグローバル エントリ ポイントです。 Front Door を使用すると、グローバルなコンシューマー アプリケーションやエンタープライズ アプリケーションを、Azure を介して世界中のユーザーに発信するコンテンツを備えた、堅牢で高パフォーマンスのパーソナライズされた最新のアプリケーションに変えることができます。
 

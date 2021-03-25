@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 68535f70507e7a81d217f4148314a3d76ec832ea
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "68727209"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure 情報システムのコンポーネントと境界
@@ -45,7 +45,7 @@ Azure では、物理サーバー (ブレード/ノード) 上で実行される
 
 データ センターは、クラスターに分割されます。 クラスターは、特定のクラスのエラーが、それが発生したクラスターを超えてサーバーに影響を与えることがないように、FC レベルでエラーを分離します。 特定の Azure クラスターで機能する FC は、FC クラスターにグループ化されます。
 
-### <a name="hardware-inventory"></a>ソフトウェア インベントリ
+### <a name="hardware-inventory"></a>ハードウェア インベントリ
 
 FC は、ブートストラップ構成プロセス中に、Azure ハードウェアとネットワーク デバイスのインベントリを準備します。 Azure の運用環境に入る新しいハードウェアやネットワーク コンポーネントは、ブートストラップ構成プロセスに従う必要があります。 FC は datacenter.xml 構成ファイルに記載されているインベントリ全体を管理します。
 
