@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Azure Dev Spaces が有効になっている Azure Kubernetes Service クラスター上の開発スペース内で kubectl コマンドを使用する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
 ms.openlocfilehash: e6f79d98cf209d1bc19753f19c9b17b06017c2b7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91960164"
 ---
 # <a name="use-kubectl-with-an-azure-dev-space"></a>Azure Dev Space で kubectl を使用する

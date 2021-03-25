@@ -8,14 +8,14 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 9f8e288f771b9d584a0fd3430115f5fa60f68e47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961807"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>App Service 環境からバックエンド リソースに安全に接続する
-App Service 環境は常に Azure Resource Manager 仮想ネットワーク**または**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]の**いずれか**に作成されるため、App Service 環境から他のバックエンド リソースへの送信接続は、仮想ネットワーク経由でのみ行うことができます。 2016 年 6 月の時点で、ASE はパブリック アドレス範囲または RFC1918 アドレス空間 (プライベートアドレス) のいずれかを使用する仮想ネットワークにもデプロイすることができます。  
+App Service 環境は常に Azure Resource Manager 仮想ネットワーク **または** クラシック デプロイ モデル [仮想ネットワーク][virtualnetwork]の **いずれか** に作成されるため、App Service 環境から他のバックエンド リソースへの送信接続は、仮想ネットワーク経由でのみ行うことができます。 2016 年 6 月の時点で、ASE はパブリック アドレス範囲または RFC1918 アドレス空間 (プライベートアドレス) のいずれかを使用する仮想ネットワークにもデプロイすることができます。  
 
 たとえば、ポート 1433 がロックされている仮想マシンのクラスターで実行されている SQL Server がある場合があります。  このエンドポイントは、同じ仮想ネットワークの他のリソースからのアクセスを許可する目的のみで使用されることがあります。  
 
@@ -23,7 +23,7 @@ App Service 環境は常に Azure Resource Manager 仮想ネットワーク**ま
 
 これらのすべてのシナリオで、App Service Environment で実行中のアプリが、さまざまなサーバーとリソースに安全に接続できます。 送信トラフィックが、App Service Environment で実行されているアプリから、同じ仮想ネットワーク内または同じ仮想ネットワークに接続されているプライベート エンドポイントへの場合、仮想ネットワーク経由でのみ送信されます。  プライベート エンドポイントへの送信トラフィックがパブリック インターネット経由で送信されることはありません。
 
-App Service Environment から仮想ネットワーク内のエンドポイントへの送信トラフィックには、問題が 1 つあります。 App Service Environment から、App Service Environment と**同じ**サブネットにある仮想マシンのエンドポイントに到達することはできません。 App Service Environment が、App Service Environment 専用として予約されているサブネットにデプロイされている場合、通常、これは問題にはなりません。
+App Service Environment から仮想ネットワーク内のエンドポイントへの送信トラフィックには、問題が 1 つあります。 App Service Environment から、App Service Environment と **同じ** サブネットにある仮想マシンのエンドポイントに到達することはできません。 App Service Environment が、App Service Environment 専用として予約されているサブネットにデプロイされている場合、通常、これは問題にはなりません。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 

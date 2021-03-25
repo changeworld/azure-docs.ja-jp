@@ -7,10 +7,10 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.openlocfilehash: 919883025075ca38bcef6c23ac744528e7bd5502
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88510064"
 ---
 # <a name="configure-a-virtual-machine-scale-set-with-an-existing-azure-load-balancer-using-azure-powershell"></a>Azure PowerShell を使用して、既存の Azure Load Balancer で仮想マシン スケール セットを構成する
@@ -62,7 +62,7 @@ New-AzVmss -ResourceGroupName $rsg -Location $loc -VMScaleSetName $vms -VirtualN
 - ロード バランサー のバックエンド プールの名前 **myBackendPool**
 - Azure Virtual Network の名前 **myVnet**
 - サブネットの名前 **mySubnet**
-- リソース グループの名前 **myResourceGroup**
+- リソースグループの名前 **myResourceGroup**
 
 ```azurepowershell-interactive
 

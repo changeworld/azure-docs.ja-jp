@@ -9,10 +9,10 @@ description: カスタム NuGet フィードを使用して、Azure Dev Space �
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
 manager: gwallace
 ms.openlocfilehash: d60d7142d9b9979be76eebb3d324a448bd76638f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91960220"
 ---
 # <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Azure Dev Spaces にカスタム NuGet フィードを使用する

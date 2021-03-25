@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.openlocfilehash: 4ce7ffc66e0b6164b2e4ca9725b3f26403292a4a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92220773"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>チュートリアル:クラスターのネットワーク設定を構成する
@@ -46,7 +46,7 @@ ms.locfileid: "92220773"
 
 * Active Directory およびユーザー名とグループ名のダウンロードを構成する (必要な場合)
 
-  ご使用のネットワーク ホストが Active Directory または他の種類の外部ディレクトリ サービスを使用している場合、クラスターのディレクトリ サービスの構成を変更して、クラスターがユーザー名とグループ情報をダウンロードする方法を設定する必要があります。 詳細については、クラスター構成ガイドの**クラスター** > **ディレクトリ サービス**に関する項目をお読みください。
+  ご使用のネットワーク ホストが Active Directory または他の種類の外部ディレクトリ サービスを使用している場合、クラスターのディレクトリ サービスの構成を変更して、クラスターがユーザー名とグループ情報をダウンロードする方法を設定する必要があります。 詳細については、クラスター構成ガイドの **クラスター** > **ディレクトリ サービス** に関する項目をお読みください。
 
   SMB サポートが必要な場合、AD サーバーが必要です。 SMB の設定を開始する前に AD を構成します。
 

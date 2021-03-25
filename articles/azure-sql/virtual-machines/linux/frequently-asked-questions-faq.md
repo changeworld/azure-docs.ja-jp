@@ -12,10 +12,10 @@ ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: ad991974df30060e552d21a44d5796cd2ba165e2
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92792550"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>SQL Server on Linux 仮想マシンについてよく寄せられる質問
@@ -95,13 +95,13 @@ ms.locfileid: "92792550"
 
 ## <a name="resources"></a>リソース
 
-**Linux VM** :
+**Linux VM**:
 
 * [Linux VM における SQL Server の概要](sql-server-on-linux-vm-what-is-iaas-overview.md)
 * [Linux VM での SQL Server のプロビジョニング](sql-vm-create-portal-quickstart.md)
 * [SQL Server on Linux のドキュメント](/sql/linux/sql-server-linux-overview)
 
-**Windows VM** :
+**Windows VM**:
 
 * [Windows VM における SQL Server の概要](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Windows VM での SQL Server のプロビジョニング](../windows/sql-vm-create-portal-quickstart.md)
