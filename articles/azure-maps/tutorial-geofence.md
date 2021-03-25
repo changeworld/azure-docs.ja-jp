@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98625034"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>チュートリアル:Azure Maps を使用してジオフェンスを設定する
@@ -22,7 +22,7 @@ ms.locfileid: "98625034"
 
 "*建設現場の管理者が、建設区域の境界を出入りする機材を追跡する必要があります。それらの境界を機材が出入りするたびに、メール通知が作業管理者に送信されます。* "
 
-建設区域を出入りする機材の追跡をサポートするさまざまなサービスが Azure Maps には用意されています。 このチュートリアルでは、次のことを行いました。
+建設区域を出入りする機材の追跡をサポートするさまざまなサービスが Azure Maps には用意されています。 このチュートリアルでは、次の作業を行いました。
 
 > [!div class="checklist"]
 > * 監視対象の建設現場区域を定義する[ジオフェンシング GeoJSON データ](geofence-geojson.md)をアップロードする。 [Data Upload API](/rest/api/maps/data/uploadpreview) を使用して、ジオフェンスをポリゴン座標として自分の Azure Maps アカウントにアップロードします。
@@ -54,7 +54,7 @@ ms.locfileid: "98625034"
     https://atlas.microsoft.com/mapData/upload?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&dataFormat=geojson
     ```
 
-    URL パス内の `geojson` パラメーターは、アップロードするデータのデータ形式を表します。
+    URL パス内の `geojson` パラメーターは、アップロードするデータの形式を表します。
 
 4. **[本文]** タブを選択します。 **[raw]\(未加工\)** を選択し、入力形式として **[JSON]** を選択します。 次の GeoJSON データをコピーして **[本文]** テキスト領域に貼り付けます。
 
@@ -282,7 +282,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {
@@ -322,7 +322,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {
@@ -362,7 +362,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
       https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
       ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {
@@ -405,7 +405,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {
@@ -439,7 +439,7 @@ Azure Maps では、[3 種類のイベント](../event-grid/event-schema-azure-m
     https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
-3. **[送信]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
+3. **[Send]** を選択します。 応答ウィンドウに次の GeoJSON が表示されます。
 
     ```json
     {

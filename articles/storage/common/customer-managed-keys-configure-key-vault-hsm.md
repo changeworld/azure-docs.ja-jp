@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102218640"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する

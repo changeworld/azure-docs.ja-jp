@@ -3,16 +3,16 @@ title: Azure Data Factory でパラメーターと式を使用する方法
 description: このハウツー記事では、Data Factory エンティティの作成で使用できる式と関数に関する情報を提供します。
 author: ssabat
 ms.author: susabat
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/08/2020
-ms.openlocfilehash: 8f22645eafa0969eac3d6c4c0645909f8c650cad
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 090c738d06b9b8acd53a4c194e97fa3a0515e1d6
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103199810"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783389"
 ---
 # <a name="how-to-use-parameters-expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory でパラメーター、式、関数を使用する方法
 

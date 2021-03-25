@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 5fbd523a38b3c4860316e45b8b7c03a17de19499
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92678337"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>Visual Studio Code を使用して C# Service Fabric アプリケーションを開発する

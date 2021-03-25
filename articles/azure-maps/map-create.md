@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
 ms.openlocfilehash: 833b6413cc5dfde1129075a286e5fe93a06e159f
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92890923"
 ---
 # <a name="create-a-map"></a>マップを作成する

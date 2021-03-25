@@ -7,10 +7,10 @@ ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 01/20/2021
 ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98629676"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Azure Logic Apps の統合サービス環境 (ISE) の保存データを暗号化するためにカスタマー マネージド キーを設定する

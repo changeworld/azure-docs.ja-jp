@@ -4,10 +4,10 @@ description: この記事では、Service Fabric アプリケーションのア�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96009349"
 ---
 # <a name="troubleshoot-application-upgrades"></a>アプリケーションのアップグレードのトラブルシューティング

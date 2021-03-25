@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 11/20/2020
+ms.date: 03/12/2021
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 66a709f15191a8142f10f15d825276ea2ba4b83f
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: a5224aab8db65cf22e952185d07147f6f007e088
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487986"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956283"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>カスタム DNS サーバーでワークスペースを使用する方法
 
@@ -37,33 +37,22 @@ ms.locfileid: "102487986"
 
 - 必要に応じて、[Azure CLI](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/install-az-ps)。
 
-## <a name="fqdns-in-use"></a>使用中の FQDN
-### <a name="these-fqdns-are-in-use-in-the-following-regions-eastus-southcentralus-and-westus2"></a>これらの FQDN は、eastus、southcentralus、westus2 の各リージョンで使用されています。
-次のリストには、ワークスペースで使用される完全修飾ドメイン名 (FQDN) が含まれています。
+## <a name="public-regions"></a>パブリック リージョン
+
+次のリストには、ワークスペースがパブリック リージョンにある場合に使用される完全修飾ドメイン名 (FQDN) が含まれています。
 
 * `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
-* `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
-* `<workspace-GUID>.workspace.<region>.aether.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
-* コンピューティング インスタンスを作成する場合は、ワークスペースのプライベート エンドポイントのプライベート IP を持つ `<instance-name>.<region>.instances.azureml.ms` のエントリも追加する必要があります。
+* `ml-<workspace-name, truncated>-<region>-<workspace-guid>.notebooks.azure.net`
 
     > [!NOTE]
-    > コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできます。
-    
-### <a name="these-fqdns-are-in-use-in-all-other-public-regions"></a>これらの FQDN は、他のすべてのパブリック リージョンで使用されています
-次のリストには、ワークスペースで使用される完全修飾ドメイン名 (FQDN) が含まれています。
-
-* `<workspace-GUID>.workspace.<region>.cert.api.azureml.ms`
-* `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.net`
+    > この FQDN のワークスペース名は切り詰められている可能性があります。 切り詰めは、FQDN が63文字以下になるように行われます。
 * `<instance-name>.<region>.instances.azureml.ms`
 
     > [!NOTE]
     > コンピューティング インスタンスには、仮想ネットワーク内からのみアクセスできます。
 
-### <a name="azure-china-21vianet-regions"></a>Azure China 21Vianet リージョン
+## <a name="azure-china-21vianet-regions"></a>Azure China 21Vianet リージョン
 
 次の FQDN は、Azure China 21Vianet リージョン向けです。
 
