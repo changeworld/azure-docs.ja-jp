@@ -1,24 +1,14 @@
 ---
 title: 'クイックスタート: 概要'
 description: このクイックスタートでは、Defender for IoT のデプロイに関する基本的なワークフローを理解して作業を開始する方法について学習します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/18/2021
-ms.author: shhazam
-ms.openlocfilehash: 487f9be432c908bf8ee1da858a9e45a18adffb8c
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.openlocfilehash: c6136d734570714b691a4ba3c2a72305c4c85590
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102447709"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784494"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>クイックスタート: Defender for IoT での作業を開始する
 

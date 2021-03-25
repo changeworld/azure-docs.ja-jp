@@ -17,10 +17,10 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 32973d063c36a45eee79db0b4da4e7419cb70013
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87798548"
 ---
 # <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理でアクセス パッケージへのアクセスを要求するリンクを共有する
@@ -37,7 +37,7 @@ ms.locfileid: "87798548"
 
 1. 左側のメニューで **[アクセス パッケージ]** をクリックして、アクセス パッケージを開きます。
 
-1. [概要] ページで、 **[My Access portal link]\(マイ アクセス ポータルのリンク)** をコピーします。
+1. [概要] ページで、**[My Access portal link]\(マイ アクセス ポータルのリンク)** をコピーします。
 
     ![アクセス パッケージの概要 - マイ アクセス ポータルのリンク](./media/entitlement-management-shared/my-access-portal-link.png)
 
