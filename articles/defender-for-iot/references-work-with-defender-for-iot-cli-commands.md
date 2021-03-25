@@ -1,18 +1,14 @@
 ---
 title: Defender for IoT の CLI コマンドを操作する
 description: この記事では、センサーおよびオンプレミスの管理コンソール用の Defender for IoT CLI コマンドについて説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 93efc89722d3152d92b6f8c8038deaa566741f7c
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 9cd3f4325db2bc45ddcd6cc011dd4993e385a43c
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100636562"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778680"
 ---
 # <a name="work-with-defender-for-iot-cli-commands"></a>Defender for IoT の CLI コマンドを操作する
 
@@ -287,7 +283,7 @@ cyberx-xsense-certificate-import
 | --key | \*.key ファイル。 キーの長さは、2048 ビット以上である必要があります。 |
 | --chain | 証明書チェーン ファイルへのパス (省略可能)。 |
 | --pass | 証明書の暗号化に使用されるパスフレーズ (省略可能)。 |
-| --passphrase-set | 既定値は **False** (**使用しない**) です。 <br />前の証明書で指定された前のパスフレーズを使用するには、**True** に設定します (省略可能)。 |  |
+| --passphrase-set | 既定値は **False** (**使用しない**) です。 <br />前の証明書で指定された前のパスフレーズを使用するには、**True** に設定します (省略可能)。 | 
 
 ツールを使用する場合:
 

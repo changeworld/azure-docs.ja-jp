@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: b-juche
-ms.openlocfilehash: 6d9d56a7f6d1e265508081f735e2dbc379f195fb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 330131ea7e9a364a31d25a6f3f0a75b1adbeb27a
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102552033"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104799889"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -191,12 +191,6 @@ SMB クライアントで報告されるボリューム サイズは、Azure Net
 ### <a name="im-having-issues-connecting-to-my-smb-share-what-should-i-do"></a>SMB 共有に接続すると問題が発生します。 どうすればよいですか。
 
 ベスト プラクティスとして、コンピューターのクロック同期の最大許容値を 5 分に設定します。 詳細については、[コンピューターのクロック同期の最大許容値](/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/jj852172(v=ws.11))に関するページをご覧ください。 
-
-<!--
-### Does Azure NetApp Files support LDAP signing? 
-
-Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
---> 
 
 ## <a name="capacity-management-faqs"></a>容量管理に関する FAQ
 

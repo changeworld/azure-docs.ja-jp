@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 3ed1ecca686471e052f07e945738ad1a49e68464
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "86260300"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
@@ -17,7 +17,7 @@ ms.locfileid: "86260300"
 
 ## <a name="commands"></a>コマンド
 
-|command|説明|
+|コマンド|説明|
 | --- | --- |
 | deployed | Service Fabric ノードにデプロイされているレプリカの詳細を取得します。 |
 | deployed-list | Service Fabric ノードにデプロイされているレプリカの一覧を取得します。 |

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
 ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98165826"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Azure Cosmos DB の Python ノートブックで組み込みのノートブック コマンドと機能を使用する (プレビュー)

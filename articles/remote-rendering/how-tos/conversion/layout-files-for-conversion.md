@@ -6,10 +6,10 @@ ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
 ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91318077"
 ---
 # <a name="laying-out-files-for-conversion"></a>変換用のファイルのレイアウト

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
 ms.openlocfilehash: cac17bbac96d44d8d9bfce2e168de4ea6d4c5c08
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100364955"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
@@ -25,7 +25,7 @@ ms.locfileid: "100364955"
 
 ## <a name="why-use-elastic-queries"></a>エラスティック クエリを使用する理由
 
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>Azure SQL データベース
 
 T-SQL で Azure SQL Database 内のデータベースにわたって完全なクエリを実行します。 これにより、リモート データベースの読み取り専用クエリが可能になり、現在の SQL Server のお客様が 3 部および 4 部構成名または SQL Database へのリンク サーバーを使用してアプリケーションを移行できるようになります。
 
