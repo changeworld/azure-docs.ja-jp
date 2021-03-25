@@ -10,10 +10,10 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 647a8fc25f27ef7f441ed7459ecd543d4f35581e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92895275"
 ---
 # <a name="show-search-results-on-the-map"></a>マップに検索結果を表示する
@@ -62,7 +62,7 @@ ms.locfileid: "92895275"
 > [!div class="nextstepaction"]
 > [検索サービスを使用するためのベスト プラクティス](how-to-use-best-practices-for-search.md)
 
-あいまい検索の詳細については、 **こちら** を参照してください。
+あいまい検索の詳細については、**こちら** を参照してください。
 
 > [!div class="nextstepaction"]
 > [Azure Maps Fuzzy Search API](/rest/api/maps/search/getsearchfuzzy)

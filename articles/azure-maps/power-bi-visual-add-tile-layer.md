@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 6ab99f32932f39d5ad140b7a16d16ceae30fff54
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92896210"
 ---
 # <a name="add-a-tile-layer"></a>タイル レイヤーを追加する
@@ -38,8 +38,8 @@ ms.locfileid: "92896210"
 | 透明性   | タイル レイヤーの透明度。   |
 | [Is TMS] (TMS である)         | タイル レイヤーの Y 座標軸を反転する仕様である Tile Map Service。 |
 | [Min zoom] (最小ズーム)       | タイルで使用可能な最小ズーム レベル。 |
-| [Max zoom] (最大ズーム)       | タイルで使用可能な最大ズーム レベル。  |
-| [Layer position] (レイヤーの位置) | レイヤーの位置をその他の地図レイヤーに応じて相対的に指定します。 |
+| Max zoom\(最大ズーム\)       | タイルで使用可能な最大ズーム レベル。  |
+| Layer position\(レイヤーの位置\) | レイヤーの位置をその他の地図レイヤーに応じて相対的に指定します。 |
 
 ## <a name="tile-url-formatting"></a>[Tile URL formatting] (タイル URL の書式設定)
 

@@ -8,10 +8,10 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 3fa2677f7c71b118ec3f7da717e29d5879ee982b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88961824"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Azure ExpressRoute を使用した PowerApps 用の App Service Environment のネットワーク構成の詳細
@@ -131,7 +131,7 @@ DNS 要件を満たすには、仮想ネットワークに対して有効な DNS
 
 仮想マシンをサブネットにデプロイし、以下の条件を確認します。
 
-* この記事に記載されている Azure エンドポイントと Azure 以外のエンドポイントに対する発信トラフィックは、ExpressRoute 回線を**フローしません**。 サブネットからの発信トラフィックがオンプレミスで強制トンネリングされると、App Service Environment の作成は常に失敗します。
+* この記事に記載されている Azure エンドポイントと Azure 以外のエンドポイントに対する発信トラフィックは、ExpressRoute 回線を **フローしません**。 サブネットからの発信トラフィックがオンプレミスで強制トンネリングされると、App Service Environment の作成は常に失敗します。
 * この記事に記載されているエンドポイントの DNS 参照は、すべて正しく解決されます。 
 
 構成手順を完了してルートを確認したら、仮想マシンを削除します。 サブネットは、App Service Environment の作成時には "空" である必要があります。

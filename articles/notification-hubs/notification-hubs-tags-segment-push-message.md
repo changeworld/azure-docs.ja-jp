@@ -18,10 +18,10 @@ ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4ff8225522e79e2be40682fb5e4823777dde2aa0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "88998305"
 ---
 # <a name="routing-and-tag-expressions"></a>ルーティングとタグ式
@@ -44,7 +44,7 @@ ms.locfileid: "88998305"
 
 ![タグの概要](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
-この図で、 **[Beatles]** というタグが付いたメッセージは、タグ **[Beatles]** で登録されたタブレットにのみ到達します。
+この図で、**[Beatles]** というタグが付いたメッセージは、タグ **[Beatles]** で登録されたタブレットにのみ到達します。
 
 タグの登録の作成の詳細については、「[登録管理](notification-hubs-push-notification-registration-management.md)」を参照してください。
 

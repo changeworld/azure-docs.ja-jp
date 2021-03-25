@@ -4,10 +4,10 @@ description: ブループリント アーティファクト パラメーター�
 ms.date: 01/21/2021
 ms.topic: sample
 ms.openlocfilehash: 97dd983ef3188cad7d36459197e57e4e0f3c4e8f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100577338"
 ---
 # <a name="deploy-the-australian-government-ism-protected-blueprint-sample"></a>Australian Government ISM PROTECTED ブループリント サンプルをデプロイする
