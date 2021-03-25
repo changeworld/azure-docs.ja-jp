@@ -3,15 +3,15 @@ title: 継続的なデプロイを構成する
 description: GitHub、BitBucket、Azure Repos、またはその他のリポジトリから Azure App Service への CI/CD を有効にする方法について説明します。 ニーズに合ったビルド パイプラインを選択します。
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
-ms.date: 03/03/2021
+ms.date: 03/12/2021
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 5af8294518759181326e7736ef755f0a83581014
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 52f0db739cff9614dc4e9f5ef71d582e926fc65a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564963"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103470270"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的デプロイ
 
@@ -91,7 +91,7 @@ BitBucket 統合では、ビルドの自動化のために App Service ビルド
 
 1. [Azure portal](https://portal.azure.com)で、App Service アプリの管理ページに移動します。
 
-1. 左側のメニューで、 **[デプロイ センター]**  >  **[設定]**  >  **[接続解除]** の順にクリックします。 
+1. 左側のメニューで、 **[デプロイ センター]** 、 **[設定]** 、 **[接続解除]** の順にクリックします。 
 
     ![Azure portal の App Service アプリでクラウド フォルダーの同期を切断する方法を示します。](media/app-service-continuous-deployment/disable.png)
 
@@ -116,6 +116,8 @@ GitHub Actions ビルド プロバイダーは、次の方法でカスタマイ�
 - 発行プロファイルではなく、Azure Active Directory で[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を使用してデプロイします。
 
 #### <a name="authenticate-with-a-service-principal"></a>サービス プリンシパルでの認証
+
+このオプション構成では、既定の認証が、生成されたワークフロー ファイル内の発行プロファイルに置き換えられます。
 
 1. [Azure CLI](/cli/azure/) で [az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) コマンドを使用して、サービス プリンシパルを作成します。 次の例では、 *\<subscription-id>* 、 *\<group-name>* 、および *\<app-name>* を独自の値に置き換えます。
 

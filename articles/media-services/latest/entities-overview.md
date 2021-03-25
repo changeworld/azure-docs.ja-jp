@@ -13,10 +13,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 19febc833f087afdfecde3274a1044598d082521
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98955311"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、およびページング
@@ -159,27 +159,27 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 |エンティティ名|プロパティ名|Assert|Order|
 |---|---|---|---|
-|[アセット](/rest/api/media/assets/)|name|`eq`、`gt`、`lt`、`ge`、`le`|`asc` および `desc`|
+|[アセット](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` および `desc`|
 ||properties.alternateId |`eq`||
 ||properties.assetId |`eq`||
-||properties.created| `eq`、`gt`、`lt`| `asc` および `desc`|
-|[コンテンツ キー ポリシー](/rest/api/media/contentkeypolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
-||properties.description    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`||
-||properties.lastModified|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+||properties.created| `eq`, `gt`, `lt`| `asc` および `desc`|
+|[コンテンツ キー ポリシー](/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` および `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` および `desc`|
+||properties.description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` および `desc`|
 ||properties.policyId|`eq`, `ne`||
 |[ジョブ](/rest/api/media/jobs)| name  | `eq`            | `asc` および `desc`|
 ||properties.state        | `eq`, `ne`        |                         |
-||properties.created      | `gt`、`ge`、`lt`, `le`| `asc` および `desc`|
-||properties.lastModified | `gt`、`ge`、`lt`, `le` | `asc` および `desc`| 
-|[ストリーミング ロケーター](/rest/api/media/streaminglocators)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
-||properties.endTime    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
-|[ストリーミング ポリシー](/rest/api/media/streamingpolicies)|name|`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
-||properties.created    |`eq`、`ne`、`ge`、`le`、`gt`、`lt`|`asc` および `desc`|
+||properties.created      | `gt`, `ge`, `lt`, `le`| `asc` および `desc`|
+||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` および `desc`| 
+|[ストリーミング ロケーター](/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` および `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`,  `gt`, `lt`|`asc` および `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` および `desc`|
+|[ストリーミング ポリシー](/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` および `desc`|
+||properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` および `desc`|
 |[変換](/rest/api/media/transforms)| name | `eq`            | `asc` および `desc`|
-|| properties.created      | `gt`、`ge`、`lt`, `le`| `asc` および `desc`|
-|| properties.lastModified | `gt`、`ge`、`lt`, `le`| `asc` および `desc`|
+|| properties.created      | `gt`, `ge`, `lt`, `le`| `asc` および `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` および `desc`|
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: error-reference
 ms.date: 02/12/2020
 ms.author: inhenkel
-ms.openlocfilehash: b3be465c488bdd3c5dbd62f757733939d1bee393
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 5463f1d8376cbe1a6e81d17c1f95a84e67f3b418
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393515"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581084"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services ライブ イベント エラー コード
 
@@ -28,7 +28,7 @@ ms.locfileid: "100393515"
 
 ## <a name="liveeventconnectionrejected"></a>LiveEventConnectionRejected
 
-ライブ イベントの [Event Grid](../../event-grid/index.yml) イベントをサブスクライブすると、[LiveEventConnectionRejected](media-services-event-schemas.md\#liveeventconnectionrejected) イベントから次のいずれかのエラーが表示されることがあります。
+ライブ イベントの [Event Grid](../../event-grid/index.yml) イベントをサブスクライブすると、[LiveEventConnectionRejected](monitoring/media-services-event-schemas.md\#liveeventconnectionrejected) イベントから次のいずれかのエラーが表示されることがあります。
 > [!div class="mx-tdCol2BreakAll"]
 >| エラー | Information |
 >|--|--|
@@ -68,7 +68,7 @@ ms.locfileid: "100393515"
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
-[LiveEventEncoderDisconnected](media-services-event-schemas.md\#liveeventencoderdisconnected) イベントの次のいずれかのエラーが表示される場合があります。
+[LiveEventEncoderDisconnected](monitoring/media-services-event-schemas.md\#liveeventencoderdisconnected) イベントの次のいずれかのエラーが表示される場合があります。
 
 > [!div class="mx-tdCol2BreakAll"]
 >| エラー | Information |
