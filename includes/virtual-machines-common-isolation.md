@@ -9,10 +9,10 @@ ms.date: 11/05/2020
 ms.author: risverma
 ms.custom: include file
 ms.openlocfilehash: fc61c111291f9862f71f9a81828fa0fa828ab2ad
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102511049"
 ---
 Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。 分離されたサイズは、特定のハードウェア世代上に存続して動作し、そのハードウェア世代が廃止されると非推奨となります。

@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
 ms.openlocfilehash: e9ff7a29cba9b8e9ca058bfe742f484c5b495cd7
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221317"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>PowerShell を使用して、送信されたデータ共有の使用状況を監視する
@@ -39,7 +39,7 @@ Get-AzDataShareSynchronizationDetails -ResourceGroupName $resourceGroupName -Acc
 
 このスクリプトでは以下のコマンドを使用します。 
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Get-AzDataShareSynchronization](/powershell/module/az.datashare/get-azdatasharesynchronization) | 共有の同期を一覧表示します。 |
 | [Get-AzDataShareSynchronizationDetails](/powershell/module/az.datashare/get-azdatasharesynchronizationdetail) | 共有同期の同期の詳細を取得します。 |

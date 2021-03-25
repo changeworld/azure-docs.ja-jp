@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7688e42175b2b4e35b63979f5df25702f3bb869d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "90986595"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN デバイス トンネルの構成
@@ -31,7 +31,7 @@ ms.locfileid: "90986595"
 
 プロファイルを削除するには、次のコマンドを実行します。
 
-![Remove-VpnConnection -Name MachineCertTest コマンドを実行する PowerShell ウィンドウを示すスクリーンショット。](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
+![Remove-VpnConnection -Name MachineCertTest コマンドを実行している PowerShell ウィンドウを示すスクリーンショット。](./media/vpn-gateway-howto-always-on-device-tunnel/cleanup.png)
 
 ## <a name="next-steps"></a>次のステップ
 
