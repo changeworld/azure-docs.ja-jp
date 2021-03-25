@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: adfe5318949ffa624ebe3548944b558bd0dda9e1
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 09cfdd026105a34db976118f38b011e2c4578a24
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198474"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103470777"
 ---
 # <a name="options-for-registering-a-saml-application-in-azure-ad-b2c"></a>Azure AD B2C に SAML アプリケーションを登録するためのオプション
 
@@ -278,6 +278,19 @@ SAML 応答内の datetime の値からミリ秒を削除するかどうかを�
 ## <a name="session-management"></a>セッションの管理
 
 `UseTechnicalProfileForSessionManagement` 要素と [SamlSSOSessionProvider](custom-policy-reference-sso.md#samlssosessionprovider) を使用して、Azure AD B2C と SAML 証明書利用者アプリケーション間のセッションを管理できます。
+
+## <a name="force-users-to-re-authenticate"></a>ユーザーに再認証を強制する 
+
+ユーザーに再認証を強制するために、アプリケーションで SAML 認証要求に `ForceAuthn` 属性を含めることができます。 `ForceAuthn` 属性はブール値です。 true に設定すると、ユーザー セッションは Azure AD B2C で無効になり、ユーザーは再認証するように強制されます。 次の SAML 認証要求では、`ForceAuthn` 属性を true に設定する方法を示しています。 
+
+
+```xml
+<samlp:AuthnRequest 
+       Destination="https://contoso.b2clogin.com/contoso.onmicrosoft.com/B2C_1A_SAML2_signup_signin/samlp/sso/login"
+       ForceAuthn="true" ...>
+    ...
+</samlp:AuthnRequest>
+```
 
 ## <a name="debug-the-saml-protocol"></a>SAML プロトコルをデバッグする
 

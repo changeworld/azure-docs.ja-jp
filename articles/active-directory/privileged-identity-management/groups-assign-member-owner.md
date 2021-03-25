@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 48c4473cfafce1215219251c47bce1d5730645fc
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "91534422"
 ---
 # <a name="assign-eligibility-for-a-privileged-access-group-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループ (プレビュー) の資格を割り当てる

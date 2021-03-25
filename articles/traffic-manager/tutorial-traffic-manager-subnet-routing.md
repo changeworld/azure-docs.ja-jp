@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/08/2021
 ms.author: duau
 ms.openlocfilehash: 9b916f9942b0459b41d98b952fad072ae48318b3
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102505437"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
@@ -154,7 +154,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 
     ![Traffic Manager プロファイルの作成](./media/tutorial-traffic-manager-subnet-routing/create-traffic-manager-profile.png)
 
-    | 設定                 | [値]                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | 名前                   | この名前は trafficmanager.net ゾーン内で一意である必要があります。結果的に、Traffic Manager プロファイルへのアクセスに使用される、DNS 名.trafficmanager.net になるためです。                                   |
     | ルーティング方法          | **[サブネット]** ルーティング方式を選択します。                                       |
@@ -169,7 +169,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで、**[エンドポイント]** を選択し、**[追加]** を選択します。
 3. 次の情報を入力または選択します。 残りの設定は既定値をそのまま使用し、 **[OK]** を選択します。
 
-    | 設定                 | [値]                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | Type                    | Azure エンドポイント                                   |
     | 名前           | myInternalWebSiteEndpoint                                        |

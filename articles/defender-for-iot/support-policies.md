@@ -1,19 +1,14 @@
 ---
 title: Azure Defender for IoT のサポート ポリシー
-titleSuffix: Azure Defender for IoT
 description: この記事では、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Azure Defender for IoT のバージョンについて説明します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 2/8/2021
 ms.topic: article
-ms.service: azure
-ms.openlocfilehash: 17ef357ebc78b63cbaf473cb6449cb89ccf0963e
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b1a01a02155bb1443542892ed9d00d1c6b221f64
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101098075"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782607"
 ---
 # <a name="versioning-and-support-for-azure-defender-for-iot"></a>Azure Defender for IoT のバージョン管理とサポート 
 

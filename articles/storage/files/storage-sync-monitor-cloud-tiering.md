@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/4/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93e9d9a552ab1bff16ca15d6bb11faeb5d47a503
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: c27916afb0d199bcb32db9d43202e552a4a04f53
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204255"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593137"
 ---
 # <a name="monitor-cloud-tiering"></a>クラウドの階層化を監視する
 クラウドを使った階層化ポリシーを監視するには、サーバー エンドポイントのプロパティ ブレードと Azure Monitor の 2 つの方法があります。
@@ -55,7 +55,7 @@ ms.locfileid: "102204255"
  
 Azure File Sync のさまざまな種類のメトリックとその使用方法の詳細については、「[Azure File Sync の監視](storage-sync-files-monitoring.md)」を参照してください。
 
-メトリックの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started)」を参照してください。
+メトリックの使用方法の詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/essentials/metrics-getting-started.md)」を参照してください。
 
 クラウドの階層化ポリシーを変更する場合は、「[クラウドを使った階層化ポリシーの選択](storage-sync-choose-cloud-tiering-policies.md)」を参照してください。
 
