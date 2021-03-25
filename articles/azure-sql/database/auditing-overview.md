@@ -187,7 +187,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
 
 監査ログを Azure ストレージ アカウントに書き込むことを選択すると、複数の方法でログを表示できるようになります。
 
-- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](./audit-log-format.md)」を参照してください。
+- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure Storage Explorer](https://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](./audit-log-format.md)」を参照してください。
 
 - [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
@@ -214,7 +214,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
     4. 統合されたファイルを SSMS で開くと、ファイルを表示および分析し、XEL または CSV ファイルまたはテーブルにエクスポートすることができます。
 
 - Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 ダウンロード可能なテンプレートの詳細と、テンプレートへのアクセスについては、[Power BI での監査ログ データの分析](https://techcommunity.microsoft.com/t5/azure-database-support-blog/sql-azure-blob-auditing-basic-power-bi-dashboard/ba-p/368895)に関するページを参照してください。
-- ポータル経由で、あるいは [Azure ストレージ エクスプローラー](https://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
+- ポータル経由で、あるいは [Azure Storage Explorer](https://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
   - ログ ファイルをローカルでダウンロードした後に、ファイルをダブルクリックし、SSMS でログを開き、表示し、分析します。
   - また、Azure ストレージ エクスプ ローラーを使用して、同時に複数のファイルをダウンロードすることもできます。 それには、特定のサブフォルダーを右クリックし、 **[名前を付けて保存]** を選択してローカル フォルダーに保存します。
 
