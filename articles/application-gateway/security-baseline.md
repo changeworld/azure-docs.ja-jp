@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 75d219a207fef4f1f122799af5f4f4ef2765bca4
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4fc26d8e154dc0a58bb3436a8161d2e21efa2b86
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723862"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952016"
 ---
 # <a name="azure-security-baseline-for-application-gateway"></a>Application Gateway 用の Azure セキュリティ ベースライン
 
@@ -60,7 +60,7 @@ Azure セキュリティ ベンチマークに対する Application Gateway の�
 
 - [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-- [Azure Application Gateway の診断とログに関する FAQ](/azure/application-gateway/application-gateway-faq#what-types-of-logs-does-application-gateway-provide)
+- [Azure Application Gateway の診断とログに関する FAQ](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **責任**: Customer
 
@@ -118,7 +118,7 @@ Azure セキュリティ ベンチマークに対する Application Gateway の�
 
 - [Azure Security Center によって提供されるネットワークのセキュリティについて](../security-center/security-center-network-recommendations.md)
 
-- [Azure Application Gateway の診断とログに関する FAQ](/azure/application-gateway/application-gateway-faq#what-types-of-logs-does-application-gateway-provide)
+- [Azure Application Gateway の診断とログに関する FAQ](./application-gateway-faq.yml#what-types-of-logs-does-application-gateway-provide)
 
 **責任**: Customer
 
@@ -140,7 +140,7 @@ Azure セキュリティ ベンチマークに対する Application Gateway の�
 
 - [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-- [Barracuda WAF クラウド サービスの概要](https://docs.microsoft.com/azure/app-service/environment/app-service-app-service-environment-web-application-firewall#configuring-your-barracuda-waf-cloud-service)
+- [Barracuda WAF クラウド サービスの概要](../app-service/environment/app-service-app-service-environment-web-application-firewall.md#configuring-your-barracuda-waf-cloud-service)
 
 **責任**: Customer
 
@@ -210,9 +210,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Application Gateway デプロイに関連するネットワーク設定とリソースの変更を検出します。 重要なネットワーク設定またはリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -230,7 +230,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 Azure Application Gateway では、Azure Application Insights とのビルトイン統合も提供されます。 Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 Application Insights は、パフォーマンスの異常を自動的に検出するほか、問題の診断や、Web アプリの使用状況の理解に役立つ強力な分析ツールを備えています。 連続エクスポートを有効にすると、Application Insights からのテレメトリを一元化された場所にエクスポートして、標準の保持期間より長い間データを維持することができます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Application Gateway の診断設定を有効にする方法](application-gateway-diagnostics.md)
 
@@ -250,7 +250,7 @@ Azure Application Gateway では、Azure Application Insights とのビルトイ
 
 Azure Application Gateway では、Azure Application Insights とのビルトイン統合も提供されます。 Application Insights を使用すると、ログ、パフォーマンス、およびエラー データを収集できます。 Application Insights は、パフォーマンスの異常を自動的に検出するほか、問題の診断や、Web アプリの使用状況の理解に役立つ強力な分析ツールを備えています。 連続エクスポートを有効にすると、Application Insights からのテレメトリを一元化された場所にエクスポートして、標準の保持期間より長い間データを維持することができます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Application Gateway の診断設定を有効にする方法](application-gateway-diagnostics.md)
 
@@ -266,7 +266,7 @@ Azure Application Gateway では、Azure Application Insights とのビルトイ
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **責任**: Customer
 
@@ -280,7 +280,7 @@ Azure Application Gateways などのデプロイされたすべてのネット�
 
 必要に応じて、Azure Sentinel またはサード パーティの SIEM に対してデータを有効にしてオンボードすることもできます。 
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Application Gateway の診断設定を有効にする方法](application-gateway-diagnostics.md)
 
@@ -300,13 +300,13 @@ Azure Application Gateways などのデプロイされたすべてのネット�
 
 - [Azure WAF をデプロイする方法](../web-application-firewall/ag/create-waf-policy-ag.md)
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Application Gateway の診断設定を有効にする方法](application-gateway-diagnostics.md)
 
 - [Azure Monitor for Networks の使用方法](../azure-monitor/insights/network-insights-overview.md)
 
-- [Azure 内でアラートを作成する方法](/azure/azure-monitor/learn/tutorial-response)
+- [Azure 内でアラートを作成する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **責任**: Customer
 
@@ -334,9 +334,9 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: Azure Active Directory (Azure AD) には、明示的に割り当てる必要があるためにクエリ可能である組み込みロールがあります。 Azure AD PowerShell モジュールを使用してアドホック クエリを実行し、管理グループのメンバーであるアカウントを検出します。
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールを取得する方法](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **責任**: Customer
 
@@ -386,7 +386,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: すべての Azure Active Directory ベースのアクセスに多要素認証を使用する
 
-**ガイダンス**: Azure Active Directory (Azure AD) 多要素認証を有効にし、Azure Security Center の ID およびアクセス管理の推奨事項に従います。
+**ガイダンス**: Azure Active Directory (Azure AD) の多要素認証を有効にし、Azure Security Center の ID およびアクセス管理の推奨事項に従います。
 
 - [Azure で多要素認証を有効にする方法](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -444,7 +444,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -458,7 +458,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペースで必要なアラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **責任**: Customer
 
@@ -486,7 +486,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**:タグを使用して、機密情報を格納または処理する Azure リソースの追跡に役立てます。 
 
-- [タグを作成して使用する方法](/azure/azure-resource-manager/resource-group-using-tags)
+- [タグを作成して使用する方法](../azure-resource-manager/management/tag-resources.md)
 
 **責任**: Customer
 
@@ -546,7 +546,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: Azure Monitor と Azure アクティビティ ログを使用して、運用環境の Azure Application Gateway インスタンスおよびその他の重要なリソースまたは関連リソースへの変更が発生したときに、アラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -604,7 +604,7 @@ Microsoft でスキャンおよび修正される、基になるプラットフ�
 
 - [Azure Resource Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Azure RBAC について](../role-based-access-control/overview.md)
 
@@ -667,7 +667,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -709,7 +709,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: Azure Application Gateway のデプロイに関連するネットワーク設定の標準的なセキュリティ構成を定義して、実装します。 Azure Application Gateways、Azure Virtual Networks、ネットワーク セキュリティ グループのネットワーク構成を監査または適用するためのカスタム ポリシーを作成するには、"Microsoft.Network" 名前空間で Azure Policy エイリアスを使用します。 組み込みのポリシー定義を使用することもできます。
 
-- [使用可能な Azure Policy エイリアスを表示する方法](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [使用可能な Azure Policy エイリアスを表示する方法](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
@@ -733,9 +733,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:カスタム Azure ポリシー定義を使用する場合は、Azure DevOps または Azure Repos を使ってコードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos のドキュメント](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **責任**: Customer
 
@@ -817,7 +817,7 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 **ガイダンス**: Azure Web アプリケーション ファイアウォール (WAF) を使用する場合は、WAF ポリシーを構成できます。 WAF ポリシーは、2 種類のセキュリティ規則で構成できます。お客様が作成するカスタム規則と、Azure によって管理される事前構成済みの規則のセットのコレクションであるマネージド規則セットです。 Azure で管理される規則セットでは、一般的なセキュリティ脅威のセットに対する保護をデプロイする簡単な方法が提供されます。 そのような規則セットが Azure によって管理されるので、新しい攻撃シグネチャから保護するために、必要に応じて規則が更新されます。
 
-- [Azure で管理されている WAF 規則セットについて](https://docs.microsoft.com/azure/web-application-firewall/ag/ag-overview#waf-policy-and-rules)
+- [Azure で管理されている WAF 規則セットについて](../web-application-firewall/ag/ag-overview.md#waf-policy-and-rules)
 
 **責任**: 共有
 
@@ -833,11 +833,11 @@ Azure Application Gateway デプロイの診断設定を構成します。 診�
 
 Azure DevOps Services では、Azure Storage 機能の多くを活用して、ハードウェア障害、サービスの中断、またはリージョンの災害が発生した場合にデータの可用性を確保しています。 さらに、Azure DevOps チームは、データを偶発的または悪意のある削除から保護する手順に従っています。
 
-- [Azure DevOps のデータ可用性の概要](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability&amp;preserve-view=true)
+- [Azure DevOps のデータ可用性の概要](/azure/devops/organizations/security/data-protection?preserve-view=true&view=azure-devops#data-availability)
 
-- [Azure DevOps でコードを格納する方法](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Azure Repos のドキュメント](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Azure Repos のドキュメント](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **責任**: Customer
 
@@ -963,5 +963,5 @@ Azure DevOps Services では、Azure Storage 機能の多くを活用して、�
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

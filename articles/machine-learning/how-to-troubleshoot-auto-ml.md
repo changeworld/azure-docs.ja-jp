@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 03/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, automl, references_regions
-ms.openlocfilehash: b66c768011c05e1105f1351ebe4ed7c3c9700b70
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 28aac830326d60161f54d7ad5fa03326c1d66462
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519165"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563676"
 ---
 # <a name="troubleshoot-automated-ml-experiments-in-python"></a>Python での自動 ML 実験のトラブルシューティング
 
@@ -166,6 +166,10 @@ PyJWT のバージョンは次のようにして確認できます。
   1. モデル パッケージをダウンロードする
   1. パッケージの解凍
   1. 解凍した資産を使用してデプロイする
+
+## <a name="azure-functions-application"></a>Azure Functions アプリケーション
+  
+  自動化された ML では現在、Azure Functions アプリケーションがサポートされていません。 
 
 ## <a name="sample-notebook-failures"></a>サンプル ノートブックの失敗
 

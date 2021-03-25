@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: cab32a6c2835dc283a169f58c79ff54e7925467b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f4f3fc8c928cd284088cc51120f1a7b485b4fac0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102554243"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104595347"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -35,7 +35,7 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
   - [**Java**](https://search.maven.org/search?q=a:azure-mgmt-digitaltwins) ([参照 [自動生成]](/java/api/overview/azure/digitaltwins)) ([ソース](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins))
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([ソース](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([ソース](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
-  - [**Go**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([ソース](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
+  - [**Go**](https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt) ([ソース](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt))
 
 また、コントロール プレーン API の演習を行うには、[Azure portal](https://portal.azure.com) および [CLI](how-to-use-cli.md) を使用して Azure Digital Twins を操作します。
 

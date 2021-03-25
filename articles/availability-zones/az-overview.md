@@ -8,12 +8,12 @@ ms.date: 02/23/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: 4adfb63ecab72eb42e188af472bb5387a0276a79
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dad8661de55fc90c9f3d3782c402deb519d16536
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101723777"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596010"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Azure のリージョンと Availability Zones
 
@@ -82,7 +82,7 @@ Azure サービスは、基本サービス、メインストリーム サービ�
 | 推奨 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 需要主導型 | :heavy_check_mark: | :heavy_check_mark: |
 | 代替 | :heavy_check_mark: | :heavy_check_mark: | 需要主導型 | 需要主導型 | 該当なし | :heavy_check_mark: |
 
-### <a name="services-by-category-with-availability-zones"></a>Availability Zones を使用したカテゴリ別のサービス
+### <a name="services-by-category"></a>カテゴリ別のサービス
 
 前述のように、Azure のサービスは、基本サービス、メインストリーム サービス、および専用サービスという 3 つのカテゴリに分類されています。 サービス カテゴリは、一般提供の際に割り当てられます。 多くの場合、サービスのライフサイクルは専用サービスから始まり、その需要や使用率が増加すると、メインストリーム サービスまたは基本サービスに昇格される可能性があります。 次の表では、サービスを基本、メインストリームのカテゴリでリストしています。 表については、次の点に注意してください。
 
@@ -101,7 +101,7 @@ Azure サービスは、基本サービス、メインストリーム サービ�
 > | Azure ExpressRoute                     | Azure Bastion                                     | 
 > | Azure パブリック IP                        | Azure Cache for Redis                             | 
 > | Azure SQL データベース                     | Azure Cognitive Search                            | 
-> | Azure SQL: マネージド インスタンス           | Azure Cognitive Services                          | 
+> | Azure SQL Managed Instance             | Azure Cognitive Services                          | 
 > | Disk Storage                           | Azure Cognitive Services: Computer Vision         | 
 > | Event Hubs                             | Azure Cognitive Services: Content Moderator       | 
 > | Key Vault                              | Azure Cognitive Services: Face                    | 
