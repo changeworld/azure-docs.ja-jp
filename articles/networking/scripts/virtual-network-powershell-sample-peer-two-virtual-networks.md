@@ -14,10 +14,10 @@ ms.date: 05/16/2017
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 63fab50f991a15a38d18dead53d268abca79c811
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98231888"
 ---
 # <a name="peer-two-virtual-networks"></a>2 つの仮想ネットワークのピアリング
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| コマンド | メモ |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 | 
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)| Azure 仮想ネットワークとサブネットを作成します。 |

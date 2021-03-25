@@ -10,10 +10,10 @@ ms.custom: subject-armqs
 ms.date: 10/12/2020
 ms.author: duau
 ms.openlocfilehash: 7521344a2bb6aae67724c8bfbb9131e2ff1e6b94
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92789728"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用してプライベート ピアリングによる ExpressRoute 回線を作成する

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
 ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98249442"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>マッピング データ フローを使用して安全にデータを変換する

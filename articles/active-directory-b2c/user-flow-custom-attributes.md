@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c9453f2fc5803fb6ce09d8749cbf7fa1c7c2ec46
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 17c73257db371bbec0c72a23b1303847a8d14102
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174834"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102607919"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム属性を定義する
 
@@ -30,6 +30,8 @@ Azure AD B2C ディレクトリには、[組み込みの属性セット](user-pr
 * 顧客向けアプリケーションで、**LoyaltyId** 属性を保持する必要がある。
 * ID プロバイダーが、保存する必要がある一意のユーザー識別子 (**uniqueUserGUID**) を保持している。
 * カスタム ユーザー体験で、他のロジックを運用するために必要な、ユーザーの状態 (**migrationStatus**) を保持する必要がある。
+
+用語の *拡張機能プロパティ*、*カスタム属性*、および *カスタム要求* では、この記事のコンテキストと同じ内容を参照します。 名前は、アプリケーション、オブジェクト、ポリシーなどのコンテキストによって異なります。
 
 Azure AD B2C では、各ユーザー アカウントで保存される属性セットを拡張できます。 また、[Microsoft Graph API](microsoft-graph-operations.md) を使用してこれらの属性を読み書きすることもできます。
 
@@ -66,11 +68,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C 拡張アプリ
 
-拡張属性は、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 拡張属性は、b2c-extensions-app というアプリケーションに関連付けられます。 Azure AD B2C は、ユーザー データを保存するためにこのアプリケーションを使用します。このため、このアプリケーションは変更しないでください。 このアプリケーションは、Azure AD B2C (アプリの登録) から確認できます。
-
-用語の *拡張機能プロパティ*、*カスタム属性*、および *カスタム要求* では、この記事のコンテキストと同じ内容を参照します。 名前は、アプリケーション、オブジェクト、ポリシーなどのコンテキストによって異なります。
-
-## <a name="get-the-application-properties"></a>アプリケーション プロパティの取得
+拡張属性は、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 拡張属性は、`b2c-extensions-app` というアプリケーションに関連付けられます。 Azure AD B2C は、ユーザー データを保存するためにこのアプリケーションを使用します。このため、このアプリケーションは変更しないでください。 このアプリケーションは、Azure AD B2C (アプリの登録) から確認できます。 次の手順でアプリケーション プロパティを取得します。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
@@ -80,14 +78,6 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 1. 次の識別子をクリップボードにコピーして保存します。
     * **アプリケーション ID**。 例: `11111111-1111-1111-1111-111111111111`.
     * **オブジェクト ID**。 例: `22222222-2222-2222-2222-222222222222`.
-
-## <a name="using-custom-attribute-with-ms-graph-api"></a>MS Graph API でのカスタム属性の使用
-
-Microsoft Graph API では、拡張属性を使用したユーザーの作成と更新がサポートされています。 Graph API の拡張属性には、`extension_ApplicationClientID_attributename` の規則を使用して名前が付けられます。ここで `ApplicationClientID` は `b2c-extensions-app` アプリケーションの **アプリケーション (クライアント) ID** です。 拡張属性名で表されるように、**アプリケーション (クライアント) ID** にはハイフンが含まれないことに注意してください。 次に例を示します。
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-``` 
 
 ::: zone pivot="b2c-custom-policy"
 
@@ -173,6 +163,14 @@ Microsoft Graph API では、拡張属性を使用したユーザーの作成と
 
 ::: zone-end
 
-## <a name="next-steps"></a>次の手順
+## <a name="using-custom-attribute-with-ms-graph-api"></a>MS Graph API でのカスタム属性の使用
+
+Microsoft Graph API では、拡張属性を使用したユーザーの作成と更新がサポートされています。 Graph API の拡張属性には、`extension_ApplicationClientID_attributename` の規則を使用して名前が付けられます。ここで `ApplicationClientID` は `b2c-extensions-app` アプリケーションの **アプリケーション (クライアント) ID** です。 拡張属性名で表されるように、**アプリケーション (クライアント) ID** にはハイフンが含まれないことに注意してください。 次に例を示します。
+
+```json
+"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyId": "212342" 
+``` 
+
+## <a name="next-steps"></a>次のステップ
 
 [カスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ](configure-user-input.md)に関するガイドラインに従ってください。 このサンプルでは、組み込みの要求の "city" を使用します。 カスタム属性を使用するには、"city" を独自のカスタム属性に置き換えます。

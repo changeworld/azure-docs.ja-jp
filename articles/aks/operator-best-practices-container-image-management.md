@@ -5,17 +5,17 @@ services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 1d2f5465356a94b9ad7014e75aa6fe1515411a81
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102564919"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) でのコンテナー イメージの管理とセキュリティに関するベスト プラクティス
 
 Azure Kubernetes Service (AKS) でアプリケーションを開発および実行する際には、コンテナーおよびコンテナー イメージのセキュリティが重要な考慮事項になります。 期限切れの基本イメージ、または修正プログラムが適用されていないアプリケーション ランタイムを含むコンテナーは、セキュリティ上のリスクおよび考えられる攻撃ベクトルをもたらします。 これらのリスクを最小限に抑えるには、ビルド時と実行時にコンテナー内の問題をスキャンして修復するツールを統合する必要があります。 脆弱性または期限切れの基本イメージが、プロセス内のできるだけ早い段階で見つかれば、クラスターのセキュリティが高まります。 この記事で *コンテナー* は、コンテナー レジストリに格納されているコンテナー イメージと、実行中のコンテナーの両方を意味します。
 
-この記事では、AKS でコンテナーをセキュリティで保護する方法について説明します。 以下の方法について説明します。
+この記事では、AKS でコンテナーをセキュリティで保護する方法について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * イメージの脆弱性をスキャンして修復する

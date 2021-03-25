@@ -1,5 +1,5 @@
 ---
-title: '方法: スコープ付きリソース セットの構成を作成する'
+title: スコープ付きリソース セットの構成を作成する方法
 description: スコープ付きリソース セットの構成ルールを作成して、資産がリソース セットにどのようにグループ化されるかを上書きする方法について説明します
 author: djpmsft
 ms.author: daperlov
@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/17/2021
-ms.openlocfilehash: 8d7d482f38d58c8d6a8959acb51c94c0fb814697
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 10e925a84dbe187ccdf5e444cb8b3dd4b7bb4676
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101668437"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102608004"
 ---
 # <a name="create-scoped-resource-set-configuration-rules"></a>スコープ付きリソース セットの構成ルールを作成する
 
@@ -24,20 +24,29 @@ Azure Purview では、ストレージ アカウントをスキャンすると�
 
 スコープ付きリソース セットの構成を新しく作成するには、次の手順に従います。
 
-1. 管理センターに移動します。 メニューから **[スコープ付きリソース セット]** を選択します。 **[+ 新規]** をクリックして、新しい構成ルール セットを作成します。
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="新しいスコープ付きリソース セット ルールを作成する" border="true":::
+1. 管理センターに移動します。 メニューから **[スコープ付きリソース セット]** を選択します。 **[+ 新規]** を選択して、新しい構成ルール セットを作成します。
 
-1. スコープ付きリソース セットの構成のスコープを入力します。 ストレージ アカウントの種類と、ルール セットを作成するストレージ アカウントの名前を選択します。 各ルールのセットは、 **[フォルダー パス]** フィールドで指定されたフォルダー パス スコープに対して相対的に適用されます。 
-        :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="新しいスコープ付きリソース セット ルールを作成する" border="true":::
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-rule.png" alt-text="新しいスコープ付きリソース セット ルールを作成する" border="true":::
+
+1. スコープ付きリソース セットの構成のスコープを入力します。 ストレージ アカウントの種類と、ルール セットを作成するストレージ アカウントの名前を選択します。 各ルールのセットは、 **[フォルダー パス]** フィールドで指定されたフォルダー パス スコープに対して相対的に適用されます。
+
+   :::image type="content" source="media/how-to-scoped-resource-sets/create-new-scoped-resource-set-scope.png" alt-text="スコープ付きリソース セット構成の作成" border="true":::
 
 1. 構成スコープのルールを入力するには、 **[+ 新しいルール]** を選択します。
+
 1. ルールを作成するには、次のフィールドを入力します。
-    1. **ルールの名前:** 構成ルールの名前。 このフィールドは、ルールが適用される資産には影響しません。
-    1. **修飾名:** 資産を構成ルールと照合するために、テキスト、動的置換関数、および静的置換関数を組み合わせて使用する修飾パス。 このパスは、構成ルールのスコープを基準としたものです。 修飾名を指定する方法の詳細については、以下の[構文](#syntax)に関するセクションを参照してください。 
-    1. **表示名:** 資産の表示名。 このフィールドは省略可能です。 プレーン テキストと静的置換関数を使用して、資産をカタログに表示する方法をカスタマイズします。 詳細な手順については、以下の[構文](#syntax)に関するセクションを参照してください。
-    1. **リソース セットとしてグループ化しない:** 有効な場合、一致したリソースはリソース セットにグループ化されません。 
-        :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="新しいスコープ付きリソース セット ルールを作成する" border="true"::: 
-1. **[追加]** をクリックしてルールを保存します。 
+
+   1. **ルールの名前:** 構成ルールの名前。 このフィールドは、ルールが適用される資産には影響しません。
+
+   1. **修飾名:** 資産を構成ルールと照合するために、テキスト、動的置換関数、および静的置換関数を組み合わせて使用する修飾パス。 このパスは、構成ルールのスコープを基準としたものです。 修飾名を指定する方法の詳細については、以下の[構文](#syntax)に関するセクションを参照してください。
+
+   1. **表示名:** 資産の表示名。 このフィールドは省略可能です。 プレーン テキストと静的置換関数を使用して、資産をカタログに表示する方法をカスタマイズします。 詳細な手順については、以下の[構文](#syntax)に関するセクションを参照してください。
+
+   1. **リソース セットとしてグループ化しない:** 有効な場合、一致したリソースはリソース セットにグループ化されません。
+
+      :::image type="content" source="media/how-to-scoped-resource-sets/scoped-resource-set-rule-example.png" alt-text="新しい構成ルールを作成する。" border="true":::
+
+1. **[追加]** をクリックしてルールを保存します。
 
 ## <a name="scoped-resource-set-syntax"></a><a name="syntax"></a> スコープ付きリソース セットの構文
 
@@ -69,21 +78,23 @@ Azure Purview では、ストレージ アカウントをスキャンすると�
 | ---- | --------- |
 | string | スペースなどの区切り記号を含む 1 つ以上の Unicode 文字の文字列。 |
 | INT | 1 以上の 0 ～ 9 の ASCII 文字の文字列で、先頭に 0 を配置できる (0001 など)。 |
-| guid | https://tools.ietf.org/html/rfc4122 で定義されている UUID の 32 または 8-4-4-4-12 の文字列表現の文字列 |
-| date | 任意の区切り記号を含む 6 または 8 文字の 0～9 の ASCII 文字の文字列: https://tools.ietf.org/html/rfc3339 で指定されている yyyymmdd、yyyy-mm-dd、yymmdd、yy-mm-dd |
-| time | 任意の区切り記号を含む 4 または 6 文字の 0 ～ 9 の ASCII 文字の文字列: https://tools.ietf.org/html/rfc3339 で指定されている HHmm、HH:mm、HHmmss、HH:mm:ss |
-| timestamp | 任意の区切り記号を含む 12 または 14 文字の 0 ～ 9 の ASCII 文字の文字列: https://tools.ietf.org/html/rfc3339 で指定されている yyyy-mm-ddTHH:mm、yyyymmddhhmm、yyyy-mm-ddTHH:mm:ss、yyyymmddHHmmss |
+| guid | [RFC 4122](https://tools.ietf.org/html/rfc4122) で定義されている UUID の 32 または 8-4-4-4-12 の文字列表現の文字列。 |
+| date | 任意の区切り記号を含む 6 または 8 文字の 0 - 9 の ASCII 文字の文字列: [RFC 3339](https://tools.ietf.org/html/rfc3339) で指定されている yyyymmdd、yyyy-mm-dd、yymmdd、yy-mm-dd。 |
+| time | 任意の区切り記号を含む 4 または 6 文字の 0 - 9 の ASCII 文字の文字列: [RFC 3339](https://tools.ietf.org/html/rfc3339) で指定されている HHmm、HH:mm、HHmmss、HH:mm:ss。 |
+| timestamp | 任意の区切り記号を含む 12 または 14 文字の 0 - 9 の ASCII 文字の文字列:[RFC 3339](https://tools.ietf.org/html/rfc3339) で指定されている yyyy-mm-ddTHH:mm、yyyymmddhhmm、yyyy-mm-ddTHH:mm:ss、yyyymmddHHmmss。 |
 | boolean | ‘true’ または ‘false’ を含めることができる (大文字と小文字は区別されない)。 |
-| number | 任意のドット ‘.’ に続いて、先頭に 0 を配置できる 0 以上の 0 ～ 9 の ASCII 文字の文字列 (0001 など) と、 末尾に 0 を配置できる 1 以上の 0 ～ 9 の ASCII 文字の文字列 (.100 など) | 
+| number | 任意のドット ‘.’ に続いて、先頭に 0 を配置できる 0 以上の 0 - 9 の ASCII 文字の文字列 (0001 など) と、末尾に 0 を配置できる 1 以上の 0 - 9 の ASCII 文字の文字列 (.100 など) |
 | hex | セット 0 ～ 1 および A ～ F の 1 つ以上の ASCII 文字の文字列で、値の先頭には 0 を配置できる |
-| locale | https://tools.ietf.org/html/rfc5646 で指定された構文に一致する文字列 |
+| locale | [RFC 5646](https://tools.ietf.org/html/rfc5646) で指定された構文に一致する文字列。 |
 
-## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>スコープ付きリソース セット ルールが適用される順序。
+## <a name="order-of-scoped-resource-set-rules-getting-applied"></a>スコープ付きリソース セット ルールが適用される順序
 
 スコープ付きリソース セット ルールを適用する操作の順序を以下に示します。
 
-1. 資産が 2 つのルールと一致する場合は、より具体的なスコープが優先されます。 たとえば、スコープ `container/folder` のルールは、スコープ `container` のルールより前に適用されます。 
+1. 資産が 2 つのルールと一致する場合は、より具体的なスコープが優先されます。 たとえば、スコープ `container/folder` のルールは、スコープ `container` のルールより前に適用されます。
+
 1. 特定のスコープ内のルールの順序。 これは UX 内で編集可能です。
+
 1. 資産が指定したルールのどれとも一致しない場合は、既定のリソース セット ヒューリスティックが適用されます。
 
 ## <a name="examples"></a>例
@@ -95,16 +106,16 @@ Azure Purview では、ストレージ アカウントをスキャンすると�
 #### <a name="inputs"></a>入力
 
 ファイル :
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
--   `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/13/saptable_customer_20200101_20200102_02.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/delta/2020/01/15/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_01.txt`
+- `https://myazureblob.blob.core.windows.net/bar/customer/full/2020/01/17/saptable_customer_20200101_20200102_02.txt`
 
-#### <a name="scoped-resource-set-rule"></a>スコープ付きリソース セット ルール 
+#### <a name="scoped-resource-set-rule"></a>スコープ付きリソース セット ルール
 
-**スコープ:** https://myazureblob.blob.core.windows.net/bar/
+**スコープ:** `https://myazureblob.blob.core.windows.net/bar/`
 
 **表示名:** '外部の顧客'
 
@@ -112,7 +123,7 @@ Azure Purview では、ストレージ アカウントをスキャンすると�
 
 **リソース セット:** true
 
-#### <a name="output"></a>出力 
+#### <a name="output"></a>出力
 
 1 つのリソース セット資産
 
@@ -124,17 +135,18 @@ Azure Purview では、ストレージ アカウントをスキャンすると�
 
 AVRO 形式の IoT データ
 
-#### <a name="inputs"></a>入力 
+#### <a name="inputs"></a>入力
 
 ファイル :
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rules"></a>スコープ付きリソース セット ルール 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**スコープ:** https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rules"></a>スコープ付きリソース セット ルール
+
+**スコープ:** `https://myazureblob.blob.core.windows.net/bar/`
 
 規則 1
 
@@ -150,11 +162,11 @@ AVRO 形式の IoT データ
 
 **修飾名:** `raw/machinename-90/{date:date}/{time:time}-{id:int}.avro`
 
-#### <a name="resource-set-true"></a>*リソース セット: true* 
+#### <a name="resource-set-true"></a>*リソース セット: true*
 
-#### <a name="outputs"></a>出力 
+#### <a name="outputs"></a>出力
 
-2 つのリソース セット 
+2 つのリソース セット
 
 リソース セット 1
 
@@ -172,17 +184,18 @@ AVRO 形式の IoT データ
 
 AVRO 形式の IoT データ
 
-#### <a name="inputs"></a>入力 
+#### <a name="inputs"></a>入力
 
 ファイル :
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>スコープ付きリソース セット ルール 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.netbar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**スコープ:** https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>スコープ付きリソース セット ルール
+
+**スコープ:** `https://myazureblob.blob.core.windows.net/bar/`
 
 **表示名:** 'Machine-{{machineid}}'
 
@@ -190,7 +203,7 @@ AVRO 形式の IoT データ
 
 **リソース セット:** true
 
-#### <a name="outputs"></a>出力 
+#### <a name="outputs"></a>出力
 
 リソース セット 1
 
@@ -208,25 +221,26 @@ AVRO 形式の IoT データ
 
 リソース セットにグループ化しない
 
-#### <a name="inputs"></a>入力 
+#### <a name="inputs"></a>入力
 
 ファイル :
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
--   `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-#### <a name="scoped-resource-set-rule"></a>スコープ付きリソース セット ルール 
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/01-01-2020/22:33:22-002.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-89/02-01-2020/22:33:22-001.avro`
+- `https://myazureblob.blob.core.windows.net/bar/raw/machinename-90/01-01-2020/22:33:22-001.avro`
 
-**スコープ:** https://myazureblob.blob.core.windows.net/bar/
+#### <a name="scoped-resource-set-rule"></a>スコープ付きリソース セット ルール
 
-**表示名:** 'Machine-{{machineid}}'
+**スコープ:** `https://myazureblob.blob.core.windows.net/bar/`
+
+**表示名:** `Machine-{{machineid}}`
 
 **修飾名名:** `raw/machinename-{{machineid:int}}/{{:date}}/{{:time}}-{{:int}}.avro`
 
 **リソース セット:** false
 
-#### <a name="outputs"></a>出力 
+#### <a name="outputs"></a>出力
 
 4 つの個別資産
 

@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
 ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98234190"
 ---
 # <a name="azure-networking-services-overview"></a>Azure ネットワーク サービスの概要

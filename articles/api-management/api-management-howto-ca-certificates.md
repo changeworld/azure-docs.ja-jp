@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.author: apimpm
 ms.openlocfilehash: 124bc053aa2c6e59e205bb6f33a9a96190799499
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "93102039"
 ---
 # <a name="how-to-add-a-custom-ca-certificate-in-azure-api-management"></a>Azure API Management でカスタム CA 証明書を追加する方法
