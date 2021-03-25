@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: a8f1ca1da54c816199a0504eb17fa0a7bbfc441b
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 54b1fd14f97855dd42afde9a4bb34795373ff229
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522191"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103417639"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -182,9 +182,55 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 ワークスペースの実験間でデータセットを再利用および共有するには、[データセットを登録](#register-datasets)します。
 
+## <a name="wrangle-data"></a>データのラングリング
+データセットを作成して[登録](#register-datasets)したら、モデルのトレーニングの前に、ノートブックにそれを読み込んで、データ ラングリングと[探索](#explore-data)を行うことができます。 
+
+データ ラングリングや探索を実行する必要がない場合は、[データセットを使用したトレーニング](how-to-train-with-datasets.md)に関する記事に記載されている、ML 実験の送信用のトレーニング スクリプトでデータセットを使用する方法について参照してください。
+
+### <a name="filter-datasets-preview"></a>データセットのフィルター処理 (プレビュー)
+フィルター処理機能は、使用しているデータセットの種類によって異なります。 
+> [!IMPORTANT]
+> パブリック プレビュー メソッド [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) を使用したデータセットのフィルター処理は、[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
+> 
+**TabularDatasets** の場合は、[keep_columns()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) と [drop_columns()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) メソッドを使用して、列を保持または削除できます。
+
+TabularDataset 内の特定の列の値によって行を除外するには、[filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) メソッド (プレビュー) を使用します。 
+
+次の例では、指定された式に基づいて、登録されていないデータセットが返されます。
+
+```python
+# TabularDataset that only contains records where the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter(tabular_dataset['age'] > 15)
+
+# TabularDataset that contains records where the name column value contains 'Bri' and the age column value is greater than 15
+tabular_dataset = tabular_dataset.filter((tabular_dataset['name'].contains('Bri')) & (tabular_dataset['age'] > 15))
+```
+
+**FileDatasets** では、各行がファイルのパスに対応しているため、列の値によるフィルター処理は役に立ちません。 ただし、CreationTime や Size などのメタデータにより、[filter()](/python/api/azureml-core/azureml.data.filedataset#filter-expression-) を使用して行を除外できます。
+
+次の例では、指定された式に基づいて、登録されていないデータセットが返されます。
+
+```python
+# FileDataset that only contains files where Size is less than 100000
+file_dataset = file_dataset.filter(file_dataset.file_metadata['Size'] < 100000)
+
+# FileDataset that only contains files that were either created prior to Jan 1, 2020 or where 
+file_dataset = file_dataset.filter((file_dataset.file_metadata['CreatedTime'] < datetime(2020,1,1)) | (file_dataset.file_metadata['CanSeek'] == False))
+```
+
+[データのラベル付けプロジェクト](how-to-create-labeling-projects.md)から作成された **ラベル付きデータセット** は特殊なケースです。 これらのデータセットは、イメージ ファイルで構成される TabularDataset の一種です。 これらのデータセットの種類には、メタデータ、および `label` や `image_details` などの列の値によって、イメージを [filter()](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) でフィルター処理できます。
+
+```python
+# Dataset that only contains records where the label column value is dog
+labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
+
+# Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
+labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
+```
+
 ## <a name="explore-data"></a>データの探索
 
-データセットを作成して[登録](#register-datasets)したら、モデルのトレーニングの前に、データ探索用のノートブックにそれを読み込むことができます。 データ探索を実行する必要がない場合は、[データセットを使用したトレーニング](how-to-train-with-datasets.md)に関する記事に記載されている、ML 実験の送信用のトレーニング スクリプトでデータセットを使用する方法について参照してください。
+データのラングリングが完了したら、データセットを[登録](#register-datasets)し、それをノートブックに読み込んで、モデルのトレーニングの前にデータ探索を行うことができます。
 
 FileDatasets の場合は、データセットを **マウント** または **ダウンロード** して、データ探索に通常使用する python ライブラリを適用します。 [マウントとダウンロードの詳細情報](how-to-train-with-datasets.md#mount-vs-download)。
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/10/2021
 ms.author: yelevin
 ms.openlocfilehash: 43da1af7a3001d7f8e000a878948428a3d63aa4e
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102456184"
 ---
 # <a name="classify-and-analyze-data-using-entities-in-azure-sentinel"></a>Azure Sentinel でエンティティを使用してデータを分類および分析する
@@ -113,7 +113,7 @@ Azure Sentinel は、さまざまな種類のデータ ソースからのアラ�
 
 エンティティ分析情報は、アナリストがより効率的かつ効果的に調査できるようにするために Microsoft のセキュリティ研究者によって定義されたクエリです。 この分析情報はエンティティ ページの一部として表示され、ホストとユーザーに関する重要なセキュリティ情報を表形式データとグラフの両方の形式で提供します。 ここに情報が表示されるため、Log Analytics に迂回する必要はありません。 この分析情報には、サインイン、グループの追加、異常なイベントなどに関連したデータや、異常な行動を検出するための高度な ML アルゴリズムが含まれています。
 
-この分析情報は、次のデータ ソースに基づいてます。
+この分析情報は、次のデータ ソースに基づいています。
 
 - Syslog (Linux)
 - SecurityEvent (Windows)

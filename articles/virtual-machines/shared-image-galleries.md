@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/14/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 225aca8c4695db33e504a5857acb856f4e01d1f1
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 32b4cf1555a2d0e074ae1551a5c0085f2758fa2b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102551064"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102609143"
 ---
 # <a name="shared-image-galleries-overview"></a>共有イメージ ギャラリーの概要
 
@@ -104,7 +104,7 @@ Shared Image Gallery は、イメージに関連する構造および組織を�
 
 ## <a name="regional-support"></a>リージョン サポート
 
-すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションが許可リストに追加されている必要があります。 許可リストへのサブスクリプションの追加を要求するには、 https://docs.microsoft.com/azure/virtual-machines/shared-image-galleries#regional-support にアクセスしてください。
+すべてのパブリック リージョンはターゲット リージョンにすることができますが、一部のリージョンでは、アクセスするために顧客が要求プロセスを経る必要があります。 オーストラリア中部、オーストラリア中部 2 などのリージョンの許可リストにサブスクリプションを追加する要求をするには、[アクセス要求](/troubleshoot/azure/general/region-access-request-process)を送信します
 
 ## <a name="limits"></a>制限 
 

@@ -10,17 +10,70 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 3/5/2021
+ms.date: 3/12/2021
 ms.author: gunnarc
-ms.openlocfilehash: 518de78d3adc847030c69ef24965d4250d5a4c02
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 81b3d7ca21699b1e9b0dc91eaae8075f189eecd3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433201"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103461948"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="march-2021-guest-os"></a>2021 年 3 月のゲスト OS
+
+>[!NOTE] 
+
+>3 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 3 月のゲスト OS には、以下のパッチが含まれています。 この一覧は変更されることがあります。 
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+|  Rel 21-03 |  [5000822]  |  最新の累積的な更新プログラム (LCU) | 6.29 | 2021 年 3 月 9 日 |
+|  Rel 21-03 |  [4580325]  |  Flash の更新プログラム | 3.95、4.88、5.53、6.29 | 2020 年 10 月 13 日 |
+|  Rel 21-03 |  [5000800]  |  IE の累積的な更新プログラム | 2.108、3.95、4.88 | 2021 年 3 月 9 日 |
+|  Rel 21-03 |  [5000803]  |  最新の累積的な更新プログラム (LCU) | 5.53 | 2021 年 3 月 9 日 |
+|  Rel 21-03 |  [4578952]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ  | 2.108 | 2020 年 10 月 13 日 |
+|  Rel 21-03 |  [4578955]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ  | 2.108 | 2020 年 10 月 13 日 |
+|  Rel 21-03 |  [4578953]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ  | 4.88 | 2020 年 10 月 13 日 |
+|  Rel 21-03 |  [4578956]  |  .NET Framework 4.5.2 のセキュリティと品質のロールアップ  | 4.88 | 2020 年 10 月 13 日 |
+|  Rel 21-03 |  [4578950]  |  .NET Framework 3.5 のセキュリティと品質のロールアップ  | 3.95 | 2020 年 10 月 13 日 |
+|  Rel 21-03 |  [4578954]  |  . .NET Framework 4.5.2 のセキュリティと品質のロールアップ  | 3.95 | 2020 年 10 月 13 日 |
+|  Rel 21-03 |  [4601060]  |  . NET Framework 3.5 と 4.7.2 の累積的な更新プログラム  | 6.29 | 2021 年 2 月 9 日 |
+|  Rel 21-03 |  [5000841]  |  マンスリー ロールアップ  | 2.108 | 2021 年 3 月 9 日 |
+|  Rel 21-03 |  [5000847]  |  マンスリー ロールアップ  | 3.95 | 2021 年 3 月 9 日 |
+|  Rel 21-03 |  [5000848]  |  マンスリー ロールアップ  | 4.88 | 2021 年 3 月 9 日 |
+|  Rel 21-03 |  [4566426]  |  サービス スタック更新プログラム  | 3.95 | 2020 年 7 月 14 日 |
+|  Rel 21-03 |  [4566425]  |  サービス スタック更新プログラム  | 4.88 | 2020 年 7 月 14 日 |
+|  Rel 21-03 OOB |  [4578013]  |  スタンドアロンのセキュリティ更新プログラム  | 4.88 | 2020 年 8 月 19 日 |
+|  Rel 21-03 |  [4592510]  |  サービス スタック更新プログラム  | 2.108 | 2020 年 12 月 8 日 |
+|  Rel 21-03 |  [5000859]  |  サービス スタック更新プログラム  | 6.29 | 2021 年 3 月 9 日 |
+|  Rel 21-03 |  [4494175]  |  マイクロコード  | 5.53 | 2020 年 9 月 1 日 |
+|  Rel 21-03 |  [4494174]  |  マイクロコード  | 6.29 | 2020 年 9 月 1 日 |
+
+[5000822]: https://support.microsoft.com/kb/5000822
+[4580325]: https://support.microsoft.com/kb/4580325
+[5000800]: https://support.microsoft.com/kb/5000800
+[5000803]: https://support.microsoft.com/kb/5000803
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[4601060]: https://support.microsoft.com/kb/4601060
+[5000841]: https://support.microsoft.com/kb/5000841
+[5000847]: https://support.microsoft.com/kb/5000847
+[5000848]: https://support.microsoft.com/kb/5000848
+[4566426]: https://support.microsoft.com/kb/4566426
+[4566425]: https://support.microsoft.com/kb/4566425
+[4578013]: https://support.microsoft.com/kb/4578013
+[4592510]: https://support.microsoft.com/kb/4592510
+[5000859]: https://support.microsoft.com/kb/5000859
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
 
 ## <a name="february-2021-guest-os"></a>2021 年 2 月のゲスト OS
 
