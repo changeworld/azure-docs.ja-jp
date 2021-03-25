@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 01/20/2021
 ms.author: yelevin
 ms.openlocfilehash: f8931fedb380cf81d72b7b5280a5795498daaa57
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "99251983"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Azure Active Directory (Azure AD) データを Azure Sentinel に接続する
 
 Azure Sentinel の組み込みコネクタを使用して、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) からデータを収集し、それを Azure Sentinel にストリーミングできます。 コネクタを使用すると、次の種類のログをストリーミングできます。
 
-- [**サインイン ログ**](../active-directory/reports-monitoring/concept-all-sign-ins.md)には、ユーザーが認証要素を提供する[対話型ユーザー サインイン](../active-directory/reports-monitoring/concept-all-sign-ins.md#user-sign-ins)に関する情報が含まれています。
+- [**サインイン ログ**](../active-directory/reports-monitoring/concept-all-sign-ins.md)には、ユーザーが認証要素を提供する [対話型ユーザー サインイン](../active-directory/reports-monitoring/concept-all-sign-ins.md#user-sign-ins)に関する情報が含まれています。
 
     Azure AD コネクタには、次の 3 つの追加カテゴリのサインイン ログが含まれるようになりました。現時点ではすべて **プレビュー** 段階です。
     

@@ -1,14 +1,14 @@
 ---
-title: Connected Machine Windows エージェントの概要
+title: Connected Machine エージェントの概要
 description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー エージェントの詳細な概要を提供します。
-ms.date: 02/18/2021
+ms.date: 03/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: ebd9412849b4a0b3081e892d7472e598ca6e8365
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 1fd863ccacc7768401e35254a98c7bb494b3d358
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651095"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103470491"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Azure Arc 対応サーバー エージェントの概要
 
@@ -90,9 +90,11 @@ Azure Connected Machine エージェントでは、次のバージョンの Wind
 
 ### <a name="required-permissions"></a>必要なアクセス許可
 
-* マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
+* マシンをオンボードするには、リソース グループの **Azure Connected Machine のオンボード** または[共同作成者](../../role-based-access-control/built-in-roles.md#contributor) ロールのメンバーである必要があります。
 
-* マシンの読み取り、変更、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
+* マシンの読み取り、変更、および削除を行うには、リソース グループの **Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。
+
+* **スクリプトの生成** メソッドを使用するときにドロップダウン リストからリソース グループを選択するには、少なくともそのリソース グループの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールのメンバーである必要があります。
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
 

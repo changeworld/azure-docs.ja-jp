@@ -4,10 +4,10 @@ description: システム関数を使用して Azure Monitor ログに対する�
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.openlocfilehash: 1d26adfd2bd1a3fc1506a334b4b661b66172192d
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102510431"
 ---
 # <a name="system-functions-on-azure-monitor-logs"></a>Azure Monitor ログに対するシステム関数
@@ -22,7 +22,7 @@ LA ワークスペース内のバックアップ データに対してクエリ�
 
 * **よりシンプルなクエリ**: 関数を使用すると、クエリで必要とされる結合の数を減らすことができます。 既定で、これらの関数から返されるものは、クエリ対象のエンティティ (バックアップ インスタンス、ジョブ、コンテナーなど) に関するすべての情報を含む "フラット化された" スキーマです。 たとえば、バックアップ項目名とそれに関連付けられているコンテナーごとに、成功したバックアップ ジョブの一覧を取得する必要がある場合は、 **_AzureBackup_getJobs()** 関数を呼び出すだけで、ジョブごとに該当する情報をすべて取得できます。 一方、未加工のテーブルに対してクエリを直接実行する場合は、[AddonAzureBackupJobs](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#addonazurebackupjobs) と [CoreAzureBackup](https://docs.microsoft.com/azure/backup/backup-azure-reports-data-model#coreazurebackup) テーブル間で複数の結合を実行する必要があります。
 
-* **レガシ診断イベントからのより円滑な移行**: システム関数を使用すれば、[レガシ診断イベント](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) (AzureDiagnostics mode モードでの AzureBackupReport) から[リソース固有のイベント](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users)に円滑に移行することができます。 Azure Backup に用意されているすべてのシステム関数でパラメーターを指定できます。それにより、関数では、リソース固有のテーブルからのデータに対してのみクエリを実行するか、(レコードの重複除去を使用して) レガシ テーブルとリソース固有のテーブルの両方からのデータに対してクエリを実行するかを選択することができます。
+* **レガシ診断イベントからのより円滑な移行**: システム関数を使用すれば、[レガシ診断イベント](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) (AzureDiagnostics mode モードでの AzureBackupReport) から [リソース固有のイベント](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#diagnostics-events-available-for-azure-backup-users)に円滑に移行することができます。 Azure Backup に用意されているすべてのシステム関数でパラメーターを指定できます。それにより、関数では、リソース固有のテーブルからのデータに対してのみクエリを実行するか、(レコードの重複除去を使用して) レガシ テーブルとリソース固有のテーブルの両方からのデータに対してクエリを実行するかを選択することができます。
     * リソース固有のテーブルへの移行が正常に完了した場合は、関数によるクエリの対象からレガシ テーブルを除外することを選択できます。
     * 現在、移行の過程にあって、分析に必要とする一部のデータがレガシ テーブル内にある場合は、レガシ テーブルを含めることを選択できます。 移行が完了し、レガシ テーブルからのデータが不要になった場合は、ご利用のクエリ内で関数に渡すパラメーターの値を更新するだけで、レガシ テーブルを除外することができます。
     * レガシ テーブルのみを引き続き使用する場合、同じパラメーターを使用してレガシ テーブルを含めるように選択すれば、関数は今までどおりに機能します。 ただし、できるだけ早い段階で、[リソース固有のテーブルに切り替える](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#steps-to-move-to-new-diagnostics-settings-for-a-log-analytics-workspace)ことをお勧めします。
