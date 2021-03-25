@@ -13,10 +13,10 @@ ms.author: sashan
 ms.reviewer: sstein
 ms.date: 10/13/2020
 ms.openlocfilehash: cacd43502a01352c24f8fcfd85b12aac781dccbd
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98602509"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>予約容量を使用してリソースのコストを節約する - Azure SQL Database および SQL Managed Instance
