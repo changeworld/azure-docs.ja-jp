@@ -5,13 +5,13 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 86fa7e2e45dacb86b6601b699dca46b1b909fd08
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.date: 03/15/2021
+ms.openlocfilehash: 3890b06b2d085cea57b59cfe34d8b961918471c5
+ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102424701"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103562401"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>クイックスタート: Azure CLI を使用して Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
 
@@ -26,12 +26,12 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-* この記事には、Azure CLI バージョン 2.12.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
-
 * セルフホステッドまたはオンプレミス環境に接続された [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)。 オンプレミス環境を Azure に接続する方法の詳細については、「[オンプレミス ネットワークの Azure への接続](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)」の記事を参照してください。
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
+> [!IMPORTANT]
+> この記事では、Azure CLI バージョン 2.17.1 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="create-a-managed-instance-cluster"></a><a id="create-cluster"></a>マネージド インスタンス クラスターを作成する
 
@@ -56,9 +56,9 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
    ```
 
    > [!NOTE]
-   > 前のコマンドの `assignee` 値と `role` 値は、それぞれ固定されたサービス プリンシパルとロール識別子です。
+   > 前のコマンドの `assignee` と `role` の値は固定値です。コマンドに記載されているように、これらの値を正確に入力してください。 そうしないと、クラスターの作成時にエラーが発生します。 このコマンドの実行中にエラーが発生した場合は、実行するためのアクセス許可がない可能性があります。管理者に連絡してアクセス許可を求めてください。
 
-1. 次に、新しく作成した仮想ネットワークにクラスターを作成します。 次のコマンドを実行します。`delegatedManagementSubnetId` 変数の値には必ず、前のコマンドで取得した `Resource ID` の値を使用してください。
+1. 次に、[az managed-cassandra cluster create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) コマンドを使用して、新しく作成した仮想ネットワークにクラスターを作成します。 次のコマンドを実行します。`delegatedManagementSubnetId` 変数の値には必ず、前のコマンドで取得した `Resource ID` の値を使用してください。
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
@@ -76,7 +76,7 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
       --debug
    ```
 
-1. 最後に、ノード数を 3 としてクラスターのデータセンターを作成します。
+1. 最後に、[az managed-cassandra datacenter create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_create) コマンドを使用して、3 つのノードを含むクラスターのデータセンターを作成します。
 
    ```azurecli-interactive
    dataCenterName='dc1'
@@ -92,7 +92,7 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
       --node-count 3 
    ```
 
-1. データセンターの作成後、データセンター内のノードをスケールアップまたはスケールダウンしたい場合は、次のコマンドを実行します。 `node-count` パラメーターの値は、必要な値に変更してください。
+1. データセンターの作成後、データセンター内のノードをスケールアップまたはスケールダウンしたい場合は、[az managed-cassandra datacenter update](/cli/azure/ext/cosmosdb-preview/managed-cassandra/datacenter?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_datacenter_update) コマンドを実行します。 `node-count` パラメーターの値は、必要な値に変更してください。
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'

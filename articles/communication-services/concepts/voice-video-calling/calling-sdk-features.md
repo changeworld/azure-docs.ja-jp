@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/04/2021
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fe1e08434a9137fced3dc8aa061affc2d6580b67
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 110607e9da68cf131a43651b97c599873ce33cb8
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489278"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495268"
 ---
 # <a name="calling-client-library-overview"></a>通話クライアント ライブラリの概要
 
@@ -86,7 +86,7 @@ ms.locfileid: "102489278"
 | Windows***                       |  ✔️    | ❌     | ✔️             |
 | Ubuntu、Linux                     |  ✔️    | ❌     | ❌             |
 
-*Safari バージョン 13.1 以降がサポートされます。 
+*Safari バージョン 13.1 以降がサポートされていますが、Safari では一対一の通話はサポートされていません。 
 
 **送信ビデオのサポートには Safari 14 以降または macOS 11 以降が必要です。 
 
