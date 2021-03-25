@@ -4,10 +4,10 @@ description: この記事では、Azure Arc 対応サーバーで発生する Az
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: 799e5c8ec00a894c6a54c64494edd8f259faf2dc
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "100584665"
 ---
 # <a name="troubleshoot-arc-enabled-servers-vm-extension-issues"></a>Arc 対応サーバーの VM 拡張機能に関する問題のトラブルシューティング
