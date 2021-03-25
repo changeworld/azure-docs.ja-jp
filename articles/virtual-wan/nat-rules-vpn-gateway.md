@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: cherylmc
 ms.openlocfilehash: 6fbee31f015953bd7e65648ea273e3ca84686115
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102431218"
 ---
 # <a name="configure-nat-rules-for-your-virtual-wan-vpn-gateway---preview"></a>仮想 WAN VPN ゲートウェイの NAT 規則を構成する - プレビュー

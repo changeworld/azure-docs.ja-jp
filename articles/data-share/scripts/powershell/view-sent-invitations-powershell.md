@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: article
 ms.date: 07/07/2019
 ms.openlocfilehash: 5f75894094fa2a15dbc9e2809ed6c3631df96c3f
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92221215"
 ---
 # <a name="use-powershell-to-get-a-data-share-invitation"></a>PowerShell を使用してデータ共有の招待を取得する
@@ -35,7 +35,7 @@ Get-AzDataShareInvitation -location -invitationId
 
 このスクリプトでは以下のコマンドを使用します。 
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [Get-AzDataShareInvitation](/powershell/module/az.datashare/get-azdatashareinvitation) | 送信されたデータ共有の招待を取得して一覧表示します。 |
 |||
