@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 03/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: fcb678efe29178784c9233e79b307f705c40e3f7
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1c3d9b286a8262efa126ba9c661c50dd88e78b64
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518681"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103573474"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
 
@@ -36,7 +36,6 @@ ms.locfileid: "102518681"
 + [Azure Private Link](how-to-configure-private-link.md)
 + [ネットワーク セキュリティ グループ (NSG)](../virtual-network/network-security-groups-overview.md)
 + [ネットワーク ファイアウォール](../firewall/overview.md)
-
 ## <a name="example-scenario"></a>シナリオ例
 
 このセクションでは、プライベート IP アドレスを使用して Azure Machine Learning の通信をセキュリティで保護するために、一般的なネットワーク シナリオがどのように設定されるかについて説明します。
@@ -62,8 +61,8 @@ ms.locfileid: "102518681"
 1. [**トレーニング環境**](#secure-the-training-environment)をセキュリティで保護します。
 1. [**推論環境**](#secure-the-inferencing-environment)をセキュリティで保護します。
 1. 必要に応じて、[**Studio の機能を有効にします**](#optional-enable-studio-functionality)。
-1. [**ファイアウォール設定**](#configure-firewall-settings)を構成します
-
+1. [**ファイアウォール設定**](#configure-firewall-settings)を構成します。
+1. [DNS 名前解決](#custom-dns)を構成します。
 ## <a name="secure-the-workspace-and-associated-resources"></a>ワークスペースと関連するリソースをセキュリティで保護する
 
 ワークスペースと関連するリソースをセキュリティで保護するには、次の手順に従います。 これらの手順により、サービスが仮想ネットワークで通信できるようになります。
@@ -186,3 +185,5 @@ VNet 内部ですべての Studio 機能を有効にするには、「[Azure 仮
 * [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
 * [パート 4: 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
 * [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+
+名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。

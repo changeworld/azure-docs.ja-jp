@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.collection: linux
-ms.openlocfilehash: 4b6154a18cf4e08bf59dad91350160a1f83c49ed
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: eb4fe102407bf519c9253ac7da39178ad8cacb0c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102201483"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607536"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Azure CLI を使用して Azure Image Builder サービスのアクセス許可を構成する
 
@@ -239,7 +239,7 @@ Image Builder テンプレートでは、ユーザー割り当てマネージド
 | \<Storage account container\> | ストレージ アカウント コンテナーの名前 |
 | \<Subscription ID\> | Azure サブスクリプション |
 
-ユーザー割り当てマネージド ID の使用方法の詳細については、「[Create a Custom Image that will use an Azure User-Assigned Managed Identity to seemlessly access files Azure Storage](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-user-assigned-identity)」 (Azure ユーザー割り当てマネージド ID を使用してシームレスにファイル Azure Storage にアクセスするカスタム イメージを作成する) を参照してください。 このクイックスタートでは、ユーザー割り当てマネージド ID を作成し、ストレージ アカウントにアクセスするように構成する方法について説明しています。
+ユーザー割り当てマネージド ID の使用方法の詳細については、「[Create a Custom Image that will use an Azure User-Assigned Managed Identity to seemlessly access files Azure Storage](./image-builder-user-assigned-identity.md)」 (Azure ユーザー割り当てマネージド ID を使用してシームレスにファイル Azure Storage にアクセスするカスタム イメージを作成する) を参照してください。 このクイックスタートでは、ユーザー割り当てマネージド ID を作成し、ストレージ アカウントにアクセスするように構成する方法について説明しています。
 
 ## <a name="next-steps"></a>次の手順
 

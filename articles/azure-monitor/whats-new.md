@@ -4,10 +4,10 @@ description: 2021 年 2 月 1 日から 2021 年 2 月 28 日に更新された 
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.openlocfilehash: 9842c5e64a590c940b08a4830a3ecee93fb3672a
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102430447"
 ---
 # <a name="azure-monitor-docs-whats-new-for-february-1-2021---february-28-2021"></a>Azure Monitor ドキュメント: 最新情報 (2021 年 2 月 1 日から 2021 年 2 月 28 日)
