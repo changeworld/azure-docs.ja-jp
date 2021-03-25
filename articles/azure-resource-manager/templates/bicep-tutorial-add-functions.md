@@ -2,16 +2,16 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルに関数を追加する
 description: Bicep ファイルに関数を追加して、値を作成します。
 author: mumian
-ms.date: 03/02/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: 9c66ab132d3343115b1a9bd852d3eb3d83ae4ca7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742989"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102633157"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>チュートリアル: Azure Resource Manager Bicep ファイルに関数を追加する
 
@@ -37,7 +37,7 @@ Visual Studio Code と Bicep 拡張機能に加え、Azure PowerShell または 
 
 関数を使うことでデプロイ中に動的に値が取得されるため、Bicep ファイルに柔軟性が追加されます。 このチュートリアルでは、関数を使用して、デプロイに使用するリソース グループの場所を取得します。
 
-次の例では、`location` というパラメーターを追加するための変更箇所が強調表示されています。 このパラメーターの既定値によって、[resourceGroup](template-functions-resource.md#resourcegroup) 関数が呼び出されます。 この関数は、デプロイに使用されたリソース グループについての情報を含んだオブジェクトを返します。 そのオブジェクトのプロパティの 1 つが location プロパティです。 既定値を使用すると、リソース グループと同じ場所がストレージ アカウントの場所に割り当てられます。 リソース グループ内のリソースで同じ場所を共有する必要はありません。 必要であれば異なる場所を指定することもできます。
+次の例は、`location` というパラメーターを追加するための変更点を示しています。 このパラメーターの既定値によって、[resourceGroup](template-functions-resource.md#resourcegroup) 関数が呼び出されます。 この関数は、デプロイに使用されたリソース グループについての情報を含んだオブジェクトを返します。 そのオブジェクトのプロパティの 1 つが location プロパティです。 既定値を使用すると、リソース グループと同じ場所がストレージ アカウントの場所に割り当てられます。 リソース グループ内のリソースで同じ場所を共有する必要はありません。 必要であれば異なる場所を指定することもできます。
 
 ファイル全体をコピーし、その内容で Bicep ファイルを置き換えます。
 

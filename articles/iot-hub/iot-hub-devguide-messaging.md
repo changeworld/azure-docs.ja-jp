@@ -11,10 +11,10 @@ ms.date: 01/29/2018
 ms.custom:
 - 'Role: Cloud Development'
 ms.openlocfilehash: e25b9d6cbe8446fb2f10150f17f7e2b0ccf85d3c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92147628"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>IoT Hub で device-to-cloud および cloud-to-device メッセージを送信する
@@ -47,4 +47,4 @@ IoT Hub のメッセージング機能の中心となる特性は、メッセー
 
 * IoT Hub の[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)について学習する。
 
-* IoT Hub の [cloud-to-device メッセージング](iot-hub-devguide-messages-c2d.md)について学習する。
+* IoT Hub の [cloud-to-device メッセージング](iot-hub-devguide-messages-c2d.md)についてご確認ください。

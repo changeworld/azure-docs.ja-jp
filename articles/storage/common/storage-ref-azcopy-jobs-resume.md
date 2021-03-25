@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 30c0a31cc58ee6f1bbe78af017be42ae7d410fe0
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98878411"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
@@ -32,7 +32,7 @@ azcopy jobs resume [jobID] [flags]
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
-## <a name="options"></a>Options
+## <a name="options"></a>オプション
 
 |オプション|説明|
 |--|--|

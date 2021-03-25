@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 5ba19978a797c2e885e2b1726baad07a87f5bcbc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "87512076"
 ---
 # <a name="how-to-delete-an-invitation-to-a-recipient-in-azure-data-share"></a>Azure Data Share で受信者への招待を削除する方法
@@ -19,7 +19,7 @@ ms.locfileid: "87512076"
 
 ## <a name="navigate-to-a-sent-data-share"></a>送信されたデータ共有に移動する
 
-Azure Data Share で、送信した共有に移動し、 **[招待]** タブを選択します。ここには、このデータ共有への招待のすべての受信者が一覧表示されます。 削除する招待の受信者の横にあるボックスをクリックして、 **[削除する]** をクリックします。
+Azure Data Share で、送信した共有に移動し、 **[招待]** タブを選択します。ここには、このデータ共有への招待のすべての受信者が一覧表示されます。 削除する招待の受信者の横にあるボックスをクリックして、**[削除する]** をクリックします。
 
 ![招待の削除](./media/how-to/how-to-delete-invitation/delete-invitation.png)
 

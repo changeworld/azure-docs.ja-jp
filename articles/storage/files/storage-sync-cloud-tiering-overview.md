@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/4/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ca8df21e0221d364f75eaeb26f0b2961d7e0b08
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: dcd58e966da7ca596a14ca1b2839cbeb6399a855
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204258"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104576460"
 ---
 # <a name="cloud-tiering-overview"></a>クラウドの階層化の概要
 Azure File Sync のオプション機能であるクラウドを使った階層化により、オンプレミスのファイル サーバーのパフォーマンスを維持しながら、必要なローカル ストレージの量を減らすことができます。
@@ -39,7 +39,7 @@ Azure File Sync のオプション機能であるクラウドを使った階層�
 日付ポリシーとボリュームの空き領域のポリシーを連携させる方法の例については、[Azure File Sync のクラウドを使った階層化ポリシーの選択](storage-sync-choose-cloud-tiering-policies.md)に関するページを参照してください。
 
 ### <a name="windows-server-data-deduplication"></a>Windows Server のデータ重複除去
-データ重複除去は、Windows Server 2016 以降でクラウドを使った階層化が有効になっているボリュームでサポートされています。 詳細については、「[Azure Files のデプロイの計画](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#data-deduplication)」を参照してください。
+データ重複除去は、Windows Server 2016 以降でクラウドを使った階層化が有効になっているボリュームでサポートされています。 詳細については、「[Azure Files のデプロイの計画](./storage-sync-files-planning.md#data-deduplication)」を参照してください。
 
 ### <a name="cloud-tiering-heatmap"></a>クラウドを使った階層化のヒートマップ
 Azure File Sync は、ファイル アクセス (読み書き操作) を一定期間監視し、アクセス頻度や最近のアクセス状況に応じて、すべてのファイルにヒート スコアを割り当てます。 これらのスコアを使用して、各サーバー エンドポイントで、名前空間の "ヒートマップ" が作成されます。 このヒートマップには、クラウドを使った階層化が有効になっている場所にあるすべての同期ファイルがヒート スコア順に一覧表示されています。 最近開いた頻繁にアクセスされるファイルはホットと見なされます。ほとんど開かれず、しばらくアクセスされていないファイルはクールと見なされます。 
@@ -109,4 +109,3 @@ Azure File Sync エージェント バージョン 11 では、クラウドを�
 ## <a name="next-steps"></a>次のステップ
 * [Azure File Sync のクラウドを使った階層化ポリシーの選択](storage-sync-choose-cloud-tiering-policies.md)
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
-

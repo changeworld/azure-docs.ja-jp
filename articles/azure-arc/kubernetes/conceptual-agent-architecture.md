@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: この記事では、Azure Arc 対応 Kubernetes エージェントのアーキテクチャの概要について説明します
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: 5e53e99c492f08deab8dea89ec95190782661012
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: ec95efdfef871777e7f53617b057529e301739dd
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121900"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953070"
 ---
 # <a name="azure-arc-enabled-kubernetes-agent-architecture"></a>Azure Arc 対応 Kubernetes エージェントのアーキテクチャ
 
@@ -93,5 +93,5 @@ ms.locfileid: "102121900"
 
 ## <a name="next-steps"></a>次のステップ
 
-* クイックスタートを利用して、[Kubernetes クラスターを Azure Arc に接続](./connect-cluster.md)します。
+* クイックスタートを利用して、[Kubernetes クラスターを Azure Arc に接続](./quickstart-connect-cluster.md)します。
 * [Azure Arc 対応 Kubernetes を使用して、構成リソースとして](./conceptual-configurations.md)、クラスターと Git リポジトリ間の接続を作成する方法の詳細について説明します。
