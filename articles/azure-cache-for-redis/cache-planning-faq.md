@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398b567e173691068e6dd932e075d6598dcfe601
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92537407"
 ---
 # <a name="azure-cache-for-redis-planning-faqs"></a>Azure Cache for Redis 計画に関するよくあるご質問

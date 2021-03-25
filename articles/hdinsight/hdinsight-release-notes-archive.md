@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 0a9a58e91202d42640264aba00e1a583be1cde70
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4e7b25315aaadffe7f34b28195c25b77a36fa5f8
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705655"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104872151"
 ---
 # <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
@@ -385,7 +385,7 @@ HDInsight は引き続き、クラスターの信頼性とパフォーマンス�
 #### <a name="custom-ambari-db"></a>カスタム Ambari DB
 HDInsight では、自分の SQL DB for Apache Ambari を使用できるようになりました。 このカスタム Ambari DB は、Azure portal または Resource Manager テンプレートから構成できます。  この機能により、自分に必要な処理と容量に最適な SQL DB を選択できます。 また、事業の成長に合わせて簡単にアップグレードできます。 詳細については、「[カスタム Ambari DB を使用して HDInsight クラスターを設定する](hdinsight-custom-ambari-db.md)」を参照してください。
 
-![カスタム Ambari DB](./media/hdinsight-release-notes/custom-ambari-db.png)
+:::image type="content" source="./media/hdinsight-release-notes/custom-ambari-db.png" alt-text="カスタム Ambari DB":::
 
 ### <a name="deprecation"></a>非推奨
 このリリースに非推奨はありません。 今後の非推奨に備えるには、「[今後の変更](#upcoming-changes)」を参照してください。

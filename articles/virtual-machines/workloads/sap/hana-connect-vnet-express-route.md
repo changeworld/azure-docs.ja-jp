@@ -6,20 +6,19 @@ documentationcenter: ''
 author: msjuergent
 manager: bburns
 editor: ''
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5a8a8157721f34abf7761a85febc7bcea3abb88
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 218862b2df959fc0a39baa3c2934fc05f252af32
+ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967841"
+ms.lasthandoff: 03/02/2021
+ms.locfileid: "101672975"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>HANA Large Instances に仮想ネットワークを接続する
 
@@ -144,13 +143,13 @@ ExpressRoute Fast Path 機能を有効にするために、上に表示されて
 
 必要なデータ、および Microsoft がそのリクエストをルーティングしたり対処したりできるようにするために使用する必要のあるキーワードは次のとおりです。
 
-- サービス:SAP HANA L インスタンス
-- 問題の種類:構成とセットアップ
-- 問題のサブタイプ:問題が上記の一覧にない
+- サービス: SAP HANA L インスタンス
+- 問題の種類: 構成とセットアップ
+- 問題のサブタイプ: 問題が上記一覧に含まれていない
 - 件名 'ネットワークを変更する - Global Reach を追加する'
-- 詳細:'HANA L インスタンスから HANA L インスタンス テナントに対して Global Reach を追加する' または 'オンプレミスから HANA L インスタンス テナントに対して Global Reach を追加する'
-- HANA L インスタンスから HANA L インスタンス テナントのケースの追加の詳細:接続する 2 つのテナントが配置されている **2 つの Azure リージョン** を定義する必要があり、**かつ** **/29 の IP アドレス範囲** を送信する必要があります。
-- オンプレミスから HANA L インスタンス テナントのケースの追加の詳細:直接接続する HANA L インスタンス テナントがデプロイされる **Azure リージョン** を定義する必要があります。 さらに、オンプレミスと Azure の間に ExpressRoute 回線を確立したときに受信した **Auth GUID** と **回線ピア ID** を指定する必要があります。 さらに、**ASN** に名前を付ける必要があります。 最後の提供物は、ExpressRoute Global Reach の **/29 の IP アドレス範囲** です。
+- 詳細: 'HANA L インスタンスから HANA L インスタンス テナントに対して Global Reach を追加する' または 'オンプレミスから HANA L インスタンス テナントに対して Global Reach を追加する'。
+- HANA L インスタンスから HANA L インスタンス テナントのケースの追加詳細: 接続する 2 つのテナントが配置されている **2 つの Azure リージョン** を定義する必要があり、**さらに**、 **/29 IP アドレス範囲** を送信する必要があります。
+- オンプレミスから HANA L インスタンス テナントのケースの追加情報: 直接接続したい HANA L インスタンス テナントがデプロイされる **Azure リージョン** を定義する必要があります。 さらに、オンプレミスと Azure の間に ExpressRoute 回線を確立したときに受信した **Auth GUID** と **回線ピア ID** を指定する必要があります。 さらに、**ASN** に名前を付ける必要があります。 最後の提供物は、ExpressRoute Global Reach の **/29 の IP アドレス範囲** です。
 
 > [!NOTE]
 > 両方のケースが処理されるようにしたい場合は、これまでに使用された他のどの IP アドレス範囲とも重複しない 2 つの異なる /29 の IP アドレス範囲を指定する必要があります。 

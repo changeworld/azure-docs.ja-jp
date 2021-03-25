@@ -2,15 +2,15 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルにパラメーターを追加する
 description: Bicep ファイルにパラメーターを追加し、これを再利用できるようにします。
 author: mumian
-ms.date: 03/01/2021
+ms.date: 03/10/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 603aa8f8bdb8136f4418d8f9a77bb40ec39243c0
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 00df2ffc6272011127c5a1eb0c1e302011f8de5f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742972"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102632783"
 ---
 # <a name="tutorial-add-parameters-to-azure-resource-manager-bicep-file"></a>チュートリアル: Azure Resource Manager Bicep ファイルにパラメーターを追加する
 
@@ -34,7 +34,7 @@ Visual Studio Code と Bicep 拡張機能に加え、Azure PowerShell または 
 
 ## <a name="make-bicep-file-reusable"></a>Bicep ファイルを再利用可能にする
 
-Bicep ファイルを再利用可能にするために、ストレージ アカウント名を渡すために使用できるパラメーターを追加しましょう。 次の例で強調表示されている Bicep は、ファイルの変更箇所を示しています。 `storageName` パラメーターは、文字列として指定されています。 長すぎる名前を防ぐために、最大長は 24 文字に設定されています。
+Bicep ファイルを再利用可能にするために、ストレージ アカウント名を渡すために使用できるパラメーターを追加しましょう。 次の Bicep ファイルは、ファイルの変更内容を示しています。 `storageName` パラメーターは、文字列として指定されています。 長すぎる名前を防ぐために、最大長は 24 文字に設定されています。
 
 ファイル全体をコピーし、次の内容に置き換えます。
 
