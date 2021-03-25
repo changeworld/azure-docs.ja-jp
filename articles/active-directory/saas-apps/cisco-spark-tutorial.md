@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c2b55fd56677a15f444e1b568517bdf1c32c99
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: ad6d5308638b112afe2b51c4e149f876651e429d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102200803"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592525"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex の統合
 
@@ -38,7 +38,7 @@ ms.locfileid: "102200803"
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Cisco Webex では、**SP** Initiated SSO がサポートされます。
-* Cisco Webex では、[**自動化されたユーザー プロビジョニング**](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)がサポートされます。
+* Cisco Webex では、[**自動化されたユーザー プロビジョニング**](./cisco-webex-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>ギャラリーからの Cisco Webex の追加
 
@@ -159,7 +159,7 @@ Cisco Webex に対する Azure AD SSO を構成してテストするには、次
 
 ### <a name="create-cisco-webex-test-user"></a>Cisco Webex のテスト ユーザーの作成
 
-このセクションでは、B.Simon というユーザーが Cisco Webex に作成されます。このアプリケーションは自動ユーザー プロビジョニングをサポートしているため、ビジネス ルールに基づく自動プロビジョニングと自動プロビジョニング解除が可能です。  可能な限り自動プロビジョニングを使用することをお勧めします。 [Cisco Webex](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial) の自動プロビジョニングを有効にする方法をご覧ください。
+このセクションでは、B.Simon というユーザーが Cisco Webex に作成されます。このアプリケーションは自動ユーザー プロビジョニングをサポートしているため、ビジネス ルールに基づく自動プロビジョニングと自動プロビジョニング解除が可能です。  可能な限り自動プロビジョニングを使用することをお勧めします。 [Cisco Webex](./cisco-webex-provisioning-tutorial.md) の自動プロビジョニングを有効にする方法をご覧ください。
 
 ユーザーを手動で作成する必要がある場合は、次の手順を実行します。
 
@@ -195,7 +195,7 @@ Cisco Webex に対する Azure AD SSO を構成してテストするには、次
 
 * Cisco Webex のサインオン URL に直接移動し、そこからログイン フローを開始します。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Cisco Webex] タイルをクリックすると、Cisco Webex のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Cisco Webex] タイルをクリックすると、Cisco Webex のサインオン URL にリダイレクトされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

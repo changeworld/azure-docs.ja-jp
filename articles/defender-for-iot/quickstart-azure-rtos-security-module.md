@@ -2,23 +2,14 @@
 title: 'クイックスタート: Azure RTOS 用の Defender-IoT-micro-agent を構成して有効にする'
 description: Azure IoT ハブで Azure RTOS 用の Defender-IoT-micro-agent をオンボードし、有効にする方法について説明します。
 services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
-ms.author: shhazam
-ms.openlocfilehash: 3c1af1128b99cbd3263ddffc834eb27ab9dec564
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: db0fc0be3cd10bc57a46cb5a056ca5e057ae255a
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489847"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781162"
 ---
 # <a name="quickstart-defender-iot-micro-agent-for-azure-rtos-preview"></a>クイックスタート: Azure RTOS 用の Defender-IoT-micro-agent (プレビュー)
 

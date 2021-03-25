@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 55440c3bec940e0cd5fd4c4d644801e7012b5e95
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6ab310681ae7b63cb4e9f4e07984983727ae5ff2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101701479"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104953920"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Automation 用の Azure セキュリティ ベースライン
 
@@ -40,7 +40,7 @@ Runbook の分離性をさらに高めるために、Azure 仮想マシンで実
 
 - [Azure Firewall をデプロイして構成する方法](../firewall/tutorial-firewall-deploy-portal.md)
 
-- [Runbook の実行環境](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-execution-environment)
+- [Runbook の実行環境](./automation-runbook-execution.md#runbook-execution-environment)
 
 **責任**: Customer
 
@@ -132,7 +132,7 @@ Azure Blueprints を使用して、Azure Resource Manager テンプレート、A
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [ネットワークに関する Azure Policy のサンプル](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network)
+- [ネットワークに関する Azure Policy のサンプル](../governance/policy/samples/built-in-policies.md#network)
 
 - [Azure Blueprint を作成する方法](../governance/blueprints/create-blueprint-portal.md)
 
@@ -162,9 +162,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、リソース構成を監視し、ネットワーク リソースに対する変更を検出します。 重要なリソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log-view)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **責任**: Customer
 
@@ -182,7 +182,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings)
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md)
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -202,9 +202,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**:監査およびアクティビティのログ (イベント ソース、日付、ユーザー、タイムスタンプ、送信元アドレス、送信先アドレス、その他の役立つ要素を含みます) にアクセスするために、Azure Monitor を有効にします。 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure アクティビティ ログ イベントを表示および取得する](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示および取得する](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
 **責任**: Customer
 
@@ -214,9 +214,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure Monitor 内で、組織のコンプライアンス規則に従って Log Analytics ワークスペースの保持期間を設定します。 長期/アーカイブ ストレージには Azure Storage アカウントを使用します。
 
-- [Log Analytics でデータ保持期間を変更する](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics でデータ保持期間を変更する](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-- [Automation アカウントのデータ保持の詳細](https://docs.microsoft.com/azure/automation/automation-managing-data#data-retention)
+- [Automation アカウントのデータ保持の詳細](./automation-managing-data.md#data-retention)
 
 **責任**: Customer
 
@@ -230,9 +230,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [Azure Monitor のログ クエリについて](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Azure Monitor のログ クエリについて](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **責任**: Customer
 
@@ -248,7 +248,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md)
 
-- [Azure Monitor ログ データに関するアラートを送信する方法](/azure/azure-monitor/learn/tutorial-response)
+- [Azure Monitor ログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **責任**: Customer
 
@@ -296,7 +296,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity Management の特権ロール、および Azure Resource Manager を使用して、Just-In-Time/Just-Enough-Access を有効にすることもできます。
 
-- [Privileged Identity Management について](/azure/active-directory/privileged-identity-management/)
+- [Privileged Identity Management について](../active-directory/privileged-identity-management/index.yml)
 
 - [実行アカウントまたはクラシック実行アカウントの削除](delete-run-as-account.md)
 
@@ -352,7 +352,7 @@ Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity 
 
 - [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [カスタムのアラートおよび通知用にアクション グループを構成する方法](/azure/azure-monitor/platform/action-groups)
+- [カスタムのアラートおよび通知用にアクション グループを構成する方法](../azure-monitor/alerts/action-groups.md)
 
 **責任**: Customer
 
@@ -374,7 +374,7 @@ Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity 
 
 - [Azure AD インスタンスを作成して構成する方法](../active-directory-domain-services/tutorial-create-instance.md)
 
-- [マネージド ID で Runbook 認証を使用する](https://docs.microsoft.com/azure/automation/automation-hrw-run-runbooks#runbook-auth-managed-identities)
+- [マネージド ID で Runbook 認証を使用する](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities)
 
 **責任**: Customer
 
@@ -384,7 +384,7 @@ Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity 
 
 **ガイダンス**: Azure Active Directory (Azure AD) では、古いアカウントの検出に役立つログが提供されます。 また、Azure ID アクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。 Automation アカウントの実行アカウントを Runbook に使用する場合は常に、これらのサービス プリンシパルもインベントリ内で追跡されるようにします。多くの場合、それらは管理者特権のアクセス許可を持つためです。 未使用の実行アカウントを削除して、攻撃にさらされる領域を最小限にします。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -412,7 +412,7 @@ Microsoft サービスの Azure Active Directory (Azure AD) Privileged Identity 
 
 **ガイダンス**: Azure Active Directory (Azure AD) のリスクおよび Identity Protection 機能を使用して、ネットワーク リソースのユーザー ID に関連して検出された疑わしいアクションに対する自動応答を構成します。 Azure Sentinel にデータを取り込んで、さらに詳しく調査することもできます。
 
-- [Azure AD の危険なサインインを表示する方法](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Azure AD の危険なサインインを表示する方法](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Identity Protection のリスク ポリシーを構成して有効にする方法](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -488,7 +488,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 該当する場合、保存時の暗号化と転送中の暗号化に関する Azure Security Center の推奨事項に従います。
 
-- [Azure での転送中の暗号化の概要](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
+- [Azure での転送中の暗号化の概要](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
 - [Azure Automation の TLS 1.2 の適用](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
@@ -510,7 +510,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure RBAC を構成する方法](../role-based-access-control/role-assignments-portal.md)
 
-- [Hybrid Runbook Worker に対する Runbook のアクセス許可](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker#runbook-permissions-for-a-hybrid-runbook-worker)
+- [Hybrid Runbook Worker に対する Runbook のアクセス許可](./automation-hybrid-runbook-worker.md#runbook-permissions-for-a-hybrid-runbook-worker)
 
 - [ロールのアクセス許可とセキュリティの管理](automation-role-based-access-control.md)
 
@@ -538,7 +538,7 @@ Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディ�
 
 - [Windows VM 用の Azure Disk Encryption](../virtual-machines/windows/disk-encryption-overview.md)
 
-- [Automation アカウントのカスタマー マネージド キーの使用](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 - [Azure Automation で変数を管理する](shared-resources/variables.md)
 
@@ -554,9 +554,9 @@ Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディ�
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、ネットワーク コンポーネント、Azure Automation アカウント、Runbook などの重要な Azure リソースに変更が加えられたときのアラートを作成します。 
 
-- [ネットワーク セキュリティ グループの診断ログ](https://docs.microsoft.com/azure/private-link/private-link-overview#logging-and-monitoring)
+- [ネットワーク セキュリティ グループの診断ログ](../private-link/private-link-overview.md#logging-and-monitoring)
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -689,7 +689,7 @@ Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -771,7 +771,7 @@ Hybrid Runbook Worker を使用する場合、仮想マシン上の仮想ディ�
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-- [エイリアスを使用する方法](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
 
 - [Azure Automation 用の Azure Policy サンプルの組み込み](policy-reference.md)
 
@@ -831,7 +831,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center を
 
 - [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
-- [Automation アカウントのカスタマー マネージド キーの使用](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 - [ソース管理の統合を使用する](source-control-integration.md)
 
@@ -857,9 +857,9 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center を
 
 - [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
-- [Automation アカウントのカスタマー マネージド キーの使用](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
-- [Automation アカウントの Azure データ バックアップ](https://docs.microsoft.com/azure/automation/automation-managing-data#data-backup)
+- [Automation アカウントの Azure データ バックアップ](./automation-managing-data.md#data-backup)
 
 **責任**: Customer
 
@@ -873,7 +873,7 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center を
 
 - [Azure でキー コンテナーのキーを復元する方法](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
-- [Automation アカウントのカスタマー マネージド キーの使用](https://docs.microsoft.com/azure/automation/automation-secure-asset-encryption#use-of-customer-managed-keys-for-an-automation-account)
+- [Automation アカウントのカスタマー マネージド キーの使用](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
 **責任**: Customer
 
@@ -987,5 +987,5 @@ Hybrid Runbook Worker 機能を使用する場合は、Azure Security Center を
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する
