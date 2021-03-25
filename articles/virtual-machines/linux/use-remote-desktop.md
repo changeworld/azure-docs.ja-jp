@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 03/03/2021
 ms.author: cynthn
-ms.openlocfilehash: 1f7eb3b38b4ae04e81839fce2b14c1a84f3f0204
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 84960e6247edc708bedb899c96ebf7522397269a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564596"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580370"
 ---
 # <a name="install-and-configure-xrdp-to-use-remote-desktop-with-ubuntu"></a>xrdp をインストールして、Ubuntu でリモート デスクトップを使用するように構成する
 
@@ -138,7 +138,7 @@ tail -f /var/log/syslog
 
 Red Hat Enterprise Linux SUSE など他の Linux ディストリビューションでは、サービスの再開方法や確認するログ ファイルの場所が異なる場合があります。
 
-リモート デスクトップ クライアントから応答がなく、システム ログにもイベントが表示されない場合は、リモート デスクトップ トラフィックが VM に到達できないことを示しています。 ネットワーク セキュリティ グループ ルールを確認し、ポート 3389 で TCP を許可するルールが設定されていることをご確認ください。 詳細については、[アプリケーションの接続の問題のトラブルシューティング](../troubleshooting/troubleshoot-app-connection.md)に関するページをご覧ください。
+リモート デスクトップ クライアントから応答がなく、システム ログにもイベントが表示されない場合は、リモート デスクトップ トラフィックが VM に到達できないことを示しています。 ネットワーク セキュリティ グループ ルールを確認し、ポート 3389 で TCP を許可するルールが設定されていることをご確認ください。 詳細については、[アプリケーションの接続の問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-app-connection)に関するページをご覧ください。
 
 
 ## <a name="next-steps"></a>次のステップ

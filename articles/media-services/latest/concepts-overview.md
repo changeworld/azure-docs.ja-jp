@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 2d388cf6c776e6d30a487ce9e14ba1601dce1d23
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 309ef8baada22f59b1395164626dd664366cb4d9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103491607"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581135"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services の用語と概念
 
@@ -46,7 +46,7 @@ ms.locfileid: "103491607"
 |パッケージと配信|コンテンツがエンコードされたら、**ダイナミック パッケージ** を活用できます。 Media Services では、 **ストリーミング エンドポイント** は、メディア コンテンツをクライアント プレーヤーに配信するために使用するダイナミック パッケージ サービスです。 出力アセット内のビデオをクライアントが再生できるようにするには、**ストリーミング ロケーター** を作成し、ストリーミング URL をビルドする必要があります。 <br/><br/>**ストリーミング ロケーター** を作成するときに、アセット名に加えて、**ストリーミング ポリシー** を指定する必要があります。 **ストリーミング ポリシー** を使用して、**ストリーミング ロケーター** のためのストリーミング プロトコルと暗号化オプション (該当する場合) を定義できます。 ダイナミック パッケージは、コンテンツのストリーミングがライブの場合でもオンデマンドの場合でも使用されます。 <br/><br/>Media Services **動的マニフェスト** を使用し、動画を特定の方法でストリーミングしたり、サブクリップのみをストリーミングしたりできます。|[ダイナミック パッケージ](dynamic-packaging-overview.md)<br/><br/>[ストリーミング エンドポイント](streaming-endpoint-concept.md)<br/><br/>[ストリーミング ロケーター](streaming-locators-concept.md)<br/><br/>[ストリーミング ポリシー](streaming-policy-concept.md)<br/><br/>[動的マニフェスト](filters-dynamic-manifest-overview.md)<br/><br/>[フィルター](filters-concept.md)|
 |コンテンツの保護|Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つの DRM システム (Microsoft PlayReady、Google Widevine、Apple FairPlay) によって動的に暗号化されたライブまたはオンデマンドのコンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 <br/><br/>ストリームで暗号化オプションを指定するには、**コンテンツ キー ポリシー** を作成し、それを **ストリーミング ロケーター** に関連付けます。 **クライアント キー ポリシー** では、エンド クライアントにコンテンツ キーを配信する方法を構成できます。<br/><br/> 同じオプションが必要な場合は常に、既存のポリシーを再利用するようにしてください。| [コンテンツ キー ポリシー](content-key-policy-concept.md)<br/><br/>[コンテンツ保護](content-protection-overview.md)|
 |ライブ ストリーミング|Media Services では、Azure クラウドで顧客にライブ イベントを配信することができます。 **ライブ イベント** は、ライブ ビデオ フィードの取り込みと処理を担当します。 **ライブ イベント** を作成するときに、リモートのエンコーダーからライブ信号を送信するために使用できる入力エンドポイントが作成されます。 ストリームが **ライブ イベント** に流れ始めると、**アセット**、**ライブ出力**、**ストリーミング ロケーター** を作成することにより、ストリーミング イベントを開始できます。 **ライブ出力** により、ストリームが **アセット** にアーカイブされ、**ストリーミング エンドポイント** を介して視聴者がストリームを使用できるようになります。 ライブ イベントは、"*パススルー*" (オンプレミスのライブ エンコーダーによって複数のビットレート ストリームが送信される) または "*ライブ エンコード*" (オンプレミスのライブ エンコーダーによってシングル ビットレート ストリームが送信される) のいずれかに設定できます。 |[ライブ ストリーミングの概要](live-streaming-overview.md)<br/><br/>[ライブ イベントとライブ出力](live-events-outputs-concept.md)|
-|Event Grid を使用した監視|ジョブの進行状況を確認するには、**Event Grid** を使用します。 Media Services では、ライブ イベントも出力されます。 Event Grid では、アプリはほぼすべての Azure サービスやカスタム ソースのイベントをリッスンし、対応できます。 |[Event Grid イベントの処理](reacting-to-media-services-events.md)<br/><br/>[スキーマ](media-services-event-schemas.md)|
+|Event Grid を使用した監視|ジョブの進行状況を確認するには、**Event Grid** を使用します。 Media Services では、ライブ イベントも出力されます。 Event Grid では、アプリはほぼすべての Azure サービスやカスタム ソースのイベントをリッスンし、対応できます。 |[Event Grid イベントの処理](monitoring/reacting-to-media-services-events.md)<br/><br/>[スキーマ](monitoring/media-services-event-schemas.md)|
 |Azure Monitor を使用した監視|Azure Monitor を使用して、アプリの実行状況を理解する上で役立つメトリックと診断ログを監視します。|[メトリックと診断ログ](monitoring/monitor-media-services-data-reference.md)<br/><br/>[診断ログのスキーマ](monitoring/monitor-media-services-data-reference.md)|
 |Player クライアント|Azure Media Player を使用すると、Media Services によってストリーミングされたメディア コンテンツをさまざまなブラウザーやデバイス上で再生できます。 Azure Media Player では、HTML5、Media Source Extensions (MSE)、Encrypted Media Extensions (EME) といった業界標準を使用して、強化されたアダプティブ ストリーミングを提供します。 |[Azure Media Player の概要](use-azure-media-player.md)|
 

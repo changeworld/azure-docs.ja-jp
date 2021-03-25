@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: cherylmc
 ms.openlocfilehash: 4ff4f1238764d7bdab6e74d29254a6388ea76d78
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92143126"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Azure Portal を使用したローカル ネットワーク ゲートウェイの設定の変更
@@ -32,7 +32,7 @@ ms.locfileid: "92143126"
 
 次に、FQDN エンドポイントの構成ページを示します。
 
-:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/name.png" alt-text="IP アドレスの設定":::
+:::image type="content" source="./media/vpn-gateway-modify-local-network-gateway-portal/name.png" alt-text="FQDN の設定":::
 
 ## <a name="to-modify-the-gateway-ip-address-or-fqdn"></a><a name="ip"></a>ゲートウェイ IP アドレスまたは FQDN を変更するには
 

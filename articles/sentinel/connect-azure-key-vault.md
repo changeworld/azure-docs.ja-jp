@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/07/2021
 ms.author: yelevin
 ms.openlocfilehash: 00e634ec62d1fda4b1f2763a8c69b8e950d54beb
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102505190"
 ---
 # <a name="connect-azure-key-vault-diagnostics-logs"></a>Azure Key Vault の診断ログを接続する
@@ -49,7 +49,7 @@ Azure Key Vault のログを Azure Sentinel に取り込むには:
 
     1. **[パラメーター]** タブで、 **[Log Analytics ワークスペース]** ドロップダウン リストからお使いの Azure Sentinel ワークスペースを選択します。 残りのドロップダウン フィールドは、使用可能な診断ログの種類を表します。 取り込み対象のすべてのログの種類を "True" とマークされたままにします。
 
-    1. 既存のリソースにポリシーを適用するには、 **[修復]** タブを選択し、 **[修復タスクを作成する]** チェック ボックスにチェックを付けます。
+    1. 既存のリソースにポリシーを適用するには、 **[修復]** タブを選択し、 **[Create a remediation task]\(修復タスクを作成する\)** チェック ボックスにチェックを付けます。
 
     1. **[確認と作成]** タブで、 **[作成]** をクリックします。 これで、選択したスコープにポリシーが割り当てられました。
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "92109189"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Data Lake Storage Gen1 と Azure SQL Database の間でデータをコピーする

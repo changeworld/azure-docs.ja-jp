@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 2d4286cc8bc08eaf7d0b376a8b7789c8c8db183d
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102202639"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103470895"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -308,6 +308,18 @@ ms.locfileid: "102202639"
 **ディレクトリまたはファイルの Windows ACL の取得、設定、コピーをサポートする REST API はありますか?**
 
     はい、[2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (またはそれ以降) の REST API を使用する場合は、ディレクトリまたはファイルの NTFS ACL を取得、設定、またはコピーする REST API がサポートされます。 また、Microsoft では、次の REST ベースのツールでの永続的な Windows ACL をサポートしています:[AzCopy v10.4+](https://github.com/Azure/azure-storage-azcopy/releases)。
+
+* <a id="ad-support-rest-apis"></a>
+**Azure AD または AD 資格情報を使用して新しい接続を初期化する前に、ストレージ アカウント キーを使用してキャッシュされた資格情報を削除し、既存の SMB 接続を削除する方法**
+
+    次の 2 段階のプロセスに従って、ストレージ アカウント キーに関連付けられている保存済みの資格情報を削除し、SMB 接続を削除できます。 
+    1. Windows Cmd.exe で次のコマンドレットを実行して、資格情報を削除します。 資格情報が見つからない場合は、保存されていないという意味なので、この手順は省略できます。
+    
+       cmdkey /delete:Domain:target=storage-account-name.file.core.windows.net
+    
+    2. ファイル共有への既存の接続を削除します。 マウント パスは、マウントされたドライブ文字または storage-account-name.file.core.windows.net パスのいずれかとして指定できます。
+    
+       net use <drive-letter/share-path> /delete
 
 ## <a name="network-file-system"></a>ネットワーク ファイル システム
 

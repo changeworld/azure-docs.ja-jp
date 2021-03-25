@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fb81960b573b5b7d28f44f7a7482c28b4ef284be
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 81c026893c3185c6c9f960cdb6acb2d0c2d49cc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496458"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580353"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM に対する Azure Disk Encryption 
 
@@ -108,7 +108,7 @@ Azure での動作が保証されていない Linux サーバー ディストリ
 
 Azure Disk Encryption では、dm-crypt モジュールと vfat モジュールがシステムに存在している必要があります。 vfat を既定のイメージから削除したり無効にしたりすると、システムはキー ボリュームを読み取って、その後のリブートでディスクのロックを解除するために必要なキーを取得できなくなります。 vfat モジュールをシステムから削除する、またはデータ ドライブに OS マウントポイント/フォルダーの拡張を強制するシステム強化手順は、Azure Disk Encryption とは互換性がありません。 
 
-暗号化を有効にする前に、暗号化するデータ ディスクを /etc/fstab に正しく登録する必要があります。 エントリを作成するときに "nofail" オプションを使用して、永続的なブロック デバイス名を選択します (暗号化を実行した後は特に、再起動時に "/dev/sdX" 形式のデバイス名が同じディスクに関連付けられていない可能性があります。この動作の詳細については、「[Linux VM デバイス名の変更のトラブルシューティング](../troubleshooting/troubleshoot-device-names-problems.md)」を参照してください)。
+暗号化を有効にする前に、暗号化するデータ ディスクを /etc/fstab に正しく登録する必要があります。 エントリを作成するときに "nofail" オプションを使用して、永続的なブロック デバイス名を選択します (暗号化を実行した後は特に、再起動時に "/dev/sdX" 形式のデバイス名が同じディスクに関連付けられていない可能性があります。この動作の詳細については、「[Linux VM デバイス名の変更のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)」を参照してください)。
 
 /etc/fstab 設定がマウントに合わせて正しく構成されていることを確認します。 これらの設定を構成するには、mount -a コマンドを実行するか、VM を再起動してその方法での再マウントをトリガーします。 完了したら、lsblk コマンドの出力を調べて、ドライブがまだマウントされていることを確認します。 
 

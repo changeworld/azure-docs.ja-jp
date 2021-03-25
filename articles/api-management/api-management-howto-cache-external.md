@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: 6288a10e111e42629abf5e09b84a6a7791dcfe95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "96018224"
 ---
 # <a name="use-an-external-redis-compatible-cache-in-azure-api-management"></a>Azure API Management で Redis と互換性がある外部キャッシュを使用する

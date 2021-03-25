@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: 1937b8392ee3a73ed7c268897c532c643a9151eb
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: bd4dcbdc7ab13d18ef7f2d7102c56d1bd8d8758d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102565463"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582104"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>ローカル一時ディスクを持たない Azure VM のサイズ 
 この記事では、ローカル一時ディスクを持たない Azure VM のサイズについてよく寄せられる質問 (FAQ) に対する回答を示します。 これらの VM サイズの詳細については、[Dv4 および Dsv4 シリーズの仕様 (汎用ワークロード)](dv4-dsv4-series.md) または [Ev4 および Esv4 シリーズの仕様 (メモリ最適化ワークロード)](ev4-esv4-series.md) に関する記事を参照してください。
@@ -56,7 +56,7 @@ ms.locfileid: "102565463"
    > 「Windows VM のデータ ドライブとしての D: ドライブの使用」の「一時的に pagefile.sys を C ドライブに移動します。」セクションのガイドラインに従って、ページ ファイルをローカル一時ディスク (D: ドライブ) から C: ドライブに移動します。 **ここに記載されている手順から逸脱すると、"Unable to resize the VM since changing from resource disk to non-resource disk VM size and vice-versa is not allowed." (リソース ディスクからリソース ディスク以外の VM サイズへの変更またはその逆は許可されていないため、VM のサイズを変更できません) というエラー メッセージが表示されます。**
 
 3. 「[ポータルまたは Azure CLI を使用してスナップショットを作成する](./linux/snapshot-copy-managed-disk.md)」に記載されている手順に従って、VM のスナップショットを作成します。 
-4. スナップショットを使用して、「[CLI でスナップショットから仮想マシンを作成する](./scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md)」で説明されている手順に従って、新しいディスクレス VM (Dv4、Dsv4、Ev4、Esv4 シリーズなど) を作成します。 
+4. スナップショットを使用して、「[CLI でスナップショットから仮想マシンを作成する](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot)」で説明されている手順に従って、新しいディスクレス VM (Dv4、Dsv4、Ev4、Esv4 シリーズなど) を作成します。 
 
 ## <a name="do-these-vm-sizes-support-both-linux-and-windows-operating-systems-os"></a>これらの VM サイズは Linux と Windows の両方のオペレーティング システム (OS) をサポートしますか。
 はい。

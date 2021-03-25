@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: baad1a0b173ae89fec9d160572224c6cb0aa615d
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103574630"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する

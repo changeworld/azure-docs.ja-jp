@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/28/2020
 ms.author: yitoh
 ms.openlocfilehash: a5639d583d9b98f6527e47bf5db213cb191ebeb7
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100575290"
 ---
 # <a name="view-and-configure-ddos-protection-alerts"></a>DDoS 保護アラートの表示と構成

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/03/2021
+ms.date: 03/18/2021
 ms.author: justinha
 author: inbarckms
 manager: daveba
 ms.reviewer: inbarckms
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 101e3ee9279d3560c0b561f0ea7ea695387bee15
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 44b80b9c6847cfdc8402cb3b4983f15873e367d3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102096464"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579384"
 ---
 # <a name="configure-temporary-access-pass-in-azure-ad-to-register-passwordless-authentication-methods-preview"></a>パスワードレスの認証方法を登録するように Azure AD で一時アクセス パスを構成する (プレビュー)
 
@@ -127,7 +127,7 @@ ms.locfileid: "102096464"
 - 一時アクセス パスは、ネットワーク ポリシー サーバー (NPS) 拡張機能と Active Directory フェデレーション サービス (AD FS) アダプターでは使用できません。
 - テナントでシームレス SSO が有効になっている場合は、ユーザーにパスワードの入力が求められます。 ユーザーが一時アクセス パスを使用してサインインできるように、 **[代わりに一時アクセス パスを使用する]** リンクが使用可能になります。
 
-![[代わりに一時アクセス パスを使用する] のスクリーンショット](./media/how-to-authentication-temporary-access-pass/alternative.png)
+  ![[代わりに一時アクセス パスを使用する] のスクリーンショット](./media/how-to-authentication-temporary-access-pass/alternative.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング    
 

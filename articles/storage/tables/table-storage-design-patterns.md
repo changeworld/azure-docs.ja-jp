@@ -9,12 +9,12 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 20e776e649d13e435a7bc9215802fcd89efe0867
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2eb109078728b8a9070b3991733450c1da790d9e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019227"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "98879597"
 ---
 # <a name="table-design-patterns"></a>テーブルの設計パターン
 この記事では、Table service ソリューションで使用するのに適したパターンをいくつか紹介します。 また、他のテーブル ストレージ設計の記事で説明されている問題やトレードオフの一部に実際に対処する方法についても説明します。 次の図は、さまざまなパターンの関係をまとめたものです。  
@@ -133,7 +133,7 @@ Table service は **PartitionKey** と **RowKey** 値を使用して自動的に
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 
 ## <a name="eventually-consistent-transactions-pattern"></a>最終的に一貫性のあるトランザクション パターン
-Azure キューを使用して、パーティションやストレージ システムの境界を越えて、最終的に一貫した動作を実現します。  
+Azure Queue を使用して、パーティションやストレージ システムの境界を越えて、最終的に一貫した動作を実現します。  
 
 ### <a name="context-and-problem"></a>コンテキストと問題
 EGT を使用すると、同じパーティション キーを共有する複数のエンティティに対してアトミックなトランザクションを実行できます。 パフォーマンスやスケーラビリティの関係で、一貫性が必要なエンティティを別々のパーティションや別のストレージ システムに格納する場合があります。そのような場合は、EGT を使用して一貫性を保つことはできません。 たとえば、次の一貫性を最終的に確保する必要があるとします。  
@@ -711,7 +711,7 @@ foreach (var e in entities)
 クライアント アプリケーションでのコンカレンシーと更新操作の処理方法に設計が及ぼす影響についても考慮が必要です。  
 
 ### <a name="managing-concurrency"></a>コンカレンシーを管理する
-既定では、テーブル サービスは個々 のエンティティのレベルで **挿入**、**マージ**、**削除** 操作に対しオプティミスティック コンカレンシー チェックを実行しますが、クライアントは、テーブル サービスがこれらのチェックをバイパスするよう強制することもできます。 Table service でのコンカレンシーの管理方法については、「[Microsoft Azure Storage でのコンカレンシー制御の管理](../../storage/common/storage-concurrency.md)」をご覧ください。  
+既定では、テーブル サービスは個々 のエンティティのレベルで **挿入**、**マージ**、**削除** 操作に対しオプティミスティック コンカレンシー チェックを実行しますが、クライアントは、テーブル サービスがこれらのチェックをバイパスするよう強制することもできます。 Table service でのコンカレンシーの管理方法については、「[Microsoft Azure Storage でのコンカレンシー制御の管理](../blobs/concurrency-manage.md)」をご覧ください。  
 
 ### <a name="merge-or-replace"></a>マージまたは置換
 **TableOperation** クラスの **置換** のメソッドは、常に、Table service の完全なエンティティを置換します。 格納されたエンティティに存在するプロパティを要求に含めない場合、要求により、格納されたエンティティからそのプロパティが削除されます。 格納されたエンティティからプロパティを明示的に削除しない場合は、すべてのプロパティを要求に含める必要があります。  

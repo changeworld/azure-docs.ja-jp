@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94187f2f94581b4ff48ddb0cd014dc26268fcf15
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102500514"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579197"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -322,7 +322,7 @@ Azure portal で構築済みのレポートを使用して、SSPR のパフォ�
 
 ### <a name="authentication-methods--usage-and-insights"></a>認証方法 - 使用状況と分析情報
 
-[使用状況と分析情報](./howto-authentication-methods-usage-insights.md)を使うと、Azure AD MFA や SSPR などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織がどの方法で登録を行い、それらをどのように使用しているかを把握するための手段となるものです。
+[使用状況と分析情報](./howto-authentication-methods-activity.md)を使うと、Azure AD MFA や SSPR などの機能の認証方法が組織内でどのように機能しているかについて理解を深めることができます。 このレポート機能は、組織がどの方法で登録を行い、それらをどのように使用しているかを把握するための手段となるものです。
 
 ### <a name="troubleshoot"></a>トラブルシューティング
 
