@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/20/2020
 ms.author: duau
-ms.openlocfilehash: 6fdcedd19c02251035a838d34ba51e786595134b
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: de6a94b36dab9dd5662062be99f4515d78558b5e
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102212452"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889656"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Azure Front Door についてよく寄せられる質問
 
@@ -102,7 +102,7 @@ Front Door のルートには順序はなく、特定のルートは最適な一
 
 - Front Door ポータル ページの [概要] セクションで、`Front Door ID` の値を探します。 その後、その値を使って、Front Door からバックエンドに送信された受信ヘッダー "**X-Azure FDID**" をフィルター処理することで、独自の Front Door インスタンスのみが許可されていることを確認できます (上記の IP 範囲は、他のお客様の他の Front Door インスタンスと共有されているため)。
 
-- バックエンド Web サーバーでルール フィルターを適用して、結果の "X-Azure-FDID" ヘッダー値に基づいてトラフィックを制限します。 Azure App Service のような一部のサービスでは、アプリケーションやホストを変更することなく、この[ヘッダーベースのフィルター処理](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance-preview)機能が提供されることに注意してください。
+- バックエンド Web サーバーでルール フィルターを適用して、結果の "X-Azure-FDID" ヘッダー値に基づいてトラフィックを制限します。 Azure App Service のような一部のサービスでは、アプリケーションやホストを変更することなく、この[ヘッダーベースのフィルター処理](../app-service/app-service-ip-restrictions.md#restrict-access-to-a-specific-azure-front-door-instance)機能が提供されることに注意してください。
 
   [Microsoft インターネット インフォメーション サービス (IIS)](https://www.iis.net/) の例を次に示します。
 

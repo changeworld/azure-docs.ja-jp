@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8910797631dd86d75619c7a4691a25e88b8a9e09
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 21c247c2fb9e1532c4580eea894c97e2bff84f92
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495829"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657044"
 ---
 # <a name="communication-services-notifications"></a>Communication Services の通知
 
@@ -31,7 +31,7 @@ Azure Communication Services は [Azure Event Grid](https://azure.microsoft.com/
 
 :::image type="content" source="./media/notifications/acs-events-int.png" alt-text="Communication Services が Event Grid とどのように統合されるかを示す図。":::
 
-[Azure Communication Services でのイベント処理](./event-handling.md)の詳細を確認してください。
+[Azure Communication Services でのイベント処理](https://docs.microsoft.com/azure/event-grid/event-schema-communication-services)の詳細を確認してください。
 
 ## <a name="deliver-push-notifications-via-azure-notification-hubs"></a>Azure Notification Hubs 経由でプッシュ通知を配信する
 
