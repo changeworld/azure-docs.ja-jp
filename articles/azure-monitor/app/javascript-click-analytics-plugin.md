@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: lagayhar
 ms.openlocfilehash: e48d669321ad8c58681e8a92e68f2089962bdc17
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102429852"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK 用のクリック分析自動収集プラグイン
@@ -79,7 +79,7 @@ appInsights.loadAppInsights();
 
 ## <a name="configuration"></a>構成
 
-| 名前                  | 種類                               | Default | 説明                                                                                                                              |
+| 名前                  | Type                               | Default | 説明                                                                                                                              |
 | --------------------- | -----------------------------------| --------| ---------------------------------------------------------------------------------------------------------------------------------------- |
 | autoCapture           | boolean                            | true    | 自動キャプチャの構成。                                                                                                         |
 | コールバック (callback)              | [IValueCallback](#ivaluecallback)  | null    | コールバックの構成。                                                                                                                 |
@@ -93,7 +93,7 @@ appInsights.loadAppInsights();
 
 ### <a name="ivaluecallback"></a>IValueCallback
 
-| 名前               | 種類     | Default | 説明                                                                             |
+| 名前               | Type     | Default | 説明                                                                             |
 | ------------------ | -------- | ------- | --------------------------------------------------------------------------------------- |
 | pageName           | 機能 | null    | 既定の pageName キャプチャ動作をオーバーライドするための関数。                           |
 | pageActionPageTags | 機能 | null    | pageAction イベント中に収集される既定の pageTags を拡張するためのコールバック関数。  |
@@ -101,7 +101,7 @@ appInsights.loadAppInsights();
 
 ### <a name="icustomdatatags"></a>ICustomDataTags
 
-| 名前                      | 種類    | Default   | HTML で使用する既定のタグ |   説明                                                                                |
+| 名前                      | Type    | Default   | HTML で使用する既定のタグ |   説明                                                                                |
 |---------------------------|---------|-----------|-------------|----------------------------------------------------------------------------------------------|
 | useDefaultContentNameOrId | boolean | false     | 該当なし         |特定の要素が既定の customDataPrefix でタグ付けされていない場合、または customDataPrefix がユーザーによって指定されていない場合、contentName の標準の HTML 属性を収集します。 |
 | customDataPrefix          | string  | `data-`   | `data-*`| 指定されたプレフィックスでタグ付けされている要素のコンテンツ名と値を自動キャプチャします。 たとえば、HTML タグ内で `data-*-id`、`data-<yourcustomattribute>` を使用できます。   |

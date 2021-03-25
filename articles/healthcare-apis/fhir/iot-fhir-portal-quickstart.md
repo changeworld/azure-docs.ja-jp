@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 405bcd4f3839b99879f76c23060ba24062b279de
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 91b3097e465458181074d1e450e69f267d0fe556
+ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018748"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105026787"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 
@@ -169,14 +169,20 @@ Azure では、IoT デバイスを接続し、管理するための幅広い IoT
 > 実際のデバイスの準備ができたらいつでも、同じ IoT Central アプリケーションを使用して、[ご利用のデバイスをオンボード](../../iot-central/core/howto-set-up-template.md)し、デバイス シミュレーターを交換することができます。 デバイス データの FHIR への送信も自動的に開始されます。 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>IoT データを Azure IoT Connector for FHIR (プレビュー) に接続する
-> [!WARNING]
-> このガイドに含まれるデバイス マッピング テンプレートは、IoT Central 内でデータ エクスポート (レガシ) と共に使用するように設計されています。
 
-IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](../../iot-central/core/howto-export-data-legacy.md)必要があります。 [継続的データ エクスポート] ページで、次の設定を行います。
-- エクスポート先として *[Azure Event Hubs]* を選択します。
-- **[Event Hubs 名前空間]** フィールドでは、値 *[接続文字列を使用します]* を選択します。
-- **[接続文字列]** フィールドでは、前の手順で取得した Azure IoT Connector for FHIR の接続文字列を指定します。
-- **[エクスポートするデータ]** フィールドでは、 **[テレメトリ]** オプションを *[オン]* のままにしておきます。
+IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](../../iot-central/core/howto-export-data.md)必要があります。 まず、宛先への接続を作成する必要があります。次に、データエクスポートジョブを作成して継続的に実行します。 
+
+新しい変換先の作成:
+- [ **変換** 先] タブに移動し、新しい変換先を作成します。
+- まず、宛先に一意の名前を付けます。
+- 移行先の種類として *Azure Event Hubs* を選択します。
+- **接続文字列** フィールドに対して、前の手順で取得した FHIR の接続文字列を Azure IoT コネクタに提供します。
+
+新しいデータエクスポートを作成します。
+- 変換先を作成したら、[ **エクスポート** ] タブに移動し、新しいデータエクスポートを作成します。 
+- まず、データエクスポートに一意の名前を付けます。
+- [**データ**] で、*エクスポートするデータの種類* として [*テレメトリ*] を選択します。
+- [ **宛先** ] で、前の名前で作成した宛先名を選択します。
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>Azure API for FHIR でデバイス データを表示する
 

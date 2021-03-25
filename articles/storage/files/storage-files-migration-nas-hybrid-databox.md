@@ -8,10 +8,10 @@ ms.date: 03/5/2021
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 144b2f23e40f315441c3de2482ae8aeffe77ec75
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102583602"
 ---
 # <a name="use-databox-to-migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>DataBox を使用して Azure File Sync によってネットワーク接続ストレージ (NAS) からハイブリッド クラウド デプロイに移行する
@@ -23,7 +23,7 @@ ms.locfileid: "102583602"
 > * 移行ルート: NAS &rArr; DataBox &rArr; Azure ファイル共有 &rArr; Windows Server と同期
 > * オンプレミスのファイルのキャッシュ: はい、最終的な目標は Azure File Sync のデプロイです。
 
-シナリオが異なる場合は、[移行ガイドの表](storage-files-migration-overview.md#migration-guides)を参照してください。
+自分のシナリオが異なる場合は、[移行ガイドの表](storage-files-migration-overview.md#migration-guides)を参照してください。
 
 Azure File Sync は直接接続記憶域 (DAS) の場所で動作し、ネットワーク接続ストレージ (NAS) の場所への同期をサポートしていません。
 このため、ファイルの移行が必要になります。この記事では、そのような移行の計画と実行について説明します。
@@ -186,7 +186,7 @@ RoboCopy コマンドを初めて実行するときは、ユーザーとアプ�
 
 同じ同期に対して RoboCopy を 2 回目に実行したときは、前回の実行以降に発生した変更のみを転送すればよいため、処理は短時間で完了します。 同じ共有に対してジョブを繰り返し実行できます。
 
-ダウンタイムを許容できる場合は、NAS ベースの共有へのユーザー アクセスを削除する必要があります。 これを行うには、ユーザーがファイルとフォルダーの構造およびコンテンツを変更できないようにするためのいずれかの手順を実行します。 たとえば、DFS-Namespace を存在しない場所に指定したり、共有のルート ACL を変更したりすることなどです。
+ダウンタイムを許容できる場合は、NAS ベースの共有へのユーザー アクセスを削除する必要があります。 これは、ユーザーがファイルとフォルダー構造およびコンテンツを変更できないようにするいずれの手順でも行えます。 たとえば、自分の DFS 名前空間を存在しない場所に指定したり、共有のルート ACL を変更します。
 
 最後に 1 回 RoboCopy ラウンドを実行します。 それにより、漏れている可能性があるすべての変更が取得されます。
 この最後の手順にかかる時間は、RoboCopy のスキャンの速度に依存します。 前回の実行にかかった時間を測定することで、(ダウンタイムに相当する) 時間を見積もることができます。
@@ -209,7 +209,7 @@ Azure File Sync の問題のトラブルシューティングについては、�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事は、詳細なオプション、ベスト プラクティス、およびトラブルシューティングのヘルプを理解するのに役立ちます。 これらの記事は、それぞれに対応する [Azure ファイル共有のドキュメント](storage-files-introduction.md)にリンクしています。
+Azure ファイル共有と Azure File Sync については、さらに知るべきことがあります。以下の記事では、高度なオプション、ベスト プラクティスについて説明します。トラブルシューティングのヘルプもあります。 これらの記事は、それぞれに対応する [Azure ファイル共有のドキュメント](storage-files-introduction.md)にリンクしています。
 
 * [移行の概要](storage-files-migration-overview.md)
 * [AFS の概要](./storage-sync-files-planning.md)
