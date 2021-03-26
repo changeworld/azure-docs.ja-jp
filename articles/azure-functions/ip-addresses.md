@@ -111,14 +111,14 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="dedicated-ip-addresses"></a>専用の IP アドレス
 
-静的な専用の IP アドレスが必要な場合は、[App Service 環境](../app-service/environment/intro.md) (App Service プランの [Isolated 階層](https://azure.microsoft.com/pricing/details/app-service/)) をお勧めします。 詳細については、次を参照してください。 [App Service 環境の IP アドレス](../app-service/environment/network-info.md#ase-ip-addresses)と[App Service Environment への受信トラフィックを制御する方法](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)します。
+静的な専用の IP アドレスが必要な場合は、[App Service Environment](../app-service/environment/intro.md) (App Service プランの [Isolated 階層](https://azure.microsoft.com/pricing/details/app-service/)) をお勧めします。 詳細については、次を参照してください。 [App Service Environment の IP アドレス](../app-service/environment/network-info.md#ase-ip-addresses)と[App Service Environment への受信トラフィックを制御する方法](../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md)します。
 
-関数アプリが App Service 環境内で実行されるかどうかを確認するには、次のようにします。
+関数アプリが App Service Environment 内で実行されるかどうかを確認するには、次のようにします。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 2. 関数アプリに移動します。
 3. **[概要]** タブを選択します。
-4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service 環境の価格レベルは、 **[Isolated]** です。
+4. App Service プランの階層は、 **[App Service プラン/価格レベル]** の下に表示されます。 App Service Environment の価格レベルは、 **[Isolated]** です。
  
 別の方法として、[Cloud Shell](../cloud-shell/quickstart.md) を使用することもできます。
 
@@ -126,7 +126,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 az webapp show --resource-group <group_name> --name <app_name> --query sku --output tsv
 ```
 
-App Service 環境 `sku` は `Isolated` です。
+App Service Environment `sku` は `Isolated` です。
 
 ## <a name="next-steps"></a>次のステップ
 
