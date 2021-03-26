@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: da2201931c92939029724b1086589803845109a7
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 4f2b31a4760a07779eebdd9492731ffe7e324d37
+ms.sourcegitcommit: 6776f0a27e2000fb1acb34a8dddc67af01ac14ac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102439631"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "103149641"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -35,7 +35,9 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 - [SQL 脆弱性評価に "ルールの無効化" エクスペリエンスを追加 (プレビュー)](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
 - [Azure Monitor ブックを Security Center に統合し、テンプレートを 3 件提供](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [規制コンプライアンス ダッシュボードに Azure 監査レポートを追加 (プレビュー)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
+- [[Explore in ARG]\(ARG で探索\) を使用した Azure Resource Graph での推奨データの表示](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [ワークフローの自動化をデプロイするためのポリシーを更新](#updates-to-the-policies-for-deploying-workflow-automation)
+- [従来の 2 つの推奨事項で Azure アクティビティ ログにデータが直接書き込まれなくなる](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Azure Firewall の管理を Security Center に統合
@@ -92,6 +94,17 @@ Ignite Spring 2021 において、Security Center に Azure Monitor ブックを
 
 
 
+### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>[Explore in ARG]\(ARG で探索\) を使用した Azure Resource Graph での推奨データの表示
+
+推奨事項の詳細ページに、[Explore in ARG]\(ARG で探索\) ツールバー ボタンが含まれるようになりました。 このボタンを使用して、Azure Resource Graph のクエリを開き、推奨データを探索、エクスポート、および共有します。
+
+Azure Resource Graph (ARG) を使用すると、堅牢なフィルター処理、グループ化、および並べ替え機能を使用して、クラウド環境全体のリソース情報にすばやくアクセスできます。 これは、Azure サブスクリプション全体の情報を、プログラムから、または Azure portal 内ですばやく効率的に照会する方法です。
+
+[Azure Resource Graph (ARG)](../governance/resource-graph/index.yml) の詳細について参照してください。
+
+:::image type="content" source="media/release-notes/explore-in-resource-graph.png" alt-text="Azure Resource Graph で推奨データを探索する。":::
+
+
 ### <a name="updates-to-the-policies-for-deploying-workflow-automation"></a>ワークフローの自動化をデプロイするためのポリシーを更新
 
 組織の監視とインシデント対応プロセスを自動化すると、セキュリティ インシデントの調査と軽減にかかる時間を大幅に短縮できます。
@@ -113,6 +126,19 @@ Microsoft では、ワークフローの自動化のプロシージャを作成�
 [ワークフローの自動化テンプレート](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)を使用して開始するには、こちらを参照してください。
 
 方法の詳細については、「[Security Center のトリガーへの応答を自動化する](workflow-automation.md)」を参照してください。
+
+
+### <a name="two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log"></a>従来の 2 つの推奨事項で Azure アクティビティ ログにデータが直接書き込まれなくなる 
+
+Security Center によって、ほぼすべてのセキュリティに関する推奨事項のデータが Azure Advisor に渡され、そこから [Azure アクティビティ ログ](../azure-monitor/essentials/activity-log.md)に書き込まれます。
+
+2 つの推奨事項については、データは同時に Azure アクティビティ ログに直接書き込まれます。 この変更により、Security Center によって、これらの従来のセキュリティに関する推奨事項のデータがアクティビティ ログに直接書き込まれなくなります。 代わりに、他のすべての推奨事項と同様に、データは Azure Advisor にエクスポートされます。
+
+この 2 つの従来の推奨事項は次のとおりです。
+-  - お使いのマシンで Endpoint Protection の正常性の問題を解決する必要があります
+- 使用しているマシンでセキュリティ構成の脆弱性を修復する必要がある
+
+アクティビティ ログの "TaskDiscovery タイプの推奨事項" カテゴリでこの 2 つの推奨事項の情報にアクセスしていた場合、これは使用できなくなります。
 
 
 

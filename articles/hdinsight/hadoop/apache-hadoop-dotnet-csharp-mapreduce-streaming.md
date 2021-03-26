@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, seoapr2020, devx-track-csharp
 ms.date: 04/28/2020
-ms.openlocfilehash: 6e2758fd650547978924c25f8f3faf1e3e7194f6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8093db9c53d9c34014d1b315d53539b3f2cffb30
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699387"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866711"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>HDInsight 上の Apache Hadoop で C# と MapReduce ストリーミングを使用する
 
@@ -150,7 +150,7 @@ namespace reducer
 
 1. このアプリケーションをデプロイする HDInsight クラスターを展開します。 エントリとテキスト **(既定のストレージ アカウント)** が一覧表示されます。
 
-   ![ストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー、Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png)
+   :::image type="content" source="./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-storage-account.png" alt-text="ストレージ アカウント、HDInsight クラスター、サーバー エクスプローラー、Visual Studio" border="true":::
 
    * **[(既定のストレージ アカウント)]** エントリを展開できる場合は、クラスターの既定のストレージとして **Azure ストレージ アカウント** を使用しています。 クラスターの既定のストレージのファイルを表示するには、エントリを展開し、 **[(既定のコンテナー)]** をダブルクリックします。
 
@@ -160,7 +160,7 @@ namespace reducer
 
     * **Azure ストレージ アカウント** を使用している場合は、 **[BLOB のアップロード]** アイコンを選択します。
 
-        ![マッパーの HDInsight アップロード アイコン、Visual Studio](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png)
+        :::image type="content" source="./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/hdinsight-upload-icon.png" alt-text="マッパーの HDInsight アップロード アイコン、Visual Studio" border="true":::
 
         **[新しいファイルのアップロード]** ダイアログ ボックスの **[ファイル名]** で、 **[参照]** を選択します。 **[BLOB のアップロード]** ダイアログ ボックスで、"*マッパー*" プロジェクトの *bin\debug* フォルダーに移動し、*mapper.exe* ファイルを選択します。 最後に、 **[開く]** を選択し、 **[OK]** を選択してアップロードを完了します。
 

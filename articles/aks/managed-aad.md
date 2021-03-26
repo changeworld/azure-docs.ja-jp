@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: ca8b9a511de1b71e5d03b8aac7631fc8f524500f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2cf72da8f7ca82c37088cd6456f094ada2580982
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177938"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103418965"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -36,7 +36,7 @@ AKS マネージド Azure AD 統合は、Azure AD の統合エクスペリエン
 * [helm](https://github.com/helm/helm) を使用している場合は、helm 3.3 以降
 
 > [!Important]
-> バージョン 1.18.1 以降の kubectl、または kubelogin を使用する必要があります。 適切なバージョンを使用しない場合は、認証の問題が発生します。
+> バージョン 1.18.1 以降の kubectl、または kubelogin を使用する必要があります。 Kubernetes と kubectl のマイナー バージョンの差は、1 バージョンを超えることはできません。 適切なバージョンを使用しない場合は、認証の問題が発生します。
 
 kubectl および kubelogin をインストールするには、次のコマンドを使用します。
 

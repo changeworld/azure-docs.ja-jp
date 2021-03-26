@@ -2,13 +2,13 @@
 title: テンプレートの概要
 description: リソースのデプロイに Azure Resource Manager テンプレート (ARM テンプレート) を使用する利点について説明します。
 ms.topic: conceptual
-ms.date: 03/08/2021
-ms.openlocfilehash: 3a144b69f69c90b997b17d9526c9c3e0f259c554
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.date: 03/12/2021
+ms.openlocfilehash: 14bcbbd7a7ae7315dbb8e9d3e7e44ce0ffe0a4b4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455737"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103419985"
 ---
 # <a name="what-are-arm-templates"></a>ARM テンプレートとは
 
@@ -19,6 +19,10 @@ ms.locfileid: "102455737"
 Azure ソリューション用にインフラストラクチャをコードとして実装するには、Azure Resource Manager テンプレート (ARM テンプレート) を使用します。 テンプレートは JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。 このテンプレートでは、デプロイしようとしているものを、それを作成する一連のプログラミング コマンドを記述しなくても記述できる、宣言型の構文を使用しています。 このテンプレートでは、デプロイするリソースとそれらのリソースのプロパティを指定します。
 
 Microsoft では、ARM テンプレートを開発するための新しい言語を導入しました。 この言語は Bicep という名前で、現在はプレビュー段階にありです。 Bicep および JSON テンプレートは、同じ機能を提供します。 テンプレートは 2 つの言語間で変換できます。 Bicep には、テンプレートの作成に使用しやすい構文が用意されています。 詳細については、「[Bicep とは (プレビュー)](bicep-overview.md)」を参照してください。
+
+ARM テンプレートの使用を開始する方法については、次のビデオをご覧ください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Enablement/How-and-why-to-learn-about-ARM-templates/player]
 
 ## <a name="why-choose-arm-templates"></a>ARM テンプレートを選択する理由
 
