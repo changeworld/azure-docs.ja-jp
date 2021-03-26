@@ -7,24 +7,26 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf8b8554aa2ea1d6d06f58f726ca65f77499ec5f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c748034145781f639da244b16e3df7053da3d5d2
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91440038"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103489967"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 Azure IoT Edge では、IoT Edge デバイスでの拡張オフライン操作がサポートされており、IoT Edge 以外の子デバイスでのオフライン操作も可能です。 IoT Edge デバイスが IoT Hub に接続できるなんらかの方法がある限り、そのデバイスとすべての子デバイスは、断続的なインターネット接続により、またはインターネット接続なしに、機能し続けることができます。
 
 ## <a name="how-it-works"></a>しくみ
 
-IoT Edge デバイスがオフライン モードになると、IoT Edge ハブは 3 つのロールを担います。 第一に、アップストリーム方向のすべてのメッセージを格納し、デバイスが再接続されるまで保存します。 第二に、モジュールと子デバイスが動作を継続できるよう、IoT Hub に代わってこれらを認証するために動作します。 第三に、通常は IoT Hub を経由する、子デバイス間の通信を可能にします。
+IoT Edge デバイスがオフライン モードになると、IoT Edge ハブは 3 つのロールを担います。 第一に、アップストリーム方向のすべてのメッセージを格納し、デバイスが再接続されるまで保存します。 2 つ目は、IoT Hub の代わりにモジュールと子デバイスを認証して、操作を続行できるようにすることです。 3 つ目は、通常は IoT Hub を通過する子デバイス間の通信を実現することです。
 
 次の例は、IoT Edge のシナリオがオフライン モードでどのように動作するかを示しています。
 
-1. **デバイスを構成する**
+1. **デバイスの構成**
 
    IoT Edge デバイスでは、オフライン機能が自動的に有効になります。 その機能を他の IoT デバイスに拡張するには、IoT Hub でデバイス間の親子リレーションシップを宣言する必要があります。 次に、各自に割り当てられた親デバイスを信頼するように子デバイスを構成し、device-to-cloud 通信をゲートウェイとして親を経由するようにルーティングします。
 
@@ -66,7 +68,7 @@ IoT Edge デバイスによってその拡張オフライン機能を子 IoT デ
 
    ![IoT Edge デバイスの詳細ページから子デバイスを管理する](./media/offline-capabilities/manage-child-devices.png)
 
-#### <a name="option-2-use-the-az-command-line-tool"></a>オプション 2:`az` コマンドライン ツールを使用する
+#### <a name="option-2-use-the-az-command-line-tool"></a>オプション 2: `az` コマンドライン ツールを使用する
 
 [Azure コマンド ライン インターフェイス](/cli/azure/)と [IoT 拡張機能](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 以降) を使用して、[device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) サブコマンドにより親子関係を管理できます。 次の例では、ハブ内の IoT Edge 以外のすべてデバイスを IoT Edge デバイスの子デバイスとして割り当てるクエリを使用しています。
 
@@ -84,16 +86,16 @@ device_list=$(az iot hub query \
 
 # Add all IoT devices to IoT Edge (as child)
 az iot hub device-identity add-children \
-  --device-id $egde_device \
-  --child-list $device_list \
-  --hub-name replace-with-hub-name \
-  --resource-group replace-with-rg-name \
-  --subscription replace-with-sub-name
+  --device-id $egde_device \
+  --child-list $device_list \
+  --hub-name replace-with-hub-name \
+  --resource-group replace-with-rg-name \
+  --subscription replace-with-sub-name
 ```
 
 [クエリ](../iot-hub/iot-hub-devguide-query-language.md)を変更して、デバイスのさまざまなサブセットを選択できます。 大量のデバイス セットを指定する場合、このコマンドは数秒かかる場合があります。
 
-#### <a name="option-3-use-iot-hub-service-sdk"></a>オプション 3:IoT Hub サービス SDK を使用する
+#### <a name="option-3-use-iot-hub-service-sdk"></a>オプション 3: IoT Hub サービス SDK を使用する
 
 最後に、C#、Java、または Node.js の IoT Hub サービス SDK を使用してプログラムで親子関係を管理できます。 ここに、C# SDK を使用した[子デバイスの割り当て例を](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/e2e/test/iothub/service/RegistryManagerE2ETests.cs)があります。
 
@@ -138,7 +140,7 @@ az iot hub device-identity add-children \
 
 既定では、メッセージとモジュールの状態情報は、IoT Edge ハブのローカル コンテナー ファイルシステムに格納されます。 信頼性を向上させるために、特にオフラインで操作する場合は、専用のストレージをホスト IoT Edge デバイスに設定することもできます。 詳細については、「[Give modules access to a device's local storage](how-to-access-host-storage-from-module.md)」 (モジュールにデバイスのローカル ストレージへのアクセスを許可する) を参照してください
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 親/子デバイス接続用の透過的なゲートウェイの設定方法の詳細を確認します。
 
