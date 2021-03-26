@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 2b264da06cf5088da07ec91cfa40c4babfde4c38
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 81a6a6aeb826ba4a61fd4f0a4abdb63fe3674bc4
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102219065"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103573729"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning トレーニング環境をセキュリティで保護する
 
@@ -327,3 +327,5 @@ VM または HDInsight クラスターをお客様の Azure Machine Learning の
 * [パート 2: ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
 * [パート 4: 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
 * [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+
+名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。
