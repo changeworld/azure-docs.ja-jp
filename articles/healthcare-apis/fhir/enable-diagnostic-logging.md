@@ -9,28 +9,28 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: zxue
 ms.date: 03/03/2021
-ms.openlocfilehash: d8f7a2b2f31fb192147c1950866cff77064a3671
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: a884dac90273e98868fed6bfe1cbed23b939d286
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019160"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105557702"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Azure API for FHIR で診断ログを有効にする
 
 この記事では、Azure API for FHIR で診断ログを有効にし、それらのログのサンプル クエリを確認できるようにする方法について説明します。 診断ログへのアクセスは、規制要件 (HIPAA など) への準拠が必須であるすべての医療サービスにとって不可欠です。 診断ログを有効にする Azure API for FHIR の機能は、Azure portal の [**診断設定**](../../azure-monitor/essentials/diagnostic-settings.md)です。 
 
-## <a name="view-and-download-fhir-metrics-data"></a>FHIR メトリックデータを表示してダウンロードする
+## <a name="view-and-download-fhir-metrics-data"></a>FHIR メトリック データを表示してダウンロードする
 
-[監視] の下のメトリックを表示できます。ポータルからのメトリック。 メトリックには、要求数、平均待機時間、エラー数、データサイズ、使用された Ru、容量を超過した要求の数、および可用性 (%) が含まれます。 次のスクリーンショットは、過去7日間のアクティビティがほとんどないサンプル環境で使用される Ru を示しています。 データは Json 形式でダウンロードできます。
+ポータルの [監視] | [メトリック] でメトリックを表示できます。 メトリックには、要求数、平均待機時間、エラー数、データ サイズ、使用された RU、容量を超過した要求の数、可用性 (%) が含まれます。 次のスクリーンショットは、過去 7 日間のアクティビティがほとんどないサンプル環境で使用された RU を示しています。 データは Json 形式でダウンロードできます。
 
-   :::image type="content" source="media/diagnostic-logging/fhir-metrics-rus-screen.png" alt-text="ポータルからの FHIR メトリック用の Azure API" lightbox="media/diagnostic-logging/fhir-metrics-rus-screen.png":::
+   :::image type="content" source="media/diagnostic-logging/fhir-metrics-rus-screen.png" alt-text="ポータルからの Azure API for FHIR メトリック" lightbox="media/diagnostic-logging/fhir-metrics-rus-screen.png":::
 
 ## <a name="enable-audit-logs"></a>監査ログを有効にする
 1. Azure API for FHIR で診断ログを有効にするには、Azure portal でお使いの Azure API for FHIR サービスを選択します 
 2. **[診断設定]** に移動します 
 
-   :::image type="content" source="media/diagnostic-logging/diagnostic-settings-screen.png" alt-text="Azure FHIR 診断設定を追加します。" lightbox="media/diagnostic-logging/diagnostic-settings-screen.png":::
+   :::image type="content" source="media/diagnostic-logging/diagnostic-settings-screen.png" alt-text="Azure FHIR 診断設定の追加。" lightbox="media/diagnostic-logging/diagnostic-settings-screen.png":::
 
 3. **[+ 診断設定を追加する]** を選択します
 
@@ -42,7 +42,7 @@ ms.locfileid: "103019160"
     2. サード パーティのサービスやカスタム分析ソリューションで取り込むために、**イベント ハブにストリーム配信** します。 この手順を構成する前に、イベント ハブの名前空間とイベント ハブのポリシーを作成する必要があります。
     3. Azure Monitor の **Log Analytics ワークスペースにストリーム配信** します。 このオプションを選択する前に、Log Analytics ワークスペースを作成する必要があります。
 
-6. **AuditLogs** または **AllMetrics**、あるいはその両方を選択します。 メトリックには、サービス名、可用性、データ サイズ、合計待機時間、合計要求数、合計エラー数、およびタイムスタンプが含まれます。 [サポートされているメトリック](https://docs.microsoft.com/azure/azure-monitor/essentials/metrics-supported#microsofthealthcareapisservices)の詳細については、こちらを参照してください。 
+6. **AuditLogs** または **AllMetrics**、あるいはその両方を選択します。 メトリックには、サービス名、可用性、データ サイズ、合計待機時間、合計要求数、合計エラー数、およびタイムスタンプが含まれます。 詳細は[サポートされるメトリック](../../azure-monitor/essentials/metrics-supported.md#microsofthealthcareapisservices)を参照してください。 
 
    :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHIR 診断設定。AuditLogs または AllMetrics、あるいはその両方を選択します。" lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
@@ -50,7 +50,7 @@ ms.locfileid: "103019160"
 
 
 > [!Note] 
-> 最初のログが Log Analytics に表示されるまでには、最大で 15 分かかることがあります。 また、FHIR の Azure API があるリソースグループまたはサブスクリプションから別のリソースグループまたはサブスクリプションに移動された場合は、移動が完了した後で設定を更新します。 
+> 最初のログが Log Analytics に表示されるまでには、最大で 15 分かかることがあります。 また、Azure API for FHIR を、あるリソース グループまたはサブスクリプションから別のリソース グループまたはサブスクリプションに移動した場合は、移動が完了した後で設定を更新します。 
  
 診断ログの使用方法の詳細については、[Azure リソース ログのドキュメント](../../azure-monitor/essentials/platform-logs-overview.md)を参照してください。
 
