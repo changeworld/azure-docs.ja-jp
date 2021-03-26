@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 671991a936fd0330c31017dd5f64e7b5eca9b3f4
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563661"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598407"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>エンコードのシナリオ ベースの移行ガイダンス
 
@@ -58,7 +58,7 @@ V2 と V3 のエンコード ワークフローを視覚的に比較するため
 
 ### <a name="v3-encoding-workflow"></a>V3 のエンコード ワークフロー
 
-[![V3 のエンコード ワークフロー](./media/migration-guide/V3-pretty.svg) ](./media/migration-guide/V3-pretty.svg#lightbox)
+[![V3 のエンコード ワークフロー](./media/migration-guide/V3-pretty.svg)](./media/migration-guide/V3-pretty.svg#lightbox)
 
 1. 設定
     1. 資産を作成するか、または既存の資産を使用します。 新しい資産を使用している場合は、コンテンツをその資産にアップロードします。 既存の資産を使用している場合は、その資産内に既に存在するファイルをエンコードする必要があります。 "*その資産にさらにコンテンツをアップロードすることはやめてください。* "
@@ -76,7 +76,7 @@ V2 と V3 のエンコード ワークフローを視覚的に比較するため
         - 出力資産
         - リソース グループ
         - AMS アカウント名  
-1. ジョブを監視するために [Event Grid](monitor-events-portal-how-to.md) を使用します。
+1. ジョブを監視するために [Event Grid](monitoring/monitor-events-portal-how-to.md) を使用します。
 1. ジョブを送信します。
 
 ## <a name="custom-presets-from-v2-to-v3-encoding"></a>V2 から V3 エンコードへのカスタム プリセット

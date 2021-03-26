@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9a5427f7c3a057f291067ac83d3d9032d7e693d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b71e5b1a8ba5f3ee8f883c71a7221e01d4af4fb6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102559360"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104597710"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Start/Stop VMs during off-hours の概要
 
@@ -91,7 +91,8 @@ VM の Start/Stop VMs during off-hours 機能は Automation アカウントと L
 | Microsoft.Authorization/permissions/read |サブスクリプション|
 | Microsoft.Authorization/roleAssignments/read | サブスクリプション |
 | Microsoft.Authorization/roleAssignments/write | サブスクリプション |
-| Microsoft.Authorization/roleAssignments/delete | サブスクリプション || Microsoft.Automation/automationAccounts/connections/read | リソース グループ |
+| Microsoft.Authorization/roleAssignments/delete | サブスクリプション |
+| Microsoft.Automation/automationAccounts/connections/read | リソース グループ |
 | Microsoft.Automation/automationAccounts/certificates/read | リソース グループ |
 | Microsoft.Automation/automationAccounts/write | リソース グループ |
 | Microsoft.OperationalInsights/workspaces/write | リソース グループ |
@@ -167,7 +168,7 @@ Start/Stop VMs during off-hours 機能には、構成済みの Runbook、スケ�
 |Scheduled_StopVM | ユーザー定義、毎日 | `Stop` パラメーターを持つ **ScheduledStopStart_Parent** Runbook を毎日指定された時刻に実行します。  変数資産によって定義されたルールを満たす VM すべてを自動的に停止します。  関連するスケジュール (**Scheduled-StartVM**) を有効にしてください。|
 |Scheduled_StartVM | ユーザー定義、毎日 | `Start` パラメーター値を持つ **ScheduledStopStart_Parent** Runbook を毎日指定された時刻に実行します。 変数資産によって定義されたルールを満たす VM すべてを自動的に開始します。  関連するスケジュール (**Scheduled-StopVM**) を有効にしてください。|
 |Sequenced-StopVM | 午前 1 時 00 分 (UTC)、毎週金曜日 | `Stop` パラメーター値を持つ **Sequenced_StopStop_Parent** Runook を毎週金曜日の指定された時刻に実行します。  適切な変数で定義された **SequenceStop** のタグを持つ VM すべてを順番 (昇順) に停止します。 タグ値と資産である変数の詳細については、「[Runbook](#runbooks)」を参照してください。  関連するスケジュール (**Sequenced-StartVM**) を有効にしてください。|
-|Sequenced-StartVM | 午後 1 時 00 分 (UTC)、毎週月曜日 | `Start` のパラメーター値を持つ **SequencedStopStart_Parent** Runbook を毎週月曜日の指定された時刻に実行します。 適切な変数で定義された **SequenceStart** のタグを持つ VM すべてを順番 (降順)に 起動します。 タグ値と変数資産の詳細については、「[Runbook](#runbooks)」を参照してください。 関連するスケジュール (**Sequenced-StopVM**) を有効にしてください。
+|Sequenced-StartVM | 午後 1 時 00 分 (UTC)、毎週月曜日 | `Start` のパラメーター値を持つ **SequencedStopStart_Parent** Runbook を毎週月曜日の指定された時刻に実行します。 適切な変数で定義された **SequenceStart** のタグを持つ VM すべてを順番 (降順)に 起動します。 タグ値と変数資産の詳細については、「[Runbook](#runbooks)」を参照してください。 関連するスケジュール (**Sequenced-StopVM**) を有効にしてください。|
 
 ## <a name="use-the-feature-with-classic-vms"></a>クラシック VM で機能を使用する
 
