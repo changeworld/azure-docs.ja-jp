@@ -48,13 +48,13 @@
     - name: リアルタイムでビデオを分析する
       href: Vision-API-How-to-Topics/HowtoAnalyzeVideo_Vision.md
     - name: 仮想ネットワークの構成方法
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../cognitive-services-virtual-networks.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Read 2.x から Read 3.x へのアップグレード
       href: upgrade-api-versions.md
     - name: AAD 認証の構成方法
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../authentication.md?tabs=powershell%3fcontext%3d%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: カスタマー マネージド キーの使用方法
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+      href: ../encryption/cognitive-services-encryption-keys-portal.md?context=%2fazure%2fcognitive-services%2fcomputer-vision%2fcontext%2fcontext
     - name: Computer Vision をデプロイする
       items:
         - name: Containers
@@ -155,7 +155,7 @@
     - name: リージョンのサポート
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: Learn モジュール
-      href: 'https://docs.microsoft.com/en-us/learn/paths/explore-computer-vision-microsoft-azure/'
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: サポートとヘルプ
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
     - name: コンプライアンス
