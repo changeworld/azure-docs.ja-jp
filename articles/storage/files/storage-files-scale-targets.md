@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ffc5f49e357591b41a18ae15c5551c1f447095fb
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 0ecfbb9053fde4ff332cbbcb6e14a84a5bbeb99a
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102440311"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593154"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Azure Files のスケーラビリティおよびパフォーマンスのターゲット
 [Azure Files](storage-files-introduction.md) はクラウドで、SMB および NFS ファイル システム プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、Azure Files と Azure File Sync のスケーラビリティとパフォーマンスのターゲットについて説明します。
@@ -134,11 +134,11 @@ Azure File Sync の場合、2 つのステージで重要です。
 
 **Windows Server から Azure ファイル共有への初回データ同期**: データはすべて Windows Server 上にあるため、Azure File Sync デプロイの多くは空の Azure ファイル共有から始まります。 そのような場合、初回クラウド変更の列挙が速く、Windows Server から Azure ファイル共有への変更同期に時間の多くが費やされます。 
 
-同期によって Azure ファイル共有にデータがアップロードされますが、ローカルのファイル サーバー上ではダウンタイムがありません。管理者は[ネットワーク上限を設定](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-registration#set-azure-file-sync-network-limits)し、バックグラウンドのデータ アップロードに使用される帯域幅の量を制限できます。
+同期によって Azure ファイル共有にデータがアップロードされますが、ローカルのファイル サーバー上ではダウンタイムがありません。管理者は[ネットワーク上限を設定](./storage-sync-files-server-registration.md#set-azure-file-sync-network-limits)し、バックグラウンドのデータ アップロードに使用される帯域幅の量を制限できます。
 
-初回同期は通常、同期グループあたり毎秒 20 ファイルという初回アップロード率に制限されます。 顧客は以下の数式で時間 (日数) を割り出し、すべてのデータをアップロードする時間を見積もりできます。  
+初回同期は通常、同期グループあたり毎秒 20 ファイルという初回アップロード率に制限されます。 顧客は以下の数式で時間 (日数) を割り出し、すべてのデータを Azure にアップロードする時間を見積もりできます。  
 
-   **同期グループにファイルをアップロードするための時間 (日数) = (クラウド エンドポイントに含まれるオブジェクト数)/(20 * 60 * 60 * 24)**
+   **同期グループにファイルをアップロードするための時間 (日数) = (サーバー エンドポイントに含まれるオブジェクト数)/(20 * 60 * 60 * 24)**
 
 データを複数のサーバー エンドポイントと同期グループに分割すると、複数の同期グループに対してそれぞれ毎秒 20 項目の率で並列アップロードできるため、このデータ アップロードのスピードが上がります。 つまり、同期グループが 2 つであれば、毎秒 40 項目という率の組み合わせで実行されます。 完了までの合計時間は、同期するファイルが最も多い同期グループの見積もり時間になります。
 

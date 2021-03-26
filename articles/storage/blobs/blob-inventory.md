@@ -10,12 +10,12 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 7972385ba017059407b994029c37f347b919cad3
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 8310de465a6416102a7ce4e614ead7029e6be87a
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435122"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950928"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Azure Storage BLOB インベントリを使用して BLOB データを管理する (プレビュー)
 
@@ -205,4 +205,5 @@ Azure portal の **[BLOB インベントリ]** セクションで **[コード �
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)
+- [コンテナーごとの BLOB の数と合計サイズを計算する](calculate-blob-count-size.md)
+- [Azure Blob Storage のライフサイクルを管理する](storage-lifecycle-management-concepts.md)
