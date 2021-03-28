@@ -18,7 +18,7 @@ ms.locfileid: "100369885"
 
 この記事では、Azure Data Factory の Copy アクティビティを使用して、REST エンドポイントとの間でデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
 
-この REST コネクタ、[REST コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
+この REST コネクタ、[HTTP コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
 - **REST コネクタ** では、特に RESTful API からのデータのコピーがサポートされています。 
 - **HTTP コネクタ** は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタの前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
