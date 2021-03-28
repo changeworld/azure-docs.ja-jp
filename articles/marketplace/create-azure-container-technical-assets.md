@@ -1,5 +1,5 @@
 ---
-title: Azure コンテナーの技術資産を準備する
+title: Azure Container の技術資産を準備する
 description: Azure Marketplace でコンテナー オファーを構成するのに役立つ技術リソースとガイドライン。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/19/2021
 ms.locfileid: "96459320"
 ---
-# <a name="prepare-your-azure-container-technical-assets"></a>Azure コンテナーの技術資産を準備する
+# <a name="prepare-your-azure-container-technical-assets"></a>Azure Container の技術資産を準備する
 
 この記事では、Azure Marketplace でコンテナー オファーを作成するのに役立つ技術リソースと推奨事項を示します。
 
