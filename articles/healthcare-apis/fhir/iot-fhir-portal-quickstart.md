@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 91b3097e465458181074d1e450e69f267d0fe556
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: 3e293782e6f00852a51e0617a07eebd5d8c56261
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105026787"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644848"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 
@@ -50,7 +50,7 @@ Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソ�
 
 [![IoT コネクタを作成する](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg#lightbox)
 
-|設定|値|説明 |
+|設定|[値]|説明 |
 |---|---|---|
 |コネクタ名|一意の名前|Azure IoT Connector for FHIR を識別する名前を入力します。この名前は、Azure API for FHIR リソース内で一意である必要があります。 名前に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 名前の先頭と末尾は文字または数字である必要があります。また、長さは 3 から 24 文字までにする必要があります。|
 |解決の種類|[Lookup]\(検索\) または [作成]|Azure API for FHIR 内に [Device](https://www.hl7.org/fhir/device.html) および [Patient](https://www.hl7.org/fhir/patient.html) FHIR リソースを作成する帯域外プロセスがある場合、 **[Lookup]\(検索\)** を選択します。 Azure IoT Connector for FHIR では、デバイス データを表す [Observation](https://www.hl7.org/fhir/observation.html) FHIR リソースを作成する場合に、これらのリソースへの参照を使用します。 Azure IoT Connector for FHIR により、デバイス データ内にあるそれぞれの識別子の値を使用して、Azure API for FHIR 内に最小限の Device および Patient リソースを作成する場合は、 **[Create]\(作成\)** を選択します。|
@@ -85,12 +85,12 @@ Azure IoT Connector for FHIR には、デバイス メッセージを FHIR ベ�
       "templateType": "IotJsonPathContent",
       "template": {
         "typeName": "heartrate",
-        "typeMatchExpression": "$..[?(@Body.HeartRate)]",
-        "patientIdExpression": "$.SystemProperties.iothub-connection-device-id",
+        "typeMatchExpression": "$..[?(@Body.telemetry.HeartRate)]",
+        "patientIdExpression": "$.Properties.iotcentral-device-id",
         "values": [
           {
             "required": "true",
-            "valueExpression": "$.Body.HeartRate",
+            "valueExpression": "$.Body.telemetry.HeartRate",
             "valueName": "hr"
           }
         ]
