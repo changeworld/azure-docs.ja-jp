@@ -22,7 +22,7 @@ Azure App Service は組み込みの認証と認可のサポート (Easy Auth\(�
 > [!IMPORTANT]
 > 認証と認可にこの機能を必ずしも使う必要はありません。 選択した Web フレームワークにバンドルされているセキュリティ機能を使用するか、独自のユーティリティを作成することができます。 ただし、[Chrome 80 では Cookie の SameSite の実装に破壊的変更が加えられている](https://www.chromestatus.com/feature/5088147346030592)ため (リリース日は 2020 年 3 月頃)、クライアントの Chrome ブラウザーが更新されると、クロスサイト Cookie の投稿に依存するカスタムのリモート認証またはその他のシナリオが動作しなくなる可能性があることに注意してください。 この回避策は複雑です。ブラウザーごとに異なる SameSite 動作をサポートする必要があるためです。 
 >
-> App Service でホストされている ASP.NET Core 2.1 以降のバージョンには、この破壊的変更に対する修正プログラムが既に適用されており、Chrome 80 以前のブラウザーが適切に処理されます。 さらに、ASP.NET Framework 4.7.2 用の同じ修正プログラムは、2020 年 1 月中に App Service インスタンスにデプロイされています。 詳細については、[Azure App Service SameSite クッキーの更新](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)に関するページを参照してください。
+> App Service でホストされている ASP.NET Core 2.1 以降のバージョンには、この破壊的変更に対する修正プログラムが既に適用されており、Chrome 80 以前のブラウザーが適切に処理されます。 さらに、ASP.NET Framework 4.7.2 用の同じ修正プログラムは、2020 年 1 月中に App Service インスタンスにデプロイされています。 詳細については、[Azure App Service SameSite Cookie の更新](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)に関するページを参照してください。
 >
 
 > [!NOTE]
@@ -115,7 +115,7 @@ App Service が使用する[フェデレーション ID](https://en.wikipedia.or
 | 1.ユーザーをサインインさせる | クライアントを `/.auth/login/<provider>` にリダイレクトします。 | クライアント コードはプロバイダーの SDK でユーザーを直接サインインさせ、認証トークンを受け取ります。 詳しくは、プロバイダーのドキュメントをご覧ください。 |
 | 2.認証をポストする | プロバイダーはクライアントを `/.auth/login/<provider>/callback` にリダイレクトします。 | クライアント コードは検証のために[プロバイダーからのトークンを `/.auth/login/<provider>` にポスト](app-service-authentication-how-to.md#validate-tokens-from-providers)します。 |
 | 3.認証済みのセッションを確立する | App Service は認証された Cookie を応答に追加します。 | App Service は独自の認証トークンをクライアント コードに返します。 |
-| 4.認証済みのコンテンツを提供する | クライアントは以降の要求に認証クッキーを含めます (ブラウザーによって自動的に処理されます)。 | クライアント コードは `X-ZUMO-AUTH` ヘッダーで認証トークンを提示します (Mobile Apps クライアント SDK によって自動的に処理されます)。 |
+| 4.認証済みのコンテンツを提供する | クライアントは以降の要求に認証 Cookie を含めます (ブラウザーによって自動的に処理されます)。 | クライアント コードは `X-ZUMO-AUTH` ヘッダーで認証トークンを提示します (Mobile Apps クライアント SDK によって自動的に処理されます)。 |
 
 クライアント ブラウザーの場合、App Service は認証されていないすべてのユーザーを `/.auth/login/<provider>` に自動的に送ることができます。 また、ユーザーが選んだプロバイダーを使ってアプリにサインインするための 1 つまたは複数の `/.auth/login/<provider>` リンクをユーザーに表示することもできます。
 
