@@ -14,11 +14,11 @@ ms.locfileid: "92736729"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) は、プライベート Docker コンテナー イメージを格納するために使用される、Azure ベースの管理されたコンテナー レジストリ サービスです。 この記事では、Azure Container Instances にデプロイするときに、Azure コンテナー レジストリに格納されているコンテナー イメージをプルする方法について説明します。 レジストリ アクセスを構成するには、Azure Active Directory サービス プリンシパルとパスワードを作成し、ログイン資格情報を Azure キー コンテナーに格納することをお勧めします。
+[Azure Container Registry](../container-registry/container-registry-intro.md) は、プライベート Docker コンテナー イメージを格納するために使用される、Azure ベースの管理されたコンテナー レジストリ サービスです。 この記事では、Azure Container Instances にデプロイするときに、Azure Container Registry に格納されているコンテナー イメージをプルする方法について説明します。 レジストリ アクセスを構成するには、Azure Active Directory サービス プリンシパルとパスワードを作成し、ログイン資格情報を Azure キー コンテナーに格納することをお勧めします。
 
 ## <a name="prerequisites"></a>前提条件
 
-**Azure コンテナー レジストリ**: この記事の手順を完了するには、Azure コンテナー レジストリと、そのレジストリ内の少なくとも 1 つのコンテナー イメージが必要です。 レジストリが必要な場合は、「[Azure CLI を使用したコンテナー レジストリの作成](../container-registry/container-registry-get-started-azure-cli.md)」を参照してください。
+**Azure コンテナー レジストリ**: この記事の手順を完了するには、Azure Container Registry と、そのレジストリ内の少なくとも 1 つのコンテナー イメージが必要です。 レジストリが必要な場合は、「[Azure CLI を使用したコンテナー レジストリの作成](../container-registry/container-registry-get-started-azure-cli.md)」を参照してください。
 
 **Azure CLI**:この記事のコマンド ラインの例は [Azure CLI](/cli/azure/) を使用し、Bash シェル用にフォーマットされています。 ローカルに [Azure CLI をインストール](/cli/azure/install-azure-cli)するほかに、[Azure Cloud Shell][cloud-shell-bash] を使用することもできます。
 
@@ -72,7 +72,7 @@ az keyvault secret set \
 
 上記のコマンドの `--role` 引数により、*acrpull* ロールを持つサービス プリンシパルが構成されます。これにより、レジストリに対するプルのみのアクセス権が付与されます。 プッシュ アクセス権とプル アクセス権の両方を付与するには、`--role` 引数を *acrpush* に変更します。
 
-次にサービス プリンシパルの *appId* をコンテナーに格納します。appId は、認証のために Azure コンテナー レジストリに渡す **ユーザー名** です。
+次にサービス プリンシパルの *appId* をコンテナーに格納します。appId は、認証のために Azure Container Registry に渡す **ユーザー名** です。
 
 ```azurecli
 # Store service principal ID in vault (the registry *username*)
@@ -163,7 +163,7 @@ Azure Container Registry にコンテナー イメージを保持している場
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure コンテナー レジストリの認証について詳しくは、「[Azure コンテナー レジストリによる認証](../container-registry/container-registry-authentication.md)」をご覧ください。
+Azure Container Registry の認証について詳しくは、「[Azure Container Registry による認証](../container-registry/container-registry-authentication.md)」をご覧ください。
 
 <!-- IMAGES -->
 [acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png
