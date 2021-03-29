@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry からコンテナー イメージをデプロイする
-description: Azure コンテナー レジストリからコンテナー イメージをプルして、Azure Container Instances にコンテナーをデプロイする方法について説明します。
+description: Azure Container Registry からコンテナー イメージをプルして、Azure Container Instances にコンテナーをデプロイする方法について説明します。
 services: container-instances
 ms.topic: article
 ms.date: 07/02/2020
@@ -18,7 +18,7 @@ ms.locfileid: "92736729"
 
 ## <a name="prerequisites"></a>前提条件
 
-**Azure コンテナー レジストリ**: この記事の手順を完了するには、Azure Container Registry と、そのレジストリ内の少なくとも 1 つのコンテナー イメージが必要です。 レジストリが必要な場合は、「[Azure CLI を使用したコンテナー レジストリの作成](../container-registry/container-registry-get-started-azure-cli.md)」を参照してください。
+**Azure Container Registry**: この記事の手順を完了するには、Azure Container Registry と、そのレジストリ内の少なくとも 1 つのコンテナー イメージが必要です。 レジストリが必要な場合は、「[Azure CLI を使用したコンテナー レジストリの作成](../container-registry/container-registry-get-started-azure-cli.md)」を参照してください。
 
 **Azure CLI**:この記事のコマンド ラインの例は [Azure CLI](/cli/azure/) を使用し、Bash シェル用にフォーマットされています。 ローカルに [Azure CLI をインストール](/cli/azure/install-azure-cli)するほかに、[Azure Cloud Shell][cloud-shell-bash] を使用することもできます。
 
