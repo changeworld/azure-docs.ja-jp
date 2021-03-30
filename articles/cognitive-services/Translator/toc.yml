@@ -140,7 +140,7 @@
       href: document-translation/overview.md
     - name: クイック スタート
       href: document-translation/get-started-with-document-translation.md
-    - name: 使い方ガイド
+    - name: 操作方法ガイド
       items:
         - name: ドキュメント翻訳用の SAS トークンを作成する
           href: document-translation/create-sas-tokens.md
@@ -148,6 +148,22 @@
       items:
         - name: ドキュメント翻訳 REST API
           href: /rest/api/cognitiveservices/translator/documenttranslation
+        - name: ドキュメントの形式の取得
+          href: document-translation/reference/get-document-formats.md
+        - name: 用語集の形式の取得
+          href: document-translation/reference/get-glossary-formats.md
+        - name: ドキュメントのストレージ ソースの取得
+          href: document-translation/reference/get-document-storage-source.md
+        - name: バッチ要求の送信
+          href: document-translation/reference/submit-batch-request.md
+        - name: 操作のドキュメント状態の取得
+          href: document-translation/reference/get-operation-documents-status.md
+        - name: ドキュメント状態の取得
+          href: document-translation/reference/get-document-status.md
+        - name: 操作の取得
+          href: document-translation/reference/get-operations.md
+        - name: 操作を取り消す
+          href: document-translation/reference/cancel-operation.md
 - name: Translator リソース
   items:
     - name: サポートとヘルプのオプション
