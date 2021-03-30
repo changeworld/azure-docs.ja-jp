@@ -29,7 +29,7 @@ ms.locfileid: "102507519"
 
 - [Azure Portal](https://portal.azure.com)
 - [az コマン ドライン](/cli/azure/install-azure-cli)
-- [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
+- [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - SDK (C#、Python ...)
 
 ## <a name="ensure-azure-remote-rendering-can-access-your-storage-account"></a>Azure Remote Rendering が自分のストレージ アカウントにアクセスできることを確認する
