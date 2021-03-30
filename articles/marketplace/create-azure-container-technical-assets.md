@@ -43,7 +43,7 @@ ms.locfileid: "96459320"
 
 開発環境には次にツールを加えることを推奨します｡
 
-- [Azure 記憶域エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
+- [Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows)
 - [Visual Studio Code](https://code.visualstudio.com/)
   - 拡張機能: [Azure リソース マネージャー ツール](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
   - 拡張機能: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
