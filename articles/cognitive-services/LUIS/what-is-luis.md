@@ -60,7 +60,7 @@ LUIS アプリには、特定の領域 (ドメイン) に固有の自然言語�
 
 **[意図](luis-concept-intent.md "意図")** と呼ばれる、ユーザーの意図のカテゴリを使用してモデルを設計します。 意図にはそれぞれ、ユーザー **[発話](luis-concept-utterance.md "発話")** の例が必要です。 それぞれの発話からデータが得られますが、それらのデータは[機械学習エンティティ](luis-concept-entity-types.md#effective-machine-learned-entities "機械学習エンティティ")を使って抽出する必要があります。
 
-|ユーザーの発話例|Intent|抽出された日付|
+|ユーザーの発話例|Intent|抽出されたデータ|
 |-----------|-----------|-----------|
 |`Book a flight to Seattle?`|BookFlight|Seattle|
 |`When does your store open?`|StoreHoursAndLocation|open|
