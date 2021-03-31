@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/02/2021
 ms.custom: references_regions
-ms.openlocfilehash: db3f188cc796642285d9b082b46371879491c632
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.openlocfilehash: cb555eefb19b5db7ed7eb0792a813c295a4bf38b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103225236"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588615"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>クイックスタート: Azure portal から Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
  
@@ -89,7 +89,6 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    :::image type="content" source="./media/create-cluster-portal/resources.png" alt-text="クラスター リソースを表示する。" lightbox="./media/create-cluster-portal/resources.png" border="true":::
 
 
-
 ## <a name="connecting-to-your-cluster"></a>クラスターに接続する
 
 Azure Managed Instance for Apache Cassandra では、パブリック IP アドレスを持つノードが作成されないため、新しく作成された Cassandra クラスターに接続するには、VNet 内に別のリソースを作成する必要があります。 これは、アプリケーション、または Apache のオープンソース クエリ ツール [CQLSH](https://cassandra.apache.org/doc/latest/tools/cqlsh.html) がインストールされている仮想マシンにすることができます。 [テンプレート](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)を使用して、Ubuntu 仮想マシンをデプロイできます。 デプロイされたら、SSH を使用してマシンに接続し、次のコマンドを使用して CQLSH をインストールします。
@@ -113,6 +112,15 @@ export SSL_VALIDATE=false
 host=("<IP>" "<IP>" "<IP>")
 cqlsh $host 9042 -u cassandra -p cassandra --ssl
 ```
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+Virtual Network にアクセス許可を適用するときにエラー (例えば、"*Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501' ('e5007d2c-4b13-4a74-9b6a-605d99f03501' に対するユーザーまたはサービス プリンシパルがグラフ データベース内で見つかりません)* " など) が発生した場合は、Azure portal から同じアクセス許可を手動で適用できます。 ポータルからアクセス許可を適用するには、既存の仮想ネットワークの **[アクセス制御 (IAM)]** ペインにアクセスし、"Azure Cosmos DB" のロール割り当てを "ネットワーク管理者" ロールに追加します。 "Azure Cosmos DB" を検索したときに 2 つのエントリが表示される場合は、次の図に示すように両方のエントリを追加します。 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="アクセス許可を適用する" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> Azure Cosmos DB のロールの割り当ては、デプロイの目的にのみ使用されます。 Azure Managed Instance for Apache Cassandra には、Azure Cosmos DB に対するバックエンドの依存関係はありません。   
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

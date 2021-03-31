@@ -6,12 +6,12 @@ ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 03/15/2021
-ms.openlocfilehash: 3890b06b2d085cea57b59cfe34d8b961918471c5
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: ef8ef85dde11eb991f14201286dc1a086df71dc8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103562401"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588591"
 ---
 # <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-using-azure-cli-preview"></a>クイックスタート: Azure CLI を使用して Azure Managed Instance for Apache Cassandra クラスターを作成する (プレビュー)
 
@@ -58,13 +58,16 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
    > [!NOTE]
    > 前のコマンドの `assignee` と `role` の値は固定値です。コマンドに記載されているように、これらの値を正確に入力してください。 そうしないと、クラスターの作成時にエラーが発生します。 このコマンドの実行中にエラーが発生した場合は、実行するためのアクセス許可がない可能性があります。管理者に連絡してアクセス許可を求めてください。
 
-1. 次に、[az managed-cassandra cluster create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) コマンドを使用して、新しく作成した仮想ネットワークにクラスターを作成します。 次のコマンドを実行します。`delegatedManagementSubnetId` 変数の値には必ず、前のコマンドで取得した `Resource ID` の値を使用してください。
+1. 次に、[az managed-cassandra cluster create](/cli/azure/ext/cosmosdb-preview/managed-cassandra/cluster?view=azure-cli-latest&preserve-view=true#ext_cosmosdb_preview_az_managed_cassandra_cluster_create) コマンドを使用して、新しく作成した仮想ネットワークにクラスターを作成します。 `delegatedManagementSubnetId` 変数の値を使用して次のコマンドを実行します。
+
+   > [!NOTE]
+   > 以下で指定する `delegatedManagementSubnetId` 変数の値は、上記のコマンドで指定した `--scope` の値とまったく同じです。
 
    ```azurecli-interactive
    resourceGroupName='<Resource_Group_Name>'
    clusterName='<Cluster_Name>'
    location='eastus2'
-   delegatedManagementSubnetId='<Resource_ID>'
+   delegatedManagementSubnetId='/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.Network/virtualNetworks/<VNet name>/subnets/<subnet name>'
    initialCassandraAdminPassword='myPassword'
     
    az managed-cassandra cluster create \
@@ -81,14 +84,13 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
    ```azurecli-interactive
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-   delegatedSubnetId='<Resource_ID>'
     
    az managed-cassandra datacenter create \
       --resource-group $resourceGroupName \
       --cluster-name $clusterName \
       --data-center-name $dataCenterName \
       --data-center-location $dataCenterLocation \
-      --delegated-subnet-id $delegatedSubnetId \
+      --delegated-subnet-id $delegatedManagementSubnetId \
       --node-count 3 
    ```
 
@@ -99,7 +101,6 @@ Azure Managed Instance for Apache Cassandra は、マネージドなオープン
    clusterName='<Cluster Name>'
    dataCenterName='dc1'
    dataCenterLocation='eastus2'
-   delegatedSubnetId= '<Resource_ID>'
     
    az managed-cassandra datacenter update \
       --resource-group $resourceGroupName \
@@ -131,6 +132,15 @@ export SSL_VALIDATE=false
 host=("<IP>" "<IP>" "<IP>")
 cqlsh $host 9042 -u cassandra -p cassandra --ssl
 ```
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+Virtual Network にアクセス許可を適用するときにエラー (例えば、"*Cannot find user or service principal in graph database for 'e5007d2c-4b13-4a74-9b6a-605d99f03501' ('e5007d2c-4b13-4a74-9b6a-605d99f03501' に対するユーザーまたはサービス プリンシパルがグラフ データベース内で見つかりません)* " など) が発生した場合は、Azure portal から同じアクセス許可を手動で適用できます。 ポータルからアクセス許可を適用するには、既存の仮想ネットワークの **[アクセス制御 (IAM)]** ペインにアクセスし、"Azure Cosmos DB" のロール割り当てを "ネットワーク管理者" ロールに追加します。 "Azure Cosmos DB" を検索したときに 2 つのエントリが表示される場合は、次の図に示すように両方のエントリを追加します。 
+
+   :::image type="content" source="./media/create-cluster-cli/apply-permissions.png" alt-text="アクセス許可を適用する" lightbox="./media/create-cluster-cli/apply-permissions.png" border="true":::
+
+> [!NOTE] 
+> Azure Cosmos DB のロールの割り当ては、デプロイの目的にのみ使用されます。 Azure Managed Instance for Apache Cassandra には、Azure Cosmos DB に対するバックエンドの依存関係はありません。  
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
