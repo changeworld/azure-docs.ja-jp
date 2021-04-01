@@ -317,7 +317,7 @@ Application Insights では、テレメトリ モジュールを使用して、�
 * `DependencyTrackingTelemetryModule` - 送信 HTTP 呼び出しと SQL 呼び出しから [DependencyTelemetry](./asp-net-dependencies.md) を収集します。
 * `PerformanceCollectorModule` - Windows PerformanceCounters を収集します。
 * `QuickPulseTelemetryModule` - Live Metrics ポータルで表示するテレメトリを収集します。
-* `AppServicesHeartbeatTelemetryModule` - アプリケーションがホストされる Azure App Service 環境について、(カスタム メトリックとして送信される) ハート ビートを収集します。
+* `AppServicesHeartbeatTelemetryModule` - アプリケーションがホストされる Azure App Service Environment について、(カスタム メトリックとして送信される) ハート ビートを収集します。
 * `AzureInstanceMetadataTelemetryModule` - アプリケーションがホストされる Azure VM 環境について、(カスタム メトリックとして送信される) ハート ビートを収集します。
 * `EventCounterCollectionModule` - [EventCounter](eventcounters.md) を収集します。 このモジュールは新機能であり、SDK バージョン 2.8.0 以降で使用できます。
 
