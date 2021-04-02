@@ -9,10 +9,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, センサー, ビューアー, 外部同期, フェーズ遅延, 深度, RGB, カメラ, オーディオ ケーブル, レコーダー
 ms.openlocfilehash: 052f6f1ac9f90e764de25d1d4d1b25b3d50a848d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "85276662"
 ---
 # <a name="use-azure-kinect-recorder-with-external-synchronized-devices"></a>外部の同期されたデバイスで Azure Kinect レコーダーを使用する
