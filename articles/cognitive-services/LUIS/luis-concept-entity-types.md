@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91316564"
 ---
 # <a name="extract-data-with-entities"></a>エンティティを使用してデータを抽出する
@@ -34,7 +34,7 @@ ms.locfileid: "91316564"
 
 |発話|Entity|Data|
 |--|--|--|
-|ニューヨーク行きのチケットを 3 枚購入する|事前構築済みの数値<br>宛先|3<br>ニューヨーク|
+|ニューヨーク行きのチケットを 3 枚購入する|事前構築済みの数値<br>到着地|3<br>ニューヨーク|
 
 
 ### <a name="entities-are-optional-but-recommended"></a>エンティティは省略可能だが強く推奨される

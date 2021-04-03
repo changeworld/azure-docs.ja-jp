@@ -4,10 +4,10 @@ description: この記事では、Azure Event Hubs 専用クラスターを現�
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "89380424"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>Azure Event Hubs 専用クラスターを別のリージョンに移動する
