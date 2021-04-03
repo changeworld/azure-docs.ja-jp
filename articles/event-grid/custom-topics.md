@@ -4,10 +4,10 @@ description: Azure Event Grid でのカスタム トピックについて説明�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 8f48824989c8ec51b766385188ad99e9e59cf621
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86113787"
 ---
 # <a name="custom-topics-in-azure-event-grid"></a>Azure Event Grid でのカスタム トピック

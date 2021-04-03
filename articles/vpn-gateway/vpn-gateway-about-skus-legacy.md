@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "84687788"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
@@ -47,7 +47,7 @@ Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerfor
 
 ゲートウェイのサイズ変更は、Azure Portal でも行うことができます。
 
-### <a name="classic"></a><a name="classicresize"></a>Classic (クラシック)
+### <a name="classic"></a><a name="classicresize"></a>クラシック
 
 クラシック デプロイ モデル用のゲートウェイのサイズを変更するには、サービス管理の PowerShell コマンドレットを使用する必要があります。 次のコマンドを使用します。
 
