@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, センサー, SDK, 座標系, 調整, 関数, カメラ, 組み込み, 非組み込み, 射影, 逆射影, 変換, RGB-D, ポイント クラウド
 ms.openlocfilehash: a501765222154bde4ed35e878a9d18042893fca2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "85276686"
 ---
 # <a name="use-azure-kinect-calibration-functions"></a>Azure Kinect 調整関数を使用する
