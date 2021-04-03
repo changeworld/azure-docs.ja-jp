@@ -6,10 +6,10 @@ ms.topic: sample
 ms.date: 11/23/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 714dd8d886f567bcdf07c93803662ef4b2c635f3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94565164"
 ---
 # <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>Premium プランの Function App を作成する - Azure CLI
@@ -34,7 +34,7 @@ ms.locfileid: "94565164"
 
 表内の各コマンドは、それぞれのドキュメントにリンクされています。 このスクリプトでは以下のコマンドを使用します。
 
-| コマンド | Notes |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Azure Storage アカウントを作成します。 |

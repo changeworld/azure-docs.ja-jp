@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: b83201ae864d1f1eb9124af5268360bb1748f6c8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97507610"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して SQL Edge と Azure Blob Storage のデータを同期する
@@ -198,7 +198,7 @@ SQL Edge インスタンスで次のコマンドを実行します。
 
     2. ストアド プロシージャのパラメーターの値を指定するには、 **[Import parameter]\(インポート パラメーター\)** を選択し、各パラメーターに次の値を入力します。
 
-    |名前|種類|値|
+    |名前|Type|値|
     |-----|----|-----|
     |LastModifiedtime|DateTime|@{activity('NewWaterMark').output.firstRow.NewWatermarkvalue}|
     |TableName|String|@{activity('OldWaterMark').output.firstRow.TableName}|
