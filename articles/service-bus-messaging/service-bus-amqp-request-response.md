@@ -4,10 +4,10 @@ description: この記事では、Microsoft Azure Service Bus での AMQP 要求
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b845f4086ee1ac4fe868571c1754caf6d29b9021
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88064416"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
@@ -503,7 +503,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |Key|値型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|INT|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|string|No|ステータスの説明。|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 ### <a name="remove-rule"></a>ルールの削除  
   
@@ -514,7 +514,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |Key|値型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|はい|`com.microsoft:remove-rule`|  
-|`com.microsoft:server-timeout`|uint|No|操作のサーバー タイムアウト (ミリ秒単位)。|  
+|`com.microsoft:server-timeout`|uint|いいえ|操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた **マップ** を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -529,7 +529,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |Key|値型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|INT|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|string|No|ステータスの説明。|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 ### <a name="get-rules"></a>ルールの取得
 
@@ -540,7 +540,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |Key|値型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|はい|`com.microsoft:enumerate-rules`|  
-|`com.microsoft:server-timeout`|uint|No|操作のサーバー タイムアウト (ミリ秒単位)。|  
+|`com.microsoft:server-timeout`|uint|いいえ|操作のサーバー タイムアウト (ミリ秒単位)。|  
 
 要求メッセージの本文は、次のエントリが含まれた **マップ** を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -623,7 +623,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |Key|値型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|はい|`com.microsoft:receive-by-sequence-number`|  
-|`com.microsoft:server-timeout`|uint|No|操作のサーバー タイムアウト (ミリ秒単位)。|  
+|`com.microsoft:server-timeout`|uint|いいえ|操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた **マップ** を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -639,7 +639,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |Key|値型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|INT|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|string|No|ステータスの説明。|  
+|statusDescription|string|いいえ|ステータスの説明。|  
   
 応答メッセージの本文は、次のエントリが含まれた **マップ** を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -665,7 +665,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |Key|値型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |operation|string|はい|`com.microsoft:update-disposition`|  
-|`com.microsoft:server-timeout`|uint|No|操作のサーバー タイムアウト (ミリ秒単位)。|  
+|`com.microsoft:server-timeout`|uint|いいえ|操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた **マップ** を含む **amqp-value** セクションで構成されている必要があります。  
   
@@ -684,7 +684,7 @@ sql-filter マップには、次のエントリが含まれている必要があ
 |Key|値型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|INT|はい|HTTP 応答コード [RFC2616]<br /><br /> 200: OK - 成功、それ以外の場合は失敗|  
-|statusDescription|string|No|ステータスの説明。|
+|statusDescription|string|いいえ|ステータスの説明。|
 
 ## <a name="next-steps"></a>次のステップ
 
