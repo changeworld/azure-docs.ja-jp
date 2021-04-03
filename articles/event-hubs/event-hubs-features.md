@@ -85,7 +85,7 @@ Event Hubs では、 *発行元ポリシー* を介してイベント プロデ�
 
 [Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントまたは Azure Data Lake Service アカウントのいずれかに保存することができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナーまたは Azure Data Lake Service アカウントを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
 
-## <a name="partitions"></a>メジャー グループ
+## <a name="partitions"></a>パーティション
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 
