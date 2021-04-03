@@ -4,10 +4,10 @@ description: Azure DevTest Labs でラボの VM に対するリソース グル�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 7b72048405d3025ca21b324b6ad3168dd0c9ac95
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85483365"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Azure DevTest Labs でラボの仮想マシンのリソース グループを指定する
@@ -105,7 +105,7 @@ Azure Resource Manager テンプレートを使用してラボを作成する場
 この API の使用方法:
 - API バージョン **2018_10_15_preview** を使用します。
 - 新しいリソース グループを指定する場合は、サブスクリプション内の **リソース グループに対する書き込みアクセス許可** があることを確認します。 書き込みアクセス許可がない場合、指定したリソース グループでの新しい仮想マシンの作成は失敗します。
-- API を使用するときは、**完全なリソース グループ ID** を渡します。 たとえば、`/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>` のように指定します。 リソース グループがラボと同じサブスクリプションに含まれていることを確認します。 
+- API を使用するときは、**完全なリソース グループ ID** を渡します。 たとえば、 `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>`と指定します。 リソース グループがラボと同じサブスクリプションに含まれていることを確認します。 
 
 
 ## <a name="next-steps"></a>次のステップ

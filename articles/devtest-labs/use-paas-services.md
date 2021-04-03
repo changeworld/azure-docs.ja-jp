@@ -4,10 +4,10 @@ description: Azure DevTest Labs でサービスとしてのプラットフォー
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85478741"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>Azure DevTest Labs でのサービスとしてのプラットフォーム (PaaS) サービスの使用
@@ -59,7 +59,7 @@ DevTest Labs 環境では、特定のコードと構成を非同期的に独立�
 ### <a name="cost-tracking"></a>コスト管理
 コスト追跡機能には、全体的なコスト傾向の一部として、さまざまな環境内の Azure リソースが含まれます。 リソース別のコストでは、環境内の各種リソースが示されるのではなく、その環境が 1 つのコストとして表示されます。
 
-### <a name="security"></a>Security
+### <a name="security"></a>セキュリティ
 DevTest Labs を使用して適切に構成された Azure サブスクリプションでは、[ラボを介した Azure リソースへのアクセスのみを制限](devtest-lab-add-devtest-user.md)できます。 環境を使用した場合、ラボ所有者は、他の Azure リソースへのアクセスを許可しなくても、承認された構成の PaaS リソースへのアクセスをユーザーに許可できます。 ラボ ユーザーが環境をカスタマイズするシナリオでは、ラボ所有者が共同作成者アクセスを許可できます。 共同作成者アクセスにより、ラボ ユーザーは、マネージド リソース グループ内でのみ Azure リソースを追加または削除できます。 サブスクリプションへの共同作成者アクセスをユーザーに許可するよりも、追跡や管理が簡単になります。
 
 ### <a name="automation"></a>オートメーション

@@ -4,10 +4,10 @@ description: Azure DevTest Labs 内の接続されている共有イメージ �
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 9421a1e21be9446b0e59328bd9a3730b57655274
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85483858"
 ---
 # <a name="add-a-vm-using-an-image-from-the-attached-shared-image-gallery"></a>接続されている共有イメージ ギャラリーのイメージを使って VM を追加する

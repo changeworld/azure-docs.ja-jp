@@ -4,10 +4,10 @@ description: Azure DevTest Labs の仮想マシンで、成果物を適用する
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a89b675a1b3bf134b98e09c7278f0eccb594c325
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85483195"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs 仮想マシンに、成果物を適用する場合に生じる問題のトラブルシューティング

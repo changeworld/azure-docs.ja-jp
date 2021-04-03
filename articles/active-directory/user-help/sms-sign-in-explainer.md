@@ -13,10 +13,10 @@ ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.openlocfilehash: 1a50f2032a978a552205d1bba602249f34f0478a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98661596"
 ---
 # <a name="use-your-phone-number-as-a-user-name"></a>ユーザー名として電話番号を使用する
