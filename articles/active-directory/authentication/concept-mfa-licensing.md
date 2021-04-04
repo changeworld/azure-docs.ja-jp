@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63d880146a0b068a5d097c452c14b28db4907098
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96743957"
 ---
 # <a name="features-and-licenses-for-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication の機能とライセンス
@@ -41,7 +41,7 @@ Azure AD Multi-Factor Authentication は、組織のニーズに応じて、い�
 
 次の表に、さまざまなバージョンの Azure AD Multi-Factor Authentication で使用できる機能の一覧を示します。 ユーザー認証のセキュリティ保護に必要なものを詳しく検討し、その要件を満たす方法を決定します。 たとえば、Azure AD Free は Azure AD Multi-Factor Authentication を提供するセキュリティの既定値群を提供しますが、認証プロンプトに使用できるのはモバイル認証アプリだけであり、電話や SMS は使用できません。 モバイル認証アプリがユーザーの個人のデバイスにインストールされていることを保証できない場合、この方法は制約を受けるかもしれません。
 
-| 機能 | Azure AD Free - セキュリティの既定値群 | Azure AD Free - Azure AD 全体管理者 | Microsoft 365 アプリ | Azure AD Premium P1 または P2 |
+| 特徴量 | Azure AD Free - セキュリティの既定値群 | Azure AD Free - Azure AD 全体管理者 | Microsoft 365 アプリ | Azure AD Premium P1 または P2 |
 | --- |:---:|:---:|:---:|:---:|
 | MFA で Azure AD テナント管理者アカウントを保護する | ● | ● (*Azure AD 全体管理者* アカウントの場合のみ) | ● | ● |
 | モバイル アプリを 2 番目の要素にする | ● | ● | ● | ● |
