@@ -4,10 +4,10 @@ description: Azure Event Grid で geo ディザスター リカバリー (GeoDR)
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.openlocfilehash: 10beaf0ae25f3ed9b7bcda5961a89494b18b84d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94980851"
 ---
 # <a name="server-side-geo-disaster-recovery-in-azure-event-grid"></a>Azure Event Grid でのサーバー側 geo ディザスター リカバリー
