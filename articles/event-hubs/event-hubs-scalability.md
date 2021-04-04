@@ -14,7 +14,7 @@ ms.locfileid: "103601282"
 
 Event Hubs によるスケーリングに影響する 2 つの要素があります。
 *   スループット ユニット
-*   [   パーティション]
+*   パーティション
 
 ## <a name="throughput-units"></a>スループット ユニット
 
@@ -36,7 +36,7 @@ Event Hubs の **自動インフレ** 機能は、使用量のニーズに合わ
 
 自動インフレ機能の詳細については、[スループット単位の自動的なスケーリング](event-hubs-auto-inflate.md) に関する記事を参照してください。
 
-## <a name="partitions"></a>[パーティション]
+## <a name="partitions"></a>パーティション
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 
