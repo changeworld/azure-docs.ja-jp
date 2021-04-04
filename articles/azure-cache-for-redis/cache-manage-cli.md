@@ -8,10 +8,10 @@ ms.date: 01/23/2017
 ms.author: yegu
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 7643f882d5ac330046c169e0a3f2fa4920331d4e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92537696"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Azure Cache for Redis を作成および管理する方法

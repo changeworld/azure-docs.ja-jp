@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: 8e11c4182520e143007b46c8a7907b5e71bfb27d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100097587"
 ---
 # <a name="connect-your-qualys-vm-to-azure-sentinel-with-azure-function"></a>Azure Functions を使用して Qualys VM を Azure Sentinel に接続する
