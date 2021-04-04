@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: mbullwin
 ms.openlocfilehash: 6c461983053a145dfda58b9e3d26b39db0c339e5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92893422"
 ---
 # <a name="metrics-advisor-glossary-of-common-vocabulary-and-concepts"></a>一般的な用語や概念に関する Metrics Advisor の用語集

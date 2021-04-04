@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
 ms.openlocfilehash: 96b41c27b282bdc05dafa8c69398a11e8dbf3b1b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "91779658"
 ---
 "*感情分析 v3* " コンテナーを実行するには、次の `docker run` コマンドを実行します。 次のプレースホルダーを実際の値に置き換えてください。
