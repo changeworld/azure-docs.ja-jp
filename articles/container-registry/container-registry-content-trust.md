@@ -4,10 +4,10 @@ description: Azure Container Registry でコンテンツの信頼を有効にし
 ms.topic: article
 ms.date: 09/18/2020
 ms.openlocfilehash: f44cea09521dc235ad0d555264b165c9a3842a14
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148572"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
