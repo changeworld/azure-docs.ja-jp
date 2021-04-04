@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 2e62042a84f7ac2615762e3d9b036e4340bd8c73
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899118"
 ---
 # <a name="access-your-private-cloud-vcenter-portal"></a>プライベート クラウドの vCenter ポータルへのアクセス
@@ -64,7 +64,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
     ![vSphere クライアントの起動 - 概要](media/cloudsimple-resources-summary-launch-vcenter.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [プライベート クラウドの VLAN/サブネットを作成して管理する](create-vlan-subnet.md)
 * [VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル](learn-private-cloud-permissions.md)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: 7923dad3d47122c0ceb04d1240736e2b66a0dd64
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "92048255"
 ---
 # <a name="how-to-configure-metrics-and-fine-tune-detecting-configuration"></a>方法:メトリックを構成して検出構成を微調整する
@@ -145,13 +145,13 @@ Metrics Advisor では、複数の異常検出方法が用意されています�
 
 | 粒度 | YoY | MoM | WoW | DoD |
 |:-|:-|:-|:-|:-|
-| 年単位 | X | x | x | X |
-| 月単位 | X | x | x | X |
-| 週次 | ✔ | X | x | X |
+| 年単位 | X | X | X | X |
+| 月単位 | X | X | X | X |
+| 週次 | ✔ | X | X | X |
 | 毎日 | ✔ | ✔ | ✔ | X |
 | 1 時間ごと | ✔ | ✔ | ✔ | ✔ |
-| 1 分ごと | X | x | x | X |
-| 1 秒ごと | X | x | x | X |
+| 1 分ごと | X | X | X | X |
+| 1 秒ごと | X | X | X | X |
 | カスタム* | ✔ | ✔ | ✔ | ✔ |
 
 X - 使用不可。  

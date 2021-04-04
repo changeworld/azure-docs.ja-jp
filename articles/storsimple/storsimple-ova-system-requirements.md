@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 5970e82619667a47ba160c84df2cdeb145b0dab8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94966175"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
@@ -89,7 +89,7 @@ Azure ブロック BLOB ストレージのみがサポートされています�
 ## <a name="networking-requirements"></a>ネットワーク要件
 iSCSI、SMB、クラウド、または管理トラフィックを許可するためにファイアウォールで開く必要があるポートを次の表に示します。 この表では、*イン* または *受信* はデバイスにアクセスするクライアント要求が入ってくる方向を意味します。 *アウト* または *送信* は StorSimple デバイスがデプロイを超えて外部に (たとえば、インターネットに) データを送信する方向を意味します。
 
-| **ポート番号<sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
+| **ポート番号 <sup>1</sup>** | **インまたはアウト** | **ポート範囲** | **必須** | **メモ** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |アウト |WAN |いいえ |送信ポートは、更新プログラムを取得するためのインターネット アクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
 | TCP 443 (HTTPS) |アウト |WAN |はい |送信ポートは、クラウドのデータへのアクセスに使用します。 <br></br>送信 Web プロキシは、ユーザーが構成できます。 |
