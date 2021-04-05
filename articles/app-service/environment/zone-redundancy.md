@@ -8,10 +8,10 @@ ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98624727"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>App Service 環境での可用性ゾーンのサポート
@@ -49,9 +49,9 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 ゾーン ILB ASE は、Resource Manager テンプレートを使用して作成する必要があります。 Resource Manager テンプレートを使用してゾーン ILB ASE が作成されたら、Azure portal と CLI を使用して表示および操作することができます。  Resource Manager テンプレートは、ゾーン ILB ASE を最初に作成するときにのみ必要となります。
 
-ゾーン ILB ASE を指定するために Resource Manager テンプレートに必要な変更は、新しい ***zones** _ プロパティのみです。 _*_zones_*_ プロパティには、ILB ASE を固定する論理可用性ゾーンに応じて、値 "1"、"2"、または "3" を設定する必要があります。
+ゾーン ILB ASE を指定するために Resource Manager テンプレートに必要な変更は、新しい ***zones** _ プロパティのみです。 _ *_zones_** プロパティには、ILB ASE を固定する論理可用性ゾーンに応じて、値 "1"、"2"、または "3" を設定する必要があります。
 
-次の Resource Manager テンプレートのスニペットの例は、新しい _*_zones_*_ プロパティを示しており、ILB ASE をゾーン 2 に固定する必要があることを指定しています。
+次の Resource Manager テンプレートのスニペットの例は、新しい ***zones*** プロパティを示しており、ILB ASE をゾーン 2 に固定する必要があることを指定しています。
 
 ```
    "resources": [
@@ -89,6 +89,6 @@ ILB ASE は特定のゾーンに固定されるため、AZ に明示的にデプ
 
 ユーザーは、次の手順に従って、1 つのリージョンにデータが格納されるように App Service Environment が適切に構成されていることを検証できます。 
 
-1. [リソース エクスプローラー](https://resources.azure.com)を使用して、App Service Environment の ARM リソースに移動します。  ASE は _providers/Microsoft.Web/hostingEnvironments* の下に一覧表示されます。
+1. [リソース エクスプローラー](https://resources.azure.com)を使用して、App Service Environment の ARM リソースに移動します。  ASE は *providers/Microsoft. Web/hostingEnvironments* の下に一覧表示されます。
 2. *zones* プロパティが ARM JSON 構文のビューに存在し、値が "1"、"2"、または "3" の単一値の JSON 配列が含まれている場合、ASE はゾーン形式でにデプロイされており、ユーザー データは同じリージョンに残ります。
 2. *zones* プロパティが存在しない場合、または前に指定した有効なゾーン値がプロパティにない場合、ASE はゾーン形式でデプロイされておらず、ユーザー データは同じリージョンに排他的に格納されません。
