@@ -4,10 +4,10 @@ description: これらの URL をプロキシ サーバー バイパスに追加
 ms.date: 04/10/2020
 ms.topic: conceptual
 ms.openlocfilehash: 7d9c8222ee85c0c16ec1e1926335ac06e0389797
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96745878"
 ---
 # <a name="safelist-the-azure-portal-urls-on-your-firewall-or-proxy-server"></a>ファイアウォールまたはプロキシ サーバーのセーフリストに Azure portal の URL を追加する

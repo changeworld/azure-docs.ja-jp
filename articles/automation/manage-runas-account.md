@@ -6,10 +6,10 @@ ms.subservice: ''
 ms.date: 01/19/2021
 ms.topic: conceptual
 ms.openlocfilehash: f170fc948f136f4f46634e7ae2645ed2eb357afa
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101096461"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation の実行アカウントを管理する
