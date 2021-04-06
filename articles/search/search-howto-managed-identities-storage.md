@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: f26ca04955dfa854a8ee17b7aa255a6ed991b8df
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94358373"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>マネージド ID を使用して、Azure Storage アカウントへの接続を設定する
@@ -59,7 +59,7 @@ ms.locfileid: "94358373"
 
     ![ストレージ BLOB データ閲覧者ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-storage-blob-data-reader.png "ストレージ BLOB データ閲覧者ロールの割り当てを追加する")
 
-    Azure テーブル ストレージの例を次に示します。
+    Azure Table Storage の例を次に示します。
 
     ![閲覧者とデータ アクセスのロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "閲覧者とデータ アクセスのロールの割り当てを追加する")
 
@@ -71,8 +71,8 @@ ms.locfileid: "94358373"
 
 * **name** は、Search サービス内のデータ ソースの一意の名前です。
 * **type**
-    * Azure BLOB ストレージ: `azureblob`
-    * Azure テーブル ストレージ: `azuretable`
+    * Azure Blob Storage: `azureblob`
+    * Azure Table Storage: `azuretable`
     * Azure Data Lake Storage Gen2: [こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)を使用してプレビューにサインアップすると、この **種類** が提供されます。
 * **credentials**
     * マネージド ID を使用して認証する場合、**credentials** 形式は、マネージド ID を使用しない場合とは異なります。 ここでは、アカウント キーまたはパスワードのない ResourceId を指定します。 ResourceId には、ストレージ アカウントのサブスクリプション ID、ストレージ アカウントのリソース グループ、およびストレージ アカウント名を含める必要があります。
@@ -140,7 +140,7 @@ BLOB インデクサーのインデクサー定義の例:
 
 このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。 インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。 サポートされている最短の間隔は 5 分です。 スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。 ただし、いつでもオンデマンドでインデクサーを実行できます。   
 
-インデクサー作成 API の詳細については、「 [インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
+インデクサー作成 API の詳細については、「[インデクサーの作成](/rest/api/searchservice/create-indexer)」をご覧ください。
 
 インデクサーのスケジュールの定義の詳細については、[Azure Cognitive Search のインデクサーのスケジュールを設定する方法](search-howto-schedule-indexers.md)に関する記事を参照してください。
 
