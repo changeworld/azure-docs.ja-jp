@@ -4,10 +4,10 @@ description: 不要になった Azure VMware Solution のプライベート ク�
 ms.topic: tutorial
 ms.date: 03/13/2021
 ms.openlocfilehash: 453e7a3316c342cd724a951eafea0ae9fa045506
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103462101"
 ---
 # <a name="tutorial-delete-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution のプライベート クラウドを削除する

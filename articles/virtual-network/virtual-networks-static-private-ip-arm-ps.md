@@ -17,10 +17,10 @@ ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: 43c2e2c8905ca60e59caed3fdf1b4920f509fd88
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98783786"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>PowerShell を使用して静的プライベート IP アドレスを持つ仮想マシンを作成する

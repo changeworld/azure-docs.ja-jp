@@ -7,10 +7,10 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98033780"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage の入力バインド
@@ -98,7 +98,7 @@ namespace FunctionAppCloudTable2
 }
 ```
 
-CloudTable オブジェクトの使用方法の詳細については、[Azure Table ストレージの概要](../cosmos-db/tutorial-develop-table-dotnet.md)ページをご覧ください。
+CloudTable オブジェクトの使用方法の詳細については、[Azure Table Storage の概要](../cosmos-db/tutorial-develop-table-dotnet.md)ページをご覧ください。
 
 `CloudTable` にバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
@@ -600,7 +600,7 @@ def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
 |**rowKey** |**RowKey** | 省略可能。 読み取るテーブル エンティティの行キー。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#usage)」セクションを参照してください。| 
 |**take** |**Take** | 省略可能。 JavaScript で読み取るエンティティの最大数。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#usage)」セクションを参照してください。| 
 |**filter** |**Assert** | 省略可能。 JavaScript のテーブル入力の OData フィルター式。 このプロパティを使用する方法のガイダンスについては、「[使用方法](#usage)」セクションを参照してください。| 
-|**connection** |**Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 この設定には、"AzureWebJobs" というプレフィックスが付加されたアプリ設定または接続文字列名を指定できます。 たとえば、設定名が "AzureWebJobsMyStorage" の場合、ここでは "MyStorage" を指定できます。 Functions ランタイムでは、"AzureWebJobsMyStorage" という名前のアプリ設定が自動的に検索されます。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
+|**connection** |**接続** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 この設定には、"AzureWebJobs" というプレフィックスが付加されたアプリ設定または接続文字列名を指定できます。 たとえば、設定名が "AzureWebJobsMyStorage" の場合、ここでは "MyStorage" を指定できます。 Functions ランタイムでは、"AzureWebJobsMyStorage" という名前のアプリ設定が自動的に検索されます。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
