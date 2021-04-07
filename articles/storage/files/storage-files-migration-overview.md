@@ -121,7 +121,7 @@ Microsoft およびその他のファイル コピー ツールがいくつか�
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| 記憶域移行サービス | 間接的にサポートされています。 Azure ファイル共有は、SMS ターゲット サーバーでネットワーク ドライブとしてマウントできます。 | 完全な忠実性。* |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy </br>バージョン 10.6 | サポートされています。 | ソース ルート ACL のコピーはサポートされていません。その他の点では、完全な忠実性があります。 * </br>[Azure ファイル共有で AzCopy を使用する方法を確認する](../common/storage-use-azcopy-files.md) |
 |![はい、推奨されます](media/storage-files-migration-overview/circle-green-checkmark.png)| Data Box | サポートされています。 | DataBox では、メタデータが完全にサポートされています。 |
-|![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure ストレージ エクスプローラー </br>バージョン 1.14 | サポートされています。 | ACL はコピーされません。 タイムスタンプがサポートされます。  |
+|![完全にはお勧めできません](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Azure Storage Explorer </br>バージョン 1.14 | サポートされています。 | ACL はコピーされません。 タイムスタンプがサポートされます。  |
 |![推奨されません](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | サポートされています。 | メタデータがコピーされません。 |
 |||||
 
