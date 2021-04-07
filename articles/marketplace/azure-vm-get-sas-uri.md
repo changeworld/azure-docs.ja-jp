@@ -32,7 +32,7 @@ SAS アドレス (URL) の作成には、次の 2 つの一般的なツールが
 1. **Azure Storage Explorer** – Azure portal で利用できます。
 2. **Azure CLI** – Windows 以外のオペレーティング システムや自動化または継続的インテグレーションの環境に推奨されます。
 
-### <a name="using-tool-1-azure-storage-explorer"></a>ツール 1 の使用: Azure ストレージ エクスプローラー
+### <a name="using-tool-1-azure-storage-explorer"></a>ツール 1 の使用: Azure Storage Explorer
 
 1. ご利用の **ストレージ アカウント** に移動します。
 1. **[ストレージ エクスプローラー]** を開きます。
