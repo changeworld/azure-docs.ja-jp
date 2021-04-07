@@ -4,10 +4,10 @@ description: Azure コンテナー レジストリ、リポジトリ、コンテ
 ms.topic: article
 ms.date: 01/29/2021
 ms.openlocfilehash: 991be79b10b6061f2034eb19e4e139af65aef3cf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578083"
 ---
 # <a name="about-registries-repositories-and-artifacts"></a>レジストリ、リポジトリ、成果物について

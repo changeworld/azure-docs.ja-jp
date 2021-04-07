@@ -4,10 +4,10 @@ description: ベスト プラクティスに従って Azure Container Registry �
 ms.topic: article
 ms.date: 01/07/2021
 ms.openlocfilehash: 01c8c7f547be9dd225022fb3315a4bdecc48c2bf
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100578129"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
@@ -33,7 +33,7 @@ geo レプリケーションは、[Premium](container-registry-skus.md) レジ�
 
 デプロイの近くにイメージを配置する以外に、イメージ自体の特性がプル パフォーマンスに影響を与える可能性があります。
 
-* **イメージ サイズ** - 不要な[レイヤー](container-registry-concepts.md#manifest)を削除したり、レイヤーのサイズを縮小したりして、画像のサイズを最小化します。 イメージ サイズを縮小する 1 つの方法は、[マルチステージの Docker ビルド](https://docs.docker.com/develop/develop-images/multistage-build/)方法を使用して、必要なランタイム コンポーネントのみを含めることです。 
+* **イメージ サイズ** - 不要な [レイヤー](container-registry-concepts.md#manifest)を削除したり、レイヤーのサイズを縮小したりして、画像のサイズを最小化します。 イメージ サイズを縮小する 1 つの方法は、[マルチステージの Docker ビルド](https://docs.docker.com/develop/develop-images/multistage-build/)方法を使用して、必要なランタイム コンポーネントのみを含めることです。 
 
   また、より軽量なベース OS イメージを含めることができるかどうかも確認します。 特定のベース イメージをキャッシュする Azure Container Instances などのデプロイ環境を使用する場合は、キャッシュされたイメージの 1 つのイメージ レイヤーをスワップできるかどうかを確認します。 
 * **レイヤー数** - 使用されるレイヤーの数を調整します。 数が少なすぎると、ホストでのレイヤーの再利用とキャッシュの恩恵を受けられません。 多すぎると、デプロイ環境でのプルと圧縮解除に時間がかかります。 レイヤーの数は、5 ～ 10 が最適です。
