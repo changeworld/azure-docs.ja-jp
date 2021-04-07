@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101095716"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
