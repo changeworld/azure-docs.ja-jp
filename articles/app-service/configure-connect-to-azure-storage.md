@@ -62,7 +62,7 @@ ms.locfileid: "101720241"
 - App Service の Azure Storage は、現在、独自のコードを使用するシナリオ (コンテナー化されていない Windows アプリ) では **サポートされていません**。
 - App Service の Azure Storage は、インフラストラクチャの制限により、**ストレージ ファイアウォール** 構成の使用を **サポートしていません**。
 - App Service を使用する Azure Storage では、アプリあたり **最大 5 つ** のマウント ポイントを指定できます。
-- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使用します。
+- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)を使用します。
 
 ::: zone-end
 
@@ -70,7 +70,7 @@ ms.locfileid: "101720241"
 
 - App Service の Azure Storage は、**Azure Files コンテナー** (読み取り/書き込み) と **Azure Blob コンテナー** (読み取り専用) のマウントをサポートしています。
 - App Service の Azure Storage では、アプリあたり **最大 5 つ** のマウント ポイントを指定できます。
-- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使用します。
+- アプリにマウントされた Azure Storage に App Service の FTP または FTPS エンドポイント経由でアクセスすることはできません。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)を使用します。
 
 ::: zone-end
 
