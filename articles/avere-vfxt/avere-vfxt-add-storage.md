@@ -37,7 +37,7 @@ ms.locfileid: "96001526"
 コア ファイラーを追加するには、コア ファイラーの 2 つの主な種類のいずれかを選択します。
 
 * [NAS コア ファイラー](#nas-core-filer) - NAS コア フィルターを追加する方法について説明します
-* [Azure Storage クラウド コア ファイラー](#azure-blob-storage-cloud-core-filer) - Azure Blob ストレージ コンテナーをクラウド コア ファイラーとして追加する方法について説明します
+* [Azure Storage クラウド コア ファイラー](#azure-blob-storage-cloud-core-filer) - Azure Blob Storage コンテナーをクラウド コア ファイラーとして追加する方法について説明します
 
 ### <a name="nas-core-filer"></a>NAS コア ファイラー
 
