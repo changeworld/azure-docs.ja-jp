@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 57970371b947c5240be97e58c10299d2f4dfe525
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98879073"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy jobs show
@@ -38,7 +38,7 @@ azcopy jobs show [jobID] [flags]
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
 - [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
-## <a name="options"></a>オプション
+## <a name="options"></a>Options
 
 |オプション|説明|
 |--|--|
