@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/10/2020
 ms.author: mbullwin
 ms.openlocfilehash: 4c55c25621df1925b6ed6c374d8af88551eb1e46
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "96231431"
 ---
 Metrics Advisor は、時系列の異常検出、診断、分析のためのサービスです。 AI を利用したサービスであるため、使用モデルをトレーニングするためのデータが用いられます。 このサービスは、次の列を含んだ集計データのテーブルを受け取ります。
