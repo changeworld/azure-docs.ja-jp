@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 21c0a7a3fe6d5be9d99ea53dbfa74cf72e163272
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92780667"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-database-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL Database のパフォーマンスを監視および管理する
@@ -138,7 +138,7 @@ Wingtip Tickets SaaS Database Per Tenant は SaaS アプリであり、SaaS ア�
    ![set alert](./media/saas-dbpertenant-performance-monitoring/alert-rule.png)
 
 
-## <a name="scale-up-a-busy-pool"></a>ビジー状態のプールのスケールアップ
+## <a name="scale-up-a-busy-pool&quot;></a>ビジー状態のプールのスケールアップ
 
 プールの集計負荷レベルが、プールを使い切り、eDTU 使用率が 100% に達すると、各データベースのパフォーマンスが影響を受け、プール内のすべてのデータベースのクエリ応答時間が遅くなる可能性があります。
 
@@ -148,7 +148,7 @@ Wingtip Tickets SaaS Database Per Tenant は SaaS アプリであり、SaaS ア�
 
 ビジー状態のプールをシミュレートするには、ジェネレーターによって生成される負荷を増やします。 データベースのバーストの頻度を上げ、時間を長くすることで、プールの集計負荷が増加します。その際、個別のデータベースの要件を変更する必要はありません。 プールのスケールアップは、ポータルまたは PowerShell で簡単に行うことができます。 ここでは、ポータルを使用します。
 
-1. *$DemoScenario* = **3** ("_各データベースにバーストが長く、かつ頻繁に発生する負荷を生成_") を設定し、各データベースに必要なピーク負荷を変えずにプールの集計負荷の強度を上げます。
+1. *$DemoScenario* = **3** (&quot;_各データベースにバーストが長く、かつ頻繁に発生する負荷を生成_") を設定し、各データベースに必要なピーク負荷を変えずにプールの集計負荷の強度を上げます。
 1. **F5** キーを押して、負荷をすべてのテナント データベースに適用します。
 
 1. Azure ポータルの **Pool1** に移動します。
