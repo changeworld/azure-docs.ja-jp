@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: a914f6d71c013acea8dfde0f6578985bc009bb26
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100603402"
 ---
 # <a name="understand-autoscale-settings"></a>自動スケール設定について
@@ -87,7 +87,7 @@ ms.locfileid: "100603402"
 
 | Section | 要素名 | 説明 |
 | --- | --- | --- |
-| 設定 | ID | 自動スケール設定のリソース ID。 自動スケール設定は、Azure Resource Manager リソースです。 |
+| 設定 | id | 自動スケール設定のリソース ID。 自動スケール設定は、Azure Resource Manager リソースです。 |
 | 設定 | name | 自動スケール設定の名前。 |
 | 設定 | location | 自動スケール設定の場所。 この場所は、スケールするリソースの場所とは異なる場合があります。 |
 | properties | targetResourceUri | スケールするリソースのリソース ID。 リソースごとに適用できる自動スケール設定は 1 つに限られます。 |
