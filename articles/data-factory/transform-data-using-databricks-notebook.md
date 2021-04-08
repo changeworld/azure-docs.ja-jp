@@ -154,12 +154,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
           ![新しいノートブックのプロパティを設定する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image15.png)
 
-       1. 新しく作成されたノートブック "mynotebook" に次のコードを追加します。
+       1. 新しく作成されたノートブック "mynotebook&quot; に次のコードを追加します。
 
            ```
            # Creating widgets for leveraging parameters, and printing the parameters
 
-           dbutils.widgets.text("input", "","")
+           dbutils.widgets.text(&quot;input&quot;, &quot;&quot;,&quot;")
            y = dbutils.widgets.get("input")
            print ("Param -\'input':")
            print (y)

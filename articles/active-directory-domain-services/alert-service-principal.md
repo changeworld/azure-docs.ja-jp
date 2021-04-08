@@ -12,10 +12,10 @@ ms.topic: troubleshooting
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: 15dba02d3db45d663b8ba0aa7eb93bbc3f388532
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101645876"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services のサービス プリンシパル アラート
