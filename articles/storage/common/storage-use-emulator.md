@@ -1,6 +1,6 @@
 ---
-title: 開発とテストに Azure ストレージ エミュレーターを使用する
-description: Azure ストレージ エミュレーターを使用すると、Azure Storage アプリケーションを開発してテストするのための無料のローカル開発環境が提供されます。
+title: 開発とテストに Azure Storage Emulator を使用する
+description: Azure Storage Emulator を使用すると、Azure Storage アプリケーションを開発してテストするのための無料のローカル開発環境が提供されます。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/16/2020
@@ -14,9 +14,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "96498219"
 ---
-# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>開発とテストに Azure ストレージ エミュレーターを使用する
+# <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>開発とテストに Azure Storage Emulator を使用する
 
-Microsoft Azure ストレージ エミュレーターは、ローカル開発のために Azure の Blob service、Queue サービス、Table service をエミュレートするツールです。 Azure サブスクリプションを作成したりコストをかけたりすることなく、ローカル環境でストレージ サービスに対してアプリケーションをテストできます。 エミュレーターでアプリケーションの動作に問題がなければ、クラウドの Azure ストレージ アカウントを使用するように切り替えます。
+Microsoft Azure Storage Emulator は、ローカル開発のために Azure の Blob service、Queue サービス、Table service をエミュレートするツールです。 Azure サブスクリプションを作成したりコストをかけたりすることなく、ローカル環境でストレージ サービスに対してアプリケーションをテストできます。 エミュレーターでアプリケーションの動作に問題がなければ、クラウドの Azure ストレージ アカウントを使用するように切り替えます。
 
 > [!IMPORTANT]
 > Azure Storage エミュレーターは現在、あまり開発されていません。 [**Azurite**](storage-use-azurite.md) が今後のストレージ エミュレーター プラットフォームです。 Azurite は Azure Storage エミュレーターよりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。 詳細については、[**ローカルでの Azure Storage の開発に Azurite エミュレーターを使用する**](storage-use-azurite.md)方法に関するページを参照してください。
@@ -42,7 +42,7 @@ Microsoft Azure ストレージ エミュレーターは、ローカル開発の
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>ストレージ エミュレーターの起動と初期化
 
-Azure ストレージ エミュレーターを起動するには、次の手順を実行します。
+Azure Storage Emulator を起動するには、次の手順を実行します。
 
 1. **[スタート]** を選択するか、**Windows** キーを押します。
 2. 「`Azure Storage Emulator`」と入力を開始します。
@@ -51,7 +51,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 ストレージ エミュレーターが起動すると、コマンド プロンプト ウィンドウが表示されます。 このコンソール ウィンドウを使用して、ストレージ エミュレーターを開始および停止できます。 また、コマンド プロンプトから、データのクリア、Statusの取得、およびエミュレーターの初期化を行うこともできます。 詳細については、この記事で後述する「[ストレージ エミュレーター コマンド ライン ツールのリファレンス](#storage-emulator-command-line-tool-reference)」を参照してください。
 
 > [!NOTE]
-> Azurite などの別のストレージ エミュレーターがシステム上で実行されている場合、Azure ストレージ エミュレーターが正しく起動されないことがあります。
+> Azurite などの別のストレージ エミュレーターがシステム上で実行されている場合、Azure Storage Emulator が正しく起動されないことがあります。
 
 エミュレーターの実行中は、Windows タスク バーの通知領域にアイコンが表示されます。
 
@@ -322,7 +322,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ### <a name="version-30"></a>Version 3.0
 
-* Azure ストレージ エミュレーターが、コンピューティング エミュレーターと同じパッケージには同梱されないようになりました。
+* Azure Storage Emulator が、コンピューティング エミュレーターと同じパッケージには同梱されないようになりました。
 * ストレージ エミュレーターのグラフィカル ユーザー インターフェイスは非推奨になっています。 スクリプト可能なコマンド ライン インターフェイスに置き換えられました。 コマンド ライン インターフェイスの詳細については、ストレージ エミュレーター コマンド ライン ツールのリファレンスを参照してください。 グラフィカル インターフェイスはバージョン 3.0 までは引き続き存在しますが、計算エミュレーターがインストールされている場合にシステム トレイ アイコンを右クリックして [ストレージ エミュレーター UI の表示] を選択することによってのみアクセスできます。
 * Azure ストレージ サービスのバージョン 2013-08-15 が、完全にサポートされるようになりました。 (以前は、このバージョンはストレージ エミュレーター バージョン 2.2.1 プレビューだけでサポートされていました。)
 
