@@ -2,16 +2,16 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルを作成してデプロイする
 description: Azure リソースをデプロイするための最初の Bicep ファイルを作成します。 このチュートリアルでは、Bicep ファイルの構文とストレージ アカウントのデプロイ方法について説明します。
 author: mumian
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: b04dbb7f708a4019ae70c716d4faa05ca2c28720
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: 8979585d7ec0fa6eac1866375fe1e80214f2d2e2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102632579"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594276"
 ---
 # <a name="tutorial-create-and-deploy-first-azure-resource-manager-bicep-file"></a>チュートリアル: 最初の Azure Resource Manager Bicep ファイルを作成およびデプロイする
 
@@ -31,11 +31,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="editor"></a>エディター
 
-Bicep ファイルを作成するには、優れたエディターが必要です。 Visual Studio Code と Bicep 拡張機能の組み合わせをお勧めします。 これらのツールをインストールする必要がある場合は、「[クイックスタート: Visual Studio Code を使用して Bicep ファイルを作成する](quickstart-create-bicep-use-visual-studio-code.md)」を参照してください。
+Bicep ファイルを作成するには、優れたエディターが必要です。 Visual Studio Code と Bicep 拡張機能の組み合わせをお勧めします。 これらのツールをインストールする必要がある場合は、[Bicep 開発環境の構成](./bicep-install.md#development-environment)に関するセクションを参照してください。
 
 ### <a name="command-line-deployment"></a>コマンド ライン デプロイ
 
-Bicep ファイルをデプロイするには、最新の Azure PowerShell または最新の Azure CLI も必要です。 インストール手順については、以下を参照してください。
+Azure CLI または Azure PowerShell を使用して、Bicep ファイルをデプロイできます。 Azure CLI には、2.20.0 以降のバージョンが必要です。Azure PowerShell には、5.6.0 以降のバージョンが必要です。 インストール手順については、以下を参照してください。
 
 - [Azure PowerShell をインストールするには](/powershell/azure/install-az-ps)
 - [Windows での Azure CLI のインストール](/cli/azure/install-azure-cli-windows)

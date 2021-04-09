@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9abed17f5a3d23f811c7cec0d4fd31e4433f651d
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 0d9769a2cfdbd5f552e97a6cd665263cbd488325
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177023"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104592967"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -79,7 +79,7 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 **サービス カテゴリ:** B2C - コンシューマー ID 管理  
 **製品の機能:** B2B/B2C
 
-次世代の B2C ユーザー フローでは、[KMSI (サインインしたままにする)](https://docs.microsoft.com/azure/active-directory-b2c/session-behavior?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) 機能がサポートされるようになりました。これにより、Web やネイティブ アプリケーションを使用しているユーザーのセッション期間を、永続的な Cookie を使用することで延長できます。  この機能は、ユーザーがブラウザーを終了して再び開いた後もセッションをアクティブなままにし、ユーザーがサインアウトしたときに取り消します。
+次世代の B2C ユーザー フローでは、[KMSI (サインインしたままにする)](../../active-directory-b2c/session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) 機能がサポートされるようになりました。これにより、Web やネイティブ アプリケーションを使用しているユーザーのセッション期間を、永続的な Cookie を使用することで延長できます。  この機能は、ユーザーがブラウザーを終了して再び開いた後もセッションをアクティブなままにし、ユーザーがサインアウトしたときに取り消します。
 
 ---
 
@@ -109,7 +109,7 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 **サービス カテゴリ:** アプリ プロビジョニング  
 **製品の機能:** ID ライフサイクル管理
  
-同期 API を呼び出すため、application.readwrite.ownedby をアプリケーションのアクセス許可として使用できるようになりました。 これは、Azure AD からサードパーティ アプリケーション (AWS、Data Bricks など) にプロビジョニングする場合のみサポートされます。 HR プロビジョニング (Workday / Successfactors) や Cloud Sync (AD から Azure AD) については現在サポートされていません。 [詳細については、こちらを参照してください](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)。
+同期 API を呼び出すため、application.readwrite.ownedby をアプリケーションのアクセス許可として使用できるようになりました。 これは、Azure AD からサードパーティ アプリケーション (AWS、Data Bricks など) にプロビジョニングする場合のみサポートされます。 HR プロビジョニング (Workday / Successfactors) や Cloud Sync (AD から Azure AD) については現在サポートされていません。 [詳細については、こちらを参照してください](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)。
  
 ---
 
@@ -199,7 +199,7 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
 - [Iris Intranet](../saas-apps/iris-intranet-provisioning-tutorial.md)
 - [Preciate](../saas-apps/preciate-provisioning-tutorial.md)
 
-詳細については、[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングの自動化](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)に関する記事を参照してください。
+詳細については、[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングの自動化](../app-provisioning/user-provisioning.md)に関する記事を参照してください。
 
 ---
 
@@ -209,9 +209,9 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
 **サービス カテゴリ:** RBAC  
 **製品の機能:** アクセス制御
  
-10 件の Azure AD 組み込みロールの名前が変更され、[Microsoft 365 管理センター](https://docs.microsoft.com/microsoft-365/admin/microsoft-365-admin-center-preview)、[Azure AD ポータル](https://portal.azure.com/)、[Microsoft Graph](https://developer.microsoft.com/graph/) で統一されました。 新しいロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md#all-roles)」を参照してください。
+10 件の Azure AD 組み込みロールの名前が変更され、[Microsoft 365 管理センター](/microsoft-365/admin/microsoft-365-admin-center-preview)、[Azure AD ポータル](https://portal.azure.com/)、[Microsoft Graph](https://developer.microsoft.com/graph/) で統一されました。 新しいロールの詳細については、「[Azure Active Directory での管理者ロールのアクセス許可](../roles/permissions-reference.md#all-roles)」を参照してください。
 
-![新しいロール名の表](media/whats-new/roles-table-rbac.png)
+![MS Graph API と Azure portal のロール名、および API、Azure portal、Mac 全体で提案された最終的な名前を示す表。](media/whats-new/roles-table-rbac.png)
 
 ---
 
@@ -270,7 +270,7 @@ CTL での更新とセッション トークンの有効期間の構成は廃止
  
 ---
 
-### <a name="public-preview---customize-and-configure-android-shared-devices-for-firstline-workers-at-scale"></a>パブリック プレビュー - 現場担当者用の Android 共有デバイスを大規模にカスタマイズして構成する
+### <a name="public-preview---customize-and-configure-android-shared-devices-for-frontline-workers-at-scale"></a>パブリック プレビュー - 現場担当者用の Android 共有デバイスを大規模にカスタマイズして構成する
 
 **種類:** 新機能  
 **サービス カテゴリ:** デバイスの登録と管理  
@@ -968,7 +968,7 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
  
 一部の Azure Active Directory (AD) の組み込みロールには、Microsoft 365 管理センター、Azure AD ポータル、Microsoft Graph に表示される名前とは異なる名前が付いています。 この不整合によって、自動化されたプロセスで問題が発生する可能性があります。 この更新によって 10 個のロールの名前を変更し、一貫性を確保します。 次の表に新しいロール名を示します。
 
-![新しいロール名の表](media/whats-new/azure-role.png)
+![MS Graph API と Azure portal のロール名、および M365 管理センター、Azure portal、API で提案された新しいロール名を示す表。](media/whats-new/azure-role.png)
 
 ---
 

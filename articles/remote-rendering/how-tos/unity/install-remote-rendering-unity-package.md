@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 9454bef52798650fc431f8df994e1a964662b453
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: bfb383a7079e98db1db1f9b5077558c187bcea96
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101720828"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047730"
 ---
 # <a name="install-the-remote-rendering-package-for-unity"></a>Unity 用の Remote Rendering パッケージをインストールする
 
@@ -22,11 +22,11 @@ Unity のパッケージの命名規則に従い、パッケージは **com.micr
 
 ## <a name="install-remote-rendering-package-using-the-mixed-reality-feature-tool"></a>Mixed Reality 機能ツールを使用して Remote Rendering パッケージをインストールする
 
-[Mixed Reality 機能ツール](https://aka.ms/MRFeatureToolDocs) ([ダウンロード](https://aka.ms/mrfeaturetool)) は、Mixed Reality 機能パッケージを Unity プロジェクトに統合するために使用するツールです。 このパッケージは [ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering)の一部ではなく、Unity の内部パッケージ レジストリからは使用できません。
+[Mixed Reality 機能ツール](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool) ([ダウンロード](https://aka.ms/mrfeaturetool)) は、Mixed Reality 機能パッケージを Unity プロジェクトに統合するために使用するツールです。 このパッケージは [ARR サンプル リポジトリ](https://github.com/Azure/azure-remote-rendering)の一部ではなく、Unity の内部パッケージ レジストリからは使用できません。
 
 このパッケージをプロジェクトに追加するには、次を行う必要があります。
 1. [Mixed Reality 機能ツールをダウンロードします](https://aka.ms/mrfeaturetool)
-1. このツールの使用方法に関する[詳細な手順](https://aka.ms/MRFeatureToolDocs)に従います。
+1. このツールの使用方法に関する[詳細な手順](/windows/mixed-reality/develop/unity/welcome-to-mr-feature-tool)に従います。
 1. **[Discover Features]\(機能の検出\)** ページで **Microsoft Azure Remote Rendering** パッケージのボックスをオンにして、プロジェクトに追加するパッケージのバージョンを選択します。
 
 ![Mixed_Reality_feature_tool_package](media/mixed-reality-feature-tool-package.png)
