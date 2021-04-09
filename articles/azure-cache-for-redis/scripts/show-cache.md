@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 08/30/2017
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8901847a1c214b257243c4da0a74897061409bee
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96184248"
 ---
 # <a name="get-details-of-an-azure-cache-for-redis"></a>Azure Cache for Redis の詳細を取得する
@@ -30,7 +30,7 @@ ms.locfileid: "96184248"
 
 このスクリプトでは、次のコマンドを使用して Azure Cache for Redis インスタンスの詳細を取得します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| コマンド | Notes |
+| コマンド | メモ |
 |---|---|
 | [az redis の表示](/cli/azure/redis) | Azure Cache for Redis インスタンスの詳細を取得します。 |
 
