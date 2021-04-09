@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 497b171cad956dee23139bcfb0ec76fad82bfb33
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 490880e4a37711a92b44a0ffe01315edfa6ddb26
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488970"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104580128"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
 
@@ -106,6 +106,8 @@ Azure AD から `family_name` および `given_name` 要求を取得する場合
 1. **[保存]** を選択します。
 
 ## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>ユーザー フローに Azure AD ID プロバイダーを追加する 
+
+この時点では、Azure AD ID プロバイダーはセットアップされていますが、サインイン ページではまだ使用できません。 ユーザー フローに Azure AD ID プロバイダーを追加するには:
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Azure AD ID プロバイダーを追加するユーザー フローをクリックします。

@@ -4,20 +4,20 @@ description: キャッシュに MTU、カスタム NTP、DNS 構成などの追�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.author: v-erkel
-ms.openlocfilehash: 06feefe3a934d1ee02793fab442852e5ef40899a
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.openlocfilehash: 6e1e1283cb82dcb900da6473de65ef087a5cea82
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103563381"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773234"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Azure HPC Cache の追加設定を構成する
 
 Azure portal の **[ネットワーク]** ページには、いくつかの設定をカスタマイズするためのオプションがあります。 ほとんどのユーザーは、これらの設定を既定値から変更する必要はありません。
 
-この記事では、Azure Blob ストレージ ターゲットに対してスナップショット機能を使用する方法についても説明します。 スナップショット機能には、構成可能な設定はありません。
+この記事では、Azure Blob Storage ターゲットに対してスナップショット機能を使用する方法についても説明します。 スナップショット機能には、構成可能な設定はありません。
 
 設定を表示するには、Azure portal でキャッシュの **[ネットワーク]** ページを開きます。
 
@@ -75,13 +75,15 @@ Azure HPC Cache に使用する前に、DNS 構成でこれらの項目を正常
   > [!NOTE]
   > The cache will use only the first DNS server it successfully finds. -->
 
+DNS セットアップを運用環境で使用する前に、テスト キャッシュを使用して確認および調整することを検討してください。
+
 ### <a name="refresh-storage-target-dns"></a>ストレージ ターゲット DNS を更新する
 
 DNS サーバーが IP アドレスを更新すると、関連付けられている NFS ストレージ ターゲットが一時的に使用できなくなります。 [ストレージ ターゲットの編集](hpc-cache-edit-storage.md#update-ip-address-custom-dns-configurations-only)に関するページで、カスタム DNS システム IP アドレスを更新する方法を参照してください。
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>BLOB ストレージ ターゲットのスナップショットを表示する
 
-Azure HPC Cache では、Azure Blob ストレージ ターゲットのストレージ スナップショットが自動的に保存されます。 スナップショットは、バックエンド ストレージ コンテナーのコンテンツに対してクイック リファレンス ポイントを提供します。
+Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ スナップショットが自動的に保存されます。 スナップショットは、バックエンド ストレージ コンテナーのコンテンツに対してクイック リファレンス ポイントを提供します。
 
 スナップショットは、データ バックアップに代わるものではなく、キャッシュ データの状態に関する情報は含まれていません。
 
@@ -90,14 +92,14 @@ Azure HPC Cache では、Azure Blob ストレージ ターゲットのストレ�
 >
 > 効率を高めるために、Azure HPC Cache スナップショットでは、最初に変更をフラッシュせず、BLOB コンテナーに書き込まれたデータのみが記録されます。 このスナップショットはキャッシュ データの状態を表していないので、最近の変更が含まれていない可能性があります。
 
-この機能は、Azure Blob ストレージ ターゲットでのみ使用でき、その構成を変更することはできません。
+この機能は、Azure Blob Storage ターゲットでのみ使用でき、その構成を変更することはできません。
 
 スナップショットは 8 時間ごと (UTC 0:00、08:00、16:00) に取得されます。
 
-Azure HPC Cache では、毎日、毎週、毎月のスナップショットが、新しいスナップショットに置き換えられるまで保存されます。 次の制限があります。
+Azure HPC Cache では、毎日、毎週、毎月のスナップショットが、新しいスナップショットに置き換えられるまで保存されます。 スナップショットの保持期間の制限は次のとおりです。
 
 * 毎日のスナップショットは最大 20 個
 * 毎週のスナップショットは最大 8 個
 * 毎月のスナップショットは最大 3 個
 
-スナップショットには、BLOB ストレージ ターゲットの名前空間の `.snapshot` ディレクトリからアクセスします。
+マウントされた Blob ストレージ ターゲットのルートにある `.snapshot` ディレクトリからスナップショットにアクセスします。

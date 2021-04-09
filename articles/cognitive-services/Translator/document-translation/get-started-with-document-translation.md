@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: cb6b3af8d8fb6c2d3fe63964e59f8e3e32f0f0fd
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 21df853d9b1c7250e9a6eea37a68835a180f610d
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486660"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773047"
 ---
 # <a name="get-started-with-document-translation-preview"></a>ドキュメント翻訳を使ってみる (プレビュー)
 
@@ -20,7 +20,10 @@ ms.locfileid: "102486660"
 ## <a name="prerequisites"></a>前提条件
 
 > [!NOTE]
-> 通常、Azure portal で Cognitive Service リソースを作成するときは、マルチサービスのサブスクリプション キーまたは単一サービスのサブスクリプション キーを作成するという選択肢があります。 ただし、ドキュメント翻訳は現在 Translator (単一サービス) リソースでのみサポートされているため、Cognitive Services (マルチサービス) リソースには含まれて **いません**。
+>
+> 1. 通常、Azure portal で Cognitive Service リソースを作成するときは、マルチサービスのサブスクリプション キーまたは単一サービスのサブスクリプション キーを作成するという選択肢があります。 ただし、ドキュメント翻訳は現在 Translator (単一サービス) リソースでのみサポートされているため、Cognitive Services (マルチサービス) リソースには含まれて **いません**。
+> 2. ドキュメント翻訳は、現在、**S1 Standard サービス プラン** でご利用いただけます。 「[Cognitive Services の価格 - Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator/)」を _参照_ してください。
+>
 
 作業を開始するには、以下が必要です。
 
@@ -29,8 +32,6 @@ ms.locfileid: "102486660"
 * [**Translator**](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation) サービス リソース (Cognitive Services リソース **ではない**)。
 
 * [**Azure Blob Storage アカウント**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。 ストレージ アカウント内に BLOB データを格納して整理するためのコンテナーを作成します。
-
-* 記入済みの [**ドキュメント翻訳 (プレビュー) フォーム**](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR-riVR3Xj0tOnIRdZOALbM9UOEE4UVdFQVBRQVBWWDBRQUM3WjYxUEpUTC4u)。Azure サブスクリプションで新しいドキュメント翻訳機能を使用できるようにします。
 
 ## <a name="get-your-custom-domain-name-and-subscription-key"></a>カスタム ドメイン名とサブスクリプション キーを取得する
 
