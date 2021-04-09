@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.openlocfilehash: 37c4bd2af080a76e93bc9599f06e4d502985979f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102609653"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
@@ -80,7 +80,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |--|--|--|
     |-Name|luis-profile-eastus|Azure portal での Traffic Manager 名|
     |-ResourceGroupName|luis-traffic-manager|前のセクションで作成済み|
-    |-TrafficRoutingMethod|[パフォーマンス]|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」を参照してください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
+    |-TrafficRoutingMethod|パフォーマンス|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」を参照してください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
     |-RelativeDnsName|luis-dns-eastus|サービスのサブドメイン (luis-dns-eastus.trafficmanager.net)|
     |-Ttl|30|ポーリング間隔 (30 秒)|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|LUIS のプロトコルとポートは HTTPS/443 です。|
@@ -148,7 +148,7 @@ Traffic Manager が構成されたら、ログがポーリングでいっぱい�
     |--|--|--|
     |-Name|luis-profile-westus|Azure portal での Traffic Manager 名|
     |-ResourceGroupName|luis-traffic-manager|前のセクションで作成済み|
-    |-TrafficRoutingMethod|[パフォーマンス]|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」を参照してください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
+    |-TrafficRoutingMethod|パフォーマンス|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」を参照してください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
     |-RelativeDnsName|luis-dns-westus|サービスのサブドメイン (luis-dns-westus.trafficmanager.net)|
     |-Ttl|30|ポーリング間隔 (30 秒)|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|LUIS のプロトコルとポートは HTTPS/443 です。|
@@ -215,7 +215,7 @@ Traffic Manager 親プロファイルを作成し、2 つの Traffic Manager 子
     |--|--|--|
     |-Name|luis-profile-parent|Azure portal での Traffic Manager 名|
     |-ResourceGroupName|luis-traffic-manager|前のセクションで作成済み|
-    |-TrafficRoutingMethod|[パフォーマンス]|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」を参照してください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
+    |-TrafficRoutingMethod|パフォーマンス|詳細については、「[Traffic Manager のルーティング方法][routing-methods]」を参照してください。 パフォーマンスを使用する場合、Traffic Manager に対する URL 要求は、ユーザーのリージョンから送信される必要があります。 チャットボットや他のアプリケーションを経由する場合は、Traffic Manager の呼び出しでそのチャットボットがリージョンを模倣する必要があります。 |
     |-RelativeDnsName|luis-dns-parent|サービスのサブドメイン (luis-dns-parent.trafficmanager.net)|
     |-Ttl|30|ポーリング間隔 (30 秒)|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|LUIS のプロトコルとポートは HTTPS/443 です。|
