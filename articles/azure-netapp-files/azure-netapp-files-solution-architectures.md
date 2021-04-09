@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 3db4999f1cb6185f02a40395842c30b9d77072b3
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: abbae7f8cb047f2f2ad3d998966bc00b02a002d4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102489023"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864025"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -55,8 +55,9 @@ ms.locfileid: "102489023"
 ### <a name="sql-server"></a>SQL Server
 
 * [Azure NetApp Files を使用して SMB 経由で SQL Server をデプロイする](https://www.youtube.com/watch?v=x7udfcYbibs)
-<!-- * [Deploy SQL Server Always-On Failover Cluster over SMB with Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) --> 
-<!-- * [Deploy Always-On Availability Groups with Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) --> 
+* [Azure NetApp Files を使用して SMB 経由で SQL Server Always On フェールオーバー クラスターをデプロイする](https://www.youtube.com/watch?v=zuNJ5E07e8Q) 
+* [Azure NetApp Files を使用して Always On 可用性グループをデプロイする](https://www.youtube.com/watch?v=y3VQmzzeyvc) 
+* [SQL Server のデプロイに Azure NetApp Files を使用する利点](solutions-benefits-azure-netapp-files-sql-server.md)
 
 ## <a name="sap-on-azure-solutions"></a>SAP on Azure ソリューション
 

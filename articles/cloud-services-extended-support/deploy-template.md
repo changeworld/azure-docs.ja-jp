@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 71217e6379c02191311f5d93cb439d9da20080bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6d54216d8992b5bb233c79919284f96b24385651
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706964"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104865589"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM テンプレートを使用してクラウド サービス (延長サポート) をデプロイする
 
@@ -44,6 +44,9 @@ ms.locfileid: "101706964"
 
 ## <a name="deploy-a-cloud-service-extended-support"></a>クラウド サービス (延長サポート) をデプロイする
 
+> [!NOTE]
+> ARM テンプレートとパラメーター ファイルは、[Azure portal](https://portal.azure.com) を使用することで簡単かつ迅速に生成できます。 Powershell でクラウド サービスを作成するには、ポータルを通じて、[生成された ARM テンプレートをダウンロード](generate-template-portal.md)します。
+ 
 1. 仮想ネットワークを作成します。 仮想ネットワークの名前は、サービス構成 (.cscfg) ファイル内の参照と一致している必要があります。 既存の仮想ネットワークを使用する場合は、ARM テンプレートからこのセクションを削除してください。
 
     ```json
@@ -138,7 +141,7 @@ ms.locfileid: "101706964"
     ```
  
 
-4. ARM テンプレートの  `OsProfile` セクションに、キー コンテナーの参照を追加します。 キー コンテナーは、クラウド サービス (延長サポート) に関連付けられている証明書を格納するために使用します。 証明書をキー コンテナーに追加してから、サービス構成 (.cscfg) ファイル内でその証明書の拇印を参照します。 また、クラウド サービス (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで適切なアクセス許可を有効にする必要があります。 このキー コンテナーは、一意の名前を使用したうえで、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。 詳細については、[Cloud Services (延長サポート) で証明書を使用する方法](certificates-and-key-vault.md)に関するページを参照してください。
+4. ARM テンプレートの  `OsProfile` セクションに、キー コンテナーの参照を追加します。 キー コンテナーは、クラウド サービス (延長サポート) に関連付けられている証明書を格納するために使用します。 証明書をキー コンテナーに追加してから、サービス構成 (.cscfg) ファイル内でその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで "[Azure Virtual Machines (展開用)]" に対する "アクセス ポリシー" を (ポータル上で) 有効にする必要があります。 このキー コンテナーは、一意の名前を使用したうえで、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。 詳細については、[Cloud Services (延長サポート) で証明書を使用する方法](certificates-and-key-vault.md)に関するページを参照してください。
      
     ```json
     "osProfile": { 
@@ -188,7 +191,9 @@ ms.locfileid: "101706964"
     ```
 
 6. (省略可能) クラウド サービスに拡張機能を追加する拡張機能プロファイルを作成します。 この例では、リモート デスクトップ拡張機能と Microsoft Azure Diagnostics 拡張機能を追加します。
-    
+   > [!Note] 
+   > リモート デスクトップのパスワードは、長さが 8 から 123 文字であり、パスワードの複雑さに関する次の要件のうち 3 つ以上を満たしている必要があります。1) 大文字が含まれている 2) 小文字が含まれている 3) 数字が含まれている 4) 特殊文字が含まれている 5) 制御文字は使用できない
+
     ```json
         "extensionProfile": {
           "extensions": [

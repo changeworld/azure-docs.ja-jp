@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 1473305d7da57d1216ef05c0b88a0f69d586784b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 21433e1a0441ef458dd5f8ea4b968211ef82cd46
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728112"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865606"
 ---
 # <a name="prerequisites-for-deploying-azure-cloud-services-extended-support"></a>Azure Cloud Services をデプロイするための前提条件 (延長サポート)
 
@@ -78,8 +78,16 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2021-12-17T23:59:59.0000000+05:30" /> 
 <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" /> 
 ```
+サービス構成 (.cscfg) ファイルの各ロールの古い診断設定を削除します。
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+```
 
 ## <a name="required-service-definition-file-csdef-updates"></a>必要なサービス定義ファイル (.csdef) の更新
+
+> [!NOTE]
+> サービス定義ファイル (.csdef) を変更するには、パッケージ ファイル (.cspkg) を再度生成する必要があります。 .csdef ファイルに次の変更を加え、クラウド サービスの最新の設定を取得した後で、.cspkg をビルドして再パッケージ化してください
 
 ### <a name="1-virtual-machine-sizes"></a>1) 仮想マシンのサイズ
 次のサイズは Azure Resource Manager では非推奨です。 ただし、これらを引き続き使用する場合は、関連する Azure Resource Manager の名前付け規則に従って `vmsize` 名を更新してください。  
@@ -117,10 +125,15 @@ Cloud Service と同じリソース グループに属する仮想ネットワ�
 <Import moduleName="RemoteForwarder" /> 
 </Imports> 
 ```
+古い診断プラグインを使用したデプロイでは、ロールごとにサービス定義 (.csdef) ファイルから削除した設定が必要です。
+
+```xml
+<Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
+```
 
 ## <a name="key-vault-creation"></a>Key Vault の作成 
 
-Key Vault は、Cloud Services (延長サポート) に関連付けられている証明書を格納するために使用されます。 証明書を Key Vault に追加してから、サービス構成ファイルでその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースで Key Vault からシークレットとして格納されている証明書を取得できるようにするために、適切なアクセス許可に対して Key Vault を有効にする必要があります。 Key Vault は、[Azure portal](../key-vault/general/quick-create-portal.md) および [PowerShell](../key-vault/general/quick-create-powershell.md) を使用して作成できます。 Key Vault は、Cloud Service と同じリージョンおよびサブスクリプションに作成する必要があります。 詳細については、「[Azure Cloud Services (延長サポート) で証明書を使用する](certificates-and-key-vault.md)」を参照してください。
+Key Vault は、Cloud Services (延長サポート) に関連付けられている証明書を格納するために使用されます。 証明書を Key Vault に追加してから、サービス構成ファイルでその証明書の拇印を参照します。 また、Cloud Services (延長サポート) リソースがキー コンテナーからシークレットとして格納されている証明書を取得できるようにするために、キー コンテナーで "Azure Virtual Machines (展開用)" に対する "アクセス ポリシー" を (ポータル上で) 有効にする必要もあります。 Key Vault を [Azure portal](../key-vault/general/quick-create-portal.md) で、または[PowerShell](../key-vault/general/quick-create-powershell.md) を使用して作成できます。 Key Vault は、クラウド サービスと同じリージョンおよびサブスクリプションに作成する必要があります。 詳細については、「[Azure Cloud Services (延長サポート) で証明書を使用する](certificates-and-key-vault.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
