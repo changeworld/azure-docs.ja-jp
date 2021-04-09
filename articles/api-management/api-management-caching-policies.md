@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/08/2021
 ms.author: apimpm
 ms.openlocfilehash: 9888627bed0fbf90abc75c81564dacc0d1aac18e
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103233468"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
@@ -113,7 +113,7 @@ ms.locfileid: "103233468"
 | downstream-caching-type        | この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   none - ダウンストリーム キャッシュは許可されません。<br />-   private - ダウンストリーム プライベート キャッシュが許可されます。<br />-   public - プライベートおよび共有ダウンストリーム キャッシュが許可されます。                                                                                                          | いいえ       | なし              |
 | must-revalidate                | ダウンストリーム キャッシュが有効になっているとき、この属性によって、ゲートウェイ応答での `must-revalidate` キャッシュ制御ディレクティブのオンとオフを切り替えます。                                                                                                                                                                                                                      | いいえ       | true              |
 | vary-by-developer              | 要求に含まれている[サブスクリプション キー](./api-management-subscriptions.md)を所有している開発者アカウントごとに応答をキャッシュする場合は、`true` に設定します。                                                                                                                                                                                                                                                                                                  | はい      |         False          |
-| vary-by-developer-groups       | `true` に設定すると、[ユーザー グループ](./api-management-howto-create-groups.md)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | Yes      |       False            |
+| vary-by-developer-groups       | `true` に設定すると、[ユーザー グループ](./api-management-howto-create-groups.md)ごとに応答をキャッシュします。                                                                                                                                                                                                                                                                                                             | はい      |       False            |
 
 ### <a name="usage"></a>使用法
 このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。
