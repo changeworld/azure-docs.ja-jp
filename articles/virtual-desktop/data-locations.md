@@ -8,10 +8,10 @@ ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 12ec71a86a5df5954c14097e6a0ec5c8a5138fc5
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652430"
 ---
 # <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Windows Virtual Desktop のデータとメタデータの場所

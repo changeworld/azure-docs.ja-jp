@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/14/2020
 ms.author: danlep
 ms.openlocfilehash: 8f2749a18a5ac6aed0822553d59beaacc9060228
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98915949"
 ---
 # <a name="use-an-azure-managed-identity-in-acr-tasks"></a>ACR タスクで Azure マネージド ID を使用する 
@@ -42,13 +42,13 @@ ACR タスクでは、一方または両方の種類の ID を有効にできま
 
 次の大まかな手順に従って、ACR タスクでマネージド ID を使用します。
 
-### <a name="1-optional-create-a-user-assigned-identity"></a>1.(省略可能) ユーザー割り当て ID を作成する
+### <a name="1-optional-create-a-user-assigned-identity"></a>1. (省略可能) ユーザー割り当て ID を作成する
 
 ユーザー割り当て ID の使用を予定している場合は、既存の ID を使用するか、Azure CLI またはその他の Azure ツールを使用して ID を作成します。 たとえば、[az identity create][az-identity-create] コマンドを使用します。 
 
 システム割り当て ID のみ使用する場合は、この手順はスキップしてください。 システム割り当て ID は ACR タスクを作成するときに作成します。
 
-### <a name="2-enable-identity-on-an-acr-task"></a>2.ACR タスクで ID を有効にする
+### <a name="2-enable-identity-on-an-acr-task"></a>2. ACR タスクで ID を有効にする
 
 ACR タスクを作成するときに、ユーザー割り当て ID、システム割り当て ID、またはこれらの両方を必要に応じて有効にします。 たとえば、Azure CLI で [az acr task create][az-acr-task-create] コマンドを実行するときに `--assign-identity` パラメーターを渡します。
 
@@ -82,7 +82,7 @@ az acr task create \
 "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3.他の Azure リソースにアクセスするためのアクセス許可を ID に付与する
+### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. 他の Azure リソースにアクセスするためのアクセス許可を ID に付与する
 
 タスクの要件に応じて、他の Azure リソースにアクセスするためのアクセス許可を ID に付与します。 たとえば、次のようになります。
 

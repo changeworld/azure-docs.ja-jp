@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
-ms.date: 03/18/2020
-ms.openlocfilehash: f03fa84c02c4b3894efe069289b0ecbb9e90dfdb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: a1f15330a912c8a8a93fe1f74e88ef8d117441c2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104654630"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047900"
 ---
 # <a name="analyze-data-with-dedicated-sql-pools"></a>専用の SQL プールを使用してデータを分析する
 
@@ -112,9 +112,6 @@ ms.locfileid: "104654630"
     このクエリは、合計乗車距離と平均乗車距離が乗客数とどのように関係しているかを示します。
 1. SQL スクリプトの結果ウィンドウで、 **[ビュー]** を **[グラフ]** に変更して、結果を折れ線グラフとして視覚的に表示します。
     
-    > [!NOTE]
-    > ワークスペース対応の専用 SQL プール (以前の SQL DW) は、データ ハブ内のツール ヒントを介して識別できます。
-
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]

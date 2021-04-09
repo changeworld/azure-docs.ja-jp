@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ee92e145acd981bb8c84b43986b90306b994c262
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95563661"
 ---
 #### <a name="to-configure-and-register-the-device"></a>デバイスを構成して登録するには
@@ -109,7 +109,7 @@ ms.locfileid: "95563661"
 14. Azure Portal に戻り、次の手順を実行します。
     
     1. StorSimple デバイス マネージャー サービスに移動します。
-    2. **[デバイス]** をクリックします。
+    2. [**デバイス**] をクリックします。
     3. 表形式のデバイス一覧で、状態を参照して、デバイスが正常にサービスに接続されていることを確認します。 デバイスは **セットアップの準備が完了している** 状態になります。
        
         ![StorSimple デバイス ページ](./media/storsimple-8000-configure-and-register-device-u2/step3pssetup2.png)

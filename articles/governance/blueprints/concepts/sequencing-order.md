@@ -4,10 +4,10 @@ description: ブループリントの割り当て中にブループリント ア
 ms.date: 01/27/2021
 ms.topic: conceptual
 ms.openlocfilehash: ada7e7771e44e6f43c8546e8307fd5d2b218c009
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98918230"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
