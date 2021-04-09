@@ -33,7 +33,7 @@ Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.b
 > 
 > 
 
-## <a name="configuring-your-app-service-environment"></aApp Service Environment の構成
+## <a name="configuring-your-app-service-environment"></a>App Service Environment の構成
 App Service Environment の構成については、このテーマに関する[ドキュメント](app-service-web-how-to-create-an-app-service-environment.md)を参照してください。 App Service Environment を作成した後、その環境の中に Web Apps、API Apps、[Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) を作成できます。これらはすべて、次のセクションで構成する WAF の背後で保護されます。
 
 ## <a name="configuring-your-barracuda-waf-cloud-service"></a>Barracuda WAF クラウド サービスを構成する
