@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 49abd2cc62ff7a2eab3d95265f3db8f5c894ebb6
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 7e7a99daa169c994a0b9656786926f0715fa17a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488943"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104580064"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Facebook アカウントでのサインアップおよびサインインを設定する
 
@@ -73,6 +73,8 @@ Azure Active Directory B2C (Azure AD B2C) でユーザーが Facebook アカウ�
 1. **[保存]** を選択します。
 
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>ユーザー フローに Facebook ID プロバイダーを追加する 
+
+この時点では、Facebook ID プロバイダーは設定されていますが、サインイン ページではまだ使用できません。 Facebook ID プロバイダーをユーザー フローに追加するには、次の手順を実行します。
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Facebook ID プロバイダーを追加するユーザー フローをクリックします。

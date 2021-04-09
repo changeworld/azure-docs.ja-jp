@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: duau
 ms.openlocfilehash: 30a8208babab2991c9d9e86cc419ac50e1530d7b
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101098042"
 ---
 # <a name="azure-front-door-standardpremium-preview-health-probe-monitoring"></a>Azure Front Door Standard/Premium (プレビュー) 正常性プローブの監視
@@ -75,4 +75,4 @@ Azure Front Door では、すべてのアルゴリズムで次の同じ 3 段階
 
 ## <a name="next-steps"></a>次のステップ
 
-[Front Door Standard/Premium を作成する](create-front-door-portal.md)方法について学習します。
+[Front Door Standard または Premium を作成する](create-front-door-portal.md)方法について学習します。
