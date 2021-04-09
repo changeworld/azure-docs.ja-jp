@@ -41,7 +41,7 @@ App Service プランを使用し、VM インスタンスを追加して、手�
 
 ## <a name="app-service-environments"></a>App Service Environment
 
-App Service Environment (ASE) で実行すると、関数を完全に分離し、App Service プランより多い数のインスタンスを利用できます。 開始するには、「[App Service 環境の概要](../app-service/environment/intro.md)」を参照してください。
+App Service Environment (ASE) で実行すると、関数を完全に分離し、App Service プランより多い数のインスタンスを利用できます。 開始するには、「[App Service Environment の概要](../app-service/environment/intro.md)」を参照してください。
 
 関数アプリを仮想ネットワークで実行するだけであれば、[Premium プラン](functions-premium-plan.md)を使用してそれを行うことができます。 詳細については、[Azure Functions のプライベート サイト アクセスの設定](functions-create-private-site-access.md)に関するページを参照してください。 
 

@@ -1,6 +1,6 @@
 ---
 title: 送信トラフィックをロックダウンする
-description: Azure Firewall と統合して、App Service 環境内からの送信トラフィックをセキュリティで保護する方法について説明します。
+description: Azure Firewall と統合して、App Service Environment 内からの送信トラフィックをセキュリティで保護する方法について説明します。
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/19/2021
 ms.locfileid: "100594128"
 ---
-# <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
+# <a name="locking-down-an-app-service-environment"></a>App Service Environment をロックする
 
 App Service Environment (ASE) が適切に動作するには、アクセスする必要がある外部の依存関係が複数あります。 ASE は、お客様の Azure Virtual Network (VNet) 内にあります。 お客様は、ASE の依存トラフィックを許可する必要があります。これは、自社の VNet からのすべての送信をロックしたいお客様にとって問題です。
 

@@ -20,7 +20,7 @@ ms.locfileid: "100582534"
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
 > [!TIP]
-> App Service 環境がある場合は、 「[App Service 環境で App Service プランを作成する](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)」をご覧ください。
+>App Service Environment がある場合は、 「[App Service Environment で App Service プランを作成する](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)」をご覧ください。
 
 空の App Service プランを作成したり、またはアプリ作成の一部としてプランを作成したりすることができます。
 
@@ -47,7 +47,7 @@ ms.locfileid: "100582534"
 別の App Service プランへのアプリの移動は、移動元プランと移動先プランが "_同じリソース グループおよび同じ地理的リージョン_" に存在している場合に限り可能です。
 
 > [!NOTE]
-> Azure では、新しい App Service プランはそれぞれ、内部的に Web スペースと呼ばれるデプロイ ユニットにデプロイされます。 各リージョンには多数の Web スペースが存在できますが、アプリは同じ Web スペース内に作成されているプラン間でのみ移動できます。 App Service 環境は分離された Web スペースであるため、アプリは同じ App Service 環境内のプラン間で移動できますが、異なる App Service 環境内のプラン間では移動できません。
+> Azure では、新しい App Service プランはそれぞれ、内部的に Web スペースと呼ばれるデプロイ ユニットにデプロイされます。 各リージョンには多数の Web スペースが存在できますが、アプリは同じ Web スペース内に作成されているプラン間でのみ移動できます。 App Service Environment は分離された Web スペースであるため、アプリは同じ App Service Environment 内のプラン間で移動できますが、異なる App Service Environment 内のプラン間では移動できません。
 >
 > プランを作成するときに Web スペースを指定することはできませんが、あるプランが既存のプランと確実に同じ Web スペース内に作成されるようにすることは可能です。 簡単に言えば、同じリソース グループとリージョンの組み合わせで作成されるプランはすべて同じ Web スペースにデプロイされます。 たとえば、リソース グループ A とリージョン B 内にプランを作成した場合は、その後でリソース グループ A とリージョン B 内に作成するすべてのプランが同じ Web スペースにデプロイされます。 プランは作成された後に Web スペースを移動できないため、あるプランを別のリソース グループに移動することによって、別のプランと "同じ Web スペース" に移動することはできないことに注意してください。
 > 

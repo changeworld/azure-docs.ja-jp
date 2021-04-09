@@ -48,7 +48,7 @@ ID のアプリケーションによる制御は、アプリケーションが *
 
 プログラム上では、フル フレームワーク .NET API の [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) プロパティにフラグを設定します。 Azure Resource Manager API では、値は [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) プロパティで設定されます。
 
-重複検出時間の履歴は、既定では、キューとトピックで 10 秒に設定され、最小値は 20 秒、最大値は 7 分です。 この設定は、Azure ポータルの [キューおよびトピックのプロパティ] ウィンドウで変更することができます。
+重複検出時間の履歴は、既定では、キューとトピックで 10 分に設定され、最小値は 20 秒、最大値は 7 日です。 この設定は、Azure ポータルの [キューおよびトピックのプロパティ] ウィンドウで変更することができます。
 
 ![Service Bus 機能のスクリーンショット。[プロパティ] 設定が強調表示され、[重複データ検出の履歴] オプションが赤の枠線で囲まれています。][2]
 

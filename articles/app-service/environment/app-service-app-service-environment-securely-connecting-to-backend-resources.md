@@ -30,7 +30,7 @@ App Service Environment から仮想ネットワーク内のエンドポイン�
 ## <a name="outbound-connectivity-and-dns-requirements"></a>発信接続と DNS の要件
 App Service Environment が正常に機能するためには、さまざまなエンドポイントへの発信アクセスが必要となります。 [ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
 
-App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。  App Service Environment の作成後に DNS の構成が変更された場合、開発者は App Service Environment に、新しい DNS 構成の選択を強制できます。 ポータルの App Service Environment の管理ブレードの上部にある **[再起動]** アイコンを使用して、ローリングする環境の再起動をトリガーします。これにより、環境で新しい DNS 構成が選択されます。
+App Service Environment では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。  App Service Environment の作成後に DNS の構成が変更された場合、開発者は App Service Environment に、新しい DNS 構成の選択を強制できます。 ポータルの App Service Environment の管理ブレードの上部にある **[再起動]** アイコンを使用して、ローリングする環境の再起動をトリガーします。これにより、環境で新しい DNS 構成が選択されます。
 
 また、App Service Environment を作成する前に、VNet 上のカスタム DNS サーバーを設定しておくことをお勧めします。  App Service Environment の作成中に仮想ネットワークの DNS 構成が変更されると、App Service Environment の作成プロセスは失敗します。 VPN ゲートウェイのもう一方の端に、到達不能または使用できないカスタム DNS サーバーがある場合、App Service Environment の作成プロセスも失敗します。
 
@@ -81,9 +81,9 @@ Get-AzureNetworkSecurityGroup -Name "testNSGExample" | Set-AzureNetworkSecurityG
 ![既定のネットワーク セキュリティ グループ][DefaultNetworkSecurityRules]
 
 ## <a name="getting-started"></a>作業の開始
-App Service 環境の使用を開始するには、「 [App Service 環境の概要][IntroToAppServiceEnvironment]
+App Service Environment の使用を開始するには、「[App Service Environment の概要][IntroToAppServiceEnvironment]
 
-App Service 環境への着信トラフィックを制御する方法の詳細については、[App Service 環境への着信トラフィックの制御][ControlInboundASE]に関するページを参照してください。
+App Service Environment への着信トラフィックを制御する方法の詳細については、[App Service Environment への着信トラフィックの制御][ControlInboundASE]に関するページを参照してください。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

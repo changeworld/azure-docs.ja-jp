@@ -18,7 +18,7 @@ QnA Maker リソースへのパブリック アクセスを制限するには、
 
 ## <a name="restrict-access-to-app-service-qna-runtime"></a>App Service (QnA Runtime) へのアクセスを制限する
 
-App Service 許可リストに IP を追加してアクセスを制限したり、QnA Maker App Service をホストするように App Service 環境を構成したりできます。
+App Service 許可リストに IP を追加してアクセスを制限したり、QnA Maker App Service をホストするように App Service Environment を構成したりできます。
 
 #### <a name="add-ips-to-app-service-allow-list"></a>App Service 許可リストに IP を追加する
 
