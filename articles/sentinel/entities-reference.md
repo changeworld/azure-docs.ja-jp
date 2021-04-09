@@ -16,10 +16,10 @@ ms.topic: reference
 ms.date: 02/10/2021
 ms.author: yelevin
 ms.openlocfilehash: 17a4df3037f9922d92fca924de0d246458cfa08e
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102456185"
 ---
 # <a name="azure-sentinel-entity-types-reference"></a>Azure Sentinel エンティティ型リファレンス
@@ -68,7 +68,7 @@ ms.locfileid: "102456185"
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "account" |
+| Type | String | "account" |
 | 名前 | String | アカウントの名前。 このフィールドには、ドメインが追加されていない名前のみを設定する必要があります。 |
 | *FullName* | *N/A* | "*スキーマの一部ではありません。エンティティ マッピングの古いバージョンとの下位互換性のために含まれます。* "
 | NTDomain | String | アラート形式 domain\username で表される NETBIOS ドメイン名。 例: Finance, NT AUTHORITY |
@@ -104,7 +104,7 @@ ms.locfileid: "102456185"
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "host" |
+| Type | String | "host" |
 | DnsDomain | String | このホストが属している DNS ドメイン。 既知の場合は、ドメインの完全な DNS サフィックスが含まれている必要があります。 |
 | NTDomain | String | このホストが属している NT ドメイン。 |
 | HostName | String | ドメイン サフィックスを除いたホスト名。 |
@@ -137,7 +137,7 @@ ms.locfileid: "102456185"
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "ip" |
+| Type | String | "ip" |
 | Address | String | 文字列としての IP アドレス (例: 127.0.0.1、IPv4 または IPv6 のいずれか)。 |
 | 場所 | GeoLocation | IP エンティティに関連付けられている地理的な場所のコンテキスト。 |
 |
@@ -149,7 +149,7 @@ IP エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "malware" |
+| Type | String | "malware" |
 | 名前 | String | ベンダーによるマルウェアの名前 (例: `Win32/Toga!rfn`)。 |
 | カテゴリ | String | ベンダーによるマルウェアのカテゴリ (例: Trojan)。 |
 | ファイル | リスト\<Entity> | マルウェアが検出された、リンクされたファイル エンティティのリスト。 ファイル エンティティをインラインまたは参照として含めることができます。<br>構造の詳細については、ファイル エンティティを参照してください。 |
@@ -164,7 +164,7 @@ IP エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "file" |
+| Type | String | "file" |
 | ディレクトリ | String | ファイルへの完全なパスです。 |
 | 名前 | String | パスを除いたファイル名 (一部のアラートにはパスが含まれない場合があります)。 |
 | Host | Entity | ファイルが格納されたホスト。 |
@@ -180,7 +180,7 @@ IP エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "process" |
+| Type | String | "process" |
 | ProcessId | String | プロセス ID。 |
 | CommandLine | String | プロセスを作成するために使用されるコマンド ライン。 |
 | ElevationToken | Enum? | プロセスに関連付けられた昇格トークン。<br>指定できる値<li>TokenElevationTypeDefault<li>TokenElevationTypeFull<li>TokenElevationTypeLimited |
@@ -210,7 +210,7 @@ IP エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "cloud-application" |
+| Type | String | "cloud-application" |
 | AppId | int | アプリケーションの技術的 ID。 これは、[クラウド アプリケーション識別子](#cloud-application-identifiers)のリストで定義されている値のいずれかである必要があります。 AppId フィールドの値は省略可能です。 |
 | 名前 | String | 関連するクラウド アプリケーションの名前。 アプリケーション名の値は省略可能です。 |
 | InstanceName | String | クラウド アプリケーションのユーザー定義のインスタンス名。 多くの場合、顧客が持っている同じ種類の複数のアプリケーションを区別するために使用されます。 |
@@ -228,7 +228,7 @@ IP エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "dns" |
+| Type | String | "dns" |
 | DomainName | String | アラートに関連付けられている DNS レコードの名前。 |
 | IpAddress | List&lt;Entity (IP)&gt; | 解決された IP アドレスに対応するエンティティ。 |
 | DnsServerIp | Entity (IP) | 要求を解決する DNS サーバーを表すエンティティ。 |
@@ -245,7 +245,7 @@ DNS エンティティの弱い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "azure-resource" |
+| Type | String | "azure-resource" |
 | ResourceId | String | リソースの Azure リソース ID。 |
 | SubscriptionId | String | リソースのサブスクリプション ID。 |
 | TryGetResourceGroup | Bool | リソース グループの値 (存在する場合)。 |
@@ -262,7 +262,7 @@ Azure リソース エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "filehash" |
+| Type | String | "filehash" |
 | アルゴリズム | 列挙型 | ハッシュ アルゴリズムの種類。 指定できる値<li>Unknown<li>MD5<li>SHA1<li>SHA256<li>SHA256AC |
 | [値] | String | ハッシュ値。 |
 |
@@ -276,7 +276,7 @@ Azure リソース エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "registry-key" |
+| Type | String | "registry-key" |
 | Hive | Enum? | 次のいずれかの値です。<li>HKEY_LOCAL_MACHINE<li>HKEY_CLASSES_ROOT<li>HKEY_CURRENT_CONFIG<li>HKEY_USERS<li>HKEY_CURRENT_USER_LOCAL_SETTINGS<li>HKEY_PERFORMANCE_DATA<li>HKEY_PERFORMANCE_NLSTEXT<li>HKEY_PERFORMANCE_TEXT<li>HKEY_A<li>HKEY_CURRENT_USER |
 | キー | String | レジストリ キーのパス |
 |
@@ -290,7 +290,7 @@ Azure リソース エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "registry-value" |
+| Type | String | "registry-value" |
 | キー | Entity (RegistryKey) | レジストリ キーのエンティティ。 |
 | 名前 | String | レジストリ値の名前。 |
 | [値] | String | 値データの文字列形式の表現。 |
@@ -309,7 +309,7 @@ Azure リソース エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "security-group" |
+| Type | String | "security-group" |
 | DistinguishedName | String | グループの識別名。 |
 | SID | String | SID 属性は、グループのセキュリティ識別子 (SID) を指定する単一値の属性です。 |
 | ObjectGuid | Guid? | ObjectGUID 属性は、Active Directory によって割り当てられる、オブジェクトの一意識別子である単一値の属性です。 |
@@ -324,7 +324,7 @@ Azure リソース エンティティの強い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "url" |
+| Type | String | "url" |
 | url | Uri | エンティティが指している完全な URL。 |
 |
 
@@ -340,7 +340,7 @@ URL エンティティの弱い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "iotdevice" |
+| Type | String | "iotdevice" |
 | IoTHub | Entity (AzureResource) | デバイスが属している IoT Hub を表す AzureResource エンティティ。 |
 | deviceId | String | IoT Hub のコンテキストでのデバイスの ID。 |
 | DeviceName | String | デバイスのフレンドリ名。 |
@@ -367,7 +367,7 @@ IoT デバイス エンティティの弱い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "mailbox" |
+| Type | String | "mailbox" |
 | MailboxPrimaryAddress | String | メールボックスのプライマリ アドレス。 |
 | DisplayName | String | メールボックスの表示名。 |
 | Upn | String | メールボックスの UPN。 |
@@ -387,7 +387,7 @@ IoT デバイス エンティティの弱い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "mail-cluster" |
+| Type | String | "mail-cluster" |
 | NetworkMessageIds | IList&lt;String&gt; | メール クラスターの一部であるメール メッセージ ID。 |
 | CountByDeliveryStatus | IDictionary&lt;String,Int&gt; | DeliveryStatus 文字列表現別のメール メッセージの数。 |
 | CountByThreatType | IDictionary&lt;String,Int&gt; | ThreatType 文字列表現別のメール メッセージの数。 |
@@ -414,7 +414,7 @@ IoT デバイス エンティティの弱い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "mail-message" |
+| Type | String | "mail-message" |
 | ファイル | IList&lt;File&gt; | このメール メッセージの添付ファイルのファイル エンティティ。 |
 | Recipient | String | このメール メッセージの受信者。 複数の受信者がいる場合、メール メッセージがコピーされ、コピーごとに 1 人の受信者になります。 |
 | Urls | IList&lt;String&gt; | このメール メッセージに含まれている URL。 |
@@ -448,7 +448,7 @@ IoT デバイス エンティティの弱い識別子:
 
 | フィールド | Type | 説明 |
 | ----- | ---- | ----------- |
-| 種類 | String | "SubmissionMail" |
+| Type | String | "SubmissionMail" |
 | SubmissionId | Guid? | 申請 ID。 |
 | SubmissionDate | DateTime? | この申請が報告された日時。 |
 | 申請者 | String | 申請者のメール アドレス。 |
