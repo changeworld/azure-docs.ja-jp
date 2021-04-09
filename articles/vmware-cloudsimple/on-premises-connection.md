@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97899237"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>ExpressRoute を使用してオンプレミスから CloudSimple に接続する
@@ -23,7 +23,7 @@ ms.locfileid: "97899237"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-オンプレミスから Global Reach 接続を確立するには、 **/29** ネットワーク アドレス ブロックが必要です。  /29 アドレス空間は、ExpressRoute 回線間のトランジット ネットワークに使用されます。  トランジット ネットワークは、Azure 仮想ネットワーク、オンプレミス ネットワーク、または CloudSimple プライベート クラウド ネットワークのいずれとも重複しないようにする必要があります。
+オンプレミスから Global Reach 接続を確立するには、**/29** ネットワーク アドレス ブロックが必要です。  /29 アドレス空間は、ExpressRoute 回線間のトランジット ネットワークに使用されます。  トランジット ネットワークは、Azure 仮想ネットワーク、オンプレミス ネットワーク、または CloudSimple プライベート クラウド ネットワークのいずれとも重複しないようにする必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -49,12 +49,12 @@ ExpressRoute 接続を確立するには、ExpressRoute 回線上で承認を作
 
 1. Azure portal にサインインします。
 
-2. 上部の検索バーで **ExpressRoute 回線** を検索して、 **[サービス]** の **[ExpressRoute 回線]** をクリックします。
+2. 上部の検索バーで **ExpressRoute 回線** を検索して、**[サービス]** の **[ExpressRoute 回線]** をクリックします。
     [![ExpressRoute 回線](media/azure-expressroute-transit-search.png)](media/azure-expressroute-transit-search.png)
 
 3. CloudSimple ネットワークに接続する ExpressRoute 回線を選択します。
 
-4. [ExpressRoute] ページで **[承認]** をクリックし、承認の名前を入力して、 **[保存]** をクリックします。
+4. [ExpressRoute] ページで **[承認]** をクリックし、承認の名前を入力して、**[保存]** をクリックします。
     [![ExpressRoute 回線の承認](media/azure-expressroute-transit-authorizations.png)](media/azure-expressroute-transit-authorizations.png)
 
 5. [コピー] アイコンをクリックして、リソース ID と承認キーをコピーします。 ID とキーをテキスト ファイルに貼り付けます。
@@ -64,11 +64,11 @@ ExpressRoute 接続を確立するには、ExpressRoute 回線上で承認を作
     > **[リソース ID]** は、UI からコピーする必要があります。また、サポートするように指定するときは、```/subscriptions/<subscription-ID>/resourceGroups/<resource-group-name>/providers/Microsoft.Network/expressRouteCircuits/<express-route-circuit-name>``` という形式にする必要があります。
 
 6. 作成する接続の <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">サポート</a> に関するチケットを申請します。
-    * 問題の種類:**テクニカル**
-    * サブスクリプション:**CloudSimple サービスがデプロイされるサブスクリプション**
-    * サービス:**VMware Solution by CloudSimple**
-    * 問題の種類:**サービス リクエスト**
-    * 問題のサブタイプ:**オンプレミスへの ExpressRoute 接続を作成する**
+    * 問題の種類: **技術**
+    * サブスクリプション: **CloudSimple サービスがデプロイされるサブスクリプション**
+    * サービス: **VMware Solution by CloudSimple**
+    * 問題の種類: **サービス要求**
+    * 問題のサブタイプ: **オンプレミスへの ExpressRoute 接続を作成する**
     * コピーして [詳細] ウィンドウに保存したリソース ID と承認キーを指定します。
     * トランジット ネットワーク用の /29 ネットワーク アドレス空間を指定します。
     * ExpressRoute 経由で既定のルートを送信していますか?

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96015932"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Azure portal を使用して VM のプライベート IP アドレスを構成する
@@ -51,13 +51,13 @@ Resource Manager デプロイ モードで VM を作成するときには、Azur
     ![VM の作成、Azure portal](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
 3. **[基本]** で、次の表で説明するように項目の値を指定します。 次に、 **[次へ&nbsp;:&nbsp;ディスク]** を選択し、 **[次へ&nbsp;:&nbsp;ネットワーク]** を選択します。
 
-    | Item | 値 |
+    | アイテム | 値 |
     | --- | --- |
     | **サブスクリプション** | お使いの現在のサブスクリプション |
     | **リソース グループ** | **TestRG** (ドロップダウン リストから選択) |
     | **仮想マシン名** | *DNS01* |
     | **リージョン** | **(米国) 米国東部** |
-    | **Image** | **Windows Server 2019 Datacenter** |
+    | **画像** | **Windows Server 2019 Datacenter** |
     | **[サイズ]** | **[VM サイズ]** は **[B1ls]** 、 **[オファー]** は **[Standard]** |
     | **ユーザー名** | 管理者アカウントのユーザー名 |
     | **パスワード** | 管理者アカウントのユーザー名のパスワード |
@@ -66,7 +66,7 @@ Resource Manager デプロイ モードで VM を作成するときには、Azur
     ![[基本] タブ、仮想マシンの作成、Azure portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
 4. **[ネットワーク]** で、次の表で説明するように項目の値を指定し、 **[次へ]** を選択します。
 
-    | Item | 値 |
+    | アイテム | 値 |
     | --- | --- |
     | **Virtual Network** | **TestVNet** |
     | **サブネット** | **FrontEnd** |

@@ -9,10 +9,10 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 5358bbbca716f5152a943c90cb7a5f735ae12047
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "92479614"
 ---
 1. [Azure portal](https://portal.azure.com) で、 **[Search resources, services, and docs]\(ソース、サービス、ドキュメントの検索\) (G+/)** に、「**ローカル ネットワーク ゲートウェイ**」と入力します。 検索結果の **[Marketplace]** の下にある **[ローカル ネットワーク ゲートウェイ]** を見つけて、それを選択します。 これで、 **[仮想ネットワーク ゲートウェイの作成]** ページが開きます。

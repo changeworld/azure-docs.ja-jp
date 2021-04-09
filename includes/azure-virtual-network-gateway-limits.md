@@ -9,10 +9,10 @@ ms.date: 08/25/2020
 ms.author: alzam
 ms.custom: include file
 ms.openlocfilehash: 9fe9ef5549ced3b73d18d553fa0b62ec019684fe
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95557310"
 ---
 | リソース                                | 制限        |

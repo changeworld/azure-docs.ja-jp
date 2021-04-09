@@ -9,17 +9,17 @@ ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 3b9b540e53c46eae0dfbe9dd9c3ed91cd7506a9d
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95553787"
 ---
 ## <a name="extended-iot-scenarios"></a>IoT の拡張シナリオ
 
 その他の Azure サービスおよびツールを使用します。 IoT Hub にデバイスを接続すると、他の Azure ツールおよびサービスを使用する追加のシナリオを検証できます。
 
-| シナリオ                                                   | Azure サービスまたは Azure ツール              |
+| 通信の種類                                                   | Azure サービスまたは Azure ツール              |
 |----------------------------------------------------------- |------------------------------------|
 | [IoT Hub メッセージの管理](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT Hub 拡張機能|
 | [IoT デバイスの管理](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLI と IoT 拡張機能    |
