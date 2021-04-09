@@ -3,12 +3,12 @@ title: PowerShell とテンプレートを使用してリソースをデプロ�
 description: Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。 リソースは、Resource Manager テンプレートまたは Bicep ファイルに定義されています。
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: 784f17566ce4fb19a7ec5e3fd4a504d7c25f90fe
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: e1d2197064b94d428855bbb36aadbb5eb88d4032
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521630"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950860"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
@@ -115,7 +115,7 @@ New-AzResourceGroupDeployment `
 ## <a name="deploy-remote-template"></a>リモート テンプレートのデプロイ
 
 > [!NOTE]
-> 現在、Azure PowerShell ではリモート Bicep ファイルのデプロイはサポートされていません。 リモート Bicep ファイルをデプロイするには、まず CLI Bicep を使用して Bicep ファイルを JSON テンプレートにコンパイルします。
+> 現在、Azure PowerShell ではリモート Bicep ファイルのデプロイはサポートされていません。 [Bicep CLI](./bicep-install.md#development-environment) を使用して、Bicep ファイルを JSON テンプレートにコンパイルし、その JSON ファイルをリモートの場所に読み込みます。
 
 ARM テンプレートをローカル コンピューターに格納する代わりに、外部の場所に格納することもできます。 ソース管理リポジトリ (GitHub など) にテンプレートを格納できます。 または、組織内の共有アクセス用の Azure ストレージ アカウントに格納することができます。
 

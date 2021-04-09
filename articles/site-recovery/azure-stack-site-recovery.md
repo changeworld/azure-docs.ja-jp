@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用して Azure Stack VM を Azure にレプリ
 description: Azure Site Recovery サービスを使用して Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 36e11bfe5354644f9ef6603ffe20cb2e86074323
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 300b239de74c7d21e03eb0c3b059663b5074964c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96016908"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728387"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
@@ -314,7 +314,7 @@ Azure へのテスト フェールオーバーを実行して、すべて想定�
 
 ### <a name="fail-back-to-azure-stack"></a>Azure Stack にフェールバックする
 
-プライマリ サイトが再稼働したら、Azure から Azure Stack にフェールバックできます。 これを行うには、[こちら](/azure-stack/operator/site-recovery-failback?view=azs-2005)に記載されている手順に従います。
+プライマリ サイトが再稼働したら、Azure から Azure Stack にフェールバックできます。 これを行うには、[こちら](/azure-stack/operator/site-recovery-failback)に記載されている手順に従います。
 
 ## <a name="conclusion"></a>まとめ
 

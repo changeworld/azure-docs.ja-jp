@@ -4,15 +4,15 @@ description: パートナー センターのマーケットプレース Web 分�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 03/23/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: a8a53a54d30df9a2f7079d705f754e554328c3f7
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: f6ed2029ec333120e3942570c951f5da6e846c7a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102553937"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104953274"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
 
@@ -115,7 +115,9 @@ Marketplace の分析情報ダッシュボードにはクリックストリー�
 | お問い合わせ | お問い合わせ | 特定の日付について、プランのページの "お問い合わせ" CTA のクリック回数。 | ContactMe |
 | 体験版 | 体験版 | 特定の日付について、プランのページの "体験版" CTA のクリック回数。 | TestDrive |
 | 無料試用版 | 無料試用版 | 特定の日付について、プランのページの "無料試用版" CTA のクリック回数。 | FreeTrial |
-|||||
+| キャンペーン | キャンペーンの名前 | キャンペーン名に照らして Web テレメトリ (ページ アクセスと CTA クリック) を把握する機能。 | キャンペーン |
+| 該当なし | サイト | ページ アクセスまたは CTA クリックの発生元となったネットショップの名前。 次の値を指定できます。<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | サイト |
+|
 
 ## <a name="next-steps"></a>次のステップ
 

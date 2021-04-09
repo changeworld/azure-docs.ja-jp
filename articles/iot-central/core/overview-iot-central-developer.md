@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: f69bbecfc2acc24cd63b87212197342b28723a9f
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043101"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585861"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central デバイスの開発ガイド
 
@@ -105,7 +105,7 @@ DTDL モデルは、"_コンポーネントなし_" または "_複数コンポ�
 - コンポーネントなしモデル: 単純なモデルでは、埋め込みコンポーネントまたはカスケードされたコンポーネントは使用されません。 すべてのテレメトリ、プロパティ、コマンドは、1 つの "_既定のコンポーネント_" として定義されます。 例については、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) モデルを参照してください。
 - 複数コンポーネント モデル: 2 つ以上のコンポーネントを含むより複雑なモデル。 これらのコンポーネントには、1 つの既定のコンポーネントと、入れ子になった 1 つ以上の追加コンポーネントが含まれます。 例については、[Temperature Controller](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) モデルを参照してください。
 
-詳細については、「[モデル内の IoT プラグ アンド プレイ コンポーネント](../../iot-pnp/concepts-components.md)」を参照してください。
+詳細については、[IoT プラグ アンド プレイ モデリング ガイド](../../iot-pnp/concepts-modeling-guide.md)を参照してください。
 
 ### <a name="conventions"></a>規約
 

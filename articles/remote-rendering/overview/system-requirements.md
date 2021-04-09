@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
 ms.custom: references_regions
-ms.openlocfilehash: dd91622344263dc366a76c913ce0be95718550cd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 789233ce1ede751276f965143716694c6feca3ca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101705162"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105032795"
 ---
 # <a name="system-requirements"></a>システム要件
 
@@ -111,12 +111,10 @@ Remote Rendering 仮想マシンでは、次の IP 範囲からの共有 IP ア�
 
 ## <a name="unity"></a>Unity
 
-Unity を使用する開発では、以下のものをインストールします。
-
-* Unity 2019.3.1 [(ダウンロード)](https://unity3d.com/get-unity/download)
-* 次のモジュールを Unity にインストールします。
-  * **UWP** - ユニバーサル Windows プラットフォーム Build Support
-  * **IL2CPP** - Windows Build Support (IL2CPP)
+Unity を使用した開発では、現在のバージョンの Unity (2019.3 または 2019.4 LTS) [(ダウンロード)](https://unity3d.com/get-unity/download) をインストールします。 インストールの管理には Unity Hub を使用することをお勧めします。
+Unity のインストールには、次のモジュールが含まれていることを確認してください。
+* **UWP** - ユニバーサル Windows プラットフォーム Build Support
+* **IL2CPP** - Windows Build Support (IL2CPP)
 
 ## <a name="next-steps"></a>次のステップ
 
