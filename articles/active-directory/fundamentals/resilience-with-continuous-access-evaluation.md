@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a12cc3299fbb5916afba48d2608024f28999634
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98724629"
 ---
 # <a name="build-resilience-by-using-continuous-access-evaluation"></a>継続的アクセス評価を使用して回復性を強化する
@@ -36,7 +36,7 @@ ms.locfileid: "98724629"
 
 これにより、アプリケーションは Azure AD から通知されたイベントに基づいて、期限が切れていないトークンを拒否できます (次の図を参照)。CAE の概念図
 
-![conceptualiagram of CAE](./media/resilience-with-cae/admin-resilience-continuous-access-evaluation.png)
+![CAE の概念図](./media/resilience-with-cae/admin-resilience-continuous-access-evaluation.png)
 
 ## <a name="how-does-cae-help"></a>CAE がもたらすメリット
 
