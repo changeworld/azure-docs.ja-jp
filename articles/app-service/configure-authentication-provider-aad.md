@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 2805500e4a4c98ad7b8360393e7d69ad9fb704a3
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 0f028f264d02d7300bb888e2053708ef6b06ea51
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102563338"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721564"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD ログインを使用するように App Service または Azure Functions アプリを構成する
 
@@ -97,8 +97,8 @@ Azure AD がアプリの認証プロバイダーとして機能するために�
     |-|-|
     |クライアント ID| アプリの登録の **アプリケーション (クライアント) ID** を使用します。 |
     |発行者の URL| `<authentication-endpoint>/<tenant-id>/v2.0` を使用し、 *\<authentication-endpoint>* を [クラウド環境の認証エンドポイント](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (たとえば、グローバル Azure の場合、"https://login.microsoftonline.com") に置き換え、さらに、 *\<tenant-id>* を、アプリ登録が作成された **ディレクトリ (テナント) ID** に置き換えます。 この値は、ユーザーを正しい Azure AD テナントにリダイレクトするため、および適切なメタデータをダウンロードして、適切なトークン署名キーやトークン発行者のクレーム値などを特定するために使用されます。 Azure AD v1 を使用するアプリケーションと Azure Functions アプリの場合は、URL の `/v2.0` を省略します。|
-    |クライアント シークレット (省略可能)| アプリの登録で生成したクライアント シークレットを使用します。|
-    |許可されるトークン対象ユーザー| これがクラウドまたはサーバー アプリで、Web アプリからの認証トークンを許可する場合は、Web アプリの **アプリケーション ID URI** をここに追加します。 構成された **[クライアント ID]** は、*常に*、許可された対象ユーザーであると暗黙的に見なされます。 |
+    |クライアント シークレット (省略可能)| アプリの登録で生成したクライアント シークレットを使用します。 クライアント シークレットを使用すると、ハイブリッド フローが使用され、App Service によってアクセス トークンと更新トークンが返されます。 クライアント シークレットが設定されていない場合は、暗黙的なフローが使用され、ID トークンのみが返されます。 これらのトークンはプロバイダーによって送信され、EasyAuth トークン ストアに格納されます。|
+    |許可されるトークン対象ユーザー| これがクラウドまたはサーバー アプリで、Web アプリからの認証トークンを許可する場合は、Web アプリの **アプリケーション ID URI** をここに追加します。 構成された **[クライアント ID]** は、*常に*、許可された対象ユーザーであると暗黙的に見なされます。|
 
 2. **[OK]** を選択し、 **[保存]** を選択します。
 

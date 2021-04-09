@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
 ms.openlocfilehash: e7a8fd53e78e1aeab9db5af0432d0c3f1d786823
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100526954"
 ---
 # <a name="migrate-from-vault-access-policy-to-an-azure-role-based-access-control-permission-model"></a>コンテナー アクセス ポリシーから Azure ロールベースのアクセス制御のアクセス許可モデルへの移行

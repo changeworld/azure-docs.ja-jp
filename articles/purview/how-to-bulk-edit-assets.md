@@ -1,5 +1,5 @@
 ---
-title: 選択された資産の一覧に複数の用語集の用語をタグ付けする方法
+title: 資産を一括編集して、分類、用語集の用語にタグを付け、連絡先を変更する方法
 description: Azure Purview で資産を一括編集する方法について説明します。
 author: nayenama
 ms.author: nayenama
@@ -7,12 +7,12 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 493d3ceb596bb29da0e60ab08518375412417a0e
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049486"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952458"
 ---
 # <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>資産を一括編集して用語集の用語にタグを付ける方法
 

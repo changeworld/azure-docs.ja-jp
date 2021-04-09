@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a2a69b5013ab8e1bc4637f21ce484a132d37834
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 0a4ba5a9211cdb89f6ac5a92a315378e58f5d08a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102455714"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709516"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -172,7 +172,7 @@ PowerShell コマンドレットを使用して、Azure AD 組織の Microsoft 3
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-次のコマンドレットは、ポリシーをさらに細かく構成するために使用できます。 詳細については、[PowerShell のドキュメント](/powershell/module/azuread/?view=azureadps-2.0-preview#groups)を参照してください。
+次のコマンドレットは、ポリシーをさらに細かく構成するために使用できます。 詳細については、[PowerShell のドキュメント](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#groups)を参照してください。
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

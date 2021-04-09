@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d423a8aaf3ace78ccb4b2eb1d8424c6a1dfb61bc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6a804b6d6840b25993ad6e249305f531a818be32
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705978"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559453"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure Data Share 用の Azure セキュリティ ベースライン
 
@@ -34,7 +34,7 @@ Azure Data Share を完全に Azure セキュリティ ベンチマークにマ�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
 - [Azure Monitor とサードパーティの SIEM 統合を開始する方法](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
 
@@ -48,11 +48,11 @@ Azure Data Share を完全に Azure セキュリティ ベンチマークにマ�
 
 Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog の診断ログ) を有効にします。 これらのログを使用すると、同期の開始時刻、終了時刻、状態、その他の詳細など、重要な情報を取り込むことができます。 これらのログは、後でセキュリティ インシデントを調査し、フォレンジック演習を実行するために重要な場合があります。
 
-- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](/azure/azure-monitor/platform/diagnostic-settings) 
+- [Azure Monitor でプラットフォーム ログとメトリックを収集する方法](../azure-monitor/essentials/diagnostic-settings.md) 
 
-- [Azure でのログ記録とログのさまざまな種類について](/azure/azure-monitor/platform/platform-logs-overview)
+- [Azure でのログ記録とログのさまざまな種類について](../azure-monitor/essentials/platform-logs-overview.md)
 
-- [Azure アクティビティ ログ用に診断設定を構成する方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログ用に診断設定を構成する方法](../azure-monitor/essentials/activity-log.md)
 
 **責任**: Customer
 
@@ -62,9 +62,9 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**:Azure Data Share ログを格納するために使用されるすべてのストレージ アカウントまたは Log Analytics ワークスペースに、組織のコンプライアンス規則に従ってログの保有期間を確実に設定します。
 
-- [Log Analytics ワークスペースの保有期間を構成する方法](/azure/azure-monitor/platform/manage-cost-storage)
+- [Log Analytics ワークスペースの保有期間を構成する方法](../azure-monitor/logs/manage-cost-storage.md)
 
-- [ Azure ストレージ アカウントでのリソース ログの格納](/azure/azure-monitor/platform/resource-logs#send-to-azure-storage)
+- [ Azure ストレージ アカウントでのリソース ログの格納](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **責任**: Customer
 
@@ -78,9 +78,9 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md) 
 
-- [Log Analytics クエリの使用方法](/azure/azure-monitor/log-query/log-analytics-tutorial)
+- [Log Analytics クエリの使用方法](../azure-monitor/logs/log-analytics-tutorial.md)
 
-- [Azure Monitor でカスタム クエリを実行する方法](/azure/azure-monitor/log-query/get-started-queries)
+- [Azure Monitor でカスタム クエリを実行する方法](../azure-monitor/logs/get-started-queries.md)
 
 **責任**: Customer
 
@@ -94,7 +94,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 - [Azure Security Center でアラートを管理する方法](../security-center/security-center-managing-and-responding-alerts.md) 
 
-- [Log Analytics のログ データに関するアラートを送信する方法](/azure/azure-monitor/learn/tutorial-response)
+- [Log Analytics のログ データに関するアラートを送信する方法](../azure-monitor/alerts/tutorial-response.md)
 
 **責任**: Customer
 
@@ -144,7 +144,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 - [Azure AD インスタンスを作成して構成する方法](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [Azure Data Share で Azure 組み込みロールを操作する](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Azure Data Share で Azure 組み込みロールを操作する](../role-based-access-control/built-in-roles.md#general)
 
 **責任**: Customer
 
@@ -154,11 +154,11 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**: Azure AD には、古いアカウントの検出に役立つログが用意されています。 また、Azure AD の ID およびアクセス レビューを使用して、グループ メンバーシップ、エンタープライズ アプリケーションへのアクセス、およびロールの割り当てを効率的に管理します。 ユーザー アクセスを定期的にレビューし、適切なユーザーのみが継続的なアクセス権を持っていることを確認できます。
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/) 
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml) 
 
 - [Azure AD の ID およびアクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md) 
 
-- [Azure Data Share で Azure 組み込みロールを操作する](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#general)
+- [Azure Data Share で Azure 組み込みロールを操作する](../role-based-access-control/built-in-roles.md#general)
 
 **責任**: Customer
 
@@ -170,7 +170,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 このプロセスを効率化するには、Azure AD ユーザー アカウントの診断設定を作成し、監査ログとサインイン ログを Log Analytics ワークスペースに送信します。 Log Analytics ワークスペース内で必要なアラートを構成できます。
 
-- [Azure アクティビティ ログを Azure Monitor と統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor と統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **責任**: Customer
 
@@ -208,7 +208,7 @@ Azure Data Share の診断ログ (具体的には、MicrosoftDataShareSentShareS
 
 **ガイダンス**:Azure アクティビティ ログで Azure Monitor を使用して、重要な Azure リソースに変更が加えられたときの Azure Monitor アラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -291,7 +291,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**:Azure リソースが不要になった場合は削除します。Azure portal、PowerShell、または CLI を使用して、それを行うことができます。
 
-- [Azure リソース グループとリソースの削除](https://docs.microsoft.com/azure/azure-resource-manager/management/delete-resource-group?tabs=azure-powershell)
+- [Azure リソース グループとリソースの削除](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell)
 
 Azure Data Share によって、OS が公開されることもなければ、そのリソース上にサードパーティ製のソフトウェア アプリケーションをインストールすることが許可されることもありません。
 
@@ -305,7 +305,7 @@ Azure Data Share によって、OS が公開されることもなければ、そ
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Azure Policy を使用して特定のリソースの種類を拒否する方法](https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#general)
+- [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/built-in-policies.md#general)
 
 **責任**: Customer
 
@@ -343,7 +343,7 @@ Azure Data Share によって、OS が公開されることもなければ、そ
 
 - [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md) 
 
-- [エイリアスを使用する方法](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases)
+- [エイリアスを使用する方法](../governance/policy/concepts/definition-structure.md#aliases)
 
 **責任**: Customer
 
@@ -361,5 +361,5 @@ Azure Data Share によって、OS が公開されることもなければ、そ
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)」を参照してください。
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- 「[Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)」を参照してください。
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 02/12/2021
+ms.date: 03/08/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7879b233bf94442de2cad83de8adfe54b6b81e0e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3308c2263f80a0772a389900e08c81cfe8da32a2
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365516"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952628"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -83,6 +83,7 @@ B2B コラボレーション ユーザーは、制限付き管理者のロール
 ### <a name="do-you-support-password-reset-for-azure-ad-b2b-collaboration-users"></a>Azure AD B2B コラボレーション ユーザーのパスワード リセットはサポートされていますか。
 Azure AD テナントがユーザーのホーム ディレクトリである場合、管理者は Azure portal から[ユーザーのパスワードをリセットする](../fundamentals/active-directory-users-reset-password-azure-portal.md)ことができます。 ただし、別の Azure AD ディレクトリまたは外部の ID プロバイダーによって管理されているアカウントでサインインしているゲスト ユーザーのパスワードを、直接リセットすることはできません。 パスワードをリセットできるのは、ゲスト ユーザーまたはユーザーのホーム ディレクトリの管理者だけです。 ゲスト ユーザーに対するパスワード リセットの動作の例をいくつか次に示します。
  
+* "Guest" (UserType==Guest) とマークされている Azure AD テナントのゲスト ユーザーは、[https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 経由で SSPR に登録することができません。 このような種類のゲスト ユーザーは、[https://aka.ms/sspr](https://aka.ms/sspr) 経由でのみ SSPR を実行することができます。 
 * Microsoft アカウント (たとえば guestuser@live.com) でサインインしたゲスト ユーザーは、Microsoft アカウントのセルフサービス パスワード リセット (SSPR) を使用して、自分のパスワードをリセットすることができます。 「[Microsoft アカウントのパスワードをリセットする方法](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password)」をご覧ください。
 * Google アカウントまたはそれ以外の外部 ID プロバイダーでサインインしたゲスト ユーザーは、ID プロバイダーの SSPR 方法を使用して、自分のパスワードをリセットできます。 たとえば、Google アカウント guestuser@gmail.com のゲスト ユーザーは、「[パスワードを変更または再設定する](https://support.google.com/accounts/answer/41078)」の手順に従って自分のパスワードをリセットできます。
 * ID テナントが Just-In-Time (JIT) テナントまたは "バイラル" テナント (つまり、独立したアンマネージド Azure テナント) である場合は、ゲスト ユーザーだけが自分のパスワードをリセットできます。 場合によっては、組織が、従業員が仕事用メール アドレスを使用してサービスにサインアップするときに作成される[バイラル テナントの管理を引き継ぎます](../enterprise-users/domains-admin-takeover.md)。 組織がバイラル テナントを引き継いだ後は、その組織の管理者しか、ユーザーのパスワードをリセットしたり SSPR を有効にしたりできなくなります。 必要に応じて、招待側の組織としては、ディレクトリからゲスト ユーザー アカウントを削除し、招待を再送信することができます。
