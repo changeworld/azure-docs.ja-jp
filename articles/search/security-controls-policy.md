@@ -1,18 +1,18 @@
 ---
 title: Azure Cognitive Search 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Cognitive Search に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 03/10/2021
+ms.date: 03/17/2021
 ms.topic: sample
 author: HeidiSteen
 ms.author: heidist
 ms.service: search
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 83d448a4d6d784bcf7ed28911a7ddaba8c3989e9
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.openlocfilehash: b94ca010ef8b2ab4d8fb73acf1e686835453d22c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102635003"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604350"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure Cognitive Search 用の Azure Policy 規制コンプライアンス コントロール
 

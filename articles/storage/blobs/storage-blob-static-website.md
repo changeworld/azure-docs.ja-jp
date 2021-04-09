@@ -10,10 +10,10 @@ ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
 ms.openlocfilehash: bbb996362df1f99a8702de310bc11f6828cc303a
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103008452"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Azure Storage での静的 Web サイト ホスティング
@@ -46,7 +46,7 @@ Web サーバーでコンテンツのレンダリングが必要な場合は、[
 > * [Azure CLI](storage-blob-static-website-how-to.md?tabs=azure-cli)
 > * [Azure PowerShell モジュール](storage-blob-static-website-how-to.md?tabs=azure-powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
-> * [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
+> * [Azure 記憶域エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)
 > * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 > * [Visual Studio Code 拡張機能](/azure/developer/javascript/tutorial-vscode-static-website-node-01)
 

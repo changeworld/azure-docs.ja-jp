@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 5d029f4328f955d64c5ce479e553769f8a107e45
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 1a1a9158c06a12caaeb5702f2fdf7da3c801c143
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518570"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103573440"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -278,3 +278,5 @@ Azure Container Instances は、モデルのデプロイ時に動的に作成さ
 * [パート 2: ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
 * [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
 * [パート 5: スタジオの機能を有効にする](how-to-enable-studio-virtual-network.md)
+
+名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。

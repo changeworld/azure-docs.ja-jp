@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 405bcd4f3839b99879f76c23060ba24062b279de
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 3e293782e6f00852a51e0617a07eebd5d8c56261
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018748"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105644848"
 ---
 # <a name="quickstart-deploy-azure-iot-connector-for-fhir-preview-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure IoT Connector for FHIR (プレビュー) をデプロイする
 
@@ -50,7 +50,7 @@ Azure IoT Connector for FHIR&#174; (高速ヘルスケア相互運用性リソ�
 
 [![IoT コネクタを作成する](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg)](media/quickstart-iot-fhir-portal/portal-iot-connector-create.jpg#lightbox)
 
-|設定|値|説明 |
+|設定|[値]|説明 |
 |---|---|---|
 |コネクタ名|一意の名前|Azure IoT Connector for FHIR を識別する名前を入力します。この名前は、Azure API for FHIR リソース内で一意である必要があります。 名前に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 名前の先頭と末尾は文字または数字である必要があります。また、長さは 3 から 24 文字までにする必要があります。|
 |解決の種類|[Lookup]\(検索\) または [作成]|Azure API for FHIR 内に [Device](https://www.hl7.org/fhir/device.html) および [Patient](https://www.hl7.org/fhir/patient.html) FHIR リソースを作成する帯域外プロセスがある場合、 **[Lookup]\(検索\)** を選択します。 Azure IoT Connector for FHIR では、デバイス データを表す [Observation](https://www.hl7.org/fhir/observation.html) FHIR リソースを作成する場合に、これらのリソースへの参照を使用します。 Azure IoT Connector for FHIR により、デバイス データ内にあるそれぞれの識別子の値を使用して、Azure API for FHIR 内に最小限の Device および Patient リソースを作成する場合は、 **[Create]\(作成\)** を選択します。|
@@ -85,12 +85,12 @@ Azure IoT Connector for FHIR には、デバイス メッセージを FHIR ベ�
       "templateType": "IotJsonPathContent",
       "template": {
         "typeName": "heartrate",
-        "typeMatchExpression": "$..[?(@Body.HeartRate)]",
-        "patientIdExpression": "$.SystemProperties.iothub-connection-device-id",
+        "typeMatchExpression": "$..[?(@Body.telemetry.HeartRate)]",
+        "patientIdExpression": "$.Properties.iotcentral-device-id",
         "values": [
           {
             "required": "true",
-            "valueExpression": "$.Body.HeartRate",
+            "valueExpression": "$.Body.telemetry.HeartRate",
             "valueName": "hr"
           }
         ]
@@ -169,14 +169,20 @@ Azure では、IoT デバイスを接続し、管理するための幅広い IoT
 > 実際のデバイスの準備ができたらいつでも、同じ IoT Central アプリケーションを使用して、[ご利用のデバイスをオンボード](../../iot-central/core/howto-set-up-template.md)し、デバイス シミュレーターを交換することができます。 デバイス データの FHIR への送信も自動的に開始されます。 
 
 ## <a name="connect-your-iot-data-with-the-azure-iot-connector-for-fhir-preview"></a>IoT データを Azure IoT Connector for FHIR (プレビュー) に接続する
-> [!WARNING]
-> このガイドに含まれるデバイス マッピング テンプレートは、IoT Central 内でデータ エクスポート (レガシ) と共に使用するように設計されています。
 
-IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](../../iot-central/core/howto-export-data-legacy.md)必要があります。 [継続的データ エクスポート] ページで、次の設定を行います。
-- エクスポート先として *[Azure Event Hubs]* を選択します。
-- **[Event Hubs 名前空間]** フィールドでは、値 *[接続文字列を使用します]* を選択します。
-- **[接続文字列]** フィールドでは、前の手順で取得した Azure IoT Connector for FHIR の接続文字列を指定します。
-- **[エクスポートするデータ]** フィールドでは、 **[テレメトリ]** オプションを *[オン]* のままにしておきます。
+IoT Central アプリケーションをデプロイすると、すぐに使用できる 2 つのシミュレートされたデバイスでテレメトリの生成が開始されます。 このチュートリアルでは、Azure IoT Connector for FHIR を介して、テレメトリを *Smart Vitals Patch* シミュレーターから FHIR に取り込みます。 IoT データを Azure IoT Connector for FHIR にエクスポートするには、[IoT Central 内で継続的なデータ エクスポートを設定する](../../iot-central/core/howto-export-data.md)必要があります。 まず、宛先への接続を作成する必要があります。次に、データエクスポートジョブを作成して継続的に実行します。 
+
+新しい変換先の作成:
+- [ **変換** 先] タブに移動し、新しい変換先を作成します。
+- まず、宛先に一意の名前を付けます。
+- 移行先の種類として *Azure Event Hubs* を選択します。
+- **接続文字列** フィールドに対して、前の手順で取得した FHIR の接続文字列を Azure IoT コネクタに提供します。
+
+新しいデータエクスポートを作成します。
+- 変換先を作成したら、[ **エクスポート** ] タブに移動し、新しいデータエクスポートを作成します。 
+- まず、データエクスポートに一意の名前を付けます。
+- [**データ**] で、*エクスポートするデータの種類* として [*テレメトリ*] を選択します。
+- [ **宛先** ] で、前の名前で作成した宛先名を選択します。
 
 ## <a name="view-device-data-in-azure-api-for-fhir"></a>Azure API for FHIR でデバイス データを表示する
 

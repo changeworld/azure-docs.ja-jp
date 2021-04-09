@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/16/2021
 ms.author: alexeyo
 ms.openlocfilehash: d4369b66bacbe8cff4fc9712ffcd0cb5a370c439
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100636270"
 ---
 # <a name="swagger-documentation"></a>Swagger ドキュメント

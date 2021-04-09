@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/14/2020
 ms.author: spelluru
 ms.openlocfilehash: 177c0eff7d0e7df254df4cc6c77c0a0cf674147d
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103201556"
 ---
 # <a name="service-bus-messaging-samples"></a>Service Bus メッセージングのサンプル

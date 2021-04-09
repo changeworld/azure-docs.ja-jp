@@ -12,12 +12,12 @@ ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
 adobe-target: true
-ms.openlocfilehash: fa68db4bd166ebe1acd1ae85fca2d7e51236a4c4
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: ed397e9f8db721a6baa641fc958af0dda570ce57
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102522055"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103561942"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>機械学習モデルを Azure にデプロイする
 
@@ -145,6 +145,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
     詳細については、[AutoMLRun.register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) のドキュメントを参照してください。
 
+    登録済みモデルを `AutoMLRun` からデプロイするには、[Azure Machine Learning スタジオのワンクリック デプロイ ボタン](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)でそれを行うことをお勧めします。 
 ### <a name="register-a-model-from-a-local-file"></a>ローカル ファイルからモデルを登録する
 
 モデルのローカル パスを指定することで、モデルを登録できます。 フォルダーまたは 1 個のファイルのパスのいずれかを指定できます。 この方法を使用すると、Azure Machine Learning でトレーニングされてからダウンロードされたモデルを登録できます。 この方法を使用して、Azure Machine Learning の外部でトレーニングされたモデルを登録することもできます。
@@ -368,6 +369,7 @@ Azure Machine Learning コンピューティングを使用したバッチ推論
 * [Web サービスを使用するクライアント アプリケーションを作成する](how-to-consume-web-service.md)
 * [Web サービスを更新する](how-to-deploy-update-web-service.md)
 * [カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)
+* [Azure Machine Learning スタジオにおける自動化された ML 実行のためのワンクリック デプロイ](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)
 * [TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する](how-to-secure-web-service.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)

@@ -12,10 +12,10 @@ ms.reviewer: nibaccam
 ms.date: 02/22/2021
 ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
 ms.openlocfilehash: 68d07481e228b1d1b2f4571a783f925add261cff
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102520015"
 ---
 # <a name="connect-to-storage-with-identity-based-data-access-preview"></a>ID ベースのデータ アクセスを使用したストレージへの接続 (プレビュー)

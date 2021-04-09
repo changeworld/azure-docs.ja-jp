@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/27/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4889744347b72603a0f6318f981bc2db4906b835
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: f1ed4b9beda9848bba8fb12783f49dcf8016d3dd
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433541"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590621"
 ---
 # <a name="connect-function-apps-in-azure-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -63,7 +63,7 @@ SDK を使用するには、次のパッケージをプロジェクトに含め�
 * [System.Net.Http](https://www.nuget.org/packages/System.Net.Http/)
 * [Azure.Core](https://www.nuget.org/packages/Azure.Core/)
 
-次に、Visual Studio のソリューション エクスプローラーで、サンプル コードが含まれる _Function1.cs_ ファイルを開きます。その関数にこれらのパッケージの以下の `using` ステートメントを追加します。 
+次に、Visual Studio のソリューション エクスプローラーで、サンプル コードが含まれる _Function1.cs_ ファイルを開きます。その関数にこれらのパッケージの以下の `using` ステートメントを追加します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/adtIngestFunctionSample.cs" id="Function_dependencies":::
 
@@ -97,6 +97,20 @@ SDK を使用するには、次のパッケージをプロジェクトに含め�
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
+### <a name="verify-function-publish"></a>関数の発行を確認する
+
+1. [Azure portal](https://portal.azure.com/) でご自分の資格情報を使用してサインインします。
+2. ウィンドウの上部にある検索バーで、目的の **関数アプリの名前** を検索します。
+
+    :::image type="content" source="media/how-to-create-azure-function/search-function-app.png" alt-text="Azure portal で関数アプリをその名前で検索する。" lightbox="media/how-to-create-azure-function/search-function-app.png":::
+
+3. 表示された *[関数アプリ]* ページの左側のメニュー オプションで *[関数]* を選択します。 関数が正常に発行されると、リストに関数名が表示されます。
+発行された関数のリストに関数が表示されるようになるまでに、数分待つか、ページを数回更新する必要がある場合があります。
+
+    :::image type="content" source="media/how-to-create-azure-function/view-published-functions.png" alt-text="Azure portal で発行された関数の表示。" lightbox="media/how-to-create-azure-function/view-published-functions.png":::
+
+関数アプリから Azure Digital Twins にアクセスできるようにするには、Azure Digital Twins インスタンスにアクセスできるアクセス許可を備えたシステム マネージド ID を割り当てる必要があります。 次はその設定をします。
+
 ## <a name="set-up-security-access-for-the-function-app"></a>関数アプリのセキュリティ アクセスを設定する
 
 Azure CLI または Azure portal のいずれかを使用して、関数アプリに対するセキュリティ アクセスを設定できます。 お好みのオプションで、次の手順に従ってください。
@@ -104,12 +118,14 @@ Azure CLI または Azure portal のいずれかを使用して、関数アプ�
 # <a name="cli"></a>[CLI](#tab/cli)
 
 これらのコマンドは、[Azure Cloud Shell](https://shell.azure.com) または[ローカルにインストールされた Azure CLI](/cli/azure/install-azure-cli) で実行できます。
+関数アプリのシステム マネージド ID を使用して、それに Azure Digital Twins インスタンスの "_**Digital Twins データ所有者**_" ロールを付与できます。 これにより、インスタンスでデータ プレーン アクティビティを実行するアクセス許可が、関数アプリに与えられます。 次に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。
 
 ### <a name="assign-access-role"></a>アクセス ロールの割り当て
 
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
+
 前の例の関数スケルトンでは、Azure Digital Twins で認証できるようにするために、ベアラー トークンを渡す必要があります。 このベアラー トークンが確実に渡されるようにするには、Azure Digital Twins にアクセスするための[マネージド サービス ID (MSI)](../active-directory/managed-identities-azure-resources/overview.md) アクセス許可を関数アプリに設定する必要があります。 これは、関数アプリごとに 1 回だけ実行する必要があります。
 
-関数アプリのシステム マネージド ID を使用して、それに Azure Digital Twins インスタンスの "_**Digital Twins データ所有者**_" ロールを付与できます。 これにより、インスタンスでデータ プレーン アクティビティを実行するアクセス許可が、関数アプリに与えられます。 次に、環境変数を設定することで、関数から Azure Digital Twins インスタンスの URL にアクセスできるようにします。
 
 1. 次のコマンドを使用して、関数のシステム マネージド ID の詳細を確認します。 出力の _principalId_ フィールドを書き留めてください。
 
@@ -148,6 +164,8 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 [Azure portal](https://portal.azure.com/) で次の手順を実行します。
 
 ### <a name="assign-access-role"></a>アクセス ロールの割り当て
+
+[!INCLUDE [digital-twins-permissions-required.md](../../includes/digital-twins-permissions-required.md)]
 
 システム割り当てマネージド ID によって、コード内に資格情報を格納せずに、Azure リソースをクラウド サービス (Azure Key Vault など) に対して認証させることができます。 有効にすると、Azure ロールベースのアクセス制御を介して必要なすべてのアクセス許可を付与できます。 この種類のマネージド ID のライフサイクルは、このリソースのライフサイクルに関連付けられています。 また、各リソースは、システム割り当てマネージド ID を 1 つしか持つことができません。
 

@@ -12,23 +12,27 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: d142c523862d61bf56723726be50cd6f095c5ee9
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 977498abb17fe592cef344f407a662d3b79749b7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102520338"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102634788"
 ---
-# <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
+# <a name="start-monitor-and-track-runs"></a>実行の開始、監視および追跡 
 
 [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、[Machine Learning CLI](reference-azure-machine-learning-cli.md)、および [Azure Machine Learning Studio](https://ml.azure.com) には、自分のトレーニングおよび実験の実行を、監視、整理、管理するさまざまな方法があります。
 
 この記事では、次のタスクの例を示します。
 
 * 実行のパフォーマンスの監視。
+* 電子メール通知による実行状態の監視。
+* 実行のタグ付けおよび検索。
+* 実行の説明の追加。 
+* 検索の実行。 
 * 実行のキャンセルまたは失敗。
 * 子実行の作成。
-* 実行のタグ付けおよび検索。
+ 
 
 > [!TIP]
 > Azure Machine Learning service および関連する Azure サービスの監視の詳細については、[Azure Machine Learning を監視する方法](monitor-azure-machine-learning.md)に関する記事を参照してください。
@@ -50,7 +54,8 @@ ms.locfileid: "102520338"
     print(azureml.core.VERSION)
     ```
 
-* [Azure CLI](/cli/azure/) と [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
+* [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) と [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
+
 
 ## <a name="monitor-run-performance"></a>実行のパフォーマンスの監視
 
@@ -96,7 +101,7 @@ ms.locfileid: "102520338"
     
         このコマンドでは、サンプルの runconfig および conda 環境ファイルを含む `.azureml` サブディレクトリを作成します。 これには、Azure Machine Learning ワークスペースとの通信に使用される `config.json` ファイルも含まれています。
     
-        詳しくは、「[az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder#ext-azure-cli-ml-az-ml-folder-attach)」をご覧ください。
+        詳しくは、「[az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach)」をご覧ください。
     
     2. 実行を開始するには、次のコマンドを使用します。 このコマンドを使用する場合は、-c パラメーターに対して runconfig ファイルの名前 (ファイル システムが表示されている場合、\*.runconfig の前のテキスト) を指定します。
     
@@ -111,7 +116,7 @@ ms.locfileid: "102520338"
         >
         > runconfig ファイルのその他の例については、[https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) を参照してください。
     
-        詳しくは、「[az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-submit-script)」をご覧ください。
+        詳しくは、「[az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)」をご覧ください。
 
     # <a name="studio"></a>[スタジオ](#tab/azure-studio)
 
@@ -162,7 +167,7 @@ ms.locfileid: "102520338"
     
         このコマンドで、この実験の実行に関する情報を一覧表示する JSON ドキュメントが返されます。
     
-        詳しくは、「[az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment#ext-azure-cli-ml-az-ml-experiment-list)」をご覧ください。
+        詳しくは、「[az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list)」をご覧ください。
     
     * 特定の実行に関する情報を表示するには、次のコマンドを使用します。 `runid` は、実行の ID に置き換えます。
     
@@ -172,7 +177,7 @@ ms.locfileid: "102520338"
     
         このコマンドで、その実行に関する情報を一覧表示する JSON ドキュメントが返されます。
     
-        詳しくは、「[az ml run show](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-show)」をご覧ください。
+        詳しくは、「[az ml run show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show)」をご覧ください。
     
     
     # <a name="studio"></a>[スタジオ](#tab/azure-studio)
@@ -192,6 +197,29 @@ ms.locfileid: "102520338"
     1. 実行ログを表示するには、特定の実行を選択し、自分の実行の診断ログとエラー ログを **[Outputs + logs]** \(出力 + ログ\) タブから確認します。
     
     ---
+
+## <a name="monitor-the-run-status-by-email-notification"></a>電子メール通知による実行状態の監視
+
+1. [Azure portal](https://ms.portal.azure.com/)の左側のナビゲーション バーで、 **[監視]** タブを選択します。 
+
+1. **[診断設定]** を選択し、 **[+ 診断設定の追加]** を選択します。
+
+    ![電子メール通知の診断設定のスクリーンショット](./media/how-to-manage-runs/diagnostic-setting.png)
+
+1. [診断設定] の 
+    1. **[カテゴリの詳細]** で、 **[AmlRunStatusChangedEvent]** を選択します。 
+    1. **[宛先の詳細]** で、 **[Log Analytics ワークスペースに送信する]** を選択し、 **[サブスクリプション]** と **[Log Analytics ワークスペース]** を指定します。 
+
+    > [!NOTE]
+    > **Azure Log Analytics ワークスペース** は、**Azure Machine Learning service ワークスペース** とは異なる種類の Azure Resource です。 そのリストにオプションがない場合は、[Log Analytics ワークスペースを作成](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace)することができます。 
+    
+    ![電子メール通知を保存する場所](./media/how-to-manage-runs/log-location.png)
+
+1. **[ログ]** タブで、**新しい警告ルール** を追加します。 
+
+    ![新しいアラート ルール](./media/how-to-manage-runs/new-alert-rule.png)
+
+1. [Azure Monitor を使用してログ アラートを作成および管理する方法](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log)に関するページを参照してください。
 
 ## <a name="run-description"></a>実行の説明 
 
@@ -253,7 +281,7 @@ Azure Machine Learning では、実行の整理にプロパティとタグを使
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    詳しくは、「[az ml run update](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-update)」をご覧ください。
+    詳しくは、「[az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update)」をご覧ください。
     
     # <a name="studio"></a>[スタジオ](#tab/azure-studio)
     
@@ -287,17 +315,17 @@ Azure Machine Learning では、実行の整理にプロパティとタグを使
     az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
     ```
     
-    Azure CLI 結果のクエリ実行の詳細については、「[Azure CLI コマンドの出力のクエリ](/cli/azure/query-azure-cli)」を参照してください。
+    Azure CLI 結果のクエリ実行の詳細については、「[Azure CLI コマンドの出力のクエリ](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest)」を参照してください。
     
     # <a name="studio"></a>[スタジオ](#tab/azure-studio)
     
-    1. **[すべての実行]** 一覧に移動します。
+    特定の実行を検索するには、 **[すべての実行]** リストに移動します。 ここでは、次の 2 つの選択肢があります。
     
-    1. タグ、説明、実験名、送信者名などの実行のメタデータをフィルター処理するには、検索バーを使用します。 タグのフィルター処理には、タグのフィルターを使用することもできます。 
+    1. **[フィルターの追加]** ボタンを使用して、タグへのフィルター適用を選択し、実行に割り当てられたタグで実行をフィルター処理します。 <br><br>
+    OR
     
-    ---
-
-
+    1. 検索バーを使用して、実行状態、説明、実験名、送信者名などの実行メタデータを検索することにより、実行をすばやく見つけます。 
+    
 ## <a name="cancel-or-fail-runs"></a>実行のキャンセルまたは失敗
 
 間違いに気付いた場合、または実行の完了に時間がかかりすぎる場合は、実行をキャンセルできます。
@@ -331,7 +359,7 @@ CLI を使用して実行をキャンセルするには、次のコマンドを�
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-詳しくは、「[az ml run cancel](/cli/azure/ext/azure-cli-ml/ml/run#ext-azure-cli-ml-az-ml-run-cancel)」をご覧ください。
+詳しくは、「[az ml run cancel](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel)」をご覧ください。
 
 # <a name="studio"></a>[スタジオ](#tab/azure-studio)
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: a626ae1406a6ea4a83919f0fc3ee71ffaa5fbac2
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: dcb82e6cc50a2ff3291d5a900ec9367d69dcdde6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102427047"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103224913"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>クイックスタート: PKCE 対応の承認コード フローを使用して JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する 
 
@@ -110,12 +110,18 @@ ms.locfileid: "102427047"
 > 以下の説明に従って、`msalConfig` セクションの値を変更します。
 >
 > - `Enter_the_Application_Id_Here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
+>
+>    **[アプリケーション (クライアント) ID]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
 > - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「`https://login.microsoftonline.com/`」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」を参照してください。
 > - `Enter_the_Tenant_info_here` には、次のいずれかが設定されます。
 >   - お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **テナント ID** または **テナント名** に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
+>
+>    **[ディレクトリ (テナント) ID]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
 >   - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を `organizations` に置き換えます。
 >   - アプリケーションにおいて "*任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント*" をサポートする場合は、この値を `common` に置き換えます。 **このクイック スタートでは**、`common` を使用します。
 >   - "*個人用の Microsoft アカウントのみ*" にサポートを制限するには、この値を `consumers` に置き換えます。
+>
+>    **[サポートされているアカウントの種類]** 値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
 > - `Enter_the_Redirect_Uri_Here` は `http://localhost:3000/` です。
 >
 > メイン (グローバル) Azure クラウドを使用している場合、*authConfig.js* の `authority` の値は、次のようになります。
@@ -124,9 +130,7 @@ ms.locfileid: "102427047"
 > authority: "https://login.microsoftonline.com/common",
 > ```
 >
-> > [!TIP]
-> > **[アプリケーション (クライアント) ID]** 、 **[ディレクトリ (テナント) ID]** 、 **[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
->
+
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
 > アプリのプロパティの値を使用してプロジェクトを構成しました。

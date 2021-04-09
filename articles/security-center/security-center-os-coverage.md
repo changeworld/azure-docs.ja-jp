@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 03/31/2020
 ms.author: memildin
-ms.openlocfilehash: 65f383b37b6fb5c89fb987f179d7900eb667d76e
-ms.sourcegitcommit: 5bbc00673bd5b86b1ab2b7a31a4b4b066087e8ed
+ms.openlocfilehash: 88dc0760f320a99b0cbc99b7637dc34dd11dfecc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102438286"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103465448"
 ---
 # <a name="supported-platforms"></a>サポートされているプラットフォーム 
 
@@ -51,7 +51,7 @@ Windows および Linux で使用できる特定の Security Center 機能の詳
 
 クラウド サービスで実行する仮想マシン もサポートされます。 監視されるのは、運用スロットで実行するクラウド サービスの Web ロールと worker ロールだけです。 Cloud Services の詳細については、「[Azure Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)」をご覧ください。
 
-Azure Stack に存在する VM の保護もサポートされています。 Security Center と Azure Stack との統合の詳細については、[Azure Stack 仮想マシンの Security Center へのオンボード](quickstart-onboard-machines.md)に関するページを参照してください。 
+Azure Stack Hub に存在する VM の保護もサポートされています。 Security Center と Azure Stack Hub との統合の詳細については、[Azure Stack Hub 仮想マシンの Security Center へのオンボード](quickstart-onboard-machines.md?pivots=azure-portal#onboard-your-azure-stack-hub-vms)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 

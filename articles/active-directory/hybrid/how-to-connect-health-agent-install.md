@@ -18,10 +18,10 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a3aff7b99dad910a9691eef2004df856ca883789
-ms.sourcegitcommit: 94c3c1be6bc17403adbb2bab6bbaf4a717a66009
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103224386"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール

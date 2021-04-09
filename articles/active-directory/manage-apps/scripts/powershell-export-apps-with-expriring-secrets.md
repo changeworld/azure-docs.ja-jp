@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 03/09/2021
 ms.author: kenwith
 ms.reviewer: mifarca
-ms.openlocfilehash: 7123c87d8883d9ac309797255152611fb9fb81d2
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: def9b55a1d873cccda5d1c48921e3f098beeced1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102583260"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103149717"
 ---
 # <a name="export-apps-with-expiring-secrets-and-certificates"></a>間もなく期限が切れるシークレットと証明書を含むアプリをエクスポートする
 
-この PowerShell スクリプトの例では、指定したアプリについて、間もなく期限が切れるシークレットと証明書を含むすべてのアプリをディレクトリから CSV ファイルにエクスポートします。
+この PowerShell スクリプトの例では、指定したアプリについて、間もなく期限が切れるシークレット、証明書、およびそれらの所有者を含むすべてのアプリ登録をディレクトリから CSV ファイルにエクスポートします。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -32,7 +32,10 @@ ms.locfileid: "102583260"
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
+このスクリプトは、変更せずに直接使用できます。 管理者には、有効期限と、既に有効期限が切れているシークレットまたは証明書を表示するかどうかを確認するメッセージが表示されます。
+
 "Add-Member" コマンドは、CSV ファイル内に列を作成する役割を担います。
+"New-Object" コマンドを使用すると、CSV ファイル エクスポートの列に使用されるオブジェクトが作成されます。
 エクスポートを非対話的に行う場合は、PowerShell で CSV ファイル パスを使用して "$Path" 変数を直接変更できます。
 
 | コマンド | Notes |

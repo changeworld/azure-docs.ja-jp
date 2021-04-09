@@ -2,14 +2,14 @@
 title: プールの VM サイズとイメージを選択する
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズと OS バージョンを選択する方法
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 42b8743fac6a6c64e98271490f0bfc4671fa7698
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102455197"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104800484"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズとイメージを選択する
 
@@ -35,11 +35,13 @@ Batch プールの VM サイズを選択するには、次のような例外と�
 | DC | サポートされていません |
 | Dv2、DSv2 | すべてのサイズ |
 | Dv3、Dsv3 | すべてのサイズ |
-| Dav4、Dasv4 | すべてのサイズ |
+| Dav4 | すべてのサイズ |
+| Dasv4 | すべてのサイズ |
 | Ddv4、Ddsv4 |  すべてのサイズ |
 | Dv4、Dsv4 | サポートされていません |
 | Ev3、Esv3 | E64is_v3 を除くすべてのサイズ |
-| Eav4、Easv4 | すべてのサイズ |
+| Eav4 | すべてのサイズ |
+| Easv4 | すべてのサイズ |
 | Edv4、Edsv4 |  すべてのサイズ |
 | Ev4、Esv4 | サポートされていません |
 | F、Fs | すべてのサイズ |
@@ -56,7 +58,7 @@ Batch プールの VM サイズを選択するには、次のような例外と�
 | NC | すべてのサイズ |
 | NCv2 | すべてのサイズ |
 | NCv3 | すべてのサイズ |
-| NCasT4_v3 | すべてのサイズ |
+| NCasT4_v3 | なし - まだ使用できません |
 | ND | すべてのサイズ |
 | NDv2 | なし - まだ使用できません |
 | NV | すべてのサイズ |
@@ -100,6 +102,8 @@ Batch プールの VM サイズを選択するには、次のような例外と�
 - Batch Service REST API:[サポートされているイメージの一覧表示](/rest/api/batchservice/account/listsupportedimages)
 - PowerShell:[Get-AzBatchSupportedImage](/powershell/module/az.batch/get-azbatchsupportedimage)
 - Azure CLI: [az batch pool supported-images](/cli/azure/batch/pool/supported-images)
+
+Batch のサポート終了日 (EOL) が近いイメージは、使用しないようにすることを強くお勧めします。 このような日付は、[ `ListSupportedImages` API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages)、[PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)、または [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images) で確認することができます。 Batch プールの VM イメージの選択に関する詳細については、[Batch のベストプラクティス ガイド](best-practices.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

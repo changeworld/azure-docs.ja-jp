@@ -13,10 +13,10 @@ ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
 ms.openlocfilehash: f3c34526fd4005dbbb0be7e763721e125ed7828e
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103201212"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する

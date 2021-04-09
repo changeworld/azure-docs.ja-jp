@@ -11,10 +11,10 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
 ms.openlocfilehash: 9df8a67fd3dfbf23986f1cc5ed18392463fc7ecb
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102522208"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。

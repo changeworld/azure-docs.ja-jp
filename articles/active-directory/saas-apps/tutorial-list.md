@@ -13,10 +13,10 @@ ms.author: jeedes
 ms.custom: contperf-fy21q3-portal
 ms.reviewer: celested
 ms.openlocfilehash: 7f19546472c869c8f55499c18afe1b280ce1a500
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/23/2021
 ms.locfileid: "102566687"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル

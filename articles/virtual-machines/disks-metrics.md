@@ -8,17 +8,17 @@ ms.date: 02/12/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 60486c41ad843cf193ee0648dfcfef66f7668e47
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101674988"
 ---
 # <a name="disk-performance-metrics"></a>ディスク パフォーマンス メトリック
 Azure では、仮想マシン (VM) とディスクの動作についての分析情報を提供するメトリックが Azure portal で提供されています。 メトリックは、API 呼び出しを使用して取得することもできます。 この記事は、次の 3 つのサブセクションに分割されています。
 
 - **ディスク IO、スループット、キューの深さのメトリック** - これらのメトリックを使用すると、ディスクと仮想マシンの観点からストレージのパフォーマンスを確認できます。
-- **ディスク バーストのメトリック** - これらのメトリックにより、Premium ディスクの[バースト](disk-bursting.md)機能を監視することが可能になります。
+- **ディスク バーストのメトリック** - これらのメトリックにより、Premium ディスクの [バースト](disk-bursting.md)機能を監視することが可能になります。
 - **ストレージ IO 使用率のメトリック** - これらのメトリックは、ディスクを使用するストレージのパフォーマンスのボトルネックを診断するのに役立ちます。 
 
 すべてのメトリックは、1 分ごとに出力されます。ただし、バースト クレジット パーセンテージのメトリックは 5 分ごとに出力されます。

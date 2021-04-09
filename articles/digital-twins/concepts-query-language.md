@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 9549e6ea30be0cd9eb1a8c200a5af4a4721793a6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: fc9cd95063f84a9af7f989af9a65ce8f99852dc1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034678"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103490978"
 ---
 # <a name="about-the-query-language-for-azure-digital-twins"></a>Azure Digital Twins 用のクエリ言語について
 
@@ -85,7 +85,7 @@ Azure Digital Twins のクエリを作成する場合は、次の考慮事項に
 * `FROM` ステートメント内ではサブクエリはサポートされていません。
 * `OUTER JOIN` セマンティクスはサポートされていません。つまり、リレーションシップのランクがゼロの場合、"行" 全体が出力結果セットから削除されます。
 * グラフ トラバーサルの深さがクエリごとに 5 つの `JOIN` レベルに制限されます。
-* `JOIN` 操作のソースは制限されています。クエリを使用して、クエリが開始されるツインを宣言する必要があります。
+* Azure Digital Twins のリレーションには、独立したエンティティのようにクエリを実行できません。リレーションシップの発生元になるソース ツインに関する情報も提供する必要があります。 つまり、リレーションシップのクエリに使用される `JOIN` 操作にはいくつかの制約があります。クエリを開始するツインをクエリで確実に宣言するためです。 この例については、*ツイン グラフにクエリを実行する方法* に関する記事の「[*リレーションシップによるクエリ*](how-to-query-graph.md#query-by-relationship)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

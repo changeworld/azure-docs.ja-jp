@@ -7,10 +7,10 @@ ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 1d83a828829d27d85749b3fa7b283cad9683bffc
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "102455919"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Functions の Azure Blob Storage トリガー

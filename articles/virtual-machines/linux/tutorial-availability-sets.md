@@ -11,10 +11,10 @@ ms.author: mimckitt
 ms.reviewer: mimckitt
 ms.custom: ''
 ms.openlocfilehash: 6a54e0d808ef734a26a0fa309bd7367e73316856
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102507067"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Azure CLI を使用して可用性セットに仮想マシンを作成およびデプロイする

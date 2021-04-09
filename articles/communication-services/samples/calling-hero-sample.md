@@ -9,13 +9,13 @@ ms.author: dademath
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-zone_pivot_groups: acs-web-ios
-ms.openlocfilehash: d117983b6098dd4856613a97bee7ac498f0fffef
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+zone_pivot_groups: acs-web-ios-android
+ms.openlocfilehash: 694d4cb69575121b9ab89e4ce680d1140914b2c2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103487934"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104783585"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Group Calling Hero Sample を使ってみる
 
@@ -25,4 +25,8 @@ ms.locfileid: "103487934"
 
 ::: zone pivot="platform-ios"
 [!INCLUDE [iOS Calling Hero Sample](./includes/ios-calling-hero.md)]
+::: zone-end
+
+::: zone pivot="platform-android"
+[!INCLUDE [Android Calling Hero Sample](./includes/android-calling-hero.md)]
 ::: zone-end

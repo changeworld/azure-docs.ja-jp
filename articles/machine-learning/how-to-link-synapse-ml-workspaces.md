@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: d1c4defc53c4af0fb481a57c0a455e987fdd480a
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102519998"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889112"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Azure Synapse Analytics と Azure Machine Learning のワークスペースをリンクする (プレビュー)
 
@@ -102,12 +102,14 @@ Azure Machine Learning スタジオを使用して Machine Learning ワークス
 1. [Azure Machine Learning スタジオ](https://ml.azure.com/)にサインインします。
 1. 左ペインの **[管理]** セクションにある **[リンクされたサービス]** を選択します。
 1. **[Add integration]\(統合の追加\)** を選択します。
-1. **[Link workspace]\(ワークスペースのリンク\)** フォームの各フィールドの内容を入力します。 
-    フィールド| 説明    
-    ---|---
-    名前| リンクされたサービスの名前を入力します。 この特定のリンクされたサービスを参照する際に、この名前を使用します。
-    サブスクリプション名 | Machine Learning ワークスペースに関連付けられているサブスクリプションの名前を選択します。 
-    Synapse ワークスペース | リンク先の Synapse ワークスペースを選択します。
+1. **[Link workspace]\(ワークスペースのリンク\)** フォームの各フィールドの内容を入力します。
+
+    |フィールド| 説明    
+    |---|---
+    |名前| リンクされたサービスの名前を入力します。 この特定のリンクされたサービスを参照する際に、この名前を使用します。
+    |サブスクリプション名 | Machine Learning ワークスペースに関連付けられているサブスクリプションの名前を選択します。 
+    |Synapse ワークスペース | リンク先の Synapse ワークスペースを選択します。
+    
 1. **[次へ]** を選択して **[Select Spark pools (optional)]\(Spark プールの選択 (省略可)\)** フォームを開きます。 このフォームで、ワークスペースにアタッチする Synapse Spark プールを選択します。
 
 1. **[次へ]** を選択して **[Review]\(レビュー\)** フォームを開き、選択内容を確認します。

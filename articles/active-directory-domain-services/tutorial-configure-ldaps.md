@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/04/2021
 ms.author: justinha
-ms.openlocfilehash: 1619622ad9594f252c3d4cf5551704c6a788f9f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: fec2695c9e196a652a4166161bf012b22b0d00e6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102564086"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104579554"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -152,7 +152,7 @@ Secure LDAP を使用するために、ネットワーク トラフィックは�
 
     *.PFX* 証明書ファイルを保護するには、 **[セキュリティ]** ページで **[パスワード]** のオプションを選択します。 暗号化アルゴリズムは、*TripleDES-SHA1* である必要があります。 パスワードの入力と確認入力を行って、 **[次へ]** を選択します。 このパスワードは、次のセクションでマネージド ドメインに対して Secure LDAP を有効にする際に使用します。
 
-    [PowerShell の export-pfxcertificate コマンドレット](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate)を使用してエクスポートする場合は、TripleDES_SHA1 を使用して *-CryptoAlgorithmOption* フラグを渡す必要があります。
+    [PowerShell の export-pfxcertificate コマンドレット](/powershell/module/pkiclient/export-pfxcertificate)を使用してエクスポートする場合は、TripleDES_SHA1 を使用して *-CryptoAlgorithmOption* フラグを渡す必要があります。
 
     ![パスワードを暗号化する方法を示すスクリーンショット](./media/tutorial-configure-ldaps/encrypt.png)
 
@@ -240,7 +240,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
     | source                            | IP アドレス |
     | ソース IP アドレス/CIDR 範囲 | 実際の環境の有効な IP アドレスまたはその範囲 |
     | Source port ranges                | *            |
-    | 到着地                       | Any          |
+    | 宛先                       | Any          |
     | 宛先ポート範囲           | 636          |
     | Protocol                          | TCP          |
     | アクション                            | Allow        |

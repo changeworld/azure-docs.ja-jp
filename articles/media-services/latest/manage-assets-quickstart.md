@@ -7,10 +7,10 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
 ms.openlocfilehash: 9b66fa6cd688cf0680e742ffa9fbe4d61a444ab2
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102632999"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>クイック スタート:ポータルでコンテンツをアップロード、エンコード、およびストリーム配信する

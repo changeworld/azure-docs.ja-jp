@@ -13,10 +13,10 @@ ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: オンプレミス、Docker、コンテナー
 ms.openlocfilehash: 1eb8e6d990b0b3e6212736036466be9f11d05b01
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102201126"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Speech サービス API 向けの Docker コンテナーをインストールし、実行する 

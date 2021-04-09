@@ -3,12 +3,12 @@ title: 機能の概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の機能と用語に関する詳細を示します。
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: fbfc2a23a7cde50172b80769558c2dfd6fd5ec84
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.openlocfilehash: da59d62cb7060389ea94b3af5e6f66a4b6347d7d
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103601306"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602623"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -174,7 +174,7 @@ Event Hubs の詳細については、次のリンクを参照してください
     - [.NET](event-hubs-dotnet-standard-getstarted-send.md)
     - [Java](event-hubs-java-get-started-send.md)
     - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-java-get-started-send.md)
+    - [JavaScript](event-hubs-node-get-started-send.md)
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)

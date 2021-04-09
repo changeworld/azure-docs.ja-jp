@@ -10,10 +10,10 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 52cd7817594c5c2a1d4e3a4ca9c56891df594cd6
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103201107"
 ---
 # <a name="communicate-with-edgeagent-using-built-in-direct-methods"></a>組み込みのダイレクト メソッドを使用して edgeAgent と通信する

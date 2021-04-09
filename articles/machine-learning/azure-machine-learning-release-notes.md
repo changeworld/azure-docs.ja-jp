@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: b61337f29eac11ca3fb45056b9348fbc70956b53
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 04ed2e76797474a65d5c7c669066926225c1c1f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102521205"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103471743"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
@@ -26,7 +26,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
 ## <a name="2021-03-08"></a>2021-03-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Azure Machine Learning SDK for Python v1.24.0
-+ **新機能**
++ **バグの修正と機能強化**
   + **azureml-automl-core**
     + `azureml.automl.core.shared` から下位互換性のあるインポートが削除されました。 `azureml.automl.core.shared` 名前空間での「Module not found (モジュールが見つからない)」エラーは、`azureml.automl.runtime.shared` からインポートすることによって解決できます。
   + **azureml-contrib-automl-dnn-vision**
@@ -60,7 +60,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
   + [ノートブック スニペット (プレビュー)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets)。 一般的な Azure ML コードの抜粋が、すぐに入手できるようになりました。 ツールバーからアクセスできるコード スニペット パネルに移動するか、Ctrl + Space キーを使用してコード内スニペット メニューをアクティブにします。  
   + [キーボード ショートカット](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#shortcut-keys)。 Jupyter で使用できるキーボード ショートカットと完全に一致します。 
   + セル パラメーターを示します。 ノートブック内のどのセルがパラメーター セルであり、コンピューティング インスタンスで [Papermill](https://github.com/nteract/papermill) を使用してバラメーター化されたノートブックを実行できるかをユーザーに示します。
-  + ターミナルおよびカーネル セッション　マネージャー: ユーザーは、コンピューティング上で実行されているすべてのカーネルとターミナル セッションを管理できます。
+  + ターミナルおよびカーネル セッション マネージャー: ユーザーは、コンピューティング上で実行されているすべてのカーネルとターミナル セッションを管理できます。
   + 共有ボタン。 ユーザーは、ファイルを右クリックして共有ボタンを使用することにより、ノートブックのエクスプローラーで任意のファイルを共有できるようになりました。
 
 
@@ -75,7 +75,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
 ## <a name="2021-02-16"></a>2021-02-16
 
 ### <a name="azure-machine-learning-sdk-for-python-v1230"></a>Azure Machine Learning SDK for Python v1.23.0
-+ **新機能**
++ **バグの修正と機能強化**
   + **azureml-core**
     + [試験的な機能] Synapse ワークスペースをリンク サービスとして AML にリンクするためのサポートが追加されています
     + [試験的な機能] Synapse Spark プールをコンピューティングとして AML にアタッチするためのサポートが追加されています

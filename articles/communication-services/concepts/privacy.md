@@ -5,15 +5,15 @@ author: chpalm
 manager: anvalent
 services: azure-communication-services
 ms.author: chpalm
-ms.date: 10/03/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6fbc20ec7145a474d9f3aada153f2d012aba34f8
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 933b5605cf38be90d419673a94e23e4c36f0ef36
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561349"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103495710"
 ---
 # <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
 
@@ -51,12 +51,14 @@ Communication Services と共に Azure portal または Azure Resource Manager A
 
 ### <a name="telephone-number-management"></a>電話番号の管理
 
-Azure Communication Services では、Communication Services リソースに関連付けられた電話番号のディレクトリが保持されます。 これらの API を使用して、電話番号を取得して削除します。
+Azure Communication Services では、Communication Services リソースに関連付けられた電話番号のディレクトリが保持されます。 次の[電話番号の管理 API](/rest/api/communication/phonenumberadministration) を使用して、電話番号を取得して削除します。
+
+- `Get All Phone Numbers`
 - `Release Phone Number`
 
 ### <a name="chat"></a>チャット
 
-チャットのスレッドとメッセージは、明示的に削除されるまで保持されます。 完全にアイドル状態のスレッドは 30 日後に自動的に削除されます。 [チャット API シリーズ](/rest/api/communication/chat/deletechatmessage/deletechatmessage)を使用すると、メッセージの取得、一覧表示、更新、削除を実行できます。
+チャットのスレッドとメッセージは、明示的に削除されるまで保持されます。 完全にアイドル状態のスレッドは 30 日後に自動的に削除されます。 [チャット API シリーズ](/rest/api/communication/chat/chatthread)を使用すると、メッセージの取得、一覧表示、更新、削除を実行できます。
 
 - `Get Thread`
 - `Get Message`

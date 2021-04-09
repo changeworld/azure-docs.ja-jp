@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ca1308c969227336bfb4970f7c5c77b9f2e0cc22
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: 32ad6fa122083b40a948345e360bf5b9b0f09e96
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216532"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954855"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -121,7 +121,7 @@ ms.locfileid: "102216532"
 
     <details>
         <summary>Azure を使用して自社のドメイン プロバイダーの DNS を管理できますか?</summary>
-        必要に応じて、Azure DNS を使用して自社のドメインの DNS レコードを管理したり、Azure App Service のカスタム DNS 名を構成したりできます。 詳しくは、「<a href="https://docs.microsoft.com/azure/dns/dns-delegate-domain-azure-dns">チュートリアル: Azure DNS でドメインをホストする</a>」を参照してください。
+        必要に応じて、Azure DNS を使用して自社のドメインの DNS レコードを管理したり、Azure App Service のカスタム DNS 名を構成したりできます。 詳しくは、「<a href="/azure/dns/dns-delegate-domain-azure-dns">チュートリアル: Azure DNS でドメインをホストする</a>」を参照してください。
     </details>
 
 1. DNS レコードの管理ページを探します。 
@@ -146,7 +146,7 @@ ms.locfileid: "102216532"
             <ul>
             <li>ルート ドメイン (<code>contoso.com</code> など) をマップするには、A レコードを使用します。 CNAME レコードはルート レコードに使用しないようにしてください (詳しくは、<a href="https://en.wikipedia.org/wiki/CNAME_record">Wikipedia のエントリ</a>を参照してください)。</li>
             <li>サブドメイン (<code>www.contoso.com</code> など) をマップするには、CNAME レコードを使用します。</li>
-            <li>A レコードを使用してサブドメインをアプリの IP アドレスに直接マップできますが、<a href="https://docs.microsoft.com/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">IP アドレスは変更される</a>可能性があります。 代わりに、変更の影響を受けにくい CNAME レコードでアプリのホスト名をマップします。</li>
+            <li>A レコードを使用してサブドメインをアプリの IP アドレスに直接マップできますが、<a href="/azure/app-service/overview-inbound-outbound-ips#when-inbound-ip-changes">IP アドレスは変更される</a>可能性があります。 代わりに、変更の影響を受けにくい CNAME レコードでアプリのホスト名をマップします。</li>
             <li><a href="https://en.wikipedia.org/wiki/Wildcard_DNS_record">ワイルドカード ドメイン</a> (<code>*.contoso.com</code> など) をマップするには、CNAME レコードを使用します。</li>
             </ul>
         </div>
@@ -247,7 +247,7 @@ ms.locfileid: "102216532"
 
     <details>
         <summary><strong>セキュリティ保護なし</strong>という警告ラベルにはどのような意味がありますか?</summary>
-        カスタム ドメインの警告ラベルは、まだ TLS/SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、ブラウザーに応じてエラーまたは警告が表示されます。 TLS バインドを追加するには、「<a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する</a>」を参照してください。
+        カスタム ドメインの警告ラベルは、まだ TLS/SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、ブラウザーに応じてエラーまたは警告が表示されます。 TLS バインドを追加するには、「<a href="/azure/app-service/configure-ssl-bindings">Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する</a>」を参照してください。
     </details>
 
     手順を行っていなかったり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
@@ -274,7 +274,7 @@ ms.locfileid: "102216532"
 
     <details>
         <summary><strong>セキュリティ保護なし</strong>という警告ラベルにはどのような意味がありますか?</summary>
-        カスタム ドメインの警告ラベルは、まだ TLS/SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、ブラウザーに応じてエラーまたは警告が表示されます。 TLS バインドを追加するには、「<a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する</a>」を参照してください。
+        カスタム ドメインの警告ラベルは、まだ TLS/SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、ブラウザーに応じてエラーまたは警告が表示されます。 TLS バインドを追加するには、「<a href="/azure/app-service/configure-ssl-bindings">Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する</a>」を参照してください。
     </details>
     
     手順を行っていなかったり、どこかで入力ミスがあったりした場合、ページの下部に検証エラーが表示されます。
@@ -297,7 +297,7 @@ ms.locfileid: "102216532"
 
     <details>
         <summary><strong>セキュリティ保護なし</strong>という警告ラベルにはどのような意味がありますか?</summary>
-        カスタム ドメインの警告ラベルは、まだ TLS/SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、ブラウザーに応じてエラーまたは警告が表示されます。 TLS バインドを追加するには、「<a href="https://docs.microsoft.com/azure/app-service/configure-ssl-bindings">Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する</a>」を参照してください。
+        カスタム ドメインの警告ラベルは、まだ TLS/SSL 証明書にバインドされていないことを意味します。 ブラウザーからカスタム ドメインへの HTTPS 要求を実行すると、ブラウザーに応じてエラーまたは警告が表示されます。 TLS バインドを追加するには、「<a href="/azure/app-service/configure-ssl-bindings">Azure App Service で TLS/SSL バインドを使用してカスタム DNS 名をセキュリティで保護する</a>」を参照してください。
     </details>
 
 -----

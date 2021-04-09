@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.custom: devx-track-js
 ms.openlocfilehash: eae6f1ec8cb6917d0d51deca8c9e88725c9b01a7
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103200632"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
@@ -29,7 +29,7 @@ Visual Studio Code のデバッグ機能をよく知らない場合は、[デバ
 この記事では、複数のアーキテクチャ用に複数の言語でモジュールを開発およびデバッグする手順について説明します。 現時点では、Visual Studio Code は、C#、C、Python、Node.js、および Java で記述されたモジュールをサポートしています。 サポートされているデバイス アーキテクチャは X64 と ARM32 です。 サポートされているオペレーティング システム、言語、およびアーキテクチャの詳細については、「[Language and architecture support (言語とアーキテクチャのサポート)](module-development.md#language-and-architecture-support)」を参照してください。
 
 >[!NOTE]
->Linux ARM64 デバイスの開発とデバッグのサポートは、[パブリック プレ表示](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレ表示)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
+>Linux ARM64 デバイスの開発とデバッグのサポートは、[パブリック プレ表示](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)にあります。 詳細については、「[Visual Studio Code で ARM64 IoT Edge モジュールを開発してデバッグする (プレビュー)](https://devblogs.microsoft.com/iotdev/develop-and-debug-arm64-iot-edge-modules-in-visual-studio-code-preview)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

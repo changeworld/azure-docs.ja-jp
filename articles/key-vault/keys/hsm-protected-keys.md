@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
 ms.openlocfilehash: a7e709ba9a4de5ff77524a2d2b1b64a5933131a2
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
+ms.lasthandoff: 03/23/2021
 ms.locfileid: "102489414"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM で保護されたキーを Key Vault にインポートする

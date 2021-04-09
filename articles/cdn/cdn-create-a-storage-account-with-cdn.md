@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 7cd1c6b0b11ba291a36f49a2a9990a2755cdd74b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 444639d9e36b67f25ed9b82bd68102273c66ae00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102561927"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951234"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>クイック スタート:Azure Storage アカウントと Azure CDN との統合
 
@@ -118,4 +118,4 @@ Azure CDN に既にキャッシュされているオブジェクトは、オブ�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:サーバーの静的コンテンツへの CDN を Web アプリから使用する](cdn-add-to-web-app.md)
+> [チュートリアル: サーバーの静的コンテンツへの CDN を Web アプリから使用する](cdn-add-to-web-app.md)

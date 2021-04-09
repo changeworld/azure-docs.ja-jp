@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 8/11/2020
 ms.author: lajanuar
 ms.openlocfilehash: 567e28ee7f698565d6ad0020db7abdca0557f053
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "100650764"
 ---
 # <a name="translator-v30"></a>Translator v3.0
@@ -35,7 +35,7 @@ Microsoft Translator のサービスは、複数のデータセンター拠点�
 
 * **アメリカ合衆国:** 米国東部、米国中南部、米国中西部、および米国西部 2 
 * **アジア太平洋:** 韓国南部、東日本、東南アジア、オーストラリア東部
-* **ヨーロッパ:** 北ヨーロッパ、西ヨーロッパ、スイス北部<sup> 1、2</sup>、スイス西部 <sup>1、2</sup>
+* **ヨーロッパ:** 北ヨーロッパ、西ヨーロッパ、スイス北部 <sup> 1、2</sup>、スイス西部 <sup>1、2</sup>
 
 Microsoft Translator への要求は、ほとんどの場合、その要求の送信元に最も近いデータセンターによって処理されます。 データセンターに障害が発生している場合は、その Azure 地域以外に要求がルーティングされます。
 

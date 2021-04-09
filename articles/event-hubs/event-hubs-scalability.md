@@ -4,17 +4,17 @@ description: この記事では、パーティションとスループット ユ
 ms.topic: article
 ms.date: 03/16/2021
 ms.openlocfilehash: f258ee2a3b4162dabf7a8e615db82b9b889d628b
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103601282"
 ---
 # <a name="scaling-with-event-hubs"></a>Event Hubs によるスケーリング
 
 Event Hubs によるスケーリングに影響する 2 つの要素があります。
 *   スループット ユニット
-*   [   パーティション]
+*   パーティション
 
 ## <a name="throughput-units"></a>スループット ユニット
 
@@ -36,7 +36,7 @@ Event Hubs の **自動インフレ** 機能は、使用量のニーズに合わ
 
 自動インフレ機能の詳細については、[スループット単位の自動的なスケーリング](event-hubs-auto-inflate.md) に関する記事を参照してください。
 
-## <a name="partitions"></a>[パーティション]
+## <a name="partitions"></a>パーティション
 [!INCLUDE [event-hubs-partitions](../../includes/event-hubs-partitions.md)]
 
 

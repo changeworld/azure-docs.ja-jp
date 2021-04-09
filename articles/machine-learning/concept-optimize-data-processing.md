@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/26/2020
 ms.custom: data4ml
 ms.openlocfilehash: 5ab7bac635a0b670087800212727b0d2e2b96934
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103472211"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータ処理の最適化

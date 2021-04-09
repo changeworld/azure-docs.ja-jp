@@ -11,10 +11,10 @@ ms.date: 01/14/2020
 ms.author: metang
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: e79ae3914e32038e2823fb37e3eee658c95e0003
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102608769"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>認証トークンをキャッシュする方法

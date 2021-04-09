@@ -8,12 +8,12 @@ ms.date: 11/19/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: a38af4c942de280e7b1c094885a1ede6774ead56
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 3fd504ec36abae3f00cd2a7eb4e1f7b639be0cea
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433218"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103462679"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
@@ -36,8 +36,10 @@ ms.locfileid: "102433218"
 
 :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryByProperty1":::
 
-> [!NOTE]
-> デジタル ツインの ID のクエリ実行には、メタデータ フィールド `$dtId` を使用します。
+上記のクエリに示されているように、デジタル ツインの ID は、メタデータ フィールド `$dtId` を使用してクエリが実行されます。
+
+>[!TIP]
+> Cloud Shell を使用して、`$` で始まるメタデータ フィールドでクエリを実行する場合は、バッククォートで `$` をエスケープして、それが変数ではなく、クエリ テキスト内のリテラルとして使用する必要があることを Cloud Shell に通知する必要があります。
 
 **特定のプロパティが定義されているかどうか** に基づいて Twins を取得することもできます。 次は、*Location* プロパティが定義されているツインを取得するクエリです。
 

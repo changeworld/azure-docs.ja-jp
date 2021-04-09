@@ -11,10 +11,10 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: c2c2b57ebf4e2a5cd96efce49da87cf42929e96c
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103472056"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Cognitive Services の自然言語のサポート

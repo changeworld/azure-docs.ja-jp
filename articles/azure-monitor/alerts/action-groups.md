@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 02/25/2021
 ms.author: dukek
-ms.openlocfilehash: 0771249e94d3e00cbeaff00406a0dbf33777a14d
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: fb067e603c181482a863dc9fd75556e32a801bc6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490332"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104772350"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -149,7 +149,7 @@ Azure mobile app の構成時にアカウント ID として使用するメー�
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./alerts-rate-limiting.md)の記事を参照してください。
 
 ### <a name="function"></a>機能
-[Azure Functions](../../azure-functions/functions-get-started.md) で既存の HTTP トリガー エンドポイントを呼び出します。
+[Azure Functions](../../azure-functions/functions-get-started.md) で既存の HTTP トリガー エンドポイントを呼び出します。 要求を処理するには、エンドポイントで HTTP POST 動詞を処理する必要があります。
 
 アクション グループには、限られた数の Function アクションを保持できます。
 

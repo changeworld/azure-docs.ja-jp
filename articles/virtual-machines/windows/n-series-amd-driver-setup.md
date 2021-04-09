@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
 ms.openlocfilehash: 62723a0fee6a3f696c517bc642fdac8cfa80a6b9
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102557422"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に AMD GPU ドライバーをインストールする

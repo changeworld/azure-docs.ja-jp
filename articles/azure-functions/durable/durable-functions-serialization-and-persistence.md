@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 ms.author: azfuncdf
 ms.openlocfilehash: ea4aaa1cdbe10e2db9cf619452558d104a2293ab
-ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102449375"
 ---
 # <a name="data-persistence-and-serialization-in-durable-functions-azure-functions"></a>Durable Functions でのデータの永続化とシリアル化 (Azure Functions)

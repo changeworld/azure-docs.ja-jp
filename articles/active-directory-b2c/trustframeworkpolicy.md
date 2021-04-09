@@ -11,10 +11,10 @@ ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9bf1cc197a7d6977ccb6ef69e157d9f8a76a58d5
-ms.sourcegitcommit: 66ce33826d77416dc2e4ba5447eeb387705a6ae5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103470733"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy

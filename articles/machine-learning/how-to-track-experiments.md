@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3d970193bd8d73baeac89fb45da4c8a3d81cbde4
-ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
+ms.openlocfilehash: 9576730d9c4f8d4d237dce9ce8f207ea14b04f45
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102518401"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103471590"
 ---
 # <a name="enable-logging-in-ml-training-runs"></a>ML のトレーニングの実行でログ記録を有効にする
 

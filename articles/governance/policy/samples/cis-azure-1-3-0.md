@@ -1,15 +1,15 @@
 ---
 title: CIS Microsoft Azure Foundations Benchmark 1.3.0 の規制コンプライアンスの詳細
 description: CIS Microsoft Azure Foundations Benchmark 1.3.0 規制コンプライアンスの組み込みイニシアチブの詳細。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 03/05/2021
+ms.date: 03/10/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 1d4a2520131babdc9d94dce530dc8acfe737c3c2
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 1d7883a6e7bb8d5732676906895cae06cbe8e12b
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102435602"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102632324"
 ---
 # <a name="details-of-the-cis-microsoft-azure-foundations-benchmark-130-regulatory-compliance-built-in-initiative"></a>CIS Microsoft Azure Foundations Benchmark 1.3.0 規制コンプライアンスの組み込みイニシアチブの詳細
 
@@ -217,7 +217,7 @@ ms.locfileid: "102435602"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[SQL Server では、90 日以上の監査データ保持期間を構成する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |SQL Server では、90 日以上の監査データ保持期間を構成する必要があります。 |AuditIfNotExists、Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
+|[SQL サーバーの監査データの保持期間は 90 日以上に設定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F89099bee-89e0-4b26-a5f4-165451757743) |インシデント調査の目的で、SQL サーバーの監査データのデータ保持期間は 90 日以上に設定することをお勧めします。 運用しているリージョンで必要な保持期間の規則を満たしていることを確認します。 これは、規制標準に準拠するために必要になる場合があります。 |AuditIfNotExists、Disabled |[2.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServerAuditingRetentionDays_Audit.json) |
 
 ### <a name="ensure-that-advanced-threat-protection-atp-on-a-sql-server-is-set-to-enabled"></a>SQL サーバーの Advanced Threat Protection (ATP) が [有効] に設定されていることを確認する
 
@@ -451,7 +451,7 @@ ms.locfileid: "102435602"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Network Watcher を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |Network Watcher は地域サービスであり、ネットワーク シナリオ レベルで Azure 内と Azure 間の状態を監視して診断できます。 シナリオ レベルの監視により、エンド ツー エンドのネットワーク レベル ビューで問題を診断できるようになります。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。 |auditIfNotExists |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
+|[Network Watcher を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb6e2945c-0b7b-40f5-9233-7a5323b5cdc6) |Network Watcher は地域サービスであり、ネットワーク シナリオ レベルで Azure 内と Azure 間の状態を監視して診断できます。 シナリオ レベルの監視により、エンド ツー エンドのネットワーク レベル ビューで問題を診断できるようになります。 Network Watcher に搭載されているネットワークの診断および監視ツールを使用して、Azure 内のネットワークを把握および診断し、洞察を得ることができます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/NetworkWatcher_Enabled_Audit.json) |
 
 ## <a name="virtual-machines"></a>Virtual Machines
 
@@ -602,9 +602,9 @@ ms.locfileid: "102435602"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[API アプリの一部として使用される "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
-|[関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを関数アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
-|[Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを Web アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
+|[API アプリの一部として使用される "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F74c3584d-afae-46f7-a20a-6f8adba71a16) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを API アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_ApiApp_Audit_python_Latest.json) |
+|[関数アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7238174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを関数アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_FunctionApp_Audit_python_Latest.json) |
+|[Web アプリの一部として使用された "Python のバージョン" が最新であることを確認する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7008174a-fd10-4ef0-817e-fc820a951d73) |セキュリティ上の欠陥のため、または追加機能を組み込むために、Python ソフトウェアの新しいバージョンが定期的にリリースされます。 最新バージョンのセキュリティ修正プログラム (存在する場合) や新機能を利用できるように、最新の Python バージョンを Web アプリに使用することをお勧めします。 現在、このポリシーは Linux Web アプリにのみ適用されます。 |AuditIfNotExists、Disabled |[3.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_WebApp_Audit_python_Latest.json) |
 
 ### <a name="ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>Web アプリの実行に使用された "Java のバージョン" が最新であることを確認する
 

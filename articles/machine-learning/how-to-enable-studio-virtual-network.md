@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperf-fy20q4, tracking-python
-ms.openlocfilehash: ca3957563f7c7a7021ad994cc323823763c2936e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: da8007a651b62430055f263f082fabf2aa4bf610
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102171548"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103574290"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure 仮想ネットワークで Azure Machine Learning Studio を使用する
 
@@ -166,3 +166,5 @@ SQL 包含ユーザーを作成したら、これに対してアクセス許可�
 * [パート 2: ワークスペース リソースをセキュリティで保護する](how-to-secure-workspace-vnet.md)
 * [パート 3: トレーニング環境をセキュリティで保護する](how-to-secure-training-vnet.md)
 * [パート 4: 推論環境をセキュリティで保護する](how-to-secure-inferencing-vnet.md)
+
+名前の解決については、[カスタム DNS](how-to-custom-dns.md) の使用に関する記事も参照してください。

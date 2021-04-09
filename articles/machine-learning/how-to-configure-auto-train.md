@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: e8e904511178f494890b25764a84df8ca64a6b6c
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 24c0d57490ecd039039992310f93ca3e21c47b3b
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102498865"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563489"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -396,9 +396,29 @@ run = experiment.submit(automl_config, show_output=True)
 > 自動 ML のアルゴリズムには特有のランダム性があり、推奨モデルの最終的なメトリック スコア (精度など) にわずかな変動が生じる可能性があります。 自動 ML によって、トレーニングとテストの分割、トレーニングと検証の分割、クロス検証などのデータに対する操作も必要に応じて実行されます。 そのため、同じ構成設定とプライマリ メトリックを使用して実験を複数回実行した場合、これらの要因により、各実験の最終的なメトリック スコアに変動が見られる可能性があります。 
 
 ## <a name="register-and-deploy-models"></a>モデルを登録してデプロイする
+モデルは登録できます。そのため、後で使用するためにモデルに戻ることができます。 
 
-Web サービスにデプロイするためのモデルをダウンロードまたは登録する方法の詳細については、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)に関するページを参照してください。
+自動化された ML 実行からモデルを登録するには、[`register_model()`](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) メソッドを使用します。 
 
+```Python
+
+best_run, fitted_model = run.get_output()
+print(fitted_model.steps)
+
+model_name = best_run.properties['model_name']
+description = 'AutoML forecast example'
+tags = None
+
+model = remote_run.register_model(model_name = model_name, 
+                                  description = description, 
+                                  tags = tags)
+```
+
+
+デプロイ構成を作成し、登録済みのモデルを Web サービスにデプロイする方法の詳細については、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md?tabs=python#define-a-deployment-configuration)に関するページを参照してください。
+
+> [!TIP]
+> 登録済みのモデルの場合、[Azure Machine Learning スタジオ](https://ml.azure.com)を使用してワンクリックでデプロイできます。 [登録済みのモデルをスタジオからデプロイする](how-to-use-automated-ml-for-ml-models.md#deploy-your-model)方法に関するページを参照してください。 
 <a name="explain"></a>
 
 ## <a name="model-interpretability"></a>モデルの解釈可能性
