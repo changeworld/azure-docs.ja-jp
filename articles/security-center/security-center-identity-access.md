@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/10/2021
 ms.author: memildin
 ms.openlocfilehash: 9af4f225b1b9ca5e8023a8d5b4bb7607762e4447
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102631899"
 ---
 # <a name="manage-multi-factor-authentication-mfa-enforcement-on-your-subscriptions"></a>サブスクリプションでの 多要素認証 (MFA) の実施を管理する
@@ -86,10 +86,10 @@ MFA が有効になっていないアカウントを確認するには、次の 
 
 ## <a name="faq---mfa-in-security-center"></a>Security Center の MFA に関する FAQ
 
-- [既に CA ポリシーを使用して MFA を強制しています。Security Center の推奨事項が引き続き表示されるのはなぜですか?](#were-already-using-ca-policy-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
-- [サードパーティの MFA ツールを使用して MFA を強制しています。Security Center の推奨事項が引き続き表示されるのはなぜですか?](#were-using-a-third-party-mfa-tool-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
+- [既に CA ポリシーを使用して MFA を強制しています。Azure Security Center の推奨事項がまだ表示されるのはなぜですか。](#were-already-using-ca-policy-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
+- [サードパーティの MFA ツールを使用して MFA を強制しています。Azure Security Center の推奨事項がまだ表示されるのはなぜですか。](#were-using-a-third-party-mfa-tool-to-enforce-mfa-why-do-we-still-get-the-security-center-recommendations)
 - [Security Center で、サブスクリプションに対するアクセス許可がないユーザー アカウントに "MFA が必要" と表示されるのはなぜですか?](#why-does-security-center-show-user-accounts-without-permissions-on-the-subscription-as-requiring-mfa)
-- [PIM を使用して MFA を強制しています。PIM アカウントが非準拠として表示されるのはなぜですか?](#were-enforcing-mfa-with-pim-why-are-pim-accounts-shown-as-noncompliant)
+- [PIM を使用して MFA を強制しています。PIM アカウントが非準拠として表示されるのはなぜですか。](#were-enforcing-mfa-with-pim-why-are-pim-accounts-shown-as-noncompliant)
 - [一部のアカウントを除外または破棄することはできますか?](#can-i-exempt-or-dismiss-some-of-the-accounts)
 - [Security Center の ID とアクセスの保護には制限がありますか?](#are-there-any-limitations-to-security-centers-identity-and-access-protections)
 

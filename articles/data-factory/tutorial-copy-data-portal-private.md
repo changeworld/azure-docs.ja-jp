@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/20/2021
 ms.locfileid: "101740394"
 ---
-# <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure BLOB ストレージから SQL データベースに安全にデータをコピーする
+# <a name="copy-data-securely-from-azure-blob-storage-to-a-sql-database-by-using-private-endpoints"></a>プライベート エンドポイントを使用して Azure Blob Storage から SQL データベースに安全にデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
