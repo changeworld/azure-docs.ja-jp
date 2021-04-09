@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 01/19/2021
 ms.author: ranku
-ms.openlocfilehash: 7518f5e2984029c087eec1e6697f3237410bda4b
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 2a34cfee57ecc1870c420c4c0f3c9261aa02f192
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019231"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490927"
 ---
 # <a name="how-to-convert-data-to-fhir-preview"></a>データを FHIR に変換する方法 (プレビュー)
 
@@ -125,6 +125,12 @@ Azure API for FHIR サービス インスタンスに AcrPull ロールを付与
 
 ### <a name="register-the-acr-servers-in-azure-api-for-fhir"></a>Azure API for FHIR に ACR サーバーを登録する
 
+Azure portal を使用するか、CLI を使用して、ACR サーバーを登録できます。
+
+#### <a name="registering-the-acr-server-using-azure-portal"></a>Azure portal を使用した ACR サーバーの登録
+Azure API for FHIR インスタンスの [_データ変換_] の下にある [_アーティファクト_] ブレードに移動します。 現在登録されている ACR サーバーの一覧が表示されます。 [ _追加_ ] をクリックし、ドロップダウンからレジストリサーバーを選択します。 登録を有効にするには、[ _保存_ ] をクリックする必要があります。 変更を適用してインスタンスを再起動するまでに数分かかる場合があります。
+
+#### <a name="registering-the-acr-server-using-cli"></a>CLI を使用した ACR サーバーの登録
 Azure API for FHIR には、最大 20 台の ACR サーバーを登録することができます。
 
 必要に応じて Azure PowerShell から healthcareapis CLI をインストールします。
@@ -135,13 +141,13 @@ az extension add -n healthcareapis
 
 以下の例に従って、Azure API for FHIR に ACR サーバーを登録します。
 
-#### <a name="register-a-single-acr-server"></a>1 台の ACR サーバーを登録する
+##### <a name="register-a-single-acr-server"></a>1 台の ACR サーバーを登録する
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
 ```
 
-#### <a name="register-multiple-acr-servers"></a>複数台の ACR サーバーを登録する
+##### <a name="register-multiple-acr-servers"></a>複数台の ACR サーバーを登録する
 
 ```powershell
 az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.azurecr.io" --resource-group fhir-test --resource-name fhirtest2021
@@ -152,8 +158,3 @@ az healthcareapis acr add --login-servers "fhiracr2021.azurecr.io fhiracr2020.az
 templateCollectionReference パラメーターにテンプレート参照を指定して $convert-data API を呼び出します。
 
 `<RegistryServer>/<imageName>@<imageDigest>`
-
-## <a name="known-issues-and-workarounds"></a>既知の問題と対処法
-
-- いくつかの既定のテンプレート ファイルには UTF-8 BOM が含まれています。 そのため、生成された ID 値には BOM 文字が含まれます。 それが原因で、FHIR サーバーに問題が生じることがあります。 それを回避するには、VS Code 拡張機能を使用して Microsoft テンプレートをプルし、_ID/_Procedure.liquid_、_ID/_Provenance.liquid_、_ID/_Immunization.liquid_ から BOM 文字を削除したうえで、それらを独自の ACR にプッシュしてください。
-

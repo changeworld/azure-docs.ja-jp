@@ -6,15 +6,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ec468f070b5dd418772aeea8760b5d0b270e093a
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: 11ab634ed4b25c5fd8c0079263094c393e9dcbe6
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487510"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496594"
 ---
 # <a name="sms-client-library-overview"></a>SMS クライアント ライブラリの概要
 

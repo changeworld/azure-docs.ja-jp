@@ -5,32 +5,37 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 2/19/2021
+ms.date: 3/18/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9ed78baed35312b9a33c71a3e49b7e9dca22eb9f
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: a5b3daa499546f3a30b5a4d133d77786a1916b6a
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103019151"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105559198"
 ---
 # <a name="how-to-export-fhir-data"></a>FHIR データをエクスポートする方法
 
 
 一括エクスポート機能を使用すると、[FHIR 仕様](https://hl7.org/fhir/uv/bulkdata/export/index.html)に従って FHIR サーバーからデータをエクスポートできます。 
 
-$export を使用する前に、Azure API for FHIR がそれを使用するように構成されていることを確認する必要があります。 エクスポート設定を構成し、Azure ストレージ アカウントを作成する方法については、[データのエクスポートの構成ページ](configure-export-data.md)を参照してください。
+$Export を使用する前に、FHIR 用の Azure API がそれを使用するように構成されていることを確認する必要があります。 エクスポート設定を構成し、Azure ストレージ アカウントを作成する方法については、[データのエクスポートの構成ページ](configure-export-data.md)を参照してください。
 
 ## <a name="using-export-command"></a>$export コマンドの使用
 
-エクスポート用に Azure API for FHIR を構成すると、$export コマンドを使用して、サービスからデータをエクスポートできます。 データは、エクスポートの構成時に指定したストレージ アカウントに格納されます。 FHIR サーバーで $export コマンドを呼び出す方法については、[HL7 FHIR $export の仕様](https://hl7.org/Fhir/uv/bulkdata/export/index.html)に関するドキュメントを参照してください。 
+エクスポート用に Azure API for FHIR を構成すると、$export コマンドを使用して、サービスからデータをエクスポートできます。 データは、エクスポートの構成時に指定したストレージ アカウントに格納されます。 FHIR サーバーで $export コマンドを呼び出す方法については、[HL7 FHIR $export の仕様](https://hl7.org/Fhir/uv/bulkdata/export/index.html)に関するドキュメントを参照してください。
+
+
+**ジョブが無効な状態でスタックした**
+
+状況によっては、ジョブが正しくない状態でスタックする可能性があります。 これは特に、ストレージアカウントのアクセス許可が適切に設定されていない場合に発生する可能性があります。 エクスポートが成功したかどうかを検証する1つの方法として、ストレージアカウントを調べて、対応するコンテナー (つまり、ndjson) ファイルが存在するかどうかを確認します。 存在しない場合、他のエクスポートジョブが実行されていないと、現在のジョブが正常な状態でスタックしていない可能性があります。 キャンセル要求を送信してエクスポートジョブをキャンセルしてから、ジョブを再度キューに登録してください。 エクスポートが無効な状態になった場合の既定の実行時間は、停止して新しいジョブに移動するか、またはエクスポートを再試行するまで10分です。 
 
 Azure API For FHIR では、次のレベルでの $export がサポートされています。
 * [システム](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---system-level-export): `GET https://<<FHIR service base URL>>/$export>>`
 * [患者](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---all-patients): `GET https://<<FHIR service base URL>>/Patient/$export>>`
-* [患者のグループ*](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) - Azure API for FHIR では、関連するすべてのリソースがエクスポートされますが、グループの特性はエクスポートされません: `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
+* [患者のグループ *](https://hl7.org/Fhir/uv/bulkdata/export/index.html#endpoint---group-of-patients) -FHIR 用の Azure API は、関連するすべてのリソースをエクスポートしますが、グループの特性はエクスポートしません。 `GET https://<<FHIR service base URL>>/Group/[ID]/$export>>`
 
-データがエクスポートされると、リソースの種類ごとに個別のファイルが作成されます。 エクスポートされるファイルが大きくなりすぎないようにするために、エクスポートされた 1 つのファイルのサイズが 64 MB を超えたら新しいファイルを作成します。 この結果、リソースの種類ごとに複数のファイルが取得され、列挙されます (つまり、Patient-1.ndjson、Patient-2.ndjson)。 
+データがエクスポートされると、リソースの種類ごとに個別のファイルが作成されます。 エクスポートされたファイルが大きくなりすぎないようにするため。 エクスポートされた1つのファイルのサイズが 64 MB を超えると、新しいファイルが作成されます。 その結果、リソースの種類ごとに複数のファイルが取得され、列挙されます (つまり、患者-1. ndjson、患者-2. ndjson)。 
 
 
 > [!Note] 
@@ -38,13 +43,12 @@ Azure API For FHIR では、次のレベルでの $export がサポートされ�
 
 さらに、キュー登録中に場所ヘッダーによって返された URL を介したエクスポートの状態の確認と、現行のエクスポート ジョブのキャンセルもサポートされています。
 
-### <a name="exporting-fhir-data-to-adls-gen2"></a>ADLS Gen2 に FHIR データをエクスポートしています
+### <a name="exporting-fhir-data-to-adls-gen2"></a>FHIR データを ADLS Gen2 にエクスポートする
 
-現時点では、ADLS Gen2 有効なストレージアカウントの $export がサポートされていますが、次の制限があります。
+現在、ADLS Gen2 対応のストレージ アカウントに対する $export がサポートされていますが、次の制限があります。
 
-- ユーザーは [階層的な名前空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) をまだ活用できません。コンテナー内の特定のサブディレクトリへのエクスポートをターゲットにすることはできません。 特定のコンテナーをターゲットにする機能を提供するだけです (エクスポートごとに新しいフォルダーを作成します)。
-
-- エクスポートが完了したら、そのフォルダーには何もエクスポートされません。これは、同じコンテナーへの後続のエクスポートが新しく作成されたフォルダー内にあるためです。
+- ユーザーは [階層的な名前空間](../../storage/blobs/data-lake-storage-namespace.md)を利用できませんが、コンテナー内の特定のサブディレクトリへのエクスポートをターゲットにする方法はありません。 ターゲットにすることができるのは、特定のコンテナーだけです (エクスポートごとに新しいフォルダーが作成されます)。
+- エクスポートが完了すると、そのフォルダーに再び何かがエクスポートされることはありません。同じコンテナーへの後続のエクスポートは新しく作成されたフォルダーに入れられるためです。
 
 
 ## <a name="settings-and-parameters"></a>設定とパラメーター
@@ -65,17 +69,20 @@ Azure API for FHIR では、次のクエリ パラメーターがサポートさ
 | \_typefilter | はい | よりきめ細かいフィルター処理を要求するには、\_typefilter を \_type パラメーターと共に使用します。 _TypeFilter パラメーターの値は、結果をさらに限定する FHIR クエリのコンマ区切りリストです。 |
 | \_container | いいえ |  データのエクスポート先となる、構成済みストレージ アカウント内のコンテナーを指定します。 コンテナーが指定されている場合は、その名前を持つ新しいフォルダー内のそのコンテナーにデータがエクスポートされます。 コンテナーが指定されていない場合は、タイムスタンプとジョブ ID を使用して新しいコンテナーにエクスポートされます。 |
 
-## <a name="secure-export-to-azure-storage"></a>Azure Storage へのセキュリティで保護されたエクスポート
+> [!Note]
+> $Export 操作の宛先として登録できるのは、FHIR 用の Azure API の場合と同じサブスクリプション内のストレージアカウントだけです。
 
-Azure API for FHIR は、セキュリティで保護されたエクスポート操作をサポートしています。 セキュリティで保護されたエクスポートを実行する1つのオプションは、Azure API に関連付けられた特定の IP アドレスに対して、FHIR が Azure ストレージアカウントにアクセスすることを許可することです。 ストレージアカウントが、FHIR の Azure API と同じ場所にあるか別の場所にあるかによって、構成が異なります。
+## <a name="secure-export-to-azure-storage"></a>Azure Storage へのセキュア エクスポート
 
-### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>Azure ストレージアカウントが別のリージョンにある場合
+Azure API for FHIR では、セキュア エクスポート操作がサポートされます。 セキュア エクスポートを実行する方法の 1 つは、Azure API for FHIR に関連付けられた特定の IP アドレスに Azure ストレージ アカウントへのアクセスを許可することです。 ストレージ アカウントが Azure API for FHIR と同じ場所にあるか別の場所にあるかによって、構成が異なります。
 
-ポータルから Azure ストレージアカウントの [ネットワーク] ブレードを選択します。 
+### <a name="when-the-azure-storage-account-is-in-a-different-region"></a>Azure ストレージ アカウントが別のリージョンにある場合
 
-   :::image type="content" source="media/export-data/storage-networking.png" alt-text="ネットワーク設定を Azure Storage します。" lightbox="media/export-data/storage-networking.png":::
+ポータルから Azure ストレージアカウントの [ **ネットワーク** ] を選択します。 
+
+   :::image type="content" source="media/export-data/storage-networking.png" alt-text="Azure Storage の [ネットワーク] の設定。" lightbox="media/export-data/storage-networking.png":::
    
-[選択されたネットワーク] を選択し、[ファイアウォールの追加] セクションの下の [ **アドレス範囲** ] ボックスに ip アドレスを指定して、 \| インターネットまたはオンプレミスのネットワークからのアクセスを許可します。 次の表では、Azure API for FHIR サービスがプロビジョニングされている Azure リージョンの IP アドレスを確認できます。
+**[選択されたネットワーク]** を選択します。 [ファイアウォール] セクションで、[ **アドレス範囲** ] ボックスに IP アドレスを指定します。 インターネットまたはオンプレミスネットワークからのアクセスを許可する IP 範囲を追加します。 次の表では、Azure API for FHIR サービスがプロビジョニングされている Azure リージョンの IP アドレスを確認できます。
 
 |**Azure リージョン**         |**パブリック IP アドレス** |
 |:----------------------|:-------------------|
@@ -87,7 +94,7 @@ Azure API for FHIR は、セキュリティで保護されたエクスポート�
 | 米国東部 2 EUAP       | 20.39.26.254      |
 | ドイツ北部        | 51.116.51.33      |
 | ドイツ中西部 | 51.116.146.216    |
-| Japan East           | 20.191.160.26     |
+| 東日本           | 20.191.160.26     |
 | 韓国中部        | 20.41.69.51       |
 | 米国中北部     | 20.49.114.188     |
 | 北ヨーロッパ         | 52.146.131.52     |
@@ -101,16 +108,16 @@ Azure API for FHIR は、セキュリティで保護されたエクスポート�
 | 西ヨーロッパ          | 20.61.98.66       |
 | 米国西部 2            | 40.64.135.77      |
 
-### <a name="when-the-azure-storage-account-is-in-the-same-region"></a>Azure ストレージアカウントが同じリージョンにある場合
+### <a name="when-the-azure-storage-account-is-in-the-same-region"></a>Azure ストレージ アカウントが同じリージョンにある場合
 
-構成プロセスは上記と同じですが、CIDR 形式の特定の IP アドレス範囲が使用されます。ただし、100.64.0.0/10 を使用します。 100.64.0.0 –100.127.255.255 を含む IP アドレス範囲を指定する必要がある理由は、サービスで使用される実際の IP アドレスは異なるためですが、各 $export 要求の範囲内にあるためです。
+構成プロセスは上記と同じですが、CIDR 形式の特定の IP アドレス範囲 100.64.0.0/10 が代わりに使用される点が異なります。 IP アドレス範囲 (100.64.0.0 – 100.127.255.255 を含む) を指定する必要がある理由は、サービスで使用される実際の IP アドレスは $export 要求ごとに異なりますが、この範囲には入ることを示すためです。
 
 > [!Note] 
-> 代わりに、10.0.2.0/24 の範囲内のプライベート IP アドレスを使用することができます。 その場合、$export 操作は成功しません。 $Export 要求を再試行することはできますが、100.64.0.0/10 の範囲内の IP アドレスが次回使用されるという保証はありません。 これは設計上の既知のネットワーク動作です。 別の方法として、別のリージョンにストレージアカウントを構成する方法があります。
+> 10.0.2.0/24 の範囲内のプライベート IP アドレスを代わりに使用することができます。 この場合、$export 操作は成功しません。 $Export 要求を再試行することはできますが、100.64.0.0/10 の範囲内の IP アドレスが次回使用されるという保証はありません。 これは設計上の既知のネットワーク動作です。 代替策として、ストレージ アカウントを別のリージョンで構成する方法があります。
     
 ## <a name="next-steps"></a>次の手順
 
-この記事では、$export コマンドを使用して、FHIR リソースをエクスポートする方法について説明しました。 次は、匿名化データをエクスポートする方法を確認します。
+この記事では、$export コマンドを使用して、FHIR リソースをエクスポートする方法について説明しました。 次に、特定できないデータをエクスポートする方法については、以下を参照してください。
  
 >[!div class="nextstepaction"]
 >[匿名化データをエクスポートする](de-identified-export.md)

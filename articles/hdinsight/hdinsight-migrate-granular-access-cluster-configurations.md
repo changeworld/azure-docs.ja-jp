@@ -6,12 +6,12 @@ ms.author: tyfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/20/2020
-ms.openlocfilehash: a30768f4904c9e5be2edc020f12260cf3a54c889
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 47569309f35848e82488abd549751f6f1e5a1baa
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102425891"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104954872"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
@@ -27,8 +27,8 @@ ms.locfileid: "102425891"
 
 | Role                                  | 以前                                                                                       | 今後の予定       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Reader                                | - シークレットを含む読み取りアクセス。                                                                   | - シークレットを **除く** 読み取りアクセス |           |   |   |
-| HDInsight クラスター オペレーター<br>(新しいロール) | 該当なし                                                                                              | - シークレットを含む読み取り/書き込みアクセス         |   |   |
+| Reader                                | - シークレットを含む読み取りアクセス。                                                                   | - シークレットを **除く** 読み取りアクセス | 
+| HDInsight クラスター オペレーター<br>(新しいロール) | 該当なし                                                                                              | - シークレットを含む読み取り/書き込みアクセス         | 
 | Contributor                           | - シークレットを含む読み取り/書き込みアクセス。<br>- すべての種類の Azure リソースを作成および管理します。<br>- スクリプト アクションの実行。     | 変更なし |
 | 所有者                                 | - シークレットを含む読み取り/書き込みアクセス。<br>- すべてのリソースへのフル アクセス<br>- アクセスを他のユーザーに委任する。<br>- スクリプト アクションの実行。 | 変更なし |
 

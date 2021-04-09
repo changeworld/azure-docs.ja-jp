@@ -9,10 +9,10 @@ ms.author: amjads
 ms.collection: linux
 ms.date: 02/14/2017
 ms.openlocfilehash: bc252e560df782625d795b30c6688a34f5c2bd79
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102563593"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能

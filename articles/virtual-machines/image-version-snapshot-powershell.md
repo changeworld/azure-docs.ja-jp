@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.openlocfilehash: 70ef194ab7f7403f31ad431eba25db5f71dfb580
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102556905"
 ---
 # <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-powershell"></a>PowerShell を使用して Shared Image Gallery 内の Managed Disk またはスナップショットからイメージを作成する

@@ -6,16 +6,16 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 03/18/2020
+ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: 60e1b75ee8d8da9a7696ad4f7074207597ec2d0b
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: b4689f9777cee99b5bd85f733812ba986162360c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102486241"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103488112"
 ---
 # <a name="quickstart-use-the-communication-services-calling-client-library"></a>クイック スタート:Communication Services 通話クライアント ライブラリを使用する
 

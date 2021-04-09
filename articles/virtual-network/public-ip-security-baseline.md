@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3dfb2cd445edf33ed8db4807efcc2e6326f838ab
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 7f8633d791e2dd0f0723b272aefcb343d758b248
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/10/2021
-ms.locfileid: "102549007"
+ms.locfileid: "102612356"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure パブリック IP の Azure セキュリティ ベースライン
 
@@ -350,9 +350,9 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 **ガイダンス**: カスタムの Azure Policy 定義を使用する場合は、Azure DevOps または Azure Repos を使用して、コードを安全に格納して管理します。
 
-- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Azure DevOps でコードを格納する方法](/azure/devops/repos/git/gitworkflow)
 
-- [Azure Repos のドキュメント](/azure/devops/repos/index?view=azure-devops)
+- [Azure Repos のドキュメント](/azure/devops/repos/index)
 
 **Azure Security Center の監視**: 適用なし
 
