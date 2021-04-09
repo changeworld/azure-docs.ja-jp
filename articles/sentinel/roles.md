@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: 69f78f6e70fa4f0b04ca7527751085ec0265363a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 77a8e208e463b8ab20d563421d447813b1ce84ee
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048218"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772554"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel のアクセス許可
 
@@ -42,6 +42,8 @@ Azure Sentinel 専用の組み込みロールが 3 つあります。
 
 - [Azure Sentinel 共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)では、上記に加え、ブック、分析ルール、その他の Azure Sentinel リソースの作成と編集を行うことができます。
 
+- [Azure Sentinel Automation 共同作成者](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)は、プレイブックに自動化ルールを追加することを Azure Sentinel に許可します。 これはユーザー アカウント用ではありません。
+
 > [!NOTE]
 >
 > - 最適な結果を得るには、これらのロールを、Azure Sentinel ワークスペースが含まれる **リソース グループ** に割り当てる必要があります。 Azure Sentinel をサポートするためにデプロイされるすべてのリソースを同じリソース グループに配置する必要があるため、このようにすると、それらのリソースにロールが適用されます。
@@ -54,7 +56,7 @@ Azure Sentinel 専用の組み込みロールが 3 つあります。
 
 - プレイブックを使用して脅威への対応を自動化する
 
-    Azure Sentinel では、自動化された脅威の対応に **プレイブック** を使用します。 プレイブックは、**Azure Logic Apps** に基づいて構築されている、別の Azure リソースです。 セキュリティ運用チームの特定のメンバーに、セキュリティ オーケストレーション、自動化、および対応 (SOAR) の操作に Logic Apps を使用する権能を割り当てることができます。 [Logic App 共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor)または [Logic App オペレーター](../role-based-access-control/built-in-roles.md#logic-app-operator) ロールを使用して、プレイブックを使用するための明示的なアクセス許可を割り当てることができます。
+    Azure Sentinel では、自動化された脅威の対応に **プレイブック** を使用します。 プレイブックは、**Azure Logic Apps** に基づいて構築されている、別の Azure リソースです。 セキュリティ運用チームの特定のメンバーに、セキュリティ オーケストレーション、自動化、および対応 (SOAR) の操作に Logic Apps を使用する権能を割り当てることができます。 [Logic App 共同作成者](../role-based-access-control/built-in-roles.md#logic-app-contributor)ロールを使用して、プレイブックを使用するための明示的なアクセス許可を割り当てることができます。
 
 - Azure Sentinel にデータ ソースを接続する
 

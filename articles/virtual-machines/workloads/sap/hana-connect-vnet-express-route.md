@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 218862b2df959fc0a39baa3c2934fc05f252af32
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 540247752be27af268a0485ea9eb68d121a25240
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101672975"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775307"
 ---
 # <a name="connect-a-virtual-network-to-hana-large-instances"></a>HANA Large Instances に仮想ネットワークを接続する
 
@@ -47,7 +47,7 @@ $myVNetName = "VNet01"
 $myGWName = "VNet01GW"
 $myGWConfig = "VNet01GWConfig"
 $myGWPIPName = "VNet01GWPIP"
-$myGWSku = "HighPerformance" # Supported values for HANA large instances are: HighPerformance or UltraPerformance
+$myGWSku = "UltraPerformance" # Supported values for HANA large instances are: UltraPerformance
 
 # These Commands create the Public IP and ExpressRoute Gateway
 $vnet = Get-AzVirtualNetwork -Name $myVNetName -ResourceGroupName $myGroupName
@@ -63,10 +63,7 @@ New-AzVirtualNetworkGateway -Name $myGWName -ResourceGroupName $myGroupName -Loc
 -GatewaySku $myGWSku -VpnType PolicyBased -EnableBgp $true
 ```
 
-この例では、HighPerformance ゲートウェイ SKU が使用されました。 使用できるのは、HighPerformance または UltraPerformance です。SAP HANA on Azure (Large Instances) でサポートされているゲートウェイ SKU はこれらのみとなります。
-
-> [!IMPORTANT]
-> Type II クラス SKU の HANA Large Instances の場合、UltraPerformance ゲートウェイ SKU を使用する必要があります。
+SAP HANA on Azure (L インスタンス) でサポートされている唯一のゲートウェイ SKU は、**UltraPerformance** です。
 
 ## <a name="link-virtual-networks"></a>仮想ネットワークをリンクする
 

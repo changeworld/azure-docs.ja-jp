@@ -9,10 +9,10 @@ ms.date: 02/17/2021
 ms.service: security-center
 ms.topic: how-to
 ms.openlocfilehash: 646495597565bbb033ac3adaa15f3754f33e8fd6
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100634169"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Azure Defender のアラートの抑制

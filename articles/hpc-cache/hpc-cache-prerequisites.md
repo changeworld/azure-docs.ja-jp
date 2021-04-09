@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
 ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104775767"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
@@ -27,7 +27,7 @@ Azure portal を使用して新しい Azure HPC Cache を作成する前に、�
 
   [![ビデオのサムネイル画像:Azure HPC Cache:しくみ (クリックするとビデオ ページに移動します)](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
 
-* [前提条件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) - NAS ストレージ、Azure BLOB ストレージ、ネットワーク アクセス、およびクライアント アクセスの要件について説明します
+* [前提条件](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) - NAS ストレージ、Azure Blob Storage、ネットワーク アクセス、およびクライアント アクセスの要件について説明します
 
   [![ビデオのサムネイル画像:Azure HPC Cache:前提条件 (クリックするとビデオ ページに移動します)](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
 

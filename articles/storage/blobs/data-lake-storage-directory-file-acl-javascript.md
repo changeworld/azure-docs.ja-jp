@@ -1,26 +1,26 @@
 ---
-title: Azure Data Lake Storage Gen2 で JavaScript を使用してデータを管理する
+title: Azure Data Lake Storage Gen2 で JavaScript (Node.js) を使用してデータを管理する
 description: JavaScript 用 Azure Storage Data Lake クライアント ライブラリを使用して、階層型名前空間が有効になっているストレージ アカウントでディレクトリとファイルを管理します。
 author: normesta
 ms.service: storage
-ms.date: 02/17/2021
+ms.date: 03/19/2021
 ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ce5df805ddce6cdb52e4225bb77e2d8dfa9b9b0
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.openlocfilehash: 678af3e2fb4111593ece0cc2cdf3811cf0e793a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "100650169"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104774764"
 ---
-# <a name="use-javascript-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>JavaScript を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する
+# <a name="use-javascript-sdk-in-nodejs-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Node.js の JavaScript SDK を使用して Azure Data Lake Storage Gen2 でディレクトリとファイルを管理する
 
-この記事では、階層型名前空間が有効になっているストレージ アカウントで、JavaScript を使用してディレクトリとファイルを作成および管理する方法を示します。
+この記事では、階層型名前空間が有効になっているストレージ アカウントで、Node.js を使用してディレクトリとファイルを作成および管理する方法を示します。
 
-ディレクトリとファイルのアクセス制御リスト (ACL) を取得、設定、更新する方法については、[Azure Data Lake Storage Gen2 での JavaScript を使用した ACL の管理](data-lake-storage-acl-javascript.md)に関する記事を参照してください。
+ディレクトリとファイルのアクセス制御リスト (ACL) を取得、設定、更新する方法については、[Azure Data Lake Storage Gen2 での Node.js の JavaScript SDK を使用した ACL の管理](data-lake-storage-acl-javascript.md)に関する記事を参照してください。
 
 [パッケージ (ノード パッケージ マネージャー)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples) | [フィードバックを送る](https://github.com/Azure/azure-sdk-for-java/issues)
 
@@ -43,7 +43,11 @@ npm install @azure/storage-file-datalake
 このステートメントをコード ファイルの先頭に配置して、`storage-file-datalake` パッケージをインポートします。 
 
 ```javascript
-const AzureStorageDataLake = require("@azure/storage-file-datalake");
+const {
+AzureStorageDataLake,
+DataLakeServiceClient,
+StorageSharedKeyCredential
+} = require("@azure/storage-file-datalake");
 ```
 
 ## <a name="connect-to-the-account"></a>アカウントに接続する 
