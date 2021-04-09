@@ -48,8 +48,8 @@ ms.locfileid: "92148079"
 | 推奨 | 説明 |
 |-|-|
 | 静的 IP の制限を使用する | Windows 上の Azure App Service では、アプリへのアクセスを許可されている IP アドレスの一覧を定義できます。 許可一覧には、個々 の IP アドレスまたはサブネット マスクによって定義された IP アドレスの範囲を含めることができます。 詳細については、「[Azure App Service 静的 IP 制限](app-service-ip-restrictions.md)」を参照してください。  |
-| Isolated 価格レベルを使用する | Isolated 価格レベルを除くすべての価格レベルでは、Azure App Service の共有ネットワーク インフラストラクチャ上でアプリが実行されます。 Isolated 価格レベルでは、専用の [App Service 環境](environment/intro.md)内でアプリを実行することで完全なネットワークの分離を実現しています。 App Service 環境は、[Azure Virtual Network](../virtual-network/index.yml) の独自のインスタンスで実行されます。|
-| オンプレミス リソースへのアクセス時にセキュリティで保護された接続を使用する | オンプレミス リソースへの接続には、[ハイブリッド接続](app-service-hybrid-connections.md)、[仮想ネットワーク統合](web-sites-integrate-with-vnet.md)、または [App Service 環境](environment/intro.md)を使用できます。 |
+| Isolated 価格レベルを使用する | Isolated 価格レベルを除くすべての価格レベルでは、Azure App Service の共有ネットワーク インフラストラクチャ上でアプリが実行されます。 Isolated 価格レベルでは、専用の [App Service Environment](environment/intro.md)内でアプリを実行することで完全なネットワークの分離を実現しています。 App Service Environment は、[Azure Virtual Network](../virtual-network/index.yml) の独自のインスタンスで実行されます。|
+| オンプレミス リソースへのアクセス時にセキュリティで保護された接続を使用する | オンプレミス リソースへの接続には、[ハイブリッド接続](app-service-hybrid-connections.md)、[仮想ネットワーク統合](web-sites-integrate-with-vnet.md)、または [App Service Environment](environment/intro.md)を使用できます。 |
 | 受信ネットワーク トラフィックへの露出を制限する | ネットワーク セキュリティ グループを使用すると、ネットワーク アクセスを制限し、公開するエンドポイントの数を制御できます。 詳細については、[App Service Environment への受信トラフィックを制御する方法](environment/app-service-app-service-environment-control-inbound-traffic.md)に関する記事を参照してください。 |
 
 ## <a name="monitoring"></a>監視
