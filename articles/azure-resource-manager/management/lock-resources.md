@@ -4,12 +4,12 @@ description: Azure リソースの更新または削除をユーザーに禁止�
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 28c31681b8fbe981cd51db294c91276dfd65d71f
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 6d989f2077618ce80382b38acc651553cb331d5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102619173"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932762"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>リソースのロックによる予期せぬ変更の防止
 
@@ -32,7 +32,7 @@ Resource Manager のロックは、管理ウィンドウで実行され、`https
 
 ロックを適用すると予期しない結果につながる可能性があります。リソースを変更する操作のように見えなくても、実際はロックによってブロックされているアクションを必要とする場合があるためです。 ロックにより、Azure Resource Manager API への POST 要求を必要とする操作を防ぐことができます。 ロックによってブロックされる一般的な操作の例には、次のようなものがあります。
 
-* 読み取り専用ロックを **ストレージ アカウント** に対して設定すると、ユーザーがアカウント キーを一覧表示できなくなります。 Azure Storage の[キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は、アカウント キーへのアクセスを保護する POST 要求によって処理されます。これにより、ストレージ アカウントのデータに完全にアクセスできるようになります。 ストレージ アカウントに対して読み取り専用ロックが設定されている場合、アカウント キーを持っていないユーザーは、BLOB またはキュー データへのアクセスに Azure AD 資格情報を使用する必要があります。 読み取り専用ロックによって、ストレージ アカウントまたはデータ コンテナー (BLOB コンテナーまたはキュー) にスコープが設定されている Azure RBAC ロールの割り当てもできなくなります。
+* 読み取り専用ロックを **ストレージ アカウント** に対して設定すると、ユーザーがアカウント キーを一覧表示できなくなります。 Azure ストレージ の[キーの一覧表示](/rest/api/storagerp/storageaccounts/listkeys)操作は、アカウント キーへのアクセスを保護する POST 要求によって処理されます。これにより、ストレージ アカウントのデータに完全にアクセスできるようになります。 ストレージ アカウントに対して読み取り専用ロックが設定されている場合、アカウント キーを持っていないユーザーは、BLOB またはキュー データへのアクセスに Azure AD 資格情報を使用する必要があります。 読み取り専用ロックによって、ストレージ アカウントまたはデータ コンテナー (BLOB コンテナーまたはキュー) にスコープが設定されている Azure RBAC ロールの割り当てもできなくなります。
 
 * **ストレージ アカウント** に削除不可のロックを設定しても、そのアカウント内のデータが削除または変更されるのを防ぐことはできません。 この種類のロックでは、ストレージ アカウント自体が削除されないように保護するだけであり、そのストレージ アカウント内の BLOB、キュー、テーブル、またはファイルのデータは保護されません。 
 
@@ -324,7 +324,7 @@ az lock delete --ids $lockid
 
 ### <a name="rest-api"></a>REST API
 
-[管理ロック用の REST API](/rest/api/resources/managementlocks) を使用して、デプロイ済みのリソースをロックできます。 REST API を使用すると、ロックを作成し、削除できます。また、既存のロックに関する情報を取得することもできます。
+[管理ロック用の REST API](/rest/api/resources/managementlocks/managementlocks) を使用して、デプロイ済みのリソースをロックできます。 REST API を使用すると、ロックを作成し、削除できます。また、既存のロックに関する情報を取得することもできます。
 
 ロックを作成するには、次のように実行します。
 

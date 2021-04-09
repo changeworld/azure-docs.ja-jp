@@ -7,10 +7,10 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 02/19/2021
 ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101719051"
 ---
 # <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>自動化タスクを作成して Azure リソースを管理し、コストを監視する (プレビュー)

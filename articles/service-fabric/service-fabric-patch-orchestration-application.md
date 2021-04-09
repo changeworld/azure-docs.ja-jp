@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
 ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102614413"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
@@ -212,7 +212,7 @@ Windows の自動更新では、複数のクラスター ノードが同時に�
 
 ニーズに合わせて POA の動作を構成することができます。 アプリケーションを作成または更新するときにアプリケーション パラメーターを渡して、既定値をオーバーライドします。 `Start-ServiceFabricApplicationUpgrade` または `New-ServiceFabricApplication` コマンドレットに `ApplicationParameter` を指定することで、アプリケーション パラメーターを指定できます。
 
-| パラメーター        | Type                          | 詳細 |
+| パラメーター        | 種類                          | 詳細 |
 |:-|-|-|
 |MaxResultsToCache    |Long                              | キャッシュする必要がある Windows Update の結果の最大数。 <br><br>既定値は 3000 で、以下が前提となります。 <br> &nbsp;&nbsp;- ノード数が 20 である。 <br> &nbsp;&nbsp;- 月あたりのノードの更新数が 5 である。 <br> &nbsp;&nbsp;- 操作あたりの結果の数を 10 にできる。 <br> &nbsp;&nbsp;- 過去 3 か月の結果を格納する必要がある。 |
 |TaskApprovalPolicy   |列挙型 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy は、コーディネーター サービスが、Service Fabric クラスター ノードに Windows Update をインストールする際に使用するポリシーを示しています。<br><br>使用できる値は、次のとおりです。 <br>*NodeWise*:Windows 更新プログラムは、一度に 1 つのノードにインストールされます。 <br> *UpgradeDomainWise*:Windows 更新プログラムは、一度に 1 つの更新ドメインにインストールされます (最大で、更新ドメインに属するすべてのノードに Windows 更新プログラムを適用できます)。<br><br> [FAQ](#frequently-asked-questions) に関するセクションを参照してください。これは、クラスターに最適なポリシーを決定するのに役立ちます。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/10/2021
 ms.author: duau
-ms.openlocfilehash: 4a75931017bbde24c17ecdc0da498547c6088682
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bb5efa11bcc723d0f373ae00cf7629a59b4a2ca9
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104581526"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105959808"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute 接続パートナーとピアリングの場所
 
@@ -167,7 +167,7 @@ ExpressRoute の場所 (ピアリングの場所や meet-me-locations と呼ば�
 | **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |サポートされています |サポートされています |ロンドン、ロンドン 2、シンガポール 2 |
 | **Telenor** |サポートされています |サポートされています |アムステルダム、ロンドン、オスロ |
 | **[Telia Carrier](https://www.teliacarrier.com/)** | サポートされています | サポートされています |アムステルダム、シカゴ、ダラス、フランクフルト、香港特別行政区、ロンドン、オスロ、パリ、シリコン バレー、ストックホルム、ワシントン DC |
-| **[Telin](https://www.telin.net/)** | サポートされています | サポートされています |ジャカルタ |
+| **[Telin](https://www.telin.net/product/data-connectivity/telin-cloud-exchange)** | サポートされています | サポートされています |ジャカルタ |
 | **Telmex Uninet**| サポートされています | サポートされています | ダラス |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |サポートされています |サポートされています |メルボルン、シンガポール、シドニー |
 | **[Telus](https://www.telus.com)** |サポートされています |サポートされています |モントリオール、シアトル、ケベックシティ、トロント、バンクーバー |
@@ -255,7 +255,7 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 
 | **接続プロバイダー** | **Exchange** | **場所** |
 | --- | --- | --- |
-| **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** |Equinix |シンガポール |
+| **[1CLOUDSTAR](https://www.1cloudstar.com/service/cloudconnect-azure-expressroute/)** | Equinix |シンガポール |
 | **[Airgate Technologies, Inc.](https://www.airgate.ca/)** | Equinix、Cologix | トロント、モントリオール |
 | **[Alaska Communications](https://www.alaskacommunications.com/Business)** |Equinix |Seattle |
 | **[Altice Business](https://golightpath.com/transport)** |Equinix |ニューヨーク、ワシントン DC |
@@ -263,10 +263,10 @@ Azure の各国のクラウドは互いに分離され、またグローバル�
 | **[Axtel](https://alestra.mx/landing/expressrouteazure/)** |Equinix |ダラス|
 | **[Beanfield Metroconnect](https://www.beanfield.com/business/cloud-exchange)** |Megaport |Toronto|
 | **[Bezeq International Ltd.](https://www.bezeqint.net/english)** | euNetworks | London |
-| **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | アムステルダム、フランクフルト、ロンドン、シンガポール、ワシントン DC |https://www.chief.com.tw/
+| **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | アムステルダム、フランクフルト、ロンドン、シンガポール、ワシントン DC |
 | **[株式会社ブロードバンドタワー](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | 東京 |
 | **[C3ntro Telecom](https://www.c3ntro.com/data/express-route)** | Equinix、Megaport | ダラス |
-| **[Chief]()** | Equinix | 香港特別行政区 |
+| **[Chief](https://www.chief.com.tw/)** | Equinix | 香港特別行政区 |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix、Megaport | フランクフルト、ハンブルク |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | アムステルダム | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | シンガポール | 
