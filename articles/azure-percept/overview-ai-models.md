@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 02/16/2021
 ms.custom: template-concept
-ms.openlocfilehash: 28a8de231f179cf69342da81e6a2ae1989d2a5d6
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8a9ed564012e8b530436152d931f5a5f6470ff98
+ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041588"
+ms.locfileid: "102098368"
 ---
 # <a name="azure-percept-ai-models"></a>Azure Percept AI モデル
 
@@ -52,6 +52,8 @@ Azure Percept Studio を使用すると、カスタムの[ビジョン](./tutori
 
 ## <a name="advanced-development"></a>高度な開発
 
-高度な開発者にとって、使用可能な [Jupyter Notebook](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/Transferlearningusing_SSDLiteV2%20Model.ipynb) は、物体検出用のカスタム データセットを備えた事前トレーニング済みの Python で記述された TensorFlow モデル (MobileNetSSDV2Lite) を使用して転移学習を実行します。 ノートブックは、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/#product-overview) を通じてリモート コンピューティング インスタンスを利用し、AzureML ポータルを使用して、または [Visual Studio Code](https://code.visualstudio.com/) によってローカルで実行することができます。
+次のような作業の最新のガイダンス、チュートリアル、例については、「[Azure Percept DK の高度な開発 GitHub](https://github.com/microsoft/azure-percept-advanced-development)」を参照してください。
 
-また、データセットを管理するための便利な Python [スクリプト](https://github.com/microsoft/Project-Santa-Cruz-Preview/tree/main/Sample-Scripts-and-Notebooks/Official/Scripts)や、高度な AI ソリューションの開発に必要なすべてのツールをインストールして構成する [Dev tools Pack Installer](https://github.com/microsoft/Project-Santa-Cruz-Preview/blob/main/Sample-Scripts-and-Notebooks/Official/Machine%20Learning%20Notebooks/dev-tools-installer.md) も含まれています。
+* デバイスにカスタム AI モデルを取り込む
+* 転送学習で既にサポートされているモデルを更新する
+* その他

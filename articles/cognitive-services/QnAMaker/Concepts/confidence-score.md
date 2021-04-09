@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 489592fcbc779685728b120f18e5e923ee34d655
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: fcfc70f7bfb9e2bb1b1a0edbffdc1282056e5fa7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96346377"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102214050"
 ---
 # <a name="the-confidence-score-of-an-answer"></a>回答の信頼度スコア
 ユーザー クエリがナレッジ ベースに対して一致すると、QnA Maker は、信頼度スコアと共に該当する回答を返します。 このスコアは、回答が特定のユーザー クエリに最適である信頼度を示します。
@@ -53,7 +53,7 @@ ms.locfileid: "96346377"
 - **Coverage**(カバレッジまたはリコール)が重要で､ユーザーの質問に対して部分的な関係しかなくても､できるだけ多くの質問に答えるようにしたい場合は､しきい値を小さくします｡ このことは､ユーザーの実際のクエリに対する答えにはなっていないものの､他の多少関係のある回答が得られるケースが増える可能性があることを意味します｡ *例:* しきい値を **30** にすると、"どこで KB を編集できますか?" などのクエリに回答する場合があります。
 
 > [!NOTE]
-> QnA Maker の新しいバージョンにはスコアリング ロジックの機能強化が含まれ、しきい値に影響を与える可能性があります。 サービスを更新するときは常に、テストを行い、必要に応じてしきい値を調整してください。 お使いの QnA サービスのバージョンは、[こちら](https://www.qnamaker.ai/UserSettings)で確認できます。最新の更新プログラムの入手方法については、[こちら](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)をご覧ください。
+> QnA Maker の新しいバージョンにはスコアリング ロジックの機能強化が含まれ、しきい値に影響を与える可能性があります。 サービスを更新するときは常に、テストを行い、必要に応じてしきい値を調整してください。 お使いの QnA サービスのバージョンは、[こちら](https://www.qnamaker.ai/UserSettings)で確認できます。最新の更新プログラムの入手方法については、[こちら](../How-To/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)をご覧ください。
 
 ## <a name="set-threshold"></a>しきい値の設定
 

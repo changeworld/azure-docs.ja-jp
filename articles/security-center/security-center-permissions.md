@@ -1,24 +1,18 @@
 ---
 title: Azure Security Center におけるアクセス許可 | Microsoft Docs
 description: この記事では、Azure Security Center でロールベースのアクセス制御を使用してアクセス許可をユーザーに割り当て、ロールごとに許可するアクションを特定する方法について説明します。
-services: security-center
-cloud: na
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.service: security-center
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
-ms.date: 12/01/2020
+ms.date: 01/03/2021
 ms.author: memildin
-ms.openlocfilehash: 14ee9f23379a26c1756c622efb7d739f49dd0537
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: dcbb4977e1bfd17f0cbed61abf9ba335615b7799
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102099184"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102443762"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 
@@ -39,15 +33,15 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 
 次の表では、Security Center のロールと許可されているアクションが表示します。
 
-|アクション|セキュリティ閲覧者または <br> Reader |セキュリティ管理者  |リソース グループの共同作成者または <br> リソース グループの所有者  |サブスクリプションの共同作成者  |サブスクリプションの所有者  |
-|:--- |:---:|:---:|:---:|:---:|:---:|
-|セキュリティ ポリシーを編集する|-|✔|-|-|✔|
-|イニシアティブを追加する、または割り当てる (規制コンプライアンス標準を含む)|-|-|-|-|✔|
-|Azure Defender を有効または無効にする|-|✔|-|-|✔|
-|自動プロビジョニングを有効または無効にする|-|✔|-|✔|✔|
-|セキュリティに関する推奨事項をリソースに適用する</br> (および[クイック修復](security-center-remediate-recommendations.md#quick-fix-remediation)を使用する)|-|-|✔|✔|✔|
-|アラートを無視する|-|✔|-|✔|✔|
-|アラートと推奨事項を表示する|✔|✔|✔|✔|✔|
+| アクション                                                                                                                                        | セキュリティ閲覧者または <br> Reader | セキュリティ管理者 | リソース グループの共同作成者または <br> リソース グループの所有者 | サブスクリプションの共同作成者 | サブスクリプションの所有者 |
+|:----------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------:|:--------------:|:------------------------------------------------------:|:------------------------:|:------------------:|
+| セキュリティ ポリシーを編集する                                                                                                                          | -                             | ✔             | -                                                      | -                        | ✔                 |
+| イニシアティブを追加する、または割り当てる (規制コンプライアンス標準を含む)                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
+| Azure Defender を有効または無効にする                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
+| 自動プロビジョニングを有効または無効にする                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| セキュリティに関する推奨事項をリソースに適用する</br> (および[クイック修復](security-center-remediate-recommendations.md#quick-fix-remediation)を使用する) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| アラートを無視する                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
+| アラートと推奨事項を表示する                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 
 > [!NOTE]
 > タスクを実行するために必要となる最小限の権限ロールをユーザーに割り当てることをお勧めします。 たとえば、リソースのセキュリティ正常性に関する情報の表示のみが必要で、推奨事項の適用やポリシーの編集などの操作を行う必要がないユーザーには、閲覧者ロールを割り当ててください。

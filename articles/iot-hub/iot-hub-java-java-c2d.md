@@ -13,12 +13,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-java
-ms.openlocfilehash: 763b9e05adc07c02265dbb511c073b42df44ea95
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5ae1850add94d83278b0fe1905dfa6e53c71fc8e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92146860"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102217892"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
 
@@ -51,7 +51,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 * [デバイスから IoT ハブへのテレメトリ送信](quickstart-send-telemetry-java.md)のクイックスタートまたは [IoT Hub を使用したメッセージ ルーティングの構成](tutorial-routing.md)のチュートリアルの完全に動作するバージョン。
 
-* [Java SE Development Kit 8](/java/azure/jdk/?view=azure-java-stable)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
+* [Java SE Development Kit 8](/java/azure/jdk/)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
 
 * [Maven 3](https://maven.apache.org/download.cgi)
 
@@ -101,7 +101,7 @@ MQTT ではなく AMQP と HTTPS を使用する場合、デバイスは次の�
 * メッセージを破棄します。この場合、IoT Hub は将来の使用に備えてメッセージをデバイスのキュー内に保持します。
 * メッセージを拒否します。この場合、メッセージはデバイスのキューから完全に削除されます。
 
-デバイスがメッセージを完了、破棄、または拒否することを妨げる問題が発生した場合、IoT Hub は一定のタイムアウト期間が経過した後で、メッセージの配信をキューに入れます。 このような理由から、同じメッセージを複数回受信した場合に生成される結果が毎回同じになるように、デバイス アプリ内のメッセージ処理ロジックを*べき等*にする必要があります。
+デバイスがメッセージを完了、破棄、または拒否することを妨げる問題が発生した場合、IoT Hub は一定のタイムアウト期間が経過した後で、メッセージの配信をキューに入れます。 このような理由から、同じメッセージを複数回受信した場合に生成される結果が毎回同じになるように、デバイス アプリ内のメッセージ処理ロジックを *べき等* にする必要があります。
 
 cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub が cloud-to-device メッセージを処理する方法の詳細については、「[IoT ハブから cloud-to-device メッセージを送信する](iot-hub-devguide-messages-c2d.md)」を参照してください。
 
@@ -110,7 +110,7 @@ cloud-to-device メッセージのライフサイクルの詳細など、IoT Hub
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
 
-この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-java.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続**のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
+この記事では、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-java.md)に関するページで作成した IoT ハブを介して cloud-to-device メッセージを送信するバックエンド サービスを作成します。 cloud-to-device メッセージを送信するサービスには、**サービス接続** のアクセス許可が必要となります。 既定では、どの IoT Hub も、このアクセス許可を付与する **service** という名前の共有アクセス ポリシーがある状態で作成されます。
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 

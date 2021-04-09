@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 952889777e4236d7fa03fad5b1bdbf98499f7066
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 52f2a2ed301bf734ad605a2ee68a0ab672a97014
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721312"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218725"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>仮想マシン スケール セットで使用されるロード バランサーを更新または削除する
 
@@ -30,7 +30,7 @@ ms.locfileid: "101721312"
 
 ## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>仮想マシン スケール セットをスケールアウトするためにロード バランサーを設定する
 
-Azure Load Balancer のインスタンスに[インバウンド NAT プール](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest)が設定されていること、および仮想マシン スケール セットがロード バランサーのバックエンド プールに配置されていることを確認します。 新しい仮想マシン インスタンスが仮想マシン スケール セットに追加されると、Load Balancer によって、インバウンド NAT プールに新しいインバウンド NAT 規則が自動的に作成されます。
+Azure Load Balancer のインスタンスに[インバウンド NAT プール](/cli/azure/network/lb/inbound-nat-pool)が設定されていること、および仮想マシン スケール セットがロード バランサーのバックエンド プールに配置されていることを確認します。 新しい仮想マシン インスタンスが仮想マシン スケール セットに追加されると、Load Balancer によって、インバウンド NAT プールに新しいインバウンド NAT 規則が自動的に作成されます。
 
 インバウンド NAT プールが適切に設定されているかどうかを確認するには、次の手順を行います。
 
@@ -44,7 +44,7 @@ Azure Load Balancer のインスタンスに[インバウンド NAT プール](/
 
 仮想マシン スケール セットのインバウンド NAT 規則のセット全体を追加するには、最初にロード バランサーでインバウンド NAT プールを作成します。 次に、仮想マシン スケール セットのネットワーク プロファイルからインバウンド NAT プールを参照します。 CLI を使用した完全な例を示します。
 
-新しいインバウンド NAT プールのフロントエンド ポート範囲が、既存のインバウンド NAT プールと重複しないようにする必要があります。 既存のインバウンド NAT プールの設定を表示するには、この [CLI コマンド](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list)を使用します。
+新しいインバウンド NAT プールのフロントエンド ポート範囲が、既存のインバウンド NAT プールと重複しないようにする必要があります。 既存のインバウンド NAT プールの設定を表示するには、この [CLI コマンド](/cli/azure/network/lb/inbound-nat-pool#az_network_lb_inbound_nat_pool_list)を使用します。
   
 ```azurecli-interactive
   az network lb inbound-nat-pool create 

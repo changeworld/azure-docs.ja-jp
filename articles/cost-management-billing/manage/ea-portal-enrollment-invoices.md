@@ -3,18 +3,18 @@ title: Azure エンタープライズ加入契約の請求書
 description: この記事では、Azure Enterprise の請求書を管理および操作する方法について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 03/05/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
+ms.reviewer: ruturajd
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 71ba1d6e1e45c5c2e72e2be620158b1aa4b71582
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598082"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430813"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure エンタープライズ加入契約の請求書
 
@@ -98,29 +98,41 @@ Azure エンタープライズ ポータルでは、非アクティブな加入�
 
 ## <a name="change-a-po-number-for-an-upcoming-overage-invoice"></a>今後の超過分の請求書の PO 番号を変更する
 
-Azure エンタープライズ ポータルでは、エンタープライズ管理者が請求日より前に設定しない限り、自動的に既定の注文書 (PO) 番号が生成されます。 エンタープライズ管理者は、自動請求書通知メールを受け取ってから 7 日以内に PO 番号を更新することができます。
+Azure エンタープライズ ポータルでは、エンタープライズ管理者が請求日より前に設定しない限り、自動的に既定の注文書 (PO) 番号が生成されます。 エンタープライズ管理者は、自動請求書通知メールを受け取ってから 7 日以内に PO 番号を更新することができます。 
 
-### <a name="to-update-the-azure-services-purchase-order-number"></a>Azure サービスの発注番号を更新するには、次のようにします。
+毎月、PO 番号が自動生成されないようにするために、PO 番号をロックできます。 [PO 番号のロック](#lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles)に関する記事を参照してください。
+
+### <a name="update-the-azure-services-purchase-order-number"></a>Azure サービスの発注番号を更新する
 
 1. Azure エンタープライズ ポータルで、 **[レポート]**  >  **[使用状況の概要]** の順に選択します。
 1. 右上隅にある **[発注番号の編集]** を選択します。
 1. **[Azure サービス]** ラジオ ボタンを選択します。
 1. 日付範囲ドロップダウン メニューから **[請求書期間]** を選択します。
-
    請求書通知を受け取ってから、請求書に対する支払いを行うまでの 7 日間に PO 番号を編集することができます。
 1. **[発注番号]** フィールドに新しい発注番号を入力します。
 1. **[保存]** を選択して変更を送信します。
 
-### <a name="to-update-the-azure-marketplace-purchase-order-number"></a>Azure Marketplace の発注番号を更新するには、次のようにします。
+### <a name="update-the-azure-marketplace-purchase-order-number"></a>Azure Marketplace の発注番号を更新する
 
 1. Azure エンタープライズ ポータルで、 **[レポート]**  >  **[使用状況の概要]** の順に選択します。
 1. 右上隅にある **[発注番号の編集]** を選択します。
 1. **[Marketplace]** ラジオ ボタンを選択します。
-1. 日付範囲ドロップダウン メニューから **[請求書期間]** を選択します。
-
-   請求書通知を受け取ってから、請求書に対する支払いを行うまでの 7 日間に PO 番号を編集することができます。
+1. 日付範囲ドロップダウン メニューから **[請求書期間]** を選択します。  
+    請求書通知を受け取ってから、請求書に対する支払いを行うまでの 7 日間に PO 番号を編集することができます。
 1. **[発注番号]** フィールドに新しい発注番号を入力します。
 1. **[保存]** を選択して変更を送信します。
+
+### <a name="lock-po-number-to-prevent-automatic-update-in-upcoming-billing-cycles"></a>今後の請求サイクルで自動更新が行われないように PO 番号をロックする
+
+PO 番号をロックした後は、すべての新しい請求書に対してロックされたままになり、PO 番号を更新する必要はありません。
+
+1.  Azure Enterprise Portal で、 **[レポート]**  >  **[使用状況の概要]** の順に選択します。
+2.  右上隅にある **[発注番号の編集]** を選択します。
+3.  **[発注番号]** フィールドに新しい PO 番号を入力します。
+4.  **[Lock PO number]\(PO 番号をロックする\)** チェックボックスをオンにします。
+5.  **[保存]** を選択して変更を送信します。  
+    :::image type="content" source="./media/ea-portal-enrollment-invoices/lock-po.png" alt-text="PO 番号の表示/編集ボックスを示すスクリーンショット。" lightbox="./media/ea-portal-enrollment-invoices/lock-po.png" :::
+
 
 ## <a name="azure-enterprise-billing-frequency"></a>Azure エンタープライズ請求の頻度
 

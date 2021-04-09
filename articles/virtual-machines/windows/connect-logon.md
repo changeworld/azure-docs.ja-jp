@@ -2,18 +2,18 @@
 title: Windows Server VM に接続する
 description: Azure portal と Resource Manager デプロイ モデルを使用して Windows VM に接続し、サインオンする方法について説明します。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/26/2018
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dacf34d7098472e98c7f68f7f60fa9bac1a4e5ec
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 007719469eb19809d9e64bccfef9589e1fe491f8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98875773"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607315"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Windows が実行されている Azure 仮想マシンに接続してサインオンする方法
 Azure Portal の **[接続]** ボタンを使用して、Windows デスクトップからリモート デスクトップ (RDP) セッションを開始します。 まず、仮想マシンに接続して、サインオンします。
@@ -23,12 +23,12 @@ Mac から Windows VM に接続するには、[Microsoft リモート デスク�
 ## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
 1. [Azure portal](https://portal.azure.com/) に移動して、VM に接続します。 **[仮想マシン]** を検索して選択します。
 2. 一覧から仮想マシンを選択します。
-3. 仮想マシン ページの最初のページで、 **[接続する]** を選択します。
+3. 仮想マシン ページの最初のページで、**[接続する]** を選択します。
 4. **[仮想マシンへの接続]** ページで、**RDP** を選択してから、適切な **IP アドレス** と **ポート番号** を選択します。 ほとんどの場合、既定の IP アドレスとポートを使用する必要があります。 **[RDP ファイルのダウンロード]** を選択します。 VM に Just-In-Time ポリシーが設定されている場合は、RDP ファイルをダウンロードする前に、まず **[Request access] (アクセス権の要求)** ボタンをクリックしてアクセス権を要求する必要があります。 Just-In-Time ポリシーの詳細については、[Just in Time ポリシーを使用した仮想マシン アクセスの管理](../../security-center/security-center-just-in-time.md)に関するページを参照してください。
 5. ダウンロードした RDP ファイルを開き、プロンプトが表示されたら **[接続]** を選択します。 `.rdp` ファイルの発行元が不明であることを示す警告が表示されます。 これは予期されることです。 **[リモート デスクトップ接続]** ウィンドウで **[接続]** を選択して続行します。
    
     ![Screenshot of a warning about an unknown publisher.](./media/connect-logon/rdp-warn.png)
-3. **[Windows セキュリティ]** ウィンドウで、 **[その他]** 、 **[別のアカウントを使用する]** の順に選択します。 仮想マシンのアカウントの資格情報を入力し、 **[OK]** を選択します。
+3. **[Windows セキュリティ]** ウィンドウで、 **[その他]** 、 **[別のアカウントを使用する]** の順に選択します。 仮想マシンのアカウントの資格情報を入力し、**[OK]** を選択します。
    
      **ローカル アカウント**: 通常は、仮想マシンの作成時に指定したローカル アカウントのユーザー名とパスワードです。 この場合、ドメインは仮想マシンの名前です。これを *vmname*&#92;*username* の形式で入力します。  
    
@@ -64,4 +64,4 @@ Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C
 ```
 
 ## <a name="next-steps"></a>次のステップ
-接続に問題がある場合は、[リモート デスクトップ接続に関するトラブルシューティング](../troubleshooting/troubleshoot-rdp-connection.md?toc=/azure/virtual-machines/windows/toc.json)のページを参照してください。
+接続に問題がある場合は、[リモート デスクトップ接続に関するトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)のページを参照してください。

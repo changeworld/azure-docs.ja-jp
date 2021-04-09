@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: ed9d41a84e455241ed3cfc41b905a671f2a2d499
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 02684ba91c207357e15684870a6fa0ceab3e17ff
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912956"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102520967"
 ---
 # <a name="train-and-track-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用して ML モデルをトレーニングして追跡する (プレビュー)
 
@@ -46,7 +46,7 @@ ms.locfileid: "97912956"
 
  次の表に、Azure Machine Learning を使用できるさまざまなクライアントとそれぞれの機能を示します。
 
- MLflow Tracking は、メトリックのログ機能と成果物の保存機能を提供します。他の方法では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用している場合にのみこれらの機能を利用できます。
+ MLflow Tracking は、メトリックのログ機能と成果物の保存機能を提供します。他の方法では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) を使用している場合にのみこれらの機能を利用できます。
 
 | 機能 | MLflow Tracking & Deployment | Azure Machine Learning Python SDK |  Azure Machine Learning CLI | Azure Machine Learning Studio|
 |---|---|---|---|---|
@@ -63,7 +63,7 @@ ms.locfileid: "97912956"
 ## <a name="prerequisites"></a>前提条件
 
 * `azureml-mlflow` パッケージをインストールします。 
-    * このパッケージからは自動的に、MLflow がワークスペースにアクセスするための接続を提供する、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) の `azureml-core` が持ち込まれます。
+    * このパッケージからは自動的に、MLflow がワークスペースにアクセスするための接続を提供する、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install) の `azureml-core` が持ち込まれます。
 * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)します。
     * [ワークスペースで MLflow 操作を実行するために必要なアクセス許可](how-to-assign-roles.md#mlflow-operations)を確認します。
 
@@ -71,7 +71,7 @@ ms.locfileid: "97912956"
 
 Azure Machine Learning で MLflow Tracking を使用すると、ローカル実行からログに記録されたメトリックと成果物を Azure Machine Learning ワークスペースに格納できます。
 
-MLflow の追跡 URI にアクセスし、ワークスペースを構成するには、`mlflow` および [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) クラスをインポートします。
+MLflow の追跡 URI にアクセスし、ワークスペースを構成するには、`mlflow` および [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) クラスをインポートします。
 
 次のコードでは、`get_mlflow_tracking_uri()` メソッドによって、ワークスペース `ws` に一意の追跡 URI アドレスを割り当て、`set_tracking_uri()` によって、MLflow の追跡 URI がそのアドレスを参照するよう設定します。
 
@@ -118,7 +118,7 @@ dependencies:
     - numpy
 ```
 
-お使いのスクリプトで、[`Environment`](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py) クラスを使用し、コンピューティングとトレーニングの実行環境を構成します。 次に、コンピューティング ターゲットとして、リモート コンピューティングで [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) を構築します。
+お使いのスクリプトで、[`Environment`](/python/api/azureml-core/azureml.core.environment.environment) クラスを使用し、コンピューティングとトレーニングの実行環境を構成します。 次に、コンピューティング ターゲットとして、リモート コンピューティングで [`ScriptRunConfig`](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) を構築します。
 
 ```Python
 import mlflow
@@ -145,7 +145,7 @@ run = exp.submit(src)
 pip install azureml-mlflow
 ```
 
-MLflow の追跡 URI にアクセスし、ワークスペースを構成するには、`mlflow` および [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py) クラスをインポートします。
+MLflow の追跡 URI にアクセスし、ワークスペースを構成するには、`mlflow` および [`Workspace`](/python/api/azureml-core/azureml.core.workspace%28class%29) クラスをインポートします。
 
 ```Python
 import mlflow

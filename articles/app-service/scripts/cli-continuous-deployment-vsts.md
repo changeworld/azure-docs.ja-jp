@@ -9,19 +9,19 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: e1fc3771eaf5e8fa59b297e2052d232150ccfab3
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 3d2dd7691ac601e690e9f477b0450da07233e201
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97006292"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553461"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Azure CLI を使用して継続的なデプロイで App Service アプリを作成する
 
 このサンプル スクリプトでは、App Service でアプリを関連リソースと合わせて作成し、Azure DevOps リポジトリからの継続的デプロイを設定します。 このサンプルでは、以下が必要です。
 
 * 管理アクセス許可のある、アプリケーション コードを含む Azure DevOps リポジトリ。
-* Azure DevOps 組織に対する[個人用アクセス トークン (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts)。
+* Azure DevOps 組織に対する[個人用アクセス トークン (PAT)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -40,7 +40,7 @@ ms.locfileid: "97006292"
 
 このスクリプトでは、次のコマンドを使用します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | Notes |
+| コマンド | Notes |
 |---|---|
 | [`az group create`](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | App Service プランを作成します。 |

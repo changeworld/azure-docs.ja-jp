@@ -7,12 +7,12 @@ ms.date: 11/23/2020
 ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: e6675dbc4381a3a21e9daa651948af17f1d70d7d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2a789b4ca1261c79e8e6eb93a4ed44e7e8e9272e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101747530"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102214237"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>クイック スタート:Azure に ASP.NET Core Web アプリを作成する
 
@@ -20,7 +20,7 @@ ms.locfileid: "101747530"
 
 このクイックスタートでは、初めての ASP.NET Core Web アプリを作成し、デプロイする方法について説明します。 <abbr title="Web アプリケーション、REST API、およびモバイル バックエンド アプリケーションをホストするための HTTP ベースのサービス。">Azure App Service</abbr>. App Service は .NET 5.0 のアプリをサポートします。
 
-完了すると、デプロイされたサンプル ASP.NET Core アプリケーションを含む App Service アプリと App Service プランで構成される Azure リソース グループが完成します。 <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>, consisting of an <abbr title="アプリをホストする Web サーバー ファームの場所、サイズ、機能を指定するプラン。">App Service プラン</abbr>  および  <abbr title="Web アプリの表現。アプリのコード、DNS ホスト名、証明書、関連リソースが含まれています。">App Service アプリ</abbr> with a deployed sample ASP.NET Core application.
+完了すると、デプロイされたサンプル ASP.NET Core アプリケーションを含む App Service アプリと App Service プランで構成される Azure リソース グループが完成します。 <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>構成する <abbr title="アプリをホストする Web サーバー ファームの場所、サイズ、機能を指定するプラン。">App Service プラン</abbr>  および  <abbr title="Web アプリの表現。アプリのコード、DNS ホスト名、証明書、関連リソースが含まれています。">App Service アプリ</abbr> デプロイされたサンプル ASP.NET Core アプリケーションを使用します。
 
 <hr/> 
 
@@ -31,10 +31,12 @@ ms.locfileid: "101747530"
 
 <details>
 <summary>既に Visual Studio 2019 をお持ちの場合</summary>
-  Visual Studio 2019 を既にインストールしている場合:
+Visual Studio 2019 を既にインストールしている場合:
 
-  - **[ヘルプ]**  >  **[更新プログラムの確認]** の順に選択して、Visual Studio に **最新の更新プログラムをインストール** します。 最新の更新プログラムには、.NET 5.0 SDK が含まれています。
-  - **[ツール]**  >  **[ツールと機能を取得]** の順に選択し、**ワークロードを追加** します。
+<ul>
+<li><strong>[ヘルプ]</strong> &gt; <strong>[更新プログラムの確認]</strong> の順に選択して、Visual Studio に<strong>最新の更新プログラムをインストール</strong>します。 最新の更新プログラムには、.NET 5.0 SDK が含まれています。</li>
+<li><strong>[ツール]</strong> &gt; <strong>[ツールと機能を取得]</strong> の順に選択し、<strong>ワークロードを追加</strong>します。</li>
+</ul>
 </details>
 
 <hr/> 
@@ -266,7 +268,7 @@ az login
     <ul>
     <li>既定のリソース グループを作成する。</li>
     <li>既定の App Service プランを作成する。</li>
-    <li>指定された名前で <a href="/cli/azure/webapp?view=azure-cli-latest#az-webapp-create">App Service アプリを作成</a>する。</li>
+    <li>指定された名前で <a href="/cli/azure/webapp#az-webapp-create">App Service アプリを作成</a>する。</li>
     <li>現在の作業ディレクトリからアプリにファイルを <a href="/azure/app-service/deploy-zip">zip してデプロイ</a>する。</li>
     <li>実行中、リソースの作成、ログ記録、ZIP デプロイに関するメッセージが表示されます。</li>
     </ul>
@@ -314,19 +316,19 @@ http://<app_name>.azurewebsites.net
 
 1. `az webapp up` を **実行** して再デプロイします。
 
-```azurecli
-az webapp up --os-type linux
-```
-
-<details>
-<summary>今回、<code>az webapp up</code> は何を行っているのですか?</summary>
-このコマンドを最初に実行したときは、プロジェクト ルートの <i>.azure/config</i> ファイルに、アプリ名、リソース グループ、App Service プランが保存されました。 プロジェクト ルートからもう一度実行すると、<i>.azure/config</i> に保存されている値を使用して、App Service のリソースが既に存在することが検出され、ZIP デプロイが再実行されます。
-</details>
-
+    ```azurecli
+    az webapp up --os-type linux
+    ```
+    
+    <details>
+    <summary>今回、<code>az webapp up</code> は何を行っているのですか?</summary>
+    このコマンドを最初に実行したときは、プロジェクト ルートの <i>.azure/config</i> ファイルに、アプリ名、リソース グループ、App Service プランが保存されました。 プロジェクト ルートからもう一度実行すると、<i>.azure/config</i> に保存されている値を使用して、App Service のリソースが既に存在することが検出され、ZIP デプロイが再実行されます。
+    </details>
+    
 1. デプロイが完了したら、先ほど開いたブラウザー ウィンドウで **最新の情報に更新するためのボタンをクリック** します。
 
-![Azure で実行される更新済みのサンプル アプリ](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
-
+    ![Azure で実行される更新済みのサンプル アプリ](media/quickstart-dotnetcore/dotnet-browse-azure-updated.png)
+    
 [問題がある場合は、お知らせください。](https://aka.ms/DotNetAppServiceLinuxQuickStart)
 
 <hr/> 
@@ -341,8 +343,8 @@ az webapp up --os-type linux
 
 1. 概要ページでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。 左側のメニューは、アプリを構成するためのさまざまなページを示しています。 
 
-![Azure Portal の [App Service] ページ](media/quickstart-dotnetcore/portal-app-overview-up.png)
-
+    ![Azure Portal の [App Service] ページ](media/quickstart-dotnetcore/portal-app-overview-up.png)
+    
 <hr/> 
 
 ## <a name="9-clean-up-resources"></a>9.リソースをクリーンアップする

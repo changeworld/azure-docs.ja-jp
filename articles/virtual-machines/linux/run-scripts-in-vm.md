@@ -2,17 +2,18 @@
 title: Azure Linux VM でスクリプトを実行する
 description: このトピックは、仮想マシン内でスクリプトを実行する方法について説明します
 services: automation
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
-ms.openlocfilehash: 151bc827cc92c749edd2899cb331eebd22e171a7
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 633f4fa6254b2db7a802bb29bffc83b271216d49
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737831"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601756"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Linux VM でスクリプトを実行する
 
@@ -56,7 +57,7 @@ ms.locfileid: "98737831"
 
 ## <a name="serial-console"></a>シリアル コンソール
 
-[Serial console](../troubleshooting/serial-console-linux.md) を使用すると、VM に接続されているキーボードと同じように、VM に直接アクセスできます。
+[Serial console](/troubleshoot/azure/virtual-machines/serial-console-linux) を使用すると、VM に接続されているキーボードと同じように、VM に直接アクセスできます。
 
 * Azure 仮想マシンでコマンドを実行します。
 * Azure Portal 内のマシンにテキスト ベースのコンソールを使用して実行できます。
@@ -70,4 +71,4 @@ ms.locfileid: "98737831"
 * [カスタム スクリプト拡張機能](../extensions/custom-script-linux.md)
 * [実行コマンド](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [Serial console](../troubleshooting/serial-console-linux.md)
+* [Serial console](/troubleshoot/azure/virtual-machines/serial-console-linux)

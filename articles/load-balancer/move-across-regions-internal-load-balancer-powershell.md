@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 73a9356de555e33996b92f05c3bbbabb651f1c9f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2c89ad69207a51a92b56d268c685aa2be4118cf1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014229"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102507587"
 ---
 # <a name="move-azure-internal-load-balancer-to-another-region-using-powershell"></a>PowerShell を使用して Azure 内部ロード バランサーを別のリージョンに移動する
 
@@ -43,18 +43,18 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 ### <a name="export-the-virtual-network-template-and-deploy-from-azure-powershell"></a>仮想ネットワーク テンプレートをエクスポートし、Azure PowerShell からデプロイする
 
-1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
-2.  [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0) を使用して、ターゲット リージョンに移動する仮想ネットワークのリソース ID を取得し、変数に設定します。
+2.  [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) を使用して、ターゲット リージョンに移動する仮想ネットワークのリソース ID を取得し、変数に設定します。
 
     ```azurepowershell-interactive
     $sourceVNETID = (Get-AzVirtualNetwork -Name <source-virtual-network-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) コマンドを実行するディレクトリの .json ファイルに、ソース仮想ネットワークをエクスポートします。
+3. [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup) コマンドを実行するディレクトリの .json ファイルに、ソース仮想ネットワークをエクスポートします。
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -98,7 +98,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
     ```
   
-7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
+7. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](/powershell/module/az.resources/get-azlocation) を使用できます。
 
     ```azurepowershell-interactive
 
@@ -196,20 +196,20 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 9.  **\<resource-group-name>.json** ファイルを保存します。
 
-10. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用して、デプロイするターゲット VNET のターゲット リージョンにリソース グループを作成します。
+10. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して、デプロイするターゲット VNET のターゲット リージョンにリソース グループを作成します。
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
     
-11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
+11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用して、前の手順で作成したリソース グループにデプロイします。
 
     ```azurepowershell-interactive
 
     New-AzResourceGroupDeployment -ResourceGroupName <target-resource-group-name> -TemplateFile <source-resource-group-name>.json
     
     ```
-12. ターゲット リージョンにリソースが作成されたことを確認するには、[Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) と [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0) を使用します。
+12. ターゲット リージョンにリソースが作成されたことを確認するには、[Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) と [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) を使用します。
     
     ```azurepowershell-interactive
 
@@ -224,19 +224,19 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     ```
 ### <a name="export-the-internal-load-balancer-template-and-deploy-from-azure-powershell"></a>内部ロード バランサー テンプレートをエクスポートして Azure PowerShell からデプロイする
 
-1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドで Azure サブスクリプションにサインインし、画面上の指示に従います。
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0) を使用して、ターゲット リージョンに移動する内部ロード バランサーのリソース ID を取得し、変数に設定します。
+2. [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) を使用して、ターゲット リージョンに移動する内部ロード バランサーのリソース ID を取得し、変数に設定します。
 
     ```azurepowershell-interactive
     $sourceIntLBID = (Get-AzLoadBalancer -Name <source-internal-lb-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) コマンドを実行するディレクトリの .json ファイルに、ソース内部ロード バランサー構成をエクスポートします。
+3. [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup) コマンドを実行するディレクトリの .json ファイルに、ソース内部ロード バランサー構成をエクスポートします。
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceIntLBID -IncludeParameterDefaultValue
@@ -263,7 +263,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
              }
     ```
  
-6. 上で移動したターゲット仮想ネットワークの値を編集するには、まずリソース ID を取得し、それをコピーして **\<resource-group-name>.json** ファイルに貼り付ける必要があります。  ID を取得するには、[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork?view=azps-2.6.0) を使用します。
+6. 上で移動したターゲット仮想ネットワークの値を編集するには、まずリソース ID を取得し、それをコピーして **\<resource-group-name>.json** ファイルに貼り付ける必要があります。  ID を取得するには、[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) を使用します。
    
    ```azurepowershell-interactive
     $targetVNETID = (Get-AzVirtualNetwork -Name <target-vnet-name> -ResourceGroupName <target-resource-group-name>).Id
@@ -306,7 +306,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
                 },
     ```
 
-11. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) を使用できます。
+11. リージョンの場所コードを取得するには、次のコマンドを実行して、Azure PowerShell コマンドレットの [Get-AzLocation](/powershell/module/az.resources/get-azlocation) を使用できます。
 
     ```azurepowershell-interactive
 
@@ -433,12 +433,12 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     
 13. **\<resource-group-name>.json** ファイルを保存します。
     
-10. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) を使用して、デプロイするターゲット内部ロード バランサーのターゲット リージョンにリソース グループを作成します。 このプロセスの一環として、上記の既存のリソース グループを再利用することもできます。
+10. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) を使用して、デプロイするターゲット内部ロード バランサーのターゲット リージョンにリソース グループを作成します。 このプロセスの一環として、上記の既存のリソース グループを再利用することもできます。
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) を使用して、前の手順で作成したリソース グループにデプロイします。
+11. 編集した **\<resource-group-name>.json** ファイルを、[New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) を使用して、前の手順で作成したリソース グループにデプロイします。
 
     ```azurepowershell-interactive
 
@@ -446,7 +446,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
     
     ```
 
-12. ターゲット リージョンにリソースが作成されたことを確認するには、[Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) と [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer?view=azps-2.6.0) を使用します。
+12. ターゲット リージョンにリソースが作成されたことを確認するには、[Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) と [Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) を使用します。
     
     ```azurepowershell-interactive
 
@@ -462,7 +462,7 @@ Azure 内部ロード バランサーは、リージョン間で移動するこ�
 
 ## <a name="discard"></a>破棄 
 
-デプロイ後に、ターゲット内の仮想ネットワークとロード バランサーを最初からやり直すか破棄する場合は、ターゲットに作成されたリソース グループを削除します。そうすると、移動した仮想ネットワークとロード バランサーが削除されます。  リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) を使用します。
+デプロイ後に、ターゲット内の仮想ネットワークとロード バランサーを最初からやり直すか破棄する場合は、ターゲットに作成されたリソース グループを削除します。そうすると、移動した仮想ネットワークとロード バランサーが削除されます。  リソース グループを削除するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) を使用します。
 
 ```azurepowershell-interactive
 
@@ -472,7 +472,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ## <a name="clean-up"></a>クリーンアップ
 
-変更をコミットし、NSG の移動を完了するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) または [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork?view=azps-2.6.0) および [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0) を使用して、ソース NSG またはリソース グループを削除します。
+変更をコミットし、NSG の移動を完了するには、[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) または [Remove-AzVirtualNetwork](/powershell/module/az.network/remove-azvirtualnetwork) および [Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer) を使用して、ソース NSG またはリソース グループを削除します。
 
 ```azurepowershell-interactive
 

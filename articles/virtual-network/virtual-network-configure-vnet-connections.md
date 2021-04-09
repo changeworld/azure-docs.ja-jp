@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 9975e40f7d4f3b69c9281efd0288389740bf92ec
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 9a0d06a8f8fa8f68f063404f2b483b817eb0563f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943653"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102452103"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>仮想ネットワークまたは VPN 接続の構成および検証
 
@@ -248,7 +248,7 @@ BGP は、2 つ以上のネットワーク間でルーティングと到達可�
 
 BGP を使用する VPN 接続を構成するには、「[PowerShell を使用して Azure VPN Gateway で BGP を構成する方法](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md)」を参照してください。
 
-自律システム (AS) 番号を作成することによって、仮想ネットワーク ゲートウェイで BGP を有効にします。 基本ゲートウェイでは、BGP はサポートされていません。 ゲートウェイの SKU を確認するには、Azure portal で **[VPN Gateway]** ブレードの **[概要]** セクションに移動します。 SKU が **Basic** の場合は、SKU を **VpnGw1** に変更 ([ゲートウェイのサイズ変更](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway?viewFallbackFrom=azurermps-4.0.0)に関する記事を参照) する必要があります。 
+自律システム (AS) 番号を作成することによって、仮想ネットワーク ゲートウェイで BGP を有効にします。 基本ゲートウェイでは、BGP はサポートされていません。 ゲートウェイの SKU を確認するには、Azure portal で **[VPN Gateway]** ブレードの **[概要]** セクションに移動します。 SKU が **Basic** の場合は、SKU を **VpnGw1** に変更 ([ゲートウェイのサイズ変更](/powershell/module/azurerm.network/resize-azurermvirtualnetworkgateway)に関する記事を参照) する必要があります。 
 
 SKU を確認すると、20 分から 30 分のダウンタイムが発生します。 ゲートウェイが適切な SKU を持つようになったら、[Set-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/set-azurermvirtualnetworkgateway) PowerShell コマンドレットを使用して AS 番号を追加できます。 AS 番号を構成すると、ゲートウェイの BGP ピア IP が自動的に提供されます。
 

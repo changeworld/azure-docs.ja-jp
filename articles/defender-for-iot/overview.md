@@ -1,23 +1,14 @@
 ---
 title: サービスの概要
 description: Defender for IoT の機能とサービスについて詳しく学習し、Defender for IoT によって包括的な IoT セキュリティがどのように実現されるかを理解します。
-services: defender-for-iot
-ms.service: azure
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: overview
 ms.date: 12/09/2020
-ms.openlocfilehash: de8638cbb4e39ccf6013e5a8d596417401700c8d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 15772ee21587ed2bc010e31174af6daac71dfc12
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521596"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786840"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>Azure Defender for IoT へようこそ
 
@@ -81,6 +72,6 @@ IoT デバイスのセキュリティ体制を事前に監視します。 Azure 
 
 Azure Defender for IoT マイクロ エージェントにはソース コードが含まれているため、このマイクロ エージェントをファームウェアに組み込んだり、必要なものだけを含めるようにカスタマイズしたりすることができます。 また、バイナリ パッケージとして使用することも、他の Azure IoT ソリューションに直接統合することもできます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [Azure Defender for IoT のアーキテクチャ](architecture.md)

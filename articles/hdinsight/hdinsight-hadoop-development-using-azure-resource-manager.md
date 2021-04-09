@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.topic: how-to
 ms.date: 02/21/2018
-ms.openlocfilehash: 2ff62f4feba44a1c706ab85db1be3f7f654e6135
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a8f808cd43f96f26db0de28e8059d02d9488320a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945767"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102434663"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
 
@@ -238,7 +238,7 @@ Azure Service Management ベース [(ASM) HDInsight .NET SDK](/previous-versions
 
 | Resource Manager ベースの HDInsight SDK を使用して次の操作を実行 | リンク |
 | --- | --- |
-| Azure HDInsight SDK for .NET|[Azure HDInsight SDK for .NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true) を参照してください |
+| Azure HDInsight SDK for .NET|[Azure HDInsight SDK for .NET](/dotnet/api/overview/azure/hdinsight) を参照してください |
 | Azure Active Directory と .NET SDK を使用して対話型アプリケーションを認証する |[.NET SDK を使用した Apache Hive クエリの実行](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関するページを参照してください。 この記事のコード スニペットでは、対話型の認証アプローチを使用しています。 |
 | Azure Active Directory と .NET SDK を使用して非対話型アプリケーションを認証する |「[非対話型認証 .NET HDInsight アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
 | .NET SDK を使用して Apache Hive ジョブを送信する |[Apache Hive ジョブの送信](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)に関する記事を参照してください |

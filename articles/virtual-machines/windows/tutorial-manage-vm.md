@@ -2,18 +2,18 @@
 title: チュートリアル - Azure PowerShell を使用して Windows VM を作成および管理する
 description: このチュートリアルでは、Azure PowerShell を使用して、Azure で Windows VM を作成し、管理する方法について説明します。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 3e52a808b187e3823acfee2c260986518f2f6f49
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ae298562b5d3306cf6c20b4c2fb7b378ba99c986
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978005"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561621"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM を作成および管理する
 
@@ -50,7 +50,7 @@ New-AzResourceGroup `
 
 VM を作成するときに、オペレーティング システム イメージ、ネットワーク構成、管理者資格情報など、いくつかのオプションを使用できます。 次の例では、Windows Server 2016 Datacenter の既定のバージョンを実行する *myVM* という名前の VM を作成します。
 
-[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-6) を使用して、VM の管理者アカウントに必要なユーザー名とパスワードを設定します。
+[Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) を使用して、VM の管理者アカウントに必要なユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
 $cred = Get-Credential

@@ -1,5 +1,5 @@
 ---
-title: ライブラリ管理
+title: パッケージの管理
 description: Azure Synapse Analytics で、Apache Spark によって使用されるライブラリを追加および管理する方法について説明します。
 services: synapse-analytics
 author: midesa
@@ -9,12 +9,12 @@ ms.date: 03/01/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 955d7f8c2d2ce5ea126d4cce67b0e4e55152ac72
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e8ad6d072af6979eb8509068c1dcd239e7840950
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695092"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598016"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用のライブラリを管理する
 ライブラリでは、プログラムまたはプロジェクトに含めることができる再利用可能なコードが提供されます。 
@@ -38,17 +38,18 @@ Azure Synapse Analytics の Apache Spark には、Anacondas の完全インス�
 Synapse では、ワークスペース パッケージをカスタムまたはプライベートの wheel または jar ファイルにすることができます。 これらのパッケージをワークスペースにアップロードし、後で特定の Spark プールに割り当てることができます。 割り当てが完了すると、これらのワークスペース パッケージはすべての Spark プール セッションに自動的にインストールされます。
 
 ワークスペース ライブラリを管理する方法の詳細については、次の操作方法ガイドをご覧ください。
-- [Python ワークスペース パッケージ:](./apache-spark-manage-python-packages.md#Install-wheel-files) Python wheel ファイルをワークスペース パッケージとしてアップロードし、後からこれらのパッケージを特定のサーバーレス Apache Spark プールに追加します。
-- [Scala または Java ワークスペース パッケージ (プレビュー):](./apache-spark-manage-scala-packages.md#Workspace-packages) Scala および Java jar ファイルをワークスペース パッケージとしてアップロードし、後からこれらのパッケージを特定のサーバーレス Apache Spark プールに追加します。
 
-## <a name="pool-management"></a>プールの管理
+- [Python ワークスペース パッケージ (プレビュー):](./apache-spark-manage-python-packages.md#install-wheel-files) Python wheel ファイルをワークスペース パッケージとしてアップロードし、後からこれらのパッケージを特定のサーバーレス Apache Spark プールに追加します。
+- [Scala または Java ワークスペース パッケージ (プレビュー):](./apache-spark-manage-scala-packages.md#workspace-packages) Scala および Java jar ファイルをワークスペース パッケージとしてアップロードし、後からこれらのパッケージを特定のサーバーレス Apache Spark プールに追加します。
+
+## <a name="pool-packages"></a>プール パッケージ
 場合によっては、特定の Apache Spark プールで使用されるパッケージのセットを標準化する必要があります。 この標準化は、チームの複数のユーザーが同じパッケージをよくインストールするという場合に便利です。 
 
 Azure Synapse Analytics のプール管理機能を使用すると、特定のサーバーレス Apache Spark プールにインストールする既定のライブラリのセットを構成できます。 これらのライブラリは、[基本ランタイム](./apache-spark-version-support.md)の上にインストールされます。 
 
 現時点では、プールの管理は Python でのみサポートされています。 Python の場合、Synapse Spark プールでは、Conda を使用して Python パッケージの依存関係がインストールされ、管理されます。 プール レベルのライブラリを指定するときに、requirements.txt または environment.yml を指定できるようになりました。 この環境構成ファイルは、その Spark プールから Spark インスタンスが作成されるたびに使用されます。 
 
-これらの機能の詳細については、[Python プール管理](./apache-spark-manage-python-packages.md#Pool-libraries)に関するドキュメントをご覧ください。
+これらの機能の詳細については、[Python プール管理](./apache-spark-manage-python-packages.md#pool-libraries)に関するドキュメントをご覧ください。
 
 > [!IMPORTANT]
 > - インストールするパッケージが大きいか、インストールに時間がかかる場合、これは Spark インスタンスのアップタイムに影響します。
@@ -61,8 +62,9 @@ Azure Synapse Analytics のプール管理機能を使用すると、特定の�
 セッション スコープのパッケージでは、ユーザーがセッションの開始時にパッケージの依存関係を定義できます。 セッション スコープのパッケージをインストールすると、指定されたパッケージにアクセスできるのは現在のセッションのみとなります。 そのため、これらのセッション スコープのパッケージが、同じ Apache Spark プールを使用する他のセッションやジョブに影響することはありません。 また、これらのライブラリは、基本ランタイムおよびプール レベルのパッケージの上にインストールされます。 
 
 セッション スコープのパッケージを管理する方法の詳細については、次の操作方法ガイドをご覧ください。
-- [Python セッション パッケージ (プレビュー):](./apache-spark-manage-python-packages.md#Session-scoped-libraries-(preview)) セッションの開始時に Conda *environment.yml* を提供して、一般的なリポジトリから追加の Python パッケージをインストールします。 
-- [Scala または Java セッション パッケージ:](./apache-spark-manage-scala-packages.md#Workspace-packages) セッションの開始時に、```%%configure``` を使用して、インストールする jar ファイルの一覧を指定します。
+
+- [Python セッション パッケージ (プレビュー):](./apache-spark-manage-python-packages.md) セッションの開始時に Conda *environment.yml* を提供して、一般的なリポジトリから追加の Python パッケージをインストールします。 
+- [Scala または Java セッション パッケージ:](./apache-spark-manage-scala-packages.md) セッションの開始時に、`%%configure` を使用して、インストールする jar ファイルの一覧を指定します。
 
 ## <a name="next-steps"></a>次のステップ
 - 既定のライブラリを確認します: [Apache Spark バージョンのサポート](apache-spark-version-support.md)

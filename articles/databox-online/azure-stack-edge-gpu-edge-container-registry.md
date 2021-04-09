@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: bccb6fa33007082737997c7282fb286c38e3bbd7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f19625f1d558071ccb29487efe56146756c7692c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465550"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102437538"
 ---
 # <a name="enable-edge-container-registry-on-your-azure-stack-edge-pro-gpu-device"></a>ご自分の Azure Stack Edge Pro GPU デバイスで Edge コンテナー レジストリを有効にする
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、Edge コンテナー レジストリを有効にし、Azure Stack Edge Pro デバイスの Kubernetes クラスター内から使用する方法について説明します。 この記事で使用されている例では、ソース レジストリ (この場合は Microsoft Container Registry) から、Azure Stack Edge デバイス上のレジストリ (Edge コンテナー レジストリ) にイメージをプッシュする方法について詳しく説明します。
 

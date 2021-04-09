@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 04/24/2020
-ms.openlocfilehash: 31abf5008c082fbb54e873b0502876c2fce5d440
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 5295f0fbd28140bc0b278f3a44915239df200a70
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635967"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102215665"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターに接続する
 
@@ -25,7 +25,7 @@ ms.locfileid: "100635967"
 
 前のチュートリアルでは、Azure Red Hat OpenShift クラスターを作成しました。 これらの手順を完了しておらず、その順番に従って進めたい場合は、[チュートリアル 1: Azure Red Hat OpenShift 4 クラスターを作成する](tutorial-create-cluster.md)方法に関する記事から開始してください。
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 

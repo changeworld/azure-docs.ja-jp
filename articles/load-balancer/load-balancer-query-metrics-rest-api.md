@@ -10,12 +10,12 @@ ms.custom: REST, seodec18
 ms.topic: how-to
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: fbf21ba359ae7914acd2d812ec9e12f9f3ee557a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 391be596d890e05e6a8fdaf35d2cade371e468d6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511945"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102213185"
 ---
 # <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>REST API を使用して Load Balancer の使用状況メトリックを取得する
 
@@ -42,9 +42,9 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="uri-parameters"></a>URI パラメーター
 
-| Name | 説明 |
+| 名前 | 説明 |
 | :--- | :---------- |
-| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)を参照してください｡ |
+| subscriptionId | Azure サブスクリプションを識別するサブスクリプション ID。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli)を参照してください｡ |
 | resourceGroupName | リソースが含まれているリソース グループの名前。 この値は、Azure Resource Manager API、CLI、またはポータルから取得できます。 |
 | loadBalancerName | Azure Load Balancer の名前。 |
 | metric names | 有効な[Load Balancer メトリック](./load-balancer-standard-diagnostics.md)のコンマ区切りリスト。 |

@@ -231,6 +231,8 @@
               href: storage-files-migration-linux-hybrid.md
             - name: Azure File Sync を使用してオンプレミスの NAS からハイブリッド ファイル サーバーに移行する
               href: storage-files-migration-nas-hybrid.md
+            - name: DataBox を使用してオンプレミスの NAS からハイブリッド ファイル サーバーに移行する
+              href: storage-files-migration-nas-hybrid-databox.md
         - name: StorSimple から
           items:
             - name: StorSimple 8100 および 8600 の移行ガイド

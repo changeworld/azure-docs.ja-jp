@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 27f390c3634887dd616c62dbbd4ad85209efde46
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 40222b6a108976de9c82ffccee119b1c1c55f334
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98933702"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102505751"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>HDInsight クラスター管理のベスト プラクティス
 
@@ -28,7 +28,7 @@ HDInsight クラスターを管理するためのベストプラクティスを�
 | Azure CLI | [Azure CLI を使用した HDInsight クラスターを作成する](./hdinsight-hadoop-create-linux-clusters-azure-cli.md) |
 | Azure PowerShell | [Azure PowerShell を使用した HDInsight の Linux ベースのクラスターを作成する](./hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |
 | cURL | [Azure REST API を使用して Apache Hadoop クラスターを作成する](./hdinsight-hadoop-create-linux-clusters-curl-rest.md) |
-| SDKs (.NET, Python, Java) | [.NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true), [Python](/python/api/overview/azure/hdinsight?preserve-view=true&view=azure-python), [Java](/java/api/overview/azure/hdinsight?preserve-view=true&view=azure-java-stable), [Go](./hdinsight-go-sdk-overview.md) |
+| SDKs (.NET, Python, Java) | [.NET](/dotnet/api/overview/azure/hdinsight), [Python](/python/api/overview/azure/hdinsight), [Java](/java/api/overview/azure/hdinsight), [Go](./hdinsight-go-sdk-overview.md) |
 
 > [!Note]
 > クラスターを作成し、以前に作成したクラスターからクラスター名を再利用する場合は、以前のクラスターの削除が完了するまで待ってからクラスターを作成してください。

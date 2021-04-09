@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 02/02/2021
 ms.author: cherylmc
 ms.custom: subject-armqs
-ms.openlocfilehash: bf892a45ee6df2ab29a1b326a663dc41057c7ea6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: d31f490baec49e8e0b6fcf89caa8c19202fdf763
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509740"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102431382"
 ---
 # <a name="quickstart-create-an-any-to-any-configuration-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して Any-to-Any の構成を作成する
 
@@ -125,13 +125,7 @@ ms.locfileid: "99509740"
 
 作成したリソースは、不要になったら削除してください。 Virtual WAN リソースのいくつかは、依存関係に応じた特定の順序で削除する必要があります。 削除が完了するまでに 30 分程度かかる場合があります。
 
-1. 作成した仮想 WAN を開きます。
-1. 仮想 WAN に関連付けられている仮想ハブを選択してハブ ページを開きます。
-1. **[削除]** をクリックします。 ハブ内のすべてのエンティティ (接続、ゲートウェイなど) を削除します。 この処理は、完了までに 30 分ほどかかる場合があります。
-1. ハブはこの時点で削除することも、後でリソース グループを削除するときに削除することもできます。
-1. 仮想 WAN に関連付けられているすべてのハブについて、この手順を繰り返します。
-1. Azure portal でリソース グループに移動します。
-1. **[リソース グループの削除]** を選択します。 これでハブと仮想 WAN を含め、リソース グループの内容がすべて削除されます。
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

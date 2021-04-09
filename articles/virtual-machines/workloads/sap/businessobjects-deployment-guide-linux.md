@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7a40acf7dea11781a0381e93ea180c5185b7818b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b94e1f82409da3329eb6d978fa2ae0222928cd97
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671913"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102505938"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Azure の Linux 向け SAP BusinessObjects BI プラットフォーム デプロイ ガイド
 
@@ -603,7 +603,7 @@ BI および Web アプリケーション サーバーの場合、個別に (ま
 - 可用性セット内の VM にマネージド ディスクを使用する。
 - 各アプリケーション層に対して別々の可用性セットを構成する。
 
-詳細については、[Linux 仮想マシンの可用性の管理](../../manage-availability.md)に関するページを参照してください。
+詳細については、[Linux 仮想マシンの可用性の管理](../../availability.md)に関するページを参照してください。
 
 #### <a name="high-availability-for-cms-database"></a>CMS データベースの高可用性
 

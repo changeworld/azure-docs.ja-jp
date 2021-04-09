@@ -8,14 +8,16 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 6e9ae9b8d9d1154d55991d078af0faef65ff654b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 72ba07090e6ce67501761d97876aa136f146d61c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101699574"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102437929"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Kubernetes はコンテナー化されたアプリケーションを調整するための一般的なオープンソース プラットフォームです。 この記事では、Kubernetes の概要を説明し、さらに Azure Stack Edge Pro デバイス上で Kubernetes がどのように機能するかについて説明します。 
 
@@ -113,9 +115,9 @@ Azure Arc は、Kubernetes クラスターにアプリケーションをデプ�
 1. **[問題の種類]** で **[課金]** を選択します。
 2. **[サブスクリプション]** でご使用のサブスクリプションを選択します。
 3. **[サービス]** で、 **[使用中のサービス]** を選択してから、 **[Azure Stack Edge]** を選択します。
-4. **[リソース]** で、お客様のリソースを選択します。
+4. **[リソース]** で、お使いのリソースを選択します。
 5. **[Summary]\(要約\)** に、問題の説明を入力します。
-6. **[問題の種類]** で、 **[予期しない料金]** を選択します。
+6. **[問題の種類]** で、 **[Unexpected Charges]\(予期しない請求\)** を選択します。
 7. **[問題のサブタイプ]** で、 **[Help me understand charges on my free trial]\(無料試用版への請求について説明してほしい\)** を選択します。
 
 

@@ -2,16 +2,16 @@
 title: Azure Stream Analytics を使用したジオフェンシングおよび地理空間集計
 description: この記事では、ジオフェンシングおよび地理空間集計のために Azure Stream Analytics を使用する方法について説明します。
 ms.service: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: enkrumah
+ms.author: ebnkruma
 ms.topic: how-to
 ms.date: 04/02/2019
-ms.openlocfilehash: fc9442b01685deb710c49adf6be84af740a11805
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 2576e147f0cda86bc4d7143ccc5b5985182f271e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174990"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102436347"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Azure Stream Analytics を使用したジオフェンシングおよび地理空間集計のシナリオ
 

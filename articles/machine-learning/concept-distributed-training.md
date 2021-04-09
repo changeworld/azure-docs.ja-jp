@@ -9,12 +9,12 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: 4e1972e0530656bf6cc0e6319191ab4ebbfbfddb
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: f87175500fcf5bdbcf9a5c2f499f6bab96b37b63
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358577"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102498967"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Azure Machine Learning を使用した分散トレーニング
 
@@ -24,7 +24,7 @@ ms.locfileid: "93358577"
 
 ## <a name="deep-learning-and-distributed-training"></a>ディープ ラーニングと分散トレーニング 
 
-分散トレーニングには主に、[データ並列](#data-parallelism)と[モデル並列](#model-parallelism)の 2 つの種類があります。 ディープ ラーニング モデルにおける分散トレーニングでは、[Azure Machine Learning SDK in Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) は、人気のあるフレームワークの PyTorch および TensorFlow との統合をサポートしています。 どちらのフレームワークも、分散トレーニングにおいてデータ並列を採用しており、コンピューティング速度を最適化するために [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) を活用できます。 
+分散トレーニングには主に、[データ並列](#data-parallelism)と[モデル並列](#model-parallelism)の 2 つの種類があります。 ディープ ラーニング モデルにおける分散トレーニングでは、[Azure Machine Learning SDK in Python](/python/api/overview/azure/ml/intro) は、人気のあるフレームワークの PyTorch および TensorFlow との統合をサポートしています。 どちらのフレームワークも、分散トレーニングにおいてデータ並列を採用しており、コンピューティング速度を最適化するために [horovod](https://horovod.readthedocs.io/en/latest/summary_include.html) を活用できます。 
 
 * [PyTorch を使用した分散トレーニング](how-to-train-pytorch.md#distributed-training)
 

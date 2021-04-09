@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43d3da49688a7daeb3ea4e0c1c3dba505dcd3b59
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216956"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102508335"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>仮想マシンのネットワーク インターフェイスの追加と削除
 
@@ -143,7 +143,7 @@ VM にアタッチされているネットワーク インターフェイスを�
 
 - どのネットワーク インターフェイスから送信トラフィックを送信するかを制御できます。 ただし、VM では既定で、プライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられた IP アドレスからすべての送信トラフィックを送信します。
 
-- 以前は、同じ可用性セット内のすべての VM は、アタッチされるネットワーク インターフェイスを 1 つまたは複数に統一する必要がありました。 現在は、VM のサイズでサポートされている最大数までのネットワーク インターフェイスがアタッチされた VM が同じ可用性セットに存在できます。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットの詳細については、[Azure での VM の可用性の管理](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)に関するページをご覧ください。
+- 以前は、同じ可用性セット内のすべての VM は、アタッチされるネットワーク インターフェイスを 1 つまたは複数に統一する必要がありました。 現在は、VM のサイズでサポートされている最大数までのネットワーク インターフェイスがアタッチされた VM が同じ可用性セットに存在できます。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットの詳細については、[Azure での VM の可用性の管理](../virtual-machines/availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページをご覧ください。
 
 - 同じ VM 内のネットワーク インターフェイスを、1 つの仮想ネットワーク内の別のサブネットに接続できます。 ただし、そのネットワーク インターフェイスはすべて同じ仮想ネットワークに接続されている必要があります。
 

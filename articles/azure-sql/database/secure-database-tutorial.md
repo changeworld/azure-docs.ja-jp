@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: f42db48e0fa0e85d919d6894e5476b7ef5380698
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 8cdf95dd3c0e801896328136b15e4bd4efe53005
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99089294"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102563814"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>チュートリアル:Azure SQL Database 内のデータベースをセキュリティで保護する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -146,7 +146,7 @@ Azure AD の構成の詳細については、次のページを参照してく�
 - [Azure AD への独自のドメイン名の追加](../../active-directory/fundamentals/add-custom-domain.md)
 - [Microsoft Azure での Windows Server AD とのフェデレーションのサポート](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Azure AD ディレクトリの管理](../../active-directory/fundamentals/active-directory-whatis.md)
-- [PowerShell による Azure AD の管理](/powershell/azure/?view=azureadps-2.0)
+- [PowerShell による Azure AD の管理](/powershell/azure/)
 - [ハイブリッド ID で必要なポートとプロトコル](../../active-directory/hybrid/reference-connect-ports.md)
 
 ## <a name="manage-database-access"></a>データベース アクセスを管理する

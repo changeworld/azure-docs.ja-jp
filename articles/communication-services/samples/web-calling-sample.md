@@ -6,15 +6,15 @@ author: chriswhilar
 manager: mariusu-msft
 services: azure-communication-services
 ms.author: mariusu
-ms.date: 10/15/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5752f20cb433a417a684076338214cd2ea80bc8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 824fd19e8acfed75ab3d64048a00f579b70286d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658099"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103496237"
 ---
 # <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
 
@@ -23,6 +23,9 @@ Web 通話サンプルは、Communication Services の Web 通話クライアン
 このサンプルは開発者向けに構築されたもので、これにより Communication Services を簡単に使い始めることができます。 そのユーザー インターフェイスは複数のセクションに分かれており、それぞれに [Show code]\(コードの表示\) ボタンが用意されています。これを使用すると、ブラウザーから自分の Communication Services アプリケーションに直接コードをコピーすることができます。
 
 ## <a name="get-started-with-the-web-calling-sample"></a>Web 通話サンプルの概要
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 > [!IMPORTANT]
 > [このサンプルは GitHub で入手できます](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)。
@@ -85,12 +88,12 @@ PSTN 電話番号に電話をかける際は、代替の発信者番号を指定
 
 - [Calling クライアント ライブラリ](../quickstarts/voice-video-calling/calling-client-samples.md)について理解する
 - [通話のしくみ](../concepts/voice-video-calling/about-call-types.md)の詳細について確認する
-- [API リファレンス ドキュメント](/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js)を確認する
+- [API リファレンス ドキュメント](/javascript/api/azure-communication-services/@azure/communication-calling/)を確認する
 - [Contoso Med App](https://github.com/Azure-Samples/communication-services-contoso-med-app) サンプルを確認する
 
 ## <a name="additional-reading"></a>その他の情報
 
-- [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります。
+- [サンプル](./overview.md) - その他のサンプルと例については、「サンプルの概要」ページを参照してください。
 - [Redux](https://redux.js.org/) - クライアント側の状態管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft が提供する UI ライブラリ
 - [React](https://reactjs.org/) - ユーザー インターフェイスを構築するためのライブラリ

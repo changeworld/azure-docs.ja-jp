@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dee9a845df305b06153d99c2bafe6d74524a139
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75563362"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102449205"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Service Fabric のメトリックと負荷の最適化
 Service Fabric クラスター リソース マネージャーで、クラスターの負荷メトリックを管理する既定の戦略は、負荷を分散することです。 ノードが均等に利用されるようにすることで、リソースの競合や無駄につながるホット スポットとコールド スポットを回避します。 また、クラスター内のワークロードの分散化も、障害対応の観点から見て最も安全です。障害が発生しても、ワークロードの大部分が消費される事態を回避できるからです。 
@@ -89,7 +89,7 @@ ClusterManifest.xml:
 
 
 ## <a name="next-steps"></a>次のステップ
-- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。 オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
+- Cluster Resource Manager には、クラスターを記述するためのさまざまなオプションがあります。 オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関するこの記事を参照してください。
 - メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

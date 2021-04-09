@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 12/17/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 93fd682f252ac3f85c642633484a9c4eb6c2fb4b
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: fea189952b1452c680255ceb99e38609775a8bd6
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180855"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102502690"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Azure App Service のアクセス制限を設定する
 
@@ -173,7 +173,7 @@ Azure Front Door からアプリケーションへのトラフィックは、Azu
     --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
   ```
 
-* [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-5.2.0&preserve-view=true) を使用します。 次に例を示します。
+* [Azure PowerShell](/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule) を使用します。 次に例を示します。
 
 
   ```azurepowershell-interactive

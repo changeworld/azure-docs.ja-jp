@@ -2,22 +2,23 @@
 title: Linux のプロビジョニングの概要
 description: Linux VM イメージを取り込む方法、または Azure で使用する新しいイメージを作成する方法の概要です。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6dafa400f2ce2421db6775084befc0abeab70a04
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87080150"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102563220"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM のプロビジョニング
-一般化されたイメージ (共有イメージ ギャラリーまたはマネージド イメージ) から VM を作成すると、コントロール プレーンによって VM を作成し、VM にパラメーターと設定を渡すことができます。 これは、VM *プロビジョニング*と呼ばれます。 プロビジョニングでは、VM の起動時に VM で使用できる必須の VM Create パラメーター値 (hostname、username、password、SSH キー、customData) がプラットフォームによって作成されます。 
+一般化されたイメージ (共有イメージ ギャラリーまたはマネージド イメージ) から VM を作成すると、コントロール プレーンによって VM を作成し、VM にパラメーターと設定を渡すことができます。 これは、VM *プロビジョニング* と呼ばれます。 プロビジョニングでは、VM の起動時に VM で使用できる必須の VM Create パラメーター値 (hostname、username、password、SSH キー、customData) がプラットフォームによって作成されます。 
 
 イメージ内に組み込まれているプロビジョニング エージェントは、プラットフォームとのインターフェイスを作成し、複数の独立したプロビジョニング インターフェイスに接続することで、完了したプラットフォームにプロパティとシグナルを設定します。 
 

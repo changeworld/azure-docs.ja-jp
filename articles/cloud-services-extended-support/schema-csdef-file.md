@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: ab85067184ebe5b34097a3c81aa521d509ae4b9a
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: d9bf1b54f1bfeebacbb406a50c8496817857204c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744118"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102507570"
 ---
 # <a name="azure-cloud-services-extended-support-definition-schema-csdef-file"></a>Azure Cloud Services (延長サポート) 定義スキーマ (csdef ファイル)
 
@@ -68,7 +68,7 @@ ms.locfileid: "98744118"
 | name                    |必須。 サービスの名前。 サービス アカウント内で一意となる名前を使用してください。|
 | topologyChangeDiscovery | 省略可能。 トポロジの変更通知の種類を指定します。 次のいずれかの値になります。<br /><br /> -   `Blast` - 更新プログラムをすべてのロール インスタンスにできるだけ早く送信します。 オプションを選択する場合、ロールでは、再起動せずにトポロジの更新プログラムを処理できる必要があります。<br />-   `UpgradeDomainWalk` – 前のロール インスタンスが更新プログラムを正常に受け入れた後に、更新プログラムを各インスタンスに順次送信します。|
 | schemaVersion           | 省略可能。 サービス定義スキーマのバージョンを指定します。 複数のバージョンの SDK が一緒にインストールされている場合、Visual Studio では、スキーマ バージョンにより、スキーマの検証に使用する適切な SDK ツールを選択できます。|
-| upgradeDomainCount      | 省略可能。 このサービスのロールが割り当てられるアップグレード ドメインの数を指定します。 そのサービスをデプロイすると、ロール インスタンスがアップグレード ドメインに割り当てられます。 詳細については、「[クラウド サービス ロールまたはデプロイを更新する](sample-update-cloud-service.md)」、[仮想マシンの可用性の管理](../virtual-machines/manage-availability.md)に関する記事を参照してください。アップグレード ドメインを最大 20 まで指定できます。 指定しない場合、アップグレード ドメインの既定の数は 5 です。|
+| upgradeDomainCount      | 省略可能。 このサービスのロールが割り当てられるアップグレード ドメインの数を指定します。 そのサービスをデプロイすると、ロール インスタンスがアップグレード ドメインに割り当てられます。 詳細については、「[クラウド サービス ロールまたはデプロイを更新する](sample-update-cloud-service.md)」、[仮想マシンの可用性の管理](../virtual-machines/availability.md)に関する記事を参照してください。アップグレード ドメインを最大 20 まで指定できます。 指定しない場合、アップグレード ドメインの既定の数は 5 です。|
 
 ## <a name="see-also"></a>関連項目
 

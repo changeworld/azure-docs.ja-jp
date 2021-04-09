@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 03/05/2021
 ms.author: pafarley
-ms.openlocfilehash: a66f65d48a14853ec1da08f5d83b777f4fdac846
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9293d47d8aade11f4cc3ee55bb32574f125dfafc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183319"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102428288"
 ---
 # <a name="whats-new-in-face-service"></a>Face サービスの新機能
 

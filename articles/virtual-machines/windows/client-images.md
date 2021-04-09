@@ -3,17 +3,17 @@ title: Azure で Windows クライアント イメージを使用する
 description: Visual Studio サブスクリプションの特典を使用して、Azure で Windows 7、Windows 8、または Windows 10 を開発/テストのシナリオにデプロイする方法
 author: cynthn
 ms.subservice: imaging
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 0f8a17ca69da15d650ba88642d7a81e477a6c537
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: d09f27eebba5db2edb56185b658c8ae2b06e42d3
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627148"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102552271"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 Enterprise (x64) を開発/テストのシナリオに使用できます。 

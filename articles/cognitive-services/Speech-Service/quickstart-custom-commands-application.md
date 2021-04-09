@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: e046f8cbf6fa0418244f20e9a0c6f75f6da34136
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786878"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102434629"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>カスタム コマンドを使用して音声アシスタントを作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "98786878"
 ## <a name="prerequisites"></a>前提条件
 
 > [!div class="checklist"]
-> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">カスタム コマンドをサポートするリージョンに Azure Speech リソースを作成する。<span class="docon docon-navigate-external x-hidden-focus"></span></a> サポートされているリージョンの一覧については、上記の「**利用可能なリージョン**」の項を参照してください。
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">カスタム コマンドをサポートするリージョンに Azure Speech リソースを作成する。</a> サポートされているリージョンの一覧については、上記の「**利用可能なリージョン**」の項を参照してください。
 > * サンプルの [Smart Room Lite](https://aka.ms/speech/cc-quickstart) JSON ファイルをダウンロードする。
 > * [Windows 音声アシスタント クライアント](https://aka.ms/speech/va-samples-wvac)の最新バージョンをダウンロードする。
 

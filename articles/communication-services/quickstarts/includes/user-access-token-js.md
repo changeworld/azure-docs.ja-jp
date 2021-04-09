@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 08/20/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 381cba23175086a4d9bac7cc0ba71807bc248056
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: eee020e5d96b301e8278d31c26360639553be0ee
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750122"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495322"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -93,6 +93,24 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const identityClient = new CommunicationIdentityClient(connectionString);
 ```
 
+エンドポイントとアクセス キーを分離することもできます。
+```javascript
+// This code demonstrates how to fetch your endpoint and access key
+// from an environment variable.
+const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
+const accessKey = process.env["COMMUNICATION_SERVICES_ACCESSKEY"];
+const tokenCredential = new AzureKeyCredential(accessKey);
+// Instantiate the identity client
+const identityClient = new CommunicationIdentityClient(endpoint, tokenCredential)
+```
+
+マネージド ID をセットアップしている場合は、[マネージド ID の使用](../managed-identity.md)に関する記事を参考に、マネージド ID で認証することもできます。
+```javascript
+const endpoint = process.env["COMMUNICATION_SERVICES_ENDPOINT"];
+const tokenCredential = new DefaultAzureCredential();
+var client = new CommunicationIdentityClient(endpoint, tokenCredential);
+```
+
 ## <a name="create-an-identity"></a>ID の作成
 
 Azure Communication Services は、軽量の ID ディレクトリを保持します。 `createUser` メソッドを使用して、一意の `Id` を持つディレクトリに新しいエントリを作成します。 受け取った ID を、アプリケーションのユーザーへのマッピングと共に格納します。 これらは、アプリケーション サーバーのデータベースなどに格納します。 ID は、後でアクセス トークンを発行するために必要になります。
@@ -104,11 +122,11 @@ console.log(`\nCreated an identity with ID: ${identityResponse.communicationUser
 
 ## <a name="issue-access-tokens"></a>アクセス トークンを発行する
 
-既存の Communication Services ID のアクセス トークンを発行するには、`issueToken` メソッドを使用します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。 パラメーター `communicationUser` の新しいインスタンスは、Azure Communication Services ID の文字列表現に基づいて作成できます。
+既存の Communication Services ID のアクセス トークンを発行するには、`getToken` メソッドを使用します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。 パラメーター `communicationUser` の新しいインスタンスは、Azure Communication Services ID の文字列表現に基づいて作成できます。
 
 ```javascript
 // Issue an access token with the "voip" scope for an identity
-let tokenResponse = await identityClient.issueToken(identityResponse, ["voip"]);
+let tokenResponse = await identityClient.getToken(identityResponse, ["voip"]);
 const { token, expiresOn } = tokenResponse;
 console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
 console.log(token);
@@ -118,11 +136,11 @@ console.log(token);
 
 ## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>ID を作成し、同じ要求内でアクセス トークンを発行する
 
-`createUserWithToken` メソッドを使用して、Communication Services ID を作成し、そのアクセス トークンを発行します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。
+`createUserAndToken` メソッドを使用して、Communication Services ID を作成し、そのアクセス トークンを発行します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。
 
 ```javascript
 // Issue an identity and an access token with the "voip" scope for the new identity
-let identityTokenResponse = await this.client.createUserWithToken(["voip"]);
+let identityTokenResponse = await this.client.createUserAndToken(["voip"]);
 const { token, expiresOn, user } = identityTokenResponse;
 console.log(`\nCreated an identity with ID: ${user.communicationUserId}`);
 console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
@@ -131,7 +149,7 @@ console.log(token);
 
 ## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 
-アクセス トークンの更新は、トークンの発行に使用されたものと同じ ID を使用して `issueToken` を呼び出すだけです。 また、更新されたトークンの `scopes` も指定する必要があります。 
+アクセス トークンの更新は、トークンの発行に使用されたものと同じ ID を使用して `getToken` を呼び出すだけです。 また、更新されたトークンの `scopes` も指定する必要があります。
 
 ```javascript
 // // Value of identityResponse represents the Azure Communication Services identity stored during identity creation and then used to issue the tokens being refreshed
@@ -143,7 +161,7 @@ let refreshedTokenResponse = await identityClient.issueToken(identityResponse, [
 
 場合によっては、明示的にアクセス トークンを取り消すことがあります。 たとえば、アプリケーションのユーザーが、サービスに対する認証に使用するパスワードを変更するような場合です。 `revokeTokens` メソッドを使用すると、ID に対して発行されたすべてのアクティブなアクセス トークンを無効にできます。
 
-```javascript  
+```javascript
 await identityClient.revokeTokens(identityResponse);
 console.log(`\nSuccessfully revoked all access tokens for identity with ID: ${identityResponse.communicationUserId}`);
 ```

@@ -3,16 +3,16 @@ title: Msv2 シリーズ (プレビュー) - Azure Virtual Machines
 description: Msv2 シリーズ VM の仕様。
 author: ayshakeen
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: 04d6daac6644bd8d29479ac527bbdd8a5bdbd116
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a7f4757467523837423d52998eb6b8204090e627
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678673"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562573"
 ---
 # <a name="msv2-and-mdsv2-series-medium-memory-preview"></a>Msv2 および Mdsv2 シリーズのミディアム メモリ (プレビュー)
 
@@ -48,13 +48,13 @@ Msv2 および Mdsv2 シリーズの VM は第 2 世代のみであり、第 2 �
 
 | サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 | 必要なネットワーク帯域幅 (Mbps) | 
 |---|---|---|---|---|---|---|---|
-| Standard_M32dms_v2 | 32 | 875 | 0 | 32 |  20000/500 | 8 | 8000 | 
-| Standard_M64ds_v2 | 64 | 1024 | 0 | 64 | 40000/1000 | 8 | 16000 | 
-| Standard_M64dms_v2 | 64 | 1792 | 0 | 64 | 40000/1000 | 8 | 16000 | 
-| Standard_M128ds_v2 | 128 | 2048 | 0 | 64 | 80000/2000 | 8 | 30000 | 
-| Standard_M128dms_v2 | 128 | 3892 | 0 | 64 | 80000/2000 | 8 | 30000 | 
-| Standard_M192ids_v2 | 192 | 2048 | 0 | 64 | 80000/2000 | 8 | 30000 | 
-| Standard_M192idms_v2 | 192 | 4096 | 0 | 64 | 80000/2000 | 8 | 30000 | 
+| Standard_M32ms_v2 | 32 | 875 | 0 | 32 |  20000/500 | 8 | 8000 | 
+| Standard_M64s_v2 | 64 | 1024 | 0 | 64 | 40000/1000 | 8 | 16000 | 
+| Standard_M64ms_v2 | 64 | 1792 | 0 | 64 | 40000/1000 | 8 | 16000 | 
+| Standard_M128s_v2 | 128 | 2048 | 0 | 64 | 80000/2000 | 8 | 30000 | 
+| Standard_M128ms_v2 | 128 | 3892 | 0 | 64 | 80000/2000 | 8 | 30000 | 
+| Standard_M192is_v2 | 192 | 2048 | 0 | 64 | 80000/2000 | 8 | 30000 | 
+| Standard_M192ims_v2 | 192 | 4096 | 0 | 64 | 80000/2000 | 8 | 30000 | 
 
 ## <a name="mdsv2-medium-memory-with-disk"></a>Mdsv2 ミディアム メモリ (ディスクあり)  
 

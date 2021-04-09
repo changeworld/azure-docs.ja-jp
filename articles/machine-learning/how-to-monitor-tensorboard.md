@@ -10,17 +10,17 @@ ms.author: minxia
 ms.date: 02/27/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7642fe6642c1b938645e520c15ac367e12630f91
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2af82734fb9e1571242eec016f36f691411a8f2e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316663"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102518757"
 ---
 # <a name="visualize-experiment-runs-and-metrics-with-tensorboard-and-azure-machine-learning"></a>TensorBoard と Azure Machine Learning を使用して実験の実行とメトリックを視覚化する
 
 
-この記事では、メインとなる Azure Machine Learning SDK に含まれる [`tensorboard` パッケージ](/python/api/azureml-tensorboard/?preserve-view=true&view=azure-ml-py)を使用して、TensorBoard で実験の実行とメトリックを表示する方法について説明します。 実験の実行を調査すると、機械学習モデルの調整と再トレーニングをより適切に行うことができます。
+この記事では、メインとなる Azure Machine Learning SDK に含まれる [`tensorboard` パッケージ](/python/api/azureml-tensorboard/)を使用して、TensorBoard で実験の実行とメトリックを表示する方法について説明します。 実験の実行を調査すると、機械学習モデルの調整と再トレーニングをより適切に行うことができます。
 
 [TensorBoard](https://www.tensorflow.org/tensorboard/r1/overview) は、実験の構造とパフォーマンスを調査して把握するための Web アプリケーションスイートです。
 
@@ -42,7 +42,7 @@ Azure Machine Learning の実験で TensorBoard を起動する方法は、実�
             * **how-to-use-azureml > track-and-monitor-experiments > tensorboard > export-run-history-to-tensorboard > export-run-history-to-tensorboard.ipynb**
             * **how-to-use-azureml > track-and-monitor-experiments > tensorboard > tensorboard > tensorboard.ipynb**
     * 独自の Jupyter Notebook サーバー
-       * `tensorboard` extra を使用して [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) をインストールする
+       * `tensorboard` extra を使用して [Azure Machine Learning SDK](/python/api/overview/azure/ml/install) をインストールする
         * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)します。  
         * [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
 
@@ -166,7 +166,7 @@ run = exp.submit(src)
 
 TensorBoard は、実行中または実行完了後に起動できます。 以下では、TensorBoard オブジェクト インスタンス `tb` (`run` で読み込まれた実験の実行履歴を取得する) を作成した後、`start()` メソッドを使用して TensorBoard を起動します。 
   
-[TensorBoard コンストラクター](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?preserve-view=true&view=azure-ml-py)は実行の配列を受け取るため、単一要素の配列として渡すように注意してください。
+[TensorBoard コンストラクター](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard)は実行の配列を受け取るため、単一要素の配列として渡すように注意してください。
 
 ```python
 from azureml.tensorboard import Tensorboard
@@ -247,7 +247,7 @@ for alpha in tqdm(alphas):
 
 ### <a name="export-runs-to-tensorboard"></a>実行を TensorBoard にエクスポートする
 
-SDK の [export_to_tensorboard()](/python/api/azureml-tensorboard/azureml.tensorboard.export?preserve-view=true&view=azure-ml-py) メソッドを使用すると、Azure Machine Learning の実験の実行履歴を TensorBoard のログにエクスポートできるため、これらを TensorBoard で表示することができます。  
+SDK の [export_to_tensorboard()](/python/api/azureml-tensorboard/azureml.tensorboard.export) メソッドを使用すると、Azure Machine Learning の実験の実行履歴を TensorBoard のログにエクスポートできるため、これらを TensorBoard で表示することができます。  
 
 次のコードでは、現在の作業ディレクトリ内に `logdir` フォルダーを作成します。 このフォルダーが、`root_run` から実験の実行履歴とログをエクスポートし、その実行を完了済みとマークする場所になります。 
 
@@ -273,7 +273,7 @@ root_run.complete()
 > `export_to_tensorboard(run_name, logdir)` のように実行名を指定することで、特定の実行を TensorBoard にエクスポートすることもできます。
 
 ### <a name="start-and-stop-tensorboard"></a>TensorBoard を起動および停止する
-この実験の実行履歴がエクスポートされたら、[start()](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?preserve-view=true&view=azure-ml-py#&preserve-view=truestart-start-browser-false-) メソッドを使用して TensorBoard を起動できます。 
+この実験の実行履歴がエクスポートされたら、[start()](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard#start-start-browser-false-) メソッドを使用して TensorBoard を起動できます。 
 
 ```Python
 from azureml.tensorboard import Tensorboard
@@ -285,7 +285,7 @@ tb = Tensorboard([], local_root=logdir, port=6006)
 tb.start()
 ```
 
-完了したら、必ず TensorBoard オブジェクトの [stop()](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard?preserve-view=true&view=azure-ml-py#&preserve-view=truestop--) メソッドを呼び出してください。 そうしないと、ノートブック カーネルをシャットダウンするまで、TensorBoard は実行したままになります。 
+完了したら、必ず TensorBoard オブジェクトの [stop()](/python/api/azureml-tensorboard/azureml.tensorboard.tensorboard#stop--) メソッドを呼び出してください。 そうしないと、ノートブック カーネルをシャットダウンするまで、TensorBoard は実行したままになります。 
 
 ```python
 tb.stop()

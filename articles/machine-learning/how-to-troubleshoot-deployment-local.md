@@ -11,12 +11,12 @@ ms.reviewer: luquinta
 ms.date: 11/25/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python, deploy, contperf-fy21q2
-ms.openlocfilehash: 225cb8d7bc35491ceefe444664afe175c7f7ea01
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 69ac47296cb4624de6cdf05ddb3e72973751f631
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954937"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102519624"
 ---
 # <a name="troubleshooting-with-a-local-model-deployment"></a>ローカルでのモデル デプロイを使用したトラブルシューティング
 
@@ -28,8 +28,8 @@ Azure Container Instances (ACI) または Azure Kubernetes Service (AKS) への�
 * オプション A (**推奨**) - Azure Machine Learning コンピューティング インスタンスでローカルにデバッグする
    * [コンピューティング インスタンス](how-to-deploy-local-container-notebook-vm.md)が実行されている Azure Machine Learning ワークスペース
 * オプション B - お使いのコンピューティングでローカルにデバッグする
-   * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
-   * [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+   * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install)。
+   * [Azure CLI](/cli/azure/install-azure-cli)。
    * [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
    * ローカル システムで動作する Docker インストールを使用します。 
    * Docker のインストールを確認するには、ターミナルまたはコマンド プロンプトからコマンド `docker run hello-world` を使用します。 Docker のインストール、または Docker のエラーのトラブルシューティングについては、[Docker のドキュメント](https://docs.docker.com/)を参照してください。
@@ -98,7 +98,7 @@ print(service.run(input_data=test_sample))
 > [!NOTE]
 > スクリプトは、サービスによって使用される `InferenceConfig` オブジェクトによって指定された場所から再度読み込まれます。
 
-モデル、Conda の依存関係、またはデプロイ構成を変更するには、[update()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueupdate--args-) を使用します。 次の例では、サービスで使用されるモデルを更新します。
+モデル、Conda の依存関係、またはデプロイ構成を変更するには、[update()](/python/api/azureml-core/azureml.core.webservice%28class%29#update--args-) を使用します。 次の例では、サービスで使用されるモデルを更新します。
 
 ```python
 service.update([different_model], inference_config, deployment_config)
@@ -106,7 +106,7 @@ service.update([different_model], inference_config, deployment_config)
 
 ### <a name="delete-the-service"></a>サービスの削除
 
-サービスを削除するには、[delete()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) を使用します。
+サービスを削除するには、[delete()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--) を使用します。
 
 ### <a name="inspect-the-docker-log"></a><a id="dockerlog"></a> Docker ログの確認
 

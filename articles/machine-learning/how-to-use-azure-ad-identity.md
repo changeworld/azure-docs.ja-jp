@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: bcf5f75cf5cabe42f530a6a179c2cafd43b5520d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b6e6288f125da2a29a8eff56b64f327914f90cb4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94952541"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102520474"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Azure Kubernetes Service の Machine Learning Web サービスで Azure AD ID を使用する
 
@@ -24,7 +24,7 @@ ms.locfileid: "94952541"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Machine Learning service 向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
+- [Machine Learning service 向けの Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)、[Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Visual Studio Code 拡張機能](tutorial-setup-vscode-extension.md)。
 
 - `kubectl` コマンドを使用した AKS クラスターへのアクセス。 詳細については、「[クラスターへの接続](../aks/kubernetes-walkthrough.md#connect-to-the-cluster)」を参照してください。
 

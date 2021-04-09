@@ -1,24 +1,18 @@
 ---
 title: PowerShell を使用して Azure Security Center にオンボードする
 description: このドキュメントでは、PowerShell コマンドレットを使用して Azure Security Center を有効にする手順について説明します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: e400fcbf-f0a8-4e10-b571-5a0d0c3d0c67
 ms.service: security-center
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 4979ff0010c1f959e8f8fc16f56da61971faf1e9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 25639509cfb689e025ea4388f302378648af8ba6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757070"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439495"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell を使用した Azure Security Center へのオンボードの自動化
 

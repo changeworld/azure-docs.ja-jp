@@ -6,21 +6,21 @@ author: mikben
 manager: mikben
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: b402dec76f88bfdb0bc4758f94cc6e8e279d8040
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 146053ffd72b24216bfa86577787727257da2516
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750757"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495424"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Java Development Kit (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable) バージョン 8 以降。
+- [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降。
 - [Apache Maven](https://maven.apache.org/download.cgi)。
 - デプロイされた Communication Services リソースと接続文字列。 [Communication Services リソースを作成します](../../create-communication-resource.md)。
 - [ユーザー アクセス トークン](../../access-tokens.md)。 スコープは必ず "chat" に設定し、トークン文字列と userId 文字列をメモしてください。
@@ -66,7 +66,7 @@ POM ファイルで、チャット API を使用して `azure-communication-chat
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-common</artifactId>
-    <version>1.0.0-beta.4</version> 
+    <version>1.0.0</version> 
 </dependency>
 ```
 
@@ -78,7 +78,7 @@ Java 用 Azure Communication Services チャット クライアント ライブ�
 | ------------------------------------- | ------------------------------------------------------------ |
 | ChatClient | このクラスは、チャット機能に必要となります。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
 | ChatAsyncClient | このクラスは、非同期チャット機能に必要となります。 サブスクリプション情報を使用してインスタンス化し、それを使用してスレッドを作成、取得、削除します。 |
-| ChatThreadClient | このクラスは、チャット スレッド機能に必要となります。 ChatClient を介してインスタンスを取得し、それを使用して、メッセージの送信/受信/更新/削除、ユーザーの追加/削除/取得、入力通知の送信、開封確認を行います。 |
+| ChatThreadClient | このクラスはチャット スレッド機能に必要です。 ChatClient を介してインスタンスを取得し、それを使用して、メッセージの送信/受信/更新/削除、ユーザーの追加/削除/取得、入力通知の送信、開封確認を行います。 |
 | ChatThreadAsyncClient | このクラスは、非同期チャット スレッド機能に必要となります。 ChatAsyncClient を介してインスタンスを取得し、それを使用して、メッセージの送信/受信/更新/削除、ユーザーの追加/削除/取得、入力通知の送信、開封確認を行います。 |
 
 ## <a name="create-a-chat-client"></a>チャット クライアントを作成する
@@ -203,7 +203,7 @@ chatThreadClient.listMessages().iterableByPage().forEach(resp -> {
 });
 ```
 
-`listMessages` は、メッセージに対して .editMessage() や .deleteMessage() を使用して行われた編集や削除を含む、最新バージョンのメッセージを返します。 削除されたメッセージについては、それがいつ削除されたかを示す datetime 値が `chatMessage.getDeletedOn()` から返されます。 編集されたメッセージについては、それがいつ編集されたかを示す datetime が `chatMessage.getEditedOn()` から返されます。 メッセージの最初の作成日時には、`chatMessage.getCreatedOn()` を使用してアクセスできます。これをメッセージの並べ替えに使用することができます。
+`listMessages` は、メッセージに対して .editMessage() や .deleteMessage() を使用して行われた編集や削除を含む、最新バージョンのメッセージを返します。 削除されたメッセージについては、それがいつ削除されたかを示す datetime 値が `chatMessage.getDeletedOn()` から返されます。 編集されたメッセージについては、メッセージがいつ編集されたかを示す datetime が `chatMessage.getEditedOn()` から返されます。 メッセージの最初の作成日時には、`chatMessage.getCreatedOn()` を使用してアクセスできます。これをメッセージの並べ替えに使用することができます。
 
 `listMessages` は、`chatMessage.getType()` で識別できるさまざまな種類のメッセージを返します。 次の種類があります。
 

@@ -220,10 +220,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: 診断ログのスキーマ
           href: media-services-diagnostic-logs-schema.md
-    - name: Azure Media Player
+    - name: 互換性のあるプレーヤー
       items:
-        - name: Azure Media Player の概要
-          href: ../azure-media-player/azure-media-player-overview.md
+        - name: Media Services 用のメディア プレーヤー
+          href: media-players-overview.md
     - name: v3 API シリーズを使用した開発
       items:
         - name: 概要

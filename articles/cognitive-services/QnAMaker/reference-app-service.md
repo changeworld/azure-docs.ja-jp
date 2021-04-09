@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: c35306d3e0d874218b9ea03fbfeaaff722eacf76
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: da46084c8c2616284c31ef155927e8dbcbd19e0e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896462"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102209361"
 ---
 # <a name="service-configuration"></a>サービス構成
 
@@ -52,7 +52,7 @@ QnA Maker サービスには、次のユーザーが 1 つの QnA Maker サー�
 
 ## <a name="change-azure-cognitive-search"></a>Azure Cognitive Search を変更する
 
-QnA Maker サービスにリンクされている [Cognitive Search サービスを変更する方法](./how-to/set-up-qnamaker-service-azure.md#configure-qna-maker-to-use-different-cognitive-search-resource)を参照してください。
+QnA Maker サービスにリンクされている [Cognitive Search サービスを変更する方法](./how-to/configure-QnA-Maker-resources.md#configure-qna-maker-to-use-different-cognitive-search-resource)を参照してください。
 
 ## <a name="change-default-answer"></a>既定の回答の変更
 

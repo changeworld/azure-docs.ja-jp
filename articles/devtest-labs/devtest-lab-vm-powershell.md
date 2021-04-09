@@ -3,12 +3,12 @@ title: Azure PowerShell を使用して DevTest Labs で仮想マシンを作成
 description: Azure DevTest Labs で Azure PowerShell を使用して仮想マシンを作成および管理する方法を説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6bcc1b8cfe1da7e5eafbee0af008a1defbe6f49d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f79b6ff92d633cf63477cddaabec918df352bec8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85484113"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102499256"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Azure PowerShell を使用して DevTest Labs で仮想マシンを作成する
 この記事では、Azure PowerShell を使用して Azure DevTest Labs で仮想マシンを作成する方法について説明します。 PowerShell スクリプトを使用して、Azure DevTest Labs のラボで仮想マシンの作成を自動化できます。 
@@ -17,10 +17,10 @@ ms.locfileid: "85484113"
 作業を開始する前に、次のことを行います。
 
 - この記事のスクリプトやコマンドのテストに既存のラボを使用しない場合は、[ラボを作成してください](devtest-lab-create-lab.md)。 
-- [Azure PowerShell をインストールする](/powershell/azure/install-az-ps?view=azps-1.7.0)か、Azure portal に統合されている Azure Cloud Shell を使用してください。 
+- [Azure PowerShell をインストールする](/powershell/azure/install-az-ps)か、Azure portal に統合されている Azure Cloud Shell を使用してください。 
 
 ## <a name="powershell-script"></a>PowerShell スクリプト
-このセクションのサンプル スクリプトでは [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) コマンドレットを使用します。  このコマンドレットは、ラボのリソース ID、実行するアクションの名前 (`createEnvironment`)、そのアクションを実行するために必要なパラメーターを取得します。 それらのパラメーターは、すべての仮想マシン記述プロパティが含まれたハッシュ テーブルにあります。 
+このセクションのサンプル スクリプトでは [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) コマンドレットを使用します。  このコマンドレットは、ラボのリソース ID、実行するアクションの名前 (`createEnvironment`)、そのアクションを実行するために必要なパラメーターを取得します。 それらのパラメーターは、すべての仮想マシン記述プロパティが含まれたハッシュ テーブルにあります。 
 
 ```powershell
 [CmdletBinding()]

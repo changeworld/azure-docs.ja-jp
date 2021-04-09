@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
-ms.openlocfilehash: 778feda8d72101d4ae2a0f0c27549701dfb53340
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 1ce20deed8b26dc5f5bebf4656dd3f1c370d766f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341415"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561230"
 ---
 # <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Security Center での Endpoint Protection の評価と推奨事項
 
@@ -29,9 +29,9 @@ Azure Security Center は、Endpoint Protection ソリューションの[サポ�
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Security Center は、 [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) が実行され、結果が **AMServiceEnabled: Fasle の場合に、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。False**
+* Security Center は、[Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) が実行され、結果が **AMServiceEnabled: Fasle の場合に、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。False**
 
-* Security Center は、 [Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus?preserve-view=true&view=win10-ps) が実行され、次のいずれかが発生した場合に、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
+* Security Center は、[Get-MpComputerStatus](/powershell/module/defender/get-mpcomputerstatus) が実行され、次のいずれかが発生した場合に、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
 
   * 次のプロパティのいずれかが false である場合。
 
@@ -49,9 +49,9 @@ Azure Security Center は、Endpoint Protection ソリューションの[サポ�
 
 ## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
 
-* Security Center では、 **SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** をインポートし、 **Get-MProtComputerStatus** を実行して、その結果が **AMServiceEnabled = false** の場合は、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨しています。
+* Security Center では、**SCEPMpModule ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** をインポートし、**Get-MProtComputerStatus** を実行して、その結果が **AMServiceEnabled = false** の場合は、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨しています。
 
-* Security Center は、 **Get-MprotComputerStatus** が実行され、次のいずれかが発生した場合に、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
+* Security Center は、**Get-MprotComputerStatus** が実行され、次のいずれかが発生した場合に、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
 
   * 次のプロパティの少なくとも 1 つが false である。
 
@@ -88,12 +88,12 @@ Security Center は、次のいずれかのチェックが満たされていな�
 
 Security Center は、次のいずれかのチェックが満たされていない場合、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
 
-- Symantec バージョン 12 以上のチェック:レジストリの場所: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" - 値 "PRODUCTVERSION"**
+- Symantec バージョン 12 以上のチェック:レジストリの場所:**HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" - 値 "PRODUCTVERSION"**
 - リアルタイム保護の状態のチェック: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
-- シグネチャの更新の状態のチェック: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 日**
-- フル スキャンの状態のチェック: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 日**
-- Symantec 12 のシグネチャのバージョンへのシグネチャ バージョン番号パスの検索: **レジストリ パス + "CurrentVersion\SharedDefs" - 値 "SRTSP"** 
-- Symantec 14 のシグネチャのバージョンへのパス: **レジストリ パス + "CurrentVersion\SharedDefs\SDSDefs" - 値 "SRTSP"**
+- シグネチャの更新の状態のチェック:**HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 日**
+- フル スキャンの状態のチェック:**HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTime <= 7 日**
+- Symantec 12 のシグネチャのバージョンへのシグネチャ バージョン番号パスの検索:**レジストリ パス + "CurrentVersion\SharedDefs" - 値 "SRTSP"** 
+- Symantec 14 のシグネチャのバージョンへのパス:**レジストリ パス + "CurrentVersion\SharedDefs\SDSDefs" - 値 "SRTSP"**
 
 レジストリ パス:
 - **"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;**
@@ -108,17 +108,17 @@ Security Center は、次のいずれかのチェックが満たされていな�
 
 Security Center は、次のいずれかのチェックが満たされていない場合、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
 
-- McAfee バージョン: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
-- シグネチャのバージョンの検索: **HKLM:\Software\McAfee\AVSolution\DS\DS - 値 "dwContentMajorVersion"**
-- シグネチャの日付の検索: **HKLM:\Software\McAfee\AVSolution\DS\DS - 値 "szContentCreationDate" >= 7 日**
-- スキャン日の検索: **HKLM:\Software\McAfee\Endpoint\AV\ODS - 値 "LastFullScanOdsRunTime" >= 7 日**
+- McAfee バージョン:**HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
+- シグネチャのバージョンの検索:**HKLM:\Software\McAfee\AVSolution\DS\DS - 値 "dwContentMajorVersion"**
+- シグネチャの日付の検索:**HKLM:\Software\McAfee\AVSolution\DS\DS - 値 "szContentCreationDate" >= 7 日**
+- スキャン日の検索:**HKLM:\Software\McAfee\Endpoint\AV\ODS - 値 "LastFullScanOdsRunTime" >= 7 日**
 
 ## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>Linux 向け McAfee エンドポイント セキュリティの脅威防止 
 
 Security Center は、次のいずれかのチェックが満たされていない場合、 **"仮想マシンに Endpoint Protection ソリューションをインストールする"** ことを推奨します。
 
 - ファイル **/opt/isec/ens/threatprevention/bin/isecav** が存在する
-- **"/opt/isec/ens/threatprevention/bin/isecav --version"** の出力: **McAfee name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version >= 10**
+- **"/opt/isec/ens/threatprevention/bin/isecav --version"** の出力:**McAfee name = McAfee Endpoint Security for Linux Threat Prevention and McAfee version >= 10**
 
 Security Center は、次のいずれかのチェックが満たされていない場合、 **"マシンの Endpoint Protection の正常性の問題を解決する"** ことを推奨します。
 

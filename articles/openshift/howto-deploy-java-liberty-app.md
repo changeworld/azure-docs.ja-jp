@@ -7,12 +7,12 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aro, openshift, red hat
-ms.openlocfilehash: acb448a9662daa58b5d2ff42861e238e23586b33
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 08fd3ab112498a983b438d5ba1f1f100816cbf5d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100633888"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102212996"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Azure Red Hat OpenShift 4 クラスターに Open Liberty/WebSphere Liberty を使用する Java アプリケーションをデプロイする
 
@@ -31,7 +31,7 @@ ms.locfileid: "100633888"
 1. Java SE 実装 (たとえば [AdoptOpenJDK OpenJDK 8 LTS/OpenJ9](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=openj9)) をインストールします。
 1. [Maven](https://maven.apache.org/download.cgi) 3.5.0 以上をインストールします。
 1. お使いの OS 用の [Docker](https://docs.docker.com/get-docker/) をインストールします。
-1. [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) 2.0.75 以降をインストールします。
+1. [Azure CLI](/cli/azure/install-azure-cli) 2.0.75 以降をインストールします。
 1. [`envsubst`](https://command-not-found.com/envsubst) がオペレーティング システムに事前にインストールされていないかどうかを調べてインストールします。
 1. このサンプルのコードをローカル システムにクローンします。 サンプルは [GitHub](https://github.com/Azure-Samples/open-liberty-on-aro) にあります。
 1. [Azure Red Hat OpenShift 4 クラスターの作成](./tutorial-create-cluster.md)に関するページの手順に従います。
@@ -40,7 +40,7 @@ ms.locfileid: "100633888"
 
    クラスターでメモリを集中的に使用するアプリケーションを実行する予定の場合は、`--worker-vm-size` パラメーターを使用して、ワーカー ノードにとって適切な仮想マシン サイズを指定します。 たとえば `Standard_E4s_v3` は、クラスターに Elasticsearch オペレーターをインストールするための仮想マシンの最小サイズです。 詳細については、次を参照してください。
 
-   * [クラスターを作成するための Azure CLI](/cli/azure/aro?preserve-view=true&view=azure-cli-latest#az-aro-create)
+   * [クラスターを作成するための Azure CLI](/cli/azure/aro#az-aro-create)
    * [メモリ最適化でサポートされる仮想マシンのサイズ](./support-policies-v4.md#memory-optimized)
    * [Elasticsearch オペレーターをインストールするための前提条件](https://docs.openshift.com/container-platform/4.3/logging/cluster-logging-deploying.html#cluster-logging-deploy-eo-cli_cluster-logging-deploying)
 

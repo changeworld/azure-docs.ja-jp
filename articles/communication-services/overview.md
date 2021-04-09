@@ -5,15 +5,15 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 07/20/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 27b1a2654a52c136c0b827b536f5cf99928e5947
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 40dacdf243505447e9831239ef1252602a3e0f99
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691588"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103491692"
 ---
 # <a name="what-is-azure-communication-services"></a>Azure Communication Services とは
 
@@ -21,6 +21,7 @@ ms.locfileid: "101691588"
 
 > [!IMPORTANT]
 > Azure Communication Services を使用して作成したアプリケーションは、Microsoft Teams と通信を行うことができます。 詳細については、[Teams の相互運用](./quickstarts/voice-video-calling/get-started-teams-interop.md)に関するドキュメントを参照してください。
+
 
 Azure Communication Services を使用すると、リアルタイム マルチメディアによる IP を利用した音声、ビデオ、およびテレフォニー通信機能をアプリケーションに簡単に追加できます。 また、Communication Services クライアント ライブラリを使用すると、通信ソリューションにチャットおよび SMS 機能を追加することもできます。
 
@@ -47,8 +48,8 @@ Azure Communication Services を初めて使用する場合は、次のリソー
 | リソース                               |説明                           |
 |---                                    |---                                   |
 |**[通話アプリを Teams の会議に参加させる](./quickstarts/voice-video-calling/get-started-teams-interop.md)**|Azure Communication Services を使用すると、Microsoft Teams と対話するカスタム会議エクスペリエンスを作成できます。 Communication Services ソリューションのユーザーは、音声、ビデオ、チャット、画面共有を通じて、Teams の参加者と対話することができます。|
-|**[Communication Services リソースを作成する](./quickstarts/create-communication-resource.md)**|Azure Communication Services の使用を開始するには、Azure portal または Communication Services 管理クライアント ライブラリを使用して、最初の Communication Services リソースをプロビジョニングします。 Communication Services リソースの接続文字列を取得したら、最初のユーザー アクセス トークンをプロビジョニングできます。|
-|**[最初のユーザー アクセス トークンを作成する](./quickstarts/access-tokens.md)**|ユーザー アクセス トークンは、Azure Communication Services リソースに対してサービスを認証するために使用されます。 これらのトークンは、Communication Services 管理クライアント ライブラリを使用してプロビジョニングされ、再発行されます。|
+|**[Communication Services リソースを作成する](./quickstarts/create-communication-resource.md)**|Azure Communication Services の使用を開始するには、Azure portal または Communication Services クライアント ライブラリを使用して、最初の Communication Services リソースをプロビジョニングします。 Communication Services リソースの接続文字列を取得したら、最初のユーザー アクセス トークンをプロビジョニングできます。|
+|**[最初のユーザー アクセス トークンを作成する](./quickstarts/access-tokens.md)**|ユーザー アクセス トークンは、Azure Communication Services リソースに対してサービスを認証するために使用されます。 これらのトークンは、Communication Services クライアント ライブラリを使用してプロビジョニングされ、再発行されます。|
 |**[電話番号を取得する](./quickstarts/telephony-sms/get-phone-number.md)**|Azure Communication Services を使用して、電話番号のプロビジョニングとリリースを行うことができます。 これらの電話番号を使用すると、発信通話を開始したり、SMS 通信ソリューションを構築したりできます。|
 |**[アプリから SMS を送信する](./quickstarts/telephony-sms/send.md)**|Azure Communication Services SMS クライアント ライブラリを使用すると、.NET および JavaScript アプリケーションから SMS メッセージを送受信できます。|
 |**[音声およびビデオ通話の使用を開始する](./quickstarts/voice-video-calling/getting-started-with-calling.md)**| Azure Communication Services を使用すると、通話クライアント ライブラリを使用してアプリに音声およびビデオ通話を追加できます。 このライブラリは WebRTC を使用しており、お使いのアプリケーション内でピアツーピアのマルチメディアによるリアルタイム通信を確立することができます。|

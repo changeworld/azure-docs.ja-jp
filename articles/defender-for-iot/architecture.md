@@ -1,24 +1,15 @@
 ---
 title: エージェントレス ソリューション アーキテクチャ
 description: Azure Defender for IoT のエージェントレス アーキテクチャと情報フローについて説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: overview
 ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 28449c4e80e22548d2f727e5ad330ab487528847
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 99ccd0597fddaa86a2452160fc2cbfdadab87a1b
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100521902"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784868"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender for IoT のアーキテクチャ
 
@@ -116,7 +107,7 @@ Azure の Defender for IoT ポータルを使用して、次のようなこと�
 
 - 脅威インテリジェンス パッケージの更新
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [Defender for IoT に関する FAQ](resources-frequently-asked-questions.md)
 

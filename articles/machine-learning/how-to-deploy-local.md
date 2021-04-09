@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: 71f393897dff266f1b0922a19eefd70cffea133d
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: a7d1212d1106f0883d05a860b498b90e4e5f8e00
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96600355"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102517516"
 ---
 # <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Azure Machine Learning でトレーニングされたモデルをローカル コンピューターにデプロイする 
 
@@ -31,7 +31,7 @@ ms.locfileid: "96600355"
 
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 - モデルと環境。 トレーニング済みのモデルがない場合、[こちらのチュートリアル](tutorial-train-models-with-aml.md)で提供されているモデルと依存関係のファイルを使用できます。
-- [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)。
+- [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)。
 - Azure Machine Learning パッケージの依存関係をミラー化する場合は、Anaconda や Miniconda などの Conda マネージャー。
 - Azure Machine Learning 環境のコンテナー化されたバージョンを使用する場合は、Docker。
 
@@ -185,8 +185,8 @@ Docker を使用してモデルを Web サービスとしてデプロイする�
 モデルは次の方法でダウンロードできます。  
 
 - ポータルで **[モデル]** タブを選択し、目的のモデルを選択して、 **[詳細]** ページで **[ダウンロード]** を選択する。
-- コマンドラインで `az ml model download` を使用する ([model download](/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext_azure_cli_ml_az_ml_model_download&preserve-view=false) に関するセクションを参照)。
-- Python SDK `Model.download()` メソッドを使用する (「[Model クラス](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false)」を参照)。
+- コマンドラインで `az ml model download` を使用する ([model download](/cli/azure/ext/azure-cli-ml/ml/model#ext_azure_cli_ml_az_ml_model_download) に関するセクションを参照)。
+- Python SDK `Model.download()` メソッドを使用する (「[Model クラス](/python/api/azureml-core/azureml.core.model.model#download-target-dir------exist-ok-false--exists-ok-none-)」を参照)。
 
 Azure モデルは、1 つまたは複数のシリアル化された Python オブジェクトであり、Python pickle ファイル ( .pkl 拡張子) としてパッケージ化されています。 pickle ファイルの内容は、モデルのトレーニングに使用された機械学習ライブラリまたは技法によって異なります。 たとえば、チュートリアルのモデルを使用している場合は、次のようにしてモデルを読み込むことができます。
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 01/03/2020
 ms.author: twooley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: cb6d5fafa8d956c296124c5a20f8a087160961da
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: faa539119bbb8d73e66788b8ba472cf0db26a2e4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109240"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102431739"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>.NET SDK を使用した Data Lake Storage Gen1 に対するファイルシステム操作
 
@@ -52,9 +52,9 @@ ms.locfileid: "92109240"
       * `Microsoft.Azure.DataLake.Store` - この記事では、v1.0.0 を使用します。
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - この記事では、v2.3.1 を使用します。
 
-      **NuGet パッケージ マネージャー**を閉じます。
+      **NuGet パッケージ マネージャー** を閉じます。
 
-1. **Program.cs**を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
+1. **Program.cs** を開き、既存のコードを削除し、次のステートメントに置き換えて、名前空間の参照を追加します。
 
     ```
     using System;
@@ -202,7 +202,7 @@ Data Lake Storage Gen1 ファイルシステム SDK の使用方法を示すい�
 ## <a name="see-also"></a>関連項目
 
 * [.NET SDK を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-net-sdk.md)
-* [Data Lake Storage Gen1 .NET SDK リファレンス](/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [Data Lake Storage Gen1 .NET SDK リファレンス](/dotnet/api/overview/azure/data-lake-store)
 
 ## <a name="next-steps"></a>次のステップ
 

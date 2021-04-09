@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: d47935f76347b2d5272b386942a85643a732e643
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d9fb9e0221ad6a5749899c89bbd9dc5631e7a91c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831754"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102213268"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>クイック スタート:Azure Resource Manager テンプレートを使用して Key Vault Managed HSM を作成する
 
@@ -43,7 +43,7 @@ CLI を使用して Azure にサインインするには、次のように入力
 az login
 ```
 
-CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。
+CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
 
 ## <a name="create-a-manage-hsm"></a>マネージド HSM を作成する
 
@@ -55,13 +55,13 @@ CLI を使用したログイン オプションの詳細については、「[Az
 
 その他の Azure Key Vault テンプレートのサンプルは[こちら](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault)から入手できます。
 
-このテンプレートには、アカウントに関連付けられたオブジェクト ID が必要です。 これを見つけるには、Azure CLI の [az ad user show](/cli/azure/ad/user?view=azure-cli-latest&preserve-view=true#az_ad_user_show) コマンドを使用します。お使いのメール アドレスを `--id` パラメーターに渡してください。 `--query` パラメーターを使用すると、オブジェクト ID のみに出力を制限することができます。
+このテンプレートには、アカウントに関連付けられたオブジェクト ID が必要です。 これを見つけるには、Azure CLI の [az ad user show](/cli/azure/ad/user#az_ad_user_show) コマンドを使用します。お使いのメール アドレスを `--id` パラメーターに渡してください。 `--query` パラメーターを使用すると、オブジェクト ID のみに出力を制限することができます。
 
 ```azurecli-interactive
 az ad user show --id <your-email-address> --query "objectId"
 ```
 
-さらに、テナント ID も必要になることがあります。 これを見つけるには、Azure CLI の [az ad user show](/cli/azure/account?view=azure-cli-latest&preserve-view=true#az_account_show) コマンドを使用します。 `--query` パラメーターを使用すると、テナント ID のみに出力を制限することができます。
+さらに、テナント ID も必要になることがあります。 これを見つけるには、Azure CLI の [az ad user show](/cli/azure/account#az_account_show) コマンドを使用します。 `--query` パラメーターを使用すると、テナント ID のみに出力を制限することができます。
 
  ```azurecli-interactive
  az account show --query "tenantId"

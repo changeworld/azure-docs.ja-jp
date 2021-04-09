@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 7118ff589e580fd3aa1f693e72152f1ad4c18e10
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 47b4f36aec9a906317a9704a7d73bf66385d9e88
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979880"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102552118"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>チュートリアル:Blazor WebAssembly アプリでユーザーのサインインを行い、保護された API を呼び出す
 
@@ -49,7 +49,7 @@ ms.locfileid: "99979880"
 アプリを作成するには、最新の Blazor テンプレートが必要です。 .NET Core CLI の場合、これらは次のコマンドを使用してインストールできます。
 
 ```dotnetcli
-dotnet new --install Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.1
+dotnet new -i Microsoft.Identity.Web.ProjectTemplates::1.6.0
 ```
 
 それから、次のコマンドを実行してアプリケーションを作成します。 コマンドのプレースホルダーをアプリの [概要] ページの適切な情報に置き換え、コマンド シェルでコマンドを実行します。 `-o|--output` オプションで指定した出力場所にプロジェクト フォルダーが存在しない場合は作成されて、アプリの名前の一部になります。

@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 6edfa1beb568bb05bd0f3f1ef9e7792ac3c3cbe2
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 302f53bd218a2e01a039be4780a0e2ff5974e7b4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94515746"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102215954"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI による仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
 
@@ -166,7 +166,7 @@ VM インスタンスが暗号化されていると､以下の出力例に見�
 
 ## <a name="disable-encryption"></a>暗号化を無効にする
 
-暗号化された VM インスタンス ディスクを使用しない場合は、次のように [az vmss encryption disable](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) で暗号化を無効にすることができます。
+暗号化された VM インスタンス ディスクを使用しない場合は、次のように [az vmss encryption disable](/cli/azure/vmss/encryption#az-vmss-encryption-disable) で暗号化を無効にすることができます。
 
 ```azurecli-interactive
 az vmss encryption disable --resource-group myResourceGroup --name myScaleSet

@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: aebfd4e2fc89ab597d97ef0da60bb4b265d88b96
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 6a0b63dc7fda25e3911ae713a0bea7ae7a0969f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101695845"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104602300"
 ---
 # <a name="tutorial-monitor-apache-spark-application-level-metrics-with-prometheus-and-grafana"></a>チュートリアル: Prometheus と Grafana を使用して Apache Spark アプリケーション レベルのメトリックを監視する
 
@@ -26,7 +26,7 @@ ms.locfileid: "101695845"
 
 ## <a name="prerequisites"></a>前提条件
 
-1.  [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+1.  [Azure CLI](/cli/azure/install-azure-cli)
 2.  [Helm クライアント 3.30 以上](https://github.com/helm/helm/releases)
 3.  [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 4.  [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/en-us/services/kubernetes-service/)

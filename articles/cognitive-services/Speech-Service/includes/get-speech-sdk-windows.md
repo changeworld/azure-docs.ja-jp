@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 33cc9b52c4b687ca8147867b99dc70e8d71a9223
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc4cc5063f72ff3f0db62cde79f7908add86166e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944371"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102434584"
 ---
 :::row:::
     :::column span="3":::
@@ -26,11 +26,11 @@ ms.locfileid: "88944371"
 
 ### <a name="system-requirements"></a>システム要件
 
-Windowsの音声SDKは、システムで <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual StudioのVisual C++ 再配布可能パッケージ 2019<span class="docon docon-navigate-external x-hidden-focus"></span></a>を必要とします。
+Windowsの音声SDKは、システムで <a href="https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads" target="_blank">Microsoft Visual StudioのVisual C++ 再配布可能パッケージ 2019</a>を必要とします。
 
-- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">x86 用にインストールする<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank"> x64用にインストールする<span class="docon docon-navigate-external x-hidden-focus"></span></a>
-- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">x64ARMx用にインストールする <span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x86.exe" target="_blank">x86 用にインストールする</a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.x64.exe" target="_blank"> x64用にインストールする</a>
+- <a href="https://aka.ms/vs/16/release/vc_redist.arm64.exe" target="_blank">x64ARMx用にインストールする </a>
 
 ### <a name="c"></a>C#
 

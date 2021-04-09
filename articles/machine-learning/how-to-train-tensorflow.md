@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 41231e19960edfe1a4f0521b8738fa62a463c927
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 583f588004f41fc07037e7f5e4ce75538a581c70
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796467"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102518332"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow モデルをトレーニングする
 
@@ -36,7 +36,7 @@ TensorFlow モデルを一から開発する場合でも、[既存のモデル](
  
  - 独自の Jupyter Notebook サーバー
 
-    - [Azure Machine Learning SDK (1.15.0 以上) をインストールします](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+    - [Azure Machine Learning SDK (1.15.0 以上) をインストールします](/python/api/overview/azure/ml/install)。
     - [ワークスペース構成ファイルを作成します](how-to-configure-environment.md#workspace)。
     - [サンプル スクリプト ファイル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/tensorflow/train-hyperparameter-tune-deploy-with-tensorflow) `tf_mnist.py` および `utils.py` をダウンロードする
      
@@ -66,7 +66,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
-[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
+[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
 
 [前提条件のセクション](#prerequisites)で作成した `config.json` ファイルからワークスペース オブジェクトを作成します。
 
@@ -192,7 +192,7 @@ tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudn
 
 ### <a name="create-a-scriptrunconfig"></a>ScriptRunConfig を作成する
 
-[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) オブジェクトを作成して、トレーニング スクリプト、使用する環境、実行対象のコンピューティング先など、トレーニング ジョブの構成の詳細を指定します。 トレーニング スクリプトへの引数は、`arguments` パラメーターで指定されている場合、すべてコマンド ラインで渡されます。
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) オブジェクトを作成して、トレーニング スクリプト、使用する環境、実行対象のコンピューティング先など、トレーニング ジョブの構成の詳細を指定します。 トレーニング スクリプトへの引数は、`arguments` パラメーターで指定されている場合、すべてコマンド ラインで渡されます。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -220,7 +220,7 @@ ScriptRunConfig を使用したジョブの構成の詳細については、[ト
 
 ### <a name="submit-a-run"></a>実行を送信する
 
-[実行オブジェクト](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)には、ジョブの実行中および完了後の実行履歴へのインターフェイスが用意されています。
+[実行オブジェクト](/python/api/azureml-core/azureml.core.run%28class%29)には、ジョブの実行中および完了後の実行履歴へのインターフェイスが用意されています。
 
 ```Python
 run = Experiment(workspace=ws, name='Tutorial-TF-Mnist').submit(src)
@@ -289,7 +289,7 @@ dependencies:
   - horovod==0.19.5
 ```
 
-Azure ML で MPI/Horovod を使用して分散ジョブを実行するには、ScriptRunConfig コンストラクターの `distributed_job_config` パラメーターに [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py) を指定する必要があります。 下記のコードでは、ノードごとに 1 つのプロセスを実行する 2 ノードの分散ジョブを構成します。 ノードごとに複数のプロセスを実行する場合 (つまり、クラスター SKU に複数の GPU がある場合) も、MpiConfiguration にさらに `process_count_per_node` パラメーターを指定します (既定値は `1`)。
+Azure ML で MPI/Horovod を使用して分散ジョブを実行するには、ScriptRunConfig コンストラクターの `distributed_job_config` パラメーターに [MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration) を指定する必要があります。 下記のコードでは、ノードごとに 1 つのプロセスを実行する 2 ノードの分散ジョブを構成します。 ノードごとに複数のプロセスを実行する場合 (つまり、クラスター SKU に複数の GPU がある場合) も、MpiConfiguration にさらに `process_count_per_node` パラメーターを指定します (既定値は `1`)。
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -309,7 +309,7 @@ Azure ML で Horovod を使用して分散 TensorFlow を実行することに�
 
 TensorFlow 2.x の `tf.distribute.Strategy` API など、トレーニング コードで[ネイティブの TensorFlow](https://www.tensorflow.org/guide/distributed_training) を使用している場合は、Azure ML から分散ジョブを起動することもできます。 
 
-そうするには、ScriptRunConfig コンストラクターの `distributed_job_config` パラメーターに [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) を指定します。 `tf.distribute.experimental.MultiWorkerMirroredStrategy` を使用している場合は、TensorflowConfiguration で、トレーニング ジョブのノード数に対応する `worker_count` を指定します。
+そうするには、ScriptRunConfig コンストラクターの `distributed_job_config` パラメーターに [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) を指定します。 `tf.distribute.experimental.MultiWorkerMirroredStrategy` を使用している場合は、TensorflowConfiguration で、トレーニング ジョブのノード数に対応する `worker_count` を指定します。
 
 ```python
 import os

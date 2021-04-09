@@ -12,16 +12,16 @@ ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 117b4fec13c22ffb2f3163d50be44734d24ef3fa
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: aeff14e1676389eb2204cad45ea7b00d5aa9796b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99259103"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102566653"
 ---
 # <a name="azure-ad-powershell-examples-for-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシのための Azure AD PowerShell の例
 
-次の表には、Azure AD アプリケーション プロキシのための PowerShell スクリプトの例へのリンクが含まれています。 これらのサンプルには、特に明記されていない限り、[Graph 用 AzureAD V2 PowerShell モジュール](/powershell/azure/active-directory/install-adv2)または [Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)が必要です。
+次の表には、Azure AD アプリケーション プロキシのための PowerShell スクリプトの例へのリンクが含まれています。 これらのサンプルには、特に明記されていない限り、[Graph 用 AzureAD V2 PowerShell モジュール](/powershell/azure/active-directory/install-adv2)または [Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true)が必要です。
 
 
 これらのサンプルで使用されるコマンドレットの詳細については、「[アプリケーション プロキシ アプリケーションの管理](/powershell/module/azuread/#application_proxy_application_management)」および「[アプリケーション プロキシ コネクタの管理](/powershell/module/azuread/#application_proxy_connector_management)」を参照してください。

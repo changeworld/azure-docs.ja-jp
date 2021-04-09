@@ -5,15 +5,15 @@ services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 02/12/2021
+ms.date: 03/04/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 54c29d76757916a8eea54af16babdae21b809a19
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 3035b5d2803ff91e84bc6b47a99963185f9195d3
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101750190"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623190"
 ---
 ## <a name="disk-level-bursting"></a>ディスクレベルでのバースト
 
@@ -63,15 +63,14 @@ ms.locfileid: "101750190"
 
 クレジットベースのバーストは、Azure パブリック クラウド、Azure Government クラウド、および Azure China クラウドのすべてのリージョンで、ディスク サイズ P20 以下で利用できます。 既定では、ディスク バーストは、サポートされているディスク サイズの新しいデプロイと既存のデプロイすべてで有効になっています。 VM レベルのバーストでは、クレジットベースのバーストだけが使用されます。
 
-### <a name="virtual-machine-level-bursting"></a>仮想マシンレベルのバースト
-VM レベルのバーストのサポートは、パブリック クラウド内のすべてのリージョンで、サポートされている以下のサイズを対象に有効になっています。 
-- [Lsv2 シリーズ](../articles/virtual-machines/lsv2-series.md)
+## <a name="virtual-machine-level-bursting"></a>仮想マシンレベルのバースト
 
-米国中西部では、サポートされている以下のサイズでも、VM レベルのバーストを利用できます。
+VM レベルのバーストでは、バーストのクレジットベース モデルのみが使用され、これをサポートするすべての VM で既定で有効になっています。
+
+サポートされている次のサイズでは、Azure パブリック クラウド内のすべてのリージョンで、VM レベルでのバーストが有効になっています。 
+- [Lsv2 シリーズ](../articles/virtual-machines/lsv2-series.md)
 - [Dv3 および Dsv3 シリーズ](../articles/virtual-machines/dv3-dsv3-series.md)
 - [Ev3 および Esv3 シリーズ](../articles/virtual-machines/ev3-esv3-series.md)
-
-バーストをサポートしている仮想マシンでは、バーストが既定で有効になっています。
 
 ## <a name="bursting-flow"></a>バースティングのフロー
 
@@ -148,7 +147,7 @@ VM が起動すると、バーストが実行されて OS ディスクに対し�
 
 起動後に、重要度の低いワークロードを持つアプリケーションを起動してください。 このアプリケーションでは、すべてのディスクに均等に分散される 15 MB/秒が必要です。
 
-![アプリケーションは 15 MB/秒のスループットの要求を VM に送信し、VM は要求を受け取り、各ディスクに 5 MB/秒の要求を送信します。各ディスクは 5 MB/秒を返し、VM は 15 MB/秒をアプリケーションに返します。](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
+![アプリケーションは 15 MB/s のスループットの要求を VM に送信し、VM は要求を受け取り、各ディスクに 5 MB/s の要求を送信します。各ディスクは 5 MB/s の応答を返し、VM は 15 MB/s をアプリケーションに返します。](media/managed-disks-bursting/bursting-vm-bursting-disk/burst-vm-burst-disk-idling.jpg)
 
 その後、アプリケーションは 360 MB/秒を必要とするバッチ ジョブを処理する必要があります。 この需要を満たすために Standard_L8s_v2 によってバーストが行われて、要求が行われます。 OS ディスクに必要とされるのは 20 MB/秒のみです。 残りの 340 MB/秒は、バーストする P4 データ ディスクによって処理されます。
 

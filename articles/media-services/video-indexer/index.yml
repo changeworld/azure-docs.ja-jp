@@ -12,12 +12,12 @@ metadata:
   author: Juliako
   ms.author: juliako
   ms.date: 02/18/2020
-  ms.openlocfilehash: a3e1ec7b97d76287614b4e154143899acf7fd902
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 0c568b6c5c6303c5add3e888dee897ccadc07edf
+  ms.sourcegitcommit: f6193c2c6ce3b4db379c3f474fdbb40c6585553b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "77485116"
+  ms.lasthandoff: 03/08/2021
+  ms.locfileid: "102449664"
 landingContent:
 - title: Azure Media Services Video Indexer について
   linkLists:
@@ -30,7 +30,7 @@ landingContent:
     - text: よく寄せられる質問
       url: faq.md
     - text: ユーザーの声
-      url: https://cognitive.uservoice.com/forums/598144-video-indexer
+      url: https://aka.ms/UserVoiceVI
   - linkListType: whats-new
     links:
     - text: Video Indexer の新機能

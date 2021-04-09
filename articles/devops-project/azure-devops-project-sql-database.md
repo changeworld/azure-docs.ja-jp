@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 6a1af644bbd88af5c513ed9a43ce154f285c06df
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7e85b698e1b3c3a1c3e8730ab85e8b72b7b0d9f6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856009"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102548480"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>チュートリアル:Azure DevOps Starter を使用して ASP.NET アプリと Azure SQL Database コードをデプロイする
 
@@ -96,7 +96,7 @@ DevOps Starter では、Azure DevOps 組織から Azure サブスクリプショ
 
 1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。 DevOps Starter により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する*パイプライン*が含まれています。
+1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する *パイプライン* が含まれています。
 
 1. **[成果物]** で、 **[ドロップ]** を選択します。 前の手順で調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
@@ -165,7 +165,7 @@ Azure SQL Database に接続するには、適切なアクセス許可が必要�
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した Azure SQL Database と関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで**削除**機能を使用します。
+テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した Azure SQL Database と関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 > [!IMPORTANT]
 > 次の手順で、リソースが完全に削除されます。 "*削除*" 機能では、DevOps Starter のプロジェクトによって作成されたデータが Azure と Azure DevOps の両方で破棄され、取得できなくなります。 画面に表示される説明を慎重に読んでから、この手順を行ってください。
@@ -190,7 +190,7 @@ Azure SQL Database に接続するには、適切なアクセス許可が必要�
 CI/CD パイプラインの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [複数ステージの継続的デプロイ (CD) パイプラインを定義する](/azure/devops/pipelines/release/define-multistage-release-process)
 
 ## <a name="videos"></a>ビデオ
 

@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 1c1d438f0322942a1e68c0af74de8d5e2d77c77a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4c168738c0396b83412f9ed8c27fe3b2db9918d7
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95559277"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102510810"
 ---
 Azure Disk Encryption は、[Azure CLI](/cli/azure) と [Azure PowerShell](/powershell/azure/new-azureps-module-az) を使用して、有効にして管理することができます。 そのためには、ツールをローカルにインストールし、Azure サブスクリプションに接続する必要があります。
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[Azure CLI 2.0](/cli/azure) は、Azure リソースを管理するためのコマンドライン ツールです。 CLI は、データのクエリを柔軟に実行し、長時間実行される操作を非ブロッキング プロセスとしてサポートし、スクリプトが簡単になるように設計されています。 「[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)」の手順に従って、これをローカルにインストールすることができます。
+[Azure CLI 2.0](/cli/azure) は、Azure リソースを管理するためのコマンドライン ツールです。 CLI は、データのクエリを柔軟に実行し、長時間実行される操作を非ブロッキング プロセスとしてサポートし、スクリプトが簡単になるように設計されています。 「[Azure CLI のインストール](/cli/azure/install-azure-cli)」の手順に従って、これをローカルにインストールすることができます。
 
-[Azure CLI を使用して Azure アカウントにログインする](/cli/azure/authenticate-azure-cli)には、[az login](/cli/azure/reference-index?view=azure-cli-latest#az-login) コマンドを使用します。
+[Azure CLI を使用して Azure アカウントにログインする](/cli/azure/authenticate-azure-cli)には、[az login](/cli/azure/reference-index#az-login) コマンドを使用します。
 
 ```azurecli
 az login
@@ -47,13 +47,13 @@ az account set --subscription "<subscription name or ID>"
 
 既にローカルにインストールされている場合、Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用します。 [Azure PowerShell リリース](https://github.com/Azure/azure-powershell/releases)の最新バージョンをダウンロードします。
 
-[Azure PowerShell を使用して Azure アカウントにサインインする](/powershell/azure/authenticate-azureps?view=azps-2.5.0)には、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドレットを使用します。
+[Azure PowerShell を使用して Azure アカウントにサインインする](/powershell/azure/authenticate-azureps)には、[Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用します。
 
 ```powershell
 Connect-AzAccount
 ```
 
-複数のサブスクリプションがあり、1 つを指定する場合は、[Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) コマンドレットを使用してそれらを一覧表示し、次に [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-2.5.0) コマンドレットを使用します。
+複数のサブスクリプションがあり、1 つを指定する場合は、[Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) コマンドレットを使用してそれらを一覧表示し、次に [Set-AzContext](/powershell/module/az.accounts/set-azcontext) コマンドレットを使用します。
 
 ```powershell
 Set-AzContext -Subscription -Subscription <SubscriptionId>

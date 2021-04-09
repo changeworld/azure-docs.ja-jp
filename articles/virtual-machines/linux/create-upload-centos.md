@@ -2,16 +2,17 @@
 title: CentOS ベースの Linux VHD の作成とアップロード
 description: CentOS ベースの Linux オペレーティング システムを格納した Azure 仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: danis
-ms.openlocfilehash: 018df112c344fc08f2839752fcda3dfd9370af4e
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 4745e631bd92675f8dd1ef0d390baa88f7666552
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682591"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554668"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure 用の CentOS ベースの仮想マシンの準備
 
@@ -405,17 +406,17 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
     ```
 
 
-13. スワップの構成 オペレーティング システム ディスクにスワップ領域を作成しないでください。
+13. スワップの構成オペレーティング システム ディスクにスワップ領域を作成しないでください。
 
-    以前は、Azure で仮想マシンがプロビジョニングされた後に、仮想マシンに接続されたローカル リソース ディスクを使用してスワップ領域を自動的に構成するために、Azure Linux エージェントが使用されていました。 しかし、これは cloud-init によって処理されるようになったので、リソース ディスクをフォーマットしたり、スワップ ファイルを作成したりするために、Linux エージェントを使用することは **できません**。`/etc/waagent.conf` の次のパラメーターを適切に変更してください。
+    以前は、Azure で仮想マシンがプロビジョニングされた後に、仮想マシンに接続されたローカル リソース ディスクを使用してスワップ領域を自動的に構成するために、Azure Linux エージェントが使用されていました。 しかし、これは cloud-init によって処理されるようになったので、Linux エージェントを使用して、スワップ ファイルを作成するリソース ディスクをフォーマット **しないでください**。`/etc/waagent.conf` で次のパラメーターを適切に変更します。
 
     ```console
     sed -i 's/ResourceDisk.Format=y/ResourceDisk.Format=n/g' /etc/waagent.conf
     sed -i 's/ResourceDisk.EnableSwap=y/ResourceDisk.EnableSwap=n/g' /etc/waagent.conf
     ```
 
-    スワップのマウント、フォーマット、作成を行う場合は、次のいずれかの方法を使用できます。
-    * VM を作成するたびに、cloud-init 構成としてこれを渡します
+    スワップをマウント、フォーマット、作成する場合は、次のいずれかの方法を使用できます。
+    * VM を作成するたびに、cloud-init 構成としてこれを渡す
     * VM が作成されるたびに、これを実行するイメージに組み込まれている cloud-init ディレクティブを使用します。
 
         ```console

@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 6fe43c39b17e574e1913cd9e7b4292a71f1e418d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7e493404e7a36b60e8f9e62cd4ac2f2b32845bb9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031761"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501619"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のために Python 開発環境をセットアップする
 
@@ -55,7 +55,7 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
 
 この JSON ファイルは、Python スクリプトまたは Jupyter Notebook を含むディレクトリ構造内にある必要があります。 それは、同じディレクトリ内、 *.azureml* という名前のサブディレクトリ内、または親ディレクトリ内に置くことができます。
 
-コードからこのファイルを使用するには、[`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#from-config-path-none--auth-none---logger-none---file-name-none-&preserve-view=true) メソッドを使用します。 このコードは、ファイルから情報を読み込み、ワークスペースに接続します。
+コードからこのファイルを使用するには、[`Workspace.from_config`](/python/api/azureml-core/azureml.core.workspace.workspace#from-config-path-none--auth-none---logger-none---file-name-none-) メソッドを使用します。 このコードは、ファイルから情報を読み込み、ワークスペースに接続します。
 
 次のいずれかの方法で、ワークスペース構成ファイルを作成します。
 
@@ -67,7 +67,7 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
 
 * Azure Machine Learning Python SDK
 
-    Azure Machine Learning ワークスペースに接続するためのスクリプトを作成し、[`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#write-config-path-none--file-name-none-&preserve-view=true) メソッドを使用してファイルを生成し、それを *.azureml/config.json* として保存します。 必ず `subscription_id`、`resource_group`、`workspace_name` を独自の値に置き換えてください。
+    Azure Machine Learning ワークスペースに接続するためのスクリプトを作成し、[`write_config`](/python/api/azureml-core/azureml.core.workspace.workspace#write-config-path-none--file-name-none-) メソッドを使用してファイルを生成し、それを *.azureml/config.json* として保存します。 必ず `subscription_id`、`resource_group`、`workspace_name` を独自の値に置き換えてください。
 
     ```python
     from azureml.core import Workspace
@@ -99,7 +99,7 @@ Azure Machine Learning のために Python 開発環境を構成する方法に�
     > Linux または macOS 上で Bash 以外のシェル (例: zsh) を使用している場合、一部のコマンドを実行するとエラーが発生する可能性があります。 この問題を回避するには、`bash` コマンドを使用して新しい Bash シェルを開始し、そこでコマンドを実行します。
 
 1. 新しく作成された Python 仮想環境をアクティブにします。
-1. [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) をインストールします。
+1. [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install) をインストールします。
 1. Azure Machine Learning ワークスペースを使用するようにローカル環境を構成するには、[ワークスペース構成ファイルを作成する](#workspace)か、既存のものを使用します。
 
 ローカル環境をセットアップしたので、Azure Machine Learning の操作を開始する準備ができました。 使用を開始するには、[Azure Machine Learning Python のファースト ステップ ガイド](tutorial-1st-experiment-sdk-setup-local.md) を参照してください。
@@ -217,4 +217,4 @@ Data Science VM を開発環境として使用するには:
 ## <a name="next-steps"></a>次のステップ
 
 - MNIST データセットを使用して Azure Machine Learning で[モデルをトレーニング](tutorial-train-models-with-aml.md)します。
-- [Azure Machine Learning SDK for Python のリファレンス](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)に関するページを参照してください。 
+- [Azure Machine Learning SDK for Python のリファレンス](/python/api/overview/azure/ml/intro)に関するページを参照してください。 

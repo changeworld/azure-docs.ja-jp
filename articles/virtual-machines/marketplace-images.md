@@ -3,18 +3,18 @@ title: Azure PowerShell を使用して Marketplace 購入プラン情報を指�
 description: Shared Image Gallery でイメージを作成するとき、Azure Marketplace 購入プラン詳細を指定する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2a971f6e56f441ab05a6a9b483eeef990d3ea31f
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9df1f6b02e6572c8f2153016c0142912e24fcfe8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903753"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562539"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>イメージ作成時、Azure Marketplace 購入プラン情報を提供する
 

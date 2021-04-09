@@ -99,6 +99,8 @@
       href: firewall-workbook.md
     - name: Firewall Premium のデプロイと構成
       href: premium-deploy.md
+    - name: Premium 用のエンタープライズ CA 証明書のデプロイ
+      href: premium-deploy-certificates-enterprise-ca.md
     - name: Azure Firewall Premium への移行
       href: premium-migrate.md
 - name: リファレンス

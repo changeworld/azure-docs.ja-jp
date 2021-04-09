@@ -11,16 +11,16 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, devx-track-python, deploy
-ms.openlocfilehash: 9e43291325510f92f2e5fd6c07cdb9257fdede9d
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6a58a6555602af2494683037721a1f83e7ea33c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033070"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102519318"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Azure Machine Learning を使用して ML モデルをフィールド プログラマブル ゲート アレイ (FPGA) にデプロイする 
 
-この記事では、FPGA と、[Azure Machine Learning](overview-what-is-azure-ml.md) の[Hardware Accelerated Models Python パッケージ](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py)を使用して ML モデルを Azure FPGA にデプロイする方法について説明します。
+この記事では、FPGA と、[Azure Machine Learning](overview-what-is-azure-ml.md) の[Hardware Accelerated Models Python パッケージ](/python/api/azureml-accel-models/azureml.accel)を使用して ML モデルを Azure FPGA にデプロイする方法について説明します。
 
 ## <a name="what-are-fpgas"></a>FPGA とは
 FPGA には、プログラミング可能なロジック ブロックの配列と、再構成可能な相互接続の階層が含まれています。 相互接続を使用して、製造後にさまざまな方法でこれらのブロックを構成できます。 他のチップと比較して、FPGA はプログラミング可能であることとパフォーマンスを兼ね備えています。 
@@ -56,7 +56,7 @@ Azure FPGA は Azure Machine Learning と統合されています。 Azure で�
 
 ## <a name="deploy-models-on-fpgas"></a>モデルの FPGA でのデプロイ
 
-[Azure Machine Learning Hardware Accelerated Models](/python/api/azureml-accel-models/azureml.accel?preserve-view=true&view=azure-ml-py) を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 
+[Azure Machine Learning Hardware Accelerated Models](/python/api/azureml-accel-models/azureml.accel) を使用して、モデルを FPGA 上の Web サービスとしてデプロイできます。 FPGA を使用すると、単一のバッチ サイズでも、待機時間が極端に短い推論を実行できます。 
 
 この例では、TensorFlow グラフを作成して入力画像を前処理し、それを FPGA 上で ResNet 50 を使用する特徴抽出器にした後、ImageNet データ セットでトレーニング済みの分類子を使って機能を実行します。 次に、モデルが AKS クラスターにデプロイされます。
 
@@ -68,7 +68,7 @@ Azure FPGA は Azure Machine Learning と統合されています。 Azure で�
  
 - Hardware Accelerated Models パッケージ: `pip install --upgrade azureml-accel-models[cpu]`    
     
-- [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
+- [Azure CLI](/cli/azure/install-azure-cli)
 
 - FPGA クォータ。 [クォータの要求](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2nac9-PZhBDnNSV2ITz0LNUN0U5S0hXRkNITk85QURTWk9ZUUFUWkkyTC4u)を送信するか、次の CLI コマンドを実行してクォータを確認します。 
 
@@ -80,7 +80,7 @@ Azure FPGA は Azure Machine Learning と統合されています。 Azure で�
 
 ### <a name="define-the-tensorflow-model"></a>TensorFlow モデルを定義する
 
-まず [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
+まず [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro) を使用してサービス定義を作成します。 サービス定義は、TensorFlow に基づいてグラフ (入力、特徴抽出器、分類子) のパイプラインを記述しているファイルです。 デプロイ コマンドは、定義とグラフを ZIP ファイルに圧縮し、その ZIP を Azure Blob Storage にアップロードします。 DNN は、FPGA 上で実行するように既にデプロイされています。
 
 1. Azure Machine Learning ワークスペースを読み込む
 

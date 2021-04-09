@@ -2,18 +2,18 @@
 title: Azure で Windows VM のサイズを変更する
 description: Azure 仮想マシンに使用する VM のサイズを変更します。
 author: cynthn
-ms.service: virtual-machines-windows
-ms.subservice: sizes
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4860422fefb5a95fe41912b4898f02867f7b3aeb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7f41c0fb2bf949dd47491761fde8025a2d35155
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832248"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560652"
 ---
 # <a name="resize-a-windows-vm"></a>Windows VM のサイズ変更
 
@@ -21,7 +21,7 @@ ms.locfileid: "87832248"
 
 仮想マシン (VM) を作成した後、VM のサイズを変更することで、VM をスケールアップまたはスケールダウンできます。 場合によっては、先に VM の割り当てを解除する必要があります。 これは、現在 VM をホストしているハードウェア クラスターで新しいサイズを使用できない場合に発生する可能性があります。
 
-VM が Premium Storage を使用している場合、Premium Storage のサポートを受けるには、**s** バージョンのサイズを選択する必要があります。 たとえば、Standard_E4_v3 ではなく Standard_E4**s**_v3 を選択します。
+VM が Premium Storage を使用している場合、Premium Storage のサポートを受けるには、**s** バージョンのサイズを選択する必要があります。 たとえば、Standard_E4_v3 ではなく Standard_E4 **s** _v3 を選択します。
 
 ## <a name="use-the-portal"></a>ポータルの使用
 

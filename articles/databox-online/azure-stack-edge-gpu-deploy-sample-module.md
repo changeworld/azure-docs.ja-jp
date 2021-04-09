@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/31/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1f16ef0ede25f17acb915a7812ae5b15b45f78a4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4142542c9f17ae464a996df310c50d73d8711d8e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899731"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102438201"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-on-azure-stack-edge-pro-gpu-device"></a>GPU 対応 IoT モジュール Azure Stack Edge Pro GPU デバイスにデプロイする
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 この記事では、Azure Stack Edge Pro GPU デバイスに GPU 対応 IoT Edge モジュールをデプロイする方法について説明します。 
 
@@ -152,7 +154,7 @@ ms.locfileid: "90899731"
   
         ![監視の開始](media/azure-stack-edge-gpu-deploy-sample-module/monitor-builtin-event-endpoint-1.png)  
 
-    2. **[デバイス]、[モジュール]** の順にアクセスして、**GPU モジュール**が実行中であることを確認します。
+    2. **[デバイス]、[モジュール]** の順にアクセスして、**GPU モジュール** が実行中であることを確認します。
 
         ![IoT Hub のモジュール](media/azure-stack-edge-gpu-deploy-sample-module/module-iot-hub-1.png)  
 

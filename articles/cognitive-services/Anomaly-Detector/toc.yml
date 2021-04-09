@@ -16,8 +16,6 @@
   items:
     - name: Power BI を使用して異常をバッチとして視覚化する
       href: tutorials/batch-anomaly-detection-powerbi.md
-    - name: Azure Databricks を使用した、ストリーミング データの異常検出
-      href: tutorials/anomaly-detection-streaming-databricks.md
 - name: 操作方法ガイド
   items:
     - name: データの異常を特定する

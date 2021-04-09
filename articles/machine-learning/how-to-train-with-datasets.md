@@ -12,18 +12,18 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 688bec24cbcd88130470634abff0688ead8005ef
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 15bad877be00e143ce6f6956a4e1f23378c275c0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881688"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521783"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを使用してモデルをトレーニングする 
 
-この記事では、[Azure Machine Learning データセット](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)を使用して、機械学習モデルのトレーニングを行う方法について説明します。  接続文字列やデータ パスを気にすることなく、ローカルまたはリモートのコンピューティング先でデータセットを使用することができます。 
+この記事では、[Azure Machine Learning データセット](/python/api/azureml-core/azureml.core.dataset%28class%29)を使用して、機械学習モデルのトレーニングを行う方法について説明します。  接続文字列やデータ パスを気にすることなく、ローカルまたはリモートのコンピューティング先でデータセットを使用することができます。 
 
-Azure Machine Learning データセットにより、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)、[HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)、[Azure Machine Learning パイプライン](./how-to-create-machine-learning-pipelines.md)などの Azure Machine Learning トレーニング機能とのシームレスな統合が提供されます。
+Azure Machine Learning データセットにより、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig)、[HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive)、[Azure Machine Learning パイプライン](./how-to-create-machine-learning-pipelines.md)などの Azure Machine Learning トレーニング機能とのシームレスな統合が提供されます。
 
 モデル トレーニングに向けてデータを使用できるようにする準備はできていないものの、データ探索用のノートブックにデータを読み込みたい場合は、[データセット内でデータを探索する](how-to-create-register-datasets.md#explore-data)方法に関する記事を参照してください。 
 
@@ -35,16 +35,16 @@ Azure Machine Learning データセットにより、[ScriptRunConfig](/python/a
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
-* [Azure Machine Learning SDK for Python がインストール済み](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (1.13.0 以上) (これには `azureml-datasets` パッケージが含まれています)。
+* [Azure Machine Learning SDK for Python がインストール済み](/python/api/overview/azure/ml/install) (1.13.0 以上) (これには `azureml-datasets` パッケージが含まれています)。
 
 > [!Note]
-> 一部の Dataset クラスは、[azureml-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) パッケージに依存しています。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
+> 一部の Dataset クラスは、[azureml-dataprep](/python/api/azureml-dataprep/) パッケージに依存しています。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux、Ubuntu、Fedora、および CentOS。
 
 ## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Machine learning トレーニング スクリプトでデータセットを使用する
 
 データセットとしてまだ登録されていない構造化データがある場合は、TabularDataset を作成し、それをローカルまたはリモートの実験用のトレーニング スクリプトで直接使用します。
 
-この例では、未登録の [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) を作成し、トレーニング用の ScriptRunConfig オブジェクトのスクリプト引数として指定します。 この TabularDataset をワークスペースの他の実験で再利用する場合は、[データセットをワークスペースに登録する方法](how-to-create-register-datasets.md#register-datasets)に関する記事を参照してください。
+この例では、未登録の [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) を作成し、トレーニング用の ScriptRunConfig オブジェクトのスクリプト引数として指定します。 この TabularDataset をワークスペースの他の実験で再利用する場合は、[データセットをワークスペースに登録する方法](how-to-create-register-datasets.md#register-datasets)に関する記事を参照してください。
 
 ### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
@@ -90,7 +90,7 @@ df = dataset.to_pandas_dataframe()
 
 ### <a name="configure-the-training-run"></a>トレーニングの実行を構成する
 
-[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun?preserve-view=true&view=azure-ml-py) オブジェクトは、トレーニング実行を構成および送信するために使用されます。
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun) オブジェクトは、トレーニング実行を構成および送信するために使用されます。
 
 このコードでは、以下を指定する ScriptRunConfig オブジェクト `src` を作成します
 
@@ -117,7 +117,7 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="mount-files-to-remote-compute-targets"></a>リモート コンピューティング先にファイルをマウントする
 
-非構造化データがある場合は、[FileDataset](/python/api/azureml-core/azureml.data.filedataset?preserve-view=true&view=azure-ml-py) を作成し、データ ファイルをマウントまたはダウンロードして、トレーニング用にリモート コンピューティング先でそれを使用できるようにします。 リモート トレーニング実験用に[マウントまたはダウンロード](#mount-vs-download)を使用する状況について説明します。 
+非構造化データがある場合は、[FileDataset](/python/api/azureml-core/azureml.data.filedataset) を作成し、データ ファイルをマウントまたはダウンロードして、トレーニング用にリモート コンピューティング先でそれを使用できるようにします。 リモート トレーニング実験用に[マウントまたはダウンロード](#mount-vs-download)を使用する状況について説明します。 
 
 次の例では、FileDataset を作成し、データセットをトレーニング スクリプトに引数として渡すことによって、それをコンピューティング先にマウントします。 
 
@@ -225,7 +225,7 @@ print (mounted_path)
 
 ## <a name="get-datasets-in-machine-learning-scripts"></a>Machine learning スクリプトでデータセットを取得する
 
-登録されたデータセットは、Azure Machine Learning コンピューティングなどのコンピューティング クラスター上で、ローカルまたはリモートでアクセスできます。 複数の実験で登録済みデータセットにアクセスするには、以下のコードを使用してワークスペースにアクセスし、以前送信した実行で使用されたデータセットを取得します。 既定では、`Dataset` クラスの [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) メソッドからは、ワークスペースに登録されているデータセットの最新バージョンが返されます。
+登録されたデータセットは、Azure Machine Learning コンピューティングなどのコンピューティング クラスター上で、ローカルまたはリモートでアクセスできます。 複数の実験で登録済みデータセットにアクセスするには、以下のコードを使用してワークスペースにアクセスし、以前送信した実行で使用されたデータセットを取得します。 既定では、`Dataset` クラスの [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) メソッドからは、ワークスペースに登録されているデータセットの最新バージョンが返されます。
 
 ```Python
 %%writefile $script_folder/train.py

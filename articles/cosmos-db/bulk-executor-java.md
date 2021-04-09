@@ -10,12 +10,12 @@ ms.date: 08/26/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: 89d21e4464cb3c7578b68d68009065ab7848ed19
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d0ccaf15df62b566b5a52ee7a4031ba7e270a4ae
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092536"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218113"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "93092536"
 
 * Azure サブスクリプションを必要とせず、課金や契約もなく [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` エンドポイントで [Azure Cosmos DB Emulator](./local-emulator.md) を使用できます。 主キーは、[要求の認証](local-emulator.md#authenticate-requests)で与えられます。  
 
-* [Java Development Kit (JDK) 1.7 以降](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)  
+* [Java Development Kit (JDK) 1.7 以降](/java/azure/jdk/)  
   - Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。  
 
   - 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。

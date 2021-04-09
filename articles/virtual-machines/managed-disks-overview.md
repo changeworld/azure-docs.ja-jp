@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 4a3f272ab6e4a1788368442d7d060233391442fd
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: eea5c800d7aa9c8d1e6c0c507136b86ab8bf21f3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627817"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604034"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Azure マネージド ディスクの概要
 
@@ -35,7 +35,7 @@ Azure マネージド ディスクは、Azure によって管理されて Azure 
 
 ### <a name="integration-with-availability-sets"></a>可用性セットとの統合
 
-マネージド ディスクは可用性セットと統合されており、[可用性セット内の VM](./manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のディスクが単一障害点にならないように相互に十分に分離されます。 ディスクはさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
+マネージド ディスクは可用性セットと統合されており、[可用性セット内の VM](./availability-set-overview.md) のディスクが単一障害点にならないように相互に十分に分離されます。 ディスクはさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
 
 ### <a name="integration-with-availability-zones"></a>Availability Zones との統合
 
@@ -100,7 +100,7 @@ Azure には、データ ディスク、OS ディスク、一時ディスクと�
 
 ### <a name="temporary-disk"></a>一時ディスク
 
-ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](./manage-availability.md#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.md)」を参照してください。
+ほとんどの VM には、マネージド ディスクではない一時ディスクが含まれています。 一時ディスクはアプリケーションやプロセスのために短期間の保存場所を提供するものであり、ページやスワップ ファイルなどのデータ格納のみを意図しています。 一時ディスクのデータは、[メンテナンス イベント](./understand-vm-reboots.md)中、または [VM の再デプロイ](/troubleshoot/azure/virtual-machines/redeploy-to-new-node-windows?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM を正常に標準再起動している間、一時ディスク上のディスクは残ります。 一時ディスクのない VM に関する詳細については、「[ローカル一時ディスクを持たない Azure VM のサイズ](azure-vms-no-temp-disk.md)」を参照してください。
 
 Azure Linux VM の一時ディスクは通常 /dev/sdb です。Windows VM の一時ディスクは既定で D: です。 一時ディスクは、ホストで暗号化を有効にしない限り、サーバー側暗号化によって暗号化されません。
 

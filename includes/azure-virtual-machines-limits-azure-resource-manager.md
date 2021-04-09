@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: 61af1f1a97e0ffad0332a34034f5dd1d007d1a5c
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 397dd3d16fa994df29a08ff9095b4c7c6c4af815
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98901044"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102511059"
 ---
 | リソース | 制限 |
 | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "98901044"
 | [サブスクリプション](https://azure.microsoft.com/pricing/)あたりの VM の合計コア数 |リージョンあたり 20<sup>1</sup>。 制限を引き上げるには、サポートにお問い合わせください。 |
 | [サブスクリプション](https://azure.microsoft.com/pricing/)あたりの Azure Spot VM の合計コア数 |リージョンあたり 20<sup>1</sup>。 制限を引き上げるには、サポートにお問い合わせください。 |
 | [サブスクリプション](https://azure.microsoft.com/pricing/)あたりのシリーズ (Dv2 や F など) ごとの VM のコア数 |リージョンあたり 20<sup>1</sup>。 制限を引き上げるには、サポートにお問い合わせください。 |
-| サブスクリプションあたりの[可用性セット](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)数 |リージョンあたり 2,500。 |
+| サブスクリプションあたりの[可用性セット](../articles/virtual-machines/availability-set-overview.md)数 |リージョンあたり 2,500。 |
 | 可用性セットあたりの仮想マシン数 | 200 |
 | [リソース グループ](../articles/azure-resource-manager/management/overview.md#resource-groups)あたりの[近接配置グループ数](../articles/virtual-machines/windows/proximity-placement-groups-portal.md) | 800 | 
 | 可用性セットあたりの証明書数 | 199<sup>2</sup> |

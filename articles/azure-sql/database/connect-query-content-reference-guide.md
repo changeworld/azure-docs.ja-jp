@@ -11,13 +11,13 @@ ms.topic: guide
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 7dccce597dcfbcedd5083befafa79b8ba6f3adac
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 03/17/2021
+ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97693484"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594174"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database と Azure SQL Managed Instance の接続とクエリに関する記事
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -88,7 +88,7 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
 | Language | プラットフォーム | その他のリソース | ダウンロード | はじめに |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows、Linux、macOS | [Microsoft ADO.NET for SQL Server](/sql/connect/ado-net/microsoft-ado-net-sql-server) | [ダウンロード](https://www.microsoft.com/net/download/) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [ダウンロード](https://go.microsoft.com/fwlink/?linkid=852460) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| Java | Windows、Linux、macOS | [SQL Server 用 Microsoft JDBC ドライバー](/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server/) | [ダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows、Linux、macOS| [SQL Server 用 PHP SQL ドライバー](/sql/connect/php/microsoft-php-driver-for-sql-server) | [ダウンロード](/sql/connect/php/download-drivers-php-sql-server) | [開始するには](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
 | Node.js | Windows、Linux、macOS | [SQL Server 用 Node.js ドライバー](/sql/connect/node-js/node-js-driver-for-sql-server/) | [インストール](/sql/connect/node-js/step-1-configure-development-environment-for-node-js-development/) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows、Linux、macOS | [Python SQL ドライバー](/sql/connect/python/python-driver-for-sql-server/) | インストール オプション: <br/> \* [pymssql](/sql/connect/python/pymssql/step-1-configure-development-environment-for-pymssql-python-development/) <br/> \* [pyodbc](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development/) |  [開始するには](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
@@ -118,6 +118,7 @@ Microsoft 以外のドライバーは、既定では TLS を使用しない場�
   - [Java を使用した接続とクエリ](connect-query-java.md)
   - [Python を使用した接続とクエリ](connect-query-python.md)
   - [Ruby を使用した接続とクエリ](connect-query-ruby.md)
+  - [Linux に SQL Server コマンドライン ツール sqlcmd および bcp をインストールする](/sql/linux/sql-server-linux-setup-tools) - Linux ユーザーの場合、[sqlcmd](/sql/ssms/scripting/sqlcmd-use-the-utility) を使用して Azure SQL Database または Azure SQL Managed Instance に接続してみてください。
 - 再試行ロジックのコード例:
   - [ADO.NET を使用して弾性的に接続する][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
   - [PHP を使用して弾性的に接続する][step-4-connect-resiliently-to-sql-with-php-p42h]

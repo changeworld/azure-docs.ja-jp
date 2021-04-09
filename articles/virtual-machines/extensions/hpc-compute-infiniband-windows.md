@@ -1,24 +1,25 @@
 ---
 title: InfiniBand ドライバー拡張機能 - Azure Windows VM
 description: Windows を実行している H および N シリーズのコンピューティング VM に InfiniBand ドライバーをインストールするための Microsoft Azure 拡張機能です。
-services: virtual-machines-windows
+services: virtual-machines
 documentationcenter: ''
 author: vermagit
 editor: ''
 ms.assetid: ''
-ms.service: virtual-machines-windows
-ms.subservice: extensions
+ms.service: virtual-machines
+ms.subservice: hpc
+ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: amverma
-ms.openlocfilehash: 767d6da7701261836b367ccad121bf3569b43b72
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 81720c18ce858cd5667413a9d39afdadc95acb23
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260165"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559700"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>Windows 用の InfiniBand ドライバー拡張機能
 

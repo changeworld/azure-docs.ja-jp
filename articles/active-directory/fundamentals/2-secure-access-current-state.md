@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 302e4becd337c8e7b0b425a52ed46d562db5bae4
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 30858e9978f7e8857c5f8a2dcdfd7455f6e97b60
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725329"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553427"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>組織内での外部コラボレーションの現在の状態を検出する 
 
@@ -34,11 +34,11 @@ ms.locfileid: "98725329"
 
 外部コラボレーションを既に開始しているユーザーは、外部コラボレーションでよく使用されるアプリケーションや、そのアクセスが終了するタイミングについてよく理解しています。 これらのユーザーを把握することは、外部ユーザーの招待や、アクセスパッケージの作成、アクセスレビューの実施を行うためのアクセス許可を、どのユーザーに委任するか決定するうえで役立ちます。
 
-現在コラボレーションを行っているユーザーを検索するには、 [Microsoft 365 の監査ログで、共有とアクセス要求のアクティビティ](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance?view=o365-worldwide#sharing-and-access-request-activities)を確認します。 また、 [Azure AD の監査ログを調べて、B2B ユーザーをディレクトリに招待したユーザーの詳細](../external-identities/auditing-and-reporting.md)を確認することもできます。
+現在コラボレーションを行っているユーザーを検索するには、 [Microsoft 365 の監査ログで、共有とアクセス要求のアクティビティ](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance#sharing-and-access-request-activities)を確認します。 また、 [Azure AD の監査ログを調べて、B2B ユーザーをディレクトリに招待したユーザーの詳細](../external-identities/auditing-and-reporting.md)を確認することもできます。
 
 ## <a name="find-current-collaboration-partners"></a>現在のコラボレーションパートナーを確認する
 
-外部ユーザーは、パートナーが管理する資格情報を持った [Azure AD B2B ユーザー](../external-identities/what-is-b2b.md)である場合と、ローカルにプロビジョニングされた資格情報を持つ外部ユーザーである場合があります。 これらのユーザーは通常、ゲストの UserType でマークされます (必ずではありません)。 ゲスト ユーザーは、[Microsoft Graph API](/graph/api/user-list?tabs=http&view=graph-rest-1.0)、[PowerShell](/graph/api/user-list?tabs=http&view=graph-rest-1.0)、または [Azure portal](../enterprise-users/users-bulk-download.md) を通じて列挙できます。
+外部ユーザーは、パートナーが管理する資格情報を持った [Azure AD B2B ユーザー](../external-identities/what-is-b2b.md)である場合と、ローカルにプロビジョニングされた資格情報を持つ外部ユーザーである場合があります。 これらのユーザーは通常、ゲストの UserType でマークされます (必ずではありません)。 ゲスト ユーザーは、[Microsoft Graph API](/graph/api/user-list?tabs=http)、[PowerShell](/graph/api/user-list?tabs=http)、または [Azure portal](../enterprise-users/users-bulk-download.md) を通じて列挙できます。
 
 ### <a name="use-email-domains-and-companyname-property"></a>電子メールドメインと companyName プロパティを使用する
 
@@ -55,7 +55,7 @@ ms.locfileid: "98725329"
 
 ## <a name="find-access-being-granted-to-external-users"></a>外部ユーザーに付与されているアクセス権を特定する
 
-外部ユーザーと外部組織のインベントリを取得したら、Microsoft Graph API を使用してそれらのユーザーに付与されたアクセス権を特定し、Azure AD の[グループメンバーシップ](/graph/api/resources/groups-overview?view=graph-rest-1.0)か、Azure AD での[直接アプリケーション割り当て](/graph/api/resources/approleassignment?view=graph-rest-1.0)を確認できます。
+外部ユーザーと外部組織のインベントリを取得したら、Microsoft Graph API を使用してそれらのユーザーに付与されたアクセス権を特定し、Azure AD の[グループメンバーシップ](/graph/api/resources/groups-overview)か、Azure AD での[直接アプリケーション割り当て](/graph/api/resources/approleassignment)を確認できます。
 
 
 ### <a name="enumerate-application-specific-permissions"></a>アプリケーション固有のアクセス許可を列挙する
@@ -65,7 +65,7 @@ ms.locfileid: "98725329"
 ビジネスセンシティブ アプリやビジネスクリティカル アプリへのすべてのアクセスを厳密に調査して、あらゆる外部アクセスを完全に把握しましょう。
 
 ### <a name="detect-ad-hoc-sharing"></a>アドホック共有の検出
-利用している電子メールとネットワーク プランが対応していれば、電子メールや未承認の SaaS (サービスとしてのソフトウェア) アプリによって共有されているコンテンツを調査することもできます。 [Microsoft 365 Data Loss Protection](/microsoft-365/compliance/data-loss-prevention-policies?view=o365-worldwide) は、Microsoft 365 のインフラストラクチャ内で機密情報が誤って共有されていないかどうかの確認や、そのような事態の回避および監視に役立ちます。 [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) は、お使いの環境で未承認の SaaS アプリが使用されている状況を特定するのに役立ちます。
+利用している電子メールとネットワーク プランが対応していれば、電子メールや未承認の SaaS (サービスとしてのソフトウェア) アプリによって共有されているコンテンツを調査することもできます。 [Microsoft 365 Data Loss Protection](/microsoft-365/compliance/data-loss-prevention-policies) は、Microsoft 365 のインフラストラクチャ内で機密情報が誤って共有されていないかどうかの確認や、そのような事態の回避および監視に役立ちます。 [Microsoft Cloud App Security](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/cloud-app-security) は、お使いの環境で未承認の SaaS アプリが使用されている状況を特定するのに役立ちます。
 
 ## <a name="next-steps"></a>次のステップ
 

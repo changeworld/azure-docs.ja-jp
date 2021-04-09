@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 42ad24e4421b75a3942879bcac8f99b3c8b8138a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: bbfe280ed0b1b562e0f50b23a09ea159750c4a79
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180957"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102217093"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>Azure Red Hat OpenShift 4 クラスター アプリケーションのバックアップを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "102180957"
 > * 前提条件を設定し、必要なツールをインストールする
 > * Azure Red Hat OpenShift 4 アプリケーションのバックアップを作成する
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 

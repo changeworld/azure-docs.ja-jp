@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3444d6c62b5e36b7e68cfaf6da1ec534e2ea4ec6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682616"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102551455"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Azure で Pivotal Cloud Foundry クラスターを作成する
 
@@ -137,7 +137,7 @@ ssh-keygen -t rsa -b 2048
          
     > [!NOTE]
     >
-    > "サイトが安全でない" という警告メッセージのために Internet Explorer ブラウザーが失敗する場合は、 **[詳細]** を選択して Web ページに移動します。 Firefox の場合は、 **[Advance]** を選択し、証明書を追加して続行します。
+    > "サイトが安全でない" という警告メッセージのために Internet Explorer ブラウザーが失敗する場合は、**[詳細]** を選択して Web ページに移動します。 Firefox の場合は、**[Advance]** を選択し、証明書を追加して続行します。
 
 5. PCF Ops Manager には、デプロイされた Azure インスタンスが表示されます。 これで、アプリケーションをここでデプロイして管理できます。
                

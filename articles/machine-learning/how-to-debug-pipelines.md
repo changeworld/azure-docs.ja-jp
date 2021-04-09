@@ -10,16 +10,16 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 0f27688e31f772cc8d784371aa570d55c41f5695
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131816"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102522089"
 ---
 # <a name="troubleshooting-machine-learning-pipelines"></a>機械学習パイプラインのトラブルシューティング
 
-この記事では、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) および [Azure Machine Learning デザイナー](./concept-designer.md)で[機械学習パイプライン](concept-ml-pipelines.md)の実行時にエラーが発生した場合にトラブルシューティングを行う方法について説明します。 
+この記事では、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) および [Azure Machine Learning デザイナー](./concept-designer.md)で[機械学習パイプライン](concept-ml-pipelines.md)の実行時にエラーが発生した場合にトラブルシューティングを行う方法について説明します。 
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
@@ -33,7 +33,7 @@ ms.locfileid: "98131816"
 | ステップを再利用しないパイプライン | ステップの再利用は既定で有効になっていますが、パイプライン ステップで無効にしていないか確認してください。 再利用が無効になっている場合は、ステップの `allow_reuse` パラメーターが `False` に設定されます。 |
 | パイプラインが不必要に再実行される | 基になるデータまたはスクリプトが変更されたときにのみステップが再実行されるようにするには、各ステップのソース コード ディレクトリを分離します。 複数のステップに同じソース ディレクトリを使用すると、不要に再実行される可能性があります。 パイプライン ステップ オブジェクトで `source_directory` パラメーターを使用して、そのステップの分離されたディレクトリを指定し、複数のステップで同じ `source_directory` パスを使用しないようにします。 |
 | トレーニング エポックや他のループ動作よりもステップが遅くなる | ログを含め、すべてのファイルの書き込みを `as_mount()` から `as_upload()` に切り替えてみてください。 **マウント** モードでは、リモートの仮想化ファイルシステムを使用し、ファイルが追加されるたびにファイル全体がアップロードされます。 |
-| コンピューティング先の起動に時間がかかる | コンピューティング先の Docker イメージは、Azure Container Registry (ACR) から読み込まれます。 既定では、Azure Machine Learning により、"*basic*" サービス レベルを使用する ACR が作成されます。 ワークスペースの ACR を standard または premium レベルに変更すると、イメージの構築と読み込みにかかる時間を短縮できます。 詳細については、「[Azure Container Registry サービス階層](../container-registry/container-registry-skus.md)」を参照してください。 |
+| コンピューティング先の起動に時間がかかる | コンピューティング先の Docker イメージは、Azure Container Registry (ACR) から読み込まれます。 既定では、Azure Machine Learning により、"*basic*" サービス レベルを使用する ACR が作成されます。 ワークスペースの ACR を standard または premium レベルに変更すると、イメージの構築と読み込みにかかる時間が短縮される場合があります。 詳細については、「[Azure Container Registry サービス階層](../container-registry/container-registry-skus.md)」を参照してください。 |
 
 ### <a name="authentication-errors"></a>認証エラー
 
@@ -192,7 +192,7 @@ parallelrun_step = ParallelRunStep(
 
 | ライブラリ                    | Type   | 例                                                          | 宛先                                  | リソース                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK | メトリック | `run.log(name, val)`                                             | Azure Machine Learning ポータル UI             | [実験を追跡する方法](how-to-track-experiments.md)<br>[azureml.core.Run クラス](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py)                                                                                                                                                 |
+| Azure Machine Learning SDK | メトリック | `run.log(name, val)`                                             | Azure Machine Learning ポータル UI             | [実験を追跡する方法](how-to-track-experiments.md)<br>[azureml.core.Run クラス](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
 | Python の印刷とログ    | ログ    | `print(val)`<br>`logging.info(message)`                          | ドライバー ログ、Azure Machine Learning デザイナー | [実験を追跡する方法](how-to-track-experiments.md)<br><br>[Python のログ](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
 | OpenCensus Python          | ログ    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights - トレース                | [Application Insights でパイプラインをデバッグする](./how-to-log-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor エクスポーター](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python ログのクックブック](https://docs.python.org/3/howto/logging-cookbook.html) |
 
@@ -244,7 +244,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 1. モジュールの右ペインで、 **[Outputs + logs]\(出力 + ログ\)** タブにアクセスします。
 1. 右ペインを展開して **70_driver_log.txt** を選択し、ブラウザーにファイルを表示します。 また、ログをローカルにダウンロードすることもできます。
 
-    ![デザイナー上に展開された出力ペイン](./media/how-to-debug-pipelines/designer-logs.png)?view=azure-ml-py&preserve-view=true)?view=azure-ml-py&preserve-view=true)
+    ![デザイナー上に展開された出力ペイン](./media/how-to-debug-pipelines/designer-logs.png)
 
 ### <a name="get-logs-from-pipeline-runs"></a>パイプラインの実行からログを取得する
 
@@ -274,6 +274,6 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 * ML パイプラインでの自動機械学習を示す完全な例については、「[Python の Azure Machine Learning パイプラインで自動 ML を使用する](how-to-use-automlstep-in-pipelines.md)」を参照してください。
 
-* [azureml-pipelines-core](/python/api/azureml-pipeline-core/?preserve-view=true&view=azure-ml-py) パッケージおよび [azureml-pipelines-steps](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py) パッケージについては、SDK リファレンスを参照してください。
+* [azureml-pipelines-core](/python/api/azureml-pipeline-core/) パッケージおよび [azureml-pipelines-steps](/python/api/azureml-pipeline-steps/) パッケージについては、SDK リファレンスを参照してください。
 
 * [デザイナーの例外とエラー コード](algorithm-module-reference/designer-error-codes.md)の一覧を参照してください。

@@ -1,25 +1,26 @@
 ---
 title: チュートリアル:Azure での TLS/SSL 証明書を使用した Linux Web サーバーのセキュリティ保護
 description: このチュートリアルでは、Azure CLI を使用して、Azure Key Vault に格納されている SSL 証明書を使って NGINX Web サーバーを実行する Linux 仮想マシンを保護する方法について説明します。
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
 ms.assetid: ''
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e4e80990b32175842556059d005563a220d14688
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3f762597ad81dfaba907115cbcf6074d81ec2fa4
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878462"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549585"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>チュートリアル:Key Vault に格納されている TLS/SSL 証明書を使用して Azure 内の Linux 仮想マシン上の Web サーバーをセキュリティで保護する
 Web サーバーをセキュリティ保護するには、従来より SSL (Secure Sockets Layer) として知られていたトランスポート層セキュリティ (TLS) 証明書を使用した Web トラフィックの暗号化が利用できます。 これらの TLS/SSL 証明書は Azure Key Vault に格納できるため、Azure 上の仮想マシン (VM) に、セキュリティで保護された証明書のデプロイが可能になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -30,7 +31,7 @@ Web サーバーをセキュリティ保護するには、従来より SSL (Secu
 > * VM の作成と NGINX Web サーバーのインストール
 > * VM への証明書の取り込みと NGINX の TLS バインドの構成
 
-このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[試してみる]** を選択します。
+このチュートリアルでは、[Azure Cloud Shell](../../cloud-shell/overview.md) で CLI を使用します。このバージョンは常に更新され最新になっています。 Cloud Shell を開くには、コード ブロックの上部にある **[使ってみる]** を選択します。
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 

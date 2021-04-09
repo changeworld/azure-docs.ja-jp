@@ -2,17 +2,17 @@
 title: Azure Disk Encryption を使用して暗号化されたディスクのサイズを変更する方法
 description: この記事では、論理ボリューム管理を使用して ADE 暗号化ディスクのサイズを変更する手順について説明します。
 author: jofrance
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: 732a2ef3c6c33d0b17deaf3b9bdc5d1ac5e5934c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 92e3be9111abe5712549ba85ef4550a9ac1473f9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498916"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104596809"
 ---
 # <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>Azure Disk Encryption を使用する論理ボリューム管理デバイスのサイズを変更する方法
 
@@ -38,7 +38,7 @@ ms.locfileid: "96498916"
 
 - Linux と LVM の使用経験。
 
-- Azure 上のデータ ディスクの */dev/disk/scsi1/* パスの使用経験。 詳細については、[Linux VM デバイス名の問題のトラブルシューティング](../troubleshooting/troubleshoot-device-names-problems.md)に関する記事をご覧ください。 
+- Azure 上のデータ ディスクの */dev/disk/scsi1/* パスの使用経験。 詳細については、[Linux VM デバイス名の問題のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-device-names-problems)に関する記事をご覧ください。 
 
 ## <a name="scenarios"></a>シナリオ
 

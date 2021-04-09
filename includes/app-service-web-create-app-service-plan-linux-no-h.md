@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 12/20/2019
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: be9ef05f18b43e9dc48b68797c18ba3b69cd1fcc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f3d558736751d3c50e3c007e3aebb369093ef856
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997935"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102244990"
 ---
-Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) コマンドを使用して、リソース グループに App Service プランを作成します。
+Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) コマンドを使用して、リソース グループに App Service プランを作成します。
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 

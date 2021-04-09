@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 607cb824a50da3778ebe34f184abc0dc97c15961
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d125471d4a6c68aff12921a8524a91ef75b6c51a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96026469"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102532778"
 ---
 コマンドレットを実行するには、無料のインタラクティブ シェルである Azure Cloud Shell を使用できます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 **[コピー]** を選択してコードをコピーし、Cloud Shell に貼り付けます。 次に、**Enter** キーを選択して、それを実行します。 Cloud Shell を起動するには、次のようにいくつかの方法があります。
 
@@ -29,4 +29,4 @@ Azure Cloud Shell を使用しない場合は、代わりにローカルに Powe
 
 ローカルで実行されている PowerShell のバージョンを確認するには、 **'Get-Module -ListAvailable Az'** コマンドレットを使用します。 更新するには、「[Install the Azure PowerShell module (Azure PowerShell モジュールのインストール)](/powershell/azure/azurerm/install-azurerm-ps)」を参照してください。 詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/azurerm/overview)に関するページを参照してください。
 
-macOS で PowerShell を使用する場合は、「[macOS への PowerShell のインストール](/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-6)」の手順に従ってください。
+macOS で PowerShell を使用する場合は、「[macOS への PowerShell のインストール](/powershell/scripting/install/installing-powershell-core-on-macos)」の手順に従ってください。

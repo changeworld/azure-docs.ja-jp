@@ -3,19 +3,19 @@ title: チュートリアル - Azure で Windows 仮想マシンを監視する
 description: このチュートリアルでは、Windows 仮想マシンのパフォーマンスと、そこで検出された実行中のアプリケーション コンポーネントを監視する方法について説明します。
 author: mgoedtel
 manager: carmonm
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 09/27/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 3e7d93d7a1d0e804f340a7ce785ccc1165e93ee5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8c4345d16efe296413ea9d995c2307bba62d33f8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570099"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560703"
 ---
 # <a name="tutorial-monitor-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で Windows 仮想マシンを監視する
 

@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 40cf83b0ca9e4c794979f2b20ddb73360758abc5
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198542"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102433303"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -20,7 +20,7 @@ ms.locfileid: "102198542"
 
 Azure Digital Twins では、ダウンストリームのサービスや接続されているコンピューティング リソースに[イベント通知](how-to-interpret-event-data.md)をルーティングすることができます。 これを行うには、まず、イベントを受信できる **エンドポイント** を設定します。 そのうえで、Azure Digital Twins によって生成されるどのイベントをどのエンドポイントに配信するかを指定する [**イベント ルート**](concepts-route-events.md)を作成します。
 
-この記事では、[REST API](/rest/api/azure-digitaltwins/)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)、および [Azure Digital Twins CLI](how-to-use-cli.md) を使用して、エンドポイントとルートを作成する手順について説明します。
+この記事では、[REST API](/rest/api/azure-digitaltwins/)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、および [Azure Digital Twins CLI](how-to-use-cli.md) を使用して、エンドポイントとルートを作成する手順について説明します。
 
 別の方法として、エンドポイントとルートは、[Azure portal](https://portal.azure.com) で管理することもできます。 ポータルを使用したバージョンの記事については、[*エンドポイントとルートをポータルで管理する方法*](how-to-manage-routes-portal.md)に関するページを参照してください。
 
@@ -208,7 +208,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>API と C# SDK を使用してルートを作成する
 
-イベント ルートを定義する方法の 1 つは、[データ プレーン API](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用することです。 このセクションのサンプルでは、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) を使用しています。
+イベント ルートを定義する方法の 1 つは、[データ プレーン API](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用することです。 このセクションのサンプルでは、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) を使用しています。
 
 `CreateOrReplaceEventRouteAsync` は、イベント ルートを追加するために使用される SDK 呼び出しです。 その使用例を次に示します。
 

@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: overview
 ms.date: 02/18/2021
 ms.custom: template-overview
-ms.openlocfilehash: 85b7f3a62324bc93cd78649cd39e0f4dc7d0baed
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: eca0c28b016b2e57f6fe47495c90bf113f0179a6
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098198"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490111"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept の概要
 
@@ -36,13 +36,16 @@ Azure Percept の主要なコンポーネントは次のとおりです。
 
     - デバイス ビルダー、ソリューション ビルダー、およびお客様のさまざまなプロトタイプ作成シナリオをサポートするために十分な柔軟性を備えた開発キットです。
 
+        > [!div class="nextstepaction"]
+        > [今すぐ購入](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
+
 3. エッジ AI モデルとソリューション開発を加速させるためのサービスとワークフロー。
 
-    - Azure Percept Studio からアクセスできる開発ワークフローと事前構築されたモデルです。
+    - [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) からアクセスできる開発ワークフローと事前構築されたモデル。
     - モデル開発サービス。
     - 大規模向けのデバイス管理サービス。
     - エンドツーエンドのセキュリティ。
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Percept DK](./overview-azure-percept-dk.md) の使用を開始する。
+[Azure Percept DK](./overview-azure-percept-dk.md) の使用を開始する。 

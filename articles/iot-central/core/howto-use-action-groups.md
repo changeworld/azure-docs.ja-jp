@@ -8,18 +8,18 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: b447f44d0c95693e560fd5bbfbff8c8daeec964e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a723023bf8614b837ba9783bae987403921c06
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80157689"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "100585482"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>1 つまたは複数のルールから実行する複数のアクションをグループ化する
 
 *この記事はビルダーと管理者に適用されます。*
 
-Azure IoT Central では、条件に一致したとき、アクションを実行するルールを作成します。 ルールはデバイスのテレメトリやイベントに基づきます。 たとえば、デバイスの温度がしきい値を超えたとき、オペレーターに通知できます。 この記事では、[Azure Monitor](../../azure-monitor/overview.md) *アクション グループ*を使用し、複数のアクションを IoT Central ルールに関連付ける方法について説明します。 複数のルールにアクション グループを関連付けることができます。 [アクション グループ](../../azure-monitor/platform/action-groups.md)は、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。
+Azure IoT Central では、条件に一致したとき、アクションを実行するルールを作成します。 ルールはデバイスのテレメトリやイベントに基づきます。 たとえば、デバイスの温度がしきい値を超えたとき、オペレーターに通知できます。 この記事では、[Azure Monitor](../../azure-monitor/overview.md) *アクション グループ* を使用し、複数のアクションを IoT Central ルールに関連付ける方法について説明します。 複数のルールにアクション グループを関連付けることができます。 [アクション グループ](../../azure-monitor/alerts/action-groups.md)は、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,7 @@ Azure IoT Central では、条件に一致したとき、アクションを実�
 
 ## <a name="create-action-groups"></a>アクション グループを作成する
 
-[Azure portal でアクション グループを作成して管理](../../azure-monitor/platform/action-groups.md)できます。あるいは、[Azure Resource Manager テンプレートを利用して](../../azure-monitor/platform/action-groups-create-resource-manager-template.md)アクション グループを作成し、管理できます。
+[Azure portal でアクション グループを作成して管理](../../azure-monitor/alerts/action-groups.md)できます。あるいは、[Azure Resource Manager テンプレートを利用して](../../azure-monitor/alerts/action-groups-create-resource-manager-template.md)アクション グループを作成し、管理できます。
 
 アクション グループでできること:
 
@@ -43,7 +43,7 @@ IoT Central ルールでアクション グループを使用するには、IoT 
 
 ## <a name="use-an-action-group"></a>アクション グループを使用する
 
-IoT Central アプリケーションでアクション グループを使用するには、まずルールを作成します。 ルールにアクションを追加するとき、 **[Azure Monitor アクション グループ]** を選択します。
+IoT Central アプリケーションでアクション グループを使用するには、まずルールを作成します。 ルールにアクションを追加するとき、**[Azure Monitor アクション グループ]** を選択します。
 
 ![アクションの選択](media/howto-use-action-groups/chooseaction.png)
 
@@ -60,9 +60,9 @@ Azure サブスクリプションからアクション グループを選択し�
 | アクションの種類 | 出力形式 |
 | ----------- | -------------- |
 | Email       | 標準 IoT Central メール テンプレート |
-| sms         | Azure IoT Central alert: ${applicationName} - "${ruleName}" triggered on "${deviceName}" at ${triggerDate} ${triggerTime} |
+| SMS         | Azure IoT Central alert: ${applicationName} - "${ruleName}" triggered on "${deviceName}" at ${triggerDate} ${triggerTime} |
 | 音声       | Azure I.O.T Central alert: rule "${ruleName}" triggered on device "${deviceName}" at ${triggerDate} ${triggerTime}, in application ${applicationName} |
-| Webhook     | { "schemaId" :"AzureIoTCentralRuleWebhook", "data": {[regular webhook payload](howto-create-webhooks.md#payload)}} |
+| Webhook     | { "schemaId" : "AzureIoTCentralRuleWebhook", "data": {[regular webhook payload](howto-create-webhooks.md#payload)}} |
 
 次のテキストは、アクション グループからの SMS メッセージの例です。
 

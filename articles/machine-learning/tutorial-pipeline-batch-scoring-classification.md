@@ -11,12 +11,12 @@ ms.author: laobri
 ms.reviewer: laobri
 ms.date: 10/13/2020
 ms.custom: contperf-fy20q4, devx-track-python
-ms.openlocfilehash: 8222f88f5118c4ac8f489bb05ee5ca2724dbf067
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 570bfed5ae5fc6fafea36b9ed1f2673a0daae22b
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184086"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521511"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>チュートリアル:バッチ スコアリング用の Azure Machine Learning パイプラインを作成する
 
@@ -138,7 +138,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 機械学習パイプラインは、ローカルで実行することができないので、クラウド リソース ("*リモート コンピューティング先*") で実行します。 リモート コンピューティング先は、実験や機械学習のワークフローを実行する再利用可能な仮想コンピューティング環境です。 
 
-次のコードを実行して GPU 対応のコンピューティング先 [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py) を作成し、自分のワークスペースにアタッチします。 コンピューティング先の詳細については、[概念に関する記事](./concept-compute-target.md)を参照してください。
+次のコードを実行して GPU 対応のコンピューティング先 [`AmlCompute`](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute) を作成し、自分のワークスペースにアタッチします。 コンピューティング先の詳細については、[概念に関する記事](./concept-compute-target.md)を参照してください。
 
 
 ```python
@@ -301,7 +301,7 @@ parallel_run_config = ParallelRunConfig(
 * 入力データと出力データ、カスタム パラメーター
 * ステップ中に実行するスクリプトまたは SDK ロジックへの参照
 
-親クラスである [`PipelineStep`](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?preserve-view=true&view=azure-ml-py) は、複数のクラスによって継承されています。 クラスを選択し、特定のフレームワークまたはスタックを使用してステップを作成できます。 この例では `ParallelRunStep` クラスを使用し、カスタム Python スクリプトを使ってステップのロジックを定義します。 スクリプトの引数がステップへの入力またはステップからの出力である場合、引数を "*2 か所*" で定義する必要があります。1 つは `arguments` 配列、"*もう 1 つ*" は `input` または `output` パラメーターです。 
+親クラスである [`PipelineStep`](/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep) は、複数のクラスによって継承されています。 クラスを選択し、特定のフレームワークまたはスタックを使用してステップを作成できます。 この例では `ParallelRunStep` クラスを使用し、カスタム Python スクリプトを使ってステップのロジックを定義します。 スクリプトの引数がステップへの入力またはステップからの出力である場合、引数を "*2 か所*" で定義する必要があります。1 つは `arguments` 配列、"*もう 1 つ*" は `input` または `output` パラメーターです。 
 
 複数のステップが存在するシナリオでは、`outputs` 配列のオブジェクト参照が後続のパイプライン ステップの "*入力*" として使用できるようになります。
 
@@ -325,7 +325,7 @@ batch_score_step = ParallelRunStep(
 )
 ```
 
-さまざまなタイプのステップに使用できるクラスを網羅した一覧については、「[ステップ パッケージ](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py)」を参照してください。
+さまざまなタイプのステップに使用できるクラスを網羅した一覧については、「[ステップ パッケージ](/python/api/azureml-pipeline-steps/azureml.pipeline.steps)」を参照してください。
 
 ## <a name="submit-the-pipeline"></a>パイプラインを送信する
 
@@ -382,9 +382,9 @@ published_pipeline
 
 REST エンドポイントからパイプラインを実行するには、OAuth2 ベアラータイプの認証ヘッダーが必要です。 以下の例では説明のために対話型認証を使用していますが、自動化された認証 (ヘッドレス認証) を必要とする運用環境のシナリオではほとんどの場合、[この記事の説明](how-to-setup-authentication.md)にあるようにサービス プリンシパル認証を使用します。
 
-サービス プリンシパル認証では、*Azure Active Directory* に "*アプリの登録*" を作成する必要があります。 まず、クライアント シークレットを生成したうえで、ご自分の機械学習ワークスペースへの "*ロール アクセス*" をサービス プリンシパルに付与します。 認証フローは、[`ServicePrincipalAuthentication`](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?preserve-view=true&view=azure-ml-py) クラスを使用して管理します。 
+サービス プリンシパル認証では、*Azure Active Directory* に "*アプリの登録*" を作成する必要があります。 まず、クライアント シークレットを生成したうえで、ご自分の機械学習ワークスペースへの "*ロール アクセス*" をサービス プリンシパルに付与します。 認証フローは、[`ServicePrincipalAuthentication`](/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication) クラスを使用して管理します。 
 
-[`InteractiveLoginAuthentication`](/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?preserve-view=true&view=azure-ml-py) と `ServicePrincipalAuthentication` は、どちらも `AbstractAuthentication` を継承します。 どちらの場合も同じように [`get_authentication_header()`](/python/api/azureml-core/azureml.core.authentication.abstractauthentication?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-authentication-header--) 関数を使用してヘッダーをフェッチします。
+[`InteractiveLoginAuthentication`](/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication) と `ServicePrincipalAuthentication` は、どちらも `AbstractAuthentication` を継承します。 どちらの場合も同じように [`get_authentication_header()`](/python/api/azureml-core/azureml.core.authentication.abstractauthentication#get-authentication-header--) 関数を使用してヘッダーをフェッチします。
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication

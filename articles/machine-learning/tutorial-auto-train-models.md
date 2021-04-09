@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: f4d26ba6bec8f3e63ba89ed9abae789704a0828b
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 04e50f5a990624aa01c845c82658639b8450f57d
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184103"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503863"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 
@@ -175,7 +175,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>ワークスペースの構成
 
-既存のワークスペースからワークスペース オブジェクトを作成します。 [ワークスペース](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、認証の詳細情報が `ws` という名前のオブジェクトに読み込まれます。 `ws` は、このチュートリアルの残りのコード全体で使用されています。
+既存のワークスペースからワークスペース オブジェクトを作成します。 [ワークスペース](/python/api/azureml-core/azureml.core.workspace.workspace)は、お客様の Azure サブスクリプションとリソースの情報を受け取るクラスです。 また、これにより、お客様のモデル実行を監視して追跡するためのクラウド リソースが作成されます。 `Workspace.from_config()` により、**config.json** ファイルが読み取られ、認証の詳細情報が `ws` という名前のオブジェクトに読み込まれます。 `ws` は、このチュートリアルの残りのコード全体で使用されています。
 
 ```python
 from azureml.core.workspace import Workspace
@@ -302,7 +302,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>結果を検索する
 
-[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、自動トレーニングの結果を探索します。 このウィジェットを使用すると、トレーニング精度のメトリックとメタデータと共に、各実行のすべてのイテレーションのグラフと表を確認できます。 さらに、ドロップダウン セレクターを使用して、主なメトリック以外にも、さまざまな精度メトリックを条件としてフィルター処理することができます。
+[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets)を使用して、自動トレーニングの結果を探索します。 このウィジェットを使用すると、トレーニング精度のメトリックとメタデータと共に、各実行のすべてのイテレーションのグラフと表を確認できます。 さらに、ドロップダウン セレクターを使用して、主なメトリック以外にも、さまざまな精度メトリックを条件としてフィルター処理することができます。
 
 ```python
 from azureml.widgets import RunDetails

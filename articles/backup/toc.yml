@@ -366,7 +366,7 @@
           href: monitor-azure-backup-with-backup-explorer.md
         - name: Azure ポータルの使用
           href: backup-azure-monitoring-built-in-monitor.md
-        - name: Azure Monitor の使用
+        - name: Azure Monitor ログの使用
           href: backup-azure-monitoring-use-azuremonitor.md
     - name: Reports
       items:
@@ -374,10 +374,14 @@
           items:
             - name: Azure Backup のレポートを構成する
               href: configure-reports.md
+            - name: Azure Backup レポートをメールで送信する
+              href: backup-reports-email.md
         - name: Recovery Services コンテナーの診断イベントを構成する
           items:
             - name: Recovery Services コンテナーの診断設定を使用する
               href: backup-azure-diagnostic-events.md
+            - name: システム関数の使用
+              href: backup-reports-system-functions.md
             - name: リソース固有の診断イベントの Log Analytics データ モデル
               href: backup-azure-reports-data-model.md
             - name: Azure Backup の Log Analytics データ モデル (Azure Diagnostics モード)
@@ -418,7 +422,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: 概要
           href: security-overview.md

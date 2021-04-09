@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory アプリケーション管理の新機能
 description: Azure Active Directory アプリケーション管理の新規および更新されたドキュメント。
-ms.date: 02/01/2021
+ms.date: 03/08/2021
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -9,16 +9,31 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: daveba
-ms.openlocfilehash: 9de518f53a6054a47a72e40ebe546a32dd48aabe
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 5b645efe2bbaadeca31b4a0a3b957ff53f5ed3aa
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647274"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775512"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
 Azure Active Directory アプリケーション管理のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 アプリケーション管理サービスの新機能については、「[Azure Active Directory の新着情報](../fundamentals/whats-new.md)」を参照してください。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [SharePoint との統合 (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [アプリケーション認証を Azure Active Directory に移行する](migrate-application-authentication-to-azure-active-directory.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [SharePoint との統合 (SAML)](application-proxy-integrate-with-sharepoint-server-saml.md)
+- [アプリケーションへのテナント全体の管理者の同意の付与](grant-admin-consent.md)
+- [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
+- [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
+- [テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する](tenant-restrictions.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -68,7 +83,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="updated-articles"></a>更新された記事
 - [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
-- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](application-sign-in-problem-federated-sso-gallery.md)
 
 
 ## <a name="october-2020"></a>2020 年 10 月
@@ -83,7 +97,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="updated-articles"></a>更新された記事
 
-- [SAML ベースのシングル サインオンで構成されたアプリへのサインインに関する問題](application-sign-in-problem-federated-sso-gallery.md)
 - [アプリケーション プロキシ エージェント コネクタのインストールに関する問題](application-proxy-connector-installation-problem.md)
 - [アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する](migrate-adfs-apps-to-azure.md)
 - [エンド ユーザーがアプリケーションに同意する方法の構成](configure-user-consent.md)
@@ -128,7 +141,6 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="new-articles"></a>新しい記事
 - [SAML ベースのシングル サインオンの構成](configure-saml-single-sign-on.md)
-- [アプリ ギャラリーに記載されていないアプリケーションで Azure AD を使用する](non-gallery-apps.md)
 - [[今すぐ入手する] - Azure Marketplace からアプリを追加する](get-it-now-azure-marketplace.md)
 - [クイック スタート:Azure Active Directory (Azure AD) テナントのアプリケーションのプロパティを構成する](add-application-portal-configure.md)
 - [クイック スタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへのシングル サインオン (SSO) を設定する](add-application-portal-setup-sso.md)

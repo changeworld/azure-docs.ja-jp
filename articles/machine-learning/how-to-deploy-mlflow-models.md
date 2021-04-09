@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: aaa7dbf2ae7c8acb3b3beeb3e9098c5058af26a7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: c45b819f9fc02fae40c2bf7fc5c2247c8c0a6147
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97917998"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102517482"
 ---
 # <a name="deploy-mlflow-models-as-azure-web-services-preview"></a>MLflow モデルを Azure Web サービスとしてデプロイする (プレビュー)
 
@@ -44,14 +44,14 @@ MLflow は、機械学習の実験のライフ サイクルを管理するため
 * 機械学習モデル。 トレーニング済みのモデルがない場合は、[こちらのリポジトリ](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/using-mlflow)で実際のコンピューティング シナリオに最適なノートブックの例を見つけて、その手順に従います。 
 * [Azure Machine Learning に接続するための MLflow 追跡 URI を設定します](how-to-use-mlflow.md#track-local-runs)。
 * `azureml-mlflow` パッケージをインストールします。 
-    * このパッケージからは自動的に、MLflow がワークスペースにアクセスするための接続を提供する、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) の `azureml-core` が持ち込まれます。
+    * このパッケージからは自動的に、MLflow がワークスペースにアクセスするための接続を提供する、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install) の `azureml-core` が持ち込まれます。
 * [ワークスペースで MLflow 操作を実行するために必要なアクセス許可](how-to-assign-roles.md#mlflow-operations)を確認します。 
 
 ## <a name="deploy-to-azure-container-instance-aci"></a>Azure コンテナー インスタンス (ACI) にデプロイする
 
 MLflow モデルを Azure Machine Learning Web サービスにデプロイするには、[Azure Machine Learning に接続するための MLflow 追跡 URI](how-to-use-mlflow.md) を使用してモデルを設定する必要があります。 
 
-[deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) メソッドを使用してデプロイ構成を設定します。 また、Web サービスの追跡に役立つタグや説明を追加することもできます。
+[deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) メソッドを使用してデプロイ構成を設定します。 また、Web サービスの追跡に役立つタグや説明を追加することもできます。
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -84,7 +84,7 @@ webservice.wait_for_deployment(show_output=True)
 
 MLflow モデルを Azure Machine Learning Web サービスにデプロイするには、[Azure Machine Learning に接続するための MLflow 追跡 URI](how-to-use-mlflow.md) を使用してモデルを設定する必要があります。 
 
-AKS にデプロイするには、まず AKS クラスターを作成します。 [ComputeTarget.create()](/python/api/azureml-core/azureml.core.computetarget?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-workspace--name--provisioning-configuration-) メソッドを使用して、AKS クラスターを作成します。 新しいクラスターの作成には 20 分から 25 分かかる場合があります。
+AKS にデプロイするには、まず AKS クラスターを作成します。 [ComputeTarget.create()](/python/api/azureml-core/azureml.core.computetarget#create-workspace--name--provisioning-configuration-) メソッドを使用して、AKS クラスターを作成します。 新しいクラスターの作成には 20 分から 25 分かかる場合があります。
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -104,7 +104,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-[deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) メソッドを使用してデプロイ構成を設定します。 また、Web サービスの追跡に役立つタグや説明を追加することもできます。
+[deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aciwebservice#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) メソッドを使用してデプロイ構成を設定します。 また、Web サービスの追跡に役立つタグや説明を追加することもできます。
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -139,7 +139,7 @@ webservice.wait_for_deployment()
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-デプロイした Web サービスを使用する予定がない場合は、`service.delete()` を使用してノートブックから削除します。  詳細については、[WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truedelete--) に関するドキュメントをご覧ください。
+デプロイした Web サービスを使用する予定がない場合は、`service.delete()` を使用してノートブックから削除します。  詳細については、[WebService.delete()](/python/api/azureml-core/azureml.core.webservice%28class%29#delete--) に関するドキュメントをご覧ください。
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
 

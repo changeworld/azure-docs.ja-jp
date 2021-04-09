@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36acb5a6a0984b003e4e8deb597bddfc43b064a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 43a0ef208a1a56416f748c69f552ec9169d21479
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101647559"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102424233"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory のパスワードレス認証オプション
 
@@ -90,6 +90,8 @@ FIDO2 セキュリティ キーは、フォーム ファクターとして提供
 
 FIDO2 セキュリティ キーを使用して、Azure AD またはハイブリッド Azure AD に参加済みの Windows 10 デバイスにサインインし、クラウドおよびオンプレミス リソースへのシングル サインオンを実現できます。 ユーザーは、サポートされているブラウザーにサインインすることもできます。 FIDO2 セキュリティ キーは、セキュリティに非常に敏感であるか、2 番目のファクターとしての電話の使用を望まない、あるいは使用できないシナリオまたは従業員が存在する企業向けの優れたオプションです。
 
+[Azure AD による FIDO2 認証をサポートするブラウザー](fido2-compatibility.md)と、[開発するアプリケーションで FIDO2 認証をサポート](../develop/support-fido2-authentication.md)しようとしている開発者向けのベスト プラクティスについてのリファレンス ドキュメントが用意されています。
+
 ![セキュリティ キーを使用して Microsoft Edge にサインインする](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
 次のプロセスは、ユーザーが FIDO2 セキュリティ キーを使用してサインインするときに使用されます。
@@ -123,7 +125,7 @@ FIDO Alliance によって FIDO2 認定されたキーが多数存在する場�
 
 | プロバイダー | Contact |
 | --- | --- |
-| Yubico | [https://www.yubico.com/support/contact/](https://www.yubico.com/support/contact/) |
+| Yubico | [https://www.yubico.com/solutions/passwordless/](https://www.yubico.com/solutions/passwordless/) |
 | Feitian | [https://ftsafe.us/pages/microsoft](https://ftsafe.us/pages/microsoft) |
 | HID | [https://www.hidglobal.com/contact-us](https://www.hidglobal.com/contact-us) |
 | Ensurity | [https://www.ensurity.com/contact](https://www.ensurity.com/contact) |

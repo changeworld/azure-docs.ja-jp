@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 987b56eb1b258e1c5f2fd7d5bcfdd0e95f6c0730
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: dc1954c97da0d7f40deaf0f4efa7ca99793107bb
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100091671"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102503693"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -102,7 +102,7 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 
 [ワークスペース](#workspace) > [実験](#experiments) > [実行](#runs) > **実行構成**
 
-実行構成は、指定されたコンピューティング先でのスクリプトの実行方法を定義します。 構成を使用して、スクリプト、コンピューティング先、実行する Azure ML 環境、任意の分散ジョブ固有の構成、いくつかの追加のプロパティを指定します。 実行のための構成可能なオプションのセット全体の詳細については、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) に関する記事を参照してください。
+実行構成は、指定されたコンピューティング先でのスクリプトの実行方法を定義します。 構成を使用して、スクリプト、コンピューティング先、実行する Azure ML 環境、任意の分散ジョブ固有の構成、いくつかの追加のプロパティを指定します。 実行のための構成可能なオプションのセット全体の詳細については、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) に関する記事を参照してください。
 
 実行構成は、トレーニング スクリプトが含まれるディレクトリ内のファイルに保持できます。   またはメモリ内オブジェクトとして構築して実行の送信に使用できます。
 
@@ -282,7 +282,7 @@ Azure Machine Learning で提供される監視およびログ記録機能は次
 > 以下に "(プレビュー)" と付記されているツールは、現在、パブリック プレビュー段階です。
 > プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-+  [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用して、Python 環境でサービスを操作します。
++  [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro) を使用して、Python 環境でサービスを操作します。
 + [Azure Machine Learning SDK for R](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用して、R 環境でサービスを操作します (プレビュー)。
 + [Azure Machine Learning デザイナー](concept-designer.md)を使用して、コードを記述せずにワークフローの手順を行います。 
 + [Azure Machine Learning CLI](./reference-azure-machine-learning-cli.md) を自動化に使用します。

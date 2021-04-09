@@ -3,18 +3,18 @@ title: CLI を使用して別のギャラリーからイメージ バージョ�
 description: Azure CLI を使用して、別のギャラリーからイメージ バージョンをコピーします。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 753e7503612502cde12f821ea331625406daa7a8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 0bea4fbac062b498dabe04e6e58d530d09b16d6d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675979"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553104"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Azure CLI を使用して別のギャラリーからイメージをコピーする
 

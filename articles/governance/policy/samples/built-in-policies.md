@@ -1,15 +1,15 @@
 ---
 title: 組み込みのポリシー定義の一覧
 description: Azure Policy の組み込みのポリシー定義を一覧表示します。 カテゴリには、タグ、規制コンプライアンス、Key Vault、Kubernetes、ゲスト構成などが含まれます。
-ms.date: 02/09/2021
+ms.date: 03/17/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 9f2a28c9acf2287c70bedad305ee1c143868c59d
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: cf7bafa624bfcd3c819d94f46cb5684b22455ebb
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100100214"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605357"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy の組み込みのポリシー定義
 
@@ -80,6 +80,10 @@ ms.locfileid: "100100214"
 ## <a name="compute"></a>Compute
 
 [!INCLUDE [azure-policy-reference-policies-compute](../../../../includes/policy/reference/bycat/policies-compute.md)]
+
+## <a name="container-instance"></a>コンテナー インスタンス
+
+[!INCLUDE [azure-policy-reference-policies-container-instance](../../../../includes/policy/reference/bycat/policies-container-instance.md)]
 
 ## <a name="container-registry"></a>Container Registry
 
@@ -152,6 +156,10 @@ ms.locfileid: "100100214"
 ## <a name="managed-application"></a>マネージド アプリケーション
 
 [!INCLUDE [azure-policy-reference-policies-managed-application](../../../../includes/policy/reference/bycat/policies-managed-application.md)]
+
+## <a name="migrate"></a>移行
+
+[!INCLUDE [azure-policy-reference-policies-migrate](../../../../includes/policy/reference/bycat/policies-migrate.md)]
 
 ## <a name="monitoring"></a>監視
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: bbac794263fec176e03c7148d860c479a2ed9d39
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051583"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501230"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Automation でグラフィカル Runbook を作成する
 
@@ -61,7 +61,7 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 
 パラメーター セットは、特定のコマンドレットの値を受け入れる必須および省略可能なパラメーターを定義します。 すべてのコマンドレットには 1 つ以上のパラメーター セットがあり、複数のセットがあるものもあります。 コマンドレットに複数のパラメーター セットがある場合は、使用するものを必ず選択してから、パラメーターを構成できます。 アクティビティで使用されるパラメーター セットは、 **[パラメーター セット]** を選択して別のセットを選ぶことで変更できます。 この場合、既に構成済みのパラメーター値はすべて失われます。
 
-次の例で、[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) コマンドレットには 3 つのパラメーター セットがあります。 例では、**ListVirtualMachineInResourceGroupParamSet** という 1 つのセットを使用します。これには、リソース グループ内のすべての仮想マシンを返すための、1 つの省略可能なパラメーターがあります。 また、例では、返される仮想マシンを指定するために **GetVirtualMachineInResourceGroupParamSet** パラメーター セットも使用しています。 このセットには、2 つの必須パラメーターと 1 つの省略可能なパラメーターがあります。
+次の例で、[Get-AzVM](/powershell/module/az.compute/get-azvm) コマンドレットには 3 つのパラメーター セットがあります。 例では、**ListVirtualMachineInResourceGroupParamSet** という 1 つのセットを使用します。これには、リソース グループ内のすべての仮想マシンを返すための、1 つの省略可能なパラメーターがあります。 また、例では、返される仮想マシンを指定するために **GetVirtualMachineInResourceGroupParamSet** パラメーター セットも使用しています。 このセットには、2 つの必須パラメーターと 1 つの省略可能なパラメーターがあります。
 
 ![パラメーター セット](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -435,4 +435,4 @@ Azure Automation の各グラフィカル Runbook には、ドラフト バー�
 * グラフィカル Runbook の使用を開始するには、「[チュートリアル: グラフィカル Runbook を作成する](learn/automation-tutorial-runbook-graphical.md)」を参照してください。
 * Runbook の種類と利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 * Automation の実行アカウントを使った認証方法を理解するには、「[実行アカウント](automation-security-overview.md#run-as-account)」を参照してください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/#automation)」をご覧ください。

@@ -1,26 +1,20 @@
 ---
 title: Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能 | Microsoft Docs
 description: 実際のトラフィック パターンを使用してネットワーク セキュリティ グループ (NSG) のルールを強化し、セキュリティ体制さらに向上させる方法について説明します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 09d62d23-ab32-41f0-a5cf-8d80578181dd
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 14523e814c85469aa02a860e87b86defd7823c16
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98916186"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439597"
 ---
-# <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
+# <a name="improve-your-network-security-posture-with-adaptive-network-hardening"></a>アダプティブ ネットワークのセキュリティ強化により、ネットワークのセキュリティ体制を向上させる
 Security Center でアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。
 
 ## <a name="availability"></a>可用性
