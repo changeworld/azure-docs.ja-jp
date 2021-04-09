@@ -16,12 +16,12 @@ ms.date: 04/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5394a2829af4b0cd7a1c817f6aad4ca5451cc4bc
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.openlocfilehash: 60d7d4888c17ffe46340aa85b8d2a1cc4fa7ed34
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792434"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581832"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quickstart"></a>Azure Active Directory パススルー認証:クイック スタート
 
@@ -73,6 +73,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
      
      ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
    - ファイアウォールまたはプロキシで DNS エントリを許可リストに追加できる場合は、 **\*.msappproxy.net** および **\*.servicebus.windows.net** への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
+   - 発信 HTTP プロキシを使用している場合は、この URL (autologon.microsoftazuread-sso.com) がホワイトリストに登録されていることをご確認ください。 ワイルドカードは受け入れられない場合があるため、この URL を明示的に指定してください。 
    - 認証エージェントは初回の登録のために **login.windows.net** と **login.microsoftonline.com** にアクセスする必要があるため、 これらの URL にもファイアウォールを開きます。
     - 証明書の検証の場合は、URL (**crl3.digicert.com:80**、**crl4.digicert.com:80**、**ocsp.digicert.com:80**、**www\.d-trust.net:80**、**root-c3-ca2-2009.ocsp.d-trust.net:80**、**crl.microsoft.com:80**、**oneocsp.microsoft.com:80**、**ocsp.msocsp.com:80**) のブロックが解除されます。 他の Microsoft 製品でもこれらの URL を証明書の検証に使用しているので、URL のブロックを既に解除している可能性もあります。
 

@@ -2,25 +2,20 @@
 title: プールの VM サイズとイメージを選択する
 description: Azure Batch プールのコンピューティング ノード用に使用可能な VM サイズと OS バージョンを選択する方法
 ms.topic: conceptual
-ms.date: 11/24/2020
+ms.date: 03/18/2021
 ms.custom: seodec18
-ms.openlocfilehash: f108e1347ef6c3c7df45c4b3d807a754f4867097
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 2c3b90d6188dc6660233ae659fb4280dc1d4f2a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800484"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027382"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズとイメージを選択する
 
 Azure Batch プールのノード サイズを選択するときは、Azure で使用可能なほぼすべての VM サイズを選択することができます。 Azure では、さまざまなワークロードに対応する Linux および Windows VM の幅広いサイズが提供されています。
 
 ## <a name="supported-vm-series-and-sizes"></a>サポートされている VM シリーズおよびサイズ
-
-Batch プールの VM サイズを選択するには、次のような例外と制限事項があります。
-
-- Batch ではサポートされていない VM シリーズまたは VM サイズもあります。
-- いくつかの VM サイズは制限されており、割り当てる前に個別に有効化する必要があります。
 
 ### <a name="pools-in-virtual-machine-configuration"></a>仮想マシン構成のプール
 
@@ -32,16 +27,14 @@ Batch プールの VM サイズを選択するには、次のような例外と�
 | A | Standard_A0、Standard_A8、Standard_A9、Standard_A10、Standard_A11 を *除く* すべてのサイズ |
 | Av2 | すべてのサイズ |
 | B | サポートされていません |
-| DC | サポートされていません |
+| DCsv2 | すべてのサイズ |
 | Dv2、DSv2 | すべてのサイズ |
 | Dv3、Dsv3 | すべてのサイズ |
-| Dav4 | すべてのサイズ |
-| Dasv4 | すべてのサイズ |
+| Dav4、Dasv4 | すべてのサイズ |
 | Ddv4、Ddsv4 |  すべてのサイズ |
 | Dv4、Dsv4 | サポートされていません |
 | Ev3、Esv3 | E64is_v3 を除くすべてのサイズ |
-| Eav4 | すべてのサイズ |
-| Easv4 | すべてのサイズ |
+| Eav4、Easv4 | すべてのサイズ |
 | Edv4、Edsv4 |  すべてのサイズ |
 | Ev4、Esv4 | サポートされていません |
 | F、Fs | すべてのサイズ |
@@ -50,6 +43,7 @@ Batch プールの VM サイズを選択するには、次のような例外と�
 | H | すべてのサイズ |
 | HB | すべてのサイズ |
 | HBv2 | すべてのサイズ |
+| HBv3 | Standard_HB120rs_v3 (その他のサイズはまだ使用できません) |
 | HC | すべてのサイズ |
 | Ls | すべてのサイズ |
 | Lsv2 | すべてのサイズ |
@@ -58,7 +52,7 @@ Batch プールの VM サイズを選択するには、次のような例外と�
 | NC | すべてのサイズ |
 | NCv2 | すべてのサイズ |
 | NCv3 | すべてのサイズ |
-| NCasT4_v3 | なし - まだ使用できません |
+| NCasT4_v3 | すべてのサイズ |
 | ND | すべてのサイズ |
 | NDv2 | なし - まだ使用できません |
 | NV | すべてのサイズ |
