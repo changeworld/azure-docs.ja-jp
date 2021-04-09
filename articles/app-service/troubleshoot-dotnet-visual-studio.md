@@ -268,7 +268,7 @@ App Service アプリで実行される ASP.NET アプリケーションは、�
 * プロジェクトをローカル実行したときのログを確認します。
 * Azure で実行中のアプリケーションによって生成されたログを確認します。
 
-Web ジョブでアプリケーション ログを作成する方法については、「 [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法 - ログの記述方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ログの表示とログを Azure に格納する方法の制御に関する次の手順は、Web ジョブによって作成されたアプリケーション ログにも適用されます。
+Web ジョブでアプリケーション ログを作成する方法については、「 [Web ジョブ SDK を使用して Azure Queue Storage を操作する方法 - ログの記述方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ログの表示とログを Azure に格納する方法の制御に関する次の手順は、Web ジョブによって作成されたアプリケーション ログにも適用されます。
 
 ### <a name="add-tracing-statements-to-the-application"></a>アプリケーションへのトレース ステートメントの追加
 1. `System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加するために、*Controllers\HomeController.cs* を開き、`Index`、`About`、`Contact` のメソッドを次のコードで置き換えます。
