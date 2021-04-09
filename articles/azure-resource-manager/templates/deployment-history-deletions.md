@@ -2,13 +2,13 @@
 title: デプロイ履歴の削除
 description: Azure Resource Manager でデプロイ履歴からデプロイを自動削除するしくみについて説明します。 履歴が上限の 800 を超えそうになるとデプロイが削除されます。
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/23/2021
+ms.openlocfilehash: fc4f7f33cdd7ccce3158aa95bd002f12c8c44c00
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652484"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951965"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>デプロイ履歴からの自動削除
 
@@ -53,6 +53,12 @@ Azure CLI を使用してロックを削除するには、次のコマンドを�
 lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
 az lock delete --ids $lockid
 ```
+
+## <a name="required-permissions"></a>必要なアクセス許可
+
+削除は、テンプレートをデプロイしたユーザーの ID で要求されます。 デプロイを削除するには、ユーザーは、 **[Microsoft.Resources/deployments/delete]** アクションへのアクセス権を持っている必要があります。 ユーザーが必要なアクセス許可を持っていない場合、デプロイは履歴から削除されません。
+
+現在のユーザーが必要なアクセス許可を持っていない場合は、次のデプロイ時に自動的に削除が試行されます。
 
 ## <a name="opt-out-of-automatic-deletions"></a>自動削除のオプトアウト
 

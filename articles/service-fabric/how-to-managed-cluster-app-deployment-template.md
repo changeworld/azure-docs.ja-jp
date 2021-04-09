@@ -3,12 +3,12 @@ title: ARM テンプレートを使用して Service Fabric マネージド ク�
 description: Azure Resource Manager テンプレートを使用して、アプリケーションを Azure Service Fabric マネージド クラスター (プレビュー) にデプロイします。
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.openlocfilehash: b2d73180de61f44850b9c52a7ac24b0c23c36db2
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: e860c77d77e3aabb70f70defdaa25de14e77e0e1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100641009"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728013"
 ---
 # <a name="deploy-a-service-fabric-managed-cluster-preview-application-using-arm-template"></a>ARM テンプレートを使用して Service Fabric マネージド クラスター (プレビュー) アプリケーションをデプロイする
 
@@ -94,7 +94,7 @@ Resource Manager テンプレートからアプリケーションをデプロイ
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | clusterName            | デプロイ先クラスターの名前 | sf-cluster123                                                |                                                              |
 | application            | アプリケーションの名前                 | Voting                                                       |
-| version    | アプリのリソース ID、アプリケーションの種類、バージョン。       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | ApplicationManifest.xml と一致する必要があります                 |              |
+| version    | アプリのリソース ID、アプリケーションの種類、バージョン。       | /providers/Microsoft.ServiceFabric/managedClusters/sf-cluster-123/applicationTypes/VotingType/versions/1.0.0                                               | ApplicationManifest.xml と一致する必要があります                 |
 | serviceName            | サービスの名前         | VotingWeb                                             | ServiceType の形式でなければなりません            |
 | serviceTypeName        | サービスの種類名                | VotingWebType                                                    | ServiceManifest.xml と一致する必要があります                 |
 | appPackageUrl          | アプリケーションの BLOB ストレージ URL     | https:\//servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | BLOB ストレージ内のアプリケーション パッケージの URL (URL を設定する手順については、この記事の後半で説明します) |
