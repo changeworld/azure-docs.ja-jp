@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: cc5e306aa9677c7370d03dbb26ef3fe69293a630
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102180071"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104987843"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -62,11 +62,7 @@ const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription
 
 ## <a name="recognize-from-file"></a>ファイルから認識する 
 
-Node.js でオーディオ ファイルから音声を認識するには、プッシュ ストリームを使用する他の設計パターンが必要となります。JavaScript の `File` オブジェクトを Node.js ランタイムで使用することはできないためです。 コード例を次に示します。
-
-* `createPushStream()` を使用してプッシュ ストリームを作成します
-* 読み取りストリームを作成して `.wav` ファイルを開き、それをプッシュ ストリームに書き込みます
-* プッシュ ストリームを使用してオーディオ構成を作成します
+オーディオ ファイルから音声を認識するには、`Buffer` オブジェクトを受け入れる `fromWavFileInput()` を使用して `AudioConfig` を作成します。 次に、`audioConfig` と `speechConfig` を渡して [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) を初期化します。
 
 ```javascript
 const fs = require('fs');
@@ -74,6 +70,31 @@ const sdk = require("microsoft-cognitiveservices-speech-sdk");
 const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
 
 function fromFile() {
+    let audioConfig = sdk.AudioConfig.fromWavFileInput(fs.readFileSync("YourAudioFile.wav"));
+    let recognizer = new sdk.SpeechRecognizer(speechConfig, audioConfig);
+
+    recognizer.recognizeOnceAsync(result => {
+        console.log(`RECOGNIZED: Text=${result.text}`);
+        recognizer.close();
+    });
+}
+fromFile();
+```
+
+## <a name="recognize-from-in-memory-stream"></a>インメモリ ストリームから認識する
+
+対象となる音声データが Blob Storage に格納されていたり、既存のメモリ内に [`ArrayBuffer`](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) や同様の生データ構造として存在していたりすることは、多くのユースケースで予想されます。 コード例を次に示します。
+
+* `createPushStream()` を使用してプッシュ ストリームを作成します。
+* デモンストレーションとして、`fs.createReadStream` を使用して `.wav` ファイルを読み取ります。ただし、`ArrayBuffer` 形式の音声データが既にある場合は、これをスキップして直接そのコンテンツを入力ストリームに書き込むことができます。
+* プッシュ ストリームを使用してオーディオ構成を作成します。
+
+```javascript
+const fs = require('fs');
+const sdk = require("microsoft-cognitiveservices-speech-sdk");
+const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription-key>", "<paste-your-region>");
+
+function fromStream() {
     let pushStream = sdk.AudioInputStream.createPushStream();
 
     fs.createReadStream("YourAudioFile.wav").on('data', function(arrayBuffer) {
@@ -89,7 +110,7 @@ function fromFile() {
         recognizer.close();
     });
 }
-fromFile();
+fromStream();
 ```
 
 プッシュ ストリームを入力として使用する場合、音声データは生の PCM であることが前提となります (ヘッダーをスキップするなど)。

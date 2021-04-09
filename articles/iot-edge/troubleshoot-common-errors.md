@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: cc6d7491d9c38f1ddf4aba2adecad4aaee3c344b
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103489564"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
@@ -98,7 +98,7 @@ IoT Edge エージェントには、モジュールのイメージにアクセ�
 
 コンテナー エンジンを再起動して更新を有効にします。
 
-| プラットフォーム | コマンド |
+| プラットフォーム | command |
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (管理者用 PowerShell) | `Restart-Service iotedge-moby -Force` |

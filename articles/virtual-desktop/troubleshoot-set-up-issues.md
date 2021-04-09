@@ -8,10 +8,10 @@ ms.date: 02/17/2021
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c31a32b32a685087c53198ec52af1188d0071cab
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652447"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成

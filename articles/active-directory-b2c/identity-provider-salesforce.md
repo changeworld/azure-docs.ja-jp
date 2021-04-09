@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d445a4e1d0fd39788c18f80b25ce02a7c5d0a243
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: f87ef03a3af110ec17b7d907d4c2eac1bc1ca58b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488688"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579928"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Salesforce アカウントでのサインアップおよびサインインを設定する
 
@@ -87,6 +87,8 @@ Azure Active Directory B2C (Azure AD B2C) で Salesforce アカウントを持�
 1. **[保存]** を選択します。
 
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>ユーザー フローに Salesforce ID プロバイダーを追加する 
+
+この時点では、Salesforce ID プロバイダーはセットアップされていますが、サインイン ページではまだ使用できません。 ユーザー フローに Salesforce ID プロバイダーを追加するには:
 
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Salesforce ID プロバイダーを追加するユーザー フローをクリックします。
