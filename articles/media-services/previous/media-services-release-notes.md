@@ -78,7 +78,7 @@ Media Services REST API バージョン履歴の詳細については、[Azure M
 
 タスクの履歴を取得するには、Webhook を介して v2 ジョブ通知を使用するか、通知エンドポイントを使用してメッセージをキューに格納する必要があります。 詳細については次を参照してください:
 
-* [Azure キュー ストレージを使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-queues.md)
+* [Azure Queue Storage を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-queues.md)
 * [Azure webhook を使用して Media Services ジョブ通知を監視する](media-services-dotnet-check-job-progress-with-webhooks.md)
 
 ## <a name="february-2020"></a>2020 年 2 月
