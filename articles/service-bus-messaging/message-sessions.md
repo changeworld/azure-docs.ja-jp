@@ -4,10 +4,10 @@ description: この記事では、セッションを使用して、関連メッ�
 ms.topic: article
 ms.date: 01/20/2021
 ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98680755"
 ---
 # <a name="message-sessions"></a>メッセージ セッション
