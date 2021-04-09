@@ -6,18 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: e72ad50b495dec7e3a647bb7bcbdeafd53f5de7b
-ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "102636625"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577098"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro と GPU のシステム要件 
 
-この記事では、Microsoft Azure Stack Edge Pro ソリューション、および Azure Stack Edge Pro に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報を慎重に確認してから Azure Stack Edge Pro をデプロイすることをお勧めします。 展開中およびその後の操作中に、必要に応じてこの情報を参照できます。
+この記事では、Microsoft Azure Stack Edge Pro GPU ソリューション、および Azure Stack Edge Pro に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報を慎重に確認してから Azure Stack Edge Pro をデプロイすることをお勧めします。 展開中およびその後の操作中に、必要に応じてこの情報を参照できます。
 
 Azure Stack Edge Pro のシステム要件は次のとおりです。
 

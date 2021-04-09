@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: d47b4847a12b63532e44a8a1a47101dd065f811b
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96446588"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Azure Synapse Analytics の Synapse SQL 機能の設計上の決定とコーディング技法
@@ -27,33 +27,33 @@ ms.locfileid: "96446588"
 
 | [アーティクル] | 専用 SQL プール | サーバーレス SQL プール |
 | ------- | -------- | ------------- |
-| [接続](connect-overview.md)                    | ○ | ○ |
-| [リソース クラスとコンカレンシー](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | [はい]    | いいえ |
-| [トランザクション](develop-transactions.md)              | [はい] | いいえ |
-| [ユーザー定義スキーマ](develop-user-defined-schemas.md) | ○ | ○ |
-| [テーブルのディストリビューション](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                 | [はい] | いいえ |
-| [列ストア インデックスの品質の低さの原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                           | [はい] | いいえ |
-| [テーブル パーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                     | [はい] | いいえ |
-| [統計](develop-tables-statistics.md)            | ○ | ○ |
-| [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                                             | [はい] | いいえ |
-| [外部テーブル](develop-tables-external-tables.md) | ○ | ○ |
-| [CETAS](develop-tables-cetas.md)                     | ○ | はい |
+| [接続](connect-overview.md)                    | はい | はい |
+| [リソース クラスとコンカレンシー](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | はい    | いいえ |
+| [トランザクション](develop-transactions.md)              | はい | いいえ |
+| [ユーザー定義スキーマ](develop-user-defined-schemas.md) | はい | はい |
+| [テーブルのディストリビューション](../sql-data-warehouse/sql-data-warehouse-tables-distribute.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                 | はい | いいえ |
+| [列ストア インデックスの品質の低さの原因](../sql-data-warehouse/sql-data-warehouse-tables-index.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                           | はい | いいえ |
+| [テーブル パーティション](../sql-data-warehouse/sql-data-warehouse-tables-partition.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                     | はい | いいえ |
+| [統計](develop-tables-statistics.md)            | はい | はい |
+| [CTAS](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)                                             | はい | いいえ |
+| [外部テーブル](develop-tables-external-tables.md) | はい | はい |
+| [CETAS](develop-tables-cetas.md)                     | はい | はい |
 
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 次に、開発のための特定のコーディング技法、ヒント、およびレコメンデーションに焦点を合わせた重要な記事を紹介します。
 
 | [アーティクル] | 専用 SQL プール | サーバーレス SQL プール |
 | ------- | -------- | ------------- |
-| [ストアド プロシージャ](develop-stored-procedures.md)  | [はい]                | いいえ                      |
-| [ラベル](develop-label.md)                           | [はい]                | いいえ                      |
-| [ビュー](develop-views.md)                             | ○                | ○                     |
-| [一時テーブル](develop-tables-temporary.md)       | ○                | ○                     |
+| [ストアド プロシージャ](develop-stored-procedures.md)  | はい                | いいえ                      |
+| [ラベル](develop-label.md)                           | はい                | いいえ                      |
+| [ビュー](develop-views.md)                             | はい                | はい                     |
+| [一時テーブル](develop-tables-temporary.md)       | はい                | はい                     |
 | [動的 SQL](develop-dynamic-sql.md)                 | はい                | はい                     |
-| [ループ](develop-loops.md)                         | ○                | ○                     |
-| [オプションでグループ化する](develop-group-by-options.md)       | [はい]                | いいえ                      |
-| [変数の代入](develop-variable-assignment.md) | はい                | ○                     |
+| [ループ](develop-loops.md)                         | はい                | はい                     |
+| [オプションでグループ化する](develop-group-by-options.md)       | はい                | いいえ                      |
+| [変数の代入](develop-variable-assignment.md) | はい                | はい                     |
 
 ## <a name="next-steps"></a>次のステップ
 詳細な参照情報については、[SQL プール T-SQL ステートメント](../sql-data-warehouse/sql-data-warehouse-reference-tsql-statements.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)に関するページをご覧ください。
