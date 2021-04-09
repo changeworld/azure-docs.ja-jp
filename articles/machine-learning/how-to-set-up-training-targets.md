@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f38fe7d847754247f8c1510527b3ffe026c20be5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251116"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102518502"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 
@@ -29,12 +29,12 @@ ms.locfileid: "98251116"
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を試してください
-* [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (1.13.0 以降)
+* [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/install) (1.13.0 以降)
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)、`ws`
 * コンピューティング先、`my_compute_target`。  [コンピューティング ターゲットを作成する](how-to-create-attach-compute-studio.md) 
 
 ## <a name="whats-a-script-run-configuration"></a><a name="whats-a-run-configuration"></a>スクリプト実行構成とは
-[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) は、トレーニングの実行を実験の一部として送信するのに必要な情報を構成するために使用されます。
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) は、トレーニングの実行を実験の一部として送信するのに必要な情報を構成するために使用されます。
 
 ScriptRunConfig オブジェクトを使用して、トレーニング実験を送信します。  このオブジェクトには以下のものが含まれます。
 
@@ -42,7 +42,7 @@ ScriptRunConfig オブジェクトを使用して、トレーニング実験を�
 * **script**:実行するトレーニング スクリプト
 * **compute_target**: 実行が行われるコンピューティング ターゲット
 * **環境**: スクリプトを実行する場合に使用する環境
-* および、いくつかの構成可能な追加のオプション (詳細については、該当する[リファレンス ドキュメント](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py)を参照してください)
+* および、いくつかの構成可能な追加のオプション (詳細については、該当する[リファレンス ドキュメント](/python/api/azureml-core/azureml.core.scriptrunconfig)を参照してください)
 
 ## <a name="train-your-model"></a><a id="submit"></a>モデルをトレーニングする
 
@@ -133,7 +133,7 @@ script_run_config.run_config.target = my_compute_target
 実行に対する既定の最大許容時間をオーバーライドしたい場合は、 **`max_run_duration_seconds`** パラメーターを使用してそれを行うことができます。 この値よりも時間がかかる場合は、システムによって自動的に実行のキャンセルが試みられます。
 
 ### <a name="specify-a-distributed-job-configuration"></a>分散ジョブの構成を指定する
-分散トレーニング ジョブを実行する場合は、分散ジョブ固有の構成を **`distributed_job_config`** パラメーターに指定します。 サポートされている構成の種類には、[MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py)、および [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py) があります。 
+分散トレーニング ジョブを実行する場合は、分散ジョブ固有の構成を **`distributed_job_config`** パラメーターに指定します。 サポートされている構成の種類には、[MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)、[TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration)、および [PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration) があります。 
 
 Horovod、TensorFlow、PyTorch の各分散ジョブの実行の詳細と例については、以下を参照してください。
 
@@ -197,10 +197,10 @@ run.wait_for_completion(show_output=True)
     
     Azure ML によって保守される docker イメージとそのコンテンツは、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)内で確認できます。
     フレームワーク固有の依存関係は、それぞれのフレームワークのドキュメントに示されています。
-    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
-    *  [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn?preserve-view=true&view=azure-ml-py#&preserve-view=trueremarks)
+    *  [Chainer](/python/api/azureml-train-core/azureml.train.dnn.chainer#remarks)
+    * [PyTorch](/python/api/azureml-train-core/azureml.train.dnn.pytorch#remarks)
+    * [TensorFlow](/python/api/azureml-train-core/azureml.train.dnn.tensorflow#remarks)
+    *  [SKLearn](/python/api/azureml-train-core/azureml.train.sklearn.sklearn#remarks)
     
     > [!Note]
     > 特定のパッケージが Azure ML によって保守されるイメージと環境に追加できるほど十分に一般的だと考えられる場合は、[AzureML のコンテナー](https://github.com/Azure/AzureML-Containers)に関するページで、GitHub の問題を作成してください。 
@@ -208,7 +208,7 @@ run.wait_for_completion(show_output=True)
 * **NameError (名前が定義されていない)、AttributeError (オブジェクトに属性がない)** :この例外は、トレーニング スクリプトに起因しているはずです。 Azure portal からログ ファイルを参照して、定義されていない特定の名前または属性エラーに関する詳細情報を取得できます。 SDK から、`run.get_details()` を使用して、エラー メッセージを確認できます。 これにより、実行に対して生成されたすべてのログ ファイルも一覧表示されます。 実行を再送信する前に、トレーニング スクリプトを確認し、エラーを修正してください。 
 
 
-* **実行または実験の削除**:実験をアーカイブするには、[Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) メソッドを使用するか、[Archive experiment]\(アーカイブ実験\) ボタンを介して Azure Machine Learning Studio クライアントの [実験] タブ ビューを使用します。 この操作により、実験はリスト クエリおよびビューから非表示になりますが、削除はされません。
+* **実行または実験の削除**:実験をアーカイブするには、[Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29#archive--) メソッドを使用するか、[Archive experiment]\(アーカイブ実験\) ボタンを介して Azure Machine Learning Studio クライアントの [実験] タブ ビューを使用します。 この操作により、実験はリスト クエリおよびビューから非表示になりますが、削除はされません。
 
     個々の実験または実行を完全に削除することは現在サポートされていません。 ワークスペース アセットの削除の詳細については、「[Machine Learning service のワークスペース データをエクスポートまたは削除する](how-to-export-delete-data.md)」を参照してください。
 
@@ -229,5 +229,5 @@ run.wait_for_completion(show_output=True)
 * [Scikit-learn](how-to-train-scikit-learn.md)、[TensorFlow](how-to-train-tensorflow.md)、[PyTorch](how-to-train-pytorch.md) など、特定の ML フレームワークを使用してモデルをトレーニングする方法を参照してください。
 * より優れたモデルを構築するために、[ハイパーパラメーター](how-to-tune-hyperparameters.md)を効率的に調整する方法を学習します。
 * モデルのトレーニングが済んだら、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。
-* [ScriptRunConfig クラス](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) SDK リファレンスを表示します。
+* [ScriptRunConfig クラス](/python/api/azureml-core/azureml.core.scriptrunconfig) SDK リファレンスを表示します。
 * [Azure Machine Learning と Azure Virtual Network を使用する](./how-to-network-security-overview.md)

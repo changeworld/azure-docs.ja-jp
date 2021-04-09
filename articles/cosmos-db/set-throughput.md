@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/25/2021
-ms.openlocfilehash: 74addd691e3a6c42f48100292542cfd3563b5c3a
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 1d5fba12ce9b1ce8d30c59a08aa36e1222abe3c7
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797572"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102433932"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -98,13 +98,13 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 コンテナーまたはデータベースのプロビジョニング済みのスループットを取得するには、Azure portal または SDK を使用します。
 
-* .NET SDK では [Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true)。
-* Java SDK では [CosmosContainer.readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput?view=azure-java-stable&preserve-view=true)。
+* .NET SDK では [Container.ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync)。
+* Java SDK では [CosmosContainer.readThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.readthroughput)。
 
 また、これらのメソッドの応答には、コンテナーまたはデータベースの[最小のプロビジョニング済みスループット](concepts-limits.md#storage-and-database-operations)も含まれます。
 
-* .NET SDK では [ThroughputResponse.MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput?view=azure-dotnet&preserve-view=true)。
-* Java SDK では [ThroughputResponse.getMinThroughput()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput?view=azure-java-stable&preserve-view=true)。
+* .NET SDK では [ThroughputResponse.MinThroughput](/dotnet/api/microsoft.azure.cosmos.throughputresponse.minthroughput)。
+* Java SDK では [ThroughputResponse.getMinThroughput()](/java/api/com.azure.cosmos.models.throughputresponse.getminthroughput)。
 
 実際の最小 RU/秒は、アカウントの構成によって異なる場合があります。 ただし、通常、最大値は次のようになります。
 
@@ -116,8 +116,8 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 コンテナーまたはデータベースのプロビジョニング済みのスループットをスケーリングするには、Azure portal または SDK を使用します。
 
-* .NET SDK では [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true)。
-* Java SDK では [CosmosContainer.replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true)。
+* .NET SDK では [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync)。
+* Java SDK では [CosmosContainer.replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput)。
 
 **プロビジョニング済みのスループットを低くする** 場合は、[最低値](#current-provisioned-throughput)までそれを行うことができます。
 
@@ -128,8 +128,8 @@ Azure Cosmos コンテナーまたはデータベースを作成した後に、�
 
 スケーリングの進行状況をプログラムで確認するには、[現在のプロビジョニング済みのスループット](#current-provisioned-throughput)を読み取り、次のものを使用します。
 
-* .NET SDK では [ThroughputResponse.IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending?view=azure-dotnet&preserve-view=true)。
-* Java SDK では [ThroughputResponse.isReplacePending()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending?view=azure-java-stable&preserve-view=true)。
+* .NET SDK では [ThroughputResponse.IsReplacePending](/dotnet/api/microsoft.azure.cosmos.throughputresponse.isreplacepending)。
+* Java SDK では [ThroughputResponse.isReplacePending()](/java/api/com.azure.cosmos.models.throughputresponse.isreplacepending)。
 
 [Azure Monitor メトリック](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db)を使用して、プロビジョニングされたスループット (RU/秒) とリソース上のストレージの履歴を表示できます。
 

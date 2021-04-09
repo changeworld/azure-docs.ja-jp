@@ -2,18 +2,19 @@
 title: クイック スタート:Resource Manager テンプレートを使用して Ubuntu Linux VM を作成する
 description: このクイックスタートでは、Resource Manager テンプレートを使用して Linux 仮想マシンを作成する方法について説明します
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: bd22d20703dc72e220f9b479b4a4005033f964ae
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 97a9d3632cb0e78b899844b1aaa84a030c6da23e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649773"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549619"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Ubuntu Linux 仮想マシンを作成する
 
@@ -65,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - **[DNS label prefix]\(DNS ラベルのプレフィックス\)** : DNS ラベルの一部として使用する一意の識別子を入力します。
     - **[Ubuntu OS version]\(Ubuntu OS のバージョン\)** : VM 上で稼働させるUbuntu のバージョンを選択します。
     - **[場所]** : 既定値は、リソース グループと同じ場所になります (ただし、リソース グループが存在する場合のみ)。
-    - **[VM サイズ]** : VM に使用する[サイズ](../sizes.md)を選択します。
+    - **[VM サイズ]** : VM に使用する [サイズ](../sizes.md)を選択します。
     - **[仮想ネットワーク名]** : 仮想ネットワークに使用する名前。
     - **[サブネット名]** : VM が使用する必要があるサブネットの名前。
     - **[ネットワーク セキュリティ グループ名]** : NSG の名前。

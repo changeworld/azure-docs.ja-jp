@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/08/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: eb01ae5e9c7e134e33460674eb2c44b710671a4a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 922480eb2f4795729919c6ed039ccf61f19875b3
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833356"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102630369"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 リリース ノート
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 次のリリース ノートでは、お使いの Azure Stack Edge デバイスの 2101 リリースの重大な未解決の問題と解決された問題について説明します。 このリリース ノートは、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、Azure Stack Edge Mini R デバイスを対象としています。 機能および問題が特定のモデルのものである場合は、常にそれを明記しています。
 
@@ -27,7 +29,7 @@ ms.locfileid: "99833356"
 
 Azure Stack Edge 2101 リリースの新機能は次のとおりです。 
 
-- **Azure Stack Edge Pro R および Azure Stack Edge Mini R デバイスの一般提供**: このリリースから、Azure Stack Edge Pro R および Azure Stack Edge Mini R デバイスが提供されます。 詳細については、「[Azure Stack Edge Pro R とは](azure-stack-edge-j-series-overview.md)」および「[Azure Stack Edge Mini R とは](azure-stack-edge-k-series-overview.md)」をご覧ください。  
+- **Azure Stack Edge Pro R および Azure Stack Edge Mini R デバイスの一般提供**: このリリースから、Azure Stack Edge Pro R および Azure Stack Edge Mini R デバイスが提供されます。 詳細については、「[Azure Stack Edge Pro R とは](azure-stack-edge-pro-r-overview.md)」および「[Azure Stack Edge Mini R とは](azure-stack-edge-mini-r-overview.md)」をご覧ください。  
 - **クラウドでの Virtual Machines の管理**: このリリースから、お使いのデバイスで Azure portal を使用して仮想マシンを作成および管理できます。 詳細については、[Azure portal を使用した仮想マシンのデプロイ](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)に関する記事をご覧ください。
 - **Azure Monitor の統合**: お使いのデバイスで実行されているコンピューティング アプリケーションから、Azure Monitor を使用してコンテナーを監視できるようになりました。 このリリースでは、Azure Monitor のメトリック ストアはサポートされていません。 詳細については、[お使いのデバイスでの Azure Monitor の有効化](azure-stack-edge-gpu-enable-azure-monitor.md)に関する記事をご覧ください。
 - **Edge コンテナー レジストリ**: このリリースでは、お使いのデバイスのエッジのリポジトリとなる Edge コンテナー レジストリをご利用になれます。 このレジストリを使って、コンテナー イメージを格納および管理できます。 詳細については、[Edge コンテナー レジストリの有効化](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)に関する記事をご覧ください。 

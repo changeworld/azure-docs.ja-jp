@@ -1,26 +1,19 @@
 ---
 title: GitHub から Azure Linux エージェントを更新する
 description: Azure の Linux VM で使用する Azure Linux エージェントを更新する方法について説明します
-services: virtual-machines-linux
-documentationcenter: ''
-author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: f1f19300-987d-4f29-9393-9aba866f049c
-ms.service: virtual-machines-linux
-ms.subservice: extensions
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.topic: article
+ms.service: virtual-machines
+ms.subservice: extensions
+author: amjads1
+ms.author: amjads
+ms.collection: linux
 ms.date: 08/02/2017
-ms.author: mimckitt
-ms.openlocfilehash: 9de866faeb706893101020c23bbba353b77148f6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a274435d6e0fc32bdf5b2ab04702ed971d7c5175
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964900"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558986"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>VM で Azure Linux エージェントを更新する方法
 

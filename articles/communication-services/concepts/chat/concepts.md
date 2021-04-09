@@ -6,17 +6,20 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 2360cc8d202ed29051551231d14bef69c0e66ce4
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 22ffa59339d85af80a7398e581862d19eef17222
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657810"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103490655"
 ---
 # <a name="chat-concepts"></a>チャットに関する概念
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Azure Communication Services の Chat クライアント ライブラリを使用して、アプリケーションにリアルタイムのテキスト チャットを追加できます。 このページには、チャットの主な概念と機能がまとめられています。
 

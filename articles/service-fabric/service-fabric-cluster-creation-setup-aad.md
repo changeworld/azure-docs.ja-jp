@@ -3,12 +3,12 @@ title: クライアント認証用に Azure Active Directory をセットアッ�
 description: Service Fabric クラスターのクライアントを認証するための Azure Active Directory (Azure AD) の設定方法について学習します。
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: 537a81a090828d3fcc9dde6032f1d4eb2df9b4e4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1f89e144f9cef12c5bff87befb00a88bad8d7d9
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258778"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102215971"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>クライアント認証用に Azure Active Directory をセットアップする
 
@@ -113,7 +113,7 @@ Service Fabric Explorer に相当するクラスター (Web) アプリケーシ�
 PowerShell から Azure AD を使用して Service Fabric クラスターに接続しようとすると、サインイン ページでエラーが返されます: "AADSTS50011:要求で指定された応答 URL が、アプリケーションに対して構成された応答 URL と一致しません: &lt;GUID&gt;。"
 
 #### <a name="reason"></a>理由
-前の問題と同様に、PowerShell では Azure AD に対して認証を試みます。これにより、Azure AD アプリケーションの**応答 URL** リストに一覧表示されていないリダイレクト URL が提供されます。  
+前の問題と同様に、PowerShell では Azure AD に対して認証を試みます。これにより、Azure AD アプリケーションの **応答 URL** リストに一覧表示されていないリダイレクト URL が提供されます。  
 
 #### <a name="solution"></a>解決策
 前の問題と同じプロセスを使用しますが、URL に `urn:ietf:wg:oauth:2.0:oob` を設定する必要があります。これは、コマンド ライン認証用の特別なリダイレクトです。
@@ -138,7 +138,7 @@ Azure Active Directory アプリケーションを設定し、ユーザーのロ
 
 
 <!-- Links -->
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md

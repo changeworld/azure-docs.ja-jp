@@ -13,12 +13,12 @@ ms.date: 02/01/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 1bd60a60aa5f6fffcc459f0e14d550740e48496d
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 374e8bb61886a78289fcf44ce9582df325a4e64c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428151"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549041"
 ---
 # <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Microsoft ID プラットフォームでの構成可能なトークンの有効期間 (プレビュー)
 
@@ -240,7 +240,7 @@ PowerShell を使用すると、廃止の影響を受けるポリシーを特定
 
 ## <a name="cmdlet-reference"></a>コマンドレット リファレンス
 
-これらは、[Azure Active Directory PowerShell for Graph Preview モジュール](/powershell/module/azuread/?view=azureadps-2.0-preview#service-principals&preserve-view=true&preserve-view=true)のコマンドレットです。
+これらは、[Azure Active Directory PowerShell for Graph Preview モジュール](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#service-principals)のコマンドレットです。
 
 ### <a name="manage-policies"></a>ポリシーの管理
 

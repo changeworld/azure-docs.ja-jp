@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperf-fy21q1
-ms.openlocfilehash: 6c144f33f32422e27916e1987e0b2e8693f97945
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 952be09662c2c74f883d63de72bba2b9cb58d0e0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656480"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554005"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Java、Python、および Node.js アプリで使用する Azure Cosmos DB エミュレーター証明書のエクスポート
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Windows 証明書ストアと統合されていない言語およびランタイ
 
 Java ベースのクライアントが使用される Java アプリケーションまたは MongoDB アプリケーションを実行している場合は、`-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` フラグを渡すよりも、既定の Java 証明書ストアに証明書をインストールする方が簡単です。 たとえば、付属の Java デモ アプリケーション (`https://localhost:8081/_explorer/index.html`) では、既定の証明書ストアを使用します。
 
-X.509 証明書を既定の Java 証明書ストアにインポートする場合は、[証明書を Java 証明書ストアに追加する方法](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store)に関するページの手順に従ってください。 keytool を実行する際には *%JAVA_HOME%* ディレクトリで作業することに注意してください。 証明書を証明書ストアにインポートすると、SQL API および Azure Cosmos DB の MongoDB 用 API のクライアントは、Azure Cosmos DB Emulator に接続できるようになります。
+X.509 証明書を既定の Java 証明書ストアにインポートする場合は、[証明書を Java 証明書ストアに追加する方法](https://docs.oracle.com/cd/E54932_01/doc.705/e54936/cssg_create_ssl_cert.htm)に関するページの手順に従ってください。 keytool を実行する際には *%JAVA_HOME%* ディレクトリで作業することに注意してください。 証明書を証明書ストアにインポートすると、SQL API および Azure Cosmos DB の MongoDB 用 API のクライアントは、Azure Cosmos DB Emulator に接続できるようになります。
 
 また、次の bash スクリプトを実行して証明書をインポートすることもできます。
 

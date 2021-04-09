@@ -586,6 +586,8 @@
           href: control-flow-system-variables.md
         - name: マッピング データ フローをパラメーター化する
           href: parameters-data-flow.md
+        - name: パラメーター化する方法
+          href: how-to-expression-language-functions.md
     - name: セキュリティ
       items:
         - name: データ移動のセキュリティに関する考慮事項

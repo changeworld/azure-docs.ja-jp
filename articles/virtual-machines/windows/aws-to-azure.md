@@ -2,17 +2,18 @@
 title: Windows AWS EC2 インスタンスを Azure に移動する
 description: アマゾン ウェブ サービス (AWS) EC2 Windows インスタンスを Azure 仮想マシンに移行します。
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 9f66653996cb36e58054756ac877f859559609be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 86d3e67b121bf7d66651e1e823e5f137e918a171
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87267100"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102550792"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Windows VM をアマゾン ウェブ サービス (AWS) から Azure 仮想マシンに移行する
 
@@ -31,7 +32,7 @@ ms.locfileid: "87267100"
 
  
 - **特殊化された VHD** - 特殊化された VHD では、ユーザーアカウント、アプリケーション、その他のステート データが元の VM から保持されます。 新しい VM を作成するために VHD を使用する場合、以下のステップが完了していることを確認します。  
-    * [Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md)。 Sysprep を使用して VM を一般化**しないでください**。 
+    * [Windows VHD の Azure へのアップロードの準備](prepare-for-upload-vhd-image.md)。 Sysprep を使用して VM を一般化 **しないでください**。 
     * VM にインストールされたゲストの仮想化ツールやエージェント (VMware tools) の削除。 
     * IP アドレスと DNS 設定を DHCP で取得するよう VM が構成されていることを確認。 これにより、サーバーが起動時に VNet 内の IP アドレスを取得します。  
 
@@ -57,7 +58,7 @@ VHD のエクスポートが完了したら、「[How Do I Download an Object fr
 
 これで、VHD を Azure にアップロードして新しい VM を作成できるようになりました。 
 
-- エクスポート前に Sysprep を実行してソースを**一般化**した場合、[一般化した VHD のアップロードとそれを使用した Azure の新しい VM の作成](upload-generalized-managed.md)に関するページを参照してください。
-- エクスポート前に Sysprep を実行しなかった場合、VHD は**特殊化された**と見なされます。その場合、[特殊化した VHD を Azure にアップロードして新しい VM を作成する方法](create-vm-specialized.md)に関するページを参照してください。
+- エクスポート前に Sysprep を実行してソースを **一般化** した場合、[一般化した VHD のアップロードとそれを使用した Azure の新しい VM の作成](upload-generalized-managed.md)に関するページを参照してください。
+- エクスポート前に Sysprep を実行しなかった場合、VHD は **特殊化された** と見なされます。その場合、[特殊化した VHD を Azure にアップロードして新しい VM を作成する方法](create-vm-specialized.md)に関するページを参照してください。
 
  

@@ -2,16 +2,17 @@
 title: OpenBSD イメージの作成とアップロード
 description: OpenBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成およびアップロードして、Azure CLI で Azure 仮想マシンを作成する方法について説明します
 author: gbowerman
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 3437fcd2d1d521aad237ecf6d3f7937b4835d376
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685091"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554600"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD ディスクイメージの作成と Azure へのアップロード
 この記事では、OpenBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。 アップロードした VHD を独自のイメージとして使用し、Azure CLI で Azure の仮想マシン (VM) を作成することができます。
@@ -87,7 +88,7 @@ Hyper-V のサポートが追加された OpenBSD オペレーティング シ�
 
 
 ## <a name="prepare-the-vhd"></a>VHD の準備
-VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。 Hyper-V マネージャーまたは PowerShellの [convert-vhd](/powershell/module/hyper-v/convert-vhd?view=win10-ps) コマンドレットを使用して、ディスクを固定 VHD 形式に変換できます。 次が例となります。
+VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。 Hyper-V マネージャーまたは PowerShellの [convert-vhd](/powershell/module/hyper-v/convert-vhd) コマンドレットを使用して、ディスクを固定 VHD 形式に変換できます。 次が例となります。
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

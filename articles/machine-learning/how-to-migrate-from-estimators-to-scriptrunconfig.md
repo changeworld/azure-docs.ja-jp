@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: d603a12f851dac5b7cefc5bad728d42967bb27dc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ae0623a11b940a4d142f6bfae02d4b20727a6f55
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878597"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102518874"
 ---
 # <a name="migrating-from-estimators-to-scriptrunconfig"></a>Estimator から ScriptRunConfig への移行
 
@@ -30,7 +30,7 @@ Estimator は、Python SDK の 1.19.0 リリースで非推奨となりました
 > Estimator から ScriptRunConfig に移行するには、Python SDK 1.15.0 以降を使用してください。
 
 ## <a name="scriptrunconfig-documentation-and-samples"></a>ScriptRunConfig のドキュメントとサンプル
-Azure Machine Learning のドキュメントとサンプルは、ジョブの構成と送信で [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig?preserve-view=true&view=azure-ml-py) を使用するように更新されました。
+Azure Machine Learning のドキュメントとサンプルは、ジョブの構成と送信で [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) を使用するように更新されました。
 
 ScriptRunConfig の使用方法の詳細については、次のドキュメントを参照してください。
 * [トレーニングの実行を構成して送信する](how-to-set-up-training-targets.md)
@@ -107,7 +107,7 @@ src.run_config.data_references = {data_ref.data_reference_name: data_ref.to_conf
 * [Azure ML のデータセットを使用してトレーニングする](./how-to-train-with-datasets.md)
 
 ## <a name="distributed-training"></a>分散トレーニング
-トレーニング用に分散ジョブを構成する必要がある場合は、ScriptRunConfig コンストラクターで `distributed_job_config` パラメーターを指定します。 それぞれの種類の分散ジョブに対して、[MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?preserve-view=true&view=azure-ml-py)、[PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration?preserve-view=true&view=azure-ml-py)、または [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration?preserve-view=true&view=azure-ml-py) を渡します。
+トレーニング用に分散ジョブを構成する必要がある場合は、ScriptRunConfig コンストラクターで `distributed_job_config` パラメーターを指定します。 それぞれの種類の分散ジョブに対して、[MpiConfiguration](/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration)、[PyTorchConfiguration](/python/api/azureml-core/azureml.core.runconfig.pytorchconfiguration)、または [TensorflowConfiguration](/python/api/azureml-core/azureml.core.runconfig.tensorflowconfiguration) を渡します。
 
 次の例では、MPI/Horovod で分散トレーニングを使用するように PyTorch トレーニング ジョブを構成します。
 ```python

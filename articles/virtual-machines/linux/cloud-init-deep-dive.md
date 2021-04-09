@@ -2,18 +2,18 @@
 title: cloud-init の理解
 description: cloud-init を使用した Azure VM のプロビジョニングについて理解を深めます。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: f5028abadbe5600058c83a144d0095aee1278fe6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94dd57310375febb4bc9a55efa704a5fbf4e80e8
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86042078"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559445"
 ---
 # <a name="diving-deeper-into-cloud-init"></a>cloud-init を深く知る
 [cloud-init](https://cloudinit.readthedocs.io/en/latest/index.html) の詳細を学んだり、深いレベルでトラブルシューティングするには、しくみを理解する必要があります。 このドキュメントでは、重要な部分を示し、Azure 固有の内容について説明します。

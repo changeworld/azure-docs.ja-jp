@@ -2,16 +2,16 @@
 title: 一般的な Azure CLI コマンド
 description: Azure Resource Manager モードで VM を管理する際に使用する一般的な Azure CLI コマンドについて説明します
 author: RicksterCDN
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/12/2017
 ms.author: rclaus
-ms.openlocfilehash: 5a9dd8aaeed0642461e4244a72a3dab5c96a77b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2084d79ecbbc53ef9e3c75bae0664eae7de0eccb
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372248"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559632"
 ---
 # <a name="common-azure-cli-commands-for-managing-azure-resources"></a>Azure リソースを管理するための一般的な Azure CLI コマンド
 
@@ -37,7 +37,7 @@ Azure CLI を使用すると、macOS、Linux、Windows 上の Azure リソース
 | VM の割り当て解除 | `az vm deallocate --resource-group myResourceGroup --name myVM` |
 | VM の再起動 | `az vm restart --resource-group myResourceGroup --name myVM` |
 | VM を再デプロイする | `az vm redeploy --resource-group myResourceGroup --name myVM` |
-| VM の削除 | `az vm delete --resource-group myResourceGroup --name myVM` |
+| VM を削除する | `az vm delete --resource-group myResourceGroup --name myVM` |
 
 ### <a name="get-vm-info"></a>VM の情報の取得
 | タスク | Azure CLI コマンド |

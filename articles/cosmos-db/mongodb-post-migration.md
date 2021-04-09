@@ -5,14 +5,14 @@ author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: how-to
-ms.date: 03/20/2020
+ms.date: 02/14/2021
 ms.author: chrande
-ms.openlocfilehash: 300177b9d5a20ce8082db57837be3ff461fd51a0
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ce0facaba43e9cc8e37b19fbd3dfc840067d278f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93361658"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560397"
 ---
 # <a name="post-migration-optimization-steps-when-using-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API 使用時の移行後の最適化手順
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

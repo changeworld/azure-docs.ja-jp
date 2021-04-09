@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
-ms.openlocfilehash: 5c53eb65f31e32d3edebcbf31d48d166f5464a92
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 31eeb31fb78a4e9552e64121e0e85b5fd8d9b773
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233357"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102210635"
 ---
 # <a name="check-resource-usage-against-limits"></a>制限に照らしたリソース使用量の確認
 
@@ -27,9 +27,9 @@ ms.locfileid: "98233357"
 
 1. Azure [portal](https://portal.azure.com) にログインします。
 2. Azure portal の左上にある **[すべてのサービス]** を選択します。
-3. **[フィルター]** ボックスに「*Subscriptions*」と入力します。 検索結果に **Subscriptions** が表示されたら、それを選びます。
+3. **[フィルター]** ボックスに「*Subscriptions*」と入力します。 検索結果に **[サブスクリプション]** が表示されたら、それを選びます。
 4. 使用状況を確認するサブスクリプションの名前を選択します。
-5. **[設定]** で、 **[使用量 + クォータ]** を選択します。
+5. **[設定]** で、**[使用量 + クォータ]** を選択します。
 6. 次のオプションを選択できます。
    - **リソースの種類**: すべてのリソースの種類を選択することも、表示する特定のリソースの種類を選択することもできます。
    - **プロバイダー**: すべてのリソース プロバイダーを選択することも、**コンピューティング**、**ネットワーク**、または **ストレージ** を選択することもできます。
@@ -40,7 +40,7 @@ ms.locfileid: "98233357"
 
        ![使用状況データを表示する](./media/check-usage-against-limits/view-usage.png)
 
-     列見出しを選択すると、列を並べ替えることができます。 表示されている制限は、ご使用のサブスクリプションに対する制限です。 既定の制限を増やす必要がある場合は、 **[引き上げを依頼する]** を選択し、サポート リクエストを作成して送信します。 Azure の[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)に関するページには、すべてのリソースの最大制限値が一覧表示されています。 現在の制限が既に最大値に達している場合、制限値を増やすことはできません。
+     列見出しを選択すると、列を並べ替えることができます。 表示されている制限は、ご使用のサブスクリプションに対する制限です。 既定の制限を増やす必要がある場合は、**[引き上げを依頼する]** を選択し、サポート リクエストを作成して送信します。 Azure の[制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits)に関するページには、すべてのリソースの最大制限値が一覧表示されています。 現在の制限が既に最大値に達している場合、制限値を増やすことはできません。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -73,7 +73,7 @@ Network Watchers                   1     1
 
 Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 この記事では、Azure CLI バージョン 2.0.32 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure にログインする必要もあります。
 
-制限に照らして使用量を確認するには、[az network list-usages](/cli/azure/network?view=azure-cli-latest#az-network-list-usages) を使用します。 次の例では、米国東部の場所にあるリソースの使用量が取得されます。
+制限に照らして使用量を確認するには、[az network list-usages](/cli/azure/network#az-network-list-usages) を使用します。 次の例では、米国東部の場所にあるリソースの使用量が取得されます。
 
 ```azurecli-interactive
 az network list-usages \

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: robinsh
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dbdc1c079f7ef2a06ece553e9fec542cbc05ea54
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: cae2bcb1a3302814a426fa0cb2dfb36ba1b013fa
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147668"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218368"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
@@ -234,7 +234,7 @@ query オブジェクトは、クエリに必要な逆シリアル化オプシ�
 ### <a name="limitations"></a>制限事項
 
 > [!IMPORTANT]
-> クエリの結果には、デバイス ツインの最新の値に関連し、数分の遅れが生じることがあります。 ID を使用して個々のデバイス ツインのクエリを実行する場合は、[get twin REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin?view=azure-java-stable) を使用します。 この API からは常に最新の値が返されます。また、調整の上限は高くなっています。 REST API を直接発行するか、[Azure IoT Hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) のいずれかで同等の機能を使用できます。
+> クエリの結果には、デバイス ツインの最新の値に関連し、数分の遅れが生じることがあります。 ID を使用して個々のデバイス ツインのクエリを実行する場合は、[get twin REST API](/java/api/com.microsoft.azure.sdk.iot.device.devicetwin) を使用します。 この API からは常に最新の値が返されます。また、調整の上限は高くなっています。 REST API を直接発行するか、[Azure IoT Hub Service SDK](iot-hub-devguide-sdks.md#azure-iot-hub-service-sdks) のいずれかで同等の機能を使用できます。
 
 現時点では、比較はプリミティブ型間 (オブジェクトなし) でのみサポートされます。たとえば、`... WHERE properties.desired.config = properties.reported.config` は、これらのプロパティがプリミティブ値を持つ場合にのみサポートされます。
 
@@ -403,7 +403,7 @@ GROUP BY <group_by_element>
 * JSON 型 (ブール値、数値、文字列、配列、オブジェクトなど) のインスタンスに対して評価を行う
 * 組み込みの演算子と関数を使用するデバイス JSON ドキュメントと定数からくるデータの操作として定義される
 
-*条件*はブール値に対して評価する式のことです。 ブール値の **true** 以外の定数は、**false** と見なされます。 このルールには、**null**、**未定義**、任意のオブジェクトまたは配列インスタンス、任意の文字列、およびブール値の **false** が含まれます。
+*条件* はブール値に対して評価する式のことです。 ブール値の **true** 以外の定数は、**false** と見なされます。 このルールには、**null**、**未定義**、任意のオブジェクトまたは配列インスタンス、任意の文字列、およびブール値の **false** が含まれます。
 
 式の構文は次のとおりです。
 

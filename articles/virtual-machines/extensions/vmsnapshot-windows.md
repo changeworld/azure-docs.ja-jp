@@ -1,27 +1,28 @@
 ---
 title: Azure Backup 用の VM スナップショットの Windows 拡張機能
 description: VM スナップショット拡張機能を使用して、Azure Backup から仮想マシンのアプリケーション整合性バックアップを作成します
-services: backup, virtual-machines-windows
+services: backup, virtual-machines
 documentationcenter: ''
 author: trinadhkotturu
 manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: windows
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: trinadhk
-ms.openlocfilehash: 1d1342cffc6bc8743c34cb4c028c0790de91dc50
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 834c886c15e50870ec008dbb5ceab38132cc4649
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965869"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561069"
 ---
 # <a name="vm-snapshot-windows-extension-for-azure-backup"></a>Azure Backup 用の VM スナップショットの Windows 拡張機能
 
 Azure Backup は、オンプレミスからクラウドにワークロードをバックアップし、クラウド リソースを Recovery Services コンテナーにバックアップするためのサポートを提供します。 Azure Backup では、VM スナップショット拡張機能を使用すれば、VM をシャットダウンしなくても Azure 仮想マシンのアプリケーション整合バックアップを作成できます。 VM スナップショット拡張機能は、Azure Backup サービスの一部として、Microsoft によって公開され、サポートされます。 Azure Backup は、バックアップの有効化の後にトリガーされる最初のスケジュールされたバックアップの一部として、拡張機能をインストールします。 このドキュメントでは、VM スナップショット拡張機能でサポートされているプラットフォーム、構成、デプロイのオプションについて詳しく説明します。
 
-VMSnapshot 拡張機能は、非マネージド VM に対してのみ Azure portal に表示されます。
+VMSnapshot 拡張機能は、Azure portal で、非マネージド VM に対してのみ表示されます。
 
 ## <a name="prerequisites"></a>前提条件
 

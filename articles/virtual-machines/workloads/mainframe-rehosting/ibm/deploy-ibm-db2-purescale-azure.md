@@ -2,16 +2,17 @@
 title: Azure 上に IBM DB2 pureScale をデプロイする
 description: 最近、z/OS 上で実行される IBM DB2 環境から Azure 上の IBM DB2 pureScale に企業が移行する際に、あるアーキテクチャの例が使用されています。ここでは、そのアーキテクチャの例をデプロイする方法について説明します。
 author: njray
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 ms.topic: how-to
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 91ab11dce1c88f698640ce446b529c9cbe92cac5
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 33ff6174d7e5107076dda177731c9daec7e57266
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99221465"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956147"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Azure 上に IBM DB2 pureScale をデプロイする
 
@@ -50,7 +51,7 @@ deploy.sh スクリプトを実行すると、このアーキテクチャの Azu
 
 次に、デプロイ スクリプトにより、Azure 上の共有ストレージに対して iSCSI 仮想記憶域ネットワーク (vSAN) が設定されます。 この例では、iSCSI が共有ストレージ クラスターに接続されます。 元の顧客ソリューションでは、GlusterFS が使用されていました。 ただし、IBM ではこのアプローチはサポートされなくなりました。 IBM からのサポートを維持するには、サポートされている iSCSI 互換ファイル システムを使用する必要があります。 Microsoft では、記憶域スペース ダイレクト (S2D) をオプションとして提供しています。
 
-このソリューションは、単一の Windows ノードとして iSCSI ターゲットをインストールするオプションも提供します iSCSI は TCP/IP 上で共有ブロック ストレージ インターフェイスを提供します。これにより、DB2 pureScale セットアップ手順で、デバイス インターフェイスを使用して、共有ストレージに接続できます。
+このソリューションは、単一の Windows ノードとして iSCSI ターゲットをインストールするオプションも提供します  iSCSI は TCP/IP 上で共有ブロック ストレージ インターフェイスを提供します。これにより、DB2 pureScale セットアップ手順で、デバイス インターフェイスを使用して、共有ストレージに接続できます。
 
 通常、デプロイ スクリプトでは、次の手順が実行されます。
 

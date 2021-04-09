@@ -11,12 +11,12 @@ ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 02/25/2021
-ms.openlocfilehash: 2c61cfaf0e97f7d483239a23e5eea52b51c6a126
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 44ccf6b6d2459b87040fcac7d9cdcd336cc7b82f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101690211"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102522038"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
 
@@ -39,7 +39,7 @@ ms.locfileid: "101690211"
 
 ## <a name="interpretability-with-azure-machine-learning"></a>Azure Machine Learning での解釈可能性
 
-モデルの解釈可能性クラスは、次の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)方法を確認してください。
+モデルの解釈可能性クラスは、次の SDK パッケージを介して利用可能になります。[Azure Machine Learning 用の SDK パッケージをインストールする](/python/api/overview/azure/ml/install)方法を確認してください。
 
 * `azureml.interpret`。Microsoft でサポートされている機能が含まれます。
 

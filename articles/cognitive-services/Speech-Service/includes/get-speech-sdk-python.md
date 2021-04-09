@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: c0e3dc2a93393982341414399e318de0d983b918
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecc8fa0d6660d76f20451cf98e927e7efb2c30d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81399938"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102434547"
 ---
 :::row:::
     :::column span="3":::
-        Python 音声 SDK は Python Package Index (PyPI) モジュールとして提供されています。詳細については、「 <a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">azure-cognitiveservices-speech 」<span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照してください。 Python音声SDK は、Windows、Linux　および macOS と互換性があります。
+        Python 音声 SDK は Python Package Index (PyPI) モジュールとして提供されています。詳細については、「 <a href="https://pypi.org/project/azure-cognitiveservices-speech/" target="_blank">azure-cognitiveservices-speech 」</a>を参照してください。 Python音声SDK は、Windows、Linux　および macOS と互換性があります。
     :::column-end:::
     :::column:::
         <br>
@@ -35,4 +35,4 @@ pip install azure-cognitiveservices-speech
 
 #### <a name="additional-resources"></a>その他のリソース
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python" target="_blank">Python 音声 SDK <span class="docon docon-navigate-external x-hidden-focus"></span></a> クイックスタートソースコード
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/python" target="_blank">Python 音声 SDK </a> クイックスタートソースコード

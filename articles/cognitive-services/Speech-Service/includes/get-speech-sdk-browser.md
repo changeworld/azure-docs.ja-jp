@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: f8c7b9ee90e947534d6f938b1eb22f58b57270e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 252f2e6275b01522b83e846201d190b39d2bbf21
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91376258"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102434511"
 ---
 :::row:::
     :::column span="3":::
-        JavaScript 用 Speech SDK は npm パッケージとして提供されています。<a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">microsoft-cognitiveservices-speech-sdk <span class="docon docon-navigate-external x-hidden-focus"></span></a> とそれに付随する GitHub リポジトリ <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank">cognitive-services-speech-sdk-js <span class="docon docon-navigate-external x-hidden-focus"></span></a> を参照してください。
+        JavaScript 用 Speech SDK は npm パッケージとして提供されています。<a href="https://www.npmjs.com/package/microsoft-cognitiveservices-speech-sdk" target="_blank">microsoft-cognitiveservices-speech-sdk </a> とそれに付随する GitHub リポジトリ <a href="https://github.com/Microsoft/cognitive-services-speech-sdk-js" target="_blank">cognitive-services-speech-sdk-js </a> を参照してください。
     :::column-end:::
     :::column:::
         <br>
@@ -25,7 +25,7 @@ ms.locfileid: "91376258"
 :::row-end:::
 
 > [!TIP]
-> JavaScript 用 Speech SDK は npm パッケージとして提供されており、クライアントの Web ブラウザーと Node.js の両方で使用できますが、各環境のさまざまなアーキテクチャの影響を考慮してください。 例えば、<a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank">ドキュメントオブジェクトモデル (DOM)<span class="docon docon-navigate-external x-hidden-focus"></span></a>は、<a href="https://nodejs.org/api/fs.html" target="_blank">ファイルシステム<span class="docon docon-navigate-external x-hidden-focus"></span></a>がクライアント側アプリケーションで使用できない場合と同様に、サーバー側アプリケーションでは使用できません。
+> JavaScript 用 Speech SDK は npm パッケージとして提供されており、クライアントの Web ブラウザーと Node.js の両方で使用できますが、各環境のさまざまなアーキテクチャの影響を考慮してください。 例えば、<a href="https://en.wikipedia.org/wiki/Document_Object_Model" target="_blank">ドキュメントオブジェクトモデル (DOM)</a>は、<a href="https://nodejs.org/api/fs.html" target="_blank">ファイルシステム</a>がクライアント側アプリケーションで使用できない場合と同様に、サーバー側アプリケーションでは使用できません。
 
 ### <a name="nodejs-package-manager-npm"></a>Node.js パッケージマネージャー (NPM)
 
@@ -37,11 +37,11 @@ npm install microsoft-cognitiveservices-speech-sdk
 
 ### <a name="html-script-tag"></a>HTML スクリプトタグ
 
-または、HTMLs`<head>`要素に`<script>`タグを直接含めることもできます。この場合,<a href="https://www.jsdelivr.com/package/npm/microsoft-cognitiveservices-speech-sdk" target="_blank">**JSDelivr**NPM シンジケート に依存します<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+または、HTMLs`<head>`要素に`<script>`タグを直接含めることもできます。この場合,<a href="https://www.jsdelivr.com/package/npm/microsoft-cognitiveservices-speech-sdk" target="_blank">**JSDelivr** NPM シンジケート に依存します</a>。
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/microsoft-cognitiveservices-speech-sdk@latest/distrib/browser/microsoft.cognitiveservices.speech.sdk.bundle-min.js">
 </script>
 ```
 
-詳細については、<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser" target="_blank">Web ブラウザー音声SDK のクイックスタート を参照してください <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+詳細については、<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser" target="_blank">Web ブラウザー音声SDK のクイックスタート を参照してください </a>。

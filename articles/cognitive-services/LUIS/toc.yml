@@ -286,7 +286,7 @@
                 - name: NuGet - ランタイム
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/'
                 - name: リファレンス
-                  href: /dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-dotnet
+                  href: /dotnet/api/overview/azure/cognitiveservices/client/languageunderstanding
                 - name: サンプル
                   href: 'https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS'
             - name: Go
@@ -304,7 +304,7 @@
                 - name: Maven - ランタイム
                   href: 'https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime'
                 - name: リファレンス
-                  href: /java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable
+                  href: /java/api/overview/azure/cognitiveservices/client/languageunderstanding
                 - name: サンプル
                   href: 'https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Language/LanguageUnderstanding'
             - name: Node.js
@@ -320,7 +320,7 @@
                 - name: pip SDK
                   href: 'https://pypi.org/project/azure-cognitiveservices-language-luis/'
                 - name: リファレンス
-                  href: /python/api/azure-cognitiveservices-language-luis/index?view=azure-python
+                  href: /python/api/azure-cognitiveservices-language-luis/index
                 - name: サンプル
                   href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/language/luis'
     - name: ユーザーのプライバシー

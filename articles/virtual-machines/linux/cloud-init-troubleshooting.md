@@ -2,18 +2,18 @@
 title: cloud-init の使用のトラブルシューティング
 description: cloud-init を使用した Azure VM のプロビジョニングをトラブルシューティングします。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.topic: troubleshooting
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: a18899ffc6b19be6226d9e0a3efd9a9519434601
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 842107245fe26155d53866bf95e11b08d7593ad1
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666224"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582155"
 ---
 # <a name="troubleshooting-vm-provisioning-with-cloud-init"></a>cloud-init を使用した VM プロビジョニングのトラブルシューティング
 
@@ -56,11 +56,11 @@ VM がプロビジョニングできないとき、Azure では 20 分間 "作�
 
 VM が実行されているときは、プロビジョニングが失敗した理由を理解するために、VM のログが必要になります。  VM のプロビジョニングが失敗した理由を理解するには、VM を停止しないでください。 VM を実行させたままにします。 ログを収集するために、障害が発生した VM を実行中の状態のままにしておく必要があります。 ログを収集するには、次のいずれかの方法を使用します。
 
-- [シリアル コンソール](../troubleshooting/serial-console-grub-single-user-mode.md)
+- [シリアル コンソール](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)
 
 - [ブート診断を有効化](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#enable-boot-diagnostics)してから、VM を作成し、ブート中に[表示](/previous-versions/azure/virtual-machines/linux/tutorial-monitor#view-boot-diagnostics)します。
 
-- [AZ VM Repair を実行](../troubleshooting/repair-linux-vm-using-azure-virtual-machine-repair-commands.md)し、OS ディスクを接続してマウントします。これにより、これらのログを収集できます。
+- [AZ VM Repair を実行](/troubleshoot/azure/virtual-machines/repair-linux-vm-using-azure-virtual-machine-repair-commands)し、OS ディスクを接続してマウントします。これにより、これらのログを収集できます。
 ```bash
 /var/log/cloud-init*
 /var/log/waagent*
@@ -108,7 +108,7 @@ Stderr: mount: unknown filesystem type 'udf'
 2019-10-10 04:51:24,010 - util.py[DEBUG]: Running command ['mount', '-o', 'ro,sync', '-t', 'auto', u'/dev/sr0', '/run/cloud-init/tmp/tmpXXXXX'] with allowed return codes [0] (shell=False, capture=True)
 ```
 
-[シリアル コンソール](../troubleshooting/serial-console-grub-single-user-mode.md)を利用できる場合は、cloud-init が実行しようとしたコマンドを再実行してみてください。
+[シリアル コンソール](/troubleshoot/azure/virtual-machines/serial-console-grub-single-user-mode)を利用できる場合は、cloud-init が実行しようとしたコマンドを再実行してみてください。
 
 `/var/log/cloud-init.log` のログは、/etc/cloud/cloud.cfg.d/05_logging.cfg 内で再構成することもできます。 cloud-init のログについて詳しくは、[cloud-init のドキュメント](https://cloudinit.readthedocs.io/en/latest/topics/logging.html)をご覧ください 
 

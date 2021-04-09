@@ -11,12 +11,12 @@ ms.author: nilsp
 author: NilsPohlmann
 ms.date: 07/31/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: bfeab990c841f6b65e665b4a8aabdfd8b251da60
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2a92fa8fd242482585ab3785e99f8239548ce369
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323913"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868343"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>YAML で機械学習パイプラインを定義する
 
@@ -40,7 +40,7 @@ ms.locfileid: "93323913"
 
 ## <a name="pipeline-definition"></a>パイプラインの定義
 
-パイプラインの定義では次のキーを使用します。これらのキーは、[Pipelines](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline?preserve-view=true&view=azure-ml-py) クラスに対応します。
+パイプラインの定義では次のキーを使用します。これらのキーは、[Pipelines](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline.pipeline) クラスに対応します。
 
 | YAML キー | 説明 |
 | ----- | ----- |
@@ -52,7 +52,7 @@ ms.locfileid: "93323913"
 
 ## <a name="parameters"></a>パラメーター
 
-`parameters` セクションでは次のキーを使用します。これらのキーは、[PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?preserve-view=true&view=azure-ml-py) クラスに対応します。
+`parameters` セクションでは次のキーを使用します。これらのキーは、[PipelineParameter](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter) クラスに対応します。
 
 | YAML キー | 説明 |
 | ---- | ---- |
@@ -80,7 +80,7 @@ pipeline:
 
 ## <a name="data-reference"></a>データ参照
 
-`data_references` セクションでは次のキーを使用します。これらのキーは、[DataReference](/python/api/azureml-core/azureml.data.data_reference.datareference?preserve-view=true&view=azure-ml-py) に対応します。
+`data_references` セクションでは次のキーを使用します。これらのキーは、[DataReference](/python/api/azureml-core/azureml.data.data_reference.datareference) に対応します。
 
 | YAML キー | 説明 |
 | ----- | ----- |
@@ -108,22 +108,22 @@ pipeline:
 
 | ステップの種類 | 説明 |
 | ----- | ----- |
-| `AdlaStep` | Azure Data Lake Analytics を使用して U-SQL スクリプトを実行します。 [AdlaStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep?preserve-view=true&view=azure-ml-py) クラスに対応します。 |
-| `AzureBatchStep` | Azure Batch を使用してジョブを実行します。 [AzureBatchStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep?preserve-view=true&view=azure-ml-py) クラスに対応します。 |
-| `DatabricsStep` | Databricks ノートブック、Python スクリプト、または JAR を追加します。 [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?preserve-view=true&view=azure-ml-py) クラスに対応します。 |
-| `DataTransferStep` | ストレージ オプション間でデータを転送します。 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?preserve-view=true&view=azure-ml-py) クラスに対応します。 |
-| `PythonScriptStep` | Python スクリプトを実行します。 [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?preserve-view=true&view=azure-ml-py) クラスに対応します。 |
-| `ParallelRunStep` | Python スクリプトを実行して、大量のデータを非同期的かつ並列的に処理します。 [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) クラスに対応します。 |
+| `AdlaStep` | Azure Data Lake Analytics を使用して U-SQL スクリプトを実行します。 [AdlaStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.adlastep) クラスに対応します。 |
+| `AzureBatchStep` | Azure Batch を使用してジョブを実行します。 [AzureBatchStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.azurebatchstep) クラスに対応します。 |
+| `DatabricsStep` | Databricks ノートブック、Python スクリプト、または JAR を追加します。 [DatabricksStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep) クラスに対応します。 |
+| `DataTransferStep` | ストレージ オプション間でデータを転送します。 [DataTransferStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep) クラスに対応します。 |
+| `PythonScriptStep` | Python スクリプトを実行します。 [PythonScriptStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep) クラスに対応します。 |
+| `ParallelRunStep` | Python スクリプトを実行して、大量のデータを非同期的かつ並列的に処理します。 [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep) クラスに対応します。 |
 
 ### <a name="adla-step"></a>ADLA ステップ
 
 | YAML キー | 説明 |
 | ----- | ----- |
 | `script_name` | U-SQL スクリプトの名前 (`source_directory` からの相対名)。 |
-| `compute_target` | このステップで使用する Azure Data Lake コンピューティング先。 |
+| `compute` | このステップで使用する Azure Data Lake コンピューティング先。 |
 | `parameters` | パイプラインへの[パラメーター](#parameters)。 |
-| `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py) のいずれかです。 |
-| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py) のどちらかです。 |
+| `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) のいずれかです。 |
+| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) のどちらかです。 |
 | `source_directory` | スクリプトやアセンブリなどを格納するディレクトリ。 |
 | `priority` | 現在のジョブに使用する優先度の値。 |
 | `params` | 名前と値の組のディクショナリ。 |
@@ -170,9 +170,9 @@ pipeline:
 
 | YAML キー | 説明 |
 | ----- | ----- |
-| `compute_target` | このステップで使用する Azure Batch コンピューティング先。 |
-| `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py) のいずれかです。 |
-| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py) のどちらかです。 |
+| `compute` | このステップで使用する Azure Batch コンピューティング先。 |
+| `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) のいずれかです。 |
+| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) のどちらかです。 |
 | `source_directory` | モジュール バイナリ、実行可能ファイル、アセンブリなどを格納するディレクトリ。 |
 | `executable` | このジョブの一部として実行されるコマンドまたは実行可能ファイルの名前。 |
 | `create_pool` | ジョブを実行する前にプールを作成するかどうかを示すブール値のフラグ。 |
@@ -224,13 +224,13 @@ pipeline:
 
 | YAML キー | 説明 |
 | ----- | ----- |
-| `compute_target` | このステップで使用する Azure Databricks コンピューティング先。 |
-| `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py) のいずれかです。 |
-| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py) のどちらかです。 |
+| `compute` | このステップで使用する Azure Databricks コンピューティング先。 |
+| `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) のいずれかです。 |
+| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) のどちらかです。 |
 | `run_name` | この実行の Databricks 内の名前。 |
 | `source_directory` | スクリプトやその他のファイルを格納するディレクトリ。 |
 | `num_workers` | Databricks 実行クラスターのワーカーの静的な数。 |
-| `runconfig` | `.runconfig` ファイルへのパス。 このファイルは [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) クラスの YAML 表現です。 このファイルの構造について詳しくは、[runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) を参照してください。 |
+| `runconfig` | `.runconfig` ファイルへのパス。 このファイルは [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) クラスの YAML 表現です。 このファイルの構造について詳しくは、[runconfigschema.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) を参照してください。 |
 | `allow_reuse` | 同じ設定でもう一度実行されたときに、ステップで前の結果を再利用するかどうかを決定します。 |
 
 次に、Databricks ステップのサンプルを示します。
@@ -278,9 +278,9 @@ pipeline:
 
 | YAML キー | 説明 |
 | ----- | ----- |
-| `compute_target` | このステップで使用する Azure Data Factory コンピューティング先。 |
-| `source_data_reference` | データ転送操作のソースとして機能する入力接続。 サポートされている値は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py) です。 |
-| `destination_data_reference` | データ転送操作の転送先として機能する入力接続。 サポートされている値は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) と [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py) です。 |
+| `compute` | このステップで使用する Azure Data Factory コンピューティング先。 |
+| `source_data_reference` | データ転送操作のソースとして機能する入力接続。 サポートされている値は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) です。 |
+| `destination_data_reference` | データ転送操作の転送先として機能する入力接続。 サポートされている値は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) と [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) です。 |
 | `allow_reuse` | 同じ設定でもう一度実行されたときに、ステップで前の結果を再利用するかどうかを決定します。 |
 
 次に、データ転送ステップのサンプルを示します。
@@ -322,11 +322,11 @@ pipeline:
 
 | YAML キー | 説明 |
 | ----- | ----- |
-| `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?preserve-view=true&view=azure-ml-py)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?preserve-view=true&view=azure-ml-py)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py) のいずれかです。 |
-| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py) のどちらかです。 |
+| `inputs` | 入力は、[InputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding)、[DataReference](#data-reference)、[PortDataReference](/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference)、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata)、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) のいずれかです。 |
+| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) のどちらかです。 |
 | `script_name` | Python スクリプトの名前 (`source_directory` からの相対名)。 |
 | `source_directory` | スクリプトや Conda 環境などを格納するディレクトリ。 |
-| `runconfig` | `.runconfig` ファイルへのパス。 このファイルは [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration?preserve-view=true&view=azure-ml-py) クラスの YAML 表現です。 このファイルの構造について詳しくは、[runconfig.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) を参照してください。 |
+| `runconfig` | `.runconfig` ファイルへのパス。 このファイルは [RunConfiguration](/python/api/azureml-core/azureml.core.runconfiguration) クラスの YAML 表現です。 このファイルの構造について詳しくは、[runconfig.json](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) を参照してください。 |
 | `allow_reuse` | 同じ設定でもう一度実行されたときに、ステップで前の結果を再利用するかどうかを決定します。 |
 
 次に、Python スクリプト ステップのサンプルを示します。
@@ -369,11 +369,11 @@ pipeline:
 
 | YAML キー | 説明 |
 | ----- | ----- |
-| `inputs` | 入力には、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?preserve-view=true&view=azure-ml-py)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?preserve-view=true&view=azure-ml-py) を指定できます。 |
-| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?preserve-view=true&view=azure-ml-py) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?preserve-view=true&view=azure-ml-py) のどちらかです。 |
+| `inputs` | 入力には、[Dataset](/python/api/azureml-core/azureml.core.dataset%28class%29)、[DatasetDefinition](/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition)、または [PipelineDataset](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset) を指定できます。 |
+| `outputs` | 出力は、[PipelineData](/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata) か [OutputPortBinding](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding) のどちらかです。 |
 | `script_name` | Python スクリプトの名前 (`source_directory` からの相対名)。 |
 | `source_directory` | スクリプトや Conda 環境などを格納するディレクトリ。 |
-| `parallel_run_config` | `parallel_run_config.yml` ファイルへのパス。 このファイルは [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?preserve-view=true&view=azure-ml-py) クラスの YAML 表現です。 |
+| `parallel_run_config` | `parallel_run_config.yml` ファイルへのパス。 このファイルは [ParallelRunConfig](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig) クラスの YAML 表現です。 |
 | `allow_reuse` | 同じ設定でもう一度実行されたときに、ステップで前の結果を再利用するかどうかを決定します。 |
 
 次に、並列実行ステップのサンプルを示します。

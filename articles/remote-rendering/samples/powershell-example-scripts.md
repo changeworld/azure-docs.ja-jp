@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb8cc98a020cb382a6941c1e410eab4543594629
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 53f09dd042543ebc433e9d9cbbd65db332e8fb6d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009757"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102518213"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell スクリプトの例
 
@@ -36,7 +36,7 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
     1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Install-Module -Name Az -AllowClobber` を実行します。
 
-1. スクリプトの実行に関するエラーが発生した場合は、[実行ポリシー](/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)が適切に設定されていることを確認してください。
+1. スクリプトの実行に関するエラーが発生した場合は、[実行ポリシー](/powershell/module/microsoft.powershell.core/about/about_execution_policies)が適切に設定されていることを確認してください。
     1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` を実行します。
 

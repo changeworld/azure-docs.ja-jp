@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: fb3aeb732166537dd4aa98acad0c4dfa5788a8ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0f1dcb82c3a8d3819e8d316ef8efe2e3256e3db4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732396"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218997"
 ---
 # <a name="azure-security-baseline-for-vpn-gateway"></a>VPN Gateway に対する Azure セキュリティ ベースライン
 
@@ -412,7 +412,7 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 - [Azure Graph を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
 
-- [VPN Gateway 用の Azure CLI](/cli/azure/network/vnet-gateway?view=azure-cli-latest)
+- [VPN Gateway 用の Azure CLI](/cli/azure/network/vnet-gateway)
 
 - [Azure サブスクリプションを表示する方法](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 

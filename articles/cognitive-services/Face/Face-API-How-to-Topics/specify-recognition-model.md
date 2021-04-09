@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 03/05/2021
 ms.author: longl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58e910a721bea95e74a004ae306f1bbc3ade62f2
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: cd4ed992557a3c333919b63cc36757beb2f70454
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174157"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102433558"
 ---
 # <a name="specify-a-face-recognition-model"></a>顔認識モデルを指定する
 

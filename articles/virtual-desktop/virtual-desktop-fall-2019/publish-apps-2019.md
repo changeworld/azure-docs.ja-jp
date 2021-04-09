@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 80cd1a4c92441fb17ce0a66814ff0a39a92fb287
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b179ac555ea86aff381c1217e834b8d0aa85e8c
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88005569"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561706"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で組み込みアプリを発行する
 
@@ -25,7 +25,7 @@ ms.locfileid: "88005569"
 組み込みアプリを発行するには:
 
 1. ホスト プール内のいずれかの仮想マシンに接続します。
-2. [この記事](/powershell/module/appx/get-appxpackage?view=win10-ps/)の手順に従って、発行するアプリの **PackageFamilyName** を取得します。
+2. [この記事](/powershell/module/appx/get-appxpackage)の手順に従って、発行するアプリの **PackageFamilyName** を取得します。
 3. 最後に、`<PackageFamilyName>` を前の手順で確認した **PackageFamilyName** に置き換えて、次のコマンドレットを実行します。
 
    ```powershell

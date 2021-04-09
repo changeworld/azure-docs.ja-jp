@@ -1,25 +1,14 @@
 ---
 title: Linux C# エージェントをインストールおよびデプロイする
 description: Defender for IoT の C# ベースのセキュリティ エージェントを Linux にインストールしてデプロイする方法について説明します
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
-ms.custom: devx-track-csharp
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 48737831440a1402b6974955b4da61a4216b011f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c84a70928be13212b56636ad1fbb9baaadd0e7d0
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931443"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104784205"
 ---
 # <a name="deploy-defender-for-iot-c-based-security-agent-for-linux"></a>Linux 用の Defender for IoT の C# ベースのセキュリティ エージェントをデプロイする
 
@@ -27,11 +16,10 @@ ms.locfileid: "90931443"
 
 このガイドでは、以下の方法について説明します。
 
-> [!div class="checklist"]
-> * インストール
-> * デプロイの確認
-> * エージェントのアンインストール
-> * トラブルシューティング
+- インストール
+- デプロイの確認
+- エージェントのアンインストール
+- トラブルシューティング
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +27,7 @@ ms.locfileid: "90931443"
 
 1. セキュリティ エージェントをデプロイするには、インストール先のマシンでのローカル管理者権限が必要です。
 
-1. デバイスの[セキュリティ モジュールを作成](quickstart-create-security-twin.md)します。
+1. デバイスの [Defender for IoT マイクロ エージェントを作成](quickstart-create-security-twin.md)します。
 
 ## <a name="installation"></a>インストール
 
@@ -49,9 +37,9 @@ ms.locfileid: "90931443"
 
 1. パッケージの内容を展開し、 _/Install_ フォルダーに移動します。
 
-1. `chmod +x InstallSecurityAgent.sh` を実行して、**InstallSecurityAgent スクリプト**に実行アクセス許可を追加します。
+1. `chmod +x InstallSecurityAgent.sh` を実行して、**InstallSecurityAgent スクリプト** に実行アクセス許可を追加します。
 
-1. 次に、**ルート特権**を使用して次のコマンドを実行します。
+1. 次に、**ルート特権** を使用して次のコマンドを実行します。
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
@@ -65,7 +53,7 @@ ms.locfileid: "90931443"
 
 - サービス ユーザーを追加する (対話型サインインは無効)。
 
-- エージェントを**デーモン**としてインストールする - デバイスがクラシック デプロイ モデルに **systemd** を使用すると想定します。
+- エージェントを **デーモン** としてインストールする - デバイスがクラシック デプロイ モデルに **systemd** を使用すると想定します。
 
 - エージェントに特定のタスクをルートとして実行することを許可するように **sudoers** を構成する。
 
@@ -107,7 +95,7 @@ ms.locfileid: "90931443"
        **logFilePath** 値は、構成可能です。
 
        > [!NOTE]
-       > トラブルシューティングの終了後は、ログ記録を**無効**にすることをお勧めします。 ログ記録を**有効**のままにしておくと、ログ ファイルのサイズとデータの使用量が増加します。
+       > トラブルシューティングの終了後は、ログ記録を **無効** にすることをお勧めします。 ログ記録を **有効** のままにしておくと、ログ ファイルのサイズとデータの使用量が増加します。
 
    1. 以下を実行して、エージェントを再起動します。
 
@@ -122,7 +110,7 @@ ms.locfileid: "90931443"
 ## <a name="next-steps"></a>次のステップ
 
 - Defender for IoT サービスの[概要](overview.md)を確認する
-- Defender for IoT の[アーキテクチャ](architecture.md)を確認する
+- Defender for IoT の[アーキテクチャ](architecture.md)について詳細を確認する
 - [サービス](quickstart-onboard-iot-hub.md)を有効にします
 - [FAQ](resources-frequently-asked-questions.md) を読みます
 - [アラート](concept-security-alerts.md)について理解します

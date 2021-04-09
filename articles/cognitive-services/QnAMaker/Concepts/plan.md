@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: bf5582016f74e67926c38111a3d8d2f468f3ac79
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: e20679c3999f7ece1f6d3ed47a241cfd9dab9236
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987980"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102214747"
 ---
 # <a name="plan-your-qna-maker-app"></a>QnA Maker アプリの計画
 
@@ -177,7 +177,7 @@ QnA Maker では、_アクティブ ラーニング_ を使用して、回答に
 
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker GA (安定版リリース)](#tab/v1)
 
-サービス更新プログラムを自動的に管理するには、[最新のランタイム更新プログラム](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)を適用します。
+サービス更新プログラムを自動的に管理するには、[最新のランタイム更新プログラム](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates)を適用します。
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker マネージド (プレビュー リリース)](#tab/v2)
 
@@ -187,7 +187,7 @@ QnA Maker マネージド (プレビュー) では、ランタイムは QnA Make
 
 ### <a name="scaling-throughput-and-resiliency"></a>スケーリング、スループット、および回復性
 
-スケーリング、スループット、および回復性は、[Azure リソース](../how-to/set-up-qnamaker-service-azure.md)、その価格レベル、および[トラフィック マネージャー](../how-to/set-up-qnamaker-service-azure.md#business-continuity-with-traffic-manager)などの周囲のアーキテクチャによって決まります。
+スケーリング、スループット、および回復性は、[Azure リソース](../how-to/set-up-qnamaker-service-azure.md)、その価格レベル、および[トラフィック マネージャー](../how-to/configure-QnA-Maker-resources.md#business-continuity-with-traffic-manager)などの周囲のアーキテクチャによって決まります。
 
 ### <a name="analytics-with-application-insights"></a>Application Insights による分析
 

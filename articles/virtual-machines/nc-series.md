@@ -3,16 +3,16 @@ title: NC シリーズ - Azure Virtual Machines
 description: NC シリーズ VM の仕様。
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c3899e9a38aee9531d61678c77ab3d54d5220100
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a5f4f2d36e50c9948ec85683ffe11686a3084133
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101670270"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562505"
 ---
 # <a name="nc-series"></a>NC シリーズ
 

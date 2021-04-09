@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 11/09/2020
+ms.date: 03/10/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 81a1263d0eacbffa77e2e35e4594e23235394183
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: b60b447d8302b89813ca462c3220603ef926eb26
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108673"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631185"
 ---
 # <a name="localization-string-ids"></a>ローカライズ文字列 ID
 
@@ -356,8 +356,8 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 
 | id | 既定値 |
 | -- | ------------- |
-|intro_msg| 確認が必要です。 [送信] ボタンをクリックしてください。|
-|success_send_code_msg | 確認コードが受信トレイに送信されました。 次の入力ボックスにコピーしてください。|
+|intro_msg <sup>*</sup>| 確認が必要です。 [送信] ボタンをクリックしてください。|
+|success_send_code_msg | 確認コードが送信されました。 次の入力ボックスにコピーしてください。|
 |failure_send_code_msg | ご使用のメールアドレスの確認に問題があります。 有効なメール アドレスを入力して、もう一度やり直してください。|
 |success_verify_code_msg | 電子メールアドレスが確認されました。 続行することができるようになりました。|
 |failure_verify_code_msg | ご使用のメールアドレスの確認に問題があります。 もう一度やり直してください。|
@@ -365,6 +365,12 @@ ID プロバイダーの ID は、ユーザー体験  **ClaimsExchange** 要素�
 |but_verify_code | コードの確認|
 |but_send_new_code | 新しいコードを送信します|
 |but_change_claims | 電子メールを変更します|
+
+注: `intro_msg` 要素は非表示になっており、セルフアサート ページには表示されません。 表示されるようにするには、カスケード スタイル シートで [[HTML のカスタマイズ]](customize-ui-with-html.md) を使用します。 次に例を示します。
+    
+```css
+.verificationInfoText div{display: block!important}
+```
 
 ### <a name="verification-display-control-example"></a>検証表示コントロールの例
 

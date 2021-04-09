@@ -2,18 +2,19 @@
 title: Azure Disk Encryption トラブルシューティング ガイド
 description: この記事では、Windows VM 用の Microsoft Azure Disk Encryption のトラブルシューティングのヒントについて説明します。
 author: msmbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: troubleshooting
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45c64261b60d88557e63cb8f9af922fd7aa71ad4
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 057aba3e49d32694563f412101be499342f2aad0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977903"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102550605"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure Disk Encryption トラブルシューティング ガイド
 

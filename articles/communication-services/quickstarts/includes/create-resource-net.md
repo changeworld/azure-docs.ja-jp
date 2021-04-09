@@ -4,18 +4,18 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 9a9f8fdda1bc853057f3eb858e85b938357397cd
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 778255dc7259bd66a7c7059ede855464c1e39569
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94886116"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445200"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/dotnet/)。
 - お使いのオペレーティング システムの最新バージョンの [.NET Core クライアント ライブラリ](https://dotnet.microsoft.com/download/dotnet-core)。
-- [.NET Identity クライアント ライブラリ](/dotnet/api/azure.identity?view=azure-dotnet)の最新バージョンを取得します。
+- [.NET Identity クライアント ライブラリ](/dotnet/api/azure.identity)の最新バージョンを取得します。
 - [.NET 管理クライアント ライブラリ](../../concepts/sdk-options.md)の最新バージョンを取得します。
 
 ## <a name="installing-the-client-library"></a>クライアント ライブラリのインストール

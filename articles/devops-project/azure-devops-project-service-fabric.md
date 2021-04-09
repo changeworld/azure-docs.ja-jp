@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 078331c35c76a3cda97398b1a487933a3f0f5ab8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91856026"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102559309"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>チュートリアル:Azure DevOps Starter を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする
 
@@ -100,7 +100,7 @@ DevOps Starter では、Azure DevOps 組織から Azure サブスクリプショ
 
 1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。 DevOps Starter により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する*パイプライン*が含まれています。
+1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。 リリース パイプラインには、リリース プロセスを定義する *パイプライン* が含まれています。
 
 1. **[成果物]** で、 **[ドロップ]** を選択します。 前に調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
@@ -134,7 +134,7 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した Azure Service Fabric クラスターと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで**削除**機能を使用します。
+テストを行っている場合は、リソースをクリーンアップすることによって、課金を回避することができます。 このチュートリアルで作成した Azure Service Fabric クラスターと関連リソースが必要なくなったら、削除してかまいません。 そうするには、DevOps Starter ダッシュボードで **削除** 機能を使用します。
 
 > [!IMPORTANT]
 > 次の手順で、リソースが完全に削除されます。 "*削除*" 機能では、DevOps Starter のプロジェクトによって作成されたデータが Azure と Azure DevOps の両方で破棄され、取得できなくなります。 画面に表示される説明を慎重に読んでから、この手順を行ってください。
@@ -158,4 +158,4 @@ Web サイトに最新の作業を自動的にデプロイする CI/CD プロセ
 Service Fabric とマイクロサービスの詳細については、以下を参照してください。
 
 > [!div class="nextstepaction"]
-> [マイクロサービスの手法を使用してアプリケーションを構築する](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [マイクロサービスの手法を使用してアプリケーションを構築する](/azure/devops/pipelines/release/define-multistage-release-process)

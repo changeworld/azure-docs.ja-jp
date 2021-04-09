@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: trbye
-ms.openlocfilehash: f7e29fab542db79b22a9ace7371bc22d3526ac33
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2c98546d20e9f977a605ccbac21010aa9b1dbadc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101710500"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103232496"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -39,6 +39,8 @@ ms.locfileid: "101710500"
 > モデルで検出される言語と音響に一致する小さなサンプル データのセットから始めます。
 > たとえば、実稼働シナリオでモデルが検出する同じハードウェアと同じ音響環境で、小さいが代表的なオーディオのサンプルを記録します。
 > トレーニング用にはるかに大きなデータセットの収集に投資する前に、代表的なデータの小さなデータセットで、問題点を明らかにできます。
+>
+> すぐに始めるには、サンプルデータの使用を検討してください。 <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">サンプル Custom Speech データ </a>については、こちらの GitHub リポジトリを参照する
 
 ## <a name="data-types"></a>データ型
 
@@ -50,17 +52,14 @@ ms.locfileid: "101710500"
 | [オーディオ + 人間というラベルが付いたトランスクリプト](#audio--human-labeled-transcript-data-for-testingtraining) | はい<br>精度を評価するために使用 | 0.5-5 時間のオーディオ | はい | 1 - 20 時間のオーディオ |
 | [関連するテキスト](#related-text-data-for-training) | いいえ | 該当なし | はい | 1 - 200 MB の関連テキスト |
 
-新しいモデルをトレーニングするときには、[関連テキスト](#related-text-data-for-training)から開始します。 このデータでは、特殊な用語や語句の認識が既に改善されています。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
-
 ファイルは、型別にデータセットにグループ化し、ZIP ファイルとしてアップロードする必要があります。 各データセットには、1 つのデータの種類のみを含めることができます。
 
 > [!TIP]
-> すぐに始めるには、サンプルデータの使用を検討してください。 <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/sampledata/customspeech" target="_target">サンプル Custom Speech データ <span class="docon docon-navigate-external x-hidden-focus"></span></a>については、こちらの GitHub リポジトリを参照する
+> 新しいモデルをトレーニングするときには、[関連テキスト](#related-text-data-for-training)から開始します。 このデータでは、特殊な用語や語句の認識が既に改善されています。 テキストを使用したトレーニングは、オーディオによるトレーニングよりもはるかに高速です (分単位と日単位)。
 
 > [!NOTE]
 > すべての基本モデルでオーディオのトレーニングがサポートされるわけではありません。 基本モデルでサポートされていない音声サービスは、トランスクリプトのテキストのみを使用し、オーディオを無視します。 オーディオ データを使用したトレーニングをサポートする基本モデルの一覧については、「[言語のサポート](language-support.md#speech-to-text)」を参照してください。 基本モデルでオーディオ データを使用したトレーニングがサポートされている場合でも、サービスによってオーディオの一部しか使用されないことがあります。 その場合も、すべてのトランスクリプトが使用されます。
-
-> [!NOTE]
+>
 > トレーニングに使用する基本モデルを変更し、トレーニング データセットにオーディオが含まれる場合は、選択した新しい基本モデルが [オーディオ データを使用したトレーニングをサポート](language-support.md#speech-to-text)しているかどうかを "*常に*" 確認します。 以前使用した基本モデルでオーディオ データを使用したトレーニングがサポートされておらず、トレーニング データセットにオーディオが含まれる場合は、新しい基本モデルを使用したトレーニングの時間が **大幅に** 増加し、数時間から数日以上かかる可能性が大いにあります。 これは特に、音声サービスのサブスクリプションが、トレーニング用の [専用ハードウェアがあるリージョン](custom-speech-overview.md#set-up-your-azure-account)に **存在しない** 場合に当てはまります。
 >
 > 上の段落で説明されている問題が発生した場合、データセット内のオーディオの量を減らすか、完全に削除してテキストのみを残すことで、トレーニング時間を簡単に短縮できます。 音声サービスのサブスクリプションが、トレーニング用の [専用ハードウェアがあるリージョン](custom-speech-overview.md#set-up-your-azure-account)に **存在しない** 場合、後者のオプションを強くお勧めします。
@@ -69,7 +68,7 @@ ms.locfileid: "101710500"
 
 ## <a name="upload-data"></a>データをアップロードする
 
-データをアップロードするには、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> に移動します。 ポータルで、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
+データをアップロードするには、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> に移動します。 ポータルで、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
 
 ![Speech ポータルのオーディオ アップロード オプションが強調表示されているスクリーンショット。](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -101,7 +100,7 @@ ms.locfileid: "101710500"
 > [!TIP]
 > トレーニング データとテスト データをアップロードする場合、.zip ファイルのサイズは 2 GB を超えることはできません。 トレーニング用にさらに多くのデータが必要な場合は、複数の .zip ファイルに分割し、個別にアップロードします。 その後、*複数* のデータセットからトレーニングを選択できます。 ただし、*単一* のデータセットからのみテストができます。
 
-<a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX <span class="docon docon-navigate-external x-hidden-focus"></span></a> を使用して、オーディオのプロパティを確認したり、既存のオーディオを適切な形式に変換したりします。 SoX のコマンドラインから、これらのアクティビティ各々を実行する方法の例を、次にいくつか示します:
+<a href="http://sox.sourceforge.net" target="_blank" rel="noopener">SoX </a> を使用して、オーディオのプロパティを確認したり、既存のオーディオを適切な形式に変換したりします。 SoX のコマンドラインから、これらのアクティビティ各々を実行する方法の例を、次にいくつか示します:
 
 | アクティビティ | 説明 | SoX コマンド |
 |----------|-------------|-------------|
@@ -146,7 +145,7 @@ speech03.wav    the lazy dog was not amused
 
 文字起こしに対しては、システムによって処理できるように、テキストの正規化が行われます。 ただし、データを Speech Studio にアップロードする前に実行する必要がある重要な正規化がいくつかあります。 文字起こしを準備する際に使用する適切な言語については、「[How to create a human-labeled transcription](how-to-custom-speech-human-labeled-transcriptions.md)」(人間とラベル付けされた文字起こしの作成方法) を参照してください。
 
-オーディオ ファイルと対応する文字起こしを収集した後、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアップロードする前に、それらを 1 つの .zip ファイルとしてパッケージ化します。 3 つのオーディオ ファイルと、人間とラベル付けされた文字起こしファイルを含むデータセットの例を示します:
+オーディオ ファイルと対応する文字起こしを収集した後、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> にアップロードする前に、それらを 1 つの .zip ファイルとしてパッケージ化します。 3 つのオーディオ ファイルと、人間とラベル付けされた文字起こしファイルを含むデータセットの例を示します:
 
 > [!div class="mx-imgBorder"]
 > ![Speech ポータルからオーディオを選択する](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
@@ -164,7 +163,7 @@ Speech サービスのサブスクリプションで推奨されるリージョ�
 | 文 (発話) | 製品名を認識する場合や、文のコンテキスト内で業界固有の語彙を認識する場合の精度を向上させます。 |
 | 発音 | 一般的でない用語、略語、またはその他の発音が定義されていない単語の発音を向上させることができます。 |
 
-発話は、1 つまたは複数のテキスト ファイルとして提供できます。 正確性を高めるには、読み上げられる発話に近いテキスト データを使用します。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1 つの zip ファイルとしてパッケージ化し、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio<span class="docon docon-navigate-external x-hidden-focus"></span></a> にアップロードできます。
+発話は、1 つまたは複数のテキスト ファイルとして提供できます。 正確性を高めるには、読み上げられる発話に近いテキスト データを使用します。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1 つの zip ファイルとしてパッケージ化し、<a href="https://speech.microsoft.com/customspeech" target="_blank">Speech Studio</a> にアップロードできます。
 
 通常、関連するテキストを使用したトレーニングは数分で完了します。
 

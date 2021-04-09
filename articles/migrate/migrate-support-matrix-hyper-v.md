@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: 4407f9544a7d3a19e3ff7d404669fdb27b881d30
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fc7be5c6c5dda8c5065330f819f646f4abd08994
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590636"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521358"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>Hyper-V の評価のサポート マトリックス
 
@@ -39,7 +39,7 @@ Hyper-V VM の評価を設定するには、Azure Migrate プロジェクトを�
 | :-------------------       | :------------------- |
 | **Hyper-V ホスト**       | Hyper-V ホストは、スタンドアロンにすることも、クラスターにデプロイすることもできます。<br/><br/> Hyper-V ホストは、Windows Server 2019、Windows Server 2016、または Windows Server 2012 R2 を実行できます。 これらのオペレーティング システムの Server コア インストールもサポートされています。 <br/>Windows Server 2012 を実行している Hyper-V ホスト上にある VM を評価することはできません。
 | **アクセス許可**           | Hyper-V ホストに対する管理者のアクセス許可が必要です。 <br/> 管理者のアクセス許可を割り当てたくない場合には、代わりにローカルまたはドメインのユーザー アカウントを作成し、そのユーザー アカウントを Remote Management Users、Hyper-V Administrators、Performance Monitor Users のグループに追加します。 |
-| **PowerShell リモート処理**   | [PowerShell リモート処理](/powershell/module/microsoft.powershell.core/enable-psremoting?view=powershell-7)は、各 Hyper-V ホストで有効にする必要があります。 |
+| **PowerShell リモート処理**   | [PowerShell リモート処理](/powershell/module/microsoft.powershell.core/enable-psremoting)は、各 Hyper-V ホストで有効にする必要があります。 |
 | **Hyper-V レプリカ**       | Hyper-V レプリカを使用する (または、同じ VM 識別子を持つ複数の VM がある) 場合、Azure Migrate を使用して元の VM とレプリケートされた VM の両方を検出すると、Azure Migrate によって生成される評価が正確ではない可能性があります。 |
 
 

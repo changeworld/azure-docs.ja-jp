@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 55792cc1890702b904db00b7e3cb3ac3a78c63f1
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98945745"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104866524"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
 
@@ -105,7 +105,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>.NET SDK の使用
 
-「[Azure HDInsight SDK for .NET](/dotnet/api/overview/azure/hdinsight?view=azure-dotnet&preserve-view=true)」を参照してください。
+「[Azure HDInsight SDK for .NET](/dotnet/api/overview/azure/hdinsight)」を参照してください。
 
 ## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
 
@@ -121,7 +121,7 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 }
 ```
 
-![Hadoop でクラスター ブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+:::image type="content" source="./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png" alt-text="Hadoop でクラスター ブートストラップの Azure Resource Manager テンプレートをカスタマイズする":::
 
 定期的にイベント ログをストレージからクリーンアップするように spark2-defaults の構成を切り替える Resource Manager テンプレート スニペットの例を次に示します。  
 

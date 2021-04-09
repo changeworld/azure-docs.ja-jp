@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 11/20/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 90e5342e096230b7dbdc139b24255030ac593015
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 67dd2b35229c15ae4df5ec8acb357aa35621d67c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549472"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102436636"
 ---
 # <a name="troubleshooting-certificate-errors"></a>証明書エラーのトラブルシューティング
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、Azure Stack Edge Pro デバイスに証明書をインストールするときに発生する一般的な証明書エラーのトラブルシューティングについて説明します。
 

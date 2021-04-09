@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: travisw
-ms.openlocfilehash: 40736764cf9cec6f652e0147eb25d83f15c5bee2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4ae8a09a554afe232091b68888af17dfa096771
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024944"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102426471"
 ---
 # <a name="what-is-custom-commands"></a>カスタム コマンドとは
 
@@ -36,7 +36,7 @@ ms.locfileid: "95024944"
 
 ## <a name="getting-started-with-custom-commands"></a>カスタム コマンドの使用の開始
 
-カスタム コマンドの目的は、認識の負荷を軽減してさまざまなテクノロジを学習し、音声コマンド アプリの構築に専念することです。 カスタム コマンドを使用する最初の手順は、<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>することです。 Speech Studio 上にご自分のカスタム コマンド アプリを作成して発行することができます。その後、デバイス上のアプリケーションが Speech SDK を使用してそれと通信できるようになります。
+カスタム コマンドの目的は、認識の負荷を軽減してさまざまなテクノロジを学習し、音声コマンド アプリの構築に専念することです。 カスタム コマンドを使用する最初の手順は、<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Speech リソースを作成</a>することです。 Speech Studio 上にご自分のカスタム コマンド アプリを作成して発行することができます。その後、デバイス上のアプリケーションが Speech SDK を使用してそれと通信できるようになります。
 
 #### <a name="authoring-flow-for-custom-commands"></a>カスタム コマンドの作成フロー
    ![カスタム コマンドの作成フロー](media/voice-assistants/custom-commands-flow.png "カスタム コマンドの作成フロー")

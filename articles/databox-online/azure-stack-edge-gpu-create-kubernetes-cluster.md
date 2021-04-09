@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: bf73640c1a4014b61809f407e1873686c229273f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: ddbf3c99845f4c38f511260f4dec274903a9d586
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954633"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102631960"
 ---
 # <a name="connect-to-and-manage-a-kubernetes-cluster-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスで kubectl を使用して Kubernetes クラスターに接続して管理する
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Stack Edge Pro デバイスでは、コンピューティング ロールを構成するときに Kubernetes クラスターが作成されます。 Kubernetes クラスターが作成されると、*kubectl* などのネイティブ ツールを使用して、クライアント マシンからローカルでクラスターに接続し、管理できます。
 
@@ -103,7 +105,7 @@ Kubernetes クラスターが作成されたら、コマンドラインから *k
 
 4. この構成ファイルは、ローカル コンピューター上のユーザー プロファイルの `.kube` フォルダーに存在する必要があります。 このファイルをユーザー プロファイルのそのフォルダーにコピーします。
 
-    ![クライアント上の構成ファイルの場所](media/azure-stack-edge-j-series-create-kubernetes-cluster/location-config-file.png)
+    ![クライアント上の構成ファイルの場所](media/azure-stack-edge-gpu-create-kubernetes-cluster/location-config-file.png)
 
 5. 作成したユーザーに名前空間を関連付けます。 型:
 
@@ -167,9 +169,9 @@ Kubernetes クラスターが作成されたら、コマンドラインから *k
 
 Kubernetes クラスターを削除するには、IoT Edge 構成を削除する必要があります。
 
-詳細な手順については、[IoT Edge 構成の削除](azure-stack-edge-j-series-manage-compute.md#remove-iot-edge-service)に関するページを照してください。
+詳細な手順については、[IoT Edge 構成の管理](azure-stack-edge-gpu-manage-compute.md#manage-iot-edge-configuration)に関するページを参照してください。
    
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge Pro にステートレス アプリケーションをデプロイする](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [Azure Stack Edge Pro にステートレス アプリケーションをデプロイする](azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)。

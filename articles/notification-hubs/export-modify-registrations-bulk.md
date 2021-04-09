@@ -14,12 +14,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c0771864229c8a3918da076de48fb6e033d2cf5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73c19b72c75d9638213f3c813a708a272cbe2a1b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89018180"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102452341"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Azure Notification Hubs の登録情報を一括でエクスポートおよびインポートする
 
@@ -127,7 +127,7 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-この呼び出しが完了すると、通知ハブによってジョブが続行され、そのステータスを [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet) の呼び出しによって確認できます。
+この呼び出しが完了すると、通知ハブによってジョブが続行され、そのステータスを [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync) の呼び出しによって確認できます。
 
 ジョブが完了したら、出力ディレクトリ内の次のファイルを調べて結果を確認できます。
 

@@ -196,7 +196,7 @@
             - name: TLS の構成
               href: howto-tls-configurations.md
               displayName: 'TLS, security, development'
-            - name: 高度な脅威保護
+            - name: Advanced Threat Protection
               items:
                 - name: 概念
                   href: concepts-data-access-and-security-threat-protection.md
@@ -430,6 +430,8 @@
               href: flexible-server/quickstart-create-arm-template.md
         - name: 接続とクエリ
           items:
+            - name: Azure CLI
+              href: flexible-server/connect-azure-cli.md
             - name: PHP
               href: flexible-server/connect-php.md
             - name: MySQL Workbench

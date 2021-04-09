@@ -32,7 +32,7 @@
       href: device-update-agent-overview.md
     - name: デバイス更新プログラムの構成ファイル
       href: device-update-configuration-file.md
-    - name: デバイス更新プログラムのマニフェスト
+    - name: マニフェストを更新する
       href: update-manifest.md
     - name: デバイス更新プログラムをセキュリティで保護する方法
       href: device-update-security.md
@@ -40,7 +40,9 @@
       href: connected-cache-disconnected-device-update.md
     - name: Device Update for IoT Hub 用に Microsoft 接続キャッシュを構成する
       href: connected-cache-configure.md
-    - name: インポート関連のスキーマおよびその他の情報
+    - name: デバイス更新プログラムのインポート
+      href: import-concepts.md
+    - name: インポートに関連するスキーマ
       href: import-schema.md
 - name: 操作方法ガイド
   items:

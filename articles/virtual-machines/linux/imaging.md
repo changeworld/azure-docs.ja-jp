@@ -2,19 +2,20 @@
 title: Azure 用 Linux イメージの作成の概要
 description: Linux VM イメージを取り込む方法、または Azure で使用する新しいイメージを作成する方法。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: a77c2bc69418b821933c0b62674500f7a32e40a5
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878784"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102565208"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Azure での Linux イメージの取り込みと作成
 

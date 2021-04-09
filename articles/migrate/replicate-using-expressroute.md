@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 02/22/2021
-ms.openlocfilehash: b52d61c2828ddf5c04ab943d73964d236c9017c1
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 5dd27e4502ac70ef10f2623ed6dfb2f62de37f06
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098844"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102448830"
 ---
 # <a name="replicate-data-over-expressroute-with-azure-migrate-server-migration"></a>Azure Migrate: Server Migration を使用して ExpressRoute 経由でデータをレプリケートする
 
@@ -72,6 +72,7 @@ Azure Migrate プロジェクトで (Azure portal のエクスペリエンスを
 ![リソース グループ ビュー](./media/replicate-using-expressroute/storage-account-name.png)
 
 > [!Tip]
+>  
 > リソース グループ内に **"lsa"** というプレフィックスが付いたストレージ アカウントが複数ある場合は、[レプリケーション設定およびターゲット構成] メニューに移動して、プロジェクト内のいずれかのレプリケートされた VM を調べることによって、ストレージ アカウントを確認できます。 <br/> 
 > ![レプリケーション設定の概要](./media/replicate-using-expressroute/storage-account.png)
 
@@ -125,8 +126,9 @@ Azure Migrate プロジェクトで (Azure portal のエクスペリエンスを
 
     ![createprivatedns](./media/replicate-using-expressroute/create-private-dns.png)
 
-    a.  **[プライベート DNS ゾーン]** ページで、 **[+追加]** ボタンを選択して新しいゾーンの作成を開始します。  
-    b.  **[プライベート DNS ゾーンの作成]** ページで、必要な詳細情報を入力します。 プライベート DNS ゾーンの名前を「_privatelink_.blob.core.windows.net」と入力します。 c. **[確認と作成]** タブに進み、DNS ゾーンを確認して作成します。
+    a. **[プライベート DNS ゾーン]** ページで、 **[+追加]** ボタンを選択して新しいゾーンの作成を開始します。  
+    b. **[プライベート DNS ゾーンの作成]** ページで、必要な詳細情報を入力します。 プライベート DNS ゾーンの名前を「_privatelink_.blob.core.windows.net」と入力します。  
+    c. **[確認と作成]** タブに進み、DNS ゾーンを確認して作成します。   
 
 2. 仮想ネットワークにプライベート DNS ゾーンをリンクします。  
 

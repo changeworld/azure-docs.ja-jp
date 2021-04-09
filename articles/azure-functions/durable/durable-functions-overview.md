@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 12/23/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 2079a3a7c9ce6817186e743bb09d31facdecf0e7
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: f6199cb20cd56538823f7f7d0967a9cfe59f7099
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97931723"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102636659"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -23,7 +23,7 @@ Durable Functions では、現在次の言語をサポートしています。
 
 * **C#**: [プリコンパイル済みクラス ライブラリ](../functions-dotnet-class-library.md)と [C# スクリプト](../functions-reference-csharp.md)の両方。
 * **JavaScript**: Azure Functions ランタイムのバージョン 2.x でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
-* **Python**: Durable Functions 拡張機能のバージョン 2.3.1 以降が必要です。 Durable Functions のサポートは、現在パブリック プレビューの段階です。
+* **Python**: Durable Functions 拡張機能のバージョン 2.3.1 以降が必要です。
 * **F#**: プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
 * **PowerShell**: Durable Functions のサポートは、現在パブリック プレビューの段階です。 Azure Functions ランタイムのバージョン 3.x と PowerShell 7 でのみサポートされています。 Durable Functions 拡張機能のバージョン 2.2.2 以降が必要です。 現在サポートされているパターンは次のとおりです。[関数チェーン](#chaining)、[ファンアウトおよびファンイン](#fan-in-out)、[非同期 HTTP API](#async-http)。
 
@@ -633,7 +633,31 @@ module.exports = df.entity(function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-持続エンティティは現在、Python でサポートされていません。
+```python
+import logging
+import json
+
+import azure.functions as func
+import azure.durable_functions as df
+
+
+def entity_function(context: df.DurableOrchestrationContext):
+
+    current_value = context.get_state(lambda: 0)
+    operation = context.operation_name
+    if operation == "add":
+        amount = context.get_input()
+        current_value += amount
+        context.set_result(current_value)
+    elif operation == "reset":
+        current_value = 0
+    elif operation == "get":
+        context.set_result(current_value)
+    
+    context.set_state(current_value)
+
+main = df.Entity.create(entity_function)
+```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -677,7 +701,17 @@ module.exports = async function (context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-持続エンティティは現在、Python でサポートされていません。
+```python
+import azure.functions as func
+import azure.durable_functions as df
+
+
+async def main(req: func.HttpRequest, starter: str) -> func.HttpResponse:
+    client = df.DurableOrchestrationClient(starter)
+    entity_id = df.EntityId("Counter", "myCounter")
+    instance_id = await client.signal_entity(entity_id, "add", 1)
+    return func.HttpResponse("Entity signaled")
+```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -685,7 +719,7 @@ module.exports = async function (context) {
 
 ---
 
-エンティティ関数は、[Durable Functions 2.0](durable-functions-versions.md) 以降の C# および JavaScript で使用できます。
+エンティティ関数は、[Durable Functions 2.0](durable-functions-versions.md) 以降の C#、JavaScript、Python で使用できます。
 
 ## <a name="the-technology"></a>テクノロジ
 

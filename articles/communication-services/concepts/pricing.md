@@ -6,17 +6,20 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/29/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: bf255837a08a4810321f2f03cb97838e31a7cddc
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fc5da3f4ac5bf9a08e16a931d54dfbf6a2fb9f48
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657759"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103495795"
 ---
 # <a name="pricing-scenarios"></a>価格シナリオ
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 Azure Communication Services の価格は、一般に従量課金制モデルに基づきます。 以降の例に出現する価格はあくまで例であり、最新の Azure の価格は反映されていない可能性があります。
 

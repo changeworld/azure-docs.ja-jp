@@ -4,22 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: bef7807c0df580a6763a69619cdaa3d9d29f72e6
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a925c3a17988ef6f4b95a1e3cf4dd5fb8baa4829
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521395"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102510615"
 ---
 次のリソースも使用できます。
 
-- [Python SDK のリファレンス ドキュメント](/python/api/azure-iot-hub/azure.iot.hub?preserve-view=true&view=azure-python)
+- [Python SDK のリファレンス ドキュメント](/python/api/azure-iot-hub/azure.iot.hub)
 - [サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/iothub_registry_manager_method_sample.py)
 - [Digital Twins のサンプル](https://github.com/Azure/azure-iot-sdk-python/blob/master/azure-iot-hub/samples/get_digital_twin_sample.py)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub サービス クライアントの例
 
-このセクションでは、IoT Hub サービス クライアント、および **IoTHubRegistryManager** クラスと **CloudToDeviceMethod** クラスを使用した Python の例を示します。 **IoTHubRegistryManager** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 また、 **IoTHubRegistryManager** クラスを使用して、IoT Hub 内の[デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を実行することもできます。 デバイス上でコマンドを呼び出すには、 **CloudToDeviceMethod** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`device_id` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
+このセクションでは、IoT Hub サービス クライアント、および **IoTHubRegistryManager** クラスと **CloudToDeviceMethod** クラスを使用した Python の例を示します。 **IoTHubRegistryManager** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 また、**IoTHubRegistryManager** クラスを使用して、IoT Hub 内の [デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を実行することもできます。 デバイス上でコマンドを呼び出すには、**CloudToDeviceMethod** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`device_id` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
 
 ### <a name="get-the-device-twin-and-model-id"></a>デバイス ツインとモデル ID を取得する
 
@@ -63,7 +63,7 @@ twin_patch.properties = TwinProperties(
 updated_twin = iothub_registry_manager.update_twin(device_id, twin_patch, twin.etag)
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 サンプルでは、ツインの `ETag` を更新する前に取得する方法を示します。 プロパティは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 サンプルでは、ツインの `ETag` を更新する前に取得する方法を示します。 プロパティは、**thermostat1** コンポーネント内で定義されています。
 
 ```python
 iothub_registry_manager = IoTHubRegistryManager(iothub_connection_str)
@@ -111,7 +111,7 @@ result = iothub_registry_manager.invoke_device_method(device_id, device_method)
 print(result.payload)
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**thermostat1** コンポーネント内で定義されています。
 
 ```python
 from azure.iot.hub import IoTHubRegistryManager
@@ -163,7 +163,7 @@ patch = [{"op": "add", "path": "/targetTemperature", "value": 42}]
 digital_twin_client.update_digital_twin(device_id, patch)
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、**thermostat1** コンポーネント内で定義されています。
 
 ```python
 from azure.iot.hub import DigitalTwinClient
@@ -198,7 +198,7 @@ else:
     print("No invoke_command_result found")
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**thermostat1** コンポーネント内で定義されています。
 
 ```python
 from azure.iot.hub import DigitalTwinClient

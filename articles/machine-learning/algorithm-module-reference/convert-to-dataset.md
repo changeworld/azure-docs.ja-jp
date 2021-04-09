@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 671a8f7c6fa4c20ef4fc88f57d4a946a84614389
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 3ba69a6ddf38083e5665e20081f5f909b7100024
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420871"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102508488"
 ---
 # <a name="convert-to-dataset"></a>データセットへの変換
 
@@ -35,7 +35,7 @@ ms.locfileid: "93420871"
 
 2. データセットを出力する任意のモジュールに、それを接続します。   
 
-    データが[表形式](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py)の場合は、データセットに変換できます。 これには、[データのインポート](import-data.md)を使用して読み込まれたデータ、[データの手動入力](enter-data-manually.md)を使用して作成されたデータ、または[変換の適用](apply-transformation.md)を使用して変換されたデータセットが含まれます。
+    データが[表形式](/python/api/azureml-core/azureml.data.tabulardataset)の場合は、データセットに変換できます。 これには、[データのインポート](import-data.md)を使用して読み込まれたデータ、[データの手動入力](enter-data-manually.md)を使用して作成されたデータ、または[変換の適用](apply-transformation.md)を使用して変換されたデータセットが含まれます。
 
 3.  **[アクション]** ボックスの一覧で、データセットを保存する前にデータのクリーンアップを実行するかどうかを指定します。  
   
