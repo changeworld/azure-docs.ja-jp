@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: 1f6abbf68d4f648aeee6c025800f24140c9459e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10fae563f80a4d77e3f4bb1d5ca809a4130b050a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219319"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558850"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Azure VM の TCP/IP パフォーマンス チューニング
 
@@ -210,7 +210,7 @@ Get-NetTCPConnection
 Get-NetTCPSetting
 ```
 
-初期の TCP ウィンドウ サイズと TCP スケーリング ファクターは、Windows で `Set-NetTCPSetting` PowerShell コマンドを使用して設定できます。 詳細については、[Set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps) を参照してください。
+初期の TCP ウィンドウ サイズと TCP スケーリング ファクターは、Windows で `Set-NetTCPSetting` PowerShell コマンドを使用して設定できます。 詳細については、[Set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting) を参照してください。
 
 ```powershell
 Set-NetTCPSetting

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 9a347d57de540ed31c862f618be7c8a98b685348
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 2922e9620f558e072cfc1264f7e661efd11a90fb
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100546926"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102437010"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>テンプレートを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 このチュートリアルでは、テンプレートを使用して、Azure Stack Edge Pro デバイスに VM を作成し、管理する方法について説明します。 これらのテンプレートは、VM のインフラストラクチャと構成を定義する JavaScript Object Notation (JSON) ファイルです。 これらのテンプレートでは、デプロイするリソースとそれらのリソースのプロパティを指定します。
 

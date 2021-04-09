@@ -3,12 +3,12 @@ title: Azure DevTest Labs でラボにアーティファクト リポジトリ�
 description: Azure DevTest Labs で、パブリックの成果物リポジトリにはないツールを、自分のラボに自分専用の成果物リポジトリを指定して格納する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 5dd7d89020bf077e29b177f6871f43b52467b0d8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: da4e345b18a46226853d71bbf66af0487f1a761f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97512013"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102502197"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs でラボにアーティファクト リポジトリを追加する
 DevTest Labs では、VM の作成時または VM が作成された後に VM に追加されるアーティファクトを指定できます。 このアーティファクトには、VM にインストールするツールやアプリケーションがあります。 アーティファクトは、GitHub または Azure DevOps リポジトリから読み込まれた JSON ファイルで定義されます。
@@ -25,12 +25,12 @@ DevTest Labs によって維持されている[パブリック アーティフ�
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub リポジトリのクローン URL と個人用アクセス トークンの取得
 
 1. アーティファクトまたは Resource Manager テンプレートの定義を含む GitHub リポジトリのホーム ページに移動します。
-2. **[Clone or download]** を選択します。
+2. **[クローンまたはダウンロード]** を選択します。
 3. **[HTTPS clone URL]** ボタンをクリックして、URL をクリップボードにコピーします。 後で使用するために URL を保存します。
 4. GitHub の右上隅にあるプロファイル画像を選択し、 **[Settings]** を選択します。
 5. 左側にある **[Personal settings]** メニューで、 **[Developer Settings]** を選択します。
 6. 左側のメニューで **[Personal access tokens]** を選択します。
-7. **[Generate new token]** を選択します。
+7. **[新しいトークンの生成]** を選択します。
 8. **[New personal access token]** ページで、 **[Token description]** に説明を入力します。 **[Select scopes]** の既定の項目をそのまま使用し、 **[Generate Token]** を選択します。
 9. 生成されたトークンを保存します。 後でこのトークンを使用します。
 10. GitHub を閉じます。   
@@ -183,7 +183,7 @@ New-AzResourceGroupDeployment `
 New-AzResourceGroupDeployment が正常に実行されると、このコマンドは、プロビジョニング状態 (成功) やテンプレートに関するすべての出力などの重要な情報を出力します。
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
-このセクションでは、ラボにアーティファクト リポジトリを追加するために使用できるサンプルの PowerShell スクリプトを示します。 Azure PowerShell がない場合は、そのインストールのための詳細な手順について [Azure PowerShell をインストールして構成する方法](/powershell/azure/?view=azps-1.2.0)に関するページを参照してください。
+このセクションでは、ラボにアーティファクト リポジトリを追加するために使用できるサンプルの PowerShell スクリプトを示します。 Azure PowerShell がない場合は、そのインストールのための詳細な手順について [Azure PowerShell をインストールして構成する方法](/powershell/azure/)に関するページを参照してください。
 
 ### <a name="full-script"></a>完全なスクリプト
 いくつかの詳細メッセージやコメントを含む完全なスクリプトを次に示します。

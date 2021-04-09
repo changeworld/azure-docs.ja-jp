@@ -1,24 +1,19 @@
 ---
 title: Linux 用の Azure DSC 拡張機能
 description: Desired State Configuration を使用して Azure Linux VM を構成できるよう、OMI パッケージと DSC パッケージをインストールします。
-services: virtual-machines-linux
-documentationcenter: ''
-author: mgoedtel
-editor: ''
-ms.assetid: ''
-ms.service: virtual-machines-linux
-ms.subservice: extensions
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
-ms.date: 06/12/2018
+ms.service: virtual-machines
+ms.subservice: extensions
+author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: bfd5da519116eff66aede607f4cab7c207b30ee6
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.collection: linux
+ms.date: 06/12/2018
+ms.openlocfilehash: 3a9478f93a2a6f8e31be39a58a18e0e394b9d5c2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093711"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560108"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 

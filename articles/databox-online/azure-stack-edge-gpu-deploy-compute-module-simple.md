@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 44265efd4d125bb2701742a490fc883c48f1877b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 6c067fb5f39e82bb1601ce7b4d9dc5e2ce4ac624
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550994"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102440141"
 ---
 # <a name="tutorial-run-a-compute-workload-with-iot-edge-module-on-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU で IoT Edge モジュールを使用してコンピューティング ワークロードを実行する
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 このチュートリアルでは、Azure Stack Edge Pro GPU デバイスで IoT Edge モジュールを使用して、コンピューティング ワークロードを実行する方法について説明します。 コンピューティングを構成すると、デバイスはデータを Azure に送信する前に変換できます。
 
@@ -75,7 +75,7 @@ Azure Stack Edge Pro GPU デバイスでコンピューティング ロールを
 
     `rsync <source file path> < destination file path>`
 
-    `rsync` コマンドの詳細については、[rsync に関するドキュメント](https://www.computerhope.com/unix/rsync.htm)を参照してください。
+    `rsync` コマンドの詳細については、[`Rsync`](https://www.computerhope.com/unix/rsync.htm) に関するドキュメントを参照してください。
  
 3. **[クラウド ストレージ ゲートウェイ] > [共有]** に移動して、共有の更新された一覧を確認します。
 

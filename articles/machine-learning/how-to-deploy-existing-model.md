@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 46b8f153e65f436fa1062a0606e0fb0136d972a5
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 8076e3f6b2198abe46ae49cd8e0fd2b02f000231
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97824610"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102519352"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Azure Machine Learning を使用して既存のモデルをデプロイする
 
@@ -28,13 +28,13 @@ ms.locfileid: "97824610"
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)
-  + Python の例では、`ws` 変数がご利用の Azure Machine Learning のワークスペースに設定されていることを前提としています。 ワークスペースに接続する方法の詳細については、[Azure Machine Learning SDK for Python のドキュメント](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=trueworkspace)を参照してください。
+  + Python の例では、`ws` 変数がご利用の Azure Machine Learning のワークスペースに設定されていることを前提としています。 ワークスペースに接続する方法の詳細については、[Azure Machine Learning SDK for Python のドキュメント](/python/api/overview/azure/ml/#workspace)を参照してください。
   
   + CLI の例では、`myworkspace` と `myresourcegroup` のプレースホルダーが使用されますが、これはお使いのワークスペースの名前とそのワークスペースが含まれるリソース グループに置換する必要があります。
 
-* [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。  
+* [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install)。  
 
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest) と [Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)。
+* [Azure CLI](/cli/azure/install-azure-cli) と [Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
 * トレーニング済みのモデル。 モデルは、開発環境上の 1 つ以上のファイルに保存する必要があります。 <br><br>トレーニングされたモデルの登録例を示すため、この記事のサンプル コードでは、[Paolo Ripamonti の Twitter 感情分析プロジェクト](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)からのモデルが使用されます。
 
@@ -52,7 +52,7 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-詳細については、[Model.register()](/python/api/azureml-core/azureml.core.model%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=trueregister-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) のリファレンスを参照してください。
+詳細については、[Model.register()](/python/api/azureml-core/azureml.core.model%28class%29#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) のリファレンスを参照してください。
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
@@ -61,7 +61,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 > [!TIP]
 > また、登録されているモデルに、`tags` および `properties` ディクショナリ オブジェクトを設定することもできます。 これらの値は、後で特定のモデルを識別するために使用できます。 たとえば、使用されているフレームワーク、トレーニング パラメーターなどです。
 
-詳細については、[az ml model register](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-register) のリファレンスを参照してください。
+詳細については、[az ml model register](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register) のリファレンスを参照してください。
 
 
 一般的なモデル登録の詳細については、「[モデルを管理、デプロイ、および監視する](concept-model-management-and-deployment.md)」を参照してください。
@@ -103,7 +103,7 @@ inference_config = InferenceConfig(entry_script="score.py",
 詳細については、次の記事を参照してください。
 
 + [環境の使用方法](how-to-use-environments.md)。
-+ [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig?preserve-view=true&view=azure-ml-py) のリファレンス。
++ [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) のリファレンス。
 
 
 この CLI では YAML ファイルから推論構成が読み込まれます。
@@ -220,7 +220,7 @@ def predict(text, include_neutral=True):
 
 ## <a name="define-deployment"></a>デプロイを定義する
 
-[Webservice](/python/api/azureml-core/azureml.core.webservice?preserve-view=true&view=azure-ml-py) パッケージには、デプロイに使用されるクラスが含まれています。 使用するクラスによって、モデルのデプロイ場所が決まります。 たとえば、Azure Kubernetes Service に Web サービスとしてデプロイするには、[AksWebService.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py&preserve-view=true#&preserve-view=truedeploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) を使用してデプロイ構成を作成します。
+[Webservice](/python/api/azureml-core/azureml.core.webservice) パッケージには、デプロイに使用されるクラスが含まれています。 使用するクラスによって、モデルのデプロイ場所が決まります。 たとえば、Azure Kubernetes Service に Web サービスとしてデプロイするには、[AksWebService.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) を使用してデプロイ構成を作成します。
 
 次の Python コードでは、ローカル デプロイ用のデプロイ構成を定義します。 この構成では、モデルを Web サービスとしてローカル コンピューターに展開します。
 
@@ -233,7 +233,7 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-詳細については、[LocalWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.localwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-port-none-) のリファレンスを参照してください。
+詳細については、[LocalWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.localwebservice#deploy-configuration-port-none-) のリファレンスを参照してください。
 
 この CLI では YAML ファイルからデプロイ構成が読み込まれます。
 
@@ -260,7 +260,7 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-詳細については、[Model.deploy()](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) のリファレンスを参照してください。
+詳細については、[Model.deploy()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) のリファレンスを参照してください。
 
 CLI からモデルをデプロイするには、次のコマンドを使用します。 このコマンドによって、`inferenceConfig.json` および `deploymentConfig.json` ファイルに格納されている推論およびデプロイ構成が使用され、登録モデルのバージョン 1 (`sentiment:1`) がデプロイされます。
 
@@ -268,7 +268,7 @@ CLI からモデルをデプロイするには、次のコマンドを使用し�
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-詳細については、[az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。
+詳細については、[az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。
 
 デプロイの詳細については、「[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)」を参照してください。
 

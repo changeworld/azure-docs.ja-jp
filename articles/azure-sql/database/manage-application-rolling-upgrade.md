@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 659a8a3b38a79cc9dcc97f6f1e9c4395426ef7a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7d21852ad684782fa1cb917442fee236d3c882b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450261"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102502146"
 ---
 # <a name="manage-rolling-upgrades-of-cloud-applications-by-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用してクラウド アプリケーションのローリング アップグレードを管理する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -92,7 +92,7 @@ Azure SQL Database で[アクティブ geo レプリケーション](auto-failov
 
 1. プライマリ リージョンに Web アプリのステージング環境をデプロイします (6)。
 2. プライマリ Azure リージョンにセカンダリ データベースを作成します (7)。 Web アプリのステージング環境を、これに接続するように構成します。 
-3. セカンダリ データベースをプライマリ リージョンにレプリケートすることで、バックアップ リージョンにもう 1 つの geo 冗長セカンダリ データベースを作成します (この方法を *geo レプリケーションの連鎖*と呼びます) (8)。
+3. セカンダリ データベースをプライマリ リージョンにレプリケートすることで、バックアップ リージョンにもう 1 つの geo 冗長セカンダリ データベースを作成します (この方法を *geo レプリケーションの連鎖* と呼びます) (8)。
 4. Web アプリ インスタンスのステージング環境をバックアップ リージョンにデプロイし (9)、(8) で作成した geo 冗長セカンダリ データベースに接続するように構成します。
 
 > [!NOTE]
@@ -110,7 +110,7 @@ ALTER DATABASE <Prod_DB>
 SET (ALLOW_CONNECTIONS = NO)
 ```
 
-2. セカンダリを切断して geo レプリケーション を終了します (11)。 この操作により、独立していても完全に同期された運用データベースのコピーが作成されます。 このデータベースがアップグレードされます。 次の例では Transact-SQL を使用していますが、[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary?view=azps-1.5.0&preserve-view=true) も使用できます。 
+2. セカンダリを切断して geo レプリケーション を終了します (11)。 この操作により、独立していても完全に同期された運用データベースのコピーが作成されます。 このデータベースがアップグレードされます。 次の例では Transact-SQL を使用していますが、[PowerShell](/powershell/module/az.sql/remove-azsqldatabasesecondary) も使用できます。 
 
 ```sql
 -- Disconnect the secondary, terminating geo-replication

@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 22abd38ead1257b49eeae98acfcd74349f563811
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7420ffbe5b365c635c1eac2620cfd54ceb649ebf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992295"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102211806"
 ---
 # <a name="managed-hsm-logging"></a>Managed HSM のログ 
 
@@ -22,7 +22,7 @@ ms.locfileid: "90992295"
 
 マネージド HSM の操作を行ってから最大 10 分後には、ログ情報にアクセスできます。 ほとんどの場合は、これよりも早く確認できます。  ストレージ アカウントでのログの管理はお客様に委ねられます。
 
-* ログにアクセスできるユーザーを制限することでログのセキュリティを保護するには、標準的な Azure アクセス制御方法を使用します。
+* 標準的な Azure アクセス制御メソッドを使用してアクセスできるユーザーを制限することで、ログをセキュリティで保護します。
 * ストレージ アカウントに保持する必要がなくなったログは削除します。
 
 このチュートリアルを使用すると、Managed HSM のログを簡単に開始できます。 ストレージ アカウントを作成し、ログを有効にしてから、収集されたログ情報を解釈します。  
@@ -48,7 +48,7 @@ ms.locfileid: "90992295"
 az login
 ```
 
-CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください
+CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください
 
 マネージド HSM を作成するときに使用したサブスクリプションを指定することが必要な場合があります。 アカウントのサブスクリプションを確認するには、次のコマンドを入力します。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 09/22/2020
-ms.openlocfilehash: 5211555102c0a8d29eb05abd7a680935d828f9dc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: bf2419799ad6c229c6ffb891bc588479e134d427
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683442"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102500395"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
@@ -52,7 +52,7 @@ ms.locfileid: "98683442"
 + Web 上:
     + [Azure Machine Learning Studio ](https://ml.azure.com) 
     + [Azure Machine Learning デザイナー](concept-designer.md) 
-+ [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) を使用したすべての Python 環境で。
++ [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro) を使用したすべての Python 環境で。
 + [Azure Machine Learning SDK for R (プレビュー)](https://azure.github.io/azureml-sdk-for-r/reference/index.html) を使用したすべての R 環境で。
 + コマンド ラインでは Azure Machine Learning [CLI 拡張機能](./reference-azure-machine-learning-cli.md)を使用
 + [Azure Machine Learning VS Code 拡張機能](how-to-manage-resources-vscode.md#workspaces)

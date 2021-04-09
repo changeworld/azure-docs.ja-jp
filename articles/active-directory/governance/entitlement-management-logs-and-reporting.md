@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a7f0d937d41ee42bf0fe678eb2f49e78882f881
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 4c5ab92fcc1d70d12e37ae351e768514b4e7522f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577866"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501704"
 ---
 # <a name="archive-logs-and-reporting-on-azure-ad-entitlement-management-in-azure-monitor"></a>Azure Monitor での Azure AD のエンタイトルメント管理に関するアーカイブ ログとレポート
 
@@ -130,7 +130,7 @@ Azure AD に対して認証するユーザーまたはサービス プリンシ�
 
 ### <a name="install-azure-powershell-module"></a>Azure PowerShell モジュールをインストールする
 
-適切なロールの割り当てが完了したら、PowerShell を起動し、次のように入力して [Azure PowerShell モジュールをインストール](/powershell/azure/install-az-ps?view=azps-3.3.0)します (まだインストールしていない場合)。
+適切なロールの割り当てが完了したら、PowerShell を起動し、次のように入力して [Azure PowerShell モジュールをインストール](/powershell/azure/install-az-ps)します (まだインストールしていない場合)。
 
 ```azurepowershell
 install-module -Name az -allowClobber -Scope CurrentUser
@@ -158,8 +158,7 @@ $subs = Get-AzSubscription
 $subs | ft
 ```
  
-`Connect-AzAccount –Subscription $subs[0].id` などのコマンドを使用して、そのサブスクリプションに PowerShell セッションを再認証し、関連付けることができます。 非対話式など、PowerShell から Azure への認証方法の詳細については、「[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps?view=azps-3.3.0&viewFallbackFrom=azps-2.5.0
-)」を参照してください。
+`Connect-AzAccount –Subscription $subs[0].id` などのコマンドを使用して、そのサブスクリプションに PowerShell セッションを再認証し、関連付けることができます。 非対話式など、PowerShell から Azure への認証方法の詳細については、「[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)」を参照してください。
 
 そのサブスクリプションに複数の Log Analytics ワークスペースがある場合、コマンドレット [Get-AzOperationalInsightsWorkspace](/powershell/module/Az.OperationalInsights/Get-AzOperationalInsightsWorkspace) を実行すると、ワークスペースの一覧が返されます。 これで、Azure AD ログがあるものを見つけることができます。 このコマンドレットから返される `CustomerId` フィールドは、Azure portal の Log Analytics ワークスペースの概要に表示される「ワークスペース ID」の値と同じです。
  
@@ -169,8 +168,7 @@ $wks | ft CustomerId, Name
 ```
 
 ### <a name="send-the-query-to-the-log-analytics-workspace"></a>Log Analytics ワークスペースにクエリを送信する
-最後に、ワークスペースを特定したら、[Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery?view=azps-3.3.0
-) を使用して Kusto クエリをそのワークスペースに送信できます。 これらのクエリは [Kusto クエリ言語](/azure/kusto/query/)で記述されています。
+最後に、ワークスペースを特定したら、[Invoke-AzOperationalInsightsQuery](/powershell/module/az.operationalinsights/Invoke-AzOperationalInsightsQuery) を使用して Kusto クエリをそのワークスペースに送信できます。 これらのクエリは [Kusto クエリ言語](/azure/kusto/query/)で記述されています。
  
 たとえば、次のようなクエリを送信する PowerShell コマンドレットを使用して、Log Analytics ワークスペースから監査イベント レコードの日付範囲を取得できます。
  

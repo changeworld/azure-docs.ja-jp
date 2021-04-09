@@ -280,28 +280,26 @@
           href: ./linux/spot-template.md
         - name: エラー コード
           href: error-codes-spot.md
-    - name: 購入オプション
+    - name: Azure ハイブリッド特典
       items:
-        - name: Azure ハイブリッド特典
+        - name: Linux
+          href: ./linux/azure-hybrid-benefit-linux.md
+        - name: Windows
           items:
-            - name: Linux
-              href: ./linux/azure-hybrid-benefit-linux.md
-            - name: Windows
-              items:
-                - name: Azure ハイブリッド特典ライセンスの使用
-                  href: ./windows/hybrid-use-benefit-licensing.md
-                - name: Windows 10 のマルチテナント ホスティング権限の使用
-                  href: ./windows/windows-desktop-multitenant-hosting-deployment.md
-        - name: 予約インスタンス
-          items:
-            - name: VM の前払い
-              href: ./prepay-reserved-vm-instances.md
-            - name: 専用ホストの前払い
-              href: prepay-dedicated-hosts-reserved-instances.md
-            - name: Azure の予約とは
-              href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
-            - name: VM インスタンス サイズの柔軟性
-              href: reserved-vm-instance-size-flexibility.md
+            - name: Azure ハイブリッド特典ライセンスの使用
+              href: ./windows/hybrid-use-benefit-licensing.md
+            - name: Windows 10 のマルチテナント ホスティング権限の使用
+              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+    - name: 予約インスタンス
+      items:
+        - name: VM の前払い
+          href: ./prepay-reserved-vm-instances.md
+        - name: 専用ホストの前払い
+          href: prepay-dedicated-hosts-reserved-instances.md
+        - name: Azure の予約とは
+          href: ../cost-management-billing/reservations/save-compute-costs-reservations.md?context=/azure/virtual-machines/context/context
+        - name: VM インスタンス サイズの柔軟性
+          href: reserved-vm-instance-size-flexibility.md
     - name: Linux VM を作成する
       items:
         - name: 動作保証済みディストリビューション
@@ -783,41 +781,52 @@
           href: ./windows/build-image-with-packer.md
 - name: 可用性とスケール
   items:
-    - name: スケール セット
-      href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
-    - name: 可用性
+    - name: 概要
       href: availability.md
-    - name: コロケーション
-      href: co-location.md
-    - name: ネットワーク パフォーマンス
-      href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?context=/azure/virtual-machines/context/context
-    - name: 状態とライフサイクル
-      href: states-lifecycle.md
-    - name: 自動スケール
-      href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
-    - name: 高可用性
-      href: manage-availability.md
     - name: 可用性セット
       items:
-        - name: Linux
+        - name: 概要
+          href: availability-set-overview.md
+        - name: CLI
           href: ./linux/tutorial-availability-sets.md
-        - name: Windows
-          items:
-            - name: 可用性セットの作成
-              href: ./windows/tutorial-availability-sets.md
-            - name: 可用性セットの変更
-              href: ./windows/change-availability-set.md
-    - name: 近接通信配置グループの作成
-      displayName: PPG aligned colocation co-location
+        - name: PowerShell
+          href: ./windows/tutorial-availability-sets.md
+        - name: 可用性セットの変更
+          href: ./windows/change-availability-set.md
+    - name: 可用性ゾーン
       items:
+        - name: 概要
+          href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
+        - name: CLI
+          href: ./linux/create-cli-availability-zone.md
+        - name: PowerShell
+          href: ./windows/create-powershell-availability-zone.md
+        - name: ポータル
+          href: ./windows/create-portal-availability-zone.md
+    - name: 近接配置グループ
+      items:
+        - name: 概要
+          href: co-location.md
         - name: CLI
           href: ./linux/proximity-placement-groups.md
-        - name: ポータル
-          href: ./windows/proximity-placement-groups-portal.md
         - name: PowerShell
           href: ./windows/proximity-placement-groups.md
-    - name: 可用性ゾーン内に VM を作成する
-      href: ./linux/create-cli-availability-zone.md
+        - name: ポータル
+          href: ./windows/proximity-placement-groups-portal.md
+    - name: Virtual Machine Scale Sets
+      items:
+        - name: 概要
+          href: ../virtual-machine-scale-sets/overview.md?context=/azure/virtual-machines/context/context
+        - name: 自動スケール
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md?context=/azure/virtual-machines/context/context
+        - name: オーケストレーション モード
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md?context=/azure/virtual-machines/context/context
+    - name: VM の再起動について
+      href: understand-vm-reboots.md
+    - name: 状態と課金
+      href: states-billing.md
+    - name: Azure リージョン
+      href: regions.md
 - name: ディスク
   items:
     - name: マネージド ディスクの概要
@@ -1346,7 +1355,7 @@
             - name: 一般提供の FAQ
               href: ../azure-monitor/vm/vminsights-ga-release-faq.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
             - name: よく寄せられる質問
-              href: ../azure-monitor/faq.md
+              href: ../azure-monitor/faq.md?context=/azure/virtual-machines/context/context
             - name: 監視を有効にする
               items:
                 - name: 監視の有効化の概要

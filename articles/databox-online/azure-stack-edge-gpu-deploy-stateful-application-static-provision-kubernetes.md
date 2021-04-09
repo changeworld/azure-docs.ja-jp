@@ -6,20 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/25/2021
+ms.date: 03/09/2021
 ms.author: alkohli
-ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 01ba8e1f22deb376fd461be24d3f66f0a7f5e1ae
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804897"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102610486"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>kubectl を使用し、Azure Stack Edge Pro デバイスで PersistentVolume を使って Kubernetes ステートフル アプリケーションを実行する
 
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
+
 この記事では、PersistentVolume (PV) とデプロイを使用して、Kubernetes で単一インスタンスのステートフル アプリケーションをデプロイする方法について説明します。 このデプロイでは、既存の Kubernetes クラスターで `kubectl` コマンドを使用し、MySQL アプリケーションをデプロイします。 
 
-この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ストレージ](azure-stack-edge-gpu-kubernetes-storage.md)に関する記事を確認し、[Kubernetes ストレージ](https://kubernetes.io/docs/concepts/storage/)の概念を理解しているユーザーを対象としています。
+この手順は、[Azure Stack Edge Pro デバイス上の Kubernetes ストレージ](azure-stack-edge-gpu-kubernetes-storage.md)に関する記事を確認し、[Kubernetes ストレージ](https://kubernetes.io/docs/concepts/storage/)の概念を理解しているユーザーを対象としています。 
 
 Azure Stack Edge Pro では、Azure SQL Edge コンテナーの実行もサポートされており、ここで説明する MySQL の場合と同様の方法でデプロイできます。 詳細については、[Azure SQL Edge](../azure-sql-edge/overview.md) に関する記事をご覧ください。
 
@@ -37,9 +39,9 @@ Azure Stack Edge Pro では、Azure SQL Edge コンテナーの実行もサポ�
 ### <a name="for-client-accessing-the-device"></a>デバイスにアクセスするクライアントでは
 
 - Azure Stack Edge Pro デバイスへのアクセスに使用される Windows クライアント システムがある。
-    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true)」を参照してください。
+    - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-windows-powershell)」を参照してください。
     
-    - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
+    - [サポートされているオペレーティング システム](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)が搭載されている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
     - [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
       - `New-HcsKubernetesNamespace` コマンドを使用して `userns1` 名前空間を作成した。 
@@ -60,7 +62,8 @@ Azure Stack Edge Pro デバイスにステートフル アプリケーション�
 PV を静的にプロビジョニングするには、デバイスに共有を作成する必要があります。 SMB 共有に対して PV をプロビジョニングするには、次の手順に従います。 
 
 > [!NOTE]
-> この操作方法の記事で使用されている具体的な例は、NFS 共有では機能しません。 NFS 共有は通常、Azure Stack Edge デバイスでデータベース以外のアプリケーションを使用してプロビジョニングできます。
+> - この操作方法の記事で使用されている具体的な例は、NFS 共有では機能しません。 NFS 共有は通常、Azure Stack Edge デバイスでデータベース以外のアプリケーションを使用してプロビジョニングできます。
+> - ストレージ ボリュームを使用するステートフル アプリケーションをデプロイして永続ストレージを提供するには、`StatefulSet` を使用することをお勧めします。 この例では、`Deployment` と 1 つのレプリカのみを使用しています。これは、開発とテストに適しています。 
 
 1. Edge 共有と Edge ローカル共有のどちらを作成するかを選択します。 「[共有の追加](azure-stack-edge-manage-shares.md#add-a-share)」の手順に従って、共有を作成してください。 **[Edge コンピューティングで共有を使用する]** チェック ボックスを必ずオンにします。
 

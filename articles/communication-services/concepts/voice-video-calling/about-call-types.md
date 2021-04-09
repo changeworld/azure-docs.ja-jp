@@ -6,17 +6,20 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 515921c4e69b7c2cff8e1055182503b5ce89971c
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: eea54be9d159c6aacbbc24e2fe8edf874f8e2d83
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657147"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103492338"
 ---
 # <a name="voice-and-video-concepts"></a>音声とビデオの概念
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Azure Communication Services を使用すると、一対一またはグループでの音声通話やビデオ通話をかけたり受けたりすることができます。 通話は、インターネットに接続されている他のデバイスや、普通の従来の電話に対しても行うことができます。 Communication Services の JavaScript、Android、または iOS クライアント ライブラリを使用して、ユーザーが個人的な会話やグループ ディスカッションで相互に対話できるアプリケーションを構築できます。 Azure Communication Services は、サービスやボットとの通話をサポートしています。
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 266142240ba9e892c905ac8aa6521da5a14c4c3d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725213"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554022"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3.外部アクセスのセキュリティ プランを作成する 
 
@@ -132,7 +132,7 @@ ms.locfileid: "98725213"
 
    * 1 つのパートナーのすべてのユーザーをグループ化するために[接続済み組織](../governance/entitlement-management-organization.md)を使用している場合は、ビジネス所有者とパートナー代表者による定期的なレビューをスケジュールする。
 
-* **Microsoft 365 グループ**。 外部ユーザーを招待する Microsoft 365 グループの[グループ有効期限ポリシー](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide)を設定しましょう。 
+* **Microsoft 365 グループ**。 外部ユーザーを招待する Microsoft 365 グループの[グループ有効期限ポリシー](/microsoft-365/solutions/microsoft-365-groups-expiration-policy)を設定しましょう。 
 
 * **その他のオプション**。 外部ユーザーがエンタイトルメント管理アクセス パッケージや Microsoft 365 グループの外部にアクセスできる場合は、アカウントを非アクティブにしたり削除したりするタイミングをレビューするためのビジネス プロセスを設定しましょう。 例:
 

@@ -3,19 +3,19 @@ title: Azure 仮想マシンでの Visual Studio の使用
 description: Azure 仮想マシンでの Visual Studio の使用。
 author: cathysull
 manager: cathys
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 315987060b96312c666bd5aa928588e27d13173b
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a6acf27743f17941e14adc3f6deea903f4f5ca87
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938105"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562080"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
 事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) で入手できます。
@@ -31,7 +31,7 @@ Azure を利用するのが初めてであれば、 [無料の Azure アカウ�
 | リリース バージョン                                                                                                                                                | エディション              | 製品バージョン   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
 | [Visual Studio 2019:最新版 (バージョン 16.8)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise、Community | バージョン 16.8.0    |
-| Visual Studio 2019:RTW                         | Enterprise | バージョン 16.0.20    |
+| Visual Studio 2019:RTW                         | エンタープライズ | バージョン 16.0.20    |
 | Visual Studio 2017:最新 (バージョン 15.9)           | Enterprise、Community | バージョン 15.9.29   |
 | Visual Studio 2017:RTW                             | Enterprise、Community | バージョン 15.0.28  |
 | Visual Studio 2015:最新 (Update 3)               | Enterprise、Community | Version 14.0.25431.01 |

@@ -11,6 +11,10 @@
   items:
     - name: Front Door Standard/Premium を作成する - ポータル
       href: create-front-door-portal.md
+- name: サンプル
+  items:
+    - name: Resource Manager テンプレート
+      href: resource-manager-template-samples.md
 - name: 概念
   items:
     - name: Front Door に関する FAQ

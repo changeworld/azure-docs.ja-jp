@@ -2,16 +2,16 @@
 title: Azure Stream Analytics の入力について
 description: この記事では、Azure Stream Analytics ジョブでの入力の概念について説明し、参照データ入力へのストリーミングの入力と比較します。
 ms.service: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: enkrumah
+ms.author: ebnkruma
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 442c5a1174c4a91ea9401315bb3e518e4fe6cc4e
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 1e5bf3e884e5f2c1a57cee08cbf3c22379dab080
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183915"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102436041"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics の入力について
 

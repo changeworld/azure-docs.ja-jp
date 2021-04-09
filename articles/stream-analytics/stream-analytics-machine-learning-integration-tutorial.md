@@ -2,17 +2,17 @@
 title: Azure Stream Analytics と Azure Machine Learning Studio (classic) の統合
 description: この記事では、ユーザー定義関数を使用して、Azure Machine Learning Studio (classic) を統合する単純な Azure Stream Analytics ジョブをすばやく設定する方法について説明します。
 ms.service: stream-analytics
-author: jasonwhowell
-ms.author: jasonh
+author: sidramadoss
+ms.author: sidram
 ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 89b1b91270d1fe30ffcb5ae0caa5f319aa616683
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 1ebe62c1b90e09b36dd75b5bda4054cca08d5759
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102178526"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102441212"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics と Azure Machine Learning Studio (classic) を使用した感情分析の実行
 

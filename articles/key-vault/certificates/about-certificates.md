@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 66f077028b9f9f7a7644a318d4447eeaaab19e98
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: b410dc89b286ef830f0d5b6a9c33fe77d380f5d1
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94919932"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102507213"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Azure Key Vault の証明書について
 
@@ -91,7 +91,7 @@ Key Vault 証明書には次の属性があります。
 
 Key Vault 証明書を最初から作成するときは、ポリシーを提供する必要があります。 ポリシーでは、この Key Vault 証明書バージョンまたは次の Key Vault 証明書バージョンを作成する方法を指定します。 ポリシーが確立された後は、将来のバージョンに対する後続の作成操作では必要はありません。 Key Vault 証明書のすべてのバージョンに対して、ポリシーのインスタンスは 1 つだけ存在します。  
 
-大まかに言えば、証明書ポリシーには次の情報が含まれています (それらの定義は[こちら](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy?view=azps-4.4.0)から見つけることができます)。  
+大まかに言えば、証明書ポリシーには次の情報が含まれています (それらの定義は[こちら](/powershell/module/az.keyvault/set-azkeyvaultcertificatepolicy)から見つけることができます)。  
 
 -   X509 証明書のプロパティ:サブジェクト名、サブジェクト代替名、および x509 証明書要求の作成に使用される他のプロパティが含まれます。  
 -   キーのプロパティ: キーの種類、キーの長さ、エクスポート可能、ReuseKeyOnRenewal フィールドが含まれています。 これらのフィールドは、キー コンテナーにキーの生成方法を示します。 

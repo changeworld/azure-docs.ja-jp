@@ -120,7 +120,7 @@
     - name: SDK を使用した Notification Hub の作成
       items:
         - name: Notification Hub の作成 - .NET
-          href: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+          href: /dotnet/api/overview/azure/notification-hubs
         - name: Notification Hub の作成 - Node.js
           href: notification-hubs-nodejs-push-notification-tutorial.md
         - name: Notification Hub の作成 - Java

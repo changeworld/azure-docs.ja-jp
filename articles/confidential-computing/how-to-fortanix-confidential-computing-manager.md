@@ -3,17 +3,17 @@ title: Azure マネージド アプリケーションでの Fortanix Confidentia
 description: Azure portal でマネージド アプリケーションに Fortanix Confidential Computing Manager (CCM) をデプロイする方法について説明します。
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.author: jencook
-ms.openlocfilehash: 6132b864e94c5c2af691183e198ca882c361d5ec
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 757ce9b7502316bbc8a5b8f27ba672048b7bbace
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99551123"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102563423"
 ---
 # <a name="fortanix-confidential-computing-manager-in-an-azure-managed-application"></a>Azure マネージド アプリケーションでの Fortanix Confidential Computing Manager
 

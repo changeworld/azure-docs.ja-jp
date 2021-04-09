@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 04137fef640da46ca8876811e127e109a8c3d445
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4bfc29472373a53bcebb2ba59134d1f3702d4793
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348306"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102549874"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する
 
@@ -48,13 +48,13 @@ ms.locfileid: "93348306"
 
 コマーシャル マーケットプレースは、Azure AD と完全に統合されています。 マーケットプレースにアクセスした購入者は、[Azure AD アカウントまたは Microsoft アカウント (MSA)](../active-directory/fundamentals/active-directory-whatis.md#terminology) で認証されています。 購入後、購入者はコマーシャル マーケットプレースからランディング ページ URL に移動し、SaaS アプリケーションのサブスクリプションをアクティブにして管理します。 購入者が Azure AD SSO を使用してアプリケーションにサインインできるようにする必要があります。 (ランディング ページの URL は、そのオファーの [[技術的な構成]](plan-saas-offer.md#technical-information) ページで指定されます)。
 
-ID を使用するには、最初の手順として、ランディング ページが Azure AD アプリケーションとして登録されていることを確認する必要があります。 アプリケーションを登録すると、Azure AD を使用してユーザーを認証し、ユーザー リソースへのアクセスを要求できるようになります。 これは、アプリケーションの定義と見なすことができます。これにより、サービスは、アプリの設定に基づいてアプリにトークンを発行する方法を認識できるようになります。
+ID を使用するための最初の手順として、ランディング ページが Azure AD アプリケーションとして登録されていることを確認します。 アプリケーションを登録すると、Azure AD を使用してユーザーを認証したり、ユーザー リソースへのアクセスを要求したりできるようになります。 これは、アプリケーションの定義と見なすことができます。これにより、サービスは、アプリの設定に基づいてアプリにトークンを発行する方法を認識できるようになります。
 
 ### <a name="register-a-new-application-using-the-azure-portal"></a>Azure portal を使用して新しいアプリケーションを登録します
 
 作業を開始するには、[新しいアプリケーションの登録](../active-directory/develop/quickstart-register-app.md)に関する記事の手順に従います。 他の企業のユーザーがアプリにアクセスできるようにするには、アプリケーションを使用できるユーザーを指定するように求められたときに、マルチテナント オプションの 1 つを選択する必要があります。
 
-Microsoft Graph API に対してクエリを実行する場合は、[Web API にアクセスするように新しいアプリケーションを構成](../active-directory/develop/quickstart-configure-app-access-web-apis.md)します。 このアプリケーションの API アクセス許可を選択する場合、オンボード プロセスをスムーズかつ自動的に実行するのに必要な購入者に関する基本情報は、 **User.Read** の既定値で十分に収集できます。 **[needs admin consent]\(管理者の同意が必要\)** というラベルが付けられている API アクセス許可を要求しないでください。要求すると、管理者以外のユーザーは誰もランディング ページにアクセスできなくなります。
+Microsoft Graph API に対してクエリを実行する場合は、[Web API にアクセスするように新しいアプリケーションを構成](../active-directory/develop/quickstart-configure-app-access-web-apis.md)します。 このアプリケーションの API アクセス許可を選択する場合、オンボード プロセスをスムーズかつ自動的に実行するのに必要な購入者に関する基本情報は、**User.Read** の既定値で十分に収集できます。 **[needs admin consent]\(管理者の同意が必要\)** というラベルが付けられている API アクセス許可を要求しないでください。要求すると、管理者以外のユーザーは誰もランディング ページにアクセスできなくなります。
 
 オンボード プロセスやプロビジョニング プロセスの一部として管理者特権のアクセス許可が必要な場合は、Azure AD の[増分同意](../active-directory/azuread-dev/azure-ad-endpoint-comparison.md)機能を使用することを検討します。この機能を使用すると、マーケットプレースからリダイレクトされたすべての購入者は最初、ランディング ページを操作できます。
 
@@ -62,7 +62,7 @@ Microsoft Graph API に対してクエリを実行する場合は、[Web API に
 
 Azure AD ログインが有効化されているシンプルな Web サイトを実装するサンプル アプリをいくつかご用意しています。 アプリケーションが Azure AD に登録されると、図 1 に示すように、一般的なアプリケーションの種類と開発スタックの一覧が **[クイック スタート]** ブレードに表示されます。 環境に合うものを選択し、ダウンロードとセットアップの手順に従います。
 
-**_図 1:Azure portal の [クイック スタート] ブレード_* _
+"***図 1:Azure portal の [クイック スタート] ブレード***
 
 :::image type="content" source="./media/azure-ad-saas/azure-ad-quickstart-blade.png" alt-text="Azure portal の [クイック スタート] ブレードの表示。":::
 
@@ -109,7 +109,7 @@ SaaS Fulfillment API では、[解決](./partner-center-portal/pc-saas-fulfillme
 
 ## <a name="use-the-microsoft-graph-api"></a>Microsoft Graph API を使用する
 
-ID トークンには購入者を識別するための基本的な情報が含まれていますが、オンボード プロセスを完了するために、アクティブ化プロセスで追加の詳細情報 (購入者の会社など) が必要になる場合があります。 このような情報を要求するために [Microsoft Graph API](/graph/use-the-api) を使用すると、これらの詳細の再入力をユーザーに要求することを避けることができます。 標準の _ *User.Read* * アクセス許可には、既定では次の情報が含まれます。
+ID トークンには購入者を識別するための基本的な情報が含まれていますが、オンボード プロセスを完了するために、アクティブ化プロセスで追加の詳細情報 (購入者の会社など) が必要になる場合があります。 このような情報を要求するために [Microsoft Graph API](/graph/use-the-api) を使用すると、これらの詳細の再入力をユーザーに要求することを避けることができます。 標準的な **User.Read** アクセス許可には、既定で次の情報が含まれています。
 
 | 値 | 説明 |
 | ------------ | ------------- |
@@ -122,7 +122,7 @@ ID トークンには購入者を識別するための基本的な情報が含�
 | surname | ユーザーの姓。 |
 |||
 
-要求に含めるために、ユーザーの会社の名前やユーザーの所在地 (国) などの追加のプロパティを選択できます。 詳細については、[user リソースの種類のプロパティ](/graph/api/resources/user?view=graph-rest-1.0&preserve-view=true#properties)を参照してください。
+要求に含めるために、ユーザーの会社の名前やユーザーの所在地 (国) などの追加のプロパティを選択できます。 詳細については、[user リソースの種類のプロパティ](/graph/api/resources/user#properties)を参照してください。
 
 Azure AD に登録されているほとんどのアプリは、会社の Azure AD テナントからユーザーの情報を読み取るための委任されたアクセス許可を付与します。 その情報を取得するための Microsoft Graph へのすべての要求には、認証のためのアクセス トークンが必要です。 アクセス トークンを生成するための具体的な手順は、使用しているテクノロジ スタックによって異なりますが、サンプル コードには例が含まれています。 詳細については、「[ユーザーの代わりにアクセスを取得](/graph/auth-v2-user)」を参照してください。
 

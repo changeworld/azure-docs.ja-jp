@@ -3,12 +3,12 @@ title: ハッカソンに Azure Lab Services を使用する
 description: この記事では、ハッカソンの実行に使用できるラボを作成するために Azure Lab Services を使用する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: a0917ede4502dcbb59d1a30b7985b06c06975599
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d4648def48557d70547ef7d41d6c3e516671849e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602582"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102452732"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>次回のハッカソンに Azure Lab Services を使用する
 Azure Lab Services は、ハッカソン向けの仮想マシン (VM) の新しいラボをすばやく作成できるように、軽量で使いやすく設計されています。  次のチェックリストを使用して、ハッカソンができるだけ円滑に進むようにします。 このチェックリストは、ハッカソン ラボの作成と管理を担当する IT 部門または教員によって作成される必要があります。 
@@ -83,7 +83,7 @@ Azure Lab Services は、ハッカソン向けの仮想マシン (VM) の新し�
     - マシンへの接続に使用する資格情報。 この手順は、ラボで Windows ベースのイメージを使用していて、すべての VM で同じパスワードを使用するように構成した場合にのみ適用されます。
     - 参加者がマシンに SSH または RDP で接続する方法について説明します。
 
-        詳細については、[ユーザーへの招待の送信に関する攻略ガイド](how-to-configure-student-usage.md?branch=master#send-invitations-to-users)と [Linux VM への接続](how-to-use-remote-desktop-linux-student.md?branch=master)に関する記事を参照してください。 
+        詳細については、[ユーザーへの招待の送信に関する攻略ガイド](how-to-configure-student-usage.md#send-invitations-to-users)と [Linux VM への接続](how-to-use-remote-desktop-linux-student.md)に関する記事を参照してください。 
 
 ## <a name="next-steps"></a>次のステップ
 まず、ラボでラボ アカウントを作成します。その場合、「[チュートリアル: Azure Lab Services でラボ アカウントを設定する](tutorial-setup-lab-account.md)」という記事の手順に従います。

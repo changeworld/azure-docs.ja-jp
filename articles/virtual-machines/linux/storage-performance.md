@@ -3,19 +3,20 @@ title: Azure Lsv2 シリーズの仮想マシン上でパフォーマンスを�
 description: Lsv2 シリーズの仮想マシン上でソリューションのパフォーマンスを最適化する方法をLinux を例にして紹介します。
 services: virtual-machines-linux
 author: laurenhughes
-ms.service: virtual-machines-linux
-ms-subservice: sizes
+ms.service: virtual-machines
+ms-subservice: vm-sizes-storage
+ms.collection: linux
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 650164556223a73a722bc91ecb31491ee98cb8a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 99349654bb01f368a2a3a84c4ecc01f248b25175
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91307103"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102552764"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>Lsv2 シリーズ Linux 仮想マシン上でパフォーマンスを最適化する
 
@@ -37,7 +38,7 @@ Lsv2 シリーズの VM では、Zen マイクロアーキテクチャをベー�
 
 ## <a name="tips-to-maximize-performance"></a>パフォーマンス最大化のためのヒント
 
-* ワークロードのためにカスタムの Linux GuestOS をアップロードする場合には、高速ネットワークが既定で**オフ**になっていることに注意してください。 高速ネットワークを有効にする場合は、VM の作成時に有効にすると、最善のパフォーマンスが得られます。
+* ワークロードのためにカスタムの Linux GuestOS をアップロードする場合には、高速ネットワークが既定で **オフ** になっていることに注意してください。 高速ネットワークを有効にする場合は、VM の作成時に有効にすると、最善のパフォーマンスが得られます。
 
 * Lsv2 シリーズ VM が稼働するハードウェアでは、I/O キュー ペア (QP) を 8 組備えた NVMe デバイスを使用しています。 NVMe デバイスの I/O キューはいずれも、実際には送信キューと完了キューがペアになっています。 NVMe ドライバーは、ラウンド ロビン方式のスケジュールに基づいて I/O を分散させ、この 8 組の I/O QP の利用を最適化するように設定してあります。 最大限のパフォーマンスを実現するためには、デバイスごとに釣り合いの取れたジョブを 8 件実行するようにしてください。
 

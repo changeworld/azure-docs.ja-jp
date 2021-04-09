@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9b092c3c7382c984e8555125820c7c34d91f5e87
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 63817c8a65678579ce535a3c2e667e4eb0971a63
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048931"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102434068"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins のトラブルシューティング: メトリック
 
@@ -78,7 +78,7 @@ API 要求に関連するメトリック:
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Billing API Operations (課金 API 操作) | Count | 合計 | Azure Digital Twins サービスに対して行われたすべての API 要求の数の課金メトリック。 | Meter ID |
 | BillingMessagesProcessed | Billing Messages Processed (処理されたメッセージの課金) | Count | 合計 | Azure Digital Twins から外部エンドポイントに送信されたメッセージ数の課金メトリック。<br><br>課金に対する 1 つのメッセージと見なされるには、ペイロードが 1 KB を超えないようにする必要があります。 これを超えるペイロードは、1 KB ごとに追加のメッセージとしてカウントされます (そのため、1 KB から 2 KB のメッセージは 2 つのメッセージ、2 KB から 3 KB のメッセージは 3 つのメッセージとしてカウントされます)。<br>この制限は、応答にも適用されます。たとえば、応答本文内で 1.5 KB を返す呼び出しは、2 件の操作として課金されます。 | Meter ID |
-| BillingQueryUnits | Billing Query Units (課金クエリ単位) | Count | 合計 | クエリを実行するために消費された、内部で計算されたサービス リソース使用量のメジャーであるクエリ単位の数。 クエリ単位の測定に使用できるヘルパー API もあります。[QueryChargeHelper クラス](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet) | Meter ID |
+| BillingQueryUnits | Billing Query Units (課金クエリ単位) | Count | 合計 | クエリを実行するために消費された、内部で計算されたサービス リソース使用量のメジャーであるクエリ単位の数。 クエリ単位の測定に使用できるヘルパー API もあります。[QueryChargeHelper クラス](/dotnet/api/azure.digitaltwins.core.querychargehelper) | Meter ID |
 
 Azure Digital Twins の課金方法の詳細については、「[*Azure Digital Twins の価格*](https://azure.microsoft.com/pricing/details/digital-twins/)」を参照してください。
 

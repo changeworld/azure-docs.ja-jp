@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: aeabfb42d378f22ff660214517fea031d678b208
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: 41f96202bffc0169be9705cd7e67c1eedbecbc05
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100635576"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102453446"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>チュートリアル:セキュリティ アラートのトリアージ、調査、対応
 Security Center では、高度な分析および脅威インテリジェンスを使用してハイブリッド クラウド ワークロードを継続的に分析し、クラウド リソースでの潜在的な悪意のあるアクティビティに関するアラートを受け取ることができます。 さらに、他のセキュリティ製品およびサービスからのアラートを Security Center に統合することもできます。 アラートが発生したら、潜在的なセキュリティの問題の調査と修復を行うために、迅速なアクションが必要になります。 
@@ -112,7 +112,7 @@ Security Center では、すべてのセキュリティ アラートを統合さ
 1. 関連するサブスクリプションを選択します。
 1. ダウングレードする場合は、 **[Azure Defender off]\(Azure Defender のオフ\)** を選択します。
 1. 自動プロビジョニングを無効にする場合は、 **[データ収集]** ページを開き、 **[自動プロビジョニング]** を **[オフ]** に設定します。
-4. **[保存]** を選択します。
+1. **[保存]** を選択します。
 
 >[!NOTE]
 > 自動プロビジョニングを無効にしても、既に Azure VM に存在する Log Analytics エージェントは削除されません。 自動プロビジョニングを無効にすると、リソースのセキュリティの監視が制限されます。

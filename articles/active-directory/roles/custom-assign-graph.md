@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bec789d8ef79e221007b172550100b80b76197a
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 67e77c2dd08386279beeb06ff9081fa2669afa73
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740280"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102487836"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>Azure Active Directory で Microsoft Graph API を使用してカスタム管理者ロールを割り当てる 
 
@@ -60,7 +60,7 @@ HTTP/1.1 201 Created
 POST
 
 ``` HTTP
-https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
 Body
@@ -83,7 +83,7 @@ HTTP/1.1 404 Not Found
 POST
 
 ``` HTTP
-https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
 Body
@@ -107,7 +107,7 @@ HTTP/1.1 201 Created
 POST
 
 ``` HTTP
-https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
+POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ```
 
 Body
@@ -145,7 +145,7 @@ HTTP/1.1 400 Bad Request
 GET
 
 ``` HTTP
-https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=principalId eq ‘<object-id-of-principal>’
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=principalId+eq+'<object-id-of-principal>'
 ```
 
 Response
@@ -175,7 +175,7 @@ HTTP/1.1 200 OK
 GET
 
 ``` HTTP
-https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments&$filter=roleDefinitionId eq ‘<object-id-or-template-id-of-role-definition>’
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=roleDefinitionId+eq+'<object-id-or-template-id-of-role-definition>'
 ```
 
 Response
@@ -220,7 +220,7 @@ HTTP/1.1 200 OK
 GET
 
 ``` HTTP
-GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=directoryScopeId eq '/d23998b1-8853-4c87-b95f-be97d6c6b610'
+GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments?$filter=directoryScopeId+eq+'/d23998b1-8853-4c87-b95f-be97d6c6b610'
 ```
 
 Response
@@ -252,7 +252,7 @@ HTTP/1.1 200 OK
 DELETE
 
 ``` HTTP
-GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
+DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Response
@@ -265,7 +265,7 @@ HTTP/1.1 204 No Content
 DELETE
 
 ``` HTTP
-GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
+DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Response
@@ -279,7 +279,7 @@ HTTP/1.1 404 Not Found
 DELETE
 
 ``` HTTP
-GET https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
+DELETE https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments/lAPpYvVpN0KRkAEhdxReEJC2sEqbR_9Hr48lds9SGHI-1
 ```
 
 Response

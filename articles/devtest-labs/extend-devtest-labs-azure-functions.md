@@ -3,12 +3,12 @@ title: Azure Functions を使用して Azure DevTest Labs を拡張する | Micr
 description: Azure Functions を使用して Azure DevTest Labs を拡張する方法について学習します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7a51f0935540df18cfb8805902bbe2c4ec365291
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 620cda83094ee65f421a5529a9d5b51e505ec48e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203676"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501160"
 ---
 # <a name="use-azure-functions-to-extend-devtest-labs"></a>Azure Functions を使用した DevTest Labs の拡張
 Azure Functions を使用して、DevTest Labs で既にサポートされているシナリオ以外の追加のシナリオをサポートできます。 Azure Functions を使用して、ビジネス固有のニーズに合わせてサービスの組み込み機能を拡張できます。 次の一覧に、考えられるシナリオをいくつか示します。 この記事では、これらのサンプル シナリオの 1 つを実装する方法について説明します。
@@ -44,7 +44,7 @@ Windows Update の成果物が最近適用されていない VM に対して実�
 このセクションでは、 **[社内サポート]** ページの更新に必要な Azure リソースの設定を順を追って説明します。 このチュートリアルでは、DevTest Labs の拡張の例を示します。 このパターンは他のシナリオに使用できます。
 
 ### <a name="step-1-create-a-service-principal"></a>手順 1:サービス プリンシパルの作成 
-最初の手順では、ラボが含まれるサブスクリプションへのアクセス許可を持つサービス プリンシパルを取得します。 サービス プリンシパルは、パスワードベースの認証を使用する必要があります。 これは [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、[Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-2.5.0)、または [Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) で実行できます。 使用するサービス プリンシパルが既にある場合は、この手順を省略できます。
+最初の手順では、ラボが含まれるサブスクリプションへのアクセス許可を持つサービス プリンシパルを取得します。 サービス プリンシパルは、パスワードベースの認証を使用する必要があります。 これは [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、[Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps)、または [Azure portal](../active-directory/develop/howto-create-service-principal-portal.md) で実行できます。 使用するサービス プリンシパルが既にある場合は、この手順を省略できます。
 
 サービス プリンシパルの **アプリケーション ID**、**キー**、および **テナント ID** をメモしておきます。 このチュートリアルで後ほど必要になります。 
 

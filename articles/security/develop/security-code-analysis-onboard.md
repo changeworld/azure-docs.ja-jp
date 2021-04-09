@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4fe13c418452a7a88dcd97939d6e853039f3fb64
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 30d6061e15b8eb17c1450500d9e8c141a83a3e08
+ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517072"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102553920"
 ---
 # <a name="onboarding-and-installing"></a>オンボードとインストール
 
@@ -90,7 +90,7 @@ Microsoft Security Code Analysis チームでは、パートナー向け Premier
 > - セキュリティで保護された開発ビルド タスクの場合は、 **[エラー時に続行]** を常に選択します。 1 つのツールが失敗した場合でも、他のツールは実行できます。 ツールの間に相互依存関係はありません。
 > - Microsoft Security Code Analysis ビルド タスクは、ツールを正常に実行できなかった場合にのみ失敗します。 ただしツールによってコード内で問題が識別された場合でも成功します。 分析後ビルド タスクを使用することにより、ツールでコード内の問題が識別されたら失敗するようにビルドを構成できます。
 > - 一部の Azure DevOps ビルド タスクは、リリース パイプラインを介して実行される場合、サポートされません。 具体的には、Azure DevOps では、リリース パイプライン内から成果物を発行するタスクはサポートされていません。
-> - パラメーターとして指定できる、Azure DevOps チーム ビルドの定義済み変数の一覧については、[Azure DevOps のビルド変数](/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)に関するページを参照してください。
+> - パラメーターとして指定できる、Azure DevOps チーム ビルドの定義済み変数の一覧については、[Azure DevOps のビルド変数](/azure/devops/pipelines/build/variables?tabs=batch)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

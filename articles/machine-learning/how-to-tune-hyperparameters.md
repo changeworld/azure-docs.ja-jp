@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: 768d2011ae3f2826b42befa8f0d40f0e56b993fd
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 34adcf2218e29572ec9a86583addc7c021313085
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032689"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102519641"
 ---
 # <a name="hyperparameter-tuning-a-model-with-azure-machine-learning"></a>Azure Machine Learning を使用したモデルのハイパーパラメーター調整
 
-Azure Machine Learning の [HyperDrive パッケージ](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py)を使用して、効率的なハイパーパラメーター調整を自動化します。 [Azure Machine Learning SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) を使用してハイパーパラメーターを調整するために必要な手順を実行する方法について説明します。
+Azure Machine Learning の [HyperDrive パッケージ](/python/api/azureml-train-core/azureml.train.hyperdrive)を使用して、効率的なハイパーパラメーター調整を自動化します。 [Azure Machine Learning SDK](/python/api/overview/azure/ml/) を使用してハイパーパラメーターを調整するために必要な手順を実行する方法について説明します。
 
 1. パラメーター検索空間を定義する
 1. 最適化する主要メトリックを指定する  
@@ -43,7 +43,7 @@ Azure Machine Learning を使用すると、ハイパーパラメーターの調
 
 各ハイパーパラメーターに対して定義された値の範囲を調べることで、ハイパーパラメーターを調整します。
 
-ハイパーパラメーターは、不連続値でも連続値でもよく、[パラメーター式](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions?preserve-view=true&view=azure-ml-py)で記述された値の分布になります。
+ハイパーパラメーターは、不連続値でも連続値でもよく、[パラメーター式](/python/api/azureml-train-core/azureml.train.hyperdrive.parameter_expressions)で記述された値の分布になります。
 
 ### <a name="discrete-hyperparameters"></a>不連続ハイパーパラメーター
 
@@ -100,7 +100,7 @@ Azure Machine Learning を使用すると、ハイパーパラメーターの調
 
 #### <a name="random-sampling"></a>ランダム サンプリング
 
-[ランダム サンプリング](/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling?preserve-view=true&view=azure-ml-py)では、不連続および連続のハイパーパラメーターがサポートされます。 これは、パフォーマンスの低い実行の早期終了に対応しています。 一部のユーザーは、ランダム サンプリングを使用して最初の検索を行った後、検索空間を絞り込んで、結果を改善します。
+[ランダム サンプリング](/python/api/azureml-train-core/azureml.train.hyperdrive.randomparametersampling)では、不連続および連続のハイパーパラメーターがサポートされます。 これは、パフォーマンスの低い実行の早期終了に対応しています。 一部のユーザーは、ランダム サンプリングを使用して最初の検索を行った後、検索空間を絞り込んで、結果を改善します。
 
 ランダム サンプリングでは、定義済みの探索空間からハイパーパラメーター値がランダムに選択されます。 
 
@@ -117,7 +117,7 @@ param_sampling = RandomParameterSampling( {
 
 #### <a name="grid-sampling"></a>グリッド サンプリング
 
-[グリッド サンプリング](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling?preserve-view=true&view=azure-ml-py)では、不連続ハイパーパラメーターがサポートされます。 検索空間を徹底的に検索する予算を確保できる場合は、グリッド サンプリングを使用します。 パフォーマンスの低い実行の早期終了に対応しています。
+[グリッド サンプリング](/python/api/azureml-train-core/azureml.train.hyperdrive.gridparametersampling)では、不連続ハイパーパラメーターがサポートされます。 検索空間を徹底的に検索する予算を確保できる場合は、グリッド サンプリングを使用します。 パフォーマンスの低い実行の早期終了に対応しています。
 
 グリッド サンプリングでは、考えられるすべての値に対して単純なグリッド検索を実行します。 グリッド サンプリングは `choice` ハイパーパラメーターでのみ使用できます。 たとえば、次の空間には 6 個のサンプルがあります。
 
@@ -133,7 +133,7 @@ param_sampling = GridParameterSampling( {
 
 #### <a name="bayesian-sampling"></a>ベイジアン サンプリング
 
-[ベイジアン サンプリング](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling?preserve-view=true&view=azure-ml-py)は、ベイジアン最適化アルゴリズムに基づいています。 新しいサンプルによって主要メトリックが改善されるように、前のサンプルの実行結果に基づいてサンプルを選択します。
+[ベイジアン サンプリング](/python/api/azureml-train-core/azureml.train.hyperdrive.bayesianparametersampling)は、ベイジアン最適化アルゴリズムに基づいています。 新しいサンプルによって主要メトリックが改善されるように、前のサンプルの実行結果に基づいてサンプルを選択します。
 
 ベイジアン サンプリングは、ハイパーパラメーター空間を探索するための十分な予算がある場合に推奨されます。 最適な結果を得るために、実行の最大数は、調整するハイパーパラメーターの数の 20 倍以上にすることをお勧めします。 
 
@@ -155,7 +155,7 @@ param_sampling = BayesianParameterSampling( {
 
 ## <a name="specify-primary-metric"></a><a name="specify-primary-metric-to-optimize"></a> 主要メトリックを指定する
 
-ハイパーパラメーターの調整で最適化する[主要メトリック](/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal?preserve-view=true&view=azure-ml-py)を指定します。 トレーニングの各実行は、この主要メトリックに対して評価されます。 早期終了ポリシーでは、主要メトリックを使用してパフォーマンスの低い実行を識別します。
+ハイパーパラメーターの調整で最適化する[主要メトリック](/python/api/azureml-train-core/azureml.train.hyperdrive.primarymetricgoal)を指定します。 トレーニングの各実行は、この主要メトリックに対して評価されます。 早期終了ポリシーでは、主要メトリックを使用してパフォーマンスの低い実行を識別します。
 
 主要メトリックでは次の属性を指定します。
 
@@ -203,7 +203,7 @@ Azure Machine Learning では、以下の早期終了ポリシーがサポート
 
 ### <a name="bandit-policy"></a>バンディット ポリシー
 
-[バンディット ポリシー](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy?preserve-view=true&view=azure-ml-py#&preserve-view=truedefinition)は、Slack 要素/Slack 量と評価間隔に基づきます。 バンディットでは、最も成功した実行の指定 Slack 要素/Slack 量の範囲内に主要メトリックがないとき、実行が終了します。
+[バンディット ポリシー](/python/api/azureml-train-core/azureml.train.hyperdrive.banditpolicy#definition)は、Slack 要素/Slack 量と評価間隔に基づきます。 バンディットでは、最も成功した実行の指定 Slack 要素/Slack 量の範囲内に主要メトリックがないとき、実行が終了します。
 
 > [!NOTE]
 > ベイジアン サンプリングでは早期終了はサポートされません。 ベイジアン サンプリングを使用する場合は `early_termination_policy = None` を設定します。
@@ -226,7 +226,7 @@ early_termination_policy = BanditPolicy(slack_factor = 0.1, evaluation_interval=
 
 ### <a name="median-stopping-policy"></a>中央値の停止ポリシー
 
-[中央値の停止](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy?preserve-view=true&view=azure-ml-py)は、実行によって報告された主要メトリックの現在の平均に基づく早期終了ポリシーです。 このポリシーは、すべてのトレーニング実行を対象に移動平均を計算し、主要メトリック値が平均の中央値よりも低い実行を終了します。
+[中央値の停止](/python/api/azureml-train-core/azureml.train.hyperdrive.medianstoppingpolicy)は、実行によって報告された主要メトリックの現在の平均に基づく早期終了ポリシーです。 このポリシーは、すべてのトレーニング実行を対象に移動平均を計算し、主要メトリック値が平均の中央値よりも低い実行を終了します。
 
 このポリシーでは、次の構成パラメーターを指定できます。
 * `evaluation_interval`: ポリシーを適用する頻度 (省略可能なパラメーター)。
@@ -242,7 +242,7 @@ early_termination_policy = MedianStoppingPolicy(evaluation_interval=1, delay_eva
 
 ### <a name="truncation-selection-policy"></a>切り捨て選択ポリシー
 
-[切り捨て選択](/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy?preserve-view=true&view=azure-ml-py)では、各評価間隔で、最も低いパフォーマンスの実行のうち、ある割合が取り消されます。 実行は、主要メトリックを使用して比較されます。 
+[切り捨て選択](/python/api/azureml-train-core/azureml.train.hyperdrive.truncationselectionpolicy)では、各評価間隔で、最も低いパフォーマンスの実行のうち、ある割合が取り消されます。 実行は、主要メトリックを使用して比較されます。 
 
 このポリシーでは、次の構成パラメーターを指定できます。
 
@@ -297,7 +297,7 @@ max_concurrent_runs=4
 
 ## <a name="configure-hyperparameter-tuning-experiment"></a>ハイパーパラメーター調整実験を構成する
 
-[ハイパーパラメーター調整実験を構成](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig?preserve-view=true&view=azure-ml-py)するには、以下を指定します。
+[ハイパーパラメーター調整実験を構成](/python/api/azureml-train-core/azureml.train.hyperdrive.hyperdriverunconfig)するには、以下を指定します。
 * 定義済みのハイパーパラメーター検索空間
 * 早期終了ポリシー
 * 主要メトリック
@@ -364,7 +364,7 @@ def main():
 
 ## <a name="submit-hyperparameter-tuning-experiment"></a>ハイパーパラメーター調整実験を送信する
 
-ハイパーパラメーター調整構成を定義したら、[実験を送信します](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truesubmit-config--tags-none----kwargs-)。
+ハイパーパラメーター調整構成を定義したら、[実験を送信します](/python/api/azureml-core/azureml.core.experiment%28class%29#submit-config--tags-none----kwargs-)。
 
 ```Python
 from azureml.core.experiment import Experiment
@@ -444,7 +444,7 @@ Azure Machine Learning スタジオでハイパーパラメーター調整の実
 
 ### <a name="notebook-widget"></a>Notebook のウィジェット
 
-[Notebook ウイジェット](/python/api/azureml-widgets/azureml.widgets.rundetails?preserve-view=true&view=azure-ml-py)を使用して、トレーニングの実行の進行状況を視覚化します。 次のスニペットを使用すると、すべてのハイパーパラメーター調整実行が Jupyter Notebook の 1 か所で視覚化されます。
+[Notebook ウイジェット](/python/api/azureml-widgets/azureml.widgets.rundetails)を使用して、トレーニングの実行の進行状況を視覚化します。 次のスニペットを使用すると、すべてのハイパーパラメーター調整実行が Jupyter Notebook の 1 か所で視覚化されます。
 
 ```Python
 from azureml.widgets import RunDetails

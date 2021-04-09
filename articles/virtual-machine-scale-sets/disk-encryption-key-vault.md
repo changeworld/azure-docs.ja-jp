@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: acd2ae54d81fb508d5f8c02262cf8c2f0f071fb5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d30d506ae3b49b2e247ee77ef17d101f94854c7
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016796"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501016"
 ---
 # <a name="create-and-configure-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Encryption のキー コンテナーを作成して構成する
 
@@ -36,7 +36,7 @@ Azure Disk Encryption で使用するためのキー コンテナーの作成と
 
 ### <a name="connect-to-your-azure-account"></a>Azure アカウントに接続する
 
-Azure CLI または Azure PowerShell を使用する前に、まず Azure サブスクリプションに接続する必要があります。 これは、[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)、[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps?view=azps-2.5.0)、または、メッセージが表示されたときに資格情報を Azure portal に提供する、のいずれかの方法で行います。
+Azure CLI または Azure PowerShell を使用する前に、まず Azure サブスクリプションに接続する必要があります。 これは、[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)、[Azure PowerShell を使用してサインインする](/powershell/azure/authenticate-azureps)、または、メッセージが表示されたときに資格情報を Azure portal に提供する、のいずれかの方法で行います。
 
 ```azurecli-interactive
 az login

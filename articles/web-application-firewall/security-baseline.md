@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f29e6f0de3286b04321207b4c469f34aeaee8ef5
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ae6b4f38772cd6c6755ece78fb5c47834a616204
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737411"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102211636"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure Web Application Firewall の Azure セキュリティ ベースライン
 
@@ -81,9 +81,9 @@ Web アプリケーションの要件に合わせて Azure WAF の規則と規�
 
 適用されたタグ メタデータに基づいて、規則と規則グループを Azure Web Application Firewall (WAF) ポリシーに適用します。
 
-- [Application Gateway での WAF ポリシー](/cli/azure/network/application-gateway/waf-policy?view=azure-cli-latest) 
+- [Application Gateway での WAF ポリシー](/cli/azure/network/application-gateway/waf-policy) 
 
-- [Front Door での WAF ポリシー](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest)
+- [Front Door での WAF ポリシー](/cli/azure/ext/front-door/network/front-door/waf-policy)
 
 **Azure Security Center の監視**: 適用なし
 

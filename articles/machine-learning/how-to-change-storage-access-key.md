@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 787f7727e18b7055055ed2b764ddce5be20f5afc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450791"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102503438"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 
@@ -33,7 +33,7 @@ Azure Machine Learning で使用される Azure ストレージ アカウント�
 
 * Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)を参照してください。
 
-* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)。
+* [Azure Machine Learning SDK](/python/api/overview/azure/ml/install)。
 
 * [Azure Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
@@ -142,4 +142,4 @@ for name, ds in datastores.items():
 
 ## <a name="next-steps"></a>次のステップ
 
-データストアの登録について詳しくは、[`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29?preserve-view=true&view=azure-ml-py) クラスのリファレンスを参照してください。
+データストアの登録について詳しくは、[`Datastore`](/python/api/azureml-core/azureml.core.datastore%28class%29) クラスのリファレンスを参照してください。

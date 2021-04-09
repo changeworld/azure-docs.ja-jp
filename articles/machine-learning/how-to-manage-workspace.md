@@ -10,23 +10,23 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 3fca8e74112b90b3cac70adaa955bbf242999705
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739588"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102518927"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
-この記事では、Azure portal または [Python 用 SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) を使用して、[Azure Machine Learning](overview-what-is-azure-ml.md) 用の [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、および削除します。
+この記事では、Azure portal または [Python 用 SDK](/python/api/overview/azure/ml/) を使用して、[Azure Machine Learning](overview-what-is-azure-ml.md) 用の [**Azure Machine Learning ワークスペース**](concept-workspace.md)を作成、表示、および削除します。
 
 ニーズに変化が生じたり自動化の要件が増えたりしたときに、[CLI](reference-azure-machine-learning-cli.md) または [VS Code 拡張機能](tutorial-setup-vscode-extension.md)を使用して、ワークスペースの作成と削除を行うこともできます。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
-* Python SDK を使用する場合は、[その SDK をインストール](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)します。
+* Python SDK を使用する場合は、[その SDK をインストール](/python/api/overview/azure/ml/install)します。
 
 ## <a name="limitations"></a>制限事項
 
@@ -111,7 +111,7 @@ ms.locfileid: "97739588"
                              exist_ok=False)
    ```
 
-詳細については、[ワークスペース SDK リファレンス](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py)を参照してください。
+詳細については、[ワークスペース SDK リファレンス](/python/api/azureml-core/azureml.core.workspace.workspace)を参照してください。
 
 サブスクリプションへのアクセスで問題が発生した場合は、[Azure Machine Learning のリソースとワークフローのための認証の設定](how-to-setup-authentication.md)に関する記事と「[Azure Machine Learning での認証](https://aka.ms/aml-notebook-auth)」ノートブックを参照してください。
 
@@ -167,7 +167,7 @@ ms.locfileid: "97739588"
 
 # <a name="python"></a>[Python](#tab/python)
 
-Azure Machine Learning Python SDK には、[PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig?preserve-view=true&view=azure-ml-py) クラスが用意されています。これを [Workspace.create()](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-&preserve-view=true) で使用すると、プライベート エンドポイントを使用してワークスペースを作成できます。 このクラスには、既存の仮想ネットワークが必要です。
+Azure Machine Learning Python SDK には、[PrivateEndpointConfig](/python/api/azureml-core/azureml.core.privateendpointconfig) クラスが用意されています。これを [Workspace.create()](/python/api/azureml-core/azureml.core.workspace.workspace#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---tags-none--friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--adb-workspace-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--private-endpoint-config-none--private-endpoint-auto-approval-true--exist-ok-false--show-output-true-) で使用すると、プライベート エンドポイントを使用してワークスペースを作成できます。 このクラスには、既存の仮想ネットワークが必要です。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

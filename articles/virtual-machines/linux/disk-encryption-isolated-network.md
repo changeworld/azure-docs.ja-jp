@@ -2,18 +2,19 @@
 title: 分離されたネットワークでの Azure Disk Encryption
 description: この記事では、Linux VM 上での Microsoft Azure Disk Encryption のトラブルシューティングのヒントについて説明します。
 author: msmbaldwin
-ms.service: virtual-machines-linux
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: linux
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 02/27/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1d7e019e7759e22e945bddee477a4cb77f17350b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8d8d2b88251f837a23c4e82a90eb4d4eb0043702
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913825"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553053"
 ---
 # <a name="azure-disk-encryption-on-an-isolated-network"></a>分離されたネットワークでの Azure Disk Encryption
 
@@ -25,12 +26,12 @@ Azure Disk Encryption は多数のコンポーネントに依存しており、�
 
 各ディストリビューションに必要なパッケージを次に示します。 サポートされているディストリビューションとボリュームの種類の完全な一覧については、「[サポートされている VM とオペレーティング システム](disk-encryption-overview.md#supported-vms-and-operating-systems)」を参照してください。
 
-- **Ubuntu 14.04、16.04、18.04** : lsscsi、psmisc、at、cryptsetup-bin、python-parted、python-six、procps、grub-pc-bin
-- **CentOS 7.2 - 7.7** : lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、pyparted、procps-ng、util-linux
-- **CentOS 6.8** : lsscsi、psmisc、lvm2、uuid、at、cryptsetup-reencrypt、pyparted、python-six
-- **RedHat 7.2 - 7.7** : lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、procps-ng、util-linux
-- **RedHat 6.8** : lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup-reencrypt
-- **openSUSE 42.3、SLES 12-SP4、12-SP3** : lsscsi、cryptsetup
+- **Ubuntu 14.04、16.04、18.04**: lsscsi、psmisc、at、cryptsetup-bin、python-parted、python-six、procps、grub-pc-bin
+- **CentOS 7.2 - 7.7**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、pyparted、procps-ng、util-linux
+- **CentOS 6.8**: lsscsi、psmisc、lvm2、uuid、at、cryptsetup-reencrypt、pyparted、python-six
+- **RedHat 7.2 - 7.7**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup、cryptsetup-reencrypt、procps-ng、util-linux
+- **RedHat 6.8**: lsscsi、psmisc、lvm2、uuid、at、patch、cryptsetup-reencrypt
+- **openSUSE 42.3、SLES 12-SP4、12-SP3**: lsscsi、cryptsetup
 
 Red Hat では、プロキシが必要な場合は、サブスクリプション マネージャーと yum が正しく設定されていることを確認する必要があります。 詳細については、「[How to troubleshoot subscription-manager and yum problems](https://access.redhat.com/solutions/189533)」(subscription-manager と yum の問題をトラブルシューティングする方法) を参照してください。  
 

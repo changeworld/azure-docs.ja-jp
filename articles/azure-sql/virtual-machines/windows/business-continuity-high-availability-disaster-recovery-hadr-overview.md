@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
-ms.openlocfilehash: 4443ccfe8d570e50352cbb70c83d6094132038cc
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f4d870f458607ceb0f05812b5c0c066ce810448e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736897"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102508318"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server のビジネス継続性と HADR
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -106,7 +106,7 @@ Azure の VM、ストレージ、およびネットワークには、オンプ�
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性セット内の高可用性ノード
 Azure の可用性セットを使用すると、高可用性ノードを別個の障害ドメインと更新ドメインに配置できます。 Azure プラットフォームによって、可用性セット内の各仮想マシンに更新ドメインと障害ドメインが割り当てられます。 データセンター内のこの構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能であり、99.95% の Azure SLA が満たされることが保証されます。 
 
-高可用性の設定を構成するには、参加するすべての SQL Server 仮想マシンを同じ可用性セットに配置して、メンテナンス イベント中のアプリケーションまたはデータの損失を回避します。 同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。 詳細については、[仮想マシンの可用性の管理](../../../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+高可用性の設定を構成するには、参加するすべての SQL Server 仮想マシンを同じ可用性セットに配置して、メンテナンス イベント中のアプリケーションまたはデータの損失を回避します。 同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。 詳細については、[仮想マシンの可用性の管理](../../../virtual-machines/availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 ### <a name="high-availability-nodes-in-an-availability-zone"></a>可用性ゾーン内の高可用性ノード
 可用性ゾーンは、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 リージョン内での可用性ゾーンの物理的な分離は、少なくとも 1 つの仮想マシンが利用可能であり、99.99% の Azure SLA が満たされることを保証することで、データセンターで障害が発生した場合にアプリケーションとデータを保護するのに役立ちます。 

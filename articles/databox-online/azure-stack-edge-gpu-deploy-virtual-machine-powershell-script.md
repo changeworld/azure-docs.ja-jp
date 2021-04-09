@@ -6,18 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/22/2020
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 44ac0b06bb72d722797a20ed44ece14768c80997
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 36c7078a79cf8b0b7414c5031acb79b9a2c2453c
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763707"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102630488"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell-script"></a>Azure PowerShell スクリプトを使用して Azure Stack Edge Pro GPU デバイスに VM をデプロイする
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 このチュートリアルでは、Azure PowerShell スクリプトを使用して、Azure Stack Edge Pro デバイスに VM を作成し、それを管理する方法について説明します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "97763707"
 
     1. **メモ帳** を管理者として起動し (hosts ファイルを保存するには管理者特権が必要です)、`C:\Windows\System32\Drivers\etc` にある **hosts** ファイルを開きます。
     
-        ![エクスプローラーの hosts ファイル](media/azure-stack-edge-j-series-connect-resource-manager/hosts-file.png)
+        ![エクスプローラーの hosts ファイル](media/azure-stack-edge-gpu-connect-resource-manager/hosts-file.png)
     
     2. **hosts** ファイルに次のエントリを追加します。値は、実際のデバイスに合わせて置き換えてください。
     
@@ -54,7 +54,7 @@ ms.locfileid: "97763707"
 
     3. 次の画像を参考にしてください。 **hosts** ファイルを保存します。
 
-        ![メモ帳で開いた hosts ファイル](media/azure-stack-edge-j-series-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
+        ![メモ帳で開いた hosts ファイル](media/azure-stack-edge-gpu-deploy-virtual-machine-cli-python/hosts-screenshot-boxed.png)
 
 2. この手順で使用した [PowerShell スクリプトをダウンロード](https://aka.ms/ase-vm-powershell)します。
 

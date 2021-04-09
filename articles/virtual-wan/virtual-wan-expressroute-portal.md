@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 07053c096ce001b322e5f05556bd041519ca9d2e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 080136b8fc25b08a6b96464f0a61115a4bb2f3f8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102478"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102426615"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>チュートリアル:Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "92102478"
 
 ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
-1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「 **Virtual WAN** 」と入力し、Enter キーを押します。
+1. [仮想 WAN] ページに移動します。 ポータルで **+ [リソースの作成]** をクリックします。 検索ボックスに「**Virtual WAN**」と入力し、Enter キーを押します。
 2. 結果から **[Virtual WAN]** を選択します。 [Virtual WAN] (仮想 WAN) ページで、 **[作成]** をクリックして [WAN の作成] ページを開きます。
 3. **[WAN の作成]** ページの **[基本]** タブで、次のフィールドに入力します。
 
@@ -109,7 +109,7 @@ ExpressRoute ゲートウェイを作成したら、ゲートウェイの詳細�
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>回線をハブ ゲートウェイに接続するには
 
-ポータルで、 **[仮想ハブ]、[接続]、[ExpressRoute]** ページの順に進みます。 サブスクリプションで ExpressRoute 回線にアクセスできる場合、回線の一覧に使用する回線が表示されます。 回線が表示されないが、承認キーとピア回線 URI が与えられている場合、回線を利用して接続できます。 「[承認キーを利用して接続するには](#authkey)」を参照してください。
+ポータルで、**[仮想ハブ]、[接続]、[ExpressRoute]** ページの順に進みます。 サブスクリプションで ExpressRoute 回線にアクセスできる場合、回線の一覧に使用する回線が表示されます。 回線が表示されないが、承認キーとピア回線 URI が与えられている場合、回線を利用して接続できます。 「[承認キーを利用して接続するには](#authkey)」を参照してください。
 
 1. 回線を選択します。
 2. **[Connect circuit(s)]\(回線の接続\)** を選択します。
@@ -120,7 +120,7 @@ ExpressRoute ゲートウェイを作成したら、ゲートウェイの詳細�
 
 接続するために与えられた承認キーと回線 URI を使用します。
 
-1. [ExpressRoute] ページで、 **[+Redeem authorization key]\(+承認キーを利用する\)** をクリックします。
+1. [ExpressRoute] ページで、**[+Redeem authorization key]\(+承認キーを利用する\)** をクリックします。
 
    ![仮想ハブの ExpressRoute を示すスクリーンショット。[+Redeem authorization key]\(+ 承認キーを利用する\) が選択されている。](./media/virtual-wan-expressroute-portal/redeem.png "利用")
 2. [Redeem authorization key]\(承認キーを利用する\) ページで値を入力します。
@@ -155,11 +155,9 @@ Azure 仮想ハブで既定ルート 0.0.0.0/0 を ExpressRoute エンド ポイ
 
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>リソースをクリーンアップする
 
-これらのリソースが不要になったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。 "myResourceGroup" をリソース グループの名前に置き換えて、次の PowerShell コマンドを実行します。
+作成したリソースは、不要になったら削除してください。 Virtual WAN リソースのいくつかは、依存関係に応じた特定の順序で削除する必要があります。 削除が完了するまでに 30 分程度かかる場合があります。
 
-```azurepowershell-interactive
-Remove-AzResourceGroup -Name myResourceGroup -Force
-```
+[!INCLUDE [Delete resources](../../includes/virtual-wan-resource-cleanup.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

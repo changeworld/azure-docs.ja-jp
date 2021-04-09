@@ -38,8 +38,14 @@
       items:
         - name: アプリ管理サンプルの概要
           href: app-management-powershell-samples.md
-        - name: すべてのアプリの登録、シークレット、および証明書をエクスポートする
+        - name: シークレットと証明書のエクスポート (アプリの登録)
           href: ./scripts/powershell-export-all-app-registrations-secrets-and-certs.md
+        - name: シークレットと証明書のエクスポート (エンタープライズ アプリ)
+          href: ./scripts/powershell-export-all-enterprise-apps-secrets-and-certs.md
+        - name: 期限切れのシークレットと証明書のエクスポート
+          href: ./scripts/powershell-export-apps-with-expriring-secrets.md
+        - name: 必要な日付を過ぎた後に期限が切れるシークレットと証明書のエクスポート
+          href: ./scripts/powershell-export-apps-with-secrets-beyond-required.md
     - name: アプリ プロキシの PowerShell サンプル
       href: application-proxy-powershell-samples.md
 - name: 概念

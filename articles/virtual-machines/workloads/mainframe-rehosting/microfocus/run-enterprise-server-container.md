@@ -1,7 +1,7 @@
 ---
 title: Azure 上の Docker コンテナーで Micro Focus Enterprise Server 5.0 を実行する | Microsoft Docs
 description: この記事では、Microsoft Azure 上の Docker コンテナーで Micro Focus Enterprise Server 5.0 を実行する方法について説明します。
-services: virtual-machines-linux
+services: virtual-machines
 documentationcenter: ''
 author: maggsl
 ms.author: edprice
@@ -11,13 +11,14 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 tags: ''
 keywords: ''
-ms.service: multiple
-ms.openlocfilehash: f34767c160c8229eb5b63806924926a46ea00cc2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 146fc59704719fd3aebb03b9b90a176221beea10
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127197"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950690"
 ---
 # <a name="run-micro-focus-enterprise-server-50-in-a-docker-container-on-azure"></a>Azure 上の Docker コンテナーで Micro Focus Enterprise Server 5.0 を実行する
 
@@ -36,7 +37,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 -   Micro Focus ソフトウェアおよび有効なライセンス (または試用版ライセンス)。 Micro Focus の既存の顧客である場合は、Micro Focus の担当者に問い合わせてください。 そうでない場合は、[試用版を要求](https://www.microfocus.com/products/enterprise-suite/enterprise-server/trial/)してください。
 
     > [!Note] 
-    > Docker のデモ ファイルは、Enterprise Server 5.0 に含まれています。 このチュートリアルでは、ent\_server\_dockerfiles\_5.0\_windows.zip を使用します。 Enterprise Server のインストール ファイルにアクセスしたときと同じ場所からアクセスするか、 *Micro Focus* に移動して開始します。
+    > Docker のデモ ファイルは、Enterprise Server 5.0 に含まれています。 このチュートリアルでは、ent\_server\_dockerfiles\_5.0\_windows.zip を使用します。 Enterprise Server のインストール ファイルにアクセスしたときと同じ場所からアクセスするか、*Micro Focus* に移動して開始します。
 
 -   [Enterprise Server と Enterprise Developer](https://www.microfocus.com/documentation/enterprise-developer/#%22) のドキュメント。
 
@@ -44,7 +45,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
 1.  ent\_server\_dockerfiles\_5.0\_windows.zip ファイルからのメディアをセキュリティ保護します。 ES-Docker-Prod-XXXXXXXX.mflic ライセンス ファイルをセキュリティ保護します (Docker イメージのビルドに必要)。
 
-2.  VM を作成します。 これを行うには、Azure portal を開き、左上のメニューから **[リソースの作成]** を選択して、" *windows server オペレーティング システム* " でフィルター処理します。 結果画面で、 **[Windows Server]** を選択します。 次の画面で、 **[Windows Server 2016 Datacenter – with Containers]\(Windows Server 2016 Datacenter – コンテナー付き\)** を選択します。
+2.  VM を作成します。 これを行うには、Azure portal を開き、左上のメニューから **[リソースの作成]** を選択して、"*windows server オペレーティング システム*" でフィルター処理します。 結果画面で、 **[Windows Server]** を選択します。 次の画面で、 **[Windows Server 2016 Datacenter – with Containers]\(Windows Server 2016 Datacenter – コンテナー付き\)** を選択します。
 
     ![Azure portal での検索結果のスクリーンショット](./media/run-image-1.png)
 
@@ -81,7 +82,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
 ## <a name="create-a-sandbox-directory-and-upload-the-zip-file"></a>サンドボックス ディレクトリを作成し、zip ファイルをアップロードする
 
-1.  デモとライセンス ファイルをアップロードできるディレクトリを VM 上に作成します。 たとえば、 **C:\\Sandbox** などです。
+1.  デモとライセンス ファイルをアップロードできるディレクトリを VM 上に作成します。 たとえば、**C:\\Sandbox** などです。
 
 2.  **ent\_server\_dockerfiles\_5.0\_windows.zip** と **ES-Docker-Prod-XXXXXXXX.mflic** ファイルを、作成したディレクトリにアップロードします。
 
@@ -99,21 +100,21 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
 1.  コマンド プロンプトを開きます。
 
-2.  Docker がインストールされていることを確認します。 コマンド プロンプトで、「 **docker version** 」と入力します。  
+2.  Docker がインストールされていることを確認します。 コマンド プロンプトで、「**docker version**」と入力します。  
     たとえば、これを書いた時点では、バージョンは 18.09.0 でした。
 
 3.  ディレクトリを変更するには、次のように入力します:  
-    **cd \\Sandbox\\ent\_server\_dockerfiles\_5.0\_windows\\EnterpriseServer** 。
+    **cd \\Sandbox\\ent\_server\_dockerfiles\_5.0\_windows\\EnterpriseServer**。
 
-4.  「 **bld.bat IacceptEULA** 」と入力して、初期の基本イメージのビルド プロセスを開始します。 このプロセスが実行されるまで、数分間待ちます。 結果では、2 つのイメージが作成されたことに注意してください (x64 用と x86 用)。
+4.  「**bld.bat IacceptEULA**」と入力して、初期の基本イメージのビルド プロセスを開始します。 このプロセスが実行されるまで、数分間待ちます。 結果では、2 つのイメージが作成されたことに注意してください (x64 用と x86 用)。
 
     ![イメージが表示されたコマンド ウィンドウ](./media/run-image-3.png)
 
-5.  CICS デモ用の最終的なイメージを作成するには、「 **cd\\Sandbox\\ent\_server\_dockerfiles\_5.0\_windows\\Examples\\CICS** 」と入力して CICS ディレクトリに切り替えます。
+5.  CICS デモ用の最終的なイメージを作成するには、「**cd\\Sandbox\\ent\_server\_dockerfiles\_5.0\_windows\\Examples\\CICS**」と入力して CICS ディレクトリに切り替えます。
 
-6.  イメージを作成するには、「 **bld.bat x64** 」と入力します。 プロセスが実行され、イメージが作成されたことを示すメッセージが表示されるまで、数分間待ちます。
+6.  イメージを作成するには、「**bld.bat x64**」と入力します。 プロセスが実行され、イメージが作成されたことを示すメッセージが表示されるまで、数分間待ちます。
 
-7.  「 **docker images** 」と入力し、VM にインストールされているすべての Docker イメージの一覧を表示します。 その中に **microfocus/es-acctdemo** があることを確認します。
+7.  「**docker images**」と入力し、VM にインストールされているすべての Docker イメージの一覧を表示します。 その中に **microfocus/es-acctdemo** があることを確認します。
 
     ![es-acctdemo イメージが表示されているコマンド ウィンドウ](./media/run-image-4.png)
 
@@ -129,7 +130,7 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
 2.  Docker によって管理されるコンテナーに対して Dynamic Host Configuration Protocol (DHCP) サーバーとして機能できるように、acctdemo コンテナーの IP アドレスを取得します。
 
-    1.  実行中のコンテナーの ID を取得します。 コマンド プロンプトで「 **Docker ps** 」と入力し、ID を書き留めます (この例では **22a0fe3159d0** )。 次のステップのためにそれを保存します。
+    1.  実行中のコンテナーの ID を取得します。 コマンド プロンプトで「**Docker ps**」と入力し、ID を書き留めます (この例では **22a0fe3159d0**)。 次のステップのためにそれを保存します。
 
     2.  acctdemo コンテナーの IP アドレスを取得するには、前のステップのコンテナー ID を使用して次のようにします。
 
@@ -147,23 +148,23 @@ Docker により、移植性と分離性がアプリケーションに追加さ�
 
     ![IP アドレスが表示されているコマンド ウィンドウのスクリーンショット](./media/run-image-5.png)
 
-5. エミュレーターを使用してイメージをマウントします。 acctdemo イメージのアドレスとポート 9040 を使用するように、エミュレーターを構成します。 ここでは、 **172.19.202.52:9040** です。 実際もこれに似ています。 **[Signon to CICS]\(CICS にサインオン\)** 画面が開きます。
+5. エミュレーターを使用してイメージをマウントします。 acctdemo イメージのアドレスとポート 9040 を使用するように、エミュレーターを構成します。 ここでは、**172.19.202.52:9040** です。 実際もこれに似ています。 **[Signon to CICS]\(CICS にサインオン\)** 画面が開きます。
 
     ![[Signon to CICS]\(CICS にサインオン\) のスクリーンショット](./media/run-image-6.png)
 
-6. **[USERID]\(ユーザー ID\)** に「 **SYSAD** 」と入力し、 **[Password]\(パスワード\)** に「 **SYSAD** 」と入力して、CICS 領域にサインインします。
+6. **[USERID]\(ユーザー ID\)** に「**SYSAD**」と入力し、 **[Password]\(パスワード\)** に「**SYSAD**」と入力して、CICS 領域にサインインします。
 
 7. エミュレーターのキーマップを使用して、画面をクリアします。 x3270 の場合は、 **[Keymap]\(キーマップ\)** メニュー オプションを選択します。
 
-8. acctdemo アプリケーションを起動するには、「 **ACCT** 」と入力します。 アプリケーションの最初の画面が表示されます。
+8. acctdemo アプリケーションを起動するには、「**ACCT**」と入力します。 アプリケーションの最初の画面が表示されます。
 
      ![スクリーンショットには、アプリケーションが表示されているコンソール ウィンドウが示されています。](./media/run-image-7.png)
 
-9. 表示アカウントの種類を調べます。 たとえば、要求の場合は「 **D** 」と入力し、 **アカウント** の場合は「 **11111** 」と入力します。 22222、33333 など、他のアカウント番号を試してください。
+9. 表示アカウントの種類を調べます。 たとえば、要求の場合は「**D**」と入力し、**アカウント** の場合は「**11111**」と入力します。 22222、33333 など、他のアカウント番号を試してください。
 
     ![スクリーンショットでは、アプリケーションのさまざまな値を編集しています。](./media/run-image-8.png)
 
-10. Enterprise Server 管理コンソールを表示するには、コマンド プロンプトに移動して、「 **start http:172.19.202.52:86** 」と入力します。
+10. Enterprise Server 管理コンソールを表示するには、コマンド プロンプトに移動して、「**start http:172.19.202.52:86**」と入力します。
 
     ![Enterprise Server 管理コンソール](media/run-image-9.png)
 

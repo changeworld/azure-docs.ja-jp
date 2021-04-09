@@ -11,12 +11,12 @@ author: lostmygithubaccount
 ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to, data4ml
-ms.openlocfilehash: fc890dbaf717d3eb9ec87afcb69c87e80c7f14bc
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: f42a2f9e606eaa0475f2e35c479e99545ecf8193
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680959"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521902"
 ---
 # <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する
 
@@ -65,11 +65,11 @@ ms.locfileid: "97680959"
 
 - AKS クラスターが必要です。 作成とデプロイの方法については、[デプロイする方法とその場所](how-to-deploy-and-where.md)に関するページを参照してください。
 
-- [環境を設定](how-to-configure-environment.md)し、[Azure Machine Learning Monitoring SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) をインストールします。
+- [環境を設定](how-to-configure-environment.md)し、[Azure Machine Learning Monitoring SDK](/python/api/overview/azure/ml/install) をインストールします。
 
 ## <a name="enable-data-collection"></a>データ収集を有効にする
 
-[データ収集](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector?preserve-view=true&view=azure-ml-py)は、Azure Machine Learning または他のツールを使用してデプロイするモデルに関係なく、有効にすることができます。
+[データ収集](/python/api/azureml-monitoring/azureml.monitoring.modeldatacollector.modeldatacollector)は、Azure Machine Learning または他のツールを使用してデプロイするモデルに関係なく、有効にすることができます。
 
 データ コレクションを有効にするには、次の操作を行う必要があります。
 

@@ -3,18 +3,18 @@ title: イメージ バージョンからマネージド ディスクを作成�
 description: 共有イメージ ギャラリーのイメージ バージョンからマネージド ディスクを作成します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 84ec5ecbfdc2aab2445d050cc51d2b56acb7f3fd
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 359816bbf3fb93a4ec2bfa3092adbb2236ae2f07
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202557"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562556"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>イメージ バージョンからマネージド ディスクを作成する
 

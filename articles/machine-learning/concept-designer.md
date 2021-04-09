@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: b439c5f084c762d3a256806d2e45dab96832bb78
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e6738bf944c5a80d0cb54432ade7555ebdcfbd51
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661088"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102503542"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーとは 
 
@@ -114,7 +114,7 @@ Azure Machine Learning デザイナーを使用すると、対話型キャンバ
 
 発行されたパイプラインは、各モジュールのパイプライン ドラフトで定義されているコンピューティング リソース上で実行されます。
 
-デザイナーでは、SDK と同じ [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?preserve-view=true&view=azure-ml-py) オブジェクトが作成されます。
+デザイナーでは、SDK と同じ [PublishedPipeline](/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline) オブジェクトが作成されます。
 
 ## <a name="next-steps"></a>次のステップ
 

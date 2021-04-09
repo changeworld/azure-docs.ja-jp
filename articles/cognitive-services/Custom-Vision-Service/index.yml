@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/05/2019
-  ms.openlocfilehash: 0e054fdab0e20285f017075cfaf4d3c05570af88
-  ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+  ms.openlocfilehash: e357fff89758f7a57e839e7dcfb94854a2e51676
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/05/2021
-  ms.locfileid: "102178033"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102509457"
 landingContent:
 - title: Custom Vision について
   linkLists:
@@ -101,11 +101,11 @@ landingContent:
     - text: Prediction API
       url: https://go.microsoft.com/fwlink/?linkid=865445
     - text: .NET SDK
-      url: /dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet
+      url: /dotnet/api/overview/azure/cognitiveservices/client/customvision
     - text: Python SDK
-      url: /python/api/azure-cognitiveservices-vision-customvision/?view=azure-python
+      url: /python/api/azure-cognitiveservices-vision-customvision/
     - text: Java SDK
-      url: /java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable
+      url: /java/api/overview/azure/cognitiveservices/client/customvision
     - text: Go SDK (training)
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training
     - text: Go SDK (prediction)

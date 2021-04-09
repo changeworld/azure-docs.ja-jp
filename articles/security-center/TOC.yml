@@ -112,7 +112,7 @@
           href: exempt-resource.md
         - name: カスタム セキュリティ イニシアチブとポリシーを作成する
           href: custom-security-policies.md
-    - name: サーバー用 Defender を使用してコンピューターを保護する
+    - name: マシンを保護する
       displayName: 'hybrid, arc, Azure Defender for machines'
       items:
         - name: サーバー用 Azure Defender の概要
@@ -278,7 +278,7 @@
         - name: アラートへの応答を自動化する
           displayName: workflow
           href: workflow-automation.md
-- name: 関連項目
+- name: リファレンス
   items:
     - name: アーカイブされたリリース ノート (6 か月以上前)
       displayName: 'changelog, news'

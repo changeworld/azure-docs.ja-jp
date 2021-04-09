@@ -1,9 +1,9 @@
 ---
 title: IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する | Microsoft Docs
 description: Azure Virtual Machines (VM) 上で、IBM Z Development and Test Environment (zD&T) 環境を実行します。
-services: virtual-machines-linux
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: c76768fa94b524763ac8ad94c9c3f5bb3a73dddb
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: fda59cc041cc540b95ababa6d56df6e69b0a8970
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219440"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956164"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する
 

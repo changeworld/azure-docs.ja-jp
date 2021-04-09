@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a84e4e767092a1507ef0608c21ff1896cb1dde0d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: de3d9aa60322cc3e6e189f6f16c35d6f42c0cf61
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880946"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102500412"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをトレーニングする
 
@@ -41,13 +41,13 @@ Azure Machine Learning には、SDK を使用したコード ファースト ソ
 
 Python 用 Azure Machine Learning SDK では、Azure Machine Learning を使用して、機械学習のワークフローをビルドして実行できます。 対話型の Python セッション、Jupyter Notebook、Visual Studio Code、またはその他の IDE からサービスと対話できます。
 
-* [Azure Machine Learning SDK for Python とは](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
-* [SDK のインストール/更新](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)
+* [Azure Machine Learning SDK for Python とは](/python/api/overview/azure/ml/intro)
+* [SDK のインストール/更新](/python/api/overview/azure/ml/install)
 * [Azure Machine Learning のための開発環境を構成する](how-to-configure-environment.md)
 
 ### <a name="run-configuration"></a>実行構成
 
-Azure Machine Learning の汎用トレーニング ジョブは、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) を使用して定義できます。 次に、スクリプト実行構成がトレーニング スクリプトと共に使用されて、コンピューティング先でモデルがトレーニングされます。
+Azure Machine Learning の汎用トレーニング ジョブは、[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) を使用して定義できます。 次に、スクリプト実行構成がトレーニング スクリプトと共に使用されて、コンピューティング先でモデルがトレーニングされます。
 
 ローカル コンピューター用の実行構成から開始し、必要に応じてクラウドベースのコンピューティング先に切り替えることができます。 コンピューティング先を変更する場合は、使用する実行構成のみ変更します。 実行によって、入力、出力、ログなどのトレーニング ジョブに関する情報もログに記録されます。
 

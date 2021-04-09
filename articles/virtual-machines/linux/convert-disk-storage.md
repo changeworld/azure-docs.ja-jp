@@ -2,17 +2,18 @@
 title: Azure CLI を使用して異なる種類のディスク間でマネージド ディスク ストレージを変換する
 description: Azure CLI を使用して、異なる種類のディスク間で Azure マネージド ディスクを変換する方法。
 author: roygara
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: how-to
 ms.date: 02/13/2021
 ms.author: albecker
 ms.subservice: disks
-ms.openlocfilehash: ec6d5b10b4c2336ba7fd221b43a7dbf43ed5cee1
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 35ba681ae35e60d7cd275c9e649b2463d2dc30a0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516823"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102558459"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Azure マネージド ディスク ストレージを Standard から Premium に、または Premium から Standard に変換する
 

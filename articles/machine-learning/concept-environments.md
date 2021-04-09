@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: BlackMist
 ms.date: 11/16/2020
-ms.openlocfilehash: 78f8d6d216659eaad01d512dd45696dd31035885
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 648dbe6b8d275c832f219cb6f3119ac0bc518a54
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695386"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102508471"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Azure Machine Learning 環境とは?
 
@@ -78,13 +78,13 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
  1. 基本イメージのダウンロードと、Docker 手順の実行
  2. 環境定義で指定されている Conda の依存関係に従った Conda 環境の構築
 
-[ユーザーが管理する依存関係](/python/api/azureml-core/azureml.core.environment.pythonsection?preserve-view=true&view=azure-ml-py)が指定された場合、2 番目の手順は省略されます。 この場合、ユーザーがすべての Python パッケージをインストールする必要があります。それには、Python パッケージを基本イメージに含めるか、最初の手順でカスタム Docker 手順を指定します。 また、ユーザーは Python 実行可能ファイルの正しい場所を指定する必要もあります。 [カスタム Docker 基本イメージ](how-to-deploy-custom-docker-image.md)を使用することも可能です。
+[ユーザーが管理する依存関係](/python/api/azureml-core/azureml.core.environment.pythonsection)が指定された場合、2 番目の手順は省略されます。 この場合、ユーザーがすべての Python パッケージをインストールする必要があります。それには、Python パッケージを基本イメージに含めるか、最初の手順でカスタム Docker 手順を指定します。 また、ユーザーは Python 実行可能ファイルの正しい場所を指定する必要もあります。 [カスタム Docker 基本イメージ](how-to-deploy-custom-docker-image.md)を使用することも可能です。
 
 ### <a name="image-caching-and-reuse"></a>イメージのキャッシュと再利用
 
 別の実行に同じ環境定義を使用する場合、Azure Machine Learning service では、ワークスペースの ACR にキャッシュされているイメージが再利用されます。 
 
-キャッシュされているイメージの詳細を表示するには、[Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-image-details-workspace-) メソッドを使用します。
+キャッシュされているイメージの詳細を表示するには、[Environment.get_image_details](/python/api/azureml-core/azureml.core.environment.environment#get-image-details-workspace-) メソッドを使用します。
 
 キャッシュされたイメージを再利用するか、新しいイメージを作成するかを決定するため、サービスでは、環境定義から[ハッシュ値](https://en.wikipedia.org/wiki/Hash_table)が計算されて、それが既存の環境のハッシュと比較されます。 ハッシュは以下のものが基になっています。
  
@@ -107,10 +107,10 @@ Azure Machine Learning service では、Docker イメージと Conda 環境に�
 パッケージを更新するには、バージョン番号を指定してイメージのリビルドを強制します (```numpy==1.18.1``` など)。 以前の動作シナリオが破壊される可能性がある、新しい依存関係 (入れ子になった依存関係など) がインストールされます。 
 
 > [!WARNING]
->  [Environment.build](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#&preserve-view=truebuild-workspace--image-build-compute-none-) メソッドでは、キャッシュされたイメージがリビルドされます。それによる副作用として、固定されていないパッケージが更新され、そのキャッシュされたイメージに対応するすべての環境定義の再現性が損なわれる可能性があります。
+>  [Environment.build](/python/api/azureml-core/azureml.core.environment.environment#build-workspace--image-build-compute-none-) メソッドでは、キャッシュされたイメージがリビルドされます。それによる副作用として、固定されていないパッケージが更新され、そのキャッシュされたイメージに対応するすべての環境定義の再現性が損なわれる可能性があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure Machine Learning で[環境を作成および使用する](how-to-use-environments.md)方法を確認します。
-* [環境クラス](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)については、Python SDK 参照ドキュメントを参照してください。
+* [環境クラス](/python/api/azureml-core/azureml.core.environment%28class%29)については、Python SDK 参照ドキュメントを参照してください。
 * [環境](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-environments)については、R SDK 参照ドキュメントを参照してください。

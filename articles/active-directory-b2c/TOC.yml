@@ -237,7 +237,7 @@
         - name: 条件付きアクセスを構成する
           href: conditional-access-user-flow.md
     - name: 年齢制限を構成する
-      href: basic-age-gating.md
+      href: age-gating.md
     - name: API コネクタ (プレビュー)
       items:
         - name: 概要

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 085dd18214f795566669fb862bba63b67eb9115d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350366"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102428271"
 ---
 # <a name="build-an-enrollment-app-for-android-with-react"></a>React を使用して Android 用の登録アプリをビルドする
 
@@ -37,9 +37,9 @@ ms.locfileid: "96350366"
 ## <a name="set-up-the-development-environment"></a>開発環境を設定する
 
 1. [サンプル登録アプリ](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample)の Git リポジトリをクローンします。
-1. 開発環境をセットアップするには、<a href="https://reactnative.dev/docs/environment-setup"  title="React Native のドキュメント"  target="_blank">React Native のドキュメント<span class="docon docon-navigate-external x-hidden-focus"></span></a>に従います。 開発 OS として **React Native CLI Quickstart** を選択し、ターゲット OS として **Android** を選択します。 **依存関係のインストール** と **Android 開発環境** に関するセクションを完了します。
+1. 開発環境をセットアップするには、<a href="https://reactnative.dev/docs/environment-setup"  title="React Native のドキュメント"  target="_blank">React Native のドキュメント</a>に従います。 開発 OS として **React Native CLI Quickstart** を選択し、ターゲット OS として **Android** を選択します。 **依存関係のインストール** と **Android 開発環境** に関するセクションを完了します。
 1. [Visual Studio Code](https://code.visualstudio.com/) などの任意のテキスト エディターで env.json ファイルを開き、エンドポイントとキーを追加します。 エンドポイントとキーは、Azure portal でリソースの **[概要]** タブを見るとわかります。 この手順は、ローカル環境でテストを行う場合にのみ必要です。Face API キーをリモート リポジトリにチェックインしないでください。
-1. Android Studio から Android 仮想デバイス エミュレーターを使用して、または独自の Android デバイスを使用して、アプリを実行します。 物理デバイスでアプリをテストするには、関連する <a href="https://reactnative.dev/docs/running-on-device"  title="React Native のドキュメント"  target="_blank">React Native のドキュメント<span class="docon docon-navigate-external x-hidden-focus"></span></a>に従ってください。  
+1. Android Studio から Android 仮想デバイス エミュレーターを使用して、または独自の Android デバイスを使用して、アプリを実行します。 物理デバイスでアプリをテストするには、関連する <a href="https://reactnative.dev/docs/running-on-device"  title="React Native のドキュメント"  target="_blank">React Native のドキュメント</a>に従ってください。  
 
 
 ## <a name="create-an-enrollment-experience"></a>登録エクスペリエンスを作成する  
@@ -78,9 +78,9 @@ ms.locfileid: "96350366"
 
 アプリを運用環境にリリースする準備ができたら、リリース対応の APK ファイルを生成します。これは、Android アプリのパッケージ ファイル形式です。 この APK ファイルに、秘密キーで署名する必要があります。 このリリース ビルドを使用して、デバイスへのアプリの直接的な配布を始めることができます。 
 
-秘密キーを生成し、アプリケーションに署名して、リリース APK を生成する方法については、「<a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title="リリースの準備"  target="_blank">リリースの準備 <span class="docon docon-navigate-external x-hidden-focus"></span></a>」のドキュメントを参照してください。  
+秘密キーを生成し、アプリケーションに署名して、リリース APK を生成する方法については、「<a href="https://developer.android.com/studio/publish/preparing#publishing-build"  title="リリースの準備"  target="_blank">リリースの準備 </a>」のドキュメントを参照してください。  
 
-署名された APK を作成した後は、「<a href="https://developer.android.com/studio/publish"  title="アプリの公開"  target="_blank">アプリの公開 <span class="docon docon-navigate-external x-hidden-focus"></span></a>」のドキュメントでアプリをリリースする方法の詳細を参照してください。
+署名された APK を作成した後は、「<a href="https://developer.android.com/studio/publish"  title="アプリの公開"  target="_blank">アプリの公開 </a>」のドキュメントでアプリをリリースする方法の詳細を参照してください。
 
 ## <a name="next-steps"></a>次のステップ  
 

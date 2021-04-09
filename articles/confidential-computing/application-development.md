@@ -4,16 +4,16 @@ description: ツールとライブラリを使用し、コンフィデンシャ�
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 6bb3b8dbc7887419f7901a52b56c25f60c869abb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ba6ee92111da66a2118ba4c490b94e5bc9449e0
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993506"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102551387"
 ---
 # <a name="application-development-on-intel-sgx"></a>Intel SGX でのアプリケーション開発 
 
@@ -36,9 +36,9 @@ ms.locfileid: "90993506"
 ![アプリケーション開発](media/application-development/oe-sdk.png)
 
 
-**ホスト**は、エンクレーブ アプリケーションが実行されている、信頼されていない環境です。 ホストで展開されているエンクレーブ コードには、ホストからアクセスすることはできません。 
+**ホスト** は、エンクレーブ アプリケーションが実行されている、信頼されていない環境です。 ホストで展開されているエンクレーブ コードには、ホストからアクセスすることはできません。 
 
-**エンクレーブ**は、アプリケーション コード、およびキャッシュされたそのデータおよびメモリが実行される場所です。 シークレットと機密データを常に保護された状態にするために、安全な計算はエンクレーブ内で実行する必要があります。 
+**エンクレーブ** は、アプリケーション コード、およびキャッシュされたそのデータおよびメモリが実行される場所です。 シークレットと機密データを常に保護された状態にするために、安全な計算はエンクレーブ内で実行する必要があります。 
 
 
 アプリケーションの設計時に、アプリケーションのどの部分をエンクレーブで実行する必要があるかを特定して、決定することが重要です。 信頼されたコンポーネントに配置したコードは、アプリケーションの他の部分から隔離されます。 エンクレーブが初期化されてコードがメモリに読み込まれた後は、信頼されていない環境から、そのコードを読み取ったり、変更したりすることはできなくなります。 

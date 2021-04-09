@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07fadd7b3129b3ca3351e0416c8aa6f49de82212
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 9a19e9c66967f36c3bdc4124fb9e60f7b7d2b36d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201231"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102213438"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Web アプリケーションの高可用性を実現する Traffic Manager プロファイルを作成する
 
@@ -47,7 +47,7 @@ ms.locfileid: "98201231"
 
 ## <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 
-[az network traffic-manager profile create](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-create) を使用して、エンドポイントの優先度に基づいてユーザー トラフィックを誘導する Traffic Manager プロファイルを作成します。
+[az network traffic-manager profile create](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-create) を使用して、エンドポイントの優先度に基づいてユーザー トラフィックを誘導する Traffic Manager プロファイルを作成します。
 
 次の例の **<profile_name>** は、一意の Traffic Manager プロファイル名に置き換えます。
 
@@ -70,7 +70,7 @@ az network traffic-manager profile create \
 このクイック スタートでは、2 つの異なる Azure リージョン ("*米国東部*" と "*西ヨーロッパ*") にデプロイされた、2 つの Web アプリケーション インスタンスが必要になります。 これらインスタンスは、それぞれ Traffic Manager のプライマリとフェールオーバーのエンドポイントとして機能します。
 
 ### <a name="create-web-app-service-plans"></a>Web App Service プランを作成する
-2 つの異なる Azure リージョンにデプロイする Web アプリケーションの 2 つのインスタンスに対して、[az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) を使用して Web App Service プランを作成します。
+2 つの異なる Azure リージョンにデプロイする Web アプリケーションの 2 つのインスタンスに対して、[az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) を使用して Web App Service プランを作成します。
 
 次の例で、 **<appspname_eastus>** と **<appspname_westeurope>** は、一意の App Service プラン名に置き換えます
 
@@ -91,7 +91,7 @@ az appservice plan create \
 ```
 
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>App Service プランで Web アプリを作成する
-"*米国東部*" と "*西ヨーロッパ*" の Azure リージョンの App Service プランで、[az webapp create](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) を使用して Web アプリケーションの 2 つのインスタンスを作成します。
+"*米国東部*" と "*西ヨーロッパ*" の Azure リージョンの App Service プランで、[az webapp create](/cli/azure/webapp#az-webapp-create) を使用して Web アプリケーションの 2 つのインスタンスを作成します。
 
 次の例で、 **<app1name_eastus>** と **<app2name_westeurope>** を一意のアプリ名に置き換え、 **<appspname_eastus>** と **<appspname_westeurope>** を前のセクションでの App Service プランの作成に使用した名前に置き換えます。
 
@@ -110,7 +110,7 @@ az webapp create \
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager エンドポイントの追加
-次のように、[az network traffic-manager endpoint create](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) を使用して、Traffic Manager プロファイルに 2 つの Web アプリを Traffic Manager エンドポイントとして追加します。
+次のように、[az network traffic-manager endpoint create](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create) を使用して、Traffic Manager プロファイルに 2 つの Web アプリを Traffic Manager エンドポイントとして追加します。
 
 - Web アプリ ID を決定し、すべてのユーザー トラフィックをルーティングするプライマリ エンドポイントとして、"*米国東部*" Azure リージョンにある Web アプリを追加します。 
 - Web アプリ ID を決定し、フェールオーバー エンドポイントとして、"*西ヨーロッパ*" Azure リージョンにある Web アプリを追加します。 
@@ -178,7 +178,7 @@ az network traffic-manager endpoint create \
 
 ### <a name="determine-the-dns-name"></a>DNS 名の決定
 
-[az network traffic-manager profile show](/cli/azure/network/traffic-manager/profile?view=azure-cli-latest#az-network-traffic-manager-profile-show) を使用して Traffic Manager プロファイルの DNS 名を決定します。
+[az network traffic-manager profile show](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-show) を使用して Traffic Manager プロファイルの DNS 名を決定します。
 
 ```azurecli-interactive
 
@@ -196,7 +196,7 @@ az network traffic-manager profile show \
 
     > [!NOTE]
     > このクイック スタート シナリオでは、すべての要求がプライマリ エンドポイントにルーティングされます。 これは **優先度 1** に設定されています。
-2. 実際の Traffic Manager フェールオーバーを確認するには、[az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) を使用してプライマリ サイトを無効にします。
+2. 実際の Traffic Manager フェールオーバーを確認するには、[az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) を使用してプライマリ サイトを無効にします。
 
    ```azurecli-interactive
 
@@ -214,7 +214,7 @@ az network traffic-manager profile show \
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-完了したら、[az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete) を使用してリソース グループ、Web アプリケーション、およびすべての関連リソースを削除します。
+完了したら、[az group delete](/cli/azure/group#az-group-delete) を使用してリソース グループ、Web アプリケーション、およびすべての関連リソースを削除します。
 
 ```azurecli-interactive
 

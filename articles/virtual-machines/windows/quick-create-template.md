@@ -2,18 +2,19 @@
 title: クイック スタート:Resource Manager テンプレートを使用して Windows VM を作成する
 description: このクイックスタートでは、Resource Manager テンプレートを使用して Windows 仮想マシンを作成する方法について説明します
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: ded59b2f517c5b109dfd00bde2fb73f8351bf821
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b2856c51ccc31b57ea567c5d0940cd260797f770
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649671"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560754"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Windows 仮想マシンを作成する
 
@@ -63,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     - **管理者パスワード**: 管理者アカウントに使用するパスワードを指定します。 パスワードは 12 文字以上で、[定義された複雑さの要件](faq.md#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。
     - **DNS ラベル プレフィックス**: DNS ラベルの一部として使用する一意の識別子を入力します。
     - **Windows OS バージョン**: VM 上で実行する Windows のバージョンを選択します。
-    - **VM サイズ**: VM に使用する[サイズ](../sizes.md)を選択します。
+    - **VM サイズ**: VM に使用する [サイズ](../sizes.md)を選択します。
     - **場所**: 既定値は、それが既に存在する場合、リソース グループと同じ場所になります。
 1. **[Review + create]\(レビュー + 作成\)** を選択します。 検証が完了したら、 **[作成]** を選択して VM を作成し、デプロイします。
 

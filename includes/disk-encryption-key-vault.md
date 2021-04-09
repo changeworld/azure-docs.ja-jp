@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2019
 ms.author: mbaldwin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 3fe622d2ff4f6f8aff546452db0f475cfd44eb1b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6f8cfc314c75221a88b58095cc71ea685280ac49
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015378"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102501017"
 ---
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "96015378"
 
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
-リソース グループを作成するには、[az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) Azure CLI コマンド、または [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell コマンドを使用するか、[Azure portal ](https://portal.azure.com) から行います。
+リソース グループを作成するには、[az group create](/cli/azure/group#az-group-create) Azure CLI コマンド、または [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) Azure PowerShell コマンドを使用するか、[Azure portal ](https://portal.azure.com) から行います。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -37,7 +37,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 *キー コンテナーが既にある場合は、「[キー コンテナーに高度なアクセス ポリシーを設定する](#set-key-vault-advanced-access-policies)」に進むことができます。*
 
-キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) Azure CLI コマンド、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell コマンド、[Azure portal](https://portal.azure.com)、または [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) のいずれかを使用します。
+キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) Azure CLI コマンド、[New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault) Azure Powershell コマンド、[Azure portal](https://portal.azure.com)、または [Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create) のいずれかを使用します。
 
 >[!WARNING]
 > キー コンテナーと VM は、同じサブスクリプションに配置する必要があります。 また、暗号化シークレットがリージョンの境界を確実に超えないようにするため、Azure Disk Encryption では Key Vault と VM を同じリージョンに併置する必要もあります。 暗号化する VM と同じサブスクリプションとリージョン内に Key Vault を作成して使用します。 
@@ -129,7 +129,7 @@ Azure プラットフォームには、Key Vault 内の暗号化キーまたは�
 
 暗号化キーのセキュリティに対する追加レイヤーとしてキー暗号化キー (KEK) を使用する場合は、キー コンテナーに KEK を追加します。 キー暗号化キーが指定されている場合、Azure Disk Encryption では、Key Vault への書き込みの前に、そのキーを使用して暗号化シークレットがラップされます。
 
-新しい KEK を生成するには、Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) コマンド、Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレット、または [Azure portal](https://portal.azure.com/) を使用します。 RSA キーの種類を生成する必要があります。Azure Disk Encryption では、楕円曲線キーの使用はまだサポートされていません。
+新しい KEK を生成するには、Azure CLI [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) コマンド、Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレット、または [Azure portal](https://portal.azure.com/) を使用します。 RSA キーの種類を生成する必要があります。Azure Disk Encryption では、楕円曲線キーの使用はまだサポートされていません。
 
 代わりに、オンプレミスのキー管理 HSM から KEK をインポートすることもできます。 詳細については、[Key Vault](../articles/key-vault/keys/hsm-protected-keys.md) のドキュメントを参照してください。
 
@@ -145,15 +145,15 @@ Azure Disk Encryption では、ポート番号をキー コンテナー シー�
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI [az keyvault key create](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-create) コマンドを使用して新しい KEK を生成し、キー コンテナーに格納します。
+Azure CLI [az keyvault key create](/cli/azure/keyvault/key#az-keyvault-key-create) コマンドを使用して新しい KEK を生成し、キー コンテナーに格納します。
 
 ```azurecli-interactive
 az keyvault key create --name "myKEK" --vault-name "<your-unique-keyvault-name>" --kty RSA
 ```
 
-代わりに、Azure CLI [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) コマンドを使用して秘密キーをインポートすることもできます。
+代わりに、Azure CLI [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import) コマンドを使用して秘密キーをインポートすることもできます。
 
-どちらの場合も、Azure CLI [az vm encryption enable](/cli/azure/vm/encryption?view=azure-cli-latest#az-vm-encryption-enable) --key-encryption-key パラメーターに KEK の名前を指定します。 
+どちらの場合も、Azure CLI [az vm encryption enable](/cli/azure/vm/encryption#az-vm-encryption-enable) --key-encryption-key パラメーターに KEK の名前を指定します。 
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>" --key-encryption-key "myKEK"
@@ -161,15 +161,15 @@ az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-key
 
 ###  <a name="azure-powershell"></a>Azure PowerShell 
 
-Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey?view=azps-2.5.0) コマンドレットを使用して新しい KEK を生成し、キー コンテナーに格納します。
+Azure PowerShell [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey) コマンドレットを使用して新しい KEK を生成し、キー コンテナーに格納します。
 
  ```powershell-interactive
 Add-AzKeyVaultKey -Name "myKEK" -VaultName "<your-unique-keyvault-name>" -Destination "HSM"
 ```
 
-代わりに、Azure PowerShell [az keyvault key import](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-import) コマンドを使用して秘密キーをインポートすることもできます。
+代わりに、Azure PowerShell [az keyvault key import](/cli/azure/keyvault/key#az-keyvault-key-import) コマンドを使用して秘密キーをインポートすることもできます。
 
-どちらの場合も、KEK キー コンテナーの ID とご自分の KEK の URL を Azure PowerShell [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-2.5.0) -KeyEncryptionKeyVaultId パラメーターと -KeyEncryptionKeyUrl パラメーターに指定します。 この例では、ディスク暗号化キーと KEK の両方に同じキー コンテナーを使用していることを前提としています。
+どちらの場合も、KEK キー コンテナーの ID とご自分の KEK の URL を Azure PowerShell [Set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) -KeyEncryptionKeyVaultId パラメーターと -KeyEncryptionKeyUrl パラメーターに指定します。 この例では、ディスク暗号化キーと KEK の両方に同じキー コンテナーを使用していることを前提としています。
 
  ```powershell-interactive
 $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup"

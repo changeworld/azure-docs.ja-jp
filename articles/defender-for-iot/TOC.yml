@@ -4,13 +4,13 @@
   displayName: 'IoT, OT, getting started'
   href: overview.md
   items:
-    - name: 新機能
-      href: release-notes.md
     - name: エージェントレス ソリューション アーキテクチャ
       displayName: 'deployment, where to deploy'
       href: architecture.md
     - name: エージェントベースのソリューション アーキテクチャ
       href: architecture-agent-based.md
+- name: 新機能
+  href: release-notes.md
 - name: クイックスタート
   expanded: true
   items:
@@ -27,12 +27,12 @@
         - name: Defender for IoT エージェントベースのソリューションにオンボードする
           displayName: 'IoT Hub, existing, enable'
           href: quickstart-onboard-iot-hub.md
-        - name: Defender for IoT マイクロ エージェントをインストールする
+        - name: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
           displayName: 'package, authentication, methods, certificate, authenticate, version'
           href: quickstart-standalone-agent-binary-installation.md
-        - name: Defender for IoT マイクロ エージェントのモジュール ツインを作成する
+        - name: Defender for IoT マイクロ エージェントのモジュール ツインを作成する (プレビュー)
           href: quickstart-create-micro-agent-module-twin.md
-        - name: ソース コードから Defender for IoT マイクロ エージェントを構築する
+        - name: ソース コードから Defender for IoT マイクロ エージェントを構築する (プレビュー)
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
         - name: Azure RTOS 用のセキュリティ モジュールを構成する
@@ -56,18 +56,18 @@
           href: concept-key-concepts.md
     - name: デバイス ビルダー向けのエージェントベースのソリューション
       items:
-        - name: エージェント ポートフォリオの概要と OS サポート
+        - name: エージェント ポートフォリオの概要と OS サポート (プレビュー)
           displayName: 'standalone agent, micro agent, RTOS'
           href: concept-agent-portfolio-overview-os-support.md
-        - name: スタンドアロンのマイクロ エージェントの概要
+        - name: スタンドアロンのマイクロ エージェントの概要 (プレビュー)
           displayName: 'endpoint, posture, distribution, flexible, model'
           href: concept-standalone-micro-agent-overview.md
-        - name: セキュリティ エージェントの認証
+        - name: セキュリティ エージェントの認証 (プレビュー)
           displayName: 'connection string, certificate, authentication'
           href: concept-security-agent-authentication.md
         - name: セキュリティ体制 - CIS ベンチマーク
           href: concept-security-posture.md
-        - name: イベントの集計
+        - name: イベントの集計 (プレビュー)
           displayName: 'process events, network connection'
           href: concept-event-aggregation.md
         - name: IoT Hub 用の組み込みアラート
@@ -297,7 +297,7 @@
               href: how-to-investigate-device.md
 - name: トラブルシューティング
   items:
-    - name: Defender for IoT マイクロ エージェントのトラブルシューティング
+    - name: Defender for IoT マイクロ エージェントのトラブルシューティング (プレビュー)
       displayName: 'service status, review logs'
       href: troubleshoot-defender-micro-agent.md
 - name: 機能のサポートと廃止

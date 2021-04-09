@@ -12,12 +12,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 49e1e9efbd6f59bd037a8033f83836bf7fc71c43
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ad641c2270f94b9d902a25e8d061fb1137a0cdb7
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630330"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102518604"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
 
@@ -30,13 +30,13 @@ ms.locfileid: "94630330"
 
 コンピューティング ターゲットまたはローカル マシンで実験を開始する前に、コードの実行に必要な依存関係ファイルやデータ ファイルなどの必要なファイルが、そのコンピューティング ターゲットに存在することを確認する必要があります。
 
-Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)を使用してデータにアクセスしてください。
+Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](/python/api/azureml-core/azureml.data)を使用してデータにアクセスしてください。
 
 実験スナップショットのストレージ制限は、300 MB または 2000 ファイル (あるいはその両方) です。
 
 このため、次のことをお勧めします。
 
-* **お使いのファイルを Azure Machine Learning の [データストア](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)に格納します。** これにより、実験の待機時間の問題を防止でき、リモート コンピューティング ターゲットからデータにアクセスする利点が得られます。つまり、認証とマウントは Azure Machine Learning によって管理されます。 データストアをソース ディレクトリとして指定し、データストアにファイルをアップロードする方法の詳細については、[データストアからデータにアクセスする](how-to-access-data.md)方法に関する記事を参照してください。
+* **お使いのファイルを Azure Machine Learning の [データストア](/python/api/azureml-core/azureml.data)に格納します。** これにより、実験の待機時間の問題を防止でき、リモート コンピューティング ターゲットからデータにアクセスする利点が得られます。つまり、認証とマウントは Azure Machine Learning によって管理されます。 データストアをソース ディレクトリとして指定し、データストアにファイルをアップロードする方法の詳細については、[データストアからデータにアクセスする](how-to-access-data.md)方法に関する記事を参照してください。
 
 * **数個のデータ ファイルと依存関係スクリプトのみが必要であり、データストアを使用できない場合は、** トレーニング スクリプトと同じフォルダー ディレクトリにファイルを配置します。 このフォルダーを `source_directory` ディレクトリとして、トレーニング スクリプトで直接指定するか、またはトレーニング スクリプトを呼び出すコードで指定します。
 

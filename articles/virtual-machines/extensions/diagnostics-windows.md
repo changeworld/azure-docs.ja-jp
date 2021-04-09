@@ -1,25 +1,19 @@
 ---
 title: Azure PowerShell を使用して Windows VM で診断を有効にする
-services: virtual-machines-windows
-documentationcenter: ''
 description: PowerShell を使用して、Windows を実行している仮想マシンで Azure Diagnostics を有効にする方法について説明します
-author: mimckitt
-manager: gwallace
-editor: ''
-ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
-ms.service: virtual-machines-windows
-ms.subservice: extensions
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
 ms.topic: article
+author: amjads1
+ms.author: amjads
+ms.service: virtual-machines
+ms.subservice: extensions
+ms.collection: windows
 ms.date: 12/15/2015
-ms.author: mimckitt
-ms.openlocfilehash: 990bd7c21bec0f42034a0044b58d1589665700ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: e242a45e2c0f8247a1c23bf4d43a6e8b0a033d9b
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100580162"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560094"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>PowerShell を使用して Windows を実行している仮想マシンで Azure Diagnostics を有効にする
 
@@ -211,6 +205,6 @@ Update-AzureVM -ServiceName $Service_Name -Name $VM_Name -VM $VM_Update.VM
     </PublicConfig>
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Diagnostics 機能と他の手法を使用した問題のトラブルシューティングに関するその他のガイダンスについては、「 [Azure Cloud Services および Virtual Machines での診断の有効化](../../cloud-services/cloud-services-dotnet-diagnostics.md)」をご覧ください。
 * [Azure 診断構成スキーマ](../../azure-monitor/agents/diagnostics-extension-versions.md) 」では、診断拡張機能の各種 XML 構成オプションについて説明しています。

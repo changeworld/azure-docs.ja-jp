@@ -17,12 +17,12 @@ ms.date: 1/29/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 284b554581534a8493225fba0b70b074fb7dd982
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 7d8c4876faf9ebc2619309aa0095a8ffe1e9e93d
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651939"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102500548"
 ---
 # <a name="overview-of-provisioning-logs-in-the-azure-portal-preview"></a>Azure portal のプロビジョニング ログの概要 (プレビュー)
 
@@ -207,7 +207,7 @@ JSON ファイルは、ダウンロードのサイズを削減するために、
 
 ここでは、PowerShell を使用して JSON ファイルを操作するためのサンプル コマンドをいくつか紹介します。 使い慣れた任意のプログラミング言語を使用できます。  
 
-まず、このコマンドを実行して [JSON ファイルを読み取ります](/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1)。
+まず、このコマンドを実行して [JSON ファイルを読み取ります](/powershell/module/microsoft.powershell.utility/convertfrom-json)。
 
 ` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
 

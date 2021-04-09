@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40d22a410054f17676c4d9db639fd5e32da18531
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 51bfd632e854132be27a7b971cf03e9fe5b00138
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665985"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102504305"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure での SAP ワークロード: 計画とデプロイに関するチェックリスト
 
@@ -138,7 +138,7 @@ ms.locfileid: "101665985"
         - Azure Load Balancer を Linux ゲスト オペレーティング システムと共に使用している場合、Linux ネットワーク パラメーター **net.ipv4.tcp_timestamps** が **0** に設定されていることを確認します。 この推奨事項は、[SAP ノート #2382421](https://launchpad.support.sap.com/#/notes/2382421) の以前のバージョンの推奨事項と競合しています。 その SAP ノートは、Azure ロード バランサーと連携するように、このパラメーターを **0** に設定する必要があるという記述に更新されました。
         - 最適なネットワーク待ち時間を実現するために [Azure 近接通信配置グループ](../../co-location.md)の使用を検討します。 詳細については、「[SAP アプリケーションで最適なネットワーク待ち時間を実現する Azure 近接通信配置グループ](sap-proximity-placement-scenarios.md)」を参照してください。
    4. 高可用性とディザスター リカバリーのデプロイ。
-        - 特定の Azure 可用性ゾーンを定義しないで SAP アプリケーション レイヤーをデプロイする場合は、単一の SAP システムの SAP ダイアログ インスタンスまたはミドルウェア インスタンスを実行するすべての VM が、[可用性セット](../../manage-availability.md)にデプロイされることを確認します。
+        - 特定の Azure 可用性ゾーンを定義しないで SAP アプリケーション レイヤーをデプロイする場合は、単一の SAP システムの SAP ダイアログ インスタンスまたはミドルウェア インスタンスを実行するすべての VM が、[可用性セット](../../availability-set-overview.md)にデプロイされることを確認します。
         - SAP セントラル サービスと DBMS に対して高可用性が必要ない場合は、これらの VM を SAP アプリケーション レイヤーと同じ可用性セットにデプロイできます。
         - パッシブ レプリケーションを使用して高可用性用に SAP セントラル サービスと DBMS レイヤーを保護する場合は、SAP セントラル サービス用の 2 つのノードを 1 つの独立した可用性セットに配置し、2 つの DBMS ノードを別の可用性セットに配置します。
         - Azure Availability Zones にデプロイする場合は、可用性セットを使用できません。 しかし、アクティブとパッシブのセントラル サービス ノードを 2 つの異なる Availability Zones にデプロイする必要があります。 待機時間が最も短い Availability Zones を使用します。

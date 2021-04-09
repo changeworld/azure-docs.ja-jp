@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 502533b69058eacd4ad18a3b29a33fbc4a3715a5
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 7dd7f43044a9643eb7e9d5296dfb209e425d5fb6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183780"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102504782"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-powershell"></a>Azure Powershell を使用した Traffic Manager サブネットのオーバーライド
 
@@ -43,7 +43,7 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
 
 1. **Traffic Manager エンドポイントを取得する:**
 
-    サブネットのオーバーライドを有効にするには、[Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してオーバーライドを追加するエンドポイントを取得し、変数に格納します。
+    サブネットのオーバーライドを有効にするには、[Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint) を使用してオーバーライドを追加するエンドポイントを取得し、変数に格納します。
 
     Name、ProfileName、および ResourceGroupName を、変更するエンドポイントの値に置き換えます。
 
@@ -54,7 +54,7 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
     ```
 2. **IP アドレスの範囲をエンドポイントに追加する:**
     
-    エンドポイントに IP アドレス範囲を追加するには、[Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange?view=azps-2.5.0&viewFallbackFrom=azps-2.4.0) を使用して範囲を追加します。
+    エンドポイントに IP アドレス範囲を追加するには、[Add-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/add-aztrafficmanageripaddressrange) を使用して範囲を追加します。
 
     ```powershell
 
@@ -68,18 +68,18 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
     Add-AzTrafficManagerIPAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
  
     ```
-    範囲が追加されたら、[Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してエンドポイントを更新します。
+    範囲が追加されたら、[Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) を使用してエンドポイントを更新します。
 
     ```powershell
 
     Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $TrafficManagerEndpoint
 
     ```
-[Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange?view=azps-2.5.0) を使用して IP アドレスの範囲の削除を完了できます。
+[Remove-AzTrafficManagerIpAddressRange](/powershell/module/az.trafficmanager/remove-aztrafficmanageripaddressrange) を使用して IP アドレスの範囲の削除を完了できます。
 
 1.  **Traffic Manager エンドポイントを取得する:**
 
-    サブネットのオーバーライドを有効にするには、[Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してオーバーライドを追加するエンドポイントを取得し、変数に格納します。
+    サブネットのオーバーライドを有効にするには、[Get-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/get-aztrafficmanagerendpoint) を使用してオーバーライドを追加するエンドポイントを取得し、変数に格納します。
 
     Name、ProfileName、および ResourceGroupName を、変更するエンドポイントの値に置き換えます。
 
@@ -102,7 +102,7 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
     Remove-AzTrafficManagerIpAddressRange -TrafficManagerEndpoint $TrafficManagerEndpoint -First "12.13.14.0" -Last "12.13.14.31" -Scope 27
 
     ```
-     範囲が削除されたら、[Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint?view=azps-2.5.0) を使用してエンドポイントを更新します。
+     範囲が削除されたら、[Set-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/set-aztrafficmanagerendpoint) を使用してエンドポイントを更新します。
 
     ```powershell
 

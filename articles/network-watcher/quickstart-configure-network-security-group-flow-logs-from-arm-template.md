@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: subject-armqs
-ms.openlocfilehash: ded7b24461fdcdbc3d020a487cafc20620633097
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: bc075e5074fe39ad38e45235af932b40fef78fce
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019722"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102521868"
 ---
 # <a name="quickstart-configure-network-security-group-flow-logs-by-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用してネットワーク セキュリティ グループのフロー ログを構成する
 
@@ -82,7 +82,7 @@ NSG フロー ログ オブジェクトのプロパティの完全な概要に�
 
 ARM テンプレートを初めて使用する場合は、ARM テンプレートの詳細について、次の記事を参照してください。
 
-- [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template)
+- [ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/templates/deploy-powershell.md#deploy-local-template-or-bicep-file)
 - [チュートリアル:初めての ARM テンプレートを作成してデプロイする](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
 
 完全なテンプレートの例を次に示します。 これは、テンプレートの最も単純なバージョンでもあります。 この例には、NSG フロー ログを設定するために渡される最小限のパラメーターが含まれています。 その他の例については、概要記事の「[Azure Resource Manager テンプレートから NSG フロー ログを構成する](network-watcher-nsg-flow-logging-azure-resource-manager.md)」を参照してください。
@@ -145,7 +145,7 @@ New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatc
 デプロイが成功したかどうかを確認するには、次の 2 つのオプションがあります。
 
 - PowerShell コンソールに `ProvisioningState` が `Succeeded` として表示されます。
-- [NSG フロー ログのポータル ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)に移動して、変更内容を確認します。 
+- [NSG フロー ログのポータル ページ](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)に移動して、変更内容を確認します。
 
 デプロイに問題がある場合は、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](../azure-resource-manager/templates/common-deployment-errors.md)」を参照してください。
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7eb168610f10ac336084ac04c19679d26fc913e0
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 2d9d63c7a703987d7b17e6e03d8b5596d5f1dfa5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98725246"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560618"
 ---
 # <a name="securing-external-access-with-groups"></a>グループを使用して外部アクセスをセキュリティで保護する 
 
@@ -54,7 +54,7 @@ ms.locfileid: "98725246"
 
    * *既定では、すべてのユーザーが M365 グループを作成でき、グループは、テナント内のすべて (内部および外部) のユーザーが参加できるように開かれています*。 
 
-      * [Microsoft 365 グループの作成](/microsoft-365/solutions/manage-creation-of-groups?view=o365-worldwide)を特定のセキュリティ グループのメンバーに制限できます。 この設定を構成するには、Windows PowerShell を使用します。 
+      * [Microsoft 365 グループの作成](/microsoft-365/solutions/manage-creation-of-groups)を特定のセキュリティ グループのメンバーに制限できます。 この設定を構成するには、Windows PowerShell を使用します。 
 
 * **ユーザーをグループに招待できる必要があるのは誰ですか?** すべてのグループ メンバーが他のメンバーを追加できますか、それともグループ所有者のみがメンバーを追加できますか?
 
@@ -150,13 +150,13 @@ Azure AD セキュリティ グループは、次の目的でも使用できま�
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365 グループ
 
-[Microsoft 365 グループ](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide)は、M365 全体でのすべてのアクセスを管理する基本的なメンバーシップ サービスです。 これは、[Azure portal](https://portal.azure.com/)、または [M365 ポータル](https://admin.microsoft.com/)から作成できます。 M365 グループを作成すると、コラボレーションに使用されるリソース グループへのアクセスを付与することになります。 これらのリソースの完全な一覧については、「[管理者向け Microsoft 365 グループの概要](/microsoft-365/admin/create-groups/office-365-groups?view=o365-worldwide)」を参照してください。
+[Microsoft 365 グループ](/microsoft-365/admin/create-groups/office-365-groups)は、M365 全体でのすべてのアクセスを管理する基本的なメンバーシップ サービスです。 これは、[Azure portal](https://portal.azure.com/)、または [M365 ポータル](https://admin.microsoft.com/)から作成できます。 M365 グループを作成すると、コラボレーションに使用されるリソース グループへのアクセスを付与することになります。 これらのリソースの完全な一覧については、「[管理者向け Microsoft 365 グループの概要](/microsoft-365/admin/create-groups/office-365-groups)」を参照してください。
 
 M365 グループでは、ロールについて次のような違いがあります。
 
 * **所有者** - グループ所有者は、メンバーの追加または削除を行うことができます。また、共有の受信トレイから会話を削除したり、グループ設定を変更したりできる固有のアクセス許可を持つことができます。 グループ所有者は、グループ名の変更、説明や画像の更新などを行うことができます。
 
-* **メンバー** - メンバーは、グループ内のすべてのものにアクセスできますが、グループ設定を変更することはできません。 既定では、グループのメンバーは自分のグループにゲストを招待できますが、管理者は[この設定を制御](/microsoft-365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide)できます。
+* **メンバー** - メンバーは、グループ内のすべてのものにアクセスできますが、グループ設定を変更することはできません。 既定では、グループのメンバーは自分のグループにゲストを招待できますが、管理者は[この設定を制御](/microsoft-365/admin/create-groups/manage-guest-access-in-groups)できます。
 
 * **ゲスト** - グループのゲストは、組織外部のメンバーです。 既定では、ゲストに対して、チーム内の機能が多少制限されます。
 

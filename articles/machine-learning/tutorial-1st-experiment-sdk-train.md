@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 65c609343aece4e23917ede79dfb3c4723ffb70c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bee2b31f215758bf5cf73ff5393058fb915cdf25
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100369061"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102522344"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>チュートリアル:初めての機械学習モデルをトレーニングする (パート 3/4)
 
@@ -132,7 +132,7 @@ if __name__ == "__main__":
       `env = ...`
    :::column-end:::
    :::column span="2":::
-      Azure Machine Learning では、実験を実行するための、再現可能でバージョン管理された Python 環境を表す[環境](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)の概念が提供されます。 ローカルの Conda 環境または pip 環境から環境を簡単に作成できます。
+      Azure Machine Learning では、実験を実行するための、再現可能でバージョン管理された Python 環境を表す[環境](/python/api/azureml-core/azureml.core.environment.environment)の概念が提供されます。 ローカルの Conda 環境または pip 環境から環境を簡単に作成できます。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -140,7 +140,7 @@ if __name__ == "__main__":
       `config.run_config.environment = env`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) に環境を追加します。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) に環境を追加します。
    :::column-end:::
 :::row-end:::
 
@@ -262,7 +262,7 @@ python 04-run-pytorch.py
 
 このセッションでは、基本的な "Hello world!" スクリプトから、 特定の Python 環境を実行する必要がある、より現実的なトレーニング スクリプトにアップグレードしました。 Azure Machine Learning 環境を使用してローカルの Conda 環境をクラウドに移動する方法を確認しました。 最後に、数行のコードでメトリックを Azure Machine Learning にログする方法を確認しました。
 
-Azure Machine Learning 環境を作成する方法は他にもあります。たとえば、[pip requirements.txt ファイルから](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-pip-requirements-name--file-path-)、または[既存のローカル Conda 環境から](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#from-existing-conda-environment-name--conda-environment-name-)作成することができます。
+Azure Machine Learning 環境を作成する方法は他にもあります。たとえば、[pip requirements.txt ファイルから](/python/api/azureml-core/azureml.core.environment.environment#from-pip-requirements-name--file-path-)、または[既存のローカル Conda 環境から](/python/api/azureml-core/azureml.core.environment.environment#from-existing-conda-environment-name--conda-environment-name-)作成することができます。
 
 次のセッションでは、CIFAR10 データセットを Azure にアップロードして Azure Machine Learning のデータを操作する方法について説明します。
 

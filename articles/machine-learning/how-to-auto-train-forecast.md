@@ -10,17 +10,17 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 6e686c7b22eb834a096cdd7a67beb6d8d291ef20
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 14837391f7bf907acbbe1d573f3171acef4db658
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100392325"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102503506"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
 
-この記事では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) の自動機械学習 (AutoML) を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
+この記事では、[Azure Machine Learning Python SDK](/python/api/overview/azure/ml/) の自動機械学習 (AutoML) を使用して、時系列予測回帰モデルを構成およびトレーニングする方法について説明します。 
 
 これを行うには、次の手順を実行します。 
 
@@ -120,7 +120,7 @@ AutoML でクロス検証を適用して[モデルのオーバーフィットを
 
 ## <a name="configure-experiment"></a>実験を構成する
 
-[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py) オブジェクトは、自動化された機械学習タスクに必要な設定とデータを定義します。 予測モデルの構成は、標準の回帰モデルの設定に似ていますが、特定のモデル、構成オプション、および特徴量化の手順は時系列データ専用です。 
+[`AutoMLConfig`](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトは、自動化された機械学習タスクに必要な設定とデータを定義します。 予測モデルの構成は、標準の回帰モデルの設定に似ていますが、特定のモデル、構成オプション、および特徴量化の手順は時系列データ専用です。 
 
 ### <a name="supported-models"></a>サポートされているモデル
 自動機械学習では、モデル作成とチューニング プロセスの一環として、さまざまなモデルとアルゴリズムが自動的に試行されます。 ユーザーは、アルゴリズムを指定する必要はありません。 予測実行では、ネイティブな時系列とディープ ラーニングのモデルはどちらも、レコメンデーション システムの一部です。 次の表は、このモデルのサブセットをまとめたものです。 
@@ -138,7 +138,7 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 
 回帰の問題と同様に、タスクの種類、イテレーションの数、トレーニング データ、クロス検証の数など、標準的なトレーニング パラメーターを定義します。 予測タスクの場合は、実験に影響を与える追加パラメーターを設定する必要があります。 
 
-これらの追加パラメーターの概要を次の表に示します。 構文のデザイン パターンについては、[ForecastingParameter クラスのリファレンス ドキュメント](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py)を参照してください。
+これらの追加パラメーターの概要を次の表に示します。 構文のデザイン パターンについては、[ForecastingParameter クラスのリファレンス ドキュメント](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters)を参照してください。
 
 | パラメーター名&nbsp; | 説明 | 必須 |
 |-------|-------|-------|
@@ -154,7 +154,7 @@ ForecastTCN (プレビュー)| ForecastTCN は、最も要求の厳しい予測�
 
 
 次のコードによって、以下の処理が実行されます。 
-* [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py) クラスを活用して、実験トレーニング用の予測パラメーターを定義します。
+* [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters) クラスを活用して、実験トレーニング用の予測パラメーターを定義します。
 * `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 
 * `time_series_id_column_names` パラメーターを `"store"` に定義します。 これにより、データ用に **2 つの異なる時系列グループ** (ストア A および B 用) が確実に作成されます。
 * テスト セット全体を予測するために、`forecast_horizon` を 50 に設定します。 
@@ -298,7 +298,7 @@ DNN を利用した詳細なコード例については、[飲料生産予測 �
 
 ### <a name="short-series-handling"></a>短い系列の処理
 
-自動 ML では、モデル開発のトレーニングと検証のフェーズを実施するのに十分なデータ ポイントがない場合、時系列は **短い系列** と見なされます。 データ ポイントの数は実験ごとに異なり、max_horizon、クロス検証の分割の数、モデルのルックバックの長さ (時系列の特徴を構成するために必要な最大の履歴) に依存します。 正確な計算については、[short_series_handling_configuration のリファレンス ドキュメント](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration)を参照してください。
+自動 ML では、モデル開発のトレーニングと検証のフェーズを実施するのに十分なデータ ポイントがない場合、時系列は **短い系列** と見なされます。 データ ポイントの数は実験ごとに異なり、max_horizon、クロス検証の分割の数、モデルのルックバックの長さ (時系列の特徴を構成するために必要な最大の履歴) に依存します。 正確な計算については、[short_series_handling_configuration のリファレンス ドキュメント](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters#short-series-handling-configuration)を参照してください。
 
 自動 ML は、既定では `ForecastingParameters` オブジェクトの `short_series_handling_configuration` パラメーターを使用して、短い系列の処理を提供します。 
 

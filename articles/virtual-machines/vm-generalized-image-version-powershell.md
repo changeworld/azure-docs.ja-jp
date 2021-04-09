@@ -3,18 +3,18 @@ title: 一般化されたイメージから VM を作成する
 description: 共有イメージ ギャラリーの一般化されたイメージを使用して VM を作成します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: b198c094ffd5f2113603fc9d8d2fb1c4e5cd6fe1
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: dbe1e31a9b56f2f60edbebd8286bf0bfdeaa327e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881959"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560968"
 ---
 # <a name="create-a-vm-using-a-generalized-image"></a>一般化されたイメージを使用して VM を作成する 
 

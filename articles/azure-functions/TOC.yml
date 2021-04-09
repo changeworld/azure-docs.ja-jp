@@ -59,7 +59,7 @@
       items:
         - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: "Visual\_Studio"
+        - name: Visual Studio
           href: functions-add-output-binding-storage-queue-vs.md
         - name: コマンド ライン
           href: functions-add-output-binding-storage-queue-cli.md
@@ -253,9 +253,9 @@
               href: functions-develop-local.md
             - name: Visual Studio Code での開発
               href: functions-develop-vs-code.md
-            - name: Visual Studio での開発
+            - name: Visual Studio 開発
               href: functions-develop-vs.md
-            - name: Core Tools での開発
+            - name: コア ツールの開発
               href: functions-run-local.md
               displayName: 'local, runtime'
         - name: 関数の作成
@@ -270,6 +270,8 @@
                   href: ./functions-create-your-first-function-visual-studio.md
                 - name: Visual Studio Code
                   href: ./create-first-function-vs-code-csharp.md
+                - name: C# 分離 (.NET 5)
+                  href: dotnet-isolated-process-developer-howtos.md
                 - name: Gradle を使用した Java
                   href: functions-create-first-java-gradle.md
                 - name: Eclipse を使用した Java
@@ -454,9 +456,9 @@
         - name: Azure PowerShell
           href: /powershell/module/az.functions
         - name: Java
-          href: /java/api/overview/azure/functions/runtime?view=azure-java-stable
+          href: /java/api/overview/azure/functions/runtime
         - name: Python
-          href: /python/api/azure-functions/azure.functions?view=azure-python
+          href: /python/api/azure-functions/azure.functions
     - name: アプリ設定のリファレンス
       href: functions-app-settings.md
     - name: トリガーとバインド

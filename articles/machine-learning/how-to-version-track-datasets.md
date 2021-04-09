@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: d72d2d094e220bd4e460cfca6b422f0609c083af
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880069"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102520542"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning データセットをバージョン管理および追跡する
 
@@ -31,7 +31,7 @@ ms.locfileid: "98880069"
 
 このチュートリアルには、次のものが必要です。
 
-- [Azure Machine Learning SDK for Python がインストール](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py)されていること。 この SDK には、[azureml-datasets](/python/api/azureml-core/azureml.core.dataset?preserve-view=true&view=azure-ml-py) パッケージが含まれています。
+- [Azure Machine Learning SDK for Python がインストール](/python/api/overview/azure/ml/install)されていること。 この SDK には、[azureml-datasets](/python/api/azureml-core/azureml.core.dataset) パッケージが含まれています。
     
 - [Azure Machine Learning ワークスペース](concept-workspace.md)。 次のコードを実行して既存のものを取得するか、[新しいワークスペースを作成](how-to-manage-workspace.md)します。
 
@@ -62,7 +62,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ### <a name="retrieve-a-dataset-by-name"></a>名前でデータセットを取得する
 
-既定では、`Dataset` クラスの [get_by_name()](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) メソッドでは、ワークスペースに登録されているデータセットの最新バージョンが返されます。 
+既定では、`Dataset` クラスの [get_by_name()](/python/api/azureml-core/azureml.core.dataset.dataset#get-by-name-workspace--name--version--latest--) メソッドでは、ワークスペースに登録されているデータセットの最新バージョンが返されます。 
 
 次のコードでは、`titanic_ds` データセットのバージョン 1 を取得します。
 
@@ -182,7 +182,7 @@ Azure Machine Learning を使用すると、入力と出力のデータセット
 
 Machine Learning の実験ごとに、実験 `Run` オブジェクトを使用して、入力として使用されるデータセットを簡単に追跡できます。
 
-次のコードでは、[`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--) メソッドを使用して、実験の実行でどの入力データセットが使用されたかを追跡します。
+次のコードでは、[`get_details()`](/python/api/azureml-core/azureml.core.run.run#get-details--) メソッドを使用して、実験の実行でどの入力データセットが使用されたかを追跡します。
 
 ```Python
 # get input datasets

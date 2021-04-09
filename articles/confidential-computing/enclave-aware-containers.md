@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: cdd886bfcfb02aa46e440d2574b241f9b1cf3134
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b4a348bbc73e6cfb2fabaa8e401af0ddf7265354
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564142"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561910"
 ---
 # <a name="enclave-aware-containers"></a>エンクレーブ対応コンテナー
 

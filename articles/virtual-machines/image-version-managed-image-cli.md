@@ -3,19 +3,19 @@ title: Azure CLI を使用して、マネージド イメージをイメージ �
 description: Azure CLI を使用して、マネージド イメージを Shared Image Gallery のイメージ バージョンに複製する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 56611794bc2f190eccef739679da8474c9b04eb4
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: cae82072785838d410453b2eb83685905b0ba04e
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675962"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553784"
 ---
 # <a name="clone-a-managed-image-to-an-image-version-using-the-azure-cli"></a>Azure CLI を使用してマネージド イメージをイメージ バージョンに複製する
 Shared Image Gallery に複製する既存のマネージド イメージがある場合は、マネージド イメージから直接 Shared Image Gallery イメージを作成できます。 新しいイメージをテストしたら、ソースのマネージド イメージを削除できます。 [PowerShell](image-version-managed-image-powershell.md) を使用して、マネージド イメージから Shared Image Gallery に移行することもできます。

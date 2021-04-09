@@ -5,18 +5,22 @@ author: davidmrdavid
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: azfuncdf
-ms.openlocfilehash: 9083821fa03c09949daaf3166367489248a4d7d2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 62b3c9bb1c6fd53d9f11227a9d7e774d56859d04
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98029140"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102434765"
 ---
 # <a name="monitor-scenario-in-durable-functions---github-issue-monitoring-sample"></a>Durable Functions のモニター シナリオ - GitHub issue の監視のサンプル
 
 モニター パターンは、ワークフローの柔軟な "繰り返し" プロセスを参照します。たとえば、特定の条件が満たされるまでポーリングします。 この記事では、Durable Functions を使って監視を実装するサンプルを説明します。
 
-[!INCLUDE durable-functions-prerequisites]
+## <a name="prerequisites"></a>前提条件
+
+* [クイックスタートの記事を完了していること](quickstart-python-vscode.md)
+* [GitHub からサンプル プロジェクトを複製またはダウンロードしていること](https://github.com/Azure/azure-functions-durable-python/tree/main/samples/)
+
 
 ## <a name="scenario-overview"></a>シナリオの概要
 
@@ -45,7 +49,6 @@ ms.locfileid: "98029140"
 
 ### <a name="e3_monitor-orchestrator-function"></a>E3_Monitor オーケストレーター関数
 
-# <a name="python"></a>[Python](#tab/python)
 
 **E3_Monitor** 関数は、オーケストレーター関数用の標準的な *function.json* を使います。
 
@@ -55,7 +58,6 @@ ms.locfileid: "98029140"
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_Monitor/\_\_init\_\_.py)]
 
----
 
 このオーケストレーター関数は、次のアクションを行います。
 
@@ -73,7 +75,6 @@ ms.locfileid: "98029140"
 
 他のサンプルと同様に、ヘルパー アクティビティ関数は、`activityTrigger` トリガー バインドを使う標準的な関数です。 **E3_TooManyOpenIssues** 関数は、リポジトリで現在 open である issue の一覧を取得し、それらが "多すぎる" (サンプルでは 3 件以上) かどうかを判断します。
 
-# <a name="python"></a>[Python](#tab/python)
 
 *function.json* の定義は次のようになります。
 
@@ -83,13 +84,11 @@ ms.locfileid: "98029140"
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_TooManyOpenIssues/\_\_init\_\_.py)]
 
----
 
 ### <a name="e3_sendalert-activity-function"></a>E3_SendAlert アクティビティ関数
 
 **E3_SendAlert** 関数は、Twilio バインディングを使用して、解決待ちである open の issue が少なくとも 3 件あることをエンド ユーザーに通知する SMS メッセージを送信します。
 
-# <a name="python"></a>[Python](#tab/python)
 
 その *function.json* は単純です。
 
@@ -99,7 +98,6 @@ SMS メッセージを送信するコードを次に示します。
 
 [!code-python[Main](~/samples-durable-functions-python/samples/monitor/E3_SendAlert/\_\_init\_\_.py)]
 
----
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 

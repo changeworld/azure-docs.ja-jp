@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a5b8842718aa2d9f90ac06283abc5fe2fdd925cb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: c7246511a88e2d2756a8ef56c5adf51ddbfd3e58
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95997003"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102560533"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Azure DevOps で Azure Cosmos DB エミュレーター ビルド タスクを使用して CI/CD パイプラインを設定する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,13 +33,13 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 次に、拡張機能のインストール先となる組織を選択します。 
 
 > [!NOTE]
-> 拡張機能を Azure DevOps 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](/azure/devops/marketplace/faq-extensions?preserve-view=true&view=vsts)
+> 拡張機能を Azure DevOps 組織にインストールするには、アカウント所有者またはプロジェクト コレクション管理者である必要があります。 アクセス許可はないものの、アカウント メンバーである場合は、代わりに拡張機能を要求できます。 [詳細情報。](/azure/devops/marketplace/faq-extensions)
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_2.png" alt-text="拡張機能のインストール先となる Azure DevOps 組織を選択する":::
 
 ## <a name="create-a-build-definition"></a>ビルド定義の作成
 
-拡張機能をインストールしたら、Azure DevOps 組織にサインインし、プロジェクト ダッシュボードから目的のプロジェクトを見つけます。 [ビルド パイプライン](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts)をプロジェクトに追加するか、既存のビルド パイプラインを変更することができます。 ビルド パイプラインが既にある場合は、[ビルド定義へのエミュレーター ビルド タスクの追加](#addEmulatorBuildTaskToBuildDefinition)に関するセクションまでスキップしてかまいません。
+拡張機能をインストールしたら、Azure DevOps 組織にサインインし、プロジェクト ダッシュボードから目的のプロジェクトを見つけます。 [ビルド パイプライン](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav)をプロジェクトに追加するか、既存のビルド パイプラインを変更することができます。 ビルド パイプラインが既にある場合は、[ビルド定義へのエミュレーター ビルド タスクの追加](#addEmulatorBuildTaskToBuildDefinition)に関するセクションまでスキップしてかまいません。
 
 1. 新しいビルド定義を作成するには、Azure DevOps で **[ビルド]** タブに移動します。 **[+新規]** を選択します。 \> **[新しいビルド パイプライン]**
 
@@ -52,7 +52,7 @@ Azure DevOps 用の Azure Cosmos DB エミュレーター ビルド タスクで
 3. 最後に、ビルド パイプラインに使用したいテンプレートを選択します。 このチュートリアルでは、**ASP.NET** テンプレートを選択します。 これで、Azure Cosmos DB エミュレーター ビルド タスクを使用するために設定できるビルド パイプラインが作成されました。 
 
 > [!NOTE]
-> CI の一環として前のタスクで手動でインストールしていない場合、この CI 用に選択するエージェント プールには Docker for Windows をインストールしておく必要があります。 エージェント プールの選択については、[Microsoft によってホストされているエージェント](/azure/devops/pipelines/agents/hosted?preserve-view=true&tabs=yaml&view=azure-devops)に関する記事を参照してください。`Hosted VS2017` から始めることをお勧めします。
+> CI の一環として前のタスクで手動でインストールしていない場合、この CI 用に選択するエージェント プールには Docker for Windows をインストールしておく必要があります。 エージェント プールの選択については、[Microsoft によってホストされているエージェント](/azure/devops/pipelines/agents/hosted?tabs=yaml)に関する記事を参照してください。`Hosted VS2017` から始めることをお勧めします。
 
 Azure Cosmos DB エミュレーターは現在、ホステッド VS2019 エージェント プールをサポートしていません。 ただし、エミュレーターにはあらかじめ VS2019 がインストールされており、次の PowerShell コマンドレットでエミュレーターを起動することによって使用できます。 VS2019 の使用中に問題が発生した場合は、[Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) チームにお問い合わせください。
 

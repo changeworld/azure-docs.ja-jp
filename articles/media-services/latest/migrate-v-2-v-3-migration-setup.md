@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 1/14/2021
 ms.author: inhenkel
-ms.openlocfilehash: 779a52b44a5dc4e81dc7910da12c5cfb91c1c3ca
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 792f4f81d84b61f0f78c53e62168921221b4f330
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705383"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102503166"
 ---
 # <a name="step-3---set-up-to-migrate-to-the-v3-rest-api-or-client-sdk"></a>手順 3 - V3 REST API またはクライアント SDK に移行するための設定
 
@@ -50,8 +50,8 @@ Azure portal を使用して[環境を設定する](how-to-set-azure-subscriptio
 
 ## <a name="download-client-sdk-of-your-choice-and-set-up-your-environment"></a>任意のクライアント SDK をダウンロードして環境を設定する
 
--  [.NET](/dotnet/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-dotnet)、.Net Core、 [Node.js](/javascript/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-node-latest)、 [Python](/python/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-python)、 [Java](/java/api/overview/azure/mediaservices/management?preserve-view=true&view=azure-java-stable)、 [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)、および [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md) で利用できる SDK。
-- 単純なスクリプト サポートのための [Azure CLI](/cli/azure/ams?preserve-view=true&view=azure-cli-latest)  統合。
+-  [.NET](/dotnet/api/overview/azure/mediaservices/management)、.Net Core、 [Node.js](/javascript/api/overview/azure/mediaservices/management)、 [Python](/python/api/overview/azure/mediaservices/management)、 [Java](/java/api/overview/azure/mediaservices/management)、 [Go](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/mediaservices/mgmt/2018-07-01/media)、および [Ruby](https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md) で利用できる SDK。
+- 単純なスクリプト サポートのための [Azure CLI](/cli/azure/ams)  統合。
 
 > [!NOTE]
 > V3 の Azure Media Services では、コミュニティの PHP SDK を利用できなくなりました。 V2 で PHP を使用している場合は、コード内で直接 REST API に移行する必要があります。

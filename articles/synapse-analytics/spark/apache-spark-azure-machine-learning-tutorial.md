@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: fc9909614a9d557c19a22e215b7513a038f88c33
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 89309cfe427183d594a5cc2f76332ae150d4f803
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942342"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102498678"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>チュートリアル:自動機械学習で Python のモデルをトレーニングする
 
@@ -144,7 +144,7 @@ ws = Workspace(workspace_name = workspace_name,
 ```
 
 ## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>データフレームを Azure Machine Learning データセットに変換する
-リモート実験を送信するには、データセットを Azure Machine Learning の ```TabularDatset``` インスタンスに変換します。 [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) は、指定されたファイルを解析して、データを表形式で表します。
+リモート実験を送信するには、データセットを Azure Machine Learning の ```TabularDatset``` インスタンスに変換します。 [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) は、指定されたファイルを解析して、データを表形式で表します。
 
 次のコードでは、既存のワークスペースと、Azure Machine Learning の既定のデータストアを取得します。 次に、データストアとファイルの場所をパス パラメーターに渡して、新しい ```TabularDataset``` インスタンスを作成します。 
 

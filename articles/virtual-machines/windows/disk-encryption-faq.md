@@ -2,18 +2,19 @@
 title: FAQ - Windows VM 用の Azure Disk Encryption
 description: この記事では、Windows IaaS VM 用の Microsoft Azure Disk Encryption についてよく寄せられる質問への回答を示します。
 author: msmbaldwin
-ms.service: virtual-machines-windows
-ms.subservice: security
+ms.service: virtual-machines
+ms.subservice: disks
+ms.collection: windows
 ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f02c90dd6c751909434f3f2af9b8eb81ee1c4b9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6371a6bd0c4b8151c97a892ec70789429b4bda75
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488376"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102562199"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Windows 仮想マシン用の Azure Disk Encryption に関する FAQ
 

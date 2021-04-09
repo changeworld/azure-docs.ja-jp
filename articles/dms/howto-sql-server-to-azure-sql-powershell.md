@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: 87505557653e70aab7f1392aeea8dbdf505327e0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962758"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102520661"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell を使用して SQL Server データベースを Azure SQL Database に移行する
 
@@ -42,7 +42,7 @@ ms.locfileid: "94962758"
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降。
 * Azure Resource Manager デプロイ モデルを使用した Microsoft Azure 仮想ネットワークの作成。これにより、[ExpressRoute](../expressroute/expressroute-introduction.md) または [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用してオンプレミス ソース サーバーへのサイト間接続が Microsoft Azure Database Migration Service に提供されます。
 * [SQL Server の移行評価の実行](/sql/dma/dma-assesssqlonprem)に関する記事に従って、Data Migration Assistant を使用して、オンプレミスのデータベースおよびスキーマの移行の評価を完了させる
-* [Install-Module PowerShell](/powershell/module/powershellget/Install-Module?view=powershell-5.1) コマンドレットを使用して、PowerShell ギャラリーから Az.DataMigration モジュールをダウンロードしてインストールする: [管理者として実行] を使用して PowerShell コマンド ウィンドウを開いていること確認してください。
+* [Install-Module PowerShell](/powershell/module/powershellget/Install-Module) コマンドレットを使用して、PowerShell ギャラリーから Az.DataMigration モジュールをダウンロードしてインストールする: [管理者として実行] を使用して PowerShell コマンド ウィンドウを開いていること確認してください。
 * ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可を含める。
 * ターゲットの Azure SQL DB インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL Database に対する CONTROL DATABASE アクセス許可が含まれていることを確認する。
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。

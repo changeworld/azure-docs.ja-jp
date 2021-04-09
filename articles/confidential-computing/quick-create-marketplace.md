@@ -3,17 +3,17 @@ title: クイックスタート - Marketplace で Azure Confidential Computing �
 description: Marketplace でコンフィデンシャル コンピューティング仮想マシンをすばやく作成する方法を説明します。実際に自分でデプロイしてみましょう。
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 82d9c143f84dfced639c928bf12693024079c2ba
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: aba23b67574fb74b7cd571dc5d4642bb8b991b93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91409495"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102566636"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>クイック スタート:Marketplace で Azure Confidential Computing VM をデプロイする
 
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 
 ## <a name="configure-your-virtual-machine"></a>仮想マシンを構成する
 
-1. **[基本]** タブで、**サブスクリプション**と**リソース グループ**を選択します。 このテンプレートからリソース グループに仮想マシンをデプロイするには、リソース グループが空であることが必要です。
+1. **[基本]** タブで、**サブスクリプション** と **リソース グループ** を選択します。 このテンプレートからリソース グループに仮想マシンをデプロイするには、リソース グループが空であることが必要です。
 
 1. 次の値を入力または選択します。
 

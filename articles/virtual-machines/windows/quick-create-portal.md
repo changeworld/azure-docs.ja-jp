@@ -2,18 +2,19 @@
 title: クイック スタート - Azure Portal で Windows VM を作成する
 description: このクイック スタートでは、Azure Portal を使用して Windows 仮想マシンを作成する方法について説明します
 author: cynthn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: quickstart
 ms.workload: infrastructure
-ms.date: 11/05/2019
+ms.date: 03/15/2021
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 46119b9f7cdac47920d4bba8e00c3fc56b0edc78
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 0ba28d003f359af12de6242c6d2444fb8adab0d7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "87494521"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103562757"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure Portal で Windows 仮想マシンを作成する
 
@@ -29,12 +30,12 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. 検索に「**virtual machines**」と入力します。
 1. **[サービス]** で、 **[仮想マシン]** を選択します。
-1. **[仮想マシン]** ページで、 **[追加]** を選択します。 
+1. **[仮想マシン]** ページで、 **[追加]** を選択してから **[仮想マシン]** を選択します。 
 1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、リソース グループの **[新規作成]** を選択します。 名前として「*myResourceGroup*」と入力します。 
 
     ![仮想マシンの Azure サブスクリプションとリソース グループを選択する場所が示されている [プロジェクトの詳細] セクションのスクリーンショット](./media/quick-create-portal/project-details.png)
 
-1. **[インスタンスの詳細]** で、 **[仮想マシン名]** として「*myVM*」と入力し、 **[リージョン]** として *[米国東部]* を選択し、 **[イメージ]** として *[Windows Server 2019 Datacenter]* を選択します。 他の既定値はそのままにします。
+1. **[Instance details] (インスタンスの詳細)** で、**[仮想マシン名]** として「*myVM*」と入力し、**[リージョン]** として *[米国東部]* を選択します。 **[イメージ]** に *[Windows Server 2019 Datacenter]* を選択し、 **[サイズ]** に *[Standard_DS1_v2]* を選択します。 他の既定値はそのままにします。
 
     ![仮想マシンの名前を指定し、そのリージョン、イメージ、サイズを選択する [インスタンスの詳細] セクションのスクリーンショット](./media/quick-create-portal/instance-details.png)
 
@@ -50,16 +51,21 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     ![ページの下部にある [確認と作成] ボタンを示すスクリーンショット](./media/quick-create-portal/review-create.png)
 
+1. 検証の実行後、ページの下部にある **[作成]** ボタンを選択します。
+
+1. デプロイが完了したら、 **[リソースに移動]** を選択します。
+
+    ![リソースに移動する、次のステップを示すスクリーンショット](./media/quick-create-portal/next-steps.png)
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
 仮想マシンへのリモート デスクトップ接続を作成します。 この手順では、Windows コンピューターから、VM に接続する方法を示します。 Mac では、この[リモート デスクトップ クライアント](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12)のような RDP クライアントを Mac App Store から入手する必要があります。
 
-1. 仮想マシンの概要ページで **[接続]** ボタンを選択します。 
+1. 仮想マシンの概要ページで **[接続]** ボタンを選択してから **[RDP]** を選択します。 
 
     ![接続ボタンの場所が示されている仮想マシンの概要ページのスクリーンショット](./media/quick-create-portal/portal-quick-start-9.png)
     
-2. **[仮想マシンに接続する]** ページで、ポート 3389 を介して IP アドレスで接続する既定のオプションをそのまま使用して、 **[RDP ファイルのダウンロード]** をクリックします。
+2. **[RDP で接続する]** ページで、ポート 3389 を介して IP アドレスで接続する既定のオプションをそのまま使用して、 **[RDP ファイルのダウンロード]** をクリックします。
 
 2. ダウンロードした RDP ファイルを開き、プロンプトが表示されたら **[接続]** をクリックします。 
 
@@ -80,7 +86,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>IIS のようこそページの表示
 
-ポータルで VM を選択し、VM の概要で IP アドレスの右側にある **[クリックしてコピー]** ボタンを使用してアドレスをコピーして、ブラウザーのタブに貼り付けます。次のような、既定の IIS のようこそページが開かれます。
+ポータルで VM を選択し、VM の [概要] で IP アドレスにマウスポインターを合わせて、 **[クリップボードにコピー]** を表示します。 IP アドレスをコピーし、ブラウザー タブに貼り付けます。次のような、既定の IIS のようこそページが開かれます。
 
 ![ブラウザーでの IIS の既定サイトのスクリーンショット](./media/quick-create-powershell/default-iis-website.png)
 
@@ -88,7 +94,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 必要がなくなったら、リソース グループ、仮想マシン、およびすべての関連リソースを削除できます。 
 
-仮想マシンのリソース グループを選択し、 **[削除]** をクリックします。 リソース グループの名前を確認してリソースの削除を終了します。
+仮想マシンのリソース グループに移動し、 **[リソース グループの削除]** を選択します。 リソース グループの名前を確認してリソースの削除を終了します。
 
 ## <a name="next-steps"></a>次のステップ
 

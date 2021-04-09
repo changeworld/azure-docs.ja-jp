@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: 948b30cbf37ae5f4f357860569579d8591412414
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 5ee4481b3151e28d5d37760e486a43adbc194994
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630398"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102553223"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>パート 1: Azure ファイル共有に対する AD DS 認証を有効にする 
 
@@ -41,7 +41,7 @@ AzFilesHybrid PowerShell モジュールのコマンドレットによって、�
 PowerShell で実行する前に、必ず、以下のパラメーターのプレースホルダーの値を実際の値に置き換えてください。
 > [!IMPORTANT]
 > ドメイン参加コマンドレットは、AD のストレージ アカウント (ファイル共有) を表す AD アカウントを作成します。 コンピューター アカウントまたはサービス ログオン アカウントのどちらとして登録するかを選択できます。詳細については、[FAQ](./storage-files-faq.md#security-authentication-and-access-control) を参照してください。 コンピューター アカウントの場合は、AD で 30 日に設定された既定のパスワードの有効期限が存在します。 同様に、サービス ログオン アカウントでも、既定のパスワードの有効期限が AD ドメインまたは組織単位 (OU) で設定されている可能性があります。
-> どちらのアカウントの種類でも、AD 環境で構成されているパスワードの有効期限を確認し、パスワードの有効期間が終了する前に、AD アカウントの[ストレージ アカウント ID のパスワードを更新する](storage-files-identity-ad-ds-update-password.md)よう計画することをお勧めします。 [AD で新しい AD 組織単位 (OU) を作成](/powershell/module/addsadministration/new-adorganizationalunit?view=win10-ps)し、それぞれ[コンピューター アカウント](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11))またはサービス ログオン アカウントのパスワードの有効期限のポリシーを無効にすることを検討できます。 
+> どちらのアカウントの種類でも、AD 環境で構成されているパスワードの有効期限を確認し、パスワードの有効期間が終了する前に、AD アカウントの[ストレージ アカウント ID のパスワードを更新する](storage-files-identity-ad-ds-update-password.md)よう計画することをお勧めします。 [AD で新しい AD 組織単位 (OU) を作成](/powershell/module/addsadministration/new-adorganizationalunit)し、それぞれ[コンピューター アカウント](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11))またはサービス ログオン アカウントのパスワードの有効期限のポリシーを無効にすることを検討できます。 
 
 ```PowerShell
 #Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -89,7 +89,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="checking-environment"></a>環境の確認
 
-まず、環境の状態を確認する必要があります。 具体的には、[Active Directory PowerShell](/powershell/module/addsadministration/?view=win10-ps) がインストールされているかどうかと、シェルが管理者特権で実行されているかどうかを確認する必要があります。 次に、[Az.Storage 2.0 モジュール](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)がインストールされているかどうかを確認し、まだの場合はインストールします。 これらの確認が完了したら、AD DS を確認し、[コンピューター アカウント](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (既定値)、あるいは "cifs/ここはご利用のストレージ アカウントの名前.file.core.windows.net" などの SPN または UPN を使用して既に作成されている[サービス ログオン アカウント](/windows/win32/ad/about-service-logon-accounts)があるかどうかを確認します。 アカウントが存在しない場合は、次のセクションの説明に従って作成します。
+まず、環境の状態を確認する必要があります。 具体的には、[Active Directory PowerShell](/powershell/module/addsadministration/) がインストールされているかどうかと、シェルが管理者特権で実行されているかどうかを確認する必要があります。 次に、[Az.Storage 2.0 モジュール](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)がインストールされているかどうかを確認し、まだの場合はインストールします。 これらの確認が完了したら、AD DS を確認し、[コンピューター アカウント](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (既定値)、あるいは "cifs/ここはご利用のストレージ アカウントの名前.file.core.windows.net" などの SPN または UPN を使用して既に作成されている[サービス ログオン アカウント](/windows/win32/ad/about-service-logon-accounts)があるかどうかを確認します。 アカウントが存在しない場合は、次のセクションの説明に従って作成します。
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>AD でのストレージ アカウントを表す ID の手動による作成
 

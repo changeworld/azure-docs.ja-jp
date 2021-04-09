@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ad86ebdbef8bf8c8ec00e54e15b751fd2285ad68
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 03400173dd35660d6e7a98500b831a7c6aa4ebd7
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601341"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521172"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをトレーニングする
 
@@ -32,7 +32,7 @@ Azure Machine Learning では既定の Docker 基本イメージを提供しま�
   * Azure Machine Learning の [例のリポジトリ](https://github.com/Azure/azureml-examples)で、 **[notebooks]**  >  **[fastai]**  >  **[train-pets-resnet34.ipynb]** ディレクトリに移動して完了したノートブックを検索します。 
 * 独自の Jupyter Notebook サーバー:
   * [ワークスペース構成ファイル](how-to-configure-environment.md#workspace)を作成します。
-  * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) をインストールします。 
+  * [Azure Machine Learning SDK](/python/api/overview/azure/ml/install) をインストールします。 
   * インターネット上で使用可能な [Azure コンテナー レジストリ](../container-registry/index.yml) またはその他の Docker レジストリを作成します。
 
 ## <a name="set-up-a-training-experiment"></a>トレーニング実験を設定する
@@ -41,7 +41,7 @@ Azure Machine Learning では既定の Docker 基本イメージを提供しま�
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
-[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
+[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`Workspace`](/python/api/azureml-core/azureml.core.workspace.workspace) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
 
 [前提条件](#prerequisites)として作成した config.json ファイルから `Workspace` オブジェクトを作成します。
 
@@ -169,7 +169,7 @@ run.wait_for_completion(show_output=True)
 ```
 
 > [!WARNING]
-> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](/python/api/azureml-core/azureml.data?preserve-view=true&view=azure-ml-py)を使用してデータにアクセスしてください。
+> Azure Machine Learning では、ソース ディレクトリ全体をコピーすることで、トレーニング スクリプトが実行されます。 アップロードしたくない機密データがある場合は、[.ignore ファイル](how-to-save-write-experiment-files.md#storage-limits-of-experiment-snapshots)を使用するか、ソース ディレクトリに含めないようにします。 代わりに、[データストア](/python/api/azureml-core/azureml.data)を使用してデータにアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 この記事では、カスタム Docker イメージを使用してモデルをトレーニングしました。 Azure Machine Learning の詳細については、以下の他の記事をご覧ください。

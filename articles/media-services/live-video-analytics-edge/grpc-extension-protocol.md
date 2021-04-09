@@ -3,16 +3,16 @@ title: gRPC 拡張プロトコル - Azure
 description: この記事では、gRPC 拡張プロトコルを使用した、Live Video Analytics モジュールと AI または CV カスタム拡張機能の間でのメッセージの送信について説明します。
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 7f21ff358b8dd5ac540de8c39c37c52e98977e59
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f7b5be859702199b07dfa0d6a43a09ca8ff0c42f
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401629"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102455858"
 ---
 # <a name="grpc-extension-protocol"></a>gRPC 拡張プロトコル
 
-Live Video Analytics on IoT Edge では、[グラフ拡張ノード](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update)を使用してメディア グラフ処理機能を拡張することができます。 gRPC 拡張プロセッサを拡張ノードとして使用した場合、Live Video Analytics モジュールとご利用の AI (または CV) モジュールとの間の通信は、gRPC ベースの高性能な構造化プロトコルで行われます。
+Live Video Analytics on IoT Edge では、[グラフ拡張ノード](/azure/media-services/live-video-analytics-edge/media-graph-extension-concept)を使用してメディア グラフ処理機能を拡張することができます。 gRPC 拡張プロセッサを拡張ノードとして使用した場合、Live Video Analytics モジュールとご利用の AI (または CV) モジュールとの間の通信は、gRPC ベースの高性能な構造化プロトコルで行われます。
 
 この記事では、gRPC 拡張プロトコルを使用した、Live Video Analytics モジュールと AI または CV カスタム拡張機能の間でのメッセージの送信について説明します。
 
@@ -25,7 +25,7 @@ gRPC セッションは、TCP (TLS) ポートを介した、gRPC クライアン
 
 単一セッション: クライアントは、gRPC ストリーム セッションを介して、サーバーにメディア ストリーム記述子を [protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) メッセージとして送信し、その後にビデオ フレームを送信します。 サーバーはストリーム記述子を検証し、ビデオ フレームを分析して、推論結果を protobuf メッセージとして返します。 
 
-[推論メタデータ スキーマ オブジェクト モデル](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update)に従って定義した事前に定義されたスキーマに従って、有効な JSON ドキュメントを使用して応答を返すことを強くお勧めします。 これにより、他のコンポーネント、および Live Video Analytics モジュールに今後追加される可能性がある機能との相互運用性が向上します。
+[推論メタデータ スキーマ オブジェクト モデル](/azure/media-services/live-video-analytics-edge/inference-metadata-schema)に従って定義した事前に定義されたスキーマに従って、有効な JSON ドキュメントを使用して応答を返すことを強くお勧めします。 これにより、他のコンポーネント、および Live Video Analytics モジュールに今後追加される可能性がある機能との相互運用性が向上します。
 
 ![gRPC 拡張機能のコントラクト](./media/grpc-extension-protocol/grpc.png)
 

@@ -3,18 +3,18 @@ title: Azure PowerShell を使用して共有イメージ ギャラリーを作�
 description: Azure PowerShell を使用して Azure に共有イメージ ギャラリーを作成する方法について説明します。
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: f36b1d75dc167faf555d9af4e3aabd5d83db264a
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 877439ddba6ffaf2fd060c29f28c25c18694605d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98882316"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102555569"
 ---
 # <a name="create-a-shared-image-gallery-with-azure-powershell"></a>Azure PowerShell を使用して共有イメージ ギャラリーを作成する 
 

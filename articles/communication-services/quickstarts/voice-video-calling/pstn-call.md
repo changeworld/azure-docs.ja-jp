@@ -4,18 +4,21 @@ titleSuffix: An Azure Communication Services quickstart
 description: このクイックスタートでは、Azure Communication Services を使用して、アプリに PSTN 通話機能を追加する方法について説明します。
 author: nikuklic
 ms.author: nikuklic
-ms.date: 09/11/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: d26c089376f5de1ad669ff95a0bf4e96cc8f4682
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 65a968747e7ed12e6ee03bd5fea4b7b4af7ee10e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660006"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104729517"
 ---
 # <a name="quickstart-call-to-phone"></a>クイックスタート: 電話の呼び出し
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Communication Services 通話クライアント ライブラリを使用して PSTN 通話をアプリに追加することによって、Azure Communication Services の使用を開始します。
 

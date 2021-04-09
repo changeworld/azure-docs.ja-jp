@@ -2,19 +2,20 @@
 title: プロビジョニング エージェントを無効化または削除する
 description: Linux VM およびイメージのプロビジョニング エージェントを無効化または削除する方法について説明します。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.subservice: imaging
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 0fea82c376a178de0be8ede6c0393e1de21de614
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 7c797957c292b9859ca41951b15f58c3d0be40b2
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98675806"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102561070"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>VM とイメージの Linux エージェントを無効化または削除する
 
@@ -31,7 +32,7 @@ Azure プラットフォームでは、VM の構成、監視、セキュリテ�
 
 ## <a name="disabling-extension-processing"></a>拡張機能の処理の無効化
 
-必要に応じて拡張機能の処理を無効にする方法がいくつか用意されていますが、続行する前に、VM に展開されているすべての拡張機能を削除する **必要があります**。たとえば、Azure CLI を使用すると、[一覧を表示](/cli/azure/vm/extension#az-vm-extension-list)して[削除](/cli/azure/vm/extension#az-vm-extension-delete)できます。
+必要に応じて拡張機能の処理を無効にする方法がいくつか用意されていますが、続行する前に、VM に展開されているすべての拡張機能を削除する **必要があります**。たとえば、Azure CLI を使用すると、[一覧を表示](/cli/azure/vm/extension#az-vm-extension-list)して [削除](/cli/azure/vm/extension#az-vm-extension-delete)できます。
 
 ```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name

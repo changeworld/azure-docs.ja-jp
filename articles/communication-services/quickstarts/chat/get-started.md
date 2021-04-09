@@ -6,18 +6,21 @@ author: fanche
 manager: phans
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 zone_pivot_groups: acs-js-csharp-java-python-swift-android
-ms.openlocfilehash: d8b2edff432bdcbd21afdf81ffea2617b22b0452
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a62c25aa5fd9d25b7330dde89c8544e79785b9d0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661631"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103495455"
 ---
 # <a name="quickstart-add-chat-to-your-app"></a>クイック スタート:チャットをアプリに追加する
+
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+
 
 Communication Services チャット クライアント ライブラリを使用してリアルタイム チャットをアプリケーションに追加することによって、Azure Communication Services の使用を開始します。 このクイックスタートでは、チャット クライアント ライブラリを使用して、ユーザーが相互に会話できるようにするチャット スレッドを作成します。 チャットの概念の詳細については、 [チャットの概念に関するドキュメント](../../concepts/chat/concepts.md)を参照してください。
 

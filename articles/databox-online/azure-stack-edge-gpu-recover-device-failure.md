@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: e5734591bfc48469eacc1ad39cbb89f3850bfc8c
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: b1bfbda007619bf5bd94d47297845881758037bc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97367068"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102636642"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>障害が発生した Azure Stack Edge Pro GPU デバイスから回復する 
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 この記事では、Azure Stack Edge Pro GPU デバイスでの許容できない障害から回復する方法について説明します。 Azure Stack Edge Pro GPU デバイスで許容できない障害が発生した場合は、デバイスの交換が必要です。
 
@@ -50,10 +52,10 @@ ms.locfileid: "97367068"
 
 デバイスの Edge クラウド共有のデータを復元するには、次の手順のようにします。
 
-1. 障害が発生したデバイスで以前に作成したものと同じ共有名を使用して、[共有を追加](azure-stack-edge-j-series-manage-shares.md#add-a-share)します。 共有を作成するときに、 **[BLOB コンテナーを選択]** が **[既存のものを使用]** オプションに設定されていることを確認した後、前のデバイスで使用されていたコンテナーを選択します。
-1. 以前のデバイスへのアクセス権を持っていた[ユーザーを追加](azure-stack-edge-j-series-manage-users.md#add-a-user)します。
-1. 以前にデバイス上の共有に関連付けられていた[ストレージ アカウントを追加](azure-stack-edge-j-series-manage-storage-accounts.md#add-an-edge-storage-account)します。 Edge ストレージ アカウントを作成するときに、既存のコンテナーから選択し、前のデバイスでマップされていた Azure ストレージ アカウントにマップされていたコンテナーをポイントします。 以前のデバイスで Edge ストレージ アカウントに書き込まれたデバイスのデータは、マップされた Azure ストレージ アカウントで選択されているストレージ コンテナーに自動的にアップロードされています。
-1. Azure から[共有のデータを更新します](azure-stack-edge-j-series-manage-shares.md#refresh-shares)。 これにより、既存のコンテナーから共有にすべてのクラウド データが取り込まれます。
+1. 障害が発生したデバイスで以前に作成したものと同じ共有名を使用して、[共有を追加](azure-stack-edge-gpu-manage-shares.md#add-a-share)します。 共有を作成するときに、 **[BLOB コンテナーを選択]** が **[既存のものを使用]** オプションに設定されていることを確認した後、前のデバイスで使用されていたコンテナーを選択します。
+1. 以前のデバイスへのアクセス権を持っていた[ユーザーを追加](azure-stack-edge-gpu-manage-users.md#add-a-user)します。
+1. 以前にデバイス上の共有に関連付けられていた[ストレージ アカウントを追加](azure-stack-edge-gpu-manage-storage-accounts.md#add-an-edge-storage-account)します。 Edge ストレージ アカウントを作成するときに、既存のコンテナーから選択し、前のデバイスでマップされていた Azure ストレージ アカウントにマップされていたコンテナーをポイントします。 以前のデバイスで Edge ストレージ アカウントに書き込まれたデバイスのデータは、マップされた Azure ストレージ アカウントで選択されているストレージ コンテナーに自動的にアップロードされています。
+1. Azure から[共有のデータを更新します](azure-stack-edge-gpu-manage-shares.md#refresh-shares)。 これにより、既存のコンテナーから共有にすべてのクラウド データが取り込まれます。
 
 ## <a name="restore-edge-local-shares"></a>Edge ローカル共有を復元する
 
@@ -71,7 +73,7 @@ ms.locfileid: "97367068"
 次の手順のようにして、ローカル共有からデータを回復します。
 
 1. [デバイスでコンピューティングを構成します](azure-stack-edge-gpu-deploy-configure-compute.md)。
-1. [ローカル共有を追加](azure-stack-edge-j-series-manage-shares.md#add-a-local-share)して戻します。
+1. [ローカル共有を追加](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)して戻します。
 1. 選択したデータ保護ソリューションで提供されている回復手順を実行します。 前の表の情報を参照してください。
 
 ## <a name="restore-vm-files-and-folders"></a>VM ファイルとフォルダーを復元する

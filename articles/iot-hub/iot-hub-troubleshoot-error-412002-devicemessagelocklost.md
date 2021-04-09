@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 7d48474d88a60c73f6094d3b9e65017c23404d8a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 53364009f9b9c041c39728e438c3e24eacfd1665
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144256"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102435479"
 ---
 # <a name="412002-devicemessagelocklost"></a>412002 DeviceMessageLockLost
 
@@ -25,7 +25,7 @@ cloud-to-device メッセージを送信しようとすると、要求がエラ�
 
 ## <a name="cause"></a>原因
 
-デバイスが (たとえば [`ReceiveAsync()`](/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) を使用して) cloud-to-device メッセージをキューから受信すると、1 分間のロック タイムアウト期間、IoT Hub によってメッセージはロックされます。 ロック タイムアウトが終了した後にデバイスでメッセージの完了が試行されると、IoT Hub からこの例外がスローされます。
+デバイスが (たとえば [`ReceiveAsync()`](/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync) を使用して) cloud-to-device メッセージをキューから受信すると、1 分間のロック タイムアウト期間、IoT Hub によってメッセージはロックされます。 ロック タイムアウトが終了した後にデバイスでメッセージの完了が試行されると、IoT Hub からこの例外がスローされます。
 
 ## <a name="solution"></a>解決策
 

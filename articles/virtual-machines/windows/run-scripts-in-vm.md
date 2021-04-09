@@ -3,17 +3,18 @@ title: Azure Windows VM でスクリプトを実行する
 description: このトピックは、Windows 仮想マシン内でスクリプトを実行する方法について説明します
 services: automation
 ms.service: virtual-machines
+ms.collection: windows
 author: bobbytreed
 ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: 23abc86e26686d9a23ed94d0311a44ffe3012657
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 24ff0d8089055f83c76156cf5fb163313faf9492
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201775"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043480"
 ---
 # <a name="run-scripts-in-your-windows-vm"></a>Windows VM でスクリプトを実行する
 
@@ -57,7 +58,7 @@ ms.locfileid: "98201775"
 
 ## <a name="serial-console"></a>シリアル コンソール
 
-[Serial console](../troubleshooting/serial-console-windows.md) を使用すると、VM に接続されているキーボードと同じように、VM に直接アクセスできます。
+[Serial console](/troubleshoot/azure/virtual-machines/serial-console-windows) を使用すると、VM に接続されているキーボードと同じように、VM に直接アクセスできます。
 
 * Azure 仮想マシンでコマンドを実行します。
 * Azure Portal 内のマシンにテキスト ベースのコンソールを使用して実行できます。
@@ -71,4 +72,4 @@ ms.locfileid: "98201775"
 * [カスタム スクリプト拡張機能](../extensions/custom-script-windows.md)
 * [実行コマンド](run-command.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
-* [Serial console](../troubleshooting/serial-console-windows.md)
+* [Serial console](/troubleshoot/azure/virtual-machines/serial-console-windows)

@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 07/15/2018
 ms.author: juergent
-ms.openlocfilehash: c9c2b0c3f55cf5fb6dfd32774baac2a49ec3609f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e17739c65c0b80beb1f6fdd09f31897b317d7858
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677155"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102506890"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。
@@ -102,7 +102,7 @@ Azure にデプロイする必要があるネットワーク インフラスト�
 
 特定のおよび全般的なデータベースのドキュメントで既に強調されていますが、以下に精通している必要があります。
 
-- 「[Azure での Windows 仮想マシンの可用性の管理](../../manage-availability.md)」と「[Linux 仮想マシンの可用性管理](../../manage-availability.md)」
+- 「[Azure での Windows 仮想マシンの可用性の管理](../../availability.md)」と「[Linux 仮想マシンの可用性管理](../../availability.md)」
 - 「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」
 
 これらのドキュメントは、ストレージの種類と高可用性構成の選択範囲を決定する際に役立ちます。
