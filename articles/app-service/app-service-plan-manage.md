@@ -20,7 +20,7 @@ ms.locfileid: "100582534"
 ## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
 > [!TIP]
->App Service Environment がある場合は、 「[App Service Environment で App Service プランを作成する](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)」をご覧ください。
+> App Service Environment がある場合は、 「[App Service Environment で App Service プランを作成する](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan)」をご覧ください。
 
 空の App Service プランを作成したり、またはアプリ作成の一部としてプランを作成したりすることができます。
 
