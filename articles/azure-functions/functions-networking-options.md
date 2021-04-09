@@ -121,7 +121,7 @@ Azure Key Vault 参照を使用すると、コードの変更を必要とせず�
 現時点では、次の 2 つの方法のいずれかで、仮想ネットワーク内から非 HTTP トリガー関数を使用できます。
 
 + Premium プランで関数アプリを実行し、仮想ネットワーク トリガーのサポートを有効にする。
-+ App Service プランまたは App Service 環境で関数アプリを実行する。
++ App Service プランまたは App Service Environment で関数アプリを実行する。
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>仮想ネットワーク トリガーを使用した Premium プラン
 
