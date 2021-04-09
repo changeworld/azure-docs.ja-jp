@@ -9,10 +9,10 @@ ms.author: terrylan
 manager: rkarlin
 ms.date: 02/19/2021
 ms.openlocfilehash: 0146e4fcaf70d37975dc587a266c47bf4b3f4601
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103461676"
 ---
 # <a name="customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックス

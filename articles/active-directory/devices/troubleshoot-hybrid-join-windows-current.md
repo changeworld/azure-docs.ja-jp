@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1eb4194354a07d5b580f07cfe5962785a4e100bd
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3fd837a4c547b227147752b03b6a7312c733a5ae
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578024"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057016"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -370,6 +370,12 @@ WamDefaultAuthority: organizations
 - **WININET_E_CONNECTION_ABORTED** (0x80072efe/-2147012866)
    - 理由:サーバーとの接続が異常終了しました。
    - 解決策:しばらくしてからやり直すか、または別の安定したネットワークの場所から参加を試みます。
+
+##### <a name="other-errors"></a>その他のエラー
+
+- **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
+   - 理由: [User Device Registration]\(ユーザー デバイス登録\) イベント ログに EventID 220 が存在します。 Windows で、Active Directory 内のコンピューター オブジェクトにアクセスできません。 イベントに Windows エラー コードが含まれている可能性があります。 エラー コード ERROR_NO_SUCH_LOGON_SESSION (1312) および ERROR_NO_SUCH_USER (1317) の場合、これらはオンプレミス AD のレプリケーションの問題に関連しています。
+   - 解決策: AD のレプリケーションの問題をトラブルシューティングします。 レプリケーションの問題は一時的なものの場合があり、一定期間後に解消される可能性があります。
 
 ##### <a name="federated-join-server-errors"></a>サーバーのフェデレーション参加エラー
 

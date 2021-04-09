@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: vikancha
 ms.openlocfilehash: d73bd81f15263c79e16b574eb961d4ae0ac61175
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103417809"
 ---
 # <a name="ncast4_v3-series"></a>NCasT4_v3 シリーズ 
@@ -21,7 +21,7 @@ NCasT4_v3 シリーズ仮想マシンは、[Nvidia Tesla T4](https://www.nvidia.
 <br>
 
 [ACU](acu.md):230-260<br>
-[Premium Storage](premium-storage-performance.md): サポートされています<br>
+[Premium Storage](premium-storage-performance.md):サポートされています<br>
 [Premium Storage キャッシュ](premium-storage-performance.md): サポートされています<br>
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされていません<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされていません<br>

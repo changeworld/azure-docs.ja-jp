@@ -10,10 +10,10 @@ ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 78e4b35feb4e830a9f4335614a55d49ca90cd791
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101667637"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Synapse SQL で外部テーブルを使用する
@@ -48,7 +48,7 @@ ms.locfileid: "101667637"
 
 ---
 
-### <a name="security"></a>セキュリティ
+### <a name="security"></a>Security
 
 ユーザーは、外部テーブルのデータを読み取る場合、それに対する `SELECT` アクセス許可が必要です。
 外部テーブルから、基になる Azure Storage へのアクセスは、次の規則を使用してデータソース内で定義されているデータベース スコープ資格情報を使用して行います。
