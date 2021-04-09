@@ -4,10 +4,10 @@ description: FedRAMP Moderate ブループリント サンプルのコントロ�
 ms.date: 01/08/2021
 ms.topic: sample
 ms.openlocfilehash: 7a78ebf631d2c7eb21fea64b0b6aa307bb500e0d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594699"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate ブループリント サンプルのコントロール マッピング
@@ -273,7 +273,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
 - SQL Server での監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
-- SQL Server での脅威検出のデプロイ
+- SQL サーバーでの脅威検出のデプロイ
 
 > [!NOTE]
 > 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 

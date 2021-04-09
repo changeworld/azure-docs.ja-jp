@@ -10,10 +10,10 @@ ms.custom: subject-armqs, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 7437a5208f94b435576b8a38dc65a6e798303a72
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102179087"
 ---
 # <a name="quickstart-create-app-service-app-using-an-arm-template"></a>クイックスタート: ARM テンプレートを使用して App Service アプリを作成する
@@ -55,7 +55,7 @@ ms.locfileid: "102179087"
 
 次の表は、既定のパラメーターとその説明です。
 
-| パラメーター | 種類    | 既定値                | 説明 |
+| パラメーター | Type    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -85,7 +85,7 @@ ms.locfileid: "102179087"
 
 次の表は、既定のパラメーターとその説明です。
 
-| パラメーター | 種類    | 既定値                | 説明 |
+| パラメーター | Type    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | アプリの名前 |
 | location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | アプリのリージョン |
@@ -142,7 +142,7 @@ az deployment group create --resource-group myResourceGroup --parameters webAppN
 <summary>異なる言語スタックはどのようにしてデプロイすればよいですか?</summary>
 別の言語スタックをデプロイするには、 <abbr title="このテンプレートは、.NET Core、.NET Framework、PHP、Node.js、静的 HTML アプリと互換性があります。">言語パラメーター</abbr> 適切な値 Java の場合は、<a href="/azure/app-service/quickstart-java-uiex">Java アプリの作成</a>に関する記事を参照してください。
 
-| パラメーター | 種類    | 既定値                | 説明 |
+| パラメーター | Type    | 既定値                | 説明 |
 |------------|---------|------------------------------|-------------|
 | language   | string  | ".net"                       | プログラミング言語スタック (.net、php、node、html) |
 
