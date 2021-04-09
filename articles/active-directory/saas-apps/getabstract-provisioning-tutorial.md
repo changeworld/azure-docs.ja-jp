@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
 ms.openlocfilehash: 1d1b2417750b917f5b09bb53ee980887218a785c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102616130"
 ---
 # <a name="tutorial-configure-getabstract-for-automatic-user-provisioning"></a>チュートリアル:getAbstract を構成し、自動ユーザー プロビジョニングに対応させる
@@ -80,7 +80,7 @@ ms.locfileid: "102616130"
 
 ## <a name="step-3-add-getabstract-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから getAbstract を追加する
 
-Azure AD アプリケーション ギャラリーから getAbstract を追加して、getAbstract へのプロビジョニングの管理を開始します。 SSO のために getAbstract を以前に設定している場合は、その同じアプリケーションを使用できます。 統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法について詳しくは、[こちらのクイックスタート](../manage-apps/add-application-portal.md)に関するページを参照してください。
+Azure AD アプリケーション ギャラリーから getAbstract を追加して、getAbstract へのプロビジョニングの管理を開始します。 SSO のために getAbstract を以前に設定している場合は、その同じアプリケーションを使用できます。 統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちらのクイックスタート](../manage-apps/add-application-portal.md)に関するページを参照してください。
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する
 
@@ -158,9 +158,9 @@ Azure AD プロビジョニング サービスを使用して、アプリケー�
 
 1. プロビジョニングの準備ができたら、 **[保存]** を選択します。
 
-    ![[保存] ボタンを示すスクリーンショット。](common/provisioning-configuration-save.png)
+    ![[保存] ボタンが表示されているスクリーンショット。](common/provisioning-configuration-save.png)
 
-この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 初期サイクルは後続の同期よりも実行に時間がかかります。後続のサイクルは、Azure AD のプロビジョニング サービスが実行されている限り約 40 分ごとに実行されます。
+この操作により、 **[設定]** セクションの **[スコープ]** で定義したすべてのユーザーとグループの初期同期サイクルが開始されます。 最初のサイクルの実行は後続のサイクルよりも時間がかかります。Azure AD のプロビジョニング サービスが実行されている限り、後続のサイクルは約 40 分ごとに実行されます。
 
 ## <a name="step-6-monitor-your-deployment"></a>手順 6. デプロイを監視する
 
@@ -168,7 +168,7 @@ Azure AD プロビジョニング サービスを使用して、アプリケー�
 
 * [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 * [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
-* プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫の状態の詳細については、「[検疫状態のアプリケーションのプロビジョニング](../app-provisioning/application-provisioning-quarantine-status.md)」を参照してください。
+* プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[検疫状態のアプリケーションのプロビジョニング](../app-provisioning/application-provisioning-quarantine-status.md)に関する記事をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

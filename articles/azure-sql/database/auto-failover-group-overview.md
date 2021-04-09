@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 12/26/2020
-ms.openlocfilehash: 91375f4460b55617ace0b18b60d59d961a762f4c
-ms.sourcegitcommit: 00aa5afaa9fac91f1059cfed3d8dbc954caaabe2
+ms.openlocfilehash: e0b9eea7be97b9b67e75c314c4a1d9e69322e5b5
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/27/2020
-ms.locfileid: "97792502"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104594259"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "97792502"
 - [Azure Portal](geo-distributed-application-configure-tutorial.md)
 - [Azure CLI: フェールオーバー グループ](scripts/add-database-to-failover-group-cli.md)
 - [PowerShell: フェールオーバー グループ](scripts/add-database-to-failover-group-powershell.md)
-- [REST API: フェールオーバー グループ](/rest/api/sql/failovergroups)。
+- [REST API: フェールオーバー グループ](/rest/api/sql/failovergroups)
 
 フェールオーバー後は、データベースおよびサーバー、またはインスタンスの認証要件が確実に新しいプライマリで構成されるようにしてください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](active-geo-replication-security-configure.md)に関するページを参照してください。
 
@@ -115,7 +115,7 @@ ms.locfileid: "97792502"
 
   - データ損失が許容されない場合は、運用環境でディザスター リカバリー (DR) ドリルを行います
   - データベースを別のリージョンに再配置します
-  - 機能停止が軽減 (フェールバック) された後、データベースをプライマリ リージョンに返します。
+  - 機能停止が軽減 (フェールバック) された後、データベースをプライマリ リージョンに返します
 
 - **計画されていないフェールオーバー**
 
@@ -176,7 +176,7 @@ OLTP 操作を実行するときに、サーバー URL として `<fog-name>.dat
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>読み取り専用ワークロードに読み取り専用リスナーを使用する
 
-データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `<fog-name>.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 接続文字列に `ApplicationIntent=ReadOnly` を使用して、読み取りの意図を示すこともお勧めします。
+データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバー URL として `<fog-name>.secondary.database.windows.net` を使用すると、自動的にセカンダリに接続されます。 `ApplicationIntent=ReadOnly` を使用して、接続文字列で読み取りの意図を示すこともお勧めします。
 
 ### <a name="preparing-for-performance-degradation"></a>パフォーマンスの低下に対して準備する
 
