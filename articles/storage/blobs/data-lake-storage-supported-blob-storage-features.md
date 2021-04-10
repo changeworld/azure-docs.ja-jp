@@ -44,7 +44,7 @@ Azure Data Lake Storage Gen2 で使用できる BLOB ストレージ機能を次
 |不変ストレージ|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[不変ストレージを使用してビジネスに不可欠な BLOB データを保存する](storage-blob-immutable-storage.md)|
 |コンテナーの論理的な削除|プレビュー|プレビュー|[コンテナーの論理的な削除 (プレビュー)](soft-delete-container-overview.md)|
 |Azure Storage インベントリ|プレビュー|プレビュー|[Azure Storage インベントリを使用して BLOB データを管理する (プレビュー)](blob-inventory.md)|
-|カスタム ドメイン|プレビュー<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|[カスタム ドメインを Azure Blob ストレージ エンドポイントにマップする](storage-custom-domain-name.md)|
+|カスタム ドメイン|プレビュー<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|プレビュー<div role="complementary" aria-labelledby="preview-form-2"><sup>2</sup></div>|[カスタム ドメインを Azure Blob Storage エンドポイントにマップする](storage-custom-domain-name.md)|
 |BLOB の論理的な削除|まだサポートされていません|まだサポートされていません|[BLOB の論理的な削除](./soft-delete-blob-overview.md)|
 |blobfuse|一般公開|一般公開|[blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法](storage-how-to-mount-container-linux.md)|
 |匿名パブリック アクセス |一般公開|一般公開| 「[コンテナーと BLOB の匿名パブリック読み取りアクセスを構成する](anonymous-read-access-configure.md)」を参照してください。|
