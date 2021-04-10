@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 11/17/2020
 ms.custom: devx-track-java
 ms.author: inhenkel
-ms.openlocfilehash: 769b4bc431040ee4d872fa60270196db96978ed2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 06923d7c198edc324d85b726cf91694d8cf7e1ca
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94748184"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961355"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Media Services v3 API に接続する - Java
 
@@ -37,7 +37,7 @@ ms.locfileid: "94748184"
    - Apache Maven
    - Java Extension Pack
 - 環境変数 `JAVA_HOME` と `PATH` を必ず設定します。
-- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
+- [Media Services アカウントを作成する](./account-create-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。
 - [API へのアクセス](./access-api-howto.md)に関するトピックの手順を実行します。 後の手順で必要になるので、サブスクリプション ID、アプリケーション ID (クライアント ID)、認証キー (シークレット)、テナント ID を控えておきます。
 
 また、次を確認してください。

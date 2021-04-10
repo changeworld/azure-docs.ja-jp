@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9ced4da7f71a0499e538e499644d89240611f1ea
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 96917b805640f0cfe38f28ba263e2e7ce55bce7f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956215"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066162"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>データ ラングリング用に (Azure Synapse Analytics によって機能する) Apache Spark プールをアタッチする (プレビュー)
 
-この記事では、[Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) によって機能する Apache Spark プールを、大規模なデータ ラングリング用にアタッチして起動する方法について説明します。 
+この記事では、[Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) によって機能する Apache Spark プールを、大規模なデータ ラングリング用にアタッチして起動する方法について説明します。 
 
 この記事には、Jupyter Notebook の専用 Synapse セッション内で対話形式でデータ ラングリング タスクを実行するためのガイダンスが含まれています。 Azure Machine Learning パイプラインを使用する場合は、「[機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)](how-to-use-synapsesparkstep.md)」を参照してください。
 
@@ -310,7 +310,7 @@ input1 = train_ds.as_mount()
 
 ## <a name="example-notebook"></a>ノートブックの例
 
-単一のノートブックから Azure Synapse Analytics　と Azure Machine Learning を使用してデータ準備とモデルのトレーニングを実行する方法を詳しく示したコード例については、こちらの[エンド ツー エンドのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb)を参照してください。
+単一のノートブックから Azure Synapse Analytics　と Azure Machine Learning を使用してデータ準備とモデルのトレーニングを実行する方法を詳しく示したコード例については、こちらの[エンド ツー エンドのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_session_on_synapse_spark_pool.ipynb)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,22 +1,22 @@
 ---
 title: Azure Kinect Sensor SDK のシステム要件
 description: Windows および Linux の Azure Kinect Sensor SDK のシステム要件について説明します。
-author: tesych
-ms.author: tesych
+author: qm13
+ms.author: quentinm
 ms.custom:
 - CI 115266
 - CSSTroubleshooting
 manager: dcscontentpm
 ms.prod: kinect-dk
-ms.date: 03/12/2020
+ms.date: 03/05/2021
 ms.topic: article
 keywords: azure, kinect, システム要件, CPU, GPU, USB, セットアップ, セットアップ, 最小, 要件
-ms.openlocfilehash: 5cf313114b62532ee3f2b3d7a5142f79218954c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 558c1b9ca264874fa808aeba5f1e8a809a8f722d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85277079"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104656976"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Azure Kinect Sensor SDK のシステム要件
 
@@ -52,7 +52,7 @@ PC ホストのハードウェア要件は、ホスト PC で実行されるア�
 
 - 第 7 世代 Intel&reg; CoreTM i5 プロセッサ (クアッド コア 2.4 GHz 以上)
 - 4 GB メモリ
-- NVIDIA GEFORCE GTX 1070 以上
+- NVIDIA GEFORCE GTX 1050 または同等
 - 専用の USB3 ポート
 
 推奨される最小構成では、K4A_DEPTH_MODE_NFOV_UNBINNED 深度モードが 30fps で 5 人をトラッキングしていることを想定しています。 よりローエンドな CPU や古い CPU、および NVIDIA GPU も、ユースケースによっては動作する場合があります。

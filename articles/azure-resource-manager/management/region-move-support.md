@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 08/25/2020
 ms.author: raynew
-ms.openlocfilehash: 18d4d84462d528b718d784ff6a16ecf990ed0d20
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 9229fca9f98aac4ca628c0bb25c13c9ba1989626
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100094017"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962596"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>リージョン間の Azure リソースの移動のサポート
 
@@ -503,7 +503,7 @@ ms.locfileid: "100094017"
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
 > | capabilities | いいえ | 
-> | domainnames | はい | いいえ |
+> | domainnames | いいえ |
 > | quotas | いいえ | 
 > | resourcetypes | いいえ |
 > | validatesubscriptionmoveavailability | いいえ | 
@@ -1061,7 +1061,7 @@ ms.locfileid: "100094017"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | リージョンの移動 | 
 > | ------------- | ----------- |
-> | accounts | いいえ。 [詳細については、こちらを参照してください](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。
+> | accounts | いいえ。 [詳細については、こちらを参照してください](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。 |
 > | actiongroups |  いいえ | 
 > | activitylogalerts | いいえ | 
 > | alertrules |  いいえ | 
@@ -1073,12 +1073,12 @@ ms.locfileid: "100094017"
 > | diagnosticsettingscategories | いいえ | 
 > | eventcategories | いいえ | 
 > | eventtypes | いいえ | 
-> | extendeddiagnosticsettings | いいえ | |
+> | extendeddiagnosticsettings | いいえ |
 > | guestdiagnosticsettings | いいえ | 
 > | listmigrationdate | いいえ | 
 > | logdefinitions | いいえ | 
 > | logprofiles | いいえ | 
-> | logs | いいえ | いいえ |
+> | logs | いいえ |
 > | metricalerts | いいえ | 
 > | metricbaselines | いいえ | 
 > | metricbatch | いいえ | 
@@ -1399,7 +1399,8 @@ ms.locfileid: "100094017"
 > | networkwatchers/pingmeshes |  いいえ | 
 > | p2svpngateways | いいえ | 
 > | privatednszones |  いいえ |  
-> | privatednszones/virtualnetworklinks | いいえ |> | privatednszonesinternal | いいえ |
+> | privatednszones/virtualnetworklinks | いいえ |
+> | privatednszonesinternal | いいえ |
 > | privateendpointredirectmaps | いいえ |
 > | privateendpoints | いいえ | 
 > | privatelinkservices | いいえ | 
