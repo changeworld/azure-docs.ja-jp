@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 4bb323e0e8f72456b6a522ede9a98d193e1c3c7e
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 2d6ac02402414f096a46fec0340c3074d8e1784a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102098776"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104586643"
 ---
 # <a name="manage-python-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Apache Spark 用の Python ライブラリを管理する
 
@@ -68,13 +68,13 @@ alabaster==0.7.10
 ```
 name: stats2
 channels:
-  - defaults
+- defaults
 dependencies:
-  - bokeh=0.9.2
-  - numpy=1.9.*
-  - flask
-  - pip:
-    - matplotlib
+- bokeh
+- numpy
+- pip:
+  - matplotlib
+  - koalas==1.7.0
 ```
 この environment.yml ファイルから環境を作成する方法の詳細については、[environment.yml ファイルからの環境の作成](https://docs.conda.io/projects/conda/latest/user-guide/tasks/manage-environments.html#creating-an-environment-file-manually)に関するページを参照してください。
 
@@ -140,6 +140,11 @@ Python の wheel ファイルは、Python ライブラリをパッケージ化�
 
 ![ワークスペース パッケージを強調したスクリーンショット。](./media/apache-spark-azure-portal-add-libraries/studio-add-workspace-package.png "ワークスペース パッケージを表示する")
 
+>[!WARNING]
+>- Azure Synapse 内では、Apache Spark プールは、ワークスペース パッケージとしてアップロードされたカスタム ライブラリ、または既知の Azure Data Lake Storage パス内にアップロードされたカスタム ライブラリのいずれかを利用できます。 ただし、これらのオプションの両方を、同じ Apache Spark プール内で同時に使用することはできません。 両方の方法を使用してパッケージが提供されている場合は、ワークスペース パッケージの一覧で指定した wheel ファイルのみがインストールされます。 
+>
+>- ワークスペース パッケージ (プレビュー) を使用して特定の Apache Spark プールにパッケージをインストールした後は、同じプールにストレージ アカウント パスを使用してパッケージを指定できなくなるという制限があります。  
+
 ### <a name="storage-account"></a>ストレージ アカウント
 Synapse ワークスペースにリンクされている Azure Data Lake Storage (Gen2) アカウントにすべての wheel ファイルをアップロードすることで、カスタム ビルドの wheel パッケージを Apache Spark プールにインストールできます。 
 
@@ -149,13 +154,12 @@ Synapse ワークスペースにリンクされている Azure Data Lake Storage
 abfss://<file_system>@<account_name>.dfs.core.windows.net/synapse/workspaces/<workspace_name>/sparkpools/<pool_name>/libraries/python/
 ```
 
-```libraries``` フォルダー内に ```python``` フォルダーがまだ存在しない場合は、これを追加する必要があります。
+>[!WARNING]
+> ファイル パスがない場合、上記の構造に基づいてこれを作成する必要が生じることがあります。 たとえば、```libraries``` フォルダー内に ```python``` フォルダーがまだ存在しない場合は、これを追加する必要があります。
 
 > [!IMPORTANT]
 > Azure DataLake Storage メソッドを使用してカスタム ライブラリをインストールするには、Azure Synapse Analytics ワークスペースにリンクされているプライマリ Gen2 ストレージ アカウントに対して、**ストレージ BLOB データ共同作成者** または **ストレージ BLOB データ所有者** のアクセス許可を持っている必要があります。
 
->[!WARNING]
-> カスタム wheel ファイルを指定する場合、ユーザーはストレージ アカウントとワークスペース ライブラリ インターフェイスの両方で wheel ファイルを指定することはできません。 両方を指定した場合は、ワークスペース パッケージの一覧で指定した wheel ファイルのみがインストールされます。 
 
 ## <a name="session-scoped-packages-preview"></a>セッション スコープのパッケージ (プレビュー)
 プール レベルのパッケージに加えて、セッション スコープのライブラリをノートブック セッションの開始時に指定することもできます。  セッション スコープのライブラリを使用すると、ノートブック セッション内でカスタム Python 環境を指定して使用できます。 

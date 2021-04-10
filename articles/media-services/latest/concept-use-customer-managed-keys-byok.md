@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 4564e28f76aebe7f708c2b6f68903fe67bcefe26
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f2ea960d28bcdcbf586570933ac00dccae18e46a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101698860"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067998"
 ---
 # <a name="bring-your-own-key-customer-managed-keys-with-media-services"></a>Media Services での Bring Your Own Key (カスタマー マネージド キー)
 
@@ -51,4 +51,4 @@ Media Services では、自動的に二重暗号化がサポートされます�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Media Services 動的暗号化を使用してコンテンツを保護する](content-protection-overview.md)
+[Media Services 動的暗号化を使用してコンテンツを保護する](drm-content-protection-concept.md)
