@@ -7,10 +7,10 @@ ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
 ms.openlocfilehash: 10bd2c4902157b9e01b1cb0ff10b3ebdf448568c
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102244664"
 ---
 以降のセクションでは、ターミナルを設定し、Azure CLI を使用して IoT ハブを設定します。 Azure CLI コマンドを実行するターミナルを構成するには、ブラウザーベースの Azure Cloud Shell を使用するか、またはローカル ターミナルを使用してください。
