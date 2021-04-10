@@ -3,12 +3,12 @@ title: Azure VMware Solution 仮想マシンのバックアップ ソリュー�
 description: Azure VMware Solution 仮想マシンのバックアップおよび復元のための優れたソリューションについて説明します。
 ms.topic: how-to
 ms.date: 03/17/2021
-ms.openlocfilehash: 368c5f600527ea564eb168cad0e9681ebf0b6fc7
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 92726cae8a6f99140e4401763d14506f71884cc1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586133"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166345"
 ---
 # <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Azure VMware Solution 仮想マシン (VM) のバックアップ ソリューション
 
@@ -22,5 +22,5 @@ Azure VMware Solution VM 間のバックアップ ネットワーク トラフ�
 - [Commvault](https://documentation.commvault.com/11.21/essential/128997_support_for_azure_vmware_solution.html)
 - [Veritas](https://vrt.as/nb4avs)
 - [Veeam](https://www.veeam.com/kb4012)
-- [Cohesity](https://www.cohesity.com/resource-assets/solution-brief/Cohesity-Azure-Solution-Brief.pdf)
+- [Cohesity](https://www.cohesity.com/blogs/expanding-cohesitys-support-for-microsofts-ecosystem-azure-stack-and-azure-vmware-solution/)
 - [Dell Technologies](https://www.delltechnologies.com/resources/en-us/asset/briefs-handouts/solutions/dell-emc-data-protection-for-avs.pdf)

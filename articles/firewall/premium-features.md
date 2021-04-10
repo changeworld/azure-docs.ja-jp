@@ -5,14 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/12/2021
 ms.author: victorh
-ms.openlocfilehash: a3f72d235d6c52ce91ae351c2606ee6cf4285159
-ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
+ms.custom: references_regions
+ms.openlocfilehash: 4a8efff7ef53753e15a47e87a2bb82d0124ae997
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2021
-ms.locfileid: "102453429"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590451"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium プレビューの機能
 
@@ -100,6 +101,44 @@ or
 
 [https://aka.ms/azfw-webcategories-request](https://aka.ms/azfw-webcategories-request) で要求を送信してください。
  
+## <a name="supported-regions"></a>サポートされているリージョン
+
+Azure Firewall Premium プレビュー は、次のリージョンでサポートされています。
+
+- 西ヨーロッパ (パブリック/ヨーロッパ)
+- 米国東部 (パブリック/米国)
+- オーストラリア東部 (パブリック/オーストラリア)
+- 東南アジア (パブリック/アジア太平洋)
+- 英国南部 (パブリック/英国)
+- 北ヨーロッパ (パブリック/ヨーロッパ)
+- 米国東部 2 (パブリック/米国)
+- 米国中南部 (パブリック/米国)
+- 米国西部 2 (パブリック/米国)
+- 米国西部 (パブリック/米国)
+- 米国中部 (パブリック/米国)
+- 米国中北部 (パブリック/米国)
+- 東日本 (パブリック/日本)
+- 東アジア (パブリック/アジア太平洋)
+- カナダ中部 (パブリック/カナダ)
+- フランス中部 (パブリック/フランス)
+- 南アフリカ北部 (パブリック/南アフリカ)
+- アラブ首長国連邦北部 (パブリック/UAE)
+- スイス北部 (パブリック/スイス)
+- ブラジル南部 (パブリック/ブラジル)
+- ノルウェー東部 (パブリック/ノルウェー)
+- オーストラリア中部 (パブリック/オーストラリア)
+- オーストラリア中部 2 (パブリック/オーストラリア)
+- オーストラリア南東部 (パブリック/オーストラリア)
+- カナダ東部 (パブリック/カナダ)
+- 米国中部 EUAP (パブリック/カナリア (US))
+- フランス南部 (パブリック/フランス)
+- 西日本 (パブリック/日本)
+- 韓国南部 (パブリック/韓国)
+- アラブ首長国連邦中部 (パブリック/UAE)
+- 英国西部 (パブリック/英国)
+- 米国中西部 (パブリック/米国)
+- インド西部 (パブリック/インド)
+
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -118,8 +157,7 @@ Azure Firewall Premium プレビューには、次の既知の問題がありま
 |証明書伝達|CA 証明書がファイアウォールに適用された後、証明書が有効になるまでに 5 分から 10 分かかることがあります。|修正プログラムが一般提供される予定です。|
 |IDPS バイパス|IDPS バイパスは TLS 終了のトラフィックでは機能せず、送信元 IP アドレスと送信元 IP グループはサポートされません。|修正プログラムが一般提供される予定です。|
 |TLS 1.3 のサポート|TLS 1.3 は部分的にサポートされています。 クライアントからファイアウォールへの TLS トンネルは TLS 1.2 に基づいており、ファイアウォールから外部 Web サーバーへは TLS 1.3 に基づいています。|更新を調査中です。|
-
-
+|KeyVault のプライベート エンドポイント|KeyVault は、プライベート エンドポイント アクセスをサポートして、ネットワークへの露出を制限します。 [KeyVault のドキュメント](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)で説明されているように、例外が構成されている場合、信頼された Azure サービスはこの制限を回避できます。 Azure Firewall は現在信頼されたサービスとして列挙されていないため、KeyVault にアクセスできません。|修正プログラムが一般提供される予定です。|
 
 
 ## <a name="next-steps"></a>次のステップ

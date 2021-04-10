@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/23/2021
 ms.author: alkohli
-ms.openlocfilehash: 846d4a259f0fcd204bcad6c898efc999c3765fd3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4d2a345ed49fae2e1d77b3c5da44b305d069874e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104962439"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729458"
 ---
 # <a name="azure-stack-edge-2103-release-notes"></a>Azure Stack Edge 2103 リリース ノート
 
@@ -98,7 +98,7 @@ Azure Stack Edge 2103 リリースの新機能は以下のとおりです。
 |**19.**|Kubernetes と更新 |2008 リリースなどの以前のソフトウェア バージョンでは、更新が ClusterConnectionException で失敗する競合状態の更新の問題があります。 |この問題は、新しいビルドを使用すると回避できます。 この問題が解決しない場合は、アップグレードを再試行することで対応できます。|
 |**20**|Internet Explorer|強化されたセキュリティ機能が有効になっている場合は、ローカル Web UI ページにアクセスできない可能性があります。 | 強化されたセキュリティを無効にし、ブラウザーを再起動してください。|
 |**21.**|Kubernetes ダッシュボード | Kubernetes ダッシュボードで SSL 証明書を使用する *Https* エンドポイントはサポートされていません。 | |
-|**22.**|Kubernetes |Kubernetes は、.NET アプリケーションで使用される環境変数名の ":" をサポートしていません。 これは、イベント グリッド IoT Edge モジュールが Azure Stack Edge デバイスやその他のアプリケーションで機能するためにも必要です。 詳細については、[ASP.NET Core のドキュメント](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables)をご覧ください。|":" は二重のアンダースコアに置き換えてください。 詳細については、[Kubernetes の問題](https://github.com/kubernetes/kubernetes/issues/53201)に関する記事をご覧ください。|
+|**22.**|Kubernetes |Kubernetes は、.NET アプリケーションで使用される環境変数名の ":" をサポートしていません。 これは、イベント グリッド IoT Edge モジュールが Azure Stack Edge デバイスやその他のアプリケーションで機能するためにも必要です。 詳細については、[ASP.NET Core のドキュメント](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration#environment-variables)をご覧ください。|":" は二重のアンダースコアに置き換えてください。 詳細については、[Kubernetes の問題](https://github.com/kubernetes/kubernetes/issues/53201)に関する記事をご覧ください。|
 |**23.** |Azure Arc と Kubernetes クラスター |Git リポジトリからリソース `yamls` を削除した場合、既定で Kubernetes クラスターから対応するリソースは削除されません。  |Git リポジトリからリソースを削除したときに、それらが削除されるようにするには、Arc OperatorParams に `--sync-garbage-collection` を設定します。 詳細については、「[構成を削除する](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)」をご覧ください。 |
 |**24.**|NFS |お使いのデバイスの NFS 共有マウントを使用してデータを書き込むアプリケーションでは、排他的な書き込みを使用する必要があります。 これにより、書き込みがディスクに書き込まれるようになります。| |
 |**25.**|コンピューティングの構成 |ネットワーク上に存在しないシステムに対するアドレス解決プロトコル (ARP) 要求にゲートウェイまたはスイッチまたはルーターが応答するネットワーク構成では、コンピューティング構成が失敗します。| |

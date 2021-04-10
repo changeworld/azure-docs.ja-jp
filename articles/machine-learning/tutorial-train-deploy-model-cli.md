@@ -8,13 +8,13 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 03/26/2020
-ms.openlocfilehash: 77df97eaecc59bc9160bcf63ae5d3904cd79ec79
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.date: 04/02/2021
+ms.openlocfilehash: e518ea83608472753d3463a980aae169b291d4de
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102215189"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221298"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>チュートリアル:CLI からのモデルのトレーニングとデプロイ
 
@@ -84,20 +84,6 @@ az login
 CLI で既定のブラウザーを開くことができる場合、開いたブラウザにサインイン ページが読み込まれます。 それ以外の場合は、ブラウザーを開き、コマンド ラインの指示に従う必要があります。 この手順では、[https://aka.ms/devicelogin](https://aka.ms/devicelogin) にアクセスして認証コードを入力する必要があります。
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
-
-## <a name="install-the-machine-learning-extension"></a>機械学習拡張機能をインストールする
-
-機械学習拡張機能インストールするには、次のコマンドを使用します。
-
-```azurecli-interactive
-az extension add -n azure-cli-ml
-```
-
-拡張機能が既にインストールされていることを示すメッセージが表示される場合は、次のコマンドを使用して最新バージョンに更新します。
-
-```azurecli-interactive
-az extension update -n azure-cli-ml
-```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 

@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 3b596d14ea770bfcd7560903a234d2ab77b66201
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 28fb5ffc0ce9c554294eaca9e460694856cb95a0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102614328"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104589873"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 のパフォーマンスに関する考慮事項 (プレビュー)
 
@@ -46,7 +46,7 @@ Azure Blob Storage は、ストレージ アカウントのエグレスとイン
 > [!div class="mx-imgBorder"]
 > ![相対パフォーマンス](./media/network-file-system-protocol-support-performance/relative-performance.png)
 
-## <a name="avoid-frequent-overwrites-on-date"></a>日付が頻繁に上書きされないようにする
+## <a name="avoid-frequent-overwrites-on-data"></a>Avoid frequent overwrites on data
 
 新規書き込み操作より、上書き操作の方が完了するまでに時間がかかります。 これは、NFS の上書き操作 (特に、部分的なインプレース ファイル編集) が、読み取り、変更、書き込み操作といういくつかの基になる BLOB 操作を組み合わせたものであるためです。 そのため、頻繁にインプレース編集が必要なアプリケーションは、NFS が有効になっている BLOB ストレージ アカウントには適していません。 
 

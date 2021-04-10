@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6986651d2b48d82382aa26a0a3947104c7e09981
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5d631d8492ed1869bdc244e2cc90595183892822
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027802"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105104202"
 ---
 リモート デスクトップ接続を作成すると、VNet にデプロイされている VM に接続できます。 VM に接続できるかどうかを初めて確認する際に最も良い方法は、その VM のコンピューター名ではなく、プライベート IP アドレスを使って接続してみることです。 この方法であれば、名前の解決が適切に構成されているかではなく、VM に接続できるかどうかをテストすることができます。
 
@@ -50,4 +50,4 @@ VPN 接続を使って仮想マシンに接続する際に問題が発生した�
 
 * プライベート IP アドレスを使って VM に接続できるものの、コンピューター名では接続できない場合には、DNS が正しく構成されているかどうかを確認します。 VM の名前解決の動作について詳しくは、[VM の名前解決](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)に関するページを参照してください。
 
-* 詳細については、[VM に対するリモート デスクトップ接続のトラブルシューティング](../articles/virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)に関するページを参照してください。
+* 詳細については、[VM に対するリモート デスクトップ接続のトラブルシューティング](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection)に関するページを参照してください。
