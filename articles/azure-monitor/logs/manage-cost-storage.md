@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/03/2021
 ms.author: bwren
-ms.openlocfilehash: 89264bc17180aaf47611aef73c9fd20427bce104
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: 5048364aed1eea8d0c32d9134a4ba5a22d28b989
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772282"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560456"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -93,7 +93,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
     
 3. 過去 31 日間の使用量に基づいて推定コストを確認した後、価格レベルを変更する場合は、 **[選択 ]** をクリックします。  
 
-`sku` パラメーター (Azure Resource Manager テンプレートの `pricingTier`) を使用して [Azure Resource Manager 経由で価格レベルを設定](../samples/resource-manager-workspace.md)することもできます。 
+`sku` パラメーター (Azure Resource Manager テンプレートの `pricingTier`) を使用して [Azure Resource Manager 経由で価格レベルを設定](./resource-manager-workspace.md)することもできます。 
 
 ## <a name="legacy-pricing-tiers"></a>レガシ価格レベル
 
@@ -145,7 +145,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 保持期間が短縮された場合、新しい保持設定よりも古いデータが削除されるまでには、数日の猶予期間があります。 
 
-**[データ保有期間]** ページでは、30、31、60、90、120、180、270、365、550、および 730 日の保有期間設定を使用できます。 別の設定が必要な場合は、[Azure Resource Manager](../samples/resource-manager-workspace.md) で `retentionInDays` パラメーターを使用して構成できます。 データの保持期間を 30 日に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用して、(数日の猶予期間を除去し) より古いデータの即時消去をトリガーできます。 これは、即時のデータ削除が不可欠なコンプライアンス関連のシナリオに役立ちます。 この即時消去機能は、Azure Resource Manager 経由でのみ公開されています。 
+**[データ保有期間]** ページでは、30、31、60、90、120、180、270、365、550、および 730 日の保有期間設定を使用できます。 別の設定が必要な場合は、[Azure Resource Manager](./resource-manager-workspace.md) で `retentionInDays` パラメーターを使用して構成できます。 データの保持期間を 30 日に設定すると、`immediatePurgeDataOn30Days` パラメーターを使用して、(数日の猶予期間を除去し) より古いデータの即時消去をトリガーできます。 これは、即時のデータ削除が不可欠なコンプライアンス関連のシナリオに役立ちます。 この即時消去機能は、Azure Resource Manager 経由でのみ公開されています。 
 
 30 日の保持期間があるワークスペースでは、実際には 31 日間分のデータを保持することができます。 データを 30 日間しか保持しないことが不可欠な場合は、Azure Resource Manager を使用して保持期間を 30 日に設定したうえで、`immediatePurgeDataOn30Days` パラメーターを指定します。  
 
@@ -322,7 +322,7 @@ find where TimeGenerated >= startofday(ago(7d)) and TimeGenerated < startofday(n
 
 
 > [!TIP]
-> 複数の種類のデータにわたるスキャンは、実行に[多量のリソースを使うため](../log-query/query-optimization.md#query-performance-pane)、これらの `find` クエリは多用しないようにします。 **コンピューターごと** の結果が不要な場合は、Usage データ型に関するクエリを実行します (下記参照)。
+> 複数の種類のデータにわたるスキャンは、実行に[多量のリソースを使うため](./query-optimization.md#query-performance-pane)、これらの `find` クエリは多用しないようにします。 **コンピューターごと** の結果が不要な場合は、Usage データ型に関するクエリを実行します (下記参照)。
 
 ## <a name="understanding-ingested-data-volume"></a>取り込まれたデータ ボリュームについて理解する
 
@@ -406,7 +406,7 @@ find where TimeGenerated > ago(24h) project _IsBillable, Computer
 ```
 
 > [!TIP]
-> 複数の種類のデータにわたるスキャンは、実行に[多量のリソースを使うため](../log-query/query-optimization.md#query-performance-pane)、これらの `find` クエリは多用しないようにします。 **コンピューターごと** の結果が不要な場合は、Usage データ型に関するクエリを実行します。
+> 複数の種類のデータにわたるスキャンは、実行に[多量のリソースを使うため](./query-optimization.md#query-performance-pane)、これらの `find` クエリは多用しないようにします。 **コンピューターごと** の結果が不要な場合は、Usage データ型に関するクエリを実行します。
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Azure リソース、リソース グループ、またはサブスクリプションごとのデータ ボリューム
 
@@ -421,10 +421,9 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 __Azure サブスクリプションごとに__ 取り込まれたデータの **サイズ** を取得できる Azure でホストされているノードからのデータについては、`_SubscriptionId` プロパティを次のように使用します。
 
 ```kusto
-find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillable
+find where TimeGenerated > ago(24h) project _BilledSize, _IsBillable, _SubscriptionId
 | where _IsBillable == true 
-| summarize BillableDataBytes = sum(_BilledSize) by _ResourceId
-| summarize BillableDataBytes = sum(BillableDataBytes) by _SubscriptionId | sort by BillableDataBytes nulls last
+| summarize BillableDataBytes = sum(_BilledSize) by _SubscriptionId | sort by BillableDataBytes nulls last
 ```
 
 リソース グループ別にデータ量を取得するには、`_ResourceId` を解析できます。
@@ -445,7 +444,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 ```
 
 > [!TIP]
-> 複数の種類のデータにわたるスキャンは、実行に[多量のリソースを使うため](../log-query/query-optimization.md#query-performance-pane)、これらの `find` クエリは多用しないようにします。 サブスクリプション、リソース グループ、またはリソース名ごとの結果が不要な場合は、Usage データ型に関するクエリを実行します。
+> 複数の種類のデータにわたるスキャンは、実行に[多量のリソースを使うため](./query-optimization.md#query-performance-pane)、これらの `find` クエリは多用しないようにします。 サブスクリプション、リソース グループ、またはリソース名ごとの結果が不要な場合は、Usage データ型に関するクエリを実行します。
 
 > [!WARNING]
 > 使用状況データ型の一部のフィールドは、スキーマにはまだありますが非推奨とされていて、その値が設定されなくなります。 これらは、**Computer** と、取り込みに関連するフィールド (**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped**、および **AverageProcessingTimeMs**) です。
@@ -479,7 +478,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 
 | データ量の多いソース | データ量を削減する方法 |
 | -------------------------- | ------------------------- |
-| Container Insights         | 必要なデータのみを収集するように [Container Insights を構成](../insights/container-insights-cost.md#controlling-ingestion-to-reduce-cost)します。 |
+| Container Insights         | 必要なデータのみを収集するように [Container Insights を構成](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost)します。 |
 | セキュリティ イベント            | [一般的または最小限のセキュリティ イベント](../../security-center/security-center-enable-data-collection.md#data-collection-tier)を選択します。 <br> 必要なイベントのみを収集するようにセキュリティ監査ポリシーを変更します。 特に、次のイベントを収集する必要性を検討します。 <br> - [フィルタリング プラットフォームの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [レジストリの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [ファイル システムの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [カーネル オブジェクトの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [ハンドル操作の監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - リムーバブル記憶域の監査 |
 | パフォーマンス カウンター       | [パフォーマンス カウンターの構成](../agents/data-sources-performance-counters.md)を次のように変更します。 <br> - 収集の頻度を減らす <br> - パフォーマンス カウンターの数を減らす |
 | イベント ログ                 | [イベント ログの構成](../agents/data-sources-windows-events.md)を次のように変更します。 <br> - 収集対象のイベント ログの数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" レベルのイベントを収集しないようにします。 |
@@ -487,8 +486,8 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 | AzureDiagnostics           | [リソース ログの収集](../essentials/diagnostic-settings.md#create-in-azure-portal)を次のように変更します。 <br> - Log Analytics へのリソース送信ログの数を減らす <br> - 必要なログのみを収集する |
 | ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../insights/solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
 | Application Insights | [https://docs.microsoft.com/azure/azure-monitor/app/pricing#managing-your-data-volume](managing Application Insights data volume) のオプションを確認します。 |
-| [SQL Analytics](https://docs.microsoft.com/azure/azure-monitor/insights/azure-sql) | [AzSqlServerAudit](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserveraudit) を使用して、監査設定を調整します。 |
-| Azure Sentinel | 追加のデータ ボリュームのソースとして最近有効にした [Sentinel データ ソース](https://docs.microsoft.com/azure/sentinel/connect-data-sources)を確認します。 |
+| [SQL Analytics](../insights/azure-sql.md) | [AzSqlServerAudit](/powershell/module/az.sql/set-azsqlserveraudit) を使用して、監査設定を調整します。 |
+| Azure Sentinel | 追加のデータ ボリュームのソースとして最近有効にした [Sentinel データ ソース](../../sentinel/connect-data-sources.md)を確認します。 |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>ノードごとの価格レベルでの課金対象のノードの取得
 

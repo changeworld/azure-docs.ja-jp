@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 5452b1e2ffc3ca8a11f3acb591c6288806445e1b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7fbcf37620f9d6edfb0f312c2eb09ef2d7994232
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96499392"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731651"
 ---
 # <a name="use-the-azure-portal-to-enable-server-side-encryption-with-customer-managed-keys-for-managed-disks"></a>Azure portal を使用して、マネージド ディスクでカスタマー マネージド キーを使用し、サーバー側の暗号化を有効にする
 
@@ -32,8 +32,6 @@ Azure Disk Storage を使用すると、選択した場合は、マネージド 
 
     - Windows の場合:[マネージド ディスクをコピーする](./windows/disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)
 
-- 2,048 ビット、3,072 ビットおよび 4,096 ビットのサイズの[ソフトウェアと HSM の RSA キー](../key-vault/keys/about-keys.md)のみがサポートされており、その他のキーまたはサイズはサポートされていません。
-    - [HSM](../key-vault/keys/hsm-protected-keys.md) キーには、**premium** レベルの Azure Key Vault が必要です。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
 以下のセクションには、マネージド ディスクに対してカスタマー マネージド キーを有効にして使用する方法が含まれています。

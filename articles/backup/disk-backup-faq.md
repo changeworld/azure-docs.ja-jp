@@ -3,19 +3,14 @@ title: Azure ディスク バックアップに関してよく寄せられる質
 description: Azure ディスク バックアップに関してよく寄せられる質問への回答を紹介します
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 3ef18a7d178075194e24889477768583f05f0cdd
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 7729bc1120fc0e2f4361739a8e05f3a82ccb4268
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98734564"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107314"
 ---
-# <a name="frequently-asked-questions-about-azure-disk-backup-in-preview"></a>Azure ディスク バックアップ (プレビュー段階) に関してよく寄せられる質問
-
->[!IMPORTANT]
->Azure ディスク バックアップは、サービス レベル アグリーメントのないプレビュー段階であるため、運用ワークロードにはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 利用可能なリージョンについては、[サポート マトリックス](disk-backup-support-matrix.md)に関するページをご覧ください。
->
->プレビューにサインアップするには、[このフォームに記入](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)してください。
+# <a name="frequently-asked-questions-about-azure-disk-backup"></a>Azure ディスク バックアップに関してよく寄せられる質問
 
 この記事では、Azure ディスク バックアップに関してよく寄せられる質問に回答します。 [Azure ディスク バックアップ](disk-backup-overview.md)の利用可能なリージョン、サポートされるシナリオ、制限事項の詳細については、[サポート マトリックス](disk-backup-support-matrix.md)に関するページをご覧ください。
 

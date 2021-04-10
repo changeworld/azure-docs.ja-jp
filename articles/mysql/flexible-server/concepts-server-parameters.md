@@ -1,17 +1,17 @@
 ---
 title: サーバー パラメーター - Azure Database for MySQL - フレキシブル サーバー
 description: このトピックでは、Azure Database for MySQL - フレキシブル サーバーでのサーバー パラメーターの構成に関するガイドラインを示します。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 58978f120578afeca129b0d8928713835def8418
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f83f743b692ae5a625a4c881b12cbad999f1f606
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94496315"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106770"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーのサーバー パラメーター
 

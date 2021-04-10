@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: b0fc5bd16aaa455ce3f6d634ce35e9a389a6f13b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 86296385a0e657246e415f326261ce401e3cdeaf
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732583"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104604187"
 ---
 # <a name="troubleshoot-common-windows-virtual-desktop-agent-issues"></a>Windows Virtual Desktop エージェントに関する一般的な問題をトラブルシューティングする
 
@@ -208,7 +208,7 @@ Windows Virtual Desktop エージェントでは、次の複数の要因のた�
 >複数の VM の **fReverseConnectMode** または **fEnableWinStation** モードを一度に変更するには、次の 2 つの操作のいずれかを実行できます。
 >
 >- 既に動作しているコンピューターからレジストリ キーをエクスポートし、この変更を必要とするその他のすべてのコンピューターにインポートします。
->- この変更を必要とするコンピューターのレジストリ キー値を設定する一般的なポリシー オブジェクト (GPO) を作成します。
+>- この変更を必要とするマシンのレジストリ キー値を設定するグループ ポリシー オブジェクト (GPO) を作成します。
 
 7. **[HKEY_LOCAL_MACHINE]**  >  **[SYSTEM]**  >  **[CurrentControlSet]**  >  **[Control]**  >  **[Terminal Server]**  >  **[ClusterSettings]** の順に移動します。
 8. **[ClusterSettings]** で、**SessionDirectoryListener** を見つけ、そのデータ値が **rdp-sxs...** であることを確認します。

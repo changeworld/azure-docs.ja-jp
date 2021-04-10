@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 5b9b0c6a0fe08ccff9da59539b926270cd0e1d44
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 29cc0a3201b7c4ce1c685029de2a40f115b23e82
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032856"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606958"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -705,6 +705,10 @@ Kube システム名前空間内のコンテナーからのログ収集は、既
 
 エージェントをアップグレードする方法については、[エージェントの管理](containers/container-insights-manage-agent.md)に関する記事をご覧ください。
 
+### <a name="why-are-log-lines-larger-than-16kb-split-into-multiple-records-in-log-analytics"></a>ログ行が 16 KB を超えると Log Analytics で複数のレコードに分割されるのはなぜですか
+
+エージェントは、[Docker JSON ファイル ログ ドライバー](https://docs.docker.com/config/containers/logging/json-file/)を使用して、コンテナーの stdout と stderr を取り込みます。 このログ ドライバーは、[16 KB を超える](https://github.com/moby/moby/pull/22982)ログ行を stdout または stderr からファイルにコピーするときに、複数の行に分割します。
+
 ### <a name="how-do-i-enable-multi-line-logging"></a>複数行のログ記録を有効にするにはどうすればよいですか
 
 現在、Container insights では複数行のログ記録はサポートされていませんが、回避策はあります。 JSON 形式で書き込むようにすべてのサービスを構成することができ、Docker/Moby ではそれが単一行として書き込まれます。
@@ -821,6 +825,29 @@ Azure VM の概要ページには、ゲスト VM でのアクティビティの�
 
 この条件下では、VM を開いて左側のウィンドウから **[Insights]\(インサイト\)** を選択すると、機能が既に VM にインストール済みであっても、 **[今すぐ試す]** オプションが表示されます。  ただし、その VM が VM insights にオンボードされていない場合には、オプションは表示されません。 
 
+## <a name="sql-insights-preview"></a>SQL Insights (プレビュー)
+
+### <a name="what-versions-of-sql-server-are-supported"></a>どのバージョンの SQL Server がサポートされていますか
+サポートされている SQL のバージョンについては、「[サポートされているバージョン](insights/sql-insights-overview.md#supported-versions)」を参照してください。
+
+### <a name="what-sql-resource-types-are-supported"></a>どのような SQL リソースの種類がサポートされていますか
+
+- Azure SQL Database。 単一データベースのみで、Elastic Pool 内のデータベースは対象外です。
+- Azure SQL Managed Instance 
+- Azure SQL 仮想マシン ([Windows](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms)、[Linux](../azure-sql/virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md#create)) と、SQL Server がインストールされている Azure 仮想マシン。
+
+### <a name="what-operating-systems-for-the-machine-running-sql-server-are-supported"></a>SQL Server を実行するマシンのオペレーティング システムは何がサポートされていますか
+サポートされているバージョンの SQL の実行をサポートするすべての OS です。
+
+### <a name="what-operating-system-for-the-remote-monitoring-server-are-supported"></a>リモート監視サーバーのオペレーティング システムは何がサポートされていますか
+
+現在サポートされている唯一のオペレーティング システムは Ubuntu 18.04 です。
+
+### <a name="where-will-the-monitoring-data-be-stored-in-log-analytics"></a>監視データは Log Analytics のどこに格納されますか 
+すべての監視データは **InsightsMetrics** テーブルに格納されます。 **Origin** 列には、*solutions.azm.ms/telegraf/SqlInsights* という値があります。 **名前空間** 列には、*sqlserver_* で始まる値があります。
+
+### <a name="how-often-is-data-collected"></a>データはどのくらいの頻度で収集されますか 
+各種のデータが収集される頻度の詳細については、「[SQL Insights によって収集されるデータ](../insights/../azure-monitor/insights/sql-insights-overview.md#data-collected-by-sql-insights)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 質問の回答がここで見つからない場合は、次のフォーラムで他の質問と回答を参照できます。

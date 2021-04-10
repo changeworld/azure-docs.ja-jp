@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/04/2021
 ms.author: trbye
 ms.custom: devx-track-js
-ms.openlocfilehash: dd92cf24cf007418e52cb5091eb390b46d7a5571
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 5a8065daca11e5b79f02510f82ab622c8fb1af2d
+ms.sourcegitcommit: 91361cbe8fff7c866ddc4835251dcbbe2621c055
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104987843"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "105729824"
 ---
 Speech Service の中核となる機能の 1 つは、人間の音声を認識して文字起こしをする機能です (多くの場合、音声テキスト変換と呼ばれます)。 このクイックスタートでは、アプリや製品で Speech SDK を使用し、高品質の音声テキスト変換を実行する方法について説明します。
 
@@ -26,7 +26,7 @@ Speech Service の中核となる機能の 1 つは、人間の音声を認識�
 
 ## <a name="install-the-speech-sdk"></a>Speech SDK のインストール
 
-何か実行するには、事前に Node.js 用 Speech SDK をインストールしておく必要があります。 パッケージ名のインストールだけが必要な場合は、`npm install microsoft-cognitiveservices-speech-sdk` を実行します。 ガイド付きのインストール手順については、[作業開始](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet%2Clinux%2Cjre%2Cnodejs&pivots=programming-language-javascript)に関する記事を参照してください。
+何か実行するには、事前に Node.js 用 Speech SDK をインストールしておく必要があります。 パッケージ名のインストールだけが必要な場合は、`npm install microsoft-cognitiveservices-speech-sdk` を実行します。 ガイド付きのインストール手順については、[作業開始](../../../quickstarts/setup-platform.md?pivots=programming-language-javascript&tabs=dotnet%2clinux%2cjre%2cnodejs)に関する記事を参照してください。
 
 SDK をインポートするには、次の `require` ステートメントを使用します。
 
@@ -62,7 +62,7 @@ const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-subscription
 
 ## <a name="recognize-from-file"></a>ファイルから認識する 
 
-オーディオ ファイルから音声を認識するには、`Buffer` オブジェクトを受け入れる `fromWavFileInput()` を使用して `AudioConfig` を作成します。 次に、`audioConfig` と `speechConfig` を渡して [`SpeechRecognizer`](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer?view=azure-node-latest) を初期化します。
+オーディオ ファイルから音声を認識するには、`Buffer` オブジェクトを受け入れる `fromWavFileInput()` を使用して `AudioConfig` を作成します。 次に、`audioConfig` と `speechConfig` を渡して [`SpeechRecognizer`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechrecognizer) を初期化します。
 
 ```javascript
 const fs = require('fs');

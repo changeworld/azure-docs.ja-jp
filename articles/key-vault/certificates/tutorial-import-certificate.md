@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: b7b15c1c4952f6e0a606b1ed46f1588c536b4ae2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e909b9ac3b26eabc37f2547439890c7ee30d07a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102204084"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105728523"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>チュートリアル:Azure Key Vault に証明書をインポートする
 
@@ -135,7 +135,7 @@ Import-AzureKeyVaultCertificate
       [<CommonParameters>]
 ```
 
-[パラメーター](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)の詳細を参照してください。
+[パラメーター](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?)の詳細を参照してください。
 
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
