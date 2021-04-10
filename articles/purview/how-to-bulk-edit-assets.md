@@ -7,16 +7,16 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 149a70ea9b3fad919e771e8eb279e01d1492b3b3
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 4dc1af590a1965c155a7af7b233b431f982a73d2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104952458"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024236"
 ---
-# <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>資産を一括編集して用語集の用語にタグを付ける方法
+# <a name="how-to-bulk-edit-assets-to-annotate-classifications-glossary-terms-and-modify-contacts"></a>資産を一括編集して、分類、用語集の用語に注釈を付け、連絡先を変更する方法
 
-この記事では、1 回の操作で、選択された資産の一覧に複数の用語集の用語をタグ付けする方法について説明します。
+この記事では、1 回の操作で、選択された資産の一覧の複数の用語集の用語、分類、所有者、およびエキスパートにタグ付けする方法について説明します。
 
 ### <a name="add-assets-to-view-selected-list-using-search"></a>検索を使用して資産を [選択対象の表示] リストに追加する
 
