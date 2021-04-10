@@ -4,18 +4,18 @@ description: Azure Resource Manager を使用して、リソースを新しい�
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aca1e5255c89e99a2c996e072e5106da8dc3eef9
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1dd8877324b7eb0aac3ac12e3eeadb7c75b7795e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093633"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670207"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>リソースを新しいリソース グループまたはサブスクリプションに移動する
 
 この記事では、Azure リソースを別の Azure サブスクリプションまたは同じサブスクリプションの別のリソース グループに移動する方法について説明します。 リソースの移動には、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用できます。
 
-移動操作の間は、ソース グループとターゲット グループの両方がロックされます。 これらのリソース グループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。 このロックはリソース グループでリソースを追加、更新、削除できなくなることを意味します。 リソースが停止されるわけではありません。 たとえば、SQL Server とそのデータベースを新しいリソース グループに移動する場合、そのデータベースを使用するアプリケーションにダウンタイムは発生しません。 これまでどおり、データベースの読み取りと書き込みを行うことができます。 ロックは最大 4 時間継続できますが、ほとんどの移動は、はるかに短い時間で完了します。
+移動操作の間は、ソース グループとターゲット グループの両方がロックされます。 これらのリソース グループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。 このロックはリソース グループでリソースを追加、更新、削除できなくなることを意味します。 リソースが停止されるわけではありません。 たとえば、Azure SQL 論理サーバーとそのデータベースを新しいリソース グループまたはサブスクリプションに移動した場合、そのデータベースを使用するアプリケーションでダウンタイムは発生しません。 引き続きデータベースの読み取りと書き込みを行うことができます。 ロックは最大 4 時間継続できますが、ほとんどの移動は、はるかに短い時間で完了します。
 
 リソースを移動しても、新しいリソース グループまたはサブスクリプションに移動されるだけです。 リソースの場所は変わりません。
 
@@ -34,6 +34,7 @@ ms.locfileid: "101093633"
    * [ネットワークの移動ガイダンス](./move-limitations/networking-move-limitations.md)
    * [Recovery Services の移動ガイダンス](../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [仮想マシンの移動ガイダンス](./move-limitations/virtual-machines-move-limitations.md)
+   * Azure サブスクリプションを新しい管理グループに移動するには、「[サブスクリプションの移動](../../governance/management-groups/manage.md#move-subscriptions)」を参照してください。
 
 1. Azure ロールがリソース (または子リソース) に直接割り当てられており、そのリソースを移動する場合、ロールの割り当ては移動されず、孤立します。 移動した後は、ロールの割り当てを再作成する必要があります。 最終的に、孤立したロールの割り当ては自動的に削除されますが、ベスト プラクティスとして、リソースを移動する前にロールの割り当てを削除しておくことをお勧めします。
 

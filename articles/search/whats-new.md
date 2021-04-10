@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 03/12/2021
 ms.custom: references_regions
-ms.openlocfilehash: b4dc8ab44d341b293c044843e6dff2a3b6d3102c
-ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
+ms.openlocfilehash: 8e78fa46125b8aca378598c673ba76829e11d70e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103233550"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104600430"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -26,6 +26,7 @@ ms.locfileid: "103233550"
 | [セマンティック検索](semantic-search-overview.md) | 手間をかけずに検索結果の関連性を大幅に向上させる、クエリ関連の機能のコレクション。 </br></br>[セマンティックの順位付け](semantic-ranking.md)は、単語と内容の裏にあるセマンティックな意味を使用して関連性スコアを計算します。 </br></br>[セマンティック キャプション](semantic-how-to-query-request.md)は、当該ドキュメントを最も的確に要約している、ドキュメントの関連する一節であり、最も重要な用語や語句が強調されています。 </br></br>[セマンティック回答](semantic-answers.md)は、検索ドキュメントから抽出された重要な一節であり、クエリ (質問のような形式) に対する直接回答の形式として作成されます。 | パブリック プレビュー ([要求による](https://aka.ms/SemanticSearchPreviewSignup))。 </br></br>Azure portal で、[Search Documents (REST)](/rest/api/searchservice/preview-api/search-documents) api-version = 2020-06-30-Preview と [Search エクスプローラー](search-explorer.md)を使用してください。 </br></br>リージョンとレベルの制限が適用されます。 |
 | [クエリ用語のスペル チェック](speller-how-to-add.md) | クエリの用語が検索エンジンに到達する前に、スペル ミスをチェックすることができます。 `speller` オプションは、任意の種類のクエリ (単純、フル、またはセマンティック) で動作します。 |  パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview|
 | [SharePoint Online インデクサー](search-howto-index-sharepoint-online.md) | ドキュメント ライブラリのコンテンツにインデックスを付けることができるように、このインデクサーによって SharePoint Online サイトに接続されます。 | パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview |
+| [ノーマライザー](search-normalizers.md) | ノーマライザーでは、分析チェーン全体を通過せずに、大文字と小文字の区別、アクセントの削除、Asciifolding など、単純なテキストの事前処理が提供されます。| パブリック プレビュー、REST のみ、api-version=2020-06-30-Preview |
 
 ## <a name="february-2021"></a>2021 年 2 月
 

@@ -2,17 +2,17 @@
 title: 接続の問題のトラブルシューティング - Azure Database for MySQL - フレキシブル サーバー
 description: Azure Database for MySQL フレキシブル サーバーへの接続に関する問題のトラブルシューティング方法について説明します。
 keywords: mysql 接続,接続文字列,接続の問題,永続的なエラー,接続エラー
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 9/21/2020
-ms.openlocfilehash: b328da01cd3b2ecb3eb5f183296eab808de27399
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bdd52ba77fd9a65ce27985ff3c86a93fc887ddf9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90930872"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109986"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL への接続の問題のトラブルシューティング - フレキシブル サーバー
 
