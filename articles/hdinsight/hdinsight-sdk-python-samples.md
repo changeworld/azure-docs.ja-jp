@@ -1,18 +1,18 @@
 ---
-title: 'Azure HDInsight: Python のサンプル'
+title: 'Azure HDInsight: Python サンプル'
 description: HDInsight SDK for Python を使用した一般的なタスクの Python サンプルは、GitHub でご覧いただけます。
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/08/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: 1a15a8d343398dce7a049622b53ca5e2b2c217eb
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98931886"
 ---
-# <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python のサンプル
+# <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python サンプル
 
 > [!div class="op_single_selector"]
 > * [Python のサンプル](hdinsight-sdk-python-samples.md)
@@ -23,7 +23,7 @@ ms.locfileid: "98931886"
 > [!Important]
 > Python 2.7 は、2020 年 1 月 1 日に非推奨となります。 Python 2.7 をまだ使用している場合は、HDInsight Python SDK を使用するために 3.7 にアップグレードしてください。  
 
-この記事では、次の内容について説明します。
+この記事では、次について説明します。
 
 * クラスター作成タスクのサンプルへのリンク
 * その他の管理タスクのリファレンス コンテンツへのリンク
@@ -36,7 +36,7 @@ ms.locfileid: "98931886"
 
 ## <a name="cluster-management---creation"></a>クラスターの管理 - 作成
 
-* [Apache Kafka クラスターの作成](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_kafka_cluster_sample.py)
+* [Apache Kafka クラスターを作成する](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_kafka_cluster_sample.py)
 * [Apache Spark クラスターの作成](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_spark_cluster_sample.py)
 * [Azure Data Lake Storage Gen2 での Apache Spark クラスターの作成](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_hadoop_cluster_with_adls_gen2_sample.py)
 * [Enterprise セキュリティ パッケージ (ESP) での Apache Spark クラスターの作成](https://github.com/Azure-Samples/hdinsight-python-sdk-samples/blob/master/samples/create_esp_cluster_sample.py)
