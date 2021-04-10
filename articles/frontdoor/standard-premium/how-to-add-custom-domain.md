@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 02/18/2021
 ms.author: amsriva
-ms.openlocfilehash: 164e06024844fb5262586450b737db9c807e373a
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 36cb5720e409c86fcb4bc1a97863e5d3523cd3bc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101097963"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104588751"
 ---
 # <a name="create-a-custom-domain-on-azure-front-door-standardpremium-sku-preview-using-the-azure-portal"></a>Azure portal を使用して Azure Front Door Standard/Premium SKU (プレビュー) にカスタム ドメインを作成する
 
@@ -38,6 +38,9 @@ Azure Front Door Standard/Premium プロファイルを作成すると、既定�
 * Azure を使用して [DNS ドメイン](../../dns/dns-overview.md)をホストしている場合は、ドメイン プロバイダーのドメイン ネーム システム (DNS) を Azure DNS に委任する必要があります。 詳細については、「[Azure DNS へのドメインの委任](../../dns/dns-delegate-domain-azure-dns.md)」を参照してください。 DNS ドメインを処理するためにドメイン プロバイダーを使用している場合は、このようにしないと、要求された DNS TXT レコードを入力して手動でドメインを検証する必要があります。
 
 ## <a name="add-a-new-custom-domain"></a>新しいカスタム ドメインの追加
+
+> [!NOTE]
+> パブリック プレビューでは、Azure DNS を使用して Apex ドメインを作成することは、Azure Front Door Standard および Premium ではサポートされていません。 APEX ドメインを Azure Front Door Standard および Premium に使用できるようにする CNAME フラット化または DNS 追跡をサポートする他の DNS プロバイダーがあります。
 
 カスタム ドメインは、ポータルの [ドメイン] セクションで管理します。 カスタム ドメインを作成し、エンドポイントに関連付ける前に検証することができます。 カスタム ドメインとそのサブドメインは、一度に 1 つのエンドポイントにのみ関連付けることができます。 ただし、同じカスタム ドメインの別のサブドメインを別の Front Door に使用することはできます。 また、異なるサブドメインがあるカスタム ドメインを同じ Front Door エンドポイントにマップすることもできます。
 

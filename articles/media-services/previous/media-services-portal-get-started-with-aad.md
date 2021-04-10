@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.openlocfilehash: d9ad439fe3f41d9e2634fbf9a76cfd21114a5dbc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103013059"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure Portal で Azure AD 認証を開始する
@@ -32,7 +32,7 @@ Azure Portal を使用して Azure Active Directory (Azure AD) 認証にアク�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure アカウント。 アカウントをお持ちでない場合は、[Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)で作業を開始してください。 
-- Media Services アカウント。 詳細については、「[Azure Portal を使用した Azure Media Services アカウントの作成](media-services-portal-create-account.md)」を参照してください。
+- Media Services アカウント。 詳細については、「[Azure ポータルを使用した Azure Media Services アカウントの作成](media-services-portal-create-account.md)」を参照してください。
 
 Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの認証オプションがあります。
 

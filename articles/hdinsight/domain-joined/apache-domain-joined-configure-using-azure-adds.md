@@ -6,12 +6,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seodec18,seoapr2020, contperf-fy21q2
 ms.date: 10/30/2020
-ms.openlocfilehash: 15869a547ec5debee939c956d7495bfa58357555
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 6f478b97464cd47e9d0e04bfe83bd48a2b3bfe7c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98946919"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867102"
 ---
 # <a name="configure-hdinsight-clusters-for-azure-active-directory-integration-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して Azure Active Directory 統合用に HDInsight クラスターを構成する
 
@@ -70,7 +70,7 @@ New-SelfSignedCertificate -Subject contoso100.onmicrosoft.com `
 
 **[管理]** カテゴリで **[正常性]** を選択して、Azure Active Directory Domain Services の正常性状態を表示します。 Azure AD DS の状態が緑 (実行中) で、同期が完了していることを確認します。
 
-![Azure AD DS の正常性](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-health.png" alt-text="Azure AD DS の正常性" border="true":::
 
 ### <a name="create-and-authorize-a-managed-identity"></a>マネージド ID の作成と承認
 
@@ -82,7 +82,7 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 
 次に、**HDInsight ドメイン サービス共同作成者** ロールを、Azure AD DS の **アクセス制御** でマネージド ID に割り当てます。 このロールの割り当てを行うには、Azure AD DS 管理特権が必要です。
 
-![Azure Active Directory Domain Services のアクセス制御](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png" alt-text="Azure Active Directory Domain Services のアクセス制御" border="true":::
 
 **HDInsight ドメイン サービス共同作成者** ロールを割り当てると、Azure AD DS ドメインに対してドメイン サービス操作を行うための適切な (`on behalf of`) アクセスがこの ID に確実に付与されます。 これらの操作には、OU の作成と削除が含まれます。
 
@@ -90,7 +90,7 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 
 たとえば、Azure AD DS 管理者は、**sjmsi** マネージド ID 用にこのロールを **MarketingTeam** グループに割り当てることができます。 次の図に例を示します。 この割り当てにより、組織内の適切なユーザーがマネージド ID を使用して ESP クラスターを確実に作成できるようになります。
 
-![HDInsight のマネージド ID オペレーター ロールの割り当て](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-managed-identity-operator-role-assignment.png" alt-text="HDInsight のマネージド ID オペレーター ロールの割り当て" border="true":::
 
 ### <a name="network-configuration"></a>ネットワークの構成
 
@@ -99,17 +99,17 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 
 Azure AD DS を有効にします。 その後、ローカルのドメイン ネーム システム (DNS) サーバーが Active Directory 仮想マシン (VM) 上で実行されます。 ご利用の Azure AD DS 仮想ネットワークを、これらのカスタム DNS サーバーを使用するように構成します。 適切な IP アドレスを見つけるには、 **[マネージド]** カテゴリで **[プロパティ]** を選択し、 **[仮想ネットワーク上の IP アドレス]** の下を確認します。
 
-![ローカル DNS サーバーの IP アドレスを見つける](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-dns1.png" alt-text="ローカル DNS サーバーの IP アドレスを見つける" border="true":::
 
 Azure AD DS 仮想ネットワーク内の DNS サーバーの構成を変更します。 これらのカスタム IP アドレスを使用するには、 **[設定]** カテゴリで **[DNS サーバー]** を選択します。 次に、 **[カスタム]** オプションを選択し、テキスト ボックスに最初の IP アドレスを入力して、 **[保存]** を選択します。 同じ手順に従って、さらに IP アドレスを追加します。
 
-![仮想ネットワークの DNS 構成の更新](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-vnet-configuration.png" alt-text="仮想ネットワークの DNS 構成の更新" border="true":::
 
 Azure AD DS インスタンスと HDInsight クラスターは、どちらも同じ Azure 仮想ネットワークに配置した方が簡単です。 別の仮想ネットワークを使用する予定の場合は、ドメイン コント ローラーが HDInsight VM に表示されるように、それらの仮想ネットワークをピアリングする必要があります。 詳細については、「[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)」をご覧ください。
 
 仮想ネットワークがピアリングされたら、HDInsight 仮想ネットワークをカスタム DNS サーバーを使用するように構成します。 Azure AD DS のプライベート IP を DNS サーバーのアドレスとして入力します。 両方の仮想ネットワークで同じ DNS サーバーが使用されている場合、ご利用のカスタム ドメイン名は、正しい IP に解決され、HDInsight から到達可能になります。 たとえば、ドメイン名が `contoso.com` の場合、この手順の後の `ping contoso.com` で正しい Azure AD DS IP に解決されるはずです。
 
-![ピアリングされた仮想ネットワークに合わせてカスタム DNS サーバーを構成する](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png" alt-text="ピアリングされた仮想ネットワークに合わせてカスタム DNS サーバーを構成する" border="true":::
 
 ご自分の HDInsight サブネット内でネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンドおよびアウトバウンドの両方のトラフィックに対して[必須 IP](../hdinsight-management-ip-addresses.md) を許可する必要があります。
 
@@ -126,11 +126,11 @@ Azure AD DS インスタンスと HDInsight クラスターは、どちらも同
 > [!NOTE]  
 > ESP クラスター名の最初の 6 文字は、環境内で一意である必要があります。 たとえば、異なる仮想ネットワーク内に ESP クラスターが複数ある場合、クラスター名の最初の 6 文字が確実に一意になるように名前付け規則を選択する必要があります。
 
-![Azure HDInsight Enterprise セキュリティ パッケージにおけるドメインの検証](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png" alt-text="Azure HDInsight Enterprise セキュリティ パッケージにおけるドメインの検証" border="true":::
 
 ESP を有効にすると、Azure AD DS に関連する一般的な構成ミスが自動的に検出され、検証されます。 これらのエラーを修正した後は、次の手順を続行することができます。
 
-![Azure HDInsight Enterprise セキュリティ パッケージがドメインの検証に失敗しました](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png" alt-text="Azure HDInsight Enterprise セキュリティ パッケージがドメインの検証に失敗しました" border="true":::
 
 ESP を使用する HDInsight クラスターを作成する場合は、次のパラメーターを指定する必要があります。
 
@@ -142,7 +142,7 @@ ESP を使用する HDInsight クラスターを作成する場合は、次の�
 
 作成したマネージド ID は、新しいクラスターを作成するときに、 **[ユーザー割り当てマネージド ID]** ドロップダウン リストから選択することができます。
 
-![Azure HDInsight ESP Active Directory Domain Services のマネージド ID](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png).
+:::image type="content" source="./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png" alt-text="Azure HDInsight ESP Active Directory Domain Services のマネージド ID" border="true":::。
 
 ## <a name="next-steps"></a>次のステップ
 
