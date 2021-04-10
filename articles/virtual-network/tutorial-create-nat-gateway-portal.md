@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
 ms.openlocfilehash: 82b5892b027627871e5492e3c6cd3776a923632b
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102553444"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した NAT ゲートウェイの作成

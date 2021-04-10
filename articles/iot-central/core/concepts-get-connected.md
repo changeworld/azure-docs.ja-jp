@@ -13,10 +13,10 @@ ms.custom:
 - mqtt
 - device-developer
 ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103015457"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する

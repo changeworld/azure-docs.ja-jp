@@ -4,16 +4,18 @@ description: 'クイックスタート: Azure CLI を使用して、Azure portal
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell
 ms.date: 12/4/2020
-ms.openlocfilehash: ede915df5cd2967c3b6b700bcb9174c89af8f233
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: ddfee1932c6887c6ca7593ca7a28c03e68e09899
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745657"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104613213"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure portal ダッシュボードを作成する
 
-Azure portal のダッシュボードでは、お使いのクラウド リソースが集中的に整理して表示されます。
+Azure portal のダッシュボードでは、お使いのクラウド リソースが集中的に整理して表示されます。 この記事では、Azure CLI を使用してダッシュボードを作成するプロセスに焦点を当てます。
+このダッシュボードには、仮想マシン (VM) のパフォーマンスに加え、一部の静的情報とリンクが表示されます。
+
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -103,19 +105,7 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-仮想マシンに関するデータを Azure portal 内から表示できることを確認します。
-
-1. Azure portal で、 **[ダッシュボード]** を選択します。
-
-   ![Azure portal でダッシュボードに移動する](media/quickstart-portal-dashboard-powershell/navigate-to-dashboards.png)
-
-1. ダッシュボード ページで、 **[Simple VM Dashboard]\(シンプル VM ダッシュボード\)** を選択します。
-
-   ![シンプル VM ダッシュボードに移動する](media/quickstart-portal-dashboard-powershell/select-simple-vm-dashboard.png)
-
-1. ダッシュボードを確認します。 一部のコンテンツは静的ですが、VM のパフォーマンスを示すグラフもあることがわかります。
-
-   ![シンプル VM ダッシュボードを確認する](media/quickstart-portal-dashboard-powershell/review-simple-vm-dashboard.png)
+[!INCLUDE [azure-portal-review-deployed-resources](../../includes/azure-portal-review-deployed-resources.md)]
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

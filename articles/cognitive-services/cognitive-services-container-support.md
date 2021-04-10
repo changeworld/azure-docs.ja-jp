@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/16/2020
 ms.author: aahi
 keywords: オンプレミス, Docker, コンテナー, Kubernetes
-ms.openlocfilehash: f5caac0a0da3595075dddd5a273a6883a0cca468
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 3b0a39e9d84a56bac3117df9279954e3756d465a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97861814"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065822"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services コンテナー
 

@@ -1,17 +1,17 @@
 ---
 title: ファイアウォール規則を管理する - Azure portal - Azure Database for PostgreSQL - フレキシブル サーバー
 description: Azure portal を使用して Azure Database for PostgreSQL - フレキシブル サーバー用のファイアウォール規則を作成して管理する
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 8c107b88f964d8e657d6833fc3a2e8425d9053ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35f9164634d906fe36d6b0f3d3ec861652f652dd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90930813"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551141"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - フレキシブル サーバー用のファイアウォール規則を作成して管理する
 

@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 24a0c09ba78c668dab017ec80adda19f59d89a4f
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 43b46d19503856f5eae38272299f73d9c80055b8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98942972"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104868887"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase クラスターを新しいバージョンに移行する
 
@@ -49,7 +49,7 @@ Azure HDInsight で Apache HBase クラスターをアップグレードする�
 
 1. 同じストレージ アカウントで別のコンテナー名を使用して、[新しい移行先 HDInsight クラスターを設定](../hdinsight-hadoop-provision-linux-clusters.md)します。
 
-   ![同じストレージ アカウントを使用して別のコンテナーを作成する](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/same-storage-different-container.png" alt-text="同じストレージ アカウントを使用して別のコンテナーを作成する" border="true":::
 
 1. アップグレードするクラスターである、ソース HBase クラスターをフラッシュします。 HBase では、_memstore_ と呼ばれるメモリ内ストアに受信データが書き込まれます。 memstore が一定のサイズに達すると、HBase はクラスターのストレージ アカウントに長期保存するためにディスクにフラッシュします。 古いクラスターを削除すると、memstore がリサイクルされ、データが失われる可能性があります。 各テーブルの memstore をディスクに手動でフラッシュするには、次のスクリプトを実行します。 このスクリプトの最新バージョンは、Azure の [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh) にあります。
 
@@ -175,9 +175,9 @@ Azure HDInsight で Apache HBase クラスターをアップグレードする�
 
 1. 古いクラスター上の [Apache Ambari](https://ambari.apache.org/) (`https://OLDCLUSTERNAME.azurehdidnsight.net`) にサインインして、HBase サービスを停止します。 サービスを停止することを確認するプロンプトが表示されたら、HBase のメンテナンス モードをオンにするためのチェックボックスをオンにします。 Ambari への接続とその使用方法の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-    ![Ambari で、[Service Actions]\(サービス アクション\) の下の [Services]\(サービス\) > [HBase] > [Stop]\(停止\) をクリックします](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
+    :::image type="content" source="./media/apache-hbase-migrate-new-version/stop-hbase-services1.png" alt-text="Ambari で、[Service Actions]\(サービス アクション\) の下の [Services]\(サービス\) > [HBase] > [Stop]\(停止\) をクリックします" border="true":::
 
-    ![[Turn On Maintenance Mode for HBase]\(HBase のメンテナンス モードをオンにする\) チェックボックスをオンにし、操作を確定します](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
+    :::image type="content" source="./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png" alt-text="[Turn On Maintenance Mode for HBase]\(HBase のメンテナンス モードをオンにする\) チェックボックスをオンにし、操作を確定します" border="true":::
 
 1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 この手順は、拡張書き込み機能を備えた HBase クラスターにのみ必要です。
 
@@ -190,15 +190,15 @@ Azure HDInsight で Apache HBase クラスターをアップグレードする�
     
 1. 新しい HDInsight クラスターの Ambari にサインインします。 `fs.defaultFS` HDFS 設定を、元のクラスターで使用されているコンテナー名を指すように変更します。 この設定は、 **[HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) > [Advanced core-site]\(高度なコアサイト\)** にあります。
 
-   ![Ambari で、[Services]\(サービス\) > [HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) をクリックします](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png" alt-text="Ambari で、[Services]\(サービス\) > [HDFS] > [Configs]\(構成\) > [Advanced]\(詳細\) をクリックします" border="true":::
 
-   ![Ambari で、コンテナー名を変更する](./media/apache-hbase-migrate-new-version/change-container-name.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name.png" alt-text="Ambari で、コンテナー名を変更する" border="true":::
 
 1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 この手順は、拡張書き込み機能を備えた HBase クラスターにのみ必要です。
 
    `hbase.rootdir` パスを、元のクラスターのコンテナーを指すように変更します。
 
-   ![Ambari で、HBase rootdir のコンテナー名を変更する](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+   :::image type="content" source="./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png" alt-text="Ambari で、HBase rootdir のコンテナー名を変更する" border="true":::
     
 1. 拡張書き込み機能を備えた HBase クラスターを使用していない場合は、この手順をスキップしてください。 これは、拡張書き込み機能がある HBase クラスターに対してのみ必要であり、元のクラスターが拡張書き込み機能を備えた HBase クラスターだった場合にのみ必要です。
 
