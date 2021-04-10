@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18104f06e779046786a2c7794736d01c35139490
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2611a29ffcfdeb805934eacc54181515ec44f38c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365805"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104578041"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -39,7 +39,7 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 **知っておくべきこと** 
 
 - ダウンレベルの Windows デバイス用のハイブリッド Azure AD 参加の動作は、Windows 10 での動作とは若干異なります。 多くのお客様は、AD FS (フェデレーション ドメインの場合) または構成済みのシームレス SSO (マネージド ドメインの場合) が必要であることを認識していません。
-- シームレス SSO は、Firefox および Microsoft Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。
+- シームレス SSO は、Firefox および Microsoft Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されているか、拡張セキュリティ構成を有効にしている場合は、Internet Explorer ブラウザーでも機能しません。
 - フェデレーション ドメインのあるお客様では、サービス接続ポイント (SCP) がマネージド ドメインをポイントするように構成されている場合 (たとえば、contoso.com ではなく contoso.onmicrosoft.com)、ダウンレベルの Windows デバイス用のハイブリッド Azure AD 参加は機能しません。
 - 複数のドメイン ユーザーがダウンレベルのハイブリッド Azure AD 参加済みデバイスにサインインすると、同じ物理デバイスが Azure AD に複数回表示されます。  たとえば 1 台のデバイスに *jdoe* と *jharnett* がサインインする場合、それぞれについて別個の登録 (DeviceID) が **[ユーザー]** 情報タブに作成されます。 
 - オペレーティング システムの再インストールまたは手動の再登録なので、ユーザー情報タブでデバイスの複数のエントリを取得することもできます。

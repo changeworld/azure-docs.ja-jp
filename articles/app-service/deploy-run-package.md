@@ -3,12 +3,12 @@ title: ZIP パッケージからアプリを実行する
 description: アトミック性を備えたアプリの ZIP パッケージをデプロイします。 ZIP デプロイ プロセス中のアプリの動作の予測可能性と信頼性を向上させます。
 ms.topic: article
 ms.date: 01/14/2020
-ms.openlocfilehash: 3440653455626af4e3705d89349a66d6bf2fbfc0
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 036dd8c86251af2ed5553939e74a0d85fc303ecb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008131"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577548"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>ZIP パッケージから Azure App Service のアプリを直接実行する
 
@@ -67,6 +67,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 - パッケージから直接実行すると、`wwwroot` は読み取り専用になります。 アプリがこのディレクトリにファイルを書き込もうとすると、エラーが発生します。
 - TAR および GZIP 形式はサポートされていません。
+- ZIP ファイルは、最大 1 GB にすることができます。
 - この機能は、[ローカル キャッシュ](overview-local-cache.md)と互換性がありません。
 - コールドスタートのパフォーマンスを向上するには、ローカルの Zip オプション (`WEBSITE_RUN_FROM_PACKAGE` = 1) を使用します。
 
