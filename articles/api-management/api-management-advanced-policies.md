@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 11/13/2020
 ms.author: apimpm
 ms.openlocfilehash: 03529fd3c0231617c477f4f16773039a02386683
-ms.sourcegitcommit: 18a91f7fe1432ee09efafd5bd29a181e038cee05
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103562486"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー

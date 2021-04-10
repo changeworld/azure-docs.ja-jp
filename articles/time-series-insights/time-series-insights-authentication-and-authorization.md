@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref
 ms.openlocfilehash: 88fd575d40cc31f12f052158bda0aed9a5335555
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103009268"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認

@@ -8,12 +8,12 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9356da9516ea17243be8e0e5519ec4b19e06db8a
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103200874"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166600"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux で TPM を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
@@ -34,7 +34,7 @@ ms.locfileid: "103200874"
 1. IoT Edge ランタイムをインストールし、デバイスを IoT Hub に接続する。
 
 > [!TIP]
-> この記事では、TPM シミュレーターを使用して DPS プロビジョニングをテストする方法について説明しますが、その多くは、Azure Certified for IoT デバイスである [Infineon OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board) などの物理 TPM ハードウェアに適用されます。
+> この記事では、TPM シミュレーターを使用して DPS プロビジョニングをテストする方法について説明しますが、その多くは、Azure Certified for IoT デバイスである [Infineon OPTIGA&trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e) などの物理 TPM ハードウェアに適用されます。
 >
 > 物理デバイスを使用している場合は、この記事の「[物理デバイスからプロビジョニング情報を取得する](#retrieve-provisioning-information-from-a-physical-device)」セクションに進むことができます。
 

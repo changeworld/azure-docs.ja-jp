@@ -13,12 +13,12 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 24a538686e101d40daba008f30a72ffc5078047a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 05bfcc86c72d9eb393da919035ce198948b943f2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104674524"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559130"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
@@ -52,14 +52,14 @@ Apple デバイス用の Microsoft Enterprise SSO プラグインを使用する
 - Microsoft Intune を使用するなどして、デバイスが *MDM に登録* されている必要があります。
 - 構成を *デバイスにプッシュ* して、Enterprise SSO プラグインを有効にする必要があります。 このセキュリティ制約は Apple の要件です。
 
-iOS の要件:
+### <a name="ios-requirements"></a>iOS の要件:
 - iOS 13.0 以降がデバイスにインストールされている必要があります。
-- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューの間は、このアプリケーションは [Microsoft Authenticator アプリ](/intune/user-help/user-help-auth-app-overview.md)です。
+- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションは [Microsoft Authenticator アプリ](/azure/active-directory/user-help/user-help-auth-app-overview)です。
 
 
-macOS の要件:
+### <a name="macos-requirements"></a>macOS の要件:
 - macOS 10.15 以降がデバイスにインストールされている必要があります。 
-- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューの間は、このアプリケーションは [Intune ポータル サイト アプリ](/intune/user-help/enroll-your-device-in-intune-macos-cp.md)です。
+- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションには [Intune ポータル サイト アプリ](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp)が含まれます。
 
 ## <a name="enable-the-sso-plug-in"></a>SSO プラグインの有効化
 
