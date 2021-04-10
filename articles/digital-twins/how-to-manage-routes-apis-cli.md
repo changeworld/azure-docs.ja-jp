@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b0e440f9fe0b7ce1591318362ac0419b9aa01baf
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102433303"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779972"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -237,6 +237,9 @@ CLI の使用および利用できるコマンドについて詳しくは、"[*A
 * ツインまたはリレーションシップが作成または削除されたときに発生するライフサイクル イベント
 
 イベント ルートにエンドポイントの **フィルター** を追加することで、送信されるイベントを制限できます。
+
+>[!NOTE]
+> フィルターでは **大文字と小文字が区別** され、ペイロード ケースで一致する必要があります (必ずしもモデル ケースと一致するとは限りません)。
 
 フィルターを追加するために、次の本文を含む PUT 要求を *https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31* に対して使用できます。
 

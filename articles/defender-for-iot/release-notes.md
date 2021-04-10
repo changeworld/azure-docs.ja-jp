@@ -4,10 +4,10 @@ description: この記事では、Defender for IoT の最新リリースに含�
 ms.topic: how-to
 ms.date: 03/14/2021
 ms.openlocfilehash: 970d46a76f125dcaf82491fdea877e6874e2384f
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104778697"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT の新機能

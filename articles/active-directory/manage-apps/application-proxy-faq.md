@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: edd2ec633bd78ce1a596782deab57105e9d7f1c3
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: b76934d3f16ec5f87ed1380135d22bc5d943652c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102487748"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104779769"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -45,7 +45,7 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 アップデーター サービスが実行されていて、イベント ログにエラーが記録されていない場合は、正常です ([アプリケーションとサービス ログ] -> [Microsoft] -> [AadApplicationProxy] -> [アップデーター] -> [管理者])。 
 
 > [!IMPORTANT]
-> 自動アップグレードでは、メジャー バージョンのみがリリースされます。 定期的なスケジュールでコネクタを手動で更新することをお勧めします。 新しいリリース、リリースの種類 (ダウンロード、自動アップグレード)、バグ修正、および新機能の詳細については、「[Azure AD アプリケーション プロキシ: バージョンのリリース履歴](application-proxy-release-version-history.md)」を参照してください。
+> 自動アップグレードでは、メジャー バージョンのみがリリースされます。 コネクタは、必要な場合にのみ手動で更新することをお勧めします。 たとえば、既知の問題を修正したり、新機能を使用したりする必要があるため、メジャー リリースまで待てないような場合です。 新しいリリース、リリースの種類 (ダウンロード、自動アップグレード)、バグ修正、および新機能の詳細については、「[Azure AD アプリケーション プロキシ: バージョンのリリース履歴](application-proxy-release-version-history.md)」を参照してください。
 
 コネクタを手動でアップグレードするには、次の手順を実行します。
 

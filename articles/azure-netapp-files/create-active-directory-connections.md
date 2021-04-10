@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 02/16/2021
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 44959b2f60f9aafd7d9430c9c19baea72344293f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: add907923cc2284939acd972237fd4ec74ee2d12
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102183881"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864008"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files の Active Directory 接続の作成と管理
 
@@ -206,6 +206,18 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         ```
         
         また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+
+     * **セキュリティ特権ユーザー**   <!-- SMB CA share feature -->   
+        Azure NetApp Files ボリュームにアクセスするための昇格された特権を必要とするユーザーには、セキュリティ特権 (`SeSecurityPrivilege`) を付与できます。 指定されたユーザー アカウントは、ドメイン ユーザーに対して既定では割り当てられていないセキュリティ特権を必要とする Azure NetApp Files SMB 共有に対して特定のアクションを実行できます。   
+
+        たとえば、特定のシナリオで SQL Server のインストールに使用するユーザー アカウントには、昇格されたセキュリティ特権が付与されている必要があります。 SQL Server のインストールに管理者以外の (ドメイン) アカウントを使用していて、アカウントにセキュリティ特権が割り当てられていない場合、そのアカウントにセキュリティ特権を追加する必要があります。  
+
+        > [!IMPORTANT]
+        > SQL Server のインストールに使用するドメイン アカウントは、 **[Security privilege users]\(セキュリティ特権ユーザー\)** フィールドに追加する前に既に作成されている必要があります。 SQL Server インストーラーのアカウントを **[Security privilege users]\(セキュリティ特権ユーザー\)** に追加するときに、ドメイン コントローラーに接続することで Azure NetApp Files サービスによってアカウントが検証される場合があります。 ドメイン コントローラーに接続できないと、コマンドが失敗するおそれがあります。  
+
+        `SeSecurityPrivilege` と SQL Server の詳細については、「[セットアップ アカウントに特定のユーザー権限がない場合に SQL Server のインストールが失敗する](/troubleshoot/sql/install/installation-fails-if-remove-user-right)」を参照してください。
+
+        ![Active Directory 接続ウィンドウの [Security privilege users]\(セキュリティ特権ユーザー\) ボックスを示すスクリーンショット。](../media/azure-netapp-files/security-privilege-users.png) 
 
      * **バックアップ ポリシー ユーザー**  
         Azure NetApp Files で使用するために作成されたコンピューター アカウントに対して昇格された特権を必要とする追加のアカウントを含めることができます。 指定したアカウントは、ファイルまたはフォルダー レベルで NTFS アクセス許可を変更できます。 たとえば、Azure NetApp Files の SMB ファイル共有にデータを移行するために使用される非特権サービス アカウントを指定できます。  

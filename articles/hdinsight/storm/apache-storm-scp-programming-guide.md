@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 01/13/2020
-ms.openlocfilehash: bd52157e2f0e20e9282d944b07f656c08d9e57da
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c993b3f70f609fb79c51ba9be08fa3d5dc7e8317
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98932641"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864110"
 ---
 # <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight における Apache Storm の SCP プログラミング ガイド
 
@@ -28,7 +28,7 @@ SCP のデータは、タプルの継続的なストリームとしてモデル�
 1. Storm トポロジ内にホストされているビジネス ロジックによって取得および変換されます。
 1. 出力が別の SCP システムにタプルとしてパイプされるか、または分散ファイル システムなどのストアや SQL Server などのデータベースにコミットされます。
 
-![データが、キュー、処理、データ ストアの順にフィードされる図](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png" alt-text="データが、キュー、処理、データ ストアの順にフィードされる図" border="false":::
 
 Storm では、アプリケーション トポロジで計算グラフを定義します。 トポロジ内の各ノードに処理ロジックが含まれます。 ノード間のリンクは、データ フローを示します。
 
@@ -152,7 +152,7 @@ public interface ISCPBatchBolt : ISCPPlugin
 
 新しいタプルがボルトに到達すると、**Execute** メソッドが呼び出されます。 **FinishBatch** メソッドは、このトランザクションが終了したときに呼び出されます。 *parms* 入力パラメーターは、将来のために予約されています。
 
-トランザクション トポロジの場合、**StormTxAttempt** は重要なクラスです。 次の 2 つのメンバーが含まれます。**TxId** と **AttemptId** です。 **TxId** メンバーで、特定のトランザクションを識別します。 トランザクションは、失敗して再生される場合、複数回試行される可能性があります。
+トランザクション トポロジの場合、**StormTxAttempt** は重要なクラスです。 ここには、**TxId** と **AttemptId** という 2 つのメンバーが含まれています。 **TxId** メンバーで、特定のトランザクションを識別します。 トランザクションは、失敗して再生される場合、複数回試行される可能性があります。
 
 Storm の Java での処理と同様に、SCP.NET では、各 **StormTxAttempt** オブジェクトを処理する新しい **ISCPBatchBolt** オブジェクトを作成します。 この設計の目的は、並列トランザクション処理をサポートすることです。 トランザクションの試行が終了すると、対応する **ISCPBatchBolt** オブジェクトが破棄され、ガベージ コレクションが実施されます。
 
@@ -443,7 +443,7 @@ SCP.NET では、トランザクション トポロジを定義する次の関�
 
 SCP.NET には、次のキーワードが定義されています。
 
-| Keyword | 説明 |
+| キーワード | 説明 |
 | --- | --- |
 | **:name** |トポロジ名 |
 | **:topology** |前の表の関数と組み込み関数を使用するトポロジ |
@@ -570,7 +570,7 @@ bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\Hybri
 
 SCP コンポーネントには、Java 側と C# 側が含まれます。 ネイティブの Java スパウトおよびボルトとやりとりするには、次の図に示すように、Java 側と C# 側の間でシリアル化と逆シリアル化を行う必要があります。
 
-![Java コンポーネントが SCP コンポーネントに送信された後、別の Java コンポーネントに送信される図](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+:::image type="content" source="./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png" alt-text="Java コンポーネントが SCP コンポーネントに送信された後、別の Java コンポーネントに送信される図" border="false":::
 
 #### <a name="serialization-in-the-java-side-and-deserialization-in-the-c-side"></a>Java 側のシリアル化と C# 側の逆シリアル化
 
@@ -690,7 +690,7 @@ public interface ICustomizedInteropJavaDeserializer {
 
 次のシンプルな HelloWorld の例で、SCP.NET を体験できます。 **generator** というスパウトと、**splitter** と **counter** という 2 つのボルトを持つ非トランザクション トポロジを使用します。 **generator** スパウトにより、文がランダムに生成され、それらの文が **splitter** に出力されます。 **splitter** ボルトにより、文が単語に分割され、それらの単語が **counter** ボルトに出力されます。 **counter** ボルトでは、ディクショナリを使用して各単語の出現回数が記録されます。
 
-この例には、次の 2 つの仕様ファイルがあります。HelloWorld と HelloWorld\_EnableAck.spec です。C# コードで、Java 側から `pluginConf` オブジェクトを取得して、受信確認が有効になっているかどうかを確認できます。
+この例には、HelloWorld.spec と HelloWorld\_EnableAck.spec という 2 つの仕様ファイルが含まれています。C# コードで、Java 側から `pluginConf` オブジェクトを取得して、受信確認が有効になっているかどうかを確認できます。
 
 ```csharp
 /* demo how to get pluginConf info */
@@ -725,7 +725,7 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 
 ### <a name="helloworldtx"></a>HelloWorldTx
 
-次の HelloWorldTx の例は、トランザクション トポロジの実装方法を示しています。 この例には、**generator** というスパウトが 1 つ、**partial-count** というバッチ ボルト、および **count-sum** というコミット ボルトがあります。 この例には、次の 3 つの既存のテキスト ファイルもあります。DataSource0.txt、DataSource1.txt、DataSource2.txt です。
+次の HelloWorldTx の例は、トランザクション トポロジの実装方法を示しています。 この例には、**generator** というスパウトが 1 つ、**partial-count** というバッチ ボルト、および **count-sum** というコミット ボルトがあります。 また、この例には、DataSource0.txt、DataSource1.txt、DataSource2.txt という 3 つの既存のテキスト ファイルが含まれています。
 
 各トランザクションでは、**generator** スパウトによって、既存の 3 つのファイルから 2 つのファイルがランダムに選択され、**partial-count** ボルトに 2 つのファイル名が出力されます。 **partial-count** ボルトでは、以下が行われます。
 
