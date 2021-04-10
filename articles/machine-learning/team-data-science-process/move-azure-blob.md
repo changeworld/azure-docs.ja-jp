@@ -34,7 +34,7 @@ Team Data Science Process では、さまざまなストレージ環境に取り
 最適な方法はシナリオによって異なります。 高度な分析プロセスで使用されるさまざまなデータ サイエンス ワークフローで必要なリソースを確認するには、記事「 [Azure Machine Learning での高度な分析のシナリオ](plan-sample-scenarios.md) 」が役立ちます。
 
 > [!NOTE]
-> Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関する記事および [Azure BLOB サービス](/rest/api/storageservices/Blob-Service-Concepts)に関するページをご覧ください。
+> Azure Blob Storage の概要については、[Azure BLOB の基礎](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関する記事および [Azure BLOB サービス](/rest/api/storageservices/Blob-Service-Concepts)に関するページをご覧ください。
 > 
 > 
 
@@ -42,7 +42,7 @@ Team Data Science Process では、さまざまなストレージ環境に取り
 
 別の方法として、 [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) を使用して以下を行うこともできます。 
 
-* Azure BLOB ストレージからデータをダウンロードするパイプラインを作成し、スケジュールを設定する 
+* Azure Blob Storage からデータをダウンロードするパイプラインを作成し、スケジュールを設定する 
 * パイプラインを発行済みの Azure Machine Learning Web サービスに渡す 
 * 予測分析の結果を受け取る 
 * 結果をストレージにアップロードする 
