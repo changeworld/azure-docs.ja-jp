@@ -8,12 +8,12 @@ ms.date: 03/10/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 92e5b00cd655677cdc3096bc2142dfe1b704adf2
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: d1aa91ea0f698e609e786d87a0072e6a07c143a3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102637067"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047319"
 ---
 # <a name="calculate-blob-count-and-total-size-per-container-using-azure-storage-inventory"></a>Azure Storage インベントリを使用してコンテナーあたりの BLOB の数と合計サイズを計算する
 
@@ -43,7 +43,7 @@ ms.locfileid: "102637067"
 
 ## <a name="create-an-azure-synapse-workspace"></a>Azure Synapse ワークスペースを作成する
 
-次に SQL クエリを実行してインベントリ結果を報告するための [Azure Synapse ワークスペースを作成](/azure/synapse-analytics/get-started-create-workspace)します。
+次に SQL クエリを実行してインベントリ結果を報告するための [Azure Synapse ワークスペースを作成](../../synapse-analytics/get-started-create-workspace.md)します。
 
 ## <a name="create-the-sql-query"></a>SQL クエリを作成する
 
@@ -58,7 +58,7 @@ Azure Synapse ワークスペースを作成したら、次の手順を行いま
 
 ## <a name="run-the-sql-query"></a>SQL クエリを実行する
 
-1. 次の SQL クエリを Azure Synapse ワークスペースに追加して[インベントリ CSV ファイルを読み取ります](/azure/synapse-analytics/sql/query-single-csv-file#read-a-csv-file)。
+1. 次の SQL クエリを Azure Synapse ワークスペースに追加して[インベントリ CSV ファイルを読み取ります](../../synapse-analytics/sql/query-single-csv-file.md#read-a-csv-file)。
 
     `bulk` パラメーターには、分析するインベントリ レポート CSV ファイルの URL を使用します。
 

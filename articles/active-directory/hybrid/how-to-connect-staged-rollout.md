@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2038587aebe8fe98bd1adcccef6b895ec7370656
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176860"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105709720"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
 
@@ -98,7 +98,7 @@ ms.locfileid: "102176860"
 
 段階的なロールアウトを使用して *パスワードハッシュ同期* サインインをテストするには、次のセクションの作業前の指示に従ってください。
 
-使用する PowerShell コマンドレットの詳細については、「[Azure AD 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)」を参照してください。
+使用する PowerShell コマンドレットの詳細については、「[Azure AD 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout)」を参照してください。
 
 ## <a name="pre-work-for-password-hash-sync"></a>パスワード ハッシュ同期の事前作業
 
@@ -251,9 +251,9 @@ A:いいえ。この機能は、クラウド認証をテストする目的で設
 
 **Q:PowerShell を使用して段階的なロールアウトを実行できますか？**
 
-A:はい。 PowerShell を使用して段階的なロールアウトを実行する方法については、「[Azure AD プレビュー」](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout)を参照してください。
+A:はい。 PowerShell を使用して段階的なロールアウトを実行する方法については、「[Azure AD プレビュー」](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Active Directory 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview#staged_rollout )
+- [Azure Active Directory 2.0 プレビュー](/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true#staged_rollout )
 - [サインイン方法をパスワード ハッシュ同期に変更する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)
 - [サインイン方法をパススルー認証に変更する](plan-migrate-adfs-password-hash-sync.md#step-3-change-the-sign-in-method-to-password-hash-synchronization-and-enable-seamless-sso)

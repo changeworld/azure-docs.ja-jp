@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate での検出、評価、および依存関係分析に関する質問
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
-author: vineetvikram
-ms.author: vivikram
+author: rashijoshi
+ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 6c4dfed27a105fad951ae12ca053b6d86772717a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: f9fe4109d2b21f7c44ba340db53dc24311652441
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102032570"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104782352"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -28,18 +28,15 @@ ms.locfileid: "102032570"
 [パブリック](migrate-support-matrix.md#supported-geographies-public-cloud)と [Government クラウド](migrate-support-matrix.md#supported-geographies-azure-government)でサポートされている地域を確認してください。
 
 
-## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できる VM の数を教えてください？
+## <a name="how-many-servers-can-i-discover-with-an-appliance"></a>1 つのアプライアンスで検出できるサーバーの数を教えてください
 
-1 つのアプライアンスを使って最大 10,000 までの VMware VM、最大 5,000 までの Hyper-V VM、および最大 1000 までの物理サーバーを検出できます。 多くのマシンがある場合は、「[Hyper-v の評価のスケーリング](scale-hyper-v-assessment.md)」、「[VMware の評価のスケーリング](scale-vmware-assessment.md)」、または「[物理サーバーの評価のスケーリング](scale-physical-assessment.md)」を参照してください。
+1 つのアプライアンスを使って最大 10,000 までの VMware 環境のサーバー、最大 5,000 までの Hyper-V 環境のサーバー、および最大 1000 までの物理サーバーを検出できます。 多くのサーバーがある場合は、「[Hyper-v の評価のスケーリング](scale-hyper-v-assessment.md)」、「[VMware の評価のスケーリング](scale-vmware-assessment.md)」、または「[物理サーバーの評価のスケーリング](scale-physical-assessment.md)」を参照してください。
 
 ## <a name="how-do-i-choose-the-assessment-type"></a>評価の種類を選択するにはどうすればよいですか?
 
-- Azure VM への移行のためにオンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md)、[Hyper-V VM](how-to-set-up-appliance-hyper-v.md)、および [物理サーバー](how-to-set-up-appliance-physical.md)を評価する場合は、**Azure VM の評価** を使用します。 [詳細情報](concepts-assessment-calculation.md)
+- Azure VM への移行のためにオンプレミスの [VMware](how-to-set-up-appliance-vmware.md) および [Hyper-V](how-to-set-up-appliance-hyper-v.md) 環境のサーバー、および [物理サーバー](how-to-set-up-appliance-physical.md)を評価する場合は、**Azure VM の評価** を使用します。 [詳細情報](concepts-assessment-calculation.md)
 
 - VMware 環境からオンプレミスの SQL サーバーを評価して、Azure SQL Database または Azure SQL Managed Instance に移行する場合は、評価の種類として **Azure SQL** を使用します。 [詳細情報](concepts-assessment-calculation.md)
-
-    > [!Note]
-    > VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 この機能を試すには、[**このリンク**](https://aka.ms/AzureMigrate/SQL)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。 オーストラリア東部に既にプロジェクトがあり、この機能を試したい場合は、ポータルでこれらの [**前提条件**](how-to-discover-sql-existing-project.md)が完了していることを確認してください。
 
 - **Azure VMware Solution (AVS)** の評価を使用するのは、[Azure VMware Solution (AVS)](../azure-vmware/introduction.md) への移行のために、この評価の種類を使用してオンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価する場合です。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
 
@@ -48,10 +45,10 @@ ms.locfileid: "102032570"
 
 ## <a name="why-is-performance-data-missing-for-someall-servers-in-my-azure-vm-andor-avs-assessment-report"></a>Azure VM や AVS の評価レポートに、一部またはすべてのサーバーに関するパフォーマンス データがないのはなぜですか?
 
-"パフォーマンス ベース" の評価では、Azure Migrate アプライアンスでオンプレミス VM のパフォーマンス データを収集できない場合、評価レポートのエクスポートに "PercentageOfCoresUtilizedMissing" または "PercentageOfMemoryUtilizedMissing" と表示されます。 次の点を確認してください。
+"パフォーマンス ベース" の評価では、Azure Migrate アプライアンスでオンプレミスサーバーのパフォーマンス データを収集できない場合、評価レポートのエクスポートに "PercentageOfCoresUtilizedMissing" または "PercentageOfMemoryUtilizedMissing" と表示されます。 次の点を確認してください。
 
-- 評価を作成している期間中に VM の電源がオンになっていたかどうか
-- メモリ カウンターのみ取得されず、Hyper-V VM を評価しようとしていたかどうか。 このシナリオでは、VM の動的メモリを有効にし、評価を "再計算" して最新の変更内容を反映してください。 アプライアンスは、VM で動的メモリが有効になっている場合にのみ、Hyper-V VM のメモリ使用率値を収集できます。
+- 評価を作成している期間中にサーバーの電源がオンになっていたかどうか
+- メモリ カウンターのみ取得されず、Hyper-V 環境内のサーバーを評価しようとしていたかどうか。 このシナリオでは、サーバーの動的メモリを有効にし、評価を "再計算" して最新の変更内容を反映してください。 アプライアンスは、サーバーで動的メモリが有効になっている場合にのみ、Hyper-V 環境内のサーバーのメモリ使用率値を収集できます。
 
 - すべてのパフォーマンス カウンターがない場合は、ポート 443 (HTTPS) での発信接続が許可されていることを確認します。
 
@@ -89,11 +86,6 @@ ms.locfileid: "102032570"
 
 - Azure SQL の評価の場合、検出が開始された後で、いくつかの SQL インスタンスまたはデータベースが作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの SQL インスタンスまたはデータベースが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細情報](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
 
-## <a name="i-want-to-try-out-the-new-azure-sql-assessment-feature-in-azure-migrate"></a>Azure Migrate の新しい Azure SQL 評価機能を試してみたい
-この機能を試すには、[このリンク](https://go.microsoft.com/fwlink/?linkid=2155668L)を使用して、**オーストラリア東部** リージョンにプロジェクトを作成します。
-- 始めるには、[検出](https://docs.microsoft.com/azure/migrate/tutorial-discover-vmware)と[評価](https://docs.microsoft.com/azure/migrate/tutorial-assess-sql)に関するチュートリアルを参照してください。
-- VMware 環境で実行されている SQL Server のインスタンスとデータベースの検出と評価は、現在プレビュー段階にあることに注意してください。
-
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Azure SQL の評価を作成するときに、一部のサーバーを見ることができません
 
 - Azure SQL の評価は、SQL インスタンスが検出された場所で実行されているサーバーに対してのみ実行できます。 評価したいサーバーと SQL インスタンスが表示されない場合は、検出が完了するまでしばらく待ってから、評価を作成してください。 
@@ -117,7 +109,7 @@ SQL の検出は 24 時間ごとに 1 回実行され、最新の構成変更が
 ## <a name="my-assessment-is-in-outdated-state"></a>評価が期限切れ状態になっています
 
 ### <a name="azure-vmavs-assessment"></a>Azure VM または AVS の評価
-評価されたグループ内の VM に対してオンプレミスでの変更があった場合、その評価は古い評価としてマークされます。 次のプロパティに 1 つ以上の変更があるため、評価は "古い" としてマークされている可能性があります。
+評価されたグループ内のサーバーに対してオンプレミスでの変更があった場合、その評価は古い評価としてマークされます。 次のプロパティに 1 つ以上の変更があるため、評価は "古い" としてマークされている可能性があります。
 - プロセッサ コアの数
 - 割り当て済みメモリ
 - ブートの種類またはファームウェア
@@ -166,18 +158,18 @@ Azure SQL Managed Instance の場合、最初の 32 GB/インスタンス/月の
 - AVS の評価は、VMware マシンのみが含まれるグループに対して実行できます。 AVS の評価を実行する場合は、VMware 以外のマシンをグループから削除してください。
 - Azure Migrate で AVS の評価を初めて実行する場合は、VMware マシンの新しいグループを作成することをお勧めします。
 
-## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Azure Government に一部の VM の種類が表示されない
+## <a name="i-cant-see-some-vm-types-and-sizes-in-azure-government"></a>Azure Government に一部の VM の種類およびサイズが表示されない
 
-評価と移行がサポートされている VM の種類は、Azure Government の場所で使用できるかどうかによって異なります。 Azure Government の VM の種類を[確認および比較](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)できます。
+評価と移行がサポートされている VM の種類およびサイズは、Azure Government の場所で使用できるかどうかによって異なります。 Azure Government の VM の種類を[確認および比較](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)できます。
 
-## <a name="the-size-of-my-vm-changed-can-i-run-an-assessment-again"></a>VM のサイズが変更しました。 評価を再実行できますか?
+## <a name="the-size-of-my-server-changed-can-i-run-an-assessment-again"></a>サーバーのサイズが変更しました。 評価を再実行できますか?
 
-Azure Migrate アプライアンスは、オンプレミス環境の情報を継続的に収集します。  評価はオンプレミス VM のポイントインタイム スナップショットです。 評価する VM の設定を変更する場合は、[再計算] オプションを使って最新の変更で評価を更新してください。
+Azure Migrate アプライアンスは、オンプレミス環境の情報を継続的に収集します。  評価はオンプレミス サーバーのポイントインタイム スナップショットです。 評価するサーバーの設定を変更する場合は、[再計算] オプションを使って最新の変更で評価を更新してください。
 
-## <a name="how-do-i-discover-vms-in-a-multitenant-environment"></a>マルチテナント環境で VM を検出する方法はありますか？
+## <a name="how-do-i-discover-servers-in-a-multitenant-environment"></a>マルチテナント環境でサーバーを検出する方法はありますか?
 
-- **VMware**:環境がテナント間で共有されている場合、あるテナントの VM が別のテナントのサブスクリプションで検出されないようにするには、検出したい VM だけにアクセスできる VMware vCenter Server 資格情報を作成します。 次に、Azure Migrate アプライアンスで検出を開始するときに、これらの資格情報を使用します。
-- **Hyper-V**:検出には Hyper-V ホストの資格情報が使用されます。 VM が同じ Hyper-V ホストを共有している場合、現在、検出を分離する方法はありません。  
+- **VMware**: 環境がテナント間で共有されている場合、あるテナントのサーバーが別のテナントのサブスクリプションで検出されないようにするには、検出したいサーバーだけにアクセスできる VMware vCenter Server 資格情報を作成します。 次に、Azure Migrate アプライアンスで検出を開始するときに、これらの資格情報を使用します。
+- **Hyper-V**:検出には Hyper-V ホストの資格情報が使用されます。 サーバーが同じ Hyper-V ホストを共有している場合、現在、検出を分離する方法はありません。  
 
 ## <a name="do-i-need-vcenter-server"></a>vCenter Server は必要ですか?
 
@@ -185,9 +177,9 @@ Azure Migrate アプライアンスは、オンプレミス環境の情報を継
 
 ## <a name="what-are-the-sizing-options-in-an-azure-vm-assessment"></a>Azure VM の評価にはどのようなサイズ設定オプションがありますか?
 
-オンプレミスに合わせたサイズ設定では、Azure Migrate が VM のパフォーマンス データを考慮せずに評価を行います。 Azure Migrate は、オンプレミスの構成に基づいて VM のサイズを評価します。 パフォーマンスベースのサイズ設定では、使用率データに基づいてサイズが設定されます。
+オンプレミスに合わせたサイズ設定では、Azure Migrate がサーバーのパフォーマンス データを考慮せずに評価を行います。 Azure Migrate は、オンプレミスの構成に基づいて VM のサイズを評価します。 パフォーマンスベースのサイズ設定では、使用率データに基づいてサイズが設定されます。
 
-たとえば、50% の CPU 使用率と 50% のメモリ使用率で 4 コアと 8 GB のメモリを備えたオンプレミスの VM の場合は、次のようになります。
+たとえば、50% の CPU 使用率と 50% のメモリ使用率で 4 コアと 8 GB のメモリを備えたオンプレミスのサーバーの場合は、次のようになります。
 - オンプレミスのサイズ設定では、4 コアと 8 GB のメモリを備えた Azure VM SKU が推奨されます。
 - パフォーマンスベースのサイズ設定では、使用率が考慮されるため、2 コアと 4 GB のメモリを備えた VM SKU を使用することをお勧めします。
 
@@ -230,7 +222,7 @@ CSV ファイルを介してインポートされたマシンの場合、AVS の
 
 ## <a name="what-is-dependency-visualization"></a>依存関係の視覚化とは何ですか。
 
-依存関係の視覚化は、移行する VM のグループ評価の信頼性を高める上で役立ちます。 依存関係の視覚化により、評価を実行する前に、マシンの依存関係がクロスチェックされます。 これにより、見落としがなくなり、Azure への移行時に予期しない障害を回避しやすくなります。 Azure Migrate では、依存関係の視覚化を実現するために Azure Monitor の Service Map ソリューションを使用します。 [詳細については、こちらを参照してください](concepts-dependency-visualization.md)。
+依存関係の視覚化は、移行するサーバーのグループ評価の信頼性を高める上で役立ちます。 依存関係の視覚化により、評価を実行する前に、マシンの依存関係がクロスチェックされます。 これにより、見落としがなくなり、Azure への移行時に予期しない障害を回避しやすくなります。 Azure Migrate では、依存関係の視覚化を実現するために Azure Monitor の Service Map ソリューションを使用します。 [詳細については、こちらを参照してください](concepts-dependency-visualization.md)。
 
 > [!NOTE]
 > エージェントベースの依存関係の分析は、Azure Government では使用できません。 エージェントレスの依存関係の分析を使用できます
@@ -241,7 +233,7 @@ CSV ファイルを介してインポートされたマシンの場合、AVS の
 
 **要件** | **エージェントレス** | **エージェント ベース**
 --- | --- | ---
-サポート | このオプションは現在プレビュー段階であり、VMware VM でのみ使用できます。 サポートされているオペレーティング システムについては[こちらを確認してください](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。 | 一般提供 (GA) 中。
+サポート | このオプションは現在プレビュー段階であり、VMware 環境のサーバーでのみ使用できます。 サポートされているオペレーティング システムについては[こちらを確認してください](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)。 | 一般提供 (GA) 中。
 エージェント | クロスチェックを行うマシンにエージェントをインストールする必要はありません。 | 分析するオンプレミスの各マシンにエージェントをインストールします。[Microsoft Monitoring Agent (MMA)](../azure-monitor/agents/agent-windows.md) と[依存関係エージェント](../azure-monitor/agents/agents-overview.md#dependency-agent)。 
 前提条件 | 前提条件とデプロイの要件については[こちらを確認してください](concepts-dependency-visualization.md#agentless-analysis)。 | 前提条件とデプロイの要件については[こちらを確認してください](concepts-dependency-visualization.md#agent-based-analysis)。
 Log Analytics | 不要。 | Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](../azure-monitor/logs/log-query-overview.md)の [Service Map](../azure-monitor/vm/service-map.md) ソリューションを使用します。 [詳細については、こちらを参照してください](concepts-dependency-visualization.md#agent-based-analysis)。
@@ -296,9 +288,9 @@ Data | ソース マシンのサーバー名、プロセス、アプリケーシ
 
 エージェントレスの視覚化では、1 時間から 30 日の範囲で、1 つのサーバーの依存関係マップを表示できます。
 
-## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-vms"></a>10 以上の VM が含まれるグループの依存関係を視覚化できますか?
+## <a name="can-i-visualize-dependencies-for-groups-of-more-than-10-servers"></a>10 以上のサーバーが含まれるグループの依存関係を視覚化できますか?
 
-最大 10 個の VM を含むグループの[依存関係を視覚化](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping)できます。 グループ内の VM の数が 10 を超える場合は、グループを小さなグループに分割してから依存関係を視覚化することをお勧めします。
+最大 10 個のサーバーを含むグループの[依存関係を視覚化](./how-to-create-a-group.md#refine-a-group-with-dependency-mapping)できます。 グループ内のサーバーの数が 10 を超える場合は、グループを小さなグループに分割してから依存関係を視覚化することをお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

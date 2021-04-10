@@ -3,12 +3,12 @@ title: Azure Service Fabric の詳細について説明します。
 description: Azure Service Fabric の主要な概念と主な領域について説明します。 Service Fabric のその他の概要と、マイクロサービスを作成する方法を説明します。
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: c709abe1087a9cc69c9e6e23cd1ff344a3dbebd2
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 6e5a7445706a6e7842822ec784a64555d9226923
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100589038"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727656"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -87,7 +87,7 @@ Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication
 ## <a name="application-lifecycle"></a>アプリケーションのライフサイクル
 その他のプラットフォームと同様に、通常、Service Fabric のアプリケーションは、デザイン、開発、テスト、デプロイ、アップグレード、保守、削除のフェーズを進みます。 Service Fabric は、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクルに対して高度なサポートを提供します。 そのサービス モデルにより、アプリケーションのライフサイクルで個別に関与するさまざまな役割が有効になります。 「[Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)」では、API の概要と、Service Fabric アプリケーション ライフサイクルのフェーズ全体でさまざまな役割がその API をどのように使用するかを示します。 
 
-アプリケーションのライフサイクル全体は、[PowerShell コマンドレット](/powershell/module/servicefabric/?view=azureservicefabricps)、[CLI コマンド](service-fabric-sfctl.md)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java API](/java/api/overview/azure/servicefabric)、および [REST API](/rest/api/servicefabric/) を使って管理できます。 [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) や [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) などのツールを使用して、継続的インテグレーション/継続的なデプロイ パイプラインをセットアップすることもできます。
+アプリケーションのライフサイクル全体は、[PowerShell コマンドレット](/powershell/module/servicefabric/?preserve-view=true&view=azureservicefabricps)、[CLI コマンド](service-fabric-sfctl.md)、[C# API](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient)、[Java API](/java/api/overview/azure/servicefabric)、および [REST API](/rest/api/servicefabric/) を使って管理できます。 [Azure Pipelines](./service-fabric-tutorial-deploy-app-with-cicd-vsts.md) や [Jenkins](/azure/developer/jenkins/deploy-to-service-fabric-cluster) などのツールを使用して、継続的インテグレーション/継続的なデプロイ パイプラインをセットアップすることもできます。
 
 ## <a name="test-applications-and-services"></a>アプリケーションとサービスをテストする
 真のクラウド スケール サービスを作成するには、アプリケーションとサービスが現実の障害に耐えられるかを検証することが不可欠です。 Fault Analysis Service は、Service Fabric で構築されたサービスをテストするために設計されています。 [Fault Analysis Service](service-fabric-testability-overview.md) を使用すると、アプリケーションに対して意味のある障害を誘発させ、完全なテスト シナリオを実行することができます。 これらのエラーとシナリオでは、サービスがその有効期間中に経験する多数の状態と遷移を、完全に管理された安全で一貫性のある方法で実行して検証します。
@@ -160,7 +160,7 @@ Service Fabric レポーターは、識別された関心のある条件を監�
 
 Service Fabric には、正常性ストアに集計された[正常性レポートを表示する](service-fabric-view-entities-aggregated-health.md)ために複数の方法が用意されています。
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) またはその他の視覚化ツール。
-* 正常性クエリ ([PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)、[CLI](service-fabric-sfctl.md)、[C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) および [Java FabricClient API](/java/api/system.fabric)、または [REST API](/rest/api/servicefabric) を使用)。
+* 正常性クエリ ([PowerShell](/powershell/module/servicefabric/?preserve-view=true&view=azureservicefabricps)、[CLI](service-fabric-sfctl.md)、[C# FabricClient API](/dotnet/api/system.fabric.fabricclient.healthclient) および [Java FabricClient API](/java/api/system.fabric)、または [REST API](/rest/api/servicefabric) を使用)。
 * 正常性をプロパティの 1 つとして取得するエンティティの一覧を返す一般クエリ (PowerShell、CLI、API、または REST を使用)。
 
 ## <a name="monitoring-and-diagnostics"></a>監視と診断

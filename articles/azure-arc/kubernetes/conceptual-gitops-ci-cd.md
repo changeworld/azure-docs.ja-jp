@@ -8,12 +8,12 @@ author: tcare
 ms.author: tcare
 description: この記事では、GitOps を使用した CI/CD ワークフローの概念の概要を説明します
 keywords: GitOps、Kubernetes、K8、Azure、Helm、Arc、AKS、Azure Kubernetes Service、コンテナー、CI、CD、Azure DevOps
-ms.openlocfilehash: a51a9f2b32f1088cec390dc4d74300a38f37b160
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102121781"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025868"
 ---
 # <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>GitOps を使用した CI/CD ワークフロー - Azure Arc 対応 Kubernetes
 
@@ -30,7 +30,7 @@ ms.locfileid: "102121781"
 ### <a name="application-repo"></a>アプリケーション リポジトリ
 アプリケーション リポジトリには、開発者が内部の開発工程で作業するアプリケーション コードが含まれています。 アプリケーションの展開テンプレートは、このリポジトリ内に通常の形式 (Helm や Kustomize など) で格納されています。 環境固有の値は格納されません。 このリポジトリが変更されると、デプロイ処理を開始する PR または CI パイプラインが呼び出されます。
 ### <a name="container-registry"></a>Container Registry
-コンテナー レジストリには、Kubernetes 環境で使用される第一のイメージとすべてのサードパーティ製のイメージが保持されています。 人間が判読できるタグと、イメージのビルドに使用される Git コミットを使用して、ファーストパーティのアプリケーション イメージにタグが付けられます。 セキュリティ、速度、および回復力のために、サードパーティ製のイメージがキャッシュされます。 セキュリティ パッチを適時にテストおよび統合するための計画が設定されます。 詳細については、[Azure Container Registry を使用してパブリック コンテンツを使用および保守する方法](https://docs.microsoft.com/azure/container-registry/tasks-consume-public-content)に関するページを例として参照してください。
+コンテナー レジストリには、Kubernetes 環境で使用される第一のイメージとすべてのサードパーティ製のイメージが保持されています。 人間が判読できるタグと、イメージのビルドに使用される Git コミットを使用して、ファーストパーティのアプリケーション イメージにタグが付けられます。 セキュリティ、速度、および回復力のために、サードパーティ製のイメージがキャッシュされます。 セキュリティ パッチを適時にテストおよび統合するための計画が設定されます。 詳細については、[Azure Container Registry を使用してパブリック コンテンツを使用および保守する方法](../../container-registry/tasks-consume-public-content.md)に関するページを例として参照してください。
 ### <a name="pr-pipeline"></a>PR パイプライン
 アプリケーション リポジトリに対する PR は、PR パイプラインが正常に実行されたときにゲートが実行されます。 このパイプラインでは、アプリケーション コードでのリンティングや単体テストなどの基本的な品質ゲートが実行されます。 このパイプラインでは、アプリケーションがテストされ、Kubernetes 環境へのデプロイに使用される Dockerfile と Helm テンプレートがリンティングされます。 Docker イメージはビルドしてテストする必要がありますが、プッシュされません。 迅速に反復処理できるように、パイプラインの継続時間が比較的短くなるようにしてください。
 ### <a name="ci-pipeline"></a>CI パイプライン
