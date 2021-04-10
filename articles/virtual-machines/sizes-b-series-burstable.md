@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
 ms.openlocfilehash: c19c47ac64f1e41fa998a29d3ea0480bf0d92a63
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102554464"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ

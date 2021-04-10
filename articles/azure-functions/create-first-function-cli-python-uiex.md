@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-azurecli
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: da7f6fdaedd8105363cc62bf55bae2cb5f72f234
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "102031652"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>クイックスタート: コマンド ラインから Azure に Python 関数を作成する
@@ -38,7 +38,7 @@ ms.locfileid: "102031652"
 
 + [Azure Functions Core Tools](functions-run-local.md#v2) バージョン 3.x。 
   
-+ Either the <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するための一連のクロスプラットフォーム コマンド ライン ツール。">Azure CLI</abbr> or <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するためのコマンドを提供する PowerShell モジュール。">Azure PowerShell</abbr> Azure リソースを作成するための
++ 次のいずれか <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するための一連のクロスプラットフォーム コマンド ライン ツール。">Azure CLI</abbr> or <abbr title="Azure portal を使用する代わりに、ローカルの開発用コンピューターから Azure リソースを操作するためのコマンドを提供する PowerShell モジュール。">Azure PowerShell</abbr> Azure リソースを作成するための
 
     + [Azure CLI](/cli/azure/install-azure-cli) バージョン 2.4 以降。
 
@@ -230,7 +230,7 @@ py -m venv .venv
 
 ## <a name="5-create-supporting-azure-resources-for-your-function"></a>5.関数用の関連 Azure リソースを作成する
 
-関数コードを Azure にデプロイする前に、次のコマンドを使用してリソース グループ、ストレージ アカウント、関数アプリを作成する必要があります。 <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>, a <abbr title="すべての Azure Storage データ オブジェクトを含むアカウント。 ストレージ アカウントによって、ストレージ データ用の一意の名前空間が提供されます。">ストレージ アカウント</abbr>, and a <abbr title="Azure でサーバーレス関数をホストするクラウド リソース。関数の実行基盤となるコンピューティング環境を提供します。">function app</abbr> by using the following commands:
+関数コードを Azure にデプロイする前に、次のコマンドを使用してリソース グループ、ストレージ アカウント、関数アプリを作成する必要があります。 <abbr title="1 つの単位として管理できる関連する Azure リソースの論理コンテナー。">resource group</abbr>、 <abbr title="すべての Azure Storage データ オブジェクトを含むアカウント。 ストレージ アカウントによって、ストレージ データ用の一意の名前空間が提供されます。">ストレージ アカウント</abbr>、および <abbr title="Azure でサーバーレス関数をホストするクラウド リソース。関数の実行基盤となるコンピューティング環境を提供します。">関数アプリ</abbr> (次のコマンドを使用します)。
 
 1. まだ Azure にサインインしていない場合は、Azure にサインインします。
 
@@ -292,7 +292,7 @@ py -m venv .venv
 
     ---
 
-    `<STORAGE_NAME>` は、適宜、Azure Storage 内で一意の名前に置き換えてください。 <abbr title="名前は、全 Azure ユーザーが使用するすべてのストレージ アカウント全体でグローバルに一意である必要があります。 たとえば、contosobizappstorage20 のように、個人名または会社名、アプリケーション名、数値 ID の組み合わせを使用できます。">unique in Azure Storage</abbr>. 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` は汎用アカウントを指定します。これは [Functions でサポート](storage-considerations.md#storage-account-requirements)されています。
+    `<STORAGE_NAME>` は、適宜、Azure Storage 内で一意の名前に置き換えてください。 <abbr title="名前は、全 Azure ユーザーが使用するすべてのストレージ アカウント全体でグローバルに一意である必要があります。 たとえば、contosobizappstorage20 のように、個人名または会社名、アプリケーション名、数値 ID の組み合わせを使用できます。">Azure Storage 内で一意であること</abbr>. 名前は 3 文字から 24 文字とし、小文字のみを使用する必要があります。 `Standard_LRS` は汎用アカウントを指定します。これは [Functions でサポート](storage-considerations.md#storage-account-requirements)されています。
     
     このクイックスタートでは、ストレージ アカウントに関して数セント (米国ドル) の料金が発生します。
 

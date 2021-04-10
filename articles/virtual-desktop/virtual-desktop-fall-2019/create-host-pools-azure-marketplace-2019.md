@@ -3,15 +3,15 @@ title: Windows Virtual Desktop (クラシック) のホスト プール Azure Ma
 description: Azure Marketplace を使用して Windows Virtual Desktop (クラシック) のホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d7e0862bd7519f59602f1e769301614895bd6e09
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88008595"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121882"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) でホスト プールを作成する
 
@@ -80,10 +80,10 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 1. 既定値をそのまま使うか、仮想マシンの数とサイズをカスタマイズします。
 
     >[!NOTE]
-    >お探しの仮想マシン サイズがサイズ セレクターに表示されない場合、まだ Azure Marketplace ツールにオンボードされていないのが原因です。 特定のサイズを要求するには、[Windows Virtual Desktop UserVoice フォーラム](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)で要求を作成するか、既存の要求に賛成票を投じてください。
+    >お探しの仮想マシン サイズがサイズ セレクターに表示されない場合、まだ Azure Marketplace ツールにオンボードされていないのが原因です。
 
-1. 仮想マシンの名前のプレフィックスを入力します。 たとえば、「*prefix*」と入力すると、仮想マシンの名前は **prefix-0**、**prefix-1** などのようになります。
-1. **Virtual machine settings\(仮想マシンの設定\)** を選択します。
+2. 仮想マシンの名前のプレフィックスを入力します。 たとえば、「*prefix*」と入力すると、仮想マシンの名前は **prefix-0**、**prefix-1** などのようになります。
+3. **Virtual machine settings\(仮想マシンの設定\)** を選択します。
 
 ### <a name="virtual-machine-settings"></a>仮想マシンの設定
 

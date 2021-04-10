@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-csharp
 ms.openlocfilehash: 85bc54402237ff8e9c82c43ab9cdbe2dc6658af1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103464107"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>チュートリアル:Azure Functions を IoT Edge モジュールとして展開する

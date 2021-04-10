@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: d9ff86eeb0e64e7edbad0eeca51b04cabbd191e9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4d771e77fcca05b090e5d47d70ae93ece8f79e3e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101722655"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104865705"
 ---
 # <a name="use-certificates-with-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) で証明書を使用する
 
@@ -29,7 +29,6 @@ Key Vault は Cloud Services (延長サポート) に関連付けられている
 
 3. アクセス ポリシーに次のプロパティが含まれるようにします。
     - **アクセスの有効化: Azure Virtual Machines (展開用)**
-    - **アクセスの有効化: Azure Resource Manager (テンプレートの展開用)** 
 
     :::image type="content" source="media/certs-and-key-vault-2.png" alt-text="Azure portal のアクセス ポリシー ウィンドウを示す画像。":::
  
@@ -41,7 +40,7 @@ Key Vault は Cloud Services (延長サポート) に関連付けられている
 
     :::image type="content" source="media/certs-and-key-vault-4.png" alt-text="生成/インポート オプションの選択を示す画像":::
 
-4.  証明書のアップロードを完了するために必要な情報を入力します。 
+4.  証明書のアップロードを完了するために必要な情報を入力します。 証明書は、**PFX** 形式である必要があります。
 
     :::image type="content" source="media/certs-and-key-vault-5.png" alt-text="Azure portal 内のインポート ウィンドウを示す画像。":::
 
@@ -50,6 +49,9 @@ Key Vault は Cloud Services (延長サポート) に関連付けられている
     ```json
     <Certificate name="<your cert name>" thumbprint="<thumbprint in key vault" thumbprintAlgorithm="sha1" /> 
     ```
+6.  ARM テンプレート経由でのデプロイの場合、certificateUrl は、キー コンテナー内の証明書に移動し、[シークレット識別子] というラベルの箇所を見ると確認できます。
+
+    :::image type="content" source="media/certs-and-key-vault-6.png" alt-text="画像はキー コンテナー内のシークレット識別子フィールドを示しています。":::
 
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。

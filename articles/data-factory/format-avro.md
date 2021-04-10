@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 4be499e8e304f34b1cab10aed41b5b98a5f24e9b
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100392597"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Azure Data Factory での Avro 形式
