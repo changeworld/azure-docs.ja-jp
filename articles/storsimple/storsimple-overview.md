@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/02/2021
 ms.author: timlt
-ms.openlocfilehash: 3f0ec053d806208b4a3c15604714f6bdb87399e7
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: e8fb6985da5046d0a1bad171cbc9742a15baf1af
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102613223"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643429"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 シリーズ: ハイブリッド クラウド ストレージ ソリューション
 
@@ -255,7 +255,7 @@ StorSimple がサポートするインフラストラクチャ コンポ―ネ�
 | バックアップ ターゲット |Veeam |Veeam v 9 以降 |[Veeam を使用したバックアップ ターゲットとしての StorSimple](storsimple-configure-backup-target-veeam.md)|
 | バックアップ ターゲット |Veritas Backup Exec |Backup Exec 16 以降 |[Backup Exec を使用したバックアップ ターゲットとしての StorSimple](storsimple-configure-backup-target-using-backup-exec.md)|
 | バックアップ ターゲット |Veritas NetBackup |NetBackup 7.7.x 以降  |[NetBackup を使用したバックアップ ターゲットとしての StorSimple](storsimple-configure-backuptarget-netbackup.md)|
-| グローバルなファイル共有 <br></br> コラボレーション |Talon  |[StorSimple と Talon](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
+| グローバルなファイル共有 <br></br> コラボレーション |Talon  |[StorSimple と Talon](https://www.theinfostride.com/talon-and-microsoft-to-host-azure-storsimple-web-conference-with-capita/) | |
 
 ## <a name="storsimple-terminology"></a>StorSimple 用語集
 Microsoft Azure StorSimple ソリューションをデプロイする前に、以下の用語と定義を確認することをお勧めします。

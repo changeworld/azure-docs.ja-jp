@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 01/29/2021
-ms.openlocfilehash: bc1dea8121d7986b8394adf6545a0b2c30afb133
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 0231f7f3882218ef88d6151488da6aa23e4cb8e4
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104580183"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106106689"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure Monitor で Azure AD B2C を監視する
 
@@ -46,7 +46,7 @@ Azure AD B2C では、[Azure Active Directory 監視](../active-directory/report
 
 ![リソース グループのプロジェクション](./media/azure-monitor/resource-group-projection.png)
 
-このデプロイ中に、Log Analytics ワークスペースがホストされる Azure AD B2C テナントと Azure AD テナントの両方を構成します。 Azure AD B2C アカウントには、Azure AD B2C テナントの[全体管理者](../active-directory/roles/permissions-reference.md#limit-use-of-global-administrator)ロールが割り当てられている必要があります。 デプロイを実行するために使用される Azure AD アカウントには、Azure AD サブスクリプションの[所有者](../role-based-access-control/built-in-roles.md#owner)ロールが割り当てられている必要があります。また、説明に従って各手順を完了するときに、正しいディレクトリにサインインしていることを確認することも重要です。
+このデプロイ中に、Log Analytics ワークスペースがホストされる Azure AD B2C テナントと Azure AD テナントの両方を構成します。 Azure AD B2C アカウントには、Azure AD B2C テナントの[全体管理者](../active-directory/roles/permissions-reference.md#global-administrator)ロールが割り当てられている必要があります。 デプロイを実行するために使用される Azure AD アカウントには、Azure AD サブスクリプションの[所有者](../role-based-access-control/built-in-roles.md#owner)ロールが割り当てられている必要があります。また、説明に従って各手順を完了するときに、正しいディレクトリにサインインしていることを確認することも重要です。
 
 ## <a name="1-create-or-choose-resource-group"></a>1. リソース グループの作成または選択
 

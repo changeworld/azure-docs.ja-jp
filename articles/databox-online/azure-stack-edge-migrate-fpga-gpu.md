@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 24d6528a105d593d1cb4c9c66d981c8787f85633
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 430e34a1ca631be00ef46170affd4b56c79894a9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573280"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566406"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro FPGA から Azure Stack Edge Pro GPU へのワークロードの移行
 
@@ -173,7 +173,7 @@ Edge ローカル共有内のデータはデバイスに残ります。 次の�
 
 1. [デバイスでコンピューティングを構成します](azure-stack-edge-gpu-deploy-configure-compute.md)。
 1. ターゲット デバイスですべてのローカル共有を追加します。 詳細な手順については、「[ローカル共有を追加する](azure-stack-edge-gpu-manage-shares.md#add-a-local-share)」を参照してください。
-1. ソース デバイスでの SMB 共有へのアクセスには IP アドレスを使用しますが、ターゲット デバイスではデバイス名を使用します。 [Azure Stack Edge Pro GPU での SMB 共有への接続](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-smb-share)に関するセクションを参照してください。 ターゲット デバイスで NFS 共有に接続するには、そのデバイスに関連付けられた新しい IP アドレスを使用する必要があります。 [Azure Stack Edge Pro GPU での NFS 共有への接続](azure-stack-edge-j-series-deploy-add-shares.md#connect-to-an-nfs-share)に関するセクションを参照してください。 
+1. ソース デバイスでの SMB 共有へのアクセスには IP アドレスを使用しますが、ターゲット デバイスではデバイス名を使用します。 [Azure Stack Edge Pro GPU での SMB 共有への接続](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-smb-share)に関するセクションを参照してください。 ターゲット デバイスで NFS 共有に接続するには、そのデバイスに関連付けられた新しい IP アドレスを使用する必要があります。 [Azure Stack Edge Pro GPU での NFS 共有への接続](./azure-stack-edge-gpu-deploy-add-shares.md#connect-to-an-nfs-share)に関するセクションを参照してください。 
 
     SMB または NFS を介して、共有のデータを中間サーバーにコピーした場合は、中間サーバーからのデータをターゲット デバイス上の共有にコピーできます。 ソースとターゲットのデバイスが両方とも "*オンライン*" の場合は、ソース デバイスから直接データをコピーすることもできます。
 
