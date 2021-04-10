@@ -4,12 +4,12 @@ description: Azure ストレージ アカウントを使用して転送パイプ
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 4fe36366011fb790d25419ac46a54c4bf5ad94bf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98935350"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785820"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>成果物を別のレジストリに転送する
 
@@ -368,8 +368,9 @@ IMPORT_RUN_RES_ID=$(az deployment group show \
   --name importPipelineRun \
   --query 'properties.outputResources[0].id' \
   --output tsv)
+```
 
-When deployment completes successfully, verify artifact import by listing the repositories in the target container registry. For example, run [az acr repository list][az-acr-repository-list]:
+デプロイが正常に完了したら、ターゲット コンテナー レジストリにリポジトリを一覧表示して、成果物のインポートを確認します。 たとえば、[az acr repository list][az-acr-repository-list] を実行します。
 
 ```azurecli
 az acr repository list --name <target-registry-name>
@@ -426,7 +427,8 @@ az resource delete \
   * 一部の成果物が転送されないか、または 1 つも転送されません。 エクスポート実行で成果物のスペルを確認し、エクスポート実行とインポート実行で BLOB の名前を確認します。 最大 50 個の成果物を転送していることを確認します。
   * パイプライン実行が完了していない可能性があります。 エクスポート実行またはインポート実行には時間がかかることがあります。 
   * パイプラインに関するその他の問題については、Azure Container Registry チームにエクスポート実行またはインポート実行のデプロイ[関連付け ID](../azure-resource-manager/templates/deployment-history.md) を提示してください。
-
+* **物理的に分離された環境でイメージをプルするときの問題**
+  * 物理的に分離された環境でイメージをプルしようとしたときに、外部レイヤーまたは mcr.microsoft.com の解決試行に関するエラーが表示された場合、非再頒布可能レイヤーがイメージ マニフェストに含まれている可能性があります。 物理的に分離された環境の性質上、これらのイメージのプルに失敗することはよくあります。 イメージ マニフェストに外部レジストリへの参照がないかどうかをチェックすることによって、これに該当するかどうかを確認できます。 該当する場合、そのイメージに対するエクスポート パイプライン実行をデプロイする前に、非再頒布可能レイヤーをパブリック クラウド ACR にプッシュする必要があります。 これを行う方法については、「[非再頒布可能レイヤーをレジストリにプッシュするにはどうすればよいですか?](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
