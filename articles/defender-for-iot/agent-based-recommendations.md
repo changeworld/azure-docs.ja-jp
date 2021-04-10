@@ -1,25 +1,14 @@
 ---
 title: エージェント ベースの推奨事項
-titleSuffix: Azure Defender for IoT
 description: セキュリティに関する推奨事項の概念と Defender for IoT デバイスでの使用方法について説明します。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: shhazam-ms
-manager: rkarlin
-editor: ''
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/16/2021
-ms.author: shhazam
-ms.openlocfilehash: c7407db1460c2d0a83f2262a3348c81b4de300a7
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.openlocfilehash: a29957f459edad8b768daea7bc4567d77c80b165
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100641028"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784987"
 ---
 # <a name="security-recommendations-for-iot-devices"></a>IoT デバイスのセキュリティに関する推奨事項
 
@@ -34,11 +23,11 @@ Defender for IoT では、Azure リソースと IoT デバイスがスキャン�
 
 | 重大度 | Name | Data Source | 説明 |
 |--|--|--|--|
-| Medium | デバイスで開いているポート | クラシック セキュリティ モジュール | リッスン中のエンドポイントがデバイス上に見つかりました。 |
-| Medium | チェーンのいずれかで制限の少なすぎるファイアウォール ポリシーが見つかりました。 | クラシック セキュリティ モジュール | 許可のファイアウォール ポリシーが見つかりました (入力/出力)。 ファイアウォール ポリシーは既定ではすべてのトラフィックを拒否しなければならず、デバイスとの間の必要な通信を許可するにはルールを定義する必要があります。 |
-| Medium | 入力チェーンで制限の少なすぎるファイアウォール ルールが見つかりました | クラシック セキュリティ モジュール | ファイアウォール内に、IP アドレスまたはポートの範囲が広くて制限の少ないパターンを含むルールが見つかりました。 |
-| Medium | 出力チェーンで制限の少なすぎるファイアウォール ルールが見つかりました | クラシック セキュリティ モジュール | ファイアウォール内に、IP アドレスまたはポートの範囲が広くて制限の少ないパターンを含むルールが見つかりました。 |
-| Medium | オペレーティング システムのベースライン検証に失敗しました | クラシック セキュリティ モジュール | デバイスが [CIS Linux ベンチマーク](https://www.cisecurity.org/cis-benchmarks/)に準拠していません。 |
+| Medium | デバイスで開いているポート | クラシック Defender-IoT-micro-agent| リッスン中のエンドポイントがデバイス上に見つかりました。 |
+| Medium | チェーンのいずれかで制限の少なすぎるファイアウォール ポリシーが見つかりました。 | クラシック Defender-IoT-micro-agent| 許可のファイアウォール ポリシーが見つかりました (入力/出力)。 ファイアウォール ポリシーは既定ではすべてのトラフィックを拒否しなければならず、デバイスとの間の必要な通信を許可するにはルールを定義する必要があります。 |
+| Medium | 入力チェーンで制限の少なすぎるファイアウォール ルールが見つかりました | クラシック Defender-IoT-micro-agent| ファイアウォール内に、IP アドレスまたはポートの範囲が広くて制限の少ないパターンを含むルールが見つかりました。 |
+| Medium | 出力チェーンで制限の少なすぎるファイアウォール ルールが見つかりました | クラシック Defender-IoT-micro-agent| ファイアウォール内に、IP アドレスまたはポートの範囲が広くて制限の少ないパターンを含むルールが見つかりました。 |
+| Medium | オペレーティング システムのベースライン検証に失敗しました | クラシック Defender-IoT-micro-agent| デバイスが [CIS Linux ベンチマーク](https://www.cisecurity.org/cis-benchmarks/)に準拠していません。 |
 
 ### <a name="agent-based-operational-recommendations"></a>エージェント ベースの運用に関する推奨事項
 
@@ -46,9 +35,9 @@ Defender for IoT では、Azure リソースと IoT デバイスがスキャン�
 
 | 重大度 | Name | Data Source | 説明 |
 |--|--|--|--|
-| 低 | エージェントが未使用のメッセージを送信します | クラシック セキュリティ モジュール | 過去 24 時間の 10% 以上のセキュリティ メッセージが 4 KB 未満でした。 |
-| 低 | セキュリティ ツインの構成が最適ではありません | クラシック セキュリティ モジュール | セキュリティ ツインの構成が最適ではありません。 |
-| 低 | セキュリティ ツインの構成に競合があります | クラシック セキュリティ モジュール | セキュリティ ツインの構成で競合が検出されました。 |  |
+| 低 | エージェントが未使用のメッセージを送信します | クラシック Defender-IoT-micro-agent | 過去 24 時間の 10% 以上のセキュリティ メッセージが 4 KB 未満でした。 |
+| 低 | セキュリティ ツインの構成が最適ではありません | クラシック Defender-IoT-micro-agent | セキュリティ ツインの構成が最適ではありません。 |
+| 低 | セキュリティ ツインの構成に競合があります | クラシック Defender-IoT-micro-agent | セキュリティ ツインの構成で競合が検出されました。 |
 
 ## <a name="next-steps"></a>次のステップ
 

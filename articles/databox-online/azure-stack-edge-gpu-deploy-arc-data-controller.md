@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 57633df8c6482a9b0645813519991282bdbf22c1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 53058d27e94c9fdf18d726369f6a1b75a9f34db9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102633514"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567544"
 ---
 # <a name="deploy-azure-data-services-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Data Services を Azure Stack Edge Pro GPU デバイスにデプロイする
 
@@ -344,4 +344,4 @@ kubectl delete ns <Name of your namespace>
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Stack Edge Pro にステートレス アプリケーションをデプロイする](azure-stack-edge-j-series-deploy-stateless-application-kubernetes.md)。
+- [Azure Stack Edge Pro にステートレス アプリケーションをデプロイする](./azure-stack-edge-gpu-deploy-stateless-application-kubernetes.md)。
