@@ -3,12 +3,12 @@ title: コンテナー分析情報を有効にする | Microsoft Docs
 description: この記事では、コンテナーのパフォーマンスと特定されたパフォーマンスに関する問題を把握できるように、コンテナー分析情報を有効にして構成する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 58797221fa3380e4f7533a710e2f8dc658cb676c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 01246a728f204ed9cb43eee392c637b495208aaf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101708358"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109354"
 ---
 # <a name="enable-container-insights"></a>コンテナー分析情報を有効にする
 
@@ -64,6 +64,7 @@ ms.locfileid: "101708358"
 - 監視データを表示するには、コンテナー分析情報で構成された Log Analytics ワークスペースの "[*Log Analytics 閲覧者*](../logs/manage-access.md#manage-access-using-azure-permissions)" ロールを持っている必要があります。
 
 - 既定では、Prometheus のメトリックは収集されません。 メトリックを収集するための[エージェントを構成する](container-insights-prometheus-integration.md)前に、[Prometheus のドキュメント](https://prometheus.io/)を確認して、スクレイピングできるデータおよびサポートされているメソッドを理解しておくことが重要です。
+- AKS クラスターは、同じ Azure AD テナント内の別の Azure サブスクリプションの Log Analytics ワークスペースに接続できます。 現時点では、これは Azure portal では実行できませんが、Azure CLI または Resource Manager テンプレートを使用して行うことができます。
 
 ## <a name="supported-configurations"></a>サポートされている構成
 

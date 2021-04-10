@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 5515d1084b28091cf7d20958cfca8af3f2664563
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 154b496a6c14d307c09ddcd1b42bf4ba568cb315
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199494"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104607893"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>IoT ハブから cloud-to-device メッセージを送信する
 
@@ -90,6 +90,8 @@ cloud-to-device メッセージを送信するときに、サービスでは、�
 | EnqueuedTime | フィードバック メッセージがハブで受信された日時を示すタイムスタンプ |
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
+
+バッチが 64 件のメッセージに達したとき、または最後に送信されてから 15 秒経過したときのいずれか早い方で、フィードバックがシステムによって送信されます。 
 
 本文はシリアル化された JSON レコードの配列で、それぞれ次のプロパティを持っています。
 

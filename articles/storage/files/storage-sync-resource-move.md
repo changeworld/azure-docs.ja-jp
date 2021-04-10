@@ -8,10 +8,10 @@ ms.date: 3/10/2021
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: acd5f9263a74d3273dc65522e77d83c90a719311
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103555108"
 ---
 # <a name="move-azure-file-sync-resources-to-a-different-resource-group-subscription-or-aad-tenant"></a>Azure File Sync リソースを別のリソース グループ、サブスクリプション、または AAD テナントに移動する
@@ -55,7 +55,7 @@ Azure Storage では、移動できる唯一のリソースはストレージ �
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/storage-sync-resource-move/storage-sync-resource-move-small.png" alt-text="Azure portal でのストレージ同期サービス リソースを示す画像。 [移動] コマンドが展開しており、[リソース グループへの移動] と [サブスクリプションへの移動] のオプションが表示されています。" lightbox="media/storage-sync-resource-move/storage-sync-resource-move.png":::
+        :::image type="content" source="media/storage-sync-resource-move/storage-sync-resource-move-small.png" alt-text="Azure portal のストレージ同期サービス リソースを示す画像。[移動] コマンドが展開されていて、リソース グループの移動とサブスクリプションの移動のオプションが示されています。" lightbox="media/storage-sync-resource-move/storage-sync-resource-move.png":::
     :::column-end:::
     :::column:::
         ストレージ同期サービス リソースを移動する便利な方法は、Azure portal を使用することです。 移動するストレージ同期サービスに移動し、コマンドバーの **[移動]** を選択します。 ストレージ アカウントを移動する場合も同じ手順が適用されます。 この方法で、リソース グループ内のすべてのリソースを移動することもできます。 ストレージ同期サービスがあり、そこで使用されているすべてのストレージ アカウントがこのリソース グループ内にある場合は、リソース グループ全体を移動することをお勧めします。
@@ -101,7 +101,7 @@ Azure Storage では、移動できる唯一のリソースはストレージ �
         :::image type="content" source="media/storage-sync-resource-move/storage-sync-resource-move-afs-rp-registered-small.png" alt-text="Azure portal の、サブスクリプション管理、登録されたリソース プロバイダーを示す画像。" lightbox="media/storage-sync-resource-move/storage-sync-resource-move-afs-rp-registered.png":::
     :::column-end:::
     :::column:::
-        ストレージ アカウントへの同期アクセスを承認するには、Azure File Sync サービス プリンシパルが AAD テナントに存在している必要があります。 </br></br> 現在、新しい Azure サブスクリプションを作成すると、Azure File Sync リソース プロバイダー *Microsoft.StorageSync* がサブスクリプションに自動的に登録されます。 リソース プロバイダーの登録により、サブスクリプションを管理する Azure Active Directory テナント内で利用可能な同期の "*サービス プリンシパル*" が作成されます。 サービス プリンシパルは、AAD のユーザー アカウントに似ています。 Azure File Sync サービス プリンシパルを使用して、ロールベースのアクセス制御 (RBAC) を介してリソースへのアクセスを承認できます。 同期からのアクセスが必要な唯一のリソースは、同期が予定されているファイル共有を含むストレージ アカウントです。*Microsoft.StorageSync* は、ストレージ アカウントの **[閲覧者とデータ アクセス]** 組み込みロールに割り当てる必要があります。 </br></br> この割り当ては、同期グループにファイル共有を追加したとき、つまりクラウド エンドポイントを作成したときに、ログオン ユーザーのユーザー コンテキストを通じて自動的に実行されます。 ストレージ アカウントを新しいサブスクリプション (または AAD テナント) に移動すると、このロールの割り当ては失われ、[手動で再確立する必要があります](#establish-sync-access-to-a-storage-account)。
+        ストレージ アカウントへの同期アクセスを承認するには、Azure File Sync サービス プリンシパルが AAD テナントに存在している必要があります。 </br></br> 現在、新しい Azure サブスクリプションを作成すると、Azure File Sync リソース プロバイダー *Microsoft.StorageSync* がサブスクリプションに自動的に登録されます。 リソース プロバイダーの登録により、サブスクリプションを管理する Azure Active Directory テナント内で利用可能な同期の "*サービス プリンシパル*" が作成されます。 サービス プリンシパルは、AAD のユーザー アカウントに似ています。 Azure File Sync サービス プリンシパルを使用して、ロールベースのアクセス制御 (RBAC) を介してリソースへのアクセスを承認できます。 同期からのアクセスが必要な唯一のリソースは、同期が予定されているファイル共有を含むストレージ アカウントです。*Microsoft.StorageSync* は、ストレージ アカウントの **閲覧者とデータ アクセス** 組み込みロールに割り当てる必要があります。 </br></br> この割り当ては、同期グループにファイル共有を追加したとき、つまりクラウド エンドポイントを作成したときに、ログオン ユーザーのユーザー コンテキストを通じて自動的に実行されます。 ストレージ アカウントを新しいサブスクリプション (または AAD テナント) に移動すると、このロールの割り当ては失われ、[手動で再確立する必要があります](#establish-sync-access-to-a-storage-account)。
     :::column-end:::
 :::row-end:::
 
