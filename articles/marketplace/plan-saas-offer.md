@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 714b7bccea9b1e0c18ad78a4d98ed3526a279f5f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: e24e1afa0116bc1f240bddef47783b06f4f800d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879260"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104581305"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースの SaaS オファーを計画する方法
 
-この記事では、サービスとしてのソフトウェア (SaaS) オファーを Microsoft コマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。 SaaS オファーでは、ソフトウェア ソリューションを、個々のコンピューターにローカルでインストールするのではなく、オンライン サブスクリプションを介して顧客に配布し、ライセンスを付与します。 この記事は、パートナー センターでコマーシャル マーケットプレースに公開するためにオファーを準備するのに役立ちます。
+この記事では、サービスとしてのソフトウェア (SaaS) オファーを Microsoft コマーシャル マーケットプレースに公開するためのさまざまなオプションと要件について説明します。 SaaS オファーでは、オンライン サブスクリプションを介してソフトウェア ソリューションを顧客に配布し、ライセンスを付与します。 SaaS 発行者は、お客様のプランの使用をサポートするために必要なインフラストラクチャの管理および支払いを行います。 この記事は、パートナー センターでコマーシャル マーケットプレースに公開するためにオファーを準備するのに役立ちます。
 
 ## <a name="listing-options"></a>リスト オプション
 
@@ -113,8 +113,8 @@ SaaS オファーが IT ソリューション (Azure Marketplace) とビジネ�
 
 | 従量制課金 | パブリック プラン | プライベート プラン | 次で利用可能: |
 |---|---|---|---|
-| はい             | ○         | いいえ           | Azure Marketplace と Azure portal |
-| はい             | ○         | Yes          | Azure Marketplace と Azure portal* |
+| はい             | はい         | いいえ           | Azure Marketplace と Azure portal |
+| はい             | はい         | Yes          | Azure Marketplace と Azure portal* |
 | はい             | いいえ          | はい          | Azure portal のみ |
 | いいえ              | いいえ          | はい          | Azure portal のみ |
 |||||
