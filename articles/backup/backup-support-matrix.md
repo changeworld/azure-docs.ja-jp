@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: 655a90ebc3164f076c333760beffcef5acefcd91
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2877b0085f31f39849e04678d5e0ddd65e3888e2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103225549"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564468"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -40,7 +40,7 @@ Azure Backup は Recovery Services コンテナーを使用して、各種のワ
 **コンテナー間のデータの移動** | コンテナー間でのバックアップ データの移動はサポートされていません。
 **コンテナー ストレージの種類の変更** | コンテナー ストレージのレプリケーションの種類 (geo 冗長ストレージまたはローカル冗長ストレージのいずれか) は、バックアップを格納する前に変更できます。 コンテナーでバックアップが開始された後は、レプリケーションの種類を変更できません。
 **ゾーン冗長ストレージ (ZRS)** | 英国南部 (UKS) リージョンと東南アジア (SEA) リージョンで利用できます。
-**プライベート エンドポイント** | Recovery Services コンテナーのプライベート エンドポイントを作成するための要件については、[こちらのセクション](https://docs.microsoft.com/azure/backup/private-endpoints#before-you-start)を参照してください。  
+**プライベート エンドポイント** | Recovery Services コンテナーのプライベート エンドポイントを作成するための要件については、[こちらのセクション](./private-endpoints.md#before-you-start)を参照してください。  
 
 ## <a name="on-premises-backup-support"></a>オンプレミス バックアップのサポート
 

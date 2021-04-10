@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: dd1440cd7bda8d40a81290cd9f633264b9641dc5
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1ed37ebd798f7ebef59ea48ce7e2084b331d2bba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502554"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065414"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>Azure Open Datasets から Azure Machine Learning データセットを作成する
 
@@ -54,7 +54,7 @@ Open Datasets はクラウドにある Microsoft Azure 上にあり、[Azure Mac
     * ご自分の Python 環境で作業し、[こちらの手順](/python/api/overview/azure/ml/install)に従って SDK をインストールします。
 
 > [!NOTE]
-> 一部の Dataset クラスは、[azureml-dataprep](/python/api/azureml-dataprep/) パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux (7、8)、Ubuntu (14.04、16.04、18.04)、Fedora (27、28)、Debian (8、9)、および CentOS (7)
+> 一部の Dataset クラスは、azureml-dataprep パッケージに依存しています。これは、64 ビットの Python とのみ互換性があります。 Linux ユーザーの場合、これらのクラスは次のディストリビューションでのみサポートされています。Red Hat Enterprise Linux (7、8)、Ubuntu (14.04、16.04、18.04)、Fedora (27、28)、Debian (8、9)、および CentOS (7)
 
 ## <a name="create-datasets-with-the-sdk"></a>SDK を使用してデータセットを作成する
 
