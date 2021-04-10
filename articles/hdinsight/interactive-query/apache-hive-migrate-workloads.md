@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/4/2020
-ms.openlocfilehash: b13e8e088eff95071247a53ad1a4a18879f94053
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 43d616bc82c608918f5e7ee51481a393dd55a284
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101742196"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566072"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Azure HDInsight 3.6 Hive ワークロードを Hive HDInsight 4.0 に移行する
 
@@ -71,7 +71,7 @@ Hive テーブルの新しいストレージ アカウントへの移行は、�
     > [!NOTE]
     > このユーティリティでは、クライアント `beeline` を使用して、`/usr/hdp/$STACK_VERSION/hive/scripts/metastore/upgrade/mssql/upgrade-*.mssql.sql` で SQL スクリプトを実行します。
     >
-    > これらのスクリプトの SQL 構文は、必ずしも他のクライアント ツールと互換性がありません。 たとえば、[SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) と [Azure portal のクエリ エディター](../../azure-sql/database/connect-query-portal.md)では、各コマンドの後にキーワード `GO` が必要です。
+    > これらのスクリプトの SQL 構文は、必ずしも他のクライアント ツールと互換性がありません。 たとえば、[SSMS](/sql/ssms/download-sql-server-management-studio-ssms) と [Azure portal のクエリ エディター](../../azure-sql/database/connect-query-portal.md)では、各コマンドの後にキーワード `GO` が必要です。
     >
     > リソースの容量またはトランザクションのタイムアウトが原因でスクリプトが失敗した場合は、SQL データベースをスケールアップします。
 

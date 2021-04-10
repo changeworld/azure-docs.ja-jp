@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/02/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: acd8df620e23ee4ebc103d8910c6443f47ffa141
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 9ced4da7f71a0499e538e499644d89240611f1ea
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102503829"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104956215"
 ---
 # <a name="attach-apache-spark-pools-powered-by-azure-synapse-analytics-for-data-wrangling-preview"></a>データ ラングリング用に (Azure Synapse Analytics によって機能する) Apache Spark プールをアタッチする (プレビュー)
 
@@ -127,6 +127,21 @@ ws.compute_targets['Synapse Spark pool alias']
 
 ## <a name="launch-synapse-spark-pool-for-data-preparation-tasks"></a>データ準備タスク用に Synapse Spark プールを起動する
 
+Apache Spark プールを使用したデータ準備を開始するには、Apache Spark プールの名前を指定します。
+
+> [!IMPORTANT]
+> 引き続き Apache Spark プールを使用するためには、データ ラングリング タスクで使用するコンピューティング リソースを `%synapse` (1 行のコードの場合) および `%%synapse` (複数行の場合) で指定する必要があります。 
+
+```python
+%synapse start -c SynapseSparkPoolAlias
+```
+
+セッションの開始後、セッションのメタデータを確認できます。
+
+```python
+%synapse meta
+```
+
 Apache Spark セッション中に使用する [Azure Machine Learning 環境](concept-environments.md)を指定できます。 この環境に指定された Conda 依存関係のみが有効になります。 Docker イメージはサポートされません。
 
 >[!WARNING]
@@ -146,21 +161,11 @@ env.python.conda_dependencies.add_conda_package("numpy==1.17.0")
 env.register(workspace=ws)
 ```
 
-Apache Spark プールを使用したデータ準備を開始するには、Apache Spark プールの名前を指定し、サブスクリプション ID、Machine Learning ワークスペースのリソース グループ、Machine Learning ワークスペースの名前、Apache Spark セッション中に使用する環境を入力します。 
-
-> [!IMPORTANT]
-> 引き続き Apache Spark プールを使用するためには、データ ラングリング タスクで使用するコンピューティング リソースを `%synapse` (1 行のコードの場合) および `%%synapse` (複数行の場合) で指定する必要があります。 
+Apache Spark プールとカスタム環境を使用したデータ準備を開始するには、Apache Spark プールの名前と Apache Spark セッション中に使用する環境を指定します。 さらに、サブスクリプション ID、機械学習ワークスペースのリソース グループ、機械学習ワークスペースの名前を指定することもできます。
 
 ```python
-%synapse start -c SynapseSparkPoolAlias -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName -e myenv
+%synapse start -c SynapseSparkPoolAlias -e myenv -s AzureMLworkspaceSubscriptionID -r AzureMLworkspaceResourceGroupName -w AzureMLworkspaceName
 ```
-
-セッションの開始後、セッションのメタデータを確認できます。
-
-```python
-%synapse meta
-```
-
 ## <a name="load-data-from-storage"></a>ストレージからデータを読み込む
 
 Apache Spark セッションが開始されたら、準備するデータを読み取ります。 データの読み込みは、Azure Blob Storage および Azure Data Lake Storage Generation 1 および 2 でサポートされます。
@@ -226,14 +231,22 @@ df = spark.read.csv("abfss://<container name>@<storage account>.dfs.core.windows
 
 ### <a name="read-in-data-from-registered-datasets"></a>登録済みデータセットからデータを読み取る
 
-ワークスペースで既存の登録済みデータセットを取得し、それを Spark データフレームに変換することによってデータ準備を行うこともできます。  
+ワークスペースで既存の登録済みデータセットを取得し、それを Spark データフレームに変換することによってデータ準備を行うこともできます。
 
-次の例では、Blob Storage 内のファイルを参照する登録済みの TabularDataset (`blob_dset`) を取得し、それを Spark データフレームに変換します。 Spark データフレームにデータセットを変換する際は、`pyspark` のデータ探索ライブラリおよびデータ準備ライブラリを活用できます。  
+次の例では、ワークスペースに対して認証し、Blob Storage 内のファイルを参照する登録済みの TabularDataset (`blob_dset`) を取得し、それを Spark データフレームに変換します。 Spark データフレームにデータセットを変換する際は、`pyspark` のデータ探索ライブラリおよびデータ準備ライブラリを活用できます。  
 
 ``` python
 
 %%synapse
 from azureml.core import Workspace, Dataset
+
+subscription_id = "<enter your subscription ID>"
+resource_group = "<enter your resource group>"
+workspace_name = "<enter your workspace name>"
+
+ws = Workspace(workspace_name = workspace_name,
+               subscription_id = subscription_id,
+               resource_group = resource_group)
 
 dset = Dataset.get_by_name(ws, "blob_dset")
 spark_df = dset.to_spark_dataframe()
@@ -294,6 +307,10 @@ train_ds = Dataset.File.from_files(path=datastore_paths, validate=True)
 input1 = train_ds.as_mount()
 
 ```
+
+## <a name="example-notebook"></a>ノートブックの例
+
+単一のノートブックから Azure Synapse Analytics　と Azure Machine Learning を使用してデータ準備とモデルのトレーニングを実行する方法を詳しく示したコード例については、こちらの[エンド ツー エンドのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-synapse/spark_job_on_synapse_spark_pool.ipynb)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

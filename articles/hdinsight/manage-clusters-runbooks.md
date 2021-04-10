@@ -1,18 +1,18 @@
 ---
-title: チュートリアル:Azure Automation Runbook を使用してクラスターを作成する - Azure HDInsight
+title: 'チュートリアル: Azure Automation Runbook を使用してクラスターを作成する - Azure HDInsight'
 description: Azure Automation Runbook を使用してクラウドでスクリプトを実行し、Azure HDInsight クラスターを作成および削除する方法について説明します。
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/27/2019
-ms.openlocfilehash: 255542d820d135d1a88e193a8ef13ae590ce4016
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5eb0f353579233041bb5ccba46de2549ada7e9b7
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944047"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864790"
 ---
-# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>チュートリアル:Azure Automation で Azure HDInsight クラスターを作成する
+# <a name="tutorial-create-azure-hdinsight-clusters-with-azure-automation"></a>チュートリアル: Azure Automation で Azure HDInsight クラスターを作成する
 
 Azure Automation を使うと、クラウドで実行されるスクリプトを作成し、オンデマンドで、またはスケジュールに基づいて、Azure リソースを管理することができます。 この記事では、Azure HDInsight クラスターを作成および削除するための PowerShell Runbook を作成する方法について説明します。
 
@@ -36,26 +36,26 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. Azure Automation アカウントを選択します。
 1. **[共有リソース]** で **[モジュール ギャラリー]** を選択します。
 1. ボックスに「**AzureRM.Profile**」と入力し、Enter キーを押して検索します。 使用可能な検索結果を選択します。
-1. **AzureRM.profile** の画面で、 **[インポート]** を選択します。 Azure モジュールを更新するボックスをオンにして、 **[OK]** を選択します。
+1. **AzureRM.profile** の画面で、**[インポート]** を選択します。 Azure モジュールを更新するボックスをオンにして、**[OK]** を選択します。
 
-    ![AzureRM.profile モジュールをインポートする](./media/manage-clusters-runbooks/import-azurermprofile-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermprofile-module.png" alt-text="AzureRM.profile モジュールをインポートする" border="false":::
 
 1. **[共有リソース]** の **[モジュール ギャラリー]** を選択して、モジュール ギャラリーに戻ります。
 1. 「**HDInsight**」と入力します。 **AzureRM.HDInsight** を選択します。
 
-    ![HDInsight モジュールを参照する](./media/manage-clusters-runbooks/browse-modules-hdinsight.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/browse-modules-hdinsight.png" alt-text="HDInsight モジュールを参照する" border="true":::
 
-1. **AzureRM.HDInsight** のパネルで、 **[インポート]** を選択して **[OK]** を選択します。
+1. **AzureRM.HDInsight** のパネルで、**[インポート]** を選択して **[OK]** を選択します。
 
-    ![AzureRM.HDInsight モジュールをインポートする](./media/manage-clusters-runbooks/import-azurermhdinsight-module.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/import-azurermhdinsight-module.png" alt-text="AzureRM.HDInsight モジュールをインポートする" border="true":::
 
 ## <a name="create-credentials"></a>資格情報を作成する
 
-1. **[共有リソース]** で、 **[資格情報]** を選択します。
+1. **[共有リソース]** で、**[資格情報]** を選択します。
 1. **[資格情報の追加]** を選択します。
 1. **[新しい資格情報]** パネルで必要な情報を入力します。 この資格情報は、クラスター パスワードを格納するためのものです。これにより、Ambari にログインできるようになります。
 
-    | プロパティ | Value |
+    | プロパティ | 値 |
     | --- | --- |
     | 名前 | `cluster-password` |
     | ユーザー名 | `admin` |
@@ -65,7 +65,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. **［作成］** を選択します
 1. 同じ手順を繰り返し、ユーザー名 `sshuser` と適当なパスワードで新しい資格情報 `ssh-password` を作成します。 **［作成］** を選択します この資格情報は、クラスター用の SSH パスワードを格納するためのものです。
 
-    ![資格情報を作成する](./media/manage-clusters-runbooks/create-credentials.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-credentials.png" alt-text="資格情報を作成する" border="true":::
 
 ## <a name="create-a-runbook-to-create-a-cluster"></a>クラスターを作成するための Runbook を作成する
 
@@ -74,11 +74,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. **[Runbook の作成]** パネルで、Runbook の名前を入力します (例: `hdinsight-cluster-create`)。 **[Runbook の種類]** ドロップダウンで **[PowerShell]** を選択します。
 1. **［作成］** を選択します
 
-    ![Runbook を作成する](./media/manage-clusters-runbooks/create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/create-runbook.png" alt-text="Runbook を作成する" border="true":::
 
-1. **[PowerShell Runbook の編集]** 画面で次のコードを入力し、 **[発行]** を選択します。
+1. **[PowerShell Runbook の編集]** 画面で次のコードを入力し、**[発行]** を選択します。
 
-    ![Runbook を発行する](./media/manage-clusters-runbooks/publish-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/publish-runbook.png" alt-text="Runbook を発行する" border="true":::
 
     ```powershell
     Param
@@ -129,7 +129,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. **[Runbook の作成]** を選択します。
 1. **[Runbook の作成]** パネルで、Runbook の名前を入力します (例: `hdinsight-cluster-delete`)。 **[Runbook の種類]** ドロップダウンで **[PowerShell]** を選択します。
 1. **［作成］** を選択します
-1. **[PowerShell Runbook の編集]** 画面で次のコードを入力し、 **[発行]** を選択します。
+1. **[PowerShell Runbook の編集]** 画面で次のコードを入力し、**[発行]** を選択します。
 
     ```powershell
     Param
@@ -152,17 +152,17 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. **[プロセス オートメーション]** で **[Runbook]** を選択して、Automation アカウントに含まれる Runbook の一覧を表示します。
 1. `hdinsight-cluster-create` またはクラスター作成 Runbook の作成時に使用した名前を選択します。
 1. **[開始]** を選択すると、Runbook がすぐに実行されます。 Runbook が定期的に実行されるようにスケジュールすることもできます。 「[Azure Automation の Runbook をスケジュール設定する](../automation/shared-resources/schedules.md)」を参照してください
-1. スクリプトに必要なパラメーターを入力して、 **[OK]** を選択します。 これにより、**CLUSTERNAME** パラメーターで指定した名前で新しい HDInsight クラスターが作成されます。
+1. スクリプトに必要なパラメーターを入力して、**[OK]** を選択します。 これにより、**CLUSTERNAME** パラメーターで指定した名前で新しい HDInsight クラスターが作成されます。
 
-    ![クラスター作成 Runbook を実行する](./media/manage-clusters-runbooks/execute-create-runbook.png)
+    :::image type="content" source="./media/manage-clusters-runbooks/execute-create-runbook.png" alt-text="クラスター作成 Runbook を実行する" border="true":::
 
 ### <a name="delete-a-cluster"></a>クラスターの削除
 
-作成した `hdinsight-cluster-delete` Runbook を選択して、クラスターを削除します。 **[開始]** を選択し、**CLUSTERNAME** パラメーターを入力して、 **[OK]** を選択します。
+作成した `hdinsight-cluster-delete` Runbook を選択して、クラスターを削除します。 **[開始]** を選択し、**CLUSTERNAME** パラメーターを入力して、**[OK]** を選択します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-必要ない場合は、意図しない料金を避けるため、作成した Azure Automation アカウントを削除します。 そのためには、Azure portal に移動し、Azure Automation アカウントを作成したリソース グループを選択して、Automation アカウントを選択し、 **[削除]** を選択します。
+必要ない場合は、意図しない料金を避けるため、作成した Azure Automation アカウントを削除します。 そのためには、Azure portal に移動し、Azure Automation アカウントを作成したリソース グループを選択して、Automation アカウントを選択し、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
 
