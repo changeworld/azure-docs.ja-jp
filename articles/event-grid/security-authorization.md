@@ -3,12 +3,12 @@ title: Azure Event Grid のセキュリティと認証
 description: Azure Event Grid とその概念について説明します。
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.openlocfilehash: 326fa00645302eb4b9c9bc59f17c1ca153bdb0b7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e9bcf00e832e4deaaf9c5f81ba5af51609a1c412
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100371722"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601042"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid リソースへのアクセスの承認
 Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な **管理操作** を実行する各ユーザーに付与されるアクセス レベルを制御できます。 Event Grid では、Azure ロールベースのアクセス制御 (Azure RBAC) が使用されます。
@@ -31,80 +31,23 @@ az provider operation show --namespace Microsoft.EventGrid
 
 
 ## <a name="built-in-roles"></a>組み込みのロール
+Event Grid には、次の 3 つの組み込みのロールが用意されています。 
 
-Event Grid には、イベント サブスクリプションを管理するための組み込みロールが 2 つ用意されています。 これらは、イベント ドメイン内のトピックをサブスクライブするために必要なアクセス許可をユーザーに提供するため、[イベント ドメイン](event-domains.md)を実装するときに重要です。 これらのロールはイベント サブスクリプションだけを対象としたものであり、トピックの作成などのアクションに対するアクセス権は付与されません。
+Event Grid サブスクリプション閲覧者と Event Grid サブスクリプションの共同作成者のロールは、イベント サブスクリプションを管理するためのものです。 これらは、イベント ドメイン内のトピックをサブスクライブするために必要なアクセス許可をユーザーに提供するため、[イベント ドメイン](event-domains.md)を実装するときに重要です。 これらのロールはイベント サブスクリプションだけを対象としたものであり、トピックの作成などのアクションに対するアクセス権は付与されません。
 
-[これらのロールはユーザーまたはグループに割り当てる](../role-based-access-control/quickstart-assign-role-user-portal.md)ことができます。
+Event Grid の共同作成者ロールを使用すると、Event Grid リソースを作成および管理できます。 
 
-**EventGrid EventSubscription 共同作成者**: Event Grid のサブスクリプション操作を管理します
 
-```json
-[
-  {
-    "Description": "Lets you manage EventGrid event subscription operations.",
-    "IsBuiltIn": true,
-    "Id": "428e0ff05e574d9ca2212c70d0e0a443",
-    "Name": "EventGrid EventSubscription Contributor",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/*",
-          "Microsoft.EventGrid/systemtopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/partnertopics/eventsubscriptions/*",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Resources/deployments/*",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Support/*"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": [],
-        "Condition": null
-      }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+| Role | 説明 |
+| ---- | ----------- | 
+| [Event Grid サブスクリプション閲覧者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-reader) | Event Grid のイベント サブスクリプション操作を管理できます。 |
+| [Event Grid サブスクリプションの共同作成者](../role-based-access-control/built-in-roles.md#eventgrid-eventsubscription-contributor) | Event Grid のイベント サブスクリプションを読み取ることができます。 |
+| [Event Grid の共同作成者](../role-based-access-control/built-in-roles.md#eventgrid-contributor) | Event Grid リソースの作成と管理を行うことができます。 |
 
-**EventGrid EventSubscription 閲覧者**: Event Grid のサブスクリプションを読みます
 
-```json
-[
-  {
-    "Description": "Lets you read EventGrid event subscriptions.",
-    "IsBuiltIn": true,
-    "Id": "2414bbcf64974faf8c65045460748405",
-    "Name": "EventGrid EventSubscription Reader",
-    "IsServiceRole": false,
-    "Permissions": [
-      {
-        "Actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.EventGrid/eventSubscriptions/read",
-          "Microsoft.EventGrid/topicTypes/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/eventSubscriptions/read",
-          "Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read"
-        ],
-        "NotActions": [],
-        "DataActions": [],
-        "NotDataActions": []
-       }
-    ],
-    "Scopes": [
-      "/"
-    ]
-  }
-]
-```
+> [!NOTE]
+> ロールに関する詳細情報を提供する記事に移動するには、最初の列にあるリンクを選択します。 RBAC ロールにユーザーまたはグループを割り当てる方法については、[こちらの記事](../role-based-access-control/quickstart-assign-role-user-portal.md)を参照してください。
+
 
 ## <a name="custom-roles"></a>カスタム ロール
 

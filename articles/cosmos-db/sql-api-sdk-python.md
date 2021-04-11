@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
 ms.date: 08/12/2020
-ms.author: anfeldma
+ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: 77cde4fb580ebea14c09856b9ad2e7f093e20db3
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 470ae497acab4c75e83a13e485d1bcb118485ab9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102505071"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104799515"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Python SDK:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,17 +38,26 @@ ms.locfileid: "102505071"
 > * [バルク エグゼキューター - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| ページ| Link |
 |---|---|
 |**SDK のダウンロード**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API ドキュメント**|[Python の API リファレンス ドキュメント](/python/api/azure-cosmos/)|
+|**API ドキュメント**|[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
 |**SDK のインストール手順**|[Python SDK のインストール手順](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**開始するには**|[Python SDK の開始](create-sql-api-python.md)|
-|**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/) と [Python 3.5.3+](https://www.python.org/downloads/)|
+|**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/) と [Python 3.6+](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>リリース履歴
 
-### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+## <a name="420"></a>4.2.0
+
+**バグの修正**
+- ページごとに結果を取得するために query_iterable が使用されている場合に、継続トークンが受け入れられないバグを修正しました。
+- ドキュメントの読み取りと削除に対してリソース トークンが受け入れられないバグを修正しました。 
+
+**新機能**
+- 変更フィードのクエリの実行中に `partitionKey` を渡すためのサポートを追加しました。
+
+## <a name="410"></a>4.1.0
 
 - "遅延" インデックス作成モードの非推奨の警告を追加しました。 バックエンドでは、このモードでコンテナーを作成できなくなり、代わりに一貫性に設定されます。
 
@@ -56,13 +65,14 @@ ms.locfileid: "102505071"
 - 新しいコンテナーを作成するときに、分析ストレージの TTL を設定する機能が追加されました。
 
 **バグの修正**
-- Get_client API の入力としての dicts のサポートが修正されました。
+- get_client API の入力としての `dicts` のサポートが修正されました。
 - クエリ反復子での Python 2/3 の互換性の問題が修正されました。
-- 型のヒント エラーが修正されました (問題 #12570)。
-- オプション ヘッダーが upsert_item 関数に追加されなかったバグが修正されました。 問題 #11791 - @aalapatirvbd さん、ご協力ありがとうございました。
-- 文字列以外の ID が項目で使用されている場合に発生するエラーが修正されました。 AttributeError ではなく TypeError (問題 #11793) が発生するようになりました。
+- 型のヒント エラーが修正されました。
+- オプション ヘッダーが upsert_item 関数に追加されなかったバグが修正されました。 
+- 文字列以外の ID が項目で使用されている場合に発生するエラーが修正されました。 AttributeError ではなく TypeError が発生するようになりました。
 
-### <a name="400"></a>4.0.0
+
+## <a name="400"></a>4.0.0
 
 * 安定版リリース。
 * HttpLoggingPolicy をパイプラインに追加し、要求ヘッダーと応答ヘッダーのカスタム ロガーを渡すことができるようになりました。
@@ -80,8 +90,8 @@ ms.locfileid: "102505071"
 * クエリの Distinct、Offset、および Limit のサポートを追加しました。
 * 既定のドキュメント クエリの実行コンテキストが、以下に対して使用されるようになりました
 
-  * ChangeFeed クエリ
-  * 単一パーティション クエリ (partitionkey、partitionKeyRangeId はオプションに存在します)
+  * 変更フィードのクエリ
+  * 単一パーティション クエリ (`partitionkey`、`partitionKeyRangeId` はオプションに存在します)
   * ドキュメント以外のクエリ
 
 * [enable cross partition query]\(クロス パーティション クエリを有効にする\) が true に設定され、"value" キーワードが存在しない場合、複数のパーティションで集約のエラーが発生します。
@@ -324,6 +334,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [4.2.0](#420) |2020 年 10 月 9 日 |--- |
+| [4.1.0](#410) |2020 年 8 月 10 日 |--- |
 | [4.0.0](#400) |2020 年 5 月 20 日 |--- |
 | [3.0.2](#302) |2018 年 11 月 15 日 |--- |
 | [3.0.1](#301) |2018 年 10 月 4 日 |--- |

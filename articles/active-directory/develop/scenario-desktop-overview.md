@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: feedc0065419162237c4f4826fe275a6fd947e53
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: ea6ecf456bbcea01bf4c1eef5377d918bf0918fd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753732"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798954"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ:Web API を呼び出すデスクトップ アプリ
 
@@ -30,6 +30,7 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 - [クイック スタート: Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-windows-desktop.md)
 - [クイック スタート: UWP アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-uwp.md)
 - [クイック スタート: macOS ネイティブ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
+- [クイック スタート: Node.js & Electron アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-nodejs-desktop.md)
 
 ## <a name="overview"></a>概要
 
@@ -39,6 +40,7 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 
   - ご利用のデスクトップ アプリケーションでグラフィカル コントロールがサポートされている場合 (たとえば、Windows.Form アプリケーション、WPF アプリケーション、macOS ネイティブ アプリケーションなどの場合)。
   - または、.NET Core アプリケーションであり、システム ブラウザーで Azure Active Directory (Azure AD) との認証のやり取りが発生することに同意している場合。
+  - または、Chromium インスタンスで実行される Node.js Electron アプリケーションの場合。
 
 - Windows でホストされているアプリケーションの場合、Windows ドメインに参加しているコンピューター、または Azure AD に参加しているコンピューターで実行されているアプリケーションが、統合 Windows 認証を使用して自動的にトークンを取得することも可能です。
 - 最後に、推奨されていませんが、パブリック クライアント アプリケーションではユーザー名とパスワードを使用することができます。 DevOps などの一部のシナリオではまだこれが必要になります。 これを使用すると、アプリケーションに制約が発生します。 たとえば、[多要素認証](../authentication/concept-mfa-howitworks.md) (条件付きアクセス) を実行する必要があるユーザーはサインインさせることができません。 また、アプリケーションはシングル サインオン (SSO) のメリットを受けられません。

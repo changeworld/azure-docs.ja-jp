@@ -4,7 +4,7 @@ description: Microsoft Security Code Analysis の拡張機能についてよく�
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 07/31/2019
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,18 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b851e52141cf93aba4aab9b2768658f0aac4660f
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 3bff42b9b82104909c79b75c7b1de51c9ddb6e0d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879917"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801317"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+> [!Note]
+> 2022 年 3 月 1 日より、Microsoft Security Code Analysis (MSCA) 拡張機能は廃止される予定です。 既存の MSCA のお客様は、2022 年 3 月 1 日まで MSCA にアクセスできます。 Azure DevOps の代替のオプションについては、[OWASP ソースコード分析ツール](https://owasp.org/www-community/Source_Code_Analysis_Tools)に関するページを参照してください。 GitHub への移行を計画しているお客様については、[GitHub Advanced Security](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security) に関するページをご確認ください。
+
 ご不明な点がある場合は、 詳細については、次の FAQ を参照してください。
 
 ## <a name="general-faq"></a>一般的な FAQ

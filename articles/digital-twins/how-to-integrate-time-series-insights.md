@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6aeb7489b455840eeca0a8e1967c7e6e2ed50b7a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199902"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564944"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -157,7 +157,7 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Azure Time Series Insights インスタンスを作成して接続する
 
-次に、2 番目の (TSI) イベント ハブからデータを受信するように Time Series Insights インスタンスを設定します。 以下の手順のようにします。このプロセスの詳細については、"[*チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定*](../time-series-insights/tutorials-set-up-tsi-environment.md)" に関するページを参照してください。
+次に、2 番目の (TSI) イベント ハブからデータを受信するように Time Series Insights インスタンスを設定します。 以下の手順のようにします。このプロセスの詳細については、"[*チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定*](../time-series-insights/tutorial-set-up-environment.md)" に関するページを参照してください。
 
 1. Azure portal で、Time Series Insights 環境の作成を始めます。 
     1. **Gen2 (L1)** 価格レベルを選択します。
@@ -201,7 +201,7 @@ Time Series Insights へのデータの送信を始めるには、Azure Digital 
 
 デジタル ツインは、Time Series Insights にフラット階層として既定で格納されますが、モデル情報と組織の複数レベルの階層を使用して強化することができます。 このプロセスの詳細については、以下を参照してください。 
 
-* [*チュートリアル:モデルを定義して適用する*](../time-series-insights/tutorials-set-up-tsi-environment.md#define-and-apply-a-model) 
+* [*チュートリアル:モデルを定義して適用する*](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 Azure Digital Twins に既に格納されているモデルとグラフ データを使用して、この情報を自動的に提供するカスタム ロジックを作成できます。 ツイン グラフの情報の管理、アップグレード、および取得について詳しくは、以下の参照情報をご覧ください。
 

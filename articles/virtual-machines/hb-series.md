@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: vm-sizes-hpc
 ms.topic: conceptual
-ms.date: 03/08/2021
+ms.date: 03/22/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: f0f5d8f5e5e7077c3438005b58d6ed1a132219f4
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: 92a46c7f9d7cf86787bb1707c41ae0e44c37fc60
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102566024"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800909"
 ---
 # <a name="hb-series"></a>HB シリーズ
 
@@ -35,7 +35,10 @@ HB シリーズ VM は、100 Gb/秒の Mellanox EDR InfiniBand を特徴とし�
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_HB60rs | 60 | AMD EPYC 7551 | 228 | 263 | 2.0 | 2.55 | 2.55 | 100 | All | 700 | 4 | 8 |
 
-基になる[アーキテクチャ](./workloads/hpc/hb-series-overview.md)と、HB シリーズ VM の予想される[パフォーマンス](./workloads/hpc/hb-series-performance.md)をご確認ください。
+詳細については、下記を参照してください。
+- [アーキテクチャと VM トポロジ](./workloads/hpc/hb-series-overview.md)
+- サポート対象 OS など、サポート対象の[ソフトウェア スタック](./workloads/hpc/hb-series-overview.md#software-specifications)
+- HB シリーズ VM の予想される[パフォーマンス](./workloads/hpc/hb-series-performance.md)
 
 [!INCLUDE [hpc-include.md](./workloads/hpc/includes/hpc-include.md)]
 
