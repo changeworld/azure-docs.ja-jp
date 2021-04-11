@@ -6,14 +6,14 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/08/2021
 ms.author: matjazl
-ms.openlocfilehash: fbc683c98eb0124e8d879eada276593ca9bf7042
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c10b27d375e2bfb8c64130eceb416a633241cf68
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934763"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284437"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Azure Active Directory に Confidential クライアント アプリケーションを登録する
 
@@ -25,11 +25,11 @@ ms.locfileid: "105934763"
 
 ## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 
-1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、 **[Azure Active Directory]** を選択します。
 
 1. **[アプリの登録]** を選択します。 
 
-    ![Azure portal。 新しいアプリの登録。](media/how-to-aad/portal-aad-new-app-registration.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-new-app-registration.png" alt-text="Azure portal。新しいアプリの登録。":::
 
 1. **[新規登録]** を選択します。
 
@@ -39,7 +39,7 @@ ms.locfileid: "105934763"
 
 1. Optional **リダイレクト URI** を指定します。 これらの詳細は後で変更できますが、アプリケーションの応答 URL がわかっている場合は、ここで入力します。
 
-    ![新しい Confidential クライアント アプリの登録。](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT.png" alt-text="新しい Confidential クライアント アプリの登録。":::
 
 1. **[登録]** を選択します。
 
@@ -49,7 +49,7 @@ ms.locfileid: "105934763"
 
 1. **[API のアクセス許可]** を選択します。
 
-    ![Confidential クライアント。 API のアクセス許可](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-API-Permissions.png" alt-text="Confidential クライアント。API のアクセス許可。":::
 
 1. **[アクセス許可の追加]** を選択します。
 
@@ -70,11 +70,11 @@ ms.locfileid: "105934763"
 
 1. **[Certificates & secrets]\(証明書とシークレット\)** を選択してから、 **[New client secret]\(新しいクライアント シークレット\)** を選択します。 
 
-    ![Confidential クライアント。 アプリケーション シークレット](media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png)
+    :::image type="content" source="media/how-to-aad/portal-aad-register-new-app-registration-CONF-CLIENT-SECRET.png" alt-text="Confidential クライアント。アプリケーションシークレット。":::
 
-1. クライアント シークレットの **[説明]** を入力します。 [有効期限] (1 年、2年、または [なし]) を選択し、[ **追加**] をクリックします。
+1. クライアント シークレットの **[説明]** を入力します。 [有効 **期限** ] ドロップダウンメニューを選択して有効期限のタイムフレームを選択し、[ **追加**] をクリックします。
 
-   ![クライアント シークレットの追加](media/how-to-aad/add-a-client-secret.png)
+   :::image type="content" source="media/how-to-aad/add-a-client-secret.png" alt-text="クライアントシークレットを追加します。":::
 
 1. クライアントシークレット文字列を作成したら、その **値** と **ID** をコピーし、任意の安全な場所に保存します。
 

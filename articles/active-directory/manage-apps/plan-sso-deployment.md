@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: a7949324cd4ad0459aa5ba111037b2f580da9cf8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2eaa630097c76a4ecb863f3f1711d38e5e0dbbeb
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103601714"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064148"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>シングル サインオンのデプロイを計画する
 
