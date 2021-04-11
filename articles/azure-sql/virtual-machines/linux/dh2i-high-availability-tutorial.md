@@ -2,17 +2,17 @@
 title: Linux ベースの Azure 仮想マシン上で実行される DH2i DxEnterprise を使用して Always On 可用性グループを設定する
 description: Linux Azure 仮想マシン上でクラスター マネージャーに DH2i DxEnterprise を使用し、SQL Server の可用性グループによって高可用性を確保します
 ms.date: 03/04/2021
-ms.service: virtual-machines-linux
+ms.service: virtual-machines-sql
 ms.topic: tutorial
 author: amvin87
 ms.author: amitkh
 ms.reviewer: vanto
-ms.openlocfilehash: 07752eb5c7f18a8952c43e77afed78b06432aca6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 56002aaa977b94b0fabee4f17343f483706eb77d
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568537"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449428"
 ---
 # <a name="tutorial---setup-a-three-node-always-on-availability-group-with-dh2i-dxenterprise-running-on-linux-based-azure-virtual-machines"></a>チュートリアル - Linux ベースの Azure 仮想マシン上で実行される DH2i DxEnterprise を使用して 3 ノードの Always On 可用性グループを設定する
 

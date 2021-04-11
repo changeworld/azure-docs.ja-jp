@@ -15,12 +15,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb23d79caa6964c3f61fbb84c8b8f229f475b8ab
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ca99a997d621bfd2455e909b36b6802775b20ac2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722159"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074609"
 ---
 # <a name="adsync-service-account"></a>ADSync サービス アカウント
 Azure AD Connect は、Active Directory と Azure Active Directory の間の同期を調整するオンプレミス サービスをインストールします。  Microsoft Azure AD Sync 同期サービス (ADSync) は、オンプレミス環境内のサーバー上で実行されます。  サービスの資格情報は、高速インストールでは既定で設定されますが、組織のセキュリティ要件を満たすようにカスタマイズできます。  これらの資格情報は、オンプレミス フォレストまたは Azure Active Directory への接続には使用されません。
@@ -56,7 +56,7 @@ ADSync サービス アカウントの選択は重要な計画上の決定であ
 - sMSA - [スタンドアロンの管理されたサービス アカウント](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
 - gMSA - [グループの管理されたサービス アカウント](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
 
- ||**LocalDB </br> 高速**|**LocalDB/LocalSQL</br> カスタム**|**リモート SQL</br> カスタム**|
+|マシンの種類 |**LocalDB </br> 高速**|**LocalDB/LocalSQL</br> カスタム**|**リモート SQL</br> カスタム**|
 |-----|-----|-----|-----|
 |**ドメインに参加しているコンピューター**|**VSA**|**VSA**</br> *sMSA*</br> *gMSA*</br> ローカル アカウント</br> ドメイン アカウント| *gMSA* </br>ドメイン アカウント|
 |ドメイン コントローラー| **sMSA**|**sMSA** </br>*gMSA*</br> ドメイン アカウント|*gMSA*</br>ドメイン アカウント| 

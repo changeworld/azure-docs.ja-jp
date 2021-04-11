@@ -2,7 +2,7 @@
 title: Azure Time Series Insights データの監視のリファレンス | Microsoft Docs
 description: Azure Time Series Insights の監視に関するリファレンス ドキュメント。
 author: deepakpalled
-ms.author: lyhughes
+ms.author: dpalled
 manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
-ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20d376ee501edf16711617847c685dfd531f2c80
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591389"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504585"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Azure Time Series Insights データの監視のリファレンス
 
@@ -23,11 +23,12 @@ ms.locfileid: "100591389"
 
 ## <a name="metrics"></a>メトリック
 
-このセクションには、Azure Time Series Insights 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 すべての Azure Monitor サポート メトリック (Azure Time Series Insights を含む) の一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/essentials/metrics-supported.md)に関する記事を参照してください。 これらのメトリックのリソース プロバイダーは、[Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) および [Microsoft.TimeSeriesInsights/environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments) です。
+このセクションには、Azure Time Series Insights 用に自動的に収集されたすべてのプラットフォーム メトリックが一覧表示されています。 すべての Azure Monitor サポート メトリック (Azure Time Series Insights を含む) の一覧については、[Azure Monitor でサポートされているメトリック](../azure-monitor/essentials/metrics-supported.md)に関する記事を参照してください。
+これらのメトリックのリソース プロバイダーは、[Microsoft.TimeSeriesInsights/environments/eventsources](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironmentseventsources) および [Microsoft.TimeSeriesInsights/environments](../azure-monitor/essentials/metrics-supported.md#microsofttimeseriesinsightsenvironments) です。
 
 
 ### <a name="ingress"></a>イングレス
- 
+
 |メトリック|メトリックの表示名|ユニット|集計の種類|説明|
 |---|---|---|---|---|
 |IngressReceivedBytes|Ingress Received Bytes (受信バイトの受信)|バイト|合計|イベント ソースから読み取られたバイト数|
