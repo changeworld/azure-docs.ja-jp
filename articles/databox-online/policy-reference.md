@@ -1,19 +1,19 @@
 ---
 title: Azure Stack Edge 用の組み込みポリシー定義
 description: Azure Stack Edge 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
 ms.service: databox
 ms.subservice: edge
 author: alkohli
 ms.author: alkohli
-ms.openlocfilehash: 18cfe3de2aec30f2ebf7562e3f4f3b38b642c2d4
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e10e32e98ff18bb88b1b6e8b3097b76b30a4553b
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593588"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093573"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-stack-edge"></a>Azure Stack Edge 用の Azure Policy 組み込み定義
 

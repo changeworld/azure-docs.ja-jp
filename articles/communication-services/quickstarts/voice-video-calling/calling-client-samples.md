@@ -1,28 +1,25 @@
 ---
-title: クイック スタート - Azure Communication Services 通話クライアント ライブラリを使用する
+title: クイック スタート - Azure Communication Services 通話 SDK を使用する
 titleSuffix: An Azure Communication Services quickstart
-description: Communication Services 通話クライアント ライブラリの機能について学習します。
-author: mikben
-manager: jken
+description: Communication Services 通話 SDK の機能について学習します。
+author: rinarish
+manager: rinarish
 services: azure-communication-services
-ms.author: mikben
+ms.author: arturk
 ms.date: 03/10/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-web-ios-android
-ms.openlocfilehash: b4689f9777cee99b5bd85f733812ba986162360c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 87808cfd97be5fb38ee64ef57540aada255f6ca5
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103488112"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110344"
 ---
-# <a name="quickstart-use-the-communication-services-calling-client-library"></a>クイック スタート:Communication Services 通話クライアント ライブラリを使用する
+# <a name="quickstart-use-the-communication-services-calling-sdk"></a>クイック スタート: Communication Services 通話 SDK を使用する
 
-[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
-
-
-Communication Services 通話クライアント ライブラリを使用して音声と動画の通話をアプリに追加することによって、Azure Communication Services の使用を開始します。
+Communication Services 通話 SDK を使用して音声と動画の通話をアプリに追加することによって、Azure Communication Services の使用を開始します。
 
 ::: zone pivot="platform-web"
 [!INCLUDE [Calling with JavaScript](./includes/calling-sdk-js.md)]

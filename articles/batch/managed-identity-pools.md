@@ -4,12 +4,12 @@ description: Batch プールでユーザー割り当てマネージド ID を有
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7fab213ac1545c0bff9b74bc46504717b6038e8e
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: d69e983a4b17298150942c924a3c694e2cceaf72
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967253"
 ---
 # <a name="configure-managed-identities-in-batch-pools"></a>Batch プールでマネージド ID を構成する
 
@@ -53,7 +53,7 @@ var poolParameters = new Pool(name: "yourPoolName")
                     "18.04-LTS",
                     "latest"),
                 "batch.node.ubuntu 18.04")
-        };
+        },
         Identity = new BatchPoolIdentity
         {
             Type = PoolIdentityType.UserAssigned,

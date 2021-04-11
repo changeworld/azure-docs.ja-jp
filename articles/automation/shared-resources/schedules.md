@@ -3,14 +3,14 @@ title: Azure Automation のスケジュールを管理する
 description: この記事では、Azure Automation でスケジュールを作成して操作する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 03/19/2021
+ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 8f732cd8c588ffc08dbe48f6a92add65c2bc2e9f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104669561"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963242"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Automation のスケジュールを管理する
 
@@ -123,7 +123,7 @@ New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th
 
 ## <a name="create-a-schedule-with-a-resource-manager-template"></a>Resource Manager テンプレートでスケジュールを作成する
 
-この例では、新しいジョブ スケジュールを作成する Automation Resource Manager (ARM) テンプレートを使用します。 Automation ジョブ スケジュールを管理するためのこのテンプレートの一般的な情報については、[Microsoft.Automation automationAccounts/jobSchedules テンプレート リファレンス](/templates/microsoft.automation/automationaccounts/jobschedules#quickstart-templates)に関するページを参照してください。
+この例では、新しいジョブ スケジュールを作成する Automation Resource Manager (ARM) テンプレートを使用します。 Automation ジョブ スケジュールを管理するためのこのテンプレートの一般的な情報については、[Microsoft.Automation automationAccounts/jobSchedules テンプレート リファレンス](/azure/templates/microsoft.automation/2015-10-31/automationaccounts/jobschedules#quickstart-templates)に関するページを参照してください。
 
 このテンプレート ファイルをテキスト エディターにコピーします。
 
@@ -183,8 +183,8 @@ $automationAccountName = "MyAutomationAccount"
 $runbookName = "Test-Runbook"
 $scheduleName = "Sample-DailySchedule"
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}
-Register-AzAutomationScheduledRunbook –AutomationAccountName $automationAccountName `
-–Name $runbookName –ScheduleName $scheduleName –Parameters $params `
+Register-AzAutomationScheduledRunbook -AutomationAccountName $automationAccountName `
+-Name $runbookName -ScheduleName $scheduleName -Parameters $params `
 -ResourceGroupName "ResourceGroup01"
 ```
 
@@ -218,8 +218,8 @@ Azure Automation のスケジュールを構成できる最も短い間隔は 1 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
 $scheduleName = "Sample-MonthlyDaysOfMonthSchedule"
-Set-AzAutomationSchedule –AutomationAccountName $automationAccountName `
-–Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
+Set-AzAutomationSchedule -AutomationAccountName $automationAccountName `
+-Name $scheduleName -IsEnabled $false -ResourceGroupName "ResourceGroup01"
 ```
 
 ## <a name="remove-a-schedule"></a>スケジュールを削除する

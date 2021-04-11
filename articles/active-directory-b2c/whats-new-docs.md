@@ -1,7 +1,7 @@
 ---
 title: Azure Active Directory Business-to-Customer (B2C) の新機能
 description: Azure Active Directory Business-to-Customer (B2C) の新規および更新されたドキュメント。
-ms.date: 03/08/2021
+ms.date: 04/05/2021
 ms.service: active-directory
 ms.subservice: B2C
 ms.topic: reference
@@ -9,16 +9,37 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 3fcc4f01d926f5c624adabd51e6215e0106af1fa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a2384a451d851d1bede24fc2dd73a386c019430
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557872"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443714"
 ---
 # <a name="azure-active-directory-b2c-whats-new"></a>Azure Active Directory B2C:新機能
 
 Azure Active Directory B2C のドキュメントの最新情報にようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。 B2C サービスの新機能については、「[Azure Active Directory の新着情報](../active-directory/fundamentals/whats-new.md)」を参照してください。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [Azure Active Directory B2C のカスタム ドメインを有効にする](custom-domain.md)
+- [Azure AD B2C の Identity Protection を使用したリスクの調査](identity-protection-investigate-risk.md)
+- [Azure Active Directory B2C を使用して、Apple ID でのサインアップとサインインを設定する (プレビュー)](identity-provider-apple-id.md)
+- [Azure Active Directory B2C でパスワードの強制リセット フローを設定する](force-password-reset.md)
+- [埋め込みサインイン エクスペリエンス](embedded-login.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [Azure Active Directory B2C を使用して Amazon アカウントでのサインアップおよびサインインを設定する](identity-provider-amazon.md)
+- [Azure Active Directory B2C で SAML プロトコルを使用して Salesforce SAML プロバイダーでのサインインを設定する](identity-provider-salesforce-saml.md)
+- [OWIN ベースの Web API を b2clogin.com またはカスタム ドメインに移行する](multiple-token-endpoints.md)
+- [技術プロファイル](technicalprofiles.md)
+- [Azure Active Directory B2C のユーザー フローに条件付きアクセスを追加する](conditional-access-user-flow.md)
+- [Azure Active Directory B2C でパスワードのリセット フローを設定する](add-password-reset-policy.md)
+- [RelyingParty](relyingparty.md)
+
 
 ## <a name="february-2021"></a>2021 年 2 月
 
