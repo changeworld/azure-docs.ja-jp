@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 03/17/2021
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 915fdcb059d9e7bf9e1853040b90b82a0457652e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2cdf068d31cf621538eb265977ea0dae20e16e85
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598407"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109324"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>エンコードのシナリオ ベースの移行ガイダンス
 
@@ -91,7 +91,7 @@ v2 では、XML の入力と出力のメタデータ ファイルは、エンコ
 
 ## <a name="premium-encoder-to-v3-standard-encoder-or-partner-based-solutions"></a>Premium Encoder から v3 Standard Encoder またはパートナー ベースのソリューションへ
 
-v2 API では、Premium Encoder がサポートされなくなりました。 以前に HEVC エンコードにワークフロー ベースの Premium Encoder を使用していた場合は、HEVC エンコードのサポートを含む新しい v3 [Standard Encoder](media-encoder-standard-formats.md) に移行する必要があります。
+v2 API では、Premium Encoder がサポートされなくなりました。 以前に HEVC エンコードにワークフロー ベースの Premium Encoder を使用していた場合は、HEVC エンコードのサポートを含む新しい v3 [Standard Encoder](encode-media-encoder-standard-formats-reference.md) に移行する必要があります。
 
 Premium Encoder の高度なワークフロー機能が必要な場合は、[Imagine Communications](https://imaginecommunications.com)、[Telestream](https://www.telestream.net)、または [Bitmovin](https://bitmovin.com) からの Azure の高度なエンコード パートナー ソリューションの使用を開始することをお勧めします。
 
@@ -109,14 +109,14 @@ v2 API でインデクサー v1 プロセッサを使用している顧客の場
 
 ### <a name="concepts"></a>概念
 
-- [Media Services を使用したビデオとオーディオのエンコード](encoding-concept.md)
-- [Standard Encoder の形式およびコーデック](media-encoder-standard-formats.md)
-- [自動生成されたビットレート ラダーでエンコードする](autogen-bitrate-ladder.md)
-- [コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する](content-aware-encoding.md)
+- [Media Services を使用したビデオとオーディオのエンコード](encode-concept.md)
+- [Standard Encoder の形式およびコーデック](encode-media-encoder-standard-formats-reference.md)
+- [自動生成されたビットレート ラダーでエンコードする](encode-autogen-bitrate-ladder.md)
+- [コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する](encode-content-aware-concept.md)
 - [メディア占有ユニット](concept-media-reserved-units.md)
 - [入力メタデータ](input-metadata-schema.md)
 - [出力メタデータ](output-metadata-schema.md)
-- [Media Services v3 のダイナミック パッケージ: オーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)
+- [Media Services v3 のダイナミック パッケージ: オーディオ コーデック](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging)
 
 ### <a name="tutorials"></a>チュートリアル
 
@@ -129,13 +129,13 @@ v2 API でインデクサー v1 プロセッサを使用している顧客の場
 - [ローカル ファイルからジョブの入力を作成する](job-input-from-local-file-how-to.md)
 - [基本的なオーディオ変換を作成する](how-to-create-basic-audio-transform.md)
 - .NET の場合
-  - [カスタム変換を使用してエンコードする方法 - .NET](customize-encoder-presets-how-to.md)
+  - [カスタム変換を使用してエンコードする方法 - .NET](encode-custom-presets-how-to.md)
   - [Media Encoder Standard を使用してオーバーレイを作成する方法](how-to-create-overlay.md)
   - [.NET で Encoder Standard を使用してサムネイルを生成する方法](media-services-generate-thumbnails-dotnet.md)
 - Azure CLI の場合
-  - [カスタム変換を使用してエンコードする方法 - Azure CLI](custom-preset-cli-howto.md)
+  - [カスタム変換を使用してエンコードする方法 - Azure CLI](encode-custom-preset-cli-how-to.md)
 - REST の場合
-  - [カスタム変換を使用してエンコードする方法 - REST](custom-preset-rest-howto.md)
+  - [カスタム変換を使用してエンコードする方法 - REST](encode-custom-preset-rest-how-to.md)
   - [REST で Encoder Standard を使用してサムネイルを生成する方法](media-services-generate-thumbnails-rest.md)
 - [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - .NET](subclip-video-dotnet-howto.md)
 - [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - REST](subclip-video-rest-howto.md)
@@ -143,7 +143,3 @@ v2 API でインデクサー v1 プロセッサを使用している顧客の場
 ## <a name="samples"></a>サンプル
 
 [V2 と V3 のコードをコード サンプルで比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
-
-## <a name="next-steps"></a>次のステップ
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

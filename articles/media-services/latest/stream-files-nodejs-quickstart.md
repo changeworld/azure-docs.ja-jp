@@ -11,12 +11,12 @@ ms.workload: media
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7efa37747e6d116b4cf26b4cf54377037f22cdd
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5bb061af37f6f6d7e6e27cf25f0faa63bca7353c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102212758"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109188"
 ---
 # <a name="how-to-encode-and-stream-video-files-with-nodejs"></a>Node.JS を使用してビデオ ファイルをエンコードし、ストリーム配信する方法
 
@@ -58,7 +58,7 @@ ms.locfileid: "102212758"
 
 サンプルは、次のアクションを実行します。
 
-1. [コンテンツに対応したエンコードのプリセット](./content-aware-encoding.md)を使用して **変換** を作成します。 最初に、指定した変換が存在するかどうかが確認されます。
+1. [コンテンツに対応したエンコードのプリセット](./encode-content-aware-concept.md)を使用して **変換** を作成します。 最初に、指定した変換が存在するかどうかが確認されます。
 1. エンコード **ジョブ** の出力を格納する際に使用される出力 **アセット** を作成します
 1. Storage Blob SDK を使用して、必要に応じてローカル ファイルをアップロードします
 1. アップロードしたファイルまたは HTTPS URL に基づく **ジョブ** の入力を作成します
@@ -71,7 +71,7 @@ ms.locfileid: "102212758"
 
 ## <a name="run-the-sample"></a>サンプルを実行する
 
-1. このアプリケーションは、エンコードされたファイルをダウンロードします。 出力ファイルを保存するフォルダーを作成し、[index.ts](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/master/AMSv3Samples/StreamFilesSample/index.js#L59) ファイル内の **outputFolder** 変数の値を更新します。 既定では "Temp" に設定されています。
+1. このアプリケーションは、エンコードされたファイルをダウンロードします。 出力ファイルを保存するフォルダーを作成し、[index.ts](https://github.com/Azure-Samples/media-services-v3-node-tutorials/blob/main/AMSv3Samples/StreamFilesSample/index.ts#L59) ファイル内の **outputFolder** 変数の値を更新します。 既定では "Temp" に設定されています。
 1. **コマンド プロンプト** を開いて、サンプルのディレクトリに移動します。
 1. AMSv3Samples フォルダーに移動します。
 
