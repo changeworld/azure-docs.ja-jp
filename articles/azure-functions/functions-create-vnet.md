@@ -3,12 +3,12 @@ title: プライベート エンドポイントを使用して Azure Functions �
 description: このチュートリアルでは、関数を Azure 仮想ネットワークに接続し、プライベート エンドポイントを使用してこれをロック ダウンする方法について説明します。
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: 3dd5e700b3081f1c1ef8e4601385c707a5738321
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: e1ed944250f05f52860c47f6cb61130f50b08e7c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102630471"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078776"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>チュートリアル: プライベート エンドポイントを使用して Azure Functions を Azure 仮想ネットワークに統合する
 
@@ -160,7 +160,7 @@ Azure プライベート エンドポイントは、プライベート IP アド
     | 設定      | 推奨値  | 説明      |
     | ------------ | ---------------- | ---------------- |
     | **サブスクリプション** | 該当するサブスクリプション | リソースが作成されるサブスクリプション。 | 
-    | **[リソース グループ](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 関数アプリで作成したリソース グループを選択します。 | |
+    | **[リソース グループ](../azure-resource-manager/management/overview.md)**  | myResourceGroup | 関数アプリで作成したリソース グループを選択します。 |
     | **名前** | file-endpoint | ストレージ アカウントからのファイルのプライベート エンドポイントの名前。 |
     | **[リージョン](https://azure.microsoft.com/regions/)** | myFunctionRegion | ストレージ アカウントを作成したリージョンを選択します。 |
 
@@ -332,7 +332,7 @@ Azure Functions サービス バス トリガーがイベントを取得する�
 
 次に、プライベート エンドポイントを作成して関数アプリをロック ダウンします。 このプライベート エンドポイントは、プライベート IP アドレスを使用して、関数アプリをプライベートかつ安全に仮想ネットワークに接続します。 
 
-詳細については、[プライベート エンドポイントのドキュメント](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)をご覧ください。
+詳細については、[プライベート エンドポイントのドキュメント](../private-link/private-endpoint-overview.md)をご覧ください。
 
 1. 関数アプリの左側のメニューで、 **[ネットワーク]** を選択します。
 
