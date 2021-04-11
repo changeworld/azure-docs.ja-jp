@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.custom: mvc
-ms.openlocfilehash: 19de94db517afb2a8eeb855e76f2381096f8d7c0
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: e0c3e331dba08fc95f471e3ad40dfcbb10cc2f0c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609109"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104670632"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 
@@ -18,6 +18,7 @@ ms.locfileid: "102609109"
 
 このドキュメントは、次のシナリオをサポートするために使用できます。
 
+* [Azure Migrate](../migrate/migrate-services-overview.md) を使用した特定のアプリケーションのコンテナー化と AKS へのそれらの移行
 * [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)によってサポートされている AKS クラスターの [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) への移行
 * [Standard SKU ロードバランサー](./load-balancer-standard.md)の使用への AKS クラスターの移行
 * [2020 年 1 月 31 日に廃止される Azure Container Service (ACS)](https://azure.microsoft.com/updates/azure-container-service-will-retire-on-january-31-2020/) から AKS への移行
@@ -38,6 +39,7 @@ ms.locfileid: "102609109"
 この記事では、次の移行の詳細について説明します。
 
 > [!div class="checklist"]
+> * Azure Migrate によるアプリケーションのコンテナー化 
 > * Standard Load Balancer と Virtual Machine Scale Sets を使用する AKS
 > * 既存の接続されている Azure サービス
 > * 有効なクォータを確保する
@@ -45,6 +47,13 @@ ms.locfileid: "102609109"
 > * ステートレス アプリケーションに関する考慮事項
 > * ステートフル アプリケーションに関する考慮事項
 > * クラスター構成のデプロイ
+
+## <a name="use-azure-migrate-to-migrate-your-applications-to-aks"></a>Azure Migrate によるアプリケーションの AKS への移行
+
+Azure Migrate により、オンプレミスのサーバー、インフラストラクチャ、アプリケーション、データの評価と、Azure へのそれらの移行を行うための統合プラットフォームが提供されます。 AKS には、次の目的で Azure Migrate を使用できます。
+
+* [ASP.NET アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-containerize-aspnet-kubernetes.md)
+* [Java Web アプリケーションのコンテナー化と AKS へのそれらの移行](../migrate/tutorial-containerize-java-kubernetes.md)
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>Standard Load Balancer と Virtual Machine Scale Sets を使用する AKS
 

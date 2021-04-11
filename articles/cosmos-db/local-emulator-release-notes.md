@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 23f85fa69224d78d748e6fc94436fd08fa6d971f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 442fa1c76d4667a54f1c13b411b1c052c9a5b134
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104586014"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566644"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator - リリース ノートとダウンロード情報
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,7 +20,7 @@ ms.locfileid: "104586014"
 
 ## <a name="download"></a>ダウンロード
 
-| |リンク |
+| | Link |
 |---------|---------|
 |**MSI ダウンロード**|[Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)|
 |**開始するには**|[Azure Cosmos DB Emulator を使用してローカルで開発する](local-emulator.md)|

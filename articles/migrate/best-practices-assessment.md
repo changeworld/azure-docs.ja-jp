@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: 1bf844dafe450e90213db2e447bb5392064eb245
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: fac488ba1881b6b79139eaf2468237e546737177
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786772"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077332"
 ---
 # <a name="best-practices-for-creating-assessments"></a>評価を作成するためのベスト プラクティス
 
@@ -27,6 +27,8 @@ Azure Migrate: Discovery and Assessment ツールを使用して作成した評�
 **Azure SQL** | オンプレミスの SQL サーバーを VMware 環境から Azure SQL Database または Azure SQL Managed Instance に移行するための評価。 [詳細情報](concepts-azure-sql-assessment-calculation.md)
 **Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
 
+> [!NOTE]
+> 検出と評価ツールで Azure VM または AVS 評価の数が正しくない場合は、評価の合計数をクリックしてすべての評価に移動し、Azure VM または AVS の評価を計算し直します。 その後、検出と評価ツールには、その評価の種類の正しい数が表示されます。 
 
 ### <a name="sizing-criteria"></a>サイズ変更の設定基準
 Azure Migrate の評価におけるサイズ変更の設定基準のオプションは、次のとおりです。

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 497b8f5598cf7aa7720f47863d465f5e29789b07
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b773241fdff41323272422f99e88f0d01e884055
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321954"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889554"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -32,7 +32,7 @@ Microsoft Azure Machine Learning Python クライアント ライブラリのプ
 Python クライアント ライブラリは、次の環境でテストされています。
 
 * Windows、Mac、Linux
-* Python 2.7、3.3、3.4
+* Python 2.7 および 3.6 以上
 
 次のパッケージに依存します。
 
@@ -85,7 +85,7 @@ Python クライアント ライブラリで使用するために Azure Machine 
 
 開発者がワークスペース ID と認証トークンを取得したら、ロールに関係なく、コード スニペットを使用してワークスペースにアクセスできるようになります。
 
-認証トークンは、 **[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
+認証トークンは、**[設定]** ページの **[認証トークン]** で管理されます。 認証トークンを再度生成することは可能ですが、以前のトークンへのアクセスは無効になります。
 
 ### <a name="access-datasets-from-a-local-python-application"></a><a name="accessingDatasets"></a>ローカル Python アプリケーションからデータ セットにアクセスする
 1. Machine Learning Studio (クラシック) で、左側のナビゲーション バーの **[データセット]** をクリックします。

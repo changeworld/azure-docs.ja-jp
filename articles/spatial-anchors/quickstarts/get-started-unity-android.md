@@ -5,15 +5,15 @@ author: msftradford
 manager: MehranAzimi-msft
 services: azure-spatial-anchors
 ms.author: parkerra
-ms.date: 11/20/2020
+ms.date: 03/18/2021
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3c17eadfad71f58b4557f8115a0d1d3de392b4b9
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e1554b1728b120145a06124e4703065a98a4e466
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96015130"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104670101"
 ---
 # <a name="quickstart-create-a-unity-android-app-with-azure-spatial-anchors"></a>クイック スタート:Azure Spatial Anchors を使用して Unity Android アプリを作成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "96015130"
 
 このクイック スタートを実行するには、以下が必要です。
 
-- **Android Build Support**、**Android SDK と NDK ツール モジュール**、**OpenJDK** モジュールを含む <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2019.4 (LTS)</a> がインストールされている Windows または macOS マシン。
+- **Android Build Support**、**Android SDK & NDK Tools**、**OpenJDK** モジュールを含む <a href="https://unity3d.com/get-unity/download" target="_blank">Unity (LTS)</a> がインストールされている Windows または macOS マシン。 **Unity 2020 LTS** を ASA SDK バージョン 2.9 以降 ([Unity XR Plug-in Framework](https://docs.unity3d.com/Manual/XRPluginArchitecture.html) が使用される) で、または **Unity 2019 LTS** を ASA SDK バージョン 2.8 以前で使用します。
   - Windows で実行する場合は、<a href="https://git-scm.com/download/win" target="_blank">Git for Windows</a> および <a href="https://git-lfs.github.com/">Git LFS</a> も必要になります。
   - MacOS で実行する場合は、HomeBrew から Git をインストールします。 `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` コマンドをターミナルに 1 行で入力します。 続けて、`brew install git` および `brew install git-lfs` を実行します。
 - <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">開発者向け</a>の <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">ARCore 対応</a> Android デバイス。

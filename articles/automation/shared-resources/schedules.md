@@ -3,14 +3,14 @@ title: Azure Automation のスケジュールを管理する
 description: この記事では、Azure Automation でスケジュールを作成して操作する方法について説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 844a45c9b596522b949443b6edc311308da7806c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6f7cd1f3684bb14d25a77fe8e3980e8e2041808a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90004614"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104669561"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Azure Automation のスケジュールを管理する
 
@@ -38,7 +38,7 @@ PowerShell を使用して Automation スケジュールを作成して管理す
 
 ## <a name="create-a-schedule"></a>スケジュールを作成する
 
-Runbook の新しいスケジュールは、Azure portal または PowerShell を使用して作成できます。 Runbook およびそれらが自動化するプロセスに影響が及ばないようにするには、テスト専用の Automation アカウントを使用して、スケジュールがリンクされている Runbook を最初にテストする必要があります。 テストでは、スケジュールされた Runbook が引き続き正常に動作することを検証します。 問題が発生した場合は、更新された Runbook バージョンを運用環境に移行する前に、トラブルシューティングを行い、必要な変更を適用することができます。
+Runbook の新しいスケジュールは、Azure portal、PowerShell、または Azure Resource Manager (ARM) テンプレートを使用して作成できます。 Runbook およびそれらが自動化するプロセスに影響が及ばないようにするには、テスト専用の Automation アカウントを使用して、スケジュールがリンクされている Runbook を最初にテストする必要があります。 テストでは、スケジュールされた Runbook が引き続き正常に動作することを検証します。 問題が発生した場合は、更新された Runbook バージョンを運用環境に移行する前に、トラブルシューティングを行い、必要な変更を適用することができます。
 
 > [!NOTE]
 > **[モジュール]** の [[Azure モジュールの更新]](../automation-update-azure-modules.md) オプションを選択してモジュールを手動で更新しない限り、Automation アカウントで新しいバージョンのモジュールが自動的に取得されることはありません。 Azure Automation は、スケジュール済みの新しいジョブの実行時に Automation アカウントの最新のモジュールを使用します。 
@@ -119,6 +119,47 @@ New-AzAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Weeke
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th and Last" -StartTime $StartTime -DaysOfMonth @("One", "Fifteenth", "Last") -ResourceGroupName "TestAzureAuto" -MonthInterval 1
+```
+
+## <a name="create-a-schedule-with-a-resource-manager-template"></a>Resource Manager テンプレートでスケジュールを作成する
+
+この例では、新しいジョブ スケジュールを作成する Automation Resource Manager (ARM) テンプレートを使用します。 Automation ジョブ スケジュールを管理するためのこのテンプレートの一般的な情報については、[Microsoft.Automation automationAccounts/jobSchedules テンプレート リファレンス](/templates/microsoft.automation/automationaccounts/jobschedules#quickstart-templates)に関するページを参照してください。
+
+このテンプレート ファイルをテキスト エディターにコピーします。
+
+```json
+{
+  "name": "5d5f3a05-111d-4892-8dcc-9064fa591b96",
+  "type": "Microsoft.Automation/automationAccounts/jobSchedules",
+  "apiVersion": "2015-10-31",
+  "properties": {
+    "schedule": {
+      "name": "scheduleName"
+    },
+    "runbook": {
+      "name": "runbookName"
+    },
+    "runOn": "hybridWorkerGroup",
+    "parameters": {}
+  }
+}
+```
+
+次のパラメーター値を編集し、テンプレートを JSON ファイルとして保存します。
+
+* ジョブ スケジュール オブジェクト名: ジョブ スケジュール オブジェクトの名前として GUID (グローバル一意識別子) が使用されます。
+
+   >[!IMPORTANT]
+   > ARM テンプレートを使用して展開されるジョブ スケジュールごとに、GUID が一意である必要があります。 既存のスケジュールを再スケジュールする場合でも、GUID を変更する必要があります。 これは、同じテンプレートを使用して作成された既存のジョブ スケジュールを既に削除した場合にも当てはまります。 同じ GUID を再利用すると、デプロイが失敗します。</br></br>
+   > この[無料のオンライン GUID ジェネレーター](https://guidgenerator.com/)など、新しい GUID を生成するサービスがオンライン上にあります。
+
+* スケジュール名: 指定された Runbook にリンクされる Automation ジョブ スケジュールの名前を表します。
+* Runbook 名: ジョブ スケジュールが関連付けられる Automation Runbook の名前を表します。
+
+ファイルが保存されたら、次の PowerShell コマンドを使用して Runbook ジョブ スケジュールを作成できます。 このコマンドでは、`TemplateFile` パラメーターを使用してテンプレートのパスとファイル名を指定します。
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "<path>\RunbookJobSchedule.json"
 ```
 
 ## <a name="link-a-schedule-to-a-runbook"></a>スケジュールを Runbook にリンクする
