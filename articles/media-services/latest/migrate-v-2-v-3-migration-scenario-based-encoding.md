@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: media
 ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 2cdf068d31cf621538eb265977ea0dae20e16e85
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: a01571f4a1f852deb84b7f20d61b8048e8000790
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109324"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490099"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>エンコードのシナリオ ベースの移行ガイダンス
 
@@ -103,7 +103,7 @@ Premium Encoder の高度なワークフロー機能が必要な場合は、[Ima
 
 ## <a name="indexer-v1-audio-transcription-to-the-new-audioanalyzer-basic-mode"></a>新しい AudioAnalyzer "基本モード" へのインデクサー v1 の音声の文字起こし
 
-v2 API でインデクサー v1 プロセッサを使用している顧客の場合は、ジョブを送信する前に、[基本モード](how-to-create-basic-audio-transform.md)で新しい `AudioAnalyzer` を呼び出す変換を作成する必要があります。
+v2 API でインデクサー v1 プロセッサを使用している顧客の場合は、ジョブを送信する前に、[基本モード](transform-create-basic-audio-how-to.md)で新しい `AudioAnalyzer` を呼び出す変換を作成する必要があります。
 
 ## <a name="encoding-transforms-and-jobs-concepts-tutorials-and-how-to-guides"></a>エンコード、変換、ジョブの概念、チュートリアル、ハウツー ガイド
 
@@ -127,18 +127,18 @@ v2 API でインデクサー v1 プロセッサを使用している顧客の場
 
 - [HTTPS URL からジョブの入力を作成する](job-input-from-http-how-to.md)
 - [ローカル ファイルからジョブの入力を作成する](job-input-from-local-file-how-to.md)
-- [基本的なオーディオ変換を作成する](how-to-create-basic-audio-transform.md)
+- [基本的なオーディオ変換を作成する](transform-create-basic-audio-how-to.md)
 - .NET の場合
-  - [カスタム変換を使用してエンコードする方法 - .NET](encode-custom-presets-how-to.md)
-  - [Media Encoder Standard を使用してオーバーレイを作成する方法](how-to-create-overlay.md)
-  - [.NET で Encoder Standard を使用してサムネイルを生成する方法](media-services-generate-thumbnails-dotnet.md)
+  - [カスタム変換を使用してエンコードする方法 - .NET](transform-custom-presets-how-to.md)
+  - [Media Encoder Standard を使用してオーバーレイを作成する方法](transform-create-overlay-how-to.md)
+  - [.NET で Encoder Standard を使用してサムネイルを生成する方法](transform-generate-thumbnails-dotnet-how-to.md)
 - Azure CLI の場合
-  - [カスタム変換を使用してエンコードする方法 - Azure CLI](encode-custom-preset-cli-how-to.md)
+  - [カスタム変換を使用してエンコードする方法 - Azure CLI](transform-custom-preset-cli-how-to.md)
 - REST の場合
-  - [カスタム変換を使用してエンコードする方法 - REST](encode-custom-preset-rest-how-to.md)
-  - [REST で Encoder Standard を使用してサムネイルを生成する方法](media-services-generate-thumbnails-rest.md)
-- [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - .NET](subclip-video-dotnet-howto.md)
-- [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - REST](subclip-video-rest-howto.md)
+  - [カスタム変換を使用してエンコードする方法 - REST](transform-custom-preset-rest-how-to.md)
+  - [REST で Encoder Standard を使用してサムネイルを生成する方法](transform-generate-thumbnails-rest-how-to.md)
+- [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - .NET](transform-subclip-video-dotnet-how-to.md)
+- [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="samples"></a>サンプル
 

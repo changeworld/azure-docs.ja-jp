@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: erhopf
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: 音声翻訳
-ms.openlocfilehash: 94ddd06068513261b5b73b313877e273c7251d62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 99541d7fe9eaa867860af93bc1423d476ce8bf4a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954962"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449938"
 ---
 # <a name="what-is-speech-translation"></a>音声翻訳とは何か
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 この概要では、[多言語のオーディオ ストリームをリアルタイムで音声間の](language-support.md#speech-translation)翻訳または音声テキスト変換できる音声翻訳サービスの利点と機能について説明します。 Speech SDK を使用すると、アプリケーション、ツール、およびデバイスから、提供されたオーディオのソース トランスクリプションや翻訳出力にアクセスすることができます。 音声の検出中には中間トランスクリプションと翻訳結果が返され、最終的な結果は、合成された音声に変換することができます。
+
+このドキュメントには、次の種類の記事が含まれています。
+
+* **クイックスタート** は、サービスへの要求の実行方法を説明する概要手順です。
+* **攻略ガイド** には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
+* **概念** では、サービスの機能と特徴について詳しく説明します。
+* **チュートリアル** はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
 
 ## <a name="core-features"></a>コア機能
 

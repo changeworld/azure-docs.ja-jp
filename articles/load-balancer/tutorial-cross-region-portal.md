@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 02/24/2021
-ms.openlocfilehash: c16123fae63b89eff57b5c91864d9a947e01b386
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65d85f51afef36aa618868e2fda1d2bbf583ea21
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576919"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221128"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してリージョン間 Azure ロード バランサーを作成する
 
@@ -105,34 +105,6 @@ Azure portal に[サインイン](https://portal.azure.com)します。
 8. **[追加]** を選択します。
 
     :::image type="content" source="./media/tutorial-cross-region-portal/add-to-backendpool.png" alt-text="バックエンド プールにリージョン ロード バランサーを追加する" border="true":::
-
-## <a name="create-a-health-probe"></a>正常性プローブの作成
-
-このセクションでは、負荷分散規則を作成するために正常性プローブを作成します。
-
-* 名前は **myHealthProbe** にします。
-* プロトコルは **TCP** にします。
-* 間隔は **5** 秒にします。
-* 異常のしきい値は **2** つのエラーにします。
-
-1. 左側のメニューで **[すべてのサービス]** 、 **[すべてのリソース]** の順に選択し、リソースの一覧で **[myLoadBalancer-CR]** を選択します。
-
-2. **[設定]** の下で **[正常性プローブ]** を選択します。
-
-3. これらの値を使用して、正常性プローブを構成します。
-
-    | 設定 | 値 |
-    | ------- | ----- |
-    | 名前 | 「**myHealthProbe**」と入力します。 |
-    | Protocol | **[TCP]** を選択します。 |
-    | Port | 「**80**」と入力します。 |
-    | Interval | 「**5**」と入力します。 |
-    | 異常のしきい値 | 「**2**」と入力します。 |
-
-4. **[OK]** を選択します。
-
-    > [!NOTE]
-    > リージョン間ロード バランサーには、組み込みの正常性プローブがあります。 このプローブは、負荷分散規則の作成を機能させるためのプレースホルダーです。  詳細については、 **[リージョン間ロード バランサーの制限](cross-region-overview.md#limitations)** に関するセクションを参照してください。
 
 ## <a name="create-a-load-balancer-rule"></a>ロード バランサー規則の作成
 

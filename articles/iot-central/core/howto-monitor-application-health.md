@@ -7,12 +7,12 @@ ms.date: 01/27/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d0e59f73dd9b62b528c3d86d315b613312df7773
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5e462397196d2fd0fd716801d9106929a8cb6a6b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100577045"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061453"
 ---
 # <a name="monitor-the-overall-health-of-an-iot-central-application"></a>IoT Central アプリケーションの全体的な正常性状態を監視する
 

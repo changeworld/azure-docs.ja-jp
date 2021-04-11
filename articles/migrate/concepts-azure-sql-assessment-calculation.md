@@ -5,16 +5,16 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: e4e726f742d46a4b63563f55c191cf21e49d06fc
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a22fa184f91cb409f7a4d7795a4bc34bdd83e598
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778323"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077807"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>評価の概要 (Azure SQL への移行)
 
-この記事では、[Azure Migrate: 検出および評価ツール](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-server-assessment-tool)を使用して、オンプレミスの SQL Server インスタンスを VMware 環境から Azure SQL Database または Managed Instance に移行するための評価の概要について説明します。
+この記事では、[Azure Migrate: 検出および評価ツール](./migrate-services-overview.md#azure-migrate-discovery-and-assessment-tool)を使用して、オンプレミスの SQL Server インスタンスを VMware 環境から Azure SQL Database または Managed Instance に移行するための評価の概要について説明します。
 
 ## <a name="whats-an-assessment"></a>評価とは
 検出および評価ツールを使用した評価は、データの特定時点のスナップショットであり、オンプレミスのサーバーの Azure への移行の対応性を測定し、その影響を見積もります。
@@ -28,6 +28,9 @@ Azure Migrate: 検出および評価ツールを使用して作成できる評�
 **Azure VM** | オンプレミスのサーバーを Azure 仮想マシンに移行するための評価。 <br/><br/> この評価の種類を使用すると、[VMware](how-to-set-up-appliance-vmware.md) と [Hyper-V](how-to-set-up-appliance-hyper-v.md) の環境にあるオンプレミスのサーバー、および[物理サーバー](how-to-set-up-appliance-physical.md)を Azure VM に移行するために評価できます。
 **Azure SQL** | オンプレミスの SQL サーバーを VMware 環境から Azure SQL Database または Azure SQL Managed Instance に移行するための評価。
 **Azure VMware Solution (AVS)** | オンプレミスのサーバーを [Azure VMware Solution (AVS)](../azure-vmware/introduction.md) に移行するための評価。 <br/><br/> このタイプの評価を使用すると、Azure VMware Solution (AVS) への移行について、オンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価できます。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
+
+> [!NOTE]
+> 検出と評価ツールで Azure VM または AVS 評価の数が正しくない場合は、評価の合計数をクリックしてすべての評価に移動し、Azure VM または AVS の評価を計算し直します。 その後、検出と評価ツールには、その評価の種類の正しい数が表示されます。 
 
 Azure SQL 評価には 1 つのサイズ変更の設定基準が用意されています。
 
@@ -80,7 +83,7 @@ Azure SQL 評価のプロパティに含まれるものは次のとおりです�
 **百分位数の使用率** | 百分位の使用率では、サイズ設定に使用されるパフォーマンス サンプルのパーセンタイル値を指定します。
 **快適性係数** | 評価中に使用されるバッファー。 季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア インスタンスの結果は、通常 2 コア インスタンスになります。 快適性係数を 2.0 とした場合、結果は 4 コア インスタンスになります。
 **オファーまたはライセンス プログラム** | 自分が登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 現時点では、従量課金制または開発テスト用の従量課金制プランのみを選択できます。 従量課金制プランに加えて、予約容量と Azure ハイブリッド特典を適用することで、追加の割引を利用できることに注意してください。
-**サービス レベル** | Azure SQL Database や Azure SQL Managed Instance に移行するためのビジネス ニーズを満たすための最も適切なサービス レベル オプション:<br/><br/>Azure Migrate によってサーバーに最適なサービス レベルが推奨されるようにする場合は **[推奨]** 。 これを汎用目的またはビジネス クリティカルに設定することもできます。 <br/><br/> 予算重視のワークロード向けに設計された Azure SQL 構成が必要な場合は **[汎用]** 。 [詳細情報](https://docs.microsoft.com/azure/azure-sql/database/service-tier-general-purpose) <br/><br/> 障害に対する高い回復性と高速フェールオーバーを備え、低遅延のワークロード向けに設計された Azure SQL 構成が必要な場合は **[ビジネス プラクティカル]** 。 [詳細情報](https://docs.microsoft.com/azure/azure-sql/database/service-tier-business-critical)
+**サービス レベル** | Azure SQL Database や Azure SQL Managed Instance に移行するためのビジネス ニーズを満たすための最も適切なサービス レベル オプション:<br/><br/>Azure Migrate によってサーバーに最適なサービス レベルが推奨されるようにする場合は **[推奨]** 。 これを汎用目的またはビジネス クリティカルに設定することもできます。 <br/><br/> 予算重視のワークロード向けに設計された Azure SQL 構成が必要な場合は **[汎用]** 。 [詳細情報](../azure-sql/database/service-tier-general-purpose.md) <br/><br/> 障害に対する高い回復性と高速フェールオーバーを備え、低遅延のワークロード向けに設計された Azure SQL 構成が必要な場合は **[ビジネス プラクティカル]** 。 [詳細情報](../azure-sql/database/service-tier-business-critical.md)
 **通貨** | アカウントの請求通貨。
 **割引率 (%)** | Azure プランに適用される任意のサブスクリプション固有の割引。 既定の設定は 0% です。
 **Azure ハイブリッド特典** | SQL Server ライセンスを既に所有しているかどうかを指定します。 <br/><br/> ライセンスを所有しており、SQL Server サブスクリプションのアクティブなソフトウェア アシュアランスの対象となっている場合は、ライセンスを Azure に持ち込む際に Azure ハイブリッド特典を申請できます。
@@ -124,7 +127,7 @@ Azure SQL 評価のプロパティで、ターゲットのデプロイの種類�
 SQL インスタンスが Azure SQL Database と Azure SQL Managed Instance に対応していない場合、推奨されるデプロイの種類は、"*Azure VM に対応の可能性あり*" としてマークされます。
 - ユーザーには、評価の種類を "Azure VM" にして Azure Migrate で評価を作成し、代わりにインスタンスが実行されているサーバーが Azure VM への移行に対応しているかどうかを判断することをお勧めします。 以下の点に注意してください。
     - 現在、Azure Migrate での Azure VM の評価ではリフト アンド シフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 
-    - サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)。
+    - サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)。
 
 
 ## <a name="calculate-sizing"></a>サイズ設定の計算

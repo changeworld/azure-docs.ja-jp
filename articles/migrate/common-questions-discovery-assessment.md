@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: f9fe4109d2b21f7c44ba340db53dc24311652441
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: c10963d28e0d2ecee73150e8b5af89cee96d28b2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104782352"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077008"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -86,6 +86,13 @@ ms.locfileid: "104782352"
 
 - Azure SQL の評価の場合、検出が開始された後で、いくつかの SQL インスタンスまたはデータベースが作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの SQL インスタンスまたはデータベースが環境内に作成されたとします。 この場合、新しいサーバーのパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。 [詳細情報](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
 
+## <a name="-the-number-of-azure-vm-or-avs-assessments-on-the-discovery-and-assessment-tool-are-incorrect"></a>検出と評価ツールの Azure VM または AVS 評価の数が正しくない
+ これを修正するには、評価の合計数をクリックしてすべての評価に移動し、Azure VM または AVS の評価を計算し直します。 その後、検出と評価ツールには、その評価の種類の正しい数が表示されます。
+
+
+## <a name="i-want-to-try-out-the-new-azure-sql-assessment"></a>新しい Azure SQL 評価を試してみたい
+VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 [このチュートリアル](tutorial-discover-vmware.md)で作業を開始します。 既存のプロジェクトでこの機能を試す場合は、こちらの記事の[前提条件](how-to-discover-sql-existing-project.md)を完了していることを確認してください。
+
 ## <a name="i-cant-see-some-servers-when-i-am-creating-an-azure-sql-assessment"></a>Azure SQL の評価を作成するときに、一部のサーバーを見ることができません
 
 - Azure SQL の評価は、SQL インスタンスが検出された場所で実行されているサーバーに対してのみ実行できます。 評価したいサーバーと SQL インスタンスが表示されない場合は、検出が完了するまでしばらく待ってから、評価を作成してください。 
@@ -140,7 +147,7 @@ Azure Migrate により、SQL インスタンスと互換性のある特定の A
 このようになる可能性があるのは、評価のプロパティで選択されたターゲットのデプロイの種類が **推奨** であり、SQL インスタンスが Azure SQL Database と Azure SQL Managed Instance のどちらにも対応していない場合です。 ユーザーには、評価の種類を **Azure VM** にして Azure Migrate で評価を作成し、インスタンスが実行されているサーバーが Azure VM への移行に対応しているかどうかを判断することをお勧めします。
 ユーザーには、評価の種類を **Azure VM** にして Azure Migrate で評価を作成し、インスタンスが実行されているサーバーが Azure VM への移行に対応しているかどうかを代わりに判断することをお勧めします。
 - 現在、Azure Migrate での Azure VM の評価ではリフト アンド シフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 
-- サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)。
+- サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)。
 
 ## <a name="i-cant-see-some-databases-in-my-assessment-even-though-the-instance-is-part-of-the-assessment"></a>インスタンスが評価の一部であるにもかかわらず、評価に一部のデータベースが表示されません
 
@@ -148,7 +155,7 @@ Azure SQL の評価には、オンライン状態のデータベースのみが�
 
 ## <a name="i-want-to-compare-costs-for-running-my-sql-instances-on-azure-vm-vs-azure-sql-databaseazure-sql-managed-instance"></a>SQL インスタンスを Azure VM で実行した場合と Azure SQL Database または Azure SQL Managed Instance で実行した場合のコストを比較するにはどうすればよいですか?
 
-**Azure SQL** の評価に使用したものと同じグループで、種類を **Azure VM** にして評価を作成できます。 その後、2 つのレポートを並べて比較することができます。 ただし、現在、Azure Migrate での Azure VM の評価ではリフトアンドシフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)。
+**Azure SQL** の評価に使用したものと同じグループで、種類を **Azure VM** にして評価を作成できます。 その後、2 つのレポートを並べて比較することができます。 ただし、現在、Azure Migrate での Azure VM の評価ではリフトアンドシフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)。
 
 ## <a name="the-storage-cost-in-my-azure-sql-assessment-is-zero"></a>Azure SQL の評価でストレージ コストが 0 です
 Azure SQL Managed Instance の場合、最初の 32 GB/インスタンス/月のストレージに対するストレージ コストは追加されず、追加のストレージ コストが 32 GB 単位でストレージに追加されます。 [詳細情報](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)
