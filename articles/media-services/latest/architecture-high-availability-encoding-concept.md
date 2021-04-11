@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: a87525248273db38e4e7bc8d1b59bbd9f99bb4c6
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: c334888f5b85b0d2211225282680d5f791b50793
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106106992"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277880"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services とビデオ オン デマンド(VOD) を使用した高可用性
 
@@ -61,7 +61,7 @@ Media Services とビデオ オン デマンド (VOD) を使用した高可用�
 
 * 2 つ (以上) の Azure Media Services アカウントを[作成](./account-create-how-to.md)します。 2 つのアカウントは所属するリージョンが異なっている必要があります。 詳細については、「[Azure Media Services サービスがデプロイされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)」を参照してください。
 * ジョブを送信する予定のリージョンにメディアをアップロードします。 エンコードを開始する方法の詳細については、「[HTTPS URL からジョブの入力を作成する](./job-input-from-http-how-to.md)」または「[ローカル ファイルからジョブの入力を作成する](./job-input-from-local-file-how-to.md)」を参照してください。
-* その後、[ジョブ](./transforms-jobs-concept.md)を別のリージョンに再送信する必要がある場合、`JobInputHttp` を使用するか、`Copy-Blob` を使用してソース アセット コンテナーから代替リージョンのアセット コンテナーにデータをコピーします。
+* その後、[ジョブ](./transform-jobs-concept.md)を別のリージョンに再送信する必要がある場合、`JobInputHttp` を使用するか、`Copy-Blob` を使用してソース アセット コンテナーから代替リージョンのアセット コンテナーにデータをコピーします。
 
 ### <a name="monitoring"></a>監視
 
@@ -72,10 +72,10 @@ Media Services とビデオ オン デマンド (VOD) を使用した高可用�
 
     詳細情報:
 
-    * [オーディオ分析サンプル](./transforms-jobs-concept.md)を参照すると、Azure Event Grid メッセージが何らかの理由で遅延した場合のフォールバックを追加するなど、Azure Event Grid でジョブを監視する方法がわかります。
+    * [オーディオ分析サンプル](./transform-jobs-concept.md)を参照すると、Azure Event Grid メッセージが何らかの理由で遅延した場合のフォールバックを追加するなど、Azure Event Grid でジョブを監視する方法がわかります。
     * [Media Services 用の Azure Event Grid スキーマ](./media-services-event-schemas.md)をご覧ください。
 
-* [ジョブ](./transforms-jobs-concept.md)を作成する場合:
+* [ジョブ](./transform-jobs-concept.md)を作成する場合:
     * 現在使用しているアカウントの一覧からアカウントをランダムに選択します (通常、この一覧には両方のアカウントが含まれますが、問題が検出された場合は、アカウントを 1 つだけ含めることができます)。 一覧が空の場合は、オペレーターが調査できるようにアラートを生成します。
     * 実行中の各ジョブと、使用されているリージョン/アカウントを追跡するレコードを作成します。
 * ジョブがスケジュールされた状態に到達したことを示す通知を `JobStateChange` ハンドラーが受け取ったら、ジョブがスケジュールの状態になった時刻と、使用されているリージョンとアカウントを記録します。

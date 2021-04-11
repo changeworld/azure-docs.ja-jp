@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/10/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1636e49099851337d82494ebe168b8ec5194fa20
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ef4eb3eb55ec1f062efb0f8215a3619f526b1ad2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103011937"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063986"
 ---
 # <a name="implement-failover-streaming-with-media-services-v2"></a>Media Services v2 でフェールオーバー ストリーミングを実装する
 
@@ -753,7 +753,7 @@ using System.Runtime.Serialization.Json;
 
 このトピックの例のストリーミングは暗号化されていません。 ストリーミングを保護する場合、他にもいくつか設定する必要があり、同じ **AssetDeliveryPolicy**、同じ **ContentKeyAuthorizationPolicy**、または外部キー サーバー URL を使用する必要があり、コンテンツ キーを同じ識別子で複製する必要があります。
 
-コンテンツ保護の詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」を参照してください。
+コンテンツ保護の詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-playready-license-template-overview.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 
