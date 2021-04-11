@@ -3,19 +3,19 @@ title: Windows Virtual Desktop のシン クライアントサポート-Azure
 description: Windows Virtual Desktop のシン クライアント サポートの簡単な概要。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90459c3eb171e03b1c28c91e766d3a6b765565b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 905451b4ce9c7a2a7c7aa2331ce3d433a9952223
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103491471"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122035"
 ---
 # <a name="linux-support"></a>Linux Support
 
-Linux シン クライアント パートナーによって提供される [Web クライアント](connect-web.md)または以下のサポートされているクライアントを使用して、Linux デバイスから Windows Virtual Desktop リソースにアクセスできます。 Microsoft は、多くのパートナーと協力して、より多くの Linux ベースのオペレーティング システムとデバイスで、Windows Virtual Desktop クライアントがサポートされるようにしています。 ここに記載されていない Linux プラットフォームで Windows Virtual Desktop のサポートが必要な場合は、[UserVoice ページ](https://remotedesktop.uservoice.com/forums/923035-remote-desktop-support-on-linux)からご連絡ください。
+Linux シン クライアント パートナーによって提供される [Web クライアント](connect-web.md)または以下のサポートされているクライアントを使用して、Linux デバイスから Windows Virtual Desktop リソースにアクセスできます。 Microsoft は、多くのパートナーと協力して、より多くの Linux ベースのオペレーティング システムとデバイスで、Windows Virtual Desktop クライアントがサポートされるようにしています。
 
 ## <a name="connect-with-your-linux-device"></a>Linux デバイスで接続する
 

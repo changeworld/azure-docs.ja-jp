@@ -11,10 +11,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 02607c219cf39a20a40854632e961b3ce199d0d3
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104588258"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault

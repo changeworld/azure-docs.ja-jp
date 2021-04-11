@@ -8,16 +8,16 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e8019a30d4f5bf24814d88fc749cefd6b529b73b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608749"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563397"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーの共同販売を構成する
 
-この記事では、コマーシャル マーケットプレース オファーの **[Microsoft と共同販売する]** タブを構成する方法について説明します。 このタブでの情報提供は完全にオプションですが、[Co-sell Ready (共同販売の準備完了) および IP Co-sell Incentivized (IP 共同販売インセンティブ対象) 状態](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status)を実現するために必要です。 提供された情報は、顧客のニーズに対するその適合度を評価する際にお客様のオファーの詳細を確認するために Microsoft のセールス チームによって使用されます。 この情報は、顧客が直接入手できるものではありません。 共同販売の詳細については、[Microsoft 販売者およびパートナーとの共同販売の概要](marketplace-co-sell.md)および [Microsoft との共同販売](https://partner.microsoft.com/membership/co-sell-with-microsoft)に関するページを参照してください。
+この記事では、コマーシャル マーケットプレース オファーの **[Microsoft と共同販売する]** タブを構成する方法について説明します。 このタブでの情報提供は完全にオプションですが、[Co-sell Ready (共同販売の準備完了) および IP Co-sell Incentivized (IP 共同販売インセンティブ対象) 状態](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)を実現するために必要です。 提供された情報は、顧客のニーズに対するその適合度を評価する際にお客様のオファーの詳細を確認するために Microsoft のセールス チームによって使用されます。 この情報は、顧客が直接入手できるものではありません。 共同販売の詳細については、[Microsoft 販売者およびパートナーとの共同販売の概要](marketplace-co-sell.md)および [Microsoft との共同販売](https://partner.microsoft.com/membership/co-sell-with-microsoft)に関するページを参照してください。
 
 共同販売オプションは、次のオファーの種類で利用できます。
 
