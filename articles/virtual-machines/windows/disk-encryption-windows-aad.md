@@ -10,10 +10,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
 ms.openlocfilehash: 3b7f6f63953ba09e57e4586c698e16b9abb8aa1c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102555280"
 ---
 # <a name="azure-disk-encryption-with-azure-ad-for-windows-vms-previous-release"></a>Windows VM における Azure AD を使用した Azure Disk Encryption (以前のリリース)
@@ -64,7 +64,7 @@ Azure の Marketplace から作成された新しい IaaS Windows VM でのデ�
 | subnetName | VM NIC が属している必要がある VNet のサブネットの名前。 |
 | AADClientID | Key Vault にシークレットを書き込むためのアクセス許可を持つ Azure AD アプリケーションのクライアント ID。 |
 | AADClientSecret | Key Vault にシークレットを書き込むためのアクセス許可を持つ Azure AD アプリケーションのクライアント シークレット。 |
-| keyVaultURL | BitLocker キーのアップロード先となる Key Vault の URL。 これは、コマンドレット `(Get-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyKeyVaultResourceGroupName").VaultURI` または Azure CLI `az keyvault show --name "MySecureVault" --query properties.vaultUri` を使用して取得できます。 |
+| keyVaultURL | BitLocker キーのアップロード先となる Key Vault の URL。 これは、コマンドレット `(Get-AzKeyVault -VaultName "MyKeyVault&quot; -ResourceGroupName &quot;MyKeyVaultResourceGroupName").VaultURI` または Azure CLI `az keyvault show --name "MySecureVault" --query properties.vaultUri` を使用して取得できます。 |
 | keyEncryptionKeyURL | 生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL (省略可能)。 </br> </br>KeyEncryptionKeyURL は省略可能なパラメーターです。 独自の KEK を使用して、Key Vault でデータ暗号化キー (パスフレーズ シークレット) の保護を強化することができます。 |
 | keyVaultResourceGroup | Key Vault のリソース グループ。 |
 | vmName | 暗号化操作が実行される VM の名前。 |

@@ -7,19 +7,19 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 03/09/2021
 ms.author: duau
-ms.openlocfilehash: 9b85caa3611c484fc17423637dc36ce20b48b823
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 7f5afc05a8d03d33366a2f76318bcf5e039d4d30
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868479"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561663"
 ---
 # <a name="add-ipv6-support-for-private-peering-using-the-azure-portal-preview"></a>Azure portal を使用してプライベート ピアリングに対する IPv6 サポートを追加する (プレビュー)
 
 この記事では、Azure portal を使用して Azure 内のリソースに ExpressRoute 経由で接続するための IPv6 サポートを追加する方法について説明します。 
 
 > [!Note]
-> この機能は現在、[Availability Zones がある Azure リージョン](https://docs.microsoft.com/azure/availability-zones/az-region#azure-regions-with-availability-zones)でのプレビューに使用できます。 したがって、ExpressRoute 回線は任意のピアリングの場所を使用して作成できますが、接続先である IPv6 ベースのデプロイは、Availability Zones があるリージョン内に存在している必要があります。
+> この機能は現在、[Availability Zones がある Azure リージョン](../availability-zones/az-region.md#azure-regions-with-availability-zones)でのプレビューに使用できます。 したがって、ExpressRoute 回線は任意のピアリングの場所を使用して作成できますが、接続先である IPv6 ベースのデプロイは、Availability Zones があるリージョン内に存在している必要があります。
 
 ## <a name="register-for-public-preview"></a>パブリック プレビューに登録する
 IPv6 サポートを追加する前に、まずサブスクリプションを登録する必要があります。 登録するには、Azure PowerShell から次のコマンドを実行します。
