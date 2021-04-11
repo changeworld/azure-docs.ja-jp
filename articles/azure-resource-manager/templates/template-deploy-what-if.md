@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 3f35f00e5fcd26c7aa4bb685dc80f48eabb88b6d
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102547936"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074624"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM テンプレート デプロイの What-If 操作
 
@@ -32,7 +32,7 @@ Install-Module -Name Az -Force
 
 ## <a name="install-azure-cli-module"></a>Azure CLI モジュールのインストール
 
-Azure CLI で what-if を使用するには、Azure CLI 2.5.0 以降である必要があります。 必要であれば、[Azure CLI の最新バージョンをインストールします](/cli/azure/install-azure-cli)。
+Azure CLI で what-if を使用するには、Azure CLI 2.14.0 以降である必要があります。 必要であれば、[Azure CLI の最新バージョンをインストールします](/cli/azure/install-azure-cli)。
 
 ## <a name="see-results"></a>結果を表示する
 
@@ -364,17 +364,17 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 
       id:
 "/subscriptions/./resourceGroups/ExampleGroup/providers/Microsoft.Network/virtualNet
-works/vnet-001"
-      location:        "centralus"
-      name:            "vnet-001"
-      tags.CostCenter: "12345"
-      tags.Owner:      "Team A"
-      type:            "Microsoft.Network/virtualNetworks"
+works/vnet-001&quot;
+      location:        &quot;centralus&quot;
+      name:            &quot;vnet-001&quot;
+      tags.CostCenter: &quot;12345&quot;
+      tags.Owner:      &quot;Team A&quot;
+      type:            &quot;Microsoft.Network/virtualNetworks&quot;
 
 Resource changes: 1 to delete.
 
 Are you sure you want to execute the deployment?
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y"):
 ```
 
 期待通りの変更が表示され、デプロイを実行することを確認できます。

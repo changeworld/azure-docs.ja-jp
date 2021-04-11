@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: ecf115b7ce902fcd8b50f0eca32ffda6ef47e068
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: cc470d12377f50f9f9ae4b362bcabf3a5ce34e8f
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102618476"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169285"
 ---
 # <a name="about-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) について
 
@@ -48,12 +48,9 @@ Cloud Services (延長サポート) をデプロイするには、サービス�
 - [Azure Resource Manager](../azure-resource-manager/templates/overview.md) を使用してデプロイされたリソースはすべて、仮想ネットワークの内部に存在する必要があります。 仮想ネットワークとサブネットは、既存の Azure Resource Manager API を使用して Azure Resource Manager で作成され、Cloud Services (延長サポート) をデプロイするときに .cscfg の NetworkConfiguration セクション内で参照する必要があります。   
 
 - 各クラウド サービス (延長サポート) は、1 つの独立したデプロイです。 クラウド サービス (延長サポート) では、1 つのクラウド サービス内の複数のスロットはサポートされません。  
-    - VIP スワップ<sup>*</sup>機能を使用すると、2 つのクラウド サービス (延長サポート) 間でのスワップが可能になります。 クラウド サービスの新しいリリースをテストしてステージングするには、クラウド サービス (延長サポート) をデプロイし、それを別のクラウド サービス (延長サポート) との VIP スワップ可能としてタグ付けします。  
+    - VIP スワップ機能を使用すると、2 つのクラウド サービス (延長サポート) 間でのスワップが可能になります。 クラウド サービスの新しいリリースをテストしてステージングするには、クラウド サービス (延長サポート) をデプロイし、それを別のクラウド サービス (延長サポート) との VIP スワップ可能としてタグ付けします。  
 
 - ドメイン ネーム サービス (DNS) ラベルは、クラウド サービス (延長サポート) では省略可能です。 Azure Resource Manager では、DNS ラベルは、クラウド サービスに関連付けられているパブリック IP リソースのプロパティです。 
-
-
-<sup>*</sup> Cloud Services (延長サポート) の VIP スワップは、パブリック プレビュー段階では使用できません。  
 
 ## <a name="migration-to-azure-resource-manager"></a>Azure Resource Manager への移行
 
