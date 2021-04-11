@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: bd35062ca1a5b3218a9af1fbd28fe8e7d7073c07
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722703"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077620"
 ---
 # <a name="telemetry-and-troubleshooting"></a>テレメトリとトラブルシューティング
 
@@ -103,21 +103,21 @@ telegraf モジュールがデプロイされると、報告されたメトリ�
 
 ### <a name="system-health-events"></a>システムの正常性イベント
 
-| イベント名 | 説明|
-|------|---------|
-|archon_exit     |ユーザーが空間分析モジュールの状態を *実行* 中から *停止* に変更したときに送信されます。  |
-|archon_error     |コンテナー内でいずれかのプロセスがクラッシュしたときに送信されます。 これは重大なエラーです。  |
-|InputRate     |グラフが動画入力を処理する速度。 5 分ごとに報告されます。 | 
-|OutputRate     |グラフが AI Insights を出力する速度。 5 分ごとに報告されます。 |
-|archon_allGraphsStarted | すべてのグラフの起動が終了したときに送信されます。 |
-|archon_configchange     | グラフの構成が変更されたときに送信されます。 |
-|archon_graphCreationFailed     |報告された `graphId` のグラフを開始できなかったときに送信されます。 |
-|archon_graphCreationSuccess     |報告された `graphId` のグラフが正常に開始されたときに送信されます。 |
-|archon_graphCleanup     | 報告された `graphId` のグラフをクリーンアップして終了したときに送信されます。 |
-|archon_graphHeartbeat     |スキルのすべてのグラフに対して 1 分ごとに送信されるハートビート。 |
-|archon_apiKeyAuthFail |次の理由により、24 時間以上、Computer Vision リソース キーがコンテナーの認証に失敗したときに送信されます。クォータ外で、無効、オフラインです。 |
-|VideoIngesterHeartbeat     |動画が動画ソースからストリーミングされることを示すために、1 時間ごとに送信され、その時間のエラーの数を示します。 各グラフに対して報告されます。 |
-|VideoIngesterState | 動画のストリーミングのために、 *停止* または *開始* を報告します。  各グラフに対して報告されます。 |
+| イベント名                  | 説明    |
+|-----------------------------|-------------------------------------------------------------------------------------------|
+| archon_exit                 | ユーザーが空間分析モジュールの状態を *実行* 中から *停止* に変更したときに送信されます。  |
+| archon_error                | コンテナー内でいずれかのプロセスがクラッシュしたときに送信されます。 これは重大なエラーです。      |
+| InputRate                   | グラフが動画入力を処理する速度。 5 分ごとに報告されます。              |
+| OutputRate                  | グラフが AI Insights を出力する速度。 5 分ごとに報告されます。                |
+| archon_allGraphsStarted     | すべてのグラフの起動が終了したときに送信されます。                                           |
+| archon_configchange         | グラフの構成が変更されたときに送信されます。                                              |
+| archon_graphCreationFailed  | 報告された `graphId` のグラフを開始できなかったときに送信されます。                           |
+| archon_graphCreationSuccess | 報告された `graphId` のグラフが正常に開始されたときに送信されます。                      |
+| archon_graphCleanup         | 報告された `graphId` のグラフをクリーンアップして終了したときに送信されます。                      |
+| archon_graphHeartbeat       | スキルのすべてのグラフに対して 1 分ごとに送信されるハートビート。                                   |
+| archon_apiKeyAuthFail       | 次の理由により、24 時間以上、Computer Vision リソース キーがコンテナーの認証に失敗したときに送信されます。クォータ外で、無効、オフラインです。 |
+| VideoIngesterHeartbeat      | 動画が動画ソースからストリーミングされることを示すために、1 時間ごとに送信され、その時間のエラーの数を示します。 各グラフに対して報告されます。 |
+| VideoIngesterState          | 動画のストリーミングのために、 *停止* または *開始* を報告します。  各グラフに対して報告されます。              |
 
 ##  <a name="troubleshooting-an-iot-edge-device"></a>IoT Edge デバイスのトラブルシューティング
 

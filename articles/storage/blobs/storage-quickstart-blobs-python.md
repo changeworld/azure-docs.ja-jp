@@ -1,19 +1,19 @@
 ---
 title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - Python'
 description: このクイックスタートでは、Python 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/28/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: e315f0f4f7bfff03a659de430e6fe182037f1b8a
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: a5d56b20bec7e668bb2119c9174fe03278c805c1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096408"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278016"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>クイック スタート:Python v12 SDK で BLOB を管理する
 
@@ -30,7 +30,7 @@ ms.locfileid: "99096408"
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 - Azure Storage のアカウント [ストレージ アカウントの作成](../common/storage-account-create.md)。
-- [Python](https://www.python.org/downloads/) 2.7、3.5 以降
+- [Python](https://www.python.org/downloads/) 2.7 または 3.6 以降。
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
