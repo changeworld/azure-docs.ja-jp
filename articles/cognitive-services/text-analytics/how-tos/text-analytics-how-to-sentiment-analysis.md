@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: e9d8e7b514dca7d4930ad33bf08d4ceb07fb860d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7cd2b0a6b943ceb32420ef119a7fc5eddefa2e19
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599131"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276996"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>方法: 感情分析とオピニオン マイニング
 
-Text Analytics API の感情分析機能には、肯定的および否定的センチメントを検出するための 2 つの方法が用意されています。 感情分析要求を送信すると、文とドキュメントのレベルでセンチメント ラベル ("negative"、"neutral"、"positive" など) と信頼度スコアが API から返されます。 また、感情分析エンドポイントを使用してオピニオン マイニング要求を送信することもできます。これにより、テキスト内の単語 (製品やサービスの属性など) に関連した意見に関する詳細な情報が提供されます。 
+Text Analytics API の感情分析機能には、肯定的および否定的センチメントを検出するための 2 つの方法が用意されています。 感情分析要求を送信すると、文とドキュメントのレベルでセンチメント ラベル ("negative"、"neutral"、"positive" など) と信頼度スコアが API から返されます。 また、感情分析エンドポイントを使用してオピニオン マイニング要求を送信することもできます。これにより、テキスト内の単語 (製品やサービスの属性など) に関連した意見に関する詳細な情報が提供されます。
 
 API で使用される AI モデルはサービスによって提供されるため、分析対象のコンテンツを送信するだけで済みます。
 
@@ -151,7 +151,7 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 感情分析 v3.1 では、感情分析とオピニオン マイニングの両方の応答オブジェクトを返すことができます。
   
-感情分析は、ドキュメント全体およびそこに含まれるそれぞれの文について、センチメント ラベルと信頼度スコアを返します。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 ドキュメントには複数の文が含まれる場合があり、それぞれのドキュメントまたは文の範囲内での信頼度スコアの合計は 1 になります。 assessments 
+感情分析は、ドキュメント全体およびそこに含まれるそれぞれの文について、センチメント ラベルと信頼度スコアを返します。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 ドキュメントには複数の文が含まれる場合があり、それぞれのドキュメントまたは文の範囲内での信頼度スコアの合計は 1 になります。
 
 テキスト内のターゲット (名詞または動詞) とそれに関連する評価 (形容詞) がオピニオン マイニングによって特定されます。 以下の応答では、"*The restaurant had great food and our waiter was friendly (レストランの食事はすばらしく、ウエーターの態度も良かった)* " という文に、"*food (食事)* " と "*waiter (ウエーター)* " の 2 つのターゲットが存在します。 それぞれのターゲットの `relations` プロパティには `ref` 値があり、関連する `documents`、`sentences`、`assessments` オブジェクトへの URI 参照が設定されています。
 

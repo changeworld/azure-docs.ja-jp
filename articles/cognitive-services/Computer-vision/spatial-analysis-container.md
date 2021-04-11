@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 1a107f812ceb46649126bdbefcf3b828e1938ff3
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 87076febd4597556fd2b28245f47442308cd6e6c
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102612900"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108364"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>空間分析コンテナー (プレビュー) をインストールして実行する
 
@@ -311,7 +311,7 @@ sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 ホスト コンピューター上で `/etc/iotedge/config.yaml` を編集するために開きます。 `ADD DEVICE CONNECTION STRING HERE` を接続文字列に置き換えます。 ファイルを保存して閉じます。 次のコマンドを実行して、ホスト コンピューター上の IoT Edge サービスを再起動します。
@@ -334,7 +334,7 @@ Azure portal で、[[仮想マシンの作成]](https://ms.portal.azure.com/#cre
 
 VM に名前を付け、リージョンに [(米国) 米国西部 2] を選択します。 必ず `Availability Options` を [インフラストラクチャ冗長は必要ありません] に設定します。 次の図を参照して全体の構成を確認し、次の手順に従って適切な VM サイズを特定します。 
 
-:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.png" alt-text="仮想マシンの構成の詳細。" lightbox="media/spatial-analysis/virtual-machine-instance-details.png":::
+:::image type="content" source="media/spatial-analysis/virtual-machine-instance-details.jpg" alt-text="仮想マシンの構成の詳細。" lightbox="media/spatial-analysis/virtual-machine-instance-details.jpg":::
 
 VM のサイズを特定するには、[See all sizes]\(すべてのサイズを表示\) を選択し、次に示す [Non-premium storage VM sizes]\(非 Premium ストレージ VM サイズ\) の一覧を表示します。
 
@@ -473,7 +473,7 @@ sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 IoT Edge デバイスを Azure IoT ハブに接続する必要があります。 先ほど作成した IoT Edge デバイスから接続文字列をコピーする必要があります。 または、Azure CLI で以下のコマンドを実行することもできます。
 
 ```bash
-sudo az iot hub device-identity show-connection-string --device-id my-edge-device --hub-name test-iot-hub-123
+sudo az iot hub device-identity connection-string show --device-id my-edge-device --hub-name test-iot-hub-123
 ```
 
 VM で `/etc/iotedge/config.yaml` を開いて編集します。 `ADD DEVICE CONNECTION STRING HERE` を接続文字列に置き換えます。 ファイルを保存して閉じます。 このコマンドを実行して、VM 上の IoT Edge サービスを再起動します。
@@ -542,10 +542,6 @@ sudo az iot edge set-modules --hub-name "<iothub-name>" --device-id "<device-nam
 ## <a name="configure-the-operations-performed-by-spatial-analysis"></a>空間分析で実行される操作を構成する
 
 接続されたカメラを使用するようにコンテナーを構成したり、操作を構成したりするためには、[空間分析操作](spatial-analysis-operations.md)を使用する必要があります。 構成するカメラ デバイスごとに、空間分析の操作によって、Azure IoT Hub のインスタンスに送信される JSON メッセージの出力ストリームが生成されます。
-
-## <a name="redeploy-or-delete-the-deployment"></a>再デプロイする、またはデプロイを削除する
-
-デプロイを更新する必要がある場合は、以前のデプロイが正常にデプロイされていることを確認することや、完了していない IoT Edge デバイスのデプロイを削除することが必要になります。 そうしないと、それらのデプロイが続行され、システムが正しくない状態のままになります。 Azure portal か、[Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) を使用することができます。
 
 ## <a name="use-the-output-generated-by-the-container"></a>コンテナーによって生成された出力を使用する
 
