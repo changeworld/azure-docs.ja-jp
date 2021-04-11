@@ -9,10 +9,10 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 02/04/2021
 ms.openlocfilehash: 4c04dd5a2b41b3db54b20c9e514767453951cc35
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103565617"
 ---
 # <a name="migrate-a-studio-classic-dataset-to-azure-machine-learning"></a>スタジオ (クラシック) のデータセットを Azure Machine Learning に移行する
@@ -136,7 +136,7 @@ ms.locfileid: "103565617"
 
 1. [データストアを作成](https://github.com/MicrosoftDocs/azure-docs-pr/blob/master/articles/machine-learning/how-to-connect-data-ui.md#create-datastores)します。これにより、クラウド ストレージ サービスが Azure Machine Learning ワークスペースにリンクされます。 
 
-データストアを作成したら、デザイナーの [ **[データのインポート]** ](../algorithm-module-reference/import-data.md) モジュールを使用して、データストアからデータを取り込むことができます。
+データストアを作成したら、デザイナーの [ **[データのインポート]**](../algorithm-module-reference/import-data.md) モジュールを使用して、データストアからデータを取り込むことができます。
 
 1. デザイナーの新しいパイプライン ドラフトを作成します。
 1. 左側のモジュール パレットで、 **[データのインポート]** モジュールを見つけてキャンバスにドラッグします。

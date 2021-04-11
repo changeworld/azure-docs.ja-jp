@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 6b73eb51831238f23400ef60d0a6162bca38ea85
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 2fc703e0532c86bfc0874c8dccbb17c6142aeed0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033155"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104590213"
 ---
 # <a name="outbound-rules-azure-load-balancer"></a><a name="outboundrules"></a>Azure Load Balancer のアウトバウンド規則
 
@@ -36,11 +36,11 @@ ms.locfileid: "97033155"
 アウトバウンド規則によって以下を制御できます。
 
 * **どの仮想マシンがどのパブリック IP アドレスに変換されるか。**
-     * 2 つの規則により、バックエンド プール A によって IP アドレス A と B が使用され、バックエンド プール B によって IP アドレス C と D が使用されます。
+     * バックエンドプール 1 では青色の IP アドレス 1 と 2 を使用し、バックエンドプール 2 では黄色の IP プレフィックスを使用する 2 つのルールがあります。
 * **アウトバウンド SNAT ポートの割り当て方法。**
-     * バックエンド プール B は送信接続を行う唯一のプールであり、バックエンド プール B にすべての SNAT ポートを提供し、バックエンド プール A には何も提供しません。
+     * バックエンド プール 2 がアウトバウンド接続を行う唯一のプールである場合、バックエンド プール 2 にすべての SNAT ポートを提供し、バックエンド プール 1 には何も提供しません。
 * **アウトバウンド変換の提供対象となるプロトコル。**
-     * バックエンド プール B には、送信用の UDP ポートが必要です。 バックエンド プール A には TCP が必要です。 TCP ポートを A に、UDP ポートを B に提供します。
+     * バックエンド プール 2 にアウトバウンド用の UDP ポートが必要で、バックエンド プール 1 に TCP が必要な場合は、TCP ポートを 1 に、UDP ポートを 2 に提供します。
 * **アウトバウンド接続のアイドル タイムアウトの時間 (4 分から 120 分)。**
      * キープアライブを使用した長期の接続がある場合は、長期の接続用にアイドル ポートを最大 120 分間予約します。 古い接続が破棄され、新しい接続用にポートが 4 分以内に解放されることを想定します 
 * **アイドル タイムアウト時に TCP リセットを送信するかどうか。**

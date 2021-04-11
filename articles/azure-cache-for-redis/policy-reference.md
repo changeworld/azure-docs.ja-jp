@@ -1,18 +1,18 @@
 ---
 title: Azure Cache for Redis 用の組み込みポリシー定義
 description: Azure Cache for Redis 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: reference
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 2fb33c0ed7d8fc0f865a91638a2eaae16a3dfad2
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 296d870614c0ce47af299236d4316d30076835e9
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584850"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095300"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cache-for-redis"></a>Azure Cache for Redis 用の Azure Policy 組み込み定義
 

@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: mvc
-ms.openlocfilehash: 0dcb750871eeae504ddb3d4e3851c834bcad125c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a1d745c95b89efefabbd0b83061f9dcd9fe13911
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604544"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567120"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -91,7 +91,7 @@ Azure Migrate Server Migration は、VMware VM の検出、評価、エージェ
     - プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化
 
    > [!NOTE]
-   > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](https://go.microsoft.com/fwlink/?linkid=2151800)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
+   > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
   
 10. **[Azure ハイブリッド特典]** で、
 
@@ -189,7 +189,7 @@ Azure Migrate Server Migration は、VMware VM の検出、評価、エージェ
 ## <a name="complete-the-migration"></a>移行を完了する
 
 1. 移行が完了したら、VM を右クリックして、 **[レプリケーションの停止]** を選択します。 これで、オンプレミスのマシンのレプリケーションが停止し、VM のレプリケーション状態情報がクリーンアップされます。
-2. Windows VM および Linux の VM エージェントは、移行中に自動的にインストールされます。 マシンに Linux OS がある場合は、Linux VM エージェントのインストールが適切に行われるように、移行マシンで Azure VM Linux エージェントの[要件](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)を確認します。 
+2. Windows VM および Linux の VM エージェントは、移行中に自動的にインストールされます。 マシンに Linux OS がある場合は、Linux VM エージェントのインストールが適切に行われるように、移行マシンで Azure VM Linux エージェントの[要件](../virtual-machines/extensions/agent-linux.md#requirements)を確認します。 
 3. データベース接続文字列、および Web サーバー構成の更新など、移行後のアプリの微調整を実行します。
 4. Azure で現在実行されている移行後のアプリケーション上で、最終的なアプリケーションと移行の受け入れのテストを実行します。
 5. 移行された Azure VM インスタンスにトラフィックを切り替えます。

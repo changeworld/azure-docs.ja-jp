@@ -6,16 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/03/2021
-ms.openlocfilehash: 5138e542d1cc744a23fa1017dfec1f24b2ec1a5b
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: d5d694820c2ffd09868d81693d4f98f839a139d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102107194"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104591879"
 ---
 # <a name="connect-to-azure-database-for-mysql-using-dbforge-studio-for-mysql"></a>dbForge Studio for MySQL を使用して Azure Database for MySQL に接続する
 
-dbForge Studio for MySQL を使用して Azure Database for MySQL に接続するには、次のようにします。
+[dbForge Studio for MySQL](https://www.devart.com/dbforge/mysql/studio/) を使用して Azure Database for MySQL に接続するには、次のようにします。
 
 1. [データベース] メニューで、[新しい接続] を選択します。
 
