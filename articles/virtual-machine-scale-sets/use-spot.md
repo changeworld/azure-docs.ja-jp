@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 02/26/2021
 ms.reviewer: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b20a5bd9c06c3948097389d5439defa219a7931b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ec73d1363fb18d1d6c46589fe69879a8f6df1dab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101694990"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104722567"
 ---
 # <a name="azure-spot-virtual-machines-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure Spot Virtual Machines 
 
@@ -45,8 +45,8 @@ Azure Spot Virtual Machine は、Microsoft Azure China 21Vianet を除き、任�
 
 -   Enterprise Agreement
 -   従量課金制 (プラン コード: 003P)
--   スポンサー
-- クラウド サービス プロバイダー (CSP) については、[パートナー センター](https://docs.microsoft.com/partner-center/azure-plan-get-started)を参照するか、パートナーに直接お問い合わせください。
+-   スポンサー (0036P および 0136P)
+- クラウド サービス プロバイダー (CSP) については、[パートナー センター](/partner-center/azure-plan-get-started)を参照するか、パートナーに直接お問い合わせください。
 
 ## <a name="eviction-policy"></a>削除ポリシー
 
@@ -168,7 +168,7 @@ $vmssConfig = New-AzVmssConfig `
     -SkuName "Standard_DS2" `
     -UpgradePolicyMode Automatic `
     -Priority "Spot" `
-    --max-price -1
+    -max-price -1
 ```
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
@@ -202,7 +202,7 @@ Azure Spot Virtual Machine テンプレートのデプロイの場合は、`"api
 
 ## <a name="simulate-an-eviction"></a>削除をシミュレートする
 
-Azure スポット仮想マシンの[削除をシミュレート](https://docs.microsoft.com/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対してアプリケーションがどの程度適切に対応するかをテストすることができます。 
+Azure スポット仮想マシンの[削除をシミュレート](/rest/api/compute/virtualmachines/simulateeviction)して、突然の削除に対してアプリケーションがどの程度適切に対応するかをテストすることができます。 
 
 次の情報をお客様の情報に置き換えてください。 
 

@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.author: bwren
-ms.openlocfilehash: 557fc6e358f371b47c1df314508e3565d843a28c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 7583b4037d350b9190d6eae30c28b907b1d41d86
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049187"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104722856"
 ---
 # <a name="azure-activity-log"></a>Azure アクティビティ ログ
 アクティビティ ログは、サブスクリプション レベルのイベントの分析情報を提供する Azure の[プラットフォーム ログ](./platform-logs-overview.md)です。 これには、リソースが変更されたときや仮想マシンが起動されたときなどの情報が含まれます。 Azure portal でアクティビティ ログを表示したり、PowerShell と CLI を使用してエントリを取得したりできます。 その他の機能を使用するには、診断設定を作成して、[Azure Monitor ログ](../logs/data-platform-logs.md)、Azure Event Hubs (Azure の外部に転送するため)、または Azure Storage (アーカイブのため) にアクティビティログを送信する必要があります。 この記事では、アクティビティ ログの表示と、別の宛先への送信について詳しく説明します。
@@ -27,6 +27,11 @@ Azure portal のほとんどのメニューから、アクティビティ ログ
 ![アクティビティ ログを表示する](./media/activity-log/view-activity-log.png)
 
 アクティビティ ログのカテゴリについては、「[Azure アクティビティ ログのイベント スキーマ](activity-log-schema.md#categories)」を参照してください。
+
+## <a name="download-the-activity-log"></a>アクティビティ ログをダウンロードする
+**[CSV 形式でダウンロード]** を選択し、現在のビューのイベントをダウンロードします。
+
+![アクティビティ ログをダウンロードする](media/activity-log/download-activity-log.png)
 
 ### <a name="view-change-history"></a>変更履歴を表示する
 

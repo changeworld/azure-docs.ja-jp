@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: a825b9e0abc4e33eb0f9033f46bb77c38559f740
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186024"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104722703"
 ---
 # <a name="telemetry-and-troubleshooting"></a>テレメトリとトラブルシューティング
 
@@ -60,7 +60,7 @@ Azure Monitor を設定した後、モジュールがテレメトリを送信で
 
 ```bash
 # Find your Azure IoT Hub resource ID by running this command. The resource ID  should start with something like 
-# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/...”
+# "/subscriptions/b60d6458-1234-4be4-9885-c7e73af9ced8/resourceGroups/..."
 az iot hub list
 
 # Create a Service Principal with `Monitoring Metrics Publisher` role in the IoTHub resource:
@@ -105,16 +105,16 @@ telegraf モジュールがデプロイされると、報告されたメトリ�
 
 | イベント名 | 説明|
 |------|---------|
-|archon_exit    |ユーザーが空間分析モジュールの状態を *実行* 中から *停止* に変更したときに送信されます。  |
-|archon_error   |コンテナー内でいずれかのプロセスがクラッシュしたときに送信されます。 これは重大なエラーです。  |
-|InputRate  |グラフが動画入力を処理する速度。 5 分ごとに報告されます。 | 
+|archon_exit     |ユーザーが空間分析モジュールの状態を *実行* 中から *停止* に変更したときに送信されます。  |
+|archon_error     |コンテナー内でいずれかのプロセスがクラッシュしたときに送信されます。 これは重大なエラーです。  |
+|InputRate     |グラフが動画入力を処理する速度。 5 分ごとに報告されます。 | 
 |OutputRate     |グラフが AI Insights を出力する速度。 5 分ごとに報告されます。 |
 |archon_allGraphsStarted | すべてのグラフの起動が終了したときに送信されます。 |
-|archon_configchange    | グラフの構成が変更されたときに送信されます。 |
+|archon_configchange     | グラフの構成が変更されたときに送信されます。 |
 |archon_graphCreationFailed     |報告された `graphId` のグラフを開始できなかったときに送信されます。 |
-|archon_graphCreationSuccess    |報告された `graphId` のグラフが正常に開始されたときに送信されます。 |
-|archon_graphCleanup    | 報告された `graphId` のグラフをクリーンアップして終了したときに送信されます。 |
-|archon_graphHeartbeat  |スキルのすべてのグラフに対して 1 分ごとに送信されるハートビート。 |
+|archon_graphCreationSuccess     |報告された `graphId` のグラフが正常に開始されたときに送信されます。 |
+|archon_graphCleanup     | 報告された `graphId` のグラフをクリーンアップして終了したときに送信されます。 |
+|archon_graphHeartbeat     |スキルのすべてのグラフに対して 1 分ごとに送信されるハートビート。 |
 |archon_apiKeyAuthFail |次の理由により、24 時間以上、Computer Vision リソース キーがコンテナーの認証に失敗したときに送信されます。クォータ外で、無効、オフラインです。 |
 |VideoIngesterHeartbeat     |動画が動画ソースからストリーミングされることを示すために、1 時間ごとに送信され、その時間のエラーの数を示します。 各グラフに対して報告されます。 |
 |VideoIngesterState | 動画のストリーミングのために、 *停止* または *開始* を報告します。  各グラフに対して報告されます。 |
@@ -216,9 +216,9 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 
 
 1. IoT Hub ポータルのページにアクセスし、 **[エッジ デバイス]** を選択して、デバイスと診断モジュールを選択します。 
-2. モジュールの詳細ページに移動し、**_[ダイレクト メソッド]_* _ タブをクリックします。
+2. モジュールの詳細ページに移動し、[***ダイレクト メソッド***] タブをクリックします。
 3. [メソッド名] に `getRTCVLogs` と入力し、ペイロードに json 形式の文字列を入力します。 空のペイロードである `{}` を入力できます。 
-4. 接続とメソッドのタイムアウトを設定し、_*[メソッドの呼び出し]** をクリックます。
+4. 接続とメソッドのタイムアウトを設定し、 **[メソッドの呼び出し]** をクリックます。
 5. ターゲット コンテナーを選択し、 **[ロギング構文]** で説明しているパラメーターを使用してペイロード json 文字列を作成します。 **[ メソッドの呼び出し]** をクリックして、要求を実行します。
 
 >[!NOTE]
@@ -245,7 +245,7 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 
 | Keyword | 説明|
 |--|--|
-|DoPost| *true* または *false*。 ログがアップロードされたかどうかを示します。 ログをアップロードしない場合、API からは "***同期的に** _" 情報が返されます。 ログをアップロードする場合、API からは 200 が返されます。要求が有効な場合は、"_*_非同期に_*_" ログのアップロードが開始されます。|
+|DoPost| *true* または *false*。 ログがアップロードされたかどうかを示します。 ログをアップロードしない場合、API からは "***同期的に** _" 情報が返されます。 ログをアップロードする場合、API からは 200 が返されます。要求が有効な場合は、"_非同期に_" ログのアップロードが開始されます。|
 |TimeFilter| ログに適用される時刻フィルターです。|
 |ValueFilters| ログに適用されるキーワード フィルターです。 |
 |TimeStamp| メソッド実行開始時刻。 |
@@ -298,7 +298,7 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 }
 ```
 
-フェッチ ログのライン、時刻、およびサイズを確認します。これらの設定が適切であれば、_*_DoPost_*_ を `true` に置き換え、同じフィルターを使用してログを宛先にプッシュします。 
+フェッチ ログのライン、時刻、およびサイズを確認します。これらの設定が適切であれば、 ***DoPost*** を `true` に置き換え、同じフィルターを使用してログを宛先にプッシュします。 
 
 問題を解決するときに、Azure Blob Storage からログをエクスポートできます。 
 
@@ -316,7 +316,7 @@ IoT Edge ポータルから、デバイスを選択し、 **diagnostics** モジ
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Kubernetes API エンドポイントにアクセスします。 
 
-1. デバイスのローカル UI で _ *[デバイス]* * ページに移動します。 
+1. デバイスのローカル UI で **[デバイス]** ページに移動します。 
 2. **[デバイスのエンドポイント]** で、Kubernetes API サービス エンドポイントをコピーします。 このエンドポイントは `https://compute..[device-IP-address]` という形式の文字列です。
 3. エンドポイント文字列を保存します。 後で Kubernetes クラスターにアクセスするために `kubectl` を構成するときにこれを使用します。
 
@@ -339,7 +339,7 @@ Windows クライアントからリモートで接続します。 Kubernetes ク
     Set-Item WSMan:\localhost\Client\TrustedHosts $ip -Concatenate -Force
     ```
  
-4. デバイスで Windows PowerShell セッションを開始します。 
+4. デバイスの Windows PowerShell セッションを開始します。 
 
     ```powershell
     Enter-PSSession -ComputerName $ip -Credential $ip\EdgeUser -ConfigurationName Minishell
@@ -363,7 +363,7 @@ Kubernetes クラスターが作成されたら、`kubectl` コマンド ライ�
     New-HcsKubernetesUser -UserName
     ```
 
-3. *config* ファイルをローカル コンピューター上のユーザー プロファイルの *.kube* フォルダーに追加します。   
+3. *config* ファイルをローカル コンピューター上のユーザー プロファイルの *.kube* フォルダーに追加します。    
 
 4. 作成したユーザーに名前空間を関連付けます。
 
@@ -400,6 +400,34 @@ kubectl logs <pod-name> -n <namespace> --all-containers
 |`Get-HcsKubernetesUserConfig -AseUser`     | Kubernetes 構成ファイルを生成します。 このコマンドを使用する場合は、 *config* という名前のファイルに情報をコピーします。ファイル拡張子を付けてファイルを保存しないでください。        |
 | `Get-HcsApplianceInfo` | デバイスに関する情報を返します。 |
 | `Enable-HcsSupportAccess` | サポート セッションを開始するためのアクセス資格情報を生成します。 |
+
+
+## <a name="how-to-file-a-support-ticket-for-spatial-analysis"></a>空間分析のサポート チケットを申し込む方法 
+
+空間分析コンテナーで発生している問題のソリューションを見つけるためのサポートが必要な場合は、次の手順に従って、サポート チケットを入力して送信してください。 Microsoft のチームから折り返し追加のガイダンスをお送りします。 
+
+### <a name="fill-out-the-basics"></a>基本情報を入力する 
+新しいサポート チケットは、[[新しいサポート リクエスト]](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) ページで作成します。 画面の指示に従って、次のパラメーターを入力します。
+
+![サポートの基本](./media/support-ticket-page-1-final.png)
+
+1. **[問題の種類]** を `Technical` に設定します。
+2. 空間分析コンテナーのデプロイに使用するサブスクリプションを選択します。
+3. `My services` を選択し、`Cognitive Services` をサービスとして選択します。
+4. 空間分析コンテナーのデプロイに使用しているリソースを選択します。
+5. 直面している問題の詳細な説明を簡潔に記述します。 
+6. 問題の種類として `Spatial Analysis` を選択します。
+7. ドロップダウン リストで、適切なサブタイプを選択します。
+8. **[次へ]** を選択して、次のページに移動します。
+
+### <a name="recommended-solutions"></a>推奨されるソリューション
+次の段階では、選択した問題の種類に対し、推奨されるソリューションが提供されます。 これらのソリューションは最も一般的な問題を解決しますが、自分のソリューションには役に立たない場合は、 **[次へ: 詳細]** を選択して次の手順に進みます。
+
+### <a name="details"></a>詳細
+このページで、直面している問題に関する追加情報を追加します。 エンジニアが問題を絞り込むことができるように、できるだけ詳細を含めるようにしてください。 ご希望の連絡方法を選択し、問題の重大度を含めて、当社から適切に連絡がとれるようにします。次の手順に進むには、 **[次へ: 確認と作成]** を選択します。 
+
+### <a name="review-and-create"></a>確認と作成 
+サポート リクエストの詳細を見直し、すべての情報が正確で問題を効果的に表していることを確認します。 準備ができたら、 **[作成]** を選択して、当社チームにチケットを送信します。 チケットが受信されると、確認メールを受け取ります。当社チームは、できるだけ早くお客様に連絡を取ります。 Azure portal でチケットの状態を表示できます。
 
 ## <a name="next-steps"></a>次のステップ
 

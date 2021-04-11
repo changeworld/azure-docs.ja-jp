@@ -4,12 +4,12 @@ description: Apache Hadoop YARN と Azure HDInsight の操作についてよく�
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: b5b8ccbfd3e39415416cfc8fabcf9614f5934042
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0cd2571276992812327e286ba9b935fcbf6fbbaf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98931417"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871811"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop YARN のトラブルシューティング
 
@@ -25,33 +25,33 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 | キュー | 容量 | 最大容量 |
 | --- | --- | --- |
-| 既定値 (default) | 25% | 50% |
+| default | 25% | 50% |
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |
 
-1. **[Ambari Views]** アイコンを選択し、グリッド パターンを選択します。 次に、 **[YARN Queue Manager]\(YARN キュー マネージャー\)** を選択します。
+1. **[Ambari Views]** アイコンを選択し、グリッド パターンを選択します。 次に、**[YARN Queue Manager]\(YARN キュー マネージャー\)** を選択します。
 
-    ![Apache Ambari ダッシュボードの YARN Queue Manager](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png" alt-text="Apache Ambari ダッシュボードの YARN Queue Manager" border="false":::
 2. **default** キューを選びます。
 
-    ![Apache Ambari YARN での default キューの選択](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png" alt-text="Apache Ambari YARN での default キューの選択" border="false":::
 3. **default** キューで、**容量** を 50% から 25% に変更します。 **thriftsvr** キューで、**容量** を 25% に変更します。
 
-    ![default キューと thriftsvr キューの容量を 25% に変更する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
-4. 新しいキューを作成し、 **[キューの追加]** を選択します。
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png" alt-text="default キューと thriftsvr キューの容量を 25% に変更する" border="false":::
+4. 新しいキューを作成し、**[キューの追加]** を選択します。
 
-    ![Apache Ambari YARN ダッシュボードのキューの追加](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png" alt-text="Apache Ambari YARN ダッシュボードのキューの追加" border="false":::
 
 5. 新しいキューの名前を指定します。
 
-    ![Apache Ambari YARN ダッシュボードのキューの名前](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png" alt-text="Apache Ambari YARN ダッシュボードのキューの名前" border="false":::  
 
-6. **[容量]** の値は 50% のままにして、 **[アクション]** ボタンをクリックします。
+6. **[容量]** の値は 50% のままにして、**[アクション]** ボタンをクリックします。
 
-    ![Apache Ambari YARN でのアクションの選択](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png" alt-text="Apache Ambari YARN でのアクションの選択" border="false":::  
 7. **[Save and Refresh Queues]\(キューの保存と更新\)** を選択します。
 
-    ![[Save and Refresh Queues]\(キューの保存と更新\) を選択する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
+    :::image type="content" source="media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png" alt-text="[Save and Refresh Queues]\(キューの保存と更新\) を選択" border="false":::  
 
 これらの変更は YARN Scheduler UI にすぐに表示されます。
 

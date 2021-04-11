@@ -13,10 +13,10 @@ ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 774c78cbb09d2e5e60dfc0cafc0082b25e9b1b45
-ms.sourcegitcommit: 27cd3e515fee7821807c03e64ce8ac2dd2dd82d2
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/20/2021
 ms.locfileid: "103602892"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Azure AD Connect の選択的なパスワード ハッシュ同期の構成
@@ -26,7 +26,7 @@ ms.locfileid: "103602892"
 一部のユーザーを Azure AD へのパスワード ハッシュ同期から除外する場合、この記事で説明されている手順に従って、選択的なパスワード ハッシュ同期を構成することができます。
 
 >[!Important]
-> 公式に文書化されている構成やアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。 このような構成やアクションを行うと、Azure AD Connect Sync が不整合な状態になったり、サポートされていない状態になったりする可能性があります。結果的に、Microsoft ではこのようなデプロイについて効果的なテクニカル サポートを提供することを保証できなくなります。 
+> 公式に文書化されている構成やアクションを除き、Microsoft は Azure AD Connect Sync の変更や操作をサポートしません。 このような構成やアクションを行うと、Azure AD Connect Sync が不整合な状態になったり、サポートされていない状態になったりする可能性があります。結果的に、Microsoft ではこのようなデプロイについて効果的なテクニカル サポートを提供できることを保障できなくなります。 
 
 
 ## <a name="consider-your-implementation"></a>実装について検討する  
@@ -90,7 +90,7 @@ ms.locfileid: "103602892"
      ![同期規則エディターを起動する](media/how-to-connect-selective-password-hash-synchronization/exclude-1.png)
  2. 選択的なパスワード ハッシュ同期を構成する Active Directory フォレスト コネクタで、規則 **[In from AD – User AccountEnabled]** を選択し、 **[編集]** をクリックします。 次のダイアログ ボックスで **[はい]** を選択して、元の規則の編集可能なコピーを作成します。
      ![規則の選択](media/how-to-connect-selective-password-hash-synchronization/exclude-2.png)
- 3. 最初の規則で、パスワード ハッシュ同期を無効にします。新しいカスタム規則に、「**In from AD - User AccountEnabled - Filter Users from PHS**」という名前を指定します。
+ 3. 最初のルールでは、パスワード ハッシュ同期を無効にします。新しいカスタム規則に **In from AD - User AccountEnabled - Filter Users from PHS** という名前を指定します。
  優先順位の値を 100 未満の数値に変更します (たとえば、**90** または使用している環境で使用可能な最小値)。
  **[パスワード同期を有効にする]** チェックボックスと **[無効]** チェックボックスがオフになっていることを確認します。
  **[次へ]** をクリックします。
@@ -159,7 +159,7 @@ ms.locfileid: "103602892"
      ![規則の種類](media/how-to-connect-selective-password-hash-synchronization/include-1.png)
  2. 選択的なパスワード ハッシュ同期を構成する Active Directory フォレスト コネクタで、規則 **[In from AD – User AccountEnabled]** をもう一度選択し、 **[編集]** をクリックします。 次のダイアログ ボックスで **[はい]** を選択して、元の規則の編集可能なコピーを作成します。
      ![In from AD](media/how-to-connect-selective-password-hash-synchronization/include-2.png)
- 3. 最初の規則で、パスワード ハッシュ同期を無効にします。新しいカスタム規則に、「**In from AD - User AccountEnabled - Filter Users from PHS**」という名前を指定します。
+ 3. 最初のルールでは、パスワード ハッシュ同期を無効にします。新しいカスタム規則に **In from AD - User AccountEnabled - Filter Users from PHS** という名前を指定します。
  優先順位の値を 100 未満の数値に変更します (たとえば、**90** または使用している環境で使用可能な最小値)。
  **[パスワード同期を有効にする]** チェックボックスと **[無効]** チェックボックスがオフになっていることを確認します。
  **[次へ]** をクリックします。
