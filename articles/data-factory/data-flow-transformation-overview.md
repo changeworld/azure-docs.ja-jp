@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: f595766d49d6c00c313990717d8fd241ddfc8f81
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bb5021c0125c3140ef44a1ec3304b9d0ac40c30f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593868"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060229"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>マッピング データ フロー変換の概要
 
@@ -42,3 +42,4 @@ ms.locfileid: "104593868"
 | [Union (結合)](data-flow-union.md) | 複数の入力/出力 | 複数のデータ ストリームを垂直方向に結合する |
 | [ピボット解除](data-flow-unpivot.md) | スキーマ修飾子 | 列を行の値にピボットする |
 | [ウィンドウ](data-flow-window.md) | スキーマ修飾子 |  データ ストリーム内の列のウィンドウベースの集計を定義します。 |
+| [Parse](data-flow-parse.md) | スキーマ修飾子 |  列データを Json または区切りテキストに解析します |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889537"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059702"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする (プレビュー)
 
@@ -42,10 +42,10 @@ Azure IoT Edge for Linux on Windows を使用すると、Linux 仮想マシン�
 
   * Windows 10 バージョン 1809 以降、ビルド 17763 以降
   * Professional、Enterprise、または Server エディション
-  * 最小 RAM 容量: 4 GB (8 GB を推奨)
-  * 最小ストレージ容量: 10 GB
-  * Windows 10 を使用して新しいデプロイを作成している場合は、Hyper-V が有効になっていることを確認します。 詳細については、「[Windows 10 上に Hyper-V をインストールする](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md)」を参照してください。
-  * Windows Server を使用して新しいデプロイを作成している場合は、Hyper-V ロールがインストールされていることを確認します。 詳細については、「[Windows Server 上に Hyper-V ロールをインストールする](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server.md)」を参照してください。
+  * 最小空きメモリ容量: 2 GB
+  * 最小空きディスク領域:10 GB
+  * Windows 10 を使用して新しいデプロイを作成している場合は、Hyper-V が有効になっていることを確認します。 詳細については、「[Windows 10 上に Hyper-V をインストールする](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)」を参照してください。
+  * Windows Server を使用して新しいデプロイを作成している場合は、Hyper-V ロールがインストールされていることを確認します。 詳細については、「[Windows Server 上に Hyper-V ロールをインストールする](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)」を参照してください。
   * VM を使用して新しいデプロイを作成している場合は、入れ子になった仮想化が正しく構成されていることを確認します。 詳細については、[入れ子になった仮想化](nested-virtualization.md)に関するガイドを参照してください。
 
 * Windows Admin Center 用の Azure IoT Edge 拡張機能がインストールされている Windows Admin Center へのアクセス:
@@ -117,7 +117,16 @@ Windows Admin Center を使用して、ローカル デバイスまたはリモ�
 
    ![デバイスを選択し、サポートされていることを確認する](./media/how-to-install-iot-edge-on-windows/evaluate-supported-device.png)
 
-1. **[2.2 Settings]\(2.2 設定\)** タブで、既定の設定をそのまま使用します。
+1. **[2.2 設定]** タブで、デプロイの構成設定を確認します。 設定に問題がなければ、 **[次へ]** を選択します。
+
+   ![デプロイの構成設定を確認する](./media/how-to-install-iot-edge-on-windows/default-deployment-configuration-settings.png)
+
+   >[!NOTE]
+   >Windows 仮想マシンを使用している場合は、デプロイで作成された Linux 仮想マシンが IP アドレスを取得できるように、外部スイッチではなく既定のスイッチを使用することをお勧めします。
+   >
+   >既定のスイッチを使用すると、Linux 仮想マシンに内部 IP アドレスが割り当てられます。 この内部 IP アドレスには Windows 仮想マシンの外部からはアクセスできませんが、Windows 仮想マシンにログオンしている間はローカルに接続できます。
+   >
+   >Windows Server を使用している場合、Azure IoT Edge for Linux on Windows では既定のスイッチが自動的にはサポートされないことにご注意ください。 ローカルの Windows Server 仮想マシンでは、Linux 仮想マシンが外部スイッチを介して IP アドレスを取得できることを確認します。 Azure の Windows Server 仮想マシンでは、IoT Edge for Linux on Windows をデプロイする前に内部スイッチを設定します。
 
 1. **[2.3 Deployment]\(2.3 デプロイ\)** タブで、デプロイの進行状況を確認できます。 完全なプロセスには、Azure IoT Edge for Linux on Windows パッケージのダウンロード、パッケージのインストール、ホスト デバイスの構成、Linux 仮想マシンの設定が含まれます。 このプロセスの完了には数分かかる場合があります。 デプロイが成功したときの表示を次に示します。
 
@@ -168,7 +177,7 @@ Windows Admin Center を使用して、ローカル デバイスまたはリモ�
    ```
 
    > [!NOTE]
-   > パラメーターを指定せずにこのコマンドを実行したり、必要に応じてパラメーターを使用してデプロイをカスタマイズしたりできます。 [IoT Edge for Linux on Windows の PowerShell スクリプト リファレンス](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow)を参照して、その意味を確認できます。
+   > パラメーターを指定せずにこのコマンドを実行したり、必要に応じてパラメーターを使用してデプロイをカスタマイズしたりできます。 [IoT Edge for Linux on Windows の PowerShell スクリプト リファレンス](reference-iot-edge-for-linux-on-windows-scripts.md#deploy-eflow)を参照して、パラメーターの意味と既定値を確認できます。
 
 1. ライセンス条項に同意するには、「Y」と入力します。
 
@@ -370,4 +379,6 @@ IoT Edge for Linux on Windows が IoT Edge デバイスに正常にインスト�
 
 ## <a name="next-steps"></a>次のステップ
 
-[IoT Edge モジュールのデプロイ](how-to-deploy-modules-portal.md)に進んで、デバイスにモジュールをデプロイする方法を確認します。
+* [IoT Edge モジュールのデプロイ](how-to-deploy-modules-portal.md)に進んで、デバイスにモジュールをデプロイする方法を確認します。
+* [IoT Edge for Linux on Windows 仮想マシンで証明書を管理](how-to-manage-device-certificates.md)し、ホスト OS から Linux 仮想マシンにファイルを転送する方法について確認します。
+* [プロキシ サーバー経由で通信するように IoT Edge デバイスを構成](how-to-configure-proxy-support.md)する方法について確認します。
