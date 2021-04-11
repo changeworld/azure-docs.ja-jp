@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 3828d5288c730e8fc0595a0deb6f1cb3267e885e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 1e288e4490916a7ee03371baa8e7cc3b798e272b
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608788"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961712"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Azure portal を使用した Event Grid による Media Services イベントの作成と監視
 
@@ -35,7 +35,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 ## <a name="prerequisites"></a>前提条件 
 
 * 有効な Azure サブスクリプションを持っている。
-* [このクイックスタート](../create-account-howto.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
+* [このクイックスタート](../account-create-how-to.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 

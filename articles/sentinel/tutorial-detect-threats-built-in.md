@@ -1,6 +1,6 @@
 ---
-title: Azure Sentinel でアラートを調査する | Microsoft Docs
-description: すぐに使用できる組み込み Azure 脅威検出テンプレートについて説明します。これを使用すると、何か疑わしいことが発生したときに通知が届きます。
+title: Azure Sentinel で組み込みの分析ルールを使用して脅威を検出する | Microsoft Docs
+description: 組み込みのテンプレートに基づいて難しい設定なしで使用できる脅威検出ルールの使用方法について説明します。これを使用すると、何か疑わしいことが発生したときに通知が届きます。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2020
+ms.date: 03/19/2021
 ms.author: yelevin
-ms.openlocfilehash: f1cfd941d8205a9bdc100ab69b115618af9f736d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 951c616961ff68b810ca135d09a6f6253cb2b7ba
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726973"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773557"
 ---
 # <a name="tutorial-detect-threats-out-of-the-box"></a>チュートリアル:難しい設定なしで脅威を検出する
 
@@ -57,7 +57,9 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)したら
     これらのテンプレートは、Microsoft 独自の機械学習アルゴリズムを基盤としているため、動作方法や実行のタイミングから構成される内部ロジックを参照することはできません。 ロジックは非表示であるため、カスタマイズすることはできません。この種類の各テンプレートを使用して作成できる規則は 1 つだけです。
 
     > [!IMPORTANT]
-    > 機械学習による行動分析規則テンプレートは、現在、**プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+    > - 機械学習による行動分析規則テンプレートは、現在、**プレビュー** 段階です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+    >
+    > - ML 行動分析テンプレートに基づいてルールを作成して有効にすると、機械学習エンジンおよびモデルによる処理を目的として、必要に応じて、**ご利用の Azure Sentinel ワークスペースの外部で取り込まれたデータをコピーするためのアクセス許可を Microsoft に付与することになります**。
 
 - **スケジュール**
 
@@ -78,4 +80,3 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)したら
 このチュートリアルでは、Azure Sentinel を使用して、脅威の検出を開始する方法について説明しました。 
 
 脅威への対応を自動化する方法については、「[Azure Sentinel で脅威への自動対応を設定する](tutorial-respond-threats-playbook.md)」を参照してください。
-

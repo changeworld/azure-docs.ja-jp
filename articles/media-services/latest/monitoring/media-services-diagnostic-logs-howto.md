@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0719fede4147943e76ddfea1c5e77388c7c5cc9f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 13dadd9665f2d66861e00d769086fb23a4dea115
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608795"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961695"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services 診断ログの監視
 
@@ -31,7 +31,7 @@ ms.locfileid: "104608795"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](../create-account-howto.md)
+- [Media Services アカウントを作成する](../account-create-how-to.md)
 - 「[Media Services の監視](monitor-media-services.md)」を確認してください。
 
 ## <a name="route-data-to-the-storage-account-using-the-portal"></a>ポータルを使用してストレージ アカウントにデータをルーティングする

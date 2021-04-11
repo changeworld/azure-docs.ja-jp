@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 02/20/2020
-ms.openlocfilehash: a8f7e14500fb377b46f651b53e2704d8477aea7a
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 3152fe0bf77b73e593ac61efb5f386827bdc96ef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102520661"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643733"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell を使用して SQL Server データベースを Azure SQL Database に移行する
 
@@ -151,7 +151,7 @@ $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `
 
 ### <a name="create-credential-parameters-for-source-and-target"></a>ソースとターゲットの資格情報パラメーターを作成する
 
-接続のセキュリティ資格情報は [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) オブジェクトとして作成できます。
+接続のセキュリティ資格情報は [PSCredential](/dotnet/api/system.management.automation.pscredential) オブジェクトとして作成できます。
 
 次の例は、ソースとターゲットの両方の接続用の *PSCredential* オブジェクトを作成し、パスワードを文字列変数 *$sourcePassword* および *$targetPassword* として提供する方法を示しています。
 
@@ -195,8 +195,8 @@ $selectedDbs = New-AzDmsSelectedDB -MigrateSqlServerSqlDb -Name AdventureWorks20
 * *TaskName*。 作成するタスクの名前。 
 * *SourceConnection*。 ソース SQL Server 接続を表す AzDmsConnInfo オブジェクト。
 * *TargetConnection*。 ターゲット Azure SQL Database 接続を表す AzDmsConnInfo オブジェクト。
-* *SourceCred*。 ソース サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) オブジェクト。
-* *TargetCred*。 ターゲット サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential?view=powershellsdk-1.1.0) オブジェクト。
+* *SourceCred*。 ソース サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential) オブジェクト。
+* *TargetCred*。 ターゲット サーバーに接続するための [PSCredential](/dotnet/api/system.management.automation.pscredential) オブジェクト。
 * *SelectedDatabase*。 ソースとターゲット データベースのマッピングを表す AzDataMigrationSelectedDB オブジェクト。
 * *SchemaValidation*。 (省略可能、スイッチ パラメーター) 移行の後、ソースとターゲットの間でスキーマ情報の比較を実行します。
 * *DataIntegrityValidation*。 (省略可能、スイッチ パラメーター) 移行の後、ソースとターゲットの間でチェックサム ベースのデータ整合性検証を実行します。

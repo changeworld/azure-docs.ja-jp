@@ -9,30 +9,30 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: bc36325b55f049eebef823d836768fccc39a7615
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 654b0f842a3165926242d1ef03f2dfe4e5bacfdc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103472166"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643351"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Azure App Service でのカスタム コンテナーを使用した継続的配置
 
 このチュートリアルでは、管理された [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) リポジトリまたは [Docker Hub](https://hub.docker.com) からのカスタム コンテナー イメージの継続的なデプロイを構成します。
 
-## <a name="1-go-to-deployment-center"></a>1. デプロイ センターに移動する
+## <a name="1-go-to-deployment-center"></a>1.デプロイ センターに移動する
 
-[Azure portal](https://portal.azure.com)で、App Service アプリの管理ページに移動します。
+[Azure portal](https://portal.azure.com) で、App Service アプリの管理ページに移動します。
 
-左側のメニューで、 **[デプロイ センター]** 、 **[設定]** の順にクリックします。 
+左側のメニューで、 **[デプロイ センター]**  >  **[設定]** の順にクリックします。 
 
 ::: zone pivot="container-linux"
-## <a name="2-choose-deployment-source"></a>2. デプロイ ソースを選択する
+## <a name="2-choose-deployment-source"></a>2.デプロイ ソースの選択
 
 デプロイ　ソースの **選択** は、シナリオによって異なります。
 - **[コンテナー レジストリ]** では、コンテナー レジストリと App Service の間に CI/CD が設定されます。
 - **[GitHub Actions]** オプションは、GitHub でコンテナー イメージのソース コードを維持する場合に使用します。 デプロイ アクションは、GitHub リポジトリへの新しいコミットによってトリガーされ、`docker build` および `docker push` をコンテナー レジストリに直接実行した後、App Service アプリを更新して新しいイメージを実行できます。 詳細については、「[CI/CD と GitHub Actions の連携のしくみ](#how-cicd-works-with-github-actions)」を参照してください。
-- **Azure Pipelines** で CI/CD を設定するには、[Azure Pipelines からの Azure Web アプリ コンテナーのデプロイ](/devops/pipelines/targets/webapp-on-container-linux)に関する記事を参照してください。
+- **Azure Pipelines** で CI/CD を設定するには、[Azure Pipelines からの Azure Web アプリ コンテナーのデプロイ](/azure/devops/pipelines/targets/webapp-on-container-linux)に関する記事を参照してください。
 
 > [!NOTE]
 > Docker Compose アプリの場合は、 **[Container Registry]** を選択します。
@@ -43,10 +43,10 @@ GitHub で Azure アカウントを承認したら、デプロイ元となる **
 ::: zone-end  
 
 ::: zone pivot="container-windows"
-## <a name="2-configure-registry-settings"></a>2. レジストリ設定を構成する
+## <a name="2-configure-registry-settings"></a>2.レジストリ設定を構成する
 ::: zone-end  
 ::: zone pivot="container-linux"
-## <a name="3-configure-registry-settings"></a>3. レジストリ設定を構成する
+## <a name="3-configure-registry-settings"></a>3.レジストリ設定を構成する
 
 複数コンテナー (Docker Compose) アプリをデプロイするには、 **[コンテナーの種類]** で **[Docker Compose]** を **選択** します。
 
@@ -122,10 +122,10 @@ App Service は、コンテナーを起動するときに、 **[スタートア�
 -----
 
 ::: zone pivot="container-windows"
-## <a name="3-enable-cicd"></a>3. CI/CD を有効にする
+## <a name="3-enable-cicd"></a>3.CI/CD を有効にする
 ::: zone-end
 ::: zone pivot="container-linux"
-## <a name="4-enable-cicd"></a>4. CI/CD を有効にする
+## <a name="4-enable-cicd"></a>4.CI/CD を有効にする
 ::: zone-end
 
 App Service では、Azure Container Registry および Docker Hub との CI/CD 統合がサポートされています。 これを有効にするには、 **[継続的デプロイ]** で **[オン]** を **選択** します。
@@ -147,10 +147,10 @@ App Service では、Azure Container Registry および Docker Hub との CI/CD 
 ::: zone-end
 
 ::: zone pivot="container-windows"
-## <a name="4-save-your-settings"></a>4. 設定を保存する
+## <a name="4-save-your-settings"></a>4.設定を保存する
 ::: zone-end
 ::: zone pivot="container-linux"
-## <a name="5-save-your-settings"></a>5. 設定を保存する
+## <a name="5-save-your-settings"></a>5.設定を保存する
 ::: zone-end
 
 **[保存]** を **クリック** します。
@@ -161,14 +161,14 @@ App Service では、Azure Container Registry および Docker Hub との CI/CD 
 
 **[ソース]** で **[GitHub Actions]** を選択した場合 (「[デプロイ ソースの選択](#2-choose-deployment-source)」を参照)、App Service では次の方法で CI/CD を設定します。
 
-- Github Actions ワークフロー ファイルを GitHub リポジトリに保管して、App Service のビルドとデプロイのタスクを処理します。
+- GitHub Actions ワークフロー ファイルを GitHub リポジトリに保管して、App Service のビルドとデプロイのタスクを処理します。
 - プライベート レジストリの資格情報を GitHub シークレットとして追加します。 生成されたワークフロー ファイルは、[Azure/docker-login](https://github.com/Azure/docker-login) アクションを実行してプライベート レジストリでサインインし、`docker push` を実行してそれにデプロイします。
 - アプリの発行プロファイルを GitHub シークレットとして追加します。 生成されたワークフロー ファイルでは、App Service で認証するためにこのシークレットが使用され、その後、更新されたイメージを構成するために [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) アクションが実行され、これによって、更新されたイメージをプルするためにアプリの再起動がトリガーされます。
-- [ワークフロー実行ログ](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs)から情報をキャプチャし、それをアプリの "**デプロイ センター**" の **[ログ]** タブに表示します。
+- [ワークフロー実行ログ](https://docs.github.com/actions/managing-workflow-runs/using-workflow-run-logs)から情報をキャプチャし、それをアプリの **デプロイ センター** の **[ログ]** タブに表示します。
 
 GitHub Actions ビルド プロバイダーは、次の方法でカスタマイズできます。
 
-- GitHub リポジトリでワークフロー ファイルが生成された後に、そのファイルをカスタマイズします。 詳しくは、「[GitHub Actions のワークフロー構文](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions)」を参照してください。 アプリの再起動をトリガーするために、ワークフローが [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) アクションで終了していることを確認してください。
+- GitHub リポジトリでワークフロー ファイルが生成されたら、それをカスタマイズします。 詳しくは、「[GitHub Actions のワークフロー構文](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions)」を参照してください。 アプリの再起動をトリガーするために、ワークフローが [Azure/webapps-deploy](https://github.com/Azure/webapps-deploy) アクションで終了していることを確認してください。
 - 選択したブランチが保護されている場合でも、構成を保存せずに引き続きワークフロー ファイルをプレビューしてから、これと必要な GitHub シークレットを手動でリポジトリに追加することができます。 この方法では、Azure portal とのログ統合は行われません。
 - 発行プロファイルではなく、Azure Active Directory で[サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)を使用してデプロイします。
 

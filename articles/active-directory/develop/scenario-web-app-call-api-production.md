@@ -1,5 +1,6 @@
 ---
-title: Web API を呼び出す Web アプリを運用環境に移行する - Microsoft ID プラットフォーム
+title: Web API を呼び出す Web アプリを運用環境に移行する | Azure
+titleSuffix: Microsoft identity platform
 description: Web API を呼び出す Web アプリを運用環境に移行する方法について説明します。
 services: active-directory
 author: jmprieur
@@ -11,16 +12,16 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f38755e669a62e9fe74aa6281daccdf39e1f117c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: cf32274a49cb1b790e9d872efe36f2e1cb188d1d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443570"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104675942"
 ---
-# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Web API を呼び出す Web アプリ: 運用環境に移行する
+# <a name="a-web-app-that-calls-web-apis-move-to-production"></a>Web API を呼び出す Web アプリ: 運用環境への移行
 
-Web API を呼び出すトークンの取得方法が分かったところで、次に、運用環境に移行する方法を学びます。
+Web API を呼び出すためにトークンを取得する方法について説明しました。ここでは、アプリケーションを運用環境に移行する際に考慮すべき点をいくつか示します。
 
 [!INCLUDE [Common steps to move to production](../../../includes/active-directory-develop-scenarios-production.md)]
 

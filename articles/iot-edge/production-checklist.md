@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 1fc229b04ac317578e9e90686496cd081b279afd
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: fda69d582f26b0c9189898bb5c8b0004a1e47360
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489757"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104722771"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -178,7 +178,13 @@ timeToLiveSecs パラメーターの既定値は 7,200 秒 (2 時間) です。
 
 また、タグは、IoT Edge デバイスに更新プログラムを適用するのに役立ちます。 更新バージョンのモジュールをコンテナー レジストリにプッシュするときに、タグを増分します。 次に、増分されたタグでデバイスに新しいデプロイをプッシュします。 コンテナー エンジンでは、増分されたタグが新しいバージョンとして認識され、最新バージョンのモジュールがご利用のデバイスにプルダウンされます。
 
-タグ規則の例については、[IoT Edge ランタイムの更新](how-to-update-iot-edge.md#understand-iot-edge-tags)に関する記述を参照してください。そこでは、IoT Edge でローリング タグと特定のタグを使用して、バージョンを追跡する方法について説明されています。
+#### <a name="tags-for-the-iot-edge-runtime"></a>IoT Edge ランタイムのタグ
+
+IoT Edge エージェントおよび IoT Edge ハブ イメージには、関連付けられている IoT Edge のバージョンでタグ付けされます。 ランタイム イメージでタグを使用する方法は 2 つあります。
+
+* **ローリング タグ** - バージョン番号の先頭の 2 つの値のみを使用して、これらの数字に一致する最新のイメージを取得します。 たとえば、最新の 1.1.x バージョンを指す新しいリリースが存在するたびに、1.1 が更新されます。 IoT Edge デバイス上のコンテナー ランタイムによって、再度イメージが取得されると、ランタイム モジュールが最新バージョンに更新されます。 Azure portal からのデプロイでは、既定でローリング タグに設定されます。 *開発目的では、このアプローチが推奨されます。*
+
+* **特定のタグ** - バージョン番号の 3 つすべての値を使用して、イメージのバージョンを明示的に設定します。 たとえば、1.1.0 はその最初のリリース後に変更されることはありません。 更新する準備ができたら、配置マニフェストに新しいバージョン番号を宣言できます。 *運用環境目的では、このアプローチが推奨されます。*
 
 ### <a name="store-runtime-containers-in-your-private-registry"></a>プライベート レジストリにランタイム コンテナーを格納する
 

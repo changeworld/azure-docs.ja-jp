@@ -3,12 +3,12 @@ title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 650b2ec6bc1bbd12cd10abb1917ef5ea2d6029e9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 75f4fcfb88bd4cb1ac0c8bfeac236b452479b8c6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220747"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721615"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -448,7 +448,8 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
       "field": "tags.env",
       "equals": "prod"
     }
-  }
+  },
+  "equals": 0
 }
 ```
 
@@ -457,40 +458,60 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 | 1 | `tags.env` => `"prod"` | `true` |
 | 2 | `tags.env` => `"prod"` | `true` |
 
-入れ子になった count 式も許可されています。
+入れ子になった count 式を使用すると、入れ子になった配列フィールドに条件を適用できます。 たとえば、次の条件では、`objectArray[*]` 配列に、 1 つ以上のメンバーを含む `nestedArray[*]` を持つメンバーが厳密に 2 つあることを確認します。
 
 ```json
 {
   "count": {
     "field": "Microsoft.Test/resourceType/objectArray[*]",
     "where": {
-      "allOf": [
-        {
-          "field": "Microsoft.Test/resourceType/objectArray[*].property",
-          "equals": "value2"
-        },
-        {
-          "count": {
-            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-            "where": {
-              "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
-              "equals": 3
-            },
-            "greater": 0
-          }
-        }
-      ]
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]"
+      },
+      "greaterOrEquals": 1
     }
-  }
+  },
+  "equals": 2
 }
 ```
- 
-| 外側のループの反復 | 選択された値 | 内側のループの反復 | 選択された値 |
-|:---|:---|:---|:---|
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1` |
-| 1 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value1`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `2` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3` |
-| 2 | `Microsoft.Test/resourceType/objectArray[*].property` => `"value2`</br> `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `4` |
+
+| 反復 | 選択された値 | 入れ子になったカウントの評価結果 |
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` には 2 つのメンバーが含まれる => `true` |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` には 2 つのメンバーが含まれる => `true` |
+
+`objectArray[*]` の両方のメンバーには 2 つのメンバーを含む子配列 `nestedArray[*]` があるため、外側のカウント式は `2` を返します。
+
+より複雑な例: `objectArray[*]` 配列に、`2` または `3` と等しいメンバーを含む `nestedArray[*]` を持つメンバーが厳密に 2 つあることを確認します。
+
+```json
+{
+  "count": {
+    "field": "Microsoft.Test/resourceType/objectArray[*]",
+    "where": {
+      "count": {
+        "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+        "where": {
+            "field": "Microsoft.Test/resourceType/objectArray[*].nestedArray[*]",
+            "in": [ 2, 3 ]
+        }
+      },
+      "greaterOrEquals": 1
+    }
+  },
+  "equals": 2
+}
+```
+
+| 反復 | 選択された値 | 入れ子になったカウントの評価結果
+|:---|:---|:---|
+| 1 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `1`, `2` | `nestedArray[*]` には `2` => `true` が含まれる |
+| 2 | `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` => `3`, `4` | `nestedArray[*]` には `3` => `true` が含まれる |
+
+`objectArray[*]` の両方のメンバーには `2` または `3` を含む子配列 `nestedArray[*]` があるため、外側のカウント式は `2` を返します。
+
+> [!NOTE]
+> 入れ子になったフィールドのカウント式で参照できるのは、入れ子になった配列のみです。 たとえば、`Microsoft.Test/resourceType/objectArray[*]` を参照している count 式には、入れ子になった配列 `Microsoft.Test/resourceType/objectArray[*].nestedArray[*]` をターゲットにする入れ子になった count を含めることができますが、`Microsoft.Test/resourceType/stringArray[*]` をターゲットにする入れ子になった count 式を含めることはできません。
 
 #### <a name="accessing-current-array-member-with-template-functions"></a>テンプレート関数を使用して現在の配列メンバーにアクセスする
 
