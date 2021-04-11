@@ -3,15 +3,15 @@ title: 新しいセッション ホストを使用して既存の Windows Virtua
 description: Windows Virtual Desktop (クラシック) で新しいセッション ホストを使用して既存のホスト プールを拡張する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ab661943542b3621792dfe0ca8c3fb26f64508a5
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88009173"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120709"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) で新しいセッション ホストを使用して既存のホスト プールを拡張する
 
@@ -96,7 +96,7 @@ Azure Resource Manager テンプレートを再デプロイしてホスト プ�
 1. 既存のセッション ホスト VM と一致する VM サイズを選択します。
 
     >[!NOTE]
-    >お探しの VM サイズが VM サイズ セレクターに表示されない場合、まだ Azure Marketplace ツールにオンボードされていないのが原因です。 特定の VM サイズを要求するには、[Windows Virtual Desktop UserVoice フォーラム](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)で要求を作成するか、既存の要求に賛成票を投じてください。
+    >お探しの VM サイズが VM サイズ セレクターに表示されない場合、まだ Azure Marketplace ツールにオンボードされていないのが原因です。
 
 2. *[使用プロファイル]* 、 *[ユーザー総数]* 、および *[Number of virtual machines]\(仮想マシン数\)* パラメーターをカスタマイズして、ホスト プールに含めるセッション ホストの合計数を選択します。 たとえば、ホスト プールを 5 つのセッション ホストから 8 つに拡張する場合、8 つの仮想マシンになるようにこれらのオプションを構成します。
 3. 仮想マシンの名前のプレフィックスを入力します。 たとえば、"prefix" という名前を入力する場合であれば、仮想マシンの名前は "prefix-0"、"prefix-1" などのようになります。

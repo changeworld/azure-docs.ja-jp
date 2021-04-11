@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: c9709c444dfde4897c1364c8ab3d9dbfa315bb6f
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 6e60292c817ccad8eb1dd6cb3c33b944ab1c18a0
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122154"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277693"
 ---
 # <a name="content-key-policies"></a>コンテンツ キー ポリシー
 
@@ -25,9 +25,9 @@ ms.locfileid: "106122154"
 
 Media Services では、Advanced Encryption Standard (AES-128) または主要な 3 つのデジタル著作権管理 (DRM) システム コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 
 
-ストリームで暗号化オプションを指定するには、[ストリーミング ポリシー](streaming-policy-concept.md)を作成し、それを[ストリーミング ロケーター](streaming-locators-concept.md)に関連付ける必要があります。 コンテンツ キー ([資産](assets-concept.md)へのアクセスをセキュリティで保護する) をエンド クライアントに届ける方法を構成するには、[コンテンツ キー ポリシー](/rest/api/media/contentkeypolicies)を作成します。 構成が指定されたキーをクライアントに配信するために満たす必要がある要件 (制限) をコンテンツ キー ポリシーに設定する必要があります。 コンテンツ キー ポリシーは、クリアなストリーミングまたはダウンロードには必要ありません。 
+ストリームで暗号化オプションを指定するには、[ストリーミング ポリシー](stream-streaming-policy-concept.md)を作成し、それを[ストリーミング ロケーター](stream-streaming-locators-concept.md)に関連付ける必要があります。 コンテンツ キー ([資産](assets-concept.md)へのアクセスをセキュリティで保護する) をエンド クライアントに届ける方法を構成するには、[コンテンツ キー ポリシー](/rest/api/media/contentkeypolicies)を作成します。 構成が指定されたキーをクライアントに配信するために満たす必要がある要件 (制限) をコンテンツ キー ポリシーに設定する必要があります。 コンテンツ キー ポリシーは、クリアなストリーミングまたはダウンロードには必要ありません。 
 
-通常、コンテンツ キー ポリシーは、[ストリーミング ロケーター](streaming-locators-concept.md)に関連付けます。 または、[ストリーミング ポリシー](streaming-policy-concept.md)内部でコンテンツ キー ポリシーを指定できます (高度なシナリオ用にカスタム ストリーミング ポリシーを作成する場合)。 
+通常、コンテンツ キー ポリシーは、[ストリーミング ロケーター](stream-streaming-locators-concept.md)に関連付けます。 または、[ストリーミング ポリシー](stream-streaming-policy-concept.md)内部でコンテンツ キー ポリシーを指定できます (高度なシナリオ用にカスタム ストリーミング ポリシーを作成する場合)。 
 
 ## <a name="best-practices-and-considerations"></a>ベスト プラクティスと考慮事項
 
