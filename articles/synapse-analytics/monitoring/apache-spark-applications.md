@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 00407b4a55b3c074fa77d4c3664f6e218c23fe21
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: ea08c82ed5772be7e3a6094f5477c4450975c1fa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584538"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104775880"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Synapse Studio を使用して Apache Spark アプリケーションを監視する
 
@@ -157,9 +157,16 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
    ![失敗したジョブ情報](./media/how-to-monitor-spark-applications/failed-job-info.png)
 
 ## <a name="compare-apache-spark-applications"></a>Apache Spark アプリケーションの比較
-**[Compare applications]\(アプリケーションの比較\)** ボタンをクリックし、パフォーマンスを比較するアプリケーションを選択すると、ユーザーは 2 つのアプリケーションの違いを直感的に確認できます。
+
+アプリケーションを比較する 2 つの方法があります。 **[Compare Application]\(アプリケーションの比較\)** を選択して比較するか、 **[Compare in notebook]\(ノートブックで比較\)** ボタンをクリックしてノートブックで表示することができます。
+
+### <a name="compare-by-choose-an-application"></a>アプリケーションを選択して比較する
+
+**[Compare applications]\(アプリケーションの比較\)** ボタンをクリックし、パフォーマンスを比較するアプリケーションを選択すると、2 つのアプリケーションの違いを直感的に確認できます。
 
 ![アプリケーションの比較](./media/how-to-monitor-spark-applications/compare-applications.png)
+
+![アプリケーションの比較の詳細](./media/how-to-monitor-spark-applications/details-compare-applications.png)
 
 1. マウスを使用してアプリケーションをポイントすると、 **[Compare applications]\(アプリケーションの比較\)** アイコンが表示されます。
 
@@ -167,7 +174,7 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
 3. **[アプリケーションの選択]** ボタンをクリックして **[Choose application]\(比較対象アプリケーションの選択\)** ページを開きます。
 
-4. 比較対象のアプリケーションを選択する場合、ユーザーはアプリケーションの URL を入力するか、繰り返しの一覧から選択する必要があります。 次に、 **[OK]** ボタンをクリックします。 
+4. 比較対象のアプリケーションを選択する場合は、アプリケーションの URL を入力するか、繰り返しの一覧から選択する必要があります。 次に、 **[OK]** ボタンをクリックします。 
 
    ![比較対象アプリケーションの選択](./media/how-to-monitor-spark-applications/choose-comparison-application.png)
 
@@ -175,6 +182,15 @@ Azure Synapse Analytics では、Apache Spark を使用して、ワークスペ�
 
    ![比較結果](./media/how-to-monitor-spark-applications/comparison-result.png)
 
+### <a name="compare-by-compare-in-notebook"></a>ノートブックでの比較によって比較する
+
+**[Compare Application]\(アプリケーションの比較\)** ページで **[Compare in notebook]\(ノートブックで比較\)** ボタンをクリックしてノートブックを開きます。 .ipynb ファイルの既定の名前は **Recurrent Application Analytics** です。
+
+![ノートブックで比較](./media/how-to-monitor-spark-applications/compare-in-notebook.png)
+
+Notebook では、Spark プールと言語を設定した後に、Recurrent Application Analytics ファイルを直接実行できます。
+
+![循環アプリケーション分析](./media/how-to-monitor-spark-applications/recurrent-application-analytics.png)
 
 ## <a name="next-steps"></a>次のステップ
 

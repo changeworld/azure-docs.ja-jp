@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 1356c896abff8c525df283251240d027123405fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216752"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104778291"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -25,8 +25,8 @@ ms.locfileid: "98216752"
 
 Azure では、次の種類のピアリングがサポートされています。
 
-* 仮想ネットワーク ピアリング:同じ Azure リージョン内の仮想ネットワークを接続します。
-* グローバル仮想ネットワーク ピアリング:Azure リージョン間で仮想ネットワークを接続します。
+* **仮想ネットワーク ピアリング**: 同じ Azure リージョン内の仮想ネットワークを接続します。
+* **グローバル仮想ネットワーク ピアリング**: Azure リージョン間で仮想ネットワークを接続します。
 
 ローカルまたはグローバルの仮想ネットワーク ピアリングを使うことには、次のような利点があります。
 

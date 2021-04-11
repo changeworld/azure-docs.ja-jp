@@ -4,10 +4,10 @@ description: Azure VMware Solution で実行されている Web アプリを安�
 ms.topic: how-to
 ms.date: 02/10/2021
 ms.openlocfilehash: f92027ee46fdaae275939acaea10e144b6bde101
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103601918"
 ---
 # <a name="use-azure-application-gateway-to-protect-your-web-apps-on-azure-vmware-solution"></a>Azure Application Gateway を使用して Azure VMware Solution 上の Web アプリを保護する

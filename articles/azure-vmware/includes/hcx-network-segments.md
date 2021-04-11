@@ -4,10 +4,10 @@ description: VMware HCX に必要な 4 つのネットワークがあります�
 ms.topic: include
 ms.date: 03/13/2021
 ms.openlocfilehash: e9b37c125db82a95c137ede8d642888fba8b6c80
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103621966"
 ---
 <!-- Used in avs-production-ready-deployment.md and tutorial-deploy-vmware-hcx.md -->
