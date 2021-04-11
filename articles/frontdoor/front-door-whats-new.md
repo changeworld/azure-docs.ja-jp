@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/30/2020
 ms.author: duau
-ms.openlocfilehash: e402a87ae441ed98a9da93f8b9e347c38c48126f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 5e61c65151cd4fcd1decd9736fef91e421b6ffc9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89398819"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057900"
 ---
 # <a name="whats-new-in-azure-front-door"></a>Azure Front Door の新着情報
 
@@ -30,7 +30,7 @@ Azure Front Door は継続的に更新されます。 常に最新の開発情�
 
 ## <a name="new-features"></a>新機能
 
-|特徴量  |説明  |追加日  |
+|機能  |説明  |追加日  |
 |---------|---------|---------|
 | ルール エンジン GA | エッジでの HTTP 要求の処理方法をカスタマイズします。 詳細については、[ルール エンジンの概要](front-door-rules-engine.md)に関するページを参照してください。 |2020 年 6 月 |
 | ルール エンジン (プレビュー) | エッジでの HTTP 要求の処理方法をカスタマイズします。 詳細については、[ルール エンジンの概要](front-door-rules-engine.md)に関するページを参照してください。 |2020 年 4 月 |
