@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 03/19/2021
+ms.date: 04/05/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: de06bb4f97568eaa40b0b09e9bc2b50608424aa8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2873f3946b5b3c7eed5a3ba1cde702670040c41a
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775597"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443459"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
 
@@ -73,7 +73,7 @@ ms.locfileid: "104775597"
 - [Security Assertion Markup Language (SAML) 2.0](https://wikipedia.org/wiki/SAML_2.0) ID プロバイダーをサポートする任意のアプリケーションのセルフサービス統合 (SP または IdP によって開始)
 - [パスワードベースの SSO](sso-options.md#password-based-sso)
 - [ユーザー プロビジョニング用の System for Cross-Domain Identity Management (SCIM) プロトコル](../app-provisioning/use-scim-to-provision-users-and-groups.md)を使用するアプリケーションのセルフサービス接続
-- [Office 365 アプリ ランチャー](https://www.microsoft.com/microsoft-365/blog/2014/10/16/organize-office-365-new-app-launcher-2/)または[マイ アプリ](sso-options.md#linked-sign-on)での任意のアプリケーションへのリンクの追加機能
+- [Office 365 アプリ ランチャー](https://support.microsoft.com/office/meet-the-microsoft-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)または[マイ アプリ](https://myapplications.microsoft.com/)での任意のアプリケーションへのリンクの追加機能
 
 カスタム アプリケーションと Azure AD を統合する方法に関する開発者向けガイダンスをお探しの場合は、[Azure AD の認証シナリオ](../develop/authentication-vs-authorization.md)に関するページを参照してください。 [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) などの最新のプロトコルを使用してユーザーを認証するアプリを開発した場合は、それを Azure portal の[アプリの登録](../develop/quickstart-register-app.md)エクスペリエンスを使用して Microsoft ID プラットフォームに登録できます。
 

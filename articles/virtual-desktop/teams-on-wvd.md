@@ -3,15 +3,15 @@ title: Windows Virtual Desktop での Microsoft Teams - Azure
 description: Windows Virtual Desktop で Microsoft Teams を使用する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 11/10/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 052d11fe0125de7970fb7d02931edfc7f3c2e4d9
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+manager: femila
+ms.openlocfilehash: ba5b80fa7f147fb5f30c60e2dc005d88010b0d71
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98743119"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445518"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
@@ -120,7 +120,7 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 
 3. **[バージョン]** を選択します。
 
-      メディアの最適化が読み込まれている場合、バナーに **"WVD Media optimized" (WVD メディアは最適化されています)** と表示されます。 バナーに **"WVD Media not connected" (WVD メディアが接続されていません)** と表示された場合には、Teams アプリを終了し、もう一度やり直してください。
+      メディアの最適化が読み込まれている場合、バナーに **"Windows Virtual Desktop Media optimized" (Windows Virtual Desktop メディアは最適化されています)** と表示されます。 バナーに **"Windows Virtual Desktop Media not connected" (Windows Virtual Desktop メディアが接続されていません)** と表示された場合には、Teams アプリを終了し、もう一度やり直してください。
 
 4. ユーザー プロファイル画像を選択し、 **[設定]** を選択します。
 
@@ -149,10 +149,6 @@ WebSocket Service と Teams デスクトップ アプリのインストールが
 - New Meeting Experience (NME) は、現在、VDI 環境ではサポートされていません。
 
 Teams の既知の問題のうち、仮想環境に関係のないものについては、[組織における Teams のサポート](/microsoftteams/known-issues)に関するページを参照してください。
-
-## <a name="uservoice-site"></a>UserVoice サイト
-
-Windows Virtual Desktop 上の Microsoft Teams に関するフィードバックは、[UserVoice サイト](https://microsoftteams.uservoice.com/)からお送りください。
 
 ## <a name="collect-teams-logs"></a>Teams のログを収集する
 
