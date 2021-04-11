@@ -4,15 +4,15 @@ description: この記事では、お使いのリソースを堅牢化および�
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/22/2021
+ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 2d9f76bd3c6ad0060a90f52abba1c7378b310e67
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104801482"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504816"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>セキュリティの推奨事項 - リファレンス ガイド
 
@@ -58,12 +58,15 @@ Security Center の推奨事項は、[Azure セキュリティ ベンチマー�
 
 ## <a name="deprecated-recommendations"></a>非推奨のレコメンデーション
 
-|推奨|説明および関連するポリシー|重大度|クイック修正は有効か?([詳細](security-center-remediate-recommendations.md#quick-fix-remediation))|リソースの種類|
-|----|----|----|----|----|
-|**App Services へのアクセスを制限する必要がある**|ネットワーク構成を変更することによって App Services へのアクセスを制限し、広すぎる範囲からの受信トラフィックを拒否します。<br>(関連ポリシー: [プレビュー]App Services へのアクセスを制限する必要がある)|高|N|App Service|
-|**IaaS NSG 上の Web アプリケーションに対する規則を強化する必要がある**|Web アプリケーションを実行していて、Web アプリケーション ポートに関する NSG 規則の制限が緩すぎる仮想マシンのネットワーク セキュリティ グループ (NSG) を強化します。<br>(関連ポリシー:IaaS 上の Web アプリケーションに対する NSG 規則を強化する必要がある)|高|N|仮想マシン|
-|**Pod Security Policies should be defined to reduce the attack vector by removing unnecessary application privileges\(不要なアプリケーション特権を削除してポッドのセキュリティ ポリシーを定義し攻撃ベクトルを減らす必要がある\) (プレビュー)**|不要なアプリケーション特権を削除してポッドのセキュリティ ポリシーを定義し、攻撃ベクトルを減らす必要があります。 アクセスが許可されているリソースにのみポッドがアクセスできるようポッドのセキュリティ ポリシーを定義し、構成することが推奨されます。<br>(関連ポリシー: [プレビュー]Kubernetes Services ではポッドのセキュリティ ポリシーを定義する必要がある)|Medium|N|コンピューティング リソース (コンテナー)|
-|**IoT デバイスの可視性を向上させるために、IoT セキュリティ モジュールの Azure Security Center をインストールする**|IoT デバイスの可視性を向上させるために、IoT セキュリティ モジュールの Azure Security Center をインストールします。|低|N|IoT デバイス|
+|推奨|説明および関連するポリシー|重大度|
+|----|----|----|
+|App Services へのアクセスを制限する必要がある|ネットワーク構成を変更することによって App Services へのアクセスを制限し、広すぎる範囲からの受信トラフィックを拒否します。<br>(関連ポリシー: [プレビュー]App Services へのアクセスを制限する必要がある)|高|
+|IaaS NSG 上の Web アプリケーションに対する規則を強化する必要がある|Web アプリケーションを実行していて、Web アプリケーション ポートに関する NSG 規則の制限が緩すぎる仮想マシンのネットワーク セキュリティ グループ (NSG) を強化します。<br>(関連ポリシー:IaaS 上の Web アプリケーションに対する NSG 規則を強化する必要がある)|高|
+|Pod Security Policies should be defined to reduce the attack vector by removing unnecessary application privileges\(不要なアプリケーション特権を削除してポッドのセキュリティ ポリシーを定義し攻撃ベクトルを減らす必要がある\) (プレビュー)|不要なアプリケーション特権を削除してポッドのセキュリティ ポリシーを定義し、攻撃ベクトルを減らす必要があります。 アクセスが許可されているリソースにのみポッドがアクセスできるようポッドのセキュリティ ポリシーを定義し、構成することが推奨されます。<br>(関連ポリシー: [プレビュー]Kubernetes Services ではポッドのセキュリティ ポリシーを定義する必要がある)|Medium|
+|IoT デバイスの可視性を向上させるために、IoT セキュリティ モジュールの Azure Security Center をインストールする|IoT デバイスの可視性を向上させるために、IoT セキュリティ モジュールの Azure Security Center をインストールします。|低|
+|システムの更新プログラムを適用するには、マシンを再起動する必要があります|マシンを再起動してシステムの更新プログラムを適用し、マシンを脆弱性からセキュリティで保護します。 (関連ポリシー:システム更新プログラムをマシンにインストールする必要がある)|Medium|
+| お使いのマシンに監視エージェントをインストールする必要があります|この操作により、選択した仮想マシンに監視エージェントがインストールされます。 エージェントが報告する先のワークスペースを選択します。 (関連ポリシーはありません)|高|
+||||
 
 ## <a name="next-steps"></a>次のステップ
 
