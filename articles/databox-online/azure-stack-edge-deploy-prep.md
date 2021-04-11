@@ -8,13 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/16/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 9ceba84cb3bbe52dc5ba51d0f4945f5bad0a5034
-ms.sourcegitcommit: 87a6587e1a0e242c2cfbbc51103e19ec47b49910
+ms.openlocfilehash: 0e0d7808e449a6e4f3e341cd40acdc220e65c0ba
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103573979"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106068219"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>チュートリアル:Azure Stack Edge Pro の配置を準備する  
 
@@ -117,14 +116,14 @@ Azure Stack Edge Pro の既存の顧客の場合、既存のデバイスを交�
 
    1. 次の **プロジェクトの詳細** を入力または選択します。
     
-       |設定  |値  |
+       |設定  |[値]  |
        |---------|---------|
        |サブスクリプション    |この値は、事前に選択した内容に応じて自動的に設定されます。 サブスクリプションは、課金アカウントにリンクされます。 |
        |Resource group  |既存のグループを選択するか、新しいグループを作成します。<br>Azure リソース グループの詳細については[こちら](../azure-resource-manager/management/overview.md)をご覧ください。     |
 
    1. 次の **インスタンス情報** を入力または選択します。
 
-       |設定  |値  |
+       |設定  |[値]  |
        |---------|---------|
        |名前   | リソースを識別するわかりやすい名前を入力します。<br>名前は 2 から 50 文字で、英字、数字、ハイフンを含みます。<br> 名前の最初と最後には、英字か数字を使用します。        |
        |リージョン     |Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関するページを参照してください。 Azure Government を使用している場合は、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」に記載されているすべての政府機関向けリージョンを選択できます。<br> デバイスをデプロイする地理的リージョンに最も近い場所を選択します。|
