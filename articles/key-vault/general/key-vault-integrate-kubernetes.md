@@ -7,19 +7,19 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: b130fd3f85b676f0a394ad95730181ff499dac96
-ms.sourcegitcommit: f7eda3db606407f94c6dc6c3316e0651ee5ca37c
+ms.openlocfilehash: b83905280faf4486d2febfbd81514e1d85273ad5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102216498"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950758"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
 > [!IMPORTANT]
-> シークレット ストア CSI ドライバーは、Azure テクニカル サポートではサポートされていないオープンソース プロジェクトです。 CSI ドライバー Key Vault 統合に関連するすべてのフィードバックと問題を、このページの下部にある github リンクで報告してください。 このツールはユーザーがクラスターに自己インストールし、コミュニティからフィードバックを収集するために提供されています。
+> シークレット ストア CSI ドライバーは、Azure テクニカル サポートではサポートされていないオープンソース プロジェクトです。 CSI ドライバー Key Vault 統合に関連するすべてのフィードバックと問題は、CSI ドライバー [GitHub](https://github.com/kubernetes-sigs/secrets-store-csi-driver) で報告してください。 このツールはユーザーがクラスターに自己インストールし、コミュニティからフィードバックを収集するために提供されています。
 
-このチュートリアルでは、シークレット ストア コンテナー ストレージ インターフェイス (CSI) ドライバーを使用して Azure キー コンテナーにアクセスしてシークレットを取得し、そのシークレットを Kubernetes ポッドにマウントします。
+このチュートリアルでは、シークレット ストア Container Storage Interface (CSI) ドライバーを使用してお使いの Azure キー コンテナーにアクセスしてシークレットを取得し、そのシークレットをボリュームとして Kubernetes ポッドにマウントします。
 
 このチュートリアルでは、以下の内容を学習します。
 

@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: ba2ff2b5f108d7910958b374cc4b602a84a3f53d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: f595766d49d6c00c313990717d8fd241ddfc8f81
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367913"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104593868"
 ---
 # <a name="mapping-data-flow-transformation-overview"></a>マッピング データ フロー変換の概要
 
@@ -31,6 +31,7 @@ ms.locfileid: "100367913"
 | [Join](data-flow-join.md) | 複数の入力/出力 |  2 つのソースまたはストリームのデータを結合します。 |
 | [Lookup](data-flow-lookup.md) | 複数の入力/出力 | 別のソースからデータを参照します。 |
 | [新しいブランチ](data-flow-new-branch.md) | 複数の入力/出力 | 同じデータ ストリームに対して複数の操作と変換を行います。 |
+| [Parse](data-flow-new-branch.md) | フォーマッタ | JSON、区切りテキスト、または XML 形式のテキストの文字列であるデータ ストリーム内のテキスト列を解析します。 |
 | [ピボット](data-flow-pivot.md) | スキーマ修飾子 | 1 つまたは複数のグループ化された列が、個々の列に変換された個別の行の値を持つ集計。 |
 | [順位](data-flow-rank.md) | スキーマ修飾子 | 並べ替え条件に基づいて順序付けされた順位付けを生成する |
 | [Select](data-flow-select.md) | スキーマ修飾子 | 別名列とストリーム名、列のドロップまたは並べ替え |

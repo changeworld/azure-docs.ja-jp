@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 98044f6ff6311241717cb66a6e26a72702d749e6
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 12900a64d9e023e4bddd5b5862b6a127fcba1d36
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181450"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949993"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -73,6 +73,7 @@ Kubernetes クラスターに対する認証の実行、アクセス制御と認
 | Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | カスタム VNET など、別のリソース グループ内のサブネットを使用する場合に必要です。 |
 | Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write | カスタム ルート テーブルを持つカスタム VNET など、別のリソース グループ内のルート テーブルに関連付けられているサブネットを使用する場合に必要です。 他のリソース グループ内のサブネットに対してサブネットが既に存在しているかどうかを確認するために必要です。 |
 | Microsoft.Network/virtualNetworks/subnets/read | 別のリソース グループの内部ロード バランサーを使用する場合に必要です。 リソース グループの内部ロード バランサーに対してサブネットが既に存在しているかどうかを確認するために必要です。 |
+| Microsoft.Network/privatednszones/* | カスタム privateDNSZone など、別のリソース グループ内のプライベート DNS ゾーンを使用する場合に必要です。 |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC)
 
