@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 36a15560b88c823ff2ae41f160839796bf21e4f8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f26d6b258c1e22d5d28353486378acc9aa0bbd5d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98730787"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104889639"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは
 
@@ -124,7 +124,7 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 Windows Virtual Desktop は、次の x64 オペレーティング システム イメージをサポートします。
 
 * Windows 10 Enterprise マルチセッション、バージョン 1809 以降
-* Windows 10 Enterprise、バージョン 1809 以降
+* Windows 10 Enterprise バージョン 1809 以降 (半期チャネルのみ)
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016

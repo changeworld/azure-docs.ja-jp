@@ -1,18 +1,18 @@
 ---
 title: Azure Percept Audio デバイスの概要
 description: Azure Percept Audio について説明します。
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: 7c80159607947dbe7ed17181beac610fa0c202c5
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: 23fae249cfceec75af0b7c49a3875ab447ecbafd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104956096"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564264"
 ---
 # <a name="introduction-to-azure-percept-audio"></a>Azure Percept Audio の概要
 

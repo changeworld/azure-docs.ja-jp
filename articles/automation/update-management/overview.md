@@ -3,14 +3,14 @@ title: Azure Automation Update Management の概要
 description: この記事では、Windows および Linux マシンの更新プログラムを実装する Update Management 機能について概要を説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 03/08/2021
+ms.date: 03/19/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0a79be9d879e9ccb7ae4583d0674cf2bb23aafa4
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.openlocfilehash: e5deefabd6a37dbfece9f32abdce5d5144681238
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102485675"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950061"
 ---
 # <a name="update-management-overview"></a>Update Management の概要
 
@@ -22,7 +22,7 @@ Azure Automation の Update Management を使用すると、Azure、オンプレ
 > [!NOTE]
 > 現時点では、Arc 対応サーバーから Update Management を直接有効にすることはサポートされていません。 要件とサーバーに対する有効化の方法を理解するには、「[Automation アカウントから Update Management を有効にする](../../automation/update-management/enable-from-automation-account.md)」を参照してください。
 
-入手できる "*クリティカル*" パッチまたは "*セキュリティ*" パッチを Azure VM に自動でダウンロードし、インストールする方法については、Windows VM 向け [VM ゲストの自動パッチ適用](../../virtual-machines/windows/automatic-vm-guest-patching.md)に関するページを参照してください。
+入手できる "*クリティカル*" パッチまたは "*セキュリティ*" パッチを Azure VM に自動でダウンロードし、インストールする方法については、Windows VM 向け [VM ゲストの自動パッチ適用](../../virtual-machines/automatic-vm-guest-patching.md)に関するページを参照してください。
 
 Update Management をデプロイしてマシンを管理できるようにする前に、次のセクションの情報を理解しておいてださい。  
 
@@ -76,8 +76,8 @@ Update Management では、同期先として構成されたソースに基づ�
 |---------|---------|
 |Windows Server 2019 (Datacenter/Standard、Server Core を含む)<br><br>Windows Server 2016 (Datacenter/Standard、Server Core を除く)<br><br>Windows Server 2012 R2 (Datacenter、Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2 (RTM および SP1 Standard)| Update Management では、このオペレーティング システムの評価および修正プログラムの適用がサポートされます。 Windows Server 2008 R2 では、[Hybrid Runbook Worker](../automation-windows-hrw-install.md) がサポートされています。 |
-|CentOS 6 および 7 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
-|Red Hat Enterprise 6 および 7 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
+|CentOS 6、7、および 8 (x64)      | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 分類に基づく修正プログラムでは、CentOS の RTM リリースには含まれていないセキュリティ データを返すための `yum` が必須です。 分類に基づく CentOS への修正プログラムの適用の詳細については、[Linux の更新プログラムの分類](view-update-assessments.md#linux)に関する記事を参照してください。          |
+|Red Hat Enterprise 6、7、および 8 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。        |
 |SUSE Linux Enterprise Server 12、15、および 15.1 (x64)     | Linux エージェントでは、更新リポジトリへのアクセス権が必要です。 SUSE 15.x の場合、マシンには Python 3 が必要です。      |
 |Ubuntu 14.04 LTS、16.04 LTS、および 18.04 LTS (x64)      |Linux エージェントでは、更新リポジトリへのアクセス権が必要です。         |
 

@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 07/13/2020
+ms.date: 03/23/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cd1a68b06814d13c386b873ed715f3b03a7b827
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 253aa080b9c160141a274c57e0895291c78d2048
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102198491"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887769"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>チュートリアル:Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする
 
@@ -138,6 +138,22 @@ SSPR を有効にして構成したら、前のセクションで選択したグ
 1. **Azure Active Directory** を検索して選択し、左側のメニューから **[パスワード リセット]** を選択します。
 1. **[プロパティ]** ページの *[セルフ サービスによるパスワードのリセットが有効]* オプションの下で、 **[なし]** を選択します。
 1. SSPR の変更を適用するには、 **[保存]** を選択します。
+
+## <a name="faqs"></a>FAQ
+
+このセクションでは、SSPR を試す管理者とエンドユーザーからの一般的な質問について説明します。
+
+- フェデレーション ユーザーが、オンプレミスから同期されたパスワードを使用できるようになる前に、"**パスワードがリセットされました**" と表示されてから最大 2 分待つのはなぜですか。
+
+  パスワードが同期されているフェデレーション ユーザーの場合、パスワードの権限のソースはオンプレミスです。 その結果、SSPR は、オンプレミスのパスワードのみを更新します。 Azure AD へのパスワード ハッシュの同期は、2 分ごとにスケジュールされています。
+
+- 電話やメールなどの SSPR データが事前に設定されている新しく作成されたユーザーが SSPR 登録ページにアクセスしたとき、"**アカウントへのアクセス権を失わないでください!** " が ページのタイトルとして表示されます。 SSPR データが事前に設定されている他のユーザーにこのメッセージが表示されないのはなぜですか。
+
+  "**アカウントへのアクセス権を失わないでください!** " が表示されるユーザー は、テナントに構成されている SSPR または結合された登録グループのメンバーです。 "**アカウントへのアクセス権を失わないでください!** " が表示されないユーザー は、SSPR または結合された登録グループの一部ではありませんでした。
+
+- SSPR プロセスを実行してパスワードをリセットするときに、ユーザーによってパスワード強度インジケーターが表示されない場合があるのはなぜですか。
+
+  脆弱または堅牢パスワード強度が表示されないユーザーでは、同期パスワード ライトバックが有効になっています。 SSPR では、顧客のオンプレミス環境のパスワード ポリシーを判断できないため、パスワードの強度または脆弱性を検証できません。 
 
 ## <a name="next-steps"></a>次のステップ
 

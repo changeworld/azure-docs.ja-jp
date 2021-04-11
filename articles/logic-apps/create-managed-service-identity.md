@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
 ms.date: 03/09/2021
-ms.openlocfilehash: 7796fc7e2032559ca3ff5c738c46fe025719942d
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: b038a0530d392c80fc14d09486f298657fe0da17
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556623"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889333"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
@@ -93,7 +93,7 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 
    ![システム割り当て ID のオブジェクト ID](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
-   | プロパティ | [値] | 説明 |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **オブジェクト ID** | <*identity-resource-ID*> | Azure AD テナント内のロジック アプリのシステム割り当て ID を表すグローバル一意識別子 (GUID) |
    ||||
@@ -402,52 +402,54 @@ Azure によってロジック アプリのリソース定義が作成される�
 
      詳細については、「[例:マネージド ID を使用してマネージド コネクタのトリガーまたはアクションを認証する](#authenticate-managed-connector-managed-identity)」を参照してください。
 
-     マネージド ID を使用するために作成した接続は、マネージ ID を使用する場合のみ動作する特殊な接続の種類です。 実行時には、ロジック アプリで有効になっているマネージ ID がその接続で使用されます。 この構成は、ロジック アプリのリソース定義の `parameters` オブジェクトに保存されます。これには、`$connections` オブジェクトが含まれ、この中に、接続のリソース ID へのポインターと、ユーザー割り当て ID が有効になっている場合はその ID のリソース ID が入っています。
+### <a name="connections-that-use-managed-identities"></a>マネージド ID を使用する接続
 
-     この例は、ロジック アプリでシステム割り当てマネージド ID を有効にした場合の構成内容を示しています。
+マネージド ID を使用する接続は、マネージ ID を使用する場合のみ動作する特殊な接続の種類です。 実行時には、ロジック アプリで有効になっているマネージ ID がその接続で使用されます。 この構成は、ロジック アプリのリソース定義の `parameters` オブジェクトに保存されます。これには、`$connections` オブジェクトが含まれ、この中に、接続のリソース ID へのポインターと、ユーザー割り当て ID が有効になっている場合はその ID のリソース ID が入っています。
 
-     ```json
-     "parameters": {
-        "$connections": {
-           "value": {
-              "<action-name>": {
-                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
-                 "connectionName": "{connection-name}",
-                 "connectionProperties": {
-                    "authentication": {
-                       "type": "ManagedServiceIdentity"
-                    }
-                 },
-                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
-              }
-           }
-        }
-     }
-     ```
+この例は、ロジック アプリでシステム割り当てマネージド ID を有効にした場合の構成内容を示しています。
 
-     この例は、ロジック アプリでユーザー割り当てマネージド ID を有効にした場合の構成内容を示しています。
+```json
+"parameters": {
+   "$connections": {
+      "value": {
+         "<action-name>": {
+            "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+            "connectionName": "{connection-name}",
+            "connectionProperties": {
+               "authentication": {
+                  "type": "ManagedServiceIdentity"
+               }
+            },
+            "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+         }
+      }
+   }
+}
+ ```
 
-     ```json
-     "parameters": {
-        "$connections": {
-           "value": {
-              "<action-name>": {
-                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
-                 "connectionName": "{connection-name}",
-                 "connectionProperties": {
-                    "authentication": {
-                       "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
-                       "type": "ManagedServiceIdentity"
-                    }
-                 },
-                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
-              }
-           }
-        }
-     }
-     ```
+この例は、ロジック アプリでユーザー割り当てマネージド ID を有効にした場合の構成内容を示しています。
 
-     実行時には、ロジック アプリ内のすべてのマネージド コネクタのトリガーおよびアクションでマネージド ID が使用されるように設定されているかどうかと、必要なすべてのアクセス許可が、トリガーとアクションで指定されたターゲット リソースにアクセスするためにマネージド ID を使用するように設定されているかが確認されます。 成功した場合、マネージド ID に関連付けられている Azure AD トークンが取得され、その ID を使用してターゲット リソースへのアクセスが認証され、トリガーとアクション内の構成済み操作が実行されます。
+```json
+"parameters": {
+   "$connections": {
+      "value": {
+         "<action-name>": {
+            "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+            "connectionName": "{connection-name}",
+            "connectionProperties": {
+               "authentication": {
+                  "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
+                  "type": "ManagedServiceIdentity"
+               }
+            },
+            "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+         }
+      }
+   }
+}
+```
+
+実行時には、ロジック アプリ内のすべてのマネージド コネクタのトリガーおよびアクションでマネージド ID が使用されるように設定されているかどうかと、必要なすべてのアクセス許可が、トリガーとアクションで指定されたターゲット リソースにアクセスするためにマネージド ID を使用するように設定されているかが確認されます。 成功した場合、マネージド ID に関連付けられている Azure AD トークンが取得され、その ID を使用してターゲット リソースへのアクセスが認証され、トリガーとアクション内の構成済み操作が実行されます。
 
 <a name="authenticate-built-in-managed-identity"></a>
 

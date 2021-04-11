@@ -3,16 +3,16 @@ title: Azure Monitor アラートのアクション ルール
 description: Azure Monitor におけるアクション ルールとはどのようなものか、およびそれを構成して管理する方法を説明します。
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.openlocfilehash: f70d798270ad82193f7ae5935d34f8f418d35e05
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 12e7cf8e72c5423b4a2edd6ea2a0f4537e328b08
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103471678"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105036783"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
-アクション ルールを使用すると、Azure Resource Manager の任意のスコープ (Azure サブスクリプション、リソース グループ、ターゲット リソース) で、アクションを定義または抑制できます。 さまざまなフィルターを使用して、操作するアラート インスタンスの特定のサブセットを絞り込むことができます。
+アクション ルールを使用すると、発生したアラートのアクション グループを追加または抑制することができます。 1 つのルールでは、ターゲット リソースのさまざまなスコープを対象にできます。たとえば (特定の仮想マシンのような) 特定のリソースに関するアラートや、サブスクリプション内の任意のリソースで発生したアラートなどです。 必要に応じて、さまざまなフィルターを追加して、ルールの対象となるアラートを制御したり、そのスケジュールを定義したりすることができます。たとえば、業務時間外または計画メンテナンス期間中にのみ有効にすることができます。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
@@ -31,7 +31,7 @@ ms.locfileid: "103471678"
 アクション ルールを使うと、このプロセスを簡略化できます。 アクションをまとめて定義することで、構成されたスコープで生成されるすべてのアラートに対してアクション グループをトリガーできます。 前の例では、チームは **ContosoRG** に、その中で生成されたすべてのアラートに対して同じアクション グループをトリガーする 1 つのアクション ルールを定義できるようになります。
 
 > [!NOTE]
-> アクション ルールは、現在、Azure Service Health アラートには適用されません。
+> アクション ルールは、Azure Service Health のアラートには適用されません。
 
 ## <a name="configuring-an-action-rule"></a>アクション ルールの構成
 
@@ -308,7 +308,7 @@ az monitor action-rule delete --resource-group MyResourceGroupName --name MyActi
 
 同じスコープに対しては抑制が常に優先されます。
 
-### <a name="what-happens-if-i-have-a-resource-thats-monitored-in-two-separate-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>2 つの個別のアクション ルールで 1 つのリソースが監視されていると、どうなりますか? 受け取る通知は 1 つですか、2 つですか? ここでは、次のシナリオの **VM2** を例に説明します。
+### <a name="what-happens-if-i-have-a-resource-that-is-covered-by-two-action-rules-do-i-get-one-or-two-notifications-for-example-vm2-in-the-following-scenario"></a>2 つのアクション ルールの対象となるリソースがある場合はどうなりますか? 受け取る通知は 1 つですか、2 つですか? ここでは、次のシナリオの **VM2** を例に説明します。
 
    `action rule AR1 defined for VM1 and VM2 with action group AG1`
 

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: fe04615e234eaf5b006a80e6f584905626c637ba
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 0b49cf4fe28e2a9b4d15f889d227b443777b1efa
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103489487"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889248"
 ---
 # <a name="powershell-scripts-for-iot-edge-for-linux-on-windows"></a>IoT Edge for Linux on Windows 用の PowerShell スクリプト
 
@@ -140,7 +140,7 @@ IoT Edge for Linux on Windows 仮想マシンのデプロイ、プロビジョ�
 
 ## <a name="ssh-eflowvm"></a>Ssh-EflowVm
 
-**Ssh-EflowVm** コマンドは、仮想マシンへの SSH 接続に使用されます。 追加情報については、`Get-Help Ssh-EflowVm -full` コマンドを使用してください。
+**Ssh-EflowVm** コマンドは、仮想マシンへの SSH 接続に使用されます。 仮想マシンへの SSH 接続が許可されるアカウントは、それを作成したユーザーだけです。 追加情報については、`Get-Help Ssh-EflowVm -full` コマンドを使用してください。
 
 | パラメーター | 指定可能な値 | 説明 |
 | --------- | --------------- | -------- |

@@ -3,12 +3,12 @@ title: アーカイブ層のサポート (プレビュー)
 description: Azure Backup のアーカイブ層のサポートについて説明します
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 6c597d640f24dc4c680bfd5db16f9df09017ee54
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102609854"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563975"
 ---
 # <a name="archive-tier-support-preview"></a>アーカイブ層のサポート (プレビュー)
 
@@ -46,7 +46,7 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
     install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.0.0-preview -AllowPrerelease -force
     ```
 
-1. [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure に接続します。
+1. [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用して Azure に接続します。
 1. サブスクリプションにサインインします。
 
    `Set-AzContext -Subscription "SubscriptionName"`
@@ -128,7 +128,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm
 
 アーカイブ内の復旧ポイントについては、Azure Backup には統合型の復元方法が用意されています。
 
-統合型の復元は、2 つのステップから成るプロセスです。 最初のステップでは、アーカイブに保管されている復旧ポイントをリハイドレートし、それを一時的に Vault-Standard 層に 10 日から 30 日の期間 (リハイドレート期間とも呼ばれます) 保管します。 既定は 15 日間です。 リハイドレートの優先度には、Standard と High の 2 種類があります。 [リハイドレートの優先度](https://docs.microsoft.com/azure/storage/blobs/storage-blob-rehydration#rehydrate-an-archived-blob-to-an-online-tier)に関する詳細をご覧ください。
+統合型の復元は、2 つのステップから成るプロセスです。 最初のステップでは、アーカイブに保管されている復旧ポイントをリハイドレートし、それを一時的に Vault-Standard 層に 10 日から 30 日の期間 (リハイドレート期間とも呼ばれます) 保管します。 既定は 15 日間です。 リハイドレートの優先度には、Standard と High の 2 種類があります。 [リハイドレートの優先度](../storage/blobs/storage-blob-rehydration.md#rehydrate-an-archived-blob-to-an-online-tier)に関する詳細をご覧ください。
 
 >[!NOTE]
 >
