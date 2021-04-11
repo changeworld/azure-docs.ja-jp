@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
-ms.date: 12/31/2020
-ms.openlocfilehash: 8559bd0a354a64872e58d014d1027ed971773b60
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 03/24/2021
+ms.openlocfilehash: 0becbbdb68f75072e10a51f5a2eae95291b9ed77
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104655344"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108334"
 ---
 # <a name="analyze-with-apache-spark"></a>Apache Spark を使用して分析を行う
 
@@ -39,7 +39,8 @@ ms.locfileid: "104655344"
 1. Synapse Studio で、 **[開発]** ハブに移動します。
 2. 既定の言語が **PySpark (Python)** に設定された新しいノートブックを作成します。
 3. 新しいコード セルを作成し、次のコードをそのセルに貼り付けます。
-    ```
+    ```py
+    %%pyspark
     from azureml.opendatasets import NycTlcYellow
 
     data = NycTlcYellow()
@@ -62,6 +63,7 @@ ms.locfileid: "104655344"
 1. ノートブックに新規を追加し、次のコードを入力します。
 
     ```py
+    spark.sql("CREATE DATABASE IF NOT EXISTS nyctaxi")
     df.write.mode("overwrite").saveAsTable("nyctaxi.trip")
     ```
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Spark とノートブックを使用して NYC タクシーのデータを分析する
@@ -76,16 +78,16 @@ ms.locfileid: "104655344"
    ```
 
 1. このセルを実行して、**nyctaxi** Spark データベースに読み込んだ NYC Taxi データを表示します。
-1. 新しいコード セルを作成し、次のコードを入力します。 このセルを実行して、先ほど専用 SQL プール **SQLPOOL1** で行ったのと同じ分析を実行します。 このコードにより、**nyctaxi.passengercountstats** というテーブルに分析の結果が保存されて表示されます。
+1. 新しいコード セルを作成し、次のコードを入力します。 このデータを分析し、**nyctaxi.passengercountstats** というテーブルに結果を保存します。
 
    ```py
    %%pyspark
    df = spark.sql("""
       SELECT PassengerCount,
-          SUM(TripDistanceMiles) as SumTripDistance,
-          AVG(TripDistanceMiles) as AvgTripDistance
+          SUM(TripDistance) as SumTripDistance,
+          AVG(TripDistance) as AvgTripDistance
       FROM nyctaxi.trip
-      WHERE TripDistanceMiles > 0 AND PassengerCount > 0
+      WHERE TripDistance > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
    """) 

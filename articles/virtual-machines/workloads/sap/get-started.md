@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/03/2021
+ms.date: 03/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a212975817eefe75443bad98ccb72e0a8c3bf58c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 5ab23b9c2ba4b4ef3c20188b2207d7718c30cfe6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102038630"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104599886"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -82,7 +82,8 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 
 
 ## <a name="change-log"></a>変更履歴
-
+- 03/17/2021:「[SLES 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability.md)」、「[RHEL 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability-rhel.md)」、および「[RHEL 上の ANF による SAP HANA の HA のスケールアップ](./sap-hana-high-availability-netapp-files-red-hat.md)」の変更により、Pacemaker クラスターでの HANA アクティブ/読み取り可能のシステム レプリケーションの手順を追加
+- 03/15/2021:「[WSFC とファイル共有を使用した SAP ASCS/SCS インスタンス](./sap-high-availability-guide-wsfc-file-share.md)」、「[WSFC とファイル共有を使用して SAP ASCS/SCS インスタンスをインストールする](./sap-high-availability-installation-wsfc-file-share.md)」、「[WSFC とファイル共有を使用した SAP ASCS/SCS マルチ SID](./sap-ascs-ha-multi-sid-wsfc-file-share.md)」の変更により、SAP ASCS/SCS インスタンスと SOFS 共有を別々のクラスターにデプロイする必要があることを明確化
 - 03/03/2021: [WSFC と Azure NetApp Files (SMB) を使用する SAP ASCS/SCS のための HA ガイド](./high-availability-guide-windows-netapp-files-smb.md)が変更され、SAP システムのインストール時、SWPM を実行しているユーザーには昇格された特権が必要になるという注意書きを追加されました。
 - 2021 年 2 月 11 日[Red Hat Enterprise Linux Server 上の Azure vm で IBM DB2 LUW の高可用性](./high-availability-guide-rhel-ibm-db2-luw.md) を変更し、RHEL 8.x 用の pacemaker クラスターコマンドを修正します。
 - 2021 年 2 月 3 日: stonith create コマンドの pcmk_host_map を更新するために、「[Azure での RHEL に対する Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)」を変更

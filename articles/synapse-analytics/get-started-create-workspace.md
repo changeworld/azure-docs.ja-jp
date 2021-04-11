@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: ee8a192bcfe20c77e47ee9c89dfc3286a979e358
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: fb30913d71df46f4c0afedd475d40205c1429258
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104722295"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106122205"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 
@@ -33,24 +33,26 @@ ms.locfileid: "104722295"
 1. **[追加]** を選択してワークスペースを作成します。
 
 ## <a name="basics-tab--project-details"></a>[基本] タブ > [プロジェクトの詳細]
-1. **[基本]** タブの **[プロジェクトの詳細]** で、次のフィールドに入力します。
-      1. **[サブスクリプション]** - 任意のサブスクリプションを選択します。
-      2. **[リソース グループ]** - 任意のリソース グループを使用します。
-      3. **[リソース グループ]** - 空白のままにします。
+以下のフィールドを設定します。
+
+1. **[サブスクリプション]** - 任意のサブスクリプションを選択します。
+1. **[リソース グループ]** - 任意のリソース グループを使用します。
+1. **[リソース グループ]** - 空白のままにします。
 
 
 ## <a name="basics-tab--workspace-details"></a>[基本] タブ > [ワークスペースの詳細]
-1. **[基本]** タブの **[ワークスペースの詳細]** で、次のフィールドに入力します。
-      1. **[ワークスペース名]** - グローバルに一意の任意の名前を選択します。 このチュートリアルでは、**myworkspace** を使用します。
-      1. **[リージョン]** - 任意のリージョンを選択します。
-      1. **Data Lake Storage Gen 2 の選択**
-        1. **[From subscription]\(サブスクリプションから\)** ボタンをクリックします。
-        1. **[アカウント名]** で、 **[新規作成]** をクリックし、新しいストレージ アカウントに **contosolake** などの名前を付けます。この名前は一意である必要があります。
-        1. **[File system name]\(ファイル システム名\)** で、 **[新規作成]** をクリックし、**users** という名前を付けます。 これにより、**users** というストレージ コンテナーが作成されます。 ワークスペースでは、このストレージ アカウントを Spark テーブルおよび Spark アプリケーション ログの "プライマリ" ストレージ アカウントとして使用します。
-        1. "Data Lake Storage Gen2 アカウントのストレージ BLOB データ共同作成者ロールを自分に割り当てる" ためのボックスをオンにします。 
+以下のフィールドを設定します。
 
-### <a name="completing-the-process"></a>プロセスを完了する
-5. **[確認と作成]**  >  **[作成]** の順に選択します。 ワークスペースの準備は数分で完了します。
+1. **[ワークスペース名]** - グローバルに一意の任意の名前を選択します。 このチュートリアルでは、**myworkspace** を使用します。
+1. **[リージョン]** - 任意のリージョンを選択します。
+1. **Data Lake Storage Gen 2 の選択**
+1. **[From subscription]\(サブスクリプションから\)** ボタンをクリックします。
+1. **[アカウント名]** で、 **[新規作成]** をクリックし、新しいストレージ アカウントに **contosolake** などの名前を付けます。この名前は一意である必要があります。
+1. **[File system name]\(ファイル システム名\)** で、 **[新規作成]** をクリックし、**users** という名前を付けます。 これにより、**users** というストレージ コンテナーが作成されます。 ワークスペースでは、このストレージ アカウントを Spark テーブルおよび Spark アプリケーション ログの "プライマリ" ストレージ アカウントとして使用します。
+1. "Data Lake Storage Gen2 アカウントのストレージ BLOB データ共同作成者ロールを自分に割り当てる" ためのボックスをオンにします。 
+
+## <a name="completing-the-process"></a>プロセスを完了する
+**[確認と作成]**  >  **[作成]** の順に選択します。 ワークスペースの準備は数分で完了します。
 
 > [!NOTE]
 > 既存の専用 SQL プール (以前の SQL DW) のワークスペース機能を有効にするには、[専用の SQL プール (以前の SQL DW) 用のワークスペースを有効にする方法](./sql-data-warehouse/workspace-connected-create.md)に関するページを参照してください。
@@ -62,16 +64,6 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 
 * [Azure portal](https://portal.azure.com) で Synapse ワークスペースを開き、Synapse ワークスペースの **[概要]** セクションで、[Synapse Studio の起動] ボックスの **[開く]** を選択します。
 * `https://web.azuresynapse.net` にアクセスし、ワークスペースにサインインします。
-
-
-
-
-
-
-
-
-
-
 
 ## <a name="next-steps"></a>次のステップ
 

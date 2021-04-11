@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2611a29ffcfdeb805934eacc54181515ec44f38c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbf936370b401a76479c7679499103d083e0752a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104578041"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551749"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -106,4 +106,4 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
 ## <a name="next-steps"></a>次のステップ
 
-ご不明な点がある場合は、[デバイス管理の FAQ](faq.md) をご覧ください。  
+ご不明な点がある場合は、[デバイス管理の FAQ](faq.yml) をご覧ください。  

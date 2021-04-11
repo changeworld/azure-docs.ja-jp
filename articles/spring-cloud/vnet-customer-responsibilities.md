@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0c73d0394486472c2c3c92450aab6a1a0d329cf7
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 32b41c1c4446ba34e3bfad52f1d3cbd7ed72096d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877657"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108811"
 ---
 # <a name="customer-responsibilities-for-running-azure-spring-cloud-in-vnet"></a>VNET での Azure Spring Cloud の実行に関するお客様の責任
 このドキュメントには、仮想ネットワークで Azure Spring Cloud を使用するための仕様が含まれています。
@@ -54,7 +54,8 @@ Azure Firewall には、次の構成を簡略化するための完全修飾ド�
   | *.cdn.mscr.io | HTTPS: 443 | Azure CDN によってサポートされる MCR ストレージ。 |
   | *.data.mcr.microsoft.com | HTTPS: 443 | Azure CDN によってサポートされる MCR ストレージ。 |
   | <i>management.azure.com</i> | HTTPS: 443 | 基になる Kubernetes クラスターの管理。 |
-  | <i>login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory 認証。 |
+  | <i>*login.microsoftonline.com</i> | HTTPS: 443 | Azure Active Directory 認証。 |
+  | <i>*login.microsoft.com</i> | HTTPS: 443 | Azure Active Directory 認証。 |
   |<i>packages.microsoft.com</i>    | HTTPS: 443 | Microsoft パッケージ リポジトリ。 |
   | <i>acs-mirror.azureedge.net</i> | HTTPS: 443 | kubenet や Azure CNI などの必要なバイナリをインストールするために必要なリポジトリ。 |
   | *mscrl.microsoft.com* | HTTPS:80 | 必要な Microsoft 証明書チェーン パス。 |
@@ -62,5 +63,5 @@ Azure Firewall には、次の構成を簡略化するための完全修飾ド�
   | *crl3.digicert.com* | HTTPS:80 | サード パーティの SSL 証明書チェーン パス。 |
 
 ## <a name="see-also"></a>関連項目
-* [プライベート ネットワークのアプリケーションにアクセスする](spring-cloud-access-app-virtual-network.md)
-* [Application Gateway と Azure Firewall を使用してアプリを公開する](spring-cloud-expose-apps-gateway-azure-firewall.md)
+* [プライベート ネットワークのアプリケーションにアクセスする](access-app-virtual-network.md)
+* [Application Gateway と Azure Firewall を使用してアプリを公開する](expose-apps-gateway-azure-firewall.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3a07670e3348f74fb5c6eaec57f5e9da627e8c09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 048a089209ef7c5f20c96f77593e2cf39590147e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586722"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104600528"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>チュートリアル: データの視覚化と監視
 
@@ -76,6 +76,17 @@ Azure Sentinel に[データ ソースを接続](quickstart-onboard.md)した後
 
    ![ブックの切り替え](./media/tutorial-monitor-data/switch-workbooks.png)
 
+
+## <a name="print-a-workbook-or-save-as-pdf"></a>ブックを印刷または PDF として保存する
+
+ブックを印刷する、または PDF として保存するには、ブックのタイトルの右側にあるオプション メニューを使用します。
+
+1. オプション > :::image type="icon" source="media/whats-new/print-icon.png" border="false"::: **[コンテンツを印刷する]** を選択します。 
+2. 印刷画面で、必要に応じて印刷設定を調整するか、 **[PDF として保存]** を選択してローカルに保存します。
+
+次に例を示します。
+
+:::image type="content" source="media/whats-new/print-workbook.png" alt-text="ブックを印刷するか、PDF として保存します。":::
 
 ## <a name="how-to-delete-workbooks"></a>ブックを削除する方法
 

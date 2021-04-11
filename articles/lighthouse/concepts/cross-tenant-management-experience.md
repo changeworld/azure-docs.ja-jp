@@ -1,14 +1,14 @@
 ---
 title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
-ms.date: 03/04/2021
+ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4a20f6efde9c3b01b4a2d7a1f111de23aec87647
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: ba3cee2ecd7efcbb33c19d7ed159083e843c84a8
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177921"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952118"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -33,7 +33,7 @@ Azure Lighthouse を使用すると、テナントによって異なるアカウ
 
 委任されたリソースに対して管理タスクをポータル上で直接実行するか、API および管理ツール (Azure CLI や Azure PowerShell など) を使用して実行することができます。 既存の API はすべて、委任されたリソースを操作するときに使用できます。ただし、テナント間の管理において機能がサポートされており、ユーザーが適切なアクセス許可を持っている必要があります。
 
-Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/module/Az.Accounts/Get-AzSubscription)では、返されたサブスクリプションが管理対象のテナントと管理側テナントのどちらに属しているかを識別できるように、各サブスクリプションの `HomeTenantId` と `ManagedByTenantIds` 属性が表示されます。
+Azure PowerShell の [Get-AzSubscription コマンドレット](/powershell/module/Az.Accounts/Get-AzSubscription) では、既定で管理側テナントの `TenantId` が表示されます。 返されたサブスクリプションが管理対象のテナントと管理側テナントのどちらに属しているかを識別できるように、各サブスクリプションの `HomeTenantId` と `ManagedByTenantIds` 属性を使用することができます。
 
 同様に、[az account list](/cli/azure/account#az-account-list) などの Azure CLI コマンドでは、`homeTenantId` 属性と `managedByTenants` 属性が表示されます。 Azure CLI の使用時にこれらの値が表示されない場合は、`az account clear` を実行してから `az login --identity` を実行して、キャッシュをクリアしてみてください。
 

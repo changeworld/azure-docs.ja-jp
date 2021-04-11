@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: mvc, seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 5a481e7ef37e36578b7f71a7afe70dcad737de89
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2cecf2038190adcf12d376715a5fbf261cf758e0
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217467"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962630"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>チュートリアル:Azure App Service on Linux と Azure Cosmos DB を使用して Java Spring Boot Web アプリを構築する
 
@@ -185,7 +185,7 @@ TODO アプリケーションを開始したというメッセージではなく
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.11.0</version>
+        <version>1.13.0</version>
         <configuration>
             <schemaVersion>v2</schemaVersion>
 
@@ -275,7 +275,7 @@ bash-3.2$ mvn azure-webapp:deploy
 出力には、デプロイされたアプリケーションへの URL が含まれています (この例では `https://spring-todo-app.azurewebsites.net`)。 この URL を Web ブラウザーにコピーするか、ターミナル ウィンドウで次のコマンドを実行すると、アプリを読み込むことができます。
 
 ```bash
-curl https://spring-todo-app.azurewebsites.net
+explorer https://spring-todo-app.azurewebsites.net
 ```
 
 アドレス バーにリモート URL が表示されて、実行されているアプリが表示されるはずです。

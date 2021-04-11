@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/14/2021
 ms.author: brendm
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 0a8536deac0103215cf362c07eb54bbf84701a6b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 9b3a5659e91ca90d31500b10526e3e2179d4e7da
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877447"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046115"
 ---
 # <a name="set-up-a-staging-environment-in-azure-spring-cloud"></a>Azure Spring Cloud でステージング環境を設定する
 
@@ -185,4 +185,4 @@ az spring-cloud app deployment delete -n <staging-deployment-name> -g <resource-
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Spring Cloud の CI/CD](/azure/spring-cloud/spring-cloud-howto-cicd?pivots=programming-language-java)
+* [Azure Spring Cloud の CI/CD](./spring-cloud-howto-cicd.md?pivots=programming-language-java)

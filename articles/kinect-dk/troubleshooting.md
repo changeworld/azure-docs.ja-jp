@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: conceptual
 keywords: トラブルシューティング、更新プログラム、バグ、Kinect、フィードバック、回復、ログ記録、ヒント
-ms.openlocfilehash: ecd0fe9021642b27438b0e5d3d140e50c8073f29
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: da5242a09934a756093a9e02b6d474e6c75fecda
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104951523"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108742"
 ---
 # <a name="azure-kinect-known-issues-and-troubleshooting"></a>Azure Kinect の既知の問題とトラブルシューティング
 
@@ -193,12 +193,12 @@ Body Tracking SDK では、CPU、CUDA、DirectML (Windows のみ)、および Te
 > ONNX Runtime は、アクセラレートされないオペコードの警告を表示します。 これらは無視しても問題ありません。
 
 ONNX Runtime には、TensorRT モデルのキャッシュを制御するための環境変数が含まれています。 推奨値は次のとおりです。
-- ORT_TENSORRT_CACHE_ENABLE=1 
+- ORT_TENSORRT_ENGINE_CACHE_ENABLE=1 
 - ORT_TENSORRT_CACHE_PATH="pathname"
 
 本文の追跡を開始する前に、フォルダーを作成する必要があります。
 
-> [!NOTE]  
+> [!IMPORTANT]  
 > TensorRT では、推論の前にモデルが事前に処理されるため、他の実行環境と比較すると、開始時間が長くかかります。 エンジン キャッシュはこれを最初の実行に限定しますが、これは実験的なものであり、モデル、ONNX Runtime バージョン、TensorRT バージョン、および GPU モデルに固有です。
 
 TensorRT 実行環境では、FP32 (既定) と FP16 の両方がサポートされます。 FP16 は、精度の低下を最小限に抑えるために、最大 2 倍のパフォーマンスを引き換えにします。 FP16 を指定するには、次のようにします。

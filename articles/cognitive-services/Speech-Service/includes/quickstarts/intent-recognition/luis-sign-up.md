@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: trbye
-ms.openlocfilehash: 42dc7eb1a74bf2e376f834ee3198ad6a492226e9
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: ab22ad75b5b49588bbdcedf5fc995ce65fe4e690
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445003"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105105156"
 ---
 意図認識を実行するには、LUIS プレビュー ポータルを使用して、LUIS アカウントとプロジェクトを作成する必要があります。 このクイックスタートで必要なのは、LUIS サブスクリプションのみです。 音声サービスのサブスクリプションは "*不要*" です。
 
@@ -18,7 +18,7 @@ ms.locfileid: "102445003"
 
 LUIS アプリを作成するには、次の手順に従います。
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">クイック スタート: 事前構築済みのドメイン アプリを作成する</a>
+* <a href="/azure/cognitive-services/luis/luis-get-started-create-app" target="_blank">クイック スタート: 事前構築済みのドメイン アプリを作成する</a>
 
 完了すると、次の 4 つが必要になります。
 
