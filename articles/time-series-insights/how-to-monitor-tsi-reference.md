@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/10/2020
 ms.custom: lyrana
 ms.openlocfilehash: bfd0d04313f0b519b4013a43e29d88400c73ea31
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100591389"
 ---
 # <a name="monitoring-azure-time-series-insights-data-reference"></a>Azure Time Series Insights データの監視のリファレンス

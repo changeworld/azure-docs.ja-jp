@@ -13,10 +13,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
 ms.openlocfilehash: fc2ab86a318086750b11780a7802aa3591065264
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103463512"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態

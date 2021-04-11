@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure Live Video Analytics on A
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.openlocfilehash: 2dde1c9d917881d7a16dbc853e4af416dffe5d7b
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101702421"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>チュートリアル:クラウドでの継続的なビデオ記録と再生
@@ -272,7 +272,7 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
 [IoTHubMonitor] [9:42:18 AM] Message received from [lvaedgesample/lvaEdge]:
 {
   "body": {
-    "sdp": "SDP:\nv=0\r\no=- 1586450538111534 1 IN IP4 XXX.XX.XX.XX\r\ns=Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\ni=media/camera-300s.mkv\r\nt=0 0\r\na=tool:LIVE555 Streaming Media v2020.03.06\r\na=type:broadcast\r\na=control:*\r\na=range:npt=0-300.000\r\na=x-qt-text-nam:Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\na=x-qt-text-inf:media/camera-300s.mkv\r\nm=video 0 RTP/AVP 96\r\nc=IN IP4 0.0.0.0\r\nb=AS:500\r\na=rtpmap:96 H264/90000\r\na=fmtp:96 packetization-mode=1;profile-level-id=4D0029;sprop-parameter-sets=XXXXXXXXXXXXXXXXXXXXXX\r\na=control:track1\r\n"
+    "sdp&quot;: &quot;SDP:\nv=0\r\no=- 1586450538111534 1 IN IP4 XXX.XX.XX.XX\r\ns=Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\ni=media/camera-300s.mkv\r\nt=0 0\r\na=tool:LIVE555 Streaming Media v2020.03.06\r\na=type:broadcast\r\na=control:*\r\na=range:npt=0-300.000\r\na=x-qt-text-nam:Matroska video+audio+(optional)subtitles, streamed by the LIVE555 Media Server\r\na=x-qt-text-inf:media/camera-300s.mkv\r\nm=video 0 RTP/AVP 96\r\nc=IN IP4 0.0.0.0\r\nb=AS:500\r\na=rtpmap:96 H264/90000\r\na=fmtp:96 packetization-mode=1;profile-level-id=4D0029;sprop-parameter-sets=XXXXXXXXXXXXXXXXXXXXXX\r\na=control:track1\r\n"
   },
   "applicationProperties": {
     "dataVersion": "1.0",
@@ -301,14 +301,14 @@ Live Video Analytics on IoT Edge モジュールを使用して、ライブ ビ�
 {
   "body": {
     "outputType": "assetName",
-    "outputLocation": "sampleAsset-CVRToAMSAsset-Sample-Graph-1"
+    "outputLocation&quot;: &quot;sampleAsset-CVRToAMSAsset-Sample-Graph-1"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/mediaservices/{ams-account-name}",
     "subject": "/graphInstances/Sample-Graph-1/sinks/assetSink",
     "eventType": "Microsoft.Media.Graph.Operational.RecordingStarted",
     "eventTime": "2020-04-09T09:42:38.1280000Z",
-    "dataVersion": "1.0"
+    "dataVersion&quot;: &quot;1.0"
   }
 }
 ```
@@ -326,14 +326,14 @@ body セクションには、出力場所に関する情報が含まれていま
 {
   "body": {
     "outputType": "assetName",
-    "outputLocation": "sampleAsset-CVRToAMSAsset-Sample-Graph-1"
+    "outputLocation&quot;: &quot;sampleAsset-CVRToAMSAsset-Sample-Graph-1"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/mediaservices/{ams-account-name}",
     "subject": "/graphInstances/Sample-Graph-1/sinks/assetSink",
     "eventType": "Microsoft.Media.Graph.Operational.RecordingAvailable",
     "eventTime": "2020-04-09T09:43:38.1280000Z",
-    "dataVersion": "1.0"
+    "dataVersion&quot;: &quot;1.0"
   }
 }
 ```
@@ -353,14 +353,14 @@ body セクションには、出力場所に関する情報が含まれていま
 {
   "body": {
     "outputType": "assetName",
-    "outputLocation": "sampleAsset-CVRToAMSAsset-Sample-Graph-1"
+    "outputLocation&quot;: &quot;sampleAsset-CVRToAMSAsset-Sample-Graph-1"
   },
   "applicationProperties": {
     "topic": "/subscriptions/{subscriptionID}/resourceGroups/{resource-group-name}/providers/microsoft.media/mediaservices/{ams-account-name}",
     "subject": "/graphInstances/Sample-Graph-1/sinks/assetSink",
     "eventType": "Microsoft.Media.Graph.Operational.RecordingStopped",
     "eventTime": "2020-04-10T11:33:31.051Z",
-    "dataVersion": "1.0"
+    "dataVersion&quot;: &quot;1.0"
   }
 }
 ```

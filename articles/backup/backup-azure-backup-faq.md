@@ -3,12 +3,12 @@ title: よく寄せられる質問に対する回答
 description: '一般的な質問への回答:Recovery Services コンテナーを含む Azure Backup の機能、バックアップの対象、しくみ、暗号化、制限。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: ac58cee66aa2a89efb7194a051801b068628d3bc
-ms.sourcegitcommit: 3ea12ce4f6c142c5a1a2f04d6e329e3456d2bda5
+ms.openlocfilehash: 79ff404192de481965f3971f00328c49a591dd41
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2021
-ms.locfileid: "103467631"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583379"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup - よく寄せられる質問
 
@@ -72,6 +72,13 @@ Data Box を使用して Recovery Services コンテナーからオンプレミ�
 
 >[!IMPORTANT]
 >サブスクリプションの移動後、必ず次のアクションを実行してください。<ul><li>ロールベースのアクセス制御とカスタム役割は移動できません。 新しい Azure AD で、アクセス許可とロールを再作成する必要があります。</li><li>コンテナーのマネージド ID (MI) は無効にし、再び有効にすることで再作成する必要があります。 また、MI アクセス許可を昇格させ、再作成する必要があります。</li><li>[プライベート エンドポイント](private-endpoints.md#before-you-start)や[カスタマー マネージド キー](encryption-at-rest-with-cmk.md#before-you-start)など、MI を活用する機能がコンテナーで使用されている場合、その機能を再構成する必要があります。</li></ul>
+
+### <a name="can-i-move-a-subscription-that-contains-a-recovery-services-vault-to-a-different-tenant"></a>Recovery Services コンテナーを含むサブスクリプションを別のテナントに移動することはできますか。
+
+はい。 必ず次を実行してください。 
+
+>[!IMPORTANT]
+>サブスクリプションの移動後、必ず次のアクションを実行してください。<ul><li>コンテナーが CMK (カスタマー マネージド キー) を使用している場合は、コンテナーを更新する必要があります。 これにより、コンテナーで管理されている ID と CMK (新しいテナントに存在する) をコンテナーで再作成して再構成することができます。そうしないと、バックアップおよび復元操作は失敗します。</li><li>既存のアクセス許可を移動できないため、サブスクリプションの RBAC アクセス許可を再構成する必要があります。</li></ul>
 
 ## <a name="azure-backup-agent"></a>Azure Backup エージェント
 

@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.openlocfilehash: 10debe7bb870ddd9f8711e73ccb4b690d7011b62
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100650188"
 ---
 # <a name="use-java-to-manage-directories-and-files-in-azure-data-lake-storage-gen2"></a>Java を使用して Azure Data Lake Storage Gen2 のディレクトリとファイルを管理する
