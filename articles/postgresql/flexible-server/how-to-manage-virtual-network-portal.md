@@ -1,17 +1,17 @@
 ---
 title: 仮想ネットワークを管理する - Azure portal - Azure Database for PostgreSQL - フレキシブル サーバー
 description: Azure portal を使用した Azure Database for PostgreSQL - フレキシブル サーバーの仮想ネットワークの作成と管理
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 746f15d2d712f4b571d3f27e3535c69f5f4f9732
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 8a3c983a60dc542cf83f9e818b7f9c1f20265b49
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101732770"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552361"
 ---
 # <a name="create-and-manage-virtual-networks-for-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure portal を使用した Azure Database for PostgreSQL - フレキシブル サーバーの仮想ネットワークの作成と管理
 

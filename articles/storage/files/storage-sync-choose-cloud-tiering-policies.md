@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/24/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2ed1b8162c49ccc26cb98dd02897a9c40f809d14
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 01bf9ac6a3bfcb30fb6e6a6f9d56de3f9f516f03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204259"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059277"
 ---
 # <a name="choose-cloud-tiering-policies"></a>クラウドを使った階層化ポリシーの選択
 
@@ -34,8 +34,13 @@ ms.locfileid: "102204259"
 |16 KB (16384)               | 32 KB   |
 |32 KB (32768)               | 64 KB   |
 |64 KB (65536)    | 128 KB  |
+|128 KB (131072) | 256 KB |
+|256 KB (262144) | 512 KB |
+|512 KB (524288) | 1 MB |
+|1 MB (1048576) | 2 MB |
+|2 MB (2097152) | 4 MB |
 
-最大 64 KB のクラスター サイズが現在サポートされていますが、サイズがそれより大きい場合、クラウドを使った階層化は機能しません。
+Azure File Sync エージェント バージョン 12 では最大 2 MB のクラスター サイズがサポートされていますが、より大きいサイズの場合、クラウドを使った階層化は機能しません。
 
 Windows で使用されるすべてのファイル システムでは、クラスター サイズ (アロケーション ユニット サイズとも呼ばれる) に基づいてハードディスクが整理されます。 クラスター サイズは、ファイルを保持するために使用できる最小のディスク領域を表しています。 ファイル サイズがクラスター サイズの偶数倍にならない場合は、ファイルを保持するために (クラスター サイズの次の倍数まで) 追加の領域を使用する必要があります。
 

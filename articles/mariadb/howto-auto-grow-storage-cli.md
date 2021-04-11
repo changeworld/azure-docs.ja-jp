@@ -1,18 +1,18 @@
 ---
 title: ストレージの自動拡張 - Azure CLI - Azure Database for MariaDB
 description: この記事では、Azure CLI を使用して Azure Database for MariaDB のストレージの自動拡張を有効にする方法について説明します。
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3c7fc5165766ff5b492f05047000814475235280
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 494f892bd4278192d78fea4fb6793d3090ba88ec
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98664437"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552990"
 ---
 # <a name="auto-grow-azure-database-for-mariadb-storage-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for MariaDB のストレージの自動拡張
 この記事では、ワークロードに影響を与えることなく拡張されるように Azure Database for MariaDB サーバーのストレージを構成する方法について説明します。

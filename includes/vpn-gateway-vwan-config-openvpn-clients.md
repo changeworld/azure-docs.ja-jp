@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 55fa01d100c60c6411774373428ff4bbd9a56822
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee9dc61169b182356e8ed272bc64785e9c3f6384
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80986780"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106073483"
 ---
 ## <a name="windows-clients"></a><a name="windows"></a>Windows クライアント
 
@@ -25,7 +25,7 @@ ms.locfileid: "80986780"
    * [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport) の手順
    
    * [Virtual WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport) の手順
-5. *.pfx* から秘密キーと base64 のサムプリントを抽出します。 これには複数の方法があります。 1 つの方法として、コンピューター上で OpenSSL を使用します。 *profileinfo.txt* ファイルには、CA およびクライアント証明書の秘密キーとサムプリントが含まれています。 必ず、クライアント証明書のサムプリントを使用してください。
+5. *.pfx* から秘密キーと base64 のサムプリントを抽出します。 これを行うには複数の方法があります。 1 つの方法として、コンピューター上で OpenSSL を使用します。 *profileinfo.txt* ファイルには、CA およびクライアント証明書の秘密キーとサムプリントが含まれています。 必ず、クライアント証明書のサムプリントを使用してください。
 
    ```
    openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
@@ -90,7 +90,7 @@ ms.locfileid: "80986780"
 
     ![電子メールを開く](./media/vpn-gateway-vwan-config-openvpn-clients/ios2.png)
 
-9. **[OpenVPN にコピー]** オプションが表示されない場合は、 **[その他]** をタップします。
+9. **[OpenVPN にコピー]** オプションが表示されない場合は、**[その他]** をタップします。
 
     ![詳細](./media/vpn-gateway-vwan-config-openvpn-clients/ios3.png)
 
@@ -106,9 +106,9 @@ ms.locfileid: "80986780"
 
     ![追加をタップ](./media/vpn-gateway-vwan-config-openvpn-clients/ios6.png)
 
-13. OpenVPN アプリを起動し、 **[プロファイル]** ページでスイッチを右にスライドして接続します。
+13. OpenVPN アプリを起動し、**[プロファイル]** ページでスイッチを右にスライドして接続します。
 
-    ![接続する](./media/vpn-gateway-vwan-config-openvpn-clients/ios8.png)
+    ![接続](./media/vpn-gateway-vwan-config-openvpn-clients/ios8.png)
 
 
 ## <a name="linux-clients"></a><a name="linux"></a>Linux クライアント
@@ -127,7 +127,7 @@ ms.locfileid: "80986780"
    * [VPN Gateway](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport) の手順 
    
    * [Virtual WAN](../articles/virtual-wan/certificates-point-to-site.md#clientexport) の手順
-5. .pfx から秘密キーと base64 サムプリントを抽出します。 これには複数の方法があります。 1 つの方法として、コンピューター上で OpenSSL を使用します。
+5. .pfx から秘密キーと base64 サムプリントを抽出します。 これを行うには複数の方法があります。 1 つの方法として、コンピューター上で OpenSSL を使用します。
 
     ```
     openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
@@ -170,4 +170,4 @@ ms.locfileid: "80986780"
 16. **[VPN の追加]** ウィンドウで **[追加]** をクリックします。
   
     ![ファイルからインポート](./media/vpn-gateway-vwan-config-openvpn-clients/import.png)
-17. 接続するには、 **[ネットワーク設定]** ページで VPN を**オン**にするか、システム トレイのネットワーク アイコンを選択します。
+17. 接続するには、**[ネットワーク設定]** ページで VPN を **オン** にするか、システム トレイのネットワーク アイコンを選択します。

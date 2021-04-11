@@ -15,12 +15,12 @@ ms.custom:
 - contperf-fy21q1
 - fasttrack-edit
 - iot
-ms.openlocfilehash: 9cedf861594903cd160c24ea35545d388bf1f6ce
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 9678648b6417138e216ba2dce3a3605bb4c1bce4
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104582716"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169234"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -450,7 +450,7 @@ MQTT プロトコルについて詳しくは、[MQTT のドキュメント](http
 
 IoT Hub のデプロイの計画に関する詳細については、以下をご覧ください。
 
-* [IoT デバイス カタログ向けの Azure 認定](https://catalog.azureiotsolutions.com/)
+* [IoT デバイス カタログ向けの Azure 認定](https://devicecatalog.azure.com/)
 * [その他のプロトコルのサポート](iot-hub-protocol-gateway.md)
 * [Event Hubs との比較](iot-hub-compare-event-hubs.md)
 * [スケーリング、HA、および DR](iot-hub-scaling.md)
