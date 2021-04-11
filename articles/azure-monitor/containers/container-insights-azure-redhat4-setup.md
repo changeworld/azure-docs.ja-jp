@@ -4,10 +4,10 @@ description: この記事では、Azure Red Hat OpenShift バージョン 4 以�
 ms.topic: conceptual
 ms.date: 03/05/2021
 ms.openlocfilehash: 02cb794463b965ebafef0b6861477dbf69227511
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102506414"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-container-insights"></a>Container Insights を使用して Azure Red Hat OpenShift v4.x を構成する

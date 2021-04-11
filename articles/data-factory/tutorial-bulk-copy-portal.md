@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/29/2021
-ms.openlocfilehash: 4807d1d5e97f7f95521df054d1a71f8925ac4ebb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bca2158f448f74ba596114fce5d1631249124a92
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367607"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606737"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Azure portal で Azure Data Factory を使用して複数のテーブルを一括コピーする
 
@@ -98,7 +98,7 @@ SQL Database と Azure Synapse Analytics の両方について、SQL サーバ�
 
 1. [リンクされたサービス] ページの **[+ 新規]** を選択して、リンクされたサービスを新規作成します。
 
-   ![新規のリンクされたサービス](./media/doc-common-process/new-linked-service.png)
+   :::image type="content" source="./media/doc-common-process/new-linked-service.png" alt-text="[New Linked Service]\(新しいリンクされたサービス\)":::
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
 1. **[New Linked Service (Azure SQL Database)]** \(新しいリンクされたサービス (Azure SQL Database)\) ウィンドウで、次の手順を実行します。 
 

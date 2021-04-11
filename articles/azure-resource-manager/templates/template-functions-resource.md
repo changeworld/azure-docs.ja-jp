@@ -2,13 +2,13 @@
 title: テンプレート関数 - リソース
 description: Azure Resource Manager テンプレート (ARM テンプレート) で、リソースに関する値を取得するために使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 02/10/2021
-ms.openlocfilehash: efd7c554e6da8b60d4834d1a1290407a6b9e94d4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/01/2021
+ms.openlocfilehash: caf95246e1a0e3954f8608f5c13b03e4390c36a2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544113"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219554"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM テンプレート用のリソース関数
 
@@ -17,7 +17,6 @@ Resource Manager では、Azure Resource Manager テンプレート (ARM テン�
 * [extensionResourceId](#extensionresourceid)
 * [list*](#list)
 * [pickZones](#pickzones)
-* [providers](#providers)
 * [reference](#reference)
 * [resourceGroup](#resourcegroup)
 * [resourceId](#resourceid)
@@ -539,94 +538,6 @@ output notSupportedType array = pickZones('Microsoft.Cdn', 'profiles', 'westus2'
 > ループと copyIndex() はまだ実装されていません。  「[ループ](https://github.com/Azure/bicep/blob/main/docs/spec/loops.md)」を参照してください。
 
 ---
-
-## <a name="providers"></a>providers
-
-`providers(providerNamespace, [resourceType])`
-
-リソース プロバイダーとサポートされているそのリソースの種類に関する情報を返します。 リソースの種類を指定しない場合、関数はリソース プロバイダーでサポートされているすべての種類を返します。
-
-### <a name="parameters"></a>パラメーター
-
-| パラメーター | 必須 | Type | 説明 |
-|:--- |:--- |:--- |:--- |
-| providerNamespace |はい |string |プロバイダーの名前空間 |
-| resourceType |いいえ |string |指定した名前空間内にあるリソースの種類。 |
-
-### <a name="return-value"></a>戻り値
-
-サポートされている各種類は、次の形式で返されます。
-
-```json
-{
-  "resourceType": "{name of resource type}",
-  "locations": [ all supported locations ],
-  "apiVersions": [ all supported API versions ]
-}
-```
-
-戻り値の配列の順序は保証されません。
-
-### <a name="providers-example"></a>プロバイダーの例
-
-次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json)は、provider 関数の使用方法を示しています。
-
-# <a name="json"></a>[JSON](#tab/json)
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "providerNamespace": {
-      "type": "string"
-    },
-    "resourceType": {
-      "type": "string"
-    }
-  },
-  "resources": [],
-  "outputs": {
-    "providerOutput": {
-      "type": "object",
-      "value": "[providers(parameters('providerNamespace'), parameters('resourceType'))]"
-    }
-  }
-}
-```
-
-# <a name="bicep"></a>[Bicep](#tab/bicep)
-
-```bicep
-param providerNamespace string
-param resourceType string
-
-output providerOutput array = providers(providerNamespace, resourceType)
-```
-
----
-
-**Microsoft.Web** リソース プロバイダーでリソースの種類が **sites** の場合、前の例では、次の形式のオブジェクトが返されます。
-
-```json
-{
-  "resourceType": "sites",
-  "locations": [
-    "South Central US",
-    "North Europe",
-    "West Europe",
-    "Southeast Asia",
-    ...
-  ],
-  "apiVersions": [
-    "2016-08-01",
-    "2016-03-01",
-    "2015-08-01-preview",
-    "2015-08-01",
-    ...
-  ]
-}
-```
 
 ## <a name="reference"></a>reference
 

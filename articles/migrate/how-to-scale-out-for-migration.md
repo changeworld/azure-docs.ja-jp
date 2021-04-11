@@ -6,25 +6,25 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 6e81b3d62fb5b208c88257d7660f74ac25f099b8
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1425eafd92737e08596499e395dc62af3d967207
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048014"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104607655"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>VMware 仮想マシンの Azure へのエージェントレス移行をスケーリングする
 
-この記事では、Azure Migrate Server Migration ツールのエージェントレス移行機能を使用して、多数の VMware 仮想マシン (VM) を Azure に移行するためのスケールアウト アプライアンスの使用方法について説明します。 
+この記事では、VMware VM の移行のために Azure Migrate Server Migration ツールのエージェントレスの移行方法を使用して、多数の VMware 仮想マシン (VM) を Azure に移行するためのスケールアウト アプライアンスの使用方法について説明します。
 
-Server Migration ツールの VMware 仮想マシンのエージェントレス移行機能を使用すると、次のことができます。
+VMware 仮想マシンに対してエージェントレスの移行方法を使用すると、次のことができます。
 
 - 1 つの Azure Migrate アプライアンスを使用して、1 つの vCenter サーバーから最大 300 個の VM を同時にレプリケートする。
 - 移行用の 2 つ目のスケールアウト アプライアンスをデプロイすることによって、1 つの vCenter サーバーから最大 500 個の VM を同時にレプリケートする。
 
 この記事では、次のことについて説明します。
 
-- VMware 移行用のスケールアウト アプライアンスをデプロイする
+- VMware 仮想マシンのエージェントレス移行用のスケールアウト アプライアンスを追加する
 - スケールアウト アプライアンスを使用して最大 500 個の VM を同時に移行する。
 
 ##  <a name="prerequisites"></a>前提条件
@@ -37,8 +37,9 @@ Server Migration ツールの VMware 仮想マシンのエージェントレス�
 > [!IMPORTANT]
 > 移行用のスケールアウト アプライアンスを追加する前に、レプリケートする仮想マシンをプロジェクトに少なくとも 1 つ配置する必要があります。
 
-## <a name="deploy-a-scale-out-appliance"></a>スケールアウト アプライアンスをデプロイする
+前の手順を実行する方法については、「[VMware 仮想マシンの Azure へのエージェントレス移行](./tutorial-migrate-vmware.md)」に関するチュートリアルを参照してください。
 
+## <a name="deploy-a-scale-out-appliance"></a>スケールアウト アプライアンスをデプロイする
 
 スケールアウト アプライアンスを追加するには、次の手順に従います。
 
@@ -147,10 +148,10 @@ Server Migration ツールの VMware 仮想マシンのエージェントレス�
 1. 前の手順で開いたポップアップ ウィンドウで、コピーされた構成 zip ファイルの場所を選択し、 **[保存]** をクリックします。
 
 ファイルが正常にインポートされると、スケールアウト アプライアンスの登録が完了し、最後に成功したインポートのタイムスタンプが表示されます。 **[詳細の表示]** をクリックして、登録の詳細を確認することもできます。
-:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="正常なインポート":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/import-success.png" alt-text="スクリーンショットは、Azure Migrate プロジェクトへのスケールアウト アプライアンス登録を示しています。":::
 
 この時点で、スケールアウト アプライアンスが vCenter サーバーに接続できることを再検証する必要があります。 **[再検証]** をクリックして、スケールアウト アプライアンスから vCenter Server への接続を検証します。
-:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="正常なインポート":::
+:::image type="content" source="./media/how-to-scale-out-for-migration/view-sources.png" alt-text="スクリーンショットは、検証するビューの資格情報と検出のソースを示しています。":::
 
 > [!IMPORTANT]
 > プライマリ アプライアンスで vCenter Server の資格情報を編集する場合は、構成ファイルをスケールアウト アプライアンスに再度インポートして最新の構成を取得し、進行中のレプリケーションを続行するようにしてください。<br/> スケールアウト アプライアンスが不要な場合は、スケールアウト アプライアンスを無効にしてください。 不要なときにスケールアウト アプライアンスを無効にする方法について詳しくは、[**こちら**](./common-questions-appliance.md)をご覧ください。
