@@ -1,19 +1,19 @@
 ---
 title: Azure Database for PostgreSQL - フレキシブル サーバーでパラメーターを構成する
 description: この記事では、Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバーで Postgres パラメーターを構成する方法について説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 43b14858cc99cac41e277b03171fd4cac4d6eafa
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 315e4439ca66a3fbadac228c013797f516bc2940
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90932587"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605766"
 ---
 # <a name="customize-server-parameters-for-azure-database-for-postgresql---flexible-server-using-azure-cli"></a>Azure CLI を使用して Azure Database for PostgreSQL - フレキシブル サーバーのサーバー パラメーターをカスタマイズする
 

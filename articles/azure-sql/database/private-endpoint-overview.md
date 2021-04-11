@@ -9,12 +9,12 @@ ms.topic: overview
 ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 506982a22fd53dfb4f8f3d94735c11fc491469eb
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.openlocfilehash: 0ce8e45f301ac0fd84f7d5d27d81b63103768f89
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102097280"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567714"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics に対する Azure Private Link
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -62,7 +62,7 @@ Private Link を使用すると、[ExpressRoute](../../expressroute/expressroute
 
  ![接続オプションの図][1]
 
-さらに、仮想ネットワークで直接実行されているわけではないが、仮想ネットワークと統合されているサービス (App Service Web Apps や Functions など) も、データベースへのプライベート接続を実現できます。 このユース ケースの詳細については、[Azure SQL データベースへのプライベート接続を使用する Web アプリ](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app)のアーキテクチャ シナリオをご覧ください。
+さらに、仮想ネットワークで直接実行されているわけではないが、仮想ネットワークと統合されているサービス (App Service Web Apps や Functions など) も、データベースへのプライベート接続を実現できます。 このユース ケースの詳細については、[Azure SQL データベースへのプライベート接続を使用する Web アプリ](/azure/architecture/example-scenario/private-web-app/private-web-app)のアーキテクチャ シナリオをご覧ください。
 
 ## <a name="test-connectivity-to-sql-database-from-an-azure-vm-in-same-virtual-network"></a>同じ仮想ネットワーク内の Azure VM から SQL Database への接続をテストする
 
@@ -185,7 +185,7 @@ PolyBase と COPY ステートメントは、Azure Storage アカウントから
 
 - Azure SQL Database のセキュリティの概要については、「[データベースの保護](security-overview.md)」を参照してください。
 - Azure SQL Database 接続の概要については、「[Azure SQL の接続アーキテクチャ](connectivity-architecture.md)」を参照してください
-- [Azure SQL データベースへのプライベート接続を使用する Web アプリ](https://docs.microsoft.com/azure/architecture/example-scenario/private-web-app/private-web-app)のアーキテクチャ シナリオも確認できます。このシナリオでは、仮想ネットワークの外部にある Web アプリケーションをデータベースのプライベート エンドポイントに接続します。
+- [Azure SQL データベースへのプライベート接続を使用する Web アプリ](/azure/architecture/example-scenario/private-web-app/private-web-app)のアーキテクチャ シナリオも確認できます。このシナリオでは、仮想ネットワークの外部にある Web アプリケーションをデータベースのプライベート エンドポイントに接続します。
 
 <!--Image references-->
 [1]: media/quickstart-create-single-database/pe-connect-overview.png

@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/05/2021
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: f9be9272a898ad48f3553d4c5e48952e1fcdde81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ea51c1f7fcfce5b795965eab2f9c03a820a6ab03
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218640"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059362"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Azure Key Vault Managed HSM (プレビュー) に格納されているカスタマー マネージド キーによる暗号化を構成する
 
@@ -65,7 +65,9 @@ az keyvault role assignment create \
 
 ## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>マネージド HSM 内のキーを使用して暗号化を構成する
 
-最後に、マネージド HSM に格納されているキーを使用するように、カスタマー マネージド キーによる Azure Storage 暗号化を構成します。 サポートされているキーの種類には、2,048、3,072、および 4,096 のサイズの RSA-HSM キーが含まれます。 マネージド HSM でカスタマー マネージド キーを使用するように暗号化を構成するには、Azure CLI 2.12.0 以降をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
+最後に、マネージド HSM に格納されているキーを使用するように、カスタマー マネージド キーによる Azure Storage 暗号化を構成します。 サポートされているキーの種類には、2,048、3,072、および 4,096 のサイズの RSA-HSM キーが含まれます。 マネージド HSM でキーを作成する方法については、「[HSM キーを作成する](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key)」を参照してください。
+
+マネージド HSM でカスタマー マネージド キーを使用するように暗号化を構成するには、Azure CLI 2.12.0 以降をインストールします。 詳細については、「 [Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 カスタマー マネージド キーのキー バージョンを自動的に更新するには、ストレージ アカウントでカスタマー マネージド キーを使用した暗号化を構成するときに、キーのバージョンを省略します。 ストレージ アカウントの暗号化設定を更新するには、次の例に示すように [az storage account update](/cli/azure/storage/account#az_storage_account_update) を呼び出します。 `--encryption-key-source parameter` を含め、それを `Microsoft.Keyvault` に設定して、アカウントのカスタマー マネージド キーを有効にします。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
 

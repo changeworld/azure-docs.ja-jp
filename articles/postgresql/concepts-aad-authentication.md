@@ -1,17 +1,17 @@
 ---
 title: Active Directory 認証 - Azure Database for PostgreSQL (単一サーバー)
 description: Azure Database for PostgreSQL (単一サーバー) での認証に関する Azure Active Directory の概念について説明します
-author: lfittl
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 0a19bd9d1547c16937ee575c08ea15a52589ccd0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ff588a2fdc079c4b5a1cd50ddc4441a079d3feed
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87171044"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960922"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 

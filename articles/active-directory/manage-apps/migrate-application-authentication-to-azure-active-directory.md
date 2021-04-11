@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e05a7af3f0b95470432b4fb9602e1b41da9f72f
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104952968"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>アプリケーション認証を Azure Active Directory に移行する
@@ -481,7 +481,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 - **オンプレミスで実行するアプリケーション** – [Azure AD アプリケーション プロキシに関する](./application-proxy.md)詳細を確認し、完全な [Azure AD アプリケーション プロキシのデプロイ計画](https://aka.ms/AppProxyDPDownload)を使用して、すぐに作業を開始します。
 
-- **開発中のアプリ** – 詳細な[統合](../develop/quickstart-register-app.md)と[登録](../develop/quickstart-register-app.md)のガイダンスを参照してください。
+- **開発中のアプリ** – 詳細な [統合](../develop/quickstart-register-app.md)と [登録](../develop/quickstart-register-app.md)のガイダンスを参照してください。
 
 移行後に、ユーザーにデプロイが成功したことを知らせ、行う必要がある新しい手順について通知することができます。
 

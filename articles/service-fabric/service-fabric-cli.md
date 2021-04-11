@@ -5,12 +5,12 @@ author: jeffj6123
 ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1b0598f34fe894e078dc647149cff4ac74e1fea
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83681806"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802150"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -22,7 +22,7 @@ Azure Service Fabric コマンド ライン インターフェイス (CLI) は�
 
 インストール前に、ご使用の環境に Python と pip の両方がインストールされていることを確認してください。 詳細については、[pip のクイックスタート ドキュメント](https://pip.pypa.io/en/latest/quickstart/)と公式の [Python インストール ドキュメント](https://wiki.python.org/moin/BeginnersGuide/Download)を参照してください。
 
-この CLI では、Python のバージョン 2.7、3.5、3.6、3.7 をサポートしています。 Python 2.7 は間もなくサポート終了となるため、Python 3.x の利用をお勧めします。
+CLI は、Python 3.x を推奨する Python バージョン 2.7 および 3.6 以降をサポートしています。
 
 ### <a name="service-fabric-target-runtime"></a>Service Fabric のターゲット ランタイム
 

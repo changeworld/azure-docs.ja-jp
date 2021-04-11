@@ -1,19 +1,19 @@
 ---
 title: ファイアウォール規則の管理 - Azure CLI - Azure Database for MySQL - フレキシブル サーバー
 description: Azure CLI コマンド ラインを使用して、Azure Database for MySQL - フレキシブル サーバーのファイアウォール規則を作成および管理します。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 84fdd3045d5a1d44ff611134d88fc9793ee203de
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4c699b00ebbecdbee985babe47c036cce6e0cb4b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92545074"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109966"
 ---
 # <a name="create-and-manage-azure-database-for-mysql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL - フレキシブル サーバーのファイアウォール規則を作成および管理する
 

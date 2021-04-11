@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:サーバーを作成する - Azure CLI - Azure Database for PostgreSQL - フレキシブル サーバー
 description: このクイック スタートでは、Azure CLI を使用して、Azure Database for PostgreSQL フレキシブル サーバーを Azure リソース グループ内に作成する方法を説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/22/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d43fab43b05ccfd88308390f58ba48ff9111b295
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 49c98905d99e5895dd0d2aa7e6a06e7a3605897e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94842823"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606132"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Database for PostgreSQL フレキシブル サーバーを作成する
 

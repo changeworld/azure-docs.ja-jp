@@ -11,12 +11,12 @@ ms.date: 03/15/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: 自動データ処理、ドキュメント処理、自動データ入力、フォーム処理
-ms.openlocfilehash: 4465f88e3b0ccab8eace1936f426af8dd32af27b
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 8d6c2ea760b85e3170b26c63a28d4ac2b3a2ef5a
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104872253"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105639450"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 
@@ -185,5 +185,5 @@ Cognitive Services 全般に言えることですが、Form Recognizer サービ
 
 Form Recognizer サービスの詳細については、オンライン ツールとクイックスタートをお試しください。
 
-* [**Form Recognizer Tool**](https://fott-preview.microsoft.com/)
+* [**Form Recognizer Tool**](https://fott-preview.azurewebsites.net/)
 * [**クライアント ライブラリと REST API のクイックスタート**](quickstarts/client-library.md)

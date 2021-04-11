@@ -10,14 +10,16 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: c12dbeb81fd2b3d67863b5b84fa30cf77e165549
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 94c3917b0912835799818597f94f3880ea3a7639
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102123192"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889537"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする (プレビュー)
+
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Azure IoT Edge ランタイムを使用すると、デバイスを IoT Edge デバイスに変えることができます。 PC クラスから産業用サーバーまでのデバイスにランタイムをデプロイできます。 IoT Edge ランタイムを使用してデバイスを構成すると、クラウドからデバイスへのビジネス ロジックのデプロイを開始できます。 詳細については、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」を参照してください。
 
@@ -42,19 +44,17 @@ Azure IoT Edge for Linux on Windows を使用すると、Linux 仮想マシン�
   * Professional、Enterprise、または Server エディション
   * 最小 RAM 容量: 4 GB (8 GB を推奨)
   * 最小ストレージ容量: 10 GB
+  * Windows 10 を使用して新しいデプロイを作成している場合は、Hyper-V が有効になっていることを確認します。 詳細については、「[Windows 10 上に Hyper-V をインストールする](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v.md)」を参照してください。
+  * Windows Server を使用して新しいデプロイを作成している場合は、Hyper-V ロールがインストールされていることを確認します。 詳細については、「[Windows Server 上に Hyper-V ロールをインストールする](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server.md)」を参照してください。
+  * VM を使用して新しいデプロイを作成している場合は、入れ子になった仮想化が正しく構成されていることを確認します。 詳細については、[入れ子になった仮想化](nested-virtualization.md)に関するガイドを参照してください。
 
-* Windows Admin Center 用の Azure IoT Edge 拡張機能がインストールされている Windows Admin Center Insider Build へのアクセス:  <!-- The link below needs the language localization to work; otherwise broken -->
-   1. [Windows Insider Preview](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewserver) にアクセスします。
+* Windows Admin Center 用の Azure IoT Edge 拡張機能がインストールされている Windows Admin Center へのアクセス:
 
-   1. プレビューのドロップダウンで **Windows Admin Center Preview - Build 2012** を選択し、 **[Confirm]\(確認\)** を選択します。
+   1. [Windows Admin Center のインストーラ](https://aka.ms/wacdownload)をダウンロードします。
 
-      ![利用可能なプレビューのドロップダウン メニューから、Windows Admin Center Preview - Build 2012 を選択する。](./media/how-to-install-iot-edge-on-windows/select-windows-admin-center-preview-build.png)
+   1. ダウンロードしたインストーラを実行し、インストール ウィザードのプロンプトに従って Windows Admin Center をインストールします。 
 
-   1. **[Select Language]\(言語の選択\)** ドロップダウンで **[English]\(英語\)** を選択して、 **[Confirm]\(確認\)** を選択します。
-
-   1. **[Download Now]\(今すぐダウンロード\)** を選択して、*WindowsAdminCenterPreview2012.msi* をダウンロードします。
-
-   1. *WindowsAdminCenterPreview2012.msi* を実行し、インストール ウィザードのプロンプトに従って Windows Admin Center をインストールします。 インストールが完了したら、Windows Admin Center を開きます。
+   1. インストールが完了したら、サポートされているブラウザーを使用して Windows Admin Center を開きます。 Windows 10 上の Microsoft Edge (Windows 10 バージョン 1709 以降)、Google Chrome、Microsoft Edge Insider などのブラウザーがサポートされています。
 
    1. Windows Admin Center を初めて使用するときに、使用する証明書の選択を求められます。 証明書として **[Windows Admin Center Client]\(Windows Admin Center クライアント\)** を選択します。
 
@@ -63,12 +63,6 @@ Azure IoT Edge for Linux on Windows を使用すると、Linux 仮想マシン�
       ![ダッシュボードの右上にある歯車アイコンを選択して、設定にアクセスする。](./media/how-to-install-iot-edge-on-windows/select-gear-icon.png)
 
    1. **[Settings]\(設定\)** メニューの **[Gateway]\(ゲートウェイ\)** で **[Extensions]\(拡張機能\)** を選択します。
-
-   1. **[Feeds]\(フィード\)** タブを選択し、 **[Add]\(追加\)** を選択します。
-
-   1. テキスト ボックスに「 https://aka.ms/wac-insiders-feed 」と入力し、 **[追加]** を選択します。
-
-   1. フィードを追加した後、 **[Available extensions]\(利用できる拡張\)** タブに移動します。拡張機能一覧の更新に少し時間がかかる場合があります。
 
    1. **[Available extensions]\(利用できる拡張\)** タブの拡張機能の一覧で、**Azure IoT Edge** を見つけます。 それを選択し、拡張機能の一覧の上にある **[Install]\(インストール\)** プロンプトを選択します。
 
@@ -143,7 +137,7 @@ Windows Admin Center を使用して、ローカル デバイスまたはリモ�
    ```azurepowershell-interactive
    $msiPath = $([io.Path]::Combine($env:TEMP, 'AzureIoTEdge.msi'))
    $ProgressPreference = 'SilentlyContinue'
-   Invoke-WebRequest "https://aka.ms/AzureEdgeForLinuxOnWindowsMSI" -OutFile $msiPath
+   Invoke-WebRequest "https://aka.ms/AzEflowMSI" -OutFile $msiPath
    ```
 
 1. IoT Edge for Linux on Windows をデバイスにインストールします。
@@ -348,6 +342,9 @@ IoT Edge for Linux on Windows が IoT Edge デバイスに正常にインスト�
    ```azurepowershell-interactive
    Ssh-EflowVm
    ```
+
+   >[!NOTE]
+   >仮想マシンへの SSH 接続が許可されるアカウントは、それを作成したユーザーだけです。
 
 1. ログインすると、次の Linux コマンドを使用して、実行中の IoT Edge モジュールの一覧を確認できます。
 
