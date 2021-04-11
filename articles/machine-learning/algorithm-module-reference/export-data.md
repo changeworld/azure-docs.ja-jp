@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 07/28/2020
-ms.openlocfilehash: c6e3d56958168cd279c98a4ba4c021c2362c2694
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 03/19/2021
+ms.openlocfilehash: 90755aef66fa51084d83d036722187b61449a6fc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421313"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104656908"
 ---
 # <a name="export-data-module"></a>データのエクスポート モジュール
 
@@ -51,7 +51,10 @@ ms.locfileid: "93421313"
 
     オンにした場合は、モジュールが再び実行されて出力が再生成されます。
 
-1. データが書き込まれるデータストア内のパスを定義します。 このパスは相対パスです。 空のパスまたは URL パスは許可されません。
+1. データが書き込まれるデータストア内のパスを定義します。 パスは相対パスです。`data/testoutput` を例にとると、これは **Export Data (データのエクスポート)** の入力データが、モジュールの **[出力設定]** で設定した、データストア内の `data/testoutput` にエクスポートされることを意味します。
+
+    > [!NOTE]
+    > 空のパスも **URL パス** も許可されません。
 
 
 1. **[ファイル形式]** で、データの保存形式を選択します。

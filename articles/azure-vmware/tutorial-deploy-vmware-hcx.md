@@ -2,13 +2,13 @@
 title: チュートリアル - VMware HCX をデプロイして構成する
 description: Azure VMware Solution プライベート クラウドのために VMware HCX ソリューションをデプロイして構成する方法について説明します。
 ms.topic: tutorial
-ms.date: 11/25/2020
-ms.openlocfilehash: a8b089ce834d5b49e4ad32081a58e371835e8602
-ms.sourcegitcommit: 8d1b97c3777684bd98f2cfbc9d440b1299a02e8f
+ms.date: 03/13/2021
+ms.openlocfilehash: ab59b4a29f8ba372c1892613d5e0461bf3fdc512
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102488307"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869091"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX をデプロイして構成する
 
@@ -183,7 +183,7 @@ Azure VMware Solution で、VMware HCX Cloud Manager をデータセンターの
 
 1. **[Infrastructure]\(インフラストラクチャ\)** で、 **[Site Pairing]\(サイトのペアリング\)** を選択し、 **[Connect To Remote Site]\(リモート サイトへの接続\)** オプション (画面の中央) を選択します。 
 
-1. 前にメモしておいた Azure VMware Solution HCX Cloud Manager の URL または IP アドレス (`https://x.x.x.9`)、Azure VMware Solution の cloudadmin@vsphere.local のユーザー名、およびパスワードを入力します。 次に、 **[接続]\(Connect\)** を選択します。
+1. 前にメモしておいた Azure VMware Solution HCX Cloud Manager の URL または IP アドレス (`https://x.x.x.9`)、Azure VMware Solution のユーザー名 (cloudadmin\@vsphere.local)、およびパスワードを入力します。 次に、 **[接続]\(Connect\)** を選択します。
 
    > [!NOTE]
    > サイト ペアを正常に確立するには、次のようにします。
@@ -265,7 +265,7 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
 1. **[Select Distributed Switches for Network Extensions]\(ネットワーク拡張機能の分散スイッチの選択\)** で、レイヤー 2 拡張ネットワーク上の Azure VMware Solution に移行される仮想マシンが含まれるスイッチを選択します。 その後 **[続行]** を選択します。
 
    > [!NOTE]
-   > レイヤー 2 拡張ネットワーク上の仮想マシンを移行しない場合は、この手順を省略できます。
+   > レイヤー 2 (L2) 拡張ネットワーク上の仮想マシンを移行しない場合は、この手順を省略できます。
    
    :::image type=" content" source="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png" alt-text="分散仮想スイッチの選択と [Continue]\(続行\) ボタンを示すスクリーンショット。" lightbox="media/tutorial-vmware-hcx/select-layer-2-distributed-virtual-switch.png":::
 
@@ -376,3 +376,4 @@ HCX の使用の詳細については、VMware のテクニカル ドキュメ�
 * [VMware HCX のドキュメント](https://docs.vmware.com/en/VMware-HCX/index.html)
 * [VMware HCX での仮想マシンの移行](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
 * [HCX の必須ポート](https://ports.vmware.com/home/VMware-HCX)
+* [ライセンス キーを承認する前に行う HCX プロキシ サーバーのセットアップ](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-920242B3-71A3-4B24-9ACF-B20345244AB2.html?hWord=N4IghgNiBcIA4CcD2APAngAgBIGEAaIAvkA)

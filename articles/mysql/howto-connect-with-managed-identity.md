@@ -1,18 +1,18 @@
 ---
 title: マネージド ID を使用して接続する - Azure Database for MySQL
 description: Azure Database for MySQL での認証のための、マネージド ID を使用した接続および認証の方法について説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: mysql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 898f568d285c3b4b4360ea4dda8c63a1e0f13a42
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: f790e20c257c81418c6fcd5b14be957a6ef43b4a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091799"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612604"
 ---
 # <a name="connect-with-managed-identity-to-azure-database-for-mysql"></a>マネージド ID を使用して Azure Database for MySQL に接続する
 

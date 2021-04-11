@@ -9,14 +9,16 @@ ms.date: 03/01/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c311826c2b17f8e9f95d1ef31980922154635b9
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: b24276974eba76aa841cdd7f02145210713474eb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102042319"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104872287"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>IoT Edge セキュリティ デーモンおよびランタイムの更新
+
+[!INCLUDE [iot-edge-version-201806-or-202011](../../includes/iot-edge-version-201806-or-202011.md)]
 
 IoT Edge サービスの新しいバージョンがリリースされたら、最新の機能およびセキュリティの強化のために、IoT Edge デバイスを更新する必要があります。 この記事では、新しいバージョンが使用可能になったときに、IoT Edge デバイスを更新する方法について説明します。
 
@@ -120,8 +122,9 @@ IoT Edge の最新バージョンに更新する場合は、次のコマンド�
 # <a name="windows"></a>[Windows](#tab/windows)
 
 <!-- 1.1 -->
-:::moniker range="iotedge-2018-06"
-IoT Edge for Linux on Windows では、IoT Edge は Windows デバイスでホストされている Linux 仮想マシンで実行されます。 この仮想マシンは IoT Edge と共にプレインストールされ、コンポーネントを最新の状態に保つために Microsoft Update で管理されます。 現在、利用できる更新プログラムはありません。
+::: moniker range="iotedge-2018-06"
+
+IoT Edge for Linux on Windows では、IoT Edge は Windows デバイスでホストされている Linux 仮想マシンで実行されます。 この仮想マシンは IoT Edge と共にプレインストールされ、コンポーネントを最新の状態に保つために Microsoft Update で管理されます。 自動更新が有効になっている場合は、新しい更新プログラムが利用可能になるたびに、ダウンロードとインストールが行われます。
 
 Windows の IoT Edge では、IoT Edge は Windows デバイスで直接実行されます。 PowerShell スクリプトを使用した更新手順については、「[Azure IoT Edge for Windows をインストールおよび管理する](how-to-install-iot-edge-windows-on-windows.md)」を参照してください。
 :::moniker-end
@@ -147,9 +150,9 @@ IoT Edge エージェントおよび IoT Edge ハブ コンテナーを更新す
 
 IoT Edge エージェントおよび IoT Edge ハブ イメージには、関連付けられている IoT Edge のバージョンでタグ付けされます。 ランタイム イメージでタグを使用する方法は 2 つあります。
 
-* **ローリング タグ** - バージョン番号の先頭の 2 つの値のみを使用して、これらの数字に一致する最新のイメージを取得します。 たとえば、最新の 1.0.x バージョンを指す新しいリリースが存在するたびに、1.0 が更新されます。 IoT Edge デバイス上のコンテナー ランタイムによって、再度イメージが取得されると、ランタイム モジュールが最新バージョンに更新されます。 開発目的では、このアプローチが推奨されます。 Azure portal からのデプロイでは、既定でローリング タグに設定されます。
+* **ローリング タグ** - バージョン番号の先頭の 2 つの値のみを使用して、これらの数字に一致する最新のイメージを取得します。 たとえば、最新の 1.1.x バージョンを指す新しいリリースが存在するたびに、1.1 が更新されます。 IoT Edge デバイス上のコンテナー ランタイムによって、再度イメージが取得されると、ランタイム モジュールが最新バージョンに更新されます。 Azure portal からのデプロイでは、既定でローリング タグに設定されます。 *開発目的では、このアプローチが推奨されます。*
 
-* **特定のタグ** - バージョン番号の 3 つすべての値を使用して、イメージのバージョンを明示的に設定します。 たとえば、1.0.7 はその最初のリリース後に変更されることはありません。 更新する準備ができたら、配置マニフェストに新しいバージョン番号を宣言できます。 運用環境目的では、このアプローチが推奨されます。
+* **特定のタグ** - バージョン番号の 3 つすべての値を使用して、イメージのバージョンを明示的に設定します。 たとえば、1.1.0 はその最初のリリース後に変更されることはありません。 更新する準備ができたら、配置マニフェストに新しいバージョン番号を宣言できます。 *運用環境目的では、このアプローチが推奨されます。*
 
 ### <a name="update-a-rolling-tag-image"></a>ローリング タグ イメージの更新
 
@@ -200,7 +203,7 @@ IoT Edge サービスによって、ランタイム イメージの最新バー�
 * パッケージ名は **iotedge** から **aziot-edge** に変更されました。
 * **libiothsm-std** パッケージは使用されなくなりました。 IoT Edge リリースの一部として提供されている標準パッケージを使用した場合は、構成を新しいバージョンに移行できます。 libiothsm-std の別の実装を使用していた場合は、デバイス ID 証明書、デバイス CA、信頼バンドルなどのユーザー指定の証明書を再構成する必要があります。
 * 新しい ID サービス **aziot-identity-service** は、1.2 リリースの一部として導入されました。 このサービスにより、IoT Edge と、Azure IoT Hub Device Update などの IoT Hub と通信する必要があるその他のデバイス コンポーネントの ID のプロビジョニングと管理が処理されます。 <!--TODO: add link to ADU when available -->
-* 既定の構成ファイルは、名前と場所が新しくなっています。 以前は `/etc/iotedge/config.yaml` でしたが、デバイス構成情報は既定で `/etc/aziot/congig.toml` 内にあることが想定されています。 `iotedge config import` コマンドを使用すると、構成情報を以前の場所と構文から新しいものへと移行できます。
+* 既定の構成ファイルは、名前と場所が新しくなっています。 以前は `/etc/iotedge/config.yaml` でしたが、デバイス構成情報は既定で `/etc/aziot/config.toml` 内にあることが想定されています。 `iotedge config import` コマンドを使用すると、構成情報を以前の場所と構文から新しいものへと移行できます。
 * IoT Edge ワークロード API を使用して永続データを暗号化または復号化するモジュールは、更新後に復号化できません。 IoT Edge により、内部で使用するためのマスター ID キーと暗号化キーが動的に生成されます。 このキーは新しいサービスに転送されません。 IoT Edge v1.2 により、新しいものが生成されます。
 
 更新プロセスを自動化する前に、テスト マシンで機能することを確認してください。

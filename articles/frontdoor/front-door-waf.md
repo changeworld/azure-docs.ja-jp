@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: f894fd5ca7bb98c48b106c13b8fe6130b2c76c6e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fa5d34d195cfed2d5dbfa6954d83b28487bf0bba
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102201058"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167755"
 ---
 # <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>チュートリアル:Azure Front Door と Azure Web Application Firewall (WAF) を使用して、Web アプリケーションをすばやくスケーリングし、保護する
 
@@ -140,7 +140,7 @@ DNS レコードを更新するための具体的な手順は、DNS サービス
 
 ## <a name="lock-down-your-web-application"></a>Web アプリケーションをロック ダウンする
 
-Azure Front Door のエッジのみが確実に Web アプリケーションと通信できるようにすることをお勧めします。 そうすることで、誰も Azure Front Door の保護をバイパスしてアプリケーションに直接アクセスすることができなくなります。 このロックダウンを実現するには、「[バックエンドへのアクセスを Azure Front Door のみにロックダウンするにはどうしたらよいですか?](./front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)」を参照してください。
+Azure Front Door のエッジのみが確実に Web アプリケーションと通信できるようにすることをお勧めします。 そうすることで、誰も Azure Front Door の保護をバイパスしてアプリケーションに直接アクセスすることができなくなります。 このロックダウンを実現するには、「[バックエンドへのアクセスを Azure Front Door のみにロックダウンするにはどうしたらよいですか?](./front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

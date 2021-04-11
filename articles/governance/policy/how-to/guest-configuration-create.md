@@ -3,12 +3,12 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: ae9af51ad3b2eb237f8655c996a1345140a8a635
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 72772743eba23ea7c2a93f5037ac84b671256a66
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99070646"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104887701"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
@@ -23,7 +23,7 @@ Windows の監査時に、ゲスト構成では [Desired State Configuration](/p
 Azure または非 Azure マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
 
 > [!IMPORTANT]
-> Azure Government と Azure 中国環境でのゲスト構成を使用したカスタム ポリシー定義は、プレビュー機能です。
+> Azure Government 環境と Azure China 環境でのゲスト構成を使用したカスタム ポリシー定義は、プレビュー機能です。
 >
 > Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。
 > すべての Windows マシンに拡張機能を大規模にデプロイするには、ポリシー定義 `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs` を割り当てます。
@@ -214,10 +214,11 @@ Configuration AuditBitLocker
 }
 
 # Compile the configuration to create the MOF files
-AuditBitLocker ./Config
+AuditBitLocker
 ```
 
-このファイルを `config.ps1` という名前でプロジェクト フォルダーに保存します。 ターミナルで `./config.ps1` を実行して、これを PowerShell で実行します。 新しい mof ファイルが作成されます。
+このスクリプトを PowerShell ターミナルで実行するか、このファイルを `config.ps1` の名前でプロジェクト フォルダーに保存します。
+ターミナルで `./config.ps1` を実行して、これを PowerShell で実行します。 新しい mof ファイルが作成されます。
 
 `Node AuditBitlocker` コマンドは技術的には必須ではありませんが、既定の `localhost.mof` ではなく `AuditBitlocker.mof` という名前のファイルを生成します。 .mof ファイル名を構成に従わせることにより、大規模な運用時に多くのファイルを簡単に整理できます。
 
@@ -234,7 +235,7 @@ MOF をコンパイルしたら、サポート ファイルをまとめてパッ
 ```azurepowershell-interactive
 New-GuestConfigurationPackage `
   -Name 'AuditBitlocker' `
-  -Configuration './Config/AuditBitlocker.mof'
+  -Configuration './AuditBitlocker/AuditBitlocker.mof'
 ```
 
 構成パッケージを作成したら、Azure に発行する前に、ワークステーションまたは継続的インテグレーションおよび継続的デプロイ (CI/CD) 環境からパッケージをテストできます。 GuestConfiguration コマンドレット `Test-GuestConfigurationPackage` には、Azure マシンで使われるのと同じエージェントが開発環境に含まれます。 このソリューションを使って、有料のクラウド環境にリリースする前に、ローカル環境で統合テストを実行できます。
@@ -257,10 +258,16 @@ Test-GuestConfigurationPackage `
 コマンドレットでは、PowerShell パイプラインからの入力もサポートされています。 `New-GuestConfigurationPackage` コマンドレットの出力を `Test-GuestConfigurationPackage` コマンドレットにパイプします。
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./Config/AuditBitlocker.mof | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditBitlocker -Configuration ./AuditBitlocker/AuditBitlocker.mof | Test-GuestConfigurationPackage
 ```
 
-次の手順はファイルの Azure Blob Storage への発行です。 コマンド `Publish-GuestConfigurationPackage` には `Az.Storage` モジュールが必要です。
+次の手順はファイルの Azure Blob Storage への発行です。 ストレージ アカウントに特別な要件はありませんが、自分のコンピューターの近くのリージョンでファイルをホストすることをお勧めします。 ストレージ アカウントがない場合は、次の例を使用します。 `Publish-GuestConfigurationPackage` を含む次のコマンドには、`Az.Storage` モジュールが必要です。
+
+```azurepowershell-interactive
+# Creates a new resource group, storage account, and container
+New-AzResourceGroup -name myResourceGroupName -Location WestUS
+New-AzStorageAccount -ResourceGroupName myResourceGroupName -Name myStorageAccountName -SkuName 'Standard_LRS' -Location 'WestUs' | New-AzStorageContainer -Name guestconfiguration -Permission Blob
+```
 
 `Publish-GuestConfigurationPackage` コマンドレットのパラメーター:
 
@@ -416,111 +423,6 @@ New-GuestConfigurationPolicy
 > ゲスト構成の拡張性は、"ライセンス持ち込み" シナリオです。 サードパーティ製ツールを使用する前に、その使用条件が満たされていることを確認してください。
 
 開発環境に DSC リソースをインストールした後、`New-GuestConfigurationPackage` の **FilesToInclude** パラメーターを使用して、コンテンツ アーティファクトにサードパーティ製のプラットフォームのコンテンツを含めます。
-
-### <a name="step-by-step-creating-a-content-artifact-that-uses-third-party-tools"></a>サードパーティ製ツールを使用するコンテンツ アーティファクトを作成する手順
-
-DSC コンテンツ アーティファクトのステップ バイ ステップ ガイダンスを変更する必要があるのは、`New-GuestConfigurationPackage` コマンドレットだけです。 この例では、`gcInSpec` モジュールを使用して、Linux で使用される組み込みモジュールではなく InSpec プラットフォームを使用して Windows マシンを監査するようにゲスト構成を拡張します。 コミュニティ モジュールは、[GitHub でオープン ソース プロジェクト](https://github.com/microsoft/gcinspec)として管理されています。
-
-開発環境で、必要なモジュールをインストールします。
-
-```azurepowershell-interactive
-# Update PowerShellGet if needed to allow installing PreRelease versions of modules
-Install-Module PowerShellGet -Force
-
-# Install GuestConfiguration module prerelease version
-Install-Module GuestConfiguration -allowprerelease
-
-# Install commmunity supported gcInSpec module
-Install-Module gcInSpec
-```
-
-最初に、InSpec によって使用される YaML ファイルを作成します。 ファイルは、環境に関する基本的な情報を提供します。 次に例を示します。
-
-```YaML
-name: wmi_service
-title: Verify WMI service is running
-maintainer: Microsoft Corporation
-summary: Validates that the Windows Service 'winmgmt' is running
-copyright: Microsoft Corporation
-license: MIT
-version: 1.0.0
-supports:
-  - os-family: windows
-```
-
-`wmi_service.yml` という名前のこのファイルを、プロジェクト ディレクトリ内の `wmi_service` という名前のフォルダーに保存します。
-
-次に、マシンの監査に使用される InSpec 言語抽象化で Ruby ファイルを作成します。
-
-```Ruby
-control 'wmi_service' do
-  impact 1.0
-  title 'Verify windows service: winmgmt'
-  desc 'Validates that the service, is installed, enabled, and running'
-
-  describe service('winmgmt') do
-    it { should be_installed }
-    it { should be_enabled }
-    it { should be_running }
-  end
-end
-
-```
-
-このファイル `wmi_service.rb` を `wmi_service` ディレクトリ内の `controls` という名前の新しいフォルダーに保存します。
-
-最後に、構成を作成し、**GuestConfiguration** リソース モジュールをインポートし、`gcInSpec` リソースを使用して InSpec プロファイルの名前を設定します。
-
-```powershell
-# Define the configuration and import GuestConfiguration
-Configuration wmi_service
-{
-    Import-DSCResource -Module @{ModuleName = 'gcInSpec'; ModuleVersion = '2.1.0'}
-    node 'wmi_service'
-    {
-        gcInSpec wmi_service
-        {
-            InSpecProfileName       = 'wmi_service'
-            InSpecVersion           = '3.9.3'
-            WindowsServerVersion    = '2016'
-        }
-    }
-}
-
-# Compile the configuration to create the MOF files
-wmi_service -out ./Config
-```
-
-これで、プロジェクトの構造は次のようになります。
-
-```file
-/ wmi_service
-    / Config
-        wmi_service.mof
-    / wmi_service
-        wmi_service.yml
-        / controls
-            wmi_service.rb 
-```
-
-サポート ファイルはまとめてパッケージ化する必要があります。 完成したパッケージは、Azure Policy の定義を作成するためにゲスト構成によって使われます。
-
-`New-GuestConfigurationPackage` コマンドレットでパッケージを作成します。 サードパーティ製コンテンツの場合は、**FilesToInclude** パラメーターを使用して、パッケージに InSpec コンテンツを追加します。 Linux パッケージの場合、**ChefProfilePath** を指定する必要はありません。
-
-- **Name**:ゲスト構成のパッケージ名。
-- **構成**:コンパイル済み構成ドキュメントの完全なパス。
-- **パス**:出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
-- **FilesoInclude**: InSpec プロファイルへの完全なパス。
-
-次のコマンドを実行して、前の手順で指定した構成を使用してパッケージを作成します。
-
-```azurepowershell-interactive
-New-GuestConfigurationPackage `
-  -Name 'wmi_service' `
-  -Configuration './Config/wmi_service.mof' `
-  -FilesToInclude './wmi_service'  `
-  -Path './package' 
-```
 
 ## <a name="policy-lifecycle"></a>ポリシーのライフサイクル
 
