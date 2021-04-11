@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 2dbf7c31e6b0b40fa9dc2d59e86c0ecc731657e1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 73282145abd8bfe804b47fda3bf5f12dc691ff3a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102172411"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551358"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions デプロイ スロット
 
@@ -20,9 +20,6 @@ Azure Functions デプロイ スロットを使用すると、関数アプリで
 
 - トラフィックのリダイレクトはシームレスです。スワップが原因で要求が削除されることはありません。
 - スワップ中に関数が実行されている場合は、実行が続行され、それ以降のトリガーがスワップされたアプリ インスタンスにルーティングされます。
-
-> [!NOTE]
-> スロットは現時点で、Linux 従量課金プランでは使用できません。
 
 ## <a name="why-use-slots"></a>スロットを使用する理由
 
@@ -229,7 +226,7 @@ Azure Functions デプロイ スロットには、次の制限があります。
 | Windows Consumption       | 一般公開 |
 | Windows Premium           | 一般公開  |
 | Windows Dedicated         | 一般公開 |
-| Linux Consumption         | サポートされていない          |
+| Linux Consumption         | [プレビュー]          |
 | Linux Premium             | 一般公開  |
 | Linux Dedicated           | 一般公開 |
 
