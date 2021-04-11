@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 7ae85fa2559b8313bd35a761945bff946563e935
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: bd047419275d98049f883bb88a83708a9dfdd7d3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102199783"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066893"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>チュートリアル: Azure IoT Hub のメッセージ エンリッチメントを使用する
 

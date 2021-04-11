@@ -1,18 +1,14 @@
 ---
 title: オンプレミス管理コンソールをアクティブにしてセットアップする
-description: 管理コンソールをアクティブにしてセットアップすると、センサーが Azure に登録され、オンプレミス管理コンソールに情報が送信されるようになります。また、オンプレミスの管理コンソールでは、接続されたセンサーに対する管理タスクを実行できます。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
-ms.date: 1/12/2021
+description: 管理コンソールをアクティブにすると、センサーが Azure に登録され、オンプレミス管理コンソールに情報が送信されるようになります。また、オンプレミス管理コンソールでは、接続されたセンサーに対する管理タスクを実行できます。
+ms.date: 3/18/2021
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: d326a90ffb957604dba74982d8983acedc6ab85d
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 89ce6da3521248ff7373e23ae8831106cbee74de
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522582"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104784630"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>オンプレミス管理コンソールをアクティブにしてセットアップする 
 
@@ -30,24 +26,32 @@ ms.locfileid: "100522582"
 
 管理コンソールにサインインするには、次のようにします。
 
-- Web ブラウザーを開き、システムのインストール時にオンプレミス管理コンソール用に受け取った IP アドレスとパスワードを入力します。 パスワードを忘れた場合は、 **[パスワードの回復]** を選択し、[パスワードの回復](how-to-manage-the-on-premises-management-console.md#password-recovery)に関するページを参照してください。
+1. システムのインストール時にオンプレミス管理コンソール用に受け取った IP アドレスへ移動します。
+ 
+1. システムのインストール時にオンプレミス管理コンソール用に受け取ったユーザー名とパスワードを入力します。 
 
-## <a name="upload-an-activation-file"></a>アクティブ化ファイルをアップロードする
 
-初回サインイン後、Azure Defender for IoT ポータルの **[価格]** ページからアクティブ化ファイルをダウンロードして、オンプレミス管理コンソールをアクティブにします。 このファイルには、オンボード プロセス中に定義された、集約されたコミット済みのデバイスが含まれています。 **[コミット済みのデバイス]** には、Defender for IoT によってサブスクリプションごとに監視されるデバイスの数が示されます。
+パスワードを忘れた場合は、 **[Recover Password]\(パスワードを回復する\)** オプションを選択してください。パスワードを回復する手順については、「[パスワードの回復](how-to-manage-the-on-premises-management-console.md#password-recovery)」を参照してください。
 
-アクティブ化ファイルをアップロードするには、次の手順を実行します。
+## <a name="get-and-upload-an-activation-file"></a>アクティブ化ファイルの取得とアップロード
 
-1. Defender for IoT の **[価格]** ページに移動します。
+初めてサインインした後に、アクティブ化ファイルを取得してアップロードし、オンプレミス管理コンソールをアクティブ化する必要があります。 
+
+アクティブ化ファイルを取得するには:
+
+1. Azure Defender for IoT ポータルの **価格** ページに移動します。 
+1. オンプレミス管理コンソールを関連付けるサブスクリプションを選択します。
 1. **[管理コンソールのアクティブ化ファイルのダウンロード]** タブを選択します。アクティブ化ファイルがダウンロードされます。
 
    :::image type="content" source="media/how-to-manage-sensors-from-the-on-premises-management-console/cloud_download_opm_activation_file.png" alt-text="アクティブ化ファイルをダウンロードします。":::
 
-1. 管理コンソールで **[システム設定]** を選択します。
-1. **[アクティブ化]** を選択します。
-1. **[ファイルの選択]** を選択し、保存したファイルを選択します。
+アクティブ化ファイルをアップロードするには:
 
-最初にアクティブ化した後に、監視されているデバイスの数がオンボード中に定義されたコミット済みのデバイスの数を超えることがあります。 これは、たとえば、管理コンソールにより多くのセンサーを接続した場合に発生する可能性があります。 監視されているデバイスの数とコミット済みのデバイスの数が一致しない場合は、管理コンソールに警告が表示されます。 これが発生した場合は、新しいアクティブ化ファイルをアップロードする必要があります。
+1. オンプレミス管理コンソールの **[System Settings]\(システム設定\)** ページに移動します。
+1. **[アクティブ化]** アイコン:::image type="icon" source="media/how-to-manage-sensors-from-the-on-premises-management-console/activation-icon.png" border="false":::を選択します。
+1. **[ファイルの選択]** を選択し、ダウンロードしたファイルを選択します。
+
+最初にアクティブ化した後に、監視するデバイスの数がオンボード中に定義したコミット済みデバイスの数を超えることがあります。 これは、管理コンソールに余分なセンサーを接続した場合に発生します。 監視するデバイスの数とコミット済みデバイスの数が一致しない場合は、管理コンソールに警告が表示されます。 これが発生した場合は、新しいアクティブ化ファイルをアップロードしてください。
 
 ## <a name="set-up-a-certificate"></a>証明書の設定
 
@@ -223,7 +227,7 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 次の表には、 **[サイトの管理]** ウィンドウのパラメーターが示されています。
 
-| パラメーター | 説明 |
+| パラメーター | Description |
 |--|--|
 | 名前 | センサーの名前。 この名前はセンサーからのみ変更できます。 詳細については、Defender for IoT ユーザー ガイドを参照してください。 |
 | IP | センサーの IP アドレス。 |
@@ -316,6 +320,6 @@ Azure Defender for IoT センサーをオンプレミス管理コンソールに
 
 3. 未割り当てのセンサーをサイトから削除するには、未割り当てのセンサーの一覧からセンサーを選択して、:::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false"::: を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
 [センサーとオンプレミスの管理コンソールのトラブルシューティング](how-to-troubleshoot-the-sensor-and-on-premises-management-console.md)

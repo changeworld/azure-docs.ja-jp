@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/18/2021
-ms.openlocfilehash: 990ca661eb6ec17c7f8aca246c15f89fcf8975a8
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e72d509f71704bbf8608543df5e819a9b8783935
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104785225"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562071"
 ---
 # <a name="provide-server-credentials-to-discover-software-inventory-dependencies-and-sql-server-instances-and-databases"></a>サーバーの資格情報を提供して、ソフトウェア インベントリ、依存関係、SQL Server インスタンスとデータベースを検出する
 
@@ -34,9 +34,9 @@ ms.locfileid: "104785225"
 
 資格情報の種類 | 説明
 --- | ---
-**ドメイン資格情報** | **ドメイン資格情報** を追加するには、 **[資格情報の追加]** モーダルでドロップダウンからそのオプションを選択します。 <br/><br/> ドメイン資格情報を提供するには、**ドメイン名** を FQDN 形式 (例: prod.corp.contoso.com) で指定する必要があります。 <br/><br/> また、資格情報のフレンドリ名、ユーザー名、パスワードも指定する必要があります。 <br/><br/> 追加されたドメイン資格情報は自動的に、Active Directory に対してドメインの信頼性が検証されます。 これは、検出されたサーバーに対してアプライアンスがドメイン資格情報をマップしようとしたときにアカウントのロックアウトを防止するためです。 <br/><br/> アプライアンスは、検証に失敗したドメイン資格情報についてマップを試行しません。 ソフトウェア インベントリに進むには、検証に成功した少なくとも 1 つのドメイン資格情報、または少なくとも 1 つの非ドメイン資格情報が必要です。<br/><br/>Windows サーバーに対して自動的にマップされたドメイン資格情報は、ソフトウェア インベントリを実行するために使用されます。また、SQL Server インスタンスとデータベースの検出にも使用されます " _(SQL Server で Windows 認証モードを設定している場合)_ "。<br/> SQL Server でサポートされている認証モードの種類の詳細については、[こちら](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authentication-in-sql-server)を参照してください。
+**ドメイン資格情報** | **ドメイン資格情報** を追加するには、 **[資格情報の追加]** モーダルでドロップダウンからそのオプションを選択します。 <br/><br/> ドメイン資格情報を提供するには、**ドメイン名** を FQDN 形式 (例: prod.corp.contoso.com) で指定する必要があります。 <br/><br/> また、資格情報のフレンドリ名、ユーザー名、パスワードも指定する必要があります。 <br/><br/> 追加されたドメイン資格情報は自動的に、Active Directory に対してドメインの信頼性が検証されます。 これは、検出されたサーバーに対してアプライアンスがドメイン資格情報をマップしようとしたときにアカウントのロックアウトを防止するためです。 <br/><br/> アプライアンスは、検証に失敗したドメイン資格情報についてマップを試行しません。 ソフトウェア インベントリに進むには、検証に成功した少なくとも 1 つのドメイン資格情報、または少なくとも 1 つの非ドメイン資格情報が必要です。<br/><br/>Windows サーバーに対して自動的にマップされたドメイン資格情報は、ソフトウェア インベントリを実行するために使用されます。また、SQL Server インスタンスとデータベースの検出にも使用されます " _(SQL Server で Windows 認証モードを設定している場合)_ "。<br/> SQL Server でサポートされている認証モードの種類の詳細については、[こちら](/dotnet/framework/data/adonet/sql/authentication-in-sql-server)を参照してください。
 **非ドメイン (Windows または Linux) 資格情報** | **Windows (非ドメイン)** または **Linux (非ドメイン)** 資格情報を追加するには、 **[資格情報の追加]** モーダルでドロップダウンから必要なオプションを選択します。 <br/><br/> 資格情報のフレンドリ名、ユーザー名、パスワードを指定する必要があります。
-**SQL Server 認証資格情報** | **SQL Server 認証** 資格情報を追加するには、 **[資格情報の追加]** モーダルでドロップダウンからそのオプションを選択します。 <br/><br/> 資格情報のフレンドリ名、ユーザー名、パスワードを指定する必要があります。 <br/><br/> この種類の資格情報を追加すると、SQL Server で SQL Server 認証モードを設定している場合、VMware で実行されている SQL Server インスタンスとデータベースを検出できます。<br/> SQL Server でサポートされている認証モードの種類の詳細については、[こちら](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authentication-in-sql-server)を参照してください。<br/><br/> アプライアンスが SQL Server 認証資格情報を使用して SQL Server インスタンスおよびデータベースを検出する前に、サーバーにインストールされている SQL を検出するためのソフトウェア インベントリを完了できるようにするためには、検証に成功した少なくとも 1 つのドメイン資格情報、または少なくとも 1 つの Windows (非ドメイン) 資格情報を提供する必要があります。
+**SQL Server 認証資格情報** | **SQL Server 認証** 資格情報を追加するには、 **[資格情報の追加]** モーダルでドロップダウンからそのオプションを選択します。 <br/><br/> 資格情報のフレンドリ名、ユーザー名、パスワードを指定する必要があります。 <br/><br/> この種類の資格情報を追加すると、SQL Server で SQL Server 認証モードを設定している場合、VMware で実行されている SQL Server インスタンスとデータベースを検出できます。<br/> SQL Server でサポートされている認証モードの種類の詳細については、[こちら](/dotnet/framework/data/adonet/sql/authentication-in-sql-server)を参照してください。<br/><br/> アプライアンスが SQL Server 認証資格情報を使用して SQL Server インスタンスおよびデータベースを検出する前に、サーバーにインストールされている SQL を検出するためのソフトウェア インベントリを完了できるようにするためには、検証に成功した少なくとも 1 つのドメイン資格情報、または少なくとも 1 つの Windows (非ドメイン) 資格情報を提供する必要があります。
 
 Windows または Linux の資格情報で、ソフトウェア インベントリ、エージェントレスの依存関係分析、SQL Server インスタンスとデータベースの検出を実行するために必要なアクセス許可を確認します。
 
