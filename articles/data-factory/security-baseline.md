@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: d1cbd314861a4d5079a5c8e5213f45c7164344f0
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: a21ae2ce79c500455c5735f4d82e7852e8474ad1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102204169"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559147"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure Data Factory 用の Azure セキュリティ ベースライン
 
@@ -157,9 +157,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 **ガイダンス**: Azure アクティビティ ログを使用して、ネットワーク リソース構成を監視し、Azure Data Factory インスタンスに関連するネットワーク リソースの変更を検出します。 重要なネットワーク リソースへの変更が発生するとトリガーされる Azure Monitor 内のアラートを作成します。
 
-- [Azure アクティビティ ログ イベントを表示して取得する方法](/azure/azure-monitor/platform/activity-log#view-the-activity-log)
+- [Azure アクティビティ ログ イベントを表示して取得する方法](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-- [Azure Monitor でアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure Monitor でアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 **責任**: Customer
 
@@ -175,7 +175,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 または、Azure Sentinel またはサードパーティのセキュリティ情報イベント管理 (SIEM) に対してデータを有効にしてオンボードできます。また、Azure Data Factory を Git と統合して、変更を追跡/監査する機能や、バグを招く変更を元に戻す機能など、いくつかのソース管理の利点を利用することもできます。
 
-- [診断設定を構成する方法](/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal)
+- [診断設定を構成する方法](../azure-monitor/essentials/diagnostic-settings.md#create-in-azure-portal)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -193,7 +193,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 診断設定を使用して、Azure Data Factory でメトリックやパイプライン実行データなどの非コンピューティング リソースの診断ログを構成します。 Azure Data Factory では、パイプライン実行データが 45 日間保存されます。 このデータをさらに長く保持するには、監査または手動検査のためのストレージ アカウントに診断ログを保存し、リテンション期間を日数で指定します。  また、ログを Azure Event Hubs にストリーミングしたり、ログを分析のために Log Analytics ワークスペースに送信したりすることもできます。
 
-- [Azure アクティビティ ログの診断設定を有効にする方法](/azure/azure-monitor/platform/activity-log)
+- [Azure アクティビティ ログの診断設定を有効にする方法](../azure-monitor/essentials/activity-log.md)
 
 - [Azure Data Factory 診断ログについて](monitor-using-azure-monitor.md)
 
@@ -207,9 +207,9 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 組織でそのセキュリティ イベント ログ データを保持する場合は、データ収集レベル内で格納でき、その後 Log Analytics でそのクエリを実行できます。
 
-- [Azure Monitor で Azure 仮想マシンからデータを収集する方法](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Azure Monitor で Azure 仮想マシンからデータを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
-- [Azure Security Center でのデータ収集の有効化](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Azure Security Center でのデータ収集の有効化](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **責任**: Customer
 
@@ -221,7 +221,7 @@ Azure PowerShell または Azure CLI を使用して、タグに基づいてリ�
 
 - [Azure Data Factory の診断設定を有効にする方法](monitor-using-azure-monitor.md)
 
-- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)
+- [Log Analytics ワークスペースのログ保持パラメーターを設定する方法](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **責任**: Customer
 
@@ -235,9 +235,9 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 または、Azure Sentinel またはサードパーティの SIEM に対してデータを有効にしてオンボードすることもできます。
 
-- [Log Analytics のスキーマ](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#schema-of-logs-and-events)
+- [Log Analytics のスキーマ](./monitor-using-azure-monitor.md#schema-of-logs-and-events)
 
-- [Azure Monitor を使用して Azure 仮想マシンからデータを収集する方法](/azure/azure-monitor/learn/quick-collect-azurevm)
+- [Azure Monitor を使用して Azure 仮想マシンからデータを収集する方法](../azure-monitor/vm/quick-collect-azurevm.md)
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
@@ -253,11 +253,11 @@ Azure Data Factory の診断設定を構成し、Log Analytics ワークスペ�
 
 また、データ ストアに関連するサービスの診断設定が有効になっていることを確認してください。 ガイダンスについては、各サービスのセキュリティ ベースラインを参照できます。
 
-- [Azure Data Factory のアラート](https://docs.microsoft.com/azure/data-factory/monitor-visually#alerts)
+- [Azure Data Factory のアラート](./monitor-visually.md#alerts)
 
-- [サポートされているすべてのメトリック ページ](/azure/azure-monitor/platform/metrics-supported)
+- [サポートされているすべてのメトリック ページ](../azure-monitor/essentials/metrics-supported.md)
 
-- [Log Analytics ワークスペースでアラートを構成する方法](/azure/azure-monitor/platform/alerts-log)
+- [Log Analytics ワークスペースでアラートを構成する方法](../azure-monitor/alerts/alerts-log.md)
 
 **責任**: Customer
 
@@ -279,7 +279,7 @@ Azure Data Factory の診断設定を構成し、Log Analytics ワークスペ�
 
 **ガイダンス**: Azure 仮想マシン (VM) で Integration Runtime を実行している場合は、コマンドライン監査ログを有効にできます。 Azure Security Center では、Azure VM のセキュリティ イベント ログの監視が提供されます。  自動プロビジョニングを有効にすると、Security Center によって、サポートされているすべての Azure VM と新しく作成される VM に Microsoft Monitoring Agent がプロビジョニングされます。またはエージェントを手動でインストールできます。  エージェントにより、プロセス作成イベント 4688 とイベント 4688 内の CommandLine フィールドが有効になります。 VM に作成された新しいプロセスは EventLog に記録され、Security Center の検出サービスによって監視されます。
 
-- [Azure Security Center でのデータ収集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection#data-collection-tier)
+- [Azure Security Center でのデータ収集](../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
 **責任**: Customer
 
@@ -305,7 +305,7 @@ Azure AD はユーザー アクセスを管理するために推奨される方�
 
 - [PowerShell を使用して Azure AD でディレクトリ ロールのメンバーを取得する方法](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-- [ローカル アカウントに関する情報](https://docs.microsoft.com/azure/active-directory/devices/assign-local-admin#manage-the-device-administrator-role)
+- [ローカル アカウントに関する情報](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
 **責任**: Customer
 
@@ -372,7 +372,7 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Azure
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: すべての管理タスクに専用マシン (特権アクセス ワークステーション) を使用する
 
-**ガイダンス**: 多要素認証が構成された特権アクセス ワークステーション (PAW) を使用して Azure リソースにログインし、そのリソースを構成します。 
+**ガイダンス**: 多要素認証が構成された特権アクセス ワークステーション (PAW) を使用して Azure リソースにログインし、構成します。 
 
 - [特権アクセス ワークステーションについて](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
@@ -434,7 +434,7 @@ Azure 仮想マシンでランタイム統合を実行している場合は、�
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
-- [Azure AD のレポートの概要](/azure/active-directory/reports-monitoring/)
+- [Azure AD のレポートの概要](../active-directory/reports-monitoring/index.yml)
 
 - [Azure ID アクセス レビューの使用方法](../active-directory/governance/access-reviews-overview.md)
 
@@ -448,7 +448,7 @@ Azure 仮想マシンでランタイム統合を実行している場合は、�
 
 Azure 仮想マシン (VM) で Integration Runtime を実行している場合は、その VM を Azure Sentinel にオンボードします。 Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ型のセキュリティ情報イベント管理 (SIEM) およびセキュリティ オーケストレーション自動応答 (SOAR) ソリューションです。 Azure Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。
 
-- [Azure アクティビティ ログを Azure Monitor に統合する方法](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Azure アクティビティ ログを Azure Monitor に統合する方法](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Azure AD を使用して Event Hubs リソースへのアクセスを承認する](../event-hubs/authorize-access-azure-active-directory.md)
 
@@ -468,7 +468,7 @@ Azure 仮想マシン (VM) で Integration Runtime を実行している場合�
 
 - [Azure Sentinel をオンボードする方法](../sentinel/quickstart-onboard.md)
 
-- [SQL で Azure AD 認証を構成して管理する](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell)
+- [SQL で Azure AD 認証を構成して管理する](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell)
 
 - [Azure-SSIS 統合ランタイムの Azure AD 認証の有効化](enable-aad-authentication-azure-ssis-ir.md)
 
@@ -620,9 +620,9 @@ Azure 仮想マシンで Integration Runtime を実行している場合、Windo
 
 **ガイダンス**: Azure アクティビティ ログで Azure Monitor を使用して、Azure Data Factory と関連リソースに変更が加えられたときのアラートを作成します。
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
-- [Azure アクティビティ ログ イベントのアラートを作成する方法](/azure/azure-monitor/platform/alerts-activity-log)
+- [Azure アクティビティ ログ イベントのアラートを作成する方法](../azure-monitor/alerts/alerts-activity-log.md)
 
 - [Azure Storage Analytics のログ](../storage/common/storage-analytics-logging.md)
 
@@ -1019,7 +1019,7 @@ Data Factory 共同作成者ロールを使って、データ ファクトリの
 
 - [Azure マネージド ID と統合する方法](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-- [キー コンテナーを作成する方法](/azure/key-vault/quick-create-portal)
+- [キー コンテナーを作成する方法](../key-vault/secrets/quick-create-portal.md)
 
 - [Key Vault に対して認証を行う方法](../key-vault/general/authentication.md)
 
@@ -1243,5 +1243,5 @@ App Service、Data Lake Storage、Blob Storage などの非コンピューティ
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure セキュリティ ベンチマーク V2 の概要](/azure/security/benchmarks/overview)を参照
-- [Azure セキュリティ ベースライン](/azure/security/benchmarks/security-baselines-overview)の詳細について学習する
+- [Azure セキュリティ ベンチマーク V2 の概要](../security/benchmarks/overview.md)を参照
+- [Azure セキュリティ ベースライン](../security/benchmarks/security-baselines-overview.md)の詳細について学習する
