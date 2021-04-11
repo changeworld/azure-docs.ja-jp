@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
-ms.date: 01/29/2021
+ms.date: 03/30/2021
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 590e57d587c8e6e254811892b5c5e740b511c302
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 321a5c473df30dd6f00bbcd1294d48ce8da34009
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104690655"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060382"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft ID プラットフォームの認証ライブラリ
 
@@ -29,7 +29,7 @@ Microsoft ID プラットフォームは、[認定 OpenID プロバイダ](https
 
 ## <a name="single-page-application-spa"></a>シングルページ アプリケーション (SPA)
 
-シングルページ アプリケーションは、ブラウザー画面上で完全に実行され、ページ データ (HTML、CSS、JavaScript) を動的に、またはアプリケーションの読み込み時にフェッチします。 Web API を呼び出して、バックエンド データ ソースとやり取りできます。
+シングルページ アプリケーションは、ブラウザー上で完全に実行され、ページ データ (HTML、CSS、JavaScript) を動的に、またはアプリケーションの読み込み時にフェッチします。 Web API を呼び出して、バックエンド データ ソースとやり取りできます。
 
 SPA のコードは完全にブラウザーで実行されるため、シークレットを安全に格納できない *パブリック クライアント* と見なされます。
 
@@ -45,7 +45,7 @@ Web アプリケーションのコードは Web サーバー上で実行され�
 
 ## <a name="desktop-application"></a>デスクトップ アプリケーション
 
-デスクトップ アプリケーションは、通常、ユーザー インターフェイスを表面に出し、ユーザーのデスクトップで実行されることを意図した、バイナリ (コンパイル済み) コードです。
+デスクトップ アプリケーションは通常は、ユーザー インターフェイスを表示するバイナリ (コンパイル済み) コードであり、ユーザーのデスクトップで実行されるように意図されています。
 
 デスクトップ アプリケーションはユーザーのデスクトップで実行されるため、シークレットを安全に保存できない *パブリック クライアント* と見なされます。
 
@@ -53,7 +53,7 @@ Web アプリケーションのコードは Web サーバー上で実行され�
 
 ## <a name="mobile-application"></a>モバイル アプリケーション
 
-モバイル アプリケーションは、通常、ユーザー インターフェイスを表面に出し、ユーザーのモバイル デバイスで実行されることを意図した、バイナリ (コンパイル済み) コードです。
+モバイル アプリケーションは通常、ユーザー インターフェイスを表示するバイナリ (コンパイル済み) コードであり、ユーザーのモバイル デバイスで実行されるように意図されています。
 
 モバイル アプリケーションはユーザーのモバイル デバイスで実行されるため、シークレットを安全に保存できない *パブリック クライアント* と見なされます。
 

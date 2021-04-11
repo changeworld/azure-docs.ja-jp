@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
 ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "103467393"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form Recognizer の事前構築済み請求書モデル
@@ -107,10 +107,10 @@ JSON 出力には次の 3 つの部分があります。
 |名前| Type | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
 | アイテム | string | 品目の完全な文字列テキスト行 | 3/4/2021 A123 Consulting Services 2 hours $30.00 10% $60.00 | |
-| Amount | 数値 | 品目の金額 | $60.00 | 100 |
+| Amount | number | 品目の金額 | $60.00 | 100 |
 | 説明 | string | 請求書の明細項目の説明テキスト | コンサルティング サービス | コンサルティング サービス |
 | 数量 | 数値 | この請求書明細項目の数量 | 2 | 2 |
-| UnitPrice | 数値 | この項目の 1 つの単位の正味価格または総価格 (請求書の総請求書の設定によって異なります) | $30.00 | 30 |
+| UnitPrice | number | この項目の 1 つの単位の正味価格または総価格 (請求書の総請求書の設定によって異なります) | $30.00 | 30 |
 | ProductCode | string| 特定の品目に関連付けられている製品コード、製品番号、または SKU | A123 | |
 | ユニット | string| 品目の単位 (kg、lb など) | 時間 | |
 | Date | 日付| 各品目に対応する日付。 多くの場合、これは品目が発送された日付です | 3/4/2021| 2021-03-04 |

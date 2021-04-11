@@ -11,12 +11,12 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 9d2b416955234cae7a30ac65dff7d64dedad3b1d
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889112"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640829"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Azure Synapse Analytics と Azure Machine Learning のワークスペースをリンクする (プレビュー)
 
@@ -35,9 +35,9 @@ ML ワークスペースと Synapse ワークスペースのリンクは、[Pyth
 
 * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md?tabs=python)します。
 
-* [Azure portal で Synapse ワークスペースを作成](/synapse-analytics/quickstart-create-workspace.md)します。
+* [Azure portal で Synapse ワークスペースを作成](/azure/synapse-analytics/quickstart-create-workspace)します。
 
-* [Azure portal、Web ツール、または Synapse Studio を使用して Apache Spark プールを作成](/synapse-analytics/quickstart-create-apache-spark-pool-portal.md)します。
+* [Azure portal、Web ツール、または Synapse Studio を使用して Apache Spark プールを作成](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)します。
 
 * [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) をインストールします。
 
