@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: 0c14b9a0c927ef9ed96853ddeed64b161df0d277
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: c0ae5ae4a66ce55da40eae3959945c96013af3ea
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102176707"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075646"
 ---
 # <a name="security-alerts---a-reference-guide"></a>セキュリティ アラート - リファレンス ガイド
 
@@ -510,7 +510,7 @@ Security Center でサポートされているキル チェーンの意図は、
 | **窃盗**        | 窃盗は、敵対者が対象ネットワークからファイルや情報を削除したり、削除するのに役立てたりする技法と属性を指します。 このカテゴリは、敵対者が窃盗するための情報を検索できる、システムまたはネットワーク上の場所もカバーしています。                                                                                                                                                                                                                                                                                                                                  |
 | **指揮統制**   | 指揮統制の手段は、ターゲット ネットワーク内で攻撃者の管理下にあるシステムと攻撃者が通信する方法を表します。                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **影響**              | 影響イベントでは、主として、システム、サービス、ネットワークの可用性や整合性を直接低下させることが試みられます。ビジネスまたは運用プロセスに影響を与えるデータの操作が含まれます。 多くの場合、ランサムウェア、改ざん、データ操作などの手法が使用されます。                                                                                                                                                                                                                                                                                                     |
-|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
+|                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 
 
 > [!NOTE]
 > プレビュー段階のアラートの場合: [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
