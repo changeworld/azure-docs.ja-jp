@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: 46cf34bd40832488985008a645f1da25eb87b9d9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a47c4c5bdc90e148916900b1e72bc2a392d2e473
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467393"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285334"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Form Recognizer の事前構築済み請求書モデル
 
-Azure Form Recognizer を使用すると、事前構築済みの請求書モデルを使用して、販売請求書から情報を分析して抽出できます。 Invoice API を使用すると、お客様は、さまざまな形式の請求書を受け取り、構造化されたデータを返すことで、請求書の処理を自動化することができます。 強力な[光学式文字認識 (OCR)](../computer-vision/concept-recognizing-text.md) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求金額、課税額、出荷先、請求先、品目などのテキスト、テーブル、情報が抽出されます。 Form Recognizer v2.1 プレビューでは、事前構築済みの Invoice API が一般公開されています。
+Azure Form Recognizer を使用すると、事前構築済みの請求書モデルを使用して、販売請求書から情報を分析して抽出できます。 Invoice API を使用すると、お客様は、さまざまな形式の請求書を受け取り、構造化されたデータを返すことで、請求書の処理を自動化することができます。 強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求金額、課税額、出荷先、請求先、品目などのテキスト、テーブル、情報が抽出されます。 Form Recognizer v2.1 プレビューでは、事前構築済みの Invoice API が一般公開されています。
 
 ## <a name="what-does-the-invoice-service-do"></a>請求書サービスの機能
 
@@ -73,7 +73,7 @@ JSON 出力には次の 3 つの部分があります。
 
 請求書サービスにより、テキスト、テーブル、および 26 個の請求書フィールドが抽出されます。 次に示すのは、JSON の出力応答で請求書から抽出されるフィールドです (以下の出力では、こちらの[サンプル請求書](media/sample-invoice.jpg)が使用されています)。
 
-|名前| Type | 説明 | Text | 値 (標準化された出力) |
+|Name| Type | 説明 | Text | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | string | 請求対象の顧客 | Microsoft Corp |  |
 | CustomerId | string | 顧客の参照 ID | CID-12345 |  |
@@ -104,9 +104,9 @@ JSON 出力には次の 3 つの部分があります。
 
 次に示すのは、JSON の出力応答で請求書から抽出される品目です (以下の出力では、こちらの[サンプル請求書](./media/sample-invoice.jpg)が使用されています)  
 
-|名前| Type | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
+|Name| Type | 説明 | テキスト (品目 #1) | 値 (標準化された出力) |
 |:-----|:----|:----|:----| :----|
-| アイテム | string | 品目の完全な文字列テキスト行 | 3/4/2021 A123 Consulting Services 2 hours $30.00 10% $60.00 | |
+| 項目 | string | 品目の完全な文字列テキスト行 | 3/4/2021 A123 Consulting Services 2 hours $30.00 10% $60.00 | |
 | Amount | number | 品目の金額 | $60.00 | 100 |
 | 説明 | string | 請求書の明細項目の説明テキスト | コンサルティング サービス | コンサルティング サービス |
 | 数量 | 数値 | この請求書明細項目の数量 | 2 | 2 |
