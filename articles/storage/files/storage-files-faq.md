@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 81cabe8dea178b2988039640065cb0eabc3287af
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ec8104a5fd8d1c524f75c7a5173015115d85a253
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103470895"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064309"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) では、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview)および[ネットワーク ファイル システム (NFS) プロトコル](https://en.wikipedia.org/wiki/Network_File_System) (プレビュー) を介してアクセスできる、フル マネージドのファイル共有がクラウド上で提供されます。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -183,6 +183,10 @@ ms.locfileid: "103470895"
     File Sync で管理されているファイル共有に対して Azure Backup を有効にした場合、ファイル ACL をバックアップ復元ワークフローの一部として引き続き復元できます。 これは、共有全体または個々のファイル/ディレクトリに対して機能します。
 
     File Sync によって管理されるファイル共有の自己管理型バックアップ ソリューションの一部としてスナップショットを使用している場合、2020 年 2 月 24 日より前に作成された ACL が NTFS ACL に正しく復元されないことがあります。 この問題が発生した場合は、Azure サポートに連絡することを検討してください。
+
+* <a id="afs-lastwritetime"></a>
+  **Azure File Sync ではディレクトリの LastWriteTime が同期されますか。**  
+    いいえ。Azure File Sync ではディレクトリの LastWriteTime が同期されません。 これは仕様です。
     
 ## <a name="security-authentication-and-access-control"></a>セキュリティ、認証、およびアクセス制御
 * <a id="ad-support"></a>

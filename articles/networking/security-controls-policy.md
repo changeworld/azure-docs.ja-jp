@@ -1,18 +1,18 @@
 ---
 title: Azure ネットワーク サービス用の Azure Policy 規制コンプライアンス コントロール
 description: Azure ネットワーク サービスに対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 03/17/2021
+ms.date: 03/31/2021
 ms.topic: sample
 author: KumudD
 ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: a45d1118ae7c872713f93054ad17857911c8bf3e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e097ff7ea49657588b6002bb18972e5b1086f3dc
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104604476"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106096244"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-networking-services"></a>Azure ネットワーク サービス用の Azure Policy 規制コンプライアンス コントロール
 
