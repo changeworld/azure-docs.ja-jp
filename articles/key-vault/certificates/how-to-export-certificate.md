@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: ad3e5bcda0fb03af0637a309b4dbfd248b54f1a0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 116bafe2e26ca3af5b4ed68373d20e1e787502b7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587204"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729203"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Azure Key Vault から証明書をエクスポートする
 
@@ -102,7 +102,7 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 ```
 
 このコマンドは、秘密キー (インポートされたものと同じ) を使用して証明書のチェーン全体をエクスポートします。 証明書がパスワードで保護されていること。
-**Get-AzKeyVaultCertificate** コマンドとパラメーターの詳細については、[Get-AzKeyVaultCertificate の例 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0) を参照してください。
+**Get-AzKeyVaultCertificate** コマンドとパラメーターの詳細については、[Get-AzKeyVaultCertificate の例 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate) を参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

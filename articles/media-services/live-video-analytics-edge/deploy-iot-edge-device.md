@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 2fdf95be0966702f58afbb9df8e09a1688f9b204
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 466cc236c1482b2ae6a31b40b6f3461a2c2fbfc1
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961559"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280294"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -38,7 +38,7 @@ ms.locfileid: "105961559"
 
 ### <a name="set-up-a-premium-streaming-endpoint"></a>Premium ストリーミング エンドポイントを設定する
 
-Live Video Analytics を使用して、継続的にビデオをクラウドに記録し、後でそれを再生する前に、[クエリ API](playback-recordings-how-to.md#query-api) を使用する場合、[Premium ストリーミング エンドポイント](../latest/streaming-endpoint-concept.md#types)を使用するように Media Service を更新することをお勧めします。  
+Live Video Analytics を使用して、継続的にビデオをクラウドに記録し、後でそれを再生する前に、[クエリ API](playback-recordings-how-to.md#query-api) を使用する場合、[Premium ストリーミング エンドポイント](../latest/stream-streaming-endpoint-concept.md#types)を使用するように Media Service を更新することをお勧めします。  
 
 これは省略可能な手順です。 次の Azure CLI コマンドを使用して、それを行うことができます。
 

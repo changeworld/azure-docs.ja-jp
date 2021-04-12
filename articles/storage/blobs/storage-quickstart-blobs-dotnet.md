@@ -1,19 +1,19 @@
 ---
 title: 'クイックスタート: Azure Blob Storage ライブラリ v12 - .NET'
 description: このクイックスタートでは、.NET 用 Azure Blob Storage クライアント ライブラリ バージョン 12 を使用して、BLOB (オブジェクト) ストレージ内にコンテナーと BLOB を作成する方法について説明します。 次に、ローカル コンピューターに BLOB をダウンロードする方法と、コンテナー内のすべての BLOB を一覧表示する方法について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 03/03/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 82dcfa0942f21f01424c4744aa0b23f4672a135f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7ab7c52f6fe392cfebd056a86f0566705fb2b8e6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105106719"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280668"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>クイックスタート: .NET 用 Azure Blob Storage クライアント ライブラリ v12
 

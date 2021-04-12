@@ -8,19 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/09/2021
+ms.date: 03/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b15c63545c71d4513abe9102b4de165e2ab5857a
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: dc52414fa0d2eeffe0381a68bd66eadafe4862ea
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499851"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104781281"
 ---
 # <a name="page-layout-versions"></a>ページ レイアウト バージョン
 
 ページ レイアウト パッケージは定期的に更新され、ページ要素に修正と機能強化が加えられます。 次の変更ログは、各バージョンで導入された変更を示しています。
+
+## <a name="jquery-version"></a>jQuery バージョン
+
+[Azure AD B2C] ページのレイアウトでは、次のバージョンの [jQuery ライブラリ](https://jquery.com/)を使用します。
+
+|ページ レイアウトのバージョンから  |jQuery バージョン  |
+|---------|---------|
+|2.1.4 | 3.5.1 |
+|1.2.0 | 3.4.1 |
+|1.1.0 | 1.10.2 |
 
 ## <a name="self-asserted-page-selfasserted"></a>セルフアサート ページ (selfasserted)
 

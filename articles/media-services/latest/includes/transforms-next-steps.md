@@ -4,20 +4,20 @@ ms.service: media-services
 ms.topic: include
 ms.date: 1/14/2020
 ms.author: inhenkel
-ms.openlocfilehash: 3b95f586111cc6fde94bee9cef85edff430bdb61
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 13bc8dcc5deac111c5af515a3a7854f01c85bd06
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101705433"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279835"
 ---
 <!-- Migration guide next steps -->
 
 変換を作成するためのその他のハウツー ガイド:
 
-- [変換の作成方法](../how-to-create-transform.md)
-- [REST を使用して基本的なオーディオ変換を作成する方法](../how-to-create-basic-audio-transform.md)
-- [サムネイル スプライトを作成する方法](../how-to-create-thumbnail-sprites.md)
-- [REST を使用して copyAllBitrateNonInterleaved 変換を作成する方法](../how-to-create-copyallbitratenoninterleaved-transform.md)
-- [REST を使用してエンコードせずにビデオをコピーする方法](../how-to-create-copy-video-audio-transform.md)
-- [ビデオをサブクリップする方法](../subclip-video-dotnet-howto.md)
+- [変換の作成方法](../transform-create-transform-how-to.md)
+- [REST を使用して基本的なオーディオ変換を作成する方法](../transform-create-basic-audio-how-to.md)
+- [サムネイル スプライトを作成する方法](../transform-create-thumbnail-sprites-how-to.md)
+- [REST を使用して copyAllBitrateNonInterleaved 変換を作成する方法](../transform-create-copyallbitratenoninterleaved-how-to.md)
+- [REST を使用してエンコードせずにビデオをコピーする方法](../transform-create-copy-video-audio-how-to.md)
+- [ビデオをサブクリップする方法](../transform-subclip-video-dotnet-how-to.md)
