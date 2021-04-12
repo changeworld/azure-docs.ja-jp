@@ -1,15 +1,14 @@
 ---
 title: バックアップ エクスプローラーを使用してバックアップを監視する
 description: この記事では、バックアップ エクスプローラーを使用して、コンテナー、サブスクリプション、リージョン、およびテナントにわたるバックアップのリアルタイムでの監視を行う方法について説明します。
-ms.reviewer: dcurwin
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.openlocfilehash: a50b9ee05be48113221f2a12f968540bd3a00b3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78d3117d363059b6a298740f7b5daa31e10751c8
+ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88824414"
+ms.lasthandoff: 04/04/2021
+ms.locfileid: "106294061"
 ---
 # <a name="monitor-your-backups-with-backup-explorer"></a>バックアップ エクスプローラーを使用してバックアップを監視する
 

@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
-ms.openlocfilehash: 677c5998d25205f8de9792888af2554674944798
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: e4d1ed0c015b75cc058c7d6136069a8858d835e2
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107568"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492530"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Media Services v3 API に接続する - .NET
 
@@ -240,7 +240,7 @@ namespace ConsoleApp1
 - [チュートリアル: Media Services v3 でビデオを分析する - .NET](analyze-videos-tutorial.md)
 - [ローカル ファイルからジョブの入力を作成する - .NET](job-input-from-local-file-how-to.md)
 - [HTTPS URL からジョブの入力を作成する - .NET](job-input-from-http-how-to.md)
-- [カスタム変換を使用してエンコードする - .NET](encode-custom-presets-how-to.md)
+- [カスタム変換を使用してエンコードする - .NET](transform-custom-presets-how-to.md)
 - [AES-128 動的暗号化とキー配信サービスを使用する - .NET](drm-playready-license-template-concept.md)
 - [DRM 動的暗号化とライセンス配信サービスを使用する - .NET](drm-protect-with-drm-tutorial.md)
 - [既存のポリシーから署名キーを取得する - .NET](drm-get-content-key-policy-dotnet-how-to.md)

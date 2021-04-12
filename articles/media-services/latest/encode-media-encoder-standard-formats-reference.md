@@ -14,18 +14,18 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.reviewer: anilmur
-ms.openlocfilehash: eb1b39f268934a71acb05d99bbeecb1b27b27a77
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 2fe8f5d0acb2ab7e2f1c64dde1bedb19b96111e9
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111198"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492292"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Standard Encoder の形式およびコーデック
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-この記事では、[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。 **StandardEncoderPreset** を使用してカスタム プリセットを作成する方法については、「[カスタム プリセットを使用して変換を作成する](encode-custom-presets-how-to.md)」を参照してください。
+この記事では、[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) で使用できる一般的なインポートおよびエクスポート ファイル形式の一覧を示しています。 **StandardEncoderPreset** を使用してカスタム プリセットを作成する方法については、「[カスタム プリセットを使用して変換を作成する](transform-custom-presets-how-to.md)」を参照してください。
 
 ## <a name="input-containerfile-formats"></a>入力コンテナー/ファイル形式
 
@@ -103,4 +103,4 @@ Standard Encoder の入力コンテナーは、次のオーディオ形式に対
 
 ## <a name="next-steps"></a>次の手順
 
-[カスタム プリセットを使用して変換を作成する](encode-custom-presets-how-to.md)
+[カスタム プリセットを使用して変換を作成する](transform-custom-presets-how-to.md)
