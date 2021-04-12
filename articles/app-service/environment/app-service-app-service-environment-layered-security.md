@@ -1,6 +1,6 @@
 ---
 title: 多層セキュリティ v1
-description: App Service 環境で階層化された、セキュリティ アーキテクチャを実装する方法を学びます。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
+description: App Service Environment で階層化された、セキュリティ アーキテクチャを実装する方法を学びます。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: stefsch
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.topic: article

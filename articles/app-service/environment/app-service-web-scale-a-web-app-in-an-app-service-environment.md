@@ -1,6 +1,6 @@
 ---
 title: ASE v1 におけるアプリをスケールする
-description: App Service Environmen 内でのアプリのスケーリング。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
+description: App Service Environment 内でのアプリのスケーリング。 このドキュメントは、レガシ v1 ASE を使用するお客様にのみ提供されます。
 author: ccompy
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
 ms.topic: article

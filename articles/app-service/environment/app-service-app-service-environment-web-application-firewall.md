@@ -19,7 +19,7 @@ ms.locfileid: "90973713"
 
 Web アプリケーション ファイアウォール (WAF) は、着信する Web トラフィックを検査して、SQL インジェクション、クロスサイト スクリプティング、マルウェアのアップロード、アプリケーション DDoS、およびその他の攻撃をブロックすることにより、Web アプリケーションのセキュリティを確保するのに役立ちます。 さらに、データ損失防止 (DLP) のためにバックエンド Web サーバーからの応答を検査することもできます。 App Service Environment が提供する分離と追加スケーリングと組み合わせることで、悪意のある要求と大量のトラフィックに対処する必要がある、ビジネスに不可欠な Web アプリケーションをホストする理想的な環境が用意されます。 Azure では、[Application Gateway](../../application-gateway/overview.md) で WAF 機能が提供されます。  App Service Environment と Application Gateway を統合する方法については、[ILB ASE と Application Gateway の統合](./integrate-with-application-gateway.md)に関するドキュメントを参照してください。
 
-Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.barracuda.com/programs/azure) のように [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice) で入手できるマーケットプレース オプションがいくつかあります。 このドキュメントの残りの部分では、App Service Environment と Barracuda WAF デバイスを統合する方法について説明します。
+Azure Application Gateway に加えて、[Azure 用 Barracuda WAF](https://www.barracuda.com/programs/azure) のように [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf?tab=PlansAndPrice) で入手できるマーケットプレース オプションがいくつかあります。 このドキュメントの残りの部分では、 App Service Environment と Barracuda WAF デバイスを統合する方法について説明します。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)] 
 

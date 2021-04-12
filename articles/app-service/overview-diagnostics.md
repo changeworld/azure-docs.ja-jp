@@ -20,11 +20,11 @@ Web アプリケーションを実行するに当たっては、500 エラーが
 
 このエクスペリエンスはアプリの問題発生時刻が過去 24 時間以内である場合に最も役立ちますが、すべての診断グラフを常に分析に利用できます。
 
-App Service 診断は、Windows 上のアプリだけでなく、[Linux/コンテナー](./overview.md#app-service-on-linux)、[App Service 環境](./environment/intro.md)、および [Azure Functions](../azure-functions/functions-overview.md) 上のアプリに対しても機能します。
+App Service 診断は、Windows 上のアプリだけでなく、[Linux/コンテナー](./overview.md#app-service-on-linux)、[App Service Environment](./environment/intro.md)、および [Azure Functions](../azure-functions/functions-overview.md) 上のアプリに対しても機能します。
 
 ## <a name="open-app-service-diagnostics"></a>App Service 診断を開く
 
-App Service 診断にアクセスするには、[Azure portal](https://portal.azure.com) 上の App Service Web アプリまたは App Service 環境に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** をクリックします。
+App Service 診断にアクセスするには、[Azure portal](https://portal.azure.com) 上の App Service Web アプリまたは App Service Environment に移動します。 左側のナビゲーションで、 **[問題の診断と解決]** をクリックします。
 
 Azure Functions の場合、関数アプリに移動し、上部ナビゲーションにある **[プラットフォーム機能]** をクリックし、 **[リソース管理]** セクションの **[問題の診断と解決]** を選択します。
 
