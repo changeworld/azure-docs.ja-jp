@@ -3,12 +3,12 @@ title: Azure Functions ランタイムに到達できないエラーのトラブ
 description: 無効なストレージ アカウントのトラブルシューティング方法について説明します。
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: a62001cedd695badc72eb76c93ea9c3cb4507403
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 392882fc2f0394e61aee973a20479d8f1fa9bc92
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499630"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104606975"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>"Azure Functions ランタイムに到達できない" エラーのトラブルシューティング
 
@@ -59,6 +59,7 @@ Azure portal でご自分のストレージ アカウントを検索して、ま
 * ストレージ アカウント間のトラフィックを許可するため、正しいネットワーク規則なしで関数アプリが App Service Environment (ASE) にデプロイされた。
 
 * ストレージ アカウントのファイアウォールが有効になっていて、Functions 間のトラフィックを許可するように構成されていない。 詳細については、[Azure Storage ファイアウォールおよび仮想ネットワークの構成](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関する記事を参照してください。
+* `allowSharedKeyAccess` 設定が、既定値である `true` に設定されていることを確認します。 詳細については、[Azure ストレージ アカウントの共有キーによる認可の禁止](https://docs.microsoft.com/azure/storage/common/shared-key-authorization-prevent?tabs=portal#verify-that-shared-key-access-is-not-allowed)に関するページを参照してください。 
 
 ## <a name="daily-execution-quota-is-full"></a>日ごとの実行クォータがいっぱいである
 

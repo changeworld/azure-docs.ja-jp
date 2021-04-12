@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault アクセス ポリシーを割り当てる
-description: Azure portal、Azure CLI、または Azure PowerShell を使用して、サービス プリンシパルまたはアプリケーション ID に Key Vault アクセス ポリシーを割り当てる方法について説明します。
+description: Azure portal、Azure CLI、または Azure PowerShell を使用して、セキュリティ プリンシパルまたはアプリケーション ID に Key Vault アクセス ポリシーを割り当てる方法について説明します。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4cf0393cdb0aae1b352b81df4893f874f34970cc
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 4637715b2ba885d58ebb4c5f3ed40a79be2f815b
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934537"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968732"
 ---
 # <a name="assign-a-key-vault-access-policy-using-azure-powershell"></a>Azure PowerShell を使用して Key Vault アクセス ポリシーを割り当てる
 
-Key Vault アクセス ポリシーは、特定のサービス プリンシパル (アプリケーションまたはユーザー グループ) が、Key Vault の[シークレット](../secrets/index.yml)、[キー](../keys/index.yml)、および[証明書](../certificates/index.yml)に対して、さまざまな操作を実行できるかどうかを決定します。 アクセス ポリシーは、[Azure portal](assign-access-policy-portal.md)、[Azure CLI](assign-access-policy-cli.md)、または Azure PowerShell (この記事) を使用して割り当てることができます。
+Key Vault アクセス ポリシーは、特定のセキュリティ プリンシパル (ユーザー、アプリケーション、またはユーザー グループ) が、Key Vault の[シークレット](../secrets/index.yml)、[キー](../keys/index.yml)、および[証明書](../certificates/index.yml)に対して、さまざまな操作を実行できるかどうかを決定します。 アクセス ポリシーは、[Azure portal](assign-access-policy-portal.md)、[Azure CLI](assign-access-policy-cli.md)、または Azure PowerShell (この記事) を使用して割り当てることができます。
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 

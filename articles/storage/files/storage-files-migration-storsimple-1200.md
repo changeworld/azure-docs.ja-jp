@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: 8562d63bf227fff665c70674c7fe66922bce9992
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98882282"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 の Azure File Sync への移行
@@ -210,13 +210,13 @@ Windows Server フォルダーに共有を作成し、必要に応じて、そ�
 これらの複数のコピーを並行して実行することができます。 一度に 1 つの Azure ファイル共有のスコープを処理することをお勧めします。
 
 > [!WARNING]
-> StorSimple から Windows Server にすべてのデータを移動したら、移行は完了です。Azure portal で "***すべての** _" 同期グループに戻り、クラウドを使った階層化ボリュームの空き領域の割合の値を、キャッシュの使用に適したもの (20% など) に調整します。 
+> StorSimple から Windows Server にすべてのデータを移動したら、移行は完了です。Azure portal で ***すべての*** 同期グループに戻り、クラウドを使った階層化ボリュームの空き領域の割合の値を、キャッシュの使用に適したもの (20% など) に調整します。 
 
 クラウドを使った階層化ボリュームの空き領域ポリシーはボリューム レベルで動作し、複数のサーバー エンドポイントがそこから同期する可能性があります。 1 つのサーバー エンドポイントでも空き領域を調整し忘れた場合、同期では最も制限の厳しい規則が引き続き適用され、99% の空きディスク領域が確保されて、ローカル キャッシュが期待どおりに実行されなくなります。 アクセス頻度の低いアーカイブ データのみが含まれるボリューム用の名前空間のみを使用することを目的としている場合を除きます。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-発生する可能性が最も高い問題は、Windows Server 側で _"ボリュームがいっぱい"* になったために RoboCopy コマンドが失敗することです。 その場合は、アップロード速度よりダウンロード速度の方が速い可能性があります。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカル環境の Windows Server ディスクから内容が退避されます。
+最も可能性の高い問題は、Windows Server 側で "*ボリュームがいっぱい*" になったために RoboCopy コマンドが失敗することです。 その場合は、アップロード速度よりダウンロード速度の方が速い可能性があります。 クラウドを使った階層化は 1 時間ごとに動作し、同期されたローカル環境の Windows Server ディスクから内容が退避されます。
 
 同期を進行させ、クラウドを使った階層化にディスク領域を解放させます。 これは、Windows Server のエクスプローラーで確認できます。
 

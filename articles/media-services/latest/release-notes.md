@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: b7d99e3de8a796dea19f3a2ad7a03b98239981e2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 796abf8506a832c4053b505e903bb24ef9d09004
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121100"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279036"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -150,7 +150,7 @@ Azure Media Services は、ノルウェー東部リージョンの Azure portal 
 
 インデクサー v1 およびインデクサー v2 を使用しているお客様は、Basic の音声分析のプリセットに移行する必要があります。
 
-基本的な音声アナライザー モードの詳細については、[ビデオおよび音声のファイルの分析](analyze-video-audio-files-concept.md)に関するページを参照してください。  REST API で Basic の音声アナライザー モードを使用する方法については、[基本的なオーディオ変換を作成する方法](how-to-create-basic-audio-transform.md)に関するページを参照してください。
+基本的な音声アナライザー モードの詳細については、[ビデオおよび音声のファイルの分析](analyze-video-audio-files-concept.md)に関するページを参照してください。  REST API で Basic の音声アナライザー モードを使用する方法については、[基本的なオーディオ変換を作成する方法](transform-create-basic-audio-how-to.md)に関するページを参照してください。
 
 ### <a name="live-events"></a>ライブ イベント
 
@@ -324,8 +324,8 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 
 次の例を参照してください。
 
-* [.NET を使用してビデオをサブクリップする](subclip-video-dotnet-howto.md)
-* [REST を使用してビデオをサブクリップする](subclip-video-rest-howto.md)
+* [.NET を使用してビデオをサブクリップする](transform-subclip-video-dotnet-how-to.md)
+* [REST を使用してビデオをサブクリップする](transform-subclip-video-rest-how-to.md)
 
 ## <a name="may-2019"></a>2019 年 5 月
 
@@ -334,7 +334,7 @@ Media Services を南アフリカ北部と南アフリカ西部の各リージ�
 Media Services で出力されたテレメトリ データを Azure Monitor を使用して表示できるようになりました。
 
 * Azure Monitor の診断ログを使用して、Media Services のキー配信エンドポイントによって送信された要求を監視します。 
-* Media Services の[ストリーミング エンドポイント](streaming-endpoint-concept.md)によって出力されたメトリックを監視します。   
+* Media Services の[ストリーミング エンドポイント](stream-streaming-endpoint-concept.md)によって出力されたメトリックを監視します。   
 
 詳細については、「[Media Services のメトリックと診断ログの監視](monitoring/monitor-media-services-data-reference.md)」を参照してください。
 
