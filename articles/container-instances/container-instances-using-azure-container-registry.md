@@ -72,7 +72,7 @@ az keyvault secret set \
 
 上記のコマンドの `--role` 引数により、*acrpull* ロールを持つサービス プリンシパルが構成されます。これにより、レジストリに対するプルのみのアクセス権が付与されます。 プッシュ アクセス権とプル アクセス権の両方を付与するには、`--role` 引数を *acrpush* に変更します。
 
-次にサービス プリンシパルの *appId* をコンテナーに格納します。appId は、認証のために Azure コンテナー レジストリに渡す **ユーザー名** です。
+次にサービス プリンシパルの *appId* をコンテナーに格納します。appId は、認証のために Azure Container Registry に渡す **ユーザー名** です。
 
 ```azurecli
 # Store service principal ID in vault (the registry *username*)
@@ -163,7 +163,7 @@ Azure Container Registry にコンテナー イメージを保持している場
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure コンテナー レジストリの認証について詳しくは、「[Azure コンテナー レジストリによる認証](../container-registry/container-registry-authentication.md)」をご覧ください。
+Azure Container Registry の認証について詳しくは、「[Azure Container Registry による認証](../container-registry/container-registry-authentication.md)」をご覧ください。
 
 <!-- IMAGES -->
 [acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png
