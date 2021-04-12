@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cb7e047d998342125a52af5ea3ae1e88fe88d313
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c084df60fa2293a614726be44669a1465b399d2c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "93289906"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557209"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLI を使用して Key Vault を管理します。 
 
@@ -147,7 +147,7 @@ az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" -
 az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
-作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** を使用し、常に現在のバージョンを取得します。 https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] を使用し、この特定のバージョンを取得します。 たとえば、 **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** です。 
+作成したキーや、Azure Key Vault にアップロードしたキーは、その URI を使用すると参照できます。 `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey` を使用して、常に現在のバージョンを取得します。 https://[keyvault-name].vault.azure.net/keys/[keyname]/[key-unique-id] を使用し、この特定のバージョンを取得します。 たとえば、「 `https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87` 」のように入力します。 
 
 資格情報コンテナーにシークレットを追加します (SQLPassword という名前のパスワードで、Azure Key Vault に "hVFkk965BuUv" の値を設定)。 
 

@@ -3,19 +3,14 @@ title: Azure ディスク バックアップの概要
 description: Azure ディスク バックアップ ソリューションについて説明します。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 4db2a5f3f02322f18fcf9203c3560905cde86996
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 9449fdc57909cb143d381ae074913c79d24c8893
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98915510"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107297"
 ---
-# <a name="overview-of-azure-disk-backup-in-preview"></a>Azure ディスク バックアップ (プレビュー) の概要
-
->[!IMPORTANT]
->Azure ディスク バックアップは、サービス レベル アグリーメントのないプレビュー段階であるため、運用ワークロードにはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 利用可能なリージョンについては、[サポート マトリックス](disk-backup-support-matrix.md)に関するページをご覧ください。
->
->プレビューにサインアップするには、[このフォームに入力](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)してください。
+# <a name="overview-of-azure-disk-backup"></a>Azure ディスク バックアップの概要
 
 Azure ディスク バックアップは、マネージド ディスク内のデータを保護するネイティブのクラウドベースのバックアップ ソリューションです。 これはわずかな手順でマネージド ディスクの保護を構成できる、シンプルで安全なコスト効率の高いソリューションです。 これによって災害時にデータを復旧できるようになります。
 

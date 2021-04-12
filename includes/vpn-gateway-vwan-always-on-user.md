@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 3b68fce603801c7bc1aee2af871df257b5f69197
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96027086"
 ---
 1. こちらの[ポイント対サイト VPN クライアント](../articles/vpn-gateway/point-to-site-how-to-vpn-client-install-azure-cert.md)に関する記事に示されているように、Windows 10 クライアントにクライアント証明書をインストールします。 証明書は、現在のユーザー ストアに存在する必要があります。
@@ -128,6 +128,6 @@ ms.locfileid: "96027086"
    ```
    
    ![MachineCertTest](./media/vpn-gateway-vwan-always-on-user/p2s2.jpg)
-1. **[VPN 設定]** で、**UserTest** エントリを探して、 **[接続]** を選択します。
+1. **[VPN 設定]** で、**UserTest** エントリを探して、**[接続]** を選択します。
 
 1. 接続に成功した場合は、Always On ユーザー トンネルは正常に構成されています。
