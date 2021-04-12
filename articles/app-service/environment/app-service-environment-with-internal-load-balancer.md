@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021522"
 ---
-# <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service 環境での内部ロード バランサーの使用
+# <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment での内部ロード バランサーの使用
 
 > [!NOTE] 
 > この記事は、App Service Environment v1 に関するものです。 より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](intro.md)」を参照してください。

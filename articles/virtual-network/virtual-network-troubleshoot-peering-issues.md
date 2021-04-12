@@ -48,7 +48,7 @@ ms.locfileid: "103200526"
 > * 仮想マシン スケール セット (Basic ILB SKU を使用)
 > * Azure Service Fabric クラスター (Basic ILB SKU を使用)
 > * SQL Server Always On (Basic ILB SKU を使用)
-> * PowerApps 用 Azure App Service 環境 (Basic ILB SKU を使用)
+> * PowerApps 用 Azure App Service Environment (Basic ILB SKU を使用)
 > * Azure API Management (Basic ILB SKU を使用)
 > * Azure Active Directory Domain Service (Azure AD DS) (Basic ILB SKU を使用)
 

@@ -87,7 +87,7 @@ ms.locfileid: "100007110"
 アプリケーション マップでは、**クラウド ロール名** プロパティを使用して、マップ上のコンポーネントが識別されます。 クラウド ロール名を手動で設定またはオーバーライドし、アプリケーション マップ上に表示される内容を変更するには、次のようにします。
 
 > [!NOTE]
-> Application Insights SDK または Agent では、Azure App Service 環境のコンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。
+> Application Insights SDK または Agent では、Azure App Service Environment のコンポーネントで生成されたテレメトリにクラウド ロール名プロパティが自動的に追加されます。
 
 # <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
