@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: inhenkel
-ms.openlocfilehash: 06c0c6333b84697415ef598d4c5e853d5c006f08
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: c5fa3aa8397ea6e13500717f035c414af8de8e3d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104870162"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121678"
 ---
 # <a name="how-to-scale-media-reserved-units"></a>メディア占有ユニットをスケーリングする方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "104870162"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Media Services アカウントを作成する](./create-account-howto.md)
+[Media Services アカウントを作成する](./account-create-how-to.md)
 
 [メディア占有ユニット](concept-media-reserved-units.md)について理解する。
 
@@ -46,8 +46,8 @@ az ams account mru set -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="next-step"></a>次のステップ
 
-[ビデオを分析する](analyze-videos-tutorial-with-api.md)
+[ビデオを分析する](analyze-videos-tutorial.md)
 
 ## <a name="see-also"></a>関連項目
 
-* [クォータと制限](limits-quotas-constraints.md)
+* [クォータと制限](limits-quotas-constraints-reference.md)

@@ -1,19 +1,19 @@
 ---
-title: Azure Private Link を使用した Azure Cache for Redis (プレビュー)
+title: Azure Private Link を使用した Azure Cache for Redis
 description: Azure プライベート エンドポイントは、Azure Private Link を使用した Azure Cache for Redis にプライベートかつ安全に接続するネットワーク インターフェイスです。 この記事では、Azure portal を使用して Azure Cache、Azure 仮想ネットワーク、プライベート エンドポイントを作成する方法について学習します。
 author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 22bdf93e7236ae5220a6bb7c6ead898628bb51a1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 3/31/2021
+ms.openlocfilehash: 952f708d8f368b63f772e3af35f6fd441d65622d
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97007587"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121661"
 ---
-# <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure Private Link を使用した Azure Cache for Redis (パブリック プレビュー)
+# <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure Private Link を使用した Azure Cache for Redis
 この記事では、Azure portal を使用して、仮想ネットワークと、プライベート エンドポイントを利用する Azure Cache for Redis インスタンスを作成する方法について学習します。 また、既存の Azure Cache for Redis インスタンスにプライベート エンドポイントを追加する方法について学習します。
 
 Azure プライベート エンドポイントは、Azure Private Link を使用した Azure Cache for Redis にプライベートかつ安全に接続するネットワーク インターフェイスです。 
@@ -22,8 +22,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 * Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
 
 > [!IMPORTANT]
-> プライベート エンドポイントを使用するには、Azure Cache for Redis インスタンスが 2020 年 7 月 28 日より後に作成されている必要があります。
-> 現在、geo レプリケーション、ファイアウォール規則、ポータル コンソールのサポート、クラスター化されたキャッシュごとの複数のエンドポイント、ファイアウォールと VNet の挿入されたキャッシュの永続化はサポートされていません。 
+> 現時点では、ゾーン冗長、ポータル コンソールのサポート、ファイアウォール ストレージ アカウントへの永続化はサポートされていません。 
 >
 >
 
@@ -112,19 +111,8 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 > [!IMPORTANT]
 > 
 > `publicNetworkAccess` フラグは既定で `Disabled` に設定されています。 
-> このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 この値を `Disabled` または `Enabled` に設定するには、次の PATCH 要求を使用します。 この値を編集して、キャッシュに適したフラグを指定します。
-> ```http
-> PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
-> {    "properties": {
->        "publicNetworkAccess":"Disabled"
->    }
-> }
-> ```
+> このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 値を `Disabled` または `Enabled` に設定できます。 値を変更する方法の詳細については、[よくあるご質問](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)を参照してください。
 >
-
-> [!IMPORTANT]
-> 
-> クラスター化されたキャッシュに接続するには、`publicNetworkAccess` を `Disabled` に設定する必要があり、プライベート エンドポイント接続は 1 つしか保持できません。 
 >
 
 ## <a name="create-a-private-endpoint-with-an-existing-azure-cache-for-redis-instance"></a>既存の Azure Cache for Redis インスタンスを使用してプライベート エンドポイントを作成する 
@@ -173,7 +161,7 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 2. プライベート エンドポイントを追加するキャッシュ インスタンスを選択します。
 
-3. 画面の左側で、 **[(PREVIEW) Private Endpoint]\((プレビュー) プライベート エンドポイント\)** を選択します。
+3. 画面の左側で、 **[プライベート エンドポイント]** を選択します。
 
 4. **[プライベート エンドポイント]** ボタンをクリックして、プライベート エンドポイントを作成します。
 
@@ -204,16 +192,36 @@ Azure プライベート エンドポイントは、Azure Private Link を使用
 
 13. 緑色の **検証に成功** のメッセージが表示された後、 **[作成]** を選択します。
 
+> [!IMPORTANT]
+> 
+> `publicNetworkAccess` フラグは既定で `Disabled` に設定されています。 
+> このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 値を `Disabled` または `Enabled` に設定できます。 値を変更する方法の詳細については、[よくあるご質問](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)を参照してください。
+>
+>
+
+
 ## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="why-cant-i-connect-to-a-private-endpoint"></a>プライベート エンドポイントに接続できないのはなぜですか。
-キャッシュが既に VNet インジェクションされたキャッシュである場合、プライベート エンドポイントをそのキャッシュ インスタンスで使用できません。 キャッシュ インスタンスがサポートされていない機能 (下記参照) を使用している場合は、プライベート エンドポイント インスタンスに接続できません。 さらに、プライベート エンドポイントを使用するには、キャッシュ インスタンスが 7 月 27 日より後に作成されている必要があります。
+キャッシュが既に VNet インジェクションされたキャッシュである場合、プライベート エンドポイントをそのキャッシュ インスタンスで使用できません。 キャッシュ インスタンスがサポートされていない機能 (下記参照) を使用している場合は、プライベート エンドポイント インスタンスに接続できません。
 
 ### <a name="what-features-are-not-supported-with-private-endpoints"></a>プライベート エンドポイントでサポートされていない機能は何ですか。
-geo レプリケーション、ファイアウォール規則、ポータル コンソールのサポート、クラスター化されたキャッシュあたり複数のエンドポイント、ファイアウォール規則とゾーン冗長の永続化。 
+現時点では、ゾーン冗長、ポータル コンソールのサポート、ファイアウォール ストレージ アカウントへの永続化はサポートされていません。 
 
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>プライベート エンドポイントをパブリック ネットワーク アクセスに対して無効または有効になるように変更するにはどうすればよいですか。
-`publicNetworkAccess` フラグは既定で `Disabled` に設定されています。 このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 この値を `Disabled` または `Enabled` に設定するには、次の PATCH 要求を使用します。 この値を編集して、キャッシュに適したフラグを指定します。
+`publicNetworkAccess` フラグは既定で `Disabled` に設定されています。 このフラグは、パブリック エンドポイントとプライベート エンドポイントの両方に対してキャッシュへのアクセスを必要に応じて許可できるようにするためにあります (`Enabled` に設定されている場合)。 `Disabled` に設定すると、プライベート エンドポイントのアクセスのみが許可されます。 Azure portal または Restful API パッチ要求で、この値を `Disabled` または `Enabled` に設定できます。 
+
+Azure portal で値を変更するには、こちらの手順を実行します。
+
+1. Azure portal で、**Azure Cache for Redis** を検索し、Enter キーを押すか、検索候補からそれを選択します。
+
+2. パブリック ネットワーク アクセスの値を変更するキャッシュ インスタンスを選択します。
+
+3. 画面の左側で、 **[プライベート エンドポイント]** を選択します。
+
+4. **[パブリック ネットワーク アクセスを有効にする]** ボタンをクリックします。
+
+Restful API パッチ要求を使用して値を変更するには、下を参照して、キャッシュに必要なフラグを反映するように値を編集します。
 
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
@@ -223,24 +231,23 @@ PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/
 }
 ```
 
+### <a name="how-can-i-have-multiple-endpoints-in-different-virtual-networks"></a>異なる仮想ネットワーク内に複数のエンドポイントを配置するにはどうすればよいですか。
+異なる仮想ネットワーク内に複数のプライベート エンドポイントを配置するには、プライベート エンドポイントを作成する "_前に_"、プライベート DNS ゾーンを複数の仮想ネットワークに手動で構成する必要があります。 詳細については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md)」をご覧ください。 
+
+### <a name="what-happens-if-i-delete-all-the-private-endpoints-on-my-cache"></a>キャッシュのすべてのプライベート エンドポイントを削除するとどうなりますか。
+キャッシュのプライベート エンドポイントを削除すると、明示的にパブリック ネットワーク アクセスを有効にするか、別のプライベート エンドポイントを追加するまで、キャッシュ インスタンスに到達できなくなる可能性があります。 `publicNetworkAccess` フラグは、Azure portal または Restful API パッチ要求のいずれかで変更できます。 値を変更する方法の詳細については、[よくあるご質問](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access)を参照してください。
+
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>ネットワーク セキュリティ グループ (NSG) はプライベート エンドポイントでは有効になっていますか。
 いいえ、プライベート エンドポイントでは無効になっています。 プライベート エンドポイントを含むサブネットに NSG を関連付けることはできますが、プライベート エンドポイントによって処理されるトラフィックに対して規則は有効ではありません。 サブネットにプライベート エンドポイントをデプロイするには、[ネットワーク ポリシーの適用を無効にする](../private-link/disable-private-endpoint-network-policy.md)必要があります。 NSG は、同じサブネット上にホストされている他のワークロードにも適用されます。 クライアント サブネット上のルートは /32 プレフィックスを使用するため、既定のルーティング動作を変更するには同様の UDR が必要です。 
 
 ソース クライアントにおけるアウトバウンド トラフィックに対して NSG 規則を使用して、トラフィックを制御します。 /32 プレフィックスを持つ個々のルートをデプロイして、プライベート エンドポイント ルートをオーバーライドします。 送信接続の NSG フロー ログと監視情報は引き続きサポートされており、使用することができます
 
-### <a name="can-i-use-firewall-rules-with-private-endpoints"></a>プライベート エンドポイントでファイアウォール ルールを使用できますか。
-できません。これは、プライベート エンドポイントに関する現在の制限です。 キャッシュに対してファイアウォール ルールが構成されている場合、プライベート エンドポイントは正常に機能しません。
-
-### <a name="how-can-i-connect-to-a-clustered-cache"></a>クラスター化されたキャッシュに接続するにはどうすればよいですか。
-`publicNetworkAccess` を `Disabled` に設定する必要があり、プライベート エンドポイント接続は 1 つしか保持できません。
-
 ### <a name="since-my-private-endpoint-instance-is-not-in-my-vnet-how-is-it-associated-with-my-vnet"></a>プライベート エンドポイント インスタンスは自分の VNet に含まれていませんが、VNet とどのように関連付けられていますか。
 お使いの VNet にリンクされているだけです。 これは VNet 内に存在しないため、依存エンドポイントに対して NSG 規則を変更する必要はありません。
 
 ### <a name="how-can-i-migrate-my-vnet-injected-cache-to-a-private-endpoint-cache"></a>VNet インジェクションされたキャッシュをプライベート エンドポイント キャッシュに移行するにはどうすればよいですか。
-VNet インジェクションされたキャッシュを削除し、プライベート エンドポイントで新しいキャッシュ インスタンスを作成する必要があります。
+VNet インジェクションされたキャッシュを削除し、プライベート エンドポイントで新しいキャッシュ インスタンスを作成する必要があります。 詳細については、「[Azure Cache for Redis に移行する](cache-migration-guide.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-
 * Azure Private Link の詳細については、[Azure Private Link のドキュメント](../private-link/private-link-overview.md)を参照してください。
 * キャッシュ インスタンスのさまざまなネットワークの分離のオプションを比較するには、「[Azure Cache for Redis のネットワークの分離オプション](cache-network-isolation.md)」のドキュメントを参照してください。

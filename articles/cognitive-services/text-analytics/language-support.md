@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: aahi
-ms.openlocfilehash: f6a109c10491ad2eabb12069157e9e6f394bc1f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e257209060396fbf45a4a24c38bc6950acb5168
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101736612"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106387028"
 ---
 # <a name="text-analytics-api-v3-language-support"></a>Text Analytics API v3 の言語のサポート 
 
@@ -28,6 +28,7 @@ ms.locfileid: "101736612"
 | 英語               |     `en`      |     ✓      |         2019-10-01         |                    |
 | フランス語                |     `fr`      |     ✓      |         2019-10-01         |                    |
 | ドイツ語                |     `de`      |     ✓      |         2019-10-01         |                    |
+| ヒンディー語                 |    `hi`       |     ✓      |         2020-04-01         |                    |
 | イタリア語               |     `it`      |     ✓      |         2019-10-01         |                    |
 | 日本語              |     `ja`      |     ✓      |         2019-10-01         |                    |
 | 韓国語                |     `ko`      |    ✓      |         2019-10-01         |                    |
