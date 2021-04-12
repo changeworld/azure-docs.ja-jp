@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 03/18/2021
-ms.openlocfilehash: f4336350af92c27760369d668c6babddc4d4ea30
-ms.sourcegitcommit: afb9e9d0b0c7e37166b9d1de6b71cd0e2fb9abf5
+ms.date: 04/05/2021
+ms.openlocfilehash: 2debf7d350f4f1fde5e86a60ad03a6858bc02743
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2021
-ms.locfileid: "103462918"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490337"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -120,11 +120,13 @@ ms.locfileid: "103462918"
 | タイムアウトまで | - 既定:PT1H (1 時間) | "Until" ループを終了するまでに実行できる最大時間数であり、[ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601)で指定されます。 タイムアウト値は、ループのサイクルごとに評価されます。 ループ内のアクションがタイムアウト制限より長くなる場合、現在のサイクルは停止しません。 ただし、制限の条件が満たされていないため、次のサイクルは開始しません。 <p><p>この制限を変更するには、"Until" ループ図形で **[制限の変更]** を選択し、 **[タイムアウト]** プロパティの値を指定します。 |
 ||||
 
+<a name="concurrency-debatching"></a>
+
 ### <a name="concurrency-and-debatching"></a>コンカレンシーと分割処理
 
 | 名前 | 制限 | Notes |
 | ---- | ----- | ----- |
-| トリガーのコンカレンシー | コンカレンシーがオフの場合:無制限 <p><p>コンカレンシーがオンの場合、これを有効にした後に元に戻すことはできません。 <p><p>- 既定:25 <br>- 最小:1 <br>- 最大:50 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数です。 <p><p>**注**:コンカレンシーが有効になっていると、[配列のバッチ解除](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)のために SplitOn 上限が 100 項目に下がります。 <p><p>この制限を変更するには、[トリガーのコンカレンシー制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)方法に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
+| トリガーのコンカレンシー | コンカレンシーがオフの場合:無制限 <p><p>コンカレンシーがオンの場合、これを有効にした後に元に戻すことはできません。 <p><p>- 既定:25 <br>- 最小:1 <br>- 最大:100 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数です。 <p><p>**注**:コンカレンシーが有効になっていると、[配列のバッチ解除](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch)のために SplitOn 上限が 100 項目に下がります。 <p><p>この制限を変更するには、[トリガーのコンカレンシー制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)方法に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
 | 待機中の実行の最大数 | コンカレンシーがオフの場合: <p><p>- 最小:1 <br>- 最大:50 <p><p>コンカレンシーがオンの場合: <p><p>- 最小:10 + 同時実行の数 (トリガーのコンカレンシー) <br>- 最大:100 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数です。 <p><p>この制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
 | SplitOn 項目数 | コンカレンシーがオフの場合:100,000 <p><p>コンカレンシーがオンの場合:100 | 配列を返すトリガーの場合、"Foreach" ループを使用するのではなく、処理のために配列項目を複数のワークフロー インスタンスに[分割、つまり、バッチ解除する](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) 'SplitOn' プロパティを使用する式を指定できます。 この式では、各配列項目のワークフロー インスタンスを作成および実行するために使用する配列を参照します。 <p><p>**注**:コンカレンシーが有効になっていると、SplitOn 上限が 100 項目に下がります。 |
 ||||

@@ -3,12 +3,12 @@ title: ビデオの再生 - Azure
 description: プレースホルダー
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 17b1f93c18dfb013916c4c0d3756fb97a73e2675
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2020d64538b2fcc846ab9a146e2fc95325abd26b
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "87042965"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063374"
 ---
 # <a name="video-playback"></a>ビデオ再生 
 
@@ -28,7 +28,7 @@ Azure Media Services を使用すると、HTTP ライブ ストリーミング (
 
 ## <a name="streaming-policy"></a>ストリーミング ポリシー 
 
-Azure Media Services には、「[Media Services 動的暗号化を使用してコンテンツを保護する](../latest/content-protection-overview.md)」の記事で説明されているように、ビデオ ストリームをセキュリティで保護するためのさまざまな方法が用意されています。 コンテンツ保護のオプションは、大まかには次のとおりです。
+Azure Media Services には、「[Media Services 動的暗号化を使用してコンテンツを保護する](../latest/drm-content-protection-concept.md)」の記事で説明されているように、ビデオ ストリームをセキュリティで保護するためのさまざまな方法が用意されています。 コンテンツ保護のオプションは、大まかには次のとおりです。
 
 * **暗号化なしのストリーミング** - ストリーミング中に暗号化が適用されません。
 * **Advanced Encryption Standard (AES-128) の使用** – 認証された視聴者にのみビデオを復号化するためのキーを配信するメソッドを実装します。

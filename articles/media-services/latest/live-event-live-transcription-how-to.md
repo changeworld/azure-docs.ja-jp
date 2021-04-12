@@ -39,7 +39,7 @@ Azure Media Services は、さまざまなプロトコルでビデオやオー�
 | 英語 (イギリス) | en-GB |
 | 英語 (インド) | en-IN |
 | 英語 (ニュージーランド) | en-NZ |
-| 英語 (米国) | ja-JP |
+| 英語 (米国) | en-US |
 | スペイン語 (スペイン) | es-ES |
 | スペイン語 (メキシコ) | es-MX |
 | フィンランド語 (フィンランド) | fi-FI |
@@ -172,7 +172,7 @@ PATCH: ```https://management.azure.com/subscriptions/:subscriptionId/resourceGro
 
 ## <a name="transcription-delivery-and-playback"></a>文字起こしの配信と再生
 
-このサービスがダイナミック パッケージを使用して、どのようにさまざまなプロトコルでビデオやオーディオを配信し、テキストも配信しているか、[ダイナミック パッケージの概要](encode-dynamic-packaging-concept.md#to-prepare-your-source-files-for-delivery)に関する記事で確認してください。 MPEG-DASH や HLS/CMAF を使用してライブ ストリームを発行し、その後、ビデオやオーディオと一緒に発行するときには、Microsoft のサービスにより、IMSC 1.1 互換 TTML で文字起こしされ、テキストが配信されます。 この配信は、MPEG-4 Part 30 (ISO/IEC 14496-30) フラグメントにパッケージ化されます。 HLS/TS による配信を使用する場合、テキストはチャンク VTT として配信されます。 [Azure Media Player](use-azure-media-player.md) などの Web プレーヤーを使用してストリームを再生できます。  
+このサービスがダイナミック パッケージを使用して、どのようにさまざまなプロトコルでビデオやオーディオを配信し、テキストも配信しているか、[ダイナミック パッケージの概要](encode-dynamic-packaging-concept.md#to-prepare-your-source-files-for-delivery)に関する記事で確認してください。 MPEG-DASH や HLS/CMAF を使用してライブ ストリームを発行し、その後、ビデオやオーディオと一緒に発行するときには、Microsoft のサービスにより、IMSC 1.1 互換 TTML で文字起こしされ、テキストが配信されます。 この配信は、MPEG-4 Part 30 (ISO/IEC 14496-30) フラグメントにパッケージ化されます。 HLS/TS による配信を使用する場合、テキストはチャンク VTT として配信されます。 [Azure Media Player](player-use-azure-media-player-how-to.md) などの Web プレーヤーを使用してストリームを再生できます。  
 
 > [!NOTE]
 > Azure Media Player を使用する場合は、バージョン 2.3.3 以降を使用します。

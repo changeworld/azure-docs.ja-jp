@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 15f5f24400e4618b679d3a40bdc363ed06c085af
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: e98f45989e3ded1eb485c3f8f6eb95aa51592a9a
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123250"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278067"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>タイムシフトとライブ出力を使用してオンデマンドのビデオ再生を作成する
 
@@ -56,5 +56,5 @@ Azure Media Services の[ライブ出力](/rest/api/media/liveoutputs)オブジ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [ビデオをサブクリップします](subclip-video-rest-howto.md)。
+* [ビデオをサブクリップします](transform-subclip-video-rest-how-to.md)。
 * [アセットのフィルターを定義します](filters-dynamic-manifest-rest-howto.md)。
