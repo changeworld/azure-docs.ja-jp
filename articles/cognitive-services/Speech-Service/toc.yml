@@ -188,8 +188,6 @@
           href: rest-text-to-speech.md
     - name: リソース
       items:
-        - name: 標準の音声サポート
-          href: language-support.md#standard-voices
         - name: ニューラルの音声サポート
           href: language-support.md#neural-voices
         - name: リージョンのサポート
@@ -249,7 +247,7 @@
     - name: 意図認識の概要
       href: intent-recognition.md
     - name: 意図認識のクイックスタート
-      href: quickstarts/intent-recognition.md
+      href: get-started-intent-recognition.md
     - name: 操作方法ガイド
       items:
         - name: LUIS、C# を使って音声から意図を認識する
@@ -464,6 +462,8 @@
       href: how-to-track-speech-sdk-memory-usage.md
     - name: プライベート エンドポイントを有効化
       href: speech-services-private-link.md
+    - name: VNet サービス エンドポイントの有効化
+      href: speech-service-vnet-service-endpoint.md
     - name: Linux 用 OpenSSL の構成
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md

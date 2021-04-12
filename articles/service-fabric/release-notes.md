@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 38ec7949b5fc04852568e9e69f35f212b1edee5d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 36fb512181986fd04a95e72aa028b7c0253aa45f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103201044"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731226"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -57,7 +57,7 @@ Service Fabric ランタイムの 7.2 リリースでは、ツールと SDK の�
 
 Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危機が発生しているため、お客様が直面している困難な状況を考慮して、クラスターが自動アップグレードを受け取るように設定されていても自動的にアップグレードしません。 予期しない中断を防ぎ、お客様が最適なタイミングでアップグレードを適用できるよう、あらためてお知らせするまでの間、自動アップグレードを一時停止します。
 
-7\.1 への更新は、[Azure portal](./service-fabric-cluster-upgrade-version-azure.md#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) を使用するか、[Azure Resource Manager デプロイ](./service-fabric-cluster-upgrade-version-azure.md#set-the-upgrade-mode-using-a-resource-manager-template)によって行うことができます。
+7\.1 への更新は、[Azure portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) を使用するか、[Azure Resource Manager デプロイ](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)によって行うことができます。
 
 自動アップグレードを有効にした Service Fabric クラスターには、Microsoft が標準的なロールアウト手順を再開した時点で、7.1 更新プログラムが自動で届き始めます。 標準ロールアウトを開始する際は、別途、[Service Fabric テクノロジ コミュニティ サイト](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で事前にお知らせいたします。
 また、6.5 から 7.1 までのメジャー リリースについて、サポート終了日の最新情報を[こちら](./service-fabric-versions.md#supported-versions)で公開しています。 
@@ -72,7 +72,7 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
       -  全体的なコストが削減される (ディスクは無料であり、追加のストレージ コストは発生しません)
 - [**Service Fabric アプリケーションのサービス エンドポイント証明書をサブジェクトの共通名**](./service-fabric-service-manifest-resources.md)で宣言可能。
 - [**コンテナー化されたサービスの正常性プローブをサポート**](./probes-codepackage.md): コンテナー化されたアプリケーションに対する Liveness Probe メカニズムがサポートされます。 Liveness Probe は、コンテナー化されたアプリケーションの活動性を通知するのに役立ちます。また、アプリケーションが適切なタイミングで応答しない場合は、再起動されます。 
-- [コンテナー](/azure/service-fabric/service-fabric-containers-overview)と [ゲスト実行可能](/azure/service-fabric/service-fabric-guest-executables-introduction)アプリケーションの [**初期化子コード パッケージをサポート**](./initializer-codepackages.md)。 指定した順序でコード パッケージ (コンテナーなど) を実行して、サービス パッケージの初期化を実行できるようになります。
+- [コンテナー](./service-fabric-containers-overview.md)と [ゲスト実行可能](./service-fabric-guest-executables-introduction.md)アプリケーションの [**初期化子コード パッケージをサポート**](./initializer-codepackages.md)。 指定した順序でコード パッケージ (コンテナーなど) を実行して、サービス パッケージの初期化を実行できるようになります。
 - **FabricObserver と ClusterObserver** は、SF クラスターのさまざまな側面に関連した Service Fabric テレメトリをキャプチャするステートレス アプリケーションです。 そのどちらのアプリケーションも運用環境の Windows クラスターへのデプロイに対応しており、ApplicationInsights、EventSource、LogAnalytics の実装済みのサポートを利用してさまざまなテレメトリをキャプチャできます。
     - [**FabricObserver (FO) 2.0**](https://github.com/microsoft/service-fabric-observer) - すべてのノード上で実行され、正常性イベントを生成します。ユーザーによって構成されたリソース使用量のしきい値に達すると、テレメトリが出力されます。 このリリースでは、監視、データ管理、正常性イベントの詳細、構造化テレメトリ全体にわたり、何点か機能強化が行われています。
      - [**ClusterObserver (CO) 1.1**](https://github.com/microsoft/service-fabric-observer/tree/master/ClusterObserver) - 1 つのノード上で動作し、クラスター レベルの正常性テレメトリをキャプチャします。 このリリースの ClusterObserver は、ノードの状態も監視し、ユーザーが指定した所定の時間、ダウン、無効化中、無効のいずれかの状態が続くと、テレメトリを出力します。
