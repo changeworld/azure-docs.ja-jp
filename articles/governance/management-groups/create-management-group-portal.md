@@ -3,12 +3,12 @@ title: ポータルを使用して管理グループを作成する
 description: このクイックスタートでは、Azure portal を使用して、リソースを階層で整理する管理グループを作成します。
 ms.date: 02/05/2021
 ms.topic: quickstart
-ms.openlocfilehash: 5a336fe4caf5d2f825a93b5c7b8f8d05f6255c39
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 2fa9b667079104fe9728ab41ecd87685c35de1b7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "99592434"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024721"
 ---
 # <a name="quickstart-create-a-management-group"></a>クイック スタート:管理グループの作成
 
@@ -32,7 +32,7 @@ ms.locfileid: "99592434"
 
 1. **[+ 管理グループの追加]** を選択します。
 
-   :::image type="content" source="./media/main.png" alt-text="子管理グループとサブスクリプションが表示されている [管理グループ] ページのスクリーンショット。" border="false":::
+   :::image type="content" source="./media/main.png" alt-text="子管理グループとサブスクリプションが表示されている [管理グループ] ページのスクリーンショット。":::
 
 1. **[新規作成]** をオンのままにして、管理グループ ID をフィールドに入力します。
 
