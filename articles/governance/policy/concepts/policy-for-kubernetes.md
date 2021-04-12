@@ -3,12 +3,12 @@ title: Kubernetes 用の Azure Policy の概要
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。
 ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 4a6ca7fb5086401cab58d4bfb6a412089c11ef05
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104868156"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564307"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -61,7 +61,7 @@ Kubernetes クラスターの Azure Policy アドオンに、次の一般的な�
 
 AKS の Azure Policy アドオンにのみ、次の制限事項が適用されます。
 
-- [AKS Pod セキュリティ ポリシー](../../../aks/use-pod-security-policies.md)と AKS の Azure Policy アドオンの両方を同時に有効にすることはできません。 詳細については、[AKS ポッドのセキュリティの制限事項](../../../aks/use-pod-security-on-azure-policy.md#limitations)に関するセクションを参照してください。
+- [AKS Pod セキュリティ ポリシー](../../../aks/use-pod-security-policies.md)と AKS の Azure Policy アドオンの両方を同時に有効にすることはできません。 詳細については、[AKS ポッドのセキュリティの制限事項](../../../aks/use-azure-policy.md)に関するセクションを参照してください。
 - 評価版の Azure Policy アドオンによって自動的に除外される名前空間: _kube-system_、_gatekeeper-system_、および _aks-periscope_。
 
 ## <a name="recommendations"></a>推奨事項
@@ -201,7 +201,7 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
 1. [Helm 3](https://v3.helm.sh/docs/intro/install/) をインストールします。
 
-1. Kubernetes クラスターが Azure Arc に対して有効になります。詳細については、[Azure Arc への Kubernetes クラスターのオンボード](../../../azure-arc/kubernetes/connect-cluster.md)に関する記事を参照してください。
+1. Kubernetes クラスターが Azure Arc に対して有効になります。詳細については、[Azure Arc への Kubernetes クラスターのオンボード](../../../azure-arc/kubernetes/quickstart-connect-cluster.md)に関する記事を参照してください。
 
 1. Azure Arc 対応 Kubernetes クラスターの完全修飾 Azure リソース ID を用意します。
 

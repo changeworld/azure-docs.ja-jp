@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/24/2021
 ms.author: alkohli
-ms.openlocfilehash: 56d301762fde41f727b0b425d6c41a423f08103c
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: aa1b861555cff65c9e432ea711af3f7c6e410625
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96465605"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109167"
 ---
 # <a name="azure-stack-edge-pro-r-technical-specifications"></a>Azure Stack Edge Pro R の技術仕様
 
@@ -26,7 +26,7 @@ Azure Stack Edge Pro R デバイスには、コンピューティングとメモ
 
 | 仕様       | 値                  |
 |---------------------|------------------------|
-| CPU    | 2 X 10 コア CPU Intel Xeon Silver 4114 |
+| CPU    | 2 X Intel Xeon Silver 4114 CPU<br>20 個の物理コア (CPU あたり 10 個)<br>40 個の論理コア (vCPU) (CPU あたり 20 個)  |
 | メモリ              | 256 GB RAM (2,666 MT/秒)     |
 
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: 2008e014e9f160b643ed5f591fff81c0b215e24a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8f300f214ed36b7a5257b7276364027b91edc746
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102175080"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048104"
 ---
 # <a name="register-and-scan-teradata-source-preview"></a>Teradata ソースを登録し、スキャンする (プレビュー)
 
@@ -25,7 +25,7 @@ Teradata ソースでは **フル スキャン** がサポートされており�
 ## <a name="prerequisites"></a>前提条件
 
 1.  最新の[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)を設定します。
-    詳細については、「[セルフホステッド統合ランタイムを作成して共有する](https://docs.microsoft.com/azure/data-factory/create-self-hosted-integration-runtime)」を参照してください。
+    詳細については、「[セルフホステッド統合ランタイムを作成して共有する](../data-factory/create-self-hosted-integration-runtime.md)」を参照してください。
 
 2.  セルフホステッド統合ランタイムがインストールされている仮想マシンに [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) がインストールされていることを確認します。
 
@@ -70,7 +70,7 @@ Teradata ソースでサポートされている認証は **基本認証** の�
 
 新しいスキャンを作成して実行するには、次の操作を行います。
 
-1.  管理センターで、 **[統合ランタイム]** をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](https://docs.microsoft.com/azure/purview/manage-integration-runtimes)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
+1.  管理センターで、 **[統合ランタイム]** をクリックします。 セルフホステッド統合ランタイムが設定されていることを確認してください。 設定されていない場合は、[こちら](./manage-integration-runtimes.md)に記載されている手順を使用して、セルフホステッド統合ランタイムを設定します
 
 2.  **[ソース]** に移動します
 
@@ -90,7 +90,7 @@ Teradata ソースでサポートされている認証は **基本認証** の�
     -   ユーザー名入力フィールドで、データベース サーバーに接続するためのユーザー名を指定します。
     -   秘密鍵にデータベース サーバーのパスワードを格納します。
 
-        資格情報の詳細については、[こちら](https://docs.microsoft.com/azure/purview/manage-credentials)のリンクを参照してください。
+        資格情報の詳細については、[こちら](./manage-credentials.md)のリンクを参照してください。
 
 6.  **[スキーマ]** : インポートするスキーマのサブセットをセミコロン区切りのリストとして指定します。 例: schema1;schema2。 リストが空の場合は、すべてのユーザー スキーマがインポートされます。 既定では、すべてのシステム スキーマ (SysAdmin など) とオブジェクトが無視されます。 リストが空の場合は、使用可能なすべてのスキーマがインポートされます。
 

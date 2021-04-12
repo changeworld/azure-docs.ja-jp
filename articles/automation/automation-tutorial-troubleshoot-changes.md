@@ -4,15 +4,15 @@ description: この記事では、Azure VM に対する変更をトラブルシ�
 services: automation
 ms.subservice: change-inventory-management
 keywords: 変更, 追跡, Change Tracking, インベントリ, Automation
-ms.date: 12/05/2018
+ms.date: 03/21/2021
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a223ac4296dd160bbdd904e1d3443552d4f49a23
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 980740d387f9e953d1ea764327c8aa13f8650948
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100587935"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104775810"
 ---
 # <a name="troubleshoot-changes-on-an-azure-vm"></a>Azure VM に対する変更のトラブルシューティング
 
@@ -208,15 +208,15 @@ Azure portal に変更を表示することは有益ですが、サービスの�
 
 14. **[アクション]** に、 **[電子メール管理者]** などのアクションの名前を入力します。 
 
-15. **[アクションの種類]** として、 **[Email/SMS/Push/Voice]\(メール、SMS、プッシュ、音声\)** を選択します。 
+15. **[アクションの種類]** として、 **[Email/SMS message/Push/Voice]\(メール、SMS メッセージ、プッシュ、音声\)** を選択します。 
 
 16. **[詳細]** では、 **[詳細を編集する]** を選択します。
 
-    ![アクション グループの追加](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+    :::image type="content" source="./media/automation-tutorial-troubleshoot-changes/add-action-group.png" alt-text="使用量と推定コスト。" lightbox="./media/automation-tutorial-troubleshoot-changes/add-action-group.png":::
 
-17. [Email/SMS/Push/Voice]\(電子メール、SMS、プッシュ、音声\) ペインに名前を入力し、 **[電子メール]** チェック ボックスをオンにして、有効なメール アドレスを入力します。 完了したら、このペインで **[OK]** をクリックし、[アクション グループの追加] ページで **[OK]** をクリックします。
+17. **[Email/SMS message/Push/Voice]\(メール、SMS メッセージ、プッシュ、音声\)** ペインに名前を入力し、 **[電子メール]** チェック ボックスをオンにして、有効なメール アドレスを入力します。 完了したら、このペインで **[OK]** をクリックし、 **[アクション グループの追加]** ページで **[OK]** をクリックします。
 
-18. アラート メールの件名をカスタマイズするには **[アクションをカスタマイズする]** を選択します。 
+18. アラート メールの件名をカスタマイズするには **[アクションをカスタマイズする]** を選択します。
 
 19. **[ルールの作成]** で、 **[電子メールの件名]** 、 **[アラート ルールの作成]** の順に選択します。 このアラートにより、更新プログラムの展開が成功したことと、その更新プログラムの展開の実行対象となったコンピューターが通知されます。 次の図は、W3SVC サービスが停止したときに送信される電子メールの例です。
 

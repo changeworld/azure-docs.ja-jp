@@ -6,22 +6,22 @@ ms.author: valls
 ms.date: 2/14/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 227488f165aaad2f204c647eed17467a4ef561a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0283a84650abaadd454b4f5bca83d1473e443fb8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660682"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561816"
 ---
 # <a name="device-update-for-iot-hub-and-iot-plug-and-play"></a>IoT Hub 用のデバイス更新と IoT プラグ アンド プレイ
 
-IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検出して管理するために、[IoT プラグ アンド プレイ](https://docs.microsoft.com/azure/iot-pnp/)が使用されます。 デバイス更新サービスにより、PnP インターフェイスを使用して、デバイスとの間でプロパティとメッセージが送受信されます。 IoT Hub 用のデバイス更新を使用するには、以下で説明するように、IoT デバイスで次のインターフェイスとモデル ID を実装する必要があります。
+IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検出して管理するために、[IoT プラグ アンド プレイ](../iot-pnp/index.yml)が使用されます。 デバイス更新サービスにより、PnP インターフェイスを使用して、デバイスとの間でプロパティとメッセージが送受信されます。 IoT Hub 用のデバイス更新を使用するには、以下で説明するように、IoT デバイスで次のインターフェイスとモデル ID を実装する必要があります。
 
 ## <a name="adu-core-interface"></a>ADU Core インターフェイス
 
 "ADUCoreInterface" インターフェイスは、更新アクションとメタデータをデバイスに送信し、デバイスから更新状態を受信するために使用されます。 "ADU Core" インターフェイスは、2 つのオブジェクト プロパティに分割されます。
 
-このインターフェイスを実装する場合、モデルで予想されるコンポーネント名は **"azureDeviceUpdateAgent"** です。 [Azure IoT PnP のコンポーネントの詳細を確認する](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+このインターフェイスを実装する場合、モデルで予想されるコンポーネント名は **"azureDeviceUpdateAgent"** です。 [Azure IoT PnP のコンポーネントの詳細を確認する](../iot-pnp/concepts-components.md)
 
 ### <a name="agent-metadata"></a>エージェント メタデータ
 
@@ -81,9 +81,9 @@ IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検
 
 ## <a name="device-information-interface"></a>デバイス情報インターフェイス
 
-デバイス情報インターフェイスは、[IoT プラグ アンド プレイ アーキテクチャ](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)で使用される概念です。 デバイスのハードウェアとオペレーティング システムに関する情報を提供する、デバイスからクラウドへのプロパティが含まれています。 IoT Hub 用のデバイス更新では、テレメトリと診断のために DeviceInformation.manufacturer と DeviceInformation.model プロパティが使用されます。 デバイス情報インターフェイスの詳細については、こちらの[例](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json)をご覧ください。
+デバイス情報インターフェイスは、[IoT プラグ アンド プレイ アーキテクチャ](../iot-pnp/overview-iot-plug-and-play.md)で使用される概念です。 デバイスのハードウェアとオペレーティング システムに関する情報を提供する、デバイスからクラウドへのプロパティが含まれています。 IoT Hub 用のデバイス更新では、テレメトリと診断のために DeviceInformation.manufacturer と DeviceInformation.model プロパティが使用されます。 デバイス情報インターフェイスの詳細については、こちらの[例](https://devicemodels.azure.com/dtmi/azure/devicemanagement/deviceinformation-1.json)をご覧ください。
 
-このインターフェイスを実装する場合、モデルで予想されるコンポーネント名は **deviceInformation** です。 [Azure IoT PnP のコンポーネントについて確認する](https://docs.microsoft.com/azure/iot-pnp/concepts-components)
+このインターフェイスを実装する場合、モデルで予想されるコンポーネント名は **deviceInformation** です。 [Azure IoT PnP のコンポーネントについて確認する](../iot-pnp/concepts-components.md)
 
 |名前|種類|スキーマ|Direction|説明|例|
 |----|----|------|---------|-----------|-----------|
@@ -98,6 +98,6 @@ IoT Hub 用のデバイス更新では、無線更新対応のデバイスを検
 
 ## <a name="model-id"></a>モデル ID 
 
-モデル ID は、IoT プラグ アンド プレイによってスマート デバイスから Azure IoT アプリケーションに機能が公開される方法です。Azure IoT アプリケーションに機能を公開するようにスマート デバイスを構築する方法の詳細については、「[IoT プラグ アンド プレイ デバイス開発者ガイド](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c)」をご覧ください。
+モデル ID は、IoT プラグ アンド プレイによってスマート デバイスから Azure IoT アプリケーションに機能が公開される方法です。Azure IoT アプリケーションに機能を公開するようにスマート デバイスを構築する方法の詳細については、「[IoT プラグ アンド プレイ デバイス開発者ガイド](../iot-pnp/concepts-developer-guide-device.md)」をご覧ください。
 
-IoT Hub 用のデバイス更新で、デバイス接続の一部として **"dtmi:AzureDeviceUpdate;1"** という値でモデル ID を通知するには、IoT プラグ アンド プレイ スマート デバイスが必要です。 [モデル ID を通知する方法を確認する](https://docs.microsoft.com/azure/iot-pnp/concepts-developer-guide-device-c#model-id-announcement).
+IoT Hub 用のデバイス更新で、デバイス接続の一部として **"dtmi:AzureDeviceUpdate;1"** という値でモデル ID を通知するには、IoT プラグ アンド プレイ スマート デバイスが必要です。 [モデル ID を通知する方法を確認する](../iot-pnp/concepts-developer-guide-device.md#model-id-announcement).
