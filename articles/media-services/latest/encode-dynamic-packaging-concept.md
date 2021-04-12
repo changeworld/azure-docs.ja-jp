@@ -9,12 +9,12 @@ ms.workload: media
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: ba50fbd28ac5d5f66533eec76b51dfb3b8c0cf5d
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: c2ffda7400109e16cf1110a4e14ecbc3604a7ecf
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121236"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492309"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
 
@@ -22,7 +22,7 @@ ms.locfileid: "106121236"
 
 Microsoft Azure Media Services は、多くのメディア ソース ファイル形式をエンコードするために使用できます。 これは、コンテンツ保護の有無に関係なく、さまざまなストリーミング プロトコルを介して配信され、すべての主要なデバイス (iOS デバイスや Android デバイスなど) に到達します。 これらのクライアントは、さまざまなプロトコルを認識します。 たとえば、iOS では、HTTP ライブ ストリーミング (HLS) 形式でストリームを配信する必要があります。また、Android デバイスでは、HLS と MPEG DASH がサポートされます。
 
-Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md) (配信元) は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できます。 次のセクションで説明する一般的なストリーミング メディア プロトコルのいずれかを使用します。 "*ダイナミック パッケージ*" は、すべてのストリーミング エンドポイントに標準で付属する機能です。
+Media Services では、[ストリーミング エンドポイント](stream-streaming-endpoint-concept.md) (配信元) は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できます。 次のセクションで説明する一般的なストリーミング メディア プロトコルのいずれかを使用します。 "*ダイナミック パッケージ*" は、すべてのストリーミング エンドポイントに標準で付属する機能です。
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>ソース ファイルをデリバリー用に準備するには
 
@@ -33,7 +33,7 @@ Azure Media Services のダイナミック パッケージでは、MP4 コンテ
 > [!TIP]
 > MP4 およびストリーミング構成ファイルを取得する方法の 1 つは、[Media Services を使用してお使いの中間ファイルをエンコードする](#encode-to-adaptive-bitrate-mp4s)ことです。 
 
-エンコードされた資産内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](streaming-locators-concept.md)を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、MPEG DASH、またはスムーズ ストリーミング) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
+エンコードされた資産内のビデオをクライアントが再生できるようにするには、[ストリーミング ロケーター](stream-streaming-locators-concept.md)を作成し、ストリーミング URL をビルドする必要があります。 その後、ストリーミング クライアント マニフェスト (HLS、MPEG DASH、またはスムーズ ストリーミング) で指定した形式に基づいて、選択したプロトコルでストリームを受信します。
 
 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
@@ -81,14 +81,14 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 1. 中間ファイルを H.264/AAC MP4 アダプティブ ビットレート セットに[エンコード](#encode-to-adaptive-bitrate-mp4s)します。
 
     エンコードされたファイルが既にあり、ファイルをコピーしてストリーミングするだけであれば、[CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) および [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio) API を使用します。 結果として、ストリーミング マニフェスト (.ism ファイル) を含む新しい MP4 ファイルが作成されます。
-1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 [ストリーミング ロケーター](streaming-locators-concept.md)を作成して発行します。
+1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 [ストリーミング ロケーター](stream-streaming-locators-concept.md)を作成して発行します。
 1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 これらのさまざまな形式の正しいマニフェストおよび要求の処理は、*ストリーミング エンドポイント* が行います。
     
 次の図は、ダイナミック パッケージのワークフローを使用したオンデマンド ストリーミングを示しています。
 
 ![ダイナミック パッケージを使用したオンデマンド ストリーミングのワークフローの図](./media/encode-dynamic-packaging-concept/media-services-dynamic-packaging.svg)
 
-上の画像のダウンロード パスは、"*ストリーミング エンドポイント*" (配信元) を通じて直接 MP4 ファイルをダウンロードできることを示すためにのみ存在します (ダウンロードできることを示す [ストリーミング ポリシー](streaming-policy-concept.md)は、ストリーミング ロケーターで指定します)。<br/>ダイナミック パッケージャーによってファイルが変更されることはありません。 "*ストリーミング エンドポイント*" (配信元) 機能をバイパスする必要がある場合は、Azure Blob Storage API を使用して、プログレッシブ ダウンロード用に MP4 に直接アクセスすることができます。 
+上の画像のダウンロード パスは、"*ストリーミング エンドポイント*" (配信元) を通じて直接 MP4 ファイルをダウンロードできることを示すためにのみ存在します (ダウンロードできることを示す [ストリーミング ポリシー](stream-streaming-policy-concept.md)は、ストリーミング ロケーターで指定します)。<br/>ダイナミック パッケージャーによってファイルが変更されることはありません。 "*ストリーミング エンドポイント*" (配信元) 機能をバイパスする必要がある場合は、Azure Blob Storage API を使用して、プログレッシブ ダウンロード用に MP4 に直接アクセスすることができます。 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>アダプティブ ビットレート MP4 へのエンコード
 
@@ -96,7 +96,7 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
 * [組み込みのプリセットを使用して HTTPS の URL をエンコードする](job-input-from-http-how-to.md)。
 * [組み込みのプリセットを使用してローカル ファイルをエンコードする](job-input-from-local-file-how-to.md)。
-* [自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](encode-custom-presets-how-to.md)。
+* [自分の特定のシナリオまたはデバイス要件に対応するカスタム プリセットを構築する](transform-custom-presets-how-to.md)。
 
 「Standard Encoder の[形式およびコーデック](encode-media-encoder-standard-formats-reference.md)」のリストを参照してください。
 
