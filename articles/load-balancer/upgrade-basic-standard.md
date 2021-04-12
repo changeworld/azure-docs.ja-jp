@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 0f8476a8759dd445500c2eb6c029cd618a7ff8ce
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: ef018e58f8336220b96eba568c94efc40a0fb0c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718983"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102612832"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Azure Public Load Balancer をアップグレードする
 [Azure Standard Load Balancer](load-balancer-overview.md) では、豊富な機能とゾーンの冗長性による高可用性が提供されます。 Load Balancer SKU の詳細については、[比較表](./skus.md#skus)を参照してください。
@@ -21,9 +21,6 @@ ms.locfileid: "101718983"
 
 1. IP の割り当て方法を動的から静的に変更します。
 2. PowerShell スクリプトを実行して、アップグレードとトラフィックの移行を完了します。
-
-> [!IMPORTANT]
-> スクリプトは現在メンテナンス中です。 Basic SKU と Standard SKU からパブリック IP アドレスをアップグレードする方法については、[こちら](../virtual-network/virtual-network-public-ip-address-upgrade.md?tabs=option-upgrade-cli%2coption-migrate-powershell#tabpanel_CeZOj-G++Q_option-upgrade-cli)を参照してください。
 
 ## <a name="upgrade-overview"></a>アップグレードの概要
 
@@ -101,7 +98,7 @@ Azure Az モジュールがインストールされていて、それらをア�
     **例**
 
    ```azurepowershell
-   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newLbName "LBForUpgrade"
+   AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg&quot; -oldLBName &quot;LBForPublic&quot; -newLbName &quot;LBForUpgrade"
    ```
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>送信接続用のアウトバウンド規則を作成する

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 155df45d975a30991edc80d587445d699a8d2695
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.openlocfilehash: 263397aa2cd09ba24fa750131b76047801869a65
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100103228"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104798937"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Web API を呼び出すデスクトップ アプリ:アプリの登録
 
@@ -40,12 +40,17 @@ ms.locfileid: "100103228"
 
 デスクトップ アプリケーションで使用するリダイレクト URI は、使用するフローによって決まります。
 
-- 対話型認証またはデバイス コード フローを使用する場合は、`https://login.microsoftonline.com/common/oauth2/nativeclient` を使用します。 この構成を実現するには、アプリケーションの **[認証]** セクションで対応する URL を選択します。
+Azure portal の **[アプリの登録]** でアプリの[プラットフォーム設定を構成](quickstart-register-app.md#add-a-redirect-uri)して、アプリのリダイレクト URI を指定します。
+
+- 対話型認証を使用するアプリの場合:
+  - 埋め込みブラウザーを使用するアプリ: `https://login.microsoftonline.com/common/oauth2/nativeclient`
+  - システム ブラウザーを使用するアプリ: `http://localhost`
 
   > [!IMPORTANT]
-  > セキュリティ上のベスト プラクティスとして、リダイレクト URI には `https://login.microsoftonline.com/common/oauth2/nativeclient` を使用することをお勧めします。  リダイレクト URI が指定されていない場合、MSAL.NET では、推奨されていない既定の `urn:ietf:wg:oauth:2.0:oob` が使用されます。  この既定値は、次のメジャー リリースで破壊的変更として更新されます。
+  > セキュリティのベスト プラクティスとして、`https://login.microsoftonline.com/common/oauth2/nativeclient` または `http://localhost` をリダイレクト URI として明示的に設定することをお勧めします。 MSAL.NET のような一部の認証ライブラリでは、他のリダイレクト URI が指定されていない場合、推奨されていない既定値の `urn:ietf:wg:oauth:2.0:oob` が使用されます。 この既定値は、次のメジャー リリースで破壊的変更として更新されます。
 
 - macOS 用のネイティブ Objective-C または Swift アプリを構築する場合は、アプリケーションのバンドル識別子に基づいて、`msauth.<your.app.bundle.id>://auth` の形式でリダイレクト URI を登録します。 `<your.app.bundle.id>` をご使用のアプリケーションのバンドル ID に置き換えます。
+- Node.js Electron アプリを作成する場合は、認可フローのリダイレクト手順を処理するために、通常の web (https://) リダイレクト URI ではなくカスタム ファイル プロトコルを使用します (`msal://redirect` など)。 カスタム ファイル プロトコル名はすぐに推測できるものにすべきではなく、[ネイティブ アプリに関する Oauth 2.0 仕様](https://tools.ietf.org/html/rfc8252#section-7.1)に記載されている勧告に従う必要があります。
 - アプリで統合 Windows 認証またはユーザー名とパスワードのみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 これらのフローは、Microsoft ID プラットフォーム v2.0 エンドポイントへのラウンドトリップを実行します。 アプリケーションが特定の URI でコールバックされることはありません。
 - [デバイス コード フロー](scenario-desktop-acquire-token.md#device-code-flow)、[統合 Windows 認証](scenario-desktop-acquire-token.md#integrated-windows-authentication)、および[ユーザー名とパスワード](scenario-desktop-acquire-token.md#username-and-password)を、リダイレクト URI を必要としない[デーモン アプリケーション](scenario-daemon-overview.md)で使用されるクライアント資格証明フローを使用した機密クライアント アプリケーションと区別するには、それをパブリック クライアント アプリケーションとして構成します。 この構成を実現するには:
 

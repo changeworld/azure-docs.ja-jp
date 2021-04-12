@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: a0b357705de04ed4c2be3223f9dd07f61f75d970
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 406390b34e1450e532205dc903df1933749d210f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954582"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061963"
 ---
 # <a name="how-to-use-the-videojs-player-with-azure-media-services"></a>Azure Media Services で Video.js プレーヤーを使用する方法
 
@@ -164,4 +164,4 @@ keySystems: {...
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Media Player を使用する](../azure-media-player/azure-media-player-overview.md)  
-- [クイック スタート: コンテンツの暗号化](encrypt-content-quickstart.md)
+- [クイック スタート: コンテンツの暗号化](drm-encrypt-content-how-to.md)

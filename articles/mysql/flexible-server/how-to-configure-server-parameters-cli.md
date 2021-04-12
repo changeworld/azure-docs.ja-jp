@@ -1,24 +1,24 @@
 ---
 title: サーバー パラメーターを構成する - Azure CLI - Azure Database for MySQL Flexible Server
 description: この記事では、Azure CLI コマンド ライン ユーティリティを使って Azure Database for MySQL Flexible Server のサービス パラメーターを構成する方法について説明します。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 11/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 58e7c024d6494aee745884997e42b527c51ab237
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 21f9b3dcb94be105c8b7279e6ac447540da65447
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489541"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110102"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL Flexible Server のサーバー パラメータを構成する
 
 > [!IMPORTANT] 
-> Azure Database for MySQL フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+> Azure Database for MySQL - フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
 
 Azure コマンド ライン ユーティリティ である Azure CLI を使用して、Azure Database for MySQL フレキシブル サーバーのパラメーターを一覧表示、表示、および更新できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。  
 
@@ -59,7 +59,7 @@ az mysql flexible-server parameter set --name slow_query_log --resource-group my
 ```azurecli-interactive
 az mysql flexible-server parameter set --name slow_query_log --resource-group myresourcegroup --server-name mydemoserver
 ```
-このコードを使用すると、 **slow\_query\_log** が既定値の **OFF** にリセットされます。 
+このコードを使用すると、**slow\_query\_log** が既定値の **OFF** にリセットされます。 
 
 ## <a name="setting-non-modifiable-server-parameters"></a>変更不可のサーバー パラメーターの設定
 
@@ -70,7 +70,7 @@ az mysql flexible-server parameter set --name slow_query_log --resource-group my
 az mysql flexible-server parameter set --name init_connect --resource-group myresourcegroup --server-name mydemoserver --value "SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;"
 ```
 >[!Note]
-> `init_connect` を使用すると、セッション レベルで SUPER 特権を必要としないパラメーターを変更することができます。 `init_connect` を使用してパラメーターを設定できるかどうかを確認するには、`set session parameter_name=YOUR_DESIRED_VALUE;` コマンドを実行し、" **Access denied; you need SUPER privilege(s)** "(アクセスが拒否されました。SUPER 特権が必要です) エラーが発生する場合は、'init_connect' を使用してパラメーターを設定することはできません。
+> `init_connect` を使用すると、セッション レベルで SUPER 特権を必要としないパラメーターを変更することができます。 `init_connect` を使用してパラメーターを設定できるかどうかを確認するには、`set session parameter_name=YOUR_DESIRED_VALUE;` コマンドを実行し、"**Access denied; you need SUPER privilege(s)** "(アクセスが拒否されました。SUPER 特権が必要です) エラーが発生する場合は、'init_connect' を使用してパラメーターを設定することはできません。
 
 ## <a name="working-with-the-time-zone-parameter"></a>タイム ゾーン パラメーターを使用する
 

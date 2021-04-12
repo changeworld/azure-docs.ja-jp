@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 566cc3b1192d632bbffb8f9ef091f291b4bcc6e6
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 1c20190ba1a997ef85f4023a54ecea3c2a77ae53
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581153"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102183830"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>手動 QoS 容量プールを管理する
 
@@ -44,7 +44,7 @@ QoS の種類に関する考慮事項を理解するためには、「[Azure Net
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFFlexPool
     ```
-また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
 
 ## <a name="set-up-a-new-manual-qos-capacity-pool"></a>手動 QoS 容量プールを設定する 
 

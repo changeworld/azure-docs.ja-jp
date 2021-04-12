@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 78cc68d2be600cec78c433ae3eae1de09d31ac94
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 7b5bbad1f0691f76c12f161d1dd1f9d6ddc43270
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251813"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102184323"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>ボリュームのサービス レベルを動的に変更する
 
@@ -56,7 +56,7 @@ ms.locfileid: "98251813"
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange
     ```
-また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
+また、[Azure CLI のコマンド](/cli/azure/feature) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。 
  
 ## <a name="move-a-volume-to-another-capacity-pool"></a>ボリュームを別の容量プールに移動する
 

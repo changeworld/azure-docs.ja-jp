@@ -4,10 +4,10 @@ description: この記事では、Azure DevTest Labs でラボのアクティビ
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.openlocfilehash: f774e3291961c58f55a9ed24026535e076235b98
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100588772"
 ---
 # <a name="create-activity-log-alerts-for-labs-in-azure-devtest-labs"></a>Azure DevTest Labs でラボのアクティビティ ログ アラートを作成する

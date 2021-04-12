@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/22/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 02fc67862a332ef51e164c17ef973bb610cf4fc7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: a4fbde55e8fd774e895b27ec2279b4ea80cfd92a
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499120"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102430175"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>クイック スタート:C# で Bing Local Business Search API にクエリを送信する
 
@@ -34,7 +34,7 @@ ms.locfileid: "96499120"
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services/)
 * [Visual Studio 2019](https://www.visualstudio.com/downloads/) のいずれかのエディション。
 * Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
-* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成<span class="docon docon-navigate-external x-hidden-focus"></span></a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* Azure サブスクリプションを入手したら、Azure portal で <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Bing Search リソースを作成"  target="_blank">Bing Search リソースを作成</a>し、キーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
 
 ## <a name="create-the-request"></a>要求を作成する 
 
@@ -78,8 +78,8 @@ namespace localSearch
     class Program
     {
         // **********************************************
-        // **_ Update or verify the following values. _*_
-        // _*********************************************
+        // *** Update or verify the following values. ***
+        // **********************************************
 
         // Replace the accessKey string value with your valid access key.
         const string accessKey = "enter key here";

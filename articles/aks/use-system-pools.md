@@ -6,16 +6,16 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c9479fca538c36f4f5eb430c4befb76e39370e6
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900026"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102178832"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でシステム ノード プールを管理する
 
-Azure Kubernetes Service (AKS) で同じ構成のノードは、 *ノード プール* にグループ化できます。 ノード プールには、お使いのアプリケーションを実行する基になる VM が含まれます。 お使いの AKS クラスターには、システム ノード プールとユーザー ノードプールの 2 つの異なるノード プールのモードがあります。 システム ノード プールは、`CoreDNS` や `metrics-server` などの重要なシステム ポッドをホストするという主要な目的を果たします。 ユーザー ノード プールは、アプリケーション ポッドをホストするという主要な目的を果たします。 ただし、AKS クラスター内のプールを 1 つだけにする場合は、システム ノード プールでアプリケーション ポッドをスケジュールすることができます。 各 AKS クラスターには、少なくとも 1 つのノードを含むシステム ノード プールが、少なくとも 1 つ含まれている必要があります。
+Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プール* にグループ化できます。 ノード プールには、お使いのアプリケーションを実行する基になる VM が含まれます。 お使いの AKS クラスターには、システム ノード プールとユーザー ノードプールの 2 つの異なるノード プールのモードがあります。 システム ノード プールは、`CoreDNS` や `metrics-server` などの重要なシステム ポッドをホストするという主要な目的を果たします。 ユーザー ノード プールは、アプリケーション ポッドをホストするという主要な目的を果たします。 ただし、AKS クラスター内のプールを 1 つだけにする場合は、システム ノード プールでアプリケーション ポッドをスケジュールすることができます。 各 AKS クラスターには、少なくとも 1 つのノードを含むシステム ノード プールが、少なくとも 1 つ含まれている必要があります。
 
 > [!Important]
 > 運用環境内のお使いの AKS クラスターで 1 つのシステム ノード プールを実行する場合、そのノード プールには少なくとも 3 つのノードを使用することをお勧めします。
@@ -46,7 +46,7 @@ Azure Kubernetes Service (AKS) で同じ構成のノードは、 *ノード プ�
 * システム ノード プールには、少なくとも 2 つの vCPU と 4 GB のメモリのがある VM SKU が必要です。
 * システム ノード プールでは、[ポッドの最小値と最大値の式][maximum-pods]に関する説明のとおり、少なくともポッドを 30 サポートしている必要があります。
 * スポット ノード プールには、ユーザー ノード プールが必要です。
-* システム ノード プールをさらに追加したり、システム ノード プールとなるノード プールを変更したりしても、システム ポッドは自動的には移動 *されません* 。 ノード プールをユーザー ノード プールに変更しても、システム ポッドは同じノード プール上で実行し続けることができます。 システム ポッドを実行中の、以前はシステム ノード プールだったノード プールを削除またはスケールダウンした場合、それらのシステム ポッドは、推奨されるスケジュールで新しいシステム ノード プールに再デプロイされます。
+* システム ノード プールをさらに追加したり、システム ノード プールとなるノード プールを変更したりしても、システム ポッドは自動的には移動 *されません*。 ノード プールをユーザー ノード プールに変更しても、システム ポッドは同じノード プール上で実行し続けることができます。 システム ポッドを実行中の、以前はシステム ノード プールだったノード プールを削除またはスケールダウンした場合、それらのシステム ポッドは、推奨されるスケジュールで新しいシステム ノード プールに再デプロイされます。
 
 ノード プールには、次の操作を実行できます。
 
@@ -62,13 +62,13 @@ Azure Kubernetes Service (AKS) で同じ構成のノードは、 *ノード プ�
 
 新しい AKS クラスターを作成すると、1 つのノードを含むシステム ノード プールが自動作成されます。 最初のノード プールのモード型は、既定で system になります。 `az aks nodepool add` を使用して作成した新しいノード プールは、モード パラメーターを明示的に指定しない限り、ユーザー ノード プールになります。
 
-次の例では、 *myResourceGroup* という名前のリソース グループを *米国東部* リージョンに作成します。
+次の例では、*myResourceGroup* という名前のリソース グループを *米国東部* リージョンに作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、1 つのノードが含まれる 1 つの専用システム プールを持つ、 *myAKSCluster* という名前のクラスターを作成します。 ご自分の運用環境のワークロードでは、少なくともノードが 3 つあるシステム ノード プールを使用していることを確認してください。 この操作が完了するまでに数分かかる場合があります。
+AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、1 つのノードが含まれる 1 つの専用システム プールを持つ、*myAKSCluster* という名前のクラスターを作成します。 ご自分の運用環境のワークロードでは、少なくともノードが 3 つあるシステム ノード プールを使用していることを確認してください。 この操作が完了するまでに数分かかる場合があります。
 
 ```azurecli-interactive
 # Create a new AKS cluster with a single system pool
@@ -197,12 +197,12 @@ az group delete --name myResourceGroup --yes --no-wait
 [aks-windows]: windows-container-cli.md
 [az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
-[az-aks-nodepool-list]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-list
-[az-aks-nodepool-update]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-update
-[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-upgrade
-[az-aks-nodepool-scale]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-scale
-[az-aks-nodepool-delete]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-delete
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
+[az-aks-nodepool-list]: /cli/azure/aks/nodepool#az-aks-nodepool-list
+[az-aks-nodepool-update]: /cli/azure/aks/nodepool#az-aks-nodepool-update
+[az-aks-nodepool-upgrade]: /cli/azure/aks/nodepool#az-aks-nodepool-upgrade
+[az-aks-nodepool-scale]: /cli/azure/aks/nodepool#az-aks-nodepool-scale
+[az-aks-nodepool-delete]: /cli/azure/aks/nodepool#az-aks-nodepool-delete
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-group-create]: /cli/azure/group#az-group-create

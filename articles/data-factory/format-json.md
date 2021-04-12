@@ -6,12 +6,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 30b8cb2b5c8b1ccd0c927a6ff8a3a282d3d43c69
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: ebac108388071ed3dc0eb2b7bfc0494f2f7bb481
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386545"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102181365"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory での JSON 形式
 
@@ -83,7 +83,7 @@ JSON ファイルからデータを抽出してシンク データ ストアお�
 | type          | formatSettings の type は、**JsonReadSettings** に設定する必要があります。 | はい      |
 | compressionProperties | 特定の圧縮コーデックのデータを圧縮解除する方法のプロパティ グループ。 | いいえ       |
 | preserveZipFileNameAsFolder<br>(" *`compressionProperties`->`type` の下に `ZipDeflateReadSettings` として*")  | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
-| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` で `TarGZipReadSettings` または `TarReadSettings` として*") | **TarGzip**/**Tar** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory により圧縮解除されたファイルが `<path specified in dataset>/<folder named as source compressed file>/` に書き込まれます。 <br>- **false** に設定した場合、Data Factory により圧縮解除されたファイルが `<path specified in dataset>` に直接書き込まれます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
+| preserveCompressionFileNameAsFolder<br>(" *`compressionProperties`->`type` で `TarGZipReadSettings` または `TarReadSettings` として*") | **TarGzip**/**Tar** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの圧縮ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>/<folder named as source compressed file>/` に書き込みます。 <br>- **false** に設定した場合、Data Factory は圧縮解除されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ファイルに重複したファイル名がないことを確認します。 | いいえ |
 
 ### <a name="json-as-sink"></a>シンクとしての JSON
 
@@ -218,7 +218,7 @@ JSON ファイルからデータをコピーする場合、コピー アクテ�
 
 ### <a name="source-format-options"></a>ソース形式のオプション
 
-データ フローでソースとして JSON データセットを使用すると、5 つの追加設定を行うことができます。 これらの設定は、 **[Source Options]\(ソース オプション\)** タブの **[JSON settings]\(JSON 設定\)** アコーディオンにあります。  
+データ フローでソースとして JSON データセットを使用すると、5 つの追加設定を行うことができます。 これらの設定は、 **[Source Options]\(ソース オプション\)** タブの **[JSON settings]\(JSON 設定\)** アコーディオンにあります。**ドキュメント フォーム** の設定では、 **[1 つのドキュメント]** 、 **[Document per line]\(行ごとのドキュメント\)** 、および **[Array of documents]\(ドキュメントの配列\)** のいずれかの種類を選択できます。
 
 ![JSON 設定](media/data-flow/json-settings.png "JSON 設定")
 
@@ -249,6 +249,52 @@ File3.json
 {
     "json": "record 3"
 }
+```
+**[Document per line]\(行ごとのドキュメント\)** を選択した場合、マッピング データ フローでは、ファイルの各行から 1 つの JSON ドキュメントが読み取られます。 
+
+``` json
+File1.json
+{"json": "record 1 }
+
+File2.json
+ {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
+ {"time":"2015-04-29T07:13:21.0220000Z","callingimsi":"466922202613463","callingnum1":"123436380","callingnum2":"789037573","switch1":"US","switch2":"UK"}
+
+File3.json
+ {"time":"2015-04-29T07:12:20.9100000Z","callingimsi":"466920403025604","callingnum1":"678948008","callingnum2":"567834760","switch1":"China","switch2":"Germany"}
+ {"time":"2015-04-29T07:13:21.0220000Z","callingimsi":"466922202613463","callingnum1":"123436380","callingnum2":"789037573","switch1":"US","switch2":"UK"}
+ {"time":"2015-04-29T07:13:21.4370000Z","callingimsi":"466923101048691","callingnum1":"678901578","callingnum2":"345626404","switch1":"Germany","switch2":"UK"}
+```
+**[Array of documents]\(ドキュメントの配列\)** を選択した場合、マッピング データ フローでは、ファイルから 1 つのドキュメントが読み取られます。 
+
+``` json
+File.json
+[
+        {
+            "time": "2015-04-29T07:12:20.9100000Z",
+            "callingimsi": "466920403025604",
+            "callingnum1": "678948008",
+            "callingnum2": "567834760",
+            "switch1": "China",
+            "switch2": "Germany"
+        },
+        {
+            "time": "2015-04-29T07:13:21.0220000Z",
+            "callingimsi": "466922202613463",
+            "callingnum1": "123436380",
+            "callingnum2": "789037573",
+            "switch1": "US",
+            "switch2": "UK"
+        },
+        {
+            "time": "2015-04-29T07:13:21.4370000Z",
+            "callingimsi": "466923101048691",
+            "callingnum1": "678901578",
+            "callingnum2": "345626404",
+            "switch1": "Germany",
+            "switch2": "UK"
+        }
+    ]
 ```
 > [!NOTE]
 > データ フローで JSON データのプレビュー時に "corrupt_record" というエラーがスローされた場合、JSON ファイル内の 1 つのドキュメントがデータに含まれている可能性があります。 "1 つのドキュメント" を設定すると、そのエラーがクリアされます。

@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: aada418b4f74c38a2a35c793deb85b94b703fb89
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 88c0d88a1d3119ef2fa00eb49da447749fde3221
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629359"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543841"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure ページ BLOB の概要
 
@@ -141,7 +141,7 @@ pageBlob.WritePages(dataStream, startingOffset);
 
 # <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
-ページを読み取るには、[PageBlobClient.Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.download) メソッドを使用して、ページ BLOB から一定範囲のバイトを読み取ります。 
+ページを読み取るには、[PageBlobClient.Download](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadto) メソッドを使用して、ページ BLOB から一定範囲のバイトを読み取ります。 
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ReadFromPageBlob":::
 

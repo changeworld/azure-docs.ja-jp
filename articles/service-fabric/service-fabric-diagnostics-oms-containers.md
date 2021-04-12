@@ -1,16 +1,14 @@
 ---
 title: Azure Monitor ログでコンテナーを監視する
 description: Azure Service Fabric クラスターで実行されているコンテナーを監視するために Azure Monitor ログを使用します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.author: srrengar
-ms.openlocfilehash: 6539815875b87a0d0f525d7e89464fa7d2505746
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6217569dc50517c88a5a8a7bc0f3752e7e327f4e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100570202"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626658"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>Azure Monitor ログでコンテナーを監視する
  

@@ -25,7 +25,7 @@
     - name: Internet Analyzer のトラブルシューティング
       href: troubleshoot.md
     - name: Internet Analyzer の CLI リファレンス
-      href: /cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest
+      href: /cli/azure/ext/internet-analyzer/internet-analyzer
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/?category=networking'
     - name: ブログ

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: a693761bcecab87e343014127ad37077c2569e21
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 6f7f481ae0e0c75b14d894080f791161346cd93f
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550625"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104952407"
 ---
 # <a name="how-to-create-import-and-export-glossary-terms"></a>用語集の用語を作成、インポート、エクスポートする方法
 
@@ -80,6 +80,9 @@ Azure Purview Data Catalog には、用語を用語集にインポートする�
 4. .csv ファイルへの入力が完了したら、インポートするファイルを選択し、 **[OK]** を選択します。
 
 5. システムによってファイルがアップロードされ、すべての用語がカタログに追加されます。
+ 
+   > [!Important]
+   > スチュワードとエキスパートのメール アドレスは、AAD グループのユーザーのプライマリ アドレスにする必要があります。 連絡用メール アドレス、ユーザー プリンシパル名、AAD 以外のメールは、まだサポートされていません。 
 
 ## <a name="export-terms-from-glossary-with-custom-attributes"></a>カスタム属性を使用した、用語集からの用語のエクスポート
 
@@ -88,6 +91,10 @@ Azure Purview Data Catalog には、用語を用語集にインポートする�
 1. 用語集では、既定で **[エクスポート]** ボタンが無効になっています。 選択した用語が同じテンプレートに属している場合は、エクスポートする用語を選択すると、 **[エクスポート]** ボタンが有効になります。
 
 2. **[エクスポート]** を選択して、選択した用語をダウンロードします。
+
+ > [!Important]
+   > 階層内の用語が複数の異なる用語テンプレートに属している場合は、インポートのためにそれらを別々の .CSV ファイルに分割する必要があります。 また、インポート処理を使用して、用語の親を更新することは現在サポートされていません。
+
 
 ## <a name="next-steps"></a>次のステップ
 

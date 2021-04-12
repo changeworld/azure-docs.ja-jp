@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: eb8d2d956eac23c02201f7fd855dcae71e960e8d
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7e43c472c939049e5dfd4ec4df909a3178ef8e2d
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388585"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553262"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Audio Content Creation ツールを使用して合成を向上させる
 
@@ -44,7 +44,7 @@ Azure アカウントにサインアップしたら、Speech サービスにア�
 新しい音声リソースを展開するまでに少し時間がかかります。 デプロイが完了したら、Audio Content Creation の使用を開始できます。 
 
  >[!NOTE]
-   > ニューラル音声を使用する予定の場合は、[ニューラル音声をサポートするリージョン](regions.md#standard-and-neural-voices)でリソースを作成するようにしてください。
+   > ニューラル音声を使用する予定の場合は、[ニューラル音声をサポートするリージョン](regions.md#neural-and-standard-voices)でリソースを作成するようにしてください。
  
 ### <a name="step-3---log-into-the-audio-content-creation-with-your-azure-account-and-speech-resource"></a>手順 3 - Azure アカウントと音声リソースを使用して Audio Content Creation にログインする
 

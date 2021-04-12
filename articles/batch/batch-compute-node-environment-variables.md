@@ -3,12 +3,12 @@ title: タスク ランタイム環境変数
 description: タスク実行の環境変数に関するガイダンスと Azure Batch 解析のリファレンスです。
 ms.topic: conceptual
 ms.date: 12/30/2020
-ms.openlocfilehash: c1d9ffb3fe6775b061863656adcb7f45f8840997
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: dbdc13e28a3a0c772480d2602f147e0d3354ff48
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97830889"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104669986"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
 
@@ -61,6 +61,8 @@ Batch での環境変数の使用に関する詳細については、「[タス�
 | AZ_BATCH_TASK_ID                | 現在のタスクの ID。 | 開始タスクを除くすべてのタスク。 | task001 |
 | AZ_BATCH_TASK_SHARED_DIR | プライマリ タスクと、[マルチインスタンス タスク](batch-mpi.md)のすべてのサブタスクで同一なディレクトリ パス。 パスは、マルチインスタンス タスクが実行されるすべてのノードで存在し、そのノードで実行されるタスク コマンド ([調整コマンド](batch-mpi.md#coordination-command)と[アプリケーション コマンド](batch-mpi.md#application-command)の両方) に対して読み取りおよび書き込みアクセス可能です。 他のノードで実行されるサブタスクやプライマリ タスクにはこのディレクトリに対するリモート アクセス権がありません (「共有」ネットワーク ディレクトリではありません)。 | マルチ インスタンスのプライマリおよびサブタスク。 | C:\user\tasks\workitems\multiinstancesamplejob\job-1\multiinstancesampletask |
 | AZ_BATCH_TASK_WORKING_DIR       | ノード上の[タスク作業ディレクトリ](files-and-directories.md)の完全パス。 現在実行中のタスクにはこのディレクトリに対する読み取り/書き込みアクセス権があります。 | すべてのタスク。 | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_WORKING_DIR       | ノード上の[タスク作業ディレクトリ](files-and-directories.md)の完全パス。 現在実行中のタスクにはこのディレクトリに対する読み取り/書き込みアクセス権があります。 | すべてのタスク。 | C:\user\tasks\workitems\batchjob001\job-1\task001\wd |
+| AZ_BATCH_TASK_RESERVED_EPHEMERAL_DISK_SPACE_BYTES | VM が `DiskFull` としてマークされるディスク領域の現在のしきい値。 | すべてのタスク。 | 1000000 |
 | CCP_NODES                       | ノードのリストと、[マルチインスタンス タスク](batch-mpi.md)に割り当てられているノードあたりのコア数。 ノードとコアが `numNodes<space>node1IP<space>node1Cores<space>` の形式で一覧表示されます<br/>`node2IP<space>node2Cores<space> ...`、ノードの番号の後に 1 つまたは複数のノード IP アドレスと、それぞれのコア数が続きます。 |  マルチ インスタンスのプライマリおよびサブタスク。 |`2 10.0.0.4 1 10.0.0.5 1` |
 
 ## <a name="next-steps"></a>次のステップ

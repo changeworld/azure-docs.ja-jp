@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターで Ultra Disks を�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 049c2682a8f61bb658083b0418a4fcf99dc477a5
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: c743162ed3f75386287e050443e82069e797ced9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900029"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102502571"
 ---
 # <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Azure Kubernetes Service での Azure Ultra Disks の使用 (プレビュー)
 
@@ -38,7 +38,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "EnableUltra
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableUltraSSD')].{Name:name,State:properties.state}"
 ```
 
-準備ができたら、 [az provider register][az-provider-register] コマンドを使用して、 *Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
+準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -48,7 +48,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-Ultra Disks を使用できる AKS クラスターまたはノード プールを作成するには、最新の *aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールするか、 [az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムをインストールします。
+Ultra Disks を使用できる AKS クラスターまたはノード プールを作成するには、最新の *aks-preview* CLI 拡張機能が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールするか、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムをインストールします。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -84,7 +84,7 @@ Ultra Disks のサポートを使用せずにクラスターを作成する場�
 
 ## <a name="enable-ultra-disks-on-an-existing-cluster"></a>既存のクラスターでの Ultra Disks の有効化
 
-新しいノード プールを Ultra Disks がサポートされるクラスターに追加することによって、既存のクラスターで Ultra Disks を有効にできます。 `--aks-custom-headers` フラグを使用して、ホストベースの暗号化を使用するように新しいノード プールを構成します。
+新しいノード プールを Ultra Disks がサポートされるクラスターに追加することによって、既存のクラスターで Ultra Disks を有効にできます。 `--aks-custom-headers` フラグを使用して、Ultra ディスクを使用するように新しいノード プールを構成します。
 
 ```azurecli
 az aks nodepool add --name ultradisk --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
@@ -117,7 +117,7 @@ parameters:
   diskMbpsReadWrite: "320"   # minimum value: 0.032/GiB
 ```
 
-[kubectl apply][kubectl-apply] コマンドを使用してストレージ クラスを作成し、 *azure-ultra-disk-sc.yaml* ファイルを指定します。
+[kubectl apply][kubectl-apply] コマンドを使用してストレージ クラスを作成し、*azure-ultra-disk-sc.yaml* ファイルを指定します。
 
 ```console
 $ kubectl apply -f azure-ultra-disk-sc.yaml
@@ -130,7 +130,7 @@ storageclass.storage.k8s.io/ultra-disk-sc created
 
 永続ボリューム要求 (PVC) を使用して、ストレージ クラスに基づいてストレージを自動的にプロビジョニングします。 この場合、PVC は以前に作成したストレージ クラスを使用して、Ultra Disks を作成できます。
 
-`azure-ultra-disk-pvc.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。 クレームでは、サイズが *1000 GB* で *ReadWriteOnce* アクセスがある `ultra-disk` という名前のディスクを要求します。 ストレージ クラスとして、 *ultra-disk-sc* ストレージ クラスが指定されます。
+`azure-ultra-disk-pvc.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。 クレームでは、サイズが *1000 GB* で *ReadWriteOnce* アクセスがある `ultra-disk` という名前のディスクを要求します。 ストレージ クラスとして、*ultra-disk-sc* ストレージ クラスが指定されます。
 
 ```yaml
 apiVersion: v1
@@ -146,7 +146,7 @@ spec:
       storage: 1000Gi
 ```
 
-[kubectl apply][kubectl-apply] コマンドを使用して、 *azure-ultra-disk-pvc.yaml* ファイルを指定することで、永続ボリューム クレームを作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、*azure-ultra-disk-pvc.yaml* ファイルを指定することで、永続ボリューム クレームを作成します。
 
 ```console
 $ kubectl apply -f azure-ultra-disk-pvc.yaml
@@ -156,7 +156,7 @@ persistentvolumeclaim/ultra-disk created
 
 ## <a name="use-the-persistent-volume"></a>永続ボリュームの使用
 
-永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストは、 *ultra-disk* という名前の永続ボリュームクレームを使って `/mnt/azure` パスに Azure ディスクをマウントする基本的な NGINX ポッドを作成します。
+永続ボリューム要求が作成され、ディスクが正常にプロビジョニングされると、ディスクへのアクセスを使ってポッドを作成できます。 次のマニフェストは、*ultra-disk* という名前の永続ボリュームクレームを使って `/mnt/azure` パスに Azure ディスクをマウントする基本的な NGINX ポッドを作成します。
 
 `nginx-ultra.yaml` という名前のファイルを作成し、そこに次のマニフェストをコピーします。
 
@@ -246,8 +246,8 @@ Events:
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update
-[az-feature-register]: /cli/azure/feature?view=azure-cli-latest#az-feature-register
-[az-feature-list]: /cli/azure/feature?view=azure-cli-latest#az-feature-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register

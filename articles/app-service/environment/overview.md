@@ -4,15 +4,15 @@ description: App Service Environment の概要
 author: ccompy
 ms.assetid: 3d37f007-d6f2-4e47-8e26-b844e47ee919
 ms.topic: article
-ms.date: 11/16/2020
+ms.date: 03/02/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fbc498fcd654d16936c2548528e2600be68a2ad9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 23b23340550ded3642d19500270f06cfb6faf8cb
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663328"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101735099"
 ---
 # <a name="app-service-environment-overview"></a>App Service Environment の概要 
 
@@ -53,7 +53,7 @@ App Service Environment には、次のようなさまざまなユース ケー�
 マルチテナント App Service のアプリをネットワーク分離リソースに接続したり、それ自体をネットワークから分離するためのさまざまなネットワーク機能があります。 これらの機能は、アプリケーション レベルで有効になります。  ASE では、アプリを VNet に配置するための追加の構成はアプリにありません。 アプリは、VNet に既に存在するネットワーク分離環境にデプロイされます。 ASE は、ネットワーク分離アプリのホストであるほか、単一のテナント システムでもあります。 ASE を使用する他の顧客は存在しません。 完全な分離環境が実際に必要な場合は、ASE を専用のハードウェアにデプロイすることもできます。 ネットワーク分離アプリケーションのホストと単一のテナントの機能を持ちます。 
 
 ## <a name="dedicated-environment"></a>専用の環境
-ASE は、単一のサブスクリプション専用であり、200 の App Service プラン インスタンスをホストできます。 1 つの App Service プラン内の 100 のインスタンスから、100 の単一インスタンス App Service プラン、およびその間のすべてのプランがあります。
+ASE は、単一のサブスクリプション専用であり、複数の App Service プランの合計 200 の App Service プラン インスタンスをホストできます。 "インスタンス" とは、App Service プランの水平方向のスケーリングを指します。 各インスタンスは、worker ロールに相当します。 1 つの ASE には合計で 200 のインスタンスを含めることができるのに対し、1 つの分離された v2 App Service プランでは 100 インスタンスを保持できます。 ASE では、それぞれ 100 インスタンスを含む 2 つの App Service プラン、200 の単一インスタンスの App Service プラン、またはその間のどのようなプランでも保持できます。
 
 ASE は、フロントエンドとワーカーで構成されます。 フロントエンドは、HTTP/HTTPS ターミネーションと、ASE 内でのアプリ要求の自動負荷分散を担当します。 ASE で App Service プランをスケールアウトすると、フロントエンドが自動的に追加されます。
 
@@ -77,7 +77,7 @@ ASE 機能は、お客様の Azure Resource Manager 仮想ネットワークに 
 ## <a name="preview"></a>[プレビュー]
 App Service Environment v3 はパブリック プレビュー段階にあります。  プレビューの進行中に、一部の機能が追加されます。 ASEv3 の現在の制限事項は次のとおりです。
 
-- 5 つのインスタンスを超えて App Service プランをスケールできない
+- 50 インスタンスを超えて App Service プランをスケーリングできない
 - プライベート レジストリからコンテナーを取得できない
 - 現在サポートされていない App Service 機能は顧客の VNet を経由できない
 - インターネットにアクセス可能なエンドポイントを持つ外部デプロイ モデルがない

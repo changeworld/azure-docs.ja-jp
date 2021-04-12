@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2020
+ms.date: 03/26/2021
 ms.author: justinha
-ms.openlocfilehash: 41ba337765b4a0a93be52f08ae6656707cf7aa73
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 779fd9bbfdd35061867fecc8d4be62b8768f43f9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618809"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933306"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ
 
@@ -63,10 +63,11 @@ Azure AD で作成されたユーザーは、Azure AD でパスワードを変�
 |:--- |:--- |
 | accountEnabled |userAccountControl (ACCOUNT_DISABLED ビットの設定または解除) |
 | city |l |
+| company |companyName |
 | country |co |
 | department |department |
 | displayName |displayName |
-| employeedId |employeeId |
+| employeeId |employeeId |
 | facsimileTelephoneNumber |facsimileTelephoneNumber |
 | givenName |givenName |
 | jobTitle |title |

@@ -6,12 +6,12 @@ ms.topic: overview
 description: Azure Kubernetes Service クラスターにおける反復型の迅速な Kubernetes 開発エクスペリエンスをチームに提供する Azure Dev Spaces について説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 9bdd6f48a8f48266b8a9aad003fe6ea43715036c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fd6f52c71c81f253f3f40f05408e45b6a6c0dbce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978443"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102199477"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Azure Dev Spaces とは
 
@@ -40,7 +40,7 @@ Azure Dev Spaces のしくみについては、「[Azure Dev Spaces のしくみ
 
 ## <a name="supported-regions-and-configurations"></a>サポートされているリージョンと構成
 
-Azure Dev Spaces は、[一部のリージョン][supported-regions]の AKS クラスターでのみサポートされます。 Azure Dev Spaces では、AKS でアプリケーションをビルドして実行するために、Linux、macOS、または Windows 8 以上にインストールされた [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Visual Studio Code](https://code.visualstudio.com/download) および [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)の使用がサポートされます。 また、Azure 開発ワークロードがインストールされている Windows 上の [Visual Studio 2019](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) の使用もサポートされます。
+Azure Dev Spaces は、[一部のリージョン][supported-regions]の AKS クラスターでのみサポートされます。 Azure Dev Spaces では、AKS でアプリケーションをビルドして実行するために、Linux、macOS、または Windows 8 以上にインストールされた [Azure CLI](/cli/azure/install-azure-cli) または [Visual Studio Code](https://code.visualstudio.com/download) および [Azure Dev Spaces 拡張機能](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)の使用がサポートされます。 また、Azure 開発ワークロードがインストールされている Windows 上の [Visual Studio 2019](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) の使用もサポートされます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,14 +3,14 @@ title: テンプレート デプロイの what-if
 description: Azure Resource Manager テンプレートをデプロイする前に、リソースがどのような変更されるかを確認します。
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/09/2021
 ms.author: tomfitz
-ms.openlocfilehash: 8122fa5c00a61017b5f358a112c94a5299539cee
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: ff024ff97baa8a80ae6b1fcdafba010e482afd98
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99591626"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106074624"
 ---
 # <a name="arm-template-deployment-what-if-operation"></a>ARM テンプレート デプロイの What-If 操作
 
@@ -32,7 +32,7 @@ Install-Module -Name Az -Force
 
 ## <a name="install-azure-cli-module"></a>Azure CLI モジュールのインストール
 
-Azure CLI で what-if を使用するには、Azure CLI 2.5.0 以降である必要があります。 必要であれば、[Azure CLI の最新バージョンをインストールします](/cli/azure/install-azure-cli)。
+Azure CLI で what-if を使用するには、Azure CLI 2.14.0 以降である必要があります。 必要であれば、[Azure CLI の最新バージョンをインストールします](/cli/azure/install-azure-cli)。
 
 ## <a name="see-results"></a>結果を表示する
 
@@ -364,17 +364,17 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 
       id:
 "/subscriptions/./resourceGroups/ExampleGroup/providers/Microsoft.Network/virtualNet
-works/vnet-001"
-      location:        "centralus"
-      name:            "vnet-001"
-      tags.CostCenter: "12345"
-      tags.Owner:      "Team A"
-      type:            "Microsoft.Network/virtualNetworks"
+works/vnet-001&quot;
+      location:        &quot;centralus&quot;
+      name:            &quot;vnet-001&quot;
+      tags.CostCenter: &quot;12345&quot;
+      tags.Owner:      &quot;Team A&quot;
+      type:            &quot;Microsoft.Network/virtualNetworks&quot;
 
 Resource changes: 1 to delete.
 
 Are you sure you want to execute the deployment?
-[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"):
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is &quot;Y"):
 ```
 
 期待通りの変更が表示され、デプロイを実行することを確認できます。
@@ -391,8 +391,6 @@ what-if 操作は、Azure SDK を介して使用できます。
 
 ## <a name="next-steps"></a>次のステップ
 
+- パイプラインで What-If 操作を使用するには、「[Test ARM templates with What-If in a pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/)」 (パイプラインで What-If を使用して ARM テンプレートをテストする) を参照してください。
 - what-if 操作から正しくない結果が表示された場合は、[https://aka.ms/whatifissues](https://aka.ms/whatifissues) で問題を報告してください。
 - what if の使用に関して説明している Microsoft Learn モジュールについては、「[what-if と ARM テンプレート テスト ツールキットを使用して変更をプレビューし、Azure リソースを検証する](/learn/modules/arm-template-test/)」を参照してください。
-- Azure PowerShell を使用してテンプレートをデプロイするには、「[ARM テンプレートと Azure PowerShell を使用したリソースのデプロイ](deploy-powershell.md)」を参照してください。
-- Azure CLI を使用してテンプレートをデプロイするには、「[ARM テンプレートと Azure CLI を使用したリソースのデプロイ](deploy-cli.md)」を参照してください。
-- REST を使用してテンプレートをデプロイするには、「[ARM テンプレートと Resource Manager REST API を使用したリソースのデプロイ](deploy-rest.md)」を参照してください。

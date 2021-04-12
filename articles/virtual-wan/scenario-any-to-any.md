@@ -10,10 +10,10 @@ ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99525790"
 ---
 # <a name="scenario-any-to-any"></a>シナリオ:任意の環境間

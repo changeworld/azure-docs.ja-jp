@@ -4,7 +4,6 @@ description: このクイック スタート記事では、高可用性 Web ア�
 services: traffic-manager
 author: duongau
 mnager: twooley
-Customer intent: As an IT admin, I want to direct user traffic to ensure high availability of web applications.
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: quickstart
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: 9b34a17cc9add0bed4bffb7677aa81bb17f3125b
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ed3f6c96f6c02d5dad686947ee7f61e8852b559f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631564"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063816"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Web アプリケーションの高可用性を実現する Traffic Manager プロファイルを作成する
 
@@ -135,7 +134,7 @@ Get-AzTrafficManagerProfile -Name $mytrafficmanagerprofile `
 1. Web ブラウザーで、Traffic Manager プロファイルの DNS 名 (*http://<* relativednsname *>.trafficmanager.net*) を入力して、Web アプリの既定の Web サイトを確認します。
 
     > [!NOTE]
-    > このクイック スタート シナリオでは、すべての要求がプライマリ エンドポイントにルーティングされます。 これは**優先度 1** に設定されています。
+    > このクイック スタート シナリオでは、すべての要求がプライマリ エンドポイントにルーティングされます。 これは **優先度 1** に設定されています。
 2. 実際の Traffic Manager フェールオーバーを確認するには、[Disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint) を使用してプライマリ サイトを無効にします。
 
    ```azurepowershell-interactive

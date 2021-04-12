@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: baanders
 ms.openlocfilehash: c1cfab8c9e68d9e6b0c3b84e8848645a50c24710
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100560796"
 ---
 新しい Azure Digital Twins インスタンスのための設定全体は、2 つの部分で構成されます。

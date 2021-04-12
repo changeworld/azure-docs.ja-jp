@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
-ms.openlocfilehash: d13619b818e18c64d9882f9e3181824173403859
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 383b49a7363fdca9327d419f5bed092d489a95d5
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181392"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104951812"
 ---
 # <a name="tutorial-integrate-wandera-radar-admin-with-azure-active-directory"></a>チュートリアル:Wandera RADAR Admin と Azure Active Directory の統合
 
@@ -82,7 +82,8 @@ Wandera RADAR Admin に対する Azure AD SSO を構成してテストするに�
     **[応答 URL]** ボックスに、`https://radar.wandera.com/saml/acs/<tenant id>` のパターンを使用して URL を入力します
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Wandera RADAR Admin クライアント サポート チーム](https://www.wandera.com/about-wandera/contact/#supportsection)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Wandera RADAR Admin クライアント サポート チーム](https://www.wandera.com/about-wandera/contact/#supportsection)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。 上記の URL の <tenant id> 部分を、Wandera アカウント内の **[Settings]\(設定\)**  >  **[Administration]\(管理\)**  >  **[Single Sign-On]\(シングル サインオン\)** ページに表示されているテナント ID に慎重に置き換えます。
+
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 

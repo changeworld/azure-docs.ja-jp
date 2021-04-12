@@ -5,19 +5,19 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/15/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9566560aaebaaa7ba3fc6d963a30637e33118077
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 4625b0a750c2b3ff63879bb9ea306bc69b1bb64e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101651061"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103471654"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -57,7 +57,7 @@ Azure portal では、次の Azure AD Multi-Factor Authentication 設定を使�
 
 ## <a name="block-and-unblock-users"></a>ユーザーのブロックおよびブロック解除
 
-ユーザーのデバイスが紛失するか、盗難にあった場合は、関連付けられているアカウントに対する Azure AD Multi-Factor Authentication の試行をブロックできます。 ブロックされているユーザーに対する Azure AD Multi-Factor Authentication の試行は自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。
+ユーザーのデバイスが紛失するか、盗難にあった場合は、関連付けられているアカウントに対する Azure AD Multi-Factor Authentication の試行をブロックできます。 ブロックされているユーザーに対する Azure AD Multi-Factor Authentication の試行は自動的に拒否されます。 ユーザーはブロックされた時間から 90 日間ブロックされ続けます。 その方法を説明するために、[テナントでユーザーをブロックおよびブロック解除する方法](https://www.youtube.com/watch?v=WdeE1On4S1o)に関するビデオを公開しています。
 
 ### <a name="block-a-user"></a>ユーザーのブロック
 
@@ -120,6 +120,8 @@ Azure AD では、30 秒または 60 秒ごとにコードを更新する OATH-T
 OATH TOTP ハードウェア トークンには、通常、トークンで事前にプログラミングされた秘密鍵 (シード) が付属しています。 これらのキーは、次の手順に従って Azure AD に入力する必要があります。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密キーに含めることができるのは、文字 *a-z* または *A-Z* と数字 *1-7* のみです。また、*Base32* でエンコードする必要があります。
 
 再シードできるプログラミング可能な OATH TOTP ハードウェア トークンは、ソフトウェア トークンのセットアップ フローで Azure AD に設定することもできます。
+
+OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 プレビューの詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください
 
 ![OATH トークンの MFA OATH トークン ブレードへのアップロード](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 

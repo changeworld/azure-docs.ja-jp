@@ -11,16 +11,37 @@ ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 11f32d893ccc26dd30d9997d4348661d45f84eb8
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 56e6d859293b91a56252372574f59c8dcc2cd80e
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99225481"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101687330"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Microsoft ID プラットフォームに関するドキュメント:新機能
 
 Microsoft ID プラットフォームに関するドキュメントの新着情報へようこそ。 この記事では、過去 3 か月間に追加された新しいドキュメントと、重要な更新があったものの一覧を示します。
+
+## <a name="february-2021"></a>2021 年 2 月
+
+### <a name="new-articles"></a>新しい記事
+
+- [クイックスタート: Electron デスクトップ アプリケーションからアクセス トークンを取得して Microsoft Graph API を呼び出す](quickstart-v2-nodejs-desktop.md)
+- [チュートリアル: Electron デスクトップ アプリでユーザーのサインインと Microsoft Graph API の呼び出しを行う](tutorial-v2-nodejs-desktop.md)
+- [クイックスタート: トークンを取得し、Node.js コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-nodejs-console.md)
+- [チュートリアル:Node.js コンソール アプリで Microsoft Graph API を呼び出す](tutorial-v2-nodejs-console.md)
+- [チュートリアル: Node.js + Express Web アプリにユーザーをサインインさせる](tutorial-v2-nodejs-webapp-msal.md)
+- [開発するアプリで FIDO2 キーを使用してパスワードレス認証をサポートする](support-fido2-authentication.md)
+
+### <a name="updated-articles"></a>更新された記事
+
+- [認証の新機能](reference-breaking-changes.md)
+- [MSAL.NET を使用してソーシャル ID でユーザーをサインインさせる](msal-net-aad-b2c-considerations.md)
+- [Microsoft ID プラットフォームのコード サンプル (v2.0 エンドポイント)](sample-v2-code.md)
+- [Microsoft ID プラットフォームのビデオ](identity-videos.md)
+- [クイックスタート: テナントを設定する](quickstart-create-new-tenant.md)
+- [クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)
+- [クイックスタート: トークンを取得し、Java コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](quickstart-v2-java-daemon.md)
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -66,17 +87,3 @@ Microsoft ID プラットフォームに関するドキュメントの新着情�
 - [Microsoft ID プラットフォーム アクセス トークン](access-tokens.md)
 - [Web API を呼び出す Web API:アプリのトークンの取得](scenario-web-api-call-api-acquire-token.md)
 
-
-## <a name="november-2020"></a>2020 年 11 月
-
-### <a name="new-articles"></a>新しい記事
-
-- [継続的アクセス評価が有効になった API をアプリケーションで使用する方法](app-resilience-continuous-access-evaluation.md)
-
-### <a name="updated-articles"></a>更新された記事
-
-- [Microsoft ID プラットフォーム アクセス トークン](access-tokens.md)
-- [アプリケーション構成オプション (MSAL)](msal-client-application-configuration.md)
-- [方法:アプリに省略可能な要求を提供する](active-directory-optional-claims.md)
-- [アプリを Azure AD アプリ ギャラリーで公開する](v2-howto-app-gallery-listing.md)
-- [方法: アプリケーションにアプリ ロールを追加してトークンで受け取る](howto-add-app-roles-in-azure-ad-apps.md)

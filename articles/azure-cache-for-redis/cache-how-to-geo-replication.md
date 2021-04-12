@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: a04ffbcec8eda6663a12a8a08a81e00c5d0b5c7f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8701f7bcb2e7ff705e4f1d1b401f4eb3e680f28b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101646967"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102501041"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Premium Azure Cache for Redis インスタンスの geo レプリケーションを構成する
 
@@ -170,7 +170,7 @@ geo レプリケーション モードのキャッシュの場合、永続化は
 
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>PowerShell または Azure CLI を使って geo レプリケーションを管理することはできますか
 
-はい。geo レプリケーションは、Azure Portal、PowerShell、または Azure CLI を使用して管理できます。 詳細については、[PowerShell のドキュメント](/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache)または [Azure CLI のドキュメント](/cli/azure/redis/server-link?view=azure-cli-latest)を参照してください。
+はい。geo レプリケーションは、Azure Portal、PowerShell、または Azure CLI を使用して管理できます。 詳細については、[PowerShell のドキュメント](/powershell/module/az.rediscache/#redis_cache)または [Azure CLI のドキュメント](/cli/azure/redis/server-link)を参照してください。
 
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Azure リージョン間でデータをレプリケートするコストはどれくらいですか
 

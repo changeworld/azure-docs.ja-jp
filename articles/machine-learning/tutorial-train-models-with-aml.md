@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 6aa39709a82b01367463f0128af4223446710a1c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 85dea807ee09338e7f0e9e388f6b196fd3beef33
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183644"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104588666"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
 
@@ -37,7 +37,7 @@ ms.locfileid: "98183644"
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 >[!NOTE]
-> この記事のコードは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) バージョン 1.13.0 を使用してテストされています。
+> この記事のコードは、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) バージョン 1.13.0 を使用してテストされています。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -91,6 +91,9 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 ws = Workspace.from_config()
 print(ws.name, ws.location, ws.resource_group, sep='\t')
 ```
+
+>[!NOTE]
+> 次のコードを初めて実行するときに、ワークスペースに対する認証を求められる場合があります。 画面に表示される手順に従って操作します。
 
 ### <a name="create-an-experiment"></a>実験の作成
 
@@ -309,7 +312,7 @@ joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')
 
 ### <a name="configure-the-training-job"></a>トレーニング ジョブを構成する
 
-[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) オブジェクトを作成して、トレーニング スクリプト、使用する環境、実行するコンピューティング先など、トレーニング ジョブの構成の詳細を指定します。 次のように指定して、ScriptRunConfig を構成します。
+[ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) オブジェクトを作成して、トレーニング スクリプト、使用する環境、実行するコンピューティング先など、トレーニング ジョブの構成の詳細を指定します。 次のように指定して、ScriptRunConfig を構成します。
 
 * スクリプトが含まれるディレクトリ。 このディレクトリ内のすべてのファイルは、実行のためにクラスター ノード内にアップロードされます。
 * コンピューティング ターゲット。 ここでは、作成した Azure Machine Learning コンピューティング クラスターを使用します。
@@ -382,7 +385,7 @@ run
 
 ### <a name="jupyter-widget"></a>Jupyter ウィジェット
 
-[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py)を使用して、実行の進行状況を監視します。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで、10 秒から 15 秒ごとにライブ更新が提供されます。
+[Jupyter ウィジェット](/python/api/azureml-widgets/azureml.widgets)を使用して、実行の進行状況を監視します。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで、10 秒から 15 秒ごとにライブ更新が提供されます。
 
 ```python
 from azureml.widgets import RunDetails

@@ -7,7 +7,6 @@ documentationcenter: network-watcher
 author: damendo
 editor: ''
 tags: azure-resource-manager
-Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
 ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -17,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: damendo
 ms.custom: ''
-ms.openlocfilehash: 42174ce094242a6e7412deea0bf1f0eed0f3b6ea
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 415fcc72116cc36644b58b619404d96ff63b024d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013177"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065924"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>仮想マシン ネットワークのルーティングの問題を診断する - Azure CLI
 
@@ -73,7 +72,7 @@ az network watcher configure \
 
 ### <a name="use-next-hop"></a>次ホップの使用
 
-Azure では、既定の接続先へのルートを自動的に作成します。 既定のルートをオーバーライドするカスタム ルートを作成できます。 場合によっては、カスタム ルートが通信の失敗の原因になることがあります。 VM からのルーティングをテストするには、[az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az-network-watcher-show-next-hop) を使用して、トラフィックが特定のアドレスに送信されるときの次のルーティング ホップを確認します。
+Azure では、既定の接続先へのルートを自動的に作成します。 既定のルートをオーバーライドするカスタム ルートを作成できます。 場合によっては、カスタム ルートが通信の失敗の原因になることがあります。 VM からのルーティングをテストするには、[az network watcher show-next-hop](/cli/azure/network/watcher#az-network-watcher-show-next-hop) を使用して、トラフィックが特定のアドレスに送信されるときの次のルーティング ホップを確認します。
 
 VM から www.bing.com のいずれかの IP アドレスへの送信通信をテストします。
 

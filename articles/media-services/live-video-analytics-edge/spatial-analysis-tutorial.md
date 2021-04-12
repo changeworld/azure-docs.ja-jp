@@ -3,12 +3,12 @@ title: 空間分析用の Computer Vision でライブ ビデオを分析する 
 description: このチュートリアルでは、Live Video Analytics を Azure Cognitive Services の Computer Vision 空間分析 AI 機能と共に使用して、(シミュレートされた) IP カメラからのライブ ビデオ フィードを分析する方法について説明します。
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: b20cdb9bbc64f9adc49cfbde4ff80576b149dbcd
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1c3fd411e60cabb504f01bece62d497ddeea31d8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698758"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561017"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>空間分析用の Computer Vision でライブ ビデオを分析する (プレビュー)
 
@@ -56,7 +56,7 @@ ms.locfileid: "101698758"
 
 MediaGraphCognitiveServicesVisionExtension ノードは、プロキシの役割を果たします。 ビデオ フレームを、指定した画像の種類に変換します。 次に、画像を **共有メモリ** 経由で、gRPC エンドポイントの背後で AI 操作を実行する別のエッジ モジュールに転送します。 この例では、このエッジ モジュールは spatial-analysis モジュールです。 MediaGraphCognitiveServicesVisionExtension プロセッサ ノードでは、次の 2 つの処理が行われます。
 
-* 結果を収集し、イベントを [IoT Hub シンク](media-graph-concept.md#iot-hub-message-sink) ノードに発行します。 次に、このノードはこれらのイベントを [IoT Edge Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub) に送信します。 
+* 結果を収集し、イベントを [IoT Hub シンク](media-graph-concept.md#iot-hub-message-sink) ノードに発行します。 次に、このノードはこれらのイベントを [IoT Edge Hub](../../iot-fundamentals/iot-glossary.md#iot-edge-hub) に送信します。 
 * また、[シグナル ゲート プロセッサ](media-graph-concept.md#signal-gate-processor)を使用して RTSP ソースから 30 秒のビデオ クリップをキャプチャし、それを Media Services アセットとして格納します。
 
 ## <a name="create-the-computer-vision-resource"></a>Computer Vision リソースを作成する

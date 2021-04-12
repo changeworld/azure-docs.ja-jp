@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp, devx-track-js
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: f75f42f3879f551a945bdeb2d88450ae3b9d6106
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 27bc8171509e16f25c508dd71515d8cb25a11b0b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98674152"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639865"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Azure Functions のコードをテストするための戦略
 
@@ -41,7 +41,7 @@ ms.locfileid: "98674152"
 3. [テンプレートからタイマー関数を作成](./functions-create-scheduled-function.md)して **MyTimerTrigger** という名前を付けます。
 4. ソリューションで [xUnit テスト アプリを作成](https://xunit.net/docs/getting-started/netcore/cmdline)して **Functions.Tests** という名前を付けます。
 5. NuGet を使用して、テスト アプリから [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) への参照を追加します
-6. *Functions.Tests* アプリから [*Functions* アプリを参照](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)します。
+6. *Functions.Tests* アプリから [*Functions* アプリを参照](/visualstudio/ide/managing-references-in-a-project)します。
 
 ### <a name="create-test-classes"></a>テスト クラスの作成
 

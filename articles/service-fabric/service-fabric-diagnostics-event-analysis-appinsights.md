@@ -1,16 +1,14 @@
 ---
 title: Application Insights を使用した Azure Service Fabric イベントの分析
 description: Azure Service Fabric クラスターの監視と診断に Application Insights を使用したイベントの視覚化と分析について説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: srrengar
-ms.openlocfilehash: f4d77cc3b2f2182b02d47f047070b819daa5f3c1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 0e84c3c1ab542dc4541ebdcfbc49f45e02458d9c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100589016"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626216"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 

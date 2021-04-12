@@ -1,19 +1,19 @@
 ---
 title: クイック スタート:JavaScript 用 Azure Blob Storage クライアント ライブラリ v10
 description: JavaScript 用 Azure Storage クライアント ライブラリ v10 を使用して Node.js で BLOB とコンテナーを作成、アップロード、削除します
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ddcce3e624de7e8bed62783bdc22c5c4211e19e2
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599461"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280107"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>クイック スタート:Node.js で JavaScript v10 SDK を使用して BLOB を管理する
 

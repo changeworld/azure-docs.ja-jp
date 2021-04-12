@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/01/2021
-ms.openlocfilehash: e4f756631b51ce9c5fba32939d1c6651e7b328d0
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/12/2021
+ms.openlocfilehash: 4026d2f987ca37834231ac4d7e827ff543af9d2e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378521"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103232394"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 
@@ -66,7 +66,7 @@ SAP テーブルから、サポートされている任意のシンク データ
 - Data Factory の SAP テーブル コネクタで使用される SAP ユーザーは、以下のアクセス許可を持っている必要があります。
 
   - Remote Function Call (RFC) の宛先を使用するための認可。
-  - S_SDSAUTH 認可オブジェクトの "実行" アクティビティに対するアクセス許可。
+  - S_SDSAUTH 認可オブジェクトの "実行" アクティビティに対するアクセス許可。 大半の認可オブジェクトについては、SAP Note 40089 を参照できます。 RFC_FUNCTION_SEARCH など、基礎となる NCo コネクタでは特定の RFC が要求されます。 
 
 ## <a name="get-started"></a>はじめに
 
@@ -238,6 +238,10 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 >例として `partitionOption` を `partitionOnInt` として取ると、各パーティション内の行数はこの式を使って計算されます: (`partitionUpperBound` と `partitionLowerBound` の間の合計行数)/`maxPartitionsNumber`。<br/>
 <br/>
 >コピーを高速化するためにデータ パーティションを並行して読み込むために、並列度はコピー アクティビティの [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) 設定によって制御されます。 たとえば、`parallelCopies` を 4 に設定した場合、Data Factory では、指定したパーティション オプションと設定に基づいて 4 つのクエリが同時に生成され、実行されます。各クエリは、SAP テーブルからデータの一部を取得します。 `maxPartitionsNumber` を `parallelCopies` プロパティの値の倍数にすることを強くお勧めします。 ファイルベースのデータ ストアにデータをコピーする場合は、複数のファイルとしてフォルダーに書き込む (フォルダー名のみを指定する) こともお勧めします。この場合、1 つのファイルに書き込むよりもパフォーマンスが優れています。
+
+
+>[!TIP]
+> Azure Data Factory 側のこの SAP テーブル コネクタでは、`BASXML` が既定で有効になっています。
 
 `rfcTableOptions` では、次の一般的な SAP クエリ演算子を使用して行をフィルター処理できます。
 

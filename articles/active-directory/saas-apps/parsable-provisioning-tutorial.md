@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/18/2020
 ms.author: Zhchia
 ms.openlocfilehash: 817b6b373f521543234cf02818cde8c4b4ba40c1
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100526427"
 ---
 # <a name="tutorial-configure-parsable-for-automatic-user-provisioning"></a>チュートリアル:Parsable を構成し、自動ユーザー プロビジョニングに対応させる

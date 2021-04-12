@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 02/04/2021
 ms.author: b-juche
 ms.openlocfilehash: 13acee8b21adf946192544afcea17b4a8d9b9ec9
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99581127"
 ---
 # <a name="manual-qos-capacity-pool"></a>手動 QoS 容量プール

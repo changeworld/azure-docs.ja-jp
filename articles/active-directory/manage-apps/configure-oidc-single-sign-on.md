@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: arajpathak7
 ms.custom: contperf-fy21q2
 ms.openlocfilehash: ffaa55d4aa482e8f0eda93b1b32db6310d17e2a3
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99255251"
 ---
 # <a name="understand-oidc-based-single-sign-on"></a>OIDC ベースのシングル サインオンについて理解する

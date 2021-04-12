@@ -3,16 +3,16 @@ title: 'クイックスタート: Azure portal を使用して Stream Analytics 
 description: このクイック スタートでは、Stream Analytic ジョブの作成、入力と出力の構成、およびクエリの定義によって作業を開始する方法を示します。
 author: enkrumah
 ms.author: ebnkruma
-ms.date: 06/21/2019
+ms.date: 03/30/2021
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: c585cedce677599528e036525dead13a85c8b102
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 2b5e6ba551f8f02aa93d157fa39e6b951d977ab8
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012378"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092383"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "98012378"
 
 Stream Analytics ジョブを定義する前に、入力データを準備する必要があります。 リアルタイムのセンサー データは、ジョブの入力として構成された IoT Hub に後で取り込まれます。 ジョブで必要な入力データを準備するには、次の手順を完了します。
 
-1. [Azure portal](https://portal.azure.com/) にサインインする
+1. [Azure portal](https://portal.azure.com/) にサインインします。
 
 2. **[リソースの作成]**  >  **[モノのインターネット]**  >  **[IoT Hub]** を選択します。
 
@@ -37,7 +37,7 @@ Stream Analytics ジョブを定義する前に、入力データを準備する
    |**設定**  |**推奨値**  |**説明**  |
    |---------|---------|---------|
    |サブスクリプション  | \<Your subscription\> |  使用する Azure サブスクリプションを選択します。 |
-   |リソース グループ   |   asaquickstart-resourcegroup  |   **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。 |
+   |Resource group   |   asaquickstart-resourcegroup  |   **[新規作成]** を選択し、アカウントの新しいリソース グループ名を入力します。 |
    |リージョン  |  \<Select the region that is closest to your users\> | お客様の IoT ハブをホストできる地理的な場所を選択します。 お客様のユーザーに最も近い場所を使用します。 |
    |IoT Hub 名  | MyASAIoTHub  |   お客様の IoT ハブの名前を選択します。   |
 
@@ -89,7 +89,7 @@ Stream Analytics ジョブを定義する前に、入力データを準備する
    |---------|---------|---------|
    |ジョブ名   |  MyASAJob   |   Stream Analytics ジョブを識別するための名前を入力します。 Stream Analytics ジョブ名には、英数字、ハイフン、アンダースコアのみを使用することができます。長さは 3 文字以上 63 文字以下でなければなりません。 |
    |サブスクリプション  | \<Your subscription\> |  このジョブで使用する Azure サブスクリプションを選択します。 |
-   |リソース グループ   |   asaquickstart-resourcegroup  |   お客様の IoT ハブと同じリソース グループを選択します。 |
+   |Resource group   |   asaquickstart-resourcegroup  |   お客様の IoT ハブと同じリソース グループを選択します。 |
    |場所  |  \<Select the region that is closest to your users\> | Stream Analytics ジョブをホストすることができる地理的な場所を選択します。 パフォーマンスを向上させ、データ転送コストを削減するために、ユーザーに最も近い場所を使用します。 |
    |[ストリーミング ユニット]  | 1  |   ストリーミング ユニットとは、ジョブの実行に必要なコンピューティング リソースのことです。 既定では、この値は 1 に設定されています。 ストリーミング ユニットのスケーリングについては、[ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)に関する記事を参照してください。   |
    |ホスティング環境  |  クラウド  |   Stream Analytics ジョブは、クラウドまたはエッジにデプロイすることができます。 クラウドでは Azure Cloud にデプロイすることができ、エッジでは IoT Edge デバイスにデプロイすることができます。 |

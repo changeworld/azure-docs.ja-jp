@@ -1,18 +1,18 @@
 ---
 title: Azure Percept の概要
 description: Azure Percept プラットフォームの詳細情報
-author: elqu20
-ms.author: v-elqu
+author: mimcco
+ms.author: mimcco
 ms.service: azure-percept
 ms.topic: overview
-ms.date: 02/18/2021
+ms.date: 03/23/2021
 ms.custom: template-overview
-ms.openlocfilehash: 0581e659eca0a59719db0dd0e48cf3628b64dd2a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 09ee8346b62f868be3811ebfb6b3dc36ff9d0f83
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101664304"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567663"
 ---
 # <a name="introduction-to-azure-percept"></a>Azure Percept の概要
 
@@ -22,27 +22,30 @@ Azure Percept は、IoT と AI をエッジで使用してビジネス変革を�
 
 - ソリューションを強化するための適切なシリコンの特定と選択。
 - ハードウェア、ソフトウェア、モデル、データの全体的なセキュリティを確保すること。
-- シームレスに動作するソリューションを構築および管理する能力。
+- シームレスに動作するソリューションを、規模に応じて構築し、管理する能力。
 
 ## <a name="components-of-azure-percept"></a>Azure Percept のコンポーネント
 
 Azure Percept の主要なコンポーネントは次のとおりです。
 
+- [Azure Percept DK。](./overview-azure-percept-dk.md)
+
+    - デバイス ビルダー、ソリューション ビルダー、お客様のさまざまなプロトタイプ作成シナリオをサポートするために十分な柔軟性を備えた開発キットです。
+
+        > [!div class="nextstepaction"]
+        > [今すぐ購入](https://go.microsoft.com/fwlink/p/?LinkId=2155270)
+
+- エッジ AI モデルとソリューション開発を迅速化するサービスとワークフロー。
+
+    - [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) からアクセスできる開発ワークフローと事前構築されたモデル。
+    - モデル開発サービス。
+    - スケーリングのためのデバイス管理サービス。
+    - エンドツーエンドのセキュリティ。
+
 - AI ハードウェア リファレンス設計および認定プログラム。
 
     - Azure AI および IoT サービスと簡単に統合できるエッジ AI ハードウェアを開発するためのパターンとベストプラクティスをハードウェア開発者のエコシステムに提供します。
 
-- Azure Percept DK (開発キット)。
-
-    - さまざまなプロトタイプ作成シナリオをサポートするのに十分な柔軟性を備えた開発キットです。
-
-- エッジ AI モデルとソリューション開発を加速させるためのサービスとワークフロー。
-
-    - Azure Percept Studio からアクセスできる開発ワークフローと事前構築されたモデルです。
-    - モデル開発サービス。
-    - 大規模向けのデバイス管理サービス。
-    - エンドツーエンドのセキュリティ。
-
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Percept DK](./overview-azure-percept-dk.md) の使用を開始する。
+[Azure Percept DK](./overview-azure-percept-dk.md) と [Azure Percept Studio](./overview-azure-percept-studio.md) の詳細について学びます。

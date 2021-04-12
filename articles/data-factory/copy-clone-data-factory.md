@@ -4,15 +4,15 @@ description: Azure Data Factory のデータ ファクトリをコピーまた�
 ms.service: data-factory
 author: chez-charlie
 ms.author: chez
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 1ea16785502ce8a82087b79dd8e7f0014c0059fc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e13aa0a66d1c1a65462e80f14efc048dd2f06c8c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100375240"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104780278"
 ---
 # <a name="copy-or-clone-a-data-factory-in-azure-data-factory"></a>Azure Data Factory のデータ ファクトリをコピーまたは複製する
 

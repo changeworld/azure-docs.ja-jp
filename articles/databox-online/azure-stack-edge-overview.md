@@ -6,22 +6,24 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 09/09/2020
+ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: 51469c23574f55c102f0c6fb98e5aa5178b59a4a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e6cd1f8a1f7d1777e786ab91637b4065a2c5e850
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455740"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585946"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>FPGA 搭載の Azure Stack Edge Pro とは
 
-[!INCLUDE [data-box-edge-gateway-rename-note](../../includes/data-box-edge-gateway-rename-note.md)]
+[!INCLUDE [Azure Stack Edge Pro FPGA end-of-life](../../includes/azure-stack-edge-fpga-eol.md)]
 
-FPGA 搭載の Azure Stack Edge Pro は、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 この記事では、FPGA 搭載の Azure Stack Edge Pro ソリューションの概要、利点、主な機能、およびこのデバイスを配置できるシナリオについて説明します。
+FPGA 搭載の Azure Stack Edge Pro は、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 この記事では、FPGA 搭載の Azure Stack Edge Pro ソリューションの概要、利点、主な機能、およびデプロイ シナリオについて説明します。
 
-FPGA 搭載の Azure Stack Edge Pro は、サービスとしてのハードウェア ソリューションです。 Microsoft は、高速な AI 推論を実現し、ネットワーク ストレージ ゲートウェイのすべての機能を備える、Field Programmable Gate Array (FPGA) が組み込まれたクラウドマネージド デバイスを提供しています。 
+FPGA 搭載の Azure Stack Edge Pro は、サービスとしてのハードウェア ソリューションです。 Microsoft は、高速な AI 推論を実現し、ネットワーク ストレージ ゲートウェイのすべての機能を備える、Field Programmable Gate Array (FPGA) が組み込まれたクラウドマネージド デバイスを提供しています。
+
+Azure Data Box Edge は、Azure Stack Edge にブランドが変更されました。
 
 ## <a name="use-cases"></a>ユース ケース
 
@@ -56,17 +58,19 @@ Azure Stack Edge Pro には、次の機能があります。
 |帯域幅調整| ピーク時の帯域幅の使用量を制限するように調整します。|
 |ExpressRoute | ExpressRoute によってセキュリティが強化されました。 ローカル デバイスからクラウド ストレージ エンドポイントへのトラフィックが ExpressRoute 経由で転送されるピアリング構成を使用します。 詳細については、「[ExpressRoute の概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
-## <a name="components"></a>Components
+## <a name="components"></a>コンポーネント
 
 Azure Stack Edge Pro ソリューションは、Azure Stack Edge リソース、Azure Stack Edge Pro 物理デバイス、およびローカル Web UI で構成されています。
 
-* **Azure Stack Edge Pro 物理デバイス** - Azure にデータを送信するように構成できる、Microsoft によって提供される 1U ラックマウント型サーバー。
+* **Azure Stack Edge Pro 物理デバイス**: Azure にデータを送信するように構成できる、Microsoft によって提供される 1U ラックマウント型サーバー。
     
-* **Azure Stack Edge リソース** - さまざまな地理的な場所からアクセスできる Web インターフェイスから Azure Stack Edge Pro デバイスを管理できるようにする Azure portal のリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、デバイスとアラートの表示と管理、および共有の管理を行います。  
+* **Azure Stack Edge リソース**: さまざまな地理的な場所からアクセスできる Web インターフェイスから Azure Stack Edge Pro デバイスを管理できるようにする Azure portal のリソース。 Azure Stack Edge リソースを使用して、リソースの作成と管理、共有の管理、およびデバイスとアラートの表示と管理を行います。
+  
+   <!--[The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
 
-    <!--![The Azure Stack Edge service in Azure portal](media/data-box-overview/data-box-Edge-service1.png)-->
+   Azure Stack Edge Pro はサポート終了に近づいているため、新しい Azure Stack Edge Pro デバイスの注文には応じていません。 新しいお客様は、ワークロードに対して Azure Stack Edge Pro - GPU デバイスの使用を検討することをお勧めします。 詳細については、「[GPU 搭載の Azure Stack Edge Pro とは](azure-stack-edge-gpu-overview.md)」を参照してください。 GPU デバイス搭載の Azure Stack Edge Pro を注文する方法の詳細については、[Azure Stack Edge Pro - GPU 用に新しいリソースを作成する](azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)ことに関する記事を参照してください。
 
-    詳細については、[Azure Stack Edge Pro デバイスの注文の作成](azure-stack-edge-deploy-prep.md#create-a-new-resource)に関する記事を参照してください。
+   既存のお客様は、既存の Azure Stack Edge Pro デバイスを交換またはリセットする必要がある場合でも、新しい Azure Stack Edge Pro リソースを作成できます。 手順については、[Azure Stack Edge Pro デバイスの注文の作成](azure-stack-edge-deploy-prep.md#create-new-resource-for-existing-device)に関する記事を参照してください。
 
 * **Azure Stack Edge Pro ローカル Web UI** - ローカル Web UI を使用して、Azure Stack Edge Pro デバイスの診断、シャットダウン、および再起動を実行し、コピー ログを表示し、Microsoft サポートに連絡してサービス リクエストを提出します。
 
@@ -81,6 +85,8 @@ Azure Stack Edge Pro 物理デバイス、Azure リソース、およびデー�
 - **リソースの使用可能性** - Azure Stack Edge リソースを使用できるすべてのリージョンの一覧については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)を参照してください。 Azure Stack Edge Pro は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](../azure-government/documentation-government-welcome.md)」を参照してください。
     
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge Pro のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
+
+Azure Stack Edge サービスは、非リージョン サービスです。 詳細については、「[Azure のリージョンと Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview)」をご覧ください。 Azure Stack Edge サービスは、特定の Azure リージョンに依存しません。そのため、ゾーン全体の障害やリージョン全体の障害に対する回復性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

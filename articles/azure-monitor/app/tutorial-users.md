@@ -1,18 +1,17 @@
 ---
 title: Azure Application Insights で顧客を理解する | Microsoft Docs
 description: Azure Application Insights を使用して、顧客がアプリケーションをどのように使用しているかを理解するためのチュートリアルです。
-ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/20/2017
 ms.custom: mvc
-ms.openlocfilehash: 4f6eeb5265d99a17ed18ace91fa5f2d2f744dbb2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 25c85571b0c5ab1cf1a89564dd93e305d026ce69
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597603"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383033"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Azure Application Insights を使用して顧客がアプリケーションをどのように使用しているかを理解する
 
@@ -38,7 +37,7 @@ Azure Application Insights は、ユーザーがアプリケーションとど�
 - [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) をダウンロードしてインストールします。
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](../app/asp-net.md)を実行します。 
 - [アプリケーションからのテレメトリの送信](../app/usage-overview.md#send-telemetry-from-your-app)を実行して、カスタム イベント/ページ ビューに追加します。
-- [ユーザー コンテキスト](../app/usage-send-user-context.md)を送信して、一定期間にユーザーが何をしているかを追跡し、使用状況機能をフルに活用します。
+- [ユーザー コンテキスト](./usage-overview.md)を送信して、一定期間にユーザーが何をしているかを追跡し、使用状況機能をフルに活用します。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
@@ -165,4 +164,3 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 > [!div class="nextstepaction"]
 > [カスタム ダッシュボードを作成する](./tutorial-app-dashboards.md)
-

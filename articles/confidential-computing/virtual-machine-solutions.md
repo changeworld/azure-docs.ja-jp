@@ -3,17 +3,17 @@ title: 仮想マシンの Azure Confidential Computing
 description: 仮想マシンの Azure Confidential Computing ソリューションについて説明します。
 author: JBCook
 ms.service: virtual-machines
-ms.subservice: workloads
+ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 8d5ce3cde8c86d66bec025c778318a192ef60b73
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 8621dc8cfc10ab44ecb358a40fdae1a1b2081734
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560845"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102566585"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 仮想マシンのソリューション
 
@@ -29,7 +29,7 @@ Azure Confidential Computing 仮想マシンは、データとコードをクラ
 
 ### <a name="current-available-sizes-and-regions"></a>現在利用できるサイズとリージョン
 
-一般提供されている Confidential Computing VM サイズ、リージョン、可用性ゾーンをすべてまとめた一覧は [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) で次のコマンドを実行することで取得できます。
+一般提供されている Confidential Computing VM サイズ、リージョン、可用性ゾーンをすべてまとめた一覧は [Azure CLI](/cli/azure/install-azure-cli-windows) で次のコマンドを実行することで取得できます。
 
 ```azurecli-interactive
 az vm list-skus `
@@ -76,7 +76,7 @@ DCSv2 シリーズの VM ファミリで **Standard_DC8_v2** 仮想マシン サ
 
 Azure で仮想マシンを使用する場合、いかなるダウンタイムも回避するために高可用性とディザスター リカバリー ソリューションを実装する責任があります。 
 
-Azure Confidential Computing では現時点で、可用性ゾーンによるゾーン冗長がサポートされていません。 Confidential Computing で可用性と冗長性を最大にするには、[可用性セット](../virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を使用します。 ハードウェアに制約があるため、Confidential Computing インスタンスの可用性セットに指定できる更新ドメインは最大で 10 です。 
+Azure Confidential Computing では現時点で、可用性ゾーンによるゾーン冗長がサポートされていません。 Confidential Computing で可用性と冗長性を最大にするには、[可用性セット](../virtual-machines/availability-set-overview.md)を使用します。 ハードウェアに制約があるため、Confidential Computing インスタンスの可用性セットに指定できる更新ドメインは最大で 10 です。 
 
 ## <a name="deployment-with-azure-resource-manager-arm-template"></a>Azure Resource Manager (ARM) テンプレートを使用したデプロイ
 

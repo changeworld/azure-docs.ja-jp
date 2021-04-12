@@ -3,12 +3,12 @@ title: Azure Monitor ログのデータ モデル
 description: この記事では、Azure Backup データに使用する Azure Monitor Log Analytics データ モデルの詳細について説明します。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 1fcb4eb0c584f792132f19c8c4d66289342aa36e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2682bf0483b38c50e64bf4ec5255c89f931ab0f0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020951"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078912"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure Backup データの Log Analytics データ モデル
 
@@ -18,7 +18,8 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 
 > [!NOTE]
 >
-> このデータ モデルは、Log Analytics (LA) に診断イベントを送信する Azure Diagnostics モードを参照しています。 新しいリソース固有モード用のデータ モデルについては、次の記事を参照してください。[Azure Backup 診断イベントのデータ モデル](./backup-azure-reports-data-model.md)
+> * このデータ モデルは、Log Analytics (LA) に診断イベントを送信する Azure Diagnostics モードを参照しています。 新しいリソース固有モード用のデータ モデルについては、次の記事を参照してください。[Azure Backup 診断イベントのデータ モデル](./backup-azure-reports-data-model.md)
+> * カスタムのレポート ビューを作成する場合は、次に示す未加工のテーブルを操作するのではなく、[Azure Monitor ログでシステム関数](backup-reports-system-functions.md)を使用することをお勧めします。
 
 ## <a name="using-azure-backup-data-model"></a>Azure Backup データ モデルを使用する
 
@@ -96,7 +97,7 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 | --- | --- | --- |
 | EventName_s |Text |このフィールドは、このイベントの名前を表します。 これは常に AzureBackupCentralReport です |  
 | BackupItemUniqueId_s |Text |バックアップ項目の一意の ID |
-| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョンを表します これは **V2** です |
+| SchemaVersion_s |Text |このフィールドは、スキーマの現在のバージョンを表します。 これは **V2** です |
 | State_s |Text |バックアップ項目アソシエーション オブジェクトの現在の状態 (例: アクティブ、削除済み) |
 | BackupManagementType_s |Text |バックアップ ジョブを行うサーバーのプロバイダーの種類 (例: IaaSVM、FileFolder) |
 | BackupItemSourceSize_s |Text | バックアップ項目のフロント エンドのサイズ |
@@ -198,9 +199,9 @@ Log Analytics からカスタム アラートを作成するには、Log Analyti
 | MonthlyRetentionDaysOfTheWeek_s |Text ||毎月のリテンション期間に選択された曜日 |
 | MonthlyRetentionWeeksOfTheMonth_s |Text ||毎月のリテンション期間が構成されたときの月の週 (例: 最初、最後など) |
 | YearlyRetentionDuration_s |10 進数 ||構成されたバックアップに使用される合計リテンション期間 (年単位) |
-| YearlyRetentionTimes_s |Text ||毎年のリテンション期間が構成される日付と時刻 |
-| YearlyRetentionMonthsOfTheYear_s |Text ||毎年のリテンション期間に選択された月 |
-| YearlyRetentionFormat_s |Text ||毎年のリテンション期間に使用する構成の種類 (例: 日単位の毎日、週単位の毎週) | |
+| YearlyRetentionTimes_s |Text | | 毎年のリテンション期間が構成される日付と時刻 |
+| YearlyRetentionMonthsOfTheYear_s |Text | | 毎年のリテンション期間に選択された月 |
+| YearlyRetentionFormat_s |Text ||毎年のリテンション期間に使用する構成の種類 (例: 日単位の毎日、週単位の毎週) |
 | YearlyRetentionDaysOfTheMonth_s |Text ||毎年のリテンション期間に選択された月の日数 |
 | SynchronisationFrequencyPerDay_s |整数 |v2|SC DPM および MABS でファイルのバックアップが 1 日に同期される回数 |
 | DiffBackupFormat_s |Text |v2|Azure VM バックアップの SQL の差分バックアップの形式 |
@@ -462,7 +463,7 @@ Azure Diagnostics テーブルにある Azure Backup データのクエリを作
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 スキーマと V2 スキーマ
 
-以前は、Azure Backup エージェントと Azure VM のバックアップの診断データは、"***V1 スキーマ***" と呼ばれるスキーマの Azure Diagnostics テーブルに送信されました。 その後、他のシナリオやワークロードをサポートするために新しい列が追加され、診断データは "***V2 スキーマ***" と呼ばれる新しいスキーマにプッシュされました。  
+以前は、Azure Backup エージェントと Azure VM のバックアップの診断データは、"***V1 スキーマ** _" と呼ばれるスキーマの Azure Diagnostics テーブルに送信されました。 その後、他のシナリオやワークロードをサポートするために新しい列が追加され、診断データは "_*_V2 スキーマ_**" と呼ばれる新しいスキーマにプッシュされました。  
 
 旧バージョンとの互換性の理由により、Azure Backup エージェントと Azure VM のバックアップの診断データは、現在、V1 スキーマと V2 スキーマの両方の Azure Diagnostics テーブルに送信されます (V1 スキーマは非推奨のパスになりました)。 ログ クエリで SchemaVersion_s=="V1" のレコードをフィルター処理すると、Log Analytics のどのレコードが V1 スキーマのものであるかを識別できます。
 
@@ -495,4 +496,4 @@ V1 スキーマは非推奨になる予定であるため、Azure Backup 診断�
 
 ## <a name="next-steps"></a>次のステップ
 
-データ モデルを確認した後、Azure Monitor ログで[カスタム クエリの作成](../azure-monitor/learn/tutorial-logs-dashboards.md)を開始して、独自のダッシュボードを構築することができます。
+データ モデルを確認した後、Azure Monitor ログで[カスタム クエリの作成](../azure-monitor/visualize/tutorial-logs-dashboards.md)を開始して、独自のダッシュボードを構築することができます。

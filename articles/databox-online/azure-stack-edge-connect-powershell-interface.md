@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: alkohli
 ms.openlocfilehash: c9c6247f021b7af4cfdd899ffd4b6bd178f2256c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96345595"
 ---
 # <a name="manage-an-azure-stack-edge-pro-fpga-device-via-windows-powershell"></a>Windows PowerShell を使用して Azure Stack Edge Pro FPGA デバイスを管理する
 
-Azure Stack Edge Pro ソリューションを使用すると、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge Pro デバイスの構成と管理のタスクについて、いくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
+Azure Stack Edge Pro ソリューションを使用すると、データを処理してネットワーク経由で Azure に送信できます。 この記事では、Azure Stack Edge Pro デバイスの構成と管理のタスクをいくつか説明します。 Azure portal、ローカル Web UI、または Windows PowerShell インターフェイスを使用してデバイスを管理できます。
 
 この記事では、PowerShell インターフェイスを使用して行うタスクに重点を置いて説明します。 
 

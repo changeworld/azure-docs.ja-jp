@@ -5,18 +5,18 @@ services: application-gateway
 author: caya
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 09/24/2020
+ms.date: 03/02/2021
 ms.author: caya
-ms.openlocfilehash: d491b714c7d553fbd89d72315f46e6927d437717
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: bfff962f6d302f589acc437550fa25f76ec7ce35
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99593816"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102040425"
 ---
-# <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>チュートリアル:Azure CLI を介して、既存の Application Gateway を使用して既存の AKS クラスターで Application Gateway イングレス コントローラー アドオンを有効にする (プレビュー)
+# <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway"></a>チュートリアル: 既存の Application Gateway を使用して既存の AKS クラスターで Application Gateway イングレス コントローラー アドオンを有効にする
 
-Azure CLI を使用して、[Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/) クラスターで現在プレビュー段階にある [Application Gateway イングレス コントローラー (AGIC)](ingress-controller-overview.md) アドオンを有効にすることができます。 このチュートリアルでは、AGIC アドオンを使用して、別の仮想ネットワークにデプロイされている既存の Application Gateway を介して既存の AKS クラスターに Kubernetes アプリケーションを公開する方法について説明します。 まず、1 つの仮想ネットワークに AKS クラスターを作成し、別の仮想ネットワークに Application Gateway を作成して、既存のリソースをシミュレートします。 次に、AGIC アドオンを有効にし、2 つの仮想ネットワークをピアリングして、AGIC アドオンを使用して Application Gateway を通じて公開されるサンプル アプリケーションをデプロイします。 同じ仮想ネットワーク内の既存の Application Gateway と既存の AKS クラスターに対して AGIC アドオンを有効にしている場合は、次のピアリング手順を省略できます。 このアドオンを使用すると、[Helm を使用する以前の方法](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)よりもはるかに高速な方法で AKS クラスターに AGIC をデプロイでき、さらにフル マネージド エクスペリエンスを提供します。  
+Azure CLI またはポータルを使用して、既存の [Azure Kubernetes Services (AKS)](https://azure.microsoft.com/services/kubernetes-service/) クラスターの [Application Gateway イングレス コントローラー (AGIC)](ingress-controller-overview.md) アドオンを有効にすることができます。 このチュートリアルでは、AGIC アドオンを使用して、別の仮想ネットワークにデプロイされている既存の Application Gateway を介して既存の AKS クラスターに Kubernetes アプリケーションを公開する方法について説明します。 まず、1 つの仮想ネットワークに AKS クラスターを作成し、別の仮想ネットワークに Application Gateway を作成して、既存のリソースをシミュレートします。 次に、AGIC アドオンを有効にし、2 つの仮想ネットワークをピアリングして、AGIC アドオンを使用して Application Gateway を通じて公開されるサンプル アプリケーションをデプロイします。 同じ仮想ネットワーク内の既存の Application Gateway と既存の AKS クラスターに対して AGIC アドオンを有効にしている場合は、次のピアリング手順を省略できます。 このアドオンを使用すると、[Helm を使用する以前の方法](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)よりもはるかに高速な方法で AKS クラスターに AGIC をデプロイでき、さらにフル マネージド エクスペリエンスを提供します。  
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -24,7 +24,8 @@ Azure CLI を使用して、[Azure Kubernetes Services (AKS)](https://azure.micr
 > * リソース グループを作成する 
 > * 新しい AKS クラスターを作成する 
 > * 新しい Application Gateway の作成 
-> * 既存の Application Gateway を使用して、既存の AKS クラスターで AGIC アドオンを有効にする 
+> * Azure CLI を使用して既存の AKS クラスターの AGIC アドオンを有効にする 
+> * ポータルを使用して既存の AKS クラスターの AGIC アドオンを有効にする 
 > * AKS クラスター仮想ネットワークを使用して Application Gateway 仮想ネットワークをピアリングする
 > * AKS クラスターで AGIC をイングレスに使用してサンプル アプリケーションをデプロイする
 > * アプリケーションが Application Gateway を介して到達可能であることを確認する
@@ -32,22 +33,6 @@ Azure CLI を使用して、[Azure Kubernetes Services (AKS)](https://azure.micr
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
-
- - このチュートリアルには、Azure CLI のバージョン 2.0.4 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
-
- - 次の例に示すように、[az feature register](/cli/azure/feature#az-feature-register) コマンドを使用して、*AKS-IngressApplicationGatewayAddon* 機能フラグを登録します。この操作は、アドオンのプレビュー期間はサブスクリプションごとに 1 回だけ行う必要があります。
-     ```azurecli-interactive
-     az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
-     ```
-    状態が [登録済み] と表示されるまでに数分かかる場合があります。 登録状態を確認するには、[az feature list](/cli/azure/feature#az-feature-register) コマンドを使用します。
-     ```azurecli-interactive
-     az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
-     ```
-
- - 準備ができたら、[az provider register](/cli/azure/provider#az-provider-register) コマンドを使用して、Microsoft.ContainerService リソース プロバイダーの登録を更新します。
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.ContainerService
-    ```
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -61,7 +46,7 @@ az group create --name myResourceGroup --location canadacentral
 
 ここでは、新しい AKS クラスターをデプロイして、AGIC アドオンを有効にする既存の AKS クラスターがあることをシミュレートします。  
 
-次の例では、作成したリソース グループ *myResourceGroup* で [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) および [マネージド ID](../aks/use-managed-identity.md) を使用して、*myCluster* という名前の新しい AKS クラスターをデプロイします。    
+次の例では、作成したリソース グループ *myResourceGroup* で [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) および [マネージド ID](../aks/use-managed-identity.md) を使用して、*myCluster* という名前の新しい AKS クラスターをデプロイします。
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
@@ -84,18 +69,24 @@ az network application-gateway create -n myApplicationGateway -l canadacentral -
 > [!NOTE]
 > Application Gateway イングレス コントローラー (AGIC) アドオンは、Application Gateway v2 SKU (Standard および WAF) **のみ** をサポートし、Application Gateway v1 SKU はサポート **しません**。 
 
-## <a name="enable-the-agic-add-on-in-existing-aks-cluster-with-existing-application-gateway"></a>既存の Application Gateway を使用して、既存の AKS クラスターで AGIC アドオンを有効にする 
+## <a name="enable-the-agic-add-on-in-existing-aks-cluster-through-azure-cli"></a>Azure CLI を使用して既存の AKS クラスターの AGIC アドオンを有効にする 
 
-ここで、作成した AKS クラスター *myCluster* で AGIC アドオンを有効にし、作成した既存の Application Gateway *myApplicationGateway* を使用する AGIC アドオンを指定します。 このチュートリアルの最初に、aks-preview 拡張機能を追加して更新したことを確認します。 
+Azure CLI を引き続き使用する場合は、作成した AKS クラスター *myCluster* で AGIC アドオンを有効にし、作成した既存の Application Gateway *myApplicationGateway* を使用する AGIC アドオンを指定します。
 
 ```azurecli-interactive
 appgwId=$(az network application-gateway show -n myApplicationGateway -g myResourceGroup -o tsv --query "id") 
 az aks enable-addons -n myCluster -g myResourceGroup -a ingress-appgw --appgw-id $appgwId
 ```
 
+## <a name="enable-the-agic-add-on-in-existing-aks-cluster-through-portal"></a>ポータルを使用して既存の AKS クラスターの AGIC アドオンを有効にする 
+
+Azure portal を使用して AGIC アドオンを有効にする場合は、[(https://aka.ms/azure/portal/aks/agic)](https://aka.ms/azure/portal/aks/agic) に移動し、ポータル リンクを使用して対象の AKS クラスターに移動します。 そこから、その AKS クラスター内の [ネットワーク] タブにアクセスします。 [Application Gateway ingress controller]\(Application Gateway イングレス コントローラー\) セクションが表示されます。ここで、ポータルの UI を使用してイングレス コントローラーを有効または無効にできます。 [Enable ingress controller]\(イングレス コントローラーを有効にする\) の横にあるチェック ボックスをオンにして、作成した Application Gateway (*myApplicationGateway*) をドロップダウン メニューから選択します。 
+
+![ポータルの [Application Gateway ingress controller]\(Application Gateway イングレス コントローラー\)](./media/tutorial-ingress-controller-add-on-existing/portal-ingress-controller-add-on.png)
+
 ## <a name="peer-the-two-virtual-networks-together"></a>2 つの仮想ネットワークを一緒にピアリングする
 
-AKS クラスターを独自の仮想ネットワークにデプロイし、別の仮想ネットワークに Application Gateway をデプロイしたため、Application Gateway からクラスター内のポッドにトラフィックを流すには、2 つの仮想ネットワークを一緒にピアリングする必要があります。 2 つの仮想ネットワークをピアリングするには、接続が双方向になるよう、Azure CLI コマンドを 2 回個別に実行する必要があります。 最初のコマンドは、Application Gateway 仮想ネットワークから AKS 仮想ネットワークへのピアリング接続を作成します。2 番目のコマンドは、その逆方向にピアリング接続を作成します。 
+AKS クラスターを独自の仮想ネットワークにデプロイし、別の仮想ネットワークに Application Gateway をデプロイしたため、Application Gateway からクラスター内のポッドにトラフィックを流すには、2 つの仮想ネットワークを一緒にピアリングする必要があります。 2 つの仮想ネットワークをピアリングするには、接続が双方向になるよう、Azure CLI コマンドを 2 回個別に実行する必要があります。 最初のコマンドは、Application Gateway 仮想ネットワークから AKS 仮想ネットワークへのピアリング接続を作成します。2 番目のコマンドは、その逆方向にピアリング接続を作成します。
 
 ```azurecli-interactive
 nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query "nodeResourceGroup")
@@ -107,6 +98,7 @@ az network vnet peering create -n AppGWtoAKSVnetPeering -g myResourceGroup --vne
 appGWVnetId=$(az network vnet show -n myVnet -g myResourceGroup -o tsv --query "id")
 az network vnet peering create -n AKStoAppGWVnetPeering -g $nodeResourceGroup --vnet-name $aksVnetName --remote-vnet $appGWVnetId --allow-vnet-access
 ```
+
 ## <a name="deploy-a-sample-application-using-agic"></a>AGIC を使用してサンプル アプリケーションをデプロイする 
 
 次に、作成した AKS クラスターにサンプル アプリケーションをデプロイします。このクラスターでは、AGIC アドオンをイングレスに使用し、AKS クラスターに Application Gateway を接続します。 まず、`az aks get-credentials` コマンドを実行して、デプロイした AKS クラスターの資格情報を取得します。 

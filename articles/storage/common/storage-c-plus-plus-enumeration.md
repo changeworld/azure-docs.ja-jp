@@ -1,19 +1,19 @@
 ---
 title: C++ クライアント ライブラリを使用して Azure Storage リソースを一覧表示する
 description: C++ 用 Microsoft Azure Storage クライアント ライブラリの一覧取得 API を使用して、コンテナー、BLOB、キュー、テーブル、エンティティを列挙する方法について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 72b08a79ead90207c48c4fa682b708a0627b5df3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784100"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279631"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>C++ での Azure Storage のリソース一覧の取得
 
@@ -34,7 +34,7 @@ ms.locfileid: "92784100"
 
 ## <a name="asynchronous-versus-synchronous"></a>非同期と同期
 
-C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 次に例を示します。
+C++ 用ストレージ クライアント ライブラリは [C++ REST ライブラリ](https://github.com/Microsoft/cpprestsdk)上に構築されているため、[pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html) を使用した非同期操作が基本的にサポートされます。 例:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -59,8 +59,8 @@ list_blob_item_segment list_blobs_segmented(const continuation_token& token) con
 
 セグメント化された一覧取得操作に対する応答は次のとおりです。
 
-* *_segment* : 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。
-* *continuation_token* : 結果の次のページを取得するために、次の呼び出しに渡されます。 返される結果がそれ以上無い場合、継続トークンは null になります。
+* *_segment*: 一覧取得 API に対する 1 回の呼び出しで返された結果のセットが含まれます。
+* *continuation_token*: 結果の次のページを取得するために、次の呼び出しに渡されます。 返される結果がそれ以上無い場合、継続トークンは null になります。
 
 たとえば、コンテナー内のすべての BLOB を一覧表示する一般的な呼び出しは、次のコード スニペットのようになります。 コードは、「 [サンプル](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)」にあります。
 
@@ -153,7 +153,7 @@ do
 
 C# または Oracle Java SDK を使用しているのであれば、列挙型プログラミング モデルをご存知でしょう。このモデルでは、データを必要な場合に一定のオフセットでのみフェッチする、限定的な一覧取得が利用できます。 C++ でも、反復子ベースのテンプレートにより同様の方法が提供されます。
 
-たとえば、 **list_blobs** を使用した一般的な限定的一覧取得 API は次のようになります。
+たとえば、**list_blobs** を使用した一般的な限定的一覧取得 API は次のようになります。
 
 ```cpp
 list_blob_item_iterator list_blobs() const;
@@ -185,14 +185,14 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 
 ## <a name="conclusion"></a>まとめ
 
-この記事では、C++ 用ストレージ クライアント ライブラリの各種オブジェクト向けの一覧取得 API のオーバーロードごとに説明しました。 まとめると次のようになります。
+この記事では、C++ 用ストレージ クライアント ライブラリの各種オブジェクト向けの一覧取得 API のオーバーロードごとに説明しました。 まとめ
 
 * マルチスレッドのシナリオでは、非同期 API を強くお勧めします。
 * ほとんどのシナリオでは、セグメント化された一覧取得をお勧めします。
 * 限定的な一覧取得は、同期シナリオの便利なラッパーとして、ライブラリで提供されます。
 * どん欲な一覧取得は推奨されないため、ライブラリから削除されました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Storage および C++ 用クライアント ライブラリの詳細については、以下のリソースを参照してください。
 

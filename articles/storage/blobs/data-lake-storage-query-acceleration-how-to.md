@@ -9,12 +9,12 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 5d5278c33c24c7f95459b9c121bca9e960615b9c
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: a925d3f55395d094c7f19f65de4b72fd20a11a41
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260182"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102213676"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Azure Data Lake Storage のクエリ アクセラレーションを使用してデータをフィルター処理する
 
@@ -40,7 +40,7 @@ ms.locfileid: "99260182"
 
   ### <a name="java"></a>[Java](#tab/java)
 
-  - [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) バージョン 8 以降
+  - [Java Development Kit (JDK)](/java/azure/jdk/) バージョン 8 以降
 
   - [Apache Maven](https://maven.apache.org/download.cgi) 
 

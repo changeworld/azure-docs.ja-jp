@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: e75786c42b54882c249b5ed7100ebd12f3f78e78
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 78ec0af0acbb74436af16abba75d64de061d5268
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99254361"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102202167"
 ---
 # <a name="importing-azure-key-vault-certificates-faq"></a>Azure Key Vault 証明書のインポートに関する FAQ
 
@@ -43,7 +43,7 @@ ms.locfileid: "99254361"
 
 ### <a name="when-i-import-a-certificate-via-the-azure-portal-i-get-a-something-went-wrong-error-how-can-i-investigate-further"></a>Azure portal を使用して証明書をインポートすると、"問題が発生しました" というエラーが発生します。 詳しく調査するにはどうすればよいですか?
     
-さらにわかりやすいエラーを表示するには、[Azure CLI](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import) または [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0) を使用して証明書ファイルをインポートします。
+さらにわかりやすいエラーを表示するには、[Azure CLI](/cli/azure/keyvault/certificate#az-keyvault-certificate-import) または [PowerShell](/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0) を使用して証明書ファイルをインポートします。
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>次のエラーはどうすれば解決できますか: "エラーの種類: アクセスが拒否されたか、ユーザーに証明書をインポートする権限がない" ?
     

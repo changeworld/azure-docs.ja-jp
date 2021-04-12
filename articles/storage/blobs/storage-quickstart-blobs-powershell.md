@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b051a4ffe4d24e1ef0e69ab7c18a8ed3388b57e5
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 21fc7e6de38a98e4f0853cf513f9f3441c7e2106
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89078284"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101735354"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>クイック スタート:PowerShell を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -26,6 +26,8 @@ Azure PowerShell モジュールを使用して Azure リソースを作成お�
 ## <a name="prerequisites"></a>前提条件
 
 Azure Storage にアクセスするには、Azure サブスクリプションが必要です。 サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+
+また、Azure Storage コンテナーと BLOB の読み取り、書き込み、削除を行うには、ストレージ BLOB データ共同作成者ロールが必要です。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -113,7 +115,7 @@ Get-AzStorageBlobContent -Blob "Image002.png" `
 
 ## <a name="data-transfer-with-azcopy"></a>AzCopy でのデータ転送
 
-AzCopy コマンド ライン ユーティリティは、Azure Storage に対する高速かつスクリプトで制御可能なデータ転送を実現します。 Blob Storage や Azure Files との間のデータ転送に AzCopy を使用できます。 最新バージョンである AzCopy v10 の詳細については、「[AzCopy を使ってみる](../common/storage-use-azcopy-v10.md)」を参照してください。 Blob Storage での AzCopy v10 の使用については、「[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-blobs.md)」を参照してください。
+AzCopy コマンド ライン ユーティリティは、Azure Storage に対する高速かつスクリプトで制御可能なデータ転送を実現します。 Blob Storage や Azure Files との間のデータ転送に AzCopy を使用できます。 最新バージョンである AzCopy v10 の詳細については、「[AzCopy を使ってみる](../common/storage-use-azcopy-v10.md)」を参照してください。 Blob Storage での AzCopy v10 の使用については、「[AzCopy と Blob Storage でデータを転送する](../common/storage-use-azcopy-v10.md#transfer-data)」を参照してください。
 
 次の例では、AzCopy を使用してローカル ファイルを BLOB にアップロードします。 サンプルの値は忘れずに実際の値に置き換えてください。
 

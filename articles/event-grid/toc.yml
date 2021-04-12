@@ -212,6 +212,10 @@
           href: diagnostic-logs.md
         - name: メトリック
           href: metrics.md
+    - name: ユース ケース
+      items:
+        - name: ドメインのユース ケース
+          href: event-domains-use-cases.md
 - name: 操作方法ガイド
   items:
     - name: システム トピックの作成、表示、管理

@@ -2,14 +2,13 @@
 title: Azure Monitor アラートの共通アラート スキーマ
 description: 共通アラート スキーマの理解、使用すべき理由と有効化の方法
 ms.topic: conceptual
-ms.subservice: alerts
 ms.date: 03/14/2019
-ms.openlocfilehash: aa619976c8fa03b925d66e884ad03fc4e385693e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 39ea469b4109f4715db0d0a73ad069121058a46f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600726"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102038259"
 ---
 # <a name="common-alert-schema"></a>共通アラート スキーマ
 
@@ -52,7 +51,7 @@ ms.locfileid: "100600726"
 > 1. 次のアラートの種類では、共通スキーマがデフォルトでサポートされています (オプトインは不要です)。
 >     * スマート検出アラート
 > 1. 現在、次のアラートの種類では共通スキーマはサポートされていません。
->     * [Azure Monitor for VMs](../insights/vminsights-overview.md) によって生成されたアラート
+>     * [VM 分析情報](../vm/vminsights-overview.md)によって生成されたアラート
 >     * [Azure Cost Management](../../cost-management-billing/manage/cost-management-budget-scenario.md) によって生成されたアラート
 
 ### <a name="through-the-azure-portal"></a>Azure portal を使用

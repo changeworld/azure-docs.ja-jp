@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: d0ffd786d3fb6bb5f0d70095d947c81caa070518
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d6b7b298e7e4d18e68985ec3cf536c90ef773608
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499137"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644383"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Bing Speech から Speech Service に移行する
 
@@ -26,7 +26,7 @@ ms.locfileid: "96499137"
 1 つの Speech Service サブスクリプション キーで、次の機能にアクセスできます。 それぞれが個別に測定されるため、課金は使用した機能に対するものだけです。
 
 * [音声テキスト変換](speech-to-text.md)
-* [カスタム音声テキスト変換](https://cris.ai)
+* [カスタム音声テキスト変換](/azure/cognitive-services/speech-service/custom-speech-overview)
 * [テキスト読み上げ](text-to-speech.md)
 * [カスタム テキスト音声読み上げ](./how-to-custom-voice-create-voice.md)
 * [音声翻訳](speech-translation.md) ([テキスト翻訳](../translator/translator-info-overview.md)は含まれません)

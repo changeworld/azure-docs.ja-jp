@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 3eb761a793c41c2e2cc2cb952e4fb9f241b41ab6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 602fa1cab71a797dd25aca263e0c6a9f2aa616bb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929701"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870230"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN で高可用性 Apache Spark Streaming ジョブを作成する
 
@@ -18,7 +18,7 @@ ms.locfileid: "98929701"
 
 Spark Streaming が作成する実行時間の長いジョブの間に、データに変換を適用して、結果をファイル システム、データベース、ダッシュボード、コンソールにプッシュできます。 Spark Streaming は、定義された期間についてイベントのバッチを最初に収集することで、データのマイクロバッチを処理します。 次に、そのバッチを処理と出力のために送信します。 バッチの間隔は、通常、1 秒未満で定義されます。
 
-![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-streaming.png" alt-text="Spark Streaming" border="false":::
 
 ## <a name="dstreams"></a>DStream
 
@@ -26,13 +26,13 @@ Spark Streaming は、"*分離されたストリーム*" (DStream) を使って�
 
 Spark コアは *Resilient Distributed Dataset* (RDD) を使います。 RDD は、クラスター内の複数のノードにデータを分散します。ここでは通常、パフォーマンスを最大限高めるため、各ノードがデータを完全にメモリ内に保持します。 各 RDD は、バッチ間隔の間に収集されたイベントを表します。 バッチ間隔が経過すると、Spark Streaming はその間隔内のすべてのデータを含む新しい RDD を生成します。 この継続的な一連の RDD が DStream に収集されます。 Spark Streaming アプリケーションは、各バッチの RDD に格納されているデータを処理します。
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/apache-spark-dstream.png" alt-text="Spark DStream" border="false":::
 
 ## <a name="spark-structured-streaming-jobs"></a>Spark Structured Streaming ジョブ
 
 Spark Structured Streaming は、構造化データのストリーミングで使うための分析エンジンとして、Spark 2.0 で導入されました。 Spark Structured Streaming は、SparkSQL バッチ処理エンジン API を使います。 Spark Streaming と同様、Spark Structured Streaming は、連続的に到着するデータのマイクロバッチに対して計算を実行します。 Spark Structured Streaming は、無制限の行を含む入力テーブルとしてデータのストリームを表します。 つまり、新しいデータが到着することで入力テーブルは拡大し続けます。 この入力テーブルは実行時間の長いクエリによって継続的に処理され、結果は出力テーブルに書き込まれます。
 
-![Spark Structured Streaming](./media/apache-spark-streaming-high-availability/structured-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/structured-streaming.png" alt-text="Spark Structured Streaming" border="false":::
 
 Structured Streaming では、システムに到着したデータは入力テーブルにすぐに取り込まれます。 この入力テーブルに対して操作を実行するクエリを記述します。 クエリの出力により、結果テーブルと呼ばれる別のテーブルが生成されます。 結果テーブルにはクエリの結果が含まれ、そこからデータを取り出してリレーショナル データベースなどの外部データ ストアに送信します。 "*トリガー間隔*" は、入力テーブルのデータを処理するタイミングを設定します。 既定では、Structured Streaming はデータが到着するとすぐに処理します。 ただし、長い間隔で実行するようにトリガーを構成し、時間ベースのバッチでストリーミング データを処理することもできます。 結果テーブル内のデータは、新しいデータが出現するたびに更新されますから、ストリーミング クエリが開始してからのすべての出力データを含むようにする (*完全モード*)、最後にクエリが処理されてからの新しいデータだけを含むようにすることも (*追加モード*)。
 
@@ -54,7 +54,7 @@ RDD には、高可用性でフォールト トレラントの Spark Streaming �
 
 HDInsight では、クラスターの処理は *Yet Another Resource Negotiator* (YARN) によって調整されます。 Spark Streaming の高可用性の設計には、Spark Streaming の技法だけでなく、YARN コンポーネントの技法も含まれます。  YARN を使った構成の例を次に示します。
 
-![YARN のアーキテクチャ](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
+:::image type="content" source="./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png" alt-text="YARN のアーキテクチャ" border="false":::
 
 次のセクションでは、この構成の設計に関する考慮事項について説明します。
 

@@ -4,19 +4,21 @@ description: Azure セキュリティ ベンチマーク V2 の制御、アセ�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f0c2fe78c32357798e1f9acb43f5867df9148b38
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: fbeb88b6aa542666481458fde97d7c63f467fa30
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368904"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102051533"
 ---
 # <a name="security-control-v2-asset-management"></a>セキュリティ コントロール V2: アセット管理
 
 アセット管理には、Azure リソースに対するセキュリティの可視性とガバナンスを確保するためのコントロールが含まれます。 これには、セキュリティ担当者のアクセス許可、資産インベントリへのセキュリティ アクセス、およびサービスとリソース (インベントリ、追跡、および修正) の承認の管理に関する推奨事項が含まれます。
+
+該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: ネットワークのセキュリティ](../../governance/policy/samples/azure-security-benchmark.md#asset-management)」を参照してください。
 
 ## <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1:セキュリティ チームが資産のリスクを確実に可視化できるようにする
 
@@ -24,13 +26,13 @@ ms.locfileid: "97368904"
 |--|--|--|--|
 | AM-1 | 1.1、1.2 | CM-8、PM-5 |
 
-セキュリティ チームに Azure テナントとサブスクリプションのセキュリティ閲覧者アクセス許可を付与して、セキュリティ チームが Azure Security Center を使用してセキュリティ上のリスクを監視できるようにします。 
+セキュリティ チームに Azure テナントとサブスクリプションのセキュリティ閲覧者アクセス許可を付与して、セキュリティ チームが Azure Security Center を使用してセキュリティ上のリスクを監視できるようにします。
 
-セキュリティ チームの責任がどのように構造化されているかによって、セキュリティ リスクの監視は中央のセキュリティ チームまたはローカル チームの責任になります。 ただし、セキュリティ分析情報とリスクは、常に組織内で一元的に集計する必要があります。 
+セキュリティ リスクの監視は、セキュリティ チームの責任の構造に応じて、中央のセキュリティ チームまたはローカル チームの責任になります。 ただし、セキュリティ分析情報とリスクは、常に組織内で一元的に集計する必要があります。 
 
 セキュリティ閲覧者のアクセス許可は、テナント全体 (ルート管理グループ) に幅広く適用することも、管理グループまたは特定のサブスクリプションにスコープ指定することもできます。 
 
-注:ワークロードとサービスを可視化するには、追加のアクセス許可が必要になることがあります。 
+注:ワークロードとサービスを可視化するには、追加のアクセス許可が必要になることがあります。
 
 - [セキュリティ閲覧者ロールの概要](../../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -52,9 +54,9 @@ ms.locfileid: "97368904"
 
 セキュリティ チームが、Azure 上の資産の継続的に更新されるインベントリに確実にアクセスできるようにします。 セキュリティ チームは、組織が新たなリスクにさらされる可能性を評価するため、および継続的なセキュリティ改善への入力として、このインベントリを必要とすることがよくあります。 
 
-Azure Security Center インベントリ機能と Azure Resource Graph を使用すると、クエリを実行してサブスクリプション内のすべてのリソース (Azure サービス、アプリケーション、ネットワーク リソースなど) を検出できます。  
+Azure Security Center インベントリ機能と Azure Resource Graph を使用すると、クエリを実行してサブスクリプション内のすべてのリソース (Azure サービス、アプリケーション、ネットワーク リソースなど) を検出できます。
 
-タグと Azure の他のメタデータ (名前、説明、カテゴリ) を使用して、組織の分類に従って資産を論理的に整理します。  
+タグと Azure の他のメタデータ (名前、説明、カテゴリ) を使用して、組織の分類に従って資産を論理的に整理します。
 
 - [Azure Resource Graph Explorer を使用してクエリを作成する方法](../../governance/resource-graph/first-query-portal.md)
 
@@ -76,7 +78,7 @@ Azure Security Center インベントリ機能と Azure Resource Graph を使用
 |--|--|--|--|
 | AM-3 | 2.3、2.4 | CM-7、CM-8 |
 
-Azure Policy を使用して、環境内でユーザーがプロビジョニングできるサービスを監査および制限します。 Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。  また、Azure Monitor を使用して、承認されていないサービスが検出されたときにアラートをトリガーするルールを作成することもできます。
+Azure Policy を使用して、環境内でユーザーがプロビジョニングできるサービスを監査および制限します。 Azure Resource Graph を使用して、サブスクリプション内のリソースのクエリまたは検出を行います。 また、Azure Monitor を使用して、承認されていないサービスが検出されたときにアラートをトリガーするルールを作成することもできます。
 
 - [Azure Policy を構成して管理する](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -90,7 +92,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 - [セキュリティ コンプライアンス管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 ## <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4:アセット ライフサイクル管理のセキュリティを確保する
 
@@ -110,7 +112,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [セキュリティ コンプライアンス管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
@@ -128,7 +130,7 @@ Azure Policy を使用して、環境内でユーザーがプロビジョニン�
 
 **顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
@@ -144,7 +146,7 @@ Azure Virtual Machines で、確実に承認済みのソフトウェアだけが
 
 Windows および Linux VM からのインベントリ情報の収集を自動化するには、Azure Automation Change Tracking と Inventory を使用します。 ソフトウェアの名前、バージョン、発行元、および更新時刻は、Azure portal から入手できます。 ソフトウェアのインストール日やその他の情報を入手するには、ゲストレベルの診断を有効にし、Windows イベント ログを Log Analytics ワークスペースに取り込みます。
 
-スクリプトの種類に基づき、オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソース内でスクリプトを実行する機能を制限できます。 
+スクリプトの種類に基づき、オペレーティング システム固有の構成またはサードパーティのリソースを使用して、ユーザーの Azure コンピューティング リソース内でスクリプトを実行する機能を制限できます。
 
 サードパーティ製のソリューションを使用して、承認されていないソフトウェアを検出して特定することもできます。
 
@@ -152,7 +154,7 @@ Windows および Linux VM からのインベントリ情報の収集を自動�
 
 - [Azure Automation Change Tracking と Inventory の概要](../../automation/change-tracking/overview.md)
 
-- [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+- [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **責任**: Customer
 
@@ -160,6 +162,6 @@ Windows および Linux VM からのインベントリ情報の収集を自動�
 
 - [インフラストラクチャとエンドポイント セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [セキュリティ コンプライアンス管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)

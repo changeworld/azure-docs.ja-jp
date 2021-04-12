@@ -11,10 +11,10 @@ ms.custom: subject-moving-resources
 ms.date: 08/12/2020
 ms.author: jgardner
 ms.openlocfilehash: d58d9ab48fa16fb5258f097ed4567e539e21c72c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100601131"
 ---
 # <a name="move-an-azure-workbook-to-another-region"></a>Azure ブックを別のリージョンに移動する

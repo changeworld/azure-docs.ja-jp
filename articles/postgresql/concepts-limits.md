@@ -1,18 +1,18 @@
 ---
 title: 制限 - Azure Database for PostgreSQL - Single Server
 description: この記事では、接続数やストレージ エンジンのオプションなど、Azure Database for PostgreSQL - Single Server の制限について説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6f48245983898c542197deb7e0b3cd53bd39be33
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7cee2be3c1d7a97b87560873d6cef07ec361ee99
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91707525"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605180"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の制限
 次のセクションでは、データベース サービス容量と機能の制限について説明します。 リソース (コンピューティング、メモリ、ストレージ) 層の詳細については、[価格レベル](concepts-pricing-tiers.md)の記事を参照してください。
@@ -71,6 +71,9 @@ PostgreSQL 接続はアイドル状態でも、約 10 MB のメモリを占有�
 **GSS** に関連するエラーが表示される場合は、Azure Postgres Single Server でまだ完全にサポートされていない新しいクライアントまたはドライバーのバージョンを使用している可能性があります。 このエラーは、[JDBC ドライバー バージョン 42.2.15 および 42.2.16](https://github.com/pgjdbc/pgjdbc/issues/1868) に影響することがわかっています。
    - 更新は 11 月末までに完了する予定です。 それまでの間は、動作するドライバー バージョンを使用することを検討してください。
    - または、GSS 要求を無効にすることを検討してください。  `gssEncMode=disable` のような接続パラメーターを使用します。
+
+### <a name="storage-size-reduction"></a>ストレージ サイズの削減
+ストレージ サイズを小さくすることはできません。 必要なストレージ サイズで新しいサーバーを作成し、手動[ダンプと復元](./howto-migrate-using-dump-and-restore.md)を実行して、データベースを新しいサーバーに移行する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 - [各価格レベルで使用できる内容](concepts-pricing-tiers.md)について理解します

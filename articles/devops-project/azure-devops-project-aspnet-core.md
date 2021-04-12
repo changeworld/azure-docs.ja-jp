@@ -12,15 +12,15 @@ ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 02/23/2021
 ms.author: mlearned
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 63d3ac356e4f2c1d17e1511227f5089b7ff4266f
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 75531b9a75c2d28ad665748a9be4e37e2056b451
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589160"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102547970"
 ---
 # <a name="create-a-cicd-pipeline-for-net-with-azure-devops-starter"></a>Azure DevOps Starter を使用して .NET 用 CI/CD パイプラインを作成する
 
@@ -43,7 +43,9 @@ DevOps Starter によって、Azure DevOps に CI/CD パイプラインが作成
 1. **.NET** サンプル アプリケーションを選択します。 .NET のサンプルには、オープン ソースの ASP.NET Framework またはクロスプラットフォームの .NET Core Framework のいずれかの選択肢が含まれます。
 
    ![.NET Framework](_img/azure-devops-project-aspnet-core/select-dotnet.png)
-
+   
+   > [!NOTE]
+   > DevOps Starter を設定するための既定のオプションは **GitHub** ですが、この設定はウィザードから変更できます。
 2. このサンプルは、ASP.NET Core MVC アプリケーションです。 **.NET Core** アプリケーション フレームワークを選択し、 **[次へ]** を選択します。    
     
 3. デプロイ ターゲットとして **[Windows Web アプリ]** を選択し、 **[次へ]** を選択します。 必要に応じて、デプロイ用に他の Azure サービスを選択できます。 前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。
@@ -133,7 +135,7 @@ DevOps Starter により、Azure へのデプロイを管理するリリース �
 チームのニーズを満たすためのビルドおよびリリース パイプラインの変更について詳しくは、このチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [CD プロセスをカスタマイズする](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD プロセスをカスタマイズする](/azure/devops/pipelines/release/define-multistage-release-process)
 
 ## <a name="videos"></a>ビデオ
 

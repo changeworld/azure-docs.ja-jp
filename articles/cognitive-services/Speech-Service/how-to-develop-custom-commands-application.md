@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: ddf36530e52703ab1033b8e2e787b42b6dc60332
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935820"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553279"
 ---
 # <a name="develop-custom-commands-applications"></a>Custom Commands アプリケーションを開発する
 
@@ -212,7 +212,7 @@ ms.locfileid: "97935820"
     | **Is Global (グローバル)**          | 未選択             |
     | **必須**           | Selected               |
     | **Response for required parameter (必須パラメーターの応答)**     | **[Simple editor]\(シンプルなエディター\)**  > `Which device do you want to control?`    | 
-    | **Type**               | **String**                |          |
+    | **Type**               | **String**                |     
     | **構成**      | **[Accept predefined input values from an internal catalog]\(内部カタログから定義済み入力値を受け取る\)** | 
     | **Predefined input values (定義済み入力値)** | `tv`, `fan`               |
     | **Aliases (別名)** (`tv`)      | `television`, `telly`     |
@@ -633,7 +633,7 @@ Custom Commands の応答をカスタマイズするもう 1 つの方法は、�
 > ![例文とパラメーターを示すスクリーンショット。](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> パブリック音声の場合、ニューラル型は特定のリージョンでのみ使用できます。 詳細については、[Speech Service がサポートされているリージョン](./regions.md#standard-and-neural-voices)に関するページを参照してください。
+> パブリック音声の場合、ニューラル型は特定のリージョンでのみ使用できます。 詳細については、[Speech Service がサポートされているリージョン](./regions.md#neural-and-standard-voices)に関するページを参照してください。
 >
 > カスタム音声は、**Custom Voice** プロジェクト ページから作成できます。 詳細については、「[Custom Voice の概要](./how-to-custom-voice.md)」を参照してください。
 

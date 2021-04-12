@@ -12,11 +12,11 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f7d6581a1892ebd74a1adba5c09c0af9d3cf9d43
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079005"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645766"
 ---
 # <a name="run-opc-publisher"></a>OPC Publisher の実行
 
@@ -344,7 +344,7 @@ Options:
 
 ## <a name="run-natively-on-windows"></a>Windows 上でのネイティブな実行
 
-Visual Studio で **opcpublisher.sln** プロジェクトを開き、ソリューションをビルドし、公開します。 次のようにして、公開先の**ターゲット ディレクトリ**でアプリケーションを開始できます。
+Visual Studio で **opcpublisher.sln** プロジェクトを開き、ソリューションをビルドし、公開します。 次のようにして、公開先の **ターゲット ディレクトリ** でアプリケーションを開始できます。
 
 ```cmd
 dotnet opcpublisher.dll <applicationname> [<IoT Hubconnectionstring>] [options]

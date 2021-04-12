@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/18/2020
+ms.date: 03/01/2021
 ms.author: victorh
-ms.openlocfilehash: 01f7aa61d3bfb3c712320bbf138160a7ff8197c7
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bbf838cfa2a6addc665df4b62e2322d056778b49
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95502186"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101741363"
 ---
 # <a name="configure-azure-firewall-rules"></a>Azure Firewall 規則を構成する
 Azure Firewall では、NAT 規則、ネットワーク ルール、およびアプリケーション ルールを構成できます。 ルール コレクションはルールの種類と優先順位に基づいて処理されます。優先順位は 100 から 65,000 までであり、数字の低い順から高い順に処理されます。 ルール コレクションの名前に使用できるのは、文字、数字、アンダースコア、ピリオド、ハイフンのみです。 先頭は文字または数字、末尾は文字、数字、またはアンダースコアでなければなりません。 名前の最大長は 80 文字です。
@@ -38,7 +38,7 @@ Azure Firewall では、NAT 規則、ネットワーク ルール、およびア
 
 ### <a name="nat-rules"></a>NAT 規則
 
-インバウンド インターネット接続を有効にするには、宛先ネットワーク アドレス変換 (DNAT) を「[チュートリアル:Azure portal で Azure Firewall DNAT を使用して受信トラフィックをフィルター処理する](tutorial-firewall-dnat.md)」の説明に従って構成します。 NAT 規則は、ネットワーク ルールよりも優先的に適用されます。 一致が見つかると、変換されたトラフィックを許可する暗黙的な対応するネットワーク ルールが追加されます。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。
+インバウンド インターネット接続を有効にするには、宛先ネットワーク アドレス変換 (DNAT) を「[チュートリアル:Azure portal で Azure Firewall DNAT を使用して受信トラフィックをフィルター処理する](tutorial-firewall-dnat.md)」の説明に従って構成します。 NAT 規則は、ネットワーク ルールよりも優先的に適用されます。 一致が見つかると、変換されたトラフィックを許可する暗黙的な対応するネットワーク ルールが追加されます。 セキュリティ上の理由から、推奨される方法は、ネットワークへの DNAT アクセスを許可するために特定のインターネット ソースを追加し、ワイルドカードは使用しないようにすることです。
 
 アプリケーション ルールは、受信接続には適用されません。 したがって、インバウンド HTTP/S トラフィックをフィルター処理する場合は、Web アプリケーション ファイアウォール (WAF) を使用する必要があります。 詳細については、「[Azure Web アプリケーション ファイアウォールとは](../web-application-firewall/overview.md)」を参照してください
 

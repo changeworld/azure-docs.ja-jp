@@ -1,18 +1,17 @@
 ---
 title: Azure Application Insights を使ってランタイムの例外を診断する | Microsoft Docs
 description: Azure Application Insights を使用して、お使いのアプリケーションのランタイムの例外を見つけて診断するチュートリアルです。
-ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 98ccaef716ae2390dcbcfbc7c4a1916359115f93
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 1d8dfb3eaf3ea1ab901df4bef62210d28e02c3a4
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597636"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383153"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 

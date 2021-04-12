@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: alkohli
 ms.openlocfilehash: eb42a9a77927d8577dfec3c9167294eb8f809fec
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382628"
 ---
 # <a name="azure-stack-edge-mini-r-safety-instructions"></a>Azure Stack Edge Mini R の安全性のための指示

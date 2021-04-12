@@ -3,19 +3,14 @@ title: Azure マネージド ディスクのバックアップ
 description: Azure portal から Azure マネージド ディスクをバックアップする方法について学習します。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: e234495eb483d6d0cc6ca556ca418138c61a99f5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738154"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110629"
 ---
-# <a name="back-up-azure-managed-disks-in-preview"></a>Azure マネージド ディスクのバックアップ (プレビュー段階)
-
->[!IMPORTANT]
->Azure ディスク バックアップは、サービス レベル アグリーメントのないプレビュー段階であるため、運用ワークロードにはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 リージョンの可用性については、[サポート マトリックス](disk-backup-support-matrix.md)に関するページをご覧ください。
->
->プレビューにサインアップするには、[このフォームに記入](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)してください。
+# <a name="back-up-azure-managed-disks"></a>Azure Managed Disks のバックアップ
 
 この記事では、Azure portal から [Azure マネージド ディスク](../virtual-machines/managed-disks-overview.md)をバックアップする方法について説明します。
 
@@ -88,7 +83,7 @@ Azure ディスク バックアップの使用可能なリージョン、サポ�
 
 バックアップ コンテナーでは、マネージド ID を使用して他の Azure リソースにアクセスします。 マネージド ディスクのバックアップを構成するには、バックアップ コンテナーのマネージド ID に、スナップショットが作成および管理されるソース ディスクとリソース グループに対する一連のアクセス許可を付与する必要があります。
 
-システム割り当てマネージド ID は、1 つのリソースにつき 1 つに限定されており、このリソースのライフサイクルに関連付けられています。 マネージド ID には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアクセス許可を付与できます。 マネージド ID は、Azure リソースでのみ使用できる、特殊な種類のサービス プリンシパルです。 [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認してください。
+システム割り当てマネージド ID は、1 つのリソースにつき 1 つに限定されており、このリソースのライフサイクルに関連付けられています。 マネージド ID には、Azure ロールベースのアクセス制御 (Azure RBAC) を使用してアクセス許可を付与できます。 マネージド ID は、Azure リソースでのみ使用できる特殊な種類のサービス プリンシパルです。 [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の詳細を確認してください。
 
 マネージド ディスクのバックアップを構成するには、次の前提条件があります。
 

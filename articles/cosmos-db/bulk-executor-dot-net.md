@@ -10,12 +10,12 @@ ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f6994717ff4c730fb27bd26c40d199fb198e528
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 34aef5bd880e3ef080676fb9e90e62796d499e7b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96019958"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102429818"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,7 +39,7 @@ ms.locfileid: "96019958"
 
 * .NET クイック スタート記事の「[データベース アカウントの作成](create-sql-api-dotnet.md#create-account)」セクションで説明されている手順に従って、Azure Cosmos DB SQL API アカウントを作成します。
 
-## <a name="clone-the-sample-application"></a>サンプル アプリケーションのクローン
+## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
 それでは、GitHub からサンプル .NET アプリケーションをダウンロードして、コードの作業を行います。 このアプリケーションでは、Azure Cosmos アカウントに格納されているデータに対して一括操作を実行します。 アプリケーションをクローンするために、コマンド プロンプトを開き、コピー先のディレクトリに移動し、次のコマンドを実行します。
 
@@ -94,7 +94,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. このアプリケーションでは、BulkImportAsync API を呼び出します。 .NET ライブラリは、一括インポート API の 2 つのオーバーロードを提供します。1 つはシリアル化された JSON ドキュメントの一覧を受け取り、もう 1 つは逆シリアル化された POCO ドキュメントの一覧を受け取ります。 これらのオーバーロードされた各メソッドの定義について詳しくは、[API ドキュメント](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true)を参照してください。
+5. このアプリケーションでは、BulkImportAsync API を呼び出します。 .NET ライブラリは、一括インポート API の 2 つのオーバーロードを提供します。1 つはシリアル化された JSON ドキュメントの一覧を受け取り、もう 1 つは逆シリアル化された POCO ドキュメントの一覧を受け取ります。 これらのオーバーロードされた各メソッドの定義について詳しくは、[API ドキュメント](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync)を参照してください。
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -126,11 +126,11 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Azure Cosmos アカウントでのデータの一括更新
 
-BulkUpdateAsync API を使用すると、既存のドキュメントを更新できます。 この例では、`Name` フィールドを新しい値に設定し、既存のドキュメントから `Description` フィールドを削除します。 サポートされているすべての更新操作については、[API ドキュメント](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true)を参照してください。
+BulkUpdateAsync API を使用すると、既存のドキュメントを更新できます。 この例では、`Name` フィールドを新しい値に設定し、既存のドキュメントから `Description` フィールドを削除します。 サポートされているすべての更新操作については、[API ドキュメント](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate)を参照してください。
 
 1. "BulkUpdateSample" フォルダーに移動し、"BulkUpdateSample.sln" ファイルを開きます。  
 
-2. 更新項目と、対応するフィールド更新操作を定義します。 この例では、`SetUpdateOperation` を使用して `Name` フィールドを更新し、`UnsetUpdateOperation` を使用してすべてのドキュメントから `Description` フィールドを削除します。 ドキュメント フィールドの値に特定の値を加算したり、特定の値を配列フィールドにプッシュしたり、配列フィールドから特定の値を削除したりするなど、他の操作を実行することもできます。 一括更新 API が提供するさまざまなメソッドについては、[API ドキュメント](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true)を参照してください。
+2. 更新項目と、対応するフィールド更新操作を定義します。 この例では、`SetUpdateOperation` を使用して `Name` フィールドを更新し、`UnsetUpdateOperation` を使用してすべてのドキュメントから `Description` フィールドを削除します。 ドキュメント フィールドの値に特定の値を加算したり、特定の値を配列フィールドにプッシュしたり、配列フィールドから特定の値を削除したりするなど、他の操作を実行することもできます。 一括更新 API が提供するさまざまなメソッドについては、[API ドキュメント](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate)を参照してください。
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -147,7 +147,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
    }
    ```
 
-3. このアプリケーションでは、BulkUpdateAsync API を呼び出します。 BulkUpdateAsync メソッドの定義については、[API ドキュメント](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet&preserve-view=true)を参照してください。  
+3. このアプリケーションでは、BulkUpdateAsync API を呼び出します。 BulkUpdateAsync メソッドの定義については、[API ドキュメント](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync)を参照してください。  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(

@@ -1,22 +1,18 @@
 ---
-title: センサー上でのアラートの操作
+title: センサー アラートについて
 description: アラートを使用して、ネットワークのセキュリティと操作を強化します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 11/30/2020
 ms.topic: how-to
-ms.service: azure
-ms.openlocfilehash: 3ae17ebce564de465a91739a210ae7f18f86a3b9
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.openlocfilehash: 178d3aedb44c29f53aab481894defeb4b9355d39
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100523551"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104781349"
 ---
-# <a name="work-with-alerts-on-your-sensor"></a>センサー上でのアラートの操作
+# <a name="about-sensor-alerts"></a>センサー アラートについて
 
-アラートを使用して、ネットワークのセキュリティと操作を強化します。 アラートにより、次の情報が提供されます。
+アラートは、ネットワークのセキュリティと運用の強化に役立ちます。 アラートにより、次の情報が提供されます。
 
 - 承認されたネットワーク アクティビティからの逸脱
 
@@ -68,9 +64,9 @@ ms.locfileid: "100523551"
 
   - ネットワーク デバイス上で検出されたマルウェア イベントは、リスク評価レポートで報告されます。 マルウェア イベントに関するアラートが "*ミュート*" されている場合、影響を受けるデバイスはリスク評価レポートでは計算されません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="see-also"></a>関連項目
 
-[学習およびスマート IT 学習モード](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
-[アラートで提供される情報の表示](how-to-view-information-provided-in-alerts.md)
-[アラート イベントの管理](how-to-manage-the-alert-event.md)
-[アラート ワークフローの高速化](how-to-accelerate-alert-incident-response.md)
+- [学習モードおよびスマート IT 学習モード](how-to-control-what-traffic-is-monitored.md#learning-and-smart-it-learning-modes)
+- [アラートで提供される情報の表示](how-to-view-information-provided-in-alerts.md)
+- [アラート イベントの管理](how-to-manage-the-alert-event.md)
+- [アラート ワークフローの高速化](how-to-accelerate-alert-incident-response.md)

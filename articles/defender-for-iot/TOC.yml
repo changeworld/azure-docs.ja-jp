@@ -4,13 +4,13 @@
   displayName: 'IoT, OT, getting started'
   href: overview.md
   items:
-    - name: 新機能
-      href: release-notes.md
     - name: エージェントレス ソリューション アーキテクチャ
       displayName: 'deployment, where to deploy'
       href: architecture.md
     - name: エージェントベースのソリューション アーキテクチャ
       href: architecture-agent-based.md
+- name: 新機能
+  href: release-notes.md
 - name: クイックスタート
   expanded: true
   items:
@@ -247,9 +247,6 @@
           href: how-to-configure-with-sentinel.md
         - name: Azure Defender for IoT エージェントベースのソリューションを構成する
           displayName: 'data, collection, geolocation, log analytics, raw events'
-          href: how-to-configure-agent-based-solution.md
-        - name: CIS ベンチマークの推奨事項を調査する
-          displayName: 'investigation, queries, investigate'
           href: how-to-configure-agent-based-solution.md
         - name: CIS ベンチマークの推奨事項を調査する
           href: how-to-investigate-cis-benchmark.md

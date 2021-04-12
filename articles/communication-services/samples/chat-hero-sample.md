@@ -6,17 +6,20 @@ author: ddematheu2
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
-ms.date: 07/20/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1a28ca967404bf6a5329f8d590a8f1f4f8715407
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 0eb396935b42b040ab9f152a4965922664deb451
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657028"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103487831"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>グループ チャットのヒーロー サンプルを使ってみる
+
+[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+
 
 <!----
 > [!WARNING]
@@ -113,7 +116,7 @@ Communication Services サブスクリプションをクリーンアップして
 
 ## <a name="additional-reading"></a>その他の情報
 
-- [Azure Communication GitHub](https://github.com/Azure/communication) - 他の例や情報は公式 GitHub ページで見つかります。
+- [サンプル](./overview.md) - その他のサンプルと例については、「サンプルの概要」ページを参照してください。
 - [Redux](https://redux.js.org/) - クライアント側の状態管理
 - [FluentUI](https://aka.ms/fluent-ui) - Microsoft が提供する UI ライブラリ
 - [React](https://reactjs.org/) - ユーザー インターフェイスを構築するためのライブラリ

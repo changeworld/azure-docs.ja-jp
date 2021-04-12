@@ -9,12 +9,12 @@ ms.subservice: workspace
 ms.date: 09/03/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb7672a0d7bdd14415a51f2296c281e92cf5542a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: d38f1f294f60b73e8f1e69169a75333eb175c9f6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450663"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104600158"
 ---
 # <a name="quickstart-create-a-synapse-workspace"></a>クイック スタート:Synapse ワークスペースを作成する
 このクイックスタートでは、Azure portal を使用して Azure Synapse ワークスペースを作成する手順について説明します。
@@ -34,7 +34,8 @@ ms.locfileid: "96450663"
 1. **[確認と作成]**  >  **[作成]** の順に選択します。 ワークスペースの準備は数分で完了します。
 
 > [!NOTE]
-> Azure Synapse ワークスペースを作成した後、ワークスペースを別の Azure Active Directory テナントに移動することはできません。 サブスクリプションの移行またはその他のアクションを使用してこれを行うと、ワークスペース内の成果物にアクセスできなくなる可能性があります。  
+> Azure Synapse ワークスペースを作成した後、ワークスペースを別の Azure Active Directory テナントに移動することはできません。 サブスクリプションの移行またはその他のアクションを使用してこれを行うと、ワークスペース内の成果物にアクセスできなくなる可能性があります。
+> また、現在、[クラウド ソリューション プロバイダー (CSP)](/partner-center/csp-overview) サブスクリプションで Synapse Analytics ワークスペースを作成することはできません。
 
 ## <a name="open-synapse-studio"></a>Synapse Studio を開く
 

@@ -4,12 +4,12 @@ description: Shared Access Signature を使用して Service Bus のアクセス
 ms.topic: article
 ms.date: 01/19/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6bdc167c437a79d609db25a2e3c48b71e0a748b2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d210da4b653a20dd273dfce723f0bf9d5dbf743b
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598830"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101737819"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -132,7 +132,7 @@ SAS トークンは、`signature-string` で使われている `<resourceURI>` �
 
 以下で説明するシナリオには、承認規則の構成、SAS トークンの生成、クライアントの承認などが含まれます。
 
-構成を説明して SAS 承認を使用する、Service Bus アプリケーションの完全に動作するサンプルについては、 [Service Bus による Shared Access Signature 認証](https://code.msdn.microsoft.com/Shared-Access-Signature-0a88adf8)に関するページを参照してください。 Service Bus サブスクリプションをセキュリティで保護するために名前空間またはトピックに構成された SAS 承認規則の使用を示す関連のサンプルについては、 [Service Bus サブスクリプションでの Shared Access Signature (SAS) 認証の使用](https://code.msdn.microsoft.com/Using-Shared-Access-e605b37c)に関するページを参照してください。
+構成を説明して SAS 承認を使用する、Service Bus アプリケーションのサンプルについては、[Service Bus による Shared Access Signature 認証](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/ManagingEntities/SASAuthorizationRule)に関するページを参照してください。
 
 ## <a name="access-shared-access-authorization-rules-on-an-entity"></a>エンティティの共有アクセス承認規則へのアクセス
 

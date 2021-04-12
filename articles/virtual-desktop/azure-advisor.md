@@ -3,15 +3,15 @@ title: Windows Virtual Desktop を Azure Advisor と統合する - Azure
 description: Windows Virtual Desktop の展開で Azure Advisor を使用する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 76b7f97b6020a3a0d5571a3a105d15f7d7893485
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: b141d3829e9d98cb793d2038e93331804d2e6b8f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89147312"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448289"
 ---
 # <a name="use-azure-advisor-with-windows-virtual-desktop"></a>Windows Virtual Desktop で Azure Advisor を使用する
 
@@ -61,5 +61,3 @@ Azure Advisor を開くと、次の 5 つのカテゴリが表示されます。
 ## <a name="next-steps"></a>次のステップ
 
 推奨事項を解決する方法については、「[Azure Advisor の推奨事項を解決する方法](azure-advisor-recommendations.md)」を参照してください。
-
-新しい推奨事項についてご提案がある場合は、[Azure Advisor User Voice フォーラム](https://windowsvirtualdesktop.uservoice.com/forums/930847-azure-advisor-recommendations)に投稿してください。

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b75e6e0a8b79f374900e6cb2dfc49680d3d0190
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91854309"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101739060"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>チュートリアル:PowerShell を使用して ExpressRoute の仮想ネットワーク ゲートウェイを構成する
 > [!div class="op_single_selector"]
@@ -53,6 +53,11 @@ ms.locfileid: "91854309"
 | 型 | *ExpressRoute* |
 | ゲートウェイのパブリック IP 名  | *gwpip* |
 
+> [!IMPORTANT]
+> 現在、プライベート ピアリングの IPv6 サポートは **パブリック プレビュー** の段階にあります。 IPv6 ベースのプライベート ピアリングを構成して仮想ネットワークを ExpressRoute 回線に接続したい場合は、仮想ネットワークをデュアル スタックにし、[こちら](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)で説明されているガイドラインに従ってください。
+> 
+> 
+
 ## <a name="add-a-gateway"></a>ゲートウェイを追加する
 
 1. Azure に接続するには、`Connect-AzAccount` を実行します。
@@ -77,6 +82,11 @@ ms.locfileid: "91854309"
    ```azurepowershell-interactive
    Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
    ```
+    デュアル スタックの仮想ネットワークを使用していて、ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、代わりにデュアル スタックのゲートウェイ サブネットを作成してください。
+
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix "10.0.0.0/26","ace:daa:daaa:deaa::/64"
+   ```
 1. 構成を設定します。
 
    ```azurepowershell-interactive
@@ -97,11 +107,15 @@ ms.locfileid: "91854309"
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
    ```
-1. ゲートウェイを作成します。 この手順では、 **-GatewayType** が特に重要です。 値 **ExpressRoute**を使用する必要があります。 これらのコマンドレットを実行してからゲートウェイが作成されるまでに 45 分以上かかる場合があります。
+1. ゲートウェイを作成します。 この手順では、 **-GatewayType** が特に重要です。 値 **ExpressRoute** を使用する必要があります。 これらのコマンドレットを実行してからゲートウェイが作成されるまでに 45 分以上かかる場合があります。
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
    ```
+> [!IMPORTANT]
+> ExpressRoute 経由で IPv6 ベースのプライベート ピアリングを使用する予定の場合は、 **-GatewaySku** に対して AZ SKU (ErGw1AZ、ErGw2AZ、ErGw3AZ) を選択してください。
+> 
+> 
 
 ## <a name="verify-the-gateway-was-created"></a>ゲートウェイが作成されていることの確認
 次のコマンドを使用して、ゲートウェイが作成されていることを確認します。

@@ -5,7 +5,6 @@ services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
 manager: kumudD
-Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines within a specific zone in a region.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: azurecli
@@ -15,14 +14,14 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e0d43ae8f76e89ffe429ec1778922ee465ad7db4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a77927fe1703d061e87fc93071316ae6618e691f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696531"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056115"
 ---
-# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI スクリプトの例: 特定の可用性ゾーン内での VM へのトラフィックの負荷分散
+# <a name="azure-cli-script-example-load-balance-traffic-to-vms-within-a-specific-availability-zone"></a>Azure CLI スクリプトの例: 特定の可用性ゾーンで VM へのトラフィックを負荷分散する
 
 この Azure CLI スクリプトの例では、特定の可用性ゾーンで高可用性と負荷分散が設定された構成で、構成済みの複数の Ubuntu 仮想マシンを実行するために必要なものをすべて作成します。 このスクリプトを実行すると、リージョン内の 1 つの可用性ゾーンに、Azure Standard Load Balancer 経由でアクセス可能な仮想マシンが 3 つ作成されます。 
 

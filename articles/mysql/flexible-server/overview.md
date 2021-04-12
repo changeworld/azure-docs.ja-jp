@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 7841affc7a8988cb113af3b728ae117093000011
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 46b056c22a6d1c70a729f5b9558f53c685a878f0
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99257459"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101732855"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -24,7 +24,7 @@ MySQL コミュニティ エディションを搭載した Azure Database for My
 
 ## <a name="overview"></a>概要
 
-Azure Database for MySQL フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 一般に、サービスでは、ユーザーの要件に基づいて、より高い柔軟性とサーバー構成のカスタマイズが提供されます。 フレキシブル サーバー アーキテクチャにより、ユーザーは単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性を選択できます。 また、フレキシブル サーバーでは、サーバーを停止および開始する機能と、負荷の急増に対応できる SKU を備えた、優れたコスト最適化制御が提供され、完全なコンピューティング容量を継続的には必要としないワークロードに最適です。 現在、このサービスでは、MySQL 5.7 のコミュニティ バージョンがサポートされています。 このサービスは現在プレビュー段階にあり、現時点ではさまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
+Azure Database for MySQL フレキシブル サーバーは、データベース管理機能と構成設定のよりきめ細かな制御と柔軟性を提供するように設計されたフル マネージド データベース サービスです。 一般に、サービスでは、ユーザーの要件に基づいて、より高い柔軟性とサーバー構成のカスタマイズが提供されます。 フレキシブル サーバー アーキテクチャにより、ユーザーは単一の可用性ゾーン内および複数の可用性ゾーンにまたがる高可用性を選択できます。 また、フレキシブル サーバーでは、サーバーを停止および開始する機能と、負荷の急増に対応できる SKU を備えた、優れたコスト最適化制御が提供され、完全なコンピューティング容量を継続的には必要としないワークロードに最適です。 現在、このサービスでは、MySQL 5.7 と 8.0 のコミュニティ バージョンがサポートされています。 このサービスは現在プレビュー段階にあり、現時点ではさまざまな [Azure リージョン](https://azure.microsoft.com/global-infrastructure/services/)で利用できます。
 
 フレキシブル サーバーは、以下に適しています 
 - より優れた制御とカスタマイズが必要なアプリケーション開発。

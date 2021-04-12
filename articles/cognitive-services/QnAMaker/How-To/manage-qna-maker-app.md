@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 652489e8de68d61707fd419843f0dbb2ffd83754
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 49bfca118e53bbe3e4287b2ce25e5baffa717175
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99987939"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102217331"
 ---
 # <a name="manage-qna-maker-app"></a>QnA Maker アプリの管理
 
@@ -29,7 +29,7 @@ QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソー�
 
 ### <a name="add-a-user-account-to-the-qna-maker-resource"></a>QnA Maker リソースにユーザー アカウントを追加する
 
-次の手順では、コラボレーター ロールを使用しますが、これらの手順を使用して、いずれかの[ロール](../reference-role-based-access-control.md)を追加することができます。
+次の手順では、コラボレーター ロールを使用しますが、これらの手順を使用して、いずれかのロールを追加することができます。
 
 1. [Azure](https://portal.azure.com/) portal にサインインして、使用する QnA Maker リソースに移動します。
 

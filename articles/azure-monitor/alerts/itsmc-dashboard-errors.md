@@ -1,17 +1,16 @@
 ---
 title: ITSMC ダッシュボード内の [コネクタの状態] のエラー
 description: IT Service Management Connector ダッシュボードで見られる一般的なエラーについて説明します。
-ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: d1ba698cd95a074c021aa351a98eb12fc8ae0fc3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 727e744c59d0a8d90cf320e1ee2e2a17e10ff847
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603534"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103471531"
 ---
 # <a name="connector-status-errors-in-the-itsmc-dashboard"></a>ITSMC ダッシュボード内の [コネクタの状態] のエラー
 
@@ -56,7 +55,9 @@ IT Service Management Connector (ITSMC) ダッシュボードに表示される�
 
 ## <a name="invalid-refresh-token"></a>更新トークンが無効である
 
-**Error**: "AccessToken and RefreshToken invalid. (AccessToken および RefreshToken が無効です。) User needs to authenticate again. (ユーザーはもう一度認証を受ける必要があります。)"
+**エラー**: 
+  * "AccessToken and RefreshToken invalid. (AccessToken および RefreshToken が無効です。) User needs to authenticate again. (ユーザーはもう一度認証を受ける必要があります。)"
+  * "Could not sync templates configuration for Event,Alert,Incident. (イベント、アラート、インシデントのテンプレート構成を同期できませんでした。) See Exception Message for more details. (詳細については、例外メッセージを参照してください。)"
 
 **原因**:更新トークンの有効期限が切れている。
 
@@ -87,3 +88,11 @@ IT Service Management Connector (ITSMC) ダッシュボードに表示される�
 
 * 新しい ITSMC インスタンスを作成すると、作業項目テンプレートや作業項目など、ITSM システムからの情報の同期が開始されます。 [ITSMC を同期して新しい更新トークンを作成します](./itsmc-resync-servicenow.md)。
 * [ITSMC で接続の詳細を確認](./itsmc-connections-servicenow.md#create-a-connection)し、ITSMC が正常に[同期](./itsmc-resync-servicenow.md)されることを確認します。
+
+
+## <a name="ip-restrictions"></a>IP 制限
+**エラー**: "無効な要求により、"XXX" という名前の ITSM 接続を追加できませんでした。 エラー: 正しくない要求。 接続に無効なパラメーターが指定されました。 HTTP 例外: 状態コードは禁止されています。"
+
+**原因**: ITSM アプリケーションの IP アドレスでは、パートナーの ITSM ツールからの ITSM 接続を許可していません。
+
+**解決策**: パートナーの ITSM ツールからの ITSM 接続を許可するために ITSM IP アドレスを一覧表示するには、LogAnalytics ワークスペースが属している Azure リージョンのパブリック IP 範囲全体を一覧表示することをお勧めします。 [詳細はこちら](https://www.microsoft.com/download/details.aspx?id=56519) 米国東部、西ヨーロッパ、米国東部 2、米国西部 2、米国中南部のリージョンの場合、顧客は ActionGroup ネットワーク タグのみを一覧表示できます。

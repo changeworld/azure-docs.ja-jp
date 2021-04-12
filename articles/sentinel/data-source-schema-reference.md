@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.custom: ''
 ms.date: 01/14/2021
-ms.openlocfilehash: 0cc1a083e1400b5a3167376e374af6c7bf7ab7c7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 84d5f1e4035fb730d33b7bc8dd375273610f0bfb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698350"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771942"
 ---
 # <a name="data-source-schema-reference"></a>データ ソース スキーマ リファレンス
 
@@ -62,6 +62,9 @@ ms.locfileid: "101698350"
 |**Host** |Trend Micro |All |CommonSecurityLog | [Syslog コンテンツのマッピング - CEF](https://docs.trendmicro.com/en-us/enterprise/control-manager-70/appendices/syslog-mapping-cef.aspx) |
 | | | | | |
 
+> [!NOTE]
+> 詳細については、[CEF および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)に関するページも参照してください。
+> 
 ## <a name="next-steps"></a>次のステップ
 
 CEF、Syslog、ダイレクト、エージェント、カスタム コネクタなど、サポートされている Azure Sentinel コネクタについて説明します。

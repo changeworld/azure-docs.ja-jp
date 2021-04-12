@@ -9,14 +9,14 @@ ms.service: media-services ms.workload: ms.topic: conceptual ms.date:02/13/2020 
 
 Microsoft Azure Media Services では、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)は、いずれかの一般的なストリーミング メディア プロトコル (HLS または DASH) を使用して、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できるダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。 さらに、**ストリーミング エンドポイント** は、業界有数の DRM に動的 (Just-In-Time) 暗号化を提供します。 
 
-Media Services アカウントを作成すると、**既定** のストリーミング エンドポイントが停止状態で作成されます。 このアカウントでは、さらに多くのストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints.md)に関するページを参照)。
+Media Services アカウントを作成すると、**既定** のストリーミング エンドポイントが停止状態で作成されます。 このアカウントでは、さらに多くのストリーミング エンドポイントを作成できます ([クォータと制限](limits-quotas-constraints-reference.md)に関するページを参照)。
 
 > [!NOTE]
 > ビデオのストリーミングを開始するには、ビデオをストリーミングする **ストリーミング エンドポイント** を開始する必要があります。
 >
 > ストリーミング エンドポイントが実行状態にある場合にのみ課金されます。
 
-[ダイナミック パッケージ](dynamic-packaging-overview.md)に関するトピックも必ず参照してください。 
+[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)に関するトピックも必ず参照してください。 
 
 ## <a name="naming-convention"></a>命名規則
 
@@ -63,6 +63,54 @@ IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
 
 <sup>1</sup> エンドポイントで CDN が有効になっていない場合にのみ、ストリーミング エンドポイントで直接使用されます。<br/>
 
+### <a name="versions"></a>バージョン
+
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|課金|
+|--------------|----------|-----------------|-----------------|-----------------|
+|クラシック|1.0|0|NA|Free|
+|Standard ストリーミング エンドポイント (プレビュー)|2.0|0|はい|有料|
+|Premium ストリーミング ユニット|1.0|>0|はい|有料|
+|Premium ストリーミング ユニット|2.0|>0|はい|有料|
+
+### <a name="features"></a>特徴
+
+機能|Standard|Premium
+---|---|---
+スループット |最大 600 Mbps であり、CDN を使用した場合に実効スループットが大幅に向上します。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN を使用した場合に実効スループットが大幅に向上します。
+CDN|Azure CDN、サード パーティ製 CDN、または CDN なし。|Azure CDN、サード パーティ製 CDN、または CDN なし。
+課金は日割り計算| 毎日|毎日
+動的な暗号化|はい|はい
+動的パッケージ|はい|はい
+スケール|対象スループットまで自動スケールアップ。|追加のストリーミング ユニット
+IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
+プログレッシブ ダウンロード|はい|はい
+推奨使用量 |大半のストリーミング シナリオに推奨。|プロフェッショナルな使用量。 
+
+<sup>1</sup> エンドポイントで CDN が有効でない場合にのみ、ストリーミング エンドポイントで直接使用します。<br/>
+
+SLA については、[価格と SLA](https://azure.microsoft.com/pricing/details/media-services/) に関する記事をご覧ください。
+
+## <a name="migration-between-types"></a>タイプの移行
+
+ソース | ターゲット | アクション
+---|---|---
+クラシック|Standard|オプトインが必要
+クラシック|Premium| スケール (追加のストリーミング ユニット)
+Standard/Premium|クラシック|利用不可 (ストリーミング エンドポイントのバージョンが 1.0 の場合。 scaleunits を「0」に設定してクラシックに変更することは可能)
+Standard (CDN あり/なし)|同じ構成の Premium|**開始済み** 状態で可能。 (Azure Portal 使用)
+Premium (CDN あり/なし)|同じ構成の Standard|**開始済み** 状態で可能 (Azure Portal 使用)
+Standard (CDN あり/なし)|別の構成の Premium|**停止** 状態で可能 (Azure Portal 使用)。 実行中の状態では不可。
+Premium (CDN あり/なし)|別の構成の Standard|**停止** 状態で可能 (Azure Portal 使用)。 実行中の状態では不可。
+バージョン 1.0、SU > = 1、CDN あり|CDN なしの Standard/Premium|**停止** 状態で可能。 **開始済み** 状態では不可。
+バージョン 1.0、SU > = 1、CDN あり|Standard、CDN あり/なし|**停止** 状態で可能。 **開始済み** 状態では不可。 バージョン 1.0 の CDN は削除し、新しい CDN を作成して起動。
+バージョン 1.0、SU > = 1、CDN あり|Premium、CDN あり/なし|**停止** 状態で可能。 **開始済み** 状態では不可。 クラシック CDN は削除し、新しい CDN を作成して起動。
+
+
+
+
+
+
+
 ## <a name="streaming-endpoint-properties"></a>ストリーミング エンドポイントのプロパティ
 
 このセクションでは、ストリーミング エンドポイントの一部のプロパティについて詳しく説明します。 新しいストリーミング エンドポイントを作成する方法の例と全プロパティの説明については、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints/create)に関する記事をご覧ください。
@@ -83,7 +131,7 @@ IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
 - `crossSiteAccessPolicies`:さまざまなクライアントのクロス サイト アクセス ポリシーを指定するために使用されます。 詳しくは、[Cross-domain ポリシー ファイルの仕様](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)と「[Making a Service Available Across Domain Boundaries](/previous-versions/azure/azure-services/gg185950(v=azure.100))」(ドメインの境界を越えてサービスを利用できるようにする) をご覧ください。 設定は、Smooth Streaming にのみ適用されます。
 - `customHostNames`:カスタム ホスト名に転送されたトラフィックを受け入れるようにストリーミング エンドポイントを構成するために使用されます。 このプロパティは Standard と Premium のストリーミング エンドポイントで有効であり、`cdnEnabled`: false のときに設定できます。
 
-    ドメイン名の所有権は、Media Services によって確認される必要があります。 Media Services は、使用中のドメインに追加されるコンポーネントとして Media Services アカウント ID が含まれる `CName` レコードを要求することで、ドメイン名の所有権を検証します。 例として、ストリーミング エンドポイントのカスタム ホスト名として "sports.contoso.com" が使用されるには、Media Services の検証ホスト名の 1 つにポイントするよう、`<accountId>.contoso.com` のレコードを構成する必要があります。 検証ホスト名は、verifydns.\<mediaservices-dns-zone> で構成されます。
+    ドメイン名の所有権は、Media Services によって確認される必要があります。 Media Services は、使用中のドメインに追加されるコンポーネントとして Media Services アカウント ID が含まれる `CName` レコードを要求することで、ドメイン名の所有権を検証します。 例として、ストリーミング エンドポイントのカスタム ホスト名として "sports.contoso.com" が使用されるには、Media Services の検証ホスト名の 1 つにポイントするよう、`<accountId>.contoso.com` のレコードを構成する必要があります。 検証ホスト名は、verifydns.`\<mediaservices-dns-zone>` で構成されます。
 
     さまざまな Azure リージョンでのレコードの検証で使用されることが想定される DNS ゾーンを次に示します。
   
@@ -153,7 +201,7 @@ IP フィルタリング/G20/カスタム ホスト <sup>1</sup>|はい|はい
 
 ## <a name="see-also"></a>関連項目
 
-[ダイナミック パッケージ](dynamic-packaging-overview.md)
+[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)
 
 ## <a name="next-steps"></a>次のステップ
 

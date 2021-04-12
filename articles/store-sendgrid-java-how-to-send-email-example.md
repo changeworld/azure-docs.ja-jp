@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 57daf9170a7f97c6c141532dafe759cde9d1c77b
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7a857b887b53ccb2288507742ca52d72d90ff548
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519066"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102214356"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法
 次の例では、Azure でホストされる Web ページから SendGrid を使用して電子メールを送信する方法を示しています。 次のスクリーンショットに示すように、作成されたアプリケーションはメールに関する値の入力をユーザーに求めます。
@@ -40,7 +40,7 @@ ms.locfileid: "95519066"
 
 また、電子メールを送信するには、SendGrid のユーザー名とパスワードを取得している必要があります。 SendGrid を利用し始めるには、「 [Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email.md)」を参照してください。
 
-さらに、 [Microsoft Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app?view=azure-java-stable)にある情報に精通すること、または、Eclipse を使用していない場合は、Microsoft Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
+さらに、 [Microsoft Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)にある情報に精通すること、または、Eclipse を使用していない場合は、Microsoft Azure 上の Java アプリケーションをホストする別の手法に精通することを強くお勧めします。
 
 ## <a name="create-a-web-form-for-sending-email"></a>電子メール送信用の Web フォームの作成
 次のコードでは、電子メール送信用のユーザー データを取得する Web フォームの作成方法を示しています。 このコンテンツでは、JSP ファイルに **emailform.jsp** という名前を付けています。

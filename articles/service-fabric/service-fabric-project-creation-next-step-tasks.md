@@ -4,12 +4,12 @@ description: Visual Studio で作成したアプリケーション プロジェ�
 ms.topic: conceptual
 ms.date: 12/21/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 59c8eb0737d2cef1c4b1df34d673b74944fef4e1
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.openlocfilehash: 4d162918644727d4c79ad606f1ed34816f543d81
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760437"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044381"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric アプリケーションと次の手順
 Azure Service Fabric アプリケーションが作成されました。 この記事では、いくつかのリソース、関連するその他の情報、および[次のステップ](#next-steps)を紹介します。
@@ -59,7 +59,7 @@ Service Fabric アプリケーションはさまざまなサービスで構成�
 他のプラットフォームと同様に、通常、Service Fabric アプリケーションは、設計、開発、テスト、デプロイ、アップグレード、保守、削除の各フェーズを通過します。 [この記事](service-fabric-application-lifecycle.md)では、API の概要と、Service Fabric アプリケーション ライフサイクルの各フェーズでさまざまなロールが API をどのように使用するかについて説明しています。
 
 ## <a name="learn-about-best-practices"></a>ベスト プラクティスを確認する
-Service Fabric では、[ベスト プラクティス](./service-fabric-best-practices-overview.md)について説明した記事が多数用意されています。 この情報を活用して、クラスターとアプリケーションを可能な限り有効に実行できるようにしましょう。
+Service Fabric では、[ベスト プラクティス](./service-fabric-best-practices-security.md)について説明した記事が多数用意されています。 この情報を活用して、クラスターとアプリケーションを可能な限り有効に実行できるようにしましょう。
 取り上げるトピックは次のとおりです。
 * [Security](./service-fabric-best-practices-security.md)
 * [ネットワーク](./service-fabric-best-practices-networking.md)

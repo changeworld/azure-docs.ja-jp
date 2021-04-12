@@ -3,16 +3,16 @@ title: Dv3 および Dsv3 シリーズ
 description: Dv3 および Dsv3 シリーズ VM の仕様。
 author: joelpelley
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: jushiman
-ms.openlocfilehash: 8faf86037bc5c2be4ab83adcbcd7e992840d329a
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 22400164ac82df3ec0e0e24daf6d823eae219837
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557764"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102566432"
 ---
 # <a name="dv3-and-dsv3-series"></a>Dv3 および Dsv3 シリーズ
 

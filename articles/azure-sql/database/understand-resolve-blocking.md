@@ -13,13 +13,13 @@ ms.topic: conceptual
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
-ms.date: 1/14/2020
-ms.openlocfilehash: 1341d0e64a01ff428fe42735d198c5e6b74b0ce8
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.date: 3/02/2021
+ms.openlocfilehash: 3d64336184450514d52095097343a4588213f111
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99093310"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102034899"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Azure SQL Database のブロックの問題の概要と解決策
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ ms.locfileid: "99093310"
 この記事では、接続という用語は、データベースの 1 回のログオン セッションを指します。 各接続は、多くの DMV でセッション ID (SPID) または session_id として表示されます。 これらの各 SPID は、多くの場合にプロセスと呼ばれますが、通常の意味での個別のプロセス コンテキストではありません。 各 SPID は、特定のクライアントからの単一の接続の要求を処理するために必要なサーバー リソースとデータ構造で構成されます。 1 つのクライアント アプリケーションで 1 つ以上の接続を確立できます。 Azure SQL Database の観点から、単一のクライアント コンピューター上の単一のクライアント アプリケーションからの複数の接続と、複数のクライアント アプリケーションまたは複数のクライアント コンピューターからの複数の接続の間に違いはなく、それらはアトミックです。 ソース クライアントに関係なく、1 つの接続によって、別の接続がブロックされる可能性があります。
 
 > [!NOTE]
-> **このコンテンツは Azure SQL Database に固有です。** Azure SQL Database は、Microsoft SQL Server データベース エンジンの最新の安定バージョンに基づいているため、トラブルシューティングのオプションやツールが異なる場合はありますが、コンテンツの大半は似ています。 SQL Server のブロックの詳細については、「[SQL Server の問題の概要と解決策](/troubleshoot/sql/performance/understand-resolve-blocking)」を参照してください。
+> **この内容は Azure SQL Database が対象です。** Azure SQL Database は、Microsoft SQL Server データベース エンジンの最新の安定バージョンに基づいているため、トラブルシューティングのオプションやツールが異なる場合はありますが、コンテンツの大半は似ています。 SQL Server のブロックの詳細については、「[SQL Server の問題の概要と解決策](/troubleshoot/sql/performance/understand-resolve-blocking)」を参照してください。
 
 ## <a name="understand-blocking"></a>ブロックの概要 
  
@@ -105,7 +105,7 @@ SELECT * FROM sys.dm_exec_input_buffer (66,0);
 
 * sys.dm_exec_requests を参照し、blocking_session_id 列を参照します。 blocking_session_id = 0 の場合、セッションはブロックされていません。 sys.dm_exec_requests では、現在実行中の要求のみが一覧表示されますが、sys.dm_exec_sessions ではすべての接続 (アクティブまたは非アクティブ) が一覧表示されます。 次のクエリでは、sys.dm_exec_requests と sys.dm_exec_sessions の間のこの共通結合に基づきます。
 
-* このサンプル クエリを実行し、[sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) または [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV を使用して、アクティブに実行されているクエリとそれらの現在の SQL バッチ テキストまたは入力バッファー テキストを見つけます。 sys.dm_exec_sql_text の `text` フィールドによって返されたデータが NULL の場合、クエリは現在実行されていません。 その場合、sys.dm_exec_input_buffer の `event_info` フィールドには、SQL エンジンに渡された最後のコマンド文字列が含まれます。 
+* このサンプル クエリを実行し、[sys.dm_exec_sql_text](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-sql-text-transact-sql) または [sys.dm_exec_input_buffer](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-input-buffer-transact-sql) DMV を使用して、アクティブに実行されているクエリとそれらの現在の SQL バッチ テキストまたは入力バッファー テキストを見つけます。 sys.dm_exec_sql_text の `text` フィールドによって返されたデータが NULL の場合、クエリは現在実行されていません。 その場合、sys.dm_exec_input_buffer の `event_info` フィールドには、SQL エンジンに渡された最後のコマンド文字列が含まれます。 このクエリは、session_id ごとのブロックされている session_ids の一覧など、他のセッションをブロックしているセッションを識別するためにも使用できます。 
 
 ```sql
 WITH cteBL (session_id, blocking_these) AS 
@@ -125,6 +125,49 @@ OUTER APPLY sys.dm_exec_sql_text (r.sql_handle) t
 OUTER APPLY sys.dm_exec_input_buffer(s.session_id, NULL) AS ib
 WHERE blocking_these is not null or r.blocking_session_id > 0
 ORDER BY len(bl.blocking_these) desc, r.blocking_session_id desc, r.session_id;
+```
+
+* Microsoft サポートによって提供された、より複雑なこのサンプル クエリを実行して、ブロック チェーンに含まれるセッションのクエリ テキストを含め、複数のセッション ブロック チェーンの先頭を識別します。
+
+```sql
+WITH cteHead ( session_id,request_id,wait_type,wait_resource,last_wait_type,is_user_process,request_cpu_time
+,request_logical_reads,request_reads,request_writes,wait_time,blocking_session_id,memory_usage
+,session_cpu_time,session_reads,session_writes,session_logical_reads
+,percent_complete,est_completion_time,request_start_time,request_status,command
+,plan_handle,sql_handle,statement_start_offset,statement_end_offset,most_recent_sql_handle
+,session_status,group_id,query_hash,query_plan_hash) 
+AS ( SELECT sess.session_id, req.request_id, LEFT (ISNULL (req.wait_type, ''), 50) AS 'wait_type'
+    , LEFT (ISNULL (req.wait_resource, ''), 40) AS 'wait_resource', LEFT (req.last_wait_type, 50) AS 'last_wait_type'
+    , sess.is_user_process, req.cpu_time AS 'request_cpu_time', req.logical_reads AS 'request_logical_reads'
+    , req.reads AS 'request_reads', req.writes AS 'request_writes', req.wait_time, req.blocking_session_id,sess.memory_usage
+    , sess.cpu_time AS 'session_cpu_time', sess.reads AS 'session_reads', sess.writes AS 'session_writes', sess.logical_reads AS 'session_logical_reads'
+    , CONVERT (decimal(5,2), req.percent_complete) AS 'percent_complete', req.estimated_completion_time AS 'est_completion_time'
+    , req.start_time AS 'request_start_time', LEFT (req.status, 15) AS 'request_status', req.command
+    , req.plan_handle, req.[sql_handle], req.statement_start_offset, req.statement_end_offset, conn.most_recent_sql_handle
+    , LEFT (sess.status, 15) AS 'session_status', sess.group_id, req.query_hash, req.query_plan_hash
+    FROM sys.dm_exec_sessions AS sess
+    LEFT OUTER JOIN sys.dm_exec_requests AS req ON sess.session_id = req.session_id
+    LEFT OUTER JOIN sys.dm_exec_connections AS conn on conn.session_id = sess.session_id 
+    )
+, cteBlockingHierarchy (head_blocker_session_id, session_id, blocking_session_id, wait_type, wait_duration_ms,
+wait_resource, statement_start_offset, statement_end_offset, plan_handle, sql_handle, most_recent_sql_handle, [Level])
+AS ( SELECT head.session_id AS head_blocker_session_id, head.session_id AS session_id, head.blocking_session_id
+    , head.wait_type, head.wait_time, head.wait_resource, head.statement_start_offset, head.statement_end_offset
+    , head.plan_handle, head.sql_handle, head.most_recent_sql_handle, 0 AS [Level]
+    FROM cteHead AS head
+    WHERE (head.blocking_session_id IS NULL OR head.blocking_session_id = 0)
+    AND head.session_id IN (SELECT DISTINCT blocking_session_id FROM cteHead WHERE blocking_session_id != 0)
+    UNION ALL
+    SELECT h.head_blocker_session_id, blocked.session_id, blocked.blocking_session_id, blocked.wait_type,
+    blocked.wait_time, blocked.wait_resource, h.statement_start_offset, h.statement_end_offset,
+    h.plan_handle, h.sql_handle, h.most_recent_sql_handle, [Level] + 1
+    FROM cteHead AS blocked
+    INNER JOIN cteBlockingHierarchy AS h ON h.session_id = blocked.blocking_session_id and h.session_id!=blocked.session_id --avoid infinite recursion for latch type of blocking
+    WHERE h.wait_type COLLATE Latin1_General_BIN NOT IN ('EXCHANGE', 'CXPACKET') or h.wait_type is null
+    )
+SELECT bh.*, txt.text AS blocker_query_or_most_recent_query 
+FROM cteBlockingHierarchy AS bh 
+OUTER APPLY sys.dm_exec_sql_text (ISNULL ([sql_handle], most_recent_sql_handle)) AS txt;
 ```
 
 * 長時間実行しているかまたはコミットされていないトランザクションをキャッチするには、[sys.dm_tran_database_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-database-transactions-transact-sql)、[sys.dm_tran_session_transactions](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-session-transactions-transact-sql)、[sys.dm_exec_connections](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-connections-transact-sql)、および sys.dm_exec_sql_text を含む、現在開いているトランザクションを表示するための別の DMV セットを使用します。 トランザクションの追跡に関連付けられているいくつかの DMV があります。こちらで、その他の[トランザクションの DMV](/sql/relational-databases/system-dynamic-management-views/transaction-related-dynamic-management-views-and-functions-transact-sql) を参照してください。 
@@ -165,7 +208,7 @@ AND object_name(p.object_id) = '<table_name>';
 
 ## <a name="gather-information-from-extended-events"></a>拡張イベントからの情報の収集
 
-上記の情報に加えて、多くの場合、Azure SQL Database でのブロックの問題を十分に調査するために、サーバー上のアクティビティのトレースをキャプチャする必要があります。 たとえば、セッションによって、トランザクション内で複数のステートメントが実行される場合、最後に送信されたステートメントのみが表示されます。 しかし、それ以前のいずれかのステートメントに、ロックがまだ保持されている理由がある場合があります。 トレースにより、現在のトランザクション内でセッションによって実行されたすべてのコマンドを確認できます。
+前の情報に加えて、多くの場合、Azure SQL Database でのブロックの問題を十分に調査するために、サーバー上のアクティビティのトレースをキャプチャする必要があります。 たとえば、セッションによって、トランザクション内で複数のステートメントが実行される場合、最後に送信されたステートメントのみが表示されます。 しかし、それ以前のいずれかのステートメントに、ロックがまだ保持されている理由がある場合があります。 トレースにより、現在のトランザクション内でセッションによって実行されたすべてのコマンドを確認できます。
 
 SQL Server でトレースをキャプチャする方法は 2 つあります。拡張イベント (Xevent) とプロファイラー トレースです。 ただし、[SQL Server Profiler](/sql/tools/sql-server-profiler/sql-server-profiler) は、Azure SQL Database でサポートされていない非推奨のトレース テクノロジです。 [拡張イベント](/sql/relational-databases/extended-events/extended-events)は、より汎用性が高く、監視対象のシステムへの影響が少ない新しいトレース テクノロジであり、そのインターフェイスは SQL Server Management Studio (SSMS) に統合されています。 
 
@@ -195,7 +238,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
 ## <a name="identify-and-resolve-common-blocking-scenarios"></a>一般的なブロック シナリオの特定と解決
 
-上記の情報を調べることで、ほとんどのブロックの問題の原因を特定できます。 この記事の残りの部分では、この情報を使用して、いくつかの一般的なブロック シナリオを特定し、解決する方法について説明します。 この説明では、ブロック スクリプト (前述) を使用して、ブロックしている SPID についての情報をキャプチャし、XEvent セッションを使用して、アプリケーション アクティビティをキャプチャしていることを前提としています。
+前の情報を調べることで、ほとんどのブロックの問題の原因を特定できます。 この記事の残りの部分では、この情報を使用して、いくつかの一般的なブロック シナリオを特定し、解決する方法について説明します。 この説明では、ブロック スクリプト (前述) を使用して、ブロックしている SPID についての情報をキャプチャし、XEvent セッションを使用して、アプリケーション アクティビティをキャプチャしていることを前提としています。
 
 ## <a name="analyze-blocking-data"></a>ブロック データの分析 
 
@@ -291,7 +334,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 | 5 | NULL | \>0 | ロールバック | はい。 | この SPID の拡張イベント セッションで、クエリ タイムアウトまたはキャンセルが発生したか、または単にロールバック ステートメントが発行されたことを示す注意シグナルが表示される可能性があります。 |  
 | 6 | NULL | \>0 | 休止中 | 最終的に。 Windows NT によって、セッションがアクティブでなくなったと判断されると、Azure SQL Database 接続が切断されます。 | sys.dm_exec_sessions の `last_request_start_time` 値は、現在の時刻よりもはるかに前です。 |
 
-以下のシナリオでは、これらのシナリオをさらに発展させています。 
+## <a name="detailed-blocking-scenarios"></a>ブロックのシナリオ (詳述)
 
 1.  実行時間が長い通常実行行されるクエリに原因があるブロック
 
@@ -323,7 +366,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
     2 つ目のクエリの出力は、トランザクションの入れ子レベルが 1 であることを示しています。 トランザクションで取得されたすべてのロックは、トランザクションがコミットまたはロールバックされるまでまだ保持されます。 アプリケーションによって、明示的にトランザクションが開かれ、コミットされる場合、通信またはその他のエラーによって、セッションとそのトランザクションが開いた状態のままになる可能性があります。 
 
-    sys.dm_tran_active_transactions に基づく上記のスクリプトを使用して、現在コミットされていないトランザクションを識別します。
+    この記事で先に紹介したスクリプトを sys.dm_tran_active_transactions に基づいて使用し、インスタンス全体で現在コミットされていないトランザクションを特定します。
 
     **解決方法**:
 
@@ -334,6 +377,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
             *    クライアント アプリケーションで、トランザクションが開いていると思われない場合でも、何らかのエラーの発生後に、クライアント アプリケーションの エラーハンドラーで、`IF @@TRANCOUNT > 0 ROLLBACK TRAN` を実行します。 開いているトランザクションの確認が必要です。バッチ処理中に呼び出されたストアド プロシージャによって、クライアント アプリケーションの認識なく、トランザクションが開始された可能性があるためです。 クエリの取り消しなど、特定の条件によって、現在のステートメントを過ぎたプロシージャの実行が妨げられるため、プロシージャに `IF @@ERROR <> 0` をチェックしてトランザクションを中止するロジックがあったとしても、そのような場合に、このロールバック コードが実行されません。  
             *    Web ベースのアプリケーションなど、接続を開き、接続をプールに解放するまでに少数のクエリを実行するアプリケーションで、接続プールが使用されている場合、接続プールを一時的に無効にすることで、クライアント アプリケーションがエラーを適切に処理するように変更するまで、問題を軽減するのに役立つ可能性があります。 接続プールを無効にすると、接続を解放することで、Azure SQL Database 接続の物理的な切断が発生し、サーバーによって開いているトランザクションのロールバックが行われます。  
             *    接続に対して、またはトランザクションを開始し、エラーの発生後にクリーンアップされないストアド プロシージャで、`SET XACT_ABORT ON` を使用します。 実行時エラーが発生した場合、この設定により、開いているトランザクションが中止され、クライアントに制御が返されます。 詳しくは、「[SET XACT_ABORT (Transact-SQL)](/sql/t-sql/statements/set-xact-abort-transact-sql)」をご覧ください。
+
     > [!NOTE]
     > 接続は、接続プールから再利用されるまでリセットされないため、ユーザーはトランザクションを開いて、その後接続プールに接続を解放することができますが、数秒間再利用されないことがあり、その間トランザクションが開いたままになる場合があります。 接続が再利用されない場合、接続がタイムアウトし、接続プールから削除されると、トランザクションが中止されます。 このため、クライアント アプリケーションでは、エラー ハンドラーでトランザクションを中止するか、`SET XACT_ABORT ON` を使用して、この遅延の可能性を回避することが最適です。
 
@@ -342,14 +386,14 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
 1.  対応するクライアント アプリケーションが、完了までにすべての結果行をフェッチしなかった SPID に原因があるブロック
 
-    サーバーにクエリを送信した後、すべてのアプリケーションでは、完了までにすべての結果行を直ちにフェッチする必要があります。 アプリケーションですべての結果行をフェッチしない場合、テーブルへのロックが残され、他のユーザーがブロックされる可能性があります。 サーバーに SQL ステートメントを透過的に送信するアプリケーションを使用している場合、アプリケーションですべての結果行をフェッチする必要があります。 そうしない場合 (およびそうするように構成できない場合)、ブロックの問題を解決できない可能性があります。 問題を回避するには、正常に動作していないアプリケーションをレポート データベースまたは意思決定支援データベースに制限することができます。
+    サーバーにクエリを送信した後、すべてのアプリケーションでは、完了までにすべての結果行を直ちにフェッチする必要があります。 アプリケーションですべての結果行をフェッチしない場合、テーブルへのロックが残され、他のユーザーがブロックされる可能性があります。 サーバーに SQL ステートメントを透過的に送信するアプリケーションを使用している場合、アプリケーションですべての結果行をフェッチする必要があります。 そうしない場合 (およびそうするように構成できない場合)、ブロックの問題を解決できない可能性があります。 問題を回避するには、正常に動作していないアプリケーションを、メインの OLTP データベースから切り離し、レポート データベースまたは意思決定支援データベースに制限することができます。
     
     > [!NOTE]
     > Azure SQL Database に接続するアプリケーションの[再試行ロジックのガイダンス](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors)を参照してください。 
     
     **解決方法**:完了までに結果のすべての行をフェッチするように、アプリケーションを書き直す必要があります。 これにより、サーバー側ページングを実行するクエリの [ORDER BY 句での OFFSET および FETCH ](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned)の使用が妨げられるわけではありません。
 
-1.  ロールバック状態の SPID に原因があるブロック
+1.  ロールバック状態のセッションに原因があるブロック
 
     中止 (KILL) された、またはユーザー定義トランザクションの外部で取り消されたデータ変更クエリはロールバックされます。 これは、クライアント ネットワーク セッションの切断の副作用として、または要求がデッドロックの犠牲者として選択された場合にも発生することがあります。 これは多くの場合、sys.dm_exec_requests の出力を観察することによって識別できます。これは ROLLBACK **コマンド** を示している場合があり、**percent_complete 列** に進行状況が示されている可能性があります。 
 
@@ -371,7 +415,7 @@ SSMS の[拡張イベントの新しいセッション ウィザード](/sql/rel
 
 ## <a name="see-also"></a>関連項目
 
-* [Azure SQL Database と Azure SQL Managed Instance での監視とパフォーマンス チューニング](/azure/azure-sql/database/monitor-tune-overview)
+* [Azure SQL Database と Azure SQL Managed Instance での監視とパフォーマンス チューニング](./monitor-tune-overview.md)
 * [クエリ ストアを使用したパフォーマンスの監視](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)
 * [トランザクションのロックおよび行のバージョン管理ガイド](/sql/relational-databases/sql-server-transaction-locking-and-row-versioning-guide)
 * [SET TRANSACTION ISOLATION LEVEL](/sql/t-sql/statements/set-transaction-isolation-level-transact-sql)

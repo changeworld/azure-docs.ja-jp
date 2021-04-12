@@ -12,10 +12,10 @@ author: slbird
 ms.reviewer: luquinta
 ms.date: 01/21/2020
 ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98681406"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Azure Machine Learning で差分プライバシーを使用する (プレビュー)

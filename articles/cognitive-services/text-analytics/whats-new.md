@@ -8,19 +8,66 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 03/18/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 45b52f98f9f3670f2a68c22cfe9e27a86b2a74cc
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: a2b001d34d265c8e7246b03875c32168f2c5c962
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220702"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598900"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Text Analytics API の新機能
 
 Text Analytics API は継続的に更新されます。 常に最新の開発情報を把握していただけるよう、この記事では新しいリリースと機能に関する情報を提供します。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="general-api-updates"></a>一般的な API の更新
+* 新しい API v3.1-preview. 4 のリリースは次を含みます 
+   * 次のように、オピニオン マイニング JSON 応答本文を変更します。 
+      * `aspects` は現在 `targets`の状態で、`opinions` は `assessments` の状態です。 
+   * 正常性のための Text Analytics のホストされたウェブ API の JSON 応答本文の変更: 
+      * 否定検出されたエンティティ オブジェクトの`isNegated`ブール型名は非推奨となり、アサーション検出に置き換えられます。
+      * `role`という名前の新しいプロパティ は、属性とエンティティの間の抽出された関係と、エンティティ間の関係の一部になりました。  これにより、検出された関係の種類に特異性が追加されます。
+   * エンティティ リンク設定が、`/analyze` エンドポイントで非同期タスクとして使用できるようになりました 。
+   * これで、新しい `pii-categories` パラメーターを `/pii` エンドポイントで使用できるようになりました 。
+      * このパラメーターを使用すると、入力言語に対して既定でサポートされていない PII エンティティの選択を指定できます。
+* 非同期 Analyze を含む更新されたクライアント ライブラリ、および Text Analytics for Health 操作。 GitHub で例を見つけることができます。
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+    * [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples/javascript)
+    
+> [!div class="nextstepaction"]
+> [Text Analytics API v3.1-Preview.4 の詳細情報](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/operations/Languages)
+
+### <a name="text-analytics-for-health-updates"></a>正常性更新プログラムの Text Analytics
+
+* `/health` エンドポイントの新しいモデルバージョン`2021-03-01`と、次を提供するオンプレミスのコンテナー
+    * `Gene`エンティティ型の名前を`GeneOrProtein`に変更します。
+    * 新しい `Date` エンティティ型。
+    * 否定検出を置き換えるアサーション検出 (API v3.1-preview. 4 でのみ利用可能)。
+    * さまざまなオントロジおよびコーディング システムから正規化されるリンクされたエンティティの新しい優先`name`プロパティです (API v.3.1-preview. 4 でのみ使用できます)。 
+* タグ `3.0.015370001-onprem-amd64` と新しいモデルバージョン `2021-03-01`が付いた新しいコンテナー イメージが、 コンテナー プレビュー リポジトリにリリースされました。 
+* 正常性コンテナー イメージの Text Analytics は、翌月に新しいリポジトリに移動します。  新しいホームの場所でメール通信を視聴してください。
+> [!div class="nextstepaction"]
+> [Text Analytics for Health コンテナーの詳細情報](how-tos/text-analytics-for-health.md)
+>
+
+### <a name="text-analytics-resource-portal-update"></a>Text Analytics リソース ポータルの更新プログラム
+* **処理されたテキスト レコード** は、Azure portal の Text Analytics リソースの **[監視]** セクションでメトリックとして使用できるようになりました。  
+
+## <a name="february-2021"></a>2021 年 2 月
+
+* [固有表現認識](how-tos/text-analytics-how-to-entity-linking.md) v3.1-preview.x の PII エンドポイントの `2021-01-15` モデル バージョンでは、次のものが提供されます。 
+  * 9 つの新しい言語の拡張サポート
+  * サポートされている言語の名前付きエンティティのカテゴリの AI 品質が向上しました。
+* S0 から S4 の価格レベルは、2021 年 3 月 8 日に廃止されています。 S0 から S4 の価格レベルを使用している既存の Text Analytics リソースがある場合は、Standard (S) [価格レベル](how-tos/text-analytics-how-to-call-api.md#change-your-pricing-tier)を使用するように更新する必要があります。
+* [言語検出コンテナー](how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment)は一般提供されています。
+* API の v2.1 は廃止されています。 
 
 ## <a name="january-2021"></a>2021 年 1 月
 
@@ -37,7 +84,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
 
 ## <a name="december-2020"></a>2020 年 12 月
 
-* Text Analytics API の[価格の詳細が更新されました](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)
+* Text Analytics API の[価格の詳細が更新されました](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)。
 
 ## <a name="november-2020"></a>2020 年 11 月
 
@@ -50,8 +97,7 @@ Text Analytics API は継続的に更新されます。 常に最新の開発情
     * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
     * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
     * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
-
-
+    * 
 > [!div class="nextstepaction"]
 > [Text Analytics API v3.1-Preview.3 の詳細情報](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 

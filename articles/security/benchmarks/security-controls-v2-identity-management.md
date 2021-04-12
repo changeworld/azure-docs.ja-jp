@@ -4,19 +4,21 @@ description: Azure セキュリティ ベンチマーク V2 ID 管理
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 4a36bd69ff5ddbc79e358d6f8a2c5b4d640c6d5c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368853"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102051448"
 ---
 # <a name="security-control-v2-identity-management"></a>セキュリティ コントロール V2:ID 管理
 
 ID 管理は、Azure Active Directory を使用して、セキュリティで保護された ID とアクセスの制御を確立するためのコントロールを対象とします。 これには、シングル サインオン、強力な認証、アプリケーションのマネージド ID (およびサービスの原則)、条件付きアクセス、およびアカウントの異常監視の使用が含まれます。
+
+該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: ID 管理](../../governance/policy/samples/azure-security-benchmark.md#identity-management)」を参照してください。
 
 ## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1:Azure Active Directory を中央 ID および認証システムとして標準化する
 
@@ -24,7 +26,7 @@ ID 管理は、Azure Active Directory を使用して、セキュリティで保
 |--|--|--|--|
 | IM-1 | 16.1、16.2、16.4、16.5 | IA-2、IA-8、AC-2、AC-3 |
 
-Azure Active Directory (Azure AD) は、Azure の既定の ID およびアクセス管理サービスです。 Azure AD で標準化して、次のものでの組織の ID とアクセス管理のガバナンスを行う必要があります。
+Azure Active Directory (Azure AD) は、Azure の既定の ID およびアクセス管理サービスです。 以下での組織の ID とアクセス管理のガバナンスを、Azure AD で標準化する必要があります。
 - Azure portal、Azure Storage、Azure Virtual Machines (Linux と Windows)、Azure Key Vault、PaaS、SaaS アプリケーションなどの Microsoft クラウド リソース。
 
 - Azure 上のアプリケーションや企業ネットワーク リソースなどの組織のリソース。
@@ -37,7 +39,7 @@ Azure AD を保護することは、組織のクラウド セキュリティ プ
 
 - [Azure AD インスタンスを作成して構成する方法](../../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
-- [Azure AD テナントを定義する](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)  
+- [Azure AD テナントを定義する](https://azure.microsoft.com/resources/securing-azure-environments-with-azure-active-directory/)
 
 - [アプリケーションに外部 ID プロバイダーを使用する](../../active-directory/external-identities/identity-providers.md)
 
@@ -63,7 +65,7 @@ Azure AD を保護することは、組織のクラウド セキュリティ プ
 
 サービスや自動化などの人間以外のアカウントでは、リソースにアクセスしたりコードを実行したりするために、より強力な人間のアカウントを作成するのではなく、Azure のマネージド ID を使用します。 Azure マネージド ID によって、Azure AD 認証をサポートする Azure のサービスとリソースに対して認証を行うことができます。 認証は事前に定義されたアクセス許可規則によって有効になり、ソース コードまたは構成ファイル内でハードコーディングされた資格情報を使用せずに済みます。 
 
-マネージド ID をサポートしていないサービスに対しては、Azure AD を使用して、リソース レベルでアクセス許可が制限されたサービス プリンシパルを代わりに作成します。  証明書の資格情報を使用してサービス プリンシパルを構成し、クライアント シークレットにフォールバックすることが推奨されます。 どちらの場合も、Azure Key Vault を Azure マネージド ID と組み合わせて使用し、ランタイム環境 (Azure 関数など) でキー コンテナーから資格情報を取得できるようにすることができます。
+マネージド ID をサポートしていないサービスに対しては、Azure AD を使用して、リソース レベルでアクセス許可が制限されたサービス プリンシパルを代わりに作成します。 証明書の資格情報を使用してサービス プリンシパルを構成し、クライアント シークレットにフォールバックすることが推奨されます。 どちらの場合も、Azure Key Vault を Azure マネージド ID と組み合わせて使用し、ランタイム環境 (Azure 関数など) でキー コンテナーから資格情報を取得できるようにすることができます。
 
 - [Azure マネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)
 
@@ -111,16 +113,17 @@ Azure AD シングル サインオン (SSO) を使用して、オンプレミス
 |--|--|--|--|
 | IM-4 | 4.2、4.4、4.5、11.5、12.11、16.3 | AC-2、AC-3、IA-2、IA-4 |
 
-Azure AD では、多要素認証 (MFA) と強力なパスワードレスの方法によって、強力な認証制御がサポートされています。  
-- 多要素認証:Azure AD MFA を有効にして、MFA のセットアップに対する Azure Security Center ID とアクセス管理の推奨事項に従います。 MFA は、サインインの条件とリスク要因に基づいて、すべてのユーザー、選択されたユーザー、またはユーザー単位のレベルで適用できます。 
+Azure AD では、多要素認証 (MFA) と強力なパスワードレスの方法によって、強力な認証制御がサポートされています。
 
-- パスワードレスの認証:次の 3 つのパスワードレス認証オプションを利用できます: Windows Hello for Business、Microsoft Authenticator アプリ、スマート カードなどのオンプレミスの認証方法。 
+- 多要素認証:Azure AD MFA を有効にして、MFA のセットアップに対する Azure Security Center ID とアクセス管理の推奨事項に従います。 MFA は、サインインの条件とリスク要因に基づいて、すべてのユーザー、選択されたユーザー、またはユーザー単位のレベルで適用できます。
+
+- パスワードレス認証: Windows Hello for Business、Microsoft Authenticator アプリ、オンプレミスの認証方法 (スマート カードなど) という 3 つのパスワードレス認証オプションを使用できます。
 
 管理者と特権ユーザーについて、高いレベルの強力な認証方法が使用されていることを確認し、その後、適切な強力な認証ポリシーを他のユーザーにロールアウトします。
 
-Azure AD 認証に従来のパスワード ベースの認証がまだ使用されている場合は、クラウド専用アカウント (Azure で直接作成されたユーザー アカウント) では既定のベースライン パスワード ポリシーが使用されていることに注意してください。 また、ハイブリッド アカウント (オンプレミスの Active Directory から取得したユーザー アカウント) は、オンプレミスのパスワード ポリシーに従います。 パスワード ベースの認証を使用すると、Azure AD により、ユーザーが推測されやすいパスワードを設定できないようにするパスワード保護機能が提供されます。 Microsoft では、テレメトリに基づいて更新される禁止されたパスワードのグローバル リストが提供されており、顧客はニーズ (ブランド、文化の参照など) に基づいてリストを補強することができます。 このパスワード保護は、クラウド専用アカウントとハイブリッド アカウントに使用できます。 
+Azure AD 認証に従来のパスワード ベースの認証がまだ使用されている場合は、クラウド専用アカウント (Azure で直接作成されたユーザー アカウント) では既定のベースライン パスワード ポリシーが使用されていることに注意してください。 また、ハイブリッド アカウント (オンプレミスの Active Directory から取得したユーザー アカウント) は、オンプレミスのパスワード ポリシーに従います。 パスワード ベースの認証を使用すると、Azure AD により、ユーザーが推測されやすいパスワードを設定できないようにするパスワード保護機能が提供されます。 Microsoft では、テレメトリに基づいて更新される禁止パスワードのグローバル リストを提供しており、顧客は各自のニーズ (ブランドや文化的リファレンスなど) に基づいてこのリストに追加できます。 このパスワード保護は、クラウド専用アカウントとハイブリッド アカウントに使用できます。
 
-注:パスワード資格情報だけに基づく認証は、一般的な攻撃方法の影響を受けやすいものです。 セキュリティを強化するには、MFA や強力なパスワード ポリシーなどの強力な認証を使用します。 既定のパスワードが使用されている可能性のあるサードパーティ製のアプリケーションや Marketplace サービスの場合は、サービスの初期セットアップ時にそれを変更する必要があります。 
+注:パスワード資格情報だけに基づく認証は、一般的な攻撃方法の影響を受けやすいものです。 セキュリティを強化するには、MFA や強力なパスワード ポリシーなどの強力な認証を使用します。 既定のパスワードが使用されている可能性のあるサードパーティ製のアプリケーションや Marketplace サービスの場合は、サービスの初期セットアップ時にそれを変更する必要があります。
 
 - [Azure で MFA を有効にする方法](../../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -175,7 +178,7 @@ Azure Security Center で、認証試行の失敗回数が多すぎるなど、�
 
 - [Azure AD Identity Protection からデータを接続する](../../sentinel/connect-azure-ad-identity-protection.md)
 
-- [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
+- [Microsoft Defender for Identity](/azure-advanced-threat-protection/what-is-atp)
 
 **責任**: Customer
 
@@ -241,9 +244,9 @@ GitHub の場合、ネイティブ シークレット スキャン機能を使�
 
 レガシ アプリケーションとそれらによって格納および処理されるデータに対し、最新のアクセス制御とセッション監視が使用されていることを確認します。 レガシ アプリケーションへのアクセスには VPN がよく使用されますが、多くの場合、基本的なアクセス制御と限られたセッション監視しか行われません。
 
-Azure AD アプリケーション プロキシを使用すると、Azure AD 条件付きアクセスを使用してリモート ユーザーとデバイスの両方の信頼性を明示的に検証しながら、シングル サインオン (SSO) を使用してリモート ユーザーにレガシ オンプレミス アプリケーションを発行することができます。 
+Azure AD アプリケーション プロキシを使用すると、Azure AD 条件付きアクセスを使用してリモート ユーザーとデバイスの両方の信頼性を明示的に検証しながら、シングル サインオン (SSO) を使用してリモート ユーザーにレガシ オンプレミス アプリケーションを発行することができます。
 
-また、Microsoft Cloud App Security はクラウド アクセス セキュリティ ブローカー (CASB) サービスであり、それを使用すると、ユーザーのアプリケーション セッションを監視し、アクションをブロックするコントロールを提供できます (レガシ オンプレミス アプリケーションと、クラウドのサービスとしてのソフトウェア (SaaS) アプリケーションの両方)。 
+また、Microsoft Cloud App Security はクラウド アクセス セキュリティ ブローカー (CASB) サービスであり、それを使用すると、ユーザーのアプリケーション セッションを監視し、アクションをブロックするコントロールを提供できます (レガシ オンプレミス アプリケーションと、クラウドのサービスとしてのソフトウェア (SaaS) アプリケーションの両方)。
 
 - [Azure AD アプリケーション プロキシ](../../active-directory/manage-apps/application-proxy.md#what-is-application-proxy)
 

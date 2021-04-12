@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 9/01/2020
-  ms.openlocfilehash: fb4aa0c31f916006671d14128c480566f039cfad
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.openlocfilehash: dc7ef676663e94d6ad03a5cfed8ae68cfcfc26c3
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101722441"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102507740"
 landingContent:
 - title: Face サービスについて
   linkLists:
@@ -95,11 +95,11 @@ landingContent:
     - text: REST API
       url: /rest/api/face/
     - text: .NET SDK
-      url: /dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet
+      url: /dotnet/api/overview/azure/cognitiveservices/client/faceapi
     - text: Python SDK
-      url: /python/api/azure-cognitiveservices-vision-face/?view=azure-python
+      url: /python/api/azure-cognitiveservices-vision-face/
     - text: Java SDK
-      url: /java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
+      url: /java/api/overview/azure/cognitiveservices/client/faceapi
     - text: Node.js SDK
       url: /javascript/api/@azure/cognitiveservices-face
     - text: Go SDK
@@ -107,7 +107,7 @@ landingContent:
     - text: Azure PowerShell
       url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: /cli/azure/cognitiveservices?view=azure-cli-latest
+      url: /cli/azure/cognitiveservices
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

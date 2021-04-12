@@ -4,12 +4,12 @@ description: Azure Monitor Application Insights の Java エージェントの�
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 9bcd0ead2516b040a5a5aee4a7fae042a5f678a2
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881138"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449989"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>トラブルシューティング ガイド:Azure Monitor Application Insights for Java
 
@@ -17,7 +17,7 @@ ms.locfileid: "98881138"
 
 ## <a name="check-the-self-diagnostic-log-file"></a>自己診断ログ ファイルを確認する
 
-既定では、Application Insights の Java 3.0 エージェントにより、`applicationinsights-agent-3.0.2.jar` ファイルが保持されているディレクトリに `applicationinsights.log` という名前のログ ファイルが生成されます。
+既定では、Application Insights の Java 3.0 エージェントにより、`applicationinsights-agent-3.0.3.jar` ファイルが保持されているディレクトリに `applicationinsights.log` という名前のログ ファイルが生成されます。
 
 このログ ファイルは、発生している問題に関するヒントを得るために最初に確認する場所です。
 
@@ -41,9 +41,13 @@ Java 3.0 Preview エージェントからアップグレードする場合は、
 
 ## <a name="some-logging-is-not-auto-collected"></a>一部のログ記録が自動収集されない
 
-ログ記録は、最初にログ記録フレームワークの構成されたしきい値を満たし、次に Application Insights の構成されたしきい値も満たす場合にのみキャプチャされます。
+ログ記録は、ログ記録フレームワークに構成されているレベルを最初に満たし、次に Application Insights に構成されているレベルも満たす場合にのみキャプチャされます。
+
+たとえば、パッケージ `com.example` から `WARN` (以上) をログに記録するようにログ記録フレームワークが構成されており、`INFO` (以上) をキャプチャするように Application Insights が構成されている場合、Application Insights では、パッケージ `com.example` から `WARN` (以上) しかキャプチャしません。
 
 特定のログ記録ステートメントがログ記録フレームワークで構成されているしきい値を満たしているかどうかを確認する最善の方法は、通常のアプリケーション ログ (ファイルやコンソールなど) に表示されているかどうかを確認することです。
+
+また、ロガーに例外オブジェクトが渡されると、Azure portal 内で `traces` テーブルではなく `exceptions` テーブルの下にログ メッセージ (および例外オブジェクトの詳細) が表示されることにも注意してください。
 
 詳細については、[自動収集されたログ記録の構成](./java-standalone-config.md#auto-collected-logging)に関するページをご覧ください。
 
@@ -51,9 +55,15 @@ Java 3.0 Preview エージェントからアップグレードする場合は、
 
 このセクションは、Java エージェント使用時に、SSL 証明書に関連する例外をトラブルシューティングし、できる限り修正する場合に役立ちます。
 
-この問題のトラブルシューティングには、2 種類のパスがあります。
+この問題を解決するには、次の 2 つの異なるパスがあります。
+* 既定の Java キーストアを使用している場合
+* カスタム Java キーストアを使用している場合
 
-### <a name="if-using-a-default-java-keystore"></a>既定の Java キーストアを使用する場合:
+どちらのパスに従えばよいかわからない場合は、JVM の引数 `-Djavax.net.ssl.trustStore=...` があるかどうかを調べます。
+そのような JVM 引数が "_ない_" 場合は、おそらく既定の Java キーストアを使用しています。
+そのような JVM 引数が "_ある_" 場合は、おそらくカスタム キーストアを使用しており、その JVM 引数でカスタム キーストアが参照されています。
+
+### <a name="if-using-the-default-java-keystore"></a>既定の Java キーストアを使用している場合:
 
 通常、既定の Java キーストアには、すべての CA ルート証明書が既にあります。 ただし、インジェスト エンドポイントの証明書が別のルート証明書によって署名されているなど、いくつかの例外が発生する可能性があります。 この問題を解決するために、次の 3 つの手順をお勧めします。
 

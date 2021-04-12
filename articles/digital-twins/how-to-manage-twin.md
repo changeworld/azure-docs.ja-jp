@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 46c41a4868c80bf9ba1c2c6d4a8286c3a8f47c3d
-ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
+ms.openlocfilehash: 666e77a06bd2934622400cc2f11830d6ebc34ddb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100530435"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954651"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
-環境内のエンティティは、[デジタル ツイン](concepts-twins-graph.md)で表されます。 デジタル ツインの管理には、作成、変更、削除などが伴います。 これらの操作を実行するには、[**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins)、[NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用します。
+環境内のエンティティは、[デジタル ツイン](concepts-twins-graph.md)で表されます。 デジタル ツインの管理には、作成、変更、削除などが伴います。 これらの操作を実行するには、[**DigitalTwins API**](/rest/api/digital-twins/dataplane/twins)、[NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、または [Azure Digital Twins CLI](how-to-use-cli.md) を使用します。
 
 この記事では、デジタル ツインの管理に重点を置いて説明します。リレーションシップと [ツイン グラフ](concepts-twins-graph.md)の全体的な操作については、「[*方法: リレーションシップを使用してツイン グラフを管理する*](how-to-manage-graph.md)」を参照してください。
 
@@ -127,13 +127,13 @@ ms.locfileid: "100530435"
 }
 ```
 
-デジタル ツインの定義済みプロパティは、デジタル ツインの最上位プロパティとして返されます。 DTDL 定義に含まれていないメタデータやシステム情報は、`$` プレフィックス付きで返されます。 メタデータ プロパティは次のとおりです。
-* この Azure Digital Twins インスタンスのデジタル ツインの ID (`$dtId`)。
-* Web サーバーによって割り当てられた標準 HTTP フィールド (`$etag`)。
-* `$metadata` セクションのその他のプロパティ。 これには以下が含まれます。
-    - デジタル ツインのモデルの DTMI。
-    - 書き込み可能な各プロパティの同期の状態。 これは、サービスとデバイスの状態が異なる可能性がある場合 (デバイスがオフラインの場合など) に、デバイスで最も役立ちます。 現在、このプロパティは IoT Hub に接続されている物理デバイスにのみ適用されます。 メタデータ セクションのデータにより、プロパティの完全な状態と、最終変更のタイムスタンプを把握できます。 同期の状態の詳細については、デバイスの状態の同期に関する[こちらの IoT Hub チュートリアル](../iot-hub/tutorial-device-twins.md)をご覧ください。
-    - IoT Hub や Azure Digital Twins などのサービス固有のメタデータ。 
+デジタル ツインの定義済みプロパティは、デジタル ツインの最上位プロパティとして返されます。 DTDL 定義に含まれていないメタデータやシステム情報は、`$` プレフィックス付きで返されます。 メタデータ プロパティには以下の値が含まれます。
+* `$dtId`: この Azure Digital Twins インスタンスのデジタル ツインの ID
+* `$etag`: Web サーバーによって割り当てられた標準 HTTP フィールド。 これはツインが更新されるたびに新しい値に更新されます。これは、前回のチェックからサーバー上でツインのデータが更新されているかどうかを判断するのに役立ちます。 `If-Match` を使用すると、 エンティティの etag が指定された etag と一致する場合にのみ完了する更新と削除を実行できます。 これらの操作の詳細については、 [DigitalTwins Update](/rest/api/digital-twins/dataplane/twins/digitaltwins_update) と [DigitalTwins Delete](/rest/api/digital-twins/dataplane/twins/digitaltwins_delete)のドキュメントを参照してください。
+* `$metadata`: 次を含むその他のプロパティのセット:
+  - デジタル ツインのモデルの DTMI。
+  - 書き込み可能な各プロパティの同期の状態。 これは、サービスとデバイスの状態が異なる可能性がある場合 (デバイスがオフラインの場合など) に、デバイスで最も役立ちます。 現在、このプロパティは IoT Hub に接続されている物理デバイスにのみ適用されます。 メタデータ セクションのデータにより、プロパティの完全な状態と、最終変更のタイムスタンプを把握できます。 同期の状態の詳細については、デバイスの状態の同期に関する[こちらの IoT Hub チュートリアル](../iot-hub/tutorial-device-twins.md)をご覧ください。
+  - IoT Hub や Azure Digital Twins などのサービス固有のメタデータ。 
 
 `BasicDigitalTwin` などのシリアル化ヘルパー クラスの詳細については、"[*Azure Digital Twins の API および SDK を使用する方法*](how-to-use-apis-sdks.md)" に関するページで参照してください。
 
@@ -160,7 +160,7 @@ JSON Patch コードの例を次に示します。 このドキュメントで�
 
 :::code language="json" source="~/digital-twins-docs-samples/models/patch.json":::
 
-[SDK](how-to-use-apis-sdks.md) では、`JsonPatchDocument` を使用してパッチを作成できます。 次に例を示します。
+Azure .NET SDK の [JsonPatchDocument](/dotnet/api/azure.jsonpatchdocument) を使用して、修正プログラムを作成できます。 次に例を示します。
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="UpdateTwin":::
 
@@ -227,7 +227,7 @@ Azure Digital Twins では、すべての受信要求が確実に 1 つずつ処
 このサンプルを実行する前に、以下を実行します。
 1. モデル ファイルをダウンロードしてプロジェクトに配置し、以下のコードの `<path-to>` プレースホルダーを置き換えて、プログラムに検索場所を指示します。
 2. プレースホルダー `<your-instance-hostname>` を Azure Digital Twins インスタンスのホスト名に置き換えます。
-3. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 用のパッケージであり、2 つ目では Azure に対する認証に役立つツールが提供されます。
+3. Azure Digital Twins を操作するために必要な 2 つの依存関係をプロジェクトに追加します。 1 つ目は [.NET 用 Azure Digital Twins SDK](/dotnet/api/overview/azure/digitaltwins/client) 用のパッケージであり、2 つ目では Azure に対する認証に役立つツールが提供されます。
 
       ```cmd/sh
       dotnet add package Azure.DigitalTwins.Core

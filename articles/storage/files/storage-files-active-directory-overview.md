@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: rogarana
-ms.openlocfilehash: 0493b66928d944e251e6fe4abda4f1d3d8fb7e23
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8887243f953a7bb000033a2e56b4655b93cd7ca8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695896"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102519794"
 ---
 # <a name="overview-of-azure-files-identity-based-authentication-options-for-smb-access"></a>SMB アクセスの Azure Files ID ベース認証オプションの概要
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -128,7 +128,7 @@ Azure AD DS またはオンプレミス AD DS 認証のいずれかを有効に�
 
 ### <a name="configure-directory-or-file-level-permissions-for-azure-files"></a>Azure Files のディレクトリ レベルまたはファイル レベルの権限を構成する
 
-Azure ファイル共有では、ルート ディレクトリを含む、ディレクトリとファイルの両方のレベルで標準の Windows ファイルのアクセス許可が適用されます。 ディレクトリ レベルまたはファイル レベルの権限の構成は、SMB 経由および REST 経由での構成がサポートされています。 VM 上で対象のファイル共有をマウントし、Windows のエクスプローラー、Windows の [icacls](/windows-server/administration/windows-commands/icacls) または [Set-ACL](/powershell/module/microsoft.powershell.security/get-acl?view=powershell-6) コマンドを使用して権限を構成します。
+Azure ファイル共有では、ルート ディレクトリを含む、ディレクトリとファイルの両方のレベルで標準の Windows ファイルのアクセス許可が適用されます。 ディレクトリ レベルまたはファイル レベルの権限の構成は、SMB 経由および REST 経由での構成がサポートされています。 VM 上で対象のファイル共有をマウントし、Windows のエクスプローラー、Windows の [icacls](/windows-server/administration/windows-commands/icacls) または [Set-ACL](/powershell/module/microsoft.powershell.security/get-acl) コマンドを使用して権限を構成します。
 
 ### <a name="use-the-storage-account-key-for-superuser-permissions"></a>スーパーユーザーの権限でストレージ アカウントのキーを使用する
 

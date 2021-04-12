@@ -4,12 +4,12 @@ description: このチュートリアルでは、Git リポジトリにソース
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 139acf60ba20fd613b2dd2b190881d6bd574c21f
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 9c642a6c52a2d992c617993964bedd3ee04a7076
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919498"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060331"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>チュートリアル:ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する
 

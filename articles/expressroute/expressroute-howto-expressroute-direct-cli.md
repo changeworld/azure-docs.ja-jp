@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: aea51e56f2d96fa634b1ece2029c9ea5bf3f60fc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 9f35a698510f8637c3fe66528e6d64e5cd87b693
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011307"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553823"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Azure CLI の使用による ExpressRoute Direct の構成
 
@@ -21,12 +21,21 @@ ExpressRoute Direct を使用すると、世界中に戦略的に分散された
 
 ## <a name="before-you-begin"></a>開始する前に
 
-ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、以下の詳細を含め、サブスクリプション ID を記載して、<ExpressRouteDirect@microsoft.com> にメールを送信します。
+ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 ExpressRoute Direct を利用する前に、まず、サブスクリプションを登録する必要があります。 登録するには、Azure PowerShell から次の操作を行ってください。
+1.  Azure にサインインして、登録するサブスクリプションを選択します。
 
-* **ExpressRoute Direct** で実行しようとしているシナリオ
-* 場所設定。すべての場所の完全なリストについては、[パートナーとピアリングの場所](expressroute-locations-providers.md)に関するページを参照してください。
-* 実装のタイムライン
-* その他の質問について
+    ```azurepowershell-interactive
+    Connect-AzAccount 
+
+    Select-AzSubscription -Subscription "<SubscriptionID or SubscriptionName>"
+    ```
+
+2. 次のコマンドを使用して、サブスクリプションをパブリック プレビューに登録します。
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -FeatureName AllowExpressRoutePorts -ProviderNamespace Microsoft.Network
+    ```
+
+登録したら、**Microsoft.Network** リソース プロバイダーがサブスクリプションに登録されていることを確認します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。
 
 ## <a name="create-the-resource"></a><a name="resources"></a>リソースを作成する
 
@@ -217,6 +226,14 @@ ExpressRoute Direct を利用する前に、まず、サブスクリプション
    "type": "Microsoft.Network/expressRoutePorts"
    }  
    ```
+
+## <a name="generate-the-letter-of-authorization-loa"></a><a name="resources"></a>認可状 (LOA) を生成する
+
+最近作成された ExpressRoute Direct リソース名、リソース グループ名、および LOA を作成する顧客名を入力し、ドキュメントを格納するファイルの場所を (必要に応じて) 定義します。 ファイル パスが参照されていない場合、ドキュメントは現在のディレクトリにダウンロードされます。
+
+```azurecli
+az network express-route port generate-loa -n Contoso-Direct -g Contoso-Direct-rg --customer-name Contoso --destination C:\Users\SampleUser\Downloads\LOA.pdf
+```
 
 ## <a name="change-adminstate-for-links"></a><a name="state"></a>リンクの AdminState を変更する
 

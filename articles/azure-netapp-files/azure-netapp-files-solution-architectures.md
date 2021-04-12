@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/16/2021
+ms.date: 03/19/2021
 ms.author: b-juche
-ms.openlocfilehash: e9e7451e411ed9160eace0a60c65b5b74bf8f750
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: abbae7f8cb047f2f2ad3d998966bc00b02a002d4
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100559480"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104864025"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Azure NetApp Files を使用したソリューション アーキテクチャ
 この記事では、Azure NetApp Files を使用するためのソリューション アーキテクチャを理解するうえで役立つベスト プラクティスへの参照を提供します。  
@@ -34,9 +34,9 @@ ms.locfileid: "100559480"
 
 ### <a name="oracle"></a>Oracle
 
-* [Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス](performance-oracle-single-volumes.md)
 * [Azure NetApp Files を使用した Azure への Oracle デプロイのベスト プラクティス ガイド](https://www.netapp.com/us/media/tr-4780.pdf)
 * [Microsoft Azure での Oracle VM イメージとそのデプロイ:共有ストレージの構成オプション](../virtual-machines/workloads/oracle/oracle-vm-solutions.md#shared-storage-configuration-options)
+* [Azure NetApp Files の単一ボリュームでの Oracle データベースのパフォーマンス](performance-oracle-single-volumes.md)
 * [Oracle Database での Azure NetApp Files 利用のメリット](solutions-benefits-azure-netapp-files-oracle-database.md)
 
 ### <a name="machine-learning"></a>Machine Learning
@@ -55,8 +55,9 @@ ms.locfileid: "100559480"
 ### <a name="sql-server"></a>SQL Server
 
 * [Azure NetApp Files を使用して SMB 経由で SQL Server をデプロイする](https://www.youtube.com/watch?v=x7udfcYbibs)
-<!-- * [Deploy SQL Server Always-On Failover Cluster over SMB with Azure NetApp Files](https://www.youtube.com/watch?v=zuNJ5E07e8Q) --> 
-<!-- * [Deploy Always-On Availability Groups with Azure NetApp Files](https://www.youtube.com/watch?v=y3VQmzzeyvc) --> 
+* [Azure NetApp Files を使用して SMB 経由で SQL Server Always On フェールオーバー クラスターをデプロイする](https://www.youtube.com/watch?v=zuNJ5E07e8Q) 
+* [Azure NetApp Files を使用して Always On 可用性グループをデプロイする](https://www.youtube.com/watch?v=y3VQmzzeyvc) 
+* [SQL Server のデプロイに Azure NetApp Files を使用する利点](solutions-benefits-azure-netapp-files-sql-server.md)
 
 ## <a name="sap-on-azure-solutions"></a>SAP on Azure ソリューション
 
@@ -77,15 +78,18 @@ ms.locfileid: "100559480"
 * [Red Hat Enterprise Linux で Azure NetApp Files を使用した SAP HANA スケールアップの高可用性](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
 * [SUSE Linux Enterprise Server 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [Red Hat Enterprise Linux 上で Azure NetApp Files を使用した Azure VM のスタンバイ ノードを使用して SAP HANA をスケールアウトする](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
+* [RHEL での HSR と Pacemaker を使用した SAP HANA スケールアウト - Azure Virtual Machines](../virtual-machines/workloads/sap/sap-hana-high-availability-scale-out-hsr-rhel.md)
 * [Azure アプリケーション整合性スナップショット ツール (AzAcSnap)](azacsnap-introduction.md)
 
 ### <a name="sap-anydb"></a>SAP AnyDB
 
+* [SAP ワークロードのための Oracle Azure Virtual Machines DBMS のデプロイ - Azure Virtual Machines](../virtual-machines/workloads/sap/dbms_guide_oracle.md#oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux)
 * [Azure NetApp Files を使用して SAP AnyDB (Oracle 19c) をデプロイする](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043)
 
 ### <a name="sap-iq-nls"></a>SAP IQ-NLS
 
 *   [SUSE Linux Enterprise Server で Azure NetApp Files を利用し、SAP IQ-NLS HA Solution をデプロイする](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-iq-nls-ha-solution-using-azure-netapp-files-on-suse/ba-p/1651172#.X2tDfpNzBh4.linkedin)
+* [HA シナリオで SAP IQ ライセンスを管理する方法](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/how-to-manage-sap-iq-license-in-ha-scenario/ba-p/2052583)
 
 ### <a name="sap-tech-community-and-blog-posts"></a>SAP 技術コミュニティとブログ記事 
 
@@ -94,8 +98,8 @@ ms.locfileid: "100559480"
 * [Azure NetApp Files – クラウド同期を使用した SAP HANA のオフロード バックアップ](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Azure NetApp Files を使用して SAP HANA システムのコピーを高速化する](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Cloud Volumes ONTAP と Azure NetApp Files:SAP HANA システムの移行が簡単に](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
-* [HANA N+M スケールアウト アーキテクチャで ANF 投資を最大化するためのアーキテクチャに関する決定 - パート 1 - Microsoft Tech Community](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
-* [HANA N+M スケールアウト アーキテクチャで ANF 投資を最大化するためのアーキテクチャに関する決定 - パート 2 - Microsoft Tech Community](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
+* [HANA N+M スケールアウト アーキテクチャで ANF 投資を最大化するためのアーキテクチャに関する決定 - パート 1](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2078737)
+* [HANA N+M スケールアウト アーキテクチャで ANF 投資を最大化するためのアーキテクチャに関する決定 - パート 2](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/architectural-decisions-to-maximize-anf-investment-in-hana-n-m/ba-p/2117130)
 
 ## <a name="azure-vmware-solutions"></a>Azure VMware Solutions
 
@@ -138,6 +142,7 @@ ms.locfileid: "100559480"
 ### <a name="analytics"></a>Analytics
 
 * [Azure NetApp Files: Microsoft Azure 上の SAS グリッドで使用する共有ファイル システム](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192)
+* [Azure NetApp Files: MS Azure 上の SAS グリッドで使用する共有ファイル システム – RHEL8.3/nconnect の更新情報](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/722261#M21648)
 * [Microsoft Azure と SAS® を併用するためのベスト プラクティス](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
 
 ## <a name="azure-platform-services-solutions"></a>Azure プラットフォーム サービス ソリューション

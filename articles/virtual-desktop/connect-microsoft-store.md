@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 9bab2a11ff9e7907621087e5027929e3e42eaf29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 5662b32d8e2c9af457ded62b0302c2c64b31edea
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91744664"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448017"
 ---
 # <a name="connect-with-the-microsoft-store-client"></a>Microsoft Store クライアントを使用した接続
 

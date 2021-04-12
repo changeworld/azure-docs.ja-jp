@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: bfe8026f099c341b68a1aa1fc5e3fac425e29403
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+manager: femila
+ms.openlocfilehash: 9cfa50e13756692295c84b02d02dd71228b16eb9
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100578909"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445003"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature-in-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) の診断機能でログ分析を使用する
 

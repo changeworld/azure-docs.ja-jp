@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/10/2019
   ms.author: aahi
-  ms.openlocfilehash: 7e0fe85007aae69bf79557e0f094e275f538d280
-  ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+  ms.openlocfilehash: ccf8dd232bdfa703400a949c8dd948fe9ba21f54
+  ms.sourcegitcommit: 6386854467e74d0745c281cc53621af3bb201920
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 12/18/2020
-  ms.locfileid: "97683438"
+  ms.lasthandoff: 03/08/2021
+  ms.locfileid: "102454925"
 landingContent:
 - title: Anomaly Detector API について
   linkLists:
@@ -58,8 +58,6 @@ landingContent:
     links:
     - text: バッチ検出と Power BI を使用して異常を視覚化する
       url: tutorials/batch-anomaly-detection-powerbi.md
-    - text: Azure Databricks を使用してストリーミング データの異常を検出する
-      url: tutorials/anomaly-detection-streaming-databricks.md
   - linkListType: video
     links:
     - text: Azure Databricks を使用した、ストリーミング データの異常検出

@@ -4,12 +4,12 @@ description: 統合タスクに最適化された Microsoft クラウド サー�
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 95167791efe13526b0a70c28fa89771542a9d220
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: e6bd97469a6b7b6c42427e130ac103954377c652
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685563"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643365"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure における統合と自動化の適切なサービスを選ぶ
 
@@ -57,7 +57,7 @@ Azure Functions では、コードを記述したり [Durable Functions 拡張�
 | **接続** | [ビルトインのバインド (約 10 種類)](functions-triggers-bindings.md#supported-bindings) およびカスタム バインド (コードを記述) | [コネクタの豊富なコレクション](../connectors/apis-list.md)、[Enterprise Integration Pack (B2B のシナリオ向け)](../logic-apps/logic-apps-enterprise-integration-overview.md)、[カスタム コネクタの構築](../logic-apps/custom-connector-overview.md) |
 | **アクション** | 個々のアクティビティは Azure 関数 (アクティビティ関数のコードを記述する) |[既製のアクションの豊富なコレクション](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | **Monitoring** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Azure Monitor ログ](../logic-apps/monitor-logic-apps.md)|
-| **管理** | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2019) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](/rest/api/logic/)、[PowerShell](/powershell/module/az.logicapp)、[Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
+| **管理** | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](/rest/api/logic/)、[PowerShell](/powershell/module/az.logicapp)、[Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
 | **実行コンテキスト** | [ローカル](functions-runtime-overview.md)またはクラウドで実行できます | クラウドでのみ動作します|
 
 <a name="function"></a>

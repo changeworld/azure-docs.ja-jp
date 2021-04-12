@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 1652048da8084007bc86a6793f14f10b4a1f2e0f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008646"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446045"
 ---
 # <a name="manage-app-groups-using-powershell"></a>PowerShell を使用してアプリ グループを管理する
 

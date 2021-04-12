@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1d7cd07ee8ae8b35d51fbdd25b34602c2e799c75
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 460fd66ed4651248639334caa55eb8facbce866d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787266"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102452375"
 ---
 # <a name="azure-security-baseline-for-azure-stack-edge"></a>Azure Stack Edge に関する Azure セキュリティ ベースライン
 
@@ -308,7 +308,7 @@ Azure Stack Edge Pro デバイスは、データをローカルで処理し、�
 
 **ガイダンス**:ローカル環境に作成された仮想マシン上で、独自のアプリケーションを実行することができます。 Stack Edge デバイス上にローカル コンピューティング仮想マシンを作成するには、PowerShell スクリプトを使用します。 ローカル仮想マシンでは、信頼されたアプリケーションのみを実行することを強くお勧めします。 
 
-- [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy?preserve-view=true&amp;viewFallbackFrom=powershell-6&view=powershell-7.1)
+- [Windows 環境で PowerShell スクリプトの実行を制御する方法](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 **Azure Security Center の監視**: 適用なし
 

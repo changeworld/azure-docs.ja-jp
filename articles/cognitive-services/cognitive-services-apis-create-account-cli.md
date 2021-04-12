@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 keywords: Cognitive Services, コグニティブ インテリジェンス, コグニティブ ソリューション, AI サービス
 ms.topic: quickstart
-ms.date: 09/14/2020
+ms.date: 3/22/2021
 ms.author: aahi
-ms.openlocfilehash: 95d74601ca912647eadd1bd4e1045108be6b2adb
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 08ff2f416a00002cde5767111ba5a6824a721324
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050071"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868173"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>クイックスタート: Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
@@ -99,16 +99,6 @@ az group create \
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
-### <a name="search"></a>検索
-
-| サービス            | 種類                  |
-|--------------------|-----------------------|
-| Bing Autosuggest   | `Bing.Autosuggest.v7` |
-| Bing Custom Search | `Bing.CustomSearch`   |
-| Bing Entity Search | `Bing.EntitySearch`   |
-| Bing Search        | `Bing.Search.v7`      |
-| Bing Spell Check   | `Bing.SpellCheck.v7`  |
-
 ### <a name="speech"></a>音声
 
 | サービス            | 種類                 |
@@ -181,7 +171,7 @@ Cognitive Service リソースのキーを取得するには、[az cognitiveserv
 価格レベル (および請求される金額) は、認証情報を使用して送信するトランザクションの数に基づきます。 各価格レベルにより、以下が指定されます。
 * 1 秒あたりに許可されるトランザクションの最大数 (TPS)。
 * 価格レベル内で有効にされるサービス機能。
-* 事前に定義されたトランザクションの量のコスト。 この量を超えると、サービスの「[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)」で指定されている追加料金が発生します。
+* 事前に定義された数のトランザクションのコスト。 この量を超えると、サービスの「[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)」で指定されている追加料金が発生します。
 
 ## <a name="get-current-quota-usage-for-your-resource"></a>現在のリソースのクォータ使用量を取得する
 
@@ -206,7 +196,8 @@ az group delete --name cognitive-services-resource-group
 
 ## <a name="see-also"></a>参照
 
-* [Azure Cognitive Services に対する要求の認証](authentication.md)
-* [Azure Cognitive Services とは](./what-are-cognitive-services.md)
-* [自然言語のサポート](language-support.md)
-* [Docker コンテナーのサポート](cognitive-services-container-support.md)
+* Cognitive Services を安全に使用する方法については、「 **[Azure Cognitive Services に対する要求の認証](authentication.md)** 」をご覧ください。
+* Cognitive Services 内のさまざまなカテゴリの一覧を入手するには、「 **[Azure Cognitive Services とは](./what-are-cognitive-services.md)** 」をご覧ください。
+* Cognitive Services がサポートする自然言語の一覧を確認するには、 **[自然言語のサポート](language-support.md)** に関する記事をご覧ください。
+* Cognitive Services をオンプレミスで使用する方法については、 **[コンテナーとしての Cognitive Services の使用](cognitive-services-container-support.md)** に関する記事をご覧ください。
+* Cognitive Services の使用コストを見積もるには、 **[Cognitive Services のコストの計画および管理](plan-manage-costs.md)** に関する記事をご覧ください。

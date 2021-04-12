@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter, devx-track-java
-ms.openlocfilehash: ed8948ddeddf25272355cd1dc06d4e95c52f7f62
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 1edfbca2f2a16aeebc1244b298426dc46d72c6d5
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035259"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101708817"
 ---
 # <a name="create-your-first-java-function-in-azure-using-intellij"></a>IntelliJ を使用して Azure で初めての Java 関数を作成する
 
@@ -56,7 +56,7 @@ IntelliJ を使用して Java 関数を作成し、Azure に公開するには�
 
    ![デバイスのログイン ブラウザー][intellij-azure-link-ms-account]
 
-6. **[サブスクリプションの選択]** ダイアログ ボックスで、使用するサブスクリプションを選択し、 **[OK]** をクリックします。
+6. **[サブスクリプションの選択]** ダイアログ ボックスで、使用するサブスクリプションを選択し、 **[選択]** をクリックします。
 
    ![[サブスクリプションの選択] ダイアログ ボックス][intellij-azure-login-select-subs]
    

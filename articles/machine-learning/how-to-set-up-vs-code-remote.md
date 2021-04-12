@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 11/16/2020
-ms.openlocfilehash: 3f3794ed4748eda44e863ff4627dedc0a34691af
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: ccd56afc8c4ea7e236946fc6afa54e471203fe31
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070101"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106065982"
 ---
 # <a name="connect-to-an-azure-machine-learning-compute-instance-in-visual-studio-code-preview"></a>Visual Studio Code で Azure Machine Learning コンピューティング インスタンスに接続する (プレビュー)
 

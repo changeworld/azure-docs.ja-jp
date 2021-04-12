@@ -1,15 +1,14 @@
 ---
 title: Azure でのアラートと通知監視の概要
-description: Azure でのアラートの概要です。 アラート、クラシック アラート、およびアラート インターフェイス。
-ms.subservice: alerts
+description: Azure Monitor のアラートの概要
 ms.topic: conceptual
-ms.date: 01/28/2018
-ms.openlocfilehash: 96e15c1e07d437855b6553757295800406a4cf4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 02/14/2021
+ms.openlocfilehash: 6785cfdf673e4c2da03ff26649c9336d57b699c8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100600708"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102038052"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -94,7 +93,7 @@ Azure Monitor の監視データを使用してインフラストラクチャま
 > [!NOTE]
    >  過去 30 日以内に生成されたアラートのみにアクセスできます。
 
-クラシック アラートは表示または追跡されません。 サブスクリプションまたはフィルター パラメーターを変更して、ページを更新することができます。 
+サブスクリプションまたはフィルター パラメーターを変更して、ページを更新することができます。
 
 ![[アラート] ページのスクリーンショット](media/alerts-overview/alerts-page.png)
 

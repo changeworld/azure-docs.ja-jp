@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d25a429873ccf8b546c0919456c97e64445f184c
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 97fad1b984ad34722a952a31d8245eb68417a2ab
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071700"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104779972"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -20,7 +20,7 @@ ms.locfileid: "99071700"
 
 Azure Digital Twins では、ダウンストリームのサービスや接続されているコンピューティング リソースに[イベント通知](how-to-interpret-event-data.md)をルーティングすることができます。 これを行うには、まず、イベントを受信できる **エンドポイント** を設定します。 そのうえで、Azure Digital Twins によって生成されるどのイベントをどのエンドポイントに配信するかを指定する [**イベント ルート**](concepts-route-events.md)を作成します。
 
-この記事では、[REST API](/rest/api/azure-digitaltwins/)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true)、および [Azure Digital Twins CLI](how-to-use-cli.md) を使用して、エンドポイントとルートを作成する手順について説明します。
+この記事では、[REST API](/rest/api/azure-digitaltwins/)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、および [Azure Digital Twins CLI](how-to-use-cli.md) を使用して、エンドポイントとルートを作成する手順について説明します。
 
 別の方法として、エンドポイントとルートは、[Azure portal](https://portal.azure.com) で管理することもできます。 ポータルを使用したバージョンの記事については、[*エンドポイントとルートをポータルで管理する方法*](how-to-manage-routes-portal.md)に関するページを参照してください。
 
@@ -48,7 +48,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 ### <a name="create-the-endpoint"></a>エンドポイントを作成する
 
-エンドポイント リソースを作成したら、Azure Digital Twins エンドポイントにそれらを使用できます。 次の例では、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) コマンドを使用してエンドポイントを作成する方法を示します。 コマンドのプレースホルダーは、独自のリソースの詳細に置き換えます。
+エンドポイント リソースを作成したら、Azure Digital Twins エンドポイントにそれらを使用できます。 次の例では、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create) コマンドを使用してエンドポイントを作成する方法を示します。 コマンドのプレースホルダーは、独自のリソースの詳細に置き換えます。
 
 Event Grid エンドポイントを作成するには:
 
@@ -119,7 +119,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
     
 #### <a name="create-the-dead-letter-endpoint"></a>配信不能エンドポイントを作成する
 
-配信不能処理が有効なエンドポイントを作成するには、次の配信不能パラメーターを、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create?view=azure-cli-latest&preserve-view=true) コマンドに追加します。
+配信不能処理が有効なエンドポイントを作成するには、次の配信不能パラメーターを、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create) コマンドに追加します。
 
 パラメーターの値は、[前のセクション](#set-up-storage-resources)で収集したストレージ アカウント名、コンテナー名、SAS トークンで構成された **配信不能 SAS URI** です。 このパラメーターにより、キーベースの認証を使用するエンドポイントが作成されます。
 
@@ -204,11 +204,11 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 1 つのルートで、複数の通知とイベントの種類を選択できるようにする必要があります。 
 
-イベント ルートを作成するには、Azure Digital Twins の [**EventRoutes** データ プレーン API](/rest/api/digital-twins/dataplane/eventroutes) または [**az dt route** CLI コマンド](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true)を使用できます。 このセクションの残りの部分では、作成プロセスについて説明します。
+イベント ルートを作成するには、Azure Digital Twins の [**EventRoutes** データ プレーン API](/rest/api/digital-twins/dataplane/eventroutes) または [**az dt route** CLI コマンド](/cli/azure/ext/azure-iot/dt/route)を使用できます。 このセクションの残りの部分では、作成プロセスについて説明します。
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>API と C# SDK を使用してルートを作成する
 
-イベント ルートを定義する方法の 1 つは、[データ プレーン API](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用することです。 このセクションのサンプルでは、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) を使用しています。
+イベント ルートを定義する方法の 1 つは、[データ プレーン API](how-to-use-apis-sdks.md#overview-data-plane-apis) を使用することです。 このセクションのサンプルでは、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) を使用しています。
 
 `CreateOrReplaceEventRouteAsync` は、イベント ルートを追加するために使用される SDK 呼び出しです。 その使用例を次に示します。
 
@@ -225,7 +225,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 ### <a name="create-routes-with-the-cli"></a>CLI を使用してルートを作成する
 
-Azure Digital Twins CLI の [az dt route](/cli/azure/ext/azure-iot/dt/route?view=azure-cli-latest&preserve-view=true) コマンドを使用して、ルートを管理することもできます。 
+Azure Digital Twins CLI の [az dt route](/cli/azure/ext/azure-iot/dt/route) コマンドを使用して、ルートを管理することもできます。 
 
 CLI の使用および利用できるコマンドについて詳しくは、"[*Azure Digital Twins CLI を使用する方法*](how-to-use-cli.md)" に関するページを参照してください。
 
@@ -237,6 +237,9 @@ CLI の使用および利用できるコマンドについて詳しくは、"[*A
 * ツインまたはリレーションシップが作成または削除されたときに発生するライフサイクル イベント
 
 イベント ルートにエンドポイントの **フィルター** を追加することで、送信されるイベントを制限できます。
+
+>[!NOTE]
+> フィルターでは **大文字と小文字が区別** され、ペイロード ケースで一致する必要があります (必ずしもモデル ケースと一致するとは限りません)。
 
 フィルターを追加するために、次の本文を含む PUT 要求を *https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31* に対して使用できます。
 

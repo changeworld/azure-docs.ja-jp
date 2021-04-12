@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/21/2020
 ms.author: yelevin
 ms.openlocfilehash: 6d1314b79f09f1bed2de5d6964b0a6224b5962ca
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100096873"
 ---
 # <a name="connect-your-alcide-kaudit-to-azure-sentinel"></a>Alcide kAudit を Azure Sentinel に接続する

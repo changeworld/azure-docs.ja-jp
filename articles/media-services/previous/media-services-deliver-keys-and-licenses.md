@@ -3,7 +3,7 @@ title: Azure Media Services を使用して DRM ライセンスまたはAES キ�
 description: この記事では、Azure Media Services を使用して PlayReady または Widevine のライセンスと AES キーを配信するが、残りの処理 (エンコード、暗号化、ストリーミング) はオンプレミスのサーバーで行う方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 8546c2c1-430b-4254-a88d-4436a83f9192
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e564feadfdb1d3cb6943d76b4b39ba0ec814e0d6
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: f2d965ec17fb605362c1e8cd8ef781a6bd2029d0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693641"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067386"
 ---
 # <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Media Services を使用して DRM ライセンスまたは AES キーを配信する
 
@@ -42,9 +42,6 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
 
 ![PlayReady による保護](./media/media-services-deliver-keys-and-licenses/media-services-diagram1.png)
 
-## <a name="download-sample"></a>サンプルのダウンロード
-この記事で説明するサンプルをダウンロードするには、[.NET で Azure Media Services を使用して PlayReady または Widevine のライセンスを配信する方法](https://github.com/Azure/media-services-dotnet-deliver-drm-licenses)に関する記事をご覧ください。
-
 ## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 
 1. 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。
@@ -57,7 +54,7 @@ Media Services では、ライセンスまたはキーを要求するユーザ�
     ```
  
 ## <a name="net-code-example"></a>.NET コード例
-次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法を示します。 オンプレミスのサーバーを構成するには、コンテンツ キー、キー ID、およびライセンス取得 URL が必要です。 オンプレミスのサーバーを構成したら、自分のストリーミング サーバーからストリーミングを実行できます。 暗号化されたストリームは Media Services ライセンス サーバーを参照するため、プレーヤーは Media Services にライセンスを要求します。 トークン認証を選択する場合は、HTTPS を介して送信されたトークンを Media Services ライセンス サーバーが検証します。 トークンが有効な場合は、ライセンス サーバーからプレーヤーにライセンスが配信されます。 次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法のみを示します。 AES 128 キーを配信する場合は、エンベロープのコンテンツ キーを作成し、キー取得 URL を取得する必要があります。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」をご覧ください。
+次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法を示します。 オンプレミスのサーバーを構成するには、コンテンツ キー、キー ID、およびライセンス取得 URL が必要です。 オンプレミスのサーバーを構成したら、自分のストリーミング サーバーからストリーミングを実行できます。 暗号化されたストリームは Media Services ライセンス サーバーを参照するため、プレーヤーは Media Services にライセンスを要求します。 トークン認証を選択する場合は、HTTPS を介して送信されたトークンを Media Services ライセンス サーバーが検証します。 トークンが有効な場合は、ライセンス サーバーからプレーヤーにライセンスが配信されます。 次のコード例では、共通のコンテンツ キーを作成し、PlayReady または Widevine のライセンス取得 URL を取得する方法のみを示します。 AES 128 キーを配信する場合は、エンベロープのコンテンツ キーを作成し、キー取得 URL を取得する必要があります。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-playready-license-template-overview.md)」をご覧ください。
 
 ```csharp
 using System;
@@ -360,4 +357,4 @@ namespace DeliverDRMLicenses
 
 ## <a name="see-also"></a>関連項目
 * [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-playready-widevine.md)
-* [AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)
+* [AES-128 動的暗号化とキー配信サービスの使用](media-services-playready-license-template-overview.md)

@@ -6,16 +6,18 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: df3ed451776f30e8b7c13b95618f1a7f0c7688db
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 8dba7280f6abd6026fabdde500dc76b73129d557
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937533"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100589746"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Azure Application Insights Java SDK で Micrometer を使用する方法 (非推奨)
 
 > [!IMPORTANT]
+> このドキュメントで説明する方法は、非推奨となりました。
+> 
 > Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 Micrometer テレメトリは、Application Insights Java 3.0 エージェントで自動的に収集されます。[Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従ってください。
 
 > [!NOTE]

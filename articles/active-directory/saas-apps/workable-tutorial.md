@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
-ms.openlocfilehash: e6cf8b0ea7064b99cf6f630a83b2800900f29c47
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: f705ca1e001d3b7852c5bec5b494f23eb7943626
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636087"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101687772"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>チュートリアル:Azure Active Directory と Workable の統合
 
@@ -41,8 +41,8 @@ Workable と Azure AD の統合を構成するには、次のものが必要で�
 
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンを構成してテストします。
 
-* Workable では、 **SP と IDP** によって開始される SSO がサポートされます
-* Workable では、 **Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Workable では、**SP と IDP** によって開始される SSO がサポートされます
+* Workable では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 ## <a name="adding-workable-from-the-gallery"></a>ギャラリーからの Workable の追加
 
@@ -62,13 +62,13 @@ Azure AD への Workable の統合を構成するには、ギャラリーから�
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「 **Workable** 」と入力し、結果ウィンドウで **[Workable]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Workable**」と入力し、結果ウィンドウで **[Workable]** を選び、 **[追加]** をクリックして、アプリケーションを追加します。
 
     ![結果一覧の Workable](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、 **Britta Simon** というテスト ユーザーに基づいて、Workable で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、**Britta Simon** というテスト ユーザーに基づいて、Workable で Azure AD のシングル サインオンを構成し、テストします。
 シングル サインオンを機能させるには、Azure AD ユーザーと Workable 内の関連ユーザー間にリンク関係が確立されている必要があります。
 
 Workable で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
@@ -155,9 +155,9 @@ Workable 内で SSO を有効にするには、専任の Workable アカウン�
 
     ![[ユーザー] ダイアログ ボックス](common/user-properties.png)
 
-    a. **[名前]** フィールドに「 **BrittaSimon** 」と入力します。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに「`brittasimon\@yourcompanydomain.extension`」と入力します。 たとえば、「 BrittaSimon@contoso.com 」のように入力します。
+    b. **[ユーザー名]** フィールドに「`brittasimon@yourcompanydomain.extension`」と入力します (例: `brittasimon@contoso.com`)。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、[パスワード] ボックスに表示された値を書き留めます。
 

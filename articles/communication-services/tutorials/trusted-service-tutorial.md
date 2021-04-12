@@ -6,15 +6,15 @@ author: ddematheu
 manager: nimag
 services: azure-communication-services
 ms.author: dademath
-ms.date: 07/28/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1d1c6adc15652a8ddbb05eeeda5f5aa013d73f2e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 206ee61689ca2e665f8cf8997be44eca356185a5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101661335"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726602"
 ---
 # <a name="build-a-trusted-authentication-service-using-azure-functions"></a>Azure Functions を使用して、信頼できる認証サービスを構築する
 

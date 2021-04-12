@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric イベント
 description: Azure Service Fabric クラスターの監視に役立つように標準で提供されている Service Fabric イベントについて説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: srrengar
-ms.openlocfilehash: 638b650e485ad3e83bd6021639a7e55b540d9cdc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 581bb3f16941fce660e0f464ed8ea9389b034b12
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75451726"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628812"
 ---
 # <a name="service-fabric-events"></a>Service Fabric イベント 
 

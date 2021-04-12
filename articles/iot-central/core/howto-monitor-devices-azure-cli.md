@@ -9,12 +9,12 @@ ms.service: iot-central
 ms.custom: devx-track-azurecli, device-developer
 services: iot-central
 manager: corywink
-ms.openlocfilehash: b266def0dbe81542714fc6d47986f3cde8235dd0
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 62981686c7aadc713c4abc78075be8613fe0af45
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122962"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102199308"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli"></a>Azure CLI を使用してデバイスの接続性を監視する
 
@@ -22,7 +22,7 @@ ms.locfileid: "92122962"
 
 Azure CLI IoT 拡張機能を使用して、デバイスから IoT Central に送信されるメッセージを確認し、デバイス ツインでの変更を観察します。 このツールを使用し、デバイスの接続状態をデバッグし、観察し、クラウドに達しないデバイス メッセージの問題や、ツイン変更に応答しないデバイスの問題を診断できます。
 
-[詳細については、Azure CLI 拡張機能のリファレンスを参照してください。](/cli/azure/ext/azure-iot/iot/central?view=azure-cli-latest)
+[詳細については、Azure CLI 拡張機能のリファレンスを参照してください。](/cli/azure/ext/azure-iot/iot/central)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +62,7 @@ az login
 ```
 
 ### <a name="get-the-application-id-of-your-iot-central-app"></a>IoT Central アプリのアプリケーション ID を取得する
-**[Administration/Application Settings]\(管理/アプリケーション設定\)** で**アプリケーション ID** をコピーします。 この値は、後の手順で使用します。
+**[Administration/Application Settings]\(管理/アプリケーション設定\)** で **アプリケーション ID** をコピーします。 この値は、後の手順で使用します。
 
 ### <a name="monitor-messages"></a>メッセージの監視
 デバイスから IoT Central アプリに送信されているメッセージを監視します。 出力には、すべてのヘッダーと注釈が含まれます。

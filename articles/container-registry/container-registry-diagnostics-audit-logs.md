@@ -4,10 +4,10 @@ description: 認証、イメージのプッシュ、イメージのプルなど�
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 952f239e94df6b3b21317985f56d3d7a999813fe
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100572000"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>診断の評価と監査のための Azure Container Registry ログ

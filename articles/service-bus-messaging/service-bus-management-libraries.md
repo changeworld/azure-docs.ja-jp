@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/13/2021
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 57192ab2ee1624cb18de832ac91c95290da727df
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539867"
 ---
 # <a name="dynamically-provision-service-bus-namespaces-and-entities"></a>Service Bus の名前空間とエンティティの動的なプロビジョニング 

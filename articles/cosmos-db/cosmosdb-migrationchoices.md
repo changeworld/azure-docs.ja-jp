@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/01/2020
-ms.openlocfilehash: 8721c0eb728f568521e86baecb658dc9c869a7f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3325960793a5a0d7bc48ca8030c675d7ebf0c026
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097585"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442594"
 ---
 # <a name="options-to-migrate-your-on-premises-or-cloud-data-to-azure-cosmos-db"></a>オンプレミスまたはクラウドのデータを Azure Cosmos DB に移行するためのオプション
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,13 +31,13 @@ ms.locfileid: "93097585"
 
 * **オンライン移行かオフライン移行:** 移行ツールの多くで、1 回限りの移行を行うためのパスが与えられます。 これは、データベースにアクセスしているアプリケーションに一定時間のダウンタイムが発生する可能性を意味します。 一部の移行ソリューションでは、ライブ移行の手段が与えられます。ライブ移行では、移行元と移行先の間にレプリケーション パイプラインが設定されます。
 
-* **データ ソース** :既存のデータは、Oracle DB2、Datastax Cassandra、Azure SQL Database、PostgreSQL など、さまざまなデータ ソースに含まれています。データは既存の Azure Cosmos DB アカウントに含まれていることもあります。データ モデルを変更することや、パーティション キーの異なるコンテナーに含まれるデータを再パーティションすることが移行の意図になることもあります。
+* **データ ソース**:既存のデータは、Oracle DB2、Datastax Cassandra、Azure SQL Database、PostgreSQL など、さまざまなデータ ソースに含まれています。データは既存の Azure Cosmos DB アカウントに含まれていることもあります。データ モデルを変更することや、パーティション キーの異なるコンテナーに含まれるデータを再パーティションすることが移行の意図になることもあります。
 
-* **Azure Cosmos DB API** :Azure Cosmos DB の SQL API に対しては、さまざまな移行シナリオを支援するさまざまなツールが Azure Cosmos DB チームによって開発されています。 他の API にはすべて、コミュニティによって開発され、保守されている独自の特別なツール セットが含まれています。 Azure Cosmos DB ではそのような API がワイヤ プロトコル レベルでサポートされているため、Azure Cosmos DB にデータを移行する間、それらのツールもそのまま動作するはずです。 ただし、この概念は Azure Cosmos DB に固有であるため、スロットルのカスタム処理が必要になることがあります。
+* **Azure Cosmos DB API**:Azure Cosmos DB の SQL API に対しては、さまざまな移行シナリオを支援するさまざまなツールが Azure Cosmos DB チームによって開発されています。 他の API にはすべて、コミュニティによって開発され、保守されている独自の特別なツール セットが含まれています。 Azure Cosmos DB ではそのような API がワイヤ プロトコル レベルでサポートされているため、Azure Cosmos DB にデータを移行する間、それらのツールもそのまま動作するはずです。 ただし、この概念は Azure Cosmos DB に固有であるため、スロットルのカスタム処理が必要になることがあります。
 
-* **データのサイズ** :データセットが小規模の場合、ほとんどの移行ツールは非常に快適に動作します。 データセットが数百ギガ バイトを超えると、移行ツールの選択肢が限られます。 
+* **データのサイズ**:データセットが小規模の場合、ほとんどの移行ツールは非常に快適に動作します。 データセットが数百ギガ バイトを超えると、移行ツールの選択肢が限られます。 
 
-* **予想される移行時間** :移行は消費するスループットの少ない、ゆっくりしたインクリメンタル ペースで行うように構成するか、移行先 Azure Cosmos DB コンテナーでプロビジョニングされているスループット全体を消費し、少ない時間で移行を完了するように構成できます。
+* **予想される移行時間**:移行は消費するスループットの少ない、ゆっくりしたインクリメンタル ペースで行うように構成するか、移行先 Azure Cosmos DB コンテナーでプロビジョニングされているスループット全体を消費し、少ない時間で移行を完了するように構成できます。
 
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API
 
@@ -64,8 +64,8 @@ ms.locfileid: "93097585"
 
 |移行の種類|解決策|サポートされているソース|サポート対象|考慮事項|
 |---------|---------|---------|---------|---------|
-|オフライン|[cqlsh COPY コマンド](cassandra-import-data.md#migrate-data-using-cqlsh-copy-command)|CSV ファイル | Azure Cosmos DB の Cassandra API| &bull; セットアップが簡単です。 <br/>&bull; 大規模なデータセットには適していません。 <br/>&bull; ソースが Cassandra テーブルの場合にのみ機能します。|
-|オフライン|[Spark でテーブルをコピーする](cassandra-import-data.md#migrate-data-using-spark) | &bull;Apache Cassandra<br/>&bull;Azure Cosmos DB の Cassandra API| Azure Cosmos DB の Cassandra API | &bull; Spark 機能を使用し、変換と取り込みを並列処理できます。 <br/>&bull; スロットルを処理するカスタム再試行ポリシーを含む構成が必要です。|
+|オフライン|[cqlsh COPY コマンド](cassandra-import-data.md#migrate-data-by-using-the-cqlsh-copy-command)|CSV ファイル | Azure Cosmos DB の Cassandra API| &bull; セットアップが簡単です。 <br/>&bull; 大規模なデータセットには適していません。 <br/>&bull; ソースが Cassandra テーブルの場合にのみ機能します。|
+|オフライン|[Spark でテーブルをコピーする](cassandra-import-data.md#migrate-data-by-using-spark) | &bull;Apache Cassandra<br/>&bull;Azure Cosmos DB の Cassandra API| Azure Cosmos DB の Cassandra API | &bull; Spark 機能を使用し、変換と取り込みを並列処理できます。 <br/>&bull; スロットルを処理するカスタム再試行ポリシーを含む構成が必要です。|
 |オンライン|[Striim (Oracle DB/Apache Cassandra からの)](cosmosdb-cassandra-api-migrate-data-striim.md)| &bull;Oracle<br/>&bull;Apache Cassandra<br/><br/> サポートされているその他のソースについては、[Striim の Web サイト](https://www.striim.com/sources-and-targets/)を参照してください。|&bull;Azure Cosmos DB SQL API<br/>&bull;Azure Cosmos DB の Cassandra API <br/><br/> サポートされているその他のターゲットについては、[Striim の Web サイト](https://www.striim.com/sources-and-targets/)を参照してください。| &bull; Oracle、DB2、SQL Server などのさまざまなソースで動作します。 <br/>&bull; ETL パイプラインの構築が簡単で、監視用のダッシュボードを提供します。 <br/>&bull; 大規模なデータセットをサポートします。 <br/>&bull; これはサードパーティ製のツールであるため、マーケットプレースから購入し、ユーザーの環境にインストールする必要があります。|
 |オンライン|[Blitzz (Oracle DB/Apache Cassandra からの)](oracle-migrate-cosmos-db-blitzz.md)|&bull;Oracle<br/>&bull;Apache Cassandra<br/><br/>サポートされているその他のソースについては、[Blitzz の Web サイト](https://www.blitzz.io/)を参照してください。 |Azure Cosmos DB の Cassandra API。 <br/><br/>サポートされているその他のターゲットについては、[Blitzz の Web サイト](https://www.blitzz.io/)を参照してください。 | &bull; 大規模なデータセットをサポートします。 <br/>&bull; これはサードパーティ製のツールであるため、マーケットプレースから購入し、ユーザーの環境にインストールする必要があります。|
 

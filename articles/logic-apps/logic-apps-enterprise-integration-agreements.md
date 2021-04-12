@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dc084da6ef7f26b9e434acf8985c7077f5eaffe2
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95992944"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078368"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Azure Logic Apps で取引先契約を作成して管理する
 
@@ -60,14 +60,13 @@ Azure のメイン メニューで、 **[すべてのサービス]** を選び�
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **名前** | はい | <*agreement-name*> | 契約の名前 |
-   | **契約の種類** | はい | **AS2**、**X12**、または **EDIFACT** | ご利用の契約でのプロトコルの種類。 契約ファイルを作成する場合は、そのファイルの内容が契約の種類と一致する必要があります。 | |  
+   | **契約の種類** | はい | **AS2**、**X12**、または **EDIFACT** | ご利用の契約でのプロトコルの種類。 契約ファイルを作成する場合は、そのファイルの内容が契約の種類と一致する必要があります。 |
    | **ホスト パートナー** | はい | <*host-partner-name*> | ホスト パートナーは、契約を指定する組織を表します。 |
    | **ホスト ID** | はい | <*host-partner-identifier*> | ホスト パートナーの ID |
    | **ゲスト パートナー** | はい | <*guest-partner-name*> | ゲスト パートナーは、ホスト パートナーと取引している組織を表します。 |
    | **ゲスト ID** | はい | <*guest-partner-identifier*> | ゲスト パートナーの ID |
    | **受信設定** | 場合により異なる | 場合により異なる | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーからすべての受信メッセージを受信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
    | **送信の設定** | 場合により異なる | 場合により異なる | これらのプロパティは、ホスト パートナーが契約内のゲスト パートナーにすべての送信メッセージを送信する方法を指定します。 詳細については、それぞれの契約の種類を参照してください。 <p>- [AS2 メッセージの設定](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT メッセージの設定](logic-apps-enterprise-integration-edifact.md) <br>- [X12 メッセージの設定](logic-apps-enterprise-integration-x12.md) |
-   |||||
 
    > [!IMPORTANT]
    > 契約の決議は、パートナーに定義されている次の項目の一致状況と受信メッセージに応じて異なります。

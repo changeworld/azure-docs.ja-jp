@@ -7,10 +7,10 @@ ms.topic: troubleshooting
 ms.date: 12/30/2020
 ms.author: abnarain
 ms.openlocfilehash: 101e55188b8021040e2fd6bd573c1c6330241e72
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382805"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Azure Data Factory のトラブルシューティング

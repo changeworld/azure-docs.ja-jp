@@ -3,7 +3,7 @@ title: AES-128 動的暗号化とキー配信サービスの使用 | Microsoft D
 description: このトピックでは、AES-128 を使用して動的に暗号化する方法とキー配信サービスを使用する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 4d2c10af-9ee0-408f-899b-33fa4c1d89b9
@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 91ed9482903d66ffcf1283c4024f89fc461bab1b
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b4375e7b68f0b279a971e92775ca454f06dcbd45
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695071"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067335"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector"]
-> * [.NET](media-services-protect-with-aes128.md)
+> * [.NET](media-services-playready-license-template-overview.md)
 > * [Java](https://github.com/rnrneverdies/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 >  
@@ -55,7 +55,7 @@ Media Services キー配信サービスと動的暗号化を使用して、AES �
 
 2. [ファイルが含まれている資産をアダプティブ ビットレート MP4 セットにエンコードします](media-services-protect-with-aes128.md#encode_asset)。
 
-3. [コンテンツ キーを作成し、それをエンコードした資産に関連付けます](media-services-protect-with-aes128.md#create_contentkey)。 Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
+3. [コンテンツ キーを作成し、それをエンコードした資産に関連付けます]media-services-protect-with-aes128.md#create_contentkey)。 Media Services では、コンテンツ キーに資産の暗号化キーが含まれています。
 
 4. [コンテンツ キーの承認ポリシーを構成します](media-services-protect-with-aes128.md#configure_key_auth_policy)。 コンテンツ キー承認ポリシーを構成する必要があります。 コンテンツ キーがクライアントに配信される前に、クライアントはポリシーの要件を満たす必要があります。
 

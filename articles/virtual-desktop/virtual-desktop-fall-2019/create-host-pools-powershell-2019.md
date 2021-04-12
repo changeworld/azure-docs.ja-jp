@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: c035a7fbafe9b3a42fbd16e3f8377014010ddd49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 9776d5f52bda56704c4839cb9edd420beec72a71
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88003552"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445229"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>PowerShell を使用して Windows Virtual Desktop (クラシック) でホスト プールを作成する
 

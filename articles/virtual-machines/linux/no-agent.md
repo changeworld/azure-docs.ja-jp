@@ -2,19 +2,20 @@
 title: プロビジョニング エージェントを使用せずに Linux イメージを作成する
 description: Azure でプロビジョニング エージェントを使用せずに一般化された Linux イメージを作成します。
 author: danielsollondon
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: imaging
+ms.collection: linux
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 1c9ac872587804adbd9e62a3dc3ef3daed9e0c25
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: c7ca147f0a5b907ee0c5c66d53a219fe75ab2179
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223053"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102551710"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>プロビジョニング エージェントを使用せずに一般化されたイメージを作成する
 

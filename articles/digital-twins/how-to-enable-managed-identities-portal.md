@@ -8,10 +8,10 @@ ms.date: 1/21/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: 1211cd306f10fb349bd42568697443ff103a171c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101703093"
 ---
 # <a name="enable-a-managed-identity-for-routing-azure-digital-twins-events-preview-azure-portal"></a>Azure Digital Twins のイベントをルーティングするためにマネージド ID を有効にする (プレビュー):Azure portal

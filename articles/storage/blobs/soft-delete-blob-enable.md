@@ -10,12 +10,12 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: a74860b7adf4dade5aedc71a4960595cbe55eaf0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c89e42736f5b8de65ed93ccb57f8d034d4240bc8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95995303"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729084"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>BLOB の論理的な削除の有効化と管理
 
@@ -146,7 +146,7 @@ block_blob_service.set_blob_service_properties(
 
 BLOB の特定のバージョンに復元するには、最初に BLOB で Undelete を呼び出した後、目的のスナップショットを BLOB にコピーします。 次の例では、ブロック BLOB を最後に生成されたスナップショットに復旧しています。
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobVersion":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobSnapshot":::
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 

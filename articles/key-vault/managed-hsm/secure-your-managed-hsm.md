@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 99918d039052c9913400b85ac3caa4a1a5481155
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5a3fcc10f318f2a8065550a48eb2bfb4bbdd4915
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445321"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218402"
 ---
 # <a name="secure-access-to-your-managed-hsms"></a>マネージド HSM へのアクセスをセキュリティで保護する
 
@@ -40,7 +40,7 @@ CLI を使用して Azure にサインインするには、次のように入力
 az login
 ```
 
-CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。
+CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください。
 
 ## <a name="example"></a>例
 

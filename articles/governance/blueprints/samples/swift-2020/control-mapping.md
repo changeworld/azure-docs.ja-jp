@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール
 description: SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 466b37b287d79a891fba39b133ab5fa79dbd147e
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 9d385cfddae11b026cd93f49c1bc41ca48265a87
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048795"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386178"
 ---
 # <a name="control-mapping-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルのコントロール マッピング
 
@@ -234,7 +234,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 このブループリントは、特定の暗号化コントロールを適用し、脆弱な暗号化設定の使用を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、保存情報の保護のための暗号化コントロールの使用に関するポリシーの実施を支援するものです。 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 具体的には、このブループリントにより割り当てられるポリシー定義では、Data Lake Storage アカウントの暗号化と SQL データベースでの Transparent Data Encryption が必須になるほか、SQL データベース、仮想マシン ディスク、Automation アカウント変数の暗号化に漏れがないかどうかが監査されます。
 
 - Advanced Data Security を、SQL サーバー上で有効にする必要がある
-- SQL サーバーに対する Advanced Data Security のデプロイ
+- SQL Server に対する Advanced Data Security のデプロイ
 - SQL DB Transparent Data Encryption のデプロイ
 - SQL データベースで Transparent Data Encryption を有効にする必要がある
 
@@ -280,7 +280,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - SQL Server の高度なデータ セキュリティ設定に、セキュリティ アラートを受信するためのメール アドレスが含まれている必要がある
 - Azure Stream Analytics で診断ログを有効にする必要がある
 - SQL サーバーに対する Advanced Data Security のデプロイ
-- SQL サーバーでの監査のデプロイ
+- SQL Server での監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
 - SQL サーバーでの脅威検出のデプロイ
 

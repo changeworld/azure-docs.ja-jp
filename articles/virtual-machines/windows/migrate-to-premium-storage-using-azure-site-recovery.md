@@ -2,17 +2,18 @@
 title: Azure Site Recovery で Windows VM を Azure Premium Storage に移行する
 description: Azure Site Recovery を使用して Standard Storage アカウントから Premium Storage アカウントに VM ディスクを移行する方法について説明します。
 author: luywang
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
+ms.collection: windows
 ms.topic: how-to
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 58d4459e1869a9d1f7ccb8234c0356ac486a950c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a8b58c72ee4e6d9d38dccb369a3d38c46f0c4afe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975554"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046846"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -34,7 +35,7 @@ Site Recovery は、ダウンタイムを最小またはゼロに抑えるため
 
 * **構成サーバー**: 通信を調整し、データのレプリケーションおよび回復プロセスを管理する Azure VM です。 この VM では設定 ファイルを 1 つ実行し、構成サーバーと、レプリケーションのゲートウェイとなる追加のコンポーネント (プロセス サーバー) をインストールします。 [構成サーバーの前提条件](../../site-recovery/vmware-azure-tutorial.md)に関するセクションを参照してください。 構成サーバーは、1 回設定するだけで同じリージョンへのすべての移行に使用できます。
 
-* **プロセス サーバー**は、次の機能を持つレプリケーション ゲートウェイです。 
+* **プロセス サーバー** は、次の機能を持つレプリケーション ゲートウェイです。 
 
   1. ソース VM からレプリケーション データを受信します。
   2. キャッシュ、圧縮、暗号化を使用してデータを最適化します。
@@ -42,7 +43,7 @@ Site Recovery は、ダウンタイムを最小またはゼロに抑えるため
 
   また、ソース VM へのモビリティ サービスのプッシュ インストールを処理し、ソース VM の自動検出も実行します。 既定のプロセス サーバーは、構成サーバーにインストールされます。 追加のスタンドアロン プロセス サーバーをデプロイすることでデプロイメントを拡張できます。 [プロセス サーバーのデプロイに関するベスト プラクティス](https://azure.microsoft.com/blog/best-practices-for-process-server-deployment-when-protecting-vmware-and-physical-workloads-with-azure-site-recovery/)および[追加のプロセス サーバーのデプロイ](../../site-recovery/site-recovery-plan-capacity-vmware.md#deploy-additional-process-servers)に関する説明を参照してください。 プロセス サーバーは、1 回設定するだけで同じリージョンへのすべての移行に使用できます。
 
-* **モビリティ サービス**は、レプリケートする標準 VM すべてにデプロイされるコンポーネントです。 標準 VM で発生するデータ書き込みをキャプチャし、それをプロセス サーバーに転送します。 [レプリケーション対象のマシンの前提条件](../../site-recovery/vmware-azure-tutorial.md)に関するセクションを参照してください。
+* **モビリティ サービス** は、レプリケートする標準 VM すべてにデプロイされるコンポーネントです。 標準 VM で発生するデータ書き込みをキャプチャし、それをプロセス サーバーに転送します。 [レプリケーション対象のマシンの前提条件](../../site-recovery/vmware-azure-tutorial.md)に関するセクションを参照してください。
 
 次の図は、これらのコンポーネント間でのやり取りを示しています。
 
@@ -92,7 +93,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
 
 ### <a name="step-3-set-up-the-source-environment-configuration-server"></a>手順 3:ソース環境 (構成サーバー) を設定する
 
-1. **[インフラストラクチャの準備]**  >  **[ソースの準備]**  >  **[サーバーの追加]** ウィンドウに移動し、**Azure Site Recovery 統合セットアップ**とコンテナー登録キーをダウンロードします。 
+1. **[インフラストラクチャの準備]**  >  **[ソースの準備]**  >  **[サーバーの追加]** ウィンドウに移動し、**Azure Site Recovery 統合セットアップ** とコンテナー登録キーをダウンロードします。 
  
    コンテナー登録キーは、統合セットアップを実行するために必要です。 キーは生成後 5 日間有効です。
 
@@ -167,7 +168,7 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 
    ![[ソース] が選択されている [レプリケーションを有効にする] ウィンドウ][13]
 
-Azure Storage 環境を設計する場合は、可用性セット内の VM ごとに別個のストレージ アカウントを使用することをお勧めします。 ストレージ層のベスト プラクティスに従って、[可用性セットごとに複数のストレージ アカウントを使用する](../manage-availability.md)ことをお勧めします。 VM ディスクを複数のストレージ アカウントに分散することで、ストレージの可用性を向上させ、I/O を Azure ストレージ インフラストラクチャに分散させることができます。
+Azure Storage 環境を設計する場合は、可用性セット内の VM ごとに別個のストレージ アカウントを使用することをお勧めします。 ストレージ層のベスト プラクティスに従って、[可用性セットごとに複数のストレージ アカウントを使用する](../availability.md)ことをお勧めします。 VM ディスクを複数のストレージ アカウントに分散することで、ストレージの可用性を向上させ、I/O を Azure ストレージ インフラストラクチャに分散させることができます。
 
 VM が 1 つの可用性セットに存在する場合には、すべての VM のディスクを 1 つのストレージ アカウントにレプリケートするのではなく、複数の VM を複数回移行することを強くお勧めします。 こうすると、同じ可用性セット内の VM が単一のストレージ アカウントを共有しません。 **[レプリケーションを有効にする]** ウィンドウを使用して、各 VM のターゲット ストレージ アカウントを 1 つずつ設定します。
  
@@ -198,7 +199,7 @@ Site Recovery では、Premium Storage 対応の VM と同じか類似の種類�
    * クラシック デプロイ モデルを使用して作成された VM の場合: Azure portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](/previous-versions/azure/virtual-machines/linux/classic/configure-availability-classic)」を参照してください。
    * Resource Manager デプロイ モデルを使用して作成された VM の場合: VM の構成を保存し、可用性セット内の VM をいったん削除してから再作成します。 これを行うには、[Azure Resource Manager VM 可用性セットの設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)スクリプトを使用します。 このスクリプトを実行する前に、制限を確認し、ダウンタイムを計画します。
 
-2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 VM を削除してもディスクが削除されない問題が発生した場合は、「[Troubleshoot storage resource deletion errors](../troubleshooting/storage-resource-deletion-errors.md)」(ストレージのリソースを削除するときに生じるエラーのトラブルシューティング) を参照してください。
+2. **以前の VM とディスクを削除します**。 Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認します。 Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 VM を削除してもディスクが削除されない問題が発生した場合は、「[Troubleshoot storage resource deletion errors](/troubleshoot/azure/virtual-machines/storage-resource-deletion-errors)」(ストレージのリソースを削除するときに生じるエラーのトラブルシューティング) を参照してください。
 
 3. **Azure Site Recovery インフラストラクチャをクリーンアップします**。 Site Recovery が不要になったら、インフラストラクチャをクリーンアップすることができます。 レプリケートされた項目、構成サーバー、回復ポリシーを削除してから、Azure Site Recovery コンテナーを削除します。
 

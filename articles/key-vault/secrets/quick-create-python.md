@@ -7,13 +7,13 @@ ms.date: 09/03/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 1eb3728e9697cefc3621221e4a918656efcba3c6
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.custom: devx-track-python, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: b82c86983bc07f39c1adb5aa741497d8cc3246e9
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936636"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967127"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault シークレット クライアント ライブラリ
 
@@ -24,14 +24,14 @@ Python 用 Azure Key Vault シークレット クライアント ライブラリ
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-- [Python 2.7 以降または 3.5.3 以降](/azure/developer/python/configure-local-development-environment)
+- [Python 2.7 以降または 3.6 以降](/azure/developer/python/configure-local-development-environment)
 - [Azure CLI](/cli/azure/install-azure-cli)
 
 このクイックスタートは、Linux ターミナル ウィンドウで [Azure CLI](/cli/azure/install-azure-cli) を実行していることを前提としています。
 
 
 ## <a name="set-up-your-local-environment"></a>ローカル環境を設定する
-このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/java/api/overview/azure/identity-readme)方法に関するページを参照してください。
+このクイックスタートでは、Azure CLI と Azure Identity ライブラリを使用して、Azure サービスに対するユーザーの認証を行います。 開発者は、Visual Studio または Visual Studio Code を使用してその呼び出しを認証することもできます。詳細については、[Azure Identity クライアント ライブラリを使用してクライアントを認証する](/python/api/overview/azure/identity-readme)方法に関するページを参照してください。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -80,17 +80,7 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --secret-
 
 このアプリケーションでは、`KEY_VAULT_NAME` という環境変数にキー コンテナーの名前を使用します。
 
-Windows
-```cmd
-set KEY_VAULT_NAME=<your-key-vault-name>
-````
-Windows PowerShell
-```powershell
-$Env:KEY_VAULT_NAME="<your-key-vault-name>"
-```
-
-macOS または Linux
-```cmd
+```bash
 export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 

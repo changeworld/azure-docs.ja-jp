@@ -12,10 +12,10 @@ ms.subservice: studio-classic
 ms.topic: reference
 ms.date: 11/16/2016
 ms.openlocfilehash: c5a457a673500c542dd6130d5cfadd73ab677f7b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100518353"
 ---
 # <a name="azure-machine-learning-studio-classic-rest-api-error-codes"></a>Azure Machine Learning Studio (クラシック) REST API のエラー コード

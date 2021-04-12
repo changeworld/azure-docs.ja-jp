@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c628d93c112a770c85a10d0eff958614a7cf4cb
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 59c5ca9ce9e95319b36e002da0b5d1438ef3fdd1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814161"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102203778"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>クイックスタート: Azure CLI を使用した Azure DDoS Protection Standard の作成と構成
 
@@ -39,7 +39,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 Azure で、関連するリソースをリソース グループに割り当てます。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
 
-リソース グループを作成するには、[az group create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create) を使用します。 この例では、リソース グループに _MyResourceGroup_ という名前を付け、"_米国東部_" の場所を使用します。
+リソース グループを作成するには、[az group create](/cli/azure/group#az-group-create) を使用します。 この例では、リソース グループに _MyResourceGroup_ という名前を付け、"_米国東部_" の場所を使用します。
 
 ```azurecli-interactive
 az group create \
@@ -67,6 +67,7 @@ az network vnet create \
     --name MyVnet \
     --location eastus \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
 仮想ネットワークに対して DDoS Standard が有効になっている場合、仮想ネットワークを別のリソース グループまたはサブスクリプションに移動することはできません。 DDoS Standard が有効になっている仮想ネットワークを移動する必要がある場合は、まず DDoS Standard を無効にし、仮想ネットワークを移動してから、DDoS Standard を有効にします。 移動後に、仮想ネットワーク内のすべての保護されたパブリック IP アドレスの自動調整されたポリシーしきい値がリセットされます。
@@ -83,7 +84,7 @@ az group create \
 az network ddos-protection create \
     --resource-group MyResourceGroup \
     --name MyDdosProtectionPlan
-    --vnet MyVnet
+    --vnets MyVnet
 ```
 
 また、特定の仮想ネットワークに対して DDoS 保護を有効にすることもできます。
@@ -91,8 +92,9 @@ az network ddos-protection create \
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection true
+    --ddos-protection-plan MyDdosProtectionPlan
 ```
 
 ## <a name="validate-and-test"></a>検証とテスト
@@ -111,7 +113,7 @@ az network ddos-protection show \
 
 次のチュートリアルのためにリソースを保持しておくことができます。 不要になったら、_MyResourceGroup_ リソース グループを削除します。 リソース グループを削除する際に、DDoS Protection プランとその関連リソースもすべて削除します。 
 
-リソース グループを削除するには、[az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete) を使用します。
+リソース グループを削除するには、[az group delete](/cli/azure/group#az_group_delete) を使用します。
 
 ```azurecli-interactive
 az group delete \
@@ -123,8 +125,9 @@ DDoS 保護を無効にするよう、特定の仮想ネットワークを更新
 ```azurecli-interactive
 az network vnet update \
     --resource-group MyResourceGroup \
-    --vnet MyVnet \
+    --name MyVnet \
     --ddos-protection false
+    --ddos-protection-plan ""
 ```
 
 DDoS Protection プランを削除する場合は、最初にそのプランからすべての仮想ネットワークの関連付けを解除する必要があります。 

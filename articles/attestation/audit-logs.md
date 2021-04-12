@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 11/23/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 1fa4a458a4e3e1df1d84c343a32e3a41a4a25e75
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95758688"
 ---
 # <a name="audit-logs-for-azure-attestation"></a>Azure Attestation 用の監査ログ

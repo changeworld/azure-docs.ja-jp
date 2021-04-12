@@ -1,20 +1,20 @@
 ---
 title: Azure CLI から Azure Active Directory マネージド ID アプリケーションを作成する
 titleSuffix: An Azure Communication Services quickstart
-description: マネージド ID を使用すると、Azure VM、関数アプリ、その他のリソースで実行されているアプリケーションからの Azure Communication Services へのアクセスを承認できます。
+description: マネージド ID を使用すると、Azure VM、関数アプリ、その他のリソースで実行されているアプリケーションからの Azure Communication Services へのアクセスを承認できます。 このクイックスタートは、Azure CLI を使用した ID の管理に重点を置いています。
 services: azure-communication-services
 author: jbeauregardb
 ms.service: azure-communication-services
 ms.topic: how-to
-ms.date: 02/25/2021
+ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: f60c7b0b4c89833d489a435fde85896a8f8bd72f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e708536395807fc74dc5bfd73836e050832cca39
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678616"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103493341"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>開発環境で、マネージド ID を使用した通信リソースへのアクセスを承認する
 

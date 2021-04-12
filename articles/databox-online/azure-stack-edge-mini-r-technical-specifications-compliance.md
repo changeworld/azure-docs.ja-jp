@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: e6dff06e92126e2fc4538273e229dcb0904e3101
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3a0b87f04e60fd56d543c7c7a752cd788e087c78
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465631"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101727483"
 ---
 # <a name="azure-stack-edge-mini-r-technical-specifications"></a>Azure Stack Edge Mini R の技術仕様
 
@@ -80,9 +80,9 @@ Azure Stack Edge Mini R デバイスには、電源を供給し、オンボー�
 
 ## <a name="included-battery"></a>付属のバッテリ
 
-Azure Stack Edge Mini R デバイスには、電源装置によって充電されるオンボード バッテリも搭載されています。 
+Azure Stack Edge Mini R デバイスには、電源装置によって充電されるオンボード バッテリも搭載されています。
 
-追加の 2590 型のバッテリをオンボード バッテリと組み合わせて使用すると、充電の間のデバイスの使用を延長することができます。 このバッテリは、使用する国で適用される安全性、輸送、および環境のすべての規制に準拠している必要があります。
+追加の [2590 型バッテリ](https://www.bren-tronics.com/bt-70791ck.html)をオンボード バッテリと組み合わせて使用すると、充電の間のデバイスの使用を延長することができます。 このバッテリは、使用する国で適用される安全性、輸送、および環境のすべての規制に準拠している必要があります。
 
 
 | 仕様           | 値                      |

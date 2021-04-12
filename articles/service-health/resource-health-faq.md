@@ -4,10 +4,10 @@ description: Azure Resource Health の概要
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.openlocfilehash: dc24688d8393b7a13e8c93d3f4d0171cce4c213c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100570061"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ

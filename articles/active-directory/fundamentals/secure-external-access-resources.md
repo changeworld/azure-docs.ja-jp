@@ -14,10 +14,10 @@ ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bc8ec364380fc5cb9f6e33a29cd8dac96ea1fb69
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98219829"
 ---
 # <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>Azure Active Directory と Microsoft 365 での外部コラボレーションのセキュリティ保護

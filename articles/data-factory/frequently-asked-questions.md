@@ -6,12 +6,12 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: a3b892b5d92feb743d9a538c4e418b1f47e39b03
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: d0fd62c0173bec17c217ece5560119749d1a4fc6
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386307"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101739336"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 
@@ -48,7 +48,7 @@ Data Factory はデータ統合に必要な任意のフロー スタイルをモ
     - ループ コンテナー:
         * foreach アクティビティは、ループ内の指定されたアクティビティのコレクションに対して反復されます。 
 - トリガー ベースのフロー:
-    - パイプラインは、オンデマンドで、または実時間に合わせてトリガーできます。
+    - パイプラインは、オンデマンドで、時刻によって、またはイベント グリッドのトピックによる駆動に応じてトリガーすることができます。
 - 差分フロー:
     - オンプレミスまたはクラウド内のリレーショナル ストアからディメンションまたは参照テーブルを移動する間の差分コピーの最大値をパラメーターを使用して定義し、レイク内にデータを読み込みことができます。
 

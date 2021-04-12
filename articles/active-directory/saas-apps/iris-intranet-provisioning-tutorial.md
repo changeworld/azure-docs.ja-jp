@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/15/2021
 ms.author: Zhchia
 ms.openlocfilehash: 8acf65f1614c286e0996d1430c65d6c2d1e67618
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101645604"
 ---
 # <a name="tutorial-configure-iris-intranet-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に Iris Intranet を構成する

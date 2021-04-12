@@ -5,10 +5,10 @@ ms.date: 01/27/2021
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: ddd3cf4d411733e831c94039c3bc9aeaf0e95271
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98917709"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph のスロットルされた要求に関するガイダンス

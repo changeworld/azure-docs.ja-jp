@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: 5913f5fa8d45e6bf92d6132468e0e3bf7a121c65
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: b0c26aa95d8c3aba5df164fb0707b4833accd052
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673520"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104786483"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](./app-insights-overview.md) のスナップショット デバッガーにより、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](./configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](./asp-net-exceptions.md)に表示されます。
@@ -24,11 +24,15 @@ ms.locfileid: "97673520"
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>アプリケーションに対して Application Insights スナップショット デバッガーを有効にする
 スナップショット コレクションは次のアプリケーションで使用できます。
 * .NET Framework 4.5 以降を実行している .NET Framework アプリケーションと ASP.NET アプリケーション。
-* Windows 上で動作している .NET core 2.0 アプリケーションと ASP.NET Core 2.0 アプリケーション。
+* Windows 上の .NET Core 2.1 (LTS) または 3.1 (LTS) で .NET Core および ASP.NET Core アプリケーションを実行しているアプリケーション。
+* Windows 上の .NET 5.0 アプリケーション。
+
+.NET Core 2.0、2.2、3.0 はサポートされていないため、使用しないことをお勧めします。
 
 次の環境がサポートされています。
 
 * [Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 関数](snapshot-debugger-function-app.md?toc=/azure/azure-monitor/toc.json)
 * OS ファミリ 4 以降を実行している [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * Windows Server 2012 R2 以降で稼働している [Azure Service Fabric サービス](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * Windows Server 2012 R2 以降を実行している [Azure Virtual Machines および仮想マシン スケール セット](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
@@ -134,6 +138,7 @@ Azure Compute や他の種類の場合、シンボル ファイルがメイン �
 次のアプリケーションに対して Application Insights スナップショット デバッガーを有効にします。
 
 * [Azure App Service](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)
+* [Azure 関数](snapshot-debugger-function-app.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric サービス](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines と仮想マシン スケール セット](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)

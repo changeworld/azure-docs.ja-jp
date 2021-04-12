@@ -6,16 +6,18 @@ ms.date: 3/14/2019
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 71858be97404344bad88ea20e31b17fa44f669a2
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 35a95ac32fc4390e08d3c7fee2b9f9ff52202e4b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131187"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "100573820"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Java Web アプリでのテレメトリのフィルター処理
 
 > [!IMPORTANT]
+> このドキュメントで説明する方法は、推奨されなくなりました。
+>
 > Java アプリケーションを監視する際に推奨される方法は、コードを変更せずに自動インストルメンテーションを使用することです。 [Application Insights Java 3.0 エージェント](./java-in-process-agent.md)のガイドラインに従ってください。
 
 フィルターは、お使いの [Java Web アプリが Application Insights に送信](java-get-started.md)するテレメトリを選択する方法を提供します。 すぐに使用できるフィルターが用意されており、また、独自のカスタム フィルターを作成することもできます。

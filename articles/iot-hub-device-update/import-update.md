@@ -1,20 +1,20 @@
 ---
 title: 新しい更新プログラムのインポート方法 | Microsoft Docs
 description: 新しい更新プログラムを IoT Hub の Device Update for IoT Hub にインポートするための How-To ガイド。
-author: andbrown
+author: andrewbrownmsft
 ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d8757f3076f784576f95bbdfc30abf578446c776
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: b9d40848abdd85beeca592001b697e3c50b7cd59
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660647"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103008564"
 ---
 # <a name="import-new-update"></a>新しい更新プログラムのインポート
-新しい更新プログラムを Device Update for IoT Hub にインポートする方法について説明します。
+新しい更新プログラムを Device Update for IoT Hub にインポートする方法について説明します。 基本的な[インポートの概念](import-concepts.md)をまだ理解していない場合は、理解しておいてください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,9 +33,9 @@ ms.locfileid: "101660647"
 
 1. 更新イメージ ファイルまたは APT マニフェスト ファイルが、PowerShell からアクセスできるディレクトリに配置されていることを確認します。
 
-2. [Device Update for IoT Hub リポジトリ](https://github.com/azure/iot-hub-device-update)を複製するか、PowerShell からアクセスできる場所に .zip ファイルとしてダウンロードします (zip ファイルをダウンロードしたら、[`Properties`]  >  [`General`] タブを右クリックし、[`Security`] セクションの [`Unblock`] をオンにして、PowerShell のセキュリティ警告プロンプトが表示されないようにします)。
+2. 更新イメージファイルまたは APT マニフェスト ファイルが配置されているディレクトリに、 **AduUpdate.psm1** という名前のテキスト ファイルを作成します。 次に、 [AduUpdate.psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell コマンドレットを開き、内容をテキスト ファイルにコピーして、テキスト ファイルを保存します。
 
-3. PowerShell で、`tools/AduCmdlets` ディレクトリに移動し、次のように実行します。
+3. PowerShell で、手順 2 で作成した PowerShell コマンドレットを作成したディレクトリに移動します。 次に、次のコマンドを実行します。
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -53,32 +53,19 @@ ms.locfileid: "101660647"
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    参考として、次に前述のパラメーター値の例を示します。 ドキュメント全体については、以下のインポート マニフェスト スキーマを参照してください。
+    参考として、次に前述のパラメーター値の例を示します。 完成した[インポート マニフェスト スキーマ](import-schema.md)で詳細を確認することもできます。
 
     | パラメーター | 説明 |
     | --------- | ----------- |
-    | deviceManufacturer | 更新プログラムと互換性があるデバイスの製造元 (Contoso など)
-    | deviceModel | 更新プログラムと互換性があるデバイスのモデル (toaster など)
-    | updateProvider | 更新プログラム ID のプロバイダー部分 (Fabrikam など)
-    | updateName | 更新プログラム ID の名前部分 (ImageUpdate など)
-    | updateVersion | 更新プログラムのバージョン (2.0 など)
+    | deviceManufacturer | 更新プログラムと互換性があるデバイスの製造元 (Contoso など)。 _製造元_ の[デバイス プロパティ](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)と一致する必要があります。
+    | deviceModel | 更新プログラムと互換性があるデバイスのモデル (toaster など)。 _モデル_ の[デバイス プロパティ](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-plug-and-play#device-properties)と一致する必要があります。
+    | updateProvider | 更新プログラムを作成または直接担当するエンティティ。 多くの場合、会社名になります。
+    | updateName | 更新プログラムのクラスの識別子。 クラスには、任意のものを選択できます。 多くの場合、デバイス名またはモデル名になります。
+    | updateVersion | 同じプロバイダーと名前を持つ他の更新プログラムとこの更新プログラムを区別するためのバージョン番号。 デバイス上の個々のソフトウェア コンポーネントのバージョンと一致しない場合があります (選択した場合は可能です)。
     | updateType | <ul><li>イメージの更新には `microsoft/swupdate:1` を指定します</li><li>パッケージの更新には `microsoft/apt:1` を指定します</li></ul>
     | installedCriteria | <ul><li>更新の種類 `microsoft/swupdate:1` には SWVersion の値を指定します</li><li>更新の種類 `microsoft/apt:1` には推奨値を指定します
     | updateFilePath(s) | コンピューター上の更新プログラム ファイルへのパス
 
-    インポート マニフェスト スキーマ (全体)
-
-    | 名前 | Type | 説明 | 制限 |
-    | --------- | --------- | --------- | --------- |
-    | UpdateId | `UpdateId` オブジェクト | 更新プログラム ID。 |
-    | UpdateType | string | 更新の種類: <ul><li>参照エージェントを使用してパッケージベースの更新を実行する場合は、`microsoft/apt:1` を指定します。</li><li>参照エージェントを使用してイメージベースの更新を実行する場合は、`microsoft/swupdate:1` を指定します。</li><li>サンプル エージェント シミュレーターを使用する場合は、`microsoft/simulator:1` を指定します。</li><li>カスタム エージェントを開発する場合は、カスタムの種類を指定します。</li></ul> | <ul><li>形式: `{provider}/{type}:{typeVersion}`</li><li>最大 32 文字</li></ul> |
-    | InstalledCriteria | string | 更新プログラムが正常に適用されたかどうかを判断するために、エージェントによって解釈される文字列。  <ul><li>更新の種類 `microsoft/swupdate:1` には SWVersion の **値** を指定します。</li><li>更新の種類 `microsoft/apt:1` には `{name}-{version}` を指定します。これは、APT ファイルから取得した名前とバージョンです。</li><li>更新の種類 `microsoft/simulator:1` には更新プログラム ファイルのハッシュを指定します。</li><li>カスタム エージェントを開発する場合は、カスタムの文字列を指定します。</li></ul> | 最大 64 文字 |
-    | 互換性 | `CompatibilityInfo` オブジェクトの配列 | この更新プログラムと互換性のあるデバイスの互換性情報。 | 最大 10 個の項目 |
-    | CreatedDateTime | 日付/時刻 | 更新プログラムが作成された日時。 | ISO 8601 の、区切られた日付と時刻の形式 (UTC) |
-    | ManifestVersion | string | マニフェスト スキーマのバージョンをインポートします。 `2.0` を指定します。これは、`urn:azureiot:AzureDeviceUpdateCore:1` インターフェイスおよび `urn:azureiot:AzureDeviceUpdateCore:4` インターフェイスと互換性があります。</li></ul> | `2.0` である必要があります。 |
-    | ファイル | `File` オブジェクトの配列 | ペイロード更新ファイル | 最大 5 個のファイル |
-
-注: すべてのフィールドが必須です。
 
 ## <a name="review-generated-import-manifest"></a>生成されたインポート マニフェストを確認する
 
@@ -124,6 +111,9 @@ ms.locfileid: "101660647"
 ```
 
 ## <a name="import-update"></a>更新プログラムのインポート
+
+[!NOTE]
+次の手順は、Azure portal ユーザー インターフェイスを使用して更新プログラムをインポートする方法を示しています。 [IoT Hub API のデバイス更新](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) プログラムを使用して、更新プログラムをインポートすることもできます。 
 
 1. [Azure portal](https://portal.azure.com) にログインし、Device Update がある IoT Hub に移動します。
 

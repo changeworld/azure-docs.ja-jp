@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 5b96e568b57c34fec1c93727aabe8e739a2a45cd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 72ba07090e6ce67501761d97876aa136f146d61c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448653"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102437929"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスでの Kubernetes
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Kubernetes はコンテナー化されたアプリケーションを調整するための一般的なオープンソース プラットフォームです。 この記事では、Kubernetes の概要を説明し、さらに Azure Stack Edge Pro デバイス上で Kubernetes がどのように機能するかについて説明します。 
 
@@ -107,6 +109,16 @@ IoT Edge を介した Kubernetes クラスターへのアプリケーション�
 ### <a name="kubernetes-and-azure-arc"></a>Kubernetes と Azure Arc
 
 Azure Arc は、Kubernetes クラスターにアプリケーションをデプロイするためのハイブリッド管理ツールです。 また、Azure Arc を使用すると、コンテナーに対して Azure Monitor を使用して、ご利用のクラスターを表示および監視することもできます。 詳細については、[Azure Arc 対応 Kubernetes とは](../azure-arc/kubernetes/overview.md)に関するページを参照してください。 Azure Arc の価格については、[Azure Arc の価格](https://azure.microsoft.com/services/azure-arc/#pricing)に関するページを参照してください。
+
+2021 年 3 月以降、Azure Arc 対応 Kubernetes がユーザーに一般提供され、標準の使用料金が適用されます。 プレビュー版のお客様は、特典として、Azure Stack Edge デバイスに対して Azure Arc 対応 Kubernetes を無料でご利用いただけます。 プレビュー オファーを利用するには、[サポート リクエスト](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を作成します。
+
+1. **[問題の種類]** で **[課金]** を選択します。
+2. **[サブスクリプション]** でご使用のサブスクリプションを選択します。
+3. **[サービス]** で、 **[使用中のサービス]** を選択してから、 **[Azure Stack Edge]** を選択します。
+4. **[リソース]** で、お使いのリソースを選択します。
+5. **[Summary]\(要約\)** に、問題の説明を入力します。
+6. **[問題の種類]** で、 **[Unexpected Charges]\(予期しない請求\)** を選択します。
+7. **[問題のサブタイプ]** で、 **[Help me understand charges on my free trial]\(無料試用版への請求について説明してほしい\)** を選択します。
 
 
 ## <a name="next-steps"></a>次のステップ

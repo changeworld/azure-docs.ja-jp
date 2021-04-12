@@ -1,35 +1,37 @@
 ---
 title: Azure Database for MySQL - フレキシブル サーバーでの TLS/SSL を使用した暗号化された接続
 description: Azure Database for MySQL - フレキシブル サーバーで TLS/SSL を使用して接続する方法に関する手順および情報。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 24a8dd4d21cb6ab6edeb985db4e6e6a1349a758d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce6150cf404f1ca68c93285a2f4a29a6373a55c0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90932506"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110026"
 ---
-# <a name="encrypted-connectivity-using-transport-layer-security-tls-12-in-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーでのトランスポート層セキュリティ (TLS 1.2) を使用した暗号化された接続
+# <a name="connect-to-azure-database-for-mysql---flexible-server-over-tls12ssl"></a>Azure Database for MySQL に接続する - TLS1.2/SSL 経由のフレキシブル サーバー
 
 > [!IMPORTANT]
 > Azure Database for MySQL フレキシブル サーバーは現在、パブリック プレビュー段階にあります。
 
-Azure Database for MySQL フレキシブル サーバーでは、トランスポート層セキュリティ (TLS) (以前の Secure Sockets Layer (SSL)) を使用した MySQL サービスへのクライアント アプリケーションの接続がサポートされます。 TLS は、データベース サーバーとクライアント アプリケーションの間の暗号化されたネットワーク接続を保証する業界標準のプロトコルです。これを使用することで、ユーザーはコンプライアンス要件に準拠することができます。
+Azure Database for MySQL フレキシブル サーバーでは、トランスポート層セキュリティ (TLS) (以前の Secure Sockets Layer (SSL)) を使用した MySQL サービスへのクライアント アプリケーションの接続がサポートされます。 TLS は、データベース サーバーとクライアント アプリケーションの間の暗号化されたネットワーク接続を保証する業界標準のプロトコルであり、ユーザーがコンプライアンス要件に準拠できるようにします。
 
 Azure Database for MySQL フレキシブル サーバーでは、トランスポート層セキュリティ (TLS 1.2) を使用した暗号化された接続のみがサポートされ、TLS 1.0 と TLS 1.1 を使用した受信接続はすべて拒否されます。 すべてのフレキシブル サーバーで TLS 接続の適用が有効になるため、フレキシブル サーバーに接続するために TLS/SSL を無効にすることはできません。
 
-## <a name="applications-that-require-certificate-verification-for-tlsssl-connectivity"></a>TLS/SSL 接続のために証明書の検証を必要とするアプリケーション
-安全に接続するために、信頼された証明機関 (CA) 証明書ファイルから生成されたローカルの証明書ファイルがアプリケーションに必要な場合があります。 Azure Database for MySQL フレキシブル サーバーでは、*DigiCert Global Root CA* を使用します。 [DigiCert Global Root CA](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem) から SSL 経由で通信するために必要なこの証明書をダウンロードし、証明書ファイルを希望する場所に保存します。 たとえば、このチュートリアルでは `c:\ssl` を使用します。
+## <a name="download-the-public-ssl-certificate"></a>パブリック SSL 証明書をダウンロードする
+アプリケーションで使用するには、[パブリック SSL 証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードしてください。
+
+証明書ファイルをダウンロードし、希望の場所に保存します。 たとえば、このチュートリアルでは、ローカル環境、またはアプリケーションがホストされているクライアント環境の `c:\ssl` または `\var\www\html\bin` を使用しています。 これにより、アプリケーションから SSL 経由で安全にデータベースに接続できるようになります。 
 
 ### <a name="connect-using-mysql-command-line-client-with-tlsssl"></a>TLS/SSL で mysql コマンド ライン クライアントを使用して接続する
 
-"*プライベート アクセス (VNet 統合)* " を指定してフレキシブル サーバーを作成した場合は、サーバーと同じ VNet 内のリソースからサーバーに接続する必要があります。 仮想マシンを作成し、それをフレキシブル サーバーと共に作成された VNet に追加できます。
+*プライベート アクセス (Vnet 統合)* を使用してフレキシブル サーバーを作成した場合は、サーバーと同じ VNet 内のリソースからサーバーに接続する必要があります。 仮想マシンを作成し、それをフレキシブル サーバーと共に作成された VNet に追加できます。
 
-"*パブリック アクセス (使用できる IP アドレス)* " を指定してフレキシブル サーバーを作成した場合は、サーバー上のファイアウォール規則のリストにローカル IP アドレスを追加できます。
+*パブリック アクセス (使用できる IP アドレス)* を使用してフレキシブル サーバーを作成した場合は、サーバー上のファイアウォール規則の一覧にローカル IP アドレスを追加できます。
 
 ローカル環境からサーバーに接続するには、[mysql.exe](https://dev.mysql.com/doc/refman/8.0/en/mysql.html) または [MySQL Workbench](./connect-workbench.md) のどちらかを選択できます。 
 
@@ -58,6 +60,16 @@ mysql> status
 Azure portal でサーバーに使用できる [接続文字列] ページで事前定義されている接続文字列には、TLS/SSL を使用してデータベース サーバーに接続するための一般的な言語の必須のパラメーターが含まれています。 TLS/SSL パラメーターは、コネクタによって異なります。 たとえば、"useSSL=true"、"sslmode=required"、または "ssl_verify_cert=true" などのバリエーションがあります。
 
 アプリケーションから TLS/SSL 経由でフレキシブル サーバーへの暗号化された接続を確立するには、次のコード サンプルを参照してください。
+
+### <a name="wordpress"></a>WordPress
+[SSL パブリック証明書](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)をダウンロードして、wp-config.php 内で ```// ** MySQL settings - You can get this info from your web host ** //``` 行の後に次の行を追加します。
+
+```php
+//** Connect with SSL** //
+define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+//** SSL CERT **//
+define('MYSQL_SSL_CERT','/FULLPATH/on-client/to/DigiCertGlobalRootCA.crt.pem');
+```
 
 ### <a name="php"></a>PHP
 

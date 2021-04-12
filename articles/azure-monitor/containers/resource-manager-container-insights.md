@@ -1,26 +1,25 @@
 ---
-title: Azure Monitor for containers 用の Resource Manager テンプレートのサンプル
-description: Azure Monitor for containers をデプロイおよび構成するための Azure Resource Manager テンプレートのサンプル。
-ms.subservice: logs
+title: Container insights 用の Resource Manager テンプレートのサンプル
+description: Container insights をデプロイおよび構成するための Azure Resource Manager テンプレートのサンプル。
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: e33bb6ae04f0b11a25a7ab87362bc243ee19c79c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 68bad5b4bfcef4f0f633bce7e3e352486aed3fdf
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597480"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102039191"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-containers"></a>Azure Monitor for containers 用の Resource Manager テンプレートのサンプル
+# <a name="resource-manager-template-samples-for-container-insights"></a>Container insights 用の Resource Manager テンプレートのサンプル
 この記事には、Azure Monitor で仮想マシンに対して Log Analytics エージェントをデプロイし構成するためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="enable-for-aks-cluster"></a>AKS クラスターに対して有効にする
-次のサンプルでは、AKS クラスターに対して Azure Monitor for containers を有効にします。
+次のサンプルでは、AKS クラスターに対して Container insights を有効にします。
 
 
 ### <a name="template-file"></a>テンプレート ファイル
@@ -357,4 +356,4 @@ ms.locfileid: "100597480"
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Monitor の他のサンプル テンプレートを入手します](../resource-manager-samples.md)。
-* [Azure Monitor for containers の詳細を確認します](../containers/container-insights-overview.md)。
+* [Container insights](../containers/container-insights-overview.md) について詳しく学習します。

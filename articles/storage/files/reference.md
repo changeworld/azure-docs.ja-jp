@@ -1,18 +1,18 @@
 ---
 title: Azure Files のリファレンス
 description: Azure Files API リファレンス、readme ファイル、クライアント ライブラリ パッケージが見つかります。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/14/2020
 ms.service: storage
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: 4fe6befbfc3c6f12cf804841052795647cd1f76a
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: be50c60893b9767e7db2c5af0e43ed380a51ecab
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629837"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280005"
 ---
 # <a name="azure-files-reference"></a>Azure Files のリファレンス
 
@@ -106,7 +106,7 @@ Azure Files API リファレンス、ライブラリ パッケージ、readme �
 
 | Version | プラットフォーム |
 | ------- | -------- |
-|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  4.x  | [PowerShell](/powershell/module/az.storage/?view=azps-4.8.0&preserve-view=true) |
 |  3.x  | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
 |  2.x  | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 

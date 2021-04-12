@@ -5,21 +5,58 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d560b261e058d01040616f3c59ede60e5986c672
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 65a06a60b502b0e189ebe8a5e203553494f5d128
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666981"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "104721298"
 ---
 # <a name="scaling-hpc-applications"></a>HPC アプリケーションのスケール
 
 Azure 上の HPC アプリケーションの最適なスケールアップとスケールアウトのパフォーマンスには、特定のワークロードに対するパフォーマンスの調整と最適化の実験が必要です。 このセクションと VM シリーズ固有のページでは、アプリケーションをスケールするための一般的なガイダンスについて説明します。
 
+## <a name="application-setup"></a>アプリケーションのセットアップ
+[azurehpc リポジトリ](https://github.com/Azure/azurehpc)には、次のような多くの例が含まれています。
+- [アプリケーション](https://github.com/Azure/azurehpc/tree/master/apps)の最適な設定と実行。
+- [ファイル システムとクラスター](https://github.com/Azure/azurehpc/tree/master/examples)の構成。
+- いくつかの一般的なアプリケーション ワークフローを使用して簡単に開始する方法に関する[チュートリアル](https://github.com/Azure/azurehpc/tree/master/tutorials)。
+
+## <a name="optimally-scaling-mpi"></a>MPI を最適にスケールする 
+
+次の提案は、最適なアプリケーションのスケーリング効率、パフォーマンス、および整合性に適用されます。
+
+- 小さいスケールのジョブ (つまり 256K 接続未満) の場合は、次のオプションを使用します。
+   ```bash
+   UCX_TLS=rc,sm
+   ```
+
+- 大規模なスケールのジョブ (つまり 256K 接続以上) の場合は、次のオプションを使用します。
+   ```bash
+   UCX_TLS=dc,sm
+   ```
+
+- 上記で MPI ジョブの接続数を計算するには、以下を使用します。
+   ```bash
+   Max Connections = (processes per node) x (number of nodes per job) x (number of nodes per job) 
+   ```
+
+## <a name="process-pinning"></a>プロセスの固定
+
+- (自動バランス アプローチとは対照的に) シーケンシャルなピン留めアプローチを使用して、コアにプロセスをピン留めします。 
+- Numa/Core/HwThread によるバインディングは、既定のバインディングよりも優れています。
+- ハイブリッドの並列アプリケーション (OpenMP + MPI) の場合は、HB および HBv2 の VM サイズで、CCX あたり 4 スレッドと 1 つの MPI ランクを使用します。
+- 純粋な MPI アプリケーションの場合は、HB および HBv2 の VM サイズで最適なパフォーマンスを得るために、CCX ごとに 1 ～ 4 の MPI ランクで実験します。
+- メモリ帯域幅の影響を非常に受けやすいアプリケーションでは、CCX あたりのコア数を減らしてメリットが得られる場合があります。 これらのアプリケーションでは、CCX あたり 3 コアまたは 2 コアを使用してメモリ帯域幅の競合を減らし、実際の環境でより高いパフォーマンスや、より一貫したスケーラビリティを実現できます。 特に、MPI Allreduce はこのアプローチからメリットが得られる可能性があります。
+- 非常に大規模な実行の場合、UD またはハイブリッド RC + UD トランスポートを使用することをお勧めします。 多くの MPI ライブラリ/ランタイム ライブラリでは、これが内部的に実行されます (UCX や MVAPICH2 など)。 大規模な実行の場合は、トランスポート構成を確認します。
+
 ## <a name="compiling-applications"></a>アプリケーションのコンパイル
+<br>
+<details>
+<summary>展開するにはクリック</summary>
 
 必須ではありませんが、適切な最適化フラグを使用してアプリケーションをコンパイルすると、HB および HC シリーズの VM で最高のスケールアップ パフォーマンスを達成できます。
 
@@ -37,7 +74,7 @@ FLANG コンパイラは、AOCC スイートに最近追加された (2018 年 4
 
 ### <a name="dragonegg"></a>DragonEgg
 
-DragonEgg は GCC のオプティマイザーとコード ジェネレーターを LLVM プロジェクトのものと置き換える gcc プラグインです。 AOCC に付属する DragonEgg は gcc-4.8.x で動作し、x86-32/x86-64 ターゲット向けにテストされており、さまざまな Linux プラットフォームで正常に使用されています。
+DragonEgg は GCC のオプティマイザーとコード ジェネレーターを LLVM プロジェクトのものと置き換える gcc プラグインです。 AOCC に付属する DragonEgg は gcc-4.8.x で動作し、x86-32 および x86-64 ターゲット向けにテストされており、さまざまな Linux プラットフォームで正常に使用されています。
 
 GFortran は、GCC GIMPLE 中間表現 (IR) を生成する前処理、解析、およびセマンティック分析を担当する Fortran プログラムの実際のフロントエンドです。 DragonEgg は、GFortran コンパイル フローにプラグインする GNU プラグインです。 これには GNU プラグイン API が実装されています。 このプラグイン アーキテクチャでは、DragonEgg がコンパイラ ドライバーになり、コンパイルのさまざまな段階が推進されます。  ダウンロードとインストールの手順を実行した後は、次を使用して Dragon Egg を呼び出すことができます。 
 
@@ -68,17 +105,7 @@ HPC の場合、AMD は GCC コンパイラ 7.3 以降を推奨します。 RHEL
 ```bash
 gcc $(OPTIMIZATIONS) $(OMP) $(STACK) $(STREAM_PARAMETERS) stream.c -o stream.gcc
 ```
-
-## <a name="scaling-applications"></a>アプリケーションのスケーリング 
-
-次の提案は、最適なアプリケーションのスケーリング効率、パフォーマンス、および整合性に適用されます。
-
-* (自動バランス アプローチとは対照的に) シーケンシャルなピン留めアプローチを使用して、コア 0-59 にプロセスをピン留めします。 
-* Numa/Core/HwThread によるバインディングは、既定のバインディングよりも優れています。
-* ハイブリッドの並列アプリケーション (OpenMP + MPI) の場合は、CCX あたり 4 スレッドと 1 つの MPI ランクを使用します。
-* 純粋な MPI アプリケーションの場合は、最適なパフォーマンスを得るために CCX ごとに 1-4 MPI ランクで実験します。
-* メモリ帯域幅の影響を非常に受けやすいアプリケーションでは、CCX あたりのコア数を減らしてメリットが得られる場合があります。 これらのアプリケーションでは、CCX あたり 3 コアまたは 2 コアを使用してメモリ帯域幅の競合を減らし、実際の環境でより高いパフォーマンスや、より一貫したスケーラビリティを実現できます。 特に、MPI Allreduce はここからメリットが得られる可能性があります。
-* 非常に大規模な実行の場合、UD またはハイブリッド RC + UD トランスポートを使用することをお勧めします。 多くの MPI ライブラリ/ランタイム ライブラリでは、これが内部的に実行されます (UCX や MVAPICH2 など)。 大規模な実行の場合は、トランスポート構成を確認します。
+</details>
 
 ## <a name="next-steps"></a>次のステップ
 

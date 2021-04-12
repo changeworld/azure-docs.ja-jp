@@ -9,10 +9,10 @@ ms.date: 10/07/2019
 author: sakash279
 ms.author: akshanka
 ms.openlocfilehash: 79b58b76954cf15289e85dbf763b7a399897635d
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94489881"
 ---
 # <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する方法
@@ -92,14 +92,14 @@ const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=ht
 
 `<your_cosmos_db_account>` には、Azure Cosmos DB アカウントの名前を使用します。 `<your_cosmos_db_account_key>` のプライマリ キーを入力してください。 `<your_cosmos_db_endpoint>` には、[Azure portal](https://portal.azure.com) に一覧表示されているエンドポイントを入力します。
 
-ローカルの Windows ベースのコンピューターでアプリケーションをテストするには、[Azure SDK](https://azure.microsoft.com/downloads/) と共にインストールされた、Azure ストレージ エミュレーターを使用できます。 ストレージ エミュレーターは、ローカルの開発マシンで、Azure BLOB、Queue、および Table service をシミュレートするユーティリティです。 次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。  
+ローカルの Windows ベースのコンピューターでアプリケーションをテストするには、[Azure SDK](https://azure.microsoft.com/downloads/) と共にインストールされた、Azure Storage Emulator を使用できます。 ストレージ エミュレーターは、ローカルの開発マシンで、Azure BLOB、Queue、および Table service をシミュレートするユーティリティです。 次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。  
 
 ```cpp
 // Define the connection string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Windows デスクトップから Azure ストレージ エミュレーターを起動するには、 **[スタート]** ボタンをクリックするか、Windows キーを押します。 入力し、*Microsoft Azure ストレージ エミュレーター* を実行します。 詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
+Windows デスクトップから Azure Storage Emulator を起動するには、 **[スタート]** ボタンをクリックするか、Windows キーを押します。 入力し、*Microsoft Azure Storage Emulator* を実行します。 詳細については、「[開発とテストのための Azure Storage Emulator 使用する](../storage/common/storage-use-emulator.md)」を参照してください。
 
 ### <a name="retrieve-your-connection-string"></a>接続文字列の取得
 

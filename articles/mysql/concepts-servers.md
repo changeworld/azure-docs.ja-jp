@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: ed6d5d676fd2c6eefd3288b7609446eb61611ed6
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: a05037505c122bb974e6da3d11a6f25a715a6843
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100517979"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104869431"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
 
@@ -62,7 +62,13 @@ Azure Database for MySQL を使用すると、使用されていないときに�
 
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 
-Azure Database for MySQL サーバーを管理するには、Azure Portal または Azure CLI を使用します。
+Azure portal または Azure CLI を使用して、Azure Database for MySQL サーバーの作成、削除、サーバー パラメーター構成 (my.cnf)、スケーリング、ネットワーク、セキュリティ、高可用性、バックアップと復元、監視を管理できます。 また、Azure Database for MySQL サーバーではスーパー ユーザー特権がサポートされていませんが、必要となる特定のデータベース管理タスクを実行するための以下のストアド プロシージャが用意されています。
+
+|**ストアド プロシージャ名**|**入力パラメーター**|**出力パラメーター**|**使用上の注意**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|該当なし|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で実行されているステートメントを終了した後、指定された processlist_id に関連する接続を終了します。|
+|*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
+|*mysql.az_load_timezone*|該当なし|該当なし|[タイム ゾーン テーブル](howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
 
 ## <a name="next-steps"></a>次のステップ
 

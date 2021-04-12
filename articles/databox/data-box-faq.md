@@ -6,14 +6,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 02/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 87ec1f03a1f2294a4423e26129644eafcf7c915c
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.custom: references_regions
+ms.openlocfilehash: a692aeba312b6fcad580eac901f4b7bc65f059fc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655477"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101730577"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -68,6 +69,20 @@ Data Box は配送先と同じ国/地域内でのデータ インジェストま
 2. Data Box へのオンプレミス データ コピーが完了したら、そのデバイスをカナダの Azure データセンターに返送します。 Data Box に存在するデータは、注文の作成時に選択したカナダの Azure リージョンの移行先のストレージ アカウントにアップロードされます。
 
 3. その後、AzCopy などのツールを使用して、米国西部のストレージ アカウントにデータをコピーできます。 この手順では、Data Box の課金に含まれていない [Standard Storage](https://azure.microsoft.com/pricing/details/storage/) と [帯域幅の料金](https://azure.microsoft.com/pricing/details/bandwidth/)が発生します。
+
+#### <a name="q-does-data-box-store-any-customer-data-outside-of-the-service-region"></a>Q. Data Box によって、サービス リージョン外に格納される顧客データはありますか?
+
+A. いいえ。 Data Box によって、顧客データがサービス リージョン外に格納されることはありません。 顧客は、データの完全な所有権を持ち、注文の作成時に選択したストレージ アカウントに基づいて、指定された場所にデータを保存できます。  
+
+顧客データに加えて、Data Box のデータには、デバイスに関連するセキュリティ アーティファクト、デバイスとサービスの監視ログ、サービス関連のメタデータなどがあります。 データの損失を防ぐため、すべてのリージョン (ブラジル南部と東南アジアを除く) で、Data Box のデータは geo 冗長ストレージ アカウントを使用してペアになっているリージョンに保管され、レプリケートされます。  
+
+ブラジル南部と東南アジアでは、[データ所在地の要件](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information)により、Data Box のデータは 1 つのリージョンに含まれるようにゾーン冗長ストレージ (ZRS) アカウントに保管されます。 東南アジアの場合、Data Box のすべてのデータはシンガポールに保管されます。ブラジル南部の場合、データはブラジルに保管されます。 
+
+ブラジル南部と東南アジアでサービス停止が発生した場合、顧客は別のリージョンから新しい注文を作成できます。 新しい注文は、それらが作成されたリージョンから提供され、Data Box デバイスの往復の発送はお客様が担当します。
+
+### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>Q. リージョン全体で障害が発生した場合にデータを回復するにはどうすればよいですか?
+
+A. 大きな災害のために 1 つのリージョンが失われるような極端な状況では、Microsoft がリージョン間のフェールオーバーを開始できます。 この場合、ユーザーによる操作は必要ありません。 注文が同じ国または商取引の境界内にある場合は、フェールオーバー リージョンを通じて処理されます。 ただし、一部の Azure リージョンには、同じ地理的または商取引の境界内にペアのリージョンがありません。 これらのリージョンのいずれかに障害が発生した場合は、使用可能な別のリージョンから Data Box の注文を再作成し、この新しいリージョンの Azure にデータをコピーする必要があります。 詳しくは、「[ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」をご覧ください。
 
 ### <a name="q-who-should-i-contact-if-i-come-across-any-issues-with-data-box"></a>Q. Data Box に関して何か問題が発生した場合、どこに連絡すればよいですか。
 A. Data Box に関して何か問題が発生した場合は、[Microsoft サポート](data-box-disk-contact-microsoft-support.md)にお問い合わせください。
@@ -201,7 +216,7 @@ A.  コピー処理は、次の方法で高速化できます。
 - データ コピーのストリームを複数使用する。 たとえば、`Robocopy` でマルチスレッド オプションを使用します。 使用される正確なコマンドについては、「[チュートリアル: Azure Data Box にデータをコピーして確認する](data-box-deploy-copy-data.md)」を完了していることを確認してください。
 - 複数のセッションを使用する。
 - ネットワーク共有 (ネットワーク速度によってコピー速度が制限される可能性のある場所) 経由でコピーする代わりに、Data Box が接続されているコンピューターにデータをローカルで保存します。
-- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [`Bluestop` FIO ツール](https://ci.appveyor.com/project/axboe/fio)をダウンロードします。このツールを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。 最新の x86 または x64 ビルドを選択し、 **[Artifacts]\(成果物\)** タブを選択して、MSI をダウンロードします。
+- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [`Bluestop``FIO` ツール](https://ci.appveyor.com/project/axboe/fio)をダウンロードし、これを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。 最新の x86 または x64 ビルドを選択し、 **[Artifacts]\(成果物\)** タブを選択して、MSI をダウンロードします。
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:

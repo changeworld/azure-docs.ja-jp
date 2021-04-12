@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 325502255e84e38a39ca5b90ee4126354c0d425b
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ecc4a5a17186eddd4223715462b14399bdf702df
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601233"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104601892"
 ---
 # <a name="get-started-with-the-windows-virtual-desktop-agent"></a>Windows Virtual Desktop エージェントの概要
 
@@ -32,7 +32,10 @@ Windows Virtual Desktop エージェントは、2 つの方法のいずれかで
 
 ## <a name="agent-update-process"></a>エージェントの更新プロセス
 
-更新プログラムが利用可能になるたびに、Windows Virtual Desktop サービスによってエージェントが自動的に更新されます。 エージェントの更新によって、新しい機能を組み込むことや、以前の問題を修正することができます。 Windows Virtual Desktop エージェントの初期バージョンがインストールされると、そのエージェントは Windows Virtual Desktop サービスに対してクエリを定期的に実行して、エージェントとそのコンポーネントの使用可能な新しいバージョンがないか確認します。 新しいバージョンがある場合は、エージェント ブートローダーによって、エージェント、サイドバイサイド スタック、Geneva Monitoring エージェントの最新バージョンが自動的にダウンロードされます。
+更新プログラムが利用可能になるたびに、Windows Virtual Desktop サービスによってエージェントが更新されます。 エージェントの更新には、新しい機能や以前の問題の修正を含めることができます。 Windows Virtual Desktop エージェントの初期バージョンがインストールされると、エージェントは Windows Virtual Desktop サービスに対してクエリを定期的に実行して、エージェント、スタック、または監視コンポーネントの使用可能な新しいバージョンがないか確認します。 いずれかのコンポーネントの新しいバージョンが既にデプロイされている場合は、更新されたコンポーネントが自動的にインストールされます。
+
+エージェントの新しいバージョンは、1 週間の期間内に一定間隔ですべての Azure サブスクリプションにデプロイされます。 これらの更新期間は "フライト" と呼ばれます。 フライトが発生した場合、ホスト プール内の VM では異なるタイミングでエージェントの更新を受け取ることがあります。 すべてのサブスクリプション内のすべての VM エージェントは、デプロイ期間の終了までに更新されます。 Windows Virtual Desktop のフライト システムでは、エージェントの更新における安定性と品質を確保することによって、サービスの信頼性を向上させます。
+
 
 >[!NOTE]
 >- Geneva Monitoring エージェントが最新バージョンに更新されると、新しい Monitoring エージェントの新しいタスクを作成する前に、古い Geneva タスクが検出され、無効になります。 最新バージョンの Monitoring エージェントに問題があり、修正のために以前のバージョンに戻す必要がある場合に備えて、以前のバージョンの Monitoring エージェントは削除されません。 最新バージョンに問題がある場合は、古い Monitoring エージェントが再び有効になり、監視データの配信が続行されます。 更新前にインストールした最後のモニターよりも古いすべてのバージョンのモニターが VM から削除されます。

@@ -12,10 +12,10 @@ ms.date: 01/21/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67870a458138101f3b8a009f7c96c74991396284
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98675188"
 ---
 # <a name="register-a-microsoft-graph-application"></a>Microsoft Graph アプリケーションを登録する

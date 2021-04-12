@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9a5be358c40c3411115d8c2ee3f9471c68771b8
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 545331fdea56aef3d7b9dac8062d4fc2d6891254
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576212"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102501570"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールのストレージ アカウント アクセスを制御する
 
@@ -104,14 +104,14 @@ SAS トークンを使用したアクセスを有効にするには、データ�
 
 ストレージ アカウントのファイアウォールを構成し、Synapse ワークスペースの例外を追加するには、次の手順に従います。
 
-1. Powershell を開くか [PowerShell をインストール](/powershell/scripting/install/installing-powershell-core-on-windows?preserve-view=true&view=powershell-7.1)します
-2. Az.Storage 3.0.1 モジュールと Az.Synapse 0.7.0 をインストールします。 
+1. Powershell を開くか [PowerShell をインストール](/powershell/scripting/install/installing-powershell-core-on-windows)します
+2. Az.Storage 3.4.0 モジュールと Az.Synapse 0.7.0 をインストールします。 
     ```powershell
-    Install-Module -Name Az.Storage -RequiredVersion 3.0.1-preview -AllowPrerelease
+    Install-Module -Name Az.Storage -RequiredVersion 3.4.0
     Install-Module -Name Az.Synapse -RequiredVersion 0.7.0
     ```
     > [!IMPORTANT]
-    > **バージョン 3.0.1** を使用していることを確認してください。 次のコマンドを実行して、Az.Storage のバージョンを確認できます。  
+    > **バージョン 3.4.0** を使用していることを確認してください。 次のコマンドを実行して、Az.Storage のバージョンを確認できます。  
     > ```powershell 
     > Get-Module -ListAvailable -Name  Az.Storage | select Version
     > ```
@@ -122,7 +122,7 @@ SAS トークンを使用したアクセスを有効にするには、データ�
     Connect-AzAccount
     ```
 4. PowerShell で変数を定義します 
-    - リソース グループ名 - これは、Azure portal の Synapse ワークスペースの概要で確認できます。
+    - リソース グループ名 - これは、Azure portal の Storage アカウントの概要で確認できます。
     - アカウント名 - ファイアウォール規則によって保護されているストレージ アカウントの名前。
     - テナント ID - Azure portal で Azure Active Directory のテナント情報できます。
     - ワークスペース名 - Synapse ワークスペースの名前。
@@ -192,16 +192,14 @@ GRANT ALTER ANY CREDENTIAL TO [user_name];
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-スムーズな Azure AD パススルーの実行を確保するために、すべてのユーザーには、既定で `UserIdentity` 資格情報を使用する権限が与えられます。
-
 ## <a name="server-scoped-credential"></a>サーバースコープ資格情報
 
-サーバースコープ資格情報が使用されるのは、`DATA_SOURCE` が指定されない `OPENROWSET` 関数を SQL ログインが呼び出して、ストレージ アカウント上のファイルを読み取るときです。 サーバースコープ資格情報の名前は、Azure Storage の URL と一致する **必要があります**。 資格情報を追加するには、[CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) を実行します。 CREDENTIAL NAME 引数の指定が必要になります。 それは、ストレージ内のデータへのパスの一部またはパス全体に一致している必要があります (下記参照)。
+サーバースコープ資格情報が使用されるのは、`DATA_SOURCE` が指定されない `OPENROWSET` 関数を SQL ログインが呼び出して、ストレージ アカウント上のファイルを読み取るときです。 サーバースコープ資格情報の名前は、Azure Storage のベース URL と一致している **必要があります** (必要に応じてコンテナー名が続きます)。 資格情報を追加するには、[CREATE CREDENTIAL](/sql/t-sql/statements/create-credential-transact-sql?view=azure-sqldw-latest&preserve-view=true) を実行します。 CREDENTIAL NAME 引数の指定が必要になります。
 
 > [!NOTE]
 > 引数 `FOR CRYPTOGRAPHIC PROVIDER` はサポートされていません。
 
-サーバーレベル資格情報の名前は、`<prefix>://<storage_account_path>/<storage_path>` という形式で、ストレージ アカウントの完全なパス (および必要に応じてコンテナー) と一致する必要があります。 ストレージ アカウント パスについては、次の表で説明します。
+サーバーレベル資格情報の名前は、`<prefix>://<storage_account_path>[/<container_name>]` という形式で、ストレージ アカウントの完全なパス (および必要に応じてコンテナー) と一致する必要があります。 ストレージ アカウント パスについては、次の表で説明します。
 
 | 外部データ ソース       | Prefix | ストレージ アカウント パス                                |
 | -------------------------- | ------ | --------------------------------------------------- |
@@ -224,11 +222,13 @@ SQL ユーザーが Azure AD 認証を使用してストレージにアクセス
 <*mystorageaccountname*> は、実際のストレージ アカウント名に、<*mystorageaccountcontainername*> は、実際のコンテナー名に置き換えてください。
 
 ```sql
-CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
+CREATE CREDENTIAL [https://<mystorageaccountname>.dfs.core.windows.net/<mystorageaccountcontainername>]
 WITH IDENTITY='SHARED ACCESS SIGNATURE'
 , SECRET = 'sv=2018-03-28&ss=bfqt&srt=sco&sp=rwdlacup&se=2019-04-18T20:42:12Z&st=2019-04-18T12:42:12Z&spr=https&sig=lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78%3D';
 GO
 ```
+
+必要に応じて、コンテナー名を使用せずに、ストレージ アカウントのベース URL のみを使用できます。
 
 ### <a name="managed-identity"></a>[Managed Identity](#tab/managed-identity)
 
@@ -238,6 +238,8 @@ GO
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
 WITH IDENTITY='Managed Identity'
 ```
+
+必要に応じて、コンテナー名を使用せずに、ストレージ アカウントのベース URL のみを使用できます。
 
 ### <a name="public-access"></a>[パブリック アクセス](#tab/public-access)
 

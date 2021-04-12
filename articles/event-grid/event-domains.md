@@ -3,12 +3,12 @@ title: Azure Event Grid のイベント ドメイン
 description: この記事では、イベント ドメインを使用して、さまざまなビジネス組織、顧客、アプリケーションへのカスタム イベントのフローを管理する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 9b313784cd006087f3c2f1354053540cc9224782
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 46a50a8ecc50bd1b80efcba41228564df1c36c9f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328829"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102198678"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Event Grid トピックを管理するためのイベント ドメインについて
 
@@ -25,15 +25,8 @@ ms.locfileid: "92328829"
 
 イベント ドメインにより、ユーザーは、Azure サービス (Storage や IoT Hub など) によって使用されているものと同じアーキテクチャ を使用して、イベントを発行できます。 数千のトピックにイベントを発行できます。 また、ドメインでは、テナントをパーティション分割できるように各トピックの承認と認証を制御できます。
 
-### <a name="example-use-case"></a>ユース ケースの例
-
-例を使えば、イベント ドメインを最も簡単に説明できます。 Contoso Construction Machinery という会社を経営しているとします。この会社はトラクター、掘削機器、その他の重機を製造しています。 経営の一部として、機器のメンテナンス、システムの正常性、契約の更新などについて顧客にリアルタイムの情報をプッシュで提供します。 この情報はすべて、アプリ、顧客のエンドポイント、顧客が設定したその他のインフラストラクチャを含むさまざまなエンドポイントに到達します。
-
-イベント ドメインを使用することで、Contoso Construction Machinery を単一のイベント処理エンティティとしてモデル化することができます。 各顧客は、ドメイン内のトピックとして表されます。 認証と承認は Azure Active Directory を使用して処理されます。 各顧客はトピックをサブスクライブし、イベントを自分に配信させることができます。 イベント ドメインを介した管理アクセスにより、確実に自分のトピックにのみアクセスできるようになります。
-
-また、すべての顧客イベントを発行できる、単一のエンドポイントが提供されます。 Event Grid では、各トピックにより、そのテナントをスコープとするイベントのみが認識されるようにします。
-
-![Contoso Construction の例](./media/event-domains/contoso-construction-example.png)
+## <a name="example-use-case"></a>ユース ケースの例
+[!INCLUDE [event-grid-domain-example-use-case.md](../../includes/event-grid-domain-example-use-case.md)]
 
 ## <a name="access-management"></a>アクセス管理
 
@@ -43,7 +36,7 @@ ms.locfileid: "92328829"
 
 ### <a name="built-in-roles"></a>組み込みロール
 
-Event Grid には、Azure RBAC がイベント ドメインでより簡単に動作するように、2 つの組み込みロール定義があります。 **EventGrid EventSubscription 共同作成者 (プレビュー)** ロールと、 **EventGrid EventSubscription 閲覧者 (プレビュー)** ロールです。 イベント ドメインでトピックをサブスクライブする必要があるユーザーに、これらのロールを割り当てます。 ロールの割り当てのスコープは、ユーザーがサブスクライブする必要があるトピックだけにします。
+Event Grid には、Azure RBAC がイベント ドメインでより簡単に動作するように、2 つの組み込みロール定義があります。 **EventGrid EventSubscription 共同作成者 (プレビュー)** ロールと、**EventGrid EventSubscription 閲覧者 (プレビュー)** ロールです。 イベント ドメインでトピックをサブスクライブする必要があるユーザーに、これらのロールを割り当てます。 ロールの割り当てのスコープは、ユーザーがサブスクライブする必要があるトピックだけにします。
 
 これらのロールについては、[Event Grid の組み込みロール](security-authorization.md#built-in-roles)に関する記事をご覧ください。
 
@@ -107,6 +100,8 @@ Event Grid には、Azure RBAC がイベント ドメインでより簡単に動
 イベント ドメインでは、Event Grid の他のすべての機能で使用されるのと同じ[操作価格](https://azure.microsoft.com/pricing/details/event-grid/)が使用されます。
 
 イベント ドメインでの操作は、カスタム トピックの場合と同じように動作します。 イベント ドメインへのイベントの各取り込みは 1 回の操作であり、イベントの各配信試行も 1 回の操作となります。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

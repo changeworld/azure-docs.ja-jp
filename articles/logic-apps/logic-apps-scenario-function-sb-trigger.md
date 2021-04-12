@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98784936"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Azure Functions と Azure Service Bus を使用してロジック アプリを呼び出すか、またはトリガーする

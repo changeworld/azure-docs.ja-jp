@@ -5,14 +5,14 @@ author: linda33wj
 ms.service: data-factory
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/18/2020
+ms.date: 03/16/2021
 ms.author: jingwang
-ms.openlocfilehash: 821f64c46e0ae813e7dcd437bb0d4af848647185
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 12f7a87ce166be516d070b66b069f7a584a386c7
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372690"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103563506"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>クイック スタート:.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 
@@ -32,10 +32,6 @@ ms.locfileid: "100372690"
 ### <a name="visual-studio"></a>Visual Studio
 
 この記事のチュートリアルでは、Visual Studio 2019 を使用します。 Visual Studio 2013、2015、または 2017 での手順は少し異なります。
-
-### <a name="azure-net-sdk"></a>Azure .NET SDK
-
-[Azure .NET SDK](https://azure.microsoft.com/downloads/) をマシンにダウンロードしてインストールします。
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
 

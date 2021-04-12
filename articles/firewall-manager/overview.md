@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 01/12/2021
+ms.date: 03/29/2021
 ms.author: victorh
-ms.openlocfilehash: 63e2aac4c12ecc5d832cb037fda91bd2c6ad0bf1
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 6725bea562d3e7841b5ab82acc0a54f91f0488b4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132445"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732926"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Firewall Manager とは
 
@@ -66,7 +66,7 @@ Azure Firewall だけでなく、サードパーティのサービスとして�
 
 この機能は、セキュリティ保護付き仮想ハブのデプロイでのみ利用できます。
 
-ブランチからインターネット (B2I) へのトラフィックのフィルター処理にはサードパーティ プロバイダーを使用し、ブランチから VNet (B2V)、VNet から VNet (V2V)、および VNet からインターネット (V2I) には Azure Firewall を同時に使用できます。 B2V または V2V のために Azure Firewall が必要ではない場合は、V2I トラフィックのフィルター処理にサードパーティ プロバイダーを使用することもできます。 
+ブランチからインターネット (B2I) へのトラフィックのフィルター処理にはサードパーティ プロバイダーを使用し、ブランチから VNet (B2V)、VNet から VNet (V2V)、および VNet からインターネット (V2I) には Azure Firewall を同時に使用できます。 
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
@@ -88,7 +88,6 @@ Azure Firewall Manager には、次の既知の問題があります。
 |一括 IP アドレス追加が失敗する|複数のパブリック IP アドレスを追加すると、セキュリティで保護されたハブ ファイアウォールがエラー状態になります。|より少ない増分のパブリック IP アドレスを追加します。 たとえば、一度に 10 個を追加します。|
 |セキュリティ保護付き仮想ハブで DDoS Protection Standard がサポートされていない|DDoS Protection Standard は vWAN と統合されていません。|調査中|
 |アクティビティ ログが完全にはサポートされていない|現在、ファイアウォール ポリシーでは、アクティビティ ログはサポートされていません。|調査中|
-|SNAT のプライベート IP アドレス範囲の構成|[プライベート IP 範囲の設定](../firewall/snat-private-range.md)は、Azure Firewall ポリシーが構成されている場合は無視されます。 宛先 IP アドレスが [IANA RFC 1918](https://tools.ietf.org/html/rfc1918) に従ったプライベート IP アドレス範囲内にある場合、既定の Azure Firewall の動作が使用され、SNAT のネットワーク規則は含まれません。|調査中|
 |Firewall ポリシーを使用するようにファイアウォールが移行されても、いくつかのファイアウォール設定が移行されません|Azure Firewall ポリシーに移行しても、可用性ゾーンと SNAT プライベート アドレスは移行されません。|調査中| 
 
 ## <a name="next-steps"></a>次のステップ

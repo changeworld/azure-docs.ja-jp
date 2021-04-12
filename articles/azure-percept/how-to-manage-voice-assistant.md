@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 593d2ccadf814cb5af27a4bb738f28132f39ab7d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 8f22379049b74428787b738af832802081be7bf8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660587"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105022893"
 ---
 # <a name="managing-your-voice-assistant"></a>音声アシスタントを管理する
 
@@ -28,7 +28,7 @@ ms.locfileid: "101660587"
 
 1. デモ ページの **[Custom Keyword]\(カスタム キーワード\)** の横にある **[変更]** をクリックします。
 
-    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="画像。":::
+    :::image type="content" source="./media/manage-voice-assistant/hospitality-demo.png" alt-text="Hospitality (接客) デモ ウィンドウのスクリーンショット。":::
 
     デモ ページを開いていない場合は、デバイス ページ (下記参照) に移動し、 **[アクション]** の **[音声アシスタントのテスト]** をクリックしてデモにアクセスします。
 
@@ -40,17 +40,17 @@ ms.locfileid: "101660587"
 
 1. [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) の概要ページで、左側のメニュー ペインにある **[デバイス]** をクリックします。
 
-    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="画像。":::
+    :::image type="content" source="./media/manage-voice-assistant/portal-overview-devices.png" alt-text="デバイスが強調表示された Azure Percept Studio の概要ページのスクリーンショット。":::
 
 1. 音声アシスタント アプリケーションのデプロイ先となったデバイスを選択します。
 
 1. **[Speech]\(音声\)** タブを開きます。
 
-    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="画像。":::
+    :::image type="content" source="./media/manage-voice-assistant/device-page.png" alt-text="[音声] タブが強調表示されたエッジ デバイス ページのスクリーンショット。":::
 
 1. **[キーワード]** の横にある **[変更]** をクリックします。
 
-    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="画像。":::
+    :::image type="content" source="./media/manage-voice-assistant/change-keyword-device.png" alt-text="使用可能な音声ソリューションのアクションのスクリーンショット。":::
 
 1. 対象となるいずれかのキーワードを選択し、 **[Save]\(保存\)** をクリックして変更を適用します。
 
@@ -60,7 +60,7 @@ ms.locfileid: "101660587"
 
 音声アシスタントのカスタム キーワードは、[Speech Studio](https://speech.microsoft.com/) で作成できます。 基本的なカスタム キーワード モデルのトレーニングには最大 30 分かかります。
 
-カスタム キーワードの作成に関するガイダンスについては、[Speech Studio のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk-create-kws)に従ってください。 構成が完了すると、音声アシスタント アプリケーションで使用するための新しいキーワードが Project Santa Cruz ポータルで利用できるようになります。
+カスタム キーワードの作成に関するガイダンスについては、[Speech Studio のドキュメント](../cognitive-services/speech-service/custom-keyword-basics.md)に従ってください。 構成が完了すると、音声アシスタント アプリケーションで使用するための新しいキーワードが Project Santa Cruz ポータルで利用できるようになります。
 
 ## <a name="commands-configuration"></a>コマンドの構成
 
@@ -88,7 +88,7 @@ ms.locfileid: "101660587"
 
 音声アシスタントを実行するためのカスタム コマンドは、[Speech Studio](https://speech.microsoft.com/) で作成できます。
 
-カスタム コマンドの作成に関するガイダンスについては、[Speech Studio のドキュメント](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-custom-commands-application)に従ってください。 構成が完了すると、音声アシスタントアプリケーション用の新しいコマンドが Azure Percept Studio で使用できるようになります。
+カスタム コマンドの作成に関するガイダンスについては、[Speech Studio のドキュメント](../cognitive-services/speech-service/quickstart-custom-commands-application.md)に従ってください。 構成が完了すると、音声アシスタントアプリケーション用の新しいコマンドが Azure Percept Studio で使用できるようになります。
 
 ## <a name="next-steps"></a>次のステップ
 

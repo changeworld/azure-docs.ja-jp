@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 11/10/2020
 ms.topic: conceptual
 ms.service: media-services
-ms.openlocfilehash: bf282b3fbba0f22cd41c0420014c46ddb7c958eb
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 8210efe9c17a6edcb18fe114b7f6165d8cbd8360
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955141"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121967"
 ---
 # <a name="verified-on-premises-live-streaming-encoders"></a>検証済みのオンプレミス ライブ ストリーミング エンコーダー
 
@@ -31,9 +31,9 @@ Azure Media Services では、[ライブ イベント](/rest/api/media/liveevent
  
 * オンプレミスのライブ エンコーダーでは、次のいずれかの形式で、Media Services によるライブ エンコードが有効な Live Event にシングル ビットレート ストリームが送信されます。RTMP またはスムーズ ストリーミング (フラグメント化 MP4)。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードが Live Event で実行されます。
 
-この記事では、検証済みのオンプレミス ライブ ストリーミング エンコーダーについて説明します。 検証は、ベンダーの自己検証または顧客の検証によって行われます。 Microsoft Azure Media Services では、各エンコーダーの完全または厳密なテストは実行されず、更新プログラムの再検証は継続的に行われません。 オンプレミス ライブ エンコーダーを確認する方法については、[オンプレミス エンコーダーの確認](become-on-premises-encoder-partner.md)に関するページを参照してください。
+この記事では、検証済みのオンプレミス ライブ ストリーミング エンコーダーについて説明します。 検証は、ベンダーの自己検証または顧客の検証によって行われます。 Microsoft Azure Media Services では、各エンコーダーの完全または厳密なテストは実行されず、更新プログラムの再検証は継続的に行われません。 オンプレミス ライブ エンコーダーを確認する方法については、[オンプレミス エンコーダーの確認](encode-on-premises-encoder-partner.md)に関するページを参照してください。
 
-Media Services でのライブ エンコードの詳細については、[Media Services v3 でのライブ ストリーミング](live-streaming-overview.md)に関するページをご覧ください。
+Media Services でのライブ エンコードの詳細については、[Media Services v3 でのライブ ストリーミング](stream-live-streaming-concept.md)に関するページをご覧ください。
 
 ## <a name="encoder-requirements"></a>エンコーダーの要件
 
@@ -94,7 +94,7 @@ Media Services では、マルチビットレートのスムーズ ストリー�
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>オンプレミス ライブ エンコーダーの設定を構成する
 
-ご利用のライブ イベントの種類に有効な設定に関する詳細については、「[ライブ イベントの種類の比較](live-event-types-comparison.md)」を参照してください。
+ご利用のライブ イベントの種類に有効な設定に関する詳細については、「[ライブ イベントの種類の比較](live-event-types-comparison-reference.md)」を参照してください。
 
 ### <a name="playback-requirements"></a>再生要件
 
@@ -119,8 +119,8 @@ Media Services では、マルチビットレートのスムーズ ストリー�
 
 ## <a name="see-also"></a>関連項目
 
-[Media Services v3 を使用したライブ ストリーミング](live-streaming-overview.md)
+[Media Services v3 を使用したライブ ストリーミング](stream-live-streaming-concept.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-[エンコーダーを確認する方法](become-on-premises-encoder-partner.md)
+[エンコーダーを確認する方法](encode-on-premises-encoder-partner.md)

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: c700cce5f50fda7f7a5773e07549e93da1c9f7a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964433"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104956256"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>仮想マシン オファーのプラン作成する方法
 
@@ -221,6 +221,8 @@ VM が **高速ネットワークをサポートしている** かどうかを�
 使用するオペレーティング システムに関係なく、ソリューションに必要な最小数のデータ ディスクのみを追加します。 顧客はデプロイ時にイメージの一部であるディスクを削除することはできませんが、デプロイ中またはデプロイ後にいつでもディスクを追加できます。
 
 **[下書きの保存]** を選択してから、作成したばかりのプランの左上にある **[← プランの概要]** を選択します。
+
+VM イメージが発行されたら、Azure ストレージからイメージを削除できます。
 
 ## <a name="next-steps"></a>次のステップ
 

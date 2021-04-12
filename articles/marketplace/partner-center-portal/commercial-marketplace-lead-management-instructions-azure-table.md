@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
 ms.openlocfilehash: 3c8b9444344e5bae414145e2b3367c265114a423
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100586844"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Azure Table ストレージを使用して商用マーケットプレースのリードを管理する

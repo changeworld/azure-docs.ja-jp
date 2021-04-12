@@ -8,14 +8,16 @@ ms.date: 08/31/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fa7a56bcad067176d8f9805b418cca45ad144579
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 951111b217b7ace3f12676edf6febfa7266094df
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91978698"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103489950"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge エージェントと IoT Edge ハブのモジュール ツインのプロパティ
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge エージェントと IoT Edge ハブは、IoT Edge ランタイムを構成する 2 つのモジュールです。 各ランタイム モジュールの役割について詳しくは、「[Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)」をご覧ください。
 

@@ -12,14 +12,16 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: dc2d2d3e92435c7a028b43a095f456c2c383ecb4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437033"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103199629"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム デバイスを Azure IoT Edge ゲートウェイに接続する
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 この記事では、ダウンストリーム デバイスと IoT Edge の透過的ゲートウェイの間で信頼できる接続を確立するための手順について説明します。 透過的ゲートウェイのシナリオでは、1 台以上のデバイスが、IoT Hub への接続を維持する単一のゲートウェイ デバイスを経由してメッセージを渡すことができます。
 
@@ -44,7 +46,19 @@ ms.locfileid: "96437033"
 
 ## <a name="prepare-a-downstream-device"></a>ダウンストリーム デバイスを準備する
 
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
 Azure IoT Hub クラウド サービスを使って作成された ID を持つ任意のアプリケーションまたはプラットフォームを、ダウンストリーム デバイスにすることもできます。 多くの場合、これらのアプリケーションでは [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) が使用されます。 ダウンストリーム デバイスは、IoT Edge ゲートウェイ デバイスそのもので実行されているアプリケーションの場合もあります。 ただし、別の IoT Edge デバイスを IoT Edge ゲートウェイのダウンストリームにすることはできません。
+:::moniker-end
+<!-- end 1.1 -->
+
+<!-- 1.2 -->
+:::moniker range=">=iotedge-2020-11"
+Azure IoT Hub クラウド サービスを使って作成された ID を持つ任意のアプリケーションまたはプラットフォームを、ダウンストリーム デバイスにすることもできます。 多くの場合、これらのアプリケーションでは [Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) が使用されます。 ダウンストリーム デバイスは、IoT Edge ゲートウェイ デバイスそのもので実行されているアプリケーションの場合もあります。
+
+この記事では、ダウンストリーム デバイスとして IoT デバイスを接続する手順について説明します。 ダウンストリーム デバイスとして IoT Edge デバイスがある場合は、「[ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する](how-to-connect-downstream-iot-edge-device.md)」を参照してください。
+:::moniker-end
+<!-- end 1.2 -->
 
 >[!NOTE]
 >IoT Hub に登録されている IoT デバイスでは、[モジュール ツイン](../iot-hub/iot-hub-devguide-module-twins.md)を使用して、1 つのデバイス上のさまざまなプロセス、ハードウェア、または機能を分離できます。 IoT Edge ゲートウェイでは、x.509 証明書認証ではなく、対称キー認証を使用したダウンストリーム モジュール接続がサポートされます。
@@ -214,7 +228,7 @@ openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azu
 
 リーフ デバイスにゲートウェイ デバイスへの断続的な接続がある場合は、解決のために次の手順を試してください。
 
-1. 接続文字列のゲートウェイ ホスト名は、ゲートウェイ デバイスの IoT Edge config.yaml ファイル内のホスト名値と同じですか?
+1. 接続文字列のゲートウェイ ホスト名は、ゲートウェイ デバイスの IoT Edge 構成ファイル内のホスト名値と同じですか?
 2. そのゲートウェイ ホスト名は IP アドレスに解決できますか? DNS を使用するか、またはリーフ デバイスの host ファイル エントリを追加することによって、断続的な接続を解決できます。
 3. ファイアウォールの通信ポートは開いていますか? 使用されるプロトコル (MQTTS:8883/AMQPS:5671/HTTPS:433) に基づく通信を、ダウンストリーム デバイスと透過的な IoT Edge の間で可能にする必要があります。
 

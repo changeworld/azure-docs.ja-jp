@@ -11,15 +11,15 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c3096da8b3c83dbfe8cfdd6a5fa4d177241334de
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97693508"
 ---
 # <a name="specify-a-customer-provided-key-on-a-request-to-blob-storage-with-net"></a>.NET での BLOB ストレージの要求時にカスタマー指定のキーを指定する
 
-Azure BLOB ストレージに対して要求を行うクライアントには、個々の要求に対して AES-256 暗号化キーを指定するオプションがあります。 要求に暗号化キーを含めると、BLOB ストレージ操作の暗号化設定をきめ細かく制御できます。 カスタマー指定のキーは、Azure Key Vault または別のキー ストアに格納できます。
+Azure Blob Storage に対して要求を行うクライアントには、個々の要求に対して AES-256 暗号化キーを指定するオプションがあります。 要求に暗号化キーを含めると、BLOB ストレージ操作の暗号化設定をきめ細かく制御できます。 カスタマー指定のキーは、Azure Key Vault または別のキー ストアに格納できます。
 
 この記事では、.NET での BLOB ストレージの要求時にカスタマー指定のキーを指定する方法を示します。
 

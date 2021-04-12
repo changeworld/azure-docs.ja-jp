@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2021
 ms.openlocfilehash: 7dd58a7d4a94b832e52930f8ac6507cdd8f7a20e
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100534823"
 ---
 # <a name="data-flow-script-dfs"></a>データ フロー スクリプト (DFS)

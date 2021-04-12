@@ -2,26 +2,18 @@
 title: Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング
 description: このトピックでは、Azure Media Services v3 を使用して HTTP ライブ ストリーミング (HLS) コンテンツをオフライン モードの Apple FairPlay で動的に暗号化する方法の概要を説明します。
 services: media-services
-keywords: HLS, DRM, FairPlay Streaming (FPS), オフライン, iOS 10
-documentationcenter: ''
 author: willzhan
-manager: steveng
-editor: ''
-ms.assetid: 7c3b35d9-1269-4c83-8c91-490ae65b0817
+manager: femila
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: willzhan
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 399f9b0184217db8180fcec38e4f78917d5c9bc8
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 03/25/2021
+ms.author: inhenkel
+ms.openlocfilehash: 0412ef303a301873d437e03e91c58c0a2e8e7e15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955239"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640739"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Media Services v3 を使用した iOS 用のオフラインの FairPlay ストリーミング
 
@@ -205,10 +197,6 @@ Media Services の 3 つのテスト サンプルには、次の 3 つのシナ�
 これらのサンプルはこちらの[デモ サイト](https://aka.ms/poc#22)にあり、対応するアプリケーション証明書は Azure Web アプリでホストされています。
 FPS Server SDK のバージョン 3 またはバージョン 4 サンプルでは、マスター再生リストに代替オーディオが含まれる場合、オフライン モードのときに、オーディオのみが再生されます。 そのため、代替オーディオを削除する必要があります。 つまり、前述の 2 番目と 3 番目のサンプルは、オンライン モードとオフライン モードで動作します。 最初のサンプルは、オフライン モードでのみオーディオが再生され、オンライン ストリーミングは正常に動作します。
 
-## <a name="faq"></a>よく寄せられる質問
+## <a name="offline-fairplay-questions"></a>オフラインの FairPlay の質問
 
-[トラブルシューティングに役立つよく寄せられる質問](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)を参照してください。
-
-## <a name="next-steps"></a>次のステップ
-
-[AES-128 での保護](protect-with-aes128.md)の方法に関する記事を参照してください。
+[オフラインの FairPlay の質問](questions-collection.md#why-does-only-audio-play-but-not-video-during-offline-mode)に関する記事を参照してください。

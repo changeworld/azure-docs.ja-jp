@@ -13,10 +13,10 @@ ms.date: 03/02/2021
 ms.author: aahi
 keywords: オンプレミス、Docker、コンテナー
 ms.openlocfilehash: e157e976186f03aa984877435c42b996ce476740
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102040194"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>LUIS 用の Docker コンテナーのインストールと実行

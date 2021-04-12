@@ -2,23 +2,18 @@
 title: ライブ ストリーミングの概要
 description: この記事では、Azure Media Services v3 を使用したライブ ストリーミングの概要を説明します。
 services: media-services
-documentationcenter: ''
 author: IngridAtMicrosoft
 manager: femila
-editor: ''
 ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: ne
 ms.topic: conceptual
-ms.date: 08/31/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: b552dcc0e6766316e55e9cdda6e462b2d4abfd2b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: f207cefaf333fc21eb56dc15b1e4d191bf8e5fae
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955921"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108304"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
@@ -41,18 +36,18 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 ## <a name="dynamic-packaging-and-delivery"></a>ダイナミック パッケージと配信
 
-Media Services では、[ダイナミック パッケージ](dynamic-packaging-overview.md)を利用して、サービスに送信される投稿フィードからのライブ ストリームを [MPEG DASH、HLS、および Smooth Streaming 形式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)でプレビューしてブロードキャストできます。 視聴者は、HLS、DASH、またはスムーズ ストリーミングと互換性のある任意のプレーヤーを使用して、ライブ ストリームを再生できます。 これらいずれかのプロトコルでストリームを配信するために、Web またはモバイル アプリケーションの [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) を使用することができます。
+Media Services では、[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)を利用して、サービスに送信される投稿フィードからのライブ ストリームを [MPEG DASH、HLS、および Smooth Streaming 形式](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)でプレビューしてブロードキャストできます。 視聴者は、HLS、DASH、またはスムーズ ストリーミングと互換性のある任意のプレーヤーを使用して、ライブ ストリームを再生できます。 これらいずれかのプロトコルでストリームを配信するために、Web またはモバイル アプリケーションの [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) を使用することができます。
 
 ## <a name="dynamic-encryption"></a>動的な暗号化
 
-動的暗号化では、AES-128 または 3 つの主要なデジタル著作権管理 (DRM) システムのいずれかを用いて、ライブまたはオンデマンドのコンテンツを動的に暗号化できます。コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 詳細については、[動的暗号化](content-protection-overview.md)に関するページを参照してください。
+動的暗号化では、AES-128 または 3 つの主要なデジタル著作権管理 (DRM) システムのいずれかを用いて、ライブまたはオンデマンドのコンテンツを動的に暗号化できます。コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM (PlayReady、Widevine、FairPlay) ライセンスを配信するためのサービスも提供しています。 詳細については、[動的暗号化](drm-content-protection-concept.md)に関するページを参照してください。
 
 > [!NOTE]
 > Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
 
 ## <a name="dynamic-filtering"></a>動的フィルター
 
-動的フィルターを使用することで、プレーヤーに送信されるトラック数、形式、ビットレート、プレゼンテーションの時間枠を制御できます。 詳細については、[フィルターと動的マニフェスト](filters-dynamic-manifest-overview.md)に関するページを参照してください。
+動的フィルターを使用することで、プレーヤーに送信されるトラック数、形式、ビットレート、プレゼンテーションの時間枠を制御できます。 詳細については、[フィルターと動的マニフェスト](filters-dynamic-manifest-concept.md)に関するページを参照してください。
 
 ## <a name="live-event-types"></a>ライブ イベントの種類
 
@@ -123,16 +118,6 @@ Media Services v3 のライブ ストリーミング ワークフローを理解
 - [状態と課金](live-event-states-billing.md)
 - [待機時間](live-event-latency.md)
 
-## <a name="frequently-asked-questions"></a>よく寄せられる質問
+## <a name="live-streaming-questions"></a>ライブ ストリーミングの質問
 
-[よく寄せられる質問](frequently-asked-questions.md#live-streaming)に関する記事をご覧ください。
-
-## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
-
-「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
-
-## <a name="next-steps"></a>次のステップ
-
-* [ライブ ストリーミングのクイックスタート](live-events-wirecast-quickstart.md)
-* [ライブ ストリーミングのチュートリアル](stream-live-tutorial-with-api.md)
-* [Media Services v2 から v3 への移行のガイダンス](migrate-v-2-v-3-migration-introduction.md)
+[ライブ ストリーミングの質問](questions-collection.md#live-streaming)に関する記事を参照してください。

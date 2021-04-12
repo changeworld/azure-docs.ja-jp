@@ -11,10 +11,10 @@ ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
 ms.openlocfilehash: 10904275d382c7f9dbf223ded78cab0adf14992a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101661054"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでデータを変換する
@@ -24,7 +24,7 @@ ms.locfileid: "101661054"
 
 サンプルの[国勢調査の成人収入に関する二項分類](./samples-designer.md)データセットを使用して、2 つのデータセットを準備します。1 つのデータセットには米国のみの成人の国勢調査情報が含まれ、もう 1 つのデータセットには米国以外の成人の国勢調査情報が含まれています。
 
-この記事では、次のことについて説明します。
+この記事では、次の方法について説明します。
 
 1. データセットを変換し、トレーニング用に準備します。
 1. 結果のデータセットをデータストアにエクスポートします。

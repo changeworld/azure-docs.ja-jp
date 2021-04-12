@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: f28a95ce6ef5e87eed6e5efcd013cc40b102fcba
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 0a0052fa3d78a3b77094cfccbd4c011321ac5925
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101721091"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279019"
 ---
 # <a name="packaging-and-delivery-scenario-based-migration-guidance"></a>パッケージ化と配信のシナリオ ベースの移行ガイダンス
 
@@ -30,10 +30,10 @@ v3 API でコンテンツが発行される方法への主な変更点。 新し
 
 ## <a name="packaging-and-delivery-in-v3"></a>v3 でのパッケージ化と配信
 
-1. [コンテンツ キー ポリシー](content-key-policy-concept.md)を作成します。
-1. [ストリーミング ロケーター](streaming-locators-concept.md)を作成します。
+1. [コンテンツ キー ポリシー](drm-content-key-policy-concept.md)を作成します。
+1. [ストリーミング ロケーター](stream-streaming-locators-concept.md)を作成します。
 1. [ストリーミング パス](create-streaming-locator-build-url.md)を取得します。 
-    1. それを [DASH](dynamic-packaging-overview.md#mpeg-dash-protocol) または [HLS](dynamic-packaging-overview.md#hls-protocol) プレーヤー用に構成します。
+    1. それを [DASH](encode-dynamic-packaging-concept.md#mpeg-dash-protocol) または [HLS](encode-dynamic-packaging-concept.md#hls-protocol) プレーヤー用に構成します。
 
 具体的な手順については、次の「概念、チュートリアル、ハウツー ガイドの発行」を参照してください。
 
@@ -41,28 +41,24 @@ v3 API でコンテンツが発行される方法への主な変更点。 新し
 
 ### <a name="concepts"></a>概念
 
-- [Media Services v3 のダイナミック パッケージ](dynamic-packaging-overview.md)
+- [Media Services v3 のダイナミック パッケージ](encode-dynamic-packaging-concept.md)
 - [フィルター](filters-concept.md)
-- [Dynamic Packager を使用してマニフェストをフィルター処理する](filters-dynamic-manifest-overview.md)
-- [Azure Media Services のストリーミング エンドポイント (配信元)](streaming-endpoint-concept.md)
-- [CDN 統合を使用してコンテンツをストリーミングする](scale-streaming-cdn.md)
-- [ストリーミング ロケーター](streaming-locators-concept.md)
+- [Dynamic Packager を使用してマニフェストをフィルター処理する](filters-dynamic-manifest-concept.md)
+- [Azure Media Services のストリーミング エンドポイント (配信元)](stream-streaming-endpoint-concept.md)
+- [CDN 統合を使用してコンテンツをストリーミングする](stream-scale-streaming-cdn-concept.md)
+- [ストリーミング ロケーター](stream-streaming-locators-concept.md)
 
 ### <a name="how-to-guides"></a>ハウツー ガイド
 
-- [Media Services v3 でストリーミング エンドポイントを管理する](manage-streaming-endpoints-howto.md)
+- [Media Services v3 でストリーミング エンドポイントを管理する](stream-manage-streaming-endpoints-how-to.md)
 - [CLI の例: 資産の公開](cli-publish-asset.md)
 - [ストリーミング ロケーターの作成と URL の構築](create-streaming-locator-build-url.md)
-- [ジョブの結果をダウンロードする](download-results-howto.md)
+- [ジョブの結果をダウンロードする](job-download-results-how-to.md)
 - [説明オーディオ トラックの通知](signal-descriptive-audio-howto.md)
 - [Azure Media Player のフル セットアップ](../azure-media-player/azure-media-player-full-setup.md)
-- [Azure Media Services で Video.js プレーヤーを使用する方法](how-to-video-js-player.md)
-- [Azure Media Services で Shaka プレーヤーを使用する方法](how-to-shaka-player.md)
+- [Azure Media Services で Video.js プレーヤーを使用する方法](player-how-to-video-js-player.md)
+- [Azure Media Services で Shaka プレーヤーを使用する方法](player-shaka-player-how-to.md)
 
 ## <a name="samples"></a>サンプル
 
 [V2 と V3 のコードをコード サンプルで比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
-
-## <a name="next-steps"></a>次のステップ
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/13/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: 26e8f08d4b901a9ea57da826d9441d23508c4a4c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: aa3614aa3c4fbaec3611806406e5129379999bc3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797612"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067143"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
@@ -164,7 +164,7 @@ Windows PowerShell バージョン 6.2.4 以降がインストールされてい
     WSManStackVersion              3.0
 ```
 
-6\.2.4 よりも前のバージョンがインストールされている場合は、Windows PowerShell のバージョンをアップグレードする必要があります。 Windows PowerShell の最新バージョンをインストールするには、[Azure PowerShell のインストール](/powershell/scripting/install/installing-powershell?view=powershell-7&preserve-view=true)に関するページを参照してください。
+6\.2.4 よりも前のバージョンがインストールされている場合は、Windows PowerShell のバージョンをアップグレードする必要があります。 Windows PowerShell の最新バージョンをインストールするには、[Azure PowerShell のインストール](/powershell/scripting/install/installing-powershell)に関するページを参照してください。
 
 **Azure PowerShell および Data Box モジュールをインストールする**
 
@@ -239,7 +239,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 6. **[注文]** で、 **[基本]** タブに移動します。次の情報を入力または選択し、 **[次へ: データの格納先 >]** を選択します。
 
-    |設定  |Value  |
+    |設定  |値  |
     |---------|---------|
     |サブスクリプション      | サブスクリプションは、前の選択に基づいて自動的に設定されます。|
     |Resource group    | 前に選択したリソース グループ。 |
@@ -355,22 +355,34 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
     ![Data Box インポート注文の展開された [Bring your own password]\(独自のパスワードを使用する\) オプション](media/data-box-deploy-ordered/select-data-box-import-security-02.png) 
 
    - 新しいデバイスに独自のパスワードを使用するには、 **[Set preference for the device password]\(デバイス パスワードの基本設定の設定\)** で、 **[Use your own password]\(独自のパスワードを使用する\)** を選択し、セキュリティ要件を満たすパスワードを入力します。
+     
+     パスワードは、大文字、小文字、特殊文字、および数字をそれぞれ 1 文字以上含む 12 から 15 文字の英数字である必要があります。 
+
+     - 使用できる特殊文字: @ # - $ % ^ ! + = ; : _ ( )
+     - 使用できない文字: I i L o O 0
    
      ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。独自のデバイス パスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-03.png)
 
  - 共有に独自のパスワードを使用するには:
 
-   - **[Set preference for the share passwords]\(共有パスワードの基本設定の設定\)** で、 **[Use your own passwords]\(独自のパスワードを使用する\)** を選択し、次に **共有のパスワードを選択** します。
+   1. **[Set preference for the share passwords]\(共有パスワードの基本設定の設定\)** で、 **[Use your own passwords]\(独自のパスワードを使用する\)** を選択し、次に **共有のパスワードを選択** します。
      
-        ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。共有に独自のパスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
+       ![Data Box インポート注文の [Security]\(セキュリティ\) 画面。共有に独自のパスワードを使用するためのオプション](media/data-box-deploy-ordered/select-data-box-import-security-04.png)
 
-    - 注文内の各ストレージ アカウントのパスワードを入力します。 パスワードは、ストレージ アカウントのすべての共有で使用されます。
-     
-        すべてのストレージ アカウントに同じパスワードを使用するには、 **[Copy to all]\(すべてにコピー\)** を選択します。 終了したら、 **[保存]** を選択します。
-     
-        ![Data Box のインポート注文の共有パスワードを入力するための画面](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+    1. 注文内の各ストレージ アカウントのパスワードを入力します。 パスワードは、ストレージ アカウントのすべての共有で使用されます。
+    
+       パスワードは、大文字、小文字、特殊文字、および数字をそれぞれ 1 文字以上含む 12 から 64 文字の英数字である必要があります。
 
-       **[セキュリティ]** 画面で、 **[View or change passwords]\(パスワードの表示または変更\)** を使用してパスワードを変更できます。
+       - 使用できる特殊文字: @ # - $ % ^ ! + = ; : _ ( )
+       - 使用できない文字: I i L o O 0
+     
+    1. すべてのストレージ アカウントに同じパスワードを使用するには、 **[Copy to all]\(すべてにコピー\)** を選択します。 
+
+    1. 終了したら、 **[保存]** を選択します。
+     
+       ![Data Box のインポート注文の共有パスワードを入力するための画面](media/data-box-deploy-ordered/select-data-box-import-security-05.png)
+
+    **[セキュリティ]** 画面で、 **[View or change passwords]\(パスワードの表示または変更\)** を使用してパスワードを変更できます。
 
 16. **[セキュリティ]** で、ソフトウェアベースの二重暗号化を有効にしたい場合は、 **[Double-encryption (for highly secure environments)]\(二重暗号化 (高度にセキュリティ保護された環境用)\)** を展開し、 **[Enable double encryption for the order]\(この注文に関して二重暗号化を有効にする\)** を選択します。
 
@@ -437,7 +449,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
    |query| JMESPath クエリ文字列。 詳細については、「[JMESPath](http://jmespath.org/)」を参照してください。 | --query <string>|
    |verbose| 詳細ログを含めます。 | --verbose |
 
-2. 任意のコマンド プロンプトまたはターミナルで、[az data box job create](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-create&preserve-view=true) を実行して Azure Data Box の注文を作成します。
+2. 任意のコマンド プロンプトまたはターミナルで、[az data box job create](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create) を実行して Azure Data Box の注文を作成します。
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -605,7 +617,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 ### <a name="track-a-single-order"></a>1 つの注文を追跡する
 
-Azure Data Box の既存の 1 つの注文に関する追跡情報を取得するには、[`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
+Azure Data Box の既存の 1 つの注文に関する追跡情報を取得するには、[`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -646,7 +658,7 @@ Azure Data Box の既存の 1 つの注文に関する追跡情報を取得す�
 
 ### <a name="list-all-orders"></a>すべての注文を一覧表示する
 
-複数のデバイスを注文した場合は、[`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) を実行することで、Azure Data Box のすべての注文を表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
+複数のデバイスを注文した場合は、[`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) を実行することで、Azure Data Box のすべての注文を表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
 それぞれの注文のタイム スタンプも表示されます。
 
 ```azurecli
@@ -765,7 +777,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="cancel-an-order"></a>注文のキャンセル
 
-Azure Data Box の注文をキャンセルするには、[`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) を実行します。 注文のキャンセル理由を指定する必要があります。
+Azure Data Box の注文をキャンセルするには、[`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel) を実行します。 注文のキャンセル理由を指定する必要があります。
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -778,7 +790,7 @@ Azure Data Box の注文をキャンセルするには、[`az databox job cancel
    |resource-group [必須]| 削除する注文に関連付けられているリソース グループの名前。 リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。 | "myresourcegroup"|
    |name [必須]| 削除する注文の名前。 | "mydataboxorder"|
    |reason [必須]| 注文のキャンセル理由。 | "間違った情報を入力したので注文をキャンセルする必要がありました。" |
-   |はい| 確認のダイアログを表示しません。 | --yes (-y)| --yes -y |
+   |はい| 確認のダイアログを表示しません。 | --yes (-y)| 
    |debug| 詳細ログにデバッグ情報を追加します。 | --debug |
    |help| このコマンドのヘルプ情報を表示します。 | --help -h |
    |only-show-errors| エラーのみを表示し、警告は抑制します。 | --only-show-errors |
@@ -802,7 +814,7 @@ Azure Data Box の注文をキャンセルするには、[`az databox job cancel
 
 ### <a name="delete-an-order"></a>注文を削除する
 
-Azure Data Box の注文をキャンセルした場合は、[`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) を実行してその注文を削除できます。
+Azure Data Box の注文をキャンセルした場合は、[`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) を実行してその注文を削除できます。
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -815,7 +827,7 @@ Azure Data Box の注文をキャンセルした場合は、[`az databox job del
    |resource-group [必須]| 削除する注文に関連付けられているリソース グループの名前。 リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。 | "myresourcegroup"|
    |name [必須]| 削除する注文の名前。 | "mydataboxorder"|
    |subscription| Azure サブスクリプションの名前または ID (GUID)。 | "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" |
-   |はい| 確認のダイアログを表示しません。 | --yes (-y)| --yes -y |
+   |はい| 確認のダイアログを表示しません。 | --yes (-y)|
    |debug| 詳細ログにデバッグ情報を追加します。 | --debug |
    |help| このコマンドのヘルプ情報を表示します。 | --help -h |
    |only-show-errors| エラーのみを表示し、警告は抑制します。 | --only-show-errors |

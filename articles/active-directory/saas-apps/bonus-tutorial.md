@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: e93d03ac9ec404a18b480a0cd1bfe289944b60d8
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101689115"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>チュートリアル: Azure Active Directory と Bonusly の統合
@@ -197,7 +197,7 @@ Bonusly で Azure AD シングル サインオンを構成するには、次の�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-bonusly-test-user"></a>Bonusly のテスト ユーザーの作成
+### <a name="create-bonusly-test-user&quot;></a>Bonusly のテスト ユーザーの作成
 
 Azure AD ユーザーが Bonusly にサインインできるようにするには、そのユーザーを Bonusly にプロビジョニングする必要があります。 Bonusly の場合、プロビジョニングは手動で行います。
 
@@ -210,7 +210,7 @@ Azure AD ユーザーが Bonusly にサインインできるようにするに�
 
 1. **[設定]** をクリックします。
 
-    ![[設定]](./media/bonus-tutorial/ic781041.png "設定")
+    ![[設定]](./media/bonus-tutorial/ic781041.png &quot;設定")
 
 1. **[Users and bonuses]** タブをクリックします。
 

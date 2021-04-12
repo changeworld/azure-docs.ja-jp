@@ -8,13 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 06/18/2019
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: ea9353ed8c1938fa9b33585a0650b4507c671451
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: cca08e1be0f81c26d0838566ac4900d36580b8b8
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92125032"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066298"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk とは
 

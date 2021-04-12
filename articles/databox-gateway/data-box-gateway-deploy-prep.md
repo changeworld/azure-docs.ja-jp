@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 10/15/2020
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: 40de216a9bcb173d9dfebf39d05fb9cb12579301
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ceda5015770ad0b9898def181fa7199f119920db
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937339"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101706097"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>チュートリアル:Azure Data Box Gateway のデプロイを準備する
 
@@ -65,7 +65,7 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 - ホスト システムで、次のリソースを Data Box 仮想デバイスのプロビジョニング専用に使用できること。
   
   - 少なくとも 4 つの仮想プロセッサ。
-  - 少なくとも 8 GB の RAM。
+  - 少なくとも 8 GB の RAM。 RAM を 16 GB 以上にすることを強くお勧めします。
   - ネットワーク インターフェイス 1 つ。
   - 250 GB の OS ディスク。
   - システム データ用の 2 TB の仮想ディスク。

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: eb2356451c349f894c9ca74b1359f6a02d0e002a
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 2d7a2dcbbd0b6e9a10ca8af93798bfddbee94ee3
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562516"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102182657"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>クイックスタート: Azure Static Web Apps を使用して静的サイトを初めて構築する
 
@@ -26,6 +26,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 - [Azure](https://portal.azure.com) アカウント
 - [Visual Studio Code](https://code.visualstudio.com)
 - [Visual Studio Code 用 Azure Static Web Apps 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps)
+- [Git をインストールする](https://www.git-scm.com/downloads)
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
 

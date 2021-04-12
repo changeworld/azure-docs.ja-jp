@@ -27,8 +27,6 @@
       href: cdn-custom-ssl.md
     - name: キャッシュ規則の設定
       href: cdn-caching-rules-tutorial.md
-    - name: Standard ルール エンジンを使用して HTTPS を適用する
-      href: cdn-standard-rules-engine.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -76,6 +74,8 @@
           href: cdn-improve-performance.md
         - name: エンドポイントのマルチオリジン
           href: endpoint-multiorigin.md
+        - name: Standard ルール エンジンを使用して HTTPS を適用する
+          href: cdn-standard-rules-engine.md
         - name: キャッシュ動作の制御
           items:
             - name: キャッシュ規則を使用してキャッシュ動作を制御する

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/09/2020
 ms.author: anfeldma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 91e89eaf215468f171974e5f3fd383691fdd6ebe
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f02a0673a3fae33f935ae9a9cbf94f101b25c39f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096982"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449785"
 ---
 # <a name="quickstart-build-a-todo-app-with-xamarin-using-azure-cosmos-db-sql-api-account"></a>クイック スタート:Azure Cosmos DB SQL API アカウントを使用して Xamarin で todo アプリを構築する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -39,9 +39,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="prerequisites"></a>前提条件
 
-Windows 上で開発しており、Visual Studio 2019 がまだインストールされていない場合は、 **無料の** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** と **[.NET によるモバイル開発]** ワークロードを有効にしてください。
+Windows 上で開発しており、Visual Studio 2019 がまだインストールされていない場合は、**無料の** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** と **[.NET によるモバイル開発]** ワークロードを有効にしてください。
 
-Mac を使用している場合は、 **無料の** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) をダウンロードできます。
+Mac を使用している場合は、**無料の** [Visual Studio for Mac](https://www.visualstudio.com/vs/mac/) をダウンロードできます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
@@ -84,7 +84,7 @@ Mac を使用している場合は、 **無料の** [Visual Studio for Mac](http
     git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-xamarin-getting-started.git
     ```
 
-4. Visual Studio で、 **C:\git-samples\azure-cosmos-db-sql-xamarin-getting-started\src\ToDoItems.sln** を開きます。 
+4. Visual Studio で、**C:\git-samples\azure-cosmos-db-sql-xamarin-getting-started\src\ToDoItems.sln** を開きます。 
 
 ## <a name="obtain-your-api-keys"></a>API キーの取得
 
@@ -100,14 +100,14 @@ Mac を使用している場合は、 **無料の** [Visual Studio for Mac](http
 
     ```csharp
     //#error Enter the URL of your Azure Cosmos DB endpoint here
-            public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
+    public static readonly string CosmosEndpointUrl = "[URI Copied from Azure Portal]";
     ```
 
 4. Azure portal からコピー ボタンを使用して、 **[プライマリ キー]** 値をコピーし、APIKeys.cs 内の `Cosmos Auth Key` の値に設定します。
 
     ```csharp
     //#error Enter the read/write authentication key of your Azure Cosmos DB endpoint here
-            public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure Portal";
+    public static readonly string CosmosAuthKey = "[PRIMARY KEY copied from Azure Portal";
     ```
 
 [!INCLUDE [cosmos-db-auth-key-info](../../includes/cosmos-db-auth-key-info.md)]

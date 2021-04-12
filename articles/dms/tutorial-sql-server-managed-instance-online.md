@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 02adb6f47b907fea402f8b312b3f4e8e117927ed
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 5585eb210b54dfa016d25c430256508e1b0b9f61
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98693682"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076889"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用してオンラインで SQL Server を Azure SQL Managed Instance に移行する
 
@@ -72,12 +72,12 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
     > * ストレージ アカウントへのアクセスをすべてのネットワークに許可します。
     > * MI サブネットで[サブネットの委任](../virtual-network/manage-subnet-delegation.md)をオンにし、このサブネットを許可するようにストレージ アカウントのファイアウォール規則を更新します。
 
-* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、Azure Database Migration Service への次のアウトバウンド通信ポートが確実にブロックされないようにします: 443、53、9354、445、12000。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
+* 仮想ネットワークのネットワーク セキュリティ グループの規則によって、ServiceBus、Storage、AzureMonitor の ServiceTag の送信ポート 443 がブロックされていないことを確認します。 仮想ネットワークの NSG トラフィックのフィルター処理の詳細については、[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルター処理](../virtual-network/virtual-network-vnet-plan-design-arm.md)に関する記事を参照してください。
 * [ソース データベース エンジンへのアクセスのために Windows ファイアウォール](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 * Azure Database Migration Service でソース SQL Server にアクセスできるように Windows ファイアウォールを開放します。既定では TCP ポート 1433 が使用されます。 使用している既定のインスタンスが他のポートでリッスンしている場合は、それをファイアウォールに追加してください。
 * 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
 * ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスし、SMB ポート 445 経由でファイルにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
-* SQL Managed Instance を作成します。手順の詳細については、[Azure portal で SQL Managed Instance を作成する方法](../azure-sql/managed-instance/instance-create-quickstart.md)に関する記事を参照してください。
+* SQL マネージド インスタンスを作成します。手順の詳細については、[Azure portal で SQL マネージド インスタンスを作成する方法](../azure-sql/managed-instance/instance-create-quickstart.md)に関する記事を参照してください。
 * ソースの SQL Server とターゲットの SQL Managed Instance の接続に使用するログインが、sysadmin サーバー ロールのメンバーであることを確認します。
 * Azure Database Migration Service でデータベースの移行に使用できる、すべてのデータベースの完全なデータベース バックアップ ファイルと、その後のトランザクション ログのバックアップ ファイルが格納されている、SMB ネットワーク共有を提供します。
 * 作成したネットワーク共有に対して、ソース SQL Server インスタンスを実行しているサービス アカウントが書き込み特権を持っていること、およびソース サーバーのコンピューター アカウントが読み取り/書き込みアクセス権を持っていることを確認します。
@@ -122,7 +122,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 5. 既存の仮想ネットワークを選択するか、新たに作成します。
 
-    この仮想ネットワークによって、Azure Database Migration Service に、ソース SQL Server とターゲット SQL Managed Instance へのアクセスが提供されます。
+    この仮想ネットワークによって、Azure Database Migration Service に、ソース SQL Server とターゲット SQL マネージド インスタンスへのアクセスが提供されます。
 
     Azure portal で仮想ネットワークを作成する方法の詳細については、[Azure portal を使用した仮想ネットワークの作成](../virtual-network/quick-create-portal.md)に関する記事を参照してください。
 
@@ -209,7 +209,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 1. **[移行の設定の構成]** 画面で、次の情報を入力します。
 
-    | | |
+    | パラメーター | 説明 |
     |--------|---------|
     |**SMB ネットワーク場所の共有** | Azure Database Migration Service が移行に使用できる、完全なデータベース バックアップ ファイルとトランザクション ログのバックアップ ファイルを収納する、ローカルな SMB ネットワーク共有または Azure ファイル共有です。 ソースの SQL Server インスタンスを実行しているサービス アカウントには、このネットワーク共有での読み取り/書き込み権限がなければなりません。 たとえば、ネットワーク共有のサーバーの FQDN または IP アドレスを "\\\servername.domainname.com\backupfolder" または "\\\IP address\backupfolder" と指定します。 パフォーマンスを向上するために、移行するデータベースごとに個別のフォルダーを使用することをお勧めします。 **[詳細設定]** オプションを使用すると、データベース レベルのファイル共有パスを指定できます。 SMB 共有への接続時に問題が発生した場合は、[SMB 共有](known-issues-azure-sql-db-managed-instance-online.md#smb-file-share-connectivity)に関するページを参照してください。 |
     |**ユーザー名** | 上で指定したネットワーク共有に対するフル コントロール権限が Windows ユーザーにあることを確認してください。 Azure Database Migration Service により、ユーザーの資格情報を借用することで、復元操作のために、Azure Storage コンテナーにバックアップ ファイルがアップロードされます。 Azure ファイル共有を使用している場合は、先頭に AZURE\ を付けたストレージ アカウント名をユーザー名として使用してください。 |

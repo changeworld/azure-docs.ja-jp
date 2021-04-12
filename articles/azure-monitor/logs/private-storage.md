@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用
 description: 独自のストレージ アカウントを Log Analytics のシナリオに使用します
-ms.subservice: logs
 ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 3c5a528ada9e7239f5c53da1cae6df7ceffac918
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: a6d4c5811c08aa8c4de2eeea5f5f53967c3006b2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603355"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025358"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Azure Monitor Log Analytics でのカスタマー マネージド ストレージ アカウントの使用
 
@@ -23,7 +22,7 @@ Log Analytics は、さまざまなシナリオで Azure Storage に依存しま
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Azure Diagnostics 拡張機能ログ (WAD/LAD) の取り込み
 Azure Diagnostics 拡張機能エージェント (Windows エージェントの場合は WAD、Linux エージェントの場合は LAD とも呼ばれます) により、さまざまなオペレーティング システム ログが収集されて、カスタマー マネージド ストレージ アカウントに格納されます。 その後、これらのログを Log Analytics に取り込み、それらを確認したり分析したりすることができます。
 ### <a name="how-to-collect-azure-diagnostics-extension-logs-from-your-storage-account"></a>ストレージ アカウントから Azure Diagnostics 拡張機能ログを収集する方法
-[Azure portal](../essentials/diagnostics-extension-logs.md#collect-logs-from-azure-storage) を使用するか、[Storage Insights API](/rest/api/loganalytics/storage%20insights/createorupdate) を呼び出して、ストレージ アカウントをストレージ データ ソースとして Log Analytics ワークスペースに接続します。
+[Azure portal](../agents/diagnostics-extension-logs.md#collect-logs-from-azure-storage) を使用するか、[Storage Insights API](/rest/api/loganalytics/storage%20insights/createorupdate) を呼び出して、ストレージ アカウントをストレージ データ ソースとして Log Analytics ワークスペースに接続します。
 
 サポートされるデータ型:
 * syslog
@@ -51,6 +50,7 @@ AMPLS の構成手順の詳細については、「[Azure Private Link を使用
 * Azure Monitor によるストレージ アカウントへのアクセスが許可されていること。 選択したネットワークのみにストレージ アカウントへのアクセスを許可することにした場合は、次の例外を選択する必要があります。"信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します"。
 ![ストレージ アカウント信頼 MS サービスの画像](./media/private-storage/storage-trust.png)
 * ワークスペースで他のネットワークからのトラフィックも処理する場合は、関連するネットワークまたはインターネットからの受信トラフィックを許可するように、ストレージ アカウントを構成する必要があります。
+* エージェントとストレージ アカウント間の TLS バージョンを調整する - TLS 1.2 以上を使用してデータを Log Analytics に送信することをお勧めします。 [プラットフォーム固有のガイダンス](./data-security.md#sending-data-securely-using-tls-12)を確認し、必要に応じて、[TLS 1.2 を使用するようにエージェントを構成](../agents/agent-windows.md#configure-agent-to-use-tls-12)します。 何らかの理由でそれが不可能な場合は、TLS 1.0 を受け入れるようにストレージ アカウントを構成します。
 
 ### <a name="using-a-customer-managed-storage-account-for-cmk-data-encryption"></a>CMK データ暗号化のためのカスタマー マネージド ストレージ アカウントの使用
 ストレージ アカウント内の保存データはすべて、Azure Storage によって暗号化されます。 既定では、Microsoft のマネージド キー (MMK) を使用してデータを暗号化します。しかし、Azure Storage では、Azure Key Vault の CMK を使用してストレージ データを暗号化することもできます。 独自のキーを Azure Key Vault にインポートするか、または Azure Key Vault API を使用してキーを生成することができます。

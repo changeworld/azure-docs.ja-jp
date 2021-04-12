@@ -4,13 +4,13 @@ description: この記事では、パートナーからセンサー データを
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: 57baa00f7f9b64212d0aee8b0a2efeca814abeb3
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.author: v-ummehabiba
+ms.openlocfilehash: 474b6f8356724546105d902a15427f483f656317
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168530"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102182776"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -50,7 +50,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
       b. FarmBeats デプロイの一部として作成された **[アプリの登録]** を選択します。 それは、FarmBeats データ ハブと同じ名前になります。
 
-      c. **[API の公開]** を選択し、 **[クライアント アプリケーションの追加]** を選択し、「 **04b07795-8ddb-461a-bbee-02f9e1bf7b46** 」と入力し、 **[Authorize Scope]\(スコープの承認\)** をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
+      c. **[API の公開]** を選択し、 **[クライアント アプリケーションの追加]** を選択し、「**04b07795-8ddb-461a-bbee-02f9e1bf7b46**」と入力し、 **[Authorize Scope]\(スコープの承認\)** をオンにします。 これにより、Azure CLI (Cloud Shell) にアクセスして、次の手順を実行することができます。
 
 3. Cloud Shell を開きます。 このオプションは、Azure portal の右上隅にあるツール バーで使用できます。
 
@@ -92,7 +92,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 > 1. Datahub API エンドポイント名は、小文字で指定する必要があります。
 > 2. Datahub API エンドポイントの FarmBeats Web サイト名の URL をコピーする場合は、末尾のスラッシュ (/) を付けないでください。
 
-9. 画面の指示に従って、 **API エンドポイント** 、 **テナント ID** 、 **クライアント ID** 、 **クライアント シークレット** 、および **EventHub 接続文字列** の値をキャプチャします。
+9. 画面の指示に従って、**API エンドポイント**、**テナント ID**、**クライアント ID**、**クライアント シークレット**、および **EventHub 接続文字列** の値をキャプチャします。
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>生成された資格情報を使用してデバイス データを統合する
 
@@ -121,8 +121,8 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 現時点では、FarmBeats では次のデバイスがサポートされています。
 
-- **ノード** :1 つ以上のセンサーが接続されているデバイス。
-- **ゲートウェイ** : 1 つ以上のノードが接続されているデバイス。
+- **ノード**:1 つ以上のセンサーが接続されているデバイス。
+- **ゲートウェイ**: 1 つ以上のノードが接続されているデバイス。
 
 次の手順に従います。
 

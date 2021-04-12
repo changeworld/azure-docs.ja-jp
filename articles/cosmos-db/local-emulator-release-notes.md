@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: 12983f43e5f778cdf46c2ea3e0177d43838e5b47
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 442fa1c76d4667a54f1c13b411b1c052c9a5b134
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051600"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566644"
 ---
 # <a name="azure-cosmos-db-emulator---release-notes-and-download-information"></a>Azure Cosmos DB Emulator - リリース ノートとダウンロード情報
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -20,16 +20,21 @@ ms.locfileid: "98051600"
 
 ## <a name="download"></a>ダウンロード
 
-| | |
+| | Link |
 |---------|---------|
 |**MSI ダウンロード**|[Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)|
 |**開始するには**|[Azure Cosmos DB Emulator を使用してローカルで開発する](local-emulator.md)|
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="21111-22-february-2021"></a>2.11.11 (2021 年 2 月 22 日)
+
+ - このリリースでは、ローカルの Data Explorer の内容が最新の Azure portal のバージョンに合わせて更新されています。
+
+
 ### <a name="21110-5-january-2021"></a>2.11.10 (2021 年 1 月 5 日)
 
- - 今回のリリースでは、ローカルの Data Explorer の内容が最新の Azure portal のバージョンに合わせて更新され、新しいパブリック オプションである "/ExportPemCert" が追加されました。これにより、エミュレーターのユーザーはパブリック エミュレーターの証明書を .PEM ファイルとして直接エクスポートできるようになりました。
+ - このリリースでは、ローカルの Data Explorer の内容が最新の Azure portal のバージョンに合わせて更新され、新しいパブリック オプションである "/ExportPemCert" が追加されました。これにより、エミュレーターのユーザーはパブリック エミュレーターの証明書を .PEM ファイルとして直接エクスポートできるようになりました。
 
 ### <a name="2119-3-december-2020"></a>2.11.9 (2020 年 12 月 3 日)
 

@@ -3,17 +3,18 @@ title: Azure Cloud Services (クラシック) の定義。WebRole スキーマ |
 description: Azure Web ロールは、ASP.NET、PHP、WCF、および FastCGI をサポートする Web アプリケーション プログラミング向けにカスタマイズされています。 Web ロールのサービス定義要素について説明します。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 3c5811649d7d6c0aa1e90ed34c61be6a7f9339f8
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 7b3266be461af50d74988ad4834f2f8fc548e383
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743153"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934089"
 ---
 # <a name="azure-cloud-services-classic-definition-webrole-schema"></a>Azure Cloud Services (クラシック) の定義 WebRole スキーマ
 
@@ -262,7 +263,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`FixedPort` 要素の属性を示します。
 
-| 属性 | Type | [説明] |  
+| 属性 | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |port|INT|必須。 内部エンドポイントのポートです。 この属性の効果は、`FixedPortRange` の min と max を同じポートに設定した場合と同じです。<br /><br /> 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|  
 
@@ -276,7 +277,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`FixedPortRange` 要素の属性を示します。
 
-| 属性 | Type | [説明] |  
+| 属性 | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |分|INT|必須。 範囲の最小ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|  
 |最大|string|必須。 範囲の最大ポートです。 使用できる値の範囲は 1 以上 65535 以下です (Azure SDK バージョン 1.7 以上)。|  
@@ -308,7 +309,7 @@ HTTP、HTTPS、UDP、TCP の各エンドポイントを組み合わせて複数�
 
 以下の表に、`Import` 要素の属性を示します。
 
-| 属性 | Type | [説明] |  
+| 属性 | Type | 説明 |  
 | --------- | ---- | ----------- |  
 |moduleName|string|必須。 インポートするモジュールの名前です。 有効なインポート モジュールは次のとおりです。<br /><br /> -   RemoteAccess<br />-   RemoteForwarder<br />-   Diagnostics<br /><br /> RemoteAccess モジュールと RemoteForwarder モジュールを使用すると、ロール インスタンスをリモート デスクトップ接続用に構成できます。 詳しくは、[リモート デスクトップ接続の有効化](cloud-services-role-enable-remote-desktop-new-portal.md)に関するページをご覧ください。<br /><br /> Diagnostics モジュールを使用すると、ロール インスタンスの診断データを収集できます。|  
 

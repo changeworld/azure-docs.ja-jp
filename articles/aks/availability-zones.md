@@ -4,13 +4,13 @@ description: Azure Kubernetes Service (AKS) で複数の可用性ゾーンにノ
 services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
-ms.date: 09/04/2020
-ms.openlocfilehash: 481dc112b36e1f9fba3739f5b88e34d15d538e47
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.date: 03/16/2021
+ms.openlocfilehash: 4c5b0ceb3f8e0b96f18a67ed0c7dbf1b56ac30da
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100558956"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583549"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -29,6 +29,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 現在、AKS クラスターは、次のリージョンの可用性ゾーンを使用して作成できます。
 
 * オーストラリア東部
+* ブラジル南部
 * カナダ中部
 * 米国中部
 * 米国東部 
@@ -167,7 +168,7 @@ Name:       aks-nodepool1-28993262-vmss000004
 ゾーン 1 とゾーン 2 に 2 つのノードが追加されました。 3 つのレプリカで構成されるアプリケーションをデプロイできます。 例として NGINX を使用します。
 
 ```console
-kubectl create deployment nginx --image=nginx
+kubectl create deployment nginx --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine
 kubectl scale deployment nginx --replicas=3
 ```
 
@@ -202,7 +203,7 @@ Node:         aks-nodepool1-28993262-vmss000004/10.240.0.8
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [az-aks-nodepool-add]: /cli/azure/ext/aks-preview/aks/nodepool#ext-aks-preview-az-aks-nodepool-add
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [vmss-zone-balancing]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md#zone-balancing
 
 <!-- LINKS - external -->

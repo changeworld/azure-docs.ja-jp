@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターで証明書をロー
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: 90526b78e65c335f07a2a9d2d152b54b47233082
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa26762c54ad54835b174b8d814a2e77cb38b885
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88211042"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102619037"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での証明書のローテーション
 
@@ -28,8 +28,6 @@ AKS では、次の証明書、証明機関、およびサービス アカウン
 * AKS API サーバーでは、クラスター CA と呼ばれる証明機関 (CA) が作成されます。
 * API サーバーには、API サーバーから kubelets への一方向の通信に使用する証明書に署名するクラスター CA があります。
 * また、各 kubelet では、kubelet から API サーバーへの通信のために、クラスター CA によって署名される証明書署名要求 (CSR) も作成されます。
-* etcd キー値ストアには、etcd から API サーバーへの通信用に、クラスター CA によって署名された証明書が含まれています。
-* etcd キー値ストアでは、AKS クラスター内で etcd レプリカ間のデータ レプリケーションを認証および承認するために証明書に署名する CA が作成されます。
 * API アグリゲーターでは、他の API との通信に証明書を発行するためにクラスター CA が使用されます。 API アグリゲーターでは、これらの証明書を発行するための独自の CA を持つこともできますが、現在はクラスター CA が使用されています。
 * 各ノードでは、クラスター CA によって署名されるサービスア カウント (SA) トークンが使用されます。
 * `kubectl` クライアントには、AKS クラスターと通信するための証明書があります。
@@ -60,7 +58,7 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> `az aks rotate-certs` が完了するまでに最大で 30 分かかる場合があります。 コマンドが完了する前に失敗した場合は、`az aks show` を使用して、クラスターの状態が *証明書のローテーション中*になっていることを確認します。 クラスターがエラー状態になっている場合は、`az aks rotate-certs` を再実行して、証明書をもう一度ローテーションします。
+> `az aks rotate-certs` が完了するまでに最大で 30 分かかる場合があります。 コマンドが完了する前に失敗した場合は、`az aks show` を使用して、クラスターの状態が *証明書のローテーション中* になっていることを確認します。 クラスターがエラー状態になっている場合は、`az aks rotate-certs` を再実行して、証明書をもう一度ローテーションします。
 
 `kubectl` コマンドを実行して、古い証明書が無効になっていることを確認します。 `kubectl` によって使用される証明書を更新していないため、エラーが表示されます。  次に例を示します。
 
@@ -90,7 +88,7 @@ kubectl get no
 
 
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [aks-best-practices-security-upgrades]: operator-best-practices-cluster-security.md

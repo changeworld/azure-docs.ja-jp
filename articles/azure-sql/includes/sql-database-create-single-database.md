@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: sstein
 ms.reviewer: vanto
-ms.openlocfilehash: 57f504b15c0a9c72a2cb0f17b486846f44171a25
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: c7bd942b427bdbd2d8184f712f97dd2a0a57fa90
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101682384"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102178076"
 ---
 このステップでは、AdventureWorksLT サンプル データを使用する[論理 SQL サーバー](../database/logical-servers.md)と[単一データベース](../database/single-database-overview.md)を作成します。 データベースを作成するには、Azure portal のメニューと画面を使用するか、Azure Cloud Shell で Azure CLI または PowerShell スクリプトを使用します。
 
@@ -151,11 +151,11 @@ az sql db create \
 
 | コマンド | 説明 |
 |---|---|
-| [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set&preserve-view=true) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
+| [az account set](/cli/azure/account#az-account-set) | サブスクリプションを現在のアクティブなサブスクリプションとして設定します。 |
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az sql server create](/cli/azure/sql/server#az-sql-server-create) | データベースとエラスティック プールをホストするサーバーを作成します。 |
 | [az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-create) | サーバーレベルのファイアウォール規則を作成します。 |
-| [az sql db create](/cli/azure/sql/db#az-sql-db-create?view=azure-cli-latest&preserve-view=true) | データベースを作成します。 |
+| [az sql db create](/cli/azure/sql/db#az-sql-db-create) | データベースを作成します。 |
 
 他の Azure SQL Database の Azure CLI サンプルについては、[Azure CLI サンプル](../database/az-cli-script-samples-content-guide.md)に関するページをご覧ください。
 

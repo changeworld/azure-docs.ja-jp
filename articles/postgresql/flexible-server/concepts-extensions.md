@@ -1,17 +1,17 @@
 ---
 title: 拡張機能 - Azure Database for PostgreSQL - フレキシブル サーバー
 description: Azure Database for PostgreSQL - フレキシブル サーバーでの PostgreSQL 拡張機能の使用の可用性について調べる
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 7e9268f69b0ec8d06cd86fe5aec19a46b20a3a76
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/17/2021
+ms.openlocfilehash: e8f71eb120b86f35672c9123b52f7f19c9fee662
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710585"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608461"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバーの PostgreSQL 拡張機能
 
@@ -126,10 +126,9 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL - フ�
 
 
 ## <a name="dblink-and-postgres_fdw"></a>dblink および postgres_fdw
-[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) および [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) を使用して、1 つの PostgreSQL サーバーから別のサーバーに、または同一サーバー内の別のデータベースに接続できます。 送信側サーバーでは、受信側サーバーへの送信接続を許可している必要があります。 受信側サーバーでは、送信元サーバーからの接続を許可している必要があります。
+[dblink](https://www.postgresql.org/docs/current/contrib-dblink-function.html) および [postgres_fdw](https://www.postgresql.org/docs/current/postgres-fdw.html) を使用して、1 つの PostgreSQL サーバーから別のサーバーに、または同一サーバー内の別のデータベースに接続できます。 フレキシブル サーバーは、任意の PostgreSQL サーバーへの受信接続と送信接続の両方をサポートします。 送信側サーバーでは、受信側サーバーへの送信接続を許可している必要があります。 同様に、受信側サーバーでは、送信側サーバーからの接続を許可している必要があります。 
 
 これらの 2 つの拡張機能を使用する予定がある場合は、[VNet 統合](concepts-networking.md)でサーバーをデプロイすることをお勧めします。 既定では、VNET 統合によって、VNET 内のサーバー間の接続が許可されます。 [VNet ネットワーク セキュリティ グループ](../../virtual-network/manage-network-security-group.md)を使用してアクセスをカスタマイズすることもできます。
-
 
 ## <a name="pg_prewarm"></a>pg_prewarm
 

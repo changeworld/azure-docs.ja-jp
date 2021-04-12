@@ -1,17 +1,16 @@
 ---
 title: Azure での Service Map ソリューションの使用 | Microsoft Docs
 description: Service Map は、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、Azure のソリューションです。 この記事では、サービス マップを環境に展開して、さまざまなシナリオで使用する場合の詳細について説明します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 0374c7d304a40031919bae8816d31477e742b9c8
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ad3f8821189e6e7aabb5653e5f938bb73f57a34b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603686"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102047009"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 
@@ -26,7 +25,7 @@ Service Map は自動的に Windows および Linux のシステム上のアプ�
 * Windows コンピューターまたは Linux サーバーにインストールされている [Dependency Agent](vminsights-enable-overview.md#agents)。
 
 >[!NOTE]
->Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](../vm/vminsights-overview.md)に関するページを参照してください。 Service Map ソリューションと Azure Monitor for VMs マップ機能の違いについては、次の [FAQ](../faq.md#azure-monitor-for-vms) を参照してください。
+>Service Map を既にデプロイ済みの場合は、VM insights でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM insights の概要](../vm/vminsights-overview.md)に関するページをご覧ください。 Service Map ソリューションと VM insights のマップ機能の違いについては、次の [FAQ](../faq.md#vm-insights) をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -241,7 +240,7 @@ Service Map で関連するアラートを表示できるようにするには�
 
 ## <a name="service-desk-integration"></a>サービス デスクとの統合
 
-Service Map と IT Service Management Connector との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。 Service Map での統合に、"サービス デスク" というラベルが付けられます。 詳細については、[IT Service Management Connector を使用した ITSM 作業項目の一元管理](../platform/itsmc-overview.md)に関するページを参照してください。
+Service Map と IT Service Management Connector との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。 Service Map での統合に、"サービス デスク" というラベルが付けられます。 詳細については、[IT Service Management Connector を使用した ITSM 作業項目の一元管理](../alerts/itsmc-overview.md)に関するページを参照してください。
 
 **[Machine Service Desk]\(マシン サービス デスク\)** ウィンドウでは、選択した時間範囲内で選択したサーバーの IT Service Management イベントすべてが一覧表示されます。 進行中の項目がある場合はサーバーにアイコンが表示され、[Machine Service Desk]\(マシン サービス デスク\) ウィンドウにはそれらの項目が一覧表示されます。
 
@@ -304,7 +303,7 @@ Service Map と Update Management との統合は、両方のソリューショ�
 
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 
-Service Map のコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../log-query/log-query-overview.md)できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
+Service Map のコンピューターとプロセスのインベントリ データは、Log Analytics で[検索](../logs/log-query-overview.md)できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
 プロセスまたはコンピューターが起動されたとき、あるいは Service Map にオンボードされたときに生成されるレコードに加え、一意のコンピューターとプロセスごとに 1 時間あたり 1 つのレコードが生成されます。 これらのレコードは、次の表に示したプロパティを持ちます。 ServiceMapComputer_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のマシン リソースのフィールドにマップされます。 ServiceMapProcess_CL イベントのフィールドと値は、ServiceMap Azure Resource Manager API のプロセス リソースのフィールドにマップされます。 ResourceName_s フィールドは、対応する Resource Manager リソースの名前フィールドと一致します。 
 
@@ -550,7 +549,7 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="next-steps"></a>次のステップ
 
-Log Analytics の[ログ検索](../log-query/log-query-overview.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
+Log Analytics の[ログ検索](../logs/log-query-overview.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

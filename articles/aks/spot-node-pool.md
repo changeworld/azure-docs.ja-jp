@@ -5,12 +5,12 @@ services: container-service
 ms.service: container-service
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: 5fd97560c3a6e41b49beb957c7b8d79369799c21
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7f838b2a78f1c6993aa247f2944d4f2a9b1e9556
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078953"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102181127"
 ---
 # <a name="add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターにスポット ノード プールを追加する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * スポット ノード プールは、仮想マシン スケール セットを使用する必要があります。
 * 作成後に ScaleSetPriority または SpotMaxPrice を変更することはできません。
 * SpotMaxPrice を設定するときは、この値を -1 か、または小数点以下最大 5 桁の正の値にする必要があります。
-* スポット ノード プールにはラベル *kubernetes.azure.com/scalesetpriority:spot* 、taint *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* が割り当てられ、システム ポッドにはアンチアフィニティが割り当てられます。
+* スポット ノード プールにはラベル *kubernetes.azure.com/scalesetpriority:spot*、taint *kubernetes.azure.com/scalesetpriority=spot:NoSchedule* が割り当てられ、システム ポッドにはアンチアフィニティが割り当てられます。
 * スポット ノード プールでワークロードをスケジュールするには、[対応する toleration][spot-toleration] を追加する必要があります。
 
 ## <a name="add-a-spot-node-pool-to-an-aks-cluster"></a>AKS クラスターにスポット ノード プールを追加する
@@ -64,7 +64,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-既定では、複数のノード プールを含む AKS クラスターを作成する場合は、その AKS クラスター内に *Regular* の *priority* を持つノード プールを作成します。 上のコマンドは、 *Spot* の *priority* を持つ既存の AKS クラスターに補助ノード プールを追加します。 *Spot* の *priority* により、ノード プールがスポット ノード プールになります。 上の例では、 *eviction-policy* パラメーターは、既定値である *Delete* に設定されています。 [eviction policy][eviction-policy] を *Delete* に設定すると、ノード プールの基になるスケール セット内のノードは、排除されたときに削除されます。 また、eviction policy を *Deallocate* に設定することもできます。 eviction policy を *Deallocate* に設定すると、基になるスケール セット内のノードは、排除時に停止済み/割り当て解除済み状態に設定されます。 停止済み/割り当て解除済み状態のノードはコンピューティング クォータには含まれず、クラスターのスケーリングやアップグレードで問題を発生させる場合があります。 *priority* および *eviction-policy* 値は、ノード プールの作成中にのみ設定できます。 これらの値を後で更新することはできません。
+既定では、複数のノード プールを含む AKS クラスターを作成する場合は、その AKS クラスター内に *Regular* の *priority* を持つノード プールを作成します。 上のコマンドは、*Spot* の *priority* を持つ既存の AKS クラスターに補助ノード プールを追加します。 *Spot* の *priority* により、ノード プールがスポット ノード プールになります。 上の例では、*eviction-policy* パラメーターは、既定値である *Delete* に設定されています。 [eviction policy][eviction-policy] を *Delete* に設定すると、ノード プールの基になるスケール セット内のノードは、排除されたときに削除されます。 また、eviction policy を *Deallocate* に設定することもできます。 eviction policy を *Deallocate* に設定すると、基になるスケール セット内のノードは、排除時に停止済み/割り当て解除済み状態に設定されます。 停止済み/割り当て解除済み状態のノードはコンピューティング クォータには含まれず、クラスターのスケーリングやアップグレードで問題を発生させる場合があります。 *priority* および *eviction-policy* 値は、ノード プールの作成中にのみ設定できます。 これらの値を後で更新することはできません。
 
 このコマンドではまた、スポット ノード プールで使用することが推奨される[クラスター オートスケーラー][cluster-autoscaler]も有効になります。 クラスターで実行されているワークロードに基づいて、クラスター オートスケーラーは、ノード プール内のノードの数をスケールアップおよびスケールダウンします。 スポット ノード プールでは、追加のノードが引き続き必要な場合、クラスター オートスケーラーは排除の後にノードの数をスケールアップします。 ノード プールに含めることができるノードの最大数を変更する場合は、クラスター オートスケーラーに関連付けられている `maxCount` 値も調整する必要があります。 クラスター オートスケーラーを使用しない場合は、排除により、スポット プールが最終的に 0 まで減少し、追加のスポット ノードを受信するための手動操作が必要になります。
 
@@ -100,7 +100,7 @@ spec:
 ## <a name="max-price-for-a-spot-pool"></a>スポット プールの最大価格
 リージョンと SKU に基づいて、[スポット インスタンスの価格は変動します][pricing-spot]。 詳細については、[Linux][pricing-linux] および [Windows][pricing-windows] での価格を参照してください。
 
-可変する価格に対して、最大 5 桁の小数点以下を使用して、最大価格を米ドル (USD) で設定することができます。 たとえば、 *0.98765* という値は、1 時間あたり 0.98765 米国ドルの最大価格になります。 最大価格を *-1* に設定すると、インスタンスは価格に基づいて排除されません。 インスタンスの価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準インスタンスの価格のいずれか低い方になります。
+可変する価格に対して、最大 5 桁の小数点以下を使用して、最大価格を米ドル (USD) で設定することができます。 たとえば、*0.98765* という値は、1 時間あたり 0.98765 米国ドルの最大価格になります。 最大価格を *-1* に設定すると、インスタンスは価格に基づいて排除されません。 インスタンスの価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準インスタンスの価格のいずれか低い方になります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -113,7 +113,7 @@ spec:
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add
+[az-aks-nodepool-add]: /cli/azure/aks/nodepool#az-aks-nodepool-add
 [cluster-autoscaler]: cluster-autoscaler.md
 [eviction-policy]: ../virtual-machine-scale-sets/use-spot.md#eviction-policy
 [kubernetes-concepts]: concepts-clusters-workloads.md

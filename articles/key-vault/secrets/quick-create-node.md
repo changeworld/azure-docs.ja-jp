@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: afb0e04d6f8a34d844df382081d53a32899e9a5c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 769a63819925caa50ff364869b8d9a14c3258a2e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934766"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102214543"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>クイックスタート: JavaScript 用 Azure Key Vault シークレット クライアント ライブラリ (バージョン 4)
 
@@ -56,13 +56,13 @@ Key Vault とシークレットの詳細については、以下を参照して�
 
 1. コマンド シェルで、`key-vault-node-app` という名前のフォルダーを作成します。
 
-```azurecli
+```terminal
 mkdir key-vault-node-app
 ```
 
 1. 新しく作成した *key-vault-node-app* ディレクトリに移動し、"init" コマンドを実行してノード プロジェクトを初期化します。
 
-```azurecli
+```terminal
 cd key-vault-node-app
 npm init -y
 ```
@@ -71,13 +71,13 @@ npm init -y
 
 コンソール ウィンドウから、Node.js 用 Azure Key Vault [シークレット ライブラリ](https://www.npmjs.com/package/@azure/keyvault-secrets)をインストールします。
 
-```azurecli
+```terminal
 npm install @azure/keyvault-secrets
 ```
 
 キー コンテナーに対する認証を行うために、[azure.identity](https://www.npmjs.com/package/@azure/identity) パッケージをインストールします
 
-```azurecli
+```terminal
 npm install @azure/identity
 ```
 
@@ -154,7 +154,7 @@ const { SecretClient } = require("@azure/keyvault-secrets");
 
 このクイックスタートでは、ログイン ユーザーを使用してキー コンテナーに対する認証を行います。ローカル開発では、これが推奨される方法となります。 Azure にデプロイされるアプリケーションの場合は、App Service または仮想マシンにマネージド ID を割り当てる必要があります。詳細については、[マネージド ID の概要](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)に関するページを参照してください。
 
-以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、[Azure ID ライブラリ](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)の ["DefaultAzureCredential()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 キー コンテナーに対する認証について詳しくは、[開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)を参照してください。
+以下の例では、キー コンテナーの名前は、"https://\<your-key-vault-name\>.vault.azure.net" という形式で、キー コンテナーの URI に展開されます。 この例では、[Azure ID ライブラリ](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)の ["DefaultAzureCredential()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) クラスを使用しています。環境や使用するオプションが変わっても、同じコードを使用して ID を提供することができます。 キー コンテナーに対する認証の詳細については、[開発者ガイド](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)を参照してください。
 
 次のコードを "main()" 関数に追加します
 
@@ -168,7 +168,7 @@ const client = new SecretClient(KVUri, credential);
 
 ### <a name="save-a-secret"></a>シークレットを保存する
 
-アプリケーションが認証されたら、[setSecret メソッド](/javascript/api/@azure/keyvault-secrets/secretclient?#setsecret-string--string--setsecretoptions-)を使用して、キー コンテナーにシークレットを設定できます。これには、シークレットの名前が必要です (この例では、"mySecret" を使用します)。  
+アプリケーションが認証されたら、[setSecret メソッド](/javascript/api/@azure/keyvault-secrets/secretclient#setSecret_string__string__SetSecretOptions_)を使用して、キー コンテナーにシークレットを設定できます。これには、シークレットの名前が必要です (この例では、"mySecret" を使用します)。  
 
 ```javascript
 await client.setSecret(secretName, secretValue);
@@ -176,7 +176,7 @@ await client.setSecret(secretName, secretValue);
 
 ### <a name="retrieve-a-secret"></a>シークレットを取得する
 
-先ほど設定した値は、[getSecret メソッド](/javascript/api/@azure/keyvault-secrets/secretclient?#getsecret-string--getsecretoptions-)を使用して取得できます。
+先ほど設定した値は、[getSecret メソッド](/javascript/api/@azure/keyvault-secrets/secretclient#getSecret_string__GetSecretOptions_)を使用して取得できます。
 
 ```javascript
 const retrievedSecret = await client.getSecret(secretName);
@@ -258,9 +258,9 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 1. 次のコマンドを実行して、アプリを実行します。
 
-    ```azurecli
+    ```terminal
     npm install
-    npm index.js
+    node index.js
     ```
 
 1. メッセージが表示されたら、シークレットの値を入力します (例: mySecretPassword)。

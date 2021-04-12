@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83bf6b6123cf7e0d57296f1f344a264c8a18ed77
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3dd2a618f22036fd0826a99207d83a3add390c7d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101671053"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645324"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>STONITH を使用した SUSE での高可用性のセットアップ
 このドキュメントでは、STONITH デバイスを使って SUSE オペレーティング システムに高可用性をセットアップする詳しい手順について説明します。
@@ -540,7 +540,7 @@ cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 ## <a name="10-general-documentation"></a>10.一般的なドキュメント
 SUSE HA のセットアップについて詳しくは、次の記事をご覧ください。 
 
-- [SAP HANA SR パフォーマンス最適化シナリオ](https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf )
+- [SAP HANA SR パフォーマンス最適化シナリオ](https://www.suse.com/support/kb/doc/?id=000019450 )
 - [ストレージ ベースのフェンス操作](https://www.suse.com/documentation/sle_ha/book_sleha/data/sec_ha_storage_protect_fencing.html)
 - [SAP HANA 用 Pacemaker Cluster の使用 - パート 1 のブログ](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-1-basics/)
 - [SAP HANA 用 Pacemaker Cluster の使用 - パート 2 のブログ](https://blogs.sap.com/2017/11/19/be-prepared-for-using-pacemaker-cluster-for-sap-hana-part-2-failure-of-both-nodes/)

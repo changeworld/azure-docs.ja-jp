@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2021
+ms.date: 03/10/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: fd3e8295820cd9388bd7999d3008b4c583dbf295
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: ac0f9e6e5e1a1988386cc85c2d7576719acbd6e6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220906"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590961"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Azure NetApp Files ボリュームのリージョン間レプリケーション
 
@@ -31,7 +31,7 @@ Azure NetApp Files レプリケーション機能を使用すると、リージ�
 
 ## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>サポートされているリージョン間レプリケーション ペア
 
-Azure NetApp Files ボリューム レプリケーションは、さまざまな [Azure リージョン ペア](/azure/best-practices-availability-paired-regions#azure-regional-pairs)と非ペアの間でサポートされています。 Azure NetApp Files ボリューム レプリケーションは現在、次のリージョン間で使用できます。  
+Azure NetApp Files ボリューム レプリケーションは、さまざまな [Azure リージョン ペア](../best-practices-availability-paired-regions.md#azure-regional-pairs)と非ペアの間でサポートされています。 Azure NetApp Files ボリューム レプリケーションは現在、次のリージョン間で使用できます。  
 
 ### <a name="azure-regional-pairs"></a>Azure リージョン ペア
 
@@ -52,6 +52,7 @@ Azure NetApp Files ボリューム レプリケーションは、さまざまな
 *   米国中南部および米国東部
 *   米国中南部および米国東部 2
 *   米国東部および米国東部 2
+*   米国東部 2 および米国西部 2
 *   オーストラリア東部および東南アジア 
 *   ドイツ中西部および英国南部
 
@@ -122,8 +123,7 @@ Azure NetApp Files のリージョン間レプリケーションでは、レプ�
 * [ボリューム レプリケーションを作成する](cross-region-replication-create-peering.md)
 * [レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)
 * [ディザスター リカバリーの管理](cross-region-replication-manage-disaster-recovery.md)
+* [リージョン間レプリケーションの宛先ボリュームのサイズを変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [ボリューム レプリケーション メトリック](azure-netapp-files-metrics.md#replication)
 * [ボリューム レプリケーションまたはボリュームを削除する](cross-region-replication-delete.md)
 * [リージョン間レプリケーションのトラブルシューティング](troubleshoot-cross-region-replication.md)
-
-

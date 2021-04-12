@@ -6,12 +6,12 @@ ms.date: 04/16/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: bd6ed2e5c848b39ad946209d5ea92fcf6ce3b438
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 9e824af23fd83725b426d5860186d3c4b1496e18
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625366"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448901"
 ---
 # <a name="adding-the-jvm-arg---azure-monitor-application-insights-for-java"></a>JVM 引数の追加 - Azure Monitor Application Insights for Java
 
@@ -23,24 +23,24 @@ ms.locfileid: "98625366"
 
 ## <a name="spring-boot"></a>Spring Boot
 
-JVM 引数 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を `-jar` より前の任意の位置に追加します。次に例を示します。
+JVM 引数 `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を `-jar` より前の任意の位置に追加します。次に例を示します。
 
 ```
-java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <myapp.jar>
+java -javaagent:path/to/applicationinsights-agent-3.0.3.jar -jar <myapp.jar>
 ```
 
 ## <a name="spring-boot-via-docker-entry-point"></a>Docker エントリ ポイントを使用した Spring Boot
 
-*exec* フォームを使用している場合は、パラメーター `"-javaagent:path/to/applicationinsights-agent-3.0.2.jar"` を、パラメーターリストの `"-jar"` パラメーターより前の位置に追加します。次に例を示します。
+*exec* フォームを使用している場合は、パラメーター `"-javaagent:path/to/applicationinsights-agent-3.0.3.jar"` を、パラメーターリストの `"-jar"` パラメーターより前の位置に追加します。次に例を示します。
 
 ```
-ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.2.jar", "-jar", "<myapp.jar>"]
+ENTRYPOINT ["java", "-javaagent:path/to/applicationinsights-agent-3.0.3.jar", "-jar", "<myapp.jar>"]
 ```
 
-*shell* フォームを使用している場合は、JVM 引数 `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を `-jar` より前の位置に追加します。次に例を示します。
+*shell* フォームを使用している場合は、JVM 引数 `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を `-jar` より前の位置に追加します。次に例を示します。
 
 ```
-ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <myapp.jar>
+ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.3.jar -jar <myapp.jar>
 ```
 
 ## <a name="tomcat-8-linux"></a>Tomcat 8 (Linux)
@@ -50,7 +50,7 @@ ENTRYPOINT java -javaagent:path/to/applicationinsights-agent-3.0.2.jar -jar <mya
 `apt-get` または `yum` を使用して Tomcat をインストールした場合は、ファイル `/etc/tomcat8/tomcat8.conf` が必要です。  そのファイルの末尾に次の行を追加します。
 
 ```
-JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
+JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.3.jar"
 ```
 
 ### <a name="tomcat-installed-via-download-and-unzip"></a>Tomcat をダウンロードし、解凍してインストールした場合
@@ -58,10 +58,10 @@ JAVA_OPTS="$JAVA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
 [https://tomcat.apache.org](https://tomcat.apache.org) から Tomcat をダウンロードし、解凍してインストールした場合は、ファイル `<tomcat>/bin/catalina.sh` が必要です。  `<tomcat>/bin/setenv.sh` という名前で、同じディレクトリに新しいファイルを作成して、次の内容を設定します。
 
 ```
-CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
+CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.3.jar"
 ```
 
-ファイル `<tomcat>/bin/setenv.sh` が既に存在する場合は、そのファイルを変更し、`CATALINA_OPTS` に `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を追加します。
+ファイル `<tomcat>/bin/setenv.sh` が既に存在する場合は、そのファイルを変更し、`CATALINA_OPTS` に `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を追加します。
 
 
 ## <a name="tomcat-8-windows"></a>Tomcat 8 (Windows)
@@ -71,36 +71,36 @@ CATALINA_OPTS="$CATALINA_OPTS -javaagent:path/to/applicationinsights-agent-3.0.2
 `<tomcat>/bin/catalina.bat` ファイルを見つけます。  `<tomcat>/bin/setenv.bat` という名前で、同じディレクトリに新しいファイルを作成して、次の内容を設定します。
 
 ```
-set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.2.jar
+set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.3.jar
 ```
 
 引用符は必須ではありませんが、含める場合の適切な位置は次のようになります。
 
 ```
-set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.2.jar"
+set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-3.0.3.jar"
 ```
 
-ファイル `<tomcat>/bin/setenv.bat` が既に存在する場合は、そのファイルを変更し、`CATALINA_OPTS` に `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を追加するだけです。
+ファイル `<tomcat>/bin/setenv.bat` が既に存在する場合は、そのファイルを変更し、`CATALINA_OPTS` に `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を追加するだけです。
 
 ### <a name="running-tomcat-as-a-windows-service"></a>Tomcat を Windows サービスとして実行する
 
-`<tomcat>/bin/tomcat8w.exe` ファイルを見つけます。  その実行可能ファイルを実行し、[`Java`] タブの [`Java Options`] に `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を追加します。
+`<tomcat>/bin/tomcat8w.exe` ファイルを見つけます。  その実行可能ファイルを実行し、[`Java`] タブの [`Java Options`] に `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を追加します。
 
 
 ## <a name="jboss-eap-7"></a>JBoss EAP 7
 
 ### <a name="standalone-server"></a>スタンドアロン サーバー
 
-ファイル `JBOSS_HOME/bin/standalone.conf` (Linux) または `JBOSS_HOME/bin/standalone.conf.bat` (Windows) の既存の `JAVA_OPTS` 環境変数に `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を追加します。
+ファイル `JBOSS_HOME/bin/standalone.conf` (Linux) または `JBOSS_HOME/bin/standalone.conf.bat` (Windows) の既存の `JAVA_OPTS` 環境変数に `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を追加します。
 
 ```java    ...
-    JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.2.jar</b> -Xms1303m -Xmx1303m ..."
+    JAVA_OPTS="<b>-javaagent:path/to/applicationinsights-agent-3.0.3.jar</b> -Xms1303m -Xmx1303m ..."
     ...
 ```
 
 ### <a name="domain-server"></a>ドメイン サーバー
 
-`JBOSS_HOME/domain/configuration/host.xml` の既存の `jvm-options` に `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を追加します。
+`JBOSS_HOME/domain/configuration/host.xml` の既存の `jvm-options` に `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を追加します。
 
 ```xml
 ...
@@ -110,7 +110,7 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
         <jvm-options>
             <option value="-server"/>
             <!--Add Java agent jar file here-->
-            <option value="-javaagent:path/to/applicationinsights-agent-3.0.2.jar"/>
+            <option value="-javaagent:path/to/applicationinsights-agent-3.0.3.jar"/>
             <option value="-XX:MetaspaceSize=96m"/>
             <option value="-XX:MaxMetaspaceSize=256m"/>
         </jvm-options>
@@ -150,20 +150,20 @@ set "CATALINA_OPTS=%CATALINA_OPTS% -javaagent:path/to/applicationinsights-agent-
 
 ```
 --exec
--javaagent:path/to/applicationinsights-agent-3.0.2.jar
+-javaagent:path/to/applicationinsights-agent-3.0.3.jar
 ```
 
 
 ## <a name="payara-5"></a>Payara 5
 
-`glassfish/domains/domain1/config/domain.xml` の既存の `jvm-options` に `-javaagent:path/to/applicationinsights-agent-3.0.2.jar` を追加します。
+`glassfish/domains/domain1/config/domain.xml` の既存の `jvm-options` に `-javaagent:path/to/applicationinsights-agent-3.0.3.jar` を追加します。
 
 ```xml
 ...
 <java-config ...>
     <!--Edit the JVM options here-->
     <jvm-options>
-        -javaagent:path/to/applicationinsights-agent-3.0.2.jar>
+        -javaagent:path/to/applicationinsights-agent-3.0.3.jar>
     </jvm-options>
         ...
 </java-config>
@@ -179,7 +179,7 @@ Java and Process Management > Process definition >  Java Virtual Machine
 ```
 "汎用 JVM 引数" に、以下を追加します。
 ```
--javaagent:path/to/applicationinsights-agent-3.0.2.jar
+-javaagent:path/to/applicationinsights-agent-3.0.3.jar
 ```
 その後、アプリケーション サーバーを保存して再起動します。
 
@@ -188,5 +188,5 @@ Java and Process Management > Process definition >  Java Virtual Machine
 
 サーバー ディレクトリに新しいファイル `jvm.options` (例: `<openliberty>/usr/servers/defaultServer`) を作成し、次の行を追加します。
 ```
--javaagent:path/to/applicationinsights-agent-3.0.2.jar
+-javaagent:path/to/applicationinsights-agent-3.0.3.jar
 ```

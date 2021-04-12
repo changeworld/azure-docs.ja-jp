@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/12/2020
+ms.date: 03/04/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a0b7330485d3152a588d43added7d9feaa5c2a14
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3cc9051190bd314ac93e3de2689a6aa0ec2b6235
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "95994496"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108083"
 ---
 # <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
 
@@ -35,7 +35,7 @@ Video Indexer API でビデオをアップロードする場合、次のアッ�
 
 ## <a name="supported-file-formats-for-video-indexer"></a>Video Indexer でサポートされているファイル形式
 
-Video Indexer で使用できるファイル形式の一覧については、「[入力コンテナー/ファイル形式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)」を参照してください。
+Video Indexer で使用できるファイル形式の一覧については、「[入力コンテナー/ファイル形式](../latest/encode-media-encoder-standard-formats-reference.md)」を参照してください。
 
 ## <a name="video-files-storage"></a>ビデオ ファイルのストレージ
 
@@ -83,18 +83,22 @@ Video Indexer で使用できるファイル形式の一覧については、「
 
 #### <a name="indexingpreset"></a>indexingPreset
 
-未加工の録画または外部の録画に背景ノイズが入っている場合は、このパラメーターを使用します。 このパラメーターは、インデックス作成プロセスの構成に使用されます。 次の値を指定できます。
+このパラメーターを使用して、オーディオ ファイルまたはビデオ ファイルに適用する AI バンドルを定義します。 このパラメーターは、インデックス作成プロセスの構成に使用されます。 次の値を指定できます。
 
-- `AudioOnly` – オーディオのみを使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います
-- `VideoOnly` – ビデオのみを使用 (オーディオは無視) して、分析情報のインデックス作成と抽出を行います
-- `Default` – オーディオとビデオの両方を使用して、分析情報のインデックス作成と抽出を行います
-- `DefaultWithNoiseReduction` – オーディオ ストリームにノイズ低減アルゴリズムを適用しながら、オーディオとビデオの両方からインデックス作成と抽出を行います
+- `AudioOnly` – オーディオのみを使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います。
+- `VideoOnly` – ビデオのみを使用 (オーディオは無視) して、分析情報のインデックス作成と抽出を行います。
+- `Default` - オーディオとビデオの両方を使用して、分析情報のインデックス作成と抽出を行います。
+- `DefaultWithNoiseReduction` - オーディオ ストリームにノイズ低減アルゴリズムを適用しながら、オーディオとビデオの両方から分析情報のインデックス作成と抽出を行います。
+
+    `DefaultWithNoiseReduction` 値が既定のプリセット (非推奨) にマップされるようになりました。
+- `BasicAudio` - オーディオのみ (文字起こし、翻訳、出力キャプションの書式設定、字幕などの基本的なオーディオ機能のみ) を使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います。
+ - `AdvancedAudio` -標準のオーディオ分析に加え、高度なオーディオ機能 (オーディオ イベントの検出) など、オーディオのみを使用 (ビデオは無視) して、分析情報のインデックス作成と抽出を行います。
 
 > [!NOTE]
 > Video Indexer では、最大 2 つのオーディオ トラックがカバーされます。 ファイル内にこれより多いオーディオ トラックがある場合、それらは 1 つのトラックとして扱われます。<br/>
 トラックに個別にインデックスを付ける場合は、関連するオーディオ ファイルを抽出し、それに `AudioOnly` とインデックスを付ける必要があります。
 
-料金は、選択したインデックス作成オプションによって異なります。  
+料金は、選択したインデックス作成オプションによって異なります。 詳細については、[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)に関する記事を参照してください。
 
 #### <a name="priority"></a>priority
 
@@ -109,7 +113,7 @@ Video Indexer で使用できるファイル形式の一覧については、「
 [Upload video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API または [Re-Index Video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API を使用するときの省略可能なパラメーターの 1 つに、`streamingPreset` があります。 `streamingPreset` を `Default`、`SingleBitrate`、または `AdaptiveBitrate` に設定すると、エンコード プロセスがトリガーされます。 インデックス作成ジョブとエンコード ジョブが完了すると、ビデオが公開され、ビデオをストリームできるようになります。 ビデオのストリーム元のストリーミング エンドポイントは、**実行中** 状態である必要があります。
 
 SingleBitrate の場合、出力ごとに Standard Encoder コストが適用されます。 ビデオの高さが 720 以上の場合、Video Indexer によって 1280 x 720 としてエンコードされます。 それ以外の場合は、640 x 468 と指定されます。
-既定の設定は、[コンテンツに対応したエンコード](../latest/content-aware-encoding.md)です。
+既定の設定は、[コンテンツに対応したエンコード](../latest/encode-content-aware-concept.md)です。
 
 インデックス作成ジョブとエンコード ジョブを実行するには、[Video Indexer アカウントに接続されている Azure Media Services アカウント](connect-to-azure.md)に予約ユニットが必要です。 詳細については、[メディア処理のスケール設定](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。 これらはコンピューティング集中型のジョブであるため、ユニットの種類は S3 にすることを強くお勧めします。 RU の数によって、並列で実行できるジョブの最大数が定義されます。 ベースラインの推奨設定は、10 個の S3 RU です。 
 

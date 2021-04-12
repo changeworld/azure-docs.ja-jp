@@ -5,17 +5,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: sample
-ms.date: 07/23/2020
+ms.date: 03/23/2021
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.custom: devx-track-python
-ms.openlocfilehash: 341615bf8fe231eafa606411948ad014399b8261
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 19a73f17fcb1f6f51dd2ed80b9e68a51d0d7ceb9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079548"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044704"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Python を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -35,15 +35,15 @@ Table Storage または Azure Cosmos DB を使用すると、Web アプリケー
 * エンティティの挿入とクエリ
 * エンティティの変更
 
-このサンプルでシナリオに従って作業するときに、[Azure Cosmos DB SDK for Python API のリファレンス](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)を参照できます。
+このサンプルでシナリオに従って作業するときに、[Azure Cosmos DB SDK for Python API のリファレンス](/python/api/overview/azure/cosmosdb)を参照できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 このサンプルの作業を行うためには、次のものが必要になります。
 
-* [Python](https://www.python.org/downloads/) 2.7、3.3、3.4、3.5、3.6
+* [Python](https://www.python.org/downloads/) 2.7 または 3.6 以降。
 * [Azure Cosmos DB Table SDK for Python](https://pypi.python.org/pypi/azure-cosmosdb-table/) この SDK は、Azure Table Storage と Azure Cosmos DB Table API の両方に接続します。
-* [Azure Storage アカウント](../storage/common/storage-account-create.md)または [Azure Cosmos DB アカウント](https://azure.microsoft.com/try/cosmosdb/)
+* [Azure Storage アカウント](../storage/common/storage-account-create.md)または [Azure Cosmos DB アカウント](https://azure.microsoft.com/try/cosmosdb/)。
 
 ## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
 
@@ -219,6 +219,18 @@ for task in tasks:
     print(task.description)
 ```
 
+## <a name="query-for-an-entity-without-partition-and-row-keys"></a>パーティション キーと行キーを使用せずにエンティティを照会する
+
+パーティション キーと行キーを使用せずにテーブル内のエンティティを照会することもできます。 "filter" パラメーターと "select" パラメーターを付けずに `table_service.query_entities` メソッドを使用します。その例を次に示します。
+
+```python
+print("Get the first item from the table")
+tasks = table_service.query_entities(
+    'tasktable')
+lst = list(tasks)
+print(lst[0])
+```
+
 ## <a name="delete-an-entity"></a>エンティティを削除する
 
 エンティティを削除するには、エンティティの **PartitionKey** と **RowKey** を [delete_entity][py_delete_entity] メソッドに渡します。
@@ -238,22 +250,22 @@ table_service.delete_table('tasktable')
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos DB の FAQ - Table API を使った開発](./faq.md)
-* [Azure Cosmos DB SDK for Python API のリファレンス](/python/api/overview/azure/cosmosdb?preserve-view=true&view=azure-python)
+* [Azure Cosmos DB SDK for Python API のリファレンス](/python/api/overview/azure/cosmosdb)
 * [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md): Windows、macOS、および Linux で Azure Storage のデータを視覚的に操作するための無料のクロス プラットフォーム アプリケーション
 * [Visual Studio での Python の使用 (Windows)](/visualstudio/python/overview-of-python-tools-for-visual-studio)
 
 
 
-[py_commit_batch]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_create_table]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_delete_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_get_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_insert_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_insert_or_replace_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_Entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.models.entity?preserve-view=true&view=azure-python
-[py_merge_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_update_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_delete_table]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_TableService]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?preserve-view=true&view=azure-python
-[py_TableBatch]: https://docs.microsoft.com/python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice?view=azure-python&preserve-view=true
+[py_commit_batch]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_create_table]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_delete_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_get_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_insert_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_insert_or_replace_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_Entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.models.entity
+[py_merge_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_update_entity]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_delete_table]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_TableService]: /python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice
+[py_TableBatch]: https://docs.microsoft.com/python/api/azure-cosmosdb-table/azure.cosmosdb.table.tableservice.tableservice

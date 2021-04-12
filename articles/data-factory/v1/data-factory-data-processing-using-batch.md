@@ -3,17 +3,17 @@ title: Data Factory と Batch を使用して大規模なデータセットを�
 description: Azure Batch の並列処理機能を使用して、Azure Data Factory パイプラインで膨大な量のデータを処理する方法について説明します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c59e164d67a665a5e99cb5045b3b0cf38e33dc87
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2568fc2ea133a0cdd49e0a2577ce1e580056a74c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100364275"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104783134"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 > [!NOTE]
@@ -118,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合は、すぐに無�
 
    f. **[OK]** を選択してプールを作成します。
 
-#### <a name="azure-storage-explorer"></a>Azure Storage Explorer
+#### <a name="azure-storage-explorer"></a>Azure ストレージ エクスプローラー
 [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) または [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (ClumsyLeaf Software 製) を使用して、Storage プロジェクトのデータを検査し、変更します。 また、クラウドホスト型アプリケーションのログのデータを検査して変更することもできます。
 
 1. プライベートなアクセス (匿名アクセスなし) で **mycontainer** という名前のコンテナーを作成します。
@@ -575,9 +575,7 @@ test custom activity Microsoft test custom activity Microsoft
    d. **batchUri** JSON プロパティにバッチ URI を入力します。
 
       > [!IMPORTANT]
-      > **[Batch アカウント]** ブレードの URL は、\<accountname\>.\<region\>.batch.azure.com という形式です。 JSON の **batchUri** プロパティでは、URL から a88"accountname."** を削除する必要があります。 たとえば `"batchUri": "https://eastus.batch.azure.com"` です。
-      >
-      >
+      > **[Batch アカウント]** ブレードの URL は、`<accountname>.<region>.batch.azure.com` という形式です。 JSON スクリプトの `batchUri` プロパティでは、URL から `<accountname>.` を削除する必要があります。 たとえば `"batchUri": "https://eastus.batch.azure.com"` です。
 
       ![[Batch アカウント] ブレード](./media/data-factory-data-processing-using-batch/image9.png)
 

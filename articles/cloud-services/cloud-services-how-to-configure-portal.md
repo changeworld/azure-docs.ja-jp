@@ -3,17 +3,18 @@ title: クラウド サービス (クラシック) の構成方法 - ポータ�
 description: Azure のクラウド サービスの構成方法について説明します。 クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。 これらの例では、Azure Portal を使用します。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: f16fcfe227663958279281659b09929a4cd2d386
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: adb2066b12a57630a7615d1bc2a8989f022b0de7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743425"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935961"
 ---
 # <a name="how-to-configure-and-azure-cloud-service-classic"></a>構成方法と Azure クラウド サービス (クラシック)
 

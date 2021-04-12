@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: f1f2caa194972bb870dc58cfa0bd6ccb2f8db053
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+manager: femila
+ms.openlocfilehash: 67d5ab663c3db78de2596b66836c139d39fe3d44
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099916"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445416"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>セッション ホスト仮想マシンの構成
 

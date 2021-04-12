@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 70a56b7efc34ba2fd3c06521c6e4cac6ea28778f
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+manager: femila
+ms.openlocfilehash: 21db49ade3b6727775c10321e10aff2e0bf231f1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302469"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447949"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Azure Files および Azure AD DS を使用してプロファイル コンテナーを作成する
 

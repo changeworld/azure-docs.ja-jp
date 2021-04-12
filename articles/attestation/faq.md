@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 39f628845bdc9d54b48b1c8037f4a506a9d5c00a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9b15a336e97cad1fb03a63ec34f563a4453755ff
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89236549"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504194"
 ---
 # <a name="frequently-asked-questions-for-microsoft-azure-attestation"></a>Microsoft Azure Attestation に関してよく寄せられる質問
 
@@ -31,7 +31,7 @@ Azure PCK キャッシュ サービスでは、次が可能となります。
 
 ## <a name="is-sgx-attestation-supported-by-azure-attestation-in-non-azure-environments"></a>SGX 構成証明は、Azure 以外の環境の Azure Attestation でサポートされていますか
 
-Azure Attestation は、TEE を検証するために、Azure PCK キャッシュ サービスによって示されるセキュリティ ベースラインに依存します。 Azure PCK キャッシュ サービスは現在、Azure Confidential Computing ノードのみをサポートするように設計されています。 
+いいえ。 Azure Attestation は、TEE を検証するために、Azure PCK キャッシュ サービスによって示されるセキュリティ ベースラインに依存します。 Azure PCK キャッシュ サービスは現在、Azure Confidential Computing ノードのみをサポートするように設計されています。 
 
 ## <a name="what-validations-does-azure-attestation-perform-for-attesting-sgx-enclaves"></a>SGX エンクレーブを証明するために Azure Attestation によってどのような検証が実行されますか
 

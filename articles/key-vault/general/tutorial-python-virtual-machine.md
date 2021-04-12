@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: ae62bf353f8a92c4408d4a38a91771ad60a13107
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2fc77d0cdfb6bd8a62555951c0b6dc7e9b732f93
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285309"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102203540"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-python"></a>チュートリアル:Python で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -58,7 +58,7 @@ az login
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-次のいずれかの方法を使用して、 **myVM** という名前の VM を作成します。
+次のいずれかの方法を使用して、**myVM** という名前の VM を作成します。
 
 | Linux | Windows |
 |--|--|
@@ -66,7 +66,7 @@ az login
 | [PowerShell](../../virtual-machines/linux/quick-create-powershell.md) | [PowerShell](../../virtual-machines/windows/quick-create-powershell.md) |
 | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) | [Azure ポータル](../../virtual-machines/windows/quick-create-portal.md) |
 
-Azure CLI を使用して Linux VM を作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。  次の例では、 *azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 ( *~/.ssh* ) に配置されます。 
+Azure CLI を使用して Linux VM を作成するには、[az vm create](/cli/azure/vm) コマンドを使用します。  次の例では、*azureuser* という名前のユーザー アカウントを追加します。 SSH キーを自動的に生成するために `--generate-ssh-keys` パラメーターが使用され、キーは既定のキーの場所 ( *~/.ssh*) に配置されます。 
 
 ```azurecli-interactive
 az vm create \
@@ -81,7 +81,7 @@ az vm create \
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
 
-Azure CLI の [az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) コマンドを使用して、仮想マシンに対するシステム割り当ての ID を作成します。
+Azure CLI の [az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) コマンドを使用して、仮想マシンに対するシステム割り当ての ID を作成します。
 
 ```azurecli
 az vm identity assign --name "myVM" --resource-group "myResourceGroup"
@@ -129,7 +129,7 @@ pip3 install azure.identity
 
 ## <a name="create-and-edit-the-sample-python-script"></a>サンプルの Python スクリプトを作成して編集する
 
-仮想マシンで、 **sample.py** という Python ファイルを作成します。 ファイルを編集して次のコードを追加します。"<your-unique-keyvault-name>" はお使いのキー コンテナーの名前に置き換えます。
+仮想マシンで、**sample.py** という Python ファイルを作成します。 ファイルを編集して次のコードを追加します。"<your-unique-keyvault-name>" はお使いのキー コンテナーの名前に置き換えます。
 
 ```python
 from azure.keyvault.secrets import SecretClient
@@ -148,7 +148,7 @@ print(f"The value of secret '{secretName}' in '{keyVaultName}' is: '{retrieved_s
 
 ## <a name="run-the-sample-python-app"></a>サンプルの Python アプリを実行する
 
-最後に、 **sample.py** を実行します。 すべてがうまくいった場合、シークレットの値が返されます。
+最後に、**sample.py** を実行します。 すべてがうまくいった場合、シークレットの値が返されます。
 
 ```bash
 python3 sample.py

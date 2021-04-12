@@ -1,23 +1,23 @@
 ---
 title: Azure Storage アカウントの既定のアクセス層を管理する
 description: GPv2 または Blob Storage アカウントの既定のアクセス層を変更する方法を説明します
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 01/11/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.reviewer: klaasl
-ms.openlocfilehash: 10d4e99d7bbebb6bc7d7def308e233507ed99ce9
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 026ab6be1fd4ef79f818f796c4725f6613a9bc6d
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98166452"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277387"
 ---
 # <a name="manage-the-default-access-tier-of-an-azure-storage-account"></a>Azure Storage アカウントの既定のアクセス層を管理する
 
-各 Azure Storage アカウントには、ホット、クール、アーカイブのいずれかの既定のアクセス層があります。 アクセス層は、ストレージ アカウントを作成するときに割り当てます。 既定のアクセス層はホットです。
+各 Azure Storage アカウントには、ホットまたはクールのいずれかの既定のアクセス層があります。 アクセス層は、ストレージ アカウントを作成するときに割り当てます。 既定のアクセス層はホットです。
 
 既定のアカウント層を変更するには、ストレージ アカウントで **アクセス層** 属性を設定します。 アカウント層の変更は、アカウントに格納されている、層が明示的に設定されていないすべてのオブジェクトに適用されます。 アカウント層をホットからクールに切り替えた場合、GPv2 アカウントについてのみ、階層が設定されていないすべての BLOB に関して、書き込み操作 (10,000 件単位) の料金が発生します。クールからホットへの切り替えでは、Blob Storage および GPv2 アカウントのすべての BLOB に関して、読み取り操作 (10,000 件単位) とデータ取得 (GB 単位) の両方の料金が発生します。
 

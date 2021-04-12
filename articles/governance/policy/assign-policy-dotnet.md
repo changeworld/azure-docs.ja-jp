@@ -1,15 +1,15 @@
 ---
 title: 'クイック スタート: .NET Core を使用した新しいポリシー割り当て'
 description: このクイックスタートでは、.NET Core を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 09/30/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c4c8f8e9df544b6fc00b5b7701435f5a606f9764
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b89a0db419b1e7213e9742e4a39d073445d05189
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91604578"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091788"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-net-core"></a>クイック スタート: .NET Core を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 

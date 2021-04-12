@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 7753c6c118d763163e6bc8f69f5b4eee13fe2393
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588796"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102200036"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -153,7 +153,7 @@ Web アプリがブラウザー クライアントにブロードキャストし
 
 [Azure App Service の Web Apps 機能](../app-service/overview.md) は、Web アプリをホストするためのサービスとしてのプラットフォーム (PAAS) を提供します。 Azure App Service でホストされている Web アプリは、継続的デプロイやパッケージ管理などの Azure とパートナーの DevOps ソリューションだけでなく、追加のセキュリティ、負荷分散、スケーラビリティなどの強力な Azure の機能の恩恵を受けることができます。 Azure App Service は、多くの一般的な言語で開発されて、Windows や Linux のインフラストラクチャにデプロイされた Web アプリをサポートします。
 
-このセクションでは、App Service で Web アプリをプロビジョニングし、Azure CLI コマンドを使用してそれにコードをデプロイします。 [az webapp](/cli/azure/webapp?view=azure-cli-latest) のドキュメントで、使用されているコマンドの詳細を確認できます。 始める前に、[IoT ハブにリソース グループを追加する](#add-a-consumer-group-to-your-iot-hub)、[IoT ハブのサービス接続文字列を取得する](#get-a-service-connection-string-for-your-iot-hub)、および [GitHub から Web アプリをダウンロードする](#download-the-web-app-from-github)の各手順を完了していることを確認してください。
+このセクションでは、App Service で Web アプリをプロビジョニングし、Azure CLI コマンドを使用してそれにコードをデプロイします。 [az webapp](/cli/azure/webapp) のドキュメントで、使用されているコマンドの詳細を確認できます。 始める前に、[IoT ハブにリソース グループを追加する](#add-a-consumer-group-to-your-iot-hub)、[IoT ハブのサービス接続文字列を取得する](#get-a-service-connection-string-for-your-iot-hub)、および [GitHub から Web アプリをダウンロードする](#download-the-web-app-from-github)の各手順を完了していることを確認してください。
 
 1. [App Service プラン](../app-service/overview-hosting-plans.md)は、App Service でホストされているアプリを実行するための一連のコンピューティング リソースを定義します。 このチュートリアルでは、Developer/Free のレベルを使用して Web アプリをホストします。 Free レベルでは、Web アプリは、他のお客様のアプリを含めた他の App Service アプリとの共有 Windows リソースで実行されます。 Azure では、Web アプリを Linux コンピューティング リソースにデプロイする App Service プランも提供されています。 使用したい App Service プランが既にある場合は、この手順をスキップできます。
 

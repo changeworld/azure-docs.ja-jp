@@ -13,16 +13,16 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/09/2020
 ms.openlocfilehash: 8bd1e312463cf89ae30d54bc4a32a497fc7a9a78
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98249654"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL Database 用語集
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
 
-## <a name="azure-sql-database"></a>Azure SQL Database
+## <a name="azure-sql-database"></a>Azure SQL データベース
 
 |Context|期間|詳細情報|
 |:---|:---|:---|

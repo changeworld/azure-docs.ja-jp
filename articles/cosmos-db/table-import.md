@@ -9,10 +9,10 @@ ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: e876ca028532bb3721146e90a91d68c4c12bf79f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "93096080"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントにデータを移行する
@@ -35,7 +35,7 @@ ms.locfileid: "93096080"
 
 ## <a name="data-migration-tool"></a>データ移行ツール
 
-コマンド ラインの Azure Cosmos DB データ移行ツール (dt.exe) を使用すると、既存の Azure Table ストレージ データを Table API GA アカウントにインポートしたり、Table API (プレビュー) アカウントのデータを Table API GA アカウントに移行したりすることができます。 その他のソースは現在はサポートされていません。 現在、UI ベースのデータ移行ツール (dtui.exe) は、テーブル API アカウントに対してはサポートされていません。 
+コマンド ラインの Azure Cosmos DB データ移行ツール (dt.exe) を使用すると、既存の Azure Table Storage データを Table API GA アカウントにインポートしたり、Table API (プレビュー) アカウントのデータを Table API GA アカウントに移行したりすることができます。 その他のソースは現在はサポートされていません。 現在、UI ベースのデータ移行ツール (dtui.exe) は、テーブル API アカウントに対してはサポートされていません。 
 
 テーブル データの移行を実行するには、次のタスクを実行します。
 

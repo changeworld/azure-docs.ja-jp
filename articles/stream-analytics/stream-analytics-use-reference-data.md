@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.openlocfilehash: e05a4cbbc5fefbfe8a92914ef480f32bdf43ca37
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99560221"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
@@ -28,9 +28,9 @@ ON I1.LicensePlate = R.LicensePlate
 WHERE R.Expired = '1'
 ```  
 
-Stream Analytics は、参照データの格納レイヤーとして Azure BLOB ストレージおよび Azure SQL Database をサポートします。 [任意の数のクラウド ベースおよびオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)を使用するために、Azure Data Factory から参照データを BLOB ストレージに変換またはコピー (あるいは両方) することもできます。
+Stream Analytics は、参照データの格納レイヤーとして Azure Blob Storage および Azure SQL Database をサポートします。 [任意の数のクラウド ベースおよびオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)を使用するために、Azure Data Factory から参照データを BLOB ストレージに変換またはコピー (あるいは両方) することもできます。
 
-## <a name="azure-blob-storage"></a>Azure BLOB ストレージ
+## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より **新しい** 日付/時刻を使用してシーケンスの末尾に追加することがサポートされている **だけ** です。 詳細については、[Blob Storage からの参照データの Azure Stream Analytics ジョブでの使用](data-protection.md)に関するページを参照してください。
 

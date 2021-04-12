@@ -1,18 +1,18 @@
 ---
 title: ストレージの自動拡張 - Azure PowerShell - Azure Database for PostgreSQL
 description: この記事では、PowerShell を使用して Azure Database for PostgreSQL のストレージの自動拡張を有効にする方法について説明します。
-author: ambhatna
-ms.author: ambhatna
+author: rothja
+ms.author: jroth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bc4655ce6cd572183cd92e1c8b2ac10e613ebd8f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 05333aa4a42b821366ea7ad0a564781422fda66a
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489967"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551052"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-postgresql-server-using-powershell"></a>PowerShell を使用して Azure Database for PostgreSQL サーバーのストレージを自動拡張する
 

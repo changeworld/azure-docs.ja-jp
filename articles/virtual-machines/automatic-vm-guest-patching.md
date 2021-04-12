@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 02/17/2021
 ms.author: manayar
 ms.openlocfilehash: 276762bc2b8624f687cbb77e1af771478791a57b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101678725"
 ---
 # <a name="preview-automatic-vm-guest-patching-for-azure-vms"></a>プレビュー: Azure VM での VM ゲストの自動パッチ適用

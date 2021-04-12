@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mathoma
 ms.openlocfilehash: 35fff49a53f5a0a9532fd0dff841356c5deaf3ea
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97724784"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage を使用した SQL Server のバックアップと復元
@@ -72,7 +72,7 @@ Azure Blob Storage にバックアップする際に、次の SQL Server コン�
 2. 次に、ストレージ アカウントの作成と復元の実行の手順について説明する次のいずれかのチュートリアルを確認します。
    
    * **SQL Server 2014**:[チュートリアル: Microsoft Azure Blob Storage への SQL Server 2014 のバックアップと復元](/previous-versions/sql/2014/relational-databases/backup-restore/sql-server-backup-to-url)。
-   * **SQL Server 2016**:[チュートリアル: Microsoft Azure Blob ストレージと SQL Server 2016 データベースの使用](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016)
+   * **SQL Server 2016**:[チュートリアル: Microsoft Azure Blob Storage と SQL Server 2016 データベースの使用](/sql/relational-databases/tutorial-use-azure-blob-storage-service-with-sql-server-2016)
 3. [Microsoft Azure Blob Storage を使用した SQL Server のバックアップと復元](/sql/relational-databases/backup-restore/sql-server-backup-and-restore-with-microsoft-azure-blob-storage-service)に関する記事などのその他のドキュメントを確認してください。
 
 問題がある場合は、「 [SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting)」をご覧ください。

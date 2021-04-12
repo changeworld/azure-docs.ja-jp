@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
-ms.openlocfilehash: ee264a22de5ce094e8a4c1335ace77cbbba49270
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a96e6b567c04f2e0561a0a754e854a0e2b1ad6b0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694995"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076260"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>送信専用のロード バランサーの構成
 
@@ -97,7 +97,7 @@ ms.locfileid: "94694995"
 
 8. **[セキュリティ]** タブをクリックします。
 
-9. **[BastionHost]** で **[有効にする]** を選択します。 次の情報を入力します。
+9. **[BastionHost]** で **[有効にする]** を選択します。 この情報を入力します。
 
     | 設定            | 値                      |
     |--------------------|----------------------------|
@@ -278,7 +278,7 @@ Azure portal を使用して、次を作成します。
     | フロントエンド IP アドレス | **[LoadBalancerFrontEnd]** を選択します。|
     | アイドル タイムアウト (分) | スライダーを **15 分** に移動します。|
     | TCP リセット | **[Enabled]** を選択します。|
-    | バックエンド プール | **[myPublicBackendPool]** を選択します。| |
+    | バックエンド プール | **[myPublicBackendPool]** を選択します。|
     | [ポートの割り当て] -> [ポートの割り当て] | **[送信ポートの既定の数を使用する]** を選択します |
 
 4. **[追加]** を選択します。

@@ -12,10 +12,10 @@ ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: ecc6580148dfba92077336a26ff9160fbe88eb2c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99806157"
 ---
 # <a name="import-passwords-into-the-microsoft-authenticator-app"></a>パスワードを Microsoft Authenticator アプリにインポートする

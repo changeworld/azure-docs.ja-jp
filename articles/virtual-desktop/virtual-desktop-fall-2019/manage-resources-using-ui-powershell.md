@@ -6,13 +6,13 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
-manager: lizross
-ms.openlocfilehash: d7219751d584eb458cded9f4e30cccb1439dfa1b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 60eec4580e222123795db9554f56e74cb01c5257
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069019"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444447"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-powershell"></a>PowerShell を使用して Windows Virtual Desktop (クラシック) 管理ツールをデプロイする
 

@@ -1,18 +1,16 @@
 ---
 title: Azure HDInsight でクラスターを作成する - エラー ディクショナリ
 description: Azure HDInsight クラスターの作成時に発生するエラーのトラブルシューティング方法について説明します
-author: karkrish
-ms.author: v-todmc
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 6b8c0069d619d3ebd87e3c54b4f653812199f590
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 469adf1c0e5108f7a8c89a7c3a4bebba5d42b431
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943344"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102183966"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: クラスター作成時のエラー
 

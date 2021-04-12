@@ -5,39 +5,39 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 03/02/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51602e97a8424bade542eec6f88b673130fee8b5
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a59e573c9b24d9a8b5577b55d143fcaca67952f0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586025"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102120761"
 ---
-# <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>セルフサービス サインアップのユーザー フローをアプリに追加する (プレビュー)
-> [!NOTE]
-> セルフサービス サインアップは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+# <a name="add-a-self-service-sign-up-user-flow-to-an-app"></a>セルフサービス サインアップのユーザー フローをアプリに追加する
 
-組織によって作成されたアプリのユーザー フローを作成できます。 ユーザー フローをアプリケーションに関連付けることで、そのアプリでのサインアップを有効にすることができます。 ユーザー フローを関連付けるアプリケーションは複数選択することができます。 ユーザー フローを 1 つ以上のアプリケーションに関連付けると、そのアプリにアクセスするユーザーが、ユーザー フローで構成されているオプションを使用してサインアップしてゲスト アカウントを取得できるようになります。
+> [!NOTE]
+> この記事で説明する機能の一部は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+構築するアプリケーションのために、ユーザーがアプリにサインアップして新しいゲスト アカウントを作成できるようにするユーザー フローを作成できます。 セルフサービス サインアップのユーザー フローでは、サインアップ時にユーザーが従う一連の手順、ユーザーに使用を許可する ID プロバイダー、収集するユーザー属性を定義します。 1 つのユーザー フローに、1 つ以上のアプリケーションを関連付けることができます。
 
 > [!NOTE]
 > 組織によって構築されたアプリにユーザー フローを関連付けることができます。 ユーザー フローは、SharePoint や Teams などの Microsoft アプリには使用できません。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-### <a name="add-social-identity-providers-optional"></a>ソーシャル ID プロバイダーを追加する (省略可能)
+### <a name="add-identity-providers-optional"></a>ID プロバイダーを追加する (省略可能)
 
-Azure AD は、セルフサービス サインアップ用の既定の ID プロバイダーです。 これは、ユーザーが既定で Azure AD アカウントを使用してサインアップできることを意味します。 また、ソーシャル ID プロバイダーをこれらのサインアップ フローに含めて、Google および Facebook アカウントをサポートすることもできます。
+Azure AD は、セルフサービス サインアップ用の既定の ID プロバイダーです。 これは、ユーザーが既定で Azure AD アカウントを使用してサインアップできることを意味します。 セルフサービス サインアップのユーザー フローには、Google や Facebook、Microsoft アカウント (プレビュー)、電子メール ワンタイム パスコード (プレビュー) などのソーシャル ID プロバイダーを含めることもできます。
 
+- [Microsoft アカウント (プレビュー) ID プロバイダー](microsoft-account.md)
+- [電子メール ワンタイム パスコード認証](one-time-passcode.md)
 - [ソーシャル ID プロバイダーの一覧に Facebook を追加する](facebook-federation.md)
 - [ソーシャル ID プロバイダーの一覧に Google を追加する](google-federation.md)
-
-> [!NOTE]
-> 現在のプレビューでは、セルフサービス サインアップ ユーザー フローがアプリに関連付けられていて、そのアプリへの招待をユーザーに送信した場合、そのユーザーは Gmail アカウントを使用してその招待を利用することができません。 回避策として、ユーザーはセルフサービスのサインアップ プロセスを実行できます。 または、別のアプリにアクセスするか、 https://myapps.microsoft.com でマイ アプリ ポータルを使用して、招待を利用することができます。
 
 ### <a name="define-custom-attributes-optional"></a>カスタム属性を定義する (省略可能)
 
@@ -50,7 +50,7 @@ Azure AD は、セルフサービス サインアップ用の既定の ID プロ
 1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
 2. **[Azure サービス]** で **[Azure Active Directory]** を選択します。
 3. **[ユーザー設定]** を選択し、 **[外部ユーザー]** で、 **[外部コラボレーションの設定を管理します]** を選択します。
-4. **[ユーザー フローによるゲスト セルフサービス サインアップを有効にする (プレビュー)]** を **[はい]** に切り替えます。
+4. **[Enable guest self-service sign up via user flows]\(ユーザー フローによるゲスト セルフサービス サインアップを有効にする\)** を **[はい]** に切り替えます。
 
    ![ゲスト セルフサービス サインアップを有効にする](media/self-service-sign-up-user-flow/enable-self-service-sign-up.png)
 5. **[保存]** を選択します。
@@ -61,7 +61,7 @@ Azure AD は、セルフサービス サインアップ用の既定の ID プロ
 1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
 2. **[Azure サービス]** で **[Azure Active Directory]** を選択します。
 3. 左側のメニューで、 **[External Identities]** を選択します。
-4. **[User flows (Preview)]\(ユーザー フロー (プレビュー)\)** を選択し、 **[新しいユーザー フロー]** を選択します。
+4. **[ユーザー フロー]** を選択し、 **[新しいユーザー フロー]** を選択します。
 
    ![新しいユーザー フローの追加ボタン](media/self-service-sign-up-user-flow/new-user-flow.png)
 
@@ -75,14 +75,14 @@ Azure AD は、セルフサービス サインアップ用の既定の ID プロ
 > 初回のみ、ユーザーの新規登録時に属性を収集できます。 ユーザーの新規登録後は、ユーザー フローを変更する場合であっても、属性情報の収集は求められなくなります。
 
 8. **［作成］** を選択します
-9. 新しいユーザー フローは **[User flows (Preview)]\(ユーザー フロー (プレビュー)\)** の一覧に表示されます。 必要に応じて、ページを更新してください。
+9. 新しいユーザー フローは **[ユーザー フロー]** の一覧に表示されます。 必要に応じて、ページを更新してください。
 
 ## <a name="select-the-layout-of-the-attribute-collection-form"></a>属性コレクション フォームのレイアウトを選択する
 
 サインアップ ページで属性を表示する順序を選択できます。 
 
 1. [Azure Portal](https://portal.azure.com) で、 **[Azure Active Directory]** を選択します。
-2. **[外部 ID]** を選択し、 **[User flows (Preview)]\(ユーザー フロー (プレビュー)\)** を選択します。
+2. **[外部 ID]** を選択し、 **[ユーザー フロー]** を選択します。
 3. 一覧から、セルフサービス サインアップのユーザー フローを選択します。
 4. **[カスタマイズ]** で **[ページ レイアウト]** を選択します。
 5. 収集することを選択した属性が一覧表示されます。 表示順序を変更するには、属性を選択した後、 **[上へ移動]** 、 **[下へ移動]** 、 **[Move to the top]\(一番上に移動\)** 、または **[Move to the bottom]\(一番下に移動\)** を選択します。
@@ -95,7 +95,7 @@ Azure AD は、セルフサービス サインアップ用の既定の ID プロ
 1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
 2. **[Azure サービス]** で **[Azure Active Directory]** を選択します。
 3. 左側のメニューで、 **[External Identities]** を選択します。
-4. **[セルフサービス サインアップ]** で、 **[User flows (Preview)]\(ユーザー フロー (プレビュー)\)** を選択します。
+4. **[セルフサービス サインアップ]** で、 **[ユーザー フロー]** を選択します。
 5. 一覧から、セルフサービス サインアップのユーザー フローを選択します。
 6. 左側のメニューで、 **[使用]** の下の **[アプリケーション]** を選択します。
 7. **[アプリケーションの追加]** をクリックします。

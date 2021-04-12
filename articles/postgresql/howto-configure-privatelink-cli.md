@@ -7,19 +7,19 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b8aaebdd37f835201ef549e3f97e0c0b657e4fe9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3452bfee1e9228926bb687d1b9dc7fb26dfff85a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020128"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642176"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>CLI を使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 この記事では、Azure CLI を使用して Azure Virtual Network 内に VM を作成し、Azure プライベート エンドポイントを含む Azure Database for PostgreSQL 単一サーバーを作成する方法について説明します。
 
 > [!NOTE]
-> プライベート リンク機能は、General Purpose または Memory Optimized のいずれかの価格レベルの Azure Database for PostgreSQL サーバーにのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであることを確実にします。
+> プライベート リンク機能は、General Purpose または Memory Optimized のいずれかの価格レベルの Azure Database for PostgreSQL サーバーにのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれかであることを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -171,7 +171,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
    Address:  10.1.3.4
    ```
 
-3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では [Azure Data Studio](/sql/azure-data-studio/download?view=sql-server-ver15&preserve-view=true) を使用して操作を実行します。
+3. 使用可能な任意のクライアントを使用して、PostgreSQL サーバーのプライベートリンク接続をテストします。 次の例では [Azure Data Studio](/sql/azure-data-studio/download) を使用して操作を実行します。
 
 4. **[新しい接続]** で、この情報を入力または選択します。
 

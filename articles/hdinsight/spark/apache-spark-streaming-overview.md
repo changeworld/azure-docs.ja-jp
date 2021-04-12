@@ -5,18 +5,18 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
-ms.openlocfilehash: bde6c5b2bad12df8642dd3c9b4a49548f7bc9a6d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: e8a9f771827b870f493d6b0d7590feee7fc52b20
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98929511"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870247"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark ストリーミングの概要
 
-[Apache Spark](https://spark.apache.org/) Streaming では、HDInsight Spark クラスターのデータ ストリームを処理します。 ノード障害が発生しても、すべての入力イベントは厳密に 1 回処理されることが保証されています。 Spark Stream は、Azure Event Hubs を含むさまざまなソースから入力データを受け取る、長時間実行されるジョブです。 また、次の点にも注目してください。Azure IoT Hub、Apache Kafka、Apache Flume、Twitter、`ZeroMQ`、未加工の TCP ソケット、Apache Hadoop YARN ファイルシステムの監視。 Spark Stream では、単なるイベント ドリブンのプロセスとは異なり、入力データが時間枠にバッチ処理されます。 たとえば、2 秒に短く切り、map、reduce、join、および extract 操作を使用して、各バッチ データが変換されます。 Spark Stream は、次に、変換されたデータをファイルシステム、データベース、ダッシュボード、およびコンソールに書き出します。
+[Apache Spark](https://spark.apache.org/) Streaming では、HDInsight Spark クラスターのデータ ストリームを処理します。 ノード障害が発生しても、すべての入力イベントは厳密に 1 回処理されることが保証されています。 Spark Stream は、Azure Event Hubs を含むさまざまなソースから入力データを受け取る、長時間実行されるジョブです。 また、Azure IoT Hub、Apache Kafka、Apache Flume、Twitter、`ZeroMQ`、未加工の TCP ソケット、Apache Hadoop YARN ファイルシステムの監視。 Spark Stream では、単なるイベント ドリブンのプロセスとは異なり、入力データが時間枠にバッチ処理されます。 たとえば、2 秒に短く切り、map、reduce、join、および extract 操作を使用して、各バッチ データが変換されます。 Spark Stream は、次に、変換されたデータをファイルシステム、データベース、ダッシュボード、およびコンソールに書き出します。
 
-![HDInsight および Spark ストリーミングを使用したストリーム処理](./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming.png" alt-text="HDInsight および Spark ストリーミングを使用したストリーム処理" border="false":::
 
 Spark Streaming アプリケーションでは、イベントの各 `micro-batch` を処理のために送信する前に、一瞬待機してそのバッチを収集する必要があります。 これに対し、イベント ドリブンのアプリケーションは各イベントをすぐに処理します。 通常、Spark ストリーミングの待機時間は数秒以内です。 マイクロ バッチのアプローチの利点は、データ処理と集計計算の合理化です。
 
@@ -30,7 +30,7 @@ DStream には、生イベント データの上に抽象化の層を備えて�
 
 各 RDD は、*バッチ間隔* と呼ばれるユーザー定義の期間の経過とともに収集されるイベントを表します。 各バッチ間隔の経過に伴って、その間隔のすべてのデータを含む新しい RDD が生成されます。 この継続的な一連の RDD が DStream に収集されます。 たとえば、バッチ間隔が 1 秒の場合、DStream はその 1 秒間に取り込まれるすべてのデータを含む 1 つの RDD を含む 1 つのバッチを毎秒出力します。 DStream の処理時に、温度のイベントがこれらのバッチのいずれかに出現します。 Spark ストリーミング アプリケーションはイベントを含むバッチを処理し、最終的に各 RDD に格納されているデータを処理します。
 
-![温度イベントでのサンプル DStream](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png" alt-text="温度イベントでのサンプル DStream" border="false":::
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Spark ストリーミング アプリケーションの構造
 
@@ -168,9 +168,9 @@ DummySource は 5 秒ごとに 1 つの値を作成し、アプリケーショ�
 
 スライディング ウィンドウは重複が可能です。たとえば、長さが 2 秒で 1 秒ごとにスライドするウィンドウを定義することができます。 この操作は、集計計算を実行するたびに、前のウィンドウの最後の 1 秒のデータがそのウィンドウに含まれることを意味します。 また、次の 1 秒の新しいデータも含まれます。
 
-![初期ウィンドウと温度イベントの例](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-01.png" alt-text="初期ウィンドウと温度イベントの例" border="false":::
 
-![温度イベントを持つスライド後のウィンドウの例](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-window-02.png" alt-text="温度イベントを持つスライド後のウィンドウの例" border="false":::
 
 次の例では、DummySource を使用するコードを、1 分間の長さと 1 分間のスライドを持つウィンドウにバッチを収集するように更新します。
 
@@ -244,7 +244,7 @@ Spark Streaming API で使用できるスライディング ウィンドウ関�
 
 Spark Streaming アプリケーションは通常、ローカルの JAR ファイルに構築します。 その後、その JAR ファイルを接続されている既定のストレージにコピーして、HDInsight の Spark にデプロイします。 そのアプリケーションは、POST 操作を使用してクラスターから使用可能な LIVY REST API を使用して起動できます。 POST の本文には、ご自分の JAR へのパスが示された JSON ドキュメントが含まれます。 また、ストリーミング アプリケーションを定義して実行する main メソッドのクラス名も含まれます。また、必要に応じてジョブで必要なリソース (Executor、メモリ、コアの数など) も含まれます。 また、お使いのアプリケーションのコードで必要な構成設定も含まれます。
 
-![Spark ストリーミング アプリケーションのデプロイ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png)
+:::image type="content" source="./media/apache-spark-streaming-overview/hdinsight-spark-streaming-livy.png" alt-text="Spark ストリーミング アプリケーションのデプロイ" border="false":::
 
 GET 要求を使用して、LIVY エンドポイントに対してすべてのアプリケーションの状態をチェックすることもできます。 最後に、LIVY エンドポイントに対して DELETE 要求を発行して、実行中のアプリケーションを終了できます。 LIVY API の詳細については、[Apache LIVY を使用したリモート ジョブ](apache-spark-livy-rest-interface.md)に関するページを参照してください
 

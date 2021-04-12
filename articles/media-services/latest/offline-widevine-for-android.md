@@ -2,25 +2,19 @@
 title: Android での Widevine のオフライン ストリーミング
 description: このトピックでは、Widevine で保護されたコンテンツのオフライン ストリーミング用に Azure Media Services v3 アカウントを構成する方法を示します。
 services: media-services
-keywords: DASH, DRM, Widevine オフライン モード, ExoPlayer, Android
-documentationcenter: ''
 author: willzhan
-manager: steveng
-editor: ''
+manager: femila
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2020
-ms.author: willzhan
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4c7adab9c14075e12cf5656f9e798e78ff26ff0b
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.date: 03/25/2021
+ms.author: inhenkel
+ms.openlocfilehash: 7dbda3a23fa95b63f80f530762800ede474ca456
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955209"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961389"
 ---
 # <a name="offline-widevine-streaming-for-android-with-media-services-v3"></a>Media Services v3 を使用した Android 用のオフラインの Widevine ストリーミング
 
@@ -47,12 +41,12 @@ Android Player アプリを構築するには、3 つのオプションがあり
 > [!NOTE]
 > オフライン DRM は、コンテンツをダウンロードするときの 1 ライセンスのために、1 つの要求を発行することに対してのみ課金されます。 どのエラーにも課金は行われません。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 Android デバイスに Widevine 用のオフライン DRM を実装する前に、次のことを行っておく必要があります。
 
 - Widevine DRM を使ったオンライン コンテンツ保護に対して導入される概念をよく理解します。 これについては、次のドキュメント/サンプルで詳しく説明されています。
-    - [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)
+    - [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](architecture-design-multi-drm-system.md)
     - [DRM 動的暗号化とライセンス配信サービスの使用](protect-with-drm.md)
 - [https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git ) を複製します。
 
@@ -158,14 +152,8 @@ Android フォンでモバイル Chrome ブラウザーを v62 (またはそれ�
     - 証明書には信頼された CA が必要であり、開発用の自己署名証明書は機能しません
     - 証明書には、Web サーバーまたはゲートウェイの DNS 名と一致する CN が必要です。
 
-## <a name="faqs"></a>FAQ
+## <a name="more-information"></a>詳細情報
 
-詳細については、[Widevine についてよく寄せられる質問](frequently-asked-questions.md#widevine-streaming-for-android)を参照してください。
-
-## <a name="additional-notes"></a>その他のメモ
+詳細については、[質問コレクションの Widevine に関する記事](questions-collection.md#widevine-streaming-for-android)を参照してください。
 
 Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。
-
-## <a name="summary"></a>まとめ
-
-この記事では、Android デバイスで Widevine によって保護された DASH コンテンツのオフライン モード再生を実装する方法について説明しました。  また、Widevine で保護されたコンテンツのオフライン ストリーミングに関連する一般的な質問にもお答えしました。

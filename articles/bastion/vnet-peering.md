@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094891"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101710585"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNet ピアリングと Azure Bastion のアーキテクチャ (プレビュー)
 
@@ -40,9 +40,15 @@ VNet ピアリングが構成されている場合、Azure Bastion はハブ ア
 **手順:**
 
 1. 任意の HTML5 ブラウザーを使用して Azure portal に接続します。
-1. 接続する仮想マシンを選択します。
-1. ピアリングされた VNet 全体で Azure Bastion がシームレスに検出されます。
-1. 1 回クリックすると、ブラウザーで RDP または SSH セッションが開きます。 RDP と SSH の同時セッションの制限については、[RDP と SSH のセッション](bastion-faq.md#limits)に関するページを参照してください。
+2. ターゲット VM とピアリングされた VNet の両方に **読み取り** アクセス権を持っていることを確認します。 さらに、IAM で、次のリソースに読み取りアクセス権を持っていることを確認します。
+   * 仮想マシンに対する閲覧者ロール。
+   * 仮想マシンのプライベート IP を使用する NIC に対する閲覧者ロール。
+   * Azure Bastion リソースに対する閲覧者ロール。
+   * Virtual Network の閲覧者ロール (ピアリングされた仮想ネットワークがない場合は不要)。
+3. **[接続]** ドロップダウン メニューにある Bastion を表示するには、 **[サブスクリプション] > [グローバル サブスクリプション]** で、アクセス権を持つサブスクリプションを選択する必要があります。
+4. 接続する仮想マシンを選択します。
+5. ピアリングされた VNet 全体で Azure Bastion がシームレスに検出されます。
+6. 1 回クリックすると、ブラウザーで RDP または SSH セッションが開きます。 RDP と SSH の同時セッションの制限については、[RDP と SSH のセッション](bastion-faq.md#limits)に関するページを参照してください。
 
   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="のインスタンスに接続するときには、":::
 

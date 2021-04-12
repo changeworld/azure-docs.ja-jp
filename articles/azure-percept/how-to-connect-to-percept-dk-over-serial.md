@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 02/03/2021
 ms.custom: template-how-to
 ms.openlocfilehash: 93b8ab0ce53202402e86b059abe3c600590d549e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101660538"
 ---
 # <a name="connect-to-your-azure-percept-dk-over-serial"></a>Azure Percept DK にシリアルで接続する

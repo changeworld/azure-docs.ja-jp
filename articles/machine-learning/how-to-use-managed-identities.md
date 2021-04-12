@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 014c592713a8568b3bbc7e8e536f81b203271ccc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 3246f6668a653c05599001a2f8d8fc8d376936ce
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388075"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642417"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Azure Machine Learning でマネージド ID を使用する (プレビュー)
 
@@ -38,7 +38,7 @@ Azure Machine Learning ワークスペースを信頼できる方法で構成す
 
 - Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 - [Machine Learning service 用 Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)
-- [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?view=azure-ml-py)。
+- [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)。
 - ロールを割り当てるには、Azure サブスクリプションのログインに [マネージド ID オペレーター](../role-based-access-control/built-in-roles.md#managed-identity-operator) ロール、または必要なアクション (__所有者__ など) を付与するその他のロールが含まれている必要があります。
 - [マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の作成と操作に慣れている必要があります。
 
@@ -107,7 +107,7 @@ az ml workspace create -w <workspace name> \
 
 # <a name="python"></a>[Python](#tab/python)
 
-[AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration?view=azure-ml-py) でコンピューティング クラスターを作成する場合は、`identity_type` パラメーターを使用してマネージド ID の種類を設定します。
+[AmlComputeProvisioningConfiguration](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcomputeprovisioningconfiguration) でコンピューティング クラスターを作成する場合は、`identity_type` パラメーターを使用してマネージド ID の種類を設定します。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -191,7 +191,7 @@ env.python.user_managed_dependencies = True
 
         UAI リソース ID は、ユーザー割り当て ID の Azure リソース ID で、`/subscriptions/<subscription ID>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<UAI name>` の形式です。
 
-1. [Workspace.set_connection メソッド](/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#set-connection-name--category--target--authtype--value-)を使用して、ワークスペース接続の外部 ACR と __ユーザー割り当てマネージド ID__ のクライアント ID を指定します。
+1. [Workspace.set_connection メソッド](/python/api/azureml-core/azureml.core.workspace.workspace#set-connection-name--category--target--authtype--value-)を使用して、ワークスペース接続の外部 ACR と __ユーザー割り当てマネージド ID__ のクライアント ID を指定します。
 
     ```python
     workspace.set_connection(
@@ -211,7 +211,7 @@ env = Environment(name="my-env")
 env.docker.base_image = "<acr url>/my-repo/my-image:latest"
 ```
 
-必要に応じて [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity?view=azure-ml-py) を使用することで、環境定義自体でマネージド ID リソース URL とクライアント ID を指定できます。 レジストリ ID を明示的に使用すると、それ以前に指定したワークスペースの接続がオーバーライドされます。
+必要に応じて [RegistryIdentity](/python/api/azureml-core/azureml.core.container_registry.registryidentity) を使用することで、環境定義自体でマネージド ID リソース URL とクライアント ID を指定できます。 レジストリ ID を明示的に使用すると、それ以前に指定したワークスペースの接続がオーバーライドされます。
 
 ```python
 from azureml.core.container_registry import RegistryIdentity
@@ -234,7 +234,7 @@ env.docker.base_image = "my-acr.azurecr.io/my-repo/my-image:latest"
 
 ワークスペースを作成する際は、関連付けられているリソースにアクセスするために使用される、ユーザー割り当てのマネージド ID を指定できます。ACR、KeyVault、Storage、および App Insights。
 
-最初に[ユーザー割り当てのマネージド ID を作成](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli])し、マネージド ID の ARM リソース ID を書き留めます。
+最初に[ユーザー割り当てのマネージド ID を作成](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli)し、マネージド ID の ARM リソース ID を書き留めます。
 
 その後、Azure CLI または Python SDK を使用してワークスペースを作成します。 CLI を使用する場合は、`--primary-user-assigned-identity` パラメーターを使用して ID を指定します。 SDK を使用する場合は、`primary_user_assigned_identity` を使用します。 次に、これらのパラメーターを使用して新しいワークスペースを作成するための Azure CLI と Python の使用例を示します。
 

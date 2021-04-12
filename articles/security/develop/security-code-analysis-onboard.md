@@ -4,7 +4,7 @@ description: Microsoft Security Code Analysis 拡張機能をオンボードお�
 author: sukhans
 manager: sukhans
 ms.author: terrylan
-ms.date: 04/24/2020
+ms.date: 03/22/2021
 ms.topic: article
 ms.service: security
 services: azure
@@ -12,14 +12,17 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4fe13c418452a7a88dcd97939d6e853039f3fb64
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: c827dc81c1ef1ab03dd6c9178a609b512e59ef15
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517072"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104801216"
 ---
 # <a name="onboarding-and-installing"></a>オンボードとインストール
+
+> [!Note]
+> 2022 年 3 月 1 日より、Microsoft Security Code Analysis (MSCA) 拡張機能は廃止される予定です。 既存の MSCA のお客様は、2022 年 3 月 1 日まで MSCA にアクセスできます。 Azure DevOps の代替のオプションについては、[OWASP ソースコード分析ツール](https://owasp.org/www-community/Source_Code_Analysis_Tools)に関するページを参照してください。 GitHub への移行を計画しているお客様については、[GitHub Advanced Security](https://docs.github.com/github/getting-started-with-github/about-github-advanced-security) に関するページをご確認ください。
 
 Microsoft Security Code Analysis の使用を開始するための前提条件:
 
@@ -90,7 +93,7 @@ Microsoft Security Code Analysis チームでは、パートナー向け Premier
 > - セキュリティで保護された開発ビルド タスクの場合は、 **[エラー時に続行]** を常に選択します。 1 つのツールが失敗した場合でも、他のツールは実行できます。 ツールの間に相互依存関係はありません。
 > - Microsoft Security Code Analysis ビルド タスクは、ツールを正常に実行できなかった場合にのみ失敗します。 ただしツールによってコード内で問題が識別された場合でも成功します。 分析後ビルド タスクを使用することにより、ツールでコード内の問題が識別されたら失敗するようにビルドを構成できます。
 > - 一部の Azure DevOps ビルド タスクは、リリース パイプラインを介して実行される場合、サポートされません。 具体的には、Azure DevOps では、リリース パイプライン内から成果物を発行するタスクはサポートされていません。
-> - パラメーターとして指定できる、Azure DevOps チーム ビルドの定義済み変数の一覧については、[Azure DevOps のビルド変数](/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)に関するページを参照してください。
+> - パラメーターとして指定できる、Azure DevOps チーム ビルドの定義済み変数の一覧については、[Azure DevOps のビルド変数](/azure/devops/pipelines/build/variables?tabs=batch)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

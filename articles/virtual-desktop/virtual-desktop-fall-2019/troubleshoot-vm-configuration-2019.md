@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: af0da66766a4b814dde8dfa45a0abe00f9e93efa
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008629"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444175"
 ---
 # <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows Virtual Desktop (クラシック) セッション ホスト仮想マシンの構成
 
@@ -83,7 +83,7 @@ VM の推奨プロビジョニング方法は、Azure Resource Manager の「**C
 次の手順でコンポーネントがインストールされていることを確認し、エラー メッセージがないか確認します。
 
 1. **[コントロール パネル]**  > 、 **[プログラム]**  > 、 **[プログラムと機能]** の順に選択し、2 つのコンポーネントがインストールされていることを確認します。 **Windows Virtual Desktop Agent** と **Windows Virtual Desktop Agent Boot Loader** がない場合、VM にインストールされていません。
-2. **エクスプローラー**を開き、**C:\Windows\Temp\ScriptLog.log** に移動します。 ファイルがない場合、2 つのコンポーネントをインストールした PowerShell DSC が、指定されたセキュリティ状況の中で実行できなかったことを示します。
+2. **エクスプローラー** を開き、**C:\Windows\Temp\ScriptLog.log** に移動します。 ファイルがない場合、2 つのコンポーネントをインストールした PowerShell DSC が、指定されたセキュリティ状況の中で実行できなかったことを示します。
 3. ファイル **C:\Windows\Temp\ScriptLog.log** がある場合、それを開き、エラー メッセージがないか確認します。
 
 ### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>エラー:Windows Virtual Desktop Agent と Windows Virtual Desktop Agent Boot Loader がありません C:\Windows\Temp\ScriptLog.log もありません

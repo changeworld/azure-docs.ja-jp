@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 0b7f0427708eece75b5d418b68dd1c7a2e90853f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028796"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108695"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer に関してよく寄せられる質問
 
@@ -59,7 +59,7 @@ Video Indexer の Web ベースのインターフェイスを使用して、ア�
 
 ### <a name="what-media-formats-does-video-indexer-support"></a>Video Indexer はどのメディア形式をサポートしますか?
 
-Video Indexer は、ほとんどすべての一般的なメディア形式をサポートします。 詳細については、[Azure Media Encoder Standard の形式](../latest/media-encoder-standard-formats.md)の一覧を参照してください。
+Video Indexer は、ほとんどすべての一般的なメディア形式をサポートします。 詳細については、[Azure Media Encoder Standard の形式](../latest/encode-media-encoder-standard-formats-reference.md)の一覧を参照してください。
 
 ### <a name="how-do-i-upload-a-media-file-into-video-indexer-and-what-are-the-limitations"></a>メディア ファイルを Video Indexer にアップロードするには、どうすればよいですか。また、どのような制限がありますか。
 

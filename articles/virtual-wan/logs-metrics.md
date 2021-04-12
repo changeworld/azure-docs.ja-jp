@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
 ms.openlocfilehash: a5bbcc4c07826a5093da3f51c709f49ceb231753
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100596073"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure Virtual WAN のログとメトリック

@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 01/30/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 71bd7d38727d99c05a15c54e5141c613960d9050
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+manager: femila
+ms.openlocfilehash: 37d859bccd7fea082e059c7ab19c789276974cd1
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220821"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445688"
 ---
 # <a name="deploy-the-rd-gateway-role-in-windows-virtual-desktop-preview"></a>Windows Virtual Desktop で RD ゲートウェイ ロールをデプロイする (プレビュー)
 

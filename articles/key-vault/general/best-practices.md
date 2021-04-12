@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
 ms.openlocfilehash: e81cbd7e6584f4a280ab9507a989b52d3b188f2d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072518"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105566610"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Key Vault を使用するためのベスト プラクティス
 

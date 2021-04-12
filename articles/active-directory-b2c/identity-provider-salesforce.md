@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/27/2021
+ms.date: 03/17/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 0981687b03344daf7a447cc4d9e50f0923341340
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: f87ef03a3af110ec17b7d907d4c2eac1bc1ca58b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98952293"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104579928"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-salesforce-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Salesforce アカウントでのサインアップおよびサインインを設定する
 
@@ -48,7 +48,7 @@ Azure Active Directory B2C (Azure AD B2C) で Salesforce アカウントを持�
     1. **[API Name]\(アプリ名\)** 
     1. **[Contact Email]\(連絡先の電子メール\)** - Salesforce での連絡先の電子メール
 1. **[API (Enable OAuth Settings)]\(API (OAuth 設定を有効にする)\)** で、 **[Enable OAuth Settings]\(OAuth 設定を有効にする\)** を選択します。
-    1. **[Callback URL]\(コールバック URL\)** に、「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
+    1. **[Callback URL]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 [カスタム ドメイン](custom-domain.md)を使用する場合は、「`https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` を実際のテナントの名前に、`your-domain-name` を実際のカスタム ドメインに置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
     1. **[Selected OAuth Scopes]\(選択された OAuth のスコープ\)** で、 **[Access your basic information (id, profile, email, address, phone)]\(基本情報 (ID、プロファイル、電子メール、アドレス、電話) にアクセスする\)** と **[Allow access to your unique identifier (openid)]\(一意識別子 (openid) へのアクセスを許可する\)** を選択します。
     1. **[Require Secret for Web Server Flow]\(Web サーバー フロー用のシークレットが必要\)** を選択します。
 1. **[Configure ID Token]\(ID トークンの構成\)** を選択します 
@@ -88,13 +88,18 @@ Azure Active Directory B2C (Azure AD B2C) で Salesforce アカウントを持�
 
 ## <a name="add-salesforce-identity-provider-to-a-user-flow"></a>ユーザー フローに Salesforce ID プロバイダーを追加する 
 
+この時点では、Salesforce ID プロバイダーはセットアップされていますが、サインイン ページではまだ使用できません。 ユーザー フローに Salesforce ID プロバイダーを追加するには:
+
 1. Azure AD B2C テナントで、 **[ユーザー フロー]** を選択します。
 1. Salesforce ID プロバイダーを追加するユーザー フローをクリックします。
 1. **[ソーシャル ID プロバイダー]** から、 **[Salesforce]** を選択します。
 1. **[保存]** を選択します。
 1. ポリシーをテストするには、 **[ユーザー フローを実行します]** を選択します。
 1. **[アプリケーション]** には、以前に登録した *testapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
-1. **[ユーザー フローを実行します]** をクリックします
+1. **[ユーザー フローを実行します]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Salesforce]** を選択して、Salesforce アカウントを使用してサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
 
 ::: zone-end
 
@@ -192,7 +197,15 @@ Salesforce アカウントをクレーム プロバイダーとして定義す�
 
 [!INCLUDE [active-directory-b2c-configure-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
-[!INCLUDE [active-directory-b2c-test-relying-party-policy](../../includes/active-directory-b2c-test-relying-party-policy-user-journey.md)]
+## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
+
+1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
+1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[今すぐ実行]** ボタンを選択します。
+1. サインアップまたはサインイン ページで、 **[Salesforce]** を選択して、Salesforce アカウントを使用してサインインします。
+
+サインイン プロセスが成功すると、ブラウザーは `https://jwt.ms` にリダイレクトされ、Azure AD B2C によって返されたトークンの内容が表示されます。
+
 
 ::: zone-end
 

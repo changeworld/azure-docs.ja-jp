@@ -4,10 +4,10 @@ description: お客様は、ログに記録されたアクティビティを表�
 ms.date: 12/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 40deca310eea2fc9618cfc83d34caadcf2b2b14d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100571744"
 ---
 # <a name="view-service-provider-activity"></a>サービス プロバイダーのアクティビティを表示する

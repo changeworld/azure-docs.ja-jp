@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: cff40385edc89c0f6d2d105d089b66c046b0c04b
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: b7883d6c541558e26793f94e37014a20b14d761e
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545940"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104577259"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -48,7 +48,7 @@ Azure Digital Twins インスタンスは、環境のライブ データによ�
 
 ビルディング シナリオの *AdtSampleApp* サンプル アプリに実装されているコンポーネントは次のとおりです。
 * デバイスの認証 
-* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) の使用例 (*CommandLoop.cs* 内で確認可能)
+* [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) の使用例 (*CommandLoop.cs* 内で確認可能)
 * Azure Digital Twins API を呼び出すためのコンソール インターフェイス
 * *SampleClientApp* - サンプル Azure Digital Twins ソリューション
 * *SampleFunctionsApp* - IoT Hub および Azure Digital Twins のイベントから受け取ったテレメトリの結果として Azure Digital Twins グラフを更新する Azure Functions アプリ
@@ -107,7 +107,7 @@ _**AdtE2ESample**_ プロジェクトが開かれた状態の Visual Studio ウ�
 
 アプリを発行する前に、依存関係が最新であることを確認するようにお勧めします。含まれているすべてのパッケージが最新バージョンであることを確認してください。
 
-*[ソリューション エクスプローラー]* ペインで、 *[SampleFunctionsApp] > [依存関係]* の順に展開します。 *[パッケージ]* を右クリックし、 *[NuGet パッケージの管理]* を選択します。
+*[ソリューション エクスプローラー]* ペインで、_**[SampleFunctionsApp]** > [依存関係]_ の順に展開します。 *[パッケージ]* を右クリックし、 *[NuGet パッケージの管理]* を選択します。
 
 :::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio: SampleFunctionsApp プロジェクトの [NuGet パッケージの管理]" border="false":::
 
@@ -121,31 +121,51 @@ _**AdtE2ESample**_ プロジェクトを開いている Visual Studio ウィン�
 
 [!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
-### <a name="assign-permissions-to-the-function-app"></a>関数アプリにアクセス許可を割り当てる
+関数アプリから Azure Digital Twins にアクセスできるようにするには、Azure Digital Twins インスタンスとインスタンスのホスト名にアクセスするためのアクセス許可を付与する必要があります。 これは次のように構成します。
 
-次の手順では、関数アプリから Azure Digital Twins にアクセスできるよう、アプリの設定を構成し、システムによって管理される Azure AD ID をアプリに割り当てて、その ID に Azure Digital Twins インスタンスの "*Azure Digital Twins データ所有者*" ロールを付与します。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)に関するページを参照してください。
+### <a name="configure-permissions-for-the-function-app"></a>関数アプリのアクセス許可を構成する
 
-Azure Cloud Shell で次のコマンドを使用して、関数アプリが Azure Digital Twins インスタンスを参照する目的で使用するアプリケーション設定を構成します。 プレースホルダーにリソースの詳細を入力します (お使いの Azure Digital Twins インンスタンスの URL は、*https://* で始まるホスト名であることに注意してください)。
+関数アプリから Azure Digital Twins インスタンスにアクセスできるようにするには、次の 2 つの設定を構成する必要があります。 これらはどちらも、[Azure Cloud Shell](https://shell.azure.com) のコマンドを使用して実行できます。 
+
+#### <a name="assign-access-role"></a>アクセス ロールの割り当て
+
+最初の設定によって、関数アプリに Azure Digital Twins インスタンスの **Azure Digital Twins データ所有者** ロールが付与されます。 このロールは、インスタンスに対して多くのデータ プレーン アクティビティを実行するすべてのユーザーまたは関数に必要です。 セキュリティとロールの割り当ての詳細については、[*概念: Azure Digital Twins ソリューションのセキュリティ*](concepts-security.md)に関するページを参照してください。 
+
+1. 次のコマンドを使用して、関数のシステム マネージド ID の詳細を確認します。 出力の **principalId** フィールドを書き留めてください。
+
+    ```azurecli-interactive 
+    az functionapp identity show -g <your-resource-group> -n <your-App-Service-(function-app)-name> 
+    ```
+
+    >[!NOTE]
+    > 結果が空の場合は、ID の詳細を表示する代わりに、次のコマンドを使用して関数の新しいシステム マネージド ID を作成します。
+    > 
+    >```azurecli-interactive    
+    >az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>  
+    >```
+    >
+    > これで、出力には、次の手順で必要な **principalId** 値を含む、ID の詳細が表示されます。 
+
+1. **principalId** 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの **Azure Digital Twins Data Owner (Azure Digital Twins データ所有者)** ロールに割り当てます。
+
+    ```azurecli-interactive 
+    az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
+    ```
+
+このコマンドを実行すると、作成したロールの割り当てに関する情報が出力されます。 これで関数アプリに、Azure Digital Twins インスタンスのデータへのアクセス許可が付与されました。
+
+#### <a name="configure-application-settings"></a>アプリケーション設定の構成
+
+2 番目の設定では、Azure Digital Twins インスタンスの URL を使用して、関数の **環境変数** を作成します。 関数コードでは、これを使用してインスタンスを参照します。 環境変数の詳細については、「[*お使いの関数アプリの管理*](../azure-functions/functions-how-to-use-azure-function-app-settings.md?tabs=portal)」を参照してください。 
+
+次のコマンドを実行して、プレースホルダーにリソースの詳細を設定します。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=https://<your-Azure-Digital-Twins-instance-hostname>"
 ```
 
-出力は、Azure 関数の設定の一覧です。ここには、*ADT_SERVICE_URL* というエントリが含まれているはずです。
+出力は、Azure 関数の設定の一覧です。ここには、**ADT_SERVICE_URL** というエントリが含まれているはずです。
 
-次のコマンドを使用して、システムによって管理される ID を作成します。 出力の *principalId* フィールドを書き留めてください。
-
-```azurecli-interactive
-az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
-```
-
-出力からの *principalId* 値を次のコマンドで使用して、関数アプリの ID を Azure Digital Twins インスタンスの "*Azure Digital Twins データ所有者*" ロールに割り当てます。
-
-```azurecli-interactive
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Data Owner"
-```
-
-このコマンドを実行すると、作成したロールの割り当てに関する情報が出力されます。 これで関数アプリに、Azure Digital Twins インスタンスへのアクセス許可が付与されました。
 
 ## <a name="process-simulated-telemetry-from-an-iot-hub-device"></a>IoT Hub デバイスからのシミュレートされたテレメトリを処理する
 
@@ -176,7 +196,7 @@ az iot hub create --name <name-for-your-IoT-hub> -g <your-resource-group> --sku 
 
 このコマンドからは、作成された IoT ハブについての情報が出力されます。
 
-IoT ハブに付けた名前は保存しておいてください。 これは後で使用します。
+IoT ハブに付けた **名前** は保存しておいてください。 これは後で使用します。
 
 ### <a name="connect-the-iot-hub-to-the-azure-function"></a>IoT ハブを Azure 関数に接続する
 
@@ -269,7 +289,10 @@ Azure Digital Twins 側からデータを確認するには、_**AdtE2ESample**_
 ObserveProperties thermostat67 Temperature
 ```
 
-"*Azure Digital Twins インスタンスから*"、ライブで更新される温度が 10 秒おきにコンソールに記録されるのを確認できます。
+"*Azure Digital Twins インスタンスから*" のライブ更新された温度が 2 秒ごとにコンソールにログされていることを確認できます。
+
+>[!NOTE]
+> デバイスからのデータがツインに伝達されるまでに数秒かかることがあります。 最初のいくつかの温度の測定値は、データが到着し始めるまで 0 と表示される場合があります。
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry.png" alt-text="デジタル ツイン thermostat67 からの温度メッセージのログを表示するコンソール出力":::
 
@@ -327,7 +350,7 @@ az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-nam
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="エンドポイントの provisioningState が Succeeded であることを示すクエリの結果":::
 
-Event Grid トピックと Azure Digital Twins の Event Grid エンドポイントに付けた名前は保存しておいてください。 これらは後で使用します。
+**イベント グリッド トピック** と Azure Digital Twins の Event Grid **エンドポイント** に付けた名前は保存しておいてください。 これらは後で使用します。
 
 ### <a name="set-up-route"></a>ルートを設定する
 
@@ -346,7 +369,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 次に、先ほど作成した Event Grid トピックを Azure 関数 (*ProcessDTRoutedData*) からサブスクライブします。そうすることで、テレメトリ データは *thermostat67* ツインから Event Grid トピックを介して関数へと流れることができ、関数が再び Azure Digital Twins に作用して *room21* ツインを適宜更新します。
 
-そのためには、Event Grid トピックからエンドポイントとしての Azure 関数 (*ProcessDTRoutedData*) への **Event Grid サブスクリプション** を作成します。
+これを行うには、先ほど作成した **イベント グリッド トピック** から *ProcessDTRoutedData* Azure 関数にデータを送信する **Event Grid サブスクリプション** を作成します。
 
 [Azure portal](https://portal.azure.com/) の上部の検索バーで、Event Grid トピックの名前を検索してそのトピックに移動します。 *[+ イベント サブスクリプション]* を選択します。
 
@@ -381,7 +404,7 @@ Azure Digital Twins 側からデータを確認するには、_**AdtE2ESample**_
 ObserveProperties thermostat67 Temperature room21 Temperature
 ```
 
-"*Azure Digital Twins インスタンスから*"、ライブで更新される温度が 10 秒おきにコンソールに記録されるのを確認できます。 *thermostat67* への変更に合わせて *room21* の温度が更新されていることがわかります。
+"*Azure Digital Twins インスタンスから*" のライブ更新された温度が 2 秒ごとにコンソールにログされていることを確認できます。 *thermostat67* への変更に合わせて *room21* の温度が更新されていることがわかります。
 
 :::image type="content" source="media/tutorial-end-to-end/console-digital-twins-telemetry-b.png" alt-text="thermostat と room からの温度メッセージのログを示すコンソール出力":::
 
@@ -403,9 +426,9 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 
 [!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) という CLI コマンドを使用して、目的の要素を削除することができます。
+* **この記事でセットアップした Azure Digital Twins インスタンスは引き続き使用するものの、そのモデル、ツイン、関係の一部または全部を削除する場合** は、[Azure Cloud Shell](https://shell.azure.com) ウィンドウから [az dt](/cli/azure/ext/azure-iot/dt) という CLI コマンドを使用して、目的の要素を削除することができます。
 
-    この方法では、このチュートリアルで作成した他の Azure リソース (IoT ハブ、Azure Functions アプリなど) は一切削除されません。 これらのリソースは、それぞれの種類に合った適切な [dt コマンド](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true)を使用して個別に削除できます。
+    この方法では、このチュートリアルで作成した他の Azure リソース (IoT ハブ、Azure Functions アプリなど) は一切削除されません。 これらのリソースは、それぞれの種類に合った適切な [dt コマンド](/cli/azure/reference-index)を使用して個別に削除できます。
 
 さらに、プロジェクト フォルダーもローカル コンピューターから削除してください。
 

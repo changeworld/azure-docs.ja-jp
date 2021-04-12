@@ -6,12 +6,13 @@ ms.author: rosouz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/30/2020
-ms.openlocfilehash: 885aab68c769c0705994bad34bee6aaa4fdc3f3d
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.custom: synapse-cosmos-db
+ms.openlocfilehash: d871a33b6d8adbae179e592122878eee5db1c0b5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101658471"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869006"
 ---
 # <a name="frequently-asked-questions-about-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -33,6 +34,10 @@ Azure Synapse Link は、Azure Cosmos DB SQL (Core) API と、Azure Cosmos DB �
 ### <a name="can-i-choose-to-enable-azure-synapse-link-for-only-certain-region-and-not-all-regions-in-a-multi-region-account-set-up"></a>複数リージョン アカウント構成内のすべてのリージョンではなく、特定のリージョンに対してのみ Azure Synapse Link を有効にすることを選択できますか?
 
 複数リージョンのアカウントに対して Azure Synapse Link が有効になっている場合、すべてのリージョンで分析ストアが作成されます。 基になるデータは、トランザクション ストアでのスループットとトランザクションの一貫性を確保するために最適化されます。
+
+### <a name="is-analytical-store-supported-in-all-azure-cosmos-db-regions"></a>分析ストアはすべての Azure Cosmos DB リージョンでサポートされていますか?
+
+はい。
 
 ### <a name="is-backup-and-restore-supported-for-azure-synapse-link-enabled-accounts"></a>Azure Synapse Link が有効になっているアカウントでは、バックアップと復元はサポートされますか?
 
@@ -73,6 +78,10 @@ Azure Cosmos DB では、トランザクション ワークロードと分析ワ
 はい。[マネージド プライベート エンドポイント](analytical-store-private-endpoints.md)を構成して、分析ストアのネットワーク アクセスを Azure Synapse のマネージド仮想ネットワークに制限することができます。 マネージド プライベート エンドポイントによって、分析ストアへのプライベート リンクが確立されます。 また、他の Azure データ サービスの中で特に、トランザクション ストアへの書き込みアクセスも、このプライベート エンドポイントによって制限されます。
 
 Azure Synapse Analytics ワークスペース内で、トランザクション ストアと分析ストアの両方のプライベート エンドポイントを同じ Azure Cosmos DB アカウントに追加できます。 実行するのが分析クエリのみであれば、マップする必要があるのは、分析のプライベート エンドポイントのみです。
+
+### <a name="can-i-use-customer-managed-keys-with-the-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB の分析ストアでカスタマー マネージド キーを使用することはできますか?
+
+同じカスタマー マネージド キーを自動かつ透過的な方法で使用して、トランザクション ストアおよび分析ストア全体のデータをシームレスに暗号化できます。 現在、Azure Cosmos DB の分析ストアでカスタマー マネージド キーを使用するためには、ご利用のアカウントに特別な構成が必要となります。 詳細については、[Azure Cosmos DB チーム](mailto:azurecosmosdbcmk@service.microsoft.com)にお問い合わせください。
 
 ### <a name="are-delete-and-update-operations-on-the-transactional-store-reflected-in-the-analytical-store"></a>トランザクション ストアに対する削除と更新の操作は分析ストアに反映されますか?
 
@@ -161,6 +170,10 @@ Azure Synapse Link の課金モデルには、Azure Cosmos DB 分析ストアと
 ### <a name="can-i-do-spark-structured-streaming-from-analytical-store"></a>分析ストアから Spark 構造化ストリーミングを実行できますか?
 
 現在、Azure Cosmos DB に対する Spark 構造化ストリーミングのサポートは、トランザクション ストアの変更フィード機能を使用して実装されていて、分析ストアからはまだサポートされません。
+
+### <a name="is-streaming-supported"></a>ストリーミングはサポートされていますか?
+
+分析ストアからのデータのストリーミングはサポートされていません。
 
 ## <a name="azure-synapse-studio"></a>Azure Synapse Studio
 

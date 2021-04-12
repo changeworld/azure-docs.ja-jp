@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
 ms.openlocfilehash: f0605cbd81d8131014a1f6a6bf30e3db0ce9aa90
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96618928"
 ---
 # <a name="secure-remote-access-to-virtual-machines-in-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の仮想マシンへのリモートアクセスをセキュリティで保護する

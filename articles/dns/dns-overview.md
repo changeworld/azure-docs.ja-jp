@@ -4,14 +4,14 @@ description: Microsoft Azure の DNS ホスティング サービスの概要で
 author: rohinkoul
 ms.service: dns
 ms.topic: overview
-ms.date: 3/21/2019
+ms.date: 3/25/2021
 ms.author: rohink
-ms.openlocfilehash: 7c3aa5505ca15238b2f9e84069de58ab6b700521
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 41d2fdca653828588a5881daa0fa16c3bc71b5c4
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608489"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046489"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 

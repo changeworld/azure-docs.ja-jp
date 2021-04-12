@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: a7e19894a4688fe270422e93f7081f98e0b699a3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 03/08/2021
+ms.openlocfilehash: ff938d29d998b6fcf0b2cfae72a9a9e685a10dc5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936534"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102563960"
 ---
 # <a name="create-stateful-and-stateless-workflows-in-the-azure-portal-with-azure-logic-apps-preview"></a>Azure Logic Apps プレビューを使用して Azure portal でステートフルとステートレスのワークフローを作成する
 
@@ -34,7 +34,7 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
 * ワークフローの実行をトリガーします。
 
-* ワークフローの実行履歴を表示します。
+* ワークフローの実行履歴とトリガー履歴を表示します。
 
 * デプロイの後で、Application Insights を有効にするか開きます。
 
@@ -51,6 +51,8 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
   > [!NOTE]
   > [ステートフル ロジック アプリ](logic-apps-overview-preview.md#stateful-stateless)は、スケジュールへのキューの使用や、テーブルや BLOB へのワークフローの状態の格納など、ストレージ トランザクションの実行に使用します。 これらのトランザクションには、[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)がかかります。 ステートフル ロジック アプリによって外部ストレージにデータが格納される方法の詳細については、[ステートフルとステートレスの比較](logic-apps-overview-preview.md#stateful-stateless)に関するページを参照してください。
+
+* Docker コンテナーにデプロイするには、既存の Docker コンテナー イメージが必要です。 このイメージを作成するには、たとえば [Azure Container Registry](../container-registry/container-registry-intro.md)、[App Service](../app-service/overview.md)、[Azure Container Instance](../container-instances/container-instances-overview.md) を使用できます。 
 
 * この記事の同じロジック アプリの例をビルドするには、Microsoft の職場または学校アカウントを使用してサインインする Office 365 Outlook 電子メール アカウントが必要です。
 
@@ -77,7 +79,7 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
    | **サブスクリプション** | はい | <*Azure サブスクリプション名*> | ロジック アプリに使用する Azure サブスクリプション。 |
    | **リソース グループ** | はい | <*Azure-resource-group-name*> | ロジック アプリと関連リソースを作成する Azure リソース グループ。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows-RG` という名前のリソース グループを作成します。 |
    | **ロジック アプリ名** | はい | <*ロジック アプリ名*> | ロジック アプリに使用する名前。 このリソース名は、リージョン間で一意である必要があり、文字、数字、ハイフン ( **-** )、アンダースコア ( **_** )、かっこ ( **()** )、ピリオド ( **.** ) のみを含めることができます。 <p><p>この例では、`Fabrikam-Workflows` という名前のロジック アプリを作成します。 <p><p>**注**:**ロジック アプリ (プレビュー)** リソースには Azure Functions の機能が利用され、同じアプリ名前付け規則が使用されるため、ロジック アプリの名前には `.azurewebsites.net` というサフィックスが自動的に付けられます。 |
-   | **発行** | はい | <*デプロイ環境*> | ロジック アプリのデプロイ先。 **[ワークフロー]** を選択することで Azure に、または Docker コンテナーに、デプロイすることができます。 <p><p>この例では **[ワークフロー]** を使用します。これは、Azure での **ロジック アプリ (プレビュー)** リソースです。 <p><p>**[Docker コンテナー]** を選択する場合は、[使用するコンテナーをロジック アプリの設定で指定](#set-docker-container)します。 |
+   | **発行** | はい | <*デプロイ環境*> | ロジック アプリのデプロイ先。 **[ワークフロー]** または **[Docker コンテナー]** を選択することで、Azure にデプロイできます。 <p><p>この例では **[ワークフロー]** を使用します。これで、**ロジック アプリ (プレビュー)** リソースが Azure portal にデプロイされます。 <p><p>**注**: **[Docker コンテナー]** を選択する前に、必ず Docker コンテナー イメージを作成してください。 このイメージを作成するには、たとえば [Azure Container Registry](../container-registry/container-registry-intro.md)、[App Service](../app-service/overview.md)、[Azure Container Instance](../container-instances/container-instances-overview.md) を使用できます。 そうすることで、 **[Docker コンテナー]** を選択した後、[ロジック アプリの設定で使用するコンテナーを指定](#set-docker-container)できます。 |
    | **[リージョン]** | はい | <*Azure-region*> | リソース グループとリソースを作成するときに使用する Azure リージョン。 <p><p>この例では **米国西部** を使用します。 |
    |||||
 
@@ -90,7 +92,7 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
    | プロパティ | 必須 | 値 | 説明 |
    |----------|----------|-------|-------------|
    | **ストレージ アカウント** | はい | <*Azure-storage-account-name*> | ストレージ トランザクションに使用する [Azure ストレージ アカウント](../storage/common/storage-account-overview.md)。 このリソース名は、リージョン間で一意であり、数字と小文字のみを含む 3 から 24 文字である必要があります。 既存のアカウントを選択するか、新しいアカウントを作成します。 <p><p>この例では、`fabrikamstorageacct` という名前のストレージ アカウントを作成します。 |
-   | **[プランの種類]** | はい | <*Azure ホスティング プラン*> | ロジック アプリのデプロイに使用する [ホスティング プラン](../app-service/overview-hosting-plans.md)。[ **[Premium]**](../azure-functions/functions-premium-plan.md) または [ **[App Service プラン]**](../azure-functions/dedicated-plan.md) のいずれかです。 この選択により、後で選択できる価格レベルが決まります。 <p><p>この例では、 **[App Service プラン]** を使用します。 <p><p>**注**:Azure Functions と同様に、**ロジック アプリ (プレビュー)** リソースの種類には、ホスティング プランと価格レベルが必要です。 このリソースの種類には、従量課金ホスティング プランはサポートされておらず、使用できません。 詳細については、次のトピックをご覧ください。 <p><p>- [Azure Functions のスケーリングとホスティング](../azure-functions/functions-scale.md) <br>- [App Service の価格の詳細](https://azure.microsoft.com/pricing/details/app-service/) <p><p> |
+   | **[プランの種類]** | はい | <*Azure ホスティング プラン*> | ロジック アプリのデプロイに使用する [ホスティング プラン](../app-service/overview-hosting-plans.md)。[ **[Functions Premium]**](../azure-functions/functions-premium-plan.md) または [ **[App Service プラン]** (Dedicated)](../azure-functions/dedicated-plan.md) です。 この選択は、後で利用できる機能と価格レベルに影響します。 <p><p>この例では、 **[App Service プラン]** を使用します。 <p><p>**注**:Azure Functions と同様に、**ロジック アプリ (プレビュー)** リソースの種類には、ホスティング プランと価格レベルが必要です。 このリソースの種類には、従量課金プランはサポートされておらず、使用できません。 詳細については、次のトピックをご覧ください。 <p><p>- [Azure Functions のスケーリングとホスティング](../azure-functions/functions-scale.md) <br>- [App Service の価格の詳細](https://azure.microsoft.com/pricing/details/app-service/) <p><p>たとえば、Functions Premium プランでは、ロジック アプリを作成してデプロイする場合の Azure Functions と同様に、Azure 仮想ネットワークとのプライベートな接続や統合などのネットワーク機能にアクセスできます。 詳細については、次のトピックをご覧ください。 <p><p>- [Azure Functions のネットワーク オプション](../azure-functions/functions-networking-options.md) <br>- [あらゆる場所で実行される Azure Logic Apps - Azure Logic Apps プレビューによるネットワークの可能性](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047) |
    | **Windows プラン** | はい | <*プラン名*> | 使用するプラン名。 既存のプランを選択するか、新しいプランの名前を指定します。 <p><p>この例では、 `Fabrikam-Service-Plan`という名前を使用しています。 |
    | **SKU とサイズ** | はい | <*価格レベル*> | ロジック アプリのホスティングに使用する[価格レベル](../app-service/overview-hosting-plans.md)。 選択肢は、前に選択したプランの種類によって異なります。 既定のレベルを変更するには、 **[サイズの変更]** を選択します。 その後、必要なワークロードに基づいて、他の価格レベルを選択できます。 <p><p>この例では、**開発とテスト** のワークロード用に無料の **F1 価格レベル** を使用します。 詳細については、[App Service の価格の詳細](https://azure.microsoft.com/pricing/details/app-service/)に関するページをご確認ください。 |
    |||||
@@ -107,9 +109,12 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
    ![Azure portal と新しいロジック アプリ リソースの設定を示すスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/check-logic-app-resource-settings.png)
 
+   > [!TIP]
+   > **[作成]** を選択した後、検証エラーが発生する場合は、エラーの詳細を開いて確認します。 たとえば、選択したリージョンが、作成しようとしているリソースのクォータに達する場合、別のリージョンの試行が必要になることがあります。
+
    Azure によるデプロイが完了すると、ロジック アプリは自動的に稼働状態になりますが、ワークフローが存在しないため、まだ何も行われません。
 
-1. デプロイ完了ページで **[リソースに移動]** を選択して、ワークフローの作成を開始できるようにします。
+1. デプロイ完了ページで **[リソースに移動]** を選択して、ワークフローの作成を開始できるようにします。 ロジック アプリのデプロイに **[Docker コンテナー]** を選択した場合は、[その Docker コンテナーに関する情報を指定する手順](#set-docker-container)に進みます。
 
    ![Azure portal と完了したデプロイを示すスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-completed-deployment.png)
 
@@ -117,15 +122,13 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
 ## <a name="specify-docker-container-for-deployment"></a>デプロイに Docker コンテナーを指定する
 
-ロジック アプリの作成中に **[Docker コンテナー]** を選択した場合は、Azure portal によって **ロジック アプリ (プレビュー)** リソースが作成された後でデプロイに使用するコンテナーに関する情報を指定します。
+これらの手順を開始する前に、Docker コンテナー イメージが必要です。 このイメージを作成するには、たとえば [Azure Container Registry](../container-registry/container-registry-intro.md)、[App Service](../app-service/overview.md)、[Azure Container Instance](../container-instances/container-instances-overview.md) を使用できます。 そうすれば、ロジック アプリを作成した後で、Docker コンテナーに関する情報を指定できます。
 
 1. Azure portal で、ロジック アプリ リソースに移動します。
 
-1. ロジック アプリのメニューの **[設定]** で、 **[コンテナーの設定]** を選択します。 Docker コンテナー イメージの詳細と場所を指定します。
+1. ロジック アプリのメニューで、 **[設定]** の下の **[デプロイ センター]** を選択します。
 
-   ![[コンテナーの設定] が選択されているロジック アプリ メニューを示すスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-deploy-container-settings.png)
-
-1. 終わったら、設定を保存します。
+1. **[デプロイ センター]** ペインで、Docker コンテナーの詳細を指定および管理するための手順に従います。
 
 <a name="add-workflow"></a>
 
@@ -233,7 +236,33 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
 1. 作業内容を保存します。 デザイナーのツール バーで、 **[保存]** を選択します。
 
-次に、ワークフローをテストするには、手動で実行をトリガーします。
+1. トラフィックを制限する厳しいネットワーク要件またはファイアウォールが環境内にある場合は、ワークフロー内に存在するすべてのトリガーまたはアクション接続に対してアクセス許可を設定する必要があります。 完全修飾名を検索するには 
+
+   そうでない場合、ワークフローをテストするには、[手動で実行をトリガーします](#trigger-workflow)。
+
+<a name="firewall-setup"></a>
+
+##  <a name="find-domain-names-for-firewall-access"></a>ファイアウォール アクセス用のドメイン名を検索する
+
+ロジック アプリをデプロイして Azure portal でワークフローを実行する前に、トラフィックを制限する厳しいネットワーク要件またはファイアウォールが環境内にある場合は、論理アプリ内に存在するワークフロー内のすべてのトリガーまたはアクション接続に対するネットワークまたはファイアウォールのアクセス許可を設定する必要があります。
+
+これらの接続の完全修飾ドメイン名 (FQDN) を検索するには、次の手順を実行します。
+
+1. ロジック アプリのメニューの **[ワークフロー]** で、 **[接続]** を選択します。 **[API 接続]** タブで、接続のリソース名を選択します。ここに例を示します。
+
+   ![[接続] および [offic365] 接続リソース名が選択されている、Azure portal とロジック アプリのメニューを示すスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connections.png)
+
+1. ブラウザーの右上隅に **[JSON ビュー]** が表示されるようにブラウザーの幅を広げて、 **[JSON ビュー]** を選択します。
+
+   ![[JSON ビュー] が選択されている、Azure portal と [API 接続] ペインを示すスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-view-json.png)
+
+1. `connectionRuntimeUrl` プロパティ値を見つけてコピーし、安全な場所に保存して、この情報を使用してファイアウォールを設定できるようにします。
+
+   ![選択された "connectionRuntimeUrl" プロパティ値を示すスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/logic-app-connection-runtime-url.png)
+
+1. 各接続について、関連する手順を繰り返します。
+
+<a name="trigger-workflow"></a>
 
 ## <a name="trigger-the-workflow"></a>ワークフローをトリガーする
 
@@ -286,9 +315,11 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
       ![例に記載されている Outlook の電子メールを示すスクリーンショット](./media/create-stateful-stateless-workflows-azure-portal/workflow-app-result-email.png)
 
+<a name="view-run-history"></a>
+
 ## <a name="review-run-history"></a>実行履歴を確認する
 
-ステートフル ワークフローの場合は、各ワークフローの実行後に、実行全体、トリガー、各アクションの状態およびそれらの入力と出力が含まれる、実行履歴を表示することができます。
+ステートフル ワークフローの場合は、各ワークフローの実行後に、実行全体、トリガー、各アクションの状態およびそれらの入力と出力が含まれる、実行履歴を表示することができます。 Azure portal では、実行履歴とトリガーの履歴が、ロジック アプリ レベルではなくワークフロー レベルで表示されます。 実行履歴のコンテキスト外でトリガー履歴を確認するには、「[トリガー履歴を確認する](#view-trigger-histories)」を参照してください。
 
 1. Azure portal のワークフローのメニューで、 **[監視]** を選択します。
 
@@ -302,7 +333,7 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
    | 実行の状態 | 説明 |
    |------------|-------------|
    | **Aborted** | 外部に問題が発生したため、実行が停止したか、または完了しませんでした。たとえば、システムの停止や Azure サブスクリプションの中断などです。 |
-   | **取り消し済み** | 実行がトリガーされ、開始されましたが、キャンセル要求を受け取りました。 |
+   | **取り消し済み** | 実行がトリガーされ、開始されましたが、取り消し要求を受け取りました。 |
    | **Failed** | 実行中に少なくとも 1 つのアクションが失敗しました。 ワークフローの後続のアクションは、エラーを処理するように設定されていません。 |
    | **実行中** | 実行がトリガーされ、進行中です。ただし、この状態は、[アクション制限](logic-apps-limits-and-config.md)または[現在の料金プラン](https://azure.microsoft.com/pricing/details/logic-apps/)によって制限されている実行に対しても表示されます。 <p><p>**ヒント**:[診断ログ](monitor-logic-apps-log-analytics.md)を設定すると、発生するスロットル イベントに関する情報を取得することができます。 |
    | **Succeeded** | 実行は成功しました。 いずれかのアクションが失敗した場合、ワークフロー内の後続のアクションによってそのエラーが処理されます。 |
@@ -320,15 +351,15 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
    | アクションの状態 | アイコン | 説明 |
    |---------------|------|-------------|
-   | Aborted | !["中止" 状態のアクションのアイコン][aborted-icon] | 外部に問題が発生したため、アクションが停止したか、または完了しませんでした。たとえば、システムの停止や Azure サブスクリプションの中断などです。 |
-   | キャンセル | !["キャンセル" 状態のアクションのアイコン][cancelled-icon] | アクションは実行中でしたが、キャンセル要求を受け取りました。 |
-   | 失敗 | !["失敗" 状態のアクションのアイコン][failed-icon] | アクションに失敗しました。 |
-   | 実行中 | !["実行中" 状態のアクションのアイコン][running-icon] | アクションは現在実行中です。 |
-   | スキップ | !["スキップ" 状態のアクションのアイコン][skipped-icon] | 直前のアクションが失敗したため、アクションはスキップされました。 アクションには、現在のアクションを実行する前に、前のアクションが正常に完了している必要がある `runAfter` 条件が含まれています。 |
-   | 成功 | !["成功" 状態のアクションのアイコン][succeeded-icon] | アクションに成功しました。 |
-   | 再試行により成功 | !["再試行により成功" 状態のアクションのアイコン][succeeded-with-retries-icon] | アクションは成功しましたが、1 回以上の再試行が行われました。 再試行履歴を確認するには、実行履歴の詳細ビューでその操作を選択し、入力と出力を表示します。 |
-   | タイムアウト | !["タイムアウト" 状態のアクションのアイコン][timed-out-icon] | アクションの設定によって指定されたタイムアウト制限により、アクションが停止しました。 |
-   | 待機中 | !["待機中" 状態のアクションのアイコン][waiting-icon] | 呼び出し元からの受信要求を待機している Webhook アクションに適用されます。 |
+   | **Aborted** | !["中止" 状態のアクションのアイコン][aborted-icon] | 外部に問題が発生したため、アクションが停止したか、または完了しませんでした。たとえば、システムの停止や Azure サブスクリプションの中断などです。 |
+   | **取り消し済み** | !["キャンセル" 状態のアクションのアイコン][cancelled-icon] | アクションは実行中でしたが、取り消し要求を受け取りました。 |
+   | **失敗** | !["失敗" 状態のアクションのアイコン][failed-icon] | アクションに失敗しました。 |
+   | **実行中** | !["実行中" 状態のアクションのアイコン][running-icon] | アクションは現在実行中です。 |
+   | **Skipped** | !["スキップ" 状態のアクションのアイコン][skipped-icon] | 直前のアクションが失敗したため、アクションはスキップされました。 アクションには、現在のアクションを実行する前に、前のアクションが正常に完了している必要がある `runAfter` 条件が含まれています。 |
+   | **Succeeded** | !["成功" 状態のアクションのアイコン][succeeded-icon] | アクションに成功しました。 |
+   | **再試行により成功** | !["再試行により成功" 状態のアクションのアイコン][succeeded-with-retries-icon] | アクションは成功しましたが、1 回以上の再試行が行われました。 再試行履歴を確認するには、実行履歴の詳細ビューでその操作を選択し、入力と出力を表示します。 |
+   | **タイムアウト** | !["タイムアウト" 状態のアクションのアイコン][timed-out-icon] | アクションの設定によって指定されたタイムアウト制限により、アクションが停止しました。 |
+   | **待機中** | !["待機中" 状態のアクションのアイコン][waiting-icon] | 呼び出し元からの受信要求を待機している Webhook アクションに適用されます。 |
    ||||
 
    [aborted-icon]: ./media/create-stateful-stateless-workflows-azure-portal/aborted.png
@@ -346,6 +377,18 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
    ![選択した "メールの送信" アクションでの入力と出力が示されているスクリーンショット。](./media/create-stateful-stateless-workflows-azure-portal/review-step-inputs-outputs.png)
 
 1. そのステップの未加工の入出力をさらに確認するには、 **[未加工入力の表示]** または **[未加工出力の表示]** を選択します。
+
+<a name="view-trigger-histories"></a>
+
+## <a name="review-trigger-histories"></a>トリガー履歴を確認する
+
+ステートフル ワークフローの場合は、[実行履歴のコンテキスト](#view-run-history)とは別に、実行ごとのトリガー履歴を確認できます。これには、トリガーの状態と入力および出力が含まれます。 Azure portal では、トリガー履歴と実行履歴が、ロジック アプリ レベルではなくワークフロー レベルで表示されます。 この履歴データを見つけるには、これらの手順に従います。
+
+1. Azure portal のワークフローのメニューで、 **[開発者]** の下の **[トリガー履歴]** を選択します。
+
+   **[トリガー履歴]** ペインには、ワークフローの実行のトリガー履歴が表示されます。
+
+1. 特定のトリガー履歴を確認するには、その実行の ID を選択します。
 
 <a name="enable-open-application-insights"></a>
 
@@ -365,7 +408,10 @@ Azure portal では、新しい **ロジック アプリ (プレビュー)** リ
 
    Application Insights が有効になっている場合は、 **[Application Insights]** ペインで、 **[Application Insights データの表示]** を選択します。
 
-Application Insights が開いたら、ロジック アプリのさまざまなメトリックを確認できます。
+Application Insights が開いたら、ロジック アプリのさまざまなメトリックを確認できます。 詳細については、次のトピックをご覧ください。
+
+* [あらゆる場所で実行される Azure Logic Apps - Application Insights で監視する - パート 1](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)
+* [あらゆる場所で実行される Azure Logic Apps - Application Insights で監視する - パート 2](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/2003332)
 
 <a name="enable-run-history-stateless"></a>
 

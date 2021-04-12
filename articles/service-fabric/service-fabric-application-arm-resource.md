@@ -4,10 +4,10 @@ description: Azure Resource Manager テンプレートを使用して Service Fa
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: ed6bc7d96cb3ea0934929e6543c5e637a9f42c1f
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97930839"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>アプリケーションとサービスを Azure Resource Manager のリソースとして管理する

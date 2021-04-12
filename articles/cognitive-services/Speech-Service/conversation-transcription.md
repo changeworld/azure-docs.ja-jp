@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 03/26/2021
 ms.author: trbye
-ms.openlocfilehash: c27493748381a3aced92aab41745f352f228c50e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 903e8db14a2830236ae81a2a3b5416491d03e8c7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024995"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643243"
 ---
-# <a name="what-is-conversation-transcription-in-meetings-preview"></a>会議での会話の文字起こしとは (プレビュー)
+# <a name="what-is-conversation-transcription-preview"></a>会話の文字起こし (プレビュー) とは
 
 会話の文字起こしとは、音声認識、話者識別、および各話者の文の属性 (_ダイアライゼーション_ とも呼ばれる) を組み合わせて、任意の会話のリアルタイムまたは非同期 (あるいはその両方) の文字起こしを提供する [音声テキスト変換](speech-to-text.md) ソリューションです。 会話の文字起こしでは、会話の話者を区別して、誰がいつ何を発言したのかを特定します。また、開発者はアプリケーションに音声テキスト変換を簡単に追加して、複数話者のダイアライゼーションを実行できます。
 

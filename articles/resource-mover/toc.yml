@@ -14,6 +14,8 @@
       href: tutorial-move-region-virtual-machines.md
     - name: 暗号化された Azure VM を別のリージョンに移動する
       href: tutorial-move-region-encrypted-virtual-machines.md
+    - name: PowerShell を使用してリソースをリージョン間で移動する
+      href: tutorial-move-region-powershell.md
     - name: SQL リソースを別のリージョンに移動する
       href: tutorial-move-region-sql.md
 - name: 概念
@@ -28,8 +30,6 @@
   items:
     - name: リージョン間で移動する
       items:
-        - name: PowerShell を使用してリージョン間を移動する
-          href: move-region-powershell.md
         - name: Azure VM を可用性ゾーンに移動する
           href: move-region-availability-zone.md
         - name: リージョン間での移動 (リソース グループから)

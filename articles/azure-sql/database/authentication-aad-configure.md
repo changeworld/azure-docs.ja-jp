@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: b8711b3995c322614c547434850d7c031abfadd5
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9e7b337d4358f9685d683c308d6df9110607207a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99094945"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643411"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -115,7 +115,7 @@ Azure portal を使用して SQL Managed Instance に Azure AD の読み取り�
 
     管理者を変更する処理には数分かかる場合があります。 処理が完了すると、 [Active Directory 管理者] ボックスに新しい管理者が表示されます。
 
-SQL Managed Instance に対する Azure AD 管理者をプロビジョニングした後、<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a> 構文で Azure AD サーバー プリンシパル (ログイン) の作成を始めることができます。 詳細については、[SQL Managed Instance の概要](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)に関する記事を参照してください。
+SQL Managed Instance に対する Azure AD 管理者をプロビジョニングした後、[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 構文で Azure AD サーバー プリンシパル (ログイン) の作成を始めることができます。 詳細については、[SQL Managed Instance の概要](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)に関する記事を参照してください。
 
 > [!TIP]
 > 後で管理者を削除するには、[Active Directory 管理者] ページの上部にある **[管理者の削除]** を選択し、 **[保存]** を選択します。
@@ -345,8 +345,8 @@ Azure AD の ID を使用して SQL Database または Azure Synapse に接続�
 - [https://msdn.microsoft.com/library/5a4x27ek.aspx](/dotnet/framework/install/guide-for-developers) の .NET Framework 4.6 以降。
 - SQL Server 用 Azure Active Directory 認証ライブラリ (*ADAL.DLL*)。 *ADAL.DLL* ライブラリを含む最新の SSMS、ODBC、OLE DB ドライバーをインストールするためのダウンロード リンクを以下に示します。
   - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
-  - [ODBC Driver 17 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
-  - [OLE DB Driver 18 for SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
+  - [ODBC Driver 17 for SQL Server](/sql/connect/odbc/download-odbc-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
+  - [OLE DB Driver 18 for SQL Server](/sql/connect/oledb/download-oledb-driver-for-sql-server?view=sql-server-ver15&preserve-view=true)
 
 これらの要件は、次の操作を行うことで満たすことができます。
 
@@ -357,7 +357,7 @@ Azure AD の ID を使用して SQL Database または Azure Synapse に接続�
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Azure AD ID にマップされる包含ユーザーを作成する
 
-SQL Managed Instance では Azure AD サーバー プリンシパル (ログイン) がサポートされているため、包含データベース ユーザーを使用する必要はありません。 Azure AD サーバー プリンシパル (ログイン) を使用すると、Azure AD ユーザー、グループ、またはアプリケーションからログインを作成できます。 つまり、包含データベース ユーザーではなく、Azure AD サーバー ログインを使用して、SQL Managed Instance での認証を行うことができます。 詳細については、[SQL Managed Instance の概要](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「<a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>」を参照してください。
+SQL Managed Instance では Azure AD サーバー プリンシパル (ログイン) がサポートされているため、包含データベース ユーザーを使用する必要はありません。 Azure AD サーバー プリンシパル (ログイン) を使用すると、Azure AD ユーザー、グループ、またはアプリケーションからログインを作成できます。 つまり、包含データベース ユーザーではなく、Azure AD サーバー ログインを使用して、SQL Managed Instance での認証を行うことができます。 詳細については、[SQL Managed Instance の概要](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration)に関する記事を参照してください。 Azure AD サーバー プリンシパル (ログイン) の作成の構文については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照してください。
 
 ただし、SQL Database と Azure Synapse で Azure Active Directory 認証を使用するには、Azure AD ID に基づく包含データベース ユーザーを使用する必要があります。 包含データベース ユーザーは、master データベース内にログインを持たず、データベースに関連付けられている Azure AD の ID にマップされます。 Azure AD の ID には、個々のユーザー アカウントにもグループ アカウントにもなります。 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](/sql/relational-databases/security/contained-database-users-making-your-database-portable)」を参照してください。
 

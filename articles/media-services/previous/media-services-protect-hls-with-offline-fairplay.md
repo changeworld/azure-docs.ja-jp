@@ -4,7 +4,7 @@ description: このトピックでは、Azure Media Services を使って HTTP �
 services: media-services
 keywords: HLS, DRM, FairPlay Streaming (FPS), オフライン, iOS 10
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: steveng
 editor: ''
 ms.service: media-services
@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2020
+ms.date: 03/10/2021
 ms.author: willzhan
 ms.reviewer: dwgeo
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ae1d4ef81d14d5adfb728cf7a59534cb376a0eb1
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 75f4ee50306a09c04511d8075adc412f7eef0c7c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695088"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063391"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
-> * [Version 3](../latest/offline-fairplay-for-ios.md)
+> * [Version 3](../latest/drm-offline-fairplay-for-ios-concept.md)
 > * [Version 2](media-services-protect-hls-with-offline-fairplay.md)
 
 > [!NOTE]

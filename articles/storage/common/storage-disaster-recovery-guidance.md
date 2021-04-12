@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e00e22862121f2f974f9531a9892e32e115d6041
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: f556c7acd903c108193f9c12a2849500645b119b
+ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101737649"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102506703"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>ディザスター リカバリーとストレージ アカウントのフェールオーバー
 
@@ -132,7 +132,7 @@ Azure Storage リソース プロバイダーはフェールオーバーしな�
 
 ### <a name="azure-virtual-machines"></a>Azure の仮想マシン
 
-Azure 仮想マシン (VM) は、アカウントのフェールオーバーの一部としてフェイルオーバーされません。 プライマリ リージョンが使用不能になり、セカンダリ リージョンにフェールオーバーする場合は、フェールオーバー後に VM を再作成する必要があります。 また、アカウントのフェールオーバーに関連したデータ損失の可能性があります。 Microsoft では、次に示す Azure の仮想マシンに固有の[高可用性](../../virtual-machines/manage-availability.md)と[ディザスター リカバリー](../../virtual-machines/backup-recovery.md)のガイダンスを推奨しています。
+Azure 仮想マシン (VM) は、アカウントのフェールオーバーの一部としてフェイルオーバーされません。 プライマリ リージョンが使用不能になり、セカンダリ リージョンにフェールオーバーする場合は、フェールオーバー後に VM を再作成する必要があります。 また、アカウントのフェールオーバーに関連したデータ損失の可能性があります。 Microsoft では、次に示す Azure の仮想マシンに固有の[高可用性](../../virtual-machines/availability.md)と[ディザスター リカバリー](../../virtual-machines/backup-recovery.md)のガイダンスを推奨しています。
 
 ### <a name="azure-unmanaged-disks"></a>Azure アンマネージド ディスク
 

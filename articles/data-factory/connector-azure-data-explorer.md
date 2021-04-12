@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/18/2020
-ms.openlocfilehash: 16126e8b9e5c34529016018273edcf65a31e2280
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/24/2020
+ms.openlocfilehash: f343cf820632c8b53f74a938a039820ea4f56eac
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100379983"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105027399"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
@@ -52,7 +52,14 @@ Azure Data Explorer コネクタを使用すると、次のことができます
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
 
-Azure Data Explorer のコネクタでは、サービス プリンシパル認証を使用しています。 次の手順に従い、サービス プリンシパルを取得し、アクセス許可を付与します。
+Azure Data Explorer コネクタでは、次の認証の種類がサポートされています。 詳細については、対応するセクションをご覧ください。
+
+- [サービス プリンシパルの認証](#service-principal-authentication)
+- [Azure リソースのマネージド ID 認証](#managed-identity)
+
+### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
+
+サービス プリンシパルの認証を使用するには、次の手順に従ってサービス プリンシパルを取得し、アクセス許可を付与します。
 
 1. 「[アプリケーションを Azure AD テナントに登録する](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant)」の手順に従って、Azure Active Directory にアプリケーション エンティティを登録します。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 
@@ -66,7 +73,7 @@ Azure Data Explorer のコネクタでは、サービス プリンシパル認�
     - **シンクとして**、少なくとも **データベースのデータ取り込み** ロールをデータベースに付与します。
 
 >[!NOTE]
->Data Factory UI を使用して作成する場合、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 これらの操作のためのアクセス許可がない場合は、名前を手動で入力します。
+>Data Factory UI を使用して作成する場合、既定では、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 サービス プリンシパルを使用してオブジェクトを一覧表示するには、更新ボタンの横にあるドロップダウンをクリックします。これらの操作に対するアクセス許可がない場合は、名前を手動で入力します。
 
 Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
 
@@ -78,8 +85,9 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "機関 ID" として知られています。 これは、Azure portal の右上隅にマウス ポインターを合わせることで取得できます。 | はい |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション クライアント ID" として知られています。 | はい |
 | servicePrincipalKey | アプリケーションのキーを取得します。 これは、[Kusto 接続文字列](/azure/kusto/api/connection-strings/kusto#application-authentication-properties)の "AAD アプリケーション キー" として知られています。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault 内のセキュリティで保護された格納データを参照](store-credentials-in-key-vault.md)します。 | はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
 
-**リンクされたサービスのプロパティの例**:
+**例: サービス プリンシパル キー認証の使用**
 
 ```json
 {
@@ -95,6 +103,44 @@ Azure Data Explorer のリンクされたサービスでは、次のプロパテ
                 "type": "SecureString",
                 "value": "<service principal key>"
             }
+        }
+    }
+}
+```
+
+### <a name="managed-identities-for-azure-resources-authentication"></a><a name="managed-identity"></a> Azure リソースのマネージド ID 認証
+
+Azure リソースの認証にマネージド ID を使用するには、次の手順に従ってアクセス許可を付与します。
+
+1. ファクトリと共に生成された **マネージド ID オブジェクト ID** の値をコピーして、[Data Factory のマネージド ID 情報を取得します](data-factory-service-identity.md#retrieve-managed-identity)。
+
+2. Azure Data Explorer でマネージド ID に適切なアクセス許可を付与します。 ロールおよびアクセス許可の詳細について、またアクセス許可の管理方法の詳細については、「[Azure Data Explorer のデータベース アクセス許可を管理する](/azure/data-explorer/manage-database-permissions)」を参照してください。 一般的に、次のことを行う必要があります。
+
+    - **ソースとして**、少なくとも **データベース ビューアー** ロールをデータベースに付与します。
+    - **シンクとして**、少なくとも **データベースのデータ取り込み** ロールをデータベースに付与します。
+
+>[!NOTE]
+>Data Factory UI を使用して作成する場合、Azure Data Explorer クラスター、データベース、およびテーブルを一覧表示するために、ログイン ユーザー アカウントが使用されます。 これらの操作のためのアクセス許可がない場合は、名前を手動で入力します。
+
+Azure Data Explorer のリンクされたサービスでは、次のプロパティがサポートされます。
+
+| プロパティ | 説明 | 必須 |
+|:--- |:--- |:--- |
+| type | **type** プロパティは、**AzureDataExplorer** に設定する必要があります。 | はい |
+| endpoint | Azure Data Explorer クラスターのエンドポイント URL。形式は `https://<clusterName>.<regionName>.kusto.windows.net` です。 | はい |
+| database | データベースの名前。 | はい |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 データ ストアがプライベート ネットワーク内にある場合、Azure Integration Runtime またはセルフホステッド統合ランタイムを使用できます。 指定されていない場合は、既定の Azure Integration Runtime が使用されます。 |いいえ |
+
+**例: マネージ ID 認証を使用する**
+
+```json
+{
+    "name": "AzureDataExplorerLinkedService",
+    "properties": {
+        "type": "AzureDataExplorer",
+        "typeProperties": {
+            "endpoint": "https://<clusterName>.<regionName>.kusto.windows.net ",
+            "database": "<database name>",
         }
     }
 }

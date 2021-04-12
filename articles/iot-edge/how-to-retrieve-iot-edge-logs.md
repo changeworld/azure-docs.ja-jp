@@ -10,14 +10,16 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: c06120d1a2e8aa6aa0c006c6f40fed6fab44c5b7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475541"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200697"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>IoT Edge の展開からログを取得する
+
+[!INCLUDE [iot-edge-version-all-supported](../../includes/iot-edge-version-all-supported.md)]
 
 IoT Edge エージェント モジュールに含まれているダイレクト メソッドを使用して、デバイスへの物理的または SSH アクセスを必要とせずに、IoT Edge の展開からログを取得します。 ダイレクト メソッドはデバイスに実装され、その後クラウドから呼び出すことができます。 IoT Edge エージェントには、IoT Edge デバイスをリモートで監視および管理できるようにするダイレクト メソッドが含まれています。 この記事で説明するダイレクト メソッドは、1.0.10 リリースで一般提供されています。
 
@@ -33,7 +35,18 @@ IoT Edge エージェント モジュールに含まれているダイレクト 
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` は [Syslog の重大度レベルの形式](https://wikipedia.org/wiki/Syslog#Severity_level)に従い、`{Timestamp}` は `yyyy-MM-dd hh:mm:ss.fff zzz` の書式設定にする必要があります。
+`{Timestamp}` は `yyyy-MM-dd hh:mm:ss.fff zzz` のように書式設定する必要があり、`{Log Level}` は次の表に従って指定する必要があります。この表にある重大度レベルは、[Syslog 標準の重大度コード](https://wikipedia.org/wiki/Syslog#Severity_level)に基づいたものです。
+
+| 値 | Severity |
+|-|-|
+| 0 | 緊急 |
+| 1 | アラート: |
+| 2 | Critical |
+| 3 | エラー |
+| 4 | 警告 |
+| 5 | 注意事項 |
+| 6 | Informational |
+| 7 | デバッグ |
 
 [IoT Edge の Logger クラス](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs)は、canonical 実装として機能します。
 
@@ -172,7 +185,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer)。 |
 
@@ -186,7 +199,7 @@ az iot hub invoke-module-method \
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -289,7 +302,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | schemaVersion | string | `1.0` |
 | sasURL | string (URI) | [Azure Blob Storage コンテナーへの書き込みアクセスを含む共有アクセス署名 URL](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -310,7 +323,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |
@@ -368,7 +381,7 @@ Azure portal で、次の情報を含めた sasURL を指定した後に、メ�
     }
 ```
 
-| 名前 | 種類 | 説明 |
+| 名前 | Type | 説明 |
 |-|-|-|
 | status | string | `NotStarted`、`Running`、`Completed`、`Failed`、または `Unknown`の 1 つ。 |
 | message | string | エラーの場合はメッセージ、それ以外の場合は空の文字列。 |

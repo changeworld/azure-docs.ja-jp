@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 4970cacb0995678bdad87f14ba971b8fb88ffa09
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8b24ee9f620b50056ceb466ef5bdc38da97682a9
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100593653"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490745"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Application Insights JavaScript SDK の React プラグイン
 
@@ -161,18 +161,21 @@ export default MyComponent;
 
 ### `useTrackEvent`
 
-`useTrackEvent` フックは、ボタン クリックやその他の API 呼び出しなど、アプリケーションで追跡が必要になる可能性があるカスタム イベントの追跡に使用されます。 これは 2 つの引数を取ります。最初に Application Insights インスタンス (`useAppInsightsContext` フックから取得可能) を取り、次にイベントの名前を取ります。
+`useTrackEvent` フックは、ボタン クリックやその他の API 呼び出しなど、アプリケーションで追跡が必要になる可能性があるカスタム イベントの追跡に使用されます。 4 つの引数を受け取ります。
+-   Application Insights インスタンス (`useAppInsightsContext` フックから取得可能)。
+-   イベントの名前。
+-   追跡する必要がある変更をカプセル化するイベント データ オブジェクト。
+-   初期化時の `trackEvent` 呼び出しをスキップするための skipFirstRun (省略可能) フラグ。 既定値は `true` に設定されます。
 
 ```javascript
 import React, { useState, useEffect } from "react";
 import { useAppInsightsContext, useTrackEvent } from "@microsoft/applicationinsights-react-js";
 
-const ProductCart = () => {
+const MyComponent = () => {
     const appInsights = useAppInsightsContext();
-    const trackCheckout = useTrackEvent(appInsights, "Checkout");
-    const trackCartUpdate = useTrackEvent(appInsights, "Cart Updated");
     const [cart, setCart] = useState([]);
-    
+    const trackCheckout = useTrackEvent(appInsights, "Checkout", cart);
+    const trackCartUpdate = useTrackEvent(appInsights, "Cart Updated", cart);
     useEffect(() => {
         trackCartUpdate({ cartCount: cart.length });
     }, [cart]);
@@ -185,15 +188,16 @@ const ProductCart = () => {
     return (
         <div>
             <ul>
-                <li>Product 1 <button onClick={() => setCart([...cart, "Product 1"])}>Add to Cart</button>
-                <li>Product 2 <button onClick={() => setCart([...cart, "Product 2"])}>Add to Cart</button>
-                <li>Product 3 <button onClick={() => setCart([...cart, "Product 3"])}>Add to Cart</button>
-                <li>Product 4 <button onClick={() => setCart([...cart, "Product 4"])}>Add to Cart</button>
+                <li>Product 1 <button onClick={() => setCart([...cart, "Product 1"])}>Add to Cart</button></li>
+                <li>Product 2 <button onClick={() => setCart([...cart, "Product 2"])}>Add to Cart</button></li>
+                <li>Product 3 <button onClick={() => setCart([...cart, "Product 3"])}>Add to Cart</button></li>
+                <li>Product 4 <button onClick={() => setCart([...cart, "Product 4"])}>Add to Cart</button></li>
             </ul>
             <button onClick={performCheckout}>Checkout</button>
         </div>
     );
 }
+
 export default MyComponent;
 ```
 

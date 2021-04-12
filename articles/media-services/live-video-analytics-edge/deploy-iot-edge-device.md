@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 01b98c7a1f4073adcd8dea7cbfbfc57abc3787c1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2fdf95be0966702f58afbb9df8e09a1688f9b204
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101718932"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961559"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -25,7 +25,7 @@ ms.locfileid: "101718932"
 * [IoT Hub を作成してセットアップします](../../iot-hub/iot-hub-create-through-portal.md)
 * [IoT Edge デバイスを登録します](../../iot-edge/how-to-register-device.md)
 * [Debian ベースの Linux システムに Azure IoT Edge ランタイムをインストールする](../../iot-edge/how-to-install-iot-edge.md)
-* [Azure Media Services アカウントを作成します](../latest/create-account-howto.md)
+* [Azure Media Services アカウントを作成します](../latest/account-create-how-to.md)
 
     * 次のいずれかのリージョンを使用します: 米国東部 2、米国東部、米国中部、米国中北部、東日本、米国西部、米国西部 2、米国中西部、カナダ東部、英国南部、フランス中部、フランス南部、スイス北部、スイス西部、西日本。
     * General Purpose v2 (GPv2) ストレージ アカウントを使用することをお勧めします

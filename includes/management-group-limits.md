@@ -8,10 +8,10 @@ ms.date: 03/26/2020
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: cdcf6215973755444da9e513761de7ac71e479d4
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98738762"
 ---
 | リソース | 制限 |

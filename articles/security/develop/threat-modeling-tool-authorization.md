@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b2ad38e518fa4b924992355990ea3eb06a338ebe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 38b147a85a26fd1e0be4f5dc6b63ae4c1331d348
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693160"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101093999"
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム:承認 | 対応策 
 | 製品/サービス | [アーティクル] |
@@ -237,7 +237,7 @@ WHERE userID=:id < - session var
 | **SDL フェーズ**               | Build |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
-| **参照**              | [Azure でのロールの割り当てを追加または削除して、Azure サブスクリプション リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)  |
+| **参照**              | [Azure サブスクリプション リソースへのアクセスを管理するための Azure ロールの割り当て](../../role-based-access-control/role-assignments-portal.md)  |
 | **手順** | Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、Azure のきめ細かなアクセス管理が可能になります。 Azure RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。|
 
 ## <a name="restrict-clients-access-to-cluster-operations-using-service-fabric-rbac"></a><a id="cluster-rbac"></a>Service Fabric RBAC を使用してクラスター操作へのクライアントのアクセスを制限する

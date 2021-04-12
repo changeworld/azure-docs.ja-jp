@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 7b112cc80984a761e780f134731476f9dff4f687
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: 22cce2c620d23ab477de5d92bb8c6d4f5ef5a493
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99525773"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102425126"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Azure Cosmos DB の "見つかりません" 例外を診断してトラブルシューティングする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,7 +45,7 @@ HTTP 状態コード 404 は、リソースがもう存在しないことを表�
 不適切な組み合わせの原因となっているアプリケーション ロジックを修正します。 
 
 ### <a name="invalid-character-in-an-item-id"></a>項目 ID に無効な文字がある
-項目 ID に[無効な文字](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks)を含む項目が Azure Cosmos DB に挿入されています。
+項目 ID に[無効な文字](/dotnet/api/microsoft.azure.documents.resource.id#remarks)を含む項目が Azure Cosmos DB に挿入されています。
 
 #### <a name="solution"></a>解決方法:
 ID を、特殊文字を含まない別の値に変更します。 ID を変更できない場合は、ID を Base64 でエンコードして特殊文字をエスケープすることができます。 Base64 からはそれでも、置換する必要がある無効な文字 "/" を含む名前が生成されることがあります。
@@ -60,7 +60,7 @@ string containerRid = selfLinkSegments[3];
 Container containerByRid = this.cosmosClient.GetContainer(databaseRid, containerRid);
 
 // Invalid characters are listed here.
-//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id?view=azure-dotnet&preserve-view=true#remarks
+//https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.resource.id#remarks
 FeedIterator<JObject> invalidItemsIterator = this.Container.GetItemQueryIterator<JObject>(
     @"select * from t where CONTAINS(t.id, ""/"") or CONTAINS(t.id, ""#"") or CONTAINS(t.id, ""?"") or CONTAINS(t.id, ""\\"") ");
 while (invalidItemsIterator.HasMoreResults)

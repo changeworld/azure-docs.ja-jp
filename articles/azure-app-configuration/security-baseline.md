@@ -8,10 +8,10 @@ ms.date: 11/20/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 8b68e22e69bf2d4a1655883b249f883f98f565a7
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101091245"
 ---
 # <a name="azure-security-baseline-for-azure-app-configuration"></a>Azure App Configuration の Azure セキュリティ ベースライン

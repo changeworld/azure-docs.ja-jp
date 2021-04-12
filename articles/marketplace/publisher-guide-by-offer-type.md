@@ -8,10 +8,10 @@ author: trkeya
 ms.author: trkeya
 ms.date: 10/06/2020
 ms.openlocfilehash: 3be967b611f6b75705a60bfa14523832b0652931
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98879226"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド

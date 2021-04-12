@@ -6,13 +6,12 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
-ms.subservice: ''
-ms.openlocfilehash: 0791ccf10c76f2a1781bf373c674f606ca365fff
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ac2ed571359958feddd4d7952ea3b5f549688c77
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597915"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102046977"
 ---
 # <a name="resource-manager-template-samples-for-azure-monitor"></a>Azure Monitor 用の Resource Manager テンプレートのサンプル
 
@@ -54,7 +53,7 @@ az deployment group create \
 - [ログ クエリ](logs/resource-manager-log-queries.md) - ログ クエリを作成して Log Analytics ワークスペースに保存します。
 - [Log Analytics ワークスペース](logs/resource-manager-workspace.md) - Log Analytics ワークスペースを作成し、Log Analytics エージェントの各種データ ソースから成るコレクションを構成します。
 - [ブック](visualize/resource-manager-workbooks.md) - ブックを作成します。
-- [Azure Monitor for containers](containers/resource-manager-container-insights.md) - Azure Monitor for containers にクラスターをオンボードします。
+- [Container insights](containers/resource-manager-container-insights.md) - Container insights にクラスターをオンボードします。
 - [Azure Monitor for VMs](vm/resource-manager-vminsights.md) - Azure Monitor for VMs に仮想マシンをオンボードします。
 
 

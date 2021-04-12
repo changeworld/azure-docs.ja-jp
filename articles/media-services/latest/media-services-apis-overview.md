@@ -128,7 +128,7 @@ AMSE はオープン ソース プロジェクトであり、サポートはコ�
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services エンティティのフィルター処理、順序付け、ページング
 
-[Azure Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)に関するページを参照してください。
+[Azure Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entitites-how-to.md)に関するページを参照してください。
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 

@@ -1,15 +1,15 @@
 ---
 title: クイックスタート:JavaScript を使用した新しいポリシーの割り当て
 description: このクイックスタートでは、JavaScript を使用して、準拠していないリソースを特定するための Azure Policy 割り当てを作成します。
-ms.date: 09/24/2020
+ms.date: 03/31/2021
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 7548053e4bd5be214bf7de3eef3dc4c6c95442d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d42156e68747b66778ea1cf2001d2b4bfc901bb0
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348173"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090183"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-javascript"></a>クイックスタート:JavaScript を使用して準拠していないリソースを特定するためのポリシー割り当てを作成する
 
@@ -19,7 +19,7 @@ JavaScript ライブラリを使用して、コマンド ラインまたはス�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+- **Azure サブスクリプション**:Azure サブスクリプションをお持ちでない場合は、開始する前に [無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 - **Node.js**:[Node.js](https://nodejs.org/) バージョン 12 以降が必須です。
 

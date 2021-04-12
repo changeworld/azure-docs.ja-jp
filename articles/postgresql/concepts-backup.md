@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.openlocfilehash: db3b62e7ce07c1e10bc5030c37cb8957d281ea05
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100517299"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) でのバックアップと復元

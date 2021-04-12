@@ -7,18 +7,18 @@ ms.topic: include
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 0cbe7e1aa5657de45f304dcec6df2a957ce47b5a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2dbf9e269474b3e71a665957f1765f726718e6cc
+ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948559"
+ms.lasthandoff: 03/07/2021
+ms.locfileid: "102445155"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、以下の操作を行います。
 
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp" target="_blank">実際の開発環境に対応した Speech SDK をインストールし、空のサンプル プロジェクトを作成します<span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet&pivots=programming-language-csharp" target="_blank">実際の開発環境に対応した Speech SDK をインストールし、空のサンプル プロジェクトを作成します</a>。
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>意図認識用の LUIS アプリを作成する
 

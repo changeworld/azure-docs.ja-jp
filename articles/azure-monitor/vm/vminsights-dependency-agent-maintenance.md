@@ -1,21 +1,20 @@
 ---
-title: Azure Monitor for VMs Dependency Agent をアップグレードする方法
-description: この記事では、コマンドライン、設定ウィザード、およびその他の方法を使用して Azure Monitor for VMs Dependency Agent をアップグレードする方法について説明します。
-ms.subservice: ''
+title: VM insights Dependency Agent をアップグレードする方法
+description: この記事では、コマンドライン、設定ウィザード、およびその他の方法を使用して VM insights Dependency Agent をアップグレードする方法について説明します。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/16/2020
-ms.openlocfilehash: 05358c560c70396d4e165abd174178378aad517b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: acd1b6c8e5c1be76b29c93fddc57c799aef0a526
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604314"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102046705"
 ---
-# <a name="how-to-upgrade-the-azure-monitor-for-vms-dependency-agent"></a>Azure Monitor for VMs Dependency Agent をアップグレードする方法
+# <a name="how-to-upgrade-the-vm-insights-dependency-agent"></a>VM insights Dependency Agent をアップグレードする方法
 
-Azure Monitor for VMs Dependency Agent の初期配置後に、バグ修正や新機能のサポートを含む更新プログラムがリリースされます。  この記事は、使用できる方法と、手動またはオートメーションを使用してアップグレードを実行する方法を理解するために役立ちます。
+VM insights Dependency Agent の初期デプロイ後に、バグ修正や新機能のサポートを含む更新プログラムがリリースされます。  この記事は、使用できる方法と、手動またはオートメーションを使用してアップグレードを実行する方法を理解するために役立ちます。
 
 ## <a name="upgrade-options"></a>アップグレード オプション 
 
@@ -70,4 +69,4 @@ Dependency Agent が起動しない場合は、詳細なエラー情報のログ
 
 ## <a name="next-steps"></a>次のステップ
 
-VM の監視を一定期間停止する場合、または Azure Monitor for VMs を完全に削除する場合は、[Azure Monitor for VMs で VM の監視を無効にする方法](../vm/vminsights-optout.md)のページを参照してください。
+VM の監視を一定期間停止する場合、または VM insights を完全に削除する場合は、「[VM insights で VM の監視を無効にする](../vm/vminsights-optout.md)」を参照してください。

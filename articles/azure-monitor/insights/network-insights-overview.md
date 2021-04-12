@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: 20f61ad92307a16515156151b816494e9aa289f7
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: db94a376112b3d715da9095acb05c0b4fd4ea02f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101717470"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104605802"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor for Networks
 
@@ -108,10 +108,12 @@ Application Gateway の依存関係ビューには、フロントエンド IP �
 
 ![[診断ツールキット] タブを示すスクリーンショット。](media/network-insights-overview/azure-monitor-for-networks-diagnostic-toolkit.png)
 
+## <a name="onboarded-resources"></a>オンボード リソース 
+
+オンボード リソースには、組み込みのブックと依存関係ビューがあります。 現在、オンボード リソースは、Virtual WAN、Application Gateway、Load Balancer、ExpressRoute です。
+
 ## <a name="troubleshooting"></a>トラブルシューティング 
-
 一般的なトラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
-
 このセクションでは、Azure Monitor for Networks を使用するときに発生する可能性のある一般的な問題の診断とトラブルシューティングについて説明します。 
 
 ### <a name="how-do-i-resolve-performance-problems-or-failures"></a>パフォーマンスの問題や障害を解決するにはどうすればよいですか?

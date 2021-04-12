@@ -7,18 +7,25 @@ ms.date: 05/13/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 429400bb6cb41ede89597dc739a612d1bf9893f2
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 64ff4615c2b41e341352dce5143d48ec8e6e802a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99831265"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106066774"
 ---
 # <a name="tutorial---use-mqtt-to-develop-an-iot-plug-and-play-device-client"></a>チュートリアル - MQTT を使用して IoT プラグ アンド プレイ デバイス クライアントを開発する
 
 可能であれば、いずれかの Azure IoT Device SDK を使用して、IoT プラグ アンド プレイ デバイス クライアントを構築する必要があります。 ただし、メモリに制約のあるデバイスの使用時などのシナリオでは、MQTT ライブラリを使用して IoT ハブと通信することが必要になる場合があります。
 
 このチュートリアルのサンプルでは、[Eclipse Mosquitto](http://mosquitto.org/) MQTT ライブラリと Visual Studio を使用します。 このチュートリアルの手順では、開発用コンピューターで Windows を使用していることを前提としています。
+
+このチュートリアルでは、以下の内容を学習します。
+
+> [!div class="checklist"]
+> * Eclipse Mosquitto ライブラリをダウンロードしてビルドする。
+> * デバイスが IoT プラグ アンド プレイ デバイスになるように、C ベースの MQTT サンプル コードを変更する。
+> * IoT プラグ アンド プレイ デバイスで使用される MQTT トピックを特定する。
 
 ## <a name="prerequisites"></a>前提条件
 

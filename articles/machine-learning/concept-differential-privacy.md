@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: responsible-ml
-ms.openlocfilehash: 39f4b1a7b9eb1ad7a87097240dd772e4f2dadf17
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: de85c8184e05c9d662a2854e6138f3a61bfba8de
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683543"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062456"
 ---
 # <a name="what-is-differential-privacy-in-machine-learning-preview"></a>機械学習における差分プライバシーについて (プレビュー)
 

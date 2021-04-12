@@ -6,13 +6,13 @@ author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/02/2020
-ms.openlocfilehash: b766ce248a3543ef3323e026d760e550a0e3dd75
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 04/02/2021
+ms.openlocfilehash: 5efc27a1ad1a26c1ae50b6aecf250afef052e3de
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386681"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220540"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Data Factory を使用するオープン ハブを介して SAP Business Warehouse からデータをコピーする
 
@@ -21,7 +21,7 @@ ms.locfileid: "100386681"
 この記事では、Azure Data Factory のコピー アクティビティを使用して、オープン ハブを介して SAP Business Warehouse (BW) からデータをコピーする方法の概要を説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 >[!TIP]
->SAP データ統合シナリオにおける ADF の全体的なサポートについては、各 SAP コネクタの詳細な概要、比較、およびガイダンスが記載された「[SAP data integration using Azure Data Factory whitepaper](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)」 (「Azure Data Factory を使用した SAP データの統合」ホワイトペーパー) を参照してください。
+>SAP データ統合シナリオにおける ADF の全体的なサポートについては、各 SAP コネクタの詳細な情報、比較、およびガイダンスが含まれる、[Azure Data Factory を使用した SAP データの統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -187,6 +187,7 @@ SAP BW Open Hub からデータをコピーするために、コピー アクテ
 | type | コピー アクティビティのソースの **type** プロパティは **SapOpenHubSource** に設定する必要があります | はい |
 | excludeLastRequest | 最後の要求のレコードを除外するかどうか。 | いいえ (既定値は **true**)。 |
 | baseRequestId | 差分読み込み要求の ID。 設定されると、requestId がこのプロパティの値 **より大きい** データのみが取得されます。  | いいえ |
+| customRfcReadTableFunctionModule | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。 <br/> カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得して Data Factory に返す方法を定義できます。 カスタム関数モジュールでは、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、Data Factory で使用される既定のインターフェイスです。 | いいえ |
 
 >[!TIP]
 >オープン ハブ テーブルには、1 つの要求 ID によって生成されたデータのみが含まれています。たとえば、常に完全な読み込みを行い、テーブル内の既存のデータを上書きする場合や、DTP はテストのために 1 回のみ実行する場合は、データを外へコピーするため、忘れずに "excludeLastRequest" オプションをオフにします。

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: a2c46e8a7cae9ddba9606abf75ac022e804fde9c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: e22014380d568b12e1e3bec751a75180d0760ab7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062504"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105568417"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>GPU 対応 IoT モジュールを Azure Marketplace から Microsoft Azure Stack Edge Pro GPU デバイスにデプロイする
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 この記事では、グラフィックス処理装置 (GPU) 対応の IoT Edge モジュールを Azure Marketplace から Microsoft Azure Stack Edge Pro デバイスにデプロイする方法について説明します。 
 
@@ -111,4 +113,4 @@ ms.locfileid: "99062504"
 
 ## <a name="next-steps"></a>次の手順
 
-- [モジュールを使用するために GPU を構成する](azure-stack-edge-j-series-configure-gpu-modules.md)方法を確認します。
+- [モジュールを使用するために GPU を構成する](./azure-stack-edge-gpu-configure-gpu-modules.md)方法を確認します。

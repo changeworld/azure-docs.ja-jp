@@ -2,39 +2,38 @@
 title: Azure Monitor を使用して Azure 仮想マシンを監視する
 description: Azure Monitor で Azure 仮想マシンのデータを収集して分析する方法について説明します。
 ms.service: azure-monitor
-ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 03/10/2020
-ms.openlocfilehash: defeeb42340cbc3203141561aa33a2b4b7b00bb1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7efd8baf54aeacbd2f55640240a15f2517dcd904
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626282"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102046926"
 ---
 # <a name="quickstart-monitor-an-azure-virtual-machine-with-azure-monitor"></a>Azure Monitor を使用して Azure 仮想マシンを監視する」を参照してください。
-[Azure Monitor](../overview.md) では、作成された時点から、Azure 仮想マシンからのデータ収集が開始されます。 このクイック スタートでは、Azure VM に対して自動的に収集されるデータと、そのデータを Azure portal で表示する方法について簡単に説明します。 次に、VM に対して [Azure Monitor for VMs](../vm/vminsights-overview.md) を有効にします。これにより、VM 上のエージェントでは、プロセスとその依存関係を含むゲスト オペレーティング システムからデータを収集して分析できるようになります。
+[Azure Monitor](../overview.md) では、作成された時点から、Azure 仮想マシンからのデータ収集が開始されます。 このクイック スタートでは、Azure VM に対して自動的に収集されるデータと、そのデータを Azure portal で表示する方法について簡単に説明します。 次に、VM で [VM insights](../vm/vminsights-overview.md) を有効にします。これにより、VM 上のエージェントで、プロセスとその依存関係を含むゲスト オペレーティング システムからデータを収集して分析できるようになります。
 
 このクイック スタートでは、既存の Azure Virtual Machines があることを前提とします。 ない場合は、VM のクイック スタートに従って、[Windows VM](../../virtual-machines/windows/quick-create-portal.md) を作成するか、[Linux VM](../../virtual-machines/linux/quick-create-cli.md) を作成することができます。
 
-Azure リソースから収集される監視データの詳細な説明については、「[Azure Monitor を使用した Azure 仮想マシンの監視](../insights/monitor-vm-azure.md)」を参照してください。
+Azure リソースから収集される監視データの詳細な説明については、「[Azure Monitor を使用した Azure 仮想マシンの監視](./monitor-vm-azure.md)」を参照してください。
 
 
 ## <a name="complete-the-monitor-an-azure-resource-quickstart"></a>Azure リソースの監視のクイック スタートを完了する
-「[Azure Monitor を使用して Azure リソースを監視する](../learn/quick-monitor-azure-resource.md)」を完了すると、サブスクリプション内の VM の概要ページ、アクティビティ ログ、およびメトリックを表示できます。 Azure VM では、他の Azure リソースと同じ監視データが収集されますが、これはホスト VM についてのみです。 このクイック スタートの残りの部分では、ゲスト オペレーティング システムとそのワークロードの監視に焦点を当てます。
+「[Azure Monitor を使用して Azure リソースを監視する](../essentials/quick-monitor-azure-resource.md)」を完了すると、サブスクリプション内の VM の概要ページ、アクティビティ ログ、およびメトリックを表示できます。 Azure VM では、他の Azure リソースと同じ監視データが収集されますが、これはホスト VM についてのみです。 このクイック スタートの残りの部分では、ゲスト オペレーティング システムとそのワークロードの監視に焦点を当てます。
 
 
-## <a name="enable-azure-monitor-for-vms"></a>Azure Monitor for VMs の有効化
-メトリックとアクティビティ ログはホスト VM について収集されますが、ゲスト オペレーティング システムとそのワークロードから監視データを収集して分析するには、エージェントといくらかの構成が必要です。 Azure Monitor for VMs によってこれらのエージェントがインストールされ、仮想マシンを監視するための強力な機能が追加されます。
+## <a name="enable-vm-insights"></a>VM insights を有効にする
+メトリックとアクティビティ ログはホスト VM について収集されますが、ゲスト オペレーティング システムとそのワークロードから監視データを収集して分析するには、エージェントといくらかの構成が必要です。 VM insights によってこれらのエージェントがインストールされ、仮想マシンを監視するための強力な機能が追加されます。
 
 1. 仮想マシンのメニューに移動します。
 2. **[概要]** ページのタイルで **[分析情報に移動]** をクリックするか、**[監視]** メニューで **[分析情報]** をクリックします。
 
     ![[概要] ページ](media/quick-monitor-azure-vm/overview-insights.png)
 
-3. 仮想マシンに対して Azure Monitor for VMs がまだ有効になっていない場合は、**[有効にする]** をクリックします。 
+3. 仮想マシンで VM insights がまだ有効になっていない場合は、 **[有効にする]** をクリックします。 
 
     ![分析情報を有効にする](media/quick-monitor-azure-vm/enable-insights.png)
 
@@ -42,7 +41,7 @@ Azure リソースから収集される監視データの詳細な説明につ�
 
     ![ワークスペースを選択](media/quick-monitor-azure-vm/select-workspace.png)
 
-5. 拡張機能が有効になっていて、仮想マシンにエージェントがインストールされているため、オンボードには数分かかります。 完了すると、分析情報が正常にデプロイされたことを示すメッセージが表示されます。 **[Azure Monitor]** をクリックして、Azure Monitor for VMs を開きます。
+5. 拡張機能が有効になっていて、仮想マシンにエージェントがインストールされているため、オンボードには数分かかります。 完了すると、分析情報が正常にデプロイされたことを示すメッセージが表示されます。 **[Azure Monitor]** をクリックして、VM insights を開きます。
 
     ![Azure Monitor を開く](media/quick-monitor-azure-vm/azure-monitor.png)
 
@@ -63,9 +62,9 @@ Azure リソースから収集される監視データの詳細な説明につ�
 ### <a name="data-collection-from-windows-vm"></a>Windows VM からのデータ収集
 
 
-2. **[データ]** を選択してから、**[Windows イベント ログ]** を選択します。
+2. **[データ]** を選択してから、 **[Windows イベント ログ]** を選択します。
 
-3. イベント ログを追加するには、ログの名前を入力します。  「**System**」と入力し、プラス記号 (**+**) を選択します。
+3. イベント ログを追加するには、ログの名前を入力します。  「**System**」と入力し、プラス記号 ( **+** ) を選択します。
 
 4. テーブルで、重大度の **[エラー]** と **[警告]** のチェック ボックスをオンにします。
 
@@ -77,7 +76,7 @@ Azure リソースから収集される監視データの詳細な説明につ�
 
 2. イベント ログを追加するには、ログの名前を入力します。  「**Syslog**」と入力し、プラス記号 **+** を選択します。  
 
-3. テーブルで、重大度の **[情報]**、**[通知]**、および **[デバッグ]** の各チェック ボックスをオフにします。 
+3. テーブルで、重大度の **[情報]** 、 **[通知]** 、および **[デバッグ]** の各チェック ボックスをオフにします。 
 
 4. ページの上部にある **[保存]** を選択して構成を保存します。
 
@@ -104,7 +103,7 @@ Azure リソースから収集される監視データの詳細な説明につ�
     ![Log Analytics](media/quick-monitor-azure-vm/log-analytics.png)
 
 ## <a name="next-steps"></a>次のステップ
-このクイック スタートでは、仮想マシンに対して Azure Monitor for VMs を有効にし、ゲスト オペレーティング システムのイベントを収集するように Log Analytics ワークスペースを構成しました。 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。
+このクイック スタートでは、仮想マシンで VM insights を有効にして、ゲスト オペレーティング システムのイベントが収集されるように Log Analytics ワークスペースを構成しました。 データの表示および分析方法を学習する場合は、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics でのデータの表示と分析](../log-query/log-analytics-tutorial.md)
+> [Log Analytics でのデータの表示と分析](../logs/log-analytics-tutorial.md)

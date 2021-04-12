@@ -9,10 +9,10 @@ ms.date: 02/03/2021
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 36ebe80671c77cc83ddba770e3259f6542472e58
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99526841"
 ---
 # <a name="system-functions-azure-cosmos-db"></a>システム関数 (Azure Cosmos DB)

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 191832ab227e854b40938183e335c1b6ea52199c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 51059dd1c4c5c93e155cd7a2d34c3cbaf29db6e2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000057"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101705587"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -21,21 +21,29 @@ ms.locfileid: "96000057"
 
 たとえば、取引先、契約、マップ、スキーマ、証明書、バッチ構成などの B2B 成果物を作成、保存、管理できます。 また、ロジック アプリでこれらの成果物を操作し、Logic Apps B2B コネクタを使用できるようにするには、お使いのロジック アプリと[ご自分の統合アカウントをリンクさせる](#link-account)必要があります。 統合アカウントとロジック アプリは、どちらも *同じ* 場所またはリージョンに存在する必要があります。
 
-> [!TIP]
-> [統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)内で統合アカウントを作成するには、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。
+> [!IMPORTANT]
+> 選択した統合アカウントの種類に基づいて、統合アカウントを作成するとコストが発生します。 詳細については、「[Logic Apps の価格モデルと課金モデル](logic-apps-pricing.md#integration-accounts)」と「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」をご覧ください。
 
 このトピックでは、次のタスクの実行方法について説明します。
 
 * 統合アカウントの作成
+
+  > [!TIP]
+  > [統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)内で統合アカウントを作成するには、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。
+
 * ロジック アプリへの統合アカウントのリンク
+
 * 統合アカウントの価格レベルを変更する。
+
 * ロジック アプリから統合アカウントのリンクを解除する。
+
 * 別の Azure リソース グループまたはサブスクリプションへの統合アカウントの移動
+
 * 統合アカウントの削除
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
+* Azure アカウントとサブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 ## <a name="create-integration-account"></a>統合アカウントを作成する
 

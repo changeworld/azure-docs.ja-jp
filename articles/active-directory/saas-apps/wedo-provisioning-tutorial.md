@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/24/2020
 ms.author: Zhchia
 ms.openlocfilehash: 05ca559478276cf64d8097c2d066054c8fa4fc9d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98734476"
 ---
 # <a name="tutorial-configure-wedo-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に WEDO を構成する

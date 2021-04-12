@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: 979f40e13aab71f02a316e4ddf60306170166845
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753928"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558229"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -35,7 +35,7 @@ ms.locfileid: "96753928"
 
 **シナリオ** | **プロジェクト** | **検出と評価** | **移行**
 --- | --- | --- | ---
-**VMware VM** | 1 つの Azure Migrate プロジェクトで最大 35,000 台の VM を検出して評価します。 | 1 つの VMware 用 [Azure Migrate アプライアンス](common-questions-appliance.md)を使用して最大 10,000 台の VMware VM を検出します。 | **エージェントレス移行**: 最大 300 台の VM を同時にレプリケートできます。 最大限のパフォーマンスを確保するために、VM が 50 台を超える場合は、複数のバッチを作成するようお勧めします。<br/><br/> **エージェントベース移行**: [レプリケーション アプライアンス](migrate-replication-appliance.md)を [スケールアウト](./agent-based-migration-architecture.md#performance-and-scaling)することで、多数の VM をレプリケートすることができます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
+**VMware VM** | 1 つの Azure Migrate プロジェクトで最大 35,000 台の VM を検出して評価します。 | 1 つの VMware 用 [Azure Migrate アプライアンス](common-questions-appliance.md)を使用して最大 10,000 台の VMware VM を検出します。 | **エージェントレス移行**: vCenter Server から最大 500 台の VM を同時にレプリケートできます。 **エージェントベース移行**: [レプリケーション アプライアンス](migrate-replication-appliance.md)を [スケールアウト](./agent-based-migration-architecture.md#performance-and-scaling)することで、多数の VM をレプリケートすることができます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
 **Hyper-V VM** | 1 つの Azure Migrate プロジェクトで最大 35,000 台の VM を検出して評価します。 | 単一の Azure Migrate アプライアンスで最大 5,000 台の Hyper-V VM を検出します。 | Hyper-V の移行にアプライアンスは使用されません。 代わりに、それぞれの Hyper-V ホスト上で Hyper-V レプリケーション プロバイダーが実行されます。<br/><br/> レプリケーション容量は、パフォーマンス要因 (VM のチャーンなど) とレプリケーション データのアップロード帯域幅に左右されます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
 **物理マシン** | 1 つの Azure Migrate プロジェクトで最大 35,000 台のマシンを検出して評価します。 | 物理サーバー用の 1 つの Azure Migrate アプライアンスを使用して最大 250 台の物理サーバーを検出します。 | [レプリケーション アプライアンス](migrate-replication-appliance.md)を[スケールアウト](./agent-based-migration-architecture.md#performance-and-scaling)することで、多数のサーバーをレプリケートすることができます。<br/><br/> ポータルでは、レプリケーションのために一度に最大 10 台のマシンを選択できます。 レプリケートするマシンの台数がそれを超える場合は、10 台のバッチ単位で追加してください。
 
@@ -86,7 +86,7 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 --- | --- | --- | ---
 **SAN ポリシーを Online All に構成する**<br/><br/> Azure VM 内の Windows ボリュームで、オンプレミスの VM と同じドライブ文字の割り当てが使用されます。 | Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。<br/><br/> それより前のオペレーティング システムでは、手動で構成します。 | ほとんどの場合、自動的に設定されます。 | 手動で構成します。
 **Hyper-V ゲスト統合をインストールする** | Windows Server 2003 が実行されているマシンに[手動でインストール](prepare-windows-server-2003-migration.md#install-on-vmware-vms)します。 | Windows Server 2003 が実行されているマシンに[手動でインストール](prepare-windows-server-2003-migration.md#install-on-vmware-vms)します。 | Windows Server 2003 が実行されているマシンに[手動でインストール](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms)します。
-**Azure シリアル コンソールを有効にする**<br/><br/>トラブルシューティングのために、Azure VM の[コンソールを有効](../virtual-machines/troubleshooting/serial-console-windows.md)にします。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 ディスク イメージ ブートは、新しい VM の再起動に相当します。 | 手動で有効にします。 | 手動で有効にします。 | 手動で有効にします。
+**Azure シリアル コンソールを有効にする**<br/><br/>トラブルシューティングのために、Azure VM の[コンソールを有効](/troubleshoot/azure/virtual-machines/serial-console-windows)にします。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 ディスク イメージ ブートは、新しい VM の再起動に相当します。 | 手動で有効にします。 | 手動で有効にします。 | 手動で有効にします。
 **移行後に接続する**<br/><br/> 移行後に接続するためには、移行前に行うべき手順が数多くあります。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。
 
 
@@ -111,12 +111,13 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 
 次のバージョンについては、各アクションが Azure Migrate によって自動的に実行されます。
 
-- Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x
-- Cent OS 7.7、7.6、7.5、7.4、6.x
+- Red Hat Enterprise Linux 7.8、7.7、7.6、7.5、7.4、7.0、6.x (移行中に Azure Linux VM エージェントも自動的にインストールされます)
+- Cent OS 7.7、7.6、7.5、7.4、7.0、6.x (移行中に Azure Linux VM エージェントも自動的にインストールされます)
 - SUSE Linux Enterprise Server 12 SP1+
 - SUSE Linux Enterprise Server 15 SP1
-- Ubuntu 19.04、19.10、18.04LTS、16.04LTS、14.04LTS
-- Debian 8、7
+- Ubuntu 19.04、19.10、18.04LTS、16.04LTS、14.04LTS (移行中に Azure Linux VM エージェントも自動的にインストールされます)
+- Ubuntu 18.04LTS、16.04LTS
+- Debian 9、8、7
 - Oracle Linux 7.7、7.7-CI
 
 その他のバージョンでは、表に記載された情報に従ってマシンを準備してください。  
@@ -125,7 +126,7 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 **操作** | **詳細** | **Linux バージョン**
 --- | --- | ---
 **Hyper-V Linux 統合サービスをインストールする** | 必要な Hyper-V ドライバーが含まれるように Linux の init イメージをリビルドします。 init イメージをリビルドすることにより、Azure で確実に VM が起動します。 | Linux ディストリビューションの新しいバージョンには、ほとんどの場合、既定でこれが含まれています。<br/><br/> 前述したバージョンを除くすべてのバージョンについては、これが含まれていない場合、手動でインストールしてください。
-**Azure シリアル コンソールのログ記録を有効にする** | コンソールのログ記録を有効にすることはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 ディスク イメージ ブートは、新しい VM の再起動に相当します。<br/><br/> [これらの手順](../virtual-machines/troubleshooting/serial-console-linux.md)に従って、有効化してください。
+**Azure シリアル コンソールのログ記録を有効にする** | コンソールのログ記録を有効にすることはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 ディスク イメージ ブートは、新しい VM の再起動に相当します。<br/><br/> [これらの手順](/troubleshoot/azure/virtual-machines/serial-console-linux)に従って、有効化してください。
 **デバイスのマップ ファイルを更新する** | 永続的なデバイス識別子を使用するよう、デバイス名とボリュームの関連付けが含まれているデバイスのマップ ファイルを更新します。 | 前述したバージョンを除くすべてのバージョンについては、手動でインストールしてください。 (エージェントベースの VMware シナリオでのみ適用可能)
 **fstab エントリを更新する** |  永続的なボリューム識別子を使用するよう、エントリを更新します。    | 前述したバージョンを除くすべてのバージョンについては、手動で更新してください。
 **Udev ルールを削除する** | MAC アドレスなどに基づいてインターフェイス名を予約する Udev ルールを削除します。 | 前述したバージョンを除くすべてのバージョンについては、手動で削除してください。
@@ -138,15 +139,16 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 | アクション                                      | エージェントベースの VMware 移行 | エージェントレスの VMware 移行 | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|
 | Hyper\-V Linux 統合サービスをインストールする | はい                           | はい                        | 不要 |
-| Azure シリアル コンソールのログ記録を有効にする         | はい                           | ○                        | いいえ         |
+| Azure シリアル コンソールのログ記録を有効にする         | はい                           | はい                        | いいえ         |
 | デバイスのマップ ファイルを更新する                      | はい                           | いいえ                         | いいえ         |
-| fstab エントリを更新する                        | はい                           | ○                        | いいえ         |
-| Udev ルールを削除する                            | はい                           | ○                        | いいえ         |
-| ネットワーク インターフェイスを更新する                   | はい                           | ○                        | いいえ         |
+| fstab エントリを更新する                        | はい                           | はい                        | いいえ         |
+| Udev ルールを削除する                            | はい                           | はい                        | いいえ         |
+| ネットワーク インターフェイスを更新する                   | はい                           | はい                        | いいえ         |
 | SSH を有効にする                                  | いいえ                            | いいえ                         | いいえ         |
 
 詳細については、[Azure 上で Linux VM を稼働させる](../virtual-machines/linux/create-upload-generic.md)ための手順のページを参照してください。同ページでは、一部の人気 Linux ディストリビューションを対象とした手順も紹介しています。
 
+Linux VM エージェントをインストールするために[必要なパッケージ](../virtual-machines/extensions/agent-linux.md#requirements)の一覧を確認します。 エージェントレスの VMware 移行方法を使用する場合、RHEL6、RHEL7、CentOS7 (6 は RHEL と同様にサポート)、Ubuntu 14.04、Ubuntu 16.04、Ubuntu 18.04 の Linux VM エージェントが自動的にインストールされます。
 
 ## <a name="check-azure-vm-requirements"></a>Azure VM の要件を確認する
 
@@ -185,7 +187,7 @@ Azure への移行中には、Azure VM が作成されます。 移行後に、�
 
 1. インターネット経由で VM に接続できるように、VM にパブリック IP アドレスを割り当てます。 Azure VM には、オンプレミスのマシンとは異なるパブリック IP アドレスを使用する必要があります。 [詳細については、こちらを参照してください](../virtual-network/virtual-network-public-ip-address.md)。
 2. VM 上のネットワーク セキュリティ グループ (NSG) 規則で RDP または SSH ポートへの受信接続が許可されていることを確認します。
-3. [[ブート診断]](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) をオンにして VM を表示します。
+3. [[ブート診断]](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine) をオンにして VM を表示します。
 
 
 ## <a name="next-steps"></a>次のステップ
@@ -198,4 +200,4 @@ VMware VM については、Server Migration で[エージェントレスとエ�
 
 - **VMware VM**:VMware VM の [移行の要件とサポート](migrate-support-matrix-vmware-migration.md)を確認してください。
 - **Hyper-V VM**:Hyper-V VM については、[移行の要件とサポート](migrate-support-matrix-hyper-v-migration.md)を確認してください。
-- **物理マシン**: オンプレミスの物理マシンおよび他の仮想化されたサーバーについては、[移行の要件とサポート](migrate-support-matrix-physical-migration.md)を確認してください。 
+- **物理マシン**: オンプレミスの物理マシンおよび他の仮想化されたサーバーについては、[移行の要件とサポート](migrate-support-matrix-physical-migration.md)を確認してください。

@@ -3,17 +3,18 @@ title: Azure Cloud Services (延長サポート) のスケーリングを構成�
 description: Azure Cloud Services (延長サポート) のスケーリング オプションを有効にする方法
 ms.topic: how-to
 ms.service: cloud-services-extended-support
+ms.subservice: autoscale
 author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: cfa5be01a0d36764086c6c9adf97e6cb166d2bb6
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: dab3411319f40a111144a3e1c1f02f1b67d011b0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101728163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935653"
 ---
 # <a name="configure-scaling-options-with-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) でスケーリング オプションを構成する 
 
@@ -63,5 +64,5 @@ Cloud Services (延長サポート) のデプロイでスケールインとス�
 
 ## <a name="next-steps"></a>次のステップ 
 - Cloud Services (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認します。
-- Cloud Services (延長サポート) に関して[よく寄せられる質問](faq.md)を確認します。
+- Cloud Services (延長サポート) の[よく寄せられる質問](faq.md)を確認します。
 - [Azure portal](deploy-portal.md)、[PowerShell](deploy-powershell.md)、[テンプレート](deploy-template.md)、または [Visual Studio](deploy-visual-studio.md) を使用してクラウド サービス (延長サポート) をデプロイします。

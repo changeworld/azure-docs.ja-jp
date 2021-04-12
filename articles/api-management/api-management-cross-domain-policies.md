@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/14/2020
+ms.date: 03/01/2021
 ms.author: apimpm
-ms.openlocfilehash: 77d9d20f3321aa5bb6c5ea47a3949a82bdd1ad75
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 85abf30d792b24b92685e191f5b460a42dc29142
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131243"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101688418"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (API Management のクロス ドメイン ポリシー)
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](./api-management-policies.md)」をご覧ください。
@@ -62,7 +62,10 @@ ms.locfileid: "92131243"
 - **ポリシー スコープ:** すべてのスコープ
 
 ## <a name="cors"></a><a name="CORS"></a> CORS
-`cors`ポリシーは、クロス オリジン リソース共有 (CORS) のサポートを操作または API に追加して、ブラウザーベースのクライアントからのドメイン間呼び出しを可能にします。
+`cors`ポリシーは、クロス オリジン リソース共有 (CORS) のサポートを操作または API に追加して、ブラウザーベースのクライアントからのドメイン間呼び出しを可能にします。 
+
+> [!NOTE]
+> 要求が、API で定義されている OPTIONS メソッドでの操作と一致する場合、CORS ポリシーに関連付けられている事前要求処理ロジックは実行されません。 したがって、そのような操作は、カスタムの事前処理ロジックを実装するために使用できます。
 
 CORS を使用すると、ブラウザーとサーバーは、やり取りを介して、特定のクロス オリジン要求 (たとえば、他のドメインに対して Web ページの JavaScript で実行された XMLHttpRequests 呼び出し) を許可するかどうかを決めることができます。 これにより、単に同一オリジンの要求を許可するよりも高い柔軟性が得られる一方、すべてのクロス オリジン要求を許可するよりも高いセキュリティを実現できます。
 
@@ -71,7 +74,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
 ```xml
-<cors allow-credentials="false|true">
+<cors allow-credentials="false|true" terminate-unmatched-request="true|false">
     <allowed-origins>
         <origin>origin uri</origin>
     </allowed-origins>
@@ -138,6 +141,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 |名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|事前応答内の `Access-Control-Allow-Credentials` ヘッダーが、この属性の値に設定されます。これは、クライアントがクロス ドメイン要求で資格情報を送信できるかどうかに影響します。|いいえ|false|
+|terminate-unmatched-request|この属性では、CORS ポリシー設定と一致しないクロスオリジン要求の処理を制御します。 OPTIONS 要求が事前要求として処理され、CORS ポリシー設定と一致しないとき: 属性が `true` に設定されている場合は、空の 200 OK 応答で要求を直ちに終了します。属性が `false` に設定されている場合は、inbound 要素の直接の子である他のスコープ内 CORS ポリシーがないか inbound を調べて、それらを適用します。  CORS ポリシーが見つからなければ、空の 200 OK 応答で要求を終了します。 GET または HEAD 要求に Origin ヘッダーが含まれていて (したがって、クロスオリジン要求として処理される)、CORS ポリシー設定と一致しないとき: 属性が `true` に設定されている場合は、空の 200 OK 応答で要求を直ちに終了します。属性が `false` に設定されている場合、要求の通常どおりの続行が許可され、応答に CORS ヘッダーは追加されません。|いいえ|true|
 |preflight-result-max-age|事前応答内の `Access-Control-Max-Age` ヘッダーが、この属性の値に設定されます。これは、ユーザー エージェントが事前応答をキャッシュできるかどうかに影響します。|いいえ|0|
 
 ### <a name="usage"></a>使用法
@@ -175,7 +179,7 @@ CORS を使用すると、ブラウザーとサーバーは、やり取りを介
 
 |名前|説明|必須|Default|
 |----------|-----------------|--------------|-------------|
-|callback-parameter-name|関数が含まれる完全修飾ドメイン名をプレフィックスとするクロスドメイン JavaScript 関数呼び出し。|はい|該当なし|
+|callback-parameter-name|関数が含まれる完全修飾ドメイン名をプレフィックスとするクロスドメイン JavaScript 関数呼び出し。|はい|なし|
 
 ### <a name="usage"></a>使用法
 このポリシーは、次のポリシー [セクション](./api-management-howto-policies.md#sections)と[スコープ](./api-management-howto-policies.md#scopes)で使用できます。

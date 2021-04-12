@@ -4,22 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 7bf32de017a5f8ad19eb044ae7dbcdc2eaa96ca5
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: dfeeb451912dd32770a6ae92d73de83851d9d8f6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521398"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102244540"
 ---
 次のリソースも使用できます。
 
-- [Node.js SDK のリファレンス ドキュメント](/javascript/api/azure-iothub?preserve-view=true&view=azure-node-latest)
+- [Node.js SDK のリファレンス ドキュメント](/javascript/api/azure-iothub)
 - [サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/twin.js)
 - [Digital Twins のサンプル](https://github.com/Azure/azure-iot-sdk-node/blob/master/service/samples/javascript/get_digital_twin.js)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub サービス クライアントの例
 
-このセクションでは、IoT Hub サービス クライアントと **Registry** および **Client** クラスを使用した JavaScript の例を示します。 **Registry** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **Registry** クラスを使用して、IoT ハブ内の[デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を行うこともできます。 デバイス上でコマンドを呼び出すには、 **Client** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
+このセクションでは、IoT Hub サービス クライアントと **Registry** および **Client** クラスを使用した JavaScript の例を示します。 **Registry** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **Registry** クラスを使用して、IoT ハブ内の [デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を行うこともできます。 デバイス上でコマンドを呼び出すには、**Client** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
 
 ### <a name="get-the-device-twin-and-model-id"></a>デバイス ツインとモデル ID を取得する
 
@@ -71,7 +71,7 @@ registry.getTwin(deviceId, function(err, twin) {
 }
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 サンプルに、ツインを更新する前に取得する方法を示します。 プロパティは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 サンプルに、ツインを更新する前に取得する方法を示します。 プロパティは、**thermostat1** コンポーネント内で定義されています。
 
 ```javascript
 var Registry = require('azure-iothub').Registry;
@@ -142,7 +142,7 @@ client.invokeDeviceMethod(deviceId, methodParams, function (err, result) {
 });
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**thermostat1** コンポーネント内で定義されています。
 
 ```javascript
 var Client = require('azure-iothub').Client;
@@ -216,7 +216,7 @@ const patch = [{
 await digitalTwinClient.updateDigitalTwin(digitalTwinId, patch);
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、**thermostat1** コンポーネント内で定義されています。
 
 ```javascript
 const IoTHubTokenCredentials = require('azure-iothub').IoTHubTokenCredentials;
@@ -260,7 +260,7 @@ const commandResponse = await digitalTwinClient.invokeCommand(digitalTwinId, "ge
 console.log(inspect(commandResponse));
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**thermostat1** コンポーネント内で定義されています。
 
 ```javascript
 const IoTHubTokenCredentials = require('azure-iothub').IoTHubTokenCredentials;

@@ -14,20 +14,79 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 7d52d49ab5d3a47dd69fdc1708f9e52f4f796a92
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: e51b247f8c1a5a9ed8f6ec8e24363015afb2f7de
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100390642"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102614413"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
-> [!IMPORTANT]
-> 2019 年 4 月 30 日の時点で、パッチ オーケストレーション アプリケーション バージョン 1.2.* はサポートされなくなりました。 必ず最新バージョンにアップグレードしてください。 OS ディスクを交換せずに、"Windows Update" によってオペレーティング システムの修正プログラムを適用する VM のアップグレードは、サポートされません。 
+## <a name="automatic-os-image-upgrades"></a>OS イメージの自動アップグレード
 
-> [!NOTE]
-> [仮想マシン スケール セットでの OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)の取得は、Azure でオペレーティング システムに修正プログラムが適用された状態を保つためのベスト プラクティスです。 仮想マシン スケール セット ベースの OS イメージの自動アップグレードでは、スケール セットに Silver 以上の耐久性が必要です。 持続性層がブロンズのノードのタイプでは、これはサポートされていません。この場合は、パッチ オーケストレーション アプリケーションを使用してください。
+[Virtual Machine Scale Sets での OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)の取得は、Azure でオペレーティング システムにパッチが適用された状態を保つためのベスト プラクティスです。 仮想マシン スケール セット ベースの OS イメージの自動アップグレードでは、スケール セットに Silver 以上の耐久性が必要です。
+
+Virtual Machine Scale Sets による OS イメージの自動アップグレードの要件
+-   Service Fabric の[持続性レベル](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)は Silver または Gold であり、Bronze ではありません。
+-   スケール セット モデル定義の Service Fabric 拡張機能には、TypeHandlerVersion 1.1 以降が必要です。
+-   持続性レベルは、スケール セット モデル定義の Service Fabric クラスターと Service Fabric 拡張機能で同じである必要があります。
+- Virtual Machine Scale Sets に追加の正常性プローブやアプリケーション正常性拡張機能を使用する必要はありません。
+
+Service Fabric クラスターと Service Fabric 拡張機能で持続性の設定に不一致がないことを確認します。これは、一致しない場合にアップグレード エラーが発生する可能性があるためです。 持続性レベルは、[このページ](../service-fabric/service-fabric-cluster-capacity.md#changing-durability-levels)で説明されているガイドラインに従って変更できます。
+
+ブロンズ 持続性を使用する場合、OS イメージの自動アップグレードは使用できません。 [パッチ オーケストレーション アプリケーション](#patch-orchestration-application ) (Azure 以外でホストされているクラスターのみが対象) は、Silver 以上の持続性レベルでは *推奨されません* が、Service Fabric アップグレード ドメインに関しては、Windows 更新プログラムを自動化する唯一のオプションです。
+
+> [!IMPORTANT]
+> Azure Service Fabric では、OS ディスクを交換せずに、"Windows Update" によってオペレーティング システムのパッチを適用する VM 内アップグレードはサポートされていません。
+
+オペレーティング システムで Windows Update を正しく無効にしてこの機能を有効にするには、2 つの手順を行う必要があります。
+
+1. OS イメージの自動アップグレードを有効にし、Windows Updates ARM を無効にする 
+    ```json
+    "virtualMachineProfile": { 
+        "properties": {
+          "upgradePolicy": {
+            "automaticOSUpgradePolicy": {
+              "enableAutomaticOSUpgrade":  true
+            }
+          }
+        }
+      }
+    ```
+    
+    ```json
+    "virtualMachineProfile": { 
+        "osProfile": { 
+            "windowsConfiguration": { 
+                "enableAutomaticUpdates": false 
+            }
+        }
+    }
+    ```
+
+    Azure PowerShell
+    ```azurepowershell-interactive
+    Update-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -AutomaticOSUpgrade $true -EnableAutomaticUpdate $false
+    ``` 
+    
+1. スケール セット モデルを更新する。この構成変更後、変更が有効になるように、スケール セット モデルを更新するには、すべてのマシンの再イメージ化が必要です。
+    
+    Azure PowerShell
+    ```azurepowershell-interactive
+    $scaleSet = Get-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName
+    $instances = foreach($vm in $scaleSet)
+    {
+        Set-AzVmssVM -ResourceGroupName $resourceGroupName -VMScaleSetName $scaleSetName -InstanceId $vm.InstanceID -Reimage
+    }
+    ``` 
+    
+詳細な手順については、[Virtual Machine Scale Sets による OS イメージの自動アップグレード](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade.md)に関する説明を参照してください。
+
+## <a name="patch-orchestration-application"></a>パッチ オーケストレーション アプリケーション
+
+> [!IMPORTANT]
+> 2019 年 4 月 30 日の時点で、パッチ オーケストレーション アプリケーション バージョン 1.2.* はサポートされなくなりました。 必ず最新バージョンにアップグレードしてください。
 
 パッチ オーケストレーション アプリケーション (POA) は、Azure Service Fabric Repair Manager サービスのラッパーであり、Azure 以外でホストされるクラスターに対して構成ベースの OS 修正プログラム スケジュールを有効にします。 POA は、Azure 以外でホストされるクラスターには必要ありませんが、更新ドメインによる修正プログラムのインストールのスケジュール設定は、ダウンタイムを発生させることなく Service Fabric クラスター ホストに修正プログラムを適用するために必要です。
 

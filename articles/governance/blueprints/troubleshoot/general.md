@@ -4,10 +4,10 @@ description: ポリシー違反やブループリント パラメーター関数
 ms.date: 01/27/2021
 ms.topic: troubleshooting
 ms.openlocfilehash: 65cf8ef9a5dcba0165aad8522f91ff1eb2c963a8
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98918846"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する

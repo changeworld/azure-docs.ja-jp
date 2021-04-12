@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 9f71a0f9c6d3fdca4b81be3a69479c78236fcc31
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ad5bb90a0df68cc6c1c230c234c1f695312da3d8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014214"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102451781"
 ---
 # <a name="service-bus-queues-output-from-azure-stream-analytics"></a>Azure Stream Analytics からの Service Bus キュー出力
 
@@ -69,9 +69,9 @@ ms.locfileid: "98014214"
 
 ## <a name="system-properties"></a>システム プロパティ
 
-クエリ列を、[システム プロパティ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties)として送信 Service Bus キューまたはトピック メッセージに添付できます。
+クエリ列を、[システム プロパティ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties)として送信 Service Bus キューまたはトピック メッセージに添付できます。
 
-これらの列はペイロードに含まれず、代わりに対応する BrokeredMessage [システム プロパティ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage?view=azure-dotnet&preserve-view=true#properties) には、クエリ列の値が設定されます。
+これらの列はペイロードに含まれず、代わりに対応する BrokeredMessage [システム プロパティ](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#properties) には、クエリ列の値が設定されます。
 システムプロパティ (`MessageId, ContentType, Label, PartitionKey, ReplyTo, SessionId, CorrelationId, To, ForcePersistence, TimeToLive, ScheduledEnqueueTimeUtc`) はサポートされています。
 
 これらの列の文字列値は、対応するシステム プロパティ値の型として解析され、解析エラーはデータ エラーとして扱われます。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: ff4882f2146a8b978047df2fcf6c52734534979f
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: d4ab5361d245ad1ee10d43184cc0a2d65fed2054
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833985"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101730033"
 ---
 # <a name="migrate-to-connection-monitor-from-connection-monitor-classic"></a>接続モニター (クラシック) から接続モニターに移行する
 
@@ -32,7 +32,7 @@ ms.locfileid: "99833985"
 
 * エージェントとファイアウォールの設定は現状のままです。 変更の必要はありません。 
 * 既存の接続モニターは、接続モニター -> テストグループ -> テスト形式にマップされます。 **[編集]** を選択することで、新しい接続モニターのプロパティを表示して変更したり、テンプレートをダウンロードして接続モニターの変更を行い、それを Azure Resource Manager 経由で送信したりできます。 
-* Network Watcher 拡張機能を備えた Azure 仮想マシンでは、ワークスペースとメトリックの両方にデータが送信します。 接続モニターでは、古いメトリック(ProbesFailedPercent と AverageRoundtripMs) の代わりに、新しいメトリック (ChecksFailedPercent と RoundTripTimeMs) 経由でデータを使用できるようになります。 
+* Network Watcher 拡張機能を備えた Azure 仮想マシンでは、ワークスペースとメトリックの両方にデータが送信します。 接続モニターでは、古いメトリック(ProbesFailedPercent と AverageRoundtripMs) の代わりに、新しいメトリック (ChecksFailedPercent と RoundTripTimeMs) 経由でデータを使用できるようになります。 古いメトリックは、ProbesFailedPercent -> ChecksFailedPercent および AverageRoundtripMs -> RoundTripTimeMs として、新しいメトリックに移行されます。
 * データの監視:
    * **アラート**:新しいメトリックに自動的に移行されます。
    * **ダッシュボードと統合**:メトリック セットを手動で編集する必要があります。 
@@ -49,7 +49,7 @@ ms.locfileid: "99833985"
     
 1. 移行するサブスクリプションと接続モニターを選択し、 **[Migrate selected]\(選択したものを移行\)** を選択します。 
 
-数回のクリックで、既存の接続モニターが接続モニターに移行されます。 
+数回のクリックで、既存の接続モニターが接続モニターに移行されます。 CM (クラシック) から CM に移行すると、CM (クラシック) でのモニターは表示できなくなります
 
 これで、接続モニターのプロパティのカスタマイズ、既定のワークスペースの変更、テンプレートのダウンロード、および移行の状態を確認できます。 
 

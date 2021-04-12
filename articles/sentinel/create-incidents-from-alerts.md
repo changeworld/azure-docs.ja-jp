@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
 ms.openlocfilehash: 5c7c3d69bb26773171e9e0afc9f79ff25909a12a
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99807294"
 ---
 # <a name="automatically-create-incidents-from-microsoft-security-alerts"></a>Microsoft セキュリティ アラートからインシデントを自動的に作成する

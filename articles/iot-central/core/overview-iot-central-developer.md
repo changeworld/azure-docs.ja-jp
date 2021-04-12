@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 326fed659be43be3115cae1d7c2b14d0708f4a96
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100377807"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104585861"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central デバイスの開発ガイド
 
@@ -68,7 +68,7 @@ DPS を使用すると、次のことが可能になります。
 - 独自のデバイス ID を使用して、IoT Central にデバイスを登録できます。 独自のデバイス ID を使用して、既存のバックオフィス システムとの統合を簡略化できます。
 - 1 つの一貫した方法で IoT Central にデバイスを接続できます。
 
-詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。
+詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」および[ベスト プラクティス](concepts-best-practices.md)に関するページを参照してください。
 
 ### <a name="security"></a>Security
 
@@ -105,7 +105,7 @@ DTDL モデルは、"_コンポーネントなし_" または "_複数コンポ�
 - コンポーネントなしモデル: 単純なモデルでは、埋め込みコンポーネントまたはカスケードされたコンポーネントは使用されません。 すべてのテレメトリ、プロパティ、コマンドは、1 つの "_既定のコンポーネント_" として定義されます。 例については、[Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) モデルを参照してください。
 - 複数コンポーネント モデル: 2 つ以上のコンポーネントを含むより複雑なモデル。 これらのコンポーネントには、1 つの既定のコンポーネントと、入れ子になった 1 つ以上の追加コンポーネントが含まれます。 例については、[Temperature Controller](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) モデルを参照してください。
 
-詳細については、「[モデル内の IoT プラグ アンド プレイ コンポーネント](../../iot-pnp/concepts-components.md)」を参照してください。
+詳細については、[IoT プラグ アンド プレイ モデリング ガイド](../../iot-pnp/concepts-modeling-guide.md)を参照してください。
 
 ### <a name="conventions"></a>規約
 

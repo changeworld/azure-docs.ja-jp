@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: dobett
 ms.openlocfilehash: e492ebf70f69c985691852a1c1f2351d1e09578e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425009"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645770"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>コネクテッド ファクトリ IoT ソリューション アクセラレータとは
 

@@ -4,10 +4,10 @@ description: Microsoft Azure ネイティブ ツールを使用して、Azure VM
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.openlocfilehash: 2cb9964b68769b1e784cebf62b4d336b355c68fb
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100572195"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Azure VMware Solution VM のライフサイクル管理

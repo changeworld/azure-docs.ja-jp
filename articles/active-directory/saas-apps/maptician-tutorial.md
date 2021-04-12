@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/28/2021
 ms.author: jeedes
 ms.openlocfilehash: 58a992e4116c5f00481bf82cce496d545d8aadda
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101652965"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-maptician"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Maptician の統合

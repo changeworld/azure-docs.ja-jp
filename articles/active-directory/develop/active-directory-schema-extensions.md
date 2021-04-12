@@ -14,10 +14,10 @@ ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.openlocfilehash: 0127c8d796126d1e99b1fa38a9506df477c7eb49
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98755730"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>要求でディレクトリ スキーマ拡張属性を使用する

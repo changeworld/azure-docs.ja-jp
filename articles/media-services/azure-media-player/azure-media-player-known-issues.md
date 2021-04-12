@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
-ms.date: 05/11/2020
-ms.openlocfilehash: a31c089971b7e70e70c5906480deb2b17c197b9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 04/05/2021
+ms.openlocfilehash: 9d2289f1cec0d3679b0e9400f75c75cf9fece60b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87043610"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448820"
 ---
 # <a name="known-issues"></a>既知の問題 #
 

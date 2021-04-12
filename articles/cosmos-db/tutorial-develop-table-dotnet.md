@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f43a890185fcd69967fd2a035c27e1cf92798f04
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: f4817e53cb36bc96add19d855750a73a151b4891
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548156"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104772299"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -121,7 +121,7 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 
 ## <a name="insert-or-merge-an-entity"></a>エンティティを挿入またはマージする
 
-次のコード例では、エンティティ オブジェクトを作成して、それをテーブルに追加します。 エンティティの挿入とマージには、[TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) クラス内の InsertOrMerge メソッドが使用されます。 その操作は、[CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync?preserve-view=true&view=azure-dotnet) メソッドを呼び出すことによって実行されます。 
+次のコード例では、エンティティ オブジェクトを作成して、それをテーブルに追加します。 エンティティの挿入とマージには、[TableOperation](/dotnet/api/microsoft.azure.cosmos.table.tableoperation) クラス内の InsertOrMerge メソッドが使用されます。 その操作は、[CloudTable.ExecuteAsync](/dotnet/api/microsoft.azure.cosmos.table.cloudtable.executeasync) メソッドを呼び出すことによって実行されます。 
 
 対象のプロジェクトである **[CosmosTableSamples]** を右クリックします。 **[追加]** 、 **[新しい項目]** の順に選択し、**SamplesUtils.cs** という名前のクラスを追加します。 エンティティに対する CRUD 操作を実行するために必要なすべてのコードが、このクラスに格納されます。 
 
@@ -179,4 +179,4 @@ tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 次のチュートリアルに進んで、Azure Cosmos DB Table API アカウントにデータを移行する方法を学びましょう。 
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB Table API へのデータの移行](../cosmos-db/table-import.md)
+>[Azure Cosmos DB Table API にデータを移行する](../cosmos-db/table-import.md)

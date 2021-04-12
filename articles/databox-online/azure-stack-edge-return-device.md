@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 03/03/2021
 ms.author: alkohli
-ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: cb11d7d3b2da9ab793cb18814e4021ea7afeb806
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98784479"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102443592"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Azure Stack Edge Pro デバイスを返却する
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、データをワイプして、ご利用の Azure Stack Edge Pro デバイスを返却する方法について説明します。 デバイスを返却した後、デバイスと関連付けられたリソースを削除することもできます。
 
@@ -30,26 +32,15 @@ ms.locfileid: "98784479"
 
 ## <a name="erase-data-from-the-device"></a>デバイスからデータを消去する
 
-デバイス上のデータ ディスクのデータを削除するには、ご利用のデバイスをリセットする必要があります。 ローカル Web UI または PowerShell インターフェイスを使用して、デバイスをリセットできます。
+デバイス上のデータ ディスクのデータを削除するには、ご利用のデバイスをリセットする必要があります。
 
-リセットする前に、必要に応じて、デバイス上のローカル コピーを作成します。 デバイスから Azure Storage コンテナーにデータをコピーできます。
+リセットする前に、必要に応じて、デバイス上のローカル コピーを作成します。 デバイスから Azure Storage コンテナーにデータをコピーできます。 
 
-デバイスがリセットされる前でも、デバイスの返却を開始できます。 
+デバイスがリセットされる前でも、デバイスの返却を開始できます。
 
-ローカル Web UI を使用してデバイスをリセットするには、次の手順を行います。
+ローカル Web UI または PowerShell でデバイスをリセットできます。 PowerShell の手順については、「[デバイスをリセットする](./azure-stack-edge-connect-powershell-interface.md#reset-your-device)」を参照してください。
 
-1. ローカル Web UI で、 **[メンテナンス] > [デバイスのリセット]** に移動します。
-2. **[デバイスのリセット]** を選択します。
-
-    ![デバイスをリセットする](media/azure-stack-edge-return-device/device-reset-1.png)
-
-3. 確認を求めるメッセージが表示されたら、警告を確認し、 **[はい]** を選択して続行します。
-
-    ![リセットの確認](media/azure-stack-edge-return-device/device-reset-2.png)  
-
-このリセットによって、デバイスのデータ ディスクのデータが消去されます。 ご利用のデバイス上のデータ量に応じて、このプロセスには約 30 から 40 分かかります。
-
-または、デバイスの PowerShell インターフェイスに接続して、`Reset-HcsAppliance` コマンドレットを使用し、データ ディスクからデータを消去します。 詳細については、「[デバイスをリセットする](azure-stack-edge-connect-powershell-interface.md#reset-your-device)」を参照してください。
+[!INCLUDE [Reset data from the device](../../includes/azure-stack-edge-device-reset.md)]
 
 > [!NOTE]
 > - 新しいデバイスに交換またはアップグレードする場合は、新しいデバイスを受け取ってからご利用のデバイスをリセットすることをお勧めします。
@@ -67,15 +58,15 @@ ms.locfileid: "98784479"
 
     1. デバイスのシリアル番号を指定します。 デバイスのシリアル番号を取得するには、デバイスのローカル Web UI に移動し、 **[概要]** に移動します。  
     
-    ![デバイスのシリアル番号 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+       ![デバイスのシリアル番号 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
-    2. サービス タグ番号を入力します。これはデバイスに固有の 5 文字以上の識別子です。 サービス タグは、デバイスの (デバイスに向かって) 右下隅にあります。 情報タグ (スライド式のラベル パネル) を引き出します。 このパネルには、サービス タグ、NIC、MAC アドレスなどのシステム情報が含まれています。 
+    2. サービス タグ番号を入力します。 サービス タグ番号は、デバイスに固有の 5 文字以上の識別子です。 サービス タグは、デバイスの (デバイスに向かって) 右下隅にあります。 情報タグ (スライド式のラベル パネル) を引き出します。 このパネルには、サービス タグ、NIC、MAC アドレスなどのシステム情報が含まれています。 
     
-    ![サービス タグ番号 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+       ![サービス タグ番号 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
 
     3. ドロップダウン リストから、返却の理由を選択します。
 
-    ![デバイスの返却 2](media/azure-stack-edge-return-device/return-device-2.png) 
+       ![デバイスの返却 2](media/azure-stack-edge-return-device/return-device-2.png) 
 
 3. **[Shipping details]\(発送元の詳細\)** の下で:
 
@@ -84,7 +75,7 @@ ms.locfileid: "98784479"
 
     ![デバイスの返却 3](media/azure-stack-edge-return-device/return-device-3.png)
 
-4. **プライバシー条項** を確認し、確認してプライバシー条項に同意したというメモに対してチェックボックスをオンにします。
+4. **プライバシー条項** を確認し、確認してプライバシー条項に同意したという注記の横にあるチェックボックスをオンにします。
 
 5. **[Initiate return]\(返却の開始\)** を選択します。
 
@@ -123,8 +114,8 @@ ms.locfileid: "98784479"
 
 次の場合に Azure portal でデバイスを削除できます。
 
-- 注文した後とデバイスが Microsoft によって準備される前。
-- デバイスを Microsoft にご返却いただき、それが Azure データセンターでの物理検査に合格して、Azure Stack Edge Pro 運用チームがデバイスが返却されたことを確認するご連絡をした後。
+- 注文後、デバイスが Microsoft によって準備される前。
+- デバイスを Microsoft に返送し、Azure Stack Edge Pro 運用チームからデバイスが返されたことを確認する連絡があった後。 返されたデバイスが Azure データセンターでの物理的な検査に合格するまで、運用チームが連絡することはありません。
 
 別のサブスクリプションまたは場所に対してデバイスを有効にしている場合、Microsoft によって 1 営業日以内に新しいサブスクリプションまたは場所に注文が移動されます。 注文が移動された後、このリソースを削除できます。
 

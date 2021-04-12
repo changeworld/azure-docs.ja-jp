@@ -4,12 +4,12 @@ description: ASP.NET Core Web アプリケーションの可用性、パフォ�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: 2f17f4fbed196932ad7a5680338c459740e4d3bd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: be4cbe5f95fa6901ae4299662750c232d4700a8a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249110"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101711503"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -29,7 +29,7 @@ ms.locfileid: "98249110"
 * **IDE**: Visual Studio、VS Code、コマンド ライン。
 
 > [!NOTE]
-> ASP.NET Core 3.X では [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 以降が必要です。
+> ASP.NET Core 3.1 では [Application Insights 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) 以降が必要です。
 
 ## <a name="prerequisites"></a>前提条件
 

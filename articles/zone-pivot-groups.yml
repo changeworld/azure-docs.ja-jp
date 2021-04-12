@@ -256,8 +256,10 @@ groups:
     title: Go
   - id: programming-language-java
     title: Java
-  - id: programming-language-javascript
-    title: JavaScript
+  - id: programming-language-nodejs
+    title: Node.js
+  - id: programming-language-browserjs
+    title: JavaScript (ブラウザー)
   - id: programming-languages-objectivec-swift
     title: Objective-C/Swift
   - id: programming-language-python
@@ -358,6 +360,16 @@ groups:
     title: TypeScript
   - id: programming-language-other
     title: その他
+- id: development-environment-functions
+  title: 開発環境
+  prompt: 開発環境を選択する
+  pivots:
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: コマンド ライン
+  - id: development-environment-vs
+    title: Visual Studio
 - id: programming-languages-metrics-monitor
   title: プログラミング言語
   prompt: プログラミング言語を選択する。
@@ -958,6 +970,14 @@ groups:
     title: Azure Arc
   - id: azure-portal
     title: Security Center のポータル ページ
+- id: manage-asc-initiatives
+  title: Security Center イニシアチブの管理
+  prompt: Security Center イニシアチブはどのように管理しますか?
+  pivots:
+  - id: azure-portal
+    title: Azure Portal で次の操作を行います。
+  - id: rest-api
+    title: REST API を使用した場合
 - id: client-operating-system-macos-and-linux-windows-powershell
   title: オペレーティング システム/コンソール
   prompt: オペレーティング システムとコンソールの選択
@@ -1045,9 +1065,9 @@ groups:
   - id: programming-language-kotlin
     title: Kotlin (Android)
 metadata:
-  ms.openlocfilehash: cd30fa892e20dc82c0e314c76d72c2c8d3583bd1
-  ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+  ms.openlocfilehash: 4075041f3a79138c80c1e020a7410bbc252de6f3
+  ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/04/2021
-  ms.locfileid: "102032451"
+  ms.lasthandoff: 03/10/2021
+  ms.locfileid: "102558170"

@@ -9,16 +9,16 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d238a889648e789087a0803f6b50288318462c7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a6b3577fe820c9dadcb3c8415aa7a951a3283284
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629065"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641812"
 ---
 # <a name="restore-the-adventureworks-sample-database-into-sql-managed-instance---azure-arc"></a>AdventureWorks サンプル データベースを SQL Managed Instance に復元する - Azure Arc
 
-[AdventureWorks](/sql/samples/adventureworks-install-configure?view=sql-server-ver15&tabs=tsql&preserve-view=true) は、チュートリアルや例でよく使用される OLTP データベースを含むサンプル データベースです。 これは、[SQL Server サンプル GitHub リポジトリ](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)の一部として、Microsoft によって提供され、管理されています。
+[AdventureWorks](/sql/samples/adventureworks-install-configure) は、チュートリアルや例でよく使用される OLTP データベースを含むサンプル データベースです。 これは、[SQL Server サンプル GitHub リポジトリ](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases)の一部として、Microsoft によって提供され、管理されています。
 
 このドキュメントでは、AdventureWorks サンプル データベースを SQL Managed Instance - Azure Arc に復元するための簡単なプロセスを説明します。
 

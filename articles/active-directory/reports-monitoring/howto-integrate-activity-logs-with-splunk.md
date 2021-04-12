@@ -13,16 +13,16 @@ ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/10/2020
+ms.date: 03/10/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 351669453a5ce6930d3eb912e95e530d14febf61
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: afb6a597d4fd58646f56e271cb6027fb46db1e26
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335852"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102634228"
 ---
 # <a name="how-to-integrate-azure-active-directory-logs-with-splunk-using-azure-monitor"></a>方法:Azure Monitor を使用して Azure Active Directory のログを Splunk と統合する
 
@@ -34,7 +34,7 @@ ms.locfileid: "91335852"
 
 - Azure AD のアクティビティ ログを含む Azure イベント ハブ。 [アクティビティ ログをイベント ハブにストリーミングする](./tutorial-azure-monitor-stream-logs-to-event-hub.md)方法を確認してください。 
 
--  [Splunk 用 Microsoft Azure アドオン](https://splunkbase.splunk.com/app/3757/)。 
+-  [Microsoft Cloud Services 用の Splunk アドオン](https://splunkbase.splunk.com/app/3110/#/details)。 
 
 ## <a name="integrate-azure-active-directory-logs"></a>Azure Active Directory ログの統合 
 

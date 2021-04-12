@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
 ms.openlocfilehash: a008d7b26738b9552a7a43ab026391bd9afe0aa8
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96780945"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer の正常性プローブ

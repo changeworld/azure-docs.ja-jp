@@ -1,7 +1,8 @@
 ---
 title: Azure 仮想マシンでのメインフレーム リホスト
 description: Microsoft Azure の仮想マシン (VM) を使用して、IBM Z ベースのシステムなどのメインフレーム ワークロードをリホストします。
-services: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -9,13 +10,12 @@ editor: edprice
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: f62cb6d5277ae202e8ea864aa99a3e19c3beef22
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 1baba0afc08c6a4df63c38cafe9231411ecf8f1f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220753"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048852"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Azure 仮想マシンでのメインフレーム リホスト
 
@@ -118,7 +118,7 @@ Azure Government は、この種類の環境が必要なシステムに対して
 
 - [メインフレームのトピックに関するホワイト ペーパー](mainframe-white-papers.md)
 - [メインフレーム移行](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [トラブルシューティング](../../troubleshooting/index.yml)
+- [トラブルシューティング](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

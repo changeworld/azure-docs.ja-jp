@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: fd9a811fd1c19d115f3ff15194b7e632114140df
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c530d584282cebba78c095798944e48d7efe2c66
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790255"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625635"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>DTU 購入モデルを使用した単一データベースのリソース制限 - Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "92790255"
 | 最大ストレージ (GB) | 2 |
 | 最大インメモリ OLTP ストレージ容量 (GB) |該当なし |
 | 最大同時実行ワーカー (要求) 数 | 30 |
-| 最大同時セッション数 | 該当なし |
+| 最大同時セッション数 | 300 |
 |||
 
 > [!IMPORTANT]
@@ -57,7 +57,7 @@ ms.locfileid: "92790255"
 | 最大 DTU 数 | 10 | 20 | 50 | 100 |
 | 付属ストレージ (GB) <sup>1</sup> | 250 | 250 | 250 | 250 |
 | 最大ストレージ (GB) | 250 | 250 | 250 | 1024 |
-| 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | 該当なし | 該当なし | 該当なし |
+| 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | なし | なし | 該当なし |
 | 最大同時実行ワーカー (要求) 数| 60 | 90 | 120 | 200 |
 | 最大同時セッション数 |600 | 900 | 1200 | 2400 |
 ||||||
@@ -77,7 +77,7 @@ ms.locfileid: "92790255"
 | 最大 DTU 数 | 200 | 400 | 800 | 1600 | 3000 |
 | 付属ストレージ (GB) <sup>1</sup> | 250 | 250 | 250 | 250 | 250 |
 | 最大ストレージ (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
-| 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | 該当なし | 該当なし | 該当なし |該当なし |
+| 最大インメモリ OLTP ストレージ容量 (GB) | 該当なし | なし | なし | なし |該当なし |
 | 最大同時実行ワーカー (要求) 数| 400 | 800 | 1600 | 3200 |6000 |
 | 最大同時セッション数 |4800 | 9600 | 19200 | 30000 |30000 |
 |||||||
@@ -103,7 +103,7 @@ ms.locfileid: "92790255"
 > [!IMPORTANT]
 > 現在、1 TB を超える Premium レベルのストレージは、中国東部、中国北部、ドイツ中部、ドイツ北東部、を除くすべてのリージョンで利用できます。 これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。  詳しくは、[P11-P15 の現在の制限事項](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)に関するページをご覧ください。
 > [!NOTE]
-> `tempdb` の制限については、[tempdb の制限](/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)に関する記事を参照してください。
+> `tempdb` の制限については、[tempdb の制限](/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

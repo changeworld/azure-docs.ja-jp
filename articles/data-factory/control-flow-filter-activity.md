@@ -3,16 +3,16 @@ title: Azure Data Factory のフィルター アクティビティ
 description: フィルター アクティビティは、入力をフィルター処理します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 035ee5a5f1fe193fcb4579f1d46472ad9cd0b8b5
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 97693d9f31b01bf6187843586f6971c92fe79bff
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385593"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786194"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure Data Factory のフィルター アクティビティ
 パイプラインでフィルター アクティビティを使用して、入力配列にフィルター式を適用することができます。 
@@ -37,8 +37,8 @@ ms.locfileid: "100385593"
 -------- | ----------- | -------------- | --------
 name | `Filter` アクティビティの名前。 | String | はい
 type | **filter** に設定する必要があります。 | String | はい
-condition | 入力のフィルター処理に使用する条件。 | 式 | はい
-items | フィルターを適用する必要がある入力配列。 | 式 | はい
+condition | 入力のフィルター処理に使用する条件。 | Expression | はい
+items | フィルターを適用する必要がある入力配列。 | Expression | はい
 
 ## <a name="example"></a>例
 

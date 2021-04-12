@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/17/2020
+ms.date: 03/09/2021
 ms.author: aahi
 keywords: テキスト マイニング、感情分析、テキスト分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563230"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104598968"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
 Text Analytics API は、テキスト マイニングとテキスト分析のための自然言語処理 (NLP) 機能を提供するクラウドベースのサービスであり、感情分析、オピニオン マイニング、キー フレーズ抽出、言語検出、名前付きエンティティの認識などを備えています。
 
-この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](../index.yml) に含まれます。 これらの機能は [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) または[クライアント ライブラリ](quickstarts/client-libraries-rest-api.md)で使用できます。
+この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](../index.yml) に含まれます。 これらの機能は、REST API [バージョン 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) または[バージョン 3.1-preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)、あるいは[クライアント ライブラリ](quickstarts/client-libraries-rest-api.md)で使用できます。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
@@ -33,7 +33,7 @@ Text Analytics API は、テキスト マイニングとテキスト分析のた
 
 この機能は、文章とドキュメントレベルでサービスによって検出された最も高い信頼度スコアに基づいて、センチメント ラベル ("negative"、"neutral"、"positive" など) を提供します。 また、この機能は、positive、neutral、negative (肯定的、中立的、否定的) のセンチメントに関し、各ドキュメントとその中の文章に対して 0 と 1 の間の信頼度スコアを返します。 また、[コンテナーを使用して](how-tos/text-analytics-how-to-install-containers.md)オンプレミスでサービスを実行することもできます。
 
-バージョン 3.1 プレビュー以降では、オピニオン マイニングは感情分析の 1 つの機能となっています。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
+バージョン 3.1 プレビュー以降では、オピニオン マイニングは感情分析の 1 つの機能となっています。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれる単語 (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
 
 ## <a name="key-phrase-extraction"></a>キー フレーズの抽出
 

@@ -6,17 +6,17 @@ services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: cdeecabf569e3c6f9b280e6b0179e5378f5b1c95
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96011372"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) でのクラスターの分離に関するベスト プラクティス
 
 Azure Kubernetes Service (AKS) でクラスターを管理する際は、多くの場合、チームとワークロードを分離する必要があります。 AKS では、柔軟にマルチ テナント クラスターを実行してリソースを分離することができます。 Kubernetes への投資を最大限に活用するには、これらのマルチ テナントおよび分離機能を理解して実装する必要があります。
 
-このベスト プラクティスの記事では、クラスター オペレーターを対象とした分離に重点を置いています。 この記事では、次の方法について説明します。
+このベスト プラクティスの記事では、クラスター オペレーターを対象とした分離に重点を置いています。 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * マルチ テナント クラスターとリソースの分離の計画

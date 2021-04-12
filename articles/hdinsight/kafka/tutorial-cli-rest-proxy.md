@@ -1,18 +1,18 @@
 ---
-title: チュートリアル:Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する
+title: 'チュートリアル: Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する'
 description: Azure HDInsight で Kafka REST プロキシを使用して Apache Kafka 操作を実行する方法について説明します。
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/19/2021
 ms.locfileid: "98944019"
 ---
-# <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>チュートリアル:Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する
+# <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>チュートリアル: Azure CLI を使用して Apache Kafka REST プロキシ対応のクラスターを HDInsight に作成する
 
 このチュートリアルでは、Azure コマンド ライン インターフェイス (CLI) を使って Apache Kafka の [REST プロキシ対応](./rest-proxy.md)クラスターを Azure HDInsight に作成する方法を説明します。 Azure HDInsight は、全範囲に対応した、オープンソースのエンタープライズ向けマネージド分析サービスです。 Apache Kafka は、オープンソースの分散ストリーミング プラットフォームです。 発行/サブスクライブ メッセージ キューと同様の機能を備えているため、メッセージ ブローカーとして多く使われています。 Kafka REST プロキシを使用すると、HTTP 経由の [REST API](/rest/api/hdinsight-kafka-rest-proxy/) を使用して Kafka クラスターを操作することができます。 Azure CLI は、Azure リソースを管理するための、Microsoft のクロスプラットフォーム コマンド ライン エクスペリエンスです。
 

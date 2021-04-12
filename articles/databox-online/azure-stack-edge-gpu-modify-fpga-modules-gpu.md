@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6e9e1319b90ab859c63c022e478bc26c4b8aedeb
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: 1276a242efb1917a0c4a24aa73c3e0d11f81e158
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550220"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559164"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro FPGA デバイスの既存の IoT Edge モジュールを Azure Stack Edge Pro GPU デバイスで実行する
+
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 この記事では、Azure Stack Edge Pro FPGA で実行されている Docker ベースの IoT Edge モジュールを、Azure Stack Edge Pro GPU デバイス上の Kubernetes ベースの IoT Edge プラットフォームで実行できるようにするために必要な変更について、詳しく説明します。 
 
@@ -246,4 +248,4 @@ GPU デバイス上の Kubernetes ベースの IoT Edge のセットアップで
 
 ## <a name="next-steps"></a>次のステップ
 
-- [モジュールを使用するために GPU を構成する](azure-stack-edge-j-series-configure-gpu-modules.md)方法を確認します。
+- [モジュールを使用するために GPU を構成する](./azure-stack-edge-gpu-configure-gpu-modules.md)方法を確認します。

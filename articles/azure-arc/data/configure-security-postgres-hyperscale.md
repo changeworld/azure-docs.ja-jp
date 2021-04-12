@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4f89ace7130e95ba109edcf6becca1e15c8d32c1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d6e27fddceb69efbb2c1697c09ee9b61d7f38ee4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273202"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101687976"
 ---
 # <a name="configure-security-for-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのセキュリティを構成する
 
@@ -23,6 +23,7 @@ ms.locfileid: "91273202"
 - [ユーザー管理]
    - 一般的なパースペクティブ
    - _postgres_ 管理ユーザーのパスワードを変更する
+- Audit
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -159,13 +160,14 @@ Azure Arc 対応 PostgreSQL Hyperscale には、サーバー グループの作�
 azdata arc postgres server edit --name <server group name> --admin-password
 ```
 
-ここで、--admin-password は、AZDATA_PASSWORD **セッション**の環境変数内の値の存在に関連するブール値です。
-AZDATA_PASSWORD **セッション**の環境変数が存在し、値を持っている場合は、上記のコマンドを実行すると、postgres ユーザーのパスワードがこの環境変数の値に設定されます。
+ここで、`--admin-password` は、AZDATA_PASSWORD **セッション** 環境変数内の値の存在に関連するブール値です。
+AZDATA_PASSWORD **セッション** 環境変数が存在していて値がある場合は、上記のコマンドを実行すると、postgres ユーザーのパスワードがこの環境変数の値に設定されます。
 
-AZDATA_PASSWORD **セッション**の環境変数が存在し、値がない場合、または AZDATA_PASSWORD **セッション**の環境変数が存在しない場合は、上記のコマンドを実行すると、ユーザーは対話形式でパスワードの入力を求められます。
+AZDATA_PASSWORD **セッション** 環境変数が存在していて値がない場合、または AZDATA_PASSWORD **セッション** の環境変数が存在しない場合は、上記のコマンドを実行すると、ユーザーは対話形式でパスワードの入力を求められます。
 
-#### <a name="changing-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>対話形式で postgres 管理ユーザーのパスワードを変更する:
-1. AZDATA_PASSWORD **セッション**の環境変数を削除するか、その値を削除します
+#### <a name="change-the-password-of-the-postgres-administrative-user-in-an-interactive-way"></a>対話形式で postgres 管理ユーザーのパスワードを変更する
+
+1. AZDATA_PASSWORD **セッション** 環境変数を削除するか、その値を削除します
 2. 次のコマンドを実行します。
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -186,8 +188,8 @@ AZDATA_PASSWORD **セッション**の環境変数が存在し、値がない場
    postgres01 is Ready
    ```
    
-#### <a name="changing-the-password-of-the-postgres-administrative-user-using-the-azdata_password-sessions-environment-variable"></a>AZDATA_PASSWORD **セッション**の環境変数を使用して、postgres 管理ユーザーのパスワードを変更する:
-1. AZDATA_PASSWORD **セッション**の環境変数の値を、パスワードとして使用するものに設定します。
+#### <a name="change-the-password-of-the-postgres-administrative-user-using-the-azdata_password-session-environment-variable"></a>AZDATA_PASSWORD **セッション** 環境変数を使用して postgres 管理ユーザーのパスワードを変更する:
+1. AZDATA_PASSWORD **セッション** 環境変数の値を、パスワードとして使用するものに設定します。
 2. 次のコマンドを実行します。
    ```console
    azdata arc postgres server edit --name <server group name> --admin-password
@@ -216,9 +218,12 @@ AZDATA_PASSWORD **セッション**の環境変数が存在し、値がない場
 > echo $env:AZDATA_PASSWORD
 > ```
 
+## <a name="audit"></a>Audit
+
+監査シナリオの場合は、Postgres の `pgaudit` 拡張機能を使用するようにサーバー グループを構成してください。 `pgaudit` の詳細については、[`pgAudit` GitHub プロジェクト](https://github.com/pgaudit/pgaudit/blob/master/README.md)に関するページを参照してください。 サーバー グループで `pgaudit` 拡張機能を有効にするには、[PostgreSQL 拡張機能の使用](using-extensions-in-postgresql-hyperscale-server-group.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
-- `pgcrypto` 拡張機能の詳細については、[こちら](https://www.postgresql.org/docs/current/pgcrypto.html)を参照してください。
-- Postgres の拡張機能を使用する方法の詳細については、[こちら](using-extensions-in-postgresql-hyperscale-server-group.md)を参照してください。
+- [`pgcrypto` 拡張機能](https://www.postgresql.org/docs/current/pgcrypto.html)に関するページを参照してください
+- [PostgreSQL 拡張機能の使用](using-extensions-in-postgresql-hyperscale-server-group.md)に関するページを参照してください
 

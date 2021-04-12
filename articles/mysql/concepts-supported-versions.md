@@ -6,42 +6,30 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: 8033117d9e3c31f8aa9bba06afb7c3b1b7bba67f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 8b85307f01a11366a2147c947f26658f548932e8
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95751030"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103467716"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 
-Azure Database for MySQL は、InnoDB エンジンを使用して [MySQL Community Edition](https://www.mysql.com/products/community/) から開発されました。
-
-MySQL では、X.Y.Z の名前付けスキームが使用されます。 X はメジャー バージョン、Y はマイナー バージョン、Z はバグ修正のリリースです。 スキームの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)をご覧ください。
-
+Azure Database for MySQL は、InnoDB ストレージ エンジンを使用して [MySQL Community Edition](https://www.mysql.com/products/community/) から開発されました。 このサービスは、コミュニティでサポートされている現在のメジャー バージョン (MySQL 5.6、5.7、8.0) をすべてサポートしています。 MySQL では、X.Y.Z の名前付けスキームが使用されています。ここで、X はメジャー バージョン、Y はマイナー バージョン、Z はバグ修正リリースです。 スキームの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)をご覧ください。
 
 > [!NOTE]
-> サービスでは、接続をサーバー インスタンスにリダイレクトするためにゲートウェイが使用されます。 接続が確立すると、MySQL には、MySQL サーバー インスタンスで実行されている実際のバージョンではなく、ゲートウェイに設定されている MySQL のバージョンが表示されます。 MySQL サーバー インスタンスのバージョンを判断するには、MySQL プロンプトで `SELECT VERSION();` コマンドを使用します。
+> シングルサーバー デプロイ オプションでは、ゲートウェイを使用してサーバー インスタンスに接続がリダイレクトされます。 接続が確立すると、MySQL には、MySQL サーバー インスタンスで実行されている実際のバージョンではなく、ゲートウェイに設定されている MySQL のバージョンが表示されます。 MySQL サーバー インスタンスのバージョンを判断するには、MySQL プロンプトで `SELECT VERSION();` コマンドを使用します。
 
-Azure Database for MySQL では現在、次のバージョンがサポートされています。
+Azure Database for MySQL では、現在、次の MySQL メジャーおよびマイナー バージョンがサポートされています。
 
-## <a name="mysql-version-56"></a>MySQL バージョン 5.6
 
-バグ修正プログラムのリリース:5.6.47
+| Version | シングル サーバー <br/> 現行のマイナー バージョン |フレキシブル サーバー (プレビュー) <br/> 現行のマイナー バージョン  |
+|:-------------------|:-------------------------------------------|:---------------------------------------------|
+|MySQL バージョン 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (廃止) | サポートされていません|
+|MySQL バージョン 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
+|MySQL バージョン 8.0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
 
-このバージョンの機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html)をご覧ください。
-
-## <a name="mysql-version-57"></a>MySQL バージョン 5.7
-
-バグ修正プログラムのリリース:5.7.29
-
-このバージョンの機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)をご覧ください。
-
-## <a name="mysql-version-80"></a>MySQL バージョン 8.0
-
-バグ修正プログラムのリリース:8.0.15
-
-このバージョンの機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html)をご覧ください。
+[バージョン サポート ポリシーのドキュメント](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)で、廃止されたバージョンのバージョン サポート ポリシーを参照してください。
 
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
 このサービスでは、バグ修正バージョンの更新プログラムの適用が自動管理されます。 たとえば、5.7.20 から 5.7.21 などです。  

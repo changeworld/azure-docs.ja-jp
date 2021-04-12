@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/30/2020
+ms.date: 12/29/2020
 ms.author: irenehua
-ms.openlocfilehash: 0c491275f793ce2cd5e830ca6a3014dc45d6d509
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 52f2a2ed301bf734ad605a2ee68a0ab672a97014
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594537"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218725"
 ---
 # <a name="update-or-delete-a-load-balancer-used-by-virtual-machine-scale-sets"></a>仮想マシン スケール セットで使用されるロード バランサーを更新または削除する
 
@@ -30,7 +30,7 @@ ms.locfileid: "99594537"
 
 ## <a name="set-up-a-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>仮想マシン スケール セットをスケールアウトするためにロード バランサーを設定する
 
-Azure Load Balancer のインスタンスに[インバウンド NAT プール](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest)が設定されていること、および仮想マシン スケール セットがロード バランサーのバックエンド プールに配置されていることを確認します。 新しい仮想マシン インスタンスが仮想マシン スケール セットに追加されると、Load Balancer によって、インバウンド NAT プールに新しいインバウンド NAT 規則が自動的に作成されます。
+Azure Load Balancer のインスタンスに[インバウンド NAT プール](/cli/azure/network/lb/inbound-nat-pool)が設定されていること、および仮想マシン スケール セットがロード バランサーのバックエンド プールに配置されていることを確認します。 新しい仮想マシン インスタンスが仮想マシン スケール セットに追加されると、Load Balancer によって、インバウンド NAT プールに新しいインバウンド NAT 規則が自動的に作成されます。
 
 インバウンド NAT プールが適切に設定されているかどうかを確認するには、次の手順を行います。
 
@@ -44,7 +44,7 @@ Azure Load Balancer のインスタンスに[インバウンド NAT プール](/
 
 仮想マシン スケール セットのインバウンド NAT 規則のセット全体を追加するには、最初にロード バランサーでインバウンド NAT プールを作成します。 次に、仮想マシン スケール セットのネットワーク プロファイルからインバウンド NAT プールを参照します。 CLI を使用した完全な例を示します。
 
-新しいインバウンド NAT プールのフロントエンド ポート範囲が、既存のインバウンド NAT プールと重複しないようにする必要があります。 既存のインバウンド NAT プールの設定を表示するには、この [CLI コマンド](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list)を使用します。
+新しいインバウンド NAT プールのフロントエンド ポート範囲が、既存のインバウンド NAT プールと重複しないようにする必要があります。 既存のインバウンド NAT プールの設定を表示するには、この [CLI コマンド](/cli/azure/network/lb/inbound-nat-pool#az_network_lb_inbound_nat_pool_list)を使用します。
   
 ```azurecli-interactive
   az network lb inbound-nat-pool create 
@@ -83,14 +83,15 @@ az network lb inbound-nat-pool update
 
 ## <a name="delete-inbound-nat-rules"></a>インバウンド NAT 規則を削除する
 
-個々のインバウンド NAT 規則を削除することはできませんが、インバウンド NAT 規則のセット全体を削除することはできます。
+個々のインバウンド NAT 規則を削除することはできませんが、インバウンド NAT プールを削除することで一連のインバウンド NAT 規則全体を削除することはできます。
 
-スケール セットで使用されているインバウンド NAT 規則のセット全体を削除するには、まず、スケール セットから NAT プールを削除します。 CLI を使用した完全な例を次に示します。
-    
+NAT プールを削除するには、まず、スケール セットから削除します。 CLI を使用した完全な例を次に示します。
+
 ```azurecli-interactive
     az vmss update
        --resource-group MyResourceGroup
        --name MyVMSS
+       --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools
      az vmss update-instances 
        --instance-ids "*" 
        --resource-group MyResourceGroup
@@ -110,6 +111,52 @@ az network lb inbound-nat-pool update
 1. **[フロントエンド IP アドレスの追加]** ページで値を入力し、 **[OK]** を選択します。
 1. 新しい負荷分散規則が必要な場合は、このチュートリアルの[ステップ 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) と[ステップ 6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) に従ってください。
 1. 必要に応じて、新しく作成したフロントエンド IP 構成を使用して、インバウンド NAT 規則の新しいセットを作成します。 前のセクションで例を確認できます。
+
+## <a name="multiple-virtual-machine-scale-sets-behind-a-single-load-balancer"></a>1 つの Load Balancer の背後に複数の Virtual Machine Scale Sets
+
+Load Balancer でインバウンド NAT プールを作成し、仮想マシン スケール セットのネットワーク プロファイルでこのインバウンド NAT プールを参照し、最後に、変更を有効にするためにインスタンスを更新します。 すべての仮想マシン スケール セットに対してこの手順を繰り返します。
+
+重複しないフロントエンド ポート範囲を持つ個別のインバウンド NAT プールを作成してください。
+  
+```azurecli-interactive
+  az network lb inbound-nat-pool create 
+          -g MyResourceGroup 
+          --lb-name MyLb
+          -n MyNatPool 
+          --protocol Tcp 
+          --frontend-port-range-start 80 
+          --frontend-port-range-end 89 
+          --backend-port 80 
+          --frontend-ip-name MyFrontendIpConfig
+  az vmss update 
+          -g MyResourceGroup 
+          -n myVMSS 
+          --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool'}"
+            
+  az vmss update-instances
+          -–instance-ids *
+          --resource-group MyResourceGroup
+          --name MyVMSS
+          
+  az network lb inbound-nat-pool create 
+          -g MyResourceGroup 
+          --lb-name MyLb
+          -n MyNatPool2
+          --protocol Tcp 
+          --frontend-port-range-start 100 
+          --frontend-port-range-end 109 
+          --backend-port 80 
+          --frontend-ip-name MyFrontendIpConfig2
+  az vmss update 
+          -g MyResourceGroup 
+          -n myVMSS2 
+          --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools "{'id':'/subscriptions/mySubscriptionId/resourceGroups/MyResourceGroup/providers/Microsoft.Network/loadBalancers/MyLb/inboundNatPools/MyNatPool2'}"
+            
+  az vmss update-instances
+          -–instance-ids *
+          --resource-group MyResourceGroup
+          --name MyVMSS2
+```
 
 ## <a name="delete-the-front-end-ip-configuration-used-by-the-virtual-machine-scale-set"></a>仮想マシン スケール セットで使用されているフロントエンド IP 構成を削除する
 

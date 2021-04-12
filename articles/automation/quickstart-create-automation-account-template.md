@@ -3,18 +3,17 @@ title: クイック スタート:Automation アカウントを作成する - Azu
 titleSuffix: Azure Automation
 description: このクイックスタートでは、Azure Resource Manager テンプレートを使用して Automation アカウントを作成する方法について説明します。
 services: automation
-Customer intent: I want to create an Automation account by using an Azure Resource Manager template so that I can automate processes with runbooks.
 ms.topic: quickstart
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4d7d4b5af9b86fe5116dc29f6ed1a789cdbf2047
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: dda2e2e34ab1f0c8facafe62a4fc0b9c5116f9d9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581088"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063170"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>クイック スタート:ARM テンプレートを使用して Automation アカウントを作成する
 

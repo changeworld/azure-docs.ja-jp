@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/04/2020
+ms.date: 03/29/2021
 ms.author: aahi
-ms.openlocfilehash: 6ea7b992a682537471ce0e78385b37674199d687
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 7cd2b0a6b943ceb32420ef119a7fc5eddefa2e19
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673055"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276996"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>方法: 感情分析とオピニオン マイニング
 
-Text Analytics API の感情分析機能には、肯定的および否定的センチメントを検出するための 2 つの方法が用意されています。 感情分析要求を送信すると、文とドキュメントのレベルでセンチメント ラベル ("negative"、"neutral"、"positive" など) と信頼度スコアが API から返されます。 また、感情分析エンドポイントを使用してオピニオン マイニング要求を送信することもできます。これにより、テキスト内のアスペクト (製品やサービスの属性など) に関連した意見に関する詳細な情報が提供されます。 
+Text Analytics API の感情分析機能には、肯定的および否定的センチメントを検出するための 2 つの方法が用意されています。 感情分析要求を送信すると、文とドキュメントのレベルでセンチメント ラベル ("negative"、"neutral"、"positive" など) と信頼度スコアが API から返されます。 また、感情分析エンドポイントを使用してオピニオン マイニング要求を送信することもできます。これにより、テキスト内の単語 (製品やサービスの属性など) に関連した意見に関する詳細な情報が提供されます。
 
 API で使用される AI モデルはサービスによって提供されるため、分析対象のコンテンツを送信するだけで済みます。
 
@@ -49,9 +49,9 @@ API で使用される AI モデルはサービスによって提供されるた
 
 ## <a name="opinion-mining"></a>オピニオン マイニング
 
-オピニオン マイニングは、バージョン 3.1 のプレビュー以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれるアスペクト (製品やサービスの属性など) に関連した意見について、より粒度の細かい情報が得られます。
+オピニオン マイニングは、バージョン 3.1 のプレビュー以降の感情分析の機能です。 この機能は、自然言語処理 (NLP) ではアスペクトベースの感情分析とも呼ばれます。テキストに含まれる製品やサービスの属性に関連した意見について、より粒度の細かい情報が得られます。 API は、ターゲット (名詞または動詞) と評価 (形容詞) として意見をクローズアップします。
 
-たとえば、あるホテルについて "The room was great, but the staff was unfriendly (部屋はすばらしいのですが、スタッフが無愛想でした)" のようなフィードバックを利用者が残した場合、そのテキストに含まれるアスペクトと、それに関連する意見と感情がオピニオン マイニングによって特定されます。 感情分析では、否定的な感情のみが報告される可能性があります。
+たとえば、あるホテルについて "The room was great, but the staff was unfriendly (部屋はすばらしいのですが、スタッフが無愛想でした)" のようなフィードバックを利用者が残した場合、そのテキストに含まれるターゲット (アスペクト) と、それに関連する評価 (意見) と感情がオピニオン マイニングによって特定されます。 感情分析では、否定的な感情のみが報告される可能性があります。
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="オピニオン マイニング例の図" lightbox="../media/how-tos/opinion-mining.png":::
 
@@ -72,7 +72,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 POST 要求を作成します。 次のリファレンス リンクにある [Postman](text-analytics-how-to-call-api.md) または **API テスト コンソール** を使用して、簡単に要求を構造化し、送信することができます。 
 
-#### <a name="version-31-preview3"></a>[バージョン 3.1-preview.3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
 [感情分析 v3.1 のリファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -89,17 +89,17 @@ Azure 上の Text Analytics リソースまたはインスタンス化された 
 > [!NOTE]
 > Azure portal で Text Analytics リソースのキーとエンドポイントを確認できます。 それらは、リソースの **クイック スタート** ページの **リソース管理** の下にあります。 
 
-#### <a name="version-31-preview3"></a>[バージョン 3.1-preview.3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
 **感情分析**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment`
 
 **オピニオン マイニング**
 
 オピニオン マイニングの結果を得るには、`opinionMining=true` パラメーターを含める必要があります。 次に例を示します。
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/sentiment?opinionMining=true`
 
 既定では、このパラメーターが `false` に設定されています。 
 
@@ -142,7 +142,7 @@ Text Analytics API はステートレスです。 データはアカウントに
 
 出力はすぐに返されます。 JSON を受け入れるアプリケーションに結果をストリーミングすることも、出力をローカル システム上のファイルに保存することもできます。 次に、データの並べ替え、検索、および操作に使用できるアプリケーション内に出力をインポートします。 多言語と絵文字のサポートにより、応答にはテキスト オフセットが含まれる場合があります。 詳細については[オフセットの処理方法](../concepts/text-offsets.md)に関するページを参照してください。
 
-#### <a name="version-31-preview3"></a>[バージョン 3.1-preview.3](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>感情分析とオピニオン マイニングの応答の例
 
@@ -153,95 +153,97 @@ Text Analytics API はステートレスです。 データはアカウントに
   
 感情分析は、ドキュメント全体およびそこに含まれるそれぞれの文について、センチメント ラベルと信頼度スコアを返します。 スコアが 1 に近いほど、ラベルの分類の信頼度が高いことを示し、スコアが低いほど信頼度が低いことを示します。 ドキュメントには複数の文が含まれる場合があり、それぞれのドキュメントまたは文の範囲内での信頼度スコアの合計は 1 になります。
 
-オピニオン マイニングによって、テキスト内のアスペクトと、それに関連する意見と感情が検出されます。 以下の応答では、"*The restaurant had great food and our waiter was friendly (レストランの食事はすばらしく、ウエーターの態度も良かった)* " という文に、"*food (食事)* " と "*waiter (ウエーター)* " の 2 つのアスペクトが存在します。 それぞれのアスペクトの `relations` プロパティには `ref` 値があり、関連する `documents`、`sentences`、`opinions` オブジェクトへの URI 参照が設定されています。
+テキスト内のターゲット (名詞または動詞) とそれに関連する評価 (形容詞) がオピニオン マイニングによって特定されます。 以下の応答では、"*The restaurant had great food and our waiter was friendly (レストランの食事はすばらしく、ウエーターの態度も良かった)* " という文に、"*food (食事)* " と "*waiter (ウエーター)* " の 2 つのターゲットが存在します。 それぞれのターゲットの `relations` プロパティには `ref` 値があり、関連する `documents`、`sentences`、`assessments` オブジェクトへの URI 参照が設定されています。
+
+API は、ターゲット (名詞または動詞) と評価 (形容詞) として意見を返します。
 
 ```json
 {
-    "documents": [
+  "documents": [
+    {
+      "id": "1",
+      "sentiment": "positive",
+      "confidenceScores": {
+        "positive": 1,
+        "neutral": 0,
+        "negative": 0
+      },
+      "sentences": [
         {
-            "id": "1",
-            "sentiment": "positive",
-            "confidenceScores": {
-                "positive": 1.0,
-                "neutral": 0.0,
-                "negative": 0.0
-            },
-            "sentences": [
+          "sentiment": "positive",
+          "confidenceScores": {
+            "positive": 1,
+            "neutral": 0,
+            "negative": 0
+          },
+          "offset": 0,
+          "length": 58,
+          "text": "The restaurant had great food and our waiter was friendly.",
+          "targets": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 25,
+              "length": 4,
+              "text": "food",
+              "relations": [
                 {
-                    "sentiment": "positive",
-                    "confidenceScores": {
-                        "positive": 1.0,
-                        "neutral": 0.0,
-                        "negative": 0.0
-                    },
-                    "offset": 0,
-                    "length": 58,
-                    "text": "The restaurant had great food and our waiter was friendly.",
-                    "aspects": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 25,
-                            "length": 4,
-                            "text": "food",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/0"
-                                }
-                            ]
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 38,
-                            "length": 6,
-                            "text": "waiter",
-                            "relations": [
-                                {
-                                    "relationType": "opinion",
-                                    "ref": "#/documents/0/sentences/0/opinions/1"
-                                }
-                            ]
-                        }
-                    ],
-                    "opinions": [
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 19,
-                            "length": 5,
-                            "text": "great",
-                            "isNegated": false
-                        },
-                        {
-                            "sentiment": "positive",
-                            "confidenceScores": {
-                                "positive": 1.0,
-                                "negative": 0.0
-                            },
-                            "offset": 49,
-                            "length": 8,
-                            "text": "friendly",
-                            "isNegated": false
-                        }
-                    ]
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/0"
                 }
-            ],
-            "warnings": []
+              ]
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 38,
+              "length": 6,
+              "text": "waiter",
+              "relations": [
+                {
+                  "relationType": "assessment",
+                  "ref": "#/documents/0/sentences/0/assessments/1"
+                }
+              ]
+            }
+          ],
+          "assessments": [
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 19,
+              "length": 5,
+              "text": "great",
+              "isNegated": false
+            },
+            {
+              "sentiment": "positive",
+              "confidenceScores": {
+                "positive": 1,
+                "negative": 0
+              },
+              "offset": 49,
+              "length": 8,
+              "text": "friendly",
+              "isNegated": false
+            }
+          ]
         }
-    ],
-    "errors": [],
-    "modelVersion": "2020-04-01"
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
 }
 ```
 

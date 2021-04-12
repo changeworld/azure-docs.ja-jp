@@ -3,7 +3,7 @@ title: Microsoft PlayReady または Apple FairPlay を使用した HLS コン�
 description: このトピックでは、Azure Media Services を使用して HTTP Live Streaming (HLS) コンテンツを Apple FairPlay で動的に暗号化する方法の概要を説明します。 また、Media Services ライセンス配信サービスを使用して FairPlay ライセンスをクライアントに配信する方法も示します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7290b5972bc81555bce102446923efd59ed2b34
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 870b567d5917c405a3eef70a27b1a19c021d7a80
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695139"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055146"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 
@@ -33,7 +33,7 @@ Azure Media Services では、次の形式を使用して HTTP ライブ スト�
 
 * **AES-128 エンベロープ クリア キー**
 
-    **AES-128 CBC** モードを使用してチャンク全体を暗号化します。 ストリームの復号化は iOS および OS X プレーヤーでネイティブにサポートされています。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」を参照してください。
+    **AES-128 CBC** モードを使用してチャンク全体を暗号化します。 ストリームの復号化は iOS および OS X プレーヤーでネイティブにサポートされています。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](media-services-playready-license-template-overview.md)」を参照してください。
 * **Apple FairPlay**
 
     **AES-128 CBC** モードを使用して個々のビデオやオーディオのサンプルを暗号化します。 **FairPlay ストリーミング** (FPS) はデバイスのオペレーティング システムに統合されており、iOS および Apple TV でネイティブにサポートされます。 OS X 上の Safari では、Encrypted Media Extensions (EME) インターフェイスのサポートを使用することで FPS が可能になります。

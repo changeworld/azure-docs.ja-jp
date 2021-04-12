@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d843755847d074e00aec9ed2830cb873b6bb3382
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2998c3ea0d65bd3c96bd1ac5bdfa8ff148c6c4cc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100365414"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104780431"
 ---
 # <a name="reset-redemption-status-for-a-guest-user"></a>ゲスト ユーザーの引き換え状態をリセットする
 
@@ -28,9 +28,20 @@ ms.locfileid: "100365414"
 
 以前はこれらのシナリオを管理するために、ディレクトリからゲスト ユーザーのアカウントを手動で削除し、そのユーザーを再度招待する必要がありました。 現在は PowerShell または Microsoft Graph 招待 API を使用して、ユーザーの引き換え状態をリセットし、ユーザーのオブジェクト ID、グループ メンバーシップ、アプリの割り当てを維持したままで、そのユーザーを再度招待できます。 ユーザーが新しい招待を引き換えしても、ユーザーの UPN は変更されませんが、ユーザーのサインイン名は新しい電子メールに変更されます。 その後、ユーザーは新しい電子メール、またはユーザー オブジェクトの `otherMails` プロパティに追加された電子メールを使用してサインインできます。
 
+## <a name="reset-the-email-address-used-for-sign-in"></a>サインインに使用する電子メール アドレスをリセットする
+
+ユーザーが別の電子メールを使用してサインインすることを望んでいる場合:
+
+1. 新しい電子メール アドレスが、user オブジェクトの `mail` プロパティまたは `otherMails` プロパティに追加されていることを確認します。 
+2.  `InvitedUserEmailAddress` プロパティの電子メール アドレスを新しい電子メール アドレスに置き換えます。
+3. 次のいずれかの方法を使用して、ユーザーの引き換え状態をリセットします。
+
+> [!NOTE]
+>パブリック プレビュー中に、ユーザーの電子メール アドレスをリセットする場合、この `mail` プロパティを新しい電子メール アドレスに設定することをお勧めします。 このようにすると、ユーザーは招待の引き換えリンクを使用するだけでなく、ディレクトリにサインインして招待を引き換えることができます。
+>
 ## <a name="use-powershell-to-reset-redemption-status"></a>PowerShell を使用して引き換え状態をリセットする
 
-最新の AzureADPreview PowerShell モジュールをインストールし、`InvitedUserEMailAddress` を新しい電子メール アドレスに設定し、`ResetRedemption` を `true` に設定して新しい招待を作成します。
+最新の AzureADPreview PowerShell モジュールをインストールし、`InvitedUserEmailAddress` を新しい電子メール アドレスに設定し、`ResetRedemption` を `true` に設定して新しい招待を作成します。
 
 ```powershell  
 Uninstall-Module AzureADPreview 

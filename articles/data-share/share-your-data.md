@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 11/12/2020
-ms.openlocfilehash: 89c2a725b853b5a2a7578dccc1fd503917e12962
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.date: 03/24/2021
+ms.openlocfilehash: 8e149270d8f98cbf72d3864d238a3d8ddfd61c67
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659626"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639550"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>チュートリアル:Azure Data Share を使用したデータの共有  
 
@@ -42,23 +42,10 @@ ms.locfileid: "94659626"
 SQL ソースからデータを共有するための前提条件の一覧を次に示します。 
 
 #### <a name="prerequisites-for-sharing-from-azure-sql-database-or-azure-synapse-analytics-formerly-azure-sql-dw"></a>Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) から共有するための前提条件
-[ステップ バイ ステップのデモ](https://youtu.be/hIE-TjJD8Dc)に従って、前提条件を構成できます。
 
 * 共有するテーブルとビューを含む Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW)。
 * SQL サーバー上のデータベースに書き込む権限。これは、*Microsoft.Sql/servers/databases/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。
-* Data Share リソースのマネージド ID がデータベースにアクセスするためのアクセス許可。 この操作を行うには、以下の手順を実行します。 
-    1. Azure portal で、SQL サーバーに移動し、自分自身を **Azure Active Directory 管理者** に設定します。
-    1. [クエリ エディター](../azure-sql/database/connect-query-portal.md#connect-using-azure-active-directory)、または Azure Active Directory 認証を使用する SQL Server Management Studio を使用して Azure SQL Database/Data Warehouse に接続します。 
-    1. 次のスクリプトを実行し、Data Share リソースのマネージド ID を db_datareader として追加します。 SQL Server 認証ではなく Active Directory を使用して接続する必要があります。 
-    
-        ```sql
-        create user "<share_acct_name>" from external provider;     
-        exec sp_addrolemember db_datareader, "<share_acct_name>"; 
-        ```                   
-       *<share_acc_name>* は、Data Share リソースの名前であることに注意してください。 Data Share リソースをまだ作成していない場合は、後でこの前提条件に戻ってくることが可能です。  
-
-* 共有するテーブルまたはビューに移動して選択するための **"db_datareader"** アクセス権を持つ Azure SQL Database ユーザー。 
-
+* SQL サーバーの **Azure Active Directory 管理者**
 * SQL Server ファイアウォール アクセス。 この操作を行うには、以下の手順を実行します。 
     1. Azure portal で SQL サーバーに移動します。 左側のナビゲーションから *[ファイアウォールと仮想ネットワーク]* を選択します。
     1. **[Azure サービスおよびリソースにこのサーバーへのアクセスを許可する]** で *[はい]* をクリックします。
@@ -90,7 +77,6 @@ SQL ソースからデータを共有するための前提条件の一覧を次�
 ### <a name="share-from-azure-data-explorer"></a>Azure Data Explorer からの共有
 * 共有したいデータベースを含んだ Azure Data Explorer クラスター。
 * Azure Data Explorer クラスターに書き込む権限。これは、*Microsoft.Kusto/clusters/write* に含まれています。 このアクセス許可は、**共同作成者** ロール内に存在します。
-* Azure Data Explorer クラスターにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* に含まれています。 このアクセス許可は、**所有者** ロール内に存在します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -186,7 +172,7 @@ Azure リソース グループに Azure Data Share リソースを作成しま�
 
     ![共有にデータセットを追加する](./media/datasets.png "データセット")
 
-1. 追加するデータセットの種類を選択します。 前の手順で選択した共有の種類 (スナップショットまたはインプレース) によって異なる種類のデータセット一覧が表示されます。 Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) から共有する場合、テーブルを一覧表示するために SQL 資格情報の入力を求められます。
+1. 追加するデータセットの種類を選択します。 前の手順で選択した共有の種類 (スナップショットまたはインプレース) によって異なる種類のデータセット一覧が表示されます。 Azure SQL Database または Azure Synapse Analytics (旧称 Azure SQL DW) から共有する場合、テーブルを一覧表示するために認証方法の入力を求められます。 [AAD 認証] を選択し、 **[Allow Data Share to run the above 'create user' script on my behalf]\(Data Share が上記の "ユーザーの作成" スクリプトを実行することを許可する\)** チェック ボックスをオンにします。 
 
     ![AddDatasets](./media/add-datasets.png "データセットを追加する")    
 

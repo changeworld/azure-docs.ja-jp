@@ -4,17 +4,17 @@ description: Azure PowerShell を使用して、マネージド イメージか�
 author: cynthn
 ms.topic: how-to
 ms.service: virtual-machines
-ms.subservice: imaging
+ms.subservice: shared-image-gallery
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 6bf2054a1b9d42529c3917994e5f446b3c50ecf7
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: cec4f258cfaa0584c24f2cfc92ec1a536f6277cc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98682717"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102556982"
 ---
 # <a name="clone-a-managed-image-to-a-shared-image-gallery-image"></a>マネージド イメージを Shared Image Gallery に複製する
 

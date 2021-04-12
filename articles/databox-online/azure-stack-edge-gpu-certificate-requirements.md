@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/17/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: bbe4be0b6cc1d3ea9e0391e82ce21e307e9de640
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 9184a3f429804ac383f137de49c5391e2e1db80f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100549476"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439240"
 ---
 # <a name="certificate-requirements"></a>証明書の要件
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、Azure Stack Edge Pro デバイスに証明書をインストールする前に満たす必要がある証明書の要件について説明します。 要件は、PFX 証明書、発行機関、証明書のサブジェクト名とサブジェクトの別名、およびサポートされている証明書アルゴリズムに関連しています。
 

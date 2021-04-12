@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 01/21/2021
-ms.openlocfilehash: ea95b2097c611635eb937498c6f1d87cb544bcd1
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5ca13784fe2f9a6a5b448bc838bf508f01b0a9fe
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681096"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "101095195"
 ---
 # <a name="add-contributors-to-your-app"></a>アプリに共同作成者を追加する
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 2cce4810a9e1a4d7143e2bab384d4b26471b7238
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: a7978410dbe28a5da5dae81cb380d118fe13a159
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240751"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869380"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバー (プレビュー) でのサーバーの概念
 
@@ -38,7 +38,7 @@ Azure Database for MySQL フレキシブル サーバーとは次のようなも
 - データベース サーバー アクセスのために仮想ネットワーク統合が提供されます
 - 使用されていないときにフレキシブル サーバーを一時停止してコストを節約する手段が提供されます
 - データベースに適用される管理ポリシーのスコープ (ログイン、ファイアウォール、ユーザー、ロール、構成など) を提供します。
-- 現在、MySQL バージョン 5.7 でサポートされています。 詳細については、[サポートされる Azure Database for MySQL エンジンのバージョン](./concepts-supported-versions.md)に関するページを参照してください。
+- メジャー バージョン MySQL 5.7 および MySQL 8.0 をサポートしています。 詳細については、[サポートされる Azure Database for MySQL エンジンのバージョン](./../concepts-supported-versions.md)に関するページを参照してください。
 
 Azure Database for MySQL フレキシブル サーバー内には、1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを使用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、コンピューティング レベル、仮想コア数、ストレージ (GB) の構成に基づいて、サーバーごとに構成されています。 詳細については、[コンピューティングとストレージ](./concepts-compute-storage.md)に関するページを参照してください。
 
@@ -55,7 +55,14 @@ Azure Database for MySQL フレキシブル サーバーを使用すると、使
 
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 
-Azure Database for MySQL フレキシブル サーバーを管理するには、[Azure portal](./quickstart-create-server-portal.md) または [Azure CLI](./quickstart-create-server-cli.md) を使用できます。
+[Azure portal](./quickstart-create-server-portal.md) または [Azure CLI](./quickstart-create-server-cli.md) を使用して、Azure Database for MySQL フレキシブル サーバーの作成、削除、サーバー パラメーター構成 (my.cnf)、スケーリング、ネットワーク、セキュリティ、高可用性、バックアップと復元、監視を管理できます。 また、Azure Database for MySQL サーバーではスーパー ユーザー特権がサポートされていませんが、必要となる特定のデータベース管理タスクを実行するための以下のストアド プロシージャが用意されています。
+
+|**ストアド プロシージャ名**|**入力パラメーター**|**出力パラメーター**|**使用上の注意**|
+|-----|-----|-----|-----|
+|*mysql.az_kill*|processlist_id|該当なし|[`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で実行されているステートメントを終了した後、指定された processlist_id に関連する接続を終了します。|
+|*mysql.az_kill_query*|processlist_id|該当なし|[`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) コマンドと同等です。 接続で現在実行されているステートメントを終了します。 接続自体をアクティブのままにします。|
+|*mysql.az_load_timezone*|該当なし|なし|[タイム ゾーン テーブル](../howto-server-parameters.md#working-with-the-time-zone-parameter)を読み込み、`time_zone`パラメーターを名前付きの値に設定できるようにします (例: "US/Pacific")。|
+
 
 ## <a name="next-steps"></a>次のステップ
 

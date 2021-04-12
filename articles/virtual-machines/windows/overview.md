@@ -3,17 +3,18 @@ title: Azure での Windows VM の概要
 description: Azure における Windows 仮想マシンの概要です。
 author: cynthn
 ms.service: virtual-machines
+ms.collection: windows
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9113abe14af942700a073626c5aad19dc2ebcd06
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 799a7ea6d76df06cea9d3960f43fc78de9bdf5b6
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101665976"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067794"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン
 
@@ -49,7 +50,7 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 | --- | --- |
 | Azure portal |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzLocation](/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
-| REST API |[場所の一覧表示](/rest/api/resources/subscriptions)操作を使用します。 |
+| REST API |[場所の一覧表示](/rest/api/resources/subscriptions/subscriptions/listlocations)操作を使用します。 |
 | Azure CLI |[az account list-locations](/cli/azure/account) 操作を使用します。 |
 
 ## <a name="availability"></a>可用性

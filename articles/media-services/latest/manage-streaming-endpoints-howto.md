@@ -15,18 +15,18 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: d656ce23cf68a1eec23421b769d5847f9b661bb4
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 6cc48de93affb8873bff1264dd012d2a7933e99f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955904"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106108185"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Media Services v3 でストリーミング エンドポイントを管理する
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Media Services アカウントの作成時に、**既定** の [ストリーミング エンドポイント](streaming-endpoint-concept.md)が **停止** 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](dynamic-packaging-overview.md)と [動的暗号化](content-protection-overview.md)を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。
+Media Services アカウントの作成時に、**既定** の [ストリーミング エンドポイント](streaming-endpoint-concept.md)が **停止** 状態でアカウントに追加されます。 コンテンツのストリーミングを開始し、[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)と [動的暗号化](drm-content-protection-concept.md)を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが **実行中** 状態である必要があります。
 
 この記事では、さまざまな手法を利用し、ストリーミング エンドポイントで [start](/rest/api/media/streamingendpoints/start) コマンドを実行する方法について説明します。 
  
@@ -39,7 +39,7 @@ Media Services アカウントの作成時に、**既定** の [ストリーミ�
 
 * [Media Services の概念](concepts-overview.md)
 * [ストリーミング エンドポイントの概念](streaming-endpoint-concept.md)
-* [ダイナミック パッケージ](dynamic-packaging-overview.md)
+* [ダイナミック パッケージ](encode-dynamic-packaging-concept.md)
 
 ## <a name="use-rest"></a>REST の使用
 
@@ -73,7 +73,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-詳細については、「[az ams streaming-endpoint start](/cli/azure/ams/streaming-endpoint?view=azure-cli-latest#az-ams-streaming-endpoint-start)」を参照してください。
+詳細については、「[az ams streaming-endpoint start](/cli/azure/ams/streaming-endpoint#az-ams-streaming-endpoint-start)」を参照してください。
 
 ## <a name="use-sdks"></a>SDK の使用
 
@@ -102,7 +102,7 @@ if (streamingEndpoint != null)
     }
 ```
 
-完全な [.NET コード サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/Program.cs#L112)を参照してください。
+完全な [.NET コード サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Streaming/StreamHLSAndDASH/Program.cs#L112)を参照してください。
 
 ---
 

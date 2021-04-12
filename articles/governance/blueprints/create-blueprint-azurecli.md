@@ -3,12 +3,12 @@ title: クイック スタート:Azure CLI を使用してブループリント�
 description: このクイックスタートでは、Azure Blueprints と Azure CLI を使用して、成果物を作成、定義、デプロイします。
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: 6ce3031c93f973c2efb251fad371a6f3750ae0fd
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: fbe5c12f1c94d4b59dbdc2a97b6a4cb9af5a2328
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98920242"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563669"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>クイック スタート:Azure CLI で Azure Blueprint を定義して割り当てる
 
@@ -311,7 +311,7 @@ az blueprint publish --blueprint-name 'MyBlueprint' --version '{BlueprintVersion
 
 Azure CLI を使用してブループリントを発行した後は、それをサブスクリプションに割り当てることができます。 作成したブループリントを、管理グループ階層下のいずれかのサブスクリプションに割り当てます。 ブループリントは、サブスクリプションに保存された場合、そのサブスクリプションに対してのみ割り当てることができます。 割り当てるブループリントは、**blueprint-name** パラメーターで指定します。 名前、場所、ID、ロック、ブループリントのパラメーターを指定するには、対応する Azure CLI パラメーターを `az blueprint assignment create` コマンドで使用するか、**parameters** JSON ファイルでそれらを指定します。
 
-1. サブスクリプションに割り当てることにより、ブループリントのデプロイを実行します。 **contributors** および **owners** パラメーターにはロールの割り当てを付与するプリンシパルの objectId の配列が必要なので、[Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) を使用して、独自のユーザー、グループ、またはサービス プリンシパルに対する **parameters** で使用するための objectId を収集します。
+1. サブスクリプションに割り当てることにより、ブループリントのデプロイを実行します。 **contributors** および **owners** パラメーターにはロールの割り当てを付与するプリンシパルの objectId の配列が必要なので、[Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) を使用して、独自のユーザー、グループ、またはサービス プリンシパルに対する **parameters** で使用するための objectId を収集します。
 
    - JSON ファイル - blueprintAssignment.json
 

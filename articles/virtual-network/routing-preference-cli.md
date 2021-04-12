@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
 ms.openlocfilehash: 2291767c162953f8339fb8cc27e55b96290ef795
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101665954"
 ---
 # <a name="configure-routing-preference-for-a-public-ip-address-using-azure-cli"></a>Azure CLI を使用してパブリック IP アドレスのルーティング優先設定を構成する

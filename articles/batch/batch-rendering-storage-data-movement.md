@@ -8,19 +8,19 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: 55ec04df2a107dabfc72298bc8849c13f3a926e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "86147311"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>アセット ファイルと出力ファイルをレンダリングするためのストレージとデータ移動のオプション
 
 次のように、プール VM 上のレンダリング アプリケーションでシーンやアセットのファイルを有効にするオプションは複数あります。
 
-* [Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md):
+* [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md):
   * シーンおよびアセットのファイルは、ローカル ファイル システムから BLOB ストレージにアップロードされます。 アプリケーションがタスクによって実行されると、レンダリング アプリケーションがアクセスできるように、必要なファイルが BLOB ストレージから VM にコピーされます。 出力ファイルはレンダリング アプリケーションから VM ディスクに書き込まれ、その後 BLOB ストレージにコピーされます。  必要に応じて、出力ファイルを BLOB ストレージからローカル ファイル システムにダウンロードできます。
-  * Azure BLOB ストレージは、小規模なプロジェクト向けの簡単かつコスト効率に優れたオプションです。  すべてのアセット ファイルは各プール VM で必須であるため、アセット ファイルの数とサイズが増えた場合は、ファイル転送ができるだけ効率的になるように、適切に管理する必要があります。  
+  * Azure Blob Storage は、小規模なプロジェクト向けの簡単かつコスト効率に優れたオプションです。  すべてのアセット ファイルは各プール VM で必須であるため、アセット ファイルの数とサイズが増えた場合は、ファイル転送ができるだけ効率的になるように、適切に管理する必要があります。  
 * [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md) を使用したファイル システムとしての Azure ストレージ:
   * Linux の VM の場合、blobfuse 仮想ファイル システム ドライバーが使用されると、ストレージ アカウントを公開してファイル システムとして使用できます。
   * このオプションではファイル システムに VM が必要とされないため、非常にコスト効率がよいという利点があります。さらに、VM での blobfuse のキャッシングにより、複数のジョブやタスクで同じファイルが繰り返しダウンロードされることを防ぎます。  また、ファイルは単純な BLOB および標準の API やツールであるため、データ移動も簡単です。たとえば、azcopy を使用してオンプレミスのファイル システムと Azure ストレージ間でファイルをコピーできます。
@@ -30,7 +30,7 @@ ms.locfileid: "86147311"
   * ファイル システムを使用すると、ファイルはファイル システムに対して直接読み取りと書き込みが可能で、ファイル システムとプール VM 間でコピーできます。
   * 共有ファイル システムはプロジェクトおよびジョブ間で大量のアセットを共有可能で、レンダリング タスクは必要なものにのみアクセスします。
 
-## <a name="using-azure-blob-storage"></a>Azure BLOB ストレージを使用する
+## <a name="using-azure-blob-storage"></a>Azure Blob Storage を使用する
 
 BLOB ストレージ アカウントまたは汎用 v2 ストレージ アカウントを使用する必要があります。  [このブログ記事](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)で説明されているように、これら 2 つの種類のストレージ アカウントは、汎用 v1 ストレージ アカウントと比較して非常に高い制限で構成できます。  構成すると、より高い制限により、特にストレージ アカウントにアクセスするプール VM の数が多いときに、より優れたパフォーマンスとスケーラビリティを実現します。
 
@@ -85,7 +85,7 @@ blobfuse ファイル システムを使用してスタンドアロンの V-Ray 
 
 ## <a name="using-azure-files-with-windows-vms"></a>Windows の VM で Azure Files を使用する
 
-[Azure Files](../storage/files/storage-files-introduction.md) はクラウドで、SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。  Azure Files は Azure BLOB ストレージをベースとし、[コスト効率が高く](https://azure.microsoft.com/pricing/details/storage/files/)、他のリージョンへのデータ レプリケーションを使用して構成できるため、グローバルな冗長性を備えます。  プール サイズとアセット ファイルの数の予測から、Azure Files を使用する必要があるかどうかを判断するには、[スケール ターゲット](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets)を確認する必要があります。
+[Azure Files](../storage/files/storage-files-introduction.md) はクラウドで、SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。  Azure Files は AAzure Blob Storage をベースとし、[コスト効率が高く](https://azure.microsoft.com/pricing/details/storage/files/)、他のリージョンへのデータ レプリケーションを使用して構成できるため、グローバルな冗長性を備えます。  プール サイズとアセット ファイルの数の予測から、Azure Files を使用する必要があるかどうかを判断するには、[スケール ターゲット](../storage/files/storage-files-scale-targets.md#azure-files-scale-targets)を確認する必要があります。
 
 Azure ファイル共有をマウントする方法について説明する[ドキュメント](../storage/files/storage-how-to-use-files-windows.md)が用意されています。
 

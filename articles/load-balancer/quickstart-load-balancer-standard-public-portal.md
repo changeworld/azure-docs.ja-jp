@@ -6,21 +6,20 @@ services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: KumudD
-Customer intent: I want to create a load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/22/2020
+ms.date: 02/22/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 8827171788bd83a202b3607537204c71c34f29e0
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 7c19c4963ad8c378e1282180800fd839e20edfdd
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511843"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056336"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して、VM の負荷分散を行うパブリック ロード バランサーを作成する
 
@@ -49,26 +48,29 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 パブリック ロード バランサーを作成するときは、ロード バランサーのフロントエンド (既定では **LoadBalancerFrontend** という名前) として構成される新しいパブリック IP アドレスを作成します。
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Load Balancer]** を選択します。
-
-2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。 
+1. **[リソースの作成]** を選択します。 
+2. 検索ボックスに「**ロード バランサー**」と入力します。 検索結果で **[ロード バランサー]** を選択します。
+3. **[ロード バランサー]** ページで、 **[作成]** を選択します。
+4. **[ロード バランサーの作成]** ページで、次の情報を入力または選択します。 
 
     | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | サブスクリプション               | サブスクリプションを選択します。    |    
     | Resource group         | **[新規作成]** を選択し、テキスト ボックスに「**CreatePubLBQS-rg**」と入力します。|
     | 名前                   | 「**myLoadBalancer**」と入力します                                   |
-    | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
+    | リージョン         | **[(ヨーロッパ) 西ヨーロッパ]** を選択します。                                        |
     | Type          | **[パブリック]** を選択します。                                        |
-    | SKU           | **[Standard]** を選択します。 |
+    | SKU           | 既定値 **[標準]** のままにします。 |
+    | レベル          | **[地域]** は既定値のままにします。 |
     | パブリック IP アドレス | **[新規作成]** を選択します。 使用したいパブリック IP が既にある場合は、 **[既存のものを使用]** を選択します。 |
     | パブリック IP アドレス名 | テキスト ボックスに「**myPublicIP**」と入力します。|
     | 可用性ゾーン | 回復性があるロード バランサーを作成するには、 **[ゾーン冗長]** を選択します。 ゾーン間ロード バランサーを作成するには、1、2、3 の中から特定のゾーンを選択します |
     | パブリック IPv6 アドレスを追加する | このため、 **[いいえ]** を選択します。 </br> IPv6 アドレスとロード バランサーの詳細については、「[Azure Virtual Network の IPv6 の概要](../virtual-network/ipv6-overview.md)」を参照してください。  |
+    | ルーティング設定 | 既定値の **[Microsoft ネットワーク]** のままにします。 </br> ルーティングの優先順位の詳細については、「[ルーティングの優先順位とは (プレビュー)](../virtual-network/routing-preference-overview.md)」を参照してください。 |
 
-3. 残りの設定は既定値をそのまま使用し、 **[確認と作成]** を選択します。
+5. 残りの設定は既定値をそのまま使用し、 **[確認と作成]** を選択します。
 
-4. **[確認および作成]** タブで、 **[作成]** を選択します。   
+6. **[確認および作成]** タブで、 **[作成]** を選択します。   
     
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png" alt-text="Standard ロード バランサ―の作成に関するページ" border="true":::
  
@@ -334,9 +336,10 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 パブリック ロード バランサーを作成するときは、ロード バランサーのフロントエンド (既定では **LoadBalancerFrontend** という名前) として構成される新しいパブリック IP アドレスを作成します。
 
-1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Load Balancer]** を選択します。
-
-2. **[ロード バランサーの作成]** ページの **[基本]** タブで、次の情報を入力または選択します。 
+1. **[リソースの作成]** を選択します。 
+2. 検索ボックスに「**ロード バランサー**」と入力します。 検索結果で **[ロード バランサー]** を選択します。
+3. **[ロード バランサー]** ページで、 **[作成]** を選択します。
+4. **[ロード バランサーの作成]** ページで、次の情報を入力または選択します。 
 
     | 設定                 | 値                                              |
     | ---                     | ---                                                |
@@ -351,9 +354,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
     | 割り当て | **[動的]** を選択します |
     | パブリック IPv6 アドレスを追加する | このため、 **[いいえ]** を選択します。 </br> IPv6 アドレスとロード バランサーの詳細については、「[Azure Virtual Network の IPv6 の概要](../virtual-network/ipv6-overview.md)」を参照してください。  |
 
-3. 残りの設定は既定値をそのまま使用し、 **[確認と作成]** を選択します。
+5. 残りの設定は既定値をそのまま使用し、 **[確認と作成]** を選択します。
 
-4. **[確認および作成]** タブで、 **[作成]** を選択します。   
+6. **[確認および作成]** タブで、 **[作成]** を選択します。   
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="Basic ロード バランサーを作成する" border="true":::
 

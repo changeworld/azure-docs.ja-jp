@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6f5993826c7d8c39f4e062c0a84ffd95eaf9cf2d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5ef75719686f9299fee56cad247ca49167171813
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098605"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577174"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java Bulk Executor ライブラリ:ダウンロード情報
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -38,14 +38,14 @@ ms.locfileid: "93098605"
 > * [Bulk Executor - .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Bulk Executor - Java](sql-api-sdk-bulk-executor-java.md)
 
-| |  |
+| | リンク/メモ |
 |---|---|
 |**説明**|Bulk Executor ライブラリを使うと、クライアント アプリケーションは、Azure Cosmos DB アカウントで一括操作を実行できます。 Bulk Executor ライブラリは、BulkImport および BulkUpdate 名前空間を提供します。 BulkImport モジュールは、コレクションに対してプロビジョニングされているスループットを最大限まで消費するように最適化された方法で、ドキュメントを一括して取り込むことができます。 BulkUpdate モジュールでは、Azure Cosmos コンテナー内の既存のデータをパッチとして一括更新できます。|
 |**SDK のダウンロード**|[Maven](https://search.maven.org/#search%7Cga%7C1%7Cdocumentdb-bulkexecutor)|
 |**GitHub の Bulk Executor ライブラリ**|[GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-java-getting-started)|
 | **API ドキュメント**| [Java API リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**開始するには**|[Bulk Executor ライブラリ Java SDK の概要](bulk-executor-java.md)|
-|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)|
+|**サポートされている最小ランタイム**|[Java Development Kit (JDK) 7+](/java/azure/jdk/)|
 
 ## <a name="release-notes"></a>リリース ノート
 

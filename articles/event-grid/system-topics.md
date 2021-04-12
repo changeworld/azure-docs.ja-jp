@@ -3,12 +3,12 @@ title: Azure Event Grid でのシステム トピック
 description: Azure Event Grid でのシステム トピックについて説明します。
 ms.topic: conceptual
 ms.date: 09/24/2020
-ms.openlocfilehash: b1fbecb1e372602f9c252d43d2a1f93524ef1846
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ca59dd6bb99b9b7d06f0622e8c0cb4e4234e21ff
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052967"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105733045"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Azure Event Grid でのシステム トピック
 Event Grid でのシステム トピックは、Azure Storage や Azure Event Hubs などの Azure サービスによって発行された 1 つ以上のイベントを表します。 たとえば、システム トピックは **すべての BLOB イベント**、または **特定のストレージ アカウント** に対して発行された **BLOB 作成** および **BLOB 削除** イベントのみを表す可能性があります。 この例では、BLOB がストレージ アカウントにアップロードされると、Azure Storage サービスは Event Grid でのシステム トピックに **BLOB 作成** イベントを発行します。その後、そのイベントはそこから、イベントを受信して処理するトピックの [サブスクライバー](event-handlers.md)に転送されます。 
@@ -30,6 +30,7 @@ Event Grid でのシステム トピックは、Azure Storage や Azure Event Hu
 - [Azure Machine Learning](event-schema-machine-learning.md)
 - [Azure Maps](event-schema-azure-maps.md)
 - [Azure Media Services](event-schema-media-services.md)
+- [Azure Policy](./event-schema-policy.md)
 - [Azure リソース グループ](event-schema-resource-groups.md)
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)

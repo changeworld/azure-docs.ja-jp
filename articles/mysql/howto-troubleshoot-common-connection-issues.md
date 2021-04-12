@@ -7,14 +7,15 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 3/18/2020
-ms.openlocfilehash: da500087aeb4ad5e2bf516c3d0ce3cceaf8396af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c2a2fba0d23ef9102374979300fe850732137c31
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000285"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109915"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mysql"></a>Azure Database for MySQL への接続に関する問題のトラブルシューティング
+[!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 
 接続の問題は、次をはじめとするさまざまなにことよって発生する可能性があります。
 

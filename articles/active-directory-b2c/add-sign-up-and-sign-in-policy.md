@@ -11,13 +11,14 @@ ms.topic: how-to
 ms.date: 12/16/2020
 ms.author: mimart
 ms.subservice: B2C
+ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 29dd67e9e6e15aaafec0cc47d89da32cbf369938
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: fbcdef0002a227d5319fc01e625146480e4c99fc
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618627"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043752"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインアップおよびサインイン フローを設定する
 
@@ -66,6 +67,7 @@ ms.locfileid: "97618627"
     ![3 つの要求が選択されている [属性と要求の選択] ページ](./media/add-sign-up-and-sign-in-policy/signup-signin-attributes.png)
 
 1. **[作成]** をクリックして、ユーザー フローを追加します。 *B2C_1* というプレフィックスが自動的に名前に追加されます。
+2. 手順に従って、["パスワードを忘れた場合" のフローを処理します](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) (サインアップまたはサインイン ポリシー内)。
 
 ### <a name="test-the-user-flow"></a>ユーザー フローをテストする
 
@@ -73,7 +75,7 @@ ms.locfileid: "97618627"
 1. **[アプリケーション]** で、以前に登録した *webapp1* という名前の Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[ユーザー フローを実行します]** をクリックしてから、 **[今すぐサインアップ]** を選択します。
 
-    ![[ユーザー フローを実行します] ボタンが強調表示されているポータル内の [ユーザー フローを実行します] ページ](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.PNG)
+    ![[ユーザー フローを実行します] ボタンが強調表示されているポータル内の [ユーザー フローを実行します] ページ](./media/add-sign-up-and-sign-in-policy/signup-signin-run-now.png)
 
 1. 有効なメール アドレスを入力し、 **[確認コードの送信]** をクリックします。受信した確認コードを入力し、 **[コードの確認]** を選択します。
 1. 新しいパスワードを入力し、そのパスワードを確認します。

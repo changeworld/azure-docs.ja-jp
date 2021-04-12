@@ -2,13 +2,13 @@
 title: デプロイ履歴の削除
 description: Azure Resource Manager でデプロイ履歴からデプロイを自動削除するしくみについて説明します。 履歴が上限の 800 を超えそうになるとデプロイが削除されます。
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 13c65f3311e308708034bb5befb7e3c3ee158d38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/23/2021
+ms.openlocfilehash: 83383411ec317e228dabb14273e2b566792c774c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652484"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732467"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>デプロイ履歴からの自動削除
 
@@ -54,6 +54,12 @@ lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv -
 az lock delete --ids $lockid
 ```
 
+## <a name="required-permissions"></a>必要なアクセス許可
+
+削除は、テンプレートをデプロイしたユーザーの ID で要求されます。 デプロイを削除するには、ユーザーは、 **[Microsoft.Resources/deployments/delete]** アクションへのアクセス権を持っている必要があります。 ユーザーが必要なアクセス許可を持っていない場合、デプロイは履歴から削除されません。
+
+現在のユーザーが必要なアクセス許可を持っていない場合は、次のデプロイ時に自動的に削除が試行されます。
+
 ## <a name="opt-out-of-automatic-deletions"></a>自動削除のオプトアウト
 
 履歴の自動削除をオプトアウトできます。 **このオプションは、デプロイ履歴を自分で管理する場合にのみ使用してください。** 履歴の 800 デプロイという上限は依然、適用されます。 800 デプロイを超えると、エラーが表示され、デプロイに失敗します。
@@ -98,7 +104,7 @@ az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGr
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-REST API の場合、[Features - Register](/rest/api/resources/features/register) を使用します。
+REST API の場合、[Features - Register](/rest/api/resources/features/features/register) を使用します。
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
@@ -110,7 +116,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
 ```
 
-自動削除を再び有効にするには、[機能 - 登録解除](/rest/api/resources/features/unregister)を使用します。
+自動削除を再び有効にするには、[機能 - 登録解除](/rest/api/resources/features/features/unregister)を使用します。
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01

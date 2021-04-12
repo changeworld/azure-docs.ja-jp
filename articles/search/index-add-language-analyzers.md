@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/05/2020
-ms.openlocfilehash: 555709776c88dd3003e400bbcefe2ec1cfa0f4af
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 03/17/2021
+ms.openlocfilehash: ac11b7bc7e53c214f872d400565d50009479afcb
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934171"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104604425"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Azure Cognitive Search インデックスの文字列フィールドに言語アナライザーを追加する
 
@@ -46,91 +46,114 @@ Azure Cognitive Search では、Lucene によって提供される 35 個の言�
 
 ### <a name="english-analyzers"></a>英語のアナライザー
 
-既定のアナライザーは標準 Lucene であり、英語でも問題なく動作しますが、おそらく Lucene の英語アナライザーや Microsoft の英語アナライザーほどではありません。 
- 
+既定のアナライザーは標準 Lucene であり、英語でも問題なく動作しますが、おそらく Lucene の英語アナライザーや Microsoft の英語アナライザーほどではありません。
+
 + Lucene の英語アナライザーでは、標準アナライザーが拡張されています。 単語から所有格 (末尾の 's) が除去され、Porter Stemming アルゴリズムに従ってステミングが適用され、英語のストップワードが除去されます。  
 
 + Microsoft の英語アナライザーでは、ステミングではなくレンマ化が実行されます。 つまり、語形変化および変則的な語形がより適切に処理され、関連性の高い検索結果が得られます 
 
-## <a name="configuring-analyzers"></a>アナライザーの構成
+## <a name="how-to-specify-a-language-analyzer"></a>言語アナライザーを指定する方法
 
-言語アナライザーはそのままで使用されます。 インデックス定義の各フィールドについて、言語と言語スタック (Microsoft または Lucene) を指定するアナライザー名を **analyzer** プロパティに設定できます。 そのフィールドに対してインデックスの作成および検索を行う場合は、同じアナライザーが適用されます。 たとえば、英語、フランス語、スペイン語によるホテルの説明を含む個別のフィールドを同じインデックスに同時に作成できます。
+フィールド定義時に、Edm.String 型の "検索可能な" フィールドで言語アナライザーを設定します。
 
-> [!NOTE]
-> インデックス作成時とフィールドのクエリ時とで異なる言語アナライザーを使用することはできません。 この機能は、[カスタムアナライザー](index-add-custom-analyzers.md) 用に予約されています。 このため、**searchAnalyzer** プロパティまたは **indexAnalyzer** プロパティを言語アナライザーの名前に設定しようとすると、REST API によってエラー応答が返されます。 代わりに、**アナライザー** プロパティを使用する必要があります。
+フィールド定義にはアナライザー関連のプロパティが複数ありますが、言語アナライザーに使用できるのは "analyzer" プロパティだけです。 "analyzer" の値は、サポート アナライザーの一覧にある言語アナライザーのいずれかである必要があります。
 
-**searchFields** クエリ パラメーターを使用して、クエリ内で検索対象とする言語固有のフィールドを指定します。 アナライザー プロパティを含むクエリの例は、「[ドキュメントの検索](/rest/api/searchservice/search-documents)」で確認できます。 
+```json
+{
+  "name": "hotels-sample-index",
+  "fields": [
+    {
+      "name": "Description",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "en.microsoft",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null
+    },
+    {
+      "name": "Description_fr",
+      "type": "Edm.String",
+      "retrievable": true,
+      "searchable": true,
+      "analyzer": "fr.microsoft",
+      "indexAnalyzer": null,
+      "searchAnalyzer": null
+    },
+```
 
-インデックス プロパティについて詳しくは、「[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](/rest/api/searchservice/create-index)」をご覧ください。 Azure Cognitive Search での解析について詳しくは、[Azure Cognitive Search でのアナライザー](./search-analyzers.md)に関する記事をご覧ください。
+インデックスの作成とフィールド プロパティの設定の詳細については、[Create Index (REST)](/rest/api/searchservice/create-index) に関するページを参照してください。 テキストの解析について詳しくは、[Azure Cognitive Search でのアナライザー](search-analyzers.md)に関する記事をご覧ください。
 
 <a name="language-analyzer-list"></a>
 
-## <a name="language-analyzer-list"></a>言語アナライザー一覧 
+## <a name="supported-language-analyzers"></a>サポートされる言語アナライザー
+
  サポートされている言語と、Lucene およびマイクロソフトのアナライザーの名前を以下に一覧します。  
 
 | Language | Microsoft のアナライザーの名前 | Lucene のアナライザーの名前 |
-|--|--|--|
-| アラビア語 | ar.microsoft | ar.lucene |
-| アルメニア語 |  | hy.lucene |  |
-| ベンガル語 | bn.microsoft |  |  |
-| バスク語 |  | eu.lucene |  |
-| ブルガリア語 | bg.microsoft | bg.lucene |  |
-| カタロニア語 | ca.microsoft | ca.lucene |  |
-| 簡体中国語 | zh-Hans.microsoft | zh-Hans.lucene |  |
-| 中国語 (繁体字) | zh-Hant.microsoft | zh-Hant.lucene |  |
-| クロアチア語 | hr.microsoft |  |  |
-| チェコ語 | cs.microsoft | cs.lucene |  |
-| デンマーク語 | da.microsoft | da.lucene |  |
-| オランダ語 | nl.microsoft | nl.lucene |  |
-| 英語 | en.microsoft | en.lucene |  |
-| エストニア語 | et.microsoft |  |  |
-| フィンランド語 | fi.microsoft | fi.lucene |  |
-| フランス語 | fr.microsoft | fr.lucene |  |
-| ガリシア語 |  | gl.lucene |  |
-| ドイツ語 | de.microsoft | de.lucene |  |
-| ギリシャ語 | el.microsoft | el.lucene |  |
-| グジャラート語 | gu.microsoft |  |  |
-| ヘブライ語 | he.microsoft |  |  |
-| ヒンディー語 | hi.microsoft | hi.lucene |  |
-| ハンガリー語 | hu.microsoft | hu.lucene |  |
-| アイスランド語 | is.microsoft |  |  |
-| インドネシア語 | id.microsoft | id.lucene |  |
-| アイルランド語 |  | ga.lucene |  |
-| イタリア語 | it.microsoft | it.lucene |  |
-| 日本語 | ja.microsoft | ja.lucene |  |
-| カンナダ語 | kn.microsoft |  |  |
-| 韓国語 | ko.microsoft | ko.lucene |  |
-| ラトビア語 | lv.microsoft | lv.lucene |  |
-| リトアニア語 | lt.microsoft |  |  |
-| マラヤーラム語 | ml.microsoft |  |  |
-| マレー語 (ラテン) | ms.microsoft |  |  |
-| マラーティー語 | mr.microsoft |  |  |
-| ノルウェー語 | nb.microsoft | no.lucene |  |
-| ペルシャ語 |  | fa.lucene |  |
-| ポーランド語 | pl.microsoft | pl.lucene |  |
-| ポルトガル語 (ブラジル) | pt-Br.microsoft | pt-Br.lucene |  |
-| ポルトガル語 (ポルトガル) | pt-Pt.microsoft | pt-Pt.lucene |  |
-| パンジャーブ語 | pa.microsoft |  |  |
-| ルーマニア語 | ro.microsoft | ro.lucene |  |
-| ロシア語 | ru.microsoft | ru.lucene |  |
-| セルビア語 (キリル) | sr-cyrillic.microsoft |  |  |
-| セルビア語 (ラテン) | sr-latin.microsoft |  |  |
-| スロバキア語 | sk.microsoft |  |  |
-| スロベニア語 | sl.microsoft |  |  |
-| スペイン語 | es.microsoft | es.lucene |  |
-| スウェーデン語 | sv.microsoft | sv.lucene |  |
-| タミル語 | ta.microsoft |  |  |
-| テルグ語 | te.microsoft |  |  |
-| タイ語 | th.microsoft | th.lucene |  |
-| トルコ語 | tr.microsoft | tr.lucene |  |
-| ウクライナ語 | uk.microsoft |  |  |
-| ウルドゥ語 | ur.microsoft |  |  |
-| ベトナム語 | vi.microsoft |  |  |
+|----------|-------------------------|----------------------|
+| アラビア語   | ar.microsoft | ar.lucene |
+| アルメニア語 |           | hy.lucene |
+| ベンガル語   | bn.microsoft |  |
+| バスク語   |  | eu.lucene |
+| ブルガリア語 | bg.microsoft | bg.lucene |
+| カタロニア語  | ca.microsoft | ca.lucene |
+| 簡体中国語 | zh-Hans.microsoft | zh-Hans.lucene |
+| 中国語 (繁体字) | zh-Hant.microsoft | zh-Hant.lucene |
+| クロアチア語 | hr.microsoft |  |
+| チェコ語 | cs.microsoft | cs.lucene |
+| デンマーク語 | da.microsoft | da.lucene |
+| オランダ語 | nl.microsoft | nl.lucene |
+| 英語 | en.microsoft | en.lucene |
+| エストニア語 | et.microsoft |  |
+| フィンランド語 | fi.microsoft | fi.lucene |
+| フランス語 | fr.microsoft | fr.lucene |
+| ガリシア語 |  | gl.lucene |
+| ドイツ語 | de.microsoft | de.lucene |
+| ギリシャ語 | el.microsoft | el.lucene |
+| グジャラート語 | gu.microsoft |  |
+| ヘブライ語 | he.microsoft |  |
+| ヒンディー語 | hi.microsoft | hi.lucene |
+| ハンガリー語 | hu.microsoft | hu.lucene |
+| アイスランド語 | is.microsoft |  |
+| インドネシア語 | id.microsoft | id.lucene |
+| アイルランド語 |  | ga.lucene |
+| イタリア語 | it.microsoft | it.lucene |
+| 日本語 | ja.microsoft | ja.lucene |
+| カンナダ語 | kn.microsoft |  |
+| 韓国語 | ko.microsoft | ko.lucene |
+| ラトビア語 | lv.microsoft | lv.lucene |
+| リトアニア語 | lt.microsoft |  |
+| マラヤーラム語 | ml.microsoft |  |
+| マレー語 (ラテン) | ms.microsoft |  |
+| マラーティー語 | mr.microsoft |  |
+| ノルウェー語 | nb.microsoft | no.lucene |
+| ペルシャ語 |  | fa.lucene |
+| ポーランド語 | pl.microsoft | pl.lucene |
+| ポルトガル語 (ブラジル) | pt-Br.microsoft | pt-Br.lucene |
+| ポルトガル語 (ポルトガル) | pt-Pt.microsoft | pt-Pt.lucene |
+| パンジャーブ語 | pa.microsoft |  |
+| ルーマニア語 | ro.microsoft | ro.lucene |
+| ロシア語 | ru.microsoft | ru.lucene |
+| セルビア語 (キリル) | sr-cyrillic.microsoft |  |
+| セルビア語 (ラテン) | sr-latin.microsoft |  |
+| スロバキア語 | sk.microsoft |  |
+| スロベニア語 | sl.microsoft |  |
+| スペイン語 | es.microsoft | es.lucene |
+| スウェーデン語 | sv.microsoft | sv.lucene |
+| タミル語 | ta.microsoft |  |
+| テルグ語 | te.microsoft |  |
+| タイ語 | th.microsoft | th.lucene |
+| トルコ語 | tr.microsoft | tr.lucene |
+| ウクライナ語 | uk.microsoft |  |
+| ウルドゥ語 | ur.microsoft |  |
+| ベトナム語 | vi.microsoft |  |
 
  名前に **Lucene** が含まれるすべてのアナライザーでは、[Apache Lucene の言語アナライザー](https://lucene.apache.org/core/6_6_1/core/overview-summary.html )が利用されています。
 
 ## <a name="see-also"></a>関連項目  
 
-+ [インデックスの作成 &#40;Azure Cognitive Search REST API&#41;](/rest/api/searchservice/create-index)  
-
-+ [LexicalAnalyzerName Class](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)
++ [インデックスを作成する](search-what-is-an-index.md)
++ [複数言語インデックスの作成](search-language-support.md)
++ [Create Index (REST API)](/rest/api/searchservice/create-index)  
++ [LexicalAnalyzerName クラス (Azure SDK for .NET)](/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzername)

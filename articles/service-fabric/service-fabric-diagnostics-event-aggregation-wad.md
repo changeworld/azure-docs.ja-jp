@@ -1,16 +1,14 @@
 ---
 title: Windows Azure Diagnostics を使用したイベントの集計
 description: Azure Service Fabric クラスターの監視と診断に WAD を使用したイベントの集計と収集について説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
-ms.author: srrengar
-ms.openlocfilehash: 87fc8e30274f0a11b7ddfc5eeb184f1a45a5351d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: bbc8efcb2600e1832ad8a37560ab231a4a7f3185
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588377"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626731"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure Diagnostics を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -181,15 +179,15 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 
 > [!TIP]
 > 使用しているクラスターにコンテナーをデプロイする場合は、WAD を有効にして、ご自身の **WadCfg > DiagnosticMonitorConfiguration** セクションに次のコードを追加し、Docker の統計情報を取得します。
->
->```json
->"DockerSources": {
->    "Stats": {
->        "enabled": true,
->        "sampleRate": "PT1M"
->    }
->},
->```
+
+```json
+"DockerSources": {
+    "Stats": {
+        "enabled": true,
+        "sampleRate": "PT1M"
+    }
+},
+```
 
 ### <a name="update-storage-quota"></a>ストレージ クォータを更新する
 

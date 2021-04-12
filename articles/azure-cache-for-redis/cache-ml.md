@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/30/2020
-ms.openlocfilehash: c2241d738a43c6891ee4bea0829400fdc51a664b
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: ec8943bc73cac2020350dd4916f040f031cd842b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734234"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102499698"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-with-azure-cache-for-redis"></a>Azure Cache for Redis を使用して Azure Functions に機械学習モデルをデプロイする 
 
@@ -26,7 +26,7 @@ Azure Cache for Redis は非常にパフォーマンスが高くスケーラブ�
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)。
 * Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](../machine-learning/how-to-manage-workspace.md)を参照してください。
-* [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)。
+* [Azure CLI](/cli/azure/install-azure-cli)。
 * ワークスペースに登録されているトレーニング済みの機械学習モデル。 モデルがない場合は、[イメージ分類のチュートリアル: モデルのトレーニング](../machine-learning/tutorial-train-models-with-aml.md)を使用して、トレーニングと登録を行います。
 
 > [!IMPORTANT]
@@ -128,7 +128,7 @@ def run(data):
 これらのエンティティは、__推論構成__ にカプセル化されます。 推論構成では、エントリ スクリプトとその他の依存関係が参照されます。
 
 > [!IMPORTANT]
-> Azure Functions で使用するための推論構成を作成する際は、[環境](/python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)オブジェクトを使用する必要があります。 カスタム環境を定義する場合は、バージョン 1.0.45 以降の azureml-defaults を pip 依存関係として追加する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 次の例で、環境オブジェクトを作成し、推論構成でそれを使用する方法を示します。
+> Azure Functions で使用するための推論構成を作成する際は、[環境](/python/api/azureml-core/azureml.core.environment%28class%29)オブジェクトを使用する必要があります。 カスタム環境を定義する場合は、バージョン 1.0.45 以降の azureml-defaults を pip 依存関係として追加する必要があることに注意してください。 このパッケージには、Web サービスとしてモデルをホストするために必要な機能が含まれています。 次の例で、環境オブジェクトを作成し、推論構成でそれを使用する方法を示します。
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -161,7 +161,7 @@ pip install azureml-contrib-functions
 
 ## <a name="create-the-image"></a>イメージの作成
 
-Azure Functions にデプロイする Docker イメージを作成するには、[azureml.contrib.functions.package](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) または使用するトリガーに固有のパッケージ関数を使用します。 次のコード スニペットで、モデルおよび推論構成から、HTTP トリガーを使用する新しいパッケージを作成する方法を示します。
+Azure Functions にデプロイする Docker イメージを作成するには、[azureml.contrib.functions.package](/python/api/azureml-contrib-functions/azureml.contrib.functions) または使用するトリガーに固有のパッケージ関数を使用します。 次のコード スニペットで、モデルおよび推論構成から、HTTP トリガーを使用する新しいパッケージを作成する方法を示します。
 
 > [!NOTE]
 > このコード スニペットは、`model` に登録済みのモデルが含まれており、`inference_config` に推論環境の構成が含まれていることを前提としています。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](../machine-learning/how-to-deploy-and-where.md)」を参照してください。
@@ -317,5 +317,5 @@ print(model_package.location)
 
 * [Azure Cache for Redis](./cache-overview.md) について詳細を学習する
 * [Functions](../azure-functions/functions-create-function-linux-custom-image.md) のドキュメントで、関数アプリを構成する方法を学習する。
-* [API リファレンス](/python/api/azureml-contrib-functions/azureml.contrib.functions?preserve-view=true&view=azure-ml-py) 
+* [API リファレンス](/python/api/azureml-contrib-functions/azureml.contrib.functions) 
 * [Azure Cache for Redis を使用する Python アプリ](./cache-python-get-started.md)を作成する

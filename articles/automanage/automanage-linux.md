@@ -4,16 +4,17 @@ description: 自動的にオンボードされ、Linux マシン用に構成さ�
 author: deanwe
 ms.service: virtual-machines
 ms.subservice: automanage
+ms.collection: linux
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: deanwe
-ms.openlocfilehash: e36d170e1a7f918ff40c32f3225ce3a0ddbe260f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3aab43be49cb98fbe136e1f0216590785d650392
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660463"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104953251"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices---linux"></a>Azure Automanage for virtual machines のベスト プラクティス - Linux
 
@@ -26,9 +27,9 @@ Linux VM で Automanage for virtual machines (VM) を使用する場合、これ
 Automanage によって、次の Linux ディストリビューションとバージョンがサポートされています。
 
 - CentOS 7.3 以上
-- RHEL 7.4-7.8
+- RHEL 7.4 以上
 - Ubuntu 16.04 および 18.04
-- SLES 12 (すべての Service Pack)
+- SLES 12 (SP3 から SP5 のみ)
 
 ## <a name="participating-services"></a>対象となるサービス
 

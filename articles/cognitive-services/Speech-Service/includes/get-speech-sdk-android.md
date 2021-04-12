@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 3d9718d7c1b3182d1f7bc16cd81b38635c051a85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f07eb0ab252144d1e0953a1a227dfbadb152c422
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81400050"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102434506"
 ---
 :::row:::
     :::column span="3":::
-        Android 用に開発する場合は、2つの音声Sdk を利用できます。 Java音声SDK は、Android パッケージとしてネイティブに使用できます。また、.NET Speech SDK は .NET Standard 2.0 を実装しているため**Xamarin Android**と共に使用することもできます。
+        Android 用に開発する場合は、2つの音声Sdk を利用できます。 Java音声SDK は、Android パッケージとしてネイティブに使用できます。また、.NET Speech SDK は .NET Standard 2.0 を実装しているため **Xamarin Android** と共に使用することもできます。
     :::column-end:::
     :::column:::
         <br>
@@ -31,7 +31,7 @@ ms.locfileid: "81400050"
 
 :::row:::
     :::column span="3":::
-        Xamarin.Android では、.NET 開発者向けの完全な Android SDK が公開されています。 Visual Studio ではC#またはF#を使用して、完全にネイティブな Android アプリをビルドします。 詳細については、<a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin.Android<span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照してください
+        Xamarin.Android では、.NET 開発者向けの完全な Android SDK が公開されています。 Visual Studio ではC#またはF#を使用して、完全にネイティブな Android アプリをビルドします。 詳細については、<a href="https://docs.microsoft.com/xamarin/android/" target="_blank">Xamarin.Android</a>を参照してください
     :::column-end:::
     :::column:::
         <br>

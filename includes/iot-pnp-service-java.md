@@ -4,12 +4,12 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 788aa0ebe9df91caba2ee279df96cbea175975e4
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 8d3f35a733a0f78fabc33df857d911ba3cd222f5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95487822"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102244892"
 ---
 IoT プラグ アンド プレイを使用すると、基盤となるデバイスの実装に関する知識がなくてもデバイスの機能とやり取りできるので、IoT が簡略化されます。 このクイックスタートでは、Java を使用して、ご利用のソリューションに接続されている IoT プラグ アンド プレイ デバイスに接続して制御する方法について説明します。
 
@@ -19,7 +19,7 @@ IoT プラグ アンド プレイを使用すると、基盤となるデバイ�
 
 Windows でこのクイックスタートを完了するには、ご利用のローカル Windows 環境に次のソフトウェアをインストールします。
 
-* Java SE Development Kit 8。 「[Azure および Azure Stack の Java 長期サポート](/java/azure/jdk/?preserve-view=true&view=azure-java-stable)」の「**長期サポート**」で「**Java 8**」を選択します。
+* Java SE Development Kit 8。 「[Azure および Azure Stack の Java 長期サポート](/java/azure/jdk/)」の「**長期サポート**」で「**Java 8**」を選択します。
 * [Apache Maven 3](https://maven.apache.org/download.cgi)。
 
 ### <a name="clone-the-sdk-repository-with-the-sample-code"></a>サンプル コードを使用して SDK リポジトリをクローンする

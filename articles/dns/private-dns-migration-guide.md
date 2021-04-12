@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 63bd1d01adf66f33a8ee5349f35063473429b007
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 72d046cde70d1224eb1fd47f527c9e49c6b002f6
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964781"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102500463"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>従来の Azure DNS プライベート ゾーンを新しいリソース モデルに移行する
 
@@ -27,7 +27,7 @@ az network dns zone list --query "[?zoneType=='Private']"
 
 ## <a name="prerequisites"></a>前提条件
 
-最新バージョンの Azure PowerShell がインストールされていることを確認します。 Azure PowerShell (Az) とそのインストール方法の詳細については、 https://docs.microsoft.com/powershell/azure/new-azureps-module-az をご覧ください
+最新バージョンの Azure PowerShell がインストールされていることを確認します。 Azure PowerShell (Az) とそのインストール方法の詳細については、https://docs.microsoft.com/powershell/azure/new-azureps-module-az をご覧ください
 
 Azure PowerShell の Az.PrivateDns モジュールがインストールされていることを確認します。 このモジュールをインストールするには、管理者特権の PowerShell ウィンドウ (管理者モード) を開いて、次のコマンドを入力します
 
@@ -50,7 +50,7 @@ install-script PrivateDnsMigrationScript
 
 ![スクリプトのインストール](./media/private-dns-migration-guide/install-migration-script.png)
 
-[https://www.powershellgallery.com/packages/PrivateDnsMigrationScript](https://www.powershellgallery.com/packages/PrivateDnsMigrationScript ) では、最新バージョンの PowerShell スクリプトを手動で取得することもできます
+[https://www.powershellgallery.com/packages/PrivateDnsMigrationScript](https://www.powershellgallery.com/packages/PrivateDnsMigrationScript) では、最新バージョンの PowerShell スクリプトを手動で取得することもできます
 
 >[!IMPORTANT]
 >移行スクリプトは Azure Cloud Shell で実行できず、インターネットに接続されている VM またはローカル コンピューターで実行する必要があります。
@@ -108,15 +108,15 @@ DNS クエリが解決されていないとわかった場合、数分待って�
 
 テンプレート、PowerShell スクリプト、SDK を使用して開発されたカスタム コードなど、自動化を使用している場合、プライベート DNS ゾーンで新しいリソース モデルを使用するために、自動化を更新する必要があります。 新しいプライベート DNS の CLI、PS、SDK のドキュメントを以下に示します。
 * [Azure DNS プライベート ゾーンの REST API](/rest/api/dns/privatedns/privatezones)
-* [Azure DNS プライベート ゾーンの CLI](/cli/azure/ext/privatedns/network/private-dns?view=azure-cli-latest)
-* [Azure DNS プライベート ゾーンの PowerShell](/powershell/module/az.privatedns/?view=azps-2.3.2)
+* [Azure DNS プライベート ゾーンの CLI](/cli/azure/ext/privatedns/network/private-dns)
+* [Azure DNS プライベート ゾーンの PowerShell](/powershell/module/az.privatedns/)
 * [Azure DNS プライベート ゾーンの SDK](/dotnet/api/overview/azure/privatedns/management?view=azure-dotnet-preview)
 
 ## <a name="need-further-help"></a>さらにサポートが必要な場合
 
 移行プロセスに関してさらにサポートが必要な場合、または何らかの理由で上記の手順がうまくいかない場合は、サポート チケットを作成してください。 サポート チケットには、PowerShell スクリプトによって生成されたトランスクリプト ファイルを添えてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure PowerShell](./private-dns-getstarted-powershell.md) または [Azure CLI](./private-dns-getstarted-cli.md) を使用して Azure DNS のプライベート ゾーンを作成する方法を確認します。
 

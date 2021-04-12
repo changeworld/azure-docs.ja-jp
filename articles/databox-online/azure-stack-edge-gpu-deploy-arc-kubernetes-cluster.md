@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/12/2020
+ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: 53ef73c70f5d20133e7b408ad7af91c3778e5568
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 1d42843805f4fce24368dd07de3a73fec2545957
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98787453"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567527"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイス上の Kubernetes クラスターで Azure Arc を有効にする
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、Azure Stack Edge Pro デバイス上の既存の Kubernetes クラスターで Azure Arc を有効にする方法について説明します。 
 
@@ -41,7 +43,7 @@ Kubernetes クラスターで Azure Arc を有効にする前に、Azure Stack E
   
     - クライアントでは、Windows PowerShell 5.0 以降が実行されている。 Windows PowerShell の最新バージョンをダウンロードするには、「[Windows PowerShell のインストール](/powershell/scripting/install/installing-powershell-core-on-windows)」を参照してください。
     
-    - [オペレーティング システムがサポートされている](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
+    - [サポートされているオペレーティング システム](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device)が搭載されている他のクライアントを使用することもできます。 この記事では、Windows クライアントを使用する場合の手順について説明します。 
     
 1. [Azure Stack Edge Pro デバイス上の Kubernetes クラスターへのアクセス](azure-stack-edge-gpu-create-kubernetes-cluster.md)に関する記事で説明されている手順を完了している。 完了した内容:
     
@@ -72,7 +74,7 @@ Kubernetes クラスターで Azure Arc を有効にする前に、サブスク�
     
     ![Kubernetes リソース プロバイダーを登録する 3](media/azure-stack-edge-gpu-connect-powershell-interface/register-k8-resource-providers-4.png)
 
-`az cli` を使用してリソース プロバイダーを登録することもできます。 詳細については、「[Azure Arc 対応 Kubernetes 用の 2 つのプロバイダーを登録する](../azure-arc/kubernetes/connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)」を参照してください
+`az cli` を使用してリソース プロバイダーを登録することもできます。 詳細については、「[Azure Arc 対応 Kubernetes 用の 2 つのプロバイダーを登録する](../azure-arc/kubernetes/quickstart-connect-cluster.md#register-the-two-providers-for-azure-arc-enabled-kubernetes)」を参照してください
 
 ## <a name="create-service-principal-assign-role"></a>サービス プリンシパルの作成、ロールの割り当て
 
@@ -86,7 +88,7 @@ Kubernetes クラスターで Azure Arc を有効にする前に、サブスク�
 
 1. サービス プリンシパルを作成するには、`az cli` で次のコマンドを使用します。
 
-    `az ad sp create-for-rbac --skip assignment --name "<Informative name for service principal>"`  
+    `az ad sp create-for-rbac --skip-assignment --name "<Informative name for service principal>"`  
 
     `az cli` にログインする方法については、[Azure portal で Cloud Shell を開始する](../cloud-shell/quickstart-powershell.md#start-cloud-shell)方法に関する記事を参照してください。
 
@@ -148,7 +150,7 @@ Azure Arc 管理用に Kubernetes クラスターを構成するには、次の�
     たとえば次のようになります。
    
     ```powershell
-    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed" -ResourceGroupName "myaserg1" -ResourceName "myasetestresarc" -Location "westeurope" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ClientId "aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b" -ClientSecret "<password>"
+    [10.128.44.240]: PS>Set-HcsKubernetesAzureArcAgent -SubscriptionId "062c67a6-019b-40af-a775-c4dc1abe56ed&quot; -ResourceGroupName &quot;myaserg1&quot; -ResourceName &quot;myasetestresarc&quot; -Location &quot;westeurope&quot; -TenantId &quot;72f988bf-86f1-41af-91ab-2d7cd011db47&quot; -ClientId &quot;aa8a082e-0fa1-4a82-b51c-e8b2a9fdaa8b&quot; -ClientSecret &quot;<password>"
         [10.128.44.240]: PS>
     ```
     
@@ -224,8 +226,8 @@ Azure Arc 管理を削除するには、次の手順を実行します。
 
 
 > [!NOTE]
-> Git リポジトリからリソース `yamls` を削除した場合、既定で Kubernetes クラスターから対応するリソースは削除されません。 Git リポジトリから削除したときにリソースが削除されるようにするには、Arc OperatorParams に `--sync-garbage-collection` を設定する必要があります。 詳細については、「[構成を削除する](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)」を参照してください。
+> Git リポジトリからリソース `yamls` を削除した場合、既定で Kubernetes クラスターから対応するリソースは削除されません。 Git リポジトリから削除したときにリソースが削除されるようにするには、Arc OperatorParams に `--sync-garbage-collection` を設定する必要があります。 詳細については、「[構成を削除する](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Arc デプロイを実行する方法については、[GitOps を介し、Redis を使用してステートレス PHP ゲストブック アプリケーションを Azure Stack Edge Pro デバイスに展開する](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)方法に関するページを参照してください。
+Azure Arc デプロイを実行する方法については、[GitOps を介し、Redis を使用してステートレス PHP `Guestbook` アプリケーションを Azure Stack Edge Pro デバイスにデプロイする](azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md)方法に関するページを参照してください。

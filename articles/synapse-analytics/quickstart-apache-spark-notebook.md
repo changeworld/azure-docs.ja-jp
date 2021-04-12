@@ -10,10 +10,10 @@ ms.subservice: spark
 ms.topic: quickstart
 ms.date: 10/16/2020
 ms.openlocfilehash: 060c78621b82f4698d4596383cd155d85d483d8e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101669498"
 ---
 # <a name="quickstart-create-a-serverless-apache-spark-pool-in-azure-synapse-analytics-using-web-tools"></a>クイックスタート: Web ツールを使用して Azure Synapse Analytics でサーバーレス Apache Spark プールを作成する
@@ -82,9 +82,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ストレージ エクスプローラーを使用すると、上記で使用したファイルの 2 つの書き込み方法の影響を確認できます。 ファイル システムが指定されていない場合は、既定値が使用されます (ここでは `default>user>trusted-service-user>demo_df`)。 データは指定されたファイル システムの場所に保存されます。
 
-    "csv" と "parquet" の両方の形式において、書き込み操作により、パーティション分割された多数のファイルを含むディレクトリが作成されることに注意してください。
+    "csv&quot; と &quot;parquet&quot; の両方の形式において、書き込み操作により、パーティション分割された多数のファイルを含むディレクトリが作成されることに注意してください。
 
-    ![出力のストレージ エクスプローラー ビュー](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png "出力のストレージ エクスプローラー ビュー")
+    ![出力のストレージ エクスプローラー ビュー](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage.png &quot;出力のストレージ エクスプローラー ビュー")
 
     ![default > demodata > demo_df のパスが強調表示されたスクリーンショット。](./media/quickstart-apache-spark-notebook/spark-get-started-default-storage2.png "出力のストレージ エクスプローラー ビュー")
 

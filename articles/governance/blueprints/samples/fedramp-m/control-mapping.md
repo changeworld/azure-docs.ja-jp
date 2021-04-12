@@ -1,14 +1,14 @@
 ---
 title: FedRAMP Moderate ブループリント サンプルのコントロール
 description: FedRAMP Moderate ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 7a78ebf631d2c7eb21fea64b0b6aa307bb500e0d
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7c8b2524958be1a4b5e49ff870c7c01a8f89f305
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594699"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386671"
 ---
 # <a name="control-mapping-of-the-fedramp-moderate-blueprint-sample"></a>FedRAMP Moderate ブループリント サンプルのコントロール マッピング
 
@@ -273,7 +273,7 @@ Just-In-Time (JIT) の仮想マシン アクセスでは、Azure 仮想マシン
 - ストレージ アカウントに対する Advanced Threat Protection のデプロイ
 - SQL Server での監査のデプロイ
 - 仮想ネットワーク作成時の Network Watcher のデプロイ
-- SQL Server での脅威検出のデプロイ
+- SQL サーバーでの脅威検出のデプロイ
 
 > [!NOTE]
 > 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 

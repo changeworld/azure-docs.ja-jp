@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
 ms.author: bwren
-ms.subservice: diagnostic-extension
-ms.openlocfilehash: 4962d5f048cf41eca50a77a0dedad3cef48ac1f0
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.subservice: application-insights
+ms.openlocfilehash: b58249dac5b98bb86c35fae9ac574b6100fa9fd5
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98740076"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383101"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Azure Storage への診断データの保存と表示
 

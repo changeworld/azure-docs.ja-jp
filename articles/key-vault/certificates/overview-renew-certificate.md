@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0720e6b55cec8150eea9d41ca89b2c9b21a0bc94
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: ffa130c0598d2405469d272a3ac6852f281ed965
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287696"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726364"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault の証明書の更新
 
@@ -29,7 +29,7 @@ Azure Key Vault を使用すると、自社ネットワーク用のデジタル�
 証明書の有効期限を知らせる通知を受け取るには、証明書の連絡先を追加する必要があります。 証明書の連絡先には、証明書有効期間イベントによってトリガーされる通知を送信する連絡先情報が含まれています。 連絡先情報は、キー コンテナー内のすべての証明書によって共有されます。 通知は、キー コンテナー内の任意の証明書のイベントに指定されているすべての連絡先に送信されます。
 
 ### <a name="steps-to-set-certificate-notifications"></a>証明書の通知を設定する手順
-まず、キー コンテナーに証明書の連絡先を追加します。 Azure portal または PowerShell コマンドレット [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0) を使用して追加できます。
+まず、キー コンテナーに証明書の連絡先を追加します。 Azure portal または PowerShell コマンドレット [`Add-AzureKeyVaultCertificateContact`](/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact) を使用して追加できます。
 
 次に、証明書の有効期限を知らせる通知を受け取るタイミングを構成します。 証明書のライフサイクル属性の構成については、[Key Vault における証明書の自動ローテーションの構成](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)に関する記事を参照してください。
 
@@ -41,9 +41,9 @@ Azure Key Vault を使用すると、自社ネットワーク用のデジタル�
   証明書のポリシーが手動更新に設定されている場合 (メールのみ)、証明書を更新する必要があるときに通知が送信されます。  
 
 Key Vault には、3 つのカテゴリの証明書があります。
--   DigiCert や GlobalSign など、統合された証明機関 (CA) によって作成される証明書
--   統合されていない CA によって作成される証明書
--   自己署名証明書
+-    DigiCert や GlobalSign など、統合された証明機関 (CA) によって作成される証明書
+-    統合されていない CA によって作成される証明書
+-    自己署名証明書
 
 ## <a name="renew-an-integrated-ca-certificate"></a>統合された CA 証明書の更新 
 Azure Key Vault では、Microsoft の信頼された証明機関 (DigiCert および GlobalSign) によって発行された証明書をエンドツーエンドでメンテナンスします。 [信頼された CA と Key Vault を統合する](./how-to-integrate-certificate-authority.md)方法についてご確認ください。
@@ -73,7 +73,10 @@ Azure Key Vault を使用すると、任意の CA から証明書をインポー
 Azure Key Vault は、自己署名証明書の自動更新にも対応しています。 発行ポリシーの変更と、証明書のライフサイクル属性の更新については、[Key Vault における証明書の自動ローテーションの構成](./tutorial-rotate-certificates.md#update-lifecycle-attributes-of-a-stored-certificate)に関するページを参照してください。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
-発行された証明書が Azure portal で " *無効* " 状態になっている場合は、 **[証明書の操作]** に移動して、その証明書のエラー メッセージを確認します。
+* 発行された証明書が Azure portal で "*無効*" 状態になっている場合は、 **[証明書の操作]** に移動して、その証明書のエラー メッセージを確認します。
+* エラーの種類 "The CSR used to get your certificate has already been used. (証明書の取得に使用された CSR は既に使用されています。) Please try to generate a new certificate with a new CSR. (新しい CSR で新しい証明書を生成してください。)"
+  証明書の [Advanced Policy]\(詳細ポリシー\) セクションに移動し、 **[reuse key on renewal]\(更新時にキーを再利用する\)** オプションがオフになっているかどうかを確認します。
+
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -86,5 +89,5 @@ Azure Key Vault は、自己署名証明書の自動更新にも対応してい�
 はい。タグは自動更新後にレプリケートされます。
 
 ## <a name="next-steps"></a>次の手順
-*   [Key Vault と DigiCert 証明機関の統合](how-to-integrate-certificate-authority.md)
-*   [チュートリアル:Key Vault における証明書の自動ローテーションを構成する](tutorial-rotate-certificates.md)
+*    [Key Vault と DigiCert 証明機関の統合](how-to-integrate-certificate-authority.md)
+*    [チュートリアル:Key Vault における証明書の自動ローテーションを構成する](tutorial-rotate-certificates.md)

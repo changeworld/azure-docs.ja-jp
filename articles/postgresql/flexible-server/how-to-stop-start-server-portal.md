@@ -1,17 +1,17 @@
 ---
 title: 停止または起動する - Azure portal - Azure Database for PostgreSQL フレキシブル サーバー
 description: この記事では、Azure portal を使用して Azure Database for PostgreSQL で操作を停止または起動する方法について説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 4c393e0048a0058ebe0fbf2b0ee65f6ae2e184c5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e28243f5919c355e6ad0d4998ff8388a56e3d0ca
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931194"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607370"
 ---
 # <a name="stopstart-an-azure-database-for-postgresql---flexible-server-preview"></a>Azure Database for PostgreSQL - フレキシブル サーバー (プレビュー) を停止または起動する
 

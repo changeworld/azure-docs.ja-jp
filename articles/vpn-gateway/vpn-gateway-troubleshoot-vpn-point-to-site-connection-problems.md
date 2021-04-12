@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: genli
-ms.openlocfilehash: c316aaf02979008b9d2ebc691d54c0fb95a5a52d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 136ea5fcb8dd446cfff6400616df058722fa2827
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994861"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075374"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -72,11 +72,11 @@ Windows 10 または Windows Server 2016 を IKEv2 用に準備するには:
 1. 更新プログラムをインストールします。
 
    | OS バージョン | Date | 数/リンク |
-   |---|---|---|---|
+   |---|---|---|
    | Windows Server 2016<br>Windows 10 バージョン 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 バージョン 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
    | Windows 10 バージョン 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
-   |  |  |  |  |
+
 
 2. レジストリ キーの値を設定します。 レジストリの `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD キーを 1 として作成するか、1 に設定します。
 

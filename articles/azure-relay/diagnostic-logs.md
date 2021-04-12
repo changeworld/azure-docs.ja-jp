@@ -3,12 +3,12 @@ title: ハイブリッド接続の診断ログ
 description: この記事では、Azure Relay で使用可能なすべてのアクティビティ ログと診断ログの概要について説明します。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 9b459750ad1445da89a8e89a10a35b878bfb64e1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 7ca6dc95567a4867d3c58e0efad0fc74289e586c
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590866"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079099"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>Azure Relay ハイブリッド接続の診断ログを有効にする
 Azure Relay ハイブリッド接続の使用を開始するときは、リスナーとセンダーが開かれて閉じられる方法とタイミング、およびハイブリッド接続が作成され、メッセージが送信される方法を監視することが必要な場合があります。 この記事では、Azure Relay サービスで提供されるアクティビティ ログと診断ログの概要について説明します。 
@@ -80,29 +80,29 @@ JSON 形式のハイブリッド接続イベントの例を次に示します。
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>診断ログでキャプチャされるイベントと操作
 
-| Operation | 説明 | 
-| --------- | ----------- | 
-| AuthorizationFailed | 承認に失敗しました。|
-| InvalidSasToken | SAS トークンが無効です。 | 
-| ListenerAcceptingConnection | リスナーが接続を受け入れています。 |
-| ListenerAcceptingConnectionTimeout | 接続を受け入れるリスナーがタイムアウトになりました。 |
-| ListenerAcceptingHttpRequestFailed | 例外が発生したため、リスナーが HTTP 要求の受け入れに失敗しました。 |
-| ListenerAcceptingRequestTimeout | 要求を受け入れるリスナーがタイムアウトになりました。 |  
-| ListenerClosingFromExpiredToken | セキュリティ トークンの有効期限が切れているため、リスナーを閉じています。 | 
-| ListenerRejectedConnection | リスナーが接続を拒否しました。 |
-| ListenerReturningHttpResponse | リスナーが HTTP 応答を返しています。 |  
-| ListenerReturningHttpResponseFailed | リスナーが、エラー コードを含む HTTP 応答を返しています。 | 
- ListenerSentHttpResponse | Relay サービスがリスナーからの HTTP 応答を受信しました。 | 
-| ListenerUnregistered | リスナーの登録が解除されました。 | 
-| ListenerUnresponsive | 応答を返すときにリスナーが応答しません。 | 
-| MessageSendingToListener | メッセージがリスナーに送信されています。 |
-| MessageSentToListener | メッセージがリスナーに送信されます。 | 
-| NewListenerRegistered | 新しいリスナーが登録されました。 |
-| NewSenderRegistering | 新しいセンダーを登録しています。 | 
-| ProcessingRequestFailed | ハイブリッド接続操作の処理に失敗しました。 | 
-| SenderConnectionClosed | センダーへの接続が閉じられました。 |
-| SenderListenerConnectionEstablished | センダーとリスナーが接続を正常に確立しました。 |
-| SenderSentHttpRequest | センダーが HTTP 要求を送信しました。 | 
+| Operation                           | 説明                                                     |
+|-------------------------------------|-----------------------------------------------------------------|
+| AuthorizationFailed                 | 承認に失敗しました。                                           |
+| InvalidSasToken                     | SAS トークンが無効です。                                              |
+| ListenerAcceptingConnection         | リスナーが接続を受け入れています。                           |
+| ListenerAcceptingConnectionTimeout  | 接続を受け入れるリスナーがタイムアウトになりました。                |
+| ListenerAcceptingHttpRequestFailed  | 例外が発生したため、リスナーが HTTP 要求の受け入れに失敗しました。 |
+| ListenerAcceptingRequestTimeout     | 要求を受け入れるリスナーがタイムアウトになりました。                   |
+| ListenerClosingFromExpiredToken     | セキュリティ トークンの有効期限が切れているため、リスナーを閉じています。 |
+| ListenerRejectedConnection          | リスナーが接続を拒否しました。                       |
+| ListenerReturningHttpResponse       | リスナーが HTTP 応答を返しています。                     |
+| ListenerReturningHttpResponseFailed | リスナーが、エラー コードを含む HTTP 応答を返しています。 |
+| ListenerSentHttpResponse            | Relay サービスがリスナーからの HTTP 応答を受信しました。  |
+| ListenerUnregistered                | リスナーの登録が解除されました。                                   |
+| ListenerUnresponsive                | 応答を返すときにリスナーが応答しません。         |
+| MessageSendingToListener            | メッセージがリスナーに送信されています。                              |
+| MessageSentToListener               | メッセージがリスナーに送信されます。                                    |
+| NewListenerRegistered               | 新しいリスナーが登録されました。                                        |
+| NewSenderRegistering                | 新しいセンダーを登録しています。                                      |
+| ProcessingRequestFailed             | ハイブリッド接続操作の処理に失敗しました。     |
+| SenderConnectionClosed              | センダーへの接続が閉じられました。                                |
+| SenderListenerConnectionEstablished | センダーとリスナーが接続を正常に確立しました。    |
+| SenderSentHttpRequest               | センダーが HTTP 要求を送信しました。                                |
 
 
 ## <a name="next-steps"></a>次のステップ

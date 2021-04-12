@@ -3,12 +3,12 @@ title: イメージのビルド、テスト、修正プログラムの適用を�
 description: Azure Container Registry の ACR タスクの機能である、複数ステップのタスクの概要。これは、クラウドでコンテナー イメージのビルド、テスト、修正プログラムの適用を行うためのタスク ベースのワークフローを提供するものです。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 0dcd38559d3f50715f982de4c9c80bfe9c6c8433
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fc671006beb1934b32fcd6ccf967a5bf9ff817fb
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "78399702"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169200"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する
 
@@ -65,7 +65,7 @@ steps:
     build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t $Registry/hello-world-tests ./funcTests
+    build: -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
     push: ["$Registry/helloworld:$ID"]

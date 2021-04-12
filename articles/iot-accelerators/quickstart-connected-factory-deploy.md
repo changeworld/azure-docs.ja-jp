@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dbb49d990581c6b38d0eff32b01dd9b115e6794c
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "62127465"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057821"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>クイック スタート: 工業用 IoT デバイスを管理するクラウドベースのソリューションを試す
 
@@ -38,9 +38,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![今すぐ試す](./media/quickstart-connected-factory-deploy/connectedfactory.png)
 
-**[Create Connected Factory solution]\(接続済みファクトリ ソリューションの作成\)** ページで、接続済みファクトリ ソリューション アクセラレータに使用する一意の**ソリューション名**を入力します。 この名前は、すべてのソリューション アクセラレータ リソースを含む Azure リソース グループの名前です。 このクイック スタートでは、**MyDemoConnectedFactory** という名前を使用します。
+**[Create Connected Factory solution]\(接続済みファクトリ ソリューションの作成\)** ページで、接続済みファクトリ ソリューション アクセラレータに使用する一意の **ソリューション名** を入力します。 この名前は、すべてのソリューション アクセラレータ リソースを含む Azure リソース グループの名前です。 このクイック スタートでは、**MyDemoConnectedFactory** という名前を使用します。
 
-ソリューション アクセラレータのデプロイに使用する**サブスクリプション**と**リージョン**を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは、 **[Visual Studio Enterprise]** と **[米国東部]** を使用します。 サブスクリプションの[グローバル管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
+ソリューション アクセラレータのデプロイに使用する **サブスクリプション** と **リージョン** を選択します。 通常は、最も近いリージョンを選択します。 このクイック スタートでは、 **[Visual Studio Enterprise]** と **[米国東部]** を使用します。 サブスクリプションの[グローバル管理者またはユーザー](iot-accelerators-permissions.md)である必要があります。
 
 **[作成]** をクリックしてデプロイを開始します。 このプロセスを実行するには、少なくとも 5 分かかります。
 
@@ -131,9 +131,9 @@ Azure サブスクリプションへのデプロイが完了すると、ソリ�
 * アラームを閉じる。
 * アラームを確認する。
 
-**[アクションの選択]** ボックスの一覧でいずれかのアラームをクリックし、 **[アラートを確認する]** を選択して、 **[適用]** をクリックします。
+**[アクションの選択]** ボックスの一覧でいずれかのアラームをクリックし、**[アラートを確認する]** を選択して、**[適用]** をクリックします。
 
-[![アラートを確認する](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
+[![アラートの確認](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
 
 アラーム データをさらに詳しく分析するには、[アラーム] パネルでグラフをクリックします。
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
-ms.openlocfilehash: 238ef9ec80b01470e28535d0eb42dbb3a377b005
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fb1514c146dcd352451597e6182c6d99ed8836d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746439"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044721"
 ---
 # <a name="how-to-create-plans-for-your-saas-offer"></a>SaaS オファーのプランを作成する方法
 
@@ -149,6 +149,10 @@ Microsoft のコマーシャル マーケットプレースを通じて販売さ
 
 - プランの状態が **[下書き]** の場合、 **[アクション]** 列のリンクは **[ドラフトの削除]** になります。
 - プランの状態が **[ライブ]** の場合、 **[アクション]** 列のリンクは **[Stop sell plan]\(プランの販売の停止\)** または **[Sync private audience]\(プライベート対象ユーザーの同期\)** のいずれかになります。 **[Sync private audience]\(プライベート対象ユーザーの同期)** リンクにより、オファーに対して行われた可能性のあるその他の更新を発行することなく、プライベートの対象ユーザーだけに変更が発行されます。
+
+## <a name="before-you-publish-your-offer"></a>プランを公開する前に
+
+実稼働プランを公開する前に、プランをテストするための開発およびテスト (DEV) プランを作成します (まだそうしていない場合)。 詳細については、[開発とテストのプランの作成](create-saas-dev-test-offer.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

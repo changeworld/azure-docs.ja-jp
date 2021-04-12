@@ -4,19 +4,21 @@ description: Azure セキュリティ ベンチマーク V2 特権アクセス
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: fd39f5e0af34c702cddc8e08b6a94e428c7f0167
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 29d4acc50ed872c37268a0b21c3e34837249a026
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092052"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102035417"
 ---
 # <a name="security-control-v2-privileged-access"></a>セキュリティ コントロール V2:特権アクセス
 
 特権アクセスには、Azure テナントとリソースへの特権アクセスを保護するためのコントロールが含まれます。 これには、管理モデル、管理アカウント、特権アクセス ワークステーションを、意図的なリスクと偶発的なリスクから保護するためのさまざまなコントロールが含まれています。
+
+該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブ: 特権アクセス](../../governance/policy/samples/azure-security-benchmark.md#privileged-access)」をご覧ください。
 
 ## <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1:高い特権を持つユーザーを保護および制限する
 
@@ -30,7 +32,7 @@ ms.locfileid: "99092052"
 
 - 特権ロール管理者:このロールが割り当てられたユーザーは、Azure AD と Azure AD Privileged Identity Management (PIM) 内でロールの割り当てを管理できます。 さらに、このロールは、PIM と管理単位のすべての側面を管理できます。
 
-注:特定の特権アクセス許可を割り当てられたカスタム ロールを使用する場合は、管理する必要のある他の重要なロールがある場合があります。 また、重要なビジネス資産の管理者アカウントに同様のコントロールを適用することもできます。  
+注:特定の特権アクセス許可を割り当てられたカスタム ロールを使用する場合は、管理する必要のある他の重要なロールがある場合があります。 また、重要なビジネス資産の管理者アカウントに同様のコントロールを適用することもできます。
 
 Azure Privileged Identity Management (PIM) を使用して、Azure リソースと Azure AD への Just-In-Time (JIT) の特権アクセスを有効にすることができます。 ユーザーが必要とする場合にのみ特権タスクを実行するための一時的なアクセス許可は、JIT によって付与されます。 PIM を使用すると、Azure AD 組織に不審なアクティビティや安全でないアクティビティがある場合に、セキュリティ アラートを生成することもできます。
 
@@ -157,9 +159,7 @@ Azure AD のエンタイトルメント管理機能を使用して、アクセ�
 
 セキュリティで保護された分離したワークステーションは、管理者、開発者、重要なサービス オペレーターのような機密性の高い役割のセキュリティには非常に重要です。 管理タスクに高度にセキュリティ保護されたユーザー ワークステーションや Azure Bastion を使用します。 Azure Active Directory、Microsoft Defender Advanced Threat Protection (ATP)、または Microsoft Intune を使用して、管理タスクのためにセキュリティで保護されたマネージド ユーザー ワークステーションを展開します。 セキュリティで保護されたワークステーションを一元管理して、強力な認証、ソフトウェアとハードウェアのベースライン、制限された論理アクセスとネットワーク アクセスなどのセキュリティで保護された構成を実施できます。 
 
-- [特権アクセス ワークステーションを理解する](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
-
-- [特権アクセス ワークステーションを展開する](/security/compass/privileged-access-deployment)
+- [特権アクセス ワークステーションを理解する](/security/compass/privileged-access-deployment)
 
 **責任**: Customer
 
@@ -178,7 +178,8 @@ Azure AD のエンタイトルメント管理機能を使用して、アクセ�
 | PA-7 | 14.6 | AC-2、AC-3、SC-3 |
 
 Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると、ロールの割り当てを通じて Azure リソースへのアクセスを管理できます。 これらのロールを、ユーザー、グループ サービス プリンシパル、およびマネージド ID に割り当てることができます。 特定のリソースに対して定義済みの組み込みロールがあります。これらのロールは、Azure CLI、Azure PowerShell、Azure portal などのツールを使用してインベントリまたは照会できます。 Azure RBAC を使用してリソースに割り当てる特権は、常に、ロールで必要なものに制限する必要があります。 制限された特権は、Azure AD Privileged Identity Management (PIM) の Just-In-Time (JIT) アプローチを補完するものであり、それらの特権は定期的に確認する必要があります。
-組み込みのロールを使用してアクセス許可を割り当て、カスタム ロールは必要な場合にのみ作成します。 
+
+組み込みロールを使用してアクセス許可を割り当て、必要な場合にのみカスタム ロールを作成します。
 
 - [Azure ロールベースのアクセス制御 (Azure RBAC) とは](../../role-based-access-control/overview.md)
 
@@ -192,9 +193,9 @@ Azure のロールベースのアクセス制御 (Azure RBAC) を使用すると
 
 - [アプリケーションのセキュリティと DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-- [セキュリティ コンプライアンス管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
+- [セキュリティ コンプライアンス管理](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
-- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)    
+- [体制管理](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
 - [ID およびキー管理](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: inhenkel
-ms.openlocfilehash: 2873486b95f0bb4a9a27e2e050cc6f6d5473a44e
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 82f01b4216af8d924354ae9e9a204a8eaefb8213
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898174"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120845"
 ---
 # <a name="streaming-policies"></a>ストリーミング ポリシー
 
@@ -34,7 +34,7 @@ Azure Media Services v3 では、[ストリーミング ポリシー](/rest/api/
 
 > [!IMPORTANT]
 > * Datetime 型の **ストリーミング ポリシー** のプロパティは、常に UTC 形式です。
-> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳しくは、[クォータと制限](limits-quotas-constraints.md)に関するトピックを参照してください。
+> * お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳しくは、[クォータと制限](limits-quotas-constraints-reference.md)に関するトピックを参照してください。
 
 ## <a name="decision-tree"></a>デシジョン ツリー
 
@@ -42,7 +42,7 @@ Azure Media Services v3 では、[ストリーミング ポリシー](/rest/api/
 
 [![シナリオに対して定義済みのストリーミング ポリシーを選択できるように設計されたデシジョン ツリーを示す図。](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
-コンテンツを暗号化する場合、[コンテンツ キー ポリシー](content-key-policy-concept.md)を作成する必要がありますが、**コンテンツ キー ポリシー** はクリアなストリーミングまたはダウンロードには必要ありません。 
+コンテンツを暗号化する場合、[コンテンツ キー ポリシー](drm-content-key-policy-concept.md)を作成する必要がありますが、**コンテンツ キー ポリシー** はクリアなストリーミングまたはダウンロードには必要ありません。 
 
 特別な要件がある (例: 異なるプロトコルを指定したい、カスタム キー配信サービスを使用する必要がある、クリアなオーディオ トラックを使用する必要がある) 場合は、カスタム ストリーミング ポリシーを[作成](/rest/api/media/streamingpolicies/create)できます。 
 
@@ -81,10 +81,10 @@ GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000
 
 ## <a name="filtering-ordering-paging"></a>フィルター処理、順序付け、ページング
 
-「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
+「[Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entitites-how-to.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [ファイルのストリーミング](stream-files-dotnet-quickstart.md)
-* [AES-128 動的暗号化とキー配信サービスの使用](protect-with-aes128.md)
-* [DRM 動的暗号化とライセンス配信サービスの使用](protect-with-drm.md)
+* [AES-128 動的暗号化とキー配信サービスの使用](drm-playready-license-template-concept.md)
+* [DRM 動的暗号化とライセンス配信サービスの使用](drm-protect-with-drm-tutorial.md)

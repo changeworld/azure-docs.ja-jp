@@ -1,5 +1,5 @@
 ---
-title: Azure BLOB ストレージによるリード管理 - Microsoft コマーシャル マーケットプレース
+title: Azure Blob Storage によるリード管理 - Microsoft コマーシャル マーケットプレース
 description: Azure BLOB を使用して Microsoft AppSource および Azure Marketplace のリードを構成する方法について説明します。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,18 +8,18 @@ author: trkeya
 ms.author: trkeya
 ms.date: 05/01/2020
 ms.openlocfilehash: bd2f3d40b1aea1c0133f95e069ebfd527d30bd59
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94491105"
 ---
-# <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure BLOB ストレージを使用し、コマーシャル マーケットプレースの潜在顧客を管理する
+# <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Azure Blob Storage を使用し、コマーシャル マーケットプレースの潜在顧客を管理する
 
 >[!Caution]
 >Azure BLOB ストレージのコマーシャル マーケットプレース サポートは非推奨になっており、オファーからリードを処理することはできなくなりました。 コマーシャル マーケットプレース オファーに現在、Azure BLOB 向けにリード管理が構成されている場合、潜在顧客を受け取ることができなくなります。 リード管理構成を他のリード管理オプションのいずれかに更新してください。 その他のオプションについては、[リード管理のランディング ページ](./commercial-marketplace-get-customer-leads.md)に関する記事をご覧ください。"
 
- Microsoft AppSource と Azure Marketplace のリードを受け取るためにパートナー センターで顧客関係管理 (CRM) システムが明示的にサポートされていない場合、Azure BLOB ストレージを使用できます。 その後、データをエクスポートして CRM システムにインポートすることを選択できます。 この記事の手順では、Azure Storage アカウントと、そのアカウント下の BLOB を作成するプロセスについて説明します。 さらに、Power Automate を使用して新しいフローを作成し、オファーでリードを受信したときに電子メール通知を送信することもできます。
+ Microsoft AppSource と Azure Marketplace のリードを受け取るためにパートナー センターで顧客関係管理 (CRM) システムが明示的にサポートされていない場合、Azure Blob Storage を使用できます。 その後、データをエクスポートして CRM システムにインポートすることを選択できます。 この記事の手順では、Azure Storage アカウントと、そのアカウント下の BLOB を作成するプロセスについて説明します。 さらに、Power Automate を使用して新しいフローを作成し、オファーでリードを受信したときに電子メール通知を送信することもできます。
 
 >[!NOTE]
 >以下の手順で使用される Power Automate コネクタには、Power Automate の有料サブスクリプションが必要です。 この記事の手順を実行する前に、次のことを考慮してください。
@@ -43,7 +43,7 @@ ms.locfileid: "94491105"
 
     ![Azure ストレージ アカウントにアクセスする](./media/commercial-marketplace-lead-management-instructions-azure-blob/azure-storage-access.png)
 
-5. ストレージ アカウントのウィンドウで、 **[アクセス キー ]** を選択し、キーの *[接続文字列]* 値をコピーします。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある " *ストレージ アカウント接続文字列* " 値です。
+5. ストレージ アカウントのウィンドウで、 **[アクセス キー ]** を選択し、キーの *[接続文字列]* 値をコピーします。 この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある "*ストレージ アカウント接続文字列*" 値です。
 
      接続文字列の例を次に示します。
 
@@ -61,7 +61,7 @@ ms.locfileid: "94491105"
 
 8. 新しいコンテナーの **名前** を入力します。 コンテナー名は小文字である必要があり、英文字または数字で始まる必要があり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。 コンテナーと BLOB の名前の詳細については、「[Naming and referencing containers, blobs, and metadata (コンテナー、BLOB、およびメタデータの名前付けと参照)](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
 
-    この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある " *コンテナー名* " 値です。
+    この値を保存します。これは、マーケットプレース オファーのリードを受け取るために発行ポータル内で提供する必要がある "*コンテナー名*" 値です。
 
 9. コンテナーへのパブリック アクセスのレベルを **[Private (no anonymous access)]\(プライベート (匿名アクセスなし)\)** として設定します。
 
@@ -69,7 +69,7 @@ ms.locfileid: "94491105"
 
     ![新しいコンテナー](./media/commercial-marketplace-lead-management-instructions-azure-blob/new-container.png)
 
-## <a name="configure-your-offer-to-send-leads-to-azure-blob-storage"></a>リードを Azure BLOB ストレージに送信するようにオファーを構成する
+## <a name="configure-your-offer-to-send-leads-to-azure-blob-storage"></a>リードを Azure Blob Storage に送信するようにオファーを構成する
 
 発行ポータル内でオファーのリード管理情報を構成する準備ができたら、次の手順に従います。
 

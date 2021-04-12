@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: daeb0d666c0dfb8306663da1d8d59dfba6adc359
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.openlocfilehash: 9bf167f5be9aeb65f0d7c1d69e6687589ebea8a4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100516925"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102498882"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Azure Machine Learning 内に Azure Databricks と AutoML を含む開発環境をセットアップする 
 
@@ -123,6 +123,16 @@ AutoML 構成では、Azure Databricks を使用するときに次のパラメ�
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
+* **Databricks での自動化された機械学習の実行をキャンセルする**:自動化された機械学習機能を Azure Databricks で使用しているときに、実行をキャンセルして新しい実験の実行を開始するには、Azure Databricks クラスターを再起動してください。
+
+* **Databricks での自動化された機械学習の 10 回を超える繰り返し**:自動化された機械学習の設定で、繰り返し回数が 10 回を超えている場合は、実行を送信するときに `show_output` を `False` に設定します。
+
+* **Azure Machine Learning SDK 用の Databricks ウィジェットと自動化された機械学習**:Azure Machine Learning SDK ウィジェットは、Databricks ノートブックではサポートされていません。この理由は、ノートブックが HTML ウィジェットを解析できないからです。 Azure Databricks のノートブック セルで次の Python コードを使用することにより、portal でウィジェットを表示することができます。
+
+    ```
+    displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
+    ```
+
 * **パッケージをインストールする際の失敗**
 
     追加のパッケージがインストールされていると、Azure Databricks で Azure Machine Learning SDK のインストールが失敗します。 `psutil` のようなパッケージでは、競合が発生することがあります。 インストール エラーを回避するには、ライブラリ バージョンを止めてパッケージをインストールします。 この問題は Databricks に関連したもので、Azure Machine Learning SDK には関連はありません。 他のライブラリでもこの問題が発生する場合があります。 例:
@@ -162,4 +172,4 @@ AutoML 構成では、Azure Databricks を使用するときに次のパラメ�
 ## <a name="next-steps"></a>次のステップ
 
 - MNIST データセットを使用して Azure Machine Learning で[モデルをトレーニング](tutorial-train-models-with-aml.md)します。
-- [Azure Machine Learning SDK for Python のリファレンス](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)に関するページを参照してください。
+- [Azure Machine Learning SDK for Python のリファレンス](/python/api/overview/azure/ml/intro)に関するページを参照してください。

@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 5d1076239938988119d8a9838d0e060d70a22082
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 6eb91734afac81e103cebea48865793fa687ad71
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583372"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024831"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Application Insights でのユーザー、セッション、およびイベントの分析
 
@@ -63,5 +63,4 @@ Application Insights ポータルのユーザー、セッション、または�
     - [保持](usage-retention.md)
     - [ユーザー フロー](usage-flows.md)
     - [ブック](../visualize/workbooks-overview.md)
-    - [ユーザー コンテキストの追加](usage-send-user-context.md)
-
+    - [ユーザー コンテキストの追加](./usage-overview.md)

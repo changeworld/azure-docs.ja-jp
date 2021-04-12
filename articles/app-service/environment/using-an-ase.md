@@ -8,10 +8,10 @@ ms.date: 9/22/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: a7fa9ece3728214fad31f0bae769e1e50206df7e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594047"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用

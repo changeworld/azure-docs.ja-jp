@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3efb5aa864f0940b7b5aa6a9131da9ce8bd732ee
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 135c163c555bc30bea57ccbdf73bf0414a834da2
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092803"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109647"
 ---
 # <a name="how-to-generate-thumbnails-using-encoder-standard-with-net"></a>.NET で Encoder Standard を使用してサムネイルを生成する方法
 
@@ -29,7 +29,7 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
 
 ## <a name="recommended-reading-and-practice"></a>推奨される資料とプラクティス
 
-「[カスタム変換を使用してエンコードする方法 - .NET](customize-encoder-presets-how-to.md)」を参照して、カスタム変換について理解しておくことをお勧めします。
+「[カスタム変換を使用してエンコードする方法 - .NET](encode-custom-presets-how-to.md)」を参照して、カスタム変換について理解しておくことをお勧めします。
 
 ## <a name="transform-code-example"></a>変換コードの例
 

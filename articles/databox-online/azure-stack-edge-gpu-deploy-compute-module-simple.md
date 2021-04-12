@@ -6,19 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 02/03/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 44265efd4d125bb2701742a490fc883c48f1877b
-ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
+ms.openlocfilehash: d10e27c80a9253de7482644debd19debce8f4e50
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99550994"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055299"
 ---
 # <a name="tutorial-run-a-compute-workload-with-iot-edge-module-on-azure-stack-edge-pro-gpu"></a>チュートリアル:Azure Stack Edge Pro GPU で IoT Edge モジュールを使用してコンピューティング ワークロードを実行する
 
-<!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
+[!INCLUDE [applies-to-GPU-and-pro-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-sku.md)]
 
 このチュートリアルでは、Azure Stack Edge Pro GPU デバイスで IoT Edge モジュールを使用して、コンピューティング ワークロードを実行する方法について説明します。 コンピューティングを構成すると、デバイスはデータを Azure に送信する前に変換できます。
 
@@ -75,7 +74,7 @@ Azure Stack Edge Pro GPU デバイスでコンピューティング ロールを
 
     `rsync <source file path> < destination file path>`
 
-    `rsync` コマンドの詳細については、[rsync に関するドキュメント](https://www.computerhope.com/unix/rsync.htm)を参照してください。
+    `rsync` コマンドの詳細については、[`Rsync`](https://www.computerhope.com/unix/rsync.htm) に関するドキュメントを参照してください。
  
 3. **[クラウド ストレージ ゲートウェイ] > [共有]** に移動して、共有の更新された一覧を確認します。
 
@@ -84,9 +83,9 @@ Azure Stack Edge Pro GPU デバイスでコンピューティング ロールを
 
 ## <a name="add-a-module"></a>モジュールを追加する
 
-カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 デバイスには、事前に構築されたモジュールもカスタム モジュールも付属していません。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro デバイス用の C# モジュールの開発](azure-stack-edge-j-series-create-iot-edge-module.md)に関するページを参照してください。
+カスタム モジュールまたはあらかじめ構築されたモジュールを追加できます。 デバイスには、事前に構築されたモジュールもカスタム モジュールも付属していません。 カスタム モジュールを作成する方法については、[Azure Stack Edge Pro デバイス用の C# モジュールの開発](./azure-stack-edge-gpu-create-iot-edge-module.md)に関するページを参照してください。
 
-このセクションでは、[Azure Stack Edge Pro 用の C# モジュールの開発](azure-stack-edge-j-series-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
+このセクションでは、[Azure Stack Edge Pro 用の C# モジュールの開発](./azure-stack-edge-gpu-create-iot-edge-module.md)に関するページでお客様が作成したカスタム モジュールを IoT Edge デバイスに追加します。 このカスタム モジュールによって、Edge デバイス上の Edge ローカル共有からファイルが受け取られ、デバイス上の Edge (クラウド) 共有にそれらが移動されます。 その後、クラウド共有から、そのクラウド共有に関連付けられた Azure ストレージ アカウントにファイルがプッシュされます。
 
 モジュールを追加するには、次の手順を実行します。
 

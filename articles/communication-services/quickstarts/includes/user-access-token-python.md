@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 08/20/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: b4a5dcbd6bc0a6468e8ac8cc7edc8589ea380b28
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 68114893ed3db858d00ca7811b1a83395ff02507
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657096"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495324"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "101657096"
 
    ```python
    import os
-   from azure.communication.identity import CommunicationIdentityClient
+   from azure.communication.identity import CommunicationIdentityClient, CommunicationUserIdentifier
 
    try:
       print('Azure Communication Services - Access Tokens Quickstart')
@@ -82,7 +82,7 @@ Azure Communication Services は、軽量の ID ディレクトリを保持し�
 
 ```python
 identity = client.create_user()
-print("\nCreated an identity with ID: " + identity.identifier + ":")
+print("\nCreated an identity with ID: " + identity.identifier)
 ```
 
 ## <a name="issue-access-tokens"></a>アクセス トークンを発行する
@@ -98,6 +98,21 @@ print(token_result.token)
 ```
 
 アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expires_on` 応答プロパティは、アクセス トークンの有効期間を示します。
+
+## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>ID を作成し、同じ要求内でアクセス トークンを発行する
+
+`create_user_with_token` メソッドを使用して、Communication Services ID を作成し、そのアクセス トークンを発行します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。
+
+```python
+# Issue an identity and an access token with the "voip" scope for the new identity
+identity_token_result = client.create_user_with_token(["voip"])
+identity = identity_token_result[0].identifier
+token = identity_token_result[1].token
+expires_on = identity_token_result[1].expires_on.strftime('%d/%m/%y %I:%M %S %p')
+print("\nCreated an identity with ID: " + identity)
+print("\nIssued an access token with 'voip' scope that expires at " + expires_on + ":")
+print(token)
+```
 
 ## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 
@@ -129,8 +144,8 @@ print("\nDeleted the identity with ID: " + identity.identifier)
 
 ## <a name="run-the-code"></a>コードの実行
 
-コンソール プロンプトから、*issue-access-token.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
+コンソール プロンプトから、*issue-access-tokens.py* ファイルが格納されているディレクトリに移動し、次の `python` コマンドを実行してアプリを実行します。
 
 ```console
-python ./issue-access-token.py
+python ./issue-access-tokens.py
 ```

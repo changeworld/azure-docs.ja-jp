@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: a36b37c1f0118055d931f785f570a10041e2dbfc
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6e77f983f3600ae7c54d7d88f2ad1a006d7325fa
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965699"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102614192"
 ---
 # <a name="how-to-protect-private-dns-zones-and-records"></a>プライベート DNS ゾーンとレコードを保護する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "94965699"
 
 プライベート DNS ゾーンとレコードは、重要なリソースです。 DNS ゾーンまたは DNS レコードを削除すると、サービス全体が停止する可能性があります。 DNS ゾーンとレコードは、承認されていない変更や意図しない変更が加えられないように保護することが重要です。
 
-この記事では、Azure DNS でプライベート DNS ゾーンとレコードをこのような変更から保護する方法について説明します。  Azure Resource Manager によって提供される次の 2 つの強力なセキュリティ機能を適用します: [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) と[リソース ロック](../azure-resource-manager/management/lock-resources.md)。
+この記事では、Azure DNS でプライベート DNS ゾーンとレコードをこのような変更から保護する方法について説明します。  Azure Resource Manager によって提供される 2 つの強力なセキュリティ機能である、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) と[リソース ロック](../azure-resource-manager/management/lock-resources.md)を適用します。
 
 ## <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 
@@ -204,7 +204,7 @@ Azure Resource Manager は、別のタイプのセキュリティ制御をサポ
 
 ![Azure Portal を使用したゾーン レベルのリソース ロック](./media/dns-protect-private-zones-recordsets/locks1.png)
 
-ゾーン レベルのリソース ロックは、[Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest) を使用して作成することもできます。
+ゾーン レベルのリソース ロックは、[Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) を使用して作成することもできます。
 
 ```azurepowershell-interactive
 # Lock a DNS zone
@@ -218,7 +218,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-また、同じ目的を果たせるコマンドを [Azure CLI から実行する](/cli/azure/lock?view=azure-cli-latest#az-lock-create)こともできます。
+また、同じ目的を果たせるコマンドを [Azure CLI から実行する](/cli/azure/lock#az-lock-create)こともできます。
 
 ```azurecli-interactive
 # Lock a DNS zone

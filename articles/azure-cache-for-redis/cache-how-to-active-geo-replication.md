@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: d52998e477e44f89a35a70f7e2b5d49cbc68e386
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: fe777c3aa7b314dc56a42cc64712d18281a6ea7d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660487"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102121169"
 ---
 # <a name="configure-active-geo-replication-for-enterprise-azure-cache-for-redis-instances-preview"></a>Enterprise Azure Cache for Redis インスタンスのアクティブ geo レプリケーションを構成する (プレビュー)
 
@@ -36,7 +36,7 @@ ms.locfileid: "101660487"
 
 1. **[構成]** をクリックして完了します。
 
-    ![キャッシュのリンク](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
+    ![構成されたアクティブ geo レプリケーション](./media/cache-how-to-active-geo-replication/cache-active-geo-replication-configured.png)
 
 1. Geo レプリケーション グループ内の追加のキャッシュ インスタンスごとに、上記の手順を繰り返します。
 

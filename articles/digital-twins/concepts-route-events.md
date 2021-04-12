@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: c51f8c894c9a88b6ae81460623eec616d29b62ff
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ea412b695c12f3ff7fdfa6250e2a474b618b8032
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99050517"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102430923"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -73,7 +73,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
  
 イベント ルートを作成するには、Azure Digital Twins [REST API、CLI コマンド](how-to-manage-routes-apis-cli.md#create-an-event-route)、または [Azure portal](how-to-manage-routes-portal.md#create-an-event-route) を使用できます。
 
-次に示すのは、`CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
+次に示すのは、`CreateOrReplaceEventRouteAsync` [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client) 呼び出しを使用して、クライアント アプリケーション内でイベント ルートを作成する例です。 
 
 :::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/eventRoute_operations.cs" id="CreateEventRoute":::
 

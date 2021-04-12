@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/18/2021
-ms.openlocfilehash: fda76fd16787c01b9fc35ef63473be215a2c126d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 25e39d3fc9c56a282714bafb630fee65421fb5ac
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740054"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104606669"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>データのコピー ツールを使用し LastModifiedDate に基づいて新しいファイルおよび変更されたファイルを増分コピーする
 
@@ -55,7 +55,7 @@ ms.locfileid: "101740054"
 
    データ ファクトリの名前はグローバルに一意にする必要があります。 このエラー メッセージが表示されることもあります。
 
-   ![名前が使用できないことを示すエラー メッセージ](./media/doc-common-process/name-not-available-error.png)
+    :::image type="content" source="./media/doc-common-process/name-not-available-error.png" alt-text="重複する名前に関する、新しい Data Factory のエラーメッセージ。":::
 
    データ ファクトリの名前の値に関するエラー メッセージが表示された場合は、別の名前を入力してください。 たとえば、_**yourname**_**ADFTutorialDataFactory** という名前を使用します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](naming-rules.md)に関する記事をご覧ください。
 3. **[サブスクリプション]** で、新しいデータ ファクトリの作成先となる Azure サブスクリプションを選択します。
@@ -73,7 +73,7 @@ ms.locfileid: "101740054"
 9. データ ファクトリが作成されるとデータ ファクトリのホーム ページが表示されます。
 10. 別のタブで Azure Data Factory ユーザー インターフェイス (UI) を開くには、 **[Author & Monitor]\(作成と監視\)** タイルを選択します。
 
-    ![データ ファクトリのホーム ページ](./media/doc-common-process/data-factory-home-page.png)
+    :::image type="content" source="./media/doc-common-process/data-factory-home-page.png" alt-text="[作成と監視] タイルが含まれた Azure Data Factory のホーム ページ。":::
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>データのコピー ツールを使用してパイプラインを作成する
 

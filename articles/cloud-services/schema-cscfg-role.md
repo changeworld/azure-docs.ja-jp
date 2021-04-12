@@ -3,17 +3,18 @@ title: Azure Cloud Services (クラシック) のロール スキーマ | Micros
 description: サービス構成ファイルの Role 要素では、ロールごとにデプロイするロール インスタンスの数、構成値、および証明書のサムプリントを指定します。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2dc8e14a4e4d8855abb615632bb7d43b9034d360
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: dd46a37ada1fb96797faee6c8491359561e065d7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98743442"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934157"
 ---
 # <a name="azure-cloud-services-classic-config-role-schema"></a>Azure Cloud Services (クラシック) 構成のロール スキーマ
 

@@ -5,13 +5,14 @@ author: sread
 ms.author: sread
 ms.date: 03/30/2020
 ms.topic: article
-ms.service: multiple
-ms.openlocfilehash: 2d48c767b836771600b3491299e0bdb33aacb75b
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
+ms.openlocfilehash: 9ef9dd27183b6c23762dcdc2d5a844123d35559a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733151"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045962"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure で Micro Focus Enterprise Developer 4.0 用の Micro Focus CICS BankDemo を設定する
 
@@ -275,5 +276,5 @@ BankDemo アプリケーションにアクセスする TN3270 セッション用
 - [Azure の Docker コンテナーで Enterprise Server を実行する](run-enterprise-server-container.md)
 - [メインフレーム移行 - Portal](/archive/blogs/azurecat/mainframe-migration-to-azure-portal)
 - [Virtual Machines](../../../linux/overview.md)
-- [トラブルシューティング](../../../troubleshooting/index.yml)
+- [トラブルシューティング](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

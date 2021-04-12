@@ -4,16 +4,17 @@ description: Azure Data Factory パイプラインでコピー アクティビ�
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 06/28/2020
+ms.date: 03/17/2021
 ms.author: jingwang
-ms.openlocfilehash: 95ecb44f154ab84a60a1ee673826d83fc51305b3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: af907704862e80a2747ac064b98242a1d9d7edb3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383502"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104588870"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Azure Data Factory を使用して IBM Informix をコピー元またはコピー先としてデータをコピーする
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、IBM Informix データ ストアからデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
@@ -27,12 +28,13 @@ ms.locfileid: "100383502"
 
 Informix ソースのデータをサポートされる任意のシンク データ ストアにコピーしたり、サポートされる任意のソース データ ストアのデータを Informix シンクにコピーしたりできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
+
 ## <a name="prerequisites"></a>前提条件
 
 この Informix コネクタを使用するには、次の手順が必要です。
 
 - セルフホステッド統合ランタイムをセットアップする。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
-- データ ストア用の Informix ODBC ドライバーを Integration Runtime マシンにインストールする。 たとえば、ドライバー "IBM INFORMIX Informix DRIVER (64 ビット)" を使用できます。
+- データ ストア用の Informix ODBC ドライバーを Integration Runtime マシンにインストールする。 ドライバーのインストールとセットアップについては、IBM Knowledge Center の記事「[Informix ODBC ドライバー ガイド](https://www.ibm.com/support/knowledgecenter/SSGU8G_11.70.0/com.ibm.odbc.doc/odbc.htm)」で詳細を参照するか、IBM のサポート チームにドライバーのインストールのガイダンスを問い合わせてください。
 
 ## <a name="getting-started"></a>作業の開始
 
@@ -162,6 +164,7 @@ Informix にデータをコピーするために、コピー アクティビテ�
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例:"00:30:00" (30 分)。 |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 0 - 自動検出) |
 | preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 **例:**
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e94d9d586f15c228436a8a9d48fb12c26369c449
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 74a3fe79291f3a5c7f5bbd664bf6d55a5fb77eae
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742335"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102181195"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
@@ -352,5 +352,5 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
 [acr-aks]: cluster-container-registry-integration.md
 [acr-create]: ../container-registry/container-registry-get-started-azure-cli.md
 [aks-quickstart]: ./index.yml
-[azure-cli]: /cli/azure/?view=azure-cli-latest
+[azure-cli]: /cli/azure/
 [storage-account]: ../storage/blobs/storage-quickstart-blobs-cli.md

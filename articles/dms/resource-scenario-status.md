@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
-ms.openlocfilehash: cc3323a3ae2d604557d7e09b38252d63f17c5470
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: fc2ab86a318086750b11780a7802aa3591065264
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319918"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103463512"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -25,7 +25,7 @@ Azure Database Migration Service は、オフライン (1 回限り) とオン�
 
 ## <a name="offline-versus-online-migrations"></a>オフライン移行とオンライン移行
 
-Azure Database Migration Service では、オフラインまたはオンラインの移行を行えます。 " *オフライン* " 移行では、移行開始と同時にアプリケーションのダウンタイムが始まります。 ダウンタイムを、移行が完了して新しい環境に切り替えるために必要な時間に抑えるには、" *オンライン* " 移行を使用します。 オフライン移行をテストして、ダウンタイムが許容可能かどうかを判断することをお勧めします。できない場合は、オンライン移行を行います。
+Azure Database Migration Service では、オフラインまたはオンラインの移行を行えます。 "*オフライン*" 移行では、移行開始と同時にアプリケーションのダウンタイムが始まります。 ダウンタイムを、移行が完了して新しい環境に切り替えるために必要な時間に抑えるには、"*オンライン*" 移行を使用します。 オフライン移行をテストして、ダウンタイムが許容可能かどうかを判断することをお勧めします。できない場合は、オンライン移行を行います。
 
 ## <a name="migration-scenario-status"></a>データベース移行シナリオの状態
 
@@ -69,11 +69,11 @@ Azure Database Migration Service によってサポートされる移行シナ�
 
 | 移行先  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+| **Azure SQL DB** | SQL Server | X |  |
+|   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
-|   | RDS SQL | ✔ | GA |
+|   | RDS SQL | X |  |
 |   | Oracle | X |  |
 | **Azure SQL VM** | SQL Server | X |   |
 |   | Oracle  | X |  |
@@ -83,9 +83,12 @@ Azure Database Migration Service によってサポートされる移行シナ�
 | **Azure DB for PostgreSQL - 単一サーバー** | PostgreSQL | ✔ | GA |
 |   | Azure DB for PostgreSQL - 単一サーバー | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
-|   | Oracle | ✔ | パブリック プレビュー |
+|   | Oracle | ✔ | パブリックプ レビュー (2021 年 5 月 1 以降、非推奨となる予定) |
 | **Azure DB for PostgreSQL - Hyperscale (Citus)** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |
+
+> [!IMPORTANT]
+> 2021 年 5 月 1 以降、「Oracle から Azure Database for PostgreSQL へ」の移行シナリオ (現在プレビュー段階) は使用できなくなります。 引き続き別のツール (Ora2pg など) を使用してサポートを提供し、Oracle から PostgreSQL への移行に最適な移行エクスペリエンスを提供します。 移行のベスト プラクティスについては、「[Oracle から Azure Database for PostgreSQL への移行ガイド](https://aka.ms/OracletoPGguide)」を参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -8,17 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 704763e8e6e7c5336d0ed3e1c28791fb96c77aba
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 0f233bdff54822037d15fde9ac62e34193794ad3
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844942"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110310"
 ---
-#     <a name="custom-entity-lookup-cognitive-skill-preview"></a>カスタム エンティティの参照認知スキル (プレビュー)
-
-> [!IMPORTANT] 
-> このスキルは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 現時点では、ポータルと .NET SDK によるサポートはありません。
+#     <a name="custom-entity-lookup-cognitive-skill"></a>カスタム エンティティの参照認知スキル
 
 **カスタム エンティティの参照** スキルを使うと、ユーザーが定義したカスタムの単語と語句の一覧からテキストを検索できます。 この一覧を使用して、エンティティが一致するすべての文書がラベル付けされます。 このスキルは、ある程度のあいまい一致もサポートしており、類似しているが完全一致ではない一致を見つけるために適用できます。  
 

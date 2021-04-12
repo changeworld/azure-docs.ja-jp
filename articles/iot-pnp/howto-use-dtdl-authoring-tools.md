@@ -7,12 +7,12 @@ ms.date: 09/14/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 40d1ae4da07e159c24970c065d1c39e22b89a29a
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 62a89fbb654624e1b1f9242d21d3bbb188140157
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280201"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067488"
 ---
 # <a name="install-and-use-the-dtdl-authoring-tools"></a>DTDL 作成ツールをインストールして使用する
 
@@ -47,7 +47,7 @@ Visual Studio 2019 用の DTDL 拡張機能により、以下の DTDL 作成機�
 - DTDL v2 構文の検証。
 - IntelliSense (オートコンプリートを含む) は、言語の構文についてユーザーを支援します。
 
-DTDL 拡張機能をインストールするには、「[VS 2019 に対する DTDL 言語のサポート](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16dtdllanguagesupport)」を参照してください。 Visual Studio の **[拡張機能の管理]** で、 **DTDL** を検索することもできます。
+DTDL 拡張機能をインストールするには、「[VS 2019 に対する DTDL 言語のサポート](https://marketplace.visualstudio.com/items?itemName=vsc-iot.vs16dtdllanguagesupport)」を参照してください。 Visual Studio の **[拡張機能の管理]** で、**DTDL** を検索することもできます。
 
 拡張機能をインストールしたら、Visual Studio で DTDL モデル ファイルを作成するのに役立てます。
 

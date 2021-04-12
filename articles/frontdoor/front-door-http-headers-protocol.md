@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2020
 ms.author: duau
-ms.openlocfilehash: 7f40b48473c04238d504288307039948fcacf90a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5989f91233448c04d50ba1c69a06851b91426a03
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511146"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167806"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door"></a>Azure Front Door での HTTP ヘッダー プロトコルのサポート
 この記事では、呼び出しパスの各部で Front Door がサポートするプロトコルの概要を示します (画像を参照)。 以下のセクションでは、Front Door がサポートする HTTP ヘッダーについて詳しく説明します。
@@ -40,7 +40,7 @@ Front Door では、制限により削除されない限り、受信した要求
 | X-Azure-SocketIP |  *X-Azure-SocketIP: 127.0.0.1* </br> TCP 接続に関連付けられた、ソケットの IP アドレス (現在の要求の送信元) を表します。 要求のクライアント IP アドレスは、ユーザーが任意に上書きできるので、ソケットの IP アドレスと同じではない場合もあります。|
 | X-Azure-Ref | *X-Azure-Ref:0zxV+XAAAAABKMMOjBv2NT4TY6SQVjC0zV1NURURHRTA2MTkANDM3YzgyY2QtMzYwYS00YTU0LTk0YzMtNWZmNzA3NjQ3Nzgz* </br> Front Door によって提供される要求を示す一意の参照文字列です。 これは、アクセス ログの検索に使用されるため、トラブルシューティングにおいて重要です。|
 | X-Azure-RequestChain | *X-Azure-RequestChain: hops=1* </br> Front Door が要求ループの検出に使用するヘッダーであり、ユーザーはそれに対する依存関係を取得することはできません。 |
-| X-Azure-FDID | *X-Azure-FDID:55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> 特定の Front Door リソースからの要求を識別する参照文字列です。 この値は、Azure portal で確認することも、管理 API を使用して取得することもできます。 このヘッダーを IP ACL と組み合わせて使用して、特定の Front Door リソースからの要求のみを受け入れるようにエンドポイントをロック ダウンすることができます。 [詳細](front-door-faq.md#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)については、FAQ を参照してください。 |
+| X-Azure-FDID | *X-Azure-FDID:55ce4ed1-4b06-4bf1-b40e-4638452104da* <br/> 特定の Front Door リソースからの要求を識別する参照文字列です。 この値は、Azure portal で確認することも、管理 API を使用して取得することもできます。 このヘッダーを IP ACL と組み合わせて使用して、特定の Front Door リソースからの要求のみを受け入れるようにエンドポイントをロック ダウンすることができます。 [詳細](front-door-faq.yml#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-)については、FAQ を参照してください。 |
 | X-Forwarded-For | *X-Forwarded-For: 127.0.0.1* </br> X-Forwarded-For (XFF) HTTP ヘッダー フィールドは、HTTP プロキシまたはロード バランサーを経由して Web サーバーに接続しているクライアントの発信元 IP アドレスを識別することがよくあります。 既存の XFF ヘッダーがあった場合、Front Door はそのヘッダーにクライアント ソケット IP を追加するか、クライアント ソケット IP を使用した XFF ヘッダーを追加します。 |
 | X-Forwarded-Host | *X-Forwarded-Host: contoso.azurefd.net* </br> X-Forwarded-Host HTTP ヘッダー フィールドは、Host HTTP 要求ヘッダー内でクライアントによって要求された元のホストを識別するために一般的に使用される方法です。 これは、要求を処理するバックエンド サーバーによって Front Door からのホスト名が異なる場合があるからです。 |
 | X-Forwarded-Proto | *X-Forwarded-Proto: http* </br> X-Forwarded-Proto HTTP ヘッダーフィールドは、HTTP 要求の発信元のプロトコルを識別するために使用されることがよくあります。 Front Door は構成に基づいて、HTTPS を使用してバックエンドと通信する場合があります。 これは、リバース プロキシへの要求が HTTP である場合でも当てはまります。 |

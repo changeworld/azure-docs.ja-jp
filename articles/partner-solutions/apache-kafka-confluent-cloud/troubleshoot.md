@@ -3,15 +3,15 @@ title: Apache Kafka for Confluent Cloud のトラブルシューティング - A
 description: この記事では、Confluent Cloud on Azure に関するトラブルシューティングとよく寄せられる質問 (FAQ) について説明します。
 ms.service: partner-services
 ms.topic: conceptual
-ms.date: 01/15/2021
+ms.date: 02/18/2021
 author: tfitzmac
 ms.author: tomfitz
-ms.openlocfilehash: cbf166086a489165e8100dafd7c212ab6c298b41
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: b1e4b06fcbecf11d7d5f58a583fe3bd6643d99ec
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253287"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101709396"
 ---
 # <a name="troubleshooting-apache-kafka-for-confluent-cloud-solutions"></a>Apache Kafka for Confluent Cloud ソリューションのトラブルシューティング
 
@@ -28,6 +28,16 @@ Azure Marketplace でオファーを見つけるには、次の手順を使用�
 1. アプリケーション タイルを選択します。
 
 オファーが表示されない場合は、[Confluent サポート](https://support.confluent.io)にお問い合わせください。 Azure Active Directory テナント ID は、許可されているテナントの一覧にある必要があります。 テナント ID を見つける方法については、「[Azure Active Directory のテナント ID を見つける方法](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)」を参照してください。
+
+## <a name="purchase-errors"></a>購入エラー
+
+* 購入に失敗するのは、有効なクレジット カードが Azure サブスクリプションに接続されていないか、支払い方法がサブスクリプションに関連付けられていないためです。
+
+  別の Azure サブスクリプションを使用してください。 または、サブスクリプションのクレジット カードまたは支払い方法を追加するか、更新してください。 詳細については、[クレジットと支払い方法の更新](../../cost-management-billing/manage/change-credit-card.md)に関するページを参照してください。
+
+* この EA サブスクリプションでは、Marketplace での購入は許可されていません。
+
+  別のサブスクリプションを使用してください。 または、お使いの EA サブスクリプションで Marketplace の購入が有効かどうかを確認してください。 詳細については、[Marketplace での購入を有効にする](../../cost-management-billing/manage/ea-azure-marketplace.md#enabling-azure-marketplace-purchases)方法に関する記事を参照してください。 これらの方法で問題が解決しない場合は、[Confluent のサポート](https://support.confluent.io)にお問い合わせください。
 
 ## <a name="conflict-error"></a>競合のエラー
 

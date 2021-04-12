@@ -9,12 +9,12 @@ ms.subservice: extensions
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 3350ff7aa05232173e5fd3b21451a76a0a40683d
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 8805b3c4947311a3054066b3378d881d673c2b14
+ms.sourcegitcommit: 956dec4650e551bdede45d96507c95ecd7a01ec9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102043713"
+ms.lasthandoff: 03/09/2021
+ms.locfileid: "102521749"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>プレビュー: Azure の仮想マシン スケール セットのオーケストレーション モード 
 
@@ -128,7 +128,7 @@ Virtual Machine Scale Sets では、スケール セットに属するインス�
 |         Azure アラート  |            いいえ  |            はい  |            はい  |
 |         VM Insights  |            いいえ  |            はい  |            はい  |
 |         Azure Backup  |            はい  |            はい  |            はい  |
-|         Azure Site Recovery  |            はい。PowerShell のみ  |            はい  |            はい  |
+|         Azure Site Recovery  |            いいえ  |            いいえ  |            はい  |
 |         グループに対する既存の VM の追加/削除  |            いいえ  |            いいえ  |            いいえ  | 
 
 
@@ -322,7 +322,7 @@ InvalidParameter. The specified fault domain count 2 must fall in the range 1 to
 
 **原因:** 選択したリージョンまたはゾーンで `platformFaultDomainCount` パラメーターが無効です。 
 
-**解決策:** 有効な `platformFaultDomainCount` 値を選択する必要があります。 ゾーン デプロイの場合、`platformFaultDomainCount` の最大値は 1 です。 ゾーンが指定されていないリージョン デプロイの場合、`platformFaultDomainCount` の最大値はリージョンによって異なります。 スクリプトでリージョンあたりの障害ドメインの最大数を判断するには、[VM の可用性の管理](../virtual-machines/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set)に関するページを参照してください。 
+**解決策:** 有効な `platformFaultDomainCount` 値を選択する必要があります。 ゾーン デプロイの場合、`platformFaultDomainCount` の最大値は 1 です。 ゾーンが指定されていないリージョン デプロイの場合、`platformFaultDomainCount` の最大値はリージョンによって異なります。 スクリプトでリージョンあたりの障害ドメインの最大数を判断するには、[VM の可用性の管理](../virtual-machines/availability.md)に関するページを参照してください。 
 
 ```
 OperationNotAllowed. Deletion of Virtual Machine Scale Set is not allowed as it contains one or more VMs. Please delete or detach the VM(s) before deleting the Virtual Machine Scale Set.

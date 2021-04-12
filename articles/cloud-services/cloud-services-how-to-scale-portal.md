@@ -3,17 +3,18 @@ title: ポータルでのクラウド サービス (クラシック) の自動�
 description: ポータルを使用して、Azure でクラウド サービスのロール (クラシック) の自動スケール ルールを構成する方法について説明します。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: autoscale
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: ba7b2279969acab93ac96c42e0033e76e9d0542d
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: ddf0f97e78ebc6f1eb8eade0d1842c912d167155
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99980832"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935944"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-classic-in-the-portal"></a>ポータルでクラウド サービス (クラシック) の自動スケールを構成する方法
 

@@ -1230,6 +1230,8 @@
               href: virtual-machines/linux/rhel-high-availability-stonith-tutorial.md
             - name: Azure の RHEL 仮想マシンで SQL Server の可用性グループ リスナーを構成する
               href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
+            - name: DH2i DxEnterprise を使用して Always On 可用性グループをセットアップする
+              href: virtual-machines/linux/dh2i-high-availability-tutorial.md
         - name: リソース
           items:
             - name: よく寄せられる質問

@@ -3,16 +3,16 @@ title: Fsv2 シリーズ
 description: Fsv2 シリーズ VM の仕様。
 author: brbell
 ms.service: virtual-machines
-ms.subservice: sizes
+ms.subservice: vm-sizes-compute
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: e738a3e18d4ee16b2bbfd7edb6cc32152bb82b48
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 7181766d366358719a32b5e7a7f4eeb82de5e935
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100557806"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102549160"
 ---
 # <a name="fsv2-series"></a>Fsv2 シリーズ
 

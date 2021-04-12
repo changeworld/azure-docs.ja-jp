@@ -1,17 +1,17 @@
 ---
 title: サーバー パラメーターを構成する - Azure portal - Azure Database for PostgreSQL - フレキシブル サーバー
 description: この記事では、Azure portal を使用して Azure Database for PostgreSQL フレキシブル サーバーの Postgres パラメーターを構成する方法について説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 4f945c2c7fffb143bdb8324a330775fb072b25c1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29d85cc33dc55f3819bba6898a265c46b7e7ef85
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931182"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607441"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-postgresql---flexible-server-via-the-azure-portal"></a>Azure portal を使用して Azure Database for PostgreSQL - フレキシブル サーバーでサーバー パラメーターを構成する 
 
@@ -37,7 +37,7 @@ Azure portal を使用して、Azure Database for PostgreSQL フレキシブル 
 5. **[i]** (情報) ボタンを選択するかマウス ポインターを置いて、cpu_index_tuple_cost のような数値パラメーターに指定できる値の範囲を表示します。
 ![情報ボタン](./media/howto-configure-server-parameters-in-portal/4-information-button.png)
 
-6. 必要に応じて、**検索ボックス**を使用して、特定のパラメーターを絞り込みます。 検索は、パラメーターの名前と説明に対して実行されます。
+6. 必要に応じて、**検索ボックス** を使用して、特定のパラメーターを絞り込みます。 検索は、パラメーターの名前と説明に対して実行されます。
 ![検索結果](./media/howto-configure-server-parameters-in-portal/5-search.png)
 
 7. 調整するパラメーターの値を変更します。 セッションで行ったすべての変更が紫色で強調表示されます。 値を変更したら、 **[保存]** を選択できます。 または変更を **[破棄]** することができます。

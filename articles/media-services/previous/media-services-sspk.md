@@ -3,7 +3,7 @@ title: Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 description: Microsoft&reg; Smooth Streaming Client Porting Kit のライセンスを取得する方法について説明します。
 services: media-services
 documentationcenter: ''
-author: xpouyat
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: e3b488e7-8428-4c10-a072-eb3af46c82ad
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 3/10/2021
 ms.author: xpouyat
-ms.openlocfilehash: 8e2217c04f5c39ad93185273d537324f4b56e456
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: f2c66b08d399ddf53686074079665e36be9aace7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100099542"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104870470"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Microsoft&reg; Smooth Streaming Client Porting Kit のライセンス
 
@@ -46,7 +46,7 @@ SSPK は、高い事業価値を提供する契約条件に基づいて使用許
   * ハードウェア A/V デコーダー (デコード、レンダリング) との連携を可能にするプログラミング インターフェイス
 * DRM (デジタル著作権管理) インターフェイス 
   * DRM アブストラクション レイヤー (DAL) を介して DRM を処理するためのプログラミング インターフェイス
-  * Microsoft PlayReady Porting Kit は別々に出荷されますが、このインターフェイスを介して連携します。 Microsoft PlayReady デバイスのライセンスの詳細については、 [ここ](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)をクリックしてください。
+  * Microsoft PlayReady Porting Kit は別々に出荷されますが、このインターフェイスを介して連携します。 [Microsoft PlayReady デバイスのライセンスの詳細を参照してください](https://www.microsoft.com/playready/licensing/device_technology.mspx#pddipdl)。
 * 実装サンプル 
   * サンプル PAL 実装 (Linux)
   * サンプル HAL 実装 (GStreamer)
@@ -135,7 +135,6 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Mega Fame Electronics Co. Limited
 * MIRC Electronics Limited
 * MOKA INTERNATIONAL LIMITED
-* Nintendo Co., Ltd.
 * ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
 * Panasonic Corporation
 * Qingdao Haier Optronics Co., Ltd.
@@ -148,7 +147,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Shenzhen Skyworth Digital Technology Co., Ltd
 * Sichuan Changhong Electric Co., Ltd.
 * Skardin Industrial Corp.
-* Sky Deutschland Fernsehen GmbH & Co. KG
+* Sky CP Ltd
 * SMARDTV GLOBAL SAS
 * SoftAtHome
 * Sony Corporation

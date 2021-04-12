@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8e82f8974b53224b3e471d1628a1ca5819ce2955
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 7108ee956c18fbcc150b56cbcb8ae1c69841dda4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044477"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102198589"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure Digital Twins インスタンスと認証を設定する (CLI)
 
@@ -93,7 +93,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 ## <a name="next-steps"></a>次のステップ
 
 Azure Digital Twins CLI コマンドを使用して、インスタンスでの個別の REST API 呼び出しをテストします。 
-* [az dt reference](/cli/azure/ext/azure-iot/dt?preserve-view=true&view=azure-cli-latest)
+* [az dt reference](/cli/azure/ext/azure-iot/dt)
 * [*方法: Azure Digital Twins CLI を使用する*](how-to-use-cli.md)
 
 または、認証コードを使用してクライアント アプリケーションをインスタンスに接続する方法を確認します。

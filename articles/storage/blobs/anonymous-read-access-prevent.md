@@ -10,12 +10,12 @@ ms.date: 12/09/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 179e60a41a9cd6a2277959b3cd31159c796d845d
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 53f29c2b8f7a17ac2a23cc081660e8dcb4b9f387
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937289"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101701860"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>コンテナーと BLOB への匿名パブリック読み取りアクセスを防ぐ
 
@@ -35,7 +35,7 @@ Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取
 
 ### <a name="monitor-anonymous-requests-with-metrics-explorer"></a>メトリックス エクスプローラーを使用した匿名要求の監視
 
-ストレージ アカウントに対する匿名要求を追跡するには、Azure portal で Azure メトリックス エクスプローラーを使用します。 メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/platform/metrics-getting-started.md)」を参照してください。
+ストレージ アカウントに対する匿名要求を追跡するには、Azure portal で Azure メトリックス エクスプローラーを使用します。 メトリックス エクスプローラーの詳細については、「[Azure メトリックス エクスプローラーの概要](../../azure-monitor/essentials/metrics-getting-started.md)」を参照してください。
 
 匿名要求を追跡するメトリックを作成するには、次の手順に従います。
 
@@ -61,7 +61,7 @@ Azure Storage 内のコンテナーと BLOB への匿名パブリック読み取
 
 :::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="BLOB ストレージに対する匿名要求の集計を示すスクリーンショット":::
 
-ストレージ アカウントに対して一定数の匿名要求が行われたら通知する警告ルールも構成できます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-metric.md)」を参照してください。
+ストレージ アカウントに対して一定数の匿名要求が行われたら通知する警告ルールも構成できます。 詳細については、「[Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-metric.md)」を参照してください。
 
 ### <a name="analyze-logs-to-identify-containers-receiving-anonymous-requests"></a>ログを分析して匿名要求を受信しているコンテナーを識別する
 
@@ -69,7 +69,7 @@ Azure Storage のログには、要求の承認方法など、ストレージ �
 
 Azure Monitor の Azure Storage ログ記録 (プレビュー) を使用すると、Azure Storage アカウントに対する要求をログに記録して、匿名要求を評価することができます。 詳細については、「[Azure Storage を監視する](./monitor-blob-storage.md)」を参照してください。
 
-Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/log-query/log-analytics-tutorial.md)」を参照してください。
+Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用したログ データの分析がサポートされています。 ログに対してクエリを実行するために、Azure Log Analytics ワークスペースを使用できます。 ログ クエリの詳細については、「[チュートリアル: Log Analytics クエリの使用方法](../../azure-monitor/logs/log-analytics-tutorial.md)」を参照してください。
 
 > [!NOTE]
 > Azure Monitor での Azure Storage のログ記録のプレビューは、Azure パブリック クラウドでのみサポートされています。 Government クラウドでは、Azure Monitor を使用した Azure Storage のログ記録はサポートされていません。
@@ -78,8 +78,7 @@ Azure Monitor の Azure Storage ログ記録では、ログ クエリを使用�
 
 Azure Monitor で Azure Storage のデータをログに記録し、Azure Log Analytics で分析するには、まず、データをログに記録する要求の種類とストレージ サービスを指示する診断設定を作成する必要があります。 Azure portal で診断設定を作成するには、これらの手順に従います。
 
-1. [Azure Monitor の Azure Storage ログ記録 (プレビュー)](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u) に登録します。
-1. ご利用の Azure Storage アカウントが含まれるサブスクリプションに、新しい Log Analytics ワークスペースを作成します。 ストレージ アカウントのログ記録を構成した後、Log Analytics ワークスペースでログを使用できるようになります。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
+1. ご利用の Azure Storage アカウントが含まれるサブスクリプションに、新しい Log Analytics ワークスペースを作成します。 ストレージ アカウントのログ記録を構成した後、Log Analytics ワークスペースでログを使用できるようになります。 詳細については、「[Azure ポータルで Log Analytics ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)」を参照してください。
 1. Azure Portal のストレージ アカウントに移動します。
 1. [監視] セクションで、 **[Diagnostic settings (preview)]\(診断設定 (プレビュー)\)** を選択します。
 1. BLOB ストレージに対して行われた要求をログに記録するには、 **[Blob]\(BLOB\)** を選択します。
@@ -90,7 +89,7 @@ Azure Monitor で Azure Storage のデータをログに記録し、Azure Log An
 
     :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="要求のログを記録するための診断設定の作成方法を示すスクリーンショット":::
 
-診断設定を作成した後、ストレージ アカウントに対する要求が、その設定に従ってログに記録されるようになります。 詳細については、[Azure でリソース ログとメトリックを収集するための診断設定の作成](../../azure-monitor/platform/diagnostic-settings.md)に関するページを参照してください。
+診断設定を作成した後、ストレージ アカウントに対する要求が、その設定に従ってログに記録されるようになります。 詳細については、[Azure でリソース ログとメトリックを収集するための診断設定の作成](../../azure-monitor/essentials/diagnostic-settings.md)に関するページを参照してください。
 
 Azure Monitor の Azure Storage ログで使用できるフィールドのリファレンスについては、「[リソース ログ (プレビュー)](./monitor-blob-storage-reference.md#resource-logs-preview)」を参照してください。
 
@@ -106,7 +105,7 @@ StorageBlobLogs
 | project TimeGenerated, AccountName, AuthenticationType, Uri
 ```
 
-このクエリに基づいて警告ルールを構成し、匿名要求の通知を受けることもできます。 詳細については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](../../azure-monitor/platform/alerts-log.md)」を参照してください。
+このクエリに基づいて警告ルールを構成し、匿名要求の通知を受けることもできます。 詳細については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-log.md)」を参照してください。
 
 ## <a name="remediate-anonymous-public-access"></a>匿名パブリック アクセスの修正
 
@@ -290,13 +289,13 @@ Deny 効果を持つポリシーを作成し、これをスコープに割り当
 
 ## <a name="permissions-for-allowing-or-disallowing-public-access"></a>パブリック アクセスを許可または禁止するためのアクセス許可
 
-ストレージ アカウントの **AllowBlobPublicAccess** プロパティを設定するには、ストレージ アカウントを作成および管理するためのアクセス許可が必要です。 これらのアクセス許可を提供する Azure ロールベースのアクセス制御 (Azure RBAC) ロールには、**Microsoft.Storage/storageAccounts/write** または **Microsoft.Storage/storageAccounts/\** _ アクションが含まれます。 このアクションの組み込みロールには、次のようなロールがあります。
+ストレージ アカウントの **AllowBlobPublicAccess** プロパティを設定するには、ストレージ アカウントを作成および管理するためのアクセス許可が必要です。 これらのアクセス許可を提供する Azure ロールベースのアクセス制御 (Azure RBAC) ロールには、**Microsoft.Storage/storageAccounts/write** または **Microsoft.Storage/storageAccounts/\*** アクションが含まれます。 このアクションの組み込みロールには、次のようなロールがあります。
 
 - Azure Resource Manager の[所有者](../../role-based-access-control/built-in-roles.md#owner)ロール
 - Azure Resource Manager の[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロール
 - [Storage Account の共同作成者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)ロール
 
-これらのロールでは、Azure Active Directory (Azure AD) を使用してストレージ アカウントのデータにアクセスすることはできません。 ただし、アカウント アクセス キーへのアクセスを許可する _*Microsoft.Storage/storageAccounts/listkeys/action** が含まれています。 このアクセス許可では、ユーザーがアカウント アクセス キーを使用して、ストレージ アカウント内のすべてのデータにアクセスできます。
+これらのロールでは、Azure Active Directory (Azure AD) を使用してストレージ アカウントのデータにアクセスすることはできません。 ただし、アカウント アクセス キーへのアクセスを許可する **Microsoft.Storage/storageAccounts/listkeys/action** が含まれています。 このアクセス許可では、ユーザーがアカウント アクセス キーを使用して、ストレージ アカウント内のすべてのデータにアクセスできます。
 
 ユーザーがストレージ アカウントに対するパブリック アクセスを許可または禁止できるようにするには、ロール割り当てのスコープをストレージ アカウント以上のレベルにする必要があります。 ロール スコープの詳細については、「[Azure RBAC のスコープについて](../../role-based-access-control/scope-overview.md)」を参照してください。
 

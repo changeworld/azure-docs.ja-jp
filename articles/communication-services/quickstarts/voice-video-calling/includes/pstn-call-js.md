@@ -2,14 +2,14 @@
 author: nikuklic
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/11/2020
+ms.date: 03/10/2021
 ms.author: nikuklic
-ms.openlocfilehash: 5c00e88e228bf752f18c51741b89463012510e4c
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: df8d3bb5986fd31f4a9079b6e6e077126867dbfe
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100552137"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104729500"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>前提条件
@@ -90,7 +90,7 @@ Communication Services リソースで取得した電話番号を指定してく
 callPhoneButton.addEventListener("click", () => {
   // start a call to phone
   const phoneToCall = calleePhoneInput.value;
-  call = callAgent.call(
+  call = callAgent.startCall(
     [{phoneNumber: phoneToCall}], { alternateCallerId: {phoneNumber: 'YOUR AZURE REGISTERED PHONE NUMBER HERE: +12223334444'}
   });
   // toggle button states

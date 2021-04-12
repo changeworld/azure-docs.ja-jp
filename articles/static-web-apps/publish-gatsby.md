@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
 ms.openlocfilehash: 4430ed34858077b13b4fec69756c1c7e9f3ef7ac
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652372"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>チュートリアル:Gatsby サイトを Azure Static Web Apps プレビューに発行する
@@ -86,9 +86,9 @@ Gatsby コマンド ライン インターフェイス (CLI) を使用して Gat
 
 1. [Azure Portal](https://portal.azure.com) に移動します
 1. **[リソースの作成]** をクリックします
-1. **Static Web Apps** を検索します
+1. **[Static Web Apps]** を探します
 1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
-1. **[作成]** をクリックします。
+1. **[作成]**
 
    :::image type="content" source="./media/publish-gatsby/create-in-portal.png" alt-text="ポータルでの Static Web Apps (プレビュー) の作成":::
 

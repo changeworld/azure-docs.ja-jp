@@ -4,15 +4,15 @@ description: AzCopy 操作の認証資格情報は、Azure Active Directory (Azu
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 04/01/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 99e06a36c2afa66f2874c14990d50c6287623efd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: dd3aeaf133c02ef54eceaff776ead34cc2318260
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672493"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220479"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>AzCopy と Azure Active Directory (Azure AD) を使用して BLOB へのアクセスを承認する
 
@@ -261,9 +261,10 @@ export AZCOPY_MSI_RESOURCE_STRING=<resource-id>
 export AZCOPY_AUTO_LOGIN_TYPE=SPN
 export AZCOPY_SPA_APPLICATION_ID=<application-id>
 export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
+export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-`<application-id>` プレースホルダーを、ご自分のサービス プリンシパルのアプリ登録のアプリケーション ID に置き換えます。 `<client-secret>` プレースホルダーをクライアント シークレットに置き換えます。
+`<application-id>` プレースホルダーを、ご自分のサービス プリンシパルのアプリ登録のアプリケーション ID に置き換えます。 `<client-secret>` プレースホルダーをクライアント シークレットに置き換えます。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。 
 
 > [!NOTE]
 > プロンプトを使用して、ユーザーからパスワードを収集することを検討してください。 そうすることで、お使いのパスワードがコマンドの履歴に表示されなくなります。 
@@ -282,9 +283,10 @@ export AZCOPY_SPA_CLIENT_SECRET=<client-secret>
 export AZCOPY_AUTO_LOGIN_TYPE=SPN
 export AZCOPY_SPA_CERT_PATH=<path-to-certificate-file>
 export AZCOPY_SPA_CERT_PASSWORD=<certificate-password>
+export AZCOPY_TENANT_ID=<tenant-id>
 ```
 
-`<path-to-certificate-file>` プレースホルダーを、証明書ファイルの相対または完全修飾パスに置き換えます。 AzCopy は、この証明書のパスを保存しますが、証明書のコピーは保存しません。そのため、必ず所定の場所にその証明書を保持してください。 `<certificate-password>` プレースホルダーを証明書のパスワードに置き換えます。
+`<path-to-certificate-file>` プレースホルダーを、証明書ファイルの相対または完全修飾パスに置き換えます。 AzCopy は、この証明書のパスを保存しますが、証明書のコピーは保存しません。そのため、必ず所定の場所にその証明書を保持してください。 `<certificate-password>` プレースホルダーを証明書のパスワードに置き換えます。 `<tenant-id>` プレースホルダーを、ストレージ アカウントが属する組織のテナント ID に置き換えます。 テナント ID を確認するには、Azure portal 内で **[Azure Active Directory] > [プロパティ] > [ディレクトリ ID]** の順に選択します。 
 
 > [!NOTE]
 > プロンプトを使用して、ユーザーからパスワードを収集することを検討してください。 そうすることで、お使いのパスワードがコマンドの履歴に表示されなくなります。 

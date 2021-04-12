@@ -4,12 +4,12 @@ description: Auzre Application Insights にデータが表示されない場合�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/21/2020
-ms.openlocfilehash: e41b0a9ce1ff86bc6010e12fdf5d3320f303fd87
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: fbf53f6d4a928215d25874f4e405147c73cbf81f
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092453"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056574"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET、Application Insights for .NET Core
 
@@ -68,11 +68,11 @@ ms.locfileid: "99092453"
     </TelemetryModules>
     ```
 
-**_正常にアップグレードできないと、予期しない例外が発生したり、テレメトリが収集されなかったりする可能性があります。_* _
+***正常にアップグレードできないと、予期しない例外が発生したり、テレメトリが収集されなかったりする可能性があります。***
 
 
 ## <a name="no-add-application-insights-option-in-visual-studio"></a><a name="q01"></a>Visual Studio に [Application Insights の追加] オプションが表示されない
-_ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
+*ソリューション エクスプローラーで既存のプロジェクトを右クリックしたときに、Application Insights のオプションが表示されません。*
 
 * このツールでは、一部の種類の .NET プロジェクトがサポートされません。 Web プロジェクトと WCF プロジェクトはサポートされます。 その他の種類のプロジェクト (デスクトップ アプリケーション、サービス アプリケーションなど) では、 [Application Insights SDK を手動でプロジェクトに追加](./windows-desktop.md)できます。
 * [Visual Studio 2013 Update 3 以降](/visualstudio/releasenotes/vs2013-update3-rtm-vs)を使用しているかご確認ください。 これは、Application Insights SDK を提供する Developer Analytics Tools と共に事前インストールされています。
@@ -224,7 +224,7 @@ Application Insights をインストールしているとき、またはログ �
 
     ```xml
     <TelemetryModules>
-      <Add Type="Microsoft.ApplicationInsights.Extensibility.HostingStartup.FileDiagnosticsTelemetryModule, Microsoft.AspNet.ApplicationInsights.HostingStartup">
+      <Add Type="Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.FileDiagnosticsTelemetryModule, Microsoft.ApplicationInsights">
         <Severity>Verbose</Severity>
         <LogFileName>mylog.txt</LogFileName>
         <LogFilePath>C:\\SDKLOGS</LogFilePath>
@@ -282,7 +282,9 @@ PerfView.exe collect -MaxCollectSec:300 -NoGui /onlyProviders=*Microsoft-Applica
 
 ## <a name="collect-logs-with-dotnet-trace"></a>dotnet-trace を使用してログを収集する
 
-Linux ベースの環境で特に役立つ可能性があるトラブルシューティングのためにログを収集する別の方法は、[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) です
+別の方法として、お客様はクロスプラットフォームの .NET Core ツール [`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) を使用してログを収集することもできます。これが、トラブルシューティングにさらに役立つ可能性があります。 これは、Linux ベースの環境では特に便利です。
+
+[`dotnet-trace`](/dotnet/core/diagnostics/dotnet-trace) をインストールしたら、bash で次のコマンドを実行します。
 
 ```bash
 dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsights-Core,Microsoft-ApplicationInsights-Data,Microsoft-ApplicationInsights-WindowsServer-TelemetryChannel,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Dependency,Microsoft-ApplicationInsights-Extensibility-AppMapCorrelation-Web,Microsoft-ApplicationInsights-Extensibility-DependencyCollector,Microsoft-ApplicationInsights-Extensibility-HostingStartup,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector,Microsoft-ApplicationInsights-Extensibility-EventCounterCollector,Microsoft-ApplicationInsights-Extensibility-PerformanceCollector-QuickPulse,Microsoft-ApplicationInsights-Extensibility-Web,Microsoft-ApplicationInsights-Extensibility-WindowsServer,Microsoft-ApplicationInsights-WindowsServer-Core,Microsoft-ApplicationInsights-LoggerProvider,Microsoft-ApplicationInsights-Extensibility-EventSourceListener,Microsoft-ApplicationInsights-AspNetCore
@@ -294,4 +296,3 @@ dotnet-trace collect --process-id <PID> --providers Microsoft-ApplicationInsight
 
 ## <a name="still-not-working"></a>問題が解決しない場合
 * [Application Insights に関する Microsoft Q&A 質問ページ](/answers/topics/azure-monitor.html)
-

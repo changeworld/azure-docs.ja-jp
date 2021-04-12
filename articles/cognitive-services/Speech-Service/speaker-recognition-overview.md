@@ -13,15 +13,15 @@ ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Speaker Recognition, 音声生物測定学
 ms.openlocfilehash: d07a9960c8a586fa137b4b717afbf91740c265d3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "95015326"
 ---
 # <a name="what-is-speaker-recognition-preview"></a>Speaker Recognition (プレビュー) とは
 
-Speaker Recognition サービスは、音声生物測定学を使用して、固有の音声特性で話者を確認および識別するアルゴリズムを提供します。 Speaker Recognition は、"だれが話しているのか" という質問に回答するために使用されます。 1 人の話者のてオーディオ トレーニング データを提供すると、話者の声の固有の特性に基づいて登録プロファイルが作成されます。 次に、このプロファイルに対してオーディオ音声サンプルをクロスチェックして、話者が同じ人物であることを確認します (話者認証)。または、登録されている話者プロファイルの "*グループ*" に対してオーディオ音声サンプルをクロスチェックして、グループ内の任意のプロファイルと一致するかどうかを確認します (話者識別)。 これに対して、[話者ダイアライゼーション](batch-transcription.md#speaker-separation-diarization)では、オーディオのセグメントを話者ごとにバッチ操作でグループ化します。
+Speaker Recognition サービスは、音声生物測定学を使用して、固有の音声特性で話者を確認および識別するアルゴリズムを提供します。 Speaker Recognition は、"だれが話しているのか" という質問に回答するために使用されます。 1 人の話者のオーディオ トレーニング データを提供すると、話者の声の固有の特性に基づいて登録プロファイルが作成されます。 次に、このプロファイルに対してオーディオ音声サンプルをクロスチェックして、話者が同じ人物であることを確認します (話者認証)。または、登録されている話者プロファイルの "*グループ*" に対してオーディオ音声サンプルをクロスチェックして、グループ内の任意のプロファイルと一致するかどうかを確認します (話者識別)。 これに対して、[話者ダイアライゼーション](batch-transcription.md#speaker-separation-diarization)では、オーディオのセグメントを話者ごとにバッチ操作でグループ化します。
 
 ## <a name="speaker-verification"></a>話者認証
 

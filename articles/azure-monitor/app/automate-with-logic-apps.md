@@ -4,10 +4,10 @@ description: Application Insights コネクタをお使いのロジック アプ
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.openlocfilehash: d7ff75be3cb847235405a740df4a20803cdc87b3
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100589927"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する

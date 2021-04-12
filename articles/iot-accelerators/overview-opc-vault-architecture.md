@@ -9,11 +9,11 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: eb558d967ad657d14158684fba92b13979ea5fe2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91281590"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645851"
 ---
 # <a name="opc-vault-architecture"></a>OPC Vault のアーキテクチャ
 
@@ -36,7 +36,7 @@ Azure Industrial IoT の OPC UA 証明書管理サービスを利用すると、
 
 OPC Vault マイクロサービスは、Azure Key Vault の署名権限を持つセキュリティ管理者や承認者が要求を承認または拒否する、ロールベースのワークフローをサポートするように設計されています。
 
-既存の OPC UA ソリューションとの互換性のために、サービスには OPC Vault マイクロサービスによって支援されるエッジ モジュールのサポートが含まれています。 これには、仕様のパート 12 に従って証明書と信頼リストを配布するために、**OPC UA Global Discovery Server および Certificate Management ** インターフェイスが実装されています。 
+既存の OPC UA ソリューションとの互換性のために、サービスには OPC Vault マイクロサービスによって支援されるエッジ モジュールのサポートが含まれています。 これには、仕様のパート 12 に従って証明書と信頼リストを配布するために、**OPC UA Global Discovery Server および Certificate Management** インターフェイスが実装されています。 
 
 
 ## <a name="architecture"></a>アーキテクチャ

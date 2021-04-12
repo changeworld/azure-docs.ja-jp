@@ -8,16 +8,23 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 13f78691a3652cc82e261f807c690c04cebec3b4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 5beb3c750f99b8fe314fabbc2ff6109bfa6bc67c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175518"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166600"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>Linux で TPM を使用して IoT Edge デバイスを作成およびプロビジョニングする
 
+[!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
+
 この記事では、トラステッド プラットフォーム モジュール (TPM) を使用して Linux IoT Edge デバイスに対して自動プロビジョニングをテストする方法について説明します。 Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、[プロビジョニング](../iot-dps/about-iot-dps.md#provisioning-process)の概要を読んでから先に進んでください。
+
+:::moniker range=">=iotedge-2020-11"
+> [!NOTE]
+> 現時点では、TPM 認証を使用した自動プロビジョニングは IoT Edge バージョン 1.2 ではサポートされていません。
+:::moniker-end
 
 タスクは次のとおりです。
 
@@ -27,7 +34,7 @@ ms.locfileid: "102175518"
 1. IoT Edge ランタイムをインストールし、デバイスを IoT Hub に接続する。
 
 > [!TIP]
-> この記事では、TPM シミュレーターを使用して DPS プロビジョニングをテストする方法について説明しますが、その多くは、Azure Certified for IoT デバイスである [Infineon OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board) などの物理 TPM ハードウェアに適用されます。
+> この記事では、TPM シミュレーターを使用して DPS プロビジョニングをテストする方法について説明しますが、その多くは、Azure Certified for IoT デバイスである [Infineon OPTIGA&trade; TPM](https://devicecatalog.azure.com/devices/3f52cdee-bbc4-d74e-6c79-a2546f73df4e) などの物理 TPM ハードウェアに適用されます。
 >
 > 物理デバイスを使用している場合は、この記事の「[物理デバイスからプロビジョニング情報を取得する](#retrieve-provisioning-information-from-a-physical-device)」セクションに進むことができます。
 

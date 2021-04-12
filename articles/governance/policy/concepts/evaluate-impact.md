@@ -1,14 +1,14 @@
 ---
 title: 新しい Azure ポリシー定義の影響を評価する
 description: Azure 環境に新しいポリシー定義を導入するときの手順について説明します。
-ms.date: 10/05/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: cf52d25aa846388bc387430913a733d5206df82e
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 187a64ce3581c4aaa893e2a805ce787a0bfd6c79
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590800"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106091720"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>新しい Azure ポリシー定義の影響を評価する
 

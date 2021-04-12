@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18, devx-track-python, devx-track-js, devx-track-csharp
 ms.date: 05/29/2020
 ms.openlocfilehash: 0dc49265c0ea799e194e4ac7004b558d8a9d4dd8
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100519271"
 ---
 # <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>Machine Learning Studio (classic) Web サービスを使用する方法

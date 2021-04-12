@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 303a919cc0afc9b5db49918233f3e5718a896646
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 4461fb6904d51ee8d740b633a2d0028658ac2ced
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148056"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101687551"
 ---
 # <a name="scale-up-and-down-an-azure-database-for-postgresql-hyperscale-server-group-using-cli-azdata-or-kubectl"></a>CLI (azdata または kubectl) を使用した Azure Database for PostgreSQL Hyperscale サーバー グループのスケールアップとスケールダウン
 
@@ -64,7 +64,7 @@ kubectl describe postgresql-12/<server group name> [-n <namespace name>]
 
 ## <a name="interpret-the-definition-of-the-server-group"></a>サーバー グループの定義を解釈する
 
-サーバー グループの定義では、ノードあたりの最小/最大仮想コアとノードあたりの最小/最大メモリの設定を含むセクションが " **スケジュール** " セクションです。 このセクションでは、最大設定が " **制限** " と呼ばれるサブセクションに保存されます。最小設定は " **要求** " と呼ばれるサブセクションに保存されます。
+サーバー グループの定義では、ノードあたりの最小/最大仮想コアとノードあたりの最小/最大メモリの設定を含むセクションが "**スケジュール**" セクションです。 このセクションでは、最大設定が "**制限**" と呼ばれるサブセクションに保存されます。最小設定は "**要求**" と呼ばれるサブセクションに保存されます。
 
 最小設定を最大設定とは異なる値にすると、必要に応じて、サーバー グループに要求されたリソースが割り当てられることが保証されます。 設定した制限を超えることはありません。
 
@@ -82,7 +82,7 @@ kubectl describe postgresql-12/<server group name> [-n <namespace name>]
 
 ## <a name="scale-up-the-server-group"></a>サーバー グループをスケールアップする
 
-設定を行う場合は、Kubernetes クラスターに設定した構成内で考慮する必要があります。 Kubernetes クラスターが満たすことができない値を設定していないことを確認します。 これにより、エラーや予期しない動作が発生する可能性があります。 例として、構成を変更した後にサーバー グループの状態が " _更新中_ " のままになっている場合は、以下のパラメーターを Kubernetes クラスターが満たすことができない値に設定している可能性があります。 その場合は、変更を元に戻すか、_troubleshooting_section を参照してください。
+設定を行う場合は、Kubernetes クラスターに設定した構成内で考慮する必要があります。 Kubernetes クラスターが満たすことができない値を設定していないことを確認します。 これにより、エラーや予期しない動作が発生する可能性があります。 例として、構成を変更した後にサーバー グループの状態が "_更新中_" のままになっている場合は、以下のパラメーターを Kubernetes クラスターが満たすことができない値に設定している可能性があります。 その場合は、変更を元に戻すか、_troubleshooting_section を参照してください。
 
 例として、サーバー グループの定義を次のようにスケールアップするとします。
 
@@ -180,6 +180,21 @@ kubectl describe postgresql-12/<server group name>  [-n <namespace name>]
 ## <a name="scale-down-the-server-group"></a>サーバー グループをスケールダウンする
 
 サーバー グループをスケールダウンするには、同じコマンドを実行しますが、スケールダウンする設定の値を小さく設定します。 要求または制限を削除するには、その値を空の文字列として指定します。
+
+## <a name="reset-to-default-values"></a>既定値にリセットする
+コア/メモリ制限/要求のパラメーターを既定値にリセットするには、それらのパラメーターを編集して、実際の値ではなく空の文字列を渡します。 たとえば、コア制限 (cl) パラメーターをリセットする場合は、次のコマンドを実行します。
+- Linux クライアントの場合:
+
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl ""
+```
+
+- Windows クライアントの場合: 
+ 
+```console
+    azdata arc postgres server edit -n <servergroup name> -cl '""'
+```
+
 
 ## <a name="next-steps"></a>次のステップ
 

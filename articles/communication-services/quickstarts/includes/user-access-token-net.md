@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 08/20/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 49c4179432c0b57dfe68de563621807b1141fc67
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a0f8744061853e8bd81d3435c1f007e96a7d5783
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657068"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495321"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,7 +45,7 @@ dotnet build
 まだアプリケーション ディレクトリにいる間に、`dotnet add package` コマンドを使用して、.NET 用の Azure Communication Services ID ライブラリ パッケージをインストールします。
 
 ```console
-dotnet add package Azure.Communication.Identity --version 1.0.0
+dotnet add package Azure.Communication.Identity --version 1.0.0-beta.5
 ```
 
 ### <a name="set-up-the-app-framework"></a>アプリのフレームワークを設定する
@@ -128,6 +128,22 @@ Console.WriteLine(token);
 ```
 
 アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expiresOn` 応答プロパティは、アクセス トークンの有効期間を示します。
+
+## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>ID を作成し、同じ要求内でアクセス トークンを発行する
+
+`CreateUserAndTokenAsync` メソッドを使用して、Communication Services ID を作成し、そのアクセス トークンを発行します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。
+
+```csharp
+// Issue an identity and an access token with the "voip" scope for the new identity
+var identityAndTokenResponse = await client.CreateUserAndTokenAsync(scopes: new[] { CommunicationTokenScope.VoIP });
+var identity = identityAndTokenResponse.Value.User;
+var token = identityAndTokenResponse.Value.AccessToken.Token;
+var expiresOn = identityAndTokenResponse.Value.AccessToken.ExpiresOn;
+
+Console.WriteLine($"\nCreated an identity with ID: {identity.Id}");
+Console.WriteLine($"\nIssued an access token with 'voip' scope that expires at {expiresOn}:");
+Console.WriteLine(token);
+```
 
 ## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 

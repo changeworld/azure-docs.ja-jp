@@ -209,6 +209,8 @@
           href: core/howto-connect-rigado-cascade-500.md
         - name: その他の IoT クラウドの接続
           href: core/howto-build-iotc-device-bridge.md
+        - name: デバイスを管理する
+          href: core/how-to-move-device-to-iot.md
     - name: 統合されたソリューションの構築
       items:
         - name: ダッシュボードへのタイルの追加

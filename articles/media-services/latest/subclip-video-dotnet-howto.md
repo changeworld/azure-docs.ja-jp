@@ -14,12 +14,12 @@ ms.topic: how-to
 ms.date: 06/09/2019
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9408adfe33fc71707532f3bf5646f3727fd7dda
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: b70d08363db212e5039690ceaaef5dbb55bcd65f
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955056"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107275"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---net"></a>Media Services を使用してエンコードを実行する際にビデオをサブクリップする - .NET
 
@@ -31,9 +31,9 @@ ms.locfileid: "98955056"
 
 このトピックで説明する手順を完了するには以下を行う必要があります。
 
-- [Azure Media Services アカウントを作成します](./create-account-howto.md)
+- [Azure Media Services アカウントを作成します](./account-create-how-to.md)
 - 変換と入力アセットおよび出力アセットを作成します。 変換と入力アセットおよび出力アセットを作成する方法は、「[.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)」チュートリアルでご覧いただけます。
-- [エンコードの概念](encoding-concept.md)に関するトピックを確認します。
+- [エンコードの概念](encode-concept.md)に関するトピックを確認します。
 
 ## <a name="example"></a>例
 
@@ -92,4 +92,4 @@ private static async Task<Job> JobWithBuiltInStandardEncoderWithSingleClipAsync(
 
 ## <a name="next-steps"></a>次のステップ
 
-[カスタム変換を使用してエンコードする方法](customize-encoder-presets-how-to.md) 
+[カスタム変換を使用してエンコードする方法](encode-custom-presets-how-to.md) 

@@ -10,12 +10,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3b9c3c66e58ae51773a959aba0b2c76d97b44445
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: e247e372237572586e5a4647d24d9ed6067ea823
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309487"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949789"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Azure Arc 対応 PostgreSQL Hyperscale サーバー グループで PostgreSQL 拡張機能を使用する
 
@@ -24,40 +24,55 @@ PostgreSQL は、拡張機能で使用する場合に最適です。 実際、�
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
-## <a name="list-of-extensions"></a>拡張機能の一覧表示
-[`contrib`](https://www.postgresql.org/docs/12/contrib.html) の拡張機能に加えて、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのコンテナーに存在する拡張機能の一覧は次のとおりです。
-- `citus`、v:9.4
-- `pg_cron`、v:1.2
-- `plpgsql`、v:1.0
-- `postgis`、v:3.0.2
-- `plv8`、v:2.3.14
+## <a name="supported-extensions"></a>サポートされる拡張機能
+標準の [`contrib`](https://www.postgresql.org/docs/12/contrib.html) 拡張機能と以下の拡張機能は、Azure Arc 対応 PostgreSQL Hyperscale サーバー グループのコンテナーに既にデプロイされています。
+- [`citus`](https://github.com/citusdata/citus)、v: 9.4。 [Citus Data](https://www.citusdata.com/) の Citus 拡張機能は、PostgreSQL エンジンに Hyperscale 機能を提供するものであるため、既定で読み込まれます。 Azure Arc PostgreSQL Hyperscale サーバーグループからの Citus 拡張機能の削除は、サポートされていません。
+- [`pg_cron`](https://github.com/citusdata/pg_cron)、v: 1.2
+- [`pgaudit`](https://www.pgaudit.org/)、v: 1.4
+- plpgsql、v: 1.0
+- [`postgis`](https://postgis.net)、v: 3.0.2
+- [`plv8`](https://plv8.github.io/)、v: 2.3.14
 
-この一覧は時間とともに更新され、更新プログラムがこのドキュメントに掲載されていきます。 今はまだ、上記以外の拡張機能を追加することはできません。
+時間が経過して変化があったときには、この一覧に対する更新が投稿されます。
+
+> [!IMPORTANT]
+> サーバー グループに上記以外の拡張機能を導入することもできますが、このプレビューではシステムに機能が存続しません。 つまり、システムの再起動後にこれは使用できなくなり、再度導入する必要が生じます。
 
 このガイドでは、次の 2 つの拡張機能を使用するシナリオについて説明します。
-- [PostGIS](https://postgis.net/)
+- [`PostGIS`](https://postgis.net/)
 - [`pg_cron`](https://github.com/citusdata/pg_cron)
 
+## <a name="which-extensions-need-to-be-added-to-the-shared_preload_libraries-and-created"></a>shared_preload_libraries への追加と作成が必要な拡張機能はどれか
 
-## <a name="manage-extensions"></a>拡張機能の管理
+|Extensions   |shared_preload_libraries に追加する必要がある  |作成する必要がある |
+|-------------|--------------------------------------------------|---------------------- |
+|`pg_cron`      |いいえ       |はい        |
+|`pg_audit`     |はい       |はい        |
+|`plpgsql`      |はい       |はい        |
+|`postgis`      |いいえ       |はい        |
+|`plv8`      |いいえ       |はい        |
 
-### <a name="enable-extensions"></a>拡張機能を有効にする
-この手順は、`contrib` に含まれる拡張機能には必要ありません。
-拡張機能を有効にするコマンドの一般的な形式は、次のとおりです。
+## <a name="add-extensions-to-the-shared_preload_libraries"></a>拡張機能を shared_preload_libraries に追加する
+shared_preload_libraries の詳細については、[こちら](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-SHARED-PRELOAD-LIBRARIES)の PostgreSQL ドキュメントを参照してください。
+- この手順は、`contrib` に含まれる拡張機能については必要ありません
+- この手順は、shared_preload_libraries で事前に読み込む必要がない拡張機能については必要ありません。 これらの拡張機能については、次の段落「[拡張機能の作成](#create-extensions)」を飛ばし進むことができます。
 
-#### <a name="enable-an-extension-at-the-creation-time-of-a-server-group"></a>サーバー グループの作成時に拡張機能を有効にする:
+### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>サーバー グループの作成時に拡張機能を追加する
 ```console
 azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
 ```
-#### <a name="enable-an-extension-on-an-instance-that-already-exists"></a>既に存在するインスタンスで拡張機能を有効にする:
+### <a name="add-an-extension-to-an-instance-that-already-exists"></a>既に存在するインスタンスに拡張機能を追加する
 ```console
 azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
 ```
 
-#### <a name="get-the-list-of-extensions-enabled"></a>有効になっている拡張機能の一覧を取得する:
+
+
+
+## <a name="show-the-list-of-extensions-added-to-shared_preload_libraries"></a>shared_preload_libraries に追加された拡張機能の一覧を表示する
 次のコマンドのいずれかを実行します。
 
-##### <a name="with-azure-data-cli-azdata"></a>[!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)] あり
+### <a name="with-an-azdata-cli-command"></a>azdata CLI コマンドを使用する
 ```console
 azdata arc postgres server show -n <server group name>
 ```
@@ -74,7 +89,7 @@ azdata arc postgres server show -n <server group name>
       ]
     },
 ```
-##### <a name="with-kubectl"></a>kubectl を使用する
+### <a name="with-kubectl"></a>kubectl を使用する
 ```console
 kubectl describe postgresql-12s/postgres02
 ```
@@ -87,59 +102,34 @@ Engine:
 ```
 
 
-### <a name="create-extensions"></a>拡張機能を作成する:
-任意のクライアント ツールを使用してサーバー グループに接続し、標準の PostgreSQL クエリを実行する:
+## <a name="create-extensions"></a>拡張機能の作成
+任意のクライアント ツールを使用してサーバー グループに接続し、標準の PostgreSQL クエリを実行します。
 ```console
 CREATE EXTENSION <extension name>;
 ```
 
-### <a name="get-the-list-of-extension-created-in-your-server-group"></a>サーバー グループに作成された拡張機能の一覧を取得する:
-任意のクライアント ツールを使用してサーバー グループに接続し、標準の PostgreSQL クエリを実行する:
+## <a name="show-the-list-of-extensions-created"></a>作成された拡張機能の一覧を表示する
+任意のクライアント ツールを使用してサーバー グループに接続し、標準の PostgreSQL クエリを実行します。
 ```console
 select * from pg_extension;
 ```
 
-### <a name="drop-an-extension-from-your-server-group"></a>サーバー グループから拡張機能を削除する:
-任意のクライアント ツールを使用してサーバー グループに接続し、標準の PostgreSQL クエリを実行する:
+## <a name="drop-an-extension"></a>拡張機能を削除する
+任意のクライアント ツールを使用してサーバー グループに接続し、標準の PostgreSQL クエリを実行します。
 ```console
 drop extension <extension name>;
 ```
 
-## <a name="use-the-postgis-and-the-pg_cron-extensions"></a>PostGIS と pg_cron の拡張機能を使用する
-
-### <a name="the-postgis-extension"></a>PostGIS 拡張機能
-
-既存のサーバー グループで PostGIS 拡張機能を有効にするか、新規作成で既に有効になっている拡張機能を使用できます。
-
-**サーバー グループの作成時に拡張機能を有効にする:**
-```console
-azdata arc postgres server create -n <name of your postgresql server group> --extensions <extension names>
-
-#Example:
-azdata arc postgres server create -n pg2 -w 2 --extensions postgis
-```
-
-**既に存在するインスタンスで拡張機能を有効にする:**
-```console
-azdata arc postgres server edit -n <name of your postgresql server group> --extensions <extension names>
-
-#Example:
-azdata arc postgres server edit --extensions postgis -n pg2
-```
-
-インストールされている拡張機能を確認するには、Azure Data Studio など、お気に入りの PostgreSQL クライアント ツールを使用してインスタンスに接続した後、以下の標準 PostgreSQL コマンドを使用します。
-```console
-select * from pg_extension;
-```
-
-PostGIS の例については、最初に、MIT の Department of Urban Studies & Planning から提供されている[サンプル データ](http://duspviz.mit.edu/tutorials/intro-postgis/)を取得します。 テストに VM を使用する場合、`apt-get install unzip` を実行して解凍をインストールすることが必要になることがあります。
+## <a name="the-postgis-extension"></a>`PostGIS` 拡張機能
+`PostGIS` 拡張機能を `shared_preload_libraries` に追加する必要はありません。
+MIT の Department of Urban Studies & Planning から[サンプル データ](http://duspviz.mit.edu/tutorials/intro-postgis/)を取得します。 必要に応じて、`apt-get install unzip` を実行して unzip をインストールします。
 
 ```console
 wget http://duspviz.mit.edu/_assets/data/intro-postgis-datasets.zip
 unzip intro-postgis-datasets.zip
 ```
 
-データベースに接続し、PostGIS 拡張機能を作成しましょう。
+データベースに接続し、`PostGIS` 拡張機能を作成しましょう。
 
 ```console
 CREATE EXTENSION postgis;
@@ -165,7 +155,7 @@ CREATE TABLE coffee_shops (
 CREATE INDEX coffee_shops_gist ON coffee_shops USING gist (geom);
 ```
 
-ここでは、coffee_shops テーブルを分散させることで、PostGIS をスケールアウト機能と組み合わせることができます。
+ここでは、coffee_shops テーブルを分散させることで、`PostGIS` をスケールアウト機能と組み合わせることができます。
 
 ```sql
 SELECT create_distributed_table('coffee_shops', 'id');
@@ -177,7 +167,7 @@ SELECT create_distributed_table('coffee_shops', 'id');
 \copy coffee_shops(id,name,address,city,state,zip,lat,lon) from cambridge_coffee_shops.csv CSV HEADER;
 ```
 
-`geom` フィールドに、PostGIS `geometry` データ型の適切にエンコードされた緯度と経度を入力します。
+`geom` フィールドに、`PostGIS` `geometry` データ型の適切にエンコードされた緯度と経度を入力します。
 
 ```sql
 UPDATE coffee_shops SET geom = ST_SetSRID(ST_MakePoint(lon,lat),4326);
@@ -190,15 +180,15 @@ SELECT name, address FROM coffee_shops ORDER BY geom <-> ST_SetSRID(ST_MakePoint
 ```
 
 
-### <a name="the-pg_cron-extension"></a>pg_cron 拡張機能
+## <a name="the-pg_cron-extension"></a>`pg_cron` 拡張機能
 
-PostGIS に加えて、`pg_cron` を PostgreSQL サーバー グループで有効にしましょう。
+ここでは、`pg_cron` を shared_preload_libraries に追加することで、それを PostgreSQL サーバー グループ上で有効にしましょう。
 
 ```console
-azdata postgres server update -n pg2 -ns arc --extensions postgis,pg_cron
+azdata postgres server update -n pg2 -ns arc --extensions pg_cron
 ```
 
-ノードが再起動され、追加の拡張機能がインストールされます。これには、2、3 分かかる場合があります。
+サーバー グループは、拡張機能のインストールを完了するために再起動します。 これには 2 ～ 3 分かかることがあります。
 
 これでもう一度接続し、`pg_cron` 拡張機能を作成することができます。
 
@@ -206,7 +196,7 @@ azdata postgres server update -n pg2 -ns arc --extensions postgis,pg_cron
 CREATE EXTENSION pg_cron;
 ```
 
-テストのため、先ほどの `coffee_shops` テーブルからランダムな名前を取得し、テーブルの内容を設定して `the_best_coffee_shop` を作成します。
+テスト目的で、先ほどの `coffee_shops` テーブルからランダムな名前を取得するテーブル `the_best_coffee_shop` を作成し、テーブルの内容を挿入しましょう。
 
 ```sql
 CREATE TABLE the_best_coffee_shop(name text);
@@ -238,10 +228,8 @@ SELECT * FROM the_best_coffee_shop;
 
 構文の詳細については、[pg_cron README](https://github.com/citusdata/pg_cron) を参照してください。
 
->[!NOTE]
->`citus` 拡張機能の削除はサポートされていません。 `citus` 拡張機能は、Hyperscale エクスペリエンスを提供するために必要です。
 
-## <a name="next-steps"></a>次のステップ:
-- [plv8](https://plv8.github.io/) に関するドキュメントを読む
-- [PostGIS](https://postgis.net/) に関するドキュメントを読む
+## <a name="next-steps"></a>次のステップ
+- [`plv8`](https://plv8.github.io/) に関するドキュメントを読む
+- [`PostGIS`](https://postgis.net/) に関するドキュメントを読む
 - [`pg_cron`](https://github.com/citusdata/pg_cron) に関するドキュメントを読む

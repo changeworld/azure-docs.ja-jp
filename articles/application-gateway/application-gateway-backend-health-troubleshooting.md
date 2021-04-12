@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 95b74e5fc6c5d2c09ff04b3f14e920ae675ab6e1
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 1373e0eeead805dcd3a439878c9737c46d75bf3b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99592757"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078504"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Application Gateway のバックエンドの正常性に関する問題のトラブルシューティング
 ==================================================
@@ -176,12 +176,12 @@ Also check whether any NSG/UDR/Firewall is blocking access to the Ip and port of
 
 | **Error** | **アクション** |
 | --- | --- |
-| probe 状態コードの不一致: 401 を受信 | バックエンド サーバーで認証が必要かどうかを確認します。 Application Gateway の probe では、認証用の資格情報を渡すことはできません。 probe 状態コードの照合で \"HTTP 401\" を許可するか、サーバーが認証を必要としないパスに対して probe を実行します。 | |
-| probe 状態コードの不一致: 403 を受信 | アクセスは禁止されています。 バックエンド サーバーでパスへのアクセスが許可されているかどうかを確認します。 | |
-| probe 状態コードの不一致: 404 を受信 | ページが見つかりません。 バックエンド サーバーでホスト名のパスにアクセスできるかどうかを確認します。 ホスト名またはパス パラメーターをアクセス可能な値に変更します。 | |
-| probe 状態コードの不一致: 405 を受信 | Application Gateway の probe 要求で HTTP GET メソッドが使用されています。 対象のサーバーでこのメソッドが許可されているかどうかを確認します。 | |
-| probe 状態コードの不一致: 500 を受信 | 内部サーバー エラー。 バックエンド サーバーの正常性と、サービスが実行されているかどうかを確認します。 | |
-| probe 状態コードの不一致: 503 を受信 | Service unavailable. (サービス利用不可。) バックエンド サーバーの正常性と、サービスが実行されているかどうかを確認します。 | |
+| probe 状態コードの不一致: 401 を受信 | バックエンド サーバーで認証が必要かどうかを確認します。 Application Gateway の probe では、認証用の資格情報を渡すことはできません。 probe 状態コードの照合で \"HTTP 401\" を許可するか、サーバーが認証を必要としないパスに対して probe を実行します。 |
+| probe 状態コードの不一致: 403 を受信 | アクセスは禁止されています。 バックエンド サーバーでパスへのアクセスが許可されているかどうかを確認します。 |
+| probe 状態コードの不一致: 404 を受信 | ページが見つかりません。 バックエンド サーバーでホスト名のパスにアクセスできるかどうかを確認します。 ホスト名またはパス パラメーターをアクセス可能な値に変更します。 |
+| probe 状態コードの不一致: 405 を受信 | Application Gateway の probe 要求で HTTP GET メソッドが使用されています。 対象のサーバーでこのメソッドが許可されているかどうかを確認します。 |
+| probe 状態コードの不一致: 500 を受信 | 内部サーバー エラー。 バックエンド サーバーの正常性と、サービスが実行されているかどうかを確認します。 |
+| probe 状態コードの不一致: 503 を受信 | Service unavailable. (サービス利用不可。) バックエンド サーバーの正常性と、サービスが実行されているかどうかを確認します。 |
 
 または、応答が正当なものであると判断したうえで、Application Gateway が他の状態コードを正常として受け入れるようにする場合は、カスタム probe を作成できます。 この方法は、バックエンド Web サイトで認証が必要な場合に役立ちます。 プローブ要求にユーザーの資格情報が含まれないために要求が失敗し、バックエンド サーバーから HTTP 401 状態コードが返されます。
 

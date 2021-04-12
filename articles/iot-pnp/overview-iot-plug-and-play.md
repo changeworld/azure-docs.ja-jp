@@ -9,12 +9,12 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: dcdd19faec5e428ac26917178aa8114245c205b3
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: eb39939f4a48a549479605dcccc346094359875f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594571"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106079014"
 ---
 # <a name="what-is-iot-plug-and-play"></a>IoT プラグ アンド プレイとは
 
@@ -68,7 +68,7 @@ Windows または Linux ゲートウェイに接続されている既存のセ�
 
 ## <a name="device-certification"></a>デバイス認定
 
-[IoT プラグ アンド プレイ デバイス認定プログラム](howto-certify-device.md)は、IoT プラグ アンド プレイの認定要件をデバイスが満たしていることを確認するものです。 認定されたデバイスは、公開されている [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)に登録できます。
+[IoT プラグ アンド プレイ デバイス認定プログラム](../certification/program-requirements-pnp.md)は、IoT プラグ アンド プレイの認定要件をデバイスが満たしていることを確認するものです。 認定されたデバイスは、公開されている [Azure IoT 認定デバイス カタログ](https://aka.ms/devicecatalog)に登録できます。
 
 ## <a name="next-steps"></a>次のステップ
 

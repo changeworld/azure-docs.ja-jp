@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 7c9edce71e0d0565de80153bfd5b3d5f1edb2e8f
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: c086fe6a47227901cd44c4684452c842df5286ae
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955158"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106064428"
 ---
 # <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Media Services アカウント用の Azure ロールベースのアクセス制御 (Azure RBAC)
 
@@ -50,4 +50,4 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 ## <a name="next-steps"></a>次のステップ
 
 - [Media Services v3 API シリーズを使用した開発](media-services-apis-overview.md)
-- [Media Services .NET を使用してコンテンツ キー ポリシーを取得する](get-content-key-policy-dotnet-howto.md)
+- [Media Services .NET を使用してコンテンツ キー ポリシーを取得する](drm-get-content-key-policy-dotnet-how-to.md)

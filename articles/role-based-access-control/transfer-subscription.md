@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 12/10/2020
 ms.author: rolyon
-ms.openlocfilehash: 5a4be6052e72c27ad83b5af64f1acb3ad8d4e3be
-ms.sourcegitcommit: de98cb7b98eaab1b92aa6a378436d9d513494404
+ms.openlocfilehash: 93821979e0c14a879b805049a4f662e9ef6d5b15
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100555908"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075680"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
@@ -74,7 +74,7 @@ ms.locfileid: "100555908"
 | システム割り当てのマネージド ID | はい | はい | [マネージド ID を一覧表示する](#list-role-assignments-for-managed-identities) | マネージド ID を無効にして、再度有効にする必要があります。 ロールの割り当てを再作成する必要があります。 |
 | ユーザー割り当て済みマネージド ID | はい | はい | [マネージド ID を一覧表示する](#list-role-assignments-for-managed-identities) | マネージド ID を削除して再作成し、適切なリソースにアタッチする必要があります。 ロールの割り当てを再作成する必要があります。 |
 | Azure Key Vault | はい | はい | [Key Vault アクセス ポリシーを一覧表示する](#list-key-vaults) | キー コンテナーに関連付けられているテナント ID を更新する必要があります。 アクセス ポリシーを削除して、新しく追加する必要があります。 |
-| Azure AD 認証が統合された Azure SQL データベース | はい | いいえ | [Azure SQL データベースと Azure AD 認証を確認する](#list-azure-sql-databases-with-azure-ad-authentication) |  |  |
+| Azure AD 認証が統合された Azure SQL データベース | はい | いいえ | [Azure SQL データベースと Azure AD 認証を確認する](#list-azure-sql-databases-with-azure-ad-authentication) |  | 
 | Azure Storage と Azure Data Lake Storage Gen2 | はい | はい |  | すべての ACL を再作成する必要があります。 |
 | Azure Data Lake Storage Gen1 | はい | はい |  | すべての ACL を再作成する必要があります。 |
 | Azure Files | はい | はい |  | すべての ACL を再作成する必要があります。 |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/02/2021
 ms.author: tisande
 ms.openlocfilehash: 1dccb8e51fbc578f8f218fe1582f95f7bcaf42d7
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99493789"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Azure Cosmos DB での配列とオブジェクトの操作

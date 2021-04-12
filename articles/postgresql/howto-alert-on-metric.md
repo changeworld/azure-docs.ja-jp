@@ -1,17 +1,17 @@
 ---
 title: アラートを構成する - Azure portal -  Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure portal から Azure Database for PostgreSQL - Single Server のメトリック アラートを構成してアクセスする方法について説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 1b4c10d152afba708eb176e89355ed31ec809168
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: b6256dc69e65f86a8619f8647652f40ee11f325f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586745"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604245"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Azure portal を使用して Azure Database for PostgreSQL - Single Server のメトリックのアラートを設定する
 

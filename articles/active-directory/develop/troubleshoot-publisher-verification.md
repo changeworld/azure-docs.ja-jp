@@ -13,12 +13,12 @@ ms.date: 01/28/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 9ae5d2279baab69d762a71b2f6400009747c16fe
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: acce282dcaac971716a97d7722543d78e28b7a34
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584215"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102517669"
 ---
 # <a name="troubleshoot-publisher-verification"></a>発行者の確認に関するトラブルシューティング
 [発行者の確認](publisher-verification-overview.md)で、エラーが発生してプロセスを完了できない場合、または予期しない動作が発生する場合は、次の手順を行う必要があります。 
@@ -241,7 +241,7 @@ Graph API 経由で検証が実行され、指定されたアプリケーショ�
 
 ## <a name="next-steps"></a>次のステップ
 
-以上のすべての情報を確認しても、まだ Microsoft Graph からエラーを受け取る場合は、失敗した要求に関連する次の情報をできるだけ多く収集し、[Microsoft サポート](developer-support-help-options.md#open-a-support-request)にお問い合わせください。
+以上のすべての情報を確認しても、まだ Microsoft Graph からエラーを受け取る場合は、失敗した要求に関連する次の情報をできるだけ多く収集し、[Microsoft サポート](developer-support-help-options.md#create-an-azure-support-request)にお問い合わせください。
 
 - Timestamp 
 - CorrelationId 

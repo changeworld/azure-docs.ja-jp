@@ -4,10 +4,10 @@ description: この記事では、イベント データが Event Grid スキー
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 34381782c9337631b0aa04e47eb5897a8071139a
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97109200"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid スキーマへのカスタム フィールドのマップ

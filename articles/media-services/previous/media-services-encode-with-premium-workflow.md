@@ -3,7 +3,7 @@ title: Media Encoder Premium ワークフローでの高度なエンコード | 
 description: メディア エンコーダー プレミアム ワークフローでエンコードする方法について説明します。 コード サンプルは C# で記述され、Media Services SDK for .NET を利用しています。
 services: media-services
 documentationcenter: ''
-author: juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
-ms.author: juliako
+ms.date: 03/10/2021
+ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f3efa23ad0b5e79e84a2436aaf56b67a805d05f
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 8d39d54498872201afe2f705da1fc5654d8befb2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017235"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645005"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>メディア エンコーダー プレミアム ワークフローでの高度なエンコード
 
@@ -33,16 +33,17 @@ ms.locfileid: "92017235"
 ## <a name="overview"></a>概要
 Microsoft Azure Media Services には、 **メディア エンコーダー プレミアム ワークフロー** メディア プロセッサが導入されています。 このプロセッサでは、プレミアム オンデマンド ワークフローの高度なエンコード機能が提供されます。
 
-次のトピックでは、 **メディア エンコーダー プレミアム ワークフロー**に関連する詳細の概要を説明します。
+次のトピックでは、 **メディア エンコーダー プレミアム ワークフロー** に関連する詳細の概要を説明します。
 
-* [メディア エンコーダー プレミアム ワークフローでサポートされる形式](./media-services-encode-asset.md) – **メディア エンコーダー プレミアム ワークフロー**でサポートされるファイルの形式とコーデックについて説明します。
+* [メディア エンコーダー プレミアム ワークフローでサポートされる形式](./media-services-encode-asset.md) – **メディア エンコーダー プレミアム ワークフロー** でサポートされるファイルの形式とコーデックについて説明します。
 * 「[Azure オンデマンド メディア エンコーダーの概要と比較](media-services-encode-asset.md)」では、**Media Encoder Premium Workflow** と **Media Encoder Standard** のエンコード機能を比較しています。
 
 この記事では、.NET を使って **Media Encoder Premium Workflow** でエンコードする方法を示します。
 
 **メディア エンコーダー プレミアム ワークフロー** のエンコード タスクには、ワークフロー ファイルと呼ばれる別の構成ファイルが必要です。 これらのファイルは .workflow 拡張子を持ち、 [ワークフロー デザイナー](media-services-workflow-designer.md) ツールで作成されます。
 
-既定のワークフロー ファイルは [こちら](https://github.com/Azure/azure-media-services-samples/tree/master/Encoding%20Presets/VoD/MediaEncoderPremiumWorkfows)から入手することもできます。 フォルダーにはこれらのファイルの説明も含まれています。
+既定のワークフロー ファイルは [こちら](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/media-services/previous/media-services-encode-with-premium-workflow.md
+)から入手することもできます。 フォルダーにはこれらのファイルの説明も含まれています。
 
 ワークフロー ファイルは、アセットとして Media Services アカウントにアップロードする必要があり、このアセットをエンコード タスクに渡す必要があります。
 
@@ -52,7 +53,7 @@ Microsoft Azure Media Services には、 **メディア エンコーダー プ�
 
 ## <a name="encoding-example"></a>エンコードの例
 
-次の例では、 **メディア エンコーダー プレミアム ワークフロー**でエンコードする方法を示しています。
+次の例では、 **メディア エンコーダー プレミアム ワークフロー** でエンコードする方法を示しています。
 
 次の手順を実行します。
 

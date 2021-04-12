@@ -9,10 +9,10 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 01/16/2021
 ms.openlocfilehash: c13b8392a766dc29d8c83f9986d0b43271caabbb
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98605992"
 ---
 # <a name="quickstart-use-net-c-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>クイックスタート: .NET (C#) を使用して Azure Database for MySQL - フレキシブル サーバーに接続してデータを照会する

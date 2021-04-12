@@ -3,19 +3,19 @@ title: .NET を使用してストレージ アカウントの種類と SKU 名�
 titleSuffix: Azure Storage
 description: .NET クライアント ライブラリを使用して Azure Storage アカウントの種類と SKU 名を取得する方法について説明します。
 services: storage
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 11/12/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0fd693573858df095b62a7a7917563141ac19c5b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 26ce4a77e02e62a1a204529ce8652fbba3aab2c9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579336"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277149"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>.NET を使用してストレージ アカウントの種類と SKU 名を取得する
 

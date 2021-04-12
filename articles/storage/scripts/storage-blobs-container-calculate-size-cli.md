@@ -1,6 +1,6 @@
 ---
 title: Azure CLI のサンプル スクリプト - BLOB コンテナーのサイズを計算する | Microsoft Docs
-description: コンテナー内のブロブのサイズを合計して、Azure Blob ストレージ内のコンテナーのサイズを計算します。
+description: コンテナー内のブロブのサイズを合計して、Azure Blob Storage 内のコンテナーのサイズを計算します。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,15 +11,15 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 45712632ebfb2da4b713038503965ce908c1dfc6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "87498890"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob ストレージ コンテナーのサイズを計算する
 
-このスクリプトでは、コンテナー内のブロブのサイズを合計して、Azure Blob ストレージ内のコンテナーのサイズを計算します。
+このスクリプトでは、コンテナー内のブロブのサイズを合計して、Azure Blob Storage 内のコンテナーのサイズを計算します。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -44,14 +44,14 @@ az group delete --name myResourceGroup
 
 このスクリプトでは次のコマンドを使用して、Blob ストレージ コンテナーのサイズを計算します。 表内の各項目は、コマンドごとのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/group) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage blob upload](/cli/azure/storage/account) | ローカル ファイルを Azure Blob ストレージ コンテナーにアップロードします。 |
-| [az storage blob list](/cli/azure/storage/account/keys) | Azure Blob ストレージ コンテナー内の BLOB を一覧表示します。 |
+| [az storage blob upload](/cli/azure/storage/account) | ローカル ファイルを Azure Blob Storage コンテナーにアップロードします。 |
+| [az storage blob list](/cli/azure/storage/account/keys) | Azure Blob Storage コンテナー内の BLOB を一覧表示します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure)のページをご覧ください。
 
-その他のストレージ CLI サンプル スクリプトは、[Azure Blob ストレージ用の Azure CLI サンプル](../blobs/storage-samples-blobs-cli.md)のページにあります。
+その他のストレージ CLI サンプル スクリプトは、[Azure Blob Storage 用の Azure CLI サンプル](../blobs/storage-samples-blobs-cli.md)のページにあります。

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: e648428f924cfc33421c8591c41f7ac85b05a033
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ed4341c1c8df588bf735bdc9c531c2165514d610
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76960300"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061266"
 ---
 # <a name="404103-devicenotonline"></a>404103 DeviceNotOnline
 

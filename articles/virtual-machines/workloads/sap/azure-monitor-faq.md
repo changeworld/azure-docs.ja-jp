@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.openlocfilehash: 3732189c1d2e09b648a2fba0a39e7e4113a76d48
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101675957"
 ---
 # <a name="azure-monitor-for-sap-solutions-faq-preview"></a>Azure Monitor for SAP Solutions に関する FAQ (プレビュー)

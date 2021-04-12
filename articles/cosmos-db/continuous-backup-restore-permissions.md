@@ -8,10 +8,10 @@ ms.date: 02/01/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 8b3ce2c195dc2fa3dd703306e731aa5b807b78b1
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100648605"
 ---
 # <a name="manage-permissions-to-restore-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを復元するためのアクセス許可を管理する
@@ -60,7 +60,7 @@ Azure Cosmos DB を使用すると、継続的バックアップ (プレビュ�
 
 |権限  |影響  |最小スコープ  |最大スコープ  |
 |---------|---------|---------|---------|
-|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | これらのアクセス許可は、ARM テンプレートのデプロイで、復元されたアカウントを作成するために必要です。 このロールを設定する方法については、次のサンプルのアクセス許可 [RestorableAction](#custom-restorable-action) を参照してください。 | 適用できません | 適用なし  |
+|`Microsoft.Resources/deployments/validate/action`, `Microsoft.Resources/deployments/write` | これらのアクセス許可は、ARM テンプレートのデプロイで、復元されたアカウントを作成するために必要です。 このロールを設定する方法については、次のサンプルのアクセス許可 [RestorableAction](#custom-restorable-action) を参照してください。 | 適用できません | 該当なし  |
 |`Microsoft.DocumentDB/databaseAccounts/write` | このアクセス許可は、アカウントをリソース グループに復元するために必要です。 | 復元されたアカウントが作成されるリソース グループ。 | 復元されたアカウントが作成されるサブスクリプション。 |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restore/action` |このアクセス許可は、ソースの復元可能データベース アカウント スコープで、それに対して復元操作を実行できるようにするために必要です。  | 復元するソース アカウントに属する *RestorableDatabaseAccount* リソース。 この値は、復元可能データベース アカウント リソースの `ID` プロパティによっても示されます。 復元可能なアカウントの例: */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>* | 復元可能データベース アカウントを含むサブスクリプション。 リソース グループをスコープとして選択することはできません。  |
 |`Microsoft.DocumentDB/locations/restorableDatabaseAccounts/read` |このアクセス許可は、ソースの復元可能データベース アカウント スコープで、復元できるデータベース アカウントを一覧表示するために必要です。  | 復元するソース アカウントに属する *RestorableDatabaseAccount* リソース。 この値は、復元可能データベース アカウント リソースの `ID` プロパティによっても示されます。 復元可能なアカウントの例: */subscriptions/subscriptionId/providers/Microsoft.DocumentDB/locations/regionName/restorableDatabaseAccounts/<guid-instanceid>*| 復元可能データベース アカウントを含むサブスクリプション。 リソース グループをスコープとして選択することはできません。  |

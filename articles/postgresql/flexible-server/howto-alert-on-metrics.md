@@ -1,17 +1,17 @@
 ---
 title: アラートを構成する - Azure portal - Azure Database for PostgreSQL - フレキシブル サーバー
 description: この記事では、Azure portal から Azure Database for PostgreSQL - フレキシブル サーバーのメトリック アラートを構成してアクセスする方法について説明します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 3c6f1dd581f7b07bb7892cbfe23dd76348124f9a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 365cb5604c1f9ddc2c0d7f3cc63daff96b043515
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579047"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105608053"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---flexible-server"></a>Azure portal を使用して Azure Database for PostgreSQL - フレキシブル サーバーのメトリックのアラートを設定する
 

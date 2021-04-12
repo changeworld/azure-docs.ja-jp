@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: 3ed3ff44b927fa230dedf16387c1daca889d7c66
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 2dbb491e77f132daf7b432f27705eba9e3e3cd3c
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100388704"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102036964"
 ---
 # <a name="automate-builds-tests-and-deployments-of-an-azure-stream-analytics-job-using-cicd-tools"></a>CI/CD ツールを使用して Azure Stream Analytics ジョブのビルド、テスト、デプロイを自動化する
 
@@ -123,6 +123,9 @@ azure-streamanalytics-cicd addtestcase -project <projectFullPath> [-testConfigPa
 | `-project` | Visual Studio Code プロジェクトの **asaproj.json** ファイルまたは Visual Studio プロジェクトの **<プロジェクト名>.asaproj** のパス。 |
 | `-testConfigPath` | テスト構成ファイルのパス。 指定しなかった場合は、現在 **asaproj.json** ファイルが置かれているディレクトリの **\test** でファイルが検索されます。既定のファイル名は **testConfig.json** です。 新しいファイルが存在しない場合は作成されます。 |
 
+> [!NOTE]
+> 生成された **testConfig.json** ファイルの `Script` 値は、コンテキストを与える目的でのみ使用され、テスト ロジックでは使用されません。 
+
 #### <a name="visual-studio-code"></a>[Visual Studio Code](#tab/visual-studio-code)
 
 ```powershell
@@ -166,6 +169,9 @@ azure-streamanalytics-cicd addtestcase -project "/Users/roger/projects/samplejob
   ]
 }
 ```
+
+> [!NOTE]
+> 現在、`ScriptType` 要素に使用できる値は `InputMock` のみです。これは、既定値でもあります。 それ以外の値に設定した場合は無視され、既定値 (`InputMock`) が使用されます。 
 
 ### <a name="run-a-unit-test"></a>単体テストを実行する
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24d27859aad7642392a5702ab7ddbb727b538d51
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5c03d3f9769aec0736d23f18372701e08ad93dac
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025012"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104802796"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise マルチセッションに関する FAQ
 
@@ -33,9 +33,13 @@ Windows 10 Enterprise マルチセッションは、Windows 10 Enterprise の仮
 
 Windows 10 Enterprise マルチセッションは、Azure 用の Windows Virtual Desktop サービスに最適化されているため、オンプレミスの運用環境では実行できません。 運用目的で Azure の外部で Windows 10 Enterprise マルチセッションを実行することは、ライセンス契約違反です。 Windows 10 Enterprise マルチセッションは、オンプレミスのキー管理サービス (KMS) に対してアクティブ化されません。
 
+## <a name="can-i-upgrade-a-windows-10-vm-to-windows-10-enterprise-multi-session"></a>Windows 10 VM を Windows 10 Enterprise マルチセッションにアップグレードすることはできますか。
+
+いいえ。 現在、Windows 10 Professional または Enterprise を実行している既存の仮想マシン (VM) を Windows 10 Enterprise マルチセッションにアップグレードすることはできません。 また、Windows 10 Enterprise マルチセッション VM をデプロイしてから、プロダクト キーを別のエディションに更新した場合は、VM を Windows 10 Enterprise マルチセッションに戻すことができないため、その VM は再デプロイする必要があります。
+
 ## <a name="how-do-i-customize-the-windows-10-enterprise-multi-session-image-for-my-organization"></a>自分の組織向けに Windows 10 Enterprise マルチセッション イメージをカスタマイズする方法を教えてください。
 
-Windows 10 Enterprise マルチセッションを使用して Azure で仮想マシン (VM) を起動し、LOB アプリケーションをインストールしてカスタマイズし、sysprep/generalize を実行したら、Azure portal を使用してイメージを作成することができます。
+Windows 10 Enterprise マルチセッションを使用して Azure で VM を起動し、LOB アプリケーションをインストールしてカスタマイズし、sysprep/generalize を実行したら、Azure portal を使用してイメージを作成することができます。
 
 最初に、Windows 10 Enterprise マルチセッションを使用して Azure で VM を作成します。 Azure で VM を起動する代わりに、VHD を直接ダウンロードすることができます。 その後、ダウンロードした VHD を使用して、Hyper-V が有効になっている Windows 10 PC に新しい第 1 世代の VM を作成することができます。
 
@@ -63,7 +67,7 @@ Windows 10 Enterprise マルチセッション、バージョン 1809 以降が�
 
 ## <a name="which-profile-management-solution-should-i-use-for-windows-10-enterprise-multi-session"></a>Windows 10 Enterprise マルチセッションには、どのプロファイル管理ソリューションを使用すればよいですか?
 
-非永続的な環境または一元的に格納されたプロファイルを必要とするその他のシナリオで Windows 10 Enterprise を構成する場合は、FSLogix プロファイル コンテナーを使用することをお勧めします。 FSLogix を使用すると、ユーザーのすべてのセッションに対してユーザー プロファイルが確実に利用でき、最新の状態に保つことができます。 また、FSLogix プロファイル コンテナーを使用して、適切なアクセス許可を持つ任意の SMB 共有にユーザー プロファイルを格納することをお勧めしますが、必要に応じて、ユーザー プロファイルを Azure ページ BLOB ストレージに格納することもできます。 Windows Virtual Desktop ユーザーは、追加コストなしで FSLogix を使用できます。
+非永続的な環境または一元的に格納されたプロファイルを必要とするその他のシナリオで Windows 10 Enterprise を構成する場合は、FSLogix プロファイル コンテナーを使用することをお勧めします。 FSLogix を使用すると、ユーザーのすべてのセッションに対してユーザー プロファイルが確実に利用でき、最新の状態に保つことができます。 また、FSLogix プロファイル コンテナーを使用して、適切なアクセス許可を持つ任意の SMB 共有にユーザー プロファイルを格納することをお勧めしますが、必要に応じて、ユーザー プロファイルを Azure ページ BLOB ストレージに格納することもできます。 Windows Virtual Desktop ユーザーは、追加コストなしで FSLogix を使用できます。  FSLogix は、すべての Windows 10 Enterprise マルチセッション イメージにプレインストールされていますが、IT 管理者は引き続き FSLogix プロファイル コンテナーの構成を担当します。
 
 FSLogix プロファイル コンテナーの構成方法の詳細については、「[FSLogix プロファイル コンテナーを構成する](create-host-pools-user-profile.md#configure-the-fslogix-profile-container)」を参照してください。
 
@@ -81,7 +85,7 @@ FSLogix プロファイル コンテナーの構成方法の詳細について�
 
 - [Windows Virtual Desktop で組み込みアプリを発行する](publish-apps.md)
 - [DISM アプリ パッケージ サービスのコマンド ライン オプション](/windows-hardware/manufacture/desktop/dism-app-package--appx-or-appxbundle--servicing-command-line-options)
-- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage?view=win10-ps)
+- [Add-AppxProvisionedPackage](/powershell/module/dism/add-appxprovisionedpackage)
 
 ## <a name="how-do-i-make-sure-users-dont-download-and-install-apps-from-the-microsoft-store"></a>ユーザーが Microsoft Store からアプリをダウンロードしてインストールしないようにするにはどうすればいいですか？
 

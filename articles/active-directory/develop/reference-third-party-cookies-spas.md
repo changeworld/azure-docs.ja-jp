@@ -14,10 +14,10 @@ ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: eed4e919684575bb2c63170d91517b661fac4acf
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98753970"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>サードパーティの Cookie がブロックされている Safari やその他のブラウザーで ITP を扱う

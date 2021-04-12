@@ -4,10 +4,10 @@ description: Azure Container Registry で az acr check-health 診断コマンド
 ms.topic: article
 ms.date: 01/25/2021
 ms.openlocfilehash: 05ae5a7ac19bb7748d5313ccb4974b639ab52d9c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99061870"
 ---
 # <a name="health-check-error-reference"></a>正常性チェックのエラー リファレンス

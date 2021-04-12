@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/08/2021
+ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: eb01ae5e9c7e134e33460674eb2c44b710671a4a
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 84bf14caeec163c31004a430fa954fc36f4be68b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99833356"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562785"
 ---
 # <a name="azure-stack-edge-2101-release-notes"></a>Azure Stack Edge 2101 リリース ノート
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 次のリリース ノートでは、お使いの Azure Stack Edge デバイスの 2101 リリースの重大な未解決の問題と解決された問題について説明します。 このリリース ノートは、Azure Stack Edge Pro GPU、Azure Stack Edge Pro R、Azure Stack Edge Mini R デバイスを対象としています。 機能および問題が特定のモデルのものである場合は、常にそれを明記しています。
 
@@ -27,7 +29,7 @@ ms.locfileid: "99833356"
 
 Azure Stack Edge 2101 リリースの新機能は次のとおりです。 
 
-- **Azure Stack Edge Pro R および Azure Stack Edge Mini R デバイスの一般提供**: このリリースから、Azure Stack Edge Pro R および Azure Stack Edge Mini R デバイスが提供されます。 詳細については、「[Azure Stack Edge Pro R とは](azure-stack-edge-j-series-overview.md)」および「[Azure Stack Edge Mini R とは](azure-stack-edge-k-series-overview.md)」をご覧ください。  
+- **Azure Stack Edge Pro R および Azure Stack Edge Mini R デバイスの一般提供**: このリリースから、Azure Stack Edge Pro R および Azure Stack Edge Mini R デバイスが提供されます。 詳細については、「[Azure Stack Edge Pro R とは](azure-stack-edge-pro-r-overview.md)」および「[Azure Stack Edge Mini R とは](azure-stack-edge-mini-r-overview.md)」をご覧ください。  
 - **クラウドでの Virtual Machines の管理**: このリリースから、お使いのデバイスで Azure portal を使用して仮想マシンを作成および管理できます。 詳細については、[Azure portal を使用した仮想マシンのデプロイ](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)に関する記事をご覧ください。
 - **Azure Monitor の統合**: お使いのデバイスで実行されているコンピューティング アプリケーションから、Azure Monitor を使用してコンテナーを監視できるようになりました。 このリリースでは、Azure Monitor のメトリック ストアはサポートされていません。 詳細については、[お使いのデバイスでの Azure Monitor の有効化](azure-stack-edge-gpu-enable-azure-monitor.md)に関する記事をご覧ください。
 - **Edge コンテナー レジストリ**: このリリースでは、お使いのデバイスのエッジのリポジトリとなる Edge コンテナー レジストリをご利用になれます。 このレジストリを使って、コンテナー イメージを格納および管理できます。 詳細については、[Edge コンテナー レジストリの有効化](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)に関する記事をご覧ください。 
@@ -47,7 +49,7 @@ Azure Stack Edge 2101 リリースの新機能は次のとおりです。
 |**3.**|Kubernetes |Web プロキシが有効になっている場合、Edge コンテナー レジストリは機能しません。|この機能は、今後のリリースで利用可能になります。 |
 |**4.**|Kubernetes |IoT Edge モジュールでは Edge コンテナー レジストリは機能しません。| |
 |**5.**|Kubernetes |Kubernetes は、.NET アプリケーションで使用される環境変数名の ":" をサポートしていません。 これは、イベント グリッド IoT Edge モジュールが Azure Stack Edge デバイスやその他のアプリケーションで機能するためにも必要です。 詳細については、[ASP.NET Core のドキュメント](/aspnet/core/fundamentals/configuration/?tabs=basicconfiguration&view=aspnetcore-3.1&preserve-view=true#environment-variables)をご覧ください。|":" は二重のアンダースコアに置き換えてください。 詳細については、[Kubernetes の問題](https://github.com/kubernetes/kubernetes/issues/53201)に関する記事をご覧ください。|
-|**6.** |Azure Arc と Kubernetes クラスター |Git リポジトリからリソース `yamls` を削除した場合、既定で Kubernetes クラスターから対応するリソースは削除されません。  |Git リポジトリからリソースを削除したときに、それらが削除されるようにするには、Arc OperatorParams に `--sync-garbage-collection` を設定します。 詳細については、「[構成を削除する](../azure-arc/kubernetes/use-gitops-connected-cluster.md#additional-parameters)」をご覧ください。 |
+|**6.** |Azure Arc と Kubernetes クラスター |Git リポジトリからリソース `yamls` を削除した場合、既定で Kubernetes クラスターから対応するリソースは削除されません。  |Git リポジトリからリソースを削除したときに、それらが削除されるようにするには、Arc OperatorParams に `--sync-garbage-collection` を設定します。 詳細については、「[構成を削除する](../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md#additional-parameters)」をご覧ください。 |
 |**7.**|NFS |お使いのデバイスの NFS 共有マウントを使用してデータを書き込むアプリケーションでは、排他的な書き込みを使用する必要があります。 これにより、書き込みがディスクに書き込まれるようになります。| |
 |**8.**|コンピューティングの構成 |ネットワーク上に存在しないシステムに対するアドレス解決プロトコル (ARP) 要求にゲートウェイまたはスイッチまたはルーターが応答するネットワーク構成では、コンピューティング構成が失敗します。| |
 |**9.**|コンピューティングおよび Kubernetes |お使いのデバイスで Kubernetes を最初に設定した場合、使用可能なすべての GPU が要求されます。 そのため、Kubernetes を設定した後で、GPU を使用して Azure Resource Manager の仮想マシンは作成できません。 |お使いのデバイスに GPU が 2 つある場合は、GPU を使用する仮想マシンを 1 つ作成してから Kubernetes を構成します。 この場合、Kubernetes が残りの使用可能な 1 つの GPU を使用します。 |

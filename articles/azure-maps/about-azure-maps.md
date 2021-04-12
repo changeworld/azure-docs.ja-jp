@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
 ms.openlocfilehash: b53af0fda8bb24bf03d0e02f61ce7d195ae69503
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97680817"
 ---
 # <a name="what-is-azure-maps"></a>Azure Maps とは

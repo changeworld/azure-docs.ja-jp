@@ -1,17 +1,16 @@
 ---
 title: Azure Monitor を使用した継続的監視 | Microsoft Docs
 description: Azure Monitor を使用してワークフロー全体にわたって継続的監視を有効にする手順について詳しく説明します。
-ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/12/2018
-ms.openlocfilehash: 89ce214ef9686d2704878304b8b324871ad9473f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2fe9d7e4da8950cee2dcb2fbcfb26355ace7285d
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579489"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102044019"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Azure Monitor を使用した継続的監視
 
@@ -36,7 +35,7 @@ ms.locfileid: "100579489"
 アプリケーションの信頼性が、その基になるインフラストラクチャの信頼性を超えることはありません。 お客様のインフラストラクチャ全体に対して監視を有効にすることは、完全な観測性を実現するのに役立つほか、何らかの障害が発生した際に考え得る根本的原因を検出しやすくするのに役立ちます。 Azure Monitor は、リソース (VM、コンテナー、ストレージ、ネットワークなど) を含むお客様のハイブリッド インフラストラクチャ全体の正常性とパフォーマンスの追跡を支援します。
 
 - お客様のほとんどの Azure リソースから[プラットフォーム メトリック、アクティビティ ログ、診断ログ](agents/data-sources.md)が構成なしで自動的に得られます。
-- [Azure Monitor for VMs](vm/vminsights-overview.md) を使用して、VM に対してより高度な監視を有効にします。
+- [VM insights](vm/vminsights-overview.md) を使用して、VM に対してより高度な監視を有効にします。
 -  [コンテナー用 Azure Monitor](containers/container-insights-overview.md) を使用して、AKS クラスターに対してより高度な監視を有効にします。
 - お客様の環境内のさまざまなアプリケーションおよびサービス用に[監視ソリューション](./monitor-reference.md)を追加します。
 

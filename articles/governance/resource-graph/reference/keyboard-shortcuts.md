@@ -5,10 +5,10 @@ ms.date: 01/27/2021
 ms.topic: reference
 ms.custom: accessibility
 ms.openlocfilehash: 70777db630a654dc61aad697561583a02c0ccc25
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98919093"
 ---
 # <a name="keyboard-shortcuts-for-azure-resource-graph-explorer"></a>Azure Resource Graph エクスプローラーのキーボード ショートカット

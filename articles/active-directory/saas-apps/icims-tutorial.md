@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/01/2021
 ms.author: jeedes
 ms.openlocfilehash: 3ede24767f0355d9b8dcf6cd70d76e7af65aed74
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101651530"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-icims"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ICIMS の統合

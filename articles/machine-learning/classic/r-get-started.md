@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
 ms.openlocfilehash: c619b51f9323477bda4f1ec99aeeb1bfa01028fc
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100517741"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>R での Azure Machine Learning Studio (classic) の使用を開始する
@@ -1159,7 +1159,7 @@ predict2  <- predict(milk.lm2, cadairydata)
 
 ## Compute and plot the residuals
 residuals <- cadairydata$Milk.Prod - predict2
-plot(cadairytrain$Time, residuals[1:216], xlab = "Time", ylab ="Residuals of Seasonal Model")
+plot(cadairytrain$Time, residuals[1:216], xlab = "Time&quot;, ylab =&quot;Residuals of Seasonal Model")
 ```
 
 残差のプロットをこちらに示します。

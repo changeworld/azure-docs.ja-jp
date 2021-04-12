@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 85a0ce20f1d8e5a7e943efc088c19a8ad1912fc1
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 7f999dbf7a4e0262e36181a98560931d32d3296b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101706038"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612502"
 ---
 # <a name="azure-data-box-system-requirements"></a>Data Box のシステム要件
 
@@ -39,7 +39,7 @@ ms.locfileid: "101706038"
 [!INCLUDE [data-box-supported-file-systems-clients](../../includes/data-box-supported-file-systems-clients.md)]
 
 > [!IMPORTANT] 
-> エクスポート注文については、Data Box 共有への接続は REST 経由でサポートされていません。 
+> エクスポート注文については、Data Box 共有への接続は REST 経由でサポートされていません。
 
 ### <a name="supported-storage-accounts"></a>サポートされるストレージ アカウント
 

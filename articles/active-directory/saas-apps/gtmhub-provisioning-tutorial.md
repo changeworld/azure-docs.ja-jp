@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: Zhchia
 ms.openlocfilehash: 0e160def31a43bc94e4f6151b46efe72e585e953
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98735726"
 ---
 # <a name="tutorial-configure-gtmhub-for-automatic-user-provisioning"></a>チュートリアル:Gtmhub を構成し、自動ユーザー プロビジョニングに対応させる

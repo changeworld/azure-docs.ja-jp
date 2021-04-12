@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/20/2017
 ms.openlocfilehash: 419a696da1244afab7aa03cd8c4521ea819a5298
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100515956"
 ---
 # <a name="manage-experiment-runs-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で実験の実行を管理する

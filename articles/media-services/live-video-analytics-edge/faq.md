@@ -3,12 +3,12 @@ title: Live Video Analytics on IoT Edge に関する FAQ - Azure
 description: この記事では、Live Video Analytics on IoT Edge に関してよく寄せられる質問に回答します。
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: 72a07a1a509aebcd7ba4048d0c84e913481c978e
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2e5ec6e3a303bb8d655e666a820cfe67943b4eb6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101702251"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275959"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Live Video Analytics on IoT Edge の FAQ
 
@@ -57,7 +57,7 @@ ms.locfileid: "101702251"
 
 **Edge から Azure Media Services に記録されたアセットは、HLS や DASH などのストリーミング テクノロジを使用して再生できますか。**
 
-はい。 記録されたアセットは、Azure Media Services の他のアセットと同様にストリーミングできます。 コンテンツをストリーミングするには、ストリーミング エンドポイントを作成し、実行状態にする必要があります。 標準ストリーミング ロケーターの作成プロセスを使用すると、対応する任意のプレーヤー フレームワークにストリーミングするための Apple HTTP ライブ ストリーミング (HLS) または Dynamic Adaptive Streaming over HTTP (DASH。MPEG-DASH とも呼ばれる) のマニフェストにアクセスできます。 HLS または DASH マニフェストの発行と作成の詳細については、[ダイナミック パッケージ](../latest/dynamic-packaging-overview.md)に関するページを参照してください。
+はい。 記録されたアセットは、Azure Media Services の他のアセットと同様にストリーミングできます。 コンテンツをストリーミングするには、ストリーミング エンドポイントを作成し、実行状態にする必要があります。 標準ストリーミング ロケーターの作成プロセスを使用すると、対応する任意のプレーヤー フレームワークにストリーミングするための Apple HTTP ライブ ストリーミング (HLS) または Dynamic Adaptive Streaming over HTTP (DASH。MPEG-DASH とも呼ばれる) のマニフェストにアクセスできます。 HLS または DASH マニフェストの発行と作成の詳細については、[ダイナミック パッケージ](../latest/encode-dynamic-packaging-concept.md)に関するページを参照してください。
 
 **アーカイブされたアセットで Media Services の標準的なコンテンツ保護と DRM 機能を使用できますか。**
 
@@ -69,7 +69,7 @@ ms.locfileid: "101702251"
 
 テストに推奨されるプレーヤーは次のとおりです。
 
-* [Azure Media Player](../latest/use-azure-media-player.md)
+* [Azure Media Player](../latest/player-use-azure-media-player-how-to.md)
 * [HLS.js](https://hls-js.netlify.app/demo/)
 * [Video.js](https://videojs.com/)
 * [Dash.js](https://github.com/Dash-Industry-Forum/dash.js/wiki)
@@ -129,7 +129,7 @@ ms.locfileid: "101702251"
    
 *gRPC プロトコルを使用する*: 
 
-* 汎用リモート プロシージャ コール (gRPC) プロトコルの使用時に、gRPC サーバーで異なるポートを介して異なる AI モデルが公開されている場合、Live Video Analytics モジュール 1.0 が唯一の方法となります。 [このコード例](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/grpcExtension/topology.json)で、単一のポート (44000) ですべての yolo モデルを公開しています。 理論的には、yolo gRPC サーバーは、一部のモデルをポート 44000 で、他のモデルをポート 45000 で公開するように書き換えることができます。 
+* 汎用リモート プロシージャ コール (gRPC) プロトコルの使用時に、gRPC サーバーで異なるポートを介して異なる AI モデルが公開されている場合、Live Video Analytics モジュール 1.0 が唯一の方法となります。 [このコード例](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtensionOpenVINO/2.0/topology.json)で、単一のポート (44000) ですべての yolo モデルを公開しています。 理論的には、yolo gRPC サーバーは、一部のモデルをポート 44000 で、他のモデルをポート 45000 で公開するように書き換えることができます。 
 
 * Live Video Analytics モジュール 2.0 では、新しいプロパティが gRPC 拡張ノードに追加されます。 このプロパティ (**extensionConfiguration**) は、gRPC コントラクトの一部として使用できる省略可能な文字列です。 1 つの推論サーバーに複数の AI モデルがパッケージ化されている場合、AI モデルごとにノードを公開する必要はありません。 代わりに、グラフ インスタンスの場合は、拡張機能プロバイダーとして、**extensionConfiguration** プロパティを使用して、さまざまな AI モデルを選択する方法を定義できます。 実行中、この文字列が Live Video Analytics から推論サーバーに渡され、推論サーバーは、その文字列を使用して目的の AI モデルを呼び出すことができます。 
 

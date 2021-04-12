@@ -4,13 +4,13 @@ description: この記事では、センサー パートナーの統合につい
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
-ms.author: v-umha
-ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.author: v-ummehabiba
+ms.openlocfilehash: 8d1b8203fa50609daf59431c2cfecba68eba52b1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001594"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102179750"
 ---
 # <a name="sensor-partner-integration"></a>センサー パートナーの統合
 

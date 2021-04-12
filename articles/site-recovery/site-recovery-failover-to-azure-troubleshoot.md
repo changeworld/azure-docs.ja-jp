@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: d2a0444483c382da7c54accf7dca49d097671771
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8fe21ce5b92d672a2e025e0b45b8cbaea5951a8b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371989"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043905"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM または物理マシンから Azure へのフェールオーバー時のエラーをトラブルシューティングする
 
@@ -44,7 +44,7 @@ Site Recovery は、フェールオーバーした従来の仮想マシンを Az
 
 Site Recovery は、フェールオーバーした仮想マシンを Azure に作成できませんでした。 これは、オンプレミスの仮想マシンでハイドレーションの内部アクティビティが失敗したために発生します。
 
-Azure でマシンを起動するには、Azure 環境で、いくつかのドライバーがブート開始状態であり、DHCP などのサービスが自動開始状態である必要があります。 そのため、ハイドレーション アクティビティは、フェールオーバーの時点で、 **atapi、intelide、storflt、vmbus、および storvsc ドライバー** のスタートアップの種類をブート開始に変換します。 また、DHCP などのいくつかのサービスのスタートアップの種類も自動開始に変換します。 このアクティビティは、環境固有の問題が原因で失敗する可能性があります。 
+Azure でマシンを起動するには、Azure 環境で、いくつかのドライバーがブート開始状態であり、DHCP などのサービスが自動開始状態である必要があります。 そのため、ハイドレーション アクティビティは、フェールオーバーの時点で、**atapi、intelide、storflt、vmbus、および storvsc ドライバー** のスタートアップの種類をブート開始に変換します。 また、DHCP などのいくつかのサービスのスタートアップの種類も自動開始に変換します。 このアクティビティは、環境固有の問題が原因で失敗する可能性があります。 
 
 **Windows Guest OS** 用のドライバーのスタートアップの種類を手動で変更するには、次の手順に従ってください。
 
@@ -78,9 +78,9 @@ Azure でマシンを起動するには、Azure 環境で、いくつかのド�
 
 ## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>仮想マシンで [接続] ボタンが灰色表示されているために、/RDP/SSH をフェールオーバーされた仮想マシンに接続できない
 
-RDP の問題に関する詳細なトラブルシューティング手順については、[こちら](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)のドキュメントを参照してください。
+RDP の問題に関する詳細なトラブルシューティング手順については、[こちら](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection)のドキュメントを参照してください。
 
-SSH の問題に関する詳細なトラブルシューティング手順については、[こちら](../virtual-machines/troubleshooting/troubleshoot-ssh-connection.md)のドキュメントを参照してください。
+SSH の問題に関する詳細なトラブルシューティング手順については、[こちら](/troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection)のドキュメントを参照してください。
 
 Azure でフェールオーバーされた VM で **[接続]** ボタンが淡色表示され、Express Route またはサイト間 VPN 接続を使用して Azure に接続されない場合は、次の操作を実行します。
 
@@ -94,7 +94,7 @@ Azure でフェールオーバーされた VM で **[接続]** ボタンが淡�
 
 ## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>接続/RDP/SSH ができない - VM の [接続] ボタンは使用可能
 
-Azure でフェールオーバーされた VM で **[接続]** ボタンが使用できる (淡色表示されていない) 場合は、仮想マシンで **[Boot diagnostics]\(ブート診断)** を調べ、 [この記事](../virtual-machines/troubleshooting/boot-diagnostics.md)に記載されているエラーがないかチェックします。
+Azure でフェールオーバーされた VM で **[接続]** ボタンが使用できる (淡色表示されていない) 場合は、仮想マシンで **[Boot diagnostics]\(ブート診断)** を調べ、[この記事](/troubleshoot/azure/virtual-machines/boot-diagnostics)に記載されているエラーがないかチェックします。
 
 1. 仮想マシンが起動されていない場合は、前の復旧ポイントにフェールオーバーしてみます
 2. 仮想マシン内のアプリケーションが開始されていない場合は、アプリケーションと整合性がとれた復旧ポイントにフェールオーバーしてみます
@@ -134,7 +134,7 @@ RDP を使用してマシンに接続できても、シリアル コンソール
 
 フェールオーバー後の Windows VM 起動時に、回復した VM で、予期しないシャット ダウンのメッセージを受信した場合、それはフェールオーバーに使用された復旧ポイントで、VM のシャット ダウン状態がキャプチャされなかったことを示しています。 これは、VM が完全にはシャット ダウンされていないときのポイントに復旧すると発生します。
 
-これは一般に懸念の原因にはならないため、計画外のフェールオーバーであれば通常は無視できます。 フェールオーバーが計画されている場合は、フェールオーバーの前に VM が正しくシャット ダウンされるようにして、オンプレミスの保留中のレプリケーション データが Azure に送信されるのに十分な時間を確保します。 次に、 [フェールオーバー画面](site-recovery-failover.md#run-a-failover)の **[Lateset]\(最新)** オプションを使用して、Azure 上の保留中データがすべて処理されて復旧ポイントに入れられるようにします。それが後で、VM のフェールオーバーに使用されます。
+これは一般に懸念の原因にはならないため、計画外のフェールオーバーであれば通常は無視できます。 フェールオーバーが計画されている場合は、フェールオーバーの前に VM が正しくシャット ダウンされるようにして、オンプレミスの保留中のレプリケーション データが Azure に送信されるのに十分な時間を確保します。 次に、[フェールオーバー画面](site-recovery-failover.md#run-a-failover)の **[Lateset]\(最新)** オプションを使用して、Azure 上の保留中データがすべて処理されて復旧ポイントに入れられるようにします。それが後で、VM のフェールオーバーに使用されます。
 
 ## <a name="unable-to-select-the-datastore"></a>データストアを選択できない
 
@@ -182,7 +182,7 @@ RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] Cu
 
 
 ## <a name="next-steps"></a>次のステップ
-- [Windows VM への RDP 接続](../virtual-machines/troubleshooting/troubleshoot-rdp-connection.md)のトラブルシューティング
-- [Linux VM への SSH 接続](../virtual-machines/troubleshooting/detailed-troubleshoot-ssh-connection.md)のトラブルシューティング
+- [Windows VM への RDP 接続](/troubleshoot/azure/virtual-machines/troubleshoot-rdp-connection)のトラブルシューティング
+- [Linux VM への SSH 接続](/troubleshoot/azure/virtual-machines/detailed-troubleshoot-ssh-connection)のトラブルシューティング
 
 さらにサポートが必要な場合は、[Site Recovery に関する Microsoft Q&A 質問ページ](/answers/topics/azure-site-recovery.html)にクエリを投稿するか、この文書の最後にコメントを残してください。 ユーザー支援を可能にするために必要なアクティブ コミュニティを設置しています。

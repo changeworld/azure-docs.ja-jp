@@ -1,5 +1,5 @@
 ---
-title: マイ スタッフでパスワードと電話番号を管理する (プレビュー) - Azure AD | Microsoft Docs
+title: マイ スタッフでパスワードと電話番号を管理する - Azure AD | Microsoft Docs
 description: マイ スタッフを使用してユーザーのパスワードと電話番号を管理します
 services: active-directory
 documentationcenter: ''
@@ -9,20 +9,20 @@ ms.topic: end-user-help
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/14/2020
+ms.date: 03/17/2021
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 56ee7df52abf97c920dfe2fa4ba5d1d858975f7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7b435c56f53001275fbdb1a3b3cfae25536a9a63
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537092"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104583600"
 ---
-# <a name="delegate-user-management-with-my-staff-preview"></a>マイ スタッフでユーザーの管理を委任する (プレビュー)
+# <a name="delegate-user-management-with-my-staff"></a>マイ スタッフでユーザーの管理を委任する
 
-組織では、**マイ スタッフ**を使用することで、ストア マネージャーやチーム リーダーなどの権限のある人に、スタッフ メンバーが必要なアプリケーションにアクセスできるようにするためのユーザー管理タスクを委任することができます。 パスワードを忘れたためにチーム メンバーがアプリケーションにアクセスできない場合、生産性が失われます。 また、サポート コストが高くなり、管理プロセスでボトルネックが発生します。  マイ スタッフを使用すると、自分のアカウントにアクセスできないチーム メンバーは、数回のクリックでアクセスを回復することができ、管理者の支援は必要ありません。
+組織では、**マイ スタッフ** を使用することで、ストア マネージャーやチーム リーダーなどの権限のある人に、スタッフ メンバーが必要なアプリケーションにアクセスできるようにするためのユーザー管理タスクを委任することができます。 パスワードを忘れたためにチーム メンバーがアプリケーションにアクセスできない場合、生産性が失われます。 また、サポート コストが高くなり、管理プロセスでボトルネックが発生します。  マイ スタッフを使用すると、自分のアカウントにアクセスできないチーム メンバーは、数回のクリックでアクセスを回復することができ、管理者の支援は必要ありません。
 
 ## <a name="manage-your-staff-in-my-staff"></a>マイ スタッフでスタッフを管理する
 

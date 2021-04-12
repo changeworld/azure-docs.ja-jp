@@ -1,19 +1,19 @@
 ---
 title: BLOB Storage の Azure CLI サンプル | Microsoft Docs
 description: ストレージ アカウントの作成、特定のプレフィックスを含むコンテナーの削除など、Azure Blob Storage を操作するための Azure CLI サンプルへのリンクをご覧ください。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 06/13/2017
 ms.service: storage
 ms.subservice: blobs
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 79ff7b3d174407da929f201bdce691cecf9b9a89
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b18d332132bcaa8b3297179c7992eb9cc2f88d8
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035044"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279648"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Azure Blob Storage の Azure CLI サンプル
 

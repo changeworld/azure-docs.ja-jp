@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, responsible-ml
-ms.openlocfilehash: a2c8b765f109408b8cb08f78a4b3ad2283f35eb9
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 625ca217374fdb7558bf50faafb62c773cbc68b9
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223586"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059481"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>暗号化された推論 Web サービスをデプロイする方法 (プレビュー)
 

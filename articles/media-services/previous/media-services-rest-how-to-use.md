@@ -1,9 +1,9 @@
 ---
 title: Media Services Operations REST API の概要 | Microsoft Docs
-description: "\"Media Services Operations REST\" API は、Media Services アカウントで、ジョブ、アセット、ライブ チャンネル、およびその他のリソースを作成するときに使用されます。 この記事では、Azure Media Services v2 REST API の概要を説明します。"
+description: Media Services Operations REST API は、Media Services アカウントで、ジョブ、アセット、ライブ チャンネル、およびその他のリソースを作成するときに使用されます。 この記事では、Azure Media Services v2 REST API の概要を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
+ms.date: 3/10/2021
+ms.author: inhenkel
 ms.reviewer: johndeu
-ms.openlocfilehash: f48a01bb81829ff2bc10b4db1ed543382f992b58
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 9f147e333e4d1b95a14dd3121d7ab304b6166248
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696229"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103010050"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 11ad3bdcaa40c479c9358fd623edf0e6fdafa0d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9fca69804220021ca7935e562f2026c11749515a
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002079"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102623187"
 ---
 Event Hubs 出力バインドを使用して、イベント ストリームにイベントを書き込みます。 イベントを書き込むには、イベント ハブへの送信アクセス許可が必要です。
 
@@ -250,7 +250,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |**name** | 該当なし | イベントを表す関数コードに使用される変数の名前。 |
 |**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
 |**eventHubName** |**EventHubName** | Functions 2.x 以降。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
-|**connection** |**Connection** | イベント ハブの名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。|
+|**connection** |**Connection** | イベント ハブの名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"[名前空間](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。 <br><br>[バージョン 5.x またはそれ以降の拡張機能](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)を使用している場合は、接続文字列の代わりに、接続を定義する構成セクションへの参照を指定できます。 「[接続](../articles/azure-functions/functions-reference.md#connections)」を参照してください。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -258,11 +258,39 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 # <a name="c"></a>[C#](#tab/csharp)
 
+### <a name="default"></a>Default
+
+Event Hub の出力バインドに次のパラメーター型を使用できます。
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)に用意されています。
+
 `out string paramName` などのメソッド パラメーターを使用してメッセージを送信します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 複数のメッセージを書き込むには、`out string` の代わりに `ICollector<string>` または `IAsyncCollector<string>` を使用します。
+
+### <a name="additional-types"></a>その他の型 
+5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)の代わりに [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="c-script"></a>[C# スクリプト](#tab/csharp-script)
 
+### <a name="default"></a>Default
+
+Event Hub の出力バインドに次のパラメーター型を使用できます。
+
+* `string`
+* `byte[]`
+* `POCO`
+* `EventData` - EventData の既定のプロパティは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)に用意されています。
+
 `out string paramName` などのメソッド パラメーターを使用してメッセージを送信します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 複数のメッセージを書き込むには、`out string` の代わりに `ICollector<string>` または `IAsyncCollector<string>` を使用します。
+
+### <a name="additional-types"></a>その他の型 
+5\.0.0 以降のバージョンのイベント ハブ拡張機能を使用するアプリでは、[Microsoft.Azure.EventHubs 名前空間](https://docs.microsoft.com/dotnet/api/microsoft.azure.eventhubs.eventdata?view=azure-dotnet)の代わりに [Azure.Messaging.EventHubs](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata?view=azure-dotnet) の `EventData` 型を使用します。 このバージョンでは、次の型を優先して、レガシ `Body` 型のサポートがなくなります。
+
+- [EventBody](https://docs.microsoft.com/dotnet/api/azure.messaging.eventhubs.eventdata.eventbody?view=azure-dotnet)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -274,7 +302,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 
 - **戻り値**:*function.json* 内の `name` プロパティを `$return` に設定します。 この構成では、関数の戻り値はイベント ハブ メッセージとして永続化されます。
 
-- **命令型**:[Out](/python/api/azure-functions/azure.functions.out?view=azure-python) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
+- **命令型**:[Out](/python/api/azure-functions/azure.functions.out) 型として宣言されたパラメーターの [set](/python/api/azure-functions/azure.functions.out#set-val--t-----none) メソッドに値を渡します。 `set` に渡された値は、イベント ハブ メッセージとして永続化されます。
 
 # <a name="java"></a>[Java](#tab/java)
 

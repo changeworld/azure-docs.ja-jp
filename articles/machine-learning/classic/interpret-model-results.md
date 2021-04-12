@@ -9,10 +9,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 11/29/2017
 ms.openlocfilehash: f824cf6e30ed795ef0fe4468542ae16c801bd61b
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100516126"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (クラシック) でモデル結果を解釈する

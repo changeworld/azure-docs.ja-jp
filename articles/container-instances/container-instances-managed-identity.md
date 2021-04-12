@@ -3,12 +3,12 @@ title: コンテナー グループでマネージド ID を有効にする
 description: ここでは、他のサービスで認証できるマネージド ID を Azure Container Instances で有効にする方法を説明します。
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 67ef17b77a9db92e539dd860a3083760fe1160db
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: a0d029e39122ca7bb858103f4d7f88e2536850d5
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558948"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102198321"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Azure Container Instances でマネージド ID を使用する方法
 
@@ -53,13 +53,13 @@ Azure Container Instances は、ユーザー割り当て、システム割り当
 
 この記事の例では、Azure Container Instances でマネージド ID を使用して Azure Key Vault シークレットにアクセスします。 
 
-まず、次の [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
+まず、次の [az group create](/cli/azure/group#az-group-create) コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) コマンドを使います。 必ず一意のキー コンテナー名を指定してください。 
+キー コンテナーを作成するには、[az keyvault create](/cli/azure/keyvault#az-keyvault-create) コマンドを使います。 必ず一意のキー コンテナー名を指定してください。 
 
 ```azurecli-interactive
 az keyvault create \
@@ -68,7 +68,7 @@ az keyvault create \
   --location eastus
 ```
 
-[az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) コマンドを使って、サンプルのシークレット例をキー コンテナーに格納します。
+[az keyvault secret set](/cli/azure/keyvault/secret#az-keyvault-secret-set) コマンドを使って、サンプルのシークレット例をキー コンテナーに格納します。
 
 ```azurecli-interactive
 az keyvault secret set \
@@ -83,7 +83,7 @@ az keyvault secret set \
 
 ### <a name="create-an-identity"></a>ID の作成
 
-まず [az identity create](/cli/azure/identity?view=azure-cli-latest#az-identity-create) コマンドを使用して、サブスクリプション内で ID を作成します。 Key Vault の作成に使ったのと同じリソース グループを使用することも、別のものを使用することもできます。
+まず [az identity create](/cli/azure/identity#az-identity-create) コマンドを使用して、サブスクリプション内で ID を作成します。 Key Vault の作成に使ったのと同じリソース グループを使用することも、別のものを使用することもできます。
 
 ```azurecli-interactive
 az identity create \
@@ -91,7 +91,7 @@ az identity create \
   --name myACIId
 ```
 
-後続のステップで ID を使用するために、[az identity show](/cli/azure/identity?view=azure-cli-latest#az-identity-show) コマンドを使って ID のサービス プリンシパル ID とリソース ID を変数に格納します。
+後続のステップで ID を使用するために、[az identity show](/cli/azure/identity#az-identity-show) コマンドを使って ID のサービス プリンシパル ID とリソース ID を変数に格納します。
 
 ```azurecli-interactive
 # Get service principal ID of the user-assigned identity
@@ -109,7 +109,7 @@ resourceID=$(az identity show \
 
 ### <a name="grant-user-assigned-identity-access-to-the-key-vault"></a>Key Vault へのアクセス権をユーザー割り当て ID に付与する
 
-次の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) コマンドを実行して、キー コンテナーに対するアクセス ポリシーを設定します。 次の例では、ユーザー割り当て ID にキー コンテナーからのシークレットの取得を許可します。
+次の [az keyvault set-policy](/cli/azure/keyvault) コマンドを実行して、キー コンテナーに対するアクセス ポリシーを設定します。 次の例では、ユーザー割り当て ID にキー コンテナーからのシークレットの取得を許可します。
 
 ```azurecli-interactive
  az keyvault set-policy \
@@ -121,7 +121,7 @@ resourceID=$(az identity show \
 
 ### <a name="enable-user-assigned-identity-on-a-container-group"></a>コンテナー グループでユーザー割り当て ID を有効にする
 
-次の [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create) コマンドを実行して、Microsoft の `azure-cli` イメージに基づくコンテナー インスタンスを作成します。 この例で作成される単一コンテナーのグループを使用すると、Azure CLI を実行して他の Azure サービスに対話的にアクセスできます。 このセクションでは、基本のオペレーティング システムのみが使用されます。 コンテナーで Azure CLI を使用する例については、「[コンテナー グループでシステム割り当て ID を有効にする](#enable-system-assigned-identity-on-a-container-group)」を参照してください。 
+次の [az container create](/cli/azure/container#az-container-create) コマンドを実行して、Microsoft の `azure-cli` イメージに基づくコンテナー インスタンスを作成します。 この例で作成される単一コンテナーのグループを使用すると、Azure CLI を実行して他の Azure サービスに対話的にアクセスできます。 このセクションでは、基本のオペレーティング システムのみが使用されます。 コンテナーで Azure CLI を使用する例については、「[コンテナー グループでシステム割り当て ID を有効にする](#enable-system-assigned-identity-on-a-container-group)」を参照してください。 
 
 `--assign-identity` パラメーターは、ユーザー割り当てのマネージド ID をグループに渡します。 実行時間の長いこのコマンドにより、コンテナーの実行状態が続きます。 この例では、Key Vault の作成に使ったのと同じリソース グループを使用していますが、別のものを指定することもできます。
 
@@ -134,7 +134,7 @@ az container create \
   --command-line "tail -f /dev/null"
 ```
 
-数秒以内に、Azure CLI からデプロイが完了したことを示す応答を受信します。 [az container show](/cli/azure/container?view=azure-cli-latest#az-container-show) コマンドを使用して、その状態を確認します。
+数秒以内に、Azure CLI からデプロイが完了したことを示す応答を受信します。 [az container show](/cli/azure/container#az-container-show) コマンドを使用して、その状態を確認します。
 
 ```azurecli-interactive
 az container show \
@@ -206,7 +206,7 @@ curl https://mykeyvault.vault.azure.net/secrets/SampleSecret/?api-version=2016-1
 
 ### <a name="enable-system-assigned-identity-on-a-container-group"></a>コンテナー グループでシステム割り当て ID を有効にする
 
-次の [az container create](/cli/azure/container?view=azure-cli-latest#az-container-create) コマンドを実行して、Microsoft の `azure-cli` イメージに基づくコンテナー インスタンスを作成します。 この例で作成される単一コンテナーのグループを使用すると、Azure CLI を実行して他の Azure サービスに対話的にアクセスできます。 
+次の [az container create](/cli/azure/container#az-container-create) コマンドを実行して、Microsoft の `azure-cli` イメージに基づくコンテナー インスタンスを作成します。 この例で作成される単一コンテナーのグループを使用すると、Azure CLI を実行して他の Azure サービスに対話的にアクセスできます。 
 
 `--assign-identity` パラメーター (他の値なし) を指定すると、システム割り当てのマネージド ID がグループで有効になります。 この ID は、コンテナーグループのリソースグループにスコープが設定されています。 実行時間の長いこのコマンドにより、コンテナーの実行状態が続きます。 この例では、ID のスコープ内にある、キー コンテナーの作成に使用したものと同じリソース グループを使用します。
 
@@ -255,7 +255,7 @@ spID=$(az container show \
 
 ### <a name="grant-container-group-access-to-the-key-vault"></a>Key Vault へのアクセス権をコンテナー グループに付与する
 
-次の [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest) コマンドを実行して、キー コンテナーに対するアクセス ポリシーを設定します。 次の例により、システム定義 ID が Key Vault からシークレットを取得できるようになります。
+次の [az keyvault set-policy](/cli/azure/keyvault) コマンドを実行して、キー コンテナーに対するアクセス ポリシーを設定します。 次の例により、システム定義 ID が Key Vault からシークレットを取得できるようになります。
 
 ```azurecli-interactive
  az keyvault set-policy \

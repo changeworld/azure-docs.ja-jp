@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: af98811e158b9613e41389e08e19cb36797aa272
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8bd46f013680d5cbc9e75a312206fdb2fdcac7ec
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790595"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109358"
 ---
 # <a name="call-rest-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して REST エンドポイントを呼び出す
 
@@ -150,9 +150,9 @@ ms.locfileid: "92790595"
 | プロパティ名 | Type | 説明 |
 |---------------|------|-------------|
 | headers | object | 要求のヘッダー |
-| body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
+| body | object | 要求の本文の内容を含むオブジェクト |
 | status code | INT | 要求の状態コード |
-|||
+||||
 
 | status code | 説明 |
 |-------------|-------------|

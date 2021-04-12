@@ -1,24 +1,14 @@
 ---
 title: カスタム アラートの作成
 description: Azure Defender for IoT セキュリティ サービスのカスタム デバイス アラートについて理解し、それらの作成と割り当てができるようにします。
-services: defender-for-iot
-ms.service: defender-for-iot
-documentationcenter: na
-author: mlottner
-manager: rkarlin
-editor: ''
-ms.devlang: na
-ms.topic: quickstart
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: how-to
 ms.date: 09/04/2020
-ms.author: mlottner
-ms.openlocfilehash: e59bcca9561c33610170f4bc3674eef307cf0de9
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 5d9bb7811396579ec9096715809a101aebbf36a3
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809048"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384546"
 ---
 # <a name="create-custom-alerts"></a>カスタム アラートの作成
 

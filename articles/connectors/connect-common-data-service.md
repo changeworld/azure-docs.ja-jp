@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/11/2021
 tags: connectors
 ms.openlocfilehash: bec3416195358121b85eb61679ab39647e664a9e
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100382355"
 ---
 # <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Common Data Service (Microsoft Dataverse) のレコードを作成および管理する
@@ -75,8 +75,8 @@ ms.locfileid: "100382355"
 
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
-   | **組織名** | はい | レコードを作成する環境。これは、トリガーで指定した環境と同じにする必要はありませんが、この例では、"Fabrikam Sales Production" を指定しています。 |
-   | **エンティティ名** | はい | レコードを作成しようとするエンティティ (たとえば "Tasks") |
+   | **組織名** | はい | レコードを作成する環境。これは、トリガーで指定した環境と同じにする必要はありませんが、この例では、"Fabrikam Sales Production&quot; を指定しています。 |
+   | **エンティティ名** | はい | レコードを作成しようとするエンティティ (たとえば &quot;Tasks") |
    | **件名** | はい (この例では選択したエンティティに基づきます) | このタスクの目的に関する簡単な説明 |
    ||||
 

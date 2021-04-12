@@ -7,10 +7,10 @@ ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
 ms.openlocfilehash: 39b5b1f988a118e609015f19a086fda434797356
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99050264"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Azure VM から Update Management を有効にする

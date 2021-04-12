@@ -6,12 +6,12 @@ ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 0207e4af9f845343866714ec207ca306cb327b36
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: f02643ee28d76d4f90206a1aa2879b4672da2a38
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035174"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102179458"
 ---
 # <a name="create-your-first-kotlin-function-in-azure-using-intellij"></a>IntelliJ を使用して Azure で初めての Kotlin 関数を作成する
 
@@ -81,7 +81,7 @@ Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロ�
 
 ## <a name="deploy-the-project-to-azure"></a>Azure にプロジェクトをデプロイする
 
-1. プロジェクトを Azure の関数アプリにデプロイする前に、[Azure CLI を使用してログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)する必要があります。
+1. プロジェクトを Azure の関数アプリにデプロイする前に、[Azure CLI を使用してログイン](/cli/azure/authenticate-azure-cli)する必要があります。
 
    ``` azurecli
    az login

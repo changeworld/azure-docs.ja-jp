@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 1436561f7c82446038c231fadec3bd62c94d4ff9
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: df17eddd9cb4f05eb42ac517691bbf71bf72040f
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955107"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960182"
 ---
 # <a name="get-a-signing-key-from-the-existing-policy"></a>既存のポリシーから署名キーを取得する
 
@@ -45,4 +45,4 @@ v3 API の主要な設計原則の 1 つは、API の安全性の向上です。
 
 ## <a name="next-steps"></a>次のステップ
 
-[アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md) 
+[アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](architecture-design-multi-drm-system.md) 

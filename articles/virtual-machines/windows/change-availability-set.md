@@ -1,19 +1,20 @@
 ---
-title: VM の可用性セットの変更
+title: Azure PowerShell を使用して VM の可用性セットを変更する
 description: Azure PowerShell を使用して仮想マシンの可用性セットを変更する方法について説明します。
 ms.service: virtual-machines
 author: cynthn
 ms.topic: how-to
-ms.date: 01/31/2020
+ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: 54f59a052132826897cfbc8dda59bc73fb6ad8d9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.reviewer: mimckitt
+ms.openlocfilehash: 99985d0bb2294c538efa712e477cc6f8a2eb4938
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200568"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102498474"
 ---
-# <a name="change-the-availability-set-for-a-vm"></a>VM の可用性セットを変更する
+# <a name="change-the-availability-set-for-a-vm-using-azure-powershell"></a>Azure PowerShell を使用して VM の可用性セットを変更する    
 以下の手順では、Azure PowerShell を使用して VM の可用性セットを変更する方法について説明します。 VM を可用性セットに追加できるのは、VM の作成時のみです。 可用性セットを変更するには、仮想マシンを削除してから作成し直す必要があります。 
 
 この記事は、Linux と Windows の両方の VM に適用されます。
@@ -80,7 +81,7 @@ ms.locfileid: "98200568"
        -CreateOption Attach
     }
     
-# Add NIC(s) and keep the same NIC as primary
+# Add NIC(s) and keep the same NIC as primary; keep the Private IP too, if it exists. 
     foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {    
     if ($nic.Primary -eq "True")
     {

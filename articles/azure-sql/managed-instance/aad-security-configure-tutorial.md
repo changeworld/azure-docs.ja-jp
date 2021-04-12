@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 9161bf4f99ddfed479451d2091458ab309aa2c17
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 50544507f9d83c216bb6c18e004c5ce7ad1ca346
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788623"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639844"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Managed Instance のセキュリティ
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -106,7 +106,7 @@ SQL Managed Instance に接続する例については、以下の記事を参�
 
     ![SSMS オブジェクト エクスプローラーの [結果] タブのスクリーンショット。新しく追加されたログインの name、principal_id、sid、type、および type_desc が表示されています。](./media/aad-security-configure-tutorial/native-login.png)
 
-詳細については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)」を参照してください。
+詳細については、「[CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照してください。
 
 ## <a name="grant-permissions-to-create-logins"></a>ログインを作成するためのアクセス許可を付与する
 
@@ -145,7 +145,7 @@ SQL Managed Instance に接続する例については、以下の記事を参�
 
 ## <a name="create-additional-azure-ad-server-principals-logins-using-ssms"></a>SSMS を使用して追加の Azure AD サーバー プリンシパル (ログイン) を作成する
 
-Azure AD サーバー プリンシパル (ログイン) が作成され、`sysadmin` の特権が付与されると、そのログインは、 **CREATE LOGIN** で **FROM EXTERNAL PROVIDER** 句を使用して追加のログインを作成できます。
+Azure AD サーバー プリンシパル (ログイン) が作成され、`sysadmin` の特権が付与されると、そのログインは、**CREATE LOGIN** で **FROM EXTERNAL PROVIDER** 句を使用して追加のログインを作成できます。
 
 1. SQL Server Management Studio を使用して、Azure AD サーバー プリンシパル (ログイン) でマネージド インスタンスに接続します。 SQL Managed Instance のホスト名を入力します。 SSMS での認証の場合、Azure AD アカウントを使ってログインするときに選択できるオプションは 3 つあります。
 
@@ -182,9 +182,9 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
     GO
     ```
 
-1. [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) 構文を使用して、マネージド インスタンスにデータベースを作成します。 このデータベースは、次のセクションでユーザー ログインをテストする際に使用されます。
+1. [CREATE DATABASE](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 構文を使用して、マネージド インスタンスにデータベースを作成します。 このデータベースは、次のセクションでユーザー ログインをテストする際に使用されます。
     1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
-    1. クエリ ウィンドウで、次の構文を使用して、 **MyMITestDB** という名前のデータベースを作成します。
+    1. クエリ ウィンドウで、次の構文を使用して、**MyMITestDB** という名前のデータベースを作成します。
 
         ```sql
         CREATE DATABASE MyMITestDB;
@@ -195,7 +195,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
 
 1. SQL Server Management Studio で新しいクエリ ウィンドウを開きます。
 
-    この例では、 _mygroup_ というグループが Azure AD に存在することを前提としています。 たとえば、次のコマンドを実行します。
+    この例では、_mygroup_ というグループが Azure AD に存在することを前提としています。 たとえば、次のコマンドを実行します。
 
     ```sql
     USE master
@@ -214,7 +214,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
       ```
 
 > [!NOTE]
-> Azure AD のゲスト ユーザーは、Azure AD グループの一員として追加されている場合のみ、SQL Managed Instance のログインがサポートされます。 Azure AD のゲスト ユーザーは、マネージド インスタンスが属している Azure AD インスタンスに別の Azure AD インスタンスから招待されるアカウントです。 たとえば、joe@contoso.com (Azure AD アカウント) または steve@outlook.com (Microsoft アカウント) は、Azure AD aadsqlmi インスタンス内のグループに追加できます。 ユーザーがグループに追加されると、 **CREATE LOGIN** 構文を使用して、そのグループの SQL Managed Instance **master** データベースにログインを作成できます。 このグループのメンバーであるゲスト ユーザーは、現在のログイン (joe@contoso.com や steve@outlook.com など) を使用してマネージド インスタンスに接続できます。
+> Azure AD のゲスト ユーザーは、Azure AD グループの一員として追加されている場合のみ、SQL Managed Instance のログインがサポートされます。 Azure AD のゲスト ユーザーは、マネージド インスタンスが属している Azure AD インスタンスに別の Azure AD インスタンスから招待されるアカウントです。 たとえば、joe@contoso.com (Azure AD アカウント) または steve@outlook.com (Microsoft アカウント) は、Azure AD aadsqlmi インスタンス内のグループに追加できます。 ユーザーがグループに追加されると、**CREATE LOGIN** 構文を使用して、そのグループの SQL Managed Instance **master** データベースにログインを作成できます。 このグループのメンバーであるゲスト ユーザーは、現在のログイン (joe@contoso.com や steve@outlook.com など) を使用してマネージド インスタンスに接続できます。
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login"></a>Azure AD サーバー プリンシパル (ログイン) から Azure AD ユーザーを作成する
 
@@ -264,7 +264,7 @@ Azure AD サーバー プリンシパル (ログイン) が作成され、`sysad
     > [!IMPORTANT]
     > AD サーバー プリンシパル (ログイン) から **USER** を作成するときは、user_name を **LOGIN** と同じ login_name として指定します。
 
-    詳細については、「[CREATE USER](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)」を参照してください。
+    詳細については、「[CREATE USER](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照してください。
 
 1. 新しいクエリ ウィンドウで、次の T-SQL コマンドを使用してテスト テーブルを作成します。
 
@@ -389,7 +389,7 @@ SQL Managed Instance では、Azure AD サーバーレベル プリンシパル 
 
 1. SQL Server Management Studio で、`sysadmin` アカウントを使用してマネージド インスタンスにログインします。
 1. **オブジェクト エクスプローラー** で、サーバーを右クリックし、 **[新しいクエリ]** を選択します。
-1. クエリ ウィンドウで、次のコマンドを使用して、 **MyMITestDB2** という名前のデータベースと **TestTable2** という名前のテーブルを作成します。
+1. クエリ ウィンドウで、次のコマンドを使用して、**MyMITestDB2** という名前のデータベースと **TestTable2** という名前のテーブルを作成します。
 
     ```sql
     CREATE DATABASE MyMITestDB2;

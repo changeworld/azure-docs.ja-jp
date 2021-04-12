@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 10/5/2020
 ms.author: ghogen
 ms.openlocfilehash: 80aa160c53b278137467dba2afa41384c7c4f378
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101722672"
 ---
 # <a name="create-and-deploy-a-azure-cloud-service-extended-support-using-visual-studio"></a>Visual Studio を使用して Azure クラウド サービス (延長サポート) を作成およびデプロイする

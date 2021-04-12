@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
 ms.openlocfilehash: 2e8e7890adcb6b91d79bbf4e119488e365410d3c
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98020079"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-an-arm-template"></a>クイック スタート: ARM テンプレートを使用して Azure Stream Analytics ジョブを作成する

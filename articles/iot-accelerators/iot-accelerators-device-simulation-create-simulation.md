@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: e0d7310c4863c8dd431b991a2c249f2d8e257aeb
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 3376b3714dc41c7d5ce33756671050d19471a757
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852355"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106057713"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>チュートリアル: IoT デバイス シミュレーションを作成して実行する
 

@@ -3,16 +3,16 @@ title: Azure リージョンの移動 - Azure portal - Azure Database for MariaD
 description: 読み取りレプリカと Azure portal を使用して、Azure Database for MariaDB サーバーをリージョン間で移動します。
 author: savjani
 ms.author: pariks
-ms.service: jroth
+ms.service: mariadb
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
-ms.openlocfilehash: adb82b3ff371bdcdecbd964fef3c1d0c971df71a
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 831a1927d60c7b583afbe885c385fd85dc78e525
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664938"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062218"
 ---
 # <a name="move-an-azure-database-for-mariadb-server-to-another-region-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB サーバーを別のリージョンに移動する
 

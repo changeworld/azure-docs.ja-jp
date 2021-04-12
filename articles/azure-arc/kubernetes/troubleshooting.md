@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Arc 対応 Kubernetes クラスターに関する一般的な問題のトラブルシューティング。
 keywords: Kubernetes, Arc, Azure, コンテナー
-ms.openlocfilehash: e1f4e84f16c6b584f1ffbd918a86c251f47efcca
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 992ea75c48b2630032e1314610986fbc610eec7b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101654002"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025783"
 ---
 # <a name="azure-arc-enabled-kubernetes-troubleshooting"></a>Azure Arc 対応 Kubernetes のトラブルシューティング
 
@@ -46,7 +46,7 @@ REVISION: 5
 TEST SUITE: None
 ```
 
-Helm リリースが見つからないか欠落している場合は、もう一度[クラスターを Azure Arc に接続](./connect-cluster.md)してみてください。
+Helm リリースが見つからないか欠落している場合は、もう一度[クラスターを Azure Arc に接続](./quickstart-connect-cluster.md)してみてください。
 
 Helm リリースが存在し、`STATUS: deployed` の場合は、`kubectl` を使用してエージェントの状態を確認します。
 

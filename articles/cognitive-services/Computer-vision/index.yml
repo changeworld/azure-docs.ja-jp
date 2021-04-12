@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 09/22/2020
-  ms.openlocfilehash: de1668d62b283185c08e5c839da0ec8a815e5c99
-  ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+  ms.openlocfilehash: 940a34cfbf4281649737f0cf3fed7b490a9938a7
+  ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/17/2021
-  ms.locfileid: "100634602"
+  ms.lasthandoff: 03/09/2021
+  ms.locfileid: "102508896"
 landingContent:
 - title: Computer Vision について
   linkLists:
@@ -165,25 +165,25 @@ landingContent:
   - linkListType: reference
     links:
     - text: Computer Vision API v3.2 プレビュー
-      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005
+      url: https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b
     - text: Computer Vision API v3.1
       url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005
     - text: Computer Vision API v2.1
       url: https://westus.dev.cognitive.microsoft.com/docs/services/5cd27ec07268f6c679a3e641/operations/56f91f2e778daf14a499f21b
     - text: .NET SDK
-      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet
+      url: /dotnet/api/overview/azure/cognitiveservices/client/computervision
     - text: Python SDK
-      url: /python/api/overview/azure/cognitiveservices/computervision?view=azure-python
+      url: /python/api/overview/azure/cognitiveservices/computervision
     - text: Java SDK
-      url: /java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable
+      url: /java/api/overview/azure/cognitiveservices/client/computervision
     - text: Node.js SDK
-      url: /javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest
+      url: /javascript/api/@azure/cognitiveservices-computervision/
     - text: Go SDK
       url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision
     - text: Azure PowerShell
       url: /powershell/module/az.cognitiveservices/#cognitive_services
     - text: Azure コマンド ライン インターフェイス (CLI)
-      url: /cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list
 - title: ヘルプとフィードバック
   linkLists:
   - linkListType: reference

@@ -2,21 +2,21 @@
 title: 専用 SQL プールの Azure Advisor レコメンデーション
 description: Synapse SQL のレコメンデーションとその生成方法について説明します
 services: synapse-analytics
-author: kevinvngo
+author: gaursa
 manager: craigg-msft
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 06/26/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6510a7143e78c054130a1f1dddba78342a6785fe
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 698c14d23e8e64c777260410c625129cd87d49b3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685278"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104585708"
 ---
 # <a name="azure-advisor-recommendations-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プールの Azure Advisor レコメンデーション
 

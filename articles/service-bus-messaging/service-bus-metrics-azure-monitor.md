@@ -4,10 +4,10 @@ description: この記事では、Azure Monitor を使用して Service Bus エ�
 ms.topic: article
 ms.date: 02/12/2021
 ms.openlocfilehash: 1e57def2ee7409ae62cdbe065c36e8a53a140e18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100570578"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor での Azure Service Bus メトリック

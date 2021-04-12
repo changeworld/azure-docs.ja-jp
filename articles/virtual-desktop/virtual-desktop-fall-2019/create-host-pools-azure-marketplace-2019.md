@@ -3,15 +3,15 @@ title: Windows Virtual Desktop (クラシック) のホスト プール Azure Ma
 description: Azure Marketplace を使用して Windows Virtual Desktop (クラシック) のホスト プールを作成する方法。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/30/2020
+ms.date: 03/31/2021
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: fa271ba87f68d46452633d2b426c7fd805f8566b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008595"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445161"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) でホスト プールを作成する
 
@@ -60,11 +60,11 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 **[基本]** タブで必要な操作は次のとおりです。
 
-1. **サブスクリプション**を選択します。
+1. **サブスクリプション** を選択します。
 1. **[リソース グループ]** で **[新規作成]** を選択し、新しいリソース グループの名前を指定します。
-1. **リージョン**を選択します。
+1. **リージョン** を選択します。
 1. ホスト プールの名前を入力します。入力する名前は、Windows Virtual Desktop テナント内で一意のものを指定してください。
-1. **デスクトップの種類**を選択します。 **[個人]** を選択した場合には、このホスト プールに接続するユーザーそれぞれに対して仮想マシンが 1 台、永久的に割り当てられます。
+1. **デスクトップの種類** を選択します。 **[個人]** を選択した場合には、このホスト プールに接続するユーザーそれぞれに対して仮想マシンが 1 台、永久的に割り当てられます。
 1. Windows Virtual Desktop クライアントにサインインしてデスクトップにアクセスできるユーザーを入力します。 コンマ区切りのリストを使用します。 たとえば、`user1@contoso.com` と `user2@contoso.com` に対してアクセス権を割り当てる場合、「 *`user1@contoso.com,user2@contoso.com`* 」と入力します
 1. **[Service metadata location]\(サービス メタデータの場所\)** には、Active Directory サーバーに接続している仮想ネットワークと同じ場所を選択します。
 
@@ -80,10 +80,10 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 1. 既定値をそのまま使うか、仮想マシンの数とサイズをカスタマイズします。
 
     >[!NOTE]
-    >お探しの仮想マシン サイズがサイズ セレクターに表示されない場合、まだ Azure Marketplace ツールにオンボードされていないのが原因です。 特定のサイズを要求するには、[Windows Virtual Desktop UserVoice フォーラム](https://windowsvirtualdesktop.uservoice.com/forums/921118-general)で要求を作成するか、既存の要求に賛成票を投じてください。
+    >お探しの仮想マシン サイズがサイズ セレクターに表示されない場合、まだ Azure Marketplace ツールにオンボードされていないのが原因です。
 
-1. 仮想マシンの名前のプレフィックスを入力します。 たとえば、「*prefix*」と入力すると、仮想マシンの名前は **prefix-0**、**prefix-1** などのようになります。
-1. **Virtual machine settings\(仮想マシンの設定\)** を選択します。
+2. 仮想マシンの名前のプレフィックスを入力します。 たとえば、「*prefix*」と入力すると、仮想マシンの名前は **prefix-0**、**prefix-1** などのようになります。
+3. **Virtual machine settings\(仮想マシンの設定\)** を選択します。
 
 ### <a name="virtual-machine-settings"></a>仮想マシンの設定
 
@@ -99,7 +99,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
    >
    > アカウントは、Azure AD DS マネージド ドメインまたは Azure AD テナントの一部でもある必要があります。 Azure AD テナントに関連付けられている外部ディレクトリのアカウントが、ドメイン参加プロセス中に正しく認証を行うことはできません。
 
-1. Active Directory サーバーに接続している**仮想ネットワーク**を選択し、仮想マシンをホストするサブネットを選択します。
+1. Active Directory サーバーに接続している **仮想ネットワーク** を選択し、仮想マシンをホストするサブネットを選択します。
 1. **Windows Virtual Desktop information\(Windows Virtual Desktop 情報\)** を選択します。
 
 ### <a name="windows-virtual-desktop-tenant-information"></a>Windows Virtual Desktop のテナント情報

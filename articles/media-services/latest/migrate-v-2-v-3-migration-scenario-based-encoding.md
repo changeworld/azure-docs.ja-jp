@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: ab819239572fd99fdf5ff3bf23f81eb3cdff3b9a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a01571f4a1f852deb84b7f20d61b8048e8000790
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98940098"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490099"
 ---
 # <a name="encoding-scenario-based-migration-guidance"></a>エンコードのシナリオ ベースの移行ガイダンス
 
@@ -41,7 +41,7 @@ V2 と V3 のエンコード ワークフローを視覚的に比較するため
 
 次の画像をクリックすると、より大きなバージョンが表示されます。
 
-[ ![V2 のエンコード ワークフロー](./media/migration-guide/V2-pretty.svg) ](./media/migration-guide/V2-pretty.svg#lightbox)
+[![V2 のエンコード ワークフロー](./media/migration-guide/V2-pretty.svg) ](./media/migration-guide/V2-pretty.svg#lightbox)
 
 1. セットアップ
     1. 資産を作成するか、または既存の資産を使用します。 新しい資産を使用している場合は、コンテンツをその資産にアップロードします。 既存の資産を使用している場合は、その資産内に既に存在するファイルをエンコードする必要があります。
@@ -58,7 +58,7 @@ V2 と V3 のエンコード ワークフローを視覚的に比較するため
 
 ### <a name="v3-encoding-workflow"></a>V3 のエンコード ワークフロー
 
-[ ![V3 のエンコード ワークフロー](./media/migration-guide/V3-pretty.svg) ](./media/migration-guide/V3-pretty.svg#lightbox)
+[![V3 のエンコード ワークフロー](./media/migration-guide/V3-pretty.svg)](./media/migration-guide/V3-pretty.svg#lightbox)
 
 1. 設定
     1. 資産を作成するか、または既存の資産を使用します。 新しい資産を使用している場合は、コンテンツをその資産にアップロードします。 既存の資産を使用している場合は、その資産内に既に存在するファイルをエンコードする必要があります。 "*その資産にさらにコンテンツをアップロードすることはやめてください。* "
@@ -76,7 +76,7 @@ V2 と V3 のエンコード ワークフローを視覚的に比較するため
         - 出力資産
         - リソース グループ
         - AMS アカウント名  
-1. ジョブを監視するために [Event Grid](monitor-events-portal-how-to.md) を使用します。
+1. ジョブを監視するために [Event Grid](monitoring/monitor-events-portal-how-to.md) を使用します。
 1. ジョブを送信します。
 
 ## <a name="custom-presets-from-v2-to-v3-encoding"></a>V2 から V3 エンコードへのカスタム プリセット
@@ -85,24 +85,13 @@ V2 コードでカスタム プリセットを使用して Standard Encoder を�
 
 カスタム プリセットは現在 JSON であり、XML ベースではなくなりました。 [Transform Open API (Swagger)](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/examples/transforms-create.json) のドキュメントで定義されているカスタム プリセット スキーマに従って、JSON でプリセットを再作成します。
 
-
-<!-- removed because this is covered in the tutorials
-Common custom [encoding](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) scenarios:
-        1. Create a custom Single Bitrate MP4 encode
-        1. Create a custom [Adaptive Bitrate Encoding Ladder](autogen-bitrate-ladder.md)
-        1. Creating Sprite Thumbnails
-        1. Creating Thumbnails (see below for your preferred method)
-        1. [Sub Clipping](subclip-video-rest-howto.md)
-        1. Cropping
--->
-
 ## <a name="input-and-output-metadata-files-from-an-encoding-job"></a>エンコード ジョブからの入力および出力メタデータ ファイル
 
 v2 では、XML の入力と出力のメタデータ ファイルは、エンコード ジョブの結果として生成されます。 v3 では、メタデータの形式が XML から JSON に変更されました。 メタデータの詳細については、「[入力メタデータ](input-metadata-schema.md)」および「[出力メタデータ](output-metadata-schema.md)」を参照してください。
 
 ## <a name="premium-encoder-to-v3-standard-encoder-or-partner-based-solutions"></a>Premium Encoder から v3 Standard Encoder またはパートナー ベースのソリューションへ
 
-v2 API では、Premium Encoder がサポートされなくなりました。 以前に HEVC エンコードにワークフロー ベースの Premium Encoder を使用していた場合は、HEVC エンコードのサポートを含む新しい v3 [Standard Encoder](media-encoder-standard-formats.md) に移行する必要があります。
+v2 API では、Premium Encoder がサポートされなくなりました。 以前に HEVC エンコードにワークフロー ベースの Premium Encoder を使用していた場合は、HEVC エンコードのサポートを含む新しい v3 [Standard Encoder](encode-media-encoder-standard-formats-reference.md) に移行する必要があります。
 
 Premium Encoder の高度なワークフロー機能が必要な場合は、[Imagine Communications](https://imaginecommunications.com)、[Telestream](https://www.telestream.net)、または [Bitmovin](https://bitmovin.com) からの Azure の高度なエンコード パートナー ソリューションの使用を開始することをお勧めします。
 
@@ -114,20 +103,20 @@ Premium Encoder の高度なワークフロー機能が必要な場合は、[Ima
 
 ## <a name="indexer-v1-audio-transcription-to-the-new-audioanalyzer-basic-mode"></a>新しい AudioAnalyzer "基本モード" へのインデクサー v1 の音声の文字起こし
 
-v2 API でインデクサー v1 プロセッサを使用している顧客の場合は、ジョブを送信する前に、[基本モード](how-to-create-basic-audio-transform.md)で新しい `AudioAnalyzer` を呼び出す変換を作成する必要があります。
+v2 API でインデクサー v1 プロセッサを使用している顧客の場合は、ジョブを送信する前に、[基本モード](transform-create-basic-audio-how-to.md)で新しい `AudioAnalyzer` を呼び出す変換を作成する必要があります。
 
 ## <a name="encoding-transforms-and-jobs-concepts-tutorials-and-how-to-guides"></a>エンコード、変換、ジョブの概念、チュートリアル、ハウツー ガイド
 
 ### <a name="concepts"></a>概念
 
-- [Media Services を使用したビデオとオーディオのエンコード](encoding-concept.md)
-- [Standard Encoder の形式およびコーデック](media-encoder-standard-formats.md)
-- [自動生成されたビットレート ラダーでエンコードする](autogen-bitrate-ladder.md)
-- [コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する](content-aware-encoding.md)
+- [Media Services を使用したビデオとオーディオのエンコード](encode-concept.md)
+- [Standard Encoder の形式およびコーデック](encode-media-encoder-standard-formats-reference.md)
+- [自動生成されたビットレート ラダーでエンコードする](encode-autogen-bitrate-ladder.md)
+- [コンテンツに対応したエンコードのプリセットを使用して、特定の解像度に最適なビットレートの値を検索する](encode-content-aware-concept.md)
 - [メディア占有ユニット](concept-media-reserved-units.md)
 - [入力メタデータ](input-metadata-schema.md)
 - [出力メタデータ](output-metadata-schema.md)
-- [Media Services v3 のダイナミック パッケージ: オーディオ コーデック](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)
+- [Media Services v3 のダイナミック パッケージ: オーディオ コーデック](encode-dynamic-packaging-concept.md#audio-codecs-supported-by-dynamic-packaging)
 
 ### <a name="tutorials"></a>チュートリアル
 
@@ -138,23 +127,19 @@ v2 API でインデクサー v1 プロセッサを使用している顧客の場
 
 - [HTTPS URL からジョブの入力を作成する](job-input-from-http-how-to.md)
 - [ローカル ファイルからジョブの入力を作成する](job-input-from-local-file-how-to.md)
-- [基本的なオーディオ変換を作成する](how-to-create-basic-audio-transform.md)
+- [基本的なオーディオ変換を作成する](transform-create-basic-audio-how-to.md)
 - .NET の場合
-  - [カスタム変換を使用してエンコードする方法 - .NET](customize-encoder-presets-how-to.md)
-  - [Media Encoder Standard を使用してオーバーレイを作成する方法](how-to-create-overlay.md)
-  - [.NET で Encoder Standard を使用してサムネイルを生成する方法](media-services-generate-thumbnails-dotnet.md)
+  - [カスタム変換を使用してエンコードする方法 - .NET](transform-custom-presets-how-to.md)
+  - [Media Encoder Standard を使用してオーバーレイを作成する方法](transform-create-overlay-how-to.md)
+  - [.NET で Encoder Standard を使用してサムネイルを生成する方法](transform-generate-thumbnails-dotnet-how-to.md)
 - Azure CLI の場合
-  - [カスタム変換を使用してエンコードする方法 - Azure CLI](custom-preset-cli-howto.md)
+  - [カスタム変換を使用してエンコードする方法 - Azure CLI](transform-custom-preset-cli-how-to.md)
 - REST の場合
-  - [カスタム変換を使用してエンコードする方法 - REST](custom-preset-rest-howto.md)
-  - [REST で Encoder Standard を使用してサムネイルを生成する方法](media-services-generate-thumbnails-rest.md)
-- [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - .NET](subclip-video-dotnet-howto.md)
-- [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - REST](subclip-video-rest-howto.md)
+  - [カスタム変換を使用してエンコードする方法 - REST](transform-custom-preset-rest-how-to.md)
+  - [REST で Encoder Standard を使用してサムネイルを生成する方法](transform-generate-thumbnails-rest-how-to.md)
+- [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - .NET](transform-subclip-video-dotnet-how-to.md)
+- [Media Services を使用してエンコードを実行する際にビデオをサブクリップする - REST](transform-subclip-video-rest-how-to.md)
 
 ## <a name="samples"></a>サンプル
 
 [V2 と V3 のコードをコード サンプルで比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
-
-## <a name="next-steps"></a>次のステップ
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

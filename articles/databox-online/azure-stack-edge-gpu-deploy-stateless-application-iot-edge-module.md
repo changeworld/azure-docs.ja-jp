@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4eda6eaf69fad6f8600651660ae4ac6223fe8f8c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899516"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102438065"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>IoT Edge モジュールを使用して、Azure Stack Edge Pro GPU デバイスで Kubernetes ステートレス アプリケーションを実行する
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、IoT Edge モジュールを使用して、Azure Stack Edge Pro デバイスにステートレス アプリケーションをデプロイする方法について説明します。
 
@@ -35,7 +37,7 @@ ms.locfileid: "90899516"
 
     - デバイスにコンピューティング ネットワークの設定が構成されている。
     - [チュートリアル:デバイスのアクティブ化](azure-stack-edge-gpu-deploy-activate.md)に関する記事の手順に従って、デバイスがアクティブ化されている。
-- **コンピューティングの構成**が完了している。コンピューティングの構成は、お使いのデバイスで、[チュートリアル: Azure Stack Edge Pro デバイスでのコンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事に従って構成します。 お使いのデバイスには、関連付けられた IoT Hub リソース、IoT デバイス、および IoT Edge デバイスが必要です。
+- **コンピューティングの構成** が完了している。コンピューティングの構成は、お使いのデバイスで、[チュートリアル: Azure Stack Edge Pro デバイスでのコンピューティングの構成](azure-stack-edge-gpu-deploy-configure-compute.md)に関する記事に従って構成します。 お使いのデバイスには、関連付けられた IoT Hub リソース、IoT デバイス、および IoT Edge デバイスが必要です。
 
 
 ## <a name="add-webserver-app-module"></a>Web サーバー アプリ モジュールを追加する
@@ -53,7 +55,7 @@ Azure Stack Edge Pro デバイスに Web サーバー アプリ モジュール�
 
 1. **[IoT Edge モジュールの追加]** で:
 
-    1. デプロイする Web サーバー アプリ モジュールの**名前**を指定します。
+    1. デプロイする Web サーバー アプリ モジュールの **名前** を指定します。
     2. **[モジュールの設定]** タブで、モジュール イメージの **[イメージ URI]** を指定します。 指定した名前とタグに一致するモジュールが取得されます。 この場合は、`nginx:stable` によって、パブリック [Docker リポジトリ](https://hub.docker.com/_/nginx/)から、(stable としてタグ付けされた) 安定した nginx イメージがプルされます。
 
         ![IoT Edge モジュールの追加](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/set-module-settings-1.png)    

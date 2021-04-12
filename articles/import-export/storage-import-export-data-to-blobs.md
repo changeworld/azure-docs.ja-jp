@@ -5,16 +5,16 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/14/2021
+ms.date: 03/15/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: b014f81354b2f7eb2fb06de540f16b08206d583e
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 74f5565ba9dfa48dabfe56c25e3ef30a8caafe14
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706094"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103563285"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -60,15 +60,15 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
    * WAImportExport ツールによって暗号化されたドライブにデータを追加した場合は、次のコマンドを使用してドライブのロックを解除します。
 
-        `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`
+        `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`
 
-5. 管理者特権を使用して PowerShell またはコマンド ライン ウィンドウを開きます。 解凍されたフォルダーにディレクトリを変更するには、次のコマンドを実行します。
+5. 管理特権を使用して PowerShell またはコマンド ライン ウィンドウを開きます。 解凍されたフォルダーにディレクトリを変更するには、次のコマンドを実行します。
 
     `cd C:\WaImportExportV1`
 6. ドライブの BitLocker キーを取得するには、次のコマンドを実行します。
 
     `manage-bde -protectors -get <DriveLetter>:`
-7. ディスクを準備するには、次のコマンドを実行します。 **データ サイズによっては、数時間から数日かかることがあります。**
+7. ディスクを準備するには、次のコマンドを実行します。 **データ サイズによっては、ディスクの準備に数時間から数日かかることがあります。**
 
     ```powershell
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
@@ -86,13 +86,14 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
     |/bk:     |ドライブの BitLocker キー。 `manage-bde -protectors -get D:` の出力からの数値パスワードです      |
     |/srcdir:     |送付するディスクのドライブ文字の末尾に `:\` を付けます。 たとえば、「 `D:\` 」のように入力します。         |
     |/dstdir:     |Azure Storage 内の保存先コンテナーの名前。         |
-    |/blobtype:     |このオプションは、データをインポートする BLOB の種類を指定します。 これは、ブロック BLOB の場合は `BlockBlob` で、ページ BLOB の場合は `PageBlob` です。         |
-    |/skipwrite:     |コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定するオプション。          |
+    |/blobtype:     |このオプションは、データをインポートする BLOB の種類を指定します。 ブロック BLOB の場合、BLOB の種類は `BlockBlob` で、ページ BLOB の場合は `PageBlob` です。         |
+    |/skipwrite:     | コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定します。          |
     |/enablecontentmd5:     |有効にすると、このオプションにより、MD5 が計算されて、各 BLOB で `Content-md5` プロパティとして設定されます。 このオプションは、データが Azure にアップロードされた後に、`Content-md5` フィールドを使用する場合にのみ使用してください。 <br> このオプションはデータ整合性チェック (既定で実行) には影響しません。 この設定により、クラウドにデータをアップロードするためにかかる時間が長くなります。          |
 8. 送付する必要があるディスクごとに前の手順を繰り返します。 コマンド行の実行ごとに、指定された名前のジャーナル ファイルが作成されます。
 
     > [!IMPORTANT]
     > * ツールが存在するフォルダーと同じフォルダーに、ジャーナル ファイルと共に `<Journal file name>_DriveInfo_<Drive serial ID>.xml` ファイルも作成されます。 ジャーナル ファイルが大きすぎる場合、ジョブの作成時にジャーナル ファイルではなく .xml ファイルが使用されます。
+   > * ポータルで許可されるジャーナル ファイルの最大サイズは 2 MB です。 ジャーナル ファイルがこの制限を超えると、エラーが返されます。
 
 ## <a name="step-2-create-an-import-job"></a>手順 2:インポート ジョブの作成
 
@@ -101,50 +102,61 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 次の手順を実行して、Azure portal でインポート ジョブを作成します。
 
 1. https://portal.azure.com/ にログオンします。
-2. **[すべてのサービス] > [ストレージ] > [インポート/エクスポート ジョブ]** の順に移動します。
+2. **インポート/エクスポート ジョブ** を検索します。
 
-    ![インポート/エクスポートへの移動](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+   ![インポート/エクスポート ジョブの検索](./media/storage-import-export-data-to-blobs/import-to-blob-1.png)
 
-3. **[インポート/エクスポート ジョブの作成]** をクリックします。
+3. **[+新規]** を選択します。
 
-    ![[インポート/エクスポート ジョブの作成] をクリックします](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+   ![[新規] を選択して新しく作成する ](./media/storage-import-export-data-to-blobs/import-to-blob-2.png)
 
 4. **[基本]** で次のようにします。
 
-   * **[Azure へインポート]** を選択します。
-   * インポート ジョブのわかりやすい名前を入力します。 この名前は、ジョブの進行状況の追跡に使用します。
-       * 名前には小文字、数字、ハイフンのみを含めることができます。
-       * 名前はアルファベットから始める必要があります。スペースを含めることはできません。
-   * サブスクリプションを選択します。
-   * リソース グループを入力または選択します。
+   1. サブスクリプションを選択します。
+   1. リソース グループを選択するか、 **[新規作成]** を選択して新しく作成します。
+   1. インポート ジョブのわかりやすい名前を入力します。 この名前は、ジョブの進行状況の追跡に使用します。
+      * 名前には小文字、数字、ハイフンのみを含めることができます。
+      * 名前はアルファベットから始める必要があります。スペースを含めることはできません。
 
-     ![インポート ジョブを作成する - 手順 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+   1. **[Azure へインポート]** を選択します。
+
+    ![インポート ジョブを作成する - 手順 1](./media/storage-import-export-data-to-blobs/import-to-blob-3.png)
+
+    **[次へ: ジョブの詳細 >]** を選択して続行します。
 
 5. **[ジョブの詳細]** で次の操作を実行します。
 
-   * ドライブの準備中に取得したドライブのジャーナル ファイルをアップロードします。 `waimportexport.exe version1` を使用した場合、準備したドライブごとに 1 つのファイルをアップロードします。 ジャーナル ファイルのサイズが 2 MB を超える場合は、ジャーナル ファイルと共に作成された `<Journal file name>_DriveInfo_<Drive serial ID>.xml` を使用することもできます。
-   * データの保存先ストレージ アカウントを選択します。
-   * 配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。
+   1. 上記の「[手順 1: ドライブを準備する](#step-1-prepare-the-drives)」で作成したジャーナル ファイルをアップロードします。 `waimportexport.exe version1` を使用した場合、準備したドライブごとに 1 つのファイルをアップロードします。 ジャーナル ファイルのサイズが 2 MB を超える場合は、ジャーナル ファイルと共に作成された `<Journal file name>_DriveInfo_<Drive serial ID>.xml` を使用することもできます。
+   1. 注文の宛先となる Azure リージョンを選択します。
+   1. インポート用のストレージ アカウントを選択します。
+      
+      配送場所は、選んだストレージ アカウントのリージョンに基づいて自動的に入力されます。
+   1. 詳細ログを保存しない場合は、 **[Save verbose log in the 'waimportexport' blob container]\(詳細ログを 'waimportexport' BLOB コンテナーに保存する\)** オプションをオフにします。
 
-   ![インポート ジョブを作成する - 手順 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+   ![インポート ジョブを作成する - 手順 2](./media/storage-import-export-data-to-blobs/import-to-blob-4.png).
 
-6. **[差出人住所の詳細]** で次の操作を実行します。
+   **[次へ: 出荷 >]** を選択して続行します。
 
-   * ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 `adbops@microsoft.com` で Azure Data Box Operations チームに使用する予定の運送業者に関する情報を連絡してください。
-   * その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。 アカウント番号をお持ちでない場合は、[FedEx](https://www.fedex.com/us/oadr/) または [DHL](https://www.dhl.com/) の運送業者アカウントを作成してください。
-   * 完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。
+6. **[出荷]** で、次の手順に従います。
+
+   1. ドロップダウン リストから運送業者を選択します。 FedEx または DHL 以外の運送業者を使用する場合は、ドロップダウンから既存のオプションを選びます。 `adbops@microsoft.com` で Azure Data Box Operations チームに使用する予定の運送業者に関する情報を連絡してください。
+   1. その運送業者で作成した有効な運送業者アカウント番号を入力します。 Microsoft は、インポート ジョブの完了後、このアカウントを使ってドライブを返送します。 アカウント番号をお持ちでない場合は、[FedEx](https://www.fedex.com/us/oadr/) または [DHL](https://www.dhl.com/) の運送業者アカウントを作成してください。
+   1.  完全かつ有効な連絡先の名前、電話番号、電子メール、番地、市区町村、郵便番号、都道府県、国/地域を指定します。
 
        > [!TIP]
        > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
 
-     ![インポート ジョブの作成 - ステップ 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+   ![インポート ジョブの作成 - ステップ 3](./media/storage-import-export-data-to-blobs/import-to-blob-5.png)
 
-7. **[概要]** で次の操作を実行します。
+   **[確認と作成]** を選択して続行します。
 
-   * 概要に表示されているジョブ情報を確認します。 ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。 この情報は、後で配送先住所ラベルに使用します。
-   * **[OK]** をクリックしてインポート ジョブを作成します。
+7. 注文の概要で、次の手順に従います。
 
-     ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+   1. **[使用条件]** を確認し、[指定したすべての情報が正しいことを確認しました。上記の利用規約に同意します] を選択します。 その後、検証が実行されます。
+   1. 概要に表示されているジョブ情報を確認します。 ジョブ名と、Azure にディスクを送付するために使用する Azure データセンターの送付先住所をメモします。 この情報は、後で配送先住所ラベルに使用します。
+   1. **［作成］** を選択します
+
+     ![インポート ジョブを作成する - 手順 4](./media/storage-import-export-data-to-blobs/import-to-blob-6.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

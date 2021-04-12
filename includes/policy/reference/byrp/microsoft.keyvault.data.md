@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 03/10/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 4fefc59bb43f3df6cbbaf8be44a158eb055eb9c8
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 7697496e689aad2dbe70b30024decbc572b32239
+ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098047"
+ms.lasthandoff: 03/10/2021
+ms.locfileid: "102609448"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -23,7 +23,7 @@ ms.locfileid: "100098047"
 |[楕円曲線暗号を使用する証明書には、許可されている曲線名が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd78111f-4953-4367-9fd5-7e08808b54bf) |キー コンテナーに格納される ECC 証明書に対して許可されている楕円曲線名を管理します。 詳細については、[https://aka.ms/akvpolicy](https://aka.ms/akvpolicy)をご覧ください。 |audit、deny、disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_EC_AllowedCurveNames.json) |
 |[RSA 暗号を使用する証明書に、キーの最小サイズを指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcee51871-e572-4576-855c-047c820360f0) |キー コンテナーに格納される RSA 証明書の最小キー サイズを指定して、組織のコンプライアンス要件を管理します。 |audit、deny、disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_RSA_MinimumKeySize.json) |
 |[Key Vault キーには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F152b15f7-8e1f-4c1f-ab71-8c010ba5dbc0) |暗号化キーには有効期限を定義する必要があり、永続的なものにしてはいけません。 無期限に有効なキーを使用すると、攻撃者がキーを侵害できる時間がそれだけ長くなります。 セキュリティ プラクティスとして、暗号化キーには有効期限を設定することをお勧めします。 |Audit、Deny、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_ExpirationSet.json) |
-|[Key Vault シークレットには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98728c90-32c7-4049-8429-847dc0f4fe37) |シークレットには有効期限を定義する必要があり、永続的なものにしてはいけません。 無期限に有効なシークレットを使用すると、潜在的な攻撃者がそのシークレットを侵害する期間がそれだけ長くなります。 セキュリティ プラクティスとして、シークレットには有効期限を設定することをお勧めします。 |Audit、Deny、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ExpirationSet.json) |
+|[Key Vault シークレットには有効期限が必要である](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F98728c90-32c7-4049-8429-847dc0f4fe37) |シークレットには有効期限を定義する必要があり、永続的なものにしてはいけません。 シークレットを無期限に有効にすると、潜在的な攻撃者にそれを侵害する時間を多く与えることになります。 セキュリティ プラクティスとして、シークレットには有効期限を設定することをお勧めします。 |Audit、Deny、Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Secrets_ExpirationSet.json) |
 |[ハードウェア セキュリティ モジュール (HSM) によってキーをサポートする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F587c79fe-dd04-4a5e-9d0b-f89598c7261b) |HSM は、キーを格納するハードウェア セキュリティ モジュールです。 HSM によって、暗号化キーの物理的な保護レイヤーが提供されます。 暗号化キーは、ソフトウェア キーよりも高いレベルのセキュリティを提供する物理 HSM から離れることはできません。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_HSMBacked.json) |
 |[キーは、特定の暗号化の種類 (RSA または EC) である必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F75c4f823-d65c-4f29-a733-01d0077fdbcb) |一部のアプリケーションでは、特定の暗号化の種類によってサポートされるキーを使用する必要があります。 お使いの環境では、特定の暗号化キーの種類 (RSA または EC) を適用してください。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_AllowedKeyTypes.json) |
 |[キーの有効期限には、指定された日数より先の日付を指定する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5ff38825-c5d8-47c5-b70e-069a21955146) |キーの有効期限が近すぎると、キーをローテーションする組織での遅延によって障害が発生するおそれがあります。 キーは、エラーに対処するための十分な時間を確保するために、有効期限よりも指定された日数だけ前にローテーションされる必要があります。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Keys_Expiry_ByDays.json) |

@@ -1,18 +1,17 @@
 ---
 title: Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 description: Log Analytics のデータ エクスポートを使用すると、選択したテーブルのデータを収集する際に Log Analytics ワークスペースから Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。
-ms.subservice: logs
 ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 02/07/2021
-ms.openlocfilehash: 8de92e1f64389824e02882c02a860e9731a62b25
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 981ebbecd4783ae529c5b0d97c82ea052511f77f
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603339"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384189"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Azure Monitor の Log Analytics ワークスペースのデータ エクスポート (プレビュー)
 Azure Monitor で Log Analytics ワークスペースのデータ エクスポートを使用すると、Log Analytics ワークスペースで選択したテーブルのデータを収集する際に Azure ストレージ アカウントまたは Azure Event Hubs への連続エクスポートが可能になります。 この記事では、この機能の詳細と、ワークスペースでデータ エクスポートを構成する手順について説明します。
@@ -36,13 +35,15 @@ Log Analytics ワークスペースのデータ エクスポートでは、Log A
 
 - 構成は、現在、CLI または REST 要求を使用して行うことができます。 Azure portal または PowerShell はまだサポートされていません。
 - CLI と REST の ```--export-all-tables``` オプションはサポートされていないため、削除されます。 エクスポート ルールでテーブルの一覧を明示的に指定する必要があります。
-- 現在、サポート対象のテーブルは、以下の「[サポート対象のテーブル](#supported-tables)」セクションに記載されているものに限定されています。 
+- 現在、サポート対象のテーブルは、以下の「[サポート対象のテーブル](#supported-tables)」セクションに記載されているものに限定されています。 たとえば、カスタム ログ テーブルは現在サポートされていません。
 - サポートされていないテーブルがデータ エクスポート ルールに含まれている場合、操作は成功しますが、そのテーブルのデータはテーブルがサポートされるまでエクスポートされません。 
 - 存在しないテーブルがデータ エクスポート ルールに含まれている場合、```Table <tableName> does not exist in the workspace``` エラーで失敗します。
 - Log Analytics ワークスペースは、以下を除くすべてのリージョンに配置できます。
-  - スイス北部
-  - スイス西部
   - Azure Government リージョン
+  - 西日本
+  - ブラジル南東部
+  - ノルウェー東部
+  - アラブ首長国連邦北部
 - 1 つのワークスペースで 2 つのエクスポート ルールを作成できます。イベント ハブに対して 1 つのルール、ストレージ アカウントに対して 1 つのルールです。
 - エクスポート先のストレージ アカウントまたはイベント ハブは、Log Analytics ワークスペースと同じリージョンに配置されている必要があります。
 - エクスポートするテーブルの名前は、ストレージ アカウントでは 60 文字以内、イベント ハブでは 47 文字以内にする必要があります。 これよりも長い名前のテーブルはエクスポートされません。
@@ -72,6 +73,9 @@ Log Analytics のデータ エクスポートでは、時間ベースのアイ�
 
 ### <a name="event-hub"></a>イベント ハブ
 データは、Azure Monitor に到達すると、ほぼリアルタイムでイベント ハブに送信されます。 イベント ハブは、エクスポートするデータ型ごとに作成され、*am-* の後にテーブルの名前が続く名前が付けられます。 たとえば、テーブル *SecurityEvent* は、*am-SecurityEvent* という名前のイベント ハブに送信されます。 エクスポートされたデータを特定のイベント ハブに到達させる場合や、47 文字の制限を超える名前の付いたテーブルがある場合は、独自のイベント ハブ名を指定して、定義されたテーブルのすべてのデータをそれにエクスポートすることができます。
+
+> [!IMPORTANT]
+> [名前空間あたりサポートされるイベント ハブの数は 10](../../event-hubs/event-hubs-quotas.md#common-limits-for-all-tiers) です。 10 を超えるテーブルをエクスポートする場合は、独自のイベント ハブ名を指定して、すべてのテーブルをそのイベント ハブにエクスポートします。
 
 考慮事項:
 1. "Basic" イベント ハブ SKU では、下のほうのイベント サイズ[制限](../../event-hubs/event-hubs-quotas.md#basic-vs-standard-tiers)がサポートされます。ワークスペースの一部のログはそれを超過し、削除されることがありまする "Standard" または "Dedicated" イベント ハブをエクスポート先として使用することをお勧めします。
@@ -109,10 +113,14 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 
 [![ストレージ アカウントの [ファイアウォールと仮想ネットワーク]](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
-
 ### <a name="create-or-update-data-export-rule"></a>データ エクスポート ルールを作成または更新する
-データ エクスポート ルールでは、あるテーブル セットについて 1 つのエクスポート先にエクスポートするデータを定義します。 エクスポート先ごとに単一のルールを作成できます。
+データ エクスポート ルールは、データをエクスポートするテーブルとその宛先を定義します。 現在、その宛先ごとに 1 つのルールを作成できます。
 
+エクスポート ルールには、ワークスペースにあるテーブルを含める必要があります。 ワークスペース内で使用できるテーブルの一覧を表示するには、このクエリを実行します。
+
+```kusto
+find where TimeGenerated > ago(24h) | distinct Type
+```
 
 # <a name="azure-portal"></a>[Azure Portal](#tab/portal)
 
@@ -123,12 +131,6 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.insights
 該当なし
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-
-ワークスペース内のテーブルを表示するには、次の CLI コマンドを使用します。 必要なテーブルをコピーして、データ エクスポート ルールに含めることができます。
-
-```azurecli
-az monitor log-analytics workspace table list --resource-group resourceGroupName --workspace-name workspaceName --query [].name --output table
-```
 
 CLI を使用してストレージ アカウントに対するデータ エクスポート ルールを作成するには、次のコマンドを使用します。
 

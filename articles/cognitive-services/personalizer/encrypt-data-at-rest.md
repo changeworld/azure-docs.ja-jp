@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 1a27199930587c1a096dd99462ebd0c9d65054ee
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100524065"
 ---
 # <a name="personalizer-service-encryption-of-data-at-rest"></a>Personalizer サービスによる保存データの暗号化

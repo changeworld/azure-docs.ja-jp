@@ -5,14 +5,14 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
-ms.date: 04/20/2020
+ms.date: 04/05/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: b6b239f44311424db2e80c59e2aba639ae3c0000
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: d7c103a7eba2e5da7ac040b50fcc0009a0b7237b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98797446"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449870"
 ---
 # <a name="azure-media-player-full-setup"></a>Azure Media Player のフル セットアップ #
 
@@ -33,7 +33,7 @@ Azure Media Player では、CDN ホスト バージョンからスクリプト�
 ```
 
 > [!IMPORTANT]
-> `latest` バージョンは、必要に応じて変更されることがあるため、運用環境では使用 **しない** でください。 `latest` を Azure Media Player のバージョンに置き換えます。 たとえば、`latest` を `2.1.1` に置き換えます。 Azure Media Player のバージョンは、[こちら](azure-media-player-changelog.md)から照会できます。
+> `latest` バージョンは、必要に応じて変更されることがあるため、運用環境では使用 **しない** でください。 `latest` を Azure Media Player のバージョンに置き換えます。 たとえば、`latest` を `2.1.1` に置き換えます。 Azure Media Player のバージョンは、[こちら](https://amp.azure.net/libs/amp/latest/docs/changelog.html)から照会できます。
 
 > [!NOTE]
 > `1.2.0` のリリース以降、フォールバック テクノロジに場所を含める必要がなくなりました (場所は、azuremediaplayer.min.js ファイルの相対パスから自動的に取得されます)。 フォールバック テクノロジの場所は、上記のスクリプトの後の `<head>` に次のスクリプトを追加することで変更できます。
@@ -93,7 +93,7 @@ HTML5 ビデオの場合と同様に、属性、設定、ソース、トラッ�
                // add an event listener
               this.addEventListener('ended', function() {
                 console.log('Finished!');
-            }
+            });
           }
     );
     myPlayer.src([{

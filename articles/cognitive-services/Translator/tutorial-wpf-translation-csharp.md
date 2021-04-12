@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 0665dcbc8de518c5759c52a8fc3aec26859566d6
+ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927480"
+ms.lasthandoff: 03/03/2021
+ms.locfileid: "101728010"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
 
@@ -41,7 +41,7 @@ WPF とは デスクトップ クライアント アプリを作成する UI フ
 | サービス | 機能 | 説明 |
 |---------|---------|-------------|
 | [変換者] | [言語の取得](./reference/v3-0-languages.md) | テキスト翻訳がサポートされている言語の完全な一覧を取得します。 |
-| [変換者] | [Translate](./reference/v3-0-translate.md) | 70 を超す言語にテキストを翻訳できます。 |
+| [変換者] | [Translate](./reference/v3-0-translate.md) | 90 の言語と方言にテキストを翻訳できます。 |
 | [変換者] | [Detect](./reference/v3-0-detect.md) | 入力テキストの言語を検出します。 検出の信頼度スコアが含まれます。 |
 | Bing Spell Check | [スペル チェック](/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | スペル ミスを修正して、翻訳精度を向上させます。 |
 
@@ -264,7 +264,7 @@ Visual Studio に、アプリのユーザー インターフェイスのプレ�
 
 ## <a name="get-supported-languages"></a>サポートされている言語を取得する
 
-Translator では、現在、70 を超える言語がサポートされています。 今後も新しい言語のサポートが追加される予定なので、作成するアプリでは、言語の一覧をハードコーディングせずに、Translator によって公開される Languages リソースを呼び出すことをお勧めします。
+Translator では、現在、90 の言語と方言がサポートされています。 今後も新しい言語のサポートが追加される予定なので、作成するアプリでは、言語の一覧をハードコーディングせずに、Translator によって公開される Languages リソースを呼び出すことをお勧めします。
 
 このセクションでは、翻訳可能な言語の一覧が必要であることを指定した、Languages リソースへの `GET` 要求を作成します。
 

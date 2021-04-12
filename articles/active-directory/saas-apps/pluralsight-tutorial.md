@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/27/2021
 ms.author: jeedes
 ms.openlocfilehash: a9ca24886ae14eb1b9107ea2df53227140cc30f1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101651390"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pluralsight"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Pluralsight の統合

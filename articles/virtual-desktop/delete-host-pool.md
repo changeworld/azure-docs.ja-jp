@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: dfc9858bea468389d8ce90677f048e5d1fd3bb82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 3693a82a0d9c9544ed6a14d4596d544725125bd3
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007592"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447048"
 ---
 # <a name="delete-a-host-pool"></a>ホスト プールを削除する
 

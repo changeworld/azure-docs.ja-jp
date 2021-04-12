@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 5da7f2a11be7562313b709a8af72ccd709165cfa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e37c5a748a8e99f49e3535946268427139bbbf44
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000863"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102184425"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でパブリック Standard Load Balancer を使用する
 
@@ -96,13 +96,13 @@ Azure Load Balancer は、アウトバウンドだけでなく、仮想ネット
 
 すべてのロード バランサー規則と同様に、アウトバウンド規則は、負荷分散規則およびアウトバウンド NAT 規則と同じ構文に従います。
 
-***フロントエンド IP + パラメーター + バックエンド プール** _
+***フロントエンド IP + パラメーター + バックエンド プール***
 
 アウトバウンド規則では、フロントエンドに変換され、バックエンド プールによって識別されるすべての仮想マシンの送信 NAT を構成します。 また、パラメーターにより、送信 NAT アルゴリズムをさらに細かく制御できます。
 
 アウトバウンド規則は 1 つのパブリック IP アドレスでのみ使用できますが、アウトバウンド規則によって、アウトバウンド NAT をスケーリングするための構成の負担が軽減されます。 複数の IP アドレスを使用することで、大規模なシナリオを計画できます。また、アウトバウンド規則を使用して、SNAT が枯渇しやすいパターンを緩和することもできます。 フロントエンドによって提供される追加の IP アドレスごとに、Load Balancer で SNAT ポートとして使用される 64,000 個の一時的なポートが提供されます。 
 
-既定で作成されるマネージド送信パブリック IP で _Standard* SKU ロード バランサーを使用する場合、 **`load-balancer-managed-ip-count`** パラメーターを使用して、マネージド送信パブリック IP の数をスケーリングすることができます。
+既定で作成されるマネージド送信パブリック IP で *Standard* SKU ロード バランサーを使用する場合、 **`load-balancer-managed-ip-count`** パラメーターを使用して、マネージド送信パブリック IP の数をスケーリングすることができます。
 
 既存のクラスターを更新するには、次のコマンドを実行します。 このパラメーターをクラスター作成時に設定し、複数の管理対象送信パブリック IP を与えることもできます。
 
@@ -403,17 +403,17 @@ Kubernetes サービスでサポートされている、種類が `LoadBalancer`
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [aks-sp]: kubernetes-service-principal.md#delegate-access-to-other-azure-resources
 [az-aks-show]: /cli/azure/aks#az-aks-show
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-create]: /cli/azure/group#az-group-create
 [az-provider-register]: /cli/azure/provider#az-provider-register
-[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule?view=azure-cli-latest#az-network-lb-outbound-rule-list
-[az-network-public-ip-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
-[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
+[az-network-lb-outbound-rule-list]: /cli/azure/network/lb/outbound-rule#az-network-lb-outbound-rule-list
+[az-network-public-ip-show]: /cli/azure/network/public-ip#az-network-public-ip-show
+[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/skus.md

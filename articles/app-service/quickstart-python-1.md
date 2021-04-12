@@ -6,12 +6,12 @@ ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: ea320938f3e4f3b2d257947f605bb3b3f6f0886a
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: ef32b8ff9282e92511047840576ddfe6751b24e0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786210"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102184510"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>クイック スタート:Azure App Service on Linux で Python アプリを作成する
 
@@ -243,7 +243,7 @@ az webapp up
 
 アプリ、およびそれを実行するコンテナー内から生成されたコンソール ログに、アクセスすることができます。 ログには、`print` ステートメントを使って生成されたすべての出力が含まれます。
 
-ログをストリーミングするには、[az webapp log tail](/cli/azure/webapp/log?view=azure-cli-latest&preserve-view=true#az_webapp_log_tail) コマンドを実行します。
+ログをストリーミングするには、[az webapp log tail](/cli/azure/webapp/log#az_webapp_log_tail) コマンドを実行します。
 
 ```azurecli
 az webapp log tail

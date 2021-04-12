@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/28/2020
-ms.openlocfilehash: db94a82112f2670facd4d89178f11653c5316c36
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6c589f3f0913609640ac14534c170c741c16a084
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998942"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105048172"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
 
@@ -36,7 +36,7 @@ ms.locfileid: "95998942"
   | **サービス エンドポイントを構成する** | パブリック | [ポータル](./howto-manage-vnet-using-portal.md) <br/> [CLI](./howto-manage-vnet-using-cli.md)|
   | **プライベート リンクを構成する** | プライベート | [ポータル](./howto-configure-privatelink-portal.md) <br/> [CLI](./howto-configure-privatelink-cli.md) |
 
-- [Python](https://www.python.org/downloads/) 2.7.9 以降または 3.4 以降。
+- [Python](https://www.python.org/downloads/) 2.7 または 3.6 以降。
 
 - 最新の [pip](https://pip.pypa.io/en/stable/installing/) パッケージ インストーラー。
 - ターミナルまたはコマンド プロンプト ウィンドウで `pip install psycopg2` を使用して [psycopg2](https://pypi.python.org/pypi/psycopg2/) をインストールします。 詳細については、[`psycopg2` のインストール方法](http://initd.org/psycopg/docs/install.html)を参照してください。

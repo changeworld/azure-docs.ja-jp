@@ -4,12 +4,12 @@ description: CloudEvents スキーマを Azure Event Grid 内のイベント用�
 ms.topic: conceptual
 ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 93e514e0eac40cfaa51d410a446608deca3cbd6d
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 484f118791d57c082a9f4383b1af4a22c04849c4
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901404"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101737904"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>Event Grid に CloudEvents v1.0 スキーマを使用する
 Azure Event Grid は、[既定のイベント スキーマ](event-schema.md)に加え、[CloudEvents v1.0](https://github.com/cloudevents/spec/blob/v1.0/json-format.md) および [HTTP プロトコル バインディング](https://github.com/cloudevents/spec/blob/v1.0/http-protocol-binding.md)の JSON 実装のイベントをネイティブでサポートします。 [CloudEvents](https://cloudevents.io/) は、イベント データを記述するための[オープンな仕様](https://github.com/cloudevents/spec/blob/v1.0/spec.md)です。
@@ -60,11 +60,11 @@ Event Grid は、CloudEvents スキーマ内のイベントの入力と出力の
 
  Event Grid リソース | 入力スキーマ       | 配信スキーマ
 |---------------------|-------------------|---------------------
-| システム トピック       | Event Grid スキーマ | Event Grid スキーマまたは CloudEvent スキーマ
-| ユーザー トピック/ドメイン | Event Grid スキーマ | Event Grid スキーマ
-| ユーザー トピック/ドメイン | CloudEvent スキーマ | CloudEvent スキーマ
-| ユーザー トピック/ドメイン | カスタム スキーマ     | カスタム スキーマ、Event Grid スキーマ、または CloudEvent スキーマ
-| PartnerTopics       | CloudEvent スキーマ | CloudEvent スキーマ
+| システム トピック       | Event Grid スキーマ | Event Grid スキーマまたは CloudEvents スキーマ
+| ユーザー トピック/ドメイン | Event Grid スキーマ | Event Grid スキーマまたは CloudEvents スキーマ
+| ユーザー トピック/ドメイン | CloudEvents スキーマ | CloudEvents スキーマ
+| ユーザー トピック/ドメイン | カスタム スキーマ     | カスタム スキーマ、Event Grid スキーマ、または CloudEvents スキーマ
+| PartnerTopics       | CloudEvents スキーマ | CloudEvents スキーマ
 
 いずれのイベント スキーマについても、Event Grid では、Event Grid トピックへの発行時やイベント サブスクリプションの作成時に検証が必要です。
 

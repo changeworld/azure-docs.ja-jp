@@ -1,21 +1,21 @@
 ---
 title: インジェストの概要 - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gen2 へのデータ インジェストについて説明します。
-author: lyrana
-ms.author: lyhughes
-manager: deepakpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2b76490ab23cb14755f6f90a27ec8b176bb30a11
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: b688bbf454b3df9f6ae368c66a62657a5522d720
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780027"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505452"
 ---
 # <a name="azure-time-series-insights-gen2-data-ingestion-overview"></a>Azure Time Series Insights Gen2 のデータ インジェストの概要
 

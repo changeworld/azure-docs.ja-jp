@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/09/2020
 ms.author: egeaney
 ms.openlocfilehash: 19dc0f3a676d5373b28e4b7055050477c426f847
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100524077"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker での保存データの暗号化

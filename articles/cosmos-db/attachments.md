@@ -8,15 +8,15 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 08/07/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b6504c0521328edc356dea1c146fe9aeb6bde55f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a8e968d05a1f844a79d2e42d10c323ed4c392424
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93092740"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102521222"
 ---
 # <a name="azure-cosmos-db-attachments"></a>Azure Cosmos DB の添付ファイル
-[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-mongodb-api.md)]
 
 Azure Cosmos DB の添付ファイルは、外部 BLOB またはメディア ファイルと関連付けられているメタデータへの参照を含む特殊な項目です。
 
@@ -40,6 +40,11 @@ Azure Cosmos DB の管理対象の添付ファイルは、標準項目のサポ�
 - Azure Cosmos DB の SDK には、添付ファイルがサポートされていないバージョンもあります。
 - 管理対象の添付ファイルは、データベース アカウントごとに 2 GB のストレージに制限されます。
 - 管理対象の添付ファイルは、Azure Cosmos DB のグローバル配信と互換性がなく、リージョン間でレプリケートされません。
+
+> [!NOTE]
+> Azure Cosmos DB の MongoDB 用 API バージョン 3.2 では、GridFS の管理対象の添付ファイルが使用され、同じ制限が適用されます。
+>
+> MongoDB の GridFS 機能セットを使用する開発者は Azure Cosmos DB の MongoDB 用 API バージョン 3.6 以降にアップグレードすることをお勧めします。これは、添付ファイルから分離されるため、より良いエクスペリエンスが得られます。 または、MongoDB の GridFS 機能セットを使用する開発者は Azure Blob Storage を使用することも検討する必要があります。これは、Blob コンテンツの格納専用であり、GridFS と比較して低コストで拡張された機能が提供されます。
 
 ## <a name="migrating-attachments-to-azure-blob-storage"></a>添付ファイルの Azure BLOB ストレージへの移行
 
@@ -162,6 +167,6 @@ namespace attachments
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure BLOB ストレージ](../storage/blobs/storage-quickstart-blobs-dotnet.md)を使用する
-- [Azure Cosmos DB の .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment?preserve-view=true&view=azure-dotnet) を用いて添付ファイルを使用するための参照を取得する
-- [Azure Cosmos DB の Java SDK v2](/java/api/com.microsoft.azure.documentdb.attachment?preserve-view=true&view=azure-java-stable) を用いて添付ファイルを使用するための参照を取得する
+- [Azure Cosmos DB の .NET SDK v2](/dotnet/api/microsoft.azure.documents.attachment) を用いて添付ファイルを使用するための参照を取得する
+- [Azure Cosmos DB の Java SDK v2](/java/api/com.microsoft.azure.documentdb.attachment) を用いて添付ファイルを使用するための参照を取得する
 - [Azure Cosmos DB の REST API](/rest/api/cosmos-db/attachments) を用いて添付ファイルを使用するための参照を取得する

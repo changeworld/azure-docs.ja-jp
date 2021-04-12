@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics クラスターの概要 (プレビュー)
+title: Azure Stream Analytics クラスターの概要
 description: Stream Analytics クラスターのシングル テナント専用オファリングについて説明します。
 author: sidramadoss
 ms.author: sidram
@@ -7,14 +7,14 @@ ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
-ms.openlocfilehash: 75a95fa4ad36b69ca920f527060644dcc5264ce8
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e5157a02f97370b20db85bf5e3e8aae98a2d8668
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019535"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101709293"
 ---
-# <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure Stream Analytics クラスターの概要 (プレビュー)
+# <a name="overview-of-azure-stream-analytics-cluster"></a>Azure Stream Analytics クラスターの概要
 
 Azure Stream Analytics クラスターでは、複雑で要求の厳しいストリーミング シナリオ向けのシングルテナント デプロイが提供されます。 フル スケールでは、Stream Analytics クラスターは、リアルタイムで 200 MB/秒より速く処理できます。 専用クラスター上で実行されている Stream Analytics ジョブでは、標準オファリングのすべての機能を利用でき、入力と出力へのプライベート リンク接続がサポートされます。
 

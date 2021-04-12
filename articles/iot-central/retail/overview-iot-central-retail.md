@@ -9,10 +9,10 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
 ms.openlocfilehash: 56198cf661001bcfcec45d483d0f691234851894
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99832285"
 ---
 # <a name="what-are-the-iot-central-retail-solutions"></a>IoT Central の小売ソリューションとは

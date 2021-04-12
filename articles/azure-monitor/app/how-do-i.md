@@ -4,10 +4,10 @@ description: Application Insights での FAQ。
 ms.topic: conceptual
 ms.date: 04/04/2017
 ms.openlocfilehash: 74a4d7ee65dccead132cfcebd9bf8c0de9b761a5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100584162"
 ---
 # <a name="how-do-i--in-application-insights"></a>Application Insights での作業

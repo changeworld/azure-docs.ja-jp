@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 466c609b21d115340a919ab32bd9dcf9c8d3a7ca
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 6fe1274c6f659f97e528e788116949fce60e6020
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092288"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960066"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>ローカル ファイルからジョブの入力を作成する
 
@@ -26,7 +26,7 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Media Services アカウントを作成する](./create-account-howto.md)
+* [Media Services アカウントを作成する](./account-create-how-to.md)
 
 ## <a name="net-sample"></a>.Net のサンプル
 

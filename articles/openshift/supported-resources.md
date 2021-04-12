@@ -7,10 +7,10 @@ ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.openlocfilehash: ad0837ae110b84cdff690fe76e13923a0ab60996
-ms.sourcegitcommit: 58ff80474cd8b3b30b0e29be78b8bf559ab0caa1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100635610"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift のリソース

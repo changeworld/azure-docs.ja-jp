@@ -6,10 +6,10 @@ ms.author: chmant
 ms.date: 03/07/2020
 ms.topic: article
 ms.openlocfilehash: dbe86313054706af974ccb324a39e942e9b5ca44
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99594131"
 ---
 # <a name="camera"></a>カメラ

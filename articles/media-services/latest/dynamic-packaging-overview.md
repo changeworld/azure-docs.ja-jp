@@ -3,22 +3,18 @@ title: Azure Media Services v3 のダイナミック パッケージ
 description: この記事では、Azure Media Services でのダイナミック パッケージの概要について説明します。
 author: myoungerman
 manager: femila
-editor: ''
 services: media-services
-documentationcenter: ''
 ms.service: media-services
 ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: inhenkel
-ms.openlocfilehash: 9be00fd89234be0a8b5740af9e12811f36a47619
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 4e396841231659c27f199a7353565c5d69e02877
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101092334"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106061997"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
 
@@ -27,9 +23,6 @@ ms.locfileid: "101092334"
 Microsoft Azure Media Services は、多くのメディア ソース ファイル形式をエンコードするために使用できます。 これは、コンテンツ保護の有無に関係なく、さまざまなストリーミング プロトコルを介して配信され、すべての主要なデバイス (iOS デバイスや Android デバイスなど) に到達します。 これらのクライアントは、さまざまなプロトコルを認識します。 たとえば、iOS では、HTTP ライブ ストリーミング (HLS) 形式でストリームを配信する必要があります。また、Android デバイスでは、HLS と MPEG DASH がサポートされます。
 
 Media Services では、[ストリーミング エンドポイント](streaming-endpoint-concept.md) (配信元) は、ダイナミック (Just-In-Time) パッケージおよび配信元サービスを表します。これは、ライブのオンデマンド コンテンツをクライアント プレーヤー アプリに直接配信できます。 次のセクションで説明する一般的なストリーミング メディア プロトコルのいずれかを使用します。 "*ダイナミック パッケージ*" は、すべてのストリーミング エンドポイントに標準で付属する機能です。
-
-> [!NOTE]
-> [Azure portal](https://portal.azure.com/) を使用し、v3 の[ライブ イベント](live-events-outputs-concept.md)の管理、v3 の[資産](assets-concept.md)の表示、API へのアクセスに関する情報の取得を行うことができます。 他のすべての管理タスク (変換とジョブなど) については、[REST API](/rest/api/media/)、[CLI](/cli/azure/ams)、またはサポートされているいずれかの [SDK](media-services-apis-overview.md#sdks) を使用します。
 
 ## <a name="to-prepare-your-source-files-for-delivery"></a>ソース ファイルをデリバリー用に準備するには
 
@@ -44,7 +37,7 @@ Azure Media Services のダイナミック パッケージでは、MP4 コンテ
 
 その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
-Media Services 動的暗号化を使用してコンテンツを保護する場合は、「[ストリーミング プロトコルと暗号化の種類](content-protection-overview.md#streaming-protocols-and-encryption-types)」を参照してください。
+Media Services 動的暗号化を使用してコンテンツを保護する場合は、「[ストリーミング プロトコルと暗号化の種類](drm-content-protection-concept.md#streaming-protocols-and-encryption-types)」を参照してください。
 
 ### <a name="hls-protocol"></a>HLS プロトコル
 
@@ -52,9 +45,9 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
 |Protocol|例|
 |---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
 
 > [!NOTE]
 > Apple の以前のガイドラインでは、低帯域幅ネットワークのフォールバックではオーディオのみのストリームを提供することを推奨していました。  現在、Media Services エンコーダーではオーディオのみのトラックが自動的に生成されます。Apple のガイドラインでは、特に Apple TV の配信では、オーディオのみのトラックを "*含めない*" ように定められています。  プレーヤーが既定でオーディオのみのトラックを含めないようにするには、HLS でオーディオのみの再生を削除する "audio-only=false" タグを URL に使用するか、または単に HLS-V3 を使用することをお勧めします。 たとえば、「 `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)` 」のように入力します。
@@ -65,8 +58,8 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
 |Protocol|例|
 |---|---|
-|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
-|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
+|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 
 ### <a name="smooth-streaming-protocol"></a>スムーズ ストリーミング プロトコル
 
@@ -74,7 +67,7 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
 |Protocol|メモと例| 
 |---|---|
-|スムーズ ストリーミング| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|スムーズ ストリーミング| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 |Smooth Streaming 2.0 (レガシ マニフェスト)|既定では、Smooth Streaming のマニフェスト形式には、繰り返しタグ (r タグ) が含まれています。 ただし、一部のプレーヤーは、`r-tag` をサポートしていません。 これらのプレーヤーを使用するクライアントは、r タグを無効にする形式を使用できます。<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 > [!NOTE]
@@ -118,7 +111,7 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 1. プレビュー URL を取得し、それを使用して、エンコーダーからの入力が受信されていることを確認します。
 1. 新しい資産を作成します。
 1. ライブ出力を作成し、作成した資産の名前を使用します。<br />ライブ出力により、ストリームが資産にアーカイブされます。
-1. 組み込みのストリーミング ポリシー タイプでストリーミング ロケーターを作成します。<br />コンテンツを暗号化する場合は、「[コンテンツ保護の概要](content-protection-overview.md)」を確認してください。
+1. 組み込みのストリーミング ポリシー タイプでストリーミング ロケーターを作成します。<br />コンテンツを暗号化する場合は、「[コンテンツ保護の概要](drm-content-protection-concept.md)」を確認してください。
 1. 使用する URL を取得するためのパスをストリーミング ロケーターに列挙します。
 1. ストリーミングするストリーミング エンドポイントのホスト名を取得します。
 1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 さまざまな形式の正しいマニフェストおよび要求の処理は、"*ストリーミング エンドポイント*" が行います。
@@ -315,7 +308,7 @@ HLS v7 以降 `(format=m3u8-cmaf)` では、オーディオ説明トラックを
 
 ## <a name="dynamic-encryption"></a>動的な暗号化
 
-"*動的暗号化*" を使用すると、AES-128 または次の 3 つの主要なデジタル著作権管理 (DRM) システムのいずれかを用いて、ライブまたはオンデマンドのコンテンツを動的に暗号化できます。コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM ライセンスを配信するためのサービスも提供しています。 詳細については、[動的暗号化](content-protection-overview.md)に関するページを参照してください。
+"*動的暗号化*" を使用すると、AES-128 または次の 3 つの主要なデジタル著作権管理 (DRM) システムのいずれかを用いて、ライブまたはオンデマンドのコンテンツを動的に暗号化できます。コンテンツを配信できます。 Media Services では、承認されたクライアントに AES キーと DRM ライセンスを配信するためのサービスも提供しています。 詳細については、[動的暗号化](drm-content-protection-concept.md)に関するページを参照してください。
 
 > [!NOTE]
 > Widevine は Google Inc. によって提供されるサービスであり、Google Inc. の利用規約とプライバシー ポリシーが適用されます。

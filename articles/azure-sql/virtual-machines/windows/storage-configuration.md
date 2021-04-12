@@ -1,5 +1,5 @@
 ---
-title: SQL Server VM のストレージの構成 | Microsoft Docs
+title: SQL Server VM のストレージを構成する | Microsoft Docs
 description: このトピックでは、プロビジョニング中に SQL Server VM のストレージが Azure によってどのように構成されるかを説明します (Azure Resource Manager デプロイ モデル)。 また、既存の SQL Server VM のストレージを構成する方法についても説明します。
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,27 +13,26 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: d713faf7062f82110be5fa8378faca368b9bb7a2
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 982bd9239c5e95c9b7af09b5f54c5a09067ca7c6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356720"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565428"
 ---
-# <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
+# <a name="configure-storage-for-sql-server-vms"></a>SQL Server VM のストレージを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Azure で SQL Server 仮想マシン (VM) イメージを構成するとき、Azure portal を使用してストレージ構成を自動化できます。 これには、ストレージを VM に接続する、そのストレージが SQL Server にアクセスできるようにする、特定のパフォーマンス要件を最適化するためにストレージを構成する、などの作業が含まれます。
+この記事では、Azure Virtual Machines (VM) で SQL Server 用にストレージを構成する方法について説明します。
 
-このトピックでは、プロビジョニング中に SQL Server VM のストレージが Azure によってどのように構成されるか、また、既存の VM のストレージがどのように構成されるかを説明します。 この構成は、SQL Server が実行されている Azure VM の [パフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md) に基づいています。
+マーケットプレース イメージを使用してデプロイされた SQL Server VM は、デプロイ時に変更できる既定の[ストレージのベスト プラクティス](performance-guidelines-best-practices-storage.md)に自動的に従います。 これらの構成設定の一部は、デプロイ後に変更できます。 
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 自動化されたストレージ構成設定を使用するには、仮想マシンには次の特性が必要です。
 
-* [SQL Server ギャラリー イメージ](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)でプロビジョニングされている。
+* [SQL Server のギャラリー イメージ](sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo)を使用してプロビジョニングされているか、[SQL IaaS 拡張機能]()を使用して登録されている。
 * [Resource Manager デプロイ モデル](../../../azure-resource-manager/management/deployment-models.md)を使用している。
 * [premium SSD](../../../virtual-machines/disks-types.md) を使用している。
 
@@ -47,7 +46,9 @@ SQL Server のギャラリー イメージを使用して Azure VM をプロビ�
 
 ![[SQL Server の設定] タブと [構成の変更] オプションが強調表示されているスクリーンショット。](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-**[ストレージの最適化]** では、SQL Server をデプロイする対象のワークロードの種類を選択します。 **[全般]** 最適化オプションの既定では、最大 5,000 IOPS のデータ ディスクが 1 つ使用され、この同じドライブをデータ、トランザクション ログ、TempDB ストレージに使用します。 **[トランザクション処理]** (OLTP) または **[データ ウェアハウス]** を選択すると、データ用とトランザクション ログ用にそれぞれ個別のディスクが作成され、TempDB 用にはローカル SSD が使用されます。 **[トランザクション処理]** と **[データ ウェアハウス]** でストレージに違いはありませんが、[ストライプの構成とトレース フラグ](#workload-optimization-settings)が変更されます。 Premium Storage を選択すると、[SQL Server VM のパフォーマンスのベスト プラクティス](performance-guidelines-best-practices.md)に関する記事に従って、キャッシュがデータ ドライブについては "*読み取り専用*" に、ログ ドライブについては "*なし*" に設定されます。 
+**[ストレージの最適化]** では、SQL Server をデプロイする対象のワークロードの種類を選択します。 **[全般]** 最適化オプションの既定では、最大 5,000 IOPS のデータ ディスクが 1 つ使用され、この同じドライブをデータ、トランザクション ログ、TempDB ストレージに使用します。 
+
+**[トランザクション処理]** (OLTP) または **[データ ウェアハウス]** を選択すると、データ用とトランザクション ログ用にそれぞれ個別のディスクが作成され、TempDB 用にはローカル SSD が使用されます。 **[トランザクション処理]** と **[データ ウェアハウス]** でストレージに違いはありませんが、[ストライプの構成とトレース フラグ](#workload-optimization-settings)が変更されます。 Premium Storage を選択すると、[SQL Server VM のパフォーマンスのベスト プラクティス](performance-guidelines-best-practices.md)に関する記事に従って、キャッシュがデータ ドライブについては "*読み取り専用*" に、ログ ドライブについては "*なし*" に設定されます。 
 
 ![プロビジョニング中の SQL Server VM ストレージの構成](./media/storage-configuration/sql-vm-storage-configuration.png)
 
@@ -74,7 +75,7 @@ VM が作成されたら、ここで選択した内容に基づいて、次の�
 * 仮想マシンで記憶域プールを新しいドライブに関連付ける。
 * 指定したワークロードの種類 (データ ウェアハウス、トランザクション処理、または一般) に基づいて、新しいドライブを最適化する。
 
-Azure によるストレージ設定の構成方法の詳細については、「 [ストレージの構成](#storage-configuration)」を参照してください。 Azure portal で SQL Server VM を作成する詳しい手順については、[プロビジョニング チュートリアル](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)をご覧ください。
+Azure portal で SQL Server VM を作成する詳しい手順については、[プロビジョニング チュートリアル](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md)をご覧ください。
 
 ### <a name="resource-manager-templates"></a>Resource Manager テンプレート
 
@@ -111,7 +112,7 @@ SQL Server VM の作成プロセス中に構成されたドライブのディス
 ![既存の SQL Server VM 用のストレージを構成する](./media/storage-configuration/sql-vm-storage-extend-drive.png)
 
 
-## <a name="storage-configuration"></a>ストレージの構成
+## <a name="automated-changes"></a>自動変更
 
 このセクションでは、Azure portal での SQL Server VM のプロビジョニングまたは構成時に自動的に行われる、ストレージ構成の変更に関するリファレンス情報を提供します。
 
@@ -137,7 +138,7 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 <sup>1</sup> 記憶域プールの作成後、その記憶域プールの列数を変更することはできません。
 
 
-## <a name="workload-optimization-settings"></a>ワークロード最適化の設定
+### <a name="workload-optimization-settings"></a>ワークロード最適化の設定
 
 次の表では、使用可能な 3 つのワークロードの種類のオプションと、対応する最適化について説明します。
 
@@ -149,6 +150,78 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 
 > [!NOTE]
 > ワークロードの種類の指定は、SQL Server 仮想マシンをプロビジョニングするときに、ストレージ構成手順の中でそれを選択することでのみ実行できます。
+
+## <a name="enable-caching"></a>キャッシュの有効化 
+
+ディスク レベルでキャッシュ ポリシーを変更します。 そのためには、Azure portal、[PowerShell](/powershell/module/az.compute/set-azvmdatadisk)、または [Azure CLI](/cli/azure/vm/disk) を使用できます。 
+
+Azure portal でキャッシュ ポリシーを変更するには、次の手順に従います。
+
+1. SQL Server サービスを停止します。 
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. 仮想マシンに移動し、 **[設定]** で **[ディスク]** を選択します。 
+   
+   ![Azure portal の VM ディスク構成ブレードを示すスクリーンショット。](./media/storage-configuration/disk-in-portal.png)
+
+1. ドロップダウンから、ディスクの適切なキャッシュ ポリシーを選択します。 
+
+   ![Azure portal のディスク キャッシュ ポリシー構成を示すスクリーンショット。](./media/storage-configuration/azure-disk-config.png)
+
+1. 変更が有効になったら、SQL Server VM を再起動し、SQL Server サービスを開始します。 
+
+
+## <a name="enable-write-accelerator"></a>書き込みアクセラレータを有効にする
+
+書き込みアクセラレーションは、M シリーズの Virtual Machines (VM) でのみ使用できるディスク機能です。 書き込みアクセラレーションの目的は、大量のミッション クリティカルな OLTP ワークロードまたはデータウェアハウス環境によって、一桁の I/O 待機時間が必要な場合に、Azure Premium Storage に対する書き込みの I/O 待機時間を向上させることです。 
+
+書き込みアクセラレーション ポリシーを変更する前に、すべての SQL Server アクティビティを停止し、SQL Server サービスをシャットダウンしてください。 
+
+ディスクがストライピングされている場合は、各ディスクの書き込みアクセラレーションを個別に有効にします。変更を行う前に、Azure VM をシャットダウンする必要があります。 
+
+Azure portal を使用して書き込みアクセラレーションを有効にするには、次の手順を実行します。
+
+1. SQL Server サービスを停止します。 ディスクがストライピングされている場合は、仮想マシンをシャットダウンします。 
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+1. 仮想マシンに移動し、 **[設定]** で **[ディスク]** を選択します。 
+   
+   ![Azure portal の VM ディスク構成ブレードを示すスクリーンショット。](./media/storage-configuration/disk-in-portal.png)
+
+1. ディスクの **書き込みアクセラレータ** 付きのキャッシュ オプションをドロップダウンから選択します。 
+
+   ![書き込みアクセラレータ キャッシュ ポリシーを示すスクリーンショット。](./media/storage-configuration/write-accelerator.png)
+
+1. 変更が有効になったら、仮想マシンと SQL Server サービスを開始します。 
+
+## <a name="disk-striping"></a>ディスク ストライピング
+
+スループットを向上させるために、データ ディスクをさらに追加し、ディスク ストライピングを使用できます。 データ ディスクの数を特定するには、ログと tempdb を含む、SQL Server データ ファイルに必要なスループットと帯域幅を分析します。 スループットと帯域幅の制限は、VM のサイズによって異なります。 詳細については、[VM のサイズ](../../../virtual-machines/sizes.md)に関する記事を参照してください。
+
+
+* Windows 8/Windows Server 2012 以降の場合は､次のガイドラインに従った[記憶域スペース](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11))を使用します｡
+
+  1. パーティションの不整合によるパフォーマンスへの影響を回避するために、インタリーブ (ストライプ サイズ) を 64 KB (65,536 バイト) に設定します。 これは､PowerShell を使って設定する必要があります｡
+
+  2. カラム数 = 物理ディスク数を設定します｡ 8 つを超えるディスクを構成する場合は PowerShell を使用します (Server Manager の UI ではない)｡
+
+たとえば、次の PowerShell では記憶域プールが新規作成され、インターリーブ サイズは 64 KB、カラム数はこの記憶域プール内の物理ディスクの容量と等しくなります。
+
+  ```powershell
+  $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
+  
+  New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" `
+      -PhysicalDisks $PhysicalDisks | New- VirtualDisk -FriendlyName "DataFiles" `
+      -Interleave 65536 -NumberOfColumns $PhysicalDisks .Count -ResiliencySettingName simple `
+      –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter `
+      -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" `
+      -AllocationUnitSize 65536 -Confirm:$false 
+  ```
+
+  * Windows 2008 R2 以前では、ダイナミック ディスク (OS ストライプ ボリューム) を使用できます。ストライプ サイズは常に 64 KB です。 このオプションは、Windows 8/Windows Server 2012 の時点で非推奨となっています。 詳細については、[Windows Storage Management API に移行しつつある仮想ディスク サービス](https://docs.microsoft.com/windows/win32/w8cookbook/vds-is-transitioning-to-wmiv2-based-windows-storage-management-api)に関するページでサポートに関する声明をご覧ください。
+ 
+  * [記憶域スペース ダイレクト (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) を [SQL Server フェールオーバー クラスター インスタンス](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure)で使用している場合は、単一プールを構成する必要があります。 その単一プール上にはさまざまなボリュームを作成できますが、それらはすべて同じ特性 (たとえば、同じキャッシュ ポリシー) を共有します。
+ 
+  * 負荷予測に基づいて、ご使用の記憶域プールに関連付けるディスク数を決定します。 接続できるデータ ディスクの数は VM サイズによって異なることに注意してください。 詳細については、 [仮想マシンのサイズ](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json)に関するページをご覧ください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

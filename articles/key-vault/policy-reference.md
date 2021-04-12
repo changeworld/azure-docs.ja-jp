@@ -1,18 +1,18 @@
 ---
 title: Key Vault 用の組み込みポリシー定義
 description: Key Vault 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 02/09/2021
+ms.date: 03/31/2021
 ms.topic: reference
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 073f38ce5da17c8e303073c3863505371976120e
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 4d55fda4401ad5d9e33f7091897fdc0d57e35f39
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098062"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106093232"
 ---
 # <a name="azure-policy-built-in-definitions-for-key-vault"></a>Key Vault 用の Azure Policy 組み込み定義
 

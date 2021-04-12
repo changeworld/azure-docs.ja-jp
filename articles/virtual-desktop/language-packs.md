@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 780324d1a6f7d9edfb552377c3e966e6a186c231
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 1bac5ef9805dba5f06befeae3049566cb0483306
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347933"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169557"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Windows 10 マルチセッション イメージへの言語パックの追加
 
@@ -53,6 +53,8 @@ Windows 10 Enterprise マルチセッション イメージをカスタマイズ
           - [Windows 10 バージョン 2004 または 20H2 **9C** LXP ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY)
           - [Windows 10 バージョン 2004 または 20H2 **10C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2010C.iso)
           - [Windows 10 バージョン 2004 または 20H2 **11C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2011C.iso)
+          - [Windows 10 バージョン 2004 または 20H2 **1C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2101C.iso)
+          - [Windows 10 バージョン 2004 または 20H2 **2C** LXP ISO](https://software-download.microsoft.com/download/pr/LanguageExperiencePack.2102C.iso)
 
 - Azure ファイル共有または Windows ファイル サーバー仮想マシン上のファイル共有
 
@@ -169,9 +171,6 @@ $LanguageList.Add("zh-cn")
 Set-WinUserLanguageList $LanguageList -force
 ```
 
->[!IMPORTANT]
->Windows 10 Enterprise バージョン 1903 および 1909 に、`Microsoft-Windows-Client-Language-Pack_x64_<language-code>.cab` パッケージ ファイルは必要ありません。
-
 インストールする必要がある言語の数によっては、スクリプトの実行に時間がかかることがあります。
 
 スクリプトの実行が完了したら、言語パックが正しくインストールされていることを確認します。そのためには、 **[スタート]**  >  **[設定]**  >  **[時刻と言語]**  >  **[言語]** に移動します。 そこに言語ファイルがある場合は、完了しています。
@@ -266,4 +265,4 @@ Set-WinUserLanguageList $LanguageList -force
 
 言語パックの既知の問題については、「[Windows 10 バージョン 1803 以降のバージョンでの言語パックの追加: 既知の問題](/windows-hardware/manufacture/desktop/language-packs-known-issue)」を参照してください。
 
-Windows 10 Enterprise マルチセッションについて他に質問がある場合は、[FAQ](windows-10-multisession-faq.md) をご確認ください。
+Windows 10 Enterprise マルチセッションについて他に質問がある場合は、[FAQ](windows-10-multisession-faq.yml) をご確認ください。

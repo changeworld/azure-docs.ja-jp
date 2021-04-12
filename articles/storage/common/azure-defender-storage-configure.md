@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 03/30/2021
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: cdfc54b1eca3b07202148b7099884a04f35939ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e2f044ab267365885260b031638572846184bc83
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101698146"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063187"
 ---
 # <a name="configure-azure-defender-for-storage"></a>Azure Defender for Storage を構成する
 
@@ -50,7 +50,7 @@ Data Lake Storage 用に階層型名前空間が有効になっているアカ�
 
 ### <a name="azure-security-center"></a>[Azure Security Center](#tab/azure-security-center)
 
-Azure Security Center で Standard レベルにサブスクライブすると、Azure Defender がご利用のすべてのストレージ アカウントで自動的に設定されます。 次のように、特定のサブスクリプションでストレージ アカウントの Azure Defender を有効または無効にすることができます。
+Azure Defender は Azure Security Center に組み込まれています。 サブスクリプションで Azure Defender を有効にすると、Azure Defender for Azure Storage がすべてのストレージ アカウントに対して自動的に有効になります。 次のように、特定のサブスクリプションでストレージ アカウントの Azure Defender を有効または無効にすることができます。
 
 1. [Azure portal](https://portal.azure.com) で **Azure Security Center** を起動します。
 1. メイン メニューの **[管理]** で、 **[価格と設定]** を選択します。
@@ -94,20 +94,38 @@ Azure Resource Manager テンプレートを使用して、Azure Defender が有
 
     :::image type="content" source="media/azure-defender-storage-configure/storage-atp-policy1.png" alt-text="Azure Defender for Storage を有効にするポリシーを割り当てる":::
 
-### <a name="rest-api"></a>[REST API](#tab/rest-api)
-
-Rest API コマンドを使用して、特定のストレージ アカウントの Azure Defender 設定を作成、更新、または取得します。
-
-- [Advanced Threat Protection - 作成](/rest/api/securitycenter/advancedthreatprotection/create)
-- [Advanced Threat Protection - 取得](/rest/api/securitycenter/advancedthreatprotection/get)
-
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-次の PowerShell コマンドレットを使用します。
+PowerShell を使用してストレージ アカウントに対して Azure Defender を有効にするには、まず [Az.Security](https://www.powershellgallery.com/packages/Az.Security) モジュールがインストールされていることを確認します。 次に、[Enable-AzSecurityAdvancedThreatProtection](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection) コマンドを呼び出します。 山かっこ内の値は、実際の値に置き換えてください。
 
-- [Advanced Threat Protection を有効にする](/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
-- [Advanced Threat Protection を取得する](/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
-- [Advanced Threat Protection を無効にする](/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
+```azurepowershell
+Enable-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/"
+```
+
+PowerShell を使用してストレージ アカウントに対する Azure Defender 設定を確認するには、[Get-AzSecurityAdvancedThreatProtection](/powershell/module/az.security/get-azsecurityadvancedthreatprotection) コマンドを呼び出します。 山かっこ内の値は、実際の値に置き換えてください。
+
+```azurepowershell
+Get-AzSecurityAdvancedThreatProtection -ResourceId "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/"
+```
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+Azure CLI を使用してストレージ アカウントに対して Azure Defender を有効にするには、[az security atp storage update](/cli/azure/security/atp/storage#az_security_atp_storage_update) コマンドを呼び出します。 山かっこ内の値は、実際の値に置き換えてください。
+
+```azurecli
+az security atp storage update \
+    --resource-group <resource-group> \
+    --storage-account <storage-account> \
+    --is-enabled true
+```
+
+Azure CLI を使用してストレージ アカウントに対する Azure Defender 設定を確認するには、[az security atp storage show](/cli/azure/security/atp/storage#az_security_atp_storage_show) コマンドを呼び出します。 山かっこ内の値は、実際の値に置き換えてください。
+
+```azurecli
+az security atp storage show \
+    --resource-group <resource-group> \
+    --storage-account <storage-account>
+```
 
 ---
 
@@ -137,5 +155,6 @@ Azure Security Center の [[セキュリティ アラート] タイル](../../se
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Storage アカウントのログ](/rest/api/storageservices/About-Storage-Analytics-Logging)に関する詳細を確認する
-- [Azure Security Center](../../security-center/security-center-introduction.md) の詳細について参照してください
+- [Azure Defender for Storage の概要](../../security-center/defender-for-storage-introduction.md)
+- [Azure Security Center](../../security-center/security-center-introduction.md)
+- [Azure Storage アカウントにログインする](/rest/api/storageservices/About-Storage-Analytics-Logging)

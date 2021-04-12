@@ -124,7 +124,7 @@
       href: service-bus-outages-disasters.md
     - name: Throttling
       href: service-bus-throttling.md
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティ ベースライン
           href: security-baseline.md
@@ -310,7 +310,7 @@
         - name: azure/service-bus バージョン 7
           href: /javascript/api/overview/azure/service-bus?view=azure-node--preview
         - name: azure/service-bus バージョン 1
-          href: /javascript/api/overview/azure/service-bus?view=azure-node-latest
+          href: /javascript/api/overview/azure/service-bus
     - name: PHP
       href: 'https://github.com/Azure/azure-sdk-for-php'
     - name: Ruby

@@ -4,10 +4,10 @@ description: Azure Lab Services を使用してラボを設定できる、いく
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 5a90fb128f5954f3eb713714ff22ff40a3beab36
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99627435"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>クラスの種類の概要 - Azure Lab Services

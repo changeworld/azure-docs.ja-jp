@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4623610960d8f21a2dab3293c7499a2112416254
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 37e2dc194eb2ebbcbe91eef6e50f3eb1e7b62e17
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101718915"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110395"
 ---
 # <a name="create-a-transform"></a>変換を作成する
 
@@ -30,12 +30,12 @@ ms.locfileid: "101718915"
 
 ## <a name="prerequisites"></a>前提条件
 
-[Media Services アカウントを作成する](./create-account-howto.md)
+[Media Services アカウントを作成する](./account-create-how-to.md)
 
 ## <a name="cli"></a>[CLI](#tab/cli/)
 
 > [!NOTE]
-> 指定できるのは、カスタム Standard Encoder プリセットの JSON ファイルに対するパスだけです。[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) については、[カスタム変換を使用したエンコード](custom-preset-cli-howto.md)の例を参照してください。
+> 指定できるのは、カスタム Standard Encoder プリセットの JSON ファイルに対するパスだけです。[StandardEncoderPreset](/rest/api/media/transforms/createorupdate#standardencoderpreset) については、[カスタム変換を使用したエンコード](encode-custom-preset-cli-how-to.md)の例を参照してください。
 >
 > [BuiltInStandardEncoderPreset](/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) を使用している場合にファイル名を渡すことはできません。
 

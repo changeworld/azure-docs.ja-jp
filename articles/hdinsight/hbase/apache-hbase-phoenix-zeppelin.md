@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 10/14/2019
-ms.openlocfilehash: 50a72d0400b23162e05b17b37bdad48783261072
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: ff963e661a2b258c1eb452ed63f41f4e7d84c6a0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98944768"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104867782"
 ---
 # <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Apache Zeppelin を使用して Azure HDInsight で Apache HBase に対して Apache Phoenix クエリを実行する
 
@@ -28,70 +28,70 @@ HDInsight 内の Apache HBase クラスター 「[Apache HBase の使用](./apac
 
 1. URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin` の `CLUSTERNAME` をお使いのクラスターの名前に置き換えます。 Web ブラウザーに URL を入力します。 クラスターのログイン ユーザー名とパスワードを入力します。
 
-1. Zeppelin ページから、 **[Create new note]\(新しいノートの作成\)** をクリックします。
+1. Zeppelin ページから、**[Create new note]\(新しいノートの作成\)** をクリックします。
 
-    ![HDInsight 対話型クエリ Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png" alt-text="HDInsight 対話型クエリ Zeppelin" border="true":::
 
 1. **[Create new note]\(新しいノートの作成\)** ダイアログで、次の値を入力または選択します。
 
-    - [Note Name]\(ノート名\):ノートの名前を入力します。
-    - [Default interpreter]\(既定のインタープリター\):ドロップダウン リストから **[jdbc]** を選択します。
+   - [Note Name]\(ノート名\)： ノートの名前を入力します。
+   - [Default interpreter]\(既定のインタープリター\)： ドロップダウンリストから **[jdbc]** を選択します。
 
-    次に **[Create Note]\(ノートの作成\)** を選択します。
+   次に **[Create Note]\(ノートの作成\)** を選択します。
 
 1. Notebook のヘッダーに [接続] というステータスが表示されることを確認します。 これは、右上隅の緑色の点で示されます。
 
-    ![Zeppelin ノートブック のステータス](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin Notebook のステータス")
+   :::image type="content" source="./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png" alt-text="Zeppelin ノートブック のステータス" border="true":::
 
 1. HBase テーブルを作成します。 次のコマンドを入力して、**Shift + Enter** キーを押します。
 
-    ```sql
-    %jdbc(phoenix)
-    CREATE TABLE Company (
-        company_id INTEGER PRIMARY KEY,
-        name VARCHAR(225)
-    );
-    ```
+   ```sql
+   %jdbc(phoenix)
+   CREATE TABLE Company (
+       company_id INTEGER PRIMARY KEY,
+       name VARCHAR(225)
+   );
+   ```
 
-    最初の行の **%jdbc(phoenix)** ステートメントは、Phoenix JDBC インタープリターを使用するようにノートブックに指示します。
+   最初の行の **%jdbc(phoenix)** ステートメントは、Phoenix JDBC インタープリターを使用するようにノートブックに指示します。
 
 1. 作成されたテーブルを表示します。
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT DISTINCT table_name
-    FROM SYSTEM.CATALOG
-    WHERE table_schem is null or table_schem <> 'SYSTEM';
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT DISTINCT table_name
+   FROM SYSTEM.CATALOG
+   WHERE table_schem is null or table_schem <> 'SYSTEM';
+   ```
 
 1. テーブルに値を挿入します。
 
-    ```sql
-    %jdbc(phoenix)
-    UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
-    UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
-    ```
+   ```sql
+   %jdbc(phoenix)
+   UPSERT INTO dbo.Company VALUES(1, 'Microsoft');
+   UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
+   ```
 
 1. テーブルにクエリを実行します。
 
-    ```sql
-    %jdbc(phoenix)
-    SELECT * FROM dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   SELECT * FROM dbo.Company;
+   ```
 
 1. レコードを削除します。
 
-    ```sql
-    %jdbc(phoenix)
-    DELETE FROM dbo.Company WHERE COMPANY_ID=1;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DELETE FROM dbo.Company WHERE COMPANY_ID=1;
+   ```
 
 1. テーブルを削除します。
 
-    ```sql
-    %jdbc(phoenix)
-    DROP TABLE dbo.Company;
-    ```
+   ```sql
+   %jdbc(phoenix)
+   DROP TABLE dbo.Company;
+   ```
 
 ## <a name="next-steps"></a>次のステップ
 

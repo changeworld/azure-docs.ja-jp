@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: 8163fcb3b349e298bc89f06523e3e784bdc4ed49
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 85aaf40237b6b6687c54d4b036f280805c98e7b2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965674"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102618969"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
@@ -202,7 +202,7 @@ Azure Resource Manager は、別のタイプのセキュリティ制御をサポ
 
 ![Azure Portal を使用したゾーン レベルのリソース ロック](./media/dns-protect-zones-recordsets/locks1.png)
 
-ゾーン レベルのリソース ロックは、[Azure PowerShell](/powershell/module/az.resources/new-azresourcelock?view=latest) を使用して作成することもできます。
+ゾーン レベルのリソース ロックは、[Azure PowerShell](/powershell/module/az.resources/new-azresourcelock) を使用して作成することもできます。
 
 ```azurepowershell
 # Lock a DNS zone
@@ -216,7 +216,7 @@ $rsg = "<resource group name>"
 New-AzResourceLock -LockLevel $lvl -LockName $lnm -ResourceName $rsc -ResourceType $rty -ResourceGroupName $rsg
 ```
 
-また、同じ目的を果たせるコマンドを [Azure CLI から実行する](/cli/azure/lock?view=azure-cli-latest#az-lock-create)こともできます。
+また、同じ目的を果たせるコマンドを [Azure CLI から実行する](/cli/azure/lock#az-lock-create)こともできます。
 
 ```azurecli
 # Lock a DNS zone

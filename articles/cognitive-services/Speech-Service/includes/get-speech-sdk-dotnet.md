@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bbcc60070a05155a6143d3f1ff4689d44de7b3c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be87251c24ee51e931dc45754b070718d9685a3c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88944379"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "102434579"
 ---
 :::row:::
     :::column span="3":::
-        .NETSpeechSDKはNuGetパッケージとして提供され、.NET  Websites　Standard 2.0を実装しています。詳細については、<a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">　Microsoft.CognitiveServices.音声<span class="docon docon-navigate-external x-hidden-focus"></span></a>を参照してください。
+        .NETSpeechSDKはNuGetパッケージとして提供され、.NET  Websites　Standard 2.0を実装しています。詳細については、<a href="https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech" target="_blank">　Microsoft.CognitiveServices.音声</a>を参照してください。
     :::column-end:::
     :::column:::
         <br>
@@ -26,13 +26,13 @@ ms.locfileid: "88944379"
 
 #### <a name="c-nuget-package"></a>C#NuGetパッケージ
 
-.NET音声SDK は、次の`dotnet add`コマンドを使用して **.NET Core CLI**からインストールできます。
+.NET音声SDK は、次の`dotnet add`コマンドを使用して **.NET Core CLI** からインストールできます。
 
 ```dotnetcli
 dotnet add package Microsoft.CognitiveServices.Speech
 ```
 
-.NET音声SDK は、次の`Install-Package`コマンドを使用して**Package Manager**からインストールできます。
+.NET音声SDK は、次の`Install-Package`コマンドを使用して **Package Manager** からインストールできます。
 
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
@@ -40,4 +40,4 @@ Install-Package Microsoft.CognitiveServices.Speech
 
 #### <a name="additional-resources"></a>その他のリソース
 
-- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp" target="_blank">.NET Core、.NET Framework、Unity、UWP、Xamarin のクイックC＃スタートソースコード<span class="docon docon-navigate-external x-hidden-focus"></span></a>
+- <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp" target="_blank">.NET Core、.NET Framework、Unity、UWP、Xamarin のクイックC＃スタートソースコード</a>

@@ -14,12 +14,12 @@ ms.date: 09/08/2020
 ms.author: kumud
 ms.reviewer: kumud
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 4e23c6f25145724a5300c9e5cdcb55431fb0b4f2
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d10c10d602dcfa8f83ee56c2755d800d76516ff1
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028769"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058546"
 ---
 # <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 <a name="network-security-groups"></a>
@@ -37,7 +37,7 @@ Azure 仮想ネットワーク内の Azure リソースが送受信するネッ�
 |名前|ネットワーク セキュリティ グループ内で一意の名前。|
 |優先度 | 100 ～ 4096 の数値。 規則は、優先順位に従って処理され、数値が小さいほど優先順位が高いために、大きい数値の前に小さい数値が処理されます。 トラフィックが規則に一致すると、処理が停止します。 この結果、優先順位低く (数値が大きい)、優先順位が高い規則と同じ属性を持つ規則は処理されません。|
 |ソース/宛先| IP アドレス、クラスレス ドメイン間ルーティング (CIDR) ブロック (例: 10.0.0.0/24)、サービス タグ、またはアプリケーション セキュリティ グループ。 Azure リソースのアドレスを指定する場合は、そのリソースに割り当てられているプライベート IP アドレスを指定します。 受信トラフィックの場合、ネットワーク セキュリティ グループが処理されるタイミングは、Azure でパブリック IP アドレスがプライベート IP アドレスに変換された後です。送信トラフィックの場合は、Azure でプライベート IP アドレスがパブリック IP アドレスに変換される前になります。 . 範囲、サービス タグ、またはアプリケーション セキュリティ グループを指定すると、作成するセキュリティ規則の数を減らせます。 規則内で複数の個別 IP アドレスと範囲 (複数のサービス タグまたはアプリケーション グループは指定できません) を指定する機能は、[拡張セキュリティ規則](#augmented-security-rules)と呼ばれています。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数の IP アドレスおよび IP アドレス範囲を指定することはできません。|
-|Protocol     | TCP、UDP、ICMP、または Any。|
+|Protocol     | TCP、UDP、ICMP、ESP、AH、または Any。|
 |Direction| 規則が受信トラフィックまたは送信トラフィックに適用されるかどうか。|
 |ポートの範囲     |個別のポートまたはポートの範囲を指定できます。 たとえば、80 や 10000-10005 などと指定できます。 範囲を指定すると、作成するセキュリティ規則の数を減らすことができます。 拡張セキュリティ規則は、Resource Manager デプロイ モデルで作成されたネットワーク セキュリティ グループでのみ作成できます。 クラシック デプロイ モデルで作成されたネットワーク セキュリティ グループで、複数のポートまたはポート範囲を指定することはできません。   |
 |アクション     | 許可または拒否        |
@@ -56,19 +56,19 @@ Azure 仮想ネットワーク内の Azure リソースが送受信するネッ�
 
 ##### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priority|source|ソース ポート|宛先|宛先ポート|Protocol|アクセス|
+|Priority|source|ソース ポート|到着地|宛先ポート|Protocol|アクセス|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|Any|Allow|
 
 ##### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priority|source|ソース ポート|宛先|宛先ポート|Protocol|アクセス|
+|Priority|source|ソース ポート|到着地|宛先ポート|Protocol|アクセス|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|Any|Allow|
 
 ##### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priority|source|ソース ポート|宛先|宛先ポート|Protocol|アクセス|
+|Priority|source|ソース ポート|到着地|宛先ポート|Protocol|アクセス|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|Any|拒否|
 
@@ -76,19 +76,19 @@ Azure 仮想ネットワーク内の Azure リソースが送受信するネッ�
 
 ##### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
+|Priority|source|ソース ポート| 到着地 | 宛先ポート | Protocol | アクセス |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | Any | Allow |
 
 ##### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
+|Priority|source|ソース ポート| 到着地 | 宛先ポート | Protocol | アクセス |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | インターネット | 0-65535 | Any | Allow |
 
 ##### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
+|Priority|source|ソース ポート| 到着地 | 宛先ポート | Protocol | アクセス |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | Any | 拒否 |
 

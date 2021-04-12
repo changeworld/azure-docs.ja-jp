@@ -3,17 +3,18 @@ title: Azure Cloud Services (クラシック) の定義。LoadBalancerProbe ス�
 description: 利用者が定義した LoadBalancerProbe は、ロール インスタンス内のエンドポイントの正常性プローブです。 これは、サービス定義ファイルで、Web ロールまたは worker ロールと組み合わされます。
 ms.topic: article
 ms.service: cloud-services
+ms.subservice: deployment-files
 ms.date: 10/14/2020
 ms.author: tagore
 author: tanmaygore
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 1fbbb49918ed83bd38e0c1f879ed31386cfb756b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98739789"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934123"
 ---
 # <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure Cloud Services (クラシック) の定義: LoadBalancerProbe スキーマ
 

@@ -6,18 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/05/2021
+ms.date: 03/17/2021
 ms.author: alkohli
-ms.openlocfilehash: d2fa464214f6a4201b1ecd62ee1a5dacdd7ec158
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 67de5cce3bd5a4ca2b383e2809eb237a6e753bf5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99832455"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577098"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro と GPU のシステム要件 
 
-この記事では、Microsoft Azure Stack Edge Pro ソリューション、および Azure Stack Edge Pro に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報を慎重に確認してから Azure Stack Edge Pro をデプロイすることをお勧めします。 展開中およびその後の操作中に、必要に応じてこの情報を参照できます。
+この記事では、Microsoft Azure Stack Edge Pro GPU ソリューション、および Azure Stack Edge Pro に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報を慎重に確認してから Azure Stack Edge Pro をデプロイすることをお勧めします。 展開中およびその後の操作中に、必要に応じてこの情報を参照できます。
 
 Azure Stack Edge Pro のシステム要件は次のとおりです。
 
@@ -38,7 +39,7 @@ Azure Stack Edge Pro のシステム要件は次のとおりです。
 
 ## <a name="supported-edge-storage-accounts"></a>サポートされる Edge ストレージ アカウント
 
-次の Edge ストレージ アカウントは、デバイスの REST インターフェイスでサポートされます。 Edge ストレージ アカウントがデバイス上に作成されます。 詳細については、[Edge ストレージ アカウント](azure-stack-edge-j-series-manage-storage-accounts.md#about-edge-storage-accounts)に関する記事を参照してください。
+次の Edge ストレージ アカウントは、デバイスの REST インターフェイスでサポートされます。 Edge ストレージ アカウントがデバイス上に作成されます。 詳細については、[Edge ストレージ アカウント](azure-stack-edge-gpu-manage-storage-accounts.md#about-edge-storage-accounts)に関する記事を参照してください。
 
 |Type  |ストレージ アカウント  |説明  |
 |---------|---------|---------|

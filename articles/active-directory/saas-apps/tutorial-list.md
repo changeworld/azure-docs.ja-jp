@@ -6,18 +6,18 @@ author: jeevansd
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: tutorial
+ms.topic: landing-page
 ms.workload: identity
-ms.date: 12/04/2020
+ms.date: 03/09/2021
 ms.author: jeedes
-ms.custom: it-pro
+ms.custom: contperf-fy21q3-portal
 ms.reviewer: celested
-ms.openlocfilehash: f231b50651764408a516f8e8e3275ea3c86bd388
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: eda1ad058bf969351122cb9df1b528341067a186
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "100530700"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640894"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 
@@ -63,6 +63,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ - ArcGIS Enterprise](./media/tutorial-list/active-directory-saas-arcgisenterprise-tutorial.png)| [ArcGIS Enterprise](arcgisenterprise-tutorial.md)|
 | ![ロゴ - AskYourTeam](./media/tutorial-list/active-directory-saas-askyourteam-tutorial.png)| [AskYourTeam](askyourteam-tutorial.md)|
 | ![ロゴ - Atlassian Cloud](./media/tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](atlassian-cloud-tutorial.md)|
+| ![ロゴ - AWS Single Sign-On](./media/tutorial-list/active-directory-saas-aws-single-sign-on-tutorial.png)| [AWS Single Sign-On](aws-single-sign-on-tutorial.md)|
 | ![ロゴ - Box](./media/tutorial-list/active-directory-saas-box-tutorial.png)| [ボックス](box-tutorial.md)|
 | ![ロゴ - CakeHR](./media/tutorial-list/active-directory-saas-cakehr-tutorial.png)| [CakeHR](cakehr-tutorial.md)|
 | ![ロゴ - Carbonite Endpoint Backup](./media/tutorial-list/active-directory-saas-carbonite-endpoint-backup-tutorial.png)| [Carbonite Endpoint Backup](carbonite-endpoint-backup-tutorial.md)|
@@ -95,6 +96,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ - InVision](./media/tutorial-list/active-directory-saas-invision-tutorial.png)| [InVision](invision-tutorial.md)|
 | ![ロゴ - Jamf Pro](./media/tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](jamfprosamlconnector-tutorial.md)|
 | ![ロゴ - Kanbanize](./media/tutorial-list/active-directory-saas-kanbanize-tutorial.png)| [Kanbanize](kanbanize-tutorial.md)|
+| ![ロゴ - Kendis - Azure AD Integration](./media/tutorial-list/active-directory-saas-kendis-azure-ad-integration.png)| [Kendis - Azure AD Integration](kendis-scaling-agile-platform-tutorial.md)|
 | ![ロゴ - Knowledge Anywhere LMS](./media/tutorial-list/active-directory-saas-knowlwdge-anywhere-lms-tutorial.png)| [Knowledge Anywhere LMS](knowledge-anywhere-lms-tutorial.md)|
 | ![ロゴ - Litmus](./media/tutorial-list/active-directory-saas-litmus-tutorial.png)| [Litmus](litmus-tutorial.md)|
 | ![ロゴ - Marketo](./media/tutorial-list/active-directory-saas-marketo-tutorial.png)| [Marketo](marketo-tutorial.md)|

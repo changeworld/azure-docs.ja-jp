@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: 7a8b331c1295ed19afa64e95318bfa14414e6d9f
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100524068"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Form Recognizer による保存データの暗号化

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
 ms.openlocfilehash: bb9235f4d1190bf7f71ddc007f09c9666c353234
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98216803"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure 仮想マシンのネットワーク スループットの最適化

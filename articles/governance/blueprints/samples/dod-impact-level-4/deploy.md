@@ -1,14 +1,14 @@
 ---
 title: DoD 影響レベル 4 ブループリント サンプル
 description: ブループリント アーティファクト パラメーターの詳細を含む DoD 影響レベル 4 ブループリント サンプルのデプロイ手順です。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 389090b79c0aad343c1999ea17ed8c9332958544
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: fcea8dab551be18b4dfca81bd179f89d17b01bdf
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594806"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386943"
 ---
 # <a name="deploy-the-dod-impact-level-4-blueprint-sample"></a>DoD 影響レベル 4 ブループリント サンプルをデプロイする
 

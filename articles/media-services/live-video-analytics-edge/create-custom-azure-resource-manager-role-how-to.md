@@ -3,12 +3,12 @@ title: カスタム Azure Resource Manager ロールを作成し、サービス 
 description: この記事では、Azure CLI を使用して、カスタム Azure Resource Manager ロールを作成し、Live Video Analytics on IoT Edge のサービス プリンシパルに割り当てる方法に関するガイダンスを提供します。
 ms.topic: how-to
 ms.date: 05/27/2020
-ms.openlocfilehash: 40bf0f60a718d512e02481d977b8208112ed1a55
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 80974c111dd451314635d06334766322bc68e437
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425735"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102210446"
 ---
 # <a name="create-custom-azure-resource-manager-role-and-assign-to-service-principal"></a>カスタム Azure Resource Manager ロールを作成し、サービス プリンシパルに割り当てる
 
@@ -49,7 +49,7 @@ Media Service アカウントをお持ちでない場合は、次の手順を使
     ```
     az account set --subscription " <yourSubscriptionName or yourSubscriptionId>"
     ```
-1. [リソース グループ](/cli/azure/group?view=azure-cli-latest#az-group-create)と[ストレージ アカウント](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)を作成します。
+1. [リソース グループ](/cli/azure/group#az-group-create)と[ストレージ アカウント](/cli/azure/storage/account#az-storage-account-create)を作成します。
 1. ここで、Cloud Shell で次のコマンド テンプレートを使用して、Azure Media Service アカウントを作成します。
 
     ```
@@ -85,8 +85,8 @@ az ams account sp create --account-name < yourAMSAccountName > --resource-group 
 ```
 1. パスワード認証を使用したサービス プリンシパルの出力には、パスワード キー (この場合は "AadSecret" パラメーター) が含まれます。 
 
-    この値は必ずコピーしてください。取得することはできません。 パスワードを忘れた場合は、[サービス プリンシパルの資格情報をリセット](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#reset-credentials)します。
-1. appId とテナント キーは、それぞれ "AadClientId" と "AadTenantId" として出力に表示されます。 これらは、サービス プリンシパル認証で使用されます。 これらの値を記録してください。ただし、[az ad sp list](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) を使用していつでも取得できます。
+    この値は必ずコピーしてください。取得することはできません。 パスワードを忘れた場合は、[サービス プリンシパルの資格情報をリセット](/cli/azure/create-an-azure-service-principal-azure-cli#reset-credentials)します。
+1. appId とテナント キーは、それぞれ "AadClientId" と "AadTenantId" として出力に表示されます。 これらは、サービス プリンシパル認証で使用されます。 これらの値を記録してください。ただし、[az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) を使用していつでも取得できます。
 
 ### <a name="create-a-custom-role-definition"></a>カスタム ロールの定義の作成  
 
@@ -171,7 +171,7 @@ az ad sp show --id "<appId>" | Select-String "objectId"
 “objectId” : “<yourObjectId>”,
 ```
 
-[az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) コマンド テンプレートを使用して、カスタム ロールとサービス プリンシパルをリンクします。
+[az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) コマンド テンプレートを使用して、カスタム ロールとサービス プリンシパルをリンクします。
 
 ```
 az role assignment create --role “LVAEdge User” --assignee-object-id < objectId>    

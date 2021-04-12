@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 446dae3c064f5f23d35cb12b2b24bdfea9e27012
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 11fbbe4d816c9f50afc879d74991976a467a9013
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007813"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448136"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type"></a>個人用デスクトップ ホスト プールの割り当ての種類を構成する
 

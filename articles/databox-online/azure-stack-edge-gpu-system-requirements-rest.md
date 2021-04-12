@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 887aaf32592c74a5884916bc7ad63d79544fb554
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 7deba32eb9d0e098b75f98cc81fac2c01b8bb7f8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99575857"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105567255"
 ---
 # <a name="azure-stack-edge-blob-storage-requirements"></a>Azure Stack Edge BLOB ストレージの要件
 
@@ -70,7 +70,7 @@ Composer 経由で PHP クライアントをインストールするには、次
 
 ## <a name="endpoint-declaration"></a>エンドポイントの宣言
 
-Azure Stack Edge BLOB ストレージ SDK では、エンドポイント サフィックス (`<device serial number>.microsoftdatabox.com`) によって Azure Stack Edge ドメインが識別されます。 Blob service エンドポイントの詳細については、「[Azure Stack Edge Pro GPU でストレージ アカウントを使用してデータを転送する](azure-stack-edge-j-series-deploy-add-storage-accounts.md)」を参照してください。
+Azure Stack Edge BLOB ストレージ SDK では、エンドポイント サフィックス (`<device serial number>.microsoftdatabox.com`) によって Azure Stack Edge ドメインが識別されます。 Blob service エンドポイントの詳細については、「[Azure Stack Edge Pro GPU でストレージ アカウントを使用してデータを転送する](./azure-stack-edge-gpu-deploy-add-storage-accounts.md)」を参照してください。
 
 
 ## <a name="examples"></a>例

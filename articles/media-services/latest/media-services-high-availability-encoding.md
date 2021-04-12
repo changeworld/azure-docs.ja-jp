@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: be3fd9b3d910e64245a1b52056499bbfba2e6379
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 2b0158c3b1bbee37fdb10c8fc0131be580ad6fc0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955853"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105562615"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Media Services とビデオ オン デマンド(VOD) を使用した高可用性
 
@@ -59,23 +59,23 @@ Media Services とビデオ オン デマンド (VOD) を使用した高可用�
 
 ### <a name="regions"></a>リージョン
 
-* 2 つ (以上) の Azure Media Services アカウントを[作成](https://review.docs.microsoft.com/azure/media-services/latest/create-account-cli-how-to)します。 2 つのアカウントは所属するリージョンが異なっている必要があります。 詳細については、「[Azure Media Services サービスがデプロイされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)」を参照してください。
-* ジョブを送信する予定のリージョンにメディアをアップロードします。 エンコードを開始する方法の詳細については、「[HTTPS URL からジョブの入力を作成する](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-http-how-to)」または「[ローカル ファイルからジョブの入力を作成する](https://review.docs.microsoft.com/azure/media-services/latest/job-input-from-local-file-how-to)」を参照してください。
-* その後、[ジョブ](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept)を別のリージョンに再送信する必要がある場合、`JobInputHttp` を使用するか、`Copy-Blob` を使用してソース アセット コンテナーから代替リージョンのアセット コンテナーにデータをコピーします。
+* 2 つ (以上) の Azure Media Services アカウントを[作成](./create-account-howto.md)します。 2 つのアカウントは所属するリージョンが異なっている必要があります。 詳細については、「[Azure Media Services サービスがデプロイされているリージョン](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)」を参照してください。
+* ジョブを送信する予定のリージョンにメディアをアップロードします。 エンコードを開始する方法の詳細については、「[HTTPS URL からジョブの入力を作成する](./job-input-from-http-how-to.md)」または「[ローカル ファイルからジョブの入力を作成する](./job-input-from-local-file-how-to.md)」を参照してください。
+* その後、[ジョブ](./transforms-jobs-concept.md)を別のリージョンに再送信する必要がある場合、`JobInputHttp` を使用するか、`Copy-Blob` を使用してソース アセット コンテナーから代替リージョンのアセット コンテナーにデータをコピーします。
 
 ### <a name="monitoring"></a>監視
 
 * Azure Event Grid を介して各アカウントで `JobStateChange` メッセージをサブスクライブします。
-    * Azure portal または CLI を使用して[イベントに登録する](https://review.docs.microsoft.com/azure/media-services/latest/reacting-to-media-services-events) (Event Grid Management SDK を使用して行うこともできます)
+    * Azure portal または CLI を使用して[イベントに登録する](./reacting-to-media-services-events.md) (Event Grid Management SDK を使用して行うこともできます)
     * [Microsoft.Azure.EventGrid SDK](https://www.nuget.org/packages/Microsoft.Azure.EventGrid/) を使用する (ネイティブで Media Services イベントをサポートしています)。
     * Azure Functions を介して Event Grid イベントを使用することもできます。
 
     詳細情報:
 
-    * [オーディオ分析サンプル](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept)を参照すると、Azure Event Grid メッセージが何らかの理由で遅延した場合のフォールバックを追加するなど、Azure Event Grid でジョブを監視する方法がわかります。
-    * [Media Services 用の Azure Event Grid スキーマ](https://review.docs.microsoft.com/azure/media-services/latest/media-services-event-schemas)をご覧ください。
+    * [オーディオ分析サンプル](./transforms-jobs-concept.md)を参照すると、Azure Event Grid メッセージが何らかの理由で遅延した場合のフォールバックを追加するなど、Azure Event Grid でジョブを監視する方法がわかります。
+    * [Media Services 用の Azure Event Grid スキーマ](./media-services-event-schemas.md)をご覧ください。
 
-* [ジョブ](https://review.docs.microsoft.com/azure/media-services/latest/transforms-jobs-concept)を作成する場合:
+* [ジョブ](./transforms-jobs-concept.md)を作成する場合:
     * 現在使用しているアカウントの一覧からアカウントをランダムに選択します (通常、この一覧には両方のアカウントが含まれますが、問題が検出された場合は、アカウントを 1 つだけ含めることができます)。 一覧が空の場合は、オペレーターが調査できるようにアラートを生成します。
     * 実行中の各ジョブと、使用されているリージョン/アカウントを追跡するレコードを作成します。
 * ジョブがスケジュールされた状態に到達したことを示す通知を `JobStateChange` ハンドラーが受け取ったら、ジョブがスケジュールの状態になった時刻と、使用されているリージョンとアカウントを記録します。

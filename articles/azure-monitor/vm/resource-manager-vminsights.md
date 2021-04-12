@@ -1,26 +1,25 @@
 ---
-title: Azure Monitor for VMs 用の Resource Manager テンプレートのサンプル
-description: Azure Monitor for VMs をデプロイおよび構成するための Azure Resource Manager テンプレートのサンプル。
-ms.subservice: logs
+title: VM insights 用の Resource Manager テンプレートのサンプル
+description: VM insights をデプロイおよび構成するための Azure Resource Manager テンプレートのサンプル。
 ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 91c8396795a85cd63fa502c4b091b7ca9a42865b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 2ee447b1e5f72ce916808a5832f999eea493994c
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597492"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102046841"
 ---
-# <a name="resource-manager-template-samples-for-azure-monitor-for-vms"></a>Azure Monitor for VMs 用の Resource Manager テンプレートのサンプル
-この記事には、仮想マシン上で Azure Monitor for VMs を有効にするためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+# <a name="resource-manager-template-samples-for-vm-insights"></a>VM insights 用の Resource Manager テンプレートのサンプル
+この記事には、仮想マシン上で VM insights を有効にするためのサンプルの [Azure Resource Manager テンプレート](../../azure-resource-manager/templates/template-syntax.md)が含まれています。 各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 [!INCLUDE [azure-monitor-samples](../../../includes/azure-monitor-resource-manager-samples.md)]
 
 
 ## <a name="configure-workspace"></a>ワークスペースの構成
-次のサンプルでは、Log Analytics ワークスペースに対して Azure Monitor for VMs を有効にします。
+次のサンプルでは、Log Analytics ワークスペースに対して VM insights を有効にします。
 
 
 ### <a name="template-file"></a>テンプレート ファイル
@@ -98,7 +97,7 @@ ms.locfileid: "100597492"
 
 
 ## <a name="onboard-an-azure-virtual-machine"></a>Azure 仮想マシンをオンボードする
-次のサンプルでは、Azure Monitor for VMs に Azure 仮想マシンを追加します。
+次のサンプルでは、VM insights に Azure 仮想マシンを追加します。
 
 
 ### <a name="template-file"></a>テンプレート ファイル
@@ -219,7 +218,7 @@ ms.locfileid: "100597492"
 
 
 ## <a name="onboard-an-azure-virtual-machine-scale-set"></a>Azure 仮想マシン スケール セットをオンボードする
-次のサンプルでは、Azure Monitor for VMs に Azure 仮想マシン スケール セットを追加します。
+次のサンプルでは、VM insights に Azure 仮想マシン スケール セットを追加します。
 
 
 ### <a name="template-file"></a>テンプレート ファイル
@@ -340,5 +339,5 @@ ms.locfileid: "100597492"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Monitor の他のサンプル テンプレートを入手します](../samples/resource-manager-samples.md)。
-* [Azure Monitor for VMs の詳細を確認します](../vm/vminsights-overview.md)。
+* [Azure Monitor の他のサンプル テンプレートを入手します](../resource-manager-samples.md)。
+* [VM insights の詳細を確認する](vminsights-overview.md)。

@@ -1,14 +1,14 @@
 ---
 title: IRS 1075 ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む IRS 1075 (Rev.11-2016) ブループリント サンプルのデプロイ手順です。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 6df2781207c623e10daf0681865b9246be1b1f4c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 32aae11b53c38ef614fa1826cbc4c97cffaaf80c
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100571922"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386536"
 ---
 # <a name="deploy-the-irs-1075-blueprint-sample"></a>IRS 1075 ブループリント サンプルをデプロイする
 

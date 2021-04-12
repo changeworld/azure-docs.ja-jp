@@ -1,31 +1,30 @@
 ---
-title: データ収集ルールを使用して Azure Monitor for VMs のゲストの正常性 (プレビュー) での監視を構成する
-description: Azure Monitor for VMs のゲストの正常性における既定の監視を、Resource Manager テンプレートを使用して大規模に変更する方法について説明します。
-ms.subservice: ''
+title: データ収集ルールを使用して VM 分析情報のゲストの正常性での監視を構成する (プレビュー)
+description: VM 分析情報のゲストの正常性における既定の監視を、Resource Manager テンプレートを使用して大規模に変更する方法について説明します。
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: 2001fece40267ca2e3256e699d2dc253ceb10f0c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 889a04d68de45a6270ae0c38615d841a526ad86a
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604614"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490694"
 ---
-# <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>データ収集ルールを使用して Azure Monitor for VMs のゲストの正常性 (プレビュー) での監視を構成する
-[Azure Monitor for VMs のゲストの正常性](vminsights-health-overview.md)を使用すると、定期的にサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、データ収集ルールを使用して、複数の仮想マシンにわたって既定の監視を変更する方法について説明します。
+# <a name="configure-monitoring-in-vm-insights-guest-health-using-data-collection-rules-preview"></a>データ収集ルールを使用して VM 分析情報のゲストの正常性での監視を構成する (プレビュー)
+[VM 分析情報のゲストの正常性](vminsights-health-overview.md)を使用すると、一定間隔でサンプリングされる一連のパフォーマンス測定値によって定義される、仮想マシンの正常性を表示できます。 この記事では、データ収集ルールを使用して、複数の仮想マシンにわたって既定の監視を変更する方法について説明します。
 
 
 ## <a name="monitors"></a>モニター
-仮想マシンの正常性状態は、そのモニターそれぞれからの[正常性のロールアップ](vminsights-health-overview.md#health-rollup-policy)によって決まります。 次の表に示すように、Azure Monitor for VMs のゲストの正常性には、2 種類のモニターがあります。
+仮想マシンの正常性状態は、そのモニターそれぞれからの[正常性のロールアップ](vminsights-health-overview.md#health-rollup-policy)によって決まります。 次の表に示すように、VM 分析情報のゲストの正常性には、2 種類のモニターがあります。
 
 | モニター | 説明 |
 |:---|:---|
 | ユニット モニター | リソースまたはアプリケーションの一部の側面を測定します。 パフォーマンス カウンターを調べて、リソースのパフォーマンスまたはその可用性を判断することなどが含まれます。 |
 | 集計モニター | 複数のモニターをグループ化して、1 つの集計された正常性状態を示します。 集計モニターには、1 つ以上のユニット モニターとその他の集計モニターを含めることができます。 |
 
-Azure Monitor for VMs のゲストの正常性とその構成で使用されるモニターのセットを、直接変更することはできません。 [オーバーライド](#overrides)を作成すると、それを通して既定の構成の動作を変更できます。 オーバーライドは、データ収集ルールで定義されます。 必要な監視構成を実現するために、それぞれが複数のオーバーライドを含むデータ収集ルールを複数作成することができます。
+VM 分析情報のゲストの正常性とその構成で使用されるモニターのセットを直接変更することはできません。 [オーバーライド](#overrides)を作成すると、それを通して既定の構成の動作を変更できます。 オーバーライドは、データ収集ルールで定義されます。 必要な監視構成を実現するために、それぞれが複数のオーバーライドを含むデータ収集ルールを複数作成することができます。
 
 ## <a name="monitor-properties"></a>モニターのプロパティ
 次の表では、各モニターに対して構成できるプロパティについて説明します。
@@ -103,9 +102,9 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 | 要素 | 必須 | 説明 |
 |:---|:---|:---|
 | `name` | はい | その拡張機能のユーザー定義文字列。 |
-| `streams` | はい | ゲストの正常性データの送信先となるストリームの一覧。 これには **Microsoft-HealthStateChange** が含まれている必要があります。  |
+| `streams` | Yes | ゲストの正常性データの送信先となるストリームの一覧。 これには **Microsoft-HealthStateChange** が含まれている必要があります。  |
 | `extensionName` | はい | 拡張機能の名前。 これは **HealthExtension** である必要があります。 |
-| `extensionSettings` | はい | 既定の構成に適用される `healthRuleOverride` 要素の配列。 |
+| `extensionSettings` | Yes | 既定の構成に適用される `healthRuleOverride` 要素の配列。 |
 
 
 ## <a name="extensionsettings-element"></a>extensionSettings 要素
@@ -123,7 +122,7 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 |:---|:---|:---|
 | `schemaVersion` | はい | 要素の予期されるスキーマを表すために Microsoft によって定義された文字列。 現在は 1.0 に設定されている必要があります |
 | `contentVersion` | いいえ | 必要に応じて、異なるバージョンの正常性構成を追跡するためにユーザーが定義した文字列。 |
-| `healthRuleOverrides` | はい | 既定の構成に適用される `healthRuleOverride` 要素の配列。 |
+| `healthRuleOverrides` | Yes | 既定の構成に適用される `healthRuleOverride` 要素の配列。 |
 
 ## <a name="healthrulesoverrides-element"></a>healthRulesOverrides 要素
 それぞれが 1 つのオーバーライドを定義する `healthRuleOverride` 要素が、1 つ以上含まれます。
@@ -143,7 +142,7 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 | 要素 | 必須 | 説明 |
 |:---|:---|:---|
 | `scopes` | はい | このオーバーライドを適用できる仮想マシンを指定する 1 つ以上のスコープの一覧。 DCR が仮想マシンに関連付けられている場合でも、仮想マシンは、オーバーライドを適用するスコープ内に存在している必要があります。 |
-| `monitors` | はい | このオーバーライドをどのモニターが受け取るかを定義する 1 つ以上の文字列の一覧。  |
+| `monitors` | Yes | このオーバーライドをどのモニターが受け取るかを定義する 1 つ以上の文字列の一覧。  |
 | `monitorConfiguration` | いいえ | 正常性状態とその計算方法を含む、モニターの構成。 |
 | `alertConfiguration` | いいえ | モニターに対するアラートの構成。 |
 | `isEnabled` | いいえ | モニターを有効にするかどうかを制御します。 無効にされたモニターは、再度有効にされない限り、特殊な *無効* の正常性状態および無効にされた状態に切り替わります。 省略した場合、モニターは階層内の親モニターからその状態を継承します。 |
@@ -176,17 +175,17 @@ Azure Monitor for VMs のゲストの正常性とその構成で使用される�
 次の表に、現在使用できるモニターの名前を示します。
 
 | 型名 | 名前 | 説明 |
-|:---|:---|:---|
-| root | root | 仮想マシンの正常性を表す最上位レベルのモニター。 | |
-| cpu-utilization | cpu-utilization | CPU 使用率モニター。 | |
-| logical-disks | logical-disks | Windows 仮想マシン上にあるすべての監視対象ディスクの、正常性状態についての集計モニター。 | |
-| logical-disks\|* | logical-disks\|C:<br>logical-disks\|D: | Windows 仮想マシン上の特定のディスクの正常性を追跡する集計モニター。 | 
-| logical-disks\|*\|free-space | logical-disks\|C:\|free-space<br>logical-disks\|D:\|free-space | Windows 仮想マシン上のディスク空き領域モニター。 |
+|:----------|:-----|:------------|
+| root | root | 仮想マシンの正常性を表す最上位レベルのモニター。 |
+| cpu-utilization | cpu-utilization | CPU 使用率モニター。 |
+| logical-disks | logical-disks | Windows 仮想マシン上にあるすべての監視対象ディスクの、正常性状態についての集計モニター。 |
+| logical-disks\|\* | logical-disks\|C:<br>logical-disks\|D: | Windows 仮想マシン上の特定のディスクの正常性を追跡する集計モニター。 |
+| logical-disks\|\*\|free-space | logical-disks\|C:\|free-space<br>logical-disks\|D:\|free-space | Windows 仮想マシン上のディスク空き領域モニター。 |
 | filesystems | filesystems | Linux 仮想マシン上にあるすべてのファイルシステムの正常性の集計モニター。 |
-| filesystems\|* | filesystems\|/<br>filesystems\|/mnt | Linux 仮想マシン上のファイルシステムの正常性を追跡する集計モニター。 | filesystems|/var/log |
-| filesystems\|*\|free-space | filesystems\|/\|free-space<br>filesystems\|/mnt\|free-space | Linux 仮想マシン ファイルシステム上のディスク空き領域モニター。 | 
-| メモリ | メモリ | 仮想マシン メモリの正常性についての集計モニター。 | |
-| memory\|available| memory\|available | 仮想マシンで使用可能なメモリを追跡するモニター。 | |
+| filesystems\|\* | filesystems\|/<br>filesystems\|/mnt | Linux 仮想マシン上のファイルシステムの正常性を追跡する集計モニター。 |
+| filesystems\|\*\|free-space | filesystems\|/\|free-space<br>filesystems\|/mnt\|free-space | Linux 仮想マシン ファイルシステム上のディスク空き領域モニター。 |
+| メモリ | メモリ | 仮想マシン メモリの正常性についての集計モニター。 |
+| memory\|available | memory\|available | 仮想マシンで使用可能なメモリを追跡するモニター。 |
 
 
 ## <a name="alertconfiguration-element"></a>alertConfiguration 要素

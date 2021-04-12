@@ -4,10 +4,10 @@ description: Azure Batch ソリューションを使用したセキュリティ�
 ms.date: 12/18/2020
 ms.topic: conceptual
 ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98723814"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>Batch のセキュリティとコンプライアンスのベスト プラクティス

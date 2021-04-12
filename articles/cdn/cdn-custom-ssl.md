@@ -5,15 +5,15 @@ services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 03/26/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 61ba50f8ec9e1de18238160b23096670753cffd6
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6f77bac93b7bb5e3319409c01e328c73cd08a9a0
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100367505"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058954"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -172,15 +172,18 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
 3. [証明書の管理の種類] で、 **[Use my own certificate]\(独自の証明書を使用する\)** を選択します。 
 
-    ![証明書の構成](./media/cdn-custom-ssl/cdn-configure-your-certificate.png)
+    :::image type="content" source="./media/cdn-custom-ssl/cdn-configure-your-certificate.png" alt-text="CDN エンドポイントの証明書を構成する方法を示すスクリーンショット。":::
 
-4. キー コンテナー、証明書 (シークレット)、証明書のバージョンを選択します。
+4. キー コンテナー、証明書またはシークレット、証明書またはシークレットのバージョンを選択します。
 
     Azure CDN に次の情報が一覧表示されます。 
     - サブスクリプション ID に対するキー コンテナー アカウント。 
-    - 選択したキー コンテナーの下の証明書 (シークレット)。 
-    - 利用可能な証明書バージョン。 
+    - 選択したキー コンテナーの下の証明書またはシークレット。 
+    - 利用可能な証明書またはシークレットのバージョン。
  
+    > [!NOTE]
+    > キー コンテナーで新しいバージョンの証明書を利用できるようになったときに、証明書を自動的に最新バージョンにローテーションするには、証明書またはシークレットのバージョンを "最新" に設定してください。 特定のバージョンが選択されている場合、新しいバージョンを手動で再選択して、証明書をローテーションする必要があります。 新しいバージョンの証明書またはシークレットがデプロイされるまで、最大で 24 時間かかります。 
+   
 5. **[オン]** を選択して HTTPS を有効にします。
   
 6. 独自の証明書を使用する場合には、ドメインの検証は必要ありません。 「[伝達を待機する](#wait-for-propagation)」に進んでください。
@@ -206,7 +209,7 @@ CNAME レコードは、次の形式にする必要があります。
 * "*名前*" はカスタム ドメイン名です。
 * "*値*" は CDN エンドポイントのホスト名です。
 
-| 名前            | Type  | 値                 |
+| 名前            | 種類  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -356,6 +359,11 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 7. *証明書の更新では、独自の証明書の持ち込みをどのように処理しますか。*
 
     PoP インフラストラクチャに新しい証明書がデプロイされるようにするには、新しい証明書を Azure Key Vault にアップロードします。 Azure CDN の TLS 設定で、最新のバージョンの証明書を選択し、[保存] を選択してください。 Azure CDN によって、新しい更新された証明書が反映されます。 
+
+8. *エンドポイントの再起動後に HTTPS を再度有効にする必要がありますか。*
+
+    はい。 **Azure CDN from Akamai** を使用している場合、エンドポイントを停止して再起動したときは、HTTPS 設定を再度有効にする必要があります (前にこの設定が有効だった場合)。
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
 ms.openlocfilehash: 3d24fa1ea046a860feb40d09a6d0a57c79371450
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/07/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99807599"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel を AWS CloudTrail に接続する

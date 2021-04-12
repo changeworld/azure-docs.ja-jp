@@ -3,18 +3,18 @@ title: Azure Automation Runbook をトリガーするアラートを使用する
 description: この記事では、Azure のアラートが発生したときに Runbook の実行をトリガーする方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 04/29/2019
+ms.date: 02/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: add2bbb7b8f9eeb72c8c58b8c54b070a6b14d8e6
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ea7979ad4a401d317ec126b7abfe354690475235
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100586057"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104953104"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
-[Azure Monitor](../azure-monitor/overview.md) を使用して Azure のほとんどのサービスのベース レベルのメトリックとログを監視します。 [アクション グループ](../azure-monitor/alerts/action-groups.md)またはクラシック アラートから Azure Automation Runbook を呼び出して、アラートに基づくタスクを自動化することができます。 この記事では、アラートを使用して Runbook を構成および実行する方法を示します。
+[Azure Monitor](../azure-monitor/overview.md) を使用して Azure のほとんどのサービスのベース レベルのメトリックとログを監視します。 [アクション グループ](../azure-monitor/alerts/action-groups.md)を使用して Azure Automation Runbook を呼び出し、アラートに基づくタスクを自動化することができます。 この記事では、アラートを使用して Runbook を構成および実行する方法を示します。
 
 ## <a name="alert-types"></a>アラートの種類
 

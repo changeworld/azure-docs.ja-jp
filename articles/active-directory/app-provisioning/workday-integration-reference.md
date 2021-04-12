@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 02/09/2021
 ms.author: chmutali
 ms.openlocfilehash: 2b1a43ee6b13d32c0eaed92538cf9c25405e061b
-ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100104333"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Azure Active Directory のプロビジョニングと Workday の統合方法

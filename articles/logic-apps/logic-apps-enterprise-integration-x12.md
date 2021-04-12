@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/29/2020
-ms.openlocfilehash: 61f3f2af61bc24f76d061de672a3eaacd54f7f0e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 87a2bcc386ec5688fadb68aabdd2e5239e205516
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015198"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077473"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack で B2B エンタープライズ統合用の X12 メッセージを交換する
 
@@ -79,7 +79,6 @@ Azure Logic Apps で X12 メッセージを操作するには、X12 コネクタ
 |----------|-------------|
 | **TA1 Expected (TA1 が必要)** | インターチェンジの送信者に技術確認 (TA1) を返します。 |
 | **FA Expected (FA が必要)** | インターチェンジの送信者に機能確認 (FA) を返します。 <p>**FA Version (FA バージョン)** プロパティについては、スキーマのバージョンに基づいて、997 または 999 の受信確認を選択します。 <p>受理されたトランザクション セットの機能確認で AK2 ループの生成を有効にするには、 **[Include AK2 / IK2 Loop]\(AK2 / IK2 ループを含める\)** を選択します。 |
-||||
 
 <a name="inbound-schemas"></a>
 

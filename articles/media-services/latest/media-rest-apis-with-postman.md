@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: b0a521ddeee6d93ce809e5e6e85eefa1f01a3f12
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 1266e10f6d8bf69c6e72a236ecde27623ad1cf12
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98953973"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961729"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>Media Services v3 REST API 呼び出し用に Postman を構成する
 
@@ -30,11 +30,11 @@ ms.locfileid: "98953973"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Media Services アカウントを作成する](./create-account-howto.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
+- [Media Services アカウントを作成する](./account-create-how-to.md) リソース グループ名と Media Services アカウント名を覚えておいてください。 
 - [API へのアクセス](./access-api-howto.md)に必要な情報を取得する
 - [Postman](https://www.getpostman.com/) REST クライアントをインストールして、AMS REST チュートリアルの一部で示されている REST API を実行します。 
 
-    ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用した **Visual Studio Code** や **Telerik Fiddler** です。 
+    ここでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用する **Visual Studio Code** や **Telerik Fiddler** です。 
 
 > [!IMPORTANT]
 > [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。

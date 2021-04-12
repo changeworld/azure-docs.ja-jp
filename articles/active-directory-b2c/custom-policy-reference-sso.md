@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 453042766c427b05ec1ee1090a0702f64065542d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1f3fb07eaf7f63d15232f4c94eeee45f43c81616
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508052"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075137"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのシングル サインオン管理
 
@@ -30,7 +30,7 @@ Azure AD B2C では、使用可能な多数の SSO セッション プロバイ�
 |---------|---------|
 |[NoopSSOSessionProvider](#noopssosessionprovider)     |  なし       |       
 |[DefaultSSOSessionProvider](#defaultssosessionprovider)    | Azure AD B2C 内部セッション マネージャー。      |       
-|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C と OAuth1、OAuth2、または OpenId Connect ID プロバイダーの間。        |         |
+|[ExternalLoginSSOSessionProvider](#externalloginssosessionprovider)     | Azure AD B2C と OAuth1、OAuth2、または OpenId Connect ID プロバイダーの間。        | 
 |[OAuthSSOSessionProvider](#oauthssosessionprovider)     | OAuth2 または OpenId Connect 証明書利用者アプリケーションと Azure AD B2C の間。        |        
 |[SamlSSOSessionProvider](#samlssosessionprovider)     | Azure AD B2C と SAML ID プロバイダーの間。 および、SAML サービス プロバイダー (証明書利用者アプリケーション) と Azure AD B2C の間。  |        
 
@@ -118,7 +118,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 #### <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明|
+| 属性 | 必須 | 説明|
 | --- | --- | --- |
 | AlwaysFetchClaimsFromProvider | いいえ | 現在使用されていません。無視してもかまいません。 |
 
@@ -135,7 +135,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-このプロバイダーは、証明書利用者アプリケーションまたはフェデレーション SAML ID プロバイダー間で、Azure AD B2C SAML セッションを管理するために使用されます。 SAML ID プロバイダー セッションを保存するために SSO プロバイダーを使用する場合、`RegisterServiceProviders` を `false` に設定する必要があります。 次の `SM-Saml-idp` 技術プロファイルは、[SAML ID プロバイダー技術プロファイル](saml-identity-provider-technical-profile.md)によって使用されます。
+このプロバイダーは、証明書利用者アプリケーションまたはフェデレーション SAML ID プロバイダー間で、Azure AD B2C SAML セッションを管理するために使用されます。 SAML ID プロバイダー セッションを保存するために SSO プロバイダーを使用する場合、`RegisterServiceProviders` を `false` に設定する必要があります。 次の `SM-Saml-idp` 技術プロファイルは、[SAML ID プロバイダー](identity-provider-generic-saml.md)によって使用されます。
 
 ```xml
 <TechnicalProfile Id="SM-Saml-idp">
@@ -149,7 +149,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 B2C SAML セッションを保存するためにプロバイダーを使用する場合は、`RegisterServiceProviders` を `true` に設定する必要があります。 SAML セッションのログアウトを完了するには、`SessionIndex` と `NameID` が必要です。
 
-次の `SM-Saml-issuer` 技術プロファイルは、[SAML 発行者技術プロファイル](saml-issuer-technical-profile.md)によって使用されます。
+次の `SM-Saml-issuer` 技術プロファイルは、[SAML 発行者技術プロファイル](saml-service-provider.md)によって使用されます。
 
 ```xml
 <TechnicalProfile Id="SM-Saml-issuer">
@@ -160,7 +160,7 @@ B2C SAML セッションを保存するためにプロバイダーを使用す�
 
 #### <a name="metadata"></a>Metadata
 
-| 属性 | Required | 説明|
+| 属性 | 必須 | 説明|
 | --- | --- | --- |
 | IncludeSessionIndex | いいえ | 現在使用されていません。無視してもかまいません。|
 | RegisterServiceProviders | いいえ | アサーションが発行された SAML サービス プロバイダーすべてをプロバイダーが登録する必要があることを示します。 指定できる値は `true`(既定値) または`false`です。|

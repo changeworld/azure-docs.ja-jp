@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: 7d6f9564328f81b71c62a4243c5f4cc209a29d8f
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: e9d92c60e74ac9106246ccd445afaca926065e5f
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101714478"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104871199"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>正常性チェックを使用して App Service インスタンスを監視する
 
@@ -57,11 +57,15 @@ ms.locfileid: "101714478"
 
 正常性チェックは App Service の認証および認可機能と統合されます。 これらのセキュリティ機能が有効になっている場合、追加の設定は必要ありません。 ただし、独自の認証システムを使用する場合は、正常性チェック パスによって匿名アクセスが許可される必要があります。 サイトで HTTP **S** のみが有効になっている場合、正常性チェック要求が HTTP **S** 経由で送信されます。
 
-大企業の開発チームは、多くの場合、公開されている API のセキュリティ要件に従う必要があります。 正常性チェック エンドポイントをセキュリティで保護するには、まず [IP 制限](app-service-ip-restrictions.md#set-an-ip-address-based-rule)、[クライアント証明書](app-service-ip-restrictions.md#set-an-ip-address-based-rule)、Virtual Network などの機能を使用して、アプリケーション アクセスを制限する必要があります。 着信要求の `User-Agent` が `ReadyForRequest/1.0` と一致するように要求することで、正常性チェック エンドポイントをセキュリティで保護できます。 以前のセキュリティ機能によって要求が既にセキュリティで保護されているため、User-Agent になりすますことはできません。
+大企業の開発チームは、多くの場合、公開されている API のセキュリティ要件に従う必要があります。 正常性チェック エンドポイントをセキュリティで保護するには、まず [IP 制限](app-service-ip-restrictions.md#set-an-ip-address-based-rule)、[クライアント証明書](app-service-ip-restrictions.md#set-an-ip-address-based-rule)、Virtual Network などの機能を使用して、アプリケーション アクセスを制限する必要があります。 着信要求の `User-Agent` が `HealthCheck/1.0` と一致するように要求することで、正常性チェック エンドポイントをセキュリティで保護できます。 以前のセキュリティ機能によって要求が既にセキュリティで保護されているため、User-Agent になりすますことはできません。
 
 ## <a name="monitoring"></a>監視
 
 アプリケーションの正常性チェック パスを指定したら、Azure Monitor を使用してご利用のサイトの正常性を監視できます。 ポータルの **[正常性チェック]** ブレードで、上部のツールバーにある **[メトリック]** をクリックします。 これにより新しいブレードが開き、サイトの過去の正常性状態を確認したり、新しいアラート ルールを作成したりできるようになります。 サイトの監視方法の詳細については、[Azure Monitor に関するガイドを参照してください](web-sites-monitor.md)。
+
+## <a name="limitations"></a>制限事項
+
+Premium Functions サイトでは、正常性チェックを有効にしないでください。 Premium Functions の迅速なスケーリングにより、正常性チェックの要求によって HTTP トラフィックが不必要に変動する可能性があります。 Premium Functions には、スケーリングの決定を通知するために使用される、独自の内部正常性プローブが用意されています。
 
 ## <a name="next-steps"></a>次のステップ
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

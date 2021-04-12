@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: fe452f61d17f0b2014957e3b458ef1ad1b3c539d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ca1fdbd9aa2c98358489d91fe0839c98adec293b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357632"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102212707"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>チュートリアル:Java アプリケーションを使用して Azure Cosmos DB に Cassandra API アカウントを作成し、キーと値のデータを格納する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -34,7 +34,7 @@ ms.locfileid: "97357632"
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。 
 
-* 最新バージョンの [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable&preserve-view=true) を入手します。 
+* 最新バージョンの [Java Development Kit (JDK)](/java/azure/jdk/) を入手します。 
 
 * [Maven](https://maven.apache.org/) バイナリ アーカイブを[ダウンロード](https://maven.apache.org/download.cgi)して[インストール](https://maven.apache.org/install.html)します。 
   - Ubuntu で `apt-get install maven` を実行して Maven をインストールします。 

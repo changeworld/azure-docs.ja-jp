@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 01f4f52acaa5b461e2b058f112f26dafda86dcb7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+manager: femila
+ms.openlocfilehash: aac22dfb95cc099a5d1243e120834415dfa61a4b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025029"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444260"
 ---
 # <a name="tutorial-set-up-service-alerts-for-windows-virtual-desktop-classic"></a>チュートリアル:Windows Virtual Desktop (クラシック) のサービス アラートを設定する
 

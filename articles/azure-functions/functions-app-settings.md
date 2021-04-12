@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 8cb3e12c48adf1273c58f4914e34590e21b9d3cc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 327f120d387a3a08f0de9db2da718d530346e545
+ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378300"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104773081"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -80,7 +80,7 @@ Application Insights の接続文字列。 次の場合は、`APPINSIGHTS_INSTRU
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
-Functions ランタイムのバージョン 2.x 以降では、ランタイム環境に基づいてアプリの動作を構成します。 この値は、[初期化中に読み取られます](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)。 `AZURE_FUNCTIONS_ENVIRONMENT` は任意の値に設定することができますが、次の [3 つの値](/dotnet/api/microsoft.aspnetcore.hosting.environmentname)がサポートされています。[Development](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development)、[Staging](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)、[Production](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production)。 `AZURE_FUNCTIONS_ENVIRONMENT` が設定されていない場合、既定では、ローカル環境では `Development` になり、Azure では `Production` になります。 この設定は、ランタイム環境を設定するために、`ASPNETCORE_ENVIRONMENT` の代わりに使用する必要があります。 
+Functions ランタイムのバージョン 2.x 以降では、ランタイム環境に基づいてアプリの動作を構成します。 この値は初期化時に読み取られ、任意の値に設定できます。 ランタイムによって受け入れられるのは、`Development`、`Staging`、および `Production` の値のみです。 Azure での実行時にこのアプリケーション設定が存在しない場合、環境は `Production` と見なされます。 Azure のランタイム環境を `Production` 以外のものに変更する必要がある場合は、`ASPNETCORE_ENVIRONMENT` の代わりにこの設定を使用します。 ローカル コンピューターで実行している場合は、Azure Functions Core Tools により `AZURE_FUNCTIONS_ENVIRONMENT` が `Development` に設定されます。local.settings.json ファイルでこれをオーバーライドすることはできません。 詳細については、「[環境別の起動のクラスとメソッド](/aspnet/core/fundamentals/environments#environment-based-startup-class-and-methods)」を参照してください。
 
 ## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
 
@@ -109,7 +109,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 
 ![関数アプリのランディング ページ](media/functions-app-settings/function-app-landing-page.png)
 
-## <a name="azurewebjobsdotnetreleasecompilation"></a>AzureWebJobsDotNetReleaseCompilation
+## <a name="azurewebjobsdotnetreleasecompilation&quot;></a>AzureWebJobsDotNetReleaseCompilation
 
 `true` は、.NET コードのコンパイルにリリース モードを使用することを意味し、`false` は、デバッグ モードを使用することを意味します。 既定値は `true` です。
 
@@ -117,7 +117,7 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 |---|------------|
 |AzureWebJobsDotNetReleaseCompilation|true|
 
-## <a name="azurewebjobsfeatureflags"></a>AzureWebJobsFeatureFlags
+## <a name=&quot;azurewebjobsfeatureflags&quot;></a>AzureWebJobsFeatureFlags
 
 有効にするベータ機能のコンマ区切りの一覧です。 これらのフラグで有効となるベータ機能は本番には適しませんが、公開前の実験的な使用には有効にすることができます。
 
@@ -125,9 +125,9 @@ Functions ランタイムのバージョン 2.x 以降では、現在の環境�
 |---|------------|
 |AzureWebJobsFeatureFlags|feature1,feature2|
 
-## <a name="azurewebjobssecretstoragetype"></a>AzureWebJobsSecretStorageType
+## <a name=&quot;azurewebjobssecretstoragetype&quot;></a>AzureWebJobsSecretStorageType
 
-キーの保存に使用するリポジトリまたはプロバイダーを指定します。 現時点でサポートされているリポジトリは、BLOB ストレージ ("Blob") およびローカル ファイル システム ("Files") です。 既定では、バージョン 2 では BLOB、バージョン 1 ではファイル システムが使用されます。
+キーの保存に使用するリポジトリまたはプロバイダーを指定します。 現時点でサポートされているリポジトリは、BLOB ストレージ (&quot;Blob") およびローカル ファイル システム ("Files") です。 既定では、バージョン 2 では BLOB、バージョン 1 ではファイル システムが使用されます。
 
 |Key|値の例|
 |---|------------|
@@ -159,11 +159,11 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 ## <a name="functions_extension_version"></a>FUNCTIONS\_EXTENSION\_VERSION
 
-この関数アプリで使用する Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (例: "~2") は、そのメジャー バージョンの最新バージョンを使用することを意味します。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "2.0.12345") を使用します。 既定値は "~2" です。 `~1` の値は、アプリをバージョン 1.x のランタイムに固定します。
+関数アプリをホストする Functions ランタイムのバージョンです。 メジャー バージョンのチルダ (`~`) は、そのメジャー バージョンの最新バージョンを使用することを意味します (例: "~3")。 同じメジャー バージョンの新しいバージョンが使用できる場合、それらは関数アプリに自動的にインストールされています。 特定のバージョンにアプリを固定するには、完全なバージョン番号 (例: "3.0.12345") を使用します。 既定値は "~3" です。 `~1` の値は、アプリをバージョン 1.x のランタイムに固定します。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](functions-versions.md)」をご覧ください。
 
 |Key|値の例|
 |---|------------|
-|FUNCTIONS\_EXTENSION\_VERSION|~2|
+|FUNCTIONS\_EXTENSION\_VERSION|~3|
 
 ## <a name="functions_v2_compatibility_mode"></a>FUNCTIONS\_V2\_COMPATIBILITY\_MODE
 
@@ -186,22 +186,24 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |---|------------|
 |FUNCTIONS\_WORKER\_PROCESS\_COUNT|2|
 
-## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
-
-関数呼び出しを実行するために Python 言語ワーカーによって使用されるスレッドの最大数を指定します。Python バージョン `3.8` 以前では、既定値 `1` を使用します。 Python バージョン `3.9` 以降では、値は `None` に設定されます。 この設定は、実行中に設定されるスレッドの数を保証するものではないことに注意してください。 この設定により、Python では、スレッドの数を指定された値に増やすことができます。 この設定は、Python 関数アプリにのみ適用されます。 また、この設定は、コルーチンではなく、同期関数の呼び出しに適用されます。
-
-|Key|値の例|最大値|
-|---|------------|---------|
-|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
-
-
 ## <a name="functions_worker_runtime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、"dotnet")。 関数の言語が混在する場合、関数ごとに対応するワーカー ランタイム値を設定して、関数を複数のアプリに公開する必要があります。  有効な値は、`dotnet` (C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java)、`powershell` (PowerShell)、`python` (Python) です。
+ワーカー ランタイムが関数アプリに読み込む言語。  これは、アプリケーションで使用されている言語に対応します (たとえば、`dotnet`)。 Azure Functions Runtime のバージョン 2.x 以降では、特定の関数アプリでサポートできる言語は 1 つだけです。   
 
 |Key|値の例|
 |---|------------|
-|FUNCTIONS\_WORKER\_RUNTIME|dotnet|
+|FUNCTIONS\_WORKER\_RUNTIME|node|
+
+有効な値:
+
+| 値 | 言語 |
+|---|---|
+| `dotnet` | [C# (クラス ライブラリ)](functions-dotnet-class-library.md)<br/>[C# (スクリプト)](functions-reference-csharp.md) |
+| `dotnet-isolated` | [C# (分離プロセス)](dotnet-isolated-process-guide.md) |
+| `java` | [Java](functions-reference-java.md) |
+| `node` | [JavaScript](functions-reference-node.md)<br/>[TypeScript](functions-reference-node.md#typescript) |
+| `powershell` | [PowerShell](functions-reference-powershell.md) |
+| `python` | [Python](functions-reference-python.md) |
 
 ## <a name="pip_extra_index_url"></a>PIP\_EXTRA\_INDEX\_URL
 
@@ -212,6 +214,14 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 |PIP\_EXTRA\_INDEX\_URL|http://my.custom.package.repo/simple |
 
 詳細については、Python 開発者リファレンスの「[カスタムの依存関係](functions-reference-python.md#remote-build-with-extra-index-url)」を参照してください。
+
+## <a name="python_threadpool_thread_count"></a>PYTHON\_THREADPOOL\_THREAD\_COUNT
+
+関数呼び出しを実行するために Python 言語ワーカーによって使用されるスレッドの最大数を指定します。Python バージョン `3.8` 以前では、既定値 `1` を使用します。 Python バージョン `3.9` 以降では、値は `None` に設定されます。 この設定は、実行中に設定されるスレッドの数を保証するものではないことに注意してください。 この設定により、Python では、スレッドの数を指定された値に増やすことができます。 この設定は、Python 関数アプリにのみ適用されます。 また、この設定は、コルーチンではなく、同期関数の呼び出しに適用されます。
+
+|Key|値の例|最大値|
+|---|------------|---------|
+|PYTHON\_THREADPOOL\_THREAD\_COUNT|2|32|
 
 ## <a name="scale_controller_logging_enabled"></a>SCALE\_CONTROLLER\_LOGGING\_ENABLED
 
@@ -257,9 +267,17 @@ Windows 上で実行されている Premium プランまたは従量課金プラ
 
 デプロイ中、Azure Resource Manager を使用して関数アプリを作成するとき、テンプレートに WEBSITE_CONTENTSHARE を含めないでください。 このアプリケーション設定はデプロイ中に生成されます。 詳細については、[関数アプリのリソース デプロイを自動化する](functions-infrastructure-as-code.md#windows)方法に関するページを参照してください。   
 
+## <a name="website_dns_server"></a>WEBSITE\_DNS\_SERVER
+
+IP アドレスの解決時にアプリによって使用される DNS サーバーを設定します。 この設定は、[Azure DNS Private Zones](functions-networking-options.md#azure-dns-private-zones) や[プライベート エンドポイント](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network)など、特定のネットワーク機能を使用する場合に必要になることがよくあります。   
+
+|Key|値の例|
+|---|------------|
+|WEBSITE\_DNS\_SERVER|168.63.129.16|
+
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 
-関数アプリがスケールアウトできる最大のインスタンス数です。 既定は無制限です。
+アプリがスケールアウトできる最大のインスタンス数です。 既定は無制限です。
 
 > [!IMPORTANT]
 > この設定は、プレビューの段階です。  スケールアウトの制限に推奨される、[関数で最大にスケールアウトするためのアプリ プロパティ](./event-driven-scaling.md#limit-scale-out)が追加されています。
@@ -297,6 +315,14 @@ Windows で関数アプリを実行するときに使用する Node.js のバー
 |WEBSITE\_TIME\_ZONE|Linux|America/New_York|
 
 [!INCLUDE [functions-timezone](../../includes/functions-timezone.md)]
+
+## <a name="website_vnet_route_all"></a>WEBSITE\_VNET\_ROUTE\_ALL
+
+アプリからのすべての送信トラフィックが仮想ネットワーク経由でルーティングされるかどうかを示します。 設定値が `1` の場合は、すべてのトラフィックが仮想ネットワーク経由でルーティングされることを示します。 [リージョンでの仮想ネットワーク統合](functions-networking-options.md#regional-virtual-network-integration)の機能を使用する場合は、この設定を使用する必要があります。 また、[仮想ネットワーク NAT ゲートウェイを使用して静的な送信 IP アドレスを定義する](functions-how-to-use-nat-gateway.md)場合にも使用されます。 
+
+|Key|値の例|
+|---|------------|
+|WEBSITE\_VNET\_ROUTE\_ALL|1|
 
 ## <a name="next-steps"></a>次のステップ
 

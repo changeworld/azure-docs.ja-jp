@@ -4,15 +4,15 @@ description: Visual Studio の CodeLens を使用して Application Insights の
 ms.topic: conceptual
 ms.date: 03/17/2017
 ms.custom: vs-azure
-ms.openlocfilehash: 2cfc4e06dcb5671f34ff98794c9569b6ed5ddae7
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d412441a7a80a14a0bc7a70de8020692f8f573d6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538497"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642721"
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio の CodeLens における Application Insights テレメトリ
-Web アプリのコード内のメソッドには、実行時の例外と要求の応答時間に関するテレメトリを注釈として付けることができます。 [ Application Insights](./app-insights-overview.md) をアプリケーションにインストールすると、Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens?view=vs-2015) にテレメトリが表示されます。CodeLens は、各関数の上部に表示される注記で、その関数を参照している場所の数や関数を最後に変更したユーザーなどの有用な情報が表示されます。
+Web アプリのコード内のメソッドには、実行時の例外と要求の応答時間に関するテレメトリを注釈として付けることができます。 [ Application Insights](./app-insights-overview.md) をアプリケーションにインストールすると、Visual Studio [CodeLens](/visualstudio/ide/find-code-changes-and-other-history-with-codelens) にテレメトリが表示されます。CodeLens は、各関数の上部に表示される注記で、その関数を参照している場所の数や関数を最後に変更したユーザーなどの有用な情報が表示されます。
 
 ![CodeLens](./media/visual-studio-codelens/codelens-overview.png)
 

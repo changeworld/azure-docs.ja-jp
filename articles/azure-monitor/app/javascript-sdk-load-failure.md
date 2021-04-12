@@ -6,12 +6,12 @@ author: MSNev
 ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6295a56abbf3466c68b968c935936dbc10e22fb5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91333258"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101711418"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>JavaScript Web アプリの SDK 読み込みエラーのトラブルシューティング
 
@@ -60,15 +60,15 @@ SDK 読み込みエラーの例外は、SDK スクリプトがダウンロード
 
 この状況では、SDK を独自の CDN でホストしても、その CDN も同じ問題の影響を受けるため、この例外の発生は増えも減りもしません。
 
-NPM パッケージ ソリューション経由で SDK を使用する場合にも同じことが言えます。 ただし、エンド ユーザーの観点から見ると、この問題が発生したときには、アプリケーション全体が読み込みまたは初期化に失敗している (エンド ユーザーには見えていないテレメトリ SDK " _のみ_ " ではなく) ため、サイトが完全に読み込まれるまでそれを最新の情報に更新する可能性が非常に高くなります。
+NPM パッケージ ソリューション経由で SDK を使用する場合にも同じことが言えます。 ただし、エンド ユーザーの観点から見ると、この問題が発生したときには、アプリケーション全体が読み込みまたは初期化に失敗している (エンド ユーザーには見えていないテレメトリ SDK "_のみ_" ではなく) ため、サイトが完全に読み込まれるまでそれを最新の情報に更新する可能性が非常に高くなります。
 
 [NPM パッケージ](#use-npm-packages-to-embed-the-application-insight-sdk)を使用して、Application Insights SDK を埋め込むことも試すことができます。
 
-間欠的なネットワーク接続エラーを最小限に抑えるため、すべての CDN ファイルに Cache-Control ヘッダーが実装されています。この結果、エンド ユーザーのブラウザーで SDK の現在のバージョンがダウンロードされると、再びダウンロードする必要はなくなり、ブラウザーは以前に取得したコピーを再利用します (「[キャッシュのしくみ](../../cdn/cdn-how-caching-works.md)」を参照)。 キャッシュ チェックが失敗するか新しいリリースが存在する場合は、エンド ユーザーのブラウザーは更新されたバージョンをダウンロードする必要があります。 このため、新しいリリースが作成されて一般提供 (CDN にデプロイ) されると、チェック エラー シナリオでのバックグラウンド レベルの " _ノイズ_ " や、一時的なスパイクが確認される場合があります。
+間欠的なネットワーク接続エラーを最小限に抑えるため、すべての CDN ファイルに Cache-Control ヘッダーが実装されています。この結果、エンド ユーザーのブラウザーで SDK の現在のバージョンがダウンロードされると、再びダウンロードする必要はなくなり、ブラウザーは以前に取得したコピーを再利用します (「[キャッシュのしくみ](../../cdn/cdn-how-caching-works.md)」を参照)。 キャッシュ チェックが失敗するか新しいリリースが存在する場合は、エンド ユーザーのブラウザーは更新されたバージョンをダウンロードする必要があります。 このため、新しいリリースが作成されて一般提供 (CDN にデプロイ) されると、チェック エラー シナリオでのバックグラウンド レベルの "_ノイズ_" や、一時的なスパイクが確認される場合があります。
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN の停止
 
-Application Insights CDN が停止しているかどうかの確認は、エンド ユーザーの場所とは異なる場所、たとえば開発用マシンなどから (組織でこのドメインがブロックされていない場合)、ブラウザーで直接 CDN エンドポイントにアクセスしてみる (たとえば、 https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js) ことで行えます。
+Application Insights CDN が停止しているかどうかの確認は、エンド ユーザーの場所とは異なる場所、たとえば開発用マシンなどから (組織でこのドメインがブロックされていない場合)、ブラウザー (たとえば、 https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js や https://js.monitor.azure.com/scripts/b/ai.2.min.js) ) で直接 CDN エンドポイントにアクセスしてみることで行えます。
 
 停止が確認できたなら、[新しいサポート チケットを作成する](https://azure.microsoft.com/support/create-ticket/)か、SDK をダウンロードするために使用される URL を変更することができます。
 
@@ -87,7 +87,7 @@ Application Insights CDN が停止しているかどうかの確認は、エン�
 
 SDK が初期化に失敗する場合、&lt;script /&gt; は CDN から正常にダウンロードされていますが、初期化中にエラーが発生しています。 これは、存在しない依存関係や無効な依存関係、何らかの形の JavaScript 例外が原因である可能性があります。
 
-最初に、SDK が正常にダウンロードされたかどうかを確認します。スクリプトがダウンロードされていない場合、このシナリオは SDK 読み込みエラーの例外の原因では __ありません__ 。
+最初に、SDK が正常にダウンロードされたかどうかを確認します。スクリプトがダウンロードされていない場合、このシナリオは SDK 読み込みエラーの例外の原因では __ありません__。
 
 クイック チェック:開発者ツール (F12) をサポートするブラウザーを使用して、```src``` スニペット構成で定義されているスクリプトがダウンロードされており、応答コードが 200 (成功) または 304 (変更なし) になっていることを [ネットワーク] タブで検証します。 fiddler などのツールを使用して、ネットワーク トラフィックを確認することもできます。
 
@@ -106,7 +106,7 @@ SDK スクリプト (ai.2.min.js など) で例外が報告されている場合
 
 構成が間違っていないかどうかを確認するには、スニペットに渡される構成を変更し (まだ行っていない場合)、その構成に文字列値としてインストルメンテーション キーのみが含まれるようにします。
 
-> src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",<br />
+> src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",<br />
 > cfg:{<br />
 > instrumentationKey:"INSTRUMENTATION_KEY"<br />
 > }});<br />
@@ -134,7 +134,7 @@ SDK スクリプト (ai.2.min.js など) で例外が報告されている場合
 > [!WARNING]
 > これは開発者専用の設定であり、テレメトリが失われるため、完全な運用環境では絶対に有効にしないでください。
 
-> src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.js",<br />
+> src: "https://js.monitor.azure.com/scripts/b/ai.2.min.js",<br />
 > cfg:{<br />
 > instrumentationKey:"INSTRUMENTATION_KEY",<br />
 > enableDebug: true<br />

@@ -7,14 +7,14 @@ manager: femila
 ms.service: media-services
 ms.topic: conceptual
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 5ca01bcea348b866c0f40f82ebe90dc31d032739
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 00e1fa623fc625a568f6580998443758c3916be8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927069"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105563074"
 ---
 # <a name="media-reserved-units-mrus-scenario-based-migration-guidance"></a>メディア占有ユニット (MRU) シナリオベースの移行ガイダンス
 
@@ -48,7 +48,3 @@ MRU の詳細については、「[メディア占有ユニット](concept-media
 ## <a name="samples"></a>サンプル
 
 [V2 と V3 のコードをコード サンプルで比較する](migrate-v-2-v-3-migration-samples.md)こともできます。
-
-## <a name="next-steps"></a>次のステップ
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

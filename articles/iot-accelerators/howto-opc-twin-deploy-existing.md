@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 0a4866db463dcf4ff17b2f7b25806806a700e8fa
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 4535818898459f1eb183026629bc338524c1efd9
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071644"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645810"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>既存のプロジェクトに OPC Twin をデプロイする
 
@@ -71,8 +71,8 @@ Web サイトの名前が既に使用されている可能性があります。 
 
 デプロイ スクリプトは、Azure Active Directory に 2 つの AAD アプリケーションを登録しようとします。  選択した AAD テナントに対する権限によっては、デプロイが失敗する可能性があります。 2 つのオプションがあります。
 
-1. テナントの一覧から AAD テナントを選択した場合は、スクリプトを再起動して別のものを一覧から選択します。
-2. または、プライベート AAD テナントを別のサブスクリプションにデプロイし、スクリプトを再起動して、それを使用することを選択します。
+* テナントの一覧から AAD テナントを選択した場合は、スクリプトを再起動して別のものを一覧から選択します。
+* または、プライベート AAD テナントを別のサブスクリプションにデプロイし、スクリプトを再起動して、それを使用することを選択します。
 
 > [!WARNING]
 > 認証なしで続行しないでください。  そのように選択した場合、誰もがインターネットから認証なしで OPC Twin エンドポイントにアクセスできる状態になってしまいます。   いつでも、["local" デプロイ オプション](howto-opc-twin-deploy-dependencies.md)を選択することで簡単なチェックができます。

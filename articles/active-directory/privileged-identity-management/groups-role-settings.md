@@ -15,12 +15,12 @@ ms.date: 07/27/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb7f93437cd45914d3824e9f557241ba0d71162
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 2cfb09f383d8425a644d3e2e87d190b350f5f41a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94835392"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564638"
 ---
 # <a name="configure-privileged-access-group-settings-preview-in-privileged-identity-management"></a>Privileged Identity Management で特権アクセス グループの設定 (プレビュー) を構成する
 
@@ -75,14 +75,14 @@ Azure 特権アクセス グループ ロールの設定を開くには、次の
 
 このような **資格のある** 割り当て期間のオプションからいずれかを選択することができます。
 
-| | |
+| | 説明 |
 | --- | --- |
 | **永続的に資格のある割り当てを許可する** | リソース管理者は、永続的に資格のある割り当てを行うことができます。 |
 | **次の後に、資格のある割り当ての有効期限が切れる** | リソース管理者は、すべての資格のある割り当てに、開始日と終了日の指定を必須にすることができます。 |
 
 また、このような **アクティブな** 割り当て期間のオプションからいずれかを選択することができます。
 
-| | |
+| | 説明 |
 | --- | --- |
 | **永続するアクティブな割り当てを許可する** | リソース管理者は、永続的にアクティブな割り当てを行うことができます。 |
 | **アクティブ割り当ては次の期間後に期限切れになる** | リソース管理者は、すべてのアクティブな割り当てに、開始日と終了日の指定を必須にすることができます。 |
@@ -92,13 +92,13 @@ Azure 特権アクセス グループ ロールの設定を開くには、次の
 
 ## <a name="require-multi-factor-authentication"></a>多要素認証が必要です
 
-Privileged Identity Management では、2 つの異なるシナリオで、必要に応じて Azure AD Multi-factor Authentication を強制できます。
+Privileged Identity Management では、2 つの異なるシナリオで、Azure AD Multi-factor Authentication の強制を選択できます。
 
 ### <a name="require-multi-factor-authentication-on-active-assignment"></a>アクティブな割り当てに多要素認証が必要
 
 場合によっては、ユーザーまたはグループをロールに短期間 (たとえば 1 日) 割り当てる必要があります。 この場合、割り当てられたユーザーがアクティブ化を要求する必要はありません。 このシナリオでは、ユーザーは割り当てられた時点からそのロールでアクティブになるため、各自がそのロールの割り当てを使用するときに、Privileged Identity Management で Multi-Factor Authentication を強制することができません。
 
-割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、**[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制することができます。
+割り当てを実行するリソース管理者が、確かに本人が言うような人物であることを保証するために、 **[アクティブな割り当てに多要素認証が必要]** チェックボックスをオンにして、アクティブな割り当てに Multi-Factor Authentication を強制することができます。
 
 ### <a name="require-multi-factor-authentication-on-activation"></a>アクティブ化に Multi-Factor Authentication を要求する
 

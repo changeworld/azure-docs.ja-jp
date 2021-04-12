@@ -4,10 +4,10 @@ description: このチュートリアルでは、Azure portal で Resource Graph
 ms.date: 01/27/2021
 ms.topic: tutorial
 ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98916681"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>チュートリアル:Azure portal で Azure Resource Graph クエリを作成して共有する

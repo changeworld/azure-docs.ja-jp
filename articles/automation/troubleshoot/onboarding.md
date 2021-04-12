@@ -5,10 +5,10 @@ services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
 ms.openlocfilehash: 43bc367be9ad9bb32f33f94df774acb3e808182a
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100651121"
 ---
 # <a name="troubleshoot-feature-deployment-issues"></a>機能のデプロイに関する問題のトラブルシューティング

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2020
 ms.author: inhenkel
-ms.openlocfilehash: 80edac3106a79a706ee1ef18c48d41d1ad6c3eaf
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: ce0ed303790ad27c99864cc44ea85c96ac3ec468
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101724593"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105962239"
 ---
 # <a name="create-a-basic-audio-transform"></a>基本的なオーディオ変換を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "101724593"
 
 ## <a name="prerequisites"></a>前提条件
 
-「[Media Services アカウントを作成する](./create-account-howto.md)」の手順に従って、資産を作成するために必要な Media Services アカウントとリソース グループを作成します。
+「[Media Services アカウントを作成する](./account-create-how-to.md)」の手順に従って、資産を作成するために必要な Media Services アカウントとリソース グループを作成します。
 
 ## <a name="methods"></a>メソッド
 

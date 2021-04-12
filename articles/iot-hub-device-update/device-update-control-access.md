@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 07310a5b6f275d4a35a3649c22aeea68045dde8b
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: ca55b1df347b47a6eb82557658d59a3de666b703
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660506"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558399"
 ---
 # <a name="azure-role-based-access-control-rbac-and-device-update"></a>Azure ロールベースのアクセス制御 (RBAC) とデバイス更新
 
@@ -39,7 +39,7 @@ ms.locfileid: "101660506"
 
 ### <a name="create-client-azure-ad-app"></a>クライアント Azure AD アプリの作成
 
-アプリケーションまたはサービスと Azure AD を統合するには、アプリケーションを Azure AD に[最初に登録します](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)。 クライアント アプリケーションのセットアップは、使用される認可フローによって異なります。  下の構成は、デバイス更新 REST API を使用する場合のガイダンスです。
+アプリケーションまたはサービスと Azure AD を統合するには、アプリケーションを Azure AD に[最初に登録します](../active-directory/develop/quickstart-register-app.md)。 クライアント アプリケーションのセットアップは、使用される認可フローによって異なります。  下の構成は、デバイス更新 REST API を使用する場合のガイダンスです。
 
 * クライアントの認可を 'redirect URIs for native or web client' に設定します。
 * API アクセス許可の設定 - IoT Hub 用のデバイス更新では次が公開されます。

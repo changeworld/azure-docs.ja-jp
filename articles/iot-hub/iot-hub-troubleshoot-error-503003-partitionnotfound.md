@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 438476171597c44dcc54d85bf1140f0a52bb2e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e52ac6068951c76a214c9cf5514d95109188cc20
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76960252"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106060960"
 ---
 # <a name="503003-partitionnotfound"></a>503003 PartitionNotFound
 

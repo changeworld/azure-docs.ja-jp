@@ -6,10 +6,10 @@ ms.topic: include
 ms.date: 01/18/2021
 ms.author: mimart
 ms.openlocfilehash: 4f6ba0892438d49dcc982a01a6b30dfa36ed43b5
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "98674238"
 ---
 ## <a name="add-a-user-journey"></a>ユーザー体験を追加する 

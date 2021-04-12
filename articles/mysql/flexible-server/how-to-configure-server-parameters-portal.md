@@ -1,22 +1,22 @@
 ---
 title: サーバー パラメーターを構成する - Azure portal - Azure Database for MySQL フレキシブル サーバー
 description: この記事では、Azure portal を使用して Azure Database for MySQL フレキシブル サーバーで使用できる MySQL サーバー パラメータを構成する方法について説明します。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 7733a6211363b4f1c9e9006f757b4d152c7af7f5
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 618862e12bd62fbe37ef5e621c89babd7942c04b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489558"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106957"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL - フレキシブル サーバーのサーバー パラメータを構成する
 
 > [!IMPORTANT] 
-> Azure Database for MySQL フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
+> Azure Database for MySQL - フレキシブル サーバーは、現在パブリック プレビュー段階にあります。
 
 サーバー パラメーターを使用して Azure Database for MySQL フレキシブル サーバー構成を管理できます。 このサーバー パラメーターは、サーバーの作成時に既定値と推奨値を使用して構成されます。  
 
@@ -51,7 +51,7 @@ ms.locfileid: "94489558"
 4. **[保存]** をクリックして変更を保存します。
 
 >[!Note]
-> `init_connect` を使用すると、セッション レベルで SUPER 特権を必要としないパラメーターを変更することができます。 `init_connect` を使用してパラメーターを設定できるかどうかを確認するには、`set session parameter_name=YOUR_DESIRED_VALUE;` コマンドを実行し、" **Access denied; you need SUPER privilege(s)** "(アクセスが拒否されました。SUPER 特権が必要です) エラーが発生する場合は、'init_connect' を使用してパラメーターを設定することはできません。
+> `init_connect` を使用すると、セッション レベルで SUPER 特権を必要としないパラメーターを変更することができます。 `init_connect` を使用してパラメーターを設定できるかどうかを確認するには、`set session parameter_name=YOUR_DESIRED_VALUE;` コマンドを実行し、"**Access denied; you need SUPER privilege(s)** "(アクセスが拒否されました。SUPER 特権が必要です) エラーが発生する場合は、'init_connect' を使用してパラメーターを設定することはできません。
 
 ## <a name="working-with-the-time-zone-parameter"></a>タイム ゾーン パラメーターを使用する
 

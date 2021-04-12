@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 45c52e141ed2d93f89c9d7c1426a9d7cbbbd47f5
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684595"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105023930"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 
@@ -350,7 +350,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 
 - **singlePlacementGroup** - singlePlacementGroup が true の場合は、false に変更できます。 ただし、singlePlacementGroup が false の場合は、true に変更 **できません**。
 - **サブネット** - 元のサブネットと新しいサブネットが同じ仮想ネットワークにある限り、スケール セットのサブネットは変更できます。
-- **imageReferenceSku** - イメージ参照 SKU は、動作保証済み [Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)、Windows サーバー/クライアント イメージ、[プラン情報](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties)のないイメージ向けに更新できます。 
+- **imageReferenceSku** - イメージ参照 SKU は、動作保証済み [Linux ディストリビューション](../virtual-machines/linux/endorsed-distros.md)、Windows サーバー/クライアント イメージ、[プラン情報](../virtual-machines/linux/cli-ps-findimage.md#check-the-purchase-plan-information)のないイメージ向けに更新できます。 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>変更するために割り当て解除が必要なプロパティ
 一部のプロパティは、スケール セット内の VM の割り当てが解除されている場合に、特定の値にのみ変更できます。 これには次のようなプロパティがあります。
@@ -417,7 +417,7 @@ Azure プラットフォーム イメージを使用している場合は、*ima
 ### <a name="update-the-load-balancer-for-your-scale-set"></a>スケール セットのロード バランサーの更新
 Azure Load Balancer を使用するスケール セットがあり、Azure Load Balancer を Azure Application Gateway で置換するとします。 スケール セットのロード バランサーと Application Gateway のプロパティは一覧に含まれるため、プロパティを直接変更する代わりに一覧の要素を削除または追加するコマンドを使用できます。
 
-- Azure Powershell:
+- Azure PowerShell:
 
     ```powershell
     # Get the current model of the scale set and store it in a local PowerShell object named $vmss

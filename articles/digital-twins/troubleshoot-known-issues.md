@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 49c790ae92537ab72fb9848ed4e57e222ef11d79
-ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
+ms.openlocfilehash: 641b44a5e21e6646c07e6e1511e1c4ff01707f79
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
-ms.locfileid: "100545685"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102434102"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -24,7 +24,7 @@ ms.locfileid: "100545685"
 
 | 影響 | 原因 | 解決方法 |
 | --- | --- | --- |
-| これは&nbsp;Azure&nbsp;Digital&nbsp;Twins では次のコマンド グループに影響します。<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | これは Cloud Shell の既知の問題の結果です。"[*Cloud Shell からのトークンの取得が断続的に失敗し、400 Client Error:Bad Request を受け取る*](https://github.com/Azure/azure-cli/issues/11749)"<br><br>これは、Azure Digital Twins インスタンスの認証トークンと、Cloud Shell の既定方式である[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) ベースの認証に問題があることを示しています。 <br><br>これは、`az dt` または `az dt endpoint` コマンド グループからの Azure Digital Twins コマンドには影響しません。なぜなら、これらのコマンドでは別のタイプの認証トークン (Azure Resource Manager ベース) を使用し、Cloud Shell のマネージド ID 認証でも問題が発生しないからです。 | 1 つの解決方法は、Cloud Shell で `az login` コマンドを再実行し、その後のログイン手順を完了することです。 これにより、マネージド ID 認証からセッションが切り替わり、根本的な問題が回避されます。 この後、コマンドを再実行できるようになります。<br><br>または、Azure portal の [Cloud Shell] ペインを開き、そこから Cloud Shell 作業を完了することができます。<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure portal のアイコン バーにある Cloud Shell アイコンの画像" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>最終的には、別の解決策として、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。 |
+| これは&nbsp;Azure&nbsp;Digital&nbsp;Twins では次のコマンド グループに影響します。<br><br>`az dt route`<br><br>`az dt model`<br><br>`az dt twin` | これは Cloud Shell の既知の問題の結果です。"[*Cloud Shell からのトークンの取得が断続的に失敗し、400 Client Error:Bad Request を受け取る*](https://github.com/Azure/azure-cli/issues/11749)"<br><br>これは、Azure Digital Twins インスタンスの認証トークンと、Cloud Shell の既定方式である[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) ベースの認証に問題があることを示しています。 <br><br>これは、`az dt` または `az dt endpoint` コマンド グループからの Azure Digital Twins コマンドには影響しません。なぜなら、これらのコマンドでは別のタイプの認証トークン (Azure Resource Manager ベース) を使用し、Cloud Shell のマネージド ID 認証でも問題が発生しないからです。 | 1 つの解決方法は、Cloud Shell で `az login` コマンドを再実行し、その後のログイン手順を完了することです。 これにより、マネージド ID 認証からセッションが切り替わり、根本的な問題が回避されます。 この後、コマンドを再実行できるようになります。<br><br>または、Azure portal の [Cloud Shell] ペインを開き、そこから Cloud Shell 作業を完了することができます。<br>:::image type="content" source="media/troubleshoot-known-issues/portal-launch-icon.png" alt-text="Azure portal のアイコン バーにある Cloud Shell アイコンの画像" lightbox="media/troubleshoot-known-issues/portal-launch-icon.png":::<br><br>最終的には、別の解決策として、コンピューターに [Azure CLI をインストール](/cli/azure/install-azure-cli)して、Azure CLI コマンドをローカルで実行できるようにします。 ローカル CLI ではこの問題は発生しません。 |
 
 
 ## <a name="missing-role-assignment-after-scripted-setup"></a>スクリプトを使用したセットアップ後にロールの割り当てが存在しない
@@ -37,7 +37,7 @@ ms.locfileid: "100545685"
 
 ## <a name="issue-with-interactive-browser-authentication-on-azureidentity-120"></a>Azure.Identity 1.2.0 での対話型ブラウザーの認証に関する問題
 
-**問題の説明:** **[Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリ** のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet&preserve-view=true) メソッドで問題が発生することがあります。 これにより、ブラウザー ウィンドウで認証を試みるときに "Azure.Identity.AuthenticationFailedException" というエラー応答が表示されます。 ブラウザー ウィンドウが完全に起動できなくなるか、一見ユーザーが正常に認証されたかのように見せてクライアント アプリケーションがエラーで失敗します。
+**問題の説明:** **[Azure.Identity](/dotnet/api/azure.identity) ライブラリ** のバージョン **1.2.0** を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](/dotnet/api/azure.identity.interactivebrowsercredential) メソッドで問題が発生することがあります。 これにより、ブラウザー ウィンドウで認証を試みるときに "Azure.Identity.AuthenticationFailedException" というエラー応答が表示されます。 ブラウザー ウィンドウが完全に起動できなくなるか、一見ユーザーが正常に認証されたかのように見せてクライアント アプリケーションがエラーで失敗します。
 
 | 影響 | 原因 | 解決方法 |
 | --- | --- | --- |
@@ -45,7 +45,7 @@ ms.locfileid: "100545685"
 
 ## <a name="issue-with-default-azure-credential-authentication-on-azureidentity-130"></a>Azure.Identity 1.3.0 での既定の Azure 資格情報認証に関する問題
 
-**問題の説明:** **[Azure.Identity](/dotnet/api/azure.identity?view=azure-dotnet&preserve-view=true) ライブラリ** のバージョン **1.3.0** を使用して認証コードを記述している場合、一部のユーザーに、これらの Azure Digital Twins ドキュメントを通じて多くのサンプルで使用される [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet?view=azure-dotnet&preserve-view=true) メソッドに関する問題が発生しています。これは、コードから認証を試みるときに "Azure.Identity.AuthenticationFailedException: SharedTokenCacheCredential 認証に失敗しました" というエラー応答が表示されます。
+**問題の説明:** **[Azure.Identity](/dotnet/api/azure.identity) ライブラリ** のバージョン **1.3.0** を使用して認証コードを記述している場合、一部のユーザーに、これらの Azure Digital Twins ドキュメントを通じて多くのサンプルで使用される [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) メソッドに関する問題が発生しています。これは、コードから認証を試みるときに "Azure.Identity.AuthenticationFailedException: SharedTokenCacheCredential 認証に失敗しました" というエラー応答が表示されます。
 
 | 影響 | 原因 | 解決方法 |
 | --- | --- | --- |

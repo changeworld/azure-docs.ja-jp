@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: e235bf90568a1382a5ecee3ff4d2283aaa32f10b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 63415037b9f91936e04fa715405bfb86bf022cdd
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083218"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551766"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング
 
@@ -99,7 +99,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="workplacejoined--no"></a>WorkplaceJoined :NO
 
-このフィールドは、デバイスが (" *ワークプレースに参加済み* " としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 この場合、Windows 10 バージョン 1607 以降を使用しているときは、このアカウントは無視されます。
+このフィールドは、デバイスが ("*ワークプレースに参加済み*" としてマークされた) 個人所有のデバイスとして Azure AD に登録されているかどうかを示します。 ドメインに参加していて、なおかつハイブリッド Azure AD 参加済みのコンピューターでは、この値は **NO** になります。 この値が **YES** である場合、ハイブリッド Azure AD 参加が完了する前に、職場または学校アカウントが追加されています。 この場合、Windows 10 バージョン 1607 以降を使用しているときは、このアカウントは無視されます。
 
 #### <a name="azureadjoined--yes"></a>AzureAdJoined :YES
 
@@ -371,6 +371,12 @@ WamDefaultAuthority: organizations
    - 理由:サーバーとの接続が異常終了しました。
    - 解決策:しばらくしてからやり直すか、または別の安定したネットワークの場所から参加を試みます。
 
+##### <a name="other-errors"></a>その他のエラー
+
+- **DSREG_AUTOJOIN_ADCONFIG_READ_FAILED** (0x801c001d/-2145648611)
+   - 理由: [User Device Registration]\(ユーザー デバイス登録\) イベント ログに EventID 220 が存在します。 Windows で、Active Directory 内のコンピューター オブジェクトにアクセスできません。 イベントに Windows エラー コードが含まれている可能性があります。 エラー コード ERROR_NO_SUCH_LOGON_SESSION (1312) および ERROR_NO_SUCH_USER (1317) の場合、これらはオンプレミス AD のレプリケーションの問題に関連しています。
+   - 解決策: AD のレプリケーションの問題をトラブルシューティングします。 レプリケーションの問題は一時的なものの場合があり、一定期間後に解消される可能性があります。
+
 ##### <a name="federated-join-server-errors"></a>サーバーのフェデレーション参加エラー
 
 | サーバー エラー コード | サーバー エラー メッセージ | 考えられる原因 | 解像度 |
@@ -387,14 +393,14 @@ WamDefaultAuthority: organizations
 
 ### <a name="step-5-collect-logs-and-contact-microsoft-support"></a>手順 5:ログを収集して Microsoft サポートに問い合わせる
 
-[https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH](https://github.com/CSS-Windows/WindowsDiag/tree/master/ADS/AUTH) から Auth.zip ファイルをダウンロードします。
+[https://github.com/CSS-Identity/DRS/tree/main/Auth](https://github.com/CSS-Identity/DRS/tree/main/Auth) から Auth.zip ファイルをダウンロードします。
 
 1. ファイルを解凍し、インクルード ファイルの **start-auth.txt** と **stop-auth.txt** という名前を **start-auth.cmd** と **stop-auth.cmd** に変更します。
-1. 管理者特権でのコマンド プロンプトから、 **start-auth.cmd** を実行します。
+1. 管理者特権でのコマンド プロンプトから、**start-auth.cmd** を実行します。
 1. アカウントの切り替えを使用して、問題のあるユーザーとの別のセッションに切り替えます。
 1. 問題を再現します。
 1. アカウントの切り替えを使用して、トレースを実行している管理者セッションに戻ります。
-1. 管理者特権でのコマンド プロンプトから、 **stop-auth.cmd** を実行します。
+1. 管理者特権でのコマンド プロンプトから、**stop-auth.cmd** を実行します。
 1. スクリプトが実行されたフォルダーから **Authlogs** フォルダーを Zip 形式で送信します。
 
 ## <a name="troubleshoot-post-join-issues"></a>参加後の問題のトラブルシューティング
@@ -417,4 +423,4 @@ WamDefaultAuthority: organizations
 
 [dsregcmd コマンドを使用したデバイスのトラブルシューティング](troubleshoot-device-dsregcmd.md)に進みます。
 
-ご不明な点がある場合は、[デバイス管理の FAQ](faq.md) をご覧ください。
+ご不明な点がある場合は、[デバイス管理の FAQ](faq.yml) をご覧ください。

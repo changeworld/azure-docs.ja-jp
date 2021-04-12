@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 7402172473056f191c2c50fa8aa8bd99d4e948eb
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 880185a33ec16ffc30d6412d3f27a69ce81a7880
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101095922"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105642160"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
@@ -265,12 +265,3 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
-
-## <a name="next-steps"></a>次のステップ
-
-* [AES 暗号化で保護する](protect-with-aes128.md)
-* [DRM での保護](protect-with-drm.md)
-* [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)
-* [ストレージ側の暗号化](storage-account-concept.md#storage-side-encryption)
-* [よく寄せられる質問](frequently-asked-questions.md)
-* [JSON Web トークン ハンドラー](/dotnet/framework/security/json-web-token-handler)

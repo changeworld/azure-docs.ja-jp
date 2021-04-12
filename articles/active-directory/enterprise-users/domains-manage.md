@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/20/2020
+ms.date: 03/12/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b8867a137e38e7400da877f4c239e517cbebe05
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: a201452a9c708d898ee1762385955b63684876c7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96859982"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577973"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 
@@ -43,7 +43,7 @@ ms.locfileid: "96859982"
 
 ## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Azure AD 組織にカスタム ドメイン名を追加する
 
-マネージド ドメインの名前は最大 900 件追加できます。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに構成する場合、各組織に最大 450 件のドメイン名を追加できます。
+マネージド ドメインの名前は最大 5,000 件追加できます。 オンプレミス Active Directory とのフェデレーションをすべてのドメインに構成する場合、各組織に最大 2,500 件のドメイン名を追加できます。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>カスタム ドメインのサブドメインの追加
 
@@ -111,7 +111,7 @@ Azure portal で **ForceDelete** を呼び出すには、ドメイン名に対�
 Azure Active Directory のドメイン名に関する管理作業の多くは、Microsoft PowerShell を使用するか、プログラムから Microsoft Graph API を使用して行うこともできます。
 
 * [PowerShell を使用して Azure AD のドメイン名を管理する](/powershell/module/azuread/#domains&preserve-view=true)
-* [ドメインリソースの種類](/graph/api/resources/domain?view=graph-rest-1.0&preserve-view=true)
+* [ドメインリソースの種類](/graph/api/resources/domain)
 
 ## <a name="next-steps"></a>次のステップ
 

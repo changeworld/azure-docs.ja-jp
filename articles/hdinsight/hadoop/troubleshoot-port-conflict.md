@@ -5,10 +5,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: f42e84d5d9c1dd49d9bf5604fe2f967eae0b6276
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98943096"
 ---
 # <a name="scenario-port-conflict-when-starting-services-in-azure-hdinsight"></a>シナリオ:Azure HDInsight のサービス開始時のポートの競合

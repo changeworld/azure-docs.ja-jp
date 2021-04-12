@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 02/03/2021
+ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 0e85019c8f02b8a4a97426d50a30d047b95378a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572288"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104577700"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -47,6 +47,8 @@ SQL Database 監査を使用して、以下を行うことができます。
 - **Premium Storage** は現在 **サポートされていません**。
 - **Azure Data Lake Storage Gen2 ストレージ アカウント** 用の **階層型名前空間** は現在 **サポートされていません**。
 - 一時停止中の **Azure Synapse** で監査を有効にすることはサポートされていません。 監査を有効にするには、Azure Synapse を再開します。
+- **Azure Synapse SQL プール** の監査では、既定の監査アクション グループ **のみ** がサポートされます。
+
 
 #### <a name="define-server-level-vs-database-level-auditing-policy"></a><a id="server-vs-database-level"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
 
@@ -55,6 +57,11 @@ SQL Database 監査を使用して、以下を行うことができます。
 - サーバー ポリシーがサーバー上にある既存と新規作成のすべてのデータベースに適用されます。
 
 - "*サーバー監査が有効*" な場合は、"*常にデータベースに適用*" されます。 データベース監査設定に関係なく、データベースが監査されます。
+
+- Log Analytics ワークスペースまたはイベント ハブの保存先に対し、監査ポリシーがデータベース レベルで定義されている場合、次の操作ではソース データベースレベルの監査ポリシーが維持されません。
+    - [データベース コピー](database-copy.md)
+    - [ポイントインタイム リストア](recovery-using-backups.md)
+    - [Geo レプリケーション](active-geo-replication-overview.md) (セカンダリ データベースにはデータベースレベルの監査はありません)
 
 - サーバー上だけでなく、データベース上でも監査を有効にした場合であっても、サーバーの監査の設定がオーバーライドされたり変更されたりすることは "*ありません*"。 どちらの監査も並行して存在します。 つまり、データベースは並行して 2 回監査されることになります (1 回はサーバー ポリシー、もう 1 回はデータベース ポリシーによって監査されます)。
 
@@ -92,7 +99,8 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 以下のセクションでは、Azure Portal を使用した監査の構成について説明します。
 
   > [!NOTE]
-  > 一時停止している専用 SQL プールで監査を有効にすることはできません。 監査を有効にするには、専用 SQL プールの一時停止を解除します。 専用 SQL プールの詳細については、[こちら](../..//synapse-analytics/sql/best-practices-sql-pool.md)を参照してください。
+  > - 一時停止している専用 SQL プールで監査を有効にすることはできません。 監査を有効にするには、専用 SQL プールの一時停止を解除します。 専用 SQL プールの詳細については、[こちら](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md)を参照してください。
+  > - Azure portal または PowerShell コマンドレットを使用して、監査が Log Analytics ワークスペースまたはハブの送信先に対して構成されている場合、[診断設定](../../azure-monitor/essentials/diagnostic-settings.md)は "SQLSecurityAuditEvents" カテゴリが有効の状態で作成されます。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. **[SQL データベース]** ウィンドウまたは **[SQL サーバー]** ウィンドウの [セキュリティ] 見出しの下にある **[監査]** に移動します。
@@ -102,18 +110,18 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 
 4. データベース レベルで監査を有効にする場合は、 **[監査]** を  **[ON]\(オン\)** に切り替えます。 サーバーの監査が有効になっている場合、データベース構成監査とサーバー監査が並行して存在します。
 
-5. 監査ログを書き込む場所を構成するときに、複数のオプションから選択できます。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (プレビュー) (Azure Monitor ログで使用)、イベント ハブ (プレビュー) (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
+5. 監査ログを書き込む場所を構成するときに、複数のオプションから選択できます。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (Azure Monitor ログで使用)、イベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
   
    ![ストレージ オプション](./media/auditing-overview/auditing-select-destination.png)
 
-### <a name="auditing-of-microsoft-support-operations-preview"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft サポートの操作の監査 (プレビュー)
+### <a name="auditing-of-microsoft-support-operations"></a><a id="auditing-of-microsoft-support-operations"></a>Microsoft サポート操作の監査
 
-Azure SQL Server に対する Microsoft サポートの操作の監査 (プレビュー) を使用すると、サポート リクエスト時に Microsoft サポートのエンジニアがサーバーにアクセスする必要がある場合に、彼らの操作を監査することができます。 監査に伴い、この機能を使用することで、従業員の透明性が増し、異常検出、トレンドの視覚化、データ損失防止が可能になります。
+Azure SQL Server に対する Microsoft サポートの操作の監査では、サポート リクエスト時に Microsoft サポートのエンジニアがサーバーにアクセスする必要がある場合に、彼らの操作を監査することができます。 監査に伴い、この機能を使用することで、従業員の透明性が増し、異常検出、トレンドの視覚化、データ損失防止が可能になります。
 
-Microsoft サポートの操作の監査 (プレビュー) を有効にするには、 **[Azure SQL Server]** ウィンドウの [セキュリティ] 見出しの **[監査]** に移動して、 **[Auditing of Microsoft support operations (Preview)]\(Microsoft サポートの操作の監査 (プレビュー)\)** を **[オン]** に切り替えます。
+Microsoft サポートの操作の監査を有効にするには、 **[Azure SQL Server]** ウィンドウの [セキュリティ] 見出しの **[監査]** に移動して、 **[Microsoft サポート操作の監査]** を **[オン]** に切り替えます。
 
   > [!IMPORTANT]
-  > Microsoft サポートの操作の監査 (プレビュー) は、ストレージ アカウントの保存先をサポートしていません。 この機能を有効にするには、Log Analytics ワークスペースまたは Event Hub の保存先を構成する必要があります。
+  > Microsoft サポートの操作の監査では、ストレージ アカウントの保存先はサポートされていません。 この機能を有効にするには、Log Analytics ワークスペースまたは Event Hub の保存先を構成する必要があります。
 
 ![Microsoft サポートの操作のスクリーンショット](./media/auditing-overview/support-operations.png)
 
@@ -126,16 +134,16 @@ AzureDiagnostics
 
 ### <a name="audit-to-storage-destination"></a><a id="audit-storage-destination"></a>ストレージ保存先への監査
 
-ストレージ アカウントへの監査ログの書き込みを構成するには、 **[ストレージ]** を選択し、 **[容量の詳細]** を開きます。 ログを保存する Azure ストレージ アカウントを選択し、リテンション期間を選択します。 次に、 **[OK]** をクリックします 保持期間よりも古いログは削除されます。
+監査ログをストレージ アカウントに書き込むように構成するには、 **[監査]** セクションが表示されたら、 **[ストレージ]** を選択します。 ログを保存する Azure ストレージ アカウントを選択し、 **[詳細プロパティ]** を開いて保持期間を選択します。 **[保存]** をクリックします。 保持期間よりも古いログは削除されます。
 
-- リテンション期間の既定値は 0 (無制限のリテンション期間) です。 この値は、ストレージ アカウントを監査用に構成するときに **[ストレージ設定]** の **[リテンション期間 (日数)]** スライダーを移動して変更できます。
+- リテンション期間の既定値は 0 (無制限のリテンション期間) です。 この値は、ストレージ アカウントを監査用に構成するときに **[詳細プロパティ]** の **[保有期間 (日)]** スライダーを移動して変更できます。
   - リテンション期間を 0 (無制限のリテンション期間) から他の値に変更した場合、リテンション期間は、リテンション期間の値が変更された後に書き込まれたログにのみ適用されることに注意してください (リテンション期間が無制限に設定されている間に書き込まれたログは、リテンション期間が有効になった後も保持されます)。
 
   ![ストレージ アカウント](./media/auditing-overview/auditing_select_storage.png)
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Log Analytics 保存先への監査
   
-Log Analytics ワークスペースへの監査ログの書き込みを構成するには、 **[Log Analytics (プレビュー)]** を選択して **[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択または作成し、 **[OK]** をクリックします。
+Log Analytics ワークスペースへの監査ログの書き込みを構成するには、 **[Log Analytics]** を選択して **[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択し、 **[OK]** をクリックします。 Log Analytics ワークスペースを作成していない場合は、「[Azure portal で Log Analytics ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)」を参照してください
 
    ![Log Analytics ワークスペース](./media/auditing-overview/auditing_select_oms.png)
 
@@ -143,7 +151,7 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
    
 ### <a name="audit-to-event-hub-destination"></a><a id="audit-event-hub-destination"></a>イベント ハブ保存先への監査
 
-イベント ハブへの監査ログの書き込みを構成するには、 **[イベント ハブ (プレビュー)]** を選択し、 **[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、 **[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
+イベント ハブへの監査ログの書き込みを構成するには、 **[イベント ハブ]** を選択します。 ログが書き込まれるイベント ハブを選択し、 **[保存]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
 
    ![イベント ハブ](./media/auditing-overview/auditing_select_event_hub.png)
 
@@ -183,13 +191,12 @@ Azure Log Analytics ワークスペースの詳細については、「[Azure Mo
 
 - [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
-    ![[データベース監査] ページで強調表示されている [監査ログの表示] ボタンを示すスクリーンショット。](./media/auditing-overview/7_auditing_get_started_blob_view_audit_logs.png)
+    ![監査ログの表示](./media/auditing-overview/auditing-view-audit-logs.png)
 
     **[監査レコード]** が開きます。ここからログを参照できます。
 
   - **[監査レコード]** ページの上部にある **[フィルター]** をクリックすると、特定の日付を表示できます。
   - **[監査対象]** を切り替えると、"*サーバー監視ポリシー*" で作成された監査レコードと "*データベース監査ポリシー*" で作成された監査レコードを切り替えることができます。
-  - **[Show only audit records for SQL injections]\(SQL インジェクションの監査レコードのみを表示する\)** チェックボックスをオンにすると、SQL インジェクション関連の監査レコードのみを表示できます。
 
        ![監査レコードを表示するためのオプションを示すスクリーンショット。]( ./media/auditing-overview/8_auditing_get_started_blob_audit_records.png)
 
@@ -234,7 +241,7 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 運用環境では、ストレージ キーを最新の情報に定期的に更新することが推奨されます。 監査ログを Azure Storage に書き込む場合、ご自身のキーを最新の情報に更新するときに、お使いの監査ポリシーを再度保存する必要があります。 このプロセスは次のとおりです。
 
-1. **[容量の詳細]** を開きます。 **[ストレージ アクセス キー]** ボックスで **[セカンダリ]** をクリックし、 **[OK]** をクリックします。 次に、監査構成ページの上部にある **[保存]** をクリックします。
+1. **[ストレージ]** で **[詳細プロパティ]** を開きます。 **[ストレージ アクセス キー]** ボックスで **[セカンダリ]** を選択します。 次に、監査構成ページの上部にある **[保存]** をクリックします。
 
     ![セカンダリ ストレージのアクセス キーを選択するためのプロセスを示すスクリーンショット。](./media/auditing-overview/5_auditing_get_started_storage_key_regeneration.png)
 2. ストレージ構成ページに移動し、プライマリ アクセス キーを再生成します。
@@ -276,8 +283,8 @@ WHERE 句のサポートによってフィルタリングを強化した拡張�
 
 ### <a name="using-azure-cli"></a>Azure CLI の使用
 
-- [サーバーの監査ポリシーを管理する](/cli/azure/sql/server/audit-policy?view=azure-cli-latest)
-- [データベースの監査ポリシーを管理する](/cli/azure/sql/db/audit-policy?view=azure-cli-latest)
+- [サーバーの監査ポリシーを管理する](/cli/azure/sql/server/audit-policy)
+- [データベースの監査ポリシーを管理する](/cli/azure/sql/db/audit-policy)
 
 ### <a name="using-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートを作成する
 

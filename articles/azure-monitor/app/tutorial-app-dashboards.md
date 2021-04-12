@@ -1,18 +1,17 @@
 ---
 title: Azure Application Insights でカスタム ダッシュボードを作成する | Microsoft Docs
 description: Azure Application Insights を使ってカスタム KPI ダッシュボードを作成するチュートリアルです。
-ms.subservice: application-insights
 ms.topic: tutorial
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperf-fy21q1
-ms.openlocfilehash: 701480300101b019830c57d9aa000534fa63bb6a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ebe34735a84e44526e6b96821a2a1da090884886
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100597666"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383254"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 

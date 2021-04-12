@@ -1,14 +1,14 @@
 ---
 title: SWIFT CSP-CSCF v2020 ブループリント サンプルをデプロイする
 description: ブループリント アーティファクト パラメーターの詳細を含む SWIFT CSP-CSCF v2020 ブループリント サンプルのデプロイ手順です。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: 8f28bae58128306776fa18a6b383e324482bb03f
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 321ed1a50a5066838b83cc850b227725b6222e42
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100582010"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386161"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>SWIFT CSP-CSCF v2020 ブループリント サンプルのデプロイ
 

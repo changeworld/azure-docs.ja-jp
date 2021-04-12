@@ -2,7 +2,7 @@
 title:Media Services アカウントの ARM テンプレートAzure Media Services の説明:この記事では、ARM テンプレートを使用してメディア サービス アカウントを作成する方法について説明します。
 services: media-services documentationcenter: '' author:IngridAtMicrosoft manager: femila editor: ''
 
-ms.service: media-services ms.workload: ms.topic: quickstart ms.date:11/24/2020 ms.author: inhenkel ms.custom: subject-armqs
+ms.service: media-services ms.workload: ms.topic: quickstart ms.date: 03/23/2021 ms.author: inhenkel ms.custom: subject-armqs
 
 ---
 
@@ -18,10 +18,9 @@ ms.service: media-services ms.workload: ms.topic: quickstart ms.date:11/24/2020 
 
 ARM テンプレートの使用経験がある読者は、[デプロイのセクション](#deploy-the-template)に進むことができます。
 
-<!-- this section will be added when the template is merged. If your environment meets the prerequisites and you're familiar with using ARM templates, select the **Deploy to Azure** button. The template will open in the Azure portal.
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Deploy to Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/<template's URI>)
--->
+[![Azure へのデプロイ](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-media-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,81 +30,16 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="review-the-template"></a>テンプレートを確認する
 
-<!-- this will be added when the template is merged. The template used in this quickstart is from [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/101-media-services-account-create/).
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-media-services-create/)からのものです。
 
-The syntax for the JSON code fence is:
+JSON コード フェンスの構文は次のとおりです。
 
-:::code language="json" source="~/quickstart-templates/101-media-services-account-create/azuredeploy.json"::: -->
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "mediaServiceName": {
-      "type": "string",
-      "metadata": {
-        "description": "Name of the Media Services account. A Media Services account name is unique in a given region, all lowercase letters or numbers with no spaces."
-      }
-    }
-  },
-  "variables": {
-    "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "name": "[parameters('mediaServiceName')]",
-      "type": "Microsoft.Media/mediaServices",
-      "apiVersion": "2018-07-01",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageName'))]"
-      ],
-      "properties": {
-        "storageAccounts": [
-          {
-            "id": "[resourceId('microsoft.storage/storageaccounts/', variables('storageName'))]",
-            "type": "Primary"
-          }
-        ]
-      }
-    },
-    {
-      "name": "[variables('storageName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "sku": {
-        "name": "Standard_LRS",
-        "tier": "Standard"
-      },
-      "kind": "StorageV2",
-      "apiVersion": "2017-10-01",
-      "location": "[resourceGroup().location]",
-      "tags": {},
-      "scale": null,
-      "properties": {
-          "encryption": {
-              "services": {
-                  "file": {
-                      "enabled": true
-                  },
-                  "blob": {
-                      "enabled": true
-                  }
-              },
-              "keySource": "Microsoft.Storage"
-          },
-          "accessTier": "Hot"
-      }
-    }
-  ]
-}
-
-```
+:::code language="json" source="~/quickstart-templates/101-media-services-create/azuredeploy.json":::
 
 テンプレートには、次の 3 つの Azure リソースの種類が定義されています。
 
-- [Microsoft.Media/mediaservices](/azure/templates/microsoft.media/mediaservices): Media Services アカウントを作成します
 - [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): ストレージ アカウントを作成します
+- [Microsoft.Media/mediaservices](/azure/templates/microsoft.media/mediaservices): Media Services アカウントを作成します
 
 ## <a name="set-the-account"></a>アカウントを設定する
 

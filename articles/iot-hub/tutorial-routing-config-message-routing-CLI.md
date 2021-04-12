@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 25c3ff7582ed408776c0ae6904e4bacddd89e40b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: a1cce7264e56b16d285685392186a05e2f075439
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624173"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102199766"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>チュートリアル:Azure CLI を使用して IoT Hub のメッセージ ルーティングを構成する
 
@@ -147,7 +147,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 [!INCLUDE [iot-hub-include-create-routing-description](../../includes/iot-hub-include-create-routing-description.md)]
 
-ルーティング エンドポイントを作成するには、[az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#az-iot-hub-routing-endpoint-create&preserve-view=true) を使用します。 そのエンドポイントに対するメッセージ ルートを作成するには、[az iot hub route create](/cli/azure/iot/hub/route?view=azure-cli-latest#az-iot-hub-route-create&preserve-view=true) を使用します。
+ルーティング エンドポイントを作成するには、[az iot hub routing-endpoint create](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) を使用します。 そのエンドポイントに対するメッセージ ルートを作成するには、[az iot hub route create](/cli/azure/iot/hub/route#az-iot-hub-route-create) を使用します。
 
 ### <a name="route-to-a-storage-account"></a>ストレージ アカウントへのルーティング
 

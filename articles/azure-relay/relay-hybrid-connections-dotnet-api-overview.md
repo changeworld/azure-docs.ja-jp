@@ -5,10 +5,10 @@ ms.topic: article
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
 ms.openlocfilehash: 724fb1a62b82036b4a0fa8b9f4f3608293f608a9
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98625133"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay ハイブリッド接続 .NET Standard API の概要
@@ -131,7 +131,7 @@ Azure リレーの詳細については、次のリンク先を参照してく�
 
 * [Microsoft.Azure.Relay リファレンス](/dotnet/api/microsoft.azure.relay)
 * [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)
-* [使用可能な Relay API](relay-api-overview.md)
+* [使用可能なリレー API](relay-api-overview.md)
 
 [RelayConnectionStringBuilder]: /dotnet/api/microsoft.azure.relay.relayconnectionstringbuilder
 [HCStream]: /dotnet/api/microsoft.azure.relay.hybridconnectionstream

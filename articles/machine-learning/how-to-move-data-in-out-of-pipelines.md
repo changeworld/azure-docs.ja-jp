@@ -7,18 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 02/01/2021
+ms.date: 02/26/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 894b0fcddaead6ce60e1becc7221c4f5e608de48
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 3f6071813a8189605d632231a5f9b8942068a48a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492299"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067437"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
-
 
 この記事では、Azure Machine Learning パイプラインのステップ間でデータをインポート、変換、および移動するためのコードを示します。 Azure Machine Learning でデータがどのように動作するかの概要については、[Azure ストレージ サービスのデータへのアクセス](how-to-access-data.md)に関する記事を参照してください。 Azure Machine Learning パイプラインの利点と構造については、「[Azure Machine Learning パイプラインとは](concept-ml-pipelines.md)」を参照してください。
 
@@ -37,7 +36,7 @@ ms.locfileid: "99492299"
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
-- [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
+- [Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/intro)、または [Azure Machine Learning Studio](https://ml.azure.com/) へのアクセス。
 
 - Azure Machine Learning ワークスペース。
   
@@ -56,7 +55,7 @@ ms.locfileid: "99492299"
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>既存のデータに `Dataset` オブジェクトを使用する 
 
-パイプラインにデータを取り込む方法としては、[データセット](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトは、ワークスペース全体で使用できる永続データを表します。
+パイプラインにデータを取り込む方法としては、[データセット](/python/api/azureml-core/azureml.core.dataset%28class%29) オブジェクトを使用することをお勧めします。 `Dataset` オブジェクトは、ワークスペース全体で使用できる永続データを表します。
 
 `Dataset` オブジェクトを作成および登録する方法は多数あります。 表形式データセットは、1つまたは複数のファイルで使用できる区切られたデータ用です。 ファイル データセットは、バイナリ データ (画像など) または解析するデータ用です。 `Dataset` オブジェクトを作成する最も簡単なプログラム的方法は、ワークスペース ストレージまたはパブリック URL で既存の Blob を使用することです。
 
@@ -64,10 +63,12 @@ ms.locfileid: "99492299"
 datastore = Datastore.get(workspace, 'training_data')
 iris_dataset = Dataset.Tabular.from_delimited_files(DataPath(datastore, 'iris.csv'))
 
-cats_dogs_dataset = Dataset.File.from_files(
-    paths='https://download.microsoft.com/download/3/E/1/3E1C3F21-ECDB-4869-8368-6DEBA77B919F/kagglecatsanddogs_3367a.zip',
-    archive_options=ArchiveOptions(archive_type=ArchiveType.ZIP, entry_glob='**/*.jpg')
-)
+datastore_path = [
+    DataPath(datastore, 'animals/dog/1.jpg'),
+    DataPath(datastore, 'animals/dog/2.jpg'),
+    DataPath(datastore, 'animals/cat/*.jpg')
+]
+cats_dogs_dataset = Dataset.File.from_files(path=datastore_path)
 ```
 
 各種のオプションとさまざまなソースからのデータセットの作成、それらの登録と Azure Machine Learning UI での確認、データ サイズがコンピューティング能力とどのように相互作用するかの理解、およびそれらのバージョン管理についての詳細は、「[Azure Machine Learning データセットを作成する](how-to-create-register-datasets.md)」を参照してください。 
@@ -125,7 +126,7 @@ train_step = PythonScriptStep(
     name="train_data",
     script_name="train.py",
     compute_target=cluster,
-    arguments=['--training-folder', train.as_named_input('train').as_download()]
+    arguments=['--training-folder', train.as_named_input('train').as_download()],
     inputs=[test.as_named_input('test').as_download()]
 )
 
@@ -153,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>中間データに `OutputFileDatasetConfig` を使用する
 
-`Dataset` オブジェクトは永続データを表しますが、[`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) オブジェクトはパイプライン ステップから出力される一時的なデータ **および** 永続出力データに使用できます。 `OutputFileDatasetConfig` は、BLOB ストレージ、ファイル共有、adlsgen1、または adlsgen2 へのデータの書き込みをサポートしています。 マウント モードとアップロード モードの両方をサポートしています。 マウント モードでは、マウントされたディレクトリに書き込まれたファイルは、ファイルを閉じたときに永続的に保存されます。 アップロード モードでは、出力ディレクトリに書き込まれたファイルがジョブの最後にアップロードされます。 ジョブが失敗した場合、または取り消された場合、出力ディレクトリはアップロードされません。
+`Dataset` オブジェクトは永続データを表しますが、[`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig) オブジェクトはパイプライン ステップから出力される一時的なデータ **および** 永続出力データに使用できます。 `OutputFileDatasetConfig` は、BLOB ストレージ、ファイル共有、adlsgen1、または adlsgen2 へのデータの書き込みをサポートしています。 マウント モードとアップロード モードの両方をサポートしています。 マウント モードでは、マウントされたディレクトリに書き込まれたファイルは、ファイルを閉じたときに永続的に保存されます。 アップロード モードでは、出力ディレクトリに書き込まれたファイルがジョブの最後にアップロードされます。 ジョブが失敗した場合、または取り消された場合、出力ディレクトリはアップロードされません。
 
  `OutputFileDatasetConfig` オブジェクトの既定の動作では、ワークスペースの既定のデータストアに書き込みます。 `arguments` パラメーターを使用して `OutputFileDatasetConfig` オブジェクトを `PythonScriptStep` に渡します。
 
@@ -200,7 +201,7 @@ with open(args.output_path, 'w') as f:
 
 最初のパイプライン ステップで `OutputFileDatasetConfig` パスにデータが書き込まれ、それがその最初のステップの出力になった場合、それを後のステップへの入力として使用できます。 
 
-次のコードで、 
+次のコードの内容は以下のとおりです。 
 
 * `step1_output_data` は、PythonScriptStep の出力である `step1` が、アップロード アクセス モードで、ADLS Gen 2 データストア `my_adlsgen2` に書き込まれることを示します。 ADLS Gen 2 データストアにデータを書き戻すには、[ロールのアクセス許可を設定する](how-to-access-data.md#azure-data-lake-storage-generation-2)方法を参照してください。 
 
@@ -223,7 +224,7 @@ step2 = PythonScriptStep(
     script_name="step2.py",
     compute_target=compute,
     runconfig = aml_run_config,
-    arguments = ["--pd", step1_output_data.as_input]
+    arguments = ["--pd", step1_output_data.as_input()]
 
 )
 
@@ -239,6 +240,15 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
                                                          description = 'files from step1`)
 ```
 
+## <a name="delete-outputfiledatasetconfig-contents-when-no-longer-needed"></a>不要になったときに `OutputFileDatasetConfig` のコンテンツを削除する
+
+`OutputFileDatasetConfig` で書き込まれた中間データは、Azure によって自動的に削除されません。 大量の不要なデータに対するストレージの課金を回避するには、次のいずれかを行う必要があります。
+
+* パイプライン実行の終了時に中間データをプログラムで削除する (不要になった場合)
+* 中間データの短期的な記憶域ポリシーを設定して BLOB ストレージを使用する (「[Azure Blob Storage アクセス層の自動化によるコストの最適化](../storage/blobs/storage-lifecycle-management-concepts.md?tabs=azure-portal)」を参照してください) 
+* 不要になったデータを定期的に確認して削除する
+
+詳細については、「[Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

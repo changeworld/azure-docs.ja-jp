@@ -2,13 +2,13 @@
 title: リソースが見つからないエラー
 description: リソースが見つからない場合のエラーを解決する方法について説明します。 このエラーは、Azure Resource Manager テンプレートをデプロイするとき、または管理アクションを実行するときに発生する可能性があります。
 ms.topic: troubleshooting
-ms.date: 06/10/2020
-ms.openlocfilehash: 40f3c2ac61b6a6d5fdbcefdf62761668b013b1db
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.date: 03/23/2021
+ms.openlocfilehash: b80c32683190167d5c0d6e0a7f75acce8bbdb833
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526248"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104950877"
 ---
 # <a name="resolve-resource-not-found-errors"></a>リソースが見つからないエラーを解決する
 
@@ -133,3 +133,9 @@ Reference 関数では、`Full` を使用して、マネージド ID を含む�
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
+
+## <a name="solution-6---after-deleting-resource"></a>解決策 6 - リソースを削除した後
+
+リソースを削除すると、短時間ですが、リソースがポータルにまだ表示されるものの、実際には使用できなくなる場合があります。 リソースを選択すると、リソースが見つからないというエラーが表示されます。 ポータルを最新の情報に更新して、最新のビューを取得します。
+
+しばらく待っても問題が解決しない場合は、[サポートにお問い合わせ](https://azure.microsoft.com/support/options/)ください。

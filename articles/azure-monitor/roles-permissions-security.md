@@ -1,17 +1,15 @@
 ---
 title: Azure Monitor でのロール、アクセス許可、セキュリティ
 description: Azure Monitor の組み込みの役割とアクセス許可を使用して、監視リソースへのアクセスを制限する方法について説明します。
-author: johnkemnetz
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.author: johnkem
-ms.openlocfilehash: d0877059dca01bf01df7a4f2aeaa5114278ecc97
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 64e770ea328516bdc9dbe1a2e17070c15a252fe7
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102040279"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490031"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Azure Monitor でのロール、アクセス許可、セキュリティ
 

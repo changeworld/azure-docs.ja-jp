@@ -17,16 +17,16 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
 ms.openlocfilehash: abb9cbb73f8957cec2cb3240bbf186623b9b2ef9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "88205506"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Azure API Management、Event Hubs、Moesif を使用した API の監視
 [API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 しかし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは Azure Portal ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
 
-API Management サービスで log-to-eventhub ポリシーを使用することにより、要求から応答まですべての詳細を [Azure イベント ハブ](../event-hubs/event-hubs-about.md)に送信できます。 API に送信される HTTP メッセージからイベントを生成するのにはさまざまな理由があります。 たとえば、更新プログラム、利用状況分析、例外のアラート、サード パーティの統合の監査証跡が該当します。
+API Management サービスで log-to-eventhub ポリシーを使用することにより、要求から応答まですべての詳細を [Azure Event Hub](../event-hubs/event-hubs-about.md)に送信できます。 API に送信される HTTP メッセージからイベントを生成するのにはさまざまな理由があります。 たとえば、更新プログラム、利用状況分析、例外のアラート、サード パーティの統合の監査証跡が該当します。
 
 この記事では、HTTP 要求と応答メッセージ全体をキャプチャしてイベント ハブに送信した後、HTTP ログと監視サービスを提供するサード パーティのサービスにそのメッセージをリレーする方法を示します。
 
@@ -161,7 +161,7 @@ HTTP ヘッダーは、単純なキーと値のペアの形式のメッセージ
 `set-variable` ポリシーでは、`<inbound>` セクションと `<outbound>` セクション両方の `log-to-eventhub` ポリシーからアクセスできる値を作成します。
 
 ## <a name="receiving-events-from-event-hubs"></a>Event Hubs からのイベントの受信
-Azure Event Hubs からのイベントは、 [AMQP プロトコル](https://www.amqp.org/)を使用して受信します。 Microsoft Service Bus チームは、クライアント ライブラリでコンシューマー側のイベントを簡単に作成できるようにしました。 サポートされている方法は 2 つあり、1 つは*ダイレクト コンシューマー*、もう 1 つは `EventProcessorHost` クラスの使用です。 これらの 2 つの方法の例については、「 [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。 簡単に 2 つの方法の違いを説明すると、`Direct Consumer`を使用すると完全に制御できるのに対して、`EventProcessorHost` を使用した場合は、一部の面倒な作業が自動的に処理されますが、これらのイベントをどのように処理するかについてはある程度憶測が立てられます。
+Azure Event Hubs からのイベントは、 [AMQP プロトコル](https://www.amqp.org/)を使用して受信します。 Microsoft Service Bus チームは、クライアント ライブラリでコンシューマー側のイベントを簡単に作成できるようにしました。 サポートされている方法は 2 つあり、1 つは *ダイレクト コンシューマー*、もう 1 つは `EventProcessorHost` クラスの使用です。 これらの 2 つの方法の例については、「 [Event Hubs のプログラミング ガイド](../event-hubs/event-hubs-programming-guide.md)」を参照してください。 簡単に 2 つの方法の違いを説明すると、`Direct Consumer`を使用すると完全に制御できるのに対して、`EventProcessorHost` を使用した場合は、一部の面倒な作業が自動的に処理されますが、これらのイベントをどのように処理するかについてはある程度憶測が立てられます。
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 このサンプルでは、わかりやすくするために `EventProcessorHost` を使用していますが、これはこの特定のシナリオにとって最適ではない可能性があります。 `EventProcessorHost` では、特定のイベント プロセッサ クラス内でスレッドの問題について心配する必要がないようにする困難な処理が行われます。 ただし、このシナリオでは、メッセージを別の形式に変換し、非同期メソッドを使用してそれを別のサービスに渡しているだけです。 共有した状態を更新する必要はないため、スレッドの問題が発生するリスクはありません。 ほとんどのシナリオでは、 `EventProcessorHost` がおそらく最善の選択肢であり、最も簡単な方法であることは確実です。
@@ -212,7 +212,7 @@ public class HttpMessage
 `HttpMessage` インスタンスには、HTTP 要求を対応する HTTP 応答に関連付けるための `MessageId` GUID と、オブジェクトに HttpRequestMessage と HttpResponseMessage のインスタンスが含まれるかどうかを示すブール値が格納されます。 `System.Net.Http` の組み込みの HTTP クラスを使用することで、`System.Net.Http.Formatting` に含まれている `application/http` 解析コードを使用することができました。  
 
 ### <a name="ihttpmessageprocessor"></a>IHttpMessageProcessor
-次に、`HttpMessage` インスタンスは、`IHttpMessageProcessor` の実装に転送されます。これは、Azure イベント ハブからのイベントの受信および解釈と実際のイベントの処理を分離するために作成したインターフェイスです。
+次に、`HttpMessage` インスタンスは、`IHttpMessageProcessor` の実装に転送されます。これは、Azure Event Hub からのイベントの受信および解釈と実際のイベントの処理を分離するために作成したインターフェイスです。
 
 ## <a name="forwarding-the-http-message"></a>HTTP メッセージの転送
 このサンプルでは、少しひねって HTTP 要求を [Moesif API Analytics](https://www.moesif.com) にプッシュ送信しました。 Moesif は、HTTP の分析とデバッグに特化したクラウド ベースのサービスです。 Runscope には Free レベルが用意されているため、簡単に試すことができます。これを使用すると、API Management サービスを通過する HTTP 要求をリアルタイムで確認することができます。

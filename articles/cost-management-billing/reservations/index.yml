@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Azure の予約による節約
-summary: 仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
+summary: 仮想マシン、Azure Blob Storage または Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
 metadata:
   title: Azure の予約による節約
-  description: 仮想マシン、Azure BLOB ストレージまたは Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
+  description: 仮想マシン、Azure Blob Storage または Azure Data Lake Storage Gen2、SQL Database のコンピューティング容量、Azure Cosmos DB のスループット、その他の Azure リソースの 1 年プランまたは 3 年プランにコミットすることでコスト削減に役立つ Azure の予約のしくみについて説明します。
   ms.service: cost-management-billing
   ms.subservice: reservations
   ms.topic: landing-page

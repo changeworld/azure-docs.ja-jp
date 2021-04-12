@@ -4,12 +4,12 @@ description: この記事では、Azure DevTest Labs のラボの仮想マシン
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 45d5b3453e29571760d47d52a1a21288be31ea90
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f3802837685281339f0ca355c677e1a0ceac067
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136127"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102198202"
 ---
 # <a name="use-azure-cli-to-stop-and-delete-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Azure CLI を使用して Azure DevTest Labs のラボの仮想マシンを停止して削除する
 
@@ -27,10 +27,10 @@ ms.locfileid: "88136127"
 
 このスクリプトでは以下のコマンドを使用します。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
-| [az lab vm stop](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-stop) | ラボの仮想マシン (VM) を停止します。 この操作を完了するにはしばらく時間がかかることがあります。 |
-| [az lab vm delete](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-delete) | ラボの仮想マシン (VM) を削除します。 この操作を完了するにはしばらく時間がかかることがあります。 |
+| [az lab vm stop](/cli/azure/lab/vm#az-lab-vm-stop) | ラボの仮想マシン (VM) を停止します。 この操作を完了するにはしばらく時間がかかることがあります。 |
+| [az lab vm delete](/cli/azure/lab/vm#az-lab-vm-delete) | ラボの仮想マシン (VM) を削除します。 この操作を完了するにはしばらく時間がかかることがあります。 |
 
 
 ## <a name="next-steps"></a>次のステップ

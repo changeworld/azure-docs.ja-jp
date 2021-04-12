@@ -4,7 +4,7 @@ description: このトピックでは、Widevine で保護されたコンテン�
 services: media-services
 keywords: DASH, DRM, Widevine オフライン モード, ExoPlayer, Android
 documentationcenter: ''
-author: willzhan
+author: IngridAtMicrosoft
 manager: steveng
 editor: ''
 ms.service: media-services
@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 3/10/2021
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: dc21523d158330d70adfbc33734abe3d49535804
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: b009c0844a0030da9698ba7e058cde8ba68c5f7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98696297"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106063318"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!div class="op_single_selector" title1="使用している Media Services のバージョンを選択してください:"]
-> * [Version 3](../latest/offline-widevine-for-android.md)
+> * [Version 3](../latest/drm-offline-widevine-for-android.md)
 > * [Version 2](offline-widevine-for-android.md)
 
 > [!NOTE]

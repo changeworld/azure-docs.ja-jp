@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2021
+ms.date: 03/30/2021
 ms.author: b-juche
-ms.openlocfilehash: c82e834c0af3737c1e5ef19c7aa789b94d87f6d8
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9b061184f97abeea79912aadbae2c2b188206c72
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095393"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058002"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -45,6 +45,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  1 つのファイルの最大サイズ     |    16 TiB    |    いいえ    |    
 |  1 つのディレクトリ内のディレクトリ メタデータの最大サイズ      |    320 MB    |    いいえ    |    
 |  ボリュームあたりのファイルの最大数 ([maxfiles](#maxfiles))     |    1 億    |    はい    |    
+|  ボリュームあたりのエクスポート ポリシー ルールの最大数     |    5  |    いいえ    | 
 |  手動 QoS ボリュームに割り当てられた最小スループット     |    1 MiB/秒   |    No    |    
 |  手動 QoS ボリュームに割り当てられた最大スループット     |    4,500 MiB/秒    |    No    |    
 |  リージョン間レプリケーション データ保護ボリュームの数 (宛先ボリューム)     |    5    |    はい    |     

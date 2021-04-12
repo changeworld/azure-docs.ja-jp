@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 05/02/2019
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: b6369013d605ae538ad611a28a90e9c099bb7d80
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: ce4eb3d556b6dff833129d11b26d439066b63f2e
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91326050"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446845"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>マスター VHD イメージに Office をインストールする
 

@@ -9,10 +9,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.openlocfilehash: 42136d0d58dbc318aab0e111fcef46f80751ca88
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100517673"
 ---
 # <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>Azure での Ubuntu Data Science Virtual Machine を使用したデータ サイエンス

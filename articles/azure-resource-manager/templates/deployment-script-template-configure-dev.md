@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: f731236b235883f019c74ef0b32f5066ca5b7514
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b2e1ffb3cbd513766945864e33589c46284bf942
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98179369"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102200939"
 ---
 # <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトの開発環境を構成する
 
@@ -357,7 +357,7 @@ Set-AzStorageFileContent -Context $context -ShareName $fileShareName -Source $fi
 テンプレートに指定されている既定のコンテナー イメージは **mcr.microsoft.com/azure-cli:2.9.1** です。 [サポートされている Azure CLI バージョン](https://mcr.microsoft.com/v2/azure-cli/tags/list)の一覧を参照してください。
 
 > [!IMPORTANT]
-> デプロイ スクリプトでは、Microsoft Container Registry (MCR) から入手可能な CLI イメージが使用されます。 デプロイ スクリプトの CLI イメージの認定には、1 か月ほどかかります。 30 日以内にリリースされた CLI バージョンは使用しないでください。 イメージのリリース日を確認するには、「[Azure CLI リリース ノート](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください。 サポートされていないバージョンを使用している場合、エラー メッセージにサポートされているバージョンが一覧表示されます。
+> デプロイ スクリプトでは、Microsoft Container Registry (MCR) から入手可能な CLI イメージが使用されます。 デプロイ スクリプトの CLI イメージの認定には、1 か月ほどかかります。 30 日以内にリリースされた CLI バージョンは使用しないでください。 イメージのリリース日を確認するには、「[Azure CLI リリース ノート](/cli/azure/release-notes-azure-cli)」を参照してください。 サポートされていないバージョンを使用している場合、エラー メッセージにサポートされているバージョンが一覧表示されます。
 
 このテンプレートでは、コンテナー インスタンスが 1,800 秒後に中断されます。 コンテナー インスタンスが終了状態になり、セッションが終了するまでの時間は 30 分間です。
 

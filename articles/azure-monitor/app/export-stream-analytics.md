@@ -4,10 +4,10 @@ description: Stream Analytics は、Application Insights からエクスポー�
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.openlocfilehash: a517bddd8981554b7fb5044d33b6c6777df51e36
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101719799"
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する

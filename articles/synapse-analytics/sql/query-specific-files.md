@@ -10,10 +10,10 @@ ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
 ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
-ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96299617"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>サーバーレス SQL プール クエリでファイルのメタデータを使用する

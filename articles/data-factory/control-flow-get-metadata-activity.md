@@ -4,45 +4,34 @@ description: Data Factory パイプライン内でメタデータの取得アク
 author: linda33wj
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 02/25/2021
 ms.author: jingwang
-ms.openlocfilehash: f860225862dcbfb79535acfbd6eeb89a217e7ae9
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bd8fc3383d6d9a0afb7733cb94643623e6879d23
+ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100385491"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102178543"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Azure Data Factory のメタデータの取得アクティビティ
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-メタデータの取得アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。 このアクティビティは、次のシナリオで使用できます。
+メタデータの取得アクティビティを使用すると、Azure Data Factory で任意のデータのメタデータを取得できます。 条件式でメタデータの取得アクティビティからの出力を使用して検証を実行することや、後続のアクティビティでメタデータを使用することができます。
 
-- 任意のデータのメタデータを検証する。
-- データが準備完了または使用可能になったらパイプラインをトリガーする。
+## <a name="supported-capabilities"></a>サポートされる機能
 
-制御フローでは、次の機能を使用できます。
-
-- メタデータの取得アクティビティからの出力を条件式で使用することによって、検証を実行できます。
-- Do Until ループによって条件が満たされたときにパイプラインをトリガーできます。
-
-## <a name="capabilities"></a>機能
-
-メタデータの取得アクティビティは、データセットを入力として受け取り、メタデータ情報を出力として返します。 現在、次のコネクタとそれに対応する取得可能なメタデータがサポートされています。 返されるメタデータの最大サイズは約 4 MB です。
-
->[!NOTE]
->セルフホステッド統合ランタイム上でメタデータの取得アクティビティを実行する場合、最新の機能はバージョン 3.6 以降でサポートされます。
+メタデータの取得アクティビティは、データセットを入力として受け取り、メタデータ情報を出力として返します。 現在、次のコネクタとそれに対応する取得可能なメタデータがサポートされています。 返されるメタデータの最大サイズは **4 MB** です。
 
 ### <a name="supported-connectors"></a>サポートされているコネクタ
 
 **File Storage**
 
-| コネクタ/メタデータ | itemName<br>(ファイル/フォルダー) | itemType<br>(ファイル/フォルダー) | size<br>(ファイル) | created<br>(ファイル/フォルダー) | lastModified<br>(ファイル/フォルダー) |childItems<br>(フォルダー) |contentMD5<br>(ファイル) | structure<br/>(ファイル) | columnCount<br>(ファイル) | exists<br>(ファイル/フォルダー) |
+| コネクタ/メタデータ | itemName<br>(ファイル/フォルダー) | itemType<br>(ファイル/フォルダー) | size<br>(ファイル) | created<br>(ファイル/フォルダー) | lastModified<sup>1</sup><br>(ファイル/フォルダー) |childItems<br>(フォルダー) |contentMD5<br>(ファイル) | structure<sup>2</sup><br/>(ファイル) | columnCount<sup>2</sup><br>(ファイル) | exists<sup>3</sup><br>(ファイル/フォルダー) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
-| [Azure BLOB Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure BLOB Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -50,12 +39,23 @@ ms.locfileid: "100385491"
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
-- フォルダーに対してメタデータの取得アクティビティを使用している場合は、指定されたフォルダーに対する LIST/EXECUTE 権限があることを確認してください。
-- Amazon S3 および Google Cloud Storage の場合、`lastModified` はバケットとキーに適用されますが、仮想フォルダーには適用されません。また、`exists` はバケットとキーに適用されますが、プレフィックスまたは仮想フォルダーには適用されません。
+<sup>1</sup> メタデータ `lastModified`:
+- Amazon S3 および Google Cloud Storage の場合、`lastModified` はバケットとキーに適用されますが、仮想フォルダーには適用されません。また、`exists` はバケットとキーに適用されますが、プレフィックスまたは仮想フォルダーには適用されません。 
 - Azure Blob Storage の場合、`lastModified` はコンテナーと BLOB に適用されますが、仮想フォルダーには適用されません。
-- `lastModified` フィルターは現在、子項目のフィルター処理に適用されますが、指定されたフォルダーまたはファイル自体には適用されません。
+
+<sup>2</sup> バイナリ ファイル、JSON ファイル、または XML ファイルからメタデータを取得する場合、メタ データ `structure` および `columnCount` はサポートされません。
+
+<sup>3</sup> メタデータ `exists`: Amazon S3 と Google Cloud Storage の場合、`exists` はバケットとキーには適用されますが、プレフィックスや仮想フォルダーには適用されません。
+
+次のことを考慮してください。
+
+- フォルダーに対してメタデータの取得アクティビティを使用している場合は、指定されたフォルダーに対する LIST/EXECUTE 権限があることを確認してください。
 - フォルダー/ファイルに対するワイルドカード フィルターは、Get Metadata アクティビティではサポートされていません。
-- バイナリ ファイル、JSON ファイル、または XML ファイルからメタデータを取得する場合、`structure` および `columnCount` はサポートされません。
+- コネクタに設定された `modifiedDatetimeStart` および `modifiedDatetimeEnd` フィルター:
+
+    - これらの 2 つのプロパティは、フォルダーからメタデータを取得するときに子項目をフィルター処理するために使用されます。 ファイルからメタデータを取得するときには適用されません。
+    - このようなフィルターを使用すると、出力の `childItems` には、指定された範囲内で変更されたファイルのみが含まれ、フォルダーは含まれません。
+    - このようなフィルターを適用するには、GetMetadata アクティビティを使用して、指定されたフォルダー内のすべてのファイルを列挙し、変更された時刻を確認します。 予想される修飾ファイル数が少ない場合でも、ファイル数が多いフォルダーを指すことは避けてください。 
 
 **リレーショナル データベース**
 
@@ -83,11 +83,14 @@ ms.locfileid: "100385491"
 | columnCount | ファイルまたはリレーショナル テーブル内の列の数です。 |
 | exists| ファイル、フォルダー、またはテーブルが存在するかどうかを示します。 メタデータの取得フィールドの一覧内で `exists` が指定されている場合、ファイル、フォルダー、またはテーブルが存在しない場合でもアクティビティは失敗しません。 代わりに、`exists: false` が出力に返されます。 |
 
->[!TIP]
->ファイル、フォルダー、またはテーブルが存在することを検証する場合は、メタデータの取得フィールドの一覧内で `exists` を指定します。 その後、アクティビティ出力内の `exists: true/false` の結果を確認できます。 フィールドの一覧内で `exists` が指定されていない場合、オブジェクトが見つからないとメタデータの取得アクティビティは失敗します。
+> [!TIP]
+> ファイル、フォルダー、またはテーブルが存在することを検証する場合は、メタデータの取得フィールドの一覧内で `exists` を指定します。 その後、アクティビティ出力内の `exists: true/false` の結果を確認できます。 フィールドの一覧内で `exists` が指定されていない場合、オブジェクトが見つからないとメタデータの取得アクティビティは失敗します。
 
->[!NOTE]
->ファイル ストアからメタデータを取得し、`modifiedDatetimeStart` または `modifiedDatetimeEnd` を構成した場合、出力内の `childItems` には、指定されたパスにあるファイルのうち、最終変更時刻が指定された範囲内のものだけが含まれます。 サブフォルダー内の項目は含まれません。
+> [!NOTE]
+> ファイル ストアからメタデータを取得し、`modifiedDatetimeStart` または `modifiedDatetimeEnd` を構成した場合、出力内の `childItems` には、指定されたパスにあるファイルのうち、最終変更時刻が指定された範囲内のものだけが含まれます。 サブフォルダー内の項目は含まれません。
+
+> [!NOTE]
+> **structure** フィールド リストに区切りテキストと Excel 形式のデータセットの実際のデータ構造を示すには、`First Row as Header` プロパティを有効にする必要があります。これは、これらのデータ ソースでのみサポートされています。
 
 ## <a name="syntax"></a>構文
 
@@ -163,7 +166,7 @@ ms.locfileid: "100385491"
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
 fieldList | 必要なメタデータ情報の種類です。 サポートされているメタデータに関する詳細は、この記事の「[メタデータのオプション](#metadata-options)」セクションを参照してください。 | はい 
-dataset | メタデータの取得アクティビティによってメタデータが取得される参照データセット。 サポートされているコネクタの詳細については、「[機能](#capabilities)」セクションを参照してください。 データセットの構文の詳細については、特定のコネクタのトピックを参照してください。 | はい
+dataset | メタデータの取得アクティビティによってメタデータが取得される参照データセット。 サポートされているコネクタの詳細については、「[機能](#supported-capabilities)」セクションを参照してください。 データセットの構文の詳細については、特定のコネクタのトピックを参照してください。 | はい
 formatSettings | 書式の種類のデータセットを使用するときに適用します。 | いいえ
 storeSettings | 書式の種類のデータセットを使用するときに適用します。 | いいえ
 

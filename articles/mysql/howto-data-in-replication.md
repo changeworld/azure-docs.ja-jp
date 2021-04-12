@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2021
-ms.openlocfilehash: 22974a47a6b1e9d49e5055a85f46286497cfe149
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: d5a013fc4e4ef931579da4fa13f400d5f4fcff0d
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250534"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102030751"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
@@ -101,9 +101,23 @@ Azure Database for MySQL サービスでレプリカを作成するために、[
    ```
 
    変数 [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) の戻り値が "ON" であった場合、サーバーでバイナリ ログが有効になっています。
-
-   `log_bin` の戻り値が "OFF" の場合は、my.cnf ファイルを編集してバイナリ ログを有効 (`log_bin=ON`) にし、サーバーを再起動して変更を反映します。
-
+   
+    値 "オフ" で `log_bin` が返されたとき、構成ファイル (my.cnf) にアクセスするオンプレミスまたは仮想マシン上でソース サーバーが実行されている場合、以下の手順をご利用いただけます。
+   1. ソース サーバーで MySQL 構成ファイル (my.cnf) を見つけます。 例: /etc/my.cnf
+   2. 構成ファイルを開いて編集し、ファイル内の **mysqld** セクションを見つけます。
+   3.  mysqld セクションに次の行を追加します
+   
+       ```bash
+       log-bin=mysql-bin.log
+       ```
+     
+   4. 変更を有効にするために、MySQL ソース サーバーを再起動します。
+   5. サーバーが再起動されたら、前と同じクエリを実行して、バイナリ ログが有効になっていることを確認します。
+   
+      ```sql
+      SHOW VARIABLES LIKE 'log_bin';
+      ```
+   
 4. ソース サーバーの設定
 
    データイン レプリケーションでは、ソースとレプリカのサーバー間でパラメーター `lower_case_table_names` を一致させる必要があります。 Azure Database for MySQL では、このパラメーターが既定で 1 になっています。

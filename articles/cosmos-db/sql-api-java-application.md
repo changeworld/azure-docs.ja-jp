@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/10/2021
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: d39c1d8c3ac60dda62556b1a8da0dfe29e3c1ee3
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 01c9a8b62190f3b545169bb5ba6732e6799ff9f2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100383621"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105559810"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>チュートリアル:Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,11 +48,11 @@ ms.locfileid: "100383621"
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java Development Kit (JDK) 7 以降](/java/azure/jdk/?view=azure-java-stable&preserve-view=true)。
+* [Java Development Kit (JDK) 7 以降](/java/azure/jdk/)。
 * [Eclipse IDE for Java EE Developers。](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](../app-service/quickstart-java.md)
 
-これらのツールを初めてインストールする場合は、coreservlets.com の「[Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html)」 (チュートリアル: TomCat7 のインストールと Eclipse での使用) の「Quick Start」 (クイック スタート) セクションで、インストール プロセスの手順を参照してください。
+これらのツールを初めてインストールする場合は、coreservlets.com の「[Tutorial: Installing TomCat7 and Using it with Eclipse](https://www.youtube.com/watch?v=jOdCfW7-ybI&t=2s)」 (チュートリアル: TomCat7 のインストールと Eclipse での使用) の「Quick Start」 (クイック スタート) セクションで、インストール プロセスの手順を参照してください。
 
 ## <a name="create-an-azure-cosmos-db-account"></a><a id="CreateDB"></a>Azure Cosmos DB アカウントを作成する
 

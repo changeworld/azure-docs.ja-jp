@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 03/01/2021
 ms.author: alkohli
-ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581361"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101739213"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway のシステム要件
 
@@ -32,9 +32,9 @@ Data Box Gateway の基になっているホスト システムでは、仮想�
 | 仕様                                          | 説明              |
 |---------------------------------------------------------|--------------------------|
 | 仮想プロセッサ (コア)   | 最低 4 |
-| メモリ  | 8 GB 以上|
+| メモリ  | 8 GB 以上。 16 GB 以上にすることを強くお勧めします。 |
 | 可用性|単一ノード|
-| ディスク| OS ディスク: 250 GB <br> データ ディスク: 最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
+| ディスク| OS ディスク:250 GB <br> データ ディスク:最小 2 TB、シン プロビジョニング、SSD を使用する必要があります|
 | ネットワーク インターフェイス|1 つ以上の仮想ネットワーク インターフェイス|
 
 
@@ -48,7 +48,7 @@ Data Box Gateway の基になっているホスト システムでは、仮想�
 
 ## <a name="supported-virtualization-platforms-for-device"></a>デバイスでサポートされている仮想化プラットフォーム
 
-| **オペレーティング システム/プラットフォーム**  |**バージョン**   |**メモ**  |
+| **オペレーティング システム/プラットフォーム**  |**[バージョン]**   |**ノート**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
 |VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |VMware ツールはサポートされていません。         |
@@ -93,7 +93,7 @@ SMB、クラウド、または管理トラフィックを許可するために�
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
 
-## <a name="next-step"></a>次のステップ
+## <a name="next-step"></a>次の手順
 
 * [Azure Data Box Gateway をデプロイする](data-box-gateway-deploy-prep.md)
 

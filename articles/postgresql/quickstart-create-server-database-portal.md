@@ -1,18 +1,18 @@
 ---
 title: クイック スタート:サーバーを作成する - Azure portal - Azure Database for PostgreSQL - 単一サーバー
 description: このクイックスタート ガイドでは、Azure portal を使用して、Azure Database for PostgreSQL サーバーを作成して管理します。
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/18/2020
-ms.openlocfilehash: 000ab3e3911c65554622a48d34abda79d60411df
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6b5b145e84a3844b646ec9adfb46f8a221c6d0a6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492388"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606506"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Database for PostgreSQL サーバーを作成する
 

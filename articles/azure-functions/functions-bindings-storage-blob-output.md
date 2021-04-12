@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: eaa8a4c600864f636d49813d415621d46130fff7
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: bb5382014f82854086d6ec6f07cfe7f67e80726a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381659"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961032"
 ---
 # <a name="azure-blob-storage-output-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の出力バインド
 
@@ -300,6 +300,7 @@ Push-OutputBinding -Name myOutputBlob -Value $myInputBlob
     {
       "name": "inputblob",
       "type": "blob",
+      "dataType": "binary",
       "path": "samples-workitems/{queueTrigger}",
       "connection": "MyStorageConnectionAppSetting",
       "direction": "in"
@@ -307,6 +308,7 @@ Push-OutputBinding -Name myOutputBlob -Value $myInputBlob
     {
       "name": "outputblob",
       "type": "blob",
+      "dataType": "binary",
       "path": "samples-workitems/{queueTrigger}-Copy",
       "connection": "MyStorageConnectionAppSetting",
       "direction": "out"
@@ -326,9 +328,8 @@ import logging
 import azure.functions as func
 
 
-def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
-         outputblob: func.Out[func.InputStream]):
-    logging.info('Python Queue trigger function processed %s', inputblob.name)
+def main(queuemsg: func.QueueMessage, inputblob: bytes, outputblob: func.Out[bytes]):
+    logging.info(f'Python Queue trigger function processed {len(inputblob)} bytes')
     outputblob.set(inputblob)
 ```
 
@@ -431,8 +432,8 @@ _function.json_ ファイルのバインドの name パラメーターで指定�
 
 関数のパラメーターを次の型で宣言し、BLOB ストレージに書き込むことができます。
 
-* `func.Out(str)` は文字列
-* `func.Out(func.InputStream)` はストリーム
+* `func.Out[str]` は文字列
+* `func.Out[func.InputStream]` はストリーム
 
 詳細については、「[出力 - 例](#example)」を参照してください。
 

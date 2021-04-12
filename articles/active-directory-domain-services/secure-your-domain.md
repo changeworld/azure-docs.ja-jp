@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/06/2020
+ms.date: 03/08/2021
 ms.author: justinha
-ms.openlocfilehash: a89c898e150facc9860d86e18a7acc42f5e0f441
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 5fa19e23767af0e121d07872970199a2a1705ea8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618860"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104951940"
 ---
 # <a name="disable-weak-ciphers-and-password-hash-synchronization-to-secure-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメインをセキュリティで保護するために、弱い暗号およびパスワード ハッシュ同期を無効にする
 
@@ -34,14 +34,25 @@ ms.locfileid: "96618860"
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
     * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][create-azure-ad-ds-instance]します。
-* Azure PowerShell のインストールおよび構成。
-    * 必要であれば、手順に従って、[Azure PowerShell モジュールをインストールし、Azure サブスクリプションに接続](/powershell/azure/install-az-ps)します。
-    * 必ず [Connect-AzAccount][Connect-AzAccount] コマンドレットを使用して Azure サブスクリプションにサインインしてください。
-* Azure AD PowerShell をインストールして構成します。
-    * 必要であれば、手順に従って、[Azure AD PowerShell モジュールをインストールして Azure AD に接続](/powershell/azure/active-directory/install-adv2)します。
-    * 必ず [Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して Azure AD テナントにサインインしてください。
 
-## <a name="disable-weak-ciphers-and-ntlm-password-hash-sync"></a>弱い暗号と NTLM パスワード ハッシュ同期を無効にする
+## <a name="use-security-settings-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>セキュリティ設定を使用して脆弱な暗号と NTLM パスワード ハッシュ同期を無効します
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. **Azure AD Domain Services** を検索して選択します。
+1. 目的のマネージド ドメインを選択します (例: *aaddscontoso.com* )。
+1. 左側で、**セキュリティの設定** を選択します。
+1. 次の設定に対して **無効** をクリックします。
+   - **TLS 1.2 のみモード**
+   - **NTLM 認証**
+   - **オンプレミスからの NTLM パスワード同期**
+
+   ![脆弱な暗号と NTLM パスワード ハッシュ同期を無効するセキュリティの設定のスクリーンショット](media/secure-your-domain/security-settings.png)
+
+## <a name="use-powershell-to-disable-weak-ciphers-and-ntlm-password-hash-sync"></a>PowerShell を使用して脆弱な暗号と NTLM パスワード ハッシュ同期を無効にします
+
+必要に応じて、[Azure PowerShell をインストールして構成します](/powershell/azure/install-az-ps)。 必ず [Connect-AzAccount][Connect-AzAccount] コマンドレットを使用して Azure サブスクリプションにサインインしてください。 
+
+また、必要に応じて、[Azure AD PowerShell をインストールして構成します](/powershell/azure/active-directory/install-adv2)。 必ず [Connect-AzureAD][Connect-AzureAD] コマンドレットを使用して Azure AD テナントにサインインしてください。
 
 弱い暗号スイートと NTLM 資格情報ハッシュの同期を無効にするには、Azure アカウントにサインインしてから、[Get-AzResource][Get-AzResource] コマンドレットを使用して Azure AD DS リソースを取得します。
 

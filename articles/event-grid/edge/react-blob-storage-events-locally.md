@@ -8,14 +8,14 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96005063"
 ---
 # <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>チュートリアル:IoT Edge で Blob Storage イベントに対応する (プレビュー)
-この記事では、Azure BLOB ストレージを IoT モジュールにデプロイする方法について説明します。これは、BLOB の作成および削除時に Event Grid にイベントを送信する Event Grid パブリッシャーとして機能します。  
+この記事では、AAzure Blob Storage を IoT モジュールにデプロイする方法について説明します。これは、BLOB の作成および削除時に Event Grid にイベントを送信する Event Grid パブリッシャーとして機能します。  
 
 Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on IoT Edge](../../iot-edge/how-to-store-data-blob.md) とその機能に関するページを参照してください。
 
@@ -324,7 +324,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 
 サポートされているイベント プロパティと、その種類および説明の一覧を次に示します。 
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |
@@ -337,7 +337,7 @@ Azure Blob Storage on IoT Edge の概要については、[Azure Blob Storage on
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 | -------- | ---- | ----------- |
 | api | string | イベントのトリガーとなった操作。 次のいずれかの値を指定できます。 <ul><li>BlobCreated: 使用できる値は、`PutBlob` と `PutBlockList` です</li><li>BlobDeleted: 使用できる値は、`DeleteBlob`、`DeleteAfterUpload`、および `AutoDelete` です。 <p>DeleteAfterUpload の必要なプロパティが true に設定されているために BLOB が自動的に削除されると、`DeleteAfterUpload` イベントが生成されます。 </p><p>deleteAfterMinutes の必要なプロパティ値の期限が過ぎたために BLOB が自動的に削除されると、`AutoDelete` イベントが生成されます。</p></li></ul>|
 | clientRequestId | string | ストレージ API 操作に対するクライアントで提供された要求 ID です。 この ID は、ログの "client-request-id" フィールドを使って Azure Storage 診断ログに関連付けるために使うことができ、クライアント要求で "x-ms-client-request-id" ヘッダーを使って提供できます。 詳細については、[ログの形式](/rest/api/storageservices/storage-analytics-log-format)に関するページを参照してください。 |
@@ -356,7 +356,7 @@ Blob Storage のドキュメントのうち、次の記事をご覧ください�
 - [Blob Storage イベントのフィルター処理](../../storage/blobs/storage-blob-event-overview.md#filtering-events)
 - [Blob Storage イベントを使用する際の推奨プラクティス](../../storage/blobs/storage-blob-event-overview.md#practices-for-consuming-events)
 
-このチュートリアルでは、Azure BLOB ストレージで BLOB を作成または削除することでイベントを発行しました。 クラウド (Azure Event Hubs または Azure IoT Hub) にイベントを転送する方法については、他のチュートリアルを参照してください。 
+このチュートリアルでは、Azure Blob Storage で BLOB を作成または削除することでイベントを発行しました。 クラウド (Azure Event Hubs または Azure IoT Hub) にイベントを転送する方法については、他のチュートリアルを参照してください。 
 
 - [イベントを Azure Event Grid に転送する](forward-events-event-grid-cloud.md)
 - [イベントを Azure IoT Hub に転送する](forward-events-iothub.md)

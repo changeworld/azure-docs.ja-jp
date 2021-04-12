@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: overview
-ms.date: 01/05/2021
+ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 425c6cab4a4a5e1329e2d38f49c5058ec8ffc5b9
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 3bfa30cc5d3d57cfcd2677bb4b2719061541d5a9
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901370"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278866"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -28,6 +28,12 @@ Anomaly Detector API では、時系列データを監視し、その中の異�
 ![サービス要求のパターンの変化を検出する](./media/anomaly_detection2.png)
 
 Anomaly Detector の使用にあたり、機械学習の経験は必要ありません。RESTful API によってサービスをアプリケーションやプロセスに簡単に統合できます。
+
+このドキュメントには、次のような記事が記載されています。
+* [クイックスタート](./Quickstarts/client-libraries.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
+* [攻略ガイド](./how-to/identify-anomalies.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
+* [概念の記事](./concepts/anomaly-detection-best-practices.md)では、サービスの機能と特長について詳しく説明します。
+* [チュートリアル](./tutorials/batch-anomaly-detection-powerbi.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
 
 ## <a name="features"></a>特徴
 
@@ -53,13 +59,13 @@ Anomaly Detector API を呼び出す方法については、こちらの [ Noteb
 Notebook を実行するには、次の手順を完了します。
 
 1. 有効な Anomaly Detector API サブスクリプション キーと API エンドポイントを取得します。 下のセクションに新規登録方法があります。
-1. 右上隅でサインインし、[複製] をクリックします。
-1. 複製操作を完了する前に、ダイアログ ボックスの [パブリック] オプションをオフにします。そうしないと、ノートブックはサブスクリプション キーを含めてパブリックになります。
-1. **[無料のコンピューティングで実行]** をクリックします。
+1. 右上隅でサインインし、[複製] を選択します。
+1. 複製操作を完了する前に、ダイアログ ボックスの [パブリック] オプションをオフにします。そうしないと、すべてのサブスクリプション キーを含め、ノートブックはパブリックになります。
+1. **[Run on free compute]\(無料のコンピューティングで実行\)** を選択します
 1. いずれかのノートブックを選択します。
 1. 有効な Anomaly Detector API サブスクリプション キーを `subscription_key` 変数に追加します。
 1. `endpoint` 変数を自分のエンドポイントに変更します。 例: `https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/last/detect`
-1. 上部のメニュー バーで **[セル]** をクリックし、 **[すべて実行]** をクリックします。
+1. 上部のメニュー バーで **[セル]** 、 **[すべてを実行]** の順に選択します。
 
 ## <a name="workflow"></a>ワークフロー
 

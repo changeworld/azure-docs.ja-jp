@@ -1,14 +1,14 @@
 ---
 title: Kubernetes 用の Azure Policy の概要
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。
-ms.date: 12/01/2020
+ms.date: 03/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0aaf610cd5712ee195ed2a4108cf9e5ca9c65183
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 60ffcfac688eb40f47efefb74f79d27a2cb82446
+ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100577097"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104868156"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Kubernetes 用の Azure Policy について理解する
 
@@ -68,9 +68,9 @@ AKS の Azure Policy アドオンにのみ、次の制限事項が適用され�
 
 Azure Policy アドオンを使用する場合の一般的な推奨事項を次に示します。
 
-- Azure Policy アドオンでは、3 つの Gatekeeper コンポーネントを実行する必要があります。1 つの監査ポッドと 2 つの Webhook ポッドのレプリカ。 これらのコンポーネントは、監査と強制の操作を必要とするクラスターで Kubernetes リソースとポリシー割り当ての数が増えるにつれて、より多くのリソースを消費します。
+- Azure Policy アドオンでは、3 つの Gatekeeper コンポーネント (監査ポッドのレプリカが 1 つ、Webhook ポッドのレプリカが 2 つ) を実行する必要があります。 クラスター内での Kubernetes リソースとポリシー割り当ての数が増えるにつれて、監査および適用の操作が必要となり、これらのコンポーネントによってさらに多くのリソースを消費されます。
 
-  - 最大 20 の制約を持つ 1 つのクラスター内のポッド数が 500 を下回る場合:コンポーネントごとに 2 つの vCPU と 350 MB のメモリ。
+  - 最大 20 の制約を持つ 1 つのクラスター内のポッド数が 500 を下回る場合: コンポーネントごとに 2 つの vCPU と 350 MB のメモリ。
   - 最大 40 の制約を持つ 1 つのクラスター内のポッド数が 500 を上回る場合:コンポーネントごとに 3 つの vCPU と 600 MB のメモリ。
 
 - Windows ポッド [セキュリティ コンテキスト](https://kubernetes.io/docs/concepts/security/pod-security-standards/#what-profiles-should-i-apply-to-my-windows-pods)をサポートしていません。
@@ -85,7 +85,7 @@ Azure Policy アドオンを使用する場合の一般的な推奨事項を次�
 
 ## <a name="install-azure-policy-add-on-for-aks"></a>AKS 用の Azure Policy アドオンをインストールする
 
-Azure Policy アドオンをインストールするか、このサービスの機能のいずれかを有効にする前に、お客様のサブスクリプションで **Microsoft.ContainerService** および **Microsoft.PolicyInsights** リソース プロバイダーを有効にする必要があります。
+Azure Policy アドオンをインストールしたり、このサービスの機能のいずれかを有効にしたりする前に、お客様のサブスクリプションで **Microsoft.PolicyInsights** リソース プロバイダーを有効にする必要があります。
 
 1. Azure CLI バージョン 2.12.0 以降がインストールされて構成されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -93,15 +93,12 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
    - Azure portal:
 
-     **Microsoft.ContainerService** と **Microsoft.PolicyInsights** リソース プロバイダーに登録します。 手順については、「[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
+     **Microsoft.PolicyInsights** リソース プロバイダーを登録します。 手順については、「[リソース プロバイダーと種類](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」を参照してください。
 
    - Azure CLI:
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-
-     # Provider register: Register the Azure Kubernetes Service provider
-     az provider register --namespace Microsoft.ContainerService
 
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
@@ -440,14 +437,13 @@ Kubernetes クラスターでは、名前空間に次のラベルのいずれか
 
 - クラスター サブスクリプションが Azure Security Center に登録されている場合、Azure Security Center Kubernetes ポリシーがクラスターに自動的に適用されます。
 
-- 既存の Kubernetes リソースを持つクラスターに拒否ポリシーが適用された場合、新しいポリシーに準拠していない既存のリソースは引き続き実行されます。 準拠していないリソースが別のノードで再スケジュールされると、ゲートキーパーによってリソースの作成がブロックされます。
+- 既存の Kubernetes リソースを持つクラスターに拒否ポリシーが適用された場合は、新しいポリシーに準拠していない既存のリソースが引き続き実行されます。 準拠していないリソースが別のノードで再スケジュールされると、ゲートキーパーによってリソースの作成がブロックされます。
 
 - リソースを検証する拒否ポリシーがクラスターにある場合、デプロイの作成時にはユーザーに拒否メッセージは表示されません。 たとえば、replicasets とポッドを含む Kubernetes のデプロイについて考えてみます。 ユーザーが `kubectl describe deployment $MY_DEPLOYMENT` を実行したとき、イベントの一部として拒否メッセージは返されません。 ただし、`kubectl describe replicasets.apps $MY_DEPLOYMENT` によって、拒否に関連付けられたイベントが返されます。
 
 ## <a name="logging"></a>ログ記録
 
-_azure-policy_ と _gatekeeper_ のポッドはどちらも、Kubernetes のコントローラーおよびコンテナーとして、Kubernetes クラスター内にログを保持します。 このログは Kubernetes クラスターの **[Insights]** ページに公開されます。
-詳細については、「[Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する](../../../azure-monitor/containers/container-insights-analyze.md)」を参照してください。
+Kubernetes のコントローラーおよびコンテナーとして、_azure-policy_ ポッドと _gatekeeper_ ポッドのどちらを使用しても、Kubernetes クラスター内にログが保持されます。 このログは Kubernetes クラスターの **[Insights]** ページに公開されます。 詳細については、「[Azure Monitor for containers を使用して Kubernetes クラスターのパフォーマンスを監視する](../../../azure-monitor/containers/container-insights-analyze.md)」を参照してください。
 
 アドオンのログを表示するには、`kubectl` を使用します。
 

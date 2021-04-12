@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 35b692033cc16f276b48bc6d973b27d994c1082a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 69582f26544d954088fd5a57bfe5730750b7b5a8
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88002589"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447915"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する
 
@@ -44,10 +44,10 @@ Windows Virtual Desktop サービスでは、推奨されるユーザー プロ�
 
 1. Windows Virtual Desktop の Active Directory ユーザーを [Active Directory セキュリティ グループ](/windows/security/identity-protection/access-control/active-directory-security-groups/)に追加します。 このセキュリティ グループは、先ほど作成したファイル共有仮想マシンに対して、Windows Virtual Desktop ユーザーを認証するために使用されます。
 2. [ファイル共有仮想マシンに接続します](../virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine)。
-3. ファイル共有仮想マシン上で、プロファイル共有として使用するフォルダーを **C ドライブ**に作成します。
+3. ファイル共有仮想マシン上で、プロファイル共有として使用するフォルダーを **C ドライブ** に作成します。
 4. 新しいフォルダーを右クリックし、 **[プロパティ]** 、 **[共有]** 、 **[詳細な共有]** を選択します。
 5. **[このフォルダーを共有する]** を選択し、 **[アクセス許可]** を選択してから、 **[追加]** を選択します。
-6. Windows Virtual Desktop ユーザーを追加したセキュリティ グループを検索し、そのグループに**フル コントロール**があることを確認します。
+6. Windows Virtual Desktop ユーザーを追加したセキュリティ グループを検索し、そのグループに **フル コントロール** があることを確認します。
 7. セキュリティ グループを追加した後、フォルダーを右クリックして **[プロパティ]** を選択し、 **[共有]** を選択して、後で使用するために **[ネットワーク パス]** をコピーしておきます。
 
 アクセス許可について詳しくは、[FSLogix のドキュメント](/fslogix/fslogix-storage-config-ht/)をご覧ください。

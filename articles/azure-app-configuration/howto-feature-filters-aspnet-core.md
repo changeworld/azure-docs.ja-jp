@@ -9,10 +9,10 @@ ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
 ms.openlocfilehash: 39455c4bc193cce036bd169c702b5c020d53d2f6
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98602265"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>機能フィルターを使用して条件付き機能フラグを有効にする

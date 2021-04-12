@@ -12,10 +12,10 @@ ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98028222"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル:Video Indexer API の使用

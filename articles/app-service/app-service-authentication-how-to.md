@@ -4,12 +4,12 @@ description: App Service でさまざまなシナリオに合わせて認証お�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 4f2f43b142b290d29a4a90e504422b6c9ba2739c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.openlocfilehash: 50587feff29e1c02a639d63d0c99156dcec4f68e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98630329"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102180872"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -403,7 +403,7 @@ V2 API では、現在、Microsoft アカウントは個別のプロバイダー
 
 既存の構成に Microsoft アカウント プロバイダーが含まれており、Azure Active Directory プロバイダーが含まれていない場合は、構成を Azure Active Directory プロバイダーに切り替えてから、移行を実行できます。 これを行うには、次の手順を実行します。
 
-1. Azure portal で [ **[アプリの登録]** ](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) に移動して、お使いの Microsoft アカウント プロバイダーに関連付けられている登録を見つけます。 [個人用アカウントからのアプリケーション] という見出しの下に表示されている場合があります。
+1. Azure portal で [ **[アプリの登録]**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) に移動して、お使いの Microsoft アカウント プロバイダーに関連付けられている登録を見つけます。 [個人用アカウントからのアプリケーション] という見出しの下に表示されている場合があります。
 1. その登録の [認証] ページに移動します。 [リダイレクト URI] の下に、末尾が `/.auth/login/microsoftaccount/callback` のエントリが表示されます。 この URI をコピーします。
 1. コピーしたものと一致する新しい URI を追加します。ただし、末尾は `/.auth/login/aad/callback` にする必要があります。 これにより、App Service の認証および承認構成でこの登録を使用できるようになります。
 1. アプリの App Service 認証および承認構成に移動します。
@@ -648,7 +648,7 @@ V2 API では、現在、Microsoft アカウントは個別のプロバイダー
 
 ##### <a name="from-the-azure-cli"></a>Azure CLI から
 
-Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
+Azure CLI を使用して、[az webapp auth show](/cli/azure/webapp/auth#az-webapp-auth-show) コマンドで現在のミドルウェア バージョンを表示します。
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -679,7 +679,7 @@ CLI 出力に `runtimeVersion` フィールドが表示されます。 次の出
 
 #### <a name="update-the-current-runtime-version"></a>現在のランタイム バージョンの更新
 
-Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
+Azure CLI を使用すると、[az webapp auth update](/cli/azure/webapp/auth#az-webapp-auth-update) コマンドでアプリの `runtimeVersion` 設定を更新できます。
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \

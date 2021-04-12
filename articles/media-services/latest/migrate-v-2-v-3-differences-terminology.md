@@ -9,14 +9,14 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 1/14/2020
+ms.date: 03/25/2021
 ms.author: inhenkel
-ms.openlocfilehash: 6f677c8753f09e146d300186e19217568952b417
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 42c4c91b6715ffec4c734632c69623206bc6dbae
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101705400"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076004"
 ---
 # <a name="terminology-and-entity-changes-between-media-services-v2-and-v3"></a>Media Services v2 と v3 の間の用語とエンティティの変更
 
@@ -73,7 +73,7 @@ Media Services V3 リソースに適用される名前付け規則をご確認�
 | **[エンコード]** <!--new row --> |||
 | エンコード ビットレート <!--new row --> | kbps で測定されるビットレート。例:128 (kbps)| 1 秒あたりのビット数。例:128000 (ビット/秒)|
 | エンコード DRM FairPlay <!--new row --> | Media Services V2 では、初期化ベクター (IV) を指定できます。 | Media Services V3 では、FairPlay IV を指定することはできません。|
-| Premium エンコーダー <!--new row --> | Premium エンコーダーと従来のインデクサー| [Premium Encoder](../previous/media-services-encode-asset.md) と従来の [Media Analytics プロセッサ](../previous/legacy-components.md)(Azure Media Services Indexer 2 プレビュー、Face Redactor など) は V3 を使用してアクセスできません。 Standard エンコーダーへのオーディオ チャネル マッピングのサポートを追加しました。  [Media Services Encoding Swagger ドキュメントの Audio](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) を参照してください。  | [シナリオベースのエンコード](migrate-v-2-v-3-migration-scenario-based-encoding.md)に関する記事のエンコードのトピックを参照してください。 |
+| Premium エンコーダー <!--new row --> | Premium エンコーダーと従来のインデクサー| [Premium Encoder](../previous/media-services-encode-asset.md) と従来の [Media Analytics プロセッサ](../previous/legacy-components.md)(Azure Media Services Indexer 2 プレビュー、Face Redactor など) は V3 を使用してアクセスできません。 Standard エンコーダーへのオーディオ チャネル マッピングのサポートを追加しました。  [Media Services Encoding Swagger ドキュメントの Audio](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2020-05-01/Encoding.json) を参照してください。  <br/> [シナリオベースのエンコード](migrate-v-2-v-3-migration-scenario-based-encoding.md)に関する記事のエンコードのトピックを参照してください。 |
 | **変換およびジョブ** <!--new row -->|||
 | ジョブ ベースの処理用 HTTPS <!--new row --> |<!-- empty -->| ファイル ベースのジョブ処理では、入力として HTTPS URL を使用できます。 Azure にコンテンツをあらかじめ格納しておく必要がなく、資産を作成する必要もありません。 |
 | ジョブの ARM テンプレート <!--new row --> | ARM テンプレートは V2 には存在しませんでした。 | 変換を使用して、再利用可能な構成を構築し、Azure Resource Manager テンプレートを作成し、複数の顧客またはテナント間の処理の設定を分離することができます。 |
@@ -90,7 +90,3 @@ Media Services V3 リソースに適用される名前付け規則をご確認�
 | ライブ イベントのスタンバイ モード <!--new row --> | V2 にはスタンバイ モードがありませんでした。 | スタンドバイ モードは、ライブ イベントのホット プールを管理するのに役立つ新しい v3 機能です。 お客様は、ライブイベントを実行中の状態に移行する前に、より低いコストでスタンバイ モードで開始できるようになりました。 これにより、チャネルの開始時間が短縮され、すばやく起動するためにホット プールを運用するコストが削減されます。 |
 | ライブ イベントの課金 <!--new row --> | <!-- empty-->| ライブ イベントの課金はライブ チャンネルの測定に基づいています。 |
 | ライブ出力 <!--new row --> | プログラムは、作成後に開始する必要がありました。 | ライブ出力は作成すると開始され、削除されると停止します。 |
-
-## <a name="next-steps"></a>次のステップ
-
-[!INCLUDE [migration guide next steps](./includes/migration-guide-next-steps.md)]

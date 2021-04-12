@@ -1,20 +1,20 @@
 ---
 title: .NET を使用して Azure Queue Storage の使用を開始する - Azure Storage
 description: Azure Queue Storage を使用すると、アプリケーション コンポーネント間での信頼性の高い非同期メッセージングが提供されます。 クラウド メッセージングにより、アプリケーション コンポーネントのスケールを個別に変更できます。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 10/08/2020
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d54b8f15c90aa8f6ffcc04453fee0349e501f47d
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 5e32779e75480d365ec10e8c7f849fddd27c891c
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97585753"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275993"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>.NET を使用して Azure Queue Storage の使用を開始する
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9b711b9a6923a1923562a282dcaffe7cecb0c58b
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 3f186ea4afd6a8bbf52f91e94f2976f244fc8dda
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98898140"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106120862"
 ---
 # <a name="streaming-locators"></a>ストリーミング ロケーター
 
@@ -29,7 +29,7 @@ ms.locfileid: "98898140"
 
 * [アセット](assets-concept.md)
 * [ストリーミング ポリシー](streaming-policy-concept.md)
-* [コンテンツ キー ポリシー](content-key-policy-concept.md)
+* [コンテンツ キー ポリシー](drm-content-key-policy-concept.md)
 
 ストリーミング ロケーターで開始時刻と終了時刻を指定することもできます。これにより、ユーザーはこれらの時刻の間 (例: 2019 年 5 月 1 日から 2019 年 5 月 5 日の間) のコンテンツのみを再生できます。  
 
@@ -37,7 +37,7 @@ ms.locfileid: "98898140"
 
 * **ストリーミング ロケーター** は更新できません。 
 * Datetime 型の **ストリーミング ロケーター** のプロパティは、常に UTC 形式です。
-* お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳しくは、[クォータと制限](limits-quotas-constraints.md)に関するトピックを参照してください。
+* お使いの Media Service アカウント用にポリシーの限られたセットを設計し、同じオプションが必要な場合は常に、ストリーミング ロケーターに対して同じセットを再利用してください。 詳しくは、[クォータと制限](limits-quotas-constraints-reference.md)に関するトピックを参照してください。
 
 ## <a name="create-streaming-locators"></a>ストリーミング ロケーターの作成  
 
@@ -85,7 +85,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ## <a name="filter-order-page-streaming-locator-entities"></a>ストリーミング ロケーター エンティティのフィルター処理、順序付け、ページング
 
-「[Media Services エンティティのフィルター処理、順序付け、ページング](entities-overview.md)」を参照してください。
+「[Media Services エンティティのフィルター処理、順序付け、ページング](filter-order-page-entitites-how-to.md)」を参照してください。
 
 ## <a name="list-streaming-locators-by-asset-name"></a>アセット名別のストリーミング ロケーターの一覧
 
@@ -94,8 +94,8 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 |Language|API|
 |---|---|
 |REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
-|CLI|[az ams asset list-streaming-locators](/cli/azure/ams/asset?view=azure-cli-latest#az-ams-asset-list-streaming-locators)|
-|.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators?view=azure-dotnet#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
+|CLI|[az ams asset list-streaming-locators](/cli/azure/ams/asset#az-ams-asset-list-streaming-locators)|
+|.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
 
@@ -103,7 +103,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 * [アセット](assets-concept.md)
 * [ストリーミング ポリシー](streaming-policy-concept.md)
-* [コンテンツ キー ポリシー](content-key-policy-concept.md)
+* [コンテンツ キー ポリシー](drm-content-key-policy-concept.md)
 * [チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>次のステップ

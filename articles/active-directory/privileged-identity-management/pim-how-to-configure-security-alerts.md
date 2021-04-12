@@ -14,12 +14,12 @@ ms.date: 03/05/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a632c0e31de1c2d7e5417656d537e5f9f82ecfbe
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 26b519ce11747ab3374d9bd286800a6c93129019
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180491"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565233"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-privileged-identity-management"></a>Privileged Identity Management で Azure AD ロールに対するセキュリティ アラートを構成する
 
@@ -50,9 +50,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>管理者が特権ロールを使用してません
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | 特権ロールが割り当てられているユーザーは、攻撃の可能性を高める必要がありません。 アクティブに使用されていないアカウントでは、攻撃者が気付かれずに居続けることもより簡単です。 |
 | **修正方法** | リスト内のユーザーを確認し、必要のない特権ロールから、これらのユーザーを削除します。 |
 | **防止** | 業務上の正当な理由があるユーザーにのみ、特権ロールを割り当てます。 </br>定期的な[アクセス レビュー](pim-how-to-start-security-review.md)をスケジュールして、ユーザーにまだそれらのアクセスが必要なことを確認します。 |
@@ -62,9 +63,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>ロールをアクティブ化するのに多要素認証は必要ありません
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | Multi-Factor Authentication を使用しないと、侵害されたユーザーが特権ロールをアクティブ化できます。 |
 | **修正方法** | ロールのリストを確認し、すべてのロールに対して [Multi-Factor Authentication を要求](pim-how-to-change-default-settings.md)します。 |
 | **防止** | すべてのロールに対して [MFA を要求](pim-how-to-change-default-settings.md)します。  |
@@ -72,17 +74,19 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>組織に Azure AD Premium P2 がない
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | 現在の Azure AD 組織に、Azure AD Premium P2 がありません。 |
 | **修正方法** | [Azure AD のエディション](../fundamentals/active-directory-whatis.md)に関する情報を確認します。 Azure AD Premium P2 にアップグレードします。 |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potential stale accounts in a privileged role (特権ロール内のアカウントが古い可能性があります)
 
-| | |
+重大度: **中**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | Medium |
 | **このアラートが表示される理由** | 過去 90 日間にパスワードを変更していない特権ロール内のアカウントです。 このようなアカウントは、保守されておらず、攻撃者に対して脆弱なサービス アカウントまたは共有アカウントの可能性があります。 |
 | **修正方法** | リスト内のアカウントを確認します。 もうアクセスが不要になっているアカウントは、特権ロールから削除します。 |
 | **防止** | パスワードを知っているユーザーの変更がある場合に、共有されているアカウントが、強固なパスワードのローテーションを行っていることを確認します。 </br>[アクセス レビュー](pim-how-to-start-security-review.md)を使用して特権ロールを持つアカウントを定期的に確認し、不要になっているロールの割り当てを削除します。 |
@@ -91,9 +95,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>ロールが Privileged Identity Management の外部に割り当てられている
 
-| | |
+重大度: **高**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 高 |
 | **このアラートが表示される理由** | Privileged Identity Management の外部で行われた特権ロールの割り当てが正しく監視されておらず、アクティブな攻撃を示している可能性があります。 |
 | **修正方法** | リスト内のユーザーを確認し、Privileged Identity Management の外部で割り当てられた特権ロールから、これらのユーザーを削除します。 |
 | **防止** | ユーザーが特権ロールを割り当てられた Privileged Identity Management の外部の場所を調査し、そこからの今後の割り当てを禁止します。 |
@@ -101,9 +106,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="there-are-too-many-global-administrators"></a>グローバル管理者が多すぎます
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | グローバル管理者は、最上位の特権ロールです。 グローバル管理者が侵害された場合、攻撃者はこの管理者のすべてのアクセス許可を使用できるようになり、システム全体が危険にさらされます。 |
 | **修正方法** | リスト内のユーザーを確認し、必ずしもグローバル管理者ロールが必要ではないユーザーをすべて削除します。 </br>代わりに、下位の特権ロールをこれらのユーザーに割り当てます。 |
 | **防止** | ユーザーには最低限必要な特権ロールを割り当てます。 |
@@ -114,9 +120,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="roles-are-being-activated-too-frequently"></a>ロールをアクティブ化する頻度が高すぎます
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | 同じユーザーが同じ特権ロールに対してアクティブ化を複数行っているのは、攻撃の兆候です。 |
 | **修正方法** | リスト内のユーザーを確認し、それらのユーザーの特権ロールの[アクティブ化期間](pim-how-to-change-default-settings.md)が、タスクを実行するのに十分長い設定になっていることを確認します。 |
 | **防止** | 特権ロールの[アクティブ化期間](pim-how-to-change-default-settings.md)が、タスクを実行するのに十分長い設定になっていることを確認します。</br>複数の管理者によって共有されるアカウントを持つ特権ロールの [Multi-Factor Authentication を要求](pim-how-to-change-default-settings.md)します。 |
@@ -149,9 +156,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="administrators-arent-using-their-privileged-roles"></a>管理者が特権ロールを使用してません
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | 特権ロールが割り当てられているユーザーは、攻撃の可能性を高める必要がありません。 アクティブに使用されていないアカウントでは、攻撃者が気付かれずに居続けることもより簡単です。 |
 | **修正方法** | リスト内のユーザーを確認し、必要のない特権ロールから、これらのユーザーを削除します。 |
 | **防止** | 業務上の正当な理由があるユーザーにのみ、特権ロールを割り当てます。 </br>定期的な[アクセス レビュー](pim-how-to-start-security-review.md)をスケジュールして、ユーザーにまだそれらのアクセスが必要なことを確認します。 |
@@ -161,9 +169,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="roles-dont-require-multi-factor-authentication-for-activation"></a>ロールをアクティブ化するのに多要素認証は必要ありません
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | Multi-Factor Authentication を使用しないと、侵害されたユーザーが特権ロールをアクティブ化できます。 |
 | **修正方法** | ロールのリストを確認し、すべてのロールに対して [Multi-Factor Authentication を要求](pim-how-to-change-default-settings.md)します。 |
 | **防止** | すべてのロールに対して [MFA を要求](pim-how-to-change-default-settings.md)します。  |
@@ -171,17 +180,19 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="the-organization-doesnt-have-azure-ad-premium-p2"></a>組織に Azure AD Premium P2 がない
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | 現在の Azure AD 組織に、Azure AD Premium P2 がありません。 |
 | **修正方法** | [Azure AD のエディション](../fundamentals/active-directory-whatis.md)に関する情報を確認します。 Azure AD Premium P2 にアップグレードします。 |
 
 ### <a name="potential-stale-accounts-in-a-privileged-role"></a>Potential stale accounts in a privileged role (特権ロール内のアカウントが古い可能性があります)
 
-| | |
+重大度: **中**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | Medium |
 | **このアラートが表示される理由** | 過去 90 日間にパスワードを変更していない特権ロール内のアカウントです。 このようなアカウントは、保守されておらず、攻撃者に対して脆弱なサービス アカウントまたは共有アカウントの可能性があります。 |
 | **修正方法** | リスト内のアカウントを確認します。 もうアクセスが不要になっているアカウントは、特権ロールから削除します。 |
 | **防止** | パスワードを知っているユーザーの変更がある場合に、共有されているアカウントが、強固なパスワードのローテーションを行っていることを確認します。 </br>[アクセス レビュー](pim-how-to-start-security-review.md)を使用して特権ロールを持つアカウントを定期的に確認し、不要になっているロールの割り当てを削除します。 |
@@ -190,9 +201,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="roles-are-being-assigned-outside-of-privileged-identity-management"></a>ロールが Privileged Identity Management の外部に割り当てられている
 
-| | |
+重大度: **高**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 高 |
 | **このアラートが表示される理由** | Privileged Identity Management の外部で行われた特権ロールの割り当てが正しく監視されておらず、アクティブな攻撃を示している可能性があります。 |
 | **修正方法** | リスト内のユーザーを確認し、Privileged Identity Management の外部で割り当てられた特権ロールから、これらのユーザーを削除します。 |
 | **防止** | ユーザーが特権ロールを割り当てられた Privileged Identity Management の外部の場所を調査し、そこからの今後の割り当てを禁止します。 |
@@ -200,9 +212,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="there-are-too-many-global-administrators"></a>グローバル管理者が多すぎます
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | グローバル管理者は、最上位の特権ロールです。 グローバル管理者が侵害された場合、攻撃者はこの管理者のすべてのアクセス許可を使用できるようになり、システム全体が危険にさらされます。 |
 | **修正方法** | リスト内のユーザーを確認し、必ずしもグローバル管理者ロールが必要ではないユーザーをすべて削除します。 </br>代わりに、下位の特権ロールをこれらのユーザーに割り当てます。 |
 | **防止** | ユーザーには最低限必要な特権ロールを割り当てます。 |
@@ -213,9 +226,10 @@ Azure AD ロールに関するセキュリティ アラートを調査するに�
 
 ### <a name="roles-are-being-activated-too-frequently"></a>ロールをアクティブ化する頻度が高すぎます
 
-| | |
+重要度: **低**
+
+| | 説明 |
 | --- | --- |
-| **Severity** | 低 |
 | **このアラートが表示される理由** | 同じユーザーが同じ特権ロールに対してアクティブ化を複数行っているのは、攻撃の兆候です。 |
 | **修正方法** | リスト内のユーザーを確認し、それらのユーザーの特権ロールの[アクティブ化期間](pim-how-to-change-default-settings.md)が、タスクを実行するのに十分長い設定になっていることを確認します。 |
 | **防止** | 特権ロールの[アクティブ化期間](pim-how-to-change-default-settings.md)が、タスクを実行するのに十分長い設定になっていることを確認します。</br>複数の管理者によって共有されるアカウントを持つ特権ロールの [Multi-Factor Authentication を要求](pim-how-to-change-default-settings.md)します。 |

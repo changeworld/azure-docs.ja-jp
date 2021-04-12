@@ -4,12 +4,12 @@ description: HDInsight クラスターで Hive レプリケーションを使用
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 2e57b7d8121ac0bd6fc9cb693750c41a0ef6a5bc
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941343"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101733059"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Apache Hive レプリケーションを使用する方法
 
@@ -19,7 +19,7 @@ Hive Replication は長年にわたって進化しており、新しいバージ
 
 ## <a name="advantages-of-replv2"></a>Replv2 の利点
 
-[HiveReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) (または Replv2) には、Hive の [IMPORT と EXPORT](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport) を使用していた Hive レプリケーションの最初のバージョンと比べて次の利点があります。
+[Hive ReplicationV2](https://cwiki.apache.org/confluence/display/Hive/HiveReplicationv2Development) (Replv2 とも呼ばれます) には、Hive の [IMPORT と EXPORT](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ImportExport) を使用していた Hive レプリケーションの最初のバージョンと比べて次の利点があります。
 
 - イベント ベースの増分レプリケーション
 - ポイントインタイム レプリケーション  

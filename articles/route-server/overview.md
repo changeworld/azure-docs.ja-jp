@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: overview
 ms.date: 03/02/2021
 ms.author: duau
-ms.openlocfilehash: 98527ea5227fcdc2c35dbe3579657368e30fcdaa
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: d868c064b96f58ab3febc1fd3b7f20b74d507cb0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101680587"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102437163"
 ---
 # <a name="what-is-azure-route-server-preview"></a>Azure Route Server (プレビュー) とは 
 
@@ -37,7 +37,7 @@ Azure Route Server を使用すると、仮想ネットワークでの NVA の�
 
 * NVA により新しいルートがアナウンスされたり、古いルートが取り消されたりするたびに、[ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md)を手動で更新する必要がなくなりました。 
 
-* 回復性やパフォーマンス上の目的で、NVA の前にロード バランサーを構成する必要がなくなりました。 NVA の複数のインスタンスを Azure Route Server とピアリングする場合は、NVA で BGP 属性を構成できます。 これらの BGP 属性により、Azure Route Server がどの NVA インスタンスをアクティブまたはパッシブにするかを指定できるようになります。 
+* NVA の複数のインスタンスを Azure Route Server にピアリングすることができます。 BGP の属性を NVA で構成したり、実際の設計 (パフォーマンスを意図したアクティブ/アクティブ、回復性を意図したアクティブ/パッシブなど) に応じて、どの NVA インスタンスがアクティブで、どの NVA インスタンスがパッシブであるかを Azure Route Server に知らせたりすることができます。 
 
 * NVA と Azure Route Server 間のインターフェイスは、共通の標準プロトコルに基づいています。 NVA で BGP がサポートされている限り、Azure Route Server とピアリングすることができます。 詳細については、[ルート サーバーでサポートされるルーティング プロトコル](route-server-faq.md#protocol)に関するページを参照してください。
 
@@ -49,5 +49,5 @@ Azure Route Server に関してよく寄せられる質問については、[Azu
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Route Server を構成する方法について学習する](quickstart-configure-route-server-portal.md)。
+- [Azure Route Server を構成する方法について学習する](quickstart-configure-route-server-powershell.md)
 - [Azure Route Server が Azure ExpressRoute および Azure VPN とどのように連携するかについて学習する](expressroute-vpn-support.md)

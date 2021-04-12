@@ -1,7 +1,7 @@
 ---
 title: Media Services SDK for .NET の再試行ロジック | Microsoft Docs
 description: このトピックでは、Media Services SDK for .NET の再試行ロジックの概要を説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: juliako
-ms.openlocfilehash: 144db6a5ceaf56a35d3ce11dd54e1dfb4c97d7e3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 3/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: fe37c9f7727535a292b029c342aa0e85ce0a86ec
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89264115"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644114"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Media Services SDK for .NET の再試行ロジック
 
@@ -52,7 +52,7 @@ Microsoft Azure サービスの使用中に、一時的な障害が発生する�
 | IOException |いいえ |はい |いいえ |いいえ |
 
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> WebException 状態コード
-次の表では、再試行ロジックが実装される WebException エラー コードを示します。 [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) の列挙型は、状態コードを定義します。  
+次の表では、再試行ロジックが実装される WebException エラー コードを示します。 [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus) の列挙型は、状態コードを定義します。  
 
 | Status | Web Request | ストレージ | クエリ | SaveChanges |
 | --- | --- | --- | --- | --- |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: 07685cccf5a8dce99ae13e6df5186a5da44b1338
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 60ce503d4a89f245f28d5034924cb8c89c926b3f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559421"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104771296"
 ---
 # <a name="step-2-configure-your-security-solution-to-send-cef-messages"></a>手順 2: CEF メッセージを送信するように、セキュリティ ソリューションを構成する
 
@@ -31,6 +31,8 @@ ms.locfileid: "99559421"
 
 - [AI Vectra 検出](connect-ai-vectra-detect.md)
 - [Akamai セキュリティ イベント](connect-akamai-security-events.md)
+- [Aruba ClearPass](connect-aruba-clearpass.md)
+- [Broadcom Symantec DLP](connect-broadcom-symantec-dlp.md)
 - [Check Point](connect-checkpoint.md)
 - [Cisco ASA](connect-cisco.md)
 - [Citrix WAF](connect-citrix-waf.md)
@@ -78,5 +80,7 @@ ms.locfileid: "99559421"
 ## <a name="next-steps"></a>次のステップ
 
 このドキュメントでは、CEF アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
+
+- [Cef および CommonSecurityLog フィールド マッピング](cef-name-mapping.md)についての説明。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
 - [Azure Sentinel を使用した脅威の検出](./tutorial-detect-threats-built-in.md)の概要。

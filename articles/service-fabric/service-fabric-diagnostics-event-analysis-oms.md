@@ -1,16 +1,14 @@
 ---
 title: Azure Monitor ログを使用した Azure Service Fabric イベント分析
 description: Azure Service Fabric クラスターの監視と診断での Azure Monitor ログを使用したイベントの視覚化と分析について説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.author: srrengar
-ms.openlocfilehash: 678e96c9b5611cd6d72abd7c4582691b55ffe479
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: f1e22213c857b400cc36c51cefb90e2379352893
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581549"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628970"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Azure Monitor ログを使用したイベントの分析と視覚化
  Azure Monitor ログでは、クラウド内でホストされているアプリケーションとサービスからテレメトリが収集および分析され、それらの可用性とパフォーマンスを最大限に高めるために役立つ分析ツールが提供されます。 この記事では、Azure Monitor ログでクエリを実行して分析情報を取得し、クラスター内の処理をトラブルシューティングする方法について説明します。 次のような一般的な質問に対応します。

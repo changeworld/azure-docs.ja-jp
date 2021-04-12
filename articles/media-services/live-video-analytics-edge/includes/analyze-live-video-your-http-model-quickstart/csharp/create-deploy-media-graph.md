@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: 597a617f892ba00af13b4f88cad1eddf00f0d11b
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101751108"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>サンプル ファイルを調べて編集する

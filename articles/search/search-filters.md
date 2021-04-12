@@ -7,53 +7,46 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/02/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6d83e5c39f97db49e2cc9b77cc806cff0a1fa6de
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ba538f4753c2365406bd88286b6d54cff1a9e9ea
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355986"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104800824"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Azure Cognitive Search のフィルター 
 
-*フィルター* は、Azure Cognitive Search で使用されているドキュメントの選択条件です。 フィルター処理されていない検索には、インデックスのすべてのドキュメントが含まれます。 フィルターによって、検索クエリの範囲がドキュメントのサブセットに絞り込まれます。 たとえば、フィルターによって、フルテキスト検索を特定のブランドや色、特定のしきい値を超える価格帯の製品のみに制限することができます。
+"*フィルター*" により、クエリに使用するドキュメントを選択するための、値に基づく条件が提供されます。 フィルターとして指定できるのは、単一の値または OData [フィルター式](search-query-odata-filter.md)です。 フルテキスト検索とは異なり、フィルター値または式では厳密な一致のみが返されます。
 
-一部の検索エクスペリエンスは実装の一部としてフィルター要件を課しますが、*値ベース* (製品の種類を "書籍"、カテゴリを "ノンフィクション"、出版元を "Simon & Schuster" に検索範囲を指定するなど) の条件を使用して検索を制限したいときにいつでもフィルターを使用できます。
-
-値ベースではなく、特定のデータ *構造* (検索範囲を顧客レビュー フィールドに指定するなど) を対象にした検索が目標の場合、以下のように代替の方法があります。
+[ファセット ナビゲーション](search-filters-facets.md)などの一部の検索エクスペリエンスは実装の一部としてフィルターに依存していますが、クエリのスコープを特定の値に限定する必要がある場合には、いつでもフィルターを使用できます。 一方、クエリを特定のフィールドに限定することが目的である場合には、以下で説明する別の方法があります。
 
 ## <a name="when-to-use-a-filter"></a>フィルターを使用する場合
 
 フィルターは、"近くを検索"、ファセット ナビゲーション、ユーザーに閲覧が許可されているドキュメントのみを表示するセキュリティ フィルターなど、一部の検索エクスペリエンスの基盤です。 これらいずれかのエクスペリエンスを実装する場合、フィルターは必須です。 これは、地理座標、ユーザーが選択したファセット カテゴリ、または要求側のセキュリティ ID を提供する検索クエリにアタッチされるフィルターです。
 
-次のようなシナリオ例があります。
+一般的なシナリオには次のようなものがあります。
 
-1. フィルターを使用して、インデックスのデータ値に基づいてインデックスをスライスします。 市区町村、住宅の種類、および設備が設定つれたスキーマがある場合、条件 (シアトル、コンドミニアム、ウォーターフロント) を満たすドキュメントを明示的に選択するフィルターを作成できます。 
++ インデックスの内容に基づいて検索結果をスライスする。 ホテルの場所、カテゴリ、アメニティを持つスキーマを指定すると、条件 (シアトル、水辺、眺望) を明示的に一致させるフィルターを作成することができます。 
 
-   同じ入力を使用したフルテキスト検索からは、多くの場合、似た結果が生成されますが、フィルターはインデックスのコンテンツに対してフィルター用語との完全一致を必須とするため、より正確です。 
++ フィルター要件のある検索エクスペリエンスを実装する。
 
-2. 検索エクスペリエンスにフィルター要件がある場合はフィルターを使用します。
+  + [ファセット ナビゲーション](search-faceted-navigation.md)では、フィルターを使用して、ユーザーが選択したファセット カテゴリが渡されます。
+  + geo 検索では、"近くを検索" アプリで現在地の座標を渡すためにフィルターを使用します。 
+  + [セキュリティ フィルター](search-security-trimming-for-azure-search.md)ではセキュリティ識別子がフィルター条件として渡されます。インデックスの一致は、ドキュメントに対するアクセス権のプロキシとして機能します。
 
-   * [ファセット ナビゲーション](search-faceted-navigation.md)では、フィルターを使用して、ユーザーが選択したファセット カテゴリが渡されます。
-   * geo 検索では、"近くを検索" アプリで現在地の座標を渡すためにフィルターを使用します。 
-   * セキュリティ フィルターはセキュリティ識別子をフィルター条件として渡します。インデックスの一致は、ドキュメントに対するアクセス権のプロキシとして機能します。
-
-3. 数値フィールドに対する検索条件が必要な場合は、フィルターを使用します。 
-
-   数値フィールドはドキュメントで取得可能で、検索結果に表示することができますが、個々に検索することはできません (フルテキスト検索のため)。 数値データに基づく選択条件が必要な場合は、フィルターを使用します。
++ "数値検索" を実行する。 数値フィールドは取得可能で、検索結果に表示することができますが、個々に検索することはできません (フルテキスト検索に従うため)。 数値データに基づく選択条件が必要な場合は、フィルターを使用します。
 
 ### <a name="alternative-methods-for-reducing-scope"></a>スコープを減らすための代替方法
 
 検索結果を絞り込むには、フィルターが唯一の選択肢ではありません。 目的に応じて、より適した代替方法があります。
 
- + `searchFields` クエリ パラメーターは、検索対象を特定のフィールドに限定します。 たとえば、英語とスペイン語の説明用に別のフィールドを用意したインデックスがある場合、searchFields を使用して、フルテキスト検索の対象にするフィールドを指定できます。 
++ `searchFields` クエリ パラメーターでは、検索対象が特定のフィールドに限定されます。 たとえば、英語とスペイン語の説明用に別のフィールドを用意したインデックスがある場合、searchFields を使用して、フルテキスト検索の対象にするフィールドを指定できます。 
 
 + `$select` パラメーターは、結果セットに含めるフィールドを指定するために使用できます。効果的に応答をトリミングしてから、呼び出し元アプリケーションに送信することができます。 このパラメーターでクエリが絞り込まれたり、ドキュメント コレクションが減ったりすることはありませんが、応答の量を小さくする場合、このパラメーターの使用を検討します。 
 
 各パラメーターの詳細については、[「Search Documents」(ドキュメントの検索) > 「Request」(要求) > 「Query parameters」(クエリ パラメーター)](/rest/api/searchservice/search-documents#query-parameters) を参照してください。
-
 
 ## <a name="how-filters-are-executed"></a>フィルターの実行方法
 
@@ -62,7 +55,8 @@ ms.locfileid: "94355986"
 フィルターは検索と並行して実行され、ドキュメントの取得と関連性のスコア付けのためにダウンストリーム処理に含めるドキュメントを特定します。 フィルターを検索文字列と組み合わせて使用すると、以降の検索操作での再指定を効果的に減らすことができます。 フィルターを単独で使用すると (たとえば、`search=*` ではクエリ文字列が空です)、フィルター条件が唯一の入力になります。 
 
 ## <a name="defining-filters"></a>フィルターを定義する
-フィルターは [Azure Cognitive Search でサポートされている OData V4 構文のサブセット](/rest/api/searchservice/odata-expression-syntax-for-azure-search)を使用して記述される OData 式です。 
+
+フィルターは OData 式であり、Cognitive Search によってサポートされる[フィルター構文](search-query-odata-filter.md)で表現されます。
 
 各 **検索** 操作に 1 つのフィルターを指定できますが、フィルター自体には複数のフィールド、複数の条件、および複数のフルテキスト検索式 (**ismatch** 関数を使用する場合) を含めることができます。 マルチパートのフィルター式では、任意の順序で述語を指定できます (演算子の優先順位の規則に従います)。 特定の順序で述語を並べ替えても、感知できるほどパフォーマンスが向上することはありません。
 
@@ -100,27 +94,32 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
 
 + クエリ文字列がないスタンドアロンの **$filter**。関係があるドキュメントをフィルター式で完全に修飾できる場合に役立ちます。 クエリ文字列がない場合、字句または言語の分析、スコア付け、優先度付けはありません。 検索文字列がアスタリスクのみであることに注意してください。これは、"すべてのドキュメントを照合する" ことを意味しています。
 
-   ```
-   search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
-   ```
+  ```http
+  {
+    "search": "*",
+    "filter": "Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu"
+  }
+  ```
 
 + クエリ文字列と **$filter** の組み合わせ。フィルターによってサブセットが作成され、クエリ文字列は、フィルターされたサブセットに対するフルテキスト検索に用語入力を提供します。 用語 (walking distance theaters) を追加することにより、結果に検索スコアが導入され、用語に最も一致するドキュメントが上位にランク付けされます。 フィルターとクエリ文字列の併用は、最も一般的な使用パターンです。
 
-   ```
-  search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
-   ```
+  ```http
+  {
+    "search": "walking distance theaters",
+    "filter": "Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'"
+  }
 
-+ 複合クエリ。"or" で区切られ、それぞれに独自のフィルター条件があります (たとえば、'dog' の 'beagles'、'cat' の 'siamese')。 `or` で結合された式は個別に評価され、各式に一致するドキュメントの和集合が応答で返されます。 この使用パターンは、`search.ismatchscoring` 関数を使用して実行されます。 また、スコア付けなしバージョンである `search.ismatch` を使用することもできます。
++ Compound queries, separated by "or", each with its own filter criteria (for example, 'beagles' in 'dog' or 'siamese' in 'cat'). Expressions combined with `or` are evaluated individually, with the union of documents matching each expression sent back in the response. This usage pattern is achieved through the `search.ismatchscoring` function. You can also use the non-scoring version, `search.ismatch`.
 
    ```
-   # Match on hostels rated higher than 4 OR 5-star motels.
+   # <a name="match-on-hostels-rated-higher-than-4-or-5-star-motels"></a>4 つ星より上のホステルか、5 つ星のモーテルに一致します。
    $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
-   # Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
+   # <a name="match-on-luxury-or-high-end-in-the-description-field-or-on-category-exactly-equal-to-luxury"></a>description フィールド内に 'luxury' または 'high-end' が含まれているか、カテゴリが 'Luxury' とまったく同一の場合に一致します。
    $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  `or` の代わりに `and` を指定して、`search.ismatchscoring` によるフルテキスト検索とフィルターを結合することもできますが、これは検索要求で `search` パラメーターと `$filter` パラメーターを使用することと機能的に同じです。 たとえば、次の 2 つのクエリでは同じ結果が生成されます。
+  It is also possible to combine full-text search via `search.ismatchscoring` with filters using `and` instead of `or`, but this is functionally equivalent to using the `search` and `$filter` parameters in a search request. For example, the following two queries produce the same result:
 
   ```
   $filter=search.ismatchscoring('pool') and Rating ge 4
@@ -128,17 +127,16 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
   search=pool&$filter=Rating ge 4
   ```
 
-特定のユース ケースに関する包括的なガイダンスについては、以下の記事を参照してください。
+Follow up with these articles for comprehensive guidance on specific use cases:
 
-+ [ファセット フィルター](search-filters-facets.md)
-+ [言語フィルター](search-filters-language.md)
-+ [セキュリティによるトリミング](search-security-trimming-for-azure-search.md) 
++ [Facet filters](search-filters-facets.md)
++ [Security trimming](search-security-trimming-for-azure-search.md) 
 
-## <a name="field-requirements-for-filtering"></a>フィルターのフィールド要件
+## Field requirements for filtering
 
-REST API では、フィルター可能の設定は単純型フィールドの場合は既定で "*オン*" です。 フィルター可能なフィールドはインデックス サイズが大きくなります。実際にフィルターで使用する予定がないフィールドの場合は、`"filterable": false` を設定してください。 フィールド定義の設定の詳細については、「[Create Index](/rest/api/searchservice/create-index)」(インデックスの作成) を参照してください。
+In the REST API, filterable is *on* by default for simple fields. Filterable fields increase index size; be sure to set `"filterable": false` for fields that you don't plan to actually use in a filter. For more information about settings for field definitions, see [Create Index](/rest/api/searchservice/create-index).
 
-.NET SDK では、フィルター可能の設定は既定で *オフ* です。 対応する [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) オブジェクトの [IsFilterable プロパティ](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) を `true` に設定することで、フィールドをフィルター可能にすることができます。 次の例では、属性は、インデックス定義にマップされるモデル クラスの `BaseRate` プロパティで設定されています。
+In the .NET SDK, the filterable is *off* by default. You can make a field filterable by setting the [IsFilterable property](/dotnet/api/azure.search.documents.indexes.models.searchfield.isfilterable) of the corresponding [SearchField](/dotnet/api/azure.search.documents.indexes.models.searchfield) object to `true`. In the example below, the attribute is set on the `BaseRate` property of a model class that maps to the index definition.
 
 ```csharp
 [IsFilterable, IsSortable, IsFacetable]
@@ -151,7 +149,9 @@ public double? BaseRate { get; set; }
 
 ## <a name="text-filter-fundamentals"></a>テキスト フィルターの基礎
 
-テキスト フィルターでは、文字列フィールドと、フィルターに指定したリテラル文字列とを照合します。 フルテキスト検索とは異なり、テキスト フィルターには字句解析や単語区切り処理がないため、比較は完全一致のみです。 たとえば、フィールド *f* に "sunny day" が含まれる場合、`$filter=f eq 'Sunny'` は一致しませんが、`$filter=f eq 'sunny day'` は一致します。 
+テキスト フィルターでは、文字列フィールドと、フィルターに指定したリテラル文字列とを照合します: `$filter=Category eq 'Resort and Spa'`
+
+フルテキスト検索とは異なり、テキスト フィルターには字句解析や単語区切り処理がないため、比較は完全一致のみです。 たとえば、フィールド *f* に "sunny day" が含まれる場合、`$filter=f eq 'Sunny'` は一致しませんが、`$filter=f eq 'sunny day'` は一致します。 
 
 テキスト文字列は大文字と小文字が区別されます。 大文字の単語の小文字化処理はないため、`$filter=f eq 'Sunny day'` で "sunny day" は検索されません。
 

@@ -216,7 +216,9 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Azure への移行後に Azure VM のディザスター リカバリーをセットアップする
               href: azure-to-azure-replicate-after-migration.md
-            - name: ゾーンからゾーンへのディザスター リカバリー
+        - name: ゾーンからゾーンへのディザスター リカバリー
+          items:
+            - name: リージョン内のゾーン間のレプリケーションを有効にする
               href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: 管理する
           items:

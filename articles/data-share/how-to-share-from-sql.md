@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 11/12/2020
-ms.openlocfilehash: bdbbf3e808e1dda0970aaf87d154ee79bea4dcb1
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.date: 02/24/2021
+ms.openlocfilehash: f87ad76e9bb1db4d71716bf860d5fee2d413e8e9
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964169"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101740377"
 ---
 # <a name="share-and-receive-data-from-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database と Azure Synapse Analytics からのデータの共有と受信
 
@@ -275,7 +275,7 @@ Azure SQL Database、Azure Synapse Analytics へのデータを受信するこ�
 ### <a name="trigger-a-snapshot"></a>スナップショットをトリガーする
 これらの手順は、スナップショットベースの共有にのみ適用されます。
 
-1. スナップショットをトリガーするには、 **[詳細]** タブ、 **[スナップショットのトリガー]** の順に選択します。 これで、データの完全なスナップショットまたは増分スナップショットをトリガーすることができます。 データ プロバイダーから初めてデータを受信する場合は、完全なコピーを選択します。 SQL ソースの場合は、完全なスナップショットのみがサポートされます。
+1. スナップショットをトリガーするには、 **[詳細]** タブ、 **[スナップショットのトリガー]** の順に選択します。 これで、データの完全なスナップショットまたは増分スナップショットをトリガーすることができます。 データ プロバイダーから初めてデータを受信する場合は、完全なコピーを選択します。 SQL ソースの場合は、完全なスナップショットのみがサポートされます。 1 つのスナップショットが実行されている場合、後続のスナップショットは前のものが完了するまで開始されません。
 
    ![スナップショットのトリガー](./media/trigger-snapshot.png "スナップショットのトリガー") 
 

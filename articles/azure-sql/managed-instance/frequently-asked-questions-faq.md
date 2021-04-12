@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: f58811411a447eae4ff9a5c0fd2a9888b4a39a34
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 17e97503996b53868f12e74ed5a38dba63285426
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99428675"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102503200"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Azure SQL Managed Instance と SQL Server 間での構文と動作の違いに�
 
 **マネージド インスタンスをスケーリングするにはどうすればよいですか?**
 
-マネージド インスタンスは、[Azure portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、[PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-update&preserve-view=true) または [ARM テンプレート](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)からスケーリングできます。
+マネージド インスタンスは、[Azure portal](../database/service-tiers-vcore.md?tabs=azure-portal#selecting-a-hardware-generation)、[PowerShell](/archive/blogs/sqlserverstorageengine/change-size-azure-sql-managed-instance-using-powershell)、[Azure CLI](/cli/azure/sql/mi#az-sql-mi-update) または [ARM テンプレート](/archive/blogs/sqlserverstorageengine/updating-azure-sql-managed-instance-properties-using-arm-templates)からスケーリングできます。
 
 **Managed Instance をあるリージョンから別のリージョンに移動することはできますか?**
 
@@ -102,7 +102,7 @@ Azure SQL Managed Instance と SQL Server 間での構文と動作の違いに�
 
 **Managed Instance を削除するにはどうすればよいですか?**
 
-Managed Instance は、Azure portal、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance?preserve-view=true&view=azps-4.3.0)、[Azure CLI](/cli/azure/sql/mi?view=azure-cli-latest#az-sql-mi-delete&preserve-view=true) または [Resource Manager REST API](/rest/api/sql/managedinstances/delete) を使用して削除できます。
+Managed Instance は、Azure portal、[PowerShell](/powershell/module/az.sql/remove-azsqlinstance)、[Azure CLI](/cli/azure/sql/mi#az-sql-mi-delete) または [Resource Manager REST API](/rest/api/sql/managedinstances/delete) を使用して削除できます。
 
 **インスタンスを作成または更新したり、データベースを復元したりするのにどれくらいの時間がかかりますか?**
 

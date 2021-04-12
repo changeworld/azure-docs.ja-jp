@@ -4,12 +4,12 @@ description: 迅速に Kubernetes クラスターを作成し、Azure CLI を使
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 3fcdca6cf2b0ef05494156e25e437af9c2ced712
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 13b4fbd21bb348d1ef79a3ca68128869115745cc
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100588029"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200902"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Azure CLI を使用して Azure Kubernetes Service (AKS) クラスター上に Windows Server コンテナーを作成する
 
@@ -69,32 +69,35 @@ az group create --name myResourceGroup --location eastus
 
 Windows Server コンテナー用のノード プールをサポートする AKS クラスターを実行するには、[Azure CNI][azure-cni-about] の (高度な) ネットワーク プラグインを使用するネットワーク ポリシーを、ご利用のクラスターで使用する必要があります。 必要なサブネット範囲とネットワークに関する考慮事項を計画するのに役立つ詳細情報については、[Azure CNI ネットワークの構成][use-advanced-networking]に関するページを参照してください。 *myAKSCluster* という名前の AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 このコマンドでは、必要なネットワーク リソースが存在しない場合、それらが作成されます。
 
-* クラスターは 2 つのノードで構成されています
-* クラスター上に作成されるすべての Windows Server コンテナーの管理者資格情報は、*windows-admin-password* パラメーターと *windows-admin-username* パラメーターによって設定されます。前者は [Windows Server のパスワード要件][windows-server-password]を満たしている必要があります。
-* ノードプールは `VirtualMachineScaleSets` を使用します
+* クラスターは 2 つのノードで構成されています。
+* クラスター上に作成されるすべての Windows Server コンテナーの管理者資格情報は、`--windows-admin-password` パラメーターと `--windows-admin-username` パラメーターによって設定されます。前者は [Windows Server のパスワード要件][windows-server-password]を満たしている必要があります。 *windows-admin-password* パラメーターを指定しない場合は、値を指定するように求められます。
+* ノード プールは `VirtualMachineScaleSets` を使用します。
 
 > [!NOTE]
 > クラスターが確実に動作するようにするには、既定のノード プールで少なくとも 2 つのノードを実行する必要があります。
 
-独自の安全な *PASSWORD_WIN* を指定します (この記事のコマンドは BASH シェルに入力するということに注意してください)。
+クラスターの Windows Server コンテナーの管理者資格情報として使用するユーザー名を作成します。 次のコマンドを実行すると、ユーザー名の入力が求められ、後のコマンドで使用できるように WINDOWS_USERNAME と設定されます (この記事に示すコマンドは BASH シェルで入力されます)。
 
 ```azurecli-interactive
-PASSWORD_WIN="P@ssw0rd1234"
+echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
+```
 
+`--windows-admin-username` パラメーターを指定して、クラスターを作成します。 次のコマンド例では、前のコマンドで設定した *WINDOWS_USERNAME* の値を使用してクラスターを作成します。 または、*WINDOWS_USERNAME* を使用する代わりに、パラメーターに直接別のユーザー名を指定することもできます。 次のコマンドを実行すると、クラスターの Windows Server コンテナー向けに、管理者資格情報のパスワードを作成するように求めるメッセージも表示されます。 または、*windows-admin-password* パラメーターを使用して、独自の値を指定することもできます。
+
+```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
     --generate-ssh-keys \
-    --windows-admin-password $PASSWORD_WIN \
-    --windows-admin-username azureuser \
+    --windows-admin-username $WINDOWS_USERNAME \
     --vm-set-type VirtualMachineScaleSets \
     --network-plugin azure
 ```
 
 > [!NOTE]
-> パスワード検証エラーが表示された場合は、*windows-admin-password* パラメーターが [Windows Server のパスワード要件][windows-server-password]を満たしていることを確認します。 パスワードが要件を満たしている場合は、別のリージョンでリソース グループの作成を試みます。 その後、新しいリソース グループを使用してクラスターを作成してください。
+> パスワード検証エラーが表示された場合は、設定したパスワードが [Windows Server のパスワード要件][windows-server-password]を満たしていることを確認します。 パスワードが要件を満たしている場合は、別のリージョンでリソース グループの作成を試みます。 その後、新しいリソース グループを使用してクラスターを作成してください。
 
 数分後、コマンドが完了し、クラスターに関する情報が JSON 形式で返されます。 場合によっては、クラスターのプロビジョニングに数分以上かかることがあります。 このような場合は、最大 10 分と考えてください。
 
@@ -270,10 +273,10 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [aks-monitor]: ../azure-monitor/containers/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az-aks-browse
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks?view=azure-cli-latest#az-aks-install-cli
+[az-aks-browse]: /cli/azure/aks#az-aks-browse
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-feature-register]: /cli/azure/feature#az-feature-register

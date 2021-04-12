@@ -6,18 +6,18 @@ ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e932238849baf267983fb3ca1ebb082db169d9fd
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: efe5d0171463668bda19a0d0445fc67f3734aaee
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101678653"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105561238"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>IoT Hub 用のデバイス更新のエージェントの概要
 
 デバイス更新エージェントは、2 つの概念レイヤーで構成されています。
 
-* インターフェイス レイヤーは、[Azure IoT プラグ アンド プレイ (PnP)](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) 上に構築されており、デバイス更新エージェントと デバイス更新サービスの間のメッセージ フローを可能にします。
+* インターフェイス レイヤーは、[Azure IoT プラグ アンド プレイ (PnP)](../iot-pnp/overview-iot-plug-and-play.md) 上に構築されており、デバイス更新エージェントと デバイス更新サービスの間のメッセージ フローを可能にします。
 * プラットフォーム レイヤーは、プラットフォームまたはデバイスに固有である可能性があるダウンロード、インストール、適用の高レベルの更新アクションを処理します。
 
 :::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="エージェントの実装。" lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
@@ -72,8 +72,7 @@ APT 更新ハンドラーにより、APT 固有の更新マニフェストが処
 
 ## <a name="self-update-device-update-agent"></a>デバイス更新エージェントの自己更新
 
-デバイス更新エージェントとその依存関係は、IoT Hub 用のデバイス更新のパイプラインを使用して更新できます。 イメージ ベースの更新を使用している場合は、新しいイメージに最新のデバイス更新エージェントを含めます。 パッケージ ベースの更新を使用している場合は、他のパッケージと同様に、デバイス更新エージェントとその必要なバージョンを apt マニフェストに含めます。 apt マニフェストについての[詳細はこちらをご覧ください](device-update-apt-manifest.md)。 デバイス更新エージェントと配信の最適化エージェントのインストールされているバージョンは、[IoT デバイス ツイン](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)の [デバイスのプロパティ] セクションで確認できます。 [ADU Core インターフェイスでのデバイス プロパティについての詳細は、こちらをご覧ください](device-update-plug-and-play.md#device-properties)。
+デバイス更新エージェントとその依存関係は、IoT Hub 用のデバイス更新のパイプラインを使用して更新できます。 イメージ ベースの更新を使用している場合は、新しいイメージに最新のデバイス更新エージェントを含めます。 パッケージ ベースの更新を使用している場合は、他のパッケージと同様に、デバイス更新エージェントとその必要なバージョンを apt マニフェストに含めます。 apt マニフェストについての[詳細はこちらをご覧ください](device-update-apt-manifest.md)。 デバイス更新エージェントと配信の最適化エージェントのインストールされているバージョンは、[IoT デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md)の [デバイスのプロパティ] セクションで確認できます。 [ADU Core インターフェイスでのデバイス プロパティについての詳細は、こちらをご覧ください](device-update-plug-and-play.md#device-properties)。
 
 ## <a name="next-steps"></a>次の手順
 [デバイス更新エージェントの構成ファイルについて](device-update-configuration-file.md)
-

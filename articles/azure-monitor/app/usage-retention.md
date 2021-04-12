@@ -6,12 +6,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 05/03/2017
 ms.reviewer: mbullwin
-ms.openlocfilehash: 37de27e8dc707133595b71b39e45bdec554289e5
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 45f3a7152add8d64d961feb055413760df01eb94
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100583390"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025613"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Azure Application Insights による Web アプリケーションのユーザー リテンション期間分析
 
@@ -36,7 +36,7 @@ Application Insights ポータルのリテンション期間ツールにデー�
 
 リテンション期間ツールのセルにポインタを合わせると、分析ボタンと、セルの意味を説明するヒントが表示されます。 分析ボタンを使用すると、そのセルからユーザーを生成するようにあらかじめ設定されている分析ツールに移動します。 
 
-## <a name="use-business-events-to-track-retention"></a>ビジネス イベントを使用してリテンション期間を追跡する
+## <a name="use-business-events-to-track-retention&quot;></a>ビジネス イベントを使用してリテンション期間を追跡する
 
 最も役立つリテンション期間分析を行うには、重要なビジネス アクティビティを表すイベントを測定します。 
 
@@ -45,7 +45,7 @@ Application Insights ポータルのリテンション期間ツールにデー�
 重要なビジネス アクションを表すカスタム イベントをコーディングして、それらをリテンション期間分析に使用することをお勧めします。 ゲームの結果をキャプチャするには、カスタム イベントを Application Insights に送信するためのコード行を記述する必要があります。 Web ページ コードまたは Node.JS で記述した場合のコード行は次のようになります。
 
 ```JavaScript
-    appinsights.trackEvent("won game");
+    appinsights.trackEvent(&quot;won game");
 ```
 
 また、ASP.NET サーバー コードでは、次のようになります。
@@ -64,5 +64,4 @@ Application Insights ポータルのリテンション期間ツールにデー�
     - [ファネル](usage-funnels.md)
     - [ユーザー フロー](usage-flows.md)
     - [ブック](../visualize/workbooks-overview.md)
-    - [ユーザー コンテキストの追加](usage-send-user-context.md)
-
+    - [ユーザー コンテキストの追加](./usage-overview.md)

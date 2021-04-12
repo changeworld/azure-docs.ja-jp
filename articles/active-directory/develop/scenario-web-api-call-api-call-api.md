@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f4dfd2c7f9dbdd111f70a5dd5a648c11eacbf7b0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753449"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102038545"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Web API を呼び出す Web API: API を呼び出す
 
@@ -29,7 +29,7 @@ ms.locfileid: "98753449"
 
 *Microsoft.Identity.Web* を使用する場合、3 つの使用シナリオがあります。
 
-- [オプション 1: Microsoft Graph SDK を使用して Microsoft Graph を呼び出す](#option-1-call-microsoft-graph-with-the-sdk)
+- [オプション 1: SDK を使用して Microsoft Graph を呼び出す](#option-1-call-microsoft-graph-with-the-sdk)
 - [オプション 2: ヘルパー クラスを使用してダウンストリーム Web API を呼び出す](#option-2-call-a-downstream-web-api-with-the-helper-class)
 - [オプション 3:ヘルパー クラスを使用せずにダウンストリーム Web API を呼び出す](#option-3-call-a-downstream-web-api-without-the-helper-class)
 
@@ -159,7 +159,7 @@ private String callMicrosoftGraphMeEndpoint(String accessToken){
 ```
 
 # <a name="python"></a>[Python](#tab/python)
-このフローを MSAL Python でデモンストレーションするサンプルはまだ用意されていません。
+このフローを MSAL Python でデモンストレーションするサンプルは、[ms-identity-python-on-behalf-of](https://github.com/Azure-Samples/ms-identity-python-on-behalf-of) で入手できます。
 
 ---
 

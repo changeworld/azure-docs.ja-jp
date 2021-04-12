@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f2baeaf72bb77dfe9247380b8b26f3860cbfd5b0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bdd68a4f0dafd3b336bf5a3fb34399d725c9ff5c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999163"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626114"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル: Azure Active Directory と iQualify LMS の統合
 
@@ -62,7 +62,7 @@ Azure AD への iQualify LMS の統合を構成するには、ギャラリーか
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**iQualify LMS**」と入力し、結果ウィンドウで **[iQualify LMS]** を選択し、 **[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**iQualify LMS**」と入力し、結果ウィンドウで **[iQualify LMS]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
      ![結果リストの iQualify LMS](common/search-new-app.png)
 
@@ -86,46 +86,43 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
 iQualify LMS で Azure AD シングル サインオンを構成するには、次の手順を実行します。
 
-1. [Azure portal](https://portal.azure.com/) の **iQualify LMS** アプリケーション統合ページで、 **[シングル サインオン]** を選択します。
+1. [Azure portal](https://portal.azure.com/) の **iQualify LMS** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク](common/select-sso.png)
+   ![シングル サインオン構成のリンク](common/select-sso.png)
 
 2. **[シングル サインオン方式の選択]** ダイアログで、 **[SAML/WS-Fed]** モードを選択して、シングル サインオンを有効にします。
 
-    ![シングル サインオン選択モード](common/select-saml-option.png)
+   ![シングル サインオン選択モード](common/select-saml-option.png)
 
 3. **[SAML でシングル サインオンをセットアップします]** ページで、 **[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![基本的な SAML 構成を編集する](common/edit-urls.png)
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
 4. **[基本的な SAML 構成]** セクションで、アプリケーションを **IDP** 開始モードで構成する場合は、次の手順を実行します。
 
-    ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
+   ![このスクリーンショットは、[基本的な SAML 構成] を示しています。ここで、識別子と応答 U R L を入力し、[保存] を選択できます。](common/idp-intiated.png)
+   
+   1. **[識別子]** ボックスに、次の形式で URL を入力します。
 
-    a. **[識別子]** ボックスに、次の形式で URL を入力します。
-    | |
-    |--|--|
-    | 運用環境: `https://<yourorg>.iqualify.com/`|
-    | テスト環境: `https://<yourorg>.iqualify.io`|
+      * 運用環境: `https://<yourorg>.iqualify.com/`
+      * テスト環境: `https://<yourorg>.iqualify.io`
 
-    b. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
-    | |
-    |--|--|
-    | 運用環境: `https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | テスト環境: `https://<yourorg>.iqualify.io/auth/saml2/callback` |
+   2. **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。
+
+      * 運用環境: `https://<yourorg>.iqualify.com/auth/saml2/callback` 
+      * テスト環境: `https://<yourorg>.iqualify.io/auth/saml2/callback`
 
 5. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
-    ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
+   ![このスクリーンショットは、[追加の U R L を設定します] を示しています。ここで、サインオン U R L を入力できます。](common/metadata-upload-additional-signon.png)
 
-    **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
-    | |
-    |--|--|
-    | 運用環境: `https://<yourorg>.iqualify.com/login` |
-    | テスト環境: `https://<yourorg>.iqualify.io/login` |
+   **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。
 
-    > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[iQualify LMS クライアント サポート チーム](https://www.iqualify.com/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+      * 運用環境: `https://<yourorg>.iqualify.com/login`
+      * テスト環境: `https://<yourorg>.iqualify.io/login`
+
+   > [!NOTE]
+   > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[iQualify LMS クライアント サポート チーム](https://www.iqualify.com/)に連絡してください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 6. iQualify LMS アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
@@ -133,7 +130,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
 7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、**編集アイコン** を使用して要求を編集するか、 **[新しい要求の追加]** を使用して要求を追加することで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-    | Name | ソース属性|
+    | 名前 | ソース属性|
     | --- | --- |
     | email | user.userprincipalname |
     | first_name | User.givenname |
@@ -187,7 +184,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
     ![[INTEGRATIONS]\(統合\)](./media/iqualify-tutorial/setting2.png)
 
-1. [INTEGRATIONS]\(統合\)で、 **[SAML]** アイコンをクリックします。
+1. [INTEGRATIONS]\(統合\)で、**[SAML]** アイコンをクリックします。
 
     ![[SAML] アイコン](./media/iqualify-tutorial/setting3.png)
 
@@ -199,7 +196,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
     b. **[SAML LOGOUT URL]\(SAML ログアウト URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウからコピーした **ログアウト URL** の値を貼り付けます。
 
-    c. ダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーして、 **[Public Certificate]\(パブリック証明書\)** ボックスに貼り付けます。
+    c. ダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーして、**[Public Certificate]\(パブリック証明書\)** ボックスに貼り付けます。
 
     d. **[LOGIN BUTTON LABEL]\( ログイン ボタン ラベル\)** に、ログイン ページに表示するボタンの名前を入力します。
 
@@ -236,7 +233,7 @@ iQualify LMS で Azure AD シングル サインオンを構成するには、�
 
 このセクションでは、Britta Simon に iQualify LMS へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** 、 **[iQualify LMS]** の順に選択します。
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]**、**[iQualify LMS]** の順に選択します。
 
     ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
 

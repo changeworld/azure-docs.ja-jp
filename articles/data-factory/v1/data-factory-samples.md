@@ -3,16 +3,16 @@ title: Azure Data Factory - サンプル
 description: Azure Data Factory サービスに付属するサンプルについて詳細に説明します。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 82c871e8914d70dde7f2586b7dbf6556ebd2621f
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 0d78cc9d99bd7ace2d214c2a2a1d7f75a74df098
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100387038"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104785055"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory - サンプル
 > [!NOTE]

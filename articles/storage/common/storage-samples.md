@@ -1,19 +1,19 @@
 ---
 title: Azure Storage のサンプル コード | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 .NET、Java、Python、Node.js、Azure CLI、C++ のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 10/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: de587483f5dc15b17fa32e044b569ef9d7f007f7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: dadc76c46e5a51a34038a38f059428ffac3bd5a8
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792958"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276707"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage のサンプル
 

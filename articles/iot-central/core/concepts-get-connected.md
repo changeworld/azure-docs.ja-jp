@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 028088087b16ded182042aadec4be08a4b8a9589
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: dc0655aba424d29a4055f0d50a20057f22d084ed
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062680"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103015457"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Azure IoT Central に接続する
 
@@ -178,7 +178,7 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
 
 ## <a name="associate-a-device-with-a-device-template"></a>デバイス テンプレートへのデバイスの関連付け
 
-デバイスが接続されると、IoT Central によってデバイスがデバイス テンプレートに自動的に関連付けられます。 デバイスは、接続時に[モデル ID](../../iot-pnp/iot-plug-and-play-glossary.md#model-id) を送信します。 IoT Central は、モデル ID を使用して、その特定のデバイス モデルのデバイス テンプレートを識別します。 検出プロセスは次のように実行されます。
+デバイスが接続されると、IoT Central によってデバイスがデバイス テンプレートに自動的に関連付けられます。 デバイスは、接続時に[モデル ID](../../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json#model-id) を送信します。 IoT Central は、モデル ID を使用して、その特定のデバイス モデルのデバイス テンプレートを識別します。 検出プロセスは次のように実行されます。
 
 1. IoT Central アプリケーションでデバイス テンプレートが既に発行されている場合、デバイスはデバイス テンプレートに関連付けられます。
 1. デバイス テンプレートが IoT Central アプリケーション内でまだ公開されていない場合は、IoT Centralにおいて[パブリック モデル リポジトリ](https://github.com/Azure/iot-plugandplay-models)でデバイス モデルが検索されます。 モデルが見つかると、それを使用して基本のデバイス テンプレートが生成されます。
@@ -214,10 +214,6 @@ IoT Central アプリケーションに大量のデバイスを登録するに�
     - デバイス テンプレートを指定せずに **[デバイス]** ページから手動でデバイスが登録された。 その後、有効な資格情報を使用してデバイスが接続された。  
 
     オペレーターは、 **[デバイス]** ページから **[移行]** ボタンを使用して、デバイス テンプレートにデバイスを関連付けることができます。
-
-## <a name="best-practices"></a>ベスト プラクティス
-
-デバイスの初回接続時に DPS から返されるデバイスの接続文字列を永続化したりキャッシュしたりすることは避けてください。 デバイスを再接続する際は、標準的なデバイス登録フローを通じて、適切なデバイス接続文字列を取得するようにします。 接続文字列をキャッシュすると、デバイスのソフトウェアに古い接続文字列が残ってしまうおそれがあります。 IoT Central で使用されている基になる Azure IoT Hub が更新されると、古い接続文字列があるデバイスは接続を行えません。
 
 ## <a name="sdk-support"></a>SDK のサポート
 
@@ -267,8 +263,8 @@ IoT Hub を使用するすべてのデバイス通信では、次の IoT Hub 接
 
 デバイス開発者にお勧めする次のステップは次のとおりです。
 
+- デバイス開発の[ベスト プラクティス](concepts-best-practices.md)を確認します。
 - 「[チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する](tutorial-connect-device.md)」で、SAS トークンの使い方を示すサンプル コードを確認する
 - [IoT Central アプリケーション用の Node.js デバイス SDK を使用して、x.509 証明書を使用するデバイスを接続する](how-to-connect-devices-x509.md)方法を確認する
 - [Azure CLI を使用してデバイスの接続性を監視する](./howto-monitor-devices-azure-cli.md)方法を確認する
-- [Azure IoT Central アプリケーションで新しい IoT デバイスの種類を定義する](./howto-set-up-template.md)方法を確認する
 - [Azure IoT Edge デバイスと Azure IoT Central](./concepts-iot-edge.md) について確認する

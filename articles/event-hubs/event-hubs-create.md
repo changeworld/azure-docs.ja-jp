@@ -3,12 +3,12 @@ title: Azure クイック スタート - Azure portal を使用したイベン�
 description: このクイックスタートでは、Azure portal を使用して Azure イベント ハブを作成する方法について説明します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: c1244317655815da91429585eff9ffbcc16662d4
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 6bd9d247db6cd5a956ff4bce9b70f1f8a5a7499a
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435503"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101742043"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>クイック スタート:Azure portal を使用したイベント ハブの作成
 Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
@@ -87,7 +87,7 @@ Event Hubs 名前空間は、イベント ハブの作成先となる一意の�
 
     多数のコンシューマー間での消費量は、**パーティション数** の設定で並列化することができます。 詳細については、「[パーティション](event-hubs-scalability.md#partitions)」をご覧ください。
 
-    **メッセージのリテンション期間** の設定では、Event Hubs サービスによってデータが保持される期間を指定します。 この設定の上限については、[クォータと制限](event-hubs-quotas.md)に関するページを参照してください。
+    **メッセージのリテンション期間** の設定では、Event Hubs サービスによってデータが保持される期間を指定します。 詳細については、「[イベント保持](event-hubs-features.md#event-retention)」を参照してください。
 1. アラートを通じてイベント ハブの作成状態を確認することができます。 作成されたイベント ハブは、イベント ハブの一覧に表示されます。
 
     ![作成されたイベント ハブ](./media/event-hubs-quickstart-portal/event-hub-created.png)

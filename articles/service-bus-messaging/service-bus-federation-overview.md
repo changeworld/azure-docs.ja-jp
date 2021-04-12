@@ -4,10 +4,10 @@ description: この記事では、Azure Service Bus でのイベント レプリ
 ms.topic: article
 ms.date: 12/12/2020
 ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98880829"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>メッセージ レプリケーションとリージョン間フェデレーション

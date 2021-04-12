@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 983cdab0c5f5b856537c661c7427a83099f30ed4
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964526"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102181433"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>SQL Server VM を SQL IaaS Agent 拡張機能に登録する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -304,7 +304,7 @@ Azure portal を使用して拡張機能から SQL Server VM の登録を解除�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して拡張機能から SQL Server VM の登録を解除するには、[az sql vm delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。 
+Azure CLI を使用して拡張機能から SQL Server VM の登録を解除するには、[az sql vm delete](/cli/azure/sql/vm#az-sql-vm-delete) コマンドを使用します。 これにより、SQL Server VM "*リソース*" が削除されますが、仮想マシンは削除されません。 
 
 
 ```azurecli-interactive

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: seodec18, devx-track-azurecli
 ms.date: 01/03/2020
 ms.openlocfilehash: 09564bd149488d956586c8a0e349cd79eec358a1
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100582753"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go (プレビュー)

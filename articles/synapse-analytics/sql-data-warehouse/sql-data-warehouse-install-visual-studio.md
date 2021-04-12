@@ -4,20 +4,20 @@ description: Synapse SQL 用に Visual Studio と SQL Server Development Tools (
 services: synapse-analytics
 ms.custom: vs-azure, azure-synapse
 ms.workload: azure-vs
-author: kevinvngo
+author: gaursa
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 05/11/2020
-ms.author: kevin
+ms.author: gaursa
 ms.reviewer: igorstan
-ms.openlocfilehash: b70694011aa0467d8ca037ac309ffb0811c79c01
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 6891176ff648e0f07b0f4921c3558df51f55388e
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737950"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106279750"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Visual Studio 2019 の概要
 
@@ -43,7 +43,6 @@ Synapse SQL の機能リリースに SSDT のサポートが含まれない場�
 - [行レベルのセキュリティ](/sql/relational-databases/security/row-level-security?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (テーブル値関数を含む)
   - この機能がサポートされるようにするには、[サポート チケットを送信するか投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security)してください。
   - この機能がサポートされるようにするには、[サポート チケットを送信するか投票](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking)してください。
-- [ID 列](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest&preserve-view=true)があるテーブル
 - 次のような特定の T-SQL 機能:
    - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql) 文字列関数内の *WITHIN GROUP* 句。
 

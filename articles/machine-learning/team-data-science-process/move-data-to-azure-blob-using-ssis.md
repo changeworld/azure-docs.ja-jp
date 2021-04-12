@@ -30,7 +30,7 @@ ms.locfileid: "93322003"
 ハイブリッド データ統合のシナリオに共通するビジネス ニーズを満たすために SSIS を使用する標準的なシナリオの詳細については、 [SQL Server Integration Services Feature Pack for Azure をさらに活用する方法](https://techcommunity.microsoft.com/t5/sql-server-integration-services/doing-more-with-sql-server-integration-services-feature-pack-for/ba-p/388238) に関するブログを参照してください。
 
 > [!NOTE]
-> Azure BLOB ストレージの概要については、[Azure BLOB の基礎](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関する記事および [Azure BLOB サービス](/rest/api/storageservices/Blob-Service-Concepts)に関するページをご覧ください。
+> Azure Blob Storage の概要については、[Azure BLOB の基礎](../../storage/blobs/storage-quickstart-blobs-dotnet.md)に関する記事および [Azure BLOB サービス](/rest/api/storageservices/Blob-Service-Concepts)に関するページをご覧ください。
 > 
 > 
 
@@ -57,8 +57,8 @@ SISS を使用して稼働状態にし、簡単な ETL (抽出、変換、読み
 ## <a name="download-nyc-taxi-dataset"></a>NYC タクシー データセットをダウンロードする
 ここで説明する例では、一般公開されているデータセットである、 [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) データセットを使用します。 このデータセットは、2013 年のニューヨーク市における約 1 億 7300 万件のタクシー乗車情報で構成されています。 データには、乗車の詳細データと料金データの 2 種類があります。 月ごとにファイルが用意されているため、24 ファイルになり、各ファイルは圧縮されていない状態で約 2 GB になります。
 
-## <a name="upload-data-to-azure-blob-storage"></a>Azure BLOB ストレージにデータをアップロードする
-SSIS 機能パックを使用して、データをオンプレミスから Azure BLOB ストレージに移動するには、次に示す [**Azure BLOB アップロード タスク**](/sql/integration-services/control-flow/azure-blob-upload-task)のインスタンスを使用します。
+## <a name="upload-data-to-azure-blob-storage"></a>Azure Blob Storage にデータをアップロードする
+SSIS 機能パックを使用して、データをオンプレミスから Azure Blob Storage に移動するには、次に示す [**Azure BLOB アップロード タスク**](/sql/integration-services/control-flow/azure-blob-upload-task)のインスタンスを使用します。
 
 ![configure-data-science-vm](./media/move-data-to-azure-blob-using-ssis/ssis-azure-blob-upload-task.png)
 
@@ -78,7 +78,7 @@ SSIS 機能パックを使用して、データをオンプレミスから Azure
 > 
 > 
 
-## <a name="download-data-from-azure-blob-storage"></a>Azure BLOB ストレージからデータをダウンロードする
+## <a name="download-data-from-azure-blob-storage"></a>Azure Blob Storage からデータをダウンロードする
 SSIS を使用して Azure Blob Storage からオンプレミスのストレージにデータをダウンロードするには、[Azure BLOB ダウンロード タスク](/sql/integration-services/control-flow/azure-blob-download-task)のインスタンスを使用します。
 
 ## <a name="more-advanced-ssis-azure-scenarios"></a>さらに高度な SSIS と Azure のシナリオ

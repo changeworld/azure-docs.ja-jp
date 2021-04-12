@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 12/07/2020
 ms.author: kumud
 ms.openlocfilehash: bc2d7bb7ba17a4a47fecf2144157f79f5367fca7
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98059173"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Azure ネットワーク ラウンドトリップ待ち時間統計

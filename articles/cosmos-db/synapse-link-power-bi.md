@@ -1,17 +1,18 @@
 ---
 title: Synapse Link で Azure Cosmos DB データを分析するための Power BI とサーバーレス SQL プール
 description: Azure Cosmos DB の Synapse Link 上にサーバーレス SQL プール データベースおよびビューを構築し、Azure Cosmos DB コンテナーに対してクエリを実行し、Power BI を使用してそれらのビュー上にモデルを構築する方法について説明します。
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.author: acomet
-ms.openlocfilehash: a16d22a49e42408271c91d961bcdb004536e3980
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.author: rosouz
+ms.custom: synapse-cosmos-db
+ms.openlocfilehash: d84508a7629481a7138f1080c86f4a203d35894d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101659751"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105626250"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Power BI とサーバーレス Synapse SQL プールを使用して Synapse Link で Azure Cosmos DB データを分析する 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]

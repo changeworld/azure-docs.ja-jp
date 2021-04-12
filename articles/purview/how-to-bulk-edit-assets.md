@@ -1,5 +1,5 @@
 ---
-title: 選択された資産の一覧に複数の用語集の用語をタグ付けする方法
+title: 資産を一括編集して、分類、用語集の用語にタグを付け、連絡先を変更する方法
 description: Azure Purview で資産を一括編集する方法について説明します。
 author: nayenama
 ms.author: nayenama
@@ -7,16 +7,16 @@ ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: c42a6894c33993dc9aee5a9fdd10b1c3a3627320
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 4dc1af590a1965c155a7af7b233b431f982a73d2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97372049"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105024236"
 ---
-# <a name="how-to-bulk-edit-assets-to-tag-glossary-terms"></a>資産を一括編集して用語集の用語にタグを付ける方法
+# <a name="how-to-bulk-edit-assets-to-annotate-classifications-glossary-terms-and-modify-contacts"></a>資産を一括編集して、分類、用語集の用語に注釈を付け、連絡先を変更する方法
 
-この記事では、1 回の操作で、選択された資産の一覧に複数の用語集の用語をタグ付けする方法について説明します。
+この記事では、1 回の操作で、選択された資産の一覧の複数の用語集の用語、分類、所有者、およびエキスパートにタグ付けする方法について説明します。
 
 ### <a name="add-assets-to-view-selected-list-using-search"></a>検索を使用して資産を [選択対象の表示] リストに追加する
 
@@ -63,11 +63,15 @@ ms.locfileid: "97372049"
    
     :::image type="content" source="media/how-to-bulk-edit-assets/replace-list.png" alt-text="用語の削除のスクリーンショット。":::
 
-7. 完了したら、 **[閉じる]** または **[Remove all and close]\(すべて削除して閉じる\)** を選択して一括編集ブレードを閉じます。 [閉じる] では、選択された資産は削除されません。一方、[Remove all and close]\(すべて削除して閉じる\) では、すべての選択された資産が削除されます。
+7. classifications、owners、experts に対して上の手順を繰り返します。
+
+    :::image type="content" source="media/how-to-bulk-edit-assets/all-list.png" alt-text="分類と連絡先のスクリーンショット。":::
+
+8. 完了したら、 **[閉じる]** または **[Remove all and close]\(すべて削除して閉じる\)** を選択して一括編集ブレードを閉じます。 [閉じる] では、選択された資産は削除されません。一方、[Remove all and close]\(すべて削除して閉じる\) では、すべての選択された資産が削除されます。
     :::image type="content" source="media/how-to-bulk-edit-assets/close-list.png" alt-text="閉じるのスクリーンショット。":::
 
    > [!Important]
-   > 一括編集で推奨される資産の数は 15 です。 15 を超える数を選択すると、パフォーマンスの問題が発生する可能性があります。
+   > 一括編集で推奨される資産の数は 25 です。 25 を超える数を選択すると、パフォーマンスの問題が発生する可能性があります。
    > **[選択対象の表示]** ボックスは、少なくとも 1 つの資産が選択されている場合にのみ表示されます。
 
 

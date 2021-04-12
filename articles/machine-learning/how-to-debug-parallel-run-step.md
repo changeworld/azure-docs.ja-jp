@@ -8,19 +8,19 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting
 ms.reviewer: larryfr, vaidyas, laobri, tracych
-ms.author: trmccorm
-author: tmccrmck
+ms.author: pansav
+author: psavdekar
 ms.date: 09/23/2020
-ms.openlocfilehash: a0f813253520d76731a9b49a89b0bcace7c2ef34
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.openlocfilehash: 89dfeadea7e43ff2d4cada506ca6c741339881b0
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99979166"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077042"
 ---
 # <a name="troubleshooting-the-parallelrunstep"></a>ParallelRunStep のトラブルシューティング
 
-この記事では、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) の [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?preserve-view=true&view=azure-ml-py) クラスを使用してエラーが発生した場合のトラブルシューティングの方法について説明します。
+この記事では、[Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) の [ParallelRunStep](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep) クラスを使用してエラーが発生した場合のトラブルシューティングの方法について説明します。
 
 パイプラインのトラブルシューティングに関する一般的なヒントについては、「[機械学習パイプラインのトラブルシューティング](how-to-debug-pipelines.md)」を参照してください。
 
@@ -96,6 +96,9 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `mini_batch_size`:1 つの `run()` 呼び出しに渡されたミニバッチのサイズ (省略可能。既定値は、`FileDataset` の場合は `10` ファイルで、`TabularDataset` の場合は `1MB` です。)
     - `FileDataset` の場合、これはファイル数を示し、最小値は `1` です。 複数のファイルを 1 つのミニバッチに結合できます。
     - `TabularDataset` の場合は、データのサイズです。 サンプル値は、`1024`、`1024KB`、`10MB`、および `1GB` です。 推奨値は `1MB` です。 `TabularDataset` のミニバッチは、ファイル境界を超えません。 たとえば、さまざまなサイズの .csv ファイルがある場合、ファイルの最小サイズは 100 KB で、最大サイズは 10 MB です。 `mini_batch_size = 1MB` を設定すると、1 MB より小さいファイルは 1 つのミニバッチとして処理されます。 1 MB を超えるファイルは、複数のミニバッチに分割されます。
+        > [!NOTE]
+        > SQL でサポートされる TabularDataset は、パーティション分割できません。 
+
 - `error_threshold`:処理中に無視する必要のあるエラーの数。`TabularDataset` の場合はレコード エラー数、`FileDataset` の場合はファイル エラー数を示します。 入力全体に対するエラーの数がこの値を超えると、ジョブは中止されます。 エラーのしきい値は入力全体を対象としています。`run()` メソッドに送信された個々のミニバッチを対象にしているものではありません。 範囲は `[-1, int.max]` です。 `-1` 部分は、処理中にすべてのエラーを無視することを示します。
 - `output_action`:次のいずれかの値が、出力がどのように編成されるかを示しています。
     - `summary_only`:ユーザー スクリプトによって出力が格納されます。 `ParallelRunStep` では、エラーしきい値の計算にのみ出力が使用されます。
@@ -110,7 +113,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `run_invocation_timeout`:`run()` メソッド呼び出しのタイムアウト (秒単位)。 (省略可能、既定値は `60` です)
 - `run_max_try`:ミニバッチに対する `run()` の最大試行回数。 例外がスローされた場合、`run()` は失敗します。`run_invocation_timeout` に到達した場合は何も返されません (省略可能。既定値は `3` です)。 
 
-`mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout`、`run_max_try` を `PipelineParameter` として指定すると、パイプラインの実行を再送信するときに、パラメーターの値を微調整できます。 この例では、`mini_batch_size` と `Process_count_per_node` に `PipelineParameter` を使用し、後で実行を再送信するときに、これらの値を変更します。 
+`mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout`、`run_max_try` を `PipelineParameter` として指定すると、パイプラインの実行を再送信するときに、パラメーターの値を微調整できます。 この例では、`mini_batch_size` と `Process_count_per_node` に `PipelineParameter` を使用し、別の実行を再送信するときにこれらの値を変更します。 
 
 ### <a name="parameters-for-creating-the-parallelrunstep"></a>ParallelRunStep を作成するためのパラメーター
 
@@ -119,7 +122,7 @@ file_path = os.path.join(script_dir, "<file_name>")
 - `parallel_run_config`:`ParallelRunConfig` オブジェクト (前述にて定義)。
 - `inputs`:並列処理のためにパーティション分割される 1 つ以上の single 型の Azure Machine Learning データセット。
 - `side_inputs`:パーティション分割する必要のないサイド入力として使用される 1 つ以上の参照データまたはデータセット。
-- `output`:`PipelineData` オブジェクト (出力ディレクトリに対応)。
+- `output`: 出力データが補完されるディレクトリ パスを表す `OutputFileDatasetConfig` オブジェクト。
 - `arguments`:ユーザー スクリプトに渡された引数の一覧。 それらを実際のエントリ スクリプト内で取得するには、unknown_args を使用します (省略可能)。
 - `allow_reuse`:同じ設定/入力で実行されたときに、ステップで前の結果を再利用するかどうか。 このパラメーターが `False` の場合、パイプラインの実行中、このステップに対して必ず新しい実行が生成されます (省略可能。既定値は `True` です)。
 
@@ -151,7 +154,7 @@ EntryScript ヘルパーおよび PRINT ステートメントを使用したエ�
 
 - `~/logs/user/entry_script_log/<ip_address>/<process_name>.log.txt`:これらのファイルは、EntryScript ヘルパーを使用して entry_script から書き込まれたログです。
 
-- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`:これらのファイルは、entry_script の stdout (PRINT ステートメントなど) のログです。
+- `~/logs/user/stdout/<ip_address>/<process_name>.stdout.txt`: これらのファイルは、entry_script の stdout (PRINT ステートメントなど) のログです。
 
 - `~/logs/user/stderr/<ip_address>/<process_name>.stderr.txt`:これらのファイルは、entry_script の stderr のログです。
 
@@ -212,7 +215,7 @@ def run(mini_batch):
 
 ユーザーは、ParalleRunStep の side_inputs パラメーターを使用して、参照データをスクリプトに渡すことができます。 side_inputs として提供されるすべてのデータセットは、各ワーカー ノードにマウントされます。 ユーザーは引数を渡すことによって、マウントの場所を取得できます。
 
-参照データを含む[データセット](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py)を作成し、これをワークスペースに登録します。 これを `ParallelRunStep` の `side_inputs` パラメーターに渡します。 また、`arguments` セクションにそのパスを追加して、マウントされたパスに簡単にアクセスすることもできます。
+参照データを含む[データセット](/python/api/azureml-core/azureml.core.dataset.dataset)を作成し、これをワークスペースに登録します。 これを `ParallelRunStep` の `side_inputs` パラメーターに渡します。 また、`arguments` セクションにそのパスを追加して、マウントされたパスに簡単にアクセスすることもできます。
 
 ```python
 label_config = label_ds.as_named_input("labels_input")
@@ -262,6 +265,6 @@ registered_ds = ds.register(ws, '***dataset-name***', create_new_version=True)
 
 * [Azure Machine Learning パイプラインを示す Jupyter Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines) に関するページを参照してください。
 
-* [azureml-pipeline-steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps?preserve-view=true&view=azure-ml-py) パッケージについては、SDK リファレンスを参照してください。 ParallelRunStep クラスのリファレンス [ドキュメント](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep?preserve-view=true&view=azure-ml-py)を参照してください。
+* [azureml-pipeline-steps](/python/api/azureml-pipeline-steps/azureml.pipeline.steps) パッケージについては、SDK リファレンスを参照してください。 ParallelRunStep クラスのリファレンス [ドキュメント](/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunstep)を参照してください。
 
 * ParallelRunStep でパイプラインを使用するには、[高度なチュートリアル](tutorial-pipeline-batch-scoring-classification.md)に従ってください。 このチュートリアルでは、別のファイルをサイド入力として渡す方法について説明しています。

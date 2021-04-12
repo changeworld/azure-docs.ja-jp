@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: wiassaf, sstein
 ms.date: 1/14/2021
 ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98222345"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database の Query Performance Insight
@@ -186,7 +186,7 @@ Query Performance Insight の 2 つのメトリック (実行時間と実行回�
    > カスタム DTU グラフを使用して、クエリのパフォーマンス グラフと比較することをお勧めします。
    >
 
-## <a name="review-top-queries-per-execution-count"></a>実行回数あたりの上位クエリを確認する
+## <a name="review-top-queries-per-execution-count&quot;></a>実行回数あたりの上位クエリを確認する
 
 実行回数が多くてもデータベース自体には影響しない場合や、リソース使用率が低い場合でも、データベースを使用するユーザー アプリケーションの処理速度は低下する可能性があります。
 
@@ -194,7 +194,7 @@ Query Performance Insight の 2 つのメトリック (実行時間と実行回�
 
 たとえば、多くのデータ ドリブン Web サイトでは、ユーザー要求ごとに高い頻度でデータベースにアクセスします。 接続プールは役立ちますが、ネットワーク トラフィックやサーバーの処理負荷の増加により、パフォーマンスが低下する可能性があります。 一般的には、ラウンド トリップを最小限に抑えます。
 
-頻繁に実行される ("頻度の高い") クエリを特定するには、次のようにします。
+頻繁に実行される (&quot;頻度の高い") クエリを特定するには、次のようにします。
 
 1. Query Performance Insight で、選択されたデータベースの **[カスタム]** タブを開きます。
 2. メトリックを **[実行回数]** に変更します。

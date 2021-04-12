@@ -4,12 +4,12 @@ description: この Azure CLI スクリプトは、Azure DevTest Labs のラボ�
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: 793027916fb0d923cfd4052a4ecfc36fb24c7db7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a3308a4e13b82cd90e00b6c25edadf4cc8aa4ee
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88136128"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102198168"
 ---
 # <a name="use-azure-cli-to-start-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Azure CLI を使用して Azure DevTest Labs のラボの仮想マシンを起動する
 
@@ -28,9 +28,9 @@ ms.locfileid: "88136128"
 
 このスクリプトでは以下のコマンドを使用します。
 
-| command | メモ |
+| コマンド | Notes |
 |---|---|
-| [az lab vm start](/cli/azure/lab/vm?view=azure-cli-latest#az-lab-vm-start) | ラボの仮想マシン (VM) を起動します。 この操作を完了するにはしばらく時間がかかることがあります。 |
+| [az lab vm start](/cli/azure/lab/vm#az-lab-vm-start) | ラボの仮想マシン (VM) を起動します。 この操作を完了するにはしばらく時間がかかることがあります。 |
 
 ## <a name="next-steps"></a>次のステップ
 

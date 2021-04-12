@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: mvc
-ms.openlocfilehash: b82bb9b7684d1119b6b62216b52210845d8f4c67
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 6f2b3d9f38fc04428678a71c9942fc7aa2182dc8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "98199633"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102217195"
 ---
 # <a name="tutorial-deploy-wordpress-app-on-aks-with-azure-database-for-mysql---flexible-server"></a>チュートリアル:Azure Database for MySQL - フレキシブル サーバーを使用して WordPress アプリを AKS にデプロイする
 
@@ -60,7 +60,7 @@ az group create --name wordpress-project --location eastus
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-AKS クラスターを作成するには、[az aks create](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-create) コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
+AKS クラスターを作成するには、[az aks create](/cli/azure/aks#az-aks-create) コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。 これは完了までに数分かかる場合があります。
 
 ```azurecli-interactive
 az aks create --resource-group wordpress-project --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -73,13 +73,13 @@ az aks create --resource-group wordpress-project --name myAKSCluster --node-coun
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
-Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 `kubectl` をローカルにインストールするには、[az aks install-cli](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-install-cli) コマンドを使用します。
+Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) を使用します。 Azure Cloud Shell を使用している場合、`kubectl` は既にインストールされています。 `kubectl` をローカルにインストールするには、[az aks install-cli](/cli/azure/aks#az-aks-install-cli) コマンドを使用します。
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials](/cli/azure/aks?view=azure-cli-latest&preserve-view=true#az-aks-get-credentials) コマンドを使用します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
+Kubernetes クラスターに接続するように `kubectl` を構成するには、[az aks get-credentials](/cli/azure/aks#az-aks-get-credentials) コマンドを使用します。 このコマンドは、資格情報をダウンロードし、それを使用するように Kubernetes CLI を構成します。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group wordpress-project --name myAKSCluster
@@ -102,7 +102,7 @@ aks-nodepool1-31718369-0   Ready    agent   6m44s   v1.12.8
 ```
 
 ## <a name="create-an-azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL - フレキシブル サーバーを作成する
-[az mysql flexible-server create](/cli/azure/mysql/flexible-server?view=azure-cli-latest&preserve-view=true) コマンドを使用して、フレキシブル サーバーを作成します。 次のコマンドでは、サービスの既定値と Azure CLI のローカル コンテキストからの値を使用してサーバーを作成します。
+[az mysql flexible-server create](/cli/azure/mysql/flexible-server) コマンドを使用して、フレキシブル サーバーを作成します。 次のコマンドでは、サービスの既定値と Azure CLI のローカル コンテキストからの値を使用してサーバーを作成します。
 
 ```azurecli-interactive
 az mysql flexible-server create --public-access <YOUR-IP-ADDRESS>
@@ -312,7 +312,7 @@ Web ブラウザーを開いてサービスの外部 IP アドレスにアクセ
 
 ## <a name="clean-up-the-resources"></a>リソースのクリーンアップ
 
-Azure の課金を回避するには、不要なリソースをクリーンアップする必要があります。  クラスターが必要なくなったら、[az group delete](/cli/azure/group?view=azure-cli-latest&preserve-view=true#az_group_delete) コマンドを使って、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除してください。
+Azure の課金を回避するには、不要なリソースをクリーンアップする必要があります。  クラスターが必要なくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使って、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除してください。
 
 ```azurecli-interactive
 az group delete --name wordpress-project --yes --no-wait

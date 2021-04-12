@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 06/09/2018
 ms.author: liydu
 ms.openlocfilehash: 1383f976e73fd9a59b87201cac8aeeb043f3c1cc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98901025"
 ---
 Azure IoT Hub を引き続き使用してみると共に、IoT DevKit を使用して他の IoT シナリオを調べるには、次を参照してください。

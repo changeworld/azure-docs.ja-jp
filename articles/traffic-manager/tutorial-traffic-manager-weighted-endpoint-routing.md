@@ -3,17 +3,16 @@ title: 'チュートリアル: 重み付けされたエンドポイントにト�
 description: このチュートリアルの記事では、Traffic Manager を使用して重み付けされたエンドポイントにトラフィックをルーティングする方法について説明します。
 services: traffic-manager
 author: duongau
-Customer intent: As an IT Admin, I want to distribute traffic based on the weight assigned to a website endpoint so that I can control the user traffic to a given website.
 ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/19/2020
 ms.author: duau
-ms.openlocfilehash: 55c316a370b9e44e906e48b4716201384567c9c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 20864d46ac93d5fcefec20028dd2a78ded142ba3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003788"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067182"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>チュートリアル:Traffic Manager を使用して重み付けされたエンドポイントを使用してトラフィックのルーティングを制御する
 
@@ -137,7 +136,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 1. 画面の左上で、 **[リソースの作成]**  >  **[ネットワーク]**  >  **[Traffic Manager プロファイル]**  >  **[作成]** の順に選択します。
 2. **[Traffic Manager プロファイルの作成]** ブレードで、次の情報を入力するか、選択します。 その他の設定は既定値のままにして、 **[作成]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | 名前                   | trafficmanager.net ゾーン内で一意の名前を入力します。 これが、Traffic Manager プロファイルにアクセスする際に使用する DNS 名、trafficmanager.net になります。                                   |
     | ルーティング方法          | **[重み付け]** ルーティング方法を選択します。                                       |
@@ -155,7 +154,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 2. **[Traffic Manager プロファイル]** の **[設定]** セクションで、 **[エンドポイント]**  >  **[追加]** の順に選択します。
 3. 次の情報を入力または選択します。 その他の設定は既定値のままにして、 **[OK]** を選択します。
 
-    | 設定                 | Value                                              |
+    | 設定                 | 値                                              |
     | ---                     | ---                                                |
     | Type                    | Azure エンドポイントを入力します。                                   |
     | 名前           | 「**myEastUSEndpoint**」と入力します。                                        |

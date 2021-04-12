@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 644635d1ab7b0a43c8df3e10bbbd02d1ea67a94a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e1bd521e9798b09f7930b43ab95c7cd7ef9e693d
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91297234"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101737921"
 ---
 # <a name="quickstart-set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>クイック スタート:Azure Portal で IoT Hub Device Provisioning Service を設定する
 
@@ -25,8 +25,9 @@ IoT Hub Device Provisioning Service を IoT Hub で使用すると、適切な I
 * Azure Portal を使用して IoT Hub Device Provisioning Service を作成し、ID スコープを取得する
 * IoT ハブを Device Provisioning Service にリンクする
 
+## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+この記事を開始するには、Azure サブスクリプションが必要です。 まだお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成できます。
 
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
@@ -59,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. Azure portal の左側のメニューにある **[すべてのリソース]** ボタンを選択します。 前のセクションで作成した Device Provisioning Service インスタンスを選択します。 
 
-    ポータル設定の**ドッキング** モードではなく**ポップアウト**を使用してメニューが構成される場合、ポータル メニューを左側で開くには、左上の 3 行をクリックする必要があります。  
+    ポータル設定の **ドッキング** モードではなく **ポップアウト** を使用してメニューが構成される場合、ポータル メニューを左側で開くには、左上の 3 行をクリックする必要があります。  
 
 2. Device Provisioning Service のメニューで **[リンク済み IoT Hub]** を選択します。 上部にある **[+ 追加]** ボタンをクリックします。 
 

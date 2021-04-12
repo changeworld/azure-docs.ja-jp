@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: duau
 ms.openlocfilehash: 432ecedbbb8965926499380eb1165fdf43018426
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97680273"
 ---
 # <a name="reset-expressroute-circuit-peerings-by-using-the-azure-portal"></a>Azure portal を使用して ExpressRoute 回線のピアリングをリセットする

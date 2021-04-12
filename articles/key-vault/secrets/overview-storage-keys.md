@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8473d3a19a86027b5b01af59d24833dc40cd1fe9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: e89716d0560cbf7960cb7bde67156c8df0045a31
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95242357"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102499222"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 > [!IMPORTANT]
@@ -56,7 +56,7 @@ Key Vault は、すべての Azure AD テナントに事前登録されている
 
 ### <a name="connect-to-your-azure-account"></a>Azure アカウントに接続する
 
-[az login](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドを使用して、Azure CLI セッションを認証します。
+[az login](/powershell/module/az.accounts/connect-azaccount) コマンドを使用して、Azure CLI セッションを認証します。
 
 ```azurecli-interactive
 az login

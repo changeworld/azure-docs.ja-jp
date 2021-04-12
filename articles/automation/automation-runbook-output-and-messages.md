@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 11/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: beed3ec50d0c7990168ee75976c732796cdbe246
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bb14d5227204a69f8a2ef9e0bf2da05bd7bde51c
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324422"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106169098"
 ---
 # <a name="configure-runbook-output-and-message-streams"></a>Runbook の出力ストリームとメッセージ ストリームを構成する
 
@@ -37,7 +37,7 @@ Runbook で出力ストリームにデータを書き込むには、[Write-Outpu
 
 ```powershell
 #The following lines both write an object to the output stream.
-Write-Output –InputObject $object
+Write-Output -InputObject $object
 $object
 ```
 
@@ -119,7 +119,7 @@ Runbook には出力型 `Microsoft.Azure.Commands.Profile.Models.PSAzureContext`
 
 この例の **Test-ChildOutputType** という 2 番目の Runbook では、2 つのアクティビティが定義されています。<br> ![Example Child Output Type Runbook](media/automation-runbook-output-and-messages/runbook-display-authentication-results-example.png)
 
-最初のアクティビティでは、 **AuthenticateTo-Azure** Runbook が呼び出されます。 2 番目のアクティビティの実行では、 **[データ ソース]** が **[アクティビティの出力]** に設定設定された `Write-Verbose` コマンドレットが実行されます。 また、 **[フィールド パス]** は **Context.Subscription.SubscriptionName** に設定されています。これは、 **AuthenticateTo-Azure** Runbook からのコンテキスト出力です。<br> ![Write-Verbose コマンドレットのパラメーター データ ソース](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
+最初のアクティビティでは、**AuthenticateTo-Azure** Runbook が呼び出されます。 2 番目のアクティビティの実行では、 **[データ ソース]** が **[アクティビティの出力]** に設定設定された `Write-Verbose` コマンドレットが実行されます。 また、 **[フィールド パス]** は **Context.Subscription.SubscriptionName** に設定されています。これは、**AuthenticateTo-Azure** Runbook からのコンテキスト出力です。<br> ![Write-Verbose コマンドレットのパラメーター データ ソース](media/automation-runbook-output-and-messages/runbook-write-verbose-parameters-config.png)
 
 結果の出力は、サブスクリプションの名前です。<br> ![Test-ChildOutputType Runbook Results](media/automation-runbook-output-and-messages/runbook-test-childoutputtype-results.png)
 
@@ -139,8 +139,8 @@ Runbook には出力型 `Microsoft.Azure.Commands.Profile.Models.PSAzureContext`
 #The following lines create a warning message and then an error message that will suspend the runbook.
 
 $ErrorActionPreference = "Stop"
-Write-Warning –Message "This is a warning message."
-Write-Error –Message "This is an error message that will stop the runbook because of the preference variable."
+Write-Warning -Message "This is a warning message."
+Write-Error -Message "This is an error message that will stop the runbook because of the preference variable."
 ```
 
 ### <a name="write-output-to-debug-stream"></a>デバッグ ストリームに出力を書き込む
@@ -151,7 +151,7 @@ Azure Automation では、対話型ユーザーにデバッグ メッセージ �
 
 1. 変数 `$GLOBAL:DebugPreference="Continue"` を設定します。これにより、デバッグ メッセージが検出されたときは常に続行するように PowerShell に指示されます。  **$GLOBAL:** の部分により、ステートメントの実行時にスクリプトが存在するローカル スコープではなく、グローバル スコープでこれを実行するように PowerShell に指示されます。
 
-1. キャプチャされないデバッグ ストリームを、" *出力* " などのキャプチャされるストリームにリダイレクトします。 これを行うには、実行されるステートメントに対して PowerShell のリダイレクトを設定します。 PowerShell のリダイレクトの詳細については、「[リダイレクトについて](/powershell/module/microsoft.powershell.core/about/about_redirection)」を参照してください。
+1. キャプチャされないデバッグ ストリームを、"*出力*" などのキャプチャされるストリームにリダイレクトします。 これを行うには、実行されるステートメントに対して PowerShell のリダイレクトを設定します。 PowerShell のリダイレクトの詳細については、「[リダイレクトについて](/powershell/module/microsoft.powershell.core/about/about_redirection)」を参照してください。
 
 #### <a name="examples"></a>例
 
@@ -198,7 +198,7 @@ This is a debug message.
 ```powershell
 #The following line creates a verbose message.
 
-Write-Verbose –Message "This is a verbose message."
+Write-Verbose -Message "This is a verbose message."
 ```
 
 ## <a name="handle-progress-records"></a>進行状況レコードを処理する
@@ -242,22 +242,22 @@ Windows PowerShell では、[Get-AzAutomationJobOutput](/powershell/module/Az.Au
 
 ```powershell
 $job = Start-AzAutomationRunbook -ResourceGroupName "ResourceGroup01" `
-  –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook"
+  -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook"
 
 $doLoop = $true
 While ($doLoop) {
   $job = Get-AzAutomationJob -ResourceGroupName "ResourceGroup01" `
-    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId
+    -AutomationAccountName "MyAutomationAccount" -Id $job.JobId
   $status = $job.Status
   $doLoop = (($status -ne "Completed") -and ($status -ne "Failed") -and ($status -ne "Suspended") -and ($status -ne "Stopped"))
 }
 
 Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
+  -AutomationAccountName "MyAutomationAccount" -Id $job.JobId -Stream Output
 
 # For more detailed job output, pipe the output of Get-AzAutomationJobOutput to Get-AzAutomationJobOutputRecord
 Get-AzAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
-  –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzAutomationJobOutputRecord
+  -AutomationAccountName "MyAutomationAccount" -Id $job.JobId -Stream Any | Get-AzAutomationJobOutputRecord
 ```
 
 ### <a name="retrieve-runbook-output-and-messages-in-graphical-runbooks"></a>グラフィカル Runbook で Runbook の出力とメッセージを取得する

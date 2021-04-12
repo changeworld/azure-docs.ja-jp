@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 06/11/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b93f45b05e6d7773afc2f750fd1a9a034c01ca1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cc8f89720dddbee3f69cb5d933268edb17acfd2
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89178673"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055622"
 ---
 # <a name="how-managed-identities-for-azure-resources-work-with-azure-virtual-machines"></a>Azure リソースのマネージド ID と Azure 仮想マシンの連携
 

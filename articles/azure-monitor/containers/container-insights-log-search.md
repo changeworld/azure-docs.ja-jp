@@ -1,22 +1,22 @@
 ---
-title: Azure Monitor for containers からログを照会する方法 |Microsoft Docs
-description: Azure Monitor for containers は、メトリックとログ データを収集します。この記事では、レコードについて説明し、サンプル クエリを紹介します。
+title: Container insights のログのクエリを実行する方法 | Microsoft Docs
+description: Container insights により、メトリックとログ データが収集されます。この記事では、レコードについて説明し、サンプル クエリを紹介します。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 8f02d900ba931768c7f8acebc1b124aff777da18
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 03/03/2021
+ms.openlocfilehash: c2b7331255e1109f27f89a84d66e25eb07a20569
+ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100604379"
+ms.lasthandoff: 03/05/2021
+ms.locfileid: "102201381"
 ---
-# <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Azure Monitor for containers からログを照会する方法
+# <a name="how-to-query-logs-from-container-insights"></a>Container insights のログのクエリを実行する方法
 
-Azure Monitor for containers では、コンテナー ホストおよびコンテナーからパフォーマンスのメトリック、インベントリ データ、および正常性状態の情報が収集されます。 データは 3 分ごとに収集され、Azure Monitor の Log Analytics ワークスペースに転送されます。 このデータは、Azure Monitor で[クエリ](../log-query/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
+Container insights により、コンテナー ホストおよびコンテナーからパフォーマンスのメトリック、インベントリ データ、および正常性状態の情報が収集されます。 データは 3 分ごとに収集され、Azure Monitor の Log Analytics ワークスペースに転送されます。 このデータは、Azure Monitor で[クエリ](../logs/log-query-overview.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
 
 ## <a name="container-records"></a>コンテナー レコード
 
-次の表で、Azure Monitor for containers で収集されるレコードの詳細について説明します。 列の説明の一覧については、[ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) と [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) のテーブルのリファレンスを参照してください。
+Container insights によって収集されるレコードの詳細を次の表に示します。 列の説明の一覧については、[ContainerInventory](/azure/azure-monitor/reference/tables/containerinventory) と [ContainerLog](/azure/azure-monitor/reference/tables/containerlog) のテーブルのリファレンスを参照してください。
 
 | Data | データ ソース | データ型 | フィールド |
 |------|-------------|-----------|--------|
@@ -25,10 +25,11 @@ Azure Monitor for containers では、コンテナー ホストおよびコン�
 | コンテナー ノード インベントリ | Kube API | `ContainerNodeInventory`| TimeGenerated、Computer、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
 | Kubernetes クラスター内のポッドのインベントリ | Kube API | `KubePodInventory` | TimeGenerated、Computer、ClusterId、ContainerCreationTimeStamp、PodUid、PodCreationTimeStamp、ContainerRestartCount、PodRestartCount、PodStartTime、ContainerStartTime、ServiceName、ControllerKind、ControllerName、ContainerStatus、ContainerStatusReason、ContainerID、ContainerName、Name、PodLabel、Namespace、PodStatus、ClusterName、PodIp、SourceSystem |
 | Kubernetes クラスター内のノード部分のインベントリ | Kube API | `KubeNodeInventory` | TimeGenerated, Computer, ClusterName, ClusterId, LastTransitionTimeReady, Labels, Status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
+|Kubernetes クラスター内の永続ボリュームのインベントリ |Kube API |`KubePVInventory` | TimeGenerated、PVName、PVCapacityBytes、PVCName、PVCNamespace、PVStatus、PVAccessModes、PVType、PVTypeInfo、PVStorageClassName、PVCreationTimestamp、ClusterId、ClusterName、_ResourceId、SourceSystem |
 | Kubernetes イベント | Kube API | `KubeEvents` | TimeGenerated, Computer, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, Message,  SourceSystem | 
 | Kubernetes クラスター内のサービス | Kube API | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Kubernetes クラスターのノード部分のパフォーマンス メトリック | 使用状況メトリックは cAdvisor から、制限は Kube API から取得されます | Perf &#124; where ObjectName == "K8SNode" | Computer、ObjectName、CounterName &#40;cpuAllocatableNanoCores、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoch&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
-| Kubernetes クラスターのコンテナー部分のパフォーマンス メトリック | 使用状況メトリックは cAdvisor から、制限は Kube API から取得されます | Perf &#124; where ObjectName == "K8SContainer" | CounterName &#40;cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
+| Kubernetes クラスターのノード部分のパフォーマンス メトリック | 使用状況メトリックは cAdvisor から、制限は Kube API から取得されます | `Perf \| where ObjectName == "K8SNode"` | Computer、ObjectName、CounterName &#40;cpuAllocatableNanoCores、memoryAllocatableBytes、cpuCapacityNanoCores、memoryCapacityBytes、memoryRssBytes、cpuUsageNanoCores、memoryWorkingsetBytes、restartTimeEpoch&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
+| Kubernetes クラスターのコンテナー部分のパフォーマンス メトリック | 使用状況メトリックは cAdvisor から、制限は Kube API から取得されます | `Perf \| where ObjectName == "K8SContainer"` | CounterName &#40;cpuRequestNanoCores、memoryRequestBytes、cpuLimitNanoCores、memoryWorkingSetBytes、restartTimeEpoch、cpuUsageNanoCores、memoryRssBytes&#41;、CounterValue、TimeGenerated、CounterPath、SourceSystem | 
 | カスタム メトリック ||`InsightsMetrics` | Computer、Name、Namespace、Origin、SourceSystem、Tags<sup>1</sup>、TimeGenerated、Type、Va、_ResourceId | 
 
 <sup>1</sup>*Tags* プロパティは、対応するメトリックの [複数のディメンション](../essentials/data-platform-metrics.md#multi-dimensional-metrics)を表します。 `InsightsMetrics` テーブルに収集されて格納されているメトリックの詳細と、レコードのプロパティの説明については、[InsightsMetrics の概要](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md)に関するページを参照してください。
@@ -37,7 +38,7 @@ Azure Monitor for containers では、コンテナー ホストおよびコン�
 
 Azure Monitor ログを使用することにより、傾向の特定、ボトルネックの診断、予想を行ったり、データを関連付けて現在のクラスター構成のパフォーマンスが最適化されているかどうかを判断したりできます。 すぐに使用できる事前定義のログ検索が提供されています。また、検索結果として返される情報の表示方法をカスタマイズすることもできます。
 
-**[分析で表示する]** ドロップダウン リストからプレビュー ウィンドウの **[Kubernetes イベント ログの表示]** または **[コンテナー ログの表示]** オプションを選択することにより、ワークスペース内のデータの分析を対話式に実行できます。 **[ログ検索]** ページは、元の Azure portal ページの右側に表示されます。
+**[分析で表示する]** ドロップダウン リストからプレビュー ウィンドウの **[Kubernetes イベント ログの表示]** または **[コンテナー ログの表示]** オプションを選択することにより、ワークスペース内のデータを対話的に分析できます。 **[ログ検索]** ページは、元の Azure portal ページの右側に表示されます。
 
 ![Log Analytics でデータを解析する](./media/container-insights-analyze/container-health-log-search-example.png)
 
@@ -47,14 +48,58 @@ Azure Monitor ログを使用することにより、傾向の特定、ボトル
 
 多くの場合、1、2 個の例を使ってクエリを作成し、その後、要件に合わせて変更するとうまくいきます。 より高度なクエリを作成できるように、次のサンプル クエリを試すことができます。
 
-| クエリ | 説明 | 
-|-------|-------------|
-| ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | コンテナーのライフ サイクル情報をすべて一覧表示します| 
-| KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes イベント|
-| ContainerImageInventory<br> &#124; summarize AggregatedValue = count() by Image, ImageTag, Running | イメージ インベントリ | 
-| **[折れ線] グラフの表示オプションを選択する**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | コンテナー CPU | 
-| **[折れ線] グラフの表示オプションを選択する**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | コンテナー メモリ |
-| InsightsMetrics<br> &#124; where Name == "requests_count"<br> &#124; summarize Val=any(Val) by TimeGenerated=bin(TimeGenerated, 1m)<br> &#124; sort by TimeGenerated asc<br> &#124; project RequestsPerMinute = Val - prev(Val), TimeGenerated <br> &#124; render barchart  | カスタム メトリックでの 1 分あたりの要求数 |
+### <a name="list-all-of-a-containers-lifecycle-information"></a>コンテナーのライフ サイクル情報をすべて一覧表示します
+
+```kusto
+ContainerInventory
+| project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime
+| render table
+```
+
+### <a name="kubernetes-events"></a>Kubernetes イベント
+
+``` kusto
+KubeEvents_CL
+| where not(isempty(Namespace_s))
+| sort by TimeGenerated desc
+| render table
+```
+### <a name="image-inventory"></a>イメージ インベントリ
+
+``` kusto
+ContainerImageInventory
+| summarize AggregatedValue = count() by Image, ImageTag, Running
+```
+
+### <a name="container-cpu"></a>コンテナー CPU
+
+**[折れ線] グラフの表示オプションを選択する**
+
+``` kusto
+Perf
+| where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" 
+| summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName 
+```
+
+### <a name="container-memory"></a>コンテナー メモリ
+
+**[折れ線] グラフの表示オプションを選択する**
+
+```kusto
+Perf
+| where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes"
+| summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName
+```
+
+### <a name="requests-per-minute-with-custom-metrics"></a>カスタム メトリックでの 1 分あたりの要求数
+
+```kusto
+InsightsMetrics
+| where Name == "requests_count"
+| summarize Val=any(Val) by TimeGenerated=bin(TimeGenerated, 1m)
+| sort by TimeGenerated asc<br> &#124; project RequestsPerMinute = Val - prev(Val), TimeGenerated
+| render barchart 
+```
 
 ## <a name="query-prometheus-metrics-data"></a>Prometheus メトリック データのクエリを実行する
 
@@ -110,4 +155,4 @@ KubeMonAgentEvents | where Level != "Info"
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Monitor for containers には、定義済みの一連のアラートは含まれません。 [Azure Monitor for containers を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。
+Container insights にはアラートの定義済みのセットは含まれていません。 [Container insights を使用したパフォーマンス アラートの作成](./container-insights-log-alerts.md)に関するページを読んで、CPU やメモリの使用率が高い場合に推奨アラートを作成し、DevOps や運用プロセスまたは手順をサポートする方法について学習します。

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 6e7f2e445c3e4e8df7420c0587e156968f3a2c92
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3bbd778eabf150b734b04e004006dfeea2254ec4
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542679"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077484"
 ---
 # <a name="sizing-guidance"></a>サイズ設定のガイダンス
 
@@ -92,9 +92,9 @@ Azure Arc 対応データ サービスの最小デプロイ サイズは、Azure
 
 |コンテナー名|CPU 要求|メモリ要求|CPU の制限|メモリの制限|メモ|
 |---|---|---|---|---|---|
-|fluentbit|100m|100Mi|指定なし|指定なし|fluentbit コンテナー リソース要求は、SQL Managed Instance に対して指定された要求 _に追加_ されます。||
-|arc-sqlmi|ユーザー指定または指定なし。|ユーザー指定または指定なし。|ユーザー指定または指定なし。|ユーザー指定または指定なし。||
-|collectd|指定なし|指定なし|指定なし|指定なし||
+|fluentbit|100m|100Mi|指定なし|指定なし|fluentbit コンテナー リソース要求は、SQL Managed Instance に対して指定された要求 _に追加_ されます。|
+|arc-sqlmi|ユーザー指定または指定なし。|ユーザー指定または指定なし。|ユーザー指定または指定なし。|ユーザー指定または指定なし。|
+|collectd|指定なし|指定なし|指定なし|指定なし|
 
 すべての永続ボリュームの既定のボリューム サイズは 5Gi です。
 

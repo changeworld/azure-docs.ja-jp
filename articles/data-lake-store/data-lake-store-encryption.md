@@ -8,12 +8,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: f924cb7462f7f8c9939ec261b7ef200ceb8ea70b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 51c9f924c6fe3ac6db86d60e26749d35bc4ab733
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92109155"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108946"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 でのデータの暗号化
 
@@ -135,4 +135,4 @@ Data Lake Storage Gen1 アカウントを設定するときに、独自キーの
 この処理は 2 分未満で完了します。キーの交換が原因でダウンタイムは発生しないものと思われます。 処理が完了したら、新しいバージョンのキーが使用中の状態になります。
 
 > [!IMPORTANT]
-> キー交換操作の完了後、以前のバージョンのキーは、積極的にはデータの暗号化に使用されなくなります。  ただし、まれなケースではありますが、データの冗長コピーにも影響するような予期しないエラーが発生した場合に、以前のキーが使用されているバックアップからデータを復元できることがあります。 そうしたまれな状況でも確実にデータにアクセスできるよう、以前のバージョンの暗号化キーのコピーは保持してください。 ディザスター リカバリー プランのベスト プラクティスについては、[Data Lake Storage Gen1 内のデータに対するディザスター リカバリーのガイダンス](data-lake-store-disaster-recovery-guidance.md)に関するページを参照してください。
+> キー交換操作の完了後、以前のバージョンのキーは、新規データの暗号化に積極的には使用されなくなります。 ただし、古いデータにアクセスする際に古いキーが必要になる場合があります。 このような古いデータを読み取ることができるようにするために、古いキーを削除しないでください。

@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 02/11/2021
+ms.date: 03/02/2021
 ms.topic: how-to
-ms.openlocfilehash: dd20a76ebc833320050c87862ad5022e99cd453a
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 329df78bb5829695b95fcca5b7ed7e1439ced821
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100384964"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101688367"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Azure Arc データ コントローラーを作成する
 
@@ -37,7 +37,7 @@ Azure Arc 対応データ サービスは、複数の異なる種類の Kubernet
 
 > [!IMPORTANT]
 > * Kubernetes のサポートされている最小バージョンは 1.17 です。 追加情報については、[既知の問題](./release-notes.md#known-issues)を参照してください。 
-> * サポートされる OCP の最小バージョンは 4.3 です。
+> * サポートされる OCP の最小バージョンは 4.5 です。
 > * 環境と Azure の間に必要な接続については、「[接続要件](connectivity.md)」を参照してください。
 > * 永続ストレージを構成する方法の詳細については、「[ストレージ構成ガイダンス](storage-configuration.md)」を参照してください。
 > * Azure Kubernetes Service を使用している場合は、クラスターのワーカー ノードの VM サイズが少なくとも **Standard_D8s_v3** であり、**Premium ディスク** を使用している必要があります。 クラスターは複数の可用性ゾーンにまたがることはできません。 

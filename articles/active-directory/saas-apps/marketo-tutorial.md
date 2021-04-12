@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/13/2021
 ms.author: jeedes
 ms.openlocfilehash: 433303bf0d51eff3bd3ab37726c9e98e8a766d25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101686956"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>チュートリアル: Marketo と Azure Active Directory の統合

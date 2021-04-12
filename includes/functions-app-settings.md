@@ -8,10 +8,10 @@ ms.date: 08/15/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 1776c756df23be9c1f29382ff223d367ffc5cc5a
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99500499"
 ---
 関数アプリの設定は、いくつかの方法で追加、更新、削除できます。

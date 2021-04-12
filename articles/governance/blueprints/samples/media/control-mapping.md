@@ -1,14 +1,14 @@
 ---
 title: メディア ブループリント サンプル コントロール
 description: メディア ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
-ms.date: 01/08/2021
+ms.date: 04/02/2021
 ms.topic: sample
-ms.openlocfilehash: e1356acfd7b6b9693322000077b221781b58681f
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: b489111010c9a4fcb112428ae642332980302849
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035038"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106386410"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>メディア ブループリント サンプルのコントロール マッピング
 
@@ -178,7 +178,7 @@ ms.locfileid: "98035038"
 
 ### <a name="sp-113--threats-must-be-identified-that-could-negatively-impact-the-confidentiality-integrity-or-availability-of-company-information-and-content-along-with-the-likelihood-of-their-occurrence"></a>SP-11.3 - 会社の情報とコンテンツの機密性、整合性、可用性に悪影響を及ぼす脅威とその発生の可能性を特定する
 
-- SQL Managed Instance の Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
+- SQL マネージド インスタンスの Advanced Data Security 設定で、[Advanced Threat Protection の種類] を [すべて] に設定する必要がある
 
 ### <a name="security-continuity"></a>セキュリティ継続性
 

@@ -3,12 +3,12 @@ title: メディア グラフの概念 - Azure
 description: メディア グラフを使用すると、メディアのキャプチャ元、処理方法、および結果の配信先を定義できます。 この記事では、メディア グラフの概念の詳細について説明します。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 6f23e7db8cecb46106a63fdecdb6ba04dbd99682
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: ad23acbbbdd0c15e92e471ee22a229470a8a3a75
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401102"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557668"
 ---
 # <a name="media-graph"></a>メディア グラフ
 
@@ -74,7 +74,7 @@ RTSP ソース ノードを使用すると、[RTSP](https://tools.ietf.org/html/
 
 #### <a name="iot-hub-message-source"></a>IoT Hub メッセージのソース 
 
-他の [IoT Edge モジュール](../../iot-edge/iot-edge-glossary.md#iot-edge-module)と同様に、IoT Edge モジュールの Live Video Analytics では、[IoT Edge ハブ](../../iot-edge/iot-edge-glossary.md#iot-edge-hub)を介してメッセージを受信できます。 これらのメッセージは、他のモジュール、またはエッジ デバイスで実行されているアプリ、またはクラウドから送信できます。 このようなメッセージは、モジュールの[名前付きの入力](../../iot-edge/module-composition.md#sink)に配信 (ルーティング) されます。 IoT Hub メッセージのソース ノードを使用すると、このようなメッセージをメディア グラフに配信できます。 これらのメッセージまたは信号は、通常、信号ゲートをアクティブ化するために、メディア グラフの内部で使用できます (後述する[シグナル ゲート](#signal-gate-processor)を参照してください)。 
+他の [IoT Edge モジュール](../../iot-fundamentals/iot-glossary.md#iot-edge)と同様に、IoT Edge モジュールの Live Video Analytics では、[IoT Edge ハブ](../../iot-fundamentals/iot-glossary.md#iot-edge-hub)を介してメッセージを受信できます。 これらのメッセージは、他のモジュール、またはエッジ デバイスで実行されているアプリ、またはクラウドから送信できます。 このようなメッセージは、モジュールの[名前付きの入力](../../iot-edge/module-composition.md#sink)に配信 (ルーティング) されます。 IoT Hub メッセージのソース ノードを使用すると、このようなメッセージをメディア グラフに配信できます。 これらのメッセージまたは信号は、通常、信号ゲートをアクティブ化するために、メディア グラフの内部で使用できます (後述する[シグナル ゲート](#signal-gate-processor)を参照してください)。 
 
 たとえば、ドアが開かれたときにメッセージを生成する IoT Edge モジュールを作成できます。 そのモジュールからのメッセージを IoT Edge hub にルーティングし、このハブから、メディア グラフの IoT hub メッセージ ソースにルーティングできます。 メディア グラフ内では、IoT hub のメッセージ ソースは、イベントをシグナル ゲート プロセッサに渡すことができます。これにより、RTSP ソースからファイルへのビデオの記録が有効になります。 
 

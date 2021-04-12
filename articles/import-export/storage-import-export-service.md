@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 03/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6dd2c7fcef6860cb5a2eaf88d141f8567955ed25
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: b1f1560fc1a00577e1e4b30d922fc7d4cae0ab92
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706066"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102181862"
 ---
 # <a name="what-is-azure-importexport-service"></a>Azure Import/Export サービスとは
 
@@ -79,7 +79,7 @@ Azure Import/Export サービスでは、ジョブを作成することで、Azu
 >
 > 海外 (データ センターの所在国外またはリージョン外) 発送の場合は、国際運送業者のアカウントを共有してください。
 
- ![図 1: インポート ジョブのフロー](./media/storage-import-export-service/importjob.png)
+ ![図 1: インポート ジョブのフロー](./media/storage-import-export-service/import-job.png)
 
 データの段階的インポート方法については、次にお進みください。
 
@@ -108,7 +108,7 @@ Azure Import/Export サービスでは、ジョブを作成することで、Azu
 >
 > 海外 (データ センターの所在国外またはリージョン外) 発送の場合は、国際運送業者のアカウントを共有してください。
   
- ![図 2: エクスポート ジョブのフロー](./media/storage-import-export-service/exportjob.png)
+ ![図 2: エクスポート ジョブのフロー](./media/storage-import-export-service/export-job.png)
 
 データ エクスポートの段階的な手順については、[Azure Blobs からデータをエクスポートする](storage-import-export-data-from-blobs.md)方法に関するページを参照してください。
 

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/16/2020
-ms.openlocfilehash: ba80d78cbc7d34b1496daffbd489a1d0dbfed8b4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fc33b24aac8964d0a8390b4b38c5e1862ed639a8
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285665"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102198916"
 ---
 # <a name="tutorial-access-azure-blob-storage-using-azure-databricks-and-azure-key-vault"></a>チュートリアル:Azure Databricks と Azure Key Vault を使用して Azure Blob Storage にアクセスする
 
@@ -29,11 +29,11 @@ ms.locfileid: "93285665"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルを開始する前に、[Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest) をインストールします。
+このチュートリアルを開始する前に、[Azure CLI](/cli/azure/install-azure-cli-windows) をインストールします。
 
 ## <a name="create-a-storage-account-and-blob-container-with-azure-cli"></a>Azure CLI を使用してストレージ アカウントと BLOB コンテナーを作成する
 
-BLOB を使用するには、まず汎用ストレージ アカウントを作成する必要があります。 [リソース グループ](/cli/azure/group?view=azure-cli-latest#az-group-create)がない場合は、コマンドを実行する前に作成します。 次のコマンドを実行すると、ストレージ コンテナーのメタデータが作成され、表示されます。 **ID** をメモします。
+BLOB を使用するには、まず汎用ストレージ アカウントを作成する必要があります。 [リソース グループ](/cli/azure/group#az-group-create)がない場合は、コマンドを実行する前に作成します。 次のコマンドを実行すると、ストレージ コンテナーのメタデータが作成され、表示されます。 **ID** をメモします。
 
 ```azurecli
 az storage account create --name contosoblobstorage5 --resource-group contosoResourceGroup --location eastus --sku Standard_ZRS --encryption-services blob

@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
 ms.openlocfilehash: b4ba5f50f5c66b404ec76128a828a1060328f81c
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101690993"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Azure SQL Managed Instance のタイム ゾーン

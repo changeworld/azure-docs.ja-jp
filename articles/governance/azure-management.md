@@ -4,10 +4,10 @@ description: Azure 管理ツールに関するコンテンツへのリンクを�
 ms.date: 02/05/2021
 ms.topic: overview
 ms.openlocfilehash: 754fe496b790a7ee32eb840109a60a04ee66ef97
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99593927"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Azure 管理の領域とは

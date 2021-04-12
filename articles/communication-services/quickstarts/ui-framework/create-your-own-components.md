@@ -4,15 +4,15 @@ titleSuffix: An Azure Communication Services quickstart
 description: このクイックスタートでは、UI フレームワークと互換性のあるカスタム コンポーネントを作成する方法について説明します
 author: ddematheu2
 ms.author: dademath
-ms.date: 11/16/2020
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 88de5ca56738e13446be30fb14df6bcdac360827
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 798b898f6e2367e3096bcf985715fd48de3d394f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539685"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105930219"
 ---
 # <a name="quickstart-create-your-own-ui-framework-component"></a>クイックスタート: 独自の UI フレームワーク コンポーネントを作成する
 
@@ -47,7 +47,7 @@ cd my-app
 
 ### <a name="install-the-package"></a>パッケージをインストールする
 
-`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話クライアント ライブラリをインストールします。 提供された tarball (プライベート プレビュー) を my-app ディレクトリに移動します。
+`npm install` コマンドを使用して、JavaScript 用の Azure Communication Services 通話 SDK をインストールします。 提供された tarball (プライベート プレビュー) を my-app ディレクトリに移動します。
 
 ```console
 
@@ -71,7 +71,7 @@ npm run start
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Azure Communication Services UI クライアント ライブラリが備える主な機能のいくつかは、次のクラスとインターフェイスにより処理されます。
+Azure Communication Services UI SDK が備える主な機能のいくつかは、次のクラスとインターフェイスにより処理されます。
 
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |

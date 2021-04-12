@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/24/2020
 ms.reviewer: mbullwin
 ms.custom: devx-track-python
-ms.openlocfilehash: f50628395526783face11fcb1438e2716135b640
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 69472da4f774a1dfae86e1891255907ad711175a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100584029"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047424"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Python アプリケーション用に Azure Monitor をセットアップします
 
@@ -19,7 +19,7 @@ Azure Monitor は、[OpenCensus](https://opencensus.io) との統合により、
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 SDK でサポートされているのは、Python v2.7 および v3.4 から v3.7 のみです。
+- Python のインストール。 この記事では [Python 3.7.0](https://www.python.org/downloads/release/python-370/) を使用しますが、他のバージョンでも軽微な変更で使用できる可能性があります。 SDK では、Python のバージョン 2.7 および 3.6 以上をサポートしています。
 - Application Insights の[リソース](./create-new-resource.md)を作成します。 リソースの独自のインストルメンテーション キー (ikey) が割り当てられます。
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>Azure Monitor 用の OpenCensus Python SDK を使用したインストルメント化
@@ -221,6 +221,15 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
 
 ### <a name="metrics"></a>メトリック
 
+OpenCensus.stats では 4 つの集計メソッドがサポートされますが、Azure Monitor に対するサポートは部分的に提供されます。
+
+- **Count:** 測定ポイントのカウント数。 値は累積的であり、増加のみ可能です。再起動時に 0 にリセットできます。 
+- **Sum:** 測定ポイントの合計。 値は累積的であり、増加のみ可能です。再起動時に 0 にリセットできます。 
+- **LastValue:** 最後に記録された値を保持し、他のすべてを削除します。
+- **Distribution:** 測定ポイントのヒストグラム分布です。 このメソッドは、**Azure エクスポーターではサポートされていません**。
+
+### <a name="count-aggregation-example"></a>カウント集計の例
+
 1. まず、いくつかのローカル メトリック データを生成しましょう。 ユーザーが **Enter** キーを選択した回数を追跡する単純なメトリックを作成します。
 
     ```python
@@ -320,7 +329,7 @@ OpenCensus のサンプリングの詳細については、[OpenCensus でのサ
         main()
     ```
 
-1. エクスポーターによって、一定の間隔でメトリック データが Azure Monitor に送信されます。 既定値は 15 秒ごとです。 1 つのメトリックを追跡しているので、このメトリック データは、それに含まれる値およびタイムスタンプに関係なく、間隔ごとに送信されます。 データは `customMetrics` で確認できます。
+1. エクスポーターによって、一定の間隔でメトリック データが Azure Monitor に送信されます。 既定値は 15 秒ごとです。 1 つのメトリックを追跡しているので、このメトリック データは、それに含まれる値およびタイムスタンプに関係なく、間隔ごとに送信されます。 値は累積的であり、増加のみ可能です。再起動時に 0 にリセットできます。 `customMetrics` でデータを見つけることができますが、`customMetrics` プロパティの valueCount、valueSum、valueMin、valueMax、および valueStdDev は有効に使用されていません。
 
 #### <a name="performance-counters"></a>パフォーマンス カウンター
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/14/2021
+ms.date: 02/22/2021
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 99521a746a16a2d0de310fc6cfb2d2272e7b2593
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 0bfc09a372584a25c23060cef33d1f698e6d5ff3
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98706074"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101712608"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export のシステム要件
 
@@ -44,6 +44,9 @@ Azure Import/Export サービスでは、以下の種類のストレージ ア�
 - Standard General Purpose v2 ストレージ アカウント (ほとんどのシナリオで推奨)
 - BLOB ストレージ アカウント
 - General Purpose v1 ストレージ アカウント (クラシックまたは Azure Resource Manager の両方のデプロイ)
+
+> [!IMPORTANT]
+> Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポートは、Azure Import/Export ではサポートされていません。
 
 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 

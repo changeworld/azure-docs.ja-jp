@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Data Lake Storage Gen1 に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 02/09/2021
+ms.date: 03/31/2021
 ms.topic: sample
 author: normesta
 ms.author: normesta
 ms.service: data-lake-store
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 0989cc7df5826a9e8629f286e69a8e509a084cee
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: fd51c80f811b92e03a433b5ab451b875254d3266
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100093907"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095249"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 用の Azure Policy 規制コンプライアンス コントロール
 

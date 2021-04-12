@@ -6,10 +6,10 @@ ms.author: gwallace
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.openlocfilehash: 651329b1b061f2cf5a06dbdc9d60f73cec64e7d3
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99625551"
 ---
 # <a name="state-management-with-service-fabric"></a>Service Fabric を使用した状態の管理

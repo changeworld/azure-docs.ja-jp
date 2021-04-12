@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 1/19/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 951c52cdba191aa291061259e1c15b9190513770
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 608f883304dbc8e1ea8b0127668125ae50ca0b11
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092722"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564944"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -56,7 +56,7 @@ Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソ
     az eventhubs eventhub create --name <name for your Twins event hub> --resource-group <resource group name> --namespace-name <Event Hubs namespace from above>
     ```
 
-3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create)を作成します。 規則の名前を指定します。
+3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule#az-eventhubs-eventhub-authorization-rule-create)を作成します。 規則の名前を指定します。
 
     ```azurecli-interactive
         az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from above> --eventhub-name <Twins event hub name from above> --name <name for your Twins auth rule>
@@ -73,7 +73,7 @@ Azure Digital Twins の "[*チュートリアル: エンドツーエンドのソ
     >[!NOTE]
     >Cloud Shell には現在、`az dt route`、`az dt model`、`az dt twin` の各コマンド グループに影響する **既知の問題** があります。
     >
-    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true) を使用します。 この件の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
+    >解決するには、コマンドを実行する前に Cloud Shell で `az login` を実行するか、Cloud Shell ではなく[ローカル CLI](/cli/azure/install-azure-cli) を使用します。 この件の詳細については、「[*トラブルシューティング: Azure Digital Twins の既知の問題*](troubleshoot-known-issues.md#400-client-error-bad-request-in-cloud-shell)」を参照してください。
 
     ```azurecli-interactive
     az dt route create -n <your Azure Digital Twins instance name> --endpoint-name <Event Hub endpoint from above> --route-name <name for your route> --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
@@ -117,7 +117,7 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
     ```azurecli-interactive
     az eventhubs eventhub create --name <name for your TSI event hub> --resource-group <resource group name from earlier> --namespace-name <Event Hubs namespace from earlier>
     ```
-3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule?view=azure-cli-latest&preserve-view=true#az-eventhubs-eventhub-authorization-rule-create)を作成します。 規則の名前を指定します。
+3. 送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule#az-eventhubs-eventhub-authorization-rule-create)を作成します。 規則の名前を指定します。
 
     ```azurecli-interactive
     az eventhubs eventhub authorization-rule create --rights Listen Send --resource-group <resource group name> --namespace-name <Event Hubs namespace from earlier> --eventhub-name <TSI event hub name from above> --name <name for your TSI auth rule>
@@ -157,7 +157,7 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
 
 ## <a name="create-and-connect-a-time-series-insights-instance"></a>Azure Time Series Insights インスタンスを作成して接続する
 
-次に、2 番目の (TSI) イベント ハブからデータを受信するように Time Series Insights インスタンスを設定します。 以下の手順のようにします。このプロセスの詳細については、"[*チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定*](../time-series-insights/tutorials-set-up-tsi-environment.md)" に関するページを参照してください。
+次に、2 番目の (TSI) イベント ハブからデータを受信するように Time Series Insights インスタンスを設定します。 以下の手順のようにします。このプロセスの詳細については、"[*チュートリアル: Azure Time Series Insights Gen2 PAYG 環境の設定*](../time-series-insights/tutorial-set-up-environment.md)" に関するページを参照してください。
 
 1. Azure portal で、Time Series Insights 環境の作成を始めます。 
     1. **Gen2 (L1)** 価格レベルを選択します。
@@ -173,7 +173,7 @@ Azure Functions で Event Hubs を使用する方法の詳細については、"
 
 ## <a name="begin-sending-iot-data-to-azure-digital-twins"></a>Azure Digital Twins への IoT データの送信を始める
 
-Time Series Insights へのデータの送信を始めるには、Azure Digital Twins のデジタル ツイン プロパティの変化するデータ値での更新を始める必要があります。 [az dt twin update](/cli/azure/ext/azure-iot/dt/twin?view=azure-cli-latest&preserve-view=true#ext-azure-iot-az-dt-twin-update) コマンドを使用します。
+Time Series Insights へのデータの送信を始めるには、Azure Digital Twins のデジタル ツイン プロパティの変化するデータ値での更新を始める必要があります。 [az dt twin update](/cli/azure/ext/azure-iot/dt/twin#ext-azure-iot-az-dt-twin-update) コマンドを使用します。
 
 エンドツーエンドのチュートリアル (「[*チュートリアル: エンドツーエンドのソリューションの接続*](tutorial-end-to-end.md)」) を使用して環境をセットアップしている場合は、サンプルから *DeviceSimulator* プロジェクトを実行することにより、シミュレートされた IoT データの送信を開始できます。 手順については、チュートリアルの「[*シミュレーションを構成して実行する*](tutorial-end-to-end.md#configure-and-run-the-simulation)」セクションを参照してください。
 
@@ -201,7 +201,7 @@ Time Series Insights へのデータの送信を始めるには、Azure Digital 
 
 デジタル ツインは、Time Series Insights にフラット階層として既定で格納されますが、モデル情報と組織の複数レベルの階層を使用して強化することができます。 このプロセスの詳細については、以下を参照してください。 
 
-* [*チュートリアル:モデルを定義して適用する*](../time-series-insights/tutorials-set-up-tsi-environment.md#define-and-apply-a-model) 
+* [*チュートリアル:モデルを定義して適用する*](../time-series-insights/tutorial-set-up-environment.md#define-and-apply-a-model) 
 
 Azure Digital Twins に既に格納されているモデルとグラフ データを使用して、この情報を自動的に提供するカスタム ロジックを作成できます。 ツイン グラフの情報の管理、アップグレード、および取得について詳しくは、以下の参照情報をご覧ください。
 

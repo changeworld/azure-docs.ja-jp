@@ -6,16 +6,16 @@ author: tomaschladek
 manager: nmurav
 ms.service: azure-communication-services
 ms.subservice: azure-communication-services
-ms.date: 08/20/2020
+ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: 3de4b3869b5df0da4c71eade1fe4f684653dc265
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: eee020e5d96b301e8278d31c26360639553be0ee
+ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657085"
+ms.lasthandoff: 03/16/2021
+ms.locfileid: "103495322"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -93,7 +93,7 @@ const connectionString = process.env['COMMUNICATION_SERVICES_CONNECTION_STRING']
 const identityClient = new CommunicationIdentityClient(connectionString);
 ```
 
-または、エンドポイントとアクセス キーを分離することもできます。
+エンドポイントとアクセス キーを分離することもできます。
 ```javascript
 // This code demonstrates how to fetch your endpoint and access key
 // from an environment variable.
@@ -134,6 +134,18 @@ console.log(token);
 
 アクセス トークンは有効期間の短い資格情報であるため、再発行が必要になります。 そうしないと、アプリケーションのユーザー エクスペリエンスが中断される可能性があります。 `expiresOn` 応答プロパティは、アクセス トークンの有効期間を示します。
 
+## <a name="create-an-identity-and-issue-an-access-token-within-the-same-request"></a>ID を作成し、同じ要求内でアクセス トークンを発行する
+
+`createUserAndToken` メソッドを使用して、Communication Services ID を作成し、そのアクセス トークンを発行します。 パラメーター `scopes` によって、このアクセス トークンを承認するプリミティブのセットが定義されます。 [サポートされているアクションの一覧](../../concepts/authentication.md)を参照してください。
+
+```javascript
+// Issue an identity and an access token with the "voip" scope for the new identity
+let identityTokenResponse = await this.client.createUserAndToken(["voip"]);
+const { token, expiresOn, user } = identityTokenResponse;
+console.log(`\nCreated an identity with ID: ${user.communicationUserId}`);
+console.log(`\nIssued an access token with 'voip' scope that expires at ${expiresOn}:`);
+console.log(token);
+```
 
 ## <a name="refresh-access-tokens"></a>アクセス トークンの更新
 

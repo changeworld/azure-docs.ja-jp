@@ -6,13 +6,13 @@ ms.author: susabat
 ms.reviewer: susabat
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/03/2020
-ms.openlocfilehash: 091c0cb20877090453f38ab922cc2bd277e90093
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/12/2021
+ms.openlocfilehash: 2b6f97f0966cb2c92dbd88c4a70188282ed3ed27
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100393753"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802035"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-adf"></a>ADF での CI-CD、Azure DevOps、および GitHub の問題のトラブルシューティング 
 
@@ -91,7 +91,7 @@ CI/CD リリース パイプラインが次のエラーで失敗しています�
 
 #### <a name="issue"></a>問題
 
-Data Factory に変更を発行しようとすると、次のエラーメッセージが表示されます。
+Data Factory に変更を発行しようとすると、次のエラー メッセージが表示されます。
 
 `
 "error": {
@@ -101,8 +101,7 @@ Data Factory に変更を発行しようとすると、次のエラーメッセ�
         "details": null
     }
 `
-
-#### <a name="symptom"></a>症状
+### <a name="cause"></a>原因
 
 Git 構成をデタッチし、"リソースのインポート" フラグをオンにして再設定しました。これにより、Data Factory が "同期" として設定されます。 これは、発行する変更がないことを意味します。
 
@@ -150,11 +149,7 @@ ARM テンプレートをエクスポートおよびインポートできませ�
 
 この問題を解決するには、ロールに次のアクセス許可を追加する必要があります。*Microsoft.DataFactory/factories/queryFeaturesValue/action* このアクセス許可は、既定で "Data Factory 共同作成者" ロールに含まれている必要があります。
 
-###  <a name="automatic-publishing-for-cicd-without-clicking-publish-button"></a>[発行] ボタンをクリックしない CI/CD での自動発行  
-
-#### <a name="issue"></a>問題
-
-ADF ポータルでのボタン クリックによる手動発行で、自動の CI/CD 操作が有効になりません。
+###  <a name="cannot-automate-publishing-for-cicd"></a>CI/CD の発行を自動化できない 
 
 #### <a name="cause"></a>原因
 
@@ -162,7 +157,7 @@ ADF ポータルでのボタン クリックによる手動発行で、自動の
 
 #### <a name="resolution"></a>解決方法
 
-CI/CD プロセスが拡張されました。 **自動発行** 機能によって、ADF UX からすべての Azure Resource Manager (ARM) テンプレート機能が取得、検証、およびエクスポートされます。 これにより、一般公開されている npm パッケージ [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) を介してそのロジックが使用可能になります。 これにより、ADF UI に移動してボタンをクリックする代わりに、プログラムによってこれらのアクションをトリガーできます。 これにより、CI/CD パイプラインで **真の** 継続的インテグレーション エクスペリエンスを利用できます。 詳細については、[ADF CI/CD 発行の機能強化](https://docs.microsoft.com/azure/data-factory/continuous-integration-deployment-improvements)に関する記事に従ってください。 
+CI/CD プロセスが拡張されました。 **自動発行** 機能によって、ADF UX からすべての Azure Resource Manager (ARM) テンプレート機能が取得、検証、およびエクスポートされます。 これにより、一般公開されている npm パッケージ [@microsoft/azure-data-factory-utilities](https://www.npmjs.com/package/@microsoft/azure-data-factory-utilities) を介してそのロジックが使用可能になります。 これにより、ADF UI に移動してボタンをクリックする代わりに、プログラムによってこれらのアクションをトリガーできます。 これにより、CI/CD パイプラインで **真の** 継続的インテグレーション エクスペリエンスを利用できます。 詳細については、[ADF CI/CD 発行の機能強化](./continuous-integration-deployment-improvements.md)に関する記事に従ってください。 
 
 ###  <a name="cannot-publish-because-of-4mb-arm-template-limit"></a>4 MB の ARM テンプレート制限が原因で発行できない  
 
@@ -176,7 +171,47 @@ Azure Resource Manager では、テンプレート サイズは 4 MB に制限�
 
 #### <a name="resolution"></a>解決方法
 
-中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割することができます。 [リンクされた、およびネストされたテンプレートの使用](https://docs.microsoft.com/azure/azure-resource-manager/templates/linked-templates?tabs=azure-powershell)に関する記事に記載されているベスト プラクティスに従ってください。
+中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割することができます。 [リンクされた、およびネストされたテンプレートの使用](../azure-resource-manager/templates/linked-templates.md?tabs=azure-powershell)に関する記事に記載されているベスト プラクティスに従ってください。
+
+### <a name="cannot-connect-to-git-enterprise"></a>Git Enterprise に接続できない  
+
+##### <a name="issue"></a>問題
+
+アクセス許可の問題のため、Git Enterprise に接続できません。 "**422 - 処理できないエンティティです**" のようなエラーが表示される場合があります。
+
+#### <a name="cause"></a>原因
+
+* ADF に OAuth が構成されていません。 
+* URL が正しく構成されていません。
+
+##### <a name="resolution"></a>解決方法
+
+最初に、ADF への OAuth アクセスを許可します。 次に、正しい URL を使用して Git Enterprise に接続する必要があります。 構成は、顧客組織に設定する必要があります。 たとえば、ADF はまず *https://hostname/api/v3/search/repositories?q=user%3<customer credential>....* 試行し、失敗します。 その後、 *https://hostname/api/v3/orgs/<org>/<repo>...* を試行し、成功します。 
+ 
+### <a name="cannot-recover-from-a-deleted-data-factory"></a>削除されたデータ ファクトリから復旧できない
+
+#### <a name="issue"></a>問題
+お客様が、データ ファクトリを削除したか、またはデータ ファクトリが含まれるリソース グループを削除しました。 削除されたデータ ファクトリを復元する方法を知る必要があります。
+
+#### <a name="cause"></a>原因
+
+お客様がソース管理 (DevOps または Git) を構成している場合にのみ、データ ファクトリを復旧することができます。 これにより、発行された最新のリソースはすべて復旧されますが、発行されていないパイプライン、データセット、リンク サービスは復元 **されません**。
+
+ソース管理が使用されていない場合は、サービスが削除コマンドを受け取ると、インスタンスが削除されて、バックアップは格納されないため、削除されたデータ ファクトリをバックエンドから復旧することはできません。
+
+#### <a name="resolution"></a>解決方法
+
+ソース管理が使用されている場合に削除されたデータ ファクトリを復旧するには、次の手順のようにします。
+
+ * 新しい Azure データ ファクトリを作成します。
+
+ * 同じ設定で Git を再構成します。ただし、既存の Data Factory リソースを、選択したリポジトリにインポートし、[新しいブランチ] を選択してください。
+
+ * 変更をコラボレーション ブランチにマージして発行する pull request を作成します。
+
+ * 削除された ADF にセルフホステッド統合ランタイムがあった場合は、新しい ADF に新しいインスタンスを作成する必要があります。また、新しいキーを取得して、オンプレミスのコンピューターや VM 上のインスタンスをアンインストールして再インストールする必要があります。 IR の設定が完了した後、お客様は、新しい IR を指すようにリンク サービスを変更して、接続をテストする必要があります。そうしないと、**無効な参照** エラーで失敗します。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

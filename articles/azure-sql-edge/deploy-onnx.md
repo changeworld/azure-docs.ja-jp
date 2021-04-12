@@ -10,10 +10,10 @@ author: dphansen
 ms.author: davidph
 ms.date: 10/13/2020
 ms.openlocfilehash: 755111b2fc48ec119c30d09f2e51b9db6c333848
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100653212"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-and-sql-machine-learning"></a>ONNX モデルおよび SQL 機械学習を使用したデプロイと予測

@@ -10,14 +10,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: mbaldwin
-ms.openlocfilehash: 3764b261b491c660da16d7989be20742fead1fbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 03/25/2021
+ms.author: keithp
+ms.openlocfilehash: 3370389027805cfb5a68b5b0551d14dc31154804
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91359156"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611839"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure の専用 HSM のネットワーク
 
@@ -84,6 +84,60 @@ HSM デバイスには、ソフトウェア ライブラリを通じて、トラ
 > 現時点では、専用 HSM を使用したリージョン間接続のシナリオで、グローバル VNET ピアリングを利用することはできません。VPN Gateway を使用する必要があります。 
 
 ![2 つの VPN ゲートウェイで接続されている 2 つのリージョンを示す図。 各リージョンに、ピアリングされた仮想ネットワークが含まれています。](media/networking/global-vnet.png)
+
+## <a name="networking-restrictions"></a>ネットワークの制限
+> [!NOTE]
+> サブネット委任を使用した Dedicated HSM サービスの制約は、HSM デプロイのターゲット ネットワーク アーキテクチャを設計するときに考慮すべき強制的な制限です。 サブネット委任の使用は、NSG、UDR、グローバル VNet ピアリングが、Dedicated HSM でサポートされていないことを意味します。 以下のセクションでは、これらの機能と同じかまたは類似の結果を達成する代替の手法に関するヘルプを提供します。 
+
+Dedicated HSM VNet に存在する HSM NIC では、ネットワーク セキュリティ グループまたはユーザー定義ルートを使用できません。 つまり、Dedicated HSM VNet の観点から既定の拒否ポリシーを設定することはできません。また、Dedicated HSM サービスにアクセスするには、他のネットワーク セグメントを許可リストに載せる必要があります。 
+
+ネットワーク仮想アプライアンス (NVA) プロキシ ソリューションを追加することで、トランジットまたは DMZ ハブの NVA ファイアウォールを HSM NIC の前に論理的に配置できるようになるため、NSG と UDR の必要な代替手段を提供することもできます。
+
+### <a name="solution-architecture"></a>ソリューションのアーキテクチャ
+このネットワーク設計には、次の要素が必要です。
+1.  NVA プロキシ層があるトランジットまたは DMZ ハブ VNet。 複数の NVA が存在するのが理想的です。 
+2.  プライベート ピアリングが有効になっており、トランジット ハブ VNet への接続がある ExpressRoute 回線。
+3.  トランジット ハブ VNet と Dedicated HSM VNet 間の VNet ピアリング。
+4.  NVA ファイアウォールまたは Azure Firewall をデプロイし、ハブで DMZ サービスをオプションとして提供できます。 
+5.  追加のワークロード スポーク VNet をハブ VNet とピアリングできます。 Gemalto クライアントでは、ハブ VNet を介して Dedicated HSM サービスにアクセスできます。
+
+![図は、NSG と UDR の回避策として NVA プロキシ層がある DMZ ハブ VNet を示しています](media/networking/network-architecture.png)
+
+NVA プロキシ ソリューションを追加すると、トランジットまたは DMZ ハブ内の NVA ファイアウォールを HSM NIC の前に論理的に配置できるようになるため、必要な既定の拒否ポリシーが提供されます。 この例では、この目的のために Azure Firewall を使用し、次の要素を設定する必要があります。
+1. DMZ ハブ VNet のサブネット "AzureFirewallSubnet" にデプロイされた Azure Firewall
+2. Azure ILB プライベート エンドポイントに向かうトラフィックを Azure Firewall に送信する UDR を含むルーティング テーブル。 このルーティング テーブルは、ユーザーの ExpressRoute 仮想ゲートウェイが存在する GatewaySubnet に適用されます
+3. 信頼できる発信元範囲と、TCP ポート 1792 でリッスンしている Azure IBL プライベート エンドポイント間の転送を許可する、AzureFirewall 内のネットワーク セキュリティ規則。 このセキュリティ ロジックにより、Dedicated HSM サービスに対して必要な "既定の拒否" ポリシーが追加されます。 つまり、信頼できる発信元 IP 範囲のみが Dedicated HSM サービスへのアクセスを許可されます。 その他のすべての範囲はドロップされます。  
+4. オンプレミスに向かうトラフィックを Azure Firewall に送信する UDR を含むルーティング テーブル。 このルーティング テーブルは、NVA プロキシ サブネットに適用されます。 
+5. プロキシ NVA サブネットに適用される NSG では、発信元として Azure Firewall のサブネット範囲のみが信頼され、TCP ポート 1792 を介した HSM NIC IP アドレスへの転送のみが許可されます。 
+
+> [!NOTE]
+> NVA プロキシ層では、HSM NIC に転送するときにクライアント IP アドレスが SNAT されるため、HSM VNet と DMZ ハブ VNet の間に UDR が必要ありません。  
+
+### <a name="alternative-to-udrs"></a>UDR の代替手段
+上で説明した NVA 層ソリューションは、UDR の代替手段として機能します。 注意すべき重要な点がいくつかあります。
+1.  NVA でネットワーク アドレス変換を構成して、戻りのトラフィックが正しくルーティングされるようにする必要があります。
+2. NAT のために VNA を使用するには、ユーザーが、Luna HSM 構成でクライアント IP チェックを無効にする必要があります。 次のコマンドを例として使用します。
+```
+Disable:
+[hsm01] lunash:>ntls ipcheck disable
+NTLS client source IP validation disabled
+Command Result : 0 (Success)
+
+Show:
+[hsm01] lunash:>ntls ipcheck show
+NTLS client source IP validation : Disable
+Command Result : 0 (Success)
+```
+3.  NVA 層へのイグレス トラフィック用に UDR をデプロイします。 
+4. 設計に従い、HSM サブネットではプラットフォーム層への送信接続要求が開始されません。
+
+### <a name="alternative-to-using-global-vnet-peering"></a>グローバル VNET ピアリングの使用の代替手段
+グローバル VNet ピアリングの代わりとして使用できるいくつかのアーキテクチャがあります。
+1.  [VNet 間 VPN Gateway 接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)を使用します 
+2.  ER 回線で HSM VNET と別の VNET を接続します。 これは、直接のオンプレミスのパスが必要な場合、または VPN VNET に最適です。 
+
+#### <a name="hsm-with-direct-express-route-connectivity"></a>Express Route 直接接続がある HSM
+![図は、Express Route 直接接続がある HSM を示しています](media/networking/expressroute-connectivity.png)
 
 ## <a name="next-steps"></a>次のステップ
 

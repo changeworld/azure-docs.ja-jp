@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 0fd97fe0eebb23130513409698b75d2ee7b98a6f
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 3626ca4cc3e7377f1c6778bc77e5e48ef0dcad0c
+ms.sourcegitcommit: ec39209c5cbef28ade0badfffe59665631611199
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101657629"
+ms.lasthandoff: 03/12/2021
+ms.locfileid: "103439263"
 ---
 ## <a name="add-managed-identity-to-your-communication-services-solution-js"></a>Communication Services ソリューションにマネージド ID を追加する (JS)
 
@@ -23,8 +23,8 @@ Azure ID と Azure Storage クライアント ライブラリを使用するた�
 
 ```typescript
 import { DefaultAzureCredential } from "@azure/identity";
-import { CommunicationIdentityClient } from "@azure/communication-identity";
-import { SmsClient } from "@azure/communication-sms";
+import { CommunicationIdentityClient, CommunicationUserToken } from "@azure/communication-identity";
+import { SmsClient, SmsSendRequest } from "@azure/communication-sms";
 ```
 
 下の例では [DefaultAzureCredential](/javascript/api/azure.identity.defaultazurecredential) が使用されています。 この資格情報は、運用と開発の各環境に適しています。
@@ -39,7 +39,7 @@ import { SmsClient } from "@azure/communication-sms";
 export async function createIdentityAndIssueToken(resourceEndpoint: string): Promise<CommunicationUserToken> {
      let credential = new DefaultAzureCredential();
      const client = new CommunicationIdentityClient(resourceEndpoint, credential);
-     return await client.createUserWithToken(["chat"]);
+     return await client.createUserAndToken(["chat"]);
 }
 ```
 
@@ -51,7 +51,7 @@ export async function createIdentityAndIssueToken(resourceEndpoint: string): Pro
 export async function sendSms(resourceEndpoint: string, fromNumber: any, toNumber: any, message: string) {
      let credential = new DefaultAzureCredential();
      const smsClient = new SmsClient(resourceEndpoint, credential);
-     const sendRequest: SendRequest = { 
+     const sendRequest: SmsSendRequest = { 
           from: fromNumber, 
           to: [toNumber], 
           message: message 
@@ -63,17 +63,4 @@ export async function sendSms(resourceEndpoint: string, fromNumber: any, toNumbe
           );
 }
 ```
-
-## <a name="next-steps"></a>次のステップ
-
-> [!div class="nextstepaction"]
-> [認証について学習する](../concepts/authentication.md)
-
-次のことも実行できます。
-
-- [Azure のロールベースのアクセス制御の詳細について学習する](../../../../articles/role-based-access-control/index.yml)
-- [JS 用 Azure ID ライブラリの詳細について学習する](/javascript/api/overview/azure/identity-readme)
-- [ユーザー アクセス トークンを作成する](../../quickstarts/access-tokens.md)
-- [SMS メッセージの送信](../../quickstarts/telephony-sms/send.md)
-- [SMS に関する詳細](../../concepts/telephony-sms/concepts.md)
 

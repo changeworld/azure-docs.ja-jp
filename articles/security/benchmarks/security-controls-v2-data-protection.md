@@ -4,19 +4,21 @@ description: Azure セキュリティ ベンチマーク V2 データ保護
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 50358eed580bbd83f25386feb0068a252060672b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368870"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102037117"
 ---
 # <a name="security-control-v2-data-protection"></a>セキュリティ コントロール V2:データ保護
 
 データ保護は、保存時、転送中、承認されたアクセス メカニズムによるデータ保護の制御を対象としています。 これには、Azure のアクセス制御、暗号化、ログ記録を使用した機密データ資産の検出、分類、保護、監視が含まれます。
+
+該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: データ保護](../../governance/policy/samples/azure-security-benchmark.md#data-protection)」を参照してください
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1:機密データを検出、分類、ラベル付けする
 
@@ -24,9 +26,9 @@ ms.locfileid: "97368870"
 |--|--|--|--|
 | DP-1 | 13.1、14.5、14.7 | SC-28 |
 
-お使いの機密データを検出、分類、ラベル付けすると、組織の技術システムで機密情報が安全に保存、処理、および転送されるコントロールを適切に設計できます。 
+お使いの機密データを検出、分類、ラベル付けすると、組織の技術システムで機密情報が安全に保存、処理、および転送されるコントロールを適切に設計できます。
 
-Azure、オンプレミス、Office 365 などの場所にある Office ドキュメントの機密情報には、Azure Information Protection (とこれに付随するスキャン ツール) を使用します。 
+Azure、オンプレミス、Office 365 などの場所にある Office ドキュメントの機密情報には、Azure Information Protection (とこれに付随するスキャン ツール) を使用します。
 
 Azure SQL Database に格納されている情報の分類とラベル付けには、Azure SQL Information Protection を使用します。
 
@@ -38,7 +40,7 @@ Azure SQL Database に格納されている情報の分類とラベル付けに�
 
 **顧客のセキュリティ上の利害関係者** ([詳細](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)  
+- [アプリケーション セキュリティと DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 - [データ セキュリティ](/azure/cloud-adoption-framework/organize/cloud-security-data-security) 
 
@@ -84,9 +86,9 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 
 データ損失対策 (DLP) に準拠する必要がある場合、ホスト ベースの DLP ソリューションを使用して、検出および予防コントロールを適用してデータ流出を回避できます。
 
-- [Azure SQL ATP を有効にする](../../azure-sql/database/threat-detection-overview.md)
+- [Azure Defender for SQL](../../azure-sql/database/azure-defender-for-sql.md)
 
-- [Azure Storage ATP を有効にする](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
+- [Azure Defender for Storage](../../storage/common/azure-defender-storage-configure.md?tabs=azure-security-center)
 
 **責任**: 共有
 
@@ -104,11 +106,11 @@ Azure Information Protection (AIP) には、分類およびラベル付けされ
 |--|--|--|--|
 | DP-4 | 14.4 | SC-8 |
 
-転送中のデータが攻撃者に簡単に読み取られたり変更されたりしないよう、暗号化を使用して "帯域外" 攻撃 (トラフィックのキャプチャなど) から保護し、アクセス制御を補完する必要があります。 
+転送中のデータが攻撃者に簡単に読み取られたり変更されたりしないよう、暗号化を使用して "帯域外" 攻撃 (トラフィックのキャプチャなど) から保護し、アクセス制御を補完する必要があります。
 
-これはプライベート ネットワーク上のトラフィックでは省略できますが、外部ネットワークとパブリック ネットワーク上のトラフィックには重要です。 ご自分の Azure リソースに接続するすべてのクライアントの HTTP トラフィックのネゴシエートには、確実に TLS v1.2 以上を使用してください。 リモート管理には、暗号化されていないプロトコルではなく、(Linux の場合) SSH または (Windows の場合) RDP/TLS を使用します。 SSL、TLS、SSH の古いバージョンとプロトコル、および弱い暗号は無効にする必要があります。  
+これはプライベート ネットワーク上のトラフィックでは省略できますが、外部ネットワークとパブリック ネットワーク上のトラフィックには重要です。 ご自分の Azure リソースに接続するすべてのクライアントの HTTP トラフィックのネゴシエートには、確実に TLS v1.2 以上を使用してください。 リモート管理には、暗号化されていないプロトコルではなく、(Linux の場合) SSH または (Windows の場合) RDP/TLS を使用します。 SSL、TLS、SSH の古いバージョンとプロトコル、および弱い暗号は無効にする必要があります。
 
-既定では Azure によって、Azure のデータ センター間の転送データが暗号化されます。 
+既定では Azure によって、Azure のデータ センター間の転送データが暗号化されます。
 
 - [Azure での転送中の暗号化の概要](../fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 

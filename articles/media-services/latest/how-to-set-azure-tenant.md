@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 02/8/2021
 ms.author: inhenkel
 ms.openlocfilehash: 4c907b45e096bd87faef4d932630c931dcf95ffd
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100101055"
 ---
 # <a name="how-to-find-your-azure-tenant-id"></a>Azure テナント ID を見つける方法

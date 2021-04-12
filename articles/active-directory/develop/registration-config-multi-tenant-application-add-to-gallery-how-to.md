@@ -15,10 +15,10 @@ ms.author: ryanwi
 ms.reviewer: jeedes
 ROBOTS: NOINDEX
 ms.openlocfilehash: de0231a49c4f806660ea0cb305fdc1a70e2b36d3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98063129"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーにマルチテナント アプリケーションを追加する

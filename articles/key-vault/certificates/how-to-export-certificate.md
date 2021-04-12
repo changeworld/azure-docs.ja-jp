@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom: mvc
 ms.date: 08/11/2020
 ms.author: sebansal
-ms.openlocfilehash: b3c917c9652954783fcddd92b9a7370c358ab3cc
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: ad3e5bcda0fb03af0637a309b4dbfd248b54f1a0
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233646"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104587204"
 ---
 # <a name="export-certificates-from-azure-key-vault"></a>Azure Key Vault から証明書をエクスポートする
 
@@ -61,7 +61,7 @@ az keyvault certificate download --file
                                  [--version]
 ```
 
-詳細については、[例とパラメーターの定義](/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-download)を参照してください。
+詳細については、[例とパラメーターの定義](/cli/azure/keyvault/certificate#az-keyvault-certificate-download)を参照してください。
 
 証明書としてダウンロードすることは、公開部分を取得することを意味します。 秘密キーとパブリック メタデータの両方が必要な場合は、シークレットとしてダウンロードできます。
 
@@ -75,7 +75,7 @@ az keyvault secret download -–file {nameofcert.pfx}
                             [--version]
 ```
 
-詳細については、[パラメーターの定義](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-download)を参照してください。
+詳細については、[パラメーターの定義](/cli/azure/keyvault/secret#az-keyvault-secret-download)を参照してください。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -101,7 +101,7 @@ $pfxFileByte = $x509Cert.Export($type, $password)
 [System.IO.File]::WriteAllBytes("KeyVault.pfx", $pfxFileByte)
 ```
 
-このコマンドにより、証明書のチェーン全体が秘密キーと共にエクスポートされます。 証明書がパスワードで保護されていること。
+このコマンドは、秘密キー (インポートされたものと同じ) を使用して証明書のチェーン全体をエクスポートします。 証明書がパスワードで保護されていること。
 **Get-AzKeyVaultCertificate** コマンドとパラメーターの詳細については、[Get-AzKeyVaultCertificate の例 2](/powershell/module/az.keyvault/Get-AzKeyVaultCertificate?view=azps-4.4.0) を参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)

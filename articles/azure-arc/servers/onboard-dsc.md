@@ -4,10 +4,10 @@ description: この記事では、Windows PowerShell DSC を使用して、Azure
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.openlocfilehash: c0ae9c97afe14559aa36c1b8387f07897aa4c43b
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100587642"
 ---
 # <a name="how-to-install-the-connected-machine-agent-using-windows-powershell-dsc"></a>Windows PowerShell DSC を使用して Connected Machine エージェントをインストールする方法

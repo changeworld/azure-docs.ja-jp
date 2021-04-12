@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 12/21/2020
+ms.date: 03/27/2021
 ms.author: alkohli
-ms.openlocfilehash: a52ed05e03176bcb9b2fde9f2da1c746cedd6d49
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: c32aa15b3c1ac9e794e66936219ba645d3ec425d
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475043"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106078803"
 ---
 # <a name="vm-sizes-and-types-for-azure-stack-edge-pro"></a>Azure Stack Edge Pro 用の VM のサイズと種類 
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、Azure Stack Edge Pro デバイスで実行されている仮想マシンでサポートされるサイズについて説明します。 Azure Stack Edge Pro デバイスに仮想マシンをデプロイする前に、この記事を使用します。
 

@@ -14,10 +14,10 @@ ms.custom: aaddev
 ms.reviewer: hirsin
 ROBOTS: NOINDEX
 ms.openlocfilehash: 803f52666fb09a836eae3294410584ebbd71a1b6
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98755889"
 ---
 # <a name="microsoft-identity-platform-authentication-protocols"></a>Microsoft ID プラットフォーム認証プロトコル

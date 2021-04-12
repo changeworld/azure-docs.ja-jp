@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30ad26f079e6353dc4763b9ae968c33882d8ab6
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: cfea22c10d98adf3b8c89491c248bf7a934ba1ed
+ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029349"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104798886"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -79,6 +79,8 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 - [フェデレーション環境用のハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-federated-domains.md)
 - [マネージド環境用のハイブリッド Azure Active Directory 参加を構成する](hybrid-azuread-join-managed-domains.md)
 
+### <a name="non-persistent-vdi"></a>非永続的 VDI
+
 非永続的 VDI をデプロイする場合は、IT 管理者が以下のガイダンスを実行に移すことをお勧めします。 そのようにしないと、非永続的な VDI プラットフォームから登録された古い Hybrid Azure AD 参加済みデバイスが、ディレクトリに内に多数存在することになります。これにより、テナント クォータの負荷が増加し、テナント クォータの不足が原因でサービスが中断されるリスクが生じます。
 
 - システム準備ツール (sysprep.exe) を使用していて、インストールに Windows 10 1809 より前のイメージを使用している場合は、そのイメージが、既にハイブリッド Azure AD 参加済みとして Azure AD に登録されているデバイスからのものではないことを確認します。
@@ -92,6 +94,15 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 - [古いデバイスの管理](manage-stale-devices.md)のプロセスを定義して実装します。
    - 非永続的な Hybrid Azure AD 参加済みデバイスを識別する方法 (コンピューター表示名のプレフィックスなど) を用意したら、ディレクトリが多くの古いデバイスで占められないように、これらのデバイスのクリーンアップをより積極的に行う必要があります。
    - 最新の Windows とダウンロードレベルの Windows への非永続的 VDI のデプロイでは、**ApproximateLastLogonTimestamp** が 15 日より古いデバイスを削除する必要があります。
+
+### <a name="persistent-vdi"></a>永続的 VDI
+
+永続的 VDI をデプロイする場合は、IT 管理者が以下のガイダンスを実行に移すことをお勧めします。 そうしないと、デプロイと認証の問題が発生します。 
+
+- システム準備ツール (sysprep.exe) を使用していて、インストールに Windows 10 1809 より前のイメージを使用している場合は、そのイメージが、既にハイブリッド Azure AD 参加済みとして Azure AD に登録されているデバイスからのものではないことを確認します。
+- 仮想マシン (VM) のスナップショットを利用して追加の VM を作成する場合は、そのスナップショットが、既にハイブリッド Azure AD 参加として Azure AD に登録されている VM からのものではないことを確認します。
+
+また、[古くなったデバイスを管理](manage-stale-devices.md)するためのプロセスを実装することをお勧めします。 これにより、VM を定期的にリセットすると、ディレクトリで古くなった多くのデバイスを使用しないで済むようになります。
  
 ## <a name="next-steps"></a>次のステップ
 

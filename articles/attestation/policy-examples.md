@@ -7,36 +7,16 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 51e8f01726c732604199ff08323f073d508da66e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9c29ec3dbc4d4f7d0a7abe0ff9a90fc0b7565272
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602306"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106442560"
 ---
 # <a name="examples-of-an-attestation-policy"></a>構成証明ポリシーの例
 
-構成証明ポリシーは、構成証明の証拠を処理する際に使用されます。Azure Attestation から構成証明トークンが発行されるかどうかは、構成証明ポリシーによって決まります。 構成証明トークンの生成は、カスタム ポリシーを使用して制御できます。 以降、構成証明ポリシーの例をいくつか紹介します。
-
-## <a name="default-policy-for-an-sgx-enclave"></a>SGX エンクレーブの既定のポリシー 
-
-```
-version= 1.0;
-authorizationrules
-{
-    c:[type=="$is-debuggable"] => permit();
-};
-
-issuancerules
-{
-    c:[type=="$is-debuggable"] => issue(type="is-debuggable", value=c.value);
-    c:[type=="$sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);
-    c:[type=="$sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);
-    c:[type=="$product-id"] => issue(type="product-id", value=c.value);
-    c:[type=="$svn"] => issue(type="svn", value=c.value);
-    c:[type=="$tee"] => issue(type="tee", value=c.value);
-};
-```
+構成証明ポリシーは、構成証明の証拠を処理する際に使用されます。Azure Attestation から構成証明トークンが発行されるかどうかは、構成証明ポリシーによって決まります。 構成証明トークンの生成は、カスタム ポリシーを使用して制御できます。 以降、構成証明ポリシーの例をいくつか紹介します。 
 
 ## <a name="sample-custom-policy-for-an-sgx-enclave"></a>SGX エンクレーブのサンプル カスタム ポリシー 
 
@@ -49,6 +29,45 @@ authorizationrules
         && [ type=="x-ms-sgx-svn", value>= 0 ]
         && [ type=="x-ms-sgx-mrsigner", value=="<mrsigner>"]
     => permit();
+};
+issuancerules {
+c:[type=="x-ms-sgx-mrsigner"] => issue(type="<custom-name>", value=c.value);
+};
+
+```
+Azure Attestation によって生成される入力方向の要求の詳細については、「[要求セット](./claim-sets.md)」をご覧ください。 入力方向の要求は、カスタム ポリシーに承認規則を定義するために、ポリシーの作成者によって使用されることがあります。 
+
+発行規則セクションは必須ではありません。 ユーザーはこのセクションを使用して、構成証明トークン内に生成された追加の出力方向の要求を、カスタム名で指定できます。 サービスによって構成証明トークン内に生成された出力方向の要求の詳細については、「[要求セット](./claim-sets.md)」をご覧ください。
+
+## <a name="default-policy-for-an-sgx-enclave"></a>SGX エンクレーブの既定のポリシー
+
+```
+version= 1.0;
+authorizationrules {
+    => permit();
+};
+issuancerules {
+    c:[type=="x-ms-sgx-is-debuggable"] => issue(type="is-debuggable", value=c.value);
+    c:[type=="x-ms-sgx-mrsigner"] => issue(type="sgx-mrsigner", value=c.value);
+    c:[type=="x-ms-sgx-mrenclave"] => issue(type="sgx-mrenclave", value=c.value);
+    c:[type=="x-ms-sgx-product-id"] => issue(type="product-id", value=c.value);
+    c:[type=="x-ms-sgx-svn"] => issue(type="svn", value=c.value);
+    c:[type=="x-ms-attestation-type"] => issue(type="tee", value=c.value);
+};
+```
+
+既定のポリシーで使用されている要求は非推奨と見なされてはいますが、完全にサポートされており、今後も引き続き追加されます。 非推奨となっていない要求名の使用をお勧めします。 推奨される要求名の詳細については、「[要求セット](./claim-sets.md)」をご覧ください。 
+
+## <a name="sample-custom-policy-to-support-multiple-sgx-enclaves"></a>複数の SGX エンクレーブをサポートするサンプル カスタム ポリシー
+
+```
+version= 1.0;
+authorizationrules 
+{
+    [ type=="x-ms-sgx-is-debuggable", value==true ]&&
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+    [ type=="x-ms-sgx-is-debuggable", value==true ]&& 
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
 };
 ```
 

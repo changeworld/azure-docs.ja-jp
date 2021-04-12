@@ -2,18 +2,18 @@
 title: 負荷の急増に対応できる B シリーズ - Azure Virtual Machines
 description: 負荷の急増に対応できる B シリーズの Azure VM のサイズについて説明します。
 services: virtual-machines
-ms.subservice: sizes
-author: styli365
+ms.subservice: vm-sizes-general
+author: rishabv90
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
-ms.author: sttsinar
-ms.openlocfilehash: e3a24e4c947afdc1970f6e624335ecc84dd8eff2
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.author: risverma
+ms.openlocfilehash: e0797dfd8c4bf1cf86e2eeafb824298c412e5f1f
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100594397"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491816"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 

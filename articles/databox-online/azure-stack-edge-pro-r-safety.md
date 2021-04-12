@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: alkohli
-ms.openlocfilehash: dacc9ecc28ffa482b60d1e48735fe3620b5b7558
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 7b3589349feed2e20711aa756d8be8ebc433ac0b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100363068"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077603"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Azure Stack Edge Pro R の安全性のための指示
 
@@ -37,7 +37,8 @@ Azure Stack Edge Pro R Edge デバイスを設定して実行する際に表示�
 | アイコン | 説明 |
 |:--- |:--- |
 | ![最初にすべての手順をお読みください](./media/azure-stack-edge-pro-r-safety/icon-safety-read-all-instructions.png) | 最初にすべての手順をお読みください |
-| ![注意アイコン](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **注意:** | 重要だが、危険に関連するものではない情報を示します。 || ![危険シンボル](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危険シンボル |
+| ![注意アイコン](./media/azure-stack-edge-mini-r-safety/icon-safety-notice.png) **注意:** | 重要だが、危険に関連するものではない情報を示します。 |
+| ![危険シンボル](./media/azure-stack-edge-pro-r-safety/icon-safety-warning.png) | 危険シンボル |
 | ![傾け注意を示すアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-tip-hazard.png)  | 転倒注意|
 | ![大きな重量を示すアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-heavy-weight.png)  | 重量物の危険|
 | ![感電を示すアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-electric-shock.png) | 感電の危険 |
@@ -45,7 +46,7 @@ Azure Stack Edge Pro R Edge デバイスを設定して実行する際に表示�
 | ![複数の電源のアイコン](./media/azure-stack-edge-pro-r-safety/icon-safety-disconnect-all-power.png)  | 複数の電源。 機器への電力供給をすべて止めるには、すべての電源コードを外します。 |
 | ![ピンチ ポイントのアイコン](./media/azure-stack-edge-pro-r-safety/icon-pinching-points.png)  | ピンチ ポイントが存在します。 |
 | ![高温の内容物または表面のアイコン](./media/azure-stack-edge-pro-r-safety/icon-hot-component-surface.png)  | 高温の内容物または表面を示します。 |
-|
+
 
 ## <a name="handling-precautions-and-site-selection"></a>使用上の注意事項およびサイト選択
 

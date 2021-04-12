@@ -3,7 +3,6 @@ title: 可用性ゾーン間での VM の負荷分散 - Azure CLI - Azure Load B
 description: この Azure CLI スクリプトの例では、可用性ゾーンの枠を越えて VM へのトラフィックを負荷分散する方法を示します
 documentationcenter: load-balancer
 author: asudbring
-Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region.
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9f47d79be186dd44e26f78eaf70bbedaca969d66
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e30c90152151dc51f74fb889b16c92208b1edf3d
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696510"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056047"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI スクリプトの例: 可用性ゾーン間で VM の負荷分散を行う
 
@@ -162,7 +161,7 @@ az group delete --name myResourceGroup
 
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン、可用性セット、ロード バランサー、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Azure 仮想ネットワークとサブネットを作成します。 |

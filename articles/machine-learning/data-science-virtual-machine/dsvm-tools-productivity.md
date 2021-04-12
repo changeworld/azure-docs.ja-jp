@@ -10,10 +10,10 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.openlocfilehash: f8f0a54d99b7f2e84f7ac392de2fe9cb1c7c31a3
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "100516449"
 ---
 # <a name="productivity-tools-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine の生産性向上ツール

@@ -8,10 +8,10 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96021658"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>自動スケールと App Service Environment v1
@@ -52,10 +52,10 @@ Azure App Service Environment は " *自動スケール*" をサポートして�
 ## <a name="autoscale-example"></a>自動スケールの例
 App Service Environment の自動スケールの説明は、シナリオを通して行うのが最も効果的です。
 
-この記事では、自動スケールを設定するときに必要なすべての考慮事項を説明します。 この記事では、 App Service Environment でホストされている App Service Environment の自動スケールを考慮に入れる場合に必要なあらゆるやり取りについて説明します。
+この記事では、自動スケールを設定するときに必要なすべての考慮事項を説明します。 この記事では、App Service Environment でホストされている App Service Environment の自動スケールを考慮に入れる場合に必要なあらゆるやり取りについて説明します。
 
 ### <a name="scenario-introduction"></a>シナリオの概要
-Frank 氏は企業の sysadmin です。彼は管理するワークロードの一部を App Service Environment に移行しました。
+Frank 氏は企業の sysadmin です。彼は管理するワークロードの一部をApp Service Environment に移行しました。
 
 App Service Environment は、次のように手動で拡張するように構成されています。
 
@@ -104,7 +104,7 @@ Frank は、アプリケーションに関する知識がきわめて豊富で�
 ### <a name="app-service-plan-inflation-rate"></a>App Service プランの増加率
 自動スケールを行うように構成された App Service プランは、1 時間あたりの最大レートで処理を行います。 このレートは、自動スケール ルールで指定された値に基づいて算出できます。
 
-ワーカー プールに対するスケールの変更は瞬時に適用されるわけではないので、 App Service Environment の自動スケールでは " *App Service プランの増加率* " を理解し計算することが重要となります。
+ワーカー プールに対するスケールの変更は瞬時に適用されるわけではないので、App Service Environment の自動スケールでは " *App Service プランの増加率* " を理解し計算することが重要となります。
 
 App Service プランの増加率は次のように計算します。
 

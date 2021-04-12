@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 2/8/2021
-ms.openlocfilehash: 18cb4e3ada94822c2f4cb1ca7675310a37e44e84
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: ee57a743d28dcb80eeff5e2060ec9fff436e888c
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590661"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963310"
 ---
 # <a name="tutorial-media-services-trusted-storage"></a>チュートリアル:Media Services の信頼されたストレージ
 
@@ -343,4 +343,4 @@ Authorization: Bearer {{getArmToken.response.body.access_token}}
 
 ## <a name="next-steps"></a>次の手順
 
-[資産を作成する方法](how-to-create-asset.md)
+[資産を作成する方法](asset-create-asset-how-to.md)

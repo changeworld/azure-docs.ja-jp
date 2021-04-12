@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b47a4a79fd423806693e86aef1edd132d844069e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98724443"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105557906"
 ---
 # <a name="resilient-end-user-experience"></a>回復性があるエンドユーザー エクスペリエンス
 
@@ -62,7 +62,7 @@ Facebook などの[外部 ID プロバイダー](../../active-directory-b2c/tech
 
 ## <a name="availability-of-multi-factor-authentication"></a>多要素認証の可用性
 
-[多要素認証 (MFA) に電話サービス](../../active-directory-b2c/phone-authentication.md)を使用する場合は、代替のサービス プロバイダーを検討する必要があります。 ローカルの通信会社や電話サービス プロバイダーでは、サービスの中断が発生する場合があります。
+[多要素認証 (MFA) に電話サービス](../../active-directory-b2c/phone-authentication-user-flows.md)を使用する場合は、代替のサービス プロバイダーを検討する必要があります。 ローカルの通信会社や電話サービス プロバイダーでは、サービスの中断が発生する場合があります。
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>代替 MFA の選択方法  
 

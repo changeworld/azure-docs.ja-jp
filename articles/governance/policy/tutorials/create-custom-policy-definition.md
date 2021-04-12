@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:カスタム ポリシー定義の作成
 description: このチュートリアルでは、Azure リソースに対してカスタム ビジネス ルールを適用するための Azure Policy のカスタム ポリシー定義を作成します。
-ms.date: 10/05/2020
+ms.date: 03/31/2021
 ms.topic: tutorial
-ms.openlocfilehash: 817e6f494b024b9a789f39a4101236f64d8fa0cd
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: c6c4fbe05b6df8a6f8521a0551fe276c893bb6be
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882893"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106092804"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>チュートリアル:カスタム ポリシー定義の作成
 

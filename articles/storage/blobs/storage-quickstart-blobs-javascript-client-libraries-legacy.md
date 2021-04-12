@@ -2,19 +2,19 @@
 title: クイック スタート:ブラウザーでの JavaScript v10 用 Azure Blob Storage
 description: HTML ページで JavaScript v10 SDK を使用して BLOB をアップロード、一覧表示、および削除する方法について説明します。
 services: storage
-author: mhopkins-msft
+author: twooley
 ms.custom: mvc, devx-track-js
 ms.service: storage
-ms.author: mhopkins
+ms.author: twooley
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: d212029936bcd257ef5a78eeedc98c2d6e1df514
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b3cca61fe272b61f2227e7546b37e4ea37cfd693
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96012784"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106280141"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -43,7 +43,7 @@ Azure Portal に戻り、ストレージ アカウントを選択します。 �
 
 次の表は、各 CORS 設定の説明と、ルールを定義するために使用する値を示しています。
 
-|設定  |[値]  | [説明] |
+|設定  |値  | 説明 |
 |---------|---------|---------|
 | 許可されるオリジン | * | 許容されるオリジンとして設定されるドメインの、コンマ区切りの一覧を受け入れます。 値を `*` に設定すると、すべてのドメインがストレージ アカウントにアクセスできるようになります。 |
 | 許可されたメソッド     | delete、get、head、merge、post、options、および put | ストレージ アカウントに対して実行できる HTTP 動詞の一覧です。 このクイック スタートの目的に合わせて、利用可能なすべてのオプションを選択します。 |

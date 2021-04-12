@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2c0416e2787bc69465e18a71f6b9912f7571c24d
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 157a3063df384ca8be55c28e3502ff59d0593d68
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98956091"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960573"
 ---
 # <a name="how-to-encode-with-a-custom-transform---rest"></a>カスタム変換を使用してエンコードする方法 - REST
 
@@ -34,7 +34,7 @@ Azure Media Services を使用してエンコードする場合、[ファイル�
 
 ## <a name="prerequisites"></a>前提条件 
 
-- [Media Services アカウントを作成する](./create-account-howto.md) <br/>リソース グループ名と Media Services アカウント名を覚えておいてください。 
+- [Media Services アカウントを作成する](./account-create-how-to.md) <br/>リソース グループ名と Media Services アカウント名を覚えておいてください。 
 - [Azure Media Services REST API を呼び出すように Postman を構成します](media-rest-apis-with-postman.md)。<br/>トピック「[Azure AD トークンを取得する](media-rest-apis-with-postman.md#get-azure-ad-token)」の最後の手順を必ず実行してください。 
 
 ## <a name="define-a-custom-preset"></a>カスタム プリセットを定義する

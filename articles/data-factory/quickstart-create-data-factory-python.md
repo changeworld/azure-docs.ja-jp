@@ -3,18 +3,18 @@ title: クイック スタート:Python を使用して Azure データ ファ�
 description: データ ファクトリを使用して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 author: dcstwh
 ms.author: weetok
-ms.reviewer: maghan
+ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/15/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: f92a09e78d65f3723b9dfa83574f603dc113ebeb
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.openlocfilehash: 6b15585f029f9289736d8d498b61a3e0ba40f009
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372367"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889418"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -34,7 +34,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 [無料で作成できます](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
 
-* [Python 3.4 以上](https://www.python.org/downloads/)。
+* [Python 3.6 以降](https://www.python.org/downloads/)。
 
 * [Azure Storage アカウント](../storage/common/storage-account-create.md)。
 
@@ -66,7 +66,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
     pip install azure-mgmt-datafactory
     ```
 
-    [Data Factory 用の Python SDK](https://github.com/Azure/azure-sdk-for-python) では、Python 2.7、3.3、3.4、3.5、3.6、および 3.7 がサポートされています。
+    [Data Factory 用の Python SDK](https://github.com/Azure/azure-sdk-for-python) では、Python 2.7 および 3.6 以降がサポートされています。
 
 4. Azure Identity Authentication 用の Python パッケージをインストールするには、次のコマンドを実行します。
 

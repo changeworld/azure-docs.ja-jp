@@ -1,19 +1,19 @@
 ---
 title: Azure Queue Storage リファレンス
 description: Azure Queue Storage API リファレンス、README ファイル、クライアント ライブラリ パッケージが見つかります。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: ripohane
 ms.date: 09/10/2020
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 1a73b56c5ed8b15b9bbcf344e91fdd5fdf4b78cc
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 92b822da14b75dc27c71b3d9400409cb37554cf6
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97592197"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276724"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Queue Storage リファレンス
 
@@ -107,7 +107,7 @@ Azure Queue Storage API リファレンス、ライブラリ パッケージ、R
 
 | Version | プラットフォーム |
 | ------- | -------- |
-|  4.x | [PowerShell](/powershell/module/az.storage/?view=azps-4.6.1&preserve-view=true) |
+|  4.x | [PowerShell](/powershell/module/az.storage/?view=azps-4.8.0&preserve-view=true) |
 |  3.x | [PowerShell](/powershell/module/az.storage/?view=azps-3.8.0&preserve-view=true) |
 |  2.x | [PowerShell](/powershell/module/az.storage/?view=azps-2.8.0&preserve-view=true) |
 

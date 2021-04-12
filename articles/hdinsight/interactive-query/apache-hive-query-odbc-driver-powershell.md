@@ -6,14 +6,14 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1a6274ce36878af6cfbae04be935485c462bc86a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 34ee7eb25b1d106ea8bb53197d69ca5a9d528773
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98941372"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104871607"
 ---
-# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>チュートリアル:ODBC と PowerShell による Apache Hive のクエリの実行
+# <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>チュートリアル: ODBC と PowerShell による Apache Hive のクエリの実行
 
 Microsoft ODBC ドライバーでは、Apache Hive などのさまざまな種類のデータ ソースと対話するための柔軟な方法が提供されています。 ODBC ドライバーを使用して Hive クラスターへの接続を開き、ユーザーが選択したクエリを渡して、結果を表示する PowerShell などのスクリプト言語でコードを記述できます。
 
@@ -42,7 +42,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. Windows で、 **[スタート]**  >  **[Windows 管理ツール]**  >  **[ODBC データ ソース (32 ビット)/(64 ビット)]** の順に移動します。  **[ODBC データ ソース アドミニストレーター]** ウィンドウが開きます。
 
-    ![ODBC データ ソース アドミニストレーター](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "ODBC データ ソース アドミニストレーターを使用して DSN を構成する")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png " alt-text="ODBC データ ソース アドミニストレーター" border="true":::
 
 1. **[ユーザー DSN]** タブで、 **[追加]** を選択して **[データ ソースの新規作成]** ウィンドウを開きます。
 
@@ -53,7 +53,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    | プロパティ | 説明 |
    | --- | --- |
    |  データ ソース名 |データ ソースに名前を付けます。 |
-   |  ホスト |「`CLUSTERNAME.azurehdinsight.net`」と入力します。 たとえば、`myHDICluster.azurehdinsight.net` のように指定します。 |
+   |  ホスト |「`CLUSTERNAME.azurehdinsight.net`」と入力します。 たとえば、`myHDICluster.azurehdinsight.net` |
    |  Port |**443** を使用します。|
    |  データベース |**既定値** を使用します。 |
    |  メカニズム |**[Microsoft Azure HDInsight Service]** を選択します |
@@ -68,7 +68,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
    |  既定の文字列の列の長さ、バイナリ列の長さ、10 進数の列の桁数 |データ型の長さおよび精度は、データが返される方法に影響する可能性があります。 精度が失われたり、切り捨てられたりするために間違った情報が返されます。 |
 
-    ![DSN 詳細構成オプション](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "DSN 詳細構成オプション")
+    :::image type="content" source="./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png " alt-text="DSN 詳細構成オプション" border="true":::
 
 1. **[テスト]** を選択して、データ ソースをテストします。 データ ソースが正しく構成された場合、テスト結果に "**成功**" と表示されます。  
 
@@ -120,7 +120,7 @@ Get-ODBC-Data -query $query -dsn $dsn
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
-リソース グループ、HDInsight クラスター、ストレージ アカウントは、不要になったら削除します。 これを行うには、クラスターが作成されたリソース グループを選択し、 **[削除]** をクリックします。
+リソース グループ、HDInsight クラスター、ストレージ アカウントは、不要になったら削除します。 これを行うには、クラスターが作成されたリソース グループを選択し、**[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次のステップ
 

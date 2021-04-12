@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 07/03/2019
+ms.date: 03/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 6097dba9193fce4c8158137b488080107881994a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4fed8a79b9d74f44a511bd019531c7843965d0e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84707754"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611933"
 ---
 # <a name="azure-data-box-heavy-system-requirements"></a>Azure Data Box Heavy のシステム要件
 

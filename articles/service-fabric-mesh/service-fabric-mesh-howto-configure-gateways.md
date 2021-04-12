@@ -7,16 +7,16 @@ ms.date: 11/28/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 40bba03c35568c013e383c08f0a13f765c1cc8bd
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99625856"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>要求をルーティングするようにゲートウェイ リソースを構成する
 
 > [!IMPORTANT]
-> Azure Service Fabric Mesh のプレビューは廃止されました。 新しいデプロイは、Service Fabric Mesh API では許可されません。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
+> Azure Service Fabric Mesh のプレビューは廃止されました。 Service Fabric Mesh API を介した新しいデプロイは許可されなくなります。 既存のデプロイのサポートは、2021 年 4 月 28 日まで継続されます。
 > 
 > 詳細については、[Azure Service Fabric Mesh のプレビューの廃止](https://azure.microsoft.com/updates/azure-service-fabric-mesh-preview-retirement/)に関する記事を参照してください。
 

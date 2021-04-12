@@ -8,12 +8,12 @@ ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 97797e309c32c6ea996d5ae1901b9a266a683173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: afe56bb8637c9b2a88bda23944fd5097413fce97
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537635"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077722"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>スコアリング プロファイルを Azure Cognitive Search のインデックスに追加する
 
@@ -36,24 +36,24 @@ ms.locfileid: "91537635"
 "scoringProfiles": [
   {  
     "name":"geo",
-    "text": {  
-      "weights": {  
-        "hotelName": 5
-      }                              
+    "text": {  
+      "weights": {  
+        "hotelName": 5
+      }                              
     },
     "functions": [
       {  
         "type": "distance",
-        "boost": 5,
-        "fieldName": "location",
-        "interpolation": "logarithmic",
-        "distance": {
-          "referencePointParameter": "currentLocation",
-          "boostingDistance": 10
-        }                        
-      }                                      
-    ]                     
-  }            
+        "boost": 5,
+        "fieldName": "location",
+        "interpolation": "logarithmic",
+        "distance": {
+          "referencePointParameter": "currentLocation",
+          "boostingDistance": 10
+        }                        
+      }                                      
+    ]                     
+  }            
 ]
 ```  
 
@@ -161,7 +161,7 @@ GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentL
 
  スコアリング プロファイルの本文は、重み付けされたフィールドと関数によって構成されます。  
 
-|||  
+|Properties |説明|  
 |-|-|  
 |**Weights**|相対的な重みをフィールドに割り当てる名前と値のペアを指定します。 [例](#bkmk_ex)では、albumTitle、genre、および artistName のフィールドはそれぞれ 1.5、5、および 2 でブーストされます。 なぜ genre は他のものよりも大幅に高くブーストされるのでしょうか? ある程度同じようなデータに対して検索を実行する場合 (`musicstoreindex` での "genre" の場合のように)、相対的な重みをより分散することが必要になる可能性があります。 たとえば、 `musicstoreindex`では、「ロック」はジャンルとして表示されると共に、言葉で表現されるジャンルの説明の中にも表示されます。 ジャンルがジャンルの説明を上回るようにする場合は、genre フィールドの相対的な重みをより高くする必要があります。|  
 |**関数**|特定のコンテキストに対して追加の計算が必要な場合に使用されます。 有効な値は `freshness`、`magnitude`、`distance`、および `tag` です。 各関数には、固有のパラメーターがあります。<br /><br /> -   `freshness` を使用してください。 この関数は、`datetime` フィールドでのみ使用できます (edm.DataTimeOffset)。 `boostingDuration` 属性は `freshness` 関数のみで使用されることに注意してください。<br />-   `magnitude` を使用してください。 この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。 この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。<br />     `magnitude` 関数では、逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。 たとえば、価格の範囲が 100 ～ 1 ドルである場合、`boostingRangeStart` を 100 に、`boostingRangeEnd` を 1 に設定して、より低い価格の項目をブーストします。<br />-   `distance` を使用してください。 この関数は、 `Edm.GeographyPoint` フィールドでのみ使用できます。<br />-   `tag` を使用してください。 この関数は、`Edm.String` フィールドと `Collection(Edm.String)` フィールドでのみ使用できます。<br /><br /> **関数の使用に関する規則**<br /><br /> 関数の型 (`freshness`、`magnitude`、`distance`、`tag`) は、小文字にする必要があります。<br /><br /> 関数に null または空の値を含めることはできません。 具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。<br /><br /> 関数はフィルターの適用が可能なフィールドにのみ適用できます。 フィルター可能フィールドについて詳しくは、[インデックスの作成 &#40;Azure Cognitive Search Service REST API&#41;](/rest/api/searchservice/create-index) をご覧ください。<br /><br /> 関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。|  

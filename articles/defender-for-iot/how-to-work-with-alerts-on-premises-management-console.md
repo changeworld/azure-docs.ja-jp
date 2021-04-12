@@ -1,18 +1,14 @@
 ---
 title: オンプレミス管理コンソールでアラートを操作する
 description: オンプレミス管理コンソールを使用して、ネットワーク内の最近の脅威のエンタープライズ ビューを取得し、センサー ユーザーがそれらをどのように処理しているかをよりよく理解します。
-author: shhazam-ms
-manager: rkarlin
-ms.author: shhazam
 ms.date: 12/06/2020
-ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 878b1b2d5ba13b68b5122e4b9cffc3c408e211e2
-ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
+ms.openlocfilehash: 604650f0cb08eac4a3ab1cfd3fdcbf2e7ff0d19e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100526325"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105032142"
 ---
 # <a name="work-with-alerts-on-the-on-premises-management-console"></a>オンプレミス管理コンソールでアラートを操作する 
 
@@ -246,6 +242,7 @@ API を使用して作成したルールは、 **[除外ルール]** ウィン�
 
 :::image type="content" source="media/how-to-work-with-alerts-on-premises-management-console/edit-exclusion-rule-screen.png" alt-text="[Edit Exclusion Rule]\(除外ルールの編集\) ビューのスクリーンショット。":::
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
-[センサー上でのアラートの操作](how-to-work-with-alerts-on-your-sensor.md)
+[センサー上でのアラートの操作](how-to-work-with-alerts-on-your-sensor.md)。
+[Defender for IoT エンジンのアラート](alert-engine-messages.md)を確認する。

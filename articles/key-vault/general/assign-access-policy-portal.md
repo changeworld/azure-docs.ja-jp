@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault アクセス ポリシーを割り当てる (ポータル)
-description: Azure portal を使用して、サービス プリンシパルまたはアプリケーション ID に Key Vault アクセス ポリシーを割り当てる方法について説明します。
+description: Azure portal を使用して、セキュリティ プリンシパルまたはアプリケーション ID に Key Vault アクセス ポリシーを割り当てる方法について説明します。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 910b8dae10036cc2e396be13495fd28363dc971d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a64a91e6f41f3fba7584630380ffb878979b4389
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934562"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968766"
 ---
 # <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Azure portal を使用して Key Vault アクセス ポリシーを割り当てる
 
-Key Vault アクセス ポリシーは、特定のサービス プリンシパル (アプリケーションまたはユーザー グループ) が、Key Vault の[シークレット](../secrets/index.yml)、[キー](../keys/index.yml)、および[証明書](../certificates/index.yml)に対して、さまざまな操作を実行できるかどうかを決定します。 アクセス ポリシーは、Azure portal (この記事)、[Azure CLI](assign-access-policy-cli.md)、または [Azure PowerShell](assign-access-policy-powershell.md) を使用して割り当てることができます。
+Key Vault アクセス ポリシーは、特定のセキュリティ プリンシパル (ユーザー、アプリケーション、またはユーザー グループ) が、Key Vault の[シークレット](../secrets/index.yml)、[キー](../keys/index.yml)、および[証明書](../certificates/index.yml)に対して、さまざまな操作を実行できるかどうかを決定します。 アクセス ポリシーは、Azure portal (この記事)、[Azure CLI](assign-access-policy-cli.md)、または [Azure PowerShell](assign-access-policy-powershell.md) を使用して割り当てることができます。
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
@@ -37,15 +37,15 @@ Azure Active Directory での Azure portal を通じたグループの作成の�
 
     ![アクセス ポリシーのアクセス許可を指定しています](../media/authentication/assign-policy-portal-02.png)
 
-1. **[プリンシパルの選択]** で **[選択なし]** リンクを選択すると、 **[プリンシパル]** 選択ウィンドウが開きます。 検索フィールドにアプリまたはサービス プリンシパルの名前を入力し、適切な結果を選択したら、 **[選択]** を選択します。
+1. **[プリンシパルの選択]** で **[選択なし]** リンクを選択すると、 **[プリンシパル]** 選択ウィンドウが開きます。 検索フィールドにユーザー、アプリ、またはサービス プリンシパルの名前を入力し、適切な結果を選択したら、 **[選択]** を選択します。
 
-    ![アクセス ポリシーのサービス プリンシパルを選択しています](../media/authentication/assign-policy-portal-03.png)
+    ![アクセス ポリシーのセキュリティ プリンシパルを選択](../media/authentication/assign-policy-portal-03.png)
 
     アプリにマネージド ID を使用している場合は、アプリ自体の名前を検索して選択します。 (マネージド ID とサービス プリンシパルの詳細については、[Key Vault 認証におけるアプリ ID とサービス プリンシパル](authentication.md#app-identity-and-security-principals)に関する記事を参照してください。)
  
 1.  **[アクセス ポリシーの追加]** ウィンドウに戻り、 **[追加]** を選択して、アクセス ポリシーを保存します。
 
-    ![割り当てられたサービス プリンシパルを使用してアクセス ポリシーを追加する](../media/authentication/assign-policy-portal-04.png)
+    ![割り当てられたセキュリティ プリンシパルを使用してアクセス ポリシーを追加](../media/authentication/assign-policy-portal-04.png)
 
 1. **[アクセス ポリシー]** ページに戻り、アクセス ポリシーが **[現在のアクセス ポリシー]** に表示されていることを確認したら、 **[保存]** を選択します。 アクセス ポリシーは、保存するまで適用されません。
 

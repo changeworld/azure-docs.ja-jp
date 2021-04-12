@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 03/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: c12297019b49d7b3cb644ae9c7a904e4ca697f0b
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: afd1c1d5312a9fbf39b401b0cbb4b9997f27407a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96855041"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869040"
 ---
 # <a name="configure-forced-tunneling"></a>強制トンネリングについて
 

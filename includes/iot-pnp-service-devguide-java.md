@@ -4,22 +4,22 @@ ms.author: dobett
 ms.service: iot-pnp
 ms.topic: include
 ms.date: 10/20/2020
-ms.openlocfilehash: 70df45877a310d74e7c5c82292d18b1c0eb32da8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 33752c1ebb83c5d63e8e1cb396c52f01f07046cd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521396"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102245008"
 ---
 次のリソースも使用できます。
 
-- [Java SDK のリファレンス ドキュメント](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice?preserve-view=true&view=azure-java-stable)
+- [Java SDK のリファレンス ドキュメント](/java/api/com.microsoft.azure.sdk.iot.service.devicetwin.devicetwindevice)
 - [サービス クライアントのサンプル](https://github.com/Azure/azure-iot-sdk-java/blob/master/service/iot-service-samples/pnp-service-sample)
 - [Digital Twins のサンプル](https://github.com/Azure/azure-iot-sdk-java/tree/master/service/iot-service-samples/digitaltwin-service-samples)
 
 ## <a name="iot-hub-service-client-examples"></a>IoT Hub サービス クライアントの例
 
-このセクションでは、IoT Hub サービス クライアント、および **com.microsoft.azure.sdk.iot.service.devicetwin** 名前空間の **DeviceTwin** クラスと **DeviceMethod** クラスを使用した Java の例を示します。 **DeviceTwin** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **DeviceTwin** クラスを使用して、IoT Hub 内の[デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を実行することもできます。 デバイス上でコマンドを呼び出すには、 **DeviceMethod** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
+このセクションでは、IoT Hub サービス クライアント、および **com.microsoft.azure.sdk.iot.service.devicetwin** 名前空間の **DeviceTwin** クラスと **DeviceMethod** クラスを使用した Java の例を示します。 **DeviceTwin** クラスを使用し、デバイス ツインを使用してデバイスの状態を操作します。 **DeviceTwin** クラスを使用して、IoT Hub 内の [デバイス登録のクエリ](../articles/iot-hub/iot-hub-devguide-query-language.md)を実行することもできます。 デバイス上でコマンドを呼び出すには、**DeviceMethod** クラスを使用します。 デバイスの [DTDL](../articles/iot-pnp/concepts-digital-twin.md) モデルにより、デバイスによって実装されるプロパティとコマンドが定義されます。 コード スニペット内では、`deviceId` 変数によって、IoT ハブに登録されている IoT プラグ アンド プレイ デバイスのデバイス ID が保持されます。
 
 ### <a name="get-the-device-twin-and-model-id"></a>デバイス ツインとモデル ID を取得する
 
@@ -49,7 +49,7 @@ twin.setDesiredProperties(Collections.singleton(new Pair("targetTemperature", pr
 twinClient.updateTwin(twin);
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 ツインを取得してから更新する必要があります。 プロパティは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 ツインを取得してから更新する必要があります。 プロパティは、**thermostat1** コンポーネント内で定義されています。
 
 ```java
 public static Set<Pair> CreateComponentPropertyPatch(@NonNull String propertyName, @NonNull double propertyValue, @NonNull String componentName)
@@ -99,7 +99,7 @@ MethodResult result = methodClient.invoke(deviceId, "getMaxMinReport", responseT
 System.out.println("Method result status is: " + result.getStatus());
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**thermostat1** コンポーネント内で定義されています。
 
 ```java
 DeviceMethod methodClient = DeviceMethod.createFromConnectionString(iotHubConnectionString);
@@ -200,7 +200,7 @@ latch2.await(10, TimeUnit.SECONDS);
 GetDigitalTwin();
 ```
 
-次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント上で `targetTemperature` プロパティを更新する方法を示しています。 プロパティは、**thermostat1** コンポーネント内で定義されています。
 
 ```java
 DigitalTwinClient client = DigitalTwinClient.createFromConnectionString(iotHubConnectionString);
@@ -266,7 +266,7 @@ private static String prettyString(String str)
 }
 ```
 
-次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、 **thermostat1** コンポーネント内で定義されています。
+次のスニペットは、コンポーネント内で `getMaxMinReport` コマンドを呼び出す方法を示しています。 コマンドは、**thermostat1** コンポーネント内で定義されています。
 
 ```java
 DigitalTwinClient client = DigitalTwinClient.createFromConnectionString(iotHubConnectionString);

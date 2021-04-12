@@ -1,30 +1,25 @@
 ---
-title: Azure Security Center の価格
-description: Azure Security Center は、Azure Defender が有効および無効の 2 つのモードで提供されます。
-services: security-center
-documentationcenter: na
+title: Azure Security Center (無料) と有効化された Azure Defender
+description: Azure Security Center でクラウド ワークロード保護のために Azure Defender を有効にする利点について説明します
 author: memildin
-manager: rkarlin
-ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
-ms.service: security-center
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/14/2021
 ms.author: memildin
-ms.openlocfilehash: 845697b9d2fd8d43caa3a9992fea8a780b7d9b7c
-ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
+manager: rkarlin
+ms.service: security-center
+ms.topic: overview
+ms.date: 03/23/2021
+ms.openlocfilehash: 1825f5be8a4f8a8ddfba931dfbc7e77186b4331f
+ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2021
-ms.locfileid: "100522871"
+ms.lasthandoff: 03/23/2021
+ms.locfileid: "104889452"
 ---
-# <a name="pricing-of-azure-security-center"></a>Azure Security Center の価格
-Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー リスクへの対応に役立つインテリジェント検出などの機能が提供されます。
+# <a name="azure-security-center-free-vs-azure-defender-enabled"></a>Azure Security Center (無料) と有効化された Azure Defender
+Azure Defender は、最初の 30 日間は無料で利用できます。 30 日経過した時点で、サービスの利用を継続することを選択した場合、使用量に応じた課金が自動的に開始されます。
 
+「[クイックスタート: Azure Defender を有効にする](enable-azure-defender.md)」で説明されているように、**価格と設定** に関するページからアップグレードすることができます。 選択した通貨でのお住まいのリージョンに応じた価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
-## <a name="free-option-vs-azure-defender-enabled"></a>Free オプションと Azure Defender 有効
+## <a name="what-are-the-benefits-of-enabling-azure-defender"></a>Azure Defender を有効にする利点
 
 Security Center は、次の 2 つのモードで提供されます。
 
@@ -41,34 +36,9 @@ Security Center は、次の 2 つのモードで提供されます。
     - **Azure 環境に接続されているリソースに対する広範な脅威の防止** - Azure Defender には、すべてのリソースに共通の Azure サービス (Azure Resource Manager、Azure DNS、Azure ネットワーク レイヤー、Azure Key Vault) に対する Azure ネイティブの広範な脅威の防止機能が含まれています。 Azure Defender は、Azure 管理レイヤーと Azure DNS レイヤーの独自の可視性を備えているため、これらのレイヤーに接続されているクラウド リソースを保護できます。
 
 
-## <a name="try-azure-defender-free-for-30-days"></a>Azure Defender を 30 日間無料で試用する
-Azure Defender は、最初の 30 日間は無料で利用できます。 30 日経過した時点で、サービスの利用を継続することを選択した場合、使用量に応じた課金が自動的に開始されます。
-
-## <a name="enable-azure-defender"></a>Azure Defender を有効にする
-Azure Defender を使用して Azure サブスクリプション全体を保護できます。保護は、サブスクリプション内のすべてのリソースに継承されます。
-
-Azure Defender を有効にするには、次の手順に従います。
-
-1. Security Center のメイン メニューから、 **[価格と設定]** を選択します。
-1. アップグレードするサブスクリプションを選択します。
-1. **[Azure Defender on]\(Azure Defender を有効化\)** を選択してアップグレードします。
-1. **[保存]** を選択します。
-
-サンプルのサブスクリプションの価格ページを次に示します。 Azure Defender の各プランは個別に価格設定されているので、個別に有効/無効に設定できます。
-
-:::image type="content" source="./media/security-center-pricing/pricing-tier-page.png" alt-text="ポータルの Security Center の価格ページ":::
-
-> [!NOTE]
-> 脅威防止機能を含め、Security Center のすべての機能を有効にするには、適用可能なワークロードを含むサブスクリプションで Azure Defender を有効にする必要があります。 ワークスペース レベルで有効にしても、Just-In-Time VM アクセス、適応型アプリケーション制御、Azure リソースのネットワーク検出は有効になりません。 さらに、ワークスペース レベルで使用できる Azure Defender プランは、Azure Defender for servers と Azure Defender for SQL servers on machines のみです。
->
-> **Azure Defender for Storage accounts** は、サブスクリプション レベルまたはリソース レベルで有効にすることができます。
-> **Azure Defender for SQL** は、サブスクリプション レベルまたはリソース レベルで有効にすることができます。
-> **Azure Database for MariaDB/MySQL/PostgreSQL** の脅威保護は、リソース レベルでのみ有効にできます。
-
-
 ## <a name="faq---pricing-and-billing"></a>FAQ - 価格と課金 
 
-- [Azure Security Center で組織内のどのユーザーが Azure Defender の変更を有効にしたかは、どのようにして追跡できますか?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
+- [Security Center で組織内のどのユーザーが Azure Defender の変更を有効にしたかは、どのようにして追跡できますか?](#how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center)
 - [Security Center ではどのようなプランが提供されていますか?](#what-are-the-plans-offered-by-security-center)
 - [サブスクリプションで Azure Defender を有効にするにはどうすればよいですか?](#how-do-i-enable-azure-defender-for-my-subscription)
 - [サブスクリプションのサーバーのサブセットで、サーバーに対して Azure Defender を有効にすることはできますか?](#can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription)
@@ -78,6 +48,8 @@ Azure Defender を有効にするには、次の手順に従います。
 - [Log Analytics エージェントが複数のワークスペースにレポートする場合、二重に課金されるのですか?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-will-i-be-charged-twice)
 - [Log Analytics エージェントが複数のワークスペースにレポートする場合、それらすべてで 500 MB 無料のデータ インジェストが利用できるのですか?](#if-a-log-analytics-agent-reports-to-multiple-workspaces-is-the-500-mb-free-data-ingestion-available-on-all-of-them)
 - [500 MB 無料のデータ インジェストの計算対象は、ワークスペース全体ですか、それとも厳密にマシン単位ですか?](#is-the-500-mb-free-data-ingestion-calculated-for-an-entire-workspace-or-strictly-per-machine)
+- [500 MB のデータの 1 日あたりの許容量には、どの種類のデータが含まれますか?](#what-data-types-are-included-in-the-500-mb-data-daily-allowance)
+
 
 ### <a name="how-can-i-track-who-in-my-organization-enabled-azure-defender-changes-in-security-center"></a>Security Center で組織内のどのユーザーが Azure Defender の変更を有効にしたかは、どのようにして追跡できますか?
 Azure サブスクリプションには、価格設定を変更する許可が与えられた管理者が複数設定されていることがあります。 変更を行ったユーザーを見つけるには、Azure アクティビティ ログを使用します。
@@ -98,14 +70,14 @@ Security Center には 2 つのプランがあります。
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>サブスクリプションで Azure Defender を有効にするにはどうすればよいですか? 
 以下に示すどの方法でも、ご利用のサブスクリプションに対して Azure Defender を有効にすることができます。 
 
-|Method  |Instructions  |
-|---------|---------|
-|Azure portal の Azure Security Center ページ|[Azure Defender を有効にする](#enable-azure-defender)|
-|REST API|[Pricings API](/rest/api/securitycenter/pricings)|
-|Azure CLI|[az security pricing](/cli/azure/security/pricing)|
-|PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
-|Azure Policy|[バンドルの価格](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json)|
-|||
+| Method                                          | Instructions                                                                                                                                       |
+|-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure portal の Azure Security Center ページ | [Azure Defender を有効にする](enable-azure-defender.md)                                                                                                  |
+| REST API                                        | [Pricings API](/rest/api/securitycenter/pricings)                                                                                                  |
+| Azure CLI                                       | [az security pricing](/cli/azure/security/pricing)                                                                                                 |
+| PowerShell                                      | [Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
+| Azure Policy                                    | [バンドルの価格](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
+|                                                 |                                                                                                                                                    |
 
 ### <a name="can-i-enable-azure-defender-for-servers-on-a-subset-of-servers-in-my-subscription"></a>サブスクリプションのサーバーのサブセットで、サーバーに対して Azure Defender を有効にすることはできますか?
 いいえ。 サブスクリプションで[サーバー用 Azure Defender](defender-for-servers-introduction.md) を有効にすると、サブスクリプション内のすべてのサーバーが Azure Defender によって保護されます。 
@@ -144,6 +116,24 @@ Microsoft Defender for Endpoint のライセンスを既に取得している場
 ワークスペースに接続されている各マシンについて、1 日あたり 500 MB のデータ インジェストが無料で提供されます。 具体的には、Azure Security Center によって直接収集されたセキュリティ データのタイプが対象となります。
 
 このデータは、1 日あたりのレートを全ノードにわたって平均したものです。 したがって 100 MB を送信するマシンの他に 800 MB を送信するマシンがあったとしても、その合計が、無料の上限である **[マシンの台数] x 500 MB** を超えなければ、余分に課金されることはありません。
+
+### <a name="what-data-types-are-included-in-the-500-mb-data-daily-allowance"></a>500 MB のデータの 1 日あたりの許容量には、、どの種類のデータが含まれますか?
+
+Security Center の課金は、Log Analytics の課金と密接に関連しています。 Security Center では、[セキュリティ データの種類](/azure/azure-monitor/reference/tables/tables-category.md#security)の次のサブセットに対して 1 日当たり 500 MB/ノードの許容量を示しています。
+- WindowsEvent
+- SecurityAlert
+- SecurityBaseline
+- SecurityBaselineSummary
+- SecurityDetection
+- SecurityEvent
+- WindowsFirewall
+- MaliciousIPCommunication
+- LinuxAuditLog
+- SysmonEvent
+- ProtectionStatus
+- ワークスペースで Update Management ソリューションが実行されていないか、ソリューションのターゲット設定が有効になっている場合は、Update と UpdateSummary のデータの種類
+
+ワークスペースがレガシのノードごとの価格レベルにある場合、Security Center と Log Analytics の割り当てが結合されて、すべての課金対象の取り込まれたデータにまとめて適用されます。
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Security Center の価格オプションについて説明しました。 関連資料については、以下を参照してください。

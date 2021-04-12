@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: conceptual
-ms.date: 12/17/2020
+ms.date: 03/02/2021
 ms.author: alkohli
-ms.openlocfilehash: 103e4453ecf848822db0d82bc13e93b0c8c68331
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.custom: references_regions
+ms.openlocfilehash: 88aedb7daa375ae6b4a9107dceed1d25ed72ed92
+ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702136"
+ms.lasthandoff: 03/04/2021
+ms.locfileid: "102039106"
 ---
 # <a name="azure-data-box-disk-frequently-asked-questions"></a>Azure Data Box Disk:よく寄せられる質問
 
@@ -48,33 +49,46 @@ A. Data Box Disk の価格については、[価格に関するページ](https:
 A.  Data Box Disk を入手するには、Azure portal にログインし、Data Box ディスクの注文を作成します。 連絡先情報と通知の詳細を指定してください。 発注後、利用の可否に応じて、10 日以内にディスクが発送されます。
 
 ### <a name="q-what-is-the-maximum-amount-of-data-i-can-transfer-with-data-box-disks-in-one-instance"></a>Q. Data Box Disk の 1 回のやり取りで転送できる最大データ量を教えてください。
-A. 1 台につき 8 TB (使用可能な容量は 7 TB) のディスクが 5 台で、使用可能な最大容量は 35 TB となります。 したがって、1 回のやり取りで転送できるデータは 35 TB となります。 それを超えるデータを転送するには、さらに多くのディスクを注文する必要があります。
+A. 1 台につき 8 TB の容量 (使用可能な容量は 7 TB) のディスクが 5 台で、使用可能な最大容量は 35 TB となります。 したがって、1 回のやり取りで転送できるデータは 35 TB となります。 それを超えるデータを転送するには、さらに多くのディスクを注文する必要があります。
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>Q. 自分のリージョンで Data Box Disk が利用できるかどうかは、どうやって調べればよいでしょうか? 
 A.  Data Box Disk が現在使用できる場所については、「[利用可能なリージョン](data-box-disk-overview.md#region-availability)」を参照してください。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
-A. Data Box Disk は、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、北ヨーロッパ、韓国、日本でサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
-
-### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Q. Data Box Disk では、どのリージョンにデータを保存できますか?
-A. Data Box Disk は、米国内のすべてのリージョン、カナダ、オーストラリア、西ヨーロッパ、北ヨーロッパ、韓国、日本でサポートされます。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
+A. Data Box Disk は、米国、カナダ、EU、英国、オーストラリア、シンガポール、インド、中国、香港、日本、韓国、南アフリカ内のすべてのリージョンでサポートされています。 サポートされるのは、Azure パブリック クラウド リージョンのみです。 Azure Government やその他のソブリン クラウドはサポートされません。
 
 ### <a name="q-how-can-i-import-source-data-present-at-my-location-in-one-countryregion-to-an-azure-region-in-a-different-country"></a>Q. ある国/地域の場所にあるソース データを別の国の Azure リージョンにインポートする方法はありますか?
 A. Data Box Disk は配送先と同じ国/地域内でのデータ インジェストのみをサポートし、国境を越えることはありません。 欧州連合 (EU) 域内の注文は唯一の例外であり、EU のどの国にも、また EU のどの国/地域からも Data Box Disks を配送できます。
 
 たとえばカナダの場所にあるデータを Azure 米国西部ストレージ アカウントに移行する場合、次のようにして実現できます。
 
-### <a name="option-1"></a>オプション 1:  
+#### <a name="option-1"></a>オプション 1:  
 
 データを含む[サポートされているディスク](../import-export/storage-import-export-requirements.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#supported-disks)を、[Azure Import/Export サービス](../import-export/storage-import-export-service.md)を使用して、カナダのソースの場所から Azure 米国西部のデータセンターに発送します。
 
-### <a name="option-2"></a>オプション 2:
+#### <a name="option-2"></a>オプション 2:
 
 1. ストレージ アカウントを選択して (たとえば、カナダ中部など)、カナダで Data Box Disk を注文します。 SSD ディスクは、カナダ中部の Azure データセンターから、注文の作成時に指定された (カナダの) 出荷先住所に出荷されます。
 
 2. オンプレミス サーバーからのデータをディスクにコピーした後、Microsoft から提供されている返却ラベルを使用して、カナダの Azure データセンターに返します。 Data Box Disk に存在するデータは、注文の作成時に選択したカナダの Azure リージョンの移行先のストレージ アカウントにアップロードされます。
 
 3. その後、AzCopy などのツールを使用して、米国西部のストレージ アカウントにデータをコピーできます。 この手順では、Data Box Disk の課金に含まれていない [Standard Storage](https://azure.microsoft.com/pricing/details/storage/) と [帯域幅の料金](https://azure.microsoft.com/pricing/details/bandwidth/)が発生します。
+
+#### <a name="q-does-data-box-disk-store-any-customer-data-outside-of-the-service-region"></a>Q. Data Box Disk によって、サービス リージョン外に格納される顧客データはありますか?
+
+A. いいえ。 Data Box Disk によって、顧客データがサービス リージョン外に格納されることはありません。 顧客は、データの完全な所有権を持ち、注文の作成時に選択したストレージ アカウントに基づいて、指定された場所にデータを保存できます。  
+
+顧客データに加えて、Data Box Disk のデータには、メタデータ、監視ログなどがあります。 データの損失を防ぐため、すべてのリージョン (ブラジル南部と東南アジアを除く) で、Data Box Disk のデータは geo 冗長ストレージ アカウントを使用して[ペアになっているリージョン](../best-practices-availability-paired-regions.md)に保管され、レプリケートされます。  
+
+ブラジル南部と東南アジアでは、[データ所在地の要件](https://azure.microsoft.com/global-infrastructure/data-residency/#more-information)により、Data Box のデータは 1 つのリージョンに含まれるようにゾーン冗長ストレージ (ZRS) アカウントに保管されます。 東南アジアの場合、Data Box Disk のすべてのデータはシンガポールに保管されます。ブラジル南部の場合、データはブラジルに保管されます。 
+
+ブラジル南部と東南アジアでサービス停止が発生した場合、顧客は別のリージョンから新しい注文を作成できます。 新しい注文は、それらが作成されたリージョンから提供され、Data Box Disk の往復の発送はお客様が担当します。
+
+
+
+### <a name="q-how-can-i-recover-my-data-if-an-entire-region-fails"></a>Q. リージョン全体で障害が発生した場合にデータを回復するにはどうすればよいですか?
+
+A. 大きな災害のために 1 つのリージョンが失われるような極端な状況では、Microsoft がリージョン間のフェールオーバーを開始できます。 この場合、ユーザーによる操作は必要ありません。 注文が同じ国または商取引の境界内にある場合は、フェールオーバー リージョンを通じて処理されます。 ただし、一部の Azure リージョンには、同じ地理的または商取引の境界内にペアのリージョンがありません。 これらのリージョンのいずれかに障害が発生した場合は、使用可能な別のリージョンから Data Box の注文を再作成し、この新しいリージョンの Azure にデータをコピーする必要があります。 詳しくは、「[ビジネス継続性とディザスター リカバリー (BCDR):Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」をご覧ください。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Q. Data Box Disk に関して何か問題が発生した場合、どこに連絡すればよいですか?
 A. Data Box Disk に関して何か問題が発生した場合は、[Microsoft サポートに問い合わせ](./data-box-disk-contact-microsoft-support.md)てください。
@@ -175,7 +189,7 @@ A.  コピー処理は、次の方法で高速化できます。
 - 複数のセッションを使用する。
 - ネットワーク共有経由でコピーすることは避け (ネットワーク速度によって制限される可能性があるため)、ディスクが接続されているコンピューターのローカルにデータを置くようにします。
 - コピー処理全体を通して USB 3.0 以降を使用する。 [`USBView` ツール](/windows-hardware/drivers/debugger/usbview)をダウンロードします。このツールを使って、コンピューターに接続されている USB コントローラーと USB デバイスを特定してください。
-- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [Bluestop `FIO` ツール](https://ci.appveyor.com/project/axboe/fio)をダウンロードします。このツールを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。 最新の x86 または x64 ビルドを選択し、 **[Artifacts]\(成果物\)** タブを選択して、MSI をダウンロードします。
+- データのコピーに使用するコンピューターのパフォーマンスをベンチマークする。 [`Bluestop``FIO` ツール](https://ci.appveyor.com/project/axboe/fio)をダウンロードし、これを使って、サーバーのハードウェアのパフォーマンスをベンチマークしてください。 最新の x86 または x64 ビルドを選択し、 **[Artifacts]\(成果物\)** タブを選択して、MSI をダウンロードします。
 
 ### <a name="q-how-to-speed-up-the-data-if-the-source-data-has-small-files-kbs-or-few-mbs"></a>Q. コピー元のデータに小さいファイル (数キロバイトまたは数メガバイト) が含まれている場合に、データの転送速度を高める方法を教えてください。
 A.  コピー処理は、次の方法で高速化できます。
@@ -185,13 +199,13 @@ A.  コピー処理は、次の方法で高速化できます。
 - その VM のディスクにファイルをコピーします。
 
 ### <a name="q-can-i-use-multiple-storage-accounts-with-data-box-disks"></a>Q. Data Box Disk で複数のストレージ アカウントを使用することはできますか?
-A.  いいえ。 現在 Data Box Disk でサポートされているストレージ アカウントは 1 つだけです (汎用またはクラシック)。 ホット BLOB とクール BLOB の両方がサポートされています。 現在、米国、西ヨーロッパ、北ヨーロッパの Azure パブリック クラウドのストレージ アカウントのみがサポートされます。
+A.  いいえ。 現在 Data Box Disk でサポートされているストレージ アカウントは 1 つだけです (汎用またはクラシック)。 ホット BLOB とクール BLOB の両方がサポートされています。
 
 ### <a name="q-what-is-the-toolset-available-for-my-data-with-data-box-disks"></a>Q. 自分のデータに使用できる Data Box Disk 用ツールセットには何が含まれていますか。
 A. Data Box Disk で使用できるツールセットには、次の 3 つのツールが含まれています。
  - **Data Box Disk ロック解除ツール**:このツールは、Microsoft から出荷された暗号化ディスクのロックを解除するために使用します。 ツールを使用してディスクのロックを解除するときは、Azure portal での Data Box Disk の注文に関して取得できるパスキーを指定する必要があります。 
  - **Data Box Disk 検証ツール**:このツールは、Azure の命名規則に従ってサイズ、形式、および BLOB 名を検証するために使用します。 コピーしたデータのチェックサムも生成されます。これは、Azure にアップロードされたデータを検証するために使用されます。
- - **Data Box Disk 分割コピー ツール**:このツールは、複数のディスクを使用していて、大きなデータセットをそれらのすべてのディスクに分割してコピーする必要がある場合に使用します。 このツールは、現在 Windows で使用できます。 このツールはマネージド ディスクではサポートされません。 このツールでは、データのコピー時も検証されるため、このツールを使用するときは検証手順をスキップできます。
+ - **Data Box Disk 分割コピー ツール**:このツールは、複数のディスクを使用していて、大きなデータセットをそれらのすべてのディスクに分割してコピーする必要がある場合に使用します。 このツールは、現在 Windows で使用できます。 このツールはマネージド ディスクではサポートされません。 このツールでは、コピー時にデータが検証されるため、このツールを使用するときは検証手順をスキップできます。
 
 このツールセットは、Windows と Linux の両方で使うことができます。 ツールセットは、次の場所からダウンロードできます。
 - [Windows 用 Data Box Disk ツールセットをダウンロードする](https://aka.ms/databoxdisktoolswin) 
@@ -209,7 +223,7 @@ A.  データ コピーの注文の状態が完了として表示されたら、
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Q. アップロード後、私のデータは Azure 内のどこに置かれるのですか?
 A.  ディスク上の *BlockBlob* フォルダーと *PageBlob* フォルダーにデータをコピーすると、*BlockBlob* フォルダーと *PageBlob* フォルダーのサブフォルダーごとのコンテナーが Azure Storage アカウントに作成されます。 *BlockBlob* と *PageBlob* フォルダーの直下にファイルをコピーした場合、そのファイルは Azure Storage アカウントの *$root* という既定のコンテナーに置かれます。 データを *AzureFile* フォルダー以下のフォルダーにコピーすると、ファイル共有が作成されます。
 
-### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Q. コンテナーに付けた名前が Azure の要件に従っていないことに気付きました。 Azure へのデータのアップロードは失敗しますか?
+### <a name="q-i-just-noticed-that-i-didnt-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Q. コンテナーに付けた名前が Azure の要件に従っていないことに気付きました。 Azure へのデータのアップロードは失敗しますか?
 A. コンテナー名に含まれる大文字は、自動的に小文字に変換されます。 名前が他の方法で準拠していない場合 (たとえば、特殊文字やその他の言語が含まれている場合)、アップロードは失敗します。 詳細については、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions)を参照してください。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>Q. 複数の Data Box Disk にコピーしたデータは、どのようにして確認すればよいでしょうか?
@@ -228,7 +242,7 @@ A. はい。 データを検証する場合 (推奨)、ディスクにデータ�
 A. 前回の注文を複製することができます。 複製することで前回と同じ注文が作成されるので、注文の詳細のみを編集すればよく、住所や連絡先、通知の詳細を入力する必要はありません。
 
 ### <a name="q-i-copied-data-to-the-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-how-can-i-locate-it"></a>Q. ManagedDisk フォルダーにデータをコピーしました。 マネージド ディスク用に指定されたリソース グループがあるマネージド ディスクが表示されません。 データは Azure にアップロードされましたか? どうすれば見つけられますか?
-A. はい。 データは Azure にアップロードされましたが、指定されたリソース グループを持つマネージド ディスクが表示されない場合は、データが無効だった可能性があります。 ページ BLOB、ブロック BLOB、Azure Files、またはマネージド ディスクが無効だった場合は、次のフォルダーに移動されます。
+A. はい。 データは Azure にアップロードされましたが、指定されたリソース グループのあるマネージド ディスクが表示されない場合は、データが無効だった可能性があります。 ページ BLOB、ブロック BLOB、Azure Files、またはマネージド ディスクが無効だった場合は、次のフォルダーに移動されます。
  - ページ BLOB は *databoxdisk-invalid-pb-* で始まるブロック BLOB コンテナーに移動されます。
  - Azure Files は *databoxdisk-invalid-af-* で始まるブロック BLOB コンテナーに移動されます。
  - マネージド ディスクは *databoxdisk-invalid-md-* で始まるブロック BLOB コンテナーに移動されます。

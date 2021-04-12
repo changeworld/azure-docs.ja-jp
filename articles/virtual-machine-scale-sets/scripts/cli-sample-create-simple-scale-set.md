@@ -5,16 +5,15 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: sample
 ms.service: virtual-machine-scale-sets
-ms.subservice: cli
 ms.date: 06/25/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 31c90879d6f80f598ba71846ba68da814f254677
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1166a5df1f814e015f57dc7e80d9e440fdbe639a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825182"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934633"
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用して仮想マシン スケール セットを作成する
 このスクリプトでは、Ubuntu オペレーティング システムおよびロード バランサーなどの関連ネットワーク リソースを持つ Azure 仮想マシン スケール セットを作成します。 スクリプトを実行すると、SSH で VM インスタンスにアクセスできるようになります。
@@ -56,7 +55,7 @@ az group delete --name myResourceGroup
 ## <a name="script-explanation"></a>スクリプトの説明
 このスクリプトでは、次のコマンドを使用して、リソース グループ、仮想マシン スケール セット、およびすべての関連リソースを作成します。 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
-| command | メモ |
+| command | Notes |
 |---|---|
 | [az group create](/cli/azure/ad/group) | すべてのリソースを格納するリソース グループを作成します。 |
 | [az vmss create](/cli/azure/vmss) | 仮想マシン スケール セットを作成し、仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループに接続します。 複数の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 このコマンドでは、使用する VM イメージと管理者の資格情報も指定します。  |

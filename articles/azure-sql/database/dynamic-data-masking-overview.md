@@ -12,12 +12,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: b10b00e724324779eb753bfefccce77a5eb2a39d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ccc648f06cad46b490ac73fe777066c9de2ff2b9
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918082"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551647"
 ---
 # <a name="dynamic-data-masking"></a>動的データ マスク 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -72,13 +72,13 @@ REST API を使用して、データ マスク ポリシーおよびルールを
 
 ### <a name="data-masking-policies"></a>データ マスキングのポリシー
 
-- [作成または更新](/rest/api/sql/datamaskingpolicies/createorupdate):データベース データ マスク ポリシーを作成または更新します。
-- [取得](/rest/api/sql/datamaskingpolicies/get):データベース データ マスク ポリシーを取得します。 
+- [作成または更新](/rest/api/sql/2014-04-01/datamaskingpolicies/createorupdate):データベース データ マスク ポリシーを作成または更新します。
+- [取得](/rest/api/sql/2014-04-01/datamaskingpolicies/get):データベース データ マスク ポリシーを取得します。 
 
 ### <a name="data-masking-rules"></a>データ マスキングのルール
 
-- [作成または更新](/rest/api/sql/datamaskingrules/createorupdate):データベース データ マスク ルールを作成または更新します。
-- [データベース別の一覧表示](/rest/api/sql/datamaskingrules/listbydatabase):データベース データ マスク ルールの一覧を取得します。
+- [作成または更新](/rest/api/sql/2014-04-01/datamaskingrules/createorupdate):データベース データ マスク ルールを作成または更新します。
+- [データベース別の一覧表示](/rest/api/sql/2014-04-01/datamaskingrules/listbydatabase):データベース データ マスク ルールの一覧を取得します。
 
 ## <a name="permissions"></a>アクセス許可
 

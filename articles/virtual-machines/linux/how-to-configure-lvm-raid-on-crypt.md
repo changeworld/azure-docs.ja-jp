@@ -3,17 +3,18 @@ title: 暗号化されたデバイスで LVM と RAID を構成する - Azure Di
 description: この記事では、Linux VM 用の暗号化されたデバイスで LVM と RAID を構成する手順について説明します。
 author: jofrance
 ms.service: virtual-machines
-ms.subservice: security
+ms.subservice: disks
+ms.collection: linux
 ms.topic: how-to
 ms.author: jofrance
 ms.date: 03/17/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 3f90d5a95d153405f9257258fba6ab9cc1ce9a35
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: bdd897e76df941130e3acdf9c30ea8edd41147e9
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98681304"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104601926"
 ---
 # <a name="configure-lvm-and-raid-on-encrypted-devices"></a>暗号化されたデバイスで LVM と RAID を構成する
 
@@ -260,7 +261,7 @@ lsblk
 LVM の一部として使用されるディスク上のファイル システムをマウント解除します。
 
 ```bash
-for disk in c d e f; do unmount /tempdata${disk}; done
+for disk in c d e f; do umount /tempdata${disk}; done
 ```
 また、/etc/fstab のエントリを削除します。
 
@@ -422,6 +423,9 @@ mkfs.ext4 /dev/md10
 ```
 
 ファイル システム用の新しいマウント ポイントを作成し、新しいファイル システムを /etc/fstab に追加してマウントします。
+
+>[!NOTE] 
+>このサイクルは、この特定の例の 1 つのデバイスでのみ繰り返されます。これは、必要に応じて複数の md デバイスで使用されるように、このように構築されています。
 
 ```bash
 for device in md10; do diskuuid="$(blkid -s UUID -o value /dev/${device})"; \

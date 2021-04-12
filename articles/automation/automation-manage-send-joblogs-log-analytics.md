@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 09/02/2020
 ms.topic: conceptual
 ms.openlocfilehash: 4199c5576662eee1dd6cedc388440a71e21f8b74
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100581221"
 ---
 # <a name="forward-azure-automation-job-data-to-azure-monitor-logs"></a>Azure Monitor ログに Azure Automation のジョブ データを転送する

@@ -1,19 +1,18 @@
 ---
 title: Azure Monitor Application Insights を使用してモバイル アプリを監視する
 description: Azure Monitor Application Insights と App Center で監視するモバイル アプリを迅速にセットアップする手順を説明します
-ms.subservice: application-insights
 ms.topic: quickstart
 author: lgayhardt
 ms.author: lagayhar
 ms.date: 06/26/2019
 ms.reviewer: daviste
 ms.custom: mvc
-ms.openlocfilehash: 0c53569ea50d91bbd703197d1a4c3546e10e04ec
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: d0d95a323e496b3b6d8a93f674535710d4099ef0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100626397"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384716"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 

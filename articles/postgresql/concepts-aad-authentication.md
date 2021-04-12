@@ -1,17 +1,17 @@
 ---
 title: Active Directory 認証 - Azure Database for PostgreSQL (単一サーバー)
 description: Azure Database for PostgreSQL (単一サーバー) での認証に関する Azure Active Directory の概念について説明します
-author: lfittl
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 0a19bd9d1547c16937ee575c08ea15a52589ccd0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff588a2fdc079c4b5a1cd50ddc4441a079d3feed
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87171044"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960922"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>PostgreSQL での認証に Azure Active Directory を使用する
 
@@ -38,7 +38,7 @@ Azure Active Directory 認証を構成して使用するには、次の手順に
 > [!NOTE]
 > Azure AD を作成して設定し、Azure Database for PostgreSQL で Azure AD を構成する方法については、[Azure Database for PostgreSQL 向けの Azure AD での構成とサインイン](howto-configure-sign-in-aad-authentication.md)に関するページを参照してください。
 
-## <a name="architecture"></a>アーキテクチャ
+## <a name="architecture"></a>Architecture
 
 次の概要図は、Azure Database for PostgreSQL で Azure AD 認証を使用した場合の認証のしくみをまとめたものです。 矢印は通信経路を示します。
 

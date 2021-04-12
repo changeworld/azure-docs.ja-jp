@@ -9,11 +9,11 @@ ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
 ms.openlocfilehash: 8539696f4521a1b4a2f56fe7d2936b45dec26ec9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998036"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102205998"
 ---
 ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 *\<deploymentLocalGitUrl-from-create-step>* を、「[Web アプリを作成する](#create-a-web-app)」で保存した Git リモートの URL で置き換えます。
 

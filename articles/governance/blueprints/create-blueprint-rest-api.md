@@ -3,12 +3,12 @@ title: クイック スタート:REST API を使用してブループリント�
 description: このクイックスタートでは、Azure Blueprints と REST API を使用して、成果物を作成、定義、デプロイします。
 ms.date: 01/27/2021
 ms.topic: quickstart
-ms.openlocfilehash: eaf6dbb2ff14106ba8d2798d86a8f093855de85e
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: ceea54957e52f3b33d2c3fb2af190f15e6c94ec3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98915626"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105558977"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>クイック スタート:REST API で Azure Blueprint を定義して割り当てる
 
@@ -329,7 +329,7 @@ REST API を使用してブループリントを発行した後は、それを�
 - `{YourMG}` - 実際の管理グループの ID に置き換えます
 - `{subscriptionId}` - サブスクリプション ID で置き換えます
 
-1. Azure Blueprint のサービス プリンシパルに、ターゲット サブスクリプションでの **所有者** ロールを提供します。 AppId は静的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`) ですが、サービス プリンシパル ID はテナントによって異なります。 次の REST API を使用して、テナントに詳細を要求できます。 [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) が使用されますが、承認は異なります。
+1. Azure Blueprint のサービス プリンシパルに、ターゲット サブスクリプションでの **所有者** ロールを提供します。 AppId は静的 (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`) ですが、サービス プリンシパル ID はテナントによって異なります。 次の REST API を使用して、テナントに詳細を要求できます。 [Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) が使用されますが、承認は異なります。
 
    - REST API URI
 
@@ -337,7 +337,7 @@ REST API を使用してブループリントを発行した後は、それを�
      GET https://graph.windows.net/{tenantId}/servicePrincipals?api-version=1.6&$filter=appId eq 'f71766dc-90d9-4b7d-bd9d-4499c4331c3f'
      ```
 
-1. サブスクリプションに割り当てることにより、ブループリントのデプロイを実行します。 **contributors** および **owners** パラメーターにはロールの割り当てを付与するプリンシパルの objectId の配列が必要なので、[Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) を使用して、独自のユーザー、グループ、またはサービス プリンシパルに対する **要求本文** で使用するための objectId を収集します。
+1. サブスクリプションに割り当てることにより、ブループリントのデプロイを実行します。 **contributors** および **owners** パラメーターにはロールの割り当てを付与するプリンシパルの objectId の配列が必要なので、[Azure Active Directory Graph API](/graph/migrate-azure-ad-graph-planning-checklist) を使用して、独自のユーザー、グループ、またはサービス プリンシパルに対する **要求本文** で使用するための objectId を収集します。
 
    - REST API URI
 

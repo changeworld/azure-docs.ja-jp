@@ -7,25 +7,25 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: e66edb1325d1c603e89f877f1d34f60c136eb1db
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740733"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102218045"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI のサンプル スクリプト - ロジック アプリを作成する
 
-このスクリプトでは、[Azure CLI Logic Apps 拡張機能](/cli/azure/ext/logic/logic?view=azure-cli-latest) (`az logic`) を使用して、サンプルのロジック アプリを作成します。 Azure CLI を使用してロジック アプリを作成および管理するための詳細なガイドについては、[Azure CLI の Logic Apps クイックスタート](quickstart-logic-apps-azure-cli.md)を参照してください。
+このスクリプトでは、[Azure CLI Logic Apps 拡張機能](/cli/azure/ext/logic/logic) (`az logic`) を使用して、サンプルのロジック アプリを作成します。 Azure CLI を使用してロジック アプリを作成および管理するための詳細なガイドについては、[Azure CLI の Logic Apps クイックスタート](quickstart-logic-apps-azure-cli.md)を参照してください。
 
 > [!WARNING]
-> Azure CLI Logic Apps 拡張機能は、現在、" *試験段階* " であり、" *カスタマーサポートの対象外* " です。 この CLI 拡張機能は、特に運用環境での使用を選択する場合、慎重に使用してください。
+> Azure CLI Logic Apps 拡張機能は、現在、"*試験段階*" であり、"*カスタマーサポートの対象外*" です。 この CLI 拡張機能は、特に運用環境での使用を選択する場合、慎重に使用してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブなサブスクリプションが含まれる Azure アカウント。 Azure サブスクリプションをお持ちでない場合は、[無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
-* ご利用のローカル コンピューターに [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) がインストールされていること。
-* ご利用のローカル コンピューターに [Azure CLI Logic Apps 拡張機能](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) がインストールされていること。 この拡張機能をインストールするには、コマンド `az extension add --name logic` を使用します。
+* ご利用のローカル コンピューターに [Azure CLI](/cli/azure/install-azure-cli) がインストールされていること。
+* ご利用のローカル コンピューターに [Azure CLI Logic Apps 拡張機能](/cli/azure/azure-cli-extensions-list) がインストールされていること。 この拡張機能をインストールするには、コマンド `az extension add --name logic` を使用します。
 * ロジック アプリの[ワークフロー定義](quickstart-logic-apps-azure-cli.md#workflow-definition)。 この JSON ファイルは、[ワークフロー定義言語スキーマ](logic-apps-workflow-definition-language.md)に従う必要があります。
 * お使いのロジック アプリと同じリソース グループ内にある、サポートされている [Logic Apps コネクタ](../connectors/apis-list.md)を経由した電子メール アカウントへの API 接続。 この例では [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) コネクタを使用しますが、[Outlook.com](../connectors/connectors-create-api-outlook.md) などの他のコネクタを使用することもできます。
 
@@ -35,9 +35,9 @@ ms.locfileid: "92740733"
 
 * Azure portal にサインインし、`az login` を実行して、ご利用のサブスクリプションがアクティブであることを確認します。
 
-* `az --version` を実行して、ターミナルまたはコマンド ウィンドウの Azure CLI のバージョンを確認します。 最新バージョンについては、[最新のリリース ノート](/cli/azure/release-notes-azure-cli?tabs=azure-cli&view=azure-cli-latest)を参照してください。
+* `az --version` を実行して、ターミナルまたはコマンド ウィンドウの Azure CLI のバージョンを確認します。 最新バージョンについては、[最新のリリース ノート](/cli/azure/release-notes-azure-cli)を参照してください。
 
-  * 最新バージョンを使用していない場合は、[オペレーティング システムまたはプラットフォーム用のインストール ガイド](/cli/azure/install-azure-cli?view=azure-cli-latest)に従ってインストールを更新します。
+  * 最新バージョンを使用していない場合は、[オペレーティング システムまたはプラットフォーム用のインストール ガイド](/cli/azure/install-azure-cli)に従ってインストールを更新します。
 
 ### <a name="sample-workflow-explanation"></a>サンプル ワークフローの説明
 
@@ -197,12 +197,12 @@ az group delete --name testResourceGroup --yes
 
 | command | メモ |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | ロジック アプリのリソースを格納するリソース グループを作成します。 |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create) | パラメーター `--definition` で定義されているワークフローに基づいてロジック アプリを作成します。 |
-| [`az group delete`](/cli/azure/vm/extension?view=azure-cli-latest) | リソース グループと、そのすべての入れ子になったリソースを削除します。 |
+| [`az group create`](/cli/azure/group#az-group-create) | ロジック アプリのリソースを格納するリソース グループを作成します。 |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | パラメーター `--definition` で定義されているワークフローに基づいてロジック アプリを作成します。 |
+| [`az group delete`](/cli/azure/vm/extension) | リソース グループと、そのすべての入れ子になったリソースを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure/?view=azure-cli-latest)のページを参照してください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure/)のページを参照してください。
 
 その他の Logic Apps CLI スクリプトのサンプルについては、[Microsoft のコード サンプル ブラウザー](/samples/browse/?products=azure-logic-apps)を参照してください。

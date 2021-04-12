@@ -1,20 +1,21 @@
 ---
 title: Linux 用の Azure Key Vault VM 拡張機能
 description: 仮想マシンの拡張機能を使用して、仮想マシンに Key Vault 証明書の自動更新を実行するエージェントをデプロイします。
-services: virtual-machines-linux
+services: virtual-machines
 author: msmbaldwin
 tags: keyvault
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.subservice: extensions
+ms.collection: linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 73bd2ac3159b674dd01c853bb540989fa10c8c28
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 9032bfca30ead56c91d7904e18b76753cf3b6dfc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102051363"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104582172"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Linux 用の Key Vault 仮想マシン拡張機能
 
@@ -24,15 +25,18 @@ Key Vault VM 拡張機能では、Azure キー コンテナーに保存されて
 
 Key Vault VM 拡張機能では、次の Linux ディストリビューションがサポートされています。
 
-- Ubuntu-1604
 - Ubuntu-1804
-- Debian-9
 - Suse-15 
+
+> [!NOTE]
+> 拡張セキュリティ機能を利用するには、Ubuntu-1604 および Debian-9 システムをアップグレードする準備をしてください。これらのバージョンは、指定されたサポート期間の終わりに近づいています。
+> 
 
 ### <a name="supported-certificate-content-types"></a>サポートされている証明書の内容の種類
 
 - PKCS #12
 - PEM
+
 
 ## <a name="prerequisities"></a>前提条件
   - 証明書を持つ Key Vault インスタンス。 [Key Vault の作成](../../key-vault/general/quick-create-portal.md)に関するページを参照してください
@@ -53,6 +57,20 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
                     "msiClientId": "[reference(parameters('userAssignedIdentityResourceId'), variables('msiApiVersion')).clientId]"
                   }
    `
+## <a name="key-vault-vm-extension-version"></a>Key Vault VM 拡張機能バージョン
+* Ubuntu-18.04 および SUSE-15 ユーザーは、Key Vault VM 拡張機能のバージョンを `V2.0` にアップグレードして、証明書チェーンの完全なダウンロード機能にアップグレードすることを選択できます。 発行者証明書 (中間およびルート) は、PEM ファイルのリーフ証明書に追加されます。
+
+* `v2.0` にアップグレードする場合は、まず `v1.0` を削除してから、`v2.0` をインストールする必要があります。
+```
+  az vm extension delete --name KeyVaultForLinux --resource-group ${resourceGroup} --vm-name ${vmName}
+  az vm extension set -n "KeyVaultForLinux" --publisher Microsoft.Azure.KeyVault --resource-group "${resourceGroup}" --vm-name "${vmName}" –settings .\akvvm.json –version 2.0
+```  
+  フラグ -- バージョン 2.0 は省略可能です。既定では最新バージョンがインストールされるためです。   
+
+* VM に v1.0 によってダウンロードされた証明書がある場合、v1.0 AKVVM 拡張機能を削除しても、ダウンロードした証明書は削除されません。  v2.0 をインストールした後は、既存の証明書は変更されません。  証明書ファイルを削除するか、証明書をロールオーバーして、VM 上のフルチェーンの PEM ファイルを取得する必要があります。
+
+
+
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
@@ -69,7 +87,7 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
         "secretsManagementSettings": {
@@ -106,7 +124,7 @@ Key Vault VM 拡張機能では、次の Linux ディストリビューション
 | apiVersion | 2019-07-01 | date |
 | publisher | Microsoft.Azure.KeyVault | string |
 | type | KeyVaultForLinux | string |
-| typeHandlerVersion | 1.0 | INT |
+| typeHandlerVersion | 2.0 | INT |
 | pollingIntervalInS | 3600 | string |
 | certificateStoreName | Linux では無視されます | string |
 | linkOnRenewal | false | boolean |
@@ -139,7 +157,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
       "properties": {
       "publisher": "Microsoft.Azure.KeyVault",
       "type": "KeyVaultForLinux",
-      "typeHandlerVersion": "1.0",
+      "typeHandlerVersion": "2.0",
       "autoUpgradeMinorVersion": true,
       "settings": {
           "secretsManagementSettings": {
@@ -186,7 +204,7 @@ Azure PowerShell を使用すると、Key Vault VM 拡張機能を既存の仮�
        
     
         # Start the deployment
-        Set-AzVmExtension -TypeHandlerVersion "1.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
+        Set-AzVmExtension -TypeHandlerVersion "2.0" -ResourceGroupName <ResourceGroupName> -Location <Location> -VMName <VMName> -Name $extName -Publisher $extPublisher -Type $extType -SettingString $settings
     
     ```
 
@@ -206,7 +224,7 @@ Azure PowerShell を使用すると、Key Vault VM 拡張機能を既存の仮�
         
         # Add Extension to VMSS
         $vmss = Get-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName>
-        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "1.0" -Setting $settings
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmss  -Name $extName -Publisher $extPublisher -Type $extType -TypeHandlerVersion "2.0" -Setting $settings
 
         # Start the deployment
         Update-AzVmss -ResourceGroupName <ResourceGroupName> -VMScaleSetName <VmssName> -VirtualMachineScaleSet $vmss 
@@ -225,6 +243,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
+         --version 2.0 `
          --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
@@ -236,6 +255,7 @@ Azure CLI を使用すると、Key Vault VM 拡張機能を既存の仮想マシ
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
         --vmss-name "<vmssName>" `
+        --version 2.0 `
         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 次の制限/要件に注意してください。

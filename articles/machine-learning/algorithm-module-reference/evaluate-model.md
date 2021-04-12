@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 07/27/2020
 ms.openlocfilehash: 39bdf9cb0c97e19a67b23046c6f06b60daa30147
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "99584942"
 ---
 # <a name="evaluate-model-module"></a>Evaluate Model (モデルの評価) モジュール

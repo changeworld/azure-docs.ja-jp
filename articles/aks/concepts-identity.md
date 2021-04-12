@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: dc1e54106e2f31c7390d784cba6f92cf775e963c
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 12900a64d9e023e4bddd5b5862b6a127fcba1d36
+ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100572701"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "104949993"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -42,6 +42,7 @@ Kubernetes クラスターに対する認証の実行、アクセス制御と認
 
 | 権限 | 理由 |
 |---|---|
+| Microsoft.ContainerService/managedClusters/*  <br/> | ユーザーを作成し、クラスターを操作するために必要です
 | Microsoft.Network/loadBalancers/delete <br/> Microsoft.Network/loadBalancers/read <br/> Microsoft.Network/loadBalancers/write | LoadBalancer サービスのロード バランサーを構成するために必要です。 |
 | Microsoft.Network/publicIPAddresses/delete <br/> Microsoft.Network/publicIPAddresses/read <br/> Microsoft.Network/publicIPAddresses/write | LoadBalancer サービスのパブリック IP を検索して構成するために必要です。 |
 | Microsoft.Network/publicIPAddresses/join/action | LoadBalancer サービスのパブリック IP を構成する場合に必要です。 |
@@ -72,6 +73,7 @@ Kubernetes クラスターに対する認証の実行、アクセス制御と認
 | Microsoft.Network/virtualNetworks/subnets/read <br/> Microsoft.Network/virtualNetworks/subnets/join/action | カスタム VNET など、別のリソース グループ内のサブネットを使用する場合に必要です。 |
 | Microsoft.Network/routeTables/routes/read <br/> Microsoft.Network/routeTables/routes/write | カスタム ルート テーブルを持つカスタム VNET など、別のリソース グループ内のルート テーブルに関連付けられているサブネットを使用する場合に必要です。 他のリソース グループ内のサブネットに対してサブネットが既に存在しているかどうかを確認するために必要です。 |
 | Microsoft.Network/virtualNetworks/subnets/read | 別のリソース グループの内部ロード バランサーを使用する場合に必要です。 リソース グループの内部ロード バランサーに対してサブネットが既に存在しているかどうかを確認するために必要です。 |
+| Microsoft.Network/privatednszones/* | カスタム privateDNSZone など、別のリソース グループ内のプライベート DNS ゾーンを使用する場合に必要です。 |
 
 ## <a name="kubernetes-role-based-access-control-kubernetes-rbac"></a>Kubernetes のロールベースのアクセス制御 (Kubernetes RBAC)
 

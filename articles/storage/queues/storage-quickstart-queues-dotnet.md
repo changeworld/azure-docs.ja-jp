@@ -1,19 +1,19 @@
 ---
 title: 'クイックスタート: Azure Queue Storage クライアント ライブラリ v12 - .NET'
 description: .NET 用 Azure Queue Storage クライアント ライブラリ v12 を使用して、キューを作成し、キューにメッセージを追加する方法について説明します。 次に、キューからメッセージを読み取って削除する方法について説明します。 キューを削除する方法についても説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 22038e4145acabc067083177fcf297464972ad58
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 2c4af7afd96f6c503f35cdb4896c3b49d4ef6ed3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589527"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276231"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-net"></a>クイックスタート: .NET 用 Azure Queue Storage クライアント ライブラリ v12
 

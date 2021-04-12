@@ -2,13 +2,13 @@
 title: テンプレート関数 - 文字列
 description: Azure Resource Manager テンプレート (ARM テンプレート) で文字列の操作に使用する関数について説明します。
 ms.topic: conceptual
-ms.date: 11/18/2020
-ms.openlocfilehash: a70aaff91f701c0ba8d26db2488b82e052dd905d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 03/02/2021
+ms.openlocfilehash: cff1424562b45bc722f87fa3ec896c1c641ee758
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920008"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108844"
 ---
 # <a name="string-functions-for-arm-templates"></a>ARM テンプレート用の文字列関数
 
@@ -306,6 +306,8 @@ output toJsonOutput object = base64ToJson(base64Object)
 
 複数の文字列値を結合して連結された文字列を返します。または複数の配列を結合して連結された配列を返します。
 
+文字列の連結を簡略化するために、Bicep では [文字列補間](https://en.wikipedia.org/wiki/String_interpolation#)の構文がサポートされています。
+
 ### <a name="parameters"></a>パラメーター
 
 | パラメーター | 必須 | Type | 説明 |
@@ -351,6 +353,14 @@ output toJsonOutput object = base64ToJson(base64Object)
 param prefix string = 'prefix'
 
 output concatOutput string = concat(prefix, '-', uniqueString(resourceGroup().id))
+```
+
+or
+
+```bicep
+param prefix string = 'prefix'
+
+output concatOutput string = '${prefix}-${uniqueString(resourceGroup().id)}'
 ```
 
 ---
@@ -1530,7 +1540,7 @@ output guidOutput string = guidValue
 ```bicep
 param guidValue string = newGuid()
 
-var storageName = concat('storage', uniqueString(guidValue))
+var storageName = 'storage${uniqueString(guidValue)}'
 
 resource myStorage 'Microsoft.Storage/storageAccounts@2018-07-01' = {
   name: storageName
@@ -2179,12 +2189,12 @@ param testArray array = [
   'two'
   'three'
 ]
-param elementsToSkip int = 2
+param elementsToTake int = 2
 param testString string = 'one two three'
-param charactersToSkip int = 2
+param charactersToTake int = 2
 
-output arrayOutput array = take(testArray, elementsToSkip)
-output stringOutput string = take(testString, charactersToSkip)
+output arrayOutput array = take(testArray, elementsToTake)
+output stringOutput string = take(testString, charactersToTake)
 ```
 
 ---
@@ -2468,7 +2478,7 @@ uniqueString(resourceGroup().id, deployment().name)
 
 ```bicep
 resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
-  name: concat('storage, uniqueString(resourceGroup().id)')
+  name: 'storage${uniqueString(resourceGroup().id)}'
   ...
 }
 ```

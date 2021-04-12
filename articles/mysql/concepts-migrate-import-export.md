@@ -4,20 +4,22 @@ description: この記事では、MySQL Workbench などのツールを使用し
 author: savjani
 ms.author: pariks
 ms.service: mysql
+ms.subservice: migration-guide
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 721939ee55976f9eb0c4dff24067036a9d0f4164
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019900"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104591862"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
 この記事では、MySQL Workbench を使用して、Azure Database for MySQL サーバーにデータをインポートおよびエクスポートする 2 つの一般的な方法について説明します。
 
-データベースを Azure Database for MySQL に移行する方法の詳細と使用例については、『[データベース移行ガイド](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)』も参照してください。 このガイドでは、Azure への MySQL 移行の計画と実行を成功させるためのガイダンスが提供されています。
+移行についての詳細かつ包括的なガイダンスについては、[移行ガイド リソース](https://github.com/Azure/azure-mysql/tree/master/MigrationGuide)を参照してください。 その他の移行シナリオについては、[データベース移行ガイド](https://datamigration.microsoft.com/)を参照してください。 
+
 
 ## <a name="before-you-begin"></a>開始する前に
 このハウツー ガイドの手順を実行するには、以下が必要です。
@@ -40,7 +42,7 @@ MySQL Workbench、Toad、または Navicat を使用して Azure Database for My
 > [!TIP]
 > データベース全体をダンプして復元するシナリオでは、代わりに[ダンプと復元の](concepts-migrate-dump-restore.md)の手法を使用する必要があります。
 
-次のシナリオでは、MySQL ツールを使用して、データベースを Azure MySQL Database にインポートおよびエクスポートします。
+次のシナリオでは、MySQL ツールを使用して、データベースを Azure MySQL Database にインポートおよびエクスポートします。 その他のツールについては、 [MySQL から Azure データベースへの移行ガイド](https://github.com/Azure/azure-mysql/blob/master/MigrationGuide/MySQL%20Migration%20Guide_v1.1.pdf)の 22 ページを参照してください。 
 
 - 既存の MySQL データベースから少数のテーブルを選択して、Azure MySQL Database にインポートする必要がある場合は、インポート/エクスポート手法を使用するのが適しています。  これにより、不要なテーブルを移行から除外して、時間とリソースを節約できます。 たとえば、[mysqlpump](https://dev.mysql.com/doc/refman/5.7/en/mysqlpump.html#option_mysqlpump_include-tables) では `--include-tables` スイッチまたは `--exclude-tables` スイッチを使用し、[mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html#option_mysqldump_tables) では `--tables` スイッチを使用します。
 - テーブル以外のデータベース オブジェクトを移行する場合は、それらのオブジェクトを明示的に作成します。 制約 (主キー、外部キー、インデックス)、ビュー、関数、プロシージャ、トリガーなど、移行するデータベース オブジェクトを含めます。

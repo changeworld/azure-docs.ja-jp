@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: 909cbd6174fe7eceaa8b53b5ba44fe72990b56d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: a17dcf36cd8b23bf3bc014e2d101d057221de2b8
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101708052"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504895"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
@@ -95,9 +95,6 @@ NPM は、ソース エージェントと宛先の間のすべての可能なル
 
 ### <a name="how-does-fault-localization-in-performance-monitor-work"></a>パフォーマンス モニターの障害の特定はどのように機能しますか。
 NPM は確率論的メカニズムを使用して、各ネットワーク パス、ネットワーク セグメント、および構成要素のネットワーク ホップに対し、それらがその一部となる異常なパスの数に基づき障害確率を割り当てます。 ネットワーク セグメントとホップが異常なパスの一部になる場合が多くなるほど、それらに関連付けられる障害確率が増加します。 このアルゴリズムは、NPM エージェントが相互に接続された多くのノードがある場合に最適です。この場合は障害確率を計算するためのデータ ポイントが増加するためです。
-
-### <a name="how-can-i-create-alerts-in-npm"></a>NPM でアラートを作成する方法はありますか。
-現時点では、NPM UI からのアラートの作成は、既知の問題により失敗します。 [手動でアラートを作成](../alerts/alerts-log.md)してください。
 
 ### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>アラート用の既定の Log Analytics クエリはどのようなものですか。
 パフォーマンス モニター クエリ

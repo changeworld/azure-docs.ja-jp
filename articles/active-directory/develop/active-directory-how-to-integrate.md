@@ -15,10 +15,10 @@ ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: b7ee283ff61753a060e49a3340cd0a795b04faf9
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98755930"
 ---
 # <a name="integrating-with-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームとの統合

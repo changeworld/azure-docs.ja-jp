@@ -1,24 +1,18 @@
 ---
 title: Azure Security Center 上のネットワーク リソースの保護
 description: このドキュメントでは、Azure Security Center 上の推奨事項に従ってご使用の Azure ネットワーク リソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: 366a9a63e4577a9b8470faec68f8d4a25114dd48
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c24e3473c07759aa256a077d11edb20c616629f6
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133703"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439512"
 ---
 # <a name="protect-your-network-resources"></a>ネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。

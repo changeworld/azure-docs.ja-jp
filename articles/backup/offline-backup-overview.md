@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: 7c65cf6b36af3057fb06c6a6584fa458b1030c72
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98704137"
 ---
 # <a name="overview-of-offline-backup"></a>オフライン バックアップの概要

@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/10/2020
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: ec7a32739940d53d976e73a7e170df96a0acc245
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c18f875dde43ab6df512375152d76a31c30a9e77
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449520"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102439869"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Azure Key Vault と Azure Stack Edge の統合 
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 Azure Key Vault は、シークレット管理のために Azure Stack Edge リソースと統合されています。 この記事では、デバイスをアクティブ化するときに Azure Stack Edge リソース用に Azure キー コンテナーが作成されて、その後、シークレットの管理に使用される方法を詳しく説明します。 
 

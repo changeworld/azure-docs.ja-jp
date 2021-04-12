@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 12/20/2020
 ms.topic: conceptual
 ms.custom: how-to, automl
-ms.openlocfilehash: 1a40fe01240474c2a6df3e028b7d03f3e8bb73fc
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879749"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103562724"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 
@@ -37,7 +37,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
 ## <a name="get-started"></a>はじめに
 
-1. https://ml.azure.com で Azure Machine Learning にサインインします。 
+1. [Azure Machine Learning Studio](https://ml.azure.com) にサインインします。 
 
 1. サブスクリプションとワークスペースを選択します。 
 
@@ -136,7 +136,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
     ------|------
     主要メトリック| モデルをスコアリングするために使用される主なメトリックです。 [モデルのメトリックの詳細については、こちらを参照してください](how-to-configure-auto-train.md#primary-metric)。
     最適なモデルの説明 | 推奨される最適なモデルの説明を表示するために、選択して有効または無効にします。 <br> この機能は、[特定の予測アルゴリズム](how-to-machine-learning-interpretability-automl.md#interpretability-during-training-for-the-best-model)では現在使用できません。 
-    Blocked algorithm (ブロックするアルゴリズム)| トレーニング ジョブから除外するアルゴリズムを選択します。 <br><br> 許可するアルゴリズムは、[SDK 実験](how-to-configure-auto-train.md#supported-models)でのみ使用できます。 <br> [各タスクの種類でサポートされているモデル](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels?preserve-view=true&view=azure-ml-py)を参照してください。
+    Blocked algorithm (ブロックするアルゴリズム)| トレーニング ジョブから除外するアルゴリズムを選択します。 <br><br> 許可するアルゴリズムは、[SDK 実験](how-to-configure-auto-train.md#supported-models)でのみ使用できます。 <br> [各タスクの種類でサポートされているモデル](/python/api/azureml-automl-core/azureml.automl.core.shared.constants.supportedmodels)を参照してください。
     終了条件| これらの基準のどれかが満たされると、トレーニング ジョブが終了します。 <br> *トレーニング ジョブ時間 (時間単位)* :トレーニング ジョブを実行できる時間の長さ。 <br> *Metric score threshold* (メトリック スコアのしきい値): すべてのパイプラインの最小メトリック スコアです。 これにより、達成目標のターゲット メトリックを定義した場合には、必要以上にトレーニング ジョブに時間を費やすことはなくなります。
     検証| トレーニング ジョブで使用するクロス検証オプションをどれか選択します。 <br> [クロス検証の詳細については、こちらを参照してください](how-to-configure-cross-validation-data-splits.md#prerequisites)。<br> <br>予測では、k 分割交差検証のみがサポートされます。
     コンカレンシー| *コンカレント イテレーションの最大数*:トレーニング ジョブでテストするパイプライン (イテレーション) の最大数。 ジョブは、指定したイテレーションの数より多く実行されることはありません。 自動 ML による[クラスターでの複数回の子実行](how-to-configure-auto-train.md#multiple-child-runs-on-clusters)の方法に関する詳細を説明します。
@@ -180,9 +180,29 @@ Included | トレーニングに含める列を指定します。
 
 [![イテレーションの詳細](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
+## <a name="model-explanations"></a>モデルの説明
+
+モデルについて理解を深めるには、モデルの説明ダッシュボードを使用して、モデルの予測に影響を与えたデータ機能 (未加工または処理適用) を確認します。 
+
+モデルの説明ダッシュボードには、トレーニングされたモデルの全体的な分析と共にその予測と説明が表示されます。 また、個々のデータ ポイントと個々の特徴量の重要度にドリル ダウンすることもできます。 [説明ダッシュボードの視覚化と特定のプロットについて学習してください](how-to-machine-learning-interpretability-aml.md#visualizations)。
+
+特定のモデルの説明を取得するには、次の手順を実行します。 
+
+1. **[モデル]** タブで、使用するモデルを選択します。 
+1. **[モデルの説明]** ボタンを選択し、説明の生成に使用できるコンピューティングを提供します。
+1. **[子の実行]** タブで状態を確認します。 
+1. 完了したら、説明ダッシュボードが含まれている **[説明 (プレビュー)]** タブに移動します。 
+
+    ![モデルの説明ダッシュボード](media/how-to-use-automated-ml-for-ml-models/model-explanation-dashboard.png)
+
 ## <a name="deploy-your-model"></a>モデルをデプロイする
 
 最適なモデルを作成したら、Web サービスとしてデプロイして新しいデータで予測します。
+
+>[!TIP]
+> Python SDK が含まれる `automl` パッケージで生成されたモデルをデプロイする場合、ワークスペースに[モデルを登録する](how-to-deploy-and-where.md?tabs=python#register-a-model-from-an-azure-ml-training-run-1)必要があります。 
+>
+> モデルが登録されたら、左側のウィンドウで **[モデル]** を選択し、スタジオでモデルを見つけます。 モデルを開いたら、画面上部にある **[デプロイ]** ボタンを選択し、「**モデルをデプロイする**」セクションの **手順 2** にある指示に従うことができます。
 
 自動化された ML は、コードを記述せずにモデルをデプロイするのに役立ちます。
 

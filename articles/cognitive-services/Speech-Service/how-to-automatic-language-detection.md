@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e62333f241cf24620773314fb7aa4846af651eaf
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: b558d4b3be64f82775eb9caf2f3ea8c5a8f95c6d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185871"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025222"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>音声テキスト変換の自動言語検出
 
@@ -30,7 +30,7 @@ ms.locfileid: "98185871"
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>Speech SDK による自動言語検出
 
-自動言語検出には現在、1 回の検出で 4 言語というサービス側の制限があります。 `AudoDetectSourceLanguageConfig` オブジェクトを構築するとき、この上限を念頭に置いてください。 下のサンプルでは、`AutoDetectSourceLanguageConfig` を作成し、それを利用して `SpeechRecognizer` を構築します。
+自動言語検出には現在、1 回の検出で 4 言語というサービス側の制限があります。 `AutoDetectSourceLanguageConfig` オブジェクトを構築するとき、この上限を念頭に置いてください。 下のサンプルでは、`AutoDetectSourceLanguageConfig` を作成し、それを利用して `SpeechRecognizer` を構築します。
 
 > [!TIP]
 > 音声テキスト変換時に使用するカスタム モデルを指定することもできます。 詳細については、「[自動言語検出にカスタム モデルを使用する](#use-a-custom-model-for-automatic-language-detection)」を参照してください。

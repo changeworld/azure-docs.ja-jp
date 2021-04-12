@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 09/14/2019
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: e47486f29537cb948aaae7cf17e97bae14b60700
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: a2d5a870ee8953a4388e58d21cf941f23434382b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084296"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447116"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>Windows Virtual Desktop ユーザー用のフィードをカスタマイズする
 
@@ -107,7 +107,7 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 3. サービスの下で **[Windows Virtual Desktop]** を選択します。
 
-4. Windows Virtual Desktop のページで、画面の左側にある **[アプリケーション グループ]** を選択し、編集するアプリ グループの名前を選択します。 (たとえば、デスクトップ アプリ グループの表示名を編集する場合、**デスクトップ**という名前のアプリ グループを選択します)。
+4. Windows Virtual Desktop のページで、画面の左側にある **[アプリケーション グループ]** を選択し、編集するアプリ グループの名前を選択します。 (たとえば、デスクトップ アプリ グループの表示名を編集する場合、**デスクトップ** という名前のアプリ グループを選択します)。
 
 5. 画面の左側にあるメニューで **[アプリケーション]** を選択します。
 

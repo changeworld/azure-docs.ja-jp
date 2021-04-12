@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: a177b22f0f91d82013956bff36eaa57a084c27d1
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 65eb4e8fefb74219c927fe507baceca7c55462be
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576584"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "101095716"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のアプリのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -49,7 +49,7 @@ Visual Studio は、[Azure portal](https://go.microsoft.com/fwlink/?LinkId=52971
    >
    >
 
-    Visual Studio から Azure リソースへの接続の詳細については、「 [アカウント、サブスクリプション、管理ロールの管理](../role-based-access-control/role-assignments-portal.md)」を参照してください。
+    Visual Studio から Azure リソースへの接続の詳細については、「[Azure portal を使用して Azure ロールを割り当てる](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 2. **サーバー エクスプローラー** で **[Azure]** を展開し、 **[App Service]** を展開します。
 3. [Azure App Service での ASP.NET Web アプリの作成](quickstart-dotnet-framework.md)に関するページで作成したアプリを含むリソース グループを展開し、アプリ ノードを右クリックして、 **[設定の表示]** をクリックします。
 

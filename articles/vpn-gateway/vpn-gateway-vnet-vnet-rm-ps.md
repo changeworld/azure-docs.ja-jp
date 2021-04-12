@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: 7de83302dd91d7d679b9c35718d184a9767ba436
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94655359"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell を使用した VNet 間 VPN Gateway 接続を構成する
@@ -79,7 +79,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* ゲートウェイの作成には最大で 45 分かかるため、この演習の間に Azure Cloud Shell が定期的にタイムアウトします。 端末の左上をクリックして、Cloud Shell を再起動できます。 端末を再起動したら、忘れずにすべての変数を再宣言してください。
+* ゲートウェイの作成には最大で 45 分かかるため、この演習の間に Azure Cloud Shell が定期的にタイムアウトします。 ターミナルの左上をクリックして、Cloud Shell を再起動できます。 ターミナルを再起動したら、忘れずにすべての変数を再宣言してください。
 
 * 代わりに最新バージョンの Azure PowerShell モジュールをローカル環境にインストールしたい場合は、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/)」をご覧ください。
 
@@ -203,7 +203,7 @@ VNet 間接続による仮想ネットワークの接続が望ましいのは、
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-コマンドが完了した後、このゲートウェイが作成されるまでに最大で 45 分かかります。 Azure Cloud Shell を使用している場合は、Cloud Shell 端末の左上をクリックして、Cloud Shell セッションを再起動できます。その後、TestVNet4 を構成します。 TestVNet1 ゲートウェイが完了するまで待つ必要はありません。
+コマンドが完了した後、このゲートウェイが作成されるまでに最大で 45 分かかります。 Azure Cloud Shell を使用している場合は、Cloud Shell ターミナルの左上をクリックして、Cloud Shell セッションを再起動できます。その後、TestVNet4 を構成します。 TestVNet1 ゲートウェイが完了するまで待つ必要はありません。
 
 ### <a name="step-3---create-and-configure-testvnet4"></a>手順 3 - TestVNet4 を作成し、構成する
 

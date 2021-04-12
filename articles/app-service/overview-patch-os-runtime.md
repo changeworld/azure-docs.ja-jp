@@ -4,12 +4,12 @@ description: Azure App Service が OS とランタイムを更新する方法、
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 8b52223aea0f0bdfecf58906ac192e893da3b47d
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 8b876760ee2bafc855345878a28c38ec3b35daad
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558489"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105047883"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure App Service での OS とランタイムのパッチ適用
 
@@ -61,7 +61,7 @@ Azure では、2 つのレベルで OS のパッチ適用が管理されます�
 az webapp config set --net-framework-version v4.7 --resource-group <groupname> --name <appname>
 az webapp config set --php-version 7.0 --resource-group <groupname> --name <appname>
 az webapp config appsettings set --settings WEBSITE_NODE_DEFAULT_VERSION=8.9.3 --resource-group <groupname> --name <appname>
-az webapp config set --python-version 3.4 --resource-group <groupname> --name <appname>
+az webapp config set --python-version 3.8 --resource-group <groupname> --name <appname>
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 

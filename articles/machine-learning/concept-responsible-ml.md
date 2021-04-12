@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
-ms.date: 12/21/2020
+ms.date: 02/25/2021
 ms.custom: responsible-ml
-ms.openlocfilehash: 7124fdd6e7d137e21234ff40426e13dc65b4f9e0
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: aeff928c14bd61a374f8b2610f35c0347a7cfc39
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223110"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062422"
 ---
 # <a name="what-is-responsible-machine-learning-preview"></a>信頼できる機械学習とは (プレビュー)
 
@@ -42,7 +42,7 @@ AI システムの開発と使用を通して、信頼をその中心にする�
 
 説明するのが難しい (オペーク ボックス) システムは、システムで特定の決定が行われた理由を、システム開発者、規制者、ユーザー、ビジネス意思決定者などの利害関係者が理解するのが困難であるため、問題になる可能性があります。 説明のしやすさは AI システムによって差があり、場合によっては、正確性の高いシステムと説明しやすいシステムの間でトレードオフが発生します。
 
-解釈可能な AI システムを構築するには、Microsoft によって構築されたオープンソース パッケージである [InterpretML](https://github.com/interpretml/interpret) を使用します。 [InterpretML を Azure Machine Learning の内部で使用](how-to-machine-learning-interpretability.md)して、[自動化された機械学習モデル](how-to-machine-learning-interpretability-automl.md)など、[機械学習モデルを解釈して説明する](how-to-machine-learning-interpretability-aml.md)ことができます。
+解釈可能な AI システムを構築するには、Microsoft によって構築されたオープンソース パッケージである [InterpretML](https://github.com/interpretml/interpret) を使用します。 InterpretML パッケージは、SHapley Additive exPlanations (SHAP)、Mimic Explainer、Permutation Feature Importance (PFI) など、さまざまな解釈可能性手法をサポートしています。  [InterpretML を Azure Machine Learning の内部で使用](how-to-machine-learning-interpretability.md)して、[自動化された機械学習モデル](how-to-machine-learning-interpretability-automl.md)など、[機械学習モデルを解釈して説明する](how-to-machine-learning-interpretability-aml.md)ことができます。
 
 ## <a name="mitigate-fairness-in-machine-learning-models"></a>機械学習モデルでの公平性を軽減する
 

@@ -9,11 +9,11 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 42024fc506de7befed7c44ebcc410756b6f43a35
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078988"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105645814"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>ローカル開発の依存関係をデプロイする
 

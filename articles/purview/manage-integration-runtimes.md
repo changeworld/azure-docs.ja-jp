@@ -8,10 +8,10 @@ ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 02/03/2021
 ms.openlocfilehash: 9276f845c95b5e736180159b282ddedc33523c17
-ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99980747"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムの作成および管理

@@ -2,11 +2,11 @@
 title: クイック スタート:Azure CLI を使用して Linux VM を作成する
 description: このクイック スタートでは、Azure CLI を使用して Linux 仮想マシンを作成する方法について説明します
 author: cynthn
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.collection: linux
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/09/2018
+ms.date: 03/30/2021
 ms.author: cynthn
 ms.custom:
 - mvc
@@ -14,18 +14,18 @@ ms.custom:
 - seo-javascript-october2019
 - seo-python-october2019
 - devx-track-azurecli
-ms.openlocfilehash: 78ecd052c071835ef488882979a3bc5306c35365
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3e8c1a06244c46f5789506e8a77d410f5493bbf3
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87488978"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058580"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli"></a>クイック スタート:Azure CLI で Linux 仮想マシンを作成する
 
 このクイックスタートでは、Azure コマンドライン インターフェイス (CLI) を使用して、Linux 仮想マシン (VM) を Azure にデプロイする方法を示します。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。
 
-このチュートリアルでは、Ubuntu 16.04 LTS をインストールします。 動作中の VM を表示するには、SSH を使用してその VM に接続し、NGINX Web サーバーをインストールする必要があります。
+このチュートリアルでは、最新の Ubuntu LTS イメージをインストールします。 動作中の VM を表示するには、SSH を使用してその VM に接続し、NGINX Web サーバーをインストールする必要があります。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -87,10 +87,10 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
-通常どおりに、SSH を使って VM に接続します。 **publicIpAddress** は、VM からの前の出力で記録しておいた VM のパブリック IP アドレスに置き換えます。
+通常どおりに、SSH を使って VM に接続します。 この例の IP アドレスは、前の出力で記録しておいた VM のパブリック IP アドレスで置き換えます。
 
 ```bash
-ssh azureuser@publicIpAddress
+ssh azureuser@40.68.254.142
 ```
 
 ## <a name="install-web-server"></a>Web サーバーのインストール

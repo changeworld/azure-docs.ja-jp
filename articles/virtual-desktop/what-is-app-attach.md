@@ -7,13 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: c6bf296b5173a662b1e9dd7b025648e3f16d23c8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: cdbb7574f9da5ea6cd0695b74c269d8e1b88b7f4
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88556170"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444073"
 ---
 # <a name="what-is-msix-app-attach"></a>MSIX アプリのアタッチとは
 

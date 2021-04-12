@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 7a448afb85a35674921ce74a25eaf2a97430dc61
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 2e289728c7fde9b98256d079d45067aba1d4d805
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201418"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102211330"
 ---
 # <a name="traffic-manager-subnet-override-using-azure-cli"></a>Azure CLI を使用した Traffic Manager のサブネットのオーバーライド
 
@@ -39,7 +39,7 @@ Traffic Manager サブネットのオーバーライドを作成するには、A
 - この記事では、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
 
 ## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>サブネットのオーバーライドを使用して Traffic Manager エンドポイントを更新します。
-Azure CLI を使用して、[az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) でエンドポイントを更新します。
+Azure CLI を使用して、[az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) でエンドポイントを更新します。
 
 ```azurecli-interactive
 ### Add a range of IPs ###
@@ -59,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-IP アドレス範囲を削除するには、**--remove** オプションを指定して [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-update) を実行します。
+IP アドレス範囲を削除するには、**--remove** オプションを指定して [az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) を実行します。
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \

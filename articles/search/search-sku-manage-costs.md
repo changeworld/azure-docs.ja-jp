@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.openlocfilehash: 4ad362b983f81e2cdc10cdbccafd8dda951482d7
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98539558"
 ---
 # <a name="how-to-estimate-and-manage-costs-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search サービスのコストの見積りと管理を行う方法
@@ -82,7 +82,7 @@ Azure Cognitive Search サービスをデータと同じリージョンに作成
 
 [AI エンリッチメント](cognitive-search-concept-intro.md)の場合は、従量課金制の処理について、Azure Cognitive Search と同じリージョンの S0 価格レベルで、[有料の Azure Cognitive Services リソースをアタッチする](cognitive-search-attach-cognitive-services.md)ように計画することをお勧めします。 Cognitive Services のアタッチには、関連する固定コストはありません。 課金の対象となるのは、必要な処理の分だけです。
 
-| 操作 | 課金への影響 |
+| Operation | 課金への影響 |
 |-----------|----------------|
 | ドキュメント解析、テキスト抽出 | Free |
 | ドキュメント解析、画像抽出 | ドキュメントから抽出された画像の数に基づいて課金されます。 **インデクサー構成** で、[imageAction](/rest/api/searchservice/create-indexer#indexer-parameters) は、画像抽出をトリガーするパラメーターです。 **imageAction** が "none" (既定値) に設定されている場合、画像の抽出に対して課金されません。 画像抽出のレートは、Azure Cognitive Search の[価格の詳細](https://azure.microsoft.com/pricing/details/search/)に関するページに記載されています。|

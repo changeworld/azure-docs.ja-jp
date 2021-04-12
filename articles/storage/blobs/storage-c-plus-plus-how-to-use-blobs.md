@@ -1,18 +1,18 @@
 ---
 title: C++ - Azure からオブジェクト (BLOB) ストレージを使用する方法 | Microsoft Docs
 description: C++ を使用して、Azure BLOB (オブジェクト) ストレージによって非構造化データをクラウドに格納する方法について説明します。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 64069292ea0059216d06bfc41316c2aed7484dd0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 61c7dca25e90450c695a5137dd2ee900c1282bf0
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011100"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106278050"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>C++ から BLOB ストレージを使用する方法
 

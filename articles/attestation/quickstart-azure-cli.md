@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4fc799c1c6dcaaa3ed4bc41c93bd6b786f51591c
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: ae283785b4d4dc80c6b9b6c3997aaf82c9ff0f2f
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99429247"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102178713"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure Attestation を設定する
 
-[Azure CLI を使用して Azure Attestation](/cli/azure/ext/attestation/attestation?view=azure-cli-latest) を導入します。
+[Azure CLI を使用して Azure Attestation](/cli/azure/ext/attestation/attestation) を導入します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,13 +69,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 構成証明プロバイダーの作成と管理に使用できるコマンドは以下のとおりです。
 
-1. [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) コマンドを実行して、ポリシー署名要件なしで構成証明プロバイダーを作成します。
+1. [az attestation create](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_create) コマンドを実行して、ポリシー署名要件なしで構成証明プロバイダーを作成します。
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
    ```
    
-1. [az attestation show](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_show) コマンドを実行して、構成証明プロバイダーのプロパティ (状態や AttestURI など) を取得します。
+1. [az attestation show](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_show) コマンドを実行して、構成証明プロバイダーのプロパティ (状態や AttestURI など) を取得します。
 
    ```azurecli
    az attestation show --name "myattestationprovider" --resource-group "MyResourceGroup"
@@ -95,7 +95,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    TagsTable:
    ```
 
-構成証明プロバイダーは、[az attestation delete](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_delete) コマンドを使用して削除できます。
+構成証明プロバイダーは、[az attestation delete](/cli/azure/ext/attestation/attestation#ext_attestation_az_attestation_delete) コマンドを使用して削除できます。
 
 ```azurecli
 az attestation delete --name "myattestationprovider" --resource-group "sample-resource-group"
@@ -105,7 +105,7 @@ az attestation delete --name "myattestationprovider" --resource-group "sample-re
 
 構成証明プロバイダー用のポリシーを管理するには、ここで説明するコマンドを使用します (一度に 1 つの構成証明の種類)。
 
-[az attestation policy show](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_show) コマンドからは、指定の TEE の現行ポリシーが返されます。
+[az attestation policy show](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_show) コマンドからは、指定の TEE の現行ポリシーが返されます。
 
 ```azurecli
 az attestation policy show --name "myattestationprovider" --resource-group "MyResourceGroup" --attestation-type SGX-IntelSDK
@@ -120,7 +120,7 @@ az attestation policy show --name "myattestationprovider" --resource-group "MyRe
 - `SGX-OpenEnclaveSDK`
 - `TPM`
 
-指定した構成証明の種類の新しいポリシーを設定するには、[az attestation policy set](/cli/azure/ext/attestation/attestation/policy?view=azure-cli-latest#ext_attestation_az_attestation_policy_set) コマンドを使用します。
+指定した構成証明の種類の新しいポリシーを設定するには、[az attestation policy set](/cli/azure/ext/attestation/attestation/policy#ext_attestation_az_attestation_policy_set) コマンドを使用します。
 
 ファイル パスを使用して、特定の構成証明の種類のポリシーをテキスト形式で設定するには、次のように指定します。
 

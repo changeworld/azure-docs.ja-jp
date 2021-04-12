@@ -1,27 +1,29 @@
 ---
 title: BLOB インデックス タグを使用して Azure Blob Storage でデータを管理および検索する
 description: BLOB インデックス タグを使用して、BLOB オブジェクトの分類、管理、およびクエリを実行する方法の例をご紹介します。
-author: mhopkins-msft
-ms.author: mhopkins
-ms.date: 11/19/2020
+author: twooley
+ms.author: twooley
+ms.date: 03/05/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: klaasl
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 411815ca2f947c47b8dfb0d2e5d61f8ea18f3545
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 6f7ae7af0f2764bd3f157ad5ca3166c9989cd9bf
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95541251"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276792"
 ---
 # <a name="use-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>BLOB インデックス タグ (プレビュー) を使用して Azure Blob Storage でデータを管理および検索する
 
 キーと値のタグ属性を使用して、BLOB インデックス タグによってストレージ アカウント内のデータが分類されます。 これらのタグには自動的にインデックスが付けられ、検索可能な多次元インデックスとして公開されるため、データを簡単に見つけることができます。 この記事では、BLOB インデックス タグを使用してデータを設定、取得、および検索する方法について説明します。
 
-> [!NOTE]
-> BLOB インデックスはパブリック プレビュー中であり、**カナダ中部**、**カナダ東部**、**フランス中部**、および **フランス南部** リージョンで利用できます。 この機能と既知の問題および制限の詳細については、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
+> [!IMPORTANT]
+> BLOB インデックス タグは、現在 **プレビュー** 段階であり、すべてのパブリック リージョンで利用できます。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用される法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+この機能と既知の問題および制限の詳細については、「[BLOB インデックス タグを使用して Azure BLOB データを管理および検索する (プレビュー)](storage-manage-find-blobs.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

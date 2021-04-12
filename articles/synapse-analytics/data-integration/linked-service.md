@@ -2,19 +2,19 @@
 title: リンクされたサービスをセキュリティで保護する
 description: マネージド VNet を使用して、リンクされたサービスをプロビジョニングしてセキュリティで保護する方法について説明します
 services: synapse-analytics
-author: ArnoMicrosoft
+author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: be7ee2f4b2b8472c5edeff63e143d99c958bfc5a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220118"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627219"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Private Link を使用してリンクされたサービスをセキュリティで保護する
 

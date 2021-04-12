@@ -7,13 +7,13 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 10/09/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 968f82a143872fd282222539ab71a70db488a20d
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+manager: femila
+ms.openlocfilehash: 18089bc00e9d02087acb149511fbc2c55077c153
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91935607"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106446929"
 ---
 # <a name="set-up-a-business-continuity-and-disaster-recovery-plan"></a>事業継続とディザスター リカバリー プランを設定する
 
@@ -104,7 +104,7 @@ Fslogix のレジストリ エントリを構成する場合、FSLogix エージ
 
 レジストリ エントリを構成するには、次のようにします。
 
-1. **レジストリ エディター**を開きます。
+1. **レジストリ エディター** を開きます。
 2. **[コンピューター]**  >  **[HKEY_LOCAL_MACHINE]**  >  **[SOFTWARE]**  >  **[FSLogix]**  >  **[プロファイル]** の順に移動します。
    
      > [!div class="mx-imgBorder"]

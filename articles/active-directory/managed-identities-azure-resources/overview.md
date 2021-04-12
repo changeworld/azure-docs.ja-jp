@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 10/06/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 728ca38cc3ef3bf989a75d757c69f7ca1993d82d
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 5390811c8da4a8cace32e0e7ba4524e8c537a26a
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803120"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055588"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 

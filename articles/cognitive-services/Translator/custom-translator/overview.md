@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: lajanuar
 ms.topic: overview
-ms.openlocfilehash: 37d31d753812924607c4d31df6d4f4d5e7b32d69
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 89ab25f45cd35a86d2ff4416ceb851ae6cd5e115
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98890715"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104657163"
 ---
 # <a name="what-is-custom-translator"></a>Custom Translator とは
 
@@ -24,13 +24,20 @@ ms.locfileid: "98890715"
 
 Custom Translator は、36 を超える言語をサポートし、NMT で利用可能な言語に直接マップされています。 完全な一覧については、[Microsoft Translator の言語](../language-support.md#customization)に関するページを参照してください。
 
-## <a name="features"></a>特徴
+このドキュメントには、次の種類の記事が含まれています。
 
-Custom Translator は、カスタム翻訳システムを構築し、その後そのシステムにアクセスするための各種機能を提供します。
+* [**クイックスタート**](quickstart-build-deploy-custom-model.md)は、サービスへの要求の実行方法を説明する概要手順です。  
+* [**攻略ガイド**](how-to-create-project.md)には、より具体的またはカスタマイズした方法で機能を使用するための手順が記載されています。  
+* [**概念**](workspace-and-project.md)では、主な機能について詳しく説明します。  
+
+
+## <a name="features"></a>フィーチャー
+
+カスタム翻訳ツールは、カスタム翻訳システムを構築し、その後そのシステムにアクセスするための各種機能を提供します。
 
 |機能  |説明  |
 |---------|---------|
-|[ニューラル機械翻訳テクノロジを活用](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Custom Translator によって提供されるニューラル機械翻訳 (NMT) を活用して翻訳を改善します。       |
+|[ニューラル機械翻訳テクノロジを適用](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  カスタム翻訳ツールによって提供されるニューラル機械翻訳 (NMT) を適用して翻訳を改善します。       |
 |[ビジネス用語を理解するシステムを構築](what-are-parallel-documents.md)     |  お客様のビジネスや業界で使用されている用語が反映されている対訳ドキュメントを使用して、翻訳システムをカスタマイズおよび構築します。       |
 |[辞書を使用してモデルを構築](what-is-dictionary.md)     |   トレーニング データ セットがない場合は、辞書データのみを使用してモデルをトレーニングすることができます。       |
 |[他の人と共同作業を行う](how-to-manage-settings.md#share-your-workspace)     |   他の人と作業を共有して、チームと共同作業を行います。     |
@@ -52,7 +59,7 @@ Custom Translator では、データの収集と準備をより効果的に行�
 
 ユーザーは、セキュリティで保護された [Custom Translator](https://portal.customtranslator.azure.ai) ポータルで直感的なユーザー インターフェイスを使用して、トレーニング データをアップロードし、システムのトレーニングとテスト、運用環境へのデプロイを行うことができます。 システムは、数時間以内に大規模に使用できるようになります (実際の時間はトレーニング データのサイズによって変わります)。
 
-[Custom Translator](https://portal.customtranslator.azure.ai) は、プログラムを使って、(現在プレビュー段階の) [専用 API](https://custom-api.cognitive.microsofttranslator.com/swagger/) を介してアクセスすることもできます。 ユーザーは、この API を使用して、自分のアプリや Web サービスを通じて定期的なトレーニングの作成と更新を管理できます。
+[Custom Translator](https://portal.customtranslator.azure.ai) は、プログラムを使って、(現在プレビュー段階の) [専用 API](https://custom-api.cognitive.microsofttranslator.com/swagger/) を介してアクセスすることもできます。 ユーザーは、この API を使用して、自分のアプリや Web サービスを通じてトレーニングの作成と更新を管理できます。
 
 カスタム モデルを使用してコンテンツを翻訳するコストは、ユーザーの Translator Text API の価格レベルに基づきます。 価格レベルの詳細については、Cognitive Services の [Translator Text API の価格に関する Web ページ](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)を参照してください。
 

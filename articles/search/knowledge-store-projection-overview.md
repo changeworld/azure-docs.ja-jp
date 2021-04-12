@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 22db4f95bacd926208ac7edf3306cd136d81b00e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "85565196"
 ---
 # <a name="knowledge-store-projections-in-azure-cognitive-search"></a>Azure Cognitive Search のナレッジ ストアでの "プロジェクション"
@@ -21,7 +21,7 @@ Azure Cognitive Search では、インデックス作成の一環として組み
 
 [ナレッジ ストア](knowledge-store-concept-intro.md)のコンポーネントであるプロジェクションは、ナレッジ マイニングの目的で物理ストレージに保存できる強化されたドキュメントのビューです。 プロジェクションを使用すると、Power BI などのツールで追加の作業なしでデータを読み取ることができるように、関係を維持しながら、ニーズに合った形状にデータを "射影" できます。
 
-プロジェクションは、Azure Table ストレージの行と列に格納されたデータ、または Azure Blob ストレージに格納された JSON オブジェクトを使用して表形式にすることができます。 データが強化されると、データの複数のプロジェクションを定義できます。 同じデータを個々のユース ケースに応じて異なる方法で整形したい場合には、プロジェクションを複数用意することが有用です。
+プロジェクションは、Azure Table Storage の行と列に格納されたデータ、または Azure Blob ストレージに格納された JSON オブジェクトを使用して表形式にすることができます。 データが強化されると、データの複数のプロジェクションを定義できます。 同じデータを個々のユース ケースに応じて異なる方法で整形したい場合には、プロジェクションを複数用意することが有用です。
 
 ナレッジ ストアは 3 種類のプロジェクションをサポートしています。
 
@@ -196,7 +196,7 @@ Azure Cognitive Search では、インデックス作成の一環として組み
 
 インデクサーの実行後に、プロジェクションによって指定したコンテナーまたはテーブル内の射影されたデータを読み取ることができます。
 
-分析に関しては、Power BI での探索は、Azure Table ストレージをデータ ソースとして設定する場合と同じくらい簡単です。 内部のリレーションシップを利用すると、データを簡単に視覚化できます。
+分析に関しては、Power BI での探索は、Azure Table Storage をデータ ソースとして設定する場合と同じくらい簡単です。 内部のリレーションシップを利用すると、データを簡単に視覚化できます。
 
 また、データ サイエンス パイプラインで強化されたデータを使用する必要がある場合は、[BLOB から Pandas DataFrame にデータを読み込む](../machine-learning/team-data-science-process/explore-data-blob.md)こともできます。
 

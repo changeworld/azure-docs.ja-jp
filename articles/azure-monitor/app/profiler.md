@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: b1158a614da9ba32f628aba5dd2ed2cc71b4b455
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a53db9deb07863010c792943c71eb0af5d845af8
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947037"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105026507"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Application Insights を使用したライブ Azure App Service アプリのプロファイリング
 
@@ -25,8 +25,12 @@ Profiler は、Basic 以上のサービス レベルを使用し、Azure App Ser
 
 Application Insights Profiler は、App Services ランタイムの一部として事前インストールされています。 次の手順は、これを App Service で有効にする方法を示しています。 App Insights SDK をアプリケーションのビルド時に含めている場合でも、これらの手順に従ってください。
 
+> [!NOTE]
+> Application Insights Profiler のコードなしインストールは .NET Core サポート ポリシーに準拠します。
+> サポートされているランタイムの詳細については、[.Net Core サポート ポリシー](https://dotnet.microsoft.com/platform/support/policy/dotnet-core)に関するページを参照してください。
+
 1. ご自身の App Service の Azure コントロール パネルに移動します。
-1. App Service の "Always On" 設定を有効にします。 この設定を確認するには、 **[設定]** 、 **[構成]** ページ (次の手順のスクリーンショットを参照) の順にクリックし、 **[全般設定]** タブをクリックします。
+1. App Service の "Always On" 設定を有効にします。 この設定を確認するには、 **[設定]** 、 **[構成]** ページ (次の手順のスクリーンショットを参照) の順にクリックし、 **[全般設定]** タブを選択します。
 1. **[設定] > [Application Insights]** ページに移動します。
 
    ![App Service ポータルで App Insights を有効にする](./media/profiler/AppInsights-AppServices.png)
@@ -52,18 +56,18 @@ Profiler を有効にするために必要な設定は次のとおりです。
 
 これらの値は、[Azure Resource Manager テンプレート](./azure-web-apps.md#app-service-application-settings-with-azure-resource-manager)、[Azure PowerShell](/powershell/module/az.websites/set-azwebapp) または [Azure CLI](/cli/azure/webapp/config/appsettings) を使用して設定できます。
 
-### <a name="enabling-profiler-for-other-clouds-manually"></a>他のクラウドに対して Profiler を手動で有効にする
+## <a name="enable-profiler-for-other-clouds"></a>他のクラウドの Profiler を有効にする
 
-他のクラウドに対して Profiler を有効にする場合は、次のアプリ設定を使用できます。
+現在、エンドポイントの変更が必要なリージョンは [Azure Government](../../azure-government/compare-azure-government-global-azure.md#application-insights) と [Azure China](/azure/china/resources-developer-guide) のみです。
 
-|アプリ設定    | 米国政府の値| China Cloud |   
+|アプリ設定    | 米国政府のクラウド | China Cloud |   
 |---------------|---------------------|-------------|
 |ApplicationInsightsProfilerEndpoint         | `https://profiler.monitor.azure.us`    | `https://profiler.monitor.azure.cn` |
 |ApplicationInsightsEndpoint | `https://dc.applicationinsights.us` | `https://dc.applicationinsights.azure.cn` |
 
 ## <a name="disable-profiler"></a>Profiler を無効にする
 
-個々のアプリのインスタンスに対して Profiler を停止または再起動するには、 **[Web ジョブ]** で、ApplicationInsightsProfiler3 という名前の Web ジョブを停止します。 前述したように、Application Insights ページのスイッチを使用して Profiler を無効にしても、Profiler プロセスは引き続き実行されます。 Profiler は、Profiler 自体が有効になっているかどうかをチェックします。 無効になっている場合は、しばらくしてから再びチェックを行います。 無効になっている場合、プロファイリングは実行しません。 この Web ジョブを無効にすると、Profiler プロセスは完全に実行されなくなり、有効になっているかどうかのチェックも行われなくなります。
+個々のアプリのインスタンスに対して Profiler を停止または再起動するには、左のサイドバーで **[Web ジョブ]** を選択し、`ApplicationInsightsProfiler3` という名前の Web ジョブを停止します。
 
   ![Web ジョブで Profiler を無効にする][disable-profiler-webjob]
 
@@ -79,4 +83,3 @@ WebDeploy を使用して Web アプリケーションへの変更をデプロ�
 [Enablement UI]: ./media/profiler/Enablement_UI.png
 [profiler-app-setting]:./media/profiler/profiler-app-setting.png
 [disable-profiler-webjob]: ./media/profiler/disable-profiler-webjob.png
-

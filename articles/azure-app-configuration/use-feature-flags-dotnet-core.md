@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 327bc687c466a30d4f92810e48dc08f822f752ec
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 4d54e1ff07b250b5595d2f8aee5f022bd2359721
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101726429"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105729509"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリ内で機能フラグを使用する
 
@@ -218,7 +218,7 @@ config.AddAzureAppConfiguration(options =>
 
 ## <a name="use-dependency-injection-to-access-ifeaturemanager"></a>依存関係の挿入を使用して IFeatureManager にアクセスする 
 
-機能フラグの値を手動でチェックするなど一部の操作では、[IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?view=azure-dotnet-preview) のインスタンスを取得する必要があります。 ASP.NET Core MVC では、依存関係の挿入を介して機能マネージャー `IFeatureManager` にアクセスできます。 以下の例では、コントローラーのコンストラクターのシグネチャに `IFeatureManager` 型の引数が追加されています。 このランタイムは、コンストラクターを呼び出す際に、参照を自動的に解決してインターフェイスを提供します。 最初からコントローラーのコンストラクターに依存関係の挿入のための引数が少なくとも 1 つあるようなアプリケーション テンプレートを使用している場合は (`ILogger` など)、単純に引数として `IFeatureManager` を追加することができます。
+機能フラグの値を手動でチェックするなど一部の操作では、[IFeatureManager](/dotnet/api/microsoft.featuremanagement.ifeaturemanager?preserve-view=true&view=azure-dotnet-preview) のインスタンスを取得する必要があります。 ASP.NET Core MVC では、依存関係の挿入を介して機能マネージャー `IFeatureManager` にアクセスできます。 以下の例では、コントローラーのコンストラクターのシグネチャに `IFeatureManager` 型の引数が追加されています。 このランタイムは、コンストラクターを呼び出す際に、参照を自動的に解決してインターフェイスを提供します。 最初からコントローラーのコンストラクターに依存関係の挿入のための引数が少なくとも 1 つあるようなアプリケーション テンプレートを使用している場合は (`ILogger` など)、単純に引数として `IFeatureManager` を追加することができます。
 
 ### <a name="net-5x"></a>[.NET 5.x](#tab/core5x)
     
@@ -322,7 +322,7 @@ public IActionResult Index()
 }
 ```
 
-制御する機能フラグが "*オフ*" であるために MVC コントローラーまたはアクションがブロックされている場合、登録されている [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?view=azure-dotnet-preview) インターフェイスが呼び出されます。 既定の `IDisabledFeaturesHandler` インターフェイスは、応答本文なしで 404 状態コードをクライアントに返します。
+制御する機能フラグが "*オフ*" であるために MVC コントローラーまたはアクションがブロックされている場合、登録されている [IDisabledFeaturesHandler](/dotnet/api/microsoft.featuremanagement.mvc.idisabledfeatureshandler?preserve-view=true&view=azure-dotnet-preview) インターフェイスが呼び出されます。 既定の `IDisabledFeaturesHandler` インターフェイスは、応答本文なしで 404 状態コードをクライアントに返します。
 
 ## <a name="mvc-views"></a>MVC ビュー
 

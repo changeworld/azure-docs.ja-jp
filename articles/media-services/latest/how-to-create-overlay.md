@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 08/31/2020
-ms.openlocfilehash: 69930e06e2ce7f2679feec74ca8ccbc93bdb8d30
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 95a468d130d1ab1eee349f15592175301c9ddf37
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101721125"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106110021"
 ---
 # <a name="how-to-create-an-overlay-with-media-encoder-standard"></a>Media Encoder Standard を使用してオーバーレイを作成する方法
 
@@ -41,8 +41,8 @@ Media Encoder Standard を使用すると、イメージ、オーディオ フ�
 
 Transforms についてまだよく理解していない場合は、次のアクティビティを完了することをお勧めします。
 
-* 「[Media Services を使用したビデオとオーディオのエンコード](encoding-concept.md)」を読む
-* 「[カスタム変換を使用してエンコードする方法 - .NET](customize-encoder-presets-how-to.md)」を読む この記事の手順に従って、Transform を操作するために必要な .NET を設定してから、ここに戻り、オーバーレイのプリセット サンプルを試してみてください。
+* 「[Media Services を使用したビデオとオーディオのエンコード](encode-concept.md)」を読む
+* 「[カスタム変換を使用してエンコードする方法 - .NET](encode-custom-presets-how-to.md)」を読む この記事の手順に従って、Transform を操作するために必要な .NET を設定してから、ここに戻り、オーバーレイのプリセット サンプルを試してみてください。
 * [Transforms のリファレンス ドキュメント](/rest/api/media/transforms)を参照してください。
 
 Transforms について理解したら、オーバーレイのサンプルをダウンロードします。

@@ -3,7 +3,7 @@ title: Azure Portal での Media Services アカウントへのファイルの�
 description: このチュートリアルでは、Azure Portal で Media Services アカウントにファイルをアップロードする手順について説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: juliako
-ms.openlocfilehash: fdb301cd719d98d806e2a9e539cd81e6778461bb
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: a0e4b7e759e27dafb1d847dc5d7ce464b440e98c
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695308"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960675"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Azure Portal での Media Services アカウントへのファイルのアップロード
 
@@ -32,7 +32,7 @@ ms.locfileid: "98695308"
 > 
 
 > [!NOTE]
-> Media Services v2 には新機能は追加されません。 ポータルを使用した最新のアップロード ファイルについては、「[ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信](../latest/manage-assets-quickstart.md)」を参照してください。<br/>また、次の項目も確認してください。[Media Services v3](../latest/index.yml)。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
+> Media Services v2 には新機能は追加されません。 ポータルを使用した最新のアップロード ファイルについては、「[ポータルを使用したコンテンツのアップロード、エンコード、ストリーム配信](../latest/asset-create-asset-upload-portal-quickstart.md)」を参照してください。<br/>また、次の項目も確認してください。[Media Services v3](../latest/index.yml)。 また、[v2 から v3 への移行ガイダンス](../latest/migrate-v-2-v-3-migration-introduction.md)を参照してください。
 
 Azure Media Services で、デジタル ファイルをアセットにアップロードします。 アセットには、ビデオ、オーディオ、画像、サムネイル コレクション、テキスト トラック、クローズド キャプション ファイル (および各ファイルのメタデータ) を含めることができます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
 

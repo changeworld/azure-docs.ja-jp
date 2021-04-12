@@ -10,10 +10,10 @@ ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 3644891f12a6475ec9cfec51f572df4742481e8f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "94541846"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>クイックスタート: Synapse Studio を使用して専用 SQL プールを作成する

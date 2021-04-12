@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/07/2021
 ms.author: kenwith
 ms.openlocfilehash: 161df0446c9478ca0f2b135c1e426f3786b164fc
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99257442"
 ---
 # <a name="understand-how-users-are-assigned-to-apps-in-azure-active-directory"></a>Azure Active Directory でユーザーをアプリに割り当てる方法を理解する

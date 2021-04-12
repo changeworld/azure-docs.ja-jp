@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 02/03/2021
 ms.author: juliako
 ms.openlocfilehash: 7d3415ffad4820d8651841398ec6d47352869ce2
-ms.sourcegitcommit: b513b0becf878eb9a1554c26da53aa48d580bb22
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/16/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100534741"
 ---
 # <a name="quickstart-invite-users-to-video-indexer"></a>クイック スタート:Video Indexer にユーザーを招待する

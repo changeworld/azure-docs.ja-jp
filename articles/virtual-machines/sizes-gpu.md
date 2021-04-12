@@ -3,17 +3,17 @@ title: Azure VM のサイズ - GPU | Microsoft Docs
 description: Azure の仮想マシンで使用できるさまざまな GPU 最適化済みのサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
 author: vikancha-MSFT
 ms.service: virtual-machines
-ms.subservice: hpc
+ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 58987523d86b0e3acb63d3dc220f68753501830e
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: a63a468301a5b0d54abd474fd9bb62212b890f76
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101666027"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102554417"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最適化済み仮想マシンのサイズ
 
@@ -43,7 +43,7 @@ Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA または A
 
 - N シリーズ VM をデプロイするには、Resource Manager デプロイ モデルを使用する必要があります。
 
-- N シリーズ VM は、それぞれのディスクに対してサポートされる Azure Storage の種類が異なります。 NC および NV の VM では、Standard Disk Storage (HDD) で提供される VM ディスクのみがサポートされます。 NCv2、NCv3、ND、NDv2、および NVv2 の VM では、Premium Disk Storage (SSD) で提供される VM ディスクのみがサポートされます。
+- N シリーズ VM は、それぞれのディスクに対してサポートされる Azure Storage の種類が異なります。 NC および NV の VM では、Standard Disk Storage (HDD) で提供される VM ディスクのみがサポートされます。 他のすべての GPU VM では、Standard Disk Storage と Premium Disk Storage (SSD) で提供される VM ディスクがサポートされます。
 
 - 多数の N シリーズ VM をデプロイする場合は、従量課金制サブスクリプションまたは他の購入オプションを検討してください。 [Azure 無料アカウント](https://azure.microsoft.com/free/)を使用している場合は、使用できる Azure コンピューティング コアの数に制限があります。
 

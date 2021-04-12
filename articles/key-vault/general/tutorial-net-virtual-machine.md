@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/20/2020
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9557ada8001022d460c35a091fdac7699ac5e5ec
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a56c08e5bf6054d24af3ade571ec625969286a77
+ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289386"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102455646"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>チュートリアル:.NET で仮想マシンを使用して Azure Key Vault を使用する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 Windows、Mac、Linux:
   * [Git](https://git-scm.com/downloads)
   * [.Net Core 3.1 SDK 以降](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-  * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
+  * [Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="create-resources-and-assign-permissions"></a>リソースを作成してアクセス許可を割り当てる
 
@@ -74,7 +74,7 @@ az login
 | [Azure Portal](../../virtual-machines/windows/quick-create-portal.md) | [Azure Portal](../../virtual-machines/linux/quick-create-portal.md) |
 
 ## <a name="assign-an-identity-to-the-vm"></a>VM に ID を割り当てる
-[az vm identity assign](/cli/azure/vm/identity?view=azure-cli-latest#az-vm-identity-assign) コマンドを使用して、仮想マシン用のシステムによって割り当てられる ID を作成します。
+[az vm identity assign](/cli/azure/vm/identity#az-vm-identity-assign) コマンドを使用して、仮想マシン用のシステムによって割り当てられる ID を作成します。
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
@@ -90,7 +90,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>VM ID にアクセス許可を割り当てる
-[az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを実行して、前に作成した ID アクセス許可をキー コンテナーに割り当てます。
+[az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) コマンドを実行して、前に作成した ID アクセス許可をキー コンテナーに割り当てます。
 
 ```azurecli
 az keyvault set-policy --name '<your-unique-key-vault-name>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
@@ -140,11 +140,12 @@ dotnet add package Azure.Identity
 
 ```csharp
 using System;
+using Azure.Core;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 ```
 
-これらの行を追加し、URI は実際のキー コンテナーの `vaultUri` に合わせて更新します。 以下のコードでは、キー コンテナーに対する認証に "[DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet)" が使用されています。この場合、アプリケーションのマネージド ID からのトークンが認証に使用されます。 また、キー コンテナーがスロットルされている場合の再試行にはエクスポネンシャル バックオフが使用されています。
+これらの行を追加し、URI は実際のキー コンテナーの `vaultUri` に合わせて更新します。 以下のコードでは、キー コンテナーに対する認証に "[DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential)" が使用されています。この場合、アプリケーションのマネージド ID からのトークンが認証に使用されます。 また、キー コンテナーがスロットルされている場合の再試行にはエクスポネンシャル バックオフが使用されています。
 
 ```csharp
   class Program

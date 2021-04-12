@@ -1,20 +1,20 @@
 ---
 title: Dynamics でデータをコピーする (Common Data Service)
-description: Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service) からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
+description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service (Microsoft Dataverse)) からサポート対象のシンク データ ストアに、またはサポート対象のソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: jingwang
 author: linda33wj
 ms.custom: seo-lt-2019
-ms.date: 02/02/2021
-ms.openlocfilehash: d238a232d719c75244e6f9b825272957d2a4a4bc
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/17/2021
+ms.openlocfilehash: f2db75fdcd4519b5ba0869bf4ef89c8323435539
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100381003"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105565981"
 ---
-# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
+# <a name="copy-data-from-and-to-dynamics-365-common-data-servicemicrosoft-dataverse-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service (Microsoft Dataverse)) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "100381003"
 - [サポートされるソースとシンクのマトリックス](copy-activity-overview.md)に従う[コピー アクティビティ](copy-activity-overview.md)
 - [Lookup アクティビティ](control-flow-lookup-activity.md)
 
-Dynamics 365 (Common Data Service) または Dynamics CRM から、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Common Data Service) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。
+Dynamics 365 (Common Data Service (Microsoft Dataverse)) または Dynamics CRM から、サポート対象の任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Common Data Service) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表を参照してください。
 
 この Dynamics コネクタでは、オンラインとオンプレミスの両方で Dynamics バージョン 7 から 9 がサポートされます。 具体的には次のとおりです。
 
@@ -323,6 +323,7 @@ Dynamics にデータをコピーするために、コピー アクティビテ�
 | alternateKeyName | upsert を実行するためにエンティティに定義されている代替キー名。 | いいえ。 |
 | writeBatchSize | 各バッチで Dynamics に書き込まれたデータの行数。 | いいえ。 既定値は 10 です。 |
 | ignoreNullValues | 書き込み操作時に、キー フィールド以外の入力データからの null 値を無視するかどうか。<br/><br/>有効な値は **TRUE** と **FALSE** です。<ul><li>**TRUE**: upsert または更新操作を行うときに、対象オブジェクト内のデータが変更されないようにします。 挿入操作を実行するときに、定義済みの既定値を挿入します。</li><li>**FALSE**: upsert または更新操作を行うときに、対象オブジェクト内のデータを null 値に更新します。 挿入操作を実行するときに、null 値を挿入します。</li></ul> | いいえ。 既定値は **FALSE** です。 |
+| maxConcurrentConnections |アクティビティの実行中にデータ ストアに対して確立されたコンカレント接続数の上限。 コンカレント接続を制限する場合にのみ、値を指定します。| いいえ |
 
 >[!NOTE]
 >Dynamics シンクでのシンク **writeBatchSize** とコピー アクティビティ **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** のどちらでも、既定値は 10 です。 そのため、既定で 100 個のレコードが同時に Dynamics に送信されます。
@@ -363,6 +364,32 @@ Dynamics 365 オンラインでは、[1 組織あたりの同時バッチ呼び�
         }
     }
 ]
+```
+
+## <a name="retrieving-data-from-views"></a>ビューからデータを取得する
+
+Dynamics ビューからデータを取得するには、ビューの保存されているクエリを取得し、そのクエリを使用してデータを取得する必要があります。
+
+異なる種類のビューを格納する 2 つのエンティティがあります。"保存されたクエリ" はシステム ビューを格納し、"ユーザー クエリ" はユーザー ビューを格納します。 ビューの情報を取得するには、次の FetchXML クエリを参照し、"TARGETENTITY" を `savedquery` または `userquery` に置き換えます。 各エンティティ型には、必要に応じてクエリに追加できる、より多くの属性が用意されています。 [savedquery エンティティ](/dynamics365/customer-engagement/web-api/savedquery)と [userquery エンティティ](/dynamics365/customer-engagement/web-api/userquery)に関する詳細を確認してください。
+
+```xml
+<fetch top="5000" >
+  <entity name="<TARGETENTITY>">
+    <attribute name="name" />
+    <attribute name="fetchxml" />
+    <attribute name="returnedtypecode" />
+    <attribute name="querytype" />
+  </entity>
+</fetch>
+```
+
+また、フィルターを追加してビューをフィルター処理することもできます。 たとえば、アカウント エンティティの "My Active Accounts" という名前のビューを取得するには、次のフィルターを追加します。
+
+```xml
+<filter type="and" >
+    <condition attribute="returnedtypecode" operator="eq" value="1" />
+    <condition attribute="name" operator="eq" value="My Active Accounts" />
+</filter>
 ```
 
 ## <a name="data-type-mapping-for-dynamics"></a>Dynamics のデータ型のマッピング

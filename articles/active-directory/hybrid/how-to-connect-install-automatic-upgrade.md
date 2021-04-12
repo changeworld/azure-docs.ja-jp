@@ -16,15 +16,16 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ec237af8cd0c79d5a7b62aad0bc6521e5cf3d7e
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317618"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106059243"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect:自動アップグレード
-この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](reference-connect-version-history.md)。  この機能は[ビルド 1.1.561](reference-connect-version-history.md) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。
+Azure AD Connect の自動アップグレードは、Azure AD Connect の新しいバージョンを定期的にチェックする機能です。 サーバーが自動アップグレードに対応していて、そのサーバーが適合している新しいバージョンが見つかった場合、その新しいバージョンへの自動アップグレードが実行されます。
+セキュリティ上の理由により、自動アップグレードを実行するエージェントでは、ダウンロードされたバージョンのデジタル署名に基づいて Azure AD Connect の新しいビルドが検証されることに注意してください。
 
 ## <a name="overview"></a>概要
 Azure AD Connect のインストールを常に最新の状態に保つことは、 **自動アップグレード** 機能によって、これまでよりも簡単になりました。 この機能は、高速インストールと DirSync のアップグレード用に既定で有効になっています。 インストールは新しいバージョンのリリース時に自動的にアップグレードされます。
@@ -40,10 +41,10 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 | State | 解説 |
 | --- | --- |
 | Enabled |自動アップグレードが有効です。 |
-| Suspended |システムによる設定だけが可能です。 システムは、自動アップグレードを**現在受け付けることができません**。 |
+| Suspended |システムによる設定だけが可能です。 システムは、自動アップグレードを **現在受け付けることができません**。 |
 | 無効 |自動アップグレードが無効です。 |
 
-`Set-ADSyncAutoUpgrade` を使用して、**有効**と**無効**を切り替えることができます。 システムだけが、状態を **保留**に設定することができます。  1\.1.750.0 より前は、自動アップグレードの状態が一時停止に設定されている場合に、Set-ADSyncAutoUpgrade コマンドレットによって Autoupgrade がブロックされていました。 この機能は変更されたため、AutoUpgrade はブロックされません。
+`Set-ADSyncAutoUpgrade` を使用して、**有効** と **無効** を切り替えることができます。 システムだけが、状態を **保留** に設定することができます。  1\.1.750.0 より前は、自動アップグレードの状態が一時停止に設定されている場合に、Set-ADSyncAutoUpgrade コマンドレットによって Autoupgrade がブロックされていました。 この機能は変更されたため、AutoUpgrade はブロックされません。
 
 自動アップグレードでは、アップグレード インフラストラクチャに Azure AD Connect Health を使用しています。 自動アップグレードを動作させるには、「 **Office 365 URL および IP アドレス範囲** 」に記載されているように、 [Azure AD Connect Health](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)用にプロキシ サーバーで URL を開いておく必要があります。
 

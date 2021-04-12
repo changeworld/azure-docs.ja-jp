@@ -6,16 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: b1b5c236c147f060ca1c05e8ed9de12e7e88cf68
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: 39990a557315c3fcc79f2b9dab59f25f758ab2bd
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061811"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102443116"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro GPU のアクセス、電源、接続モードを管理する
+
+[!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
 この記事では、GPU 搭載 Azure Stack Edge Pro デバイスのアクセス、電源、接続モードを管理する方法について説明します。 これらの操作は、ローカル Web UI または Azure portal を使用して実行されます。
 
@@ -120,7 +122,7 @@ Microsoft Graph API へのアクセスをユーザーに提供する方法の詳
 
 何らかのリソースを作成しようとする前に、サブスクリプションにリソース プロバイダーが登録されていることを確認してください。 リソース プロバイダーが登録されていない場合、新しいリソースを作成しようとしているユーザーが、必要なリソース プロバイダーをサブスクリプション レベルで登録するための十分な権限を持っていることを確認する必要があります。 これも行われていない場合、次のエラーが表示されます。
 
-*次のリソース プロバイダーを登録するためのアクセス許可がサブスクリプション \<Subscription name> にありません:Microsoft.DataBoxEdge*
+次のリソース プロバイダーを登録するためのアクセス許可が *サブスクリプション \<Subscription name> にありません:Microsoft.DataBoxEdge*
 
 
 現在のサブスクリプションに登録されているリソース プロバイダーの一覧を取得するには、次のコマンドを実行します。

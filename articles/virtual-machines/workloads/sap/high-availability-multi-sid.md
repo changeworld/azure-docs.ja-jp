@@ -17,10 +17,10 @@ ms.date: 12/09/2016
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b04b1e873016d2b1e3f2acce6a358373381d8074
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101671663"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>SAP NetWeaver マルチ SID 構成の作成

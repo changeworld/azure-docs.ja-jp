@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: a9f8fe10c5ffa787a6c170a29188cba21427b602
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 8e9656aa1f850dc9e59ab71b5df605df8dd49269
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175160"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732807"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -365,7 +365,7 @@ Web アプリが完全に読み込まれると、Django 開発サーバーによ
 `polls/models.py` で、`choice_text` で始まる行を見つけ、`max_length` パラメーターを 100 に変更します。
 
 ```python
-# Find this lie of code and set max_length to 100 instead of 200
+# Find this line of code and set max_length to 100 instead of 200
 choice_text = models.CharField(max_length=100)
 ```
 

@@ -10,27 +10,30 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 566ddae3893a5499ddefe0ccd1ade8caff4567c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934987"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639421"
 ---
-# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template-preview"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する (プレビュー)
+# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する 
 
 [Azure Key Vault](../general/overview.md) は、キー、パスワード、証明書、その他のシークレットなど、シークレットのための安全な保管場所を提供するクラウド サービスです。 このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイしてキー コンテナーとキーを作成する過程を中心に取り上げます。
+
+> [!NOTE]
+> この機能は、Azure Government では使用できません。
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには:
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- ユーザーには、RBAC の組み込みロールが割り当てられている必要があります (共同作成者など)。 [詳細については、こちらを参照してください](../../role-based-access-control/role-assignments-portal.md)
+- ユーザーには、Azure の組み込みロールが割り当てられている必要があります (共同作成者など)。 [詳細については、こちらを参照してください](../../role-based-access-control/role-assignments-portal.md)
 - Azure AD ユーザーオブジェクト ID は、
 テンプレートによるアクセス許可の設定で必要です。 次の手順を使用してオブジェクト ID (GUID) を取得します。
 
-    1. **[試してみる]** を選択し、シェル ウィンドウにスクリプトを貼り付けて、次の Azure PowerShell または Azure CLI コマンドを実行します。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
+    1. **[使ってみる]** を選択し、シェル ウィンドウにスクリプトを貼り付けて、次の Azure PowerShell または Azure CLI コマンドを実行します。 スクリプトを貼り付けるには、シェルを右クリックし、 **[貼り付け]** を選択します。
 
         # <a name="cli"></a>[CLI](#tab/CLI)
         ```azurecli-interactive
@@ -164,6 +167,9 @@ ms.locfileid: "97934987"
 - Microsoft.KeyVault/vaults/keys
 
 その他の Azure Key Vault テンプレートのサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular)のページから入手できます。
+
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
+[Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)、Azure PowerShell、Azure CLI、または REST API を使用できます。 デプロイ方法の詳細については、「[テンプレートのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)」を参照してください。
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 

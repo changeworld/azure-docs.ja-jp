@@ -1,17 +1,17 @@
 ---
 title: ログの構成とアクセス - フレキシブル サーバー - Azure Database for PostgreSQL
 description: Azure Database for PostgreSQL のデータベース ログにアクセスする方法 - フレキシブル サーバー
-author: lfittl-msft
-ms.author: lufittl
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: e52f0f22065d89788d08659476d14af0351cc493
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 59a2ddcc68a7c5a3b6fa3a3b315f4294d1625204
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100590579"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105607407"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL のログの構成とアクセス - フレキシブル サーバー
 

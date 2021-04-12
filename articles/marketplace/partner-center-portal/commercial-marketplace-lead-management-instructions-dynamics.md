@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: d996a2e0732ad9b4da104265710970e04cdbd368
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 067a30d8f16b06b1b29ad494363d180886d1ab8b
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98199778"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105560082"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Dynamics 365 Customer Engagement のリード管理を構成する
 
@@ -32,7 +32,7 @@ ms.locfileid: "98199778"
 
 ## <a name="install-the-solution"></a>ソリューションをインストールする
 
-1. [Microsoft Marketplace Lead Writer ソリューション](https://mpsapiprodwus.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)をダウンロードし、コンピューターにローカルに保存します。
+1. [Microsoft Marketplace Lead Writer ソリューション](https://referralsflowpackages.blob.core.windows.net/documentation/MicrosoftMarketplacesLeadIntegrationSolution_1_0_0_0_target_CRM_6.1_managed.zip)をダウンロードし、コンピューターにローカルに保存します。
 
 1. Dynamics インスタンスの URL (`https://tenant.crm.dynamics.com` など) に移動して、Dynamics 365 Customer Engagement を開きます。
 

@@ -7,10 +7,10 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 keywords: powershell, runbook, json, azure automation
 ms.openlocfilehash: d9b443d1840840d3d6202140da235589c73453cc
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99051398"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-a-powershell-runbook"></a>PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする

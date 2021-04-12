@@ -8,17 +8,17 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 3f054638e09061c652946c9c2db1a32db73c23d9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 8d0cbd35b53bc8460ac8a19e5197d1f560657263
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521035"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102212044"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Azure CLI を使用してマネージド HSM を管理する
 
 > [!NOTE]
-> Key Vault では、コンテナーとマネージド HSM という 2 種類のリソースがサポートされています。 この記事では、 **Managed HSM** について説明します。 コンテナーの管理方法については、「[Azure CLI を使用して Key Vault を管理する](../general/manage-with-cli2.md)」を参照してください。
+> Key Vault では、コンテナーとマネージド HSM という 2 種類のリソースがサポートされています。 この記事では、**Managed HSM** について説明します。 コンテナーの管理方法については、「[Azure CLI を使用して Key Vault を管理する](../general/manage-with-cli2.md)」を参照してください。
 
 Managed HSM の概要については、[Managed HSM の概要](overview.md)に関するページを参照してください
 
@@ -42,7 +42,7 @@ CLI を使用して Azure にサインインするには、次のように入力
 az login
 ```
 
-CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?view=azure-cli-latest&preserve-view=true)」を参照してください
+CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli)」を参照してください
 
 > [!NOTE]
 > 以下のすべてのコマンドは、2 つの使用方法を示しています。 1 つは **--hsm-name** と **--name** (キー名用) パラメーターを使用し、もう 1 つは **--id** パラメーターを使用して、必要に応じてキー名を含む URL 全体を指定できます。 後者の方法は、呼び出し元 (ユーザーまたはアプリケーション) にコントロール プレーンに対する読み取りアクセス権がなく、データ プレーンに対する制限付きアクセスだけがある場合に便利です。
@@ -53,7 +53,7 @@ CLI を使用したログイン オプションの詳細については、「[Az
 
 ### <a name="create-an-rsa-key"></a>RSA キーを作成する
 
-次の例は、 **wrapKey、unwrapKey** 操作 (--ops) にのみ使用される 3072 ビット **RSA** キーを作成する方法を示しています。 
+次の例は、**wrapKey、unwrapKey** 操作 (--ops) にのみ使用される 3072 ビット **RSA** キーを作成する方法を示しています。 
 
 
 ```azurecli-interactive
@@ -82,7 +82,7 @@ az keyvault key create --id https://ContosoMHSM.managedhsm.azure.net/keys/myec25
 
 ### <a name="create-a-256-bit-symmetric-key"></a>256 ビット対称キーを作成する
 
-次の例は、 **encrypt と decrypt** 操作 (--ops) にのみ使用される 256 ビット **対称** キーを作成する方法を示しています。
+次の例は、**encrypt と decrypt** 操作 (--ops) にのみ使用される 256 ビット **対称** キーを作成する方法を示しています。
 
 ```azurecli-interactive
 az keyvault key create --hsm-name ContosoMHSM --name myaeskey --ops encrypt decrypt  --tags --kty oct-HSM --size 256

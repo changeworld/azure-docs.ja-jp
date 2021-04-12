@@ -25,7 +25,7 @@
       displayName: 'Azure CLI, az datashare consumer invitation, az datashare consumer share-subscription'
 - name: 概念
   items:
-    - name: Security
+    - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: security.md
@@ -73,11 +73,11 @@
     - name: .NET
       href: /dotnet/api/overview/azure/datashare
     - name: Azure PowerShell
-      href: /powershell/module/az.datashare/?view=azps-2.6.0
+      href: /powershell/module/az.datashare/
     - name: REST API
       href: /rest/api/datashare
     - name: Azure CLI
-      href: /cli/azure/azure-cli-reference-for-data-share?view=azure-cli-latest
+      href: /cli/azure/azure-cli-reference-for-data-share
 - name: リソース
   items:
     - name: Microsoft Q&A 質問ページ

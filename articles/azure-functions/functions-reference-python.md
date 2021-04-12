@@ -4,12 +4,12 @@ description: Python を使用して関数を開発する方法について説明
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: a13b4463d2a9c32a3487f839c0bf53b4c5bd2963
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 3eb3b3b015f401e872a879c46ec6f8c69df5f87f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735845"
+ms.lasthandoff: 03/29/2021
+ms.locfileid: "102455418"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -20,6 +20,9 @@ Python 開発者は、次のいずれかの記事にも興味があるかもし�
 | 作業の開始 | 概念| シナリオとサンプル |
 | -- | -- | -- | 
 | <ul><li>[Visual Studio Code を使用した Python 関数](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[ターミナルとコマンド プロンプトを使用した Python 関数](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[開発者ガイド](functions-reference.md)</li><li>[ホスティング オプション](functions-scale.md)</li><li>[パフォーマンスに関する考慮事項&nbsp;](functions-best-practices.md)</li></ul> | <ul><li>[PyTorch を使用した画像の分類](machine-learning-pytorch.md)</li><li>[Azure Automation サンプル](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[TensorFlow を使用した機械学習](functions-machine-learning-tensorflow.md)</li><li>[Python サンプルの参照](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+
+> [!NOTE]
+> [Python ベースの Azure 関数を Windows 上のローカルで開発](create-first-function-vs-code-python.md#run-the-function-locally)できますが、Python は、Azure で実行されている場合、Linux ベースのホスティング プランでのみサポートされます。 サポートされている[オペレーティング システムとランタイム](functions-scale.md#operating-systemruntime)の組み合わせの一覧を参照してください。
 
 ## <a name="programming-model"></a>プログラミング モデル
 
@@ -48,7 +51,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-[azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
+[azure.functions.*](/python/api/azure-functions/azure.functions) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
 
 ## <a name="alternate-entry-point"></a>代替エントリ ポイント
 
@@ -196,7 +199,7 @@ def main(req: func.HttpRequest,
 
 出力バインディングの値として関数の戻り値を使用するには、バインディングの `name` プロパティを `function.json` 内の `$return` に設定する必要があります。
 
-複数の出力を生成するには、[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true) インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
+複数の出力を生成するには、[`azure.functions.Out`](/python/api/azure-functions/azure.functions.out) インターフェイスによって提供される `set()` メソッドを使用して、バインディングに値を割り当てます。 たとえば、次の関数を使用すると、キューにメッセージをプッシュすることに加え、HTTP 応答を返すこともできます。
 
 ```json
 {
@@ -303,7 +306,7 @@ Python 関数アプリのスケーリングとパフォーマンスのベスト 
 
 ## <a name="context"></a>Context
 
-実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) 引数を含めます。
+実行中に関数の呼び出しコンテキストを取得するには、そのシグニチャに [`context`](/python/api/azure-functions/azure.functions.context) 引数を含めます。
 
 次に例を示します。
 
@@ -316,7 +319,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true) クラスには次の文字列属性が含まれています。
+[**コンテキスト**](/python/api/azure-functions/azure.functions.context) クラスには次の文字列属性が含まれています。
 
 `function_directory` 関数が実行されるディレクトリです。
 
@@ -637,7 +640,7 @@ CORS は、Python 関数アプリでは完全にサポートされています�
 
 詳細については、次のリソースを参照してください。
 
-* [Azure Functions パッケージ API のドキュメント](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
+* [Azure Functions パッケージ API のドキュメント](/python/api/azure-functions/azure.functions)
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 * [Blob Storage のバインド](functions-bindings-storage-blob.md)
@@ -648,5 +651,5 @@ CORS は、Python 関数アプリでは完全にサポートされています�
 [問題がある場合は、お知らせください。](https://aka.ms/python-functions-ref-survey)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse

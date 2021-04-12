@@ -2,17 +2,17 @@
 title: Azure サービス別のリソース プロバイダー
 description: Azure Resource Manager のすべてのリソース プロバイダー名前空間を一覧表示し、その名前空間の Azure サービスを示します。
 ms.topic: conceptual
-ms.date: 12/01/2020
-ms.openlocfilehash: 581c25b384bf6e2865a21f083ba12eef2e5e8bcd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.date: 03/16/2021
+ms.openlocfilehash: f33017713d8154fb56472ad5f53b97b22d32e0e3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733789"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167874"
 ---
 # <a name="resource-providers-for-azure-services"></a>Azure サービスのリソース プロバイダー
 
-この記事では、リソース プロバイダー名前空間と Azure サービスとのマッピングを示します。
+この記事では、リソース プロバイダー名前空間と Azure サービスとのマッピングを示します。 リソース プロバイダーが不明な場合は、「[リソース プロバイダーの検索](#find-resource-provider)」を参照してください。
 
 ## <a name="match-resource-provider-to-service"></a>リソース プロバイダーとサービスの対応
 
@@ -28,14 +28,14 @@ ms.locfileid: "98733789"
 | Microsoft.AnalysisServices | [Azure Analysis Services](../../analysis-services/index.yml) |
 | Microsoft.ApiManagement | [API Management](../../api-management/index.yml) |
 | Microsoft.AppConfiguration | [Azure App Configuration](../../azure-app-configuration/index.yml) |
-| Microsoft.AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
+| Microsoft.AppPlatform | [Azure Spring Cloud](../../spring-cloud/overview.md) |
 | Microsoft.Attestation | Azure 構成証明サービス |
 | Microsoft.Authorization - [登録済み](#registration) | [Azure Resource Manager](../index.yml) |
 | Microsoft.Automation | [Automation](../../automation/index.yml) |
 | Microsoft.AutonomousSystems | [Autonomous Systems](https://www.microsoft.com/ai/autonomous-systems) |
 | Microsoft.AVS | [Azure VMware Solution](../../azure-vmware/index.yml) |
 | Microsoft.AzureActiveDirectory | [Azure Active Directory B2C](../../active-directory-b2c/index.yml) |
-| Microsoft.AzureArcData | Azure Arc 対応データ サービスのレジストリ |
+| Microsoft.AzureArcData | Azure Arc 対応データ サービス |
 | Microsoft.AzureData | SQL Server レジストリ |
 | Microsoft.AzureStack | core |
 | Microsoft.AzureStackHCI | [Azure Stack HCI](/azure-stack/hci/overview) |
@@ -98,12 +98,12 @@ ms.locfileid: "98733789"
 | Microsoft.HanaOnAzure | [SAP HANA on Azure Large Instances](../../virtual-machines/workloads/sap/hana-overview-architecture.md) |
 | Microsoft.HardwareSecurityModules | [Azure の専用 HSM](../../dedicated-hsm/index.yml) |
 | Microsoft.HDInsight | [HDInsight](../../hdinsight/index.yml) |
-| Microsoft.HealthcareApis | [Azure API for FHIR](../../healthcare-apis/index.yml) |
+| Microsoft.HealthcareApis | [Azure API for FHIR](../../healthcare-apis/fhir/index.yml) |
 | Microsoft.HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
 | Microsoft.HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft.HybridNetwork  | [Private Edge Zones](../../networking/edge-zones-overview.md) |
 | Microsoft.ImportExport | [Azure Import/Export](../../import-export/storage-import-export-service.md) |
-| microsoft.insights | [Azure Monitor](../../azure-monitor/index.yml) |
+| Microsoft.Insights | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft.IoTCentral | [Azure IoT Central](../../iot-central/index.yml) |
 | Microsoft.IoTSpaces | [Azure Digital Twins](../../digital-twins/index.yml) |
 | Microsoft.Intune | [Azure Monitor](../../azure-monitor/index.yml) |
@@ -125,7 +125,7 @@ ms.locfileid: "98733789"
 | Microsoft.MarketplaceApps | core |
 | Microsoft.MarketplaceOrdering - [登録済み](#registration) | core |
 | Microsoft.Media | [Media Services](../../media-services/index.yml) |
-| Microsoft.Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
+| Microsoft.Microservices4Spring | [Azure Spring Cloud](../../spring-cloud/overview.md) |
 | Microsoft.Migrate | [Azure Migrate](../../migrate/migrate-services-overview.md) |
 | Microsoft.MixedReality | [Azure Spatial Anchors](../../spatial-anchors/index.yml) |
 | Microsoft.NetApp | [Azure NetApp Files](../../azure-netapp-files/index.yml) |
@@ -155,7 +155,7 @@ ms.locfileid: "98733789"
 | Microsoft.Search | [Azure Cognitive Search](../../search/index.yml) |
 | Microsoft.Security | [セキュリティ センター](../../security-center/index.yml) |
 | Microsoft.SecurityInsights | [Azure Sentinel](../../sentinel/index.yml) |
-| Microsoft.SerialConsole - [登録済み](#registration) | [Windows 用 Azure シリアル コンソール](../../virtual-machines/troubleshooting/serial-console-windows.md) |
+| Microsoft.SerialConsole - [登録済み](#registration) | [Windows 用 Azure シリアル コンソール](/troubleshoot/azure/virtual-machines/serial-console-windows) |
 | Microsoft.ServiceBus | [Service Bus](/azure/service-bus/) |
 | Microsoft.ServiceFabric | [Service Fabric](../../service-fabric/index.yml) |
 | Microsoft.ServiceFabricMesh | [Service Fabric Mesh](../../service-fabric-mesh/index.yml) |
@@ -192,6 +192,42 @@ ms.locfileid: "98733789"
 
 > [!IMPORTANT]
 > リソース プロバイダーの登録は、それを使用する準備ができた場合のみ行ってください。 登録手順により、サブスクリプション内で最小限の特権を維持できます。 悪意のあるユーザーは、登録されていないリソース プロバイダーを使用することはできません。
+
+## <a name="find-resource-provider"></a>リソース プロバイダーの検索
+
+Azure に既存のインフラストラクチャがあり、どのリソース プロバイダーが使用されているかがわからない場合は、Azure CLI または PowerShell を使用してリソース プロバイダーを検索できます。 検索するリソースを含むリソース グループの名前を指定します。
+
+Azure CLI を使用する例を次に示します。
+
+```azurecli-interactive
+az resource list -g examplegroup
+```
+
+結果には、リソースの種類が含まれています。 リソースの種類の最初の部分は、リソース プロバイダーの名前空間です。 次の例は、 **Microsoft.KeyVault** リソース プロバイダーを示しています。
+
+```json
+[
+  {
+    ...
+    "type": "Microsoft.KeyVault/vaults"
+  }
+]
+```
+
+PowerShell を使用する例を次に示します。
+
+```azurepowershell-interactive
+Get-AzResource -ResourceGroupName examplegroup
+```
+
+結果には、リソースの種類が含まれています。 リソースの種類の最初の部分は、リソース プロバイダーの名前空間です。 次の例は、 **Microsoft.KeyVault** リソース プロバイダーを示しています。
+
+```azurepowershell
+Name              : examplekey
+ResourceGroupName : examplegroup
+ResourceType      : Microsoft.KeyVault/vaults
+...
+```
 
 ## <a name="next-steps"></a>次のステップ
 

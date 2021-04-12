@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 01/02/2021
 ms.author: victorh
 ms.openlocfilehash: aadd4904ff218613c0dd24daff784ad5b8b90fbb
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "97854912"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Application Gateway を使用した App Service の構成

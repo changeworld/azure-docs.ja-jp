@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 097c97d16cf62793d03ac42662267e0553383bc1
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+manager: femila
+ms.openlocfilehash: e31ff0bfdb0ead13c2636ea2f4d175c9ced34581
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539619"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445433"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>リモート デスクトップ クライアントのトラブルシューティング
 

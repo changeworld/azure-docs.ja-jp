@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 4c76b2c0109637ce34681d2fa5c8b29e1ff800a1
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 60c5ddcc67db6e4a0649458cfbd5c2949aa9a32a
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364373"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102202044"
 ---
 # <a name="delete-resources-from-azure"></a>Azure からのリソースの削除
 
@@ -64,10 +64,10 @@ Azure CLI を使用して、特定の Azure Arc 対応データ サービスの�
 Azure CLI を使用して Azure から SQL マネージド インスタンスのリソースを削除するには、以下のコマンドのプレースホルダー値を置き換えて、そのコマンドを実行します。
 
 ```azurecli
-az resource delete --name <sql instance name> --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group <resource group name>
+az resource delete --name <sql instance name> --resource-type Microsoft.AzureArcData/sqlManagedInstances --resource-group <resource group name>
 
 #Example
-#az resource delete --name sql1 --resource-type Microsoft.AzureData/sqlManagedInstances --resource-group rg1
+#az resource delete --name sql1 --resource-type Microsoft.AzureArcData/sqlManagedInstances --resource-group rg1
 ```
 
 ### <a name="delete-postgresql-hyperscale-server-group-resources-using-the-azure-cli"></a>Azure CLI を使用した PostgreSQL Hyperscale サーバー グループ リソースの削除
@@ -75,10 +75,10 @@ az resource delete --name <sql instance name> --resource-type Microsoft.AzureDat
 Azure CLI を使用して Azure から PostgreSQL Hyperscale サーバー グループのリソースを削除するには、以下のコマンドのプレースホルダー値を置き換えて、そのコマンドを実行します。
 
 ```azurecli
-az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureData/postgresInstances --resource-group <resource group name>
+az resource delete --name <postgresql instance name> --resource-type Microsoft.AzureArcData/postgresInstances --resource-group <resource group name>
 
 #Example
-#az resource delete --name pg1 --resource-type Microsoft.AzureData/postgresInstances --resource-group rg1
+#az resource delete --name pg1 --resource-type Microsoft.AzureArcData/postgresInstances --resource-group rg1
 ```
 
 ### <a name="delete-azure-arc-data-controller-resources-using-the-azure-cli"></a>Azure CLI を使用した Azure Arc データ コントローラー リソースの削除
@@ -89,10 +89,10 @@ az resource delete --name <postgresql instance name> --resource-type Microsoft.A
 Azure CLI を使用して Azure から Azure Arc データ コントローラーを削除するには、以下のコマンドのプレースホルダー値を置き換えて、そのコマンドを実行します。
 
 ```azurecli
-az resource delete --name <data controller name> --resource-type Microsoft.AzureData/dataControllers --resource-group <resource group name>
+az resource delete --name <data controller name> --resource-type Microsoft.AzureArcData/dataControllers --resource-group <resource group name>
 
 #Example
-#az resource delete --name dc1 --resource-type Microsoft.AzureData/dataControllers --resource-group rg1
+#az resource delete --name dc1 --resource-type Microsoft.AzureArcData/dataControllers --resource-group rg1
 ```
 
 ### <a name="delete-a-resource-group-using-the-azure-cli"></a>Azure CLI を使用したリソース グループの削除

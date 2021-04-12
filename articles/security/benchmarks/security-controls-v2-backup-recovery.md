@@ -4,19 +4,21 @@ description: Azure セキュリティ ベンチマーク V2 バックアップ�
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/20/2020
+ms.date: 02/22/2021
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 39466ad621eff1a7d3490c936c90fbff6f63e0fc
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368887"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102051550"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>セキュリティ コントロール V2:バックアップと回復
 
 バックアップと回復により、データと構成のバックアップがさまざまなサービス レベルで確実に実行、検証、保護されるようにコントロールがカバーされています。
+
+該当する組み込み Azure Policy を確認するには、「[Azure セキュリティ ベンチマーク規制コンプライアンスの組み込みイニシアチブの詳細: バックアップと回復](../../governance/policy/samples/azure-security-benchmark.md#backup-and-recovery)」を参照してください。
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1:定期的な自動バックアップを保証する
 
@@ -26,7 +28,7 @@ ms.locfileid: "97368887"
 
 予期しないイベントが発生した後もビジネスが継続性されるよう、システムとデータが確実にバックアップします。 これは、目標復旧時点 (RPO) と目標復旧時間 (RTO) のすべての目標から定義する必要があります。
 
-Azure Backup を有効にし、(Azure VM、SQL Server、HANA データベースまたはファイル共有などの) バックアップ ソース、希望の頻度および保持期間を構成します。  
+Azure Backup を有効にし、(Azure VM、SQL Server、HANA データベースまたはファイル共有などの) バックアップ ソース、希望の頻度および保持期間を構成します。
 
 geo 冗長ストレージ オプションを有効にして、セカンダリ リージョンにバックアップ データをレプリケートし、リージョン間での復元を使用して復旧されるように、保護レベルを高くすることもできます。
 
@@ -54,9 +56,9 @@ geo 冗長ストレージ オプションを有効にして、セカンダリ �
 |--|--|--|--|
 | BR-2 | 10.2 | CP-9 |
 
-攻撃に対し、自分のバックアップが確実に保護されるようにする必要があります。 これには、機密性が失われるのを防ぐためにバックアップを暗号化することも含まれます。   
+攻撃に対してバックアップが保護されていることを確認します。 これには、機密性が失われるのを防ぐためにバックアップを暗号化することも含まれます。
 
-Azure Backup を使用するオンプレミスのバックアップによって、指定したパスフレーズを使用した保存時の暗号化が提供されます。 通常の Azure サービスのバックアップでは、バックアップ データは Azure プラットフォーム マネージド キーを使用して自動的に暗号化されます。 バックアップに、カスタマー マネージド キーを選択することもできます。 この場合は、キー コンテナー内のこのカスタマー マネージド キーも確実にバックアップ対象にします。 
+Azure Backup を使用するオンプレミスのバックアップによって、指定したパスフレーズを使用した保存時の暗号化が提供されます。 通常の Azure サービスのバックアップでは、バックアップ データは Azure プラットフォーム マネージド キーを使用して自動的に暗号化されます。 バックアップに、カスタマー マネージド キーを選択することもできます。 この場合は、キー コンテナー内のこのカスタマー マネージド キーも確実にバックアップ対象にします。
 
 バックアップおよびカスタマー マネージド キーを保護するには、Azure Backup、Azure Key Vault、またはその他のリソースで Azure ロールベースのアクセス制御を使用します。 さらに、バックアップが変更または削除される前に MFA を求める、高度なセキュリティ機能を有効にすることもできます。
 
@@ -64,7 +66,7 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 - [カスタマー マネージド キーを使用したバックアップ データの暗号化](../../backup/encryption-at-rest-with-cmk.md) 
 
-- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure 上でキー コンテナーのキーをバックアップする方法](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 - [ハイブリッド バックアップを攻撃から保護するためのセキュリティ機能](../../backup/backup-azure-security-feature.md#prevent-attacks)
 
@@ -88,7 +90,7 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 
 - [Azure 仮想マシンのバックアップからファイルを復旧する方法](../../backup/backup-azure-restore-files-from-vm.md)
 
-- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+- [Azure でキー コンテナーのキーを復元する方法](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **責任**: Customer
 
@@ -104,7 +106,7 @@ Azure Backup を使用するオンプレミスのバックアップによって�
 |--|--|--|--|
 | BR-4 | 10.4 | CP-9 |
 
-キーの紛失を回避および回復する手段を確保します。 Azure Key Vault で論理的な削除と消去保護を有効にして、キーが偶発的または悪意から削除されないようにします。  
+キーの紛失を回避および回復する手段を設けておきます。 Azure Key Vault で論理的な削除と消去保護を有効にして、キーが偶発的または悪意から削除されないようにします。
 
 - [Key Vault で論理的な削除と消去保護を有効にする方法](../../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: allensu
 ms.openlocfilehash: 0d7d08eb5e77e744fb6ce0abefc550bc79de4c8c
-ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100519084"
 ---
 # <a name="retrieve-load-balancer-information-by-using-the-azure-instance-metadata-service"></a>Azure Instance Metadata Service を使用してロード バランサーの情報を取得する

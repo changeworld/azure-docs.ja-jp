@@ -1,20 +1,21 @@
 ---
-title: Azure Virtual WAN の既定の IPsec ポリシー | Microsoft Docs
+title: Virtual WAN のサイト間 IPsec ポリシー
+titleSuffix: Azure Virtual WAN
 description: 既定のイニシエーターとレスポンダーのポリシー、カスタム ポリシーの組み合わせなど、Azure Virtual WAN の IPsec 接続ポリシーについて学習します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 02/24/2021
 ms.author: cherylmc
-ms.openlocfilehash: 30c58a26a326370a2566bc9ebbec33bfbd4b3173
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 94225ea6ef8b53a83388b2be6ea3b32c1e5204bf
+ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91267365"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "101726684"
 ---
-# <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>IPsec 接続のための Virtual WAN の既定のポリシー
+# <a name="site-to-site-ipsec-policies"></a>サイト間 IPsec ポリシー
 
 この記事では、サポートされる IPsec ポリシーの組み合わせを示します。
 
@@ -29,4 +30,5 @@ ms.locfileid: "91267365"
 ## <a name="next-steps"></a>次のステップ
 
 カスタム IPsec ポリシーを構成する手順については、[Virtual WAN 用のカスタム IPsec ポリシーの構成](virtual-wan-custom-ipsec-portal.md)に関するページを参照してください。
+
 仮想 WAN の詳細については、「[About Azure Virtual WAN](virtual-wan-about.md)」(Azure Virtual WAN について) および「[Azure Virtual WAN FAQ](virtual-wan-faq.md)」(Azure Virtual WAN のよくあるご質問) を参照してください。

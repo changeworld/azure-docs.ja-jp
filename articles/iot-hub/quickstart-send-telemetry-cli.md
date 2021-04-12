@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: 20e7998b4d0ec5a36f8fb8f1ddb04d591c54542b
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 4671880490a9ce9e29f49ede0e7687bdcf639a7e
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98624271"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102199800"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信して Azure CLI で監視する
 
@@ -55,7 +55,7 @@ Cloud Shell を起動するには以下を行います。
 
 Azure CLI を使用するには、Azure アカウントにログインする必要があります。 Azure CLI シェル セッションと IoT hub の間のすべての通信は認証および暗号化されます。 そのため、このクイックスタートでは、接続文字列などの実際のデバイスで使用する追加の認証は必要ありません。
 
-*  [az extension add](/cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true) コマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を CLI シェルに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
+*  [az extension add](/cli/azure/extension#az-extension-add) コマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を CLI シェルに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
    ```azurecli
    az extension add --name azure-iot
@@ -76,13 +76,13 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
 > [!TIP]
 > 必要に応じて、[Azure portal](iot-hub-create-through-portal.md)、[Visual Studio Code](iot-hub-create-use-iot-toolkit.md)、またはその他のプログラムによる方法を使用して、Azure リソース グループ、IoT Hub、その他のリソースを作成することもできます。  
 
-1. [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true) コマンドを実行してリソース グループを作成します。 次のコマンドは、*myResourceGroup* という名前のリソース グループを *eastus* という場所に作成します。 
+1. [az group create](/cli/azure/group#az-group-create) コマンドを実行してリソース グループを作成します。 次のコマンドは、*myResourceGroup* という名前のリソース グループを *eastus* という場所に作成します。 
 
     ```azurecli
     az group create --name MyResourceGroup --location eastus
     ```
 
-1. [az iot hub create](/cli/azure/iot/hub?view=azure-cli-latest#az-iot-hub-create&preserve-view=true) コマンドを実行して、IoT ハブを作成します。 IoT ハブの作成には数分かかることがあります。 
+1. [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを実行して、IoT ハブを作成します。 IoT ハブの作成には数分かかることがあります。 
 
     *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 IoT ハブ名は Azure でグローバルに一意である必要があります。 このプレースホルダーは、このクイックスタートの残りの部分で、IoT ハブの名前を表すために使用されます。
 
@@ -94,7 +94,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
 このセクションでは、最初の CLI セッションでシミュレートされたデバイスを作成します。 シミュレートされたデバイスは、デバイスのテレメトリを IoT ハブ に送信します。 2 つ目の CLI セッションでは、イベントとテレメトリを監視し、cloud-to-device メッセージをシミュレートされたデバイスに送信します。
 
 シミュレートされたデバイスを作成し開始するには以下を行います。
-1. 最初の CLI セッションで [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest#ext-azure-iot-az-iot-hub-device-identity-create&preserve-view=true) コマンドを実行します。 これにより、シミュレートされたデバイスを作成します。 
+1. 最初の CLI セッションで [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) コマンドを実行します。 これにより、シミュレートされたデバイスを作成します。 
 
     *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
@@ -104,7 +104,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. 最初の CLI セッションで [az iot device simulate](/cli/azure/ext/azure-iot/iot/device?view=azure-cli-latest#ext-azure-iot-az-iot-device-simulate&preserve-view=true) コマンドを実行します。  これにより、シミュレートされたデバイスが起動します。 デバイスは、IoT ハブにテレメトリを送信し、そこからメッセージを受信します。  
+1. 最初の CLI セッションで [az iot device simulate](/cli/azure/ext/azure-iot/iot/device#ext-azure-iot-az-iot-device-simulate) コマンドを実行します。  これにより、シミュレートされたデバイスが起動します。 デバイスは、IoT ハブにテレメトリを送信し、そこからメッセージを受信します。  
 
     *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
@@ -113,7 +113,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
     ```
 
 デバイスを監視するには以下を行います。
-1. 2 つ目の CLI セッションで、[az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events&preserve-view=true) コマンドを実行します。 これにより、シミュレートされたデバイスの監視が開始されます。 出力には、シミュレートされたデバイスから IoT hub に送信されたテレメトリが表示されます。
+1. 2 つ目の CLI セッションで、[az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) コマンドを実行します。 これにより、シミュレートされたデバイスの監視が開始されます。 出力には、シミュレートされたデバイスから IoT hub に送信されたテレメトリが表示されます。
 
     *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
@@ -136,7 +136,7 @@ Azure CLI を使用するには、Azure アカウントにログインする必�
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. 2 つ目の CLI セッションで、[az iot device c2d-message send](/cli/azure/ext/azure-iot/iot/device/c2d-message?view=azure-cli-latest#ext-azure-iot-az-iot-device-c2d-message-send&preserve-view=true) コマンドを実行します。 これにより、cloud-to-device メッセージが IoT ハブからシミュレートされたデバイスに送信されます。 メッセージには、文字列と 2 つのキー/値ペアが含まれます。  
+1. 2 つ目の CLI セッションで、[az iot device c2d-message send](/cli/azure/ext/azure-iot/iot/device/c2d-message#ext-azure-iot-az-iot-device-c2d-message-send) コマンドを実行します。 これにより、cloud-to-device メッセージが IoT ハブからシミュレートされたデバイスに送信されます。 メッセージには、文字列と 2 つのキー/値ペアが含まれます。  
 
     *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
@@ -184,12 +184,12 @@ Azure portal でメッセージング メトリックを視覚化するには以
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 
 
 名前でリソース グループを削除するには、以下の手順を実行します。
-1. [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true) コマンドを実行します。 これにより、作成したリソース グループ、IoT Hub、デバイスの登録が削除されます。
+1. [az group delete](/cli/azure/group#az-group-delete) コマンドを実行します。 これにより、作成したリソース グループ、IoT Hub、デバイスの登録が削除されます。
 
     ```azurecli
     az group delete --name MyResourceGroup
     ```
-1. [az group list](/cli/azure/group?view=azure-cli-latest#az-group-list&preserve-view=true) コマンドを実行して、リソース グループが削除されていることを確認します。  
+1. [az group list](/cli/azure/group#az-group-list) コマンドを実行して、リソース グループが削除されていることを確認します。  
 
     ```azurecli
     az group list

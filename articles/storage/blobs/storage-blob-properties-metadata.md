@@ -10,10 +10,10 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 984fb00e163a090534da1fb41850dcfef6c5d516
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95521531"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>.NET を使用した BLOB プロパティとメタデータの管理

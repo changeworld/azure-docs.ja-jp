@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
 ms.openlocfilehash: 4539c32a367bb0974212d989176a96b530da21a4
-ms.sourcegitcommit: 227b9a1c120cd01f7a39479f20f883e75d86f062
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "100652340"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>チュートリアル:Hugo サイトを Azure Static Web Apps プレビューに発行する
@@ -99,9 +99,9 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 1. [Azure Portal](https://portal.azure.com) に移動します
 1. **[リソースの作成]** をクリックします
-1. **Static Web Apps** を検索します
+1. **[Static Web Apps]** を探します
 1. **[Static Web Apps (Preview)]\(Static Web Apps (プレビュー)\)** をクリックします
-1. **[作成]** をクリックします。
+1. **[作成]**
 
    :::image type="content" source="./media/publish-hugo/create-in-portal.png" alt-text="ポータルで Azure Static Web Apps リソースを作成する":::
 
@@ -141,7 +141,7 @@ Azure Static Web Apps に接続するには、GitHub のリポジトリが必要
 
 ### <a name="review-and-create"></a>[Review and create] (確認および作成)
 
-1. **[Review + Create]\(確認および作成\)** ボタンをクリックして、詳細がすべて正しいことを確認します。
+1. **[確認および作成]** ボタンをクリックして、詳細がすべて正しいことを確認します。
 
 1. **[作成]** をクリックして、Azure Static Web Apps の作成を開始し、デプロイのための GitHub アクションをプロビジョニングします。
 

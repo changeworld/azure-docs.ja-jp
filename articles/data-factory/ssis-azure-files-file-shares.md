@@ -7,13 +7,13 @@ ms.prod: sql
 ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: maghan
-ms.openlocfilehash: 97ed9b6f3f21b6d9e220c1f4e17d4ba6b0d8b485
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.reviewer: jburchel
+ms.openlocfilehash: 9775266c986b3be547d8b78b8c74765c3b72a92e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555510"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104786857"
 ---
 # <a name="open-and-save-files-on-premises-and-in-azure-with-ssis-packages-deployed-in-azure"></a>Azure でデプロイされた SSIS パッケージを使用して、オンプレミスおよび Azure のファイルを開いて保存する
 

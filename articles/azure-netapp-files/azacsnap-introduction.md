@@ -14,16 +14,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: b168167ce4f44d87c396746cca3f271f95f83163
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 4ba679459686340396e0e4d65344295c0fa9c4be
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632160"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104869958"
 ---
 # <a name="what-is-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールとは (プレビュー)
 
-Azure アプリケーション整合性スナップショット ツール (AzAcSnap) は、Linux 環境 (SUSE、RHEL など) におけるサードパーティ データベース (SAP HANA) のデータ保護を省力化するコマンドライン ツールです。  
+Azure アプリケーション整合性スナップショットツール (AzAcSnap) は、サードパーティのデータベースのデータ保護を可能にするコマンドライン ツールです。これを使用すると、ストレージのスナップショットを作成する前にデータベースをアプリケーション整合状態にするために必要なすべてのオーケストレーションを処理することができます。その後、データベースは稼働状態に戻ります。
+
+## <a name="supported-platforms-and-os"></a>サポートされているプラットフォームと OS
+
+- **データベース**
+  - SAP HANA (詳細については[サポート マトリックス](azacsnap-get-started.md#snapshot-support-matrix-from-sap)を参照してください)
+
+- **オペレーティング システム**
+  - SUSE Linux Enterprise Server 12+
+  - Red Hat Enterprise Linux 7+
 
 ## <a name="benefits-of-using-azacsnap"></a>AzAcSnap を使用する利点
 

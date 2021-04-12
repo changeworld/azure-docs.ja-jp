@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 7b4bda5a439b1e0b35dc6d3af99e0273e4987568
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: bd180586b863e14953160689ddcc7946c2247e15
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091345"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106067845"
 ---
 # <a name="how-to-use-the-shaka-player-with-azure-media-services"></a>Azure Media Services で Shaka プレーヤーを使用する方法
 
@@ -152,4 +152,4 @@ player.configure('drm.advanced.com\\.apple\\.fps\\.1_0.serverCertificate', new U
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Media Player を使用する](../azure-media-player/azure-media-player-overview.md)
-* [クイック スタート: コンテンツの暗号化](encrypt-content-quickstart.md)
+* [クイック スタート: コンテンツの暗号化](drm-encrypt-content-how-to.md)

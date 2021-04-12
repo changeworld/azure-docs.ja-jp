@@ -6,25 +6,28 @@ author: mikben
 manager: jken
 services: azure-communication-services
 ms.author: mikben
-ms.date: 09/30/2020
+ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
 zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: d861f6bfbe38ad73715ef521a36cc097b8538c9b
-ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
+ms.openlocfilehash: ffb40d7fb45f43349004fc4d18e7582aa3521185
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99820008"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103495893"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>クイック スタート:Communication Services のリソースを作成して管理する
- 
+
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
 
-最初の Communication Services リソースをプロビジョニングすることで、Azure Communication Services を開始します。 Communication Services のリソースは、Azure portal または .NET 管理クライアント ライブラリを使用してプロビジョニングできます。 管理クライアント ライブラリを使用すると、リソースの作成、構成、更新、削除を行うことができます。また、これは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) (Azure のデプロイおよび管理サービス) と連携します。 クライアント ライブラリで使用できるすべての機能は、Azure portal で利用できます。 
+最初の Communication Services リソースをプロビジョニングすることで、Azure Communication Services を開始します。 Communication Services のリソースは、[Azure portal](https://portal.azure.com) または .NET 管理クライアント ライブラリを使用してプロビジョニングできます。 管理クライアント ライブラリと Azure portal を使用すると、リソースの作成、構成、更新、削除を行うことができます。また、これは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) (Azure のデプロイおよび管理サービス) と連携します。 クライアント ライブラリで使用できるすべての機能は、Azure portal で利用できます。 
+
+
+最初の Communication Services リソースをプロビジョニングすることで、Azure Communication Services を開始します。 Communication Services のリソースは、[Azure portal](https://portal.azure.com) または .NET 管理クライアント ライブラリを使用してプロビジョニングできます。 管理クライアント ライブラリと Azure portal を使用すると、リソースの作成、構成、更新、削除を行うことができます。また、これは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) (Azure のデプロイおよび管理サービス) と連携します。 クライアント ライブラリで使用できるすべての機能は、Azure portal で利用できます。
 
 > [!WARNING]
-> パブリック プレビュー期間中の Communication Services の利用は、米国地域に限定されることに注意してください。 また、パブリック プレビュー期間中は、通信リソースを別のサブスクリプションに転送できないことにも注意してください。
+> Communication Services は複数の地域で利用できますが、電話番号を取得するには、リソースのデータ一が 'US' に設定されている必要があります。 また、パブリック プレビュー期間中は、通信リソースを別のサブスクリプションに転送できないことにも注意してください。
 
 ::: zone pivot="platform-azp"
 [!INCLUDE [Azure portal](./includes/create-resource-azp.md)]
@@ -40,7 +43,7 @@ ms.locfileid: "99820008"
 
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>接続文字列とサービス エンドポイントにアクセスする
 
-接続文字列を使用すると、Communication Services クライアント ライブラリから Azure への接続と認証を行うことができます。 Communication Services の接続文字列とサービス エンドポイントには、Azure portal から、または Azure Resource Manager API を使用してプログラムでアクセスできます。 
+接続文字列を使用すると、Communication Services クライアント ライブラリから Azure への接続と認証を行うことができます。 Communication Services の接続文字列とサービス エンドポイントには、Azure portal から、または Azure Resource Manager API を使用してプログラムでアクセスできます。
 
 Communication Services リソースに移動した後、ナビゲーション メニューから **[キー]** を選択し、Communication Services クライアント ライブラリで使用される **[接続文字列]** または **[エンドポイント]** の値をコピーします。 主キーとセカンダリ キーにアクセスできることに注意してください。 これは、Communication Services リソースへの一時的なアクセスをサード パーティまたはステージング環境に提供するシナリオで役に立ちます。
 
@@ -49,7 +52,7 @@ Communication Services リソースに移動した後、ナビゲーション �
 Azure CLI を使用してキー情報にアクセスすることもできます。
 
 ```azurecli
-az communication list --resource-group "<resourceGroup>"    
+az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
@@ -103,7 +106,7 @@ export COMMUNICATION_SERVICES_CONNECTION_STRING="<yourconnectionstring>"
 
 Communication Services サブスクリプションをクリーンアップして解除する場合は、リソースまたはリソース グループを削除できます。 リソース グループを削除すると、それに関連付けられている他のリソースも削除されます。
 
-リソースの削除時にリソースに電話番号が割り当てられている場合、その電話番号は同時にリソースから自動的に解放されます。 
+リソースの削除時にリソースに電話番号が割り当てられている場合、その電話番号は同時にリソースから自動的に解放されます。
 
 ## <a name="next-steps"></a>次の手順
 

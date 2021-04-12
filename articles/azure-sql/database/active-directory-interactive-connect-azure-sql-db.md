@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: e2fa09ac8609310d4579590214bc25e5d7ee309f
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841650"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105641568"
 ---
 # <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication を使用して Azure SQL Database に接続する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,7 +113,7 @@ SQL [`Create User`](/sql/t-sql/statements/create-user-transact-sql) コマンド
   Azure AD のユーザー名とパスワードが必要な認証には、この値を使用します。 Azure SQL Database によって認証が実行されます。 この方法では、多要素認証はサポートされません。
 
 > [!NOTE]
-> .NET Core を使用している場合は、[Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 名前空間を使用することをお勧めします。 詳細については、[ブログ記事](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)をご覧ください。
+> .NET Core を使用している場合は、[Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient) 名前空間を使用することをお勧めします。 詳細については、[ブログ記事](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)をご覧ください。
 
 ## <a name="set-c-parameter-values-from-the-azure-portal"></a>Azure portal から C# パラメーター値を設定する
 
@@ -148,7 +148,7 @@ C# プログラムを実行する予定の場合、同じ構成で、同じコ�
 ## <a name="c-code-example"></a>C# コード例
 
 > [!NOTE]
-> .NET Core を使用している場合は、[Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient?view=sqlclient-dotnet-core-1.1) 名前空間を使用することをお勧めします。 詳細については、[ブログ記事](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)をご覧ください。
+> .NET Core を使用している場合は、[Microsoft.Data.SqlClient](/dotnet/api/microsoft.data.sqlclient) 名前空間を使用することをお勧めします。 詳細については、[ブログ記事](https://devblogs.microsoft.com/dotnet/introducing-the-new-microsoftdatasqlclient/)をご覧ください。
 
 この C# サンプル プログラムでは、[*Microsoft.IdentityModel.Clients.ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory) DLL アセンブリを利用します。
 

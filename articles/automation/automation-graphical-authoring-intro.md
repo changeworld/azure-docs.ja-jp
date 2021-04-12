@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 57d5627e45e79263408b9b5760c8332122ce8c91
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99051583"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167398"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Azure Automation でグラフィカル Runbook を作成する
 
@@ -61,7 +61,7 @@ Azure ポータルでグラフィカル Runbook を作成または編集する�
 
 パラメーター セットは、特定のコマンドレットの値を受け入れる必須および省略可能なパラメーターを定義します。 すべてのコマンドレットには 1 つ以上のパラメーター セットがあり、複数のセットがあるものもあります。 コマンドレットに複数のパラメーター セットがある場合は、使用するものを必ず選択してから、パラメーターを構成できます。 アクティビティで使用されるパラメーター セットは、 **[パラメーター セット]** を選択して別のセットを選ぶことで変更できます。 この場合、既に構成済みのパラメーター値はすべて失われます。
 
-次の例で、[Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0&preserve-view=true) コマンドレットには 3 つのパラメーター セットがあります。 例では、**ListVirtualMachineInResourceGroupParamSet** という 1 つのセットを使用します。これには、リソース グループ内のすべての仮想マシンを返すための、1 つの省略可能なパラメーターがあります。 また、例では、返される仮想マシンを指定するために **GetVirtualMachineInResourceGroupParamSet** パラメーター セットも使用しています。 このセットには、2 つの必須パラメーターと 1 つの省略可能なパラメーターがあります。
+次の例で、[Get-AzVM](/powershell/module/az.compute/get-azvm) コマンドレットには 3 つのパラメーター セットがあります。 例では、**ListVirtualMachineInResourceGroupParamSet** という 1 つのセットを使用します。これには、リソース グループ内のすべての仮想マシンを返すための、1 つの省略可能なパラメーターがあります。 また、例では、返される仮想マシンを指定するために **GetVirtualMachineInResourceGroupParamSet** パラメーター セットも使用しています。 このセットには、2 つの必須パラメーターと 1 つの省略可能なパラメーターがあります。
 
 ![パラメーター セット](media/automation-graphical-authoring-intro/get-azvm-parameter-sets.png)
 
@@ -328,19 +328,19 @@ Runbook は、次のように、より複雑な式でアクティビティの出
 たとえば、次の条件では、`Get-AzureVM` という名前のアクティビティの仮想マシンが現在、停止されているかどうかを判断します。
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped"
 ```
 
 次の条件は、同じ仮想マシンが停止済み以外の状態かどうかを判断します。
 
 ```powershell-interactive
-$ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
+$ActivityOutput["Get-AzureVM"].PowerState -ne "Stopped"
 ```
 
 `-and` や `-or` などの[論理演算子](/powershell/module/microsoft.powershell.core/about/about_logical_operators)を使用して、Runbook で複数の条件を結合できます。 たとえば、次の条件では、前の例の仮想マシンが停止済みと停止中のどちらの状態であるかを確認します。
 
 ```powershell-interactive
-($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState –eq "Stopping")
+($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopped") -or ($ActivityOutput["Get-AzureVM"].PowerState -eq "Stopping")
 ```
 
 ### <a name="use-hashtables"></a>ハッシュテーブルを使用する
@@ -435,4 +435,4 @@ Azure Automation の各グラフィカル Runbook には、ドラフト バー�
 * グラフィカル Runbook の使用を開始するには、「[チュートリアル: グラフィカル Runbook を作成する](learn/automation-tutorial-runbook-graphical.md)」を参照してください。
 * Runbook の種類と利点や制限事項の詳細については、「[Azure Automation の Runbook の種類](automation-runbook-types.md)」を参照してください。
 * Automation の実行アカウントを使った認証方法を理解するには、「[実行アカウント](automation-security-overview.md#run-as-account)」を参照してください。
-* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0&preserve-view=true#automation)」をご覧ください。
+* PowerShell コマンドレットのリファレンスについては、「[Az.Automation](/powershell/module/az.automation/#automation)」をご覧ください。

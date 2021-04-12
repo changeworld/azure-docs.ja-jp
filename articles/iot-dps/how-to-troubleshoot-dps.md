@@ -6,14 +6,14 @@ manager: nberdy
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 02/14/2021
 ms.author: xujing
-ms.openlocfilehash: 2d68314aab636180ff17e330c49c9859b8851b06
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: fd7d4407f7ea552409599946d1c13a7e9d1d7268
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950688"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106062541"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service のトラブルシューティング
 
@@ -40,11 +40,11 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 
 5. 目的の集計方法を選択して、メトリックの視覚的な表示を作成します。 
 
-6. メトリックのアラートを設定するには、メトリック ブレードの右上にある **[New alert rules]\(新しいアラート ルール\)** を選択します。同様に、 **[アラート]** ブレードに移動して **[New alert rules]\(新しいアラート ルール\)** を選択できます。
+6. メトリックのアラートを設定するには、メトリック ブレードの右上にある **[New alert rules]\(新しいアラート ルール\)** を選択します。同様に、**[アラート]** ブレードに移動して **[New alert rules]\(新しいアラート ルール\)** を選択できます。
 
 7. **[条件の追加]** を選択し、プロンプトに従って目的のメトリックとしきい値を選択します。
 
-詳細については、[Microsoft Azure のクラシック アラートの概要](../azure-monitor/platform/alerts-overview.md)に関するページを参照してください。
+詳細については、「[Azure Monitor のアラート](../azure-monitor/alerts/alerts-overview.md)」を参照してください。
 
 ## <a name="using-log-analytic-to-view-and-resolve-errors"></a>Log Analytics を使用してエラーを確認、解決する
 
@@ -58,7 +58,7 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 
 5. 収集したいログを有効にします。
 
-    | ログ名 | 説明 |
+    | ログの名前 | [説明] |
     |-------|------------|
     | DeviceOperations | デバイスの接続イベントに関連したログ |
     | ServiceOperations | サービス SDK に関連したイベント ログ (登録グループの作成や更新など)|
@@ -82,4 +82,4 @@ IoT デバイスの接続の問題は、構成証明のエラーや登録のエ�
 | 404 | Device Provisioning Service インスタンスまたはリソース (登録など) が存在しません。 |404 見つかりません |
 | 412 | 要求の ETag が、RFC7232 のとおりに、既存のリソースの ETag と一致しません。 | 412 前提条件が満たされていません |
 | 429 | サービスによって操作がスロットルされています。 サービスの具体的な制限については、「[IoT Hub Device Provisioning Service の制限](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-device-provisioning-service-limits)」を参照してください。 | 429 要求が多すぎます |
-| 500 | An internal error occurred. | 500 内部サーバー エラー|
+| 500 | 内部エラーが発生しました。 | 500 内部サーバー エラー|

@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
-ms.custom: references_regions
-ms.openlocfilehash: dde6af75b751037c10d7786fa5b0b03ae31d969e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.custom: references_regions, synapse-cosmos-db
+ms.openlocfilehash: 24886ff3e01e9d9b4c01eabc917ced433599c0fa
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222617"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105727129"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB を構成して使用する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -23,6 +23,7 @@ Azure Synapse Link は、Azure Cosmos DB SQL API コンテナーまたは Mongo 
 
 * [Azure Cosmos DB アカウントの Synapse Link を有効にする](#enable-synapse-link)
 * [分析ストアが有効な Azure Cosmos DB コンテナーを作成する](#create-analytical-ttl)
+* [省略可能 - Azure Cosmos DB コンテナーの分析ストアの TTL を更新する](#update-analytical-ttl)
 * [Azure Cosmos DB データベースを Synapse ワークスペースに接続する](#connect-to-cosmos-database)
 * [Synapse Spark を使用して分析ストアにクエリを実行する](#query-analytical-store-spark)
 * [サーバーレス SQL プールを使用して分析ストアのクエリを実行する](#query-analytical-store-sql-on-demand)
@@ -50,6 +51,21 @@ Azure Synapse Link は、Azure Cosmos DB SQL API コンテナーまたは Mongo 
 
 > [!NOTE]
 > Synapse Link を有効にしても、分析ストアは自動的に有効になりません。 Cosmos DB アカウントで Synapse Link を有効にしたら、コンテナーの作成時に分析ストアを有効にして、分析ストアへの操作データのレプリケートを開始します。 
+
+### <a name="azure-cli"></a>Azure CLI
+
+次のリンク先では、Azure CLI を使用して Synapse Link を有効にする方法を説明しています。
+
+* [Synapse Link を有効にした新しい Azure Cosmos DB アカウントを作成する](/cli/azure/cosmosdb#az_cosmosdb_create-optional-parameters)
+* [既存の Azure Cosmos DB アカウントを更新して Synapse Link を有効にする](/cli/azure/cosmosdb#az_cosmosdb_update-optional-parameters)
+
+### <a name="powershell"></a>PowerShell
+
+* [Synapse Link を有効にした新しい Azure Cosmos DB アカウントを作成する](/powershell/module/az.cosmosdb/new-azcosmosdbaccount#description)
+* [既存の Azure Cosmos DB アカウントを更新して Synapse Link を有効にする](/powershell/module/az.cosmosdb/update-azcosmosdbaccount)
+
+
+次のリンク先では、PowerShell を使用して Synapse Link を有効にする方法を説明しています。
 
 ## <a name="create-an-azure-cosmos-container-with-analytical-store"></a><a id="create-analytical-ttl"></a> 分析ストアを使用して Azure Cosmos コンテナーを作成する
 
@@ -159,11 +175,27 @@ except exceptions.CosmosResourceExistsError:
     print('A container with already exists')
 ```
 
-### <a name="update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> 分析ストアの有効期間を更新する
+### <a name="azure-cli"></a>Azure CLI
 
-特定の TTL 値で分析ストアを有効にしてから、後で別の有効な値に更新できます。 この値は、Azure portal または SDK を使用して更新できます。 さまざまな分析 TTL 構成オプションの詳細については、[分析 TTL でサポートされる値](analytical-store-introduction.md#analytical-ttl)に関する記事を参照してください。
+次のリンク先では、Azure CLI を使用して分析ストアを有効にしたコンテナーを作成する方法を説明しています。
 
-#### <a name="azure-portal"></a>Azure portal
+* [MongoDB 用 Azure Cosmos DB API](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_create-examples)
+* [Azure Cosmos DB SQL API](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
+
+### <a name="powershell"></a>PowerShell
+
+次のリンク先では、PowerShell を使用して分析ストアを有効にしたコンテナーを作成する方法を説明しています。
+
+* [MongoDB 用 Azure Cosmos DB API](/powershell/module/az.cosmosdb/new-azcosmosdbmongodbcollection#description)
+* [Azure Cosmos DB SQL API](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_create)
+
+
+## <a name="optional---update-the-analytical-store-time-to-live"></a><a id="update-analytical-ttl"></a> 省略可能 - 分析ストアの Time to Live を更新する
+
+特定の TTL 値で分析ストアを有効にしてから、後で別の有効な値に更新できます。 Azure portal、Azure CLI、PowerShell、Cosmos DB SDK のいずれかを使用して値を更新できます。 さまざまな分析 TTL 構成オプションの詳細については、[分析 TTL でサポートされる値](analytical-store-introduction.md#analytical-ttl)に関する記事を参照してください。
+
+
+### <a name="azure-portal"></a>Azure portal
 
 Azure portal を使用して分析ストアが有効なコンテナーを作成した場合は、それに -1 の既定の分析 TTL が含まれます。 この値を更新するには、次の手順に従います。
 
@@ -178,7 +210,7 @@ Azure portal を使用して分析ストアが有効なコンテナーを作成�
   * **[オン (既定値なし)]** または **[オン]** を選択し、TTL 値を設定します
   * **[保存]** をクリックして変更を保存します。
 
-#### <a name="net-sdk"></a>.NET SDK
+### <a name="net-sdk"></a>.NET SDK
 
 次のコードは、.NET SDK を使用して分析ストアの TTL を更新する方法を示しています。
 
@@ -190,7 +222,7 @@ containerResponse.Resource. AnalyticalStorageTimeToLiveInSeconds = 60 * 60 * 24 
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-#### <a name="java-v4-sdk"></a>Java V4 SDK
+### <a name="java-v4-sdk"></a>Java V4 SDK
 
 次のコードは、Java V4 SDK を使用して分析ストアの TTL を更新する方法を示しています。
 
@@ -203,6 +235,26 @@ containerProperties.setAnalyticalStoreTimeToLiveInSeconds (60 * 60 * 24 * 180 );
 // Update container settings
 container.replace(containerProperties).block();
 ```
+
+### <a name="python-v4-sdk"></a>Python V4 SDK
+
+現在サポートされていません。
+
+
+### <a name="azure-cli"></a>Azure CLI
+
+次のリンク先では、Azure CLI を使用してコンテナー分析 TTL を更新する方法を説明しています。
+
+* [MongoDB 用 Azure Cosmos DB API](/cli/azure/cosmosdb/mongodb/collection#az_cosmosdb_mongodb_collection_update)
+* [Azure Cosmos DB SQL API](/cli/azure/cosmosdb/sql/container#az_cosmosdb_sql_container_update)
+
+### <a name="powershell"></a>PowerShell
+
+次のリンク先では、PowerShell を使用してコンテナー分析 TTL を更新する方法を説明しています。
+
+* [MongoDB 用 Azure Cosmos DB API](/powershell/module/az.cosmosdb/update-azcosmosdbmongodbcollection)
+* [Azure Cosmos DB SQL API](/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainer)
+
 
 ## <a name="connect-to-a-synapse-workspace"></a><a id="connect-to-cosmos-database"></a> Synapse ワークスペースに接続する
 
@@ -224,7 +276,7 @@ Synapse Link for Azure Cosmos DB 上にサーバーレス SQL プール デー�
 
 [Azure Resource Manager テンプレート](./manage-with-templates.md#azure-cosmos-account-with-analytical-store)では、SQL API の Synapse Link が有効な Azure Cosmos DB アカウントを作成します。 このテンプレートでは、分析 TTL を有効にして構成されたコンテナーと、手動または自動スケールのスループットを使用するオプションで、1 つのリージョンにコア (SQL) API アカウントを作成します。 このテンプレートをデプロイするには、readme ページで **[Azure に配置する]** をクリックします。
 
-## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a>Azure Synpase Link の使用を開始する - サンプル
+## <a name="getting-started-with-azure-synapse-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a>Azure Synapse Link の使用を開始する - サンプル
 
 Azure Synapse Link の使用を開始する場合、[GitHub](https://aka.ms/cosmosdb-synapselink-samples) にサンプルが用意されています。 これらは、IoT および小売のシナリオでのエンド ツー エンドのソリューションを紹介しています。 また、MongoDB 用の Azure Cosmos DB API に対応するサンプルは、[MongoDB](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) フォルダーの下にある同じリポジトリにあります。 
 

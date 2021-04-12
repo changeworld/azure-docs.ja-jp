@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: f8fa5532a5664741c9ddb9b78b35d5eed8e2e4e0
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 10ddee404de21c5bc04672fdb6dd32c30f481ba3
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937839"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104578245"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>ユーザーをサインインさせる Web アプリ:サインインとサインアウト
 
@@ -95,6 +95,16 @@ Java のクイックスタートでは、サインイン ボタンは [main/reso
 </html>
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+Node.js のクイックスタートでは、サインイン ボタンはありません。 分離コードは、Web アプリのルートに到達すると、ユーザーにサインインを求めるメッセージを自動的に表示します。
+
+```javascript
+app.get('/', (req, res) => {
+    // authentication logic
+});
+```
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python のクイックスタートでは、サインイン ボタンはありません。 分離コードは、Web アプリのルートに到達すると、ユーザーにサインインを求めるメッセージを自動的に表示します。 [app.py#L14-L18](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/0.1.0/app.py#L14-L18) を参照してください。
@@ -158,6 +168,43 @@ public class AuthPageController {
     }
 
     // More code omitted for simplicity
+```
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+他のプラットフォームとは異なり、ここでは MSAL Node が、ユーザーのサインインをログイン ページから実行できるようにしています。
+
+```javascript
+
+// 1st leg of auth code flow: acquire a code
+app.get('/', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    // get url to sign user in and consent to scopes needed for application
+    pca.getAuthCodeUrl(authCodeUrlParameters).then((response) => {
+        res.redirect(response);
+    }).catch((error) => console.log(JSON.stringify(error)));
+});
+
+// 2nd leg of auth code flow: exchange code for token
+app.get('/redirect', (req, res) => {
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["user.read"],
+        redirectUri: REDIRECT_URI,
+    };
+
+    pca.acquireTokenByCode(tokenRequest).then((response) => {
+        console.log("\nResponse: \n:", response);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(error);
+        res.status(500).send(error);
+    });
+});
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -229,6 +276,10 @@ Web アプリによってユーザーが `logout` エンドポイントにリダ
 アプリケーションの登録時に、追加のフロントチャネル ログアウト URL を登録する必要はありません。 アプリはそのメイン URL でコールバックされます。 
 
 # <a name="java"></a>[Java](#tab/java)
+
+アプリケーションの登録で、フロントチャネル ログアウト URL は必要ありません。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 アプリケーションの登録で、フロントチャネル ログアウト URL は必要ありません。
 
@@ -305,6 +356,10 @@ Java のクイックスタートでは、サインアウト ボタンは main/re
 ...
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+このサンプル アプリケーションでは、サインアウトは実装されません。
+
 # <a name="python"></a>[Python](#tab/python)
 
 Python のクイックスタートでは、サインアウト ボタンは [templates/index.html#L10](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/e03be352914bfbd58be0d4170eba1fb7a4951d84/templates/index.html#L10) ファイルに配置されています。
@@ -377,6 +432,10 @@ Java では、サインアウトは、Microsoft ID プラットフォームの `
     }
 ```
 
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+このサンプル アプリケーションでは、サインアウトは実装されません。
+
 # <a name="python"></a>[Python](#tab/python)
 
 ユーザーをサインアウトさせるコードは [app.py#L46-L52](https://github.com/Azure-Samples/ms-identity-python-webapp/blob/48637475ed7d7733795ebeac55c5d58663714c60/app.py#L47-L48) に含まれています。
@@ -420,6 +479,10 @@ public class AccountController : Controller
 # <a name="java"></a>[Java](#tab/java)
 
 Java のクイックスタートでは、ログアウト後のリダイレクト URI は index.html ページを表示するだけです。
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
+
+このサンプル アプリケーションでは、サインアウトは実装されません。
 
 # <a name="python"></a>[Python](#tab/python)
 

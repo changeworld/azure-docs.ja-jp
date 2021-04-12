@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 202182d6485bc340a7f9bb34622e483dcc9ff891
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: e0e5a817bad87391b84c43ceae0751fc6ebffd1f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102041877"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106076157"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -19,7 +19,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 どの手順でも解決しない場合は、以下のサポート チャネルもご利用いただけます。
 
 * Premier サポート ベネフィットをお持ちのお客様は、[Premier](https://premier.microsoft.com/) でサポート要求を開くことができます。
-* Azure サポート契約のお客様は、[Azure portal](https://manage.windowsazure.com/?getsupport=true) でサポート要求を開くことができます。
+* Azure サポート契約のお客様は、[Azure portal](https://azure.microsoft.com/support/options/) でサポート要求を開くことができます。
 * OMI の問題は、[OMI トラブルシューティング ガイド](https://github.com/Microsoft/omi/blob/master/Unix/doc/diagnose-omi-problems.md)を参考にして診断してください。
 * [GitHub の問題](https://github.com/Microsoft/OMS-Agent-for-Linux/issues)を提出します。
 * Log Analytics のフィードバック ページ ([https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback)) で、提出されたアイデアやバグを確認したり、新しく登録します。 
@@ -82,18 +82,18 @@ Log Analytics エージェントの Linux トラブルシューティング ツ�
 
  >[!NOTE]
  >Azure portal でワークスペースに対する [Log Analytics の [詳細設定] の [データ] メニュー](../agents/agent-data-sources.md#configuring-data-sources)からコレクションを構成した場合、パフォーマンス カウンターおよび Syslog に関する構成ファイルの編集が上書きされます。 すべてのエージェントの構成を無効にするには、Log Analytics の **[詳細設定]** でコレクションを無効にします。1 つのエージェントの場合は、次を実行します。  
-> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
+> `sudo /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable && sudo rm /etc/opt/omi/conf/omsconfig/configuration/Current.mof* /etc/opt/omi/conf/omsconfig/configuration/Pending.mof*`
 
 ## <a name="installation-error-codes"></a>インストール エラー コード
 
 | エラー コード | 意味 |
 | --- | --- |
-| NOT_DEFINED | 必要な依存関係がインストールされていないため、auoms auditd プラグインはインストールされません | auoms のインストールが失敗しました。パッケージ auditd をインストールします。 |
+| NOT_DEFINED | 必要な依存関係がインストールされていないため、auoms auditd プラグインはインストールされません。 auoms のインストールが失敗しました。パッケージ auditd をインストールします。 |
 | 2 | シェル バンドルに提供されたオプションが無効です。 使用方法については `sudo sh ./omsagent-*.universal*.sh --help` を実行してください |
 | 3 | シェル バンドルにオプションが提供されていません。 使用方法については `sudo sh ./omsagent-*.universal*.sh --help` を実行してください。 |
 | 4 | パッケージの種類またはプロキシの設定が無効です。omsagent-*rpm*.sh パッケージは RPM ベースのシステムにのみインストールでき、omsagent-*deb*.sh パッケージは Debian ベースのシステムにのみインストールできます。 [最新リリース](../vm/quick-collect-linux-computer.md#install-the-agent-for-linux)のユニバーサル インストーラーを使うことをお勧めします。 また、プロキシの設定を確認してください。 |
 | 5 | シェル バンドルはルートとして実行する必要があります。または、オンボード中に 403 エラーが返されました。 `sudo` を使用してコマンドを実行してください。 |
-| 6 | パッケージのアーキテクチャが無効であるか、または、オンボード中に 200 エラーが返されました。omsagent-*x64.sh パッケージは 64 ビット システムにのみインストールでき、omsagent-* x86.sh パッケージは 32 ビット システムにのみインストールできます。 アーキテクチャに合った適切なパッケージを、[最新リリース](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)からダウンロードしてください。 |
+| 6 | パッケージのアーキテクチャが無効であるか、または、オンボード中に 200 エラーが返されました。omsagent-\*x64.sh パッケージは 64 ビット システムにのみインストールでき、omsagent-\*x86.sh パッケージは 32 ビット システムにのみインストールできます。 アーキテクチャに合った適切なパッケージを、[最新リリース](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest)からダウンロードしてください。 |
 | 17 | OMS パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |
 | 18 | OMSConfig パッケージのインストールに失敗しました。 コマンド出力で根本的な障害を調べてください。 |
 | 19 | OMI パッケージのインストールが失敗しました。 コマンド出力で根本的な障害を調べてください。 |

@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric の監視と診断の概要
 description: Azure Service Fabric のクラスター、アプリケーション、およびサービスの監視と診断について説明します。
-author: srrengar
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.author: srrengar
-ms.openlocfilehash: 25a50a2841a03929804be45be8012f9b5d0457ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 71ec86f26de1e94b4e17e0990d2eafd1fff954e2
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357133"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105627746"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -54,7 +52,7 @@ Service Fabric プラットフォームには正常性モデルが組み込ま�
 
 
 ### <a name="watchdogs"></a>ウォッチドッグ
-一般に、ウォッチドッグとは、複数のサービスにわたって正常性と負荷を監視し、エンドポイントに ping を送信し、クラスター内のあらゆるものの正常性を報告することができる個別のサービスを指します。 このサービスにより、1 つのサービスの観点では検出されないエラーを防ぐことができます。 またウォッチドッグは、ユーザー操作なしで修復アクションを実行するコードをホストする場所としても適しています。たとえば、特定の時間間隔でストレージ内のログ ファイル クリーンアップを行うなどです。 ウォッチドッグ サービスの実装サンプルは、[ここ](https://github.com/Azure-Samples/service-fabric-watchdog-service)で見つけることができます。
+一般に、ウォッチドッグとは、複数のサービスにわたって正常性と負荷を監視し、エンドポイントに ping を送信し、クラスター内のあらゆるものの正常性を報告することができる個別のサービスを指します。 これは、単一サービスのビューに基づいて検出されないエラーを防ぐのに役立ちます。 またウォッチドッグは、ユーザー操作なしで修復アクションを実行するコードをホストする場所としても適しています。たとえば、特定の時間間隔でストレージ内のログ ファイル クリーンアップを行うなどです。 ウォッチドッグ サービスの実装サンプルは、[ここ](https://github.com/Azure-Samples/service-fabric-watchdog-service)で見つけることができます。
 
 ## <a name="infrastructure-performance-monitoring"></a>インフラストラクチャ (パフォーマンス) の監視
 これまではアプリケーションとプラットフォームでの診断について説明してきましたが、ハードウェアが期待どおりに機能していることを知るにはどうすればよいでしょう。 基盤となるインフラストラクチャを監視することは、クラスターやリソース使用率の状態を把握する上で重要です。 システム パフォーマンスの測定は、ワークロードに応じて影響を受ける可能性がある多くの要因に依存します。 これらの要因は通常、パフォーマンス カウンターによって測定されます。 これらのパフォーマンス カウンターは、オペレーティング システム、.NET フレームワーク、Service Fabric プラットフォーム自体など、さまざまなソースから送られてきます。 次のようなシナリオで役に立ちます

@@ -3,7 +3,7 @@ title: Azure Media Services の概念 | Microsoft Docs
 description: この記事では、Microsoft Azure Media Services の概念の概要を説明し、その他の記事へのリンクを提供します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
-ms.author: juliako
-ms.openlocfilehash: 180965942285e99300c8aa054e638f2f0a2c0580
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.date: 03/10/2021
+ms.author: inhenkel
+ms.openlocfilehash: d5743b3328248617b9158cfb1f8960549784c564
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98695960"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106055996"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 
@@ -157,7 +157,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 
 詳細については、次の記事を参照してください。
 - [コンテンツ保護の概要](media-services-content-protection-overview.md)
-- [AES-128 での保護](media-services-protect-with-aes128.md)
+- [AES-128 での保護](media-services-playready-license-template-overview.md)
 - [PlayReady/Widevine による保護](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>配信

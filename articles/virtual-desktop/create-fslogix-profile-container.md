@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 6a9f2c62d8e7f17f6ea8377982c79fef3dfbb97c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+manager: femila
+ms.openlocfilehash: 180d49f52eeb4f9e25a682fbf8f52a0bc307c7ed
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016830"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447966"
 ---
 # <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Azure NetApp Files および AD DS を使用してプロファイル コンテナーを作成する
 

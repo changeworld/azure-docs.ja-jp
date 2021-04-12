@@ -10,10 +10,10 @@ ms.service: storage
 ms.custom: references_regions
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: a0d02530ba2b8758b467b77ff639437675e4cc81
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99508931"
 ---
 # <a name="meet-demanding-migration-requirements-with-wandisco-livedata-platform-for-azure-preview"></a>WANdisco LiveData Platform for Azure (プレビュー) を使用して、厳しい移行要件を満たす

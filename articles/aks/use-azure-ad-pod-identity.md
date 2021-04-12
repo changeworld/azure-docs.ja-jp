@@ -3,13 +3,13 @@ title: Azure Kubernetes Service で Azure Active Directory ポッドマネージ
 description: Azure Kubernetes Service (AKS) で AAD ポッドマネージド ID を使用する方法について説明します
 services: container-service
 ms.topic: article
-ms.date: 12/01/2020
-ms.openlocfilehash: 22b7a03a8598aa6e4b7c392567905d467776360c
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.date: 3/12/2021
+ms.openlocfilehash: f3d0db5b085fcdb9a24310cb2fe310d390b1790a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99557360"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103574375"
 ---
 # <a name="use-azure-active-directory-pod-managed-identities-in-azure-kubernetes-service-preview"></a>Azure Kubernetes Service で Azure Active Directory ポッドマネージド ID を使用する (プレビュー)
 
@@ -24,13 +24,13 @@ Azure Active Directory ポッドマネージド ID では、Kubernetes プリミ
 
 次のリソースがインストールされている必要があります。
 
-* Azure CLI バージョン 2.8.0 以降
-* `azure-preview` 拡張機能バージョン 0.4.68 以降
+* Azure CLI バージョン 2.20.0 以降
+* `azure-preview` 拡張機能バージョン 0.5.5 以降
 
 ### <a name="limitations"></a>制限事項
 
-* クラスターに対して最大 50 のポッド ID が許可されます。
-* クラスターに対して最大 50 のポッド ID の例外が許可されます。
+* クラスターに対して最大 200 のポッド ID が許可されます。
+* クラスターに対して最大 200 のポッド ID の例外が許可されます。
 * ポッドマネージド ID は、Linux ノード プールでのみ使用できます。
 
 ### <a name="register-the-enablepodidentitypreview"></a>`EnablePodIdentityPreview` を登録する
@@ -53,19 +53,75 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-aks-cluster-with-managed-identities"></a>マネージド ID を指定して AKS クラスターを作成する
+## <a name="create-an-aks-cluster-with-azure-cni"></a>Azure CNI が有効になっている AKS クラスターを作成する
 
-マネージド ID とポッドマネージド ID が有効になっている AKS クラスターを作成します。 次のコマンドを実行すると、[az group create][az-group-create] を使用して *myResourceGroup* という名前のリソース グループが作成され、[az aks create][az-aks-create] コマンドを使用して *myResourceGroup* リソース グループに *myAKSCluster* という名前の AKS クラスターが作成されます。
+> [!NOTE]
+> これは、推奨される既定の構成です。
+
+Azure CNI とポッドマネージド ID が有効になっている AKS クラスターを作成します。 次のコマンドを実行すると、[az group create][az-group-create] を使用して *myResourceGroup* という名前のリソース グループが作成され、[az aks create][az-aks-create] コマンドを使用して *myResourceGroup* リソース グループに *myAKSCluster* という名前の AKS クラスターが作成されます。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
-az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --enable-pod-identity --network-plugin azure
+az aks create -g myResourceGroup -n myAKSCluster --enable-pod-identity --network-plugin azure
 ```
 
 [az aks get-credentials][az-aks-get-credentials] を使用して、AKS クラスターにサインインします。 また、このコマンドにより、ご使用の開発用コンピューターに `kubectl` クライアント証明書がダウンロードされて構成されます。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
+```
+
+## <a name="update-an-existing-aks-cluster-with-azure-cni"></a>Azure CNI で既存の AKS クラスターを更新する
+
+ポッドマネージド ID が含まれるように、Azure CNI で既存の AKS クラスターを更新します。
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --network-plugin azure
+```
+## <a name="using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities"></a>Azure Active Directory ポッドマネージド ID で Kubernet ネットワーク プラグインを使用する 
+
+> [!IMPORTANT]
+> Kubernet を使用してクラスターで aad-pod-identity を実行すると、セキュリティに影響するため、推奨される構成ではありません。 Kubernet を使用してクラスターで aad-pod-identity を有効にする前に、対応策の手順に従い、ポリシーを構成してください。
+
+## <a name="mitigation"></a>対応策
+
+クラスター レベルで脆弱性を軽減するために、OpenPolicyAgent 受付コントローラーをゲートキーパー検証 Webhook と共に使用できます。 クラスターに既にゲートキーパーがインストールされている場合は、K8sPSPCapabilities タイプの ConstraintTemplate を追加します。
+
+```
+kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/capabilities/template.yaml
+```
+NET_RAW 機能を使用してポッドの生成を制限するテンプレートを追加します。
+
+```
+apiVersion: constraints.gatekeeper.sh/v1beta1
+kind: K8sPSPCapabilities
+metadata:
+  name: prevent-net-raw
+spec:
+  match:
+    kinds:
+      - apiGroups: [""]
+        kinds: ["Pod"]
+    excludedNamespaces:
+      - "kube-system"
+  parameters:
+    requiredDropCapabilities: ["NET_RAW"]
+```
+
+## <a name="create-an-aks-cluster-with-kubenet-network-plugin"></a>Kubernet ネットワーク プラグインを使用して AKS クラスターを作成する
+
+Kubenet ネットワーク プラグインとポッドマネージド ID が有効になっている AKS クラスターを作成します。
+
+```azurecli-interactive
+az aks create -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
+```
+
+## <a name="update-an-existing-aks-cluster-with-kubenet-network-plugin"></a>Kubernet ネットワーク プラグインを使用して既存の AKS クラスターを更新する
+
+ポッドマネージド ID が含まれるように、Kubnet ネットワーク プラグインを使用して、既存の AKS クラスターを更新します。
+
+```azurecli-interactive
+az aks update -g $MY_RESOURCE_GROUP -n $MY_CLUSTER --enable-pod-identity --enable-pod-identity-with-kubenet
 ```
 
 ## <a name="create-an-identity"></a>ID の作成
@@ -79,6 +135,16 @@ export IDENTITY_NAME="application-identity"
 az identity create --resource-group ${IDENTITY_RESOURCE_GROUP} --name ${IDENTITY_NAME}
 export IDENTITY_CLIENT_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME} --query clientId -otsv)"
 export IDENTITY_RESOURCE_ID="$(az identity show -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME} --query id -otsv)"
+```
+
+## <a name="assign-permissions-for-the-managed-identity"></a>マネージド ID にアクセス許可を割り当てる
+
+*IDENTITY_CLIENT_ID* マネージド ID には、AKS クラスターの仮想マシン スケール セットを含むリソース グループに対する閲覧者のアクセス許可が付与されている必要があります。
+
+```azurecli-interactive
+NODE_GROUP=$(az aks show -g myResourceGroup -n myAKSCluster --query nodeResourceGroup -o tsv)
+NODES_RESOURCE_ID=$(az group show -n $NODE_GROUP -o tsv --query "id")
+az role assignment create --role "Reader" --assignee "$IDENTITY_CLIENT_ID" --scope $NODES_RESOURCE_ID
 ```
 
 ## <a name="create-a-pod-identity"></a>ポッド ID を作成する
@@ -176,11 +242,11 @@ az identity delete -g ${IDENTITY_RESOURCE_GROUP} -n ${IDENTITY_NAME}
 マネージド ID の詳細については、[Azure リソースのマネージド ID][az-managed-identities] に関するページを参照してください。
 
 <!-- LINKS - external -->
-[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
-[az-extension-add]: /cli/azure/extension?view=azure-cli-latest#az-extension-add&preserve-view=true
-[az-extension-update]: /cli/azure/extension?view=azure-cli-latest#az-extension-update&preserve-view=true
+[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-update]: /cli/azure/extension#az-extension-update
 [az-group-create]: /cli/azure/group#az-group-create
-[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az_identity_create
+[az-identity-create]: /cli/azure/identity#az_identity_create
 [az-managed-identities]: ../active-directory/managed-identities-azure-resources/overview.md
-[az-role-assignment-create]: /cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create

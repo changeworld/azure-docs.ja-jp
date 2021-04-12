@@ -3,19 +3,19 @@ title: Azure Time Series Insights Gen2 での取り込みおよびフラット�
 description: 取り込み規則の変更
 ms.service: time-series-insights
 services: time-series-insights
-author: lyrana
-ms.author: lyhughes
-manager: dpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/02/2020
 ms.custom: lyhughes
-ms.openlocfilehash: 56a1d5aab2f665f9c5bd8f6fa322f35e55483c7b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 44553e2a57f796dcf48561ff3b273e25514247ae
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995235"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504534"
 ---
 # <a name="upcoming-changes-to-json-flattening-and-escaping-rules-for-new-environments"></a>新しい環境での JSON フラット化とエスケープ規則に関する今後の変更
 

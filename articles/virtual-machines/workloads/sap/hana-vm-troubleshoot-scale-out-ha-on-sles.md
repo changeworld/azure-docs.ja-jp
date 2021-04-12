@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
-ms.openlocfilehash: f4c1de484ce2659a7e84a1546a7c49c1d77a7d56
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: e64abc008433c895e21690ccab8cc532ec1b34b1
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101674482"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105543858"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>SLES 12 SP3 での SAP HANA スケールアウトの高可用性セットアップの確認とトラブルシューティング 
 
@@ -29,9 +29,9 @@ ms.locfileid: "101674482"
 [suse-cloud-netconfig]:https://www.suse.com/c/multi-nic-cloud-netconfig-ec2-azure/
 [sap-list-port-numbers]:https://help.sap.com/viewer/ports
 [sles-12-ha-paper]:https://www.suse.com/documentation/sle-ha-12/pdfdoc/book_sleha/book_sleha.pdf
-[sles-zero-downtime-paper]:https://www.suse.com/media/presentation/TUT90846_towards_zero_downtime%20_how_to_maintain_sap_hana_system_replication_clusters.pdf
+[sles-zero-downtime-paper]:https://www.youtube.com/embed/0FW3J6GbxOk
 [sap-nw-ha-guide-sles]:high-availability-guide-suse.md
-[sles-12-for-sap]:https://www.suse.com/media/white-paper/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
+[sles-12-for-sap]:https://www.scribd.com/document/377847444/Suse-Linux-Enterprise-Server-for-Sap-Applications-12-Sp1
 
 
 この記事は、Azure の仮想マシン (VM) で実行されている SAP HANA スケールアウトの Pacemaker クラスター構成を確認するのに役立ちます。 クラスターは、SAP HANA システム レプリケーション (HSR) および SUSE RPM パッケージ SAPHanaSR-ScaleOut と組み合わせてセットアップされました。 すべてのテストは SUSE SLES 12 SP3 でのみ行われました。 この記事は、さまざまな領域を扱うセクションで構成されており、コマンド例および構成ファイルからの抜粋が含まれます。 これらの例を使用して、クラスターのセットアップ全体を確認することをお勧めします。

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: how-to
 ms.date: 06/10/2019
 ms.author: inhenkel
-ms.openlocfilehash: 6c287e168289082b2bd717a2706dd011c7115691
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: e934f4f6aa4eef545fbd5420a12a180fe3818294
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955668"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107258"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Media Services を使用してエンコードを実行する際にビデオをサブクリップする - REST
 
@@ -30,12 +30,12 @@ ms.locfileid: "98955668"
 
 このトピックで説明する手順を完了するには以下を行う必要があります。
 
-- [Azure Media Services アカウントを作成](./create-account-howto.md)します。
+- [Azure Media Services アカウントを作成](./account-create-how-to.md)します。
 - [Azure Media Services REST API を呼び出すように Postman を構成します](media-rest-apis-with-postman.md)。
     
     トピック「[Azure AD トークンを取得する](media-rest-apis-with-postman.md#get-azure-ad-token)」の最後の手順を必ず実行してください。 
 - 変換と出力アセットを作成します。 変換と出力アセットの作成方法は、「[リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する - REST](stream-files-tutorial-with-rest.md)」チュートリアルでご覧いただけます。
-- [エンコードの概念](encoding-concept.md)に関するトピックを確認します。
+- [エンコードの概念](encode-concept.md)に関するトピックを確認します。
 
 ## <a name="create-a-subclipping-job"></a>サブクリップ ジョブを作成する
 
@@ -86,4 +86,4 @@ ms.locfileid: "98955668"
 
 ## <a name="next-steps"></a>次のステップ
 
-[カスタム変換を使用してエンコードする方法](custom-preset-rest-howto.md) 
+[カスタム変換を使用してエンコードする方法](encode-custom-preset-rest-how-to.md) 

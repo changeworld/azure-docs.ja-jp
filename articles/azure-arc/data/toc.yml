@@ -152,7 +152,7 @@
           items:
             - name: PostgreSQL データを Postgres Hyperscale サーバー グループに移行する
               href: migrate-postgresql-data-into-postgresql-hyperscale-server-group.md
-            - name: AdventureWorks サンプル データベースの復元
+            - name: AdventureWorks サンプル データベースのインポート
               href: restore-adventureworks-sample-db-into-postgresql-hyperscale-server-group.md
         - name: トラブルシューティング
           href: troubleshoot-postgresql-hyperscale-server-group.md

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: e891c5797c9ce93e6cab7a07d2f68de1a9157249
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0460317a47a1cf01707990b6f92532d4ade01439
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674772"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643282"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C と C++ を使用して SQL Database に接続する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "92674772"
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 これがない場合は、 [Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * [Visual Studio](https://www.visualstudio.com/downloads/). このサンプルをビルドして実行するには、C++ 言語コンポーネントをインストールする必要があります。
-* [Visual Studio Linux Development](/cpp/linux/?view=vs-2019)。 Linux で開発する場合は、Visual Studio Linux 拡張機能もインストールする必要があります。
+* [Visual Studio Linux Development](/cpp/linux/)。 Linux で開発する場合は、Visual Studio Linux 拡張機能もインストールする必要があります。
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Azure SQL Database と仮想マシン上の SQL Server
 

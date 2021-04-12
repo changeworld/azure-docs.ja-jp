@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77190b85da08d09cf05a02dcc5787f0c24229948
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: 9d4aac17ca823f4eaa0f52ab260b1daca3f52f94
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100603955"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109749"
 ---
 # <a name="programmatically-manage-workbooks"></a>プログラムでブックを管理する
 
@@ -99,19 +99,19 @@ ms.locfileid: "100603955"
 
 ### <a name="galleries"></a>ギャラリー
 
-| [ギャラリー]                                        | リソースの種類                                      | ブックの種類 |
-| :--------------------------------------------- |:---------------------------------------------------|:--------------|
-| Azure Monitor での Workbooks                     | `Azure Monitor`                                    | `workbook`    |
-| Azure Monitor での VM Insights                   | `Azure Monitor`                                    | `vm-insights` |
-| Log Analytics ワークスペースでの Workbooks           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
-| Application Insights での Workbooks              | `microsoft.insights/component`                     | `workbook`    |
-| Application Insights のトラブルシューティング ガイド | `microsoft.insights/component`                     | `tsg`         |
-| Application Insights の使用                  | `microsoft.insights/component`                     | `usage`       |
-| Kubernetes サービスでの Workbooks                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
-| リソース グループでの Workbooks                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
-| Azure Active Directory での Workbooks            | `microsoft.aadiam/tenant`                          | `workbook`    |
-| Virtual Machines での VM Insights                | `microsoft.compute/virtualmachines`                | `insights`    |
-| 仮想マシン スケール セット内の VM Insights      | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+| [ギャラリー]                                        | リソースの種類                                       | ブックの種類 |
+|:-----------------------------------------------|:----------------------------------------------------|:--------------|
+| Azure Monitor での Workbooks                     | `Azure Monitor`                                     | `workbook`    |
+| Azure Monitor での VM Insights                   | `Azure Monitor`                                     | `vm-insights` |
+| Log Analytics ワークスペースでの Workbooks           | `microsoft.operationalinsights/workspaces`          | `workbook`    |
+| Application Insights での Workbooks              | `microsoft.insights/components`                     | `workbook`    |
+| Application Insights のトラブルシューティング ガイド | `microsoft.insights/components`                     | `tsg`         |
+| Application Insights の使用                  | `microsoft.insights/components`                     | `usage`       |
+| Kubernetes サービスでの Workbooks                | `Microsoft.ContainerService/managedClusters`        | `workbook`    |
+| リソース グループでの Workbooks                   | `microsoft.resources/subscriptions/resourcegroups`  | `workbook`    |
+| Azure Active Directory での Workbooks            | `microsoft.aadiam/tenant`                           | `workbook`    |
+| Virtual Machines での VM Insights                | `microsoft.compute/virtualmachines`                 | `insights`    |
+| 仮想マシン スケール セット内の VM Insights      | `microsoft.compute/virtualmachinescalesets`         | `insights`    |
 
 ## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>ブック インスタンスをデプロイするための Azure Resource Manager テンプレート
 

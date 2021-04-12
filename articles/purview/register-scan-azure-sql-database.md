@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 62f4b6c76cafab5c6cc46a73851abce1e38551a1
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 74a8bc4209696682c294bccab450d25ae86e3645
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101677747"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105643922"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Azure SQL Database の登録とスキャン
 
@@ -100,7 +100,7 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
     ```
 
     > [!Note]
-    > `Username` は、独自のサービス プリンシパルか、Purview のマネージド ID です。 [固定データベース ロールとその機能](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles)を確認してください。
+    > `Username` は、独自のサービス プリンシパルか、Purview のマネージド ID です。 [固定データベース ロールとその機能](/sql/relational-databases/security/authentication-access/database-level-roles#fixed-database-roles)を確認してください。
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>キー コンテナーおよび Purview の資格情報にサービス プリンシパルを追加する
 
@@ -157,7 +157,8 @@ Purview でサービス プリンシパルまたは Purview の **マネージ�
 [!INCLUDE [create and manage scans](includes/manage-scans.md)]
 
 > [!NOTE]
-> スキャンを削除しても、以前の Azure SQL Database スキャンからアセットは削除されません。
+> * スキャンを削除しても、以前の Azure SQL Database スキャンからアセットは削除されません。
+> * Purview の [スキーマ] タブの説明を編集した後に、ソース テーブルが変更され、ソース テーブルを再スキャンした場合、アセットはスキーマの変更によって更新されなくなります。
 
 ## <a name="next-steps"></a>次のステップ
 

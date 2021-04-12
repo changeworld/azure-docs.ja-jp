@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 3338f7b6bd418cea2bfdbbcd40692b9342f48cfa
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 9cac6cdd8e68af77b611c89e8b62e6f8d8845fd0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98744101"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107518"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) に関してよく寄せられる質問
 この記事では、Azure Cloud Services (延長サポート) に関してよく寄せられる質問について説明します。
@@ -76,12 +76,14 @@ Key Vault、仮想ネットワーク、パブリック IP アドレス、ネッ�
 ### <a name="how-can-i-use-a-template-to-deploy-or-manage-my-deployment"></a>テンプレートを使用してデプロイを実行または管理するには、どのようにすればよいですか?
 REST、PowerShell、CLI を使用して、テンプレートとパラメーターのファイルをパラメーターとして渡すことができます。 また、Azure portal を使用して、これらをアップロードすることもできます。  
 
-### <a name="do-i-need-to-maintain-four-files-now-template-parameter-csdef-cscfg"></a>現在、4 つのファイル (テンプレート、パラメーター、csdef、cscfg) を管理する必要がありますか? (template, parameter, csdef, cscfg)
+### <a name="do-i-need-to-maintain-four-files-now-template-parameter-csdef-cscfg"></a>現在、4 つのファイル (テンプレート、パラメーター、csdef、cscfg) を管理する必要がありますか? (テンプレート、パラメーター、csdef、cscfg)
 テンプレートとパラメーターのファイルは、デプロイの自動化にのみ使用されます。 Cloud Services (クラシック) と同様に、最初に依存リソースを手動で作成し、次に PowerShell、CLI コマンドを使用して、またはポータルで既存の csdef、cscfg を使用して、Cloud Services (延長サポート) のデプロイを作成できます。
 
 ### <a name="how-does-my-application-code-change-on-cloud-services-extended-support"></a>Cloud Services (延長サポート) では、アプリケーション コードはどのように変更されますか?
 cspkg にパッケージされているアプリケーション コードに必要な変更はありません。 既存のアプリケーションは、以前と同じように引き続き動作します。 
 
+### <a name="does-cloud-services-extended-support-allow-ctp-package-format"></a>Cloud Services (延長サポート) では CTP パッケージ形式が許可されますか?
+CTP パッケージ形式は Cloud Services (延長サポート) ではサポートされていません。 ただし、800 MB の拡張パッケージ サイズ制限は許可されています。
 
 ## <a name="migration"></a>移行
 
@@ -91,7 +93,7 @@ cspkg にパッケージされているアプリケーション コードに必�
 ### <a name="when-do-i-need-to-migrate"></a>いつ移行する必要がありますか? 
 移行に必要な時間と複雑さの見積もりは、さまざまな不確定要素によって異なります。 移行の作業範囲、阻害要因、複雑さを理解するためには、計画を立てることが最も効果的な手順です。
 
-## <a name="networking"></a>ネットワーク
+## <a name="networking"></a>ネットワーク 
 
 ### <a name="why-cant-i-create-a-deployment-without-virtual-network"></a>仮想ネットワークを使用せずにデプロイを作成できないのはなぜですか?
 仮想ネットワークは、Azure Resource Manager でのすべてのデプロイに必要なリソースです。 Cloud Services (延長サポート) のデプロイは、仮想ネットワーク内に配置する必要があります。 
@@ -110,6 +112,9 @@ Cloud Services (延長サポート) では、動的および静的 IP 割り当�
 
 ### <a name="can-i-use-a-dns-name-with-cloud-services-extended-support"></a>Cloud Services (延長サポート) で DNS 名を使用できますか? 
 はい。 Cloud Services (延長サポート) に DNS 名を付けることもできます。 Azure Resource Manager では、DNS ラベルは、Cloud Service に割り当てられるパブリック IP アドレスのオプション プロパティです。 Azure Resource Manager ベースのデプロイの DNS 名の形式は、`<userlabel>.<region>.cloudapp.azure.com` です。
+
+### <a name="can-i-update-or-change-the-virtual-network-reference-for-an-existing-cloud-service-extended-support"></a>既存のクラウドサービス (延長サポート) の仮想ネットワーク参照を更新または変更することはできますか? 
+いいえ。 仮想ネットワークの参照は、クラウド サービスの作成時に必須です。 既存のクラウド サービスについて、仮想ネットワークの参照を変更することはできません。 仮想ネットワークのアドレス空間自体は、VNet API を使用して変更できます。 
 
 ## <a name="certificates--key-vault"></a>証明書と Key Vault
 

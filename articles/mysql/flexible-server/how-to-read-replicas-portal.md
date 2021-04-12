@@ -1,17 +1,17 @@
 ---
 title: 読み取りレプリカの管理 - Azure portal - Azure Database for MySQL - フレキシブル サーバー
 description: Azure portal を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを設定し、管理する方法について説明します。
-author: ambhatna
-ms.author: ambhatna
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/26/2020
-ms.openlocfilehash: d33734dc7404e49aed94dffae8644b2bc4386925
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fd303804706f9ae210e6714cc8698c94c39ebef6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492830"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106855"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MySQL フレキシブル サーバーの読み取りレプリカを作成し、管理する方法
 

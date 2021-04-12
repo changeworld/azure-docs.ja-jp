@@ -14,19 +14,19 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1e644d81c2a47ec07833010ae93f4dbb0c57474b
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84790248"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106077841"
 ---
 # <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure portal を使用して Azure 拒否割り当てを一覧表示する
 
 [Azure 拒否割り当て](deny-assignments.md)を使用すると、ロールの割り当てでアクセスを許可されている場合であっても、指定した Azure リソース アクションをユーザーが実行できなくなります。 この記事では、Azure portal を使用して拒否割り当てを一覧表示する方法を説明します。
 
 > [!NOTE]
-> 独自の拒否割り当てを直接作成することはできません。 割り当て拒否が作成されるしくみの詳細については、[Azure 拒否割り当て](deny-assignments.md)に関する記事を参照してください。
+> 独自の拒否割り当てを直接作成することはできません。 拒否割り当てが作成されるしくみの詳細については、[Azure 拒否割り当て](deny-assignments.md)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -54,7 +54,7 @@ ms.locfileid: "84790248"
 
     ![拒否割り当て - 列](./media/deny-assignments-portal/deny-assignments-columns.png)
 
-    |  |  |
+    | 列 | 説明  |
     | --- | --- |
     | **名前** | 拒否割り当ての名前です。 |
     | **プリンシパルの種類** | ユーザー、グループ、システム定義のグループ、またはサービス プリンシパルです。 |
@@ -79,12 +79,12 @@ ms.locfileid: "84790248"
 
     **[ユーザー]** ブレードには、次の 2 つのセクションがあります。
 
-    |  |  |
+    | 拒否の設定  | 説明 |
     | --- | --- |
     | **以下に拒否割り当てを適用します**  | 拒否割り当ての適用対象のセキュリティ プリンシパルです。 |
     | **拒否割り当てによって以下が除外されます** | 拒否割り当てから除外対象のセキュリティ プリンシパルです。 |
 
-    **システム定義のプリンシパル**は、Azure AD ディレクトリのすべてのユーザー、グループ、サービス プリンシパルおよびマネージド ID を表します。
+    **システム定義のプリンシパル** は、Azure AD ディレクトリのすべてのユーザー、グループ、サービス プリンシパルおよびマネージド ID を表します。
 
 1. 拒否されたアクセス許可の一覧を表示するには、 **[拒否されたアクセス許可]** をクリックします。
 

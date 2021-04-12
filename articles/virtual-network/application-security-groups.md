@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 4d8ffe8451b2b2a08ab30761eaf3a928b5e117b3
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: e60d8490632a29e96dccf9cc8ff0365baf671bb6
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537630"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104802626"
 ---
 # <a name="application-security-groups"></a>アプリケーション セキュリティ グループ
 
@@ -32,7 +32,7 @@ ms.locfileid: "99537630"
 
 この規則は、インターネットから Web サーバーへのトラフィックを許可するために必要です。 インターネットからの受信トラフィックは **DenyAllInbound** 既定セキュリティ規則によって拒否されるため、*AsgLogic* または *AsgDb* アプリケーション セキュリティ グループでは追加の規則は必要ありません。
 
-|Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
+|Priority|source|ソース ポート| 到着地 | 宛先ポート | Protocol | アクセス |
 |---|---|---|---|---|---|---|
 | 100 | インターネット | * | AsgWeb | 80 | TCP | Allow |
 
@@ -40,7 +40,7 @@ ms.locfileid: "99537630"
 
 **AllowVNetInBound** 既定セキュリティ規則では、同じ仮想ネットワーク上にあるリソース間の通信がすべて許可されるため、この規則はすべてのリソースからのトラフィックを拒否するために必要です。
 
-|Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
+|Priority|source|ソース ポート| 到着地 | 宛先ポート | Protocol | アクセス |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Any | 拒否 |
 
@@ -48,7 +48,7 @@ ms.locfileid: "99537630"
 
 この規則は、*AsgLogic* アプリケーション セキュリティ グループから *AsgDb* アプリケーション セキュリティ グループへのトラフィックを許可します。 この規則の優先度は、*Deny-Database-All* 規則の優先度よりも高くなっています。 その結果、この規則は *Deny-Database-All* 規則の前に処理されるため、*AsgLogic* アプリケーション セキュリティ グループからのトラフィックは許可されますが、他のすべてのトラフィックはブロックされます。
 
-|Priority|source|ソース ポート| 宛先 | 宛先ポート | Protocol | アクセス |
+|Priority|source|ソース ポート| 到着地 | 宛先ポート | Protocol | アクセス |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
 
@@ -57,7 +57,7 @@ ms.locfileid: "99537630"
 アプリケーション セキュリティ グループには、次の制約があります。
 
 -    アプリケーション セキュリティ グループに関しては他にもいくつかの制限がありますが、サブスクリプションに含めることができるアプリケーション セキュリティ グループの数にも制限があります。 詳細については、[Azure の制限](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) に関する記事をご覧ください。
-- セキュリティ規則のソースおよび宛先として、1 つのアプリケーション セキュリティ グループを指定できます。 送信元と送信先に複数のアプリケーション セキュリティ グループを指定することはできません。
+- Azure portal では、セキュリティ規則のソースおよび宛先として、1 つのアプリケーション セキュリティ グループのみを指定できます。 REST API (PowerShell/Azure CLI を含む) では、ソースおよび宛先で複数のアプリケーション セキュリティ グループを指定できます。
 - アプリケーション セキュリティ グループに最初に割り当てられたネットワーク インターフェイスが存在する仮想ネットワークに、そのアプリケーション セキュリティ グループに割り当てられたすべてのネットワーク インターフェイスが存在する必要があります。 たとえば、*AsgWeb* という名前のアプリケーション セキュリティ グループに最初に割り当てられたネットワーク インターフェイスが *VNet1* という名前の仮想ネットワークにある場合、*AsgWeb* に以降に割り当てられるすべてのネットワーク インターフェイスが *VNet1* に存在する必要があります。 異なる仮想ネットワークからのネットワーク インターフェイスを同じアプリケーション セキュリティ グループに追加することはできません。
 - セキュリティ規則のソースおよび宛先としてアプリケーション セキュリティ グループを指定する場合、両方のアプリケーション セキュリティ グループのネットワーク インターフェイスが、同じ仮想ネットワークに存在している必要があります。 たとえば、*VNet1* のネットワーク インターフェイスが *AsgLogic*、*VNet2* のネットワーク インターフェイスが *AsgDb* に存在する場合、規則の送信元として *AsgLogic*、送信先として *AsgDb* を割り当てることはできません。 送信元と送信先の両方のアプリケーション セキュリティ グループ内のすべてのネットワーク インターフェイスは、同じ仮想ネットワークに存在している必要があります。
 

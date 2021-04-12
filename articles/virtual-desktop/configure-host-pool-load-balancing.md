@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 10/12/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 2c57ac10fbd318dd4bbb2dc86457e186dd824834
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+manager: femila
+ms.openlocfilehash: 0e742a046d43fef6e8263f73fc2ca8460848ad40
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951657"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448119"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Virtual Desktop の負荷分散方法を構成する
 
@@ -86,5 +86,5 @@ MaxSessionLimit  : 6
 3. Windows Virtual Desktop のページで、 **[ホスト プール]** を選択します。
 4. 編集するホスト プールの名前を選択します。
 5. **[プロパティ]** を選択します。
-6. **セッション上限**をフィールドに入力して、ドロップダウン メニューでこのホスト プールに使用する**負荷分散アルゴリズム**を選択します。
+6. **セッション上限** をフィールドに入力して、ドロップダウン メニューでこのホスト プールに使用する **負荷分散アルゴリズム** を選択します。
 7. **[保存]** を選択します。 これにより、新しい負荷分散の設定が適用されます。

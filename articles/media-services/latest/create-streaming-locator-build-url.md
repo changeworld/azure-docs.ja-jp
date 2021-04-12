@@ -12,24 +12,24 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d2ecfb5a58641938062166bcd7c61a7d91764a3f
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 8a192c3c3accf115b1a1db8e32a56d6d936078be
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101093472"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106277661"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>ストリーミング ロケーターの作成と URL の構築
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Azure Media Services では、最初に[ストリーミング ロケーター](streaming-locators-concept.md)を作成する必要があります。 その後、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)のホスト名と **ストリーミング ロケーター** のパスを連結します。 このサンプルでは、*既定の* **ストリーミング エンドポイント** を使っています。 最初に Media Service アカウントを作成するとき、この "*既定の*" **ストリーミング エンドポイント** は停止状態になっているので、**Start** を呼び出してストリーミングを開始する必要があります。
+Azure Media Services では、最初に[ストリーミング ロケーター](stream-streaming-locators-concept.md)を作成する必要があります。 その後、[ストリーミング エンドポイント](/rest/api/media/streamingendpoints)のホスト名と **ストリーミング ロケーター** のパスを連結します。 このサンプルでは、*既定の* **ストリーミング エンドポイント** を使っています。 最初に Media Service アカウントを作成するとき、この "*既定の*" **ストリーミング エンドポイント** は停止状態になっているので、**Start** を呼び出してストリーミングを開始する必要があります。
 
 この記事では、Java と .NET SDK を使用して、ストリーミング ロケーターを作成し、ストリーミング URL を構築する方法を例示します。
 
 ## <a name="prerequisite"></a>前提条件
 
-[ダイナミック パッケージ](dynamic-packaging-overview.md)のプレビュー
+[ダイナミック パッケージ](encode-dynamic-packaging-concept.md)のプレビュー
 
 ## <a name="java"></a>Java
 
@@ -165,10 +165,10 @@ private static async Task<IList<string>> GetStreamingUrlsAsync(
 
 ## <a name="see-also"></a>関連項目
 
-* [.NET を使用したフィルターの作成](filters-dynamic-manifest-dotnet-howto.md)
+* [.NET を使用したフィルターの作成](filters-dynamic-manifest-dotnet-how-to.md)
 * [REST を使用したフィルターの作成](filters-dynamic-manifest-rest-howto.md)
-* [CLI を使用したフィルターの作成](filters-dynamic-manifest-cli-howto.md)
+* [CLI を使用したフィルターの作成](filters-dynamic-manifest-cli-how-to.md)
 
 ## <a name="next-steps"></a>次のステップ
 
-[DRM によるコンテンツの保護](protect-with-drm.md)。
+[DRM によるコンテンツの保護](drm-protect-with-drm-tutorial.md)。

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/18/2020
+ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: d3d944646689e9e6189b0343e8bf67c8fb0abcbd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95239552"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104590927"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>リージョン間レプリケーションのトラブルシューティング
 
@@ -71,6 +71,12 @@ ms.locfileid: "95239552"
 |     `Snapshot   cannot be deleted, parent volume is a Data Protection volume with a   replication object`    |     このスナップショットを削除する場合は、ボリュームのレプリケーションが解除済みであることを確認します。    |
 |     `Cannot delete   volume replication generated snapshot`    |     レプリケーションのベースライン スナップショットの削除は許可されていません。    |
 
+## <a name="errors-resizing-volumes"></a>ボリュームのサイズ変更中に発生するエラー
+
+|     エラー メッセージ    |     解決策    |
+|-|-|
+|   ソース ボリュームのサイズ変更がエラー `"PoolSizeTooSmall","message":"Pool size too small for total volume size."` で失敗します  |  リージョン間レプリケーションのソースと宛先ボリュームの両方に対して、容量プールに十分なヘッドルームがあることを確認します。 ソース ボリュームのサイズを変更すると、宛先ボリュームは自動的にサイズ変更されます。 ただし、宛先ボリュームをホストしている容量プールのヘッドルームが十分でない場合は、ソースと宛先ボリュームの両方のサイズ変更が失敗します。 詳細については、「[リージョン間レプリケーションの宛先ボリュームのサイズを変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)」を参照してください。   |
+
 ## <a name="next-steps"></a>次のステップ  
 
 * [リージョン間レプリケーション](cross-region-replication-introduction.md)
@@ -78,4 +84,5 @@ ms.locfileid: "95239552"
 * [ボリューム レプリケーションを作成する](cross-region-replication-create-peering.md)
 * [レプリケーション関係の正常性状態を表示する](cross-region-replication-display-health-status.md)
 * [ディザスター リカバリーの管理](cross-region-replication-manage-disaster-recovery.md)
+* [リージョン間レプリケーションの宛先ボリュームのサイズを変更する](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [リージョン間レプリケーションのトラブルシューティング](troubleshoot-cross-region-replication.md)

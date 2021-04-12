@@ -1,9 +1,9 @@
 ---
 title: IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する | Microsoft Docs
 description: Azure Virtual Machines (VM) 上で、IBM Z Development and Test Environment (zD&T) 環境を実行します。
-services: virtual-machines-linux
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+services: virtual-machines
+ms.service: virtual-machines
+ms.subservice: mainframe-rehosting
 documentationcenter: ''
 author: njray
 manager: edprice
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: c76768fa94b524763ac8ad94c9c3f5bb3a73dddb
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: b1391f81c571879534258c289436d2d086b84bef
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219440"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045945"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>IBM zD&T v1 の Application Developers Controlled Distribution (ADCD) を設定する
 
@@ -191,7 +191,7 @@ ADCD メディアへのアクセスが必要です。 以下の手順は、IBM �
 
 - [メインフレームの移行: 通説と事実](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [Azure 上の IBM DB2 pureScale](ibm-db2-purescale-azure.md)
-- [トラブルシューティング](../../../troubleshooting/index.yml)
+- [トラブルシューティング](/troubleshoot/azure/virtual-machines/welcome-virtual-machines)
 - [メインフレームから Azure への移行の解明](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

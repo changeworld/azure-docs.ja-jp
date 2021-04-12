@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 1/12/2021
+ms.date: 3/16/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: a182ca3ba70b9faa1ba67fdb6c91a4eaf8e766ef
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 227b573d3771efd3fd36e6d3d6222696647849f7
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101691197"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105644909"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server と Azure SQL Managed Instance での T-SQL の相違点
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -83,7 +83,7 @@ SQL Managed Instance には自動バックアップがあるので、ユーザ�
 
 T-SQL を使用したバックアップについては、[BACKUP](/sql/t-sql/statements/backup-transact-sql) に関する記事をご覧ください。
 
-## <a name="security"></a>セキュリティ
+## <a name="security"></a>Security
 
 ### <a name="auditing"></a>監査
 
@@ -139,7 +139,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 ### <a name="logins-and-users"></a>ログインとユーザー
 
 - `FROM CERTIFICATE`、`FROM ASYMMETRIC KEY`、`FROM SID` を使用して作成された SQL ログインはサポートされています。 [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql) に関する記事をご覧ください。
-- [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) 構文または [CREATE USER FROM Login [Azure AD Login]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) 構文を使用して作成された Azure Active Directory (Azure AD) サーバー プリンシパル (ログイン) がサポートされます。 これらのログインは、サーバー レベルで作成されます。
+- [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 構文または [CREATE USER FROM Login [Azure AD Login]](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current&preserve-view=true) 構文を使用して作成された Azure Active Directory (Azure AD) サーバー プリンシパル (ログイン) がサポートされます。 これらのログインは、サーバー レベルで作成されます。
 
     SQL Managed Instance は、`CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER` 構文で Azure AD データベース プリンシパルをサポートします。 この機能は、Azure AD 包含データベース ユーザーとも呼ばれます。
 
@@ -252,7 +252,7 @@ SQL Managed Instance はファイルにアクセスできないため、暗号�
 次のオプションは既定で設定されており、変更することはできません。
 
 - `MULTI_USER`
-- `ENABLE_BROKER ON`
+- `ENABLE_BROKER`
 - `AUTO_CLOSE OFF`
 
 次のオプションは変更できません。
@@ -466,11 +466,17 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 
 ### <a name="service-broker"></a>Service Broker
 
-クロス インスタンス Service Broker はサポートされていません。
+クロス インスタンス Service Broker メッセージ交換は、Azure SQL Managed Instance 間でのみサポートされます。
 
-- `sys.routes`:前提条件として sys.routes からアドレスを選択する必要があります。 アドレスは、各ルートで LOCAL である必要があります。 [sys.routes](/sql/relational-databases/system-catalog-views/sys-routes-transact-sql) をご覧ください。
-- `CREATE ROUTE`:`LOCAL` 以外の `ADDRESS` で `CREATE ROUTE` を使用することはできません。 [CREATE ROUTE](/sql/t-sql/statements/create-route-transact-sql) をご覧ください。
-- `ALTER ROUTE`:`LOCAL` 以外の `ADDRESS` で `ALTER ROUTE` を使用することはできません。 [ALTER ROUTE](/sql/t-sql/statements/alter-route-transact-sql) をご覧ください。 
+- `CREATE ROUTE`: `CREATE ROUTE` を `LOCAL` 以外の `ADDRESS` または別の Azure SQL Managed Instance の DNS 名で使用することはできません。
+- `ALTER ROUTE`: `ALTER ROUTE` を `LOCAL` 以外の `ADDRESS` または別の Azure SQL Managed Instance の DNS 名で使用することはできません。
+
+トランスポート セキュリティはサポートされていますが、ダイアログ セキュリティはサポートされていません。
+- `CREATE REMOTE SERVICE BINDING` はサポートされていません。
+
+Service Broker は既定で有効になっており、無効にできません。 次の ALTER DATABASE オプションはサポートされていません。
+- `ENABLE_BROKER`
+- `DISABLE_BROKER`
 
 ### <a name="stored-procedures-functions-and-triggers"></a>ストアド プロシージャ、関数、トリガー
 
@@ -519,7 +525,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](/
 ### <a name="tempdb"></a>TEMPDB
 - `tempdb` の最大ファイル サイズは、General Purpose レベルではコアあたり 24 GB より大きくすることはできません。 Business Critical レベルでは、`tempdb` の最大サイズは SQL Managed Instance ストレージ サイズによって制限されます。 `Tempdb` ログ ファイルのサイズは、General Purpose レベルでは 120 GB に制限されています。 `tempdb` のサイズがコアあたり 24 GB を超える場合、または 120 GB を超えるログ データが生成される場合は、一部のクエリでエラーが返されます。
 - `Tempdb` は常に 12 個のデータ ファイルに分割されます (1 個のプライマリ (マスターとも呼ばれる) データ ファイルと 11 個のプライマリ以外のデータ ファイル)。 ファイル構造を変更することも、`tempdb` に新しいファイルを追加することもできません。 
-- [[メモリ最適化]`tempdb` メタデータ](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata) (新しい SQL Server 2019 のメモリ内データベース機能) は、サポートされていません。
+- [[メモリ最適化]`tempdb` メタデータ](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15&preserve-view=true#memory-optimized-tempdb-metadata) (新しい SQL Server 2019 のメモリ内データベース機能) は、サポートされていません。
 - `tempdb` ではモデル データベースから初期オブジェクト リストが取得されないため、再起動後またはフェールオーバー後に、モデル データベースで作成されたオブジェクトを `tempdb` で自動作成できません。 再起動後またはフェールオーバー後に、`tempdb` でオブジェクトを手動で作成する必要があります。
 
 ### <a name="msdb"></a>MSDB
@@ -528,13 +534,13 @@ SQL Managed Instance の次の MSDB スキーマは、それぞれの定義済�
 
 - 一般的なロール
   - TargetServersRole
-- [固定データベース ロール](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15)
+- [固定データベース ロール](/sql/ssms/agent/sql-server-agent-fixed-database-roles?view=sql-server-ver15&preserve-view=true)
   - SQLAgentUserRole
   - SQLAgentReaderRole
   - SQLAgentOperatorRole
-- [DatabaseMail ロール](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15#DBProfile):
+- [DatabaseMail ロール](/sql/relational-databases/database-mail/database-mail-configuration-objects?view=sql-server-ver15&preserve-view=true#DBProfile):
   - DatabaseMailUserRole
-- [統合サービスのロール](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15):
+- [統合サービスのロール](/sql/integration-services/security/integration-services-roles-ssis-service?view=sql-server-ver15&preserve-view=true):
   - msdb
   - db_ssisltduser
   - db_ssisoperator

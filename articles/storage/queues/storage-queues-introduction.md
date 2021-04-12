@@ -1,19 +1,19 @@
 ---
 title: Azure Queue Storage の概要 - Azure Storage
 description: 多数のメッセージを格納するためのサービスである Azure Queue Storage の概要を参照してください。 Queue Storage サービスには、URL 形式、ストレージ アカウント、キュー、およびメッセージが含まれます。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 03/18/2020
 ms.topic: overview
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 8c5c97fbb72934dd99ec784ccf8e08eec059c31b
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 32ce5af5371047ae814602e9118f622ee036bd9c
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97590581"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276214"
 ---
 # <a name="what-is-azure-queue-storage"></a>Azure Queue Storage とは
 

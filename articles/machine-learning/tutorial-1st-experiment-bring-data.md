@@ -10,13 +10,13 @@ author: aminsaied
 ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
-ms.custom: tracking-python
-ms.openlocfilehash: 5e1af60cccb48195db38e420dfe3df01f404669c
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.custom: tracking-python, contperf-fy21q3
+ms.openlocfilehash: 503d1d1220cd4704a6e70d0b7e575a70275e5e4d
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100378003"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105936837"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>チュートリアル:独自のデータを使用する (4 部構成中の第 4 部)
 
@@ -39,7 +39,12 @@ ms.locfileid: "100378003"
 
 ## <a name="prerequisites"></a>前提条件
 
-* このシリーズの[第 3 部](tutorial-1st-experiment-sdk-train.md)を完了している。
+前のチュートリアルで作成した PyTorch 環境の更新バージョンとデータが必要となります。  これらの手順が完了していることを確認します。
+
+1. [トレーニング スクリプトの作成](tutorial-1st-experiment-sdk-train.md#create-training-scripts)
+1. [新しい Python 環境を作成する](tutorial-1st-experiment-sdk-train.md#environment)
+1. [ローカルでテストする](tutorial-1st-experiment-sdk-train.md#test-local)
+1. [Conda 環境ファイルを更新する](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
 ## <a name="adjust-the-training-script"></a>トレーニング スクリプトを調整する
 
@@ -75,6 +80,7 @@ optimizer = optim.SGD(
     momentum=args.momentum,    # get momentum from command-line argument
 )
 ```
+
 > [!div class="nextstepaction"]
 > [トレーニング スクリプトを調整しました](?success=adjust-training-script#test-locally) [問題が発生しました](https://www.research.net/r/7C6W7BQ?issue=adjust-training-script)
 
@@ -84,28 +90,27 @@ optimizer = optim.SGD(
 
 :::image type="content" source="media/tutorial-1st-experiment-bring-data/directory-structure.png" alt-text=".azureml、data、src の各サブディレクトリを示すディレクトリ構造":::
 
+1. 現在の環境を終了します。
 
-前のチュートリアルで `train.py` をローカルで実行しなかった場合、`data/` ディレクトリは含まれません。 この場合は、`train.py` スクリプト内で `download=True` を使用して `torchvision.datasets.CIFAR10` メソッドをローカルで実行します。
+    ```bash
+    conda deactivate
 
-また、ローカルで実行するには、必ずチュートリアル環境を終了し、新しい conda 環境をアクティブ化してください。
+1. Now create and activate the new environment.  This will rebuild the pytorch-aml-env with the [updated environment file](tutorial-1st-experiment-sdk-train.md#update-the-conda-environment-file)
 
-```bash
-conda deactivate                # If you are still using the tutorial environment, exit it
-```
 
-```bash
-conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
-```
+    ```bash
+    conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+    ```
 
-```bash
-conda activate pytorch-aml-env          # activate new conda environment
-```
+    ```bash
+    conda activate pytorch-aml-env          # activate new conda environment
+    ```
 
-変更したトレーニング スクリプトをローカルで実行するには、次のように呼び出します。
+1. 最後に、変更したトレーニング スクリプトをローカルで実行します。
 
-```bash
-python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
-```
+    ```bash
+    python src/train.py --data_path ./data --learning_rate 0.003 --momentum 0.92
+    ```
 
 データへのローカル パスを渡すことによって、CIFAR10 データセットをダウンロードする必要はなくなります。 また、トレーニング スクリプト内にハードコーディングしなくても、_学習率_ および _モーメンタム_ ハイパーパラメーターのさまざまな値を試してみることができます。
 
@@ -200,7 +205,7 @@ if __name__ == "__main__":
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      [データセット](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py)は、Azure Blob Storage にアップロードしたデータを参照するために使用します。 データセットは、ご利用のデータの上にある抽象化レイヤーであり、信頼性および信頼度の向上を目的に設計されています。
+      [データセット](/python/api/azureml-core/azureml.core.dataset.dataset)は、Azure Blob Storage にアップロードしたデータを参照するために使用します。 データセットは、ご利用のデータの上にある抽象化レイヤーであり、信頼性および信頼度の向上を目的に設計されています。
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -208,7 +213,7 @@ if __name__ == "__main__":
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) は、`train.py` に渡す引数のリストを含むように変更されています。 `dataset.as_named_input('input').as_mount()` 引数を使用すると、指定したディレクトリがコンピューティング先に _マウント_ されます。
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) は、`train.py` に渡す引数のリストを含むように変更されています。 `dataset.as_named_input('input').as_mount()` 引数を使用すると、指定したディレクトリがコンピューティング先に _マウント_ されます。
    :::column-end:::
 :::row-end:::
 

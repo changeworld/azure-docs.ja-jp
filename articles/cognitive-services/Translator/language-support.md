@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: lajanuar
-ms.openlocfilehash: 935a9e92de88c2519dc1a1042315d204e8f60099
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: b114c4f3e6646f68e7a1068be8dd52778a26fb58
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919920"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "101738142"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
-翻訳を使用すると、70 を超えるテキスト翻訳言語間で翻訳を行うことができます。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator の V3 を使用して既定で提供されます。
+Translator を使用すると、90 のテキスト翻訳言語および方言の間で翻訳を行うことができます。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator の V3 を使用して既定で提供されます。
 
 また、翻訳をカスタム翻訳ツールと組み合わせて使用することで、お客様のビジネスや業界で使用されている用語を理解するニューラル翻訳システムを構築したり、Microsoft Speech Service を使用して音声翻訳をアプリに追加することもできます。
 
@@ -37,8 +37,12 @@ ms.locfileid: "98919920"
 | Language | 言語コード |
 |:-|:-:|
 | アフリカーンス語 | `af` |
+| アルバニア語 | `sq` |
+| アムハラ語 | `am` |
 | アラビア語 | `ar` |
+| アルメニア語 | `hy` |
 | アッサム語 | `as` |
+| アゼルバイジャン語 | `az` |
 | ベンガル語 | `bn` |
 | ボスニア語 (ラテン) | `bs` |
 | ブルガリア語 | `bg` |
@@ -74,11 +78,13 @@ ms.locfileid: "98919920"
 | 日本語 | `ja` |
 | カンナダ語 | `kn` |
 | カザフ語 | `kk` |
+| クメール語 | `km` |
 | クリンゴン語 | `tlh-Latn` |
 | クリンゴン語 (plqaD) | `tlh-Piqd` |
 | 韓国語 | `ko` |
 | クルド語 (中央) | `ku` |
 | クルド語 (北) | `kmr` |
+| ラオス語 | `lo` |
 | ラトビア語 | `lv` |
 | リトアニア語 | `lt` |
 | マダガスカル語 | `mg` |
@@ -87,6 +93,8 @@ ms.locfileid: "98919920"
 | マルタ語 | `mt` |
 | マオリ語 | `mi` |
 | マラーティー語 | `mr` |
+| ミャンマー | `my` |
+| ネパール語 | `ne` |
 | ノルウェー語 | `nb` |
 | オディア語 | `or` |
 | パシュトウ語 | `ps` |
@@ -110,6 +118,7 @@ ms.locfileid: "98919920"
 | タミル語 | `ta` |
 | テルグ語 | `te` |
 | タイ語 | `th` |
+| ティグリニア語 | `ti` |
 | トンガ語 | `to` |
 | トルコ語 | `tr` |
 | ウクライナ語 | `uk` |
@@ -130,6 +139,7 @@ ms.locfileid: "98919920"
 | Language | 言語コード |
 |:-|:-:|
 | アフリカーンス語 | `af` |
+| アルバニア語 | `sq` |
 | アラビア語 | `ar` |
 | ブルガリア語 | `bg` |
 | カタロニア語 | `ca` |
@@ -152,6 +162,7 @@ ms.locfileid: "98919920"
 | ハンガリー語 | `hu` |
 | アイスランド語 | `is` |
 | インドネシア語 | `id` |
+| イヌクティトット語 | `iu` |
 | アイルランド語 | `ga` |
 | イタリア語 | `it` |
 | 日本語 | `ja` |

@@ -6,7 +6,6 @@ services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: KumudD
-Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/09/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 378ab88f4dee0c725e89f77cc6b2ffe049ff877a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 7067d7d76815103541fa4654da2bf977ba03a4ef
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008437"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106056251"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して VM の負荷を分散するパブリック ロード バランサーを作成する
 
@@ -63,7 +62,7 @@ Azure Load Balancer に関連するテンプレートをさらに探すには、
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-1. 次のコード ブロックの **[試してみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。
+1. 次のコード ブロックの **[使ってみる]** を選択して Azure Cloud Shell を開き、指示に従って Azure にサインインします。
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
@@ -84,7 +83,7 @@ Azure Load Balancer に関連するテンプレートをさらに探すには、
 
 1. 前のコード ブロックから **[コピー]** を選択して、PowerShell スクリプトをコピーします。
 
-1. シェル コンソール ウィンドウを右クリックし、**[貼り付け]** を選択します。
+1. シェル コンソール ウィンドウを右クリックし、 **[貼り付け]** を選択します。
 
 1. 値を入力します。
 

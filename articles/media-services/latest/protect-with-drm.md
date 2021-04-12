@@ -11,22 +11,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: a4f5810f76af7116421bac3953b4eb65370055e3
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 694e939ec265f3b5fdd1350c125eaf792fb38b9a
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955175"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105961423"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>チュートリアル:DRM 動的暗号化とライセンス配信サービスの使用
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
 > [!NOTE]
-> このチュートリアルでは [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) の例を使用していますが、全体的な手順は [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event?view=azure-cli-latest)、またはその他のサポートされている [SDK](media-services-apis-overview.md#sdks) と同じです。
+> このチュートリアルでは [.NET SDK](/dotnet/api/microsoft.azure.management.media.models.liveevent) の例を使用していますが、全体的な手順は [REST API](/rest/api/media/liveevents)、[CLI](/cli/azure/ams/live-event)、またはその他のサポートされている [SDK](media-services-apis-overview.md#sdks) と同じです。
 
 Microsoft PlayReady、Google Widevine、または Apple FairPlay ライセンスを使用して暗号化したストリームを、Azure Media Services を使用して配信できます。 詳細については、「[動的暗号化によるコンテンツ保護](content-protection-overview.md)」を参照してください。
 
@@ -54,9 +54,9 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 チュートリアルを完了するには以下が必要です。
 
 * 「[コンテンツ保護の概要](content-protection-overview.md)」の記事を確認します。
-* 「[アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)」を確認してください。
+* 「[アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](architecture-design-multi-drm-system.md)」を確認してください。
 * Visual Studio Code または Visual Studio をインストールします。
-* [このクイックスタート](./create-account-howto.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
+* [このクイックスタート](./account-create-how-to.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
 * [API へのアクセス](./access-api-howto.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手します。
 * アプリの構成ファイル (appsettings.json) に適切な値を設定します。
 
@@ -103,7 +103,7 @@ Media Services にも、PlayReady、Widevine、FairPlay の DRM ライセンス�
 
 ## <a name="wait-for-the-job-to-complete"></a>ジョブが完了するのを待つ
 
-ジョブが完了するまでに、一定の時間がかかります。 完了したら通知を受け取りたいでしょう。 次のコード例では、**ジョブ** の状態をサービスに対してポーリングする方法を示します。 待機時間が発生する可能性があるため、ポーリングは運用アプリに推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。 [カスタム Web エンドポイントへのイベントのルーティング](job-state-events-cli-how-to.md)に関するページをご覧ください。
+ジョブが完了するまでに、一定の時間がかかります。 完了したら通知を受け取りたいでしょう。 次のコード例では、**ジョブ** の状態をサービスに対してポーリングする方法を示します。 待機時間が発生する可能性があるため、ポーリングは運用アプリに推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。 [カスタム Web エンドポイントへのイベントのルーティング](monitoring/job-state-events-cli-how-to.md)に関するページをご覧ください。
 
 **Job** には通常、**Scheduled**、**Queued**、**Processing**、**Finished** (最終状態) という状態があります。 ジョブでエラーが発生すると、**Error** 状態が返されます。 ジョブがキャンセル処理中の場合は **Canceling** を受け取り、完了すると **Canceled** を受け取ります。
 

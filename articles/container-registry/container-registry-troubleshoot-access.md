@@ -4,10 +4,10 @@ description: 仮想ネットワークまたはファイアウォールの内側�
 ms.topic: article
 ms.date: 10/01/2020
 ms.openlocfilehash: 75c94d40663a7058dab7ed691183dd578964edcc
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "101699608"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング

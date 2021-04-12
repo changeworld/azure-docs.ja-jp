@@ -14,18 +14,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: c1cdeaa41dda11f2ab520cf8d31ddb2116587082
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e0b86a7014af42f2ffb067c2de797f270a5b1855
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409571"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967474"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>Azure NetApp Files 用に NFS クライアントを構成する
 
 この記事で説明する NFS クライアントの構成は、[NFSv4.1 の Kerberos 暗号化を構成する](configure-kerberos-encryption.md)または[デュアルプロトコル ボリュームを作成する](create-volumes-dual-protocol.md)際のセットアップの一環です。 Azure NetApp Files では、さまざまな Linux ディストリビューションを使用できます。 この記事では、一般的によく使用される RHEL 8 と Ubuntu 18.04 の 2 つの環境の構成について説明します。 
 
+## <a name="requirements-and-considerations"></a>要件と考慮事項  
+
 使用する Linux フレーバーに関係なく、次の構成が必要です。
+
 * 時間のずれに関する問題を回避するように NTP クライアントを構成します。
 * 名前解決を行うように Linux クライアントの DNS エントリを構成します。  
     この構成には、"A" (前方) レコードと PTR (逆引き) レコードが含まれている必要があります。 

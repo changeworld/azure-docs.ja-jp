@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 05/22/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 669010d2de90498c98fc685fe931b084a11cd104
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 5710fc8be66f2126f6bf665ad1808aa11e4db2c4
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008510"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106445314"
 ---
 # <a name="configure-the-personal-desktop-host-pool-assignment-type-for-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) の個人用デスクトップ ホスト プールの割り当ての種類を構成する
 

@@ -4,10 +4,10 @@ description: 静的パラメーターと動的パラメーターについて、�
 ms.date: 01/27/2021
 ms.topic: conceptual
 ms.openlocfilehash: 5dbf7ec02e89eac791ec3e17202a5ab13a04b81d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/27/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98918536"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>パラメーターを使用して動的ブループリントを作成する

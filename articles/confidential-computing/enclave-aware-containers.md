@@ -3,15 +3,16 @@ title: Azure 上のエンクレーブ対応コンテナー
 description: Azure Kubernetes Service (AKS) におけるエンクレーブ対応アプリケーション コンテナーのサポート
 author: agowdamsft
 ms.service: container-service
+ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: cdd886bfcfb02aa46e440d2574b241f9b1cf3134
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 0c9e7f98a9df7bfea6b0c6dd6d3c2cf1f6090ab0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564142"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932640"
 ---
 # <a name="enclave-aware-containers"></a>エンクレーブ対応コンテナー
 

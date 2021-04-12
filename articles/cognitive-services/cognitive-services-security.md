@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: erhopf
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: f14ac72443dedc8e33e607a82b2145c7ebf95ad2
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 66de81387fe27bd2a81ebcfeab7d86aac7031ff1
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368782"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102425296"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services のセキュリティ
 
@@ -29,13 +29,13 @@ HTTP 経由で公開されるすべての Cognitive Services エンドポイン�
 * HTTP の呼び出しに使用される言語 (およびプラットフォーム) では、要求の一部として TLS 1.2 を指定する必要があります
   * 言語とプラットフォームによっては、TLS の指定は暗黙的または明示的に行われます
 
-.NET ユーザーの場合は、<a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">トランスポート層セキュリティに関するベスト プラクティス<span class="docon docon-navigate-external x-hidden-focus"></span></a>を検討してください。
+.NET ユーザーの場合は、<a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">トランスポート層セキュリティに関するベスト プラクティス</a>を検討してください。
 
 ## <a name="authentication"></a>認証
 
-認証については、よく誤解されることがいくつかあります。 認証と承認は混同されることがよくあります。 ID も、セキュリティの主要なコンポーネントです。 ID は、<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">プリンシパル<span class="docon docon-navigate-external x-hidden-focus"></span></a>に関する情報のコレクションです。 ID プロバイダー (IdP) は、認証サービスに対して ID を提供します。 認証とは、ユーザーの ID を検証することです。 承認とは、特定の ID に対してリソースへのアクセス権と特権を指定することです。 Cognitive Services のいくつかのオファリングには、Azure ロールベースのアクセス制御 (Azure RBAC) が含まれています。 Azure RBAC を使用すると、プリンシパルの手動管理に関する手続きの一部を簡略化できます。 詳しくは、[Azure リソースに対する Azure ロールベースのアクセス制御](../role-based-access-control/overview.md)に関する記事を参照してください。
+認証については、よく誤解されることがいくつかあります。 認証と承認は混同されることがよくあります。 ID も、セキュリティの主要なコンポーネントです。 ID は、<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">プリンシパル</a>に関する情報のコレクションです。 ID プロバイダー (IdP) は、認証サービスに対して ID を提供します。 認証とは、ユーザーの ID を検証することです。 承認とは、特定の ID に対してリソースへのアクセス権と特権を指定することです。 Cognitive Services のいくつかのオファリングには、Azure ロールベースのアクセス制御 (Azure RBAC) が含まれています。 Azure RBAC を使用すると、プリンシパルの手動管理に関する手続きの一部を簡略化できます。 詳しくは、[Azure リソースに対する Azure ロールベースのアクセス制御](../role-based-access-control/overview.md)に関する記事を参照してください。
 
-サブスクリプション キー、アクセス トークン、Azure Active Directory (AAD) での認証について詳しくは、「<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Azure Cognitive Services に対する要求の認証<span class="docon docon-navigate-external x-hidden-focus"></span></a>」をご覧ください。
+サブスクリプション キー、アクセス トークン、Azure Active Directory (AAD) での認証について詳しくは、「<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Azure Cognitive Services に対する要求の認証</a>」をご覧ください。
 
 ## <a name="environment-variables-and-application-configuration"></a>環境変数とアプリケーションの構成
 
@@ -113,7 +113,7 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-詳しくは、「<a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a>」をご覧ください。
+詳細については、<a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` </a> を参照してください。
 
 ```csharp
 using static System.Environment;
@@ -132,7 +132,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-詳しくは、「<a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>」をご覧ください。
+詳細については、<a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` </a> を参照してください。
 
 ```cpp
 #include <stdlib.h>
@@ -147,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-詳しくは、「<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>」をご覧ください。
+詳しくは、「<a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` </a>」をご覧ください。
 
 ```java
 import java.lang.*;
@@ -164,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-詳しくは、「<a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a>」をご覧ください。
+詳しくは、「<a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` </a>」をご覧ください。
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -174,7 +174,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-詳しくは、「<a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a>」をご覧ください。
+詳細については、<a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` </a> を参照してください。
 
 ```python
 import os
@@ -185,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-詳しくは、「<a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a>」をご覧ください。
+詳しくは、「<a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` </a>」をご覧ください。
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -218,7 +218,7 @@ E0 SKU を使用するための機能を要求するには、この [要求フ
 Speech サービスでは、現在、カスタマー ロックボックスはサポートされていません。 ただし、独自のストレージの持ち込み (BYOS) を使用して顧客データを格納できるため、カスタマー ロックボックスと類似のデータ管理を実現できます。 Speech サービスのデータは保持され、Speech リソースが作成されたリージョンで処理されることに注意してください。 これは、保存データと転送中のデータに適用されます。 Custom Speech や Custom Voice などのカスタマイズ機能を使用する場合、顧客データはすべて、BYOS (使用されている場合) と Speech サービス リソースが存在しているのと同じリージョンで転送、格納、および処理されます。
 
 > [!IMPORTANT]
-> Microsoft では、Speech モデルを改善するためにお客様のデータを **使用するということはありません** 。 また、エンドポイントのログ記録が無効になっていて、カスタマイズが使用されていない場合、顧客データは格納されません。 
+> Microsoft では、Speech モデルを改善するためにお客様のデータを **使用するということはありません**。 また、エンドポイントのログ記録が無効になっていて、カスタマイズが使用されていない場合、顧客データは格納されません。 
 
 ## <a name="next-steps"></a>次のステップ
 

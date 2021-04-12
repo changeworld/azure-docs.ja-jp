@@ -1,18 +1,18 @@
 ---
 title: Azure Storage 用の組み込みポリシー定義
 description: Azure Storage 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、Azure リソースを管理するための一般的な方法を示します。
-ms.date: 02/09/2021
+ms.date: 03/31/2021
 ms.topic: reference
 author: tamram
 ms.author: tamram
 ms.service: storage
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 9a47965cdc96e83c47217a5718c5127a062b3709
-ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
+ms.openlocfilehash: 7872a5ca34c474c702e7f8cb0a72bb50bf71f563
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/10/2021
-ms.locfileid: "100098453"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106095583"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-storage"></a>Azure Storage 用の Azure Policy 組み込み定義
 
@@ -23,6 +23,14 @@ ms.locfileid: "100098453"
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 [!INCLUDE [azure-policy-reference-service-storage](../../../includes/policy/reference/byrp/microsoft.storage.md)]
+
+## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
+
+[!INCLUDE [azure-policy-reference-service-storagecache](../../../includes/policy/reference/byrp/microsoft.storagecache.md)]
+
+## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
+
+[!INCLUDE [azure-policy-reference-service-storagesync](../../../includes/policy/reference/byrp/microsoft.storagesync.md)]
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 

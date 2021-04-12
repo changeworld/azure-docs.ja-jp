@@ -5,16 +5,15 @@ author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
-ms.subservice: powershell
 ms.date: 11/08/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: e783f7f0a9be413679e509e4d6124d50bb811821
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c365e83c0208a5105d9396fb788966bbd4643ac
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87059280"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105934583"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットへのアプリケーションのインストール
 
@@ -154,14 +153,14 @@ Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select IpAddress
 次の手順で更新されたバージョンを確認できるように、Web ブラウザーを開いたままにしておきます。
 
 
-## <a name="update-app-deployment"></a>アプリのデプロイの更新
+## <a name="update-app-deployment&quot;></a>アプリのデプロイの更新
 スケール セットのライフサイクル全体にわたり、アプリケーションの更新されたバージョンをデプロイする必要があります。 カスタム スクリプト拡張機能を使用すると、更新されたデプロイ スクリプトを参照し、拡張機能をスケール セットに再適用することができます。 前の手順で作成したスケール セットでは、`-UpgradePolicyMode` が *Automatic* に設定されていました。 この設定により、スケール セット内の VM インスタンスは、自動的にアプリケーションを更新して最新バージョンを適用できます。
 
 *customConfigv2* という名前の新しい構成定義を作成します。 この定義では、アプリケーションのインストール スクリプトの更新された *v2* バージョンを実行します。
 
 ```azurepowershell-interactive
 $customConfigv2 = @{
-  "fileUris" = (,"https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/automate-iis-v2.ps1");
+  &quot;fileUris&quot; = (,&quot;https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/automate-iis-v2.ps1");
   "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File automate-iis-v2.ps1"
 }
 ```

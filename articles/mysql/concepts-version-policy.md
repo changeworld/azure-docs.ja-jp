@@ -1,5 +1,5 @@
 ---
-title: バージョン管理ポリシー - Azure Database for MySQL - シングル サーバーとフレキシブル サーバー (プレビュー)
+title: バージョン サポート ポリシー - Azure Database for MySQL - シングル サーバーとフレキシブル サーバー (プレビュー)
 description: Azure Database for MySQL における MySQL のメジャーおよびマイナー バージョンに関するポリシーについて説明します
 author: sr-msft
 ms.author: srranga
@@ -7,27 +7,33 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 8ad79f2f27864b4fbc78b7c104828230ff7f93bc
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591514"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "103465659"
 ---
-# <a name="azure-database-for-mysql-versioning-policy"></a>Azure Database for MySQL バージョン管理ポリシー
+# <a name="azure-database-for-mysql-version-support-policy"></a>Azure Database for MySQL バージョン サポート ポリシー
 
 このページでは、Azure Database for MySQL のバージョン管理ポリシーについて説明します。これは、Azure Database for MySQL - シングル サーバーと Azure Database for MySQL - フレキシブル サーバー (プレビュー) のデプロイ モードに適用できます。
 
 ## <a name="supported--mysql-versions"></a>サポートされる MySQL のバージョン
 
-Azure Database for MySQL では、次のデータベース バージョンがサポートされています。
+Azure Database for MySQL は、InnoDB ストレージ エンジンを使用して [MySQL Community Edition](https://www.mysql.com/products/community/) から開発されました。 このサービスは、コミュニティでサポートされている現在のメジャー バージョン (MySQL 5.6、5.7、8.0) をすべてサポートしています。 MySQL では、X.Y.Z の名前付けスキームが使用されています。ここで、X はメジャー バージョン、Y はマイナー バージョン、Z はバグ修正リリースです。 スキームの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)をご覧ください。
 
-| Version | シングル サーバー | フレキシブル サーバー (プレビュー) |
-| ----- | :------: | :----: |
-| MySQL 8 | X |  | 
-| MySQL 5.7 | X | X |
-| MySQL 5.6| X |  |
+> [!NOTE]
+> シングルサーバー デプロイ オプションでは、ゲートウェイを使用してサーバー インスタンスに接続がリダイレクトされます。 接続が確立すると、MySQL には、MySQL サーバー インスタンスで実行されている実際のバージョンではなく、ゲートウェイに設定されている MySQL のバージョンが表示されます。 MySQL サーバー インスタンスのバージョンを判断するには、MySQL プロンプトで `SELECT VERSION();` コマンドを使用します。
 
+Azure Database for MySQL では、現在、次の MySQL メジャーおよびマイナー バージョンがサポートされています。
+
+| Version | シングル サーバー <br/> 現行のマイナー バージョン |フレキシブル サーバー (プレビュー) <br/> 現行のマイナー バージョン  |
+|:-------------------|:-------------------------------------------|:---------------------------------------------|
+|MySQL バージョン 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (廃止) | サポートされていません|
+|MySQL バージョン 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|
+|MySQL バージョン 8.0 | [8.0.15](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html) | [8.0.21](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)|
+
+[バージョン サポート ポリシーのドキュメント](concepts-version-policy.md#retired-mysql-engine-versions-not-supported-in-azure-database-for-mysql)で、廃止されたバージョンのバージョン サポート ポリシーを参照してください。
 
 ## <a name="major-version-support"></a>メジャー バージョンのサポート
 MySQL の各メジャー バージョンは、[バージョン管理ポリシー](https://www.mysql.com/support/eol-notice.html)に記載されているように、Azure によってバージョンのサポートが開始される日付から MySQL コミュニティによってバージョンが提供終了されるまで、Azure Database for MySQL によってサポートされます。
@@ -50,7 +56,7 @@ Azure Database for MySQL では、定期的なメンテナンスの一環とし�
 各 MySQL データベース バージョンの提供終了日後も、提供終了したバージョンを引き続き実行する場合は、次の制限事項に注意してください。
 - コミュニティではバグの修正やセキュリティの修正プログラムがリリースされることはないため、Azure Database for MySQL には、提供終了したデータベース エンジンにバグやセキュリティ上の問題に対応するパッチが適用されたり、提供終了したデータベース エンジンに関してセキュリティ対策が実施されたりすることはありません。 ただし、Azure では、ホスト、OS、コンテナー、およびその他のサービス関連のコンポーネントに対して、定期的なメンテナンスとパッチの適用が引き続き実行されます。
 - MySQL データベースに関連するサポートの問題が発生した場合、Microsoft ではサポートを提供できない場合があります。 このような場合、Microsoft がサポートを提供するには、お客様がデータベースをアップグレードする必要があります。
-- 提供終了したバージョンの新しいデータベース サーバーを作成することはできません。 ただし、特定の時点への回復を実行し、既存のサーバーの読み取りレプリカを作成することはできます。
+<!-- - You will not be able to create new database servers for the retired version. However, you will be able to perform point-in-time recoveries and create read replicas for your existing servers. -->
 - Azure Database for MySQL で開発された新しいサービス機能は、サポートされているデータベース サーバーのバージョンでのみ使用できます。
 - アップタイム SLA は、Azure Database for MySQL のサービス関連の問題に対してのみ適用され、データベース エンジンに関連するバグに起因するダウンタイムには適用されません。  
 - サービスに深刻な脅威を及ぼす MySQL データベース エンジンの脆弱性が廃止されたデータベース バージョンに見つかった場合、Azure はサービスをセキュリティで保護するため、ユーザーのデータベース サーバーの計算ノードを停止する場合があります。 サーバーを稼働させる前に、サーバーをアップグレードするように求められます。 アップグレード プロセス中、データは常にサービスで実行される自動バックアップを使用して保護されます。これを使用すると、必要に応じて古いバージョンに戻すことができます。 

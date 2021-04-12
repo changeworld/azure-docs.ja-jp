@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: kumud
 ms.openlocfilehash: a7a21dcaea22ed0d1c077d0c42ddb5b4bd50d24f
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99539334"
 ---
 # <a name="partnering-with-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard との提携

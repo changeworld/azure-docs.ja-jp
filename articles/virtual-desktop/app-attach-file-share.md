@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+manager: femila
+ms.openlocfilehash: 1e7a956b358d486250fbfc26da141c47c0238b56
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97930788"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448391"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>MSIX アプリのアタッチ (プレビュー) 用にファイル共有を設定する
 

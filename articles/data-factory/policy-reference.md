@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.custom:
 - seo-lt-2019
 - references_regions
-ms.date: 12/3/2020
-ms.openlocfilehash: 9c0de85c4d8c5345db68ffbaf3f97793a3cb56dd
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/31/2021
+ms.openlocfilehash: 25e0db490493871cca1e79faa967f21d12af013f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100372843"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106094960"
 ---
 # <a name="azure-policy-built-in-definitions-for-data-factory-preview"></a>Data Factory 用の Azure Policy 組み込み定義 (プレビュー)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]

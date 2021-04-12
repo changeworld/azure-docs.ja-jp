@@ -7,10 +7,10 @@ ms.date: 11/26/2018
 ms.topic: reference
 ms.custom: devx-track-java
 ms.openlocfilehash: dd42752dc7ef2c7686073b7a2d780fe9356425c7
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99625585"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Service Fabric Mesh 用の Maven プラグイン

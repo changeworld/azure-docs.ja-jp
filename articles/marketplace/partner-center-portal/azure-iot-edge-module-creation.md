@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 23af7b3f7cfd5ec0531c5cac73cf8a334ef4aa62
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 9f07a6376e3fdde46e9e0cb161acc97c5771d905
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096442"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166753"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの作成
 
@@ -31,7 +31,7 @@ ms.locfileid: "99096442"
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
-**[オファー ID]** を入力します。 これは、ご自分のアカウント内の各オファーに対する一意の識別子です。
+**[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
 - 使用できるのは小文字と数字だけです。 ハイフンとアンダースコアを含めることができますが、スペースは使用できず、文字数は 50 文字に制限されています。 たとえば、「**test-offer-1**」と入力すると、オファーの Web アドレスは `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` になります。
@@ -172,7 +172,7 @@ IoT Edge モジュールのオファーには、説明の一番下に、次の�
 - **[タイトル]** - オファーの詳細ページでタイトルが顧客に表示されます。
 - **[リンク (URL)]** - 顧客がオンライン ドキュメントを閲覧するためのリンクを入力します。 リンクは `http://` または `https://` で始まっている必要があります。
 
-少なくともドキュメントへのリンクを 1 つと、 [Azure IoT デバイス カタログ](https://catalog.azureiotsolutions.com/)に記載されている互換性のある IoT Edge デバイスへのリンクを 1 つ、追加するようにしてください。
+少なくともドキュメントへのリンクを 1 つと、 [Azure IoT デバイス カタログ](https://devicecatalog.azure.com/)に記載されている互換性のある IoT Edge デバイスへのリンクを 1 つ、追加するようにしてください。
 
 ### <a name="contact-information"></a>連絡先情報
 

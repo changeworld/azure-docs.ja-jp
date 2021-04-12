@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: yelevin
 ms.openlocfilehash: bb188aa79015c2123b9d9d8b6baf277dfadf2f9c
-ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/21/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "98633046"
 ---
 # <a name="connect-azure-defender-alert-data-from-azure-security-center"></a>Azure Security Center からの Azure Defender アラート データを接続する

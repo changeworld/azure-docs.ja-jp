@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 869defde657c9cb4c8bea6bbacebb9458e5a2b96
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 7726795582ffa3d85601ec123b58ab705442ef67
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88008816"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106444995"
 ---
 # <a name="data-locations-for-windows-virtual-desktop-classic"></a>Windows Virtual Desktop (クラシック) のデータの場所
 

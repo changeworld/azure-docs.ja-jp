@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9291d53822f0fbb80f759908933db58f2224c3d7
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: b3e05e3f67de03aa300fb650d23357286ee71c52
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101091903"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105960247"
 ---
 # <a name="cli-example-create-and-submit-a-job"></a>CLI の例: ジョブの作成と送信
 
@@ -30,7 +30,7 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 
 ## <a name="prerequisites"></a>前提条件 
 
-[Media Services アカウントを作成する](./create-account-howto.md)
+[Media Services アカウントを作成する](./account-create-how-to.md)
 
 ## <a name="example-script"></a>サンプル スクリプト
 
@@ -88,4 +88,4 @@ az ams job start \
 
 ## <a name="next-steps"></a>次のステップ
 
-[az ams job (CLI)](/cli/azure/ams/job?view=azure-cli-latest)
+[az ams job (CLI)](/cli/azure/ams/job)

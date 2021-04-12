@@ -3,19 +3,14 @@ title: Azure ディスク バックアップでのバックアップ エラー�
 description: Azure ディスク バックアップでのバックアップ エラーをトラブルシューティングする方法について説明します。
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f6e9bcbbd618cf820ce91f8a3092d5be4aa045cb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737729"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105107246"
 ---
-# <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Azure ディスク バックアップでのバックアップ エラーのトラブルシューティング (プレビュー)
-
->[!IMPORTANT]
->Azure ディスク バックアップはサービス レベル アグリーメントのないプレビュー段階であるため、運用環境のワークロードに使用することはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 利用可能なリージョンについては、[サポート マトリックス](disk-backup-support-matrix.md)に関するページをご覧ください。
->
->プレビューにサインアップするには、[こちらフォームに記入](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)してください。
+# <a name="troubleshooting-backup-failures-in-azure-disk-backup"></a>Azure ディスク バックアップでのバックアップ エラーのトラブルシューティング
 
 この記事では、Azure ディスクで発生するバックアップと復元に関する問題のトラブルシューティングについて説明します。 [Azure ディスク バックアップ](disk-backup-overview.md)の利用可能なリージョン、サポートされるシナリオ、制限事項の詳細については、[サポート マトリックス](disk-backup-support-matrix.md)に関するページをご覧ください。
 
@@ -157,7 +152,7 @@ ms.locfileid: "98737729"
 
 エラー メッセージ:Disk Backup is not yet available in the region of the Backup Vault under which Configure Protection is being tried. (ディスクのバックアップは、保護の構成が試行されているバックアップ コンテナーのリージョンではまだ使用できません。)
 
-推奨される操作:バックアップ コ ンテナーは、プレビューがサポートされているリージョンに存在しなければなりません。 利用可能なリージョンについては、[サポート マトリックス](disk-backup-support-matrix.md)に関するページを参照してください。
+推奨される操作: バックアップ コ ンテナーは、サポートされているリージョンに存在しなければなりません。 利用可能なリージョンについては、[サポート マトリックス](disk-backup-support-matrix.md)に関するページを参照してください。
 
 ### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Error Code:UserErrorDppDatasourceAlreadyHasBackupInstance
 

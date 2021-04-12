@@ -5,13 +5,13 @@ author: Heidilohr
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 0dcf21190b52f966dafb9caa9ae28fdf9b99ba86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+manager: femila
+ms.openlocfilehash: 65ef7af1247fdb38a7c85c1a8134257942f5ef5b
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88007575"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106447031"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
 
@@ -46,7 +46,7 @@ Windows Virtual Desktop で Windows 7 VM を設定するには、次のように
      shutdown /r /t 0
      ```
 
-12. [こちら](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo?view=azps-4.3.0)の指示に従って、登録トークンを取得します。
+12. [こちら](/powershell/module/az.desktopvirtualization/new-azwvdregistrationinfo)の指示に従って、登録トークンを取得します。
 
       - 代わりに Azure portal を使用する場合、VM を追加するホスト プールの [概要] ページに進み、そこでトークンを作成することもできます。
 

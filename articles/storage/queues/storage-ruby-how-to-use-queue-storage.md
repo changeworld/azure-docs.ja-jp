@@ -1,19 +1,19 @@
 ---
 title: Ruby から Queue Storage を使用する方法 - Azure Storage
 description: Azure Queue Storage を使用して、キューの作成と削除のほか、メッセージの挿入、取得、および削除を行う方法を説明します。 コード サンプルは Ruby で記述されています。
-author: mhopkins-msft
-ms.author: mhopkins
+author: twooley
+ms.author: twooley
 ms.reviewer: dineshm
 ms.date: 12/08/2016
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
-ms.openlocfilehash: 8558949e49bcf551c9276458d375fb9ac9636184
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 257b435f0136884e8568f4201794a7ce5cf0c209
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587664"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106275857"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby から Queue Storage を使用する方法
 

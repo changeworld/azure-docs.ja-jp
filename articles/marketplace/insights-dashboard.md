@@ -4,15 +4,15 @@ description: パートナー センターのマーケットプレース Web 分�
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 11/09/2020
+ms.date: 03/23/2021
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 9089fee7565633b198043efeed929fc7446437d5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: f6ed2029ec333120e3942570c951f5da6e846c7a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458290"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104953274"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析の [Marketplace の分析情報] ダッシュボード
 
@@ -103,6 +103,21 @@ Marketplace の分析情報ダッシュボードにはクリックストリー�
 
 > [!TIP]
 > ウィジェットの右上隅にあるダウンロード アイコンを使用して、データをダウンロードできます。 "サムズアップ" アイコンまたは "サムズダウン" アイコンをクリックすることで、各ウィジェットに関するフィードバックを提供できます。
+
+| 列名<br>ユーザー インターフェイス | 属性名 | 定義 | プログラムによるアクセス<br>レポートの列名 |
+| ------------ | ------------- | ------------- | ------------- |
+| Date | アクセスした日 | Azure Marketplace や AppSource のプランのページにアクセスした日付、またはそのページで CTA クリック イベントが生成された日付。 | Date |
+| プラン名 | プラン名 | コマーシャル マーケットプレース オファリングの名前。 | OfferName |
+| 参照ドメイン | 参照ドメイン | ページ アクセスが発生した参照ドメインの名前。 ページ アクセス用にキャプチャされた参照ドメインがない場合、対応するエントリは "参照ドメインが存在しません" です。 |  ReferralDomain |
+| 国名 | 国名 | ページ アクセスが発生した国の名前。 | CountryName |
+| ページ アクセス | ページ アクセス | 特定の日付のプラン名に関連付けられているページ アクセスの数。 | PageVisits |
+| 今すぐ入手する | 今すぐ入手する | 特定の日付について、プランのページの "今すぐ入手する" CTA のクリック回数。 | GetItNow |
+| お問い合わせ | お問い合わせ | 特定の日付について、プランのページの "お問い合わせ" CTA のクリック回数。 | ContactMe |
+| 体験版 | 体験版 | 特定の日付について、プランのページの "体験版" CTA のクリック回数。 | TestDrive |
+| 無料試用版 | 無料試用版 | 特定の日付について、プランのページの "無料試用版" CTA のクリック回数。 | FreeTrial |
+| キャンペーン | キャンペーンの名前 | キャンペーン名に照らして Web テレメトリ (ページ アクセスと CTA クリック) を把握する機能。 | キャンペーン |
+| 該当なし | サイト | ページ アクセスまたは CTA クリックの発生元となったネットショップの名前。 次の値を指定できます。<br><ul><li>AZUREMARKETPLACE<li>APPSOURCE</ul> | サイト |
+|
 
 ## <a name="next-steps"></a>次のステップ
 

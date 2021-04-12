@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6f7b79b6e3e72b34a27e5b4f0e1fb5426c539699
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 721fbaf1a3b2418677d07e8ac39fa733164c1459
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035242"
+ms.lasthandoff: 03/20/2021
+ms.locfileid: "102179563"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>クイック スタート:Kotlin と Maven を使用して初めての関数を作成する
 
@@ -158,7 +158,7 @@ Hello LocalFunction!
 
 ## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
-Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)します。
+Azure Functions へのデプロイ プロセスでは、Azure CLI からアカウントの資格情報を使います。 続行する前に、[Azure CLI にサインイン](/cli/azure/authenticate-azure-cli)します。
 
 ```azurecli
 az login

@@ -3,14 +3,14 @@ title: Azure Automation データ セキュリティ
 description: この記事では、Azure Automation でお客様のプライバシーとデータを保護するしくみについて説明します。
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/08/2021
+ms.date: 03/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: f2ce8d482231b4a95c322e9d495a75f89953c32a
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.openlocfilehash: c3d1dfc5d6ea16a128f5f3bc1129f5f50bc9cb61
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100581103"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "104954675"
 ---
 # <a name="management-of-azure-automation-data"></a>Azure Automation データの管理
 
@@ -22,11 +22,11 @@ Azure Automation に転送中のデータのセキュリティを確保するに
 
 * Webhook 呼び出し
 
-* Hybrid Runbook Worker。Update Management、Change Tracking、Inventory によって管理されるコンピューターが含まれます。
+* Hybrid Runbook Worker。Update Management および変更履歴とインベントリによって管理されるコンピューターが含まれます。
 
 * DSC ノード
 
-以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 エージェントで TLS 1.2 のみを使用するように明示的に設定することは、絶対に必要な場合を除いてお勧めしません。なぜなら、そうすることで、TLS 1.3 などのより新しいよくより安全なプロトコルを自動的に検出して利用できるようにするプラットフォーム レベルのセキュリティ機能が無効になる可能性があるためです。
+以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。 エージェントで TLS 1.2 のみを使用するように明示的に設定することは、必要な場合を除いてお勧めしません。なぜなら、そうすることで、TLS 1.3 など、より新しく、より安全なプロトコルを自動的に検出して利用できるようにするプラットフォーム レベルのセキュリティ機能が無効になる可能性があるためです。
 
 Windows および Linux 用の Log Analytics エージェントでの TLS 1.2 サポート (これは Hybrid Runbook Worker ロールの依存関係です) については、[Log Analytics エージェントの概要の TLS 1.2 に関する記述](..//azure-monitor/agents/log-analytics-agent.md#tls-12-protocol)を参照してください。
 
@@ -41,7 +41,7 @@ Windows および Linux 用の Log Analytics エージェントでの TLS 1.2 �
 
 ## <a name="data-retention"></a>データの保持
 
-Azure Automation でリソースを削除すると、完全に削除される前に、監査目的に応じた日数だけ保持されます。 この期間にリソースを表示または使用することはできません。 このポリシーは、削除された Automation アカウントに属するリソースにも適用されます。
+Azure Automation でリソースを削除すると、完全に削除される前に、監査目的に応じた日数だけ保持されます。 この期間にリソースを表示または使用することはできません。 このポリシーは、削除された Automation アカウントに属するリソースにも適用されます。 保持ポリシーはすべてのユーザーに適用され、現在カスタマイズすることはできません。 ただし、さらに長くデータを保持する必要がある場合は、[Azure Automation ジョブのデータを Azure Monitor ログに転送する](automation-manage-send-joblogs-log-analytics.md)ことができます。
 
 次の表は、さまざまなリソースの保持ポリシーをまとめたものです。
 
@@ -54,9 +54,9 @@ Azure Automation でリソースを削除すると、完全に削除される前
 | モジュール |モジュールは、ユーザーによって削除された日から 30 日後、またはモジュールを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます。 |
 | ノード構成/MOF ファイル |古いノード構成は、新しいノード構成が生成された日から 30 日後に、完全に消去されます。 |
 | ノード レポート |ノード レポートは、そのノードの新しいレポートが生成されてから 90 日後に、完全に消去されます。 |
-| Runbooks |Runbook は、ユーザーによってリソースが削除された日から 30 日後、またはリソースを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます。 |
+| Runbooks |Runbook は、ユーザーによってリソースが削除された日から 30 日後、またはリソースを保持するアカウントがユーザーによって削除された日から 30 日後に、完全に消去されます<sup>1</sup>。 |
 
-保持ポリシーはすべてのユーザーに適用され、現在カスタマイズすることはできません。 ただし、さらに長くデータを保持する必要がある場合は、[Azure Automation ジョブのデータを Azure Monitor ログに転送する](automation-manage-send-joblogs-log-analytics.md)ことができます。
+<sup>1</sup>Runbook は、Microsoft Azure サポートに Azure サポート インシデントを提出することで、30 日以内に復旧できます。 [Azure サポート サイト](https://azure.microsoft.com/support/options/)にアクセスし、 **[サポート リクエストの送信]** を選択してください。
 
 ## <a name="data-backup"></a>[データ バックアップ]
 
@@ -68,7 +68,7 @@ Azure Portal または Windows PowerShell の [Get-AzureAutomationRunbookDefinit
 
 ### <a name="integration-modules"></a>統合モジュール
 
-Azure Automation から統合モジュールをエクスポートすることはできません。 Automation アカウントの外部で使用できるようにする必要があります。
+Azure Automation から統合モジュールをエクスポートすることはできないため、Automation アカウントの外部で使用できるようにする必要があります。
 
 ### <a name="assets"></a>アセット
 
@@ -84,7 +84,10 @@ Azure portal または Windows PowerShell の [Export-AzAutomationDscConfigurati
 
 Azure Automation アカウントでは geo レプリケーションが標準です。 アカウントを設定するときに、プライマリ リージョンを選択します。 内部の Automation geo レプリケーション サービスによって、セカンダリ リージョンが自動的にアカウントに割り当てられます。 その後、サービスによって、プライマリ リージョンからセカンダリ リージョンにアカウント データが継続的にバックアップされます。 プライマリ リージョンとセカンダリ リージョンの完全な一覧については、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」をご覧ください。
 
-Automation の geo レプリケーション サービスによって作成されるバックアップは、Automation のアセットや構成などの完全なコピーです。 プライマリ リージョンがダウンしてデータが失われた場合、このバックアップを使用できます。 万一、プライマリ リージョンのデータが失われた場合、Microsoft によってその復旧が試みられます。 プライマリ データを復旧できない場合は、自動フェールオーバーが使用され、Azure サブスクリプションを通じて状況が通知されます。
+Automation の geo レプリケーション サービスによって作成されるバックアップは、Automation のアセットや構成などの完全なコピーです。 プライマリ リージョンがダウンしてデータが失われた場合、このバックアップを使用できます。 万一、プライマリ リージョンのデータが失われた場合、Microsoft によってその復旧が試みられます。
+
+> [!NOTE]
+> Azure Automation では、お客様が選択したリージョンにお客様のデータが格納されます。 ブラジル南部と東南アジアを除くすべてのリージョンでは、BCDR の目的で Azure Automation データが別のリージョン (Azure ペア リージョン) に格納されます。 ブラジル地域のブラジル南部 (サンパウロ州) のリージョンとアジア太平洋地域の東南アジアのリージョン (シンガポール) の場合のみ、これらのリージョンのデータ所在地の要件に対応するために、Azure Automation データが同じリージョンに格納されます。
 
 リージョンで障害が発生した場合、外部のお客様が Automation の geo レプリケーション サービスに直接アクセスすることはできません。 リージョンで障害が発生したときに Automation の構成と Runbook を維持した場合は、次のようにします。
 

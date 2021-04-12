@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 1be7331b0c2309350316d1c88c54e6018400463c
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 6abba38386bf2b3386b00891bc25584b33066595
+ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98789349"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106121066"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -40,9 +40,9 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 はい、ExpressRoute 回線の帯域幅は二重です。 たとえば、200 Mbps の ExpressRoute 回線を購入した場合、イングレス トラフィックの場合は 200 Mbps、エグレス トラフィックの場合は 200 Mbps を調達していることになります。
 
-### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、ネットワーク サービス プロバイダーから同じ速度の VPN 接続を購入する必要がありますか。
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-private-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、ネットワーク サービス プロバイダーから購入するプライベート接続は同じ速度である必要がありますか。
 
-いいえ。 サービス プロバイダーから任意の速度の VPN 接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
+いいえ。 サービス プロバイダーから任意の速度のプライベート接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-use-more-than-my-procured-bandwidth"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、購入した帯域幅を超えて使用することはできますか。
 
@@ -60,7 +60,7 @@ ExpressRoute ゲートウェイでは、Azure VNet の "*アドレス空間*" �
 
 ### <a name="how-many-prefixes-can-be-advertised-from-a-vnet-to-on-premises-on-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングで VNet からオンプレミスにアドバタイズできるプレフィックスの数はどのくらいですか?
 
-1 つの ExpressRoute 接続で、またはゲートウェイ転送を使用する VNet ピアリングによって、最大 200 のプレフィクスがアドバタイズされます。 たとえば、ExpressRoute 回線に接続された 1 つの VNet に 199 個のアドレス空間がある場合、それらのプレフィックスの 199 個すべてがオンプレミスにアドバタイズされます。 または、"リモート ゲートウェイを許可する" オプションを使用して、1 つのアドレス空間と 150 個のスポーク VNet が有効になったゲートウェイ転送を許可するように VNet が有効になっている場合は、ゲートウェイでデプロイされた VNet は 151 個のプレフィックスをオンプレミスにアドバタイズします。
+1 つの ExpressRoute 接続で、またはゲートウェイ転送を使用する VNet ピアリングによって、最大 1000 のプレフィックスがアドバタイズされます。 たとえば、ExpressRoute 回線に接続された 1 つの VNet に 999 個のアドレス空間がある場合、それらのプレフィックスの 999 個すべてがオンプレミスにアドバタイズされます。 または、"リモート ゲートウェイを許可する" オプションを使用して、1 つのアドレス空間と 500 個のスポーク VNet が有効になったゲートウェイ転送を許可するように VNet が有効になっている場合は、ゲートウェイでデプロイされた VNet は 501 個のプレフィックスをオンプレミスにアドバタイズします。
 
 ### <a name="what-happens-if-i-exceed-the-prefix-limit-on-an-expressroute-connection"></a>ExpressRoute 接続のプレフィックス制限を超えるとどうなりますか?
 
@@ -104,6 +104,7 @@ ExpressRoute 回線が Azure Microsoft ピアリングに対して有効にな�
 * [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * Multi-Factor Authentication Server (レガシ)
 * Traffic Manager
+* Logic Apps
 
 ### <a name="public-peering"></a>パブリック ピアリング
 
@@ -170,7 +171,7 @@ Microsoft ピアリングを使用して Azure のパブリック サービス (
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>ExpressRoute に接続されている仮想ネットワークで高可用性を確保する方法
 
-同じピアリング場所にある最大 4 つの ExpressRoute 回線を仮想ネットワークに接続するか、別のピアリング場所 (例: Singapore、Singapore2) にある ExpressRoute 回線を仮想ネットワークに接続することで、高可用性を実現できます。 1 つの ExpressRoute サイトがダウンした場合、接続は別の ExpressRoute サイトにフェールオーバーされます。 仮想ネットワークを離れるトラフィックは、既定で Equal Cost Multi-path Routing (ECMP) に基づいてルーティングされます。 接続の重みを使用して、ある回線を別の回線よりも優先することができます。 詳細については、「[ExpressRoute ルーティングの最適化](expressroute-optimize-routing.md)」を参照してください。
+同じピアリング場所にある最大 16 個の ExpressRoute 回線を仮想ネットワークに接続するか、別のピアリング場所 (例: Singapore、Singapore2) にある ExpressRoute 回線を仮想ネットワークに接続することで、高可用性を実現できます。 1 つの ExpressRoute サイトがダウンした場合、接続は別の ExpressRoute サイトにフェールオーバーされます。 仮想ネットワークを離れるトラフィックは、既定で Equal Cost Multi-path Routing (ECMP) に基づいてルーティングされます。 接続の重みを使用して、ある回線を別の回線よりも優先することができます。 詳細については、「[ExpressRoute ルーティングの最適化](expressroute-optimize-routing.md)」を参照してください。
 
 ### <a name="how-do-i-ensure-that-my-traffic-destined-for-azure-public-services-like-azure-storage-and-azure-sql-on-microsoft-peering-or-public-peering-is-preferred-on-the-expressroute-path"></a>Microsoft ピアリングまたはパブリック ピアリングで Azure Storage や Azure SQL などの Azure パブリック サービス宛てのトラフィックが、ExpressRoute パスで確実に優先されるようにするにはどうしたらよいですか?
 
@@ -258,9 +259,13 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 はい。 同じ ExpressRoute 回線に接続されている仮想ネットワークにデプロイされた仮想マシンは互いに通信できます。 この通信を容易にするために、[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)を設定することをお勧めします。
 
-### <a name="can-i-use-site-to-site-connectivity-for-virtual-networks-in-conjunction-with-expressroute"></a>仮想ネットワーク用のサイト間接続を、ExpressRoute と併用できますか。
+### <a name="can-i-set-up-a-site-to-site-vpn-connection-to-my-virtual-network-in-conjunction-with-expressroute"></a>ExpressRoute と組み合わせて、仮想ネットワークへのサイト間 VPN 接続を設定できますか。
 
 はい。 ExpressRoute は、サイト間 VPN と共存できます。 「[ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)」をご覧ください。
+
+### <a name="how-do-i-enable-routing-between-my-site-to-site-vpn-connection-and-my-expressroute"></a>サイト間 VPN 接続と ExpressRoute の間のルーティングを有効にするにはどうすればいいですか。
+
+ExpressRoute に接続されているブランチと、サイト間 VPN 接続に接続されているブランチとの間のルーティングを有効にするには、[Azure Route Server](../route-server/expressroute-vpn-support.md) をセットアップする必要があります。
 
 ### <a name="why-is-there-a-public-ip-address-associated-with-the-expressroute-gateway-on-a-virtual-network"></a>仮想ネットワークで ExpressRoute ゲートウェイに関連付けられているパブリック IP アドレスが存在するのはなぜですか。
 
@@ -293,6 +298,15 @@ BGP セッションが切断されます。 プレフィックス数が上限未
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>ExpressRoute 回線の帯域幅を変更するには、どうすればいいですか。
 
 REST API や PowerShell コマンドレットを使用して、ExpressRoute 回線の帯域幅を更新できます。
+
+### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>ExpressRoute 回線でメンテナンスに関する通知を受け取りました。 このメンテナンスによってどのような技術的影響がありますか。
+
+[アクティブ/アクティブ モード](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute#active-active-connections)で回線を操作する場合は、メンテナンス中の影響は最小限かまったくありません。 回線のプライマリ接続とセカンダリ接続については、個別にメンテナンスを実行します。 通常、予定メンテナンスは、ピアリングの場所のタイム ゾーンで営業時間外に実行されるため、メンテナンス時間を選択することはできません。
+
+### <a name="i-received-a-notification-about-a-software-upgrade-or-maintenance-on-my-expressroute-gateway-what-is-the-technical-impact-of-this-maintenance"></a>Azure ExpressRoute ゲートウェイでソフトウェアのアップグレードまたはメンテナンスに関する通知を受け取りました。 このメンテナンスによってどのような技術的影響がありますか。
+
+ゲートウェイでのソフトウェアのアップグレードやメンテナンス中の影響は最小限かまったくありません。 Azure ExpressRoute ゲートウェイは複数のインスタンスで構成され、アップグレード中にインスタンスは一度に 1 つずつオフラインになります。 ゲートウェイでサポートされる仮想ネットワークへのネットワーク スループットが一時的に低下する可能性がありますが、ゲートウェイ自体にダウンタイムが発生することはありません。
+
 
 ## <a name="expressroute-premium"></a>ExpressRoute Premium
 

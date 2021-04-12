@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 6455e4c9fa9460e47e3be7c860f89be540a514b0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 240d3872536e6974d7f65eed22dace6816844e9e
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453077"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "103200206"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro"></a>Azure Stack Edge Pro のアクセス、電源、接続モードを管理する
 
@@ -80,7 +80,7 @@ Microsoft Graph API へのアクセスをユーザーに提供する方法の詳
 
 何らかのリソースを作成しようとする前に、サブスクリプションにリソース プロバイダーが登録されていることを確認してください。 リソース プロバイダーが登録されていない場合、新しいリソースを作成しようとしているユーザーが、必要なリソース プロバイダーをサブスクリプション レベルで登録するための十分な権限を持っていることを確認する必要があります。 これも行われていない場合、次のエラーが表示されます。
 
-*次のリソース プロバイダーを登録するためのアクセス許可がサブスクリプション \<Subscription name> にありません:Microsoft.DataBoxEdge*
+次のリソース プロバイダーを登録するためのアクセス許可が *サブスクリプション \<Subscription name> にありません:Microsoft.DataBoxEdge*
 
 
 現在のサブスクリプションに登録されているリソース プロバイダーの一覧を取得するには、次のコマンドを実行します。
@@ -103,7 +103,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 
 - **完全接続** - これは、デバイスが動作する通常の既定モードです。 このモードでは、データのクラウドのアップロードとダウンロードの両方が有効です。 Azure portal またはローカル Web UI を使用して、デバイスを管理できます。
 
-- **部分切断** – このモードでは、デバイスは共有データをアップロードもダウンロードもできませんが、Azure portal からデバイスを管理することはできます。
+- **部分接続** – このモードでは、デバイスは共有データをアップロードもダウンロードもできませんが、Azure portal からデバイスを管理することはできます。
 
     このモードは通常、従量制課金のサテライト ネットワークで使用され、目的はネットワーク帯域幅の消費量を最小限に抑えることです。 デバイス監視操作のため、最小限のネットワーク消費が発生する可能性があります。
 

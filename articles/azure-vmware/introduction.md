@@ -2,13 +2,13 @@
 title: はじめに
 description: Azure で VMware ベースのワークロードをデプロイして管理するための、Azure VMware Solution の機能とメリットについて学習します。
 ms.topic: overview
-ms.date: 11/11/2020
-ms.openlocfilehash: 255d3599385c60d3b13f4769796ced41a1177311
-ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
+ms.date: 03/24/2021
+ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/17/2021
-ms.locfileid: "100579291"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106107990"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Azure VMware Solution とは
 
@@ -55,6 +55,9 @@ Azure VMware Solution をサブスクリプションにデプロイすると、[
 
 Azure VMware Solution における監視パターンは、IaaS プラットフォーム内の Azure VM に似ています。 詳細と操作方法については、[Azure Monitor を使用した Azure VM の監視](../azure-monitor/vm/monitor-vm-azure.md)に関する記事をご覧ください。
 
+## <a name="customer-communication"></a>顧客とのコミュニケーション
+[!INCLUDE [customer-communications](includes/customer-communications.md)]
+
 ## <a name="next-steps"></a>次のステップ
 
 次の手順では、重要な[プライベート クラウドとクラスターの概念](concepts-private-clouds-clusters.md)について学習します。
@@ -63,3 +66,5 @@ Azure VMware Solution における監視パターンは、IaaS プラットフ�
 
 <!-- LINKS - internal -->
 [concepts-private-clouds-clusters]: ./concepts-private-clouds-clusters.md
+
+

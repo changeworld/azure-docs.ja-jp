@@ -6,10 +6,10 @@ ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1fda83ec00bed0f0c67d45e1e1af61baa5de5e78
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/06/2021
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "99626758"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh の用語

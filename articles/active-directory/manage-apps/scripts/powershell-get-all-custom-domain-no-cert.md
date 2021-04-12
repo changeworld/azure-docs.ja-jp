@@ -11,14 +11,14 @@ ms.topic: sample
 ms.date: 12/05/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: b197206529ca27a2e22cddd64755a9cfee97d44f
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: f4b661ee66d3fb045dfa4891f1f1c1643927167c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99253681"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105044041"
 ---
-# <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>証明書をアップロードせずに公開されたすべての Azure AD プロキシ アプリケーション アプリを取得する
+# <a name="get-all-application-proxy-apps-published-with-no-certificate-uploaded"></a>証明書をアップロードせずに公開されたすべてのアプリケーション プロキシ アプリを取得する
 
 この PowerShell スクリプトの例では、カスタム ドメインを使用しているが、有効な TLS/SSL 証明書がアップロードされていないすべての Azure Active Directory (Azure AD) アプリケーション プロキシ アプリを一覧表示します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "99253681"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-このサンプルには、[Graph 用 AzureAD V2 PowerShell モジュール](/powershell/azure/active-directory/install-adv2) (AzureAD) または [Graph 用 AzureAD V2 PowerShell モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview) が必要です。
+このサンプルでは、[AzureAD V2 PowerShell for Graph モジュール](/powershell/azure/active-directory/install-adv2) (AzureAD)、または[AzureAD V2 PowerShell for Graph モジュール プレビュー バージョン](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview&preserve-view=true) (AzureADPreview) が必要です。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
@@ -36,7 +36,7 @@ ms.locfileid: "99253681"
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-| command | Notes |
+| command | メモ |
 |---|---|
 |[Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal) | サービス プリンシパルを取得します。 |
 |[Get-AzureADApplication](/powershell/module/azuread/get-azureadapplication) | Azure AD アプリケーションを取得します。 |

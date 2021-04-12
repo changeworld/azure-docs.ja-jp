@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: jamesfit
 author: jimmyfit
 ms.date: 01/29/2021
-ms.openlocfilehash: 096d16bb2c7249ec99f37fbee9d8ffc8f0e45db2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 73135d95a56dc03790b3b7368a276ebfc99275fd
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102050768"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105025069"
 ---
 # <a name="collecting-event-tracing-for-windows-etw-events-for-analysis-azure-monitor-logs"></a>Azure Monitor Logs で分析する Windows イベント トレーシング (ETW) イベントの収集
 
@@ -71,7 +71,7 @@ ETW プロバイダーの名前と GUID を記録します。これは、イベ�
 
 ### <a name="step-4-configure-log-analytics-storage-account-collection"></a>手順 4:Log Analytics ストレージ アカウント コレクションを構成する
 
-[この手順](https://docs.microsoft.com/azure/azure-monitor/essentials/diagnostics-extension-logs#collect-logs-from-azure-storage)に従って、Azure Storage からログを収集します。 構成が完了すると、ETW イベント データが Log Analytics の **ETWEvent** テーブルに表示されます。
+[この手順](./diagnostics-extension-logs.md#collect-logs-from-azure-storage)に従って、Azure Storage からログを収集します。 構成が完了すると、ETW イベント データが Log Analytics の **ETWEvent** テーブルに表示されます。
 
 ## <a name="next-steps"></a>次のステップ
 - [カスタム フィールド](../logs/custom-fields.md)を使用して ETW イベントの構造を作成します

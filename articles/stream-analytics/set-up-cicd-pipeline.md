@@ -7,12 +7,12 @@ ms.author: sujie
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/10/2020
-ms.openlocfilehash: b601a3586cfa971b2e8337a914f4e10bb0178ba0
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 82a2c3047f851c9fbc273cd13e730572c38b6bcd
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014248"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105640378"
 ---
 # <a name="use-azure-devops-to-create-a-cicd-pipeline-for-a-stream-analytics-job"></a>Azure DevOps を使用して Stream Analytics ジョブの CI/CD パイプラインを作成する
 
@@ -20,27 +20,27 @@ ms.locfileid: "98014248"
 
 ## <a name="commit-your-stream-analytics-project"></a>Stream Analytics プロジェクトをコミットする
 
-開始する前に、Stream Analytics プロジェクトをソース ファイルとして [Azure DevOps](/azure/devops/user-guide/source-control) リポジトリにコミットします。 この[サンプル リポジトリ](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo)と [Stream Analytics プロジェクト ソース コード](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject)を Azure Pipelines で参照できます。
+開始する前に、Stream Analytics プロジェクトをソース ファイルとして [Azure DevOps](/azure/devops/user-guide/source-control) リポジトリにコミットします。 この[サンプル リポジトリ](https://dev.azure.com/ASA-CICD-sample/azure-streamanalytics-cicd-demo)と [Stream Analytics プロジェクト ソース コード](https://dev.azure.com/ASA-CICD-sample/_git/azure-streamanalytics-cicd-demo)を Azure Pipelines で参照できます。
 
 この記事の手順では、Stream Analytics Visual Studio Code プロジェクトを使用します。 Visual Studio プロジェクトを使用している場合は、「[CI/CD ツールを使用して Azure Stream Analytics ジョブのビルド、テスト、デプロイを自動化する](cicd-tools.md)」の手順に従ってください。
 
 ## <a name="create-a-build-pipeline"></a>ビルド パイプラインを作成する
 
-このセクションでは、ビルド パイプラインを作成する方法について説明します。 この[ビルドとテストの自動パイプライン](https://dev.azure.com/wenyzou/_git/azure-streamanalytics-cicd-demo?path=%2FmyASAProject) サンプルは、Azure DevOps から参照できます。
+このセクションでは、ビルド パイプラインを作成する方法について説明します。 
 
 1. Web ブラウザーを開き、Azure DevOps で目的のプロジェクトに移動します。  
 
-1. 左側のナビゲーション メニューの **[パイプライン]** で、**[ビルド]** を選択します。 **[新しいパイプライン]** を選択します。
+2. 左側のナビゲーション メニューの **[パイプライン]** で、**[ビルド]** を選択します。 **[新しいパイプライン]** を選択します。
 
    :::image type="content" source="media/set-up-cicd-pipeline/new-pipeline.png" alt-text="新しい Azure パイプラインの作成":::
 
-1. **[従来のエディターを使用する]** を選択して、YAML なしでパイプラインを作成します。
+3. **[従来のエディターを使用する]** を選択して、YAML なしでパイプラインを作成します。
 
-1. ソースの種類、チーム プロジェクト、リポジトリを選択します。 その後、 **[続行]** を選択します。
+4. ソースの種類、チーム プロジェクト、リポジトリを選択します。 その後、 **[続行]** を選択します。
 
    :::image type="content" source="media/set-up-cicd-pipeline/select-repo.png" alt-text="Azure Stream Analytics プロジェクトの選択":::
 
-1. **[テンプレートの選択]** ページで、**[空のジョブ]** を選択します。
+5. **[テンプレートの選択]** ページで、**[空のジョブ]** を選択します。
 
 ## <a name="install-npm-package"></a>npm パッケージをインストールする
 
@@ -55,6 +55,22 @@ ms.locfileid: "98014248"
    ```
 
    :::image type="content" source="media/set-up-cicd-pipeline/npm-config.png" alt-text="npm タスクの構成の入力":::
+
+ホストされている Linux エージェントを使用する必要がある場合は、次の手順を使用します。
+1.  該当する **エージェントの指定** を選択します
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/select-linux-agent.png" alt-text="エージェントの指定を選択しているスクリーンショット。":::
+
+2.  **[タスク]** ページで、**[Agent job 1]\(エージェントジョブ 1\)** の横にあるプラス記号を選択します。 タスク検索で「*コマンド ライン*」と入力し、 **[コマンド ライン]** を選択します。
+   
+    :::image type="content" source="media/set-up-cicd-pipeline/cmd-search.png" alt-text="コマンドライン タスクを検索しているスクリーンショット。":::
+
+3.  タスクに **表示名** を付けます。 **[スクリプト]** に次のコマンドを入力します。 他の既定のオプションはそのまま使用します。
+
+      ```bash
+      sudo npm install -g azure-streamanalytics-cicd --unsafe-perm=true --allow-root
+      ```
+      :::image type="content" source="media/set-up-cicd-pipeline/cmd-scripts.png" alt-text="cmd タスクのスクリプトを入力しているスクリーンショット。":::
 
 ## <a name="add-a-build-task"></a>ビルド タスクの追加
 
@@ -139,7 +155,7 @@ npm パッケージ、コマンド ライン、ファイルのコピー、およ
 
 ## <a name="release-with-azure-pipelines"></a>Azure Pipelines を使用したリリース
 
-このセクションでは、リリース パイプラインを作成する方法について説明します。 この[リリース パイプライン](https://dev.azure.com/wenyzou/azure-streamanalytics-cicd-demo/_release?_a=releases&view=mine&definitionId=2&preserve-view=true) サンプルは、Azure DevOps から参照できます。
+このセクションでは、リリース パイプラインを作成する方法について説明します。 
 
 Web ブラウザーを開き、Azure Stream Analytics Visual Studio Code プロジェクトに移動します。
 

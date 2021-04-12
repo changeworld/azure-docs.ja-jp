@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 04/01/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 753469ca2792be23bbe0ef21083d7ff01b362613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e78d6f844bc77e2feb0bdcdd55c89754e9e41ca0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86528724"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218612"
 ---
 # <a name="scalability-and-performance-targets-for-blob-storage"></a>BLOB ストレージのスケーラビリティとパフォーマンスのターゲット
 

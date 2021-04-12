@@ -1,20 +1,20 @@
 ---
 title: JSON のフラット化とエスケープのルール - Azure Time Series Insights Gen2 | Microsoft Docs
 description: Azure Time Series Insights Gen2 での JSON のフラット化、エスケープ、および配列の処理について説明します。
-author: lyrana
-ms.author: lyhughes
-manager: deepakpalled
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
-ms.openlocfilehash: 9f768982e69f785c146f026040a91f7a63eef64c
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: b0ce3d2bdcb79fec4c032f44171ef6c91de47b9e
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98673453"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505435"
 ---
 # <a name="json-flattening-escaping-and-array-handling"></a>JSON のフラット化、エスケープ、および配列処理
 
@@ -151,7 +151,7 @@ Azure Time Series Insights Gen2 環境では、特定の名前付け規則に従
 | `2020-01-22T16:38:09Z` |`9336971` | ``100231-A-A1`` | 20.560796 |
 | `2020-01-22T16:38:09Z` | `9336971` | ``100231-A-A9`` | 177 |
 | `2020-01-22T16:38:09Z` | `9336971` | ``100231-A-A8`` | 420 |
-| `2020-01-22T16:42:14Z` | `9336971` | ``100231-A-A7`` | -30.9918 |  
+| `2020-01-22T16:42:14Z` | `9336971` | ``100231-A-A7`` | -30.9918 |
 | `2020-01-22T16:42:14Z` | `9336971` | ``100231-A-A4`` | 19.960796 |
 
 ### <a name="example-c"></a>例 C
@@ -178,7 +178,7 @@ Azure Time Series Insights Gen2 環境では、特定の名前付け規則に従
 **Parquet ファイルの結果:** \
 上記の構成とペイロードでは、3 つの列と 1 つのイベントが生成されます。
 
-| timestamp  | id_string | datapoints_dynamic  
+| timestamp  | id_string | datapoints_dynamic
 | ---- | ---- | ---- |
 | `2020-11-01T10:00:00.000Z` | `800500054755`| ``[{"value": 120},{"value":124}]`` |
 

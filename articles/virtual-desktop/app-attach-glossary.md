@@ -7,13 +7,13 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
-manager: lizross
-ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+manager: femila
+ms.openlocfilehash: deb02c161dfe41bf79b7905fde23678425aaf55f
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518670"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448374"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX アプリのアタッチの用語集
 

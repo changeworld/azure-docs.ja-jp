@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: dobett
-ms.openlocfilehash: 0cd98705d2d6947ff766f528e4e92f1e51bcc42d
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 311f8164803dd12664aa193f08c8a1095ee07e31
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852814"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106168707"
 ---
 # <a name="what-azure-technologies-and-services-can-you-use-to-create-iot-solutions"></a>IoT ソリューションを作成するために Azure のどのようなテクノロジとサービスを利用できるか
 
@@ -29,7 +29,7 @@ Azure IoT のテクノロジとサービスでは、組織のデジタル変革�
 
 Azure IoT Central は、カスタム IoT ソリューションの作成に使用できるフル マネージドのアプリケーション プラットフォームです。 ソリューションを作成するために、IoT Central では、アプリケーション テンプレートが使用されます。 汎用的なソリューションのためのテンプレートに加え、エネルギー、医療、行政、小売など、業界固有のテンプレートも用意されています。 IoT Central アプリケーション テンプレートを使用すると、IoT Central アプリケーションを数分でデプロイでき、その後、テーマ、ダッシュボード、ビューを使ってそれをカスタマイズすることができます。
 
-[Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com)からデバイスを選択すれば、簡単に自分のソリューションに接続することができます。 IoT Central の Web UI を使用してデバイスを監視、管理することで、デバイスとその接続を正常な状態に保つことができます。 IoT Central アプリケーションを別のビジネス アプリケーションと統合するには、コネクタと API を使用します。
+[Azure Certified for IoT デバイス カタログ](https://devicecatalog.azure.com)からデバイスを選択すれば、簡単に自分のソリューションに接続することができます。 IoT Central の Web UI を使用してデバイスを監視、管理することで、デバイスとその接続を正常な状態に保つことができます。 IoT Central アプリケーションを別のビジネス アプリケーションと統合するには、コネクタと API を使用します。
 
 フル マネージドのアプリケーション プラットフォームとして、IoT Central にはシンプルで予測可能な価格モデルが採用されています。
 
@@ -52,7 +52,7 @@ IoT ソリューションをゼロから作成したり、IoT Central または�
 
 ### <a name="devices"></a>デバイス
 
-いずれかの [Azure IoT スタート キット](https://catalog.azureiotsolutions.com/kits)を使用して IoT デバイスを開発するか、または使用するデバイスを [Azure Certified for IoT デバイス カタログ](https://catalog.azureiotsolutions.com)から選択します。 オープンソースの[デバイス SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して埋め込みコードを実装します。 デバイス SDK は複数のオペレーティング システム (Linux、Windows など) およびリアルタイム オペレーティング システムをサポートしています。 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp)、[Python](https://github.com/Azure/azure-iot-sdk-python) など、複数のプログラミング言語用の SDK があります。
+いずれかの [Azure IoT スタート キット](https://devicecatalog.azure.com/kits)を使用して IoT デバイスを開発するか、または使用するデバイスを [Azure Certified for IoT デバイス カタログ](https://devicecatalog.azure.com)から選択します。 オープンソースの[デバイス SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して埋め込みコードを実装します。 デバイス SDK は複数のオペレーティング システム (Linux、Windows など) およびリアルタイム オペレーティング システムをサポートしています。 [C](https://github.com/Azure/azure-iot-sdk-c)、[Node.js](https://github.com/Azure/azure-iot-sdk-node)、[Java](https://github.com/Azure/azure-iot-sdk-java)、[.NET](https://github.com/Azure/azure-iot-sdk-csharp)、[Python](https://github.com/Azure/azure-iot-sdk-python) など、複数のプログラミング言語用の SDK があります。
 
 [IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md) サービスを使用することで、デバイスの埋め込みコードの作成方法をさらに簡素化できます。 IoT プラグ アンド プレイを使用することで、ソリューション開発者は埋め込みコードを記述することなく、自分のソリューションにデバイスを統合できます。 IoT プラグ アンド プレイの中核となるのは、デバイスの機能を記述する "_デバイス機能モデル_" スキーマです。 埋め込みデバイス コードを生成したり、クラウドベースのソリューション (IoT Central アプリケーションなど) を構成したりするには、このデバイス機能モデルを使用します。
 

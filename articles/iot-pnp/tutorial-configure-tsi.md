@@ -1,18 +1,19 @@
 ---
 title: チュートリアル - Azure Time Series Insights を使用して Azure IoT プラグ アンド プレイ デバイスのテレメトリを格納および分析する
 description: チュートリアル - Time Series Insights 環境を設定し、IoT ハブを接続して、IoT プラグ アンド プレイ デバイスからのテレメトリを表示、分析します。
-author: lyrana
-ms.author: lyhughes
+author: deepakpalled
+ms.author: dpalled
+manager: diviso
 ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 08ae21c2cd0859b7c361756a4f0380d3ab322a28
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: 28cda9fb6997500f6cd7c4c4349635e7b7a36398
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834359"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106504279"
 ---
 # <a name="tutorial-create-and-configure-a-time-series-insights-gen2-environment"></a>チュートリアル:Time Series Insights Gen2 環境を作成および構成する
 
@@ -26,7 +27,7 @@ ms.locfileid: "99834359"
 > * 温度コントローラーおよびサーモスタット デバイスに使用した [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) のサンプル モデル ファイルを使用します。
 
 > [!NOTE]
-> この Time Series Insights と IoT プラグ アンド プレイの統合はプレビュー段階です。 DTDL デバイス モデルを Time Series Insights の時系列モデルにマップする方法は変更される可能性があります。 
+> この Time Series Insights と IoT プラグ アンド プレイの統合はプレビュー段階です。 DTDL デバイス モデルを Time Series Insights の時系列モデルにマップする方法は変更される可能性があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -84,7 +85,7 @@ storage=mytsicoldstore
 rg=my-pnp-resourcegroup
 az storage account create -g $rg -n $storage --https-only
 key=$(az storage account keys list -g $rg -n $storage --query [0].value --output tsv)
-az timeseriesinsights environment longterm create --name my-tsi-env --resource-group $rg --time-series-id-properties iothub-connection-device-id, dt-subject --sku-name L1 --sku-capacity 1 --data-retention 7 --storage-account-name $storage --storage-management-key $key --location eastus2
+az tsi environment gen2 create --name "my-tsi-env" --location eastus2 --resource-group $rg --sku name="L1" capacity=1 --time-series-id-properties name=iothub-connection-device-id type=String --time-series-id-properties name=dt-subject type=String --warm-store-configuration data-retention=P7D --storage-configuration account-name=$storage management-key=$key
 ```
 
 IoT Hub イベント ソースを接続します。 `my-pnp-resourcegroup`、`my-pnp-hub`、`my-tsi-env` は、選択した値に置き換えます。 次のコマンドでは、前に作成した Time Series Insights のコンシューマー グループを参照します。
@@ -95,7 +96,7 @@ iothub=my-pnp-hub
 env=my-tsi-env
 es_resource_id=$(az iot hub create -g $rg -n $iothub --query id --output tsv)
 shared_access_key=$(az iot hub policy list -g $rg --hub-name $iothub --query "[?keyName=='service'].primaryKey" --output tsv)
-az timeseriesinsights event-source iothub create -g $rg --environment-name $env -n iot-hub-event-source --consumer-group-name tsi-consumer-group  --key-name iothubowner --shared-access-key $shared_access_key --event-source-resource-id $es_resource_id
+az tsi event-source iothub create --event-source-name iot-hub-event-source --environment-name $env --resource-group $rg --location eastus2 --consumer-group-name tsi-consumer-group --key-name iothubowner --shared-access-key $shared_access_key --event-source-resource-id $es_resource_id --iot-hub-name $iothub
 ```
 
 [Azure portal](https://portal.azure.com) で自分のリソース グループに移動し、新しい Time Series Insights 環境を選択します。 インスタンスの概要に示されている **[Time Series Insights エクスプローラーの URL]** にアクセスします。
@@ -123,7 +124,7 @@ az timeseriesinsights event-source iothub create -g $rg --environment-name $env 
 
 ### <a name="define-your-types"></a>型の定義
 
-Azure Time Series Insights Gen2 へのデータの取り込みは、モデルを事前に定義していなくても開始できます。 テレメトリが到着すると、時系列 ID プロパティの値に基づいて時系列インスタンスの自動解決が Time Series Insights によって試行されます。 すべてのインスタンスには、"*既定の型*" が割り当てられます。 ご利用のインスタンスを正しく分類するために新しい型を手動で作成する必要があります。 
+Azure Time Series Insights Gen2 へのデータの取り込みは、モデルを事前に定義していなくても開始できます。 テレメトリが到着すると、時系列 ID プロパティの値に基づいて時系列インスタンスの自動解決が Time Series Insights によって試行されます。 すべてのインスタンスには、"*既定の型*" が割り当てられます。 ご利用のインスタンスを正しく分類するために新しい型を手動で作成する必要があります。
 
 次の詳細では、デバイスの DTDL モデルを時系列モデルの型と同期させる最も簡単な方法を説明しています。
 
@@ -139,7 +140,7 @@ Azure Time Series Insights Gen2 へのデータの取り込みは、モデルを
 |-----------|------------------|-------------|
 | `@id` | `id` | `dtmi:com:example:TemperatureController;1` |
 | `displayName`    | `name`   |   `Temperature Controller`  |
-| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |  
+| `description`  |  `description`  |  `Device with two thermostats and remote reboot.` |
 |`contents` (配列)| `variables` (オブジェクト)  | 次の例を参照してください。
 
 ![D T D L と時系列モデルの型を示すスクリーンショット。](./media/tutorial-configure-tsi/DTDL-to-TSM-Type.png)
@@ -161,7 +162,7 @@ Azure Time Series Insights Gen2 へのデータの取り込みは、モデルを
           "kind": "numeric",
           "value": {
             "tsx": "coalesce($event.workingSet.Long, toLong($event.workingSet.Double))"
-          }, 
+          },
           "aggregation": {
             "tsx": "avg($value)"
           }

@@ -2,19 +2,20 @@
 title: クイック スタート:Azure Cosmos DB 用の Azure Synapse Link に接続する
 description: Synapse Link を使用して Azure Cosmos DB を Synapse ワークスペースに接続する方法
 services: synapse-analytics
-author: ArnoMicrosoft
+author: Rodrigossz
 ms.service: synapse-analytics
 ms.subservice: synapse-link
 ms.topic: quickstart
 ms.date: 04/21/2020
-ms.author: acomet
+ms.author: rosouz
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7462c78ecad718c30980a98ff7659a2a4d2ea020
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.custom: cosmos-db
+ms.openlocfilehash: 7d77431f5caa1a2ac67428326dcd6d4ce75a4a93
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222158"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105625842"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>クイック スタート:Azure Cosmos DB 用の Azure Synapse Link に接続する
 
@@ -41,16 +42,16 @@ Azure Cosmos DB データベースの接続は、リンクされたサービス�
 
 データ オブジェクト エクスプローラーから、次の手順を実行して Azure Cosmos DB データベースを直接接続できます。
 
-1. [データ] の近くにある **_+_* _ アイコンを選択します
-2. _ *[Connect to external data]\(外部データに接続する\)* * を選択します
+1. [データ] の近くにある ***+*** アイコンを選択します
+2. **[Connect to external data]\(外部データに接続する\)** を選択します
 3. 接続先の API を選択します:SQL または MongoDB
-4. **_[続行]_* _ をクリックします。
+4. ***[続行]*** を選択します
 5. リンクされたサービスに名前を付けます。 名前はオブジェクト エクスプローラーに表示され、データベースとコンテナーに接続するために Synapse ランタイムによって使用されます。 フレンドリ名を使用することをお勧めします。
-6. _ *Cosmos DB アカウント名**と **データベース名** を選択します
+6. **Cosmos DB アカウント名** と **データベース名** を選択します
 7. (省略可能) リージョンが指定されていない場合、Synapse ランタイム操作は、分析ストアが有効になっている最も近いリージョンにルーティングされます。 ただし、ユーザーを Cosmos DB 分析ストアにアクセスさせるリージョンを手動で設定できます。 **[Additional connection properties]\(追加の接続プロパティ\)** 、 **[新規作成]** の順に選択します。 **[プロパティ名]** の下で、**_PreferredRegions_ *_ を作成し、_* [値]** を目的のリージョンに設定します (例: WestUS2、単語と数字の間にスペースはありません)
-8. **_[作成]_* _ を選択します
+8. ***[作成]***
 
-Azure Cosmos DB データベースは、[Azure Cosmos DB] セクションの _ *[リンク済み]* * タブの下に表示されます。 次のアイコンによって、HTAP 対応の Azure Cosmos DB コンテナーと OLTP のみのコンテナーを区別できます。
+Azure Cosmos DB データベースは、[Azure Cosmos DB] セクションの **[リンク済み]** タブの下に表示されます。 次のアイコンによって、HTAP 対応の Azure Cosmos DB コンテナーと OLTP のみのコンテナーを区別できます。
 
 **Synapse コンテナー**:
 

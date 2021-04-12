@@ -12,10 +12,10 @@ ms.date: 02/09/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 ms.openlocfilehash: ae0112292994fdcf88e80abff8ab52e5971cb0ed
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "101731087"
 ---
 # <a name="how-to-improve-your-custom-vision-model"></a>Custom Vision のモデルを改善する方法

@@ -4,14 +4,14 @@ description: Azure Active Directory を使用して Azure Cosmos DB アカウン
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 03/17/2021
 ms.author: thweiss
-ms.openlocfilehash: 49bf67a6703147ed31279e7af8145192d996c1cb
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: efde86eac3e0830b36eabfc9e80df09daeed9f6f
+ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101660626"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104586065"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Azure Active Directory を使用して Azure Cosmos DB アカウントのロールベースのアクセス制御を構成する (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -101,6 +101,11 @@ Azure Cosmos DB SDK を使用する場合、SDK は初期化中に読み取り�
     - `/` (アカウントレベル)、
     - `/dbs/<database-name>` (データベースレベル)、
     - `/dbs/<database-name>/colls/<container-name>` (コンテナーレベル)。
+
+> [!NOTE]
+> 後述する操作は、現在のところ以下で使用できます。
+> - Azure PowerShell: [Az.CosmosDB バージョン 2.0.1-preview](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: ['cosmosdb-preview' 拡張機能バージョン 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
 
 ### <a name="using-azure-powershell"></a>Azure PowerShell の使用
 
@@ -279,6 +284,11 @@ az cosmosdb sql role definition list --account-name $accountName --resource-grou
 > [!NOTE]
 > サービス プリンシパルのロール割り当てを作成する場合は、**Azure Active Directory** portal ブレードの **[エンタープライズ アプリケーション]** セクションにある **[オブジェクト ID]** を使用してください。
 
+> [!NOTE]
+> 後述する操作は、現在のところ以下で使用できます。
+> - Azure PowerShell: [Az.CosmosDB バージョン 2.0.1-preview](https://www.powershellgallery.com/packages/Az.CosmosDB/2.0.1-preview)
+> - Azure CLI: ['cosmosdb-preview' 拡張機能バージョン 0.4.0](https://github.com/Azure/azure-cli-extensions/tree/master/src/cosmosdb-preview)
+
 ### <a name="using-azure-powershell"></a>Azure PowerShell の使用
 
 ID にロールを割り当てます。
@@ -304,7 +314,7 @@ resourceGroupName='<myResourceGroup>'
 accountName='<myCosmosAccount>'
 readOnlyRoleDefinitionId = '<roleDefinitionId>' // as fetched above
 principalId = '<aadPrincipalId>'
-az cosmosdb sql role assignment create --account-name $accountName --resource-group --scope "/" --principalId $principalId --role-definition-id $readOnlyRoleDefinitionId
+az cosmosdb sql role assignment create --account-name $accountName --resource-group --scope "/" --principal-id $principalId --role-definition-id $readOnlyRoleDefinitionId
 ```
 
 ## <a name="initialize-the-sdk-with-azure-ad"></a>Azure AD を使用して SDK を初期化する
@@ -315,13 +325,13 @@ Azure Cosmos DB RBAC をアプリケーションで使用するには、Azure Co
 
 - [.NET の場合](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme#credential-classes)
 - [Java の場合](https://docs.microsoft.com/java/api/overview/azure/identity-readme#credential-classes)
+- [JavaScript の場合](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme#credential-classes)
 
 次の例では、`ClientSecretCredential` インスタンスでサービス プリンシパルを使用しています。
 
 ### <a name="in-net"></a>.NET の場合
 
-> [!NOTE]
-> この機能にアクセスするには、`preview` バージョンの Azure Cosmos DB .NET SDK を使用する必要があります。
+Azure Cosmos DB RBAC は現在、[.NET SDK V3](sql-api-sdk-dotnet-standard.md) の `preview` バージョンでサポートされています。
 
 ```csharp
 TokenCredential servicePrincipal = new ClientSecretCredential(
@@ -332,6 +342,8 @@ CosmosClient client = new CosmosClient("<account-endpoint>", servicePrincipal);
 ```
 
 ### <a name="in-java"></a>Java の場合
+
+Azure Cosmos DB RBAC は現在、[Java SDK V4](sql-api-sdk-java-v4.md) でサポートされています。
 
 ```java
 TokenCredential ServicePrincipal = new ClientSecretCredentialBuilder()
@@ -346,6 +358,21 @@ CosmosAsyncClient Client = new CosmosClientBuilder()
     .build();
 ```
 
+### <a name="in-javascript"></a>JavaScript の場合
+
+Azure Cosmos DB RBAC は現在、[JavaScript SDK V3](sql-api-sdk-node.md) でサポートされています。
+
+```javascript
+const servicePrincipal = new ClientSecretCredential(
+    "<azure-ad-tenant-id>",
+    "<client-application-id>",
+    "<client-application-secret>");
+const client = new CosmosClient({
+    "<account-endpoint>",
+    aadCredentials: servicePrincipal
+});
+```
+
 ## <a name="auditing-data-requests"></a>データ要求の監査
 
 Azure Cosmos DB RBAC を使用する場合、[診断ログ](cosmosdb-monitor-resource-logs.md)は各データ操作の ID と認証情報によって拡張されます。 これにより、詳細な監査を実行し、Azure Cosmos DB アカウントに送信されるすべてのデータ要求に使用される AAD ID を取得できます。
@@ -354,6 +381,13 @@ Azure Cosmos DB RBAC を使用する場合、[診断ログ](cosmosdb-monitor-res
 
 - `aadPrincipalId_g` は、要求を認証するために使用された AAD ID のプリンシパル ID を表示します。
 - `aadAppliedRoleAssignmentId_g` は、要求を認可するときに使用された[ロール割り当て](#role-assignments)を表示します。
+
+## <a name="limits"></a>制限
+
+- Azure Cosmos DB アカウントごとに、最大 100 のロール定義と 2000 のロール割り当てを作成できます。
+- Azure AD グループの解決は、200 を超えるグループに属している ID については現在サポートされていません。
+- Azure AD トークンは、現在、Azure Cosmos DB サービスに送信される個々の要求と共にヘッダーとして渡されるため、全体的なペイロード サイズが増加します。
+- [Azure Cosmos DB Explorer](data-explorer.md) を使用して Azure AD のデータにアクセスすることはまだサポートされていません。 Azure Cosmos DB Explorer を使用する場合でも、ユーザーはアカウントのプライマリキーにアクセスできる必要があります。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
