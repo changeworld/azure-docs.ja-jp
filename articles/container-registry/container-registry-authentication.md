@@ -1,6 +1,6 @@
 ---
 title: レジストリ認証オプション
-description: Azure Active Directory ID でのサインイン、サービス プリンシパルの使用、オプションの管理者資格情報の使用など、非公開の Azure コンテナー レジストリのための認証オプション。
+description: Azure Active Directory ID でのサインイン、サービス プリンシパルの使用、オプションの管理者資格情報の使用など、非公開の Azure Container Registry のための認証オプション。
 ms.topic: article
 ms.date: 01/30/2020
 ms.openlocfilehash: 5315c11e0f1e2c859384e3783ae4be5d709adb42
@@ -10,9 +10,9 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "92148555"
 ---
-# <a name="authenticate-with-an-azure-container-registry"></a>Azure コンテナー レジストリでの認証
+# <a name="authenticate-with-an-azure-container-registry"></a>Azure Container Registry での認証
 
-Azure コンテナー レジストリでの認証には複数の方法があり、それぞれ 1 つ以上のレジストリ使用シナリオに適用できます。
+Azure Container Registry での認証には複数の方法があり、それぞれ 1 つ以上のレジストリ使用シナリオに適用できます。
 
 [個々のログイン](#individual-login-with-azure-ad)によって直接レジストリに対して認証を受けるなどの方法が推奨されます。またはアプリケーションやコンテナー オーケストレーターで Azure Active Directory (Azure AD) [サービス プリンシパル](#service-principal)を使用して無人 ("ヘッドレス") 認証を実行することができます。
 
@@ -86,7 +86,7 @@ docker login myregistry.azurecr.io --username 00000000-0000-0000-0000-0000000000
 
 ロールの完全な一覧については、「[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)」をご覧ください。
 
-Azure コンテナー レジストリを使用した認証のためのサービス プリンシパルを作成する CLI スクリプトと詳しいガイダンスについては、「[サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)」を参照してください。
+Azure Container Registry を使用した認証のためのサービス プリンシパルを作成する CLI スクリプトと詳しいガイダンスについては、「[サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)」を参照してください。
 
 ## <a name="admin-account"></a>管理者アカウント
 
