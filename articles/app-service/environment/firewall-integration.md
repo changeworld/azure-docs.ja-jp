@@ -1,20 +1,20 @@
 ---
 title: 送信トラフィックをロックダウンする
-description: Azure Firewall と統合して、App Service Environment 内からの送信トラフィックをセキュリティで保護する方法について説明します。
+description: Azure Firewall と統合して、App Service 環境内からの送信トラフィックをセキュリティで保護する方法について説明します。
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 03/25/2021
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: ec506546b52a2d137d448f07f4b7a6827c01b4d2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b930412508753ba2025e8126b9720d9a519d9281
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100594128"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106220064"
 ---
-# <a name="locking-down-an-app-service-environment"></a>App Service Environment をロックする
+# <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
 App Service Environment (ASE) が適切に動作するには、アクセスする必要がある外部の依存関係が複数あります。 ASE は、お客様の Azure Virtual Network (VNet) 内にあります。 お客様は、ASE の依存トラフィックを許可する必要があります。これは、自社の VNet からのすべての送信をロックしたいお客様にとって問題です。
 
@@ -146,6 +146,8 @@ Azure Firewall を使用すると、FQDN タグで構成された以下のもの
 |login.windows.com:443 |
 |login.windows.net:443 |
 |login.microsoftonline.com:443 |
+|\*.login.microsoftonline.com:443|
+|\*.login.microsoft.com:443|
 |client.wns.windows.com:443 |
 |definitionupdates.microsoft.com:443 |
 |go.microsoft.com:80 |
