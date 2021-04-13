@@ -4,12 +4,12 @@ description: Azure Resource Manager を使用した Azure へのリソースの�
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 01/20/2021
-ms.openlocfilehash: 6cb2b611e694c6b72e063f3d8ab05b7667a34e29
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 40e6317a1d879704ef00e928a971ae08fc9e0f72
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104888857"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105564349"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -23,7 +23,7 @@ ms.locfileid: "104888857"
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | ストレージ アカウントの名前付けの制限に従ってください。 | [ストレージ アカウント名の解決](error-storage-account-name.md) |
 | AccountPropertyCannotBeSet | 使用可能なストレージ アカウント プロパティを確認してください。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできません。 後で要求を再試行するか、別の VM サイズを要求します。 | [Linux のプロビジョニングと割り当ての問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-linux.md)、[Windows のプロビジョニングと割り当ての問題](../../virtual-machines/troubleshooting/troubleshoot-deployment-new-vm-windows.md)、[割り当てエラーのトラブルシューティング](../../virtual-machines/troubleshooting/allocation-failure.md)|
+| AllocationFailed | クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできません。 後で要求を再試行するか、別の VM サイズを要求します。 | [Linux のプロビジョニングと割り当ての問題](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux)、[Windows のプロビジョニングと割り当ての問題](/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows)、[割り当てエラーのトラブルシューティング](/troubleshoot/azure/virtual-machines/allocation-failure)|
 | AnotherOperationInProgress | 同時実行操作の完了を待ちます。 | |
 | AuthorizationFailed | お客様のアカウントまたはサービス プリンシパルには、デプロイを完了するために十分なアクセス権がありません。 自分のアカウントが属するロールと、デプロイの範囲に対するアクセス権を確認してください。<br><br>必要なリソース プロバイダーが登録されていないと、このエラーを受け取ることがあります。 | [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)<br><br>[登録を解決する](error-register-resource-provider.md) |
 | BadRequest | Resource Manager で予期される値と一致しないデプロイ値を送信しました。 トラブルシューティングの方法については、内部ステータス メッセージを確認してください。 | [テンプレート リファレンス](/azure/templates/)と[サポートされている場所](resource-location.md) |
