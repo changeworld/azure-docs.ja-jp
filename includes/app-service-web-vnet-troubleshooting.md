@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95999447"
 ---
 機能は簡単にセットアップできますが、問題が発生しないという意味ではありません。 目的のエンドポイントへのアクセスに関して問題が発生した場合は、アプリのコンソールからの接続をテストするために、いくつかのユーティリティを利用できます。 利用できるコンソールが 2 つあります。 1 つは Kudu コンソールで、もう 1 つは Azure portal 内のコンソールです。 アプリから Kudu コンソールにアクセスするには、 **[ツール]**  >  **[Kudu]** の順に移動します。 [サイト名].scm.azurewebsites.net で Kudo コンソールにアクセスすることもできます。 Web サイトが読み込まれたら、 **[デバッグ コンソール]** タブに移動します。お使いのアプリから Azure portal によってホストされたコンソールにアクセスするには、 **[ツール]**  >  **[コンソール]** の順に移動します。

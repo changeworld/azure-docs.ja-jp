@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/13/2020
 ms.author: juliako
 ms.openlocfilehash: fbc77b960cac0db2d077345c74d64485bd7ad8bb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "95994497"
 ---
 以下のイベントについてのユーザーへの通知 (POST 要求を使用) に使われる URL です。

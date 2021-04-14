@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: e67219e0b029ce401ffc05c009a5cc4a96680a9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28fdd8b10c7106380c296c8131ade909ee88d0f8
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104593392"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107093"
 ---
 # <a name="co-sell-requirements"></a>共同販売の要件
 
@@ -35,7 +35,7 @@ ms.locfileid: "104593392"
 
 **すべてのパートナー**:
 
-- MPN ID と[アクティブなコマーシャル マーケット アカウントをパートナー センターで](./partner-center-portal/create-account.md)用意する。
+- MPN ID と[アクティブなコマーシャル マーケット アカウントをパートナー センターで](create-account.md)用意する。
 - パートナー センターで万全な[ビジネス プロファイル](/partner-center/create-a-marketing-profile)を用意する。 認定 Microsoft パートナーは、ビジネス ニーズに合った独自のソリューションと専門知識を探しているお客様に自社のビジネスを示すためにビジネス プロファイルを役立てて、[紹介](/partner-center/referrals)につなげることができます。
 - **[Microsoft と共同販売する]** タブを完了し、プランをコマーシャル マーケットプレースに公開する。
 - 共同販売の対象地域ごとの営業担当者と必要な部品表を用意する。
@@ -59,7 +59,7 @@ Microsoft は、これらのドキュメントの作成に役立つテンプレ�
 
 ### <a name="publish-your-offer-live"></a>オファーを発行する
 
-共同販売の準備完了ステータスの資格を得るには、自分のプランまたはソリューションがコマーシャル マーケットプレースのオンライン ストアの少なくともいずれか (Azure Marketplace または Microsoft AppSource) に実際に公開されている必要があります。 コマーシャル マーケットプレースへのプランの公開については、「[プランの種類別の公開ガイド](publisher-guide-by-offer-type.md)」を参照してください。 これまでコマーシャル マーケットプレースでプランを公開したことがない場合は、[コマーシャル マーケットプレース アカウント](./partner-center-portal/create-account.md)を持っていることを確認してください。
+共同販売の準備完了ステータスの資格を得るには、自分のプランまたはソリューションがコマーシャル マーケットプレースのオンライン ストアの少なくともいずれか (Azure Marketplace または Microsoft AppSource) に実際に公開されている必要があります。 コマーシャル マーケットプレースへのプランの公開については、「[プランの種類別の公開ガイド](publisher-guide-by-offer-type.md)」を参照してください。 これまでコマーシャル マーケットプレースでプランを公開したことがない場合は、[コマーシャル マーケットプレース アカウント](create-account.md)を持っていることを確認してください。
 
 ## <a name="requirements-for-azure-ip-co-sell-incentivized-status"></a>Azure IP 共同販売インセンティブ対象ステータスの要件
 

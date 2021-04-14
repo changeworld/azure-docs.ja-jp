@@ -9,10 +9,10 @@ ms.date: 08/01/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 45bdd569741dc13181bcaf9e8587a02b3d02c621
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "68728853"
 ---
 1. [Firebase コンソール](https://firebase.google.com/console/)にサインインします。 Firebase プロジェクトがまだない場合は、新しく作成します。
@@ -25,7 +25,7 @@ ms.locfileid: "68728853"
 
         ![パッケージ名を指定する](./media/notification-hubs-enable-firebase-cloud-messaging/specify-package-name-fcm-settings.png)
     2. **[アプリの登録]** を選択します。  
-    1. **[google-services.json のダウンロード]** を選択します。 次に、プロジェクトのフォルダーにファイルを保存し、 **[次へ]** を選択します。 まだ Visual Studio プロジェクトを作成していない場合は、プロジェクトの作成後にこの手順を実行できます。 
+    1. **[google-services.json のダウンロード]** を選択します。 次に、プロジェクトのフォルダーにファイルを保存し、**[次へ]** を選択します。 まだ Visual Studio プロジェクトを作成していない場合は、プロジェクトの作成後にこの手順を実行できます。 
 
         ![google-services.json をダウンロードする](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-service-button.png)
     6. **[次へ]** を選択します。 
@@ -38,6 +38,6 @@ ms.locfileid: "68728853"
 4. **google-services.json** ファイルをダウンロードしていない場合は、このページでダウンロードできます。 
 
     ![[全般] タブから google services. json をダウンロードする](./media/notification-hubs-enable-firebase-cloud-messaging/download-google-services-json-general-page.png)
-1. 上部にある **[クラウド メッセージング]** タブに切り替えます。 後で使用するために、**サーバー キー**をコピーし、保存します。 この値を使用して通知ハブを構成します。
+1. 上部にある **[クラウド メッセージング]** タブに切り替えます。 後で使用するために、**サーバー キー** をコピーし、保存します。 この値を使用して通知ハブを構成します。
 
     ![サーバー キーのコピー](./media/notification-hubs-enable-firebase-cloud-messaging/server-key.png)

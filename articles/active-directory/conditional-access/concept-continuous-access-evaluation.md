@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80ee161944a48135778d12942964a88455ab756e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: d707106d66c77ad1f3a1156906add8bb85fd0ce0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055775"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305975"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -142,7 +142,7 @@ CAE 対応クライアントを使用していない場合でも、[構成可能
 CAE では、IP ベースの名前付きの場所についてのみ分析情報を得られます。 [MFA の信頼できる IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) や国ベースの場所など、他の場所の設定について分析情報は得られません。 ユーザーの場所が MFA の信頼できる IP または信頼できる場所 (MFA の信頼できる IP、国の場所など) である場合、ユーザーが別の場所に移動した後は CAE は適用されません。 このような場合は、即時 IP 適用チェックなしで 1 時間の CAE トークンが発行されます。
 
 > [!IMPORTANT]
-> 継続的アクセス評価のために場所を構成する場合は、[IP ベースの条件付きアクセスの場所の条件](../conditional-access/location-condition.md#preview-features)のみ使用し、ID プロバイダーとリソース プロバイダーが認識できる **IPv4 と IPv6 の両方を含む** すべての IP アドレスを構成してください。 Azure AD Multi-Factor Authentication のサービス設定ページにある国の場所の条件や信頼できる IP 機能は使用しないでください。
+> 継続的アクセス評価のために場所を構成する場合は、[IP ベースの条件付きアクセスの場所の条件](../conditional-access/location-condition.md)のみ使用し、ID プロバイダーとリソース プロバイダーが認識できる **IPv4 と IPv6 の両方を含む** すべての IP アドレスを構成してください。 Azure AD Multi-Factor Authentication のサービス設定ページにある国の場所の条件や信頼できる IP 機能は使用しないでください。
 
 ### <a name="ip-address-configuration"></a>IP アドレスの構成
 

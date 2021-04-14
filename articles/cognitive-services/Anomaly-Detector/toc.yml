@@ -3,12 +3,18 @@
 - name: 概要
   expanded: true
   items:
-    - name: Anomaly Detector とは
+    - name: Anomaly Detector (多変量) とは
+      href: overview-multivariate.md
+    - name: Anomaly Detector (一変量) とは
       href: overview.md
     - name: 料金と制限
       href: 'https://aka.ms/adpricing'
 - name: Anomaly Detector のクイックスタート
-  href: ./quickstarts/client-libraries.md
+  items:
+    - name: 多変量クライアント ライブラリ
+      href: ./quickstarts/client-libraries-multivariate.md
+    - name: 一変量クライアントライブラリ
+      href: ./quickstarts/client-libraries.md
 - name: サンプル
   items:
     - name: 対話型デモ
@@ -39,10 +45,18 @@
               href: how-to/deploy-anomaly-detection-on-container-instances.md
 - name: 概念
   items:
-    - name: Anomaly Detector API のベスト プラクティス
+    - name: Anomaly Detector API のベスト プラクティス (多変量)
+      href: concepts/best-practices-multivariate.md
+    - name: Anomaly Detector API のベスト プラクティス (一変量)
       href: concepts/anomaly-detection-best-practices.md
+    - name: 予測メンテナンスのアーキテクチャ (多変量)
+      href: concepts/multivariate-architecture.md
+    - name: 多変量のトラブルシューティング
+      href: concepts/troubleshoot.md
     - name: Spectral Residual (SR) と畳み込みニューラル ネットワーク (CNN) の異常検出
       href: 'https://arxiv.org/abs/1906.03821'
+    - name: グラフ アテンション ネットワークによる多変量時系列の異常検出
+      href: 'https://arxiv.org/abs/2009.02040'
 - name: チュートリアル
   items:
     - name: Power BI を使用して異常をバッチとして視覚化する

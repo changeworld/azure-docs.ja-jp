@@ -3,7 +3,7 @@ title: Azure CLI を使用した Azure DDoS Protection プランの作成と構�
 description: Azure CLI を使用して DDoS Protection プランを作成する方法について説明します
 services: ddos-protection
 documentationcenter: na
-author: yitoh
+author: aletheatoh
 ms.service: ddos-protection
 ms.devlang: na
 ms.topic: article
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 59c5ca9ce9e95319b36e002da0b5d1438ef3fdd1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 98c71f3cf1c521c08d177acb89aad85301e61579
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203778"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103013"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>クイックスタート: Azure CLI を使用した Azure DDoS Protection Standard の作成と構成
 

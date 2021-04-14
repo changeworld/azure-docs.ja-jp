@@ -8,12 +8,12 @@ author: palanis-MSFT
 ms.author: palanis
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: db502f4652a6ae541a504249475898e3e771f90d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ab7a0c3fa947fdf62672013b5a557d0447eb67c5
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563397"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106855"
 ---
 # <a name="configure-co-sell-for-a-commercial-marketplace-offer"></a>コマーシャル マーケットプレース オファーの共同販売を構成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "105563397"
 1. [パートナー センター](https://partner.microsoft.com/dashboard/home)にサインインします。
 1. 左側のナビゲーション メニューで、 **[商業マーケットプレース]**  >  **[概要]** の順に選択します。
     > [!TIP]
-    > 左側のナビゲーションに [[コマーシャル マーケットプレース]](./partner-center-portal/create-account.md) が表示されていない場合は、**パートナー センターでコマーシャル マーケットプレース アカウントを作成** し、アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認してください。
+    > 左側のナビゲーションに [[コマーシャル マーケットプレース]](create-account.md) が表示されていない場合は、**パートナー センターでコマーシャル マーケットプレース アカウントを作成** し、アカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認してください。
 1. **[概要]** タブで、共同販売するオファーを選択します。
     > [!NOTE]
     > まだ公開されていない新しいオファー、または既に公開されているオファーの共同販売プログラムを構成できます。
