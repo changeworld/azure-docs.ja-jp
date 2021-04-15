@@ -1,20 +1,19 @@
 ---
 title: Azure Policy でのスコープについて
 description: Azure Resource Manager でのスコープの概念と、それがどのように Azure Policy に適用されて、Azure Policy がどのリソースを評価するかが制御されるしくみについて説明します。
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: conceptual
-ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c198d2d2961b6d9e10a3b78481183cba7f7197ca
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "90984435"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106167738"
 ---
 # <a name="understand-scope-in-azure-policy"></a>Azure Policy でのスコープについて
 
-どのリソースが評価可能であるかと、どのリソースが Azure Policy によって評価されるかを決定する、多数の設定があります。 これらの制御の主要な概念が、"_スコープ_" です。
-概要については、[Azure Resource Manager でのスコープ](../../../azure-resource-manager/management/overview.md#understand-scope)に関するセクションを参照してください。
-この記事では、Azure Policy での "_スコープ_" と、それに関連するオブジェクトおよびプロパティについて説明します。
+どのリソースが評価可能であるかと、どのリソースが Azure Policy によって評価されるかを決定する、多数の設定があります。 これらの制御の主要な概念が、"_スコープ_" です。 Azure Policy のスコープは、Azure Resource Manager でのスコープの動作に基づいています。 概要については、[Azure Resource Manager でのスコープ](../../../azure-resource-manager/management/overview.md#understand-scope)に関するセクションを参照してください。
+この記事では、Azure Policy での "_スコープ_" の重要性と、それに関連するオブジェクトおよびプロパティについて説明します。
 
 ## <a name="definition-location"></a>定義の場所
 

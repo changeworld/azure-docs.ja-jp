@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/11/2021
-ms.openlocfilehash: bc8f7aa6827ce251799acd0673d43344c0833c3a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 28a647949fdb3ff4d8527268919dbd7e49b27ea4
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149326"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276656"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -48,12 +48,8 @@ Azure Machine Learning では、トレーニング済みの機械学習モデル
 
 - (Azure Private Link を使用して) プライベート AKS クラスターを使用する場合は、最初にクラスターを作成してから、ワークスペースにそれを **アタッチ** する必要があります。 詳細については、「[プライベート Azure Kubernetes Service クラスターを作成する](../aks/private-clusters.md)」を参照してください。
 
-- AKS クラスターのコンピューティング名は、Azure ML ワークスペース内で一意である必要があります。
-    - 名前は必須であり、3 文字から 24 文字の長さにする必要があります。
-    - 有効な文字は、大文字、小文字、数字、- 文字です。
-    - 名前の先頭は文字である必要があります。
-    - 名前は、Azure リージョン内のすべての既存のコンピューティングで一意である必要があります。 選択した名前が一意でない場合は、アラートが表示されます。
-   
+- AKS クラスターのコンピューティング名は、Azure ML ワークスペース内で一意である必要があります。 アルファベット文字、数字、ダッシュを含めることができます。 先頭にはアルファベット文字、末尾にはアルファベット文字または数字を使用する必要があり、長さは 3 ～ 24 文字にする必要があります。
+ 
  - **GPU** ノードまたは **FPGA** ノード (または特定の SKU) にモデルをデプロイする場合は、特定の SKU でクラスターを作成する必要があります。 既存のクラスターにセカンダリ ノード プールを作成し、そのセカンダリ ノード プールにモデルをデプロイすることはサポートされていません。
  
 - クラスターを作成またはアタッチするときに、__開発テスト__ または __運用__ のためにクラスターを作成するかどうかを選択できます。 運用のためではなく、__開発__、__検証__、__テスト__ のための AKS クラスターを作成する場合は、__クラスターの目的__ を __開発テスト__ に設定します。 クラスターの目的を指定しない場合は、__運用__ クラスターが作成されます。 

@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 11/30/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 6861fd7a92c26fad883f14fb430a03b237c90122
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba730adaa1e3b111586012ba1849c6dc84d6db00
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609260"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106553993"
 ---
 # <a name="use-azure-monitor-with-your-azure-synapse-analytics-workspace"></a>Azure Synapse Analytics ワークスペースで Azure Monitor を使用する
 
@@ -103,10 +103,14 @@ Azure portal にサインインし、 **[モニター]**  >  **[アラート]** 
 
 Azure Synapse Analytics ワークスペースによって出力されるログを次に示します。
 
-| Log Analytics テーブル名 | ログのカテゴリ名                 | 説明 |
-|-------------------------------|-------------------------------------------------|-------------|
-| SynapseGatewayApiRequests     | GatewayApiRequests             | Azure Synapse gateway API 要求。 |
-| SynapseRbacOperations         | SynapseRbacOperations          | Azure Synapse ロールベースのアクセス制御 (SRBAC) 操作。 |
+| Log Analytics テーブル名       | ログのカテゴリ名              | 説明          |
+|--------------------------------|--------------------------------|----------------------|
+| SynapseGatewayApiRequests      | GatewayApiRequests             | Azure Synapse gateway API 要求。 |
+| SynapseRbacOperations          | SynapseRbacOperations          | Azure Synapse ロールベースのアクセス制御 (SRBAC) 操作。 |
+| SynapseBuiltinSqlReqsEnded     | BuiltinSqlReqsEnded            | Azure Synapse の組み込みのサーバーレス SQL プールが要求を終了。 |
+| SynapseIntegrationPipelineRuns | IntegrationPipelineRuns        | Azure Synapse 統合パイプラインの実行。 |
+| SynapseIntegrationActivityRuns | IntegrationActivityRuns        | Azure Synapse 統合アクティビティの実行。 |
+| SynapseIntegrationTriggerRuns  | IntegrationTriggerRuns         | Azure Synapse 統合トリガーの実行。 |
 
 ### <a name="dedicated-sql-pool-logs"></a>専用 SQL プールのログ
 
