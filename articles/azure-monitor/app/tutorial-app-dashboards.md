@@ -6,12 +6,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 09/30/2020
 ms.custom: mvc, contperf-fy21q1
-ms.openlocfilehash: ebe34735a84e44526e6b96821a2a1da090884886
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 7bad0b17bb2fed9d9f54cdd44042ec88708f35fd
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383254"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103727"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -59,7 +59,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 5. **マークダウン** タイルを見つけて、ダッシュボードにドラッグします。  このタイルには、お使いのダッシュボードへのわかりやすいテキストの追加に最適な、マークダウン記法のテキストを追加できます。 詳細については、「[Azure ダッシュボードでマークダウン タイルを使用して、カスタム コンテンツを表示する](../../azure-portal/azure-portal-markdown-tile.md)」を参照してください。
 6. タイルのプロパティにテキストを追加し、ダッシュボード キャンバス上でサイズを変更します。
 
-    [![マークダウン タイルを編集する](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/dashboard-edit-mode.png#lightbox)
+    [![マークダウン タイルを編集する](media/tutorial-app-dashboards/markdown.png)](media/tutorial-app-dashboards/markdown.png#lightbox)
 
 7. 画面上部にある **[カスタマイズ完了]** を選択して、タイルのカスタマイズ モードを終了します。
 

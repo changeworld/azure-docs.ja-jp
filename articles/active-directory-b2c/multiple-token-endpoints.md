@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 860f167913211ee7c511e515937f29ba5bf954cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ab93a8742d210969ef6ad10683bed92221c1a57
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491571"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256703"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom-or-a-custom-domain"></a>OWIN ベースの Web API を b2clogin.com またはカスタム ドメインに移行する
 
@@ -30,7 +30,7 @@ b2clogin.com、login.microsoftonline.com、またはカスタム ドメインに
 
 この記事の手順を続ける前に、次の Azure AD B2C リソースを用意しておく必要があります。
 
-* お使いのテナントに作成された[ユーザー フロー](tutorial-create-user-flows.md)または[カスタム ポリシー](custom-policy-get-started.md)
+* お使いのテナントに作成された[ユーザー フロー](tutorial-create-user-flows.md?pivots=b2c-user-flow)または[カスタム ポリシー](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 
 ## <a name="get-token-issuer-endpoints"></a>トークン発行者のエンドポイントを取得する
 
