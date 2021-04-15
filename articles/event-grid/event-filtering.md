@@ -3,12 +3,12 @@ title: Azure Event Grid でのイベントのフィルター処理
 description: Azure Event Grid サブスクリプションを作成するときにイベントをフィルター処理する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/04/2021
-ms.openlocfilehash: fa63296f97bfa888cb0f425d0c03a5e4a7e46525
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b5439b77b86d42d062cf9da66ce678f04f46f813
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419849"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256091"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -454,7 +454,7 @@ FOR_EACH filter IN (a, b, c)
 ```
 
 ## <a name="stringin"></a>StringIn
-**StringIn** 演算子を使用すると、**キー** 値が、指定された **フィルター** 値のいずれかと **完全に一致** するかどうかが確認されます。 次の例では、これによって `data` セクションの `key1` 属性の値が `exact`、`string`、または `matches` であるかどうかが確認されます。 
+**StringIn** 演算子を使用すると、**キー** 値が、指定された **フィルター** 値のいずれかと **完全に一致** するかどうかが確認されます。 次の例では、これによって `data` セクションの `key1` 属性の値が `contoso`、`fabrikam`、または `factory` であるかどうかが確認されます。 
 
 ```json
 "advancedFilters": [{

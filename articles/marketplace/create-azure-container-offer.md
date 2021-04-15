@@ -7,16 +7,16 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: bcb334074d842fa5c35e4619f1c5d654405388a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01370a8d7710292858fe28d263fe5456b012c40f
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96459562"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107382"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketplace で Azure Container オファーを作成する
 
-この記事では、Azure Marketplace 向けの Container オファーを作成して公開する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](./partner-center-portal/create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+この記事では、Azure Marketplace 向けの Container オファーを作成して公開する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 

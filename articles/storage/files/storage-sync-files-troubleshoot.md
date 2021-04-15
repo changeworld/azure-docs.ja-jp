@@ -4,15 +4,15 @@ description: Windows Server の Azure ファイル共有の高速キャッシュ
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 2/1/2021
+ms.date: 4/12/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f20ebfdf9bdd1272ac1cb16e1ad88b4cbc287e5d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 54a2493d930069142a8cd6965421dd588b8d76b8
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727605"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107366302"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -1053,24 +1053,6 @@ if ($role -eq $null) {
 }
 ```
 ---
-
-### <a name="how-do-i-prevent-users-from-creating-files-containing-unsupported-characters-on-the-server"></a>ユーザーがサーバー上でサポートされていない文字を含むファイルを作成できないようにするにはどうすればよいですか。
-[ファイル サーバー リソース マネージャー (FSRM) のファイル スクリーン](/windows-server/storage/fsrm/file-screening-management)を使用すると、サーバー上でサポートされていない文字を名前に含むファイルが作成されるのをブロックできます。 サポートされていない文字の大部分は印刷不可能であるため、この作業は PowerShell を使用して行う必要があります。そのために、最初にそれらの文字の 16 進数表現を文字としてキャストする必要があります。
-
-まず、[New-FsrmFileGroup コマンドレット](/powershell/module/fileserverresourcemanager/new-fsrmfilegroup)を使用して FSRM ファイル グループを作成します。 この例では、サポートされていない文字を 2 つだけ含むグループを定義しますが、必要な数の文字をファイル グループに含めることができます。
-
-```powershell
-New-FsrmFileGroup -Name "Unsupported characters" -IncludePattern @(("*"+[char]0x00000090+"*"),("*"+[char]0x0000008F+"*"))
-```
-
-FSRM ファイル グループを定義したら、New-FsrmFileScreen コマンドレットを使用して、FSRM ファイル スクリーンを作成できます。
-
-```powershell
-New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported characters" -IncludeGroup "Unsupported characters"
-```
-
-> [!Important]  
-> ファイル スクリーンは、Azure File Sync でサポートされない文字の作成をブロックする目的でのみ使用してください。ファイル スクリーンを他のシナリオで使用すると、同期は Azure ファイル共有からサーバーへのダウンロードを継続的に試行し、ファイル スクリーンによってブロックされます。その結果、データ エグレス値が高くなります。 
 
 ## <a name="cloud-tiering"></a>クラウドの階層化 
 クラウドの階層化の障害パスは 2 つあります。

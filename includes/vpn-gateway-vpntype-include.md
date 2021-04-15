@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b3907882df09bfae1d6453fbffbd3e7562554f7c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "96010825"
 ---
 * **PolicyBased:** PolicyBased VPN は、以前は (クラシック デプロイ モデルでは) 静的ルーティング ゲートウェイと呼ばれていました。 PolicyBased VPN では、パケットを暗号化し、オンプレミス ネットワークと Azure VNet の間でアドレスのプレフィックスの組み合わせで構成された IPsec ポリシーに基づいて、IPsec トンネル経由でそのパケットを送信します。 ポリシー (またはトラフィック セレクター) は、通常、VPN デバイスの構成でアクセス リストとして定義されます。 PolicyBased VPN の種類の値は *PolicyBased* です。 PolicyBased VPN を使用する場合は、次の制限事項に留意してください。
