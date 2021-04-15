@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fcc482e215e646fec20516f35641bd05398d2f2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cbe465c41363e8c0779440affeae78f999b4632d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928717"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257434"
 ---
 # <a name="manage-azure-ad-b2c-custom-policies-with-azure-powershell"></a>Azure PowerShell を使用して Azure AD B2C のカスタム ポリシーを管理する
 
@@ -30,7 +30,7 @@ Azure PowerShell には、Azure AD B2C テナントに対するコマンド ラ�
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure AD B2C テナント](tutorial-create-tenant.md)、および [B2C IEF ポリシー管理者](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)ロールを持つディレクトリー内のユーザーの資格情報
-* テナントにアップロード済みの[カスタム ポリシー](custom-policy-get-started.md)
+* テナントにアップロード済みの[カスタム ポリシー](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 * [Azure AD PowerShell for Graph **プレビュー モジュール**](/powershell/azure/active-directory/install-adv2)
 
 ## <a name="connect-powershell-session-to-b2c-tenant"></a>PowerShell セッションを B2C テナントに接続する

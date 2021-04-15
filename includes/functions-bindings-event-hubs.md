@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 05d136093bd509e8c23ce8622423216326b0f1f2
-ms.sourcegitcommit: d135e9a267fe26fbb5be98d2b5fd4327d355fe97
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "102623578"
 ---
 ## <a name="add-to-your-functions-app"></a>Functions アプリに追加する
@@ -17,7 +17,7 @@ ms.locfileid: "102623578"
 
 トリガーとバインドを使用するには、適切なパッケージを参照する必要があります。 NuGet パッケージは .NET クラス ライブラリに使用されますが、他のすべてのアプリケーションの種類には拡張バンドルが使用されます。
 
-| Language                                        | 追加手段                                   | 解説 
+| 言語                                        | 追加手段                                   | 解説 
 |-------------------------------------------------|---------------------------------------------|-------------|
 | C#                                              | [NuGet パッケージ] バージョン 3.x をインストールする | |
 | C# スクリプト、Java、JavaScript、Python、PowerShell | [拡張機能バンドル]を登録する          | Visual Studio Code で使用するには [Azure Tools 拡張機能]をお勧めします。 |

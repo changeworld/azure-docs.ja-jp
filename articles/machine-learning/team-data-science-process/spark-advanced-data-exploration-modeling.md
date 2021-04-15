@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b84b7387411e7df8e092a2e810591697319f9554
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 37f0b48190bcbad7ab190da1d690a1a0485501a1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774679"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259321"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Spark を使用した高度なデータ探索とモデリング
 
@@ -37,7 +37,8 @@ ms.locfileid: "104774679"
 
 * [SGD を使用した線形回帰](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html#pyspark.mllib.regression.LinearRegressionWithSGD
 ) は、最適化に確率的勾配降下 (SGD) 法を使用し、特徴のスケーリングを使用して支払われるチップの金額を予測する線形回帰モデルです。 
-* [LBFGS を使用したロジスティック回帰](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) ("ロジット" 回帰) は、データ分類を実行するために従属変数がカテゴリ型である場合に使用できる回帰モデルです。 LBFGS は、限られた量のコンピューター メモリを使用する Broyden–Fletcher–Goldfarb–Shanno (BFGS) アルゴリズムに近い準ニュートン最適化アルゴリズムであり、機械学習で広く使用されています。
+* [LBFGS を使用したロジスティック回帰](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.classification.LogisticRegressionWithLBFGS.html
+) ("ロジット" 回帰) は、データ分類を実行するために従属変数がカテゴリ型である場合に使用できる回帰モデルです。 LBFGS は、限られた量のコンピューター メモリを使用する Broyden–Fletcher–Goldfarb–Shanno (BFGS) アルゴリズムに近い準ニュートン最適化アルゴリズムであり、機械学習で広く使用されています。
 * [ランダム フォレスト](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) は、複数のデシジョン ツリーをまとめたものです。  オーバーフィットのリスクを軽減するために、多くのデシジョン ツリーが結合されています。 ランダム フォレストは回帰と分類に使用されます。カテゴリの特徴を処理し、多クラス分類設定に拡張できます。 特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。 ランダム フォレストは、分類と回帰に使用される最も一般的な機械学習モデルの 1 つです。
 * [勾配ブースティング ツリー](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS) は、複数のデシジョン ツリーをまとめたものです。 GBTS は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBTS は回帰と分類に使用されます。カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャできます。 また、多クラス分類の設定にも使用できます。
 
@@ -504,7 +505,8 @@ print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 上記のセルの実行に要した時間:0.31 秒
 
 ### <a name="feature-scaling"></a>特徴のスケーリング
-この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 特徴のスケーリングのコードでは、[StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) を使用して特徴を単価差異にスケーリングします。 これは、確率的勾配降下 (SGD) による線形回帰に使用するために、MLlib で提供されています。 SGD は、正規化回帰やサポート ベクター マシン (SVM) などの他のさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。   
+この特徴のスケーリングはデータの正規化とも呼ばれ、目標関数において幅広く分散した値を持つ特徴に過大な重みが与えられないようにします。 特徴のスケーリングのコードでは、[StandardScaler](https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.mllib.regression.LinearRegressionWithSGD.html
+) を使用して特徴を単価差異にスケーリングします。 これは、確率的勾配降下 (SGD) による線形回帰に使用するために、MLlib で提供されています。 SGD は、正規化回帰やサポート ベクター マシン (SVM) などの他のさまざまな機械学習モデルのトレーニングに広く使用されているアルゴリズムです。   
 
 > [!TIP]
 > LinearRegressionWithSGD アルゴリズムは特徴のスケーリングの影響を受けやすいことがわかりました。   
