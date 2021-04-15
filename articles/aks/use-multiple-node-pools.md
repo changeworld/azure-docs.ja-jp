@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) のクラスターで複数のノー
 services: container-service
 ms.topic: article
 ms.date: 02/11/2021
-ms.openlocfilehash: 8f18e19eca8895549f17c9f0f6822ecb4da2914b
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: bb10e2023187c74a9e8b9a2e4c72115841e89a84
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104773506"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106552599"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -738,6 +738,34 @@ az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-p
 az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
 ```
 
+### <a name="use-a-public-ip-prefix"></a>パブリック IP プレフィックスを使用する
+
+[パブリック IP プレフィックスを使用することには、多くの利点][public-ip-prefix-benefits]があります。 AKS は、新しいクラスターの作成時またはノード プールの追加時にリソース ID をフラグ `node-public-ip-prefix` と共に渡すことによって、ノードの既存のパブリック IP プレフィックスからのアドレスの使用をサポートします。
+
+まず、[az network public-ip prefix create][az-public-ip-prefix-create] を使用してパブリック IP プレフィックスを作成します。
+
+```azurecli-interactive
+az network public-ip prefix create --length 28 --location eastus --name MyPublicIPPrefix --resource-group MyResourceGroup3
+```
+
+出力を表示し、プレフィックスの `id` を確認します。
+
+```output
+{
+  ...
+  "id": "/subscriptions/<subscription-id>/resourceGroups/myResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix",
+  ...
+}
+```
+
+最後に、新しいクラスターを作成するとき、または新しいノード プールを追加するときに、フラグ `node-public-ip-prefix` を使用して、プレフィックスのリソース ID を渡します。
+
+```azurecli-interactive
+az aks create -g MyResourceGroup3 -n MyManagedCluster -l eastus --enable-node-public-ip --node-public-ip-prefix /subscriptions/<subscription-id>/resourcegroups/MyResourceGroup3/providers/Microsoft.Network/publicIPPrefixes/MyPublicIPPrefix
+```
+
+### <a name="locate-public-ips-for-nodes"></a>ノードのパブリック IP を検索する
+
 ノードのパブリック IP は、さまざまな方法で見つけることができます。
 
 * Azure CLI コマンド [az vmss list-instance-public-ips][az-list-ips] を使用。
@@ -821,3 +849,5 @@ Windows Server コンテナー ノード プールを作成して使用するに
 [vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
 [az-list-ips]: /cli/azure/vmss?view=azure-cli-latest&preserve-view=true#az_vmss_list_instance_public_ips
 [reduce-latency-ppg]: reduce-latency-ppg.md
+[public-ip-prefix-benefits]: ../virtual-network/public-ip-address-prefix.md#why-create-a-public-ip-address-prefix
+[az-public-ip-prefix-create]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest&preserve-view=true#az_network_public_ip_prefix_create

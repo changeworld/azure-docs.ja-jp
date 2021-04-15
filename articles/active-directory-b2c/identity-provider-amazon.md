@@ -13,12 +13,12 @@ ms.date: 03/17/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e152d9c242a44fe869eb7bfe7a16fbd7dfc8049d
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b6c0d9d5430d84006b208c50e78b8d875c95b8ac
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104580121"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028385"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Amazon アカウントでのサインアップおよびサインインを設定する
 
@@ -175,7 +175,7 @@ Amazon アカウントをクレーム プロバイダーとして定義するに
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
-1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
 1. サインアップまたはサインイン ページで、 **[Amazon]** を選択して、Amazon アカウントでサインインします。
 

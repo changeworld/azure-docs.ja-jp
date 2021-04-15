@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 278bb106789452d14001da5bd0bab6570d114666
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 2878efd0e392479e35530220d025055eacae3b43
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428213"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104735"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -31,11 +31,11 @@ ms.locfileid: "102428213"
 
 何らかの操作を行うには、事前に Speech SDK をインストールしておく必要があります。 ご利用のプラットフォームに応じて、次の手順を行います。
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnet&pivots=programming-language-csharp" target="_blank">.NET Framework </a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=dotnetcore&pivots=programming-language-csharp" target="_blank">.NET Core </a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=unity&pivots=programming-language-csharp" target="_blank">Unity </a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=uwps&pivots=programming-language-csharp" target="_blank">UWP </a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=xaml&pivots=programming-language-csharp" target="_blank">Xamarin </a>
+* <a href="/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-csharp&tabs=dotnet" target="_blank">.NET Framework </a>
+* <a href="/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-csharp&tabs=dotnetcore" target="_blank">.NET Core </a>
+* <a href="/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-csharp&tabs=unity" target="_blank">Unity </a>
+* <a href="/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-csharp&tabs=uwps" target="_blank">UWP </a>
+* <a href="/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-csharp&tabs=xaml" target="_blank">Xamarin </a>
 
 ## <a name="import-dependencies"></a>依存関係のインポート
 
@@ -67,14 +67,14 @@ Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig
 この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
 ```csharp
-public class Program 
+public class Program
 {
     static async Task Main()
     {
         await SynthesizeAudioAsync();
     }
 
-    static async Task SynthesizeAudioAsync() 
+    static async Task SynthesizeAudioAsync()
     {
         var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     }
@@ -88,7 +88,7 @@ public class Program
 まず、`FromWavFileOutput()` 関数を使用して `.wav` ファイルに出力を自動的に書き込む `AudioConfig` を作成し、次にそれを `using` ステートメントでインスタンス化します。 このコンテキストの `using` ステートメントによって、アンマネージド リソースが自動的に破棄され、破棄後にオブジェクトがスコープ外になります。
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var audioConfig = AudioConfig.FromWavFileOutput("path/to/write/file.wav");
@@ -98,7 +98,7 @@ static async Task SynthesizeAudioAsync()
 次に、別の `using` ステートメントを使用して `SpeechSynthesizer` をインスタンス化します。 `config` オブジェクトと `audioConfig` オブジェクトをパラメーターとして渡します。 こうすることで、音声合成を実行してファイルに書き込むことが、テキスト文字列を使用して `SpeakTextAsync()` を実行するのと同じぐらい簡単になります。
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var audioConfig = AudioConfig.FromWavFileOutput("path/to/write/file.wav");
@@ -111,10 +111,10 @@ static async Task SynthesizeAudioAsync()
 
 ## <a name="synthesize-to-speaker-output"></a>スピーカー出力に合成する
 
-場合によっては、合成された音声をスピーカーに直接出力することが必要になる場合があります。 これは、上記の例で `SpeechSynthesizer` を作成するときに、`AudioConfig` パラメーターを省略するだけで実行できます。 これにより、現在のアクティブな出力デバイスに対して出力が行われます。
+場合によっては、合成された音声をスピーカーに直接出力することが必要になる場合があります。 これは、上記の例で `SpeechSynthesizer` を作成するときに、`AudioConfig` パラメーターを省略することで実行できます。 これにより、現在のアクティブな出力デバイスに対して合成が行われます。
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var synthesizer = new SpeechSynthesizer(config);
@@ -130,7 +130,7 @@ static async Task SynthesizeAudioAsync()
 * 結果を他の API またはサービスと統合する。
 * オーディオ データの変更やカスタム `.wav` ヘッダーの記述などを行う。
 
-この変更は、前の例から簡単に行うことができます。 まず、`AudioConfig` ブロックを削除します。これは、この時点から出力動作を手動で管理して制御を強化するためです。 次に、`SpeechSynthesizer` コンストラクターの `AudioConfig` に `null` を渡します。 
+この変更は、前の例から簡単に行うことができます。 まず、`AudioConfig` ブロックを削除します。これは、この時点から出力動作を手動で管理して制御を強化するためです。 次に、`SpeechSynthesizer` コンストラクターの `AudioConfig` に `null` を渡します。
 
 > [!NOTE]
 > 前述のスピーカー出力の例のように省略するのではなく、`AudioConfig` に `null` を渡した場合、既定ではオーディオは現在のアクティブな出力デバイスで再生されません。
@@ -138,11 +138,11 @@ static async Task SynthesizeAudioAsync()
 今回は、結果を [`SpeechSynthesisResult`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult) 変数に保存します。 `AudioData` プロパティには、出力データの `byte []` が含まれます。 この `byte []` を手動で操作することも、[`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream) クラスを使用してインメモリ ストリームを管理することもできます。 この例では、`AudioDataStream.FromResult()` 静的関数を使用して、結果からストリームを取得します。
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var synthesizer = new SpeechSynthesizer(config, null);
-    
+
     var result = await synthesizer.SpeakTextAsync("Getting the response as an in-memory stream.");
     using var stream = AudioDataStream.FromResult(result);
 }
@@ -168,7 +168,7 @@ static async Task SynthesizeAudioAsync()
 この例では、`SpeechConfig` オブジェクトに `SpeechSynthesisOutputFormat` を設定することにより、高忠実度の RIFF 形式 `Riff24Khz16BitMonoPcm` を指定します。 前のセクションの例と同様に、[`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream) を使用して結果のインメモリ ストリームを取得し、それをファイルに書き込みます。
 
 ```csharp
-static async Task SynthesizeAudioAsync() 
+static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     config.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff24Khz16BitMonoPcm);
@@ -204,11 +204,11 @@ SSML を使用したカスタマイズを開始するには、音声を切り替
 > Visual Studio を使用している場合、既定では、ビルド構成で XML ファイルが見つからない可能性があります。 この問題を解決するには、該当する XML ファイルを右クリックし、 **[プロパティ]** を選択します。 **[ビルド アクション]** を *[コンテンツ]* に、 **[出力ディレクトリにコピー]** を *[常にコピーする]* に変更します。
 
 ```csharp
-public static async Task SynthesizeAudioAsync() 
+public static async Task SynthesizeAudioAsync()
 {
     var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
     using var synthesizer = new SpeechSynthesizer(config, null);
-    
+
     var ssml = File.ReadAllText("./ssml.xml");
     var result = await synthesizer.SpeakSsmlAsync(ssml);
 
@@ -247,3 +247,10 @@ public static async Task SynthesizeAudioAsync()
   </voice>
 </speak>
 ```
+## <a name="get-facial-pose-events"></a>表情イベントを取得する
+
+スピーチは、表情のアニメーションを動かす有効な手段となる場合があります。
+特定の音素を生成するときの唇、顎、舌の位置など、観察された発話における主要な姿勢を表すために、[口形素](../../../how-to-speech-synthesis-viseme.md)がよく使用されます。
+口形素イベントは、Speech SDK でサブスクライブできます。
+その後、口形素イベントを適用すれば、スピーチ音声の再生に伴って、キャラクターに顔のアニメーションを付けることができます。
+[口形素イベントを取得する方法](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)に関するセクションを参照してください。

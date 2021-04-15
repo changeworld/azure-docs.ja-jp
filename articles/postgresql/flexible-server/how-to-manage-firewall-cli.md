@@ -1,19 +1,19 @@
 ---
 title: ファイアウォール規則の管理 - Azure CLI - Azure Database for PostgreSQL - フレキシブル サーバー
 description: Azure CLI コマンド ラインを使用して、Azure Database for PostgreSQL - フレキシブル サーバーのファイアウォール規則を作成および管理します。
-author: rothja
-ms.author: jroth
+author: sunilagarwal
+ms.author: sunila
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 843ad39d1c09d7c5a2fb7e9b536e300edf58d8e5
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3aafad8bcc42a9099dbd37b4e8349e4c093a0425
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551123"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226279"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL - フレキシブル サーバー ファイアウォール規則の作成と管理
 

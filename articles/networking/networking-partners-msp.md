@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 2d799cb85bfa6cbfa233410eaf0825bb42bb3fa9
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 09712396286ed0236f798aa9d9ce7e899255f480
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799311"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105935500"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -63,7 +63,7 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 正常性チェック: 5 日の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 日間の実装](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)|[Aruba ClearPass Policy Manager を使用したマネージド NAC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_aruba_clearpass?tab=Overview)|[Vandis Managed ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)、[Palo Alto Networks を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)、[Barracuda CloudGen WAN を利用する Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_barracuda_vwan?tab=Overview)|
 
-Microsoft のロードマップには、[Amdocs](https://www.amdocs.com/)、[Cirrus Core Networks](https://cirruscorenetworks.com/)、[Cognizant](https://www.cognizant.com/cognizant-digital-systems-technology/cloud-enablement-services)、[Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[OmniClouds](https://omniclouds.com/)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)、[Zertia](https://zertia.es/) の各 Azure ネットワーク MSP パートナーが提供する、マネージド ExpressRoute、Virtual WAN、セキュリティ サービス、Private Edge Zone サービスのための Azure Marketplace オファーがあります。
+Microsoft のロードマップには、[Amdocs](https://www.amdocs.com/)、[Cirrus Core Networks](https://cirruscorenetworks.com/)、[Cognizant](https://www.cognizant.com/cognizant-digital-systems-technology/cloud-enablement-services)、[Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[OmniClouds](https://omniclouds.com/)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)、[SES](https://www.ses.com/networks/cloud/ses-and-azure-expressroute)、[Zertia](https://zertia.es/) の各 Azure ネットワーク MSP パートナーが提供する、マネージド ExpressRoute、Virtual WAN、セキュリティ サービス、Private Edge Zone サービスのための Azure Marketplace オファーがあります
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute パートナー
 

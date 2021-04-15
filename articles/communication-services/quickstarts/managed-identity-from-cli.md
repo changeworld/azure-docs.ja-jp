@@ -9,22 +9,22 @@ ms.topic: how-to
 ms.date: 03/10/2021
 ms.author: jbeauregardb
 ms.reviewer: mikben
-ms.openlocfilehash: e708536395807fc74dc5bfd73836e050832cca39
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 2ef5a3b162d62fa79ed01a156345070ee12b4862
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103493341"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110680"
 ---
 # <a name="authorize-access-with-managed-identity-to-your-communication-resource-in-your-development-environment"></a>開発環境で、マネージド ID を使用した通信リソースへのアクセスを承認する
 
-Azure ID クライアント ライブラリでは、Azure SDK に対する Azure Active Directory (Azure AD) トークン認証のサポートが提供されています。 .NET、Java、Python、および JavaScript 用の最新バージョンの Azure Communication Services クライアント ライブラリは、Azure ID ライブラリと統合され、Azure Communication Services 要求を承認するための OAuth 2.0 トークンを取得するための簡単で安全な手段を提供します。
+Azure ID SDK では、Azure SDK に対する Azure Active Directory (Azure AD) トークン認証のサポートが提供されています。 .NET、Java、Python、および JavaScript 用の最新バージョンの Azure Communication Services SDK は、Azure ID ライブラリと統合され、Azure Communication Services 要求を承認するための OAuth 2.0 トークンを取得するための簡単で安全な手段を提供します。
 
-Azure ID クライアント ライブラリの利点は、アプリケーションが開発環境または Azure のどちらで実行されているかにかかわらず、複数のサービスで同じコードを使用して認証できることです。 Azure ID クライアント ライブラリによって、セキュリティ プリンシパルが認証されます。 コードが Azure 上で実行されている場合、セキュリティ プリンシパルは Azure リソースに対するマネージド ID です。 開発環境では、マネージド ID が存在しないため、クライアント ライブラリはテスト目的でユーザーまたは登録したアプリケーションのいずれかを認証します。
+Azure ID SDK の利点は、アプリケーションが開発環境または Azure のどちらで実行されているかにかかわらず、複数のサービスで同じコードを使用して認証できることです。 Azure ID SDK によって、セキュリティ プリンシパルが認証されます。 コードが Azure 上で実行されている場合、セキュリティ プリンシパルは Azure リソースに対するマネージド ID です。 開発環境では、マネージド ID が存在しないため、SDK によって、テスト目的でユーザーまたは登録したアプリケーションのいずれかが認証されます。
 
 ## <a name="prerequisites"></a>前提条件
 
- - Azure CLI。 [インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)
+ - Azure CLI。 [インストール ガイド](/cli/azure/install-azure-cli)
  - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成する](https://azure.microsoft.com/free)
 
 ## <a name="setting-up"></a>設定
@@ -35,7 +35,7 @@ Azure ID クライアント ライブラリの利点は、アプリケーショ�
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager テンプレート](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
-- [Azure Resource Manager クライアント ライブラリ](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+- [Azure Resource Manager SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 - [App Services](../../app-service/overview-managed-identity.md)
 
 ## <a name="authenticate-a-registered-application-in-the-development-environment"></a>開発環境で登録したアプリケーションを認証する
@@ -68,7 +68,7 @@ az ad sp create-for-rbac --name <application-name>
 
 #### <a name="set-environment-variables"></a>環境変数の設定
 
-Azure ID クライアント ライブラリでは、実行時に 3 つの環境変数から値を読み取って、アプリケーションが認証されます。 次の表で、各環境変数に設定する値について説明します。
+Azure ID SDK では、実行時に 3 つの環境変数から値が読み取られ、アプリケーションが認証されます。 次の表で、各環境変数に設定する値について説明します。
 
 |環境変数|値
 |-|-

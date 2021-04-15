@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/19/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f728e1f1e2186188135666ed54e02c9ed3507509
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 66b3db9a7aec45a2a0881379db6f7ef51950b5c5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056540"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364313"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-by-using-the-azure-cli"></a>クイックスタート: Azure CLI を使用した内部ロード バランサーの作成
 
@@ -30,9 +30,6 @@ Azure CLI を使用して内部ロード バランサーと 3 つの仮想マシ
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)] 
 
 このクイックスタートには、Azure CLI のバージョン 2.0.28 以降が必要です。 Azure Cloud Shell を使用している場合は、最新バージョンが既にインストールされています。
-
->[!NOTE]
->Azure Load Balancer Standard は、運用環境のワークロードに推奨される選択肢です。 この記事には、Azure Load Balancer Standard および Azure Load Balancer Basic に関する情報が含まれています。 SKU の詳細については、「[Azure Load Balancer の SKU](skus.md)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
@@ -47,7 +44,11 @@ Azure リソース グループとは、Azure リソースのデプロイと管�
 
 ```
 
-## <a name="azure-load-balancer-standard"></a>Azure Load Balancer Standard
+---
+# <a name="standard-sku"></a>[**Standard SKU**](#tab/option-1-create-load-balancer-standard)
+
+>[!NOTE]
+>運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 内部ロード バランサーを作成すると、仮想ネットワークがロード バランサー用のネットワークとして構成されます。 次の図は、このクイックスタートで作成されるリソースを示したものです。
 
@@ -335,7 +336,10 @@ VM がデプロイされるまでに、数分かかる場合があります。
 
 ```
 
-## <a name="azure-load-balancer-basic"></a>Azure Load Balancer Basic
+# <a name="basic-sku"></a>[**Basic SKU**](#tab/option-1-create-load-balancer-basic)
+
+>[!NOTE]
+>運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。 SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 内部ロード バランサーを作成すると、仮想ネットワークがロード バランサー用のネットワークとして構成されます。 次の図は、このクイックスタートで作成されるリソースを示したものです。
 
@@ -636,7 +640,7 @@ VM がデプロイされるまでに、数分かかる場合があります。
   done
 
 ```
-
+---
 ## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
 
 [az network nic create](/cli/azure/network/nic#az-network-nic-create) を使用して、ネットワーク インターフェイスを作成します。 次の指定を行います。
