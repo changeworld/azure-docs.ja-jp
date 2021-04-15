@@ -7,13 +7,13 @@ ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
-ms.date: 2/25/2020
-ms.openlocfilehash: 386a0e27c0f73f5bcd42397ed515f7561d5097fd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/08/2021
+ms.openlocfilehash: b4b67a6bf4eea72b3a81bd01398cc60cc33c0d0a
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955059"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227043"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>マネージド ID を使用して App Configuration にアクセスする
 
@@ -145,7 +145,7 @@ Azure App Configuration とその .NET Core、.NET Framework、および Java Sp
     >config.AddAzureAppConfiguration(options =>
     >   options.Connect(new Uri(settings["AppConfig:Endpoint"]), new ManagedIdentityCredential(<your_clientId>)));
     >```
-    >[Azure リソースのマネージド ID に関する FAQ](../active-directory/managed-identities-azure-resources/known-issues.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request) で説明したように、使用されるマネージド ID を解決する既定の方法があります。 この場合、将来的にありえるランタイム問題 (たとえば、新しいユーザー割り当てマネージド ID が追加された場合やシステム割り当てマネージド ID が有効になった場合) を回避する目的で、望ましい ID を指定するように Azure ID ライブラリから強制されます。 そのため、ユーザー割り当てマネージド ID が 1 つだけ定義されており、システム割り当てマネージド ID がない場合であっても、clientId を指定する必要があります。
+    >[Azure リソースのマネージド ID に関する FAQ](../active-directory/managed-identities-azure-resources/managed-identities-faq.md#what-identity-will-imds-default-to-if-dont-specify-the-identity-in-the-request) で説明したように、使用されるマネージド ID を解決する既定の方法があります。 この場合、将来的にありえるランタイム問題 (たとえば、新しいユーザー割り当てマネージド ID が追加された場合やシステム割り当てマネージド ID が有効になった場合) を回避する目的で、望ましい ID を指定するように Azure ID ライブラリから強制されます。 そのため、ユーザー割り当てマネージド ID が 1 つだけ定義されており、システム割り当てマネージド ID がない場合であっても、clientId を指定する必要があります。
 
 
 1. App Configuration と Key Vault 参照の両方を使用するには、以下に示すように、*Program.cs* を更新します。 このコードは `ConfigureKeyVault` の一部として `SetCredential` を呼び出し、Key Vault に対する認証時に使用する資格情報を構成プロバイダーに伝えます。
