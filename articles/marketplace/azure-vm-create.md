@@ -7,18 +7,18 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 03/10/2021
-ms.openlocfilehash: 827e4d883fd9e80ae84845d620cc4ca00816f56e
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 1ea8583b33fbe711fcffbf9626236923ecd0df8b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551317"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107229"
 ---
 # <a name="how-to-create-a-virtual-machine-offer-on-azure-marketplace"></a>Azure Marketplace で仮想マシン オファーを作成する方法
 
 この記事では、[Azure Marketplace](https://azuremarketplace.microsoft.com/) 向けに Azure 仮想マシン オファーを作成する方法について説明します。 オペレーティング システム、仮想ハード ディスク (VHD)、最大 16 個のデータ ディスクが含まれる Windows ベースと Linux ベースの両方の仮想マシンに対応しています。
 
-開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成します](partner-center-portal/create-account.md)。 ご自分のアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+開始する前に、[パートナー センターでコマーシャル マーケットプレース アカウントを作成します](create-account.md)。 ご自分のアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
