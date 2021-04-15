@@ -5,13 +5,13 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 description: Azure Dev Spaces をカスタム NGINX イングレス コントローラーを使用するように構成し、そのイングレス コントローラーを使用して HTTPS を構成する方法を説明します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: c5ef14074c6e601bcd8a23ce62921d67b01ba3bb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-js
+ms.openlocfilehash: a0c8fa453115936b61b2cdae299e07ae10356ed3
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198134"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378773"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>カスタム NGINX イングレス コントローラーの使用と HTTPS の構成
 

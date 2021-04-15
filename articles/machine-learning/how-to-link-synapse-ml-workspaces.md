@@ -11,16 +11,16 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: dd62fb5e3c7450d50b9837ee5484ca480cab78aa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 511ee1aa5f5036f5ca5450def0e4481c0608db33
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640829"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227349"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Azure Synapse Analytics と Azure Machine Learning のワークスペースをリンクする (プレビュー)
 
-この記事では、[Azure Synapse Analytics](/synapse-analytics/overview-what-is.md) ワークスペースと [Azure Machine Learning ワークスペース](concept-workspace.md)をリンクするリンク サービスを作成する方法について説明します。
+この記事では、[Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) ワークスペースと [Azure Machine Learning ワークスペース](concept-workspace.md)をリンクするリンク サービスを作成する方法について説明します。
 
 Azure Machine Learning ワークスペースを Azure Synapse ワークスペースとリンクすることで、Apache Spark プールを大規模なデータ ラングリング専用コンピューティングとしてアタッチし、同じノートブックからモデル トレーニングを実施できます。
 

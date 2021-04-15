@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: trbye
-ms.openlocfilehash: d990deca3f435f0b1e3fbdd3388371a11813662a
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 98f13df2c4da993147ba3ef4157340910fcbc5d0
+ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947602"
+ms.lasthandoff: 03/19/2021
+ms.locfileid: "104719912"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -102,7 +102,7 @@ audio_config = AudioOutputConfig(use_default_speaker=True)
 * 結果を他の API またはサービスと統合する。
 * オーディオ データの変更やカスタム `.wav` ヘッダーの記述などを行う。
 
-この変更は、前の例から簡単に行うことができます。 まず、`AudioConfig` を削除します。これは、制御を高めるために、この時点から出力動作を手動で管理するからです。 次に、`SpeechSynthesizer` コンストラクターの `AudioConfig` に `None` を渡します。 
+この変更は、前の例から簡単に行うことができます。 まず、`AudioConfig` を削除します。これは、制御を高めるために、この時点から出力動作を手動で管理するからです。 次に、`SpeechSynthesizer` コンストラクターの `AudioConfig` に `None` を渡します。
 
 > [!NOTE]
 > 前述のスピーカー出力の例のように省略するのではなく、`AudioConfig` に `None` を渡した場合、既定ではオーディオは現在のアクティブな出力デバイスで再生されません。
@@ -206,3 +206,11 @@ stream.save_to_wav_file("path/to/write/file.wav")
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>表情イベントを取得する
+
+スピーチは、表情のアニメーションを動かす有効な手段となる場合があります。
+特定の音素を生成するときの唇、顎、舌の位置など、観察された発話における主要な姿勢を表すために、[口形素](../../../how-to-speech-synthesis-viseme.md)がよく使用されます。
+口形素イベントは、Speech SDK でサブスクライブできます。
+その後、口形素イベントを適用すれば、スピーチ音声の再生に伴って、キャラクターに顔のアニメーションを付けることができます。
+[口形素イベントを取得する方法](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)に関するセクションを参照してください。

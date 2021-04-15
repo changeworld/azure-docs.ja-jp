@@ -10,13 +10,15 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: dedea2a622cb0eece92bb8b57871c76daa05fb68
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 30dcda4d7bb95ac59add104452415a0ddfc3c016
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103495471"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106178390"
 ---
+[!INCLUDE [Public Preview Notice](../../../includes/public-preview-include-chat.md)]
+
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
 
@@ -128,7 +130,7 @@ let endpoint = "<ACS_RESOURCE_ENDPOINT>"
 詳細については、[ユーザー アクセス トークン](../../access-tokens.md)に関するページを参照してください。
 
 ## <a name="object-model"></a>オブジェクト モデル 
-JavaScript 用 Azure Communication Services チャット クライアント ライブラリが備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
+JavaScript 用 Azure Communication Services Chat SDK が備える主な機能のいくつかは、以下のクラスとインターフェイスにより処理されます。
 
 | 名前                                   | 説明                                                                                                                                                                           |
 | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -275,5 +277,4 @@ chatThreadClient
 ## <a name="run-the-code"></a>コードの実行
 
 Xcode で [Run]\(実行\) ボタンをクリックし、プロジェクトをビルドして実行します。 コンソールには、そのコードからの出力と ChatClient からのロガー出力が表示されます。
-
 

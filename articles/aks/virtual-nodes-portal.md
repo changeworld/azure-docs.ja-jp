@@ -4,13 +4,13 @@ description: Azure portal を使用して、仮想ノードを使用する Azure
 services: container-service
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: c1ecaa88dd5329d86818565983a6ba891a6d8424
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions
+ms.openlocfilehash: bfb9e4a9a7c788255ea7fcba0fb42404829f82f3
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577829"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107379351"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Azure portal で仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 

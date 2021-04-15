@@ -9,22 +9,18 @@ ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-zone_pivot_groups: acs-plat-azp-net
-ms.openlocfilehash: ffb40d7fb45f43349004fc4d18e7582aa3521185
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+zone_pivot_groups: acs-plat-azp-azcli-net-ps
+ms.openlocfilehash: aabb8bdf4105702aa623c45bc291770b05b8279e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103495893"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726773"
 ---
 # <a name="quickstart-create-and-manage-communication-services-resources"></a>クイック スタート:Communication Services のリソースを作成して管理する
 
-[!INCLUDE [Public Preview Notice](../includes/public-preview-include.md)]
+最初の Communication Services リソースをプロビジョニングすることで、Azure Communication Services を開始します。 Communication Services のリソースは、[Azure portal](https://portal.azure.com) または .NET Management SDK を使用してプロビジョニングできます。 Management SDK と Azure portal を使用すると、リソースの作成、構成、更新、削除を行うことができます。また、これは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) (Azure のデプロイおよび管理サービス) と連携します。 SDK で使用できるすべての機能は、Azure portal で利用できます。 
 
-最初の Communication Services リソースをプロビジョニングすることで、Azure Communication Services を開始します。 Communication Services のリソースは、[Azure portal](https://portal.azure.com) または .NET 管理クライアント ライブラリを使用してプロビジョニングできます。 管理クライアント ライブラリと Azure portal を使用すると、リソースの作成、構成、更新、削除を行うことができます。また、これは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) (Azure のデプロイおよび管理サービス) と連携します。 クライアント ライブラリで使用できるすべての機能は、Azure portal で利用できます。 
-
-
-最初の Communication Services リソースをプロビジョニングすることで、Azure Communication Services を開始します。 Communication Services のリソースは、[Azure portal](https://portal.azure.com) または .NET 管理クライアント ライブラリを使用してプロビジョニングできます。 管理クライアント ライブラリと Azure portal を使用すると、リソースの作成、構成、更新、削除を行うことができます。また、これは [Azure Resource Manager](../../azure-resource-manager/management/overview.md) (Azure のデプロイおよび管理サービス) と連携します。 クライアント ライブラリで使用できるすべての機能は、Azure portal で利用できます。
 
 > [!WARNING]
 > Communication Services は複数の地域で利用できますが、電話番号を取得するには、リソースのデータ一が 'US' に設定されている必要があります。 また、パブリック プレビュー期間中は、通信リソースを別のサブスクリプションに転送できないことにも注意してください。
@@ -41,25 +37,43 @@ ms.locfileid: "103495893"
 [!INCLUDE [.NET](./includes/create-resource-net.md)]
 ::: zone-end
 
+::: zone pivot="platform-powershell"
+[!INCLUDE [PowerShell](./includes/create-resource-powershell.md)]
+::: zone-end
+
+
 ## <a name="access-your-connection-strings-and-service-endpoints"></a>接続文字列とサービス エンドポイントにアクセスする
 
-接続文字列を使用すると、Communication Services クライアント ライブラリから Azure への接続と認証を行うことができます。 Communication Services の接続文字列とサービス エンドポイントには、Azure portal から、または Azure Resource Manager API を使用してプログラムでアクセスできます。
+接続文字列を使用すると、Communication Services の SDK から Azure への接続と認証を行うことができます。 Communication Services の接続文字列とサービス エンドポイントには、Azure portal から、または Azure Resource Manager API を使用してプログラムでアクセスできます。
 
-Communication Services リソースに移動した後、ナビゲーション メニューから **[キー]** を選択し、Communication Services クライアント ライブラリで使用される **[接続文字列]** または **[エンドポイント]** の値をコピーします。 主キーとセカンダリ キーにアクセスできることに注意してください。 これは、Communication Services リソースへの一時的なアクセスをサード パーティまたはステージング環境に提供するシナリオで役に立ちます。
+Communication Services リソースに移動した後、ナビゲーション メニューから **[キー]** を選択し、Communication Services の SDK で使用される **[接続文字列]** または **[エンドポイント]** の値をコピーします。 主キーとセカンダリ キーにアクセスできることに注意してください。 これは、Communication Services リソースへの一時的なアクセスをサード パーティまたはステージング環境に提供するシナリオで役に立ちます。
 
 :::image type="content" source="./media/key.png" alt-text="Communication Services のキーのページのスクリーンショット。":::
 
-Azure CLI を使用してキー情報にアクセスすることもできます。
+特定のリソースのキーやリソース グループなど、重要な情報には、Azure CLI を使用してアクセスすることもできます。 
 
+[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?tabs=azure-cli) をインストールし、次のコマンドを使用してログインします。 Azure アカウントを使用して接続するには、資格情報を入力する必要があります。
+```azurecli
+az login
+```
+
+これで、リソースに関する重要な情報にアクセスできるようになりました。
 ```azurecli
 az communication list --resource-group "<resourceGroup>"
 
 az communication list-key --name "<communicationName>" --resource-group "<resourceGroup>"
 ```
 
+特定のサブスクリプションを選択したい場合は、```--subscription``` フラグを指定してサブスクリプション ID を指定することもできます。
+```
+az communication list --resource-group  "resourceGroup>"  --subscription "<subscriptionID>"
+
+az communication list-key --name "<communicationName>" --resource-group "resourceGroup>" --subscription "<subscriptionID>"
+```
+
 ## <a name="store-your-connection-string"></a>接続文字列を格納する
 
-Communication Services クライアント ライブラリは、接続文字列を使用して、Communication Services に対して行われた要求を承認します。 接続文字列は次の方法で保存できます。
+Communication Services の SDK は、接続文字列を使用して、Communication Services に対して行われた要求を承認します。 接続文字列は次の方法で保存できます。
 
 * デスクトップまたはデバイスで実行するアプリケーションの場合は、**app.config** ファイルまたは **web.config** ファイルに接続文字列を保存できます。 この接続文字列は、これらのファイルの **AppSettings** セクションに追加します。
 * Azure App Service で実行されているアプリケーションでは、接続文字列は [App Service のアプリケーションの設定](../../app-service/configure-common.md)内に格納できます。 ポータル内の [アプリケーションの設定] タブの **[接続文字列]** セクションに接続文字列を追加します。

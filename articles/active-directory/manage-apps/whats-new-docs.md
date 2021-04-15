@@ -6,15 +6,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
 ms.workload: identity
-ms.author: kenwith
-author: kenwith
-manager: daveba
-ms.openlocfilehash: 81898875af85becf1766f02a5b7e077cb388a173
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.author: iangithinji
+author: iantheninja
+manager: CelesteDG
+ms.openlocfilehash: 17dca502d3c65563cb9e4d2c382afb79f4d612e9
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450040"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376054"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
@@ -40,7 +40,7 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [Application Proxy のための、制限付き委任構成のトラブルシューティング Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 - [クイックスタート:Azure Active Directory (Azure AD) テナント内のアプリケーションへの SAML ベースのシングル サインオン (SSO) を設定する](add-application-portal-setup-sso.md)
 - [Azure Active Directory アプリケーション管理: 新機能](whats-new-docs.md)
-- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.md)
+- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.yml)
 - [Azure AD マイ アプリからのアプリケーションへのサインインに関する問題のトラブルシューティング](application-sign-in-other-problem-access-panel.md)
 - [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
 - [Azure Active Directory アプリケーション プロキシを使用してトラフィック フローを最適化する](application-proxy-network-topology.md)
@@ -75,7 +75,7 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [アプリケーション管理のベスト プラクティス](application-management-fundamentals.md)
 - [Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド](plan-an-application-integration.md)
 - [アプリケーション管理とは](what-is-application-management.md)
-- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.md)
+- [Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.yml)
 - [チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](application-proxy-add-on-premises-application.md)
 - [既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)
 - [Azure Active Directory 用の基幹業務アプリをの開発する](../develop/v2-overview.md)

@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.custom: devx-track-java
 ms.author: trbye
-ms.openlocfilehash: bb2d9b04e6366b17cfb0ee4b8586359035be910d
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: e3ec10bdcfb602c61943da288c32d28d30ec83ab
+ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102428224"
+ms.lasthandoff: 03/24/2021
+ms.locfileid: "105104778"
 ---
 このクイックスタートでは、Speech SDK を使用してテキスト読み上げ合成を行うための一般的な設計パターンについて説明します。 まずは基本的な構成と合成を行った後、次のようなより高度なカスタム アプリケーション開発の例に進みます。
 
@@ -31,8 +31,8 @@ ms.locfileid: "102428224"
 
 何らかの操作を行うには、事前に Speech SDK をインストールしておく必要があります。 ご利用のプラットフォームに応じて、次の手順を行います。
 
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=jre&pivots=programming-language-java" target="_blank">Java ランタイム</a>
-* <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?tabs=android&pivots=programming-language-java" target="_blank">Android </a>
+* <a href="/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-java&tabs=jre" target="_blank">Java ランタイム</a>
+* <a href="/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-java&tabs=android" target="_blank">Android </a>
 
 ## <a name="import-dependencies"></a>依存関係のインポート
 
@@ -67,7 +67,7 @@ Speech SDK を使用して Speech Service を呼び出すには、[`SpeechConfig
 この例では、サブスクリプション キーとリージョンを使用して [`SpeechConfig`](/java/api/com.microsoft.cognitiveservices.speech.speechconfig) を作成します。 「[Speech Service を無料で試す](../../../overview.md#try-the-speech-service-for-free)」の手順に従って、これらの資格情報を取得します。 また、この記事の残りの部分で使用する、基本的な定型コードをいくつか作成します。これを変更して、さまざまなカスタマイズを行います。
 
 ```java
-public class Program 
+public class Program
 {
     public static void main(String[] args) {
         SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -124,7 +124,7 @@ public static void main(String[] args) {
 * 結果を他の API またはサービスと統合する。
 * オーディオ データの変更やカスタム `.wav` ヘッダーの記述などを行う。
 
-この変更は、前の例から簡単に行うことができます。 まず、`AudioConfig` ブロックを削除します。これは、この時点から出力動作を手動で管理して制御を強化するためです。 次に、`SpeechSynthesizer` コンストラクターの `AudioConfig` に `null` を渡します。 
+この変更は、前の例から簡単に行うことができます。 まず、`AudioConfig` ブロックを削除します。これは、この時点から出力動作を手動で管理して制御を強化するためです。 次に、`SpeechSynthesizer` コンストラクターの `AudioConfig` に `null` を渡します。
 
 > [!NOTE]
 > 前述のスピーカー出力の例のように省略するのではなく、`AudioConfig` に `null` を渡した場合、既定ではオーディオは現在のアクティブな出力デバイスで再生されません。
@@ -135,7 +135,7 @@ public static void main(String[] args) {
 public static void main(String[] args) {
     SpeechConfig speechConfig = SpeechConfig.fromSubscription("YourSubscriptionKey", "YourServiceRegion");
     SpeechSynthesizer synthesizer = new SpeechSynthesizer(speechConfig, null);
-    
+
     SpeechSynthesisResult result = synthesizer.SpeakText("Getting the response as an in-memory stream.");
     AudioDataStream stream = AudioDataStream.fromResult(result);
     System.out.print(stream.getStatus());
@@ -254,3 +254,10 @@ public static void main(String[] args) {
   </voice>
 </speak>
 ```
+
+## <a name="get-facial-pose-events"></a>表情イベントを取得する
+
+スピーチは、表情のアニメーションを動かす有効な手段となる場合があります。
+特定の音素を生成するときの唇、顎、舌の位置など、観察された発話における主要な姿勢を表すために、[口形素](../../../how-to-speech-synthesis-viseme.md)がよく使用されます。
+Speech SDK で口形素イベントをサブスクライブすることにより、顔のアニメーション データを取得し、キャラクターに顔のアニメーションを付けるときにそのデータを適用することができます。
+[口形素イベントを取得する方法](../../../how-to-speech-synthesis-viseme.md#get-viseme-events-with-the-speech-sdk)に関するセクションを参照してください。

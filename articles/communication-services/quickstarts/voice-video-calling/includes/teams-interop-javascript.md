@@ -1,19 +1,19 @@
 ---
 title: クイックスタート - Web アプリから Teams 会議に参加する
-description: このチュートリアルでは、JavaScript 用 Azure Communication Services 通話クライアント ライブラリを使用して Teams 会議に参加する方法について説明します
+description: このチュートリアルでは、JavaScript 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します
 author: chpalm
 ms.author: mikben
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 43f6241f0da0ecc9c68cf60e9f1a0482509374f3
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 4b6cf48c577bb6f22f497007c4b1c1b57ab6f187
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103488002"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105108194"
 ---
-このクイックスタートでは、JavaScript 用 Azure Communication Services 通話クライアント ライブラリを使用して Teams 会議に参加する方法について説明します。
+このクイックスタートでは、JavaScript 用 Azure Communication Services Calling SDK を使用して Teams 会議に参加する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

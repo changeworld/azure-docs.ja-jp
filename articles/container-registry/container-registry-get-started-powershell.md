@@ -4,12 +4,12 @@ description: Azure Container Registry で PowerShell を使用してプライベ
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, mvc, devx-track-azurepowershell
-ms.openlocfilehash: 91d4209ccf558bf7c8038d8a753ec038428bc484
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6928f1c45cdac93b70797daf41205b4c5db27e0
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020012"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106283820"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用してプライベート コンテナー レジストリを作成する
 
@@ -55,7 +55,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName "myResourceGroup" -Name "
 
 ## <a name="log-in-to-registry"></a>レジストリへのログイン
 
-コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリにログインしておく必要があります。 運用環境のシナリオでは、コンテナー レジストリにアクセスするために個人 ID またはサービス プリンシパルを使用する必要がありますが、このクイック スタートでは、作業を簡略化するために、[Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] コマンドを使用して、レジストリ上の管理者ユーザーを有効にします。
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめレジストリにログインしておく必要があります。 このクイックスタートでは、作業を簡略化するために、[Get-AzContainerRegistryCredential][Get-AzContainerRegistryCredential] コマンドを使用して、レジストリ上の管理者ユーザーを有効にします。 運用環境のシナリオでは、レジストリ アクセス用に別の[認証方法](container-registry-authentication.md) (サービス プリンシパルなど) を使用する必要があります。 
 
 ```powershell
 $creds = Get-AzContainerRegistryCredential -Registry $registry
@@ -68,6 +68,10 @@ $creds.Password | docker login $registry.LoginServer -u $creds.Username --passwo
 ```
 
 このコマンドは、完了すると `Login Succeeded` を返します。
+
+> [!TIP]
+> Azure CLI には、`az acr login` コマンドが用意されています。このコマンドは、docker 資格情報を渡さずに[個別の ID](container-registry-authentication.md#individual-login-with-azure-ad) を使用してコンテナー レジストリにログインするための便利な方法です。
+
 
 [!INCLUDE [container-registry-quickstart-docker-push](../../includes/container-registry-quickstart-docker-push.md)]
 
