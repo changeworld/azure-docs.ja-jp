@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 9cac6cdd8e68af77b611c89e8b62e6f8d8845fd0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 33bafac9247f007978fef568469d643f1a1098df
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107518"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383588"
 ---
 # <a name="frequently-asked-questions-for-azure-cloud-services-extended-support"></a>Azure Cloud Services (延長サポート) に関してよく寄せられる質問
 この記事では、Azure Cloud Services (延長サポート) に関してよく寄せられる質問について説明します。
@@ -57,6 +57,9 @@ Cloud Services (延長サポート) のデプロイでは、停止済み、割�
 
 ### <a name="do-cloud-services-extended-support-deployments-support-scaling-across-clusters-availability-zones-and-regions"></a>Cloud Services (延長サポート) のデプロイでは、クラスター、可用性ゾーン、リージョン間のスケーリングはサポートされますか?
 Cloud Services (延長サポート) のデプロイでは、複数のクラスター、可用性ゾーン、リージョン間のスケーリングはできません。 
+
+### <a name="how-can-i-get-the-deployment-id-for-my-cloud-service-extended-support"></a>Cloud Service (延長サポート) のデプロイ ID を取得する方法
+プライベート ID とも呼ばれるデプロイ ID には、[CloudServiceInstanceView](https://docs.microsoft.com/rest/api/compute/cloudservices/getinstanceview#cloudserviceinstanceview) API を使用してアクセスできます。 また、Azure portal 内、Cloud Service (延長サポート) の [ロールとインスタンス] ブレードからもアクセスできます。
 
 ### <a name="are-there-any-pricing-differences-between-cloud-services-classic-and-cloud-services-extended-support"></a>Cloud Services (クラシック) と Cloud Services (延長サポート) の間に価格の違いはありますか?
 Cloud Services (延長サポート) では、Azure Key Vault と基本 (ARM) パブリック IP アドレスが使用されます。 証明書を必要とするお客様は、証明書の管理に Azure Key Vault を使用する必要があります (Azure Key Vault の価格の[詳細をご確認ください](https://azure.microsoft.com/pricing/details/key-vault/))。 Cloud Services (延長サポート) の各パブリック IP アドレスは個別に課金されます (パブリック IP アドレスの価格の[詳細をご確認ください](https://azure.microsoft.com/pricing/details/ip-addresses/))。 

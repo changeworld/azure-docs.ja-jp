@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 03/04/2021
+ms.date: 04/04/2021
 ms.author: memildin
-ms.openlocfilehash: a00c11924d2c0f6860c297ab7e58da21da5e1975
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ecdaf6a8509583cf93857e24fabc059e38d23b67
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102634704"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106383458"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -24,6 +24,157 @@ ms.locfileid: "102634704"
 - バグの修正
 - 非推奨の機能
 
+
+## <a name="october-2020"></a>2020 年 10 月
+
+10 月の更新プログラムには次のものが含まれます。
+- [オンプレミスおよびマルチクラウド マシンの脆弱性評価 (プレビュー)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview)
+- [Azure Firewall の推奨事項の追加 (プレビュー)](#azure-firewall-recommendation-added-preview)
+- ["Kubernetes Services では承認された IP 範囲を定義する必要があります" という推奨事項のクイック修正による更新](#authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix)
+- [規制コンプライアンス ダッシュボードへの、標準を削除するオプションの追加](#regulatory-compliance-dashboard-now-includes-option-to-remove-standards)
+- [Azure Resource Graph (ARG) からの Microsoft.Security/securityStatuses テーブルの削除](#microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg)
+
+### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-preview"></a>オンプレミスおよびマルチクラウド マシンの脆弱性評価 (プレビュー)
+
+[Azure Defender for servers](defender-for-servers-introduction.md) の統合された脆弱性評価スキャナー (Qualys を使用) により、Azure Arc 対応サーバーがスキャンされるようになりました。
+
+Azure 以外のマシンで Azure Arc を有効にした場合、Security Center では、統合された脆弱性スキャナーをそれらに手動で大規模にデプロイできるようにします。
+
+この更新では、**Azure Defender for servers** の能力を最大限に活用して、すべての Azure および Azure 以外の資産にわたって脆弱性管理プログラムを統合できます。
+
+主な機能は、次のとおりです。
+
+- Azure Arc マシンでの VA (脆弱性評価) スキャナーのプロビジョニング状態を監視する
+- 保護されていない Windows および Linux Azure Arc マシンに、統合された VA エージェントをプロビジョニングする (手動で大規模に)
+- デプロイされたエージェントで検出された脆弱性を受け取って分析する (手動で大規模に)
+- Azure VM と Azure Arc マシンでエクスペリエンスを統一する
+
+[ハイブリッド マシンへの統合された脆弱性スキャナーのデプロイについての詳細を参照してください](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)。
+
+[Azure Arc 対応のサーバーについての詳細を参照してください](../azure-arc/servers/index.yml)。
+
+
+### <a name="azure-firewall-recommendation-added-preview"></a>Azure Firewall の推奨事項の追加 (プレビュー)
+
+Azure Firewall を使用してすべての仮想ネットワークを保護するための新しい推奨事項が追加されました。
+
+**仮想ネットワークは Azure Firewall によって保護する必要がある** という推奨事項では、仮想ネットワークへのアクセスを制限し、Azure Firewall を使用して潜在的な脅威を防止することを勧めています。
+
+[Azure Firewall](https://azure.microsoft.com/services/azure-firewall/) の詳細を参照します。
+
+
+### <a name="authorized-ip-ranges-should-be-defined-on-kubernetes-services-recommendation-updated-with-quick-fix"></a>"Kubernetes Services では承認された IP 範囲を定義する必要があります" という推奨事項のクイック修正による更新
+
+**Kubernetes Services では承認された IP 範囲を定義する必要があります** という推奨事項に、クイック修正オプションが追加されました。
+
+この推奨事項の詳細と、Security Center の他のすべての推奨事項については、「[セキュリティの推奨事項 - リファレンス ガイド](recommendations-reference.md)」を参照してください。
+
+:::image type="content" source="./media/release-notes/authorized-ip-ranges-recommendation.png" alt-text="クイック修正オプションがある &quot;Kubernetes Services では承認された IP 範囲を定義する必要があります&quot; という推奨事項":::
+
+
+### <a name="regulatory-compliance-dashboard-now-includes-option-to-remove-standards"></a>規制コンプライアンス ダッシュボードへの、標準を削除するオプションの追加
+
+Security Center の規制コンプライアンス ダッシュボードでは、特定のコンプライアンスのコントロールと要件をどのように満たしているかに基づいて、コンプライアンス体制に関する分析情報が提供されます。
+
+ダッシュボードには、規制標準の既定のセットが含まれています。 提供されている標準に、組織に関連していないものが含まれている場合、簡単なプロセスでサブスクリプションの UI から削除できるようになりました。 標準は、"*サブスクリプション*" レベルだけで削除できます。管理グループのスコープでは、削除できません。
+
+詳細については、「[ダッシュボードから標準を削除する](update-regulatory-compliance-packages.md#remove-a-standard-from-your-dashboard)」を参照してください。
+
+
+### <a name="microsoftsecuritysecuritystatuses-table-removed-from-azure-resource-graph-arg"></a>Azure Resource Graph (ARG) からの Microsoft.Security/securityStatuses テーブルの削除
+
+Azure Resource Graph は、効率的なリソース探索を提供するように設計されている、Azure のサービスです。環境を効果的に管理できるように、特定のサブスクリプションのセットにわたって大規模なクエリを実行する機能を備えています。 
+
+Azure Security Center では、ARG および [Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/) を使用して、幅広いセキュリティ態勢データに対してクエリを実行できます。 次に例を示します。
+
+- 資産インベントリが使用します (ARG)
+- [多要素認証 (MFA) が有効になっていないアカウントを識別する](security-center-identity-access.md#identify-accounts-without-multi-factor-authentication-mfa-enabled)方法を示すために、サンプル ARG クエリのドキュメントを作成しました
+
+ARG 内には、クエリで使用できるデータのテーブルがあります。
+
+:::image type="content" source="./media/release-notes/azure-resource-graph-tables.png" alt-text="Azure Resource Graph エクスプローラーと利用可能なテーブル":::
+
+> [!TIP]
+> ARG ドキュメントの「[Azure Resource Graph のテーブルとリソースの種類のリファレンス](../governance/resource-graph/reference/supported-tables-resources.md)」には、使用可能なすべてのテーブルの一覧があります。
+
+この更新から、**Microsoft.Security/securityStatuses** テーブルが削除されました。 securityStatuses API は引き続き使用できます。
+
+データ置換は、Microsoft.Security/Assessments テーブルで使用できます。
+
+Microsoft.Security/securityStatuses と Microsoft.Security/Assessments の大きな違いは、前者が評価の集計を示すのに対して、後者はそれぞれの単一のレコードを保持することです。
+
+たとえば、Microsoft.Security/securityStatuses は、次のように 2 つの policyAssessments の配列で結果を返します。
+
+```
+{
+id: "/subscriptions/449bcidd-3470-4804-ab56-2752595 felab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/securityStatuses/mico-rg-vnet",
+name: "mico-rg-vnet",
+type: "Microsoft.Security/securityStatuses",
+properties:  {
+    policyAssessments: [
+        {assessmentKey: "e3deicce-f4dd-3b34-e496-8b5381bazd7e", category: "Networking", policyName: "Azure DDOS Protection Standard should be enabled",...},
+        {assessmentKey: "sefac66a-1ec5-b063-a824-eb28671dc527", category: "Compute", policyName: "",...}
+    ],
+    securitystateByCategory: [{category: "Networking", securityState: "None" }, {category: "Compute",...],
+    name: "GenericResourceHealthProperties",
+    type: "VirtualNetwork",
+    securitystate: "High"
+}
+```
+一方、Microsoft.Security/Assessments では、次のような各ポリシー評価のレコードが保持されます。
+
+```
+{
+type: "Microsoft.Security/assessments",
+id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft. Network/virtualNetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/e3delcce-f4dd-3b34-e496-8b5381ba2d70",
+name: "e3deicce-f4dd-3b34-e496-8b5381ba2d70",
+properties:  {
+    resourceDetails: {Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourceGroups/mico-rg/providers/Microsoft.Network/virtualNetworks/mico-rg-vnet"...},
+    displayName: "Azure DDOS Protection Standard should be enabled",
+    status: (code: "NotApplicable", cause: "VnetHasNOAppGateways", description: "There are no Application Gateway resources attached to this Virtual Network"...}
+}
+
+{
+type: "Microsoft.Security/assessments",
+id:  "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet/providers/Microsoft.Security/assessments/80fac66a-1ec5-be63-a824-eb28671dc527",
+name: "8efac66a-1ec5-be63-a824-eb28671dc527",
+properties: {
+    resourceDetails: (Source: "Azure", Id: "/subscriptions/449bc1dd-3470-4804-ab56-2752595f01ab/resourcegroups/mico-rg/providers/microsoft.network/virtualnetworks/mico-rg-vnet"...),
+    displayName: "Audit diagnostic setting",
+    status:  {code: "Unhealthy"}
+}
+```
+
+**securityStatuses を使用する既存の ARG クエリを、評価テーブルを使用するように変換する例:**
+
+SecurityStatuses を参照するクエリ:
+
+```kusto
+SecurityResources 
+| where type == 'microsoft.security/securitystatuses' and properties.type == 'virtualMachine'
+| where name in ({vmnames}) 
+| project name, resourceGroup, policyAssesments = properties.policyAssessments, resourceRegion = location, id, resourceDetails = properties.resourceDetails
+```
+
+Assessments テーブル用の置換クエリ:
+
+```kusto
+securityresources
+| where type == "microsoft.security/assessments" and id contains "virtualMachine"
+| extend resourceName = extract(@"(?i)/([^/]*)/providers/Microsoft.Security/assessments", 1, id)
+| extend source = tostring(properties.resourceDetails.Source)
+| extend resourceId = trim(" ", tolower(tostring(case(source =~ "azure", properties.resourceDetails.Id,
+source =~ "aws", properties.additionalData.AzureResourceId,
+source =~ "gcp", properties.additionalData.AzureResourceId,
+extract("^(.+)/providers/Microsoft.Security/assessments/.+$",1,id)))))
+| extend resourceGroup = tolower(tostring(split(resourceId, "/")[4]))
+| where resourceName in ({vmnames}) 
+| project resourceName, resourceGroup, resourceRegion = location, id, resourceDetails = properties.additionalData
+```
+
+詳細については、以下のリンクを参照してください。
+- [Azure Resource Graph Explorer を使用してクエリを作成する方法](../governance/resource-graph/first-query-portal.md)
+- [Kusto クエリ言語 (KQL)](/azure/data-explorer/kusto/query/)
 
 
 ## <a name="september-2020"></a>2020 年 9 月
@@ -298,8 +449,8 @@ Security Center では、VM を調べて脆弱性評価ソリューションが�
 
 |統合された推奨事項|変更の説明|
 |----|:----|
-|**脆弱性評価ソリューションを仮想マシンで有効にする必要がある**|次の 2 つの推奨事項の代わりとなります。<br> **•** 組み込みの脆弱性評価ソリューションを仮想マシンで有効にする (Qualys を利用) (現在は非推奨) (Standard レベルに組み込み)<br> **•** 脆弱性評価ソリューションを仮想マシンにインストールする必要がある (現在は非推奨) (Standard と Free レベル)|
-|**仮想マシンの脆弱性を修復する必要がある**|次の 2 つの推奨事項の代わりとなります。<br>**•** 仮想マシンで検出された脆弱性を修復する (Qualys を利用) (現在は非推奨)<br>**•** 脆弱性評価ソリューションによって脆弱性を修復する必要がある (現在は非推奨)|
+|**脆弱性評価ソリューションを仮想マシンで有効にする必要がある**|次の 2 つの推奨事項の代わりとなります。<br> ***** 組み込みの脆弱性評価ソリューションを仮想マシンで有効にする (Qualys を利用) (現在は非推奨) (Standard レベルに組み込み)<br> ***** 脆弱性評価ソリューションを仮想マシンにインストールする必要がある (現在は非推奨) (Standard と Free レベル)|
+|**仮想マシンの脆弱性を修復する必要がある**|次の 2 つの推奨事項の代わりとなります。<br>***** 仮想マシンで検出された脆弱性を修復する (Qualys を利用) (現在は非推奨)<br>***** 脆弱性評価ソリューションによって脆弱性を修復する必要がある (現在は非推奨)|
 |||
 
 これで、同じ推奨事項を利用して、Security Center の脆弱性評価拡張機能、または Qualys や Rapid7 などの、パートナーからプライベートにライセンス供与されたソリューション ("BYOL") をデプロイすることになります。
@@ -312,20 +463,20 @@ Security Center では、VM を調べて脆弱性評価ソリューションが�
 
 ##### <a name="before-august-2020"></a>2020 年 8 月より前
 
-|推奨|Scope|
+| 推奨|Scope|
 |----|:----|
 |**組み込みの脆弱性評価ソリューションを仮想マシンで有効にする (Qualys を利用)**<br>キー:550e890b-e652-4d22-8274-60b3bdb24c63|組み込み|
 |**仮想マシンで検出された脆弱性を修復する (Qualys を利用)**<br>キー:1195afff-c881-495e-9bc5-1486211ae03f|組み込み|
 |**脆弱性評価ソリューションを仮想マシンにインストールする必要があります**<br>キー:01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
 |**脆弱性評価ソリューションによって脆弱性を修復する必要がある**<br>キー:71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
-||||
+|||
 
 
 |ポリシー|Scope|
 |----|:----|
 |**仮想マシンで脆弱性評価を有効にする必要がある**<br>ポリシー ID:501541f7-f7e7-4cd6-868c-4190fdad3ac9|組み込み|
 |**脆弱性評価ソリューションによって脆弱性を修復する必要がある**<br>ポリシー ID:760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
-||||
+|||
 
 
 ##### <a name="from-august-2020"></a>2020 年 8 月以降
@@ -334,12 +485,12 @@ Security Center では、VM を調べて脆弱性評価ソリューションが�
 |----|:----|
 |**脆弱性評価ソリューションを仮想マシンで有効にする必要がある**<br>キー: ffff0522-1e88-47fc-8382-2a80ba848f5d|組み込み + BYOL|
 |**仮想マシンの脆弱性を修復する必要がある**<br>キー:1195afff-c881-495e-9bc5-1486211ae03f|組み込み + BYOL|
-||||
+|||
 
 |ポリシー|Scope|
 |----|:----|
 |[**仮想マシンで脆弱性評価を有効にする必要がある**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>ポリシー ID:501541f7-f7e7-4cd6-868c-4190fdad3ac9 |組み込み + BYOL|
-||||
+|||
 
 
 ### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>ASC_default イニシアティブに追加された新しい AKS セキュリティ ポリシー – プライベート プレビューのお客様のみ使用
@@ -899,7 +1050,7 @@ Azure Storage 用 Threat Protection は、Microsoft 脅威インテリジェン�
 
 セキュリティと IT/運用が一元管理されている組織では、環境で不一致が見つかった場合に組織内で必要なアクションを実行する内部ワークフロー プロセスを実装しています。 多くの場合、これらのワークフローは反復可能なプロセスであるため、自動化によって組織内のプロセスを大幅に効率化できます。
 
-このたび、Azure Logic Apps を利用して自動化構成を作成し、推奨事項やアラートなど、ASC の特定の結果に基づいてそれらを自動的にトリガーするポリシーを作成できる新しい機能が Security Center に導入されます。 Azure Logic App は、Logic App コネクタの広範なコミュニティによってサポートされているカスタム アクションを実行するように構成することも、メールの送信や ServiceNow™ チケットのオープンなど、Security Center が提供するテンプレートのいずれかを使用するように構成することもできます。
+このたび、Azure Logic Apps を利用して自動化構成を作成し、推奨事項やアラートなど、ASC の特定の結果に基づいてそれらを自動的にトリガーするポリシーを作成できる新しい機能が Security Center に導入されます。 Azure Logic App は、Logic App コネクタの広範なコミュニティによってサポートされているカスタム アクションを実行するように構成することも、メールの送信や ServiceNow&trade; チケットのオープンなど、Security Center が提供するテンプレートのいずれかを使用するように構成することもできます。
 
 ワークフローを実行するための Security Center の自動および手動機能の詳細については、「[ワークフローの自動化](workflow-automation.md)」をご覧ください。
 
