@@ -3,17 +3,17 @@ title: Windows Virtual Desktop の最新情報 - Azure
 description: Windows Virtual Desktop の新機能と製品の更新プログラム。
 author: Heidilohr
 ms.topic: overview
-ms.date: 02/23/2021
+ms.date: 03/20/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
-manager: lizross
+manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: c0b4ad17c5aefe29a313b9eaf75fc87ce4d88720
-ms.sourcegitcommit: 15d27661c1c03bf84d3974a675c7bd11a0e086e6
+ms.openlocfilehash: 1c5d846963d7fc0c2207893f5c4094e3f94351b5
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2021
-ms.locfileid: "102499885"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505418"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -35,6 +35,18 @@ Windows Virtual Desktop およびリモート デスクトップ サービスに
 - [iOS](/windows-server/remote/remote-desktop-services/clients/ios-whatsnew)
 - [Android](/windows-server/remote/remote-desktop-services/clients/android-whatsnew)
 - [Web](/windows-server/remote/remote-desktop-services/clients/web-client-whatsnew)
+
+## <a name="windows-virtual-desktop-agent-updates"></a>Windows Virtual Desktop エージェントの更新
+
+Windows Virtual Desktop エージェントは、少なくとも 1 か月に 1 回更新されます。
+
+Windows Virtual Desktop エージェントの変更内容は、次のとおりです。
+
+- バージョン 1.0.2866.1500: この更新プログラムは 2021 年 3 月 26 日にリリースされ、スタック正常性チェックに関する問題が修正されました。
+- バージョン 1.0.2800.2802: この更新プログラムは 2021 年 3 月 10 日にリリースされ、全般的な機能強化とバグ修正が行われました。
+- バージョン 1.0.2800.2800: この更新プログラムは 2021 年 3 月 2 日にリリースされ、逆接続の問題が修正されました。
+- バージョン 1.0.2800.2700: この更新プログラムは 2021 年 2 月 10 日にリリースされ、全般的な機能強化とバグ修正が行われました。
+- バージョン 1.0.2800.2700: この更新プログラムは 2021 年 2 月 4 日にリリースされ、アクセス拒否されるオーケストレーションの問題が修正されました。
 
 ## <a name="fslogix-updates"></a>FSLogix の更新
 

@@ -450,7 +450,7 @@
           displayName: 'automl, feature engineering, feature importance'
           href: how-to-configure-cross-validation-data-splits.md
         - name: 自動 ML での特徴量化 (Python)
-          displayName: 'automl, feature engineering, feature importance'
+          displayName: 'automl, feature engineering, feature importance, BERT'
           href: how-to-configure-auto-features.md
         - name: ML パイプラインでの自動 ML の使用 (Python)
           displayName: machine learning automl

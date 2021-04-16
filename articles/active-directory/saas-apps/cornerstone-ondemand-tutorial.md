@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: jeedes
-ms.openlocfilehash: f7167df523ca6f84eacd92fc7af1011e8b3b00b6
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: ba6eb0a1b607fc05c4d0c660dd3d7016f81ef4b3
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104950385"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449501"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cornerstone-single-sign-on"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と Cornerstone Single Sign-On の統合
 
@@ -123,49 +123,11 @@ Cornerstone Single Sign-On で Azure AD SSO を構成してテストするには
 
 ## <a name="configure-cornerstone-single-sign-on-sso"></a>Cornerstone Single Sign-On SSO の構成
 
-1. 管理者として Cornerstone Single Sign-On にサインインします。
-
-1. **[Admin]\(管理者\) -> [Tools]\(ツール\)** に移動します。
-
-    ![[Admin]\(管理者\) ページのスクリーンショット。](./media/cornerstone-ondemand-tutorial/admin.png)
-
-1. **[Configuration Tools]\(構成ツール\)** で **[EDGE]\(エッジ\)** パネルを選択します。
-
-    ![[EDGE]\(エッジ\) パネルのスクリーンショット。](./media/cornerstone-ondemand-tutorial/edge-panel.png)
-
-1. **[Integrate]\(統合\)** セクションで、[Single Sign-On]\(シングル サインオン\) を選択します。
-
-    ![[Single Sign-On]\(シングル サインオン\) オプションのスクリーンショット。](./media/cornerstone-ondemand-tutorial/single-sign-on.png)
-
-1. **[Add SSO]\(SSO の追加\)** ボタンをクリックします。 以下に示すポップアップ ウィンドウで **[Inbound SAML]\(受信 SAML\)** を選択し、 **[Add]\(追加\)** をクリックします。
-
-    ![[Inbound SAML]\(受信 SAML\) のスクリーンショット。](./media/cornerstone-ondemand-tutorial/inbound.png)
-
-1. 次のページで以下の手順を実行します。
-
-    ![Cornerstone の構成セクションのスクリーンショット。](./media/cornerstone-ondemand-tutorial/configuration.png)
-
-    a. **[General Properties]\(全般プロパティ\)** で、 **[Upload File]\(ファイルのアップロード\)** をクリックして、Azure portal からダウンロードした **証明書 (Base64)** ファイルをアップロードします。
-
-    b. **[Enable]\(有効\)** チェック ボックスをオンにし、 **[IDP URL]** テキスト ボックスに、Azure portal からコピーした **[ログイン URL]** の値を貼り付けます。
-
-    c. **[保存]** をクリックします。
+**Cornerstone Single Sign-On** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Cornerstone Single Sign-On サポート チーム](mailto:moreinfo@csod.com)に送信するか、パートナーまでお問い合わせください。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-cornerstone-single-sign-on-test-user"></a>Cornerstone Single Sign-On のテスト ユーザーの作成
 
 このセクションの目的は、Cornerstone Single Sign-On で B.Simon というユーザーを作成することです。 Cornerstone Single Sign-On では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](./cornerstone-ondemand-provisioning-tutorial.md)をご覧ください。
-
-**ユーザーを手動で作成する必要がある場合は、次の手順を実行します:**
-
-1. 管理者として Cornerstone Single Sign-On にサインインします。
-
-1. **[Admin]\(管理者\) -> [Users]\(ユーザー\)** に移動し、ページの下部にある **[Add User]\(ユーザーの追加\)** をクリックします。
-
-    ![Cornerstone でのテスト ユーザーの作成のスクリーンショット。](./media/cornerstone-ondemand-tutorial/user-1.png)
-
-1. **[Add new user]\(新しいユーザーの追加\)** ページの必須フィールドに入力し、 **[Save]\(保存\)** をクリックします。
-
-    ![テスト ユーザーを作成するための必須フィールドのスクリーンショット。](./media/cornerstone-ondemand-tutorial/user-2.png)
 
 ## <a name="test-sso"></a>SSO のテスト 
 
