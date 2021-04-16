@@ -10,18 +10,18 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
-ms.openlocfilehash: 7e2a64c14d7d7a1d20b64b746969aca1e60ab218
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfd3bc406407298c6daf7723cb684911d7c9a9cf
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "90931415"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106284670"
 ---
 # <a name="zone-and-line-placement-guide"></a>ゾーンとラインの配置ガイド
 
-この記事では、空間内の人の動きを正確に分析するために、空間分析操作のゾーンとラインを定義する方法のガイドラインを示します。 これはすべての操作に適用されます。 
+この記事では、空間内での人の動きを正確に分析するために、空間分析操作のゾーンとラインを定義する方法のガイドラインを説明します。 これはすべての操作に適用されます。 
 
-ゾーンとラインは、JSON SPACEANALYSIS_CONFIG パラメーターを使用して定義されます。 詳細については、[空間分析操作](spatial-analysis-operations.md)に関する記事をご覧ください。
+ゾーンとラインは、JSON SPACEANALYSIS_CONFIG パラメーターを使用して定義されます。 詳細については、[空間分析の操作](spatial-analysis-operations.md)に関する記事をご覧ください。
 
 ## <a name="guidelines-for-drawing-zones"></a>ゾーンの描画に関するガイドライン
 
@@ -31,7 +31,7 @@ ms.locfileid: "90931415"
 
 ### <a name="example-of-a-well-shaped-zone"></a>適切に形成されたゾーンの例
 
-ゾーンは、各縁端に沿って 3 人が十分に立てる大きさにし、関心領域に焦点を合わせる必要があります。 空間分析では、足がゾーン内にある人を特定するので、2D 画像でゾーンを描画するときは、ゾーンが床に敷かれたカーペットであると想像してください。
+ゾーンは、各縁端に沿って 3 人が十分に立てる大きさにし、関心領域に焦点を合わせる必要があります。 空間分析では、足がゾーン内にある人を特定するため、二次元の画像にゾーンを描画するときは、ゾーンを床に敷かれたカーペットであると想像してください。
 
 ![適切に形成されたゾーン](./media/spatial-analysis/zone-good-example.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "90931415"
 
 ### <a name="example-of-a-well-shaped-line"></a>適切に形成されたラインの例
 
-ラインは、入口全体が十分に収まる長さにする必要があります。 空間分析では、足がラインを越えている人を特定するので、2D 画像でラインを描画するときは、床に引かれたラインを想像しながら描画してください。 
+ラインは、入口全体が十分に収まる長さにする必要があります。 空間分析では、足がラインを越えている人を特定するため、二次元の画像にラインを描画するときは、床に横たわっているように描画していると想像してください。 
 
 可能であれば、ラインを延長して実際の入口の幅よりも長くします。 これを行うことで余分な交差 (次の画像のように、ラインが壁に接している状態) が生じない場合は、ラインを延長してください。
 
@@ -82,6 +82,6 @@ ms.locfileid: "90931415"
 ## <a name="next-steps"></a>次のステップ
 
 * [人数カウント Web アプリをデプロイする](spatial-analysis-web-app.md)
-* [空間分析操作の構成](./spatial-analysis-operations.md)
+* [空間分析の操作を構成する](./spatial-analysis-operations.md)
 * [ロギングおよびトラブルシューティング](spatial-analysis-logging.md)
 * [カメラの配置ガイド](spatial-analysis-camera-placement.md)
