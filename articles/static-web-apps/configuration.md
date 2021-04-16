@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 02/18/2021
 ms.author: cshoe
-ms.openlocfilehash: 324a8e75488d74fc6aa52e499b8dde616cd9beb5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 280c13fdee281acc4f805aba27a10277eb3988c2
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102034049"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218976"
 ---
 # <a name="configure-azure-static-web-apps"></a>Azure Static Web Apps を構成する
 
@@ -39,6 +39,7 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 
 ルート規則を使用すると、アプリケーションから Web へのアクセスを許可する URL のパターンを定義できます。 ルートは、ルーティング規則の配列として定義します。 使用例については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
 
+- 規則は、ルートが 1 つしかない場合でも `routes` 配列で定義します。
 - 規則は、`routes` 配列に出現する順序で実行されます。
 - 規則の評価は最初の一致で停止します。複数のルーティング規則が連結されることはありません。
 - カスタム ロール名は完全に制御できます。
@@ -50,7 +51,7 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 
 ## <a name="defining-routes"></a>ルートの定義
 
-各規則は、ルート パターンと、1 つまたは複数のオプションの規則プロパティで構成されます。 使用例については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
+各規則は、ルート パターンと、1 つまたは複数のオプションの規則プロパティで構成されます。 ルート規則は `routes` 配列で定義します。 使用例については、「[構成ファイルの例](#example-configuration-file)」を参照してください。
 
 | 規則のプロパティ  | 必須 | 既定値 | 解説                                                      |
 | -------------- | -------- | ------------- | ------------------------------------------------------------ |
@@ -275,7 +276,7 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
         },
         {
             "route": "/.auth/login/twitter",
-            "statusCode": 404,
+            "statusCode": 404
         },
         {
             "route": "/logout",
@@ -315,7 +316,7 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
     },
     "mimeTypes": {
         ".json": "text/json"
-    },
+    }
 }
 ```
 
@@ -324,10 +325,10 @@ _staticwebapp.config.json_ の推奨される場所は、[ワークフロー フ
 | 要求先 | 結果 |
 | --- | --- |
 | _/profile_ | 認証されたユーザーには、 _/profile/index.html_ ファイルが提供されます。 認証されていないユーザーは _/login_ にリダイレクトされます。 |
-| _/admin/_ | _administrator_ ロールの認証されたユーザーには、 _/admin/index.html_ ファイルが提供されます。 _administrator_ ロールに属していない認証されたユーザーには、`403` エラーが返されます<sup>1</sup>。 認証されていないユーザーは _/login_ にリダイレクトされます。 |
+| _/admin/_ | _administrator_ ロールの認証されたユーザーには、 _/admin/index.html_ ファイルが提供されます。 _administrator_ ロールに属していない認証されたユーザーには、`403` エラーが返されます <sup>1</sup>。 認証されていないユーザーは _/login_ にリダイレクトされます。 |
 | _/logo.png_ | 最長有効期間が 182 日 (15,770,000 秒) を少し超えるカスタム キャッシュ規則を使用して画像を提供します。 |
 | _/api/admin_ | _registeredusers_ ロールの認証されたユーザーからの `GET` 要求は、API に送信されます。 _registeredusers_ ロールに属していない認証されたユーザー、および認証されていないユーザーには、`401` エラーが返されます。<br/><br/>_administrator_ ロールの認証されたユーザーからの `POST`、`PUT`、`PATCH`、および `DELETE` 要求は、API に送信されます。 _administrator_ ロールに属していない認証されたユーザー、および認証されていないユーザーには、`401` エラーが返されます。 |
-| _/customers/contoso_ | _administrator_ または _customers\_contoso_ ロールに属している認証されたユーザーには、 _/customers/contoso/index.html_ ファイルが提供されます。 _administrator_ または _customers\_contoso_ ロールに属していない認証されたユーザーには、`403` エラーが返されます<sup>1</sup>。 認証されていないユーザーは _/login_ にリダイレクトされます。 |
+| _/customers/contoso_ | _administrator_ または _customers\_contoso_ ロールに属している認証されたユーザーには、 _/customers/contoso/index.html_ ファイルが提供されます。 _administrator_ または _customers\_contoso_ ロールに属していない認証されたユーザーには、`403` エラーが返されます <sup>1</sup>。 認証されていないユーザーは _/login_ にリダイレクトされます。 |
 | _/login_ | 認証されていないユーザーは、GitHub で認証するように求められます。 |
 | _/.auth/login/twitter_ | Twitter での承認がルート規則によって無効になっているため、`404` エラーが返されます。これにより、フォールバックされ、`200` 状態コードと共に _/index.html_ が提供されます。 |
 | _/logout_ | ユーザーは、すべての認証プロバイダーからログアウトされます。 |
