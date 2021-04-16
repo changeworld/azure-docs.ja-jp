@@ -2,13 +2,13 @@
 title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
-ms.date: 01/27/2021
-ms.openlocfilehash: 20f7b6dc6c49b972b873ae3b275451829dec5c14
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/06/2021
+ms.openlocfilehash: e1a6f1628f5dcd8570551f9cc13ef508b44732f8
+ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934174"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106505146"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -599,7 +599,7 @@ ms.locfileid: "105934174"
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
 > | deployments | resource group | 1 ～ 64 | 英数字、アンダースコア、かっこ、ハイフン、およびピリオド。 |
-> | resourcegroups | subscription | 1-90 | [正規表現ドキュメント](/rest/api/resources/resources/resourcegroups/createorupdate)の記載と一致する英数字、アンダースコア、かっこ、ハイフン、ピリオド、および Unicode 文字。<br><br>末尾をピリオドにすることはできません。 |
+> | resourcegroups | subscription | 1-90 | [正規表現ドキュメント](/rest/api/resources/resourcegroups/createorupdate)の記載と一致する英数字、アンダースコア、かっこ、ハイフン、ピリオド、および Unicode 文字。<br><br>末尾をピリオドにすることはできません。 |
 > | tagNames | resource | 1-512 | 次は使用できません:<br>`<>%&\?/` |
 > | tagNames / tagValues | タグ名 | 1-256 | すべての文字。 |
 > | templateSpecs | resource group | 1-90 | 英数字、アンダースコア、かっこ、ハイフン、およびピリオド。 |
@@ -706,10 +706,12 @@ ms.locfileid: "105934174"
 > | --- | --- | --- | --- |
 > | certificates | resource group | 1-260 | 次は使用できません:<br>`/` <br><br>末尾をスペースまたはピリオドにすることはできません。  | 
 > | serverfarms | resource group | 1-40 | 英数字とハイフン。 |
-> | sites | グローバル | 2 から 60 | 英数字とハイフンを含みます。<br><br>先頭または末尾をハイフンにすることはできません。 |
+> | sites | グローバルまたはドメインごと。 下記の「注意」を参照。 | 2 から 60 | 英数字とハイフンを含みます。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | sites/slots | site | 2 ～ 59 | 英数字とハイフン。 |
 
 > [!NOTE]
+> Web サイトには、グローバルに一意の URL が必要です。 ホスティング プランを使用する Web サイトを作成する場合、URL は `http://<app-name>.azurewebsites.net` になります。 アプリ名はグローバルに一意である必要があります。 App Service Environment を使用する Web サイトを作成する場合、アプリ名は、[App Service Environment のドメイン](../../app-service/environment/using-an-ase.md#app-access)内で一意である必要があります。 どちらの場合も、サイトの URL はグローバルに一意です。
+>
 > Azure Functions の名前付けルールと制限事項は、Microsoft.Web/sites と同じです。
 
 ## <a name="next-steps"></a>次のステップ

@@ -11,18 +11,18 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: 3beba1db82cc2a618ba7544228975c953b01acd9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bbf94b6e000d5c082debd6a0d41a8d62b8b3f26e
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064904"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491102"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する
 
 "*この記事は、ソリューション ビルダーおよびデバイス開発者を対象としています。* "
 
-このチュートリアルでは、デバイス開発者を対象に、クライアント アプリケーションを Azure IoT Central アプリケーションに接続する方法を説明します。 このアプリケーションは、サーモスタット デバイスの動作をシミュレートします。 このアプリケーションは、IoT Central に接続するときに、サーモスタット デバイス モデルのモデル ID を送信します。 IoT Central は、このモデル ID を使用してデバイス モデルを取得し、自動的にデバイス テンプレートを作成します。 デバイス テンプレートにカスタマイズとビューを追加して、オペレーターがデバイスと対話できるようにしてみましょう。
+このチュートリアルでは、デバイス開発者を対象に、クライアント アプリケーションを Azure IoT Central アプリケーションに接続する方法を説明します。 このアプリケーションは、温度コントローラー デバイスの動作をシミュレートします。 このアプリケーションは、IoT Central に接続するときに、温度コントローラー デバイス モデルのモデル ID を送信します。 IoT Central は、このモデル ID を使用してデバイス モデルを取得し、自動的にデバイス テンプレートを作成します。 デバイス テンプレートにカスタマイズとビューを追加して、オペレーターがデバイスと対話できるようにしてみましょう。
 
 このチュートリアルでは、以下の内容を学習します。
 
