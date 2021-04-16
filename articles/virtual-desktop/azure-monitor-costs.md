@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5bd89a734a20c913bacca1f5531aa76d76418c80
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 26262f83e14602d6ea93f96ec47630ef870c357d
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448221"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309307"
 ---
 # <a name="estimate-azure-monitor-costs"></a>Azure Monitor コストを見積もる
 
@@ -35,7 +35,7 @@ Windows Virtual Desktop 向けの Azure Monitor の定義済みデータセッ�
 - セッション ホストからの Windows イベント ログ
 - サービス インフラストラクチャからの Windows Virtual Desktop 診断
 
-データ インジェストとストレージ コストは、環境のサイズ、正常性、使用状況によって異なります。 この記事の例では、予想されるコスト範囲を計算するために、[仮想マシンのサイズ設定のガイドライン](/remote/remote-desktop-services/virtual-machine-recs)に基づいた、ライトからパワーの電力使用量の正常な仮想マシンに基づいて、データ インジェストとストレージ コストの範囲を予想します。
+データ インジェストとストレージ コストは、環境のサイズ、正常性、使用状況によって異なります。 この記事の例では、予想されるコスト範囲を計算するために、[仮想マシンのサイズ設定のガイドライン](/windows-server/remote/remote-desktop-services/virtual-machine-recs)に基づいた、ライトからパワーの電力使用量の正常な仮想マシンに基づいて、データ インジェストとストレージ コストの範囲を予想します。
 
 この例で使用するライト電力使用量の VM には、次のコンポーネントが含まれています。
 
@@ -218,7 +218,7 @@ Windows イベントは、すべてのホストが正常な場合にデータ �
 
 Windows Virtual Desktop 診断は、データ ストレージのコストの 1% 未満にあたるため、削除することはお勧めしません。 Windows Virtual Desktop 診断を管理するには、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics.md)」をご覧ください。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Windows Virtual Desktop 向けの Azure Monitor の詳細については、次の記事をご覧ください。
 

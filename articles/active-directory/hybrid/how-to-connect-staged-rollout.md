@@ -10,14 +10,14 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c7f3de20ea3e86e3b56dc71d698354f7eaf782d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 67018a2ec6b9239661a7022ad7fb9eeb6c9a5f64
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709720"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385583"
 ---
-# <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>段階的なロールアウトを使用してクラウド認証に移行する (プレビュー)
+# <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>段階的なロールアウトを使用してクラウド認証に移行する
 
 段階的なロールアウトにより、ドメインを切り替える前に、Azure AD Multi-Factor Authentication (MFA)、条件付きアクセス、漏洩した資格情報の ID 保護、ID 管理などのクラウド認証機能を使用して、一連のユーザーを選択的にテストすることができます。  この記事では、スイッチの作成方法について説明します。 段階的なロールアウトを開始する前に、次の条件が 1 つ以上当てはまる場合の影響を考慮する必要があります：
     
@@ -79,7 +79,7 @@ ms.locfileid: "105709720"
 - 管理者は、セキュリティ グループを使用してクラウド認証をロールアウトできます。 オンプレミスの Active Directory セキュリティグループを使用しているときに、同期の待機時間を回避するには、クラウド セキュリティ グループを使用するようお勧めします。 次の条件が適用されます：
 
     - 機能ごとに最大 10 個のグループを使用できます。 つまり、*パスワードハッシュ同期*、*パススルー認証*、*シームレス SSO*  に対して、それぞれ 10 個のグループを使用できます。
-    - 入れ子になったグループは *サポートされていません*。 このスコープはパブリックプレビューにも適用されます。
+    - 入れ子になったグループは *サポートされていません*。 
     - 動的グループは、段階的なロールアウトでは *サポートされていません*。
     - グループ内の連絡先オブジェクトがグループ フォームの追加をブロックします。
 
@@ -168,19 +168,19 @@ PowerShell を使用して、Active Directory Domain Services フォレストで
 
 次の操作を行います。
 
-1. UX のプレビューにアクセスするには、[Azure AD ポータル](https://aka.ms/stagedrolloutux)にサインインします。
+1. UX にアクセスするには、[Azure AD ポータル](https://aka.ms/stagedrolloutux)にサインインします。
 
-2. **[マネージド ユーザー サインインの段階的なロールアウトを有効にする (プレビュー)]**  をクリックします。
+2. **[マネージド ユーザー サインインの段階的なロールアウトを有効にする]** を選択します。
 
    たとえば、*オプション A* を有効にする場合は、次の図に示すように、**パスワードハッシュ同期** と **シームレス シングル サインオン**  コントロールを **[有効]** にします。
 
-   ![Azure AD Connect ページ](./media/how-to-connect-staged-rollout/sr4.png)
+   
 
-   ![「段階的なロールアウト機能を有効にする (プレビュー) 」ページ](./media/how-to-connect-staged-rollout/sr5.png)
+  
 
 3. 各グループを機能に追加して、*パススルー認証* と *シームレス SSO* を有効にします。 UX のタイムアウトを回避するには、最初に、セキュリティ グループに含まれるメンバーが 200 人以下であることを確認してください。
 
-   ![[パスワードハッシュ同期のグループを管理する (プレビュー) ] ページ](./media/how-to-connect-staged-rollout/sr6.png)
+   
 
    >[!NOTE]
    >グループ内のメンバーは、段階的なロールアウトに対して自動的に有効になります。 段階的なロールアウトでは、入れ子になったグループと動的グループはサポートされていません。
