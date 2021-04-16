@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 7. **[可用性オプション]** で、VM をスタンドアロンとしてデプロイするか、可用性ゾーンまたは可用性セットにデプロイするかを指定します。
 
-    :::image type="content" source="./media/tutorial-disaster-recovery/create-vm.png" alt-text="VM の管理プロパティのページでレプリケーションを有効にする。"
+    :::image type="content" source="./media/tutorial-disaster-recovery/create-vm.png" alt-text="VM の管理プロパティのページでレプリケーションを有効にする。":::
 
 8. VM の作成を完了します。
 
