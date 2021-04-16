@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 03/09/2021
+ms.date: 03/29/2021
 ms.author: aahi
 keywords: テキスト マイニング、感情分析、テキスト分析
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 7fcc030e3c63c24fa255e578c2d8aaf1b466e99c
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b586478b6b3943fb0154ed6c50bade6fd8b08b76
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104598968"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106219503"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
@@ -26,6 +26,12 @@ Text Analytics API は、テキスト マイニングとテキスト分析のた
 この API は、機械学習と AI のアルゴリズムを開発プロジェクトで利用できるようクラウドに集めた [Azure Cognitive Services](../index.yml) に含まれます。 これらの機能は、REST API [バージョン 3.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V3-0/) または[バージョン 3.1-preview](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/)、あるいは[クライアント ライブラリ](quickstarts/client-libraries-rest-api.md)で使用できます。
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
+
+このドキュメントには、次のような記事が記載されています。
+* [クイックスタート](./quickstarts/client-libraries-rest-api.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
+* [攻略ガイド](./how-tos/text-analytics-how-to-call-api.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
+* [概念](text-analytics-user-scenarios.md)に関するページでは、サービスの機能と特徴について詳しく説明します。
+* [チュートリアル](./tutorials/tutorial-power-bi-key-phrases.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
 
 ## <a name="sentiment-analysis"></a>センチメント分析
 

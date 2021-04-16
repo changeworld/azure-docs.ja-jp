@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 13f5f8da0bd58cef0974e8ea8f5f3c5172daa0ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ca4464f40c0807e51adffca8e3e68c622314de6
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96928734"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256890"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Azure Pipelines を使用してカスタム ポリシーをデプロイする
 
@@ -34,7 +34,7 @@ Azure Pipelines を有効にして Azure AD B2C 内でカスタム ポリシー�
 ## <a name="prerequisites"></a>前提条件
 
 * [Azure AD B2C テナント](tutorial-create-tenant.md)、および [B2C IEF ポリシー管理者](../active-directory/roles/permissions-reference.md#b2c-ief-policy-administrator)ロールを持つディレクトリー内のユーザーの資格情報
-* テナントにアップロード済みの[カスタム ポリシー](custom-policy-get-started.md)
+* テナントにアップロード済みの[カスタム ポリシー](tutorial-create-user-flows.md?pivots=b2c-custom-policy)
 * Microsoft Graph API のアクセス許可 *Policy.ReadWrite.TrustFramework* でテナントに登録されている [管理アプリ](microsoft-graph-get-started.md)
 * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)、および [Azure DevOps Services プロジェクト][devops-create-project]へのアクセス
 
