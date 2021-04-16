@@ -3,12 +3,12 @@ title: チュートリアル - オンプレミス環境をプライベート ク
 description: Azure VMware Solution のプライベート クラウドに対する ExpressRoute Global Reach ピアリングを作成する方法について説明します。
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 59ddc2dd4aed850328807a4543d2fabd6f5a99f1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 798b822989127ccbb00e971de2cc4147ac234259
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105564502"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449564"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>チュートリアル:オンプレミス環境をプライベート クラウドにピアリングする
 
@@ -55,7 +55,7 @@ ExpressRoute Global Reach を使用して 2 つの ExpressRoute 回線間の接�
 1. オンプレミス クラウド接続を作成します。 次のいずれかを行ってから、 **[作成]** を選択します。
 
    - 一覧から **ExpressRoute 回線** を選択します。または
-   - 回線 ID がある場合は、それをフィールドに貼り付け、認可キーを指定します。
+   - 回線 ID がある場合は、それをフィールドに貼り付け、先ほど作成した承認キーを指定します。
 
    :::image type="content" source="./media/expressroute-global-reach/on-premises-cloud-connections.png" alt-text="ExpressRoute ID と承認キーを入力し、[作成] を選択します。":::   
    

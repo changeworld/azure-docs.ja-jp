@@ -2,25 +2,25 @@
 author: mikben
 ms.service: azure-communication-services
 ms.topic: include
-ms.date: 9/1/2020
+ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 778255dc7259bd66a7c7059ede855464c1e39569
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: 443595a52458d7ff7c168f4c120257cfb60fad2e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445200"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110893"
 ---
 ## <a name="prerequisites"></a>前提条件
 
 - アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/dotnet/)。
-- お使いのオペレーティング システムの最新バージョンの [.NET Core クライアント ライブラリ](https://dotnet.microsoft.com/download/dotnet-core)。
-- [.NET Identity クライアント ライブラリ](/dotnet/api/azure.identity)の最新バージョンを取得します。
-- [.NET 管理クライアント ライブラリ](../../concepts/sdk-options.md)の最新バージョンを取得します。
+- お使いのオペレーティング システムに対応した最新バージョンの [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core)。
+- [.NET Identity SDK](/dotnet/api/azure.identity) の最新バージョンを取得します。
+- [.NET Management SDK](../../concepts/sdk-options.md) の最新バージョンを取得します。
 
-## <a name="installing-the-client-library"></a>クライアント ライブラリのインストール
+## <a name="installing-the-sdk"></a>SDK のインストール
 
-まず、Communication Services 管理クライアント ライブラリを C# プロジェクトにインクルードします。
+まず、Communication Services Management SDK を C# プロジェクトにインクルードします。
 
 ```csharp
 using Azure.ResourceManager.Communication;
@@ -121,11 +121,11 @@ var communicationServiceClient = new CommunicationManagementClient(subscriptionI
 
 次の各例では、Communication Services リソースを既存のリソース グループに割り当てます。
 
-リソース グループを作成する必要がある場合は、 [Azure portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) または [Azure Resource Manager クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md)を使用して実行できます。
+リソース グループを作成する必要がある場合は、[Azure portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) または [Azure Resource Manager SDK](https://github.com/Azure/azure-sdk-for-net/blob/master/doc/mgmt_preview_quickstart.md) を使用して実行できます。
 
 ### <a name="create-and-manage-a-communication-services-resource"></a>Communication Services リソースを作成して管理する
 
-Communication Services 管理クライアント ライブラリ クライアント (``Azure.ResourceManager.Communication.CommunicationManagementClient``) のインスタンスを使用して、Communication Services リソースに対する操作を実行できます。
+Communication Services Management SDK クライアント (``Azure.ResourceManager.Communication.CommunicationManagementClient``) のインスタンスを使用して、Communication Services リソースに対する操作を実行できます。
 
 #### <a name="create-a-communication-services-resource"></a>Communication Services リソースを作成する
 
@@ -173,7 +173,7 @@ await acsClient.CommunicationService.StartDeleteAsync(resourceGroupName, resourc
 
 ## <a name="managing-keys-and-connection-strings"></a>キーと接続文字列の管理
 
-すべての Communication Services リソースには、アクセスキーと対応する接続文字列のペアがあります。 これらのキーには、管理クライアント ライブラリを使用してアクセスできます。それから他の Communication Services クライアント ライブラリで Azure Communication Services に対して自身を認証するためにこれらを使用できます。
+すべての Communication Services リソースには、アクセスキーと対応する接続文字列のペアがあります。 これらのキーには、Management SDK を使用してアクセスできます。それから他の Communication Services SDK で Azure Communication Services に対して自身を認証するためにこれらを使用できます。
 
 #### <a name="get-access-keys-for-a-communication-services-resource"></a>Communication Services リソースのアクセス キーを取得する
 
