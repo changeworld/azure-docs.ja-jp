@@ -7,12 +7,12 @@ ms.custom:
 - seo-python-october2019
 - mvc
 - devx-track-python
-ms.openlocfilehash: e3792a88104c359b014a7a12cf6e48e690c2a865
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e213ec7aee7172bb5ebb49097ad9fd09f9106255
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88511016"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105046812"
 ---
 # <a name="quickstart-use-python-api-to-run-an-azure-batch-job"></a>クイック スタート:Python API を使用して Azure Batch ジョブを実行する
 
@@ -28,7 +28,7 @@ Python API を使用してアプリから Azure Batch ジョブを実行する�
 
 - Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
-- [Python](https://python.org/downloads) バージョン 2.7 または 3.3 以降 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)
+- [Python](https://python.org/downloads) バージョン 2.7 または 3.6 ([pip](https://pip.pypa.io/en/stable/installing/) パッケージ マネージャーを含む)
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 

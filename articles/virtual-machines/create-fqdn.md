@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/01/2021
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42c53e72de7f6b2943086544f607042957f4b849
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: b010070b7a45c24037c6de4648574c01b017d759
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220081"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107399"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Linux VM 用の Azure Portal での完全修飾ドメイン名の作成
 
@@ -27,7 +27,7 @@ ms.locfileid: "106220081"
 1. ポータルで VM を選択します。 
 1. 左側のメニューで **[プロパティ]** を選択します。
 1. **[パブリック IP アドレス/DNS 名ラベル]** で、使用する IP アドレスを選択します。
-2. **[DNA 名ラベル]** の下に、使用するプレフィックスを入力します。
+2. **[DNS 名ラベル]** の下に、使用するプレフィックスを入力します。
 3. ページの最上部で **[保存]** を選択します。
 4. 左側のメニューの **[概要]** を選択して、VM の概要ブレードに戻ります。
 5. **[DNS 名]** が正しく表示されていることを確認します。 

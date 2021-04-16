@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 9fbd137f8fa36a7b0526b25d664fceac795ecd81
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 09acdc0c4ea2dbe90c0b7b037b6aec501cc1dd55
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877107"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223032"
 ---
 # <a name="tutorial-use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>チュートリアル:Azure Spring Cloud でサーキット ブレーカー ダッシュボードを使用する
 
@@ -20,7 +20,7 @@ ms.locfileid: "104877107"
 
 Spring [Cloud Netflix Turbine](https://github.com/Netflix/Turbine) とは、Hystrix ダッシュボードを使用して単一のビューでストリームを監視できるように複数の [Hystrix](https://github.com/Netflix/Hystrix) メトリック ストリームを集約するためのものであり、広く使用されています。 このチュートリアルでは、Azure Spring Cloud 上でそれらを使用する方法について説明します。
 > [!NOTE]
-> Netflix Hystrix は、既存の多くの Spring Cloud アプリで広く使用されていますが、現在活発な開発は行われていません。 プロジェクトを新規に開発する場合は、[resilience4j](https://github.com/resilience4j/resilience4j) のような Spring Cloud Circuit Breaker の実装を代わりに使用してください。 このチュートリアルで示した Turbine とは異なり、新しい Spring Cloud Circuit Breaker フレームワークでは、そのメトリック データ パイプラインのすべての実装が Micrometer に統合されます。 Azure Spring Cloud での Micrometer のサポートについてはまだ作業中であるため、このチュートリアルでは扱いません。
+> Netflix Hystrix は、既存の多くの Spring Cloud アプリで広く使用されていますが、現在活発な開発は行われていません。 プロジェクトを新規に開発する場合は、[resilience4j](https://github.com/resilience4j/resilience4j) のような Spring Cloud Circuit Breaker の実装を代わりに使用してください。 このチュートリアルで示した Turbine とは異なり、新しい Spring Cloud Circuit Breaker フレームワークでは、そのメトリック データ パイプラインのすべての実装が Micrometer に統合されます。これも、Azure Spring Cloud によってサポートされています。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/spring-cloud/how-to-circuit-breaker-metrics)。
 
 ## <a name="prepare-your-sample-applications"></a>サンプル アプリケーションを準備する
 サンプルは、この[リポジトリ](https://github.com/StackAbuse/spring-cloud/tree/master/spring-turbine)からフォークされます。

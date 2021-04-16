@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4ba5a9211cdb89f6ac5a92a315378e58f5d08a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34ac4a3b7f55c42711e4bc33c75bba964b49c65e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105709516"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106551630"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Microsoft 365 グループの有効期限ポリシーを構成する
 
@@ -91,6 +91,7 @@ User | 自分が所有する Microsoft 365 グループを更新できます<br>
 > - 有効期限を初めて設定すると、有効期限の間隔よりも古いグループは、グループが自動的に更新されるか所有者が更新しない限り、有効期限まで 35 日間に設定されます。
 > - 動的なグループを削除し復元する場合、そのグループは新しいグループとみなされ、規則に従って再度追加されます。 このプロセスには最大で 24 時間かかります。
 > - Teams で使用されるグループの有効期限の通知は、Teams の所有者フィードに表示されます。
+> - 選択したグループの有効期限を有効にすると、最大 500 のグループを一覧に追加できます。 500 を超えるグループを追加する必要がある場合は、すべてのグループの有効期限を有効にすることができます。 このシナリオでは、500 グループの制限は適用されません。
 
 ## <a name="email-notifications"></a>メール通知
 

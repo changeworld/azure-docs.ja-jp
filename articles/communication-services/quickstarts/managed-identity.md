@@ -10,17 +10,17 @@ ms.date: 03/10/2021
 ms.author: peiliu
 ms.reviewer: mikben
 zone_pivot_groups: acs-js-csharp-java-python
-ms.openlocfilehash: ffda88da451e25b79112a7adf85026158bd27acc
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: e4b71cc889615fd4784f11c9edd77b44ef421d9e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103492355"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105110752"
 ---
 # <a name="use-managed-identities"></a>マネージド ID の使用
-マネージド ID を使用して、Azure Communication Services を開始します。 Communication Services の ID および SMS クライアント ライブラリでは、[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。
+マネージド ID を使用して、Azure Communication Services を開始します。 Communication Services の ID および SMS SDK では、[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用した Azure Active Directory (Azure AD) 認証がサポートされています。
 
-このクイックスタートでは、マネージド ID をサポートする Azure 環境から、ID および SMS クライアント ライブラリへのアクセスを承認する方法について説明します。 また、開発環境でコードをテストする方法についても説明します。
+このクイックスタートでは、マネージド ID をサポートする Azure 環境から、ID および SMS SDK へのアクセスを承認する方法について説明します。 また、開発環境でコードをテストする方法についても説明します。
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [.NET](./includes/managed-identity-net.md)]

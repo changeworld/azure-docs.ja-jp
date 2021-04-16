@@ -5,20 +5,20 @@ ms.author: askaur
 ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dd183e9088f24aa8b94955bc8ed2a68b4a7eb27c
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: 773bca81694534346019e30e9d55190af6f51e74
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103496179"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105106797"
 ---
 ## <a name="joining-the-meeting-chat"></a>会議チャットへの参加 
 
-Teams の相互運用性が有効になると、Communication Services ユーザーは、呼び出し元のクライアント ライブラリを使用して外部ユーザーとして Teams の通話に参加できます。 通話に参加すると、会議チャットにも参加者として追加されます。会議チャットでは、通話の他のユーザーとメッセージを送受信できます。 ユーザーは、通話に参加する前に送信されたチャット メッセージにはアクセスできません。 会議に参加してチャットを開始するには、次の手順に従います。
+Teams の相互運用性が有効になると、Communication Services ユーザーは、Calling SDK を使用して外部ユーザーとして Teams の通話に参加できます。 通話に参加すると、会議チャットにも参加者として追加されます。会議チャットでは、通話の他のユーザーとメッセージを送受信できます。 ユーザーは、通話に参加する前に送信されたチャット メッセージにはアクセスできません。 会議に参加してチャットを開始するには、次の手順に従います。
 
 ## <a name="install-the-chat-packages"></a>チャット パッケージをインストールする
 
-`npm install` コマンドを使用して、JavaScript 用の必要な Communication Services クライアント ライブラリをインストールします。
+`npm install` コマンドを使用して、JavaScript 用の必要な Communication Services SDK をインストールします。
 
 ```console
 npm install @azure/communication-common --save

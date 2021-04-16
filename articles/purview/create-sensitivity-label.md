@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 03/09/2021
-ms.openlocfilehash: 37ac292acc76c681ea38b2ae881ff8cd2ae5ec3c
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 5f6e2474a533f5619d5544b674a87b6412323cc3
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102502448"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166736"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Azure Purview でデータに自動的にラベルを付ける
 
@@ -96,7 +96,7 @@ Azure Purview の Azure 資産に MIP の秘密度ラベルを適用するには
 Azure Purview で MIP の秘密度ラベルを拡張することにより、組織は、より幅広いデータ ソースで秘密度の検出、分類、および分析情報の取得を行うことができるようになり、コンプライアンスのリスクを最小限に抑えることができます。
 
 > [!NOTE]
-> Microsoft 365 と Azure Purview は別々のサービスであるため、異なるリージョンにデプロイされる可能性があります。 ラベル名とカスタムの機密情報の種類の名前は、お客様のデータと見なされ、データの機密性を保護し、GDPR 法を回避するために、既定で同じ地域の場所に保持されます。
+> Microsoft 365 と Azure Purview は別々のサービスであるため、異なるリージョンにデプロイされる可能性があります。 ラベル名とカスタムの機密情報の種類の名前は、お客様のデータと見なされ、データの機密性を保護し、プライバシーについての規則を遵守するために、既定で同じ地域の場所に保持されます。
 >
 > このため、ラベルとカスタムの機密情報の種類は、既定では Azure Purview に共有されず、Azure Purview での使用に同意する必要があります。
 
