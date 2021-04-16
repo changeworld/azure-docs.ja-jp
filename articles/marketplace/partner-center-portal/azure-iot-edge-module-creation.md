@@ -7,16 +7,16 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 9f07a6376e3fdde46e9e0cb161acc97c5771d905
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 6de387605a8c127485b68773b6cd1b19c7136d17
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166753"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107501"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの作成
 
-この記事では、Azure Marketplace 向けのモノのインターネット (IoT) Edge モジュール オファーを作成して発行する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
+この記事では、Azure Marketplace 向けのモノのインターネット (IoT) Edge モジュール オファーを作成して発行する方法について説明します。 開始する前に、まだ[パートナー センターでコマーシャル マーケットプレース アカウントを作成](../create-account.md)していなければ、作成します。 お使いのアカウントがコマーシャル マーケットプレース プログラムに登録されていることを確認します。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 

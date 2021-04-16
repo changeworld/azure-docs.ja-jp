@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 27056f39885949d52c9fcc0d1472033cfc8f9aa0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0c2de0c1b024d093bd0276a852d9b97ba3320f4b
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102554872"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106286336"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -83,7 +83,7 @@ Azure ファイル共有の [Azure AD 認証](storage-files-identity-auth-active
 | | ツールの組み合わせ:| ツールの組み合わせ: |
 | Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync と Azure DataBox](storage-sync-offline-data-transfer.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li><li>Azure File Sync の使用</li></ul> |
 | Windows Server 2012 以前 | <ul><li>DataBox と Azure File Sync を使用して最近のサーバー OS へ</li><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ、その後アップロード</li></ul> | <ul><li>記憶域移行サービス経由で Azure File Sync を使用して最近のサーバーへ</li><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
-| ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync のアップロードの使用](storage-files-migration-nas-hybrid.md)</li><li>[DataBox および Azure File Sync の使用](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
+| ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync のアップロードの使用](storage-files-migration-nas-hybrid.md)</li><li>[DataBox および Azure File Sync の使用](storage-files-migration-nas-hybrid-databox.md)</li></ul> | <ul><li>[DataBox 経由](storage-files-migration-nas-cloud-databox.md)</li><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
 | Linux/Samba | <ul><li>[Azure File Sync と RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy を使用して、マウントされた Azure ファイル共有へ</li></ul> |
 | Microsoft Azure StorSimple クラウド アプライアンス 8100 または StorSimple クラウド アプライアンス 8600 | <ul><li>[専用のデータ移行クラウド サービスの使用](storage-files-migration-storsimple-8000.md)</li></ul> | |
 | StorSimple クラウド アプライアンス 1200 | <ul><li>[Azure File Sync の使用](storage-files-migration-storsimple-1200.md)</li></ul> | |

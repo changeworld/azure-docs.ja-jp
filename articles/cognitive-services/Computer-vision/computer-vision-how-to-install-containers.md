@@ -12,12 +12,12 @@ ms.date: 03/02/2021
 ms.author: aahi
 ms.custom: seodec18, cog-serv-seo-aug-2020
 keywords: オンプレミス、OCR、Docker、コンテナー
-ms.openlocfilehash: 1c9e681e3c02cb65b2a54070cc778051a0e7ac53
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53d59822b378a658f8b6c048de1a32db53a795d1
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102432555"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285724"
 ---
 # <a name="install-read-ocr-docker-containers-preview"></a>Read OCR Docker コンテナー (プレビュー) をインストールする 
 
@@ -25,7 +25,7 @@ ms.locfileid: "102432555"
 
 コンテナーを使用すると、独自の環境で Computer Vision API を実行できます。 コンテナーは、特定のセキュリティ要件とデータ ガバナンス要件に適しています。 この記事では、Computer Vision コンテナーをダウンロード、インストール、実行する方法について説明します。
 
-*Read* OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API のドキュメント](concept-recognizing-text.md#read-api)に関する記事を参照してください。
+*Read* OCR コンテナーを使用すると、JPEG、PNG、BMP、PDF、TIFF の各ファイル形式をサポートするイメージとドキュメントから、印刷されたテキストおよび手書きのテキストを抽出できます。 詳細については、[Read API 攻略ガイド](Vision-API-How-to-Topics/call-read-api.md)に関するページを参照してください。
 
 ## <a name="read-32-preview-container"></a>Read 3.2-preview コンテナー
 
@@ -96,7 +96,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 
 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) コマンドを使用して、コンテナー イメージをダウンロードします。
 
-### <a name="docker-pull-for-the-read-container"></a>読み取りコンテナー用の Docker pull
+### <a name="docker-pull-for-the-read-ocr-container"></a>Read OCR コンテナー用の Docker pull
 
 # <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
 
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 このコマンドは、次の操作を行います。
 
-* コンテナー イメージから読み取りコンテナーを実行します。
+* コンテナー イメージから Read OCR コンテナーを実行します。
 * 8 つの CPU コアと 18 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
@@ -156,7 +156,7 @@ ApiKey={API_KEY}
 
 このコマンドは、次の操作を行います。
 
-* コンテナー イメージから読み取りコンテナーを実行します。
+* コンテナー イメージから Read OCR コンテナーを実行します。
 * 8 つの CPU コアと 16 ギガバイト (GB) のメモリを割り当てます。
 * TCP ポート 5000 を公開し、コンテナーに pseudo-TTY を割り当てます。
 * コンテナーの終了後にそれを自動的に削除します。 ホスト コンピューター上のコンテナー イメージは引き続き利用できます。
@@ -392,7 +392,7 @@ Swagger UI で `asyncBatchAnalyze` を選択し、ブラウザーで展開しま
 ---
 
 > [!IMPORTANT]
-> ロード バランサーの背後に複数の読み取りコンテナーをデプロイする場合は (たとえば、Docker Compose または Kubernetes の下)、外部キャッシュが必要です。 処理コンテナーと GET 要求コンテナーは同じではない可能性があるため、外部キャッシュによって結果が格納され、コンテナーとの間で共有されます。 キャッシュ設定の詳細については、「[Computer Vision Docker コンテナーを構成する](./computer-vision-resource-container-config.md)」を参照してください。
+> Docker Compose または Kubernetes の下など、ロード バランサーの背後に複数の Read OCR コンテナーをデプロイする場合は、外部キャッシュが必要です。 処理コンテナーと GET 要求コンテナーは同じではない可能性があるため、外部キャッシュによって結果が格納され、コンテナーとの間で共有されます。 キャッシュ設定の詳細については、「[Computer Vision Docker コンテナーを構成する](./computer-vision-resource-container-config.md)」を参照してください。
 
 ### <a name="synchronous-read"></a>同期読み取り
 
@@ -445,7 +445,7 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 * Computer Vision では、読み取りがカプセル化された、Docker 用の Linux コンテナーが提供されます。
 * コンテナー イメージは、Azure の "コンテナー プレビュー" コンテナー レジストリからダウンロードされます。
 * コンテナー イメージを Docker で実行します。
-* REST API または SDK を使用して、コンテナーのホスト URI を指定することによって、Read コンテナーの操作を呼び出すことができます。
+* REST API または SDK のいずれかを使用して、コンテナーのホスト URI を指定すると、Read OCR コンテナーの操作を呼び出すことができます。
 * コンテナーをインスタンス化するときは、課金情報を指定する必要があります。
 
 > [!IMPORTANT]
@@ -454,7 +454,7 @@ Cognitive Services コンテナーでは、Azure アカウントの対応する�
 ## <a name="next-steps"></a>次のステップ
 
 * 構成設定について、[コンテナーの構成](computer-vision-resource-container-config.md)を確認する
-* [Computer Vision の概要](overview.md)ページを読み、印刷されたテキストと手書きのテキストの認識の詳細について確認する
-* コンテナーによりサポートされるメソッドの詳細を [Computer Vision API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) ページで確認する。
+* [OCR の概要](overview-ocr.md)に関するページを読み、印刷および手書きのテキストの認識に関する詳細について確認する
+* コンテナーでサポートされているメソッドの詳細について、[Read API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) を参照する。
 * [よく寄せられる質問 (FAQ)](FAQ.md) を参照して、Computer Vision 機能に関連する問題を解決する。
 * さらに [Cognitive Services コンテナー](../cognitive-services-container-support.md)を使用する

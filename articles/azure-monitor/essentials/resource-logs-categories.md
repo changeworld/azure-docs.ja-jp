@@ -2,13 +2,13 @@
 title: Azure Monitor リソース ログでサポートされているサービスとカテゴリ
 description: Azure Monitor のリファレンス - Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
-ms.date: 01/29/2021
-ms.openlocfilehash: 9a04d0f470522dd4689d604756ffd25e70c5d456
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.date: 03/30/2021
+ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
+ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102033148"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106166940"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
 
@@ -33,7 +33,8 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 一部のカテゴリは、特定の種類のリソースに対してのみサポートされています。 リソースが不足していると思われる場合は、リソース固有のドキュメントを参照してください。 たとえば、Microsoft.Sql/servers/databases カテゴリは、すべての種類のデータベースで使用できるわけではありません。 詳細については、[SQL Database の診断ログに関する情報](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md)を参照してください。 
 
 何かが不足していると考えられる場合は、この記事の下部にある GitHub コメントを開くことができます。
-## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/domainServices
+
+## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/DomainServices
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
@@ -46,6 +47,13 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |PolicyChange|PolicyChange|いいえ|
 |PrivilegeUse|PrivilegeUse|いいえ|
 |SystemSecurity|SystemSecurity|いいえ|
+
+
+## <a name="microsoftaadiamtenants"></a>microsoft.aadiam/tenants
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|サインイン|サインイン|はい|
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
@@ -97,6 +105,14 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |JobStreams|ジョブ ストリーム|いいえ|
 
 
+## <a name="microsoftautonomousdevelopmentplatformaccounts"></a>Microsoft.AutonomousDevelopmentPlatform/accounts
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|Audit|Audit|はい|
+|運用時|運用時|はい|
+
+
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -135,7 +151,6 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |BotRequest|チャネルからボットへの要求|いいえ|
-|DependencyRequest|依存関係への要求|いいえ|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
@@ -182,6 +197,7 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
+|AuthOperational|操作認証ログ|はい|
 |ChatOperational|運用チャット ログ|いいえ|
 |SMSOperational|運用 SMS ログ|いいえ|
 |使用法|使用法レコード|いいえ|
@@ -256,6 +272,8 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |---|---|---|
 |ActivityRuns|パイプライン アクティビティ実行ログ|いいえ|
 |PipelineRuns|パイプライン実行ログ|いいえ|
+|SandboxActivityRuns|サンドボックス アクティビティ実行ログ|はい|
+|SandboxPipelineRuns|サンドボックス パイプライン実行ログ|はい|
 |SSISIntegrationRuntimeLogs|SSIS 統合ランタイム ログ|いいえ|
 |SSISPackageEventMessageContext|SSIS パッケージ イベント メッセージ コンテキスト|いいえ|
 |SSISPackageEventMessages|SSIS パッケージ イベント メッセージ|いいえ|
@@ -320,6 +338,13 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |PostgreSQLLogs|PostgreSQL サーバー ログ|いいえ|
+
+
+## <a name="microsoftdbforpostgresqlservergroupsv2"></a>Microsoft.DBForPostgreSQL/serverGroupsv2
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL サーバー ログ|はい|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
@@ -531,18 +556,6 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |AppTraces|トレース|いいえ|
 
 
-## <a name="microsoftiotspacesgraph"></a>Microsoft.IoTSpaces/Graph
-
-|カテゴリ|カテゴリの表示名|エクスポートのコスト|
-|---|---|---|
-|Audit|Audit|いいえ|
-|エグレス|エグレス|いいえ|
-|イングレス|イングレス|いいえ|
-|運用時|運用時|いいえ|
-|Trace|Trace|いいえ|
-|UserDefinedFunction|UserDefinedFunction|いいえ|
-
-
 ## <a name="microsoftkeyvaultmanagedhsms"></a>microsoft.keyvault/managedhsms
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -747,13 +760,6 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |エンジン|エンジン|いいえ|
 
 
-## <a name="microsoftprojectbabylonaccounts"></a>Microsoft.ProjectBabylon/accounts
-
-|カテゴリ|カテゴリの表示名|エクスポートのコスト|
-|---|---|---|
-|ScanStatusLogEvent|ScanStatus|いいえ|
-
-
 ## <a name="microsoftpurviewaccounts"></a>microsoft.purview/accounts
 
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
@@ -808,6 +814,13 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |カテゴリ|カテゴリの表示名|エクスポートのコスト|
 |---|---|---|
 |AllLogs|Azure SignalR Service ログ。|いいえ|
+
+
+## <a name="microsoftsignalrservicewebpubsub"></a>Microsoft.SignalRService/WebPubSub
+
+|カテゴリ|カテゴリの表示名|エクスポートのコスト|
+|---|---|---|
+|AllLogs|Azure Web PubSub Service ログ。|はい|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
@@ -901,6 +914,9 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |---|---|---|
 |BuiltinSqlReqsEnded|組み込みの SQL プール要求終了|いいえ|
 |GatewayApiRequests|Synapse Gateway API 要求|いいえ|
+|IntegrationActivityRuns|統合アクティビティの実行|はい|
+|IntegrationPipelineRuns|統合パイプラインの実行|はい|
+|IntegrationTriggerRuns|統合トリガーの実行|はい|
 |SQLSecurityAuditEvents|SQL セキュリティ監査イベント|いいえ|
 |SynapseRbacOperations|Synapse RBAC 操作|いいえ|
 
@@ -975,7 +991,6 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |AppServiceIPSecAuditLogs|IPSecurity 監査ログ|いいえ|
 |AppServicePlatformLogs|App Service プラットフォーム ログ|いいえ|
 |FunctionAppLogs|関数アプリケーション ログ|いいえ|
-
 
 
 ## <a name="next-steps"></a>次の手順

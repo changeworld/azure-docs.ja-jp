@@ -13,12 +13,12 @@ ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 97718fef0aecd07dd364677ce1b72eb5bba78475
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652bc9a236a4e4b9d3f99dab640919f2be985984
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384274"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257723"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -47,7 +47,7 @@ ms.locfileid: "106384274"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Azure AD B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」の手順を完了します。 この記事で説明されているカスタム ポリシー スターター パックの *SocialAndLocalAccounts* カスタム ポリシーが必要です。
+* 「[Azure AD B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」の手順を完了します。 この記事で説明されているカスタム ポリシー スターター パックの *SocialAndLocalAccounts* カスタム ポリシーが必要です。
 * SAML プロトコルに関する基本的な理解、およびアプリケーションの SAML 実装に関する知識。
 * SAML アプリケーションとして構成された Web アプリケーション。 このチュートリアルでは、用意されている [SAML テスト アプリケーション][samltest]を使用できます。
 

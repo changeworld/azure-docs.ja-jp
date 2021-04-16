@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet, contperf-fy21q2
-ms.openlocfilehash: 06fb087744ff4ecd96bee7a26e4a796e87866322
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 1a6439cfa64257e80d113f01f4ed31d56d850ea3
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102433677"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107226058"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -69,7 +69,7 @@ Linux および ServiceInterop.dll を使用できない他のサポート対象
 
 **接続ポリシー:直接接続モードを使用する**
 
-.NET V3 SDK の既定の接続モードは直接です。 `CosmosClientOptions` で `CosmosClient` インスタンスを作成するときに、接続モードを構成します。  さまざまな接続オプションについては、[接続モード](sql-sdk-connection-modes.md)に関する記事を参照してください。
+.NET V3 SDK の TCP プロトコルとの既定の接続モードは直接です。 `CosmosClientOptions` で `CosmosClient` インスタンスを作成するときに、接続モードを構成します。  さまざまな接続オプションについては、[接続モード](sql-sdk-connection-modes.md)に関する記事を参照してください。
 
 ```csharp
 string connectionString = "<your-account-connection-string>";
@@ -215,7 +215,7 @@ Azure Cosmos DB には、データベース操作の豊富なセットが用意�
 
 クエリの複雑さは、操作で消費される要求ユニット数に影響します。 述語の数、述語の特性、UDF ファイルの数、ソース データ セットのサイズのすべてがクエリ操作のコストに影響します。
 
-操作 (作成、更新、または削除) のオーバーヘッドを測定するには、[x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) ヘッダー (あるいは、.NET SDK の `ResourceResponse\<T>` または `FeedResponse\<T>` の同等の `RequestCharge` プロパティ) を調べて、これらの操作で使用される要求ユニット数を測定します。
+操作 (作成、更新、または削除) のオーバーヘッドを測定するには、[x-ms-request-charge](/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) ヘッダー (あるいは、.NET SDK の `ResourceResponse<T>` または `FeedResponse<T>` の同等の `RequestCharge` プロパティ) を調べて、これらの操作で使用される要求ユニット数を測定します。
 
 ```csharp
 // Measure the performance (Request Units) of writes

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b8e72cab6d6220b71e93550eec7649752201180a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98674995"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256584"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>パスワードレス認証のために Azure Active Directory B2C を使用して Nevis を構成するチュートリアル
 
@@ -32,7 +32,7 @@ ms.locfileid: "98674995"
 
 - お使いの Azure サブスクリプションにリンクされている [Azure AD B2C テナント](./tutorial-create-tenant.md)。
 
-- Nevis をサインアップ ポリシー フローに統合する場合は、[カスタム ポリシー](./custom-policy-get-started.md)を使用するように構成された Azure AD B2C 環境。
+- Nevis をサインアップ ポリシー フローに統合する場合は、[カスタム ポリシー](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)を使用するように構成された Azure AD B2C 環境。
 
 ## <a name="scenario-description"></a>シナリオの説明
 
@@ -270,4 +270,4 @@ ms.locfileid: "98674995"
 
 - [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)

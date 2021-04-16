@@ -4,16 +4,16 @@ description: Azure CLI を使用して、アプリケーション ゲートウ�
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 08/31/2020
+ms.date: 03/29/2021
 ms.author: victorh
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 967d4d4a49809c2b5fa7a344286469bb67eec6cf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d53f4b640154e4d7b02115d5043b37f6bb6e89ba
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102217603"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731141"
 ---
 # <a name="enable-web-application-firewall-using-the-azure-cli"></a>Azure CLI を使用して Web アプリケーション ファイアウォールを有効にする
 
@@ -109,13 +109,15 @@ az network application-gateway waf-config set \
 
 この例では、アプリケーション ゲートウェイのバックエンド プールに 2 つのサーバーを提供する仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、*myBackendSubnet* サブネットに関連付けます。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az-vmss-create) を使用できます。
 
+これを実行する前に、\<username> と \<password> を実際の値に置き換えてください。
+
 ```azurecli-interactive
 az vmss create \
   --name myvmss \
   --resource-group myResourceGroupAG \
   --image UbuntuLTS \
-  --admin-username azureuser \
-  --admin-password Azure123456! \
+  --admin-username <username> \
+  --admin-password <password> \
   --instance-count 2 \
   --vnet-name myVNet \
   --subnet myBackendSubnet \
