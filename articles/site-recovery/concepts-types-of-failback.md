@@ -1,18 +1,15 @@
 ---
 title: Azure Site Recovery を使用したディザスター リカバリー中にフェールバックする | Microsoft Docs
 description: この記事では、さまざまな種類のフェールバックの概要のほか、Azure Site Recovery サービスを使用したディザスター リカバリー中に、オンプレミスにフェールバックする際に考慮すべき注意事項を示します。
-author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: raynew
-ms.openlocfilehash: c0eaf28f9aeb4050fd35a6036a53e3e91d00f3eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f386b34222825b60748b4ca27dcc5c0c2487316
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84691086"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106580856"
 ---
 # <a name="failback-of-vmware-vms-after-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリー後の VMware VM のフェールバック
 
