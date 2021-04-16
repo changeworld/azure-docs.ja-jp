@@ -12,18 +12,25 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: テキスト読み上げ
-ms.openlocfilehash: 653f9fcd9d3d8d6347d961603acc6eb481ee7f41
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 1a7ff7befc1a5e82c5518cf103a81b35ec38c7db
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104869176"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106449360"
 ---
 # <a name="what-is-text-to-speech"></a>テキスト読み上げの概要
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 この概要では、お使いのアプリケーション、ツール、デバイスでテキストを人間のような合成音声に変換することを可能にするテキスト読み上げの利点と機能について説明します。 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を作成することもできます。 標準音声は、45 を超える言語とロケールで 75 種類以上が用意されています。ニューラル音声は、一部の言語とロケールで 5 種類が用意されています。 サポートされている音声、言語、ロケールの一覧については、[サポートされている言語](language-support.md#text-to-speech)に関する記事をご覧ください。
+
+このドキュメントには、次の種類の記事が含まれています。
+
+* **クイックスタート** は、サービスへの要求の実行方法を説明する概要手順です。
+* **攻略ガイド** には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
+* **概念** では、サービスの機能と特徴について詳しく説明します。
+* **チュートリアル** はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
 
 > [!NOTE]
 > Bing Speech は、2019 年 10 月 15 日に使用が停止されました。 アプリケーション、ツール、または製品で Bing Speech API または Custom Speech をご使用の方に向けて、Speech Service への移行に役立つガイドを作成しました。
@@ -44,7 +51,7 @@ ms.locfileid: "104869176"
 * 口形素 - [口形素](how-to-speech-synthesis-viseme.md)は、特定の音素を生成するときの唇、顎、舌の位置などの観察されたスピーチにおける主要な姿勢です。 口形素は、音声と音素との強い相関関係を持っています。 Speech SDK で口形素イベントを使用すると、顔のアニメーション データを生成できます。これは、読唇時のコミュニケーション、教育、エンターテイメント、カスタマー サービスの顔をアニメーションで表現するために使用できます。
 
 > [!NOTE]
-> 現在口形素は米国西部 (`westus`) リージョンの `en-US-AriaNeural` 音声に対してのみ機能し、2021 年 4 月末までにすべての `en-US` 音声で利用できるようになります。
+> 口形素は現在、`en-US-AriaNeural` 音声に対してのみ機能します。
 
 ## <a name="get-started"></a>はじめに
 

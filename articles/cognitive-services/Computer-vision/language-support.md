@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 43804907d68ddd58e55c7ce453e0731d0cb4b9b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 774eb05ae43e393db3d11e8e21a427736614809b
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560380"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285112"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -23,7 +23,7 @@ Computer Vision の一部の機能では、複数の言語がサポートされ�
 
 ## <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
-Computer Vision の OCR API では複数の言語をサポートしています。 言語コードを指定する必要はありません。 詳細については、「[光学式文字認識 (OCR)](concept-recognizing-text.md)」を参照してください。
+Computer Vision の OCR API では複数の言語をサポートしています。 言語コードを指定する必要はありません。 詳細については、[光学式文字認識 (OCR) の概要](overview-ocr.md)に関するページを参照してください。
 
 |Language| 言語コード | OCR API | Read 3.0/3.1 | Read v3.2 プレビュー |
 |:-----|:----:|:-----:|:---:|:---:|
@@ -111,7 +111,7 @@ Computer Vision の OCR API では複数の言語をサポートしています�
 
 ## <a name="image-analysis"></a>画像分析
 
-[Analyze - Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API の一部のアクションは、`language` クエリ パラメーターで指定された他の言語で結果を返すことができます。 他のアクションは、どの言語が指定されていても英語で結果を返し、その他のアクションはサポートされていない言語に対して例外をスローします。 アクションは `visualFeatures` および `details` クエリ パラメーターで指定されます。画像分析で実行できるすべてのアクションの一覧については、[概要](overview.md)に関するページを参照してください。
+[Analyze - Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) API の一部のアクションは、`language` クエリ パラメーターで指定された他の言語で結果を返すことができます。 他のアクションは、どの言語が指定されていても英語で結果を返し、その他のアクションはサポートされていない言語に対して例外をスローします。 アクションは `visualFeatures` および `details` クエリ パラメーターで指定されます。画像分析で実行できるすべてのアクションの一覧については、[概要](overview-image-analysis.md)に関するページを参照してください。
 
 |Language | 言語コード | Categories | Tags | 説明 | 成人向けコンテンツ | ブランド | Color | 顔 | ImageType | Objects | 有名人 | ランドマーク |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|

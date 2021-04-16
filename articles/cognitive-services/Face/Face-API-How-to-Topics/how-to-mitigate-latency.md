@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 2c771509de5ac246bac0d8e006a5d0b884a410b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9198fa6fdd52c91b5be5697fcecbda89a3dbdb3
+ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706811"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106276894"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>方法: Face サービスを使用するときの待機時間を軽減する
 
@@ -42,7 +42,7 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 その後、Face サービスでリモート サーバーから画像をダウンロードする必要があります。 Face サービスからリモート サーバーへの接続が低速である場合は、検出メソッドの応答時間に影響します。
 
-これを回避するには、[Azure Premium Blob Storage に画像を格納する](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet)ことを検討します。 次に例を示します。
+これを回避するには、[Azure Premium Blob Storage に画像を格納する](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet)ことを検討します。 例:
 
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
@@ -62,7 +62,7 @@ System.Collections.Generic.IList<DetectedFace> faces = await client.Face.DetectW
 - ファイルのサイズに比例して、サービスによる処理時間が長くなります。
 
 軽減策:
-- [Azure Premium Blob Storage に画像を格納する](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet)ことを検討します。 次に例を示します。
+- [Azure Premium Blob Storage に画像を格納する](../../../storage/blobs/storage-upload-process-images.md?tabs=dotnet)ことを検討します。 例:
 ``` csharp
 var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
 ```
@@ -86,6 +86,7 @@ IEnumerable<DetectedFace> results = faces_1.Result.Concat (faces_2.Result);
 軽減策:
 - Face サブスクリプションを作成するときに、アプリケーションがホストされている場所に最も近いリージョンを選択します。
 - 複数のサービス メソッドを呼び出す必要がある場合、アプリケーションの設計がそれに対応している場合は、それらを並列に呼び出すことを検討します。 前のセクションの例を参照してください。
+- 待機時間が長く、ユーザー エクスペリエンスに影響を与える場合は、API 呼び出しを再試行する前に、タイムアウトしきい値 (最大 5 秒など) を選択します。 
 
 ## <a name="next-steps"></a>次のステップ
 
