@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 3446de7592c10fd9c0905097a77314192688719d
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 52dd642c661aa60157876a89d41c771cabfe2f1d
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554010"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256159"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -38,7 +38,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 | Language                 | ロケール (BCP-47) | カスタマイズ  | [言語検出](how-to-automatic-language-detection.md) |
 |------------------------------------|--------|---------------------------------------------------|-------------------------------|
-| アラビア語 (バーレーン)、現代標準  | `ar-BH` | Text                                   | はい                           | 
+| アラビア語 (バーレーン)、現代標準  | `ar-BH` | Text                                   |                           | 
 | アラビア語 (エジプト)                     | `ar-EG` | Text                                   | はい                          |
 | アラビア語 (イラク)                      | `ar-IQ` | テキスト                                   |                           |
 | アラビア語 (イスラエル)                    | `ar-IL` | テキスト                                   |                           |
@@ -47,9 +47,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | アラビア語 (レバノン)                   | `ar-LB` | テキスト                                   |                           |
 | アラビア語 (オマーン)                      | `ar-OM` | テキスト                                   |                           |
 | アラビア語 (カタール)                     | `ar-QA` | テキスト                                   |                           |
-| アラビア語 (サウジアラビア)              | `ar-SA` | Text                                   | はい                          |
+| アラビア語 (サウジアラビア)              | `ar-SA` | Text                                   |                           |
 | アラビア語 (パレスチナ自治政府)        | `ar-PS` | テキスト                                   |                           |
-| アラビア語 (シリア)                     | `ar-SY` | Text                                   | はい                          |
+| アラビア語 (シリア)                     | `ar-SY` | Text                                   |                           |
 | アラビア語 (アラブ首長国連邦)      | `ar-AE` | テキスト                                   |                           |
 | ブルガリア語 (ブルガリア)               | `bg-BG` | テキスト                                   |                           |
 | カタルニア語 (スペイン)                    | `ca-ES` | Text                                   | はい                          |
@@ -59,15 +59,15 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | クロアチア語 (クロアチア)                 | `hr-HR` | テキスト                                   |                           |
 | チェコ語 (チェコ共和国)             | `cs-CZ` | テキスト                                   |                           |
 | デンマーク語 (デンマーク)                   | `da-DK` | Text                                   | はい                          |
-| オランダ語 (オランダ)                | `nl-NL` | オーディオ (20201015)<br>Text                                   |    はい                       |
+| オランダ語 (オランダ)                | `nl-NL` | オーディオ (20201015)<br>テキスト<br>発音|    はい                       |
 | 英語 (オーストラリア)                | `en-AU` | オーディオ (20201019)<br>Text                 | はい                          |
 | 英語 (カナダ)                   | `en-CA` | オーディオ (20201019)<br>Text                 | はい                          |
 | 英語 (ガーナ)                    | `en-GH` | テキスト                                   |                           |
 | 英語 (香港)                | `en-HK` | テキスト                                   |                           |
-| 英語 (インド)                    | `en-IN` | オーディオ (20200923)<br>Text                 | はい                          |
+| 英語 (インド)                    | `en-IN` | オーディオ (20200923)<br>Text                 |                          |
 | 英語 (アイルランド)                  | `en-IE` | テキスト                                   |                           |
 | 英語 (ケニア)                    | `en-KE` | テキスト                                   |                           |
-| 英語 (ニュージーランド)              | `en-NZ` | オーディオ (20201019)<br>Text                 |  はい                         |
+| 英語 (ニュージーランド)              | `en-NZ` | オーディオ (20201019)<br>テキスト                 |                          |
 | 英語 (ナイジェリア)                  | `en-NG` | テキスト                                   |                           |
 | 英語 (フィリピン)              | `en-PH` | テキスト                                   |                           |
 | 英語 (シンガポール)                | `en-SG` | テキスト                                   |                           |
@@ -78,12 +78,12 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | エストニア語 (エストニア)                  | `et-EE` | テキスト                                   |                           |
 | フィリピノ語 (フィリピン)             | `fil-PH`| テキスト                                   |                           |
 | フィンランド語 (フィンランド)                  | `fi-FI` | Text                                   |     はい                      |
-| フランス語 (カナダ)                    | `fr-CA` | オーディオ (20201015)<br>Text                 |     はい                      |
+| フランス語 (カナダ)                    | `fr-CA` | オーディオ (20201015)<br>テキスト<br>発音|     はい                      |
 | フランス語 (フランス)                    | `fr-FR` | オーディオ (20201015)<br>テキスト<br>発音|      はい                     |
-| フランス語 (スイス)               | `fr-CH` | テキスト                                   |                           |
-| ドイツ語 (オーストリア)                   | `de-AT` | テキスト                                   |                           |
+| フランス語 (スイス)               | `fr-CH` | テキスト<br>発音                  |                           |
+| ドイツ語 (オーストリア)                   | `de-AT` | テキスト<br>発音                  |                           |
 | ドイツ語 (ドイツ)                   | `de-DE` | オーディオ (20190701、20200619、20201127)<br>テキスト<br>発音|  はい                         |
-| ギリシャ語 (ギリシャ)                     | `el-GR` | テキスト                                   |                           |
+| ギリシャ語 (ギリシャ)                     | `el-GR` | テキスト                                   |  はい                         |
 | グジャラート語 (インド)                  | `gu-IN` | テキスト                                   |                           |
 | ヒンディー語 (インド)                      | `hi-IN` | オーディオ (20200701)<br>Text                 |     はい                      |
 | ハンガリー語 (ハンガリー)                | `hu-HU` | テキスト                                   |                           |
@@ -100,33 +100,33 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | ノルウェー語 (ブークモール、ノルウェー)         | `nb-NO` | Text                                   |     はい                      |
 | ポーランド語 (ポーランド)                    | `pl-PL` | Text                                   |       はい                    |
 | ポルトガル語 (ブラジル)                | `pt-BR` | オーディオ (20190620、20201015)<br>テキスト<br>発音|          はい                 |
-| ポルトガル語 (ポルトガル)              | `pt-PT` | Text                                   |             はい              |
-| ルーマニア語 (ルーマニア)                 | `ro-RO` | テキスト                                   |                           |
+| ポルトガル語 (ポルトガル)              | `pt-PT` | テキスト<br>発音                  |             はい              |
+| ルーマニア語 (ルーマニア)                 | `ro-RO` | テキスト                                   |  はい                         |
 | ロシア語 (ロシア)                   | `ru-RU` | オーディオ (20200907)<br>Text                 |                はい           |
 | スロバキア語 (スロバキア)                  | `sk-SK` | テキスト                                   |                           |
 | スロベニア語 (スロベニア)               | `sl-SI` | テキスト                                   |                           |
-| スペイン語 (アルゼンチン)                | `es-AR` | テキスト                                   |                           |
-| スペイン語 (ボリビア)                  | `es-BO` | テキスト                                   |                           |
-| スペイン語 (チリ)                    | `es-CL` | テキスト                                   |                           |
-| スペイン語 (コロンビア)                 | `es-CO` | テキスト                                   |                           |
-| スペイン語 (コスタリカ)               | `es-CR` | テキスト                                   |                           |
-| スペイン語 (キューバ)                     | `es-CU` | テキスト                                   |                           |
-| スペイン語 (ドミニカ共和国)       | `es-DO` | テキスト                                   |                           |
-| スペイン語 (エクアドル)                  | `es-EC` | テキスト                                   |                           |
-| スペイン語 (エルサルバドル)              | `es-SV` | テキスト                                   |                           |
+| スペイン語 (アルゼンチン)                | `es-AR` | テキスト<br>発音                  |                           |
+| スペイン語 (ボリビア)                  | `es-BO` | テキスト<br>発音                  |                           |
+| スペイン語 (チリ)                    | `es-CL` | テキスト<br>発音                  |                           |
+| スペイン語 (コロンビア)                 | `es-CO` | テキスト<br>発音                  |                           |
+| スペイン語 (コスタリカ)               | `es-CR` | テキスト<br>発音                  |                           |
+| スペイン語 (キューバ)                     | `es-CU` | テキスト<br>発音                  |                           |
+| スペイン語 (ドミニカ共和国)       | `es-DO` | テキスト<br>発音                  |                           |
+| スペイン語 (エクアドル)                  | `es-EC` | テキスト<br>発音                  |                           |
+| スペイン語 (エルサルバドル)              | `es-SV` | テキスト<br>発音                  |                           |
 | スペイン語 (赤道ギニア)        | `es-GQ` | テキスト                                   |                           |
-| スペイン語 (グアテマラ)                | `es-GT` | テキスト                                   |                           |
-| スペイン語 (ホンジュラス)                 | `es-HN` | テキスト                                   |                           |
-| スペイン語 (メキシコ)                   | `es-MX` | オーディオ (20200907)<br>Text                 |    はい                       |
-| スペイン語 (ニカラグア)                | `es-NI` | テキスト                                   |                           |
-| スペイン語 (パナマ)                   | `es-PA` | テキスト                                   |                           |
-| スペイン語 (パラグアイ)                 | `es-PY` | テキスト                                   |                           |
-| スペイン語 (ペルー)                     | `es-PE` | テキスト                                   |                           |
-| スペイン語 (プエルトリコ)              | `es-PR` | テキスト                                   |                           |
-| スペイン語 (スペイン)                    | `es-ES` | オーディオ (20201015)<br>Text                 |  はい                         |
-| スペイン語 (ウルグアイ)                  | `es-UY` | テキスト                                   |                           |
-| スペイン語 (米国)                      | `es-US` | テキスト                                   |                           |
-| スペイン語 (ベネズエラ)                | `es-VE` | テキスト                                   |                           |
+| スペイン語 (グアテマラ)                | `es-GT` | テキスト<br>発音                  |                           |
+| スペイン語 (ホンジュラス)                 | `es-HN` | テキスト<br>発音                  |                           |
+| スペイン語 (メキシコ)                   | `es-MX` | オーディオ (20200907)<br>テキスト<br>発音|    はい                       |
+| スペイン語 (ニカラグア)                | `es-NI` | テキスト<br>発音                  |                           |
+| スペイン語 (パナマ)                   | `es-PA` | テキスト<br>発音                  |                           |
+| スペイン語 (パラグアイ)                 | `es-PY` | テキスト<br>発音                  |                           |
+| スペイン語 (ペルー)                     | `es-PE` | テキスト<br>発音                  |                           |
+| スペイン語 (プエルトリコ)              | `es-PR` | テキスト<br>発音                  |                           |
+| スペイン語 (スペイン)                    | `es-ES` | オーディオ (20201015)<br>テキスト<br>発音|  はい                         |
+| スペイン語 (ウルグアイ)                  | `es-UY` | テキスト<br>発音                  |                           |
+| スペイン語 (米国)                      | `es-US` | テキスト<br>発音                  |                           |
+| スペイン語 (ベネズエラ)                | `es-VE` | テキスト<br>発音                  |                           |
 | スウェーデン語 (スウェーデン)                   | `sv-SE` | Text                                   |   はい                        |
 | タミール語 (インド)                      | `ta-IN` | テキスト                                   |                           |
 | テルグ語 (インド)                     | `te-IN` | テキスト                                   |                           |
@@ -283,10 +283,10 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | タイ語 (タイ) | `th-TH` | Male | `th-TH-NiwatNeural` | 全般 |
 | トルコ語 (トルコ) | `tr-TR` | Female | `tr-TR-EmelNeural` | 全般 |
 | トルコ語 (トルコ) | `tr-TR` | Male | `tr-TR-AhmetNeural` | 全般 |
-| ウクライナ語 (ウクライナ) | `uk-UA` | Female | `en-ZA-LeahNeural` <sup>[新規作成]</sup> | 全般 | 
-| ウクライナ語 (ウクライナ) | `uk-UA` | Male | `en-ZA-LukeNeural` <sup>[新規作成]</sup> | 全般 | 
-| ウルドゥー語 (パキスタン) | `ur-PK` | Female | `uk-UA-PolinaNeural` <sup>[新規作成]</sup> | 全般 | 
-| ウルドゥー語 (パキスタン) | `ur-PK` | Male | `uk-UA-OstapNeural` <sup>[新規作成]</sup> | 全般 | 
+| ウクライナ語 (ウクライナ) | `uk-UA` | Female | `uk-UA-PolinaNeural` <sup>[新規作成]</sup> | 全般 | 
+| ウクライナ語 (ウクライナ) | `uk-UA` | Male | `uk-UA-OstapNeural` <sup>[新規作成]</sup> | 全般 | 
+| ウルドゥー語 (パキスタン) | `ur-PK` | Female | `ur-PK-UzmaNeural` <sup>[新規作成]</sup>  | 全般 | 
+| ウルドゥー語 (パキスタン) | `ur-PK` | Male | `ur-PK-AsadNeural` <sup>[新規作成]</sup> | 全般 | 
 | ベトナム語 (ベトナム) | `vi-VN` | Female | `vi-VN-HoaiMyNeural` | 全般 |
 | ベトナム語 (ベトナム) | `vi-VN` | Male | `vi-VN-NamMinhNeural` | 全般 |
 | ウェールズ語 (英国) | `cy-GB` | Female | `cy-GB-NiaNeural` <sup>[新規作成]</sup> | 全般 | 
@@ -539,7 +539,7 @@ Custom Voice は、標準およびニューラル レベルで使用できます
 |スペイン語 (メキシコ)     | es-MX     | 該当なし |     はい |     はい|
 |スペイン語 (スペイン)     | es-ES | 該当なし     | はい |     はい|
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 * [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 * [C# で音声を認識する方法を確認する](./get-started-speech-to-text.md?pivots=programming-language-chsarp)

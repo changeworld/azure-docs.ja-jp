@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/17/2021
-ms.openlocfilehash: 96f40f1abd14987b7c404f5a4210a2cab1fa9143
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: a8419ff2ba269b05d1fbf7e9d08a284085465fd8
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104594174"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257417"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-connect-and-query-articles"></a>Azure SQL Database と Azure SQL Managed Instance の接続とクエリに関する記事
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -40,7 +40,6 @@ ms.locfileid: "104594174"
 |[PHP](connect-query-php.md)|このクイック スタートでは、PHP を使ってプログラムを作成してデータベースに接続し、Transact-SQL ステートメントを使ってデータに対してクエリを実行する方法について説明します。|
 |[Python](connect-query-python.md)|このクイック スタートでは、Python を使ってデータベースに接続し、Transact-SQL ステートメントを使ってデータに対してクエリを実行する方法について説明します。 |
 |[Ruby](connect-query-ruby.md)|このクイック スタートでは、Ruby を使ってプログラムを作成してデータベースに接続し、Transact-SQL ステートメントを使ってデータに対してクエリを実行する方法について説明します。|
-|[R](connect-query-r.md)|このクイック スタートでは、Azure SQL Database Machine Learning Services で R を使用して、Azure SQL Database のデータベースに接続するためのプログラムを作成し、Transact-SQL ステートメントを使用してデータに対してクエリを実行する方法について説明します。|
 |||
 
 ## <a name="get-server-connection-information"></a>サーバーの接続情報を取得する

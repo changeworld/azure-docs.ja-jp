@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 03/10/2021
+ms.date: 04/05/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 435a0b85d205328d10f8762498c7a981d7ee45f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9de6b8d99f09d43a045787ee6185233b9d7ef25
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102611829"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106443240"
 ---
 # <a name="collect-azure-active-directory-b2c-logs-with-application-insights"></a>Application Insights を使用して Azure Active Directory B2C のログを収集する
 
@@ -31,6 +31,18 @@ ms.locfileid: "102611829"
 ## <a name="set-up-application-insights"></a>Application Insights を設定する
 
 サブスクリプションに Application Insights のインスタンスがまだない場合は、作成します。
+
+> [!TIP]
+> Application Insights の 1 つのインスタンスを、複数の Azure AD B2C テナントに使用できます。 次に、クエリで、テナント名またはポリシー名でフィルター処理できます。 詳細については、「[Application Insights のサンプル](#see-the-logs-in-application-insights)」のログをご覧ください。
+
+サブスクリプションで Application Insights の終了インスタンスを使用するには、次の手順に従います。
+
+1. [Azure portal](https://portal.azure.com) にサインインする
+1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C のディレクトリではなく) お使いの Azure サブスクリプションが含まれるディレクトリを選択します。
+1. 先ほど作成した Application Insights リソースを開きます。
+1. **[概要]** ページで、 **[インストルメンテーション キー]** を記録します。
+
+サブスクリプションに Application Insights のインスタンスを作成するには、次の手順を実行します。
 
 1. [Azure portal](https://portal.azure.com) にサインインする
 1. 上部のメニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、(Azure AD B2C のディレクトリではなく) お使いの Azure サブスクリプションが含まれるディレクトリを選択します。
@@ -96,8 +108,11 @@ Application Insights で新しいログが確認できるようになるまで�
 
 | クエリ | 説明 |
 |---------------------|--------------------|
-`traces` | Azure AD B2C によって生成されたすべてのログを確認します |
-`traces | where timestamp > ago(1d)` | Azure AD B2C によって生成された直近 1 日分のすべてのログを確認します
+| `traces` | Azure AD B2C によって生成されたすべてのログを取得します。 |
+| `traces | where timestamp > ago(1d)` | Azure AD B2C によって生成された直近 1 日分のすべてのログを取得します。|
+| `traces | where message contains "exception" | where timestamp > ago(2h)`|  過去 2 時間以内に発生したエラーありのすべてのログを取得します。|
+| `traces | where customDimensions.Tenant == "contoso.onmicrosoft.com" and customDimensions.UserJourney  == "b2c_1a_signinandup"` | Azure AD B2C *contoso.onmicrosoft.com* テナントによって生成され、ユーザー体験が *b2c_1a_signinandup* であるすべてのログを取得します。 |
+| `traces | where customDimensions.CorrelationId == "00000000-0000-0000-0000-000000000000"`| Azure AD B2C によって関連付け ID で生成されたすべてのログを取得します。 関連付け ID を自分の関連付け ID に置き換えます。 | 
 
 エントリは長い可能性があります。 詳細を確認する際は CSV にエクスポートしてください。
 

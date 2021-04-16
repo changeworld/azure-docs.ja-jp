@@ -2,18 +2,18 @@
 title: Azure Key Vault 証明書クライアント ライブラリのクイックスタート - Java
 description: このクイックスタートの手順を使用して、Java 用 Azure Key Vault 証明書クライアント ライブラリについて学習します。
 author: msmbaldwin
-ms.custom: devx-track-java, devx-track-azurecli
+ms.custom: devx-track-java
 ms.author: mbaldwin
 ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: 99b8c63060cebeffea0f3473e03b5f49a415230b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db69258a774343af18e683444d22530a32f85555
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936041"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107374949"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>クイックスタート: Java 用 Azure Key Vault 証明書クライアント ライブラリ (証明書)
 Java 用 Azure Key Vault 証明書クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。

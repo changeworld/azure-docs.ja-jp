@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 11/23/2020
+ms.date: 04/09/2021
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 7b421877b2a41074bf901817c7ad8922083c3e77
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 3e6c4b73e8aeb26c6ac4025ef3c07fb4f8d48eaf
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285675"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308644"
 ---
 # <a name="configure-read-ocr-docker-containers"></a>読み取り OCR Docker コンテナーを構成する
 
@@ -62,11 +62,11 @@ ms.locfileid: "106285675"
 
 * Azure portal:**Cognitive Services** の [概要]。`Endpoint` として表示されます。
 
-次の表に示したように、エンドポイント URI には、忘れずに `vision/v1.0` ルーティングを追加してください。 
+次の表に示したように、エンドポイント URI には、忘れずに `vision/<version>` ルーティングを追加してください。 
 
 |必須| 名前 | データ型 | 説明 |
 |--|------|-----------|-------------|
-|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|はい| `Billing` | String | 課金エンドポイント URI<br><br>例:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v3.2` |
 
 ## <a name="eula-setting"></a>Eula 設定
 
@@ -122,13 +122,13 @@ Computer Vision コンテナーでは、トレーニングやサービスのデ�
 次の Docker の例は、Read OCR コンテナーに関するものです。
 
 
-# <a name="version-32-preview"></a>[Version 3.2-preview](#tab/version-3-2)
+# <a name="version-32"></a>[Version 3.2](#tab/version-3-2)
 
 ### <a name="basic-example"></a>基本的な例
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
@@ -139,7 +139,7 @@ ApiKey={API_KEY}
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 18g --cpus 8 \
-mcr.microsoft.com/azure-cognitive-services/vision/read:3.2-preview.1 \
+mcr.microsoft.com/azure-cognitive-services/vision/read:3.2 \
 Eula=accept \
 Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}

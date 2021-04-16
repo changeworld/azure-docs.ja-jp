@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 63183eb6a77b3a7aecfb6f3e8a7c9ee7c2544de2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5e4ff93b90c7644c1d1498a14c8b9954041cb34
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543909"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028368"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Azure Active Directory B2C を使用して、Apple ID でのサインアップとサインインを設定する (プレビュー)
 
@@ -250,7 +250,7 @@ Apple ID をクレーム プロバイダーとして定義するには、それ�
 ## <a name="test-your-custom-policy"></a>カスタム ポリシーのテスト
 
 1. 証明書利用者ポリシー (`B2C_1A_signup_signin` など) を選択します。
-1. **[アプリケーション]** には、[前に登録した](troubleshoot-custom-policies.md#troubleshoot-the-runtime) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
+1. **[アプリケーション]** には、[前に登録した](tutorial-register-applications.md) Web アプリケーションを選択します。 **[応答 URL]** に `https://jwt.ms` と表示されます。
 1. **[今すぐ実行]** ボタンを選択します。
 1. サインアップまたはサインイン ページで **[Apple]** を選択して、Apple ID でサインインします。
 
