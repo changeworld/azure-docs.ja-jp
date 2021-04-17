@@ -66,7 +66,7 @@ Docker 対応コンテナー イメージに加え、Azure Container Registry �
 
 安全な分離を確保し潜在的なレイヤー操作から保護するために、レイヤーはレジストリ間で共有されません。
 
-### <a name="manifest"></a>Manifest
+### <a name="manifest"></a>マニフェスト
 
 コンテナー レジストリにプッシュされる各コンテナー イメージまたは成果物は、"*マニフェスト*" と関連付けられます。 コンテンツがプッシュされるときにレジストリによって生成されるマニフェストは、コンテンツを一意に示し、レイヤーを指定します。 Azure CLI コマンド [az acr repository show-manifests][az-acr-repository-show-manifests] を使用して、リポジトリのマニフェストを一覧表示できます。 
 
