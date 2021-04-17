@@ -3,12 +3,12 @@ title: Azure Event Hubs - クライアント SDK | Microsoft Docs
 description: この記事では、Azure Event Hubs 用のクライアント SDK に関する情報を提供します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 9f4eec603245f1e4ea6fa4d97b843ca6a770f2ad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4af837c4d62098f3efe4098c6734ecd8972e972
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88930878"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310004"
 ---
 # <a name="azure-event-hubs---client-sdks"></a>Azure Event Hubs - クライアント SDK
 この記事では、Azure Event Hubs でサポートされる SDK について、次の情報を提供します。 
@@ -50,4 +50,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 * [Event Hubs の概要](./event-hubs-about.md)
 * [Event Hub を作成する](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+* [Event Hubs の FAQ](event-hubs-faq.yml)

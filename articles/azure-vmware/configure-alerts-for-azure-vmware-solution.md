@@ -3,16 +3,16 @@ title: Azure VMware Solution でアラートを構成し、メトリックを使
 description: アラートを使用して通知を受信する方法について説明します。 また、メトリックを使用して、Azure VMware Solution のプライベート クラウドに関する深い洞察を得る方法についても説明します。
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.openlocfilehash: f021662658399111187e9963fc5caec434fabf4a
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 486f25eba017b2d4e37c0796909a0d26adee6ba8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096710"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107309630"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>Azure VMware Solution で Azure アラートを構成する 
 
-この記事では、[Microsoft Azure アラート](/azure/azure-monitor/alerts/alerts-overvie)で [Azure アクション グループ](/azure/azure-monitor/alerts/action-groups)を構成して、定義したトリガー イベントの通知を受け取る方法について説明します。 また、[Azure Monitor メトリック](/azure/azure-monitor/essentials/data-platform-metrics) を使用して、Azure VMware Solution のプライベート クラウドに関する深い洞察を得る方法についても説明します。
+この記事では、[Microsoft Azure アラート](/azure/azure-monitor/alerts/alerts-overview)で [Azure アクション グループ](/azure/azure-monitor/alerts/action-groups)を構成して、定義したトリガー イベントの通知を受け取る方法について説明します。 また、[Azure Monitor メトリック](/azure/azure-monitor/essentials/data-platform-metrics) を使用して、Azure VMware Solution のプライベート クラウドに関する深い洞察を得る方法についても説明します。
 
 
 ## <a name="supported-metrics-and-activities"></a>サポートされているメトリックとアクティビティ
@@ -21,14 +21,14 @@ ms.locfileid: "106096710"
 
 | **シグナル名**                                                         | **シグナルの種類** | **サービスの監視** |
 |-------------------------------------------------------------------------|-----------------|---------------------|
-| データストア ディスクの合計容量                                           | メトリック          | プラットフォーム            |
-| 使用済みのデータストア ディスクの割合                                          | メトリック          | プラットフォーム            |
-| CPU 使用率                                                          | メトリック          | プラットフォーム            |
-| 平均有効メモリ                                                | メトリック          | プラットフォーム            |
-| 平均メモリ オーバーヘッド                                                 | メトリック          | プラットフォーム            |
-| 平均メモリ合計                                                    | メトリック          | プラットフォーム            |
-| メモリの平均使用量                                                    | メトリック          | プラットフォーム            |
-| 使用済みのデータストア ディスク                                                     | メトリック          | プラットフォーム            |
+| データストア ディスクの合計容量                                           | 指標          | プラットフォーム            |
+| 使用済みのデータストア ディスクの割合                                          | 指標          | プラットフォーム            |
+| CPU 使用率                                                          | 指標          | プラットフォーム            |
+| 平均有効メモリ                                                | 指標          | プラットフォーム            |
+| 平均メモリ オーバーヘッド                                                 | 指標          | プラットフォーム            |
+| 平均メモリ合計                                                    | 指標          | プラットフォーム            |
+| メモリの平均使用量                                                    | 指標          | プラットフォーム            |
+| 使用済みのデータストア ディスク                                                     | 指標          | プラットフォーム            |
 | すべての管理操作                                           | アクティビティ ログ    | 管理      |
 | Microsoft.AVS リソース プロバイダーを登録する。 (Microsoft.AVS/privateClouds) | アクティビティ ログ    | 管理      |
 | PrivateCloud を作成または更新する。 (Microsoft.AVS/privateClouds)          | アクティビティ ログ    | 管理      |
@@ -77,7 +77,7 @@ ms.locfileid: "106096710"
  
 1. 開いたウィンドウの **[基本]** タブで、アクション グループに名前と表示名を付けます。
 
-1. **[通知]** タブで、 **[通知の種類]** と **[名前]** を選択します。 **[OK]** をクリックします。
+1. **[通知]** タブで、 **[通知の種類]** と **[名前]** を選択します。 次に、 **[OK]** を選択します。
 
    この例は、メール通知に基づいています。
 

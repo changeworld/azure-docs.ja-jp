@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: d66fe736936963e601aad7cba7bdaa94f0c3ec3f
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 27184e267bb0472dad6fc9176dfdeee68d5eae58
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "96518449"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105611822"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault の可用性と冗長性
 
@@ -23,7 +23,7 @@ Azure Key Vault には複数層の冗長性が備わっています。そのた�
 > [!NOTE]
 > このガイドは、コンテナーに適用されます。 Managed HSM プールでは、別の高可用性とディザスター リカバリーのモデルが使用されます。 詳細については、[Managed HSM のディザスター リカバリー ガイド](../managed-hsm/disaster-recovery-guide.md)を参照してください。
 
-キー コンテナーのコンテンツは、キーとシークレットの高い持続性を維持するために、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 特定のリージョン ペアの詳細については、[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)に関する記事をご覧ください。 ペアになっているリージョン モデルの例外はブラジル南部であり、データをブラジル南部内に常駐させておくオプションだけが許可されます。 ブラジル南部では、ゾーン冗長ストレージ (ZRS) を使用して、1 つの場所またはリージョン内でデータを 3 回レプリケートします。   
+キー コンテナーのコンテンツは、キーとシークレットの高い持続性を維持するために、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。 特定のリージョン ペアの詳細については、[Azure のペアになっているリージョン](../../best-practices-availability-paired-regions.md)に関する記事をご覧ください。 ペアになっているリージョン モデルの例外はブラジル南部であり、データをブラジル南部内に常駐させておくオプションだけが許可されます。 ブラジル南部では、ゾーン冗長ストレージ (ZRS) を使用して、1 つの場所またはリージョン内でデータを 3 回レプリケートします。 AKV Premium では、3 リージョン中 2 つを使用して、HSM からデータがレプリケートされます。  
 
 Key Vault サービス内の個々のコンポーネントで障害が発生した場合、リージョン内の代替コンポーネントが要求を処理し、機能が低下しないようにします。 このプロセスを開始するために、いずれの操作も行う必要はありません。これは自動的に実行され、ユーザーに透過的になります。
 

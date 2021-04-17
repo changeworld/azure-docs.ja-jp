@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: aahi
-ms.openlocfilehash: 19586c09cca9a0dc74ba9ee4ef9da459964f9b7e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7484b49ed3c868a1ad3e0f97dffa346f350e127f
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599326"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106097856"
 ---
 > [!NOTE]
 > 保護されている医療情報 (PHI) を検出するには、`domain=phi` パラメーターとモデル バージョン `2020-04-01` 以降を使用します。
@@ -53,7 +53,7 @@ ms.locfileid: "104599326"
     :::column span="2":::
         **詳細**
 
-        人の名前。 
+        人の名前。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`Person` を `pii-categories` パラメーターに追加します。 検出されると、`Person` が API 応答で返されます。
       
@@ -140,7 +140,7 @@ ms.locfileid: "104599326"
     :::column span="2":::
         **詳細**
 
-        企業、政治団体、音楽バンド、スポーツ クラブ、政府機関、および公的機関。 国籍と宗教は、このエンティティ型には含まれていません。
+        企業、政治団体、音楽バンド、スポーツ クラブ、政府機関、および公的機関。 国籍と宗教は、このエンティティ型には含まれていません。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`Organization` を `pii-categories` パラメーターに追加します。 検出されると、`Organization` が API 応答で返されます。
       
@@ -241,7 +241,7 @@ ms.locfileid: "104599326"
     :::column span="2":::
         **詳細**
 
-        完全な郵送先住所。
+        完全な郵送先住所。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`Address` を `pii-categories` パラメーターに追加します。 検出されると、`Address` が API 応答で返されます。
       
@@ -270,7 +270,7 @@ ms.locfileid: "104599326"
     :::column span="2":::
         **詳細**
 
-        メール アドレス。
+        メール アドレス。 `domain=phi` でも返されます。
       
         このエンティティ カテゴリを取得するには、`Email` を `pii-categories` パラメーターに追加します。 検出されると、`Email` が API 応答で返されます。
 
@@ -298,7 +298,7 @@ ms.locfileid: "104599326"
     :::column span="2":::
         **詳細**
 
-        Web サイトへの URL。 
+        Web サイトへの URL。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`URL` を `pii-categories` パラメーターに追加します。 検出されると、`URL` が API 応答で返されます。
       
@@ -327,7 +327,7 @@ ms.locfileid: "104599326"
     :::column span="2":::
         **詳細**
 
-        ネットワーク IP アドレス。 
+        ネットワーク IP アドレス。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`IP` を `pii-categories` パラメーターに追加します。 検出されると、`IP` が API 応答で返されます。
       
@@ -382,7 +382,7 @@ ms.locfileid: "104599326"
     :::column span="2":::
         **詳細**
 
-        カレンダーの日付。
+        カレンダーの日付。 `domain=phi` でも返されます。
 
         このエンティティ カテゴリを取得するには、`Date` を `pii-categories` パラメーターに追加します。 検出されると、`Date` が API 応答で返されます。
       
@@ -436,7 +436,7 @@ ms.locfileid: "104599326"
     :::column span="2":::
         **詳細**
 
-        年齢。
+        年齢。 
 
         このエンティティ カテゴリを取得するには、`Age` を `pii-categories` パラメーターに追加します。 検出されると、`Age` が API 応答で返されます。
       
