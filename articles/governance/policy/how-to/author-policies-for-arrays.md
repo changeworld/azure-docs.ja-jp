@@ -3,12 +3,12 @@ title: リソースの配列プロパティのポリシーを作成する
 description: Azure Policy 定義ルールを使用して、配列パラメーターおよび配列の言語式を処理し、[*] エイリアスを評価し、要素を付加する方法について説明します。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: d4e059f3691554aa91dfd15cf308ef62afa58928
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 18afbee0ca8b1c488e3bd3ce50dacc726bd2ef25
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106089969"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107305193"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure リソースの配列プロパティのポリシーを作成する
 
@@ -95,7 +95,7 @@ Azure portal からポリシーを割り当てるときに、**type** _array_ �
 
 - Azure CLI:コマンド [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) とパラメーター **params**
 - Azure PowerShell:コマンドレット [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) とパラメーター **PolicyParameter**
-- REST API:要求本文の一部としての _PUT_ [作成](/rest/api/resources/policyassignments/create)操作において、**properties.parameters** プロパティの値として
+- REST API:要求本文の一部としての _PUT_ [作成](/rest/api/policy/policyassignments/create)操作において、**properties.parameters** プロパティの値として
 
 ## <a name="using-arrays-in-conditions"></a>条件内で配列を使用する
 

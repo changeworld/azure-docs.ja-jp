@@ -3,12 +3,12 @@ title: Service Fabric での正常性の監視
 description: クラスター、アプリケーション、およびサービスを監視する Azure Service Fabric の正常性監視モデルの紹介です。
 ms.topic: conceptual
 ms.date: 2/28/2018
-ms.openlocfilehash: a1c545048739182e3baba3e3d94da1accca227d1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1fa000d46a6199fa23f07e5310eaca96b60a183f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105627417"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311279"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Service Fabric の正常性モニタリングの概要
 Azure Service Fabric に導入している正常性モデルは、機能が豊富で、柔軟性と拡張可能性を備えた正常性評価とレポートを提供します。 このモデルを使用すると、クラスターの状態とその内部で実行されているサービスの状態をほぼリアルタイムで監視することができます。 正常性の情報を容易に取得でき、潜在的な問題を事前に解決できるため、問題が連鎖的に発生して大規模なサービス停止を引き起こす事態を防げます。 一般的なモデルでは、サービスがローカルのビューに基づくレポートを送信し、その情報が集計されて、クラスター レベル全体のビューが提供されます。
@@ -99,7 +99,7 @@ Service Fabric は 3 つの正常性状態 (OK、警告、エラー) を使用�
   </FabricSettings>
   ```
 
-* [NodeTypeHealthPolicyMap](/dotnet/api/system.fabric.health.clusterhealthpolicy.nodetypehealthpolicymap)。 ノードの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、特別なノードの種類を記述できます。 ノードの種類は、マップでノードの種類名に関連付けられているパーセンテージに照らして評価されます。 この値を設定しても、 `MaxPercentUnhealthyNodes` に使用されるノードのグローバル プールには影響しません。 たとえば、クラスターにはさまざまな種類の数百のノードがありますが、重要な作業をホストするのは少数のノードの種類です。 この種類のノードはダウンさせてはなりません。 すべてのノードについて、一部の失敗を許容するようグローバル `MaxPercentUnhealthyNodes` を 20% に設定できますが、ノードの種類 `SpecialNodeType` については `MaxPercentUnhealthyNodes` を 0 に設定してください。 このようにすると、多くのノードのうちのいくつかが異常でも、グローバルな異常のパーセンテージを下回っている場合、クラスターは警告と評価されます。 正常性状態が警告であっても、クラスターのアップグレードや、正常性状態がエラーとなった場合にトリガーされる他の監視には影響しません。 ただし、`SpecialNodeType` ノードのうち 1 つでも正常性状態がエラーとなった場合はクラスター異常となり、アップグレードの構成に応じて、ロールバックがトリガーされるか、クラスターのアップグレードが一時停止されます。 逆にグローバル `MaxPercentUnhealthyNodes` を 0 に設定した場合、`SpecialNodeType` の異常ノードを最大 100% に設定したとしても、グローバルな制限の方が厳しいため、`SpecialNodeType` の種類のノードが 1 つでもエラー状態になればクラスターはエラー状態となります。 
+* `NodeTypeHealthPolicyMap`. ノードの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、特別なノードの種類を記述できます。 ノードの種類は、マップでノードの種類名に関連付けられているパーセンテージに照らして評価されます。 この値を設定しても、 `MaxPercentUnhealthyNodes` に使用されるノードのグローバル プールには影響しません。 たとえば、クラスターにはさまざまな種類の数百のノードがありますが、重要な作業をホストするのは少数のノードの種類です。 この種類のノードはダウンさせてはなりません。 すべてのノードについて、一部の失敗を許容するようグローバル `MaxPercentUnhealthyNodes` を 20% に設定できますが、ノードの種類 `SpecialNodeType` については `MaxPercentUnhealthyNodes` を 0 に設定してください。 このようにすると、多くのノードのうちのいくつかが異常でも、グローバルな異常のパーセンテージを下回っている場合、クラスターは警告と評価されます。 正常性状態が警告であっても、クラスターのアップグレードや、正常性状態がエラーとなった場合にトリガーされる他の監視には影響しません。 ただし、`SpecialNodeType` ノードのうち 1 つでも正常性状態がエラーとなった場合はクラスター異常となり、アップグレードの構成に応じて、ロールバックがトリガーされるか、クラスターのアップグレードが一時停止されます。 逆にグローバル `MaxPercentUnhealthyNodes` を 0 に設定した場合、`SpecialNodeType` の異常ノードを最大 100% に設定したとしても、グローバルな制限の方が厳しいため、`SpecialNodeType` の種類のノードが 1 つでもエラー状態になればクラスターはエラー状態となります。 
 
   次の例は、クラスター マニフェストからの抜粋です。 ノードの種類のマップにエントリを定義するには、"NodeTypeMaxPercentUnhealthyNodes-" というプレフィックスを使い、ノード タイプ名を続けてください。
 
