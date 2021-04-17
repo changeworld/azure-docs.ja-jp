@@ -1,16 +1,16 @@
 ---
-title: ソース コードから Defender マイクロ エージェントをビルドする (プレビュー)
-description: マイクロ エージェントには、ディストリビューションをカスタマイズするために使用できるインフラストラクチャが含まれています。
+title: 'クイックスタート: ソース コードから Defender マイクロ エージェントをビルドする (プレビュー)'
+description: このクイックスタートでは、ディストリビューションをカスタマイズするために使用できるインフラストラクチャを含むマイクロ エージェントについて説明します。
 ms.date: 1/18/2021
 ms.topic: quickstart
-ms.openlocfilehash: aac9bf224064dd8393acfeb2928f5ed2d1f84381
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a3a8f82989d6abbaf2657e4b45638c77b3b2f704
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104781111"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106384599"
 ---
-# <a name="build-the-defender-micro-agent-from-source-code-preview"></a>ソース コードから Defender マイクロ エージェントをビルドする (プレビュー)
+# <a name="quickstart-build-the-defender-micro-agent-from-source-code-preview"></a>クイックスタート: ソース コードから Defender マイクロ エージェントをビルドする (プレビュー)
 
 マイクロ エージェントには、ディストリビューションをカスタマイズするために使用できるインフラストラクチャが含まれています。 使用可能な構成パラメーターの一覧については、`configs/LINUX_BASE.conf` ファイルを参照してください。
 
@@ -32,17 +32,7 @@ ms.locfileid: "104781111"
 
     `cmake -DCMAKE_BUILD_TYPE=Debug -Dlog_level=DEBUG -Dlog_level_cmdline:BOOL=ON -DIOT_SECURITY_MODULE_DIST_TARGET=UBUNTU1804 ..` 
 
-## <a name="baseline-configuration-signing"></a>ベースライン構成の署名 
-
-エージェントは、既定では、改ざんの可能性を軽減するために、ディスクに配置されている構成ファイルの信頼性を検証します。
-
-このプロセスを停止するには、プリプロセッサ フラグ `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` を定義します。
-
-運用環境で署名チェックを無効にすることは、お勧めしません。 
-
-運用環境のシナリオで別の構成が必要な場合は、Defender for IoT チームにお問い合わせください。 
-
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 1. Defender for IoT のソース コードへのアクセスが必要な場合は、アカウント マネージャーに問い合わせてください。
  
@@ -77,7 +67,17 @@ ms.locfileid: "104781111"
 
 1. (省略可能) [VSCode](https://code.visualstudio.com/download ) をダウンロードしてインストールします 
 
-1. (省略可能) VSCode 用の [C/C++ 拡張機能](https://code.visualstudio.com/docs/languages/cpp )をインストールします。
+1. (省略可能) VSCode 用の [C/C++ 拡張機能](https://code.visualstudio.com/docs/languages/cpp )をインストールします。- なし
+
+## <a name="baseline-configuration-signing"></a>ベースライン構成の署名 
+
+エージェントは、既定では、改ざんの可能性を軽減するために、ディスクに配置されている構成ファイルの信頼性を検証します。
+
+このプロセスを停止するには、プリプロセッサ フラグ `ASC_BASELINE_CONF_SIGN_CHECK_DISABLE` を定義します。
+
+運用環境で署名チェックを無効にすることは、お勧めしません。 
+
+運用環境のシナリオで別の構成が必要な場合は、Defender for IoT チームにお問い合わせください。 
 
 ## <a name="building-the-defender-iot-micro-agent"></a>Defender IoT のマイクロ エージェントのビルド 
 
