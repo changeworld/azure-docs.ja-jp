@@ -28,7 +28,7 @@ ms.locfileid: "102203863"
 
 ## <a name="about-zone-redundancy"></a>ゾーン冗長について
 
-回復性と可用性に優れた Azure コンテナー レジストリを Azure リージョンに作成するには、[可用性ゾーン](../availability-zones/az-overview.md)を使用します。 たとえば、組織では、他の[サポートされている Azure リソース](../availability-zones/az-region.md)を使用してゾーン冗長 Azure コンテナー レジストリを設定して、データ所在地や他のコンプライアンス要件を満たしながら、リージョン内で高可用性を提供することができます。
+回復性と可用性に優れた Azure Container Registry を Azure リージョンに作成するには、[可用性ゾーン](../availability-zones/az-overview.md)を使用します。 たとえば、組織では、他の[サポートされている Azure リソース](../availability-zones/az-region.md)を使用してゾーン冗長 Azure Container Registry を設定して、データ所在地や他のコンプライアンス要件を満たしながら、リージョン内で高可用性を提供することができます。
 
 Azure Container Registry でやはりサポートされている [geo レプリケーション](container-registry-geo-replication.md)を使用すると、複数のリージョンにサービスがレプリケートされ、他の場所にあるリソースでの冗長性と局所性が実現されます。 リージョン内の冗長性のための可用性ゾーンと、複数のリージョンをまたぐ geo レプリケーションを組み合わせることで、レジストリの信頼性とパフォーマンスが強化されます。
 
