@@ -59,7 +59,7 @@ Traffic Manager は DNS 参照を実行して、ユーザーの最も適切な�
 
 ### <a name="application-routing-with-azure-front-door-service"></a>Azure Front Door Service を使用したアプリケーション ルーティング
 
-[Azure Front Door Service](../frontdoor/front-door-overview.md) は、スプリット TCP ベースのエニーキャスト プロトコルを使用して、エンド ユーザーが最も近い Front Door POP (point of presence) にすぐに接続されるようにします。 Azure Front Door Service の追加機能としては、TLS 終了、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
+[Azure Front Door Service](../frontdoor/front-door-overview.md) は、スプリット TCP ベースのエニーキャスト プロトコルを使用して、エンド ユーザーが最も近い Front Door POP (point of presence) にすぐに接続されるようにします。 Azure Front Door Service の追加機能としては、TLS 終端、カスタム ドメイン、Web アプリケーション ファイアウォール、URL の書き換え、セッション アフィニティがあります。 アプリケーション トラフィックのニーズを確認して、どのソリューションが最も適切かを検討してください。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>グローバル仮想ネットワーク ピアリングを使用してリージョンを相互接続する
 
