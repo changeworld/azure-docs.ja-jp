@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 04/05/2021
 ms.author: b-juche
-ms.openlocfilehash: 2cc9d3e0fb711a0662852ce4f2c5a08dc626f246
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcd333d82b5bb7e8f6adf604511f8ca84680c93d
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96854735"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106490380"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
@@ -112,6 +112,8 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
 
         NFSv4.1 で Kerberos を使用する場合は、追加の構成が必要です。 [NFSv4.1 Kerberos 暗号化の構成](configure-kerberos-encryption.md)に関する記事の手順に従います。
 
+    * Active Directory LDAP ユーザーと拡張グループ (最大 1024 グループ) がボリュームにアクセスできるようにする場合は、**LDAP** オプションを選択します。 「[NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する](configure-ldap-extended-groups.md)」の手順に従って、必要な構成を完了します。 
+ 
     * 必要に応じて、[NFS ボリュームのエクスポート ポリシーを構成します](azure-netapp-files-configure-export-policy.md)。
 
     ![NFS プロトコルを指定する](../media/azure-netapp-files/azure-netapp-files-protocol-nfs.png)
@@ -127,6 +129,7 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
 
 * [Azure NetApp Files 用に NFSv4.1 の既定のドメインを構成する](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFSv4.1 の Kerberos 暗号化を構成する](configure-kerberos-encryption.md)
+* [NFS ボリューム アクセスに拡張グループで ADDS LDAP を構成する](configure-ldap-extended-groups.md)
 * [Windows または Linux 仮想マシンのボリュームをマウント/マウント解除する](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [NFS ボリュームのエクスポート ポリシーを構成する](azure-netapp-files-configure-export-policy.md)
 * [Azure NetApp Files のリソース制限](azure-netapp-files-resource-limits.md)
