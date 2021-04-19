@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff8ac540459ad79a8980542254cc15518959b5c0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 830119a5b3a7781e8b12e3d4df870f539a2cd63a
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552293"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364908"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>ゲスト ユーザーのための AD FS およびサード パーティ プロバイダーとの直接フェデレーション (プレビュー)
 
@@ -38,7 +38,7 @@ ms.locfileid: "106552293"
 直接フェデレーションは、contoso.com や fabrikam.com などのドメイン名前空間に関連付けられます。 組織では、AD FS またはサード パーティの IdP との直接フェデレーション構成を確立するときに、これらの Idp に 1 つまたは複数のドメイン名前空間を関連付けます。 
 
 ## <a name="end-user-experience"></a>エンド ユーザー エクスペリエンス 
-直接フェデレーションを使用すると、ご自身の Azure AD テナントに、ゲスト ユーザーが各自の組織アカウントを使用してサインインします。 共有リソースへのアクセス時にサインインを求められると、直接フェデレーションのユーザーは IdP にリダイレクトされます。 サインインが成功した後、Azure AD に戻ってリソースにアクセスします。 直接フェデレーションのユーザーの更新トークン有効期間は 12 時間です。これは、Azure AD での[パススルー更新トークンの既定の長さ](../develop/active-directory-configurable-token-lifetimes.md#exceptions)です。 連携した IdP で SSO が有効な場合、ユーザーは SSO を体験することになり、初回認証後にサインインを求めるメッセージは表示されません。
+直接フェデレーションを使用すると、ご自身の Azure AD テナントに、ゲスト ユーザーが各自の組織アカウントを使用してサインインします。 共有リソースへのアクセス時にサインインを求められると、直接フェデレーションのユーザーは IdP にリダイレクトされます。 サインインが成功した後、Azure AD に戻ってリソースにアクセスします。 直接フェデレーションのユーザーの更新トークン有効期間は 12 時間です。これは、Azure AD での[パススルー更新トークンの既定の長さ](../develop/active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties)です。 連携した IdP で SSO が有効な場合、ユーザーは SSO を体験することになり、初回認証後にサインインを求めるメッセージは表示されません。
 
 ## <a name="sign-in-endpoints"></a>サインインのエンドポイント
 

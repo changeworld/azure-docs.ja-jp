@@ -6,17 +6,17 @@ author: kromerm
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 03/18/2021
-ms.openlocfilehash: 8617c32eac86d8e47678c06e3b028a475b4a5efb
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/25/2021
+ms.openlocfilehash: 72ab685b58f7d940fe4d682cacba6212fe80ced8
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593854"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105933085"
 ---
 # <a name="troubleshoot-mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory でマッピング データ フローをトラブルシューティングする
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory でマッピング データ フローのための一般的なトラブルシューティング方法について説明します。
 
@@ -302,7 +302,7 @@ ms.locfileid: "104593854"
 
 ### <a name="error-code-df-excel-invalidrange"></a>エラー コード: DF-Excel-InvalidRange
 - **メッセージ**: 無効な範囲が指定されています。
-- **推奨事項**: パラメーター値を確認し、 [「Azure Data Factory での Excel 形式」の「データセットのプロパティ」](https://docs.microsoft.com/azure/data-factory/format-excel#dataset-properties)に従って有効な範囲を指定してください。
+- **推奨事項**: パラメーター値を確認し、 [「Azure Data Factory での Excel 形式」の「データセットのプロパティ」](./format-excel.md#dataset-properties)に従って有効な範囲を指定してください。
 
 ### <a name="error-code-df-excel-worksheetnotexist"></a>エラー コード: DF-Excel-WorksheetNotExist
 - **メッセージ**: Excel ワークシートが存在しません。
@@ -317,24 +317,6 @@ ms.locfileid: "104593854"
 ### <a name="error-code-df-excel-invalidfile"></a>エラー コード: DF-Excel-InvalidFile
 - **メッセージ**: 無効な Excel ファイルが指定されていますが、.xlsx と .xls のみがサポートされています。
 
-### <a name="error-code-df-adobeintegration-invalidmaptofilter"></a>エラー コード: DF-AdobeIntegration-InvalidMapToFilter
-- **メッセージ**: カスタム リソースでは、キー/Id を 1 つだけフィルターにマップできます。
-
-### <a name="error-code-df-adobeintegration-invalidpartitionconfiguration"></a>エラー コード: DF-AdobeIntegration-InvalidPartitionConfiguration
-- **メッセージ**: 単一パーティションのみサポートされています。 パーティション スキーマには、RoundRobin または Hash を指定できます。
-- **推奨事項**: AdobeIntegration の設定に、単一パーティションのみがあることを確認します。 パーティション スキーマには、RoundRobin または Hash を指定できます。
-
-### <a name="error-code-df-adobeintegration-keycolumnmissed"></a>エラー コード: DF-AdobeIntegration-KeyColumnMissed
-- **メッセージ**: 挿入不可能な操作には、キーを指定する必要があります。
-- **推奨事項**: AdobeIntegration の設定で、挿入不可能な操作のキー列を指定します。
-
-### <a name="error-code-df-adobeintegration-invalidpartitiontype"></a>エラー コード: DF-AdobeIntegration-InvalidPartitionType
-- **メッセージ**: パーティションの種類は roundRobin である必要があります。
-- **推奨事項**: AdobeIntegration の設定で、パーティションの種類が roundRobin であることを確認します。
-
-### <a name="error-code-df-adobeintegration-invalidprivacyregulation"></a>エラー コード: DF-AdobeIntegration-InvalidPrivacyRegulation
-- **メッセージ**: 現在サポートされているプライバシー規則は gdpr のみです。
-- **推奨事項**: AdobeIntegration の設定で、プライバシー規則が **'GDPR'** であることを確認します。
 
 ## <a name="miscellaneous-troubleshooting-tips"></a>その他のトラブルシューティングのヒント
 - **問題**: 予期しない例外が発生し、実行が失敗しました。
@@ -360,6 +342,110 @@ ms.locfileid: "104593854"
 2. データ フロー デザイナーでファイルとテーブルの接続の状態をご確認ください。 デバッグ モードで、ソース変換の **[Data Preview]\(データ プレビュー\)** を選択し、確実にデータにアクセスできるようにします。
 3. データ プレビューですべてが正しいようであれば、パイプライン デザイナーに進み、パイプライン アクティビティにデータ フローを配置します。 エンドツーエンド テストとしてパイプラインをデバッグします。
 
+### <a name="improvement-on-csvcdm-format-in-data-flow"></a>データ フローでの CSV/CDM 形式の改善 
+
+**Azure Data Factory V2 での マッピング データ フローに区切りテキストまたは CDM の書式設定** を使用した場合、**2021 年 5 月 1 日** 以降、データ フローの区切りテキスト/CDM が改善されているため、既存のパイプラインに動作変更が発生する可能性があります。 
+
+改善前は次の問題が発生する可能性がありますが、改善後は問題が修正されました。 この改善によって影響を受けるかどうかを判断するには、次のコンテンツをお読みください。 
+
+#### <a name="scenario-1-encounter-the-unexpected-row-delimiter-issue"></a>シナリオ 1: 行区切り記号の予期しない問題が発生する
+
+ 次の条件に該当する場合は、影響を受けます。
+ - 複数行の設定をソースとして True または CDM に設定して、区切りテキストを使用する。
+ - 最初の行の文字数が 128 文字を超えている。 
+ - データ ファイル内の行区切り記号が `\n` ではない。
+
+ 改善前は、区切りテキスト ファイルの解析に既定の行区切り記号 `\n` が予期せず使用される場合があります。これは、複数行の設定が True に設定されている場合に、行区切り記号の設定が無効になり、最初の 128 文字に基づいて行区切り記号が自動的に検出されるためです。 実際の行区切り記号が検出されなかった場合は、`\n` にフォールバックします。  
+
+ 改善後は、3 つの行区切り記号 (`\r`、`\n`、`\r\n`) のいずれも機能します。
+ 
+ 次の例は、改善後の 1 つのパイプラインの動作変更を示しています。
+
+ **例**:<br/>
+   次の列の場合:<br/>
+    `C1, C2, {long first row}, C128\r\n `<br/>
+    `V1, V2, {values………………….}, V128\r\n `<br/>
+ 
+   改善前、`\r` は列の値に保持されます。 解析された列の結果は次のようになります。<br/>
+   `C1 C2 {long first row} C128`**`\r`**<br/>
+   `V1 V2 {values………………….} V128`**`\r`**<br/> 
+
+   改善後、解析された列の結果は次のようになります。<br/>
+   `C1 C2 {long first row} C128`<br/>
+   `V1 V2 {values………………….} V128`<br/>
+  
+#### <a name="scenario-2-encounter-an-issue-of-incorrectly-reading-column-values-containing-rn"></a>シナリオ 2: '\r\n' を含む列の値を誤って読み取る問題が発生する
+
+ 次の条件に該当する場合は、影響を受けます。
+ - 複数行の設定をソースとして True または CDM に設定して、区切りテキストを使用する。 
+ - 行区切り記号が `\r\n` である。
+
+ 改善前、列の値を読み取るときに、その値の `\r\n` が誤って `\n` に置き換えられる場合があります。 
+
+ 改善後、列の値の `\r\n` は `\n` に置き換えられません。
+
+ 次の例は、改善後の 1 つのパイプラインの動作変更を示しています。
+ 
+ **例**:<br/>
+  
+ 次の列の場合:<br/>
+  **`"A\r\n"`**`, B, C\r\n`<br/>
+
+ 改善前、解析された列の結果は次のようになります。<br/>
+  **`A\n`**` B C`<br/>
+
+ 改善後、解析された列の結果は次のようになります。<br/>
+  **`A\r\n`**` B C`<br/>  
+
+#### <a name="scenario-3-encounter-an-issue-of-incorrectly-writing-column-values-containing-n"></a>シナリオ 3: '\n' を含む列の値を誤って書き込む問題が発生する
+
+ 次の条件に該当する場合は、影響を受けます。
+ - 区切りテキストをシンクとして使用する。
+ - 列の値に `\n` が含まれている。
+ - [行区切り記号] を `\r\n` に設定します。
+ 
+ 改善前、列の値を書き込むときに、その値の `\n` が誤って `\r\n` に置き換えられる場合があります。 
+
+ 改善後、列の値の `\n` は `\r\n` に置き換えられません。
+ 
+ 次の例は、改善後の 1 つのパイプラインの動作変更を示しています。
+
+ **例**:<br/>
+
+ 次の列の場合:<br/>
+ **`A\n`**` B C`<br/>
+
+ 改善前、CSV シンクは次のようになります。<br/>
+  **`"A\r\n"`**`, B, C\r\n` <br/>
+
+ 改善後、CSV シンクは次のようになります。<br/>
+  **`"A\n"`**`, B, C\r\n`<br/>
+
+#### <a name="scenario-4-encounter-an-issue-of-incorrectly-reading-empty-string-as-null"></a>シナリオ 4: 空の文字列を NULL として誤って読み取る問題が発生する
+ 
+ 次の条件に該当する場合は、影響を受けます。
+ - 区切りテキストをソースとして使用する。 
+ - NULL 値が空でない値に設定される。 
+ - 列の値が空の文字列で、引用符で囲まれていない。 
+ 
+ 改善前、引用符で囲まれていない空の文字列の列の値は NULL として読み取られます。 
+
+ 改善後、空の文字列は NULL 値として解析されません。 
+ 
+ 次の例は、改善後の 1 つのパイプラインの動作変更を示しています。
+
+ **例**:<br/>
+
+ 次の列の場合:<br/>
+  `A, ,B, `<br/>
+
+ 改善前、解析された列の結果は次のようになります。<br/>
+  `A null B null`<br/>
+
+ 改善後、解析された列の結果は次のようになります。<br/>
+  `A "" (empty string) B "" (empty string)`<br/>
+
+
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングの詳細について、次のリソースを参照してください。
@@ -369,4 +455,3 @@ ms.locfileid: "104593854"
 *  [Azure のビデオ](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
 *  [Data Factory の Stack Overflow フォーラム](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [Data Factory に関する Twitter 情報](https://twitter.com/hashtag/DataFactory)
-

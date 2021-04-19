@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
 ms.openlocfilehash: 3766d41959383d802e50aafbf59b9841d1c8d74e
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104870689"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法
@@ -52,7 +52,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
     :::image type="content" source="./media/apache-kafka-auto-create-topics/restart-all-affected.png" alt-text="Apache Ambari の影響を受けるものをすべて再起動" border="true":::
 
 > [!NOTE]  
-> Ambari REST API を使って Ambari の値を設定することもできます。 現在の構成の取得やその変更のために複数の REST 呼び出しを行う必要があるため、通常はこの方法の方が困難です。詳細については、[Apache Ambari REST API を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari-rest-api.md)に関するページを参照してください。
+> Ambari REST API を使って Ambari の値を設定することもできます。 複数の REST を呼び出して現在の構成の取得や変更などを行う必要があるため、これは一般的により困難になります。詳細については、「[Apache Ambari REST API を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari-rest-api.md)」を参照してください。
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
 

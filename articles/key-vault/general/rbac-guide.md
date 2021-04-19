@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 886b87adeabdc0aadde04c189b78739435aabede
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 216df0d128e0557345db8f82f6010e1ef681593c
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100527025"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968783"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する
 
@@ -93,11 +94,22 @@ Key Vault の新しい Azure RBAC アクセス許可モデルには、コンテ�
 > [!Note]
 > スクリプトでは、ロール名ではなく一意のロール ID を使用することをお勧めします。 こうすると、ロールの名前が変更されても、スクリプトは引き続き機能します。 このドキュメントでは、読みやすいようにロール名を使用しています。
 
-ロールの割り当てを作成する Azure CLI コマンド:
+ロールの割り当てを作成するには、次のコマンドを実行します。
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role <role_name_or_id> --assignee <assignee> --scope <scope>
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName <role_name> -SignInName <assignee_upn> -Scope <scope>
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Reader -ApplicationId <applicationId> -Scope <scope>
+```
+---
 
 Azure portal では、[アクセス制御 (IAM)] タブのすべてのリソースに [Azure ロールの割り当て] 画面を使用できます。
 
@@ -114,10 +126,20 @@ Azure portal では、[アクセス制御 (IAM)] タブのすべてのリソー�
 
     ![ロールの追加 - リソース グループ](../media/rbac/image-5.png)
 
-Azure CLI:
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Reader" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Reader' -SignInName {i.e user@microsoft.com} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Reader' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}
+```
+---
 
 前述のロール割り当てには、Key Vault 内の Key Vault オブジェクトを一覧表示する機能があります。
 
@@ -131,11 +153,20 @@ az role assignment create --role "Key Vault Reader" --assignee {i.e user@microso
 
     ![ロールの割り当て - Key Vault](../media/rbac/image-6.png)
 
- Azure CLI:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jalichwa@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -SignInName {i.e user@microsoft.com} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}
+```
+---
 
 前述のロールの割り当てを作成した後は、シークレットの作成、更新、削除を行うことができます。
 
@@ -153,11 +184,20 @@ az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e jal
 
 3. 前述のキー コンテナーの場合と同じように、現在のユーザーに対して Key Secrets Officer ロール "Key Vault Secrets Officer" を作成します。
 
-Azure CLI:
-
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e user@microsoft.com} --scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+#Assign by User Principal Name
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -SignInName {i.e user@microsoft.com} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+
+#Assign by Service Principal ApplicationId
+New-AzRoleAssignment -RoleDefinitionName 'Key Vault Secrets Officer' -ApplicationId {i.e 8ee5237a-816b-4a72-b605-446970e5f156} -Scope /subscriptions/{subscriptionid}/resourcegroups/{resource-group-name}/providers/Microsoft.KeyVault/vaults/{key-vault-name}/secrets/RBACSecret
+```
+---
 
 ### <a name="test-and-verify"></a>テストして検証する
 
@@ -199,7 +239,7 @@ az role assignment create --role "Key Vault Secrets Officer" --assignee {i.e use
 
 [az role definition create コマンド](/cli/azure/role/definition#az-role-definition-create)
 
-**(CLI bash スクリプト)</br>**
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 az role definition create --role-definition '{ \
    "Name": "Backup Keys Operator", \
@@ -216,6 +256,31 @@ az role definition create --role-definition '{ \
     "AssignableScopes": ["/subscriptions/{subscriptionId}"] \
 }'
 ```
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azurepowershell)
+
+```azurepowershell
+$roleDefinition = @"
+{ 
+   "Name": "Backup Keys Operator", 
+   "Description": "Perform key backup/restore operations", 
+    "Actions": [ 
+    ], 
+    "DataActions": [ 
+        "Microsoft.KeyVault/vaults/keys/read ", 
+        "Microsoft.KeyVault/vaults/keys/backup/action", 
+         "Microsoft.KeyVault/vaults/keys/restore/action" 
+    ], 
+    "NotDataActions": [ 
+   ], 
+    "AssignableScopes": ["/subscriptions/{subscriptionId}"] 
+}
+"@
+
+$roleDefinition | Out-File role.json
+
+New-AzRoleDefinition -InputFile role.json
+```
+---
 
 カスタム ロールの作成方法の詳細については、以下を参照してください。
 

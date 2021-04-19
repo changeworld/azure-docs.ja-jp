@@ -2,24 +2,19 @@
 title: Azure ロールの定義を一覧表示する - Azure RBAC
 description: Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して、Azure の組み込みロールとカスタム ロールを一覧表示する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/17/2020
+ms.date: 03/26/2021
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 3c9018322c9e5075ff59024f9d791e7431035e3d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "100555945"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629158"
 ---
 # <a name="list-azure-role-definitions"></a>Azure ロールの定義を一覧表示する
 
@@ -33,6 +28,10 @@ Azure Active Directory の管理者ロールを一覧表示するには、「[Az
 
 ポータルですべてのロールを一覧表示するには、次の手順に従います。
 
+更新されたロール エクスペリエンスの表示に関心がある場合は、現在パブリック プレビューにある **[ロール (プレビュー)]** タブを確認してください。 **[ロール (プレビュー)]** タブには、 **[ロール]** タブと同じロールの一覧がいくつかの追加機能と共に表示されます。 いずれかのロール タブを使用してロールを操作できます。ただし、カスタム ロールを作成または削除する場合は、ページを手動で更新して最新の変更内容を確認する必要があります。
+
+#### <a name="roles"></a>[ロール](#tab/roles/)
+
 1. Azure portal で、 **[すべてのサービス]** をクリックしてから任意のスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
 
 1. 特定のリソースをクリックします。
@@ -43,7 +42,29 @@ Azure Active Directory の管理者ロールを一覧表示するには、「[Az
 
    現在のスコープの各ロールに割り当てられているユーザーとグループの数を確認できます。
 
-   ![ロールの一覧表示](./media/role-definitions-list/roles-list.png)
+   ![ロールの一覧表示](./media/role-definitions-list/roles-list-current.png)
+
+#### <a name="roles-preview"></a>[[ロール (プレビュー)]](#tab/roles-preview/)
+
+1. Azure portal で、 **[すべてのサービス]** をクリックしてから任意のスコープを選びます。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
+
+1. 特定のリソースをクリックします。
+
+1. **[アクセス制御 (IAM)]** をクリックします。
+
+1. **[ロール (プレビュー)]** タブをクリックして、すべての組み込みおよびカスタム ロールの一覧を表示します。
+
+   ![プレビュー エクスペリエンスを使用したロールの一覧](./media/role-definitions-list/roles-list.png)
+
+1. 特定のロールのアクセス許可を表示するには、 **[詳細]** 列の **[表示]** リンクをクリックします。
+
+    アクセス許可ウィンドウが表示されます。
+
+1. **[アクセス許可]** タブをクリックして、選択したロールのアクセス許可を表示および検索します。
+
+   ![プレビュー エクスペリエンスを使用したロールのアクセス許可](./media/role-definitions-list/role-permissions.png)
+
+---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

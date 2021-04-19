@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM をバックア�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 82de73944bd833ec5f921e07a29960ac6d175f8d
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a0150a4c1a8fbd756de6fc16142f0115b05098ed
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102609789"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105967831"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -153,6 +153,7 @@ Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](ht
 [スポット VM](../virtual-machines/spot-vms.md) | サポートされていません。 Azure Backup では、Spot VM が通常の Azure VM として復元されます。
 [Azure Dedicated Host](../virtual-machines/dedicated-hosts.md) | サポートされています
 スタンドアロン Azure VM の Windows 記憶域スペース構成 | サポートされています
+[Azure VM スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md#scale-sets-with-flexible-orchestration) | 単一の Azure VM をバックアップおよび復元するための、統一されたオーケストレーション モデルと柔軟なオーケストレーション モデルの両方でサポートされます。
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 
