@@ -3,11 +3,11 @@
 - name: 概要
   expanded: true
   items:
-    - name: Computer Vision の概要
+    - name: Computer Vision とは
       href: overview.md
     - name: 言語のサポート
       href: language-support.md
-    - name: 料金と制限
+    - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision'
     - name: 新着情報
       href: whats-new.md
@@ -180,21 +180,23 @@
               href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/computer-vision/context/context
 - name: 攻略ガイド
   items:
-    - name: 仮想ネットワークの構成方法
-      href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
-    - name: AAD 認証の構成方法
-      href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
-    - name: カスタマー マネージド キーの使用方法
-      href: /azure/cognitive-services/encryption/cognitive-services-encryption-keys-portal?context=/azure/cognitive-services/computer-vision/context/context
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: /azure/cognitive-services/cognitive-services-virtual-networks?context=/azure/cognitive-services/computer-vision/context/context
+        - name: Azure AD 認証を使用する
+          href: /azure/cognitive-services/authentication?tabs=powershell?context=/azure/cognitive-services/computer-vision/context/context
 - name: リソース
   items:
-    - name: リージョンのサポート
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Learn モジュール
-      href: /learn/paths/explore-computer-vision-microsoft-azure/
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/computer-vision/context/context
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: Microsoft Learn モジュール
+      href: /learn/paths/explore-computer-vision-microsoft-azure/
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'

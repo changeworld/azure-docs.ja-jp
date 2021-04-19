@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: ab41a336c32a1827c23f4c4619f47dc294a4d2ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c8dd723c9cde5c0534d9fd5ca4084c7ed15d213
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103419288"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106218636"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの認証と承認
 
@@ -156,7 +156,13 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 
 ### <a name="post-login-redirect"></a>ログイン後のリダイレクト
 
-ログイン後にユーザーが特定のページに戻るようにするには、`post_login_redirect_uri` クエリ文字列パラメーターに URL を指定します。
+ログイン後にユーザーが特定のページに戻るようにするには、`post_login_redirect_uri` クエリ文字列パラメーターに完全修飾 URL を指定します。
+
+例:
+
+```html
+<a href="/.auth/login/github?post_login_redirect_uri=https://zealous-water.azurestaticapps.net/success">Login</a>
+```
 
 ## <a name="logout"></a>Logout
 

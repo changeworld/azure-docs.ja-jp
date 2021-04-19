@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/26/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0e1cfe0ae53d1e1b35c5ec29d6c11b0891137e6d
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 53c3ca542e78246410e84a56b8b4af0d50b721f0
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074405"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385345"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -76,6 +76,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
     - Azure ファイル共有で変更されたファイルを検出するための変更検出のパフォーマンスが向上しました。
     - 調整同期セッションのパフォーマンスが向上しました。 
     - 同期の機能強化により、ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED と ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED のエラーが減少しました。
+    - クラウドを使った階層化が有効になっているときに、/B パラメーターを指定した Robocopy を使用して階層化ファイルをコピーすると、データが破損するバグを修正しました。
     - ボリュームでデータ重複除去が有効になっている場合に Server 2019 でファイルが階層化されない原因となるバグを修正しました。
     - ファイルが 2 GiB より大きい場合に AFSDiag でファイルの圧縮に失敗する原因となるバグを修正しました。
 
@@ -131,8 +132,6 @@ Windows Server で Azure File Sync エージェントをインストールして
 ### <a name="cloud-tiering"></a>クラウドの階層化
 - 階層化されたファイルが Robocopy を使用して別の場所にコピーされた場合、その結果のファイルは階層化されません。 誤ってオフライン属性が Robocopy によるコピー操作の対象となり、オフライン属性が設定される場合があります。
 - robocopy を使用してファイルをコピーする場合は、/MIR オプションを使用してファイルのタイムスタンプを保存します。 これにより、必ず最近アクセスされたファイルより先に、古いファイルが階層化されます。
-    > [!Warning]  
-    > Robocopy /B スイッチは Azure File Sync ではサポートされていません。転送元として Azure File Sync サーバー エンドポイントで Robocopy /B スイッチを使用すると、ファイルが破損する可能性があります。
 
 ## <a name="agent-version-11200"></a>エージェント バージョン 11.2.0.0
 次のリリース ノートは、2021 年 2 月 2 日にリリースされた Azure File Sync エージェントのバージョン 11.2.0.0 を対象としています。 これらは、バージョン 11.1.0.0 に関して記載されているリリース ノートへの追記です。

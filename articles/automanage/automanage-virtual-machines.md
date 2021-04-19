@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 1d3b2174df5dd83852ce120ec6693ae187a3e795
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4e1d22e2e7175135e88a08ed5a6d5ae7f021d49
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101643538"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106491281"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure Automanage for virtual machines
 
@@ -70,12 +70,14 @@ Automanage では、次のリージョンにある VM のみがサポートさ�
 既存の Automanage アカウントで Automanage を有効にする場合は、次のようになります。
 * ご利用の VM を含むリソース グループの **[共同作成者]** ロール。
 
+Automanage アカウントには、Automanage で管理しているマシンで操作を実行するための **共同作成者** と **リソース ポリシー共同作成者** のアクセス許可が付与されます。
+
 > [!NOTE]
 > 別のサブスクリプションのワークスペースに接続されている VM で Automanage を使用する場合は、サブスクリプションごとに上記に記載されているアクセス許可を持っている必要があります。
 
 ## <a name="participating-services"></a>対象となるサービス
 
-:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services.png" alt-text="サービスをインテリジェントにオンボードする。":::
+:::image type="content" source="media\automanage-virtual-machines\intelligently-onboard-services-1.png" alt-text="サービスをインテリジェントにオンボードする。":::
 
 対象となる Azure サービスの完全な一覧と、サポートされている環境については、以下をご覧ください。
 - [Linux 用 Automanage](automanage-linux.md)
@@ -94,6 +96,19 @@ VM に対して Automanage を初めて有効にする場合は、Azure portal �
 
 これらのサービスを管理するためにこの VM との対話が必要になるのは、VM の自動修正が試みられて失敗した場合だけです。 VM の自動修正が正常に行われた場合は、コンプライアンス状態に戻り、お客様には何も通知されません。 詳細については、[VM の状態](#status-of-vms)に関するページをご覧ください。
 
+## <a name="enabling-automanage-for-vms-using-azure-policy"></a>Azure Policy を使用して Automanage for VMs を有効にする
+組み込みの Azure Policy を使用して、大規模な VM に Automanage を有効にすることもできます。 ポリシーには DeployIfNotExists 効果があります。これは、ポリシーのスコープ内にあるすべての対象 VM が、Automanage の VM のベスト プラクティスに自動的にオンボードされることを意味します。
+
+ポリシーへの直接リンクは[こちら](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F270610db-8c04-438a-a739-e8e6745b22d3)にあります。
+
+### <a name="how-to-apply-the-policy"></a>ポリシーを適用する方法
+1. ポリシー定義を確認するには、 **[割り当て]** ボタンをクリックします
+1. ポリシーを適用するスコープ (管理グループ、サブスクリプション、またはリソース グループ) を選択します
+1. **[パラメーター]** で、Automanage アカウント、構成プロファイル、および効果のパラメーターを指定します (効果は通常、DeployIfNotExists になります)
+    1. Automanage アカウントを持っていない場合は、[作成する](#create-an-automanage-account)必要があります。
+1. **[修復]** で、[Click a remediation task]\(修復タスクをクリックする\) チェック ボックスをオンにします。 これにより、Automanage へのオンボードが実行されます。
+1. **[確認と作成]** をクリックし、すべての設定が適切であることを確認します。
+1. **[作成]** をクリックします。
 
 ## <a name="environment-configuration"></a>環境の構成
 
@@ -142,6 +157,43 @@ VM が別のサブスクリプションの Log Analytics ワークスペース�
 > [!NOTE]
 > 自動管理のベスト プラクティスを無効にしても、関連付けられているすべてのサブスクリプションに対する Automanage アカウントのアクセス許可がそのままになります。 サブスクリプションの IAM ページに移動してアクセス許可を手動で削除するか、または Automanage アカウントを削除してください。 Automanage アカウントがまだいずれかのマシンを管理している場合、そのアカウントを削除することはできません。
 
+### <a name="create-an-automanage-account"></a>Automanage アカウントを作成する
+Automanage アカウントは、ポータルまたは ARM テンプレートを使用して作成できます。
+
+#### <a name="portal"></a>ポータル
+1. ポータルの **[Automanage]** ブレードに移動します
+1. **[Enable on existing machine]\(既存のマシンで有効にする\)** をクリックします
+1. **[詳細設定]** で、[新しいアカウントを作成する] をクリックします
+1. 必須フィールドに入力し、 **[作成]** をクリックします
+
+#### <a name="arm-template"></a>ARM テンプレート
+次の ARM テンプレートを `azuredeploy.json` として保存し、次のコマンドを実行します: `az deployment group create --resource-group <resource group name> --template-file azuredeploy.json`
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automanageAccountName": {
+            "type": "String"
+        },
+        "location": {
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2020-06-30-preview",
+            "type": "Microsoft.Automanage/accounts",
+            "name": "[parameters('automanageAccountName')]",
+            "location": "[parameters('location')]",
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="status-of-vms"></a>VM の状態
 

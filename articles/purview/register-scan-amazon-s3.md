@@ -6,14 +6,14 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 03/21/2021
+ms.date: 04/05/2021
 ms.custom: references_regions
-ms.openlocfilehash: f77bd69f8266d9461481cd0a12a7b70107622de5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 751d475fcb2e8c96d05daa5b5e2144909d21a409
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773455"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106382302"
 ---
 # <a name="azure-purview-connector-for-amazon-s3"></a>Amazon S3 用 Azure Purview コネクタ
 
@@ -38,6 +38,7 @@ ms.locfileid: "104773455"
 
 - [Azure Purview を使用する、リソースのクォータの管理と引き上げ](how-to-manage-quotas.md)
 - [Azure Purview でサポートされているデータ ソースとファイルの種類](sources-and-scans.md)
+- [Purview アカウントのプライベート エンドポイントを使用する](catalog-private-link.md)
 ### <a name="storage-and-scanning-regions"></a>ストレージとスキャンのリージョン
 
 次の表は、データが格納されているリージョンと Azure Purview によってスキャンされるリージョンのマップを示しています。
@@ -77,9 +78,13 @@ ms.locfileid: "104773455"
 
 Amazon S3 バケットを Purview データ ソースとして追加し、S3 データをスキャンする前に、次の前提条件を確実に実行します。
 
-- Azure Purview データ ソース管理者である必要があります。
-
-- バケットを Purview リソースとして追加するとき、[AWS ARN](#retrieve-your-new-role-arn)、[バケット名](#retrieve-your-amazon-s3-bucket-name)、および場合によっては [AWS アカウント ID](#locate-your-aws-account-id) の値が必要になります。
+> [!div class="checklist"]
+> * Azure Purview データ ソース管理者である必要があります。
+> * まだ持っていない場合は、[Purview アカウントを作成](#create-a-purview-account)します
+> * [AWS バケット スキャン用の Purview 資格情報を作成する](#create-a-purview-credential-for-your-aws-bucket-scan)
+> * [Purview で使用するための新しい AWS ロールを作成する](#create-a-new-aws-role-for-purview)
+> * 該当する場合は、[暗号化されている Amazon S3 バケットのスキャンを構成する](#configure-scanning-for-encrypted-amazon-s3-buckets)
+> * バケットを Purview リソースとして追加するとき、[AWS ARN](#retrieve-your-new-role-arn)、[バケット名](#retrieve-your-amazon-s3-bucket-name)、および場合によっては [AWS アカウント ID](#locate-your-aws-account-id) の値が必要になります。
 
 ### <a name="create-a-purview-account"></a>Purview アカウントを作成する
 
@@ -138,6 +143,13 @@ Purview 資格情報の詳細については、[Azure Purview パブリック �
 1. **[ロールの作成] > [Attach permissions policies]\(アクセス許可ポリシーのアタッチ\)** 領域で、 **[S3]** に表示されるアクセス権限をフィルター処理します。 **AmazonS3ReadOnlyAccess** を選択してから、 **[次へ: タグ]** を選択します。
 
     ![新しい Amazon S3 スキャン ロールに ReadOnlyAccess ポリシーを選択します。](./media/register-scan-amazon-s3/aws-permission-role-amazon-s3.png)
+
+    > [!IMPORTANT]
+    > **AmazonS3ReadOnlyAccess** ポリシーは、S3 バケットのスキャンに必要な最小限のアクセス許可を提供します。また、他のアクセス許可を含めることもできます。
+    >
+    >バケットのスキャンに必要な最小限のアクセス許可のみを適用するには、新しいポリシーを作成し、1 つのバケットをスキャンするか、アカウント内のすべてのバケットをスキャンするかに応じて、「[AWS ポリシー用の最小限のアクセス許可](#minimum-permissions-for-your-aws-policy)」の一覧にあるアクセス許可を指定します。 
+    >
+    >**AmazonS3ReadOnlyAccess** の代わりに、新しいポリシーをロールに適用します。
 
 1. **[タグの追加 (オプション)]** 領域で、必要に応じて、この新しいロールのわかりやすいタグを作成できます。 有用なタグを使用して、作成する各ロールのアクセスを整理、追跡、制御できます。
 
@@ -396,6 +408,90 @@ Purview の他の領域を使用して、Amazon S3 バケットなど、デー�
     すべての Purview 分析情報レポートには、Amazon S3 のスキャン結果と、Azure データ ソースから得られたその他の結果が含まれます。 該当する場合、追加の **Amazon S3** 資産の種類がレポート フィルター オプションに追加されています。
 
     詳細については、「[Azure Purview の分析情報についての理解](concept-insights.md)」を参照してください。
+
+## <a name="minimum-permissions-for-your-aws-policy"></a>AWS ポリシー用の最小限のアクセス許可
+
+S3 バケットをスキャンするときに使用する、[Purview 用の AWS ロールを作成する](#create-a-new-aws-role-for-purview)ための既定の手順では、**AmazonS3ReadOnlyAccess** ポリシーを使用します。
+
+**AmazonS3ReadOnlyAccess** ポリシーは、S3 バケットのスキャンに必要な最小限のアクセス許可を提供します。また、他のアクセス許可を含めることもできます。
+
+バケットのスキャンに必要な最小限のアクセス許可のみを適用するには、新しいポリシーを作成し、1 つのバケットをスキャンするか、アカウント内のすべてのバケットをスキャンするかに応じて、移行のセクションの一覧にあるアクセス許可を指定します。
+
+**AmazonS3ReadOnlyAccess** の代わりに、新しいポリシーをロールに適用します。
+
+### <a name="individual-buckets"></a>個々のバケット
+
+個々の S3 バケットをスキャンする場合、最小限の AWS アクセス許可は次のとおりです。
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListBucket`
+
+必ず特定のバケット名を使用してリソースを定義してください。 例:
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListBucket"
+            ],
+            "Resource": "arn:aws:s3:::<bucketname>"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "arn:aws:s3::: <bucketname>/*"
+        }
+    ]
+}
+```
+
+### <a name="all-buckets-in-your-account"></a>アカウント内のすべてのバケット
+
+AWS アカウント内のすべてのバケットをスキャンする場合、最小限の AWS アクセス許可は次のとおりです。
+
+- `GetBucketLocation`
+- `GetBucketPublicAccessBlock`
+- `GetObject`
+- `ListAllMyBuckets`
+- `ListBucket`.
+
+必ずワイルドカードを使用してリソースを定義してください。 次に例を示します。
+
+```json
+{
+"Version": "2012-10-17",
+"Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetBucketLocation",
+                "s3:GetBucketPublicAccessBlock",
+                "s3:GetObject",
+                "s3:ListAllMyBuckets",
+                "s3:ListBucket"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 

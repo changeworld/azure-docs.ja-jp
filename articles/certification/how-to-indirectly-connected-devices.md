@@ -7,16 +7,16 @@ ms.author: cbroad
 ms.date: 02/23/2021
 ms.topic: how-to
 ms.service: certification
-ms.openlocfilehash: da3110b562bc5ddbd37657f31cbdd3790a13b897
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 3a4fd2838c0ddf6d7d03d68f105fc59471b77dea
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975781"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107304479"
 ---
 # <a name="device-bundles-and-indirectly-connected-devices"></a>デバイス バンドルと間接接続デバイス
 
-Microsoft の送信ポータル (https://www.certify.azure.com) とデバイス カタログ (https://devicecatalog.azure.com) では、デバイス、SaaS、PaaS のサービスを通じて Azure と通信するデバイスをサポートするために、バンドルと依存関係の概念を有効にして、これらのデバイスの組み合わせを促進し、Azure Certified Device プログラムにアクセスできるようにしています。
+Microsoft の送信ポータル (https://certify.azure.com/) とデバイス カタログ (https://devicecatalog.azure.com) では、デバイス、SaaS、PaaS のサービスを通じて Azure と通信するデバイスをサポートするために、バンドルと依存関係の概念を有効にして、これらのデバイスの組み合わせを促進し、Azure Certified Device プログラムにアクセスできるようにしています。
 
 提供される製品ラインとサービスに応じて、状況によって次の手順の組み合わせが必要になる場合があります。
 
@@ -39,7 +39,7 @@ Microsoft の送信ポータル (https://www.certify.azure.com) とデバイス 
 
 3.  このデバイスにオプションとして追加するデバイスがさらにある場合は、[+ 依存関係の追加] を選択できます。 次に、同じガイダンスに従い、テスト中に使用されていないことに注意してください。 顧客向けのコメントで、このセンサーに関連付けられている他のデバイスが (テスト中に使用されたデバイスの代わりに) 使用可能であることを顧客が認識していることを確認します。
 
-![Alt text](./media/indirect-connected-device/picture-3.png "ハードウェアの依存関係の種類")
+![代替テキスト](./media/indirect-connected-device/picture-3.png "ハードウェアの依存関係の種類")
 
 ## <a name="paas-and-saas-offerings"></a>PaaS と SaaS のサービス
 製品ポートフォリオの一部として、認定を取得しているデバイスがある場合もありますが、デバイスには、社内または他のサードパーティの企業の他のサービスも必要です。 この依存関係を追加するには、次の手順に従います。

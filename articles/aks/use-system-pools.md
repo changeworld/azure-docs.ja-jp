@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: 9c53cb53517c4696a1bb47c2cb72335979d58d3a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c3c65d3a7316d431c57d9fb75775e271bf9f34ca
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178832"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106223270"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でシステム ノード プールを管理する
 
@@ -43,7 +43,8 @@ Azure Kubernetes Service (AKS) で同じ構成のノードは、*ノード プ�
 * システム プールの osType は、Linux である必要があります。
 * ユーザー ノード プールの osType には、Linux または Windows が可能です。
 * システム プールには少なくとも 1 つのノードを含める必要があり、ユーザー ノード プールには 0 以上のノードを含めることができます。
-* システム ノード プールには、少なくとも 2 つの vCPU と 4 GB のメモリのがある VM SKU が必要です。
+* システム ノード プールには、少なくとも 2 つの vCPU と 4 GB のメモリのがある VM SKU が必要です。 ただし、バースト可能 VM (B シリーズ) は推奨されません。
+* 特に大規模なクラスター (複数の CoreDNS ポッド レプリカ、3 から 4+ のアドオンなど) の場合は、少なくとも 2 つのノードと 4 つの vCPU (Standard_DS4_v2 など) をお勧めします。
 * システム ノード プールでは、[ポッドの最小値と最大値の式][maximum-pods]に関する説明のとおり、少なくともポッドを 30 サポートしている必要があります。
 * スポット ノード プールには、ユーザー ノード プールが必要です。
 * システム ノード プールをさらに追加したり、システム ノード プールとなるノード プールを変更したりしても、システム ポッドは自動的には移動 *されません*。 ノード プールをユーザー ノード プールに変更しても、システム ポッドは同じノード プール上で実行し続けることができます。 システム ポッドを実行中の、以前はシステム ノード プールだったノード プールを削除またはスケールダウンした場合、それらのシステム ポッドは、推奨されるスケジュールで新しいシステム ノード プールに再デプロイされます。

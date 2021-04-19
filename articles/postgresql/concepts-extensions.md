@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: de395bed885804445146b01745edf5e93426cb13
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 765c3653dae4f514263cd8db636d9cec42d56d15
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606319"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107620"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
@@ -62,7 +62,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サー
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS トポロジの空間型と関数|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | クロス集計を含む、テーブル全体を操作する関数|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2、1.7.4             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
+> |[timescaledb](https://docs.timescale.com/latest)                    |1.7.4             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
 > |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | アクセントを削除するテキスト検索辞書|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | 汎用一意識別子 (UUID) を生成する|
 
@@ -108,7 +108,7 @@ Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サー
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.4.3           | PostGIS トポロジの空間型と関数|
 > |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
 > |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | クロス集計を含む、テーブル全体を操作する関数|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1、1.7.4             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.7.4             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
 > |[unaccent](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | アクセントを削除するテキスト検索辞書|
 > |[uuid-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | 汎用一意識別子 (UUID) を生成する|
 
@@ -154,7 +154,7 @@ Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サ�
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.2           | PostGIS トポロジの空間型と関数|
 > |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
 > |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | クロス集計を含む、テーブル全体を操作する関数|
-> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1、1.7.4             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.7.4             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
 > |[unaccent](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | アクセントを削除するテキスト検索辞書|
 > |[uuid-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | 汎用一意識別子 (UUID) を生成する|
 

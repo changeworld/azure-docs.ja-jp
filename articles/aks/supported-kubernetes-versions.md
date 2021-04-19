@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: c7d06172abd696e386337e563fa29fdbd2d3cdae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aebbe7ab736b8a7b73900f1d552d723b8a609de6
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103493664"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222760"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -185,6 +185,14 @@ AKS でサポートされていないマイナー バージョンの場合、ス
 *1.12.x* -> *1.14.x* にアップグレードするには、まず *1.12.x* -> *1.13.x* にアップグレードしてから、*1.13.x* -> *1.14.x* にアップグレードします。
 
 複数のバージョンは、サポートされていないバージョンからサポートされているバージョンにアップグレードする場合にのみスキップできます。 たとえば、サポートされていない *1.10.x* からサポートされている *1.15.x* へのアップグレードは実行することができます。
+
+**30 日間のサポート期間中に新しい 1.xx.x クラスターを作成できますか?**
+
+いいえ。 バージョンが非推奨になるか、または削除されると、そのバージョンを使用してクラスターを作成することはできません。 変更が公開されると、バージョン リストから古いバージョンが削除されたことがわかります。 このプロセスは、リージョンごとに、発表から最大 2 週間かかる場合があります。
+
+**非推奨になったばかりのバージョンを使用していますが、新しいノード プールを追加できますか? または、アップグレードする必要がありますか?**
+
+いいえ。 非推奨のバージョンのノード プールをクラスターに追加することはできません。 新しいバージョンのノード プールを追加することはできます。 ただし、そのためには、まず、コントロール プレーンを更新する必要があります。 
 
 ## <a name="next-steps"></a>次のステップ
 

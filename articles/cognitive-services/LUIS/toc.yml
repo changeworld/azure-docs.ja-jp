@@ -3,7 +3,7 @@
 - name: 概要
   expanded: true
   items:
-    - name: LUIS の概要
+    - name: Language Understanding (LUIS) とは
       href: what-is-luis.md
     - name: 言語のサポート
       href: luis-language-support.md
@@ -119,22 +119,26 @@
           diplayName: 'import, export, container'
         - name: Traffic Manager の利用
           href: luis-traffic-manager.md
-    - name: LUIS をデプロイする
+    - name: コンテナーの使用
       items:
-        - name: コンテナーの使用
-          items:
-            - name: コンテナーのインストールと実行
-              displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
-              href: luis-container-howto.md
-            - name: コンテナーを構成する
-              href: luis-container-configuration.md
-            - name: Container Instances の使用
-              href: ../containers/azure-container-instance-recipe.md
-            - name: コンテナーの制限
-              href: luis-container-limitations.md
-              displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
-            - name: Cognitive Services コンテナーのドキュメント
-              href: ../containers/index.yml
+        - name: コンテナーのインストールと実行
+          displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull, export to container'
+          href: luis-container-howto.md
+        - name: コンテナーを構成する
+          href: luis-container-configuration.md
+        - name: Container Instances の使用
+          href: ../containers/azure-container-instance-recipe.md
+        - name: コンテナーの制限
+          href: luis-container-limitations.md
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/luis/context/context
+        - name: カスタマー マネージド キーを使用する
+          href: encrypt-data-at-rest.md
 - name: 概念
   items:
     - name: 人工知能
@@ -375,24 +379,21 @@
       href: luis-reference-prebuilt-sentiment.md
 - name: リソース
   items:
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+          displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
     - name: LUIS ポータル
       href: 'https://www.luis.ai'
-    - name: サポートとヘルプのオプション
-      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/luis/context/context
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-      displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, Dutch, French, German, Italian, Japanese, Korean, Portuguese, Spanish, Turkish, Keigo, informal Japanese, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
     - name: Azure のロードマップ
       href: 'https://go.microsoft.com/fwlink/?linkid=2092089'
     - name: 用語集
       href: luis-glossary.md
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-    - name: 暗号化
-      href: encrypt-data-at-rest.md
-    - name: 仮想ネットワークを構成する
-      maintainContext: true
-      href: ../cognitive-services-virtual-networks.md
     - name: 検索
       href: /search/index?search=LUIS
     - name: ブログ

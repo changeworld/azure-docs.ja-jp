@@ -2,17 +2,17 @@
 title: Azure Database for MariaDB 用の Azure セキュリティ ベースライン
 description: Azure Database for MariaDB セキュリティ ベースラインでは、Azure セキュリティ ベンチマークで指定されているセキュリティに関する推奨事項を実装するための手順のガイダンスとリソースが提供されます。
 author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 03/29/2021
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 03/29/2021
-ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 189fb95f9c4be4ddf9d75a8dc26a7bf403caaadd
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: fd169738c138d56932dbab87047b89e373b9c6ec
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967700"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227672"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 用の Azure セキュリティ ベースライン
 
@@ -86,7 +86,7 @@ Azure Database for MariaDB インスタンスに関連付けられている仮�
 
 **Azure Security Center の監視**: なし
 
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出または侵入防止システム (IDS または IPS) をデプロイする
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6:ネットワーク ベースの侵入検出/侵入防止システム (IDS/IPS) をデプロイする
 
 **ガイダンス**: Azure Database for MariaDB 用に Advanced Threat Protection を使用します。 Advanced Threat Protection では、データベースにアクセスしたり、データベースを悪用したりしようとする、通常とは異なる、害を及ぼす可能性のある試行を示す異常なアクティビティを検出します。
 

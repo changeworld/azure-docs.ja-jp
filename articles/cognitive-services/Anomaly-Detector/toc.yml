@@ -7,9 +7,9 @@
       href: overview-multivariate.md
     - name: Anomaly Detector (一変量) とは
       href: overview.md
-    - name: 料金と制限
+    - name: 価格
       href: 'https://aka.ms/adpricing'
-- name: Anomaly Detector のクイックスタート
+- name: クイックスタート
   items:
     - name: 多変量クライアント ライブラリ
       href: ./quickstarts/client-libraries-multivariate.md
@@ -43,6 +43,12 @@
               displayName: 'docker, container, apikey, billing, log, mount, run, pull, port'
             - name: Container Instances の使用
               href: how-to/deploy-anomaly-detection-on-container-instances.md
+    - name: エンタープライズ対応
+      items:
+        - name: 仮想ネットワークの設定
+          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/anomaly-detector/context/context
+        - name: Azure AD 認証を使用する
+          href: ../authentication.md?context=/azure/cognitive-services/anomaly-detector/context/context
 - name: 概念
   items:
     - name: Anomaly Detector API のベスト プラクティス (多変量)
@@ -75,20 +81,22 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=2090788'
 - name: リソース
   items:
-    - name: リージョンのサポート
-      href: 'https://aka.ms/adregion'
-    - name: 学習モジュール
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
-    - name: サポートとヘルプ
+    - name: エンタープライズ対応
+      items:
+        - name: リージョンのサポート
+          href: 'https://aka.ms/adregion'
+        - name: コンプライアンスと認定資格
+          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
+    - name: Microsoft Learn モジュール
+      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
     - name: ユーザー生成コンテンツ
       href: user-generated-content.md
     - name: Microsoft Teams 上での Anomaly Detector Advisors グループへの参加
       href: 'https://aka.ms/adadvisorsjoin'
     - name: ソリューション アーキテクチャの参照
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
-    - name: コンプライアンス
-      href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure の更新情報
       href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
     - name: テクニカル ブログ

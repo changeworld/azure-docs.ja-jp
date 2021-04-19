@@ -9,29 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 03/13/2021
+ms.date: 03/29/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f74f3aff1153118c54c83bf526c036a775da40
-ms.sourcegitcommit: ac035293291c3d2962cee270b33fca3628432fac
+ms.openlocfilehash: a99cf6a73e0afb60c644cf38fcfa810a97a9fce4
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "104955239"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285809"
 ---
 # <a name="azure-ad-built-in-roles"></a>Azure AD の組み込みロール
 
 Azure Active Directory (Azure AD) で、別の管理者または管理者以外のユーザーが Azure AD リソースを管理する必要がある場合、必要なアクセス許可を提供する Azure AD ロールを割り当てる必要があります。 たとえば、ユーザーの追加または変更、ユーザーのパスワードのリセット、ユーザーのライセンスの管理、ドメイン名の管理を行えるように、ロールを割り当てることができます。
 
 この記事では、Azure AD リソースを管理できるようにするために割り当てることができる、Azure AD の組み込みロールについて説明します。 ロールの割り当て方法の詳細については、[ユーザーへの Azure AD ロールの割り当て](manage-roles-portal.md)に関するページ参照してください。
-
-## <a name="limit-use-of-global-administrator"></a>グローバル管理者の使用を制限する
-
-グローバル管理者ロールに割り当てられているユーザーは、Azure AD 組織内のすべての管理設定の読み取りと変更を行うことができます。 既定では、ユーザーが Microsoft のクラウド サービスに新規登録すると、Azure AD テナントが作成され、そのユーザーはグローバル管理者ロールのメンバーになります。 サブスクリプションを既存のテナントに追加するとき、そのユーザーはグローバル管理者ロールに割り当てられません。 管理者ロールを委任できるのはグローバル管理者と特権ロール管理者だけです。 ビジネスに対するリスクを軽減するには、このロールを割り当てる組織内のユーザーの数をできる限り少なくすることをお勧めします。
-
-ベスト プラクティスとして、組織内でこのロールを割り当てる人は 5 人未満にすることをお勧めします。 組織内でグローバル管理者ロールを割り当てる管理者が 5 人以上になる場合は、次の方法でその利用を減らすことができます。
 
 ## <a name="all-roles"></a>すべてのロール
 
@@ -241,7 +235,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 >* 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
 > [!IMPORTANT]
-> このロールは現在、レガシ MFA 管理ポータルでユーザーごとの MFA を管理することはできません。 Azure AD Powershell モジュールの [Set-msoluser](/powershell/module/msonline/set-msoluser) コマンドレットを使用して、同じ機能を実行できます。
+> このロールを使用して、従来の MFA 管理ポータルの MFA の設定またはハードウェア OATH トークンを管理することはできません。 Azure AD Powershell モジュールの [Set-msoluser](/powershell/module/msonline/set-msoluser) コマンドレットを使用して、同じ機能を実行できます。
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -267,7 +261,7 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 | 認証ポリシー管理者 | いいえ | いいえ | はい | はい | はい |
 
 > [!IMPORTANT]
-> このロールは現在、レガシ MFA 管理ポータルで MFA 設定を管理することはできません。
+> このロールを使用して、従来の MFA 管理ポータルの MFA の設定またはハードウェア OATH トークンを管理することはできません。 
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -771,6 +765,9 @@ Azure Active Directory (Azure AD) で、別の管理者または管理者以外�
 ## <a name="global-administrator"></a>グローバル管理者
 
 このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Microsoft 365 セキュリティ センター、Microsoft 365 security center コンプライアンス センター、Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 さらにグローバル管理者は、[アクセスを昇格させる](../../role-based-access-control/elevate-access-global-admin.md)ことで、すべての Azure サブスクリプションと管理グループを管理できます。 これにより、グローバル管理者は各 Azure AD テナントを使用して、すべての Azure リソースに対するフル アクセスを取得できます。 Azure AD 組織にサインアップしたユーザーがグローバル管理者になります。 会社に複数のグローバル管理者がいてもかまいません。 グローバル管理者は、すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
+
+> [!NOTE]
+> ベスト プラクティスとして、組織内でグローバル管理者ロールを割り当てるユーザーは 5 人未満にすることをお勧めします。 詳細については、「[Azure AD のロールに関するベスト プラクティス](best-practices.md)」を参照してください。
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -1841,6 +1838,23 @@ Windows Defender ATP および EDR | アラートを表示して調査します�
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Microsoft 365 管理センターで Service Health を読み取り、構成する |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Microsoft 365 サービス要求を作成および管理する |
 > | microsoft.office365.webPortal/allEntities/standard/read | Microsoft 365 管理センターですべてのリソースの基本プロパティを読み取る |
+
+## <a name="how-to-understand-role-permissions"></a>ロールのアクセス許可を理解する方法
+
+アクセス許可のスキーマは、Microsoft Graph の REST 形式にほぼ従っています。
+
+`<namespace>/<entity>/<propertySet>/<action>`
+
+例:
+
+`microsoft.directory/applications/credentials/update`
+
+| アクセス許可の要素 | 説明 |
+| --- | --- |
+| namespace | タスクが公開される、前に `microsoft` が付加された製品またはサービス。 たとえば、Azure AD 内のすべてのタスクには、`microsoft.directory` 名前空間が使用されます。 |
+| エンティティ | Microsoft Graph でサービスによって公開される論理機能またはコンポーネント。 たとえば、Azure AD からはユーザーとグループ、OneNote からはメモ、Exchange からはメールボックスと予定表が公開されます。 名前空間内のすべてのエンティティを指定するための特別な `allEntities` キーワードがあります。 これは、製品全体へのアクセスを許可するロールでよく使用されます。 |
+| propertySet | アクセスが許可されているエンティティの特定のプロパティまたは側面。 たとえば、`microsoft.directory/applications/authentication/read` の場合は、Azure AD 内のアプリケーション オブジェクトで、応答 URL、ログアウト URL、暗黙的なフロー プロパティを読み取ることが許可されます。<ul><li>`allProperties` は、特権プロパティを含む、エンティティのすべてのプロパティを指定します。</li><li>`standard` は、一般的なプロパティを指定しますが、`read` アクションに関連する特権プロパティは除外されます。 たとえば、`microsoft.directory/user/standard/read` には、公開用の電話番号やメール アドレスなどの標準プロパティを読み取る機能は含まれますが、多要素認証に使用されるプライベートの二次的な電話番号やメール アドレスを読み取ることはできません。</li><li>`basic` は、一般的なプロパティを指定しますが、`update` アクションに関連する特権プロパティは除外されます。 読み取ることができるプロパティのセットは、更新できるものと異なる場合があります。 そのため、それを反映するために `standard` と `basic` のキーワードが用意されています。</li></ul> |
+| action | 許可される操作。最も一般的なものは、作成、読み取り、更新、または削除 (CRUD) です。 上記のすべての能力 (作成、読み取り、更新、削除) を指定するための特別な `allTasks` キーワードがあります。 |
 
 ## <a name="deprecated-roles"></a>非推奨のロール
 

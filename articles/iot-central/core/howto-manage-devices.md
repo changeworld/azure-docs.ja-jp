@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 2f0b6feea5e586c87191b22f42e3ab86e85ba7b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0072e699107ea51764a728ce3e9987b86b2a6806
+ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97032526"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106492326"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -166,7 +166,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. プロパティを必要な値に変更します。 一度に複数のプロパティを変更し、それらすべてを同時に更新できます。
 
-1. **[保存]** を選択します。 書き込み可能プロパティを保存すると、値はデバイスに送信されます。 デバイスが書き込み可能プロパティの変更を確認すると、状態は **[synced]\(同期済み\)** に戻ります。 クラウド プロパティを保存した場合、値は更新されます。
+1. **[保存]** を選択します。 書き込み可能プロパティを保存すると、値はデバイスに送信されます。 デバイスが書き込み可能プロパティの変更を確認すると、状態は **[同期済み]** に戻ります。 クラウド プロパティを保存した場合、値は更新されます。
 
 ## <a name="next-steps"></a>次のステップ
 
