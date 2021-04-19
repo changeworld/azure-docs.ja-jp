@@ -19,7 +19,7 @@ ms.locfileid: "92280860"
 
 [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、アプリとサービス全体のワークフローを自動化するのに役立つクラウド サービスです。 Logic Apps を Azure Digital Twins API に接続すると、Azure Digital Twins とそのデータに関するそのような自動化されたフローを作成できます。
 
-現在、Azure Digital Twins に、Logic Apps 用の認定された (構築済みの) コネクタはありません。 代わりに、Azure Digital Twins で Logic Apps を使用するための現在のプロセスでは、Logic Apps で動作するように変更された [カスタム Azure Digital Twins Swagger](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) を使用して、 [**Logic Apps カスタム コネクタ**](../logic-apps/custom-connector-overview.md)を作成します。
+現在、Azure Digital Twins に、Logic Apps 用の認定された (構築済みの) コネクタはありません。 代わりに、Azure Digital Twins で Logic Apps を使用するための現在のプロセスでは、Logic Apps で動作するように変更された [Azure Digital Twins custom Swaggers](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) を使用して、 [**Logic Apps カスタム コネクタ**](../logic-apps/custom-connector-overview.md)を作成します。
 
 > [!NOTE]
 > 上記のリンクされたカスタム Swagger サンプルには、複数のバージョンの Swagger が含まれています。 最新バージョンは、最新の日付のサブフォルダーにありますが、サンプルに含まれていた以前のバージョンも引き続きサポートされます。
@@ -92,7 +92,7 @@ Azure portal の [[Logic Apps カスタム コネクタ]](https://portal.azure.c
 
 次に、作成したコネクタを Azure Digital Twins に接続するように構成します。
 
-まず、Logic Apps で動作するように変更されたカスタム Azure Digital Twins Swagger をダウンロードします。 *[Download ZIP]* ボタンを押し、 [**このリンク**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)から **Azure Digital Twins Custom Swaggers (Logic Apps コネクタ)** サンプルをダウンロードします。 ダウンロードした *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* フォルダーに移動し、解凍します。 
+まず、Logic Apps で動作するように変更された Azure Digital Twins custom Swaggers をダウンロードします。 *[Download ZIP]* ボタンを押し、 [**このリンク**](/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/)から **Azure Digital Twins Custom Swaggers (Logic Apps コネクタ)** サンプルをダウンロードします。 ダウンロードした *Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_.zip* フォルダーに移動し、解凍します。 
 
 このチュートリアル用のカスタム Swagger は _**Azure_Digital_Twins_custom_Swaggers__Logic_Apps_connector_ \LogicApps **_ フォルダー内に配置されます。このフォルダーには、 *stable* と *preview* という名前のサブフォルダーが含まれています。どちらも、日付別に編成された異なるバージョンの Swagger を保持しています。最新の日付のフォルダーには、Swagger の最新のコピーが含まれます。どちらのバージョンを選択した場合でも、Swagger ファイルには _** digitaltwins.json**_ という名前が付けられています。
 
