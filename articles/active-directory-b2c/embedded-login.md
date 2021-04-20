@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: dc4450fb1e21211b43bc178d94cf4bdfe6da58e1
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ccad323c1834894367cca0ef0d3f98eb1b1b1ec3
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256788"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105639915"
 ---
 # <a name="embedded-sign-in-experience"></a>埋め込みサインイン エクスペリエンス
 
@@ -49,7 +49,7 @@ iframe を使用する場合は、次の点を考慮してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Active Directory B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」にある手順を完了する。
+* 「[Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
 * ポリシーの[カスタム ドメインを有効にする](custom-domain.md)。
 
 ## <a name="configure-your-policy"></a>ポリシーを構成する

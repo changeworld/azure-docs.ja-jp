@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87b9371bfe3b0bd8ff8b3bd509cc1431f0c2e1c6
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 52b450ecc8aff379dbdb8d58f9b7609cf730ad27
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305771"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105731668"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -90,7 +90,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
    **手順 1.シームレス SSO が有効になっている AD フォレストのリストの取得**
 
    1. 最初に [Azure AD PowerShell](/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
-   2. `$env:programfiles\Microsoft Azure Active Directory Connect` フォルダーに移動します。
+   2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
    3. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
    4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
    5. `Get-AzureADSSOStatus | ConvertFrom-Json` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
@@ -135,7 +135,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
    Azure AD Connect が実行されているオンプレミス サーバーで次の手順を実行します。
 
    1. 最初に [Azure AD PowerShell](/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
-   2. `$env:ProgramFiles\Microsoft Azure Active Directory Connect` フォルダーに移動します。
+   2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
    3. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
    4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
    5. `Enable-AzureADSSO -Enable $false` を呼び出します。
@@ -150,7 +150,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
    Azure AD Connect を使用してシームレス SSO を無効にした場合は、以下のタスクの 1 から 4 を実行します。 PowerShell を使ってシームレス SSO を無効にした場合は、次のタスク 5 に進んでください。
 
    1. 最初に [Azure AD PowerShell](/powershell/azure/active-directory/overview) をダウンロードしてインストールします。
-   2. `$env:ProgramFiles\Microsoft Azure Active Directory Connect` フォルダーに移動します。
+   2. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
    3. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
    4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
    5. `Get-AzureADSSOStatus | ConvertFrom-Json` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
