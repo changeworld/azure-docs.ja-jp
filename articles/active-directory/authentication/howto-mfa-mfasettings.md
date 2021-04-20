@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9d2c42a664c8d8a591d95a312cdf1c0034c4d031
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 78972c4db1802b479a698a22c456561170add4bf
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305465"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932915"
 ---
 # <a name="configure-azure-ad-multi-factor-authentication-settings"></a>Azure AD Multi-Factor Authentication の設定を構成する
 
@@ -236,7 +236,7 @@ Azure AD Multi-Factor Authentication の "_信頼できる IP_" 機能を使用�
 > [!NOTE]
 > 信頼できる IP には、MFA Server を使用する場合にのみ、プライベート IP 範囲を含めることができます。 クラウドベースの Azure AD Multi-Factor Authentication では、パブリック IP アドレス範囲のみを使用できます。
 >
-> IPv6 範囲は、[ネームド ロケーション (プレビュー)](../conditional-access/location-condition.md) インターフェイスでのみサポートされています。
+> IPv6 範囲は、[ネームド ロケーション (プレビュー)](../conditional-access/location-condition.md#preview-features) インターフェイスでのみサポートされています。
 
 組織がオンプレミスのアプリケーションに MFA を提供するために NPS 拡張機能をデプロイしている場合は、認証が試行されるとき、常にソース IP アドレスが NPS サーバーとして表示されます。
 

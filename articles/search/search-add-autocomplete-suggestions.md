@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6bc45bb6eec9dbf46e039dd1e2c32197820bb09d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b260793cc3c0b5ac3ffce8fac909e2db8991c713
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626709"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307811"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps-using-azure-cognitive-search"></a>Azure Cognitive Search を使用してクライアント アプリにオートコンプリートと検索候補を追加する
 
@@ -67,7 +67,7 @@ REST および .NET SDK のリファレンス ページについては、以下�
 
 + オートコンプリートの場合は、[autocompleteMode](/rest/api/searchservice/autocomplete#query-parameters) を設定して、テキスト補完が 1 つの用語で行われるか 2 つの用語で行われるかを指定します。 
 
-+ 検索候補の場合は、[$select](/rest/api/searchservice/suggestionse#query-parameters) を設定して、一意または差別化の値 (名前や説明など) を含むフィールドを返します。 重複する値を含むフィールドは避けてください (カテゴリや市区町村など)。
++ 検索候補の場合は、[$select](/rest/api/searchservice/suggestions#query-parameters) を設定して、一意または差別化の値 (名前や説明など) を含むフィールドを返します。 重複する値を含むフィールドは避けてください (カテゴリや市区町村など)。
 
 次の追加パラメーターは、オートコンプリートと検索候補の両方に適用されますが、特に suggester に複数のフィールドが含まれている場合には、検索候補での必要性が高くなる可能性があります。
 
