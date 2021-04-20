@@ -6,17 +6,17 @@ ms.date: 03/22/2021
 author: trask
 ms.custom: devx-track-java
 ms.author: trstalna
-ms.openlocfilehash: 456b263c33e3a88c40070f4b5b580922bbb4cbfc
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7602392b78f53e5b896e92058836fca60de39d64
+ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059107"
+ms.lasthandoff: 04/06/2021
+ms.locfileid: "106448884"
 ---
 # <a name="sampling-overrides-preview---azure-monitor-application-insights-for-java"></a>サンプリング オーバーライド (プレビュー) - Azure Monitor Application Insights for Java
 
 > [!NOTE]
-> サンプリング オーバーライド機能は、3.0.3-BETA.2 からプレビュー段階になっています。
+> サンプリング オーバーライド機能は、3.0.3 からプレビュー段階になっています。
 
 サンプリング オーバーライドを使用すると、[既定のサンプリング率](./java-standalone-config.md#sampling)をオーバーライドできます。次に例を示します。
  * ノイズの多い正常性チェックでは、サンプリング率を 0 (または何らかの小さい値) に設定します。

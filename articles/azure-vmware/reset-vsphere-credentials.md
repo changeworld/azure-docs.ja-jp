@@ -2,17 +2,19 @@
 title: Azure VMware Solution の vSphere 資格情報をリセットする
 description: Azure VMware Solution プライベート クラウドの vSphere 資格情報をリセットし、HCX コネクタに最新の vSphere 資格情報が確実に設定されるようにする方法について説明します。
 ms.topic: how-to
-ms.date: 03/16/2021
-ms.openlocfilehash: 1376b6322250da506d32b8ced0a62ddbf60ba9f1
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.date: 03/31/2021
+ms.openlocfilehash: 793b79e42a0adbca54804d1b66102736aff22d7a
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104587629"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109103"
 ---
 # <a name="reset-vsphere-credentials-for-azure-vmware-solution"></a>Azure VMware Solution の vSphere 資格情報をリセットする
 
 この記事では、Azure VMware Solution プライベート クラウドの vCenter Server および NSX-T Manager の資格情報をリセットする手順について説明します。 これにより、HCX コネクタに最新の vCenter Server の資格情報を確実に設定できます。
+
+こちらの攻略ガイドに加えて、[vCenter CloudAdmin と NSX-T 管理者パスワードのリセット](https://youtu.be/cK1qY3knj88)に関するビデオも視聴できます。
 
 ## <a name="reset-your-azure-vmware-solution-credentials"></a>Azure VMware Solution の資格情報をリセットする
 

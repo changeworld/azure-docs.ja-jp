@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: 0b0fc1062f9e57ab716aa0fa88f90924f0485b08
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: efd145732ecc119e2fdf9b73ca59729232a37d4c
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864875"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105109524"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 
@@ -22,27 +22,32 @@ Azure HDInsight には、クラスターをカスタマイズするためにカ�
 
 スクリプト アクションは、HDInsight クラスター内のノードで実行される Bash スクリプトです。 スクリプト アクションの特性と機能を次に示します。
 
-- HDInsight クラスターからアクセスできる URI に保存されている必要があります。 たとえば保存スペースとして、次の場所を使用できます。
+- Bash スクリプト URI (ファイルにアクセスする場所) は、HDInsight リソース プロバイダーとクラスターからアクセスできる必要があります。
+- たとえば保存スペースとして、次の場所を使用できます。
 
-  - 通常 (非 ESP) のクラスターの場合:
-    - Data Lake Storage Gen1/Gen2: HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。 Data Lake Storage Gen1 に格納されているスクリプトの URI の形式は、`adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` になります。
-    - Azure ストレージ アカウントの BLOB (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。
+   - 通常 (非 ESP) のクラスターの場合:
+     - Azure ストレージ アカウントの BLOB (HDInsight クラスターのプライマリ ストレージ アカウントまたはセカンダリ ストレージ アカウント)。 HDInsight には、両方のタイプのストレージ アカウントに対するアクセス権がクラスターの作成時に付与されます。
+    
+       > [!IMPORTANT]  
+       > この Azure ストレージ アカウントでは、ストレージ キーのローテーションを行わないでください。そこにスクリプトが格納されている後続のスクリプト アクションが失敗します。
 
-    > [!IMPORTANT]  
-    > この Azure ストレージ アカウントでは、ストレージ キーのローテーションを行わないでください。そこにスクリプトが格納されている後続のスクリプト アクションが失敗します。
+     - Data Lake Storage Gen1: HDInsight が Data Lake Storage へのアクセスに使用するサービス プリンシパルには、スクリプトに対する読み取りアクセスが必要です。 Bash スクリプト URI の形式は `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file` です。 
 
-    - `http://` パスを介してアクセス可能なパブリック ファイル共有サービス。 たとえば、Azure Blob、GitHub、OneDrive などです。 URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」をご覧ください。
+     - スクリプト アクションに Data Lake Storage Gen2 を使用することは推奨されません。 `abfs://` は、Bash スクリプト URI ではサポートされていません。 `https://` URI を使用することもできますが、これらはパブリック アクセスが可能なコンテナーで動作し、HDInsight リソースプ ロバイダーに対してファイアウォールが開いているため、お勧めしません。
+
+     - `https://` パスを介してアクセス可能なパブリック ファイル共有サービス。 たとえば、Azure Blob、GitHub、OneDrive などです。 URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」をご覧ください。
+
   - ESP を使用するクラスターの場合、`wasb://`、`wasbs://`、または `http[s]://` の URI がサポートされます。
 
-- 特定の種類のノードのみで実行するように制限できます。 たとえば、ヘッド ノードやワーカー ノードなどです。
-- 保存することも、"*アドホック*" に使うこともできます。
+- スクリプト アクションは、特定の種類のノードのみで実行するように制限できます。 たとえば、ヘッド ノードやワーカー ノードなどです。
+- スクリプト アクションは、永続化することも "*アドホック*" にすることもできます。
 
   - 保存済みスクリプト アクションには一意の名前が必要です。 保存済みスクリプトは、スケーリング操作でクラスターに追加される新しいワーカー ノードをカスタマイズするために使われます。 スケーリング操作が発生したとき、保存済みスクリプトによって、別の種類のノードに変更が適用されることもあります。 たとえば、ヘッド ノードなどです。
   - "*アドホック*" スクリプトは保存されません。 クラスターの作成時に使用されるスクリプト アクションは自動的に保存されます。 スクリプトの実行後にクラスターに追加された worker ノードには適用されません。 後で "*アドホック*" スクリプトを保存済みスクリプトに昇格したり、保存済みスクリプトを "*アドホック*" スクリプトに降格したりすることができます。 失敗したスクリプトは、保存するように指定した場合でも保存されません。
 
-- 実行中にスクリプトによって使用されるパラメーターを受け取ることができます。
-- クラスター ノードでルート レベルの権限を使用して実行されます。
-- Azure portal、Azure PowerShell、Azure CLI、または HDInsight .NET SDK で使用できます。
+- スクリプト アクションは、実行中にスクリプトによって使用されるパラメーターを受け取ることができます。
+- スクリプト アクションは、クラスター ノードでルート レベルの権限を使用して実行されます。
+- スクリプト アクションは、Azure portal、Azure PowerShell、Azure CLI、または HDInsight .NET SDK で使用できます。
 - VM 上のサービス ファイルを削除または変更するスクリプト アクションは、サービスの正常性と可用性に影響を与える可能性があります。
 
 クラスターには、実行されたすべてのスクリプトの履歴が保持されます。 履歴は、昇格または降格の操作のためスクリプトの ID を検索する必要がある場合に便利です。

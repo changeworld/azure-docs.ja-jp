@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 4fbb09a2687673ef96252d8bdb0523d0c5f235ae
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: dc4450fb1e21211b43bc178d94cf4bdfe6da58e1
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104772027"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107256788"
 ---
 # <a name="embedded-sign-in-experience"></a>埋め込みサインイン エクスペリエンス
 
@@ -45,11 +45,11 @@ ms.locfileid: "104772027"
 iframe を使用する場合は、次の点を考慮してください。
 
 - 埋め込みサインインでサポートされるのは、ローカル アカウントのみです。 ほとんどのソーシャル ID プロバイダー (Google や Facebook など) は、サインイン ページがインライン フレーム内にレンダリングされるのをブロックします。
-- iframe 内の Azure AD B2C セッション Cookie はサードパーティの Cookie と見なされるため、特定のブラウザー (シークレット モードの Safari や Chrome など) はこれらの Cookie をブロックまたはクリアし、結果的に望ましくないユーザー エクスペリエンスになります。 この問題を回避するには、アプリケーション ドメイン名と Azure AD B2C ドメインが "*同じオリジン*" を持つようにします。 同じオリジンを使用するには Azure AD B2C テナントの[カスタム ドメインを有効にし](custom-domain.md)、同じオリジンで Web アプリを構成します。 たとえば、 https://app.contoso.com でホストされているアプリケーションは、 https://login.contoso.com で実行されている Azure AD B2C と同じオリジンを持ちます。
+- iframe 内の Azure AD B2C セッション Cookie はサードパーティの Cookie と見なされるため、特定のブラウザー (シークレット モードの Safari や Chrome など) はこれらの Cookie をブロックまたはクリアし、結果的に望ましくないユーザー エクスペリエンスになります。 この問題を回避するには、アプリケーション ドメイン名と Azure AD B2C ドメインが "*同じオリジン*" を持つようにします。 同じオリジンを使用するには Azure AD B2C テナントの[カスタム ドメインを有効にし](custom-domain.md)、同じオリジンで Web アプリを構成します。 たとえば、'https://app.contoso.com ' でホストされているアプリケーションは、'https://login.contoso.com ' で実行されている Azure AD B2C と同じオリジンを持ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Active Directory B2C でのカスタム ポリシーの概要](custom-policy-get-started.md)」にある手順を完了する。
+* 「[Active Directory B2C でのカスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)」にある手順を完了する。
 * ポリシーの[カスタム ドメインを有効にする](custom-domain.md)。
 
 ## <a name="configure-your-policy"></a>ポリシーを構成する

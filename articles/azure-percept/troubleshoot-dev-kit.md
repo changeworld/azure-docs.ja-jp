@@ -5,25 +5,22 @@ author: mimcco
 ms.author: mimcco
 ms.service: azure-percept
 ms.topic: how-to
-ms.date: 02/18/2021
+ms.date: 03/25/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 826759907bfe5ec3359bf5c9125909466372c68f
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: c9c62ec07873272b956877ec51d8765ae0bbd100
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104608148"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105605639"
 ---
-# <a name="azure-percept-dk-dev-kit-troubleshooting"></a>Azure Percept DK (開発キット) のトラブルシューティング
+# <a name="azure-percept-dk-troubleshooting"></a>Azure Percept DK のトラブルシューティング
 
 Azure Percept DK の一般的なトラブルシューティングのヒントについては、以下のガイダンスを参照してください。
 
 ## <a name="general-troubleshooting-commands"></a>一般的なトラブルシューティング コマンド
 
-これらのコマンドを実行するには、次のようにします。 
-1. [開発キットの Wi-Fi AP](./quickstart-percept-dk-set-up.md) に接続します
-1. [開発キットに SSH で接続](./how-to-ssh-into-percept-dk.md)します
-1. SSH ターミナルにコマンドを入力します
+これらのコマンドを実行するには、 [SSH で開発キットに接続](./how-to-ssh-into-percept-dk.md)し、コマンドを SSH クライアント プロンプトに入力します。
 
 詳しく分析するために、出力を .txt ファイルにリダイレクトするには、次の構文を使用します。
 
@@ -43,9 +40,9 @@ sudo chmod 666 [file name].txt
 scp [remote username]@[IP address]:[remote file path]/[file name].txt [local host file path]
 ```
 
-```[local host file path]``` は、.txt ファイルのコピー先となるホスト PC 上の場所を指します。 ```[remote username]``` は、[セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md)中に選択された SSH ユーザー名です。 OOBE 中に SSH ログインを設定しなかった場合、リモートユーザー名は ```root``` になります。
+```[local host file path]``` は、.txt ファイルのコピー先となるホスト PC 上の場所を指します。 ```[remote username]``` は、[セットアップ エクスペリエンス](./quickstart-percept-dk-set-up.md)中に選択された SSH ユーザー名です。
 
-Azure IoT Edge コマンドの詳細については、[Azure IoT Edge デバイスのトラブルシューティングに関するドキュメント](https://docs.microsoft.com/azure/iot-edge/troubleshoot)を参照してください。
+Azure IoT Edge コマンドの詳細については、[Azure IoT Edge デバイスのトラブルシューティングに関するドキュメント](../iot-edge/troubleshoot.md)を参照してください。
 
 |カテゴリ:         |コマンド:                    |関数:                  |
 |------------------|----------------------------|---------------------------|
@@ -88,11 +85,11 @@ sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u 
 |```sudo docker image prune``` |[未解決のイメージをすべて削除します](https://docs.docker.com/engine/reference/commandline/image_prune/) |
 |```sudo watch docker ps``` <br> ```watch ifconfig [interface]``` |Docker コンテナーのダウンロード状態を確認します |
 
-## <a name="usb-updating"></a>USB の更新
+## <a name="usb-updates"></a>USB の更新
 
 |エラー:                                    |解決方法:                                               |
 |------------------------------------------|--------------------------------------------------------|
-|LIBUSB_ERROR_XXX during USB flash via UUU (UUU での USB フラッシュ中に LIBUSB_ERROR_XXX が発生しました) |このエラーは、UUU 更新中に USB 接続に失敗したことが原因で発生します。 PE-10X または PC 上の USB ポートに USB ケーブルが適切に接続されていない場合、この形式のエラーが発生します。 USB ケーブルの両端を抜いてから再度差し込み、ケーブルを軽く揺すって、しっかり接続されていることを確認します。 ほとんどの場合、これで問題は解決します。 |
+|LIBUSB_ERROR_XXX during USB flash via UUU (UUU での USB フラッシュ中に LIBUSB_ERROR_XXX が発生しました) |このエラーは、UUU 更新中に USB 接続に失敗したことが原因で発生します。 PC 上の USB ポートまたはPercept DK キャリア ボードに USB ケーブルが適切に接続されていない場合、この形式のエラーが発生します。 USB ケーブルの両端を抜いてから再度つなぎ、ケーブルを軽く揺すって、しっかり接続されていることを確認します。 ほとんどの場合、これで問題は解決します。 |
 
 ## <a name="azure-percept-dk-carrier-board-led-states"></a>Azure Percept DK キャリア ボードの LED の状態
 
@@ -105,5 +102,3 @@ sudo journalctl -u hostapd.service -u wpa_supplicant.service -u ztpd.service -u 
 |LED 2 (Wi-Fi)   |高速点滅 |認証に成功しました。デバイスの関連付けを行っています。 |
 |LED 2 (Wi-Fi)   |オン (点灯) |認証と関連付けに成功しました。デバイスは Wi-Fi ネットワークに接続されています。 |
 |LED 3           |NA         |LED が使用されていません。 |
-
-

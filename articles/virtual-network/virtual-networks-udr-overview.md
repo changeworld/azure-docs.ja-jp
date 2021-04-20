@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/26/2017
+ms.date: 03/26/2021
 ms.author: aldomel
-ms.openlocfilehash: 512694d75bace40f33e346d28289f62e2adb04b8
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "98221016"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105732603"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -96,6 +96,38 @@ Azure でカスタムまたはユーザー定義（静的）のルートを作�
 
 ユーザー定義ルートでは、ネクストホップの種類として **VNet ピアリング** または **VirtualNetworkServiceEndpoint** を指定することはできません。 ネクストホップの種類が **VNet ピアリング** または **VirtualNetworkServiceEndpoint** のルートは、仮想ネットワーク ピアリングまたはサービス エンドポイントを構成したときに、Azure によって作成されます。
 
+### <a name="service-tags-for-user-defined-routes-preview"></a>ユーザー定義ルートのサービス タグ (プレビュー)
+
+明示的な IP 範囲の代わりに、ユーザー定義ルートのアドレス プレフィックスとして[サービス タグ](service-tags-overview.md)を指定できるようになりました。 サービス タグは、指定された Azure サービスからの IP アドレス プレフィックスのグループを表します。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変更されるとサービス タグは自動的に更新されます。これにより、ユーザー定義ルートに対する頻繁な更新の複雑さを最小限に抑えることができ、作成する必要があるルートの数を削減できます。 現在、各ルート テーブルで、サービス タグを含む 25 個以下のルートを作成できます。 </br>
+
+> [!IMPORTANT]
+> ユーザー定義ルートのサービス タグは、現在プレビューの段階です。 このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+#### <a name="exact-match"></a>完全一致
+明示的な IP プレフィックスを持つルートとサービス タグを持つルートの間で完全にプレフィックスが一致する場、明示的なプレフィックスを持つルートに対して優先権が与えられます。 サービス タグを持つ複数のルートが IP プレフィックスに一致する場合、ルートは次の順序で評価されます。 
+
+   1. リージョン タグ (例: Storage.EastUS、AppService.AustraliaCentral)
+   2. トップ レベル タグ (例: Storage、AppService)
+   3. AzureCloud リージョン タグ (例: AzureCloud.canadacentral、AzureCloud.eastasia)
+   4. AzureCloud タグ </br></br>
+
+この機能を使用するには、route table コマンドの address prefix パラメーターにサービス タグ名を指定します。 たとえば、Powershell で、以下を使用することで、Azure Storage IP プレフィックスに送信されたトラフィックを仮想アプライアンスに移動させる新しいルートを作成できます。 </br>
+
+```azurepowershell-interactive
+New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
+```
+
+CLI の同じコマンドは次のようになります。 </br>
+
+```azurecli-interactive
+az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
+```
+</br>
+
+
+> [!NOTE] 
+> パブリック プレビューの段階では、いくつかの制限があります。 現在、この機能は Azure portal ではサポートされておらず、Powershell と CLI でのみ使用できます。 コンテナーでの使用はサポートされていません。 
+
 ## <a name="next-hop-types-across-azure-tools"></a>Azure ツールにおけるネクストホップの種類
 
 ネクストホップの種類として表示および参照される名前は、Azure Portal とコマンド ライン ツール、および Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルで異なります。 各種ツールと[デプロイメント モデル](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) で各ネクストホップの種類を指す際に使用される名前を次の表に示します。
@@ -109,6 +141,8 @@ Azure でカスタムまたはユーザー定義（静的）のルートを作�
 |なし                            |なし                                            |Null (asm モードのクラシック CLI では使用不可)|
 |仮想ネットワーク ピアリング         |VNET ピアリング                                    |適用なし|
 |仮想ネットワーク サービス エンドポイント|VirtualNetworkServiceEndpoint                   |適用なし|
+
+
 
 ### <a name="border-gateway-protocol"></a>ボーダー ゲートウェイ プロトコル
 

@@ -10,14 +10,15 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 02/16/2021
+ms.custom: references_regions
+ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: 618617d3602e45ebb15314c7cc5f6898a73bb71f
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: c2465d845da9dd9c2c1690c39a8f1d1c7e86899f
+ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203727"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106075714"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -32,9 +33,31 @@ ms.locfileid: "102203727"
 
 ## <a name="march-2021"></a>2021 年 3 月
 
+### <a name="audio-analysis"></a>音声分析 
+
 音声分析が、さまざまな価格で新たに追加された音声機能のバンドルで利用できるようになりました。 新しい **基本音声** 分析プリセットは、音声の文字起こしの抽出、出力キャプションと字幕の書式設定のみを備えた低コストのオプションです。 **基本音声** プリセットからは、2 つの別個の測定 (文字起こし分、およびキャプションと字幕の書式設定分) が生成されて請求書に計上されます。 価格の詳細については、[Media Services の価格](https://azure.microsoft.com/pricing/details/media-services/)に関する記事を参照してください。
 
 新たに追加されたバンドルは、 **[詳細設定] オプション** ->  **[Basic Audio]\(基本音声\)** プリセット ( **[Video + audio indexing]\(ビデオ + 音声インデックス作成\)** のドロップダウン ボックス) を選択して、ファイルのインデックスを作成または再作成したときに使用できます。
+
+### <a name="new-developer-portal"></a>新しい開発者ポータル 
+
+Video Indexer の[開発者ポータル](https://api-portal.videoindexer.ai/)が新しくなりました。新しい Video Indexer API をお試しください。[GitHub リポジトリ](https://github.com/Azure-Samples/media-services-video-indexer)、[スタック オーバーフロー](https://stackoverflow.com/questions/tagged/video-indexer)、関連するブログ記事が含まれた [Video Indexer の技術コミュニティ](https://techcommunity.microsoft.com/t5/azure-media-services/bg-p/AzureMediaServices/label-name/Video%20Indexer)、[Video Indexer の FAQ](faq.md)、フィードバックを提供し、機能を提案するための[ユーザーの声](https://feedback.azure.com/forums/932041-cognitive-services?category_id=399016)、およびウィジェット コード サンプルが含まれた ["CodePen" リンク](https://codepen.io/videoindexer)など、関連するすべてのリソースが 1 か所で見つかります。 
+ 
+### <a name="advanced-customization-capabilities-for-insight-widget"></a>分析情報ウィジェットの高度なカスタマイズ機能 
+
+Video Indexer の分析情報ウィジェットを独自のサービスに埋め込んで、そのスタイルとデータをカスタマイズするための SDK が利用可能になりました。 SDK では、標準の Video Indexer 分析情報ウィジェットと、完全にカスタマイズ可能な分析情報ウィジェットがサポートされています。 [Video Indexer GitHub リポジトリ](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets/widget-customization)からコード サンプルを入手できます。 この高度なカスタマイズ機能を使用すると、ソリューション開発者はカスタム スタイル設定を適用し、(Video Indexer の分析情報の有無に関係なく) 顧客独自の AI データを取り込んで分析情報ウィジェットに表示できます。 
+
+### <a name="video-indexer-deployed-in-the-us-north-central--us-west-and-canada-central"></a>Video Indexer が米国中北部、米国西部、カナダ中部にデプロイされました 
+
+米国中北部、米国西部、およびカナダ中部のリージョンで Video Indexer の有料アカウントを作成できるようになりました。
+ 
+### <a name="new-source-languages-support-for-speech-to-text-stt-translation-and-search"></a>音声テキスト変換 (STT)、翻訳、検索に対する新しいソース言語のサポート 
+
+Video Indexer では、デンマーク語 ("da-DK")、ノルウェー語 ("nb-NO")、スウェーデン語 ("sv-SE")、フィンランド語 ("fi-FI")、カナダ フランス語 ("fr-CA")、タイ語 ("th-TH")、アラビア語 ("ar-BH"、"ar-EG"、"ar-IQ"、"ar-JO"、"ar-KW"、"ar-LB"、"ar-OM"、"ar-QA"、"ar-S"、"ar-SY")、およびトルコ語 ("tr-TR") で、STT、翻訳、および検索がサポートされるようになりました。 これらの言語は、API と Video Indexer Web サイトの両方で使用できます。 
+ 
+### <a name="search-by-topic-in-video-indexer-website"></a>Video Indexer Web サイトでトピックで検索する 
+
+[Video Indexer Web サイト](https://www.videoindexer.ai/account/login) ページの上部にある検索機能を使用して、特定のトピックでビデオを検索できるようになりました。 
 
 ## <a name="february-2021"></a>2021 年 2 月
 

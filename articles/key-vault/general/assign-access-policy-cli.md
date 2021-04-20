@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault アクセス ポリシーを割り当てる (CLI)
-description: Azure CLI を使用して、サービス プリンシパルまたはアプリケーション ID に Key Vault アクセス ポリシーを割り当てる方法について説明します。
+description: Azure CLI を使用して、セキュリティ プリンシパルまたはアプリケーション ID に Key Vault アクセス ポリシーを割り当てる方法について。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,16 +10,16 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0c7910ac149c8de43eeac92913a0d314fcc1854e
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: a9dc03f776ac430072e456332955cbfc75d73bf2
+ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97934579"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105968851"
 ---
 # <a name="assign-a-key-vault-access-policy"></a>Key Vault アクセス ポリシーを割り当てる
 
-Key Vault アクセス ポリシーは、特定のサービス プリンシパル (アプリケーションまたはユーザー グループ) が、Key Vault の[シークレット](../secrets/index.yml)、[キー](../keys/index.yml)、および[証明書](../certificates/index.yml)に対して、さまざまな操作を実行できるかどうかを決定します。 アクセス ポリシーは、Azure portal、[Azure CLI (この記事)](assign-access-policy-portal.md)、または [Azure PowerShell](assign-access-policy-powershell.md) を使用して割り当てることができます。
+Key Vault アクセス ポリシーは、特定のセキュリティ プリンシパル (ユーザー、アプリケーション、またはユーザー グループ) が、Key Vault の[シークレット](../secrets/index.yml)、[キー](../keys/index.yml)、および[証明書](../certificates/index.yml)に対して、さまざまな操作を実行できるかどうかを決定します。 アクセス ポリシーは、Azure portal、[Azure CLI (この記事)](assign-access-policy-portal.md)、または [Azure PowerShell](assign-access-policy-powershell.md) を使用して割り当てることができます。
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
@@ -69,7 +69,7 @@ Azure Active Directory での Azure CLI を使用したグループの作成の�
 az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permissions <secret-permissions> --key-permissions <key-permissions> --certificate-permissions <certificate-permissions>
 ```
 
-`<object-id>` をサービス プリンシパルのオブジェクト ID に置き換えます。
+`<object-id>` を、お使いのセキュリティ プリンシパルのオブジェクト ID に置き換えます。
 
 これらの特定の種類にアクセス許可を割り当てるときに含める必要があるのは、`--secret-permissions`、`--key-permissions`、`--certificate-permissions` のみです。 `<secret-permissions>`、`<key-permissions>`、`<certificate-permissions>` に使用できる値は、[az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) ドキュメントに記載されています。
 

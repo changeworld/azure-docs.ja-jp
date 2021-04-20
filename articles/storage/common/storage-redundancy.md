@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/02/2021
+ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 7ecf3d23f745d9281008433eee471c14c7afe337
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 37e508a0f4af940773a92271075239c204e52834
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104802201"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107010715"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -73,7 +73,7 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 
 | ストレージ アカウントの種類 | サポートされているリージョン | サポートされているサービス |
 |--|--|--|
-| 汎用 v2<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br />  西ヨーロッパ<br /> フランス中部<br /> 東日本<br /> 南アフリカ北部<br /> 英国南部<br /> 米国中部<br /> 米国東部<br /> 米国東部 2<br /> 米国西部 2 | ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
+| 汎用 v2<sup>1</sup> | (アフリカ) 南アフリカ北部<br /> (アジア太平洋) 東アジア<br /> (アジア太平洋) 東南アジア<br /> (アジア太平洋) オーストラリア東部<br /> (アジア太平洋) インド中部<br /> (アジア太平洋) 東日本<br /> (アジア太平洋) 韓国中部<br /> (カナダ) カナダ中部<br /> (ヨーロッパ) 北ヨーロッパ<br /> (ヨーロッパ) 西ヨーロッパ<br /> (ヨーロッパ) フランス中部<br /> (ヨーロッパ) ドイツ中西部<br /> (ヨーロッパ) ノルウェー東部<br /> (ヨーロッパ) スイス北部<br /> (ヨーロッパ) 英国南部<br /> (中東) アラブ首長国連邦北部<br /> (南アメリカ) ブラジル南部<br /> (米国) 米国中部<br /> (米国) 米国東部<br /> (米国) 米国東部 2<br /> (米国) 米国中北部<br />(米国) 米国中南部<br /> (米国) 米国西部<br /> (米国) 米国西部 2 | ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
 | BlockBlobStorage<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2| Premium ブロック BLOB のみ |
 | FileStorage | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2 | Premium ファイル共有のみ |
 
@@ -127,15 +127,30 @@ GZRS と RA-GZRS は、汎用 v2 ストレージ アカウントでのみサポ�
 
 GZRS と RA-GZRS は、次のリージョンでサポートされています。
 
-- 東南アジア
-- 北ヨーロッパ
-- 西ヨーロッパ
-- 東日本
-- 英国南部
-- 米国中部
-- 米国東部
-- 米国東部 2
-- 米国西部 2
+- (アフリカ) 南アフリカ北部
+- (アジア太平洋) 東アジア
+- (アジア太平洋) 東南アジア
+- (アジア太平洋) オーストラリア東部
+- (アジア太平洋) インド中部
+- (アジア太平洋) 東日本
+- (アジア太平洋) 韓国中部
+- (カナダ) カナダ中部
+- (ヨーロッパ) 北ヨーロッパ
+- (ヨーロッパ) 西ヨーロッパ
+- (ヨーロッパ) フランス中部
+- (ヨーロッパ) ドイツ中西部
+- (ヨーロッパ) ノルウェー東部
+- (ヨーロッパ) スイス北部
+- (ヨーロッパ) 英国南部
+- (中東) アラブ首長国連邦北部
+- (南アメリカ) ブラジル南部
+- (米国) 米国中部
+- (米国) 米国東部
+- (米国) 米国東部 2
+- (米国) 米国中北部
+- (米国) 米国中南部
+- (米国) 米国西部
+- (米国) 米国西部 2
 
 価格については、[BLOB](https://azure.microsoft.com/pricing/details/storage/blobs)、[Files](https://azure.microsoft.com/pricing/details/storage/files/)、[Queues](https://azure.microsoft.com/pricing/details/storage/queues/)、[Tables](https://azure.microsoft.com/pricing/details/storage/tables/) の価格の詳細を参照してください。
 

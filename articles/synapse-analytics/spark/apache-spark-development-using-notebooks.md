@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: d5ff3fb988a7e907308ccccc8d0900d45a0601c0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101671606"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612327"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio ノートブックを作成、開発、管理する
 
@@ -41,9 +41,6 @@ Synapse チームは、Microsoft のお客様に一貫したノートブック �
 |%%html| サポートされていません |&#9745;|
 |ドラッグ アンド ドロップでセルを移動する| サポートされていません |&#9745;|
 |Display() の出力を永続化する|&#9745;| 使用できません |
-|すべてを取り消す| &#9745;| 使用できません|
-|上のすべてのセルを実行する|&#9745;| 使用できません |
-|下のすべてのセルを実行する|&#9745;| 使用できません |
 |ツールバー ボタンを使用してテキスト セルを書式設定する|&#9745;| 使用できません |
 |セルの操作を元に戻す| &#9745;| 使用できません |
 
@@ -115,7 +112,7 @@ Azure Synapse Studio ノートブックでは、次の 4 つの Apache Spark 言
 
    ![Synapse spark マジック コマンド](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
-### <a name="use-temp-tables-to-reference-data-across-languages"></a>一時テーブルを使用して言語間でデータを参照する
+### <a name="use-temp-tables-to-reference-data-across-languages&quot;></a>一時テーブルを使用して言語間でデータを参照する
 
 Synapse Studio ノートブックでは、異なる言語間でデータや変数を直接参照することはできません。 Spark では、複数の言語間で一時テーブルを参照することができます。 以下は、回避策として Spark の一時テーブルを使用して、`PySpark` および `SparkSQL` で `Scala` DataFrame を読み取る方法の例です。
 
@@ -123,7 +120,7 @@ Synapse Studio ノートブックでは、異なる言語間でデータや変�
 
    ```scala
    %%scala
-   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
+   val scalaDataFrame = spark.read.sqlanalytics(&quot;mySQLPoolDatabase.dbo.mySQLPoolTable")
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 
@@ -273,28 +270,38 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
    ![run-all-cells](./media/apache-spark-development-using-notebooks/synapse-run-all.png)
 
 
-# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
-
 ### <a name="run-all-cells-above-or-below"></a>上または下のすべてのセルを実行する
+
+# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 
 右端にある追加のセル アクション メニューにアクセスするには、省略記号 ( **...** ) を選択します。その後、 **[Run cells above]\(上のセルの実行\)** を選択して、現在のセルの上にあるものをすべて順に実行します。 現在のセルの下にあるものをすべて実行するには、 **[Run cells below]\(下のセルの実行\)** を選択します。
 
    ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
+# <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
+
+**[すべて実行]** ボタンからドロップダウン リストを展開し、 **[Run cells above]\(上のセルの実行\)** を選択して、現在のセルの上にあるものをすべて順に実行します。 現在のセルの下にあるものをすべて実行するには、 **[Run cells below]\(下のセルの実行\)** を選択します。
+
+   ![azure-notebook-run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-aznb-run-cells-above-or-below.png)
+
+---
 
 ### <a name="cancel-all-running-cells"></a>実行中のすべてのセルを取り消す
+
+# <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 実行中のセルまたはキューで待機しているセルを取り消すには、 **[すべて取り消し]** ボタンを選択します。 
    ![cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
-プレビュー版ノートブック エクスペリエンスでは、実行中のすべてのセルを取り消すことがまだできません。 
+実行中のセルまたはキューで待機しているセルを取り消すには、 **[すべて取り消し]** ボタンを選択します。 
+   ![azure-notebook-cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-aznb-cancel-all.png) 
 
 ---
 
 
 
-### <a name="reference-notebook"></a>参照ノートブック
+### <a name="notebook-reference"></a>ノートブック参照
 
 # <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 
@@ -305,6 +312,11 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 ```%run <notebook path>``` マジック コマンドを使用して、現在のノートブックのコンテキスト内で別のノートブックを参照することができます。 参照ノートブックで定義されているすべての変数を、現在のノートブックで使用できます。 ```%run``` マジック コマンドでは、入れ子になった呼び出しはサポートされますが、再帰呼び出しはサポートされません。 ステートメントの深さが 5 を超えると、例外が発生します。 現在 ```%run``` コマンドでは、ノートブック パスをパラメーターとして渡すことのみが可能です。 
 
 例: ``` %run /path/notebookA ```.
+
+> [!NOTE]
+> ノートブック参照は、Synapse パイプラインではサポートされていません。
+>
+>
 
 ---
 
@@ -346,7 +358,10 @@ Azure Synapse Studio ノートブックは、純粋に Spark ベースです。 
     }
 }
 ```
-
+> [!NOTE]
+> Spark セッション構成マジック コマンドは、Synapse パイプラインではサポートされていません。
+>
+>
 
 ## <a name="bring-data-to-a-notebook"></a>データをノートブックに取り込む
 
@@ -420,6 +435,11 @@ df = spark.read.option("header", "true") \
 ## <a name="magic-commands"></a>マジック コマンド
 Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジック コマンドを使用できます。 以下の一覧で、現在使用可能なマジック コマンドを確認してください。 ユーザーのニーズに合ったマジック コマンドを引き続き作成できるよう、[GitHub でユース ケース](https://github.com/MicrosoftDocs/azure-docs/issues/new)についてお知らせください。
 
+> [!NOTE]
+> Synapse パイプラインでは、次のマジック コマンドのみがサポートされています: %%pyspark、%%spark、%%csharp、%%sql。 
+>
+>
+
 # <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 
 使用可能なライン マジック: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)
@@ -430,7 +450,7 @@ Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジ�
 
 # <a name="preview-notebook"></a>[プレビュー版ノートブック](#tab/preview)
 
-使用可能なライン マジック: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history)、[%run](#reference-notebook)、[%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+使用可能なライン マジック: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic)、[%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history)、[%run](#notebook-reference)、[%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
 使用可能なセル マジック: [%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time)、[%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit)、[%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture)、[%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile)、[%%sql](#use-multiple-languages)、[%%pyspark](#use-multiple-languages)、[%%spark](#use-multiple-languages)、[%%csharp](#use-multiple-languages)、[%%html](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html)、[%%configure](#spark-session-config-magic-command)
 

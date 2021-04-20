@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 9e48d8f55efa8bc4c82eaa973a6feaeb42390064
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: cf8869002fb3e0170331709af3da5b971a098740
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104578776"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612400"
 ---
 # <a name="overview-of-shared-device-mode"></a>共有デバイス モードの概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "104578776"
 >[!IMPORTANT]
 > iOS デバイスの共有デバイス モード[!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-## <a name="what-are-frontline-workers"></a>現場担当者とは
+## <a name="what-are-frontline-workers"></a>現場担当者とは。
 
 現場担当者とは、小売業の従業員、メンテナンス業者、保険募集人、医療従事者など、コンピューターを使用しないユーザーや、共同作業をするために会社の電子メールを使用しないユーザーのことです。 次のセクションでは、現場担当者のサポートに関する側面と課題について説明した後、組織の現場担当者によるアプリケーションの使用を可能にする Microsoft の機能について紹介します。
 

@@ -16,12 +16,12 @@ ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f08c25749bbd21e3624dee898d9a8c97fd74164
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b6a1ead2fe3c1ec4e2206d1ffbaea4e5ec57433
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98059383"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222523"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -42,7 +42,7 @@ Azure Active Directory (Azure AD) のエンタイトルメント管理を利用�
 - Graphic Design Institute では、Azure AD を使用しており、ユーザーは、末尾が *graphicdesigninstitute.com* のユーザー プリンシパル名を持っています。
 - Contoso ではまだ Azure AD を使用していません。 Contoso のユーザーは、末尾が *contoso.com* のユーザー プリンシパル名を持っています。
 
-この場合、2 つの接続された組織を構成できます。 Graphic Design Institute 用に 1 つの接続された組織、そして Contoso 用にもう 1 つを作成します。 その後、これらの 2 つの接続された組織をポリシーに追加すると、ポリシーに一致するユーザー プリンシパル名を持つ各組織のユーザーがアクセス パッケージを要求できるようになります。 *graphicdesigninstitute.com* のドメインを持つユーザー プリンシパル名を使用するユーザーは、Graphic Design Institute の接続された組織に一致し、要求を送信することを許可されます。 *contoso.com* のドメインを持つユーザー プリンシパル名を使用するユーザーは、Contoso の接続された組織に一致し、同様にパッケージの要求を許可されます。 そして、Graphic Design Institute は Azure AD を使用しているため、[検証済みドメイン](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name)に一致するプリンシパル名を持つユーザーはテナントに追加されます。たとえば、*graphicdesigninstitute.example* も同じポリシーを使用してアクセス パッケージを要求することができます。
+この場合、2 つの接続された組織を構成できます。 Graphic Design Institute 用に 1 つの接続された組織、そして Contoso 用にもう 1 つを作成します。 その後、これらの 2 つの接続された組織をポリシーに追加すると、ポリシーに一致するユーザー プリンシパル名を持つ各組織のユーザーがアクセス パッケージを要求できるようになります。 contoso.com のドメインを持つユーザー プリンシパル名を使用するユーザーは、Contoso の接続された組織に一致し、同様にパッケージの要求を許可されます。 *graphicdesigninstitute.com* のドメインを持つユーザー プリンシパル名を使用するユーザーは、Graphic Design Institute の接続された組織に一致し、要求を送信することを許可されます。 そして、Graphic Design Institute は Azure AD を使用しているため、[検証済みドメイン](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name)に一致するプリンシパル名を持つユーザーはテナントに追加されます。たとえば、*graphicdesigninstitute.example* も同じポリシーを使用してアクセス パッケージを要求することができます。 [電子メール ワンタイム パスコード (OTP) 認証](../external-identities/one-time-passcode.md)が有効になっている場合、リソースにアクセスするときに電子メール OTP を使用して認証する、Azure AD アカウントをまだ持っていないドメインのユーザーが含まれます。 
 
 ![接続されている組織の例](./media/entitlement-management-organization/connected-organization-example.png)
 

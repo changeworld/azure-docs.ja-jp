@@ -3,22 +3,22 @@ title: コンテナー イメージのインポート
 description: Azure API を使用することで、Docker コマンドを実行することなく、Azure コンテナー レジストリにコンテナー イメージをインポートします。
 ms.topic: article
 ms.date: 01/15/2021
-ms.openlocfilehash: e6976f854b449f68faedd51878c2f3a7fe75cb0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b481a2b4f0a08f0ccbfd33f7059e5d8e0c04f5f0
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99988251"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106221502"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>コンテナー レジストリにコンテナー イメージをインポートする
 
 Docker コマンドを使用せず、Azure コンテナー レジストリにコンテナー イメージを簡単にインポート (コピー) できます。 たとえば、開発レジストリのイメージを運用レジストリにインポートしたり、パブリック レジストリから基本イメージをコピーしたりすることができます。
 
-Azure Container Registry では、複数の一般的なシナリオに対応して、既存のレジストリからイメージをコピーできます。
+Azure Container Registry は、既存のレジストリからイメージおよびその他の成果物をコピーする複数の一般的なシナリオに対応しています。
 
-* パブリック レジストリからインポートする
+* パブリック レジストリからイメージをインポートする
 
-* (同じまたは別の Azure サブスクリプションまたはテナント内にある) 別の Azure コンテナー レジストリからインポートする
+* 同じまたは別の Azure サブスクリプションまたはテナント内にある別の Azure コンテナー レジストリから Helm 3 グラフを含むイメージまたは OCI 成果物をインポートする
 
 * Azure 以外のプライベート コンテナー レジストリからインポートする
 

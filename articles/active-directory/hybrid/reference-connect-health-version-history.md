@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 08/10/2020
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7653f850edc910fc78b14a628b87dcb22aeb903
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 408e972eb5950baa75fa1bdf33fb2cd507154bcb
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "89279416"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612842"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。  
@@ -32,12 +32,25 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 
 Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](./reference-connect-version-history.md)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
 
+## <a name="march-2021"></a>2021 年 3 月
+**エージェントの更新**
+
+- AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.95.0)
+
+  - サインイン イベント時に NT4 形式のユーザー名が UPN に解決されるように修正しました。
+  - 専用のエラー コードで不適切なアプリケーション識別子シナリオが示されるように修正しました。
+  - OAuth クライアント識別子の新しいプロパティを追加するために変更を加えました。
+  - 特定のサインイン シナリオに関する Azure AD サインイン レポートの **[プロトコル]** および **[認証の種類]** フィールドに正しい値が表示されるように修正しました。
+  - Azure AD サインイン レポートの [IP チェーン] フィールドに IP アドレスが要求の順序で表示されるように修正しました。
+  - サインイン時にセカンダリ認証が要求されたかどうかを区別する新しいフィールドを導入するために変更を加えました。
+  - Azure AD サインイン レポートに AD FS アプリケーション識別子のプロパティが表示されるように修正しました。
+
 ## <a name="april-2020"></a>2020 年 4 月
 **エージェントの更新**
 
 - AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.77.0)
 
-   1.   アラートが誤って報告されていた "AD FS サービスのサービス プリンシパル名 (SPN) が無効" アラートのバグを修正しました。
+   - アラートが誤って報告されていた "AD FS サービスのサービス プリンシパル名 (SPN) が無効" アラートのバグを修正しました。
 
 
 ## <a name="july-2019"></a>2019 年 7 月

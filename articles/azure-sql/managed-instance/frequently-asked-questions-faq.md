@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 17e97503996b53868f12e74ed5a38dba63285426
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: 9faaf79958443c252a8d913fbd7448389c610e09
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102503200"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105628579"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -135,7 +135,7 @@ Managed Instance は、Azure portal、[PowerShell](/powershell/module/az.sql/rem
 
 1 つの方法として、[データベースを BACPAC にエクスポート](../database/database-export.md)し、その [BACPAC ファイルをインポート](../database/database-import.md)します。 データベースが 100 GB 未満の場合は、これが推奨される方法です。
 
-データベース内のすべてのテーブルに *主* キーがあり、データベース内にインメモリ OLTP オブジェクトが一切ない場合は、[トランザクション レプリケーション](replication-two-instances-and-sql-server-configure-tutorial.md?view=sql-server-2017&preserve-view=true)を使用できます。
+データベース内のすべてのテーブルに *主* キーがあり、データベース内にインメモリ OLTP オブジェクトが一切ない場合は、[トランザクション レプリケーション](replication-two-instances-and-sql-server-configure-tutorial.md)を使用できます。
 
 マネージド インスタンスから取得したネイティブの COPY_ONLY バックアップを SQL Server に復元することはできません。マネージド インスタンスには、SQL Server と比較して新しいバージョンのデータベースがあるためです。 詳細については、「[コピーのみのバックアップ](/sql/relational-databases/backup-restore/copy-only-backups-sql-server?preserve-view=true&view=sql-server-ver15)」を参照してください。
 
@@ -171,7 +171,7 @@ SQL Server インスタンスを移行するには、「[Azure SQL Managed Insta
 
 次の方法で、マネージド インスタンスのパフォーマンスを最適化することができます。
 - [自動チューニング](../database/automatic-tuning-overview.md)では、AI と機械学習に基づく継続的なパフォーマンス チューニングによって、最大限のパフォーマンスと安定したワークロードが実現されます。
--   [インメモリ OLTP](../in-memory-oltp-overview.md) では、トランザクション処理ワークロードのスループットと待機時間が改善され、ビジネスの分析情報がより迅速に提供されます。 
+-    [インメモリ OLTP](../in-memory-oltp-overview.md) では、トランザクション処理ワークロードのスループットと待機時間が改善され、ビジネスの分析情報がより迅速に提供されます。 
 
 パフォーマンスをさらにチューニングするには、[アプリケーションとデータベースのチューニング](../database/performance-guidance.md#tune-your-database)の *ベスト プラクティス* をいくつか適用することを検討してください。
 ワークロードが多数の小さなトランザクションで構成されている場合は、待機時間を短縮しスループットを向上させるために[接続の種類をプロキシからリダイレクト モードに切り替える](connection-types-overview.md#changing-connection-type)ことを検討してください。
@@ -214,7 +214,7 @@ SQL Managed Instance のストレージ サイズは選択したサービス レ
 
 **General Purpose サービス レベルでストレージのパフォーマンスを最適化するにはどうすればよいですか?**
 
-ストレージのパフォーマンスを最適化するには、「[General Purpose でのストレージのベスト プラクティス](https://techcommunity.microsoft.com)」を参照してください。
+ストレージのパフォーマンスを最適化するには、「[General Purpose でのストレージのベスト プラクティス](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)」を参照してください。
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 
@@ -263,9 +263,9 @@ SQL Managed Instance は、管理ポートにルールを設定する役割を�
 **NVA またはオンプレミスのファイアウォールを設定して、FQDN に基づいて送信管理トラフィックをフィルター処理できますか?**
 
 いいえ。 これは、いくつかの理由によりサポートされていません。
--   受信した管理要求への応答を表すトラフィックのルーティングは非対称であり、機能しない可能性があります。
--   ストレージにルーティングされるトラフィックは、スループットの制約と待機時間の影響を受けるため、期待するサービスの品質と可用性を提供することはできません。
--   経験則に基づくと、これらの構成はエラーが発生しやすく、サポートすることは困難です。
+-    受信した管理要求への応答を表すトラフィックのルーティングは非対称であり、機能しない可能性があります。
+-    ストレージにルーティングされるトラフィックは、スループットの制約と待機時間の影響を受けるため、期待されるサービスの品質と可用性は提供できません。
+-    経験則に基づくと、これらの構成はエラーが発生しやすく、サポートすることは困難です。
 
 **送信する管理以外のトラフィック用に NVA またはファイアウォールを設定できますか。**
 
@@ -384,7 +384,7 @@ Express Route 回線のピアリングおよびグローバル仮想ネットワ
 
 はい。SQL Managed Instance では Transparent Data Encryption がサポートされています。 詳細については、[SQL Managed Instance の Transparent Data Encryption](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal) に関する記事を参照してください。
 
-**TDE の "Bring Your Own Key" モデルを活用することはできますか?**
+**TDE の "Bring Your Own Key" モデルは活用できますか?**
 
 はい。BYOK シナリオの Azure Key Vault は、Azure SQL Managed Instance で使用できます。 詳細については、[カスタマー マネージド キーを使用した Transparent Data Encryption](../database/transparent-data-encryption-tde-overview.md?tabs=azure-portal#customer-managed-transparent-data-encryption---bring-your-own-key) に関する記事を参照してください。
 
@@ -416,9 +416,9 @@ SQL Managed Instance には、[仮想コアベースの購入モデル](sql-mana
 **SQL Managed Instance では、どのようなコスト面での利点を受けられますか?**
 
 Azure SQL の特典を活用して、次の方法でコストを削減できます。
--   オンプレミスのライセンスに対する既存の投資を最大化し、[Azure ハイブリッド特典](../azure-hybrid-benefit.md?tabs=azure-powershell)で最大 55% 節約できます。 
--   コンピューティング リソースを予約して、[予約インスタンス特典](../database/reserved-capacity-overview.md)で最大 33% 節約できます。 これと Azure ハイブリッド特典を組み合わせて、最大 82% の節約を実現できます。 
--   [Azure Dev/Test の価格特典](https://azure.microsoft.com/pricing/dev-test/)を利用して、進行中の開発とテストのワークロードを割引料金により、定価よりも最大 55% お得になります。
+-    オンプレミスのライセンスに対する既存の投資を最大化し、[Azure ハイブリッド特典](../azure-hybrid-benefit.md?tabs=azure-powershell)で最大 55% 節約できます。 
+-    コンピューティング リソースを予約して、[予約インスタンス特典](../database/reserved-capacity-overview.md)で最大 33% 節約できます。 これと Azure ハイブリッド特典を組み合わせて、最大 82% の節約を実現できます。 
+-    [Azure Dev/Test の価格特典](https://azure.microsoft.com/pricing/dev-test/)を利用して、進行中の開発とテストのワークロードを割引料金により、定価よりも最大 55% お得になります。
 
 **予約インスタンスの特典の対象となるのはだれですか?**
 

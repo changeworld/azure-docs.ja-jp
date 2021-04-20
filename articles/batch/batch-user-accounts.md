@@ -2,21 +2,22 @@
 title: ユーザー アカウントでタスクを実行する
 description: ユーザー アカウントの種類とその構成方法について説明します。
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/25/2021
 ms.custom: seodec18
-ms.openlocfilehash: cce374e7d7ffb513bed882b048ea54bcbad81b0b
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b19e0c10834b3c5215d14c6c5ae20caaacb4bc64
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88719361"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105606608"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
 
 > [!NOTE]
 > この記事で説明するユーザー アカウントは、セキュリティ上の理由により、Remote Desktop Protocol (RDP) や Secure Shell (SSH) で使用されているユーザー アカウントとは異なります。
 >
-> SSH を使用して Linux 仮想マシンの構成を実行しているノードに接続するには「[リモート デスクトップを使用した Azure の Linux VM への接続](../virtual-machines/linux/use-remote-desktop.md)に関するページをご覧ください。 RDP を使用して Windows を実行しているノードに接続するには、[Windows Server VM への接続](../virtual-machines/windows/connect-logon.md)に関するページをご覧ください。<br /><br />
+> SSH を使用して Linux 仮想マシンの構成を実行しているノードに接続するには、[Ubuntu でリモート デスクトップを使用するための xrdp のインストールと構成](../virtual-machines/linux/use-remote-desktop.md)に関するページを参照してください。 RDP を使用して Windows を実行しているノードに接続するには、「[Windows が実行されている Azure 仮想マシンに接続してサインオンする方法](../virtual-machines/windows/connect-logon.md)」を参照してください。
+>
 > RDP を使用してクラウド サービスの構成を実行しているノードに接続するには、「[Azure Cloud Services のロールでのリモート デスクトップ接続の有効化](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)」をご覧ください。
 
 Azure Batch のタスクは、常にユーザー アカウントのもとで実行されます。 既定では、管理者権限のない標準ユーザー アカウントでタスクが実行されます。 特定のシナリオでは、タスクを実行するためのユーザー アカウントを構成したほうが良い場合もあります。 この記事では、ユーザー アカウントの種類、および自分のシナリオに合わせてユーザー アカウントを構成する方法について説明します。
@@ -30,7 +31,7 @@ Azure Batch には、タスクを実行するためのユーザー アカウン�
 - **名前付きユーザー アカウント。** プールを作成するときに、プールに対して 1 つ以上の名前付きユーザー アカウントを指定できます。 各ユーザー アカウントは、プールの各ノード上に作成されます。 アカウント名の他に、ユーザー アカウントのパスワード、昇格レベルを指定し、Linux プールの場合は SSH 秘密キーも指定します。 タスクを追加する場合は、そのタスクを実行する名前付きユーザー アカウントを指定できます。
 
 > [!IMPORTANT]
-> Batch サービス バージョン 2017-01-01.4.0 では互換性を損ねる変更が行われ、このバージョンを呼び出すにはコードを更新する必要があります。 Batch の古いバージョンからコードを移行する場合、**runElevated** プロパティは REST API または Batch クライアント ライブラリではサポートされなくなることに注意してください。 昇格レベルの指定には、タスクの新しい **userIdentity** プロパティを使用してください。 クライアント ライブラリのいずれかを使用する場合は、「[コードを最新の Batch クライアント ライブラリに更新する](#update-your-code-to-the-latest-batch-client-library)」で、Batch コードの更新に関する簡単なガイドラインをご覧ください。
+> Batch サービス バージョン 2017-01-01.4.0 では破壊的変更が行われ、このバージョン以降を呼び出すにはコードを更新する必要があります。 「[コードを最新の Batch クライアント ライブラリに更新する](#update-your-code-to-the-latest-batch-client-library)」で、Batch コードの古いバージョンからの更新に関する簡単なガイドラインをご覧ください。
 
 ## <a name="user-account-access-to-files-and-directories"></a>ファイルとディレクトリへのユーザー アカウント アクセス
 
@@ -77,6 +78,7 @@ Azure Batch には、タスクを実行するためのユーザー アカウン�
 ```csharp
 task.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin, scope: AutoUserScope.Task));
 ```
+
 #### <a name="batch-java"></a>Batch Java
 
 ```java
@@ -278,7 +280,7 @@ task.UserIdentity = new UserIdentity(AdminUserAccountName);
 
 ## <a name="update-your-code-to-the-latest-batch-client-library"></a>コードを最新の Batch クライアント ライブラリに更新する
 
-Batch サービス バージョン 2017-01-01.4.0 では、以前のバージョンで利用可能な **runElevated** プロパティが **userIdentity** プロパティに置き換えられる、互換性を損ねる変更が行われています。 次の表は、クライアント ライブラリの以前のバージョンからコードを更新するのに使用できる、単純なマッピングを提供します。
+Batch サービス バージョン 2017-01-01.4.0 では、以前のバージョンで利用可能な **runElevated** プロパティが **userIdentity** プロパティに置き換えられる、破壊的変更が行われました。 次の表は、クライアント ライブラリの以前のバージョンからコードを更新するのに使用できる、単純なマッピングを提供します。
 
 ### <a name="batch-net"></a>Batch .NET
 

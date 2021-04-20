@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory での差分形式
 description: 差分形式を使用して Delta Lake のデータを変換したり、移動したりする
-author: djpmsft
+author: dcstwh
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.author: daperlov
-ms.openlocfilehash: bb5360a678751b37cf36677fca611b39746621f4
-ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
+ms.date: 03/26/2020
+ms.author: weetok
+ms.openlocfilehash: 6d9d2b0d185750cf8ed8192661f28a2b82d88b78
+ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2021
-ms.locfileid: "100386494"
+ms.lasthandoff: 04/02/2021
+ms.locfileid: "106222540"
 ---
 # <a name="delta-format-in-azure-data-factory"></a>Azure Data Factory での差分形式
 
@@ -75,6 +75,8 @@ source(output(movieId as integer,
 | 圧縮レベル | 圧縮を可能な限り短時間で完了させるか、圧縮後のファイルを最適に圧縮するかを選択します。 | `compressedType` を指定した場合は必須。 | `Optimal` または `Fastest` | compressionLevel |
 | VACUUM | 古いバージョンのテーブルに保持しきい値を時間単位で指定します。 0 以下の既定値は 30 日です。 | はい | Integer | vacuum |
 | 更新方法 | Delta Lake で許可される更新操作を指定します。 挿入ではない方法については、行にマークを付けるために、先行する行の変更変換が必要です。 | はい | `true` または `false` | deletable <br> insertable <br> updateable <br> merge |
+| 最適化された書き込み | Spark Executor の内部シャッフルを最適化することで、書き込み操作のスループットを向上させることができます。 結果として、サイズの大きいパーティションやファイルの数が減ります | no | `true` または `false` | optimizedWrite: true |
+| 自動圧縮 | 書き込み操作が完了すると、Spark によって自動的に ```OPTIMIZE``` コマンドが実行されてデータが再編成されます。これにより、必要に応じてより多くのパーティションが作成され、将来の読み取りパフォーマンスが向上します。 | no | `true` または `false` |    autoCompact: true |
 
 ### <a name="delta-sink-script-example"></a>差分シンク スクリプトの例
 

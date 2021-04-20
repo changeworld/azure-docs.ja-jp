@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: c63ee686ae218a696069465bb8d2d1d7413a998e
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 62296acaba77017cd71227582447b9fa7c4f1934
+ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104799090"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106090241"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -257,13 +257,13 @@ WithParentActivityOrWindow(IWin32Window window)
 // Mac
 WithParentActivityOrWindow(NSWindow window)
 
-// .Net Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
+// .NET Standard (this will be on all platforms at runtime, but only on NetStandard at build time)
 WithParentActivityOrWindow(object parent).
 ```
 
 解説:
 
-- .NET Standard では、想定される `object` は `Activity` (Android の場合)、`UIViewController` (iOS の場合)、`NSWindow` (MAC の場合)、`IWin32Window` または `IntPr` (Windows の場合) です。
+- .NET Standard では、想定される `object` は `Activity` (Android の場合)、`UIViewController` (iOS の場合)、`NSWindow` (Mac の場合)、`IWin32Window` または `IntPr` (Windows の場合) です。
 - Windows では、埋め込みブラウザーが適切な UI 同期コンテキストを取得するように、UI スレッドから `AcquireTokenInteractive` を呼び出す必要があります。 UI スレッドから呼び出さない場合は、メッセージが適切にポンプされなかったり、UI によるデッドロックが発生したりする可能性があります。 UI スレッドでない場所で UI スレッドから Microsoft 認証ライブラリ (MSAL) を呼び出す方法の 1 つとしては、WPF で `Dispatcher` を使用します。
 - WPF を使用している場合に WPF コントロールからウィンドウを取得するには、`WindowInteropHelper.Handle` クラスを使用できます。 そして、呼び出しは WPF コントロール (`this`) から次のように行われます。
 
@@ -277,15 +277,26 @@ WithParentActivityOrWindow(object parent).
 
 `WithPrompt()` は、プロンプトを指定してユーザーとのインタラクティビティを制御するために使用します。
 
-![プロンプト構造内のフィールドを示す画像。 これらの定数値を使用することで、WithPrompt() メソッドによって表示されるプロンプトの種類が定義され、ユーザーとのインタラクティビティが制御されます。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![プロンプト構造内のフィールドを示す画像。 これらの定数値を使用することで、WithPrompt() メソッドによって表示されるプロンプトの種類が定義され、ユーザーとのインタラクティビティが制御されます。](https://user-images.githubusercontent.com/34331512/112267137-3f1c3a00-8c32-11eb-97fb-33604311329a.png)
 
 このクラスでは次の定数を定義します。
 
 - ``SelectAccount`` により、ユーザーがセッションを確立しているアカウントを含む、アカウントの選択ダイアログ ボックスが STS で強制的に表示されます。 このオプションは、アプリケーション開発者が各種の ID の中からユーザーに選択させる場合に役立ちます。 このオプションを使用すると、MSAL から ID プロバイダーに ``prompt=select_account`` が送信されます。 これは既定のオプションです。 これにより、使用可能な情報 (アカウント、ユーザーのセッションの有無など) に基づいて最適なエクスペリエンスが提供されます。 正当な理由がない限り、このオプションを変更しないでください。
 - ``Consent`` により、以前に同意が得られている場合であっても、アプリケーション開発者がユーザーの同意を求めることができます。 この場合、MSAL から ID プロバイダーに `prompt=consent` が送信されます。 このオプションは、アプリケーションを使用するたびに同意ダイアログ ボックスをユーザーに表示することが組織のガバナンスで求められる、セキュリティを重視する一部のアプリケーションで使用できます。
 - ``ForceLogin`` により、このユーザー プロンプトが不要な場合でも、アプリケーション開発者がサービスによってユーザーに資格情報の入力を求めることができます。 このオプションは、トークンの取得に失敗した場合に、ユーザーが再度サインインできるようにするのに役立ちます。 この場合、MSAL から ID プロバイダーに `prompt=login` が送信されます。 これは、アプリケーションの特定の部分にアクセスするたびにユーザーが再度サインインすることが組織のガバナンスで求められる、セキュリティを重視するアプリケーションで使用されることがあります。
+- ``Create`` により、`prompt=create` を ID プロバイダーに送信することで、外部 ID に使用されるサインアップ エクスペリエンスがトリガーされます。 このプロンプトは、Azure AD B2C アプリには送信しないでください。 詳細については、「[セルフサービス サインアップのユーザー フローをアプリに追加する](https://aka.ms/msal-net-prompt-create)」を参照してください。
 - ``Never`` (.NET 4.5 および WinRT の場合のみ) はユーザーに入力を求めませんが、代わりに非表示の埋め込み Web ビューに格納された Cookie の使用を試行します。 詳細については、MSAL.NET の Web ビューを参照してください。 このオプションを使用すると、失敗する場合があります。 その場合、`AcquireTokenInteractive` は、UI 操作が必要であることを通知するために例外をスローします。 別の `Prompt` パラメーターを使用することが必要になります。
 - ``NoPrompt`` は、ID プロバイダーにプロンプトを送信しません。 このオプションは、Azure Active Directory (Azure AD) B2C のプロファイルの編集ポリシーに対してのみ有効です。 詳細については、[Azure AD B2C での詳細](https://aka.ms/msal-net-b2c-specificities)に関するページを参照してください。
+
+#### <a name="withuseembeddedwebview"></a>WithUseEmbeddedWebView
+
+このメソッドを使用すると、埋め込みの WebView またはシステム WebView (使用可能な場合) を強制的に使用するかどうかを指定できます。 詳細については、[Web ブラウザーの使用](msal-net-web-browsers.md)に関する記事を参照してください。
+
+ ```csharp
+ var result = await app.AcquireTokenInteractive(scopes)
+                   .WithUseEmbeddedWebView(true)
+                   .ExecuteAsync();
+  ```
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 

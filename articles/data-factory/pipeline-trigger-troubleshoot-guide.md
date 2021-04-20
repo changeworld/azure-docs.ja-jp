@@ -3,16 +3,16 @@ title: Azure Data Factory でのパイプライン オーケストレーショ�
 description: さまざまな方法を使用して、Azure Data Factory でのパイプライン トリガーの問題のトラブルシューティングを行います
 author: ssabat
 ms.service: data-factory
-ms.date: 03/13/2021
+ms.date: 04/01/2021
 ms.topic: troubleshooting
 ms.author: susabat
 ms.reviewer: susabat
-ms.openlocfilehash: f5039e5a49da202b2dbfa20e56639365ed597c79
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 49205025e26f7c0eb609638e70a58c9c0c14748e
+ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103461999"
+ms.lasthandoff: 04/05/2021
+ms.locfileid: "106385413"
 ---
 # <a name="troubleshoot-pipeline-orchestration-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプライン オーケストレーションおよびトリガーのトラブルシューティング
 
@@ -83,7 +83,26 @@ Type=Microsoft.DataTransfer.Execution.Core.ExecutionException,Message=There are 
 - 異なるトリガーのタイミングでパイプラインを実行します。
 - 新しい統合ランタイムを作成し、パイプラインを複数の統合ランタイムで分割します。
 
-### <a name="how-to-perform-activity-level-errors-and-failures-in-pipelines"></a>パイプラインのアクティビティ レベルのエラーと障害を実行する方法
+### <a name="a-pipeline-run-error-while-invoking-rest-api-in-a-web-activity"></a>Web アクティビティで REST API を呼び出すと、パイプライン実行エラーが発生する
+
+**問題点**
+
+エラー メッセージ
+
+`
+Operation on target Cancel failed: {“error”:{“code”:”AuthorizationFailed”,”message”:”The client ‘<client>’ with object id ‘<object>’ does not have authorization to perform action ‘Microsoft.DataFactory/factories/pipelineruns/cancel/action’ over scope ‘/subscriptions/<subscription>/resourceGroups/<resource group>/providers/Microsoft.DataFactory/factories/<data factory name>/pipelineruns/<pipeline run id>’ or the scope is invalid. If access was recently granted, please refresh your credentials.”}}
+`
+
+**原因**
+
+Azure Data Factory メンバーに共同作成者ロールが割り当てられている場合にのみ、パイプラインで Web アクティビティを使用して ADF REST API メソッドを呼び出すことができます。 最初に構成を行い、共同作成者セキュリティ ロールに Azure Data Factory マネージド ID を追加する必要があります。 
+
+**解像度**
+
+Web アクティビティの [設定] タブで Azure Data Factory の REST API を使用する前に、セキュリティを構成する必要があります。 Azure Data Factory マネージド ID に "*共同作成者*" ロールが割り当てられている場合にのみ、Azure Data Factory パイプラインで Web アクティビティを使用して ADF REST API メソッドを呼び出すことができます。 最初に、Azure portal を開き、左側のメニューの **[すべてのリソース]** リンクをクリックします。 *[ロールの割り当てを追加する]* ボックスの **[追加]** ボタンをクリックして、共同作成者ロールを持つ ADF マネージド ID を追加する **Azure Data Factory** を選択します。
+
+
+### <a name="how-to-check-and-branch-on-activity-level-success-and-failure-in-pipelines"></a>パイプラインでアクティビティ レベルの成功と失敗を確認および分岐する方法
 
 **原因**
 
@@ -95,7 +114,7 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 
 * [パイプラインの失敗とエラーの処理方法](https://techcommunity.microsoft.com/t5/azure-data-factory/understanding-pipeline-failures-and-error-handling/ba-p/1630459)に関するページに従って、アクティビティレベルのチェックを実装します。
 * [Factory によるクエリ](/rest/api/datafactory/pipelineruns/querybyfactory)に関するページに従って、Azure Logic Apps を使用して定期的な間隔でパイプラインを監視します。
-* [視覚的にパイプラインを監視する](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [視覚的にパイプラインを監視する](./monitor-visually.md)
 
 ### <a name="how-to-monitor-pipeline-failures-in-regular-intervals"></a>定期的な間隔でパイプライン エラーを監視する方法
 
@@ -105,7 +124,7 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 
 **解像度**
 * [Factory によるクエリ](/rest/api/datafactory/pipelineruns/querybyfactory)に関するページで説明されているように、失敗したすべてのパイプラインのクエリを 5 分ごとに実行するように Azure ロジック アプリを設定できます。 そうすると、インシデントをチケット システムに報告できるようになります。
-* [視覚的にパイプラインを監視する](https://docs.microsoft.com/azure/data-factory/monitor-visually)
+* [視覚的にパイプラインを監視する](./monitor-visually.md)
 
 ### <a name="degree-of-parallelism--increase-does-not-result-in-higher-throughput"></a>並列処理の次数を増やしてもスループットが向上しない
 
@@ -115,7 +134,7 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 
 *ForEach* に関する既知の事実
  * Foreach には、batch count(n) というプロパティがあります。既定値は 20 で、最大値は 50 です。
- * バッチ カウント (n) は、作成するキューの個数を指定するために使用されます。 これらのキューの作成方法の詳細については、後で説明します。
+ * バッチ カウント (n) は、作成するキューの個数を指定するために使用されます。 
  * 各キューは順番に実行されますが、複数のキューを並列に実行することもできます。
  * キューは事前に作成されます。 つまり、実行時にはキューの再調整は行われません。
  * 処理されるアイテムは、キューごとに常に 1 つだけです。 つまり、一度に処理される最大項目数は n 個となります。
@@ -124,7 +143,8 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 **解像度**
 
  * *SetVariable* アクティビティは、並列で実行される *For Each* 内では使用しないでください。
- * お客様は、キューの作成のしくみを考慮しながら、複数の *foreach* を設定し、各 foreach の項目の処理時間が同程度になるようにすることで、foreach のパフォーマンスを向上させることができます。 これにより、長時間の実行が順次ではなく、並列で処理されるようになります。
+ * お客様は、キューの作成のしくみを考慮しながら、複数の *foreach* を設定し、各 *foreach* の項目の処理時間が同程度になるようにすることで、foreach のパフォーマンスを向上させることができます。 
+ * これにより、長時間の実行が順次ではなく、並列で処理されるようになります。
 
  ### <a name="pipeline-status-is-queued-or-stuck-for-a-long-time"></a>パイプラインが長時間キューに入っているか停止している状態である
  
@@ -146,8 +166,8 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 
 **解像度**
 
-* 各コピー アクティビティの開始に最大 2 分かかり、問題が主に VNet 結合でが発生する場合は (Azure IR ではなく)、コピーのパフォーマンスの問題である可能性があります。 トラブルシューティングの手順を確認するには、[コピー パフォーマンスの向上](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting)に関するページを参照してください。
-* Time to Live 機能を使用すると、データ フロー アクティビティのクラスターの起動時間を短縮できます。 [データ フロー統合ランタイム](https://docs.microsoft.com/azure/data-factory/control-flow-execute-data-flow-activity#data-flow-integration-runtime)を確認してください。
+* 各コピー アクティビティの開始に最大 2 分かかり、問題が主に VNet 結合でが発生する場合は (Azure IR ではなく)、コピーのパフォーマンスの問題である可能性があります。 トラブルシューティングの手順を確認するには、[コピー パフォーマンスの向上](./copy-activity-performance-troubleshooting.md)に関するページを参照してください。
+* Time to Live 機能を使用すると、データ フロー アクティビティのクラスターの起動時間を短縮できます。 [データ フロー統合ランタイム](./control-flow-execute-data-flow-activity.md#data-flow-integration-runtime)を確認してください。
 
  ### <a name="hitting-capacity-issues-in-shirself-hosted-integration-runtime"></a>SHIR (セルフホステッド統合ランタイム) での容量の問題の発生
  
@@ -157,7 +177,7 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 
 **解像度**
 
-* SHIR で容量の問題が発生する場合は、VM をアップグレードしてノードを増やし、アクティビティのバランスを取ります。 長いキューが生成される可能性のある、セルフホステッド IR の一般的な障害またはエラー、セルフホステッド IR のアップグレード、またはセルフホステッド IR の接続の問題についてのエラー メッセージが表示される場合は、「[セルフホステッド統合ランタイムのトラブルシューティング](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-troubleshoot-guide)」を参照してください。
+* SHIR で容量の問題が発生する場合は、VM をアップグレードしてノードを増やし、アクティビティのバランスを取ります。 長いキューが生成される可能性のある、セルフホステッド IR の一般的な障害またはエラー、セルフホステッド IR のアップグレード、またはセルフホステッド IR の接続の問題についてのエラー メッセージが表示される場合は、「[セルフホステッド統合ランタイムのトラブルシューティング](./self-hosted-integration-runtime-troubleshoot-guide.md)」を参照してください。
 
 ### <a name="error-messages-due-to-long-queues-for-adf-copy-and-data-flow"></a>ADF コピーとデータ フローの長時間キューが原因のエラーメッセージ
 
@@ -166,10 +186,10 @@ Azure Data Factory では、すべてのリーフレベルのアクティビテ�
 長時間キューに関連するエラー メッセージは、さまざまな理由で表示されることがあります。 
 
 **解像度**
-* 長いキューが生成される可能性のある、コネクタを介した送信元または送信先からのエラー メッセージが表示される場合は、[コネクタのトラブルシューティング ガイド](https://docs.microsoft.com/azure/data-factory/connector-troubleshoot-guide)に関するページを参照してください。
-* 長いキューが生成される可能性のある、マッピング データ フローに関するエラー メッセージが表示される場合は、[データ フローのトラブルシューティング ガイド](https://docs.microsoft.com/azure/data-factory/data-flow-troubleshoot-guide)に関するページを参照してください。
-* 長いキューが生成される可能性のある、Databricks、カスタム アクティビティ、HDI などの他のアクティビティに関するエラー メッセージが表示される場合は、[アクティビティのトラブルシューティング ガイド](https://docs.microsoft.com/azure/data-factory/data-factory-troubleshoot-guide)に関するページを参照してください。
-* 長いキューが生成される可能性のある、SSIS パッケージの実行に関するエラー メッセージが表示される場合は、Azure-SSIS の[パッケージ実行トラブルシューティング ガイド](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-ssis-activity-faq)および [Integration Runtime 管理トラブルシューティング ガイド](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)に関するページで詳細を確認してください。
+* 長いキューが生成される可能性のある、コネクタを介した送信元または送信先からのエラー メッセージが表示される場合は、[コネクタのトラブルシューティング ガイド](./connector-troubleshoot-guide.md)に関するページを参照してください。
+* 長いキューが生成される可能性のある、マッピング データ フローに関するエラー メッセージが表示される場合は、[データ フローのトラブルシューティング ガイド](./data-flow-troubleshoot-guide.md)に関するページを参照してください。
+* 長いキューが生成される可能性のある、Databricks、カスタム アクティビティ、HDI などの他のアクティビティに関するエラー メッセージが表示される場合は、[アクティビティのトラブルシューティング ガイド](./data-factory-troubleshoot-guide.md)に関するページを参照してください。
+* 長いキューが生成される可能性のある、SSIS パッケージの実行に関するエラー メッセージが表示される場合は、Azure-SSIS の[パッケージ実行トラブルシューティング ガイド](./ssis-integration-runtime-ssis-activity-faq.md)および [Integration Runtime 管理トラブルシューティング ガイド](./ssis-integration-runtime-management-troubleshoot.md)に関するページで詳細を確認してください。
 
 
 ## <a name="next-steps"></a>次のステップ

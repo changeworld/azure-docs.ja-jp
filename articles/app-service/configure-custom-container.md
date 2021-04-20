@@ -4,12 +4,12 @@ description: Azure App Service でカスタム コンテナーを構成する方
 ms.topic: article
 ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 8083c3c0c88d904ccb3ec75ae69a699867bd0f25
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 1d1a1292bc7583e4934ac176c34d2768700d11c5
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101704873"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105036766"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 
@@ -112,6 +112,8 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB
 ```
 
 アプリを実行すると、App Service アプリ設定が環境変数としてプロセスに自動的に挿入されます。 コンテナー環境変数は、URL `https://<app-name>.scm.azurewebsites.net/Env)` を使用して確認できます。
+
+プライベート レジストリまたは Docker Hub からのイメージがアプリで使用される場合、リポジトリにアクセスするための資格情報は、環境変数 `DOCKER_REGISTRY_SERVER_URL`、`DOCKER_REGISTRY_SERVER_USERNAME`、および `DOCKER_REGISTRY_SERVER_PASSWORD` に保存されます。 セキュリティ上のリスクがあるため、これらの予約済み変数名はアプリケーションに対して公開されません。
 
 ::: zone pivot="container-windows"
 IIS または .NET Framework (4.0 以降) ベースのコンテナーの場合、これらは、App Service によって .NET アプリ設定と接続文字列として `System.ConfigurationManager` に挿入されます。 他のすべての言語またはフレームワークでは、これらは、次のいずれかの対応するプレフィックス付きの環境変数としてプロセスに提供されます。

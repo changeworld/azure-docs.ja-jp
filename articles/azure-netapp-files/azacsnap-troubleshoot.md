@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 12/14/2020
 ms.author: phjensen
 ms.openlocfilehash: 7ba5a05515284612e17d5aba4cc673c7e78f7ba1
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
+ms.lasthandoff: 03/30/2021
 ms.locfileid: "104869924"
 ---
 # <a name="troubleshoot-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールのトラブルシューティング (プレビュー)
@@ -57,7 +57,7 @@ Dec 17 09:01:13 azacsnap-rhel azacsnap: Database # 1 (PR1) : completed ok
 
 ## <a name="failed-communication-with-azure-netapp-files"></a>Azure NetApp Files との通信失敗
 
-Azure NetApp Files との通信の検証時に、通信が失敗したり、タイムアウトしたりすることがあります。AzAcSnap を実行しているシステムから以下のアドレスと・TCP/IP ポートへの送信トラフィックが、ファイアウォール規則によってブロックされていないか確認してください。
+Azure NetApp Files との通信を検証するときに、通信が失敗するか、タイムアウトになることがあります。 AzAcSnap を実行しているシステムから次のアドレスと TCP/IP ポートへのアウトバウンド トラフィックがファイアウォール ルールによってブロックされていないことを確認してください。
 
 - (https://)management.azure.com:443
 - (https://)login.microsoftonline.com:443 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: deshriva
 ms.author: deshriva
 ms.date: 02/08/2021
-ms.openlocfilehash: 53ca2ac73fdec9d3b39ffc04cbb24aca707a72eb
-ms.sourcegitcommit: 4bda786435578ec7d6d94c72ca8642ce47ac628a
+ms.openlocfilehash: dbd5b507fd4a7b2434158dbdc80584a7fd348732
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2021
-ms.locfileid: "103490451"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105726585"
 ---
 # <a name="azure-hdinsight-versions"></a>Azure HDInsight のバージョン
 
@@ -21,12 +21,12 @@ HDInsight では、Apache Hadoop 環境コンポーネントと HDInsight プラ
 
 この表は、Azure portal およびその他のデプロイ方法 (PowerShell、CLI、.NET SDK など) で使用可能な、HDInsight のバージョンをまとめたものです。
 
-| HDInsight のバージョン | VM の OS | リリース日 | サポート有効期限 | 提供終了日 | 高可用性 |
-| --- | --- | --- | --- | --- | --- |
-| [HDInsight 4.0](hdinsight-40-component-versioning.md) |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |はい |
-| [HDInsight 3.6](hdinsight-36-component-versioning.md) |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | \* 2021 年 6 月 30 日 |2021 年 6 月 30 日 |はい |
+| HDInsight のバージョン | VM の OS | リリース日| サポートの種類 | サポート有効期限 | 提供終了日 | 高可用性 |
+| --- | --- | --- | --- | --- | --- | ---|
+| [HDInsight 4.0](hdinsight-40-component-versioning.md) |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | [Standard](hdinsight-component-versioning.md#support-options-for-hdinsight-versions) | | |はい |
+| [HDInsight 3.6](hdinsight-36-component-versioning.md) |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | [Basic](hdinsight-component-versioning.md#support-options-for-hdinsight-versions) | Standard サポートの有効期限 - 2021 年 6 月 30 日 <br> Basic サポートの有効期限 - 2022 年 4 月 3 日 |2022 年 4 月 4 日 |はい |
 
-\* 特定のクラスターの種類 HDInsight 3.6 のサポート期間を延長しています。 [HDInsight 3.6 コンポーネントのバージョン](hdinsight-36-component-versioning.md)に関する記事を参照してください。
+*2021 年 7 月 1 日以降、Microsoft は特定の種類の HDI 3.6 クラスターに対する Basic サポートを提供します。 [HDInsight 3.6 コンポーネントのバージョン](hdinsight-36-component-versioning.md)に関する記事を参照してください。
 
 ## <a name="release-notes"></a>リリース ノート
 
@@ -34,9 +34,13 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 
 ## <a name="support-options-for-hdinsight-versions"></a>HDInsight バージョンのサポート オプション
 
-HDInsight では、HDInsight バージョンが Microsoft カスタマー サービスおよびサポートによってサポートされる期間として定義された、Standard サポートを提供しています。
+サポートは、HDInsight のバージョンが Microsoft カスタマー サービスおよびサポートによってサポートされる期間として定義されます。 HDInsight では、次の 2 種類のサポートが提供されます。 
+- **Standard サポート** は、Microsoft が HDInsight クラスターで更新とサポートを提供する期間です。  
+    最新の完全サポート バージョンを使用してソリューションを構築することをお勧めします。 
+- **Basic サポート** は、Microsoft が HDInsight リソース プロバイダーに限定されたサービスを提供する期間です。 HDInsight イメージとオープンソース ソフトウェア (OSS) コンポーネントは提供されません。   HDInsight クラスターには、重要なセキュリティ修正プログラムのみが適用されます。  
+  Microsoft では、バージョンが Basic サポートの場合には、新しいクラスターの作成や新しいソリューションの構築は推奨していません。 既存のクラスターを最新の完全サポート バージョンに移行することを推奨しています。 
 
-**サポートの有効期限** は、特定の HDInsight バージョンに対して Microsoft によるサポートが提供されなくなることを意味します。 また、クラスターを作成するために Azure portal を介して使用することができなくなります。
+**サポートの有効期限** は、特定の HDInsight バージョンに対して Microsoft によるサポートが提供されなくなることを意味します。 また、クラスターを作成するために Azure portal を介して使用できなくなる場合があります。
 
 **提供終了** とは、ある HDInsight バージョンの既存のクラスターが引き続きそのまま実行されることを意味します。 このバージョンの新しいクラスターは、CLI や SDK など、どのような方法でも作成することはできません。 手動によるスケーリングや自動スケールなど、その他のコントロール プレーン機能は、バージョンの提供終了日以降、機能することが保証されません。 提供が終了したバージョンでサポートを利用することはできません。
 

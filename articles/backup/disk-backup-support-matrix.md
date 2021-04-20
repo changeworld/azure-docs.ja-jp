@@ -4,25 +4,20 @@ description: Azure ディスク バックアップのサポート設定と制限
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 922bd532275cdd6b09df83b0e9d36fdec1da0b47
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 88ec26837cc8f69c1e84c77ea6b57ce16e462e0a
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101707219"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105612859"
 ---
-# <a name="azure-disk-backup-support-matrix-in-preview"></a>Azure ディスク バックアップのサポート マトリックス (プレビュー)
-
->[!IMPORTANT]
->Azure ディスク バックアップは、サービス レベル アグリーメントのないプレビュー段階であるため、運用ワークロードにはお勧めできません。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
->プレビューにサインアップするには、[このフォームに入力](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u)してください。
+# <a name="azure-disk-backup-support-matrix"></a>Azure ディスク バックアップのサポート マトリックス
 
 [Azure Backup](./backup-overview.md) を使用して、Azure ディスクを保護できます。 この記事では、利用可能なリージョン、サポートされるシナリオ、および制限事項について説明します。
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-次のリージョンでは、Azure ディスク バックアップをプレビューでご利用いただけます。米国西部、米国中西部、米国東部 2、カナダ中部、英国西部、スイス北部、スイス西部、オーストラリア中部、オーストラリア中部 2、韓国中部、韓国南部、西日本、東日本、東アジア、アラブ首長国連邦北部、ブラジル南部、インド中部。 
+Azure ディスク バックアップは、次のリージョンで使用できます: 米国西部、米国西部 2、米国中西部、米国東部、米国東部 2、米国中部、米国中南部、米国中北部、カナダ中部、ブラジル南部、南アフリカ北部、英国南部、英国西部、西ヨーロッパ、北ヨーロッパ、スイス北部、スイス西部、ドイツ中西部、フランス中部、ノルウェー東部、アラブ首長国連邦北部、オーストラリア中部、オーストラリア中部 2、オーストラリア東部、韓国中部、韓国南部、東日本、西日本、東アジア、東南アジア、インド中部。 
 
 他のリージョンについては、利用可能になったときに発表されます。
 
@@ -56,7 +51,7 @@ ms.locfileid: "101707219"
 
 - 現時点では、Azure portal でのディスクのバックアップを構成する操作は、同じサブスクリプションの最大 20 個のディスクに制限されています。
 
-- 現在 (プレビュー期間中)、ディスクのバックアップと復元を構成するための PowerShell と Azure CLI の使用はサポートされていません。
+- Azure ディスク バックアップでは、PowerShell がサポートされています。 現在、Azure CLI はサポートされていません。
 
 - バックアップを構成する場合は、バックアップ対象として選択されたディスクと、スナップショットが格納されるスナップショット リソース グループが同じサブスクリプションに含まれている必要があります。 特定のディスクの増分スナップショットを、そのディスクのサブスクリプションの外部で作成することはできません。 詳細については、マネージド ディスクの[増分スナップショット](../virtual-machines/disks-incremental-snapshots.md#restrictions)に関するページをご覧ください。 スナップショット リソース グループを選択する方法の詳細については、「[バックアップを構成する](backup-managed-disks.md#configure-backup)」を参照してください。
 
@@ -66,7 +61,7 @@ ms.locfileid: "101707219"
 
 - マネージド ディスクでの[プライベート リンク](../virtual-machines/disks-enable-private-links-for-import-export-portal.md)のサポートにより、マネージド ディスクのエクスポートとインポートを制限して、Azure 仮想ネットワーク内でのみ実行されるようにすることができます。 Azure ディスク バックアップでは、プライベート エンドポイントが有効になっているディスクのバックアップがサポートされています。 これには、プライベート エンドポイント経由でアクセスできるバックアップ データまたはスナップショットは含まれません。
 
-- プレビュー中は、バックアップを無効にすることはできません。そのため、**バックアップを停止し、バックアップ データを保持する** オプションはサポートされていません。 バックアップ インスタンスを削除することができます。これにより、バックアップが停止するだけでなく、すべてのバックアップ データも削除されます。
+- バックアップ インスタンスを削除できます。これにより、バックアップが停止し、すべてのバックアップ データが削除されます。 現在、**バックアップを停止し、バックアップ データを保持する** オプションがサポートされていないため、バックアップは無効にできません。
 
 ## <a name="next-steps"></a>次の手順
 

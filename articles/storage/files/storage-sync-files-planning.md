@@ -8,12 +8,12 @@ ms.date: 01/29/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 85d5d5b484163c4c65e7ec14c5d5ce5aea339669
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b106c82e3755fbd0e02f12a769d80ce4761cf026
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593205"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285860"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -351,13 +351,22 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 オンプレミス バックアップ ソリューションを使用する場合、クラウドを使った階層化が無効な同期グループ内のサーバーに対してバックアップを実行する必要があります。 復元を実行するときは、ボリューム レベルまたはファイル レベルの復元オプションを使用します。 ファイル レベルの復元オプションを使用して復元されたファイルは、同期グループ内のすべてのエンドポイントに同期され、既存のファイルはバックアップから復元されたバージョンに置き換えられます。  ボリューム レベルの復元では、Azure ファイル共有やその他のサーバー エンドポイントの新しいファイル バージョンに置き換えられません。
 
 > [!WARNING]
-> Robocopy /B スイッチは Azure File Sync ではサポートされていません。Azure File Sync サーバー エンドポイントを転送元として指定して Robocopy /B スイッチを使用すると、ファイルが破損する可能性があります。
+> 同期元またはターゲット サーバーのいずれかで実行されている Azure File Sync エージェントで Robocopy /B を使用する必要がある場合は、Azure File Sync エージェント バージョン v12.0 以上にアップグレードしてください。 v12.0 よりも前のバージョンのエージェントで Robocopy /B を使用すると、コピー中に階層化されたファイルが破損する可能性があります。
 
 > [!Note]  
 > ベアメタル (BMR) 復元は予期しない結果が生じることがあるため、現在サポートされていません。
 
 > [!Note]  
 > Azure File Sync エージェントのバージョン 9 では、VSS スナップショット ([以前のバージョン] タブを含む) が、クラウドの階層化が有効なボリュームでサポートされるようになりました。 ただし、PowerShell を使用して以前のバージョンの互換性を有効にする必要があります。 方法については、[こちら](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service)をご覧ください。
+
+## <a name="data-classification"></a>データ分類
+データ分類ソフトウェアがインストールされている場合、クラウドを使った階層化を有効にすると、次の 2 つの理由によりコストが増加する可能性があります。
+
+1. クラウドを使った階層化を有効にすると、アクセス頻度の高いファイルがローカルにキャッシュされ、アクセス頻度の低いファイルがクラウド内の Azure ファイル共有に階層化されます。 データ分類によってファイル共有内のすべてのファイルが定期的にスキャンされる場合、クラウドに階層化されたファイルは、スキャンされるたびにリコールされる必要があります。 
+
+2. データ分類ソフトウェアでファイルのデータ ストリームのメタデータを使用する場合は、ソフトウェアが分類を確認するために、ファイルを完全にリコールする必要があります。 
+
+リコールの回数と、リコールされるデータ量の両方の増加のために、コストが増加する可能性があります。
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

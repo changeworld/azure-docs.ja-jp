@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: be11c32cf06b9873e10247d7ccc4a84133a6c688
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: b527a2c7cbfe4971f5dd99f40f98d3eaa32aa451
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104774934"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107227315"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure において関数を .NET 5.0 で実行するためのガイド
 
@@ -147,15 +147,17 @@ HTTP トリガーの場合、要求と応答のデータにアクセスするに
 
 ### <a name="multiple-output-bindings"></a>複数の出力バインディング
 
-出力バインディングに書き込まれるデータは、常に関数の戻り値です。 複数の出力バインディングに書き込む必要がある場合は、カスタムの戻り値の型を作成する必要があります。 この戻り値の型では、出力バインディング属性はクラスの 1 つ以上のプロパティに適用されていなければなりません。 次の例では、HTTP 応答とキュー出力バインディングの両方に書き込みます。
+出力バインディングに書き込まれるデータは、常に関数の戻り値です。 複数の出力バインディングに書き込む必要がある場合は、カスタムの戻り値の型を作成する必要があります。 この戻り値の型では、出力バインディング属性はクラスの 1 つ以上のプロパティに適用されていなければなりません。 HTTP トリガーからの次の例は、HTTP 応答とキュー出力バインディングの両方に書き込みます:
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/Extensions/MultiOutput/MultiOutput.cs" id="docsnippet_multiple_outputs":::
+
+HTTP トリガーからの応答は常に出力と見なされるため、戻り値の属性は必要ありません。
 
 ### <a name="http-trigger"></a>HTTP トリガー
 
 HTTP トリガーは、受信した HTTP 要求メッセージを、関数に渡される [HttpRequestData] オブジェクトに変換します。 このオブジェクトは、`Headers`、`Cookies`、`Identities`、`URL`、およびメッセージ `Body` (オプション) を含む、要求からのデータを提供します。 このオブジェクトは、HTTP 要求オブジェクトを表現したものであり、要求そのものではありません。 
 
-同様に、関数が返す [HttpReponseData] オブジェクトも、メッセージ `StatusCode`、`Headers`、およびメッセージ `Body` (オプション) を含む、HTTP 応答を作成するために使用するデータを提供します。  
+同様に、関数が返す [HttpResponseData] オブジェクトも、メッセージ `StatusCode`、`Headers`、およびメッセージ `Body` (オプション) を含む、HTTP 応答を作成するために使用するデータを提供します。  
 
 次のコードは、HTTP トリガーです 
 
@@ -222,4 +224,4 @@ HTTP トリガーは、受信した HTTP 要求メッセージを、関数に渡
 [HttpResponseData]: /dotnet/api/microsoft.azure.functions.worker.http.httpresponsedata?view=azure-dotnet&preserve-view=true
 [HttpRequest]: /dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true
 [ObjectResult]: /dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true
-[JsonSerializerOptions]: /api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true
+[JsonSerializerOptions]: /dotnet/api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true

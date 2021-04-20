@@ -2,17 +2,17 @@
 title: コンピューティング ノードへのアプリケーション パッケージのデプロイ
 description: Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 03/24/2021
 ms.custom:
 - H1Hack27Feb2017
 - devx-track-csharp
 - contperf-fy21q1
-ms.openlocfilehash: b4c6ab99b0fa93e5fdea4256d6f232cc0fe4218e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: d0ed5cc47694d6576e6aea46b62dfab8ecb73459
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97033733"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105045792"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -59,6 +59,9 @@ Azure Batch では、" *アプリケーション* " という用語は、プー�
 ## <a name="upload-and-manage-applications"></a>アプリケーションのアップロードと管理
 
 [Azure portal](https://portal.azure.com) または Batch Management API を使用して、Batch アカウントのアプリケーション パッケージを管理できます。 以下のセクションでは、ストレージ アカウントをリンクする方法と、Azure portal でアプリケーションとアプリケーション パッケージを追加および管理する方法について説明します。
+
+> [!NOTE]
+> [ARM テンプレート](quick-create-template.md)の [Microsoft.Batch/batchAccounts](/templates/microsoft.batch/batchaccounts) リソースでアプリケーションの値を定義できますが、現時点では、ARM テンプレートを使用して、Batch アカウントで使用するアプリケーション パッケージをアップロードすることはできません。 [下](#add-a-new-application)で説明されているように、リンクされたストレージ アカウントにアップロードする必要があります。
 
 ### <a name="link-a-storage-account"></a>ストレージ アカウントをリンクする
 

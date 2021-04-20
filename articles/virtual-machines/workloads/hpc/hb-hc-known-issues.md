@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 03/25/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 297bc24c570298dddf10a101a0c0c528bddecc10
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889826"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105604840"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM に関する既知の問題
 
@@ -24,9 +24,18 @@ Ubuntu-18.04 では、Mellanox OFED で、カーネル バージョン `5.4.0-10
 一時的な解決策は、**Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290** 以降の Marketplace イメージを使用することと、カーネルを更新しないことです。
 この問題は、新しい MOFED で解決されることが予想されています (未定)。
 
-## <a name="known-issues-on-hbv3"></a>HBv3 に関する既知の問題
-- 現在、InfiniBand は、120 コアの VM (Standard_HB120rs_v3) でのみサポートされています。
-- 現在、一部のリージョンでは、Azure 高速ネットワークが HBv3 シリーズでサポートされていません。
+## <a name="mpi-qp-creation-errors"></a>MPI QP 作成エラー
+MPI ワークロードの実行中に、下に示すような InfiniBand QP 作成エラーがスローされた場合、VM を再起動し、ワークロードを再試行することをお勧めします。 この問題は、今後修正される予定です。
+
+```bash
+ib_mlx5_dv.c:150  UCX  ERROR mlx5dv_devx_obj_create(QP) failed, syndrome 0: Invalid argument
+```
+
+問題が発生した場合、次のようにキュー ペアの最大数の値を確認できます。
+```bash
+[user@azurehpc-vm ~]$ ibv_devinfo -vv | grep qp
+max_qp: 4096
+```
 
 ## <a name="accelerated-networking-on-hb-hc-hbv2-and-ndv2"></a>HB、HC、HBv2、NDv2 の高速ネットワーク
 

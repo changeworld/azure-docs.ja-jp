@@ -7,16 +7,19 @@ author: viv-liu
 ms.author: viviali
 ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 191b57b08ba04844824dd5cf26875c21e494c5ef
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ea4a47f1ba3eac39820e839a10330840f57afe42
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "92123339"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105629072"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central データを Power BI ダッシュボードに視覚化する
 
 *このトピックは、管理者とソリューション開発者を対象としています。*
+
+> [!Note] 
+> このソリューションは、[従来のデータ エクスポート機能](./howto-export-data-legacy.md)を使用します。 最新のデータ エクスポートを使用して Power BI に接続する方法の最新のガイダンスについては、しばらくお待ちください。
 
 :::image type="content" source="media/howto-connect-powerbi/iot-continuous-data-export.png" alt-text="Power BI ソリューションのパイプライン":::
 
@@ -27,7 +30,7 @@ Azure IoT Central V3 用の Power BI ソリューションを使用して、IoT 
 - フィルターを適用して、特定のデバイスによって送信されたデータに絞り込む
 - テーブル内の最新のテレメトリ データを表示する
 
-このソリューションは、[継続的データ エクスポート](./howto-export-data.md)の Azure BLOB ストレージ アカウントからデータを読み取るパイプラインを設定します。 このパイプランでは、Azure Functions、Azure Data Factory、Azure SQL Database を使用して、データの処理と変換が行われます。 PBIX ファイルとしてダウンロードする Power BI レポートで、データの視覚化と分析が可能です。 リソースはすべて Azure サブスクリプション内に作成されるため、ニーズに合わせて各コンポーネントをカスタマイズできます。
+このソリューションは、[従来のデータ エクスポート](./howto-export-data-legacy.md)の Azure BLOB ストレージ アカウントからデータを読み取るパイプラインを設定します。 このパイプランでは、Azure Functions、Azure Data Factory、Azure SQL Database を使用して、データの処理と変換が行われます。 PBIX ファイルとしてダウンロードする Power BI レポートで、データの視覚化と分析が可能です。 リソースはすべて Azure サブスクリプション内に作成されるため、ニーズに合わせて各コンポーネントをカスタマイズできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +39,7 @@ Azure IoT Central V3 用の Power BI ソリューションを使用して、IoT 
 ソリューションを設定するには、以下のリソースが必要です。
 
 - バージョン 3 の IoT Central アプリケーション。 アプリケーションのバージョンを確認する方法については、「[アプリケーションに関する情報](./howto-get-app-info.md)」を参照してください。 IoT Central アプリケーションを作成する方法については、「[Azure IoT Central アプリケーションの作成](./quick-deploy-iot-central.md)」を参照してください。
-- テレメトリ、デバイス、デバイス テンプレートを Azure BLOB ストレージにエクスポートするように構成された継続的データ エクスポート。 詳細については、[Azure 内の宛先に IoT データをエクスポートする方法](howto-export-data.md)に関するページを参照してください。
+- テレメトリ、デバイス、デバイス テンプレートを Azure BLOB ストレージにエクスポートするように構成された、従来の継続的データ エクスポート。 詳しくは、[従来のデータ エクスポートに関するドキュメント](howto-export-data-legacy.md)を参照してください。
   - BLOB コンテナーにデータをエクスポートしているのは IoT Central アプリケーションのみであることを確認します。
   - デバイスからは、[JSON でエンコードされたメッセージを送信する必要があります](../../iot-hub/iot-hub-devguide-messages-d2c.md)。 デバイスのメッセージ システム プロパティでは、`contentType:application/JSON` に加え、`contentEncoding:utf-8`、`contentEncoding:utf-16`、または `contentEncoding:utf-32` を指定する必要があります。
 - Power BI Desktop (最新バージョン)。 [Power BI のダウンロード](https://powerbi.microsoft.com/downloads/)に関するページを参照してください。

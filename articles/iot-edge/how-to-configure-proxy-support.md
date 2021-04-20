@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 888761bb976b9d7a87211a77cb6504a44f108bbd
-ms.sourcegitcommit: 5f32f03eeb892bf0d023b23bd709e642d1812696
+ms.openlocfilehash: 9f2ca089a6d885227bd61940d71ec7bb7960fbd6
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2021
-ms.locfileid: "103200053"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105043157"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge デバイスを構成してプロキシ サーバー経由で通信する
 
@@ -69,7 +69,11 @@ IoT Edge デバイスが Windows または Linux のどちらで動作してい�
 
 Linux デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを経由してインストール パッケージにアクセスするように、パッケージ マネージャーを構成します。 たとえば、[http-proxy を使用するように apt-get を設定](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy)します。 パッケージ マネージャーが構成されたら、通常どおり「[Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge.md)」の手順に従います。
 
-### <a name="windows-devices"></a>Windows デバイス
+### <a name="windows-devices-using-iot-edge-for-linux-on-windows"></a>IoT Edge for Linux on Windows を使用する Windows デバイス
+
+IoT Edge for Linux on Windows を使用して IoT Edge ランタイムをインストールする場合は、Linux 仮想マシンに IoT Edge が既定でインストールされます。 追加のインストールまたは更新の手順は必要ありません。
+
+### <a name="windows-devices-using-windows-containers"></a>Windows コンテナーを使用する Windows デバイス
 
 Windows デバイス上に IoT Edge ランタイムをインストールしている場合、プロキシ サーバーを 2 回通過する必要があります。 最初の接続では、インストーラー スクリプト ファイルをダウンロードするためのもので、2 回目の接続はインストール中に必要なコンポーネントをダウンロードします。 Windows 設定でプロキシ情報を構成するか、または PowerShell コマンドにプロキシ情報を直接含めることができます。
 
@@ -206,7 +210,17 @@ systemctl show --property=Environment aziot-identityd
 :::moniker-end
 <!--end 1.2-->
 
-#### <a name="windows"></a>Windows
+#### <a name="windows-using-iot-edge-for-linux-on-windows"></a>IoT Edge for Linux on Windows を使用する Windows
+
+IoT Edge for Linux on Windows 仮想マシンにログインします。
+
+```azurepowershell-interactive
+Ssh-EflowVm
+```
+
+上記の Linux セクションと同じ手順に従って、IoT Edge デーモンを構成します。
+
+#### <a name="windows-using-windows-containers"></a>Windows コンテナーを使用する Windows
 
 管理者として PowerShell ウィンドウを開き、次のコマンドを実行して、新しい環境変数でレジストリを編集します。 **\<proxy url>** をお使いのプロキシ サーバーのアドレスとポートに置き換えます。
 
@@ -249,13 +263,13 @@ IoT Edge エージェントは、すべての IoT Edge デバイス上で最初�
 
 5. config.yaml への変更を保存して、エディターを閉じます。 IoT Edge を再起動して、変更を有効にします。
 
-   * Linux:
+   * Linux と IoT Edge for Linux on Windows:
 
       ```bash
       sudo systemctl restart iotedge
       ```
 
-   * Windows:
+   * Windows コンテナーを使用する Windows:
 
       ```powershell
       Restart-Service iotedge

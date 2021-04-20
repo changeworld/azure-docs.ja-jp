@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 2b4079b6d4eb39b65a7a60cd4d149c7748ab39ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5f9e28ac568f70801b2bd955c201712cfcb80084
+ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178883"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105963331"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Azure Kubernetes Service (AKS) で Azure ディスクの Container Storage Interface (CSI) ドライバーを使用する (プレビュー)
 Azure ディスクの Container Storage Interface (CSI) ドライバーは、Azure ディスクのライフサイクルを管理するために Azure Kubernetes Service (AKS) によって使用される [CSI 仕様](https://github.com/container-storage-interface/spec/blob/master/spec.md)準拠のドライバーです。
@@ -71,9 +71,9 @@ test.txt
 
 既定のストレージ クラスは最も一般的なシナリオに適合しますが、すべてに適合するわけではありません。 場合によっては、独自のストレージ クラスを独自のパラメーターを使用してカスタマイズすることもできます。 たとえば、`volumeBindingMode` クラスの変更が必要になるシナリオがあります。
 
-既定のストレージ クラスでは、PVC が作成された直後に発生することを保証する `volumeBindingMode: Immediate` クラスが使用されます。 ノード プールがトポロジに制約されている場合 (たとえば、可用性ゾーンを使用している場合)、PV は、ポッドのスケジューリング要件 (この場合は特定のゾーン) を認識しないでバインドまたはプロビジョニングされます。
+PVC が作成された直後に発生することを保証する `volumeBindingMode: Immediate` クラスを使用できます。 ノード プールがトポロジに制約されている場合 (たとえば、可用性ゾーンを使用している場合)、PV は、ポッドのスケジューリング要件 (この場合は特定のゾーン) を認識しないでバインドまたはプロビジョニングされます。
 
-このシナリオに対処するには、`volumeBindingMode: WaitForFirstConsumer` を使用できます。これにより、PV のバインドとプロビジョニングは、PVC を使用するポッドが作成されるまで遅延されます。 このようにして、PV は、ポッドのスケジューリング制約によって指定された可用性ゾーン (または他のトポロジ) に準拠し、その中にプロビジョニングされます。
+このシナリオに対処するには、`volumeBindingMode: WaitForFirstConsumer` を使用できます。これにより、PV のバインドとプロビジョニングは、PVC を使用するポッドが作成されるまで遅延されます。 このようにして、PV は、ポッドのスケジューリング制約によって指定された可用性ゾーン (または他のトポロジ) に準拠し、その中にプロビジョニングされます。 既定のストレージ クラスでは、`volumeBindingMode: WaitForFirstConsumer` クラスが使用されます。
 
 `sc-azuredisk-csi-waitforfirstconsumer.yaml` というファイルを作成し、次のマニフェストを貼り付けます。
 ストレージ クラスは `managed-csi` ストレージ クラスと同じですが、`volumeBindingMode` クラスは異なります。
