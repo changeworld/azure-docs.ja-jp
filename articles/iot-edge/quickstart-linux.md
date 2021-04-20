@@ -4,17 +4,17 @@ description: このクイックスタートでは、Linux で IoT Edge デバイ
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/12/2021
+ms.date: 04/07/2021
 ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 37f4a63d0a901fd70e0a60bb435efdaf08868616
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10a073914a79d29ae4b1c1d90ae5be624e7d7673
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103463471"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107303885"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>クイック スタート:初めての IoT Edge モジュールを Linux 仮想デバイスにデプロイする
 
@@ -263,32 +263,76 @@ Azure IoT Edge デバイスをクラウドから管理し、IoT Hub に利用統
 
 ![図 - クラウドからデバイスにモジュールを配置する](./media/quickstart-linux/deploy-module.png)
 
-[!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+<!-- [!INCLUDE [iot-edge-deploy-module](../../includes/iot-edge-deploy-module.md)]
+
+Include content included below to support versioned steps in Linux quickstart. Can update include file once Windows quickstart supports v1.2 -->
+
+Azure IoT Edge の主要な機能の 1 つは、クラウドからお客様の IoT Edge デバイスにコードをデプロイすることです。 *IoT Edge モジュール* は、コンテナーとして実装されている実行可能ファイルのパッケージです。 このセクションでは、[Azure Marketplace の IoT Edge モジュールのセクション](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules)のあらかじめ構築されたモジュールを Azure IoT Hub から直接デプロイします。
+
+このセクションでデプロイするモジュールはセンサーをシミュレートし、生成されたデータを送信します。 シミュレートされたデータを開発とテストに使用できるため、このモジュールは IoT Edge の使用を開始する際にコードの一部として役に立ちます。 このモジュールで行われる内容を正確に確認したい場合は、[シミュレートされた温度センサーのソース コード](https://github.com/Azure/iotedge/blob/027a509549a248647ed41ca7fe1dc508771c8123/edge-modules/SimulatedTemperatureSensor/src/Program.cs)をご覧いただけます。
+
+Azure Marketplace から初めてのモジュールをデプロイするには、これらの手順に従って **モジュールの設定** ウィザードを起動します。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、お使いの IoT ハブに移動します。
+
+1. 左側のメニューで、 **[デバイスの自動管理]** の下にある **[IoT Edge]** を選択します。
+
+1. デバイスの一覧でターゲット デバイスのデバイス ID を選択します。
+
+1. 上部のバーで **[モジュールの設定]** を選択します。
+
+   ![[モジュールの設定] の選択を示すスクリーンショット。](./media/quickstart/select-set-modules.png)
+
+### <a name="modules"></a>モジュール
+
+ウィザードの最初の手順は、デバイスで実行するモジュールの選択です。
+
+**[IoT Edge モジュール]** の下で、 **[追加]** ドロップダウン メニューを開き、 **[Marketplace モジュール]** を選択します。
+
+   ![[追加] ドロップダウン メニューを示すスクリーンショット。](./media/quickstart/add-marketplace-module.png)
+
+**[IoT Edge モジュールの Marketplace]** で、`Simulated Temperature Sensor` モジュールを検索して選択します。 モジュールが [IoT Edge モジュール] セクションに追加されており、[必要な状態] が **[実行しています]** になっています。
 
 <!-- 1.2 -->
 :::moniker range=">=iotedge-2020-11"
 
-IoT Edge バージョン1.2 はパブリック プレビュー段階であるため、ランタイム モジュールをパブリック プレビュー バージョンに更新するために追加の手順が必要になります。
+**[ランタイムの設定]** を選択して、edgeHub モジュールと edgeAgent モジュールの設定を開きます。 この設定セクションから、環境変数を追加したり、作成オプションを変更したりすることでランタイム モジュールを管理することができます。
 
-1. デバイスの詳細ページから **[モジュールの設定]** をもう一度選択します。
+バージョン タグ 1.2 を使用するように、edgeHub と edgeAgent の両方のモジュールの **[イメージ]** フィールドを更新します。 次に例を示します。
 
-1. **[ランタイムの設定]** を選択します。
+* `mcr.microsoft.com/azureiotedge-hub:1.2`
+* `mcr.microsoft.com/azureiotedge-agent:1.2`
 
-1. バージョン タグ 1.2.0-rc4 を使用するように、IoT Edge ハブと IoT Edge エージェントの両モジュールの **[イメージ]** フィールドを更新します。 次に例を示します。
-
-   * `mcr.microsoft.com/azureiotedge-hub:1.2.0-rc4`
-   * `mcr.microsoft.com/azureiotedge-agent:1.2.0-rc4`
-
-1. シミュレートされた温度センサー モジュールは、まだ [モジュール] セクションに一覧表示されています。 パブリック プレビューでは、そのモジュールに変更を加える必要はありません。
-
-1. **[Review + create]\(レビュー + 作成\)** を選択します。
-
-1. **[作成]** を選択します。
-
-1. デバイスの詳細ページで **$edgeAgent** または **$edgeHub** のいずれかを選択すると、モジュールの詳細にイメージのパブリック プレビュー バージョンが反映されていることを確認できます。
+**[保存]** を選択して、ランタイム モジュールに変更を適用します。
 
 :::moniker-end
-<!-- end 1.2 -->
+<!--end 1.2-->
+
+**次へ:ルート** を選択し、ウィザードの次の手順に進みます。
+
+   ![モジュールが追加された後、次のステップに進むことを示すスクリーンショット。](./media/quickstart/view-temperature-sensor-next-routes.png)
+
+### <a name="routes"></a>ルート
+
+**[ルート]** タブで、既定のルートの **route** を削除し、 **[次へ: 確認と作成]** を選択し、ウィザードの次の手順に進みます。
+
+   >[!Note]
+   >ルートは、名前と値のペアを使用して作成されます。 このページには 2 つのルートが表示されるはずです。 既定のルートの **route** では、すべてのメッセージが IoT Hub (名前は `$upstream`) に送信されます。 2 つ目のルート **SimulatedTemperatureSensorToIoTHub** は、Azure Marketplace からモジュールを追加したときに自動的に作成されました。 このルートでは、シミュレートされた温度モジュールから IoT Hub にすべてのメッセージが送信されます。 この場合、既定のルートは冗長となるため、削除できます。
+
+   ![既定ルートを削除してから次の手順に進むことを示すスクリーンショット。](./media/quickstart/delete-route-next-review-create.png)
+
+### <a name="review-and-create"></a>確認と作成
+
+JSON ファイルを確認し、 **[作成]** を選択します。 この JSON ファイルには、IoT Edge デバイスにデプロイするすべてのモジュールが定義されます。 **SimulatedTemperatureSensor** モジュールに加え、**edgeAgent** と **edgeHub** という 2 つのランタイム モジュールが含まれています。
+
+   >[!Note]
+   >IoT Edge デバイスに新しいデプロイを送信しても、デバイスには何もプッシュされません。 代わりに、デバイスから IoT Hub に対して、新しい指示のクエリが定期的に実行されます。 更新されたデプロイ マニフェストがデバイスによって検出されると、新しいデプロイに関する情報が使用されてクラウドからモジュール イメージがプルされ、ローカルでのモジュールの実行が開始されます。 このプロセスには数分かかることがあります。
+
+モジュールのデプロイの詳細が作成されると、ウィザードは [デバイスの詳細] ページに戻ります。 **[モジュール]** タブでデプロイの状態を確認します。
+
+**$edgeAgent**、 **$edgeHub**、および **SimulatedTemperatureSensor** という 3 つのモジュールが表示されています。 **[デバイス別に報告]** ではなく **[デプロイで指定]** の下に **[はい]** となっているモジュールが 1 つ以上ある場合、それらはまだお客様の IoT Edge デバイスによって起動されている途中です。 数分待ってから、ページを更新します。
+
+   ![デプロイされたモジュールの一覧内のシミュレートされた温度センサーを示すスクリーンショット。](./media/quickstart/view-deployed-modules.png)
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 

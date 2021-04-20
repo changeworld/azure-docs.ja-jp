@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 80c08eb20a734c16543f2767d18d86b260f17eee
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: d38b1f20547056c30f19dbbc77589643be1663a4
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287398"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073614"
 ---
 <a name="HOLTop"></a>
 
@@ -255,9 +255,11 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
->[画像分析 API リファレンス (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/)
+このクイックスタートでは、画像分析クライアント ライブラリをインストールし、基本的な画像分析呼び出しを行う方法について学習しました。 次は、Analyze API の機能の詳細について学習しましょう。
 
+> [!div class="nextstepaction"]
+>[Analyze API を呼び出す](../../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
 
 * [画像分析の概要](../../overview-image-analysis.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) にあります。
+

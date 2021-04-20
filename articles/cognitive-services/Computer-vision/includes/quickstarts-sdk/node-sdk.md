@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 88f17ace7142fe1c5ff6d56226a935b229530147
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: cb4679152740b73d6bb9cf7288fcaa811b6d6141
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284798"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107073500"
 ---
 <a name="HOLTop"></a>
 
@@ -172,9 +172,10 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
->[OCR API リファレンス (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/)
+このクイックスタートでは、OCR クライアント ライブラリをインストールし、Read API を使用する方法について学習しました。 次は、Read API の機能の詳細について学習しましょう。
 
+> [!div class="nextstepaction"]
+>[Read API を呼び出す](../../Vision-API-How-to-Topics/call-read-api.md)
 
 * [OCR の概要](../../overview-ocr.md)
 * このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) にあります。

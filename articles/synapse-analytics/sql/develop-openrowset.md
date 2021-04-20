@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a6af8f4600544007a9ecb4fcff5ac9016fd7dfbf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c37f6d89d5ebd3e18177db8add048739a62c883f
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640350"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107307947"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -138,9 +138,9 @@ unstructured_data_path をフォルダーとして指定すると、サーバー
 例のように、パスの末尾に /* を指定することで、フォルダーをスキャンするようサーバーレス SQL プールに指示できます: `https://sqlondemandstorage.blob.core.windows.net/csv/population/**`
 
 > [!NOTE]
-> Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、パスの末尾に /** を指定しない限りサブフォルダーは返されません。 また、Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、ファイル名が下線 (_) やピリオド (.) で始まるファイルが返されます。
+> Hadoop や PolyBase とは異なり、サーバーレス SQL プールの場合、パスの末尾に /** を指定しない限りサブフォルダーは返されません。
 
-次の例で unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/` の場合、サーバーレス SQL プール クエリによって、mydata.txt および _hidden.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
+次の例で unstructured_data_path=`https://mystorageaccount.dfs.core.windows.net/webdata/` の場合、サーバーレス SQL プール クエリによって、mydata.txt から行が返されます。 mydata2.txt と mydata3.txt はサブフォルダー内にあるため、これらは返されません。
 
 ![外部テーブルの再帰型データ](./media/develop-openrowset/folder-traversal.png)
 

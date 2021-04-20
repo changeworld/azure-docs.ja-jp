@@ -3,17 +3,17 @@ title: Windows Virtual Desktop の最新情報 - Azure
 description: Windows Virtual Desktop の新機能と製品の更新プログラム。
 author: Heidilohr
 ms.topic: overview
-ms.date: 03/20/2021
+ms.date: 04/08/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 1c5d846963d7fc0c2207893f5c4094e3f94351b5
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505418"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107059"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -51,6 +51,53 @@ Windows Virtual Desktop エージェントの変更内容は、次のとおり�
 ## <a name="fslogix-updates"></a>FSLogix の更新
 
 FSLogix に対して行われた最新の更新については、 [FSLogix の最新情報](/fslogix/whats-new)に関するページを参照してください。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+2021 年 3 月における変更点は次のとおりです。
+
+### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>Windows Virtual Desktop に関する Azure portal UI の更新
+
+Azure portal の Windows Virtual Desktop に対して次の更新を行いました。
+
+- ワークフローでホスト プールを作成して VM を追加するための新しい可用性オプション (可用性セットおよびゾーン) を有効にしました。
+- "支援が必要" という状態のホストが使用不可と表示される問題を修正しました。 ホストの横に警告アイコンが表示されるようになりました。
+- アクティブなセッションの並べ替えを有効にしました。
+- ホストの詳細タブで、特定のユーザーにメッセージを送信したり、特定のユーザーをサインアウトさせたりできるようになりました。
+- セッションの上限フィールドを変更しました。
+- ホスト プールを作成するためにワークフローに OU 検証パスを追加しました。
+- 個人用ホスト プールの作成時に Windows 10 イメージの最新バージョンを使用できるようになりました。
+
+### <a name="generation-2-images-and-trusted-launch"></a>第 2 世代のイメージとトラステッド起動
+
+Azure Marketplace に、Windows 10 Enterprise および Windows 10 Enterprise マルチセッションの第 2 世代のイメージが含まれるようになりました。 これらのイメージを使用すると、トラステッド起動 VM を使用できます。 第 2 世代の VM の詳細については、[第 1 または第 2 世代の仮想マシンを作成する必要性](../virtual-machines/generation-2.md)に関するページを参照してください。 Windows Virtual Desktop のトラステッド起動 VM をプロビジョニングする方法については、[TechCommunity の投稿](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/windows-virtual-desktop-support-for-trusted-launch/m-p/2206170)を参照してください。
+
+### <a name="fslogix-is-now-preinstalled-on-windows-10-enterprise-multi-session-images"></a>FSLogix が Windows 10 Enterprise マルチセッション イメージにプレインストールされるようになりました
+
+お客様からのフィードバックに基づいて、FSLogix の未構成バージョンが既にインストールされている Windows 10 Enterprise マルチセッション イメージの新しいバージョンを設定しました。 これにより、Windows Virtual Desktop のデプロイが容易になることを期待しています。
+
+### <a name="azure-monitor-for-windows-virtual-desktop-is-now-in-general-availability"></a>Azure Monitor for Windows Virtual Desktop の一般提供が開始されました
+
+Azure Monitor for Windows Virtual Desktop が一般提供されるようになりました。 この機能は、デプロイを監視する自動化されたサービスで、使用すると、イベント、正常性、トラブルシューティングの推奨事項を 1 か所で確認できます。 詳細については、[ドキュメント](azure-monitor.md)を参照するか、[TechCommunity の投稿](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-is-generally-available/m-p/2242861)を確認してください。
+
+### <a name="march-2021-updates-for-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop 上の Teams に対する 2021 年 3 月の更新
+
+Windows Virtual Desktop 上の Teams に対して次の更新を行いました。
+
+- 通話と 2x2 モードでのビデオ品質のパフォーマンスを改善しました。
+- ビデオ処理 (XVP) のハードウェア オフロードを使用することにより、CPU 使用率を (CPU の世代に応じて) 5 から 10% 低減しました。
+- 古いマシンで XVP とハードウェア デコードを使用して、2x2 モードでより多くの受信ビデオ ストリームをスムーズに表示できるようになりました。
+- AV 同期のパフォーマンスを向上させ、一時的な問題を低減するために、WebRTC スタックを M74 から M88 に更新しました。
+- ソフトウェア H264 エンコーダーを OpenH264 (Web 上の Teams で使用されている OSS) に置き換えました。これにより、送信側カメラのビデオ品質が向上しました。
+- 3 月 30 日に一般向けに Teams サーバーの 2x2 モードを有効にしました。 2x2 モードでは、同時に最大 4 つの受信ビデオ ストリームが表示されます。
+
+### <a name="start-vm-on-connect-public-preview"></a>"接続時に仮想マシンを起動" のパブリック プレビュー
+
+新しいホスト プール設定である "接続時に仮想マシンを起動" が、パブリック プレビューとして利用できるようになりました。 この設定により、必要に応じていつでも VM を有効にすることができます。 コストを節約するには、Azure Compute の設定を構成して VM の割り当てを解除する必要があります。 詳細については、[ブログ記事](https://aka.ms/wvdstartvmonconnect)と[ドキュメント](start-virtual-machine-connect.md)を参照してください。
+
+### <a name="windows-virtual-desktop-specialty-certification"></a>Windows Virtual Desktop Specialty 認定
+
+Azure における Windows Virtual Desktop の専門知識があることを証明するための AZ-140 試験のベータ版をリリースしました。 詳細については、[TechCommunity の投稿](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107)を参照してください。
 
 ## <a name="february-2021"></a>2021 年 2 月
 

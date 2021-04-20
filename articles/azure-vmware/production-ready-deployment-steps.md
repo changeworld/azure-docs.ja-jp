@@ -3,12 +3,12 @@ title: Azure VMware Solution のデプロイの計画
 description: この記事では、Azure VMware Solution のデプロイ ワークフローの概要について説明します。  最終的な結果として、仮想マシン (VM) の作成と移行に向けて環境の準備が整います。
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 2ded5d706ab71b3880633cd324fb366d0a1bccbe
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 60e0a4083c0253d322b2e10472d0df7496722c10
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104584637"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107246"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Azure VMware Solution のデプロイの計画
 
@@ -16,8 +16,12 @@ ms.locfileid: "104584637"
 
 このクイック スタートで説明されているプロセスにより、仮想マシン (VM) の作成と移行のための運用準備ができた環境が得られます。 
 
->[!IMPORTANT]
->Azure VMware Solution リソースを作成する前に、「[Azure VMware Solution リソースを有効にする方法](enable-azure-vmware-solution.md)」に従い、サポート チケットを提出してホストの割り当てを依頼してください。 サポート チームがリクエストを受け取った後、リクエストが確認され、ホストが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのホストを割り当てる必要がある場合は、同じプロセスを実行します。 
+収集するデータを追跡するために、「[HCX 計画のチェックリスト](https://www.virtualworkloads.com/2021/04/hcx-planning-checklist/)」を入手してください。
+
+> [!IMPORTANT]
+> Azure VMware Solution リソースの作成に備えて、ホスト クォータを早めにリクエストすることが大切です。 ホスト クォータは今すぐリクエストできるので、計画プロセスが完了したら、Azure VMware Solution のプライベートクラウドをいつでもデプロイすることができます。 ホスト クォータのリクエストをサポート チームが受け取った後、リクエストが確認され、ホストが割り当てられるまでに、最大 5 営業日かかります。 Azure VMware Solution の既存のプライベート クラウドがあり、さらに多くのホストを割り当てる必要がある場合でも、実行するプロセスは同じです。 詳細については、サブスクリプションの種類に応じて次のリンクを参照してください。
+> - [EA のお客様](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-ea-customers)
+> - [CSP のお客様](enable-azure-vmware-solution.md?tabs=azure-portal#request-host-quota-for-csp-customers)
 
 ## <a name="subscription"></a>サブスクリプション
 
@@ -82,18 +86,6 @@ Azure VMware Solution のデプロイ時に使用するサイズ ホストを特
 
 :::image type="content" source="media/pre-deployment/nsx-segment-diagram.png" alt-text="特定する - 仮想マシンのワークロードの IP アドレス セグメント" border="false":::     
 
-## <a name="optional-extend-your-networks"></a>(省略可能) ネットワークを拡張する
-
-ネットワーク セグメントは、オンプレミスから Azure VMware Solution まで拡張できます。実施する場合は、ここでそれらのネットワークを特定します。  
-
-次の点に留意します。
-
-- オンプレミスからネットワークを拡張する予定の場合、これらのネットワークはオンプレミスの VMware 環境内の [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) に接続する必要があります。  
-- 拡張したいネットワークが [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) 上で機能している場合、それらは拡張できません。
-
->[!NOTE]
->これらのネットワークは、デプロイ時ではなく、構成の最後の手順として拡張されます。
-
 ## <a name="attach-azure-virtual-network-to-azure-vmware-solution"></a>Azure Virtual Network を Azure VMware Solution に接続する
 
 Azure VMware Solution への接続を提供するために、ExpressRoute は Azure VMware Solution のプライベート クラウドから ExpressRoute 仮想ネットワーク ゲートウェイへと構築されます。
@@ -106,7 +98,7 @@ Azure VMware Solution への接続を提供するために、ExpressRoute は Az
 
 "*既存の*" ExpressRoute 仮想ネットワーク ゲートウェイを使用することを計画している場合は、デプロイ後の手順として Azure VMware Solution の ExpressRoute 回線が確立されます。 この場合、 **[仮想ネットワーク]** フィールドは空白のままにしておきます。
 
-一般的な推奨事項として、既存の ExpressRoute 仮想ネットワーク ゲートウェイを使用しても差し支えありません。 計画の目的で、使用する ExpressRoute 仮想ネットワーク ゲートウェイをメモし、次の手順に進みます。
+一般的な推奨事項として、既存の ExpressRoute 仮想ネットワーク ゲートウェイを使用しても差し支えありません。 計画の目的で、使用する ExpressRoute 仮想ネットワーク ゲートウェイをメモし、[次の手順](#vmware-hcx-network-segments)に進みます。
 
 ### <a name="create-a-new-expressroute-virtual-network-gateway"></a>新しい ExpressRoute 仮想ネットワーク ゲートウェイを作成する
 
@@ -116,23 +108,36 @@ Azure VMware Solution への接続を提供するために、ExpressRoute は Az
    1. 既存の ExpressRoute 仮想ネットワーク ゲートウェイがない Azure 仮想ネットワークを特定します。
    2. デプロイの前に、Azure 仮想ネットワークに [GatewaySubnet](../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md#create-the-gateway-subnet) を作成します。
 
-- 新しい Azure 仮想ネットワークの場合、事前に作成することも、デプロイ時に作成することもできます。 **[仮想ネットワーク]** の一覧の下にある **[新規作成]** リンクを選択します。
+- 新しい Azure 仮想ネットワークと仮想ネットワーク ゲートウェイの場合は、 **[仮想ネットワーク]** リストの下にある **[新規作成]** リンクを選択して、デプロイ中にそれを作成することになります。  アドレス空間とサブネットはデプロイの前に定義し、デプロイ手順の実行時にその情報を入力できるようにしておくことが大切です。
 
 次の画像は、 **[仮想ネットワーク]** フィールドが強調表示された **[プライベート クラウドを作成する]** デプロイ画面を示しています。
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="[仮想ネットワーク] フィールドが強調表示された Azure VMware Solution のデプロイ画面のスクリーンショット。":::
 
->[!NOTE]
->使用または作成される仮想ネットワークは、オンプレミス環境と Azure VMware Solution から認識される可能性があるため、この仮想ネットワークで使用する IP セグメントとサブネットが重複しないようにしてください。
+> [!NOTE]
+> 使用または作成される仮想ネットワークは、オンプレミス環境と Azure VMware Solution から認識される可能性があるため、この仮想ネットワークで使用する IP セグメントとサブネットが重複しないようにしてください。
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX のネットワーク セグメント
 
-VMware HCX は、Azure VMware Solution にバンドルされているテクノロジです。 VMware HCX の主なユース ケースは、ワークロードの移行とディザスター リカバリーです。 いずれかの実施を計画する場合は、ここでネットワークを計画するのが最適です。   そうしない場合は、次の手順までスキップして続行できます。
+VMware HCX は、Azure VMware Solution にバンドルされているテクノロジです。 VMware HCX の主なユース ケースは、ワークロードの移行とディザスター リカバリーです。 いずれかの実施を計画する場合は、ここでネットワークを計画するのが最適です。 そうしない場合は、次の手順までスキップして続行できます。
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
 
+## <a name="optional-extend-your-networks"></a>(省略可能) ネットワークを拡張する
+
+ネットワーク セグメントは、オンプレミスから Azure VMware Solution まで拡張できます。 ネットワーク セグメントを拡張する場合は、ここでそれらのネットワークを特定します。  
+
+次に、考慮すべき点をいくつか示します。
+
+- オンプレミスからネットワークを拡張する予定の場合、これらのネットワークはオンプレミスの VMware 環境内の [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) に接続する必要があります。  
+- [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) 上のネットワークは拡張できません。
+
+>[!NOTE]
+>これらのネットワークは、デプロイ時ではなく、構成の最後の手順として拡張されます。
+>
 ## <a name="next-steps"></a>次の手順
 これで必要な情報を収集して文書化したので、次のセクションに進み、Azure VMware Solution プライベート クラウドを作成します。
 
 > [!div class="nextstepaction"]
 > [Azure VMware Solution のデプロイ](deploy-azure-vmware-solution.md)
+> 

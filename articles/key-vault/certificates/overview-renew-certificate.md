@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: ffa130c0598d2405469d272a3ac6852f281ed965
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0492575bef93a1b08d48475c3ab32ecbc7becd6e
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726364"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364296"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Azure Key Vault の証明書の更新
 
@@ -82,7 +82,7 @@ Azure Key Vault は、自己署名証明書の自動更新にも対応してい�
 
 **証明書の自動ローテーション機能をテストするにはどうすればよいですか?**
 
-**1 か月** の有効期限で証明書を作成してから、ローテーションの有効期間アクションを **1%** に設定します。 この設定にすると、証明書は 7.2 時間ごとにローテーションされます。
+**1 か月** の有効期限で自己署名証明書を作成してから、ローテーションの有効期間アクションを **1%** に設定します。 その後数日間にわたって、作成される証明書のバージョン履歴を表示できるようになります。
   
 **証明書の自動更新後にタグはレプリケートされますか?**
 
