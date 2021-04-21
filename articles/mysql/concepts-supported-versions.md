@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: d84f56e5ae0f3c364a0fd3a08ccb173d7c65a5e2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 1be15c16a1897797326ea869c34c3590ffb07691
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121763"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363871"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 
@@ -33,7 +33,7 @@ Azure Database for MySQL サービスでは、ゲートウェイ ノードは、
 ## <a name="azure-database-for-mysql-currently-supports-the-following-major-and-minor-versions-of-mysql"></a>Azure Database for MySQL では、現在、次の MySQL メジャーおよびマイナー バージョンがサポートされています。
 
 
-| Version | [単一サーバー](overview.md) <br/> 現行のマイナー バージョン |[フレキシブル サーバー (プレビュー)](/../flexible-server/overview.md) <br/> 現行のマイナー バージョン  |
+| Version | [単一サーバー](overview.md) <br/> 現行のマイナー バージョン |[フレキシブル サーバー (プレビュー)](/azure/mysql/flexible-server/overview) <br/> 現行のマイナー バージョン  |
 |:-------------------|:-------------------------------------------|:---------------------------------------------|
 |MySQL バージョン 5.6 |  [5.6.47](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) (廃止) | サポートされていません|
 |MySQL バージョン 5.7 | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) | [5.7.29](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html)|

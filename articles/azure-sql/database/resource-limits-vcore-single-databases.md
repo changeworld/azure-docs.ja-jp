@@ -10,22 +10,33 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/23/2021
-ms.openlocfilehash: a3cd68b610b0e0db05f60450009bc83a80c3037b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: 7f96e6638bd021777d2f4bb888ef70c49c42c716
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107603"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313795"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>仮想コア購入モデルを使用した単一データベースに対するリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 この記事では、仮想コア購入モデルを使用した、Azure SQL Database の単一データベースに対する詳細なリソース制限について説明します。
 
-サーバー上の単一データベースに対する DTU 購入モデルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページを参照してください。
+* サーバー上の単一データベースに対する DTU 購入モデルの制限については、[サーバー上のリソース制限の概要](resource-limits-logical-server.md)に関するページを参照してください。
+* Azure SQL Database に対する DTU 購入モデルのリソース制限については、[単一データベースの DTU リソース制限](resource-limits-dtu-single-databases.md)と[エラスティック プールの DTU リソース制限](resource-limits-dtu-elastic-pools.md)に関する記事を参照してください。
+* 仮想コア リソースの制限については、[Azure SQL Database に対する仮想コア リソースの制限](resource-limits-vcore-single-databases.md)および[エラスティック プールに対する仮想コア リソースの制限](resource-limits-vcore-elastic-pools.md)に関するページを参照してください。
+* さまざまな購入モデルについて詳しくは、[購入モデルとサービス レベル](purchasing-models.md)に関する記事をご覧ください。
 
-[Azure portal](single-database-manage.md#the-azure-portal)、[Transact-SQL](single-database-manage.md#transact-sql-t-sql)、[PowerShell](single-database-manage.md#powershell)、[Azure CLI](single-database-manage.md#the-azure-cli)、または [REST API](single-database-manage.md#rest-api) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ (サービス目標)、ストレージ容量を設定できます。
+読み取り専用の各レプリカには、仮想コア、メモリ、データ IOPS、TempDB、ワーカー、セッションなど、独自のリソースがあります。 読み取り専用の各レプリカには、この記事で後述するリソース制限が適用されます。
+
+次を使用して、単一データベースのサービス レベル、コンピューティング サイズ (サービス目標)、およびストレージ量を設定できます。
+
+* [Transact-SQL](single-database-manage.md#transact-sql-t-sql) ([ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database) を使用)
+* [Azure Portal](single-database-manage.md#the-azure-portal)
+* [PowerShell](single-database-manage.md#powershell)
+* [Azure CLI](single-database-manage.md#the-azure-cli)
+* [REST API](single-database-manage.md#rest-api)
 
 > [!IMPORTANT]
 > スケーリングのガイダンスと考慮事項については、[単一データベースのスケーリング](single-database-scale.md)に関するページを参照してください。

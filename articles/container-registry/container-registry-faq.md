@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/15/2021
 ms.author: sajaya
-ms.openlocfilehash: 5550c53289228f154fab485b4b7bbff17555aad7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a8c007d7f4419ddbe1555b50ceb6fb92ea0a6f98
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105045741"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783901"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -484,7 +484,7 @@ Microsoft Edge または IE ブラウザーを使用している場合は、最�
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>許可されていない操作エラーで pull または push の要求が失敗するのはなぜですか?
 
 操作が許可されない可能性のあるいくつかのシナリオを次に示します。
-* クラシック レジストリはサポートされなくなりました。 [az acr update](/cli/azure/acr#az-acr-update) か Azure portal を使用して、サポートされている[サービス レベル](./container-registry-skus.md)にアップグレードしてください。
+* クラシック レジストリはサポートされなくなりました。 [az acr update](/cli/azure/acr#az_acr_update) か Azure portal を使用して、サポートされている[サービス レベル](./container-registry-skus.md)にアップグレードしてください。
 * イメージやリポジトリがロックされているため、削除や更新を実行できない場合があります。 [az acr show repository](./container-registry-image-lock.md) コマンドを使用して、現在の属性を表示できます。
 * イメージが検疫状態の場合、一部の操作は許可されません。 検疫の詳細については、[こちら](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)をご覧ください。
 * レジストリが、その[ストレージの上限](container-registry-skus.md#service-tier-features-and-limits)に達した可能性があります。

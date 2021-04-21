@@ -11,12 +11,12 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: f2473955db5439911280360b169f469b8c93eb93
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4b35cfeded13a50e5e27c240b0826f1d108ff7eb
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105043599"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529445"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
@@ -74,7 +74,7 @@ Azure Active Directory B2C (Azure AD B2C) には、作成できるアカウン�
 
 ゲスト ユーザーをテナントに招待するときは、受信者の電子メール アドレスと、招待であることを説明するメッセージを指定します。 招待リンクによって、ユーザーは同意ページに移動します。 受信トレイが電子メール アドレスにアタッチされていない場合、ユーザーは、招待資格情報を使用して Microsoft ページに移動することで、同意ページに移動できます。 その後、ユーザーは、電子メール内のリンクのクリックと同じ方法で招待を受け入れます。 (例: `https://myapps.microsoft.com/B2CTENANTNAME`)。
 
-ゲスト ユーザーは、[Microsoft Graph API](/graph/api/invitation-post?view=graph-rest-beta) を使用して招待することもできます。
+ゲスト ユーザーは、[Microsoft Graph API](/graph/api/invitation-post) を使用して招待することもできます。
 
 ## <a name="consumer-user"></a>コンシューマー ユーザー
 

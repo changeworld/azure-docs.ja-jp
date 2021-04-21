@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 426e28048ae370919529ea710717a3a3867d999d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d4b2ac36ad1140968fd17db0bed0b60a8aca6a02
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97746254"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532678"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Azure AD アクセス レビューを使用して、条件付きアクセス ポリシーから除外されているユーザーを管理する
 
@@ -144,7 +144,7 @@ Azure AD では、ユーザーのグループに条件付きアクセス ポリ�
     ![例 2 の [アクセス レビューを作成する] ウィンドウ](./media/conditional-access-exclusion/create-access-review-2.png)
 
 >[!IMPORTANT] 
->多数の除外グループがあるために、複数のアクセス レビューを作成する必要がある場合、Microsoft Graph のベータ版エンドポイントの API では、それらをプログラムによって作成および管理できるようになりました。 最初に、[Azure AD アクセス レビューの API リファレンス](/graph/api/resources/accessreviews-root?view=graph-rest-beta)に関するページと、[Microsoft Graph を使用した Azure AD アクセスの取得の例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)に関するページを参照してください。
+>多数の除外グループがあるために、複数のアクセス レビューを作成する必要がある場合、Microsoft Graph のベータ版エンドポイントの API では、それらをプログラムによって作成および管理できるようになりました。 最初に、[Azure AD アクセス レビューの API リファレンス](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta&preserve-view=true)に関するページと、[Microsoft Graph を使用した Azure AD アクセスの取得の例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)に関するページを参照してください。
 
 ## <a name="access-review-results-and-audit-logs"></a>アクセス レビューの結果と監査ログ
 

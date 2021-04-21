@@ -4,12 +4,12 @@ description: Azure Functions で関数を無効または有効にする方法を
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef3886c4b9b73f87238bf386d1320ecbac8ad181
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 03803abfda010c81fa8286a478d626ef39db59fb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374898"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777583"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Azure Functions で関数を無効にする方法
 
@@ -35,7 +35,7 @@ ms.locfileid: "107374898"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-Azure CLI でアプリの設定を作成および変更するには、[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドを使います。 `AzureWebJobs.QueueTrigger.Disabled` という名前のアプリの設定を作成して `true` に設定することにより `QueueTrigger` という名前の関数を無効にするコマンドを次に示します。 
+Azure CLI でアプリの設定を作成および変更するには、[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) コマンドを使います。 `AzureWebJobs.QueueTrigger.Disabled` という名前のアプリの設定を作成して `true` に設定することにより `QueueTrigger` という名前の関数を無効にするコマンドを次に示します。 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <FUNCTION_APP_NAME> \

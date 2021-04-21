@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 8a45d490d060febc18d77c8487c9f562fd2a914a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: e19d39a32d48ec55473bb957595d47ec5148e74b
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275518"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588787"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビュー用にローカル開発環境を設定する
 
@@ -43,7 +43,7 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 :::image type="content" source="media/local-development/cli-conceptual.png" alt-text="Azure Static Web Apps CLI の要求と応答のフロー":::
 
 > [!IMPORTANT]
-> CLI によって処理されるアプリケーションにアクセスするには、[http://localhost:4280](http://localhost:4280) に移動します。
+> CLI によって処理されるアプリケーションにアクセスするには、`http://localhost:4280` に移動します。
 
 - ポート `4280` に対して行われた **要求** は、要求の種類に応じて適切なサーバーに転送されます。
 
@@ -79,7 +79,7 @@ Azure で使用した場合と同様のエクスペリエンスを提供する�
 
     `swa start`
 
-1. [http://localhost:4280](http://localhost:4280) に移動して、ブラウザーでアプリを表示します。
+1. http://localhost:4280 に移動して、ブラウザーでアプリを表示します。
 
 ### <a name="other-ways-to-start-the-cli"></a>CLI を起動するその他の方法
 

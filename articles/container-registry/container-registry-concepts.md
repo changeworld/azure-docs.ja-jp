@@ -3,12 +3,12 @@ title: レジストリ、リポジトリ、イメージ、成果物について
 description: Azure コンテナー レジストリ、リポジトリ、コンテナー イメージなどの主要な成果物の概念について紹介します。
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 27c4604820dda50686b6cb3f36e69b38283750c3
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 64ab3812b3f23a7b3a480d3530c82bd39f2d29a5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106381924"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784085"
 ---
 # <a name="about-registries-repositories-and-artifacts"></a>レジストリ、リポジトリ、成果物について
 
@@ -184,6 +184,4 @@ Azure Container Registry での[レジストリ ストレージ](container-regis
 Azure Container Registry に対して[イメージをプッシュおよびプル](container-registry-get-started-docker-cli.md)する方法を確認します。
 
 <!-- LINKS - Internal -->
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
-
-
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/30/2021
 ms.author: jgao
-ms.openlocfilehash: fb5fc0b6b673f8a754d0d6bb6ff962697cd5f38b
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105967338"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308967"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトを使用する
 
@@ -140,7 +140,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 - `kind`: スクリプトの種類を指定します。 現在、Azure PowerShell および Azure CLI のスクリプトがサポートされています。 値は、**AzurePowerShell** と **AzureCLI** です。
 - `forceUpdateTag`:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 `newGuid()` または `utcNow()` 関数を使用する場合は、どちらの関数もパラメーターの既定値でのみ使用できます。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
 - `containerSettings`:Azure Container Instance をカスタマイズするための設定を指定します。 デプロイ スクリプトには、新しい Azure Container Instance が必要です。 既存の Azure Container Instance は指定できません。 ただし、`containerGroupName` を使用して、コンテナー グループ名をカスタマイズできます。 指定しない場合、グループ名は自動的に生成されます。
-- `storageAccountSettings`:既存のストレージ アカウントを使用するための設定を指定します。 `containerGroupName` が指定されていない場合、ストレージ アカウントは自動的に作成されます。 「[既存のストレージ アカウントの使用](#use-existing-storage-account)」を参照してください。
+- `storageAccountSettings`:既存のストレージ アカウントを使用するための設定を指定します。 `storageAccountName` が指定されていない場合、ストレージ アカウントは自動的に作成されます。 「[既存のストレージ アカウントの使用](#use-existing-storage-account)」を参照してください。
 - `azPowerShellVersion`/`azCliVersion`:使用するモジュールのバージョンを指定します。 [サポートされている Azure PowerShell バージョン](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list)の一覧を参照してください。 [サポートされている Azure CLI バージョン](https://mcr.microsoft.com/v2/azure-cli/tags/list)の一覧を参照してください。
 
   >[!IMPORTANT]
@@ -245,7 +245,7 @@ Write-Host "Press [ENTER] to continue ..."
 最初のリソースでは、 `$DeploymentScriptOutputs` という名前の変数を定義し、それを使用して出力値を格納します。 テンプレート内の別のリソースから出力値にアクセスするには、次のように指定します。
 
 ```json
-reference('<ResourceName>').output.text
+reference('<ResourceName>').outputs.text
 ```
 
 ## <a name="work-with-outputs-from-cli-script"></a>CLI スクリプトからの出力を操作する

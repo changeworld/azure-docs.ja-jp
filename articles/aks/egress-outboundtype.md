@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でカスタム エグレス ルー�
 services: container-service
 ms.topic: article
 ms.date: 06/29/2020
-ms.openlocfilehash: 72ba90510afb00ee001c97612e88f452039f53a4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: e9433978c8ee855ec66901c7692e4d2b59261fd3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182130"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773047"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>ユーザー定義ルートを使用してクラスターのエグレスをカスタマイズする
 
@@ -81,5 +81,5 @@ Azure ロード バランサーでは、[規則が設定されるまでは料金
 [ルート テーブルの作成、変更、削除の方法](../virtual-network/manage-route-table.md)に関する記事を参照してください。
 
 <!-- LINKS - internal -->
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [byo-route-table]: configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet

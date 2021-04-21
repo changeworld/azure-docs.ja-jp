@@ -3,14 +3,14 @@ title: スクリプト アクションを使用して Azure HDInsight クラス�
 description: スクリプト アクションを使用して HDInsight クラスターにカスタム コンポーネントを追加します。 スクリプト アクションは、クラスター構成をカスタマイズするために使用できる Bash スクリプトです。 または、Hue、Solr、R などのサービスやユーティリティを追加します。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
+ms.custom: seoapr2020, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: efd145732ecc119e2fdf9b73ca59729232a37d4c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c614f2f60adfa2a29a01000cd3adf4791591b8b5
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109524"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107378756"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>スクリプト アクションを使用して Azure HDInsight クラスターをカスタマイズする
 

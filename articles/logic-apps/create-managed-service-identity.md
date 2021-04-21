@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
 ms.date: 03/30/2021
-ms.openlocfilehash: 54880f22fae7f9a193a13745702345f5f7efdc32
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 8e081257d70c9bc9c9f75df18b30f8dcf119e48e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210919"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763345"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
@@ -312,7 +312,7 @@ Azure によってロジック アプリのリソース定義が作成される�
 * [Azure Portal](#azure-portal-assign-access)
 * [Azure Resource Manager テンプレート](../role-based-access-control/role-assignments-template.md)
 * Azure PowerShell ([New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)) - 詳細については、[Azure RBAC と Azure PowerShell を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-powershell.md)に関する記事を参照してください。
-* Azure CLI ([az role assignment create](/cli/azure/role/assignment#az-role-assignment-create)) - 詳細については、[Azure RBAC と Azure CLI を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-cli.md)に関する記事を参照してください。
+* Azure CLI ([az role assignment create](/cli/azure/role/assignment#az_role_assignment_create)) - 詳細については、[Azure RBAC と Azure CLI を使用したロールの割り当ての追加](../role-based-access-control/role-assignments-cli.md)に関する記事を参照してください。
 * [Azure REST API](../role-based-access-control/role-assignments-rest.md)
 
 <a name="azure-portal-assign-access"></a>
@@ -562,7 +562,7 @@ Azure Resource Manager アクションの **リソースの読み取り** では
 
 ## <a name="arm-template-for-managed-connections-and-managed-identities"></a>マネージド接続とマネージド ID の ARM テンプレート
 
-ARM テンプレートを使用したデプロイを自動化し、マネージド ID を使用するマネージド コネクタ トリガーまたはアクションがロジック アプリに含まれている場合は、基になる接続リソース定義に、`parameterValueType` プロパティがプロパティ値の `Alternative` と共に含まれていることを確認します。 そうでない場合、ARM のデプロイで、認証にマネージド ID を使用する接続が設定されず、接続がロジック アプリのワークフローで機能しません。 この要件は、[ **[Connect with managed identity]** (マネージド ID で接続) オプション](#authenticate-managed-connector-managed-identity)を選択した[特定のマネージ コネクタのトリガーとアクション](#managed-connectors-managed-identity)にのみ適用されます。
+ARM テンプレートを使用したデプロイを自動化し、マネージド ID を使用するマネージド コネクタ トリガーまたはアクションがロジック アプリに含まれている場合は、基になる接続リソース定義に、`parameterValueType` プロパティがプロパティ値の `Alternative` と共に含まれていることを確認します。 そうでない場合、ARM のデプロイで、認証にマネージド ID を使用する接続が設定されず、接続がロジック アプリのワークフローで機能しません。 この要件は、[ **[Connect with managed identity]** (マネージド ID で接続) オプション](#authenticate-managed-connector-managed-identity)を選択した [特定のマネージ コネクタのトリガーとアクション](#managed-connectors-managed-identity)にのみ適用されます。
 
 たとえば、次に示すのは、プロパティ値が `Alternative` に設定されている `parameterValueType` プロパティが定義に含まれているマネージド ID を使用する、Azure Automation アクションの基になる接続リソース定義です。
 

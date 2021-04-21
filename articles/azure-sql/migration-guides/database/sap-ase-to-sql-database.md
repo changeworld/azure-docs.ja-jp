@@ -5,22 +5,22 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 138a23b610ab96194424bb0f88cf94f516c2d223
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0538071ffb9d244fb8b3493d6b63b27c6b56a726
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626454"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388535"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>移行ガイド: SAP ASE から Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
-このガイドでは、SAP Adapter Server Enterprise 用の SQL Server Migration Assistant を使用して、SAP Adapter Server Enterprise (ASE) データベースを Azure SQL データベースに移行する方法について説明します。
+このガイドでは、SAP Adapter Server Enterprise 用の [SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant を使用して、SAP Adapter Server Enterprise (ASE) データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。
 
 その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
 
@@ -34,7 +34,7 @@ SAP SE データベースの SQL データベースへの移行を開始する�
 
 ## <a name="pre-migration"></a>移行前
 
-前提条件を満たしたら、環境のトポロジを検出し、移行の実現可能性を評価する準備が整いました。
+前提条件を満たしたら、環境のトポロジを検出し、[Azure Cloud 移行](https://azure.microsoft.com/migration)の実現可能性を評価する準備が整いました。
 
 ### <a name="assess"></a>アクセス
 
@@ -80,13 +80,13 @@ SAP SE データベースの SQL データベースへの移行を開始する�
 
 1. データを移行します。 **[SAP ASE メタデータ エクスプローラー]** ペインで、移行する SAP ASE データベースまたはオブジェクトを右クリックして **[データの移行]** を選択します。 あるいは、右上にある **[データの移行]** タブを選択することもできます。 
 
-   データベース全体のデータを移行するには、データベース名の横にあるチェック ボックスをオンにします。 個々のテーブルからデータを移行するには、データベースを展開し、 **[テーブル]** を展開してから、そのテーブルの横にあるチェック ボックスをオンにします。 個々のテーブルのデータを除外するには、このチェック ボックスをオフにします。 
+   データベース全体のデータを移行するには、データベース名の横にあるチェック ボックスをオンにします。 個々のテーブルからデータを移行するには、データベースを展開し、 **[テーブル]** を展開して、テーブルの横にあるチェック ボックスをオンにします。 個々のテーブルのデータを除外するには、このチェック ボックスをオフにします。 
 1. 移行が完了したら、**データ移行レポート** を表示します。 
 1. データとスキーマを確認することによって移行を検証します。 それを行うには、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) を使用して SQL データベースに接続します。
 
 ## <a name="post-migration"></a>移行後 
 
-*移行* の段階を正常に完了したら、移行後の一連のタスクを完了して、すべてが可能な限り円滑かつ効率的に機能していることを確認する必要があります。
+*移行* 段階が正常に完了したら、移行後の一連のタスクを完了し、すべてが可能な限り円滑かつ効率的に機能していることを確認する必要があります。
 
 ### <a name="remediate-applications"></a>アプリケーションを修復する
 
@@ -96,7 +96,7 @@ SAP SE データベースの SQL データベースへの移行を開始する�
 
 データベース移行に対するテスト アプローチは、次のアクティビティで構成されます。
 
-1. **検証テストを作成する**: データベース移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行するための検証クエリを作成する必要があります。 その検証クエリでは、定義されているスコープに対応する必要があります。
+1. **検証テストを作成する**: データベース移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行する検証クエリを作成する必要があります。 その検証クエリでは、定義されているスコープに対応する必要があります。
 
 1. **テスト環境を設定する**: このテスト環境には、ソース データベースとターゲット データベースのコピーを含める必要があります。 必ずテスト環境を分離してください。
 
@@ -123,6 +123,7 @@ SAP SE データベースの SQL データベースへの移行を開始する�
 - クラウド移行のためのフレームワークと導入サイクルの詳細については、次を参照してください。
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [クラウド移行リソース](https://azure.microsoft.com/migration/resources)
 
 - アプリケーション アクセス レイヤーを評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください。
 - データ アクセス レイヤーの A/B テストの実行方法について詳しくは、[Database Experimentation Assistant](/sql/dea/database-experimentation-assistant-overview) についてのページを参照してください。
