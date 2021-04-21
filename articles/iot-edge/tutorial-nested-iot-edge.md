@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: bfecc88dc0c504cee615f1a3d35f9208aeb724f8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 44fe6bb3787e1fe0df7ccf83200497b46c473568
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309193"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728502"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>チュートリアル:IoT Edge デバイスの階層を作成する
 
@@ -262,7 +262,7 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
 
 **Docker レジストリ** モジュールは、既存の Azure Container Registry を参照します。 この場合、`REGISTRY_PROXY_REMOTEURL` の参照先は Microsoft Container Registry です。 `createOptions` では、通信はポート 5000 で行われることがわかります。
 
-**IoT Edge API プロキシ** モジュールは、HTTP 要求を他のモジュールにルーティングします。これによって下位レイヤー デバイスはストレージに対してコンテナー イメージをプルしたり、BLOB をプッシュしたりできるようになります。 このチュートリアルでは、その通信にポート 8000 を使用しています。さらに、Docker コンテナー イメージ pull request を、ポート 5000 で **Docker レジストリ** モジュールにルーティングするように構成されています。 また、Blob Storage のアップロード要求は、ポート 11002 で AzureBlobStorageonIoTEdge モジュールにルーティングされます。 **IoT Edge API プロキシ** モジュールとその構成方法の詳細については、モジュールの[使用法ガイド](how-to-configure-api-proxy-module.md)を参照してください。
+**IoT Edge API プロキシ** モジュールは、HTTP 要求を他のモジュールにルーティングします。これによって下位レイヤー デバイスはストレージに対してコンテナー イメージをプルしたり、BLOB をプッシュしたりできるようになります。 このチュートリアルでは、その通信にポート 8000 を使用しています。さらに、Docker コンテナー イメージ pull request を、ポート 5000 で **Docker レジストリ** モジュールにルーティングするように構成されています。 また、Blob Storage のアップロード要求は、ポート 11002 で AzureBlobStorageonIoTEdge モジュールにルーティングされます。 **IoT Edge API プロキシ** モジュールとその構成方法の詳細については、モジュールの [使用法ガイド](how-to-configure-api-proxy-module.md)を参照してください。
 
 このようなデプロイを Azure portal または Azure Cloud Shell で作成する方法については、[使用法ガイドの最上位レイヤー デバイスに関するセクション](how-to-connect-downstream-iot-edge-device.md#deploy-modules-to-top-layer-devices)を参照してください。
 
@@ -309,7 +309,7 @@ IoT Edge ランタイムを構成するには、セットアップ スクリプ�
 このチュートリアルではポート 8000 を使用しているため、それを指定する必要があります。
 
 ```bash
-sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2.0-rc4
+sudo iotedge check --diagnostics-image-name $upstream:8000/azureiotedge-diagnostics:1.2
 ```
 
 `azureiotedge-diagnostics` の値は、レジストリ モジュールにリンクされたコンテナー レジストリからプルされます。 このチュートリアルでは、既定値の https://mcr.microsoft.com: に設定しています。
