@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 4/5/2021
-ms.openlocfilehash: 3758e2d458e1a6bd052ac746ac361de033d508e9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 161204bf02ac36c1f5a3969cf57c61e98560c9b5
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107023887"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518900"
 ---
 # <a name="upgrade-hyperscale-citus-server-group"></a>Hyperscale (Citus) サーバー グループをアップグレードする
 
@@ -23,7 +23,7 @@ ms.locfileid: "107023887"
 PostgreSQL をアップグレードすると、想像するよりも多くの変更が発生します。これは、Hyperscale (Citus) によって、Citus 拡張機能を含む[データベース拡張機能](concepts-hyperscale-extensions.md)もアップグレードされるためです。
 運用環境をアップグレードする前に、新しい PostgreSQL と Citus のバージョンでアプリケーションをテストすることを強くお勧めします。
 
-テストする便利な方法は、[ポイントインタイム リストア](concepts-hyperscale-backup.md#point-in-time-restore-pitr)を使用してサーバー グループのコピーを作成することです。 コピーをアップグレードし、それに対してアプリケーションをテストします。 すべてが正常に動作することを確認したら、元のサーバー グループをアップグレードします。
+テストする便利な方法は、[ポイントインタイム リストア](concepts-hyperscale-backup.md#restore)を使用してサーバー グループのコピーを作成することです。 コピーをアップグレードし、それに対してアプリケーションをテストします。 すべてが正常に動作することを確認したら、元のサーバー グループをアップグレードします。
 
 ## <a name="upgrade-a-server-group-in-the-azure-portal"></a>Azure portal でサーバー グループをアップグレードする
 

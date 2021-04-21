@@ -3,12 +3,12 @@ title: Azure portal 内での Azure ファイル共有のバックアップ
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、Azure portal を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7f44a71388468be432bdfcb0eb2bf67c0fcc8ef
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88890350"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519937"
 ---
 # <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
 
@@ -132,7 +132,7 @@ ms.locfileid: "88890350"
        ![新しいコンテナーの作成](./media/backup-afs/create-new-vault.png)
 
       >[!IMPORTANT]
-      >ストレージ アカウントがコンテナーに登録されている場合や、保護しようとしているファイル共有をホストしているストレージ アカウント内に、保護された共有が少ない場合は、Recovery Services コンテナーの名前が事前に設定され、それを編集することはできません。[詳細については、こちらを参照してください](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share)。
+      >ストレージ アカウントがコンテナーに登録されている場合や、保護しようとしているファイル共有をホストしているストレージ アカウント内に、保護された共有が少ない場合は、Recovery Services コンテナーの名前が事前に設定され、それを編集することはできません。[詳細については、こちらを参照してください](backup-azure-files-faq.yml#why-can-t-i-change-the-vault-to-configure-backup-for-the-file-share-)。
 
 1. **バックアップ ポリシー** を選択するには、次のいずれかの操作を行います。
 
