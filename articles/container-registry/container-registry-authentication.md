@@ -3,12 +3,12 @@ title: レジストリ認証オプション
 description: Azure Active Directory ID でのサインイン、サービス プリンシパルの使用、オプションの管理者資格情報の使用など、非公開の Azure コンテナー レジストリのための認証オプション。
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: d12895502ecd30991fbef836903a8ceea445b770
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 7ff55d569e2659262ce9f323e4db2ea7ed671d20
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285503"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784283"
 ---
 # <a name="authenticate-with-an-azure-container-registry"></a>Azure コンテナー レジストリでの認証
 
@@ -31,7 +31,7 @@ Azure コンテナー レジストリでの認証には複数の方法があり�
 
 ## <a name="individual-login-with-azure-ad"></a>Azure AD での個々のログイン
 
-開発ワークステーションから作成したレジストリへのイメージのプッシュやプルなど、レジストリを直接操作するときは、個人の Azure ID を使用して認証します。 [az login](/cli/azure/reference-index#az-login) を使用して [Azure CLI](/cli/azure/install-azure-cli) にサインインし、[az acr login](/cli/azure/acr#az-acr-login) コマンドを実行します。
+開発ワークステーションから作成したレジストリへのイメージのプッシュやプルなど、レジストリを直接操作するときは、個人の Azure ID を使用して認証します。 [az login](/cli/azure/reference-index#az_login) を使用して [Azure CLI](/cli/azure/install-azure-cli) にサインインし、[az acr login](/cli/azure/acr#az_acr_login) コマンドを実行します。
 
 ```azurecli
 az login
@@ -111,7 +111,7 @@ docker login myregistry.azurecr.io
 
 ログイン資格情報の管理の推奨プラクティスについては、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスをご覧ください。
 
-既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で [az acr update](/cli/azure/acr#az-acr-update) コマンドの `--admin-enabled` パラメーターを使用します。
+既存のレジストリの管理者ユーザーを有効にするには、Azure CLI で [az acr update](/cli/azure/acr#az_acr_update) コマンドの `--admin-enabled` パラメーターを使用します。
 
 ```azurecli
 az acr update -n <acrName> --admin-enabled true

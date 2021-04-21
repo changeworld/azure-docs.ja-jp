@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 42d079a2aa98549b12aafecdd8d58f3361db8b4d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3fcfb364ebffdd3643e803922cbe4f3dd0d87935
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307477"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511698"
 ---
 ## <a name="setting-up"></a>設定
 
@@ -45,7 +45,7 @@ from azure.communication.sms import SmsClient
      credential = DefaultAzureCredential()
 ```
 
-## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>ID を作成し、マネージド ID を使用してトークンを発行します。
+## <a name="create-an-identity-and-issue-a-token-with-managed-identities"></a>マネージド ID を使用して ID を作成しトークンを発行する
 
 次に、作成した資格情報を使用するコードを追加して、VoIP アクセストークンを発行します。 このコードは後で呼び出します。
 
@@ -140,7 +140,7 @@ print(f'Send Result Successful: {sms_result[0].successful}');
 ```
 ## <a name="run-the-program"></a>プログラムを実行する
 
-すべてが完了したら、プロジェクトのディレクトリから `python managed-identity.py` を入力するとファイルを実行できます。 正常に実行されると、次のような出力結果が表示されます。
+すべてが完了したら、プロジェクトのディレクトリから `python managed-identity.py` と入力してファイルを実行できます。 正常に実行されると、次のような出力結果が表示されます。
 
 ```Bash
     $ python managed-identity.py

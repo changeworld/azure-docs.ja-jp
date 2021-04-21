@@ -12,12 +12,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: sstein, emlisa
 ms.date: 10/28/2020
-ms.openlocfilehash: fbf2a30d029a579026fa9c590f59bedff594f4b8
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 21ac73b461ebcb171f48621aa27a16dfc0e8c936
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109205"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781741"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -125,9 +125,9 @@ Hyperscale の高可用性の詳細については、「[ハイパースケー�
 
 |デプロイの種類|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|データベース|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[データベース フェールオーバー](/rest/api/sql/databases/failover)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az-rest) が使用できます|
-|エラスティック プール|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[エラスティック プールのフェールオーバー](/rest/api/sql/elasticpools/failover)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az-rest) が使用できます|
-|マネージド インスタンス|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[マネージド インスタンス - フェールオーバー](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi failover](/cli/azure/sql/mi/#az-sql-mi-failover)|
+|データベース|[Invoke-AzSqlDatabaseFailover](/powershell/module/az.sql/invoke-azsqldatabasefailover)|[データベース フェールオーバー](/rest/api/sql/databases/failover)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az_rest) が使用できます|
+|エラスティック プール|[Invoke-AzSqlElasticPoolFailover](/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[エラスティック プールのフェールオーバー](/javascript/api/@azure/arm-sql/elasticpools#failover_string__string__string__msRest_RequestOptionsBase)|Azure CLI から REST API 呼び出しを呼び出すために [az rest](/cli/azure/reference-index#az_rest) が使用できます|
+|マネージド インスタンス|[Invoke-AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[マネージド インスタンス - フェールオーバー](/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi failover](/cli/azure/sql/mi/#az_sql_mi_failover)|
 
 > [!IMPORTANT]
 > フェールオーバー コマンドは、ハイパースケール データベースの読み取り可能なセカンダリ レプリカでは使用できません。

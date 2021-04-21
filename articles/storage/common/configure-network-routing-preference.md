@@ -10,12 +10,12 @@ ms.date: 03/17/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 0738f7e427c2ff094c9b6df7539ba67dff80d095
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ed248480803370a75b40c18ee7d0e2641254d84a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104589856"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790457"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage"></a>Azure Storage に対してネットワークのルーティング優先設定を構成する
 
@@ -82,7 +82,7 @@ ms.locfileid: "104589856"
 
    - Azure Cloud Shell を起動するには、[Azure portal](https://portal.azure.com) にサインインします。
 
-   - CLI のローカル インストールにログインするには、[az login](/cli/azure/reference-index#az-login) コマンドを実行します。
+   - CLI のローカル インストールにログインするには、[az login](/cli/azure/reference-index#az_login) コマンドを実行します。
 
      ```azurecli
      az login
@@ -146,7 +146,7 @@ ms.locfileid: "104589856"
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. ルート固有のエンドポイントを構成するには、[az storage account update](/azure/storage/account#az-storage-account-update) コマンドを使用します。 
+1. ルート固有のエンドポイントを構成するには、[az storage account update](/azure/storage/account#az_storage_account_update) コマンドを使用します。 
 
    - Microsoft ネットワーク ルーティング設定を使用するルート固有のエンドポイントを作成するには、`--publish-microsoft-endpoints` パラメーターを `true` に設定します。 
 

@@ -9,16 +9,16 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: e11e03ec7379dede6bf998f639a237201c297e72
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d6126e9d782765b992ae2fd51016984389c9b187
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303629"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778303"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure リソース プロバイダーの操作
 
-このセクションでは、組み込みロールで使用される、Azure リソース プロバイダーの操作を一覧表示します。 これらの操作を [Azure カスタム ロール](custom-roles.md)で使用することで、Azure のリソースに対する詳細なアクセス制御を実現できます。 リソース プロバイダー操作は常に進化しています。 最新の操作を取得するには、[Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) または [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list) を使用してください。
+このセクションでは、組み込みロールで使用される、Azure リソース プロバイダーの操作を一覧表示します。 これらの操作を [Azure カスタム ロール](custom-roles.md)で使用することで、Azure のリソースに対する詳細なアクセス制御を実現できます。 リソース プロバイダー操作は常に進化しています。 最新の操作を取得するには、[Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) または [az provider operation list](/cli/azure/provider/operation#az_provider_operation_list) を使用してください。
 
 操作の一覧を表示するには、次の表にあるリソース プロバイダーの名前をクリックします。
 

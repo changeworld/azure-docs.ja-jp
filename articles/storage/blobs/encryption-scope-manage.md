@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: c29282637f6854248c98dff59f8fae46ad1a9d39
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 656443b0bc9d0e45f43634b1b4c21145de7a5bb5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640542"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792545"
 ---
 # <a name="create-and-manage-encryption-scopes"></a>暗号化スコープの作成と管理
 
@@ -111,7 +111,7 @@ Azure CLI で暗号化スコープを作成するには、最初に Azure CLI �
 
 ### <a name="create-an-encryption-scope-protected-by-microsoft-managed-keys"></a>Microsoft マネージド キーによって保護される暗号化スコープを作成する
 
-Microsoft マネージド キーによって保護される新しい暗号化スコープを作成するには、`--key-source` パラメーターを `Microsoft.Storage` に指定して、[az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) コマンドを呼び出します。 プレースホルダー値をお客様独自の値に置き換えてください。
+Microsoft マネージド キーによって保護される新しい暗号化スコープを作成するには、`--key-source` パラメーターを `Microsoft.Storage` に指定して、[az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) コマンドを呼び出します。 プレースホルダー値をお客様独自の値に置き換えてください。
 
 ```azurecli-interactive
 az storage account encryption-scope create \
@@ -123,7 +123,7 @@ az storage account encryption-scope create \
 
 ### <a name="create-an-encryption-scope-protected-by-customer-managed-keys"></a>カスタマー マネージド キーによって保護される暗号化スコープを作成する
 
-Microsoft マネージド キーによって保護される新しい暗号化スコープを作成するには、`--key-source` パラメーターを `Microsoft.Storage` に指定して、[az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-create) コマンドを呼び出します。 プレースホルダー値をお客様独自の値に置き換えてください。
+Microsoft マネージド キーによって保護される新しい暗号化スコープを作成するには、`--key-source` パラメーターを `Microsoft.Storage` に指定して、[az storage account encryption-scope create](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_create) コマンドを呼び出します。 プレースホルダー値をお客様独自の値に置き換えてください。
 
 キー コンテナーまたは Managed HSM にあるカスタマー マネージド キーによって保護される新しい暗号化スコープを作成するには、まず、ストレージ アカウントのカスタマー マネージド キーを構成します。 ストレージ アカウントにアクセスするためのアクセス許可が付与されるように、マネージド ID をストレージ アカウントに割り当ててから、そのマネージド ID を使用してキー コンテナーのアクセス ポリシーを構成する必要があります。 詳細については、「[Azure Storage 暗号化のカスタマー マネージド キー](../common/customer-managed-keys-overview.md)」を参照してください。
 
@@ -202,7 +202,7 @@ Get-AzStorageAccount -ResourceGroupName $rgName | Get-AzStorageEncryptionScope
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Azure CLI を使用してストレージ アカウントで使用可能な暗号化スコープを一覧表示するには、[az storage account encryption-scope list](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-list) コマンドを呼び出します。 例中のプレースホルダーを独自の値に置き換えてください。
+Azure CLI を使用してストレージ アカウントで使用可能な暗号化スコープを一覧表示するには、[az storage account encryption-scope list](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_list) コマンドを呼び出します。 例中のプレースホルダーを独自の値に置き換えてください。
 
 ```azurecli-interactive
 az storage account encryption-scope list \
@@ -246,7 +246,7 @@ New-AzStorageContainer -Name $containerName1 `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Azure CLI で既定の暗号化スコープを持つコンテナーを作成するには、[az storage container create](/cli/azure/storage/container#az-storage-container-create) コマンドを呼び出して、`--default-encryption-scope` パラメーターのスコープを指定します。 コンテナー内のすべての BLOB でコンテナーの既定のスコープが使用されるように強制するには、`--prevent-encryption-scope-override` パラメーターを `true` に設定します。
+Azure CLI で既定の暗号化スコープを持つコンテナーを作成するには、[az storage container create](/cli/azure/storage/container#az_storage_container_create) コマンドを呼び出して、`--default-encryption-scope` パラメーターのスコープを指定します。 コンテナー内のすべての BLOB でコンテナーの既定のスコープが使用されるように強制するには、`--prevent-encryption-scope-override` パラメーターを `true` に設定します。
 
 次の例では、Azure AD アカウントを使用して、コンテナーの作成操作を承認します。 アカウント アクセス キーを使用することもできます。 詳細については、「[Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する](./authorize-data-operations-cli.md)」を参照してください。
 
@@ -303,7 +303,7 @@ Set-AzStorageBlobContent -Context $ctx `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Azure CLI を使用して暗号化スコープを持つ BLOB をアップロードするには、[az storage blob upload](/cli/azure/storage/blob#az-storage-blob-upload) コマンドを呼び出し、BLOB の暗号化スコープを指定します。
+Azure CLI を使用して暗号化スコープを持つ BLOB をアップロードするには、[az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) コマンドを呼び出し、BLOB の暗号化スコープを指定します。
 
 Azure Cloud Shell を使用する場合は、「[BLOB をアップロードする](storage-quickstart-blobs-cli.md#upload-a-blob)」で説明されている手順に従って、ルート ディレクトリにファイルを作成します。 その後、次のサンプルを使用して、このファイルを BLOB にアップロードできます。
 
@@ -354,7 +354,7 @@ Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Azure CLI を使用して、暗号化スコープを保護するキーをカスタマー マネージド キーから Microsoft マネージド キーに変更するには、[az storage account encryption-scope update](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-update) コマンドを呼び出し、`Microsoft.Storage` の値で `--key-source` パラメーターを渡します。
+Azure CLI を使用して、暗号化スコープを保護するキーをカスタマー マネージド キーから Microsoft マネージド キーに変更するには、[az storage account encryption-scope update](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_update) コマンドを呼び出し、`Microsoft.Storage` の値で `--key-source` パラメーターを渡します。
 
 ```azurecli-interactive
 az storage account encryption-scope update \
@@ -398,7 +398,7 @@ Update-AzStorageEncryptionScope -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Azure CLI で暗号化スコープを無効にするには、次の例に示すように、[az storage account encryption-scope update](/cli/azure/storage/account/encryption-scope#az-storage-account-encryption-scope-update) コマンドを呼び出し、値が `Disabled` の `--state` パラメーターを含めます。 暗号化スコープを再び有効にするには、`--state` パラメーターを `Enabled` に設定して、同じコマンドを呼び出します。 例中のプレースホルダーを独自の値に置き換えてください。
+Azure CLI で暗号化スコープを無効にするには、次の例に示すように、[az storage account encryption-scope update](/cli/azure/storage/account/encryption-scope#az_storage_account_encryption_scope_update) コマンドを呼び出し、値が `Disabled` の `--state` パラメーターを含めます。 暗号化スコープを再び有効にするには、`--state` パラメーターを `Enabled` に設定して、同じコマンドを呼び出します。 例中のプレースホルダーを独自の値に置き換えてください。
 
 ```azurecli-interactive
 az storage account encryption-scope update \

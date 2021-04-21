@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: IoT Plug and Play Certification Requirements
 ms.service: certification
-ms.openlocfilehash: bbe9a3f18463285521dde0ee64b369cffcd71d75
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: b26fab6f8b92e3cb996f545f1f6201d32b1eaced
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105975744"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107310514"
 ---
 # <a name="iot-plug-and-play-certification-requirements"></a>IoT プラグ アンド プレイ認定の要件
 
@@ -51,7 +51,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **OS**                  | 非依存                                                     |
 | **検証タイプ**     | 自動                                                    |
 | **検証**          | デバイスは、埋め込みコードを再コンパイルする必要なく、DPS ID スコープの所有権の転送を実装する必要があります。 Microsoft では、デバイスが DPS をサポートしていることを検証するために、テストを実行するための [ポータル ワークフロー](https://certify.azure.com)を提供しています **1.** ユーザーは、構成証明メソッド (x.509、TPM、および SAS キー) のいずれかを選択する必要があります **2.** 認証方法に応じて、ユーザーは、**a)** X.509 証明書を AICS マネージド DPS スコープにアップロードする、**b)** SAS キーまたは保証キーをデバイスに実装する、などの対応するアクションを実行する必要があります |
-| **リソース**           | **a)** [デバイス プロビジョニング サービスの概要](../iot-dps/about-iot-dps.md)、 **b)** [DPS の ID スコープ転送用のサンプル構成ファイル](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/digitaltwin_client/samples/digitaltwin_sample_ll_device/sample_config) |
+| **リソース**           | **a)** [デバイス プロビジョニング サービスの概要](../iot-dps/about-iot-dps.md)、 **b)** [DPS の ID スコープ転送用のサンプル構成ファイル](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview-pnp/serializer/samples/devicetwin_simplesample) |
 
 **[必須] DTDL v2: 定義済みのデバイスモデルとインターフェイスがデジタル ツイン定義言語 v2 に準拠していることを確認するテストの目的。**                                                              
 
@@ -85,7 +85,7 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **検証タイプ**                       | マニュアル                                                       |
 | **検証**                            | パートナーは、 物理デバイスに対して追加の検証を実行するための手配を行うために、Microsoft Contact ([iotcert@microsoft.com](mailto:iotcert@microsoft.com)) と提携する必要があります。 COVID-19 の状況のため、デバイスを Microsoft に出荷せずに、物理的なデバイスの検証を実行するさまざまな方法を模索しています。 |
 | **リソース**                             | 詳細は後日お知らせします                                 |
-| **Azure の推奨事項**       | N/A    |
+| **Azure の推奨事項**       | 該当なし    |
 
 **[実装されている場合] デバイス情報インターフェイス: テストの目的は、デバイス情報インターフェイスがデバイス コードに適切に実装されていることを検証することです**
 
@@ -95,9 +95,9 @@ IoT プラグ アンド プレイ認定では次のことが保証されます�
 | **適用対象**          | 任意のデバイス                                                   |
 | **OS**                  | 非依存                                                     |
 | **検証タイプ**     | 自動                                                    |
-| **検証**          | [ポータル ワークフロー](https://certify.azure.com) は、デバイス コードが [デバイス情報インターフェイスを実装していることを検証します](https://repo.azureiotrepository.com/Models/dtmi:azure:DeviceManagement:DeviceInformation;1?api-version=2020-05-01-previewureiot:DeviceManagement:DeviceInformation:1) **1.** デバイス コードによって IoT Hub に値が出力されることを確認します **2.** インターフェイスが DCM に実装されていることを確認します (この実装は DTDL v2 で変更されます) **3.** チェック プロパティが書き込み可能ではありません (読み取り専用) **4.** スキーマの種類が文字列または long であり、null ではないことを確認します |
+| **検証**          | [ポータル ワークフロー](https://certify.azure.com)により、デバイス コードがデバイス情報インターフェイスを実装していることが検証されます **1.** デバイス コードによって IoT Hub に値が出力されることを確認します **2.** インターフェイスが DCM に実装されていることを確認します (この実装は DTDL v2 で変更されます) **3.** チェック プロパティが書き込み可能ではありません (読み取り専用) **4.** スキーマの種類が文字列または long であり、null ではないことを確認します |
 | **リソース**           | [Microsoft によって定義されたインターフェイス](../iot-pnp/overview-iot-plug-and-play-preview-updates.md) |
-| **Azure の推奨事項**  | N/A                                                          |
+| **Azure の推奨事項**  | 該当なし                                                          |
 
 **[実装されている場合] クラウドからデバイス: テストの目的は、メッセージがクラウドからデバイスに送信されることを確認することです**
 

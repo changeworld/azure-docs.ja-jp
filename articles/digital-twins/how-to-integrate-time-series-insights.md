@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 256bb80687ffedba9718303710335cce1a582c1d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d89ee4c8e66ba4dda004fbd27e15b96ab13c642b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304007"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783775"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -84,7 +84,7 @@ az eventhubs eventhub create --name <name-for-your-twins-hub> --resource-group <
 
 ### <a name="create-twins-hub-authorization-rule"></a>Twins ハブの承認規則を作成する
 
-送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule#az-eventhubs-eventhub-authorization-rule-create)を作成します。 規則の名前を指定します。
+送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule#az_eventhubs_eventhub_authorization_rule_create)を作成します。 規則の名前を指定します。
 
 ```azurecli-interactive
 az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-twins-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-event-hubs-namespace-from-earlier> --eventhub-name <your-twins-hub-from-above>
@@ -136,7 +136,7 @@ Time Series ハブを設定するには、こちらの手順を実行します�
 
 ### <a name="create-time-series-hub-authorization-rule"></a>Time Series ハブの承認規則を作成する
 
-送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule#az-eventhubs-eventhub-authorization-rule-create)を作成します。 Time Series ハブの承認規則の名前を指定します。
+送信および受信のアクセス許可を持つ[承認規則](/cli/azure/eventhubs/eventhub/authorization-rule#az_eventhubs_eventhub_authorization_rule_create)を作成します。 Time Series ハブの承認規則の名前を指定します。
 
 ```azurecli-interactive
 az eventhubs eventhub authorization-rule create --rights Listen Send --name <name-for-your-time-series-hub-auth-rule> --resource-group <your-resource-group> --namespace-name <your-event-hub-namespace-from-earlier> --eventhub-name <your-time-series-hub-name-from-above>

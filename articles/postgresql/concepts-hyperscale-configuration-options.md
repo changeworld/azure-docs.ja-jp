@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 04/07/2021
-ms.openlocfilehash: ae416c9acd03b3ee239a858aae550fb87293465a
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 1dd0666c2946896ed324fb3986bb7946890b73de
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012787"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388705"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL - Hyperscale (Citus) の構成オプション
 
@@ -110,6 +110,7 @@ Hyperscale (Citus) [Basic レベル](concepts-hyperscale-tiers.md)は、ノー�
 Hyperscale (Citus) サーバー グループは次の Azure リージョンで使用できます。
 
 * アメリカ合衆国:
+    * ブラジル南部
     * カナダ中部
     * 米国中部
     * 米国東部 *
@@ -122,6 +123,7 @@ Hyperscale (Citus) サーバー グループは次の Azure リージョンで�
     * 韓国中部
     * 東南アジア
 * ヨーロッパ:
+    * フランス中部
     * 北ヨーロッパ
     * 英国南部
     * 西ヨーロッパ

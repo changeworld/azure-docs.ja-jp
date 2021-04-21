@@ -10,12 +10,12 @@ ms.date: 03/05/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: af9d520bab3ff49b30672717414fbd651c915dd4
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 2efd673d26231e83d820f7971a740d06e9b2a1d2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552379"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785417"
 ---
 # <a name="soft-delete-for-containers-preview"></a>コンテナーの論理的な削除 (プレビュー)
 
@@ -87,7 +87,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して登録を行うには、[az feature register](/cli/azure/feature#az-feature-register) コマンドを呼び出します。
+Azure CLI を使用して登録を行うには、[az feature register](/cli/azure/feature#az_feature_register) コマンドを呼び出します。
 
 ```azurecli
 az feature register --namespace Microsoft.Storage --name ContainerSoftDelete
@@ -110,7 +110,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName Containe
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI での登録の状態を確認するには、[az feature](/cli/azure/feature#az-feature-show) コマンドを呼び出します。
+Azure CLI での登録の状態を確認するには、[az feature](/cli/azure/feature#az_feature_show) コマンドを呼び出します。
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name ContainerSoftDelete

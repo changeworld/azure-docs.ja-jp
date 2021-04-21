@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 42a4c4a41f6c8bdf9d4a8e78f634893722c8f389
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ea1296fd4e31c2deaed79e980ab764c523a2bfd7
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104576401"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364364"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
 
@@ -172,7 +172,6 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
       1. 新しいロード バランサー規則の名前を入力します (例: **hana-lb**)。
       1. 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-frontend**、**hana-backend**、**hana-hp**)。
       1. **[HA ポート]** を選択します。
-      1. **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
       1. **Floating IP を有効にします**。
       1. **[OK]** を選択します。
 
@@ -499,6 +498,71 @@ SAP HANA システム レプリケーションをインストールするには�
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
    </code></pre>
 
+## <a name="implement-the-python-system-replication-hook-saphanasr"></a>Python システム レプリケーション フック SAPHanaSR を実装する
+
+これは、クラスターとの統合を最適化し、クラスターのフェールオーバーが必要になった場合の検出を改善するための重要なステップです。 SAPHanaSR python フックを構成することを強くお勧めします。    
+
+1. **[A]** HANA "システム レプリケーション フック" をインストールします。 フックは両方の HANA DB ノードにインストールする必要があります。           
+
+   > [!TIP]
+   > SAPHanaSR Python フックの機能を使用できるようにするため、パッケージ SAPHanaSR のバージョンが 0.153 以上であることを確認します。       
+   > Python フックは、HANA 2.0 にのみ実装できます。        
+
+   1. フックを `root` として準備します。  
+
+    ```bash
+     mkdir -p /hana/shared/myHooks
+     cp /usr/share/SAPHanaSR/SAPHanaSR.py /hana/shared/myHooks
+     chown -R hn1adm:sapsys /hana/shared/myHooks
+    ```
+
+   2. 両方のノードで HANA を停止します。 <sid\>adm として実行します。  
+   
+    ```bash
+    sapcontrol -nr 03 -function StopSystem
+    ```
+
+   3. 各クラスター ノードで `global.ini` を調整します。  
+ 
+    ```bash
+    # add to global.ini
+    [ha_dr_provider_SAPHanaSR]
+    provider = SAPHanaSR
+    path = /hana/shared/myHooks
+    execution_order = 1
+    
+    [trace]
+    ha_dr_saphanasr = info
+    ```
+
+2. **[A]** クラスターでは、<sid\>adm の各クラスター ノードで sudoers を構成する必要があります。 この例では、新しいファイルを作成することで実現します。 `root` としてコマンドを実行します。    
+    ```bash
+    cat << EOF > /etc/sudoers.d/20-saphana
+    # Needed for SAPHanaSR python hook
+    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
+    EOF
+    ```
+SAP HANA システム レプリケーション フックの実装の詳細については、[HANA HA/DR プロバイダーの設定](https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-sr-guide-PerfOpt-12/index.html#_set_up_sap_hana_hadr_providers)に関するページを参照してください。  
+
+3. **[A]** 両方のノードで SAP HANA を開始します。 <sid\>adm として実行します。  
+
+    ```bash
+    sapcontrol -nr 03 -function StartSystem 
+    ```
+
+4. **[1]** フックのインストールを確認します。 アクティブな HANA システム レプリケーション サイトで、<sid\>adm として実行します。   
+
+    ```bash
+     cdtrace
+     awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
+     { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
+     # Example output
+     # 2021-04-08 22:18:15.877583 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-08 22:18:46.531564 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-08 22:21:26.816573 ha_dr_SAPHanaSR SOK
+
+    ```
+
 ## <a name="create-sap-hana-cluster-resources"></a>SAP HANA クラスター リソースの作成
 
 最初に、HANA トポロジを作成します。 Pacemaker クラスター ノードのいずれかで、次のコマンドを実行します。
@@ -711,6 +775,9 @@ sudo crm_mon -r
 テストを開始する前に、Pacemaker に (crm_mon -r で) 失敗したアクションがないこと、予期しない場所の制約 (たとえば移行テストの残り物) がないこと、HANA が (たとえば SAPHanaSR-showAttr と) 同期していることを確認します。
 
 <pre><code>hn1-db-0:~ # SAPHanaSR-showAttr
+Sites    srHook
+----------------
+SITE2    SOK
 
 Global cib-time
 --------------------------------
@@ -724,7 +791,7 @@ hn1-db-1 DEMOTED     30          online     logreplay nws-hana-vm-0 4:S:master1:
 
 SAP HANA マスター ノードは、次のコマンドを実行すると移行できます。
 
-<pre><code>crm resource migrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-1</b>
+<pre><code>crm resource move msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-1</b> force
 </code></pre>
 
 `AUTOMATED_REGISTER="false"` を設定した場合、この一連のコマンドを実行すると、SAP HANA マスター ノードおよび仮想 IP アドレスを含むグループが hn1-db-1 に移行されます。
@@ -763,7 +830,7 @@ hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> hdbnsutil -sr_register --remoteHost=<b>hn1-d
 
 <pre><code># Switch back to root and clean up the failed state
 exit
-hn1-db-0:~ # crm resource unmigrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b>
+hn1-db-0:~ # crm resource clear msl_SAPHana_<b>HN1</b>_HDB<b>03</b>
 </code></pre>
 
 また、セカンダリ ノードのリソースの状態をクリーンアップする必要があります。

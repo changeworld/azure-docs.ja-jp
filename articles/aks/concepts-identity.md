@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/24/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 76871565e0bb4ca1811d46531d07b89181d07e19
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: b10d31cf069bc4f28a1597ec12160fa6ed98b8ce
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105920"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789557"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアクセスと ID オプション
 
@@ -216,7 +216,7 @@ Azure RBAC 統合では、AKS で Kubernetes 認可 Webhook サーバーが使�
 
 AKS には、次の 4 つの組み込みロールがあります。 これらは、[Kubernetes の組み込みロール](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles)に似ていますが、CRD のサポートなど、いくつかの違いがあります。 各 [Azure 組み込みロール](../role-based-access-control/built-in-roles.md)で許可されるアクションの完全な一覧をご覧ください。
 
-| ロール                                | 説明  |
+| Role                                | 説明  |
 |-------------------------------------|--------------|
 | Azure Kubernetes Service RBAC ビューアー  | 名前空間内のほとんどのオブジェクトを表示するための読み取り専用アクセスが許可されます。 <br> ロールまたはロールのバインドを表示することはできません。<br> `Secrets` を表示することはできません。 `Secrets` の内容を読み取ると、名前空間の `ServiceAccount` 資格情報にアクセスでき、それにより名前空間の任意の `ServiceAccount` として API にアクセスできるようになります (特権エスカレーションの一種)。  |
 | Azure Kubernetes Service RBAC ライター | 名前空間内のほとんどのオブジェクトに対する読み取りと書き込みのアクセスが許可されます。 <br> ロールまたはロールのバインドを表示または変更することはできません。 <br> `Secrets` にアクセスし、名前空間内の任意の ServiceAccount としてポッドを実行することが許可されます。そのため、名前空間内の任意の ServiceAccount の API アクセス レベルを取得するために使用できます。 |
@@ -267,7 +267,7 @@ Kubernetes と AKS の中心概念の詳細については、次の記事を参�
 
 <!-- LINKS - Internal -->
 [openid-connect]: ../active-directory/develop/v2-protocols-oidc.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: managed-aad.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

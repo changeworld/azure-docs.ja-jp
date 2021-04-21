@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 03/31/2021
 ms.author: kenwith
-ms.openlocfilehash: 102c0f7363b8d4f635762a33b82825e9ae71dfc6
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: f7a2429161cebe867d844b4ca7aa08ec3613edcd
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120794"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388212"
 ---
 # <a name="syncing-extension-attributes-for-app-provisioning"></a>アプリ プロビジョニングの拡張属性の同期
 
@@ -28,10 +28,10 @@ Azure AD 内のユーザーについてのみ、[PowerShell または Microsoft 
 ## <a name="create-an-extension-attribute-on-a-cloud-only-user"></a>クラウドのみのユーザーに拡張属性を作成する
 Microsoft Graph と PowerShell を使用して、Azure AD 内のユーザーのユーザー スキーマを拡張できます。 これらの拡張属性は、ほとんどの場合、自動的に検出されます。
 
-サービス プリンシパルが 1,000 を超える場合は、ソース属性の一覧に拡張機能が欠落していることがあります。 作成した属性が自動的に表示されない場合は、その属性が作成されたことを確認し、それをスキーマに手動で追加します。 作成されたことを確認するには、Microsoft Graph と [Graph Explorer](/graph/graph-explorer/graph-explorer-overview.md) を使用します。 スキーマに手動で追加するには、「[サポートされている属性一覧の編集](customize-application-attributes.md#editing-the-list-of-supported-attributes)」を参照してください。
+サービス プリンシパルが 1,000 を超える場合は、ソース属性の一覧に拡張機能が欠落していることがあります。 作成した属性が自動的に表示されない場合は、その属性が作成されたことを確認し、それをスキーマに手動で追加します。 作成されたことを確認するには、Microsoft Graph と [Graph Explorer](/graph/graph-explorer/graph-explorer-overview) を使用します。 スキーマに手動で追加するには、「[サポートされている属性一覧の編集](customize-application-attributes.md#editing-the-list-of-supported-attributes)」を参照してください。
 
 ### <a name="create-an-extension-attribute-on-a-cloud-only-user-using-microsoft-graph"></a>Microsoft Graph を使用してクラウドのみのユーザーに拡張属性を作成する
-[Microsoft Graph](/graph/overview.md) を使用して Azure AD ユーザーのスキーマを拡張できます。 
+[Microsoft Graph](/graph/overview) を使用して Azure AD ユーザーのスキーマを拡張できます。 
 
 まず、テナント内のアプリを一覧表示して、作業中のアプリの ID を取得します。 詳細については、「[extensionProperties を一覧表示する](/graph/api/application-list-extensionproperty?view=graph-rest-1.0&tabs=http&preserve-view=true)」を参照してください。
 
@@ -54,7 +54,7 @@ Content-type: application/json
 }
 ```
 
-前の要求で、`extension_appID_extensionName` という形式の拡張属性が作成されました。 これで、この拡張属性を使用してユーザーを更新できます。 詳細については、「[ユーザーの更新](/graph/api/user-update.md?view=graph-rest-1.0&tabs=http&preserve-view=true)」を参照してください。
+前の要求で、`extension_appID_extensionName` という形式の拡張属性が作成されました。 これで、この拡張属性を使用してユーザーを更新できます。 詳細については、「[ユーザーの更新](/graph/api/user-update?view=graph-rest-1.0&tabs=http&preserve-view=true)」を参照してください。
 ```json
 PATCH https://graph.microsoft.com/v1.0/users/{id}
 Content-type: application/json
@@ -63,7 +63,7 @@ Content-type: application/json
   "extension_inputAppId_extensionName": "extensionValue"
 }
 ```
-最後に、ユーザーの属性を確認します。 詳細については、「[ユーザーの取得](/graph/api/user-get.md?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true)」を参照してください。
+最後に、ユーザーの属性を確認します。 詳細については、「[ユーザーの取得](/graph/api/user-get?view=graph-rest-1.0&tabs=http#example-3-users-request-using-select&preserve-view=true)」を参照してください。
 
 ```json
 GET https://graph.microsoft.com/v1.0/users/{id}?$select=displayName,extension_inputAppId_extensionName
