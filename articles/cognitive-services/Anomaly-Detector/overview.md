@@ -12,12 +12,12 @@ ms.date: 02/16/2021
 ms.author: mbullwin
 keywords: 異常検出, 機械学習, アルゴリズム
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3bfa30cc5d3d57cfcd2677bb4b2719061541d5a9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: d63399d0f492f85a4a2d57a595a6d8ef5b606d92
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278866"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599521"
 ---
 # <a name="what-is-the-anomaly-detector-api"></a>Anomaly Detector API とは
 
@@ -113,5 +113,5 @@ Microsoft によって開発された SR-CNN アルゴリズムの詳細につ�
 ## <a name="next-steps"></a>次のステップ
 
 * [クイック スタート: Anomaly Detector を使用して時系列データ内の異常を検出する](quickstarts/client-libraries.md)
-* Anomaly Detector API [オンライン デモ](https://notebooks.azure.com/AzureAnomalyDetection/projects/anomalydetector)
+* Anomaly Detector API [オンライン デモ](https://github.com/Azure-Samples/AnomalyDetector/tree/master/ipython-notebook)
 * Anomaly Detector [REST API リファレンス](https://aka.ms/anomaly-detector-rest-api-ref)
