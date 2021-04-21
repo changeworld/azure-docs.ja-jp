@@ -3,17 +3,20 @@ title: テンプレートを使用して Azure Service Bus 名前空間トピッ
 description: 'クイックスタート: Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成'
 documentationcenter: .net
 author: spelluru
+ms.author: spelluru
+ms.date: 06/23/2020
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
-ms.date: 06/23/2020
-ms.author: spelluru
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 706432c039bc38e9799828ae752d6ad0c92ffde3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom:
+- devx-track-azurecli
+- devx-track-azurepowershell
+- mode-arm
+ms.openlocfilehash: 9c235f8e056bf185267aa0bb493b71b897f3c510
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "97704607"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534927"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>クイックスタート: Azure Resource Manager テンプレートを使用したトピックとサブスクリプションを含んだ Service Bus 名前空間の作成
 
