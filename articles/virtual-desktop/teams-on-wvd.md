@@ -3,20 +3,20 @@ title: Windows Virtual Desktop での Microsoft Teams - Azure
 description: Windows Virtual Desktop で Microsoft Teams を使用する方法について説明します。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 03/31/2021
+ms.date: 04/09/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ba5b80fa7f147fb5f30c60e2dc005d88010b0d71
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 0c528f183106472850d6b5d2a8b492ea8939eda6
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445518"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107285260"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual Desktop で Microsoft Teams を使用する
 
 >[!IMPORTANT]
->Teams のメディア最適化は、Microsoft 365 Government (GCC) と　GCC-High　環境ではサポートされています。 Teams のメディア最適化は、GCC-High または DoD ではサポートされていません。
+>Teams のメディア最適化は、Microsoft 365 Government (GCC) と　GCC-High　環境ではサポートされています。 Teams のメディア最適化は、Microsoft 365 DoD ではサポートされていません。
 
 >[!NOTE]
 >Microsoft Teams のメディア最適化は、Windows 10 マシン上の Windows デスクトップ クライアントのみ利用できます。 メディア最適化の利用には、Windows デスクトップ クライアントのバージョン 1.2.1026.0 以降が必要です。

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6faec27bf368b3eb45e05a91307df6027bda93b1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb5203629915914ab9af22d89e5f2865078a8e44
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100094000"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012609"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
@@ -144,6 +144,20 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 
 いいえ、共有フロントエンドでの HTTPS の終了はプラットフォームが処理します。
 
+**組み込みコンテナーのコードで、PORT 変数を使用する必要がありますか。**
+
+いいえ、自動ポート検出があるため、PORT 変数は必要ありません。 ポートが検出されない場合、既定で 80 に設定されます。
+カスタム ポートを手動で構成するには、Dockerfile の EXPOSE 命令とアプリの設定 WEBSITES_PORT を使用して、コンテナーにバインドするポート値を指定します。
+
+**カスタム コンテナーに WEBSITES_PORT を使用する必要がありますか。**
+
+はい、これはカスタム コンテナーに必要です。 カスタム ポートを手動で構成するには、Dockerfile の EXPOSE 命令とアプリの設定 WEBSITES_PORT を使用して、コンテナーにバインドするポート値を指定します。
+
+**Docker イメージで ASPNETCORE_URLS を使用できますか。**
+
+はい、.NET Core アプリを起動する前に環境変数を上書きしてください。
+例: init.sh スクリプト: export ASPNETCORE_URLS={値}
+
 ## <a name="multi-container-with-docker-compose"></a>Docker Compose を使用した複数コンテナー
 
 **複数コンテナーで使用するように、Azure Container Registry (ACR) を構成する方法を教えてください。**
@@ -206,3 +220,4 @@ Web Sockets は Linux アプリでサポートされています。
 - [Azure App Service on Linux とは](overview.md#app-service-on-linux)
 - [Azure App Service でステージング環境を設定する](deploy-staging-slots.md)
 - [Web App for Containers での継続的デプロイ](./deploy-ci-cd-custom-container.md)
+- [知っておくべきこと: Web Apps と Linux](https://techcommunity.microsoft.com/t5/apps-on-azure/things-you-should-know-web-apps-and-linux/ba-p/392472)
