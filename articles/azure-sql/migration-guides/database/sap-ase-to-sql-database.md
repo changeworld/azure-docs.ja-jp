@@ -5,16 +5,16 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: how-to
+ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 0538071ffb9d244fb8b3493d6b63b27c6b56a726
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: c60d6ba1f4d3628f57b8149779318c3e049a9e24
+ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388535"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107284240"
 ---
 # <a name="migration-guide-sap-ase-to-azure-sql-database"></a>移行ガイド: SAP ASE から Azure SQL Database
 
@@ -94,20 +94,20 @@ SAP SE データベースの SQL データベースへの移行を開始する�
 
 ### <a name="perform-tests"></a>テストを実行する
 
-データベース移行に対するテスト アプローチは、次のアクティビティで構成されます。
+データベース移行に対するテスト アプローチは、次のアクティビティで構成されています。
 
-1. **検証テストを作成する**: データベース移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行する検証クエリを作成する必要があります。 その検証クエリでは、定義されているスコープに対応する必要があります。
+1. **検証テストを作成する**: データベースの移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行する検証クエリを作成する必要があります。 検証クエリには、定義したスコープが含まれている必要があります。
 
 1. **テスト環境を設定する**: このテスト環境には、ソース データベースとターゲット データベースのコピーを含める必要があります。 必ずテスト環境を分離してください。
 
-1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行した後、結果を分析します。
+1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
 
-1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行した後、結果を分析および比較します。
+1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
 
 
 ### <a name="optimize"></a>最適化
 
-移行後の段階は、発生したデータの精度の問題を調整したり、完全性を検証したり、ワークロードでのパフォーマンスの問題に対処したりするために非常に重要です。
+移行後フェーズは、データの精度の問題の調整、完全性の確認、およびワークロードのパフォーマンスの問題への対処のために非常に重要です。
 
 これらの問題とそれを軽減するための手順の詳細については、「[移行後の検証および最適化ガイド](/sql/relational-databases/post-migration-validation-and-optimization-guide)」を参照してください。
 

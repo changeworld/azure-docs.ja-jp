@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: b8e72cab6d6220b71e93550eec7649752201180a
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 42e244249ecb0539637918ae2439bdb4f5da4b38
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256584"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588481"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>パスワードレス認証のために Azure Active Directory B2C を使用して Nevis を構成するチュートリアル
 
-このサンプル チュートリアルでは、Azure AD B2C を [Nevis](https://www.nevis.net/solution/authentication-cloud) で拡張してパスワードレス認証を有効にする方法について説明します。 Nevis は、Nevis Access アプリでモバイルファーストの完全にブランド化されたエンドユーザー エクスペリエンスを提供して、強力な顧客認証を実現するとともに、Payment Services Directive 2 (PSD2) のトランザクション要件を遵守します。
+このサンプル チュートリアルでは、Azure AD B2C を [Nevis](https://www.nevis.net/en/solution/authentication-cloud) で拡張してパスワードレス認証を有効にする方法について説明します。 Nevis は、Nevis Access アプリでモバイルファーストの完全にブランド化されたエンドユーザー エクスペリエンスを提供して、強力な顧客認証を実現するとともに、Payment Services Directive 2 (PSD2) のトランザクション要件を遵守します。
 
 ## <a name="prerequisites"></a>前提条件
 
