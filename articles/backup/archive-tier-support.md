@@ -3,12 +3,12 @@ title: アーカイブ層のサポート (プレビュー)
 description: Azure Backup のアーカイブ層のサポートについて説明します
 ms.topic: conceptual
 ms.date: 02/18/2021
-ms.openlocfilehash: 322bc9d7e2160cc9156c793859b9fda833b3df09
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7a42b8702cfdda14a18aa3cdd4e084ed78767b0a
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563975"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107012150"
 ---
 # <a name="archive-tier-support-preview"></a>アーカイブ層のサポート (プレビュー)
 
@@ -40,6 +40,8 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
 
 ## <a name="get-started-with-powershell"></a>PowerShell の使用を開始する
 
+1. [最新](https://github.com/PowerShell/PowerShell/releases)バージョンの PowerShell を GitHub からダウンロードします。
+
 1. PowerShell で次のコマンドを実行します。
   
     ```azurepowershell
@@ -57,7 +59,13 @@ Azure Backup は、スナップショットと Standard 層に加えて、アー
 
 1. バックアップ項目の一覧の取得:
 
-    `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM/AzureWorkload" -WorkloadType "AzureVM/MSSQL"`
+    - Azure 仮想マシンの場合:
+
+        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM" -WorkloadType "AzureVM"`
+
+    - Azure 仮想マシン内の SQL Server の場合:
+
+        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"`
 
 1. バックアップ項目を取得します。
 

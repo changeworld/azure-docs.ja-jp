@@ -9,10 +9,10 @@ ms.date: 03/17/2020
 ms.author: memildin
 ms.custom: include file
 ms.openlocfilehash: 7d81799f7fbdb2b41db421daa1a85ec8cde511eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
+ms.lasthandoff: 03/29/2021
 ms.locfileid: "79541387"
 ---
 ### <a name="the-data-model-of-the-schema"></a>スキーマのデータ モデル
@@ -24,7 +24,7 @@ ms.locfileid: "79541387"
 |**ConfidenceLevel**|(省略可能) このアラートの信頼レベル (高/低)|
 |**ConfidenceScore**|(省略可能) セキュリティ アラートの数値信頼度インジケーター|
 |**説明**|アラートの説明テキスト|
-|**DisplayName**|アラートの表示名|
+|**表示名**|アラートの表示名|
 |**EndTime**|アラートの影響の終了時間 (アラートの原因となった最後のイベントの時刻)|
 |**エンティティ**|アラートに関連するエンティティのリスト。 このリストでは、さまざまな種類のエンティティの混合を保持できます|
 |**ExtendedLinks**|(省略可能) アラートに関連するすべてのリンクのバッグ。 このバッグでは、さまざまな種類のリンクの混合を保持できます|
@@ -44,7 +44,7 @@ ms.locfileid: "79541387"
 |**TenantId**|スキャンされたリソースが存在するサブスクリプションの親 Azure Active Directory テナントの識別子|
 |**TimeGenerated**|評価が実行された UTC タイムスタンプ (Security Center のスキャン時刻) (DiscoveredTimeUTC と同じ)|
 |**Type**|定数 ("SecurityAlert")|
-|**VendorName**|アラートを提供したベンダーの名前 (例: "Microsoft")|
+|**VendorName**|アラートを提供したベンダーの名前 (例: 'Microsoft')|
 |**VendorOriginalId**|未使用|
 |**WorkspaceResourceGroup**|VM、サーバー、仮想マシン スケール セット、またはワークスペースに報告する App Service インスタンスでアラートが生成された場合、そのワークスペース リソース グループの名前が含まれます|
 |**WorkspaceSubscriptionId**|VM、サーバー、仮想マシン スケール セット、またはワークスペースに報告する App Service インスタンスでアラートが生成された場合、そのワークスペースのサブスクリプションが含まれます|
