@@ -3,12 +3,12 @@ title: Bicep ファイルの構造と構文
 description: 宣言型の構文を使用した Bicep ファイルの構造とプロパティについて説明します。
 ms.topic: conceptual
 ms.date: 03/31/2021
-ms.openlocfilehash: 09993ae9c08f53144de8e94e6555ad93bec681f6
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1b8eddd388878be8f653f963ef967cf2c0af685f
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168690"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537857"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Bicep ファイルの構造と構文について
 
@@ -297,7 +297,7 @@ param existingKeyVaultName string
 
 ## <a name="multi-line-strings"></a>複数行の文字列
 
-文字列を複数の行に分割することができます。 複数行の文字列を開始および終了するには、3 つの単一引用符文字 `'''` を使用します。 
+文字列を複数の行に分割することができます。 複数行の文字列を開始および終了するには、3 つの単一引用符文字 `'''` を使用します。
 
 複数行の文字列内の文字はそのまま処理されます。 エスケープ文字は不要です。 複数行の文字列の中に `'''` を含めることはできません。 文字列補間は現在サポートされていません。
 

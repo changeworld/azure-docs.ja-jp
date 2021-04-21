@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: references_regions
 ms.date: 03/30/2021
 ms.author: juliako
-ms.openlocfilehash: c2465d845da9dd9c2c1690c39a8f1d1c7e86899f
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b3602d421718cbd1de3509751491ec6db65b1b01
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075714"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107532902"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -164,7 +164,7 @@ WCAG (Web Content Accessibility Guidelines) の一部として、ならびに Mi
 
 検索 API を使用して、特定のトピックでビデオを検索できるようになりました (API のみ)。
 
-トピックは、`textScope` (省略可能なパラメーター) の一部として追加されます。 詳細については [API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) を参照してください。  
+トピックは、`textScope` (省略可能なパラメーター) の一部として追加されます。 詳細については [API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Search-Videos) を参照してください。  
 
 ### <a name="labels-enhancement"></a>ラベルの機能強化
 
@@ -202,10 +202,10 @@ Video Indexer のリージョン エンドポイントはすべて、www での�
 
 * 現在、次の API からアカウント オブジェクトが返されます。
 
-    * [Create-Paid-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account)
-    * [Get-Account](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Account)
-    * [Get-Accounts-Authorization](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-Authorization)
-    * [Get-Accounts-With-Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
+    * [Create-Paid-Account](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Paid-Account)
+    * [Get-Account](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Account)
+    * [Get-Accounts-Authorization](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Accounts-Authorization)
+    * [Get-Accounts-With-Token](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Accounts-With-Token)
  
     アカウント オブジェクトには、[Video Indexer Web サイト](https://www.videoindexer.ai/)の場所をポイントする `Url` フィールドがあります。
 有料アカウントの場合、`Url` フィールドは現在、パブリック Web サイトではなく、内部 URL をポイントしています。
@@ -216,7 +216,7 @@ Video Indexer のリージョン エンドポイントはすべて、www での�
 
    次のいずれかでこれを行うことができます。
 
-    * URL を Video Indexer ウィジェット API をポイントする URL (たとえば、[Insights ウィジェット](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)) に置き換える
+    * URL を Video Indexer ウィジェット API をポイントする URL (たとえば、[Insights ウィジェット](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Insights-Widget)) に置き換える
     * Video Indexer Web サイトを使用して、新しい埋め込み URL を生成する
          
          **[再生]** を押してビデオのページに移動し、 **&lt;/&gt; [埋め込み]** ボタンをクリックして、その URL をご利用のアプリケーションにコピーします。
@@ -239,13 +239,13 @@ Video Indexer で、`ar-SY`、`en-UK`、および `en-AU` のカスタム言語�
  
 ### <a name="swagger-update"></a>Swagger の更新
 
-Video Indexer で、**認証** と **操作** が単一の [Video Indexer OpenAPI 仕様 (swagger)](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson) に統合されました。 開発者は、[Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)で API を見つけることができます。
+Video Indexer で、**認証** と **操作** が単一の [Video Indexer OpenAPI 仕様 (swagger)](https://api-portal.videoindexer.ai/api-details#api=Operations&operation) に統合されました。 開発者は、[Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)で API を見つけることができます。
 
 ## <a name="december-2019"></a>2019 年 12 月
 
 ### <a name="update-transcript-with-the-new-api"></a>新しい API を使用して音声テキストを更新する
 
-[Update-Video-Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) API を使用して、音声テキストの特定のセクションを更新します。
+[Update-Video-Index](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Index) API を使用して、音声テキストの特定のセクションを更新します。
 
 ### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>Video Indexer ポータルからアカウント構成を修正する
 
@@ -275,7 +275,7 @@ Video Indexer ポータルを使用して、有料アカウントで Custom Visi
 
 ### <a name="error-handling-improvement"></a>エラー処理の改善
 
-現在のインデックスの再作成の変更が誤って上書きされるのを防ぐために、ビデオにアクティブにインデックスが作成された場合は、[ビデオのインデックスを再作成](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) API と[ビデオ インデックス](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) API から状態コード 409 が返されるようになりました。
+現在のインデックスの再作成の変更が誤って上書きされるのを防ぐために、ビデオにアクティブにインデックスが作成された場合は、[ビデオのインデックスを再作成](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Re-Index-Video) API と[ビデオ インデックス](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Index) API から状態コード 409 が返されるようになりました。
 
 ## <a name="november-2019"></a>2019 年 11 月
  
@@ -369,7 +369,7 @@ Video Indexer 有料アカウントを東日本リージョンで作成できる
 
 ### <a name="create-and-repair-account-api-preview"></a>アカウントの作成および修復 API (プレビュー)
 
-[Azure Media Service の接続エンドポイントまたはキーを更新](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag)できる新しい API が追加されました。
+[Azure Media Service の接続エンドポイントまたはキーを更新](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Paid-Account-Azure-Media-Services)できる新しい API が追加されました。
 
 ### <a name="improve-error-handling-on-upload"></a>アップロードでのエラー処理の向上 
 
@@ -387,9 +387,9 @@ Video Indexer 有料アカウントを東日本リージョンで作成できる
 
 ### <a name="update-custom-language-model-from-closed-caption-file"></a>クローズド キャプション ファイルからのカスタム言語モデルの更新
 
-[カスタム言語モデルの作成](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?&groupBy=tag)および[カスタム言語モデルの更新](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Language-Model?&groupBy=tag) API は、言語モデルの入力として、VTT、SRT、および TTML ファイル形式をサポートするようになりました。
+[カスタム言語モデルの作成](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Create-Language-Model)および[カスタム言語モデルの更新](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Language-Model) API は、言語モデルの入力として、VTT、SRT、および TTML ファイル形式をサポートするようになりました。
 
-[ビデオ トランスクリプトの更新 API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Transcript?&pattern=transcript) を呼び出すと、トランスクリプトが自動的に追加されます。 ビデオに関連付けられたトレーニング モデルも自動的に更新されます。 使用する言語モデルをカスタマイズおよびトレーニングする方法については、「[Video Indexer で言語モデルをカスタマイズする](customize-language-model-overview.md)」を参照してください。
+[ビデオ トランスクリプトの更新 API](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Update-Video-Transcript) を呼び出すと、トランスクリプトが自動的に追加されます。 ビデオに関連付けられたトレーニング モデルも自動的に更新されます。 使用する言語モデルをカスタマイズおよびトレーニングする方法については、「[Video Indexer で言語モデルをカスタマイズする](customize-language-model-overview.md)」を参照してください。
 
 ### <a name="new-download-transcript-formats--txt-and-csv"></a>新しいダウンロード トランスクリプト形式 – TXT と CSV
 

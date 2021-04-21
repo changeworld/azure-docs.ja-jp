@@ -2,21 +2,21 @@
 title: 専用 SQL プール (旧称 SQL DW) のトラブルシューティング
 description: Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のトラブルシューティング。
 services: synapse-analytics
-author: gaursa
+author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
 ms.date: 11/13/2020
-ms.author: gaursa
+ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 949a89dd4e84bdb44ad15eaff9ca160fdd21b395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af653585ec1b57b5fd697dc755e495a96e04e677
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104602130"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565408"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のトラブルシューティング
 
