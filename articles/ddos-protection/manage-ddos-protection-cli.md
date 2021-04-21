@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 98c71f3cf1c521c08d177acb89aad85301e61579
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8a8da50dc703d59dc16b5cb6253d39aeb33fd76d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103013"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777637"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>クイックスタート: Azure CLI を使用した Azure DDoS Protection Standard の作成と構成
 
@@ -39,7 +39,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 Azure で、関連するリソースをリソース グループに割り当てます。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。
 
-リソース グループを作成するには、[az group create](/cli/azure/group#az-group-create) を使用します。 この例では、リソース グループに _MyResourceGroup_ という名前を付け、"_米国東部_" の場所を使用します。
+リソース グループを作成するには、[az group create](/cli/azure/group#az_group_create) を使用します。 この例では、リソース グループに _MyResourceGroup_ という名前を付け、"_米国東部_" の場所を使用します。
 
 ```azurecli-interactive
 az group create \

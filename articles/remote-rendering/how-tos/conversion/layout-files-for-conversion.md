@@ -5,20 +5,23 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 13c4b841fe2d0b62472628d9382b5f6ee3d1fa6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a094755dfb9381b1e4d6abdf1c0e6342d7427c1
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "91318077"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308441"
 ---
 # <a name="laying-out-files-for-conversion"></a>変換用のファイルのレイアウト
 
 資産を正しく処理するためには、変換サービスがすべての入力ファイルを見つけることができる必要があります。
 これらは、変換されるメインの資産ファイルと、通常、資産ファイル内のパスで参照される他のいくつかのファイルで構成されます。
-資産の変換要求には、変換サービスがこれらのファイルを見つける方法を決定する 2 つのパラメーター(`input.folderPath` (省略可能) と `input.inputAssetPath`) があります。
+資産の変換要求には、変換サービスがこれらのファイルを見つける方法を決定する 2 つのパラメーター(`settings.inputLocation.blobPrefix` (省略可能) と `settings.inputLocation.relativeInputAssetPath`) があります。
 これらについては、[REST API の変換](conversion-rest-api.md)に関するページに詳細に記載されています。
-ファイルをレイアウトするために注意する必要がある重要な点は、資産を処理するときに変換サービスが使用できる一連のすべてのファイルが `folderPath` によって決定されることです。
+ファイルをレイアウトするために注意する必要がある重要な点は、資産を処理するときに変換サービスが使用できる一連のすべてのファイルが `BlobPrefix` によって決定されることです。
+
+> [!Note]
+> このサービスを使用すると、input.BlobPrefix の下にあるすべてのファイルがダウンロードされます。 サービスでの問題を回避するために、ファイル名とパスが [Windows パスの長さ制限](https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation)を超えていないことを確認してください。 
 
 ## <a name="placing-files-so-they-can-be-found"></a>ファイルが見つけることができるように配置する
 

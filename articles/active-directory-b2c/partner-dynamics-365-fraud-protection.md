@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9483b0a8829c042a7cf8d516c6007cbbf14a97ac
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d1f0728a9a8da264f0960be2b956516b3c93742e
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639741"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258079"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用した Microsoft Dynamics 365 Fraud Protection の構成
 
@@ -68,7 +68,7 @@ Microsoft DFP 統合には次のコンポーネントが含まれます。
 ## <a name="set-up-the-solution"></a>ソリューションのセットアップ
 
 1. Azure AD B2C へのフェデレーションを可能にするように構成された、[Facebook アプリケーションを作成](./identity-provider-facebook.md#create-a-facebook-application)します。
-2. 作成した [Facebook シークレット](./custom-policy-get-started.md#create-the-facebook-key)を Identity Experience Framework ポリシー キーとして追加します。
+2. 作成した [Facebook シークレット](./tutorial-create-user-flows.md?pivots=b2c-custom-policy#create-the-facebook-key)を Identity Experience Framework ポリシー キーとして追加します。
 
 ## <a name="configure-your-application-under-microsoft-dfp"></a>Microsoft DFP でのアプリケーションの構成
 
@@ -148,7 +148,7 @@ userID の値は、対応する Azure AD B2C 構成値 (ObjectID) のものと�
 
 1. ポリシー フォルダーの [Azure AD B2C ポリシー](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/Dynamics-Fraud-Protection/Policies)に移動します。
 
-2. この[ドキュメント](./custom-policy-get-started.md?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
+2. この[ドキュメント](./tutorial-create-user-flows.md?pivots=b2c-custom-policy?tabs=applications#custom-policy-starter-pack)に従って、[LocalAccounts スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)をダウンロードします。
 
 3. Azure AD B2C テナントのポリシーを構成します。
 
@@ -184,4 +184,4 @@ userID の値は、対応する Azure AD B2C 構成値 (ObjectID) のものと�
 
 - [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](./custom-policy-get-started.md?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)

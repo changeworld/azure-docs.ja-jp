@@ -1,22 +1,22 @@
 ---
-title: Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する
-description: Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する方法。
+title: Micrometer を使用して、Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する
+description: Azure Spring Cloud で Micrometer を使用して、Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する方法。
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9fc8ccc5ba21f02885b2002d5040051baac92068
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0b24e8e07b4038d6def9945b7c347bb81ae5378b
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877480"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258182"
 ---
-# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-preview"></a>Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する (プレビュー)
+# <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>Micrometer を使用して、Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する (プレビュー)
 
-このドキュメントでは、Application Insights の java インプロセス エージェントを使用して、Spring Cloud Resilience4j サーキット ブレーカーのメトリックを収集する方法について説明します。  この機能を使用すると、Application Insights から Resilience4j サーキット ブレーカーのメトリックを監視できます。
+このドキュメントでは、Application Insights の java インプロセス エージェントを使用して、Spring Cloud Resilience4j サーキット ブレーカーのメトリックを収集する方法について説明します。 この機能を使用すると、Micrometer を使用して Application Insights から Resilience4j サーキット ブレーカーのメトリックを監視できます。
 
 [spring-cloud-circuit-breaker-demo](https://github.com/spring-cloud-samples/spring-cloud-circuitbreaker-demo) を使用して、その仕組みを説明します。
 

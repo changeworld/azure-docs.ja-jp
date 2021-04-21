@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 15df9b38abe35fe3eefad2fa160e1c1f16fe7aa7
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
+ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102439461"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107228233"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -158,7 +158,7 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 
     ![南京錠アイコン](./media/storage-explorer-troubleshooting/unlockingkeychain.png)
 
-5. ストレージ エクスプローラーを開きます。
+5. Storage Explorer を開きます。
 6. "サービス ハブがキーチェーンへのアクセスを要求しています" というようなメッセージが表示されます。 Mac 管理者アカウントのパスワードを入力し、 **[常に許可]** ( **[常に許可]** が使用できない場合は **[許可]** ) を選択します。
 7. サインインを試します。
 
@@ -289,20 +289,20 @@ Fiddler などのネットワーク ツールを使用すると、問題の診�
 
 すべての接続を処理した後、再追加されていないすべての接続名に対して、破損したデータ (存在する場合) をクリアし、Storage Explorer の標準手順を使用してそれらを再び追加する必要があります。
 
-# <a name="windows"></a>[Windows](#tab/Windows)
+### <a name="windows"></a>[Windows](#tab/Windows)
 
 1. **[スタート]** メニューで **[資格情報マネージャー]** を検索して開きます。
 2. **[Windows 資格情報]** に移動します。
 3. **[汎用資格情報]** で、`<connection_type_key>/<corrupted_connection_name>` キー (たとえば、`StorageExplorer_CustomConnections_Accounts_v1/account1`) が含まれているエントリを探します。
 4. これらのエントリを削除してから、接続をもう一度追加してください。
 
-# <a name="macos"></a>[macOS](#tab/macOS)
+### <a name="macos"></a>[macOS](#tab/macOS)
 
 1. Spotlight (コマンド キーとスペース キー) を開き、 **[キーチェーン アクセス]** を検索します。
 2. `<connection_type_key>/<corrupted_connection_name>` キー (たとえば、`StorageExplorer_CustomConnections_Accounts_v1/account1`) が含まれているエントリを探します。
 3. これらのエントリを削除してから、接続をもう一度追加してください。
 
-# <a name="linux"></a>[Linux](#tab/Linux)
+### <a name="linux"></a>[Linux](#tab/Linux)
 
 ローカル資格情報の管理は、Linux ディストリビューションによって異なります。 Linux ディストリビューションにローカル資格情報管理用の組み込み GUI ツールが用意されていない場合は、サードパーティ製のツールをインストールしてローカル資格情報を管理できます。 たとえば、Linux のローカル資格情報を管理するためのオープンソース GUI である [Seahorse](https://wiki.gnome.org/Apps/Seahorse/) を使用できます。
 
@@ -356,7 +356,7 @@ Storage Explorer を使用するには、お使いのシステムに .NET Core �
 > [!NOTE]
 > Storage Explorer バージョン 1.7.0 以前には .NET Core 2.0 が必要です。 新しいバージョンの .NET Core がインストールされている場合は、[Storage Explorer に修正プログラムを適用](#patching-storage-explorer-for-newer-versions-of-net-core)する必要があります。 Storage Explorer 1.8.0 以降を実行している場合は、少なくとも .NET Core 2.1 が必要になります。
 
-# <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
+### <a name="ubuntu-2004"></a>[Ubuntu 20.04](#tab/2004)
 
 1. Storage Explorer .tar.gz ファイルをダウンロードします。
 2. [.NET Core Runtime](/dotnet/core/install/linux) をインストールします。
@@ -369,7 +369,7 @@ Storage Explorer を使用するには、お使いのシステムに .NET Core �
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
+### <a name="ubuntu-1804"></a>[Ubuntu 18.04](#tab/1804)
 
 1. Storage Explorer .tar.gz ファイルをダウンロードします。
 2. [.NET Core Runtime](/dotnet/core/install/linux) をインストールします。
@@ -382,7 +382,7 @@ Storage Explorer を使用するには、お使いのシステムに .NET Core �
      sudo apt-get install -y dotnet-runtime-2.1
    ```
 
-# <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
+### <a name="ubuntu-1604"></a>[Ubuntu 16.04](#tab/1604)
 
 1. Storage Explorer .tar.gz ファイルをダウンロードします。
 2. [.NET Core Runtime](/dotnet/core/install/linux) をインストールします。
@@ -431,6 +431,98 @@ Azure portal の **[Explorer で開く]** ボタンが機能しない場合は�
 * Mozilla Firefox
 * Google Chrome
 * Microsoft Internet Explorer
+
+## <a name="gathering-logs"></a>ログの収集
+
+GitHub に問題を報告するときに、問題の診断に役立つ特定のログを収集するように求められる場合があります。
+
+### <a name="storage-explorer-logs"></a>Storage Explorer のログ
+
+バージョン 1.16.0 以降では、Storage Explorer のアプリケーション ログにさまざまなログが記録されるようになっています。 これらのログを表示するには、[ヘルプ] > [ログ ディレクトリを開く] の順にクリックします。 規定では、Storage Explorer のログは低い詳細レベルで記録されます。 詳細レベルを変更するには、`STG_EX_LOG_LEVEL` という名前の環境変数と、次のいずれかの値を追加します。
+- `silent`
+- `critical`
+- `error`
+- `warning`
+- `info` (規定のレベル)
+- `verbose`
+- `debug`
+
+実行する Storage Explorer のセッションごとに、ログがフォルダーに分割されます。 共有する必要があるすべてのログ ファイルは、異なるセッションのファイルは別々のフォルダーに入れて、zip アーカイブに格納することをお勧めします。
+
+### <a name="authentication-logs"></a>認証ログ
+
+サインインまたは Storage Explorer の認証ライブラリに関連する問題については、ほとんどの場合、認証ログを収集する必要があります。 認証ログは次の場所に格納されています。
+- Windows: `C:\Users\<your username>\AppData\Local\Temp\servicehub\logs`
+- macOS および Linux `~/.ServiceHub/logs`
+
+一般的には、次の手順に従ってログを収集できます。
+
+1. [設定] > [サインイン] > [check Verbose Authentication Logging]\(詳細な認証ログの確認\) の順に移動します。 認証ライブラリの問題により Storage Explorer の起動に失敗する場合、これはお客様の代わりに行われます。
+2. Storage Explorer を閉じます。
+1. 省略可能または推奨: `logs` フォルダーから既存のログを消去します。 こうすることで、送信する必要がある情報量を減らすことができます。
+4. Storage Explorer を開いて問題を再現します
+5. Storage Explorer を閉じます
+6. `log` フォルダーの内容を圧縮します。
+
+### <a name="azcopy-logs"></a>AzCopy ログ
+
+データの転送で問題が発生している場合は、AzCopy ログを取得する必要がある場合があります。 AzCopy ログは、2 つの異なる方法で簡単に見つけることができます。
+- 失敗した転送がアクティビティ ログに残っている場合は、[AzCopy ログ ファイルに移動] をクリックします。
+- 過去に失敗した転送の場合は、AzCopy ログのフォルダーに移動します。 このファイルは次の場所にあります。
+  - Windows: `C:\Users\<your username>\.azcopy`
+  - macOS と Linux `~/.azcopy
+
+### <a name="network-logs"></a>ネットワーク ログ
+
+問題によっては、Storage Explorer によって行われたネットワーク呼び出しのログを提供する必要があります。 Windows では、Fiddler を使用してこれを行うことができます。
+
+> [!NOTE]
+> Fiddler トレースには、トレースの収集時にブラウザーで入力または送信したパスワードが含まれている場合があります。 Fiddler トレースをサニタイズする方法の手順を必ずお読みください。 Fiddler トレースを GitHub にアップロードしないでください。 Fiddler トレースを安全に送信できる場所が指示されます。
+
+パート 1: Fiddler をインストールして構成する
+
+1. Fiddler をインストールします
+2. Fiddler を起動します
+3. [Tools]\(ツール\) > [Options]\(オプション\) の順に移動します
+4. [HTTPS] タブをクリックします
+5. [Capture HTTPS CONNECTs]\(HTTPS CONNECT をキャプチャ\) と [Decrypt HTTPS traffic]\(HTTPS トラフィックの暗号化解除\) がチェックされていることを確認します
+6. [Action]\(アクション\) ボタンをクリックします
+7. 次のダイアログで [Trust Root Certificate]\(ルート証明書を信頼する\) を選択してから [Yes]\(はい\) を選択します
+8. [Action]\(アクション\) ボタンをもう一度クリックします
+9. [Export Root Certificate to Desktop]\(ルート証明書をデスクトップにエクスポートする\) を選択します
+10. デスクトップに移動します
+11. FiddlerRoot.cer ファイルを検索します
+12. ダブルクリックして開きます
+13. [Details]\(詳細\) タブに移動します
+14. [Copy to File…]\(ファイルへコピー\) をクリックします
+15. エクスポート ウィザードで、次のオプションを選択します
+    - Base-64 でエンコードされた X.509
+    - ファイル名の場合は、 C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs を参照してから、これを任意のファイル名で保存できます
+16. 証明書ウィンドウを閉じます
+17. Storage Explorer を開始します
+18. [Edit]\(編集\) > [Configure Proxy]\(プロキシの構成\) に移動します
+19. ダイアログで [Use app proxy settings]\(アプリ プロキシ設定を使用する\) を選択し、URL を http://localhost に、ポートを 8888 に設定します
+20. [OK] をクリックします。
+21. Storage Explorer を再起動する
+22. `storageexplorer:` プロセスからのネットワークが Fiddler に表示されるのを確認できるはずです
+
+パート 2: 問題を再現する
+1. Fiddler を除くすべてのアプリを閉じます
+2. Fiddler ログをクリアします ([View]\(表示\) メニューの近くにある右上の X アイコン)
+3. 省略可能または推奨: Fiddler を数分間放置し、ネットワーク呼び出しが表示されたらそれを右クリックして、[Filter Now]\(今すぐフィルター\) > [Hide <process name>]\(<process name> を非表示にする\) の順に選択します。
+4. Storage Explorer を開始します
+5. 問題を再現します
+6. [File]\(ファイル\) > [Save]\(保存\) > [All Sessions...]\(すべてのセッション\) の順にクリックして、どこか忘れない場所に保存します
+7. Fiddler と Storage Explorer を閉じます
+
+パート 3: Fiddler トレースのサニタイズ
+1. Fiddler トレース (.saz ファイル) をダブルクリックします
+2. `ctrl`+`f` を押します
+3. 表示されるダイアログで、次のオプションが設定されていることを確認します: 検索 = 要求と応答、検査 = ヘッダーと本文
+4. Fiddler トレースの収集中に使用したパスワード、強調表示されているすべてのエントリを検索し、[Remove]\(削除\) > 選択したセッションの順に右クリックして選択します。
+5. トレースの収集中に確実にブラウザーにパスワードを入力したにも関わらず ctrl + f を使用してもエントリが見つからず、さらにパスワードを変更したくない、または使用したパスワードを他のアカウントで使用している場合は、遠慮なく .saz ファイルの送信をスキップしてください。 後悔するより、始めから安全策を取りましょう。 :)
+6. 新しい名前でトレースをもう一度保存します
+7. 省略可能: 元のトレースを削除します
 
 ## <a name="next-steps"></a>次のステップ
 

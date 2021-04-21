@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.author: v-erkel
-ms.openlocfilehash: 7d40dcf80d9ec566146bbe46bc2cb3c558584fcd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a03c3987c0cada69f6a7d47d7c1aa7cbf6d5015a
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775767"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107258879"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
 
@@ -197,6 +197,8 @@ Azure HPC Cache では、NFS プロトコルでマウントされた BLOB コン
    * 「[アクセス許可](#permissions)」で前述のように、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与えます。 ストレージ ターゲットを初めて作成するときに、この操作を行うことができます。 「[ストレージ ターゲットの追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)」の手順に従い、必要なアクセス ロールをキャッシュに与えます。
 
      ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
+
+Azure HPC Cache での ADLS-NFS ストレージ ターゲットの使用の詳細については、[Azure HPC Cache での NFS でマウントされた BLOB ストレージの使用](nfs-blob-considerations.md)に関する記事を参照してください。
 
 ## <a name="set-up-azure-cli-access-optional"></a>Azure CLI アクセスを設定する (省略可能)
 

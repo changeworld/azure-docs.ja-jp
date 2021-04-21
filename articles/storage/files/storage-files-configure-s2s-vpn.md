@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0fa3fb8040fd79d68f9260ab520d3b6823ab363d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a08ca4142876a5a92adbe8b1c3fce9ec7953019
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629293"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778015"
 ---
 # <a name="configure-a-site-to-site-vpn-for-use-with-azure-files"></a>Azure Files で使用するサイト間 VPN を構成する
 サイト間 (S2S) VPN 接続を使用すると、ポート 445 を開くことなく、オンプレミス ネットワークから SMB 経由で Azure ファイル共有をマウントできます。 サイト間 VPN は、Azure リソース オファリングの VPN サービスであり、ストレージ アカウントまたはその他の Azure リソースと共にリソース グループにデプロイされる [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して設定できます。
@@ -21,7 +21,7 @@ ms.locfileid: "94629293"
 
 このハウツー記事を読み進める前に、Azure Files で使用可能なネットワーク オプションの完全な説明について [Azure Files のネットワークの概要](storage-files-networking-overview.md)に関するページを参照することを強くお勧めします。
 
-この記事では、Azure ファイル共有をオンプレミスに直接マウントするためにサイト間 VPN を構成する手順について詳細に説明します。 Azure File Sync の同期トラフィックをサイト間 VPN 経由でルーティングすることを検討している場合は、[Azure File Sync のプロキシとファイアウォールの設定の構成](storage-sync-files-firewall-and-proxy.md)に関するページを参照してください。
+この記事では、Azure ファイル共有をオンプレミスに直接マウントするためにサイト間 VPN を構成する手順について詳細に説明します。 Azure File Sync の同期トラフィックをサイト間 VPN 経由でルーティングすることを検討している場合は、[Azure File Sync のプロキシとファイアウォールの設定の構成](../file-sync/file-sync-firewall-and-proxy.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 - オンプレミスにマウントする Azure ファイル共有。 ストレージ アカウント内にデプロイされた Azure ファイル共有は、複数のファイル共有だけでなく、BLOB コンテナーやキューなどのその他のストレージ リソースをデプロイできるストレージの共有プールを表す管理構造です。 Azure ファイル共有とストレージ アカウントをデプロイする方法の詳細については、「[Azure ファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: c3e5ca30b7f0f00b6d647f5fdaeb772900996adc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f844b5b413cda2cb16f9701970857be65fe6d91d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101720241"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777619"
 ---
 # <a name="access-azure-storage-preview-as-a-network-share-from-a-container-in-app-service"></a>App Service 内のコンテナーからネットワーク共有としての Azure Storage (プレビュー) にアクセスする
 
@@ -80,7 +80,7 @@ ms.locfileid: "101720241"
 
 [Azure Storage アカウント、ファイル共有、ディレクトリ](#prerequisites)を作成したら、Azure Storage を使用してアプリを構成できるようになります。
 
-Azure Files 共有を App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) コマンドを使用します。 ストレージの種類は、AzureFiles である必要があります。
+Azure Files 共有を App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) コマンドを使用します。 ストレージの種類は、AzureFiles である必要があります。
 
 ```azurecli
 az webapp config storage-account add --resource-group <group-name> --name <app-name> --custom-id <custom-id> --storage-type AzureFiles --share-name <share-name> --account-name <storage-account-name> --access-key "<access-key>" --mount-path <mount-path-directory of form c:<directory name> >
@@ -94,7 +94,7 @@ Azure Files 共有にリンクする他のすべてのディレクトリにつ�
 
 [Azure Storage アカウント、ファイル共有、ディレクトリ](#prerequisites)を作成したら、Azure Storage を使用してアプリを構成できるようになります。
 
-ストレージ アカウントを App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) コマンドを使用します。 ストレージの種類としては、AzureBlob または AzureFiles を使用できます。 この例では、AzureFiles が使用されています。 マウント パス設定は、Azure Storage にマウントするコンテナー内のフォルダーに対応します。 "/" に設定すると、Azure Storage にコンテナー全体がマウントされます。
+ストレージ アカウントを App Service アプリのディレクトリにマウントするには、[`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az_webapp_config_storage_account_add) コマンドを使用します。 ストレージの種類としては、AzureBlob または AzureFiles を使用できます。 この例では、AzureFiles が使用されています。 マウント パス設定は、Azure Storage にマウントするコンテナー内のフォルダーに対応します。 "/" に設定すると、Azure Storage にコンテナー全体がマウントされます。
 
 
 > [!CAUTION]
