@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: e9e27720c50de8653fa859e051c9cfb3af4509ff
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: e06881d078b4e881174c3e931f7898cb622ad7f9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377473"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766355"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>クイックスタート: Python 用 Azure Key Vault シークレット クライアント ライブラリ
 
@@ -170,7 +170,7 @@ retrieved_secret = client.get_secret(secretName)
 
 シークレット値は `retrieved_secret.value` に含まれています。
 
-また、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) を使用してシークレットを取得することもできます。
+また、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) を使用してシークレットを取得することもできます。
 
 ### <a name="delete-a-secret"></a>シークレットを削除します
 
@@ -183,7 +183,7 @@ deleted_secret = poller.result()
 
 `begin_delete_secret` メソッドは非同期であり、ポーラー オブジェクトを返します。 ポーラーの `result` メソッドを呼び出して、その完了を待機します。
 
-シークレットが削除されたことを確認するには、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show) を使用します。
+シークレットが削除されたことを確認するには、Azure CLI コマンド [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show) を使用します。
 
 削除されると、シークレットは削除されたが回復可能な状態がしばらく維持されます。 コードをもう一度実行する場合は、別のシークレット名を使用します。
 
@@ -200,7 +200,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault の概要](../general/overview.md)
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/secure-your-key-vault.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)
 - [Azure Key Vault 開発者ガイド](../general/developers-guide.md)
 - [Key Vault のセキュリティの概要](../general/security-overview.md)
 - [Key Vault を使用した認証](../general/authentication.md)
