@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: 4e559ea1e531e2d472faeef60ebc6d528da0cfd0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f4112d4b9bf55e45ec865f5c8606ead9088a7983
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307930"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752392"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -2744,7 +2744,7 @@ Azure Maps アカウントからマップ関連データを読み取るための
 Azure Spring Cloud データへの読み取りアクセスを許可します。[詳細](../spring-cloud/how-to-access-data-plane-azure-ad-rbac.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | "*なし*" |  |
 > | **NotActions** |  |
@@ -6021,7 +6021,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理およびコンテンツ操作へのフル アクセスが付与されます。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6080,7 +6080,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 コンテンツ操作へのフル アクセスが付与されます。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6133,7 +6133,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 コンテンツ操作への読み取りアクセスが付与されますが、変更を加えることはできません。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6182,7 +6182,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理操作へのフル アクセスが付与されます。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6235,7 +6235,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理操作への読み取りアクセスが付与されますが、変更を加えることはできません。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -6284,7 +6284,7 @@ Cognitive Services のキーの読み取りおよび一覧表示を行うこと�
 管理操作およびコンテンツ操作への読み取りアクセスが付与されますが、変更を加えることはできません。[詳細](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | デプロイの作成と管理 |
@@ -7019,7 +7019,7 @@ Azure Stack の登録を管理できます。
 EventGrid 操作を管理できます。
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/* | Event Grid リソースの作成と管理 |
@@ -7813,7 +7813,7 @@ Intelligent Systems のアカウントを管理できます。ただし、それ
 Azure Sentinel Automation 共同作成者です。[詳細](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | ロールとロール割り当ての読み取り |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/triggers/read | トリガーを読み取ります。 |
@@ -8210,7 +8210,7 @@ Azure Sentinel レスポンダーです。[詳細](../sentinel/roles.md)
 
 ### <a name="key-vault-contributor"></a>Key Vault Contributor
 
-キー コンテナーを管理しますが、Azure RBAC でのロール割り当ては許可されず、シークレット、キー、証明書へのアクセスも許可されません。 [詳細情報](../key-vault/general/secure-your-key-vault.md)
+キー コンテナーを管理しますが、Azure RBAC でのロール割り当ては許可されず、シークレット、キー、証明書へのアクセスも許可されません。 [詳細情報](../key-vault/general/security-overview.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -9584,7 +9584,7 @@ Runbook のジョブを作成する方法については、Runbook のプロパ�
 クラスター ユーザーの資格情報アクションを一覧表示します。
 
 > [!div class="mx-tableFixed"]
-> | アクション | 説明 |
+> | Actions | 説明 |
 > | --- | --- |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/write | デプロイを作成または更新します。 |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
@@ -12144,7 +12144,7 @@ BizTalk Services を管理できます。ただし、それらへのアクセス
 
 ### <a name="disk-backup-reader"></a>Disk Backup Reader
 
-ディスク バックアップを実行するためにコンテナーをバックアップするアクセス許可を提供します。 [詳細情報](../backup/disk-backup-faq.md)
+ディスク バックアップを実行するためにコンテナーをバックアップするアクセス許可を提供します。 [詳細情報](../backup/disk-backup-faq.yml)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |

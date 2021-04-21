@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d1f0728a9a8da264f0960be2b956516b3c93742e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 8c9d760ed888eb194ad8f282f180a634e3c09538
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258079"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587818"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用した Microsoft Dynamics 365 Fraud Protection の構成
 
@@ -126,8 +126,8 @@ CORS の設定、**許可された配信元** `https://{your_tenant_name}.b2clog
 |  {your_tenant_extensions_appid}   |  テナントのストレージ アプリケーションのアプリ ID   |  01234567-89ab-cdef-0123-456789abcdef  |
 |   {your_tenant_extensions_app_objectid}  | テナントのストレージ アプリケーションのオブジェクト ID    | 01234567-89ab-cdef-0123-456789abcdef   |
 |   {your_app_insights_instrumentation_key}  |   App Insights インスタンスのインストルメンテーション キー *  |   01234567-89ab-cdef-0123-456789abcdef |
-|  {your_ui_base_url}   | UI ファイルが提供される App Service のエンドポイント    | https://yourapp.azurewebsites.net/B2CUI/GetUIPage   |
-|   {your_app_service_url}  | App Service の URL    |  https://yourapp.azurewebsites.net  |
+|  {your_ui_base_url}   | UI ファイルが提供される App Service のエンドポイント    | `https://yourapp.azurewebsites.net/B2CUI/GetUIPage`   |
+|   {your_app_service_url}  | App Service の URL    |  `https://yourapp.azurewebsites.net`  |
 |   {your-facebook-app-id}  |  Azure AD B2C とのフェデレーション用に構成した Facebook アプリのアプリ ID   | 000000000000000   |
 |  {your-facebook-app-secret}   |  Facebook のアプリ シークレットを保存した際のポリシー キーの名前   | B2C_1A_FacebookAppSecret   |
 

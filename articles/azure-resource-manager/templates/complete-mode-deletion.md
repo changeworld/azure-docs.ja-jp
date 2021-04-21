@@ -2,13 +2,13 @@
 title: 完全モードの削除
 description: リソースの種類に応じて Azure Resource Manager テンプレートで完全モードがどのように処理されるかを示します。
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 9b1c12c061149d60f1e279c78c141cd8b245218c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.date: 04/16/2021
+ms.openlocfilehash: 6986f600274beaaa67f2f6ce64cbc3d0ceaf322e
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228029"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576065"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>完全モード デプロイでの Azure リソースの削除
 
@@ -916,8 +916,8 @@ ms.locfileid: "107228029"
 > | galleries | はい |
 > | galleries / applications | いいえ |
 > | galleries / applications / versions | いいえ |
-> | galleries/images | いいえ |
-> | galleries/images/versions | いいえ |
+> | galleries/images | はい |
+> | galleries/images/versions | はい |
 > | hostGroups | はい |
 > | hostGroups / hosts | はい |
 > | images | はい |
@@ -993,7 +993,7 @@ ms.locfileid: "107228029"
 > | ReservationRecommendations | いいえ |
 > | ReservationSummaries | いいえ |
 > | ReservationTransactions | いいえ |
-> | タグ | いいえ |
+> | Tags | いいえ |
 > | tenants | いいえ |
 > | 用語 | いいえ |
 > | UsageDetails | いいえ |
