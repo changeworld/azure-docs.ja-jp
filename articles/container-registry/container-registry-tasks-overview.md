@@ -75,7 +75,7 @@ ACR タスクがコンテナー ビルド ワークフローを真に強化す�
 アプリケーション イメージをビルドするときに基本イメージ上の依存関係を追跡するように ACR タスクを設定できます。 更新された基本イメージがレジストリにプッシュされると、または基本イメージが Docker Hub などのパブリック リポジトリで更新されると、ACR タスクではそれに基づいてすべてのアプリケーション イメージを自動的にビルドできます。
 ACR タスクはこの自動検出とリビルドによって、更新された基本イメージを参照しているすべてのアプリケーション イメージを手動で追跡し、更新するために通常は必要となる時間と労力を削減しています。
 
-詳細については、ACR タスクの[基本イメージの更新トリガー](container-registry-tasks-base-images.md)に関する記事を参照してください。 また、基本イメージがコンテナー レジストリにプッシュされたときにイメージのビルドをトリガーする方法については、「[Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する](container-registry-tutorial-base-image-update.md)」のチュートリアルを参照してください
+詳細については、ACR タスクの[基本イメージの更新トリガー](container-registry-tasks-base-images.md)に関する記事を参照してください。 また、基本イメージがコンテナー レジストリにプッシュされたときにイメージのビルドをトリガーする方法については、「[Azure Container Registry で基本イメージの更新時にコンテナー イメージ ビルドを自動化する](container-registry-tutorial-base-image-update.md)」のチュートリアルを参照してください
 
 ## <a name="schedule-a-task"></a>タスクのスケジュール設定
 
@@ -135,7 +135,7 @@ ACR タスクはこの自動検出とリビルドによって、更新された�
 
 クラウドでコンテナー イメージのビルドと保守管理を自動化する準備ができたら、[ACR タスクのチュートリアル シリーズ](container-registry-tutorial-quick-task.md)をご覧ください。
 
-Azure コンテナー レジストリを操作するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure コンテナー レジストリとの間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
+Azure Container Registry を操作するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure Container Registry との間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/acr-build-helloworld-node/archive/master.zip
