@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 4423eea6c35ad44d55ad17f5703a95c6273422b8
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: ebd2759d4dfb8ee79130f9b4876eba8d45226d04
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585861"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718793"
 ---
 # <a name="iot-central-device-development-guide"></a>IoT Central デバイスの開発ガイド
 
@@ -125,7 +125,7 @@ IoT プラグ アンド プレイ規則の詳細については、「[IoT プラ
 
 ### <a name="device-sdks"></a>デバイスの SDK
 
-デバイスの動作を実装するには、[Azure IoT device SDK](#languages-and-sdks) のいずれかを使用します。 コードでは、次の処理を行う必要があります。
+デバイスの動作を実装するには、[Azure IoT device SDK](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) のいずれかを使用します。 コードでは、次の処理を行う必要があります。
 
 - デバイスを DPS に登録し、DPS からの情報を使用して、お使いの IoT Central アプリケーション内の内部 IoT ハブに接続します。
 - デバイスで実装されるモデルの DTMI を通知します。
