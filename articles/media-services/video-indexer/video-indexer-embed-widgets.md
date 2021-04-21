@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/25/2021
 ms.author: juliako
 ms.custom: devx-track-js
-ms.openlocfilehash: 822d50bca6bc1139e9b5f0554bcf9a56a8fcbd74
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 56db88bff5b0e92a3819670e200177f10609aaa8
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532874"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107029728"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>お使いのアプリに Video Indexer ウィジェットを埋め込む
 
@@ -97,13 +97,13 @@ ms.locfileid: "107532874"
   
 #### <a name="private-videos"></a>プライベート ビデオ
 
-プライベート ビデオを埋め込むには、iframe の `src` 属性にアクセス トークンを渡す必要があります ([Get Video Access Token](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Access-Token) を使用)。
+プライベート ビデオを埋め込むには、iframe の `src` 属性にアクセス トークンを渡す必要があります ([Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Access-Token?) を使用)。
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
   
 ### <a name="provide-editing-insights-capabilities"></a>分析情報の編集機能を提供する
 
-埋め込みのウィジェットで分析情報の編集機能を提供するには、編集アクセス許可を含むアクセス トークンを渡す必要があります。 `&allowEdit=true` を指定して [Get Video Access Token](https://api-portal.videoindexer.ai/api-details#api=Operations&operation=Get-Video-Access-Token) を使用します。
+埋め込みのウィジェットで分析情報の編集機能を提供するには、編集アクセス許可を含むアクセス トークンを渡す必要があります。 `&allowEdit=true` を指定して [Get Video Access Token](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Access-Token?) を使用します。
 
 ## <a name="widgets-interaction"></a>ウィジェットの対話
 

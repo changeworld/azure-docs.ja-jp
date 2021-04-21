@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: ed231a4870af7489d48ff54548be380c2cf0799c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c2af279ec7e846316a94e58977e7079305ab9b03
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104864892"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579365"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -133,12 +133,12 @@ Linux では、ファイルの復元に使用するコンピューターの OS �
 
 アクセスが制限されたコンピューターでスクリプトを実行する場合は、次にアクセスできることを確認してください。
 
-- `download.microsoft.com`
+- `download.microsoft.com` または NSG の `AzureFrontDoor.FirstParty` サービス タグ
 - Recovery Service の URL (GEO-NAME は Recovery Services コンテナーが存在するリージョンを表します)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (すべての Azure パブリック リージョン)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Azure China 21Vianet 用)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure US Government 用)
-  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Azure Germany 用)
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.com` (Azure パブリック リージョンの場合) または NSG の `AzureBackup` サービス タグ
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.cn` (Azure China 21Vianet の場合) または NSG の `AzureBackup` サービス タグ
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.us` (Azure US Government の場合) または NSG の `AzureBackup` サービス タグ
+  - `https://pod01-rec2.GEO-NAME.backup.windowsazure.de` (Azure Germany の場合) または NSG の `AzureBackup` サービス タグ
 - 送信ポート 53 (DNS)、443、3260
 
 > [!NOTE]

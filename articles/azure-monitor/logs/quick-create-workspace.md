@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/18/2021
-ms.openlocfilehash: 27eac9cefe645087cae43c34cb6503b562fb7c07
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7d3ffd754959c59fb34f326473247d836871ea75
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656306"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106821"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Azure Portal で Log Analytics ワークスペースを作成する
 Azure portal で、 **[Log Analytics ワークスペース]** メニューを使用して、Log Analytics ワークスペースを作成します。 Log Analytics ワークスペースは、Azure Monitor ログ データ用の一意の環境です。 各ワークスペースには、独自のデータ リポジトリと構成があり、データ ソースとソリューションは、特定のワークスペースにデータを格納するように構成されます。 次のソースからデータを収集しようとする場合、Log Analytics ワークスペースが必要です。
@@ -40,7 +40,7 @@ Azure Portal で、 **[すべてのサービス]** をクリックします。 �
 
    * 関連付ける **サブスクリプション** をドロップダウン リストから選択します (既定値が適切でない場合)。
    * **[リソース グループ]** で、設定済みの既存のリソース グループを使用することを選択するか、新しいリソース グループを作成します。  
-   * 新しい **Log Analytics ワークスペース** の名前 (*DefaultLAWorkspace* など) を指定します。 この名前は、すべての Azure Monitor サブスクリプションでグローバルに一意である必要があります。
+   * 新しい **Log Analytics ワークスペース** の名前 (*DefaultLAWorkspace* など) を指定します。 この名前は、リソース グループごとに一意である必要があります。
    * 使用可能な **リージョン** を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照し、 **[製品を検索する]** フィールドから Azure Monitor を検索してください。  
 
 
