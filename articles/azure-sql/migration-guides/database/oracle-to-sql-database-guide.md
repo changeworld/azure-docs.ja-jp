@@ -5,16 +5,16 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 08/25/2020
-ms.openlocfilehash: 9ae7e8c4544d2e8bd9dc4ff846aabb0c7f7f9358
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 45fbc1f85c5d7f66716fbf69deb430ce74575435
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284257"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388501"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-database"></a>移行ガイド: Oracle から Azure SQL Database
 
@@ -28,7 +28,7 @@ ms.locfileid: "107284257"
 
 Oracle スキーマの SQL Database への移行を始める前に:
 
-- ソース環境がサポートされていることを確認する。
+- ソース環境がサポートされていることを確認します。
 - [SSMA for Oracle](https://www.microsoft.com/download/details.aspx?id=54258) をダウンロードします。
 - ターゲットの [SQL Database](../../database/single-database-create-quickstart.md) インスタンスを用意します。
 - [SSMA for Oracle に必要なアクセス許可](/sql/ssma/oracle/connecting-to-oracle-database-oracletosql)と[プロバイダー](/sql/ssma/oracle/connect-to-oracle-oracletosql)を取得します。
@@ -41,10 +41,10 @@ Oracle スキーマの SQL Database への移行を始める前に:
 
 SSMA for Oracle を使用すると、データベース オブジェクトとデータを確認し、移行についてデータベース オブジェクトを評価し、SQL Database にデータベース オブジェクトを移行して、最後にそのデータベースにデータを移行することができます。
 
-評価を作成するには、次のようにします。
+評価を作成するには:
 
 1. [SSMA for Oracle](https://www.microsoft.com/download/details.aspx?id=54258) を開きます。
-1. **[ファイル]** を選択し、 **[新しいプロジェクト]** を選択します。
+1. **[ファイル]** を選択してから、 **[新しいプロジェクト]** を選択します。
 1. プロジェクト名と、プロジェクトを保存する場所を入力します。 次に、ドロップダウンリストから移行ターゲットとして **[Azure SQL Database]** を選択し、 **[OK]** を選択します。
 
    ![[Oracle への接続] を示すスクリーンショット。](./media/oracle-to-sql-database-guide/connect-to-oracle.png)
@@ -78,7 +78,7 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 ### <a name="convert-the-schema"></a>スキーマの変換
 
-スキーマを変換するには、次のようにします。
+スキーマを変換するには:
 
 1. (省略可能) 動的またはアドホック クエリをステートメントに追加します。 ノードを右クリックし、 **[Add statements]\(ステートメントの追加\)** を選択します。
 1. **[Azure SQL Database への接続]** タブを選択します。
@@ -111,20 +111,20 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 1. **[Azure SQL Database Metadata Explorer]\(Azure SQL Database メタデータ エクスプローラー\)** の **[データベース]** ノードでデータベースを右クリックし、 **[Synchronize with Database]\(データベースと同期\)** を選択して、スキーマを発行します。
 
-   ![[データベースとの同期] を示すスクリーンショット。](./media/oracle-to-sql-database-guide/synchronize-with-database.png)
+   ![[Synchronize with Database]\(データベースと同期\) を示すスクリーンショット。](./media/oracle-to-sql-database-guide/synchronize-with-database.png)
 
-1. 自分のソース プロジェクトとターゲット間のマッピングを確認します。
+1. ソース プロジェクトとターゲットの間のマッピングを確認します。
 
    ![[Synchronize with the Database]\(データベースとの同期\) のレビューを示すスクリーンショット。](./media/oracle-to-sql-database-guide/synchronize-with-database-review.png)
 
-1. **[Oracle Metadata Explorer]\(Oracle メタデータ エクスプローラー\)** で移行するデータベースまたはオブジェクトを右クリックし、 **[データの移行]** を選択して、データを移行します。 または、 **[データの移行]** タブを選択することもできます。データベース全体のデータを移行するには、データベース名の横にあるチェック ボックスをオンにします。 個々のテーブルからデータを移行するには、データベース、 **[テーブル]** の順に展開してから、テーブルの横にあるチェック ボックスをオンにします。 個々のテーブルのデータを除外するには、次のチェック ボックスをオフにします。
+1. **[Oracle Metadata Explorer]\(Oracle メタデータ エクスプローラー\)** で移行するデータベースまたはオブジェクトを右クリックし、 **[データの移行]** を選択して、データを移行します。 または、 **[データの移行]** タブを選択することもできます。データベース全体のデータを移行するには、データベース名の横にあるチェック ボックスをオンにします。 個々のテーブルからデータを移行するには、データベース、 **[テーブル]** の順に展開してから、テーブルの横にあるチェック ボックスをオンにします。 個々のテーブルのデータを除外するには、チェック ボックスをオフにします。
 
    ![[データの移行] を示すスクリーンショット。](./media/oracle-to-sql-database-guide/migrate-data.png)
 
 1. Oracle と SQL Database 両方の接続の詳細を入力します。
 1. 移行が完了したら、**データ移行レポート** を表示します。
 
-   ![[データ移行レポート] を示すスクリーンショット。](./media/oracle-to-sql-database-guide/data-migration-report.png)
+   ![[Data Migration Report]\(データ移行レポート\) を示すスクリーンショット。](./media/oracle-to-sql-database-guide/data-migration-report.png)
 
 1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) を使用してお使いの SQL Database インスタンスに接続し、データとスキーマを確認して移行を検証します。
 
@@ -141,22 +141,22 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 ### <a name="remediate-applications"></a>アプリケーションを修復する
 
-データがターゲット環境に移行された後、以前にソースを使用していたすべてのアプリケーションは、ターゲットの使用を開始する必要があります。 このタスクを実現するために、場合によってはアプリケーションの変更が必要になります。
+データがターゲット環境に移行された後、以前にソースを使用していたすべてのアプリケーションは、ターゲットの使用を開始する必要があります。 このタスクを実行するには、場合によってはアプリケーションの変更が必要になります。
 
 [Data Access Migration Toolkit](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit) は、Java ソース コードを分析し、データ アクセス API の呼び出しとクエリを検出できるようにする Visual Studio Code の拡張機能です。 このツールキットを使用すると、新しいデータベース バックエンドをサポートするために対処する必要があることが、単一ペインのビューに表示されます。 詳細については、[Oracle からの Java アプリケーションの移行](https://techcommunity.microsoft.com/t5/microsoft-data-migration/migrate-your-java-applications-from-oracle-to-sql-server-with/ba-p/368727)に関するブログ記事を参照してください。
 
 ### <a name="perform-tests"></a>テストを実行する
 
-データベース移行に対するテスト アプローチは、次のアクティビティで構成されています。
+データベース移行に対するテスト アプローチは、次のアクティビティで構成されます。
 
-1. **検証テストを作成する**: データベースの移行をテストするには、SQL クエリを使用する必要があります。 ソース データベースとターゲット データベースの両方に対して実行する検証クエリを作成する必要があります。 検証クエリには、定義したスコープが含まれている必要があります。
+1. **検証テストを作成する**: データベース移行をテストするには、SQL クエリを使用する必要があります。 ソース データベースとターゲット データベースの両方に対して実行する検証クエリを作成する必要があります。 その検証クエリでは、定義されているスコープに対応する必要があります。
 1. **テスト環境を設定する**: このテスト環境には、ソース データベースとターゲット データベースのコピーを含める必要があります。 必ずテスト環境を分離してください。
-1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
-1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
+1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行した後、結果を分析します。
+1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行した後、結果を分析および比較します。
 
 ### <a name="optimize"></a>最適化
 
-移行後フェーズは、データの精度の問題の調整、完全性の確認、およびワークロードのパフォーマンスの問題への対処のために非常に重要です。
+移行後の段階は、発生したデータの精度の問題を調整したり、完全性を検証したり、ワークロードでのパフォーマンスの問題に対処したりするために非常に重要です。
 
 > [!NOTE]
 > これらの問題と、それらを軽減するための具体的な手順の詳細については、「[移行後の検証および最適化ガイド](/sql/relational-databases/post-migration-validation-and-optimization-guide)」を参照してください。
@@ -175,7 +175,7 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - さまざまなデータベースおよびデータ移行シナリオや特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールのマトリックスについては、[データ移行のためのサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
 

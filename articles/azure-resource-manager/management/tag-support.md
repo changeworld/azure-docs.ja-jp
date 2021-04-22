@@ -2,13 +2,13 @@
 title: リソースでのタグのサポート
 description: タグをサポートしている Azure リソースの種類を示します。 すべての Azure サービスの詳細を提供します。
 ms.topic: conceptual
-ms.date: 04/08/2021
-ms.openlocfilehash: 713fb5401db965787c2d9458da9afc3183a4c6a9
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.date: 04/20/2021
+ms.openlocfilehash: b196cae267a8d7dc878f055f6b2d70a3ff6f9313
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227332"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773965"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure リソースでのタグのサポート
 この記事では、リソースの種類が[タグ](tag-resources.md)をサポートしているかどうかについて説明します。 「**タグのサポート**」というラベルが付けられた列は、リソースの種類にタグのプロパティがあるかどうかを示します。 「**コスト レポートのタグ**」というラベルが付けられた列は、リソースの種類がタグをコスト レポートに渡すかどうかを示します。 [Cost Management のコスト分析](../../cost-management-billing/costs/group-filter.md)および [Azure の請求書と毎日の使用データ](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)で、タグ別にコストを表示できます。
@@ -939,7 +939,7 @@ ms.locfileid: "107227332"
 > | virtualMachineScaleSets / virtualMachines / networkInterfaces | いいえ | いいえ |
 
 > [!NOTE]
-> 一般化済みとしてマークされている仮想マシンにタグを追加することはできません。 仮想マシンを一般化されたものとしてマークするには、[Set-AzVm -Generalized](/powershell/module/Az.Compute/Set-AzVM) または [az vm generalize](/cli/azure/vm#az-vm-generalize) を使用します。
+> 一般化済みとしてマークされている仮想マシンにタグを追加することはできません。 仮想マシンを一般化されたものとしてマークするには、[Set-AzVm -Generalized](/powershell/module/Az.Compute/Set-AzVM) または [az vm generalize](/cli/azure/vm#az_vm_generalize) を使用します。
 
 ## <a name="microsoftconnectedcache"></a>Microsoft.ConnectedCache
 
@@ -993,7 +993,7 @@ ms.locfileid: "107227332"
 > | ReservationRecommendations | いいえ | いいえ |
 > | ReservationSummaries | いいえ | いいえ |
 > | ReservationTransactions | いいえ | いいえ |
-> | タグ | いいえ | いいえ |
+> | Tags | いいえ | いいえ |
 > | tenants | いいえ | いいえ |
 > | 用語 | いいえ | いいえ |
 > | UsageDetails | いいえ | いいえ |
@@ -1193,8 +1193,8 @@ ms.locfileid: "107227332"
 > | リソースの種類 | タグのサポート | コスト レポートのタグ |
 > | ------------- | ----------- | ----------- |
 > | DatabaseMigrations | いいえ | いいえ |
-> | services | いいえ | いいえ |
-> | services/projects | いいえ | いいえ |
+> | services | はい | はい |
+> | services/projects | はい | はい |
 > | SqlMigrationServices | はい | はい |
 
 ## <a name="microsoftdataprotection"></a>Microsoft.DataProtection
@@ -2567,7 +2567,7 @@ ms.locfileid: "107227332"
 > | servers / restorableDroppedDatabases | いいえ | いいえ |
 > | servers / serviceobjectives | いいえ | いいえ |
 > | servers / tdeCertificates | いいえ | いいえ |
-> | virtualClusters | いいえ | いいえ |
+> | virtualClusters | はい | はい |
 
 <a id="sqlnote"></a>
 

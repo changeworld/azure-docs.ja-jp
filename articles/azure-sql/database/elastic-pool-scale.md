@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 04/09/2021
-ms.openlocfilehash: 3d935332854816ae62dea8e30f08bee2b92a4eab
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1125ea0c6c625ece010b2acb416ad223e37aea84
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107302983"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787127"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Azure SQL Database でエラスティック プールのリソースをスケーリングする
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "107302983"
 * [Transact-SQL](/sql/t-sql/statements/alter-database-transact-sql#overview-sql-database)
 * [Azure Portal](elastic-pool-manage.md#azure-portal)
 * [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)
-* [Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)
+* [Azure CLI](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)
 * [REST API](/rest/api/sql/elasticpools/update)
 
 
@@ -107,7 +107,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 ### <a name="dtu-based-purchasing-model"></a>DTU ベースの購入モデル
 
 - エラスティック プールの eDTU 価格には、追加コストなしで一定量のストレージが含まれます。 付属の容量を超える分のストレージについては、追加費用を払うことで、1 TB までは 250 GB 単位で、1 TB 以降は 256 GB 単位で、最大サイズ制限までプロビジョニングできます。 含まれているストレージ量と最大サイズの制限については、「[DTU 購入モデルを使用したエラスティック プールのリソース制限](resource-limits-dtu-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)」または「[vCore 購入モデルを使用したエラスティック プールのリソース制限](resource-limits-vcore-elastic-pools.md)」を参照してください。
-- エラスティック プールの追加ストレージは、[Azure Portal](elastic-pool-manage.md#azure-portal)、[PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)、[Azure CLI](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)、または [REST API](/rest/api/sql/elasticpools/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
+- エラスティック プールの追加ストレージは、[Azure Portal](elastic-pool-manage.md#azure-portal)、[PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool)、[Azure CLI](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)、または [REST API](/rest/api/sql/elasticpools/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
 - エラスティック プールの追加ストレージの料金は、追加ストレージ量にサービス レベルの追加ストレージ単価を掛けて計算します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 > [!IMPORTANT]

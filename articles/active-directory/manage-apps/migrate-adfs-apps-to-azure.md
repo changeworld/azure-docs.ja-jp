@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 03/01/2021
 ms.author: iangithinji
 ms.reviewer: baselden
-ms.openlocfilehash: 83e506c0a3d0b9718f94d48ea8e6b23f43e811f3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b0fd3dae2ff9c6de39462d19dc41a32ba51171e0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377940"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534862"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>アプリケーション認証を Active Directory フェデレーション サービス (AD FS) から Azure Active Directory に移動する
 
@@ -177,7 +177,7 @@ Azure AD SAML トークン暗号化とその構成方法については、「[Az
 
 次に示すトークン内の要求の機能を必要とするアプリは、現時点では移行することができません。
 
-* データが Azure AD に同期されていない場合、Azure AD ディレクトリ以外の属性ストアからの要求。 詳細については、「[Azure AD 同期 API の概要](/graph/api/resources/synchronization-overview?view=graph-rest-beta)」をご覧ください。
+* データが Azure AD に同期されていない場合、Azure AD ディレクトリ以外の属性ストアからの要求。 詳細については、「[Azure AD 同期 API の概要](/graph/api/resources/synchronization-overview)」をご覧ください。
 * ディレクトリの複数値属性の発行。 たとえば、現時点では、プロキシ アドレスに対して複数値の要求を発行することはできません。
 
 ## <a name="map-app-settings-from-ad-fs-to-azure-ad"></a>AD FS から Azure AD へのアプリの設定のマッピング

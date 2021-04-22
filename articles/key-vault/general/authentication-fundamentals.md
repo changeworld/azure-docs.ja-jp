@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault 認証の基礎
 description: Key Vault の認証モデルの動作について説明します
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 09/25/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 04/15/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f0cd2fb341dd790a7628cc3cf6a5bdd87d7c3687
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363429"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753418"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Key Vault 認証の基礎
 
@@ -119,7 +119,7 @@ Key Vault のロールの割り当ては、キー、シークレット、証明�
 
 Key Vault 用の Azure RBAC の詳細については、次のドキュメントをご覧ください。
 
-* Key Vault 用の Azure RBAC ([リンク](./secure-your-key-vault.md#management-plane-and-azure-rbac))
+* Key Vault 用の Azure RBAC ([リンク](rbac-guide.md))
 * Key Vault 用の Azure RBAC のロール ([リンク](../../role-based-access-control/built-in-roles.md#key-vault-administrator))
 
 ## <a name="configure-key-vault-firewall"></a>Key Vault ファイアウォールを構成する

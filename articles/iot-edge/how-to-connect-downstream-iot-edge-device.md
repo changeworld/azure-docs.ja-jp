@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: e0912fb452a7f587fef19de835eea111b349a9a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 500833d1bb4fc492942c08239bd488c2d2c16d30
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310021"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484321"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway"></a>ダウンストリーム IoT Edge デバイスを Azure IoT Edge ゲートウェイに接続する
 
@@ -78,9 +78,9 @@ Azure portal では、新しいデバイス ID を作成するとき、または
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI の [azure-iot](/cli/azure/ext/azure-iot) 拡張機能には、IoT リソースを管理するためのコマンドが用意されています。 新しいデバイス ID を作成するとき、または既存のデバイスを編集することで、IoT および IoT Edge デバイスの親子関係を管理できます。
+Azure CLI の [azure-iot](/cli/azure/iot) 拡張機能には、IoT リソースを管理するためのコマンドが用意されています。 新しいデバイス ID を作成するとき、または既存のデバイスを編集することで、IoT および IoT Edge デバイスの親子関係を管理できます。
 
-[az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) コマンド セットを使用すると、指定したデバイスの親子関係を管理できます。
+[az iot hub device-identity](/cli/azure/iot/hub/device-identity) コマンド セットを使用すると、指定したデバイスの親子関係を管理できます。
 
 `create` コマンドには、デバイス作成時に子デバイスを追加したり親デバイスを設定したりするためのパラメーターが含まれています。
 

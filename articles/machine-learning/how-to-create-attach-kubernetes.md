@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 075b02e3e5f2e409298bf31eb0b6720e64af68a0
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 1c9434d137114560b5585b081961497412dfbf69
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210830"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770257"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -223,7 +223,7 @@ Azure サブスクリプションに AKS クラスターが既にある場合は
 
 Azure CLI または portal を使用した AKS クラスターの作成の詳細については、次の記事をご覧ください。
 
-* [AKS クラスターの作成 (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az-aks-create)
+* [AKS クラスターの作成 (CLI)](/cli/azure/aks?bc=%2fazure%2fbread%2ftoc.json&toc=%2fazure%2faks%2fTOC.json#az_aks_create)
 * [AKS クラスターの作成 (ポータル)](../aks/kubernetes-walkthrough-portal.md)
 * [AKS クラスターの作成 (Azure クイックスタート テンプレートでの ARM テンプレート)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 

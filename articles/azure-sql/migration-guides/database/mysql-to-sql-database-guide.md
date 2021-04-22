@@ -5,16 +5,16 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: 32c56df5bafa9439fc559edf137c1080920cfb32
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: d4510aa5cda61dac88102c89b3e03da231380bd6
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284376"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389453"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>移行ガイド: MySQL から Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "107284376"
 
 MySQL データベースから SQL データベースへの移行を始める前に、次のことを行います。
 
-- ソース環境がサポートされていることを確認する。 現時点では、MySQL 5.6 および 5.7 がサポートされています。 
+- ソース環境がサポートされていることを確認します。 現時点では、MySQL 5.6 および 5.7 がサポートされています。 
 - [SQL Server Migration Assistant for MySQL](https://www.microsoft.com/download/details.aspx?id=54257) をダウンロードしてインストールします。
 - ソースとターゲットの両方にアクセスするための接続と十分なアクセス許可があることを確認します。
 
@@ -39,7 +39,7 @@ MySQL データベースから SQL データベースへの移行を始める前
 
 SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データベース オブジェクトとデータを確認し、データベースの移行を評価できます。 
 
-評価を作成するには、以下を実行します。
+評価を作成するには、次の手順を実行します。
 
 1. [SSMA for MySQL](https://www.microsoft.com/download/details.aspx?id=54257) を開きます。 
 1. **[ファイル]** を選択してから、 **[新しいプロジェクト]** を選択します。 
@@ -78,7 +78,7 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 
 スキーマを変換するには、次の手順を実行します。 
 
-1. (省略可能) 動的または特殊なクエリを変換するには、ノードを右クリックし、 **[ステートメントの追加]** を選択します。 
+1. (省略可能) 動的クエリまたは特殊なクエリを変換するには、ノードを右クリックして **[ステートメントの追加]** を選択します。 
 
 1. **[Connect to Azure SQL Database]\(Azure SQL Database への接続\)** タブを選択し、次の操作を行います。
 
@@ -119,7 +119,7 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 
    ![データベースのマッピングを確認するための [Synchronize with Database]\(データベースと同期する\) ペインのスクリーンショット。](./media/mysql-to-sql-database-guide/synchronize-database-review.png)
 
-1. データを移行します。 **[MySQL Metadata Explorer]\(MySQL メタデータ エクスプローラー\)** ペインで、移行する MySQL のスキーマを右クリックして、 **[Migrate Data]\(データの移行\)** を選択します。 または、右上にある **[データの移行]** タブを選択することもできます。
+1. データを移行します。 **[MySQL Metadata Explorer]\(MySQL メタデータ エクスプローラー\)** ペインで、移行する MySQL のスキーマを右クリックして、 **[Migrate Data]\(データの移行\)** を選択します。 あるいは、右上にある **[データの移行]** タブを選択することもできます。
 
    データベース全体のデータを移行するには、データベース名の横にあるチェック ボックスをオンにします。 個々のテーブルからデータを移行するには、データベースを展開し、 **[テーブル]** を展開して、テーブルの横にあるチェック ボックスをオンにします。 個々のテーブルのデータを除外するには、このチェック ボックスをオフにします。
 
@@ -143,25 +143,25 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 
 ### <a name="perform-tests"></a>テストを実行する
 
-データベース移行に対するテスト アプローチは、次のアクティビティで構成されています。
+データベース移行に対するテスト アプローチは、次のアクティビティで構成されます。
 
-1. **検証テストを作成する**: データベースの移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行する検証クエリを作成する必要があります。 検証クエリには、定義したスコープが含まれている必要があります。
+1. **検証テストを作成する**: データベース移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行する検証クエリを作成する必要があります。 その検証クエリでは、定義されているスコープに対応する必要があります。
 
 1. **テスト環境を設定する**: このテスト環境には、ソース データベースとターゲット データベースのコピーを含める必要があります。 必ずテスト環境を分離してください。
 
-1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
+1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行した後、結果を分析します。
 
-1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
+1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行した後、結果を分析および比較します。
 
 ### <a name="optimize"></a>最適化
 
-移行後フェーズは、データの精度の問題の調整、完全性の確認、およびワークロードのパフォーマンスの問題への対処のために非常に重要です。
+移行後の段階は、発生したデータの精度の問題を調整したり、完全性を検証したり、ワークロードでのパフォーマンスの問題に対処したりするために非常に重要です。
 
 これらの問題と、それらを軽減するための具体的な手順の詳細については、「[移行後の検証および最適化ガイド](/sql/relational-databases/post-migration-validation-and-optimization-guide)」を参照してください。
 
 ## <a name="migration-assets"></a>移行資産
 
-この移行シナリオの詳細については、次のリソースを参照してください。 これは、実世界の移行プロジェクトの取り組みをサポートするために開発されたものです。
+この移行シナリオを完了するためのその他の支援については、次のリソースを参照してください。 これは、実世界の移行プロジェクトの取り組みをサポートするために開発されたものです。
 
 | タイトル | 説明 |
 | --- | --- |
@@ -169,7 +169,7 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 
 - ワークロードを Azure に移行することで実現できるコスト削減額を見積もるには、「[Azure 総保有コスト (TCO) 計算ツール](https://aka.ms/azure-tco)」を参照してください。
 
