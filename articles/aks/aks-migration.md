@@ -4,13 +4,13 @@ description: Azure Kubernetes Service (AKS) に移行します。
 services: container-service
 ms.topic: article
 ms.date: 03/25/2021
-ms.custom: mvc
-ms.openlocfilehash: d5e3543fd6b7cd1b5534d6e363e51f1778cc7fc9
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 7856b2b0668eca7a172b738a7eeea640e466f003
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012129"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483114"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) に移行する
 

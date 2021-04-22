@@ -6,12 +6,12 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
-ms.openlocfilehash: c561a9a786765ccfdaf00abf4e0d9c8cc550cb9a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 45085c910974402a968075a66087a04fb30e8bd9
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377210"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107576205"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>SAP ソリューション向け Azure Monitor (プレビュー)
 
@@ -87,7 +87,7 @@ SAP ソリューション向け Azure Monitor では、SAP on Azure のお客様
 
 次の図は、SAP ソリューション向け Azure Monitor で SAP HANA データベースから利用統計情報が収集される方法の概要を示しています。 アーキテクチャは、SAP HANA が Azure Virtual Machines または Azure Large Instances のどちらにデプロイされているかに依存しません。
 
-![SAP ソリューション向け Azure Monitor のアーキテクチャ](./media/azure-monitor-sap/azure-monitor-architecture.png)
+![SAP ソリューション向け Azure Monitor のアーキテクチャ](https://user-images.githubusercontent.com/75772258/115046700-62ff3280-9ef5-11eb-8d0d-cfcda526aeeb.png)
 
 アーキテクチャの主要なコンポーネントは次のとおりです。
 - Azure portal – お客様の出発点となります。 お客様は Azure portal 内のマーケットプレースに移動して、SAP ソリューション向け Azure Monitor を見つけることができます
