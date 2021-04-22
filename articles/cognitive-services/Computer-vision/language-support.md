@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 774eb05ae43e393db3d11e8e21a427736614809b
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: a37b740333e599d19248ffa9b21be3e4d6fe78b3
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285112"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107306298"
 ---
 # <a name="language-support-for-computer-vision"></a>Computer Vision の言語サポート
 
@@ -25,7 +25,7 @@ Computer Vision の一部の機能では、複数の言語がサポートされ�
 
 Computer Vision の OCR API では複数の言語をサポートしています。 言語コードを指定する必要はありません。 詳細については、[光学式文字認識 (OCR) の概要](overview-ocr.md)に関するページを参照してください。
 
-|Language| 言語コード | OCR API | Read 3.0/3.1 | Read v3.2 プレビュー |
+|Language| 言語コード | OCR API | Read 3.0/3.1 | Read v3.2 |
 |:-----|:----:|:-----:|:---:|:---:|
 |アフリカーンス語|`af`| | |✔ |
 |アルバニア語 |`sq`| | |✔ |
@@ -46,7 +46,7 @@ Computer Vision の OCR API では複数の言語をサポートしています�
 |デンマーク語 | `da` |✔ | |✔ |
 |オランダ語 | `nl` |✔ |✔ |✔ |
 |英語 | `en` |✔ |✔ |✔ |
-|エストニア語  |`crh`| | |✔ |
+|エストニア語  |`et`| | |✔ |
 |フィジー語 |`fj`| | |✔ |
 |フィリピン語  |`fil`| | |✔ |
 |フィンランド語 | `fi` |✔ | |✔ |

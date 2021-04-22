@@ -7,14 +7,17 @@ ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: jocorte
-ms.openlocfilehash: a1237077b9e0a1af67d34c85d8ea8d526bd71372
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7322bab635d398fc7a5335546ba6fef327ff24b2
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281435"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107259355"
 ---
 # <a name="secure-traffic-destined-to-private-endpoints-in-azure-virtual-wan"></a>Azure Virtual WAN でプライベート エンドポイント宛てのトラフィックをセキュリティで保護する
+
+> [!NOTE]
+> この記事は、セキュリティ保護付き仮想ハブに対してのみ適用されます。 ハブ仮想ネットワーク内の Azure Firewall を使用して、プライベート エンドポイント宛てのトラフィックを検査する場合は、「 [Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックの検査する](../private-link/inspect-traffic-with-azure-firewall.md)」を参照してください。
 
 [Azure プライベート エンドポイント](../private-link/private-endpoint-overview.md)は、[Azure Private Link](../private-link/private-link-overview.md) の基本的な構成要素です。 プライベート エンドポイントを使用すると、仮想ネットワークにデプロイされた Azure リソースから、プライベート リンク リソースとプライベートに通信できます。
 
@@ -147,6 +150,6 @@ SQL の FQDN のフィルター処理は、[プロキシ モード](../azure-sql
    | where msg_s contains "database.windows.net"
    | where Category contains "ApplicationRule"
    ```
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Firewall を使用してプライベート エンドポイント宛てのトラフィックを検査する](../private-link/inspect-traffic-with-azure-firewall.md)

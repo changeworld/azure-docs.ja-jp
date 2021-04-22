@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: d098af394906dc120a252bdcda65fb3af31e28c8
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: d7e2bd2987e7eaf7798093f3918f72b7e09a3cb0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104865793"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107313488"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Spark & Hive Tools for Visual Studio Code を使用する
 
@@ -265,7 +265,7 @@ PySpark Interactive コマンドを使用してクエリを送信するには、
 
 > [!NOTE]
 >
-> ["この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません"](#issues-changed) は解決されました。 **ms-python** を **最新バージョン** に更新してください。
+> [この拡張では 2021.3.684299474 バージョン以降の ms-toolsai.jupyter はサポートされていません。](#known-issues)これは既知の問題です。 Microsoft Jupyter 2021.3.684299474 には Synapse カーネルを使用してください。
 
 ## <a name="submit-pyspark-batch-job"></a>PySpark バッチ ジョブを送信する
 
@@ -485,9 +485,19 @@ Data Lake Storage Gen2 を使用して HDInsight クラスターにジョブを�
 
 メニュー バーから、 **[ビュー]**  >  **[コマンド パレット]** の順に移動し、「**Azure: Sign Out**」と入力します。
 
-## <a name="issues-changed"></a>問題の変更
+## <a name="known-issues"></a>既知の問題 
 
-この問題 ("この拡張では 2020.5.78807 バージョン以降の ms-python はサポートされていません") は解決されたので、**ms-python** を **最新バージョン** に更新してください。
+ この拡張では、2021.3.684299474 バージョン以降の ms-toolsai.jupyter はサポートされていません。Microsoft Jupyter 2021.3.684299474 には、Synapse カーネルを使用してください。
+
+ 1. 拡張機能の自動更新を無効にします。
+
+      ![拡張機能の自動更新を無効にする](./media/hdinsight-for-vscode/disable-auto-updating-extension.png)
+
+2. 選択したバージョンの Microsoft Jupyter をインストールします。
+
+      ![選択したバージョンの Microsoft Jupyter](./media/hdinsight-for-vscode/selected-version-of-microsoft-jupyter.png)
+
+3. Microsoft Jupyter バージョン 2021.3.684299474 のインストール
 
 
 ## <a name="next-steps"></a>次のステップ

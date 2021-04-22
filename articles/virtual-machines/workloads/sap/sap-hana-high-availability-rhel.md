@@ -10,14 +10,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: daa0a6b15d4c187efdea96fd8067b08c89fa0e82
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3d1b05560c02f3bf4de199a3d5cad48907ee16fb
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104599869"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365809"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性
 
@@ -559,6 +559,71 @@ SAP HANA に必要なポートについて詳しくは、[SAP HANA テナント 
 
 「[Setting up Pacemaker on Red Hat Enterprise Linux in Azure](high-availability-guide-rhel-pacemaker.md)」 (Azure で Red Hat Enterprise Linux に Pacemaker を設定する) の手順に従って、この HANA サーバーに対して基本的な Pacemaker クラスターを作成します。
 
+## <a name="implement-the-python-system-replication-hook-saphanasr"></a>Python システム レプリケーション フック SAPHanaSR を実装する
+
+これは、クラスターとの統合を最適化し、クラスターのフェールオーバーが必要になった場合の検出を改善するための重要なステップです。 SAPHanaSR python フックを構成することを強くお勧めします。    
+
+1. **[A]** HANA "システム レプリケーション フック" をインストールします。 フックは両方の HANA DB ノードにインストールする必要があります。           
+
+   > [!TIP]
+   > Python フックは、HANA 2.0 にのみ実装できます。        
+
+   1. フックを `root` として準備します。  
+
+    ```bash
+     mkdir -p /hana/shared/myHooks
+     cp /usr/share/SAPHanaSR/srHook/SAPHanaSR.py /hana/shared/myHooks
+     chown -R hn1adm:sapsys /hana/shared/myHooks
+    ```
+
+   2. 両方のノードで HANA を停止します。 <sid\>adm として実行します。  
+   
+    ```bash
+    sapcontrol -nr 03 -function StopSystem
+    ```
+
+   3. 各クラスター ノードで `global.ini` を調整します。  
+ 
+    ```bash
+    # add to global.ini
+    [ha_dr_provider_SAPHanaSR]
+    provider = SAPHanaSR
+    path = /hana/shared/myHooks
+    execution_order = 1
+    
+    [trace]
+    ha_dr_saphanasr = info
+    ```
+
+2. **[A]** クラスターでは、<sid\>adm の各クラスター ノードで sudoers を構成する必要があります。 この例では、新しいファイルを作成することで実現します。 `root` としてコマンドを実行します。    
+    ```bash
+    cat << EOF > /etc/sudoers.d/20-saphana
+    # Needed for SAPHanaSR python hook
+    hn1adm ALL=(ALL) NOPASSWD: /usr/sbin/crm_attribute -n hana_hn1_site_srHook_*
+    EOF
+    ```
+
+3. **[A]** 両方のノードで SAP HANA を開始します。 <sid\>adm として実行します。  
+
+    ```bash
+    sapcontrol -nr 03 -function StartSystem 
+    ```
+
+4. **[1]** フックのインストールを確認します。 アクティブな HANA システム レプリケーション サイトで、<sid\>adm として実行します。   
+
+    ```bash
+     cdtrace
+     awk '/ha_dr_SAPHanaSR.*crm_attribute/ \
+     { printf "%s %s %s %s\n",$2,$3,$5,$16 }' nameserver_*
+     # Example output
+     # 2021-04-12 21:36:16.911343 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:36:29.147808 ha_dr_SAPHanaSR SFAIL
+     # 2021-04-12 21:37:04.898680 ha_dr_SAPHanaSR SOK
+
+    ```
+
+SAP HANA システム レプリケーション フックの実装の詳細については、[SAP HA または DR プロバイダー フックの有効化](https://access.redhat.com/articles/3004101#enable-srhook)に関するページを参照してください。  
+ 
 ## <a name="create-sap-hana-cluster-resources"></a>SAP HANA クラスター リソースの作成
 
 **すべてのノード** に、SAP HANA リソース エージェントをインストールします。 このパッケージを含むリポジトリを必ず有効にします。 RHEL 8. x HA が有効なイメージを使用している場合、追加のリポジトリを有効にする必要はありません。  
@@ -651,7 +716,7 @@ sudo pcs property set maintenance-mode=false
 
 ## <a name="configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster"></a>Pacemaker クラスターで HANA アクティブ/読み取り可能のシステム レプリケーションを構成する
 
-SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーションでアクティブ/読み取り可能のセットアップを使用できます。この場合、読み取り処理の多いワークロードに対して SAP HANA システム レプリケーションのセカンダリ システムを積極的に活用できます。 クラスターでこのような設定をサポートするには、2 番目の仮想 IP アドレスが必要です。これにより、クライアントはセカンダリの読み取り可能な SAP HANA データベースにアクセスできるようになります。 引き継ぎの実行後もセカンダリ レプリケーション サイトにアクセスできるようにするには、クラスターが SAPHana リソースのセカンダリに仮想 IP アドレスを移行する必要があります。
+SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーションでアクティブ/読み取り可能のセットアップを使用できます。この場合、読み取り処理の多いワークロードに対して SAP HANA システム レプリケーションのセカンダリ システムを積極的に活用できます。 クラスターでこのような設定をサポートするには、2 番目の仮想 IP アドレスが必要です。これにより、セカンダリ読み取りが有効な SAP HANA データベースにクライアントからアクセスできます。 引き継ぎの実行後もセカンダリ レプリケーション サイトにアクセスできるようにするには、クラスターが SAPHana リソースのセカンダリに仮想 IP アドレスを移行する必要があります。
 
 このセクションでは、2 番目の仮想 IP を使用して Red Hat 高可用性クラスターで HANA のアクティブ/読み取り可能のシステム レプリケーションを管理するために必要な追加の手順について説明します。    
 
@@ -686,7 +751,6 @@ SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーショ�
    - 新しいロード バランサー規則の名前を入力します (例: **hana-secondarylb**)。
    - 前の手順で作成したフロントエンド IP アドレス、バックエンド プール、正常性プローブを選択します (例: **hana-secondaryIP**、**hana-backend**、**hana-secondaryhp**)。
    - **[HA ポート]** を選択します。
-   - **[idle timeout]\(アイドル タイムアウト\)** を 30 分に増やします
    - **Floating IP を有効にします**。
    - **[OK]** を選択します。
 

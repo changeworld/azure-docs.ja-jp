@@ -7,14 +7,14 @@ ms.reviewer: cynthn
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: how-to
-ms.date: 03/03/2021
+ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: daf4ad39f0379f7e903c40b9d5073ab87f455bab
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218772"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106581184"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>トラステッド起動を有効にして VM をデプロイする (プレビュー)
 
@@ -41,10 +41,13 @@ ms.locfileid: "106218772"
 5. **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認します。
 6. **[リソース グループ]** で **[新規作成]** を選択し、リソース グループの名前を入力するか、ドロップダウンから既存のリソース グループを選択します。
 7. **[インスタンスの詳細]** で、仮想マシンの名前を入力し、[トラステッド起動](trusted-launch.md#public-preview-limitations)がサポートされているリージョンを選択します。
-8. **[イメージ]** で、[トラステッド起動がサポートされているイメージ](trusted-launch.md#public-preview-limitations)を選択します。 イメージの第 1 世代のバージョンしか表示されない場合がありますが、それでもかまわないので、次のステップに進みます。
-9. ページの上部にある **[詳細設定]** タブを選択してそれに切り替えます。
-10. **[VM の生成]** セクションまで下にスクロールし、 **[Gen 2]** を選択します。
-11. 引き続き **[詳細設定]** タブで、 **[Trusted launch]\(トラステッド起動\)** まで下にスクロールして、 **[Trusted launch]\(トラステッド起動\)** チェック ボックスをオンにします。 これにより、さらに [Secure boot]\(セキュア ブート\) と [vTPM] の 2 つのオプションが表示されるようになります。 自分のデプロイに合った適切なオプションを選択します。
+8. **[イメージ]** で、Gen 2 の[トラステッド起動がサポートされているイメージ](trusted-launch.md#public-preview-limitations)を選択します。 
+   > [!TIP]
+   > ドロップダウンに目的の Gen 2 バージョンのイメージが表示されない場合は、 **[すべてのイメージを表示]** を選択し、 **[VM 生成]** フィルターを変更して Gen 2 のイメージのみを表示するようにします。 一覧でイメージを見つけて、 **[選択]** ドロップダウンを使用して Gen 2 バージョンを選択します。
+ 
+1. ページの上部にある **[詳細設定]** タブを選択してそれに切り替えます。
+1. **[VM の生成]** セクションまで下にスクロールします。 **[Gen 2]** が選択されていることを確認します。
+1. 引き続き **[詳細設定]** タブで、 **[Trusted launch]\(トラステッド起動\)** まで下にスクロールして、 **[Trusted launch]\(トラステッド起動\)** チェック ボックスをオンにします。 これにより、さらに [Secure boot]\(セキュア ブート\) と [vTPM] の 2 つのオプションが表示されるようになります。 自分のデプロイに合った適切なオプションを選択します。
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="トラステッド起動のオプションを示すスクリーンショット。":::
 
