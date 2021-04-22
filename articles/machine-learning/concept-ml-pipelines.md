@@ -22,7 +22,7 @@ ms.locfileid: "102503523"
 この記事では、機械学習パイプラインを使用して、機械学習ワークフローの構築、最適化、管理を行う方法について説明します。 
 
 <a name="compare"></a>
-## <a name="which-azure-pipeline-technology-should-i-use"></a>どの Azure パイプライン テクノロジを使用すべきか
+## <a name="which-azure-pipeline-technology-should-i-use"></a>どの Azure Pipelines テクノロジを使用すべきか
 
 Azure クラウドには、それぞれ目的が異なる複数の種類のパイプラインが用意されています。 次の表に、それらのさまざまなパイプラインとその用途を示します。
 
@@ -49,7 +49,7 @@ Azure Machine Learning パイプラインは、独立して実行できる完全
 
 Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で直接、[パイプライン実験のメトリックを追跡](./how-to-track-experiments.md)できます。 パイプラインを発行した後は、任意のプラットフォームまたはスタックからパイプラインを再実行できる REST エンドポイントを構成できます。
 
-つまり、パイプラインを使用することで、機械学習のライフサイクルの複雑なタスクをすべて支援できます。 その他の Azure パイプライン テクノロジには、それぞれ固有の長所があります。 [Azure Data Factory パイプライン](../data-factory/concepts-pipelines-activities.md)はデータの操作に優れ、[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) は、継続的な統合とデプロイに適切なツールです。 ただし、機械学習に重点を置いている場合は、Azure Machine Learning パイプラインがワークフローのニーズに最適な選択肢となる可能性があります。 
+つまり、パイプラインを使用することで、機械学習のライフサイクルの複雑なタスクをすべて支援できます。 その他の Azure Pipelines テクノロジには、それぞれ固有の長所があります。 [Azure Data Factory パイプライン](../data-factory/concepts-pipelines-activities.md)はデータの操作に優れ、[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) は、継続的な統合とデプロイに適切なツールです。 ただし、機械学習に重点を置いている場合は、Azure Machine Learning パイプラインがワークフローのニーズに最適な選択肢となる可能性があります。 
 
 ### <a name="analyzing-dependencies"></a>依存関係の分析
 
