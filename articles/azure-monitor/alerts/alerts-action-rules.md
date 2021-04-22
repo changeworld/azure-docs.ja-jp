@@ -3,12 +3,12 @@ title: Azure Monitor アラートのアクション ルール
 description: Azure Monitor におけるアクション ルールとはどのようなものか、およびそれを構成して管理する方法を説明します。
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: df71883d04106dd341af4571c13cc55f35a1ecc3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 4f54ee7d21d52386bd18921aec33cabe02046852
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304819"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772561"
 ---
 # <a name="action-rules-preview"></a>アクション ルール (プレビュー)
 
@@ -143,7 +143,7 @@ Azure CLI でアクション ルールを作成するには、[az monitor action
 
 1. サインインします。
 
-   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az-login) コマンドを使用してサインインします。  ターミナルに表示される手順に従って、認証プロセスを完了します。
+   CLI のローカル インストールを使用する場合は、[az login](/cli/azure/reference-index#az_login) コマンドを使用してサインインします。  ターミナルに表示される手順に従って、認証プロセスを完了します。
 
     ```azurecli
     az login
