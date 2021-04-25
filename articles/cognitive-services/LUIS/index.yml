@@ -3,7 +3,7 @@ title: Language Understanding (LUIS) のドキュメント
 summary: Language Understanding を使用して、アプリケーションが人の発言の意図を認識できるようにする方法について説明します。
 metadata:
   ms.topic: landing-page
-  ms.date: 04/13/2021
+  ms.date: 04/16/2021
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) のドキュメント
   titleSuffix: Azure Cognitive Services
   description: Language Understanding (LUIS) サービスを使用すると、アプリケーションが人の発言の意図を認識できるようになります。 LUIS には機械学習が使用されており、開発者は、自然言語でユーザー入力を受け取ってその意味を正確に抽出できるアプリケーションを構築できます。
-  ms.openlocfilehash: 793638552b35dd6dc65395e9c568c55a8ef9f946
-  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+  ms.openlocfilehash: 6c0b126f222e4dcb1bcd2dedcad38fe80b338f81
+  ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/14/2021
-  ms.locfileid: "107497049"
+  ms.lasthandoff: 04/25/2021
+  ms.locfileid: "107947413"
 landingContent:
 - title: Language Understanding (LUIS) について
   linkLists:
@@ -58,7 +58,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 'ポータル: 新しい LUIS アプリを作成する'
-      url: get-started-portal-build-app.md
+      url: luis-get-started-create-app.md
     - text: C# SDK の使用
       url: ./client-libraries-rest-api.md?pivots=rest-api
     - text: Python SDK の使用
@@ -85,8 +85,6 @@ landingContent:
       url: ./luis-how-to-batch-test.md
   - linkListType: quickstart
     links:
-    - text: 'ポータル: 予測エンドポイントにアプリをデプロイする'
-      url: get-started-portal-deploy-app.md
     - text: SDK の使用
       url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
