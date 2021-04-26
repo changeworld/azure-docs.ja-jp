@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 399cf8087d39f78184cfdae4b9f0e34efecaea66
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 6dbb1b46aef40986fc2d601aee152aed02591ac0
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491605"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312605"
 ---
 # <a name="connect-to-azure-database-for-mysql---flexible-server-with-encrypted-connections"></a>暗号化された接続を使用して Azure Database for MySQL - フレキシブル サーバーに接続する
 
@@ -24,9 +24,9 @@ Azure Database for MySQL フレキシブル サーバーでは、トランスポ
 
 次に、フレキシブル サーバーで使用できる SSL と TLS の設定のさまざまな構成を示します。
 
-| 通信の種類   | サーバー パラメーターの設定      | 説明                                    |
+| シナリオ   | サーバー パラメーターの設定      | 説明                                    |
 |------------|--------------------------------|------------------------------------------------|
-|SSL を無効にする (暗号化された接続) | require_secure_transport = OFF |レガシ アプリケーションで MySQL サーバーへの暗号化された接続がサポートされていない場合、require_secure_transport=OFF を設定すると、フレキシブル サーバーへの暗号化された接続の強制を無効にできます。|
+|SSL 強制を無効にする | require_secure_transport = OFF |レガシ アプリケーションで MySQL サーバーへの暗号化された接続がサポートされていない場合、require_secure_transport=OFF を設定すると、フレキシブル サーバーへの暗号化された接続の強制を無効にできます。|
 |バージョン 1.2 より前の TLS で SSL を強制する | require_secure_transport = ON および tls_version = TLSV1 または TLSV1.1| レガシ アプリケーションで暗号化された接続がサポートされているが、バージョン 1.2 より前の TLS が必要な場合は、暗号化された接続を有効にできますが、アプリケーションでサポートされている TLS のバージョン (v1.0 または v1.1) での接続を許可するようにフレキシブル サーバーを構成します|
 |TLS バージョン 1.2 で SSL を強制する (既定の構成)|require_secure_transport = ON および tls_version = TLSV1.2| これは、フレキシブル サーバーに推奨される既定の構成です。|
 |TLS バージョン 1.3 で SSL を強制する (MySQL v8.0 以降でサポート)| require_secure_transport = ON および tls_version = TLSV1.3| これは、新しいアプリケーションの開発に便利であり、推奨されます|
@@ -44,7 +44,7 @@ Azure Database for MySQL フレキシブル サーバーでは、トランスポ
 * 接続の暗号化の状態を確認する
 * さまざまなアプリケーション フレームワークを使用して、暗号化された接続でフレキシブル サーバーに接続する
 
-## <a name="disable-ssl-on-your-flexible-server"></a>フレキシブル サーバーで SSL を無効にする
+## <a name="disable-ssl-enforcement-on-your-flexible-server"></a>フレキシブル サーバーで SSL 強制を無効にする
 クライアント アプリケーションが暗号化された接続をサポートしていない場合、フレキシブル サーバーに対して、暗号化された接続の強制を無効にする必要があります。 暗号化された接続の強制を無効にするには、スクリーンショットに示されているように require_secure_transport サーバー パラメーターを OFF に設定し、このサーバー パラメーターの構成を保存して有効にします。 require_secure_transport は、ただちに有効になる **動的サーバー パラメーター** であるため、有効にするためにサーバーを再起動する必要はありません。
 
 > :::image type="content" source="./media/how-to-connect-tls-ssl/disable-ssl.png" alt-text="Azure Database for MySQL フレキシブル サーバーで SSL を無効にする方法を示すスクリーンショット。":::

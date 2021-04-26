@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e778c7ee14d2115bf6d8cf7f12ceaa61e364a4a2
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 812de4850c6c3577346915a0072ea11c60f7ba73
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120184"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107365452"
 ---
 # <a name="device-update-agent-provisioning"></a>デバイス更新エージェントのプロビジョニング
 
@@ -81,8 +81,25 @@ IoT Hub では、デバイス ID ごとに最大 50 のモジュール ID を作
 
 1. 手順に従って [Azure IoT Edge ランタイムをインストールしてプロビジョニング](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?view=iotedge-2020-11&preserve-view=true)します。
 
-1. 次に、[成果物](https://github.com/Azure/iot-hub-device-update/releases)からデバイス更新エージェントをインストールします。これで、IoT Edge デバイスでデバイス更新エージェントを開始する準備が整いました。
+1. デバイス更新のイメージの更新エージェントをインストールします。
+    - 基本イメージ (adu-base-image) と 1 つの更新イメージ (adu-update-image) を使用して、異なるバージョンに対してイメージの更新のロールアウトを試行するためのサンプル イメージを [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) で提供しています。 [IoT Hub デバイスにイメージをフラッシュする方法](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)の例を参照してください。  
 
+1. デバイス更新のパッケージの更新エージェントをインストールします。  
+    - packages.miscrosoft.com の最新のエージェントのバージョンの場合: 次のコマンドを使用して、デバイス上のパッケージ リストを更新し、デバイス更新エージェント パッケージとその依存関係をインストールします。   
+    ```shell
+    sudo apt-get update
+    ```
+    
+    ```shell
+    sudo apt-get install deviceupdate-agent deliveryoptimization-plugin-apt
+    ```
+    
+    - [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) の今後のリリース候補のバージョンの場合: デバイス更新エージェントをインストールするコンピューターに .dep ファイルをダウンロードして、次のコマンドを実行します。
+     ```shell
+    Sudo apt-get install -y ./"<PATH TO FILE>"/"<.DEP FILE NAME>"
+     ```
+    
+1. これで、IoT Edge デバイスでデバイス更新エージェントを開始する準備ができました。 
 
 ### <a name="on-non-edge-iot-linux-devices"></a>Edge IoT 以外の Linux デバイスの場合
 
@@ -130,14 +147,15 @@ IoT Linux デバイスでデバイス更新エージェントをプロビジョ�
     sudo aziotctl config apply
     ```
     
-1.  最後に、[成果物](https://github.com/Azure/iot-hub-device-update/releases)からデバイス更新エージェントをインストールします。これで、IoT Edge デバイスでデバイス更新エージェントを開始する準備が整いました。
+1.  最後に、デバイス更新エージェントをインストールします。 基本イメージ (adu-base-image) と 1 つの更新イメージ (adu-update-image) を使用して、異なるバージョンに対してイメージの更新のロールアウトを試行するためのサンプル イメージを [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) で提供しています。 [IoT Hub デバイスにイメージをフラッシュする方法](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)の例を参照してください。
 
+1.  これで、IoT デバイスでデバイス更新エージェントを開始する準備ができました。 
 
 ### <a name="other-iot-devices"></a>その他の IoT デバイス
 
 テスト用または制約のあるデバイスの場合、デバイス更新エージェントを IoT ID サービスを使用せずに構成することもできます。 (モジュールまたはデバイスから) 接続文字列を使用してデバイス更新エージェントをプロビジョニングするには、次の手順に従います。
 
-1.  [成果物](https://github.com/Azure/iot-hub-device-update/releases)からデバイス更新エージェントをインストールします。
+1.  基本イメージ (adu-base-image) と 1 つの更新イメージ (adu-update-image) を使用して、異なるバージョンに対してイメージの更新のロールアウトを試行するためのサンプル イメージを [Artifacts](https://github.com/Azure/iot-hub-device-update/releases) で提供しています。 [IoT Hub デバイスにイメージをフラッシュする方法](https://docs.microsoft.com/azure/iot-hub-device-update/device-update-raspberry-pi#flash-sd-card-with-image)の例を参照してください。
 
 1.  コンピューターまたは IoT Edge デバイス/IoT デバイスにログオンします。
     
@@ -150,16 +168,17 @@ IoT Linux デバイスでデバイス更新エージェントをプロビジョ�
        
     1. テキストを含むウィンドウが開きます。 IoT デバイスでデバイス更新エージェントを初めてプロビジョニングするときに、'connection_String=' の後の文字列全体を削除します。 これは単なるプレース ホルダーのテキストです。
     
-    1. ターミナルで、<your-connection-string> を、ご自身のデバイス更新エージェント インスタンスのデバイスの接続文字列に置き換えます。
+    1. ターミナルで、"<your-connection-string>" を、ご自身のデバイス更新エージェント インスタンスのデバイスの接続文字列に置き換えます。
     
         > [!Important]
         > 接続文字列の前後に引用符を追加しないでください。
-        
-        - connection_string=<your-connection-string>
+        ```shell
+        connection_string=<ADD CONNECTION STRING HERE>
+        ```
        
     1. Enter キーを押して保存します。
     
-1.  これで、IoT Edge デバイスでデバイス更新エージェントを開始する準備ができました。 
+1.  これで、IoT デバイスでデバイス更新エージェントを開始する準備ができました。 
 
 
 ## <a name="how-to-start-the-device-update-agent"></a>デバイス更新エージェントを開始する方法

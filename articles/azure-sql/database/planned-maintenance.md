@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: sstein
 ms.date: 3/23/2021
-ms.openlocfilehash: eedbc46ee5feb0aa6f6a26c3f5b3c67ac8ca0a5e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 259a8581d16f4fd6958a0d9ec2631f667d362b19
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044262"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579474"
 ---
 # <a name="plan-for-azure-maintenance-events-in-azure-sql-database-and-azure-sql-managed-instance"></a>Azure SQL Database および Azure SQL Managed Instance での Azure メンテナンス イベントの計画
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -35,7 +35,7 @@ Azure SQL Database サービスと Azure SQL Managed Instance サービスのセ
 
 ## <a name="how-to-simulate-a-planned-maintenance-event"></a>計画メンテナンス イベントをシミュレートする方法
 
-運用環境にデプロイする前に、クライアント アプリケーションがメンテナンス イベントに対する回復性を備えていることを確認することは、アプリケーションの障害のリスクを軽減するのに役立ち、エンド ユーザーにとっては、アプリケーションの可用性に寄与します。 PowerShell、CLI、または REST API を使用して[手動フェールオーバーを開始](https://aka.ms/mifailover-techblog)することによって、計画メンテナンス イベント中にクライアント アプリケーションの動作をテストできます。 プライマリ レプリカをオフラインにするメンテナンス イベントと同じ動作が生成されます。
+運用環境にデプロイする前に、クライアント アプリケーションがメンテナンス イベントに対する回復性を備えていることを確認することは、アプリケーションの障害のリスクを軽減するのに役立ち、エンド ユーザーにとっては、アプリケーションの可用性に寄与します。PowerShell、CLI、または REST API を使用して[アプリケーションの障害回復性をテスト](https://docs.microsoft.com/azure/azure-sql/database/high-availability-sla#testing-application-fault-resiliency)することによって、計画メンテナンス イベント中にクライアント アプリケーションの動作をテストできます。 Managed Instance の[手動フェールオーバーの開始](https://aka.ms/mifailover-techblog)に関するページも参照してください。 プライマリ レプリカをオフラインにするメンテナンス イベントと同じ動作が生成されます。
 
 ## <a name="retry-logic"></a>再試行ロジック
 

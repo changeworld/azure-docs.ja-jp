@@ -4,15 +4,15 @@ description: Azure Cosmos DB のトランザクション (行ベース) スト�
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/16/2021
+ms.date: 04/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 450514541a90a01ea6b70f77491f116adb404887
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: eaabc663ba243423bddf7ef6abfe41182e06b4f9
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046214"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107364609"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -134,6 +134,7 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
 適切に定義されたスキーマ表現は、スキーマに依存しないデータの単純な表形式表現をトランザクション ストアに作成します。 適切に定義されたスキーマ表現には、次の考慮事項があります。
 
 * プロパティは、どのような項目でも常に同じ型にします。
+* null からそれ以外のデータ型への変更は 1 回のみ許可されます。最初に出現する null 以外の型では、列のデータ型が定義されます。
 
   * たとえば、`{"a":123} {"a": "str"}` は、`"a"` が文字列の場合と数値の場合があるため、適切に定義されたスキーマではありません。 この場合、分析ストアでは、`"a"` のデータ型は、コンテナーの有効期間内で最初に検出された項目での `“a”` のデータ型として登録されます。 ドキュメントは分析ストアに含まれますが、`"a"` のデータ型が異なる項目は含まれません。
   

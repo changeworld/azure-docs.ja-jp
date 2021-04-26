@@ -16,16 +16,8 @@
       displayName: 'Troubleshooting, import'
 - name: LUIS のクイックスタート
   items:
-    - name: 事前構築済みのドメイン アプリの構築
+    - name: LUIS ポータルを使用する
       href: luis-get-started-create-app.md
-    - name: LUIS ポータルの使用
-      items:
-        - name: アプリを作成する
-          href: get-started-portal-build-app.md
-          displayName: 'intent, entity, create app, test, example utterance'
-        - name: アプリのデプロイ
-          href: get-started-portal-deploy-app.md
-          displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: ブラウザーの使用
       href: luis-get-started-get-intent-from-browser.md
     - name: クライアント ライブラリと REST API の使用

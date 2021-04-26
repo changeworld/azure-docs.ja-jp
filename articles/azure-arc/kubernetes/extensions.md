@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes に拡張機能をデプロイし、そのライフサイクルを管理する
-ms.openlocfilehash: 63fb14818d148dcc579300fdb4c89d636b47fd05
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 854d7418515d7927a3c0b4b8790ed4770af555ab
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450861"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107312622"
 ---
 # <a name="kubernetes-cluster-extensions"></a>Kubernetes クラスター拡張機能
 
@@ -51,7 +51,7 @@ Kubernetes 拡張機能を使用すると、Azure Arc 対応 Kubernetes クラ�
 | 拡張機能 | 説明 |
 | --------- | ----------- |
 | [Azure Monitor](../../azure-monitor/containers/container-insights-enable-arc-enabled-clusters.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターにデプロイされているワークロードのパフォーマンスを可視化します。 コントローラー、ノード、コンテナーからメモリと CPU の使用率メトリックを収集します。 |
-| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターのコントロール プレーン ノードから監査ログ データを収集します。 収集したデータに基づいて、推奨事項と脅威のアラートを提供します。 |
+| [Azure Defender](../../security-center/defender-for-kubernetes-azure-arc.md?toc=/azure/azure-arc/kubernetes/toc.json) | Kubernetes クラスターから監査ログ データなどのセキュリティに関連する情報を収集します。 収集したデータに基づいて、推奨事項と脅威のアラートを提供します。 |
 
 ## <a name="usage-of-cluster-extensions"></a>クラスター拡張機能の使用
 
@@ -236,31 +236,6 @@ az k8s-extension list --cluster-name <clusterName> --resource-group <resourceGro
 ]
 ```
 
-### <a name="update-an-existing-extension-instance"></a>既存の拡張機能インスタンスを更新する
-
-`k8s-extension update` を使用し、更新する値を渡すことで、クラスター上の拡張機能インスタンスを更新します。  このコマンドは、`auto-upgrade-minor-version`、`release-train`、および `version` の各プロパティのみを更新します。 例:
-
-- **リリース トレインを更新する:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --release-train Preview
-    ```
-
-- **自動アップグレードをオフにして、拡張機能インスタンスを特定バージョンに固定する:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version false --version 2.2.2
-    ```
-
-- **拡張機能インスタンスの自動アップグレードをオンにする:**
-
-    ```azurecli
-    az k8s-extension update --name azuremonitor-containers --cluster-type connectedClusters --cluster-name <clusterName> --resource-group <resourceGroupName> --auto-upgrade-minor-version true
-    ```
-
-> [!NOTE]
-> `--auto-upgrade-minor-version` が `false` に設定されている場合にのみ `version` パラメーターを設定できます。
-
 ### <a name="delete-extension-instance"></a>拡張機能インスタンスを削除する
 
 `k8s-extension delete` を使用し、必須パラメーターの値を渡すことで、クラスター上の拡張機能インスタンスを削除します。
@@ -273,7 +248,7 @@ az k8s-extension delete --name azuremonitor-containers --cluster-name <clusterNa
 > この拡張機能を表す Azure リソースはただちに削除されます。 Kubernetes クラスターで実行されているエージェントがネットワークに接続していて、目的の状態を取得するために Azure サービスに再びアクセスできる場合にのみ、この拡張機能に関連するクラスターの Helm リリースが削除されます。
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 Azure Arc 対応 Kubernetes で現在使用できるクラスター拡張機能について詳しく学習してださい。
 > [!div class="nextstepaction"]

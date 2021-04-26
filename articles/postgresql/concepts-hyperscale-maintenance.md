@@ -5,13 +5,13 @@ author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/22/2021
-ms.openlocfilehash: 0d11ec8815cc0f5082f95c5331321f043e86eece
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/07/2021
+ms.openlocfilehash: dee7257a296f523dbc9040d65fe68c14edf928f6
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027477"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107106787"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – Hyperscale (Citus) での予定メンテナンス
 
@@ -22,8 +22,11 @@ Hyperscale (Citus) の予定メンテナンスの主な機能は次のとおり�
 * 更新プログラムは、サーバー グループ内のすべてのノードで同時に適用されます
 * 今後のメンテナンスに関する通知は、5 日前に Azure Service Health に投稿されます
 * 通常、サーバー グループの正常なメンテナンス イベントの間隔は 30 日間以上です
+* メンテナンスを開始する希望の曜日と時間帯をサーバー グループごとに個別に定義できます
 
-## <a name="notification-about-upcoming-maintenance"></a>今後のメンテナンスに関する通知
+## <a name="selecting-a-maintenance-window-and-notification-about-upcoming-maintenance"></a>メンテナンス期間の選択および今後のメンテナンスに関する通知
+
+特定の曜日とその日の時間帯の間でのメンテナンスをスケジュールできます。 また、システムで自動的に曜日と時間帯が選択されるようにすることもできます。 どちらの場合でも、メンテナンスを実行する 5 日前に通知されます。 また、メンテナンスが開始されたときと、正常に完了したときに通知されるようにすることもできます。
 
 今後の予定メンテナンスに関する通知は、5 日前に Azure Service Health に投稿されますが、以下の方法も可能です。
 
@@ -33,15 +36,20 @@ Hyperscale (Citus) の予定メンテナンスの主な機能は次のとおり�
 * 通知として Azure アプリにプッシュする
 * 音声メッセージとして配信する
 
+メンテナンス スケジュールの設定を指定する場合、曜日と時間帯を選択できます。 指定しない場合、システムでは、サーバー グループのリージョンの時刻で午後 11 時から午前 7 時までの時間が選択されます。 Azure サブスクリプションの Hyperscale (Citus) サーバー グループごとに異なるスケジュールを定義できます。
+
 > [!IMPORTANT]
 > 通常、サーバー グループの正常な予定メンテナンス イベントの間隔は 30 日間以上です。
 >
 > ただし、重大な脆弱性などのクリティカルな緊急更新プログラムの場合、通知期間は 5 日未満になる可能性があります。 過去 30 日間に予定メンテナンスが正常に実行された場合でも、重要な更新プログラムがサーバーに適用されることがあります。
+
+スケジュール設定はいつでも更新できます。 Hyperscale (Citus) サーバー グループのメンテナンスがスケジュールされている場合に、スケジュールを更新すると、既存のイベントは元のスケジュールどおりに実行されます。 設定の変更は、既存のイベントが正常に完了した後で有効になります。
 
 メンテナンスが失敗するか、取り消されると、システムによって通知が作成されます。
 現在のスケジュール設定に基づいてメンテナンスが再試行され、次回のメンテナンス イベントの 5 日前に通知が送信されます。
 
 ## <a name="next-steps"></a>次のステップ
 
+* [メンテナンス スケジュールを変更する](howto-hyperscale-maintenance.md)方法を確認する
 * Azure Service Health を使用して[今後のメンテナンスに関する通知を受け取る](../service-health/service-notifications.md)方法を確認する
 * [今後の予定メンテナンス イベントに関する通知を設定する](../service-health/resource-health-alert-monitor-guide.md)方法を確認する

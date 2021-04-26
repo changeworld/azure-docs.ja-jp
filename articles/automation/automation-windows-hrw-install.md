@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/02/2021
 ms.topic: conceptual
-ms.openlocfilehash: 9f2047a07586f078555032ed9001fdb602fe3b2a
-ms.sourcegitcommit: af6eba1485e6fd99eed39e507896472fa930df4d
+ms.openlocfilehash: 0a28266210fd8b6f0b731b972f00aa3d413c0d0c
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/04/2021
-ms.locfileid: "106293789"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107027739"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -87,7 +87,7 @@ Hybrid Runbook Worker を自動的にデプロイするには、2 つの方法�
 
 ### <a name="importing-a-runbook-from-the-runbook-gallery"></a>Runbook ギャラリーから Runbook をインポートする
 
-インポートの手順の詳細については、「[Azure portal を使用して GitHub から PowerShell Runbook をインポートする](automation-runbook-gallery.md#import-a-powershell-runbook-from-github-with-the-azure-portal)」をご覧ください。 インポートする Runbook の名前は、**Create Automation Windows HybridWorker** です。
+インポートの手順の詳細については、「[Azure portal を使用して GitHub から Runbook をインポートする](automation-runbook-gallery.md#import-runbooks-from-github-with-the-azure-portal)」をご覧ください。 インポートする Runbook の名前は、**Create Automation Windows HybridWorker** です。
 
 Runbook では、次のパラメーターが使用されます。
 

@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 16433d5b148d7bc441e375591c64af497cd7b8de
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 90ee39039b0734bf434e7339a973358989c08175
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505334"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107311364"
 ---
 # <a name="access-config-server-and-service-registry"></a>Config Server とサービス レジストリにアクセスする
 
@@ -47,15 +47,15 @@ Azure Spring Cloud Data Reader ロールが割り当てられると、お客様�
     ```
 2. エンドポイントを作成します。 Azure Spring Cloud によって管理されている Spring Cloud Config Server と Spring Cloud サービス レジストリの既定のエンドポイントがサポートされています。 詳細については、[運用環境に対応するエンドポイント](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints)に関するページを参照してください。 また、エンドポイントにアクセスすることで、Azure Spring Cloud によって管理されている Spring Cloud Config Server と Spring Cloud サービス レジストリのサポートされているエンドポイントの完全なリストを取得することもできます。
 
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/*
-    * *https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/* 
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/'*
+    * *'https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/'* 
 
 >[!NOTE]
 > Azure China を使用している場合は `*.azuremicroservices.io` を `*.microservices.azure.cn` に置き換えてください ([詳細](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure))。
 
 3. 作成されたエンドポイントにアクセス トークンを使用してアクセスします。 アクセス トークンをヘッダーに配置して認可を提供します。  "GET" メソッドのみがサポートされています。
 
-    たとえば、 *https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health* のようなエンドポイントにアクセスして、eureka の正常性状態を確認します。
+    たとえば、 *"https://SERVICE_NAME.svc.azuremicroservices.io/eureka/actuator/health"* のようなエンドポイントにアクセスして、eureka の正常性状態を確認します。
 
     応答が *401 Unauthorized* の場合は、ロールが正常に割り当てられているかどうかをご確認ください。  ロールが有効になるか、アクセス トークンの有効期限が切れていないことを確認するには、数分かかります。
 

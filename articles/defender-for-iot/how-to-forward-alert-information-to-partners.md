@@ -1,14 +1,18 @@
 ---
 title: アラート情報を転送する
 description: 転送ルールを使用して、パートナーのシステムにアラート情報を送信することができます。
+author: shhazam-ms
+manager: rkarlin
+ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.openlocfilehash: bc405f7d4837bf81d9cfcd859d562b7152cfc54b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.service: azure
+ms.openlocfilehash: 0b71f7ca3f812de1514612f8b0dd5915f3f81bc4
+ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778799"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97837274"
 ---
 # <a name="forward-alert-information"></a>アラート情報を転送する
 

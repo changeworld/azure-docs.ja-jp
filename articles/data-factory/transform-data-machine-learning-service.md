@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: weetok
 author: dcstwh
 ms.date: 07/16/2020
-ms.openlocfilehash: 5c1a55518c0fac04eafad79a2ed3f7b3677de5e9
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: d0b941325d6bbabcb083b5f71a40c145d3ef48d0
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223236"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107103472"
 ---
 # <a name="execute-azure-machine-learning-pipelines-in-azure-data-factory"></a>Azure Machine Learning パイプラインを Azure Data Factory で実行する
 
@@ -55,6 +55,7 @@ mlPipelineId | 発行された Azure Machine Learning パイプラインの ID |
 experimentName | Machine Learning パイプラインの実行の実行履歴実験名 | 文字列 (または文字列の resultType を含む式) | いいえ
 mlPipelineParameters | 発行された Azure Machine Learning パイプライン エンドポイントに渡されるキーと値のペア。 キーは、発行された Machine Learning パイプラインで定義されているパイプラインのパラメーターの名前と一致する必要があります | キーと値のペアが含まれるオブジェクト (resultType オブジェクトの式) | いいえ
 mlParentRunId | 親の Azure Machine Learning パイプラインの実行 ID | 文字列 (または文字列の resultType を含む式) | いいえ
+dataPathAssignments | Azure Machine Learning でデータパスを変更するために使用される辞書。 データパスの切り替えを有効にします | キーと値のペアが含まれるオブジェクト | いいえ
 continueOnStepFailure | ステップが失敗した場合に、Machine Learning パイプライン実行の他のステップの実行を続けるかどうか | boolean | いいえ
 
 > [!NOTE]

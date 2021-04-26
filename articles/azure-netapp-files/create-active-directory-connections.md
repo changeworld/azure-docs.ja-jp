@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/24/2021
+ms.date: 04/06/2021
 ms.author: b-juche
-ms.openlocfilehash: d238b566c1286b9b765fb574cd72ee68ccf4b4a7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 27c2ab96106bbfcc05b8fa12daf9b6f7b816c5c7
+ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048376"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "106579990"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Azure NetApp Files の Active Directory 接続の作成と管理
 
@@ -215,7 +215,9 @@ DNS サーバーでは、Active Directory 接続を構成する際に 2 つの I
         たとえば、特定のシナリオで SQL Server のインストールに使用するユーザー アカウントには、昇格されたセキュリティ特権が付与されている必要があります。 SQL Server のインストールに管理者以外の (ドメイン) アカウントを使用していて、アカウントにセキュリティ特権が割り当てられていない場合、そのアカウントにセキュリティ特権を追加する必要があります。  
 
         > [!IMPORTANT]
-        > SQL Server のインストールに使用するドメイン アカウントは、 **[Security privilege users]\(セキュリティ特権ユーザー\)** フィールドに追加する前に既に作成されている必要があります。 SQL Server インストーラーのアカウントを **[Security privilege users]\(セキュリティ特権ユーザー\)** に追加するときに、ドメイン コントローラーに接続することで Azure NetApp Files サービスによってアカウントが検証される場合があります。 ドメイン コントローラーに接続できないと、コマンドが失敗するおそれがあります。  
+        > **[Security privilege users]\(セキュリティ特権ユーザー\)** 機能を使用するには、 **[[Azure NetApp Files SMB Continuous Availability Shares Public Preview]\(Azure NetApp Files の SMB の継続的な可用性の共有パブリック プレビュー\) 順番待ち送信ページ](https://aka.ms/anfsmbcasharespreviewsignup)** から、順番待ち要求を送信する必要があります。 この機能を使用する前に、Azure NetApp Files チームから正式な確認メールが届くのをお待ちください。        
+        > 
+        > この機能の使用はオプションであり、SQL Server でのみサポートされています。 SQL Server のインストールに使用するドメイン アカウントは、 **[Security privilege users]\(セキュリティ特権ユーザー\)** フィールドに追加する前に既に作成されている必要があります。 SQL Server インストーラーのアカウントを **[Security privilege users]\(セキュリティ特権ユーザー\)** に追加するときに、ドメイン コントローラーに接続することで Azure NetApp Files サービスによってアカウントが検証される場合があります。 ドメイン コントローラーに接続できないと、コマンドが失敗するおそれがあります。  
 
         `SeSecurityPrivilege` と SQL Server の詳細については、「[セットアップ アカウントに特定のユーザー権限がない場合に SQL Server のインストールが失敗する](/troubleshoot/sql/install/installation-fails-if-remove-user-right)」を参照してください。
 

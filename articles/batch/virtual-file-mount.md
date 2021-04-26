@@ -4,12 +4,12 @@ description: 仮想ファイル システムを Batch プールにマウント�
 ms.topic: how-to
 ms.custom: devx-track-csharp
 ms.date: 03/26/2021
-ms.openlocfilehash: dc5fbdf9ca0df8362a8999856c3f7163dd5e59b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: dcd56a12d8728b83cdcb7cea4c16c4aedd4251a7
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105626029"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107105750"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>仮想ファイル システムを Batch プールにマウントする
 
@@ -53,7 +53,7 @@ Azure Batch は、Batch プール内の Windows または Linux 計算ノード�
 
 ### <a name="azure-files-share"></a>Azure Files 共有
 
-Azure Files は、標準の Azure クラウド ファイル システム オファリングです。 マウント構成コード サンプルのパラメーターを取得する方法の詳細については、[Azure Files 共有の使用](../storage/files/storage-how-to-use-files-windows.md)に関するページを参照してください。
+Azure Files は、標準の Azure クラウド ファイル システム オファリングです。 マウント構成コード サンプルのパラメーターを取得する方法の詳細については、[Azure Files 共有の使用 (SMB)](../storage/files/storage-how-to-use-files-windows.md) または [Azure Files 共有の使用 (NFS)](../storage/files/storage-files-how-to-create-nfs-shares.md) に関するページを参照してください。
 
 ```csharp
 new PoolAddParameter

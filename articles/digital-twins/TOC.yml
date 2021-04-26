@@ -8,7 +8,7 @@
   expanded: true
   items:
     - name: サンプル シナリオの探索
-      href: quickstart-adt-explorer.md
+      href: quickstart-azure-digital-twins-explorer.md
 - name: チュートリアル
   items:
     - name: クライアント アプリをコーディングする
@@ -43,6 +43,8 @@
       href: concepts-query-units.md
     - name: 他のサービスとの統合
       href: concepts-integration.md
+    - name: イベント通知
+      href: concepts-event-notifications.md
     - name: イベント ルート
       href: concepts-route-events.md
     - name: Azure Digital Twins ソリューションのセキュリティ
@@ -91,8 +93,6 @@
           href: how-to-manage-twin.md
         - name: リレーションシップを使ってツイン グラフを管理する
           href: how-to-manage-graph.md
-        - name: イベント データを解釈する
-          href: how-to-interpret-event-data.md
         - name: データを処理するための Azure 関数を設定する
           href: how-to-create-azure-function.md
         - name: ツイン グラフにクエリを実行する
@@ -101,8 +101,6 @@
       items:
         - name: API と SDK を使用する
           href: how-to-use-apis-sdks.md
-        - name: AutoRest を使用してカスタム言語の SDK を作成する
-          href: how-to-create-custom-sdks.md
         - name: Postman で要求を行う
           href: how-to-use-postman.md
         - name: Azure SignalR Service と統合する
@@ -149,6 +147,10 @@
           items:
             - name: 403 (許可されていません)
               href: troubleshoot-error-403.md
+            - name: 404 サブドメインが見つかりません
+              href: troubleshoot-error-404.md
+            - name: Azure Digital Twins Explorer の認証
+              href: troubleshoot-error-azure-digital-twins-explorer-authentication.md
 - name: リファレンス
   items:
     - name: REST API リファレンス
@@ -172,7 +174,7 @@
             - name: Python SDK
               href: /python/api/azure-digitaltwins-core/azure.digitaltwins.core
     - name: Digital Twins CLI
-      href: /cli/azure/ext/azure-iot/dt
+      href: /cli/azure/dt
     - name: DTDL v2 の仕様
       href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
 - name: リソース

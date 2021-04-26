@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: keli19
 author: likebupt
-ms.date: 03/19/2021
+ms.date: 04/09/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 09eabffb0e01ee6c5ea6b541378773a7d60397a3
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 30ae737a170c337fe6be51521aeb358cdcebd44b
+ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106080724"
+ms.lasthandoff: 04/08/2021
+ms.locfileid: "107107340"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>デザイナーでパイプライン パラメーターを使用して汎用性のあるパイプラインを作成する
 
@@ -79,7 +79,7 @@ ms.locfileid: "106080724"
     ![モジュール パラメーターをパイプライン パラメーターにレベル上げする方法を示すスクリーンショット](media/how-to-use-pipeline-parameter/promote-module-para-to-pipeline-para.png)
 
 1. パラメーター名と既定値を入力します。
-1. **[保存]** を選びます。
+1. **[保存]** を選択する
 
 これで、このパイプラインを送信するたびに、このパラメーターに新しい値を指定できるようになりました。
 
@@ -95,9 +95,11 @@ ms.locfileid: "106080724"
 
 これで、次にパイプラインを実行したときに、パイプライン パラメーターを使用して、別のデータセットを指定できるようになりました。
 
-## <a name="attach-module-parameter-to-pipeline-parameter"></a>モジュール パラメーターをパイプライン パラメーターに接続する 
+## <a name="attach-and-detach-module-parameter-to-pipeline-parameter"></a>モジュール パラメーターをパイプライン パラメーターに対して接続およびデタッチする 
 
-このセクションでは、モジュール パラメーターをパイプライン パラメーターに接続する方法について説明します。
+このセクションでは、モジュール パラメーターをパイプライン パラメーターに対して接続およびデタッチする方法について説明します。
+
+### <a name="attach-module-parameter-to-pipeline-parameter"></a>モジュール パラメーターをパイプライン パラメーターに接続する
 
 パイプライン実行をトリガーするときに同時に値を変更する必要がある場合は、重複したモジュールの同じモジュール パラメーターを同じパイプライン パラメーターに接続します。
 
@@ -115,10 +117,16 @@ ms.locfileid: "106080724"
 
    ![パイプライン パラメーターの接続方法を示すスクリーンショット](media/how-to-use-pipeline-parameter/attach-replace-value-to-pipeline-parameter.png)
 
-**[Replacement value]\(置換値\)** フィールドがパイプライン パラメーターに正常に接続されました。 モジュールの **[Replacement value]\(置換値\)** は、使用できません。
+**[Replacement value]\(置換値\)** フィールドがパイプライン パラメーターに正常に接続されました。 
+
+
+### <a name="detach-module-parameter-to-pipeline-parameter"></a>モジュール パラメーターをパイプライン パラメーターからデタッチする
+
+パイプライン パラメーターに接続した後の **置換値** を使用することはできません。
+
+モジュール パラメーターの横にある省略記号 ( **...** ) をクリックして **[Detach from pipeline parameter]\(パイプライン パラメーターからデタッチする\)** を選択すると、モジュール パラメーターをパイプライン パラメーターからデタッチできます。
 
  ![パイプライン パラメーターに接続した後に使用不可能であることを示すスクリーンショット](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
-
 
 ## <a name="update-and-delete-pipeline-parameters"></a>パイプライン パラメーターを更新および削除する
 
@@ -133,7 +141,7 @@ ms.locfileid: "106080724"
 
 ### <a name="delete-a-dataset-pipeline-parameter"></a>データセット パイプライン パラメーターを削除する
 
-データセット パイプライン パラメーターをデタッチするには、次の手順を使用します。
+データセット パイプライン パラメーターを削除するには、次の手順を使用します。
 
 1. データセット モジュールを選択します。
 1. **[Set as pipeline parameter]\(パイプライン パラメーターとして設定\)** オプションをオフにします。
@@ -147,22 +155,14 @@ ms.locfileid: "106080724"
 
 1. パイプライン パラメーターの横にある省略記号 ( **...** ) を選択します。
 
-    このビューには、パイプライン パラメーターが接続されているモジュールが表示されます。 パイプライン パラメーターを削除するには、まずすべてのモジュール パラメーターからそれをデタッチする必要があります。
+    このビューには、パイプライン パラメーターが接続されているモジュールが表示されます。
 
-    ![モジュールに適用されている現在のパイプライン パラメーターを示すスクリーンショット](media/how-to-use-pipeline-parameter/current-pipeline-parameter.png)
+    ![モジュールに適用されている現在のパイプライン パラメーターを示すスクリーンショット](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
-1. キャンバスで、パイプライン パラメーターが依然として接続されているモジュールを選択します。
-1. 右側にあるモジュールのプロパティ ペインで、パイプライン パラメーターが接続されているフィールドを見つけます。
-1. 接続されたフィールドの上にマウスを移動します。 次に、表示される省略記号 ( **...** ) を選択します。
-1. **[Detach from pipeline parameter]\(パイプライン パラメーターからデタッチする\)** を選択します。
-
-    ![パイプライン パラメーターからのデタッチを示すスクリーンショット](media/how-to-use-pipeline-parameter/detach-from-pipeline-parameter.png)
-
-1. すべてのフィールドからパイプライン パラメーターをデタッチするまで、前の手順を繰り返します。
-1. パイプライン パラメーターの横にある省略記号 ( **...** ) を選択します。
 1. **[パラメーターの削除]** を選択して、パイプライン パラメーターを削除します。
 
-    ![パイプライン パラメーターの削除を示すスクリーンショット](media/how-to-use-pipeline-parameter/delete-pipeline-parameter.png)
+    > [!NOTE]
+    > パイプライン パラメーターを削除すると、接続されているすべてのモジュール パラメーターがデタッチされ、デタッチされたモジュール パラメーターでは現在のパイプライン パラメーターの値が保持されます。     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>パイプライン パラメーターを指定してパイプライン実行をトリガーする 
 

@@ -2,15 +2,15 @@
 title: テスト ツールキットのテスト ケース
 description: ARM テンプレート テスト ツールキットによって実行されるテストについて説明します。
 ms.topic: conceptual
-ms.date: 12/03/2020
+ms.date: 04/12/2021
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 31e30b4853da03e28a4a2d15292050805f5bc292
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7805d6dbdb8b93968a2792ed6dfaf2ac8fea9ae5
+ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106064149"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107363395"
 ---
 # <a name="default-test-cases-for-arm-template-test-toolkit"></a>ARM テンプレート テスト ツールキットの既定のテスト ケース
 
@@ -637,7 +637,7 @@ concat 関数を使用してリソース ID を作成しないでください。
 
 テスト名: **ManagedIdentityExtension must not be used** (ManagedIdentityExtension を使用してはならない)
 
-ManagedIdentity 拡張機能を仮想マシンに適用しないでください。 詳細については、「[仮想マシンのマネージド ID 拡張機能の使用を止めて Azure Instance Metadata Service の使用を開始する方法](../../active-directory/managed-identities-azure-resources/howto-migrate-vm-extension.md)」を参照してください。
+ManagedIdentity 拡張機能を仮想マシンに適用しないでください。 この拡張機能は 2019 年に非推奨とされたため、今後は使用しないでください。
 
 ## <a name="outputs-cant-include-secrets"></a>出力にシークレットを含めることはできない
 

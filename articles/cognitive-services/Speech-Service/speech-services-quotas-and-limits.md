@@ -1,25 +1,25 @@
 ---
-title: Speech Services のクォータと制限
+title: Speech サービスのクォータと制限
 titleSuffix: Azure Cognitive Services
-description: Azure Cognitive Speech Services のクォータと制限に関するクイック リファレンス、詳細な説明、およびベストプラクティス
+description: Azure Cognitive Speech サービスのクォータと制限に関するクイック リファレンス、詳細な説明、およびベスト プラクティス
 services: cognitive-services
 author: alexeyo26
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/27/2021
+ms.date: 04/07/2021
 ms.author: alexeyo
-ms.openlocfilehash: 7ef6ed5293ec9ecf49c16f8dfb0b6604942408f0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f851d7999b063a2b1334564902d81343e3789439
+ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937058"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107011175"
 ---
-# <a name="speech-services-quotas-and-limits"></a>Speech Services のクォータと制限
+# <a name="speech-service-quotas-and-limits"></a>Speech サービスのクォータと制限
 
-この記事には、Azure Cognitive Speech Services のクォータとすべての [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)の制限に関するクイック リファレンスおよび **詳細な説明** が記載されています。 また、要求のスロットリングを回避するためのベスト プラクティスについても説明します。 
+この記事には、すべての [価格レベル](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)の Azure Cognitive Speech サービスのクォータと制限に関するクイック リファレンスおよび **詳細な説明** が記載されています。 また、要求のスロットリングを回避するためのベスト プラクティスについても説明します。 
 
 ## <a name="quotas-and-limits-quick-reference"></a>クォータと制限のクイック リファレンス
 [テキスト読み上げのクォータと制限](#text-to-speech-quotas-and-limits-per-speech-resource)へ移動する
@@ -98,9 +98,13 @@ ms.locfileid: "105937058"
 「[テキスト読み上げ:Custom Voice における文字起こしの同時要求の上限を上げる](#text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice)」に移動する
 
 ### <a name="speech-to-text-increasing-online-transcription-concurrent-request-limit"></a>音声テキスト変換: オンライン文字起こしの同時要求の上限を上げる
-既定では、同時要求の数は Speech リソース (ベース モデル) あたり、またはカスタム エンドポイント (カスタム モデル) あたり 20 に制限されています。 Standard 価格レベルでは、この数を増やすことができます。 要求を送信する前に、[こちらのセクション](#detailed-description-quota-adjustment-and-best-practices)の資料について理解していること、およびこれらの[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)を把握していることを確認してください。
+既定では、同時要求の数は Speech リソース (ベース モデル) あたり 100、およびカスタム エンドポイント (カスタム モデル) あたり 20 に制限されています。 Standard 価格レベルでは、この数を増やすことができます。 要求を送信する前に、[こちらのセクション](#detailed-description-quota-adjustment-and-best-practices)の資料について理解していること、およびこれらの[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)を把握していることを確認してください。
 
-同時要求の上限を上げても、コストに直接影響することは **ありません**。 Speech Services では、"使用した分だけ支払う" モデルを使用しています。 この制限によって、要求のスロットリングが開始される前に、サービスがどの程度スケーリングされるかが定義されます。
+>[!NOTE]
+> カスタム モデルを使用する場合は、1 つの Speech リソースが多数のカスタム モデル デプロイをホストしている多数のカスタム エンドポイントに関連付けられている可能性があることに注意してください。 各カスタム エンドポイントには、既定の数の同時要求の上限 (20) が作成によって設定されています。 調整が必要な場合は、各カスタム エンドポイントの調整を **個別に** 行ってください。 また、Speech リソースのベース モデルの同時要求数の上限値は、このリソースに関連付けられているカスタム エンドポイントに影響 **しない** ことにも注意してください。
+
+
+同時要求の上限を上げても、コストに直接影響することは **ありません**。 Speech サービスでは、"使用した分だけ支払う" モデルを使用しています。 この制限によって、要求のスロットリングが開始される前に、サービスがどの程度スケーリングされるかが定義されます。
 
 **ベース** と **カスタム** モデルの同時要求の上限は、**個別に** 調整する必要があります。
 
@@ -168,7 +172,7 @@ Speech リソースの同時要求の上限が 300 に設定されていると�
 ### <a name="text-to-speech-increasing-transcription-concurrent-request-limit-for-custom-voice"></a>テキスト読み上げ: Custom Voice における文字起こしの同時要求の上限を上げる
 既定では、Custom Voice エンドポイントの同時要求の数は 10 に制限されています。 Standard 価格レベルでは、この数を増やすことができます。 要求を送信する前に、[こちらのセクション](#detailed-description-quota-adjustment-and-best-practices)の資料について理解していること、およびこれらの[ベスト プラクティス](#general-best-practices-to-mitigate-throttling-during-autoscaling)を把握していることを確認してください。
 
-同時要求の上限を上げても、コストに直接影響することは **ありません**。 Speech Services では、"使用した分だけ支払う" モデルを使用しています。 この制限によって、要求のスロットリングが開始される前に、サービスがどの程度スケーリングされるかが定義されます。
+同時要求の上限を上げても、コストに直接影響することは **ありません**。 Speech サービスでは、"使用した分だけ支払う" モデルを使用しています。 この制限によって、要求のスロットリングが開始される前に、サービスがどの程度スケーリングされるかが定義されます。
 
 同時要求の上限パラメーターの既存の値は、Azure portal、コマンドライン ツール、または API 要求では表示 **されません**。 既存の値を確認するには、Azure サポート リクエストを作成します。
 

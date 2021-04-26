@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 03/31/2021
-ms.openlocfilehash: 74cd5ce5912e5a656342a43b7c2b165fdf3c32d4
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 04/08/2021
+ms.openlocfilehash: 7f9a8cb54458999d8f20a258bc36241dfdbd0de8
+ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490304"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107376037"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Azure Sentinel の新着情報
 
@@ -25,10 +25,28 @@ ms.locfileid: "106490304"
 
 
 > [!TIP]
-> Microsoft の脅威ハンティング チームは、クエリ、プレイブック、ブック、およびノートブックを [Azure Sentinel コミュニティ](https://github.com/Azure/Azure-Sentinel) に投稿します。これには、ユーザーのチームが適応して使用できる特定の[ハンティング クエリ](https://github.com/Azure/Azure-Sentinel)などが含まれます。 
+> Microsoft の脅威ハンティング チームは、クエリ、プレイブック、ブック、およびノートブックを [Azure Sentinel コミュニティ](https://github.com/Azure/Azure-Sentinel) に投稿します。これには、ユーザーのチームが適応して使用できる特定の[ハンティング クエリ](https://github.com/Azure/Azure-Sentinel)などが含まれます。
 >
 > ユーザーも投稿することができます。 [Azure Sentinel Threat Hunters GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/wiki)にぜひご参加ください。
-> 
+>
+
+## <a name="april-2021"></a>2021 年 4 月
+
+- [インシデントのタイムライン (パブリック プレビュー)](#incident-timeline-public-preview)
+
+### <a name="incident-timeline-public-preview"></a>インシデントのタイムライン (パブリック プレビュー)
+
+インシデントの詳細ページの最初のタブが **[タイムライン]** になりました。このタブには、インシデントのアラートとブックマークのタイムラインが表示されます。 インシデントのタイムラインを使用すると、インシデントについて理解を深め、関連するアラートやブックマーク全体で攻撃者のアクティビティのタイムラインを再構築できます。
+
+- タイムライン内の項目を選択すると、インシデントのコンテキストを離れることなく、その詳細が表示されます。
+- タイムラインのコンテンツをフィルター処理して、アラートやブックマークのみ、または特定の重要度や MITRE の戦術の項目を表示します。
+- **[システム アラート ID]** リンクを選択してレコード全体を表示したり、 **[イベント]** リンクを選択して **[ログ]** 領域に関連イベントを表示したりできます。
+
+次に例を示します。
+
+:::image type="content" source="media/tutorial-investigate-cases/incident-timeline.png" alt-text="[インシデント] の [タイムライン] タブ":::
+
+詳細については、「[チュートリアル:Azure Sentinel でインシデントを調査する](tutorial-investigate-cases.md)」を参照してください。
 
 ## <a name="march-2021"></a>2021 年 3 月
 

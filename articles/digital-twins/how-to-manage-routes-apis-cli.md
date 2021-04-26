@@ -7,18 +7,18 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e6b35031d976a11bdac6f38d74f9e02a0fc83302
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c7efebaf23bd8e897243f6ee12b23d3821a4c033
+ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936310"
+ms.lasthandoff: 04/09/2021
+ms.locfileid: "107257332"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
 [!INCLUDE [digital-twins-route-selector.md](../../includes/digital-twins-route-selector.md)]
 
-Azure Digital Twins では、ダウンストリームのサービスや接続されているコンピューティング リソースに[イベント通知](how-to-interpret-event-data.md)をルーティングすることができます。 これを行うには、まず、イベントを受信できる **エンドポイント** を設定します。 そのうえで、Azure Digital Twins によって生成されるどのイベントをどのエンドポイントに配信するかを指定する [**イベント ルート**](concepts-route-events.md)を作成します。
+Azure Digital Twins では、ダウンストリームのサービスや接続されているコンピューティング リソースに[イベント通知](concepts-event-notifications.md)をルーティングすることができます。 これを行うには、まず、イベントを受信できる **エンドポイント** を設定します。 そのうえで、Azure Digital Twins によって生成されるどのイベントをどのエンドポイントに配信するかを指定する [**イベント ルート**](concepts-route-events.md)を作成します。
 
 この記事では、[REST API](/rest/api/azure-digitaltwins/)、[.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client)、および [Azure Digital Twins CLI](how-to-use-cli.md) を使用して、エンドポイントとルートを作成する手順について説明します。
 
@@ -48,7 +48,7 @@ Azure Digital Twins では、ダウンストリームのサービスや接続さ
 
 ### <a name="create-the-endpoint"></a>エンドポイントを作成する
 
-エンドポイント リソースを作成したら、Azure Digital Twins エンドポイントにそれらを使用できます。 次の例では、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create) コマンドを使用してエンドポイントを作成する方法を示します。 コマンドのプレースホルダーは、独自のリソースの詳細に置き換えます。
+エンドポイント リソースを作成したら、Azure Digital Twins エンドポイントにそれらを使用できます。 次の例では、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/dt/endpoint/create) コマンドを使用してエンドポイントを作成する方法を示します。 コマンドのプレースホルダーは、独自のリソースの詳細に置き換えます。
 
 Event Grid エンドポイントを作成するには:
 
@@ -119,7 +119,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
     
 #### <a name="create-the-dead-letter-endpoint"></a>配信不能エンドポイントを作成する
 
-配信不能処理が有効なエンドポイントを作成するには、次の配信不能パラメーターを、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/ext/azure-iot/dt/endpoint/create) コマンドに追加します。
+配信不能処理が有効なエンドポイントを作成するには、次の配信不能パラメーターを、[Azure Digital Twins CLI](how-to-use-cli.md) の [az dt endpoint create](/cli/azure/dt/endpoint/create) コマンドに追加します。
 
 パラメーターの値は、[前のセクション](#set-up-storage-resources)で収集したストレージ アカウント名、コンテナー名、SAS トークンで構成された **配信不能 SAS URI** です。 このパラメーターにより、キーベースの認証を使用するエンドポイントが作成されます。
 
@@ -158,7 +158,7 @@ az resource create --id <Azure-Digital-Twins-instance-Azure-resource-ID>/endpoin
 
 配信不能メッセージは、元のエンドポイントに配信されることを意図していた元のイベントのスキーマと一致します。
 
-次に、[ツイン作成通知](how-to-interpret-event-data.md#digital-twin-lifecycle-notifications)の配信不能メッセージの例を示します。
+次に、[ツイン作成通知](concepts-event-notifications.md#digital-twin-lifecycle-notifications)の配信不能メッセージの例を示します。
 
 ```json
 {
@@ -204,7 +204,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 1 つのルートで、複数の通知とイベントの種類を選択できるようにする必要があります。 
 
-イベント ルートを作成するには、Azure Digital Twins の [**EventRoutes** データ プレーン API](/rest/api/digital-twins/dataplane/eventroutes) または [**az dt route** CLI コマンド](/cli/azure/ext/azure-iot/dt/route)を使用できます。 このセクションの残りの部分では、作成プロセスについて説明します。
+イベント ルートを作成するには、Azure Digital Twins の [**EventRoutes** データ プレーン API](/rest/api/digital-twins/dataplane/eventroutes) または [**az dt route** CLI コマンド](/cli/azure/dt/route)を使用できます。 このセクションの残りの部分では、作成プロセスについて説明します。
 
 ### <a name="create-routes-with-the-apis-and-c-sdk"></a>API と C# SDK を使用してルートを作成する
 
@@ -225,7 +225,7 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 
 ### <a name="create-routes-with-the-cli"></a>CLI を使用してルートを作成する
 
-Azure Digital Twins CLI の [az dt route](/cli/azure/ext/azure-iot/dt/route) コマンドを使用して、ルートを管理することもできます。 
+Azure Digital Twins CLI の [az dt route](/cli/azure/dt/route) コマンドを使用して、ルートを管理することもできます。 
 
 CLI の使用および利用できるコマンドについて詳しくは、"[*Azure Digital Twins CLI を使用する方法*](how-to-use-cli.md)" に関するページを参照してください。
 
@@ -256,4 +256,4 @@ CLI の使用および利用できるコマンドについて詳しくは、"[*A
 ## <a name="next-steps"></a>次のステップ
 
 受信できるさまざまな種類のイベント メッセージについてご確認ください。
-* [*方法: イベント データを解釈する*](how-to-interpret-event-data.md)
+* [*概念: イベント通知*](concepts-event-notifications.md)
