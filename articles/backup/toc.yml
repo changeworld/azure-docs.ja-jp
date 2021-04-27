@@ -77,25 +77,25 @@
     - name: よく寄せられる質問 (FAQ)
       items:
         - name: FAQ - Recovery Services コンテナー
-          href: backup-azure-backup-faq.md
+          href: backup-azure-backup-faq.yml
         - name: FAQ - バックアップ センター
           href: backup-center-faq.yml
         - name: FAQ - Azure VM のバックアップ
           href: backup-azure-vm-backup-faq.yml
         - name: FAQ - MARS エージェント
-          href: backup-azure-file-folder-backup-faq.md
+          href: backup-azure-file-folder-backup-faq.yml
         - name: FAQ - Azure Files のバックアップ
-          href: backup-azure-files-faq.md
+          href: backup-azure-files-faq.yml
         - name: FAQ- Azure ディスク バックアップ
-          href: disk-backup-faq.md
+          href: disk-backup-faq.yml
         - name: FAQ - Azure VM 上の SQL Server データベースのバックアップ
-          href: faq-backup-sql-server.md
+          href: faq-backup-sql-server.yml
         - name: FAQ - Azure VM 上の SAP HANA データベースのバックアップ
-          href: sap-hana-faq-backup-azure-vm.md
+          href: sap-hana-faq-backup-azure-vm.yml
         - name: FAQ - Azure Backup Server と DPM
-          href: backup-azure-dpm-azure-server-faq.md
+          href: backup-azure-dpm-azure-server-faq.yml
         - name: FAQ - Azure Backup の監視アラート
-          href: backup-azure-monitor-alert-faq.md
+          href: backup-azure-monitor-alert-faq.yml
     - name: Backup のアーキテクチャ
       href: backup-architecture.md
     - name: ガイダンスとベスト プラクティス
@@ -224,10 +224,18 @@
       items:
         - name: 概要
           href: disk-backup-overview.md
-        - name: バックアップ
-          href: backup-managed-disks.md
-        - name: 復元
-          href: restore-managed-disks.md
+        - name: Azure portal から
+          items:
+            - name: バックアップ
+              href: backup-managed-disks.md
+            - name: 復元
+              href: restore-managed-disks.md
+        - name: PowerShell の場合
+          items:
+            - name: バックアップ
+              href: backup-managed-disks-ps.md
+            - name: 復元
+              href: restore-managed-disks-ps.md
     - name: Azure Blob のバックアップ
       items:
         - name: 概要
@@ -422,7 +430,7 @@
               href: backup-azure-arm-userestapi-managejobs.md
         - name: Resource Manager テンプレート
           href: backup-rm-template-samples.md
-    - name: セキュリティ
+    - name: Security
       items:
         - name: 概要
           href: security-overview.md
@@ -452,7 +460,7 @@
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
         - name: セキュリティ ベースライン
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/backup-security-baseline
     - name: アクセス層
       items:
         - name: アーカイブ層
@@ -492,7 +500,7 @@
     - name: Azure PowerShell
       href: /powershell/module/az.recoveryservices
     - name: PowerShell – Azure Backup エージェント
-      href: /powershell/module/msonlinebackup/msonlinebackup
+      href: /powershell/module/msonlinebackup/?view=msonlinebackup-ps
     - name: REST - Backup
       href: /rest/api/backup/
     - name: REST - Recovery Services コンテナー
