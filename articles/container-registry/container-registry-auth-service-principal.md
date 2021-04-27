@@ -60,9 +60,9 @@ Azure CLI の以前のサンプル スクリプトを GitHub 上で検索でき�
 
 ### <a name="use-credentials-with-azure-services"></a>Azure サービスで資格情報を使用する
 
-サービス プリンシパルの資格情報は、Azure コンテナー レジストリに対して認証を行うあらゆる Azure サービスから使用できます。  さまざまなシナリオで、レジストリの管理者の資格情報の代わりにサービス プリンシパルの資格情報を使用します。
+サービス プリンシパルの資格情報は、Azure Container Registry に対して認証を行うあらゆる Azure サービスから使用できます。  さまざまなシナリオで、レジストリの管理者の資格情報の代わりにサービス プリンシパルの資格情報を使用します。
 
-たとえば、その資格情報を使用して Azure コンテナー レジストリから [Azure Container Instances](container-registry-auth-aci.md) にイメージをプルします。
+たとえば、その資格情報を使用して Azure Container Registry から [Azure Container Instances](container-registry-auth-aci.md) にイメージをプルします。
 
 ### <a name="use-with-docker-login"></a>Docker ログインで使用する
 
@@ -97,7 +97,7 @@ CLI では、`az login` を実行したときに作成されたトークンが�
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure コンテナー レジストリによる認証を受けるその他のシナリオについては、[認証の概要](container-registry-authentication.md)に関する記事を参照してください。
+* Azure Container Registry による認証を受けるその他のシナリオについては、[認証の概要](container-registry-authentication.md)に関する記事を参照してください。
 
 * Azure キー コンテナーを使用してコンテナー レジストリのサービス プリンシパルの資格情報を格納および取得する例については、[ACR タスクを使用したコンテナー イメージの構築とデプロイ](container-registry-tutorial-quick-task.md)に関するチュートリアルを参照してください。
 
