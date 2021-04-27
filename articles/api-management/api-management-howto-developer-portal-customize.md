@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 11/16/2020
 ms.author: apimpm
-ms.openlocfilehash: 90544fbafe7393630c3f3fbc694ae367eccb7f90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c341dee3106530715248355da4412b97ed30980
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96012981"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739622"
 ---
 # <a name="tutorial-access-and-customize-the-developer-portal"></a>チュートリアル:開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -45,6 +45,35 @@ ms.locfileid: "96012981"
 1. [Azure portal](https://portal.azure.com) で、API Management インスタンスに移動します。
 1. 上部のナビゲーション バーにある **[開発者ポータル]** ボタンを選択します。 ブラウザーの新しいタブで、管理バージョンのポータルが開きます。
 
+
+## <a name="developer-portal-architectural-concepts"></a>開発者ポータルのアーキテクチャの概念
+
+ポータルのコンポーネントは、*コード* と *コンテンツ* の 2 つのカテゴリに論理的に分類することができます。
+
+### <a name="code"></a>コード
+
+コードは、API Management 開発者ポータルである [GitHub リポジトリ](https://github.com/Azure/api-management-developer-portal)で保持されており、次のものが含まれています。
+
+- **ウィジェット** - ビジュアル要素を表し、HTML、JavaScript、スタイル設定機能、設定、およびコンテンツ マッピングが結合されています。 例としては、画像、テキスト段落、フォーム、API 一覧などがあります。
+- **スタイル定義** - ウィジェットのスタイル設定の方法を指定します
+- **エンジン** - ポータル コンテンツから静的 Web ページを生成します。JavaScript で記述されています
+- **ビジュアル エディター** - ブラウザー内でのカスタマイズおよび作成エクスペリエンスを可能にします
+
+### <a name="content"></a>コンテンツ
+
+コンテンツは、*ポータル コンテンツ* と *API Management コンテンツ* の 2 つのサブカテゴリに分類されます。
+
+*ポータル コンテンツ* はポータルに固有のものであり、次のものが含まれます。
+
+- **ページ** - ランディング ページ、API チュートリアル、ブログ投稿など
+- **メディア** - 画像、アニメーション、およびその他のファイルベースのコンテンツ
+- **レイアウト** - URL に対して照合され、ページの表示方法を定義するテンプレート
+- **スタイル** - フォント、色、罫線などのスタイル定義の値
+- **設定** - ファビコン、Web サイト メタデータなどの構成
+
+    ポータル コンテンツは、メディアを除き、JSON ドキュメントとして表現されます。
+
+*API Management コンテンツ* には、API、操作、製品、サブスクリプションなどのエンティティが含まれています。
 ## <a name="understand-the-portals-administrative-interface"></a>ポータルの管理インターフェイスの概要
 
 ### <a name="default-content"></a>既定のコンテンツ 
@@ -138,7 +167,7 @@ ms.locfileid: "96012981"
 
 ## <a name="apply-the-cors-policy-on-apis"></a>API に CORS ポリシーを適用する
 
-ポータルの訪問者が組み込みの対話型コンソールを使用して API をテストできるようにするには、API で CORS (クロスオリジン リソース共有) を有効にします。 詳細については、[Azure API Management 開発者ポータルの概要](api-management-howto-developer-portal.md#cors)に関するページを参照してください。
+ポータルの訪問者が組み込みの対話型コンソールを使用して API をテストできるようにするには、API で CORS (クロスオリジン リソース共有) を有効にします。 詳細については、[Azure API Management 開発者ポータルの FAQ](developer-portal-faq.md#cors) に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

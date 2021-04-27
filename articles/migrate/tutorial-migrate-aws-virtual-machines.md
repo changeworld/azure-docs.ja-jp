@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4879c8370953a5ac8c6b46efe8010db9692d3052
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878191"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714508"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) の VM を検出して評価し、Azure に移行する
 
@@ -145,7 +145,9 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 5. **[リソースの作成]** をクリックします。 これで、Azure Site Recovery コンテナーがバックグラウンドで作成されます。
     - Azure Migrate Server Migration を使用した移行を既に設定してある場合は、リソースが以前に設定されているため、ターゲット オプションを構成できません。
     - このボタンのクリック後は、このプロジェクトのターゲット リージョンを変更することはできません。
-    - VM を別のリージョンに移行するには、Azure Migrate の新しいプロジェクトや別のプロジェクトを作成する必要があります。
+    - VM を別のリージョンに移行するには、Azure Migrate の新しいプロジェクトや別のプロジェクトを作成する必要があります。  
+    > [!NOTE]
+    > Azure Migrate プロジェクトの作成時に、その接続方法としてプライベート エンドポイントを選択した場合、Recovery Services コンテナーも、プライベート エンドポイント接続用に構成されます。 レプリケーション アプライアンスからプライベート エンドポイントに到達できることを確認してください。 [**詳細情報**](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
 
 6. **[新しいレプリケーション アプライアンスをインストールしますか?]** で、 **[レプリケーション アプライアンスのインストール]** を選択します。
 7. **[レプリケーション アプライアンス ソフトウェアをダウンロードしてインストールする]** で、アプライアンスのインストーラーと登録キーをダウンロードします。 このキーは、アプライアンスを登録するために必要です。 キーは、ダウンロード後 5 日間有効です。
@@ -244,13 +246,18 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
     ![VM を選択する](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 8. **[ターゲット設定]** で、サブスクリプションと、移行先となるターゲット リージョンを選択し、移行後に Azure VM が配置されるリソース グループを指定します。
-9. **[仮想ネットワーク]** で、移行後に Azure VM の参加先となる Azure VNet およびサブネットを選択します。
-10. **[可用性オプション]** で、以下を選択します。
+9. **[仮想ネットワーク]** で、移行後に Azure VM の参加先となる Azure VNet およびサブネットを選択します。  
+10. プロジェクト用に自動的に作成されたキャッシュ ストレージ アカウントを使用する場合、 **[キャッシュ ストレージ アカウント]** のオプションは既定のままにします。 レプリケーションのキャッシュ ストレージ アカウントとして別のストレージ アカウントを指定したい場合は、ドロップ ダウンを使用してください。 <br/> 
+    > [!NOTE]
+    >
+    > - Azure Migrate プロジェクトの接続方法としてプライベート エンドポイントを選択した場合、Recovery Services コンテナーに、キャッシュ ストレージ アカウントへのアクセス権を付与します。 [**詳細情報**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
+    > - プライベート ピアリングによる ExpressRoute を使用してレプリケートするには、キャッシュ ストレージ アカウント用のプライベート エンドポイントを作成します。 [**詳細情報**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
+11. **[可用性オプション]** で、以下を選択します。
     -  可用性ゾーン。移行されたマシンをリージョン内の特定の可用性ゾーンにピン留めします。 このオプションを使用して、複数ノードのアプリケーション層を形成するサーバーを可用性ゾーン間で分散させます。 このオプションを選択した場合は、[コンピューティング] タブで選択した各マシンに使用する可用性ゾーンを指定する必要があります。このオプションは、移行用に選択したターゲット リージョンで Availability Zones がサポートされている場合にのみ使用できます。
     -  可用性セット。移行されたマシンを可用性セットに配置します。 このオプションを使用するには、選択されたターゲット リソース グループに 1 つ以上の可用性セットが必要です。
     - [インフラストラクチャ冗長は必要ありません] オプション (移行されたマシンに対してこれらの可用性構成がいずれも不要な場合)。
     
-11. **[Disk encryption type]\(ディスク暗号化の種類\)** で、以下を選択します。
+12. **[Disk encryption type]\(ディスク暗号化の種類\)** で、以下を選択します。
     - プラットフォーム マネージド キーを使用した保存時の暗号化
     - カスタマー マネージド キーを使用した保存時の暗号化
     - プラットフォーム マネージド キーとカスタマー マネージド キーを使用した二重暗号化
@@ -258,14 +265,14 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
    > [!NOTE]
    > CMK を使用して VM をレプリケートするには、ターゲット リソース グループに[ディスク暗号化セットを作成する](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set)必要があります。 ディスク暗号化セット オブジェクトによって、SSE に使用する CMK を含む Key Vault にマネージド ディスクがマップされます。
   
-12. **[Azure ハイブリッド特典]** で、
+13. **[Azure ハイブリッド特典]** で、
 
     - Azure ハイブリッド特典を適用しない場合は、 **[いいえ]** を選択します。 続けて、 **[次へ]** をクリックします。
     - アクティブなソフトウェア アシュアランスまたは Windows Server のサブスクリプションの対象となっている Windows Server マシンがあり、移行中のマシンにその特典を適用する場合は、 **[はい]** を選択します。 続けて、 **[次へ]** をクリックします。
 
     ![ターゲットの設定](./media/tutorial-migrate-vmware/target-settings.png)
 
-13. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
+14. **[コンピューティング]** で、VM の名前、サイズ、OS ディスクの種類、および可用性構成 (前の手順で選択した場合) を確認します。 VM は [Azure の要件](migrate-support-matrix-physical-migration.md#azure-vm-requirements)に準拠している必要があります。
 
     - **VM サイズ**: 評価の推奨事項を使用している場合は、[VM サイズ] ドロップダウンに推奨サイズが表示されます。 それ以外の場合は、Azure Migrate によって、Azure サブスクリプション内の最も近いサイズが選択されます。 または、 **[Azure VM サイズ]** でサイズを手動で選択します。
     - **OS ディスク**:VM の OS (ブート) ディスクを指定します。 OS ディスクは、オペレーティング システムのブートローダーとインストーラーがあるディスクです。
@@ -274,13 +281,13 @@ Azure Migrate: Server Migration では、レプリケーション アプライ�
 
 ![コンピューティングの設定](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-14. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
+15. **[ディスク]** で、VM ディスクを Azure にレプリケートするかどうかを指定し、Azure でのディスクの種類 (Standard SSD か HDD、または Premium マネージド ディスク) を選択します。 続けて、 **[次へ]** をクリックします。
     - レプリケーションからディスクを除外できます。
     - ディスクは除外すると、移行後に Azure VM 上に存在しなくなります。 
 
     ![ディスクの設定](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-15. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
+16. **[レプリケーションの確認と開始]** で、設定を確認し、 **[レプリケート]** をクリックして、サーバーの初期レプリケーションを開始します。
 
 > [!NOTE]
 > レプリケーションが開始される前であれば、 **[管理]**  >  **[マシンのレプリケート]** でレプリケーションの設定をいつでも更新できます。 レプリケーションの開始後は、設定を変更することができません。

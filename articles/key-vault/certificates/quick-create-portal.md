@@ -3,7 +3,6 @@ title: Azure クイックスタート - Azure portal を使用して Key Vault �
 description: Azure portal を使用して Azure Key Vault との間で証明書の設定と取得を行う方法を紹介したクイックスタート
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: e55c0832638105ad681f74cbeb6429a6704b7fb2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be138a0c97e02cace45a57d8d6b32d7c9aea83b7
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97935140"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749980"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -61,7 +60,8 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     - **[証明書の作成方法]** : [生成]。
     - **[証明書名]** : ExampleCertificate。
     - **Subject**:CN=ExampleDomain
-    - 他の値は既定値のままにしておきます。 **Create** をクリックしてください。
+    - 他の値は既定値のままにしておきます。 (既定では、高度なポリシーに特に何も指定しない場合、これをクライアント認証証明書として使用できます)。
+ 4. **Create** をクリックしてください。
 
 証明書が正常に作成されたことを示すメッセージが表示されたら、一覧でそのシークレットをクリックできます。 すると、いくつかのプロパティを確認できます。 現在のバージョンをクリックすると、前の手順で指定した値が表示されます。
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/05/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552106"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726648"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Azure NetApp Files の新機能
 
@@ -27,12 +27,16 @@ Azure NetApp Files は定期的に更新されています。 この記事では
 
 ## <a name="april-2021"></a>2021 年 4 月
 
+* [SMB3 プロトコル暗号化](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (プレビュー) 
+
+    Azure NetApp Files SMB およびデュアルプロトコル ボリュームで SMB3 プロトコル暗号化を有効にできるようになりました。 この機能では、[SMB 3.0 接続では AES CCM アルゴリズムを使用し、SMB 3.1.1 接続では AES GCM アルゴリズム](/windows-server/storage/file-server/file-server-smb-overview#features-added-in-smb-311-with-windows-server-2016-and-windows-10-version-1607)を使用して、移動中の SMB3 データの暗号化を有効にします。 SMB3 暗号化を使用していない SMB クライアントは、このボリュームにアクセスできません。 保存データは、この設定に関係なく暗号化されます。 SMB 暗号化により、さらにセキュリティが強化されます。 ただし、クライアントに影響を与える可能性があります (メッセージの暗号化と暗号化解除のための CPU オーバーヘッド)。 また、ストレージ リソースの使用率にも影響する可能性があります (スループットの低下)。 ワークロードを運用環境にデプロイする前に、アプリケーションのパフォーマンスに対する暗号化の影響をテストする必要があります。
+
 * [NFS 拡張グループを使用した Active Directory Domain Services (ADDS) LDAP のユーザーマッピング](configure-ldap-extended-groups.md) (プレビュー)   
 
     既定では、Azure NetApp Files は、[RFC 5531](https://tools.ietf.org/html/rfc5531) で定義されているように、NFS ユーザー資格情報を処理するときに最大 16 個のグループ ID をサポートします。 この新機能を使用すると、ユーザーの数が既定のグループ数のメンバーよりも多い場合に、グループ数を最大 1,024 まで増やすことができるようになりました。 また、この機能をサポートするために、NFS ボリュームを ADDS LDAP に追加できるようになりました。これにより、拡張グループ エントリ (最大 1,024 グループ) を含む Active Directory LDAP ユーザーがボリュームにアクセスできます。 
 
 ## <a name="march-2021"></a>2021 年 3 月
-
+ 
 * [SMB 継続的可用性 (CA) 共有](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (プレビュー)  
 
     SMB 透過フェールオーバーを使用すると、SMB ボリュームにデータを格納してアクセスするサーバー アプリケーションへの接続を中断することなく、Azure NetApp Files サービスでメンテナンス操作を行うことができます。 SMB 透過フェールオーバーをサポートするために、Azure NetApp Files では、Azure VM で実行されている SMB を介して SQL Server アプリケーションで使用する SMB 継続的可用性共有オプションがサポートされるようになりました。 この機能は現在、Windows SQL Server でサポートされています。 Linux SQL Server では現在サポートされていません。 この機能を有効にすると、[単一インスタンス、Always-On フェールオーバー クラスター インスタンス、Always-On 可用性グループの展開](azure-netapp-files-solution-architectures.md#sql-server)において、SQL Server のパフォーマンスが大幅に向上し、スケーリングとコスト面の利点が得られます。 「[SQL Server の展開に Azure NetApp Files を使用する利点](solutions-benefits-azure-netapp-files-sql-server.md)」を参照してください。

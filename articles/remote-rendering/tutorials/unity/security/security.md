@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1bcba264589d6cbe9b4f671e1e4f2c9b1dbf2c5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594250"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739748"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護
 
@@ -211,7 +211,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
     ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
-
+    
     using Microsoft.Azure.RemoteRendering;
     using Microsoft.Identity.Client;
     using System;
@@ -219,17 +219,9 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
     using System.Threading;
     using System.Threading.Tasks;
     using UnityEngine;
-
+    
     public class AADAuthentication : BaseARRAuthentication
     {
-        [SerializeField]
-        private string accountDomain;
-        public string AccountDomain
-        {
-            get => accountDomain.Trim();
-            set => accountDomain = value;
-        }
-
         [SerializeField]
         private string activeDirectoryApplicationClientID;
         public string ActiveDirectoryApplicationClientID
@@ -237,7 +229,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
             get => activeDirectoryApplicationClientID.Trim();
             set => activeDirectoryApplicationClientID = value;
         }
-
+    
         [SerializeField]
         private string azureTenantID;
         public string AzureTenantID
@@ -245,7 +237,15 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
             get => azureTenantID.Trim();
             set => azureTenantID = value;
         }
-
+    
+        [SerializeField]
+        private string azureRemoteRenderingDomain;
+        public string AzureRemoteRenderingDomain
+        {
+            get => azureRemoteRenderingDomain.Trim();
+            set => azureRemoteRenderingDomain = value;
+        }
+    
         [SerializeField]
         private string azureRemoteRenderingAccountID;
         public string AzureRemoteRenderingAccountID
@@ -255,37 +255,37 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
         }
     
         [SerializeField]
-        private string azureRemoteRenderingAccountAuthenticationDomain;
-        public string AzureRemoteRenderingAccountAuthenticationDomain
+        private string azureRemoteRenderingAccountDomain;
+        public string AzureRemoteRenderingAccountDomain
         {
-            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
-            set => azureRemoteRenderingAccountAuthenticationDomain = value;
-        }
-
+            get => azureRemoteRenderingAccountDomain.Trim();
+            set => azureRemoteRenderingAccountDomain = value;
+        }    
+    
         public override event Action<string> AuthenticationInstructions;
-
+    
         string authority => "https://login.microsoftonline.com/" + AzureTenantID;
-
+    
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
-
-        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
-
+    
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountDomain + "/mixedreality.signin" };
+    
         public void OnEnable()
         {
             RemoteRenderingCoordinator.ARRCredentialGetter = GetAARCredentials;
             this.gameObject.AddComponent<ExecuteOnUnityThread>();
         }
-
+    
         public async override Task<SessionConfiguration> GetAARCredentials()
         {
             var result = await TryLogin();
             if (result != null)
             {
                 Debug.Log("Account signin successful " + result.Account.Username);
-
+    
                 var AD_Token = result.AccessToken;
-
-                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+    
+                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -293,7 +293,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
             }
             return default;
         }
-
+    
         private Task DeviceCodeReturned(DeviceCodeResult deviceCodeDetails)
         {
             //Since everything in this task can happen on a different thread, invoke responses on the main Unity thread
@@ -303,10 +303,10 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
                 Debug.Log(deviceCodeDetails.Message);
                 AuthenticationInstructions?.Invoke(deviceCodeDetails.Message);
             });
-
+    
             return Task.FromResult(0);
         }
-
+    
         public override async Task<AuthenticationResult> TryLogin()
         {
             var clientApplication = PublicClientApplicationBuilder.Create(ActiveDirectoryApplicationClientID).WithAuthority(authority).WithRedirectUri(redirect_uri).Build();
@@ -314,11 +314,11 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
             try
             {
                 var accounts = await clientApplication.GetAccountsAsync();
-
+    
                 if (accounts.Any())
                 {
                     result = await clientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
-
+    
                     return result;
                 }
                 else
@@ -356,7 +356,7 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
                 Debug.LogError("GetAccountsAsync");
                 Debug.LogException(ex);
             }
-
+    
             return null;
         }
     }
@@ -372,10 +372,10 @@ Azure 側の設定が済んだら、AAR サービスへの接続方法に関す�
 ARR の観点から見て、このクラスの最も重要な部分は次の行です。
 
 ```cs
-return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-ここでは、アカウント ドメイン、アカウント ID、アカウント認証ドメイン、アクセス トークンを使用して新しい **SessionConfiguration** オブジェクトを作成します。 その後、このトークンは、前に構成したロールベースのアクセス許可に基づいてユーザーが承認されている限り、ARR サービスでリモート レンダリング セッションの各種の処理 (クエリ、作成、参加) を行う際に使用されます。
+ここでは、リモート レンダリング ドメイン、アカウント ID、アカウント ドメイン、アクセス トークンを使用して新しい **SessionConfiguration** オブジェクトを作成します。 その後、このトークンは、前に構成したロールベースのアクセス許可に基づいてユーザーが承認されている限り、ARR サービスでリモート レンダリング セッションの各種の処理 (クエリ、作成、参加) を行う際に使用されます。
 
 この変更により、アプリケーションの現在の状態とその Azure リソースへのアクセスは次のようになります。
 
@@ -393,11 +393,11 @@ Unity エディターでは、AAD 認証がアクティブである場合、ア�
 
 1. クライアント ID とテナント ID の値を入力します。 これらの値は、[アプリの登録] の [概要] ページで確認できます。
 
-    * **[Account Domain]\(アカウント ドメイン\)** は、**RemoteRenderingCoordinator** の [Account Domain]\(アカウント ドメイン\) で使用しているものと同じドメインです。
     * **[Active Directory Application Client ID]\(Active Directory アプリケーション クライアント ID\)** は、AAD アプリの登録にある *[アプリケーション (クライアント) ID]* です (下図参照)。
     * **[Azure Tenant ID]\(Azure テナント ID\)** は、AAD アプリの登録にある *[ディレクトリ (テナント) ID]* です (下図参照)。
+    * **[Azure Remote Rendering Domain]\(Azure Remote Rendering ドメイン\)** は、**RemoteRenderingCoordinator** の Remote Rendering ドメインで使用しているものと同じドメインです。
     * **[Azure Remote Rendering Account ID]\(Azure Remote Rendering アカウント ID\)** は、**RemoteRenderingCoordinator** に使用しているものと同じ **アカウント ID** です。
-    * **[Account Authentication Domain]\(アカウント認証ドメイン\)** は、**RemoteRenderingCoordinator** の **[Account Authentication Domain]\(アカウント認証ドメイン\)** で使用しているものと同じです。
+    * **[Azure Remote Rendering Account Domain]\(Azure Remote Rendering アカウント ドメイン\)** は、**RemoteRenderingCoordinator** で使用しているものと同じ **アカウント ドメイン** です。
 
     ![アプリケーション (クライアント) ID とディレクトリ (テナント) ID が強調表示されているスクリーンショット。](./media/app-overview-data.png)
 

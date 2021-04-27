@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 9443c6fbaca16cf075745972a1655a2b4b2ea43c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b240806b934cae54810cf9dfe1a6c1f369cede7e
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077535"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587512"
 ---
 # <a name="tutorial-create-and-import-glossary-terms-in-azure-purview-preview"></a>チュートリアル:Azure Purview (プレビュー) で用語集の用語を作成してインポートする
 
@@ -96,6 +96,9 @@ ms.locfileid: "106077535"
 1. *StarterKitTerms.csv* という名前のファイルの保存場所をメモします。これは、[このチュートリアル シリーズのパート 1](tutorial-scan-data.md) でダウンロードしたスタート キットに含まれています。
 
    このファイルには、データ資産と関係のある事前設定された用語のリストが含まれています。
+
+ > [!Important]
+   > .CSV ファイル内のスチュワードとエキスパートのメール アドレスは、AAD グループのユーザーのプライマリ アドレスにする必要があります。 連絡用メール アドレス、ユーザー プリンシパル名、AAD 以外のメールは、まだサポートされていません。 メール アドレスは、実際の組織の AAD のプライマリ アドレスに置き換える必要があります。
 
 1. インポートを開始するために、 **[Glossary]\(用語集\)** を選択し、 **[Import terms]\(用語のインポート\)** を選択します。
 

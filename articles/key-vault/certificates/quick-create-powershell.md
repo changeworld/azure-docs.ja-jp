@@ -3,20 +3,19 @@ title: クイックスタート - Azure PowerShell を使用して Azure Key Vau
 description: Azure PowerShell を使用して Azure Key Vault との間で証明書の設定と取得を行う方法を紹介したクイックスタート
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
+ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 587815cf9628df35f1e1efdbc6a7a3c89a27ed55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a641ca1206cb41ded0513db72daa278dc3753c85
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071919"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750394"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Key Vault から証明書の設定と取得を行う
 
@@ -62,6 +61,18 @@ Get-AzKeyVaultCertificate -VaultName "<your-unique-keyvault-name>" -Name "Exampl
 ```
 
 これで、キー コンテナーを作成し、証明書を格納した後、取得しました。
+
+**トラブルシューティング**:
+
+Operation returned an invalid status code "Forbidden" (操作によって無効な状態コード "Forbidden" が返されました)
+
+このエラーが発生した場合、Azure キー コンテナーにアクセスするアカウントには、証明書を作成するための適切なアクセス許可がありません。
+
+次の Azure PowerShell コマンドを実行して、適切なアクセス許可を割り当ててください。
+
+```azurepowershell-interactive
+Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> -ObjectId <AzureObjectID> -PermissionsToCertificates get,list,update,create
+```
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

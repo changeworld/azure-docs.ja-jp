@@ -6,13 +6,13 @@ ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
-ms.custom: template-tutorial
-ms.openlocfilehash: a94784f2f3fc622e0232033d63bc957279a7d34c
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.custom: template-tutorial, devx-track-azurecli
+ms.openlocfilehash: 9a228ce6f8b18afb77b656765abbad0bb4ae877f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076311"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589144"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>チュートリアル: Azure Arc 対応 Kubernetes クラスターを使用して GitOps で CI/CD を実装する
 
@@ -28,7 +28,7 @@ ms.locfileid: "106076311"
 > * `dev` および `stage` 環境をデプロイする。
 > * アプリケーション環境をテストする。
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -47,13 +47,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
   ```azurecli
   az extension add --name connectedk8s
-  az extension add --name k8s-configuration
+  az extension add --name k8sconfiguration
   ```
   * これらの拡張機能を最新バージョンに更新するには、次のコマンドを実行します。
 
     ```azurecli
     az extension update --name connectedk8s
-    az extension update --name k8s-configuration
+    az extension update --name k8sconfiguration
     ```
 
 ## <a name="import-application-and-gitops-repos-into-azure-repos"></a>アプリケーションおよび GitOps リポジトリを Azure Repos にインポートする
@@ -166,8 +166,7 @@ kubectl create secret docker-registry <secret-name> \
     --docker-password=<service-principal-password>
 ```
 
-> [!TIP]
-> 各ポッドで imagePullSecret を設定する必要をなくすために、`dev` および `stage` 名前空間でサービス アカウントに imagePullSecret を追加することを検討してください。 詳細については、[Kubernetes のチュートリアル](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account)を参照してください。
+各ポッドで imagePullSecret を設定する必要をなくすために、`dev` および `stage` 名前空間でサービス アカウントに imagePullSecret を追加することを検討してください。 詳細については、[Kubernetes のチュートリアル](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/#add-imagepullsecrets-to-a-service-account)を参照してください。
 
 ## <a name="create-environment-variable-groups"></a>環境変数グループを作成する
 

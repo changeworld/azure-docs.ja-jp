@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 335f78bba24947b1b6c3d6132bc38f237b3298b9
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: fb874c25ab688cc5e6723d1023157b8acd9478b9
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106449133"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483848"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>クイックスタート: Azure Static Web Apps を使用して静的サイトを初めて構築する
 
@@ -58,21 +58,35 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
     # <a name="no-framework"></a>[フレームワークなし](#tab/vanilla-javascript)
     :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="アプリケーション プリセット: フレームワークなし":::
 
-    アプリケーション ファイルの場所として「 **./** 」と入力します
+    アプリケーション ファイルの場所として「 **./** 」と入力します。
 
     :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="アプリケーション ファイルの場所":::
 
-    Azure Functions API の場所として **[Skip for now]\(今はしない\)** を選択します
+    Azure Functions API の場所として **[Skip for now]\(今はしない\)** を選択します。
 
     :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API の場所":::
 
-    ビルドの出力場所として「 **./** 」と入力します
+    ビルドの出力場所として「 **./** 」と入力します。
 
     :::image type="content" source="media/getting-started/extension-build-location.png" alt-text="アプリケーション ビルドの出力場所":::
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="アプリケーションプ リセット: Angular":::
+    Angular プリセットはありますが、このアプリケーションの適切な出力場所を指定できるように、 **[カスタム]** オプションを選択します。
+
+    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="アプリケーションプ リセット: Angular":::
+
+    アプリケーション ファイルの場所として「 **./** 」と入力します。
+
+    :::image type="content" source="media/getting-started/extension-app-location.png" alt-text="アプリケーション ファイルの場所: Angular":::
+
+    Azure Functions API の場所として **[Skip for now]\(今はしない\)** を選択します。
+
+    :::image type="content" source="media/getting-started/extension-api-location.png" alt-text="API の場所: Angular":::
+
+    ビルドの出力場所として「**dist/angular-basic**」と入力します。
+
+    :::image type="content" source="media/getting-started/extension-angular.png" alt-text="アプリケーション ビルドの出力場所: Angular":::
 
     # <a name="react"></a>[React](#tab/react)
 

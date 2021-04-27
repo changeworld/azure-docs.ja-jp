@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: 476a0c2d75dcbee5c1ed4d758e0cbc9d4726ff95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b65013bbf21faa8bffdcf799a991952b69f5fead
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97587198"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714472"
 ---
 # <a name="tutorial-create-a-water-consumption-monitoring-application-with-azure-iot-central"></a>チュートリアル:Azure IoT Central によって水消費量のモニタリング アプリケーションを作成する
 
@@ -200,22 +200,23 @@ Azure IoT Central では、ルールを作成して、デバイスのテレメ�
 
    ![[ルール] ウィンドウ](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-rules.png)
 
-1. **[High pH alert]\(高 pH アラート\)** を選択します。これは、アプリケーションに事前構成されたルールの 1 つです。
+1. **[High water flow alert]\(高水流量アラート\)** を選択します。これは、アプリケーションに事前構成されたルールの 1 つです。
 
      ![High pH alert (高 pH アラート)](./media/tutorial-waterconsumptionmonitoring/waterconsumptionmonitoring-highflowalert.png)
 
-    `High flow alert` ルールは、`Acidity (pH)` が `Max flow threshold` より `greater than` である条件に対して確認するように構成されています。 Max flow threshold (最大流量しきい値) は、**Smart Valve (スマート バルブ)** デバイス テンプレートに定義されているクラウドのプロパティです。 `Max flow threshold` の値は、デバイス インスタンスごとに設定されます。
+    `High water flow alert` ルールは、`Flow` が `Max flow threshold` より `greater than` である条件に対して確認するように構成されています。 Max flow threshold (最大流量しきい値) は、**Smart Valve (スマート バルブ)** デバイス テンプレートに定義されているクラウドのプロパティです。 `Max flow threshold` の値は、デバイス インスタンスごとに設定されます。
 
 次に、メール アクションを作成しましょう。
 
 ルールにアクションを追加するには:
 
 1. **[+ Email]\(+ メール\)** を選択します。
-1. アクションのわかりやすい **表示名** として、「**High pH alert**」を入力します。
+1. アクションのわかりやすい **表示名** として、「**High flow alert**」を入力します。
 1. Azure IoT Central アカウントに関連付けられているメール アドレスを **[送信先]** に入力します。
 1. 必要に応じて、メールのテキストに含めるメモを入力します。
 1. **[完了]** を選択して、アクションを完了します。
-1. **[保存]** を選択して、新しいルールを保存してアクティブにします。
+1. **[保存]** を選択して新しいルールを保存します。
+1. ルールを有効にします。
 
 構成された条件が満たされると、数分以内にメールを受信するはずです。
 

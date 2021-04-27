@@ -1,20 +1,21 @@
 ---
 title: Azure Arc 対応データ サービスとは
 description: Azure Arc 対応データ サービスの概要
+ms.custom: references_regions
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 09/22/2020
+ms.date: 03/31/2021
 ms.topic: overview
-ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d866dcb5b2a0be9e6468b3d40258e37ac93834e
+ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97609141"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107716099"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Azure Arc 対応データ サービス (プレビュー) とは
 
@@ -46,6 +47,16 @@ Azure portal、Azure Data Studio、[!INCLUDE [azure-data-cli-azdata](../../../in
 ## <a name="disconnected-scenario-support"></a>切断されたシナリオのサポート
 
 セルフサービス プロビジョニング、自動バックアップ/復元、監視などのサービスの多くは、Azure への直接接続を使用して、または使用せずに、インフラストラクチャ内でローカルに実行できます。 Azure に直接接続すると、Azure Monitor などの他の Azure サービスとの統合に関する追加のオプションを利用でき、世界中のどこからでも Azure portal と Azure Resource Manager API を使用して Azure Arc 対応データ サービスを管理することができます。
+
+## <a name="supported-regions"></a>サポートされているリージョン
+
+Arc 対応データ サービスで現在サポートされているシナリオを次の表に示します。
+
+|Azure リージョン  |直接接続モード  |間接接続モード  |
+|---------|---------|---------|
+|米国東部|利用可能|利用可能
+|西ヨーロッパ |利用可能 |利用可能
+|北ヨーロッパ|利用可能|利用可能
 
 ## <a name="next-steps"></a>次のステップ
 

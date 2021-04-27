@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 1/20/2021
 ms.author: baanders
-ms.openlocfilehash: 43cc3dfc5b425df6d9dd5e2c2f35a792907ccdea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00d584690d37f1dcc47b785ef533abe888befec3
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103622187"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107512575"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルは、C# で記述されたサンプル プロジェクトによって進められます。 サンプルについては、こちらを参照してください。[Azure Digital Twins のエンドツーエンド サンプル](/samples/azure-samples/digital-twins-samples/digital-twins-samples)。 サンプルのリンクに移動し、タイトルの下にある " *[Browse Code]\(コードの参照\)* " ボタンを選択して、お使いのマシン上で **サンプル プロジェクトを取得** します。 これにより、サンプル用の GitHub リポジトリに移動します。サンプルは、" *[Code]\(コード\)* " ボタンと、" *[Download ZIP]\(ZIP のダウンロード\)* " を選択して、 *.ZIP* としてダウンロードできます。
 
-:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="GitHub の digital-twins-samples リポジトリのビュー。[Code]\(コード\) ボタンが選択されて、小さなダイアログ ボックスが生成されます。ここでは、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
+:::image type="content" source="../articles/digital-twins/media/includes/download-repo-zip.png" alt-text="GitHub にある digital-twins-samples リポジトリのスクリーンショット。[Code]\(コード\) ボタンが選択され、生成された小さなダイアログ ボックスで、[Download ZIP]\(ZIP のダウンロード\) ボタンが強調表示されています。" lightbox="../articles/digital-twins/media/includes/download-repo-zip.png":::
 
 これにより、 *.ZIP* フォルダーが **digital-twins-samples-master.zip** としてお使いのマシンにダウンロードされます。 フォルダーを解凍し、ファイルを抽出します。
 

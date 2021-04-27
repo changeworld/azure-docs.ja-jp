@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: bb4dd08b4f30982ec4572fd4e130a89112578175
-ms.sourcegitcommit: dda0d51d3d0e34d07faf231033d744ca4f2bbf4a
+ms.openlocfilehash: 37f33a217467619240d3339363c6a2fcd8800a12
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102203557"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505549"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>チュートリアル:Azure CLI を介して DMS を使用してオンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
 
@@ -155,7 +155,7 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
 6. テーブル内に ENUM データ型がある場合は、ターゲット テーブルでそれを一時的に 'character varying' データ型に更新することをお勧めします。 データのレプリケーションが完了したら、データ型を ENUM に戻します。
 
-## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>CLI を使用した DMS のインスタンスのプロビジョニング
+## <a name="provisioning-an-instance-of-dms-using-the-azure-cli"></a>Azure CLI を使用した DMS のインスタンスのプロビジョニング
 
 1. dms の同期の拡張機能をインストールします。
    * 次のコマンドを実行して Azure にサインインします。

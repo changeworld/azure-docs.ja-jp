@@ -10,17 +10,17 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: f7761cf011a3a678bb7609e1063ac6ebec90d395
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8230404d71b0fe46e8a7cc536d2b5f3a4c5004f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499188"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588396"
 ---
 # <a name="import-hsm-protected-keys-for-key-vault-ncipher"></a>Key Vault の HSM で保護されたキー (nCipher) をインポートする
 
 > [!WARNING]
-> このドキュメントで説明している HSM キー インポート方法は **非推奨** となっており、今後はサポートされません。 対応するのは、ファームウェア 12.40.2 または 12.50 と修正プログラムがインストールされた nCipher nShield ファミリの HSM のみです。 [新しい方法を使用して HSM キーをインポート](hsm-protected-keys-byok.md)することを強くお勧めします。
+> このドキュメントで説明している HSM キー インポート方法は **非推奨** となっており、2021 年 6 月 30 日をもってサポートは終了となります。 対応するのは、ファームウェア 12.40.2 または 12.50 と修正プログラムがインストールされた nCipher nShield ファミリの HSM のみです。 [新しい方法を使用して HSM キーをインポート](hsm-protected-keys-byok.md)することを強くお勧めします。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

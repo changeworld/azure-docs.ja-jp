@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: ea097119111d5dbd5eba3c11aba549d201186e3f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 394b3390386c60e2a64f52dd944dfcdb0d33951e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104592185"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727026"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -98,18 +98,19 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 ### <a name="sql-server-on-azure-vm"></a>Azure VM 上の SQL Server
 
 [Azure VM 上の SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) は *サービスとしてのインフラストラクチャ (IaaS)* の業界カテゴリに分類され、Azure のフル マネージドの仮想マシン (VM) 内で SQL Server を実行できるようにします。 
-- 移行と、OS レベルのアクセスを必要とするアプリケーションに最適です。 Azure 内の SQL 仮想マシンは、最小限の変更または変更なしでクラウドに迅速に移行する必要がある既存のアプリケーションに対して、リフト アンド シフトする準備ができています。 SQL 仮想マシンは、Azure に移行するための SQL Server インスタンスと基になる OS に対する完全な管理制御を提供します。 
-- 運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。 SQL 仮想マシンは、Microsoft が所有、ホスト、保守する標準的なハードウェア上でも実行できます。 SQL 仮想マシンを使用する場合は、SQL Server イメージに含まれている SQL Server ライセンスを使用して従量課金で支払いを行うか、単に既存のライセンスを使用することができます。 必要に応じて、VM を停止または再開することもできます。 
 - クラウド上にインストールされてホストされている SQL Server は、Azure 上で実行されている Windows Server または Linux 仮想マシンで実行され、サービスとしてのインフラストラクチャ (IaaS) とも呼ばれます。 SQL 仮想マシンは、データベースの変更を行わずにオンプレミスの SQL Server データベースとアプリケーションを移行する場合に適したオプションです。 SQL Server のすべての最新バージョンとエディションは、IaaS 仮想マシンでのインストールに使用できます。 
-
-    SQL Database と SQL Managed Instance の最も大きな違いは、Azure Virtual Machines における SQL Server ではデータベース エンジンを完全に制御できることです。 メンテナンスまたは修正プログラムの適用を開始するタイミングを選択したり、復旧モデルを単純なログまたは一括ログに変更したりできます。また、必要に応じてサービスを一時停止または開始することができるほか、SQL Server データベース エンジンを完全にカスタマイズすることができます。 この制御を追加する場合、仮想マシンを管理する責任も追加で伴います。
+- 移行と、OS レベルのアクセスを必要とするアプリケーションに最適です。 Azure 内の SQL 仮想マシンは、最小限の変更または変更なしでクラウドに迅速に移行する必要がある既存のアプリケーションに対して、リフト アンド シフトする準備ができています。 SQL 仮想マシンは、Azure に移行するための SQL Server インスタンスと基になる OS に対する完全な管理制御を提供します。 
+- SQL Database と SQL Managed Instance の最も大きな違いは、Azure Virtual Machines における SQL Server ではデータベース エンジンを完全に制御できることです。 メンテナンスまたは修正プログラムの適用を開始するタイミングを選択したり、復旧モデルを単純なログまたは一括ログに変更したりできます。また、必要に応じてサービスを一時停止または開始することができるほか、SQL Server データベース エンジンを完全にカスタマイズすることができます。 この制御を追加する場合、仮想マシンを管理する責任も追加で伴います。
+- 運用環境以外のオンプレミス SQL Server のハードウェアを購入しない場合の迅速な開発およびテスト シナリオ。 SQL 仮想マシンは、Microsoft が所有、ホスト、保守する標準的なハードウェア上でも実行できます。 SQL 仮想マシンを使用する場合は、SQL Server イメージに含まれている SQL Server ライセンスを使用して従量課金で支払いを行うか、単に既存のライセンスを使用することができます。 必要に応じて、VM を停止または再開することもできます。 
 - 既存のアプリケーションを Azure に移行したり、ハイブリッド デプロイで既存のオンプレミス アプリケーションをクラウドに拡張したりできるように最適化されています。 さらに、仮想マシン上の SQL Server は従来の SQL Server アプリケーションを開発、テストするためにも使用できます。 SQL 仮想マシンでは、専用の SQL Server インスタンスとクラウドベースの VM に対して完全な管理者権限があります。 仮想マシンの維持に使用できる IT リソースが組織に既にある場合は、Azure VM 内の SQL Server を選択することをお勧めします。 これらの機能を使用すると、高度にカスタマイズされたシステムを構築して、アプリケーション固有のパフォーマンスや可用性の要件に対処できます。
+
+
+### <a name="comparison-table"></a>比較表
 
 次の表にその他の違いを示しますが、"*SQL Database と SQL Managed Instance は両方とも、多くのデータベースをプロビジョニングおよび管理するための全体的な管理コストを最小限に抑えるように最適化されています。* " どの仮想マシン、オペレーティング システム、データベース ソフトウェアも管理する必要がないため、継続的な管理コストが削減されます。 アップグレード、高可用性、 [バックアップ](database/automated-backups-overview.md)を管理する必要はありません。 
 
-一般的には、SQL Database と SQL Managed Instance を使用すると、単一の IT または開発リソースが管理するデータベースの数を大幅に増やすことができます。 [エラスティック プール](database/elastic-pool-overview.md)では、SaaS マルチ テナント アプリケーション アーキテクチャもサポートします。これにはテナントの分離や、データベース間でリソースを共有することでコストを削減するようにスケーリングする機能などが含まれます。 [SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md) ではインスタンス スコープ機能のサポートが提供されるため、既存のアプリケーションを簡単に移行したり、データベース間でリソースを共有したりできるようになります。
+一般的には、SQL Database と SQL Managed Instance を使用すると、単一の IT または開発リソースが管理するデータベースの数を大幅に増やすことができます。 [エラスティック プール](database/elastic-pool-overview.md)では、SaaS マルチ テナント アプリケーション アーキテクチャもサポートします。これにはテナントの分離や、データベース間でリソースを共有することでコストを削減するようにスケーリングする機能などが含まれます。 [SQL Managed Instance](managed-instance/sql-managed-instance-paas-overview.md) ではインスタンス スコープ機能のサポートが提供されるため、既存のアプリケーションを簡単に移行したり、データベース間でリソースを共有したりできるようになります。 一方、[Azure VM 上の SQL Server](virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) では、DBA は、使い慣れたオンプレミス環境と非常に似たエクスペリエンスを使用できます。 
 
-### <a name="comparison-table"></a>比較表
 
 | Azure SQL データベース | Azure SQL Managed Instance | Azure VM 上の SQL Server |
 | :--- | :--- | :--- |

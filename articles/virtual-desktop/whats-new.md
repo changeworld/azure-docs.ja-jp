@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 710f33ada7a64248f0371a3e8c39e085d3f0834c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 242dd2476783a3d1db6b74452d35e87c5cd189b6
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107059"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516554"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -42,6 +42,14 @@ Windows Virtual Desktop エージェントは、少なくとも 1 か月に 1 �
 
 Windows Virtual Desktop エージェントの変更内容は、次のとおりです。
 
+- バージョン 1.0.2990.800: この更新プログラムは 2021 年 4 月 13 日にリリースされ、次の変更が加えられました。
+    - エージェントのエラー メッセージが更新されました。
+    - Windows 7 VM に Windows 7 以外のエージェントをインストールできないようにする例外が追加されました。
+    - ハートビート サービス ロジックが更新されました。
+- バージョン 1.0.2944.1400: この更新プログラムは 2021 年 4 月 7 日にリリースされ、次の変更が加えられました。
+    - エージェント エラーのイベント ビューアー ログに、Windows Virtual Desktop エージェントのトラブルシューティング ガイドへのリンクが配置されました。
+    - エラー処理を改善するための例外が追加されました。
+    - アクセスできる必要な URL を顧客自身で確認できるようにする WVDAgentUrlTool.exe が追加されました。
 - バージョン 1.0.2866.1500: この更新プログラムは 2021 年 3 月 26 日にリリースされ、スタック正常性チェックに関する問題が修正されました。
 - バージョン 1.0.2800.2802: この更新プログラムは 2021 年 3 月 10 日にリリースされ、全般的な機能強化とバグ修正が行われました。
 - バージョン 1.0.2800.2800: この更新プログラムは 2021 年 3 月 2 日にリリースされ、逆接続の問題が修正されました。

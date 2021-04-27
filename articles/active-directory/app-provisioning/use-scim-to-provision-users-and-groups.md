@@ -12,12 +12,12 @@ ms.date: 04/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 4130ed4bb690edb3c0c5d72d7d158262ed6ff39d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 3d53c96c4b0306911b0c8a0b8576f35a73419db0
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305601"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498154"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>チュートリアル:SCIM エンドポイントのプロビジョニングを開発および計画する
 
@@ -210,7 +210,8 @@ AAD との互換性を確保するために、SCIM エンドポイントの実�
 * [セクション 3.5.2](https://tools.ietf.org/html/rfc7644#section-3.5.2) に定義されているように、特に **PATCH** `op` 操作値の場合、SCIM 内の構造要素に対して大文字と小文字を区別した一致を要求しないでください。 AAD では、`op` の値が **Add**、**Replace**、**Remove** として出力されます。
 * Microsoft AAD では、エンドポイントと資格情報が有効であることを確認するため、ランダムなユーザーとグループをフェッチする要求を行います。 [Azure portal](https://portal.azure.com) 内で、**テスト接続** フローの一部としても行われます。 
 * リソースの照会が可能な属性は、[Azure portal](https://portal.azure.com) 内でアプリケーション上の照合属性として設定される必要があります。[ユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)に関するページを参照してください。
-* SCIM エンドポイントで HTTPS をサポートする
+* エンタイトルメント属性はサポートされていません。
+* SCIM エンドポイントで HTTPS をサポートします。
 * [スキーマ検出](#schema-discovery)
   * スキーマの検出は、カスタム アプリケーションでは現在サポートされていませんが、ある特定のギャラリー アプリケーションでは使用されています。 今後は、コネクタに属性を追加するための主要な手段としてスキーマ検出が使用されます。 
   * 値が存在しない場合でも、null 値を送信しないでください。

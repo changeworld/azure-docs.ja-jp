@@ -5,14 +5,14 @@ ms.subservice: ''
 ms.topic: overview
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/23/2021
+ms.date: 04/09/2021
 ms.custom: references_regions
-ms.openlocfilehash: 899249c98c3ce0fdf061b1e689182f71c120aa13
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: f8b4d6965a8a1f046fd2459ce9fe5cce8ea45443
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101729397"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531080"
 ---
 # <a name="whats-new-in-azure-automation"></a>Azure Automation の新着情報
 
@@ -23,6 +23,70 @@ Azure Automation には継続的に改善が施されています。 常に最�
 - バグの修正
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。
+
+## <a name="march-2021"></a>2021 年 3 月
+
+### <a name="new-azure-automation-built-in-policies"></a>Azure Automation の新しい組み込みポリシー
+
+**種類:** 新機能
+
+Azure Automation に 5 つの新しい組み込みポリシーが追加されました。
+
+- Automation アカウントで公衆ネットワーク アクセスを無効にする必要がある
+- Azure Automation アカウントでは、保存データを暗号化するためにカスタマー マネージド キーを使用する必要がある
+- 公衆ネットワーク アクセスを無効にするように Azure Automation アカウントを構成する
+- Azure Automation アカウントでのプライベート エンドポイント接続の構成
+- Automation アカウントでプライベート エンドポイント接続を有効にする必要がある。
+
+詳細については、[ポリシー リファレンス](./policy-reference.md)の記事を参照してください。
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-south-india"></a>インド南部での GA を宣言された Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+インド南部でプロセスの自動化および構成管理機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-south-india-region/)を参照してください。
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uk-west"></a>英国西部での GA を宣言された Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+英国西部でプロセスの自動化および構成管理機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-uk-west-region/)を参照してください。
+
+### <a name="support-for-automation-and-state-configuration-declared-ga-in-uae-central"></a>アラブ首長国連邦中部での GA を宣言された Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+アラブ首長国連邦中部でプロセスの自動化および構成管理機能を使用できます。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-in-uae-central-region/)を参照してください。
+
+### <a name="support-for-automation-and-state-configuration-available-in-australia-central-2--norway-west-and-france-south"></a>オーストラリア中部 2、ノルウェー西部、フランス南部で利用可能な Automation と State Configuration のサポート
+
+**種類:** 新機能
+
+各リージョンの地域を選択して、[データ所在地に関するページ](https://azure.microsoft.com/global-infrastructure/data-residency/)で詳細を確認してください。
+
+### <a name="new-scripts-added-for-installing-hybrid-worker-on-windows-and-linux"></a>Windows および Linux にハイブリッドワーカーをインストールするための新しいスクリプトを追加
+
+**種類:** 新機能
+
+Windows または Linux マシンで Hybrid Runbook Worker を設定する Azure Automation の主要なシナリオの 1 つに対応する 2 つの新しいスクリプトが Azure Automation [GitHub リポジトリ](https://github.com/azureautomation)に追加されました。 このスクリプトでは、新しい VM を作成するか既存の VM を使用し、必要に応じて Log Analytics ワークスペースを作成します。さらに、Windows 用の Log Analytics エージェントまたは Linux 用の Log Analytics エージェントをインストールし、マシンを Log Analytics ワークスペースに登録します。 Windows 用スクリプトの名前は **Create Automation Windows HybridWorker** です。Linux 用スクリプトの名前は **Create Automation Linux HybridWorker** です。
+
+### <a name="invoke-runbook-through-an-azure-resource-manager-template-webhook"></a>Azure Resource Manager テンプレート Webhook を介した Runbook の呼び出し
+
+**種類:** 新機能
+
+詳細については、[ARM テンプレートからの Webhook の使用](./automation-webhooks.md#use-a-webhook-from-an-arm-template)に関するセクションを参照してください。
+
+### <a name="azure-update-management-now-supports-centos-8x-red-hat-enterprise-linux-server-8x-and-suse-linux-enterprise-server-15"></a>Azure Update Management で、Centos 8.x、Red Hat Enterprise Linux Server 8.x、および SUSE Linux Enterprise Server 15 がサポートされるようになりました
+
+**種類:** 新機能
+
+詳細については、サポートされている Linux オペレーティングシステムの[完全な一覧](./update-management/overview.md#supported-operating-systems)を参照してください。
+
+### <a name="in-region-data-residency-support-for-brazil-south-and-south-east-asia"></a>ブラジル南部および東南アジアでのリージョン内データ所在地のサポート 
+
+**種類:** 新機能
+
+ブラジル南部と東南アジアを除くすべてのリージョンにおいて、Azure Automation データは、ビジネス継続性とディザスター リカバリー (BCDR) を提供するために別のリージョン (Azure のペアになっているリージョン) に格納されます。 ブラジルおよび東南アジア リージョンの場合のみ、Azure Automation データは、これらのリージョンのデータ所在地の要件に対応するために同じリージョンに格納されるようになりました。 詳細については、「[Azure Automation での geo レプリケーション](./automation-managing-data.md#geo-replication-in-azure-automation)」を参照してください。
 
 ## <a name="february-2021"></a>2021 年 2 月
 
@@ -62,9 +126,9 @@ Automation アカウントと State Configuration がスイス西部リージョ
 
 **種類:** 新機能
 
-Hybrid Runbook Worker 機能では、CentOS 8.x、REHL 8.x、SLES 15 の各ディストリビューションは、Hybrid Runbook Worker でのプロセスの自動化についてのみサポートされています。  これらの変更を反映するドキュメントの最新版については、[サポートされるオペレーティング システム](automation-linux-hrw-install.md#supported-linux-operating-systems)に関するセクションを参照してください。
+Hybrid Runbook Worker 機能では、CentOS 8.x、REHL 8.x、SLES 15 の各ディストリビューションは、Hybrid Runbook Worker でのプロセスの自動化についてのみサポートされています。 これらの変更を反映するドキュメントの最新版については、[サポートされるオペレーティング システム](automation-linux-hrw-install.md#supported-linux-operating-systems)に関するセクションを参照してください。
 
-### <a name="update-management--change-tracking-availability-in-australia-east-east-asia-west-us--central-us-regions"></a>オーストラリア東部、東アジア、米国西部、米国中部リージョンで使用できるようになった Update Management とChange Tracking
+### <a name="update-management-and-change-tracking-availability-in-australia-east-east-asia-west-us-and-central-us-regions"></a>オーストラリア東部、東アジア、米国西部、米国中部リージョンで使用できるようになった Update Management と Change Tracking
 
 **種類:** 新機能
 
@@ -72,7 +136,7 @@ Automation アカウント、変更履歴とインベントリ、Update Manageme
 
 ### <a name="introduced-public-preview-of-python-3-runbooks-in-us-government-cloud"></a>US Government クラウドでの Python 3 Runbook のパブリック プレビューの導入
 
-**種類:** 新機能 Azure Automation に、US Government クラウド リージョンでの Python 3 クラウドと Hybrid Runbook 実行のパブリック プレビュー サポートが導入されました。  詳しくは、[お知らせ](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/)をご覧ください。
+**種類:** 新機能 Azure Automation に、US Government クラウド リージョンでの Python 3 クラウドと Hybrid Runbook 実行のパブリック プレビュー サポートが導入されました。 詳しくは、[お知らせ](https://azure.microsoft.com/updates/azure-automation-python-3-public-preview/)をご覧ください。
 
 ### <a name="azure-automation-runbooks-moved-from-technet-script-center-to-github"></a>Azure Automation Runbook を TechNet スクリプト センターから GitHub に移動
 
@@ -222,7 +286,7 @@ New-OnPremiseHybridWorker Runbook が更新されて Az モジュールに対応
 
 Azure Automation の DNS レコードが更新されて Private Link に対応しました。 詳細については、[お知らせ](https://azure.microsoft.com/updates/azure-automation-updateddns-records/)を参照してください。
 
-### <a name="added-capability-to-keep-automation-runbooks--dsc-scripts-encrypted-by-default"></a>Automation の Runbook と DSC スクリプトを既定で暗号化された状態に保つ機能を追加
+### <a name="added-capability-to-keep-automation-runbooks-and-dsc-scripts-encrypted-by-default"></a>Automation の Runbook と DSC スクリプトを既定で暗号化された状態に保つ機能を追加
 
 **種類:** 新機能
 

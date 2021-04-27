@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: a7e709ba9a4de5ff77524a2d2b1b64a5933131a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 171e0c03dc6f246d0f56d11f793ca711b0082f49
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489414"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588294"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>HSM で保護されたキーを Key Vault にインポートする
 
@@ -33,7 +33,7 @@ HSM で保護されたキーの Key Vault への転送は、使用する HSM に
 
 |ベンダー名|ベンダーの種類|サポートされている HSM モデル|サポートされている HSM キーの転送方法|
 |---|---|---|---|
-|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|製造元、<br/>サービスとしての HSM|<ul><li>HSM の nShield ファミリ</li><li>サービスとしての nShield</ul>|**方法 1:** [nCipher BYOK](hsm-protected-keys-ncipher.md) (非推奨)<br/>**方法 2:** [新しい BYOK の方法を使用する](hsm-protected-keys-byok.md) (推奨)|
+|[nCipher](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|製造元、<br/>サービスとしての HSM|<ul><li>HSM の nShield ファミリ</li><li>サービスとしての nShield</ul>|**方法 1:** [nCipher BYOK](hsm-protected-keys-ncipher.md) (非推奨)。 この方法がサポートされるのは、<strong>2021 年 6 月 30 日</strong>までとなります。<br/>**方法 2:** [新しい BYOK の方法を使用する](hsm-protected-keys-byok.md) (推奨)|
 |Thales|Manufacturer|<ul><li>ファームウェア バージョンが 7.3 以降の Luna HSM 7 ファミリ</li></ul>| [新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
 |Fortanix|製造元、<br/>サービスとしての HSM|<ul><li>Self-Defending Key Management Service (SDKMS)</li><li>Equinix SmartKey</li></ul>|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|
 |Marvell|Manufacturer|以下を含む LiquidSecurity のすべての HSM<ul><li>ファームウェア バージョン 2.0.4 以降</li><li>ファームウェア バージョン 3.2 以降</li></ul>|[新しい BYOK の方法を使用する](hsm-protected-keys-byok.md)|

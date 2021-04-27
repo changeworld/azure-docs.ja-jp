@@ -13,12 +13,12 @@ author: williamdassafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 2/1/2021
-ms.openlocfilehash: 1f4bd28d2b95aeebe07fcad84d757327622d51f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 295889cf64d27761021dd09549a3366ea142516e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101690432"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752032"
 ---
 # <a name="automate-management-tasks-using-elastic-jobs-preview"></a>エラスティック ジョブ (プレビュー) を使用して管理タスクを自動化する
 
@@ -159,7 +159,7 @@ SQL Agent (SQL Server で利用できるほか、SQL Managed Instance にも含�
 
 #### <a name="job-history"></a>ジョブ履歴
 
-エラスティック ジョブの実行履歴は、"*ジョブ データベース*" の [テーブル jobs.job_executions を照会](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)することで確認できます。 記録から 45 日が経過した実行履歴については、システムのクリーンアップ ジョブにより削除されます。 45 日が経過する前に履歴を削除する場合には、"*ジョブ データベース*" で **sp_purge_history** ストアド プロシージャを呼び出してください。
+エラスティック ジョブの実行履歴は、"*ジョブ データベース*" の [テーブル jobs.job_executions を照会](elastic-jobs-tsql-create-manage.md#monitor-job-execution-status)することで確認できます。 記録から 45 日が経過した実行履歴については、システムのクリーンアップ ジョブにより削除されます。 45 日が経過する前に履歴を削除する場合には、"*ジョブ データベース*" で **sp_purge_jobhistory** ストアド プロシージャを呼び出してください。
 
 #### <a name="job-status"></a>ジョブの状態
 

@@ -2,20 +2,20 @@
 title: チュートリアル - Azure Resource Manager Bicep ファイルに関数を追加する
 description: Bicep ファイルに関数を追加して、値を作成します。
 author: mumian
-ms.date: 03/10/2021
+ms.date: 04/20/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 43dec6ceb21a6604bc0034b3f14b79ffd2cbe263
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102633157"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773803"
 ---
 # <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>チュートリアル: Azure Resource Manager Bicep ファイルに関数を追加する
 
-このチュートリアルでは、Bicep ファイルに[テンプレート関数](template-functions.md)を追加する方法について説明します。 関数を使用して動的に値を構築します。 システムに備わっているテンプレート関数に加えて、[ユーザー定義関数](./template-user-defined-functions.md)を作成することもできます。 このチュートリアルの所要時間は **7 分** です。
+このチュートリアルでは、Bicep ファイルに[テンプレート関数](template-functions.md)を追加する方法について説明します。 関数を使用して動的に値を構築します。 現在、Bicep ではユーザー定義関数をサポートしていません。 このチュートリアルの所要時間は **7 分** です。
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 

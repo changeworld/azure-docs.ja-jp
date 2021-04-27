@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: 顔認識, 顔認識ソフトウェア, 顔分析, 顔照合, 顔認識アプリ, 画像による顔検索, 顔認識検索
-ms.openlocfilehash: 26076289d8c6659abdd55fa805c27b13690feccd
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 30707dd844769f730f135a451cd5306ca7e402cb
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258743"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726990"
 ---
 # <a name="what-is-the-azure-face-service"></a>Azure Face サービスとは
 
@@ -33,7 +33,7 @@ Face サービスにはいくつかの異なる顔分析機能があり、その
 * [クイックスタート](./Quickstarts/client-libraries.md)は、サービスの呼び出しと結果の取得を短時間で行えるようにする、ステップバイステップの手順です。 
 * [攻略ガイド](./Face-API-How-to-Topics/HowtoDetectFacesinImage.md)には、より具体的またはカスタマイズした方法でサービスを使用するための手順が記載されています。
 * [概念の記事](./concepts/face-detection.md)では、サービスの機能と特長について詳しく説明します。
-* [チュートリアル](./Tutorials/FaceAPIinCSharpTutorial.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
+* [チュートリアル](./enrollment-overview.md)はより長文のガイドであり、より広範なビジネス ソリューションの 1 コンポーネントとしてこのサービスを使用する方法を示すものです。
 
 ## <a name="face-detection"></a>顔検出
 
@@ -64,7 +64,7 @@ Identify API も、Detection をベースとしており、"検出されたこ�
 
 ## <a name="find-similar-faces"></a>似た顔の検索
 
-Find Similar API では、ターゲットの顔と候補となる一連の顔との間で顔照合を行い、ターゲットの顔によく似ている一連の顔が検索されます。 これは、画像による顔検索を行う場合に便利です。 
+Find Similar API では、ターゲットの顔と候補となる一連の顔との間で顔照合を行い、ターゲットの顔によく似ている一連の顔が検索されます。 この操作は、画像による顔検索を行う場合に便利です。 
 
 **matchPerson** と **matchFace** の 2 つの動作モードがサポートされています。 **matchPerson** モードでは、[Verify API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a) を使用して同一人物についてフィルター処理が行われた後、似た顔が返されます。 **matchFace** モードでは、同一人物フィルターは無視されます。 同一人物のものであるかどうかに関係なく、似ている顔の候補のリストが返されます。
 

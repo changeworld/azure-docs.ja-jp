@@ -2,13 +2,13 @@
 title: 'クイックスタート: 概要'
 description: このクイックスタートでは、Defender for IoT のデプロイに関する基本的なワークフローを理解して作業を開始する方法について学習します。
 ms.topic: quickstart
-ms.date: 2/18/2021
-ms.openlocfilehash: aa26ea26a3fb0a08d931657cb7ad236c68972e2f
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.date: 04/17/2021
+ms.openlocfilehash: b1e7686e1d68d5a3f239320930d69f22c78e13cb
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384955"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750448"
 ---
 # <a name="quickstart-get-started-with-defender-for-iot"></a>クイックスタート: Defender for IoT での作業を開始する
 
@@ -17,10 +17,6 @@ ms.locfileid: "106384955"
 - Azure Defender for IoT ポータルでサブスクリプションとセンサーを登録します。
 - センサーとオンプレミス管理コンソール ソフトウェアをインストールします。
 - センサーと管理コンソールの初回のアクティブ化を実行します。
-
-## <a name="prerequisites"></a>前提条件
-
-- なし
 
 ## <a name="permission-requirements"></a>権限の要件
 
@@ -32,7 +28,7 @@ Azure Defender for IoT ポータル ツールに対するユーザー アクセ�
 
 | 権限 | セキュリティ閲覧者 | セキュリティ管理者 | サブスクリプションの共同作成者 | サブスクリプションの所有者 |
 |--|--|--|--|--|
-| Defender for IoT の画面とデータのすべてを表示する | ✓ | ✓ | ✓ | ✓ |
+| ソフトウェア、アクティブ化ファイル、および脅威インテリジェンス パッケージの詳細を表示してアクセスする  | ✓ | ✓ | ✓ | ✓ |
 | センサーをオンボードする  |  |  ✓ | ✓ | ✓ |
 | 料金を更新する  |  |  ✓ | ✓ | ✓ |
 | パスワードを回復する  | ✓  |  ✓ | ✓ | ✓ |
@@ -85,21 +81,20 @@ Azure Defender for IoT では、物理的な配置と仮想デプロイの両方
 1. オンプレミス管理コンソール ソフトウェアをインストールします。 詳細については、[Defender for IoT のインストール](how-to-install-software.md)に関する記事を参照してください。
 1. 管理コンソールをアクティブにして設定します。 詳細については、「[オンプレミス管理コンソールをアクティブにしてセットアップする](how-to-activate-and-set-up-your-on-premises-management-console.md)」を参照してください。
 
-## <a name="onboard-a-sensor"></a>センサーをオンボードする
+## <a name="onboard-a-sensor"></a>センサーをオンボードする ##
 
 センサーを Azure Defender for IoT に登録してセンサー アクティブ化ファイルをダウンロードし、センサーをオンボードします。
 
 1. センサー名を定義し、サブスクリプションに関連付けます。
+1. センサーの接続モードを選択します。
 
-1. センサーの管理モードを定義します。
+   - **クラウド接続センサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 さらに、アラート情報は、IoT ハブを通じて配信され、Azure Sentinel などの他の Azure サービスと共有できます。  Azure Defender for IoT ポータルからセンサーに脅威インテリジェンス パッケージを自動的にプッシュすることを選択することもできます。 詳細については、「[脅威インテリジェンスの調査とパッケージ](how-to-work-with-threat-intelligence-packages.md)」を参照してください。
 
-   - **クラウド接続センサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 さらに、アラート情報は、IoT ハブを通じて配信され、Azure Sentinel などの他の Azure サービスと共有できます。
-
-   - **ローカル管理のセンサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 エアギャップ ネットワークで作業していて、複数のローカル管理センサーによって検出されるすべての情報を一元的に表示したい場合は、オンプレミスの管理コンソールを使用します。 
+   - **ローカル管理センサー**:センサーによって検出された情報は、センサー コンソールに表示されます。 エアギャップ ネットワークで作業していて、複数のローカル管理センサーによって検出されるすべての情報を一元的に表示したい場合は、オンプレミスの管理コンソールを使用します。
 
 1. センサーのアクティブ化ファイルをダウンロードする
 
-詳細については、「[Defender for IoT ポータルでのセンサーのオンボードと管理](how-to-manage-sensors-on-the-cloud.md)」を参照してください。
+オンボードの詳細については、[Defender for IoT ポータルでのセンサーのオンボードと管理](how-to-manage-sensors-on-the-cloud.md)に関する記事を参照してください。
 
 ## <a name="install-and-set-up-the-sensor"></a>センサーをインストールして設定する
 
@@ -131,8 +126,8 @@ Azure Defender for IoT ポータルから ISO パッケージをダウンロー�
 
 Azure Sentinel を構成して Azure Sentinel にアラート情報を送信します。 「[Defender for IoT からのデータを Azure Sentinel に接続する](how-to-configure-with-sentinel.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次のステップ ##
 
-> [!div class="nextstepaction"]
-> [Azure Defender for IoT へようこそ](overview.md)
-> [Azure Defender for IoT のアーキテクチャ](architecture.md)
+[Azure Defender for IoT へようこそ](overview.md)
+
+[Azure Defender for IoT のアーキテクチャ](architecture.md)

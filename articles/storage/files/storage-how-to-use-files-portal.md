@@ -4,34 +4,35 @@ description: Azure portal で Azure ファイル共有を作成して管理す�
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 10/18/2018
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6a88124397812f7599ce54b46b23d22e626cf520
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7867a4bd60bb179c18fff49691072d683660f7e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629820"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717842"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>クイック スタート: Azure portal を使用した Azure ファイル共有の作成および管理 
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows、Linux、macOS でマウントできます。 このガイドでは、[Azure Portal](https://portal.azure.com/) を使用して Azure ファイル共有を操作する方法の基本について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+## <a name="create-a-storage-account"></a>ストレージ アカウントを作成する
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには:
 
 1. ダッシュボードからストレージ アカウントを選択します。
-2. ストレージ アカウント ページの **[サービス]** セクションで、**[ファイル]** を選択します。
-    ![ストレージ アカウントのサービス セクションのスクリーンショット: Files サービスの選択](media/storage-how-to-use-files-portal/create-file-share-1.png)
+1. ストレージ アカウント ページの **[サービス]** セクションで、**[ファイル]** を選択します。
+    
+    ![ストレージ アカウントの [データ ストレージ] セクションのスクリーンショット。[ファイル共有] を選択します。](media/storage-how-to-use-files-portal/create-file-share-1.png)
 
-3. **[File サービス]** ページの上部にあるメニューで、**[ファイル共有]** をクリックします。 **[新しいファイル共有]** ページが表示されます。
-4. **[名前]** で、「*myshare*」と入力します。
-5. **[OK]** をクリックして、Azure ファイル共有を作成します。
+1. **[File サービス]** ページの上部にあるメニューで、**[ファイル共有]** をクリックします。 **[新しいファイル共有]** ページが表示されます。
+1. **[名前]** に「*myshare*」と入力します。 **[階層]** では、 **[トランザクションが最適化されました]** を選択したままにします。
+1. **[作成]** を選択して、Azure ファイル共有を作成します。
 
 共有名は、すべて小文字の英字、数字、単一ハイフンにする必要があります。ただし、最初にハイフンを使用することはできません。 ファイル共有とファイルの名前付けの詳細については、「 [共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
 
@@ -60,20 +61,21 @@ Azure ファイル共有を作成したところで、SMB でファイル共有�
 Azure ファイル共有のルートで *myDirectory* という名前の新しいディレクトリを作成するには:
 
 1. **[File サービス]** ページで、**myshare** ファイル共有を選択します。 ファイル共有の名前ページが開きます。
-2. ページ上部のメニューで、**[+ ディレクトリの追加]** を選択します。 **[新しいディレクトリ]** ページが表示されます。
-3. 「*myDirectory*」と入力し、**[OK]** をクリックします。
+1. ページ上部のメニューで、**[+ ディレクトリの追加]** を選択します。 **[新しいディレクトリ]** ページが表示されます。
+1. 「*myDirectory*」と入力し、**[OK]** をクリックします。
 
 #### <a name="upload-a-file"></a>ファイルをアップロードする 
 ファイルのアップロードを行うには、最初にアップロードされるファイルを作成または選択する必要があります。 これは、必要に応じた方法で実行できます。 アップロードしたいファイルを選択したら:
 
 1. **myDirectory** ディレクトリをクリックします。 **myDirectory** パネルが開きます。
-2. 上部のメニューで **[アップロード]** をクリックします。 **[ファイルのアップロード]** パネルが開きます。  
+1. 上部のメニューで、**[アップロード]** を選択します。 **[ファイルのアップロード]** パネルが開きます。  
+    
     ![[ファイルのアップロード] パネルのスクリーンショット](media/storage-how-to-use-files-portal/upload-file-1.png)
 
-3. フォルダー アイコンをクリックして、ローカル ファイルを参照するためのウィンドウを開きます。 
-4. ファイルを選択して **[開く]** をクリックします。 
-5. **[ファイルのアップロード]** ページで、ファイル名を確認して **[アップロード]** をクリックします。
-6. 完了したら、ファイルが **myDirectory** ページの一覧に表示されます。
+1. フォルダー アイコンをクリックして、ローカル ファイルを参照するためのウィンドウを開きます。 
+1. ファイルを選択して **[開く]** をクリックします。 
+1. **[ファイルのアップロード]** ページで、ファイル名を確認して **[アップロード]** をクリックします。
+1. 完了したら、ファイルが **myDirectory** ページの一覧に表示されます。
 
 #### <a name="download-a-file"></a>ファイルをダウンロードする
 ファイルを右クリックすると、アップロードしたファイルのコピーをダウンロードできます。 ダウンロード ボタンをクリックした後の正確なエクスペリエンスは、使用しているオペレーティング システムとブラウザーによって異なります。

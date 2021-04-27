@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/08/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3307d3aed422c3eab63412388244ef14ef3be699
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103761"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750998"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Azure Security Center に対する今後の重要な変更
 
@@ -30,7 +30,8 @@ ms.locfileid: "107103761"
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
 | [21 個の推奨事項をセキュリティ コントロール間で移動](#21-recommendations-moving-between-security-controls)                                                           | 2021 年 4 月                |
 | ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | 2021 年 4 月                |
-| [AWS からの推奨事項を一般提供 (GA) 用にリリース](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **2021 年 8 月**             |
+| [ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)          | 2021 年 6 月                 |
+| [AWS からの推奨事項を一般提供 (GA) 用にリリース](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **2021 年 8 月**           |
 | [SQL データ分類の推奨事項を改善](#enhancements-to-sql-data-classification-recommendation)                                                     | 2021 年第 2 四半期                   |
 |                                                                                                                                                                       |                           |
 
@@ -59,6 +60,12 @@ ms.locfileid: "107103761"
 - **クラウド サービス ロールの OS バージョンを更新する必要がある** - Azure では既定で、ゲスト OS は、サービス構成 (.cscfg) に指定した Windows Server 2016 などの OS ファミリ内でサポートされている最新のイメージに定期的に更新されます。
 - **Kubernetes Service を脆弱性のない Kubernetes バージョンにアップグレードする必要がある** - この推奨事項の評価は、目標とする広範囲には及んでいません。 この推奨事項の現在のバージョンは、最終的に、よりお客様のセキュリティ ニーズに合った拡張バージョンに置き換えられます。
 
+
+### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>ISO 27001 のレガシ実装を新しい ISO 27001:2013 で置き換え予定
+
+ISO 27001 のレガシ実装は Security Center の規制コンプライアンス ダッシュボードから削除されます。 Security Center で ISO 27001 へのコンプライアンスを追跡している場合は、関連するすべての管理グループまたはサブスクリプションに対して新しい ISO 27001:2013 標準をオンボードすると、現在のレガシ ISO 27001 が間もなくダッシュボードから削除されます。
+
+:::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="ISO 27001 のレガシ実装の削除に関するメッセージが表示されている Security Center の規制コンプライアンス ダッシュボード。" lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
 ### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>AWS からの推奨事項を一般提供 (GA) 用にリリース
 

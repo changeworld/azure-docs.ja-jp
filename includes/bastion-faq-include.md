@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b58040917ed3d3345a35b7acbe31b6b500f05562
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: c0ca74b6cf63e3c81d830eca76eea6815548faa1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073580"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732652"
 ---
 ### <a name="do-i-need-a-public-ip-on-my-virtual-machine-to-connect-via-azure-bastion"></a><a name="publicip"></a>Azure Bastion 経由で接続するうえで、自分の仮想マシンにパブリック IP は必要ですか?
 
@@ -51,7 +51,7 @@ RDP と SSH はどちらも使用量ベースのプロトコルです。 セッ�
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>どのブラウザーがサポートされていますか?
 
-Windows では Microsoft Edge ブラウザーまたは Google Chrome をご使用ください。 Apple Mac では、Google Chrome ブラウザーをご使用ください。 Microsoft Edge Chromium も Windows と Mac の両方でサポートされます。
+ブラウザーは HTML 5 をサポートしている必要があります。 Windows では Microsoft Edge ブラウザーまたは Google Chrome をご使用ください。 Apple Mac では、Google Chrome ブラウザーをご使用ください。 Microsoft Edge Chromium も Windows と Mac の両方でサポートされます。
 
 ### <a name="where-does-azure-bastion-store-customer-data"></a><a name="data"></a>顧客データは Azure Bastion によってどこに格納されますか?
 

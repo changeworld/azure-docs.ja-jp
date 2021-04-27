@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0d6d5a08ea85ebb666acc0336f1e1d7ec5e097da
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e82e9fc93bf8c816fcbfd5869156745dea630313
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044670"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517557"
 ---
 # <a name="claim-sets"></a>要求セット
 
@@ -30,11 +30,66 @@ Microsoft Azure Attestation を使用したエンクレーブの構成証明の�
 
 ポリシーの作成者が SGX 構成証明ポリシーの承認規則を定義する際に使用する要求。
 
-- **x-ms-sgx-is-debuggable**: エンクレーブでデバッグが有効になっているかどうかを示すブール値
-- **x-ms-sgx-product-id**: SGX エンクレーブの製品 ID 値 
-- **x-ms-sgx-mrsigner**: クォートの "mrsigner" フィールドを 16 進数でエンコードした値
-- **x-ms-sgx-mrenclave**: クォートの "mrenclave" フィールドを 16 進数でエンコードした値
-- **x-ms-sgx-svn**: クォートでエンコードされたセキュリティ バージョン番号 
+- **x-ms-sgx-is-debuggable**: エンクレーブのデバッグが有効になっているかどうかを示すブール値。
+  
+  SGX エンクレーブは、デバッグが無効でも有効でも読み込むことができます。 エンクレーブでこのフラグが true に設定されている場合、エンクレーブ コードのデバッグ機能が有効になります。 これには、エンクレーブのメモリにアクセスする機能が含まれます。 そのため、このフラグは開発目的でのみ true に設定することをお勧めします。 運用環境で有効にした場合、SGX のセキュリティ保証は保持されません。
+  
+  Azure Attestation ユーザーは、構成証明ポリシーを使用して、SGX エンクレーブに対してデバッグが無効になっているかどうかを確認できます。 ポリシー規則が追加されると、悪意のあるユーザーがエンクレーブのコンテンツにアクセスできるようにデバッグ サポートを有効にすると、構成証明は失敗します。
+
+- **x-ms-sgx-product-id**: SGX エンクレーブの製品 ID を示す整数値。
+
+  製品 ID は、エンクレーブの作成者によって各エンクレーブに割り当てられます。 製品 ID を使用すると、エンクレーブの作成者は、同じ MRSIGNER を使用して署名されたエンクレーブをセグメント化できます。 構成証明ポリシーに検証規則を追加することにより、顧客は目的のエンクレーブを使用しているかどうかを確認できます。 エンクレーブの製品 ID がエンクレーブの作成者によって発行された値と一致しない場合、構成証明は失敗します。
+
+- **x-ms-sgx-mrsigner**: SGX エンクレーブの作成者を識別する文字列値。
+
+  MRSIGNER は、エンクレーブ バイナリの署名に使用される、エンクレーブの作成者の公開キーのハッシュです。 構成証明ポリシーを介して MRSIGNER を検証することにより、顧客は信頼されたバイナリがエンクレーブ内で実行されているかどうかを確認できます。 ポリシー要求がエンクレーブの作成者の MRSIGNER と一致しない場合は、エンクレーブ バイナリが信頼できるソースによって署名されていないことを意味し、構成証明は失敗します。
+  
+  エンクレーブの作成者がセキュリティ上の理由から MRSIGNER をローテーションすることを希望する場合は、バイナリが更新される前に Azure Attestation ポリシーを更新して、新しい MRSIGNER 値と古い値をサポートする必要があります。 そうしないと、承認チェックが失敗し、結果的に構成証明が失敗します。
+  
+  構成証明ポリシーは、次の形式を使用して更新する必要があります。 
+ 
+  #### <a name="before-key-rotation"></a>キーのローテーション前
+ 
+   ```
+    version= 1.0;
+    authorizationrules 
+    {
+    [ type=="x-ms-sgx-is-debuggable", value==false]&&
+    [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+    };
+  ```
+
+   #### <a name="during-key-rotation"></a>キーのローテーション中
+
+    ```
+      version= 1.0;
+      authorizationrules 
+      {
+      [ type=="x-ms-sgx-is-debuggable", value==false]&&
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner1"] => permit(); 
+      [ type=="x-ms-sgx-is-debuggable", value==false ]&& 
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
+      };
+    ```
+
+   #### <a name="after-key-rotation"></a>キーのローテーション後
+
+    ```
+      version= 1.0;
+      authorizationrules 
+      { 
+      [ type=="x-ms-sgx-is-debuggable", value==false]&& 
+      [ type=="x-ms-sgx-mrsigner", value=="mrsigner2"] => permit(); 
+      };
+    ```
+
+- **x-ms-sgx-mrenclave**: エンクレーブ メモリに読み込まれているコードとデータを識別する文字列値。 
+
+  MRENCLAVE は、エンクレーブ バイナリの確認に使用できるエンクレーブ測定値の 1 つです。 これは、エンクレーブ内で実行されているコードのハッシュです。 測定値は、エンクレーブ バイナリ コードが変更されるたびに変わります。 構成証明ポリシーを介して MRENCLAVE を検証することにより、顧客は対象のバイナリがエンクレーブ内で実行されているかどうかを確認できます。 ただし、MRENCLAVE は既存のコードに小さな変更が加えられるたびに頻繁に変更されるようになっているため、構成証明ポリシー内で MRSIGNER 検証を使用して、エンクレーブ バイナリを確認することをお勧めします。
+
+- **x-ms-sgx-svn**: SGX エンクレーブのセキュリティ バージョン番号を示す整数値。
+
+  セキュリティ バージョン番号 (SVN) は、エンクレーブの作成者によって SGX エンクレーブの各バージョンに割り当てられます。 エンクレーブ コードでセキュリティの問題が検出された場合、脆弱性の修正後、エンクレーブの作成者によって SVN 値が増分されます。 セキュリティで保護されていないエンクレーブ コードと対話できないように、顧客は構成証明ポリシーに検証規則を追加できます。 エンクレーブ コードの SVN がエンクレーブの作成者によって推奨されているバージョンと一致しない場合、構成証明は失敗します。
 
 以下の要求は非推奨と見なされてはいますが、完全にサポートされており、今後も引き続き追加されます。 非推奨となっていない要求名の使用をお勧めします。
 

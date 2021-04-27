@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 7d01f3d5efeee2db5f468a0fe6217d1ff3c313a7
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 493752a3857b80b43668b6bf1b20480604442955
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375017"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567997"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>チュートリアル: 既存のカスタム ドメインを Azure Spring Cloud にマップする
 
@@ -30,7 +30,7 @@ ms.locfileid: "107375017"
 
 ## <a name="keyvault-private-link-considerations"></a>キー コンテナーのプライベート リンクに関する考慮事項
 
-Azure Spring Cloud の管理 IP は、Azure Trusted Microsoft サービスには含まれません。 そのため、プライベート エンドポイント接続によって保護されたキー コンテナーから Azure Spring Cloud が証明書を読み込めるようにするには、Azure Key Vault のファイアウォールに以下の IP を追加する必要があります。
+Azure Spring Cloud の管理 IP は、まだ Azure Trusted Microsoft サービスには含まれていません。 そのため、プライベート エンドポイント接続によって保護されたキー コンテナーから Azure Spring Cloud が証明書を読み込めるようにするには、Azure Key Vault のファイアウォールに以下の IP を追加する必要があります。
 
 ```
 20.53.123.160 52.143.241.210 40.65.234.114 52.142.20.14 20.54.40.121 40.80.210.49 52.253.84.152 20.49.137.168 40.74.8.134 51.143.48.243

@@ -3,7 +3,6 @@ title: チュートリアル - Key Vault における証明書の自動ローテ
 description: Azure portal を使用して、Azure Key Vault における証明書の自動ローテーション頻度を更新する方法について紹介するチュートリアル。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ec648f02918717dad6b739aa6ae99206bcec1d6e
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: ec88dfc7ded7ecb1d640eb4d73ef4c8045e549cf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581819"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791987"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>チュートリアル:Key Vault における証明書の自動ローテーションを構成する
 
@@ -80,10 +79,12 @@ Key Vault では、CA との確立されたパートナーシップを通じて�
    - **有効期間**: 月単位の値を入力します。 セキュリティ プラクティスとして、作成する証明書の有効期間は短くすることをお勧めします。 新しく作成された証明書の有効期間は、既定では 12 か月です。
    - **有効期間のアクション タイプ**: 証明書の自動更新とアラート アクションを選択し、 **[有効期間の割合]** または **[有効期限までの日数]** を更新します。 既定では、証明書の自動更新が、その有効期間の 80% に設定されます。 ドロップダウン メニューから次のいずれかのオプションを選択します。
 
-        |  特定のタイミングで自動的に更新する| 特定のタイミングですべての連絡先にメールを送信する |
-        |-----------|------|
-        |このオプションを選択すると、自動ローテーションが "*オンになります*"。 | このオプションを選択すると、自動ローテーションが "*実行されません*"。連絡先にアラートが送信されるだけです。|
-         You can learn about [setting up Email contact here](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)
+      |  特定のタイミングで自動的に更新する| 特定のタイミングですべての連絡先にメールを送信する |
+      |-----------|------|
+      |このオプションを選択すると、自動ローテーションが "*オンになります*"。 | このオプションを選択すると、自動ローテーションが "*実行されません*"。連絡先にアラートが送信されるだけです。|
+      
+      メールの連絡先を設定する方法については、[こちら](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)を参照してください
+
 1. **［作成］** を選択します
 
 ![証明書のライフサイクル](../media/certificates/tutorial-rotate-cert/create-cert-lifecycle.png)
@@ -134,7 +135,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-パラメーターの詳細については、[az keyvault certificate](/cli/azure/keyvault/certificate#az-keyvault-certificate-set-attributes) に関するページを参照してください。
+パラメーターの詳細については、[az keyvault certificate](/cli/azure/keyvault/certificate#az_keyvault_certificate_set_attributes) に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

@@ -2,17 +2,17 @@
 title: チュートリアル - Azure Red Hat OpenShift クラスターを削除する
 description: このチュートリアルでは、Azure CLI を使用して Azure Red Hat OpenShift クラスターを削除する方法を学習します
 author: sakthi-vetrivel
-ms.custom: fasttrack-edit
+ms.custom: fasttrack-edit, devx-track-azurecli
 ms.author: suvetriv
 ms.topic: tutorial
 ms.service: azure-redhat-openshift
 ms.date: 04/24/2020
-ms.openlocfilehash: 3830942d63c3db9646b84d43d65f7c68cb5fcf9e
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 65bb27f1f85b7a26e35074da84cfc27b2a5761a1
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102209795"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484763"
 ---
 # <a name="tutorial-delete-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターを削除する
 

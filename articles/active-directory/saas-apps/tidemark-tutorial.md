@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c9e1de7b5dee8e351cd8744287c07b0bbb174512
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8cbccc3fb4cc513d7c86253ae07fbced4626a15e
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92516462"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599657"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>チュートリアル: Azure Active Directory と Tidemark の統合
 
@@ -113,7 +113,7 @@ Tidemark で Azure AD シングル サインオンを構成するには、次の
     - `https://<subdomain>.tidemark.net/saml`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Tidemark クライアント サポート チーム](http://www.tidemark.com/contact-us)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、Tidemark クライアント サポート チームにお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして要件のとおりに指定したオプションからの **証明書 (Base64)** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -131,7 +131,7 @@ Tidemark で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-tidemark-single-sign-on"></a>Tidemark シングル サインオンの構成
 
-**Tidemark** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を [Tidemark サポート チーム](http://www.tidemark.com/contact-us)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Tidemark** 側でシングル サインオンを構成するには、ダウンロードした **証明書 (Base64)** と Azure portal からコピーした適切な URL を Tidemark サポート チームに送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -185,7 +185,7 @@ Tidemark で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-tidemark-test-user"></a>Tidemark のテスト ユーザーの作成
 
-このセクションでは、Tidemark で Britta Simon というユーザーを作成します。 [Tidemark サポート チーム](http://www.tidemark.com/contact-us)と連携して、Tidemark プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Tidemark で Britta Simon というユーザーを作成します。 Tidemark サポート チームと連携して、Tidemark プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

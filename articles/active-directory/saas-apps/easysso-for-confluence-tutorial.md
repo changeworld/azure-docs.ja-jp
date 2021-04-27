@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/24/2020
+ms.date: 04/13/2021
 ms.author: jeedes
-ms.openlocfilehash: 325f6ad7d9685fac17e17b28c4ffbe31b1245cca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef121112bb4ff3ff6a297677a5c713f642cb3b78
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734531"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107519539"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-confluence"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EasySSO for Confluence の統合
 
@@ -37,10 +37,10 @@ ms.locfileid: "98734531"
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* EasySSO for Confluence では、**SP および IDP** Initiated SSO がサポートされます
-* EasySSO for Confluence では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* EasySSO for Confluence では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
+* EasySSO for Confluence では、**Just In Time** ユーザー プロビジョニングがサポートされます。
 
-## <a name="adding-easysso-for-confluence-from-the-gallery"></a>ギャラリーからの EasySSO for Confluence の追加
+## <a name="add-easysso-for-confluence-from-the-gallery"></a>ギャラリーからの EasySSO for Confluence の追加
 
 Azure AD への EasySSO for Confluence の統合を構成するには、ギャラリーからマネージド SaaS アプリの一覧に EasySSO for Confluence を追加する必要があります。
 
@@ -50,7 +50,6 @@ Azure AD への EasySSO for Confluence の統合を構成するには、ギャ�
 1. 新しいアプリケーションを追加するには、 **[新しいアプリケーション]** を選択します。
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**EasySSO for Confluence**」と入力します。
 1. 結果のパネルから **[EasySSO for Confluence]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
-
 
 ## <a name="configure-and-test-azure-ad-sso-for-easysso-for-confluence"></a>EasySSO for Confluence の Azure AD SSO の構成とテスト
 
@@ -71,7 +70,7 @@ EasySSO for Confluence で Azure AD SSO を構成してテストするには、�
 
 1. Azure portal の **EasySSO for Confluence** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、 **[基本的な SAML 構成]** の鉛筆アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
@@ -129,9 +128,7 @@ EasySSO for Confluence で Azure AD SSO を構成してテストするには、�
 1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
 1. アプリケーションの一覧で、 **[EasySSO for Confluence]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
-
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
-
 1. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧から **[B.Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 1. ユーザーにロールが割り当てられることが想定される場合は、 **[ロールの選択]** ドロップダウンからそれを選択できます。 このアプリに対してロールが設定されていない場合は、[既定のアクセス] ロールが選択されていることを確認します。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。

@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 03/09/2021
 ms.author: ambapat
-ms.openlocfilehash: c2548b1669366564809ed2fde725cb3399922a29
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ecfcff00e6f44f5c739513c063baaa3fa02a3db
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803239"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753302"
 ---
 Azure Key Vault サービスでは、コンテナーとマネージド HSM という 2 つのリソースの種類がサポートされています。 次の 2 つのセクションでは、それぞれのサービスの制限について説明します。
 
@@ -65,7 +65,7 @@ Azure Key Vault サービスでは、コンテナーとマネージド HSM と�
 #### <a name="azure-private-link-integration"></a>Azure Private Link の統合
 
 > [!NOTE]
-> プライベート エンドポイントが有効なキー コンテナーのサブスクリプションあたりの上限は、調整可能です。 以下に記載した上限は、あくまで既定値です。 サービスに適用される上限の引き上げをご希望の場合には、akv-privatelink@microsoft.com まで電子メールをお送りください。 いただいたご依頼は、ケースごとの事情を考慮して承認します。
+> プライベート エンドポイントが有効なキー コンテナーのサブスクリプションあたりの上限は、調整可能です。 以下に記載した上限は、あくまで既定値です。 サービスに適用される上限の引き上げをご希望の場合には、サポート リクエストを作成してください。これは個別に評価されます。
 
 | リソース | 制限 |
 | -------- | -----:|

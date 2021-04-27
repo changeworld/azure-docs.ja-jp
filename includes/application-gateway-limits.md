@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: c98d88d66e89df3efe186212d8c004ec2a65158d
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 1166585c7291c4fe0d78cbc9540e3f08f985db6c
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106450362"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107590197"
 ---
 | リソース | 制限 | Note |
 | --- | --- | --- |
@@ -37,7 +37,7 @@ ms.locfileid: "106450362"
 | 書き換えルール セットごとの条件の数|40| |
 | コンカレント WebSocket 接続 |中規模のゲートウェイ 20k<sup>2</sup><br> 大規模のゲートウェイ 50k<sup>2</sup>| |
 | URL の最大長|32KB| |
-| HTTP/2 向けヘッダーの最大サイズ |4KB| |
+| HTTP/2 向けヘッダーの最大サイズ |16 KB| |
 | 最大ファイル アップロード サイズ (標準) |2 GB | |
 | 最大ファイル アップロード サイズ (WAF) |中規模の V1 WAF ゲートウェイ、100 MB<br>大規模の V1 WAF ゲートウェイ、500 MB<br>V2 WAF、750 MB| |
 | WAF の本文サイズの制限 (ファイルがない場合)|128 KB||

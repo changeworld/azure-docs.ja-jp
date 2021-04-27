@@ -3,12 +3,12 @@ title: 新機能 リリース ノート - Azure Event Grid
 description: 最新のリリース ノート、既知の問題、バグの修正、非推奨の機能、予定されている変更点など、Azure Event Grid の新着情報について説明します。
 ms.topic: overview
 ms.date: 07/23/2020
-ms.openlocfilehash: da0b26e4f163f428e6955a37636ceb19bb34abc5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f135b25f28002c037dd24fa0cb3bb7476a06309f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105107535"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389589"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure Event Grid の新機能
 
@@ -21,6 +21,24 @@ Azure Event Grid は随時改善されています。 常に最新の開発情�
 - バグの修正
 - 非推奨の機能
 - 変更の計画
+
+## <a name="610-preview-2020-10"></a>6.1.0-preview (2020-10)
+- [システム トピックのマネージド ID](enable-identity-system-topics.md)
+- [カスタム配信プロパティ](delivery-properties.md)
+- [ストレージ キュー - メッセージの Time to Live (TTL)](delivery-properties.md#configure-time-to-live-on-outgoing-events-to-azure-storage-queues)
+- [高度なフィルター処理の機能強化](event-filtering.md#advanced-filtering)
+    - 受信イベントの配列データに対するフィルター処理のサポート
+    - CloudEvents 拡張機能のコンテキスト属性に対するフィルター処理の許可
+    - 新しい演算子
+        - StringNotContains
+        - StringNotBeginsWith
+        - StringNotEndsWith
+        - NumberInRange
+        - NumberNotInRange
+        - IsNull
+        - IsNotNull
+- [ Event Grid スキーマから CloudEvents 1.0 スキーマへの変換の許可](cloudevents-schema.md#configure-event-grid-for-cloudevents)
+        
 
 ## <a name="600-2020-06"></a>6.0.0 (2020-06)
 - 一般提供 (GA) の新しいサービス API バージョン 2020-06-01 に対するサポートが追加されました。

@@ -2,18 +2,20 @@
 title: クイックスタート - Azure portal で Azure Confidential Computing 仮想マシンを作成する
 description: Azure portal でコンフィデンシャル コンピューティング仮想マシンをすばやく作成する方法を説明します。実際に自分でデプロイしてみましょう。
 author: JBCook
+ms.author: JenCook
+ms.date: 04/23/2020
+ms.topic: quickstart
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
-ms.topic: quickstart
-ms.date: 04/23/2020
-ms.author: JenCook
-ms.openlocfilehash: 3f0984acd66bd5d6c148be8451938d3152fb9ca7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom:
+- mode-portal
+ms.openlocfilehash: f43229570f6bab942cc57a2ea3be163d37f02f89
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102566670"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536186"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Confidential Computing VM をデプロイする
 
@@ -148,7 +150,7 @@ Linux VM への接続の詳細については、[ポータルを使用して Azu
 
 Ubuntu 18.04 LTS Gen 2 イメージが実行されている DCsv2 シリーズ仮想マシンに対し、手順に従って [OE SDK](https://github.com/openenclave/openenclave) をインストールします。 
 
-仮想マシンが Ubuntu 16.04 LTS Gen 2 で実行されている場合は、[Ubuntu 16.04 のインストール手順](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_16.04.md)に従う必要があります。
+仮想マシンが Ubuntu 18.04 LTS Gen 2 で実行されている場合は、[Ubuntu 18.04 のインストール手順](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)に従う必要があります。
 
 #### <a name="1-configure-the-intel-and-microsoft-apt-repositories"></a>1.Intel と Microsoft APT のリポジトリを構成する
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 9f368a4aebc4d5de38ebbab800241366650633e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92553e9d598823ee1b812a4f07480dec380b2490
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936585"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739424"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>チュートリアル:Zscaler を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -76,6 +76,10 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 ## <a name="configuring-automatic-user-provisioning-to-zscaler"></a>Zscaler への自動ユーザー プロビジョニングの構成
 
 このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Zscaler のユーザーやグループを作成、更新、無効化する手順について説明します。
+
+
+> [!NOTE]
+> Zscaler でドメインを作成するための[サポート チケット](https://help.zscaler.com/)を開きます。
 
 > [!TIP]
 > Zscaler では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Zscaler シングル サインオンのチュートリアル](zscaler-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。

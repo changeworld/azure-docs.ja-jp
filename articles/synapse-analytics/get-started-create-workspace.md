@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: b22954edf4f3a5a935c470326aa43bd24ee2d708
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 4b7251be220c012ca51970863ac2eed55d46d711
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366064"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751150"
 ---
 # <a name="creating-a-synapse-workspace"></a>Synapse ワークスペースの作成
 
@@ -43,7 +43,10 @@ ms.locfileid: "107366064"
 以下のフィールドを設定します。
 
 1. **[ワークスペース名]** - グローバルに一意の任意の名前を選択します。 このチュートリアルでは、**myworkspace** を使用します。
-1. **[リージョン]** - 任意のリージョンを選択します。
+1. **[リージョン]** - クライアント アプリケーションまたはサービス (Azure VM、Power BI、Azure Analysis Service など) と、データを含むストレージ (Azure Data Lake Storage、Azure Cosmos DB 分析ストレージ) が配置されているリージョンを選択します。
+
+> [!NOTE]
+> クライアント アプリケーションやストレージが併置されていないワークスペースは、さまざまなパフォーマンス上の問題の根本原因になる可能性があります。 データやクライアントが複数のリージョンに配置されている場合は、データやクライアントが併置されるリージョンごとに個別のワークスペースを作成することができます。
 
 **[Data Lake Storage Gen 2 の選択]** で、次の操作を行います。
 
@@ -66,14 +69,22 @@ Azure Synapse ワークスペースが作成された後、Synapse Studio を開
 * `https://web.azuresynapse.net` にアクセスし、ワークスペースにサインインします。
 
 ## <a name="place-sample-data-into-the-primary-storage-account"></a>プライマリ ストレージ アカウントにサンプル データを配置する
-このファースト ステップ ガイドの多くの例では、ニューヨーク市のタクシー データの 100,000 行の小さなサンプル データセットを使用します。 まず、ワークスペース用に作成したプライマリ ストレージ アカウントにこれを配置します。
+このファースト ステップ ガイドの多くの例では、ニューヨーク市のタクシー データから成る 100,000 行の小さなサンプル データセットを使用します。 まず、ワークスペース用に作成したプライマリ ストレージ アカウントにこれを配置します。
 
 * このファイルをお使いのコンピューターにダウンロードします (https://azuresynapsestorage.blob.core.windows.net/sampledata/NYCTaxiSmall/NYCTripSmall.parquet ) 
 * Synapse Studio で、[データ] ハブに移動します。 
 * **[リンク済み]** を選択します。
-* **[Azure Data Lake Storae Gen2]** カテゴリの下に、**myworkspace ( プライマリ - contosolake )** のような名前の項目が表示されます。
+* **[Azure Data Lake Storage Gen2]** カテゴリの下に、**myworkspace ( プライマリ - contosolake )** のような名前の項目が表示されます。
 * **[users (Primary)]\(ユーザー (プライマリ)\)** という名前のコンテナーを選択します。
 * **[アップロード]** を選択し、ダウンロードした `NYCTripSmall.parquet` ファイルを選択します。
+
+Parquet ファイルをアップロードしたら、等価な 2 つの URI で使用できるようになります。
+* `https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet` 
+* `abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet`
+
+このチュートリアルの後の例では、UI の **contosolake** を、ワークスペースで選択したプライマリ ストレージ アカウントの名前で置き換えてください。
+
+
 
 ## <a name="next-steps"></a>次のステップ
 

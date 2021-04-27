@@ -6,13 +6,13 @@ author: johndowns
 ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
-ms.date: 03/24/2021
-ms.openlocfilehash: 929adb0be948339af033d85b0dabd7e1cedf353e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: e939aec8f1cf5fa615904bb81bad82ea3cf22c61
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561748"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587478"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure Front Door 用 Azure Resource Manager テンプレート
 
@@ -23,7 +23,10 @@ ms.locfileid: "105561748"
 
 | サンプル | 説明 |
 |-|-|
+| [Front Door (簡易作成)](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium/) | エンドポイント、配信元グループ、配信元、ルートを含む基本的な Front Door プロファイルを作成します。  |
 | [[ルール セット]](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | Front Door のプロファイルとルール セットを作成します。  |
+| [マネージド ルール セットを使用する WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-waf-managed/) | マネージド ルール セットを使用して、Front Door プロファイルと WAF を作成します。  |
+| [カスタム ルールを使用する WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-waf-custom/) | カスタム ルールを使用して、Front Door プロファイルと WAF を作成します。  |
 |**App Service オリジン**| **説明** |
 | [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | パブリック エンドポイントを使用する App Service アプリと Front Door プロファイルを作成します。  |
 | [Private Link を使用する App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | プライベート エンドポイントを使用する App Service アプリと Front Door プロファイルを作成します。  |

@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 03/24/2021
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: bb09a25d7ea242dfafd7d853015ae8e127b13883
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 652f98659f96b36e3185432e50d9d36dc569bd43
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106383407"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537945"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Azure Synapse Analytics とは
 
@@ -55,21 +55,14 @@ Azure Synapse には Azure Data Factory と同じデータ統合エンジンと�
 * データ フロー アクティビティを使用したコードフリーの ETL
 * ノートブック、Spark ジョブ、ストアド プロシージャ、SQL スクリプトなどを調整する
 
-## <a name="unified-management-monitoring-and-security"></a>統合された管理、監視、およびセキュリティ
+## <a name="unified-experience"></a>統合エクスペリエンス 
 
-Azure Synapse は、エンタープライズが分析リソースを管理し、使用状況とアクティビティを監視し、セキュリティを適用するための唯一の方法を提供します。
+**Synapse Studio** は、ソリューションの構築、保守、セキュリティ保護をすべて 1 つのユーザー エクスペリエンスで行う単一の手段を企業に提供します。
 
-* ユーザーをロールに割り当てて、分析リソースへのアクセスを簡素化
-* データとコードに対するきめ細かなアクセス制御
-* SQL と Spark 全体のリソース、使用状況、およびユーザーを監視するための単一のダッシュボード
-
-## <a name="unified-experience"></a>統合エクスペリエンス
-
-**Synapse Studio** のユーザー エクスペリエンスには、データ エンジニアに必要なすべてのものがまとまっています。 優れた分析ソリューションを構築するために必要なすべてのタスクを実行できます。
-
-* データ エンジニアの主要なタスクを 1 か所に集約: 取り込み、探索、準備、調整、視覚化
-* SQL または Spark コードを記述するための業界最高水準の生産性: 作成、デバッグ、およびパフォーマンスの最適化
-* エンタープライズ CI/CD プロセスとの統合
+* 主要なタスク (取り込み、調査、準備、調整、視覚化) を実行する
+* SQL と Spark 全体のリソース、使用状況、ユーザーを監視する
+* ロールベースのアクセス制御を使用して分析リソースへのアクセスを単純化する
+* SQL または Spark コードを記述し、エンタープライズ CI/CD プロセスと統合する
 
 ## <a name="engage-with-the-synapse-community"></a>Synapse コミュニティへの参加
 

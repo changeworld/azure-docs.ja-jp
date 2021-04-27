@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 392b1a1650ab40951704d003f2a5e5337cf3c0f5
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006159"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566709"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Azure Data Factory と Azure Data Share を使用したデータ統合
 
@@ -64,12 +64,9 @@ Azure Data Factory では、リンクされたサービスによって外部リ�
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 
-1. 作成ページは、パイプライン、データセット、データ フロー、トリガー、リンクされたサービスなどのデータ ファクトリ リソースを作成する場所です。 リンクされたサービスを作成するには、右下隅の **[接続]** ボタンをクリックします。
+1. リンク サービスを作成するには、左側のバーにある **[管理]** ハブを選択して、 **[接続]** ペインの **[リンクされたサービス]** を選択し、 **[New]\(新規\)** を選択して新しいリンク サービスを追加します。
 
     ![ポータルの構成 2](media/lab-data-flow-data-share/configure2.png)
-1. リンクされたサービスを新たに追加するには、[接続] タブで **[新規]** をクリックします。
-
-    ![ポータルの構成 3](media/lab-data-flow-data-share/configure3.png)
 1. 最初に構成するリンクされたサービスは Azure SQL DB です。 検索バーを使用して、データ ストアの一覧をフィルタリングできます。 **[Azure SQL Database]** タイルをクリックして [続行] をクリックします。
 
     ![ポータルの構成 4](media/lab-data-flow-data-share/configure-4.png)
@@ -99,9 +96,11 @@ Azure Data Factory では、リンクされたサービスによって外部リ�
 
 「*マッピング データ フローを使用してデータを変換する*」セクションでは、マッピング データ フローを作成します。 マッピング データ フローを作成する前に、デバッグ モードを有効にしておくことをお勧めします。これにより、アクティブな Spark クラスターで変換ロジックを数秒でテストできます。
 
-デバッグを有効にするには、ファクトリ上部のバーにある **[Data flow debug]\(データ フローのデバッグ\)** スライダーをクリックします。 確認のダイアログがポップアップ表示されたら [OK] をクリックします。 クラスターの起動には、5 分から 7 分程度かかります。 初期化されている間に、"*コピー アクティビティを使用して Azure SQL DB から ADLS Gen2 にデータを取り込む*" 方法に関するセクションに進んでください。
+デバッグを有効にするには、 **[データ フロー]** アクティビティがある状態で、データ フロー キャンバスまたはパイプライン キャンバスの上部のバーにある **[データ フローのデバッグ]** スライダーをクリックします。 確認のダイアログがポップアップ表示されたら [OK] をクリックします。 クラスターの起動には、5 分から 7 分程度かかります。 初期化されている間に、"*コピー アクティビティを使用して Azure SQL DB から ADLS Gen2 にデータを取り込む*" 方法に関するセクションに進んでください。
 
 ![ポータルの構成 10](media/lab-data-flow-data-share/configure10.png)
+
+![[データ フローのデバッグ] のスライダーを示すスクリーンショット。](media/lab-data-flow-data-share/configure-11.png)
 
 ## <a name="ingest-data-using-the-copy-activity"></a>コピー アクティビティを使用してデータを取り込む
 

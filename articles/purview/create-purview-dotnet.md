@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 4/2/2021
 ms.author: nayenama
-ms.openlocfilehash: 04ed5cef351c81355a2390dd0b983c162f2b9532
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: b3dc7bf8ac7650a7219c15a09a31d4dcf84a40bf
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387173"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587801"
 ---
 # <a name="quickstart-create-a-purview-account-using-net-sdk"></a>クイックスタート: .NET SDK を使用して Purview アカウントを作成する
 
@@ -55,7 +55,7 @@ ms.locfileid: "106387173"
 
 1. **Visual Studio** を起動します。
 2. スタート ウィンドウで、 **[新しいプロジェクトの作成]**  >  **[コンソール アプリ (.NET Framework)]** の順に選択します。 .NET バージョン 4.5.2 以降が必要です。
-3. **[プロジェクト名]** に「**ADFv2QuickStart**」と入力します。
+3. **[プロジェクト名]** に「**PurviewQuickStart**」と入力します。
 4. **[作成]** を選択してプロジェクトを作成します。
 
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール

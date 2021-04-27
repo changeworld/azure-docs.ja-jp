@@ -8,13 +8,13 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/07/2021
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: 559ace3e9cb9f6daeb6dc3da581bb99d3ff9145e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.custom: devx-track-dotnet, devx-track-azurecli
+ms.openlocfilehash: 495191dfcdfd7a4d318bef508878e951d88b3ae6
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365163"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483896"
 ---
 # <a name="quickstart-build-a-console-app-using-the-net-v4-sdk-preview-to-manage-azure-cosmos-db-sql-api-account-resources"></a>クイックスタート: Azure Cosmos DB SQL API アカウント リソースを管理するための .NET V4 SDK (プレビュー) を使用したコンソール アプリを構築する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -96,7 +96,7 @@ Azure Cosmos アカウントの作成にはしばらく時間がかかります�
 好みのエディターまたは IDE で、新しい .NET アプリケーションを作成します。 ローカル コンピューターから Windows コマンド プロンプトまたはターミナル ウィンドウを開きます。 次のセクションではコマンド プロンプトまたはターミナルからすべてのコマンドを実行します。  次の dotnet new コマンドを実行して、`todo` という名前の新しいアプリを作成します。 作成したプロジェクト ファイル内には、--langVersion パラメーターによって、LangVersion プロパティが設定されます。
 
    ```bash
-   dotnet new console –langVersion:8 -n todo
+   dotnet new console â€“langVersion:8 -n todo
    ```
 
 新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。

@@ -1,18 +1,18 @@
 ---
 title: はじめに
-description: Azure で VMware ベースのワークロードをデプロイして管理するための、Azure VMware Solution の機能とメリットについて学習します。
+description: Azure で VMware ベースのワークロードをデプロイして管理するための、Azure VMware Solution の機能とメリットについて学習します。 Azure VMware Solution SLA では、Azure VMware 管理ツール (vCenter Server および NSX Manager) が 99.9% 以上の時間において使用可能となることを保証します。
 ms.topic: overview
-ms.date: 03/24/2021
-ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/20/2021
+ms.openlocfilehash: 9471aa2e427d28e0b8211dc8b25b2e61a4bfa8c4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107990"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752644"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Azure VMware Solution とは
 
-Azure VMware Solution は、専用のベアメタル Azure インフラストラクチャから構築された vSphere クラスターを含むプライベート クラウドを提供します。 最小の初期デプロイは 3 ホストですが、クラスターあたり最大 16 ホストまで、ホストを 1 つずつ追加できます。  プロビジョニングされたすべてのプライベート クラウドに、vCenter Server、vSAN、vSphere、NSX-T が含まれています。 オンプレミス環境からワークロードを移行し、新しい仮想マシン (VM) をデプロイして、プライベート クラウドから Azure サービスを利用できます。
+Azure VMware Solution は、専用のベアメタル Azure インフラストラクチャから構築された vSphere クラスターを含むプライベート クラウドを提供します。 最小の初期デプロイは 3 ホストですが、クラスターあたり最大 16 ホストまで、ホストを 1 つずつ追加できます。  プロビジョニングされたすべてのプライベート クラウドに、vCenter Server、vSAN、vSphere、NSX-T が含まれています。 オンプレミス環境からワークロードを移行し、新しい仮想マシン (VM) をデプロイして、プライベート クラウドから Azure サービスを利用できます。  Azure VMware 管理ツール (vCenter Server および NSX Manager) は、99.9% 以上の時間において使用可能となります。 詳細については、[Azure VMware Solution SLA](https://aka.ms/avs/sla) に関するページをご覧ください。
 
 Azure VMware Solution は、VMware によって検証されたソリューションで、拡張機能とアップグレードが継続的に検証およびテストされます。 プライベート クラウドのインフラストラクチャとソフトウェアの管理と保守は Microsoft が行います。 そのため、ユーザーはプライベート クラウドでのワークロードの開発と実行に専念できます。 
 

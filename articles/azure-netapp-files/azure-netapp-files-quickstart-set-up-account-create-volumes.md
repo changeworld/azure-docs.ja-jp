@@ -8,16 +8,16 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
-ms.openlocfilehash: e31a1cef427062723adf4b45bd47cd8009630128
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 77d5ce2cc903be51b7a38d6edc34bb8424c52ddb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888812"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786101"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>クイック スタート:Azure NetApp Files を設定し、NFS ボリュームを作成する
 
-この記事では、簡単に Azure NetApp Files を設定し、ボリュームを作成する方法について説明します。
+この記事では、簡単に Azure NetApp Files を設定し、NFS ボリュームを作成する方法について説明します。 
 
 このクイック スタートでは、次の項目を設定します。
 
@@ -27,6 +27,8 @@ ms.locfileid: "94888812"
 - Azure NetApp Files の NFS ボリューム
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+NFS ボリュームで有効にできるすべての機能と関連する考慮事項については、[NFS ボリュームの作成](azure-netapp-files-create-volumes.md)に関する記事を参照してください。 
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -145,7 +147,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
     > コマンド ライン ツールでサポートされているリージョン名を取得するには、`az account list-locations --query "[].{Region:name}" --out table` を使用してください。
     >
 
-2. [az group create](/cli/azure/group#az-group-create) コマンドを使って新しいリソース グループを作成します。
+2. [az group create](/cli/azure/group#az_group_create) コマンドを使って新しいリソース グループを作成します。
 
     ```azurecli-interactive
     az group create \
@@ -153,7 +155,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
         --location $LOCATION
     ```
 
-3. [az netappfiles account create](/cli/azure/netappfiles/account#az-netappfiles-account-create) コマンドを使用して Azure NetApp Files アカウントを作成します。
+3. [az netappfiles account create](/cli/azure/netappfiles/account#az_netappfiles_account_create) コマンドを使用して Azure NetApp Files アカウントを作成します。
 
     ```azurecli-interactive
     az netappfiles account create \
@@ -224,7 +226,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
     SERVICE_LEVEL="Premium" # Valid values are Standard, Premium and Ultra
     ```
 
-2. [az netappfiles pool create](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) を使用して新しい容量プールを作成する
+2. [az netappfiles pool create](/cli/azure/netappfiles/pool#az_netappfiles_pool_create) を使用して新しい容量プールを作成する
 
     ```azurecli-interactive
     az netappfiles pool create \
@@ -248,7 +250,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
 ---
 
-## <a name="create-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
+## <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files の NFS ボリュームを作成する
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -341,7 +343,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
     SUBNET_NAME="myANFSubnet"
     ```
 
-1. [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) コマンドを使用して、サブネットがない仮想ネットワークを作成します。
+1. [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) コマンドを使用して、サブネットがない仮想ネットワークを作成します。
 
     ```azurecli-interactive
     az network vnet create \
@@ -352,7 +354,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 
     ```
 
-2. [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) コマンドを使用して、委任されたサブネットを作成します。
+2. [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) コマンドを使用して、委任されたサブネットを作成します。
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -363,7 +365,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
         --delegations "Microsoft.NetApp/volumes"
     ```
 
-3. [az netappfiles volume create](/cli/azure/netappfiles/volume#az-netappfiles-volume-create) コマンドを使用して、ボリュームを作成します。
+3. [az netappfiles volume create](/cli/azure/netappfiles/volume#az_netappfiles_volume_create) コマンドを使用して、ボリュームを作成します。
 
     ```azurecli-interactive
     VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
@@ -447,7 +449,7 @@ Azure portal、PowerShell、または Azure CLI を使用して Azure NetApp Fil
 > [!IMPORTANT]
 > リソース グループ内のすべてのリソースが完全に削除され、元に戻すことはできません。
 
-1. [az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループを削除します。
+1. [az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループを削除します。
 
     ```azurecli-interactive
     az group delete \

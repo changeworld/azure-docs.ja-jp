@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: cbc415411e05d6fdecee1acf2fbc02b3c170b9d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 628bb9886264574bf33ac927cf5480f91144c39c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501126"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534003"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure Attestation を設定する
 
@@ -120,6 +120,10 @@ $attestationResourceGroup = "<attestation provider resource group name>"
 New-AzResourceGroup -Name $attestationResourceGroup -Location $location 
 ```
 
+ > [!NOTE]
+   > このリソース グループに構成証明プロバイダーが作成された場合、Azure AD ユーザーがポリシーの構成、ポリシー署名者証明書の管理などの操作を実行するには、そのプロバイダーに対して **構成証明共同作成者** ロールを持っている必要があります。 これらのアクセス許可は、サブスクリプションまたはリソース グループに対する **所有者** (ワイルドカード アクセス許可)、**共同作成者** (ワイルドカード アクセス許可) などのロールで継承させることもできます。  
+
+
 ## <a name="create-and-manage-an-attestation-provider"></a>構成証明プロバイダーを作成して管理する
 
 New-AzAttestation によって構成証明プロバイダーが作成されます。
@@ -170,12 +174,12 @@ Remove-AzAttestation -Name $attestationProvider -ResourceGroupName $attestationR
 - Microsoft.Attestation/attestationProviders/attestation/write
 - Microsoft.Attestation/attestationProviders/attestation/delete
 
-これらのアクセス許可は、"所有者" (ワイルドカードのアクセス許可)、"共同作成者" (ワイルドカードのアクセス許可)、"構成証明の共同作成者" (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。  
+ これらの操作を実行するには、Azure AD ユーザーが構成証明プロバイダーに対して **構成証明の共同作成者** ロールを持っている必要があります。 これらのアクセス許可は、サブスクリプションまたはリソース グループに対する **所有者** (ワイルドカード アクセス許可)、**共同作成者** (ワイルドカード アクセス許可) などのロールで継承させることもできます。  
 
 ポリシーを読み込むには、Azure AD ユーザーに "Actions" の次のアクセス許可が必要になります。
 - Microsoft.Attestation/attestationProviders/attestation/read
 
-このアクセス許可は、"閲覧者" (ワイルドカードのアクセス許可) や "構成証明リーダー" (Azure Attestation 専用のアクセス許可) などのロールを経由して AD ユーザーに割り当てることができます。
+ この操作を実行するには、Azure AD ユーザーが構成証明プロバイダーに対して **構成証明の閲覧者** ロールを持っている必要があります。 読み取りアクセス許可は、サブスクリプションまたはリソース グループに対する **閲覧者** (ワイルドカード アクセス許可) などのロールで継承させることもできます。  
 
 構成証明プロバイダー用のポリシーの管理は、以下の PowerShell コマンドレットで行うことができます (一度に 1 TEE)。
 

@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 06/16/2020
-ms.openlocfilehash: bb86ccafaa0b9eac5ef35e96bbe3031a40f350ee
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 18163c3e5cdf83d736cdb52a3de028bf8890e728
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067522"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568575"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (Python)
 
@@ -34,7 +34,7 @@ ms.locfileid: "106067522"
 
 * [Python 3.7 以上](https://www.python.org/downloads/)。 サポートされる他のバージョンの Python については、「[Azure IoT デバイスの機能](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)」を参照してください。
 
-* [サンプル Python プロジェクト](https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip)。
+* GitHub の[サンプル Python プロジェクト](https://github.com/Azure-Samples/azure-iot-samples-python/)。 GitHub リポジトリの **[Code]\(コード\)** ボタンを使用して、サンプルをダウンロードまたはクローンします。
 
 * ファイアウォールでポート 8883 が開放されていること。 このクイックスタートのデバイス サンプルでは、ポート 8883 を介して通信する MQTT プロトコルを使用しています。 このポートは、企業や教育用のネットワーク環境によってはブロックされている場合があります。 この問題の詳細と対処方法については、「[IoT Hub への接続 (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)」を参照してください。
 
@@ -91,6 +91,8 @@ ms.locfileid: "106067522"
 ## <a name="send-simulated-telemetry"></a>シミュレートされたテレメトリの送信
 
 シミュレートされたデバイス アプリケーションは、IoT Hub 上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度のテレメトリを送信します。
+
+1. [azure-iot-samples-python リポジトリ ページ](https://github.com/Azure-Samples/azure-iot-samples-python/)の **[Code]\(コード\)** ボタンを使用して、azure-iot-samples-python リポジトリをダウンロードまたはクローンします。
 
 1. ローカル ターミナル ウィンドウで、サンプルの Python プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 

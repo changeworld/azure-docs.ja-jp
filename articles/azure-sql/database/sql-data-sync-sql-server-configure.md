@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: 6b7ead2e54889327bfbea188ad464012c3861556
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 75de7b122bff75ea13e3b66bb0b79452142dc36c
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968613"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107500092"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>チュートリアル:Azure SQL Database と SQL Server のデータベース間の SQL データ同期を設定する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -236,6 +236,11 @@ PowerShell を使用した SQL データ同期の構成方法の例について�
 **プライベート リンクは、使用を開始する前に手動で承認する必要がありますか?**
 
 はい。同期グループのデプロイ中に Azure portal の [プライベート エンドポイント接続] ページで、または PowerShell を使用して、サービス マネージド プライベート エンドポイントを手動で承認する必要があります。
+
+**同期ジョブによって Azure データベースがプロビジョニングされているときにファイアウォール エラーが発生するのはなぜですか?**
+
+これは、Azure リソースにサーバーへのアクセスが許可されていないことが原因で発生する可能性があります。 Azure データベースのファイアウォールで [Azure サービスおよびリソースにこのサーバーへのアクセスを許可する] 設定が [はい] に設定されていることを確認します。
+
 
 ## <a name="next-steps"></a>次のステップ
 
