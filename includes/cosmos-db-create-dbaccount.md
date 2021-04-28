@@ -1,19 +1,16 @@
 ---
-title: インクルード ファイル
-description: インクルード ファイル
-services: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 08/19/2020
+ms.date: 04/21/2021
 ms.custom: include file
-ms.openlocfilehash: efdd4a065e1eab55f5af420585a44754d42a43e9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 23b9385f715993446ebd5392547b51ac06b9ddb1
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96010381"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065662"
 ---
 1. Azure portal のメニューまたは **[ホーム]** ページで、 **[リソースの作成]** を選択します。
 

@@ -7,12 +7,12 @@ ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: a7617a36ed800f1765ed7723568a4b612fcb6518
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 6214594f825908388762ac35cc8c8722ff9135f1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587597"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874353"
 ---
 # <a name="tutorial-mock-api-responses"></a>チュートリアル:API の応答の模擬テストを実行する
 

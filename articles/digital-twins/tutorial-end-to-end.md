@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: f1653158f7a181ad2d61bc726ba7765eab934341
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 998657c1e183d1b0dd0d533bb763ee7c13a3f474
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107467"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904192"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>チュートリアル:エンド ツー エンドのソリューションを構築する
 
@@ -89,7 +89,7 @@ Query
 >
 > インスタンス内のすべての Digital Twins を取得するための完全なクエリの本文を次に示します。
 > 
-> :::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="GetAllTwins":::
+> :::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="GetAllTwins":::
 
 それが済んだら、プロジェクトの実行を停止してかまいません。 ただし、ソリューションは Visual Studio で開いたままにしてください。この後、チュートリアルが終わるまで使用することになります。
 

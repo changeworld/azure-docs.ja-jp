@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: tutorial
 ms.date: 03/01/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 11d72847209a2e706d4aa32d38af1b2c8af3dfa0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 44c053eac2215354fbd43e4c0068f02419010a85
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313999"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131857"
 ---
 # <a name="tutorial-create-your-project"></a>チュートリアル: プロジェクトを作成する
 
@@ -27,7 +27,7 @@ Azure Certified Device プログラムによるデバイスの認定に興味を
 
 ## <a name="prerequisites"></a>前提条件
 
-- 職場または学校の有効な [Azure Active Directory アカウント](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)が必要です。
+- 職場または学校の有効な [Azure Active Directory アカウント](../active-directory/fundamentals/active-directory-whatis.md)が必要です。
 - 検証済みの Microsoft Partner Network (MPN) アカウントが必要です。 MPN アカウントをお持ちでない場合は、最初に[パートナー ネットワークに参加](https://partner.microsoft.com/)してください。
 
 ## <a name="signing-into-the-azure-certified-device-portal"></a>Azure Certified Device ポータルにサインインする

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2eaaeda879e9946610d2f18f7ccf530bc60f7910
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98756178"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072209"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>チュートリアル:認証コード フローを使用して、ユーザーをサインインさせ、JavaScript シングルページ アプリ (SPA) から Microsoft Graph API を呼び出す
 
@@ -574,7 +574,7 @@ ID トークンには、表示名など、ユーザーについての基本的�
 1. ユーザーが適切なタイミングでサインインできるようにするか、アプリケーションが後で `acquireTokenSilent` を再試行できるように、ユーザーに対して対話形式でのサインインが必要であることを視覚的に示します。 他に中断なく使用できる機能がアプリケーションにある場合は、一般に、この方法が使用されます。 たとえば、使用可能な非認証コンテンツがアプリケーションに含まれている場合が考えられます。 この場合、ユーザーは、保護されたリソースにアクセスしたり、古くなった情報を更新したりするためにサインインするタイミングを決定できます。
 
 > [!NOTE]
-> このチュートリアルでは、既定で `loginPopup` および `acquireTokenPopup` メソッドを使用します。 Internet Explorer を使用している場合は、Internet Explorer とポップアップ ウィンドウに[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)があるため、`loginRedirect` および `acquireTokenRedirect` メソッドを使用することをお勧めします。 リダイレクト メソッドを使用して同じ結果を実現する例については、GitHub の [*authRedirect.js*](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/blob/quickstart/JavaScriptSPA/authRedirect.js) を参照してください。
+> このチュートリアルでは、既定で `loginPopup` および `acquireTokenPopup` メソッドを使用します。 Internet Explorer を使用している場合は、Internet Explorer とポップアップ ウィンドウに[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)があるため、`loginRedirect` および `acquireTokenRedirect` メソッドを使用することをお勧めします。 リダイレクト メソッドを使用して同じ結果を実現する例については、GitHub の [*authRedirect.js*](https://github.com/Azure-Samples/ms-identity-javascript-v2/blob/master/app/authRedirect.js) を参照してください。
 
 ## <a name="call-the-microsoft-graph-api"></a>Microsoft Graph API を呼び出す
 

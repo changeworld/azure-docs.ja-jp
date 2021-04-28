@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 4274596f7d53488a2ca5d0e0d3ab3021531907df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9255e10743182c55308fa9a07e9dc8fa08b6bbb4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97674103"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074801"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>チュートリアル:Azure Active Directory と Beeline の統合
 
@@ -110,9 +110,9 @@ Beeline で Azure AD シングル サインオンを構成するには、次の�
     ```
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Beeline クライアント サポート チーム](https://www.beeline.com/support-beeline/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際の識別子と応答 URL でこれらの値を更新します。 これらの値を取得するには、[Beeline クライアント サポート チーム](https://www.beeline.com/contact-support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. Beeline アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 アプリケーションにマップされる適切なユーザー ID を識別するには、まず [Beeline サポート チーム](https://www.beeline.com/support-beeline/)と協力してください。 また、このマッピングに使用する属性については、[Beeline サポート チーム](https://www.beeline.com/support-beeline/)からのガイダンスに従ってください。 この属性の値は、アプリケーションの **[ユーザー属性]** タブから管理できます。 次のスクリーンショットはその例です。 ここでは **User Identifier** 要求を **userprincipalname** 属性にマッピングしています。これは一意のユーザー ID となり、SAML 応答が成功するたびに Beeline アプリケーションに送信されます。
+5. Beeline アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 アプリケーションにマップされる適切なユーザー ID を識別するには、まず [Beeline サポート チーム](https://www.beeline.com/contact-support/)と協力してください。 また、このマッピングに使用する属性については、[Beeline サポート チーム](https://www.beeline.com/contact-support/)からのガイダンスに従ってください。 この属性の値は、アプリケーションの **[ユーザー属性]** タブから管理できます。 次のスクリーンショットはその例です。 ここでは **User Identifier** 要求を **userprincipalname** 属性にマッピングしています。これは一意のユーザー ID となり、SAML 応答が成功するたびに Beeline アプリケーションに送信されます。
 
     ![image](common/edit-attribute.png)
 
@@ -127,7 +127,7 @@ Beeline で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="configure-beeline-single-sign-on"></a>Beeline のシングル サインオンの構成
 
-**Beeline** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal のプロパティからコピーしたユーザーのアクセス URL を [Beeline サポート チーム](https://www.beeline.com/support-beeline/)に送信する必要があります。 SAML SSO 接続を両方の側で適切に構成するには、メタデータとユーザーのアクセス URL が必要になります。
+**Beeline** 側でシングル サインオンを構成するには、ダウンロードした **フェデレーション メタデータ XML** と Azure portal のプロパティからコピーしたユーザーのアクセス URL を [Beeline サポート チーム](https://www.beeline.com/contact-support/)に送信する必要があります。 SAML SSO 接続を両方の側で適切に構成するには、メタデータとユーザーのアクセス URL が必要になります。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -182,7 +182,7 @@ Beeline で Azure AD シングル サインオンを構成するには、次の�
 
 ### <a name="create-beeline-test-user"></a>Beeline のテスト ユーザーの作成
 
-このセクションでは、Beeline で Britta Simon というユーザーを作成します。 Beeline アプリケーションでは、シングル サインオンを行う前に、すべてのユーザーをアプリケーションにプロビジョニングする必要があります。 [Beeline サポート チーム](https://www.beeline.com/support-beeline/)と協力して、すべてのユーザーをアプリケーションにプロビジョニングしてください。
+このセクションでは、Beeline で Britta Simon というユーザーを作成します。 Beeline アプリケーションでは、シングル サインオンを行う前に、すべてのユーザーをアプリケーションにプロビジョニングする必要があります。 [Beeline サポート チーム](https://www.beeline.com/contact-support/)と協力して、すべてのユーザーをアプリケーションにプロビジョニングしてください。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 

@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 09/02/2020
 ms.author: erhopf
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
-zone_pivot_groups: programming-languages-set-two-with-js
+zone_pivot_groups: programming-languages-speech-services-one-nomore-no-go
 keywords: 意図認識
-ms.openlocfilehash: 4259f8d993e7110f11f045a28bf8610f9b55d660
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 821e5d1345e513f9b5deb2ef17cc1d4fb7a3544a
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107211452"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107948673"
 ---
 # <a name="get-started-with-intent-recognition"></a>意図認識の使用を開始する
 
@@ -50,10 +50,4 @@ ms.locfileid: "107211452"
 [!INCLUDE [Header](includes/quickstarts/intent-recognition/header.md)]
 [!INCLUDE [Header](includes/quickstarts/intent-recognition/javascript/header.md)]
 [!INCLUDE [javascript](includes/quickstarts/intent-recognition/javascript/javascript.md)]
-::: zone-end
-
-::: zone pivot="programming-language-more"
-[!INCLUDE [Header](includes/quickstarts/from-file/more/header.md)]
-[!INCLUDE [More samples](includes/quickstarts/intent-recognition/more/more.md)]
-
 ::: zone-end

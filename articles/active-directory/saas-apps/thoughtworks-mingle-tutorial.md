@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c3eeb1577e628965e3e5a35fa20c072224383149
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a2450a45140b3ba47c172f05d2eb7200252ca23b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92514624"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071021"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>チュートリアル: Azure Active Directory と Thoughtworks Mingle の統合
 
@@ -104,7 +104,7 @@ Thoughtworks Mingle で Azure AD シングル サインオンを構成するに�
     **[サインオン URL]** ボックスに、`https://<companyname>.mingle.thoughtworks.com` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Thoughtworks Mingle クライアント サポート チーム](https://support.thoughtworks.com/hc/categories/201743486-Mingle-Community-Support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、Thoughtworks Mingle クライアント サポート チームに問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 5. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから **フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -186,7 +186,7 @@ Thoughtworks Mingle で Azure AD シングル サインオンを構成するに�
 
 7. **[割り当ての追加]** ダイアログで、 **[割り当て]** ボタンをクリックします。
 
-### <a name="create-thoughtworks-mingle-test-user"></a>Thoughtworks Mingle テスト ユーザーの作成
+### <a name="create-thoughtworks-mingle-test-user&quot;></a>Thoughtworks Mingle テスト ユーザーの作成
 
 Azure AD ユーザーがサインインできるようにするには、Azure Active Directory ユーザー名を使用して、Azure AD ユーザーを Thoughtworks Mingle アプリケーションにプロビジョニングする必要があります。 Thoughtworks Mingle の場合、プロビジョニングは手動で行います。
 
@@ -196,7 +196,7 @@ Azure AD ユーザーがサインインできるようにするには、Azure Ac
 
 2. [**プロファイル**] をクリックします。
    
-    ![最初のプロジェクト](./media/thoughtworks-mingle-tutorial/ic785160.png "最初のプロジェクト")
+    ![最初のプロジェクト](./media/thoughtworks-mingle-tutorial/ic785160.png &quot;最初のプロジェクト")
 
 3. [**管理**] タブをクリックし、[**ユーザー**] をクリックします。
    

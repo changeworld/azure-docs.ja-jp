@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MySQL 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Database for MySQL に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: bba8fc79ae09d196febf844e0345145657fe89b6
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7d203165b21040c6f0f989766233081538f28600
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501173"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871988"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mysql"></a>Azure Database for MySQL 用の Azure Policy 規制コンプライアンス コントロール
 
