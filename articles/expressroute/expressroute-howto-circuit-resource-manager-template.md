@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: duau
-ms.openlocfilehash: 2e9b6ddc9da4467590946af12a47f1473a4ea494
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 51bd54fddfdbd5978c3a262ffcd81ff204d7d156
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92202057"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073883"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ExpressRoute 回線を作成する
 
@@ -37,7 +37,7 @@ Azure PowerShell を使用して、Azure Resource Manager テンプレートを�
 
 [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)には、Resource Manager テンプレートの適切なコレクションが含まれます。 [既存のテンプレート](https://azure.microsoft.com/resources/templates/101-expressroute-circuit-create/)のいずれかを使用して、ExpressRoute 回線を作成できます。
 
-[!code-json[create-azure-expressroute-circuit](~/quickstart-templates/101-expressroute-circuit-create/azuredeploy.json)]
+[!code-json[create-azure-expressroute-circuit](~/quickstart-templates/quickstarts/microsoft.network/expressroute-circuit-create/azuredeploy.json)]
 
 その他の関連するテンプレートを確認する場合は、[こちら](https://azure.microsoft.com/resources/templates/?term=expressroute)を選択してください。
 

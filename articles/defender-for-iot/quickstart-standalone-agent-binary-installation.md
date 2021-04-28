@@ -3,12 +3,12 @@ title: 'クイックスタート: Defender for IoT マイクロ エージェン�
 description: このクイックスタートでは、Defender マイクロ エージェントをインストールして認証する方法について説明します。
 ms.date: 3/9/2021
 ms.topic: quickstart
-ms.openlocfilehash: a153b640a1d1e86f9b761817d05fda7d3e47da98
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: a78b633dffda42122114d2fce55ef6d8ccb323dc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384410"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137439"
 ---
 # <a name="quickstart-install-defender-for-iot-micro-agent-preview"></a>クイックスタート: Defender for IoT マイクロ エージェントをインストールする (プレビュー)
 
@@ -94,7 +94,7 @@ IoT Hub からモジュール ID の接続文字列を取得するには、次�
 
 証明書を使用して認証するには、次の手順を実行します。
 
-1. [これらの手順](../iot-hub/iot-hub-security-x509-get-started.md)に従って、証明書を入手します。
+1. [これらの手順](../iot-hub/tutorial-x509-scripts.md)に従って、証明書を入手します。
 
 1. PEM でエンコードされた証明書の公開部分と秘密キーを、Defender エージェント ディレクトリの `certificate_public.pem` および `certificate_private.pem` という名前のファイル内に配置します。 
 

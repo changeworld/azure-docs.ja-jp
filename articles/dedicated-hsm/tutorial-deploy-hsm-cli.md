@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: fa1c01c2d9da19ec1f60878de83a509b7cf561e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b845ecabe74040e154886476a8ba28efecc99325
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606829"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868863"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>チュートリアル:Azure CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -102,7 +102,7 @@ az network vnet subnet create \
 
 ネットワークを構成したら、次の Azure CLI コマンドを使用して HSM をプロビジョニングします。
 
-1. [az dedicated-hsm create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) コマンドを使用して、最初の HSM をプロビジョニングします。 HSM には hsm1 という名前が付けられます。 ご自分のサブスクリプションに置き換えます。
+1. [az dedicated-hsm create](/cli/azure/dedicated-hsm#az_dedicated_hsm_create) コマンドを使用して、最初の HSM をプロビジョニングします。 HSM には hsm1 という名前が付けられます。 ご自分のサブスクリプションに置き換えます。
 
    ```azurecli
    az dedicated-hsm create --location westus --name hsm1 --resource-group myRG --network-profile-network-interfaces \
@@ -111,7 +111,7 @@ az network vnet subnet create \
 
    このデプロイには、完了までに 25 - 30 分ほどかかります。その時間の多くは、HSM デバイスに費やされます。
 
-1. 現在の HSM を表示するには、[az dedicated-hsm show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) コマンドを実行します。
+1. 現在の HSM を表示するには、[az dedicated-hsm show](/cli/azure/dedicated-hsm#az_dedicated_hsm_show) コマンドを実行します。
 
    ```azurecli
    az dedicated-hsm show --resource group myRG --name hsm1
@@ -124,19 +124,19 @@ az network vnet subnet create \
         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/MyHSM-vnet/subnets/MyHSM-vnet
    ```
 
-1. [az dedicated-hsm list](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) コマンドを実行して、現在の HSM に関する詳細を表示します。
+1. [az dedicated-hsm list](/cli/azure/dedicated-hsm#az_dedicated_hsm_list) コマンドを実行して、現在の HSM に関する詳細を表示します。
 
    ```azurecli
    az dedicated-hsm list --resource-group myRG
    ```
 
-他にも便利なコマンドがいくつかあります。 HSM を更新するには、[az dedicated-hsm update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) コマンドを使用します。
+他にも便利なコマンドがいくつかあります。 HSM を更新するには、[az dedicated-hsm update](/cli/azure/dedicated-hsm#az_dedicated_hsm_update) コマンドを使用します。
 
 ```azurecli
 az dedicated-hsm update --resource-group myRG –name hsm1
 ```
 
-HSM を削除するには、[az dedicated-hsm delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete) コマンドを使用します。
+HSM を削除するには、[az dedicated-hsm delete](/cli/azure/dedicated-hsm#az_dedicated_hsm_delete) コマンドを使用します。
 
 ```azurecli
 az dedicated-hsm delete --resource-group myRG –name hsm1

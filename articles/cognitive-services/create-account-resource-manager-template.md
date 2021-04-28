@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 3/22/2021
 ms.author: aahi
-ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 161c5779926acad8814ec057f24e36f371738483
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.custom: subject-armqs
+ms.openlocfilehash: c3d74f8552f06290b43f6078bb7fcdd55c8b5f40
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104864365"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072273"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Services リソースを作成する
 

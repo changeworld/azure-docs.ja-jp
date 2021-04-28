@@ -12,12 +12,12 @@ tags:
 - azure-resource-manager
 ms.custom:
 - mode-api
-ms.openlocfilehash: ba1cd8d6b1410be30eefe9dca9675daaf6c16256
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa984a8f3899db72ead878e2c4381ea6a080e32d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534665"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815434"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>クイックスタート: PowerShell を使用して Azure Key Vault との間でマネージド キーの設定と取得を行う
 
@@ -115,4 +115,4 @@ Export-AzKeyVaultSecurityDomain -Name "<your-unique-managed-hsm-name>" -Certific
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/)のリファレンスを参照する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する

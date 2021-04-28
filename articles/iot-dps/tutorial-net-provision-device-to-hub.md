@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 84fe935c1122d3d5c65423341b8760643257f992
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "94966566"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868573"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>チュートリアル: Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
@@ -32,7 +32,7 @@ ms.locfileid: "94966566"
 * Visual Studio
 
 > [!NOTE]
-> Visual Studio は必須ではありません。 [.NET](https://www.microsoft.com/net) のインストールだけが必要であり、開発者は Windows または Linux で任意のエディターを使用することができます。  
+> Visual Studio は必須ではありません。 [.NET](https://dotnet.microsoft.com) のインストールだけが必要であり、開発者は Windows または Linux で任意のエディターを使用することができます。  
 
 このチュートリアルでは、デバイス情報がプロビジョニング サービスに追加される、ハードウェアの製造プロセス中またはその直後の期間をシミュレートします。 このコードは、通常、.NET コードを実行できる PC またはファクトリ デバイス上で実行します。デバイス自体には追加しないでください。
 

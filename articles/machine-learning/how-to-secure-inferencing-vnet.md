@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 1a1a9158c06a12caaeb5702f2fdf7da3c801c143
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 610ab82bfc4665fbb30aa3d3bc0448fa9338689c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573440"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872553"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>仮想ネットワークを使用して Azure Machine Learning 推論環境をセキュリティで保護する
 
@@ -221,7 +221,7 @@ az ml computetarget create aks -n myaks --load-balancer-type InternalLoadBalance
 > [!IMPORTANT]
 > CLI を使用して作成できるのは、内部ロード バランサーを使用する AKS クラスターのみです。 内部ロード バランサーを使用するように既存のクラスターをアップグレードする az ml コマンドはありません。
 
-詳細については、[az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
+詳細については、[az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) に関するリファレンスを参照してください。
 
 ---
 

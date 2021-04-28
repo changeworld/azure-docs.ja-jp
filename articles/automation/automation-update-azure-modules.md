@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: f05c3247ecdd77fe4cf02db70c7ba4b2c534f959
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c1632da35864fc6822b385adac06d7f124aea061
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99055350"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830414"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell モジュールの更新
 

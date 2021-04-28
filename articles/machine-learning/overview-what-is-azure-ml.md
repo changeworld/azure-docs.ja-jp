@@ -10,12 +10,12 @@ author: BlackMist
 ms.date: 04/08/2021
 ms.custom: devx-track-python
 adobe-target: true
-ms.openlocfilehash: 4f97883c157d04358322b01cab7049dcbbabdc4f
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: cd395f0ff29eed1e09f5bdac882482b201052c90
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031088"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814832"
 ---
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
@@ -78,14 +78,14 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 + **実験を追跡する**
 
-  Studio で[データ サイエンスの実験を追跡して視覚化](tutorial-first-experiment-automated-ml.md)する方法をご覧ください。 
+  Studio で[データ サイエンスの実験を追跡して視覚化](how-to-track-monitor-analyze-runs.md)する方法をご覧ください。 
 
-    ![Azure Machine Learning Studio での実行の詳細](media/how-to-track-experiments/experimentation-tab.gif)
+    :::image type="content" source="media/how-to-track-monitor-analyze-runs/run-history.png" alt-text="Azure Machine Learning Studio での実行の詳細":::
 
 
 + **その他にもたくさんあります。**
 
-  Azure Machine Learning Studio ([ml.azure.com](https://studio.azureml.net)) にアクセスしてください。 
+  Azure Machine Learning Studio ([ml.azure.com](https://studio.azureml.net)) にアクセスしてください。
 
 
 ## <a name="mlops-deploy--lifecycle-management"></a>MLOps:デプロイとライフサイクル管理

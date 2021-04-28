@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 3f9a6afe3202df40e26332c3a8c91b8c3eca8a32
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 39db32a7ee7eb8fed1da9ac8c9eb609efcf57c74
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012270"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070823"
 ---
 # <a name="call-the-image-analysis-api"></a>画像分析 API の呼び出し
 
@@ -32,7 +32,7 @@ ms.locfileid: "107012270"
 
 ###  <a name="select-visual-features"></a>視覚的特徴を選択する
 
-[Analyze API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b) を使用すると、サービスの画像分析の特徴すべてにアクセスできます。 使用する特徴を指定するには、URL クエリ パラメーターを設定する必要があります。 パラメーターには、複数の値をコンマで区切って指定できます。 特徴を指定するごとに追加の処理時間が必要になるため、必要なものだけを指定してください。
+[Analyze API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) を使用すると、サービスの画像分析の特徴すべてにアクセスできます。 使用する特徴を指定するには、URL クエリ パラメーターを設定する必要があります。 パラメーターには、複数の値をコンマで区切って指定できます。 特徴を指定するごとに追加の処理時間が必要になるため、必要なものだけを指定してください。
 
 |URL パラメーター | 値 | 説明|
 |---|---|--|
@@ -71,7 +71,7 @@ ms.locfileid: "107012270"
 > [!NOTE]
 > **スコープが指定された API 呼び出し**
 >
-> 画像分析における特徴の一部は、Analyze API 呼び出しを使用した方法だけでなく、直接呼び出すこともできます。 たとえば、`https://{endpoint}/vision/v3.2-preview.3/tag` に対して要求を行うことで、画像タグのみをスコープに指定した分析を実行できます。 個別に呼び出すことができる他の特徴については、[リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)を参照してください。
+> 画像分析における特徴の一部は、Analyze API 呼び出しを使用した方法だけでなく、直接呼び出すこともできます。 たとえば、`https://{endpoint}/vision/v3.2-preview.3/tag` に対して要求を行うことで、画像タグのみをスコープに指定した分析を実行できます。 個別に呼び出すことができる他の特徴については、[リファレンス ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b)を参照してください。
 
 ## <a name="get-results-from-the-service"></a>サービスから結果を取得する
 
@@ -139,4 +139,4 @@ description.captions[].confidence    | `number`    | 語句の信頼度スコア
 
 ## <a name="next-steps"></a>次のステップ
 
-REST API を試すには、[Image Analysis API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-3/operations/56f91f2e778daf14a499f21b)を参照してください。
+REST API を試すには、[Image Analysis API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b)を参照してください。
