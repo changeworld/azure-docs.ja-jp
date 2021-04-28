@@ -8,12 +8,12 @@ ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: c064a35ac6136d728f75b65379c543149cc8189d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 47b15c857f6f0c8c4d8f377ee4ecdcca74e88e0f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750034"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818575"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>クイックスタート: Java 用 Azure Key Vault 証明書クライアント ライブラリ (証明書)
 Java 用 Azure Key Vault 証明書クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
@@ -272,4 +272,4 @@ public class App {
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)方法
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-features.md)方法

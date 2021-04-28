@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 9fc34532818a742ef67e4b2532966874d083199d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6b9331007ec633fe8b8368bd493ce18b4ddde24
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94959851"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862095"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>クイック スタート: C# を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -31,7 +31,7 @@ ms.locfileid: "94959851"
 ## <a name="prerequisites"></a>前提条件
 
 * [Visual Studio 2019](https://www.visualstudio.com/vs/) をインストールします。
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows) のインストール。
+* [.NET Core SDK](https://dotnet.microsoft.com/download) のインストール。
 * [Git](https://git-scm.com/download/) のインストール。
 
 ## <a name="prepare-test-certificates"></a>テスト証明書を準備する
@@ -81,7 +81,7 @@ C SDK のツールに加えて、*Microsoft Azure IoT SDK for .NET* に含まれ
 
 このセクションでは、登録グループをプロビジョニング サービスに追加する .NET Core コンソール アプリを作成する方法について説明します。 これらの手順を一部変更して実行し、登録グループを追加する [Windows IoT Core](https://developer.microsoft.com/en-us/windows/iot) コンソール アプリを作成することもできます。 IoT Core での開発について詳しくは、[Windows IoT Core の開発者ドキュメント](/windows/iot-core/)に関するページを参照してください。
 
-1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。 **[新しいプロジェクトの作成]** で、C# プロジェクト テンプレート用の **[コンソールアプリ (.NET Core)]** を選択し、 **[次へ]** を選択します。
+1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。 **[新しいプロジェクトの作成]** で、C# プロジェクト テンプレート用の **[コンソールアプリ (.NET Cor)]** を選択し、 **[次へ]** を選択します。
 
 1. プロジェクトに *CreateEnrollmentGroup* という名前を付け、 **[作成]** を押します。
 

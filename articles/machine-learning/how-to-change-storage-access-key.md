@@ -5,18 +5,17 @@ description: ご利用のワークスペースで使用される Azure ストレ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 787f7727e18b7055055ed2b764ddce5be20f5afc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a3e91681de2863af462827373bbce252f35de6
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503438"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898119"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 

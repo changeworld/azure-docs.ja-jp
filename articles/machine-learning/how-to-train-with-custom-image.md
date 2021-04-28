@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: ea282cb0fcf25f7ac5f17bb9e2f693d189320078
-ms.sourcegitcommit: a67b972d655a5a2d5e909faa2ea0911912f6a828
+ms.openlocfilehash: 953d43f93635e25da008515afd9baf9a9e9b7afa
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104889163"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817073"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>カスタム Docker イメージを使用してモデルをトレーニングする
 
@@ -173,5 +173,5 @@ run.wait_for_completion(show_output=True)
 
 ## <a name="next-steps"></a>次の手順
 この記事では、カスタム Docker イメージを使用してモデルをトレーニングしました。 Azure Machine Learning の詳細については、以下の他の記事をご覧ください。
-* トレーニング中に[実行メトリックを追跡する](how-to-track-experiments.md)。
+* トレーニング中に[実行メトリックを追跡する](how-to-log-view-metrics.md)。
 * カスタム Docker イメージを使用して[モデルをデプロイする](how-to-deploy-custom-docker-image.md)。

@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: reference
-ms.date: 03/25/2020
+ms.date: 04/12/2021
 ms.author: aahi
-ms.openlocfilehash: 3fecb84196ba736120273955b2c88af8cb4dadea
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: aeb5ba4145409db5b2884102d7e886222a37de7a
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106095817"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388365"
 ---
 # <a name="azure-cognitive-services-container-image-tags-and-release-notes"></a>Azure Cognitive Services コンテナー イメージ タグとリリース ノート
 
@@ -52,18 +52,24 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 # <a name="latest-version"></a>[最新バージョン](#tab/current)
 
+`3.2` のリリース ノート:
+
+* 読み取り OCR コンテナーの一般提供が開始されました。
+
+| イメージ タグ                    | Notes |
+|-------------------------------|:------|
+| `3.2`                     |       |
+
+# <a name="previous-versions"></a>[以前のバージョン](#tab/previous)
+
+
 `3.2-preview.2` のリリース ノート:
+
 * ディストリビューションレス リリース
 * JSON 応答でテキスト行の順序を選択する ReadingOrder パラメーター
 * 強化されたログ記録
 * CJK モデルへの修正プログラム
-
-| イメージ タグ                    | Notes |
-|-------------------------------|:------|
-|3.2.2.014850001-49e0eac6-amd64-preview                     |       |
-
-# <a name="previous-versions"></a>[以前のバージョン](#tab/previous)
-
+* 
 `v2.0.013250001-amd64-preview` のリリース ノート:
 
 * コンテナーのメモリ使用量をさらに減らします。
@@ -93,6 +99,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 | イメージ タグ                    | Notes |
 |-------------------------------|:------|
+| `3.2.2.014850001-49e0eac6-amd64-preview` |       |
 | `2.0.013250001-amd64-preview` |       |
 | `1.1.013050001-amd64-preview` |       |
 | `1.1.011580001-amd64-preview` |       |
@@ -154,20 +161,24 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 # <a name="latest-version"></a>[最新バージョン](#tab/current)
 
-`2.10.0-amd64` のリリース ノート:
+`2.11.0-amd64` のリリース ノート:
 
-**機能**
-* 最新のモデルにアップグレードします。
+**修正**
+* ユーザーの入力の大文字と小文字を区別します。
 
-フレーズ リストが含まれているため、このコンテナー イメージのサイズが大きくなっていることに注意してください。
+フレーズ リスト機能により、このコンテナー イメージのサイズが大きくなっていることにご注意ください。
 
 | イメージ タグ                    | Notes | ダイジェスト                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
-| `2.10.0-amd64`                |       | `sha256:944f051e3b90aa8eb8a37a4d4a18d4e13dbb49f9fe6d5ced61a0f99b3b3e312c`|
+| `latest`                      |       | `sha256:bbf23ded55bf61421f673bffa7d97aca5724f782328a80efe43020c9979cd069`|
+| `2.11.0-amd64`                |       | `sha256:bbf23ded55bf61421f673bffa7d97aca5724f782328a80efe43020c9979cd069`|
 
 
 # <a name="previous-version"></a>[以前のバージョン](#tab/previous)
+
+`2.10.0-amd64` のリリース ノート:
+
+定期的な毎月のリリース
 
 `2.9.0-amd64` のリリース ノート:
 
@@ -214,6 +225,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 | イメージ タグ                    | Notes               |
 |-------------------------------|:--------------------|
+| `2.10.0-amd64`                |                     |
 | `2.9.0-amd64`                 |                     |
 | `2.7.0-amd64`                 |                     |
 | `2.6.0-amd64`                 |                     |
@@ -228,18 +240,22 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 # <a name="latest-version"></a>[最新バージョン](#tab/current)
 
-`1.12.0-amd64` のリリース ノート:
+`1.13.0-amd64` のリリース ノート:
 
-**機能**
-* 最新のモデルにアップグレードします。
+**修正**
+* ユーザーの入力の大文字と小文字を区別します。
 
 | イメージ タグ                    | Notes | ダイジェスト                                                                   |
 |-------------------------------|:------|:-------------------------------------------------------------------------|
-| `latest`                      |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
-| `1.12.0-amd64`                |       | `sha256:82806245b8ccce808523c4276d8f447c8429db8b04ff26bdbc4d36ba6a704db4` |
+| `latest`                      |       | `sha256:390ff9e4981c798058058e7825cd1e6d173d9d54d66d8fdc450d157cf393aaec` |
+| `1.13.0-amd64`                |       | `sha256:390ff9e4981c798058058e7825cd1e6d173d9d54d66d8fdc450d157cf393aaec` |
 
 
 # <a name="previous-version"></a>[以前のバージョン](#tab/previous)
+
+`1.12.0-amd64` のリリース ノート:
+
+定期的な毎月のリリース
 
 `1.11.0-amd64` のリリース ノート:
 
@@ -262,6 +278,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 | イメージ タグ                    | Notes               |
 |-------------------------------|:--------------------|
+| `1.12.0-amd64`                |                     |
 | `1.11.0-amd64`                |                     |
 | `1.9.0-amd64`                 |                     |
 | `1.8.0-amd64`                 |                     |
@@ -277,17 +294,182 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 # <a name="latest-version"></a>[最新バージョン](#tab/current)
 
+`2.11.0-amd64-<locale>` のリリース ノート:
+
+**機能**
+* 最新のモデルにアップグレードします。
+
+**修正**
+* ユーザーの入力の大文字と小文字を区別します。
+
+フレーズ リスト機能により、このコンテナー イメージのサイズが大きくなっていることにご注意ください。 
+
+| イメージ タグ                    | Notes                                                                                                |
+|-------------------------------|:-----------------------------------------------------------------------------------------------------|
+| `latest`                      | `en-US` ロケールのコンテナー イメージ。                                                             |
+| `2.11.0-amd64-<locale>`       | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.11.0-amd64-en-us` 」のように指定します。|
+
+このコンテナー イメージには次のロケールを使用できます。
+
+| v2.11.0 のロケール          | Notes                                    | ダイジェスト                                                                    |
+|-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
+| `ar-ae`                     | `ar-AE` ロケールのコンテナー イメージ。 | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-bh`                     | `ar-BH` ロケールのコンテナー イメージ。 | `sha256:a6af48cdaf9f7562bfaced449016106dbde5c678fdd4c69985d166959a38b146` |
+| `ar-eg`                     | `ar-EG` ロケールのコンテナー イメージ。 | `sha256:43cec166dcde9dc7cd535228440d11d396518fcfb14d9fa617e6e26f5156dc84` |
+| `ar-iq`                     | `ar-IQ` ロケールのコンテナー イメージ。 | `sha256:b55095b27e8eef60dfe9657735a425b9ca1fe3c29ce4ff1f3d67bf7b2ac77bb1` |
+| `ar-jo`                     | `ar-JO` ロケールのコンテナー イメージ。 | `sha256:7cc4ad997a76844414a982982251653525f27dc396db44f23b7f012d20f53677` |
+| `ar-kw`                     | `ar-KW` ロケールのコンテナー イメージ。 | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-lb`                     | `ar-LB` ロケールのコンテナー イメージ。 | `sha256:5d3b402f41f616ee792a5e7e3f41b4ec5638dc8ad60a3c133ec588e07b09d581` |
+| `ar-om`                     | `ar-OM` ロケールのコンテナー イメージ。 | `sha256:c4f88fdaec73ebe241d6c94695b20eb2c792a9fd77dbb51f24fc7807dfd0dc61` |
+| `ar-qa`                     | `ar-QA` ロケールのコンテナー イメージ。 | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-sa`                     | `ar-SA` ロケールのコンテナー イメージ。 | `sha256:32c26ed8370d1f30098811fda382e68aceccabc671570365f15ead37c3d84304` |
+| `ar-sy`                     | `ar-SY` ロケールのコンテナー イメージ。 | `sha256:a42b6f63a16313f280088bd47978e177bc2f1bf2d392a070cf5c6a06d9f7a62c` |
+| `bg-bg`                     | `bg-BG` ロケールのコンテナー イメージ。 | `sha256:21425557e62d71326e9eb614c535878f981a914bf66d9dd883221656ca891858` |
+| `ca-es`                     | `ca-ES` ロケールのコンテナー イメージ。 | `sha256:682e8a8ad5f2582f25a18b0518f9fba9b3849b72eb5dab5454586724272c52de` |
+| `cs-cz`                     | `cs-CZ` ロケールのコンテナー イメージ。 | `sha256:1d0661ae5920f82e607c72ae7d6eee917c190d80c3d13403d770947c67a4294e` |
+| `da-dk`                     | `da-DK` ロケールのコンテナー イメージ。 | `sha256:8d5257d6c326e4d96ba395faa0c717f48c4d437866f8dc1e1252c5e983b3008f` |
+| `de-de`                     | `de-DE` ロケールのコンテナー イメージ。 | `sha256:086a4e33f746868fc1865322f1d7dfb5c1c3af64bdbd369804155f18710ad96e` |
+| `el-gr`                     | `el-GR` ロケールのコンテナー イメージ。 | `sha256:0e2c7d5337f953d45fc7594317e6eab5eecec44a1c15fba51a128fc510519c3f` |
+| `en-au`                     | `en-AU` ロケールのコンテナー イメージ。 | `sha256:dcfe3fc95b895d0205a7b72368595e98dfdcb4b6398522e7daa2fbbe2b087ef6` |
+| `en-ca`                     | `en-CA` ロケールのコンテナー イメージ。 | `sha256:f04cedb6b50560f0584cb3634cbfee5e9c147d60fc044cbd0df10fc28f04ed98` |
+| `en-gb`                     | `en-GB` ロケールのコンテナー イメージ。 | `sha256:9692c45c6b5b8716f99852a2ddf4b7fd1e2c00ea29f9a20da68e899cf3064fa1` |
+| `en-hk`                     | `en-HK` ロケールのコンテナー イメージ。 | `sha256:97106aa991b4ef5b0f1859ae7a7df3c6e22dd009123281a7458d336a78ebd854` |
+| `en-ie`                     | `en-IE` ロケールのコンテナー イメージ。 | `sha256:da2bc14cd86f200a439b3ce708c6643d507d482daabae87c351bee4c10efa60b` |
+| `en-in`                     | `en-IN` ロケールのコンテナー イメージ。 | `sha256:f8fc43e5d20afe8108b6f35c3e09d403557f150413672d45322421be1fddff20` |
+| `en-nz`                     | `en-NZ` ロケールのコンテナー イメージ。 | `sha256:abb8ca669c806a71af88d3643694252e1833ca99aacbd739a3962ec00c3cdb61` |
+| `en-ph`                     | `en-PH` ロケールのコンテナー イメージ。 | `sha256:13bc7717dd73f4323956a3f7441b24dd2f86c13d41adc709e3f6f26266cacd91` |
+| `en-sg`                     | `en-SG` ロケールのコンテナー イメージ。 | `sha256:b7f44d7cf4bbe4d89729207a38e91726c321ea03a66c5e5624b27ae9913fdafa` |
+| `en-us`                     | `en-US` ロケールのコンテナー イメージ。 | `sha256:d81ee15821646607aec9fa46223c9197f74675a89070912ca892ad5adfcab6f9` |
+| `en-za`                     | `en-ZA` ロケールのコンテナー イメージ。 | `sha256:2e2f9102c9f6fba0736fb01d745d35b677bf92750eed5cad245ee089998f66f2` |
+| `es-ar`                     | `es-AR` ロケールのコンテナー イメージ。 | `sha256:dd962ec3f32b8fdeb15f7ab18ea9d19e7c93baf4c801fac59d44f5cf845e9935` |
+| `es-bo`                     | `es-BO` ロケールのコンテナー イメージ。 | `sha256:f89c0e513f43800e1d19177384b815c1a04f5b07ccba8fd9c80aa5ebf5c71648` |
+| `es-cl`                     | `es-CL` ロケールのコンテナー イメージ。 | `sha256:3ebc64dceb1b7fbef716de3736a020b23e8fb4e9aceb183524863681e0b278fe` |
+| `es-co`                     | `es-CO` ロケールのコンテナー イメージ。 | `sha256:ba05465c312acf6b9a1a1866c81c795027470e8bda8389dd0fcb641c9f1af592` |
+| `es-cr`                     | `es-CR` ロケールのコンテナー イメージ。 | `sha256:51d49d90f600ae971019974a6a38c71b3bf01a84301ee6e8604c3f424bc6773f` |
+| `es-cu`                     | `es-CU` ロケールのコンテナー イメージ。 | `sha256:a19f0ab805d0268c06a0e83aad2dcab458638e8c2f7869f5b2315695ae2ea4d8` |
+| `es-do`                     | `es-DO` ロケールのコンテナー イメージ。 | `sha256:a9539f091ec3feef34511ce9d337436151980eda69c7f8c8f2493e8d1be81e66` |
+| `es-ec`                     | `es-EC` ロケールのコンテナー イメージ。 | `sha256:a0f5c19a683b92566747db79e30ac7ad09cde07bcb15451166b5257d036a86bc` |
+| `es-es`                     | `es-ES` ロケールのコンテナー イメージ。 | `sha256:2aa5e82c726a8771c706a2de38bed09ca9c8298bb166c49fa227b8966011efa4` |
+| `es-gt`                     | `es-GT` ロケールのコンテナー イメージ。 | `sha256:60361c1a305d0fef3deb0e4886c4044aebcf41878a748bc0615b94fcf9489cf9` |
+| `es-hn`                     | `es-HN` ロケールのコンテナー イメージ。 | `sha256:d628b894966988880bb11f1ec1380702077bd45c2a83b912ae3e7451d8fd90cb` |
+| `es-mx`                     | `es-MX` ロケールのコンテナー イメージ。 | `sha256:2bd901c320237e041ecca1ea34c359cf847cf8dacecfcb0e1ed8fd1794463fe5` |
+| `es-ni`                     | `es-NI` ロケールのコンテナー イメージ。 | `sha256:099d21e5e5816d5d7e0965cda5878bfe78f5447e4994957dcc45ae40223b14b1` |
+| `es-pa`                     | `es-PA` ロケールのコンテナー イメージ。 | `sha256:af6c258b7e984ee17d32b9dfc49969cfc1d7ee33aa2485017fab191d8d574e92` |
+| `es-pe`                     | `es-PE` ロケールのコンテナー イメージ。 | `sha256:7d0e03c7f44f61b4632b730c2cf8e3d7c584a869bb5d53b9e5021549d1d500a8` |
+| `es-pr`                     | `es-PR` ロケールのコンテナー イメージ。 | `sha256:ad580c1ac73d919434387869803d9fabec24e19afd6b4cc5aa7e809fb93dc908` |
+| `es-py`                     | `es-PY` ロケールのコンテナー イメージ。 | `sha256:2e85df2af0003c0a41752c6e989ed8b724a22958e7ed3cbf67e54ca621bb5975` |
+| `es-sv`                     | `es-SV` ロケールのコンテナー イメージ。 | `sha256:bae49ae543878096c1dd0c77a8f83a30ba1416605efa58dad59ca3577f7006ea` |
+| `es-us`                     | `es-US` ロケールのコンテナー イメージ。 | `sha256:fd9deebe4e5a4466af439a8e40a1a39261a7b0228a4ed979b8086e1c65c60e26` |
+| `es-uy`                     | `es-UY` ロケールのコンテナー イメージ。 | `sha256:0e69fc4689dafad97e00bed7c4eb7ca44b94e3a3d9357d6d36bed8135963e9e4` |
+| `es-ve`                     | `es-VE` ロケールのコンテナー イメージ。 | `sha256:37ebac38fac4306668858140736d83e008ae0756f8e1fe5ed6386780bc9796ba` |
+| `et-ee`                     | `et-EE` ロケールのコンテナー イメージ。 | `sha256:223d494cf64cdceaabe6e9bae82d378d7ea53eb8c01d58bdbd2e1ed360aaa34b` |
+| `fi-fi`                     | `fi-FI` ロケールのコンテナー イメージ。 | `sha256:378e5735198e38d6bed8c87a59ed69f8c3bd57ac8a462332d74dd8495cb07ed2` |
+| `fr-ca`                     | `fr-CA` ロケールのコンテナー イメージ。 | `sha256:d92f672c2a61a67db43d9884bc2692c304b3c2c5446bed2d315892876270366b` |
+| `fr-fr`                     | `fr-FR` ロケールのコンテナー イメージ。 | `sha256:11dc172c7ae91b6cba7fb4ab1a61e48b27b193bf434a68827eb197c0ba05d6fb` |
+| `ga-ie`                     | `ga-IE` ロケールのコンテナー イメージ。 | `sha256:3057eaaf8e0403690c0223c0db3a392b05f2ec45e53511327b8447912e32b8b4` |
+| `gu-in`                     | `gu-IN` ロケールのコンテナー イメージ。 | `sha256:37062edf6805dce30309e4615c2947dded730b5b5be7e3bcd85bb93e38b08f31` |
+| `hi-in`                     | `hi-IN` ロケールのコンテナー イメージ。 | `sha256:9f1bf1901a6b0e2caf4c9ff30e0b6bb3f1f4f814ad86fc62a471d4fe1fe4c101` |
+| `hr-hr`                     | `hr-HR` ロケールのコンテナー イメージ。 | `sha256:095b40ad1afeebd932c299410a4732fd64da2251230aa044ca2c43b4d0bb6791` |
+| `hu-hu`                     | `hu-HU` ロケールのコンテナー イメージ。 | `sha256:60e9257735cee7dc6cde1b5725588b1c1ea84f852220f1f4f3e873177a24fc5c` |
+| `it-it`                     | `it-IT` ロケールのコンテナー イメージ。 | `sha256:71c5e3a9196155678a6ad9cd62b812386579521ac410b40e3526dee153d749e1` |
+| `ja-jp`                     | `ja-JP` ロケールのコンテナー イメージ。 | `sha256:fce7d215575d2a94cdb4818bb1525f6448f5f881fc3e7f04274c64978bd6aaa7` |
+| `ko-kr`                     | `ko-KR` ロケールのコンテナー イメージ。 | `sha256:d71d8e1e3692bb0781e98b984dea79950a8009a6fa03e729325c338ca5c09a98` |
+| `lt-lt`                     | `lt-LT` ロケールのコンテナー イメージ。 | `sha256:dc2e35e158c09fd793b180050a0100df4a3716da4d0a7a528dc3ea65b6ecf21b` |
+| `lv-lv`                     | `lv-LV` ロケールのコンテナー イメージ。 | `sha256:e6ab373eb9477d90d44175fffb646298d403405633e0a61ccf20f9e7381243b8` |
+| `mr-in`                     | `mr-IN` ロケールのコンテナー イメージ。 | `sha256:0ce15c2d14bba49639adea30c91df1ac47e7b2a7796be551276bad8ec8312ed4` |
+| `mt-mt`                     | `mt-MT` ロケールのコンテナー イメージ。 | `sha256:bbe958ff9c7c51efc6521866173b26ac2cfe682d114ce3ed6b1f6b8e9b3a7327` |
+| `nb-no`                     | `nb-NO` ロケールのコンテナー イメージ。 | `sha256:4e4d890605e09717ef88982f586611c605342465a8ef81f2280f665ad1378522` |
+| `nl-nl`                     | `nl-NL` ロケールのコンテナー イメージ。 | `sha256:60bd2d1f817019e6626876b15f5697be07c3b2b368e4cc7e3c3871c3e9181052` |
+| `pl-pl`                     | `pl-PL` ロケールのコンテナー イメージ。 | `sha256:c8520e7155ef176fb9fea48c541acae995a6a80ba6913ac4289786ee55062ce6` |
+| `pt-br`                     | `pt-BR` ロケールのコンテナー イメージ。 | `sha256:c8440308a5cb77791f33ae458c49abc084a1be8c418df9feeda9a4aa917a59bc` |
+| `pt-pt`                     | `pt-PT` ロケールのコンテナー イメージ。 | `sha256:a66739b36a410c181ccd2205c59fee2726b3905d1c5ba4531909be96cf85a55c` |
+| `ro-ro`                     | `ro-RO` ロケールのコンテナー イメージ。 | `sha256:c4ba7ff5c11d4243a3e128aca1f8110e62df82d956706c97c237016a94cb485f` |
+| `ru-ru`                     | `ru-RU` ロケールのコンテナー イメージ。 | `sha256:c3fc4117598c0dcea0fd5e6f19adf7763e42732e32e3ac93ff74795fdc167e67` |
+| `sk-sk`                     | `sk-SK` ロケールのコンテナー イメージ。 | `sha256:78bcfa610f645c113134cc24c8af8dd3c630065c1b009fb5e36dfab4999c16fb` |
+| `sl-si`                     | `sl-SI` ロケールのコンテナー イメージ。 | `sha256:134eb68c900787bae3a98a2bdf192f2a5460fb96b92590d65765d982245a7ccf` |
+| `sv-se`                     | `sv-SE` ロケールのコンテナー イメージ。 | `sha256:d194aaefe82a5f91df9e01beec271ad9565c4d36cb0539421e947b5c8e67228d` |
+| `ta-in`                     | `ta-IN` ロケールのコンテナー イメージ。 | `sha256:cf272b112b10587c034f00f7df2bfcdefbf542859fa089c15581040db99ed383` |
+| `te-in`                     | `te-IN` ロケールのコンテナー イメージ。 | `sha256:7364a1068f9940e9bb6ea5476b0a007a37d42b899dc4ba56be833e4d2b8d359d` |
+| `th-th`                     | `th-TH` ロケールのコンテナー イメージ。 | `sha256:21ce33714fa37bfede60560a7a24c17c88566c767b76c58c877a48c51811c9ac` |
+| `tr-tr`                     | `tr-TR` ロケールのコンテナー イメージ。 | `sha256:b97035a4f0334f890ff3630a2de249b72a879de3c7d4fcc849c3d76aa97f4d2e` |
+| `zh-cn`                     | `zh-CN` ロケールのコンテナー イメージ。 | `sha256:ae4a89a26768c978d91ed797e9ecb8035fdb61f12c1b1124c86939c79ddcb38e` |
+| `zh-hk`                     | `zh-HK` ロケールのコンテナー イメージ。 | `sha256:41bc980abe79cd69034a8ade2be203478b531a00f5e74b1f7b8f9c5267700261` |
+| `zh-tw`                     | `zh-TW` ロケールのコンテナー イメージ。 | `sha256:51a50a7fcd5a9db6422235a2df0e8fba360efcd3cefee9abe44ab2cdce62088f` |
+
+
+# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
+
 `2.10.0-amd64-<locale>` のリリース ノート:
 
 **機能**
 * 最新のモデルにアップグレードします。
 
+`2.9.0-amd64-<locale>` のリリース ノート:
+
+**機能**
+* ID によってカスタム モデルをフェッチする際の問題に関する詳細なエラー。
+* 既定では、会話の結果で推定がサポートされます。
+
+`2.7.0-amd64-<locale>` のリリース ノート:
+
+**機能**
+* 次の新しいロケールのサポート:
+    * ar-bh、ar-iq、ar-jo、ar-lb、ar-om、ar-sy
+    * bg-bg
+    * el-gr
+    * en-hk、en-ie、en-ph、en-sg、en-za
+    * es-ar、es-bo、es-cl、es-co、es-cr、es-cu、es-do、es-ec、es-gt、es-pa、es-pe、es-pr、es-py、es-sv、es-us、es-uy、es-ve
+    * et-ee
+    * ga-ie
+    * hr-hr
+    * hu-hu
+    * lt-lt
+    * lv-lv
+    * mt-mt
+    * ro-ro
+    * sk-sk
+    * sl-sl
+* 句読点は、既定で有効です。
+
 フレーズ リストが含まれているため、このコンテナー イメージのサイズが大きくなっていることに注意してください。 
 
-| イメージ タグ                    | Notes                                                                                                |
-|-------------------------------|:-----------------------------------------------------------------------------------------------------|
-| `latest`                      | `en-US` ロケールのコンテナー イメージ。                                                             |
-| `2.10.0-amd64-<locale>`       | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.10.0-amd64-en-us` 」のように指定します。|
+`2.6.0-amd64-<locale>` のリリース ノート:
+
+**機能**
+* 最新のモデルにアップグレードし、.NET 3.1 に完全に移行しました
+* Phraselist v2 のサポート
+* フレーズ リストは次のロケールでサポートされています。
+    * en-au
+    * en-ca
+    * en-gb
+    * en-in
+    * ja-JP
+    * zh-cn
+* 新しいロケール `cs-CZ` のサポート 
+    * 大文字と小文字の区別と句読点は現在サポートされていません。
+
+**修正**
+* 信頼スコアがダイアライゼーション モードで常に 1 になるという問題を修正しました
+* TextAnalytics 3.0 API を使用するように移行しました
+
+フレーズ リストが含まれているため、このコンテナー イメージのサイズが大きくなっていることに注意してください。 
+
+`2.5.0-amd64-<locale>` のリリース ノート:
+
+**機能**
+* Azure US Government Cloud のサポート
+
+**修正**
+* ダイアライゼーション モードで非 root ユーザーとして実行する場合の問題を修正しました
+
+| イメージ タグ                  | Notes                                    |
+|-----------------------------|:-----------------------------------------|
+| `2.10.0-amd64-<locale>`     | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.10.0-amd64-en-us` 」のように指定します。|
+| `2.9.0-amd64-<locale>`      | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.9.0-amd64-en-us` 」のように指定します。 |
+| `2.7.0-amd64-<locale>`      | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.7.0-amd64-en-us` 」のように指定します。 |
+| `2.6.0-amd64-<locale>`      | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.6.0-amd64-en-us` 」のように指定します。 |
+| `2.5.0-amd64-<locale>`      | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.5.0-amd64-en-us` 」のように指定します。 |
+
 
 このコンテナー イメージには次のロケールを使用できます。
 
@@ -375,77 +557,6 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | `zh-cn`                     | `zh-CN` ロケールのコンテナー イメージ。 | `sha256:9087a08cc455772515f5775a788cdde35d7f5bbe3aa3ba34ae99573fd87b29a1` |
 | `zh-hk`                     | `zh-HK` ロケールのコンテナー イメージ。 | `sha256:372e1c256520e9ee84c4c400eae935c1d6b1d59adb2be4c4dbc56439db069ba0` |
 | `zh-tw`                     | `zh-TW` ロケールのコンテナー イメージ。 | `sha256:8406a3be34530c7d654d1dfa1c593dd51b8946b480fe80a100e599e86385dc2b` |
-
-
-# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
-
-`2.9.0-amd64-<locale>` のリリース ノート:
-
-**機能**
-* ID によってカスタム モデルをフェッチする際の問題に関する詳細なエラー。
-* 既定では、会話の結果で推定がサポートされます。
-
-`2.7.0-amd64-<locale>` のリリース ノート:
-
-**機能**
-* 次の新しいロケールのサポート:
-    * ar-bh、ar-iq、ar-jo、ar-lb、ar-om、ar-sy
-    * bg-bg
-    * el-gr
-    * en-hk、en-ie、en-ph、en-sg、en-za
-    * es-ar、es-bo、es-cl、es-co、es-cr、es-cu、es-do、es-ec、es-gt、es-pa、es-pe、es-pr、es-py、es-sv、es-us、es-uy、es-ve
-    * et-ee
-    * ga-ie
-    * hr-hr
-    * hu-hu
-    * lt-lt
-    * lv-lv
-    * mt-mt
-    * ro-ro
-    * sk-sk
-    * sl-sl
-* 句読点は、既定で有効です。
-
-フレーズ リストが含まれているため、このコンテナー イメージのサイズが大きくなっていることに注意してください。 
-
-`2.6.0-amd64-<locale>` のリリース ノート:
-
-**機能**
-* 最新のモデルにアップグレードし、.NET 3.1 に完全に移行しました
-* Phraselist v2 のサポート
-* フレーズ リストは次のロケールでサポートされています。
-    * en-au
-    * en-ca
-    * en-gb
-    * en-in
-    * ja-JP
-    * zh-cn
-* 新しいロケール `cs-CZ` のサポート 
-    * 大文字と小文字の区別と句読点は現在サポートされていません。
-
-**修正**
-* 信頼スコアがダイアライゼーション モードで常に 1 になるという問題を修正しました
-* TextAnalytics 3.0 API を使用するように移行しました
-
-フレーズ リストが含まれているため、このコンテナー イメージのサイズが大きくなっていることに注意してください。 
-
-`2.5.0-amd64-<locale>` のリリース ノート:
-
-**機能**
-* Azure US Government Cloud のサポート
-
-**修正**
-* ダイアライゼーション モードで非 root ユーザーとして実行する場合の問題を修正しました
-
-| イメージ タグ                  | Notes                                    |
-|-----------------------------|:-----------------------------------------|
-| `2.9.0-amd64-<locale>`      | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.9.0-amd64-en-us` 」のように指定します。 |
-| `2.7.0-amd64-<locale>`      | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.7.0-amd64-en-us` 」のように指定します。 |
-| `2.6.0-amd64-<locale>`      | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.6.0-amd64-en-us` 」のように指定します。 |
-| `2.5.0-amd64-<locale>`      | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `2.5.0-amd64-en-us` 」のように指定します。 |
-
-
-このコンテナー イメージには次のロケールを使用できます。
 
 | v2.9.0 のロケール           | Notes                                    | ダイジェスト                                                                    |
 |-----------------------------|:-----------------------------------------|:--------------------------------------------------------------------------|
@@ -713,7 +824,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 # <a name="latest-version"></a>[最新バージョン](#tab/current)
 
-`1.12.0-amd64-<locale-and-voice>` のリリース ノート:
+`1.13.0-amd64-<locale-and-voice>` のリリース ノート:
 
 **機能**
 * 最新のモデルにアップグレードします。
@@ -721,7 +832,128 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | イメージ タグ                                  | Notes                                                                                                         |
 |---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
 | `latest`                                    | `en-US` ロケールと `en-US-AriaRUS` 音声のコンテナー イメージ。                                            | 
+| `1.13.0-amd64-<locale-and-voice>`           | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.13.0-amd64-en-us-ariarus` 」のように指定します。 |
+
+| v1.13.0 のロケール                         | Notes                                                                      | ダイジェスト                         |
+|---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
+| `ar-eg-hoda`                                | `ar-EG` ロケールと `ar-EG-Hoda` 音声のコンテナー イメージ。            | `sha256:8ff6360ba584d81b987582ce1c2cb6bb624cf68e4d71544805b9afc0401542dd` |
+| `ar-sa-naayf`                               | `ar-SA` ロケールと `ar-SA-Naayf` 音声のコンテナー イメージ。           | `sha256:da5037de95c00362cb1871374735778c3eb68640ae4cb6a260659e7e0a67c37e` |
+| `bg-bg-ivan`                                | `bg-BG` ロケールと `bg-BG-Ivan` 音声のコンテナー イメージ。            | `sha256:871140e57c126ac79c92c69572b86587150d1f14447c91152de3d4b10b3ef9f6` |
+| `ca-es-herenarus`                           | `ca-ES` ロケールと `ca-ES-HerenaRUS` 音声のコンテナー イメージ。       | `sha256:7291ca9c579b1967cca941ce11321daa06ed6a9a1f0922d425d39f70a4aa8acd` |
+| `cs-cz-jakub`                               | `cs-CZ` ロケールと `cs-CZ-Jakub` 音声のコンテナー イメージ。           | `sha256:c8f34c3a7fc5af5141da5439b520614e039d133b6180e8157f12ec7279e9163a` |
+| `da-dk-hellerus`                            | `da-DK` ロケールと `da-DK-HelleRUS` 音声のコンテナー イメージ。        | `sha256:694eb294595700266355f8d57530ec3cccd4e04aa74dd630b96558bf2b481e71` |
+| `de-at-michael`                             | `de-AT` ロケールと `de-AT-Michael` 音声のコンテナー イメージ。         | `sha256:f875435d8fadb56df2123d5aa1ceca34990d00f4c75678eb2526b83058972717` |
+| `de-ch-karsten`                             | `de-CH` ロケールと `de-CH-Karsten` 音声のコンテナー イメージ。         | `sha256:c58359bd6e6676e23dda181a86caee1771366b0329a44fae0f363bbd381058ad` |
+| `de-de-heddarus`                            | `de-DE` ロケールと `de-DE-Hedda` 音声のコンテナー イメージ。           | `sha256:c8e615d40c6e96216b90e329bf7185060de646db1e92fd1fdcd344a52bd86b55` |
+| `de-de-hedda`                               | `de-DE` ロケールと `de-DE-Hedda` 音声のコンテナー イメージ。           | `sha256:c8e615d40c6e96216b90e329bf7185060de646db1e92fd1fdcd344a52bd86b55` |
+| `de-de-stefan-apollo`                       | `de-DE` ロケールと `de-DE-Stefan-Apollo` 音声のコンテナー イメージ。   | `sha256:e8e3f04f0ee74d4247ffb7c69e54559f0cc6db66a121406e06ceb9dcdc3c4379` |
+| `el-gr-stefanos`                            | `el-GR` ロケールと `el-GR-Stefanos` 音声のコンテナー イメージ。        | `sha256:15112a55bc7ccb6c29ee0a1de464fa6352a0e9953399032e5c8a0d29ec064af0` |
+| `en-au-catherine`                           | `en-AU` ロケールと `en-AU-Catherine` 音声のコンテナー イメージ。       | `sha256:9a77bb5451889f62b8a146bfcc4a412c1cef95fd2102650528ccee84a08b25b8` |
+| `en-au-hayleyrus`                           | `en-AU` ロケールと `en-AU-HayleyRUS` 音声のコンテナー イメージ。       | `sha256:90ee1094fbb8e739788545b3b9f4fabad5b4dffb5b7087cfd01c3b21ba1b2473` |
+| `en-ca-heatherrus`                          | `en-CA` ロケールと `en-CA-HeatherRUS` 音声のコンテナー イメージ。      | `sha256:43b7d3c87162129253fd5c150307a5d9dc6ea28b8fa19776b66f4aa7a546f43b` |
+| `en-ca-linda`                               | `en-CA` ロケールと `en-CA-Linda` 音声のコンテナー イメージ。           | `sha256:75a4423d5b24136efdc5de28a7a5b50a3a09b65b3824f86dd50a95eefea7ead6` |
+| `en-gb-george-apollo`                       | `en-GB` ロケールと `en-GB-George-Apollo` 音声のコンテナー イメージ。   | `sha256:87e926f7db4a27870c735c80ad801bc5480fb2665594727ae760c8c287677088` |
+| `en-gb-hazelrus`                            | `en-GB` ロケールと `en-GB-HazelRUS` 音声のコンテナー イメージ。        | `sha256:3fbd6a824831f158762036aa41c0397f7c1148150a4dc045db5f19ba840e74b6` |
+| `en-gb-susan-apollo`                        | `en-GB` ロケールと `en-GB-Susan-Apollo` 音声のコンテナー イメージ。    | `sha256:646810c4129f8919ff56d91701b488e229bd12b3dd9c89a1635868f9340e00b8` |
+| `en-ie-sean`                                | `en-IE` ロケールと `en-IE-Sean` 音声のコンテナー イメージ。            | `sha256:641abfa96380f142d4b2f9145cd02886d44f01bce68614094b48c1e01b50ed59` |
+| `en-in-heera-apollo`                        | `en-IN` ロケールと `en-IN-Heera-Apollo` 音声のコンテナー イメージ。    | `sha256:c0acfffceae9c1ff5ad305d8b98929d9c65eca25f49ddcb8999d7de6118392d2` |
+| `en-in-priyarus`                            | `en-IN` ロケールと `en-IN-PriyaRUS` 音声のコンテナー イメージ。        | `sha256:fbdc9ef0b4308ffce87d6ff6854814804b3cafacad6c4dc5cdac6a47c6de7975` |
+| `en-in-ravi-apollo`                         | `en-IN` ロケールと `en-IN-Ravi-Apollo` 音声のコンテナー イメージ。     | `sha256:f31c40c9db2f1e826686649e748d0b2be0c00abcac62c2aae5b8981b0d8c681d` |
+| `en-us-aria24krus`                          | `en-US` ロケールと `en-US-Aria24kRUS` 音声のコンテナー イメージ。      | `sha256:1232b798aae3ce68d1e555a5b35142bde5b4c871488f8c82c3d7c0767925afd8` |
+| `en-us-ariarus`                             | `en-US` ロケールと `en-US-AriaRUS` 音声のコンテナー イメージ。         | `sha256:1232b798aae3ce68d1e555a5b35142bde5b4c871488f8c82c3d7c0767925afd8` |
+| `en-us-benjaminrus`                         | `en-US` ロケールと `en-US-BenjaminRUS` 音声のコンテナー イメージ。     | `sha256:5fd7e9fbcc84ab467d04e95b18f5411579ce2d9a153b7f6e396f2412d08898dc` |
+| `en-us-guy24krus`                           | `en-US` ロケールと `en-US-Guy24kRUS` 音声のコンテナー イメージ。       | `sha256:5fbbd16ab58b7f2440778b258bb0cd966286de0dbb3ce7f5e54d0f244f63dd3f` |
+| `en-us-zirarus`                             | `en-US` ロケールと `en-US-ZiraRUS` 音声のコンテナー イメージ。         | `sha256:806b92916b2fe1e7855023a009742033a48cb7eddde84ddf7c93be93b9621026` |
+| `es-es-helenarus`                           | `es-ES` ロケールと `es-ES-HelenaRUS` 音声のコンテナー イメージ。       | `sha256:507d9f40dcb846a5d1511a5e9e1cf94b360b1d9922f4b1143c3146d1b3bc69a2` |
+| `es-es-laura-apollo`                        | `es-ES` ロケールと `es-ES-Laura-Apollo` 音声のコンテナー イメージ。    | `sha256:594add691d03d02fa5925f817e6a25c091fac1a924e0ea4b626e0fce858a78cb` |
+| `es-es-pablo-apollo`                        | `es-ES` ロケールと `es-ES-Pablo-Apollo` 音声のコンテナー イメージ。    | `sha256:09d288b58fea080689471618227d1cb3ccc467f2edc9477eaaffffb09b3d6d8b` |
+| `es-mx-hildarus`                            | `es-MX` ロケールと `es-MX-HildaRUS` 音声のコンテナー イメージ。        | `sha256:7019c80c88444a60bf1016eb66284745dc8184b051685df4a1b3c40d32c8ad7f` |
+| `es-mx-raul-apollo`                         | `es-MX` ロケールと `es-MX-Raul-Apollo` 音声のコンテナー イメージ。     | `sha256:eed46588733b884c330fff1ff7f4e3e3fd6416cb340ebd80e44c4b3d1e085e55` |
+| `fi-fi-heidirus`                            | `fi-FI` ロケールと `fi-FI-HeidiRUS` 音声のコンテナー イメージ。        | `sha256:00f7a854c4a01bdbef88e0b138c97f732f1c6008a8b2c1722fc8da3a91fa79a4` |
+| `fr-ca-caroline`                            | `fr-CA` ロケールと `fr-CA-Caroline` 音声のコンテナー イメージ。        | `sha256:5f32e838a0925c560d2961a42487b99dd7e79e04661a7711f905d36c55973fd6` |
+| `fr-ca-harmonierus`                         | `fr-CA` ロケールと `fr-CA-HarmonieRUS` 音声のコンテナー イメージ。     | `sha256:6f3d3237c990f8f04d4c8f488746f74fa94edd2c5f1def758af90b2be251900e` |
+| `fr-ch-guillaume`                           | `fr-CH` ロケールと `fr-CH-Guillaume` 音声のコンテナー イメージ。       | `sha256:282e2e48c1147b74d927e801534be52b1301a081ff881994e85bb9d85b6e85fb` |
+| `fr-fr-hortenserus`                         | `fr-FR` ロケールと `fr-FR-HortenseRUS` 音声のコンテナー イメージ。     | `sha256:16370c22530c93fc6c5ebeaf10663de7c3d45db58eccc716abd5274b5bee56d3` |
+| `fr-fr-julie-apollo`                        | `fr-FR` ロケールと `fr-FR-Julie-Apollo` 音声のコンテナー イメージ。    | `sha256:e6541e82b8555f748f1feb5eef1c0ebf884245c5448f0ced46e6f25dabb925a2` |
+| `fr-fr-paul-apollo`                         | `fr-FR` ロケールと `fr-FR-Paul-Apollo` 音声のコンテナー イメージ。     | `sha256:a4cf0bab208a31da3e796bf353969dfd98184b30e0cf713df49cb4fb07ff568b` |
+| `he-il-asaf`                                | `he-IL` ロケールと `he-IL-Asaf` 音声のコンテナー イメージ。            | `sha256:4417d0a14098b564eb4ba91772eb7ad5976ac52b0b59ae484fc3a88017e0776b` |
+| `hi-in-hemant`                              | `hi-IN` ロケールと `hi-IN-Hemant` 音声のコンテナー イメージ。          | `sha256:da086a3e2bc3e17f4e44165055fc61679e9356688d3735ee8cfd81e6265b8622` |
+| `hi-in-kalpana-apollo`                      | `hi-IN` ロケールと `hi-IN-Kalpana-Apollo` 音声のコンテナー イメージ。  | `sha256:0c9915bf34e3045e39aa245c597aa7223fbf6100d7e20cbcc1bf131f89ee785e` |
+| `hi-in-kalpana`                             | `hi-IN` ロケールと `hi-IN-Kalpana` 音声のコンテナー イメージ。         | `sha256:0c9915bf34e3045e39aa245c597aa7223fbf6100d7e20cbcc1bf131f89ee785e` |
+| `hr-hr-matej`                               | `hr-HR` ロケールと `hr-HR-Matej` 音声のコンテナー イメージ。           | `sha256:fc08c968efe882ed11ad0ee0755a9d43eff88b96da8ec19e7a5c071810c84d8c` |
+| `hu-hu-szabolcs`                            | `hu-HU` ロケールと `hu-HU-Szabolcs` 音声のコンテナー イメージ。        | `sha256:b6ad73f07efd1576e166b4d7e54a4ff419bfedc513a175fbb968389eb289a4ee` |
+| `id-id-andika`                              | `id-ID` ロケールと `id-ID-Andika` 音声のコンテナー イメージ。          | `sha256:3aad5ccf0c155593934c29a3e50502bc80b0370fa29626e67cda141d4bf5ac89` |
+| `it-it-cosimo-apollo`                       | `it-IT` ロケールと `it-IT-Cosimo-Apollo` 音声のコンテナー イメージ。   | `sha256:01502f274bad378e6e99bed5f80fdb476880ce04e8775ca56d338de2f2d43e8c` |
+| `it-it-luciarus`                            | `it-IT` ロケールと `it-IT-LuciaRUS` 音声のコンテナー イメージ。        | `sha256:fdc20724194612d99e8339d25c72c7fe937ad741abe46d86def6c62880913c2a` |
+| `ja-jp-ayumi-apollo`                        | `ja-JP` ロケールと `ja-JP-Ayumi-Apollo` 音声のコンテナー イメージ。    | `sha256:abf0e442ec972e25743a8af55da49a6fd5bf2ffd6ca09619d68e4dc9f9db779a` |
+| `ja-jp-harukarus`                           | `ja-JP` ロケールと `ja-JP-HarukaRUS` 音声のコンテナー イメージ。       | `sha256:9eff152cd4bea6f9de3b101c0704f37c8a061e060287e3f9f8fc2eb28d7dcec7` |
+| `ja-jp-ichiro-apollo`                       | `ja-JP` ロケールと `ja-JP-Ichiro-Apollo` 音声のコンテナー イメージ。   | `sha256:83aa3c569f7598843d4957f075915ac2635d3aaf577ac1158c12a1238dd7e148` |
+| `ko-kr-heamirus`                            | `ko-KR` ロケールと `ko-KR-HeamiRUS` 音声のコンテナー イメージ。        | `sha256:ea404c7857f9df0a23cbf3fac12ae00f11c32a6822d91078a321302f09f01082` |
+| `ms-my-rizwan`                              | `ms-MY` ロケールと `ms-MY-Rizwan` 音声のコンテナー イメージ。          | `sha256:d4c15f7da8e03650395489b6cb6975d59322b1bbd2c59957617f0c0a297409ee` |
+| `nb-no-huldarus`                            | `nb-NO` ロケールと `nb-NO-HuldaRUS` 音声のコンテナー イメージ。        | `sha256:cb2c0fb57513c66e00bd6b8cbb44882d5bb7d483c19784d2b1e09511d58842bc` |
+| `nl-nl-hannarus`                            | `nl-NL` ロケールと `nl-NL-HannaRUS` 音声のコンテナー イメージ。        | `sha256:7b9a92ab8a9856f422e65b428b845571a059c0923dc1c348134f271ed7a4abe0` |
+| `pl-pl-paulinarus`                          | `pl-PL` ロケールと `pl-PL-PaulinaRUS` 音声のコンテナー イメージ。      | `sha256:cface74973368a78d75a2a079214aa748574c5f037b0c4189888269b6016f230` |
+| `pt-br-daniel-apollo`                       | `pt-BR` ロケールと `pt-BR-Daniel-Apollo` 音声のコンテナー イメージ。   | `sha256:cc3e74228002b8d4e7dc487ff6f930316ac5d7a93f97937942a23f41b484ba8c` |
+| `pt-br-heloisarus`                          | `pt-BR` ロケールと `pt-BR-HeloisaRUS` 音声のコンテナー イメージ。      | `sha256:dca613867e2f559d9485f9ba553ecea3de6d4b2779d4eed0ce1e53e7f7939773` |
+| `pt-pt-heliarus`                            | `pt-PT` ロケールと `pt-PT-HeliaRUS` 音声のコンテナー イメージ。        | `sha256:791ac2b3100725f909cfeceb17fc0d5fd1022242db45ba455d7ea088d76ac033` |
+| `ro-ro-andrei`                              | `ro-RO` ロケールと `ro-RO-Andrei` 音声のコンテナー イメージ。          | `sha256:3b93df188bcbdf9416d203a7e30ade8908728316666cd3451a5f0320cdf219a9` |
+| `ru-ru-ekaterinarus`                        | `ru-RU` ロケールと `ru-RU-EkaterinaRUS` 音声のコンテナー イメージ。    | `sha256:d2f636e35e67be196a4ad79f168e4df74d2f00d5b5c6123bd61f9aec72bfd1a7` |
+| `ru-ru-irina-apollo`                        | `ru-RU` ロケールと `ru-RU-Irina-Apollo` 音声のコンテナー イメージ。    | `sha256:247a4c6025faced1be1738d816c1bb74b23bbc5d49458f9afe95dc32ab3ea71c` |
+| `ru-ru-pavel-apollo`                        | `ru-RU` ロケールと `ru-RU-Pavel-Apollo` 音声のコンテナー イメージ。    | `sha256:355c3a0f64f003d0a041a757b8ddcdea8130b6a56a7c4003a68ba0412400c446` |
+| `sk-sk-filip`                               | `sk-SK` ロケールと `sk-SK-Filip` 音声のコンテナー イメージ。           | `sha256:55fff1cde012a7791c756104ba68a360e609a765bd776024a9f5f00199f568e5` |
+| `sl-si-lado`                                | `sl-SI` ロケールと `sl-SI-Lado` 音声のコンテナー イメージ。            | `sha256:7f80965dde85e3a5aae9f69561c296d073289f0b6aa37e95ff0aa5192a5b7f90` |
+| `sv-se-hedvigrus`                           | `sv-SE` ロケールと `sv-SE-HedvigRUS` 音声のコンテナー イメージ。       | `sha256:1bd43f513a5b2752c44a107e1898459cdda5d7267ec21f379679d411700e5189` |
+| `ta-in-valluvar`                            | `ta-IN` ロケールと `ta-IN-Valluvar` 音声のコンテナー イメージ。        | `sha256:8062e2479a6a3dc17b8342c07a94a39dd1e1f788c1def0a1ab55a885b491bbab` |
+| `te-in-chitra`                              | `te-IN` ロケールと `te-IN-Chitra` 音声のコンテナー イメージ。          | `sha256:6ce345df654bd1db213c16c866b608037dcefb1d056fc14727db3b9e21437762` |
+| `th-th-pattara`                             | `th-TH` ロケールと `th-TH-Pattara` 音声のコンテナー イメージ。         | `sha256:9b9c8ad7f8621f887f3e9fda26f43995855dba76831fdf2598ef383cf3d20f39` |
+| `tr-tr-sedarus`                             | `tr-TR` ロケールと `tr-TR-SedaRUS` 音声のコンテナー イメージ。         | `sha256:2e45f019df702d8788c1d9c20ff75cfd94aecaaf6facb9f41b642ef1bfe7d318` |
+| `vi-vn-an`                                  | `vi-VN` ロケールと `vi-VN-An` 音声のコンテナー イメージ。              | `sha256:3b142a414ff9f30ebef144e22bf979589600f226442d2f882384695795739178` |
+| `zh-cn-huihuirus`                           | `zh-CN` ロケールと `zh-CN-HuihuiRUS` 音声のコンテナー イメージ。       | `sha256:23b76501492c9b60e8888eda2f6b0258859f68ed6ff7fb49bacbb18cd5f542ed` |
+| `zh-cn-kangkang-apollo`                     | `zh-CN` ロケールと `zh-CN-Kangkang-Apollo` 音声のコンテナー イメージ。 | `sha256:e9acc58168f6800d9dd11cbc569c9d279ecf28f3d17c702528d25f67edd447c9` |
+| `zh-cn-yaoyao-apollo`                       | `zh-CN` ロケールと `zh-CN-Yaoyao-Apollo` 音声のコンテナー イメージ。   | `sha256:85e7d7ae77d41195de5102b772621ef34564d40fad224a0ed21a8fe8daf98b0f` |
+| `zh-hk-danny-apollo`                        | `zh-HK` ロケールと `zh-HK-Danny-Apollo` 音声のコンテナー イメージ。    | `sha256:1fcba05138c0e5bf36447530311800e2d4044824b5d893439a12f3ebc6380135` |
+| `zh-hk-tracy-apollo`                        | `zh-HK` ロケールと `zh-HK-Tracy-Apollo` 音声のコンテナー イメージ。    | `sha256:d02bd8759e085abbc95725aa4f70f124c4505aa0856a17696a1555b2cf64512e` |
+| `zh-hk-tracyrus`                            | `zh-HK` ロケールと `zh-HK-TracyRUS` 音声のコンテナー イメージ。        | `sha256:d02bd8759e085abbc95725aa4f70f124c4505aa0856a17696a1555b2cf64512e` |
+| `zh-tw-hanhanrus`                           | `zh-TW` ロケールと `zh-TW-HanHanRUS` 音声のコンテナー イメージ。       | `sha256:a3f68538088b5b07f4dc27239fa3a6308d949c2643638634c74f3ee132bca911` |
+| `zh-tw-yating-apollo`                       | `zh-TW` ロケールと `zh-TW-Yating-Apollo` 音声のコンテナー イメージ。   | `sha256:bb0696685f3a90fe6898ff1487cb0c5957e02f3c63cdb7d02394b5c061339bf3` |
+| `zh-tw-zhiwei-apollo`                       | `zh-TW` ロケールと `zh-TW-Zhiwei-Apollo` 音声のコンテナー イメージ。   | `sha256:1772b3bc8b166f429356b00d07ca438202c75d578b6d1655351b9c1e06ae1424` |
+
+
+# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
+
+`1.12.0-amd64-<locale-and-voice>` のリリース ノート:
+
+**機能**
+* 最新のモデルにアップグレードします。
+
+`1.11.0-amd64-<locale-and-voice>` のリリース ノート:
+
+**機能**
+* ID によってカスタム モデルをフェッチする際の問題に関する詳細なエラー。
+
+`1.9.0-amd64-<locale-and-voice>` のリリース ノート:
+
+* 定期的な毎月のリリース
+
+`1.8.0-amd64-<locale-and-voice>` のリリース ノート:
+
+**機能**
+
+* .NET 3.1 に完全に移行しました
+
+`1.7.0-amd64-<locale-and-voice>` のリリース ノート:
+
+**機能**
+
+* コンポーネントを .NET 3.1 にアップグレードしました
+
+| イメージ タグ                                  | Notes                                                                                                         |
+|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
 | `1.12.0-amd64-<locale-and-voice>`           | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.12.0-amd64-en-us-ariarus` 」のように指定します。 |
+| `1.11.0-amd64-<locale-and-voice>`           | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.11.0-amd64-en-us-ariarus` 」のように指定します。 |
+| `1.9.0-amd64-<locale-and-voice>`            | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.9.0-amd64-en-us-ariarus` 」のように指定します。  |
+| `1.8.0-amd64-<locale-and-voice>`            | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.8.0-amd64-en-us-ariarus` 」のように指定します。  |
+| `1.7.0-amd64-<locale-and-voice>`            | 最初の GA バージョン。 `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.7.0-amd64-en-us-ariarus` 」のように指定します。  |
 
 | v1.12.0 のロケール                         | Notes                                                                      | ダイジェスト                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -806,37 +1038,6 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | `zh-tw-hanhanrus`                           | `zh-TW` ロケールと `zh-TW-HanHanRUS` 音声のコンテナー イメージ。       | `sha256:9802fc4a9656063cb9f215ca757db5289960d323244272ce280db0395ddd46ac` |
 | `zh-tw-yating-apollo`                       | `zh-TW` ロケールと `zh-TW-Yating-Apollo` 音声のコンテナー イメージ。   | `sha256:05f50dffbeb17e4215a5a53cc0791d825b63bc1e2b007b00797e5d0e1b1d6d1e` |
 | `zh-tw-zhiwei-apollo`                       | `zh-TW` ロケールと `zh-TW-Zhiwei-Apollo` 音声のコンテナー イメージ。   | `sha256:e96f4aecba6e3c0741218f3e1aec35e53147b12543be9fdcd76ff98d4c34cf84` |
-
-
-# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
-
-`1.11.0-amd64-<locale-and-voice>` のリリース ノート:
-
-**機能**
-* ID によってカスタム モデルをフェッチする際の問題に関する詳細なエラー。
-
-`1.9.0-amd64-<locale-and-voice>` のリリース ノート:
-
-* 定期的な毎月のリリース
-
-`1.8.0-amd64-<locale-and-voice>` のリリース ノート:
-
-**機能**
-
-* .NET 3.1 に完全に移行しました
-
-`1.7.0-amd64-<locale-and-voice>` のリリース ノート:
-
-**機能**
-
-* コンポーネントを .NET 3.1 にアップグレードしました
-
-| イメージ タグ                                  | Notes                                                                                                         |
-|---------------------------------------------|:--------------------------------------------------------------------------------------------------------------|
-| `1.11.0-amd64-<locale-and-voice>`           | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.11.0-amd64-en-us-ariarus` 」のように指定します。 |
-| `1.9.0-amd64-<locale-and-voice>`            | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.9.0-amd64-en-us-ariarus` 」のように指定します。  |
-| `1.8.0-amd64-<locale-and-voice>`            | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.8.0-amd64-en-us-ariarus` 」のように指定します。  |
-| `1.7.0-amd64-<locale-and-voice>`            | 最初の GA バージョン。 `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.7.0-amd64-en-us-ariarus` 」のように指定します。  |
 
 | v1.11.0 のロケール                         | Notes                                                                      | ダイジェスト                         |
 |---------------------------------------------|:---------------------------------------------------------------------------|:-------------------------------|
@@ -1185,16 +1386,72 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 
 # <a name="latest-version"></a>[最新バージョン](#tab/current)
 
+`v1.5.0` のリリース ノート:
+* 品質向上とバグ修正が行われた最新モデルへのアップグレード
+* 最大 38 のニューラル音声をサポート
+
+| イメージ タグ                                  | Notes                                                                      |
+|---------------------------------------------|:---------------------------------------------------------------------------|
+| `latest`                                    | `en-US` ロケールと `en-US-AriaNeural` 音声のコンテナー イメージ。      |
+| `1.5.0-amd64-<locale-and-voice>`            | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.5.0-amd64-en-us-arianeural` 」のように指定します。 |
+
+
+| v1.5.0 のロケールと音声           | Notes                                                                      |
+|-------------------------------------|:---------------------------------------------------------------------------|
+| `de-de-conradneural`                | `de-DE` ロケールと `de-DE-ConradNeural` 音声のコンテナー イメージ。    |
+| `de-de-katjaneural`                 | `de-DE` ロケールと `de-DE-KatjaNeural` 音声のコンテナー イメージ。     |
+| `en-au-natashaneural`               | `en-AU` ロケールと `en-AU-NatashaNeural` 音声のコンテナー イメージ。   |
+| `en-au-williamneural`               | `en-AU` ロケールと `en-AU-WilliamNeural` 音声のコンテナー イメージ。   |
+| `en-ca-claraneural`                 | `en-CA` ロケールと `en-CA-ClaraNeural` 音声のコンテナー イメージ。     |
+| `en-ca-liamneural`                  | `en-CA` ロケールと `en-CA-LiamNeural` 音声のコンテナー イメージ。      |
+| `en-gb-libbyneural`                 | `en-GB` ロケールと `en-GB-LibbyNeural` 音声のコンテナー イメージ。     |
+| `en-gb-mianeural`                   | `en-GB` ロケールと `en-GB-MiaNeural` 音声のコンテナー イメージ。       |
+| `en-gb-ryanneural`                  | `en-GB` ロケールと `en-GB-RyanNeural` 音声のコンテナー イメージ。      |
+| `en-us-arianeural`                  | `en-US` ロケールと `en-US-AriaNeural` 音声のコンテナー イメージ。      |
+| `en-us-guyneural`                   | `en-US` ロケールと `en-US-GuyNeural` 音声のコンテナー イメージ。       |
+| `en-us-jennyneural`                 | `en-US` ロケールと `en-US-JennyNeural` 音声のコンテナー イメージ。     |
+| `es-es-alvaroneural`                | `es-ES` ロケールと `es-ES-AlvaroNeural` 音声のコンテナー イメージ。    |
+| `es-es-elviraneural`                | `es-ES` ロケールと `es-ES-ElviraNeural` 音声のコンテナー イメージ。    |
+| `es-mx-dalianeural`                 | `es-MX` ロケールと `es-MX-DaliaNeural` 音声のコンテナー イメージ。     |
+| `es-mx-jorgeneural`                 | `es-MX` ロケールと `es-MX-JorgeNeural` 音声のコンテナー イメージ。     |
+| `fr-ca-antoineneural`               | `fr-CA` ロケールと `fr-CA-AntoineNeural` 音声のコンテナー イメージ。   |
+| `fr-ca-jeanneural`                  | `fr-CA` ロケールと `fr-CA-JeanNeural` 音声のコンテナー イメージ。      |
+| `fr-ca-sylvieneural`                | `fr-CA` ロケールと `fr-CA-SylvieNeural` 音声のコンテナー イメージ。    |
+| `fr-fr-deniseneural`                | `fr-FR` ロケールと `fr-FR-DeniseNeural` 音声のコンテナー イメージ。    |
+| `fr-fr-henrineural`                 | `fr-FR` ロケールと `fr-FR-HenriNeural` 音声のコンテナー イメージ。     |
+| `hi-in-madhurneural`                | `hi-IN` ロケールと `hi-IN-MadhurNeural` 音声のコンテナー イメージ。    |
+| `hi-in-swaraneural`                 | `hi-IN` ロケールと `hi-IN-Swaraneural` 音声のコンテナー イメージ。     |
+| `it-it-diegoneural`                 | `it-IT` ロケールと `it-IT-DiegoNeural` 音声のコンテナー イメージ。     |
+| `it-it-elsaneural`                  | `it-IT` ロケールと `it-IT-ElsaNeural` 音声のコンテナー イメージ。      |
+| `it-it-isabellaneural`              | `it-IT` ロケールと `it-IT-IsabellaNeural` 音声のコンテナー イメージ。  |
+| `ja-jp-keitaneural`                 | `ja-JP` ロケールと `ja-JP-KeitaNeural` 音声のコンテナー イメージ。     |
+| `ja-jp-nanamineural`                | `ja-JP` ロケールと `ja-JP-NanamiNeural` 音声のコンテナー イメージ。    |
+| `ko-kr-injoonneural`                | `ko-KR` ロケールと `ko-KR-InJoonNeural` 音声のコンテナー イメージ。    |
+| `ko-kr-sunhineural`                 | `ko-KR` ロケールと `ko-KR-SunHiNeural` 音声のコンテナー イメージ。     |
+| `pt-br-antonioneural`               | `pt-BR` ロケールと `pt-BR-AntonioNeural` 音声のコンテナー イメージ。   |
+| `pt-br-franciscaneural`             | `pt-BR` ロケールと `pt-BR-FranciscaNeural` 音声のコンテナー イメージ。 |
+| `tr-tr-ahmetneural`                 | `tr-TR` ロケールと `tr-TR-AhmetNeural` 音声のコンテナー イメージ。     |
+| `tr-tr-emelneural`                  | `tr-TR` ロケールと `tr-TR-EmelNeural` 音声のコンテナー イメージ。      |
+| `zh-cn-xiaoxiaoneural`              | `zh-CN` ロケールと `zh-CN-XiaoxiaoNeural` 音声のコンテナー イメージ。  |
+| `zh-cn-xiaoyouneural`               | `zh-CN` ロケールと `zh-CN-XiaoYouNeural` 音声のコンテナー イメージ。   |
+| `zh-cn-yunyangneural`               | `zh-CN` ロケールと `zh-CN-YunYangNeural` 音声のコンテナー イメージ。   |
+| `zh-cn-yunyeneural`                 | `zh-CN` ロケールと `zh-CN-YunYeNeural` 音声のコンテナー イメージ。     |
+
+# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
+
 `v1.4.0` のリリース ノート:
 * 最新のモデルにアップグレードします。 
 * CPU コストと待機時間が削減されました。
 * SSML タグを使用した韻律チューニングのサポートの向上 (ピッチ曲線など)。
 
+`v1.3.0` のリリース ノート:
+* ニューラル テキスト読み上げコンテナーの一般提供を開始しました。 
+
 | イメージ タグ                                  | Notes                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | `en-US` ロケールと `en-US-AriaNeural` 音声のコンテナー イメージ。      |
-| `1.4.0-amd64-<locale-and-voice>`    | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.4.0-amd64-en-us-arianeural` 」のように指定します。 |
-
+| `1.4.0-amd64-<locale-and-voice>`            | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.4.0-amd64-en-us-arianeural` 」のように指定します。 |
+| `1.3.0-amd64-<locale-and-voice>-preview`    | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.3.0-amd64-en-us-arianeural-preview` 」のように指定します。 |
+| `1.2.0-amd64-<locale-and-voice>-preview`    | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.2.0-amd64-en-us-arianeural-preview` 」のように指定します。 |
 
 | v1.4.0 のロケールと音声           | Notes                                                                      |
 |-------------------------------------|:---------------------------------------------------------------------------|
@@ -1210,7 +1467,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | `es-mx-dalianeural`                 | `es-MX` ロケールと `es-MX-DaliaNeural` 音声のコンテナー イメージ。     |
 | `fr-ca-sylvieneural`                | `fr-CA` ロケールと `fr-CA-SylvieNeural` 音声のコンテナー イメージ。    |
 | `fr-fr-deniseneural`                | `fr-FR` ロケールと `fr-FR-DeniseNeural` 音声のコンテナー イメージ。    |
-| `hi-in-swaracpuneural`              | `hi-IN` ロケールと `hi-IN-Swaraneural` 音声のコンテナー イメージ。     |
+| `hi-in-swaraneural`                 | `hi-IN` ロケールと `hi-IN-Swaraneural` 音声のコンテナー イメージ。     |
 | `it-it-elsaneural`                  | `it-IT` ロケールと `it-IT-ElsaNeural` 音声のコンテナー イメージ。      |
 | `ja-jp-nanamineural`                | `ja-JP` ロケールと `ja-JP-NanamiNeural` 音声のコンテナー イメージ。    |
 | `ko-kr-sunhineural`                 | `ko-KR` ロケールと `ko-KR-SunHiNeural` 音声のコンテナー イメージ。     |
@@ -1219,17 +1476,6 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | `zh-cn-xiaoyouneural`               | `zh-CN` ロケールと `zh-CN-XiaoYouNeural` 音声のコンテナー イメージ。   |
 | `zh-cn-yunyangneural`               | `zh-CN` ロケールと `zh-CN-YunYangNeural` 音声のコンテナー イメージ。   |
 | `zh-cn-yunyeneural`                 | `zh-CN` ロケールと `zh-CN-YunYeNeural` 音声のコンテナー イメージ。     |
-
-# <a name="previous-version"></a>[以前のバージョン](#tab/previous)
-
-`v1.3.0` のリリース ノート:
-* ニューラル テキスト読み上げコンテナーの一般提供を開始しました。 
-
-| イメージ タグ                                  | Notes                                                                      |
-|---------------------------------------------|:---------------------------------------------------------------------------|
-| `latest`                                    | `en-US` ロケールと `en-US-AriaNeural` 音声のコンテナー イメージ。      |
-| `1.3.0-amd64-<locale-and-voice>-preview`    | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.3.0-amd64-en-us-arianeural-preview` 」のように指定します。 |
-| `1.2.0-amd64-<locale-and-voice>-preview`    | `<locale>` を、以下に一覧表示されている使用可能なロケールのいずれかに置き換えます。 たとえば、「 `1.2.0-amd64-en-us-arianeural-preview` 」のように指定します。 |
 
 | v1.3.0 のロケールと音声           | Notes                                                                      |
 |-------------------------------------|:---------------------------------------------------------------------------|
@@ -1245,7 +1491,7 @@ Azure Cognitive Services からはさまざまなコンテナー イメージが
 | `es-mx-dalianeural`                 | `es-MX` ロケールと `es-MX-DaliaNeural` 音声のコンテナー イメージ。     |
 | `fr-ca-sylvieneural`                | `fr-CA` ロケールと `fr-CA-SylvieNeural` 音声のコンテナー イメージ。    |
 | `fr-fr-deniseneural`                | `fr-FR` ロケールと `fr-FR-DeniseNeural` 音声のコンテナー イメージ。    |
-| `hi-in/swaracpuneural`              | `hi-IN` ロケールと `hi-IN-Swaraneural` 音声のコンテナー イメージ。     |
+| `hi-in-swaraneural`                 | `hi-IN` ロケールと `hi-IN-Swaraneural` 音声のコンテナー イメージ。     |
 | `it-it-elsaneural`                  | `it-IT` ロケールと `it-IT-ElsaNeural` 音声のコンテナー イメージ。      |
 | `ja-jp-nanamineural`                | `ja-JP` ロケールと `ja-JP-NanamiNeural` 音声のコンテナー イメージ。    |
 | `ko-kr-sunhineural`                 | `ko-KR` ロケールと `ko-KR-SunHiNeural` 音声のコンテナー イメージ。     |

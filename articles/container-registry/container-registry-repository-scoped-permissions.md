@@ -3,12 +3,12 @@ title: Azure Container Registry でのリポジトリに対するアクセス許
 description: イメージのプルやプッシュまたは他のアクションを実行するための、Premium レジストリ内の特定のリポジトリをスコープとするアクセス許可を持つトークンを作成します。
 ms.topic: article
 ms.date: 02/04/2021
-ms.openlocfilehash: 0ac479b696a377509cee6459efd8bbb9de940d2a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8cdcd3e09603f24c37ad7323a273ca97f76fcd0c
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107781399"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930499"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>リポジトリ スコープのアクセス許可を持つトークンを作成する
 
@@ -76,7 +76,8 @@ ms.locfileid: "107781399"
 ```azurecli
 az acr token create --name MyToken --registry myregistry \
   --repository samples/hello-world \
-  content/write content/read
+  content/write content/read \
+  --output json
 ```
 
 出力には、トークンの詳細が表示されます。 既定では、有効期限がない 2 つのパスワードが生成されますが、必要に応じて有効期限を設定することもできます。 パスワードは、後で認証に使用するので、安全な場所に保存することをお勧めします。 そのパスワードを再度取得することはできませんが、新しいパスワードを生成することはできます。

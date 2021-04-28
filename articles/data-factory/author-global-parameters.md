@@ -3,15 +3,15 @@ title: グローバル パラメーター
 description: Azure Data Factory 環境ごとにグローバル パラメーターを設定する
 ms.service: data-factory
 ms.topic: conceptual
-author: dcstwh
-ms.author: weetok
+author: minhe-msft
+ms.author: hemin
 ms.date: 03/15/2021
-ms.openlocfilehash: 3110ce8cb97379fd4690903ec769cc1dfc7f1326
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3598ede0cab3c001854d0ba46501692935397923
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492763"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905394"
 ---
 # <a name="global-parameters-in-azure-data-factory"></a>Data Factory のグローバル パラメーター
 

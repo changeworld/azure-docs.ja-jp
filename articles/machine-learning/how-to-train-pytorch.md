@@ -9,14 +9,13 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
 ms.date: 01/14/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: b1cb14e07f6c0e402510abad6f1cb160f5215c63
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: 1a261a972636021bec88244704b2b491ae8bcc61
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518383"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888442"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch モデルを大規模にトレーニングする
 
@@ -383,7 +382,7 @@ Azure ML で分散 PyTorch を実行することに関する完全なチュー�
 この記事では、Azure Machine Learning で PyTorch を使用して、ディープ ラーニング ニューラル ネットワークをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
 
 * [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
-* [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
+* [トレーニング中に実行メトリクスを追跡する](how-to-log-view-metrics.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 * [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
 * [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

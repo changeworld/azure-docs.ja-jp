@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: inhenkel
-ms.openlocfilehash: 0efbadf69dec6d0ea06fd743a62d69c0d25a7e33
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 43997810798322a628490aa72db74944f2fc38c7
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138663"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589813"
 ---
 # <a name="create-a-media-services-and-storage-account-with-a-private-link"></a>プライベート リンクを使用して Media Services とストレージ アカウントを作成する
 
@@ -22,9 +22,9 @@ ms.locfileid: "108138663"
 
 VNet へのプライベート リンクを使用して、Media Services アカウントとストレージ アカウントを作成します。 Azure Resource Manager (ARM) テンプレートでは、両方のプライベート リンクの DNS も設定します。 最後に、テンプレートにより VM が作成され、ユーザーがプライベート リンクを試すことができます。
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
-[クイック スタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)を確認する。
+[クイック スタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする](https://docs.microsoft.com/azure/azure-resource-manager/templates/quickstart-create-templates-use-the-portal)を確認する。
 
 ## <a name="limitations"></a>制限事項
 

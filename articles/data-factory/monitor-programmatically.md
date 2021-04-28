@@ -4,15 +4,15 @@ description: さまざまなソフトウェア開発キット (SDK) を使用し
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/16/2018
-author: dcstwh
-ms.author: weetok
+author: minhe-msft
+ms.author: hemin
 ms.custom: devx-track-python
-ms.openlocfilehash: 6c913c7c623c77baea0c575d06d2c44709af43fa
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 1c466aa53670a129d051e639d0a1bf2aaa32e76d
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740443"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905686"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Azure Data Factory をプログラムで監視する
 

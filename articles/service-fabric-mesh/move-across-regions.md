@@ -6,12 +6,12 @@ ms.author: edoyle
 ms.topic: how-to
 ms.date: 01/14/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: 9f3fcdc56b4e8d7873872212cb62f57a7669b459
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: bce61a00ae1b6b451927b43dbcf19ddb615f79a5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726630"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861177"
 ---
 # <a name="move-a-service-fabric-mesh-application-to-another-azure-region"></a>Service Fabric Mesh アプリケーションを別の Azure リージョンに移動する
 
@@ -49,7 +49,7 @@ ms.locfileid: "107726630"
 
 1. デプロイが完了したら、アプリケーション エンドポイントをテストして、アプリケーションの機能を確認します。
 
-2. アプリケーションの状態を確認することもできます。そのためには [Azure Service Fabric Mesh CLI](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli) を使用して、アプリケーションの状態 ([az mesh app show](/cli/azure/ext/mesh/mesh/app#ext-mesh-az-mesh-app-show)) を確認し、アプリケーション ログと ([az mesh code-package-log](/cli/azure/ext/mesh/mesh/code-package-log)) コマンドをレビューします。
+2. アプリケーションの状態を確認することもできます。そのためには [Azure Service Fabric Mesh CLI](./service-fabric-mesh-quickstart-deploy-container.md#set-up-service-fabric-mesh-cli) を使用して、アプリケーションの状態 ([az mesh app show](/cli/azure/mesh/app#az_mesh_app_show)) を確認し、アプリケーション ログと ([az mesh code-package-log](/cli/azure/mesh/code-package-log)) コマンドをレビューします。
 
 ## <a name="commit"></a>Commit
 

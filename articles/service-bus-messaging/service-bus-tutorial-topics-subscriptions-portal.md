@@ -6,12 +6,12 @@ ms.author: spelluru
 ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a7b03727c574dcee1cd56144a521f36de6dc48c6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179665"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861375"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルを完了するには、以下がインストールされていることを確認してください。
 
 - [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
-- [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
+- [NET Core SDK](https://dotnet.microsoft.com/download) バージョン 2.0 以降。
 
 ## <a name="service-bus-topics-and-subscriptions"></a>Service Bus トピックとサブスクリプション
 

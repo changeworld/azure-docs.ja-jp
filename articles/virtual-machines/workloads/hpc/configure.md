@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/18/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 0c6f5dc55f7406aba7d6e3dc1a278b57fe4ec9ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 470d5efae68366b5cc96243bab4ebb8552771650
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721279"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600881"
 ---
 # <a name="configure-and-optimize-vms"></a>VM の構成と最適化
 
@@ -124,7 +124,7 @@ sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
 ## <a name="next-steps"></a>次の手順
 
 - InfiniBand 対応の [H シリーズ](../../sizes-hpc.md)および [N シリーズ](../../sizes-gpu.md) VM 上で [InfiniBand を有効にする](enable-infiniband.md)方法の詳細を確認します。
-- VM で[サポートされているさまざまな MPI ライブラリ](setup-mpi.md)のインストールと最適な構成の詳細について確認します。
+- VM で[サポートされているさまざまな MPI ライブラリ](setup-mpi.md)のインストールと実行について確認します。
 - [HBv3 シリーズの概要](hbv3-series-overview.md)および [HC シリーズの概要](hc-series-overview.md)に関する記事を確認します。
 - [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

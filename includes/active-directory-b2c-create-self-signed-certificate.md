@@ -5,18 +5,18 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 01/27/2021
 ms.author: mimart
-ms.openlocfilehash: e26dd7ea9f45af6f725f4deaefd9b5bd79a37e1c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 32a47a34d9a4c8562dd1cec44f5a2ec519cb1a7f
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073460"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107984436"
 ---
 証明書をまだ持っていない場合は、自己署名証明書を使用できます。 自己署名証明書は、証明機関 (CA) によって署名されていないセキュリティ証明書であり、CA によって署名された証明書のセキュリティ保証を提供するものではありません。 
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-Windows では、PowerShell の [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) コマンドレットを使用して証明書を生成します。
+Windows では、PowerShell の [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) コマンドレットを使用して証明書を生成します。
 
 1. この PowerShell コマンドを実行して、自己署名証明書を生成します。 アプリケーションと Azure AD B2C のテナント名に合わせて `-Subject` 引数を変更します。 また、証明書に別の有効期限を指定するように `-NotAfter` 日付を調整することもできます。
 

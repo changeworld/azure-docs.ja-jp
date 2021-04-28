@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/08/2021
 ms.author: v-erkel
-ms.openlocfilehash: b34beb65bb8c4136887651d8365c937b17718572
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a831aa7b2f3b0d438d9db8fefa3d26428fea3680
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471878"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862599"
 ---
 # <a name="manage-your-cache"></a>キャッシュを管理する
 
@@ -60,13 +60,13 @@ Azure portal のキャッシュの概要ページには、お使いのキャッ�
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache stop](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-stop) コマンドを使用して、一時的にキャッシュを一時停止します。 このアクションが有効になるのは、キャッシュの状態が **[正常]** または **[低下]** の場合のみです。
+[az hpc-cache stop](/cli/azure/hpc-cache#az_hpc_cache_stop) コマンドを使用して、一時的にキャッシュを一時停止します。 このアクションが有効になるのは、キャッシュの状態が **[正常]** または **[低下]** の場合のみです。
 
 停止するまで、キャッシュの内容がストレージ ターゲットに自動的にフラッシュされます。 この処理には時間がかかることがありますが、データの一貫性が確保されます。
 
 アクションが完了すると、キャッシュの状態が **[Stopped]\(停止\)** に変わります。
 
-停止しているキャッシュを再アクティブ化するには、[az hpc-cache start](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-start) を使用します。
+停止しているキャッシュを再アクティブ化するには、[az hpc-cache start](/cli/azure/hpc-cache#az_hpc_cache_start) を使用します。
 
 開始コマンドまたは停止コマンドを実行すると、操作が完了するまでコマンド ラインに "Running" というステータス メッセージが表示されます。
 
@@ -115,7 +115,7 @@ $ az hpc-cache start --name doc-cache0629
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache flush](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-flush) を使用して、すべての変更されたデータをキャッシュからストレージ ターゲットに書き込むよう強制します。
+[az hpc-cache flush](/cli/azure/hpc-cache#az_hpc_cache_flush) を使用して、すべての変更されたデータをキャッシュからストレージ ターゲットに書き込むよう強制します。
 
 例:
 
@@ -163,9 +163,9 @@ $
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-Azure CLI では、キャッシュの状態レポートの最後に新しいソフトウェア情報が含まれています。 (確認するには、[az hpc-cache show](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-show) を使用します。)メッセージで "upgradeStatus" という文字列を探します。
+Azure CLI では、キャッシュの状態レポートの最後に新しいソフトウェア情報が含まれています。 (確認するには、[az hpc-cache show](/cli/azure/hpc-cache#az_hpc_cache_show) を使用します。)メッセージで "upgradeStatus" という文字列を探します。
 
-[az hpc-cache upgrade-firmware](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-upgrade-firmware) を使用して、更新プログラム (存在する場合) を適用します。
+[az hpc-cache upgrade-firmware](/cli/azure/hpc-cache#az_hpc_cache_upgrade-firmware) を使用して、更新プログラム (存在する場合) を適用します。
 
 利用可能な更新プログラムがない場合、この操作による影響はありません。
 
@@ -227,7 +227,7 @@ Microsoft Service and Support に要請された場合は、このコントロ�
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-キャッシュを完全に削除するには、Azure CLI コマンド [az hpc-cache delete](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-delete) を使用します。
+キャッシュを完全に削除するには、Azure CLI コマンド [az hpc-cache delete](/cli/azure/hpc-cache#az_hpc_cache_delete) を使用します。
 
 例:
 ```azurecli

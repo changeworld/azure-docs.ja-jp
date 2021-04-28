@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 099b7f4e812e92503c7ed8e3eb733f2e49ccd8b9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 96a9f7c50f3e30d86497c7a612ddda248db3f703
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768073"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865695"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>チュートリアル:IoT ハブでメトリックとログを設定して使用する
 
@@ -44,7 +44,7 @@ Azure Monitor を使用して、IoT ハブのメトリックとログを収集�
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-- 開発用マシン上に .NET Core SDK 2.1 以上が必要です。 複数のプラットフォームに対応する .NET Core SDK を [.NET](https://www.microsoft.com/net/download/all) からダウンロードできます。
+- 開発用マシン上に .NET Core SDK 2.1 以上が必要です。 複数のプラットフォームに対応する .NET Core SDK を [.NET](https://dotnet.microsoft.com/download) からダウンロードできます。
 
   開発コンピューターに現在インストールされている C# のバージョンは、次のコマンドを使って確認できます。
 

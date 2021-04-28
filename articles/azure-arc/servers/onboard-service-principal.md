@@ -3,12 +3,13 @@ title: ハイブリッド マシンを大規模に Azure に接続する
 description: この記事では、サービス プリンシパルを使用して、Azure Arc 対応サーバーを使用する Azure にマシンを接続する方法について説明します。
 ms.date: 03/04/2021
 ms.topic: conceptual
-ms.openlocfilehash: c1ad3d4619896ff46db266789a17bfca80712e70
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 4aad01fd6991c059b2cf891fd4f06ae83a78a0e4
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102175942"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831602"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>ハイブリッド マシンを大規模に Azure に接続する
 

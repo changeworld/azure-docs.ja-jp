@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: f2f301556bd24adb5e4a18f15717374ef26c400b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b3ba3e18f175fad543dbb2350df76354b758575f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777889"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813814"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release"></a>Azure AD を使用した Azure Disk Encryption 用のキー コンテナーの作成と構成 (以前のリリース)
 
 **Azure Disk Encryption の新しいリリースでは、VM ディスク暗号化を有効にするために Azure AD アプリケーション パラメーターを指定する必要はありません。新しいリリースでは、暗号化を有効にする手順の途中で、Azure AD の資格情報を指定する必要がなくなりました。すべての新しい VM は、新しいリリースを使用して、Azure AD アプリケーション パラメーターを指定せずに暗号化する必要があります。新しいリリースを使用して VM のディスク暗号化を有効にする手順を表示するには、[Azure Disk Encryption](disk-encryption-overview.md) に関するページを参照してください。Azure AD アプリケーション パラメーターで既に暗号化された VM はまだサポートされていますが、AAD 構文を使用して保持し続ける必要があります。**
 
-Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../../key-vault/general/security-overview.md)」を参照してください。 
+Azure Disk Encryption では、Azure Key Vault を使用して、ディスク暗号化キーとシークレットを制御および管理します。  キー コンテナーの詳細については、「[Azure Key Vault の概要](../../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../../key-vault/general/security-features.md)」を参照してください。 
 
 Azure AD (以前のリリース) を使用して Azure Disk Encryption で使用するためのキー コンテナーの作成と構成には、次の 3 つの手順が含まれます。
 
@@ -37,7 +37,7 @@ Azure AD (以前のリリース) を使用して Azure Disk Encryption で使用
 
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します 
-Azure Disk Encryption は [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで制御および管理できます。 Azure Disk Encryption ではキー コンテナーを作成するか、既存のコンテナーを使用することができます。 キー コンテナーの詳細については、「[Azure Key Vault の概要](../../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../../key-vault/general/security-overview.md)」を参照してください。 Resource Manager テンプレート、Azure PowerShell、または Azure CLI を使用してキー コンテナーを作成できます。 
+Azure Disk Encryption は [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで制御および管理できます。 Azure Disk Encryption ではキー コンテナーを作成するか、既存のコンテナーを使用することができます。 キー コンテナーの詳細については、「[Azure Key Vault の概要](../../key-vault/general/overview.md)」と「[キー コンテナーのセキュリティ保護](../../key-vault/general/security-features.md)」を参照してください。 Resource Manager テンプレート、Azure PowerShell、または Azure CLI を使用してキー コンテナーを作成できます。 
 
 
 >[!WARNING]

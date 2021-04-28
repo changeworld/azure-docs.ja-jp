@@ -1,14 +1,14 @@
 ---
 title: Azure portal から VM 拡張機能を有効にする
 description: この記事では、Azure portal からハイブリッド クラウド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 01/22/2020
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: b0e114b314179d42ccd47b7d7bd534d3a824a411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5b4ff79d68ec9ff0cc61b9dbb7d3c5d7fe93598
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587655"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388280"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Azure portal から Azure VM 拡張機能を有効にする
 
@@ -16,6 +16,9 @@ ms.locfileid: "100587655"
 
 > [!NOTE]
 > Key Vault VM 拡張機能 (プレビュー) では、Azure portal からのデプロイはサポートされておらず、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使用したデプロイのみがサポートされています。
+
+> [!NOTE]
+> Azure Arc 対応サーバーでは、Azure 仮想マシンへの VM 拡張機能のデプロイと管理はサポートされていません。 Azure VM については、次の [VM 拡張機能の概要](../../virtual-machines/extensions/overview.md) に関する記事をご覧ください。
 
 ## <a name="enable-extensions-from-the-portal"></a>ポータルから拡張機能を有効にする
 

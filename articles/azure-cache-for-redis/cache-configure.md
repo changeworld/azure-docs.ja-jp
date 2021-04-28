@@ -6,12 +6,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: ba021d280f71504ad5c1e1aea0dc1c8c6b507b1e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ffcaf7fc50a310cdd4773868c62bbbb801619e3c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100581076"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833150"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。

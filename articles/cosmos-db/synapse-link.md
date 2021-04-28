@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2020
 ms.reviewer: sngun
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: 123c443e1afaf8eaded7021b963b68b3d8a8f554
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c9c751338db45a7d9df3f6e63e3d53e4e1ef4f74
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483760"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903238"
 ---
 # <a name="what-is-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB とは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -152,6 +152,6 @@ Azure Synapse Link の課金モデルには、Azure Cosmos DB 分析ストアと
  
 * [Azure Synapse Analytics ランタイムでサポートされている機能](../synapse-analytics/synapse-link/concept-synapse-link-cosmos-db-support.md)
 
-* [Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問](synapse-link-frequently-asked-questions.md)
+* [Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問](synapse-link-frequently-asked-questions.yml)
 
 * [Azure Synapse Link for Azure Cosmos DB のユース ケース](synapse-link-use-cases.md)

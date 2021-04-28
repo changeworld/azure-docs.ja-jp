@@ -9,14 +9,14 @@ ms.author: keli19
 author: likebupt
 ms.reviewer: peterlu
 ms.date: 10/29/2020
-ms.topic: conceptual
-ms.custom: how-to, deploy, studio, designer
-ms.openlocfilehash: 35acfc51ae76fdacef11f03b1fbd91ad58650ae6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: deploy, studio, designer
+ms.openlocfilehash: 110bb5e6349ab5cb64366ba365ccace8ab029362
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97722625"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949436"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>スタジオを使用して、デザイナーでトレーニングされたモデルをデプロイする
 
@@ -33,7 +33,7 @@ ms.locfileid: "97722625"
 
 モデルの登録やファイルのダウンロードの手順を省略するために、デザイナーでモデルを直接デプロイすることもできます。 これは、迅速なデプロイに役立ちます。 詳細については、[デザイナーを使用してモデルをデプロイする](tutorial-designer-automobile-price-deploy.md)方法に関するページを参照してください。
 
-デザイナーでトレーニングされたモデルは、SDK またはコマンド ライン インターフェイス (CLI) を使用してデプロイすることもできます。 詳細については、「[Azure Machine Learning を使用して既存のモデルをデプロイする](how-to-deploy-existing-model.md)」を参照してください。
+デザイナーでトレーニングされたモデルは、SDK またはコマンド ライン インターフェイス (CLI) を使用してデプロイすることもできます。 詳細については、「[Azure Machine Learning を使用して既存のモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -4,12 +4,12 @@ description: 静的接続クライアントを使用して、Azure Functions の
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 02/25/2018
-ms.openlocfilehash: ec16ce3e7f9793be2a012a029bcca31c9a7ea4cf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b27639ef8cccefbdec9538d0536db9b297e4039
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936704"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107946369"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Azure Functions での接続の管理
 
@@ -70,7 +70,7 @@ http.globalAgent.maxSockets = 200;
 var http = require('http');
 var httpAgent = new http.Agent();
 httpAgent.maxSockets = 200;
-options.agent = httpAgent;
+const options = { agent: httpAgent };
 http.request(options, onResponseCallback);
 ```
 

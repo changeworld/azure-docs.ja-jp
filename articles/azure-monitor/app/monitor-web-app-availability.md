@@ -1,50 +1,27 @@
 ---
-title: Web サイトの可用性と応答性の監視 | Microsoft Docs
-description: Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
+title: Web サイトの可用性と応答性を監視する - Azure Monitor
+description: Application Insights で ping テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/15/2021
 ms.reviewer: sdash
-ms.openlocfilehash: d7c610e374dcb7b97850d815ba8bb927cdebacfc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60698862e26175425221940a4b69867cb414fe86
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103012566"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598875"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 
-お使いの Web アプリ/Web サイトをデプロイした後、繰り返されるテストを設定して、可用性と応答性を監視できます。 [ Application Insights](./app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 お使いのアプリケーションが応答していない場合、または応答が遅すぎる場合は、アラートを受信できます。
+"URL ping テスト" という名前は、少し間違っています。 明確に言うと、このテストでは、サイトの可用性をチェックするために ICMP (インターネット制御メッセージ プロトコル) を使用しません。 代わりに、より高度な HTTP 要求機能を使用して、エンドポイントが応答しているかどうかが検証されます。 また、その応答に関連付けられているパフォーマンスも測定され、依存する要求の解析などの高度な機能と結合されたカスタム成功基準を設定する機能が追加されて、再試行が可能になります。
 
-可用性テストは、パブリック インターネットからアクセスできる任意の HTTP または HTTPS エンドポイントに対して設定できます。 テストする Web サイトに対して、何らかの変更を行う必要はありません。 実際には、自分が所有しているサイトである必要もありません。 サービスが依存している REST API の可用性をテストできます。
+可用性テストを作成するには、既存の Application insights リソースを使用するか、[Application Insights リソースを作成](create-new-resource.md)する必要があります。
 
-### <a name="types-of-availability-tests"></a>可用性テストの種類:
+最初の可用性要求を作成するには、[可用性] ウィンドウを開き、  **[テストの作成]** を選択します。
 
-可用性テストには、次の 3 種類があります。
+:::image type="content" source="./media/monitor-web-app-availability/availability-create-test-001.png" alt-text="[テストの作成] のスクリーンショット。":::
 
-* [URL の Ping テスト](#create-a-url-ping-test): Azure Portal で作成できる簡単なテストです。
-* [複数ステップ Web テスト](availability-multistep.md):一連の Web 要求の記録であり、さらに複雑なシナリオをテストするために再生できます。 複数ステップ Web テストは Visual Studio Enterprise で作成され、ポータルにアップロードされて実行されます。
-* [カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability):可用性テストを実行するカスタム アプリケーションを作成する場合は、`TrackAvailability()` メソッドを使用して Application Insights に結果を送信できます。
-
-**Application Insights リソースごとに最大 100 個の可用性テストを作成できます。**
-
-> [!IMPORTANT]
-> [URL の ping テスト](#create-a-url-ping-test)と[複数ステップ Web テスト](availability-multistep.md)ではどちらも、パブリック インターネット DNS インフラストラクチャを使用して、テストされたエンドポイントのドメイン名を解決します。 つまり、プライベート DNS を使用する場合は、自分のテストのドメイン名もすべてパブリック ドメイン ネーム サーバーによって解決できることを確実にするか、それが可能でない場合は、代わりに[カスタム可用性追跡テスト](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)を使用できるようにする必要があります。
-
-## <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
-
-可用性テストを作成するためには、まず、Application Insights リソースを作成する必要があります。 リソースが既に作成されている場合は、次のセクションに進んで [URL Ping テストを作成](#create-a-url-ping-test)します。
-
-Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  >  **[Application Insights]** を選択し、[Application Insights リソースを作成](create-new-resource.md)します。
-
-## <a name="create-a-url-ping-test"></a>URL の Ping テストを作成する
-
-"URL ping テスト" という名前は、少し間違っています。 誤解のないように言うと、このテストでは、サイトの可用性をチェックするために ICMP (インターネット制御メッセージ プロトコル) は使用されません。 代わりに、より高度な HTTP 要求機能を使用して、エンドポイントが応答しているかどうかが検証されます。 さらに、その応答に関連付けられているパフォーマンスが測定され、依存する要求の解析などの高度な機能と結合されたカスタム成功基準を設定する機能が追加されて、再試行が可能になります。
-
-最初の可用性要求を作成するには、[可用性] ウィンドウを開いて、 **[テストの作成]** を選択します。
-
-![少なくとも自分の Web サイトの URL を入力](./media/monitor-web-app-availability/availability-create-test-001.png)
-
-### <a name="create-a-test"></a>テストを作成する
+## <a name="create-a-test"></a>テストを作成する
 
 |設定| 説明
 |----|----|----|
@@ -59,7 +36,7 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 > [!NOTE]
 > 複数の場所 (**少なくとも 5 か所**) からテストを行うことを強くお勧めします。 これにより、特定の場所での一時的な問題による誤検知を防止します。 さらに、**テストの場所の数をアラートの場所のしきい値 + 2** にすると最適な構成になることがわかっています。
 
-### <a name="success-criteria"></a>成功の基準
+## <a name="success-criteria"></a>成功の基準
 
 |設定| 説明
 |----|----|----|
@@ -67,18 +44,18 @@ Azure portal で、 **[リソースの作成]**  >  **[開発者ツール]**  > 
 | **HTTP 応答** | 成功としてカウントされる、返される状態コード。 200 は、通常の Web ページが返されたことを示すコードです。|
 | **コンテンツの一致** | "Welcome!" などの文字列。 それぞれの応答に大文字小文字を区別した完全一致があるかどうかをテストします。 文字列は、(ワイルドカードを含まない) プレーン文字列である必要があります。 ページ コンテンツが変更された場合は、この文字列も更新する必要がある可能性があることに注意してください。 **コンテンツの一致では、英語のみがサポートされています。** |
 
-### <a name="alerts"></a>警告
+## <a name="alerts"></a>警告
 
 |設定| 説明
 |----|----|----|
 |**準リアルタイム (プレビュー)** | 準リアルタイムのアラートを使用することが推奨されます。 この種類のアラートの構成は、可用性テストの作成後に実行されます。  |
 |**アラートの場所のしきい値**|少なくとも 3/5 の場所にすることをお勧めします。 アラートの場所のしきい値とテストの場所の数の最適な関係は、**アラートの場所のしきい値** = **テストの場所の数** - 2 です。テストの場所は、少なくとも 5 か所にします。|
 
-### <a name="location-population-tags"></a>位置情報の作成タグ
+## <a name="location-population-tags"></a>位置情報の作成タグ
 
 Azure Resource Manager を使用して可用性 URL の ping テストをデプロイするときに、次の作成タグを位置情報属性に使用できます。
 
-#### <a name="azure-gov"></a>Azure Gov
+### <a name="azure-gov"></a>Azure gov
 
 | 表示名   | 作成名     |
 |----------------|---------------------|
@@ -115,11 +92,11 @@ Azure Resource Manager を使用して可用性 URL の ping テストをデプ�
 
 数分後に、 **[更新]** をクリックすると、テスト結果が表示されます。
 
-![スクリーンショットには、[更新] ボタンが強調表示された [可用性] ページが示されています。](./media/monitor-web-app-availability/availability-refresh-002.png)
+:::image type="content" source="./media/monitor-web-app-availability/availability-refresh-002.png" alt-text="スクリーンショットには、[更新] ボタンが強調表示された [可用性] ページが示されています。":::
 
 散布図には、診断テスト手順の詳細が含まれたテスト結果のサンプルが表示されます。 テスト エンジンは、失敗したテストの診断の詳細を格納します。 成功したテストの場合、診断の詳細は実行のサブセットに対して格納されます。 緑色/赤色の点の上にポインターを置くと、テスト、テスト名、および場所が表示されます。
 
-![折れ線グラフ](./media/monitor-web-app-availability/availability-scatter-plot-003.png)
+:::image type="content" source="./media/monitor-web-app-availability/availability-scatter-plot-003.png" alt-text="行ビュー。" border="false":::
 
 特定のテスト、場所を選択するか、または期間を短くすると、目的の期間に関するより詳細な結果が表示されます。 Search エクスプローラーを使用してすべての実行の結果を表示するか、または分析クエリを使用してこのデータに対してカスタム レポートを実行します。
 
@@ -127,28 +104,29 @@ Azure Resource Manager を使用して可用性 URL の ping テストをデプ�
 
 テストの編集、一時的な無効化、または削除を行うには、テスト名の横の省略記号をクリックします。 変更を行った後、すべてのテスト エージェントに構成の変更が反映されるまで、最大 20 分かかる可能性があります。
 
-![テストの詳細を表示します。 Web テストの編集と無効化](./media/monitor-web-app-availability/edit.png)
+:::image type="content" source="./media/monitor-web-app-availability/edit.png" alt-text="テスト詳細の表示、Web テストの編集および無効化。" border="false":::
 
 サービスに対するメンテナンスを実行している間、関連付けられた可用性テストまたはアラート ルールを無効にすることもできます。
 
 ## <a name="if-you-see-failures"></a>エラーが発生した場合
 
-赤い点をクリックします。
+赤い点を選択します。
 
-![赤い点をクリックします](./media/monitor-web-app-availability/open-instance-3.png)
+:::image type="content" source="./media/monitor-web-app-availability/end-to-end.png" alt-text="[エンドツーエンドのトランザクションの詳細] タブのスクリーンショット。" border="false":::
 
 可用性のテスト結果から、すべてのコンポーネントにわたるトランザクションの詳細を確認できます。 ここで、次のことを行うことができます。
 
+* トラブルシューティング レポートを確認して、テストが失敗する原因を特定しますが、アプリケーションは引き続き利用できます。
 * サーバーから受信した応答を調べる。
 * 失敗した可用性テストの処理中に収集された、サーバー側の相関関係を持つテレメトリを使用してエラーを診断する。
 * 懸案や作業の項目を Git または Azure Boards に記録して問題を追跡する。 バグには、このイベントへのリンクが含まれます。
 * Visual Studio で Web テスト結果を開く。
 
-エンドツーエンドのトランザクションの診断エクスペリエンスの詳細については、[こちら](./transaction-diagnostics.md)を参照してください。
+エンドツーエンドのトランザクションの診断エクスペリエンスの詳細については、 [トランザクション診断のドキュメント](./transaction-diagnostics.md)を参照してください。
 
 例外の行をクリックすると、代理可用性テストが失敗した原因であるサーバー側の例外の詳細が表示されます。 コード レベルの豊富な診断の [デバッグ スナップショット](./snapshot-debugger.md)を取得することもできます。
 
-![サーバー側診断](./media/monitor-web-app-availability/open-instance-4.png)
+:::image type="content" source="./media/monitor-web-app-availability/open-instance-4.png" alt-text="サーバー側の診断。":::
 
 生の結果に加えて、[メトリックス エクスプローラー](../essentials/metrics-getting-started.md)に 2 つの重要な可用性メトリックを表示することもできます。
 
@@ -160,12 +138,9 @@ Azure Resource Manager を使用して可用性 URL の ping テストをデプ�
 * [PowerShell スクリプトを使用して、可用性テストを自動的に設定します](./powershell.md#add-an-availability-test)。
 * アラートが発生したときに呼び出される [webhook](../alerts/alerts-webhooks.md) を設定する。
 
-## <a name="troubleshooting"></a>トラブルシューティング
-
-専用の[トラブルシューティングに関する記事](troubleshoot-availability.md)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
 * [可用性のアラート](availability-alerts.md)
 * [複数ステップ Web テスト](availability-multistep.md)
-
+* [トラブルシューティング](troubleshoot-availability.md)

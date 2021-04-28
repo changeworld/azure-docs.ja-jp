@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 840045da33938d4c1cd725fd5a99bf1b8014f6b1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 6754e4e60c31c35531b27e6cc2047e9f8ce3d0bc
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107748468"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817397"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する
 
@@ -53,7 +53,7 @@ Azure の仮想ディスクを暗号化するための料金はかかりませ�
 
 シークレットと証明書は、リソースとしてモデル化して [Key Vault](../key-vault/general/basic-concepts.md) で提供することができます。 [Windows VM](windows/key-vault-setup.md) のキー コンテナーは Azure PowerShell で、[Linux VM](linux/key-vault-setup.md) のキー コンテナーは Azure CLI で作成できます。 暗号化用のキーを作成することもできます。
 
-キー コンテナー アクセス ポリシーでは、キー、シークレット、証明書へのアクセス許可を個別に付与します。 たとえば、ユーザーにキーのみのアクセス権を付与し、シークレットのアクセス権は付与しないようにすることができます。 ただし、キー、シークレット、または証明書へのアクセス権は、コンテナー レベルで付与されます。 つまり、[キー コンテナー アクセス ポリシー](../key-vault/general/security-overview.md)では、オブジェクト レベルのアクセス許可がサポートされません。
+キー コンテナー アクセス ポリシーでは、キー、シークレット、証明書へのアクセス許可を個別に付与します。 たとえば、ユーザーにキーのみのアクセス権を付与し、シークレットのアクセス権は付与しないようにすることができます。 ただし、キー、シークレット、または証明書へのアクセス権は、コンテナー レベルで付与されます。 つまり、[キー コンテナー アクセス ポリシー](../key-vault/general/security-features.md)では、オブジェクト レベルのアクセス許可がサポートされません。
 
 VM に接続するときは、公開キー暗号化を使用して、より安全な方法で VM にサインインできるようにする必要があります。 このプロセスでは、ユーザー名とパスワードを使用する代わりに、SSH (Secure Shell) コマンドを使用して公開キーと秘密キーを交換して、自分を認証します。 パスワードは、ブルートフォース攻撃に対して脆弱です。これは、特に Web サーバーなどのインターネットに接続された仮想マシンに当てはまります。 Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う [Linux VM](linux/mac-create-ssh-keys.md) を作成でき、サインインするためのパスワードが不要になります。 [Windows VM](linux/ssh-from-windows.md) から SSH キーを使って Linux VM に接続することもできます。
 

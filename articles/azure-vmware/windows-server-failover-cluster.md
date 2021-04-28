@@ -1,18 +1,21 @@
 ---
-title: ネイティブ共有ディスクを使用する Azure VMware Solution vSAN 上の Windows Server Failover Cluster
-description: Azure VMware Solution 上に Windows Server Failover Cluster (WSFC) を設定し、WSFC 機能を必要とするソリューションを活用します。
+title: Azure VMware Solution vSAN 上に Windows Server フェールオーバー クラスターを構成する
+description: ネイティブ共有ディスクを使用して Azure VMware Solution vSAN 上に Windows Server フェールオーバー クラスターを設定します。
 ms.topic: how-to
-ms.date: 03/09/2021
-ms.openlocfilehash: 8162e15675d8bbde9267126c785f152d1cb860bd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/09/2021
+ms.openlocfilehash: f1bc8199eb0d3317e4b6e07a6a297b4ebfe95cc8
+ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105562241"
+ms.lasthandoff: 04/13/2021
+ms.locfileid: "107308687"
 ---
-# <a name="windows-server-failover-cluster-on-azure-vmware-solution-vsan-with-native-shared-disks"></a>ネイティブ共有ディスクを使用する Azure VMware Solution vSAN 上の Windows Server Failover Cluster
+# <a name="configure-windows-server-failover-cluster-on-azure-vmware-solution-vsan"></a>Azure VMware Solution vSAN 上に Windows Server フェールオーバー クラスターを構成する
 
-この記事では、Azure VMware Solution 上に Windows Server Failover Cluster を設定する手順について説明します。 この記事での実装は、概念実証とパイロットを目的としています。 配置ポリシーが利用可能になるまでは、Cluster-in-a-Box (CIB) (ワンボックス クラスタ型) 構成を使用することをお勧めします。
+この記事では、ネイティブ共有ディスクを使用して Azure VMware Solution vSAN 上に Windows Server フェールオーバー クラスターを設定する方法について説明します。 
+
+>[!IMPORTANT]
+>この記事での実装は、概念実証とパイロットを目的としています。 配置ポリシーが利用可能になるまでは、Cluster-in-a-Box (CIB) (ワンボックス クラスタ型) 構成を使用することをお勧めします。
 
 Windows Server Failover Cluster (WSFC) (旧称: Microsoft Service Cluster Service (MSCS)) は、Windows Server オペレーティング システム (OS) の機能です。 WSFC はビジネスに不可欠な機能であり、多くのアプリケーションで必須です。 たとえば、WSFC は次の構成に必要です。
 
@@ -43,7 +46,7 @@ Azure VMware Solution では、仮想化された WSFC に対するネイティ�
 
 次の図は、Azure VMware Solution プライベート クラウド上の WSFC 仮想ノードのアーキテクチャを示しています。 これは、広範な Azure プラットフォームに関して、WSFC 仮想サーバー (赤い枠) を含めて、Azure VMware Solution が存在する場所を示しています。 この図では、一般的なハブ スポーク アーキテクチャを示していますが、Azure Virtual WAN を使用して同様のセットアップが可能です。 どちらの場合も、他の Azure サービスによってもたらされるすべての価値が提供されます。
 
-[![Azure VMware Solution プライベート クラウド上の WSFC 仮想ノードのアーキテクチャを示す図。](media/windows-server-failover-cluster/windows-server-failover-architecture.png)](media/windows-server-failover-cluster/windows-server-failover-architecture.png#lightbox)
+:::image type="content" source="media/windows-server-failover-cluster/windows-server-failover-architecture.svg" alt-text="Azure VMware Solution プライベート クラウド上の Windows Server フェールオーバー クラスター仮想ノードのアーキテクチャ図。" border="false" lightbox="media/windows-server-failover-cluster/windows-server-failover-architecture.svg":::
 
 ## <a name="supported-configurations"></a>サポートされている構成
 

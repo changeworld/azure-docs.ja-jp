@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 29c6ca6a394c2fe4343159f985a90f8bc13cadfb
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 837ee0669c0dbd1743b47dc4a31a40ee950d0af3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499145"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862915"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -29,7 +29,7 @@ ms.locfileid: "107499145"
 |[Azure Monitor ソリューション "Security and Audit" をデプロイする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3e596b57-105f-48a6-be97-03e9243bad6e) |このポリシーでは、Security and Audit が確実にデプロイされるようにします。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Security_Audit_MustBeDeployed.json) |
 |[Azure サブスクリプションにはアクティビティ ログのログ プロファイルが必要](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7796937f-307b-4598-941c-67d3a05ebfe7) |このポリシーでは、アクティビティ ログのエクスポートがログ プロファイルで有効になっているかどうかを確認します。 また、ログをストレージ アカウントまたはイベント ハブにエクスポートするためのログ プロファイルが作成されていないかどうかを監査します。 |AuditIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Logprofile_activityLogs_Audit.json) |
 |[依存関係エージェントを Windows Azure Arc マシンで有効になるように構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F91cb9edd-cd92-4d2f-b2f2-bdd8d065a3d4) |定義されている一覧に Azure Arc マシン イメージがあり、Windows Azure Arc マシン用の依存関係エージェントがインストールされていない場合は、そのエージェントをデプロイします。 |DeployIfNotExists、Disabled |[1.2.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_HybridVM_Deploy.json) |
-|[一覧に含まれる仮想マシン イメージに対して依存関係エージェントを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F11ac78e3-31bc-4f0c-8434-37ab963cea07) |定義されている一覧に仮想マシン イメージがなく、エージェントがインストールされていない場合、仮想マシンを非準拠として報告します。 OS イメージの一覧は、サポートの更新に伴って更新されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgent_OSImage_Audit.json) |
+|[一覧に含まれる仮想マシン イメージに対して依存関係エージェントを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F11ac78e3-31bc-4f0c-8434-37ab963cea07) |定義された一覧に仮想マシン イメージがなく、エージェントがインストールされていない場合は、仮想マシンを非準拠として報告します。 OS イメージの一覧は、サポートの更新に伴って更新されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgent_OSImage_Audit.json) |
 |[一覧に含まれる仮想マシン イメージの仮想マシン スケール セットでは依存関係エージェントを有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe2dd799a-a932-4e9d-ac17-d473bc3c6c10) |定義された一覧に仮想マシン イメージがなく、エージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 OS イメージの一覧は、サポートの更新に伴って更新されます。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgent_OSImage_VMSS_Audit.json) |
 |[デプロイ - 依存関係エージェントを Windows 仮想マシン スケール セットで有効になるように構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3be22e3b-d919-47aa-805e-8985dbeb0ad9) |定義されている一覧に仮想マシン イメージがあり、Windows 仮想マシン スケール セット用の依存関係エージェントがインストールされていない場合は、そのエージェントをデプロイします。 お使いのスケール セット upgradePolicy が手動に設定されている場合、そのセット内のすべての仮想マシンを更新して拡張機能を適用する必要があります。 |DeployIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VMSS_Deploy.json) |
 |[デプロイ - 依存関係エージェントを Windows 仮想マシンで有効になるように構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1c210e94-a481-4beb-95fa-1571b434fb04) |定義されている一覧に仮想マシン イメージがあり、Windows 仮想マシン用の依存関係エージェントがインストールされていない場合は、そのエージェントをデプロイします。 |DeployIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/DependencyAgentExtension_Windows_VM_Deploy.json) |

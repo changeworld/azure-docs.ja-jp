@@ -4,14 +4,14 @@ description: Azure HPC Cache を使用してバックエンド ストレージ�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/11/2021
+ms.date: 04/22/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5427389f007b7598274d35425a9b3e8e10a63e49
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 3eddd53d8b1d4ff59f27535a070924cf0e86c5a7
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104798529"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904417"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>集約された名前空間を設定する
 
@@ -65,7 +65,7 @@ Azure portal から **[名前空間]** 設定ページを読み込みます。 �
 
 Azure CLI を使用する場合は、ストレージ ターゲットを作成するときに名前空間パスを追加する必要があります。 詳細については、「[新しい Azure Blob Storage ターゲットを追加する](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target)」を参照してください。
 
-ターゲットの名前空間パスを更新するには、[az hpc-cache blob-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update) コマンドを使用します。 update コマンドの引数は create コマンドの引数に似ていますが、コンテナー名またはストレージ アカウントを渡さない点が異なります。
+ターゲットの名前空間パスを更新するには、[az hpc-cache blob-storage-target update](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update) コマンドを使用します。 update コマンドの引数は create コマンドの引数に似ていますが、コンテナー名またはストレージ アカウントを渡さない点が異なります。
 
 Azure CLI を使用して Blob Storage ターゲットから名前空間パスを削除することはできませんが、別の値でパスを上書きすることはできます。
 
@@ -77,27 +77,7 @@ Azure CLI を使用して Blob Storage ターゲットから名前空間パス�
 
 NFS ストレージ ターゲットの名前空間を計画する場合は、各パスが一意である必要があり、別の名前空間パスのサブディレクトリにすることはできないことに注意してください。 たとえば、``/parent-a`` という名前空間パスがある場合、``/parent-a/user1`` や ``/parent-a/user2`` などの名前空間パスを作成することはできません。 これらのディレクトリ パスは、``/parent-a`` のサブディレクトリとして既に名前空間内でアクセス可能です。
 
-NFS ストレージ システムのすべての名前空間パスは、1 つのストレージ ターゲット上に作成されます。 ほとんどのキャッシュ構成ではストレージ ターゲットあたり最大 10 個の名前空間パスがサポートされますが、大規模な構成では最大 20 個までサポートできます。
-
-次の一覧に、構成ごとの名前空間パスの最大数を示します。
-
-* 最大 2 GB/秒のスループット:
-
-  * 3 TB のキャッシュ - 10 の名前空間パス
-  * 6 TB のキャッシュ - 10 の名前空間パス
-  * 12 TB のキャッシュ - 20 の名前空間パス
-
-* 最大 4 GB/秒のスループット:
-
-  * 6 TB のキャッシュ - 10 の名前空間パス
-  * 12 TB のキャッシュ - 10 の名前空間パス
-  * 24 TB のキャッシュ - 20 の名前空間パス
-
-* 最大 8 GB/秒のスループット:
-
-  * 12 TB のキャッシュ - 10 の名前空間パス
-  * 24 TB のキャッシュ - 10 の名前空間パス
-  * 48 TB のキャッシュ - 20 の名前空間パス
+NFS ストレージ システムのすべての名前空間パスは、1 つのストレージ ターゲット上に作成されます。
 
 NFS 名前空間パスごとに、クライアント側パス、ストレージ システム エクスポート、および必要に応じてエクスポート サブディレクトリを指定します。
 
@@ -129,7 +109,7 @@ Azure portal から **[名前空間]** 設定ページを読み込みます。 �
 
 Azure CLI を使用する場合は、ストレージ ターゲットを作成するときに少なくとも 1 つの名前空間パスを追加する必要があります。 詳細については、「[新しい NFS ストレージ ターゲットを追加する](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target)」を参照してください。
 
-ターゲットの名前空間パスを更新するか、別のパスを追加するには、[az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) コマンドを使用します。 ``--junction`` オプションを使用して、必要なすべての名前空間パスを指定します。
+ターゲットの名前空間パスを更新するか、別のパスを追加するには、[az hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update) コマンドを使用します。 ``--junction`` オプションを使用して、必要なすべての名前空間パスを指定します。
 
 update コマンドで使用するオプションは "create" コマンドに似ていますが、ストレージ システムの情報 (IP アドレスまたはホスト名) を渡さず、使用モデルがオプションである点が異なります。 ``--junction`` オプションの構文の詳細については、「[新しい NFS ストレージ ターゲットを追加する](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target)」を参照してください。
 

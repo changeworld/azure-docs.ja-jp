@@ -103,11 +103,7 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: サポート
       items:
-        - name: User Voice フォーラム
-          href: 'https://cognitive.uservoice.com/forums/555907-bing-web-search-api'
-        - name: スタック オーバーフロー
+        - name: Stack Overflow
           href: 'https://stackoverflow.com/search?q=bing+web+search'
-        - name: ナレッジ ベース
-          href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'

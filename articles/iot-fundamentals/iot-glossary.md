@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/08/2021
-ms.openlocfilehash: a45b8db1f17ead8e55bac2b2bf82aa44cb7f080e
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ceb39893327af82e8dff3e82ef570727b3bdfa33
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304700"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141952"
 ---
 # <a name="glossary-of-iot-terms"></a>IoT 用語集
 
@@ -178,7 +178,7 @@ IoT プラグ アンド プレイ デバイス認定プログラムは、IoT プ
 
 ### <a name="device-model"></a>デバイスのモデル
 
-デバイス モデルは、[Digital Twins Definition Language](#digital-twins-definition-language-dtdl) を使用して IoT プラグ アンド プレイ デバイスの機能を記述する[モデル](#model)の一種です。 単純なデバイス モデルでは、デバイスの機能を記述するために 1 つのインターフェイスが使用されます。 より複雑なデバイス モデルには複数のコンポーネントが含まれており、それぞれに一連の機能が記述されています。 詳細については、[モデル内の IoT プラグ アンド プレイ コンポーネント](../iot-pnp/concepts-components.md)に関する記事を参照してください。
+デバイス モデルは、[Digital Twins Definition Language](#digital-twins-definition-language-dtdl) を使用して IoT プラグ アンド プレイ デバイスの機能を記述する[モデル](#model)の一種です。 単純なデバイス モデルでは、デバイスの機能を記述するために 1 つのインターフェイスが使用されます。 より複雑なデバイス モデルには複数のコンポーネントが含まれており、それぞれに一連の機能が記述されています。 詳細については、[モデル内の IoT プラグ アンド プレイ コンポーネント](../iot-pnp/concepts-modeling-guide.md)に関する記事を参照してください。
 
 ### <a name="device-modeling"></a>デバイス モデリング
 

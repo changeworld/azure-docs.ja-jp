@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/26/2020
 ms.author: rogara
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 200bf290543747cf9abab6113b8013e2eec852a8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 7d0631be67afd523ee47f9af021df35b3d74ae2a
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107513150"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107893299"
 ---
 ## <a name="assign-access-permissions-to-an-identity"></a>ID にアクセス許可を割り当てる
 

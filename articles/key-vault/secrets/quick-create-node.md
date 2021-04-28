@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 3d8f20f598243754e3fd39f649e7c84d55b64817
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 90e505a4d505cc52920f1c7727afb321f4eda462
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751672"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814156"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>クイックスタート: JavaScript 用 Azure Key Vault シークレット クライアント ライブラリ (バージョン 4)
 
@@ -285,6 +285,6 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure Key Vault シークレットの概要](about-secrets.md)を確認する
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)方法
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-features.md)方法
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する

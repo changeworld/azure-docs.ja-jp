@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: 99204a2d4c3a2455f0916878fb09a348dc79ac7a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3567d5af31b0c7bc2443e3d02426a5bb7aba06f7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778778"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862005"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>クイックスタート:Azure CLI を使用して高可用性を実現するグローバル Web アプリケーションのための Front Door を作成する
 
@@ -105,7 +105,7 @@ az webapp create \
 
 次のように実行して、既定の負荷分散設定、正常性プローブ、およびルーティング規則を持つ基本的な Front Door を作成します。
 
-[az network front-door create](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true) を使用して Front Door を作成します。
+[az network front-door create](/cli/azure/network/front-door#az_network_front_door_create&preserve-view=true) を使用して Front Door を作成します。
 
 ```azurecli-interactive
 az network front-door create \

@@ -1,17 +1,17 @@
 ---
 title: パイプライン アクティビティでの Azure Key Vault シークレットの使用
 description: Data Factory パイプラインの実行中に、Azure Key Vault から格納済みの資格情報をフェッチして使用する方法について説明します。
-author: ChrisLound
-ms.author: chlound
+author: nabhishek
+ms.author: abnarain
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: d7e1133b8f3880c4c1616ef5ca955ed014348935
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b6e3ac551c2660cef7437ee069d3c8e4846cbd00
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100383961"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906604"
 ---
 # <a name="use-azure-key-vault-secrets-in-pipeline-activities"></a>パイプライン アクティビティでの Azure Key Vault シークレットの使用
 

@@ -9,14 +9,14 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: fde25e4ba75bfb86c9837582d7168f85335836b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: 7e09c5fddbdbe16903ffba91bfb9ebe3f64b7504
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520542"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896695"
 ---
 # <a name="version-and-track-azure-machine-learning-datasets"></a>Azure Machine Learning データセットをバージョン管理および追跡する
 

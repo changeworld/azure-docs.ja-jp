@@ -3,12 +3,12 @@ title: Azure リソース ログでサポートされているサービスとス
 description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
 ms.date: 04/07/2020
-ms.openlocfilehash: 09415353d93313f1b3c4844202b59f577ef3838d
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: d219153f9d1dfbcd05cbe28a5ac0609a156c68a9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105767"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142569"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Azure リソース ログの共通およびサービス固有のスキーマ
 
@@ -83,7 +83,7 @@ ms.locfileid: "107105767"
 | Service Bus |[Azure Service Bus のログ](../../service-bus-messaging/service-bus-diagnostic-logs.md) |
 | SQL Database | [Azure SQL Database のログ記録](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md) |
 | Stream Analytics |[ジョブのログ](../../stream-analytics/stream-analytics-job-diagnostic-logs.md) |
-| ストレージ | [BLOB](/azure/storage/blobs/monitor-blob-storage-reference#resource-logs-preview)、[ファイル](/azure/storage/files/storage-files-monitoring-reference#resource-logs-preview)、[キュー](/azure/storage/queues/monitor-queue-storage-reference#resource-logs-preview)、[テーブル](/azure/storage/tables/monitor-table-storage-reference#resource-logs-preview) |
+| ストレージ | [BLOB](../../storage/blobs/monitor-blob-storage-reference.md#resource-logs-preview)、[ファイル](../../storage/files/storage-files-monitoring-reference.md#resource-logs-preview)、[キュー](../../storage/queues/monitor-queue-storage-reference.md#resource-logs-preview)、[テーブル](../../storage/tables/monitor-table-storage-reference.md#resource-logs-preview) |
 | Traffic Manager | [Traffic Manager のログのスキーマ](../../traffic-manager/traffic-manager-diagnostic-logs.md) |
 | 仮想ネットワーク | スキーマは使用できません。 |
 | 仮想ネットワーク ゲートウェイ | スキーマは使用できません。 |

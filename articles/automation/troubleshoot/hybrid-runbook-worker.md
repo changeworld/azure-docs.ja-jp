@@ -7,12 +7,13 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 565d801fb569f818613fd31b7492c0847eef9a7a
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9b06213416241f671dd0e6ef56a7660a3af5f6e8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106169353"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123899"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hybrid Runbook Worker の問題のトラブルシューティング
 
@@ -128,7 +129,7 @@ Hybrid Runbook Worker で実行される Runbook が次のエラー メッセー
 #### <a name="resolution"></a>解決策
 
 ##### <a name="mistyped-workspace-id-or-key"></a>ワークスペース ID またはキーの入力ミス
-エージェントのワークスペース ID またはワークスペース キーに入力ミスがあったかどうかを確認するには、Windows エージェントの場合は [Windows エージェントでのワークスペースの追加または削除](../../azure-monitor/platform/agent-manage.md#windows-agent)に関する記事を、Linux エージェントの場合は [Linux エージェントでのワークスペースの追加または削除](../../azure-monitor/platform/agent-manage.md#linux-agent)に関する記事を参照してください。 Azure portal から完全な文字列を選択し、注意深くコピーと貼り付けを行うようにします。
+エージェントのワークスペース ID またはワークスペース キーに入力ミスがあったかどうかを確認するには、Windows エージェントの場合は [Windows エージェントでのワークスペースの追加または削除](../../azure-monitor/agents/agent-manage.md#windows-agent)に関する記事を、Linux エージェントの場合は [Linux エージェントでのワークスペースの追加または削除](../../azure-monitor/agents/agent-manage.md#linux-agent)に関する記事を参照してください。 Azure portal から完全な文字列を選択し、注意深くコピーと貼り付けを行うようにします。
 
 ##### <a name="configuration-not-downloaded"></a>構成がダウンロードされていない
 

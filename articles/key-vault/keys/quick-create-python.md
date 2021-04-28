@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 2c15090551ad9d84282f65925ff9c2cfbab7e14f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: dbff065fc4ee0f4618cae3fa0b012a286d4a0645
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107773353"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815416"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>クイック スタート:Python 用 Azure Key Vault キー クライアント ライブラリ
 
@@ -209,7 +209,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Key Vault の概要](../general/overview.md)
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-features.md)
 - [Azure Key Vault 開発者ガイド](../general/developers-guide.md)
-- [Key Vault のセキュリティの概要](../general/security-overview.md)
+- [Key Vault のセキュリティの概要](../general/security-features.md)
 - [Key Vault を使用した認証](../general/authentication.md)

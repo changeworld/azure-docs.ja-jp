@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: e0247d1d113f7fb0bf23116b3473f73b78a58c80
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 45c7bb19e3f48fedf93fbb147a3014e09914a475
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167602"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831278"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>チュートリアル:PowerShell Workflow Runbook を作成する
 

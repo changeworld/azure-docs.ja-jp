@@ -5,18 +5,18 @@ description: Azure Machine Learning を使用して新しい Azure Kubernetes Se
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/08/2021
-ms.openlocfilehash: 1c9434d137114560b5585b081961497412dfbf69
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 949975c1f28c2c1d630319e5172f853f5ed44b35
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770257"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890026"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターを作成してアタッチする
 
@@ -198,7 +198,7 @@ aks_target.wait_for_completion(show_output = True)
 az ml computetarget create aks -n myaks
 ```
 
-詳細については、[az ml computetarget create aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-aks) に関するリファレンスを参照してください。
+詳細については、[az ml computetarget create aks](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_aks) に関するリファレンスを参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -275,7 +275,7 @@ az aks show -n myexistingcluster -g myresourcegroup --query id
 az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w myworkspace
 ```
 
-詳細については、[az ml computetarget attach aks](/cli/azure/ext/azure-cli-ml/ml/computetarget/attach#ext-azure-cli-ml-az-ml-computetarget-attach-aks) に関するリファレンスをご覧ください。
+詳細については、[az ml computetarget attach aks](/cli/azure/ml/computetarget/attach#az_ml_computetarget_attach_aks) に関するリファレンスをご覧ください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

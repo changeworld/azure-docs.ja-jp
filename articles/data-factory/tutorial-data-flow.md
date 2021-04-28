@@ -1,19 +1,19 @@
 ---
 title: マッピング データ フローを使用してデータを変換する
 description: このチュートリアルでは、Azure Data Factory で マッピング データ フローを使用してデータを変換するための詳細な手順を説明します
-author: dcstwh
-ms.author: weetok
+author: kromerm
+ms.author: makromer
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2021
-ms.openlocfilehash: 2363afc4c84ee7606410ceecd6819c12d0333dbb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: dda6d756b1e660fa90e54c6cc0b80178363cd73e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105563295"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905740"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>マッピング データ フローを使用してデータを変換する
 
@@ -78,15 +78,15 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
    ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
 
 1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**TransformMovies**」と入力します。
-1. ファクトリの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
-
-    ![Data Flow アクティビティ](media/tutorial-data-flow/dataflow1.png)
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** アコーディオンを展開します。 ウィンドウから **Data Flow** アクティビティをパイプライン キャンバスにドラッグ アンド ドロップします。
 
     ![Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。](media/tutorial-data-flow/activity1.png)
 1. **[Adding Data Flow]\(Data Flow の追加\)** ポップアップで、 **[Create new Data Flow]\(新しい Data Flow の作成\)** を選択し、データ フローに **TransformMovies** という名前を付けます。 終了したら、[完了] をクリックします。
 
     ![新しいデータ フローを作成するときにデータ フローの名前を指定する場所を示すスクリーンショット。](media/tutorial-data-flow/activity2.png)
+1. パイプライン キャンバスの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
+
+    ![Data Flow アクティビティ](media/tutorial-data-flow/dataflow1.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>データ フロー キャンバスでの変換ロジックの作成
 
@@ -100,7 +100,7 @@ Data Flow を作成すると、データ フロー キャンバスが自動的�
     ![変換元の名前を指定した後で [新規] を選択する場所を示すスクリーンショット。](media/tutorial-data-flow/dataflow3.png)
 1. **[Azure Data Lake Storage Gen2]** を選択します。 [続行] をクリックして続行します。
 
-    ![Azure Data Lake Storage Gen2 のタイルを示すスクリーンショット。](media/tutorial-data-flow/dataset1.png)
+    ![Azure Data Lake Storage Gen2 のタイルの場所を示すスクリーンショット。](media/tutorial-data-flow/dataset1.png)
 1. **[DelimitedText]** を選択します。 [続行] をクリックして続行します。
 
     ![DelimitedText のタイルを示すスクリーンショット。](media/tutorial-data-flow/dataset2.png)

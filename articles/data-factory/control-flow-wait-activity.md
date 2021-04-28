@@ -1,17 +1,17 @@
 ---
 title: Azure Data Factory の Wait アクティビティ
 description: Wait アクティビティは、指定した期間にわたってパイプラインの実行を停止します。
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.openlocfilehash: 9271723e68e5edd6805f0197bca9cdefc3c5e921
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb9227546b135365fb3ac8d47156da95e75470bb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100388330"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906202"
 ---
 # <a name="execute-wait-activity-in-azure-data-factory"></a>Azure Data Factory での wait アクティビティの実行
 パイプラインで Wait アクティビティを使用すると、パイプラインは、指定した期間待った後、後続のアクティビティの実行を続行します。 

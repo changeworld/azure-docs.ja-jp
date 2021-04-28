@@ -2,22 +2,18 @@
 title: Azure API Management で仮想ネットワークを使用する方法
 description: Azure API Management で仮想ネットワークへの接続を設定して Web サービスにアクセスする方法について説明します。
 services: api-management
-documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.service: api-management
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 12/10/2020
+ms.topic: how-to
+ms.date: 04/12/2021
 ms.author: apimpm
-ms.custom: references_regions
-ms.openlocfilehash: c63b71ad00a5621babe07597720a1e9ea87f1e4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 5808cda95cdf9ce6477f47fcdbb8a0421d92e72a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99260250"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817131"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関する記事を参照してください。
@@ -35,11 +31,13 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
 この記事で説明されている手順を実行するには、以下が必要です。
 
-+ 有効な Azure サブスクリプション
++ **有効な Azure サブスクリプション**
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-+ APIM インスタンス。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
++ **API Management インスタンス。** 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
+
+[!INCLUDE [api-management-public-ip-for-vnet](../../includes/api-management-public-ip-for-vnet.md)]
 
 ## <a name="enable-vnet-connection"></a><a name="enable-vpn"> </a>VNET 接続の有効化
 
@@ -47,14 +45,14 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
 1. [Azure portal](https://portal.azure.com) に移動し、お使いの API Management インスタンスを検索します。 **API Management サービス** を検索して選択します。
 
-2. お使いの API Management インスタンスを選択します。
+1. お使いの API Management インスタンスを選択します。
 
-3. **[仮想ネットワーク]** を選択します。
-4. 仮想ネットワーク内にデプロイされる API Management インスタンスを構成します。
+1. **[仮想ネットワーク]** を選択します。
+1. 仮想ネットワーク内にデプロイされる API Management インスタンスを構成します。
 
     :::image type="content" source="media/api-management-using-with-vnet/api-management-menu-vnet.png" alt-text="Azure portal で仮想ネットワークを選択します。":::
     
-5. 目的のアクセスの種類を選択します。
+1. 目的のアクセスの種類を選択します。
 
     * **Off**:これは既定値です。 API Management は仮想ネットワークにデプロイされません。
 
@@ -66,32 +64,46 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
         ![プライベート ピアリング][api-management-vnet-private]
 
-6. **[外部]** または **[内部]** を選択した場合、API Management サービスがプロビジョニングされているすべてのリージョンの一覧が表示されます。 **[場所]** を選択し、その **[仮想ネットワーク]** と **[サブネット]** を選択します。 仮想ネットワークの一覧には、構成しているリージョンで設定された Azure サブスクリプションで使用できる従来型および Resource Manager の仮想ネットワークが含まれています。
+1. **[外部]** または **[内部]** を選択した場合、API Management サービスがプロビジョニングされているすべての場所 (リージョン) の一覧が表示されます。 **[場所]** を選択し、その **[仮想ネットワーク]** 、 **[サブネット]** 、 **[IP アドレス]** を選択します。 仮想ネットワークの一覧には、構成しているリージョンで設定された Azure サブスクリプションで使用できる Resource Manager の仮想ネットワークが含まれます。
 
-    > [!IMPORTANT]
-    > Azure API Management インスタンスを Resource Manager VNET にデプロイする場合、サービスは Azure API Management インスタンス以外のリソースを含まない専用サブネットにある必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。
-
-    次に、 **[適用]** を選択します。 API Management インスタンスの **[仮想ネットワーク]** ページが、新しい仮想ネットワークとサブネットの選択によって更新されます。
 
     :::image type="content" source="media/api-management-using-with-vnet/api-management-using-vnet-select.png" alt-text="ポータルでの仮想ネットワークの設定。":::
 
+    > [!IMPORTANT]
+    > * クライアントで **API バージョン 2020-12-01 以前** を使用して Azure API Management インスタンスを Resource Manager VNET にデプロイする場合、Azure API Management インスタンス以外のリソースを含まない専用サブネット内にサービスが存在する必要があります。 他のリソースが含まれる Resource Manager VNET サブネットに Azure API Management インスタンスをデプロイしようとすると、そのデプロイは失敗します。
+    > * クライアントで **API バージョン 2021-01-01-preview 以降** を使用して Azure API Management インスタンスを仮想ネットワークにデプロイする場合は、Resource Manager 仮想ネットワークのみがサポートされます。 また、使用するサブネットには他のリソースを含めることもできます。 API Management インスタンス専用のサブネットを使用する必要はありません。 
+
+1. **[適用]** を選択します。 API Management インスタンスの **[仮想ネットワーク]** ページが、新しい仮想ネットワークとサブネットの選択によって更新されます。
+
+1. API Management インスタンスの残りの場所に対して、仮想ネットワーク設定の構成を続行します。
+
 7. 上部のナビゲーションバーで、 **[保存]** を選択し、 **[ネットワーク構成の適用]** を選択します。
 
+    API Management インスタンスを更新するのに 15 分から 45 分かかることがあります。
+
 > [!NOTE]
-> API Management インスタンスの VIP アドレスは VNET を有効または無効にするたびに変更されます。
-> また、VIP アドレスは、API Management が **外部** から **内部** に、またはその逆に移動された場合にも変更されます。
->
+> API バージョン 2020-12-01 以前を使用しているクライアントでは、VNET が有効または無効になるたびに API Management インスタンスの VIP アドレスが変更されます。 また、API Management が **外部** から **内部** の仮想ネットワークに移動された場合、またはその逆の場合にも、VIP アドレスが変更されます。
 
 > [!IMPORTANT]
-> VNET から API Management を削除するか、VNET にデプロイされる API Management を変更した場合、それまで使用されていた VNET が最大 6 時間ロックされる可能性があります。 この期間中は、VNET の削除も、新しいリソースのデプロイも実行できません。 この動作は、api バージョン 2018-01-01 以前を使用しているクライアントに当てはまります。 api バージョン 2019-01-01 以降を使用しているクライアントは、関連付けられている API Management サービスが削除されるとすぐに VNET が解放されます。
+> VNET から API Management を削除するか、VNET にデプロイされる API Management を変更した場合、それまで使用されていた VNET が最大 6 時間ロックされる可能性があります。 この期間中は、VNET の削除も、新しいリソースのデプロイも実行できません。 この動作は、API バージョン 2018-01-01 以前を使用しているクライアントに当てはまります。 API バージョン 2019-01-01 以降を使用しているクライアントでは、関連付けられている API Management サービスが削除されると、直ちに VNET が解放されます。
 
-## <a name="deploy-api-management-into-external-vnet"></a><a name="deploy-apim-external-vnet"> </a>外部 VNET に API Management をデプロイする
+### <a name="deploy-api-management-into-external-vnet"></a><a name="deploy-apim-external-vnet"> </a>外部 VNET に API Management をデプロイする
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet%2Fazuredeploy.json)
+仮想ネットワークの接続は、次の方法を使用して有効にすることもできます。
 
-* **VNET 内に API Management サービスを作成する**:コマンドレット [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) を使用して、VNET 内に Azure API Management サービスを作成します。
+### <a name="api-version-2021-01-01-preview"></a>API バージョン 2021-01-01-preview
 
-* **VNET 内に既存の API Management サービスをデプロイする**:コマンドレット [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) を使用して、既存の Azure API Management サービスを仮想ネットワーク内に移動します。
+* Azure Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-management-create-with-external-vnet-publicip)
+
+     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet-publicip%2Fazuredeploy.json)
+
+### <a name="api-version-2020-12-01"></a>API バージョン 2020-12-01
+
+* Azure Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-management-create-with-external-vnet)
+    
+     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-external-vnet%2Fazuredeploy.json)
+
+* Azure PowerShell コマンドレット - 仮想ネットワークで API Management インスタンスを[作成](/powershell/module/az.apimanagement/new-azapimanagement)または[更新](/powershell/module/az.apimanagement/update-azapimanagementregion)する
 
 ## <a name="connect-to-a-web-service-hosted-within-a-virtual-network"></a><a name="connect-vnet"> </a>仮想ネットワーク内でホストされる Web サービスに接続する
 API Management サービスが VNET に接続された後で VNET 内のバックエンド サービスにアクセスする方法は、パブリック サービスにアクセスする方法と同じです。 単に、新しい API を作成するときや既存の API を編集するときに Web サービスのローカル IP アドレスまたはホスト名 (VNET に対して DNS サーバーが構成されている場合) を **[Web サービスの URL]** ボックスに入力するだけです。
@@ -138,9 +150,9 @@ API Management サービスを Virtual Network にデプロイするときに発
 
     | Azure 環境 | エンドポイント                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net(**new**)</li><li>prod.warmpath.msftcloudes.com(**to be deprecated**)</li><li>global.prod.microsoftmetrics.com(**new**)</li><li>global.metrics.nsatc.net(**to be deprecated**)</li><li>shoebox2.prod.microsoftmetrics.com(**new**)</li><li>shoebox2.metrics.nsatc.net(**to be deprecated**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com(**new**)</li><li>prod3.metrics.nsatc.net(**to be deprecated**)</li><li>prod3-black.prod.microsoftmetrics.com(**new**)</li><li>prod3-black.prod3.metrics.nsatc.net(**to be deprecated**)</li><li>prod3-red.prod.microsoftmetrics.com(**new**)</li><li>prod3-red.prod3.metrics.nsatc.net(**to be deprecated**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com(**new**)</li><li>global.metrics.nsatc.net(**to be deprecated**)</li><li>shoebox2.prod.microsoftmetrics.com(**new**)</li><li>shoebox2.metrics.nsatc.net(**to be deprecated**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com(**new**)</li><li>prod3.metrics.nsatc.net(**to be deprecated**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com(**new**)</li><li>global.metrics.nsatc.net(**to be deprecated**)</li><li>shoebox2.prod.microsoftmetrics.com(**new**)</li><li>shoebox2.metrics.nsatc.net(**to be deprecated**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com(**new**)</li><li>prod3.metrics.nsatc.net(**to be deprecated**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net(**new**)</li><li>global.prod.microsoftmetrics.com(**new**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com(**new**)</li><li>prod3-black.prod.microsoftmetrics.com(**new**)</li><li>prod3-red.prod.microsoftmetrics.com(**new**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com(**new**)</li><li>shoebox2.prod.microsoftmetrics.com(**new**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com(**new**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com(**new**)</li><li>shoebox2.prod.microsoftmetrics.com(**new**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com(**new**)</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > 上記クラスターの DNS ゾーン **.nsatc.net** の **.microsoftmetrics.com** への変更は、ほとんどの場合、DNS の変更です。 クラスターの IP アドレスは変更されません。
@@ -209,7 +221,7 @@ API Management の追加スケール ユニットごとに、さらに 2 つの 
 + 負荷分散されたパブリック IP アドレスは、Azure Portal の [概要]/[要点] ブレードで確認できます。
 
 ## <a name="limitations"></a><a name="limitations"> </a>制限事項
-* API Management インスタンスが含まれるサブネットには、その他の Azure リソースの種類を含めることはできません。
+* API バージョン 2020-12-01 以前を使用するクライアントでは、API Management インスタンスを含むサブネットに、他の種類の Azure リソースを含めることはできません。
 * サブネットと API Management サービスは、同じサブスクリプション内になければなりません。
 * API Management インスタンスが含まれるサブネットは、サブスクリプション間で移動できません。
 * 内部仮想ネットワーク モードで構成された複数リージョンの API Management デプロイでは、ルーティングを設定するユーザーが分散負荷の管理を担当します。デプロイでは、ユーザーが、ルーティングを担当するように、複数のリージョンの負荷分散の管理を担当します。

@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 12/14/2020
+ms.date: 04/21/2021
 ms.author: phjensen
-ms.openlocfilehash: 03ffa93a71ded40e033f2068ea23fc6b994a5bbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 86a670602f448f59decbc64d8a12278697c43596
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97632159"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929851"
 ---
-# <a name="test-azure-application-consistent-snapshot-tool-preview"></a>Azure アプリケーション整合性スナップショット ツールをテストする (プレビュー)
+# <a name="test-azure-application-consistent-snapshot-tool"></a>Azure アプリケーション整合性スナップショット ツールをテストする
 
 この記事では、Azure NetApp Files で使用できる Azure アプリケーション整合性スナップショット ツールのテスト コマンドを実行する方法について説明します。
 

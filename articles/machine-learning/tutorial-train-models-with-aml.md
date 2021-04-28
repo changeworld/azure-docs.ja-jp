@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 85dea807ee09338e7f0e9e388f6b196fd3beef33
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6c5691759983d8ec40598834e5dbcd507ccf00cf
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588666"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816874"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>チュートリアル:MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする 
 
@@ -396,7 +396,7 @@ RunDetails(run).show()
 
 ![Notebook のウィジェット](./media/tutorial-train-models-with-aml/widget.png)
 
-実行を取り消す必要がある場合は、[これらの手順](./how-to-manage-runs.md)に従います。
+実行を取り消す必要がある場合は、[これらの手順](./how-to-track-monitor-analyze-runs.md)に従います。
 
 ### <a name="get-log-results-upon-completion"></a>完了時にログの結果を取得する
 

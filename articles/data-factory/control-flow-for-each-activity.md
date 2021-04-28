@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory の ForEach アクティビティ
 description: ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 これは、コレクションに対する反復処理に使用され、指定されたアクティビティを実行します。
-author: dcstwh
-ms.author: weetok
+author: chez-charlie
+ms.author: chez
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/23/2019
-ms.openlocfilehash: d0fd9ab8286496b9801d6c10682761f1264e040a
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 28c67640a65e44fb9c6d6791229796c614993fa1
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120913"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906298"
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory の ForEach アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

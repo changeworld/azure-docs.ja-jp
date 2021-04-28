@@ -3,13 +3,13 @@ title: ホスト クォータを要求し、Azure VMware Solution を有効に�
 description: ホスト クォータまたは容量をリクエストし、Azure VMware Solution リソース プロバイダーを有効にする方法について説明します。 また、Azure VMware Solution の既存のプライベート クラウドにさらに多くのホストをリクエストすることもできます。
 ms.topic: how-to
 ms.custom: contperf-fy21q3
-ms.date: 02/17/2021
-ms.openlocfilehash: 5d154f5c63ffccdbf1729e641133b54be478d884
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 855e1dbc45889855a1fe9ef16f89615f471872fa
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653170"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950894"
 ---
 # <a name="request-host-quota-and-enable-azure-vmware-solution"></a>ホスト クォータを要求し、Azure VMware Solution を有効にする
 
@@ -106,10 +106,6 @@ CSP は [Microsoft パートナー センター](https://partner.microsoft.com)�
       >Azure VMware Solution では、プライベート クラウドを稼働させ、冗長 N + 1 ホストを提供するために、3 つ以上のホストを推奨しています。 
    
    1. **[確認および作成]** を選択して、リクエストを送信します。
-
-## <a name="register-the-microsoftavs-resource-provider"></a>**Microsoft.AVS** リソース プロバイダーを登録する
-
-[!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
 ## <a name="next-steps"></a>次のステップ

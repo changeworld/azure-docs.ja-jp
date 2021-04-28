@@ -3,13 +3,13 @@ title: 受信/送信 IP アドレス
 description: Azure App Service で受信および送信 IP アドレスがどのように使用されるか、いつ変更されるかについて、およびアプリのアドレスを見つける方法について説明します。
 ms.topic: article
 ms.date: 08/25/2020
-ms.custom: seodec18
-ms.openlocfilehash: 4237e51251a7ece05800aa7efa328a9c6cf65e76
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: 1dda487d23c9f955aea8e35d16e5a560a890a173
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104591369"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834482"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Azure App Service における受信 IP アドレスと送信 IP アドレス
 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/16/2020
+ms.date: 04/22/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 047b295d68e872b4dc334e53b5b9da0ec07d5826
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 25371e04e4e229786ca96fbc0f72b4bea0dccd96
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257077"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896417"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインアップおよびサインイン フローを設定する
 

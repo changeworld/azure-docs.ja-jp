@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory の Azure Functions アクティビティ
 description: Azure Functions アクティビティを使用して、Data Factory パイプライン内で Azure Functions を実行する方法について説明します
-author: dcstwh
-ms.author: weetok
+author: nabhishek
+ms.author: abnarain
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.openlocfilehash: 13f00907737a99bc5dcd8c21d660ce83aa681908
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 202cf30ae0f620789f300404b26ba04582ea3300
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783797"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906730"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure Data Factory の Azure Functions アクティビティ
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]

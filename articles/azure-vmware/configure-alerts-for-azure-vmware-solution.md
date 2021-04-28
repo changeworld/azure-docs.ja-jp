@@ -3,16 +3,16 @@ title: Azure VMware Solution でアラートを構成し、メトリックを使
 description: アラートを使用して通知を受信する方法について説明します。 また、メトリックを使用して、Azure VMware Solution のプライベート クラウドに関する深い洞察を得る方法についても説明します。
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.openlocfilehash: 486f25eba017b2d4e37c0796909a0d26adee6ba8
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2e7a04a11b5a569c6e12e7a8315f13ea740a812c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309630"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126286"
 ---
 # <a name="configure-azure-alerts-in-azure-vmware-solution"></a>Azure VMware Solution で Azure アラートを構成する 
 
-この記事では、[Microsoft Azure アラート](/azure/azure-monitor/alerts/alerts-overview)で [Azure アクション グループ](/azure/azure-monitor/alerts/action-groups)を構成して、定義したトリガー イベントの通知を受け取る方法について説明します。 また、[Azure Monitor メトリック](/azure/azure-monitor/essentials/data-platform-metrics) を使用して、Azure VMware Solution のプライベート クラウドに関する深い洞察を得る方法についても説明します。
+この記事では、[Microsoft Azure アラート](../azure-monitor/alerts/alerts-overview.md)で [Azure アクション グループ](../azure-monitor/alerts/action-groups.md)を構成して、定義したトリガー イベントの通知を受け取る方法について説明します。 また、[Azure Monitor メトリック](../azure-monitor/essentials/data-platform-metrics.md) を使用して、Azure VMware Solution のプライベート クラウドに関する深い洞察を得る方法についても説明します。
 
 
 ## <a name="supported-metrics-and-activities"></a>サポートされているメトリックとアクティビティ
@@ -77,7 +77,7 @@ ms.locfileid: "107309630"
  
 1. 開いたウィンドウの **[基本]** タブで、アクション グループに名前と表示名を付けます。
 
-1. **[通知]** タブで、 **[通知の種類]** と **[名前]** を選択します。 次に、 **[OK]** を選択します。
+1. **[通知]** タブで、 **[通知の種類]** と **[名前]** を選択します。 **[OK]** をクリックします。
 
    この例は、メール通知に基づいています。
 
@@ -126,13 +126,8 @@ ms.locfileid: "107309630"
 ## <a name="next-steps"></a>次のステップ
 
 これで、Azure VMware Solution プライベート クラウドのアラート ルールが構成されました。次について、さらに詳細な情報を得ることができます。
-- [Azure Monitor のメトリック](/azure/azure-monitor/essentials/data-platform-metrics)
-- [Azure Monitor アラート](/azure/azure-monitor/alerts/alerts-overview)
-- [Azure アクション グループ](/azure/azure-monitor/alerts/action-groups)
+- [Azure Monitor のメトリック](../azure-monitor/essentials/data-platform-metrics.md)
+- [Azure Monitor アラート](../azure-monitor/alerts/alerts-overview.md)
+- [Azure アクション グループ](../azure-monitor/alerts/action-groups.md)
 
 また、[Azure VMware Solution](index.yml) のその他のハウツー ガイドのいずれかを使用して、続行することもできます。
-
-
-
-
-

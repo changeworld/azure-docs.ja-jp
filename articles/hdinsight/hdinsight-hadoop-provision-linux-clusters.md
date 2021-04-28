@@ -3,14 +3,14 @@ title: HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用
 description: Hadoop、Kafka、Spark、HBase、R Server、Storm の HDInsight クラスターをブラウザーや Azure クラシック CLI、Azure PowerShell、REST、SDK からセットアップします。
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017,seodec18
+ms.custom: hdinsightactive,hdiseo17may2017,seodec18, devx-track-azurecli
 ms.date: 08/06/2020
-ms.openlocfilehash: 04da79509ac40ba870014995d8318a49c98e1ce5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4f412e4a8f85f10efcaaf8a7ec45562d298f4bb5
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104863413"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890667"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>HDInsight で Apache Hadoop、Apache Spark、Apache Kafka などを使用してクラスターを設定する
 
@@ -31,12 +31,12 @@ Hadoop クラスターは、タスクの分散処理に使用される複数の�
 
 | クラスターの作成方法 | Web ブラウザー | コマンド ライン | REST API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
-| [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
-| [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
-| [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
-| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
-| [Azure リソース マネージャーのテンプレート](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |âœ” |&nbsp; |&nbsp; |&nbsp; |
+| [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |âœ” |âœ” |âœ” |âœ” |
+| [Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |âœ” |&nbsp; |&nbsp; |
+| [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |âœ” |&nbsp; |&nbsp; |
+| [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |âœ” |âœ” |&nbsp; |
+| [Azure リソース マネージャーのテンプレート](hdinsight-hadoop-create-linux-clusters-arm-templates.md) |&nbsp; |âœ” |&nbsp; |&nbsp; |
 
 この記事では、[Azure portal](https://portal.azure.com) で、HDInsight クラスターを作成するためのセットアップ方法を説明します。
 

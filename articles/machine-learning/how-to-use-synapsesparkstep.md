@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 ms.date: 03/04/2021
-ms.topic: conceptual
-ms.custom: how-to, synapse-azureml
-ms.openlocfilehash: 2c69ec853cdeeed6f9e28fb9f2884053580ce08e
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.topic: how-to
+ms.custom: synapse-azureml
+ms.openlocfilehash: 8ef4eca10971f9f7f405292fa7b722b26c7d53cd
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576382"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896767"
 ---
 # <a name="how-to-use-apache-spark-powered-by-azure-synapse-analytics-in-your-machine-learning-pipeline-preview"></a>機械学習パイプライン内で (Azure Synapse Analytics で実行される) Apache Spark を使用する方法 (プレビュー)
 

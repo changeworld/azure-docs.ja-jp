@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/23/2021
 ms.topic: conceptual
-ms.openlocfilehash: 165c9ea721bec7fc7a1657f5dde5c19d9e254e20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0807b11adfc46b9c32a8f7bd36a2f7d4db519975
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954345"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830522"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -70,7 +71,7 @@ Runbook ロジックの一部として一時ファイルを作成する必要が
 
 Runbook には必ず、[リソース](/rest/api/resources/resources) (VM、ネットワーク、ネットワーク上のリソースなど) を扱うロジックが含まれています。 リソースは Azure サブスクリプションに関連付けられており、どのリソースにアクセスする場合でも Runbook に適切な資格情報が必要となります。 Runbook におけるリソースの処理の例については、「[リソースの処理](manage-runbooks.md#handle-resources)」を参照してください。
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 Azure Automation は、[Azure Security Center (ASC)](../security-center/security-center-introduction.md) を使用してリソースのセキュリティを確保し、Linux システムにおけるセキュリティ侵害を検出します。 リソースが Azure 内にあるかどうかにかかわらず、セキュリティはワークロード全体で確保されます。 [Azure Automation での認証の概要](automation-security-overview.md)に関するページを参照してください。
 

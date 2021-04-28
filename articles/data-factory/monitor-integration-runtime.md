@@ -4,14 +4,14 @@ description: Azure Data Factory のさまざまな種類の統合ランタイム
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/11/2020
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: 1cb4fcaa51e1a59ee9d09eb178faf9b250173709
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+author: minhe-msft
+ms.author: hemin
+ms.openlocfilehash: 17c3d67d80f03a5c504885914cf9bb4f1036e86e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101740029"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904426"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する
 

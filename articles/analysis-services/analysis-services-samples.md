@@ -4,15 +4,15 @@ description: この記事では、Azure Analysis Services のコード、プロ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0ab0e64d9a088a332ba037dccf01dc445998ebfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a720c58009082c716e26cb11ade14c400cdd85a6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96457558"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130271"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services のサンプル
 
