@@ -12,7 +12,7 @@ ms.locfileid: "100572000"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>診断の評価と監査のための Azure Container Registry ログ
 
-この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して Azure コンテナー レジストリのログ データを収集する方法について説明します。 Azure Monitor を使用すると、レジストリ内のユーザー駆動型イベントの [リソース ログ](../azure-monitor/essentials/platform-logs-overview.md) (以前は "*診断ログ*" と呼ばれていました) を収集できます。 このデータは、次のようなニーズに対応するために収集して使用します。
+この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して Azure Container Registry のログ データを収集する方法について説明します。 Azure Monitor を使用すると、レジストリ内のユーザー駆動型イベントの [リソース ログ](../azure-monitor/essentials/platform-logs-overview.md) (以前は "*診断ログ*" と呼ばれていました) を収集できます。 このデータは、次のようなニーズに対応するために収集して使用します。
 
 * レジストリ認証イベントを監査して、セキュリティとコンプライアンスを確保する 
 
@@ -35,7 +35,7 @@ Azure Monitor を使用してリソース ログ データを収集すると、�
 
 ## <a name="registry-resource-logs"></a>レジストリのリソース ログ
 
-リソース ログには、Azure リソースによって出力された情報が含まれており、内部操作についての説明が得られます。 Azure コンテナー レジストリのログには、次のテーブルに格納されている認証およびリポジトリレベルのイベントが含まれます。 
+リソース ログには、Azure リソースによって出力された情報が含まれており、内部操作についての説明が得られます。 Azure Container Registry のログには、次のテーブルに格納されている認証およびリポジトリレベルのイベントが含まれます。 
 
 * **ContainerRegistryLoginEvents** - 受信 ID および IP アドレスを含むレジストリ認証イベントと状態
 * **ContainerRegistryRepositoryEvents** - レジストリ リポジトリ内のイメージとその他の成果物のプッシュやプルなどの操作
