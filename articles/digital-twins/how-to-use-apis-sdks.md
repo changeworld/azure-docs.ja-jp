@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f4f3fc8c928cd284088cc51120f1a7b485b4fac0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 219d791d4e5e12f0153012a17963bcbe2873168c
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595347"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945495"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -70,7 +70,6 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
    - PyPi からパッケージを表示してインストールする。[Azure Azure Digital Twins Core client library for Python](https://pypi.org/project/azure-digitaltwins-core/)。
    - [SDK のリファレンス ドキュメント](/python/api/azure-digitaltwins-core/azure.digitaltwins.core)を確認する。
    - GitHub で SDK のソースを探す。[Azure Digital Twins Core client library for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
-* AutoRest を使用して、別の言語用の SDK を生成することができます。 ["*AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する方法*"](how-to-create-custom-sdks.md) の手順に従ってください。
 
 また、データ プレーン API の演習を行うには、[CLI](how-to-use-cli.md) を使用して Azure Digital Twins を操作します。
 
@@ -180,6 +179,7 @@ SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** �
 * Postman などの HTTP REST テスト ツールを使用して、Azure Digital Twins の API を直接呼び出すことができます。 このプロセスの詳細については、"[*Postman を使用して要求を作成する方法*](how-to-use-postman.md)" に関する記事を参照してください。
 * SDK を使用するには、`DigitalTwinsClient` クラスをインスタンス化します。 コンストラクターには、`Azure.Identity` パッケージ内のさまざまな認証方法で取得できる資格情報が必要です。 `Azure.Identity` の詳細については、[名前空間に関するドキュメント](/dotnet/api/azure.identity)を参照してください。 
 * 作業を開始するときには `InteractiveBrowserCredential` が役立ちますが、[マネージド ID](/dotnet/api/azure.identity.interactivebrowsercredential) の資格情報など、他にもいくつかのオプションがあります。これは、Azure Digital Twins に対して、[MSI を使用した Azure Functions のセットアップ](../app-service/overview-managed-identity.md?tabs=dotnet)を認証する際に使用できます。 `InteractiveBrowserCredential` の詳細については、[クラスのドキュメント](/dotnet/api/azure.identity.interactivebrowsercredential)を参照してください。
+* Azure Digital Twins API への要求には、Azure Digital Twins インスタンスが存在するのと同じ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) テナントの一部であるユーザーまたはサービス プリンシパルが必要です。 Azure Digital Twins エンドポイントの悪意のあるスキャンを防ぐために、発信元のテナントの外部からのアクセス トークンを含む要求には、"404 サブドメインが見つかりませんでした" というエラー メッセージが返されます。 このエラーは、ユーザーまたはサービス プリンシパルに [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) コラボレーションを通じて Azure Digital Twins データ所有者または Azure Digital Twins データ閲覧者のロールが与えられた "*場合でも*" 返されます。 複数のテナントにわたるアクセスを実現する方法については、"[*アプリ認証コードを作成する方法*](how-to-authenticate-client.md#authenticate-across-tenants)" を参照してください。
 * すべてのサービス API 呼び出しは、`DigitalTwinsClient` クラスのメンバー関数として公開されます。
 * すべてのサービス関数には、同期バージョンと非同期バージョンが存在します。
 * すべてのサービス関数は、400 以上のリターン状態に対して例外をスローします。 `try` セクションに呼び出しをラップし、少なくとも `RequestFailedExceptions` をキャッチします。 この種類の例外の詳細については、[こちら](/dotnet/api/azure.requestfailedexception)を参照してください。
@@ -187,6 +187,7 @@ SDK を使用するには、NuGet パッケージ **Azure.DigitalTwins.Core** �
 * ページングされた結果を含むサービス メソッドは、結果として `Pageable<T>` または `AsyncPageable<T>` を返します。 `Pageable<T>` クラスの詳細については、[こちら](/dotnet/api/azure.pageable-1)を参照してください。`AsyncPageable<T>` の詳細については、[こちら](/dotnet/api/azure.asyncpageable-1)を参照してください。
 * `await foreach` ループを使用して、ページングした結果を反復処理できます。 この処理の詳細については、[こちら](/archive/msdn-magazine/2019/november/csharp-iterating-with-async-enumerables-in-csharp-8)を参照してください。
 * 基になる SDK は `Azure.Core` です。 SDK のインフラストラクチャと種類については、[Azure 名前空間のドキュメント](/dotnet/api/azure)を参照してください。
+
 
 サービス メソッドは、可能な限り、厳密に型指定されたオブジェクトを返します。 ただし、Azure Digital Twins は、実行時にユーザーによって構成されたカスタム モデル (サービスにアップロードされた DTDL モデルを使用) に基づいているため、多くのサービス API はツイン データを JSON 形式で取得して返します。
 

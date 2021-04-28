@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 07/18/2019
 ms.author: robinsh
-ms.openlocfilehash: cd14ff0688f4230aeedac748ca4b32609bdd2938
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 74724357dea9cd6c8c89a11a9eeb3d1b2933b790
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92490324"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107564942"
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 
@@ -24,11 +24,7 @@ ms.locfileid: "92490324"
 
 [Azure Logic Apps](../logic-apps/index.yml) は、ワークフローをオンプレミスとクラウド サービス、1 つ以上のエンタープライズ、およびさまざまなプロトコルにわたって調整するのに役立ちます。 ロジック アプリはトリガーで始まり、その後に、条件や反復子などの組み込みのコントロールを使用して順序付けることができる 1 つ以上のアクションが実行されます。 この柔軟性により、Logic Apps は IoT の監視シナリオのための理想的な IoT ソリューションになります。 たとえば、デバイスからのテレメトリ データが IoT Hub エンドポイントに到着したら、そのデータを Azure Storage BLOB に格納するためにロジック アプリ ワークフローを開始したり、データの異常を警告するために電子メール アラートを送信したり、デバイスから障害が報告された場合は技術者の訪問をスケジュールしたりすることができます。
 
-## <a name="what-you-learn"></a>学習内容
-
-温度の監視と通知のメールボックスと IoT Hub を接続するロジック アプリを作成する方法を学びます。
-
-デバイス上で実行されているクライアント コードは、IoT ハブに送信するすべてのテレメトリ メッセージ上にアプリケーション プロパティ `temperatureAlert` を設定します。 30 C を超える温度を検出すると、クライアント コードはこのプロパティを `true` に、それ以外の場合は `false` に設定します。
+この記事では、温度の監視と通知のメールボックスと IoT Hub を接続するロジック アプリを作成する方法を学びます。 デバイス上で実行されているクライアント コードは、IoT ハブに送信するすべてのテレメトリ メッセージ上にアプリケーション プロパティ `temperatureAlert` を設定します。 30 C を超える温度を検出すると、クライアント コードはこのプロパティを `true` に、それ以外の場合は `false` に設定します。
 
 IoT ハブに到着したメッセージは次のような内容です。本文にテレメトリ データが含まれ、アプリケーション プロパティに `temperatureAlert` プロパティが含まれています (システム プロパティは示されていません)。
 
@@ -50,15 +46,9 @@ IoT Hub メッセージ形式の詳細については、「[IoT Hub メッセー
 
 このトピックでは、`temperatureAlert` プロパティが `true` であるメッセージを Service Bus エンドポイントに送信するように IoT ハブ上のルーティングを設定します。 次に、Service Bus エンドポイントに到着したメッセージでトリガーされ、ユーザーに電子メール通知を送信するロジック アプリを設定します。
 
-## <a name="what-you-do"></a>作業内容
+## <a name="prerequisites"></a>前提条件
 
-* Service Bus 名前空間を作成し、それに Service Bus キューを追加します。
-* 温度アラートを含むメッセージを Service Bus キューにルーティングするために、IoT ハブにカスタム エンドポイントとルーティング規則を追加します。
-* Service Bus キューからのメッセージを消費し、目的の受信者に通知電子メールを送信するロジック アプリを作成、構成、およびテストします。
-
-## <a name="what-you-need"></a>必要なもの
-
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 次の要件について取り上げられています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページや、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
 
   * 有効な Azure サブスクリプション
   * サブスクリプションの Azure IoT Hub。

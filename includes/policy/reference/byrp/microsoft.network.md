@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/31/2021
+ms.date: 04/14/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 2eef4e7b13202f0ee599da39a54d8c68eca026bf
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: ae4114992206055baec4857e077c00db634ab4bb
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096192"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107496991"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -30,6 +30,7 @@ ms.locfileid: "106096192"
 |[プライベート DNS ゾーンを使用するようにイベント ハブ名前空間を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fed66d4f5-8220-45dc-ab4a-20d1749c74e6) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンは、イベント ハブ名前空間を解決するために、仮想ネットワークにリンクします。 詳細については、[https://docs.microsoft.com/azure/event-hubs/private-link-service](https://docs.microsoft.com/azure/event-hubs/private-link-service) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_PrivateDNSZone_DeployIfNotExists.json) |
 |[プライベート DNS ゾーンを使用するように IoT Hub デバイス プロビジョニング インスタンスを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faaa64d2d-2fa3-45e5-b332-0b031b9b30e8) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンは、IoT Hub デバイス プロビジョニング サービス インスタンスを解決するために、仮想ネットワークにリンクします。 詳細については、[https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateDnsZoneForPrivateEndpoint_Deploy.json) |
 |[App Configuration に接続されているプライベート エンドポイントのプライベート DNS ゾーンを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7a860e27-9ca2-4fc6-822d-c2d248c300df) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンを自分の仮想ネットワークにリンクして、アプリ構成インスタンスを解決することができます。 詳細については、[https://aka.ms/appconfig/private-endpoint](https://aka.ms/appconfig/private-endpoint) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/PrivateLink_DNSZone_Deploy.json) |
+|[Azure Data Factory に接続するプライベート エンドポイントに対してプライベート DNS ゾーンを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F86cd96e1-1745-420d-94d4-d3f2fe415aa4) |プライベート DNS レコードを使用すると、プライベート エンドポイントへのプライベート接続が許可されます。 プライベート エンドポイント接続を使用すると、送信元または送信先のパブリック IP アドレスを必要とせずに Azure Data Factory へのプライベート接続を有効にすることで、セキュリティで保護された通信が可能になります。 Azure Data Factory でのプライベート エンドポイントと DNS ゾーンの詳細については、[https://docs.microsoft.com/azure/data-factory/data-factory-private-link](https://docs.microsoft.com/azure/data-factory/data-factory-private-link) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Data%20Factory/DataFactory_PrivateDnsZones_DeployIfNotExists.json) |
 |[プライベート DNS ゾーンを使用するように Service Bus 名前空間を構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff0fcf93c-c063-4071-9668-c47474bd3564) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 プライベート DNS ゾーンは、Service Bus 名前空間を解決するために、仮想ネットワークにリンクします。 詳細については、[https://docs.microsoft.com/azure/service-bus-messaging/private-link-service](https://docs.microsoft.com/azure/service-bus-messaging/private-link-service) を参照してください。 |DeployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Service%20Bus/ServiceBus_PrivateDNSZone_DeployIfNotExists.json) |
 |[デプロイ - プライベート DNS ゾーンを使用するように Azure Event Grid ドメインを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fd389df0a-e0d7-4607-833c-75a6fdac2c2d) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 詳細については、[https://aka.ms/privatednszone](https://aka.ms/privatednszone) を参照してください。 |deployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Domains_PrivateDNSZone_DeployIfNotExists.json) |
 |[デプロイ - プライベート DNS ゾーンを使用するように Azure Event Grid トピックを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbaf19753-7502-405f-8745-370519b20483) |プライベート DNS ゾーンを使用して、プライベート エンドポイントの DNS 解決をオーバーライドします。 詳細については、[https://aka.ms/privatednszone](https://aka.ms/privatednszone) を参照してください。 |deployIfNotExists、Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Topics_PrivateDNSZone_DeployIfNotExists.json) |

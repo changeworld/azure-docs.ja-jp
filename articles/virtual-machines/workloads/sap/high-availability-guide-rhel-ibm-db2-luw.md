@@ -12,14 +12,14 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/16/2020
+ms.date: 04/27/2021
 ms.author: juergent
-ms.openlocfilehash: 979de230655b4804fa65a4bddb678e21b59c4ea2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9bdd5c8ce5974d73b76dd793445a19a9714f6038
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101674446"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136843"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Red Hat Enterprise Linux Server 上の Azure VM での IBM Db2 LUW の高可用性
 
@@ -384,7 +384,7 @@ Azure Load Balancer を構成する場合は、[Azure Standard Load Balancer SKU
 
 **[A]** プローブ ポートのファイアウォール規則を追加します。
 
-<pre><code>sudo firewall-cmd --add-port=<b><probe-port></b>/tcp --permanent
+<pre><code>sudo firewall-cmd --add-port=<b>&lt;probe-port&gt;</b>/tcp --permanent
 sudo firewall-cmd --reload</code></pre>
 
 ## <a name="create-the-pacemaker-cluster"></a>Pacemaker クラスターを作成する

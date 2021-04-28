@@ -1,19 +1,19 @@
 ---
 title: Azure Data Factory マネージド仮想ネットワーク マッピング データ フローを使用してデータを変換する
 description: このチュートリアルでは、Azure Data Factory でマッピング データ フローを使用してデータを変換するための詳細な手順を説明します。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/15/2021
-ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: ac868fdf3ca80d489d479b5be0c57bd14a90ccbb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98249442"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905704"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>マッピング データ フローを使用して安全にデータを変換する
 
@@ -91,9 +91,6 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
    ![パイプラインの作成を示すスクリーンショット。](./media/doc-common-process/get-started-page.png)
 
 1. パイプラインの [プロパティ] ウィンドウで、パイプラインの名前として **TransformMovies** と入力します。
-1. ファクトリの上部のバーで、 **[データ フローのデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 データ フロー クラスターのウォームアップには 5 から 7 分かかります。 データ フローの開発を計画している場合は、最初に **[データ フローのデバッグ]** をオンにします。 詳細については、[デバッグ モード](./concepts-data-flow-debug-mode.md)に関するページを参照してください。
-
-    ![[データ フローのデバッグ] のスライダーを示すスクリーンショット。](media/tutorial-data-flow-private/dataflow-debug.png)
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** を展開します。 ウィンドウから **[Data Flow]** アクティビティをパイプライン キャンバスにドラッグします。
 
 1. **[Adding data flow]\(データ フローの追加\)** ポップアップで、 **[Create new data flow]\(新しいデータ フローの作成\)** を選択し、 **[Mapping Data Flow]\(マッピング データ フロー\)** を選択します。 完了したら、 **[OK]** をクリックします。
@@ -101,6 +98,9 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
     ![マッピング データ フローを示すスクリーンショット。](media/tutorial-data-flow-private/mapping-dataflow.png)
 
 1. [プロパティ] ウィンドウで、データ フローに **TransformMovies** という名前を付けます。
+1. パイプライン キャンバスの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
+
+    ![[データ フローのデバッグ] のスライダーを示すスクリーンショット。](media/tutorial-data-flow-private/dataflow-debug.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas"></a>データ フロー キャンバスでの変換ロジックの作成
 

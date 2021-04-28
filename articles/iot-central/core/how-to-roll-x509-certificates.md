@@ -7,12 +7,12 @@ ms.date: 07/31/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a9e35c7d4d64279c65971dd512bcd2107dad6594
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c25af944b4c748307f4f974ca8616ecc9f7b28c3
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92000066"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714526"
 ---
 # <a name="how-to-roll-x509-device-certificates-in-iot-central-application"></a>IoT Central アプリケーションで X.509 デバイス証明書を展開する方法
 
@@ -23,7 +23,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 ## <a name="obtain-new-x509-certificates"></a>新しい X.509 証明書を取得する
 
-OpenSSL などのツールを使用して、独自の X.509 証明書を作成することができます。 この方法は X.509 証明書のテストに適していますが、セキュリティはほとんど保証されません。 この手法は、独自の CA プロバイダーとして機能する準備ができていない限り、テスト目的のみで使用します。
+OpenSSL などのツールを使用して、独自の X.509 証明書を作成することができます。 この方法は X.509 証明書のテストに適していますが、セキュリティはほとんど保証されません。 この方法は、独自の CA プロバイダーとして機能する準備ができていない限り、テスト目的のみで使用します。
 
 ## <a name="enrollment-groups-and-security-breaches"></a>登録グループとセキュリティ違反
 

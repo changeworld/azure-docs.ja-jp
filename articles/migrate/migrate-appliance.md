@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: b10d2e10f95470cadf67af762a0d7320bc09b7e0
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: d7fc04e65e2b79d43c48acd5a8c621f28d5c0403
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075697"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714670"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -128,7 +128,44 @@ download.microsoft.com/download | Microsoft ダウンロード センターか�
 *.discoverysrv.windowsazure.us <br/> *.migration.windowsazure.us | Azure Migrate サービスの URL に接続します。
 *.hypervrecoverymanager.windowsazure.us | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Migrate サービスの URL に接続します。
 *.blob.core.usgovcloudapi.net  |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。
-*.applicationinsights.us | 内部監視に使用するアプライアンス ログをアップロードします。
+*.applicationinsights.us | 内部監視に使用するアプライアンス ログをアップロードします。  
+
+### <a name="public-cloud-urls-for-private-link-connectivity"></a>プライベート リンク接続用のパブリック クラウドの URL
+
+アプライアンスは、プライベート リンク アクセスに加えて、次の URL (直接またはプロキシ経由) にアクセスする必要があります。 
+
+**URL** | **詳細**  
+--- | --- | 
+*.portal.azure.com  | Azure Portal に移動します。
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com <br/> *.office.com | Azure サブスクリプションにサインインします。
+*.microsoftonline.com <br/> *.microsoftonline-p.com | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
+management.azure.com | アプライアンスで Azure Migrate と通信するための Azure AD アプリを作成します。
+*.services.visualstudio.com (省略可能) | 内部監視に使用するアプライアンス ログをアップロードします。
+aka.ms/* (省略可能) | aka リンクへのアクセスを許可します。アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用されます。
+download.microsoft.com/download | Microsoft ダウンロード センターからのダウンロードを許可します。
+*.servicebus.windows.net | **VMware のエージェントレス移行のために使用**<br/><br/> アプライアンスと Azure Migrate サービスの間の通信。
+*.vault.azure.net | **VMware のエージェントレス移行のために使用**<br/><br/>  レプリケートするサーバーの、ここへのアクセス権を確保します。
+*.hypervrecoverymanager.windowsazure.com | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Migrate サービスの URL に接続します。
+*.blob.core.windows.net |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。
+
+### <a name="government-cloud-urls-for-private-link-connectivity"></a>プライベート リンク接続用の Government クラウドの URL   
+
+アプライアンスは、プライベート リンク アクセスに加えて、次の URL (直接またはプロキシ経由) にアクセスする必要があります。 
+
+**URL** | **詳細**  
+--- | --- |
+*.portal.azure.us  | Azure Portal に移動します。
+graph.windows.net | Azure サブスクリプションにサインインします。
+login.microsoftonline.us  | アプライアンスで Azure Migrate と通信するための Azure Active Directory (AD) アプリを作成します。
+management.usgovcloudapi.net | アプライアンスで Azure Migrate サービスと通信するための Azure AD アプリを作成します。
+*.services.visualstudio.com (省略可能) | 内部監視に使用するアプライアンス ログをアップロードします。
+aka.ms/* (省略可能) | aka リンクへのアクセスを許可します。アプライアンス サービスの最新の更新プログラムをダウンロードしてインストールするために使用されます。
+download.microsoft.com/download | Microsoft ダウンロード センターからのダウンロードを許可します。
+*.servicebus.usgovcloudapi.net  | **VMware のエージェントレス移行のために使用**<br/><br/> アプライアンスと Azure Migrate サービスの間の通信。 
+*.vault.usgovcloudapi.net | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Key Vault でシークレットを管理します。
+*.hypervrecoverymanager.windowsazure.us | **VMware のエージェントレス移行のために使用**<br/><br/> Azure Migrate サービスの URL に接続します。
+*.blob.core.usgovcloudapi.net  |  **VMware のエージェントレス移行のために使用**<br/><br/>移行のためにストレージにデータをアップロードします。
+*.applicationinsights.us (省略可能) | 内部監視に使用するアプライアンス ログをアップロードします。  
 
 ## <a name="collected-data---vmware"></a>収集されるデータ - VMware
 
@@ -243,7 +280,7 @@ VMware 環境で検出された各 Windows サーバーからアプライアン�
 --- | --- | ---
 名前  | Win32_operatingsystem  | Caption
 Version  | Win32_operatingsystem  | Version
-Architecture  | Win32_operatingsystem  | OSArchitecture
+アーキテクチャ  | Win32_operatingsystem  | OSArchitecture
 
 #### <a name="linux-server-software-inventory-data"></a>Linux サーバー ソフトウェア インベントリ データ
 
@@ -262,7 +299,7 @@ VMware 環境で検出された各 Linux サーバーからアプライアンス
 **データ**  | **コマンド**
 --- | ---
 名前 <br/> version | 次の 1 つ以上のファイルから収集されます。<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version
-Architecture | uname
+アーキテクチャ | uname
 
 ### <a name="sql-server-instances-and-databases-data"></a>SQL Server インスタンスおよびデータベースのデータ
 

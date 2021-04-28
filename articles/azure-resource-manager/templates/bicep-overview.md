@@ -3,12 +3,12 @@ title: Azure Resource Manager テンプレート用の Bicep 言語
 description: Azure Resource Manager テンプレートを使用して Azure にインフラストラクチャをデプロイするための Bicep 言語について説明します。
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 74028c682b48a492c2e8f13bef538d1694370cbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: af207e6ca88eab50fe6030883379c87c0ec05691
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104955909"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773749"
 ---
 # <a name="what-is-bicep-preview"></a>Bicep とは (プレビュー)
 
@@ -31,6 +31,17 @@ Bicep の使用を開始するには、[ツールをインストール](bicep-in
 同等の JSON および Bicep のファイルを並べて表示するには、[Bicep プレイグラウンド](https://aka.ms/bicepdemo)を参照してください。
 
 Bicep に変換したい既存の ARM テンプレートがある場合は、「[JSON と Bicep 間での ARM テンプレートの変換](bicep-decompile.md)」を参照してください。
+
+## <a name="benefits-of-bicep-versus-other-tools"></a>他のツールと比較した Bicep の利点
+
+Bicep には、他のオプションに比べて次の利点があります。
+
+* **すべてのリソースの種類と API バージョンのサポート**: Bicep では、Azure サービスのすべてのプレビュー版と GA バージョンがすぐにサポートされます。 リソース プロバイダーが新しいリソースの種類と API バージョンを導入するとすぐに、Bicep ファイルでそれらを使用できます。 新しいサービスは、ツールが更新されるまで待たなくても使用することができます。
+* **作成エクスペリエンス**: VS Code を使用して Bicep ファイルを作成すると、ファーストクラスの作成エクスペリエンスが得られます。 エディターには、豊富なタイプセーフ、IntelliSense、構文検証が用意されています。
+* **モジュール性**: [モジュール](bicep-modules.md)を使用して、Bicep コードを管理しやすいパーツに分割できます。 モジュールによって、関連するリソースのセットがデプロイされます。 モジュールを使用すると、コードを再利用し、開発を簡素化することができます。 これらのリソースをデプロイする必要がある場合はいつでも、モジュールを Bicep ファイルに追加します。
+* **Azure サービスとの統合**: Bicep は、Azure Policy、Template Specs、Blueprints などの Azure サービスと統合されています。
+* **管理する状態または状態ファイルがない**: すべての状態が Azure に格納されます。 ユーザーは共同作業を行うことができ、更新プログラムが想定どおりに処理されることを確信できます。 テンプレートをデプロイする前に変更をプレビューするには、[what-if 操作](template-deploy-what-if.md)を使用します。
+* **コストがかからないオープン ソース**: Bicep は完全に無料です。 Premium 機能に対して料金を支払う必要はありません。 また、Microsoft サポートによってサポートされています。
 
 ## <a name="bicep-improvements"></a>Bicep の機能強化
 
@@ -57,11 +68,7 @@ output hostname string = publicIP.properties.dnsSettings.fqdn
 
 Bicep では、リソース間の依存関係が自動的に管理されます。 リソースのシンボル名が別のリソース宣言で使用されている場合に `dependsOn` を設定しないようにすることができます。
 
-Bicep を使用すると、プロジェクトを複数のモジュールに分割できます。
-
 Bicep ファイルの構造は、JSON テンプレートよりも柔軟です。 ファイル内の任意の場所で、パラメーター、変数、および出力を宣言できます。 JSON では、テンプレートの対応するセクション内で、すべてのパラメーター、変数、および出力を宣言する必要があります。
-
-Bicep の VS Code 拡張機能では、高度な検証と IntelliSense が提供されます。 たとえば、リソースのプロパティを取得するための拡張機能の IntelliSense を使用できます。
 
 ## <a name="known-limitations"></a>既知の制限事項
 

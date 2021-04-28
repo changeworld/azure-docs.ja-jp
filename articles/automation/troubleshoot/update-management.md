@@ -3,14 +3,15 @@ title: Azure Automation Update Management に関する問題のトラブルシ�
 description: この記事では、Azure Automation Update Management に関する問題のトラブルシューティングと解決方法について説明します。
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 04/16/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: c16b032502401b633532ab0fcf9518aa85a1b8d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 36bfd2185cb7a192ce0113ee0722395c8a4ee928
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579733"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830306"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Update Management に関する問題のトラブルシューティング
 
@@ -188,11 +189,13 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 5. 一覧に表示されていない場合は、「[リソース プロバイダーの登録エラーの解決](../../azure-resource-manager/templates/error-register-resource-provider.md)」の手順に従って、Microsoft.Automation プロバイダーを登録します。
 
-## <a name="scenario-scheduled-update-with-a-dynamic-schedule-missed-some-machines"></a><a name="scheduled-update-missed-machines"></a>シナリオ:動的スケジュールでスケジュールされた更新で一部のマシンが見つからない
+## <a name="scenario-scheduled-update-did-not-patch-some-machines"></a><a name="scheduled-update-missed-machines"></a>シナリオ: スケジュールされた更新プログラムで一部のマシンにパッチが適用されなかった
 
 ### <a name="issue"></a>問題
 
-更新プレビューに含まれるすべてのマシンが、スケジュールされた実行中に修正プログラムが適用されたマシンの一覧に表示されません。
+更新プレビューに含まれているマシンが、スケジュールされた実行中にパッチが適用されたマシンの一覧にすべて表示されないか、または動的グループの選択したスコープの VM がポータルの更新プレビューの一覧に表示されません。
+
+更新プレビューの一覧は、選択したスコープの [Azure Resource Graph](../../governance/resource-graph/overview.md) クエリによって取得されたすべてのマシンで構成されます。 スコープは、システム Hybrid Runbook Worker がインストールされていて、ユーザーがアクセス許可を持っているマシンでフィルター処理されます。
 
 ### <a name="cause"></a>原因
 
@@ -201,6 +204,12 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 * 動的クエリのスコープで定義されているサブスクリプションが、登録済みの Automation リソース プロバイダーに対して構成されていません。
 
 * スケジュールが実行されたときに、マシンが使用できなかったか、マシンに適切なタグがありませんでした。
+
+* 選択したスコープに対する適切なアクセス権がありません。
+
+* Azure Resource Graph クエリで、予期されるマシンが取得されません。
+
+* システム Hybrid Runbook Worker がマシンにインストールされていません。
 
 ### <a name="resolution"></a>解決方法
 
@@ -238,31 +247,15 @@ Automation リソース プロバイダーを登録するには、Azure portal �
 
 7. 更新スケジュールを再実行し、指定した動的グループでのデプロイにすべてのマシンが含まれることを確認します。
 
-## <a name="scenario-expected-machines-dont-appear-in-preview-for-dynamic-group"></a><a name="machines-not-in-preview"></a>シナリオ:予期されるマシンが動的グループのプレビューに表示されない
-
-### <a name="issue"></a>問題
-
-動的グループの選択したスコープの VM が、Azure portal のプレビュー一覧に表示されません。 この一覧は、選択したスコープに対して ARG クエリによって取得されたすべてのマシンで構成されます。 スコープは、Hybrid Runbook Worker がインストールされていて、ユーザーがアクセス許可を持っているマシンでフィルター処理されます。
-
-### <a name="cause"></a>原因
-
-この問題の考えられる原因は次のとおりです。
-
-* 選択したスコープに対する適切なアクセス権がありません。
-* ARG クエリで、予期されるマシンが取得されません。
-* Hybrid Runbook Worker がマシンにインストールされていません。
-
-### <a name="resolution"></a>解決方法 
-
 #### <a name="incorrect-access-on-selected-scopes"></a>選択したスコープに対する正しくないアクセス権
 
 Azure portal には、ユーザーが特定のスコープで書き込みアクセス権を持っているマシンのみが表示されます。 スコープに対する適切なアクセス権がない場合は、「[チュートリアル: Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](../../role-based-access-control/quickstart-assign-role-user-portal.md)」を参照してください。
 
-#### <a name="arg-query-doesnt-return-expected-machines"></a>ARG クエリで予期されるマシンが返されない
+#### <a name="resource-graph-query-doesnt-return-expected-machines"></a>Resource Graph クエリで予期されるマシンが返されない
 
 以下の手順のようにして、クエリが正常に機能しているかどうかを確認します。
 
-1. Azure portal の Resource Graph エクスプローラー ブレードで、次のように書式設定された ARG クエリを実行します。 このクエリでは、Update Management で動的グループを作成したときに選択したフィルターが模倣されます。 「[Update Management を利用して動的グループを使用する](../update-management/configure-groups.md)」を参照してください。
+1. Azure portal の Resource Graph エクスプローラー ブレードで、次のように書式設定された Azure Resource Graph クエリを実行します。 Azure Resource Graph を初めて使用する場合は、この[クイックスタート](../../governance/resource-graph/first-query-portal.md)を参照して、Resource Graph エクスプローラーの操作方法を学習してください。 このクエリでは、Update Management で動的グループを作成したときに選択したフィルターが模倣されます。 「[Update Management を利用して動的グループを使用する](../update-management/configure-groups.md)」を参照してください。
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -287,7 +280,7 @@ Azure portal には、ユーザーが特定のスコープで書き込みアク�
 
 #### <a name="hybrid-runbook-worker-not-installed-on-machines"></a>Hybrid Runbook Worker がマシンにインストールされていない
 
-マシンは ARG クエリの結果には表示されますが、動的グループのプレビューにはやはり表示されません。 この場合、マシンがハイブリッド workerとして指定されていないため、Azure Automation ジョブや Update Management ジョブを実行できない可能性があります。 表示されるはずのマシンが Hybrid Runbook Worker として設定されていることを確認するには、次のようにします。
+マシンは Azure Resource Graph クエリの結果には表示されますが、動的グループのプレビューにはやはり表示されません。 この場合、マシンがシステム Hybrid Runbook Worker として指定されていないため、Azure Automation や Update Management のジョブを実行できないおそれがあります。 表示されるはずのマシンがシステム Hybrid Runbook Worker として設定されていることを確認するには、次のようにします。
 
 1. Azure portal で、正しく表示されないマシンの Automation アカウントに移動します。
 
@@ -297,11 +290,9 @@ Azure portal には、ユーザーが特定のスコープで書き込みアク�
 
 4. そのマシンにハイブリッド worker が存在することを確認します。
 
-5. マシンがハイブリッド worker として設定されていない場合は、「[Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する](../automation-hybrid-runbook-worker.md)」の手順を使用して調整します。
+5. マシンがシステム Hybrid Runbook Worker として設定されていない場合は、「Update Management の概要」の記事の「[Update Management の有効化](../update-management/overview.md#enable-update-management)」セクションで、マシンを有効にする方法をご確認ください。 有効にする方法は、マシンが実行されている環境に基づいています。
 
-6. マシンを Hybrid Runbook Worker グループに参加させます。
-
-7. プレビューに表示されないすべてのマシンに対して上記の手順を繰り返します。
+6. プレビューに表示されないすべてのマシンに対して上記の手順を繰り返します。
 
 ## <a name="scenario-update-management-components-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>シナリオ:Update Management のコンポーネントが有効になっているが、VM は構成中と表示されたままである
 

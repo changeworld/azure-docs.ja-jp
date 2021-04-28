@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 11/03/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5309fd60640c45ade42bab4c5727cf1f0a8d9d70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cd44d3361e96a22ddb70fb5568926583ac3dbb67
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025477"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952694"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -158,7 +158,7 @@ Site Recovery では、アプリ整合性復旧ポイントを最小間隔の 1 
 
 ### <a name="can-i-enable-app-consistent-replication-for-linux-vms"></a>Linux VM でアプリ整合性レプリケーションを有効にすることはできますか?
 
-はい。 Linux 用モビリティ エージェントは、アプリ整合性のためのカスタム スクリプトをサポートしています。 エージェントでは、pre オプションと post オプションを使用したカスタム スクリプトが使用されます。 [詳細情報](site-recovery-faq.md#can-i-enable-replication-with-app-consistency-in-linux-servers)
+はい。 Linux 用モビリティ エージェントは、アプリ整合性のためのカスタム スクリプトをサポートしています。 エージェントでは、pre オプションと post オプションを使用したカスタム スクリプトが使用されます。 [詳細情報](site-recovery-faq.yml)
 
 ### <a name="how-are-recovery-points-generated-and-saved"></a>復旧ポイントはどのように生成されて保存されますか?
 

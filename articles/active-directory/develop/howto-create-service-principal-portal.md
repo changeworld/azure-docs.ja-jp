@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 621bd392c12bb6ef1269eaed4731063490664f7e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 12739d535e37c4d1de89e69237a0daddd9569217
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750790"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897471"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -138,7 +138,7 @@ Azure AD アプリケーションとサービス プリンシパルが作成さ�
 
 ### <a name="option-1-upload-a-certificate"></a>オプション 1: 証明書のアップロード
 
-既存の証明書がある場合は、それを使用できます。  必要に応じて、*テスト目的でのみ* 自己署名証明書を作成できます。 自己署名証明書を作成するには、PowerShell を開き、次のパラメーターを使用して [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を実行し、コンピューター上のユーザー証明書ストアに証明書を作成します。
+既存の証明書がある場合は、それを使用できます。  必要に応じて、*テスト目的でのみ* 自己署名証明書を作成できます。 自己署名証明書を作成するには、PowerShell を開き、次のパラメーターを使用して [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) を実行し、コンピューター上のユーザー証明書ストアに証明書を作成します。
 
 ```powershell
 $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocation "Cert:\CurrentUser\My"  -KeyExportPolicy Exportable -KeySpec Signature
@@ -182,7 +182,7 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
    ![後からこれを取得することはできないので、このシークレット値をコピーする](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>リソースに対するアクセス ポリシーを構成する
-アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](../../key-vault/general/security-overview.md#privileged-access)必要があります。
+アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](../../key-vault/general/security-features.md#privileged-access)必要があります。
 
 1. **Azure portal** で、キー コンテナーに移動し、<a href="https://portal.azure.com/" target="_blank">[アクセス ポリシー]</a> を選択します。
 1. **[アクセス ポリシーの追加]** を選択し、アプリケーションに付与するキー、シークレット、証明書のアクセス許可を選択します。  以前に作成したサービス プリンシパルを選択します。

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: 77865cea4621b36d8b1de0e00f0ce8e00fdba252
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: c39b332e9ee62a8502d5e2fdf155819194a30e34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108124961"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762193"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトを使用する
 
@@ -136,7 +136,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 
 プロパティ値の詳細:
 
-- `identity`: デプロイ スクリプト API バージョン2020-10-01 以降では、スクリプトで Azure 固有のアクションを実行する必要がない限り、ユーザー割り当てマネージド ID は省略可能です。  API バージョン 2019-10-01-preview では、デプロイ スクリプト サービスでスクリプトを実行するために使用されるため、マネージド ID が必要です。 ID プロパティを指定すると、スクリプト サービスはユーザー スクリプトを呼び出す前に `Connect-AzAccount -Identity` を呼び出します。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。 別の ID を使ってログインするには、スクリプト内で [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) を呼び出します。
+- `identity`: デプロイ スクリプト API バージョン2020-10-01 以降では、スクリプトで Azure 固有のアクションを実行する必要がない限り、ユーザー割り当てマネージド ID は省略可能です。  API バージョン 2019-10-01-preview では、デプロイ スクリプト サービスでスクリプトを実行するために使用されるため、マネージド ID が必要です。 ID プロパティを指定すると、スクリプト サービスはユーザー スクリプトを呼び出す前に `Connect-AzAccount -Identity` を呼び出します。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。 別の ID を使ってログインするには、スクリプト内で [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) を呼び出します。
 - `kind`: スクリプトの種類を指定します。 現在、Azure PowerShell および Azure CLI のスクリプトがサポートされています。 値は、**AzurePowerShell** と **AzureCLI** です。
 - `forceUpdateTag`:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 `newGuid()` または `utcNow()` 関数を使用する場合は、どちらの関数もパラメーターの既定値でのみ使用できます。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
 - `containerSettings`:Azure Container Instance をカスタマイズするための設定を指定します。 デプロイ スクリプトには、新しい Azure Container Instance が必要です。 既存の Azure Container Instance は指定できません。 ただし、`containerGroupName` を使用して、コンテナー グループ名をカスタマイズできます。 指定しない場合、グループ名は自動的に生成されます。
@@ -317,8 +317,8 @@ PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポー�
 
 |環境変数|既定値|システムで予約済み|
 |--------------------|-------------|---------------|
-|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|N|
-|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration|N|
+|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|×|
+|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration|×|
 |AZ_SCRIPTS_OUTPUT_PATH|<AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY>/<AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME>|Y|
 |AZ_SCRIPTS_PATH_INPUT_DIRECTORY|/mnt/azscripts/azscriptinput|Y|
 |AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY|/mnt/azscripts/azscriptoutput|Y|
@@ -327,7 +327,7 @@ PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポー�
 |AZ_SCRIPTS_PATH_SUPPORTING_SCRIPT_URI_FILE_NAME|supportingscripturi.config|Y|
 |AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME|scriptoutputs.json|Y|
 |AZ_SCRIPTS_PATH_EXECUTION_RESULTS_FILE_NAME|executionresult.json|Y|
-|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/subscriptions/|N|
+|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/subscriptions/|×|
 
 `AZ_SCRIPTS_OUTPUT_PATH` の使用に関する詳細については、「[CLI スクリプトからの出力を操作する](#work-with-outputs-from-cli-script)」を参照してください。
 

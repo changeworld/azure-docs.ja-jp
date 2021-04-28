@@ -8,19 +8,19 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: cabc4784dfb19f569212f4d0cb93e6838473e559
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 5afdc2e46e4c234204a27261ae87061a3631071c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714490"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134755"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
 ::: zone pivot="programming-language-csharp"
 Azure Spring Cloud は、Steeltoe アプリをホスト、監視、スケール、更新するための堅牢なサービスを提供しています。 この記事では、Azure Spring Cloud にデプロイするために既存の Steeltoe アプリケーションを準備する方法について説明します。 
 
-この記事では、Azure Spring Cloud で .NET Core Steeltoe アプリを実行するために必要な依存関係、構成、およびコードについて説明します。 アプリケーションを Azure Spring Cloud にデプロイする方法については、「[初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)」を参照してください。
+この記事では、Azure Spring Cloud で .NET Core Steeltoe アプリを実行するために必要な依存関係、構成、およびコードについて説明します。 アプリケーションを Azure Spring Cloud にデプロイする方法については、「[初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)」を参照してください。
 
 >[!Note]
 > Azure Spring Cloud の Steeltoe のサポートは、現時点ではパブリック プレビューとして提供されています。 パブリック プレビュー オファリングにより、お客様は公式リリースの前に新機能を試すことができます。  パブリック プレビューの機能とサービスは、運用環境での使用を目的としたものではありません。  プレビュー段階のサポートの詳細については、[FAQ](https://azure.microsoft.com/support/faq/) を参照するか、[サポート リクエスト](../azure-portal/supportability/how-to-create-azure-support-request.md)を提出してください。
@@ -124,11 +124,11 @@ using (var client = new HttpClient(discoveryHandler, false))
 ::: zone pivot="programming-language-java"
 このトピックでは、Azure Spring Cloud にデプロイできるように既存の Java Spring アプリケーションを準備する方法について説明します。 適切に構成すると、Azure Spring Cloud によって Java Spring Cloud アプリケーションの監視、スケーリング、更新を行う堅牢なサービスが実現します。
 
-この例を実行する前に、[基本的なクイックスタート](spring-cloud-quickstart.md)を試してみることができます。
+この例を実行する前に、[基本的なクイックスタート](./quickstart.md)を試してみることができます。
 
 POM ファイルが構成されているときにアプリケーションを Azure Spring Cloud にデプロイする方法については、その他の例で説明しています。 
-* [最初のアプリを起動する](spring-cloud-quickstart.md)
-* [マイクロサービスをビルドして実行する](spring-cloud-quickstart-sample-app-introduction.md)
+* [最初のアプリを起動する](./quickstart.md)
+* [マイクロサービスをビルドして実行する](./quickstart-sample-app-introduction.md)
 
 この記事では、必要な依存関係とそれらを POM ファイルに追加する方法について説明します。
 
@@ -151,7 +151,7 @@ Spring Boot のバージョン | Spring Cloud のバージョン
 2.4.1+ | 2020.0.0
 
 > [!NOTE]
-> アプリと Eureka の間の TLS 認証で Spring Boot 2.4.0 に問題があることを確認しました。2.4.1 以降を使用してください。 2\.4.0 を使用する場合の回避策については、[FAQ](./spring-cloud-faq.md?pivots=programming-language-java#development) を参照してください。
+> アプリと Eureka の間の TLS 認証で Spring Boot 2.4.0 に問題があることを確認しました。2.4.1 以降を使用してください。 2\.4.0 を使用する場合の回避策については、[FAQ](./faq.md?pivots=programming-language-java#development) を参照してください。
 
 ### <a name="dependencies-for-spring-boot-version-2223"></a>Spring Boot バージョン 2.2/2.3 の依存関係
 
@@ -284,7 +284,7 @@ public class GatewayApplication {
 
 ### <a name="distributed-tracing"></a>分散トレース
 
-さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Azure Spring Cloud と共に Application Insights を使用する方法については、[分散トレースに関するドキュメント](spring-cloud-tutorial-distributed-tracing.md)を参照してください。
+さらに、自分の Azure Spring Cloud サービス インスタンスと連携できるよう、Azure Application Insights インスタンスを有効にする必要があります。 Azure Spring Cloud と共に Application Insights を使用する方法については、[分散トレースに関するドキュメント](./how-to-distributed-tracing.md)を参照してください。
 
 #### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
 pom.xml ファイルの依存関係セクションに次の `spring-cloud-starter-sleuth` および `spring-cloud-starter-zipkin` の依存関係を含めます。
@@ -312,14 +312,14 @@ pom.xml ファイルの依存関係セクションに次の `spring-cloud-sleuth
 
 ## <a name="see-also"></a>関連項目
 * [アプリケーションのログとメトリックを分析する](./diagnostic-services.md)
-* [構成サーバーを設定する](spring-cloud-tutorial-config-server.md)
-* [Azure Spring Cloud で分散トレースを使用する](spring-cloud-tutorial-distributed-tracing.md)
+* [構成サーバーを設定する](./how-to-config-server.md)
+* [Azure Spring Cloud で分散トレースを使用する](./how-to-distributed-tracing.md)
 * [Spring クイックスタート ガイド](https://spring.io/quickstart)
 * [Spring Boot のドキュメント](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>次のステップ
 
-このトピックでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、[Config Server インスタンスの設定](spring-cloud-tutorial-config-server.md)に関するページを参照してください。
+このトピックでは、Java Spring Cloud アプリケーションを Azure Spring Cloud へのデプロイ用に構成する方法について学習しました。 Config Server インスタンスを設定する方法については、[Config Server インスタンスの設定](./how-to-config-server.md)に関するページを参照してください。
 
 その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples))。
 ::: zone-end

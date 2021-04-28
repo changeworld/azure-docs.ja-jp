@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 23ba50a6eca1e398b9d459153b84719909f2ecac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4121d4b9ac73ed18da7dce0e397fe919589ac6f0
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99583741"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478762"
 ---
 # <a name="using-web-browsers-msalnet"></a>Web ブラウザーを使用する (MSAL.NET)
 
@@ -63,11 +63,11 @@ MSAL.NET では、Xamarin.iOS、Xamarin.Android、および .NET Core に対す�
 
 システム ブラウザーを使うと、ブローカー (会社ポータル/Authenticator) の必要なしに、SSO の状態を他のアプリケーションや Web アプリケーションと共有できるという大きな利点があります。 Xamarin.iOS および Xamarin.Android プラットフォーム用の MSAL.NET では、既定でシステム ブラウザーが使用されていました。その理由は、これらのプラットフォーム上で、システム Web ブラウザーは画面全体を占め、ユーザー エクスペリエンスがよくなることにありました。 システム Web ビューはダイアログと区別できません。 ただし、iOS では、ユーザーはブラウザーがアプリケーションに対してコールバックするのに同意することが必要な場合があり、面倒なことがあります。
 
-## <a name="system-browser-experience-on-net-core"></a>.NET Core でのシステム ブラウザー エクスペリエンス
+## <a name="system-browser-experience-on-net"></a>.NET でのシステム ブラウザー エクスペリエンス 
 
 .NET Core の場合、MSAL.NET ではシステム ブラウザーが個別のプロセスとして起動されます。 MSAL.NET ではこのブラウザーを制御できません。しかし、ユーザーが認証を完了すると、MSAL.NET が URI をインターセプトできるように Web ページはリダイレクトされます。
 
-次のように指定することで、このブラウザーを使用するように .NET Classic 向けに作成されたアプリを構成することもできます
+次のように指定することで、このブラウザーを使用するように .NET Classic または .NET 5 向けに作成されたアプリを構成することもできます。
 
 ```csharp
 await pca.AcquireTokenInteractive(s_scopes)

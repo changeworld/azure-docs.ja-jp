@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: f0f3baf1bf56f958408f789961812c0555f289f1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 0882efeccfc8dc83686d75ab39b8364219c3b5f1
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102043645"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588090"
 ---
 # <a name="redundancy-options-for-managed-disks"></a>マネージド ディスクの冗長性オプション
 
@@ -52,7 +52,7 @@ ZRS ディスクを使用すると、可用性ゾーン内の障害からの回�
 
 ### <a name="comparison-with-other-disk-types"></a>他のディスクの種類との比較
 
-書き込み待機時間が長い点を除き、ZRS を使用したディスクは LRS を使用したディスクと同じです。 これらのパフォーマンス ターゲットは同じです。
+書き込み待機時間が長い点を除き、ZRS を使用したディスクは LRS を使用したディスクと同じです。 これらのパフォーマンス ターゲットは同じです。 [ディスク ベンチマーク](disks-benchmarks.md)を実施して、LRS と ZRS のディスク間の待機時間を比較するためのアプリケーションのワークロードをシミュレートすることをお勧めします。 
 
 ### <a name="create-zrs-managed-disks"></a>ZRS マネージド ディスクを作成する
 

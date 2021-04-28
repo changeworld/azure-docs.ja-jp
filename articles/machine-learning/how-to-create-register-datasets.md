@@ -5,19 +5,19 @@ description: 機械学習の実験を実行するために Azure Machine Learnin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy21q1, data4ml
+ms.topic: how-to
+ms.custom: contperf-fy21q1, data4ml
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 592c128a05b66b268c954ccd32b06863df5b25d1
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 0125f33bb01d177442bb1da8a1f45e172659c7c2
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029116"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889846"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -190,9 +190,10 @@ titanic_ds.take(3).to_pandas_dataframe()
 データ ラングリングや探索を実行する必要がない場合は、[データセットを使用したトレーニング](how-to-train-with-datasets.md)に関する記事に記載されている、ML 実験の送信用のトレーニング スクリプトでデータセットを使用する方法について参照してください。
 
 ### <a name="filter-datasets-preview"></a>データセットのフィルター処理 (プレビュー)
+
 フィルター処理機能は、使用しているデータセットの種類によって異なります。 
 > [!IMPORTANT]
-> パブリック プレビュー メソッド [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) を使用したデータセットのフィルター処理は、[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
+> プレビュー メソッド [`filter()`](/python/api/azureml-core/azureml.data.tabulardataset#filter-expression-) を使用したデータセットのフィルター処理は、[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
 > 
 **TabularDatasets** の場合は、[keep_columns()](/python/api/azureml-core/azureml.data.tabulardataset#keep-columns-columns--validate-false-) と [drop_columns()](/python/api/azureml-core/azureml.data.tabulardataset#drop-columns-columns-) メソッドを使用して、列を保持または削除できます。
 
@@ -229,6 +230,59 @@ labeled_dataset = labeled_dataset.filter(labeled_dataset['label'] == 'dog')
 # Dataset that only contains records where the label and isCrowd columns are True and where the file size is larger than 100000
 labeled_dataset = labeled_dataset.filter((labeled_dataset['label']['isCrowd'] == True) & (labeled_dataset.file_metadata['Size'] > 100000))
 ```
+
+### <a name="partition-data-preview"></a>データのパーティション分割 (プレビュー)
+
+TabularDataset または FileDataset を作成するときに、`partitions_format` パラメーターを含めることにより、データセットをパーティション分割できます。 
+
+> [!IMPORTANT]
+> データセット パーティションの作成は、[試験段階](/python/api/overview/azure/ml/#stable-vs-experimental)のプレビュー機能であり、いつでも変更される可能性があります。 
+
+データセットをパーティション分割すると、各ファイル パスのパーティション情報が、指定された形式に基づいて列に抽出されます。 形式は、最初のパーティション キーの位置から始まり、ファイル パスの末尾までになります。 
+
+たとえば、部署名と時刻でパーティション分割されるパス `../Accounts/2019/01/01/data.jsonl` がある場合、`partition_format='/{Department}/{PartitionDate:yyyy/MM/dd}/data.jsonl'` によって、値 'Accounts' を持つ文字列の列 'Department' と、値 `2019-01-01` を持つ datetime 列 'PartitionDate' が作成されます。
+
+データに既存のパーティションが既に存在し、その形式を保持する場合は、[`from_files()`](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#from-files-path--validate-true--partition-format-none-) メソッドに `partitioned_format` パラメーターを含めて、FileDataset を作成します。 
+
+既存のパーティションを保持する TabularDataset を作成するには、[from_parquet_files()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-parquet-files-path--validate-true--include-path-false--set-column-types-none--partition-format-none-) または [from_delimited_files()](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false--empty-as-string-false--encoding--utf8--) のメソッドに `partitioned_format` パラメーターを含めます。
+
+次に例を示します。
+* パーティション分割されたファイルから FileDataset を作成する
+* パーティション キーを取得する
+* 新しいインデックス付き FileDataset を作成する
+ 
+```Python
+
+file_dataset = Dataset.File.from_files(data_paths, partition_format = '{userid}/*.wav')
+ds.register(name='speech_dataset')
+
+# access partition_keys
+indexes = file_dataset.partition_keys # ['userid']
+
+# get all partition key value pairs should return [{'userid': 'user1'}, {'userid': 'user2'}]
+partitions = file_dataset.get_partition_key_values()
+
+
+partitions = file_dataset.get_partition_key_values(['userid'])
+# return [{'userid': 'user1'}, {'userid': 'user2'}]
+
+# filter API, this will only download data from user1/ folder
+new_file_dataset = file_dataset.filter(ds['userid'] == 'user1').download()
+```
+
+[partitions_by()](/python/api/azureml-core/azureml.data.tabulardataset#partition-by-partition-keys--target--name-none--show-progress-true--partition-as-file-dataset-false-) メソッドを使用して、TabularDatasets の新しいパーティション構造を作成することもできます。
+
+```Python
+
+ dataset = Dataset.get_by_name('test') # indexed by country, state, partition_date
+
+# call partition_by locally
+new_dataset = ds.partition_by(name="repartitioned_ds", partition_keys=['country'], target=DataPath(datastore, "repartition"))
+partition_keys = new_dataset.partition_keys # ['country']
+```
+
+>[!IMPORTANT]
+> TabularDataset パーティションは、多くのモデル アプリケーションの ParallelRunStep への入力として Azure Machine Learning パイプラインにも適用できます。 [多くのモデル アクセラレータのドキュメント](https://github.com/microsoft/solution-accelerator-many-models/blob/master/01_Data_Preparation.ipynb)で例を参照してください。
 
 ## <a name="explore-data"></a>データの探索
 

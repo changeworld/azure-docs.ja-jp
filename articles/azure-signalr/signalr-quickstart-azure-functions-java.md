@@ -10,12 +10,12 @@ ms.devlang: java
 ms.custom:
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 15453fb8177248087cbec98fd734bcff3bf66868
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0d93b9b645aaf4190a36dbc523d40dec2757a18b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533233"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869799"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>クイック スタート:Java を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -31,7 +31,7 @@ Azure SignalR Service を使用すると、アプリケーションに対して�
    > Java では、必須の SignalR Service バインディングが Azure Function Core Tools バージョン 2.4.419 (ホスト バージョン 2.0.12332) 以降でのみサポートされます。
 
    > [!NOTE]
-   > Azure Functions Core Tools では、拡張機能をインストールするために、[.NET Core SDK](https://www.microsoft.com/net/download) がインストールされている必要があります。 ただし、JavaScript Azure Functions アプリの構築には、.NET の知識は必要ありません。
+   > Azure Functions Core Tools では、拡張機能をインストールするために、[.NET Core SDK](https://dotnet.microsoft.com/download) がインストールされている必要があります。 ただし、JavaScript Azure Functions アプリの構築には、.NET の知識は必要ありません。
 
 - [Java Developer Kit](https://www.azul.com/downloads/zulu/)、バージョン 8
 - [Apache Maven](https://maven.apache.org)、バージョン 3.0 以降

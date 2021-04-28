@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8779ee2d3c4d83c06a2c1803e65219d43f0ef14
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 436a972693aafd220d277d7411c0da12636e9cc6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106275806"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829802"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>パスワードなしのセキュリティ キー サインインを有効にする 
 
@@ -32,6 +32,7 @@ ms.locfileid: "106275806"
 - WebAuthN requires Windows 10 バージョン 1903 以降**
 
 Web アプリやサービスへのログインにセキュリティ キーを使用するには、WebAuthN プロトコルをサポートするブラウザーが必要です。 これには、Microsoft Edge、Chrome、Firefox、Safari などが含まれます。
+
 
 ## <a name="prepare-devices"></a>デバイスを準備する
 
@@ -90,7 +91,9 @@ Hybrid Azure AD 参加済みデバイスでは、Windows 10 バージョン 2004
 
 管理者がセキュリティ キーをプロビジョニングし、それをプロビジョニング解除することはできません。
 
-**注:** win10 20H2 バージョンに固有のハイブリッド Azure AD 参加済みマシンで、FIDO2 のキャッシュされたログオンが失敗します (LOS から DC が使用できない場合)。 これは、現在、エンジニアリングで調査中です。
+### <a name="cached-logon-on-hybrid-azure-ad-joined-devices"></a>Hybrid Azure AD 参加済みデバイスへのキャッシュされたログオン
+
+FIDO2 キーを使用したキャッシュされたログオンは、Windows 10 バージョン 20H2 のハイブリッド Azure AD 参加済みデバイスで失敗します。 その結果、オンプレミスのドメイン コントローラーへの通信経路が利用できない場合、ユーザーはログインできなくなります。 これは、現在、調査中です。
 
 ### <a name="upn-changes"></a>UPN の変更
 

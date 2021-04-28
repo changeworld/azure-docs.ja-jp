@@ -10,12 +10,12 @@ ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 25d4774144ff4ea601badb1fb71b51c8142def26
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1c4760362e7c2b3965638b3213910b5b8cd6f079
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304114"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516180"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge-preview"></a>Aure IoT Edge を使用した発行とサブスクライブ (プレビュー)
 
@@ -94,7 +94,7 @@ IoT Edge によってデプロイされたモジュールは[対称キー認証]
 MQTT クライアントが IoT Edge ハブに対して認証された後、接続を認可する必要があります。 接続された後は、特定のトピックを発行またはサブスクライブすることを承認する必要があります。 これらの承認は、承認ポリシーに基づいて、IoT Edge ハブによって付与されます。 承認ポリシーは、ツインを介して IoT Edge ハブに送信される JSON 構造として表現される一連のステートメントです。 IoT Edge ハブのツインを編集して、その承認ポリシーを構成します。
 
 > [!NOTE]
-> パブリック プレビューの場合、MQTT ブローカーの認可ポリシーの編集は、Visual Studio、Visual Studio Code または Azure CLI でのみ可能です。 Azure portal は、現在、IoT Edge ハブのツインとその承認ポリシーの編集をサポートしていません。
+> パブリック プレビューでは、Azure CLI のみが MQTT ブローカーの承認ポリシーを含むデプロイをサポートしています。 Azure portal は、現在、IoT Edge ハブのツインとその承認ポリシーの編集をサポートしていません。
 
 各認可ポリシー ステートメントは、`identities`、`allow` または `deny` の結果、`operations` および `resources` の組み合わせで構成されています。
 
@@ -170,10 +170,11 @@ MQTT クライアントが IoT Edge ハブに対して認証された後、接�
 - 既定では、すべての操作が拒否されます。
 - 認可ステートメントは、JSON 定義に出現する順序で評価されます。 まず、`identities` を確認してから、要求に一致する最初の allow または deny ステートメントを選択します。 allow と deny のステートメントの間で競合が発生した場合は、deny ステートメントが優先されます。
 - 認可ポリシーでは、いくつかの変数 (置換など) を使用できます。
-    - `{{iot:identity}}` は、現在接続されているクライアントの ID を表します。 たとえば、`myDevice` のようなデバイス ID や、`myEdgeDevice/SampleModule` のようなモジュール ID です。
-    - `{{iot:device_id}}` は、現在接続されているデバイスの ID を表します。 たとえば、`myDevice` のようなデバイス ID や、`myEdgeDevice` のようなモジュールが実行されているデバイスの ID です。
-    - `{{iot:module_id}}` は、現在接続されているモジュールの ID を表します。 この変数は、接続されているデバイスの場合は空白、または `SampleModule` のようなモジュール ID になります。
-    - `{{iot:this_device_id}}` は、承認ポリシーを実行している IoT Edge デバイスの ID を表します。 たとえば、「 `myIoTEdgeDevice` 」のように入力します。
+
+  - `{{iot:identity}}` は、現在接続されているクライアントの ID を表します。 たとえば、`myDevice` のようなデバイス ID や、`myEdgeDevice/SampleModule` のようなモジュール ID です。
+  - `{{iot:device_id}}` は、現在接続されているデバイスの ID を表します。 たとえば、`myDevice` のようなデバイス ID や、`myEdgeDevice` のようなモジュールが実行されているデバイスの ID です。
+  - `{{iot:module_id}}` は、現在接続されているモジュールの ID を表します。 この変数は、接続されているデバイスの場合は空白、または `SampleModule` のようなモジュール ID になります。
+  - `{{iot:this_device_id}}` は、承認ポリシーを実行している IoT Edge デバイスの ID を表します。 たとえば、「 `myIoTEdgeDevice` 」のように入力します。
 
 IoT ハブのトピックの認可は、ユーザー定義のトピックとは少し異なる方法で処理されます。 注意すべき重要な点は次のとおりです。
 
@@ -220,40 +221,43 @@ IoT Hub に 2 つの IoT デバイスを作成し、パスワードを取得し�
 
 1. IoT Hub に 2 つの IoT デバイスを作成し、IoT Edge デバイスの親にします。
 
-    ```azurecli-interactive
-    az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
-    az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
-    ```
+   ```azurecli-interactive
+   az iot hub device-identity create --device-id  sub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   az iot hub device-identity create --device-id  pub_client --hub-name <iot_hub_name> --pd <edge_device_id>
+   ```
 
 2. SAS トークンを生成してパスワードを取得します。
 
-    - デバイスの場合:
-    
-       ```azurecli-interactive
-       az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
-       ```
-    
-       ここで、3600 は SAS トークンの継続期間 (例: 3600 = 1 時間) です。
-    
-    - モジュールの場合:
-    
-       ```azurecli-interactive
-       az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
-       ```
-    
-       ここで、3600 は SAS トークンの継続期間 (例: 3600 = 1 時間) です。
+   - デバイスの場合:
+
+     ```azurecli-interactive
+     az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> --key-type primary --du 3600
+     ```
+
+     ここで、3600 は SAS トークンの継続期間 (例: 3600 = 1 時間) です。
+
+   - モジュールの場合:
+
+     ```azurecli-interactive
+     az iot hub generate-sas-token -n <iot_hub_name> -d <device_name> -m <module_name> --key-type primary --du 3600
+     ```
+
+     ここで、3600 は SAS トークンの継続期間 (例: 3600 = 1 時間) です。
 
 3. 出力から "sas" キーに対応する値である SAS トークンをコピーします。 上記の Azure CLI コマンドからの出力例を次に示します。
 
-    ```
-    {
-       "sas": "SharedAccessSignature sr=example.azure-devices.net%2Fdevices%2Fdevice_1%2Fmodules%2Fmodule_a&sig=H5iMq8ZPJBkH3aBWCs0khoTPdFytHXk8VAxrthqIQS0%3D&se=1596249190"
-    }
-    ```
+   ```output
+   {
+      "sas": "SharedAccessSignature sr=example.azure-devices.net%2Fdevices%2Fdevice_1%2Fmodules%2Fmodule_a&sig=H5iMq8ZPJBkH3aBWCs0khoTPdFytHXk8VAxrthqIQS0%3D&se=1596249190"
+   }
+   ```
 
 ### <a name="authorize-publisher-and-subscriber-clients"></a>パブリッシャーとサブスクライバーのクライアントを承認する
 
-パブリッシャーとサブスクライバーを承認するには、Azure CLI、Visual Studio、または Visual Studio Code のいずれかで IoT Edge デプロイを作成することで IoT Edge ハブのツインを編集し、次の承認ポリシーを含めます。
+パブリッシャーとサブスクライバーを承認するには、次の承認ポリシーを含む IoT Edge のデプロイで IoT Edge ハブのツインを編集します。
+
+>[!NOTE]
+>現在は、MQTT 承認プロパティを含むデプロイは、Azure CLI を使用して IoT Edge デバイスにのみ適用できます。
 
 ```json
 {
@@ -377,13 +381,13 @@ TLS を有効にするには、ポートを 1883 (MQTT) から 8883 (MQTTS) に�
 
 デバイス/モジュールのツインの取得は、一般的な MQTT パターンではありません。 クライアントは、IoT Hub が提供するツインの要求を発行する必要があります。
 
-ツインを受信するためには、クライアントは IoT Hub 固有のトピック `$iothub/twin/res/#` をサブスクライブする必要があります。 このトピック名は IoT Hub から継承され、すべてのクライアントが同じトピックをサブスクライブする必要があります。 これはデバイスまたはモジュールが相互にツインを受け取るという意味ではありません。 IoT Hub と IoT Edge ハブは、すべてのデバイスが同じトピック名をリッスンしている場合でも、どのツインが配信されるべきかを認識しています。 
+ツインを受信するためには、クライアントは IoT Hub 固有のトピック `$iothub/twin/res/#` をサブスクライブする必要があります。 このトピック名は IoT Hub から継承され、すべてのクライアントが同じトピックをサブスクライブする必要があります。 これはデバイスまたはモジュールが相互にツインを受け取るという意味ではありません。 IoT Hub と IoT Edge ハブは、すべてのデバイスが同じトピック名をリッスンしている場合でも、どのツインが配信されるべきかを認識しています。
 
 サブスクリプションが行われたら、クライアントでは、IoT Hub 固有のトピック `$iothub/twin/GET/?rid=<request_id>/#` にメッセージを発行することによって、ツインを要求する必要があります。ここで、`<request_id>` は任意の識別子です。 その後、IoT ハブは、クライアントがサブスクライブするトピック `$iothub/twin/res/200/?rid=<request_id>` に関する要求されたデータとともに応答を送信します。 これは、クライアントが要求を応答とペアにできる方法です。
 
 ### <a name="receive-twin-patches"></a>ツイン パッチを受信する
 
-ツイン パッチを受信するには、クライアントは特殊な IoT Hub トピック `$iothub/twin/PATCH/properties/desired/#` をサブスクライブする必要があります。 サブスクリプションが行われると、クライアントは、このトピックで IoT Hub によって送信されたツイン パッチを受信します。 
+ツイン パッチを受信するには、クライアントは特殊な IoT Hub トピック `$iothub/twin/PATCH/properties/desired/#` をサブスクライブする必要があります。 サブスクリプションが行われると、クライアントは、このトピックで IoT Hub によって送信されたツイン パッチを受信します。
 
 ### <a name="receive-direct-methods"></a>ダイレクト メソッドを受信する
 
@@ -398,23 +402,23 @@ TLS を有効にするには、ポートを 1883 (MQTT) から 8883 (MQTTS) に�
 2 つの MQTT ブローカーを接続するために、IoT Edge ハブには MQTT ブリッジが含まれています。 MQTT ブリッジは、通常、実行中の MQTT ブローカーを別の MQTT ブローカーに接続するために使用されます。 通常、ローカル トラフィックのサブセットのみが別のブローカーにプッシュされます。
 
 > [!NOTE]
-> 現在、IoT Edge ハブのブリッジは、入れ子になった IoT Edge デバイス間でのみ使用できます。 IoT ハブは、完全な機能を備えた MQTT ブローカーではないため、IoT ハブにデータを送信するためには使用できません。 IoT ハブの MQTT ブローカー機能のサポートの詳細については、「[MQTT プロトコルを使用した IoT Hub との通信](../iot-hub/iot-hub-mqtt-support.md)」を参照してください。 IoT Edge デバイスの詳細については、[Azure IoT Edge ゲートウェイへのダウンストリーム IoT Edge デバイスの接続](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices)に関するページを参照してください 
+> 現在、IoT Edge ハブのブリッジは、入れ子になった IoT Edge デバイス間でのみ使用できます。 IoT ハブは、完全な機能を備えた MQTT ブローカーではないため、IoT ハブにデータを送信するためには使用できません。 IoT ハブの MQTT ブローカー機能のサポートの詳細については、「[MQTT プロトコルを使用した IoT Hub との通信](../iot-hub/iot-hub-mqtt-support.md)」を参照してください。 IoT Edge デバイスの詳細については、[Azure IoT Edge ゲートウェイへのダウンストリーム IoT Edge デバイスの接続](how-to-connect-downstream-iot-edge-device.md#configure-iot-edge-on-devices)に関するページを参照してください。
 
 入れ子になった構成では、IoT Edge ハブの MQTT ブリッジは親の MQTT ブローカーのクライアントとして機能するため、親の EdgeHub に対して承認規則を設定して、ブリッジが構成されている特定のユーザー定義トピックを子の EdgeHub が発行およびサブスクライブできるようにする必要があります。
 
 IoT Edge MQTT ブリッジは、ツインを介して IoT Edge ハブに送信される JSON 構造を使用して構成されます。 IoT Edge ハブのツインを編集して、その MQTT ブリッジを構成します。
 
 > [!NOTE]
-> パブリック プレビューの場合、MQTT ブリッジの構成は、Visual Studio、Visual Studio Code、または Azure CLI 経由でのみ使用できます。 Azure portal は、現在、IoT Edge ハブの ツインとその MQTT ブリッジ構成の編集をサポートしていません。
+> パブリック プレビューでは、Azure CLI のみが MQTT ブリッジ構成を含むデプロイをサポートしています。 Azure portal は、現在、IoT Edge ハブの ツインとその MQTT ブリッジ構成の編集をサポートしていません。
 
 MQTT ブリッジは、IoT Edge ハブの MQTT ブローカーを複数の外部ブローカーに接続するように構成できます。 外部ブローカーごとに、以下の設定が必要です。
 
 - `endpoint` は、接続先のリモート MQTT ブローカーのアドレスです。 現在のところ、親の IoT Edge デバイスのみがサポートされており、変数 `$upstream` で定義されます。
 - `settings` は、エンドポイントに対してブリッジするトピックを定義します。 エンドポイントごとに複数の設定を設定でき、次の値を使用して構成します。
-    - `direction`: リモート ブローカーのトピックをサブスクライブするための `in`、またはリモート ブローカーのトピックに発行するための `out` のいずれか
-    - `topic`: 照合するコア トピック パターン。 [MQTT ワイルドカード](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)は、このパターンを定義するために使用できます。 ローカル ブローカーとリモート ブローカーでは、このトピック パターンに異なるプレフィックスを適用できます。
-    - `outPrefix`:リモート ブローカーの `topic` パターンに適用されるプレフィックス。
-    - `inPrefix`:ローカル ブローカーの `topic` パターンに適用されるプレフィックス。
+  - `direction`: リモート ブローカーのトピックをサブスクライブするための `in`、またはリモート ブローカーのトピックに発行するための `out` のいずれか
+  - `topic`: 照合するコア トピック パターン。 [MQTT ワイルドカード](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718107)は、このパターンを定義するために使用できます。 ローカル ブローカーとリモート ブローカーでは、このトピック パターンに異なるプレフィックスを適用できます。
+  - `outPrefix`:リモート ブローカーの `topic` パターンに適用されるプレフィックス。
+  - `inPrefix`:ローカル ブローカーの `topic` パターンに適用されるプレフィックス。
 
 次に示すのは、親の IoT Edge デバイスのトピック `alerts/#` で受信したすべてのメッセージを同じトピックの子の IoT Edge デバイスに再発行し、子の IoT Edge デバイスのトピック `/local/telemetry/#` で送信されたすべてのメッセージをトピック `/remote/messages/#` の親の IoT Edge デバイスに再発行する IoT Edge MQTT ブリッジ構成の例です。
 

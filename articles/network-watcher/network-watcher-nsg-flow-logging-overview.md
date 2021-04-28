@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: bc085163b4f738d022ab9771794ec85293de5ed8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f737be68a28f95ab5402ba5ea08e85fcf1b04d37
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100521681"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565901"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -93,10 +93,10 @@ ms.locfileid: "100521681"
                     * **Traffic Flow** - トラフィック フローの方向。 有効な値は受信の **I** と送信の **O** です。
                     * **Traffic Decision** - トラフィックが許可された、または拒否された。 有効な値は許可の **A** と拒否の **D** です。
                     * **Flow State - バージョン 2 のみ** - フローの状態をキャプチャします。 次の状態があります。**B**:開始。フローが作成された時点です。 統計は提供されません。 **C**: 継続中。フローが進行中です。 5 分間隔で統計が提供されます。 **E**:終了。フローが終了した時点です。 統計が提供されます。
-                    * **Packets - Source to destination - バージョン 2 のみ** - 最後の更新以降に送信元から宛先に送信された TCP または UDP パケットの総数。
-                    * **Bytes sent - Source to destination - バージョン 2 のみ** - 最後の更新以降に送信元から宛先に送信された TCP または UDP パケット バイトの総数。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。
-                    * **Packets - Destination to source - バージョン 2 のみ** - 最後の更新以降に宛先から送信元に送信された TCP または UDP パケットの総数。
-                    * **Bytes sent - Destination to source - バージョン 2 のみ** - 最後の更新以降に宛先から送信元に送信された TCP および UDP パケット バイトの総数。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。
+                    * **Packets - Source to destination - バージョン 2 のみ** - 最後の更新以降に送信元から宛先に送信された TCP パケットの総数。
+                    * **Bytes sent - Source to destination - バージョン 2 のみ** - 最後の更新以降に送信元から宛先に送信された TCP パケット バイトの総数。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。
+                    * **Packets - Destination to source - バージョン 2 のみ** - 最後の更新以降に宛先から送信元に送信された TCP パケットの総数。
+                    * **Bytes sent - Destination to source - バージョン 2 のみ** - 最後の更新以降に宛先から送信元に送信された TCP パケット バイトの総数。 パケットのバイト数には、パケット ヘッダーとペイロードが含まれます。
 
 
 **NSG フロー ログ バージョン 2 (バージョン 1 との比較)** 
@@ -347,6 +347,18 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 - [[チュートリアル] Grafana を使用して NSG フロー ログを管理および分析する](./network-watcher-nsg-grafana.md)
 - [[チュートリアル] Graylog を使用して NSG フロー ログを管理および分析する](./network-watcher-analyze-nsg-flow-logs-graylog.md)
 
+*フローのログを無効にする*
+
+フロー ログを無効にすると、関連付けられている NSG のフロー ログが停止します。 ただし、リソースとしてのフロー ログは、そのすべての設定と関連付けと共に存在し続けます。 これは、構成済みの NSG でいつでも有効にしてフロー ログを開始できます。 フロー ログを無効/有効にする手順については、こちらの[ハウツー ガイド](./network-watcher-nsg-flow-logging-powershell.md)を参照してください。  
+
+*フロー ログの削除*
+
+フロー ログを削除すると、関連付けられている NSG のフロー ログが停止するだけでなく、フロー ログ リソースもその設定と関連付けとともに削除されます。 フロー ログを再び開始するには、その NSG に対して新しいフロー ログ リソースを作成する必要があります。 フロー ログは、[PowerShell](https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherflowlog)、[CLI](https://docs.microsoft.com/cli/azure/network/watcher/flow-log#az_network_watcher_flow_log_delete)、または [REST API](https://docs.microsoft.com/rest/api/network-watcher/flowlogs/delete) を使用して削除できます。 Azure portal からフロー ログを削除するためのサポートはパイプラインに含まれています。    
+
+また、NSG が削除されると、既定では、関連付けられているフロー ログ リソースが削除されます。
+
+> [!NOTE]
+> NSG を別のリソース グループまたはサブスクリプションに移動するには、関連付けられているフロー ログを削除する必要があります。フロー ログを無効にするだけでは機能しません。 NSG を移行したら、フロー ログを再作成してフロー ログを有効にする必要があります。  
 
 ## <a name="nsg-flow-logging-considerations"></a>NSG フロー ログ記録の考慮事項
 

@@ -4,16 +4,17 @@ description: この記事では、Azure Automation アカウントの認証に�
 keywords: Automation のセキュリティ, セキュリティで保護された Automation; Automation の認証
 services: automation
 ms.subservice: process-automation
-ms.date: 02/26/2021
+ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: c559a81b17b92f48b2d51b7c2d26325d6a1b1cca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 546407ce7286cebc04d3c86422f6242051d1dbf3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708902"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830432"
 ---
-# <a name="automation-account-authentication-overview"></a>Automation アカウントの認証の概要
+# <a name="azure-automation-account-authentication-overview"></a>Azure Automation アカウントの認証の概要
 
 Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。 タスクの自動化には Runbook を使用できるほか、Azure 以外で管理する必要があるビジネスや運用プロセスがあれば Hybrid Runbook Worker を使用することもできます。 どの環境においても、必要な最低限の権限だけで操作対象のリソースに安全にアクセスするためのアクセス許可が必要です。
 
@@ -30,6 +31,31 @@ Azure Automation アカウントは、Microsoft アカウントや、Azure サ�
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Azure サブスクリプション内のリソースはすべて Automation アカウントで管理することができます。 異なるリージョンで Automation アカウントを作成する主な理由としては、特定のリージョンに分離しなければならないデータやリソースを必要とするポリシーがある場合が挙げられます。
 
 Azure Automation で Azure Resource Manager と PowerShell コマンドレットを使用してリソースに対して作成するすべてのタスクは、Azure Active Directory (Azure AD) の組織 ID 資格情報に基づく認証を使用して、Azure に対する認証を行う必要があります。
+
+## <a name="managed-identities-preview"></a>マネージド ID (プレビュー)
+
+Azure Active Directory (Azure AD) のマネージド ID を使用すると、Runbook が Azure AD で保護された他のリソースに簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 Azure AD のマネージド ID の詳細については、[Azure リソースのマネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) に関するページを参照してください。
+
+以下に、マネージド ID を使用するベネフィットをいくつか紹介します。
+
+- マネージド ID を使用すると、Azure AD Authentication をサポートするあらゆる Azure サービスに対して認証を行うことができる。 クラウドおよびハイブリッド ジョブに使用できます。 ハイブリッド ジョブは、Azure または Azure 以外の VM 上で実行されている Hybrid Runbook Worker で実行するときに、マネージド ID を使用できます。
+
+- マネージド ID の使用に関して追加コストは一切かからない。
+
+- Automation 実行アカウントで使用される証明書を更新する必要がない。
+
+- Runbook コードで実行接続オブジェクトを指定する必要がない。 証明書、接続、実行アカウントなどを作成せずに、Runbook から Automation アカウントのマネージド ID を使用してリソースにアクセスできます。
+
+Automation アカウントには、次の 2 種類の ID を付与できます。
+
+- システム割り当て ID はアプリケーションに関連付けられているため、アプリが削除されると削除されます。 アプリは 1 つのシステム割り当て ID しか持つことはできません。
+
+- ユーザー割り当て ID は、アプリに割り当てることができるスタンドアロン Azure リソースです。 アプリは複数のユーザー割り当て ID を持つことができます。
+
+>[!NOTE]
+> ユーザー割り当て ID はまだサポートされていません。
+
+マネージド ID の使用の詳細については、[Azure Automation のマネージド ID の有効化 (プレビュー)](enable-managed-identity-for-automation.md)に関するページを参照してください。
 
 ## <a name="run-as-accounts"></a>実行アカウント
 
@@ -94,7 +120,7 @@ Azure クラシック実行アカウントを作成すると、次のタスク�
 
 <sup>1</sup> **[ユーザー設定]** ページで Azure AD テナントの **[ユーザーはアプリケーションを登録できる]** オプションが **[はい]** に設定されている場合は、Azure AD テナントの管理者以外のユーザーが [AD アプリケーションを登録することができます](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)。 アプリケーション登録設定が **[いいえ]** の場合は、この操作を行うユーザーがこの表で定義されている必要があります。
 
-サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者ロールに追加された場合は、ゲストとして追加されます。 このような状況では、`You do not have permissions to create…` 警告が **[Add Automation Account]\(Automation アカウントの追加\)** ページに表示されます。
+サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者ロールに追加された場合は、ゲストとして追加されます。 このような状況では、 **[Automation アカウントの追加]** ページに `You do not have permissions to create…` 警告が表示されます。
 
 エラー メッセージが生成される状況が解決されたことを確認するには、次のようにします。
 
@@ -120,3 +146,4 @@ Azure VM 上で Hybrid Runbook Worker を使用する Runbook の場合は、実
 * Azure portal からの Automation アカウントの作成については、「[スタンドアロン Azure Automation アカウントを作成する](automation-create-standalone-account.md)」を参照してください。
 * テンプレートを使用してアカウントを作成したい場合は、「[Azure Resource Manager テンプレートを使用して Automation アカウントを作成する](quickstart-create-automation-account-template.md)」を参照してください。
 * アマゾン ウェブ サービスを使用した認証については、[アマゾン ウェブ サービスによる Runbook の認証](automation-config-aws-account.md)に関するページを参照してください。
+* Azure リソースのマネージド ID 機能をサポートする Azure サービスの一覧については、「[Services that support managed identities for Azure resources (Azure リソースのマネージド ID をサポートするサービス)](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)」を参照してください。

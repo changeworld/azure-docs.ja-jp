@@ -4,12 +4,12 @@ description: 長期保有を指定した Azure Database for PostgreSQL のバッ
 ms.topic: conceptual
 ms.date: 04/12/2021
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 8c2cf8c6bd8c483fced37bbafbacb5b00a4bfd94
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 8fd69e016c7f0b175ef49b98add5692743858f62
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108065235"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107480071"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>長期保有を指定した Azure Database for PostgreSQL のバックアップ (プレビュー)
 
@@ -334,4 +334,4 @@ OSS サーバーに Active Directory 管理者を追加します。
 
 ## <a name="next-steps"></a>次のステップ
 
-[バックアップ コンテナーの概要](backup-vault-overview.md)
+- [バックアップ コンテナーの概要](backup-vault-overview.md)

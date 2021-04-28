@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 499cb3c978a67f9ef71e6ad9dd03be9f05b45729
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 4021a705668db82e47a23808ef0f6546f86866be
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726972"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138267"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 のイベント ソース
 
@@ -29,7 +29,7 @@ Azure Time Series Insights Gen2 環境には、最大 2 つのストリーミン
 
 イベント ソースは、ハブと Azure Time Series Insights Gen2 環境との間のリンクであり、種類が `Time Series Insights event source` である別のリソースがリソース グループに作成されます。 IoT Hub またはイベント ハブのリソースは、Azure Time Series Insights Gen2 環境または別のサブスクリプションと同じ Azure サブスクリプションに存在することができます。 ただし、Azure Time Series Insights 環境と IoT Hub またはイベント ハブは、同じ Azure リージョン内に格納することをお勧めします。
 
-環境のイベント ソースの作成、編集、または削除は、[Azure portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment)、[Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source)、[Azure Resource Manager テンプレート](time-series-insights-manage-resources-using-azure-resource-manager-template.md)、および [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) を使用して行うことができます。
+環境のイベント ソースの作成、編集、または削除は、[Azure portal](./tutorial-set-up-environment.md#create-an-azure-time-series-insights-gen2-environment)、[Azure CLI](/cli/azure/tsi/event-source)、[Azure Resource Manager テンプレート](time-series-insights-manage-resources-using-azure-resource-manager-template.md)、および [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) を使用して行うことができます。
 
 > [!WARNING]
 > Time Series Insights によって使用されるハブまたはイベント ソースへのパブリック インターネット アクセスを制限しないでください。そうしないと、必要な接続が切断されます。
