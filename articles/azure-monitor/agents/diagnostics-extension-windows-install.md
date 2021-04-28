@@ -6,13 +6,13 @@ author: bwren
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 3ff752b673c49047551c48c4c8693b00d7b5edeb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6f843f5ec593124305d978cd32559a089194ab6d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787407"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073343"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Windows Azure Diagnostics 拡張機能 (WAD) のインストールと構成
 [Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)は Azure Monitor のエージェントで、ゲスト オペレーティング システムと Azure 仮想マシンと他のコンピューティング リソースのワークロードから監視データを収集します。 この記事では、Windows 診断拡張機能のインストールと構成の詳細と、Azure ストレージ アカウントでデータを保存する方法について説明します。

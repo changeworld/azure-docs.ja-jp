@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 91d7e0777cbdad459e4514a0216146e0d5739f6d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: a7d87e2496158fec8ff33ab8586c845a6207f810
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750952"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816064"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric セキュリティに関するベスト プラクティス
 Azure では、アプリケーションをすばやく簡単に、高いコスト効率でデプロイできます。 運用環境にクラウド アプリケーションをデプロイする前に、アプリケーションに実装するクラスターのセキュリティ確保に関して推奨される重要なベスト プラクティスを確認しましょう。
@@ -155,7 +155,7 @@ Service Fabric では認証と暗号化に証明書を使用し、クラスタ�
 
 クラスターのセキュリティを確保し、アプリケーションにセキュリティ機能を提供するうえで Service Fabric が使用するのは、X.509 証明書です。 Azure の Service Fabric クラスターの[証明書の管理](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md)には、Azure Key Vault を使用します。 クラスターを作成する Azure リソース プロバイダーは、キー コンテナーから証明書を取得します。 プロバイダーはその後、クラスターを Azure にデプロイするときにその証明書を VM にインストールします。
 
-[Azure Key Vault](../../key-vault/general/security-overview.md)、Service Fabric クラスター、証明書を使用するリソース プロバイダーの三者の間には、証明書に基づく関係が存在します。 クラスターの作成時には、この関係に関する情報がキー コンテナーに格納されます。
+[Azure Key Vault](../../key-vault/general/security-features.md)、Service Fabric クラスター、証明書を使用するリソース プロバイダーの三者の間には、証明書に基づく関係が存在します。 クラスターの作成時には、この関係に関する情報がキー コンテナーに格納されます。
 
 キー コンテナーを設定する基本的な手順は、以下の 2 段階です:
 1. キー コンテナー専用のリソース グループを作成する。

@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a894a46ce7c78b65dde80c52f9516fcbe4d27bcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: c1bef16d89a22e7df43e1f473697b4577d080d4c
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521001"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888172"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>MLflow と Azure Machine Learning を使用した Azure Databricks ML 実験の追跡 (プレビュー)
 

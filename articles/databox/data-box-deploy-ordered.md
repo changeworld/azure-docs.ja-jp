@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: alkohli
-ms.openlocfilehash: eae8cca0302993c16ea29adddf6e4ee9b5b24be8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ed539df9fec3c66b3881257ff1ce68d03cf4c382
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107770900"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878598"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 
@@ -449,7 +449,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
    |query| JMESPath クエリ文字列。 詳細については、「[JMESPath](http://jmespath.org/)」を参照してください。 | --query <string>|
    |verbose| 詳細ログを含めます。 | --verbose |
 
-2. 任意のコマンド プロンプトまたはターミナルで、[az data box job create](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-create) を実行して Azure Data Box の注文を作成します。
+2. 任意のコマンド プロンプトまたはターミナルで、[az data box job create](/cli/azure/databox/job#az_databox_job_create) を実行して Azure Data Box の注文を作成します。
 
    ```azurecli
    az databox job create --resource-group <resource-group> --name <order-name> --location <azure-location> --sku <databox-device-type> --contact-name <contact-name> --phone <phone-number> --email-list <email-list> --street-address1 <street-address-1> --street-address2 <street-address-2> --city "contact-city" --state-or-province <state-province> --country <country> --postal-code <postal-code> --company-name <company-name> --storage-account "storage-account"
@@ -617,7 +617,7 @@ Windows PowerShell を使用して Azure にサインインする方法の詳細
 
 ### <a name="track-a-single-order"></a>1 つの注文を追跡する
 
-Azure Data Box の既存の 1 つの注文に関する追跡情報を取得するには、[`az databox job show`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-show) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
+Azure Data Box の既存の 1 つの注文に関する追跡情報を取得するには、[`az databox job show`](/cli/azure/databox/job#az_databox_job_show) を実行します。 このコマンドでは、注文に関する情報が表示されます。名前、リソース グループ、追跡情報、サブスクリプション ID、連絡先情報、出荷タイプ、デバイス SKU などが表示されますが、これらに限定されません。
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -658,7 +658,7 @@ Azure Data Box の既存の 1 つの注文に関する追跡情報を取得す�
 
 ### <a name="list-all-orders"></a>すべての注文を一覧表示する
 
-複数のデバイスを注文した場合は、[`az databox job list`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-list) を実行することで、Azure Data Box のすべての注文を表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
+複数のデバイスを注文した場合は、[`az databox job list`](/cli/azure/databox/job#az_databox_job_list) を実行することで、Azure Data Box のすべての注文を表示できます。 このコマンドでは、特定のリソース グループに属しているすべての注文が一覧表示されます。 出力には、注文の名前、出荷状態、Azure リージョン、配送の種類、注文の状態も表示されます。 この一覧には、キャンセルされた注文も含まれます。
 それぞれの注文のタイム スタンプも表示されます。
 
 ```azurecli
@@ -777,7 +777,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="cancel-an-order"></a>注文のキャンセル
 
-Azure Data Box の注文をキャンセルするには、[`az databox job cancel`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-cancel) を実行します。 注文のキャンセル理由を指定する必要があります。
+Azure Data Box の注文をキャンセルするには、[`az databox job cancel`](/cli/azure/databox/job#az_databox_job_cancel) を実行します。 注文のキャンセル理由を指定する必要があります。
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -814,7 +814,7 @@ Azure Data Box の注文をキャンセルするには、[`az databox job cancel
 
 ### <a name="delete-an-order"></a>注文を削除する
 
-Azure Data Box の注文をキャンセルした場合は、[`az databox job delete`](/cli/azure/ext/databox/databox/job#ext-databox-az-databox-job-delete) を実行してその注文を削除できます。
+Azure Data Box の注文をキャンセルした場合は、[`az databox job delete`](/cli/azure/databox/job#az_databox_job_delete) を実行してその注文を削除できます。
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]

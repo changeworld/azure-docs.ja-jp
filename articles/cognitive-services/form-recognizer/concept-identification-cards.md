@@ -8,43 +8,47 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: ed8516f9a898131338fb5b4d75e25cd774c5ab43
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 00e51d2c9515191b6d127355f49eeed3000a46ed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106285359"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514715"
 ---
-# <a name="form-recognizer-prebuilt-identification-card-id-model"></a>Form Recognizer 事前構築済み ID カード (ID) モデル
+# <a name="form-recognizer-prebuilt-identification-id-document-model"></a>Form Recognizer 事前構築済み身分証明書類 (ID) モデル
 
-Azure Form Recognizer により、事前構築済み ID モデルを使用して政府機関の ID カード (ID) の情報を分析し、抽出することができます。 強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と ID 認識機能を組み合わせて、世界各国のパスポートと米国の運転免許証 (50 州すべてとワシントン D.C.) から重要な情報を抽出することができます。 ID API により、これらの ID ドキュメントから、名、姓、生年月日、ドキュメント番号などの重要な情報が抽出されます。 この API は、Form Recognizer v2.1 プレビューで、クラウド サービスおよびオンプレミスのコンテナーとして使用できます。
+Azure Form Recognizer を使用すると、その事前構築済み ID モデルを使用して、政府機関が発行した身分証明書類 (ID) からの情報を分析および抽出できます。 強力な[光学式文字認識 (OCR)](../computer-vision/overview-ocr.md) 機能と ID 認識機能を組み合わせて、世界各国のパスポートと米国の運転免許証 (50 州すべてとワシントン D.C.) から重要な情報を抽出することができます。 ID API により、これらの ID ドキュメントから、名、姓、生年月日、ドキュメント番号などの重要な情報が抽出されます。 この API は、Form Recognizer v2.1 プレビューで、クラウド サービスおよびオンプレミスのコンテナーとして使用できます。
 
-## <a name="what-does-the-id-service-do"></a>ID サービスの機能 
+## <a name="what-does-the-id-service-do"></a>ID サービスの機能
 
-事前構築済み ID サービスにより、世界各国のパスポートと米国の運転免許証から主要な値が抽出され、整理され、構造化された JSON 応答で返されます。 
+事前構築済み ID サービスにより、世界各国のパスポートと米国の運転免許証から主要な値が抽出され、整理され、構造化された JSON 応答で返されます。
+
+### <a name="drivers-license-example"></a>**運転免許証の例**
 
 ![運転免許証のサンプル](./media/id-example-drivers-license.JPG)
+
+### <a name="passport-example"></a>**パスポートの例**
 
 ![パスポートのサンプル](./media/id-example-passport-result.JPG)
 
 ### <a name="fields-extracted"></a>抽出されるフィールド
 
-|名前| Type | 説明 | 値 | 
+|名前| Type | 説明 | 値 |
 |:-----|:----|:----|:----|
-|  国 | country | ISO 3166 標準に準拠した国番号 | "USA" | 
-|  DateOfBirth | date | YYYY-MM-DD 形式の DOB | "1980-01-01" | 
-|  DateOfExpiration | date | YYYY-MM-DD 形式の有効期限日 | "2019-05-05" |  
-|  DocumentNumber | string | 関連するパスポート番号、運転免許証番号など | "340020013" |  
-|  FirstName | string | 該当する場合は、抽出された名とミドルネームのイニシャル | "JENNIFER" | 
-|  LastName | string | 抽出された姓 | "BROOKS" |   
+|  国 | country | ISO 3166 標準に準拠した国番号 | "USA" |
+|  DateOfBirth | date | YYYY-MM-DD 形式の DOB | "1980-01-01" |
+|  DateOfExpiration | date | YYYY-MM-DD 形式の有効期限日 | "2019-05-05" |
+|  DocumentNumber | string | 関連するパスポート番号、運転免許証番号など | "340020013" |
+|  FirstName | string | 該当する場合は、抽出された名とミドルネームのイニシャル | "JENNIFER" |
+|  LastName | string | 抽出された姓 | "BROOKS" |
 |  Nationality | country | ISO 3166 標準に準拠した国番号 | "USA" |
-|  Sex | gender | "M"、"F"、"X" という値が抽出される可能性があります | "F" | 
+|  Sex | gender | "M"、"F"、"X" という値が抽出される可能性があります | "F" |
 |  MachineReadableZone | object | それぞれ 44 文字の 2 行を含む抽出されたパスポート MRZ | "P<USABROOKS<<JENNIFER<<<<<<<<<<<<<<<<<<<<<<< 3400200135USA8001014F1905054710000307<715816" |
-|  DocumentType | string | ドキュメントの種類 (例: パスポート、運転免許証) | "passport" |  
+|  DocumentType | string | ドキュメントの種類 (例: パスポート、運転免許証) | "passport" |
 |  Address | string | 抽出された住所 (運転免許証) | "123 STREET ADDRESS YOUR CITY WA 99999-1234"|
-|  リージョン | string | 抽出された地域、州、都道府県など (運転免許証のみ) | "Washington" | 
+|  リージョン | string | 抽出された地域、州、都道府県など (運転免許証のみ) | "Washington" |
 
 ### <a name="additional-features"></a>その他の機能
 
@@ -58,7 +62,7 @@ ID API からは次の情報も返されます。
   > [!NOTE]
   > 事前構築済み ID により、ID の信頼性は検出されません
   >
-  > Form Recognizer 事前構築済み ID により、ID データから重要なデータが抽出されます。 ただし、元の ID ドキュメントの有効性や信頼性は検出されません。 
+  > Form Recognizer 事前構築済み ID により、ID データから重要なデータが抽出されます。 ただし、元の ID ドキュメントの有効性や信頼性は検出されません。
 
 ## <a name="try-it-out"></a>試してみる
 
@@ -71,12 +75,12 @@ Form Recognizer IDs サービスを試してみるには、オンラインのサ
 
 [!INCLUDE [input requirements](./includes/input-requirements-receipts.md)]
 
-## <a name="supported-id-types"></a>サポートされる ID の種類  
+## <a name="supported-id-types"></a>サポートされる ID の種類
 
-* **Pre-built IDs v2.1-preview.3** 世界各国のパスポートと米国の運転免許証から主要な値が抽出されます。 
+* **Pre-built IDs v2.1-preview.3** 世界各国のパスポートと米国の運転免許証から主要な値が抽出されます。
 
   > [!NOTE]
-  > ID の種類のサポート 
+  > ID の種類のサポート
   >
   > 現在サポートされている ID の種類として、世界各国のパスポートと米国の運転免許証があります。 Microsoft では、ID のサポートを世界各国の他の ID ドキュメントに拡張することを積極的に模索しています。
 
@@ -112,7 +116,7 @@ Need to update this with updated APIM links when available
 成功した JSON 応答の例を次に示します。`readResults` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `documentResults` ノードには、モデルによって検出された ID 値が格納されます。 このノードには、名、姓、ドキュメント番号などの便利なキーと値のペアがあります。
 
 ```json
-{ 
+{
    "status": "succeeded",
   "createdDateTime": "2021-03-04T22:29:33Z",
   "lastUpdatedDateTime": "2021-03-04T22:29:36Z",
@@ -157,7 +161,7 @@ Need to update this with updated APIM links when available
           ...
       }
     ],
-    
+
      "documentResults": [
       {
         "docType": "prebuilt:idDocument:passport",
@@ -243,11 +247,10 @@ Need to update this with updated APIM links when available
 }
 ```
 
-
 ## <a name="next-steps"></a>次のステップ
 
-- [Form Recognizer サンプル UI](https://fott-preview.azurewebsites.net/) で、独自の ID とサンプルを試してみてください。
-- 選択した開発言語で Form Recognizer を使用して ID 処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
+* [Form Recognizer サンプル UI](https://fott-preview.azurewebsites.net/) で、独自の ID とサンプルを試してみてください。
+* 選択した開発言語で Form Recognizer を使用して ID 処理アプリの作成を始めるには、[Form Recognizer のクイックスタート](quickstarts/client-library.md)を完了します。
 
 ## <a name="see-also"></a>関連項目
 

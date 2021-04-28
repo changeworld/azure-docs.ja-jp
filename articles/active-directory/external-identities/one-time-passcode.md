@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30f22282b00a7ead2e19805f32d78338126e8087
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3b4089559b341dd268928b1f150b6fc173869ead
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552752"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107529928"
 ---
 # <a name="email-one-time-passcode-authentication"></a>電子メール ワンタイム パスコード認証
 
@@ -114,7 +114,7 @@ ms.locfileid: "106552752"
 
 ## <a name="note-for-azure-us-government-customers"></a>Azure US Government のお客様のための注意事項
 
-Azure US Government クラウドでは、電子メール ワンタイムパスコード機能は既定で無効になっています。  
+Azure US Government クラウドでは、電子メール ワンタイムパスコード機能は既定で無効になっています。 パートナーは、この機能が有効になっていない限りサインインできません。 Azure パブリック クラウドとは異なり、Azure US Government クラウドでは、セルフサービス Azure Active Directory アカウントを使用して招待に応じることはサポートされていません。
 
  ![無効になっている電子メール ワンタイム パスコード](media/one-time-passcode/enable-email-otp-disabled.png)
 
@@ -122,7 +122,7 @@ Azure US Government クラウドで電子メール ワンタイム パスコー�
 
 1. Azure AD の全体管理者として [Azure portal](https://portal.azure.com) にサインインします。
 2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
-3. **[組織の関係]**  > **[設定]** を選択します。
+3. **[組織の関係]**  > **[すべての ID プロバイダー]** を選択します。
 
    > [!NOTE]
    > - **[組織の関係]** が表示されない場合は、上部の検索バーで "外部 ID" を検索します。

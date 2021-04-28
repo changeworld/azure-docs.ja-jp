@@ -10,24 +10,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 499c0c065cb38313c98ed9412ab1f08d70dbc654
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a5bc7e195efd62f430fdf2aa0cb606dbcff79528
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102199528"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567198"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
 ![エンド ツー エンド ダイアグラム](media/iot-hub-get-started-e2e-diagram/2.png)
 
-[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
-
-[Azure CLI 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は、[Azure CLI](/cli/azure/overview) の機能に追加されるオープン ソースの IoT 拡張機能です。 Azure CLI には、Azure Resource Manager と管理エンドポイントと対話するためのコマンドが含まれています。 たとえば、Azure CLI を使って Azure VM または IoT ハブを作成できます。 Azure サービスは、CLI 拡張機能を使用して Azure CLI を拡張することで、追加されるサービス固有の機能にアクセスできるようにします。 IoT 開発者は、IoT 拡張機能を使用して、すべての IoT Hub、IoT Edge、および IoT Hub Device Provisioning Service の機能にコマンド ラインからアクセスできます。
-
-[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
-
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+この記事では、開発マシンでさまざまな管理オプションを指定して Azure CLI 向けの IoT 拡張機能を使用する方法について説明します。 [Azure CLI 向けの IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は、[Azure CLI](/cli/azure/overview) の機能に追加されるオープン ソースの IoT 拡張機能です。 Azure CLI には、Azure Resource Manager と管理エンドポイントと対話するためのコマンドが含まれています。 たとえば、Azure CLI を使って Azure VM または IoT ハブを作成できます。 Azure サービスは、CLI 拡張機能を使用して Azure CLI を拡張することで、追加されるサービス固有の機能にアクセスできるようにします。 IoT 開発者は、IoT 拡張機能を使用して、すべての IoT Hub、IoT Edge、および IoT Hub Device Provisioning Service の機能にコマンド ラインからアクセスできます。
 
 | 管理オプション          | タスク  |
 |----------------------------|-----------|
@@ -41,21 +35,19 @@ ms.locfileid: "102199528"
 
 デバイス ツインは、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 デバイス ツインの詳細については、「[デバイス ツインの使用](iot-hub-node-node-twin-getstarted.md)」を参照してください。
 
-## <a name="what-you-learn"></a>学習内容
+[!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-開発マシン上で Azure CLI 向けの IoT 拡張機能をさまざまな管理オプションで使用することを学習します。
+[!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-## <a name="what-you-do"></a>作業内容
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Azure CLI と Azure CLI 向けの IoT 拡張機能をさまざまな管理オプションを使用して実行します。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="what-you-need"></a>必要なもの
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関する記事や、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
 
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 これらの項目では、次の要件について取り上げています。
-
-  - 有効な Azure サブスクリプション
-  - サブスクリプションの Azure IoT Hub。
-  - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
+  * 有効な Azure サブスクリプション
+  * サブスクリプションの Azure IoT Hub。
+  * Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
 
 * このチュートリアルの実行時にクライアント アプリケーションでデバイスが実行されていることを確認します。
 

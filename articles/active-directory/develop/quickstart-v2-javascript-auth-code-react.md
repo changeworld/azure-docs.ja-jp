@@ -12,20 +12,18 @@ ms.workload: identity
 ms.date: 01/14/2021
 ms.author: jamesmantu
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 0bf08c45e82dc6f36d4e179e95e1b58e655b14db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 960d27e9f67099ca7a19610011a059c2eeb602ae
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224369"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071939"
 ---
 # <a name="quickstart-sign-in-and-get-an-access-token-in-a-react-spa-using-the-auth-code-flow"></a>クイックスタート: 認可コード フローを使用して React SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
 このクイックスタートでは、認可コード フローを使用して、JavaScript React シングルページ アプリケーション (SPA) でユーザーをサインインさせ、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法を示します。 
 
 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
-
-このクイックスタートでは、認可コード フローで MSAL React を使用します。 暗黙的なフローで MSAL.js を使用する同様のクイックスタートについては、[クイックスタート: JavaScript シングルページ アプリ内でのユーザーのサインイン](./quickstart-v2-javascript.md)に関するページを参照してください。
 
 > [!IMPORTANT]
 > MSAL React [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]

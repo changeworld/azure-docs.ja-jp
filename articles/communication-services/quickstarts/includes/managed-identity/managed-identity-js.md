@@ -1,16 +1,16 @@
 ---
-ms.openlocfilehash: d70514e81bc838b4193862e66b0c03440d006128
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ce29158c2a44f01fa06649e4b4497bf5c5076866
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307462"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511597"
 ---
 ## <a name="setting-up"></a>設定
 
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
-ターミナルまたはコマンド ウィンドウを開き、アプリ用の新しいディレクトリを作成し、そこに移動します。
+ターミナルまたはコマンド ウィンドウを開き、自分のアプリ用に新しいディレクトリを作成し、そこに移動します。
 
 ```console
 mkdir managed-identity-quickstart && cd managed-identity-quickstart
@@ -82,7 +82,7 @@ async function sendSms(resourceEndpoint, fromNumber, toNumber, message) {
 }
 ```
 
-## <a name="write-the-main-method"></a>main メソッドを作成する
+## <a name="write-the-main-function"></a>main 関数を記述する
 
 関数を作成したので、それらを呼び出す main 関数を作成し、マネージド ID の使用方法について実演してみましょう。
 ```JavaScript

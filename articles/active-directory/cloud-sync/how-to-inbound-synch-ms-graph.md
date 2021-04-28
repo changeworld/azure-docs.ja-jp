@@ -11,26 +11,31 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c84636ea86b3b640aef365c1c5d8e634b9a1f48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fe220cf7b5cb8b67e5ab7ded221494e89a28aa5
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99593162"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530254"
 ---
 # <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>MS Graph API を使用してクラウドの同期をプログラムで構成する方法
 
 次のドキュメントでは、MSGraph API のみを使用して 0 から同期プロファイルをレプリケートする方法について説明します。  
 これを行う方法の構造は、次の手順で構成されています。  これらは次のとおりです。
 
-- [基本的なセットアップ](#basic-setup)
-- [サービス プリンシパルを作成する](#create-service-principals)
-- [同期ジョブを作成する](#create-sync-job)
-- [ターゲット ドメインを更新する](#update-targeted-domain)
-- [パスワード ハッシュの同期を有効にする](#enable-sync-password-hashes-on-configuration-blade)
-- [不注意による削除](#accidental-deletes)
-- [同期ジョブを開始する](#start-sync-job)
-- [状態をレビューする](#review-status)
+- [MS Graph API を使用してクラウドの同期をプログラムで構成する方法](#how-to-programmatically-configure-cloud-sync-using-ms-graph-api)
+  - [基本的なセットアップ](#basic-setup)
+    - [テナント フラグを有効にする](#enable-tenant-flags)
+  - [サービス プリンシパルの作成](#create-service-principals)
+  - [同期ジョブを作成する](#create-sync-job)
+  - [ターゲット ドメインを更新する](#update-targeted-domain)
+  - [構成ブレードでパスワード ハッシュの同期を有効にする](#enable-sync-password-hashes-on-configuration-blade)
+  - [不注意による削除](#accidental-deletes)
+    - [しきい値の有効化と設定](#enabling-and-setting-the-threshold)
+    - [削除を許可する](#allowing-deletes)
+  - [同期ジョブを開始する](#start-sync-job)
+  - [状態をレビューする](#review-status)
+  - [次の手順](#next-steps)
 
 これらの [Windows PowerShell 用 Microsoft Azure Active Directory モジュール](/powershell/module/msonline/)のコマンドを使用して、運用テナントの同期を有効にします。これは、そのテナントの管理 Web サービスを呼び出すための前提条件となっています。
 
@@ -45,7 +50,7 @@ ms.locfileid: "99593162"
 これら 2 つのコマンドのうちの 1 つには、Azure Active Directory 資格情報が必要です。 これらのコマンドレットを使用すると、テナントを暗黙的に識別し、同期のために有効にすることができます。
 
 ## <a name="create-service-principals"></a>サービス プリンシパルの作成
-次に、[AD2AAD アプリケーションまたはサービス プリンシパル](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http)を作成する必要があります
+次に、[AD2AAD アプリケーションまたはサービス プリンシパル](/graph/api/applicationtemplate-instantiate?view=graph-rest-beta&tabs=http&preserve-view=true)を作成する必要があります
 
 このアプリケーション ID 1a4721b3-e57f-4451-ae87-ef078703ec94 を使用する必要があります。 displayName は、ポータルで使用されている場合は AD ドメインの URL (例えば contoso.com) ですが、他の名前を付けても構いません。
 
@@ -61,7 +66,7 @@ ms.locfileid: "99593162"
 ## <a name="create-sync-job"></a>同期ジョブを作成する
 上記のコマンドの出力では、作成されたサービス プリンシパルの objectId が返されます。 この例では、objectId は 614ac0e9-a59b-481f-bd8f-79a73d167e1c です。  このサービス プリンシパルに同期ジョブを追加するには、Microsoft Graph を使用します。  
 
-同期ジョブの作成に関するドキュメントについては、[こちら](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta)を参照してください。
+同期ジョブの作成に関するドキュメントについては、[こちら](/graph/api/synchronization-synchronizationjob-post?tabs=http&view=graph-rest-beta&preserve-view=true)を参照してください。
 
 上記の ID を記録していない場合は、次の MS Graph 呼び出しを実行してサービス プリンシパルを見つけることができます。 この呼び出しを行うには、Directory.Read.All 権限が必要です。
  
@@ -282,11 +287,11 @@ Request Body:
 
  `GET https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/jobs/ ` 
 
-ジョブを取得するためのドキュメントについては、[こちら](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta)を参照してください。 
+ジョブを取得するためのドキュメントについては、[こちら](/graph/api/synchronization-synchronizationjob-list?tabs=http&view=graph-rest-beta&preserve-view=true)を参照してください。 
  
 ジョブを開始するには、最初の手順で作成したサービス プリンシパルの objectId と、ジョブを作成した要求から返されたジョブ識別子を使用して、この要求を発行します。
 
-ジョブを開始する方法のドキュメントについては、[こちら](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta)を参照してください。 
+ジョブを開始する方法のドキュメントについては、[こちら](/graph/api/synchronization-synchronizationjob-start?tabs=http&view=graph-rest-beta&preserve-view=true)を参照してください。 
 
  ```
  POST  https://graph.microsoft.com/beta/servicePrincipals/8895955e-2e6c-4d79-8943-4d72ca36878f/synchronization/jobs/AD2AADProvisioning.fc96887f36da47508c935c28a0c0b6da/start
@@ -294,7 +299,7 @@ Request Body:
 
 予期される応答は次の通りです: HTTP 204/No content。
 
-ジョブを制御するその他のコマンドについては、[こちら](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta)に記載されています。
+ジョブを制御するその他のコマンドについては、[こちら](/graph/api/resources/synchronization-synchronizationjob?view=graph-rest-beta&preserve-view=true)に記載されています。
  
 ジョブを再起動するには、以下を使用します。
 
@@ -320,4 +325,4 @@ Request Body:
 
 - [Azure AD Connect クラウド同期とは](what-is-cloud-sync.md)
 - [変換](how-to-transformation.md)
-- [Azure AD の同期 API](/graph/api/resources/synchronization-overview?view=graph-rest-beta)
+- [Azure AD の同期 API](/graph/api/resources/synchronization-overview?view=graph-rest-beta&preserve-view=true)

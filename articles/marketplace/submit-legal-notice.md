@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 03/08/2021
-ms.openlocfilehash: 7acf7e8dc9f90c50f3c7d5555e6fe37260b35c93
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36bda5d241a1d383e7773abeda8a9889fb24086e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103022023"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133027"
 ---
 # <a name="notifying-microsoft-regarding-the-publisher-agreement"></a>Publisher Agreement について Microsoft に通知する
 
@@ -45,4 +45,4 @@ ms.locfileid: "103022023"
 ## <a name="next-steps"></a>次のステップ
 
 - 質問がある場合は、サポート エージェントから連絡させていただくことがあります。
-- [Microsoft Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560) (PDF) を確認します。
+- [Microsoft Publisher Agreement](/legal/marketplace/msft-publisher-agreement) (PDF) を確認します。

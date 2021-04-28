@@ -7,14 +7,14 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 03/22/2021
+ms.date: 04/09/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0711d764514e45d3c28e26cf99b45dc711ef201c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cf92d9e1a1f92c2dc3294b71e3e620166fd90680
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868258"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818703"
 ---
 # <a name="monitor-and-debug-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
    :::image type="content" source="./media/use-metrics/performance-metrics.png" alt-text="Azure portal での Cosmos DB のパフォーマンス メトリック":::
 
-**[メトリック]** ウィンドウから、次のメトリックを入手できます。 
+**[メトリック]** ウィンドウから、次のメトリックを入手できます。
 
 * **スループット メトリック** - このメトリックでは、消費された要求の数、またはコンテナーに対してプロビジョニングされたスループットまたはストレージの容量を超過しているために失敗した (応答コード 429) 要求の数が示されます。
 

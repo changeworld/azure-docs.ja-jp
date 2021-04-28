@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 04/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 0d6527c27420617728428e440c94a60236701212
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 07b106630cffae75c5e4588d14de7ae938945614
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376768"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534116"
 ---
 # <a name="managed-identities-for-azure-resources-frequently-asked-questions---azure-ad"></a>Azure リソースのマネージド ID に関してよく寄せられる質問 - Azure AD
 

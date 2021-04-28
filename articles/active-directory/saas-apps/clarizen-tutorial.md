@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/08/2021
 ms.author: jeedes
-ms.openlocfilehash: f7e90ff4c69e03482a1608185bc947ccb8604187
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 62cd714fc20cb7620def8a1aaa3cbccba0b13d57
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516943"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144091"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen-one"></a>チュートリアル: Azure Active Directory と Clarizen One の統合
 
@@ -177,8 +177,8 @@ Azure AD ユーザーが Clarizen One にサインインできるようにする
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Clarizen One に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clarizen One] タイルをクリックすると、SSO を設定した Clarizen One に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Clarizen One] タイルをクリックすると、SSO を設定した Clarizen One に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Clarizen One を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Clarizen One を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

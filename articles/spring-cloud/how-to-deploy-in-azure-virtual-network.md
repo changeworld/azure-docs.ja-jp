@@ -6,17 +6,17 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/21/2020
-ms.custom: devx-track-java
-ms.openlocfilehash: 82dcd8c59c55a2866b51fd6dee896ea1298b6cf6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: 5a27fdc91f376127f26ba9f207ca72d8ada8a7b9
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877432"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891754"
 ---
 # <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>仮想ネットワークに Azure Spring Cloud をデプロイする
 
-**この記事の適用対象:** ✔️ Java ✔️ C#
+**この記事の適用対象:** âœ”ï¸ Java âœ”ï¸ C#
 
 このチュートリアルでは、Azure Spring Cloud インスタンスを仮想ネットワークにデプロイする方法について説明します。 このデプロイは、VNet インジェクションとも呼ばれます。
 

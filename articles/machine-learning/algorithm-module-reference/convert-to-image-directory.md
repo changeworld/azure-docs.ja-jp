@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 11/12/2020
-ms.openlocfilehash: 1489ce74da2ecff5212feb5a1a2e3c9151b73424
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2bf30e636fc1bf1031f6c379a998979d92909b81
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94555585"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890494"
 ---
 # <a name="convert-to-image-directory"></a>イメージ ディレクトリへの変換
 
@@ -36,7 +36,7 @@ ms.locfileid: "94555585"
     Your_image_folder_name/Category_2/asd932_.png
     ```
     
-    イメージ データセット フォルダーには、複数のサブフォルダーがあります。 各サブフォルダーには、それぞれ1つのカテゴリの画像が含まれます。 サブフォルダーの名前は、イメージ分類などのタスクのラベルと見なされます。 詳細については、「[Torchvision データセット](https://pytorch.org/docs/stable/torchvision/datasets.html#imagefolder)」を参照してください。
+    イメージ データセット フォルダーには、複数のサブフォルダーがあります。 各サブフォルダーには、それぞれ1つのカテゴリの画像が含まれます。 サブフォルダーの名前は、イメージ分類などのタスクのラベルと見なされます。 詳細については、「[Torchvision データセット](https://pytorch.org/vision/stable/datasets.html#imagefolder)」を参照してください。
 
     > [!WARNING]
     > 現在、データ ラベルからエクスポートされたラベル付きデータセットは、デザイナーではサポートされていません。

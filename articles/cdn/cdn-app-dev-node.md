@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 04/02/2021
 ms.author: mazha
 ms.custom: devx-track-js
-ms.openlocfilehash: 386a424e45d1b718b68cbbf53322fd704317a06b
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 607ba08f0d1d8ea08b30efa420bb2fde55da97b0
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285226"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123755"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]
@@ -349,8 +349,8 @@ function cdnDelete() {
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CDN SDK for JavaScript のリファレンスを確認するには、この[リファレンス](https://docs.microsoft.com/javascript/api/@azure/arm-cdn)を参照します。
+Azure CDN SDK for JavaScript のリファレンスを確認するには、この[リファレンス](/javascript/api/@azure/arm-cdn)を参照します。
 
-Azure SDK for JavaScript に関するその他のドキュメントを探すには、[完全なリファレンス](https://docs.microsoft.com/javascript/api/?view=azure-node-latest)を参照します。
+Azure SDK for JavaScript に関するその他のドキュメントを探すには、[完全なリファレンス](/javascript/api/?view=azure-node-latest)を参照します。
 
 [PowerShell](cdn-manage-powershell.md) で CDN リソースを管理します。

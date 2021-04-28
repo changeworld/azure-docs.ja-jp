@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/04/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 907bf06323d13b2d26dec5003e4739f2ae9faf74
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b3b94de0fe97bb812921b831a92de44887df4070
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378518"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132973"
 ---
 # <a name="quickstart-monitoring-azure-spring-cloud-apps-with-logs-metrics-and-tracing"></a>クイック スタート:ログ、メトリック、およびトレースを使用した Azure Spring Cloud アプリの監視
 
@@ -26,9 +26,9 @@ Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問�
 
 * このシリーズの先行する次のクイックスタートを完了しておきます。
 
-  * 「[Azure Spring Cloud サービスのプロビジョニング](spring-cloud-quickstart-provision-service-instance.md)」。
-  * [Azure Spring Cloud の構成サーバーを設定する](spring-cloud-quickstart-setup-config-server.md)
-  * [アプリをビルドおよびデプロイする](spring-cloud-quickstart-deploy-apps.md)。
+  * 「[Azure Spring Cloud サービスのプロビジョニング](./quickstart-provision-service-instance.md)」。
+  * [Azure Spring Cloud の構成サーバーを設定する](./quickstart-setup-config-server.md)
+  * [アプリをビルドおよびデプロイする](./quickstart-deploy-apps.md)。
 
 ## <a name="logs"></a>ログ
 
@@ -73,7 +73,7 @@ Executing ObjectResult, writing value of type 'System.Collections.Generic.KeyVal
 
    [ ![Log Analytics クエリ - Steeltoe](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query-steeltoe.png#lightbox)
 
-1. Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログを照会する場合は、[Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) に関するページを参照してください。
+1. Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログを照会する場合は、[Azure Data Explorer](/azure/data-explorer/query-monitor-data) に関するページを参照してください。
 
 ## <a name="metrics"></a>メトリック
 
@@ -115,9 +115,9 @@ Azure Spring Cloud の組み込み監視機能を使用すると、複雑な問�
 
 以下の先行する手順を完了してください。 
 
-* [Azure Spring Cloud のインスタンスをプロビジョニングする](spring-cloud-quickstart-provision-service-instance.md)
-* [構成サーバーを設定する](spring-cloud-quickstart-setup-config-server.md)
-* [アプリをビルドおよびデプロイする](spring-cloud-quickstart-deploy-apps.md)。
+* [Azure Spring Cloud のインスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)
+* [構成サーバーを設定する](./quickstart-setup-config-server.md)
+* [アプリをビルドおよびデプロイする](./quickstart-deploy-apps.md)。
 
 ## <a name="logs"></a>ログ
 
@@ -171,7 +171,7 @@ Azure Toolkit for IntelliJ を使用してログを取得するには:
 
    [ ![Logs Analytics のクエリ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png) ](media/spring-cloud-quickstart-logs-metrics-tracing/logs-query.png#lightbox)
 
-1. Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログを照会する場合は、[Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data) に関するページを参照してください。
+1. Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログを照会する場合は、[Azure Data Explorer](/azure/data-explorer/query-monitor-data) に関するページを参照してください。
 
 ## <a name="metrics"></a>メトリック
 
@@ -228,6 +228,6 @@ Azure Spring Cloud の監視機能の詳細については、以下を参照し�
 > [!div class="nextstepaction"]
 > [診断サービス](diagnostic-services.md)
 >
-> [分散トレース](spring-cloud-howto-distributed-tracing.md)
+> [分散トレース](./how-to-distributed-tracing.md)
 >
-> [リアルタイムでログをストリームする](spring-cloud-howto-log-streaming.md)
+> [リアルタイムでログをストリームする](./how-to-log-streaming.md)

@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 75cb7b6c9225e8579561f980df10da8994257133
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ecebeb6d14a00a92ef845001cf04a59f10345e23
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777187"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815578"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>クイックスタート: Java 用 Azure Key Vault キー クライアント ライブラリ
 Java 用 Azure Key Vault キー クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
@@ -269,6 +269,6 @@ public class App {
 このクイックスタートでは、キー コンテナーを作成し、キーを作成して、それを取得した後、削除しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する
 - 「[Azure Key Vault 開発者ガイド](../general/developers-guide.md)」を参照する
-- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-overview.md)方法
+- [キー コンテナーへのアクセスをセキュリティで保護する](../general/security-features.md)方法

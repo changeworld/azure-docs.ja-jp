@@ -6,12 +6,12 @@ ms.author: nisgoel
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 57a3d76f24c33984a883e926a8d4c68736e9f121
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7d90e874f22b6eaf43a99f4465b88aedbff2659c
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869890"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064613"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Azure HDInsight で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -62,7 +62,7 @@ Hive Warehouse Connector には、Spark ワークロードと Interactive Query 
 
 1. **[Configs]**  >  **[Advanced]**  >  **[Advanced hive-site]**  >  **[hive.zookeeper.quorum]** の順に移動し、値を書き留めます。 値は次のようになります。`zk0-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181,zk4-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:2181`
 
-1. **[Configs]**  >  **[Advanced]**  >  **[General]**  >  **[hive.metastore.uris]** の順に移動し、値を書き留めます。 値は次のようになります。`thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn1-iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`
+1. **[Configs]**  >  **[Advanced]**  >  **[General]**  >  **[hive.metastore.uris]** の順に移動し、値を書き留めます。 値は次のようになります。`thrift://iqgiro.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083,thrift://hn*.rekufuk2y2cezcbowjkbwfnyvd.bx.internal.cloudapp.net:9083`
 
 1. **[Configs]**  >  **[Advanced]**  >  **[Advanced hive-interactive-site]**  >  **[hive.llap.daemon.service.hosts]** の順に移動し、値を書き留めます。 値は次のようになります。`@llap0`
 
@@ -109,7 +109,7 @@ Enterprise セキュリティ パッケージ (ESP) を使用すると、Active 
 
         :::image type="content" source="./media/apache-hive-warehouse-connector/aad-domain.png" alt-text="Hive Warehouse Connector の AAD ドメイン" border="true":::
 
-    * たとえば、`hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` です。
+    * たとえば、`hive/hn*.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` です。
     
 1. 変更を保存し、必要に応じてコンポーネントを再起動します。
 

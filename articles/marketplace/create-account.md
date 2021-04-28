@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/06/2021
-ms.openlocfilehash: 09810008c402d9c47d609fc0c77781af141edd30
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 2b3516d5f573f13655963b678a2f164c460fd140
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107896"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133153"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>パートナー センターでコマーシャル マーケットプレース アカウントを作成する
 
@@ -56,7 +56,7 @@ ms.locfileid: "107107896"
 
 #### <a name="agree-to-the-terms-and-conditions"></a>使用条件に同意する
 
-コマーシャル マーケットプレイスの登録プロセスの一環として、[Microsoft 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の使用条件に同意する必要があります。 Microsoft Partner Network を初めて使用する場合は、Microsoft Partner Network 契約の使用条件にも同意する必要もあります。
+コマーシャル マーケットプレイスの登録プロセスの一環として、[Microsoft 発行元契約](/legal/marketplace/msft-publisher-agreement)の使用条件に同意する必要があります。 Microsoft Partner Network を初めて使用する場合は、Microsoft Partner Network 契約の使用条件にも同意する必要もあります。
 
 これで、パートナー センターでコマーシャル マーケットプレース アカウントが作成されました。 [コマーシャル マーケットプレースに新しい発行元を追加する](add-publishers.md)方法に関するセクションに進んでください。
 
@@ -93,7 +93,7 @@ Microsoft パートナー センターに既に登録している場合は、こ
 
 1. 発行元のアカウントにリンクする MPN ID を選択し、会社名を入力します。
 
-1. [Microsoft 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の使用条件を読み、 **[同意して続行する]** を選択して登録を完了します。
+1. [Microsoft 発行元契約](/legal/marketplace/msft-publisher-agreement)の使用条件を読み、 **[同意して続行する]** を選択して登録を完了します。
 
     > [!IMPORTANT]
     > これらの条項に同意するには、会社の代表として行動することを承認されている必要があります。
@@ -119,7 +119,7 @@ Microsoft パートナー センターに既に登録している場合は、こ
 1. 右上で、**設定** > **アカウント設定** > **プログラム** の順に選択します。
 1. **[コマーシャル マーケットプレイス]** で **[開始]** を選択し、仕事用のメール アドレスを入力します。
 1. **[Publisher profile]\(発行元のプロファイル\)** ページで詳細を入力します。
-1. [Microsoft 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の使用条件を読み、 **[同意して続行する]** を選択して登録を完了します。
+1. [Microsoft 発行元契約](/legal/marketplace/msft-publisher-agreement)の使用条件を読み、 **[同意して続行する]** を選択して登録を完了します。
 
     >[!Important]
     > これらの条項に同意するには、会社の代表として行動することを承認されている必要があります。

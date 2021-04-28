@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.date: 09/28/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 807174fdbede2e4631b3ca1df7220904038da4c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: 3337607c8e4dd9dca230456cdf268ec3fbfb2f12
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518298"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884410"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して scikit-learn モデルを大規模にトレーニングする
 
@@ -203,5 +203,5 @@ web_service = Model.deploy(ws, "scikit-learn-service", [model])
 
 この記事では、scikit-learn モデルをトレーニングして登録した後、デプロイ オプションについて学習しました。 Azure Machine Learning の詳細については、以下の他の記事をご覧ください。
 
-* [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
+* [トレーニング中に実行メトリクスを追跡する](how-to-log-view-metrics.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)

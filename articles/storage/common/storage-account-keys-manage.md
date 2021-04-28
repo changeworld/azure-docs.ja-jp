@@ -8,13 +8,13 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: tamram
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 82d272f22295a5b68d1e8de3fb5a70c45d4c14a3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: b79b2d9767112d95f6ea0388bfc7ef577ef8d7ba
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791213"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073541"
 ---
 # <a name="manage-storage-account-access-keys"></a>ストレージ アカウント アクセス キーを管理する
 

@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 09/28/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: f38fe7d847754247f8c1510527b3ffe026c20be5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1
+ms.openlocfilehash: e044920953d0b635e7fe92f07b2cd69c0d8f5ee7
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518502"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888586"
 ---
 # <a name="configure-and-submit-training-runs"></a>トレーニングの実行を構成して送信する
 

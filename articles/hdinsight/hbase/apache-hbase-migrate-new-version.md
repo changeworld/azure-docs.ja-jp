@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 43b46d19503856f5eae38272299f73d9c80055b8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6c473b534a6f14699babe2f8f4f661e83d275785
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868887"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064163"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase クラスターを新しいバージョンに移行する
 
@@ -91,7 +91,7 @@ Azure HDInsight で Apache HBase クラスターをアップグレードする�
     
             Provide Script URL.
     
-            Provide hostname as a parameter (i.e. hn0, hn1, hn2.. or wn2 etc.).
+            Provide hostname as a parameter (i.e. hn* or wn* etc.).
     ...
             exit
         fi

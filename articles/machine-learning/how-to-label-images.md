@@ -6,15 +6,15 @@ author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 5ba399418d8f93204b168c1058be20ffc775ef70
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 3418eeb2ada6951c45e24961c6dc2c45a74f32d3
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096968"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885022"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>ラベル付けプロジェクトで画像にタグを付ける 
 
@@ -74,11 +74,6 @@ Azure では、ページ上のすべての画像にタグを付け終わると�
 * オブジェクト識別モデルの場合、境界ボックスとラベルが既に表示されている可能性があります。  ページを送信する前に、間違っているものを修正してください。
 
 * セグメント化モデルの場合、ポリゴンとラベルが既に表示されている可能性があります。  ページを送信する前に、間違っているものを修正してください。 
-
-    > [!IMPORTANT]
-    > "(プレビュー)" と表示されている機能は、パブリック プレビューの段階にあります。   
-    > プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
 
 特に、ラベル付けプロジェクトの初期の段階では、機械学習モデルに、ほんの一部の画像に対して事前ラベル付けするだけの精度しかない、ということがあります。 これらの画像のラベル付けが完了すると、次のラウンドのモデル トレーニング用にさらに多くのデータを収集するため、ラベル付けプロジェクトは手動でのラベル付けに戻ります。 やがて、さらに多くの割合の画像について、モデルの信頼度が上がっていき、後でプロジェクトで行う事前ラベル付けタスクが蓄積されていきます。
 

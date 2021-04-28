@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 55876d85e72555f51ce47b9bd77a961a194f4e4a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b51f52e24ca843abd94a8511e86b3193a797edd5
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307455"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107511609"
 ---
 ## <a name="additional-prerequisites-for-java"></a>Java の追加の前提条件
 Java の場合は、以下も必要となります。
@@ -100,7 +100,7 @@ private TokenCredential credential = new DefaultAzureCredentialBuilder().build()
           return smsClient.send(from, to, message);
      }
 ```
-## <a name="write-the-main-method"></a>Main メソッドを作成する
+## <a name="write-the-main-method"></a>Main メソッドを記述する
 
 `App.java` には Main メソッドがすでに含まれているはずなので、前に作成したコードを呼び出してマネージド ID の使用方法を実演するコードを追加してみましょう。
 ```java

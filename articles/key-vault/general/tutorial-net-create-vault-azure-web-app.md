@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 901f2b938512f842a5b4c34adbfc61f9379e5131
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: fdefca482dfa1afeb3eebb284b08eaadf4f1af60
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772166"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897056"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>チュートリアル:マネージド ID を使用して Key Vault を .NET の Azure Web アプリに接続する
 
@@ -172,7 +172,7 @@ Git リモートの URL は `deploymentLocalGitUrl` プロパティに `https://
 次に、`main` ブランチからデプロイするように Web アプリを構成します。
 
 ```azurecli-interactive
- az webapp config appsettings set -g MyResourceGroup -name "<your-webapp-name>"--settings deployment_branch=main
+ az webapp config appsettings set -g MyResourceGroup --name "<your-webapp-name>" --settings deployment_branch=main
 ```
 
 次のコマンドを使用して新しいアプリに移動します。 `<your-webapp-name>` は、実際のアプリの名前に置き換えてください。
@@ -343,4 +343,4 @@ http://<your-webapp-name>.azurewebsites.net
 - [仮想マシンにデプロイされたアプリケーションで Azure Key Vault を使用する (.NET)](./tutorial-net-virtual-machine.md)
 - 詳細については、[Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) について学びます。
 - [開発者ガイド](./developers-guide.md)を参照する
-- [キー コンテナーへのアクセスをセキュリティで保護する](./security-overview.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](./security-features.md)

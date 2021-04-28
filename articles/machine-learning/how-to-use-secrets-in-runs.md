@@ -9,14 +9,13 @@ ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 03/09/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: b93da1e252357830578783c8f3ab5ca02f5a3e5b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: b934a5b5d7781465d01b0e16927bf213f9fa23df
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520746"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897038"
 ---
 # <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Azure Machine Learning トレーニングの実行で認証資格情報シークレットを使用する
 

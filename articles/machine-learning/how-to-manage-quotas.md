@@ -9,14 +9,14 @@ ms.reviewer: jmartens
 author: SimranArora904
 ms.author: siarora
 ms.date: 12/1/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 4e61a15b86d1d2d05889253f615eec0865c87a70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3fde5a7290c97c4bcf7c8da0fdc5ea21e05abbd3
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520389"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889036"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用するリソースのクォータの管理と引き上げ
 

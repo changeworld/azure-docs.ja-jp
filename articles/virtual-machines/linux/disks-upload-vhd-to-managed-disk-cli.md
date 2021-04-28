@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 285f0acd5097ce68cddee6f732b17944dffb0eba
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0f48856f085737040ca16afcca1e56be1da4843e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762571"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816748"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>VHD を Azure にアップロードするか、他のリージョンにマネージド ディスクをコピーする - Azure CLI
 
@@ -122,7 +122,7 @@ targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-le
 
 sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
-.\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
+azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
 
 az disk revoke-access -n $sourceDiskName -g $sourceRG
 

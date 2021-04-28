@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/02/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: a3a70ac5d5603cad98c199cbd8e3b98bb095d131
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1
+ms.openlocfilehash: 8c60afc16a75b69c85efc29375a5f10ca147a129
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167670"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143595"
 ---
 # <a name="set-up-compute-targets-for-model-training-and-deployment"></a>モデルのトレーニングとデプロイのためのコンピューティング ターゲットを設定する
 
@@ -124,7 +124,7 @@ Azure Machine Learning では、Azure 仮想マシンのアタッチもサポー
    ```
 
 > [!TIP]
-> ワークスペースから VM を __削除__ (デタッチ) する場合は、[RemoteCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) メソッドを使用します。
+> ワークスペースから VM を __削除__ (デタッチ) する場合は、[RemoteCompute.detach()](/python/api/azureml-core/azureml.core.compute.remotecompute#detach--) メソッドを使用します。
 >
 > Azure Machine Learning によって VM が削除されることはありません。 Azure portal、CLI、または Azure VM 用の SDK を使用して、VM を手動で削除する必要があります。
 
@@ -174,7 +174,7 @@ Azure HDInsight は、ビッグ データ分析のための一般的なプラッ
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/hdi.py?name=run_hdi)]
 
 > [!TIP]
-> ワークスペースから HDInsight クラスターを __削除__ (デタッチ) する場合は、[HDInsightCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) メソッドを使用します。
+> ワークスペースから HDInsight クラスターを __削除__ (デタッチ) する場合は、[HDInsightCompute.detach()](/python/api/azureml-core/azureml.core.compute.hdinsight.hdinsightcompute#detach--) メソッドを使用します。
 >
 > Azure Machine Learning によって、HDInsight クラスターは削除されません。 Azure portal、CLI、または Azure HDInsight 用の SDK を使用して、手動で削除する必要があります。
 

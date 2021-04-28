@@ -9,15 +9,15 @@ keywords: Cognitive Services, コグニティブ インテリジェンス, コ�
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: overview
-ms.date: 10/22/2020
+ms.date: 04/16/2021
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: c89131cc34d45ea94f3bb290ac11ec86f4b83be3
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 108c716708936aa5e0e5a563bdb8787466ad06ef
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587614"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076853"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -59,7 +59,7 @@ Azure Cognitive Services はクラウドベースのサービスです。REST AP
 
 |サービス名|サービスの説明|
 |:-----------|:------------------|
-|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話テキストに適用して、全体の意味を予測し、関連性のある詳細な情報を引き出す、クラウドベースの会話型 AI サービスです。 開始するには、[LUIS のクイックスタート](./luis/get-started-portal-build-app.md)に関する記事をご覧ください。|
+|[Language Understanding LUIS](./luis/index.yml "Language Understanding")|Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話テキストに適用して、全体の意味を予測し、関連性のある詳細な情報を引き出す、クラウドベースの会話型 AI サービスです。 開始するには、[LUIS のクイックスタート](./luis/luis-get-started-create-app.md)に関する記事をご覧ください。|
 |[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker を使用すると、半構造化コンテンツから質疑応答サービスを構築できます。 開始するには、[QnA Maker のクイックスタート](./qnamaker/quickstarts/create-publish-knowledge-base.md)に関する記事をご覧ください。|
 |[Text Analytics](./text-analytics/index.yml "Text Analytics")| Text Analytics によって、未加工のテキストに対して、感情分析、キー フレーズ抽出、および言語検出のための自然言語処理が提供されます。 開始するには、[Text Analytics のクイックスタート](./text-analytics/quickstarts/client-libraries-rest-api.md)に関する記事をご覧ください。|
 |[Translator](./translator/index.yml "Translator")|Translator は、ほぼリアルタイムでのマシン ベースのテキスト翻訳を提供します。|
@@ -134,7 +134,7 @@ Azure Cognitive Services には、[Azure Virtual Networks](cognitive-services-vi
 
 Cognitive Services の API は、Microsoft マネージド データ センターの拡大しているネットワーク上でホストされます。 [Azure リージョン一覧](https://azure.microsoft.com/regions "Azure リージョンの一覧")で API ごとのリージョン別の提供状況がわかります。
 
-まだサポートされていないリージョンを探しているのですか。 [UserVoice フォーラム](https://cognitive.uservoice.com/ "UserVoice フォーラム")に機能要求を記入してご連絡ください。
+まだサポートされていないリージョンを探しているのですか。 [UserVoice フォーラム](https://feedback.azure.com/forums/932041-azure-cognitive-services "UserVoice フォーラム")に機能要求を記入してご連絡ください。
 
 ## <a name="supported-cultural-languages"></a>サポートされる言語 (カルチャ)
 

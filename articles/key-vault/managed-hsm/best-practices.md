@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: ambapat
-ms.openlocfilehash: 7a30a7ab6689b602bc9ad4f696a6fe54c80f2151
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ef3b19e5064c8a88bf80eebf57539be72747fe4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90993196"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482519"
 ---
 # <a name="best-practices-when-using-managed-hsm"></a>Managed HSM を使用しているときのベスト プラクティス
 
@@ -23,8 +23,10 @@ ms.locfileid: "90993196"
 Managed HSM は、暗号化キーを保護するクラウド サービスです。 これらのキーは機密性が高く、ビジネスに不可欠であるため、承認されたアプリケーションとユーザーのみを許可することによって、Managed HSM へのアクセスを確実にセキュリティで保護するようにしてください。 この[記事](access-control.md)では、アクセス モデルの概要について説明します。 認証と承認、ロールベースのアクセス制御について説明しています。
 - 個人に管理者ロールを割り当てるのではなく、HSM 管理者の [Azure Active Directory セキュリティ グループ](../../active-directory/fundamentals/active-directory-manage-groups.md)を作成します。 これにより、個々のアカウントが削除された場合の "管理のロックアウト" が防止されます。
 - 管理グループ、サブスクリプション、リソース グループ、Managed HSM へのアクセスをロックダウンします。Azure RBAC を使用して、管理グループ、サブスクリプション、リソース グループへのアクセスを制御します。
-- [Managed HSM のローカル RBAC](access-control.md#data-plane-and-managed-hsm-local-rbac) を使用して、キーごとのロールの割り当てを作成します。
+- [マネージド HSM のローカル RBAC](access-control.md#data-plane-and-managed-hsm-local-rbac) を使用して、キーごとのロールの割り当てを作成します。
+- 職務の分離を維持するため、複数のロールを同じプリンシパルに割り当てないようにします。 
 - 最小特権アクセス プリンシパルを使用してロールを割り当てます。
+- 明確なアクセス許可セットを使用してカスタム ロール定義を作成します。
 
 ## <a name="choose-regions-that-support-availability-zones"></a>可用性ゾーンをサポートするリージョンを選択する
 

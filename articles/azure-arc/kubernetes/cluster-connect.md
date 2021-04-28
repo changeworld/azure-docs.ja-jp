@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: クラスター接続を使用して Azure Arc 対応 Kubernetes クラスターに安全に接続する
-ms.openlocfilehash: c6b6555c7d18c0aa0d2e7c94ad2c32353da19502
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 54a462164e4b992451cc66f8a0ec229aff27f2e1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450821"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145593"
 ---
 # <a name="use-cluster-connect-to-connect-to-azure-arc-enabled-kubernetes-clusters"></a>クラスター接続を使用して Azure Arc 対応 Kubernetes クラスターに接続する
 
@@ -26,7 +26,7 @@ ms.locfileid: "106450821"
 
 ## <a name="prerequisites"></a>前提条件   
 
-- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](/cli/azure/install-azure-cli)
 
 - `connectedk8s` Azure CLI 拡張機能バージョン 1.1.0 以降をインストールします。
 
@@ -148,8 +148,8 @@ You must be logged in to the server (Error:Error while retrieving group info. Er
 ```
 
 このエラーを回避するには:
-1. [サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)を作成します。これは、200 を超えるグループのメンバーになる可能性が高くありません。
-1. `az connectedk8s proxy` コマンドを実行する前に、サービス プリンシパルを使用して Azure CLI に[サインイン](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal)します。
+1. [サービス プリンシパル](/cli/azure/create-an-azure-service-principal-azure-cli)を作成します。これは、200 を超えるグループのメンバーになる可能性が高くありません。
+1. `az connectedk8s proxy` コマンドを実行する前に、サービス プリンシパルを使用して Azure CLI に[サインイン](/cli/azure/create-an-azure-service-principal-azure-cli#sign-in-using-a-service-principal)します。
 
 ## <a name="next-steps"></a>次の手順
 

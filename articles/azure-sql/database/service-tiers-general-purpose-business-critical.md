@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake
 ms.date: 12/14/2020
-ms.openlocfilehash: 95e11e98be8a58611a435de533ffcc16ec5ce357
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: d4053628247cc01851aa19b66514398da0660a81
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102048558"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883564"
 ---
 # <a name="azure-sql-database-and-azure-sql-managed-instance-service-tiers"></a>Azure SQL Database と Azure SQL Managed Instance のサービス レベル
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,7 +53,7 @@ Azure SQL Database には追加のサービス レベルがあります。
 | | SQL Managed Instance  | [仮想コアあたり 24 GB](../managed-instance/resource-limits.md#service-tier-characteristics) | 該当なし | 最大 4 TB - [ストレージ サイズによる制限](../managed-instance/resource-limits.md#service-tier-characteristics) |
 | **ログ書き込みスループット** | SQL Database | [仮想コアあたり 1875 MB/秒 (最大 30 MB/秒)](resource-limits-vcore-single-databases.md#general-purpose---provisioned-compute---gen4) | 100 MB/秒 | [仮想コアあたり 6 MB/秒 (最大 96 MB/秒)](resource-limits-vcore-single-databases.md#business-critical---provisioned-compute---gen4) |
 | | SQL Managed Instance | [仮想コアあたり 3 MB/秒 (最大 22 MB/秒)](../managed-instance/resource-limits.md#service-tier-characteristics) | 該当なし | [仮想コアあたり 4 MB/秒 (最大 48 MB/秒)](../managed-instance/resource-limits.md#service-tier-characteristics) |
-|**可用性**|All| 99.99% |  [セカンダリ レプリカが 1 つで 99.95%、それ以上のレプリカで 99.99%](service-tier-hyperscale-frequently-asked-questions-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [ゾーン冗長単一データベースで 99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
+|**可用性**|All| 99.99% |  [セカンダリ レプリカが 1 つで 99.95%、それ以上のレプリカで 99.99%](service-tier-hyperscale-frequently-asked-questions-faq.yml#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [ゾーン冗長単一データベースで 99.995%](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**バックアップ**|All|RA-GRS、7 - 35 日 (既定では 7 日)。 Basic レベルの最大保有期間は 7 日。 | RA-GRS、7 日、一定時間で特定の時点に復旧 (PITR) | RA-GRS、7 ～ 35 日 (既定では 7 日) |
 |**インメモリ OLTP** | | 該当なし | 該当なし | 利用可能 |
 |**読み取り専用レプリカ**| | 0 組み込み <br> 0 - 4 [geo レプリケーション](active-geo-replication-overview.md)を使用 | 0 - 4 組み込み | 1 組み込み、価格に含まれます <br> 0 - 4 [geo レプリケーション](active-geo-replication-overview.md)を使用 |

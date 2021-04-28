@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 436dbac814197556385a33d956928f97fd4716bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9a83646556838732a3b79f93771c762f00ed5afc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93311913"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144297"
 ---
 # <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>Azure Synapse Analytics での Synapse SQL のデータベース照合順序のサポート 
 
@@ -115,7 +115,5 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;
 
 専用 SQL プールとサーバーレス SQL プールのベスト プラクティスに関する追加情報については、次の記事を参照してください。
 
-- [専用 SQL プールのベスト プラクティス](best-practices-sql-pool.md)
-- [サーバーレス SQL プールのベスト プラクティス](best-practices-sql-on-demand.md)
-
-
+- [専用 SQL プールのベスト プラクティス](./best-practices-dedicated-sql-pool.md)
+- [サーバーレス SQL プールのベスト プラクティス](./best-practices-serverless-sql-pool.md)

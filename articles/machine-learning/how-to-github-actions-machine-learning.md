@@ -8,14 +8,14 @@ ms.subservice: core
 author: juliakm
 ms.author: jukullam
 ms.date: 10/19/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: github-actions-azure
-ms.openlocfilehash: 6505523aa367eaf202ece81a4253429e864e169a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9bc12c74043deea4e9c9ec9bcc457b0b82f09cbc
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780373"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889306"
 ---
 # <a name="use-github-actions-with-azure-machine-learning"></a>Azure Machine Learning で GitHub Actions を使用する
 

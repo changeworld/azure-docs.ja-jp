@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/23/2021
 ms.custom: seodec18, has-adal-ref, devx-track-azurecli
-ms.openlocfilehash: 225e72bc00ce0a80ff655a76562b5c6b70b7fa79
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: c174504ea48330821d7734def5b6a5904d3ec2b8
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479493"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883924"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -79,7 +79,7 @@ Azure Time Series Insights 環境によって要求が受信されると、最�
 
 - [Azure portal](https://portal.azure.com/) の UI を使用してアクセスを許可するには、記事「[環境へのデータ アクセスの許可](concepts-access-policies.md)」に記載されている手順に従います。 ユーザーを選択するときは、名前または ID でマネージド ID またはアプリの登録を検索できます。
 
-- Azure CLI を使用してアクセスを許可するには、次のコマンドを実行します。 アクセスの管理に使用できるコマンドの完全な一覧については、[こちら](/cli/azure/ext/timeseriesinsights/tsi/access-policy)のドキュメントを参照してください。
+- Azure CLI を使用してアクセスを許可するには、次のコマンドを実行します。 アクセスの管理に使用できるコマンドの完全な一覧については、[こちら](/cli/azure/tsi/access-policy)のドキュメントを参照してください。
 
    ```azurecli-interactive
    az tsi access-policy create --name "ap1" --environment-name "env1" --description "some description" --principal-object-id "aGuid" --roles Reader Contributor --resource-group "rg1"

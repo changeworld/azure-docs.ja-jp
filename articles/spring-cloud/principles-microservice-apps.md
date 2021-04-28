@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0c90062f1968cc7be5a742a67363f57b9632fdfa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 17522a8b8cfa643fcabb3aa7a50218da233e474f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877595"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132793"
 ---
 # <a name="java-and-base-os-for-spring-microservice-apps"></a>Spring マイクロサービス アプリ用の Java とベ基本 OS
 
@@ -56,5 +56,5 @@ Azul Systems では、基本オペレーティング システムに対する変
  
 ## <a name="next-steps"></a>次のステップ
 
-* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)
 * [Azure および Azure Stack の Java 長期サポート](/azure/developer/java/fundamentals/java-jdk-long-term-support)

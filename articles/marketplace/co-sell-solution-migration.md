@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/04/2021
-ms.openlocfilehash: bb954a32a4e598c45578d4b06606bc133babb50d
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3455cc5b7ce5e1ddb7db3c3a9de4aedefcedc4b5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107154"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133405"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>OCP GTM からコマーシャル マーケットプレースへの共同販売ソリューションの移行
 
@@ -36,7 +36,7 @@ Microsoft Partner Network のアクティブなメンバーシップを持って
 
 ## <a name="publishing-updates-for-attaining-co-sell-ready-status"></a>Co-Sell-Ready 状態を達成するための発行の更新
 
-お客様のソリューションを Microsoft の販売者やパートナーが検出できるようにするには、[Co-Sell Ready (共同販売準備完了) の要件](marketplace-co-sell.md)を満たす必要があります。 Microsoft 販売者がインセンティブを受け取るためには、ソリューションが、[Incentive-Eligible (インセンティブ対象) 要件](marketplace-co-sell.md)を満たしている必要があります。 パートナー センターの [共同販売] タブでこれらの要件を完了します (この記事で後述する[こちらのイメージ](#cosell-tab)を参照してください)。
+お客様のソリューションを Microsoft の販売者やパートナーが検出できるようにするには、[Co-Sell Ready (共同販売準備完了) の要件](./co-sell-overview.md)を満たす必要があります。 Microsoft 販売者がインセンティブを受け取るためには、ソリューションが、[Incentive-Eligible (インセンティブ対象) 要件](./co-sell-overview.md)を満たしている必要があります。 パートナー センターの [共同販売] タブでこれらの要件を完了します (この記事で後述する[こちらのイメージ](#cosell-tab)を参照してください)。
 
 > [!NOTE]
 > コマーシャル マーケットプレースでは、ソリューションは発行エクスペリエンス全体で「オファー」と呼ばれています。
@@ -137,7 +137,7 @@ OCP GTM ソリューション内のソリューションがもう関連しなく
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="パートナー センター内にあるオファーの概要設定のタブ。":::
 
-3. Microsoft 販売者向けの詳細情報の一部が、OCP GTM ソリューションからコピーされました。 **[Microsoft との共同販売]** タブで残りの必要情報を入力して、オファーを共同販売できるようにします。 完了したら、 **[レビューと公開]** を選択します。 詳細については、「[コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)」を参照してください。
+3. Microsoft 販売者向けの詳細情報の一部が、OCP GTM ソリューションからコピーされました。 **[Microsoft との共同販売]** タブで残りの必要情報を入力して、オファーを共同販売できるようにします。 完了したら、 **[レビューと公開]** を選択します。 詳細については、「[コマーシャル マーケットプレース プランの共同販売を構成する](./co-sell-configure.md)」を参照してください。
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="パートナー センター内にあるオファーの共同販売のタブ。":::
 
@@ -155,5 +155,5 @@ OCP GTM ソリューション内のソリューションがもう関連しなく
 ## <a name="next-steps"></a>次のステップ
 
 - [CSP パートナーによる再販](cloud-solution-providers.md)
-- [コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)
+- [コマーシャル マーケットプレース プランの共同販売を構成する](./co-sell-configure.md)
 - これらの [FAQ](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF) を表示する

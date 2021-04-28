@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/28/2021
+ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 41336d59d51685d5daf78a1809ce6c0df2cd6124
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: da70f06bf2789bad300a29bd7307f69af2945756
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104781315"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895867"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Microsoft Graph を使用して Azure AD B2C を管理する
 
@@ -37,7 +37,7 @@ MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作
 
 ## <a name="user-phone-number-management-beta"></a>ユーザーの電話番号の管理 (ベータ)
 
-[SMS または音声通話](identity-provider-local.md#phone-sign-in-preview)あるいは[多要素認証](multi-factor-authentication.md)を使用してサインインするためにユーザーが使用できる電話番号。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/phoneauthenticationmethod) に関する記事を参照してください。
+[SMS または音声通話](identity-provider-local.md#phone-sign-in)あるいは[多要素認証](multi-factor-authentication.md)を使用してサインインするためにユーザーが使用できる電話番号。 詳細については、[Azure AD 認証方法の API](/graph/api/resources/phoneauthenticationmethod) に関する記事を参照してください。
 
 - [追加](/graph/api/authentication-post-phonemethods)
 - [リスト](/graph/api/authentication-list-phonemethods)
@@ -48,6 +48,9 @@ MS Graph API を使用し、Azure AD B2C テナント内のリソースを操作
 [リスト](/graph/api/authentication-list-phonemethods)操作では、有効な電話番号のみが返されます。 リスト操作で使用するためには、次の電話番号を有効にする必要があります。 
 
 ![電話によるサインインを有効にする](./media/microsoft-graph-operations/enable-phone-sign-in.png)
+
+> [!NOTE]
+> 現在のベータ版では、この API は、国番号と電話番号の間にスペースを入れて電話番号が格納されている場合にのみ機能します。 Azure AD B2C サービスでは、このスペースは現在既定では追加されていません。
 
 ## <a name="self-service-password-reset-email-address-beta"></a>セルフサービス パスワード リセットのメール アドレス (ベータ)
 
@@ -140,7 +143,7 @@ Azure AD B2C 監査ログにアクセスする方法の詳細については、�
 
 ## <a name="conditional-access"></a>条件付きアクセス
 
-- [すべての条件付きアクセス ポリシーの一覧](/graph/api/conditionalaccessroot-list-policies?view=graph-rest-beta&tabs=http)
+- [すべての条件付きアクセス ポリシーの一覧](/graph/api/conditionalaccessroot-list-policies?tabs=http)
 - [条件付きアクセス ポリシーのプロパティとリレーションシップを読む](/graph/api/conditionalaccesspolicy-get)
 - [新しい条件付きアクセス ポリシーを作成する](/graph/api/resources/application)
 - [条件付きアクセス ポリシーを更新する](/graph/api/conditionalaccesspolicy-update)

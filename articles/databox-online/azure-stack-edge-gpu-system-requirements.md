@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 04/26/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: b6984f27ae0ae81c3bf8d98efcce5fb23909c36d
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 1233c35df8c8471b91eafdc98616906f76ffe103
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226092"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073174"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Azure Stack Edge Pro と GPU のシステム要件 
 

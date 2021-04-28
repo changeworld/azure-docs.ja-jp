@@ -4,12 +4,12 @@ description: 'クイックスタート: Azure CLI を使用して、Azure portal
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: d951c692c7d3c282ae68c5f9b53e9cda5407df10
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 76d4e3b9c1c906dd91a7355af2c7cb957ef6ac95
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481023"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891736"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure portal ダッシュボードを作成する
 
@@ -73,20 +73,20 @@ Azure ダッシュボードはリソースであるため、JSON として表す
 
 これで、Azure CLI 内からテンプレートをデプロイできるようになりました。
 
-1. [az portal dashboard create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) コマンドを実行して、テンプレートをデプロイします。
+1. [az portal dashboard create](/cli/azure/portal/dashboard#az_portal_dashboard_create) コマンドを実行して、テンプレートをデプロイします。
 
    ```azurecli
    az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
       --input-path portal-dashboard-template-testvm.json --location centralus
    ```
 
-1. [az portal dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) コマンドを実行して、ダッシュボードが正常に作成されたことを確認します。
+1. [az portal dashboard show](/cli/azure/portal/dashboard#az_portal_dashboard_show) コマンドを実行して、ダッシュボードが正常に作成されたことを確認します。
 
    ```azurecli
    az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
    ```
 
-現在のサブスクリプションのすべてのダッシュボードを表示するには、[az portal dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list) を使用します。
+現在のサブスクリプションのすべてのダッシュボードを表示するには、[az portal dashboard list](/cli/azure/portal/dashboard#az_portal_dashboard_list) を使用します。
 
 ```azurecli
 az portal dashboard list
@@ -98,7 +98,7 @@ az portal dashboard list
 az portal dashboard list --resource-group myResourceGroup
 ```
 
-ダッシュボードを更新するには、[az portal dashboard update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) コマンドを使用します。
+ダッシュボードを更新するには、[az portal dashboard update](/cli/azure/portal/dashboard#az_portal_dashboard_update) コマンドを使用します。
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
@@ -119,7 +119,7 @@ az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Da
 az group delete --name myResourceGroup
 ```
 
-ダッシュボードだけを削除するには、[az portal dashboard delete](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_delete) コマンドを使用します。
+ダッシュボードだけを削除するには、[az portal dashboard delete](/cli/azure/portal/dashboard#az_portal_dashboard_delete) コマンドを使用します。
 
 ```azurecli
 az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Dashboard"
@@ -127,4 +127,4 @@ az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Da
 
 ## <a name="next-steps"></a>次のステップ
 
-ダッシュボードの Azure CLI サポートの詳細については、「[az portal dashboard](/cli/azure/ext/portal/portal/dashboard)」を参照してください。
+ダッシュボードの Azure CLI サポートの詳細については、「[az portal dashboard](/cli/azure/portal/dashboard)」を参照してください。

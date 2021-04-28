@@ -4,15 +4,15 @@ description: Azure Virtual Network (VNet) 上のデータソースに対して�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 912dab16cd854ae940b7bbdfe88a8da7adf1c5e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3a0ed0f2c9a52d10d206075d229cd62cd3909db
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84197190"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145755"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Azure Virtual Network (VNet) 上のデータソースに対してゲートウェイを使用する
 

@@ -5,18 +5,18 @@ description: Azure Container Instances を使用して Web サービスとして
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, deploy
+ms.topic: how-to
+ms.custom: deploy
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 1eaf58f4f951547e6e4e461803e79844f99e630a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 4e682615ae4807611711307b5c9181c14d5c1dc4
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501741"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885472"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Azure Container Instances にモデルをデプロイする
 
@@ -94,7 +94,7 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aci-deploy-config.md)]
 
-詳細については、[az ml model deploy](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) のリファレンスを参照してください。 
+詳細については、[az ml model deploy](/cli/azure/ml/model#az_ml_model_deploy) のリファレンスを参照してください。 
 
 ## <a name="using-vs-code"></a>VS Code　を使用する
 

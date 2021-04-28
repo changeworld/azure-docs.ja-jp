@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: e0fd5969a3c4f84b6e8f98e99335bf120179e7af
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 5abc71a4df8dd27e80a7590d53159be95d46e441
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481091"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883852"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>クイックスタート: Azure CLI から Azure Database for MySQL - フレキシブル サーバーに接続してクエリを実行する
 

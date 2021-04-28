@@ -6,15 +6,14 @@ ms.author: dobett
 ms.date: 11/26/2018
 ms.topic: conceptual
 ms.service: industrial-iot
-ms.custom: devx-track-azurecli
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 38235f9b01b321e27664ee837763732971f0b85c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 324ff939e0492d1049ba1d7e186db8970c86142b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105645802"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073577"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>OPC Twin モジュールおよび依存関係をゼロからデプロイする
 

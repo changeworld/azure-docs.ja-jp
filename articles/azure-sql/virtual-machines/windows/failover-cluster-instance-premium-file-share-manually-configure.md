@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 80fe9f03f2c57eab8527e553153f3e65315a54bf
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ddd25c605ef159bddfb8a9c7cb4d02ac7094c511
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102034848"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107482196"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Premium ファイル共有を使用して FCI を作成する (Azure VM 上の SQL Server)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -214,6 +214,7 @@ New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $v
 - Microsoft 分散トランザクション コーディネーター (MSDTC) は、Windows Server 2016 以前ではサポートされていません。 
 - Filestream は、Premium ファイル共有のフェールオーバー クラスターではサポートされていません。 Filestream を使用するには、[記憶域スペース ダイレクト](failover-cluster-instance-storage-spaces-direct-manually-configure.md)または [Azure 共有ディスク](failover-cluster-instance-azure-shared-disks-manually-configure.md)を代わりに使用して、クラスターをデプロイします。
 - [軽量管理モード](sql-server-iaas-agent-extension-automate-management.md#management-modes)での SQL IaaS Agent 拡張機能への登録のみがサポートされています。 
+- [スパース ファイルの制限のため Azure Files では](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)、現在、データベース スナップショットはサポートされていません。  
 
 ## <a name="next-steps"></a>次のステップ
 

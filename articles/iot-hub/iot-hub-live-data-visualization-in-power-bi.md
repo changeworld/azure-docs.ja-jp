@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
-ms.openlocfilehash: 82caf13618fe8483ab8d3a622c6c0d51ab05a206
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 0b099f4ce91fd24e8d7baec054bcfc5a6cf0b032
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102177336"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567113"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -22,24 +22,14 @@ ms.locfileid: "102177336"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-learn"></a>学習内容
+この記事では、Azure IoT Hub が受信したリアルタイム センサー データを Power BI を使用して視覚化する方法について説明します。 Web アプリを使用して IoT ハブ内のデータを視覚化しようとする場合は、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
 
-Azure IoT ハブが受信したリアルタイム センサー データを Power BI を使用して視覚化する方法について説明します。 Web アプリを使用して IoT ハブ内のデータを視覚化しようとする場合は、[Web アプリを使用した Azure IoT Hub からのリアルタイム センサー データの視覚化](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="what-you-do"></a>作業内容
-
-* コンシューマー グループを追加して、データにアクセスできるよう IoT Hub を準備する。
-
-* IoT Hub から Power BI アカウントにデータを転送できるよう Stream Analytics ジョブを作成、構成、実行する。
-
-* Power BI レポートの作成と公開を行い、データを視覚化する。
-
-## <a name="what-you-need"></a>必要なもの
-
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 これらの記事では、次の要件について取り上げています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関する記事や、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
   
   * 有効な Azure サブスクリプション
-  * サブスクリプションの Azure IoT Hub。
+  * サブスクリプション内の Azure IoT Hub。
   * Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
 
 * Power BI アカウント ([Power BI を無料で試す](https://powerbi.microsoft.com/))

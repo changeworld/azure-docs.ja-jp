@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 3c4bb61217c7b972220a55a4837c2b3db980f2ca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b9565095a40052a940d7a7b31f0fd3a27e0e75c2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101095997"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814998"
 ---
 # <a name="about-keys"></a>キーについて
 
@@ -24,7 +24,7 @@ Azure Key Vault には、暗号化キーを格納および管理するための 
 |リソースの種類|キーの保護方法|データプレーン エンドポイント ベース URL|
 |--|--|--|
 | **資格情報コンテナー** | ソフトウェアによる保護<br/><br/>および<br/><br/>HSM で保護された (Premium SKU の場合)</li></ul> | https://{vault-name}.vault.azure.net |
-| **マネージド HSM ** | HSM で保護された | https://{hsm-name}.managedhsm.azure.net |
+| **マネージド HSM** | HSM で保護された | https://{hsm-name}.managedhsm.azure.net |
 ||||
 
 - **コンテナー** - コンテナーは、最も一般的なクラウド アプリケーションのシナリオに適した、低コスト、容易なデプロイ、マルチテナント、ゾーン回復性 (使用可能な場合)、高可用性の、キー管理ソリューションを提供します。

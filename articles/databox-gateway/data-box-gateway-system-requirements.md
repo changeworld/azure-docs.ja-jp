@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/01/2021
+ms.date: 04/26/2021
 ms.author: alkohli
-ms.openlocfilehash: e7c8653b39a3e0333ff6e98783a6e9a1437dba22
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 19b30681632c63657accf130888ee1251366fee6
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101739213"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072705"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure Data Box Gateway のシステム要件
 

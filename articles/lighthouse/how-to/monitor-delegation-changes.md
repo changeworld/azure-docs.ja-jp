@@ -3,12 +3,12 @@ title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
 ms.date: 02/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 8bd9e89039c114f3d1088df44198fe00c69bbf82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a12b916fae9794d6d695191a81ec076917bda31
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199055"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814894"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
@@ -86,7 +86,7 @@ az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role
 
 - この機能に対してのみ使用する[新しいサービス プリンシパル アカウントを作成](../../active-directory/develop/howto-create-service-principal-portal.md)し、他の自動化に使用する既存のサービス プリンシパルにこのロールを割り当てることはしません。
 - このサービス プリンシパルに、委任された顧客リソースへのアクセス権がないことを確認してください。
-- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/security-overview.md)。
+- [証明書を使用して認証](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options)を行い、[それを Azure Key Vault に安全に格納します](../../key-vault/general/security-features.md)。
 - サービス プリンシパルの代理として機能するアクセス権を持つユーザーを制限します。
 
 ご利用の管理テナントのルート スコープに対して監視閲覧者アクセス権を持つ新しいサービス プリンシパル アカウントを作成したら、それを使用して、ご利用のテナント内の委任アクティビティのクエリとレポートを行うことができます。

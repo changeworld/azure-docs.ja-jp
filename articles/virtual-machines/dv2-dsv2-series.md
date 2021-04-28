@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: a3dee22a1ee793641e48be6edb1b33a00219217e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71a4cebcc11657566f65f53508df18efe822c409
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560312"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514786"
 ---
 # <a name="dv2-and-dsv2-series"></a>Dv2 および DSv2 シリーズ
 
@@ -28,7 +28,7 @@ Dv2 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた 
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): サポートされています ("*2 vCPU 以上が必要*")<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされていません <br>
 <br>
 
@@ -50,7 +50,7 @@ DSv2 シリーズのサイズは、Intel Turbo Boost Technology 2.0 を備えた
 [ライブ マイグレーション](maintenance-and-updates.md): サポートされています<br>
 [メモリ保持更新](maintenance-and-updates.md): サポートされています<br>
 [VM 世代サポート](generation-2.md): 第 1 世代と第 2 世代<br>
-[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md):サポートされています ("*4 vCPU 以上が必要*")<br>
+[高速ネットワーク](../virtual-network/create-vm-accelerated-networking-cli.md): サポートされています ("*2 vCPU 以上が必要*")<br>
 [エフェメラル OS ディスク](ephemeral-os-disks.md):サポートされています <br>
 <br>
 

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 ms.date: 02/26/2021
-ms.topic: conceptual
-ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 3f6071813a8189605d632231a5f9b8942068a48a
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.topic: how-to
+ms.custom: contperf-fy20q4, devx-track-python, data4ml
+ms.openlocfilehash: ae041bd8780524d24c360412232ec77ae60aa3c4
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067437"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884716"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>ML パイプラインのステップ間でのデータの移動 (Python)
 

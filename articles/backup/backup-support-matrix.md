@@ -2,14 +2,14 @@
 title: Azure Backup のサポート マトリックス
 description: Azure Backup サービスのサポート設定と制限事項の概要を説明します。
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 04/14/2021
 ms.custom: references_regions
-ms.openlocfilehash: 349a48b6178d5e4618aa62d9f0c3a150fe561e05
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 5c74a34efe8075ab7a34fab4570d9513900b3f81
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284393"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517421"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -33,7 +33,7 @@ Azure Backup は Recovery Services コンテナーを使用して、各種のワ
 --- | ---
 **サブスクリプション内のコンテナー数** | 1 つのサブスクリプションで、最大 500 個の Recovery Services コンテナー。
 **コンテナー内のマシン数** | すべてのワークロード (Azure VM、SQL Server VM、MABS サーバーなど) で最大2000 個のデータソースを 1 つのコンテナーで保護できます。<br><br>1 つのコンテナーで、最大 1,000 台の Azure VM。<br/><br/> 1 つのコンテナーに最大で 50 MABS を登録することができます。
-**[データ ソース]** | 個々の[データ ソース](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined)の最大サイズは 54,400 GB です。 この制限は、Azure VM のバックアップには適用されません。 コンテナーにバックアップできるデータの総量には、制限は適用されません。
+**[データ ソース]** | 個々の[データ ソース](./backup-azure-backup-faq.yml#how-is-the-data-source-size-determined-)の最大サイズは 54,400 GB です。 この制限は、Azure VM のバックアップには適用されません。 コンテナーにバックアップできるデータの総量には、制限は適用されません。
 **コンテナーへのバックアップ回数** | **Azure VM:** 1 日あたり 1 回。<br/><br/>**DPM/MABS で保護されたマシン:** 1 日に 2 回。<br/><br/> **MARS エージェントを使用し直接バックアップされるマシン:** 1 日に 3 回。
 **コンテナー間のバックアップ** | バックアップは 1 つのリージョン内です。<br/><br/> バックアップする VM が含まれるすべての Azure リージョンにコンテナーが必要です。 異なるリージョンにバックアップすることはできません。
 **コンテナーの移動** | 異なるサブスクリプション間で、または同じサブスクリプション内のリソース グループ間で、[コンテナーを移動](./backup-azure-move-recovery-services-vault.md)できます。 ただし、リージョン間でのコンテナーの移動はサポートされていません。
@@ -151,7 +151,7 @@ Azure Backup に、データの可用性と回復性の機能を強化するた�
 
 | バックアップの管理の種類 | サポートされています                                                    | サポートされているリージョン |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | マネージド ディスクとアンマネージド ディスク両方の Azure VM でサポートされています。 クラシックVM に関してはサポートされていません。 | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部、US Gov アイオワ、US Gov バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
+| Azure VM               | マネージドとアンマネージド ディスク両方の Azure VM (暗号化された Azure VM を含む) でサポートされています。 クラシックVM に関してはサポートされていません。 | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部、US Gov アイオワ、US Gov バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
 | SQL/SAP HANA | プレビュー段階                                                      | フランス中部、オーストラリア中部、南アフリカ北部、アラブ首長国連邦北部、スイス北部、ドイツ中西部、ノルウェー東部、US Gov アイオワ、US Gov バージニアを除くすべての Azure パブリック リージョンおよびソブリン リージョンで利用できます。 <br>これらのリージョンでの使用については、[AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) までお問い合わせください。 |
 | MARS エージェント/オンプレミス  | いいえ                                                           | 該当なし               |
 | AFS (Azure ファイル共有)                 | いいえ                                                           | 該当なし               |

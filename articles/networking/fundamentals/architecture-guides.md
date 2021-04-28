@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: kumud
-ms.openlocfilehash: 9b608312d66e6a3e7455c4577ea4644b33e4e82e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c98bdbb9fba2a6ba01e4ce590c36d57e68390f17
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106079816"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107484797"
 ---
 # <a name="azure-networking-architecture-documentation"></a>Azure ネットワーク アーキテクチャに関するドキュメント
 
@@ -51,6 +51,7 @@ ms.locfileid: "106079816"
 |[IaaS:Web アプリケーションとリレーショナル データベース](/azure/architecture/high-availability/ref-arch-iaas-web-and-db)    |   複数のゾーンに分散したリソースを使用して、IaaS (サービスとしてのインフラストラクチャ) Web アプリケーションと SQL Server データベースをホストするための高可用性アーキテクチャを提供する方法について説明します。     |
 |[低コストのサーバーレス Azure サービスを使用して、リアルタイムで位置情報を共有する](/azure/architecture/example-scenario/signalr/#azure-front-door)       |   Azure Front Door を使用して、1 つのリージョンにデプロイするよりも、アプリケーションの可用性を高めます。 地域的な停止がプライマリ リージョンに影響する場合は、Front Door を使用して、セカンダリ リージョンにフェールオーバーできます。      |
 |[高可用性ネットワーク仮想アプライアンス](/azure/architecture/reference-architectures/dmz/nva-ha)     | 高可用性のネットワーク仮想アプライアンス (NVA) セットを Azure にデプロイする方法を示します。        |
+|[Traffic Manager と Application Gateway を使用したマルチリージョンの負荷分散](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)     | 可用性と堅牢なディザスター リカバリー インフラストラクチャを実現するために、回復性の高い多層アプリケーションを複数の Azure リージョンにデプロイする方法について説明します。        |
 
 ## <a name="secure-your-network-resources"></a>ネットワーク リソースをセキュリティで保護する
 

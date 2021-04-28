@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/16/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61673210dafbdbdbc56477ed58fb0cbe9335efcf
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 0f808c9d01ecbd125e2ef0e3a7b61152767b1b4b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012692"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124025"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>チュートリアル:Linux VM のシステム割り当てマネージド ID を使用して Azure Key Vault にアクセスする 
 
@@ -97,10 +97,10 @@ ms.locfileid: "107012692"
 
 >[!IMPORTANT]
 > 目標のサービスにアクセスするための Azure AD トークンを容易に取得できる Azure.Identity ライブラリは、すべての Azure SDK でサポートされます。 [Azure SDK](https://azure.microsoft.com/downloads/) の詳細を確認し、Azure.Identity ライブラリを活用してください。
-> - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme?view=azure-dotnet)
-> - [JAVA](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable)
-> - [Javascript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme?view=azure-node-latest)
-> - [Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme?view=azure-python)
+> - [.NET](/dotnet/api/overview/azure/identity-readme?view=azure-dotnet)
+> - [JAVA](/java/api/overview/azure/identity-readme?view=azure-java-stable)
+> - [Javascript](/javascript/api/overview/azure/identity-readme?view=azure-node-latest)
+> - [Python](/python/api/overview/azure/identity-readme?view=azure-python)
 
 
 1. ポータルで Linux VM に移動し、 **[概要]** の **[接続]** をクリックします。 

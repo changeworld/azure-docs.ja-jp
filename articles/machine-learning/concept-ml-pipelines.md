@@ -10,12 +10,12 @@ ms.author: laobri
 author: lobrien
 ms.date: 02/26/2021
 ms.custom: devx-track-python
-ms.openlocfilehash: 584e421b6beac0e4ecfab5b3e3cb735b8465e1b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57f5da06909436e0cbce92559c29c309ca9e20e3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102503523"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819234"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインとは
 
@@ -47,7 +47,7 @@ Azure Machine Learning パイプラインは、独立して実行できる完全
 
 パイプラインでは、異なるタスクには異なるハードウェアを使用することを選択できます。 Azure により、使用するさまざまな[コンピューティング ターゲット](concept-azure-machine-learning-architecture.md)の調整が行われるため、中間データはダウンストリームのコンピューティング ターゲットへとシームレスに流れます。
 
-Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で直接、[パイプライン実験のメトリックを追跡](./how-to-track-experiments.md)できます。 パイプラインを発行した後は、任意のプラットフォームまたはスタックからパイプラインを再実行できる REST エンドポイントを構成できます。
+Azure portal または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で直接、[パイプライン実験のメトリックを追跡](./how-to-log-view-metrics.md)できます。 パイプラインを発行した後は、任意のプラットフォームまたはスタックからパイプラインを再実行できる REST エンドポイントを構成できます。
 
 つまり、パイプラインを使用することで、機械学習のライフサイクルの複雑なタスクをすべて支援できます。 その他の Azure パイプライン テクノロジには、それぞれ固有の長所があります。 [Azure Data Factory パイプライン](../data-factory/concepts-pipelines-activities.md)はデータの操作に優れ、[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) は、継続的な統合とデプロイに適切なツールです。 ただし、機械学習に重点を置いている場合は、Azure Machine Learning パイプラインがワークフローのニーズに最適な選択肢となる可能性があります。 
 

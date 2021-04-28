@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: c1028d0a4a458746c08fd6fa4f16aa952d9962a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e49e787854069c2fcea30df7a43c3aacdd21b9e
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87282009"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502030"
 ---
 # <a name="azcopy-benchmark"></a>azcopy ベンチマーク
 
@@ -38,6 +38,12 @@ ms.locfileid: "87282009"
 ベンチマーク モードは、最大スループットを提供する並列 TCP 接続の数に自動的に調整されます。 最後にその数値が表示されます。 自動調整が行われないようにするには、AZCOPY_CONCURRENCY_VALUE 環境変数を特定の数の接続に設定します。 
 
 一般的な認証の種類がすべてサポートされています。 ただし、アップロードのベンチマークを行う最も便利な方法は、一般に、SAS トークンを指定して空のコンテナーを作成し、SAS 認証を使用することです。 (ダウンロード モードでは、テスト データのセットがターゲット コンテナーに存在する必要があります。)
+
+## <a name="related-conceptual-articles"></a>関連する概念に関する記事
+
+- [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [Azure Storage で AzCopy v10 のパフォーマンスを最適化する](storage-use-azcopy-optimize.md)
+
 
 ## <a name="examples"></a>例
 

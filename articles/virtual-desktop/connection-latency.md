@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 2fa03fa948c7768f5e74cc68b528e847c5351273
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 18fc276ec9d95a52c5bb5890cda313fc14fc7c5f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447859"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144333"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>Windows Virtual Desktop でのユーザー接続の待機時間の決定
 
@@ -38,4 +38,4 @@ Windows Virtual Desktop は、[Azure Front Door](https://azure.microsoft.com/ser
 
 - 最適な待機時間のための最適な場所を確認するには、「[Windows Virtual Desktop エクスペリエンス見積もりツール](https://azure.microsoft.com/services/virtual-desktop/assessment/)」を参照してください。
 - 価格プランの詳細については、「[Windows Virtual Desktop の価格](https://azure.microsoft.com/pricing/details/virtual-desktop/)」を参照してください。
-- Windows Virtual Desktop のデプロイを開始するには、[こちらのチュートリアル](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)を確認してください。
+- Windows Virtual Desktop のデプロイを開始するには、[こちらのチュートリアル](./create-host-pools-azure-marketplace.md)を確認してください。

@@ -3,14 +3,14 @@ title: HDInsight で Apache Hadoop ジョブのデータをアップロードす
 description: HDInsight で Apache Hadoop ジョブのデータをアップロードしてアクセスする方法について説明します。 Azure クラシック CLI、Azure Storage Explorer、Azure PowerShell、Hadoop コマンド ライン、または Sqoop を使用します。
 ms.service: hdinsight
 ms.topic: how-to
-ms.custom: hdiseo17may2017,seoapr2020
+ms.custom: hdiseo17may2017,seoapr2020, devx-track-azurecli
 ms.date: 04/27/2020
-ms.openlocfilehash: a8d21b88298b6092c869b89d48fe4c259c2365b6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81ce470c53374331afcc91c89fd97e96c3fa0c35
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98931350"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887416"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>HDInsight で Apache Hadoop ジョブのデータをアップロードする
 
@@ -34,11 +34,11 @@ Microsoft では、Azure Storage を操作する次のユーティリティを�
 
 | ツール | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
-| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
-| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
-| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
-| [Hadoop コマンド](#hadoop-command-line) |✔ |✔ |✔ |
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |âœ” |âœ” |âœ” |
+| [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |âœ” |âœ” |âœ” |
+| [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |âœ” |
+| [AzCopy](../storage/common/storage-use-azcopy-v10.md) |âœ” | |âœ” |
+| [Hadoop コマンド](#hadoop-command-line) |âœ” |âœ” |âœ” |
 
 > [!NOTE]  
 > Hadoop コマンドは、HDInsight クラスター上でのみ使用できます。 このコマンドでは、ローカル ファイル システムのデータを Azure Storage 内に読み込むことのみが可能です。  
@@ -76,12 +76,12 @@ Azure Storage を操作するためのグラフィカル インターフェイ�
 
 | Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |✔ |✔ |✔ |
-| [Azure 記憶域エクスプローラー](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |✔ |✔ |✔ |
-| [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |✔ |
-| [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |✔ |
-| [Microsoft Azure 用の CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |✔ |
-| [Cyberduck](https://cyberduck.io/) | |✔ |✔ |
+| [Microsoft Visual Studio Tools for HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#explore-linked-resources) |âœ” |âœ” |âœ” |
+| [Azure 記憶域エクスプローラー](../storage/blobs/storage-quickstart-blobs-storage-explorer.md) |âœ” |âœ” |âœ” |
+| [`Cerulea`](https://www.cerebrata.com/products/cerulean/features/azure-storage) | | |âœ” |
+| [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) | | |âœ” |
+| [Microsoft Azure 用の CloudBerry Explorer](https://www.cloudberrylab.com/free-microsoft-azure-explorer.aspx) | | |âœ” |
+| [Cyberduck](https://cyberduck.io/) | |âœ” |âœ” |
 
 ## <a name="mount-azure-storage-as-local-drive"></a>Azure Storage をローカル ドライブとしてマウントする
 

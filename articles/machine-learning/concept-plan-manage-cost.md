@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 39c649cccdf159810ad01c2312c4ea4837d9f4fc
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a52bcc9a2649592bef7b6f8d09cdde96226b77ea
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478643"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886120"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Azure Machine Learning のコストを計画して管理する
 
@@ -121,7 +121,7 @@ AmlCompute クラスターは、ワークロードに基づいて動的にスケ
 + 反復の少ない実験を実行する場合は、この時間を短くしてコストを節約します。
 + 反復の多い開発またはテストの実験を実行する場合は、トレーニング スクリプトまたは環境を変更するたびに、常にスケールアップとスケールダウンの料金が発生しないように、時間を長くする必要がある場合があります。
 
-AmlCompute クラスターは、[AmlCompute SDK クラス](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)、[AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute)、[REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) を使用して、Azure portal の変化するワークロード要件に合わせて構成できます。
+AmlCompute クラスターは、[AmlCompute SDK クラス](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute)、[AmlCompute CLI](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute)、[REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable) を使用して、Azure portal の変化するワークロード要件に合わせて構成できます。
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300

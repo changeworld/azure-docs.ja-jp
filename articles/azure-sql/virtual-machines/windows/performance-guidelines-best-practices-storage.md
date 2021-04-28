@@ -15,19 +15,19 @@ ms.workload: iaas-sql-server
 ms.date: 03/25/2021
 ms.author: dpless
 ms.reviewer: jroth
-ms.openlocfilehash: 001a9a15c259d0b0d73eec9c9a39ad7c27f26721
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f1138f0b33e75968f51965355528805dd29033b3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105572289"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145630"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>ストレージ: Azure VM 上の SQL Server のパフォーマンスに関するベスト プラクティス
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 この記事では、Azure 仮想マシン (VM) 上の SQL Server のパフォーマンスを最適化するための、ストレージのベスト プラクティスおよびガイドラインについて説明します。
 
-通常、コストの最適化とパフォーマンスの最適化はトレードオフの関係になっています。 このパフォーマンスに関するベスト プラクティス シリーズでは、Azure Virtual Machines 上の SQL Server の "*最善の*" パフォーマンスを得ることに重点を置いています。 ワークロードの要求が厳しくない場合は、推奨される最適化がすべて必要になるわけではありません。 各推奨事項を評価するときに、パフォーマンスのニーズ、コスト、およびワークロードのパターンを考慮してください。
+通常、コストの最適化とパフォーマンスの最適化はトレードオフの関係になっています。 このパフォーマンスに関するベスト プラクティス シリーズでは、Azure Virtual Machines の SQL Server の "*最善の*" パフォーマンスを得ることに重点を置いています。 ワークロードの要求が厳しくない場合は、推奨される最適化がすべて必要になるわけではありません。 各推奨事項を評価するときに、パフォーマンスのニーズ、コスト、およびワークロードのパターンを考慮してください。
 
 詳細については、このシリーズの他の記事、「[パフォーマンス チェックリスト](performance-guidelines-best-practices-checklist.md)」、「[VM サイズ](performance-guidelines-best-practices-vm-size.md)」、および「[ベースラインの収集](performance-guidelines-best-practices-collect-baseline.md)」を参照してください。 
 
@@ -52,8 +52,8 @@ ms.locfileid: "105572289"
 - 開発とテストのワークロード、および長期的なバックアップのアーカイブでは、Standard Storageの使用を検討してください。 運用環境のワークロードに Standard HDD/SDD を使用することはお勧めしません。
 - [クレジットベースのディスク バースト](../../../virtual-machines/disk-bursting.md#credit-based-bursting) (P1 から P20) は、小規模な開発またはテストのワークロードおよび部門別システムでのみ検討してください。
 - ストレージ アカウントは、SQL Server VM と同じリージョンにプロビジョニングします。 
-- ストレージ アカウントで Azure geo 冗長ストレージ (geo レプリケーション) を無効にし、 LRS (ローカル冗長ストレージ) を使用します。
-- ドライブに配置されるすべてのデータ ファイルに 64 KB アロケーション ユニット サイズを使用するように、データ ディスクをフォーマットします。ただし、一時 `D:\` ドライブ (既定値は 4 KB) 以外が対象です。 Azure Marketplace を通じてデプロイされた SQL Server VM には、アロケーション ユニット サイズでフォーマットされたデータ ディスクが付属しており、64 KB に設定された記憶域プールに対してインターリーブします。 
+- ストレージ アカウントで Azure geo 冗長ストレージ (geo レプリケーション) を無効にし、LRS (ローカル冗長ストレージ) を使用します。
+- ドライブに配置されるすべてのデータ ファイルに 64 KB のブロック サイズ (アロケーション ユニット サイズ) を使用するように、データ ディスクをフォーマットします。ただし、一時 `D:\` ドライブ (既定値は 4 KB) 以外が対象です。 Azure Marketplace を通じてデプロイされた SQL Server VM には、ブロック サイズでフォーマットされたデータ ディスクが付属しており、64 KB に設定された記憶域プールに対してインターリーブします。 
 
 このストレージのチェックリストを他と比較するには、総合的な[パフォーマンスのベスト プラクティスのチェックリスト](performance-guidelines-best-practices-checklist.md)をご覧ください。 
 
@@ -163,7 +163,7 @@ VM で使用できるキャッシュ不使用時の IOPS とスループット�
 
 同様に、Standard_M32ts は、キャッシュ不使用時のディスク IOPS として 20,000、キャッシュ不使用時のディスク スループットとして 500 MBps をサポートしていることがわかります。 この制限は、基になる Premium ディスク ストレージに関係なく、仮想マシン レベルで管理されます。
 
-詳細については、[キャッシュ不使用時とキャッシュ使用時の上限](../../../virtual-machines/linux/disk-performance-linux.md#virtual-machine-uncached-vs-cached-limits)に関する記事を参照してください。
+詳細については、[キャッシュ不使用時とキャッシュ使用時の上限](../../../virtual-machines/disks-performance.md#virtual-machine-uncached-vs-cached-limits)に関する記事を参照してください。
 
 
 ### <a name="cached-and-temp-storage-throughput"></a>キャッシュが有効な場合の一時ストレージのスループット
@@ -231,7 +231,7 @@ Premium Storage でキャッシュを有効にすると、仮想マシンは、�
 
 ## <a name="write-acceleration"></a>書き込みアクセラレータ
 
-書き込みアクセラレータは、[M シリーズ](https://docs.microsoft.com/azure/virtual-machines/m-series)の仮想マシン (VM) でのみ使用できるディスク機能です。 書き込みアクセラレータの目的は、大量のミッション クリティカルな OLTP ワークロードまたはデータウェアハウス環境によって、一桁の I/O 待機時間が必要な場合に、Azure Premium Storage に対する書き込みの I/O 待機時間を向上させることです。 
+書き込みアクセラレータは、[M シリーズ](../../../virtual-machines/m-series.md)の仮想マシン (VM) でのみ使用できるディスク機能です。 書き込みアクセラレータの目的は、大量のミッション クリティカルな OLTP ワークロードまたはデータウェアハウス環境によって、一桁の I/O 待機時間が必要な場合に、Azure Premium Storage に対する書き込みの I/O 待機時間を向上させることです。 
 
 ログ ファイルをホストしているドライブへの書き込みの待機時間を短縮するには、書き込みアクセラレータを使用します。 SQL Server データ ファイルには書き込みアクセラレータを使用しないでください。 
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: references_regions, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c9c09914e30bdeae809924bc4256c773f42abd52
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 762ae30674290e283e607b042be17d60327dd2ba
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479940"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887776"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>クイック スタート:C プロキシ アプリケーションを使用して IoT Hub デバイス ストリーム経由で SSH および RDP を有効にする (プレビュー)
 
@@ -120,7 +120,7 @@ Azure IoT Hub は現在、[プレビュー機能](https://azure.microsoft.com/su
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、[IoT 拡張機能](/cli/azure/ext/azure-iot/iot)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT Hub に接続するには、あらかじめ IoT Hub に登録しておく必要があります。 このセクションでは、[IoT 拡張機能](/cli/azure/iot)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
 1. Cloud Shell で次のコマンドを実行してデバイス ID を作成します。
 

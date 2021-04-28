@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/7/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1b7a846ee92da001ea2ac3ddd02efa9a870f72c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 958b0de97b79b447f2570dd9c57c87f380bcd551
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501908"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589396"
 ---
 # <a name="write-client-app-authentication-code"></a>クライアント アプリの認証コードを書き込む
 
@@ -107,6 +107,20 @@ Azure 関数で、次のようにマネージド ID の資格情報を使用で�
 * [マネージド ID を有効にする](../app-service/overview-managed-identity.md?tabs=dotnet)
 * 必要に応じて[環境変数](/sandbox/functions-recipes/environment-variables?tabs=csharp)を使用する
 * 関数アプリにアクセス許可を割り当てて、Digital Twins API にアクセスできるようにする。 Azure Functions のプロセスの詳細については、[*データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)に関するページを参照してください。
+
+## <a name="authenticate-across-tenants"></a>テナントをまたいだ認証
+
+Azure Digital Twins は、1 つの [Azure Active Directory (Azure AD) テナント](../active-directory/develop/quickstart-create-new-tenant.md) (Azure Digital Twins インスタンスが配置されているサブスクリプションのメイン テナント) のみをサポートするサービスです。
+
+[!INCLUDE [digital-twins-tenant-limitation](../../includes/digital-twins-tenant-limitation.md)]
+
+インスタンスとは異なるテナントに属しているサービス プリンシパルまたはユーザー アカウントを使用して Azure Digital Twins インスタンスにアクセスする必要がある場合は、別のテナントの各フェデレーション ID が Azure Digital Twins インスタンスの "ホーム" テナントからの **トークン** を要求することができます。 
+
+[!INCLUDE [digital-twins-tenant-solution-1](../../includes/digital-twins-tenant-solution-1.md)]
+
+また、コードの資格情報オプションでホーム テナントを指定することもできます。 
+
+[!INCLUDE [digital-twins-tenant-solution-2](../../includes/digital-twins-tenant-solution-2.md)]
 
 ## <a name="other-credential-methods"></a>その他の資格情報のメソッド
 

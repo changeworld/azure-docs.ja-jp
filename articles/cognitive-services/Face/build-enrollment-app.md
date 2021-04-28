@@ -1,7 +1,7 @@
 ---
-title: React を使用して Android 用の登録アプリをビルドする
+title: ユーザーを Face サービスに追加するための React アプリを作成する
 titleSuffix: Azure Cognitive Services
-description: 開発環境を設定し、お客様からの同意を得るための顔登録アプリを展開する方法について説明します。
+description: 開発環境を設定し、顧客からの同意を得るための Face アプリをデプロイする方法について説明します。
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,20 +9,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 218579176b807bbdae85646f27eaa7f301d4b9a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39a74c7f3d5fb8f8b60a66947fcce9837ed6ee13
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102428271"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505107"
 ---
-# <a name="build-an-enrollment-app-for-android-with-react"></a>React を使用して Android 用の登録アプリをビルドする
+# <a name="build-a-react-app-to-add-users-to-a-face-service"></a>ユーザーを Face サービスに追加するための React アプリを作成する
 
-このガイドでは、サンプルの顔登録アプリケーションの使用を始める方法について説明します。 このアプリでは、顔認識サービスにユーザーを登録し、精度の高い顔データを取得することを目的として、意味のある同意を得るためのベスト プラクティスを示します。 統合されたシステムでは、このような登録アプリを使用して、顔データに基づく、タッチレス アクセス制御、ID 検証、出社追跡、個人用設定キオスク、または ID 検証を提供することができます。
+このガイドでは、サンプルの顔登録アプリケーションの使用を始める方法について説明します。 このアプリでは、ユーザーを顔認識サービスに追加し、精度の高い顔データを取得することを目的として、意味のある同意を得るためのベスト プラクティスを示します。 統合されたシステムでは、このようなアプリを使用して、顔データに基づく、タッチレス アクセス制御、ID 検証、出社追跡、個人用設定キオスク、または ID 検証を提供できます。
 
 アプリケーションを起動すると、ユーザーに詳細な同意画面が表示されます。 ユーザーが同意すると、アプリによってユーザー名とパスワードを入力するよう要求され、デバイスのカメラを使用して高品質の顔の画像がキャプチャされます。
 
-サンプルの登録アプリは、JavaScript と React Native フレームワークを使用して記述されています。 現在は、Android デバイスに展開できます。今後、展開オプションをさらに増やすことが予定されています。
+サンプル アプリは、JavaScript と React Native フレームワークを使用して記述されています。 現在は、Android デバイスに展開できます。今後、展開オプションをさらに増やすことが予定されています。
 
 ## <a name="prerequisites"></a>必須コンポーネント 
 
@@ -36,22 +36,22 @@ ms.locfileid: "102428271"
 
 ## <a name="set-up-the-development-environment"></a>開発環境を設定する
 
-1. [サンプル登録アプリ](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample)の Git リポジトリをクローンします。
+1. [サンプル アプリ](https://github.com/azure-samples/cognitive-services-FaceAPIEnrollmentSample)の Git リポジトリをクローンします。
 1. 開発環境をセットアップするには、<a href="https://reactnative.dev/docs/environment-setup"  title="React Native のドキュメント"  target="_blank">React Native のドキュメント</a>に従います。 開発 OS として **React Native CLI Quickstart** を選択し、ターゲット OS として **Android** を選択します。 **依存関係のインストール** と **Android 開発環境** に関するセクションを完了します。
 1. [Visual Studio Code](https://code.visualstudio.com/) などの任意のテキスト エディターで env.json ファイルを開き、エンドポイントとキーを追加します。 エンドポイントとキーは、Azure portal でリソースの **[概要]** タブを見るとわかります。 この手順は、ローカル環境でテストを行う場合にのみ必要です。Face API キーをリモート リポジトリにチェックインしないでください。
 1. Android Studio から Android 仮想デバイス エミュレーターを使用して、または独自の Android デバイスを使用して、アプリを実行します。 物理デバイスでアプリをテストするには、関連する <a href="https://reactnative.dev/docs/running-on-device"  title="React Native のドキュメント"  target="_blank">React Native のドキュメント</a>に従ってください。  
 
 
-## <a name="create-an-enrollment-experience"></a>登録エクスペリエンスを作成する  
+## <a name="create-a-user-add-experience"></a>ユーザー追加エクスペリエンスを作成する  
 
-サンプル登録アプリのセットアップが済んだので、独自の登録エクスペリエンスのニーズに合わせてカスタマイズすることができます。
+サンプル アプリの設定が完了したので、独自のニーズに合わせてカスタマイズできます。
 
 たとえば、状況に応じた情報を同意ページに追加することができます。
 
 > [!div class="mx-imgBorder"]
 > ![アプリの同意ページ](./media/enrollment-app/1-consent-1.jpg)
 
-サービスには、画像が顧客を登録したり顔認識を試みたりするのに十分な品質かどうかを判断するのに役立つ画像品質チェックが用意されています。 このアプリでは、デバイスのカメラからフレームにアクセスし、最高品質のフレームを選択して、検出された顔を Face API サービスに登録する方法を示します。 
+このサービスには、画像が顧客を追加したり顔認識を試みたりするのに十分な品質かどうかを判断するのに役立つ画像品質チェックが用意されています。 このアプリでは、デバイスのカメラからフレームにアクセスし、最高品質のフレームを選択して、検出された顔を Face API サービスに追加する方法を示します。 
 
 顔認識の問題の多くは、低品質の参照画像が原因で発生します。 モデルのパフォーマンスを低下させる要因として、次のようなものがあります。
 * 顔のサイズ (カメラから離れている顔)
@@ -63,14 +63,14 @@ ms.locfileid: "102428271"
 > [!div class="mx-imgBorder"]
 > ![アプリの画像キャプチャの指示ページ](./media/enrollment-app/4-instruction.jpg)
 
-アプリには、ユーザーの登録を削除するための機能と再登録のオプションも用意されていることに注意してください。
+このアプリには、ユーザーの情報を削除するための機能と再追加のオプションも用意されていることに注意してください。
 
 > [!div class="mx-imgBorder"]
 > ![プロファイル管理ページ](./media/enrollment-app/10-manage-2.jpg)
 
-完全な登録エクスペリエンスに対応するようにアプリの機能を拡張するには、[概要](enrollment-overview.md)に関するページで、実装する他の機能とベスト プラクティスについて参照してください。
+完全なエクスペリエンスに対応するようにアプリの機能を拡張するには、[概要](enrollment-overview.md)に関するページで、実装する他の機能とベスト プラクティスについて参照してください。
 
-## <a name="deploy-the-enrollment-app"></a>登録アプリを展開する
+## <a name="deploy-the-app"></a>アプリケーションのデプロイ
 
 ### <a name="android"></a>Android
 
@@ -84,4 +84,4 @@ ms.locfileid: "102428271"
 
 ## <a name="next-steps"></a>次のステップ  
 
-このガイドでは、開発環境を設定し、サンプル登録アプリを使い始める方法について説明しました。 React Native を初めて使用する場合は、[入門ドキュメント](https://reactnative.dev/docs/getting-started)に関するページで詳細な背景情報を確認できます。 また、[Face API](Overview.md) について理解しておくことも役に立つ場合があります。 開発を始める前に、登録アプリのドキュメントの他のセクションを参照してください。
+このガイドでは、開発環境を設定し、サンプル アプリを使い始める方法について説明しました。 React Native を初めて使用する場合は、[入門ドキュメント](https://reactnative.dev/docs/getting-started)に関するページで詳細な背景情報を確認できます。 また、[Face API](Overview.md) について理解しておくことも役に立つ場合があります。 開発を始める前に、ユーザーの追加に関する他のセクションを参照してください。

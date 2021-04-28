@@ -9,12 +9,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 07/15/2020
-ms.openlocfilehash: d777588f0abdd1f771deb259c597f6407e61d874
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1213d5f7421cc71255f29d013fa47878559110ee
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364616"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107481584"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -121,9 +121,9 @@ New-AzResource -ApiVersion "${apiVersion}" -ResourceId "${integrationRuntimeReso
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 ### <a name="supported-data-sources"></a>サポートされるデータ ソース
 次のデータ ソースでは、ADF マネージド仮想ネットワークからのプライベート リンクを介した接続がサポートされています。
-- Azure Blob Storage
-- Azure Table Storage
-- Azure Files
+- Azure Blob Storage (ストレージ アカウント V1 は含まれません)
+- Azure Table Storage (ストレージ アカウント V1 は含まれません)
+- Azure Files (ストレージ アカウント V1 は含まれません)
 - Azure Data Lake Gen2
 - Azure SQL Database (Azure SQL Managed Instance を含まない)
 - Azure Synapse Analytics

@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 03/22/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: 7f35f9196fb4ab67de724ba73982fed69ac81361
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.topic: how-to
+ms.custom: devx-track-python, contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: 18b23dc8b7ed8b074ac3afbc7d44e5d132a2ee58
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306842"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890080"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のために Python 開発環境をセットアップする
 

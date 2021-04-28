@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: larryfr
 author: blackmist
 ms.date: 09/15/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 2740a86c5ff68e851d592533b48dc8ee60d817ee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: f3853ecc5a3741b485f779581da387b133065ed5
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98070814"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889360"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>ML Web サービス エンドポイントからのデータを監視および収集する
 

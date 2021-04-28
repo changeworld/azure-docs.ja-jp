@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: ab9e122ba0b2b50203a2d66ae14f03f3b6300f96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 455d78ed21403952046448dd4447b5ec54f77c00
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96452335"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107566981"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio (classic) で IoT ハブからのセンサー データを使用して天気予報を行う
 
@@ -23,25 +23,11 @@ ms.locfileid: "96452335"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の 1 つ です。 Azure Machine Learning Studio (クラシック) は、クラウドの予測分析サービスであり、分析ソリューションとして予測モデルを迅速に作成し、デプロイできるようにします。
+機械学習は、将来の動き、結果、傾向を予測するためにコンピューターで既存のデータからの学習を行う、データ サイエンスの手法の 1 つ です。 Azure Machine Learning Studio (クラシック) は、クラウドの予測分析サービスであり、分析ソリューションとして予測モデルを迅速に作成し、デプロイできるようにします。 この記事では、Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気温と湿度のデータを使用して、天気 (降水確率) を予測する方法について説明します。 降水確率は、準備された天気予報モデルから出力されます。 このモデルは、気温と湿度に基づいて降水確率を予測するための履歴データを基に構築されています。
 
-## <a name="what-you-learn"></a>学習内容
+## <a name="prerequisites"></a>前提条件
 
-Azure Machine Learning Studio (classic)で Azure IoT Hub から取得した気温と湿度のデータを使用して、天気 (降水確率) を予測する方法を学びます。 降水確率は、準備された天気予報モデルから出力されます。 このモデルは、気温と湿度に基づいて降水確率を予測するための履歴データを基に構築されています。
-
-## <a name="what-you-do"></a>作業内容
-
-- 天気予報モデルを Web サービスとしてデプロイする。
-- コンシューマー グループを追加して、データにアクセスできるよう IoT ハブを準備する。
-- Stream Analytics ジョブを作成し、ジョブが以下を行うように構成する。
-  - IoT Hub から取得した気温と湿度のデータを読み取る。
-  - Web サービスを呼び出して降水確率を取得する。
-  - Azure Blob Storage に結果を保存する。
-- Microsoft Azure Storage Explorer を使用して、天気予報を表示する。
-
-## <a name="what-you-need"></a>必要なもの
-
-- [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 次の要件について取り上げられています。
+- [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関する記事や、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。

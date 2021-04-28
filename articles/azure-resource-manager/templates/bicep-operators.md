@@ -2,23 +2,29 @@
 title: Bicep 演算子
 description: Azure Resource Manager のデプロイに使用できる Bicep 演算子について説明します。
 ms.topic: conceptual
-ms.date: 04/07/2021
-ms.openlocfilehash: 4bf1005a11b1dcfea9f4b28d6bd3fa7c33e3278f
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.date: 04/15/2021
+ms.openlocfilehash: 0838ebf6bc03f4237ef76e07f1eb6f25aa996fc0
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107211268"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537835"
 ---
 # <a name="bicep-operators"></a>Bicep 演算子
 
-この記事では、Bicep テンプレートを作成し、Azure Resource Manager を使用してリソースをデプロイするときに使用できる Bicep 演算子について説明します。 演算子は、値の計算、値の比較、または条件の評価に使用されます。 Bicep 演算子には、[比較](#comparison)、[論理](#logical)、[数値](#numeric)の 3 種類があります。
+この記事では、Bicep テンプレートを作成し、Azure Resource Manager を使用してリソースをデプロイするときに使用できる Bicep 演算子について説明します。 演算子は、値の計算、値の比較、または条件の評価に使用されます。 Bicep 演算子には、次の 3 つの種類があります。
+
+- [比較](#comparison)
+- [論理](#logical)
+- [numeric](#numeric)
+
+`(` と `)` の間に式を挿入することで、既定の Bicep 演算子の優先順位をオーバーライドできます。 たとえば、"x + y / z" という式では、最初に除算、その次に加算が評価されます。 一方、“(x + y) / z” という式では、最初に加算、2 番目に除算が評価されます。
 
 ## <a name="comparison"></a>比較
 
 比較演算子を使用すると、値が比較され、`true` または `false` のいずれかが返されます。
 
-| 演算子 | 名前 | 説明 |
+| 演算子 | Name | [説明] |
 | ---- | ---- | ---- |
 | `>=` | [[次の値以上]](bicep-operators-comparison.md#greater-than-or-equal-) | 1 番目の値が 2 番目の値以上かどうかを評価します。 |
 | `>`  | [より大きい](bicep-operators-comparison.md#greater-than-) | 1 番目の値が 2 番目の値より大きいかどうかを評価します。 |
@@ -33,7 +39,7 @@ ms.locfileid: "107211268"
 
 論理演算子は、ブール値を評価するか、null 以外の値を返すか、または条件式を評価します。
 
-| 演算子 | 名前 | 説明 |
+| 演算子 | Name | [説明] |
 | ---- | ---- | ---- |
 | `&&` | [And](bicep-operators-logical.md#and-) | すべての値が true の場合は `true` を返します。 |
 | `||`| [Or](bicep-operators-logical.md#or-) | どちらかの値が true の場合は `true` を返します。 |
@@ -45,7 +51,7 @@ ms.locfileid: "107211268"
 
 数値演算子では整数を使用して計算を行い、整数値を返します。
 
-| 演算子 | 名前 | 説明 |
+| 演算子 | Name | [説明] |
 | ---- | ---- | ---- |
 | `*` | [Multiply](bicep-operators-numeric.md#multiply-) | 2 つの整数を乗算します。 |
 | `/` | [除算](bicep-operators-numeric.md#divide-) | 整数を整数で除算します。 |
@@ -60,6 +66,6 @@ ms.locfileid: "107211268"
 ## <a name="next-steps"></a>次のステップ
 
 - Bicep ファイルを作成するには、「[チュートリアル: 最初の Azure Resource Manager Bicep ファイルを作成およびデプロイする](bicep-tutorial-create-first-bicep.md)」を参照してください。
-- Bicep 型のエラーを解決する方法については、「[Bicep の any 関数](template-functions-any.md)」を参照してください。
+- Bicep の型のエラーを解決する方法については、「[Bicep の any 関数](template-functions-any.md)」を参照してください。
 - Bicep と JSON の構文を比較するには、「[テンプレートにおける JSON と Bicep の比較](compare-template-syntax.md)」を参照してください。
 - Bicep と ARM テンプレート関数の例については、「[ARM テンプレート関数](template-functions.md)」を参照してください。

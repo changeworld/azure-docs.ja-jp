@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: inhenkel
 ms.custom: CLI, devx-track-azurecli
-ms.openlocfilehash: ff8bfbeea8bd22619375e88081da0cf9c0770fc9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 44c349afe4bee4762b6dc2564c200f68f3296cc4
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107511628"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107893264"
 ---
 <!-- ### Create a storage account -->
 

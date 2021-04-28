@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.date: 08/03/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
-ms.custom: how-to, tracking-python, deploy
-ms.openlocfilehash: 9de971639e22f9656ea75dc64993ac5881efbffb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: tracking-python, deploy
+ms.openlocfilehash: aae0194269d79371189998268bd87b9ea4a6b4d4
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102609415"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885544"
 ---
 # <a name="continuously-deploy-models"></a>モデルを継続的にデプロイする
 

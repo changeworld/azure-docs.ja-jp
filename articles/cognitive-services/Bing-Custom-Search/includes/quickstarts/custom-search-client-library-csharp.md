@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: 70f97b73b5cc6a06caf8f1dac4dec61b6ad6de29
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 504057be85902307a121a57dd421254d94167341
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98947776"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107879582"
 ---
 C# 用 Bing Custom Search クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Bing Custom Search API を使用すると、関心のあるトピックに合わせてカスタマイズした、広告なしの検索エクスペリエンスを作成できます。 このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch) にあります。
 
@@ -26,7 +26,7 @@ C# 用 Bing Custom Search クライアント ライブラリを使用して、�
 ## <a name="prerequisites"></a>前提条件
 
 - Bing Custom Search インスタンス。 「[クイック スタート:初めての Bing Custom Search インスタンスを作成する](../../quick-start.md)」で詳細を確認する。
-- Microsoft [.NET Core](https://www.microsoft.com/net/download/core)
+- Microsoft [.NET Core](https://dotnet.microsoft.com/download)
 - [Visual Studio 2017 またはそれ以降](https://www.visualstudio.com/downloads/)の任意のエディション
 - Linux/macOS を使用している場合、このアプリケーションは [Mono](https://www.mono-project.com/) を使用して実行できます。
 - [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) の NuGet パッケージ 
