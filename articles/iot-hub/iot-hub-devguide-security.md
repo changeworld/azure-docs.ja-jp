@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: e72af412f61f2084fb78907c15a92a22b9e3bc99
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 22f8be9ed487681c4029890fe9136731ddfc4fc3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567181"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147285"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -99,7 +99,7 @@ HTTPS では、 **Authorization** 要求ヘッダーに有効なトークンを�
 
 ユーザー名 (DeviceId では大文字と小文字が区別されます): `iothubname.azure-devices.net/DeviceId`
 
-パスワード (CLI 拡張コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) または [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して SAS トークンを生成できます):
+パスワード (CLI 拡張コマンド [az iot hub generate-sas-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token) または [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して SAS トークンを生成できます):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -303,7 +303,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> CLI 拡張コマンド [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) または [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して SAS トークンを生成できます。
+> CLI 拡張コマンド [az iot hub generate-sas-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token) または [Visual Studio Code 用 Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) を使用して SAS トークンを生成できます。
 
 ### <a name="use-a-shared-access-policy"></a>共有アクセス ポリシーを使用する
 
@@ -381,7 +381,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 * **証明機関署名入りの X.509 証明書**。 デバイスを識別して IoT Hub で認証するには、証明機関 (CA) によって生成され署名された X.509 証明書を使用します。 拇印または CA 認証のいずれかで動作します。
 
-* **自己生成および自己署名の X-509 証明書**。 デバイスの製造業者または社内のデプロイ担当者はこれらの証明書を生成し、対応する秘密キー (および証明書) をデバイスに格納することができます。 [OpenSSL](https://www.openssl.org/) や [Windows SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ユーティリティなどのツールを使用することができます。 拇印認証でのみ機能します。
+* **自己生成および自己署名の X-509 証明書**。 デバイスの製造業者または社内のデプロイ担当者はこれらの証明書を生成し、対応する秘密キー (および証明書) をデバイスに格納することができます。 [OpenSSL](https://www.openssl.org/) や [Windows SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) ユーティリティなどのツールを使用することができます。 拇印認証でのみ機能します。
 
 デバイスは X.509 証明書またはセキュリティ トークンのいずれかを使用できますが、両方一緒に使用することはできません。 X.509 証明書認証の場合は、既存の証明書の有効期限が切れたときに証明書のロールオーバーを処理するための戦略が用意されていることを確認します。
 
@@ -390,13 +390,13 @@ X.509 証明機関 (CA) の認証を使用するデバイスの次の機能は�
 * HTTPS、WebSocket 経由の MQTT、WebSockets プロトコル経由の AMQP。
 * ファイルのアップロード (すべてのプロトコル)。
 
-証明書機関を使用する認証の詳細については、「[X.509 CA 証明書を使用したデバイス認証](iot-hub-x509ca-overview.md)」を参照してください。 IoT ハブで証明機関から証明書をアップロードし、検証する方法については、「[Azure IoT Hub での X.509 セキュリティの設定](iot-hub-security-x509-get-started.md)」を参照してください。
+証明書機関を使用する認証の詳細については、「[X.509 CA 証明書を使用したデバイス認証](iot-hub-x509ca-overview.md)」を参照してください。 IoT ハブで証明機関から証明書をアップロードし、検証する方法については、「[Azure IoT Hub での X.509 セキュリティの設定](./tutorial-x509-scripts.md)」を参照してください。
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>デバイスの X.509 証明書を登録する
 
 [C# 用 Azure IoT サービス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (バージョン 1.0.8 以上) では、認証に X.509 証明書を使用するデバイスの登録がサポートされています。 デバイスのインポート/エクスポートなどの他の API でも X.509 証明書がサポートされます。
 
-CLI 拡張コマンド [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) を使って、デバイスの X.509 証明書を構成することもできます。
+CLI 拡張コマンド [az iot hub device-identity](/cli/azure/iot/hub/device-identity) を使って、デバイスの X.509 証明書を構成することもできます。
 
 ### <a name="c-support"></a>C\# のサポート
 

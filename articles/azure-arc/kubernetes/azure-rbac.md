@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes クラスターでの承認チェックに Azure RBAC を使用します
-ms.openlocfilehash: 0ee5f86ce12a39d86754d2e6e88263d8a03a012b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f0275e1516e8487b5a00fb08c885b09b6df1684c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304207"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145701"
 ---
 # <a name="integrate-azure-active-directory-with-azure-arc-enabled-kubernetes-clusters"></a>Azure Active Directory と Azure Arc 対応 Kubernetes クラスターの統合
 
@@ -24,7 +24,7 @@ Kubernetes の [ClusterRoleBinding および RoleBinding](https://kubernetes.io/
 
 ## <a name="prerequisites"></a>前提条件
 
-- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](/cli/azure/install-azure-cli)
 
 - `connectedk8s` Azure CLI 拡張機能バージョン 1.1.0 以降をインストールします
 
@@ -39,7 +39,7 @@ Kubernetes の [ClusterRoleBinding および RoleBinding](https://kubernetes.io/
     ```
 
 - Azure Arc 対応 Kubernetes に接続された既存のクラスター。
-    - クラスターをまだ接続していない場合は[クイックスタート](quickstart-connect-cluster.md)を使用します。
+    - クラスターをまだ接続していない場合は、[クイックスタート](quickstart-connect-cluster.md)を使用します。
     - バージョン 1.1.0 以降に [エージェントをアップグレードします](agent-upgrade.md#manually-upgrade-agents)。
 
 > [!NOTE]

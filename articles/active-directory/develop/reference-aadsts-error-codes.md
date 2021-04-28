@@ -12,12 +12,12 @@ ms.date: 03/17/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 75d838e8ce785a4f59b056bf0dec736b982ea716
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 6e08f9090682a62ffe209122e88adca9e9710b96
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283815"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064037"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD 認証と承認のエラー コード
 
@@ -196,7 +196,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - 認証に失敗しました。 更新トークンが無効です。 次のいずれかの理由がエラーの原因の可能性があります。<ul><li>トークンのバインド ヘッダーが空</li><li>トークンのバインド ハッシュが一致しない</li></ul> |
 | AADSTS70001 | UnauthorizedClient - アプリケーションが無効です。 詳細については、エラー [AADSTS70001](/troubleshoot/azure/active-directory/error-code-aadsts70001-app-not-found-in-directory) のトラブルシューティングに関する記事を参照してください。 |
-| AADSTS70002 | InvalidClient - 資格情報の検証中にエラーが発生しました。 指定された client_secret が、このクライアントに予期される値と一致しません。 client_secret を修正してから、やり直してください。 詳細については、「[承認コードを使用してアクセス トークンを要求する](v2-oauth2-auth-code-flow.md#request-an-access-token)」を参照してください。 |
+| AADSTS70002 | InvalidClient - 資格情報の検証中にエラーが発生しました。 指定された client_secret が、このクライアントに予期される値と一致しません。 client_secret を修正してから、やり直してください。 詳細については、「[承認コードを使用してアクセス トークンを要求する](v2-oauth2-auth-code-flow.md#redeem-a-code-for-an-access-token)」を参照してください。 |
 | AADSTS70003 | UnsupportedGrantType - アプリがサポートされていない付与タイプを返しました。 |
 | AADSTS70004 | InvalidRedirectUri - アプリが無効なリダイレクト URI を返しました。 クライアントによって指定されているリダイレクト アドレスが、構成されているどのアドレス、または OIDC 承認リストのどのアドレスとも、一致しません。 |
 | AADSTS70005 | UnsupportedResponseType - 次の理由により、アプリがサポートされていない応答の種類を返しました。<ul><li>応答の種類 "token" がアプリに対して有効になっていません</li><li>応答の種類 "id_token" には "OpenID" スコープが必要です。エンコードされた wctx にサポートされていない OAuth パラメーター値が含まれます</li></ul> |

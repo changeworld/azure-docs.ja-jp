@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: 8f0e7ec2566928897d2b84357b599506520e8d95
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7c238b1e785c34a6ec4cd99d63419e73239a9bfe
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612026"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135709"
 ---
 # <a name="set-up-an-appliance-for-servers-on-hyper-v"></a>Hyper-V 上のサーバーのアプライアンスを設定する
 
@@ -33,7 +33,7 @@ VHD テンプレートを使用してアプライアンスを設定するには:
 - アプライアンス名を指定し、ポータルでプロジェクト キーを生成します。
 - Azure portal から圧縮された Hyper-V VHD をダウンロードします。
 - アプライアンスを作成し、それが Azure Migrate: 検出および評価に接続できることを確認します。
-- アプライアンスを初めて構成し、プロジェクト キーを使用してプロジェクトに登録します。
+- 初回のアプライアンス構成を行い、プロジェクト キーを使用してプロジェクトに登録します。
 
 ### <a name="generate-the-project-key"></a>プロジェクト キーを生成する
 
@@ -62,7 +62,7 @@ VHD テンプレートを使用してアプライアンスを設定するには:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256```
 
-上記のコマンドの結果と[こちら](https://docs.microsoft.com/azure/migrate/tutorial-discover-hyper-v#verify-security)に記載されている値を比較して、最新のハッシュ値を確認します。
+上記のコマンドの結果と[こちら](./tutorial-discover-hyper-v.md#verify-security)に記載されている値を比較して、最新のハッシュ値を確認します。
 
 ## <a name="create-the-appliance"></a>アプライアンスを作成する
 

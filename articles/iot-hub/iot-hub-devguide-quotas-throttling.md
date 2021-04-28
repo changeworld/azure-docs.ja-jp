@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 4b65d42522f40eb7d0e65356223313a924de3039
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 394e4da38f599b9662c8a764cac2a3abbbcad04b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656993"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147303"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -87,7 +87,7 @@ IoT プラグ アンド プレイ デバイスでは、インターフェイス�
 
 デバイス ID レジストリの操作は、デバイスの管理とプロビジョニングのシナリオにおける実行時の使用を意図したものです。 多数のデバイス ID の読み取りまたは更新は、[ジョブのインポートとエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)によってサポートされています。
 
-(一括インポートおよびエクスポートのジョブ "*ではなく*") [一括レジストリ更新操作](https://docs.microsoft.com/rest/api/iothub/service/bulkregistry/updateregistry)を使用して ID 操作を開始する場合は、同じスロットル制限が適用されます。 たとえば、一括操作を送信して 50 台のデバイスを作成する必要あり、1 ユニットを含む S1 IoT Hub がある場合、1 分あたりに受け入れられるのはこれらの一括要求の 2 つのみです。 これは、1 つのユニットを含む S1 IoT Hub の ID 操作スロットルが 100/分/ユニットであるためです。 また、この場合は制限に既に達しているため、同じ 1分間の 3 つ目以降の要求は拒否されます。 
+(一括インポートおよびエクスポートのジョブ "*ではなく*") [一括レジストリ更新操作](/rest/api/iothub/service/bulkregistry/updateregistry)を使用して ID 操作を開始する場合は、同じスロットル制限が適用されます。 たとえば、一括操作を送信して 50 台のデバイスを作成する必要あり、1 ユニットを含む S1 IoT Hub がある場合、1 分あたりに受け入れられるのはこれらの一括要求の 2 つのみです。 これは、1 つのユニットを含む S1 IoT Hub の ID 操作スロットルが 100/分/ユニットであるためです。 また、この場合は制限に既に達しているため、同じ 1分間の 3 つ目以降の要求は拒否されます。 
 
 ### <a name="device-connections-throttle"></a>デバイス接続のスロットル
 

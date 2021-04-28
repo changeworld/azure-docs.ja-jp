@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
 ms.custom: devx-track-python
-ms.openlocfilehash: a9d6ec6aa5f30af04bf64e238f4a25ec6aef4f5d
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: fc1400ef97c93e356b3b2d34fb9cfb29b792c3fc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504755"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135583"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -268,10 +268,10 @@ print(call.sid)
 [try_twilio]: https://www.twilio.com/try-twilio
 [twilio_console]:  https://www.twilio.com/console
 [twilio_security_guidelines]: https://www.twilio.com/docs/security
-[twilio_howtos]: https://www.twilio.com/docs/howto
+[twilio_howtos]: https://www.twilio.com/docs/all
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart
-[azure_ips]: https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address
-[azure_vm_setup]: https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal
-[azure_nsg]: https://docs.microsoft.com/azure/virtual-network/manage-network-security-group
+[azure_ips]: ./virtual-network/virtual-network-public-ip-address.md
+[azure_vm_setup]: ./virtual-machines/linux/quick-create-portal.md
+[azure_nsg]: ./virtual-network/manage-network-security-group.md

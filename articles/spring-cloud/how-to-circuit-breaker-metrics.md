@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/15/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: fedebd9182c168b9b7c455d5f6726e66720e0a8b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: be67e2fb1bafaecd538f6fc671c006ac013cc849
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479161"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135277"
 ---
 # <a name="collect-spring-cloud-resilience4j-circuit-breaker-metrics-with-micrometer-preview"></a>Micrometer を使用して、Spring Cloud Resilience4J サーキット ブレーカーのメトリックを収集する (プレビュー)
 
@@ -22,7 +22,7 @@ ms.locfileid: "107479161"
 
 ## <a name="prerequisites"></a>[前提条件]
 
-* [Application Insights ガイドの Java インプロセス エージェント](./spring-cloud-howto-application-insights.md#enable-java-in-process-agent-for-application-insights)に関する記事から、Java インプロセス エージェントを有効にします。 
+* [Application Insights ガイドの Java インプロセス エージェント](./how-to-application-insights.md#enable-java-in-process-agent-for-application-insights)に関する記事から、Java インプロセス エージェントを有効にします。 
 
 * [Application Insights ガイド](../azure-monitor/app/pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)に関する記事から、Resilience4J メトリックのディメンション コレクションを有効にします。
 
@@ -125,6 +125,6 @@ az spring-cloud app deploy -n reactive-resilience4j \
 
 ## <a name="see-also"></a>関連項目
 
-* [Application Insights](spring-cloud-howto-application-insights.md)
-* [分散トレース](spring-cloud-howto-distributed-tracing.md)
-* [サーキット ブレーカー ダッシュボード](spring-cloud-tutorial-circuit-breaker.md)
+* [Application Insights](./how-to-application-insights.md)
+* [分散トレース](./how-to-distributed-tracing.md)
+* [サーキット ブレーカー ダッシュボード](./tutorial-circuit-breaker.md)

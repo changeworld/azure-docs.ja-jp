@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 15816d58105841ee53f3724158ebcbfa65df4877
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94660221"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133135"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースに関するよくあるご質問
 
@@ -46,7 +46,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースには登録料がかかりますか?
 
-いいえ、コマーシャル マーケットプレースでオファーを発行する場合、料金はかかりません。 取引手数料として、売上のごく一部をいただきます。これは、Marketplace Rewards プログラム、プラットフォームの刷新、コマーシャル マーケットプレースの運用に充てられます。 [Azure IP 共同販売](./marketplace-co-sell.md)のインセンティブ付きオファーと、1 つの Microsoft Teams アプリまたは少なくとも 2 つの Microsoft 365 アドイン (Excel、PowerPoint、Word、Outlook、SharePoint) に関連付けられている AppSource の有料 SaaS オファーの場合、この取引手数料が減額されます。
+いいえ、コマーシャル マーケットプレースでオファーを発行する場合、料金はかかりません。 取引手数料として、売上のごく一部をいただきます。これは、Marketplace Rewards プログラム、プラットフォームの刷新、コマーシャル マーケットプレースの運用に充てられます。 [Azure IP 共同販売](./co-sell-overview.md)のインセンティブ付きオファーと、1 つの Microsoft Teams アプリまたは少なくとも 2 つの Microsoft 365 アドイン (Excel、PowerPoint、Word、Outlook、SharePoint) に関連付けられている AppSource の有料 SaaS オファーの場合、この取引手数料が減額されます。
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの発行元としてサインアップするにはどうすればよいですか?
 

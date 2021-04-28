@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 07/22/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: eaa4a219a1020639c930f8a07bfcaa1c45d0cef8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 596c0deb833c5af7b85c1680062a24f075cf28cf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877529"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134629"
 ---
 # <a name="set-up-autoscale-for-microservice-applications"></a>マイクロサービス アプリケーションの自動スケーリングを設定する
 
@@ -25,7 +25,7 @@ ms.locfileid: "104877529"
 以下の手順に従うためには、次の要件を満たす必要があります。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* デプロイされた Azure Spring Cloud サービス インスタンス。 [Azure CLI を使用したアプリのデプロイに関するクイックスタート](./spring-cloud-quickstart.md)に従って作業を開始してください。
+* デプロイされた Azure Spring Cloud サービス インスタンス。 [Azure CLI を使用したアプリのデプロイに関するクイックスタート](./quickstart.md)に従って作業を開始してください。
 * サービス インスタンスで既に作成してある少なくとも 1 つのアプリケーション。
 
 ## <a name="navigate-to-the-autoscale-page-in-the-azure-portal"></a>Azure portal で自動スケーリングのページに移動する

@@ -4,19 +4,18 @@ description: Azure SQL Managed Instance のマネージド インスタンスの
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
-ms.custom: devx-track-azurecli
 ms.devlang: ''
 ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 148b24aea42072f1901c76c7a09a126340ef9951
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 571e48b7090f9ad6d74c672d84df3546f2bfa0a2
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784373"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070355"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Azure SQL Managed Instance のマネージド API リファレンス
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

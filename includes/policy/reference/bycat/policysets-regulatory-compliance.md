@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d6a2d97e7ea91710075d2e00cd5f57e6f174a031
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 6dbcbbf23e19fc7c13a916f136c03d1bb74c3823
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107504852"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866109"
 ---
 |名前 |説明 |ポリシー |Version |
 |---|---|---|---|
@@ -18,11 +18,11 @@ ms.locfileid: "107504852"
 |[カナダ連邦の PBMM](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |このイニシアチブには、カナダ連邦 PBMM コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/canadafederalpbmm-blueprint](https://aka.ms/canadafederalpbmm-blueprint) を参照してください。 |59 |5.0.0 |
 |[CIS Microsoft Azure Foundations Benchmark v1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_1_0.json) |このイニシアティブには、CIS Microsoft Azure Foundations Benchmark の推奨事項のサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cisazure110-initiative](https://aka.ms/cisazure110-initiative) を参照してください。 |99 |10.0.0 |
 |[\[プレビュー\]: CIS Microsoft Azure Foundations Benchmark v1.3.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CISv1_3_0.json) |このイニシアティブには、CIS Microsoft Azure Foundations Benchmark の推奨事項のサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cisazure130-initiative](https://aka.ms/cisazure130-initiative) を参照してください。 |104 |1.0.1 - プレビュー |
-|[\[プレビュー\]: CMMC Level 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |このイニシアティブには、サイバーセキュリティ成熟度モデル認定 (CMMC) レベル 3 の要件のサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative) を参照してください。 |183 |3.1.0-preview |
+|[\[プレビュー\]: CMMC Level 3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CMMC_L3.json) |このイニシアティブには、サイバーセキュリティ成熟度モデル認定 (CMMC) レベル 3 の要件のサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/cmmc-initiative](https://aka.ms/cmmc-initiative) を参照してください。 |182 |3.1.0-preview |
 |[FedRAMP High](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_H_audit.json) |このイニシアチブには、FedRAMP H コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedramph-blueprint](https://aka.ms/fedramph-blueprint) を参照してください。 |71 |4.0.1 |
 |[FedRAMP (中)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |このイニシアチブには、FedRAMP M コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint) を参照してください。 |62 |4.0.1 |
 |[HITRUST/HIPAA](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/HIPAA_HITRUST_audit.json) |このイニシアチブには、HITRUST/HIPAA コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/hipaa-blueprint](https://aka.ms/hipaa-blueprint) を参照してください。 |122 |5.1.0 |
-|[IRS1075 September 2016](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRS1075_audit.json) |このイニシアチブには、IRS1075 (2016 年 9 月) コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/irs1075-blueprint](https://aka.ms/irs1075-blueprint) を参照してください。 |62 |4.0.1 |
+|[IRS1075 September 2016](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/IRS1075_audit.json) |このイニシアチブには、IRS1075 (2016 年 9 月) コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/irs1075-blueprint](https://aka.ms/irs1075-blueprint) を参照してください。 |62 |5.0.0 |
 |[ISO 27001:2013](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/ISO27001_2013_audit.json) |このイニシアチブには、ISO 27001:2013 コントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/iso27001-init](https://aka.ms/iso27001-init) を参照してください。 |53 |4.0.2 |
 |[\[プレビュー\]: アメリカ映画協会 (MPAA)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/Media_audit.json) |このイニシアティブには、アメリカ映画協会 (MPAA) のセキュリティとガイドラインのコントロールのサブセットに対応する監査および仮想マシン拡張機能のデプロイ ポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/mpaa-blueprint](https://aka.ms/mpaa-blueprint) を参照してください。 |36 |4.0.1-preview |
 |[\[プレビュー\]: New Zealand ISM Restricted](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/nz_ism.json) |このイニシアティブには、ニュージーランド情報セキュリティ マニュアルのコントロールのサブセットに対応するポリシーが含まれています。 今後のリリースでさらにポリシーが追加される予定です。 詳細については、[https://aka.ms/nzism-initiative](https://aka.ms/nzism-initiative) を参照してください。 |71 |2.0.0-preview |

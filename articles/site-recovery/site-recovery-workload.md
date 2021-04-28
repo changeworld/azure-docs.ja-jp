@@ -3,12 +3,12 @@ title: Azure Site Recovery を使用したオンプレミス アプリのディ�
 description: Azure Site Recovery サービスによるディザスター リカバリーを使用して保護できるワークロードについて説明します。
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a5d20e6feacfe72052142c07dc45753b9bc3138
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "80062837"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599113"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>オンプレミス アプリのディザスター リカバリーについて
 
@@ -50,7 +50,7 @@ Site Recovery は、サポート対象のマシンで実行されているすべ
 | Linux (オペレーティング システムおよびアプリケーション) |○ (Microsoft によってテスト済み) |○ (Microsoft によってテスト済み) |○ (Microsoft によってテスト済み) |○ (Microsoft によってテスト済み) |○ (Microsoft によってテスト済み)|
 | Dynamics AX |はい |はい |はい |はい |はい|
 | Windows ファイル サーバー |はい |はい |はい |はい |はい|
-| Citrix XenApp と XenDesktop |はい|該当なし |はい |該当なし |はい |
+| Citrix XenApp と XenDesktop |いいえ|該当なし |いいえ |該当なし |いいえ |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory と DNS のレプリケート
 
@@ -151,14 +151,7 @@ IIS のディザスター リカバリーの[詳細](site-recovery-iis.md)を確
 
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>Citrix XenApp と XenDesktop の保護
 
-Site Recovery を使用して、Citrix XenApp と XenDesktop のデプロイを次のように保護できます。
-
-- Citrix XenApp と XenDesktop のデプロイの保護を有効にします。 さまざまなデプロイ層を Azure にレプリケートします。Active Directory Domain Services、DNS サーバー、SQL データベース サーバー、Citrix Delivery Controller、StoreFront サーバー、XenApp マスター (VDA)、Citrix XenApp ライセンス サーバー。
-- Site Recovery を使用して Citrix XenApp と XenDesktop のデプロイを Azure に移行することで、クラウド移行を簡略化します。
-- 必要に応じてテストとデバッグ用に運用環境に似たコピーを作成して、Citrix XenApp/XenDesktop のテストを簡略化します。
-- このソリューションは、クライアント仮想デスクトップではなく、Windows Server 仮想デスクトップのみに適用されます。 クライアント仮想デスクトップは、Azure でのライセンスがまだサポートされていません。 Azure におけるクライアント/サーバー デスクトップのライセンスについては、[こちら](https://azure.microsoft.com/pricing/licensing-faq/)を参照してください。
-
-Citrix XenApp および XenDesktop デプロイのディザスター リカバリーについて[詳細](site-recovery-citrix-xenapp-and-xendesktop.md)を確認してください。 または、[Citrix のホワイトペーパー](https://aka.ms/citrix-xenapp-xendesktop-with-asr)を参照してください。
+2020 年 3 月に、Citrix は、パブリック クラウドでホストされているワークロードが非推奨となることおよびサポートの終了を発表しました。 そのため、Citrix ワークロードを保護するために Site Recovery を使用することはお勧めしません。
 
 ## <a name="next-steps"></a>次のステップ
 

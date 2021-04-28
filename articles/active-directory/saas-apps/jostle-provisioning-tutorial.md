@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2021
 ms.author: Zhchia
-ms.openlocfilehash: d2ab0009f036afa38dc9e401223854a034d45e42
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 385a61b3bda6c75b6fb87a5655fadb45080b7f08
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368499"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124151"
 ---
 # <a name="tutorial-configure-jostle-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニングに対応するよう Jostle を構成する
 
-このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Jostle と Azure Active Directory (Azure AD) の両方で行う必要がある手順について説明します。 構成すると、Azure AD による Azure AD プロビジョニング サービスを使用した [Jostle](https://www.jostle.me/) へのユーザーとグループのプロビジョニングとプロビジョニング解除が自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。 
+このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Jostle と Azure Active Directory (Azure AD) の両方で行う必要がある手順について説明します。 構成すると、Azure AD による Azure AD プロビジョニング サービスを使用した [Jostle](https://www.jostle.me/) へのユーザーとグループのプロビジョニングとプロビジョニング解除が自動的に行われるようになります。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../app-provisioning/user-provisioning.md)」を参照してください。 
 
 
 ## <a name="capabilities-supported"></a>サポートされる機能
@@ -81,7 +81,7 @@ Automation ユーザーとその作成方法の詳細については、[こち�
 1. 次に、**API URL** と **API キー** を使用して、Azure での統合を構成します。
 ## <a name="step-3-add-jostle-from-the-azure-ad-application-gallery"></a>手順 3. Azure AD アプリケーション ギャラリーから Jostle を追加する
 
-Azure AD アプリケーション ギャラリーから Jostle を追加して、Jostle へのプロビジョニングの管理を開始します。 以前に SSO 用の Jostle を設定している場合は、同じアプリケーションを使用できます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](../manage-apps/add-gallery-app.md)を参照してください。 
+Azure AD アプリケーション ギャラリーから Jostle を追加して、Jostle へのプロビジョニングの管理を開始します。 以前に SSO 用の Jostle を設定している場合は、同じアプリケーションを使用できます。 ただし、統合を初めてテストするときは、別のアプリを作成することをお勧めします。 ギャラリーからアプリケーションを追加する方法の詳細については、[こちら](../manage-apps/add-application-portal.md)を参照してください。 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>手順 4. プロビジョニングの対象となるユーザーを定義する 
 

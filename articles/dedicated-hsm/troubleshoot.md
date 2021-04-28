@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.custom: mvc, seodec18
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 0791f2e8d5119c2087286a24cf83b4259ee9e7af
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f453370530359bc967316957b717f40904f6e392
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611652"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125987"
 ---
 # <a name="troubleshooting-the-azure-dedicated-hsm-service"></a>Azure Dedicated HSM サービスのトラブルシューティング
 
@@ -33,7 +33,7 @@ Dedicated HSM は無償提供されません。ハードウェア リソース�
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Dedicated HSM へのアクセス
 
-まず、[Azure Key Vault](https://docs.microsoft.com/azure/key-vault/general/overview) や [Azure Managed HSM](https://docs.microsoft.com/azure/key-vault/managed-hsm/overview) で対処できないのは、どのようなユース ケースかを考えます。 そのうえで、実際のキー ストレージ要件が Dedicated HSM でしか満たせないと判断したら、アクセスをリクエストするメールを HSMrequest@microsoft.com 宛てに送信してください。 お使いのアプリケーションとユース ケース、HSM を希望するリージョン、必要な HSM のボリュームの概要を記述してください。 Microsoft 担当者 (アカウント エグゼクティブ、クラウド ソリューション アーキテクトなど) がいる場合は、それらの担当者もリクエストに含めてください。
+まず、[Azure Key Vault](../key-vault/general/overview.md) や [Azure Managed HSM](../key-vault/managed-hsm/overview.md) で対処できないのは、どのようなユース ケースかを考えます。 そのうえで、実際のキー ストレージ要件が Dedicated HSM でしか満たせないと判断したら、アクセスをリクエストするメールを HSMrequest@microsoft.com 宛てに送信してください。 お使いのアプリケーションとユース ケース、HSM を希望するリージョン、必要な HSM のボリュームの概要を記述してください。 Microsoft 担当者 (アカウント エグゼクティブ、クラウド ソリューション アーキテクトなど) がいる場合は、それらの担当者もリクエストに含めてください。
 
 ## <a name="hsm-provisioning"></a>HSM のプロビジョニング
 
@@ -152,4 +152,4 @@ HSM 用の Azure リソースは、HSM が "ゼロで埋められた" 状態に�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、HSM のデプロイ ライフサイクル全体で、問題やトラブルシューティングに発展したり、注意を要したりする点を詳しく取り上げました。 不要な遅延や失敗を避けるうえで、この記事が役立てばさいわいです。記事に関して追加や変更点があれば、サポート リクエストで Microsoft にお寄せください。 
+この記事では、HSM のデプロイ ライフサイクル全体で、問題やトラブルシューティングに発展したり、注意を要したりする点を詳しく取り上げました。 不要な遅延や失敗を避けるうえで、この記事が役立てばさいわいです。記事に関して追加や変更点があれば、サポート リクエストで Microsoft にお寄せください。

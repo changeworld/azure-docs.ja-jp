@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: cc1c186f9acb6d49314f5d581a4b51ffe49d6627
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 776cc002304ea96cbf81d6cf08e5a54c19f86f4b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877483"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135331"
 ---
 # <a name="bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Azure Database for MySQL インスタンスを Azure Spring Cloud アプリケーションにバインドする 
 
@@ -26,7 +26,7 @@ Azure Spring Cloud では、Spring Boot アプリケーションを手動で構�
 * Azure Database for MySQL アカウント
 * Azure CLI
 
-デプロイされている Azure Spring Cloud インスタンスがない場合は、[Azure portal を使用して Azure Spring Cloud アプリケーションを起動する方法に関するクイックスタート](spring-cloud-quickstart.md)の手順に従って、初めての Spring Cloud アプリをデプロイしてください。
+デプロイされている Azure Spring Cloud インスタンスがない場合は、[Azure portal を使用して Azure Spring Cloud アプリケーションを起動する方法に関するクイックスタート](./quickstart.md)の手順に従って、初めての Spring Cloud アプリをデプロイしてください。
 
 ## <a name="bind-your-app-to-your-azure-database-for-mysql-instance"></a>アプリを Azure Database for MySQL インスタンスにバインドする
 
@@ -64,4 +64,4 @@ Azure Spring Cloud では、Spring Boot アプリケーションを手動で構�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Spring Cloud アプリケーションを Azure Database for MySQL インスタンスにバインドする方法について学習しました。 サービスをアプリケーションにバインドする方法の詳細については、[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする方法](spring-cloud-howto-bind-cosmos.md)に関する記事を参照してください。
+この記事では、Azure Spring Cloud アプリケーションを Azure Database for MySQL インスタンスにバインドする方法について学習しました。 サービスをアプリケーションにバインドする方法の詳細については、[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする方法](./how-to-bind-cosmos.md)に関する記事を参照してください。

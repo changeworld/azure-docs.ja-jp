@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ebf68c1eb06984e2de8114c53e1bb55d52aed70a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258913"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862635"
 ---
 # <a name="edit-storage-targets"></a>ストレージ ターゲットを編集する
 
@@ -45,7 +45,7 @@ Azure portal または Azure CLI を使用して、ストレージ ターゲッ�
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache storage-target remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove) を使用し、キャッシュからストレージ ターゲットを削除します。
+[az hpc-cache storage-target remove](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage_target_remove) を使用し、キャッシュからストレージ ターゲットを削除します。
 
 ```azurecli
 $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-cache0629 --name blob1
@@ -84,7 +84,7 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-BLOB ストレージ ターゲットの名前空間を Azure CLI を使用して変更するには、コマンド [az hpc-cache blob-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update) を使用します。 `--virtual-namespace-path` 値のみを変更できます。
+BLOB ストレージ ターゲットの名前空間を Azure CLI を使用して変更するには、コマンド [az hpc-cache blob-storage-target update](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update) を使用します。 `--virtual-namespace-path` 値のみを変更できます。
 
   ```azurecli
   az hpc-cache blob-storage-target update --cache-name cache-name --name target-name \
@@ -125,7 +125,7 @@ Azure portal または Azure CLI を使用して、クライアント向けの�
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) コマンドで ``--junction`` オプションを使用して、名前空間パス、NFS エクスポート、またはエクスポート サブディレクトリを変更します。
+[az hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target) コマンドで ``--junction`` オプションを使用して、名前空間パス、NFS エクスポート、またはエクスポート サブディレクトリを変更します。
 
 ``--junction`` パラメーターでは次の値が使用されます。
 
@@ -170,7 +170,7 @@ Azure portal の **[ストレージ ターゲット]** ページで、使用モ�
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache nfs-storage-target update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) コマンドを使用します。
+[az hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update) コマンドを使用します。
 
 update コマンドは、NFS ストレージ ターゲットを追加するために使用するコマンドとほぼ同じものです。 詳細と例については、「[NFS ストレージ ターゲットを作成する](hpc-cache-add-storage.md#create-an-nfs-storage-target)」を参照してください。
 
@@ -178,7 +178,7 @@ update コマンドは、NFS ストレージ ターゲットを追加するた�
 
 キャッシュ名、ストレージ ターゲット名、およびリソース グループの値も必須です。
 
-使用モデルの名前を確認するには、コマンド [az hpc-cache usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list) を使用します。
+使用モデルの名前を確認するには、コマンド [az hpc-cache usage-model list](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage-model-list) を使用します。
 
 キャッシュが停止しているか、正常な状態ではない場合、キャッシュが正常になってから更新が適用されます。
 

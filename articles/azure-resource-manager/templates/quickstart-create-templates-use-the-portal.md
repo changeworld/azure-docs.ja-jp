@@ -2,16 +2,16 @@
 title: テンプレートをデプロイする - Azure portal
 description: Azure portal を使用して最初の Azure Resource Manager テンプレート (ARM テンプレート) を作成する方法とテンプレートをデプロイする方法を説明します。
 author: mumian
-ms.date: 03/26/2021
+ms.date: 04/27/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.custom: contperfq1
-ms.openlocfilehash: 279dde9c4cd7b19086d29d3ba31a32c60a8cdf0b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 90c7145e6761820dea11fa13fc883dc87bec999e
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612927"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075125"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して ARM テンプレートを作成およびデプロイする
 

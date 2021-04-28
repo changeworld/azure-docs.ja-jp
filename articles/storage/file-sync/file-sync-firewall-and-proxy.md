@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b2c77c20bfb6fff60f2242d1ac2dad7b3fc9f6fe
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5c299bc88331c05c89273756ebaf377ee1378199
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107796035"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124457"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。
@@ -97,7 +97,7 @@ Set-StorageSyncProxyConfiguration -Address $Address -Port $Port -ProxyCredential
 2. WinHTTP のプロキシ設定を設定します 
 
    > [!Note]  
-   > プロキシ サーバーを使用するように Windows Server を構成するには、いくつかの方法 (WPAD、PAC ファイル、netsh など) があります。 以降の手順では、netsh を使用してプロキシ設定を構成する方法について説明しますが、「[Windows でプロキシ サーバーの設定を構成する](https://docs.microsoft.com/troubleshoot/windows-server/networking/configure-proxy-server-settings)」のドキュメントに記載されているすべての方法がサポートされています。
+   > プロキシ サーバーを使用するように Windows Server を構成するには、いくつかの方法 (WPAD、PAC ファイル、netsh など) があります。 以降の手順では、netsh を使用してプロキシ設定を構成する方法について説明しますが、「[Windows でプロキシ サーバーの設定を構成する](/troubleshoot/windows-server/networking/configure-proxy-server-settings)」のドキュメントに記載されているすべての方法がサポートされています。
 
 
    - 管理者特権でのコマンド プロンプトまたは PowerShell から次のコマンドを実行して、既存のプロキシ設定を表示します。   

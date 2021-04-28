@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/06/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 0a25e1b50455cad5bdbe5b76b2a291f2a1c11940
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: b17041f25fdd26bd0f8328a206267ef1c4984672
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107008"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144747"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -73,7 +73,7 @@ Microsoft 経由で販売することを選択すると、Microsoft コマース
 > [!NOTE]
 > ソリューションの使用後に使用量に基づいて課金されるオファーは、返金の対象になりません。
 
-オファーに関連付けられている使用料金を変更する発行元は、まず、コマーシャル マーケットプレースからオファー (またはオファー内の特定のプラン) を削除する必要があります。 削除は、[Microsoft 発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の要件に従って行う必要があります。 その後、公開元は新しいユーザー料金を含む新しいオファー (はたはオファー内のプラン) を公開できます。 オファーまたはプランの削除の詳細については、「[オファーまたはプランの販売を停止する](./partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)」を参照してください。
+オファーに関連付けられている使用料金を変更する発行元は、まず、コマーシャル マーケットプレースからオファー (またはオファー内の特定のプラン) を削除する必要があります。 削除は、[Microsoft 発行元契約](/legal/marketplace/msft-publisher-agreement)の要件に従って行う必要があります。 その後、公開元は新しいユーザー料金を含む新しいオファー (はたはオファー内のプラン) を公開できます。 オファーまたはプランの削除の詳細については、「[オファーまたはプランの販売を停止する](./partner-center-portal/update-existing-offer.md#stop-selling-an-offer-or-plan)」を参照してください。
 
 ### <a name="free-contact-me-and-bring-your-own-license-byol-pricing"></a>無料、問い合わせ、およびライセンス持ち込み (BYOL) の価格
 
@@ -147,7 +147,7 @@ SaaS サブスクリプションは、月または年単位で、定額あるい
 
 ### <a name="commercial-marketplace-service-fees"></a>コマーシャル マーケットプレースのサービス料金
 
-顧客がコマーシャル マーケットプレースからお客様のトランザクション オファーを購入すると、20% の標準ストア サービス料金が課金されます。 この料金の詳細については、「[Microsoft Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560)」のセクション 5c を参照してください。
+顧客がコマーシャル マーケットプレースからお客様のトランザクション オファーを購入すると、20% の標準ストア サービス料金が課金されます。 この料金の詳細については、「[Microsoft Publisher Agreement](/legal/marketplace/msft-publisher-agreement)」のセクション 5c を参照してください。
 
 コマーシャル マーケットプレースに公開する特定の取引オファーについては、ストア サービス料金の 10% 減額対象となる場合があります。 オファーが対象となるには、Microsoft によって "_Azure IP 共同販売インセンティブ対象_" に指定されている必要があります。 Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 資格が満たされると、"_Azure IP 共同販売インセンティブ対象_" の状態が失われるまで、翌月の 1 日に有効なすべてのトランザクションについて、サービス料金の減額を受けることができます。 IP 共同販売の資格の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。
 
@@ -155,7 +155,7 @@ Marketplace サービス料金の減額は、Azure IP 共同販売インセン�
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>顧客の請求、支払い、課金、回収
 
-**請求と支払い**: 顧客の優先する請求方法を使用して、サブスクリプションまたは[従量課金制](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)ソフトウェア ライセンス料金を伝えることができます。
+**請求と支払い**: 顧客の優先する請求方法を使用して、サブスクリプションまたは [従量課金制](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)ソフトウェア ライセンス料金を伝えることができます。
 
 **Enterprise Agreement**: 顧客の優先する請求方法が Microsoft Enterprise Agreement である場合、ソフトウェア ライセンス料金は、この方法を使用して、Azure 固有の使用コストとは別に明細コストとして課金されます。
 
@@ -178,7 +178,7 @@ Marketplace サービス料金の減額は、Azure IP 共同販売インセン�
 
 #### <a name="billing-questions-and-support"></a>課金に関する質問とサポート
 
-詳細と法的なポリシーについては、「[Microsoft 公開元契約](https://go.microsoft.com/fwlink/?LinkID=699560)」を確認してください。 課金に関するご質問については、[コマーシャル マーケットプレースの公開元のサポート](https://aka.ms/marketplacepublishersupport)までお問い合わせください。
+詳細と法的なポリシーについては、「[Microsoft 公開元契約](/legal/marketplace/msft-publisher-agreement)」を確認してください。 課金に関するご質問については、[コマーシャル マーケットプレースの公開元のサポート](https://aka.ms/marketplacepublishersupport)までお問い合わせください。
 
 ## <a name="transact-requirements"></a>販売の要件
 

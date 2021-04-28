@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/09/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 58e55527c84db0c368e676f2bf1314dca32e78db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc156afa2c5b5143e1543ef58203d6dea5d046c3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102631054"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144999"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -100,7 +100,7 @@ Microsoft AppSource または Azure Marketplace でトランザクション可�
 
 ### <a name="publisher-agreement"></a>発行元契約
 
-このページで説明されているすべてのアクティビティは、Microsoft [発行元契約](https://go.microsoft.com/fwlink/?LinkID=699560)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
+このページで説明されているすべてのアクティビティは、Microsoft [発行元契約](/legal/marketplace/msft-publisher-agreement)の対象であり、商用ベネフィット プログラムに関する補遺に基づいています。
 
 ### <a name="cancellation-policy"></a>キャンセルに関するポリシー
 

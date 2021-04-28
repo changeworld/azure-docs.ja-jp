@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: b85e1fc74688f2883531bd3a6e724a2ce326a9db
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: e0e6e42fc5b257cb0dfaf9d6a47bbac9811a23a5
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600252"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886858"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB データにアクセスする
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

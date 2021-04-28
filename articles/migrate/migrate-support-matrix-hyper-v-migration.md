@@ -6,12 +6,12 @@ ms.author: bsiva
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 90da16789344754c02d46022160db71ee261a056
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 33e34e777a78e1c609d2eacdcb501c0bce1f5c9d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96754064"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714922"
 ---
 # <a name="support-matrix-for-hyper-v-migration"></a>Hyper-V の移行のサポート マトリックス
 
@@ -83,7 +83,13 @@ backup.windowsazure.us | レプリケーション データの転送と調整。
 *.hypervrecoverymanager.windowsazure.us | レプリケーションの管理に使用されます。
 *.blob.core.usgovcloudapi.net | ストレージ アカウントにデータをアップロードします。
 dc.services.visualstudio.com | 内部監視に使用するアプリ ログをアップロードします。
-time.nist.gov | システム時刻とグローバル時刻間の時刻同期を確認します。
+time.nist.gov | システム時刻とグローバル時刻間の時刻同期を確認します。   
+
+>[!Note]
+>
+> 移行プロジェクトに **プライベート エンドポイント接続** がある場合は、Hyper-V ホスト上のレプリケーション プロバイダー ソフトウェアが、プライベート リンクのサポートのためにこれらの URL にアクセスできる必要があります。 
+> - *.blob.core.windows.com - レプリケートされたデータを格納するストレージ アカウントにアクセスするため。 これは省略可能であり、ストレージ アカウントにプライベート エンドポイントがアタッチされている場合は必要ありません。 
+> - login.windows.net - Active Directory を使用したアクセス制御と ID 管理のため。
 
 ## <a name="azure-vm-requirements"></a>Azure VM の要件
 

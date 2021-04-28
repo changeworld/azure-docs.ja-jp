@@ -3,12 +3,12 @@ title: Visual Studio Code を使用して PowerShell 関数を作成する - Azu
 description: Visual Studio Code の Azure Functions 拡張機能を使用して PowerShell 関数を作成し、ローカル プロジェクトを Azure Functions のサーバーレス ホスティングに発行する方法について説明します。
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: 9833b154cdba24f8760e7e8d9040bfc72bbcd271
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 58a2b8a5fb386603361afa9fc26b4d323c487691
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493595"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862545"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>クイックスタート: Visual Studio Code を使用して Azure で PowerShell 関数を作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "99493595"
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-+ [.NET Core 3.1 ランタイム](https://www.microsoft.com/net/download)と [.NET Core 2.1 ランタイム](https://dotnet.microsoft.com/download/dotnet-core/2.1)の両方  
++ [.NET Core 3.1 ランタイム](https://dotnet.microsoft.com/download)と [.NET Core 2.1 ランタイム](https://dotnet.microsoft.com/download/dotnet/2.1)の両方  
 
 + [サポートされているプラットフォーム](https://code.visualstudio.com/docs/supporting/requirements#_platforms)のいずれかにインストールされた [Visual Studio Code](https://code.visualstudio.com/)。    
 

@@ -5,18 +5,18 @@ description: Azure ロールベースのアクセス制御 (Azure RBAC) を使�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
 ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 4d037bdf266e70a2621b2627bc88abce30af652c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d18d674c47d3e337ce5c789d1dc038acbf6792ba
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612621"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886084"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 

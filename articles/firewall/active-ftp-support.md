@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 04/12/2021
 ms.author: victorh
-ms.openlocfilehash: e08be08f2d898b017bb34ed38c9c3a69ee0582fa
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 18b3680e47fe808413998144259e033a4cbcaa27
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312979"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864471"
 ---
 # <a name="azure-firewall-active-ftp-support"></a>Azure Firewall のアクティブ FTP のサポート
 
@@ -33,7 +33,7 @@ Azure PowerShell を使用してデプロイするには、`AllowActiveFTP` パ�
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用してデプロイするには、`--allow-active-ftp` パラメーターを使用します。 詳細については、[Az.Network のファイアウォールの作成](/cli/azure/ext/azure-firewall/network/firewall#ext_azure_firewall_az_network_firewall_create-optional-parameters)に関する記事を参照してください。 
+Azure CLI を使用してデプロイするには、`--allow-active-ftp` パラメーターを使用します。 詳細については、[Az.Network のファイアウォールの作成](/cli/azure/network/firewall#az_network_firewall_create-optional-parameters)に関する記事を参照してください。 
 
 ## <a name="azure-resource-manager-arm-template"></a>Azure Resource Manager (ARM) テンプレート
 

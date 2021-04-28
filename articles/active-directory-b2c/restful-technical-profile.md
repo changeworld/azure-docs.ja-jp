@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: eb6d82019cccd1da327461cb0a0635aea4f3647f
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: cff76672c7c687d1755996ba0dbf81daf947b8c2
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102174973"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070625"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービスの統合に対するサポートを提供しています。 Azure AD B2C は、入力要求コレクションでデータを RESTful サービスに送信し、出力要求コレクションで返却データを受信します。 詳細については、「[REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](custom-policy-rest-api-intro.md)」を参照してください。  
+Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービスの統合に対するサポートを提供しています。 Azure AD B2C は、入力要求コレクションでデータを RESTful サービスに送信し、出力要求コレクションで返却データを受信します。 詳細については、「[REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](api-connectors-overview.md)」を参照してください。  
 
 ## <a name="protocol"></a>Protocol
 
@@ -289,7 +289,7 @@ public class ResponseContent
 
 RESTful 技術プロファイルの使用例については、次の記事を参照してください。
 
-- [REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](custom-policy-rest-api-intro.md)
+- [REST API 要求交換の Azure AD B2C カスタム ポリシーへの統合](api-connectors-overview.md)
 - [チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](custom-policy-rest-api-claims-validation.md)
 - [チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する](custom-policy-rest-api-claims-validation.md)
 - [REST API サービスをセキュリティで保護する](secure-rest-api.md)

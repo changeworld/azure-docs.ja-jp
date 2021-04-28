@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/15/2021
 ms.author: jeedes
-ms.openlocfilehash: 864415f421f4fbecf31fd52a624ac568b4cf9c80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5a6833e07e6743eed4013739f9acda6b5bd1fa4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574764"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145929"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-managed-user"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と GitHub Enterprise Managed User の統合
 
@@ -39,7 +39,7 @@ ms.locfileid: "103574764"
 
 * GitHub Enterprise Managed User では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます。
 * GitHub Enterprise Managed User では、**Just In Time** ユーザー プロビジョニングがサポートされます。
-* GitHub Enterprise Managed User では、[**自動化された** ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/github-enterprise-managed-user-provisioning-tutorial)がサポートされます。
+* GitHub Enterprise Managed User では、[**自動化された** ユーザー プロビジョニング](./github-enterprise-managed-user-provisioning-tutorial.md)がサポートされます。
 
 ## <a name="adding-github-enterprise-managed-user-from-the-gallery"></a>ギャラリーからの GitHub Enterprise Managed User の追加
 
@@ -128,7 +128,7 @@ GitHub Enterprise Managed User に対する Azure AD SSO を構成してテス�
 
 このセクションでは、GitHub Enterprise Managed User に B.Simon というユーザーを作成します。 GitHub Enterprise Managed User では、Just-In-Time プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 ユーザーがまだ GitHub Enterprise Managed User に存在しない場合は、GitHub Enterprise Managed User にアクセスしようとしたときに新しいユーザーが作成されます。
 
-GitHub Enterprise Managed User は、自動ユーザー プロビジョニングもサポートしています。自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/github-enterprise-managed-user-provisioning-tutorial)を参照してください。
+GitHub Enterprise Managed User は、自動ユーザー プロビジョニングもサポートしています。自動ユーザー プロビジョニングの構成方法の詳細については、[こちら](./github-enterprise-managed-user-provisioning-tutorial.md)を参照してください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -144,11 +144,9 @@ GitHub Enterprise Managed User は、自動ユーザー プロビジョニング
 
 * Azure portal で **[このアプリケーションをテストします]** をクリックすると、SSO を設定した GitHub Enterprise Managed User に自動的にサインインされます 
 
-また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [GitHub Enterprise Managed User] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した GitHub Enterprise Managed User に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+また、Microsoft マイ アプリを使用して、任意のモードでアプリケーションをテストすることもできます。 マイ アプリで [GitHub Enterprise Managed User] タイルをクリックすると、SP モードで構成されている場合は、ログイン フローを開始するためのアプリケーション サインオン ページにリダイレクトされます。IDP モードで構成されている場合は、SSO を設定した GitHub Enterprise Managed User に自動的にサインインされます。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-GitHub Enterprise Managed User を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+GitHub Enterprise Managed User を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

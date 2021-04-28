@@ -10,12 +10,12 @@ ms.devlang: python
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: a279c1ed16cac69932001146d4108cec19203e22
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: bfaf0463f1ee4904562a5d7b3dd565c9d149ff35
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536631"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124835"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>クイック スタート:Python を使用した Azure Functions と SignalR Service によるチャット ルームの作成
 
@@ -29,7 +29,7 @@ Azure SignalR Service を使用すると、アプリケーションにリアル�
 
 Python Azure Function アプリをローカルで実行するために、[Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (バージョン 2.7.1505 以降) をインストールします。
 
-Azure Functions には [Python 3.6 以降](https://www.python.org/downloads/)が必要です ([サポートされている Python のバージョン](/azure/azure-functions/functions-reference-python#python-version)を参照してください)。
+Azure Functions には [Python 3.6 以降](https://www.python.org/downloads/)が必要です ([サポートされている Python のバージョン](../azure-functions/functions-reference-python.md#python-version)を参照してください)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

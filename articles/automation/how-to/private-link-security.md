@@ -6,12 +6,13 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/11/2020
 ms.subservice: ''
-ms.openlocfilehash: f3c9197faaae89e0ffb238f987ee66dafea8abdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 28f4c314b65a27c71c7620ff5941463b1ea68b55
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100579799"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831458"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-automation"></a>Azure Private Link を使用して、ネットワークを Azure Automation に安全に接続する
 

@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 ms.custom: references_regions
 description: カスタムの場所を使用して、Azure Arc 対応 Kubernetes クラスターに Azure PaaS サービスをデプロイします
-ms.openlocfilehash: ddda6420acd7126cb46b043f5c1bce67758342bc
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: b3a0d89f0c352b8344aea68a613653eae43a41e4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450868"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147771"
 ---
 # <a name="custom-locations-on-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 上のカスタムの場所
 
@@ -27,7 +27,7 @@ Azure の場所と同様に、カスタムの場所にアクセスできるテ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](/cli/azure/install-azure-cli)。
 
 - `connectedk8s` (バージョン 1.1.0 以降)、`k8s-extension` (バージョン 0.2.0 以降)、`customlocation` (バージョン 0.1.0 以降) Azure CLI 拡張機能。 次のコマンドを実行して、これらの Azure CLI 拡張機能をインストールします。
   
