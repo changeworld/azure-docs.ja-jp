@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 6ba49ebc593e67e1168f6427ade38b7d80bf7edf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 94b7b0761d40906ba5a8043ff02953db74b6c1b5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96621435"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145017"
 ---
 # <a name="how-to-sell-your-azure-application-offer"></a>Azure アプリケーション オファーを販売する方法
 
@@ -23,7 +23,7 @@ ms.locfileid: "96621435"
 
 **[Microsoft と共同販売する]** タブでの情報入力はすべて省略できます。 しかし、"_共同販売の準備完了_" と "_IP 共同販売の準備完了_" の状態になっている必要があります。 Microsoft の営業チームでは、顧客のニーズに適合しているかどうかについてソリューションを評価する際に、この情報を使用して詳細を把握します。 このタブで入力した情報を、顧客が直接見ることはできません。
 
-**[Microsoft との共同販売]** タブの構成の詳細および手順については、「[コマーシャル マーケットプレースでの共同販売オプション](commercial-marketplace-co-sell.md)」を参照してください。
+**[Microsoft との共同販売]** タブの構成の詳細および手順については、「[コマーシャル マーケットプレースでの共同販売オプション](./co-sell-configure.md)」を参照してください。
 
 ## <a name="resell-through-csps"></a>CSP を通して再販する
 

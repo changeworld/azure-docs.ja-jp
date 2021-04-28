@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 21ccafe3e15f902e35657a9aa31516bbaeb3b4c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/21/2021
+ms.openlocfilehash: 0f7d63a1213b6fe6625f16f33f18680b7a9e6bcb
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558008"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107906838"
 ---
 # <a name="how-to-generate-a-sas-uri-for-a-vm-image"></a>VM イメージの SAS URI を生成する方法
 
@@ -21,7 +21,6 @@ ms.locfileid: "105558008"
 
 VHD の SAS URI の生成には、次の要件があります。
 
-- アンマネージド VHD のみがサポートされます。
 - リストおよび読み取りアクセス許可のみが必要です。 書き込みまたは削除アクセス権を付与しないでください。
 - アクセスするための期間 (有効期限) は、SAS URI の作成時から最低 3 週間必要です。
 - UTC 時刻の変更から保護するには、開始日を現在の日付の 1 日前に設定します。 たとえば、現在の日付が 2020 年 6 月 16 日である場合は、6/15/2020 を選択します。

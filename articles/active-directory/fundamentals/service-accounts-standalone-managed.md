@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2b3079407774c3d36fe5515b39e964018f9087e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 146cee9ddd6f0cef5ca23272ad9991af847f30ba
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102548854"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072155"
 ---
 # <a name="securing-standalone-managed-service-accounts"></a>スタンドアロンの管理サービス アカウントのセキュリティ保護
 
@@ -44,7 +44,7 @@ sMSA は、サービス アカウントとして使用されるユーザー ア�
 
    * ホスト コンピューターの DNS 名が変更された場合
 
-   * [PowerShell](/powershell/module/addsadministration/set-adserviceaccount) を使用して、追加の sam-accountname パラメーターまたは dns-hostname パラメーターを追加または削除する場合
+   * [PowerShell](/powershell/module/activedirectory/set-adserviceaccount) を使用して、追加の sam-accountname パラメーターまたは dns-hostname パラメーターを追加または削除する場合
 
 ## <a name="when-to-use-smsas"></a>sMSA を使用する場合
 

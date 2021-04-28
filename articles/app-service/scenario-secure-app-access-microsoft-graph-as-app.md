@@ -10,13 +10,13 @@ ms.workload: identity
 ms.date: 01/28/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.custom: azureday1
-ms.openlocfilehash: 06837ab0f4685787f8d2615e81d0405fdb8ec711
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: azureday1, devx-track-azurepowershell
+ms.openlocfilehash: 5bb52799836b1975de9d936e04fb53987effb300
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99062562"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832628"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>チュートリアル:セキュリティで保護されたアプリからアプリとして Microsoft Graph にアクセスする
 
@@ -212,7 +212,7 @@ public async Task OnGetAsync()
 
 このチュートリアルを完了し、Web アプリや関連するリソースが不要になった場合は、[作成したリソースをクリーンアップ](scenario-secure-app-clean-up-resources.md)します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 

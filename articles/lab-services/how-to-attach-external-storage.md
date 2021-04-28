@@ -5,16 +5,16 @@ author: emaher
 ms.topic: article
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: 888e04db76567051f8c5eae7cf94c77e684cb146
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 70be69cad59cd00ef9feaa78ad2294c64626d07a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106111099"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125681"
 ---
 # <a name="using-external-file-storage-in-lab-services"></a>Lab Services で 外部ファイル ストレージを使用する
 
-この記事では、Azure Lab Services を使用する際の外部ファイル ストレージでのいくつかのオプションについて説明します。  [Azure Files](https://azure.microsoft.com/services/storage/files/) では、[SMB 2.1 と SMB 3.0 を介してアクセスできる](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows)クラウド内のフル マネージド ファイル共有を提供します。  Azure Files 共有は、仮想ネットワーク内でパブリックまたはプライベートで接続できます。  また、ファイル共有への接続に学生の AD 資格情報を使用するように構成することもできます。  Linux マシン用の NFS ボリュームを含む Azure NetApp Files を使用することは、Azure Lab Services での外部ファイル ストレージのもう 1 つの選択肢です。  
+この記事では、Azure Lab Services を使用する際の外部ファイル ストレージでのいくつかのオプションについて説明します。  [Azure Files](https://azure.microsoft.com/services/storage/files/) では、[SMB 2.1 と SMB 3.0 を介してアクセスできる](../storage/files/storage-how-to-use-files-windows.md)クラウド内のフル マネージド ファイル共有を提供します。  Azure Files 共有は、仮想ネットワーク内でパブリックまたはプライベートで接続できます。  また、ファイル共有への接続に学生の AD 資格情報を使用するように構成することもできます。  Linux マシン用の NFS ボリュームを含む Azure NetApp Files を使用することは、Azure Lab Services での外部ファイル ストレージのもう 1 つの選択肢です。  
 
 ## <a name="deciding-which-solution-to-use"></a>使用するソリューションを決める
 
@@ -46,16 +46,16 @@ Azure Files 共有にプライベート エンドポイントを使用する場�
 - この方法では、ファイル共有仮想ネットワークがラボ アカウントとピアリングされている必要があります。  Azure Storage アカウントの仮想ネットワークは、ラボを作成する **前に**、ラボ アカウントの仮想ネットワークとピアリングされている必要があります。
 
 > [!NOTE]
-> 5 TB を超えるファイル共有は、[[ローカル冗長ストレージ (LRS) アカウント]](/azure/storage/files/storage-files-how-to-create-large-file-share#restrictions) でのみ使用できます。
+> 5 TB を超えるファイル共有は、[[ローカル冗長ストレージ (LRS) アカウント]](../storage/files/storage-files-how-to-create-large-file-share.md#restrictions) でのみ使用できます。
 
 Azure Files 共有に接続された VM を作成するには、次の手順に従ってください。
 
-1. [Azure Storage アカウント](/azure/storage/files/storage-how-to-create-file-share)を作成します。 [接続方法] ページで、パブリック エンドポイントまたはプライベート エンドポイントを選択します。
-2. 使用する場合は、仮想ネットワークからファイル共有にアクセスできるようにするために、[プライベート エンドポイント](/azure/private-link/create-private-endpoint-storage-portal)を作成します。  [プライベート DNS ゾーン](/azure/dns/private-dns-privatednszone)を作成するか、既存のものを使用します。 プライベート Azure DNS ゾーンでは、仮想ネットワーク内での名前解決が提供されます。
-3. [Azure ファイル共有](/azure/storage/files/storage-how-to-create-file-share)を作成します。 ファイル共有には、ストレージ アカウントのパブリック ホスト名を指定してアクセスできます。
+1. [Azure Storage アカウント](../storage/files/storage-how-to-create-file-share.md)を作成します。 [接続方法] ページで、パブリック エンドポイントまたはプライベート エンドポイントを選択します。
+2. 使用する場合は、仮想ネットワークからファイル共有にアクセスできるようにするために、[プライベート エンドポイント](../private-link/tutorial-private-endpoint-storage-portal.md)を作成します。  [プライベート DNS ゾーン](../dns/private-dns-privatednszone.md)を作成するか、既存のものを使用します。 プライベート Azure DNS ゾーンでは、仮想ネットワーク内での名前解決が提供されます。
+3. [Azure ファイル共有](../storage/files/storage-how-to-create-file-share.md)を作成します。 ファイル共有には、ストレージ アカウントのパブリック ホスト名を指定してアクセスできます。
 4. Azure ファイル共有をテンプレート VM にマウントします。
-    - [[Windows]](/azure/storage/files/storage-how-to-use-files-windows)
-    - [[Linux]](/azure/storage/files/storage-how-to-use-files-linux)。  学生用 VM でのマウントの問題を回避するには、「[Linux で Azure Files を使用する](#using-azure-files-with-linux)」を参照してください。
+    - [[Windows]](../storage/files/storage-how-to-use-files-windows.md)
+    - [[Linux]](../storage/files/storage-how-to-use-files-linux.md)。  学生用 VM でのマウントの問題を回避するには、「[Linux で Azure Files を使用する](#using-azure-files-with-linux)」を参照してください。
 5. テンプレート VM を[発行](how-to-create-manage-template.md#publish-the-template-vm)します。
 
 > [!IMPORTANT]
@@ -98,14 +98,14 @@ Azure ファイル共有を `/mnt` ディレクトリにマウントするテン
 
 学生は `mount -a` を実行して、ディレクトリを再マウントする必要があります。
 
-Linux でのファイル共有の使用に関する一般的な情報については、「[Linux で Azure Files を使用する](/azure/storage/files/storage-how-to-use-files-linux)」を参照してください。
+Linux でのファイル共有の使用に関する一般的な情報については、「[Linux で Azure Files を使用する](../storage/files/storage-how-to-use-files-linux.md)」を参照してください。
 
 ## <a name="azure-files-with-identity-base-authorization"></a>ID ベースの承認を使用した Azure Files
 
 次の場合、AD 認証を使用して Azure Files 共有にアクセスすることもできます。
 
 1. 学生用 VM がドメインに参加している。
-2. AD 認証が、ファイル共有をホストする [Azure Storage アカウントで有効](/azure/storage/files/storage-files-active-directory-overview)になっている。  
+2. AD 認証が、ファイル共有をホストする [Azure Storage アカウントで有効](../storage/files/storage-files-active-directory-overview.md)になっている。  
 
 ネットワーク ドライブは、ストレージ アカウントのキーではなく、ユーザーの ID を使用して仮想マシンにマウントされます。  ストレージ アカウントへのアクセスには、パブリックまたはプライベート エンドポイントを使用できます。
 
@@ -125,13 +125,13 @@ Azure Files 共有にプライベート エンドポイントを使用する場�
 
 次の手順に従って、AD 認証が有効になった Azure Files 共有を作成し、ラボ VM をドメインに参加させます。
 
-1. [Azure Storage アカウント](/azure/storage/files/storage-how-to-create-file-share)を作成します。
-2. 使用する場合は、仮想ネットワークからファイル共有にアクセスできるようにするために、[プライベート エンドポイント](/azure/private-link/create-private-endpoint-storage-portal)を作成します。  [プライベート DNS ゾーン](/azure/dns/private-dns-privatednszone)を作成するか、既存のものを使用します。 プライベート Azure DNS ゾーンでは、仮想ネットワーク内での名前解決が提供されます。
-3. [Azure ファイル共有](/azure/storage/files/storage-how-to-create-file-share)を作成します。
-4. ID ベースの承認を有効にするには、次の手順に従ってください。  Azure AD に同期されるオンプレミスの AD を使用する場合は、「[SMB を使用した Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証](/azure/storage/files/storage-files-identity-auth-active-directory-enable)」の手順に従ってください。  Azure AD のみを使用する場合は、「[Azure Files に対する Azure Active Directory Domain Services 認証を有効にする](/azure/storage/files/storage-files-identity-auth-active-directory-domain-service-enable)」の手順に従います。
+1. [Azure Storage アカウント](../storage/files/storage-how-to-create-file-share.md)を作成します。
+2. 使用する場合は、仮想ネットワークからファイル共有にアクセスできるようにするために、[プライベート エンドポイント](../private-link/tutorial-private-endpoint-storage-portal.md)を作成します。  [プライベート DNS ゾーン](../dns/private-dns-privatednszone.md)を作成するか、既存のものを使用します。 プライベート Azure DNS ゾーンでは、仮想ネットワーク内での名前解決が提供されます。
+3. [Azure ファイル共有](../storage/files/storage-how-to-create-file-share.md)を作成します。
+4. ID ベースの承認を有効にするには、次の手順に従ってください。  Azure AD に同期されるオンプレミスの AD を使用する場合は、「[SMB を使用した Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証](../storage/files/storage-files-identity-auth-active-directory-enable.md)」の手順に従ってください。  Azure AD のみを使用する場合は、「[Azure Files に対する Azure Active Directory Domain Services 認証を有効にする](../storage/files/storage-files-identity-auth-active-directory-domain-service-enable.md)」の手順に従います。
     >[!IMPORTANT]
     >AD を管理するチームに相談して、手順に記載されているすべての前提条件が満たされていることを確認してください。
-5. Azure で SMB 共有のアクセス許可ロールを割り当てます。  各ロールに付与されるアクセス許可の詳細については、[共有レベルのアクセス許可](/azure/storage/files/storage-files-identity-ad-ds-assign-permissions)に関するページを参照してください。
+5. Azure で SMB 共有のアクセス許可ロールを割り当てます。  各ロールに付与されるアクセス許可の詳細については、[共有レベルのアクセス許可](../storage/files/storage-files-identity-ad-ds-assign-permissions.md)に関するページを参照してください。
     1. "ストレージ ファイル データの SMB 共有の管理者特権共同作成者" ロールは、ファイル共有のコンテンツのアクセス許可を設定するユーザーまたはグループに割り当てる必要があります。
     2. "ストレージ ファイル データの SMB 共有の共同作成者" ロールは、ファイル共有のファイルを追加または編集する必要がある学生に割り当てる必要があります。
     3. "ストレージ ファイル データの SMB 共有の閲覧者" ロールは、ファイル共有のファイルの読み取りだけが必要な学生に割り当てる必要があります。
@@ -147,7 +147,7 @@ Azure Files 共有にプライベート エンドポイントを使用する場�
 10. テンプレート マシンで、スクリプトをダウンロードして実行し、[学生のマシンをドメインに参加](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Scripts/ActiveDirectoryJoin/README.md#usage)させます。  `Join-AzLabADTemplate` スクリプトを実行すると、自動的に[テンプレート VM が発行](how-to-create-manage-template.md#publish-the-template-vm)されます。  
     > [!NOTE]
     > テンプレート マシンは、ドメインに参加しません。 インストラクターは、共有上のファイルを表示するために、発行された学生用 VM を自分で割り当てる必要があります。
-11. Windows を使用している学生は、ファイル共有へのパスが与えられたら、自分の資格情報で[エクスプローラー](/azure/storage/files/storage-how-to-use-files-windows)を使用して、Azure Files 共有に接続できます。  または、学生は、上の手順で作成したスクリプトを実行して、ネットワーク ドライブに接続することもできます。  Linux を使用している学生の場合は、上で作成したスクリプトを実行します。
+11. Windows を使用している学生は、ファイル共有へのパスが与えられたら、自分の資格情報で[エクスプローラー](../storage/files/storage-how-to-use-files-windows.md)を使用して、Azure Files 共有に接続できます。  または、学生は、上の手順で作成したスクリプトを実行して、ネットワーク ドライブに接続することもできます。  Linux を使用している学生の場合は、上で作成したスクリプトを実行します。
 
 ## <a name="netapp-files-with-nfs-volumes"></a>NFS ボリュームを含む NetApp Files
 
@@ -162,7 +162,7 @@ Azure Files 共有にプライベート エンドポイントを使用する場�
 Azure Lab Services で Azure NetApp Files 共有を使用するには、下の手順に従います。
 
 1. 必要に応じて、[Azure NetApp Files](https://aka.ms/azurenetappfiles) にオンボードします。
-2. NetApp Files 容量プールと NFS ボリュームを作成するには、[Azure NetApp Files と NFS ボリュームの設定](/azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes)に関するページを参照してください。  サービス レベルの詳細については、「[Azure NetApp Files のサービス レベル](/azure/azure-netapp-files/azure-netapp-files-service-levels)」を参照してください。
+2. NetApp Files 容量プールと NFS ボリュームを作成するには、[Azure NetApp Files と NFS ボリュームの設定](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)に関するページを参照してください。  サービス レベルの詳細については、「[Azure NetApp Files のサービス レベル](../azure-netapp-files/azure-netapp-files-service-levels.md)」を参照してください。
 3. NetApp Files 容量プールの[仮想ネットワーク](how-to-connect-peer-virtual-network.md)をラボ アカウントにピアリングします。
 4. [クラスルーム ラボを作成します](how-to-manage-classroom-labs.md)。
 5. テンプレート VM で、NFS ファイル共有を使用するために必要なコンポーネントをインストールします。
@@ -179,7 +179,7 @@ Azure Lab Services で Azure NetApp Files 共有を使用するには、下の�
         sudo yum install nfs-utils
         ```
 
-6. テンプレート VM で、下のスクリプトを `mount_fileshare.sh` として保存して、[NetApp Files 共有をマウントします](/azure/azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines)。  `capacity_pool_ipaddress` 変数に容量プールのマウント ターゲット IP アドレスを割り当てます。  ボリュームのマウント命令を取得して、適切な値を見つけます。  このスクリプトには、NetApp Files ボリュームのパスおよび名前が必要です。  `chmod u+x mount_fileshare.sh` を忘れずに実行して、ユーザーがスクリプトを実行できるようにします。
+6. テンプレート VM で、下のスクリプトを `mount_fileshare.sh` として保存して、[NetApp Files 共有をマウントします](../azure-netapp-files/azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)。  `capacity_pool_ipaddress` 変数に容量プールのマウント ターゲット IP アドレスを割り当てます。  ボリュームのマウント命令を取得して、適切な値を見つけます。  このスクリプトには、NetApp Files ボリュームのパスおよび名前が必要です。  `chmod u+x mount_fileshare.sh` を忘れずに実行して、ユーザーがスクリプトを実行できるようにします。
 
     ```bash
     #!/bin/bash
@@ -205,7 +205,7 @@ Azure Lab Services で Azure NetApp Files 共有を使用するには、下の�
 
 7. すべての学生が同じ NetApp Files ボリュームへのアクセスを共有している場合は、発行の前にテンプレート マシンで `mount_fileshare.sh` スクリプトを実行できます。  学生がそれぞれ独自のボリュームを取得する場合は、スクリプトを保存して、後で学生が実行できるようにします。
 8. テンプレート VM を[発行](how-to-create-manage-template.md#publish-the-template-vm)します。
-9. ファイル共有の[ポリシーを構成](/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)します。  エクスポート ポリシーでは、単一の VM または複数の VM がボリュームにアクセスすることを許可できます。  読み取り専用または読み取り/書き込みアクセス権を付与できます。
+9. ファイル共有の[ポリシーを構成](../azure-netapp-files/azure-netapp-files-configure-export-policy.md)します。  エクスポート ポリシーでは、単一の VM または複数の VM がボリュームにアクセスすることを許可できます。  読み取り専用または読み取り/書き込みアクセス権を付与できます。
 10. 学生は VM を起動し、スクリプトを実行してファイル共有をマウントする必要があります。  スクリプトを実行する必要があるのは 1 回だけです。  コマンドは `./mount_fileshare.sh myvolumename` のようになります。
 
 ## <a name="next-steps"></a>次のステップ

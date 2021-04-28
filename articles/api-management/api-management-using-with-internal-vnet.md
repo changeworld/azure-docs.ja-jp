@@ -5,21 +5,17 @@ description: 内部仮想ネットワークで Azure API Management をセット
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: kjoshi
 editor: ''
-ms.assetid: dac28ccf-2550-45a5-89cf-192d87369bc3
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.topic: article
-ms.date: 03/09/2021
+ms.topic: how-to
+ms.date: 04/12/2021
 ms.author: apimpm
-ms.openlocfilehash: 10154f496d76ce6b9eb19d610fdff8d7a4023c2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4298b291e5d183c31d30a548751599aeb3746c47
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565956"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534606"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
 Azure Virtual Networksでは、Azure API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して接続できます。 API Management は、次の 2 つの主要モードで仮想ネットワークの内部にデプロイできます。
@@ -37,6 +33,8 @@ API Management を内部モードで使用することにより、次のシナ�
 * 一般的なゲートウェイを通じてクラウド ベースの API とオンプレミスの API を公開することによって、ハイブリッド クラウドのシナリオを有効にします。
 * 単一のゲートウェイ エンドポイントを使用することで、複数の地理的な場所でホストされている API を管理します。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
 ## <a name="prerequisites"></a>前提条件
@@ -48,16 +46,19 @@ API Management を内部モードで使用することにより、次のシナ�
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + **Azure API Management インスタンス**。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
-+ API Management サービスが仮想ネットワークにデプロイされている場合は、[ポートの一覧](./api-management-using-with-vnet.md#required-ports)が使用され、開く必要があります。 
+
+[!INCLUDE [api-management-public-ip-for-vnet](../../includes/api-management-public-ip-for-vnet.md)]
+
+API Management サービスが仮想ネットワークにデプロイされている場合は、[ポートの一覧](./api-management-using-with-vnet.md#required-ports)が使用され、開く必要があります。 
 
 ## <a name="creating-an-api-management-in-an-internal-virtual-network"></a><a name="enable-vpn"> </a>内部仮想ネットワークでの API Management の作成
-内部仮想ネットワークでの API Management サービスは、[内部ロード バランサー (クラシック)](/previous-versions/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) の背後でホストされます。 これは使用可能な唯一のオプションで、変更することはできません。
+内部仮想ネットワークの API Management サービスは、そのサービスがクライアント API バージョン2020-12-01 で作成されている場合、内部ロード バランサー Basic SKU の内側でホストされます。 API バージョン 2021-01-01-preview を保持し、顧客のサブスクリプションからのパブリック IP アドレスを持つクライアントで作成されたサービスの場合、これは内部ロードバランサー Standard SKU の内側でホストされます。 詳細については、「[Azure Load Balancer の SKU](../load-balancer/skus.md)」を参照してください。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Azure ポータルで仮想ネットワーク接続を有効にする
 
 1. [Azure ポータル](https://portal.azure.com/)で Azure API Management インスタンスに移動します。
-2. **[仮想ネットワーク]** を選択します。
-3. 仮想ネットワーク内に展開される API Management インスタンスを構成します。
+1. **[仮想ネットワーク]** を選択します。
+1. **[内部]** アクセスの種類を構成します。 詳細な手順については、「[Azure portal を使用して VNET 接続を有効にする](api-management-using-with-vnet.md#enable-vnet-connectivity-using-the-azure-portal)」を参照してください。
 
     ![内部仮想ネットワーク内に Azure API Management をセットアップするためのメニュー][api-management-using-internal-vnet-menu]
 
@@ -72,18 +73,19 @@ API Management を内部モードで使用することにより、次のシナ�
 
 ### <a name="deploy-api-management-into-virtual-network"></a><a name="deploy-apim-internal-vnet"> </a>Virtual Network に API Management をデプロイする
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
+仮想ネットワークの接続は、次の方法を使用して有効にすることもできます。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)] 
 
-仮想ネットワークの接続は、PowerShell コマンドレットを使用して有効にすることもできます。
+### <a name="api-version-2020-12-01"></a>API バージョン 2020-12-01
 
-* 仮想ネットワーク内に API Management サービスを作成する。[New-AzureRmApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) コマンドレット を使用して、仮想ネットワーク内に Azure API Management サービスを作成し、このサービスが内部仮想ネットワークの種類を使用するように構成します。
+* Azure Resource Manager [テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-api-management-create-with-internal-vnet)
 
-* 仮想ネットワーク内の API Management サービスの既存のデプロイを更新する。[Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) コマンドレットを使用して、仮想ネットワーク内の既存の API Management サービスを移動し、このサービスが内部仮想ネットワークの種類を使用するように構成します。
+     [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-api-management-create-with-internal-vnet%2Fazuredeploy.json)
+
+* Azure PowerShell コマンドレット - 仮想ネットワーク内の API Management インスタンスを[作成](/powershell/module/az.apimanagement/new-azapimanagement)または[更新](/powershell/module/az.apimanagement/update-azapimanagementregion)する
 
 ## <a name="dns-configuration"></a><a name="apim-dns-configuration"></a>DNS の構成
-API Management が外部仮想ネットワーク モードの場合、DNS は Azure によって管理されます。 内部仮想ネットワーク モードの場合は、自身で DNS を管理する必要があります。 Azure DNS プライベート ゾーンを構成し、それを API Management サービスがデプロイされている仮想ネットワークにリンクすることをお勧めします。  Azure DNS でプライベート ゾーンを設定する方法については、[ここ](../dns/private-dns-getstarted-portal.md)をクリックしてください。
+API Management が外部仮想ネットワーク モードの場合、DNS は Azure によって管理されます。 内部仮想ネットワーク モードの場合は、自身で DNS を管理する必要があります。 Azure DNS プライベート ゾーンを構成し、それを API Management サービスがデプロイされている仮想ネットワークにリンクすることをお勧めします。 [Azure DNS でのプライベート ゾーンの設定](../dns/private-dns-getstarted-portal.md)方法を確認してください。
 
 > [!NOTE]
 > API Management サービスは、IP アドレスから送信される要求をリッスンしません。 サービスは、サービス エンドポイントに構成されたホスト名に対する要求のみに応答します。 これらのエンドポイントには、ゲートウェイ、Azure Portal および開発者ポータル、ダイレクト管理エンドポイント、Git が含まれます。

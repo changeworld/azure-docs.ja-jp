@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 9b061184f97abeea79912aadbae2c2b188206c72
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f023bfa2b3941f7d667f4be34a8ee8dc1ed9a9c3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058002"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750196"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -56,7 +56,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 
 ## <a name="maxfiles-limits"></a>maxfiles の制限 <a name="maxfiles"></a> 
 
-Azure NetApp Files ボリュームには、*maxfiles* という制限があります。 maxfiles の制限は、ボリュームに格納できるファイルの数です。 Azure NetApp Files ボリュームの maxfiles の制限には、ボリュームのサイズ (クォータ) に基づいてインデックスが作成されます。 ボリュームの maxfiles の制限は、プロビジョニングされたボリュームサイズの TiB ごとに 2000 万ファイルの割合で増減されます。 
+Azure NetApp Files ボリュームには、*maxfiles* という制限があります。 maxfiles の制限は、ボリュームに格納できるファイルの数です。 Linux ファイル システムは、*inode* で制限を参照します。 Azure NetApp Files ボリュームの maxfiles の制限には、ボリュームのサイズ (クォータ) に基づいてインデックスが作成されます。 ボリュームの maxfiles の制限は、プロビジョニングされたボリュームサイズの TiB ごとに 2000 万ファイルの割合で増減されます。 
 
 サービスでは、プロビジョニングされたサイズに基づいて、ボリュームの maxfiles 制限が動的に調整されます。 たとえば、1 TiB のサイズで初期構成されたボリュームの maxfiles 制限は 2000 万です。 その後ボリュームのサイズを変更すると、以下の規則に基づいて、maxfiles の制限が自動的に再調整されます。 
 
@@ -68,7 +68,9 @@ Azure NetApp Files ボリュームには、*maxfiles* という制限があり�
 |    3 TiB 超、4 TiB 以下    |    8,000 万     |
 |    4 TiB 超                 |    1 億    |
 
-ボリュームに対して 4 TiB 以上のクォータを既に割り当てている場合は、[サポート リクエスト](#limit_increase)を開始して、maxfiles の制限を 1 億より大きい値に増やすことができます。 1 億ファイル増加する (またはその一部) ごとに、対応するボリューム クォータを 4 TiB ずつ増やす必要があります。  たとえば、maxfiles の制限を 1 億ファイルから 2 億ファイル (またはその間の任意の数) に増やした場合は、ボリューム クォータを 4 TiB から 8 TiB に増やす必要があります。
+ボリュームに対して 4 TiB 以上のクォータを既に割り当てている場合は、[サポート リクエスト](#limit_increase)を開始して、maxfiles (inodes) の制限を 1 億より大きい値に増やすことができます。 1 億ファイル増加する (またはその一部) ごとに、対応するボリューム クォータを 4 TiB ずつ増やす必要があります。  たとえば、maxfiles の制限を 1 億ファイルから 2 億ファイル (またはその間の任意の数) に増やした場合は、ボリューム クォータを 4 TiB から 8 TiB に増やす必要があります。
+
+ボリューム クォータが 20 TiB 以上の場合は、maxfiles の制限を 5 億に増やすことができます。 <!-- ANF-11854 --> 
 
 ## <a name="request-limit-increase"></a>上限の引き上げを要求する<a name="limit_increase"></a> 
 

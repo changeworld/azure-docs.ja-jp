@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: System Architecture'
-ms.openlocfilehash: a58e141c6232db08b125b265e3d4ad74c784ba24
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2b9ea2e075ddcf20860ccb9ab1f2eff654993ad
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92152176"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107499378"
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -76,7 +76,7 @@ IoT Hub エンドポイントはすべて [TLS](https://tools.ietf.org/html/rfc5
 
 ## <a name="custom-endpoints"></a>カスタム エンドポイント
 
-サブスクリプションの既存の Azure サービスを、メッセージをルーティングするためのエンドポイントとして機能する IoT Hub にリンクできます。 これらのエンドポイントはサービス エンドポイントとして機能し、メッセージ ルートのシンクとして使用されます。 デバイスは、追加のエンドポイントに直接書き込むことはできません。 [メッセージ ルーティング](../iot-hub/iot-hub-devguide-messages-d2c.md)について確認します。
+Azure サブスクリプション内の既存の Azure サービスを IoT ハブにリンクして、メッセージ ルーティング用のエンドポイントとして機能させることができます。 これらのエンドポイントはサービス エンドポイントとして機能し、メッセージ ルートのシンクとして使用されます。 デバイスは、追加のエンドポイントに直接書き込むことはできません。 [メッセージ ルーティング](../iot-hub/iot-hub-devguide-messages-d2c.md)について確認します。
 
 現在、IoT Hub は、追加のエンドポイントとして、次の Azure サービスをサポートします。
 

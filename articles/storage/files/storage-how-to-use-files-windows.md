@@ -4,16 +4,16 @@ description: Windows と Windows Server での Azure ファイル共有の使用
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 06/22/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e64b7efdd430287a7a3a969c5bf62b0c0e2aec9c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e864dcaa2a611746ae813a4f0adf8409fbc50871
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94626896"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789791"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -48,7 +48,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 ## <a name="using-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 Windows で Azure ファイル共有を使用するには、Azure ファイル共有にドライブ文字 (マウント ポイントのパス) を割り当ててマウントするか、または対応する [UNC パス](/windows/win32/fileio/naming-a-file)経由でアクセスする必要があります。 
 
-この記事では、ストレージ アカウント キーを使用してファイル共有にアクセスします。 ストレージ アカウント キーは、アクセスするファイル共有内のファイルとフォルダーすべてに対する管理者アクセス許可を含んだストレージ アカウントの管理者キーであると共に、ストレージ アカウントに格納されているすべてのファイル共有および他のストレージ リソース (BLOB、キュー、テーブルなど) の管理者キーでもあります。 それで対応できないワークロードについては、[Azure File Sync](storage-sync-files-planning.md) または [SMB 経由の ID ベースの認証](storage-files-active-directory-overview.md)を使用できます。
+この記事では、ストレージ アカウント キーを使用してファイル共有にアクセスします。 ストレージ アカウント キーは、アクセスするファイル共有内のファイルとフォルダーすべてに対する管理者アクセス許可を含んだストレージ アカウントの管理者キーであると共に、ストレージ アカウントに格納されているすべてのファイル共有および他のストレージ リソース (BLOB、キュー、テーブルなど) の管理者キーでもあります。 それで対応できないワークロードについては、[Azure File Sync](../file-sync/file-sync-planning.md) または [SMB 経由の ID ベースの認証](storage-files-active-directory-overview.md)を使用できます。
 
 SMB ファイル共有が想定されている基幹業務 (LOB) アプリケーションを Azure にリフトアンドシフトする一般的なパターンは、専用の Windows ファイル サーバーを Azure VM で実行する代わりとして Azure ファイル共有を使うことです。 基幹業務アプリケーションで Azure ファイル共有を使うための移行に関して、その作業を成功させるうえで重要な考慮事項があります。多くの基幹業務アプリケーションは、VM の管理者アカウントではなく、制限されたシステム アクセス許可を与えられた専用のサービス アカウントのコンテキストで実行されるということです。 そのため、Azure ファイル共有の資格情報をマウント/保存する際は、自分の管理者アカウントからではなく、必ずサービス アカウントのコンテキストから行う必要があります。
 
@@ -63,7 +63,7 @@ Azure portal には、ファイル共有をホストに直接マウントする�
 1. **[ファイル共有]** を選択します。
 1. マウントするファイル共有を選択します。
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="例":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="[ファイル共有] ブレードのスクリーンショット。ファイル共有が強調表示されています。":::
 
 1. **[接続]** を選択します。
 
@@ -72,7 +72,7 @@ Azure portal には、ファイル共有をホストに直接マウントする�
 1. 共有のマウント先のドライブ文字を選択します。
 1. 表示されたスクリプトをコピーします。
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="テキストの例":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="[接続] ブレードのスクリーンショット。スクリプトのコピー ボタンが強調表示されています。":::
 
 1. ファイル共有をマウントするホスト上のシェルにスクリプトを貼り付けて実行します。
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 04/16/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: 358e066631304e727d18d092bd4b9a5b2a0bb89a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc1b5356ab607ecb60a457a7295831958e6815e1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199607"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727062"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト
 
@@ -47,15 +47,21 @@ Azure AD アプリケーションは、その唯一のアプリケーション �
 ## <a name="service-principal-object"></a>サービス プリンシパル オブジェクト
 Azure AD テナントによってセキュリティ保護されているリソースにアクセスするためには、アクセスを必要とするエンティティをセキュリティ プリンシパルで表す必要があります。 この要件は、ユーザー (ユーザー プリンシパル) とアプリケーション (サービス プリンシパル) の両方に当てはまります。 セキュリティ プリンシパルは、その Azure AD テナント内のユーザー/アプリケーションのアクセス ポリシーとアクセス許可を定義します。 これにより、サインイン時のユーザー/アプリケーションの認証、リソースへのアクセス時の承認などのコア機能を利用できるようになります。
 
-サービス プリンシパルは、単一のテナントまたはディレクトリ内のグローバル アプリケーション オブジェクトのローカル表現、つまりアプリケーション インスタンスです。 サービス プリンシパルは、アプリケーション オブジェクトから作成された具象インスタンスであり、そのアプリケーション オブジェクトから特定のプロパティが継承されます。 サービス プリンシパルは、アプリケーションが使用される各テナントで作成され、グローバルに一意なアプリ オブジェクトが参照されます。  サービス プリンシパル オブジェクトには、特定のテナント内でアプリが実際に実行できること、アプリにアクセスできるユーザー、アプリからアクセスできるリソースを定義します。
+サービス プリンシパルには、アプリケーション、マネージド ID、レガシの 3 種類があります。
+
+1 つ目の種類のサービス プリンシパルは、単一のテナントまたはディレクトリ内のグローバル アプリケーション オブジェクトのローカル表現、つまりアプリケーション インスタンスです。 この場合、サービス プリンシパルは、アプリケーション オブジェクトから作成された具象インスタンスであり、そのアプリケーション オブジェクトから特定のプロパティが継承されます。 サービス プリンシパルは、アプリケーションが使用される各テナントで作成され、グローバルに一意なアプリ オブジェクトが参照されます。  サービス プリンシパル オブジェクトには、特定のテナント内でアプリが実際に実行できること、アプリにアクセスできるユーザー、アプリからアクセスできるリソースを定義します。
 
 アプリケーションが (登録または[同意](developer-glossary.md#consent)によって) テナント内のリソースへのアクセス許可を与えられると、サービス プリンシパル オブジェクトが作成されます。 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、[Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http)、[Azure portal][AZURE-Portal]、およびその他のツールを使用して、テナントにサービス プリンシパル オブジェクトを作成することもできます。 ポータルを使用する場合、アプリケーションを登録すると、サービス プリンシパルが自動的に作成されます。
+
+2 つ目の種類のサービス プリンシパルは、[マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を表す目的で使用されます。 マネージド ID により、開発者は資格情報を管理する必要がなくなります。 マネージド ID は、Azure AD 認証をサポートするリソースに接続するときに使用する ID をアプリケーションに提供します。 マネージド ID が有効になっている場合、そのマネージド ID を表すサービス プリンシパルがテナントに作成されます。 マネージド ID を表すサービス プリンシパルには、権利やアクセス許可を付与できますが、直接更新したり変更を加えたりすることはできません。
+
+3 つ目の種類のサービス プリンシパルは、レガシ アプリを表します (アプリの登録前に作成されたアプリは、レガシ エクスペリエンスを使用して導入または作成されます)。 レガシ サービス プリンシパルには、資格情報、サービス プリンシパル名、応答 URL など、許可されているユーザーが編集できるプロパティを割り当てることができますが、アプリの登録は関連付けられません。 このサービス プリンシパルは、その作成元のテナントでのみ使用できます。
+
+サービス プリンシパル オブジェクトのプロパティのスキーマは、Microsoft Graph [ServicePrincipal エンティティ][MS-Graph-Sp-Entity]によって定義されています。
 
 ポータルの **[エンタープライズ アプリケーション]** ブレードは、テナントのサービス プリンシパルを一覧表示および管理するために使用されます。 サービス プリンシパルのアクセス許可、ユーザーが同意したアクセス許可、その同意を行ったユーザー、サインイン情報などを確認できます。
 
 ![エンタープライズ アプリ ブレード](./media/app-objects-and-service-principals/enterprise-apps-blade.png)
-
-サービス プリンシパル オブジェクトのプロパティのスキーマは、Microsoft Graph [ServicePrincipal エンティティ][MS-Graph-Sp-Entity]によって定義されています。
 
 ## <a name="relationship-between-application-objects-and-service-principals"></a>アプリケーション オブジェクトとサービス プリンシパル間のリレーションシップ
 

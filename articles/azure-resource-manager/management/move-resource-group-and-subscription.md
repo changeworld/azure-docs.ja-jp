@@ -2,14 +2,14 @@
 title: リソースを新しいサブスクリプションまたはリソース グループに移動する
 description: Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。
 ms.topic: conceptual
-ms.date: 03/23/2021
+ms.date: 04/16/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 800e605571ae18b008a86b4add4b0b2adce9c140
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 7a50ecc6081f8fa7c7600ddf1f98a95eceafa73b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078385"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784625"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>リソースを新しいリソース グループまたはサブスクリプションに移動する
 
@@ -160,7 +160,7 @@ retry-after: 15
 ...
 ```
 
-状態コード 202 は、検証要求が受け付けられたものの、移動操作に成功するかどうかの判断はまだ出ていないことを示します。 `location` 値には、長時間実行される操作の状態をチェックするための URL が格納されます。  
+状態コード 202 は、検証要求が受け付けられたものの、移動操作に成功するかどうかの判断はまだ出ていないことを示します。 `location` 値には、長時間実行される操作の状態をチェックするための URL が格納されます。
 
 状態をチェックするには、次の要求を送信します。
 
@@ -209,8 +209,6 @@ Authorization: Bearer <access-token>
 
 完了すると、結果が表示されます。
 
-エラーが発生した場合は、「[新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング](troubleshoot-move.md)」を参照してください。
-
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
 既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[Move-AzResource](/powershell/module/az.resources/move-azresource) コマンドを使用します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。
@@ -223,11 +221,9 @@ Move-AzResource -DestinationResourceGroupName NewRG -ResourceId $webapp.Resource
 
 新しいサブスクリプションに移動する場合は、`DestinationSubscriptionId` パラメーターの値を含めます。
 
-エラーが発生した場合は、「[新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング](troubleshoot-move.md)」を参照してください。
-
 ## <a name="use-azure-cli"></a>Azure CLI の使用
 
-既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource#az-resource-move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
+既存のリソースを別のリソース グループまたはサブスクリプションに移動するには、[az resource move](/cli/azure/resource#az_resource_move) コマンドを使用します。 移動するリソースのリソース ID を指定します。 次の例では、いくつかのリソースを新しいリソース グループに移動する方法を示します。 `--ids` パラメーターには、移動するリソース ID のスペース区切りリストを指定します。
 
 ```azurecli
 webapp=$(az resource show -g OldRG -n ExampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
@@ -236,8 +232,6 @@ az resource move --destination-group newgroup --ids $webapp $plan
 ```
 
 新しいサブスクリプションに移動するには、`--destination-subscription-id` パラメーターを指定します。
-
-エラーが発生した場合は、「[新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング](troubleshoot-move.md)」を参照してください。
 
 ## <a name="use-rest-api"></a>REST API を使用する
 
@@ -255,8 +249,6 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
  "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
 }
 ```
-
-エラーが発生した場合は、「[新しいリソース グループまたはサブスクリプションへの Azure リソースの移動に関するトラブルシューティング](troubleshoot-move.md)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -303,6 +295,18 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 **質問: Azure 内の一部のリソースを移動できないのはなぜですか?**
 
 現時点では、Azure 内のすべてのリソースが移動するわけではありません。 移動をサポートしているリソースのリストについては、「[リソースの移動操作のサポート」](move-support-resources.md)」を参照してください。
+
+**質問: 1 回の操作で移動できるリソースの数はどのくらいですか?**
+
+可能であれば、大規模な移動は個別の移動操作に分けます。 1 回の操作に含まれるリソースが 800 を超えると、Resource Manager から直ちにエラーが返されます。 ただし、800 未満のリソースの移動でも、タイムアウトで失敗になることがあります。
+
+**質問: リソースが正常な状態にないというエラーの意味は何ですか?**
+
+リソースが正常な状態にないために移動できないことを示すエラー メッセージが表示された場合、実際に移動をブロックしているのは依存リソースであることがあります。 通常、エラー コードは **MoveCannotProceedWithResourcesNotInSucceededState** です。
+
+ソースまたはターゲットのリソース グループに仮想ネットワークが含まれている場合は、移動中に仮想ネットワークのすべての依存リソースの状態が確認されます。 この確認には、仮想ネットワークに直接的または間接的に依存するそのようなリソースが含まれます。 これらのリソースのいずれかがエラー状態の場合、移動はブロックされます。 たとえば、仮想ネットワークを使用する仮想マシンで障害が発生した場合、移動はブロックされます。 移動は、仮想マシンが移動するリソースの 1 つではなく、移動用のリソース グループのいずれにも存在しない場合でもブロックされます。
+
+このエラーが発生した場合は、2 つの選択肢があります。 仮想ネットワークのないリソース グループにリソースを移動するか、[サポートにお問い合わせください](../../azure-portal/supportability/how-to-create-azure-support-request.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

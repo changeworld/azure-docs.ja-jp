@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4de9f5a21f38f741dcf65d285446d9482716d4f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2e35d3ffa98c2713f86bb56974670832e9fd416a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85608128"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137853"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>方法: Azure Active Directory レポートを使用してサインイン エラーをトラブルシューティングする
 
@@ -57,11 +57,11 @@ Azure Active Directory (Azure AD) の[サインイン レポート](concept-sign
 
 6. 失敗の理由ではエラーについて説明します。 たとえば、上記のシナリオでの失敗の理由は、**ユーザー名またはパスワードが無効、またはオンプレミスのユーザー名またはパスワードが無効** です。 この修正プログラムは、単に適切なユーザー名とパスワードでもう一度サインインするためのものです。
 
-7. [サインインのエラー コードの参照](reference-sign-ins-error-codes.md)でエラー コード (この例では **50126**) を検索することで、修復に関するアイデアなどの追加情報を取得できます。 
+7. [サインインのエラー コードの参照](./concept-sign-ins.md)でエラー コード (この例では **50126**) を検索することで、修復に関するアイデアなどの追加情報を取得できます。 
 
 8. 他のすべてが失敗した場合、または推奨されるアクションを行っても問題が解決しない場合は、**[トラブルシューティングおよびサポート]** タブの手順に従って、[サポート チケットをオープン](../fundamentals/active-directory-troubleshooting-support-howto.md)にしてください。 
 
 ## <a name="next-steps"></a>次のステップ
 
-* [サインインのエラー コードの参照](reference-sign-ins-error-codes.md)
+* [サインインのエラー コードの参照](./concept-sign-ins.md)
 * [サインイン レポートの概要](concept-sign-ins.md)

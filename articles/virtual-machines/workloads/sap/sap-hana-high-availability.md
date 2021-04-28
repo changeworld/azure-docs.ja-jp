@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: ea1296fd4e31c2deaed79e980ab764c523a2bfd7
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: e34ca9c3164713e62ae28581055644933d8c791d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364364"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127195"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
 
@@ -668,7 +668,7 @@ SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーショ�
 
 ### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>アクティブ/読み取り可能のセットアップ用の Azure Load Balancer の追加設定
 
-2 番目の仮想 IP をプロビジョニングするための追加の手順を進めるには、「[手動デプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#manual-deployment)」セクションの説明に従って Azure Load Balancer の構成が完了していることを確認してください。
+2 番目の仮想 IP をプロビジョニングするための追加の手順を進めるには、「[手動デプロイ](#manual-deployment)」セクションの説明に従って Azure Load Balancer の構成が完了していることを確認してください。
 
 1. **標準** ロード バランサーの場合は、前のセクションで作成したのと同じロード バランサーで、下の追加の手順に従います。
 
@@ -699,7 +699,7 @@ SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーショ�
 
 ### <a name="configure-hana-activeread-enabled-system-replication"></a>HANA アクティブ/読み取り可能のシステム レプリケーションの構成
 
-HANA システム レプリケーションを構成する手順については、「[SAP HANA 2.0 システム レプリケーションの構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability#configure-sap-hana-20-system-replication)」セクションを参照してください。 読み取り可能なセカンダリ シナリオをデプロイする場合、2 番目のノードでシステム レプリケーションを構成するときに、次のコマンドを **hanasid** adm として実行します。
+HANA システム レプリケーションを構成する手順については、「[SAP HANA 2.0 システム レプリケーションの構成](#configure-sap-hana-20-system-replication)」セクションを参照してください。 読み取り可能なセカンダリ シナリオをデプロイする場合、2 番目のノードでシステム レプリケーションを構成するときに、次のコマンドを **hanasid** adm として実行します。
 
 ```
 sapcontrol -nr 03 -function StopWait 600 10 

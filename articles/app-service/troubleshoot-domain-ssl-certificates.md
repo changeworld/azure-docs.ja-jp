@@ -7,13 +7,13 @@ tags: top-support-issue
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
-ms.custom: seodec18
-ms.openlocfilehash: 691cbd79e82432c8e919dcbb51642a76000296dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, devx-track-azurepowershell
+ms.openlocfilehash: c2c09e1a30c9cef4d65b2d5443481c84ab779af8
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97607611"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833834"
 ---
 # <a name="troubleshoot-domain-and-tlsssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと TLS/SSL 証明書に関する問題のトラブルシューティング
 
@@ -315,7 +315,7 @@ Azure Portal 経由でドメインを購入した場合は、追加コストな�
 
 App Service Web Apps がない場合でも、ドメインを管理できます。 ドメインは、仮想マシン、ストレージなどの Azure サービスのために使用できます。ドメインを App Service Web Apps のために使用する場合は、そのドメインを Web アプリにバインドするために、Free App Service プランにない Web アプリを含める必要があります。
 
-**カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service Environment v1 から V2 に移動できますか**
+**カスタム ドメインを含む Web アプリを別のサブスクリプションに、または App Service 環境 v1 から V2 に移動できますか**
 
 はい。Web アプリはサブスクリプション間で移動できます。 [Azure でリソースを移動する方法](../azure-resource-manager/management/move-resource-group-and-subscription.md)に関するページにあるガイダンスに従ってください。 Web アプリを移動する場合は、いくつかの制限があります。 詳細については、[App Service リソースを移動するための制限](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)に関するページを参照してください。
 

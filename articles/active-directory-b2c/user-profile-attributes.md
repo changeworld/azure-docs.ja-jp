@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/09/2021
+ms.date: 04/27/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7dfad71d05a882e3a3941a96e12489adb5fb3234
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42bc87259265b45dabb631507ce6956e07077a7d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102500531"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070481"
 ---
 # <a name="user-profile-attributes"></a>ユーザー プロファイルの属性
 
@@ -59,7 +59,6 @@ Azure AD B2C ユーザー プロファイルで使用できるほとんどの属
 |immutableId     |String|オンプレミスの Active Directory から移行されたユーザーに通常使用される識別子。|いいえ|いいえ|Persisted、Output|
 |legalAgeGroupClassification|String|法的年齢グループの分類。 読み取り専用で、ageGroup および consentProvidedForMinor プロパティに基づいて計算されます。 使用可能な値: null、minorWithOutParentalConsent、minorWithParentalConsent、minorNoParentalConsentRequired、notAdult、および adult。|はい|いいえ|Persisted、Output|
 |legalCountry<sup>1</sup>  |String|国またはリージョン (法的な目的)。|いいえ|いいえ|Persisted、Output|
-|mail            |String|ユーザーの SMTP アドレス (例 "bob@contoso.com")。 読み取り専用です。|いいえ|いいえ|Persisted、Output|
 |mailNickName    |String|ユーザーのメール エイリアス。 最大長 64。|いいえ|いいえ|Persisted、Output|
 |mobile (mobilePhone) |String|ユーザーのメインの携帯電話番号。 最大長 64。|はい|いいえ|Persisted、Output|
 |netId           |String|Net ID。|いいえ|いいえ|Persisted、Output|

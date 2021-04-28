@@ -13,20 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: c7901dd4a238b27a31f95f1e22ddf9dc1ae5327a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98762406"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813068"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
 Azure API Management を介して API の発行と管理を行うことで、そうしなければ手動で設計、実装、および管理する必要のある、フォールト トレランス機能やインフラストラクチャ機能を利用できるようになります。 Azure プラットフォームにより、わずかな料金で潜在的な障害の大部分が軽減されます。
 
-API Management サービスをホストしているリージョンに影響する可用性の問題から復旧するためには、いつも別のリージョンにサービスを再構成できるように準備しておく必要があります。 目標復旧時間に応じて、1 つまたは複数のリージョンでスタンバイ サービスを保持する必要がある場合があります。 また、目標復旧時間に従って、アクティブ サービスと同期されているそれらの構成と内容の維持を試みる場合があります。 サービスのバックアップと復元の機能では、ディザスター リカバリー戦略を実装するために必要な構成要素が提供されます。
+API Management サービスをホストしているリージョンに影響する可用性の問題から復旧するためには、いつも別のリージョンにサービスを再構成できるように準備しておく必要があります。 目標復旧時間に応じて、1 つまたは複数のリージョンでスタンバイ サービスを保持する必要がある場合があります。 また、目標復旧時間に従って、アクティブ サービスと同期されているそれらの構成と内容の維持を試みる場合があります。 サービスのバックアップと復元の機能により、ディザスター リカバリー戦略を実装するために必要な構成要素が提供されます。
 
-また、バックアップおよび復元操作は、開発やステージングなど、運用環境間の API Management サービス構成のレプリケートで使用することができます。 ユーザーやサブスクリプションなどのランタイム データも同様にコピーされ、望ましくない場合もあることに注意してください。
+また、バックアップおよび復元操作は、開発やステージングなど、運用環境間の API Management サービス構成のレプリケートで使用できます。 ユーザーやサブスクリプションなどのランタイム データも同様にコピーされ、望ましくない場合もあることに注意してください。
 
 このガイドでは、バックアップおよび復元操作を自動化する方法と、Azure Resource Manager を使用して、確実にバックアップおよび復元要求の認証を成功させる方法を示します。
 
@@ -78,11 +79,14 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 5. **[Azure Service Management]\(Azure サービス管理\)** を選択します。
 6. **[選択]** を選択します。
 
-    ![Add permissions](./media/api-management-howto-disaster-recovery-backup-restore/add-app.png)
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/add-app-permission.png" alt-text="アプリのアクセス許可を追加する方法を示すスクリーンショット。"::: 
 
 7. 新しく追加されたアプリケーションの横にある **[委任されたアクセス許可]** をクリックし、 **[Azure Service 管理へのアクセス (プレビュー)]** のチェック ボックスをオンにします。
+
+    :::image type="content" source="./media/api-management-howto-disaster-recovery-backup-restore/delegated-app-permission.png" alt-text="委任されたアプリのアクセス許可の追加を示すスクリーンショット。":::
+
 8. **[選択]** を選択します。
-9. **[アクセス許可の付与]** をクリックします。
+9. **[アクセス許可の追加]** をクリックします。
 
 ### <a name="configuring-your-app"></a>アプリの構成
 
@@ -227,7 +231,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 -   [マネージド ID](api-management-howto-use-managed-service-identity.md) の構成
 -   [Azure Monitor 診断ログ](api-management-howto-use-azure-monitor.md)の構成
 -   [プロトコルと暗号](api-management-howto-manage-protocols-ciphers.md)の設定
--   [開発者ポータル](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) コンテンツ。
+-   [開発者ポータル](developer-portal-faq.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) コンテンツ。
 
 サービス バックアップを実行する頻度は、復旧ポイントの目標に影響を与えます。 その頻度を最小限に抑えるため、定期的なバックアップを実装すると共に、API Management サービスに対して変更を行った後のオンデマンドのバックアップを実行することをお勧めします。
 

@@ -14,16 +14,16 @@ ms.topic: how-to
 ms.date: 03/16/2021
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74769feba1d717a2f1a72d311f85bdfbeac7b7db
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 035215bf9350243f667c4883786a923a172cb89c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "103574779"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126563"
 ---
 # <a name="ad-fs-sign-ins-in-azure-ad-with-connect-health---preview"></a>Connect Health を使用した Azure AD での AD FS サインイン - プレビュー
 
-AD FS サインインは、Connect Health を使用して Azure Active Directory サインイン レポートに統合できるようになりました。 [Azure AD サインイン レポート](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-all-sign-ins#:~:text=Interactive%20user%20sign-ins%20are%20sign-ins%20where%20a%20user,to%20Azure%20AD%20or%20to%20a%20helper%20app.)には、ユーザー、アプリケーション、マネージド リソースがいつ Azure AD にサインインしてリソースにアクセスしたかに関する情報が含まれています。 
+AD FS サインインは、Connect Health を使用して Azure Active Directory サインイン レポートに統合できるようになりました。 [Azure AD サインイン レポート](../reports-monitoring/concept-all-sign-ins.md)には、ユーザー、アプリケーション、マネージド リソースがいつ Azure AD にサインインしてリソースにアクセスしたかに関する情報が含まれています。 
 
 Connect Health for AD FS エージェントでは、要求とエラーの詳細 (要求が失敗した場合) に関する情報を提供するために、サーバーのバージョンに依存する AD FS の複数のイベント ID を関連付けます。 これらの情報は Azure AD サインイン レポート スキーマに関連付けられ、Azure AD サインイン レポート UX に表示されます。 このレポートと共に、新しい Log Analytics ストリームが AD FS データや新しい Azure Monitor ブック テンプレートで使用できます。 このテンプレートは、AD FS アカウントのロックアウト、不適切なパスワードの試行、予期しないサインイン試行のスパイクなどのシナリオに関する詳細な分析のために使用したり、変更したりできます。
 
@@ -111,8 +111,3 @@ AD FS サインイン レポートには、OAuth のサインイン用の [ア�
 * [Azure AD Connect Health](./whatis-azure-ad-connect.md)
 * [Azure AD Connect Health エージェントのインストール](how-to-connect-health-agent-install.md)
 * [危険な IP レポート](how-to-connect-health-adfs-risky-ip.md)
-
-
-
-
-

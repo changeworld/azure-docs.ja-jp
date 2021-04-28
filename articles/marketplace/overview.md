@@ -6,12 +6,12 @@ ms.author: mingshen
 ms.service: marketplace
 ms.topic: overview
 ms.date: 10/15/2020
-ms.openlocfilehash: de8e9060f8e7ccdcf38b9f0908dfb05063811817
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: b624b8ba997acf75c652a522ce1eae9737371c97
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103406"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133189"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースとは何ですか?
 
@@ -75,7 +75,7 @@ Microsoft との提携の下でビジネスを促進し、パートナー様の�
 
 - テクニカル サポート、アプリケーション設計、アーキテクチャ設計から、開発とテストのための Azure クレジットまで、アプリケーションの販売に備えて必要な技術リソースを活用する。
 - ソリューションの立ち上げとプロモーションを支援する、無料の Microsoft Go-To-Market Launch Fundamentals へのアクセス。 その他の Microsoft マーケティング キャンペーンへの参加資格や、コマーシャル マーケットプレースでお勧めされる機会も得られます。
-- [クラウド ソリューション プロバイダー](https://partner.microsoft.com/cloud-solution-provider) (CSP) プログラム、[Co-Sell](marketplace-co-sell.md) プログラム、Microsoft Sales チームを活用して、新たな顧客にリーチし、販売機会を拡大する。
+- [クラウド ソリューション プロバイダー](https://partner.microsoft.com/cloud-solution-provider) (CSP) プログラム、[Co-Sell](./co-sell-overview.md) プログラム、Microsoft Sales チームを活用して、新たな顧客にリーチし、販売機会を拡大する。
 
 これらの利点について詳しくは、「[商用マーケットプレースのベネフィット](gtm-your-marketplace-benefits.md)」を参照してください。
 

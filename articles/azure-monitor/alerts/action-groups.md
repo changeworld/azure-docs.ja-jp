@@ -5,12 +5,12 @@ author: dkamstra
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: dukek
-ms.openlocfilehash: 7010e20b65142cf0ab85c29d6b22c925c977f1f8
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 1486415c5d225163dd2b2c7e79cd008ad0a76588
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107104985"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514871"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 
@@ -147,6 +147,13 @@ Azure mobile app の構成時にアカウント ID として使用するメー�
   :::image type="content" source="media/action-groups/active-directory-add-primary-email.png" alt-text="プライマリ電子メールを追加する方法の例。" border="true":::
 
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./alerts-rate-limiting.md)の記事を参照してください。
+
+"*電子メールの ARM のロール*" を設定するときは、下の 3 つの条件が満たされていることを確認する必要があります。
+
+1. ロールに割り当てられているエンティティの種類は、"**ユーザー**" である必要があります。
+2. 割り当ては、**サブスクリプション** レベルで実行する必要があります。
+3. ユーザーは、**AAD プロファイル** に構成された電子メールを持っている必要があります。 
+
 
 ### <a name="function"></a>機能
 [Azure Functions](../../azure-functions/functions-get-started.md) で既存の HTTP トリガー エンドポイントを呼び出します。 要求を処理するには、エンドポイントで HTTP POST 動詞を処理する必要があります。

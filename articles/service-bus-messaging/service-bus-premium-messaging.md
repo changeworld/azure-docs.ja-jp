@@ -3,12 +3,12 @@ title: Azure Service Bus の Premium レベルと Standard レベル
 description: この記事では、Azure Service Bus の Standard レベルと Premium レベルについて説明します。 これらのレベルを比較して、技術的な違いを示します。
 ms.topic: conceptual
 ms.date: 02/17/2021
-ms.openlocfilehash: aa08a99009ef3d20e831e214ae5811059817d13c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7117da6a959181704dd136c6d5be5ab62edef55
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104607553"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389487"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus の Premium および Standard メッセージング レベル
 
@@ -29,6 +29,9 @@ Service Bus メッセージングに *Premium* レベルを導入して、ミッ
 **Service Bus Premium メッセージング** では、各顧客のワークロードが分離した状態で実行されるように、CPU とメモリのレベルでリソースが分離されます。 このリソースのコンテナーを、*メッセージング ユニット* と呼びます。 各 Premium 名前空間には、1 つ以上のメッセージング ユニットが割り当てられます。 各 Service Bus Premium 名前空間に対して 1、2、4、8、または 16 のメッセージング ユニットを購入することができます。 1 つのワークロードまたはエンティティが複数のメッセージング ユニットにまたがることができ、メッセージング ユニットの数は任意で変更できます。 その結果、Service Bus ベースのソリューションのパフォーマンスは、予測可能で反復可能になります。
 
 このパフォーマンスは、より予測可能かつ利用可能なだけでなく、より高速です。 Premium メッセージングでのピークのパフォーマンスは、Standard レベルよりもはるかに高速です。
+
+> [!NOTE]
+> Premium メッセージングのバッチ サイズの制限は 1 MB です。
 
 ## <a name="premium-messaging-technical-differences"></a>Premium メッセージングの技術的な相違点
 

@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/06/2021
 ms.topic: conceptual
-ms.openlocfilehash: 21bb3a353874e401d86741584d102b5c217e69cc
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 24dc0d2b243eb6c13e5670a1438876132c5e429e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030051"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833654"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker を展開する
 
@@ -123,11 +124,11 @@ Runbook では、次のパラメーターが使用されます。
 | `CreateLA` | Mandatory | true の場合、`WorkspaceName` の値を使用して Log Analytics ワークスペースを作成します。 false の場合、`WorkspaceName` の値は既存のワークスペースを参照する必要があります。 |
 | `LAlocation` | オプション | Log Analytics ワークスペースが作成される場所、または既に存在する場所。 |
 | `WorkspaceName` | オプション | 作成または使用する Log Analytics ワークスペースの名前。 |
-| `CreateVM` | Mandatory | true の場合、新しい VM の名前として `VMName` の値を使用します。 false の場合は、`VMName` を使用して既存の VM を検索し、登録します。 |
-| `VMName` | オプション | `CreateVM` の値に応じて、作成または登録された仮想マシンの名前。 |
-| `VMImage` | オプション | 作成する VM イメージの名前。 |
-| `VMlocation` | オプション | 作成または登録されている VM の場所。 この場所が指定されていない場合、`LAlocation` の値が使用されます。 |
-| `RegisterHW` | Mandatory | true の場合は、ハイブリッド worker として VM を登録します。 |
+| `CreateVM` | Mandatory | true の場合、新しい VM の名前として `VMName` の値を使用します。 false の場合、`VMName` を使用して既存の VM を検索し、登録します。 |
+| `VMName` | オプション | `CreateVM` の値に応じて作成または登録される仮想マシンの名前。 |
+| `VMImage` | オプション | 作成される VM イメージの名前。 |
+| `VMlocation` | オプション | 作成または登録される VM の場所。 この場所が指定されていない場合、`LAlocation` の値が使用されます。 |
+| `RegisterHW` | Mandatory | true の場合、ハイブリッド worker として VM を登録します。 |
 | `WorkerGroupName` | Mandatory | ハイブリッド worker グループの名前。 |
 
 ### <a name="manually-run-powershell-commands"></a>PowerShell コマンドを手動で実行する

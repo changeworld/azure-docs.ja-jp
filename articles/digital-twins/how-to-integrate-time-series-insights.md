@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 4/7/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d89ee4c8e66ba4dda004fbd27e15b96ab13c642b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 1ac9a0bc83c2a33becb5348862e5a572dddf3ac2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783775"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133927"
 ---
 # <a name="integrate-azure-digital-twins-with-azure-time-series-insights"></a>Azure Digital Twins と Azure Time Series Insights を統合する
 
@@ -100,7 +100,7 @@ az dt endpoint create eventhub -n <your-Azure-Digital-Twins-instance-name> --eve
 
 ### <a name="create-twins-hub-event-route"></a>Twins ハブのイベント ルートを作成する
 
-ツインの状態が更新されるたびに、Azure Digital Twins インスタンスで[ツイン更新イベント](how-to-interpret-event-data.md)を生成できます。 このセクションでは、さらなる処理を行うためにこれらの更新イベントを Twins ハブに送信する Azure Digital Twins の **イベント ルート** を作成します。
+ツインの状態が更新されるたびに、Azure Digital Twins インスタンスで[ツイン更新イベント](./concepts-event-notifications.md)を生成できます。 このセクションでは、さらなる処理を行うためにこれらの更新イベントを Twins ハブに送信する Azure Digital Twins の **イベント ルート** を作成します。
 
 ツイン更新イベントを上記からエンドポイントに送信するための[ルート](concepts-route-events.md#create-an-event-route)を Azure Digital Twins に作成します。 このルートのフィルターでは、エンドポイントに渡されるツイン更新メッセージのみが許可されます。 Twins ハブのイベント ルートの名前を指定します。
 

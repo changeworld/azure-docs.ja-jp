@@ -12,18 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: d386b504475b308c2fb5146b47d3977cb87510f8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9bb995e5e3038d7a4cd24f0db2608461c8848497
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105935679"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726298"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
-Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 and SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 この記事では、SMB3 ボリュームを作成する方法について説明します。
+Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュアル プロトコル (NFSv3 and SMB) を使用したボリュームの作成がサポートされています。 ボリュームの容量消費は、そのプールのプロビジョニング容量を前提としてカウントされます。 
+
+この記事では、SMB3 ボリュームを作成する方法について説明します。 NFS ボリュームについては、[NFS ボリュームの作成](azure-netapp-files-create-volumes.md)に関する記事を参照してください。 デュアルプロトコル ボリュームについては、[デュアルプロトコル ボリュームの作成](create-volumes-dual-protocol.md)に関する記事を参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に 
 
@@ -89,6 +91,26 @@ SMB ボリュームを作成する前に Active Directory Domain Services の接
     * ボリュームのプロトコルの種類として **[SMB]** を選択します。 
     * ドロップダウン リストから **Active Directory** の接続を選択します。
     * **[共有名]** に共有ボリュームの名前を指定します。
+    * SMB3 の暗号化を有効にする場合は、 **[SMB3 プロトコルの暗号化を有効にする]\(Enable SMB3 Protocol Encryption\)** を選択します。   
+        この機能により、移動中の SMB3 データの暗号化が有効になります。 SMB3 暗号化を使用していない SMB クライアントは、このボリュームにアクセスできません。  保存データは、この設定に関係なく暗号化されます。  
+        詳細については、「[SMB 暗号化に関する FAQ](azure-netapp-files-faqs.md#smb-encryption-faqs)」を参照してください。 
+
+        **SMB3 の暗号化** 機能は現在、プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+
+        機能の登録の状態を確認します。 
+
+        > [!NOTE]
+        > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が `Registered` になってから続行してください。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+        
+        また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。  
     * SMB ボリュームの継続的な可用性を有効にする場合は、 **[継続的可用性を有効にする]** を選択します。    
 
         > [!IMPORTANT]   

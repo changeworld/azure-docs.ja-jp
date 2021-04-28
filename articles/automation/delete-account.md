@@ -4,14 +4,15 @@ description: この記事では、さまざまな構成シナリオで Automatio
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-ms.date: 03/18/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: c3a514aa507fcf069671f987e175b7ae5be59d10
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: fe2d99a610be3877b4a347e4bd0dd17df53ba326
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105734918"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834158"
 ---
 # <a name="how-to-delete-your-azure-automation-account"></a>Azure Automation アカウントを削除する方法
 
@@ -28,7 +29,10 @@ Automation アカウントを削除するには、サポートされているデ
 * Log Analytics ワークスペースを Automation アカウントからリンク解除して、Automation アカウントを削除します。
 * リンクされたワークスペースから機能を削除し、ワークスペースからアカウントをリンク解除した後に、Automation アカウントを削除します。
 
-この記事では、Azure portal、PowerShell、Azure CLI、または REST API を使用して Automation アカウントを完全に削除する方法について説明します。
+この記事では、Microsoft Azure PowerShell、Azure CLI、または REST API を使用して、Azure portal を介して Automation アカウントを完全に削除する方法について説明します。
+
+> [!NOTE]
+> 続行する前に、不注意による、重要なリソースの削除や変更を防止する [Resource Manager ロック](../azure-resource-manager/management/lock-resources.md)がサブスクリプション、リソース グループ、リソースで適用されていないことを確認してください。 Start/Stop VMs during off-hours ソリューションをデプロイしている場合は、Automation アカウントの複数の依存リソース (具体的には、その Runbook と変数) に対して、ロック レベルが **CanNotDelete** に設定されます。 Automation アカウントを削除する前に、すべてのロックを削除する必要があります。
 
 ## <a name="delete-the-dedicated-resource-group"></a>専用のリソース グループを削除する
 

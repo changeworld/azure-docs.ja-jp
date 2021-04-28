@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: 9366bb5b2bb5820245ec1b699bbf2ddda0dd9f9d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0cc32a84ee0d214df9533b480a1c29bb57ee1c7
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103177"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071741"
 ---
 # <a name="single-page-application-app-registration"></a>シングルページ アプリケーション：アプリの登録
 
@@ -68,8 +68,6 @@ MSAL.js 2.0 以降を使用するアプリのリダイレクト URI を追加す
 1. **[構成]** を選択して、リダイレクト URI の追加を完了します。
 
 これで、シングル ページ アプリケーション (SPA) の登録が完了し、クライアントがリダイレクトされ、セキュリティ トークンが送信されるリダイレクト URI が構成されました。 **ID トークン** と **アクセス トークン** のどちらかまたは両方を選択すると、暗黙的な許可フローが有効になります。
-
-さらに詳細なガイダンスについては、[チュートリアル](tutorial-v2-javascript-spa.md)に従ってください。
 
 ## <a name="note-about-authorization-flows"></a>承認フローについての注意事項
 

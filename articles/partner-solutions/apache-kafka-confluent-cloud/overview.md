@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.service: partner-services
 ms.date: 01/15/2021
 ms.author: tomfitz
-ms.openlocfilehash: fefbc21c385e3beacbf570c31ffbf97238c780fc
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: eea96f9a445fcfd1af5d23db1e01d1a7440fceea
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109086"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137077"
 ---
 # <a name="what-is-apache-kafka-for-confluent-cloud"></a>Apache Kafka on Confluent Cloud とは
 

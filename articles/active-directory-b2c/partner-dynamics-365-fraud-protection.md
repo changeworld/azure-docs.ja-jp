@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8c9d760ed888eb194ad8f282f180a634e3c09538
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 8a94500f1669e47065f6ea9789b18442e0c8349e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587818"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127013"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用した Microsoft Dynamics 365 Fraud Protection の構成
 
-このサンプル チュートリアルでは、[Microsoft Dynamics 365 Fraud Protection](https://docs.microsoft.com/dynamics365/fraud-protection/overview) (DFP) を Azure Active Directory (AD) B2C と統合する方法についてのガイダンスを提供します。
+このサンプル チュートリアルでは、[Microsoft Dynamics 365 Fraud Protection](/dynamics365/fraud-protection/overview) (DFP) を Azure Active Directory (AD) B2C と統合する方法についてのガイダンスを提供します。
 
 Microsoft DFP は、新規アカウントの作成やクライアントのエコシステムへのログインが不正なものであるかどうかを評価する機能をクライアントに提供します。 Microsoft DFP での評価は、新しい偽のアカウントを作成したり、既存のアカウントを侵害したりする疑いのある試みを、ブロックまたはチャレンジするために使用できます。 アカウント保護には、人工知能によるデバイス フィンガープリント、リアルタイム リスク評価用の API、クライアントのビジネス ニーズに応じてリスク戦略を最適化するためのルールとリストのエクスペリエンス、クライアントのエコシステムで不正行為の防止の有効性と傾向を監視するためのスコアカードが含まれます。
 
@@ -103,7 +103,7 @@ CORS の設定、**許可された配信元** `https://{your_tenant_name}.b2clog
 |FraudProtectionSettings:InstanceId | Microsoft DFP 構成 |     |
 |FraudProtectionSettings:DeviceFingerprintingCustomerId | Microsoft デバイス フィンガープリント カスタマー ID |     |
 | FraudProtectionSettings:ApiBaseUrl |  Microsoft DFP Portal からのベース URL   | 実稼働 API を呼び出すには、"-int" を削除します。|
-|  TokenProviderConfig:リソース  | ベース URL - https://api.dfp.dynamics-int.com     | 実稼働 API を呼び出すには、"-int" を削除します。|
+|  TokenProviderConfig:リソース  | ベース URL - `https://api.dfp.dynamics-int.com`     | 実稼働 API を呼び出すには、"-int" を削除します。|
 |   TokenProviderConfig:ClientId       |Fraud Protection マーチャント Azure AD クライアント アプリケーション ID      |       |
 | TokenProviderConfig:Authority | https://login.microsoftonline.com/<directory_ID> | Fraud Protection マーチャント Azure AD テナント オーソリティ |
 | TokenProviderConfig:CertificateThumbprint* | マーチャント Azure AD クライアント アプリケーションに対する認証に使用する、証明書のサムプリント |

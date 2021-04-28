@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 9a7a0795a15de52c34b8591c4224c3ca5883445c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ae5ca6ac822dabd32b6463c3a742901f32b34323
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772075"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862257"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Azure Logic Apps で B2B エンタープライズ統合用の統合アカウントを作成および管理する
 
@@ -93,7 +93,7 @@ ms.locfileid: "107772075"
 
 統合アカウントを作成するには、こちらのコマンドを使用します。
 
-1. [az logic integration-account](/cli/azure/ext/logic/logic/integration-account) 拡張機能を追加するには、[az extension add](/cli/azure/extension#az_extension_add)コマンドを使用します。
+1. [az logic integration-account](/cli/azure/logic/integration-account) 拡張機能を追加するには、[az extension add](/cli/azure/extension#az_extension_add)コマンドを使用します。
 
    ```azurecli
    az extension add –-name logic
@@ -105,13 +105,13 @@ ms.locfileid: "107772075"
    az group create --name myresourcegroup --location westus
    ```
 
-   リソース グループの統合アカウントの一覧を表示するには、[az logic integration-account list](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_list) コマンドを使用します。
+   リソース グループの統合アカウントの一覧を表示するには、[az logic integration-account list](/cli/azure/logic/integration-account#az_logic_integration_account_list) コマンドを使用します。
 
    ```azurecli
    az logic integration-account list --resource-group myresourcegroup
    ```
 
-1. 統合アカウントを作成するには、[az logic integration-account create](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_create) コマンドを実行します。
+1. 統合アカウントを作成するには、[az logic integration-account create](/cli/azure/logic/integration-account#az_logic_integration_account_create) コマンドを実行します。
 
    ```azurecli
    az logic integration-account create --resource-group myresourcegroup \
@@ -123,13 +123,13 @@ ms.locfileid: "107772075"
    > [!TIP]
    > [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 内で統合アカウントを作成するには、その ISE を場所として選択します。 詳細については、「[ISE で統合アカウントを作成する](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)」を参照してください。
 
-   特定の統合アカウントを表示するには、[az logic integration-account show](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_show) コマンドを使用します。
+   特定の統合アカウントを表示するには、[az logic integration-account show](/cli/azure/logic/integration-account#az_logic_integration_account_show) コマンドを使用します。
 
    ```azurecli
    az logic integration-account show --name integration_account_01 --resource-group myresourcegroup
    ```
 
-   [az logic integration-account update](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_update) コマンドを使用すると、SKU または価格レベルを変更できます。
+   [az logic integration-account update](/cli/azure/logic/integration-account#az_logic_integration_account_update) コマンドを使用すると、SKU または価格レベルを変更できます。
 
    ```azurecli
    az logic integration-account update --sku name=Basic --name integration_account_01 \
@@ -142,14 +142,14 @@ ms.locfileid: "107772075"
    * [Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
    * [Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)
 
-JSON ファイルを使用して統合アカウントをインポートするには、[az logic integration-account import](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_import) コマンドを使用します。
+JSON ファイルを使用して統合アカウントをインポートするには、[az logic integration-account import](/cli/azure/logic/integration-account#az_logic_integration_account_import) コマンドを使用します。
 
 ```azurecli
 az logic integration-account import --name integration_account_01 \
     --resource-group myresourcegroup --input-path integration.json
 ```
 
-[az logic integration-account delete](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_delete) コマンドを使用すると、統合アカウントを削除できます。
+[az logic integration-account delete](/cli/azure/logic/integration-account#az_logic_integration_account_delete) コマンドを使用すると、統合アカウントを削除できます。
 
 ```azurecli
 az logic integration-account delete --name integration_account_01 --resource-group myresourcegroup

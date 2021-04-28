@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 03/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 8ff2e73a8557c6b1761c852ac58a46037a122ddb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ceefd4695583822536d8cc4c14614af7f6736f70
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628528"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830126"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>クイックスタート: Azure PowerShell を使用してプライベート エンドポイントを作成する
 

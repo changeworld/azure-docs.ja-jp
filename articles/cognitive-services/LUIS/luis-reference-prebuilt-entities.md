@@ -8,13 +8,13 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: cb3c74a2176ee7fcac53afb5185e8c62e66f4dfb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/13/2021
+ms.openlocfilehash: 7155a829655645e13e0485ed7d51305ec50e5b0a
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798801"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502761"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>LUIS モデルにおけるカルチャごとのエンティティ
 
@@ -23,7 +23,7 @@ Language Understanding (LUIS) では、作成済みのエンティティが提�
 ## <a name="entity-resolution"></a>エンティティの解決
 作成済みのエンティティをアプリケーションに組み込むと、LUIS は対応するエンティティの解決をエンドポイントの応答に含めます。 すべての発話例にも、エンティティでラベルが付けられます。
 
-作成済みのエンティティの動作は変更できませんが、[機械学習エンティティまたはサブエンティティに作成済みのエンティティを特徴量として追加](luis-concept-entity-types.md#effective-prebuilt-entities)することによって、解決を向上させることができます。
+作成済みのエンティティの動作は変更できませんが、[機械学習エンティティまたはサブエンティティに作成済みのエンティティを特徴量として追加](luis-concept-entity-types.md#prebuilt-entity)することによって、解決を向上させることができます。
 
 ## <a name="availability"></a>可用性
 特に記載のない限り、作成済みエンティティはすべての LUIS アプリケーション ロケール (カルチャ) で使用できます。 次の表では、各カルチャでサポートされている作成済みエンティティを示します。

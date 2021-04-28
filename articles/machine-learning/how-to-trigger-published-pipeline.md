@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: laobri
 author: lobrien
 ms.date: 01/29/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3ecf4458b052f4fdc0eb2e6e697b0468c71ce9c2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: 53f438fe6ccb1659bde65ffbc8de0acee85c1b28
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519658"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884374"
 ---
 # <a name="trigger-machine-learning-pipelines"></a>機械学習パイプラインをトリガーする
 

@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8a18a47331eb5d4a9ed5578cca320beef5e0ba45
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6a98571f513e25d801acd4f4a9c2901dcd56fabc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766989"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869223"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor での監視ソリューション
 
@@ -48,7 +48,7 @@ Azure Monitor のソリューションの **[概要]** ページには、Log Ana
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[az monitor log-analytics solution list](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) コマンドを使用して、サブスクリプションにインストールされている監視ソリューションを一覧表示します。   `list` コマンドを実行する前に、「[監視ソリューションをインストールする](#install-a-monitoring-solution)」に記載されている前提条件に従ってください。
+[az monitor log-analytics solution list](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_list) コマンドを使用して、サブスクリプションにインストールされている監視ソリューションを一覧表示します。   `list` コマンドを実行する前に、「[監視ソリューションをインストールする](#install-a-monitoring-solution)」に記載されている前提条件に従ってください。
 
 ```azurecli
 # List all log-analytics solutions in the current subscription.
@@ -142,7 +142,7 @@ Microsoft およびパートナーの監視ソリューションは、[Azure Mar
 
 ソリューションをインストールするときに、ソリューションがインストールされる [Log Analytics ワークスペース](../logs/manage-access.md)と、データが収集される場所を選択する必要があります。  Azure CLI では、[az monitor log-analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace) 参照コマンドを使用して、ワークスペースを管理します。  「[Log Analytics ワークスペースと Automation アカウント](#log-analytics-workspace-and-automation-account)」で説明されているプロセスに従って、ワークスペースとアカウントをリンクします。
 
-[az monitor log-analytics solution create](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) を使用して、監視ソリューションをインストールします。  角かっこで囲まれているパラメーターは省略可能です。
+[az monitor log-analytics solution create](/cli/azure/monitor/log-analytics/solution) を使用して、監視ソリューションをインストールします。  角かっこで囲まれているパラメーターは省略可能です。
 
 ```azurecli
 az monitor log-analytics solution create --name
@@ -241,7 +241,7 @@ Log Analytics ワークスペースと Automation アカウント間のリンク
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用して、インストール済みのソリューションを削除するには、[az monitor log-analytics solution delete](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete) コマンドを使用します。
+Azure CLI を使用して、インストール済みのソリューションを削除するには、[az monitor log-analytics solution delete](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_delete) コマンドを使用します。
 
 ```azurecli
 az monitor log-analytics solution delete --name

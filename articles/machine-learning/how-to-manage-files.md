@@ -8,15 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: 5bfa7d83c00386ae922f0eba221ad9f2f74639ae
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 7879db0e059358a2df550a8c82f3b692597de8f6
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066145"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889000"
 ---
 # <a name="how-to-create-and-manage-files-in-your-workspace"></a>ワークスペース内のファイルを作成および管理する方法
 

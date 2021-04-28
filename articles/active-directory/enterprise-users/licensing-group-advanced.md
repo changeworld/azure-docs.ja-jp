@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72a28aebe71809f3e47f9cc6936366cd027a32bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cec0f2be9dc86b156bc76f0de5afb1cc19fda99b
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96546677"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016493"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -138,7 +138,7 @@ PowerShell スクリプトを使用して、ユーザーがライセンスを直
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>監査ログを使用してグループベースのライセンスのアクティビティを監視する
 
-[Azure AD 監査ログ](../reports-monitoring/concept-audit-logs.md#audit-logs)を使用して、グループベースのライセンスに関連するすべてのアクティビティを参照できます。以下に例を挙げます。
+[Azure AD 監査ログ](../reports-monitoring/concept-audit-logs.md)を使用して、グループベースのライセンスに関連するすべてのアクティビティを参照できます。以下に例を挙げます。
 - グループのライセンスの変更者
 - グループ ライセンスの変更処理が開始された時と完了した時
 - グループ ライセンス割り当ての結果としてユーザーに加えられたライセンス変更の内容

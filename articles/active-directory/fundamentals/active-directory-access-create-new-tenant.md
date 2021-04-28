@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc51c645c470f2b5b0a009eaf831db2f1957617e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 93ae1982dfaef6e10edf39013474b6663dd688d0
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780140"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130613"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>クイック スタート:Azure Active Directory で新しいテナントを作成する
 
@@ -63,9 +63,9 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 
 ## <a name="your-user-account-in-the-new-tenant"></a>新しいテナントのユーザー アカウント
 
-新しい Azure AD テナントを作成したユーザーが、そのテナントの最初のユーザーになります。 最初のユーザーには、[グローバル管理者](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator)ロールが自動的に割り当てられます。 [ **[ユーザー]** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) ページに移動して、ユーザー アカウントを確認します。
+新しい Azure AD テナントを作成したユーザーが、そのテナントの最初のユーザーになります。 最初のユーザーには、[グローバル管理者](../roles/permissions-reference.md#global-administrator)ロールが自動的に割り当てられます。 [ **[ユーザー]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) ページに移動して、ユーザー アカウントを確認します。
 
-既定では、テナントの[技術部連絡先](https://docs.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean)としても表示されます。 技術部連絡先の情報は、[ **[プロパティ]** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) で変更できます。
+既定では、テナントの[技術部連絡先](/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean)としても表示されます。 技術部連絡先の情報は、[ **[プロパティ]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) で変更できます。
 
 > [!WARNING]
 > ディレクトリに、グローバル管理者特権が割り当てられているアカウントが少なくとも 2 つあることを確認します。 これは、グローバル管理者のどちらかがロックアウトされた場合に役立ちます。詳細については、「[Azure AD で緊急アクセス用管理者アカウントを管理する](../roles/security-emergency-access.md)」を参照してください。

@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to,automl,contperf-fy21q2
+ms.topic: how-to
+ms.custom: automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 563f4e84bf17f749eb4a02bd9a470984e20aa289
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98610303"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131442"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>自動機械学習でのデータの特徴量化
 
@@ -319,7 +319,7 @@ BERT を呼び出すには、automl_settings に `enable_dnn: True` を設定し
 
 BERT の場合は、AutoML で次の手順が行われます。 
 
-1. **すべてのテキスト列の前処理とトークン化**。 たとえば、"StringCast" トランスフォーマーは、最終的なモデルの特徴量化の概要内にあります。 モデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)を参照してください。
+1. **すべてのテキスト列の前処理とトークン化**。 たとえば、"StringCast" トランスフォーマーは、最終的なモデルの特徴量化の概要内にあります。 モデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)を参照してください。
 
 2. **すべてのテキスト列を 1 つのテキスト列に連結** します。そのため、最終的なモデル内では `StringConcatTransformer` になります。 
 
@@ -363,4 +363,4 @@ automl_settings = {
 
 * [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)についてさらに詳しく学習する。
 
-* [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](how-to-auto-train-remote.md)についてさらに詳しく確認します。
+* [自動機械学習を使用して回帰モデルをトレーニングする方法](tutorial-auto-train-models.md)または[リモート リソースに対して自動機械学習を使用してトレーニングする方法](concept-automated-ml.md#local-remote)についてさらに詳しく確認します。

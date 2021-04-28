@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/20/2020
 ms.author: juergent
 ms.reviewer: cynthn
-ms.openlocfilehash: e978baa556f1bc1cfea0ccd5abbbf92dc77b1622
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cbc41f6e58be523b1a5dc6ad55c9e78b563d2ae8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102504016"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144351"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -372,4 +372,4 @@ Azure 仮想マシンの運用環境で SAP アプリケーションを使用す
 - [Azure での SAP MaxDB、Live Cache、Content Server のデプロイ](dbms_guide_maxdb.md)
 - [SAP HANA on Azure 運用ガイド](hana-vm-operations.md)
 - [Azure 仮想マシンの SAP HANA の高可用性](sap-hana-availability-overview.md)
-- [Azure 仮想マシン上の SAP HANA のバックアップ ガイド](sap-hana-backup-guide.md)
+- [Azure 仮想マシン上の SAP HANA のバックアップ ガイド](../../../backup/sap-hana-db-about.md)

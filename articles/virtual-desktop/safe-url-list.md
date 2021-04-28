@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c937f9d75613b6550a2f05dd63a8b31dd83fe0b7
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 00ae761af44b9e6537149c96607c0ba00e6439c8
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445723"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107514987"
 ---
 # <a name="required-url-list"></a>必要な URL リスト
 
@@ -19,6 +19,52 @@ Windows Virtual Desktop をデプロイし、使用するには、仮想マシ�
 
 >[!IMPORTANT]
 >Windows Virtual Desktop では、この記事に含まれていない URL をブロックするデプロイはサポートされていません。
+
+## <a name="required-url-check-tool"></a>必要な URL チェック ツール
+
+必要な URL チェック ツールでは、URL が検証され、仮想マシンが機能するために必要な URL がアクセス可能かどうかが示されます。 そうでない場合は、このツールによって、アクセス不可 URL が一覧表示されるため、必要に応じてそれらのブロックを解除できます。
+
+次の点に注意することが重要です。
+
+- 必要な URL チェック ツールは、商用クラウドでのデプロイにのみ使用できます。
+- 必要な URL チェック ツールでは、ワイルドカードを含む URL をチェックできないため、必ず最初にそれらの URL のブロックを解除してください。
+
+### <a name="requirements"></a>必要条件
+
+必要な URL チェック ツールを使用するには、次のものが必要です。
+
+- VM には .NET 4.6.2 Framework が必要です
+- RDAgent バージョン 1.0.2944.400 以降
+- WVDAgentUrlTool.exe ファイルは、WVDAgentUrlTool.config ファイルと同じフォルダーにある必要があります
+
+### <a name="how-to-use-the-required-url-check-tool"></a>必要な URL チェック ツールの使用方法
+
+必要な URL チェック ツールを使用するには、次のようにします。
+
+1. VM 上で管理者としてコマンド プロンプトを開きます。
+2. 次のコマンドを実行して、ビルド エージェントと同じフォルダーにディレクトリを変更します。
+
+    ```console
+    cd C:\Program Files\Microsoft RDInfra\RDAgent_1.0.2944.1200
+    ```
+
+3. 次のコマンドを実行します。
+
+    ```console
+    WVDAgentUrlTool.exe
+    ```
+ 
+4. このファイルを実行すると、アクセス可能とアクセス不可 URL の一覧が表示されます。
+
+    たとえば、次のスクリーンショットは、必要な 2 つの非ワイルドカード URL のブロックを解除する必要があるシナリオを示しています。
+
+    > [!div class="mx-imgBorder"]
+    > ![アクセス不可 URL 出力のスクリーンショット。](media/noaccess.png)
+    
+    必要な非ワイルドカード URL のブロックをすべて解除すると、出力は次のようになります。
+
+    > [!div class="mx-imgBorder"]
+    > ![アクセス可能 URL 出力のスクリーンショット。](media/access.png)
 
 ## <a name="virtual-machines"></a>仮想マシン
 

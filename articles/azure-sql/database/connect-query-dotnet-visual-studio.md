@@ -12,17 +12,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/10/2020
-ms.openlocfilehash: 1d8859f4790610e72ad517f74bbbbf0cf77d9316
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1fe39e0ff9acc0c092199ab2dd199cf396f67d01
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97705204"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874767"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database"></a>クイックスタート: Visual Studio で .NET と C# を使用してデータベースに接続してクエリを実行する
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-このクイックスタートでは、Visual Studio で [.NET Framework](https://www.microsoft.com/net/) と C# コードを使用し、Transact-SQL ステートメントを使って Azure SQL または Synapse SQL 内のデータベースに対してクエリを実行する方法について説明します。
+このクイックスタートでは、Visual Studio で [.NET Framework](https://dotnet.microsoft.com) と C# コードを使用し、Transact-SQL ステートメントを使って Azure SQL または Synapse SQL 内のデータベースに対してクエリを実行する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

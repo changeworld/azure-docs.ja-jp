@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ee10aa7c461aca65f385c735f6e9aaa28af7f9e5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b4d69157f4544daad962cca15e53802e7b912399
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103471698"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530427"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory で使用できる認証方法と検証方法
 
@@ -74,7 +74,7 @@ Azure AD Multi-Factor Authentication (MFA) を使用すると、ユーザーが�
 | 音声通話                     | いいえ                     | MFA と SSPR              |
 | Password                       | はい                    |                           |
 
-これらの認証方法は、すべて Azure portal で構成できます。また、[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用して構成することが増えています。
+これらの認証方法は、すべて Azure portal で構成できます。また、[Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) を使用して構成することが増えています。
 
 各認証方法のしくみの詳細については、次の概念に関する個別の記事を参照してください。
 
@@ -104,7 +104,7 @@ SSPR の概念の詳細については、[Azure AD のセルフサービス パ�
 
 MFA の概念の詳細については、[Azure AD Multi-Factor Authentication のしくみ][concept-mfa]に関する記事を参照してください。
 
-[Microsoft Graph REST API ベータ版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)を使用した認証方法の構成の詳細について確認してください。
+[Microsoft Graph REST API](/graph/api/resources/authenticationmethods-overview) を使用した認証方法の構成の詳細を確認してください。
 
 使用されている認証方法を確認するには、[PowerShell を使用した Azure AD Multi-Factor Authentication の認証方法の分析](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/)に関する記事を参照してください。
 
