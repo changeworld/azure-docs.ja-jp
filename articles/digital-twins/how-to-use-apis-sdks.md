@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 219d791d4e5e12f0153012a17963bcbe2873168c
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 21247f6b396cb1f7016c74cbec528149c0583724
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945495"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587206"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Azure Digital Twins の API および SDK を使用する
 
@@ -70,6 +70,7 @@ Azure Digital Twins には、インスタンスとその要素を管理するた
    - PyPi からパッケージを表示してインストールする。[Azure Azure Digital Twins Core client library for Python](https://pypi.org/project/azure-digitaltwins-core/)。
    - [SDK のリファレンス ドキュメント](/python/api/azure-digitaltwins-core/azure.digitaltwins.core)を確認する。
    - GitHub で SDK のソースを探す。[Azure Digital Twins Core client library for Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/digitaltwins/azure-digitaltwins-core)
+* AutoRest を使用して、別の言語用の SDK を生成することができます。 ["*AutoRest を使用して Azure Digital Twins 用のカスタム SDK を作成する方法*"](how-to-create-custom-sdks.md) の手順に従ってください。
 
 また、データ プレーン API の演習を行うには、[CLI](how-to-use-cli.md) を使用して Azure Digital Twins を操作します。
 

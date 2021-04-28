@@ -9,12 +9,12 @@ ms.subservice: trusted-launch
 ms.topic: how-to
 ms.date: 04/06/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 50ecf6e394d5d19d09033554272023bd6796851b
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 295579d17f3b24adcf43f6907cc4b1aca01dcae2
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581184"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565918"
 ---
 # <a name="deploy-a-vm-with-trusted-launch-enabled-preview"></a>トラステッド起動を有効にして VM をデプロイする (プレビュー)
 
@@ -41,22 +41,20 @@ ms.locfileid: "106581184"
 5. **[プロジェクトの詳細]** で、正しいサブスクリプションが選択されていることを確認します。
 6. **[リソース グループ]** で **[新規作成]** を選択し、リソース グループの名前を入力するか、ドロップダウンから既存のリソース グループを選択します。
 7. **[インスタンスの詳細]** で、仮想マシンの名前を入力し、[トラステッド起動](trusted-launch.md#public-preview-limitations)がサポートされているリージョンを選択します。
-8. **[イメージ]** で、Gen 2 の[トラステッド起動がサポートされているイメージ](trusted-launch.md#public-preview-limitations)を選択します。 
+8. **[イメージ]** で、Gen 2 の[トラステッド起動がサポートされているイメージ](trusted-launch.md#public-preview-limitations)を選択します。 次のメッセージが表示されていることを確認します: **This image supports trusted launch preview. Configure in the Advanced tab. (このイメージは、トラステッド起動のプレビューをサポートしています。[詳細設定] タブで設定してください。)**
    > [!TIP]
    > ドロップダウンに目的の Gen 2 バージョンのイメージが表示されない場合は、 **[すべてのイメージを表示]** を選択し、 **[VM 生成]** フィルターを変更して Gen 2 のイメージのみを表示するようにします。 一覧でイメージを見つけて、 **[選択]** ドロップダウンを使用して Gen 2 バージョンを選択します。
- 
+
+    :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="これがトラステッド起動をサポートする第 2 世代イメージであることを確認するメッセージを示すスクリーンショット。":::
+
+13. トラステッド起動がサポートされている VM サイズを選択します。 [サポートされているサイズ](trusted-launch.md#public-preview-limitations)の一覧を参照してください。
+14. **[管理者アカウント]** の情報を入力した後、 **[受信ポートの規則]** を指定します。 
 1. ページの上部にある **[詳細設定]** タブを選択してそれに切り替えます。
 1. **[VM の生成]** セクションまで下にスクロールします。 **[Gen 2]** が選択されていることを確認します。
 1. 引き続き **[詳細設定]** タブで、 **[Trusted launch]\(トラステッド起動\)** まで下にスクロールして、 **[Trusted launch]\(トラステッド起動\)** チェック ボックスをオンにします。 これにより、さらに [Secure boot]\(セキュア ブート\) と [vTPM] の 2 つのオプションが表示されるようになります。 自分のデプロイに合った適切なオプションを選択します。
 
     :::image type="content" source="media/trusted-launch/trusted-launch-portal.png" alt-text="トラステッド起動のオプションを示すスクリーンショット。":::
 
-12. **[基本]** タブに戻り、 **[イメージ]** の下に次のメッセージが表示されていることを確認します: "**This image supports trusted launch preview. (このイメージは、トラステッド起動のプレビューをサポートしています。) Configure in the Advanced tab ([詳細設定] タブで構成します)** "。これで、第 2 世代のイメージが選択されるはずです。
-
-    :::image type="content" source="media/trusted-launch/gen-2-image.png" alt-text="これがトラステッド起動をサポートする第 2 世代イメージであることを確認するメッセージを示すスクリーンショット。":::
-
-13. トラステッド起動がサポートされている VM サイズを選択します。 [サポートされているサイズ](trusted-launch.md#public-preview-limitations)の一覧を参照してください。
-14. **[管理者アカウント]** の情報を入力した後、 **[受信ポートの規則]** を指定します。
 15. ページの下部にある **[確認および作成]** を選択します
 16. **[仮想マシンの作成]** ページで、デプロイしようとしている VM の詳細を確認できます。 準備ができたら **[作成]** を選択します。
 

@@ -1,19 +1,19 @@
 ---
-title: AzCopy を使用して Google Cloud Storage から Azure Storage にデータをコピーする | Microsoft Docs
+title: AzCopy を使用して Google Cloud Storage から Azure Storage にコピーする | Microsoft Docs
 description: AzCopy を使用して Google Cloud Storage から Azure Storage にデータをコピーします。 AzCopy は、ストレージ アカウント間の BLOB またはファイル コピーに利用できるコマンドライン ユーティリティです。
 services: storage
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/09/2021
+ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: c6a53acd63b6aa882674f6aa29e1f7152f5b0a30
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3b2ad11abb7d1a3e64deef1ca49d9f84f03e5879
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728812"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107498341"
 ---
 # <a name="copy-data-from-google-cloud-storage-to-azure-storage-by-using-azcopy-preview"></a>AzCopy を使用して Google Cloud Storage から Azure Storage にデータをコピーする (プレビュー)
 
@@ -63,22 +63,30 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
-| **例** | `azcopy copy 'https://storage.cloud.google.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
-| **例** (階層型名前空間) | `azcopy copy 'https://storage.cloud.google.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
+**構文**
+
+`azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'`
+
+**例**
+
+```azcopy
+azcopy copy 'https://storage.cloud.google.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'
+```
 
 
 ### <a name="copy-a-directory"></a>ディレクトリをコピーする
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
-| **例** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
-| **例** (階層型名前空間)| `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+**構文**
+
+`azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true`
+
+**例**
+
+```azcopy
+azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true
+```
 
 > [!NOTE]
 > この例では、`--recursive` フラグを追加して、すべてのサブディレクトリ内のファイルをコピーします。
@@ -87,21 +95,29 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 ワイルドカード記号 (*) を使用することで、ディレクトリ自体をコピーせずにディレクトリの内容をコピーできます。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
-| **例** | `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
-| **例** (階層型名前空間)| `azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+**構文**
+
+`azcopy copy 'https://storage.cloud.google.com/<bucket-name>/<directory-name>/*' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true`
+
+**例**
+
+```azcopy
+azcopy copy 'https://storage.cloud.google.com/mybucket/mydirectory/*' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true
+```
 
 ### <a name="copy-a-cloud-storage-bucket"></a>クラウド ストレージ バケットをコピーする
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
-| **例** | `azcopy copy 'https://storage.cloud.google.com/mybucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **例** (階層型名前空間)| `azcopy copy 'https://storage.cloud.google.com/mybucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+**構文**
+
+`azcopy copy 'https://storage.cloud.google.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true`
+
+**例**
+
+```azcopy
+azcopy copy 'https://storage.cloud.google.com/mybucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true
+```
 
 ### <a name="copy-all-buckets-in-a-google-cloud-project"></a>Google Cloud プロジェクト内のすべてのバケットをコピーする 
 
@@ -109,11 +125,15 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy copy 'https://storage.cloud.google.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
-| **例** | `azcopy copy 'https://storage.cloud.google.com/' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **例** (階層型名前空間)| `azcopy copy 'https://storage.cloud.google.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+**構文**
+
+`azcopy copy 'https://storage.cloud.google.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true`
+
+**例**
+
+```azcopy
+azcopy copy 'https://storage.cloud.google.com/' 'https://mystorageaccount.blob.core.windows.net' --recursive=true
+```
 
 ### <a name="copy-a-subset-of-buckets-in-a-google-cloud-project"></a>Google Cloud プロジェクト内のバケットのサブセットをコピーする 
 
@@ -121,11 +141,15 @@ AzCopy では、[Put Block From URL](/rest/api/storageservices/put-block-from-ur
 
 バケット名にワイルドカード記号 (*) を使用して、バケットのサブセットをコピーします。 階層型名前空間があるアカウントに同じ URL 構文 (`blob.core.windows.net`) を使用します。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy copy 'https://storage.cloud.google.com/<bucket*name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
-| **例** | `azcopy copy 'https://storage.cloud.google.com/my*bucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
-| **例** (階層型名前空間)| `azcopy copy 'https://storage.cloud.google.com/my*bucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+**構文**
+
+`azcopy copy 'https://storage.cloud.google.com/<bucket*name>' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true`
+
+**例**
+
+```azcopy
+azcopy copy 'https://storage.cloud.google.com/my*bucket' 'https://mystorageaccount.blob.core.windows.net' --recursive=true
+```
 
 ## <a name="handle-differences-in-bucket-naming-rules"></a>バケットの名前付け規則の違いに対処する
 
@@ -169,10 +193,18 @@ AzCopy では次の手順が実行されます。
 
 ## <a name="next-steps"></a>次のステップ
 
-以下の記事にサンプルがあります。
+他の例については、次の記事を参照してください。
 
-- [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [例:アップロード](storage-use-azcopy-blobs-upload.md)
+- [例:ダウンロード](storage-use-azcopy-blobs-download.md)」をご覧ください
+- [例:アカウント間のコピー](storage-use-azcopy-blobs-copy.md)
+- [例:同期](storage-use-azcopy-blobs-synchronize.md)
+- [例:Amazon S3 バケット](storage-use-azcopy-s3.md)
+- [例:Azure Files](storage-use-azcopy-files.md)
+- [チュートリアル:AzCopy を使用したオンプレミス データのクラウド ストレージへの移行](storage-use-azcopy-migrate-on-premises-data.md)
 
-- [データの転送](storage-use-azcopy-v10.md#transfer-data)
+設定の構成、パフォーマンスの最適化、および問題のトラブルシューティングを行うには、次の記事を参照してください。
 
-- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
+- [AzCopy の構成設定](storage-ref-azcopy-configuration-settings.md)
+- [AzCopy のパフォーマンスを最適化する](storage-use-azcopy-optimize.md)
+- [ログ ファイルを使用した Azure Storage での AzCopy V10 の問題のトラブルシューティング](storage-use-azcopy-configure.md)

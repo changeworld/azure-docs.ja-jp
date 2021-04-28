@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: a7e4e76aa0619d78a91d766a9a43c0b1a02a48d3
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 43f4c1f3da21ab65c27b74359fcc577a99220b6a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717389"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129695"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Azure PowerShell を使用してクラウド サービス (延長サポート) をデプロイする
 
@@ -69,7 +69,7 @@ ms.locfileid: "107717389"
     $virtualNetwork = New-AzVirtualNetwork -Name “ContosoVNet” -Location “East US” -ResourceGroupName “ContosOrg” -AddressPrefix "10.0.0.0/24" -Subnet $subnet 
     ```
  
-7. パブリック IP アドレスを作成し、そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 Cloud Services (延長サポート) では、[Basic](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU のパブリック IP アドレスのみをサポートしています。 Standard SKU のパブリック IP は、Cloud Services では機能しません。
+7. パブリック IP アドレスを作成し、そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 Cloud Services (延長サポート) では、[Basic](../virtual-network/public-ip-addresses.md#basic) SKU のパブリック IP アドレスのみをサポートしています。 Standard SKU のパブリック IP は、Cloud Services では機能しません。
 静的 IP を使用する場合は、サービス構成 (.cscfg) ファイルで予約済み IP として参照する必要があります 
 
     ```powershell

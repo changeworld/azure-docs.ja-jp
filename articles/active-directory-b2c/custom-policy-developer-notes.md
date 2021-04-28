@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 05/19/2020
+ms.date: 04/26/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c175a6d225be268f27854b9ab63886892cf029fb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fdf6398daf2c0206f5239a90667448d9ea789f65
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105557277"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001090"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーに関する開発者向けのメモ
 
@@ -99,13 +99,13 @@ Azure Active Directory B2C でのカスタム ポリシーの構成が一般提�
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [電話要素認証](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure AD MFA 認証](multi-factor-auth-technical-profile.md) |  | X |  |  |
-| [ワンタイム パスワード](one-time-password-technical-profile.md) |  | X |  |  |
+| [ワンタイム パスワード](one-time-password-technical-profile.md) |  |  | X |  |
 | ローカル ディレクトリとしての [Azure Active Directory](active-directory-technical-profile.md) |  |  | X |  |
 | 電子メール検証のための Azure 電子メール サブシステム |  |  | X |  |
-| [サード パーティの電子メール サービス プロバイダー](custom-email-mailjet.md) |  |X  |  |  |
+| [サード パーティの電子メール サービス プロバイダー](custom-email-mailjet.md) |  |  | X |  |
 | [複数言語のサポート](localization.md)|  |  | X |  |
 | [述語の検証](predicates.md) |  |  | X | 例: パスワードの複雑さ。 |
-| [表示コントロール](display-controls.md) |  |X  |  |  |
+| [表示コントロール](display-controls.md) |  |  |X  |  |
 
 
 ### <a name="app-ief-integration"></a>アプリケーションと IEF の統合

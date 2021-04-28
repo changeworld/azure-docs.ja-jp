@@ -6,23 +6,24 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: 90b2a39b9a5f3b4d011ff1a1ef3651dff75a1cf6
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.date: 04/14/2021
+ms.openlocfilehash: 7681e9c28bbbbcec06bcc1cf2bf469f1b4189d79
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968307"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520175"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL - Hyperscale (Citus) でのバックアップと復元
 
-Azure Database for PostgreSQL – Hyperscale (Citus) では、各ノードのバックアップを自動的に作成し、ローカル冗長ストレージに格納します。 バックアップを使用して、指定した時間に Hyperscale (Citus) クラスターを復元することができます。 不慮の破損または削除からデータを保護するバックアップと復元は、ビジネス継続性戦略の最も重要な部分です。
+Azure Database for PostgreSQL – Hyperscale (Citus) では、各ノードのバックアップを自動的に作成し、ローカル冗長ストレージに格納します。 バックアップを使用して、指定した時間への Hyperscale (Citus) サーバー グループを復元することができます。
+不慮の破損または削除からデータを保護するバックアップと復元は、ビジネス継続性戦略の最も重要な部分です。
 
 ## <a name="backups"></a>バックアップ
 
-少なくとも 1 日に 1 回、Azure Database for PostgreSQL では、データ ファイルとデータベース トランザクション ログのスナップショット バックアップが作成されます。 バックアップを使用すると、サーバーを、保持期間内の任意の時点に復元できます (保持期間は現在、すべてのクラスターで 35 日です)。すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
+少なくとも 1 日に 1 回、Azure Database for PostgreSQL では、データ ファイルとデータベース トランザクション ログのスナップショット バックアップが作成されます。 バックアップを使用すると、サーバーを、保持期間内の任意の時点に復元できます (保有期間は現在、すべてのサーバー グループで 35 日です)。すべてのバックアップが、AES 256 ビット暗号化を使用して暗号化されます。
 
-可用性ゾーンをサポートする Azure リージョンでは、バックアップ スナップショットは 3 つの可用性ゾーンに格納されます。 少なくとも 1 つの可用性ゾーンがオンラインになっている限り、Hyperscale (Citus) クラスターは復元可能です。
+可用性ゾーンをサポートする Azure リージョンでは、バックアップ スナップショットは 3 つの可用性ゾーンに格納されます。 少なくとも 1 つの可用性ゾーンがオンラインになっている限り、Hyperscale (Citus) サーバー グループは復元可能です。
 
 バックアップ ファイルをエクスポートすることはできません。 Azure Database for PostgreSQL の復元操作にのみ使用できます。
 
@@ -32,38 +33,16 @@ Azure Database for PostgreSQL – Hyperscale (Citus) では、各ノードのバ
 
 ## <a name="restore"></a>復元
 
-Azure Database for PostgreSQL では、Hyperscale (Citus) クラスターを復元すると、元のノードのバックアップから新しいクラスターが作成されます。 
+Hyperscale (Citus) サーバー グループは、過去 35 日以内の任意の時点に復元できます。  ポイントインタイム リストアは複数のシナリオで役に立ちます。 たとえば、ユーザーが誤ってデータを削除したとき、重要なテーブルやデータベースを削除したとき、またはアプリケーションで適切なデータが不適切なデータで誤って上書きされた場合などです。
 
 > [!IMPORTANT]
->Hyperscale (Citus) クラスターは、別のクラスター名を使用して、同じサブスクリプションとリソース グループ内でのみ復元できます。
+> 削除された Hyperscale (Citus) サーバー グループは復元できません。 サーバー グループを削除すると、そのサーバー グループに属するすべてのノードが削除され、復旧できなくなります。 サーバー グループのリソースがデプロイ後に誤って削除されたり、想定外に変更されたりすることを防ぐために、管理者は[管理ロック](../azure-resource-manager/management/lock-resources.md)を利用できます。
 
+復元プロセスにより、元のものと同じ Azure リージョン、サブスクリプション、およびリソース グループに新しいサーバー グループが作成されます。 サーバー グループは元の構成を保持します。つまり、ノード数、仮想コア数、ストレージ サイズ、ユーザー ロール、PostgreSQL バージョン、Citus 拡張機能のバージョンは同じです。
 
-> [!IMPORTANT]
-> 削除された Hyperscale (Citus) クラスターを復元することはできません。 クラスターを削除すると、そのクラスターに属するすべてのノードが削除され、復旧できなくなります。 管理者は、デプロイ後の誤削除や予期せぬ変更からクラスターのリソースを保護するために、[管理ロック](../azure-resource-manager/management/lock-resources.md)を利用できます。
-
-### <a name="point-in-time-restore-pitr"></a>ポイントインタイム リストア (PITR)
-
-過去 35 日以内の任意の時点にクラスターを復元することができます。
-ポイントインタイム リストアは複数のシナリオで役に立ちます。 たとえば、ユーザーが誤ってデータを削除したとき、重要なテーブルやデータベースを削除したとき、またはアプリケーションで適切なデータが不適切なデータで誤って上書きされた場合などです。
-
-復元プロセスでは、元のものと同じ Azure リージョン、サブスクリプション、およびリソース グループに新しいクラスターが作成されます。 クラスターの構成は元のものです。つまり、ノード数、仮想コア数、ストレージ サイズ、ユーザー ロール、PostgreSQL バージョン、Citus 拡張機能のバージョンは同じです。
-
-ファイアウォール設定と PostgreSQL サーバーのパラメーターは元のサーバー グループから保持されず、既定値にリセットされます。 ファイアウォールによって、すべての接続が阻止されます。 復元後にこれらの設定を手動で調整する必要があります。
-
-> [!IMPORTANT]
-> Hyperscale (Citus) クラスターのポイントインタイム リストアを実行するには、サポート要求を開く必要があります。
-
-### <a name="post-restore-tasks"></a>復元後のタスク
-
-いずれかの復旧メカニズムで復元した後、ユーザーとアプリケーションを元に戻して実行するには、次のようにする必要があります。
-
-* 元のサーバーを新しいサーバーで置き換える場合は、クライアントとクライアント アプリケーションを新しいサーバーにリダイレクトする
-* ユーザーが接続できるように、適切なサーバーレベルのファイアウォールが適用されていることを確認します。 これらのルールは元のサーバー グループからはコピーされません。
-* 必要に応じて、PostgreSQL サーバー パラメーターを調整します。 パラメーターは元のサーバー グループからはコピーされません。
-* 適切なログインとデータベース レベルのアクセス許可が適切に指定されていることを確認する
-* 必要に応じて、アラートを構成する
+ファイアウォール設定と PostgreSQL サーバーのパラメーターは元のサーバー グループから保持されず、既定値にリセットされます。 ファイアウォールによって、すべての接続が阻止されます。 復元後にこれらの設定を手動で調整する必要があります。 一般的には、推奨される[復元後のタスク](howto-hyperscale-restore-portal.md#post-restore-tasks)の一覧を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
+* Azure portal で[サーバーグループを復元](howto-hyperscale-restore-portal.md)する手順を確認します。
 *  [Azure 可用性ゾーン](../availability-zones/az-overview.md)について学習します。
-* Hyperscale (Citus) サーバー グループで [推奨されるアラート](./howto-hyperscale-alert-on-metric.md#suggested-alerts)を設定します。

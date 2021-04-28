@@ -1,24 +1,24 @@
 ---
-title: Azure Monitor for Azure Data Explorer (プレビュー) | Microsoft Docs
-description: この記事では、Azure Data Explorer クラスターの Azure Monitor 分析情報について説明します。
+title: Azure Data Explorer Insights (ADX Insights プレビュー)| Microsoft Docs
+description: この記事では、Azure Data Explorer Insights (ADX Insights) について説明します
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: dcfe12b30e336863c8e112d9ad675a2f57fe48f4
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: a8aae2dc03ba87e9782cdf3952be1bfc4a1aae75
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102179138"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767043"
 ---
-# <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor for Azure Data Explorer (プレビュー)
+# <a name="azure-data-explorer-insights-preview"></a>Azure Data Explorer Insights (プレビュー)
 
-Azure Monitor for Azure Data Explorer (プレビュー) は、クラスターのパフォーマンス、操作、使用状況、エラーの統合ビューを提供することで、クラスターを包括的に監視できるようにします。
+Azure Data Explorer Insights (プレビュー) は、クラスターのパフォーマンス、操作、使用状況、エラーの統合ビューを提供することで、クラスターを包括的に監視できるようにします。
 この記事は、Azure Monitor for Azure Data Explorer (プレビュー) をオンボードして使用する方法を理解するうえで役立ちます。
 
-## <a name="introduction-to-azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor for Azure Data Explorer (プレビュー) の概要
+## <a name="introduction-to-azure-data-explorer-insights-preview"></a>Azure Data Explorer Insights (プレビュー) の概要
 
 エクスペリエンスについて見ていく前に、情報が提供および視覚化される方法を理解する必要があります。
 -    **大規模な分析観点**: クエリ、インジェスト、エクスポート操作のパフォーマンスを簡単に追跡できるように、クラスターの主要メトリックのスナップショット ビューを表示します。
@@ -73,7 +73,7 @@ Azure Monitor から、クラスターの主要なパフォーマンス メト�
 
 ## <a name="view-from-an-azure-data-explorer-cluster-resource-drill-down-analysis"></a>Azure Data Explorer クラスター リソースから表示する (ドリルダウン分析)
 
-Azure Data Explorer クラスターから Azure Data Explorer クラスター用の Azure Monitor に直接アクセスするには、次の手順に従います。
+Azure Data Explorer クラスターから Azure Data Explorer Insights に直接アクセスするには、次の手順に従います。
 
 1. Azure portal で、 **[Azure Data Explorer クラスター]** を選択します。
 
@@ -81,7 +81,7 @@ Azure Data Explorer クラスターから Azure Data Explorer クラスター用
 
 これらのビューには、Azure Monitor 分析情報ビュー内から Azure Data Explorer クラスターのリソース名を選択してアクセスすることもできます。
 
-Azure Monitor for Azure Data Explorer では、ログとメトリックを組み合わせて、グローバルな監視ソリューションを提供します。 ログベースの視覚化を含めるには、[Azure Data Explorer クラスターの診断ログを有効にし、Log Analytics ワークスペースに送信する](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)必要があります。 有効にする必要がある診断ログは、**Command**、**Query**、**TableDetails**、**TableUsageStatistics** です。
+Azure Data Explorer Insights では、ログとメトリックを組み合わせて、グローバルな監視ソリューションを提供します。 ログベースの視覚化を含めるには、[Azure Data Explorer クラスターの診断ログを有効にし、Log Analytics ワークスペースに送信する](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs)必要があります。 有効にする必要がある診断ログは、**Command**、**Query**、**TableDetails**、**TableUsageStatistics** です。
 
 !["Enable Logs for Monitoring\(監視のログを有効にする\)" というテキストが表示された青いボタンのスクリーンショット](./media/data-explorer/enable-logs.png)
 
@@ -118,13 +118,18 @@ Azure Monitor for Azure Data Explorer では、ログとメトリックを組み
 
 [![キャッシュの詳細のスクリーンショット](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
+**[Cluster Boundaries]\(クラスターの境界\)** タブには、使用状況に基づいたクラスターの境界が表示されます。 このタブでは、CPU、インジェスト、キャッシュの使用状況を調べることができます。 これらのメトリックは、"低"、"中" または "高" としてスコア付けされます。 これらのメトリックとスコアは、クラスターに最適な SKU とインスタンス数を決定する際に重要であり、Azure Advisor の SKU/サイズに関する推奨事項で考慮に入れられます。 このタブでは、メトリック タイルを選択して詳細を確認し、その傾向およびスコアがどのように決定されたかを理解することができます。 また、クラスターに対する Azure Advisor の SKU/サイズに関する推奨事項も表示できます。 たとえば、次の図では、すべてのメトリックが "低" としてスコア付けされていることがわかります。その結果、クラスターでは、スケールインまたはスケールダウンしてコストを削減できるようにするコストに関する推奨事項を受け取ります。
+
+> [!div class="mx-imgBorder"]
+> [![[Cluster Boundaries]\(クラスターの境界\) のスクリーンショット。](./media/data-explorer/cluster-boundaries.png)](./media/data-explorer/cluster-boundaries.png#lightbox)
+
 ## <a name="pin-to-azure-dashboard"></a>Azure ダッシュボードにピン留めする
 
 セクションの右上にある画びょうアイコンを選択することで、("大規模な" 分析観点の) メトリック セクションのいずれかを Azure ダッシュボードにピン留めできます。
 
 ![ピン留めアイコンが選択されているスクリーンショット](./media/data-explorer/pin.png)
 
-## <a name="customize-azure-monitor-for-azure-data-explorer-cluster"></a>Azure Data Explorer クラスター用の Azure Monitor をカスタマイズする
+## <a name="customize-azure-data-explorer-insights"></a>Azure Data Explorer Insights のカスタマイズ
 
 このセクションでは、データ分析のニーズに合わせてブックを編集してカスタマイズする一般的なシナリオについて説明します。
 * 特定のサブスクリプションまたは Azure Data Explorer クラスターが常に選択されるようにブックのスコープを設定する
@@ -143,7 +148,7 @@ Azure Monitor for Azure Data Explorer では、ログとメトリックを組み
 
 一般的なトラブルシューティングのガイダンスについては、専用のブックベースの分析情報の[トラブルシューティングに関する記事](troubleshoot-workbooks.md)を参照してください。
 
-このセクションは、Azure Data Explorer クラスター用の Azure Monitor (プレビュー) の使用時に発生する可能性があるいくつかの一般的な問題の診断とトラブルシューティングに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
+このセクションは、Azure Data Explorer Insights (プレビュー) を使用するときに発生する可能性があるいくつかの一般的な問題を診断し、トラブルシューティングするのに役立ちます。 以下のリストを使用して、特定の問題に関連する情報を見つけてください。
 
 ### <a name="why-dont-i-see-all-my-subscriptions-in-the-subscription-picker"></a>サブスクリプション ピッカーに自分のすべてのサブスクリプションが表示されないのはなぜですか。
 

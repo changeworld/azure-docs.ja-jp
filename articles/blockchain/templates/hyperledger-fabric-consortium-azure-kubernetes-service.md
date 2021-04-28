@@ -4,13 +4,13 @@ description: Azure Kubernetes Service に Hyperledger Fabric コンソーシア�
 ms.date: 03/01/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 42d16adbc5e6396c8d5d38176ac7681c712f4555
-ms.sourcegitcommit: 4b7a53cca4197db8166874831b9f93f716e38e30
+ms.custom: contperf-fy21q3, devx-track-azurecli
+ms.openlocfilehash: 69f8518482830f143776dc9d11480a1c818f2fc6
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102101105"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886205"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Azure Kubernetes Service (AKS) に Hyperledger Fabric コンソーシアムをデプロイする
 
@@ -124,7 +124,7 @@ Azure Hyperledger Fabric スクリプトを実行するすべてのコマンド�
 
 ![コンソーシアムを構築するプロセスの図。](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
 
-初期セットアップが完了した後、クライアント アプリケーションを使用して以下の操作を行います。  
+初期セットアップが完了した後、クライアント アプリケーションを使用して以下の操作を行います。
 
 - チャネル管理
 - コンソーシアムの管理
@@ -293,15 +293,15 @@ orderer 組織のクライアントから、次のコマンドを使用して、
 # Peer organization name where the chaincode operation will be performed
 ORGNAME=<PeerOrgName>
 USER_IDENTITY="admin.$ORGNAME"  
-# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
+# If you are using chaincode_example02 then set CC_NAME=â€œchaincode_example02â€
 CC_NAME=<chaincodeName>  
-# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
+# If you are using chaincode_example02 then set CC_VERSION=â€œ1â€ for validation
 CC_VERSION=<chaincodeVersion>
 # Language in which chaincode is written. Supported languages are 'node', 'golang', and 'java'  
 # Default value is 'golang'  
 CC_LANG=<chaincodeLanguage>  
 # CC_PATH contains the path where your chaincode is placed. This is the absolute path to the chaincode project root directory.
-# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/go”
+# If you are using chaincode_example02 to validate then CC_PATH=â€œ/home/<username>/azhlfTool/samples/chaincode/src/chaincode_example02/goâ€
 CC_PATH=<chaincodePath>  
 # Channel on which chaincode will be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
@@ -355,7 +355,7 @@ CHANNEL_NAME=<channelName>
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
- `<invokeFunction>` と `<invokeFuncArgs>` では、それぞれ、呼び出し関数名とスペース区切りの引数リストが渡されます。 引き続き chaincode_example02.go の例を使用し、呼び出し操作を実行するために、 `<invokeFunction>` を `invoke` に設定し、 `<invokeFuncArgs>` を `"a" "b" "10"` に設定します。  
+`<invokeFunction>` と `<invokeFuncArgs>` で、それぞれ呼び出し関数名とスペース区切りの引数リストを渡します。 引き続き chaincode_example02.go の例を使用し、呼び出し操作を実行するには、`<invokeFunction>` を `invoke` に設定し、`<invokeFuncArgs>` を `"a" "b" "10"` に設定します。  
 
 >[!NOTE]
 > チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。 トランザクションが orderer に正常に送信された後、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 その後、チャネル内のすべてのピア組織のすべてのピア ノードで、ワールド ステートが更新されます。  
@@ -372,7 +372,7 @@ CHANNEL_NAME=<channelName>
 
 *azhlfTool* を使用してチェーンコードをインストールする場合は、保証ピア引数への値としてピア ノード名を渡します。 チェーンコードは、その組織のすべてのピア ノードにインストールされます。 
 
- `<queryFunction>` と `<queryFuncArgs>` では、それぞれ、クエリ関数名とスペース区切りの引数リストを渡します。 ここでも chaincode_example02.go チェーンコードを例にすると、ワールド ステートの値 "a" のクエリを実行するには、 `<queryFunction>` を `query` に設定し、 `<queryArgs>` を `"a"` に設定します。  
+`<queryFunction>` と `<queryFuncArgs>` で、それぞれクエリ関数名とスペース区切りの引数リストを渡します。 ここでも chaincode_example02.go チェーンコードを例にすると、ワールド ステートの値 "a" のクエリを実行するには、`<queryFunction>` を `query` に設定し、`<queryArgs>` を `"a"` に設定します。  
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

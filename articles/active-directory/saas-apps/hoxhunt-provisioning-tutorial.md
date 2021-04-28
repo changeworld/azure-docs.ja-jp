@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: 24c8e2aafed6ee7b8823effc350dee4edb5e4873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db33cc43419b4228ca270d3a69c0e88de2c05638
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650832"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752050"
 ---
 # <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>チュートリアル:Hoxhunt を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -130,6 +130,9 @@ Azure AD プロビジョニング サービスを使用すると、アプリケ�
 * [プロビジョニング ログ](../reports-monitoring/concept-provisioning-logs.md)を使用して、正常にプロビジョニングされたユーザーと失敗したユーザーを特定します。
 * [進行状況バー](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)を確認して、プロビジョニング サイクルの状態と完了までの時間を確認します。
 * プロビジョニング構成が異常な状態になったと考えられる場合、アプリケーションは検疫されます。 検疫状態の詳細については、[こちら](../app-provisioning/application-provisioning-quarantine-status.md)を参照してください。  
+
+## <a name="change-log"></a>変更履歴
+* 2021/04/20 - "preferredLanguage" とエンタープライズ拡張属性 "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division" のサポートが追加されました。
 
 ## <a name="additional-resources"></a>その他のリソース
 

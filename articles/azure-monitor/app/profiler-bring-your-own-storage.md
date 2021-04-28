@@ -6,12 +6,12 @@ author: renatosalas
 ms.author: regutier
 ms.date: 01/14/2021
 ms.reviewer: mbullwin
-ms.openlocfilehash: 9c3ff91cbfb6423099040a6ea46eeb66f5461f48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dbd892498675b8a672104a045f5c9f66b1740caf
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589674"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017872"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>BYOS (Bring Your Own Storage) を Application Insights Profiler および Visual Studio スナップショット デバッガー用に構成する
 
@@ -152,7 +152,7 @@ BYOS をコードレベルの診断 (プロファイラー/デバッガー) 用�
     ```
 
     > [!NOTE]
-    > Application Insights リソースにリンクするストレージ アカウントの更新を実行するには、[Application Insights CLI に関するドキュメント](/cli/azure/ext/application-insights/monitor/app-insights/component/linked-storage)を参照してください。
+    > Application Insights リソースにリンクするストレージ アカウントの更新を実行するには、[Application Insights CLI に関するドキュメント](/cli/azure/monitor/app-insights/component/linked-storage)を参照してください。
 
 #### <a name="configure-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して構成する
 

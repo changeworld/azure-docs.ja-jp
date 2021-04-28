@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/21/2021
 ms.custom: seodec18
-ms.openlocfilehash: 67ab4c8cf079adaf3b38cdcc30abeec43cd4612f
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: cd26df1de86ee4bdb33050d0bc4769663707733e
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106505197"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725028"
 ---
 # <a name="data-storage"></a>データ ストレージ
 
@@ -70,6 +70,9 @@ Azure Blob Storage の詳細については、[Storage Blob の概要](../storag
 Azure Time Series Insights Gen2 では、Azure Storage アカウント内の各イベントのコピーが最大 2 つ保持されます。 1 つのコピーには、イベントがインジェスト時間によって並べ替えられて格納され、常に時間順に並べられた一連のイベントにアクセスできるようになります。 時間の経過と共に、Azure Time Series Insights Gen2 では、高パフォーマンスのクエリ用に最適化するために、データの再パーティション分割コピーも作成されます。
 
 すべてのデータは、Azure Storage アカウントに無期限に格納されます。
+
+> [!WARNING]
+> Time Series Insights によって使用されるハブまたはイベント ソースへのパブリック インターネット アクセスを制限しないでください。そうしないと、必要な接続が切断されます。
 
 #### <a name="writing-and-editing-blobs"></a>BLOB の作成と編集
 

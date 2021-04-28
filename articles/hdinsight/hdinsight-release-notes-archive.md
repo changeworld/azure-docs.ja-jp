@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/08/2021
-ms.openlocfilehash: 108dfb48f602f776ae50290c1b45ceecd8569421
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 399464dd684abaf506798190cd3a04492430d03d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607305"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127535"
 ---
 # <a name="archived-release-notes"></a>アーカイブされたリリース ノート
 
@@ -24,10 +24,10 @@ Azure HDInsight は、Azure 上でオープンソースの Apache Hadoop およ�
 
 ### <a name="new-features"></a>新機能
 #### <a name="dav4-series-support"></a>Dav4 シリーズのサポート
-HDInsight のこのリリースでは、Dav4 シリーズのサポートが追加されました。 [Dav4 シリーズの詳細についてはこちら](/azure/virtual-machines/dav4-dasv4-series)を参照してください。
+HDInsight のこのリリースでは、Dav4 シリーズのサポートが追加されました。 [Dav4 シリーズの詳細についてはこちら](../virtual-machines/dav4-dasv4-series.md)を参照してください。
 
 #### <a name="kafka-rest-proxy-ga"></a>Kafka REST プロキシ GA 
-Kafka REST プロキシを使用すると、HTTPS 経由の REST API を使用して Kafka クラスターを操作することができます。 Kafka Rest プロキシは、このリリース以降、一般提供となります。 [Kafka REST プロキシの詳細についてはこちら](/azure/hdinsight/kafka/rest-proxy)を参照してください。
+Kafka REST プロキシを使用すると、HTTPS 経由の REST API を使用して Kafka クラスターを操作することができます。 Kafka Rest プロキシは、このリリース以降、一般提供となります。 [Kafka REST プロキシの詳細についてはこちら](./kafka/rest-proxy.md)を参照してください。
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットへの移行
 HDInsight では、Azure 仮想マシンを使用してクラスターをプロビジョニングするようになりました。 このサービスは [Azure 仮想マシン スケール セット](../virtual-machine-scale-sets/overview.md)に段階的に移行しています。 このプロセス全体に数か月かかる可能性があります。 リージョンとサブスクリプションが移行された後は、新しく作成された HDInsight クラスターは、お客様が操作することなく、仮想マシン スケール セット上で動作するようになります。 破壊的変更は想定されていません。
@@ -44,7 +44,7 @@ HDInsight では、Azure 仮想マシンを使用してクラスターをプロ�
 HDInsight は Azure 仮想マシン スケール セットに段階的に移行しています。 仮想マシンのネットワーク インターフェイスは、Azure 仮想マシン スケール セットを使用するクラスターの顧客に対しては表示されなくなりました。
 
 #### <a name="breaking-change-for-net-for-apache-spark-100"></a>.NET for Apache Spark 1.0.0 の破壊的変更
-最新リリースでは、HDInsight では、 [".NET for Apache Spark"](https://github.com/dotnet/spark) ライブラリの最初の公式バージョン v1.0.0 が導入されています。 これにより、多くの[他の機能](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)と併せて、Spark 2.4.x と Spark 3.0.x 用の完全な DataFrame API が提供されます。 このメジャー バージョンでは破壊的変更が行われます。コードとパイプラインの更新に必要な手順を理解するには、[.NET for Apache Spark 移行ガイド](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10)を参照してください。 詳細については、この [Azure HDInsight 上の .NET for Apache Spark v1.0 ガイド](/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)を参照してください。
+最新リリースでは、HDInsight では、 [".NET for Apache Spark"](https://github.com/dotnet/spark) ライブラリの最初の公式バージョン v1.0.0 が導入されています。 これにより、多くの[他の機能](https://github.com/dotnet/spark/blob/master/docs/release-notes/1.0.0/release-1.0.0.md)と併せて、Spark 2.4.x と Spark 3.0.x 用の完全な DataFrame API が提供されます。 このメジャー バージョンでは破壊的変更が行われます。コードとパイプラインの更新に必要な手順を理解するには、[.NET for Apache Spark 移行ガイド](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10)を参照してください。 詳細については、この [Azure HDInsight 上の .NET for Apache Spark v1.0 ガイド](./spark/spark-dotnet-version-update.md#using-net-for-apache-spark-v10-in-hdinsight)を参照してください。
 
 ### <a name="upcoming-changes"></a>今後の変更
 今後のリリースでは、次の変更が行われます。
@@ -608,7 +608,7 @@ HDInsight 4.0 の場合は、次の手順を実行します。
 1. 次のコマンドを入力して、スクリプトを実行します。
 
     ```
-    sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
+    sudo bash hdi_enable_replication.sh -m <hn*> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
     ```
 HDInsight 3.6 の場合は、次の手順を実行します。
 

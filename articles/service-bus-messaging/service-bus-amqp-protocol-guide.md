@@ -2,13 +2,13 @@
 title: Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド | Microsoft Docs
 description: Azure Service Bus と Event Hubs で使用されている AMQP 1.0 プロトコルの式と記述に関するガイド
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 8d346aeef74e1f67d3d525c061d40314ee5342aa
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98624491"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531008"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -368,11 +368,10 @@ CBS には、メッセージング インフラストラクチャによって提
 
 | トークンの種類 | トークンの説明 | 本文の型 | Notes |
 | --- | --- | --- | --- |
-| amqp:jwt |JSON Web トークン (JWT) |AMQP 値 (string) |まだ使用できません。 |
-| amqp:swt |Simple Web Token (SWT) |AMQP 値 (string) |AAD/ACS によって発行された SWT トークンでのみサポートされます。 |
+| jwt |JSON Web トークン (JWT) |AMQP 値 (string) | |
 | servicebus.windows.net:sastoken |Service Bus SAS トークン |AMQP 値 (string) |- |
 
-トークンには、権限を与える作用があります。 Service Bus は、3 つの基本的な権限として、"Send" (送信を許可)、"Listen" (受信を許可)、"Manage" (エンティティの操作を許可) を認識します。 AAD/ACS によって明示的に発行された SWT トークンは、これらの権限を要求 (claim) として含んでいます。 Service Bus の SAS トークンは、名前空間またはエンティティに対して構成されている規則を参照し、それらの規則が権限で構成されています。 したがって、その規則に関連付けられているキーでトークンに署名すると、トークンが個別の権限を表すようになります。 エンティティには、*put-token* を使ってトークンが関連付けられます。接続クライアントは、このトークンの権限に従ってエンティティを操作することができます。 クライアントが "*送信側*" の役割を担うリンクには "Send" 権限が、"*受信側*" の役割を担うリンクには "Listen" 権限が必要となります。
+トークンには、権限を与える作用があります。 Service Bus は、3 つの基本的な権限として、"Send" (送信を許可)、"Listen" (受信を許可)、"Manage" (エンティティの操作を許可) を認識します。 Service Bus の SAS トークンは、名前空間またはエンティティに対して構成されている規則を参照し、それらの規則が権限で構成されています。 したがって、その規則に関連付けられているキーでトークンに署名すると、トークンが個別の権限を表すようになります。 エンティティには、*put-token* を使ってトークンが関連付けられます。接続クライアントは、このトークンの権限に従ってエンティティを操作することができます。 クライアントが "*送信側*" の役割を担うリンクには "Send" 権限が、"*受信側*" の役割を担うリンクには "Listen" 権限が必要となります。
 
 応答メッセージには、次の *application-properties* 値があります。
 

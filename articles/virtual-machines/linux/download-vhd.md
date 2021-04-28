@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: b3435d1dabf604cf7a1394c14ee62d65b923714b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8def06990b72d6e08127e8c4f16e0dfd87905d4f
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102565939"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565187"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
@@ -21,7 +21,9 @@ ms.locfileid: "102565939"
 
 ## <a name="stop-the-vm"></a>VM を停止する
 
-VHD は、実行中の VM に接続されている場合、Azure からダウンロードできません。 VHD をダウンロードするには、VM を停止する必要があります。 
+VHD は、実行中の VM に接続されている場合、Azure からダウンロードできません。 VM を実行し続けたい場合は、[スナップショットを作成してから、スナップショットをダウンロードします](#alternative-snapshot-the-vm-disk)。
+
+VM を停止するには:
 
 1.  [Azure portal](https://portal.azure.com/) にサインインします。
 2.  左側のメニューで **[Virtual Machines]** を選択します。
@@ -29,6 +31,24 @@ VHD は、実行中の VM に接続されている場合、Azure からダウン
 4.  VM のページで、 **[停止]** を選択します。
 
     :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="VM を停止するためのメニュー ボタンを示す。":::
+
+### <a name="alternative-snapshot-the-vm-disk"></a>代替手段: VM ディスクのスナップショットを作成する
+
+ダウンロードするディスクのスナップショットを作成します。
+
+1. [ポータル](https://portal.azure.com)で VM を選択します。
+2. 左側のメニューで **[ディスク]** を選択し、スナップショットを作成するディスクを選択します。 ディスクの詳細が表示されます。  
+3. ページ上部のメニューから **[スナップショットの作成]** を選択します。 **[スナップショットの作成]** ページが開きます。
+4. **[名前]** にスナップショットの名前を入力します。 
+5. **[スナップショットの種類]** に、 **[完全]** または **[増分]** を選択します。
+6. 完了したら、 **[確認および作成]** を選択します。
+
+スナップショットはすぐに作成され、そこから別の VM をダウンロードまたは作成するために使用できます。
+
+> [!NOTE]
+> 最初に VM を停止しないと、クリーンなスナップショットになりません。 スナップショットは、スナップショットが作成された時点で VM の電源を入れ直したか、クラッシュした場合と同じ状態になります。  通常は安全ですが、その時点で実行されている実行中のアプリケーションがクラッシュ耐性を備えていなかった場合、問題が発生するおそれがあります。
+>  
+> この方法は、OS ディスクが 1 つの VM にのみ推奨されます。 データ ディスクが 1 つ以上の VM の場合、ダウンロードする前、または OS ディスクと各データ ディスクのスナップショットを作成する前に、停止する必要があります。
 
 ## <a name="generate-sas-url"></a>SAS URL の生成
 

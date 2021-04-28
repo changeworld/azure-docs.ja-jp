@@ -8,12 +8,12 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: 1d827d734c434204ff6b7ec60d27e507ae626abd
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 3707516818e54dd251bd470eb9231afc6e3fff67
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227689"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138681"
 ---
 # <a name="media-services-v3-samples"></a>Media Services v3 のサンプル
 
@@ -47,7 +47,7 @@ ms.locfileid: "107227689"
 | [ContentProtection/OfflinePlayReadyAndWidevine](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/ContentProtection/OfflinePlayReadyAndWidevine)|ライセンス サービスにライセンスを要求することなく、PlayReady と Widevine DRM を使用してコンテンツを動的に暗号化し、再生する方法。 組み込みの AdaptiveStreaming プリセットを使用した変換の作成、ジョブの送信、オープン制限と PlayReady または Widevine の永続的な構成を使用した ContentKeyPolicy の作成、StreamingLocator への ContentKeyPolicy の関連付け、再生用の URL の出力を行う方法を紹介します。|
 | [Streaming/AssetFilters](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/AssetFilters)|組み込みの AdaptiveStreaming プリセットを使用した変換の作成、ジョブの送信、アセットフィルターとアカウントフィルターの作成、ストリーミング ロケーターへのフィルターの関連付け、再生用の URL の出力を行う方法。|
 | [Streaming/StreamHLSAndDASH](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/Streaming/StreamHLSAndDASH)|組み込みの AdaptiveStreaming プリセットを使用した変換の作成、ジョブの送信、HLS および DASH ストリーミング用の出力アセットの発行を行う方法。|
-| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | オンデマンドのエンコードまたは分析を使用する運用システム向けのガイダンスとベスト プラクティス。 [Media Services と VOD を使用した高可用性](https://docs.microsoft.com/azure/media-services/latest/architecture-high-availability-encoding-concept)に関する記事を先にお読みください。 [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/HighAvailabilityEncodingStreaming/README.md) サンプル用に別個のソリューション ファイルが用意されています。 |
+| [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/HighAvailabilityEncodingStreaming/) | オンデマンドのエンコードまたは分析を使用する運用システム向けのガイダンスとベスト プラクティス。 [Media Services と VOD を使用した高可用性](./architecture-high-availability-encoding-concept.md)に関する記事を先にお読みください。 [HighAvailabilityEncodingStreaming](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/HighAvailabilityEncodingStreaming/README.md) サンプル用に別個のソリューション ファイルが用意されています。 |
 
 ## <a name="nodejs"></a>[Node.JS](#tab/node/)
 

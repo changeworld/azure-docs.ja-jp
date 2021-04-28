@@ -4,14 +4,14 @@ description: HTTP アプリケーション ルーティング アドオンを使
 services: container-service
 author: lachie83
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 04/23/2021
 ms.author: laevenso
-ms.openlocfilehash: 95767e94a120b7f4595744beabc72fcd954e6e2f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9f02bcdd5fbe9a04d2cc35af6f0bc80e99711c14
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783109"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007486"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
@@ -130,7 +130,7 @@ spec:
   selector:
     app: aks-helloworld
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: aks-helloworld
@@ -141,10 +141,13 @@ spec:
   - host: aks-helloworld.<CLUSTER_SPECIFIC_DNS_ZONE>
     http:
       paths:
-      - backend:
-          serviceName: aks-helloworld
-          servicePort: 80
-        path: /
+      - path: /
+        pathType: Prefix
+        backend:
+          service: 
+            name: aks-helloworld
+            port: 
+              number: 80
 ```
 
 [kubectl apply][kubectl-apply] コマンドを使用してリソースを作成します。

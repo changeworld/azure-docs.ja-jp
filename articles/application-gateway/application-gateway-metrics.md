@@ -2,17 +2,17 @@
 title: Application Gateway の Azure Monitor メトリック
 description: メトリックを使用してアプリケーション ゲートウェイのパフォーマンスを監視する方法について説明します
 services: application-gateway
-author: surajmb
+author: azhar2005
 ms.service: application-gateway
 ms.topic: article
-ms.date: 06/06/2020
-ms.author: surmb
-ms.openlocfilehash: 9faa3a284aa7151880526c1ee70cfadc3dbf3089
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.author: azhussai
+ms.openlocfilehash: 615db7e8d53e397755ae318d171dab1eab9ec6c6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576114"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727810"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway のメトリック
 
@@ -24,7 +24,7 @@ Application Gateway からは、ご利用の Application Gateway インスタン
 
 Application Gateway には、要求と応答に関連するいくつかのタイミング メトリックが組み込まれています。これらはすべて、ミリ秒単位で測定されます。 
 
-![Application Gateway でのタイミング メトリックの図。](./media/application-gateway-metrics/application-gateway-metrics.png)
+:::image type="content" source="./media/application-gateway-metrics/application-gateway-metrics.png" alt-text="Application Gateway でのタイミング メトリックの図" border="false":::
 
 > [!NOTE]
 >

@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
-ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 302c5d6e8e523a11b8773f10bb6089e3bea09bdd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 26e1fe78e54b0de1cf7c7a0ddc54c3d792d1deed
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96006850"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071174"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-sql-api"></a>Azure Cosmos DB SQL API にコンテナーを作成する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

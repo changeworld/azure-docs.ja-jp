@@ -2,22 +2,19 @@
 title: Helm グラフの保存
 description: Azure Container Registry のリポジトリを使用して Kubernetes アプリケーションの Helm グラフを保存する方法について説明します
 ms.topic: article
-ms.date: 06/12/2020
-ms.openlocfilehash: 9897ed6e43813c16314076b0322cd263cd2ed150
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.date: 04/15/2021
+ms.openlocfilehash: c7dcdf222e9628daedb7e1c3617efb0b9c7af185
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106223083"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772381"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Azure コンテナー レジストリに対する Helm グラフのプッシュおよびプル
 
 アプリケーションを Kubernetes 用に簡単に管理し、デプロイするには、[オープン ソースの Helm パッケージ マネージャー][helm]を使用します。 Helm を使用すると、アプリケーション パッケージは[グラフ](https://helm.sh/docs/topics/charts/)として定義されます。これは収集され、[Helm グラフ リポジトリ](https://helm.sh/docs/topics/chart_repository/)に格納されます。
 
 この記事では、Helm 3 のコマンドを使用して、Azure コンテナー レジストリで Helm グラフ リポジトリをホストする方法について説明します。 多くのシナリオでは、開発したアプリケーション用の独自のグラフを構築し、アップロードすることになります。 独自の Helm グラフを作成する方法の詳細については、「[Chart Template Developer's Guide (グラフ テンプレート開発者ガイド)][develop-helm-charts]」を参照してください。 また、別の Helm リポジトリから既存の Helm グラフを格納することもできます。
-
-> [!IMPORTANT]
-> Azure Container Registry での Helm グラフのサポートは現在プレビュー段階です。 プレビュー版は、追加の[使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 
 ## <a name="helm-3-or-helm-2"></a>Helm 3 か Helm 2 か
 
@@ -26,7 +23,7 @@ Helm グラフの格納、管理、およびインストールには、Helm ク�
 Azure Container Registry で Helm グラフをホストするには、Helm3 を使用する必要があります。 Helm 3 の場合:
 
 * Azure コンテナー レジストリに 1 つ以上の Helm リポジトリを作成できます
-* Helm 3 グラフをレジストリに [OCI 成果物](container-registry-image-formats.md#oci-artifacts)として格納します。 現在、OCI の Helm 3 のサポートは "*試験段階*" です。
+* Helm 3 グラフをレジストリに [OCI 成果物](container-registry-image-formats.md#oci-artifacts)として格納します。 Azure Container Registry では、Helm チャートなどの [OCI 成果物](container-registry-oci-artifacts.md)に対する GA サポートが提供されます。
 * `helm registry login` コマンドを使用して、レジストリで認証します。
 * Helm CLI で `helm chart` コマンドを使用して、レジストリ内の Helm グラフをプッシュ、プル、および管理します
 * `helm install` を使用して、ローカル リポジトリ キャッシュから Kubernetes クラスターにグラフをインストールします。
@@ -294,12 +291,12 @@ az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 [azure-cli-install]: /cli/azure/install-azure-cli
 [aks-quickstart]: ../aks/kubernetes-walkthrough.md
 [acr-bestpractices]: container-registry-best-practices.md
-[az-configure]: /cli/azure/reference-index#az-configure
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-configure]: /cli/azure/reference-index#az_configure
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-helm]: /cli/azure/acr/helm
 [az-acr-repository]: /cli/azure/acr/repository
-[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
+[az-acr-repository-show]: /cli/azure/acr/repository#az_acr_repository_show
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az_acr_repository_show_tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests
 [acr-tasks]: container-registry-tasks-overview.md

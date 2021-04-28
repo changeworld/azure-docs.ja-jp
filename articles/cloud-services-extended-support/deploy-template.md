@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8804febe81afc79a4a7eadb56e8350e758ea38ba
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 5ca70e0f0ce1dca01248f942fb81a8e8f5469991
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105512"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001360"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>ARM テンプレートを使用してクラウド サービス (延長サポート) をデプロイする
 
@@ -24,15 +24,12 @@ ms.locfileid: "107105512"
 1. クラウド サービス (延長サポート) の[デプロイの前提条件](deploy-prerequisite.md)を確認し、関連するリソースを作成します。
 
 2. [Azure portal](../azure-resource-manager/management/manage-resource-groups-portal.md) または [PowerShell](../azure-resource-manager/management/manage-resource-groups-powershell.md) を使用して、新しいリソース グループを作成します。 既存のリソース グループを使用する場合は、この手順は省略可能です。
-
-3. パブリック IP アドレスを作成し、そのパブリック IP アドレスの DNS ラベル プロパティを設定します。 Cloud Services (延長サポート) では、[Basic](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#basic) SKU のパブリック IP アドレスのみをサポートしています。 Standard SKU のパブリック IP は、Cloud Services では機能しません。
-静的 IP を使用する場合は、サービス構成ファイル (.cscfg) で予約済み IP として参照する必要があります。 既存の IP アドレスを使用する場合は、この手順をスキップし、ARM テンプレートのロード バランサーの構成設定に IP アドレスの情報を直接追加します。
  
-4. [Azure portal](../storage/common/storage-account-create.md?tabs=azure-portal) または [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) を使用して、新しいストレージ アカウントを作成します。 既存のストレージ アカウントを使用する場合は、この手順は省略可能です。
+3. [Azure portal](../storage/common/storage-account-create.md?tabs=azure-portal) または [PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell) を使用して、新しいストレージ アカウントを作成します。 既存のストレージ アカウントを使用する場合は、この手順は省略可能です。
 
-5. [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)、[AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、または [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) を使用して、サービス定義 (.csdef) ファイルとサービス構成 (.cscfg) ファイルをストレージ アカウントにアップロードします。 両方のファイルについて、SAS URI を取得します。この URI は、このチュートリアルで後ほど ARM テンプレートに追加します。
+4. [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob)、[AzCopy](../storage/common/storage-use-azcopy-blobs-upload.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)、または [PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md#upload-blobs-to-the-container) を使用して、サービス定義 (.csdef) ファイルとサービス構成 (.cscfg) ファイルをストレージ アカウントにアップロードします。 両方のファイルについて、SAS URI を取得します。この URI は、このチュートリアルで後ほど ARM テンプレートに追加します。
 
-6. (省略可能) キー コンテナーを作成し、証明書をアップロードします。
+5. (省略可能) キー コンテナーを作成し、証明書をアップロードします。
 
     -  クラウド サービスに証明書を関連付けると、サービスとの間にセキュリティで保護された通信を実現できます。 証明書を使用するためには、サービス構成 (.cscfg) ファイル内でその証明書の拇印を指定したうえで、キー コンテナーにアップロードする必要があります。 キー コンテナーは、[Azure portal](../key-vault/general/quick-create-portal.md) または [PowerShell](../key-vault/general/quick-create-powershell.md) を使用して作成できます。
     - 関連付けるキー コンテナーは、クラウド サービスと同じリージョンおよびサブスクリプションに配置する必要があります。

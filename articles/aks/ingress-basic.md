@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Azure Kubernetes Service (AKS) クラスターで基本的な NGINX イングレス コントローラーをインストールして構成する方法について説明します。
 services: container-service
 ms.topic: article
-ms.date: 08/17/2020
-ms.openlocfilehash: 9b51ee2767a9595f5732f558cfa25f5064944e49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/23/2021
+ms.openlocfilehash: 3abd39d35142dac158b208e69a4c24ddbd4eae2a
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93131192"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007306"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でイングレス コントローラーを作成する
 
@@ -166,7 +166,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 *hello-world-ingress.yaml* という名前のファイルを作成し、次の例の YAML 内にコピーします。
 
 ```yaml
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress
@@ -180,20 +180,29 @@ spec:
   rules:
   - http:
       paths:
-      - backend:
-          serviceName: aks-helloworld-one
-          servicePort: 80
-        path: /hello-world-one(/|$)(.*)
-      - backend:
-          serviceName: aks-helloworld-two
-          servicePort: 80
-        path: /hello-world-two(/|$)(.*)
-      - backend:
-          serviceName: aks-helloworld-one
-          servicePort: 80
-        path: /(.*)
+      - path: /hello-world-one(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld-one
+            port:
+              number: 80
+      - path: /hello-world-two(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld-two
+            port:
+              number: 80
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld-one
+            port:
+              number: 80
 ---
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: hello-world-ingress-static
@@ -206,9 +215,13 @@ spec:
   rules:
   - http:
       paths:
-      - backend:
-          serviceName: aks-helloworld-one
-          servicePort: 80
+      - path:
+        pathType: Prefix
+        backend:
+          service:
+            name: aks-helloworld-one
+            port: 
+              number: 80
         path: /static(/|$)(.*)
 ```
 

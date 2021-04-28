@@ -10,12 +10,12 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe081b0e74acf771e10406c15a3dea4e09956c37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3498037f3d2088459784ab066b8e94ba344a275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560967"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792185"
 ---
 # <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Azure CLI を使用して、特殊化されたイメージ バージョンから VM を作成する
 
@@ -23,7 +23,7 @@ Shared Image Gallery に格納されている[特殊化されたイメージ バ
 
 必要に応じて、この例のリソース名を置き換えてください。 
 
-[az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) を使用してギャラリー内のイメージ定義を一覧表示すると、定義の名前と ID を確認できます。
+[az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) を使用してギャラリー内のイメージ定義を一覧表示すると、定義の名前と ID を確認できます。
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -35,7 +35,7 @@ az sig image-definition list \
    --output tsv
 ```
 
-イメージが特殊化されたイメージであることを示す --specialized パラメーターを指定した [az vm create](/cli/azure/vm#az-vm-create) を使用して、VM を作成します。 
+イメージが特殊化されたイメージであることを示す --specialized パラメーターを指定した [az vm create](/cli/azure/vm#az_vm_create) を使用して、VM を作成します。 
 
 `--image` にイメージ定義 ID を指定して、使用可能なイメージの最新バージョンから VM を作成します。 また、`--image` にイメージ バージョン ID を指定して、特定のバージョンから VM を作成することもできます。 
 

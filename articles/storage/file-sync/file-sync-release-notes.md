@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/7/2021
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 9c00b2d4d30ac417d58f2b69e4ba460789cf6583
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6ec46a489762c1c590752f5ca33804f06c58385a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107795958"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131063"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -58,7 +58,7 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
     - ポータルを使用して、ストレージ同期サービスのパブリック エンドポイントへのアクセスを無効にしたり、プライベート エンドポイント接続を承認、拒否、および削除したりできるようになりました。 ネットワーク アクセス ポリシーとプライベート エンドポイント接続を構成するには、ストレージ同期サービス ポータルを開き、[設定] セクションにアクセスして、[ネットワーク] をクリックします。
  
 - 64 KiB を超えるボリューム クラスター サイズのクラウド階層化のサポート
-    - クラウドの階層化では、Server 2019 で最大 2 MiB のボリューム クラスター サイズがサポートされるようになりました。 詳細については、「[階層化するファイルの最小ファイル サイズはどのくらいですか。](https://docs.microsoft.com/azure/storage/files/storage-sync-choose-cloud-tiering-policies#minimum-file-size-for-a-file-to-tier)」を参照してください。
+    - クラウドの階層化では、Server 2019 で最大 2 MiB のボリューム クラスター サイズがサポートされるようになりました。 詳細については、「[階層化するファイルの最小ファイル サイズはどのくらいですか。](./file-sync-choose-cloud-tiering-policies.md#minimum-file-size-for-a-file-to-tier)」を参照してください。
  
 - Azure File Sync サービスとストレージ アカウントの帯域幅と待機時間を測定する
     - Test-StorageSyncNetworkConnectivity コマンドレットを使用して、Azure File Sync サービスとストレージ アカウントの待機時間と帯域幅を測定できるようになりました。 このコマンドレットを実行すると、既定では、Azure File Sync サービスとストレージ アカウントの待機時間が測定されます。  "-MeasureBandwidth" パラメーターを使用すると、ストレージ アカウントへのアップロードとダウンロードの帯域幅が測定されます。

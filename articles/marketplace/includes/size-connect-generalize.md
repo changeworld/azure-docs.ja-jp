@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: include
 author: mingshen-ms
 ms.author: krsh
-ms.date: 03/25/2021
-ms.openlocfilehash: 8898a762e8a1e7a2d5c104f99d12032c676a5ca4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/16/2021
+ms.openlocfilehash: e119d40cd0b8f482d33c3c86c644cf6a0846390a
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105630016"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727135"
 ---
 ## <a name="generalize-the-image"></a>イメージを汎用化する
 
@@ -40,6 +40,9 @@ Windows OS ディスクは、[sysprep](/windows-hardware/manufacture/desktop/sys
 
 ### <a name="capture-image"></a>イメージをキャプチャする
 
+> [!NOTE]
+> 公開するには、SIG を含む Azure サブスクリプションが、公開元アカウントと同じテナントにある必要があります。 また、公開元アカウントには、SIG を含むサブスクリプションへの共同作成者のアクセス権が少なくとも必要です。
+
 VM の準備ができたら、Azure Shared Image Gallery でキャプチャできます。 キャプチャするには、次の手順に従います。
 
 1. [Azure portal](https://ms.portal.azure.com/) で、使用している仮想マシンのページにアクセスします。
@@ -51,8 +54,6 @@ VM の準備ができたら、Azure Shared Image Gallery でキャプチャで�
 7. イメージの **[バージョン番号]** を指定します。
 8. **[確認と作成]** を選択して、選択内容を確認します。
 9. 検証に合格したら、 **[作成]** を選択します。
-
-公開するには、SIG を含む Azure サブスクリプションが、公開元アカウントと同じテナントにある必要があります。 また、公開元アカウントに SIG への所有者アクセス権が必要です。 
 
 アクセス権を付与するには、次のようにします。
 

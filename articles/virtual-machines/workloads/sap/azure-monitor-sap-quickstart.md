@@ -6,12 +6,12 @@ ms.author: sakhare
 ms.topic: how-to
 ms.service: virtual-machines-sap
 ms.date: 08/17/2020
-ms.openlocfilehash: 02c0801aa0425db96a1e6f71f248c795e81b5ddf
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 908de54ee66772f3eb648895529c843675c3bf15
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106554061"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538645"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Azure portal を使用して SAP ソリューション向け Azure Monitor をデプロイする
 
@@ -38,6 +38,35 @@ Azure portal (https://portal.azure.com) にサインインする
 
 ## <a name="configure-providers"></a>プロバイダーを構成する
 
+### <a name="sap-netweaver-provider"></a>SAP NetWeaver プロバイダー
+
+#### <a name="prerequisites-for-adding-netweaver-provider"></a>NetWeaver プロバイダーを追加するための前提条件
+
+"SAP start service" は、SAP システムの監視などのサービスのホストを提供します。 Microsoft は、これらの機能を公開する SOAP Web サービス インターフェイスである "SAPControl" を利用しています。 この SAPControl Web サービス インターフェイスにより、[保護された Web サービス メソッドと保護されていない Web サービス メソッド](https://wiki.scn.sap.com/wiki/display/SI/Protected+web+methods+of+sapstartsrv)が区別されます。 特定のメトリックをフェッチできるようにするには、一部のメソッドの保護を解除する必要があります。 現在のリリースで必要なメソッドの保護を解除するには、SAP システムごとに次の手順を行います。
+
+1. SAP サーバーへの SAP GUI 接続を開きます
+2. 管理者アカウントを使用してログインします
+3. トランザクション RZ10 を実行します
+4. 適切なプロファイル (DEFAULT.PFL) を選択します
+5. [Extended Maintenance] を選択し、[Change] をクリックします 
+6. 影響を受けるパラメーター "service/protectedwebmethods" の値を "SDEFAULT -GetQueueStatistic –ABAPGetWPTable –EnqGetStatistic –GetProcessList" に変更し、[Copy] をクリックします
+7. 戻って [Profile]、[Save] の順に選択します
+8. システムを再起動して、パラメーターを有効にします
+
+>[!Tip]
+> サーバー ポートへのアクセスをフィルター処理するには、アクセス制御リスト (ACL) を使用します。 [SAP Note](https://launchpad.support.sap.com/#/notes/1495075) を参照してください
+
+#### <a name="installing-netweaver-provider-on-the-azure-portal"></a>Azure portal に NetWeaver プロバイダーをインストールする
+1.  前提条件の手順が完了していて、サーバーが再起動されていることを確認します
+2.  Azure portal の AMS で、[プロバイダーの追加] を選択し、ドロップダウンから [SAP NetWeaver] を選択します
+3.  SAP システムのホスト名とサブドメイン (該当する場合) を入力します
+4.  入力したホスト名に対応するインスタンス番号を入力します 
+5.  システム ID (SID) を入力します
+6.  完了したら、[プロバイダーの追加] を選択します
+7.  必要に応じて引き続きプロバイダーを追加するか、[確認と作成] を選択してデプロイを完了します
+
+![image](https://user-images.githubusercontent.com/75772258/114583569-5c777d80-9c9f-11eb-99a2-8c60987700c2.png)
+
 ### <a name="sap-hana-provider"></a>SAP HANA プロバイダー 
 
 1. **[プロバイダー]** タブを選択して、構成するプロバイダーを追加します。 複数のプロバイダーを 1 つずつ追加することも、監視リソースのデプロイ後に追加することもできます。 
@@ -60,46 +89,7 @@ Azure portal (https://portal.azure.com) にサインインする
 7. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]** を選択してデプロイを完了します。
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-4.png" alt-text="プロバイダー情報を追加するときの構成オプションの画像です。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-4.png":::
-
-### <a name="high-availability-cluster-pacemaker-provider"></a>高可用性クラスター (Pacemaker) プロバイダー
-
-1. ドロップダウンから **[High-availability cluster (Pacemaker)]\(高可用性クラスター (Pacemaker)\)** を選択します。 
-
-   > [!IMPORTANT]
-   > 高可用性クラスター (Pacemaker) プロバイダーを構成するには、各ノードに ha_cluster_provider がインストールされていることを確認します。 詳細については、[HA クラスター エクスポーター](https://github.com/ClusterLabs/ha_cluster_exporter#installation)に関するセクションを参照してください。
-
-2. Prometheus エンドポイントを http://IP:9664/metrics の形式で入力します。 
- 
-3. システム ID (SID)、ホスト名、およびクラスター名を入力します。
-
-4. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]** を選択してデプロイを完了します。
-
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="画像は HA クラスター Pacemaker プロバイダーに関連するオプションを示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
-
-
-### <a name="os-linux-provider"></a>OS (Linux) プロバイダー 
-
-1. ドロップダウンから [OS (Linux)] を選択します 
-
->[!IMPORTANT]
-> OS (Linux) プロバイダーを構成するには、監視する各ホスト (BareMetal または VM) に最新バージョンの Node_Exporter がインストールされていることを確認します。 最新バージョンを見つけるには、この [リンク] (https://prometheus.io/download/#node_exporter) ) を使用します。 詳細については、「 [Node_Exporter](https://github.com/prometheus/node_exporter)」を参照してください
-
-2. 名前を入力します。これは、BareMetal インスタンスの識別子になります。
-3. Node Exporter エンドポイントを http://IP:9100/metrics の形式で入力します。
-
->[!IMPORTANT]
-> Linux ホストのプライベート IP アドレスを使用してください。 ホストと AMS リソースが同じ VNET 内にあることを確認してください。 
-
->[!Note]
-> Linux ホストでファイアウォール ポート "9100" を開く必要があります。
->(firewall-cmd を使用している場合: firewall-cmd --permanent --add-port=9100/tcp firewall-cmd --reload。ufw を使用している場合: ufw allow 9100/tcp ufw reload)
-
->[!Tip]
-> Linux ホストが Azure VM の場合は、該当するすべての NSG で、ソースとしての "VirtualNetwork" からの受信トラフィックがポート 9100 で許可されるようにしてください。
- 
-5. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]**  を選択してデプロイを完了します。 
-
-
+   
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server プロバイダー
 
 1. Microsoft SQL Server プロバイダーを追加する前に、SQL Server Management Studio で次のスクリプトを実行して、プロバイダーの構成に必要な適切なアクセス許可を持つユーザーを作成する必要があります。
@@ -136,6 +126,44 @@ Azure portal (https://portal.azure.com) にサインインする
 4. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]** を選択してデプロイを完了します。
 
      :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-6.png" alt-text="画像は Microsoft SQL Server プロバイダーの追加に関連する情報を示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-6.png":::
+
+### <a name="high-availability-cluster-pacemaker-provider"></a>高可用性クラスター (Pacemaker) プロバイダー
+
+1. ドロップダウンから **[High-availability cluster (Pacemaker)]\(高可用性クラスター (Pacemaker)\)** を選択します。 
+
+   > [!IMPORTANT]
+   > 高可用性クラスター (Pacemaker) プロバイダーを構成するには、各ノードに ha_cluster_provider がインストールされていることを確認します。 詳細については、[HA クラスター エクスポーター](https://github.com/ClusterLabs/ha_cluster_exporter#installation)に関するセクションを参照してください。
+
+2. Prometheus エンドポイントを http://IP:9664/metrics の形式で入力します。 
+ 
+3. システム ID (SID)、ホスト名、およびクラスター名を入力します。
+
+4. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]** を選択してデプロイを完了します。
+
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="画像は HA クラスター Pacemaker プロバイダーに関連するオプションを示しています。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+
+### <a name="os-linux-provider"></a>OS (Linux) プロバイダー 
+
+1. ドロップダウンから [OS (Linux)] を選択します 
+
+   >[!IMPORTANT]
+   > OS (Linux) プロバイダーを構成するには、監視する各ホスト (BareMetal または VM) に最新バージョンの Node_Exporter がインストールされていることを確認します。 最新バージョンを見つけるには、こちらの[リンク](https://prometheus.io/download/#node_exporter)を使用してください。 詳細については、「 [Node_Exporter](https://github.com/prometheus/node_exporter)」を参照してください
+
+2. 名前を入力します。これは、BareMetal インスタンスの識別子になります。
+3. Node Exporter エンドポイントを http://IP:9100/metrics の形式で入力します。
+
+   >[!IMPORTANT]
+   >Linux ホストのプライベート IP アドレスを使用してください。 ホストと AMS リソースが同じ VNET 内にあることを確認してください。 
+
+   >[!Note]
+   > Linux ホストでファイアウォール ポート "9100" を開く必要があります。
+   >(firewall-cmd を使用している場合: firewall-cmd --permanent --add-port=9100/tcp firewall-cmd --reload。ufw を使用している場合: ufw allow 9100/tcp ufw reload)
+
+    >[!Tip]
+    > Linux ホストが Azure VM の場合は、該当するすべての NSG で、ソースとしての "VirtualNetwork" からの受信トラフィックがポート 9100 で許可されるようにしてください。
+ 
+5. 完了したら、 **[プロバイダーの追加]** を選択します。 必要に応じて他のプロバイダーを続けて追加するか、 **[確認および作成]**  を選択してデプロイを完了します。 
+
 
 ## <a name="next-steps"></a>次のステップ
 

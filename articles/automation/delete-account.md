@@ -6,13 +6,12 @@ ms.service: automation
 ms.subservice: process-automation
 ms.date: 04/15/2021
 ms.topic: conceptual
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fe2d99a610be3877b4a347e4bd0dd17df53ba326
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: d088f3adc391068de5e337c10ab52dc3d3a2dd07
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107834158"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107535549"
 ---
 # <a name="how-to-delete-your-azure-automation-account"></a>Azure Automation アカウントを削除する方法
 

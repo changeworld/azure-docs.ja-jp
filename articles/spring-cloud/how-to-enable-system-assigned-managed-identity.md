@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 2fbdd46b872c4c70999355d457045f4aac8aa34c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9897ad062de308563dccc7d17191d1757b887fc2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877427"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135169"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法
 
@@ -24,7 +24,7 @@ Azure リソースのマネージド ID では、Azure Active Directory で自�
 
 ## <a name="prerequisites"></a>前提条件
 Azure リソースのマネージド ID に習熟してない場合は、[概要に関するセクション](../active-directory/managed-identities-azure-resources/overview.md)を参照してください。
-デプロイ済みの Azure Spring Cloud インスタンスが必要です。 [Azure CLI を使用してデプロイするためのクイックスタート](spring-cloud-quickstart.md)に従ってください。
+デプロイ済みの Azure Spring Cloud インスタンスが必要です。 [Azure CLI を使用してデプロイするためのクイックスタート](./quickstart.md)に従ってください。
 
 ## <a name="add-a-system-assigned-identity"></a>システム割り当て ID を追加する
 システム割り当て ID を持つアプリを作成するには、アプリケーションに追加のプロパティを設定する必要があります。

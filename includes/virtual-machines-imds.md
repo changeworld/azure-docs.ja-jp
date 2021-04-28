@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 357223751112af03bf797ae9a0e6352a10132ab9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 98866a4f06df0380d52d1aee3eede8aa2f70aaed
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103464955"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588133"
 ---
 Azure Instance Metadata Service (IMDS) によって、現在実行中の仮想マシン インスタンスに関する情報が提供されます。 これを使用して、仮想マシンの管理と構成を行うことができます。
 この情報には、SKU、ストレージ、ネットワークの構成、今後のメンテナンス イベントなどがあります。 使用できるデータの完全な一覧については、[エンドポイント カテゴリの概要](#endpoint-categories)に関するページを参照してください。
@@ -247,6 +247,7 @@ IMDS はバージョン管理されており、HTTP 要求での API バージ�
 - 2020-09-01
 - 2020-10-01
 - 2020-12-01
+- 2021-01-01
 
 ### <a name="swagger"></a>Swagger
 
@@ -332,7 +333,7 @@ GET /metadata/instance
 | Data | 説明 | 導入されたバージョン |
 |------|-------------|--------------------|
 | `azEnvironment` | VM が実行されている Azure 環境 | 2018-10-01
-| `customData` | この機能は現在無効になっています。 使用できるようになり次第、このドキュメントを更新する予定です。 | 2019-02-01
+| `customData` | [IMDS では](#frequently-asked-questions)、この機能は非推奨とされ、無効になっています。 `userData` に置き換えられています。 | 2019-02-01
 | `evictionPolicy` | [スポット VM](../articles/virtual-machines/spot-vms.md) を削除する方法を設定します。 | 2020-12-01
 | `isHostCompatibilityLayerVm` | ホストの互換性レイヤーで VM が実行されているかどうかを示します | 2020-06-01
 | `licenseType` | [Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit)のライセンスの種類。 これは AHB 対応 VM でのみ利用できます。 | 2020-09-01
@@ -360,6 +361,7 @@ GET /metadata/instance
 | `subscriptionId` | 仮想マシンの Azure サブスクリプション | 2017-08-01
 | `tags` | お使いの仮想マシンの[タグ](../articles/azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 | `tagsList` | プログラムによる解析を簡単にするために JSON 配列として書式設定されたタグ  | 2019-06-04
+| `userData` | プロビジョニング中またはプロビジョニング後に使用するために VM が作成されたときに指定されたデータのセット (Base64 エンコード)  | 2021-01-01
 | `version` | VM イメージのバージョン | 2017-04-02
 | `vmId` | VM の[一意の識別子](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 | `vmScaleSetName` | お使いの仮想マシン スケール セットの[仮想マシン スケール セット名](../articles/virtual-machine-scale-sets/overview.md) | 2017-12-01
@@ -421,6 +423,31 @@ Data | 説明 |
 | `subnet.prefix` | サブネットのプレフィックス (24 など) | 2017-04-02
 | `ipv6.ipAddress` | VM のローカル IPv6 アドレス | 2017-04-02
 | `macAddress` | VM の mac アドレス | 2017-04-02
+
+### <a name="get-user-data"></a>ユーザー データを取得する
+
+新しい VM を作成するときに、VM のプロビジョニング中またはプロビジョニング後に使用されるデータのセットを指定し、IMDS を通じて取得することができます。 ユーザー データを設定するには、[こちら](https://aka.ms/ImdsUserDataArmTemplate)のクイックスタート テンプレートを利用します。 次のサンプルは、IMDS を介してこのデータを取得する方法を示しています。
+
+> [!NOTE]
+> この機能はバージョン `2021-01-01` でリリースされ、Azure プラットフォームの更新プログラムに依存します。これは現在ロールアウトされている最中で、まだすべてのリージョンで利用できない場合があります。
+
+> [!NOTE]
+> セキュリティに関する通知: IMDS は VM 上のすべてのアプリケーションに対して開かれているため、機密データをユーザー データに配置しないでください。
+
+
+#### <a name="windows"></a>[Windows](#tab/windows/)
+
+```powershell
+Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Proxy $Null -Uri "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+```
+
+#### <a name="linux"></a>[Linux](#tab/linux/)
+
+```bash
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance/compute/userData?api-version=2021-01-01&format=text" | base64 --decode
+```
+
+---
 
 
 #### <a name="sample-1-tracking-vm-running-on-azure"></a>サンプル 1:Azure で動作している VM の追跡
@@ -1135,7 +1162,7 @@ IMDS を使用すると、スケジュールされたイベントの状態を取
 | `404 Not Found` | 要求された要素は存在しません
 | `405 Method Not Allowed` | このエンドポイントでは、HTTP メソッド (動詞) はサポートされていません。
 | `410 Gone` | しばらくしてから再試行してください (最長 70 秒)
-| `429 Too Many Requests` | API の[転送率の制限](#rate-limiting)を超えました。
+| `429 Too Many Requests` | API の[転送率の制限](#rate-limiting)を超えました
 | `500 Service Error` | しばらくしてからやり直してください
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
@@ -1148,6 +1175,9 @@ IMDS を使用すると、スケジュールされたイベントの状態を取
 
 - しばらく前に Azure Resource Manager で VM を作成しました。 コンピューティング メタデータ情報が表示されないのはなぜですか。
   - 2016 年 9 月以降に VM を作成した場合は、[タグ](../articles/azure-resource-manager/management/tag-resources.md)を追加して、コンピューティング メタデータの表示を開始してください。 2016 年 9 月より前に VM を作成した場合は、VM インスタンスに対して拡張機能またはデータ ディスクを追加/削除して、メタデータを更新してください。
+
+- ユーザー データはカスタム データと同じですか?
+  - ユーザー データには、カスタム データと同様の機能が用意されているため、独自のメタデータを VM インスタンスに渡すことができます。 違いは、ユーザー データが IMDS を通じて取得され、VM インスタンスの有効期間全体にわたって永続的であることです。 既存のカスタム データ機能は、[この記事](https://docs.microsoft.com/azure/virtual-machines/custom-data)で説明されているように機能し続けます。 ただし、カスタム データは、IMDS ではなくローカル システム フォルダーからのみ取得できます。
 
 - 新しいバージョンに入力されたすべてのデータが表示されないのはなぜですか。
   - 2016 年 9 月以降に VM を作成した場合は、[タグ](../articles/azure-resource-manager/management/tag-resources.md)を追加して、コンピューティング メタデータの表示を開始してください。 2016 年 9 月より前に VM を作成した場合は、VM インスタンスに対して拡張機能またはデータ ディスクを追加/削除して、メタデータを更新してください。

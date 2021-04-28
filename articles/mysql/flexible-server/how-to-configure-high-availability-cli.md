@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 04/1/2021
 ms.custom: references_regions
-ms.openlocfilehash: fb53ad309c741fc898bcf3e27347038c0e382ea4
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: c364a27b7885877231e76a694472a7ad81fe3e29
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107509021"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147015"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-with-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL フレキシブル サーバーでゾーン冗長による高可用性を管理する
 
@@ -24,7 +24,7 @@ ms.locfileid: "107509021"
 高可用性機能では、別々のゾーンに物理的に分けられたプライマリ レプリカとスタンバイ レプリカをプロビジョニングします。 詳細については、[高可用性の概念に関するドキュメント](./concepts/../concepts-high-availability.md)を参照してください。 高可用性の有効化または無効化によって、VNET 構成、ファイアウォール設定、バックアップ保有期間などの他の設定は変更されません。 高可用性を無効にしても、アプリケーションの接続と操作には影響しません。
 
 > [!IMPORTANT]
-> ゾーン冗長による高可用性は、限定された一連のリージョンで利用できます。 サポートされているリージョンは[こちら](https://docs.microsoft.com/azure/mysql/flexible-server/overview#azure-regions)で確認してください。 
+> ゾーン冗長による高可用性は、限定された一連のリージョンで利用できます。 サポートされているリージョンは[こちら](./overview.md#azure-regions)で確認してください。 
 
 ## <a name="prerequisites"></a>前提条件
 - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。

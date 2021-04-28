@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: ec88dfc7ded7ecb1d640eb4d73ef4c8045e549cf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 50cc8f2454aa18dd9a0f1365490fadedcbb623b7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791987"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140679"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>チュートリアル:Key Vault における証明書の自動ローテーションを構成する
 
@@ -83,7 +83,7 @@ Key Vault では、CA との確立されたパートナーシップを通じて�
       |-----------|------|
       |このオプションを選択すると、自動ローテーションが "*オンになります*"。 | このオプションを選択すると、自動ローテーションが "*実行されません*"。連絡先にアラートが送信されるだけです。|
       
-      メールの連絡先を設定する方法については、[こちら](https://docs.microsoft.com/azure/key-vault/certificates/overview-renew-certificate#get-notified-about-certificate-expiration)を参照してください
+      メールの連絡先を設定する方法については、[こちら](./overview-renew-certificate.md#get-notified-about-certificate-expiration)を参照してください
 
 1. **［作成］** を選択します
 

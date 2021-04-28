@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.collection: linux
 ms.date: 03/27/2020
 ms.reviewer: mimckitt
-ms.custom: mimckitt, subject-armqs, devx-track-azurecli
-ms.openlocfilehash: eaebaa958da558b207775d2f535c825d49384c7a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: mimckitt, subject-armqs
+ms.openlocfilehash: 4028ac9ec84c6aa9afdad6a96586361af5538688
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932320"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071993"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Linux 仮想マシン スケール セットを作成する
 

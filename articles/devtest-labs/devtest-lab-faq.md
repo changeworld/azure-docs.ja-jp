@@ -3,12 +3,12 @@ title: Azure DevTest Labs に関する FAQ | Microsoft Docs
 description: この記事では、Azure DevTest Labs に関連する、よく寄せられる質問 (FAQ) の一部の回答を示します。
 ms.topic: article
 ms.date: 07/17/2020
-ms.openlocfilehash: 9fcdc160754822d5c6f22b7349d0e72f0cf22633
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6abc2b0b950521d5ce7d4974c3535c5fbd64fba1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97590275"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139005"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
 Azure DevTest Labs について特に多く寄せられる質問にお答えします。
@@ -108,7 +108,7 @@ $policyRoleDef.Id = $null
 $policyRoleDef.Name = "DevTest Labs Advanced User"
 $policyRoleDef.IsCustom = $true
 $policyRoleDef.AssignableScopes.Clear()
-$policyRoleDef.AssignableScopes.Add("subscriptions/<subscription Id>")
+$policyRoleDef.AssignableScopes.Add("/subscriptions/<subscription Id>")
 $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Start/action")
 $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Stop/action")
 $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef  

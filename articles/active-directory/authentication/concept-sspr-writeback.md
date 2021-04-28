@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f416a23dbb47660097c41ada09c8c135434bcb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b8a84da331568d36b6f6910054fdb2aea76f490
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96743651"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530331"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Azure Active Directory でのセルフサービス パスワード リセットによる書き戻しのしくみ
 
@@ -140,7 +140,7 @@ SSPR 書き戻しの使用を開始するには、次のチュートリアルを
    * 管理者による強制的なパスワード変更 (パスワードの期限切れなど)。
    * 管理者により[パスワード リセット ポータル](https://passwordreset.microsoftonline.com)から実行された管理者によるセルフサービス パスワード リセット。
    * [Azure portal](https://portal.azure.com) から管理者が開始したエンドユーザーのパスワードのリセット。
-   * [Microsoft Graph API ベータ版](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta)から管理者が開始したエンドユーザーのパスワードのリセット。
+   * [Microsoft Graph API](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http) から管理者が開始したエンドユーザーのパスワードのリセット。
 
 ## <a name="unsupported-writeback-operations"></a>サポートされないライトバック操作
 
@@ -149,7 +149,7 @@ SSPR 書き戻しの使用を開始するには、次のチュートリアルを
 * **サポートされないエンドユーザーの操作**
    * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API を使った、エンド ユーザーによるパスワードのリセット。
 * **サポートされない管理者の操作**
-   * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API ([Microsoft Graph API ベータ版](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http&view=graph-rest-beta)がサポートされています) から管理者が開始したエンド ユーザーのパスワードのリセット。
+   * PowerShell バージョン 1、バージョン 2、または Microsoft Graph API ([Microsoft Graph API](/graph/api/passwordauthenticationmethod-resetpassword?tabs=http) がサポートされています) から管理者が開始したエンド ユーザーのパスワードのリセット。
    * [Microsoft 365 管理センター](https://admin.microsoft.com)から管理者が開始したエンドユーザーのパスワードのリセット。
    * すべての管理者は、パスワード リセット ツールを使用して自身のパスワード ライトバック用パスワードをリセットすることはできません。
 

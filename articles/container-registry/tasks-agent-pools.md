@@ -4,12 +4,12 @@ description: Azure Container Registry タスクを実行するための専用コ
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 8b1f077d6216443ad267f8620f87882439cb355c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: c23d2ab866f621db27488860ab62a41765faef40
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284143"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763705"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>専用エージェント プールで ACR タスクを実行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "106284143"
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
 - タスク エージェント プールでは現在、Linux ノードがサポートされています。 Windows ノードは現在、サポートされていません。
-- 次のリージョンでは、タスク エージェント プールをプレビューでご利用いただけます。米国西部 2、米国中南部、米国東部 2、米国東部、米国中部、西ヨーロッパ、カナダ中部、USGov アリゾナ、USGov テキサス、および USGov バージニア。
+- 次のリージョンでは、タスク エージェント プールをプレビューでご利用いただけます。米国西部 2、米国中南部、米国東部 2、米国東部、米国中部、西ヨーロッパ、北ヨーロッパ、カナダ中部、USGov アリゾナ、USGov テキサス、USGov バージニア。
 - 各レジストリについて、既定の合計 vCPU (コア) クォータは、Standard エージェント プールの場合はすべて 16 で、分離エージェント プールの場合は 0 です。 追加で割り当てる場合、[サポート リクエスト][open-support-ticket]を開始します。
 - 現在、エージェント プールで実行されるタスクを取り消すことはできません。
 
@@ -185,11 +185,11 @@ az acr agentpool show \
 [azure-cli]:           /cli/azure/install-azure-cli
 [open-support-ticket]: https://aka.ms/acr/support/create-ticket
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
-[az-configure]: /cli/azure#az-configure
-[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az-acr-agentpool-create
-[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az-acr-agentpool-update
-[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az-acr-agentpool-show
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-configure]: /cli/azure#az_configure
+[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az_acr_agentpool_create
+[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az_acr_agentpool_update
+[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az_acr_agentpool_show
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
 [create-reg-cli]: container-registry-get-started-azure-cli.md

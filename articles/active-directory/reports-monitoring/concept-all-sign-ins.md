@@ -4,7 +4,7 @@ description: Azure Active Directory ポータルのサインイン アクティ�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,27 +13,27 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/16/2021
+ms.date: 04/19/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b17e7f34da1428eec219a393417b0a2a7b461078
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: dc9aa77b3fdc3cda94670545f847bb9de31e1160
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552735"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718955"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory サインイン アクティビティ レポート - プレビュー
 
-Azure Active Directory (Azure AD) のレポート アーキテクチャは、次のコンポーネントで構成されます。
+IT 管理者は、IT 環境がどのように動作しているかを知る必要があります。 システムの正常性に関する情報を使用すると、潜在的な問題に対処する必要があるかどうか、およびその方法を評価できます。 
 
-- **アクティビティ** 
-    - **サインイン** – ユーザー、アプリケーション、管理対象リソースから Azure AD にサインインしてリソースにアクセスする場合に関する情報です。
-    - **監査ログ** - [監査ログ](concept-audit-logs.md)は、ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提供します。
-- **Security** 
-    - **リスクの高いサインイン** - [リスクの高いサインイン](../identity-protection/overview-identity-protection.md)は、ユーザー アカウントの正当な所有者ではないユーザーによるサインイン試行の指標です。
-    - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](../identity-protection/overview-identity-protection.md)は、侵害された可能性があるユーザー アカウントの指標です。
+この目標を達成するために、Azure Active Directory ポータルでは、次の 3 つのアクティビティ ログにアクセスできます。
+
+- **サインイン** - サインインと、ユーザーのリソース使用状況に関する情報です。
+- **[監査](concept-audit-logs.md)** - ユーザーやグループの管理、テナントのリソースに適用された更新など、テナントに適用された変更に関する情報。
+- **[プロビジョニング](concept-provisioning-logs.md)** - ServiceNow でのグループの作成や、Workday からインポートされたユーザーなど、プロビジョニング サービスによって実行されるアクティビティ。
+
 
 Azure Active Directory の従来のサインイン レポートには、対話型のユーザー サインインの概要が示されています。さらに、現在プレビュー段階にある 3 つの追加サインイン レポートが利用できるようになりました。
 
@@ -130,7 +130,8 @@ Azure Active Directory の従来のサインイン レポートには、対話�
 
 
 
-注: 対話型ユーザー サインイン レポートには、以前は Microsoft Exchange クライアントからの非対話型サインインがいくつか含まれていました。 これらのサインインは非対話型であったにもかかわらず、補足表示の目的で対話型ユーザー サインイン レポートに含まれていました。 非対話型ユーザー サインイン レポートが 2020 年 11 月にパブリック プレビュー段階に入った時点で、こうした非対話型サインイン イベント ログは、正確さを高めるために非対話型ユーザー サインイン レポートに移されました。 
+> [!NOTE] 
+> 対話型ユーザー サインイン レポートには、以前は Microsoft Exchange クライアントからの非対話型サインインがいくつか含まれていました。 これらのサインインは非対話型であったにもかかわらず、補足表示の目的で対話型ユーザー サインイン レポートに含まれていました。 非対話型ユーザー サインイン レポートが 2020 年 11 月にパブリック プレビュー段階に入った時点で、こうした非対話型サインイン イベント ログは、正確さを高めるために非対話型ユーザー サインイン レポートに移されました。 
 
 
 **レポート サイズ:** 小 <br> 
@@ -326,6 +327,18 @@ Azure リソース サインイン ログのマネージド ID のデータを�
 1 つのノードの下にグループ化されているすべてのサインインを表示するには、リスト ビューで項目を選択します。
 
 グループ化された項目を選択すると、サインインの詳細がすべて表示されます。 
+
+
+## <a name="sign-in-error-code"></a>サインイン エラー コード
+
+サインインに失敗した場合は、関連するログ項目の **[基本情報]** セクションで、理由に関する詳細情報を取得できます。 
+
+![スクリーンショットには、詳細情報ビューが示されています。](./media/concept-all-sign-ins/error-code.png)
+ 
+ログ項目にはエラーの理由が表示されますが、[サインイン エラー ルックアップ ツール](https://login.microsoftonline.com/error)を使用して、さらに多くの情報が得られる場合があります。 たとえば、使用可能な場合は、このツールにより修復手順が通知されます。  
+
+![エラー コード ルックアップ ツール](./media/concept-all-sign-ins/error-code-lookup-tool.png)
+
 
 
 ## <a name="filter-sign-in-activities"></a>サインイン アクティビティのフィルター処理

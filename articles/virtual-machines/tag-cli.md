@@ -1,5 +1,5 @@
 ---
-title: CLI を使用して Azure 仮想マシンにタグを付ける方法
+title: Azure CLI を使用して Azure 仮想マシンにタグを付ける方法
 description: Azure CLI を使用して仮想マシンにタグを付ける方法について説明します。
 author: cynthn
 ms.service: virtual-machines
@@ -8,14 +8,14 @@ ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 32d15730557c96362602b5e324254c76637ecb55
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20bb4ab622a01646bcc61d0f691c514a25a06edc
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98897444"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502608"
 ---
-# <a name="how-to-tag-a-vm-using-the-cli"></a>CLI を使用して VM にタグを付ける方法
+# <a name="how-to-tag-a-vm-using-the-azure-cli"></a>Azure CLI を使用して VM にタグを付ける方法
 
 この記事では、Azure CLI を使用して VM にタグを付ける方法について説明します。 タグはユーザー定義のキーと値ペアです。リソースまたはリソース グループに直接設定できます。 現在、Azure では、1 つのリソースまたはリソース グループにつき最大 50 個のタグがサポートされます。 タグは、リソースの作成時に付けたり、既存のリソースに追加したりすることができます。 Azure [PowerShell](tag-powershell.md) を使用して仮想マシンにタグを付けることもできます。
 

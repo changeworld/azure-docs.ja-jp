@@ -6,12 +6,12 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 254d403adc687074eae772bcdcc55793bb25b336
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 60ac56cfda026871afa1725bbd54625b7ce7585e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048915"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789197"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>プラットフォーム ログとメトリックを異なる宛先に送信するための診断設定を作成する
 Azure のアクティビティ ログとリソース ログを含む Azure の[プラットフォーム ログ](./platform-logs-overview.md)では、Azure リソースとそれらが依存している Azure プラットフォームの詳細な診断情報と監査情報が提供されます。 [プラットフォーム メトリック](./data-platform-metrics.md)は、既定で収集され、通常は Azure Monitor メトリック データベースに格納されます。 この記事では、プラットフォーム メトリックとプラットフォーム ログをさまざまな送信先に送信するための診断設定を作成して構成する方法について詳しく説明します。
@@ -148,13 +148,36 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>Azure CLI を使用して作成する
 
-[Azure CLI](/cli/azure/monitor) を使用して診断設定を作成するには、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用します。 パラメーターの説明については、このコマンドのドキュメントを参照してください。
+[Azure CLI](/cli/azure/monitor) を使用して診断設定を作成するには、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) コマンドを使用します。 パラメーターの説明については、このコマンドのドキュメントを参照してください。
 
 > [!IMPORTANT]
 > この方法を Azure アクティビティ ログに使用することはできません。 代わりに、[Azure Monitor での Resource Manager テンプレートを使用した診断設定の作成](./resource-manager-diagnostic-settings.md)に関するページを参照して、Resource Manager テンプレートを作成し、それを CLI を使用してデプロイします。
 
-3 つの送信先すべてを使用して診断設定を作成するための CLI コマンドの例を次に示します。
+3 つの送信先すべてを使用して診断設定を作成するための CLI コマンドの例を次に示します。 構文は、クライアントによって若干異なります。
 
+# <a name="cmd"></a>[CMD](#tab/CMD)
+```azurecli
+az monitor diagnostic-settings create  ^
+--name KeyVault-Diagnostics ^
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault ^
+--logs    "[{""category"": ""AuditEvent"",""enabled"": true}]" ^
+--metrics "[{""category"": ""AllMetrics"",""enabled"": true}]" ^
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount ^
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/microsoft.operationalinsights/workspaces/myworkspace ^
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+```azurecli
+az monitor diagnostic-settings create  `
+--name KeyVault-Diagnostics `
+--resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault `
+--logs    '[{""category"": ""AuditEvent"",""enabled"": true}]' `
+--metrics '[{""category"": ""AllMetrics"",""enabled"": true}]' `
+--storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount `
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/microsoft.operationalinsights/workspaces/myworkspace `
+--event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
+```
+# <a name="bash"></a>[Bash](#tab/Bash)
 ```azurecli
 az monitor diagnostic-settings create  \
 --name KeyVault-Diagnostics \
@@ -162,9 +185,10 @@ az monitor diagnostic-settings create  \
 --logs    '[{"category": "AuditEvent","enabled": true}]' \
 --metrics '[{"category": "AllMetrics","enabled": true}]' \
 --storage-account /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount \
---workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/myworkspace \
+--workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/microsoft.operationalinsights/workspaces/myworkspace \
 --event-hub-rule /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhub/authorizationrules/RootManageSharedAccessKey
 ```
+---
 
 ## <a name="create-using-resource-manager-template"></a>Resource Manager テンプレートを使用して作成する
 Resource Manager テンプレートを使用して診断設定を作成または更新するには、「[Azure Monitor の診断設定用の Resource Manager テンプレートのサンプル](./resource-manager-diagnostic-settings.md)」を参照してください。

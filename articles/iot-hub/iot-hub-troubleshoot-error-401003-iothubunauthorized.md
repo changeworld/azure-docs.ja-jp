@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: c6ad0e2dd5ce5f223f4e6033ace09c31e58c85a3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 0e59fa2bcbc2d357857ddef39d990ddee9bc9c90
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061351"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129461"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -69,7 +69,7 @@ IoT Hub では、認証ヘッダー、規則、またはキーを認証できま
 一般に、エラーを修正する方法を説明するエラー メッセージが表示されます。 何らかの理由でエラー メッセージの詳細にアクセスできない場合は、次のことを確認してください。
 
 - 使用する SAS またはその他のセキュリティ トークンの有効期限が切れていないこと。
-- X.509 証明書認証の場合、デバイス証明書またはデバイスに関連付けられている CA 証明書の有効期限が切れていません。 IoT Hub での X.509 CA 証明書の登録方法については、「[Azure IoT Hub での X.509 セキュリティの設定](iot-hub-security-x509-get-started.md)」を参照してください。
+- X.509 証明書認証の場合、デバイス証明書またはデバイスに関連付けられている CA 証明書の有効期限が切れていません。 IoT Hub での X.509 CA 証明書の登録方法については、「[Azure IoT Hub での X.509 セキュリティの設定](./tutorial-x509-scripts.md)」を参照してください。
 - X.509 証明書の拇印認証の場合、デバイス証明書の拇印は IoT Hub に登録されます。
 - 承認の資格情報が使用するプロトコルに適した形式であること。 詳細については、「[IoT Hub へのアクセスの制御](iot-hub-devguide-security.md)」を参照してください。
 - 使用される承認規則に、要求された操作に対するアクセス許可があること。
