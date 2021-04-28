@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 02/03/2021
-ms.openlocfilehash: cbf070dce056795ad8e4a5f3e4d609e7d36d631e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 330a6e54ee88781f71c4a861051aab94f8eef81f
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200813"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107587903"
 ---
 # <a name="understanding-resource-sets"></a>リソース セットについて
 
@@ -102,14 +102,15 @@ Azure Purview では、資産グループをリソース セットに一致さ�
 
 表示名: "data"
 
-## <a name="known-issues-with-resource-sets"></a>リソース セットに関する既知の問題
+## <a name="customizing-resource-set-grouping-using-pattern-rules"></a>パターン ルールを使用したリソース セットのグループ化のカスタマイズ
 
-リソース セットは、ほとんどの場合、適切に機能しますが、Azure Purview で次のような問題が発生する可能性があります。
+Azure Purview は、ストレージ アカウントをスキャンするときに、定義済みパターンのセットを使用して、資産のグループがリソース セットであるかどうかを判断します。 場合によっては、Azure Purview のリソース セットのグループ化がデータ資産を正確に反映しないことがあります。 次のような問題が発生するおそれがあります。
 
 - 資産をリソース セットとして誤ってマークする
 - 資産を間違ったリソース セットに配置する
 - 資産をリソース セットではないとして誤ってマークする
 
+Azure Purview がリソース セットとしてグループ化される資産を検出する方法や、カタログ内でのそれらの表示方法をカスタマイズまたはオーバーライドするには、管理センターでパターン ルールを定義します。 詳細な手順と構文については、[リソース セットのパターン ルール](how-to-resource-set-pattern-rules.md)に関するページを参照してください。
 ## <a name="next-steps"></a>次のステップ
 
 Azure Purview の使用を開始するには、[Azure Purview アカウントの作成](create-catalog-portal.md)に関するクイックスタートを参照してください。

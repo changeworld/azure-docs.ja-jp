@@ -7,18 +7,21 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 4f1f432da33bded4fc0f04170673e5943dec5fb0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b20a1670c13a272ed48088567a205d854ac99179
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311330"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791249"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの GitHub Actions ワークフロー
 
-新しい Azure Static Web App リソースを作成すると、アプリの継続的デプロイを制御する GitHub Actions ワークフローが生成されます。 このワークフローは、YAML ファイルによって起動されます。 この記事では、ワークフロー ファイルの構造とオプションについて詳しく説明します。
+新しい Azure Static Web Apps リソースを作成すると、アプリの継続的デプロイを制御する GitHub Actions ワークフローが生成されます。 このワークフローは、YAML ファイルによって起動されます。 この記事では、ワークフロー ファイルの構造とオプションについて詳しく説明します。
 
 デプロイは[トリガー](#triggers)によって開始されます。このトリガーにより、個々の[手順](#steps)で定義された[ジョブ](#jobs)が実行されます。
+
+> [!NOTE]
+> Azure Static Web Apps では、Azure DevOps もサポートされています。 パイプラインの設定の詳細については、[Azure DevOps を使用した発行](publish-devops.md)に関する記事を参照してください。
 
 ## <a name="file-location"></a>ファイルの場所
 
@@ -179,13 +182,16 @@ with:
 
 ## <a name="route-file-location"></a>ルート ファイルの場所
 
-ワークフローをカスタマイズして、リポジトリ内の任意のフォルダーで [staticwebapp.config.json](routes.md) を検索することができます。 次のプロパティは、ジョブの `with` セクションの下で定義できます。
+ワークフローをカスタマイズして、リポジトリ内の任意のフォルダー内で [routes.json](routes.md) を検索できます。 次のプロパティは、ジョブの `with` セクションの下で定義できます。
 
 | プロパティ          | 説明                                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `routes_location` | _staticwebapp.config.json_ ファイルが存在するディレクトリの場所を定義します。 この場所は、リポジトリのルートを基準としています。 |
+| `routes_location` | _routes.json_ ファイルが存在するディレクトリの場所を定義します。 この場所は、リポジトリのルートを基準としています。 |
 
-_staticwebapp.config.json_ ファイルの場所を明確にすることは、フロントエンド フレームワークのビルド手順で、既定でこのファイルが `output_location` に移動されない場合に特に重要です。
+_routes.json_ ファイルの場所を明確にすることは、フロントエンド フレームワークのビルド手順で、既定でこのファイルが `output_location` に移動されない場合に特に重要です。
+
+> [!IMPORTANT]
+> _routes.json_ ファイルで定義されている機能は非推奨になりました。 _staticwebapp.config.json_ の詳細については、Azure Static Web Apps [構成ファイル](./configuration.md)を参照してください。
 
 ## <a name="environment-variables"></a>環境変数
 

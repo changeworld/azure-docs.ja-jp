@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 1c3e5a44e01f3fa43b82644103066f5a03684ad2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7bcdbd4229bda56af80cc5068dc5421dc2e5b58d
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94591582"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001576"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する
 
@@ -253,6 +253,28 @@ using (var connection = new MySqlConnection(builder.ConnectionString))
 {
     connection.Open();
 }
+```
+
+### <a name="nodejs"></a>Node.js
+
+```node
+var fs = require('fs');
+var mysql = require('mysql');
+const serverCa = [fs.readFileSync("/var/www/html/BaltimoreCyberTrustRoot.crt.pem", "utf8")];
+var conn=mysql.createConnection({
+    host:"mydemoserver.mysql.database.azure.com",
+    user:"myadmin@mydemoserver",
+    password:"yourpassword",
+    database:"quickstartdb",
+    port:3306,
+    ssl: {
+        rejectUnauthorized: true,
+        ca: serverCa
+    }
+});
+conn.connect(function(err) {
+  if (err) throw err;
+});
 ```
 
 ## <a name="next-steps"></a>次のステップ

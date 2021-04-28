@@ -6,13 +6,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/19/2021
-ms.openlocfilehash: 0aa472aca40acbaf3f8c8a09469d08fe6b37187a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 681a3643c04472cc42c1f672f4c9433da30e3955
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699761"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565503"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>マッピング データ フローのデバッグ モード
 
@@ -20,9 +20,11 @@ ms.locfileid: "101699761"
 
 ## <a name="overview"></a>概要
 
-Azure Data Factory マッピング データ フローのデバッグ モードを使用すると、データ フローの構築およびデバッグ時にデータ シェイプの変換を対話的に監視できます。 デバッグ セッションは、Data Flow のデザイン セッションでも、データ フローのパイプライン デバッグ実行中でも使用できます。 デバッグ モードを有効にするには、デザイン サーフェスの上部にある [Data Flow Debug]\(データ フローのデバッグ\) ボタンを使用します。
+Azure Data Factory マッピング データ フローのデバッグ モードを使用すると、データ フローの構築およびデバッグ時にデータ シェイプの変換を対話的に監視できます。 デバッグ セッションは、Data Flow のデザイン セッションでも、データ フローのパイプライン デバッグ実行中でも使用できます。 デバッグ モードを有効にするには、データ フロー アクティビティがある状態で、データ フロー キャンバスまたはパイプライン キャンバスの上部のバーにある **[Data Flow のデバッグ]** ボタンを使用します。
 
-![デバッグ スライダー](media/data-flow/debugbutton.png "デバッグ スライダー")
+![[デバッグ] スライダーの場所を示すスクリーンショット 1](media/data-flow/debug-button.png)
+
+![[デバッグ] スライダー の場所を示すスクリーンショット 2](media/data-flow/debug-button-4.png)
 
 スライダーを有効にすると、使用する統合ランタイム構成を選択するように求めるメッセージが表示されます。 AutoResolveIntegrationRuntime を選択した場合は、既定の 60 分の Time to Live が設定された一般的なコンピューティングの 8 個のコアを持つクラスターがスピンアップされます。 セッションのタイムアウトまでのアイドル時間を増やす場合は、より高い TTL 設定を選択できます。 データ フロー統合ランタイムの詳細については、[データ フローのパフォーマンス](concepts-data-flow-performance.md#ir)に関するページを参照してください。
 

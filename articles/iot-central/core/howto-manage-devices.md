@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5bab4a7a90101d3749571e0f2d4179f0fce14296
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 2ea75adfb7c2d990cfa543270f245113e15e4ee2
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378637"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107389844"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -58,12 +58,14 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 ## <a name="import-devices"></a>デバイスのインポート
 
-アプリケーションに多数のデバイスを接続する場合は、CSV ファイルからデバイスを一括してインポートできます。 CSV ファイルには次の列ヘッダーが必要です。
+アプリケーションに多数のデバイスを接続する場合は、CSV ファイルからデバイスを一括してインポートできます。 CSV ファイルの例については、[Azure サンプル リポジトリ](https://github.com/Azure-Samples/iot-central-docs-samples/tree/master/bulk-upload-devices)を参照してください。 CSV ファイルには、次の列ヘッダーが含まれている必要があります。
 
 | 列 | 説明 
 | - | - | 
 | IOTC_DEVICEID | デバイス ID は、このデバイスの接続に使用される一意識別子です。 デバイス ID には、文字、数字、および `-` 文字を含めることができます (スペースなし)。 |
-| IOTC_DEVICENAME | 省略可能。 デバイス名は、アプリケーション全体に表示されるフレンドリ名です。 指定しない場合、これはデバイス ID と同じになります。   |
+| IOTC_DEVICENAME | 任意。 デバイス名は、アプリケーション全体に表示されるフレンドリ名です。 指定しない場合、これはデバイス ID と同じになります。   |
+
+
 
 アプリケーションにデバイスを一括登録する方法:
 

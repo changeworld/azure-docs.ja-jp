@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: 63194ab87e0f2228b8585e962394aa1ebfff48d6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c19dba659fd88fc17ba89987cdf5245ca365dcbf
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767254"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018387"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Ruby および Postgres のアプリを構築する
 
@@ -125,7 +125,7 @@ Rails サーバーを停止するには、ターミナルで「`Ctrl + C`」と�
 az extension add --name db-up
 ```
 
-次の例に示すように、[`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用して、Azure に Postgres データベースを作成します。 *\<postgresql-name>* は、"*一意*" の名前に置き換えてください (サーバー エンドポイントは *https://\<postgresql-name>.postgres.database.azure.com*)。 *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。
+次の例に示すように、[`az postgres up`](/cli/azure/postgres#az_postgres_up) コマンドを使用して、Azure に Postgres データベースを作成します。 *\<postgresql-name>* は、"*一意*" の名前に置き換えてください (サーバー エンドポイントは *https://\<postgresql-name>.postgres.database.azure.com*)。 *\<admin-username>* と *\<admin-password>* には、この Postgres サーバーの管理者ユーザーを作成するための資格情報を指定します。
 
 <!-- Issue: without --location -->
 ```azurecli

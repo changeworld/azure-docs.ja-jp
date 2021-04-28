@@ -3,12 +3,12 @@ title: Azure Service Bus の認証と承認 | Microsoft Docs
 description: Shared Access Signature (SAS) 認証を使用して、アプリケーションを Service Bus に対して認証します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: ccb526abd99be50e33c8adb918186944b7af3bd6
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 73b6dc1004ec40c228c0ef5104de5f21eccd0437
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516656"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988750"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 Azure Service Bus リソースへのアクセスを認証して承認する方法は 2 つあります。Azure Activity Directory (Azure AD) と Shared Access Signature (SAS) です。 この記事では、この 2 種類のセキュリティ メカニズムの使用について詳しく説明します。 
@@ -45,8 +45,6 @@ SAS を使用するために、名前空間、キュー、またはトピック�
 
 Service Bus の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。 SAS には、共有アクセス承認規則のサポートが含まれています。 接続文字列をパラメーターとして受け取るすべての API では、SAS 接続文字列がサポートされています。
 
-> [!IMPORTANT]
-> Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) を Service Bus と一緒に使おうとしている場合は、この方法のサポートは今では限定されていて、[SAS を使用するようにアプリケーションを移行する](service-bus-migrate-acs-sas.md)か、Azure AD で OAuth 2.0 認証を使用する (推奨) 必要があることに注意してください。非推奨になった ACS の詳細については、[このブログ記事](/archive/blogs/servicebus/upcoming-changes-to-acs-enabled-namespaces)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure AD を使用した認証の詳細については、次の記事を参照してください。

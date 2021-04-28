@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f2c0b82f14fd16ecb9eef163e7a263f4327cfc46
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 4f9523594c07209d530a143713061be6d0467af8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364551"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753382"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -45,7 +45,7 @@ Key Vault の管理は、他の Azure サービスと同様に、Azure Resource 
 
 インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 
-Key Vault 管理プレーンの詳細については、[Key Vault 管理プレーン](./secure-your-key-vault.md#management-plane-and-azure-rbac)に関するページを参照してください。
+Key Vault 管理プレーンの詳細については、[Key Vault 管理プレーン](security-overview.md)に関するページを参照してください。
 
 ## <a name="authenticate-to-key-vault-in-code"></a>コードでの Key Vault に対する認証
 
@@ -105,7 +105,7 @@ Azure ID クライアント ライブラリの詳細については、以下を�
 
 インストール パッケージとソース コードについては、[クライアント ライブラリ](client-libraries.md)に関するページを参照してください。
 
-Key Vault データ プレーンのセキュリティの詳細については、[Key Vault データ プレーンとアクセス ポリシー](./secure-your-key-vault.md#data-plane-and-access-policies)に関する記事、および [Key Vault データ プレーンと Azure RBAC](./secure-your-key-vault.md#data-plane-and-azure-rbac) に関するページをご覧ください
+Key Vault データ プレーンのセキュリティの詳細については、[Key Vault のセキュリティの概要](security-overview.md)に関する記事を参照してください。
 
 ### <a name="code-examples"></a>コード例
 

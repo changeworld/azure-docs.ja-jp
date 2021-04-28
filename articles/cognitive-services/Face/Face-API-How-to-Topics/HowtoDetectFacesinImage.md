@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/23/2021
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a15cce45c527a92c99e0488661e0b67bb8e2371
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 71e98b735b4aa4631d73f8730a48c56a8c7585ab
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101713067"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107497644"
 ---
 # <a name="get-face-detection-data"></a>顔検出データの取得
 
@@ -78,9 +78,9 @@ ms.locfileid: "101713067"
 
 ## <a name="next-steps"></a>次のステップ
 
-このガイドでは、顔検出のさまざまな機能を使用する方法について説明しました。 次は詳細なチュートリアルに従って、お使いのアプリにこれらの機能を統合します。
+このガイドでは、顔検出のさまざまな機能を使用する方法について説明しました。 次に、これらの機能をアプリに統合して、ユーザーの顔データを追加します。
 
-- [チュートリアル:画像内の顔データを表示する WPF アプリを作成する](../Tutorials/FaceAPIinCSharpTutorial.md)
+- [チュートリアル: Face サービスにユーザーを追加する](../enrollment-overview.md)
 
 ## <a name="related-topics"></a>関連トピック
 

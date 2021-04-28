@@ -9,14 +9,14 @@ ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
 ms.date: 12/20/2020
-ms.topic: how-to
-ms.custom: automl
-ms.openlocfilehash: e744f7bb4d457e18f73c308fa5eaf29918b97e88
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.topic: conceptual
+ms.custom: how-to, automl
+ms.openlocfilehash: 5718e0e3732f57b46500f9d2cdb1165e883ca44f
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107888316"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575583"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 

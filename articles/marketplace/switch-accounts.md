@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: dd484a836e12cb670174dd5d7da9c70d00b57888
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: c84bc351c60b084d711ee6484450dc4c7720fc97
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107962"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132991"
 ---
 # <a name="switch-accounts-in-partner-center"></a>パートナー センターでアカウントを切り替える
 
@@ -31,7 +31,7 @@ ms.locfileid: "107107962"
 アカウント ピッカーを選択すると、属しているすべてのアカウントがリスト形式で表示されます。 そこで、そのいずれかを選択して、そのアカウントに切り替えることができます。 切り替えを行うと、パートナー センター内のすべての内容がそのアカウントのコンテキストで表示されます。
 
 > [!NOTE]
-> パートナー センターでは、マルチユーザー アカウントのアクセスと管理のために [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) が使用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
+> パートナー センターでは、マルチユーザー アカウントのアクセスと管理のために [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) が使用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
 
 次の例では、サインインしているユーザーは強調表示されている 3 つのアカウントに属しています。 このユーザーは、アカウントをクリックすることで切り替えることができます。
 

@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: 6bb828aaff0c1d026e977863a6e224aaea81b629
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2194fc960029d5808aa315ac03702be2409f12fb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729237"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127940"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>従来の Azure DNS プライベート ゾーンを新しいリソース モデルに移行する
 
@@ -126,4 +126,4 @@ DNS クエリが解決されていないとわかった場合、数分待って�
 
 * 「[DNS ゾーンとレコードの概要](dns-zones-records.md)」で DNS ゾーンとレコードについて学びます。
 
-* Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
+* Azure のその他の重要な[ネットワーク機能](../networking/fundamentals/networking-overview.md)について参照してください。

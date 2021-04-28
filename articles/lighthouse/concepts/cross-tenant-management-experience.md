@@ -3,12 +3,12 @@ title: テナント間の管理エクスペリエンス
 description: Azure の委任されたリソース管理によって、テナント間の管理エクスペリエンスが可能になります。
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 027d1d5e81d5a652a7e2d5441c40440c661f730f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 005d8f15c20749dff7d45385124a08a64b213afb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778627"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139041"
 ---
 # <a name="cross-tenant-management-experiences"></a>テナント間の管理エクスペリエンス
 
@@ -104,7 +104,7 @@ Azure REST API では、[Subscriptions - Get](/rest/api/resources/subscriptions/
 - 顧客テナント内で[診断設定](../..//azure-monitor/essentials/diagnostic-settings.md)を作成して、管理テナント内のワークスペースにリソース ログを送信する
 - SAP ワークロードに対しては、[顧客のテナント全体で集計されたビューを使って SAP ソリューションのメトリックを監視する](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
-[Azure のネットワーク](../../networking/networking-overview.md):
+[Azure のネットワーク](../../networking/fundamentals/networking-overview.md):
 
 - 管理対象のテナント内で [Azure Virtual Network](../../virtual-network/index.yml) と仮想ネットワーク インターフェイス カード (vNIC) をデプロイして管理する
 - 顧客の Virtual Network リソースを保護するために [Azure Firewall](../../firewall/overview.md) をデプロイして構成する

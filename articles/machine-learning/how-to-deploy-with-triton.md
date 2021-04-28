@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.date: 02/16/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 971a6474b3e48f70c1e4e96a784bf1d92709cf71
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479272"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885220"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Triton 推論サーバーを使用した高パフォーマンスのサービス (プレビュー) 
 
@@ -116,7 +116,7 @@ models
 az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
-`az ml model register` に関する詳細については、[リファレンス ドキュメント](/cli/azure/ext/azure-cli-ml/ml/model)を参照してください。
+`az ml model register` に関する詳細については、[リファレンス ドキュメント](/cli/azure/ml/model)を参照してください。
 
 Azure Machine Learning にモデルを登録するときに、`--model-path  -p` パラメーターの値は Triton の親フォルダーの名前である必要があります。  
 上記の例では `--model-path` は 'models' です。
@@ -339,7 +339,7 @@ print(local_service.scoring_uri)
 
 ---
 
-展開が完了すると、スコアリング URI が表示されます。 今回のローカル展開では、`http://localhost:6789/score` です。 クラウドにデプロイする場合は、[az ml service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) CLI コマンドを使用してスコアリング URI を取得できます。
+展開が完了すると、スコアリング URI が表示されます。 今回のローカル展開では、`http://localhost:6789/score` です。 クラウドにデプロイする場合は、[az ml service show](/cli/azure/ml/service#az_ml_service_show) CLI コマンドを使用してスコアリング URI を取得できます。
 
 スコアリング URI に推論要求を送信するクライアントを作成する方法については、[Web サービスとして展開されたモデルの使用](how-to-consume-web-service.md)に関するページを参照してください。
 

@@ -4,12 +4,12 @@ description: コンテナー イメージを構築し、Azure Container Instance
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: e6a4d9ecff292d79f132f933c36b0030e04f4efa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: df8f7a546767f1198cee6fc6ceb6032645c14989
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771301"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868989"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>GitHub アクションを構成してコンテナー インスタンスを作成する
 
@@ -319,4 +319,4 @@ az group delete \
 [az-container-show]: /cli/azure/container#az_container_show
 [az-container-delete]: /cli/azure/container#az_container_delete
 [az-extension-add]: /cli/azure/extension#az_extension_add
-[az-container-app-up]: /cli/azure/ext/deploy-to-azure/container/app#ext-deploy-to-azure-az-container-app-up
+[az-container-app-up]: /cli/azure/container/app#az_container_app_up

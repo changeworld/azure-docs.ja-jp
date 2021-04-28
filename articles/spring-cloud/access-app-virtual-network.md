@@ -7,18 +7,18 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/11/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 37c8b4bc186c217ecb27638f5f50297102345de7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 593065b200ab0dc98e5fa97299c137aedfd1be63
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877665"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129317"
 ---
 # <a name="access-your-application-in-a-private-network"></a>プライベート ネットワークのアプリにアクセスする
 
 このドキュメントでは、プライベート ネットワーク内のアプリのエンドポイントにアクセスする方法について説明します。  アクセスするには、お使いのサブスクリプションに **Azure プライベート DNS ゾーン** を作成して、プライベート完全修飾ドメイン名 (FQDN) をその IP アドレスに変換または解決する必要があります。
 
-仮想ネットワークで Azure Spring Cloud サービス インスタンスのアプリケーション向けに **[エンドポイントの割り当て]** がデプロイされている場合、そのエンドポイントはプライベート FQDN です。 このドメインは、プライベート ネットワーク内でのみアクセスできます。 アプリのエンドポイントは、アプリとサービスによって使用されます。 これには、「[アプリとデプロイを表示する](spring-cloud-howto-staging-environment.md#view-apps-and-deployments)」で説明されている **テスト エンドポイント** が含まれます。 「[Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する](spring-cloud-howto-log-streaming.md)」で説明されている **ログ ストリーミング** も、プライベート ネットワーク内でのみ機能します。
+仮想ネットワークで Azure Spring Cloud サービス インスタンスのアプリケーション向けに **[エンドポイントの割り当て]** がデプロイされている場合、そのエンドポイントはプライベート FQDN です。 このドメインは、プライベート ネットワーク内でのみアクセスできます。 アプリのエンドポイントは、アプリとサービスによって使用されます。 これには、「[アプリとデプロイを表示する](./how-to-staging-environment.md#view-apps-and-deployments)」で説明されている **テスト エンドポイント** が含まれます。 「[Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する](./how-to-log-streaming.md)」で説明されている **ログ ストリーミング** も、プライベート ネットワーク内でのみ機能します。
 
 ## <a name="create-a-private-dns-zone"></a>プライベート DNS ゾーンの作成
 
@@ -48,7 +48,7 @@ ms.locfileid: "104877665"
 
 4. **[リンク名]** として「**azure-spring-cloud-dns-link**」と入力します。
 
-5. **[仮想ネットワーク]** で、[Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)](spring-cloud-tutorial-deploy-in-azure-virtual-network.md) 方法に関する記事の手順に従って作成した仮想ネットワークを選択します。
+5. **[仮想ネットワーク]** で、[Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)](./how-to-deploy-in-azure-virtual-network.md) 方法に関する記事の手順に従って作成した仮想ネットワークを選択します。
 
     ![仮想ネットワークリンクの追加](media/spring-cloud-access-app-vnet/add-virtual-network-link.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "104877665"
 
 プライベート DNS ゾーンを使用して DNS を変換または解決するには、そのゾーンに種類 "A" のレコードを作成する必要があります。
 
-1. [Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)](spring-cloud-tutorial-deploy-in-azure-virtual-network.md) 方法に関する記事の手順に従って作成した仮想ネットワーク リソースを選択します。
+1. [Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)](./how-to-deploy-in-azure-virtual-network.md) 方法に関する記事の手順に従って作成した仮想ネットワーク リソースを選択します。
 
 2. **[接続されているデバイス]** 検索ボックスに、「*kubernetes-internal*」と入力します。
 
@@ -99,7 +99,7 @@ $SERVICE_RUNTIME_RG --query "[0].privateIpAddress" -o tsv`
 
 ## <a name="assign-private-fqdn-for-your-application"></a>アプリにプライベート FQDN を割り当てる
 
-[マイクロサービス アプリをビルドしてデプロイする](spring-cloud-tutorial-deploy-in-azure-virtual-network.md)方法に関する記事の手順を実行した後、アプリにプライベート FQDN を割り当てることができます。
+[マイクロサービス アプリをビルドしてデプロイする](./how-to-deploy-in-azure-virtual-network.md)方法に関する記事の手順を実行した後、アプリにプライベート FQDN を割り当てることができます。
 
 1. 仮想ネットワークにデプロイされている Azure Spring Cloud サービス インスタンスを選択し、左側のメニューで **[アプリ]** タブを開きます。
 
@@ -119,9 +119,9 @@ $SERVICE_RUNTIME_RG --query "[0].privateIpAddress" -o tsv`
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Application Gateway と Azure Firewall を使用してアプリをインターネットに公開する](spring-cloud-expose-apps-gateway-azure-firewall.md)
+- [Application Gateway と Azure Firewall を使用してアプリをインターネットに公開する](./expose-apps-gateway-azure-firewall.md)
 
 ## <a name="see-also"></a>関連項目
 
-- [VNET での Azure Spring Cloud のトラブルシューティング](spring-cloud-troubleshooting-vnet.md)
-- [VNET での Azure Spring Cloud の実行に関するお客様の責任](spring-cloud-vnet-customer-responsibilities.md)
+- [VNET での Azure Spring Cloud のトラブルシューティング](./troubleshooting-vnet.md)
+- [VNET での Azure Spring Cloud の実行に関するお客様の責任](./vnet-customer-responsibilities.md)

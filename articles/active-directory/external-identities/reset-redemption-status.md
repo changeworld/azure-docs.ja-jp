@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0396698fe63cb62fc1cfaf5d930b8a97a7b1bbc
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: f5bfce7ef2621cbe3bbbfdd95bf9a75e427c8cbd
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552259"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531877"
 ---
 # <a name="reset-redemption-status-for-a-guest-user-preview"></a>ゲスト ユーザーの引き換え状態をリセットする (プレビュー)
 
@@ -37,7 +37,9 @@ ms.locfileid: "106552259"
 3. 次のいずれかの方法を使用して、ユーザーの引き換え状態をリセットします。
 
 > [!NOTE]
->パブリック プレビュー中に、ユーザーの電子メール アドレスをリセットする場合、この `mail` プロパティを新しい電子メール アドレスに設定することをお勧めします。 このようにすると、ユーザーは招待の引き換えリンクを使用するだけでなく、ディレクトリにサインインして招待を引き換えることができます。
+>パブリック プレビュー期間中は、次の 2 つの推奨事項があります。
+>- ユーザーのメール アドレスを新しいアドレスにリセットする場合は、`mail` プロパティを設定することをお勧めします。 このようにすると、ユーザーは招待の引き換えリンクを使用するだけでなく、ディレクトリにサインインして招待を引き換えることができます。
+>- B2B ゲスト ユーザーの状態をリセットする場合は、必ずユーザー コンテキストで実行してください。 現在、アプリのみの呼び出しはサポートされていません。
 >
 ## <a name="use-powershell-to-reset-redemption-status"></a>PowerShell を使用して引き換え状態をリセットする
 
@@ -54,7 +56,7 @@ New-AzureADMSInvitation -InvitedUserEmailAddress <<external email>> -SendInvitat
 
 ## <a name="use-microsoft-graph-api-to-reset-redemption-status"></a>Microsoft Graph API を使用して引き換え状態をリセットする
 
-[Microsoft Graph の招待 API](/graph/api/resources/invitation?view=graph-rest-1.0) を使用して、`resetRedemption` プロパティを `true` に設定し、新しい電子メール アドレスを `invitedUserEmailAddress` プロパティに指定します。
+[Microsoft Graph の招待 API](/graph/api/resources/invitation?view=graph-rest-beta&preserve-view=true) を使用して、`resetRedemption` プロパティを `true` に設定し、新しい電子メール アドレスを `invitedUserEmailAddress` プロパティに指定します。
 
 ```json
 POST https://graph.microsoft.com/beta/invitations  

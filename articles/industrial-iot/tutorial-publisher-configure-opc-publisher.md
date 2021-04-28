@@ -6,12 +6,12 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 4d4f9c90fd96365216480164f29f08fad92eb9d0
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: e4d26856d269a07ce87b22843c61be97b73bbea3
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787344"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137258"
 ---
 # <a name="tutorial-configure-the-opc-publisher"></a>チュートリアル: OPC Publisher の構成
 
@@ -100,7 +100,7 @@ OPC Publisher には、ポート 62222 で実行される、組み込みの OPC 
 >[!NOTE] 
 > この機能は、OPC Publisher のバージョン 2.5 以前でのみ使用できます。**
 
-OPC Publisher には、次の [IoT Hub のダイレクトメソッド](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods)が実装されています。これらは、[IoT Hub Device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) を使用して、(世界中のどこからでも) アプリケーションから呼び出すことができます。
+OPC Publisher には、次の [IoT Hub のダイレクトメソッド](../iot-hub/iot-hub-devguide-direct-methods.md)が実装されています。これらは、[IoT Hub Device SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用して、(世界中のどこからでも) アプリケーションから呼び出すことができます。
 
   - PublishNodes
   - UnpublishNodes

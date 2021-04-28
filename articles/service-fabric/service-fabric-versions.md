@@ -3,12 +3,12 @@ title: Azure Service Fabric のバージョン
 description: Azure Service Fabric のクラスターのバージョンとアクティブにサポートされているプラットフォームのバージョンについて説明します
 ms.topic: troubleshooting
 ms.date: 04/12/2021
-ms.openlocfilehash: d106462578879ef3ff6ba902c7c950f2bf6ab308
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 4e656b0cd051079d4504ee2a55a9bf6993065396
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140121"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515313"
 ---
 # <a name="service-fabric-supported-versions"></a>Service Fabric のサポートされているバージョン
 この記事の表は、アクティブにサポートされている Service Fabric とプラットフォームのバージョンの概要です。
@@ -23,7 +23,7 @@ ms.locfileid: "108140121"
 | 7.2 RTO-CU5 | 7.0 CU4 | 7.1 |バージョン 4.2 以前 | .NET Core 3.1、.NET Core 2.1、<br>すべて >= 4.5 Net Full Framework | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date)| 2021 年 11 月 30 日 |
 | 7.1 |7.0 CU3 |該当なし | バージョン 4.1 以前 | .NET Core 3.1、.NET Core 2.1、<br>すべて >= 4.5 Net Full Framework | [サポートされている OS バージョンを参照してください](#supported-windows-versions-and-support-end-date) | 2021 年 7 月 31 日 |
 
-** Service Fabric に .NET Core ランタイムは用意されていません。 サービスの作成者は、それを<a href="/dotnet/core/deploying/">入手できる</a>ことを保証する責任があります。
+** Service Fabric に .NET Core ランタイムは用意されていません。 サービスの作成者は、それを<a href="https://docs.microsoft.com/dotnet/core/deploying/">入手できる</a>ことを保証する責任があります。
 
 ## <a name="supported-windows-versions-and-support-end-date"></a>サポートされている Windows バージョンとサポート終了日
 特定の OS 上での Service Fabric のサポートは、その OS バージョンのサポート期間が終了した時点で終了します。
@@ -33,12 +33,12 @@ ms.locfileid: "108140121"
 
 | OS のバージョン | Service Fabric のサポート終了日 | OS のライフサイクルのリンク |
 |---|---|---|
-|Windows Server 2019|2029/1/9|<a href="/lifecycle/products/windows-server-2019">Windows Server 2019 - Microsoft ライフサイクル</a>|
-|Windows Server 2016 |2027/1/12|<a href="/lifecycle/products/windows-server-2016">Windows Server 2016 - Microsoft ライフサイクル</a>|
-|Windows Server 2012 R2 |2023/10/10|<a href="/lifecycle/products/windows-server-2012-r2">Windows Server 2012 R2 - Microsoft ライフサイクル</a>|
-|バージョン 20H2 |2022/5/10|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft ライフサイクル</a>|
-|バージョン 2004 |2021 年 12 月 14 日|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft ライフサイクル</a>|
-|バージョン 1909 |2021 年 5 月 11 日|<a href="/lifecycle/products/windows-server">Windows Server - Microsoft ライフサイクル</a>|
+|Windows Server 2019|2029/1/9|<a href="https://docs.microsoft.com/lifecycle/products/windows-server-2019">Windows Server 2019 - Microsoft ライフサイクル</a>|
+|Windows Server 2016 |2027/1/12|<a href="https://docs.microsoft.com/lifecycle/products/windows-server-2016">Windows Server 2016 - Microsoft ライフサイクル</a>|
+|Windows Server 2012 R2 |2023/10/10|<a href="https://docs.microsoft.com/lifecycle/products/windows-server-2012-r2">Windows Server 2012 R2 - Microsoft ライフサイクル</a>|
+|バージョン 20H2 |2022/5/10|<a href="https://docs.microsoft.com/lifecycle/products/windows-server">Windows Server - Microsoft ライフサイクル</a>|
+|バージョン 2004 |2021 年 12 月 14 日|<a href="https://docs.microsoft.com/lifecycle/products/windows-server">Windows Server - Microsoft ライフサイクル</a>|
+|バージョン 1909 |2021 年 5 月 11 日|<a href="https://docs.microsoft.com/lifecycle/products/windows-server">Windows Server - Microsoft ライフサイクル</a>|
 
 <br>
 
@@ -46,12 +46,12 @@ ms.locfileid: "108140121"
 
 | OS のバージョン | Service Fabric のサポート終了日 | OS のライフサイクルのリンク |
 | --- | --- | --- |
-| Windows 10 2019 LTSC | 2029/1/9 | <a href="/lifecycle/products/windows-10-2019-ltsc">Windows 10 2019 LTSC - Microsoft ライフサイクル</a> |
-| バージョン 20H2 | 2023/5/9 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
-| バージョン 2004 | 2021 年 12 月 14 日| <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
-| バージョン 1909 | 2022/5/10 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
-| バージョン 1809 | 2021 年 5 月 11 日 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
-| バージョン 1803 | 2021 年 5 月 11 日 | <a href="/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
+| Windows 10 2019 LTSC | 2029/1/9 | <a href="https://docs.microsoft.com/lifecycle/products/windows-10-2019-ltsc">Windows 10 2019 LTSC - Microsoft ライフサイクル</a> |
+| バージョン 20H2 | 2023/5/9 | <a href="https://docs.microsoft.com/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
+| バージョン 2004 | 2021 年 12 月 14 日| <a href="https://docs.microsoft.com/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
+| バージョン 1909 | 2022/5/10 | <a href="https://docs.microsoft.com/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
+| バージョン 1809 | 2021 年 5 月 11 日 | <a href="https://docs.microsoft.com/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
+| バージョン 1803 | 2021 年 5 月 11 日 | <a href="https://docs.microsoft.com/lifecycle/products/windows-10-enterprise-and-education">Windows 10 Enterprise and Education - Microsoft ライフサイクル</a> |
 
 ## <a name="linux"></a>Linux
 
@@ -62,7 +62,7 @@ ms.locfileid: "108140121"
 | 7.2 RTO-CU6 | 7.0 CU4 | 7.1 | バージョン 4.2 以前 | .NET Core 3.1、.NET Core 2.1 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 2021 年 11 月 30 日 |
 | 7.1 | 7.0 CU3 | 該当なし | バージョン 4.1 以前 | .NET Core 3.1、.NET Core 2.1 | [サポートされている OS バージョンを参照してください](#supported-linux-versions-and-support-end-date) | 2021 年 7 月 31 日 |
 
-** Service Fabric に .NET Core ランタイムは用意されていません。サービスの作成者は、それを<a href="/dotnet/core/deploying/">入手できる</a>ことを確認する責任があります。
+** Service Fabric に .NET Core ランタイムは用意されていません。サービスの作成者は、それを<a href="https://docs.microsoft.com/dotnet/core/deploying/">入手できる</a>ことを確認する責任があります。
 
 ## <a name="supported-linux-versions-and-support-end-date"></a>サポートされている Linux バージョンとサポート終了日
 特定の OS 上での Service Fabric のサポートは、その OS バージョンのサポート期間が終了した時点で終了します。

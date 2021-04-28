@@ -5,13 +5,13 @@ author: kromerm
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: makromer
-ms.date: 04/11/2021
-ms.openlocfilehash: 3e48eee5bf36732edc4f897103cb72bbbe75a5c3
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/16/2021
+ms.openlocfilehash: da8d193d140d96d9742666429ebc85672c71ad4e
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306315"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567266"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Azure Data Factory でのデータ フロー アクティビティ
 
@@ -125,7 +125,7 @@ Azure Synapse Analytics をシンクまたはソースとして使用する場�
 
 データ フロー アクティビティを使用してデバッグ パイプラインを実行するには、上部バーにある **[Data Flow Debug]\(データ フロー デバッグ\)** スライダーを使用して、データ フロー デバッグ モードをオンに切り替える必要があります。 デバッグ モードでは、アクティブな Spark クラスターに対してデータ フローを実行できます。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
 
-![デバッグ ボタン](media/data-flow/debugbutton.png "デバッグ ボタン")
+![[デバッグ] ボタンの場所を示すスクリーンショット](media/data-flow/debug-button-3.png)
 
 デバッグ パイプラインは、データ フロー アクティビティ設定で指定された統合ランタイム環境ではなく、アクティブなデバッグ クラスターに対して実行されます。 デバッグ モードを開始するときに、デバッグ コンピューティング環境を選択できます。
 

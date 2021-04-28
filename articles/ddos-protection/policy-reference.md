@@ -8,16 +8,16 @@ ms.service: ddos-protection
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: yitoh
 ms.custom: subject-policy-reference
 ms.topic: include
-ms.openlocfilehash: 86fa383fe2456eabe0cce142bd4a9c665fb95a2a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 760d2898787628ce2abab576d49a5afc4308a6b6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505702"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147357"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-ddos-protection-standard"></a>Azure DDoS Protection Standard 用 Azure Policy 組み込みポリシー定義
 
@@ -29,7 +29,7 @@ ms.locfileid: "107505702"
 
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[仮想ネットワークを Azure DDoS Protection Standard によって保護する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d)|Azure DDoS Protection Standard を使用して、仮想ネットワークを帯域幅消費およびプロトコル攻撃から保護します。 詳細については、[https://aka.ms/ddosprotectiondocs](https://aka.ms/ddosprotectiondocs) を参照してください。|Modify、Audit、Disabled|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkDdosStandard_Audit.json)|
+|[仮想ネットワークを Azure DDoS Protection Standard によって保護する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d)|Azure DDoS Protection Standard を使用して、仮想ネットワークを帯域幅消費およびプロトコル攻撃から保護します。 詳細については、[https://aka.ms/ddosprotectiondocs](./ddos-protection-overview.md) を参照してください。|Modify、Audit、Disabled|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VirtualNetworkDdosStandard_Audit.json)|
 |[パブリック IP アドレスでは Azure DDoS Protection Standard のリソース ログが有効になっている必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F752154a7-1e0f-45c6-a880-ac75a7e4f648)|診断設定で、パブリック IP アドレスのリソース ログを Log Analytics ワークスペースにストリーム配信できるようになります。 通知、レポート、フロー ログを使用して、攻撃のトラフィックと DDoS 攻撃を軽減するために取られた処置に関する詳細を表示します。|AuditIfNotExists、DeployIfNotExists、Disabled|[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/PublicIpDdosLogging_Audit.json)|
 
 

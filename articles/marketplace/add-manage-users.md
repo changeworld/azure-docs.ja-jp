@@ -8,12 +8,12 @@ author: varsha-sarah
 ms.author: vavargh
 ms.custom: contperf-fy21q2
 ms.date: 04/07/2021
-ms.openlocfilehash: d5b9197bfd2526dd414406ebf1aca509d3b3fa91
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 108beee178cbf65bb4ba4f29479b335ab8d01a1e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107923"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141597"
 ---
 # <a name="add-and-manage-users-for-the-commercial-marketplace"></a>コマーシャル マーケットプレースのユーザーを追加して管理する
 
@@ -38,7 +38,7 @@ ms.locfileid: "107107923"
 
 ## <a name="create-new-users"></a>新しいユーザーを作成する
 
-新しいユーザー アカウントを作成する作業は、[グローバル管理者](/azure/active-directory/roles/permissions-reference)のアクセス許可があるアカウントで行う必要があります。
+新しいユーザー アカウントを作成する作業は、[グローバル管理者](../active-directory/roles/permissions-reference.md)のアクセス許可があるアカウントで行う必要があります。
 
 1. **[アカウント設定]** の **[ユーザー]** に移動し、 **[ユーザーの追加]** を選択した後、 **[新しいユーザーを作成する]** を選択します。
 1. 新しいユーザーごとに、名、姓、およびユーザー名を入力します。
@@ -52,7 +52,7 @@ ms.locfileid: "107107923"
 
 ## <a name="invite-new-users-by-email"></a>新しいユーザーをメールで招待する
 
-現在貴社の職場アカウント (Azure AD テナント) に属していないユーザーをメールで招待するには、[グローバル管理者](/azure/active-directory/roles/permissions-reference)のアクセス許可があるアカウントを持っている必要があります。
+現在貴社の職場アカウント (Azure AD テナント) に属していないユーザーをメールで招待するには、[グローバル管理者](../active-directory/roles/permissions-reference.md)のアクセス許可があるアカウントを持っている必要があります。
 
 1. **[アカウント設定]** の **[ユーザー]** に移動し、 **[ユーザーの追加]** を選択してから、 **[Invite users by email]\(ユーザーをメールで招待する\)** を選択します。
 1. 少なくとも 1 つのメール アドレス (最大 10 個) をコンマまたはセミコロンで区切って入力します。
@@ -63,7 +63,7 @@ ms.locfileid: "107107923"
 
 招待状を再送信する必要がある場合は、 *[ユーザー]* ページにアクセスして、ユーザーの一覧で招待を探し、そのメール アドレスまたは "*Invitation pending (承認待ちの招待)* " というテキストを選択します。 その後、ページ下部の **[Resend invitation]\(招待の再送信\)** を選択してください。
 
-組織で[ディレクトリ統合](https://docs.microsoft.com/previous-versions/azure/azure-services/jj573653(v=azure.100))を使用してオンプレミスのディレクトリ サービスを Azure AD と同期させている場合は、新しいユーザー、グループ、Azure AD アプリケーションをパートナー センターに作成することはできません。 それらを表示してパートナー センターに追加するためには、あなた (またはオンプレミス ディレクトリ内の別の管理者) がそれらを直接オンプレミス ディレクトリに作成する必要があります。
+組織で[ディレクトリ統合](/previous-versions/azure/azure-services/jj573653(v=azure.100))を使用してオンプレミスのディレクトリ サービスを Azure AD と同期させている場合は、新しいユーザー、グループ、Azure AD アプリケーションをパートナー センターに作成することはできません。 それらを表示してパートナー センターに追加するためには、あなた (またはオンプレミス ディレクトリ内の別の管理者) がそれらを直接オンプレミス ディレクトリに作成する必要があります。
 
 ## <a name="remove-a-user"></a>ユーザーの削除
 
@@ -71,7 +71,7 @@ ms.locfileid: "107107923"
 
 ## <a name="change-a-user-password"></a>ユーザーのパスワードを変更する
 
-ユーザー アカウントの作成時に *パスワード回復メール* を指定しておけば、そのユーザーが自身のパスワードを変更する必要がある場合に、自分でパスワードを変更することができます。 また、以下の手順でユーザーのパスワードを更新することもできます。 貴社の職場アカウント (Azure AD テナント) のユーザーのパスワードを変更するには、[グローバル管理者](/azure/active-directory/roles/permissions-reference)のアクセス許可があるアカウントにサインインする必要があります。 これを行うと、Azure AD テナントにおけるユーザーのパスワードが変更されると共に、パートナー センターへのアクセスに使用されるパスワードも変更されます。
+ユーザー アカウントの作成時に *パスワード回復メール* を指定しておけば、そのユーザーが自身のパスワードを変更する必要がある場合に、自分でパスワードを変更することができます。 また、以下の手順でユーザーのパスワードを更新することもできます。 貴社の職場アカウント (Azure AD テナント) のユーザーのパスワードを変更するには、[グローバル管理者](../active-directory/roles/permissions-reference.md)のアクセス許可があるアカウントにサインインする必要があります。 これを行うと、Azure AD テナントにおけるユーザーのパスワードが変更されると共に、パートナー センターへのアクセスに使用されるパスワードも変更されます。
 
 1. **[アカウント設定]** の **[ユーザー]** ページから、編集したいユーザー アカウントの名前を選択します。
 1. ページ下部の **[Reset password]\(パスワードのリセット\)** ボタンを選択します。

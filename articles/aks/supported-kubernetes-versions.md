@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 03/29/2021
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ba75e11a067a257c659f8c659f68bb2bba6fa2e0
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: a46d3e8362d48225e5fec11213bfbff370252d8e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012088"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782677"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -108,11 +108,12 @@ New Supported Version List
 
 新しい **マイナー** バージョンの Kubernetes の場合:
   * AKS では、新しいバージョンのリリース予定日と、その旧バージョンの非推奨予定日を含む事前通知を、削除日の 30 日前までに [AKS リリース ノート](https://aka.ms/aks/releasenotes)で公開します。
+  * 推奨されなくなった API が原因で、新しいバージョンによってクラスターで問題が発生した場合、AKS は、[Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) を使用してユーザーに警告します。 Azure Advisor は、現在サポートされていない場合にも、ユーザーに警告するために使用されます。
   * AKS によって、AKS とポータルのアクセス権を持つすべてのユーザーが使用できる[サービスの正常性通知](../service-health/service-health-overview.md)が発行され、サブスクリプション管理者宛にバージョンの削除予定日が記載されたメールが送信されます。
 
-    ````
-    To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
-    ````
+    > [!NOTE]
+    > サブスクリプション管理者を見つけるか、サブスクリプションを変更するには、[Azure サブスクリプションの管理](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator)に関するページを参照してください。
+    
   * 今後もサポートを受けるには、ユーザーは、バージョンの削除から **30 日** 以内にサポートされるマイナー バージョンのリリースにアップグレードする必要があります。
 
 新しい **パッチ** バージョンの Kubernetes の場合:
@@ -142,16 +143,18 @@ az aks get-versions --location eastus --output table
 
 |  K8s バージョン | アップストリームのリリース  | AKS プレビュー  | AKS GA  | サポート終了 |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.17  | 2019 年 12 月 9 日  | 2019 年 1 月   | 2020 年 7 月  | 1.20 GA | 
 | 1.18  | 2020 年 3 月 23 日  | 2020 年 5 月   | 2020 年 8 月  | 1.21 GA | 
 | 1.19  | 2020 年 8 月 4 日  | 2020 年 9 月   | 2020 年 11 月  | 1.22 GA | 
 | 1.20  | 2020 年 12 月 8 日  | 2021 年 1 月   | 2021 年 3 月  | 1.23 GA |
-| 1.21  | 2021 年 4 月 8 日* | 2021 年 5 月   | 2021 年 6 月  | 1.24 GA |
+| 1.21  | 2021 年 4 月 8 日 | 2021 年 5 月   | 2021 年 6 月  | 1.24 GA |
 
-\* Kubernetes 1.21 アップストリーム リリースは、アップストリーム カレンダーがまだ確定していないため、変更される可能性があります。
 
 
 ## <a name="faq"></a>よく寄せられる質問
+
+**Kubernetes の新バージョンについては、Microsoft からどのように通知されますか?**
+
+AKS チームは、Kubernetes の新バージョンの予定日の事前発表を、ドキュメントや [GitHub](https://github.com/Azure/AKS/releases) で公開します。また、サポート対象外となるクラスターを所有するサブスクリプション管理者に電子メールで通知します。  AKS は、発表に加えて、[Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-overview) を使用して、Azure Portal 内で顧客に通知し、サポート対象外となるユーザーに警告します。また、アプリケーションや開発プロセスに影響する API が推奨されなくなることも警告します。 
 
 **サポートを利用し続けるには、どのくらいの頻度で Kubernetes のバージョンをアップグレードする必要がありますか?**
 
@@ -219,5 +222,5 @@ AKS でサポートされていないマイナー バージョンについては
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
-[az-aks-get-versions]: /cli/azure/aks#az-aks-get-versions
+[az-aks-get-versions]: /cli/azure/aks#az_aks_get_versions
 [preview-terms]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

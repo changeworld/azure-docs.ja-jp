@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 12/15/2020
 ms.author: rolyon
-ms.openlocfilehash: 79aaeee942a6d46243ee1c72d5904484b8698ebe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9779c2a269902d856d1639ce78028d0e658656bb
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97617325"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479833"
 ---
 # <a name="azure-custom-roles"></a>Azure カスタム ロール
 
@@ -23,7 +23,7 @@ ms.locfileid: "97617325"
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 組み込みロールと同様に、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、管理グループ、サブスクリプション、およびリソース グループのスコープで割り当てることができます。
+[Azure の組み込みロール](built-in-roles.md)が組織の特定のニーズを満たさない場合は、独自のカスタム ロールを作成することができます。 組み込みロールと同様に、カスタム ロールは、ユーザー、グループ、サービス プリンシパルに対して、管理グループ (プレビューのみ)、サブスクリプション、およびリソース グループのスコープで割り当てることができます。
 
 カスタム ロールは、同じ Azure AD ディレクトリを信頼するサブスクリプション間で共有できます。 カスタム ロールの数は、ディレクトリあたり **5,000** 個という制限があります (Azure Germany と Azure China 21Vianet の場合、制限は 2,000 カスタム ロールです)。カスタム ロールは、Azure portal、Azure PowerShell、Azure CLI、または REST API を使用して作成できます。
 

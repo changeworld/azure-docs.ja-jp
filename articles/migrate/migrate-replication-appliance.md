@@ -1,17 +1,17 @@
 ---
 title: Azure Migrate レプリケーション アプライアンス
-description: エージェントベースの VMWare の移行のための Azure Migrate レプリケーション アプライアンスについて説明します。
+description: エージェントベースの VMware の移行のための Azure Migrate レプリケーション アプライアンスについて説明します。
 author: anvar-ms
 ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 01/30/2020
-ms.openlocfilehash: ec277bcc3e361561f54e72c54526d65487c113b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5f63b033c3995932662fc9b68c1397bf57b0326e
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96754098"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714976"
 ---
 # <a name="replication-appliance"></a>レプリケーション アプライアンス
 
@@ -75,7 +75,7 @@ MySQL は、レプリケーション アプライアンス マシンにインス
 **方法** | **詳細**
 --- | ---
 手動でダウンロードしてインストールする | MySQL アプリケーションをダウンロードし、C:\Temp\ASRSetup フォルダー内に配置してから手動でインストールします。<br/> アプライアンスを設定すると、MySQL が既にインストールされているものとして表示されます。
-オンライン ダウンロードなし | MySQL インストーラー アプリケーションを C:\Temp\ASRSetup フォルダーに配置します。 アプライアンスをインストールし、MySQL をダウンロードおよびインストールするようクリックすると、追加したインストーラーが設定で使用されます。
+オンライン ダウンロードなし | MySQL インストーラー アプリケーションを C:\Temp\ASRSetup フォルダーに配置します。 アプライアンスをインストールし、MySQL をダウンロードおよびインストールするよう選択すると、追加したインストーラーが設定で使用されます。
 Azure Migrate でダウンロードしてインストールする | アプライアンスをインストールし、MySQL を求められたら、 **[ダウンロードしてインストール]** を選択します。
 
 ## <a name="url-access"></a>URL アクセス
@@ -89,7 +89,7 @@ Azure Migrate でダウンロードしてインストールする | アプライ
 \*.blob.core.windows.net | レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用
 \*.hypervrecoverymanager.windowsazure.com | レプリケーション管理操作と調整に使用
 https:\//management.azure.com | レプリケーション管理操作と調整に使用
-*.services.visualstudio.com | テレメトリの目的で使用 (省略可能)
+*.services.visualstudio.com | ログ記録の目的で使用されます (省略可能)
 time.windows.com | システム時刻とグローバル時刻間の時刻同期の確認に使用。
 https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | アプライアンス設定では、次の URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
 https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL のダウンロードを完了するためのものです。 いくつかのリージョンでは、ダウンロードが CDN URL にリダイレクトされる可能性があります。 必要に応じて、CDN URL も確実に許可されているようにしてください。
@@ -106,10 +106,17 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 \*.blob.core.windows.net | レプリケートされたデータを格納するストレージ アカウントへのアクセスに使用
 \*.hypervrecoverymanager.windowsazure.us | レプリケーション管理操作と調整に使用
 https:\//management.usgovcloudapi.net | レプリケーション管理操作と調整に使用
-*.services.visualstudio.com | テレメトリの目的で使用 (省略可能)
+*.services.visualstudio.com | ログ記録の目的で使用されます (省略可能)
 time.nist.gov | システム時刻とグローバル時刻間の時刻同期の確認に使用。
 https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | OVA を利用するアプライアンス設定は、次の URL にアクセスできる必要があります。 Azure Active Directory によるアクセス制御と ID 管理に使用されます。
-https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL のダウンロードを完了するためのものです。 いくつかのリージョンでは、ダウンロードが CDN URL にリダイレクトされる可能性があります。 必要に応じて、CDN URL も確実に許可されているようにしてください。
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | MySQL のダウンロードを完了するためのものです。 いくつかのリージョンでは、ダウンロードが CDN URL にリダイレクトされる可能性があります。 必要に応じて、CDN URL も確実に許可されているようにしてください。  
+
+>[!Note]
+>
+> 移行プロジェクトにプライベート エンドポイント接続がある場合は、プライベート リンク アクセスに加えて次の URL へのアクセス権が必要です。   
+> - *.blob.core.windows.com - レプリケートされたデータを格納するストレージ アカウントにアクセスするため。 これは省略可能であり、ストレージ アカウントにプライベート エンドポイントがアタッチされている場合は必要ありません。 
+> - https:\//management.azure.com (レプリケーション管理操作と調整に使用) 
+>- https:\//login.microsoftonline.com <br/>https:\//login.windows.net <br/> https:\//www.live.com _および_ <br/> https:\//www.microsoft.com (Azure Active Directory によるアクセス制御と ID 管理用)
 
 ## <a name="port-access"></a>ポート アクセス
 
@@ -138,7 +145,7 @@ VM | VM 上で実行される Mobility Service は、レプリケーション管
 
 アプライアンスは、Azure Migrate ハブから手動でアップグレードされます。 常に最新バージョンを実行することをお勧めします。
 
-1. [Azure Migrate] > [サーバー] > [Azure Migrate:Server Assessment]、[インフラストラクチャ サーバー] で、 **[構成サーバー]** をクリックします。
+1. [Azure Migrate] &gt; [サーバー] &gt; [Azure Migrate:Server Assessment]、[インフラストラクチャ サーバー] で、 **[構成サーバー]** を選択します。
 2. **[構成サーバー]** では、新しいバージョンのレプリケーション アプライアンスが使用可能な場合に、 **[エージェントのバージョン]** にリンクが表示されます。 
 3. インストーラーをレプリケーション アプライアンス マシンにダウンロードし、アップグレードをインストールします。 インストーラーによって、アプライアンス上で現在実行中のバージョンが検出されます。
  

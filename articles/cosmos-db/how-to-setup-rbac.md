@@ -4,14 +4,14 @@ description: Azure Active Directory を使用して Azure Cosmos DB アカウン
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: 1a6bdf55e52a7060423d2a016f07eee3608f50d4
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 209d18dfbadea89f14fd90da9a1bc57b3ccf0dfe
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063476"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728076"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Azure Active Directory を使用して Azure Cosmos DB アカウントのロールベースのアクセス制御を構成する (プレビュー)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -45,6 +45,16 @@ Azure Cosmos DB データ プレーン RBAC は、[Azure RBAC](../role-based-acc
 
 ## <a name="permission-model"></a><a id="permission-model"></a> 権限モデル
 
+> [!IMPORTANT]
+> このアクセス許可モデルでは、データの読み取りと書き込みを行うことができるデータベース操作のみが対象になります。 コンテナーの作成やスループットの変更などの管理操作は、いかなるものも対象に **なりません**。 つまり、AAD ID で管理操作を認証するために、**Azure Cosmos DB データ プレーン SDK を使用することはできません**。 代わりに、次の方法で [Azure RBAC](role-based-access-control.md) を使用する必要があります。
+> - [ARM テンプレート](manage-with-templates.md)
+> - [Azure PowerShell スクリプト](manage-with-powershell.md)、
+> - [Azure CLI スクリプト](manage-with-cli.md)、
+> - 次で利用可能な Azure 管理ライブラリ
+>   - [.NET](https://www.nuget.org/packages/Azure.ResourceManager.CosmosDB)
+>   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
+>   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
+
 次の表では、アクセス許可モデルによって公開されるすべてのアクションを示します。
 
 | 名前 | 対応するデータベース操作 |
@@ -64,9 +74,6 @@ Azure Cosmos DB データ プレーン RBAC は、[Azure RBAC](../role-based-acc
 
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/*`
 - `Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/items/*`
-
-> [!IMPORTANT]
-> このアクセス許可モデルでは、データの読み取りと書き込みを行うことができるデータベース操作のみが対象になります。 コンテナーの作成やスループットの変更などの管理操作は、いかなるものも対象に **なりません**。 AAD ID で管理操作を認証するには、代わりに [Azure RBAC](role-based-access-control.md) を使用します。
 
 ### <a name="metadata-requests"></a><a id="metadata-requests"></a> メタデータの要求数
 

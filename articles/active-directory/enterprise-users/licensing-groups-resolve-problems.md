@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 12/02/2020
+ms.date: 04/21/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ceea2dbcf408b6b35ef7c26580278d3979244119
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b35706c48ff78e81ef339ee838cc4259090e56c
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551540"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987634"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -104,7 +104,7 @@ Exchange Online を使用する場合は、組織内の一部のユーザーが�
 > [!TIP]
 > 重複したプロキシ アドレスの有無を確認するには、次の PowerShell コマンドレットを Exchange Online に対して実行します。
 > ```
-> Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+> Get-Recipient -Filter "EmailAddresses -eq 'user@contoso.onmicrosoft.com'" | fl Name, RecipientType,Emailaddresses
 > ```
 > この問題の詳細については、「[Exchange Online のエラー メッセージ: "プロキシ アドレス <アドレス> は既に使用されています"](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)」を参照してください。 この記事では、[リモート PowerShell を使用して Exchange Online に接続する方法](/powershell/exchange/connect-to-exchange-online-powershell)に関する情報も確認できます。
 

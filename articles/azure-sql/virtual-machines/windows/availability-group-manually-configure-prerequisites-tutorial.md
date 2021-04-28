@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4c64a4e06ed452c895c1bc2cf20adc2d9c0060c3
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1f7d73a6553d8baed86c87da0c4e7a5b036e99f7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219265"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134323"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>チュートリアル:Azure Virtual Machines 上の SQL Server に可用性グループを作成するための前提条件
 
@@ -374,7 +374,7 @@ Active Directory オブジェクトとユーザー オブジェクトの構成�
 <br/>
 
 > [!NOTE]
-> また、ここで示されるマシンのサイズは、Azure Virtual Machines での可用性グループのテストに対応しています。 運用時のワークロードに対して最適なパフォーマンスを得る方法については、「[Azure Virtual Machines における SQL Server のパフォーマンスのベスト プラクティス](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の SQL Server マシンのサイズと構成に関する推奨事項を参照してください。
+> また、ここで示されるマシンのサイズは、Azure Virtual Machines での可用性グループのテストに対応しています。 運用時のワークロードに対して最適なパフォーマンスを得る方法については、「[Azure Virtual Machines における SQL Server のパフォーマンスのベスト プラクティス](./performance-guidelines-best-practices-checklist.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」の SQL Server マシンのサイズと構成に関する推奨事項を参照してください。
 >
 
 3 つの VM が完全にプロビジョニングされたら、**corp.contoso.com** ドメインに参加させて、CORP\Install 管理者権限を付与する必要があります。

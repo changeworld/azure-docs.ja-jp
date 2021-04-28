@@ -3,12 +3,12 @@ title: 機能の概要 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs の機能と用語に関する詳細を示します。
 ms.topic: article
 ms.date: 03/15/2021
-ms.openlocfilehash: 8ec4b7cdd13c3407747261ef54cb6b1fc58fdb69
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 4fdcee27cd414069572e996f31de37d1ae641d13
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310082"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988444"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Azure Event Hubs の機能と用語
 
@@ -149,7 +149,7 @@ Azure SDK によって提供される一部のクライアントはインテリ�
 パーティションに接続する場合は、特定のパーティションへのリーダーの接続を調整するためにリース メカニズムを使用するのが一般的です。 このため、コンシューマー グループ内のどのパーティションもアクティブなリーダーが 1 つだけである可能性があります。 チェックポイント処理、リース、およびリーダーの管理は、インテリジェントなコンシューマー エージェントとして機能する Event Hubs SDK 内のクライアントを使用して簡略化されます。 次のとおりです。
 
 - .NET 用 [EventProcessorClient](/dotnet/api/azure.messaging.eventhubs.eventprocessorclient)
-- Java 用 [EventProcessorClient](/java/api/com.azure.messaging.eventhubs.eventprocessorclient)
+- Java 用 [EventProcessorClient](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/main/java/com/azure/messaging/eventhubs/EventProcessorClient.java)
 - Python 用 [EventHubConsumerClient](/python/api/azure-eventhub/azure.eventhub.aio.eventhubconsumerclient)
 - JavaScript/TypeScript 用 [EventHubConsumerClient](/javascript/api/@azure/event-hubs/eventhubconsumerclient)
 

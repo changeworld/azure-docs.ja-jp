@@ -3,19 +3,16 @@ title: Service Fabric 管理対象クラスター (プレビュー) ノードの
 description: ARM テンプレートを使用して、Windows の Azure Service Fabric 管理対象クラスター ノードのディスク暗号化を有効にする方法について説明します。
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.openlocfilehash: b7e56ff8db9f94b8c6681a1a7d69a4751b3f43a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa6388d9d165cd149faae3c19b81320198fd0b02
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100641020"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127283"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-managed-cluster-preview-nodes"></a>Service Fabric 管理対象クラスター (プレビュー) ノードのディスク暗号化を有効にする
 
 このガイドでは、Azure Resource Manager (ARM) テンプレートを使用し、[仮想マシン スケール セット](../virtual-machine-scale-sets/disk-encryption-azure-resource-manager.md)用の [Azure Disk Encryption](../virtual-machines/windows/disk-encryption-overview.md) 機能を使用して、Windows の Service Fabric 管理対象クラスター ノードでディスク暗号化を有効にする方法について説明します。
-
-> [!IMPORTANT]
-> 仮想マシン スケール セットのディスク暗号化プレビューでは、まだイメージのアップグレードや再イメージ化はサポートされていません。 OS イメージをアップグレードする必要がある場合は使用しないでください。
 
 ## <a name="register-for-azure-disk-encryption"></a>Azure Disk Encryption での登録
 
@@ -118,7 +115,7 @@ az keyvault update --name keyvaultName --enabled-for-disk-encryption
             "properties": { 
                 "publisher": "Microsoft.Azure.Security", 
                 "type": "AzureDiskEncryption", 
-                "typeHandlerVersion": "2.1", 
+                "typeHandlerVersion": "2.2", 
                 "autoUpgradeMinorVersion": true, 
                 "settings": {                     
                     "EncryptionOperation": "EnableEncryption", 

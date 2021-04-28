@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 774344c4215088482b110de91f8951bae4a41d25
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 5abbd1ed5c33d0ec0957d34dd8d78a958208e8f6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365826"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142875"
 ---
 # <a name="high-availability-of-sap-hana-scale-up-with-azure-netapp-files-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux で Azure NetApp Files を使用した SAP HANA スケールアップの高可用性
 
@@ -668,7 +668,7 @@ SAP HANA システム レプリケーション フックの実装の詳細につ
 
 SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーションでアクティブ/読み取り可能のセットアップを使用できます。この場合、読み取り処理の多いワークロードに対して SAP HANA システム レプリケーションのセカンダリ システムを積極的に活用できます。 クラスターでこのような設定をサポートするには、2 番目の仮想 IP アドレスが必要です。これにより、セカンダリ読み取りが有効な SAP HANA データベースにクライアントからアクセスできます。 引き継ぎの実行後もセカンダリ レプリケーション サイトにアクセスできるようにするには、SAPHana リソースのセカンダリを使用して、クラスターで仮想 IP アドレスを移動する必要があります。
 
-2 番目の仮想 IP を使用して、HANA アクティブ/読み取りが有効なシステム レプリケーションを Red Hat 高可用性クラスターで管理するために必要な追加の構成については、「[Pacemaker クラスターで HANA アクティブ/読み取りが有効になっているシステム レプリケーションを構成する](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster)」を参照してください。  
+2 番目の仮想 IP を使用して、HANA アクティブ/読み取りが有効なシステム レプリケーションを Red Hat 高可用性クラスターで管理するために必要な追加の構成については、「[Pacemaker クラスターで HANA アクティブ/読み取りが有効になっているシステム レプリケーションを構成する](./sap-hana-high-availability-rhel.md#configure-hana-activeread-enabled-system-replication-in-pacemaker-cluster)」を参照してください。  
 
 先に進む前に、上記のドキュメントのセグメントで説明したように、SAP HANA データベースを管理する Red Hat 高可用性クラスターが完全に構成されていることを確認してください。    
 

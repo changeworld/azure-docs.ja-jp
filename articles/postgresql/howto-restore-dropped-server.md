@@ -5,13 +5,13 @@ author: Bashar-MSFT
 ms.author: bahusse
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/03/2020
-ms.openlocfilehash: 5b5bb9fd6e3d34fc4a6b0ae90a2cd76fc84e9ce1
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.date: 04/26/2021
+ms.openlocfilehash: 0cfbf6fa6a329e2038120703e6fe29fca23bfa06
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366523"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018034"
 ---
 # <a name="restore-a-dropped-azure-database-for-postgresql-server"></a>ドロップした Azure Database for PostgreSQL サーバーを復元する
 
@@ -37,13 +37,13 @@ ms.locfileid: "107366523"
 3. **PostgreSQL サーバーの削除** イベントを選択し、 **[JSON] タブ** を選択します。JSON 出力の `resourceId` 属性と `submissionTimestamp` 属性をコピーします。 resourceId の形式は次のとおりです: `/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/TargetResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/deletedserver`。
 
 
- 4. PostgreSQL の [[Create Server REST API]\(サーバー REST API の作成\) ページ](/rest/api/PostgreSQL/servers/create)を参照し、緑色で強調表示されている **[試してみる]** タブを選択します。 Azure のアカウントを使用してサインインします。
+ 1. PostgreSQL の [[Create Server REST API]\(サーバー REST API の作成\) ページ](https://docs.microsoft.com/rest/api/postgresql/singleserver/servers/create)を参照し、緑色で強調表示されている **[試してみる]** タブを選択します。 Azure のアカウントを使用してサインインします。
 
- 5. 前の手順 3 でキャプチャした resourceId 属性の JSON 値に基づいて、**resourceGroupName**、**serverName** (削除されたサーバー名)、**subscriptionId** の各プロパティを指定します。 次の図に示すように、api-version プロパティはあらかじめ設定されており、そのまま残すことができます。
+ 2. 前の手順 3 でキャプチャした resourceId 属性の JSON 値に基づいて、**resourceGroupName**、**serverName** (削除されたサーバー名)、**subscriptionId** の各プロパティを指定します。 次の図に示すように、api-version プロパティはあらかじめ設定されており、そのまま残すことができます。
 
     ![REST API を使用したサーバーの作成](./media/howto-restore-dropped-server/create-server-from-rest-api-azure.png)
   
- 6. 要求本文セクションで下にスクロールし、"Dropped server Location" (CentralUS、EastUS など)、"submissionTimestamp"、"resourceId" を置き換えて次のように貼り付けます。 restorePointInTime については、コマンドがエラーにならないように、submissionTimestamp の値から **15 分** だけ引いた値を指定します。
+ 3. 要求本文セクションで下にスクロールし、"Dropped server Location" (CentralUS、EastUS など)、"submissionTimestamp"、"resourceId" を置き換えて次のように貼り付けます。 restorePointInTime については、コマンドがエラーにならないように、submissionTimestamp の値から **15 分** だけ引いた値を指定します。
     
     ```json
     {
@@ -62,7 +62,7 @@ ms.locfileid: "107366523"
     > [!Important]
     > サーバーがドロップされてから 5 日間の時間制限があります。 5 日が経過すると、バックアップ ファイルが見つからないため、エラーが発生します。
     
-7. 応答コード 201 または 202 が表示された場合は、復元要求が正常に送信されています。 
+4. 応答コード 201 または 202 が表示された場合は、復元要求が正常に送信されています。 
 
     サーバーの作成には、元のサーバーでプロビジョニングされたデータベースのサイズとコンピューティング リソースによって時間がかかることがあります。 復元の状態は、次をフィルター処理することによって、アクティビティ ログから監視できます。 
    - **サブスクリプション** = 自分のサブスクリプション

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c27895c5163d59ca785aa15fa3739359e5be457
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd70bccde30c2b844cfa6188a3fb06a075558a91
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666603"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143001"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -290,9 +290,9 @@ SAP HANA のスケール アウトの場合と同様に、SAP HANA VM と DT 2.0
 ### <a name="back-up-and-restore-operations-on-azure-vms"></a>Azure VM でのバックアップおよび復元操作
 次のドキュメントで、SAP HANA デプロイをバックアップおよび復元する方法を説明しています。
 
-- [SAP HANA のバックアップの概要](./sap-hana-backup-guide.md)
-- [SAP HANA のファイルレベルのバックアップ](./sap-hana-backup-file-level.md)
-- [SAP HANA のストレージ スナップショットのベンチマーク](./sap-hana-backup-guide.md)
+- [SAP HANA のバックアップの概要](../../../backup/sap-hana-db-about.md)
+- [SAP HANA のファイルレベルのバックアップ](../../../backup/sap-hana-db-about.md)
+- [SAP HANA のストレージ スナップショットのベンチマーク](../../../backup/sap-hana-db-about.md)
 
 
 ### <a name="start-and-restart-vms-that-contain-sap-hana"></a>SAP HANA を含む VM の起動および再起動

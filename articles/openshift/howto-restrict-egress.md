@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: azure-redhat-openshift
 ms.topic: article
 ms.date: 04/09/2021
-ms.openlocfilehash: 24c4686306aff9d84fe7bf74ddfdccff987244d9
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: c15e7261587952c93d059cfcfadd06c7d204d80d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107368514"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135675"
 ---
 # <a name="control-egress-traffic-for-your-azure-red-hat-openshift-aro-cluster-preview"></a>Azure Red Hat OpenShift (ARO) クラスターのエグレス トラフィックを制御する (プレビュー)
 
@@ -19,7 +19,7 @@ ms.locfileid: "107368514"
 
 ## <a name="before-you-begin"></a>始める前に
 
-この記事では、新しいクラスターを作成することを想定しています。 基本的な ARO クラスターが必要な場合は、[ARO クイックスタート](https://docs.microsoft.com/azure/openshift/tutorial-create-cluster)に関する記事を参照してください。
+この記事では、新しいクラスターを作成することを想定しています。 基本的な ARO クラスターが必要な場合は、[ARO クイックスタート](./tutorial-create-cluster.md)に関する記事を参照してください。
 
 > [!IMPORTANT]
 > ARO のプレビュー機能は、セルフサービスのオプトイン単位で利用できます。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル アグリーメントおよび限定保証から除外されるものとします。 ARO プレビューは、ベストエフォート ベースでカスタマー サポートによって部分的にカバーされます。
@@ -99,7 +99,7 @@ OpenShift Container Platform では、顧客はレポートの正常性と使用
 
 ### <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
 
-Azure Monitor for containers へのアクセスを提供するには 2 つのオプションがあります。Azure Monitor の [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) を許可するか、**または**、必要な FQDN とアプリケーションの規則へのアクセスを提供することができます。  既存の ARO クラスターに Azure Monitor を追加する方法については、こちらの[手順](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-azure-redhat4-setup) 参照してください。
+Azure Monitor for containers へのアクセスを提供するには 2 つのオプションがあります。Azure Monitor の [ServiceTag](../virtual-network/service-tags-overview.md#available-service-tags) を許可するか、**または**、必要な FQDN とアプリケーションの規則へのアクセスを提供することができます。  既存の ARO クラスターに Azure Monitor を追加する方法については、こちらの[手順](../azure-monitor/containers/container-insights-azure-redhat4-setup.md) 参照してください。
 
 #### <a name="required-network-rules"></a>必要なネットワーク規則
 

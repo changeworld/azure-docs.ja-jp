@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 01/28/2021
 ms.author: victorh
-ms.openlocfilehash: c976ea236ae1d37cc0a543b10a9de55609035632
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa7123a1c4dea5fcede3e94250576f6677671176
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98986754"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872247"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して TLS ターミネーションでアプリケーション ゲートウェイを構成する
 
@@ -36,7 +36,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-a-self-signed-certificate"></a>自己署名証明書の作成
 
-このセクションでは、[New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) を使用して、自己署名証明書を作成します。 アプリケーション ゲートウェイのリスナーを作成するときに、証明書を Azure portal にアップロードします。
+このセクションでは、[New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) を使用して、自己署名証明書を作成します。 アプリケーション ゲートウェイのリスナーを作成するときに、証明書を Azure portal にアップロードします。
 
 ローカル コンピューターでは、管理者として Windows PowerShell ウィンドウを開きます。 次のコマンドを実行して、証明書を作成します。
 
@@ -56,7 +56,7 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-[Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートします。 パスワードの長さが 4 - 12 文字であることを確認してください。
+[Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate) と返されたサムプリントを使用して、pfx ファイルを証明書からエクスポートします。 パスワードの長さが 4 - 12 文字であることを確認してください。
 
 
 ```powershell

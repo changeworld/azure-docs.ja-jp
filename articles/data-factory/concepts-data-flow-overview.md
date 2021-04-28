@@ -3,17 +3,16 @@ title: データ フローのマッピング
 description: Azure Data Factory のマッピング データ フローの概要
 author: kromerm
 ms.author: makromer
-ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: references_regions
-ms.date: 04/11/2021
-ms.openlocfilehash: 53f300adb57eb17e704e7e3323b9829c485bb87a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/14/2021
+ms.openlocfilehash: 826183e09f2aa7f3f22ace8b5ce3e16767d49863
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308984"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515662"
 ---
 # <a name="mapping-data-flows-in-azure-data-factory"></a>Azure Data Factory のマッピング データ フロー
 
@@ -83,6 +82,10 @@ ms.locfileid: "107308984"
 
 使用可能な変換の一覧を取得するには、「[マッピング データ フロー変換の概要](data-flow-transformation-overview.md)」を表示してださい。
 
+## <a name="data-flow-data-types"></a>データ フローのデータ型
+
+array binary boolean complex decimal date float integer long map short string timestamp
+
 ## <a name="data-flow-activity"></a>データ フロー アクティビティ
 
 マッピング データ フローは、ADF パイプライン内で[データ フロー アクティビティ](control-flow-execute-data-flow-activity.md)を使用して運用可能にすることができます。 ユーザーが行う必要があるのは、使用する統合ランタイムを指定し、パラメーター値を渡すことだけです。 詳細については、「[Azure 統合ランタイム](concepts-integration-runtime.md#azure-integration-runtime)」を参照してください。
@@ -96,6 +99,67 @@ ms.locfileid: "107308984"
 マッピング データ フローは、既存の Azure Data Factory 監視機能と統合されます。 データ フローの監視出力を理解する方法については、[マッピング データ フローの監視](concepts-data-flow-monitoring.md)に関するページを参照してください。
 
 ビジネス ロジックを構築した後のデータ フローの実行時間を最適化するのに役立つ、[パフォーマンス チューニング ガイド](concepts-data-flow-performance.md)が、Azure Data Factory チームによって作成されています。
+
+
+## <a name="available-regions"></a>対応リージョン
+
+マッピング データ フローは、次のリージョンの ADF で利用できます。
+
+| Azure リージョン | ADF のデータ フロー |
+| ------------ | ----------------- |
+| オーストラリア中部 | |
+| オーストラリア中部 2 | |
+| オーストラリア東部 | ✓ |
+| オーストラリア南東部   | ✓ |
+| ブラジル南部  | ✓ |
+| カナダ中部 | ✓ |
+| インド中部 | ✓ |
+| 米国中部    | ✓ |
+| 中国東部 |      |
+| 中国東部 2  |   |
+| 中国非リージョン | |
+| 中国北部 | ✓ |
+| 中国北部 2 | ✓ |
+| 東アジア | ✓ |
+| 米国東部   | ✓ |
+| 米国東部 2 | ✓ |
+| フランス中部 | ✓ |
+| フランス南部  | |
+| ドイツ中部 (ソブリン) | |
+| ドイツ非リージョン (ソブリン) | |
+| ドイツ北部 (パブリック) | |
+| ドイツ北東部 (ソブリン) | |
+| ドイツ中西部 (パブリック) |  |
+| 東日本 | ✓ |
+| 西日本 |  |
+| 韓国中部 | ✓ |
+| 韓国南部 | |
+| 米国中北部  | ✓ |
+| 北ヨーロッパ  | ✓ |
+| ノルウェー東部 | ✓ |
+| ノルウェー西部 | |
+| 南アフリカ北部    | ✓ |
+| 南アフリカ西部 |  |
+| 米国中南部  | |
+| インド南部 | |
+| 東南アジア    | ✓ |
+| スイス北部 |   |
+| スイス西部 | |
+| アラブ首長国連邦中部 | |
+| アラブ首長国連邦北部 | ✓ |
+| 英国南部  | ✓ |
+| 英国西部 |     |
+| US DoD Central | |
+| US DoD East | |
+| US Gov アリゾナ | ✓ |
+| US Gov 非リージョン | |
+| US Gov テキサス | |
+| US Gov バージニア州 | ✓ |
+| 米国中西部 |     |
+| 西ヨーロッパ   | ✓ |
+| インド西部 | |
+| 米国西部   | ✓ |
+| 米国西部 2 | ✓ |
 
 ## <a name="next-steps"></a>次のステップ
 

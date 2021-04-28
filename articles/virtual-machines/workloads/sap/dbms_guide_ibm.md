@@ -10,15 +10,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/20/2020
+ms.date: 04/20/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f89f218c82505fd6bc261d41938d4619b32bf8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1e9030558779be3e417383f9f32612ee3e834a1c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101675974"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788081"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための IBM Db2 Azure Virtual Machines DBMS のデプロイ
 
@@ -27,7 +27,7 @@ IBM Db2 for LUW での SAP Business Suite の実行に関する一般的な情�
 
 Azure での SAP on Db2 for LUW に関するその他の情報および更新については、SAP Note [2233094] を参照してください。 
 
-Azure 上の SAP ワークロードに関するさまざまな記事が公開されています。  [Azure での SAP ワークロード作業の開始](./get-started.md)に関する記事の関心のある分野を選択することをお勧めします。
+Azure 上の SAP ワークロードに関するさまざまな記事が公開されています。  まず [Azure での SAP ワークロード作業の開始](./get-started.md)に関する記事を参照して、関心のある分野を選択することをお勧めします
 
 次の SAP Note は、このドキュメントで扱う領域に関する SAP on Azure に関連します。
 
@@ -55,7 +55,7 @@ Microsoft Azure Virtual Machine サービスにおける SAP on IBM Db2 for LUW 
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Azure VM で SAP をインストールするための IBM Db2 for Linux, UNIX, and Windows 構成ガイドライン
 ### <a name="storage-configuration"></a>ストレージの構成
-SAP ワークロード用の Azure Storage の種類の概要については、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を参照してください。すべてのデータベース ファイルは、Azure ブロック ストレージのマウントされたディスクに保存する必要があります (Windows: NFFS、Linux: xfs、ext4 または ext3)。 あらゆる種類のネットワーク ドライブまたは次の Azure サービスのようなリモート共有は、データベース ファイルに対してサポートされて **いません**。 
+SAP ワークロード用の Azure Storage の種類の概要については、「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」を参照してください。すべてのデータベース ファイルは、Azure ブロック ストレージのマウントされたディスクに保存する必要があります (Windows: NTFS、Linux: xfs、または ext3)。 あらゆる種類のネットワーク ドライブまたは次の Azure サービスのようなリモート共有は、データベース ファイルに対してサポートされて **いません**。 
 
 * [Microsoft Azure File Service](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
@@ -71,17 +71,20 @@ SAP ワークロード用の Azure Storage の種類の概要については、�
 
 または、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」に記載されているように、Windows 記憶域プール (Windows Server 2012 以降でのみ使用可能)、または Linux 上の LVM または mdadm を使用して、複数のディスクにまたがって 1 つの大きな論理デバイスを作成できます。
 
-<!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
-
-`sapdata` ディレクトリと `saptmp` ディレクトリの Db2 ストレージ パスを含むディスクについては、512 KB の物理ディスクのセクター サイズを指定する必要があります。 Windows 記憶域プールを使用する場合は、コマンド ライン インターフェイスで `-LogicalSectorSizeDefault` パラメーターを使用して、手動で記憶域プールを作成する必要があります。 詳細については、<https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> を参照してください。
+<!-- log_dir, sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
 Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、トランザクション ログへの書き込み待機時間を数分の 1 に短縮できます。 そのため、Db2 のトランザクション ログ用のボリュームを形成する VHD には Azure 書き込みアクセラレータをデプロイする必要があります。 詳細については、「[Azure 書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)」を参照してください。
+
+IBM Db2 LUW 11.5 では、4 KB のセクター サイズに対するサポートがリリースされました。 古い Db2 バージョンでは、512 バイトのセクター サイズを使用する必要があります。 Premium SSD ディスクは 4 KB ネイティブであり、512 バイト エミュレーションを備えています。 Ultra ディスクでは、既定で 4 KB のセクター サイズが使用されます。 Ultra ディスクの作成時に、512 バイトのセクター サイズを有効にすることができます。 詳細については、[Azure Ultra ディスクの使用](../../disks-enable-ultra-ssd.md#deploy-an-ultra-disk---512-byte-sector-size)に関する記事を参照してください。 この 512 バイトのセクター サイズは、11.5 より低い IBM Db2 LUW バージョンでの前提条件です。
+
+`log_dir`、`sapdata`、`saptmp` ディレクトリの Db2 ストレージ パスでストレージ プールを使用する Windows では、512 KB の物理ディスクのセクター サイズを指定する必要があります。 Windows 記憶域プールを使用する場合は、コマンド ライン インターフェイスで `-LogicalSectorSizeDefault` パラメーターを使用して、手動で記憶域プールを作成する必要があります。 詳細については、<https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool> を参照してください。
+
 
 ## <a name="recommendation-on-vm-and-disk-structure-for-ibm-db2-deployment"></a>IBM Db2 デプロイのための VM とディスク構造に関する推奨事項
 
 SAP NetWeaver Applications 用の IBM Db2 は、SAP サポート ノート [1928533] に記載されているすべての VM の種類でサポートされています。  IBM Db2 データベースを実行するために推奨される VM ファミリは、大規模なマルチテラバイト データベース向けの Esd_v4/Eas_v4/Es_v3 および M/M_v2 シリーズです。 M シリーズの書き込みアクセラレータを有効にすると、IBM Db2 のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 
 
-以下に、小さな規模から大きな規模までの、SAP on Db2 デプロイのさまざまなサイズと使用のベースライン構成を示します。 この一覧は Azure Premium Storage に基づいています。 ただし、Azure Ultra Disk は Db2 でも完全にサポートされており、同様に使用できます。 容量、バースト スループット、バースト IOPS を使用し、Ultra Disk の構成を定義するだけです。 /db2/<SID>/log_dir の IOPS を 5000 IOPS あたりで制限できます。 
+以下に、小さな規模から大きな規模までの、SAP on Db2 デプロイのさまざまなサイズと使用のベースライン構成を示します。 この一覧は Azure Premium Storage に基づいています。 ただし、Azure Ultra Disk は Db2 でも完全にサポートされており、同様に使用できます。 容量、バースト スループット、バースト IOPS を使用して、Ultra Disk の構成を定義します。 /db2/<SID>/log_dir の IOPS を 5000 IOPS あたりで制限できます。 
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>極小規模の SAP システム: データベース サイズ 50 - 200 GB: 例の Solution Manager
 | VM 名 / サイズ |Db2 マウント ポイント |Azure Premium ディスク |ディスクの NR |IOPS |スループット [MB/秒] |サイズ [GB] |バースト IOPS |バーストのしきい値 [GB] | ストライプ サイズ | キャッシュ |
@@ -234,13 +237,7 @@ IBM Database を使用した VM のデプロイについては、「[SAP ワー�
 
 - [SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)
 
-[azure-cli]:../../../cli-install-nodejs.md
-[azure-portal]:https://portal.azure.com
-[azure-ps]:/powershell/azure/
-[azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
-[azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
-[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
+
 
 [dbms-guide]:dbms-guide.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 

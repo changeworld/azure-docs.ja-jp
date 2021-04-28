@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/04/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 00ae761af44b9e6537149c96607c0ba00e6439c8
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 183b956c0ec38101f7875fe01dd7c6ef9c8c8c8f
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514987"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107891682"
 ---
 # <a name="required-url-list"></a>必要な URL リスト
 
@@ -29,7 +29,7 @@ Windows Virtual Desktop をデプロイし、使用するには、仮想マシ�
 - 必要な URL チェック ツールは、商用クラウドでのデプロイにのみ使用できます。
 - 必要な URL チェック ツールでは、ワイルドカードを含む URL をチェックできないため、必ず最初にそれらの URL のブロックを解除してください。
 
-### <a name="requirements"></a>必要条件
+### <a name="requirements"></a>要件
 
 必要な URL チェック ツールを使用するには、次のものが必要です。
 
@@ -95,7 +95,7 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、Azure G
 
 |Address|アウトバウンド TCP ポート|目的|サービス タグ|
 |---|---|---|---|
-|*.wvd.microsoft.us|443|サービス トラフィック|WindowsVirtualDesktop|
+|*.wvd.azure.us|443|サービス トラフィック|WindowsVirtualDesktop|
 |gcs.monitoring.core.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
 |monitoring.core.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|
 |fairfax.warmpath.usgovcloudapi.net|443|エージェント トラフィック|AzureCloud|

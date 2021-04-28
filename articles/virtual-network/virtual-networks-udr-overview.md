@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2021
+ms.date: 04/14/2021
 ms.author: aldomel
-ms.openlocfilehash: 0dd053fa268e88c281c1fe6c00339fe6a6edf27a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 232b83fef2da312828f4f9f332ab2505e3a68100
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732603"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503645"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -32,7 +32,7 @@ Azure では、システム ルートが自動的に作成され、仮想ネッ�
 
 各ルートには、アドレス プレフィックスとネクストホップの種類が含まれています。 サブネットから出ていくトラフィックを、ルートのアドレス プレフィックスに含まれる IP アドレスに送信するときに、そのプレフィックスを含むルートが使用されます。 複数のルートに同じプレフィックス (重複するプレフィックス) が含まれているときに、Azure がルートを選択するしくみの詳細については、[こちら](#how-azure-selects-a-route) をご覧ください。 仮想ネットワークが作成されるたびに、その仮想ネットワークのサブネットごとに、次の既定のシステム ルートが自動的に作成されます。
 
-|source |アドレス プレフィックス                                        |次ホップの種類  |
+|source |アドレス プレフィックス                                        |ネクストホップの種類  |
 |-------|---------                                               |---------      |
 |Default|仮想ネットワークに固有                           |仮想ネットワーク|
 |Default|0.0.0.0/0                                               |インターネット       |
@@ -111,7 +111,7 @@ Azure でカスタムまたはユーザー定義（静的）のルートを作�
    3. AzureCloud リージョン タグ (例: AzureCloud.canadacentral、AzureCloud.eastasia)
    4. AzureCloud タグ </br></br>
 
-この機能を使用するには、route table コマンドの address prefix パラメーターにサービス タグ名を指定します。 たとえば、Powershell で、以下を使用することで、Azure Storage IP プレフィックスに送信されたトラフィックを仮想アプライアンスに移動させる新しいルートを作成できます。 </br>
+この機能を使用するには、route table コマンドの address prefix パラメーターにサービス タグ名を指定します。 たとえば、Powershell で、以下を使用することで、Azure Storage IP プレフィックスに送信されたトラフィックを仮想アプライアンスに移動させる新しいルートを作成できます。 </br></br>
 
 ```azurepowershell-interactive
 New-AzRouteConfig -Name "StorageRoute" -AddressPrefix "Storage" -NextHopType "VirtualAppliance" -NextHopIpAddress "10.0.100.4"
@@ -123,6 +123,10 @@ CLI の同じコマンドは次のようになります。 </br>
 az network route-table route create -g MyResourceGroup --route-table-name MyRouteTable -n StorageRoute --address-prefix Storage --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.100.4
 ```
 </br>
+
+#### <a name="known-issues-april-2021"></a>既知の問題 (2021 年 4 月)
+
+BGP ルートが存在する場合、またはサブネットにサービス エンドポイントが構成されている場合、ルートが正しい優先順位で評価されない可能性があります。 これらのシナリオに対する修正プログラムは現在作成中です </br>
 
 
 > [!NOTE] 
@@ -171,7 +175,7 @@ ER と VPN Gateway ルートの伝達は、ルート テーブルのプロパテ
 たとえば、ルート テーブルに次のルートが含まれているとします。
 
 
-|source   |アドレス プレフィックス  |次ホップの種類           |
+|source   |アドレス プレフィックス  |ネクストホップの種類           |
 |---------|---------         |-------                 |
 |Default  | 0.0.0.0/0        |インターネット                |
 |User     | 0.0.0.0/0        |仮想ネットワーク ゲートウェイ |

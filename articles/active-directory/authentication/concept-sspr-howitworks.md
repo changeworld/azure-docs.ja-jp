@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c2d4181a80f48f5f6dd5775e6eb3bd172a65df8
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.openlocfilehash: 94077a1c6329aa1fecf9593f2df41fa77afc8a44
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107209631"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765919"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフサービス パスワード リセット
 
@@ -93,7 +93,7 @@ Azure AD を使用して任意のアプリケーションにサインインす�
 
 パスワードのリセットまたは変更が必要になったときに認証方法が正しいことを確実にするために、一定期間後にユーザーに登録情報を確認するように要求できます。 このオプションは、 **[Require users to register when signing in]\(サインイン時にユーザーに登録を要求する\)** オプションを有効にした場合にのみ使用できます。
 
-登録されている方法の確認をユーザーに求める有効な値は、*0* から *730* 日までです。 この値を *0* に設定すると、ユーザーが認証情報の確認を求められることはありません。
+登録されている方法の確認をユーザーに求める有効な値は、*0* から *730* 日までです。 この値を *0* に設定すると、ユーザーが認証情報の確認を求められることはありません。 統合された登録エクスペリエンスを使用する場合、ユーザーは情報を再確認する前に自身の ID を確認する必要があります。
 
 ## <a name="authentication-methods"></a>認証方法
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cache for Redis 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Cache for Redis に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 10c0e86f4a76a0d746258728169c5c6953a5ef67
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: a3ef8c54205dfb5fce8eb5e95ab552d86e9ca154
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497313"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874328"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cache-for-redis"></a>Azure Cache for Redis 用の Azure Policy 規制コンプライアンス コントロール
 

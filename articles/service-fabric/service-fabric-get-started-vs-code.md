@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.custom: devx-track-js
-ms.openlocfilehash: a655199d854462285ca98a2d8f454c483c061f99
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d54b4b048632324a58708f893a4778a56137916
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92316672"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876081"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Visual Studio Code 用の Service Fabric
 
@@ -48,7 +48,7 @@ Java 開発の場合は、以下の前提条件をインストールする必要
 
 .NET Core/C# 開発の場合は、以下の前提条件をインストールする必要があります。
 
-* [.NET Core](https://www.microsoft.com/net/learn/get-started) (バージョン 2.0.0 以降)
+* [.NET Core](https://dotnet.microsoft.com/download) (バージョン 2.0.0 以降)
 * [C# for Visual Studio Code (OmniSharp 搭載) VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) C# サービスのデバッグに必要です。 VS Code の **アクティビティ バー** にある [拡張機能] アイコンをクリックし、拡張機能を検索してインストールするか、VS Code Marketplace からインストールすることができます。
 
 ## <a name="setup"></a>セットアップ

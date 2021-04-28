@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 593ccac7326a0a04884fe433cac85cb8eaf79319
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: dfc8fe0f1b4bc043feecd5c76340d48bc5421854
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228233"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107568541"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -120,34 +120,62 @@ Storage Explorer は自己署名証明書または信頼されない証明書が
 
 ## <a name="sign-in-issues"></a>サインインの問題
 
-### <a name="blank-sign-in-dialog-box"></a>空白のサインイン ダイアログ
+### <a name="understanding-sign-in"></a>サインインについて
 
-空白のサインイン ダイアログ ボックスが表示されるのは、多くの場合、Active Directory フェデレーション サービス (AD FS) が Storage Explorer に対して、リダイレクトを実行するよう指示した場合です。これは、Electron ではサポートされていません。 この問題を回避するには、サインインにデバイス コード フローを使用してみることができます。 これを行うには、次のステップに従います。
+[Storage Explorer へのサインイン](./storage-explorer-sign-in.md)に関するドキュメントをお読みください。
 
-1. 左側の垂直ツールバーで、 **[設定]** を開きます。 [設定] パネルで、 **[アプリケーション]**  >  **[サインイン]** にアクセスします。 **[デバイス コード フロー サインインの使用]** を有効にします。
-2. **[接続]** ダイアログを開きます (左側の垂直バーのプラグ アイコン、またはアカウント パネルの **[アカウントの追加]** を使用)。
-3. サインインする環境を選択します。
-4. **[サインイン]** を選択します。
-5. 次のパネルの手順に従います。
+### <a name="frequently-having-to-reenter-credentials"></a>資格情報を頻繁に再入力する必要がある
 
-既定のブラウザーが別のアカウントに既にサインインしているために、使用したいアカウントにサインインできない場合は、次のいずれかを実行してください。
+資格情報を再入力する必要があるのは、多くの場合、AAD 管理者によって条件付きアクセス ポリシーが設定されているためです。 Storage Explorer によってアカウント パネルから資格情報を再入力するように求められるときに、 **[エラーの詳細]** リンクが表示されます。 これをクリックすると、Storage Explorer によって資格情報の再入力が求められている理由が表示されます。 資格情報の再入力が必要となる条件付きアクセス ポリシーのエラーは、次のような内容です。
+- 更新トークンの有効期限が切れています...
+- 多要素認証を使用して ... にアクセスする必要があります
+- Due to a configuration change made by your administrator... (管理者によって構成の変更が行われたため...)
 
-- お使いのブラウザーのプライベート セッションに、リンクとコードを手動でコピーします。
-- 別のブラウザーに、リンクとコードを手動でコピーします。
+上記のようなエラーが原因で資格情報の再入力が必要となる頻度を減らすには、AAD 管理者に連絡する必要があります。
+
+### <a name="conditional-access-policies"></a>条件付きアクセス ポリシー
+
+アカウントで満たす必要がある条件付きアクセス ポリシーがある場合は、 **[サインイン方法の選択]** 設定の値に **[既定の Web ブラウザー]** を使用していることを確認してください。 この設定の詳細については、[サインインする場所の変更](./storage-explorer-sign-in.md#changing-where-sign-in-happens)に関するページを参照してください。
+
+### <a name="unable-to-acquire-token-tenant-is-filtered-out"></a>トークンを取得できず、テナントがフィルターで除外されている
+
+テナントがフィルターで除外されているためにトークンを取得できないというエラー メッセージが表示された場合は、フィルターで除外したテナント内のリソースにアクセスしようとしていることを意味します。テナントをフィルターから解除するには、 **[アカウント パネル]** に移動して、エラーに指定されたテナントのチェックボックスがオンになっていることを確認します。 Storage Explorer でのテナントのフィルター処理の詳細については、[アカウントの管理](./storage-explorer-sign-in.md#managing-accounts)に関するページを参照してください。
+
+## <a name="authentication-library-failed-to-start-properly"></a>認証ライブラリを正常に開始できない
+
+起動時に Storage Explorer の認証ライブラリを正常に開始できなかったことを示すエラー メッセージが表示された場合は、インストール環境ですべての[前提条件](../../vs-azure-tools-storage-manage-with-storage-explorer.md#prerequisites)が満たされていることを確認しします。 このエラー メッセージの原因としては、前提条件が満たされていないことが考えられます。
+
+インストール環境ですべての前提条件が満たされていると思われる場合は、[GitHub でイシューを開きます](https://github.com/Microsoft/AzureStorageExplorer/issues/new)。 イシューを開いたら、次のものが含まれていることを確認します。
+- ご使用の OS。
+- 使用を試みている Storage Explorer のバージョン。
+- 前提条件を確認したかどうか。
+- Storage Explorer の起動に失敗したときの[認証ログ](#authentication-logs)。 この種類のエラーが発生すると、詳細な認証ログが自動的に有効になります。
+
+### <a name="blank-window-when-using-integrated-sign-in"></a>統合サインインを使用したときに空白のウィンドウが表示される
+
+**統合サインイン** を使用することを選択し、空白のサインイン ウィンドウが表示されている場合は、別のサインイン方法に切り替える必要があります。 空白のサインイン ダイアログ ボックスが表示されるのは、多くの場合、Active Directory フェデレーション サービス (ADFS) サーバーで、Storage Explorer に対してリダイレクトを実行するように指示した場合です。これは、Electron ではサポートされていません。
+
+別のサインイン方法に変更するには、 **[設定]**  >  **[アプリケーション]**  >  **[サインイン]** の **[サインイン方法の選択]** 設定を変更します。 さまざまな種類のサインイン方法の詳細については、[サインインする場所の変更](./storage-explorer-sign-in.md#changing-where-sign-in-happens)に関するページを参照してください。
 
 ### <a name="reauthentication-loop-or-upn-change"></a>再認証ループまたは UPN の変更
 
-再認証ループに入っているか、またはいずれかのアカウントの UPN を変更している場合は、次の手順を実行してください。
+再認証ループに入っているか、いずれかのアカウントの UPN を変更した場合は、次の手順を実行してみてください。
 
-1. すべてのアカウントを削除した後、Storage Explorer を閉じます。
-2. コンピューターから .IdentityService フォルダーを削除します。 Windows では、このフォルダーは `C:\users\<username>\AppData\Local` にあります。 Mac と Linux では、このフォルダーは、ユーザー ディレクトリのルートで見つけることができます。
-3. Mac または Linux を実行している場合は、オペレーティング システムのキーストアから Microsoft.Developer.IdentityService エントリも削除する必要があります。 Mac では、キーストアは *Gnome Keychain* アプリケーションです。 Linux では、このアプリケーションは通常は _Keyring_ という名前ですが、お使いのディストリビューションによっては名前が違うことがあります。
+1. Storage Explorer を開きます
+2. [ヘルプ] > [リセット] に移動します
+3. 少なくとも [認証] をチェックしてください。 リセットしない他の項目はオフにすることができます。
+4. [リセット] ボタンをクリックします
+5. Storage Explorer を再起動して、もう一度サインインしてみてください。
 
-### <a name="conditional-access"></a>条件付きアクセス
+リセット後も問題が解決しない場合は、次の手順を試してください。
 
-Storage Explorer によって使用される Azure AD ライブラリの制限により、Windows 10、Linux、または macOS で Storage Explorer を使用する場合、条件付きアクセスはサポートされません。
+1. Storage Explorer を開きます
+2. すべてのアカウントを削除した後、Storage Explorer を閉じます。
+3. マシンから `.IdentityService` フォルダーを削除します。 Windows では、このフォルダーは `C:\users\<username>\AppData\Local` にあります。 Mac と Linux では、このフォルダーは、ユーザー ディレクトリのルートで見つけることができます。
+4. Mac または Linux を実行している場合は、オペレーティング システムのキーストアから Microsoft.Developer.IdentityService エントリも削除する必要があります。 Mac では、キーストアは *Gnome Keychain* アプリケーションです。 Linux では、このアプリケーションは通常は _Keyring_ という名前ですが、お使いのディストリビューションによっては名前が違うことがあります。
+6. Storage Explorer を再起動して、もう一度サインインしてみてください。
 
-## <a name="mac-keychain-errors"></a>Mac キーチェーン エラー
+### <a name="macos-keychain-errors-or-no-sign-in-window"></a>macOS: キーチェーン エラー、またはサインイン ウィンドウが表示されない
 
 macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題を引き起こす状態になることがあります。 キーチェーンをこの状態から抜け出させるには、次の手順を実行します。
 
@@ -162,15 +190,16 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 6. "サービス ハブがキーチェーンへのアクセスを要求しています" というようなメッセージが表示されます。 Mac 管理者アカウントのパスワードを入力し、 **[常に許可]** ( **[常に許可]** が使用できない場合は **[許可]** ) を選択します。
 7. サインインを試します。
 
-### <a name="general-sign-in-troubleshooting-steps"></a>サインインの一般的なトラブルシューティングの手順
+### <a name="default-browser-doesnt-open"></a>既定のブラウザーが開かない
 
-* macOS を使用しており、 **[Waiting for authentication]\(認証の完了を待機しています\)** ダイアログ ボックスの上にサインイン ウィンドウが表示されない場合は、[この手順](#mac-keychain-errors)を試してください。
-* Storage Explorer を再起動します。
-* 認証ウィンドウが空白の場合は、認証ダイアログ ボックスを閉じる前に少なくとも 1 分待機します。
-* プロキシと証明書の設定が、使用中のマシンと Storage Explorer の両方で適切に構成されていることを確認します。
-* Windows を実行しており、同じコンピューター上の Visual Studio 2019、およびサインイン資格情報にアクセスできる場合は、Visual Studio 2019 にサインインしてみてください。 Visual Studio 2019 へのサインインに成功したら、Storage Explorer を開き、アカウント パネルでアカウントを確認できます。
+サインインしようとしたときに既定のブラウザーが開かない場合は、次のすべての方法を試してください。
+- Storage Explorer を再起動する
+- サインインを開始する前に、ブラウザーを手動で開きます
+- **統合サインイン** を使用してみてください。これを行う方法については、[サインインする場所の変更](./storage-explorer-sign-in.md#changing-where-sign-in-happens)に関するページを参照してください。
 
-これらの方法がいずれもうまくいかない場合は、[GitHub でイシューを開いてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+### <a name="other-sign-in-issues"></a>その他のサインインの問題
+
+発生しているサインインの問題に上記のいずれも当てはまらない場合、またはサインインの問題の解決に失敗した場合は、[GitHub でイシューを開きます](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
 ### <a name="missing-subscriptions-and-broken-tenants"></a>サブスクリプションの欠落とテナントの破損
 
@@ -180,9 +209,9 @@ macOS のキーチェーンは、Storage Explorer 認証ライブラリの問題
 * 適切な Azure 環境 (Azure、Azure China 21Vianet、Azure Germany、Azure US Government、またはカスタム環境) を使用してサインインしていることを確認します。
 * プロキシ サーバーの背後にいる場合は、Storage Explorer プロキシを正しく構成していることを確認します。
 * アカウントを削除してから再度追加します。
-* [More information]\(詳細\) リンクがある場合は、障害が発生しているテナントに対してどのエラー メッセージが報告されているかを確認します。 エラー メッセージへの対処方法がわからない場合は、遠慮なく [GitHub でイシューを開いてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。
+* [詳細] または [エラーの詳細] リンクがある場合は、障害が発生しているテナントに対してどのエラー メッセージが報告されているかを確認します。 エラー メッセージへの対処方法がわからない場合は、遠慮なく [GitHub でイシューを開いてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。
 
-## <a name="cant-remove-an-attached-account-or-storage-resource"></a>アタッチされているアカウントまたはストレージのリソースを削除できない
+## <a name="cant-remove-an-attached-storage-account-or-resource"></a>アタッチされているストレージ アカウントまたはリソースを削除できない
 
 アタッチされているアカウントまたはストレージのリソースを UI 経由で削除できない場合は、次のフォルダーを削除することにより、接続されているすべてのリソースを手動で削除できます。
 
@@ -497,7 +526,7 @@ GitHub に問題を報告するときに、問題の診断に役立つ特定の�
 14. [Copy to File…]\(ファイルへコピー\) をクリックします
 15. エクスポート ウィザードで、次のオプションを選択します
     - Base-64 でエンコードされた X.509
-    - ファイル名の場合は、 C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs を参照してから、これを任意のファイル名で保存できます
+    - ファイル名の場合は、 C:\Users\<your user dir>\AppData\Roaming\StorageExplorer\certs を参照して、任意のファイル名で保存できます
 16. 証明書ウィンドウを閉じます
 17. Storage Explorer を開始します
 18. [Edit]\(編集\) > [Configure Proxy]\(プロキシの構成\) に移動します
@@ -526,6 +555,8 @@ GitHub に問題を報告するときに、問題の診断に役立つ特定の�
 
 ## <a name="next-steps"></a>次のステップ
 
-これらの解決策のいずれもうまくいかない場合は、[GitHub でイシューを開いてください](https://github.com/Microsoft/AzureStorageExplorer/issues)。 これは、左下隅にある **[Report issue to GitHub]\(GitHub にイシューを報告する\)** ボタンを選択して実行することもできます。
+これらの解決策がいずれもうまくいかない場合は、次のようにします。
+- サポート チケットの作成
+- [GitHub でイシューを開く](https://github.com/Microsoft/AzureStorageExplorer/issues)。 これは、左下隅にある **[Report issue to GitHub]\(GitHub にイシューを報告する\)** ボタンを選択して実行することもできます。
 
 ![フィードバック](./media/storage-explorer-troubleshooting/feedback-button.PNG)

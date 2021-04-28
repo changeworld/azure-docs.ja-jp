@@ -3,12 +3,12 @@ title: Azure Service Bus のメッセージ、ペイロード、およびシリ�
 description: この記事では、Azure Service Bus のメッセージ、ペイロード、メッセージ ルーティング、およびシリアル化について概要を説明します。
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: 732c331561a8867310d4f4f1541a1de9b8e2a75f
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2ed65054f61aee4b9fb6157fc7a36e469c7a672c
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138627"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515296"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化
 
@@ -18,7 +18,7 @@ Microsoft Azure Service Bus はメッセージを処理します。 メッセー
  
 Service Bus メッセージは、どのような形式でもサービス側で Service Bus によって処理されないバイナリ ペイロード セクションと、2 つのプロパティ セットで構成されます。 "*ブローカー プロパティ*" は、システムによって事前定義されています。 この事前定義されているプロパティは、ブローカー内のメッセージ レベルの機能を制御するか、一般的な標準化されたメタデータ項目にマップされます。 "*ユーザー プロパティ*" は、アプリケーションが定義および設定できるキーと値のペアのコレクションです。
  
-次の表に、事前定義されているブローカー プロパティの一覧を示します。 これらの名前は、すべての公式クライアント API と、HTTP プロトコル マッピングの JSON オブジェクト [BrokerProperties](/rest/api/servicebus/introduction) でも使用されます。
+次の表に、事前定義されているブローカー プロパティの一覧を示します。 これらの名前は、すべての公式クライアント API と、HTTP プロトコル マッピングの JSON オブジェクト [BrokerProperties](https://docs.microsoft.com/rest/api/servicebus/introduction) でも使用されます。
  
 かっこ内には、AMQP プロトコル レベルで使用される同等の名前を示しています。 以下の名前ではパスカル ケースが使用されていますが、JavaScript および Python クライアントでは、それぞれキャメル ケースとスネーク ケースが使用されていることにご注意ください。
 

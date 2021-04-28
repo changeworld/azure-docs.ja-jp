@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: f737be68a28f95ab5402ba5ea08e85fcf1b04d37
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 3a9e36f691a107f17e92ffbeb1221459d688b97e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565901"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146979"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>ネットワーク セキュリティ グループのフローのログ記録の概要
 
@@ -353,7 +353,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 *フロー ログの削除*
 
-フロー ログを削除すると、関連付けられている NSG のフロー ログが停止するだけでなく、フロー ログ リソースもその設定と関連付けとともに削除されます。 フロー ログを再び開始するには、その NSG に対して新しいフロー ログ リソースを作成する必要があります。 フロー ログは、[PowerShell](https://docs.microsoft.com/powershell/module/az.network/remove-aznetworkwatcherflowlog)、[CLI](https://docs.microsoft.com/cli/azure/network/watcher/flow-log#az_network_watcher_flow_log_delete)、または [REST API](https://docs.microsoft.com/rest/api/network-watcher/flowlogs/delete) を使用して削除できます。 Azure portal からフロー ログを削除するためのサポートはパイプラインに含まれています。    
+フロー ログを削除すると、関連付けられている NSG のフロー ログが停止するだけでなく、フロー ログ リソースもその設定と関連付けとともに削除されます。 フロー ログを再び開始するには、その NSG に対して新しいフロー ログ リソースを作成する必要があります。 フロー ログは、[PowerShell](/powershell/module/az.network/remove-aznetworkwatcherflowlog)、[CLI](/cli/azure/network/watcher/flow-log#az_network_watcher_flow_log_delete)、または [REST API](/rest/api/network-watcher/flowlogs/delete) を使用して削除できます。 Azure portal からフロー ログを削除するためのサポートはパイプラインに含まれています。    
 
 また、NSG が削除されると、既定では、関連付けられているフロー ログ リソースが削除されます。
 

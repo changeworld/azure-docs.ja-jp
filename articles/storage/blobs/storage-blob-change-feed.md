@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 1366f24ec3bd35ec23d5bf0879fced367c9f6a45
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6da83ceb6d8ee51916d25949309d7ddfba0e4b30
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552439"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503604"
 ---
 # <a name="change-feed-support-in-azure-blob-storage"></a>Azure Blob Storage の変更フィードのサポート
 
@@ -67,7 +67,7 @@ ms.locfileid: "106552439"
 Azure portal を使用して、ストレージ アカウントで変更フィードを有効にします。
 
 1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。
-1. **[Blob service]** の下の **[データ保護]** オプションに移動します。
+1. **[データ管理]** の下の **[データ保護]** オプションに移動します。
 1. **[追跡]** で、 **[BLOB の変更フィードを有効にする]** を選択します。
 1. **[保存]** ボタンを選択して、データ保護設定を確認します。
 

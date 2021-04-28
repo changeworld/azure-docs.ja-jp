@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 4b4ee9d1e583241f8ec9b467ae9ddfdb1360fb52
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 37ac7573a1794c97c81fe5364204f85ff14d9fa6
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284704"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538076"
 ---
 # <a name="spatial-analysis-operations"></a>空間分析操作
 
@@ -125,7 +125,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
 | `polygon` | list| 各値のペアは、多角形の頂点の x、y を表します。 多角形は、人の追跡または人数のカウントを行う領域を表します。多角形ポイントは、正規化された座標 (0-1) に基づいています。左上隅が (0.0, 0.0)、右下隅が (1.0, 1.0) になります。   
-| `threshold` | float| AI モデルの信頼度がこの値以上の場合に、イベントが送信されます。 |
+| `threshold` | float| その人がゾーン内のこのピクセル数よりも大きい場合にイベントが送信されます。 |
 | `type` | string| **cognitiveservices.vision.spatialanalysis-personcount** の場合、これは `count` である必要があります。|
 | `trigger` | string| イベントを送信するためのトリガーの種類。 サポートされている値は、`event` (カウントが変わったときにイベントを送信する場合)、または `interval` (カウントが変わったかどうかに関係なく、イベントを定期的に送信する場合) です。
 | `output_frequency` | INT | イベントが送信される頻度。 `output_frequency` = X の場合、X おきにイベントが送信されます。たとえば、 `output_frequency` = 2 は、1 つおきにイベントが送信されることを意味します。 `output_frequency` は、`event` と `interval` の両方に適用されます。 |
@@ -172,7 +172,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `line` | list| ラインの定義。 これは、"入る" と "出る" を理解できるようにするための方向線です。|
 | `start` | 値のペア| ラインの始点の x、y 座標。 浮動小数点値は、左上隅を基準とした頂点の位置を表します。 x、y の絶対値を計算するには、これらの値とフレーム サイズを乗算します。 |
 | `end` | 値のペア| ラインの終点の x、y 座標。 浮動小数点値は、左上隅を基準とした頂点の位置を表します。 x、y の絶対値を計算するには、これらの値とフレーム サイズを乗算します。 |
-| `threshold` | float| AI モデルの信頼度がこの値以上の場合に、イベントが送信されます。 既定値は 16 です。 これは、最大の精度を実現するために推奨される値です。 |
+| `threshold` | float| その人がゾーン内のこのピクセル数よりも大きい場合にイベントが送信されます。 既定値は 16 です。 これは、最大の精度を実現するために推奨される値です。 |
 | `type` | string| **cognitiveservices.vision.spatialanalysis-personcrossingline** の場合、これは `linecrossing` である必要があります。|
 |`trigger`|string|イベントを送信するためのトリガーの種類。<br>サポートされている値: "event": だれかがラインを越えたときに発生します。|
 | `focus` | string| イベントの計算に使用される人の境界ボックス内のポイントの場所。 フォーカスの値は、`footprint` (人の占有領域)、`bottom_center` (人の境界ボックスの下部中央)、`center` (人の境界ボックスの中央) にすることができます。 既定値は footprint です。|
@@ -216,7 +216,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
 | `polygon` | list| 各値のペアは、多角形の頂点の x、y を表します。 多角形は、人の追跡または人数のカウントを行う領域を表します。 浮動小数点値は、左上隅を基準とした頂点の位置を表します。 x、y の絶対値を計算するには、これらの値とフレーム サイズを乗算します。 
-| `threshold` | float| AI モデルの信頼度がこの値以上の場合に、イベントが送信されます。 既定値は、type が zonecrossing の場合は 48、time が DwellTime の場合は 16 です。 これらは、最大の精度を実現するために推奨される値です。  |
+| `threshold` | float| その人がゾーン内のこのピクセル数よりも大きい場合にイベントが送信されます。 既定値は、type が zonecrossing の場合は 48、time が DwellTime の場合は 16 です。 これらは、最大の精度を実現するために推奨される値です。  |
 | `type` | string| **cognitiveservices.vision.spatialanalysis-personcrossingpolygon** の場合、これは `zonecrossing` または `zonedwelltime` である必要があります。|
 | `trigger`|string|イベントを送信するためのトリガーの種類。<br>サポートされている値: "event": だれかがゾーンに入ったときまたはゾーンから出たときに発生します。|
 | `focus` | string| イベントの計算に使用される人の境界ボックス内のポイントの場所。 フォーカスの値は、`footprint` (人の占有領域)、`bottom_center` (人の境界ボックスの下部中央)、`center` (人の境界ボックスの中央) にすることができます。 既定値は footprint です。|
@@ -251,7 +251,7 @@ Live Video Analytics の操作は、処理中のビデオ フレームを視覚�
 | `zones` | list| ゾーンのリスト。 |
 | `name` | string| このゾーンのフレンドリ名。|
 | `polygon` | list| 各値のペアは、多角形の頂点の x、y を表します。 多角形は人数をカウントする領域を表し、人と人との距離が測定されます。 浮動小数点値は、左上隅を基準とした頂点の位置を表します。 x、y の絶対値を計算するには、これらの値とフレーム サイズを乗算します。 
-| `threshold` | float| AI モデルの信頼度がこの値以上の場合に、イベントが送信されます。 |
+| `threshold` | float| その人がゾーン内のこのピクセル数よりも大きい場合にイベントが送信されます。 |
 | `type` | string| **cognitiveservices.vision.spatialanalysis-persondistance** の場合、これは `people_distance` である必要があります。|
 | `trigger` | string| イベントを送信するためのトリガーの種類。 サポートされている値は、`event` (カウントが変わったときにイベントを送信する場合)、または `interval` (カウントが変わったかどうかに関係なく、イベントを定期的に送信する場合) です。
 | `output_frequency` | INT | イベントが送信される頻度。 `output_frequency` = X の場合、X おきにイベントが送信されます。たとえば、 `output_frequency` = 2 は、1 つおきにイベントが送信されることを意味します。 `output_frequency` は、`event` と `interval` の両方に適用されます。|

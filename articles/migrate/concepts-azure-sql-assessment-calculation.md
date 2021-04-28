@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: a22fa184f91cb409f7a4d7795a4bc34bdd83e598
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: c9319465c4e77eab294606ed046f7946948f2cc1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077807"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140373"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>評価の概要 (Azure SQL への移行)
 
@@ -127,7 +127,7 @@ Azure SQL 評価のプロパティで、ターゲットのデプロイの種類�
 SQL インスタンスが Azure SQL Database と Azure SQL Managed Instance に対応していない場合、推奨されるデプロイの種類は、"*Azure VM に対応の可能性あり*" としてマークされます。
 - ユーザーには、評価の種類を "Azure VM" にして Azure Migrate で評価を作成し、代わりにインスタンスが実行されているサーバーが Azure VM への移行に対応しているかどうかを判断することをお勧めします。 以下の点に注意してください。
     - 現在、Azure Migrate での Azure VM の評価ではリフト アンド シフトが重視されており、SQL のインスタンスとデータベースを Azure 仮想マシンで実行した場合の特定のパフォーマンス メトリックは考慮されません。 
-    - サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)。
+    - サーバーで Azure VM の評価を実行した場合、推奨されるサイズとコストの見積もりは、サーバーで実行されているすべてのインスタンスに対するものであり、Server Migration ツールを使用して Azure VM に移行できます。 移行を行う前に、Azure Virtual Machines での SQL Server の[パフォーマンス ガイドラインを確認してください](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)。
 
 
 ## <a name="calculate-sizing"></a>サイズ設定の計算

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: e70b899ea0133704e4ecab42dd4c2a09bca41804
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 7c3ae14cd409e7bfc9be77c1a593964b73a12ddc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226313"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791051"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブのネットワーク仮想アプライアンスについて (プレビュー)
 
@@ -77,13 +77,14 @@ Virtual WAN ハブを Azure 仮想ネットワークに接続するためには�
 
 |地理的リージョン | Azure Azure リージョン|
 |---|---|
-| 北米| 米国西部、米国中南部、米国東部 2   |
-| 南アメリカ | ブラジル南部 |
-| ヨーロッパ | 西ヨーロッパ、英国南部|
+| 北米| カナダ中部、カナダ東部、米国中部、米国東部、米国東部 2、米国中北部、米国中西部、米国西部、米国西部 2 |
+| 南アメリカ | ブラジル南部、ブラジル南東部 |
+| ヨーロッパ | フランス中部、フランス南部、ドイツ北部、ドイツ中西部、北ヨーロッパ、ノルウェー東部、ノルウェー西部、スイス北部、スイス西部、英国南部、英国西部、西ヨーロッパ|
 |  中東 | アラブ首長国連邦北部 |
-| アジア | 東日本 |
-| オーストラリア | オーストラリア東部 |
-
+| アジア |  東アジア、東日本、西日本、韓国中部、韓国南部、東南アジア | 
+| オーストラリア | オーストラリア南東部、オーストラリア東部、オーストラリア中部、オーストラリア中部 2|
+| アフリカ | 南アフリカ北部 |
+| インド | インド南部、インド西部、インド中部 | 
 ## <a name="faq"></a>よく寄せられる質問
 
 ### <a name="i-am-a-network-appliance-partner-and-want-to-get-our-nva-in-the-hub--can-i-join-this-partner-program"></a>ネットワーク アプライアンス パートナーとして、提供する NVA をハブに追加したいと思っています。  このパートナー プログラムに参加することはできますか?
@@ -92,7 +93,7 @@ Virtual WAN ハブを Azure 仮想ネットワークに接続するためには�
 
 ### <a name="can-i-deploy-any-nva-from-azure-marketplace-into-the-virtual-wan-hub"></a>Azure Marketplace から Virtual WAN ハブに任意の NVA をデプロイすることはできますか?
 
-現時点で Virtual WAN ハブにデプロイできるのは、[Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer) と [Cisco Cloud vWAN Application](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview) のみになります。
+現時点で Virtual WAN ハブにデプロイできるのは、[Barracuda CloudGen WAN](https://aka.ms/BarracudaMarketPlaceOffer)、[Cisco Cloud vWAN Application](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cisco.cisco_cloud_vwan_app?tab=Overview)、[VMware Sd-WAN](https://aka.ms/vmwareMarketplaceLink) のみになります。
 
 ### <a name="what-is-the-cost-of-the-nva"></a>NVA のコストはいくらですか?
 
@@ -104,7 +105,7 @@ NVA ベンダーから NVA のライセンスを購入する必要がありま�
 
 ### <a name="can-i-deploy-an-nva-into-a-secure-hub"></a>NVA をセキュリティで保護されたハブにデプロイすることはできますか?
 
-はい。 Barracuda CloudGen WAN は、Azure Firewall を使用してハブにデプロイすることができます。
+はい。 パートナーの NVA は、Azure Firewall を使用してハブにデプロイすることができます。
 
 ### <a name="can-i-connect-any-cpe-device-in-my-branch-office-to-barracuda-cloudgen-wan-nva-in-the-hub"></a>ブランチ オフィス内のすべての Barracuda デバイスをハブの CloudGen WAN NVA に接続することはできますか?
 

@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 4/15/2021
-ms.openlocfilehash: dcb77e45f5e1469363eb279626a866c7f719de40
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: ff67d5150e6bb95e900d3a81e0025216ffb19471
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537535"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133387"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Microsoft のセールス チームとパートナーによる共同販売の概要
 
@@ -87,6 +87,6 @@ Business Applications 共同販売インセンティブ対象 (Standard およ�
 ## <a name="next-steps"></a>次のステップ
 
 - 要件については、[共同販売の準備完了および共同販売インセンティブ対象の要件](co-sell-requirements.md)に関するページを参照してください
-- プランを共同販売用に構成するには、「[コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)」を参照してください
+- プランを共同販売用に構成するには、「[コマーシャル マーケットプレース プランの共同販売を構成する](./co-sell-configure.md)」を参照してください
 - 共同販売ステータスを確認するには、[プランの共同販売ステータスの確認](co-sell-status.md)に関するページを参照してください。
 - [Microsoft との共同販売](https://partner.microsoft.com/membership/sell-with-microsoft)について詳しく確認します。

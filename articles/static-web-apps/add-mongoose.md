@@ -6,12 +6,12 @@ ms.author: chrhar
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 01/25/2021
-ms.openlocfilehash: f64cc67ad6f0296ad289d858795ee783943f3daf
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: fb1c1d64d77ca1c69960b77cbec7f60bb717c26c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259877"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143523"
 ---
 # <a name="tutorial-access-data-in-cosmos-db-using-mongoose-with-azure-static-web-apps"></a>チュートリアル: Azure Static Web Apps から Mongoose を使用して Cosmos DB のデータにアクセスする
 
@@ -37,7 +37,7 @@ Azure サブスクリプションを持っていない場合は、[無料試用�
 
 ## <a name="create-a-cosmos-db-serverless-database"></a>Cosmos DB サーバーレス データベースを作成する
 
-まず、[Cosmos DB サーバーレス](https://docs.microsoft.com/azure/cosmos-db/serverless) アカウントを作成します。 サーバーレス アカウントを使用すれば、支払いはリソースが使用されたときにのみ発生し、また、完全なインフラストラクチャを作成せずに済みます。
+まず、[Cosmos DB サーバーレス](../cosmos-db/serverless.md) アカウントを作成します。 サーバーレス アカウントを使用すれば、支払いはリソースが使用されたときにのみ発生し、また、完全なインフラストラクチャを作成せずに済みます。
 
 1. [https://portal.azure.com](https://portal.azure.com) に移動します
 2. **[リソースの作成]** をクリックします
@@ -140,4 +140,3 @@ Web アプリがデータベースと通信を行えるように、データベ�
 次の記事に進み、ローカル開発の構成方法を学習してください。
 > [!div class="nextstepaction"]
 > [ローカル開発の設定](./local-development.md)
- 

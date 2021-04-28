@@ -8,19 +8,19 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 12/13/2018
-ms.openlocfilehash: 121ea47322303ab06a9240cd4a80e61ad882954d
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: fe03bbfb33f3637eecc4e68f24846c929dad5fa4
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138303"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479255"
 ---
 # <a name="use-linux-diagnostic-extension-30-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension 3.0 を使用して、メトリックとログを監視する
 
 このドキュメントでは、Linux Diagnostic Extension (LAD) のバージョン 3.0 以降について説明します。
 
 > [!IMPORTANT]
-> バージョン 2.3 以前の詳細については、[Linux VM のパフォーマンスと診断データの監視](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)に関する記事を参照してください。
+> バージョン 2.3 以前の詳細については、[Linux VM のパフォーマンスと診断データの監視](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)に関する記事を参照してください。
 
 ## <a name="introduction"></a>はじめに
 

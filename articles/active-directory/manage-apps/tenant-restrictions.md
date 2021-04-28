@@ -12,12 +12,12 @@ ms.date: 4/6/2021
 ms.author: iangithinji
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 941bf61f3387abf19be58bdd4d8861ab123e244f
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: dda21b70d7e65915b1ecd92de8a3ebcf2ac52059
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376581"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108006946"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
@@ -41,7 +41,7 @@ ms.locfileid: "107376581"
 
 3. **クライアント ソフトウェア**: テナント制限をサポートするには、プロキシ インフラストラクチャがトラフィックをインターセプトできるように、クライアント ソフトウェアはトークンを直接 Azure AD に要求する必要があります。 先進認証 (OAuth 2.0 など) を使用する Office クライアントと同様に、ブラウザー ベースの Microsoft 365 アプリケーションは現在、テナント制限をサポートしています。
 
-4. **先進認証**: テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Microsoft 365 クラウド サービスを構成する必要があります。 Microsoft 365 による最新の認証のサポートに関する最新情報については、[Office 365 の最新の認証の更新](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)に関するページをご覧ください。
+4. **先進認証**: テナント制限を使用し、許可されていないすべてのテナントへのアクセスをブロックするには、クラウド サービスは先進認証を使用する必要があります。 既定で先進認証プロトコルを使用するように Microsoft 365 クラウド サービスを構成する必要があります。 Microsoft 365 による最新の認証のサポートに関する最新情報については、[Office 365 の最新の認証の更新](https://docs.microsoft.com/microsoft-365/enterprise/modern-auth-for-office-2013-and-2016?view=o365-worldwide)に関するページをご覧ください。
 
 次の図は、おおまかなトラフィック フローを示しています。 テナント制限では、TLS 検査は Microsoft 365 クラウド サービスではなく、Azure AD へのトラフィック上でのみ必要です。 Azure AD への認証のためのトラフィック量は一般に、Exchange Online や SharePoint Online などの SaaS アプリケーションへのトラフィック量よりはるかに少ないため、この区別が重要です。
 

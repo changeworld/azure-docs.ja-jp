@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 03/10/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: beb8b81710cf4728259a8eb1df920cd74efce3ce
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9ccc192bb5cf4c5e183e21add8e73d9e096d281c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728132"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136015"
 ---
 # <a name="region-availability-and-data-residency"></a>利用可能なリージョンとデータの保存場所
 
@@ -49,7 +49,7 @@ Communication Services と共に Azure portal または Azure Resource Manager A
 
 ### <a name="telephone-number-management"></a>電話番号の管理
 
-Azure Communication Services では、Communication Services リソースに関連付けられた電話番号のディレクトリが保持されます。 次の[電話番号の管理 API](/rest/api/communication/phonenumberadministration) を使用して、電話番号を取得して削除します。
+Azure Communication Services では、Communication Services リソースに関連付けられた電話番号のディレクトリが保持されます。 次の[電話番号の管理 API](/rest/api/communication/phonenumbers) を使用して、電話番号を取得して削除します。
 
 - `Get All Phone Numbers`
 - `Release Phone Number`

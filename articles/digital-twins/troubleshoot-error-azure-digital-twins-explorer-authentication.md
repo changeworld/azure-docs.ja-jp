@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 4/8/2021
-ms.openlocfilehash: 9f315a0446c1fb712558c1031df56760e6d5b7e7
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 1f8373130fbead2204dd0ac2515595d68dd3b2e8
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108123431"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107491331"
 ---
 # <a name="authentication-failed"></a>認証に失敗しました
 
@@ -31,7 +31,7 @@ Azure Digital Twins Explorer アプリケーションで使用されている [D
 
 エラー テキストで示されているように、このエラーは、`DefaultAzureCredential` によって取得されるローカル資格情報を提供していない場合に、発生するおそれがあります。
 
-Azure Digital Twins Explorer でローカル資格情報を使用する方法の詳細については、Azure Digital Twins の "*サンプル シナリオの検討のクイックスタート*" に関する記事の「[*ローカル Azure 資格情報を設定する*](./quickstart-azure-digital-twins-explorer.md#set-up-local-azure-credentials)」セクションを参照してください。
+Azure Digital Twins Explorer でローカル資格情報を使用する方法の詳細については、Azure Digital Twins の "*サンプル シナリオの検討のクイックスタート*" に関する記事の「[*ローカル Azure 資格情報を設定する*](quickstart-adt-explorer.md#set-up-local-azure-credentials)」セクションを参照してください。
 
 ### <a name="cause-2"></a>原因 #2
 

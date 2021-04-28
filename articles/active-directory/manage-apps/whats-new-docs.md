@@ -9,12 +9,12 @@ ms.workload: identity
 ms.author: iangithinji
 author: iantheninja
 manager: CelesteDG
-ms.openlocfilehash: 17dca502d3c65563cb9e4d2c382afb79f4d612e9
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 57a26592ec34153020e88450f3eb36b3361649b4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376054"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144177"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory アプリケーション管理: 新機能
 
@@ -83,7 +83,7 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 - [リンクされたサインオンの概要](configure-linked-sign-on.md)
 - [パスワードベースのシングル サインオンについて理解する](configure-password-single-sign-on-non-gallery-applications.md)
 - [SAML ベースのシングル サインオンについて理解する](configure-saml-single-sign-on.md)
-- [Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング](troubleshoot-adding-apps.md)
+- [Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング](/troubleshoot/azure/active-directory/troubleshoot-adding-apps)
 - [ID 管理用の Azure AD テナントを使用してアプリを表示する](application-types.md)
 - [Azure Active Directory でユーザーをアプリに割り当てる方法を理解する](ways-users-get-assigned-to-applications.md)
 - [クイック スタート:Azure Active Directory (Azure AD) テナントからアプリケーションを削除する](delete-application-portal.md)
@@ -141,7 +141,7 @@ Azure Active Directory アプリケーション管理のドキュメントの最
 
 ### <a name="updated-articles"></a>更新された記事
 - [クイック スタート:Azure Active Directory (Azure AD) テナントにアプリケーションを追加する](add-application-portal.md)
-- [Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング](troubleshoot-adding-apps.md)
+- [Azure Active Directory へのアプリケーションの追加または削除に関する一般的な問題のトラブルシューティング](/troubleshoot/azure/active-directory/troubleshoot-adding-apps)
 - [アプリケーションの同意の管理と同意要求の評価](manage-consent-requests.md)
 - [ID 管理用の Azure AD テナントを使用してアプリを表示する](application-types.md)
 - [Azure Active Directory でユーザーをアプリに割り当てる方法を理解する](ways-users-get-assigned-to-applications.md)

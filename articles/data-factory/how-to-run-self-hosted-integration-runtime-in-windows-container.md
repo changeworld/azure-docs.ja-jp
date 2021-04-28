@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/05/2020
-ms.openlocfilehash: e34e1f589442be41e2a4eac3ac893f377675e4b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2423d6bd29d893f9a27749dcc2b6d2af8a12e941
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100379507"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478133"
 ---
 # <a name="how-to-run-self-hosted-integration-runtime-in-windows-container"></a>Windows コンテナーでセルフホステッド統合ランタイムを実行する方法
 
@@ -24,7 +24,7 @@ Azure Data Factory では、セルフホステッド統合ランタイムの公�
 ## <a name="prerequisites"></a>前提条件 
 - [Windows コンテナーの要件](/virtualization/windowscontainers/deploy-containers/system-requirements)
 - Docker バージョン 2.3 以降 
-- セルフホステッド統合ランタイム バージョン4.11.7512.1 以降 
+- セルフホステッド統合ランタイム バージョン 5.2.7713.1 以降 
 ## <a name="get-started"></a>作業開始 
 1.  Docker をインストールして Windows コンテナーを有効にします 
 2.  https://github.com/Azure/Azure-Data-Factory-Integration-Runtime-in-Windows-Container からソース コードをダウンロードします｡
@@ -40,7 +40,7 @@ docker build . -t "yourDockerImageName" 
 ```
 6.  Docker コンテナーを実行します。 
 ```console
-docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATION_KEY" -e ENABLE_HA=true HA_PORT=8060 "yourDockerImageName"    
+docker run -d -e NODE_NAME="irNodeName" -e AUTH_KEY="IR_AUTHENTICATION_KEY" -e ENABLE_HA=true -e HA_PORT=8060 "yourDockerImageName"    
 ```
 > [!NOTE]
 > このコマンドでは AUTH_KEY が必須です。 NODE_NAME、ENABLE_HA、および HA_PORT は省略可能です。 この値を設定しない場合、コマンドでは既定値が使用されます。 既定値は、ENABLE_HA では false で、HA_PORT では 8060 です。

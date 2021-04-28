@@ -1,19 +1,19 @@
 ---
 title: Azure Data Factory マネージド仮想ネットワーク マッピング データ フローを使用してデータを変換する
 description: このチュートリアルでは、Azure Data Factory でマッピング データ フローを使用してデータを変換するための詳細な手順を説明します。
-author: ssabat
-ms.author: susabat
+author: dcstwh
+ms.author: weetok
 ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2021
-ms.openlocfilehash: ac868fdf3ca80d489d479b5be0c57bd14a90ccbb
-ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
+ms.openlocfilehash: ad101bee84256662d1436ba8d8a49304aecb9129
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107905704"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518281"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>マッピング データ フローを使用して安全にデータを変換する
 

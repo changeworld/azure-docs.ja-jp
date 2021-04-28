@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 04/12/2021
+ms.date: 04/13/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ad538dd36301a25396f426301c1ee0bf6dfb0ece
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 9f4a1f5823b67cc55a4e038bae911ec583608336
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364075"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483097"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure を使用して SAP ワークロード シナリオをホストして実行する
 
@@ -72,7 +72,7 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 
 
 ## <a name="integrate-azure-ad-with-sap-services"></a>Azure AD と SAP サービスの統合
-このセクションでは、ほとんどの SAP SaaS および PaaS サービス、NetWeaver および Fiori で SSO を構成する方法に関する情報を確認できます。 
+このセクションでは、ほとんどの SAP SaaS および PaaS サービス、NetWeaver、Fiori で SSO を構成する方法に関する情報を確認できます 
 
 
 
@@ -82,6 +82,7 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 
 
 ## <a name="change-log"></a>変更履歴
+- 2021 年 4 月 12 日: SAP HANA システム レプリケーションの Python フックの構成手順を追加するために、「[SLES 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability.md)」、「[RHEL 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability-rhel.md)」、「[RHEL 上の ANF による SAP HANA の HA のスケールアップ](./sap-hana-high-availability-netapp-files-red-hat.md)」を変更  
 - 2021 年 4 月 12 日: [Azure Backup サービスを使用した SAP HANA のバックアップまたは復元](../../../backup/sap-hana-db-about.md)のドキュメントによる SAP HANA のバックアップ ドキュメントの置き換え 
 - 2021 年 4 月 12 日: [SLES における Azure VM での Pacemaker を使用した SAP HANA スケールアウト HSR](./sap-hana-high-availability-scale-out-hsr-suse.md) に関する構成ガイドのリリース
 - 2021 年 4 月 7 日: [SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ](./dbms_guide_sqlserver.md)で SQL Server の複数インスタンスと複数データベースのサポートを明確化
@@ -89,7 +90,7 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 - 2021 年 4 月 7 日: 「[SAP ワークロードの Azure Storage の種類](./planning-guide-storage.md)」に ANF での Oracle DBMS サポートのサポートを追加
 - 03/17/2021:「[SLES 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability.md)」、「[RHEL 上の Azure VM での SAP HANA の HA](./sap-hana-high-availability-rhel.md)」、および「[RHEL 上の ANF による SAP HANA の HA のスケールアップ](./sap-hana-high-availability-netapp-files-red-hat.md)」の変更により、Pacemaker クラスターでの HANA アクティブ/読み取り可能のシステム レプリケーションの手順を追加
 - 03/15/2021:「[WSFC とファイル共有を使用した SAP ASCS/SCS インスタンス](./sap-high-availability-guide-wsfc-file-share.md)」、「[WSFC とファイル共有を使用して SAP ASCS/SCS インスタンスをインストールする](./sap-high-availability-installation-wsfc-file-share.md)」、「[WSFC とファイル共有を使用した SAP ASCS/SCS マルチ SID](./sap-ascs-ha-multi-sid-wsfc-file-share.md)」の変更により、SAP ASCS/SCS インスタンスと SOFS 共有を別々のクラスターにデプロイする必要があることを明確化
-- 03/03/2021: [WSFC と Azure NetApp Files (SMB) を使用する SAP ASCS/SCS のための HA ガイド](./high-availability-guide-windows-netapp-files-smb.md)が変更され、SAP システムのインストール時、SWPM を実行しているユーザーには昇格された特権が必要になるという注意書きを追加されました。
+- 2021 年 3 月 3 日: SAP システムのインストール時、SWPM を実行しているユーザーには昇格された特権が必要になるという注意書きを追加するために、[WSFC と Azure NetApp Files (SMB) を使用する SAP ASCS/SCS のための HA ガイド](./high-availability-guide-windows-netapp-files-smb.md)に関するページを変更
 - 2021 年 2 月 11 日[Red Hat Enterprise Linux Server 上の Azure vm で IBM DB2 LUW の高可用性](./high-availability-guide-rhel-ibm-db2-luw.md) を変更し、RHEL 8.x 用の pacemaker クラスターコマンドを修正します。
 - 2021 年 2 月 3 日: stonith create コマンドの pcmk_host_map を更新するために、「[Azure での RHEL に対する Pacemaker の設定](./high-availability-guide-rhel-pacemaker.md)」を変更
 - 2021 年 2 月 3 日: stonith create コマンドの pcmk_host_map を追加するために、「[Azure での SLES に対する Pacemaker の設定](./high-availability-guide-suse-pacemaker.md)」を変更 
@@ -115,7 +116,7 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 - 2020 年 9 月 29 日:記事「[SAP アプリケーションで最適なネットワーク待ち時間を実現するための Azure 近接通信配置グループ](./sap-proximity-placement-scenarios.md)」で、PPG の使用に関する制限事項と推奨事項をより明確にしました 
 - 2020 年 9 月 28 日:記事「[SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム](./hana-vm-operations-netapp.md)」で、Azure NetApp Files を使用した SAP HANA 用の新しいストレージ操作ガイドを追加しました
 - 2020 年 9 月 23 日:[HLI で利用可能な SKU](./hana-available-skus.md) に関するページで、HLI 用の新しい認定 SKU を追加しました 
-- 2020 年 9 月 20 日:記事「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](./dbms_guide_general.md)」、「[SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ](./dbms_guide_sqlserver.md)」、「[SAP ワークロードのための Azure Virtual Machines Oracle DBMS のデプロイ](./dbms_guide_oracle.md)」、「[SAP ワークロードのための IBM DB2 Azure Virtual Machines DBMS のデプロイ](./dbms_guide_ibm.md)」での変更。DBMS バイナリと SAP バイナリを異なる Azure ディスクに分離することを推奨する新しい構成の提案に適合するためのものです。 また、さまざまなガイドに Ultra Disk の推奨事項を追加しました。
+- 2020 年 9 月 20 日: 記事「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](./dbms_guide_general.md)」、「[SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ](./dbms_guide_sqlserver.md)」、「[SAP ワークロードのための Azure Virtual Machines Oracle DBMS のデプロイ](./dbms_guide_oracle.md)」、「[SAP ワークロードのための IBM DB2 Azure Virtual Machines DBMS のデプロイ](./dbms_guide_ibm.md)」での変更。DBMS バイナリと SAP バイナリを異なる Azure ディスクに分離することを推奨する新しい構成の提案に適合するためのものです。 また、さまざまなガイドに Ultra Disk の推奨事項を追加しました。
 - 2020 年 9 月 8 日stonith の定義を明確にするために、[SLES 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)が変更されました
 - 2020 年 9 月 3 日:Ultra disk を使用した最小で 1 GB あたり 2 IOPS に適合させるために、[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)が変更されました
 - 2020 年 9 月 2 日:どの SKU が HANA 認定であるかをより明確にするために、[HLI で利用可能な SKU](./hana-available-skus.md) が変更されました
@@ -145,7 +146,7 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 - 2020 年 5 月 19 日:HANA 関連ボリュームに LVM を使用する場合はルート ボリューム グループを使用できないという重要なメッセージを「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」に追加
 - 2020 年 5 月 19 日:HANA L インスタンス タイプ II でサポートされる新しい OS を「[HANA L インスタンスと互換性があるオペレーティング システム](/- azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance)」に追加
 - 2020 年 5 月 12 日:リンクを更新するため、およびサード パーティ製ファイアウォールの構成に関する情報を追加するために、[SAP の HA シナリオにおける Azure 標準 ILB を使用した VM のパブリック エンドポイント接続](./high-availability-guide-standard-load-balancer-outbound-connections.md)に関するページを変更
-- 2020 年 5 月 11 日:[SLES 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)に関するページを変更して、netcat リソースのリソースの持続性を 0 に設定。これにより、フェールオーバーが効率化されます 
+- 2020 年 5 月 11 日: [SLES 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)に関するページを変更して、`netcat` リソースのリソースの持続性を 0 に設定。これにより、フェールオーバーが効率化されます 
 - 2020 年 5 月 5 日:Mv1 VM ファミリで Gen2 デプロイを使用できることを示すために、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)」を変更
 - 2020 年 4 月 24 日:ANF ボリュームが自動的に割り当てられることをより明確に示す、「[SUSE Linux Enterprise Server 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-suse.md)」、「[Red Hat Enterprise Linux 上の Azure NetApp Files を使用して Azure VM のスタンバイ ノードで SAP HANA スケールアウト システムをデプロイする](./sap-hana-scale-out-standby-netapp-files-rhel.md)」、「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)」および「[SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](./high-availability-guide-rhel-netapp-files.md)」への変更
 - 2020 年 4 月 22 日:クラスターのメンテナンス モードの切り替えと競合するため、属性 `is-managed` を手順から削除して「[SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性](./sap-hana-high-availability.md)」を変更
@@ -168,16 +169,3 @@ SAP アプリケーション レイヤーと DBMS の高可用性に関する詳
 - 2020 年 3 月 5 日: 「[SAP NetWeaver のための Azure Virtual Machines の計画と実装](./planning-guide.md)」での、Azure リージョンと Azure Virtual Machines のための構造の変更とコンテンツの変更
 - 2020 年 3 月 3 日:[SAP アプリケーション用の ANF を使用した SLES 上の Azure VM 上の SAP NW の高可用性](./high-availability-guide-suse-netapp-files.md)に関する記事で、より効率的な ANF ボリューム レイアウトに変更します。
 - 2020 年 3 月 1 日: 「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](./sap-hana-backup-guide.md)」を修正し、Azure Backup サービスを含めました。 「[ファイル レベルの SAP HANA Azure バックアップ](./sap-hana-backup-file-level.md)」コンテンツを削減して凝縮し、ディスク スナップショットを介したバックアップに関する 3 番目のドキュメントを削除しました。 コンテンツは、Azure Virtual Machines 上の SAP HANA のバックアップ ガイドで扱われます。 
-- 2020 年 2 月 27 日: 「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)」、「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)」、「[SUSE Linux Enterprise Server for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse-multi-sid.md)」を変更し、"失敗時" のクラスター パラメーターを調整しました
-- 2020 年 2 月 26 日: 「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」を変更し、Azure での HANA のファイル システムの選択を明確にします
-- 2020 年 2 月 26 日: 「[SAP NetWeaver のための高可用性のアーキテクチャとシナリオ](./sap-high-availability-architecture-scenarios.md)」を変更し、RHEL マルチ SID 上の Azure VM 上の SAP NetWeaver での高可用性のガイドへのリンクを含めます
-- 2020 年 2 月 26 日: 「[SUSE Linux Enterprise Server for SAP Applications 上の Azure VM での SAP NetWeaver の高可用性](./high-availability-guide-suse.md)」、「[SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](./high-availability-guide-suse-netapp-files.md)」、「[Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性](./high-availability-guide-rhel.md)」、および「[SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](./high-availability-guide-rhel-netapp-files.md)」を変更し、マルチ SID ASCS/ERS クラスターがサポートされないという記述を削除します
-- 2020 年 2 月 26 日: SUSE マルチ SID クラスター ガイドへのリンクを追加するための、[Red Hat Enterprise Linux for SAP Applications マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](./high-availability-guide-rhel-multi-sid.md)をリリースします
-- 2020 年 2 月 25 日:新しい HA 記事へのリンクを追加するための、[SAP のための高可用性のアーキテクチャとシナリオ](./sap-high-availability-architecture-scenarios.md)に関する記事での変更
-- 2020 年 2 月 25 日: Standard Azure Load Balancer を使用するパブリック エンドポイントへのアクセスについて説明されているドキュメントを示すための、「[Pacemaker による SUSE Linux Enterprise Server 上の Azure VM での IBM Db2 LUW の高可用性](./dbms-guide-ha-ibm.md)」での変更
-- 2020 年 2 月 21 日: 「[SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ](./dbms_guide_sapase.md)」記事の全面改訂
-- 2020 年 2 月 21 日: /hana/data のストライプ サイズと、I/O スケジューラの設定の追加に関する新しい推奨事項を示すための、「[SAP HANA Azure 仮想マシンのストレージ構成](./hana-vm-operations-storage.md)」での変更
-- 2020 年 2 月 21 日: S224 と S224m の新たに認定された SKU を示すための、HANA Large Instance に関するドキュメントでの変更
-- 2020 年 2 月 21 日: エンキュー サーバー レプリケーション 2 アーキテクチャ (ENSA2) に合わせてクラスター制約を調整するための、[RHEL 上の SAP NetWeaver のための Azure VM 高可用性](./high-availability-guide-rhel.md)および [Azure NetApp Files を使用した RHEL 上の SAP NetWeaver のための Azure VM 高可用性](./high-availability-guide-rhel-netapp-files.md)に関する記事での変更
-- 2020 年 2 月 20 日: SUSE マルチ SID クラスター ガイドへのリンクを追加するための、[SLES マルチ SID 上の Azure VM での SAP NetWeaver の高可用性ガイド](./high-availability-guide-suse-multi-sid.md)に関する記事での変更
-

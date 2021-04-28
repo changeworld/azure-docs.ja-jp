@@ -10,19 +10,19 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 43eff2bea6f6d95291e9ba9650ff42187e39fc70
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 2de361a63d3e0ed45b5d99d48063064cc46a0390
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600167"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136357"
 ---
 # <a name="migration-guide-ibm-db2-to-sql-server-on-azure-vm"></a>移行ガイド: IBM Db2 から Azure VM 上の SQL Server
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
 
 このガイドでは、SQL Server Migration Assistant for Db2 を使用して、ユーザー データベースを IBM Db2 から Azure VM 上の SQL Server に移行する方法について説明します。 
 
-その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
+その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,7 +61,7 @@ SSMA for Db2 を使用して、データベース オブジェクトとデータ
 
 1. HTML レポートを確認し、変換の統計情報とエラーまたは警告を把握します。 また、Excel でレポートを開き、Db2 オブジェクトのインベントリとスキーマ変換の実行に必要な作業量を確認することもできます。 このレポートの既定の場所は、*SSMAProjects* 内のレポート フォルダーです。
 
-   (例: `drive:\<username>\Documents\SSMAProjects\MyDb2Migration\report\report_<date>`)。 
+   たとえば、`drive:\<username>\Documents\SSMAProjects\MyDb2Migration\report\report_<date>` です。 
 
    :::image type="content" source="media/db2-to-sql-on-azure-vm-guide/report.png" alt-text="エラーまたは警告を特定するために確認するレポートのスクリーンショット。":::
 

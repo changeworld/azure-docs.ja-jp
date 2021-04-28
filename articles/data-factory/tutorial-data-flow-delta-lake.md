@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2021
-ms.date: 02/09/2021
-ms.openlocfilehash: cb8d44353e826df14ed3baab2c4ca66ffed4a569
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 4a88ed2df74d3eebb96c42e2cdc87b14153419cd
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416792"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565374"
 ---
 # <a name="transform-data-in-delta-lake-using-mapping-data-flows"></a>マッピング データ フローを使用して Delta Lake のデータを変換する
 
@@ -58,15 +58,15 @@ Azure Data Factory を初めて使用する場合は、「[Azure Data Factory �
    ![パイプラインの作成](./media/doc-common-process/get-started-page.png)
 
 1. パイプラインの **[全般]** タブで、パイプラインの **名前** として「**DeltaLake**」と入力します。
-1. ファクトリの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
-
-    ![Data Flow アクティビティ](media/tutorial-data-flow/dataflow1.png)
 1. **[アクティビティ]** ウィンドウで、 **[移動と変換]** アコーディオンを展開します。 ウィンドウから **Data Flow** アクティビティをパイプライン キャンバスにドラッグ アンド ドロップします。
 
     ![Data Flow アクティビティをドロップできるパイプライン キャンバスを示すスクリーンショット。](media/tutorial-data-flow/activity1.png)
 1. **[Data Flow の追加]** ポップアップで、 **[新しい Data Flow の作成]** を選択し、データ フローに **DeltaLake** という名前を付けます。 終了したら、[完了] をクリックします。
 
     ![新しいデータ フローを作成するときにデータ フローの名前を指定する場所を示すスクリーンショット。](media/tutorial-data-flow/activity2.png)
+1. パイプライン キャンバスの上部のバーで、 **[Data Flow のデバッグ]** スライダーをオンにスライドします。 デバッグ モードを使用すると、ライブ Spark クラスターに対する変換ロジックの対話型テストが可能になります。 Data Flow クラスターのウォームアップには 5 から 7 分かかるため、ユーザーが Data Flow の開発を計画している場合は、最初にデバッグを有効にすることをお勧めします。 詳細については、[デバッグ モード](concepts-data-flow-debug-mode.md)に関するページを参照してください。
+
+    ![[データ フローのデバッグ] のスライダーを示すスクリーンショット。](media/tutorial-data-flow/dataflow1.png)
 
 ## <a name="build-transformation-logic-in-the-data-flow-canvas&quot;></a>データ フロー キャンバスでの変換ロジックの作成
 
