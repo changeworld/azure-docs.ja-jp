@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: d4a6e25578cd26b10b34f74a9f859d4957cc553b
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a528e224511fda363afb80a7749a018e07b5fa26
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104783814"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588005"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Postman を使用して Azure Digital Twins API に要求を送信する方法
 
@@ -23,9 +23,9 @@ ms.locfileid: "104783814"
 
 1. Azure CLI を使用して、Postman で API 要求を行うために使用する [**ベアラー トークンを取得**](#get-bearer-token)します。
 1. [**Postman コレクション**](#about-postman-collections)を設定し、ベアラー トークンを使用して認証するように Postman REST クライアントを構成します。 コレクションを設定するときに、次のいずれかのオプションを選択できます。
-    1. Azure Digital Twins API 要求の事前構築済みコレクションを [ **[インポート]** ](#import-collection-of-azure-digital-twins-apis) します。
-    1. 独自のコレクションを最初から [ **[作成]** ](#create-your-own-collection) します。
-1. 構成されたコレクションに [ **[要求の追加]** ](#add-an-individual-request) を行い、Azure Digital Twins API に送信します。
+    1. Azure Digital Twins API 要求の事前構築済みコレクションを [ **[インポート]**](#import-collection-of-azure-digital-twins-apis) します。
+    1. 独自のコレクションを最初から [ **[作成]**](#create-your-own-collection) します。
+1. 構成されたコレクションに [ **[要求の追加]**](#add-an-individual-request) を行い、Azure Digital Twins API に送信します。
 
 Azure Digital Twins には、**データ プレーン** と **コントロール プレーン** で使用できる 2 つの API セットがあります。 これらの API セットの相違点の詳細については、「[*方法: Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md)」を参照してください。 この記事には、両方の API セットに関する情報が含まれています。
 
@@ -77,6 +77,8 @@ Azure CLI が[ローカルにインストールされている](/cli/azure/insta
     ```
     ---
 
+    >[!NOTE]
+    > インスタンスとは異なる Azure Active Directory テナントに属しているサービス プリンシパルまたはユーザー アカウントを使用して Azure Digital Twins インスタンスにアクセスする必要がある場合は、Azure Digital Twins インスタンスの "ホーム" テナントからの **トークン** を要求する必要があります。 このプロセスの詳細については、"[*アプリ認証コードを作成する方法*](how-to-authenticate-client.md#authenticate-across-tenants)" に関するページを参照してください。
 
 3. 結果の `accessToken` の値をコピーし、次のセクションで使用するために保存します。 これが、要求を許可するために Postman に提供する **トークン値** です。
 

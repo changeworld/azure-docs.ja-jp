@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 66d41ed1bb900f55db0d3670c1ce312950ff165d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639421"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147051"
 ---
 # <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>クイックスタート: ARM テンプレートを使用して Azure キー コンテナーとキーを作成する 
 
@@ -169,7 +169,7 @@ ms.locfileid: "105639421"
 その他の Azure Key Vault テンプレートのサンプルは、[Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular)のページから入手できます。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
-[Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)、Azure PowerShell、Azure CLI、または REST API を使用できます。 デプロイ方法の詳細については、「[テンプレートのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)」を参照してください。
+[Azure portal](../../azure-resource-manager/templates/deploy-portal.md)、Azure PowerShell、Azure CLI、または REST API を使用できます。 デプロイ方法の詳細については、「[テンプレートのデプロイ](../../azure-resource-manager/templates/deploy-powershell.md)」を参照してください。
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
@@ -224,4 +224,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の詳細を確認する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する

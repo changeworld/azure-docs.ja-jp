@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 3/17/2021
-ms.openlocfilehash: 28fdd8b10c7106380c296c8131ade909ee88d0f8
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3fc50ef5a50c2c499b1c886bcf5aa73b11ba7c45
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107093"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133351"
 ---
 # <a name="co-sell-requirements"></a>共同販売の要件
 
@@ -50,12 +50,12 @@ ms.locfileid: "107107093"
 
 ### <a name="complete-the-co-sell-with-microsoft-tab"></a>[Microsoft と共同販売する] タブの完了
 
-自分のプランを公開または更新する際は、「[コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)」で詳しく説明されているとおりに、 **[Microsoft と共同販売する]** タブですべての必須情報を入力します。 ここには、次のドキュメントの提供が含まれます。
+自分のプランを公開または更新する際は、「[コマーシャル マーケットプレース プランの共同販売を構成する](./co-sell-configure.md)」で詳しく説明されているとおりに、 **[Microsoft と共同販売する]** タブですべての必須情報を入力します。 ここには、次のドキュメントの提供が含まれます。
 
 - ソリューションまたはプランの概要資料
 - ソリューションまたはプランの提案資料
 
-Microsoft は、これらのドキュメントの作成に役立つテンプレートを提供しています。 [Microsoft と共同販売する] タブの必須およびオプションの情報について詳しくは、「[コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)」を参照してください。
+Microsoft は、これらのドキュメントの作成に役立つテンプレートを提供しています。 [Microsoft と共同販売する] タブの必須およびオプションの情報について詳しくは、「[コマーシャル マーケットプレース プランの共同販売を構成する](./co-sell-configure.md)」を参照してください。
 
 ### <a name="publish-your-offer-live"></a>オファーを発行する
 
@@ -81,7 +81,7 @@ Azure IP 共同販売インセンティブ対象ステータスは、次のプ�
 - 技術的な検証では、自分のプランの 50% を超えるインフラストラクチャで Azure 上の反復可能な IP コードを使用していることを確認する必要があります。 コマーシャル マーケットプレース上の取引可能な Azure VM および Azure アプリケーション ソリューションは、この要件を既定で満たす必要がある点に注意してください。
 
 要件 3 - 参照アーキテクチャ図の提供:
-- 参照アーキテクチャ図を共同販売のドキュメントと一緒にパートナー センターにアップロードし、審査を受けます。 この図の作成のガイダンスについては、「[参照アーキテクチャ図](reference-architecture-diagram.md)」を参照してください。 図のアップロードの詳細については、「[コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)」を参照してください。
+- 参照アーキテクチャ図を共同販売のドキュメントと一緒にパートナー センターにアップロードし、審査を受けます。 この図の作成のガイダンスについては、「[参照アーキテクチャ図](reference-architecture-diagram.md)」を参照してください。 図のアップロードの詳細については、「[コマーシャル マーケットプレース プランの共同販売を構成する](./co-sell-configure.md)」を参照してください。
 
 ## <a name="requirements-for-business-applications-co-sell-incentivized-status"></a>Business Applications 共同販売インセンティブ対象ステータスの要件
 
@@ -89,4 +89,4 @@ Azure IP 共同販売インセンティブ対象ステータスは、次のプ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コマーシャル マーケットプレース プランの共同販売を構成する](commercial-marketplace-co-sell.md)
+- [コマーシャル マーケットプレース プランの共同販売を構成する](./co-sell-configure.md)

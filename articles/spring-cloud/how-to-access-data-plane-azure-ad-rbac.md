@@ -8,12 +8,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/04/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 90ee39039b0734bf434e7339a973358989c08175
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d94232a78257d21f5400b2cddbf8269635962542
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311364"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144603"
 ---
 # <a name="access-config-server-and-service-registry"></a>Config Server とサービス レジストリにアクセスする
 
@@ -39,7 +39,7 @@ Azure AD と RBAC を使用するには、次の手順で *Azure Spring Cloud Da
 
 Azure Spring Cloud Data Reader ロールが割り当てられると、お客様は Spring Cloud Config Server と Spring Cloud サービス レジストリのエンドポイントにアクセスできるようになります。 次の手順を実行します。
 
-1. アクセス トークンを取得します。 Azure AD ユーザーに Azure Spring Cloud Data Reader ロールが割り当てられると、次のコマンドを使用して、ユーザー、サービス プリンシパル、またはマネージド ID で Azure CLI にログインし、アクセス トークンを取得することができます。 詳細については、[Azure CLI の認証](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)に関する記事を参照してください。 
+1. アクセス トークンを取得します。 Azure AD ユーザーに Azure Spring Cloud Data Reader ロールが割り当てられると、次のコマンドを使用して、ユーザー、サービス プリンシパル、またはマネージド ID で Azure CLI にログインし、アクセス トークンを取得することができます。 詳細については、[Azure CLI の認証](/cli/azure/authenticate-azure-cli)に関する記事を参照してください。 
 
     ```azurecli
     az login
@@ -51,7 +51,7 @@ Azure Spring Cloud Data Reader ロールが割り当てられると、お客様�
     * *'https://SERVICE_NAME.svc.azuremicroservices.io/config/actuator/'* 
 
 >[!NOTE]
-> Azure China を使用している場合は `*.azuremicroservices.io` を `*.microservices.azure.cn` に置き換えてください ([詳細](https://docs.microsoft.com/azure/china/resources-developer-guide#check-endpoints-in-azure))。
+> Azure China を使用している場合は `*.azuremicroservices.io` を `*.microservices.azure.cn` に置き換えてください ([詳細](/azure/china/resources-developer-guide#check-endpoints-in-azure))。
 
 3. 作成されたエンドポイントにアクセス トークンを使用してアクセスします。 アクセス トークンをヘッダーに配置して認可を提供します。  "GET" メソッドのみがサポートされています。
 
@@ -60,7 +60,7 @@ Azure Spring Cloud Data Reader ロールが割り当てられると、お客様�
     応答が *401 Unauthorized* の場合は、ロールが正常に割り当てられているかどうかをご確認ください。  ロールが有効になるか、アクセス トークンの有効期限が切れていないことを確認するには、数分かかります。
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure CLI を認証する](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)
+* [Azure CLI を認証する](/cli/azure/authenticate-azure-cli)
 * [運用環境に対応したエンドポイント](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready-endpoints)
 
 ## <a name="see-also"></a>関連項目

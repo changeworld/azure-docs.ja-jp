@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f8f9dd6d51b974ebd31804daf0402ca5535ffc92
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 51a354bfc6df43938d8e2117a7d93f9bd6749225
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751582"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140787"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Azure Key Vault の監視とアラート
 
@@ -26,7 +26,7 @@ ms.locfileid: "107751582"
 + メトリックの構成方法とダッシュボードの作成方法
 + 指定したしきい値でアラートを作成する方法
 
-Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 [Azure Monitor for Key Vault の詳細はこちらからご確認ください](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview#introduction-to-azure-monitor-for-key-vault)
+Azure Monitor for Key Vault では、ログとメトリックの組み合わせによる、グローバルな監視ソリューションが用意されています。 [Azure Monitor for Key Vault の詳細はこちらからご確認ください](../../azure-monitor/insights/key-vault-insights-overview.md#introduction-to-azure-monitor-for-key-vault)
 
 ## <a name="basic-key-vault-metrics-to-monitor"></a>監視する基本的な Key Vault メトリック
 
@@ -210,6 +210,4 @@ Azure Monitor for Key Vault では、ログとメトリックの組み合わせ�
 
 ## <a name="next-steps"></a>次のステップ
 
-これで、監視ダッシュボードが正常に作成され、キー コンテナーのアラートが構成されました。 上記のすべての手順を実行すると、構成したアラート条件をキー コンテナーが満たした場合に電子メール アラートが届きます。 次に例を示します。 この記事で設定したツールを使用して、キー コンテナーの正常性をアクティブに監視します。 
-
-
+これで、監視ダッシュボードが正常に作成され、キー コンテナーのアラートが構成されました。 上記のすべての手順を実行すると、構成したアラート条件をキー コンテナーが満たした場合に電子メール アラートが届きます。 次に例を示します。 この記事で設定したツールを使用して、キー コンテナーの正常性をアクティブに監視します。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/22/2021
 ms.author: jeedes
-ms.openlocfilehash: c1172cd818a3b40e908bbf5a133ea76d6b0d17b9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6b74f4616f988d27bca7c7087d33bdb5f5a2a324
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642883"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130690"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-equinix-federation-app"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Equinix Federation App の統合
 
@@ -136,6 +136,4 @@ Equinix Federation App のサインオン URL に直接移動し、そこから�
 
 ## <a name="next-steps"></a>次のステップ
 
-Equinix Federation App を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
-
-
+Equinix Federation App を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

@@ -7,13 +7,13 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
-ms.date: 3/17/2021
-ms.openlocfilehash: b626012ad825b263e4f837159a067ed1d817d93a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/15/2021
+ms.openlocfilehash: dcb77e45f5e1469363eb279626a866c7f719de40
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104608748"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107537535"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Microsoft のセールス チームとパートナーによる共同販売の概要
 
@@ -80,7 +80,7 @@ Business Applications 共同販売インセンティブ対象 (Standard およ�
 - マーケットプレース サービス料金は 20% から 10% に引き下げられます。 この割引は、コマーシャル マーケットプレースを通じて販売される貴社の IaaS (サービスとしてのインフラストラクチャ) ソリューションまたは SaaS (サービスとしてのソフトウェア) ソリューションに適用されます。 詳細については、「[コマーシャル マーケットプレースのサービス料金](marketplace-commercial-transaction-capabilities-and-considerations.md#commercial-marketplace-service-fees)」を参照してください。
 - クラウド ソリューション プロバイダー (CSP) パートナーは、10% のインセンティブを受けて貴社の IaaS ソリューションまたは SaaS プランを販売します。 CSP プログラムについて詳しくは、「[クラウド ソリューション プロバイダー プログラム](cloud-solution-providers.md)」をご覧ください。
 - Azure Marketplace を介したプランの売上は、顧客の Azure 従量課金のコミットメントに寄与します。 対象となるお客様には、Azure portal で **Azure 特典対象** とマークされたプランが表示されます。 詳細については、「[Azure の消費コミットメントのベネフィット](azure-consumption-commitment-benefit.md)」を参照してください。
-- _Azure IP 共同販売インセンティブ対象_ ステータスを達成する、または [Microsoft ビジネス アプリケーション ISV コネクト プログラム](business-applications-isv-program.md)に登録していてステータスが共同販売の準備完了である場合、オンライン ストアのプラン リスト ページに **Microsoft 推奨ソリューション** バッジが表示されます。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。
+- "_Azure IP 共同販売インセンティブ対象_" ステータスを達成する、または [Microsoft ビジネス アプリケーション ISV コネクト プログラム](business-applications-isv-program.md)に登録していてステータスが共同販売の準備完了であるプランには、オンライン ストア ([Azure Marketplace](https://azuremarketplace.microsoft.com/) と [AppSource](https://appsource.microsoft.com/)) のプラン リスト ページに **Microsoft 推奨ソリューション** バッジが表示されます。  プランが対応する状態になってから、優先されるソリューション バッジがオンライン ストアに表示されるまでに最大で 30 日間かかることがあります。 このバッジは、特定の業界またはソリューション分野で、オファーの品質、パフォーマンス、顧客ニーズへの対応能力の向上を促進します。
 
 共同販売の準備完了および共同販売インセンティブ対象ステータスを取得する方法については、[共同販売の準備完了および共同販売インセンティブ対象の要件](co-sell-requirements.md)に関するページを参照してください。
 

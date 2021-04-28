@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 4affed8a1226f02970928b2c227b0295167959de
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 93e6fcc11703fc24d97bc19ab9cc0d2129ff666f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106277099"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143325"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>ブロック BLOB ストレージのパフォーマンス レベル
 
@@ -63,7 +63,7 @@ Standard パフォーマンスでは、最もコスト効率の高い方法で�
 
 ## <a name="migrate-from-standard-to-premium"></a>Standard から Premium に移行する
 
-既存の Standard パフォーマンス ストレージ アカウントを Premium パフォーマンスのブロック BLOB ストレージ アカウントに変換することはできません。 Premium パフォーマンス ストレージ アカウントに移行するには、BlockBlobStorage アカウントを作成し、データを新しいアカウントに移行する必要があります。 詳細については、「[ブロック BLOB ストレージ アカウントの作成](storage-blob-create-account-block-blob.md)」を参照してください。
+既存の Standard パフォーマンス ストレージ アカウントを Premium パフォーマンスのブロック BLOB ストレージ アカウントに変換することはできません。 Premium パフォーマンス ストレージ アカウントに移行するには、BlockBlobStorage アカウントを作成し、データを新しいアカウントに移行する必要があります。 詳細については、「[ブロック BLOB ストレージ アカウントの作成](../common/storage-account-create.md)」を参照してください。
 
 ストレージ アカウント間で BLOB をコピーするには、最新バージョンの [AzCopy](../common/storage-use-azcopy-v10.md#transfer-data) コマンドライン ツールを使用できます。 データの移動と変換には、Azure Data Factory などの他のツールを使用することもできます。
 

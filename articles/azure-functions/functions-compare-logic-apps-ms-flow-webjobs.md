@@ -4,12 +4,12 @@ description: 統合タスクに最適化された Microsoft クラウド サー�
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: e6bd97469a6b7b6c42427e130ac103954377c652
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c25f1511203cf3f951e409ebbaa9381329eeed92
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643365"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128381"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Azure における統合と自動化の適切なサービスを選ぶ
 
@@ -58,7 +58,7 @@ Azure Functions では、コードを記述したり [Durable Functions 拡張�
 | **アクション** | 個々のアクティビティは Azure 関数 (アクティビティ関数のコードを記述する) |[既製のアクションの豊富なコレクション](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | **Monitoring** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[Azure Monitor ログ](../logic-apps/monitor-logic-apps.md)|
 | **管理** | [REST API](durable/durable-functions-http-api.md)、[Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)、[REST API](/rest/api/logic/)、[PowerShell](/powershell/module/az.logicapp)、[Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
-| **実行コンテキスト** | [ローカル](functions-runtime-overview.md)またはクラウドで実行できます | クラウドでのみ動作します|
+| **実行コンテキスト** | [ローカル](./functions-kubernetes-keda.md)またはクラウドで実行できます | クラウドでのみ動作します|
 
 <a name="function"></a>
 

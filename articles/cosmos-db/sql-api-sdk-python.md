@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 04/06/2021
 ms.author: rosouz
 ms.custom: devx-track-python
-ms.openlocfilehash: ff551c5d677029f39d9a3db3a64f3d03e2c57eba
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 6a10d29daaade5c588fc966190cbb81551170fd8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107366032"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139437"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Python SDK:リリース ノートとリソース
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -42,7 +42,7 @@ ms.locfileid: "107366032"
 | ページ| Link |
 |---|---|
 |**SDK のダウンロード**|[PyPI](https://pypi.org/project/azure-cosmos)|
-|**API ドキュメント**|[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos?view=azure-python&preserve-view=true)|
+|**API ドキュメント**|[Python の API リファレンス ドキュメント](/python/api/azure-cosmos/azure.cosmos?preserve-view=true&view=azure-python)|
 |**SDK のインストール手順**|[Python SDK のインストール手順](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cosmos/azure-cosmos)|
 |**開始するには**|[Python SDK の開始](create-sql-api-python.md)|
 |**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/) と [Python 3.6+](https://www.python.org/downloads/)|

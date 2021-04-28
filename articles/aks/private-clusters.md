@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 3/31/2021
-ms.openlocfilehash: 474c9a5d58627cec59904ccbcc5b3597de314612
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 76785caedb9ca97d947e83f5aa8ff5b32d827914
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120369"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772903"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -80,13 +80,13 @@ az aks create \
 * AKS プレビュー バージョン 0.5.7 以降
 * API バージョン 2020-11-01 以降
 
-### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する (プレビュー)
+### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [system|none]
 ```
 
-### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone-preview"></a>カスタム プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する (プレビュー)
+### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone"></a>カスタム プライベート DNS ゾーンがあるプライベート AKS クラスターを作成する
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
@@ -195,10 +195,10 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitn
 * コントロール プレーンのメンテナンスの場合、[AKS IP](./limit-egress-traffic.md) が変更される可能性があります。 この場合は、カスタム DNS サーバー上で API サーバーのプライベート IP を指している A レコードを更新し、hostNetwork を使用するカスタム ポッドまたはデプロイを再起動する必要があります。
 
 <!-- LINKS - internal -->
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/tutorial-create-host-portal.md
