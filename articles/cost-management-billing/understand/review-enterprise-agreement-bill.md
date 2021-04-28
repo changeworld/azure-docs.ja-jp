@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5d945c421dc0a4abed17b3a355339c131dd922df
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598245"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728052"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 
@@ -396,51 +396,6 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
     Azure エンタープライズ ポータルの **[利用状況のダウンロード]** タブで、API キーを取得できます。 **[API アクセス キー]** を選択し、キーを **[アカウント キー]** ボックスに貼り付けます。
 1. データ セットのサイズに応じて、Power BI でのデータの読み込みには約 5 分から 30 分かかります。
-
-## <a name="reports-faq"></a>レポートに関する FAQ
-
-このセクションでは、レポートに関する一般的な質問にお答えします。
-
-### <a name="why-is-my-cost-showing-as-0"></a>コストが $0 と表示されるのはなぜですか?
-
-**ダイレクト加入契約** のお客様については、エンタープライズ管理者が、アカウント所有者と部門管理者に対して、使用状況レポートのコストや価格に関する情報へのアクセス権を提供できます。 次の手順に従います。
-
-1. Azure エンタープライズ ポータルの左側のナビゲーションで、 **[管理]** を選択します。
-1. DA (部門管理者) ビューの請求額の横にある青色の鉛筆を選択します。
-1. **[有効]** を選択して保存します。
-1. AO (アカウント所有者) ビューの請求額の横にある青色の鉛筆を選択します。
-1. **[有効]** を選択して保存します。
-
-> [!NOTE]
-> アカウント所有者または部門管理者の場合は、エンタープライズ管理者に連絡して価格機能を有効にしてください。
-
-**インダイレクト加入契約** のお客様の場合は、パートナーに連絡し、価格機能が有効にされていることを確認してください。 これを行うことができるのはパートナーのみです。 有効になった後で、エンタープライズ管理者として、加入契約のコストと価格を確認できます。
-
-アカウント所有者または部門管理者に対して請求金額の表示機能を有効にする必要がある場合、パートナーは **ダイレクト加入契約** の手順に従います。
-
-### <a name="why-is-there-no-sku-information-on-my-usage-detail-report"></a>使用状況の詳細レポートに SKU 情報がないのはなぜですか?
-
-使用状況の詳細レポートには SKU 情報は含まれません。 しかし、レポートには使用状況の情報が含まれているため、価格シート レポートをダウンロードして、SKU 情報を取得することができます。
-
-### <a name="why-doesnt-the-total-amount-on-azure-marketplace-match-the-reports-for-usage-summary-and-detail"></a>Azure Marketplace の合計金額が使用状況の概要および詳細のレポートと一致しないのはなぜですか?
-
-Azure Marketplace の料金レポートには、使用量ベースの料金のみが表示されます。 1 回限りの料金は表示されません。 最新の使用量ベースの料金と 1 回限りの料金については、使用状況の概要ページを参照してください。
-
-### <a name="why-is-there-no-information-on-my-api-report"></a>API レポートに関する情報がないのはなぜですか?
-
-API キーは 6 か月ごとに期限切れになります。 問題が発生している場合は、エンタープライズ管理者が新しい API キーを生成する必要があります。 必ず、API レポートに関する FAQ の手順に従ってください。
-
-### <a name="why-isnt-my-power-bi-report-working"></a>Power BI レポートが機能しないのはなぜですか?
-
-Power BI の問題については、[Power BI サポート チーム](https://support.powerbi.com)のチケットを記録してください。
-
-### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>レポートにリソース タグが表示されないのはなぜですか
-
-リソース タグは Azure portal で管理されます。 [Azure portal](https://portal.azure.com) で Azure サブスクリプション チームに問い合わせることができます。 「[Azure サポート要求を作成する方法](../../azure-portal/supportability/how-to-create-azure-support-request.md)」の記事の手順に従ってください。
-
-### <a name="why-does-my-resource-rate-change-every-day"></a>リソースの比率が毎日変わるのはなぜですか?
-
-詳細な使用状況レポートに表示されるリソースの比率は、計算値です。 サービスに対して課金された平均月額料金を表します。 リソースの比率は、サービス単位に対する月額コミットメントおよび月額超過料金の平均から計算されます。 コミットメントおよび超過料金に対して課金される使用量の部分は、月末に変わります。 そのため、リストされているリソースの比率もその月の間に変わります。 月末から 5 日目にリソースの比率が確定します。
 
 ### <a name="glossary-of-processes-for-calculating-the-resource-rate"></a>リソースの比率を計算するためのプロセスの用語集
 
