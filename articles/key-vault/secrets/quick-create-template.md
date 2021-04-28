@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 02/27/2020
 ms.author: jgao
-ms.openlocfilehash: 1cbe5f986ca36ecc3b45cf4bb7ecffa7067a27bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 214c86eb7272c87e067b1d5f6df0b09ce9e7095c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936619"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814138"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -163,4 +163,4 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Azure Key Vault の概要](../general/overview.md)を確認する
 - [Azure Resource Manager](../../azure-resource-manager/management/overview.md) の詳細を確認する
-- [Key Vault のセキュリティの概要](../general/security-overview.md)を確認する
+- [Key Vault のセキュリティの概要](../general/security-features.md)を確認する

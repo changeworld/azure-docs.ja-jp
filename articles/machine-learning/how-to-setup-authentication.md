@@ -9,14 +9,14 @@ ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 04/02/2021
-ms.topic: conceptual
-ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: ee767cbeafcce604ecb4a79ce0fdf21c70bbb47c
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.topic: how-to
+ms.custom: has-adal-ref, devx-track-js, contperf-fy21q2
+ms.openlocfilehash: 44468f056cb9e13b8384c86fa5858ef1c3edb44b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219639"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070031"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 

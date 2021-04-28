@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: d5b2ec220bbf14a79247ed2c78a0e84f4717fae3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b2b859515481281b571c9803329c6e41cd365ef5
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94684238"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070049"
 ---
 # <a name="install-linkerd-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Linkerd をインストールする
 
@@ -270,7 +270,7 @@ Linkerd のインストール オプションと構成オプションを他に�
 <!-- LINKS - external -->
 
 [linkerd]: https://linkerd.io/
-[linkerd-cncf]: https://landscape.cncf.io/selected=linkerd
+[linkerd-cncf]: https://landscape.cncf.io/?selected=linkerd
 [linkerd-faq]: https://linkerd.io/2/faq/
 [linkerd-architecture]: https://linkerd.io/2/reference/architecture/
 [linkerd-getting-started]: https://linkerd.io/2/getting-started/

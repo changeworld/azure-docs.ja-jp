@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ddafb0e76799e3d8011232534c505f97c79b22e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 71249534c6a088088213659b5a45e042229721c7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751132"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813184"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Azure Synapse Analytics ワークスペースの暗号化
 
@@ -53,7 +53,7 @@ Azure サービスの最初の暗号化レイヤーは、プラットフォー�
 
 ### <a name="key-access-and-workspace-activation"></a>キー アクセスとワークスペースのアクティブ化
 
-カスタマー マネージド キーを使用した Azure Synapse 暗号化モデルでは、必要に応じて暗号化と暗号化解除を行うために Azure Key Vault 内のキーにワークスペースがアクセスします。 アクセス ポリシーまたは [Azure Key Vault RBAC アクセス](../../key-vault/general/rbac-guide.md)を使用して、ワークスペースがキーにアクセスできるようになります。 Azure Key Vault アクセス ポリシーを使用してアクセス許可を付与する場合は、ポリシーの作成時に [[Application-only]\(アプリケーションのみ\)](../../key-vault/general/security-overview.md#key-vault-authentication-options) オプションを選択します (ワークスペースのマネージド ID を選択し、承認済みアプリケーションとして追加しないでください)。
+カスタマー マネージド キーを使用した Azure Synapse 暗号化モデルでは、必要に応じて暗号化と暗号化解除を行うために Azure Key Vault 内のキーにワークスペースがアクセスします。 アクセス ポリシーまたは [Azure Key Vault RBAC アクセス](../../key-vault/general/rbac-guide.md)を使用して、ワークスペースがキーにアクセスできるようになります。 Azure Key Vault アクセス ポリシーを使用してアクセス許可を付与する場合は、ポリシーの作成時に [[Application-only]\(アプリケーションのみ\)](../../key-vault/general/security-features.md#key-vault-authentication-options) オプションを選択します (ワークスペースのマネージド ID を選択し、承認済みアプリケーションとして追加しないでください)。
 
  ワークスペースをアクティブ化する前に、ワークスペースのマネージド ID には、それがキー コンテナー上で必要となるアクセス許可を付与する必要があります。 この段階的なワークスペースのアクティブ化により、ワークスペース内のデータはカスタマー マネージド キーで確実に暗号化されます。 暗号化は、専用 SQL プールに対して有効または無効にすることができます。各プールの暗号化は既定では有効になっていません。
 

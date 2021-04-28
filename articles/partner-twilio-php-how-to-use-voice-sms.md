@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: bf1ab01b39d594002bc5e677ffe6c3049fbb91ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a59ac248cbc04d9cb8dc4ecc05c434651b3ed1b9
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "95521021"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065351"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>PHP で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -276,7 +276,7 @@ Azure の PHP での Twilio の使用の詳細については、「[Azure 上の
 [verify_phone]: https://www.twilio.com/user/account/phone-numbers/verified#
 [twilio_api_documentation]: https://www.twilio.com/api
 [twilio_security_guidelines]: https://www.twilio.com/docs/security
-[twilio_howtos]: https://www.twilio.com/docs/howto
+[twilio_howtos]: https://www.twilio.com/docs/all
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart

@@ -4,14 +4,14 @@ description: Azure SQL Managed Instance エージェントを使用して SSIS �
 ms.service: data-factory
 ms.topic: conceptual
 ms.author: lle
-author: lle
+author: lrtoyou1223
 ms.date: 04/14/2020
-ms.openlocfilehash: 916d799ba08f46cb86ee2e22c4af7fc1b92b385f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 904d742792c4fd43b5f69e8ec01317527196dad3
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100386154"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903220"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Azure SQL Managed Instance エージェントを使用して SSIS パッケージを実行する
 

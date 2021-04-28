@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory エンティティの名前付け規則
 description: Data Factory エンティティの名前付け規則について説明します。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: a1a0622c0736bad5f6c205fab01f4405577ed67a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 349a768af9b1e7693840880df5e870991336a8ba
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783355"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903648"
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - 名前付け規則
 
@@ -20,7 +20,7 @@ ms.locfileid: "104783355"
 
 次の表に、Data Factory アーティファクトの名前付け規則を示します。
 
-| 名前 | 名前の一意性 | 検証チェック |
+| Name | 名前の一意性 | 検証チェック |
 |:--- |:--- |:--- |
 | Data Factory | Microsoft Azure 全体で一意です。 名前の大文字と小文字を区別されません。つまり、`MyDF` と `mydf` は同じデータ ファクトリを表します。 |<ul><li>各データ ファクトリは、厳密に 1 つの Azure サブスクリプションに関連付けられます。</li><li>オブジェクト名は英文字または数字で始まり、英文字、数字、ダッシュ (-) 文字のみを含めることができます。</li><li>すべてのダッシュ (-) 文字は、その直前または直後に文字または数字が使用されている必要があります。 連続するダッシュ文字はコンテナー名では使用できません。</li><li>名前は 3 ～ 63 文字の長さにすることができます。</li></ul> |
 | リンクされたサービス、データセット、パイプライン、データ フロー | データ ファクトリ内で一意です。 名前の大文字と小文字は区別されません。 |<ul><li>オブジェクト名は英字で始める必要があります。</li><li>次の文字は入力できません: “.”、“+”、“?”、“/”、“<”、”>”、”*”、”%”、”&”、”:”、”\\”</li><li>リンクされたサービス、データ フロー、データセットの名前では、ダッシュ ("-") は使用できません。</li></ul>  |

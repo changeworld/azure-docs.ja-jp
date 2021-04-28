@@ -3,13 +3,13 @@ title: キャプチャを有効化したイベント ハブの作成 - Azure Eve
 description: Azure Resource Manager テンプレートを使用して、1 つのイベント ハブを含んだ Azure Event Hubs 名前空間を作成して Capture を有効にします
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 1b7ce00c1db0866b1965ed6d1bba31aa28f8bc24
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d17561fca32f272450748378a61c5c3ad77f9ec4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107304938"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071399"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 

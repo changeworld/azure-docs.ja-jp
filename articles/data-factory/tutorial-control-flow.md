@@ -1,19 +1,19 @@
 ---
 title: Azure Data Factory パイプラインでの分岐
 description: アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 83bc90ca251fddd498dd365f1a4b00689a471475
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b15e1df6360d58c22de0da2d1745a2478fd02b4
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785667"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904768"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 

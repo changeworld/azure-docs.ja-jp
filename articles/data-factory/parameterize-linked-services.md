@@ -4,14 +4,14 @@ description: Azure Data Factory のリンクされたサービスをパラメー
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/18/2021
-author: dcstwh
-ms.author: weetok
-ms.openlocfilehash: df26b77f37100ae41b26c013c57cccbfa0d7e205
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+author: chez-charlie
+ms.author: chez
+ms.openlocfilehash: 2bbb4017d0f5bd700bfbc9964f8949d59999ea4d
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104595585"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903688"
 ---
 # <a name="parameterize-linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービスのパラメーター化
 

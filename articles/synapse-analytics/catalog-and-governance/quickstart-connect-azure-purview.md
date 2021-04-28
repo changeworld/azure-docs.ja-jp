@@ -3,17 +3,17 @@ title: Azure Purview アカウントの接続 
 description: Azure Purview アカウントを Synapse ワークスペースに接続します。
 author: julieMSFT
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: purview
 ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: ad9250d022f02db06c9c5251c1fccfbfb730af67
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: e992b83b59a76b40a7a3065e9626e4b1d6203100
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567878"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143271"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>クイック スタート:  Azure Purview アカウントを Synapse ワークスペースに接続する 
 

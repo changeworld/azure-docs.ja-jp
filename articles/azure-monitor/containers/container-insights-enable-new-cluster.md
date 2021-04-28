@@ -3,13 +3,13 @@ title: 新しい Azure Kubernetes Service (AKS) クラスターを監視する |
 description: Container insights のサブスクリプションによって、新しい Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.custom: devx-track-terraform, devx-track-azurecli
-ms.openlocfilehash: 9b6c4f8a05b8e7a350ebd5afd677e8bb2ee6e9b4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-terraform
+ms.openlocfilehash: fd00c59b277bff05abe0c8bb4d95ca56364a8b10
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101717572"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071507"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>新しい Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 

@@ -9,12 +9,12 @@ ms.service: azure-analysis-services
 tags:
 - azure-resource-manager
 ms.custom: devx-track-azurepowershell - subject-armqs - references_regions - mode-arm
-ms.openlocfilehash: e7203f4b5890ab81cbf337c5f3201d85a3aef0c0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9bd1ac25c433c2308564b5b224814d920751b143
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769371"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107948025"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>クイック スタート:サーバーの作成 - ARM テンプレート
 
@@ -24,7 +24,7 @@ ms.locfileid: "107769371"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.analysisservices%2Fanalysis-services-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ ms.locfileid: "107769371"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-analysis-services-create/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-analysis-services-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.analysisservices/analysis-services-create/azuredeploy.json":::
 
 このテンプレートには、1 つの [Microsoft.AnalysisServices/servers](/azure/templates/microsoft.analysisservices/servers) リソースがファイアウォール規則と共に定義されています。
 
@@ -43,7 +43,7 @@ ms.locfileid: "107769371"
 
 1. Azure にサインインして、テンプレートを開くには、次の [Azure へのデプロイ] リンクを選択します。 このテンプレートを使用して、Analysis Services サーバー リソースを作成し、必須のプロパティと省略可能なプロパティを指定します。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-analysis-services-create%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.analysisservices%2Fanalysis-services-create%2Fazuredeploy.json)
 
 2. 次の値を選択または入力します。
 

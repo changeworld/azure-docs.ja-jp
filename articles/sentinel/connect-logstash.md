@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2020
 ms.author: yelevin
-ms.openlocfilehash: 10812cf97f4f0dfc6f7957608eddf7acf929c3fc
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 25deccdd190e13d3f0ade319c7a8243e20847ee6
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579766"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071052"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Logstash を使用して Azure Sentinel にデータ ソースを接続する
 
@@ -83,7 +83,7 @@ Logstash の[構成ファイルの構造](https://www.elastic.co/guide/en/logsta
 
 > [!TIP]
 > -  ワークスペース ID と主キーは、ワークスペース リソースの **[エージェント管理]** で確認できます。
-> - **ただし**、資格情報やその他の機密情報を構成ファイルにクリアテキストで格納することは、セキュリティのベスト プラクティスに沿っていないため、構成に **ワークスペース ID** と **ワークスペースの主キー** を安全に含めるために、**Logstash キー ストア** を利用することを強くお勧めします。 手順については、[Elastic のドキュメント](https://www.elastic.co/guide/en/elasticsearch/reference/current/get-started-logstash-user.html)を参照してください。
+> - **ただし**、資格情報やその他の機密情報を構成ファイルにクリアテキストで格納することは、セキュリティのベスト プラクティスに沿っていないため、構成に **ワークスペース ID** と **ワークスペースの主キー** を安全に含めるために、**Logstash キー ストア** を利用することを強くお勧めします。 手順については、[Elastic のドキュメント](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html)を参照してください。
 
 #### <a name="sample-configurations"></a>サンプルの構成
 

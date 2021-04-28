@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: b0e076f3b248942870ba58a51c85c3df1f1277a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: a970eb23c171522907b6066454d9ca15d85f0835
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750610"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812288"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Azure API Management ポリシーで名前付きの値を使用する
 
@@ -42,7 +42,7 @@ ms.locfileid: "107750610"
 API Management のセキュリティ向上に役立つため、キー コンテナーのシークレットを使用することをお勧めします。
 
 * キー　コンテナーに格納されているシークレットは、サービス間で再利用できます
-* きめ細かい[アクセス ポリシー](../key-vault/general/security-overview.md#privileged-access)をシークレットに適用できます
+* きめ細かい[アクセス ポリシー](../key-vault/general/security-features.md#privileged-access)をシークレットに適用できます
 * キー コンテナーで更新されたシークレットは、API Management で自動的にローテーションされます。 キー コンテナー内で更新が行われると、4 時間以内に API Management 内の名前付きの値が更新されます。 また、Azure portal または管理 REST API を使用して、シークレットを手動で更新することもできます。
 
 ### <a name="prerequisites-for-key-vault-integration"></a>キー コンテナー統合の前提条件

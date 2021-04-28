@@ -10,18 +10,18 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84053df34ffda0d4686ad80a9e5f3af00ac53d72
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10d9cd87e15303515c02903c9127c1fd0e1c791a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94949498"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070877"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-ID 開発者は、Azure Active Directory B2C (Azure AD B2C) で、RESTful API との対話をユーザー体験に統合できます。 このチュートリアルの最後では、[RESTful サービス](custom-policy-rest-api-intro.md)と対話する Azure AD B2C ユーザー体験を作成することができます。
+ID 開発者は、Azure Active Directory B2C (Azure AD B2C) で、RESTful API との対話をユーザー体験に統合できます。 このチュートリアルの最後では、[RESTful サービス](api-connectors-overview.md)と対話する Azure AD B2C ユーザー体験を作成することができます。
 
 このシナリオでは、企業の基幹業務ワークフローと統合し、ユーザーのトークン データを強化します。 Azure AD B2C は、ローカルまたはフェデレーション アカウントを使用したサインアップまたはサインイン時に REST API を呼び出し、リモート データ ソースからユーザーの拡張プロファイル データを取得します。 このサンプルでは、Azure AD B2C は、ユーザーの一意の識別子である objectId を送信します。 これにより REST API は、ユーザーのアカウント残高 (ランダムな数値) を返します。 このサンプルは、お使いのご自分の CRM システム、マーケティング データベース、または任意の基幹業務ワークフローと統合して、出発点として使用することができます。
 
@@ -29,8 +29,8 @@ ID 開発者は、Azure Active Directory B2C (Azure AD B2C) で、RESTful API �
 
 ## <a name="prerequisites"></a>前提条件
 
-- [カスタム ポリシーの概要](custom-policy-get-started.md)に関するページの手順を完了します。 ローカル アカウントでのサインアップとサインインのために作業用カスタム ポリシーを持つ必要があります。
-- [REST API 要求交換のお使いの Azure Active Directory B2C カスタム ポリシーへの統合](custom-policy-rest-api-intro.md)に関する方法を参照してください。
+- [カスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)に関するページの手順を完了します。 ローカル アカウントでのサインアップとサインインのために作業用カスタム ポリシーを持つ必要があります。
+- [REST API 要求交換のお使いの Azure Active Directory B2C カスタム ポリシーへの統合](api-connectors-overview.md)に関する方法を参照してください。
 
 ## <a name="prepare-a-rest-api-endpoint"></a>REST API エンドポイントを準備する
 

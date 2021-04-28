@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions, synapse-cosmos-db
-ms.openlocfilehash: 24886ff3e01e9d9b4c01eabc917ced433599c0fa
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5cfe932d4f9ea60a044ce0b594df800fa37af6f1
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727129"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904930"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Azure Synapse Link for Azure Cosmos DB を構成して使用する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -288,7 +288,7 @@ Azure Synapse Link の使用を開始する場合、[GitHub](https://aka.ms/cosm
 
 * [Azure Cosmos DB 分析ストアの概要。](analytical-store-introduction.md)
 
-* [Azure Cosmos DB の Synapse Link に関してよく寄せられる質問。](synapse-link-frequently-asked-questions.md)
+* [Azure Cosmos DB の Synapse Link に関してよく寄せられる質問。](synapse-link-frequently-asked-questions.yml)
 
 * [Azure Synapse Analytics での Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)。
 

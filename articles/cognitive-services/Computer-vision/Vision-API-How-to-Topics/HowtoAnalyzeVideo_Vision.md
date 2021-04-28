@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: c86b06ff46f1ddc8d22d2ab7ec4bc8620a8c862f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3aa218710ddd4addfb8e430122ab19c95e42772a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88933173"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070893"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>ほぼリアルタイムでビデオを分析する
 
@@ -237,7 +237,7 @@ namespace BasicConsoleSample
 3. [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub リポジトリを複製します。
 4. Visual Studio 2015 以降でサンプルを開き、サンプル アプリケーションをビルドして実行します。
     - BasicConsoleSample の場合、Face キーは、[BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 内に直接ハードコーディングされています。
-    - LiveCameraSample の場合、アプリの**設定**ウィンドウにキーを入力します。 これらのキーは、セッションを移動してもユーザー データとして残されます。
+    - LiveCameraSample の場合、アプリの **設定** ウィンドウにキーを入力します。 これらのキーは、セッションを移動してもユーザー データとして残されます。
 
 サンプルを統合する準備ができたら、自分のプロジェクトから VideoFrameAnalyzer ライブラリを参照します。
 
@@ -247,5 +247,5 @@ VideoFrameAnalyzer の画像、音声、ビデオ、またはテキストの解�
 
 このガイドでは、Face および Computer Vision サービスを使用してライブ ビデオ ストリームでほぼリアルタイムの分析を実行する方法を学習しました。 また、サンプル コードを実際に使ってみる方法についても学習しました。
 
-フィードバックや提案は、[GitHub リポジトリ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)からお気軽にお寄せください。 API に関するより幅広いフィードバックについては、[UserVoice サイト](https://cognitive.uservoice.com/)にアクセスしてください。
+フィードバックや提案は、[GitHub リポジトリ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)からお気軽にお寄せください。 API に関するより幅広いフィードバックについては、UserVoice サイトにアクセスしてください。
 

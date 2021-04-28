@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: devx-track-js
 ms.devlang: javascript
-ms.openlocfilehash: 03192b8a84b78682b53bf3d47e7de7b65eb8bceb
-ms.sourcegitcommit: e6de1702d3958a3bea275645eb46e4f2e0f011af
+ms.openlocfilehash: da341d202dcfd0fc81a6becec6646b1116069aa7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "104723506"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123287"
 ---
 # <a name="1---overview-of-adding-search-to-a-website"></a>1 - Web サイトへの検索の追加の概要
 
@@ -59,7 +59,7 @@ ms.locfileid: "104723506"
     - [Azure Cognitive Search 0.2.0+](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurecognitivesearch)
     - [Azure Static Web Apps](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestaticwebapps) 
 - 省略可能:
-    - このチュートリアルでは Azure 関数 API をローカルで実行しませんが、ローカルで実行する場合は、次の bash コマンドを使用して [azure-functions-core-tools](/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash) をグローバルにインストールする必要があります。 
+    - このチュートリアルでは Azure 関数 API をローカルで実行しませんが、ローカルで実行する場合は、次の bash コマンドを使用して [azure-functions-core-tools](../azure-functions/functions-run-local.md?tabs=linux%2ccsharp%2cbash) をグローバルにインストールする必要があります。 
     
     ```bash
     npm install -g azure-functions-core-tools

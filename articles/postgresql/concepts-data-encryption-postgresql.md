@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: fa52327225667bd84047e74a89e3b1394964b22c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 08c66fe33da78d9b07931c37653b07ba07b22746
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769987"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813796"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
 Azure PostgreSQL は、[Azure Storage の暗号化](../storage/common/storage-service-encryption.md)を活用し、Microsoft マネージド キーを使用して保存データを既定で暗号化します。 Azure PostgreSQL ユーザーにとって、これは SQL Server などの他のデータベースの Transparent Data Encryption (TDE) とよく似ています。 多くの組織では、カスタマー マネージド キーを使用してデータへのアクセスを完全に制御する必要があります。 Azure Database for PostgreSQL 単一サーバーのカスタマーマネージド キーによるデータ暗号化では、保存データの保護に Bring Your Own Key (BYOK) を使用できます。 また、組織でキーとデータの管理における職務の分離を実装することもできます。 カスタマーマネージド暗号化を使用する場合、キーのライフサイクル、キーの使用アクセス許可、およびキーに対する操作の監査については、お客様の責任となり、お客様が完全に制御できます。
 
-Azure Database for PostgreSQL 単一サーバーのカスタマーマネージド キーによるデータ暗号化は、サーバーレベルで設定されます。 特定のサーバーについては、キー暗号化キー (KEK) と呼ばれる、カスタマーマネージド キーを使用して、サービスによって使用されるデータ暗号化キー (DEK) を暗号化します。 KEK は、顧客が所有する、カスタマーマネージド [Azure Key Vault](../key-vault/general/security-overview.md) インスタンスに格納される非対称キーです。 キー暗号化キー (KEK) とデータ暗号化キー (DEK) については、この記事の後半で詳しく説明します。
+Azure Database for PostgreSQL 単一サーバーのカスタマーマネージド キーによるデータ暗号化は、サーバーレベルで設定されます。 特定のサーバーについては、キー暗号化キー (KEK) と呼ばれる、カスタマーマネージド キーを使用して、サービスによって使用されるデータ暗号化キー (DEK) を暗号化します。 KEK は、顧客が所有する、カスタマーマネージド [Azure Key Vault](../key-vault/general/security-features.md) インスタンスに格納される非対称キーです。 キー暗号化キー (KEK) とデータ暗号化キー (DEK) については、この記事の後半で詳しく説明します。
 
 Key Vault は、クラウドベースの外部キー管理システムです。 可用性が高く、FIPS 140-2 レベル 2 で検証されたハードウェア セキュリティ モジュール (HSM) によって必要に応じてサポートされる、スケーラブルで安全な RSA 暗号化キー向けストレージが提供されます。 格納されているキーに直接アクセスすることはできませんが、承認されたエンティティに対する暗号化と暗号化解除のサービスが提供されます。 Key Vault では、キーの生成、インポート、または[オンプレミス HSM デバイスからの転送](../key-vault/keys/hsm-protected-keys.md)を行うことができます。
 

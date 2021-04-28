@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: 09ebbaa6bb7cd5a2b4dcdee4e18fe905c5b2fbd3
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f1eb7a5b4697801775d23091c610ab594b0b27ec
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062524"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813382"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
@@ -116,9 +116,9 @@ Azure Machine Learning では、すべての実行を記録して、実験に次
 
 ### <a name="logging"></a>ログ記録
 
-Azure Machine Learning では、標準的な実行メトリックが自動的にログに記録されます。 ただし、[Python SDK を使用して任意のメトリックをログに記録する](how-to-track-experiments.md)こともできます。
+Azure Machine Learning では、標準的な実行メトリックが自動的にログに記録されます。 ただし、[Python SDK を使用して任意のメトリックをログに記録する](how-to-log-view-metrics.md)こともできます。
 
-ログを表示する方法は複数あり、リアルタイムで実行状態を監視するか、完了後に結果を表示します。 詳細については、[ML 実行ログの監視と表示](how-to-monitor-view-training-logs.md)に関する記事を参照してください。
+ログを表示する方法は複数あり、リアルタイムで実行状態を監視するか、完了後に結果を表示します。 詳細については、[ML 実行ログの監視と表示](how-to-log-view-metrics.md)に関する記事を参照してください。
 
 
 > [!NOTE]
@@ -256,8 +256,8 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 Azure Machine Learning で提供される監視およびログ記録機能は次のとおりです。
 
 * "__データ科学者__" の場合、実験を監視し、トレーニングの実行から情報をログに記録することができます。 詳細については、次の記事を参照してください。
-   * [トレーニングの実行の開始、監視、およびキャンセル](how-to-manage-runs.md)
-   * [トレーニング実行のメトリックを記録する](how-to-track-experiments.md)
+   * [トレーニングの実行の開始、監視、およびキャンセル](how-to-track-monitor-analyze-runs.md)
+   * [トレーニング実行のメトリックを記録する](how-to-log-view-metrics.md)
    * [MLflow を使用して実験を追跡する](how-to-use-mlflow.md)
    * [TensorBoard を使用して実行を視覚化する](how-to-monitor-tensorboard.md)
 * "__管理者__" の場合、Azure Monitor を使用して、ワークスペース、関連する Azure リソース、およびリソースの作成や削除などのイベントに関する情報を監視できます。 詳細については、[Azure Machine Learning を監視する方法](monitor-azure-machine-learning.md)に関する記事を参照してください。

@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 11/09/2020
-ms.openlocfilehash: 31b2a993267e6e8abbf7184d745889b74e587c50
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/21/2021
+ms.openlocfilehash: 2defeb0e578c6775577fef50d764f97c3b7f4ac2
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311772"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903969"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Azure Machine Learning を使用したデータの暗号化
 

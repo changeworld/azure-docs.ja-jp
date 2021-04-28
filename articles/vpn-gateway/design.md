@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 99b8cdbb1528caefd30fb11c9702dff1e817c0ab
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2283af1f2fc64e5a0d547fb462695a7442cad2f5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106061810"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108122945"
 ---
 # <a name="vpn-gateway-design"></a>VPN Gateway の設計
 
@@ -108,4 +108,4 @@ ExpressRoute 用にセキュリティで保護されたフェールオーバー 
 
 * [サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関するページを参照してください。
 
-* Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
+* Azure のその他の重要な[ネットワーク機能](../networking/fundamentals/networking-overview.md)について参照してください。

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 36ce494c7fd51a1341834d5c231e32e60c5a32b9
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ae4c52ec1390166eccb0e73d6f81a8553c445b2e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751996"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813292"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Azure HPC Cache にカスタマー マネージド暗号化キーを使用する
 
@@ -56,7 +56,7 @@ Azure HPC Cache を使用するには、キー コンテナーとキーがこれ
 
 * Azure HPC Cache を作成するユーザーは、[Key Vault の共同作成者ロール](../role-based-access-control/built-in-roles.md#key-vault-contributor)と同等のアクセス許可を持っている必要があります。 Azure Key Vault を設定および管理するには、同じアクセス許可が必要です。
 
-  詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/security-overview.md)」を参照してください。
+  詳細については、「[キー コンテナーへのアクセスをセキュリティで保護する](../key-vault/general/security-features.md)」を参照してください。
 
 ## <a name="1-set-up-azure-key-vault"></a>1.Azure Key Vault を設定する
 

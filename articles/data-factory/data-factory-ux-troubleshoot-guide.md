@@ -6,13 +6,13 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: ceespino
-ms.reviewer: daperlov
-ms.openlocfilehash: b423b008453ca5f1b76e5c277f5a434dbf14cdb1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: susabat
+ms.openlocfilehash: c6b4ae3f1a55af3340620c7ce8e3988e1437a649
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382839"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903850"
 ---
 # <a name="troubleshoot-azure-data-factory-ux-issues"></a>Azure Data Factory UX の問題のトラブルシューティング
 

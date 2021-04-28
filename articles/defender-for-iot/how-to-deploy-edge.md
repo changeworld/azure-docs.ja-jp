@@ -1,26 +1,26 @@
 ---
-title: IoT Edge の Defender for IoT マイクロ エージェントのデプロイ
+title: IoT Edge セキュリティ モジュールをデプロイする
 description: IoT Edge に Defender for IoT セキュリティ エージェントをデプロイする方法について説明します。
 ms.topic: conceptual
-ms.date: 1/30/2020
-ms.openlocfilehash: 38e2aa38ab07a4768e95d91ed0ebc866d7edf39f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/21/2021
+ms.openlocfilehash: 71efb0bb12d1e20f918481a086fd411d3a237e33
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784222"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813598"
 ---
-# <a name="deploy-a-defender-iot-micro-agent-on-your-iot-edge-device"></a>Defender for IoT マイクロ エージェントを IoT Edge デバイスにデプロイする
+# <a name="deploy-a-security-module-on-your-iot-edge-device"></a>IoT Edge デバイスにセキュリティ モジュールをデプロイする
 
 **Defender for IoT** モジュールにより、IoT Edge デバイスの包括的なセキュリティ ソリューションが提供されます。
-Defender for IoT マイクロ エージェントでは、オペレーティング システムおよびコンテナー システムから未加工のセキュリティ データが収集、集約、分析されて、実行可能なセキュリティ推奨事項とアラートに変換されます。
-詳細については、[IoT Edge 向けの Defender for IoT マイクロ エージェント](security-edge-architecture.md)に関する記事を参照してください。
+セキュリティ モジュールは、オペレーティング システムおよびコンテナー システムから未加工のセキュリティ データを収集、集約して分析し、実践的なセキュリティ推奨事項とアラートに変換します。
+詳細については、[IoT Edge 用のセキュリティ モジュール](security-edge-architecture.md)に関する記事を参照してください。
 
-この記事では、IoT Edge デバイスに Defender for IoT マイクロ エージェントをデプロイする方法について説明します。
+この記事では、IoT Edge デバイスにセキュリティ モジュールをデプロイする方法について説明します。
 
-## <a name="deploy-defender-iot-micro-agent"></a>Defender for IoT マイクロ エージェントのデプロイ
+## <a name="deploy-security-module"></a>セキュリティ モジュールをデプロイする
 
-次の手順を使用して、IoT Edge 用の Defender for IoT の Defender for IoT マイクロ エージェントをデプロイします。
+次の手順を使用して、IoT Edge 用の Defender for IoT セキュリティ モジュールをデプロイします。
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -159,7 +159,7 @@ Defender for IoT マイクロ エージェントでは、オペレーティン�
 
 ## <a name="diagnostic-steps"></a>診断手順
 
-問題が発生した場合に IoT Edge の Defender for IoT マイクロ エージェント デバイスの状態を知るには、コンテナー ログを使用するのが最適です。 情報を収集するには、このセクションのコマンドとツールを使います。
+問題が発生した場合に IoT Edge セキュリティ モジュール デバイスの状態を知るには、コンテナー ログを使用するのが最適です。 情報を収集するには、このセクションのコマンドとツールを使います。
 
 ### <a name="verify-the-required-containers-are-installed-and-functioning-as-expected"></a>必要なコンテナーがインストールされており、期待どおりに機能していることを確認する
 

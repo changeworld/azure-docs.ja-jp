@@ -15,12 +15,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f0b7e04becd42180df3393d7036294c1629cdc21
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d936a795d22f533ee43c6eb0a59835790a1bffb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102499494"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132001"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Azure portal を使用して SQL Server がインストールされた Windows 仮想マシンをプロビジョニングする方法
 
@@ -79,7 +79,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
     1. **[リージョン]** で場所を選択します。 
     1. このガイドでは、 **[可用性オプション]** の設定を _[インフラストラクチャ冗長は必要ありません]_ のままにしておきます。 可用性オプションの詳細については、[可用性](../../../virtual-machines/availability.md)に関するページを参照してください。 
     1. **[イメージ]** の一覧で、_Free SQL Server License:SQL Server 2017 Developer on Windows Server 2016_ という名前のイメージを選択します。  
-    1. 仮想マシンの **[サイズ]** で **[サイズの変更]** を選択し、 **[A2 Basic]** プランを選択します。 予期しない課金を防ぐために、利用を終了したリソースは必ずクリーンアップしてください。 運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)」のマシンのサイズと構成に関する推奨事項を参照してください。
+    1. 仮想マシンの **[サイズ]** で **[サイズの変更]** を選択し、 **[A2 Basic]** プランを選択します。 予期しない課金を防ぐために、利用を終了したリソースは必ずクリーンアップしてください。 運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](./performance-guidelines-best-practices-checklist.md)」のマシンのサイズと構成に関する推奨事項を参照してください。
 
     ![インスタンスの詳細](./media/create-sql-vm-portal/basics-instance-details.png)
 

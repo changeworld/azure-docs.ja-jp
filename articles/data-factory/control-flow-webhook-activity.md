@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory の Webhook アクティビティ
 description: Webhook アクティビティは、ユーザーが指定する特定の条件で接続されたデータセットを検証するまで、パイプラインの実行を継続しません。
-author: dcstwh
-ms.author: weetok
+author: nabhishek
+ms.author: abnarain
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.openlocfilehash: 4c3ff5d7139f4167769f78aa858c7d7a693539a3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0c35a8b25e09029d2f561b107613b13cc40b19de
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785939"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903887"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure Data Factory の Webhook アクティビティ
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: justinha
-ms.openlocfilehash: 8305b2190cf3b157973f5844c3237ffe73adba66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9b1d6c255aee93ab92eab6ebefcb275b2fc63f23
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96619918"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071156"
 ---
 # <a name="deploy-azure-ad-application-proxy-for-secure-access-to-internal-applications-in-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services マネージド ドメイン内の内部アプリケーションに安全にアクセスするために Azure AD アプリケーション プロキシをデプロイする
 
@@ -121,5 +121,5 @@ Azure AD DS と統合された Azure AD アプリケーション プロキシを
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
 [create-join-windows-vm]: join-windows-vm.md
 [azure-bastion]: ../bastion/tutorial-create-host-portal.md
-[Get-ADComputer]: /powershell/module/addsadministration/get-adcomputer
-[Set-ADComputer]: /powershell/module/addsadministration/set-adcomputer
+[Get-ADComputer]: /powershell/module/activedirectory/get-adcomputer
+[Set-ADComputer]: /powershell/module/activedirectory/set-adcomputer

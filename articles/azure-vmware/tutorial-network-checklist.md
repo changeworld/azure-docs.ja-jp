@@ -2,13 +2,13 @@
 title: チュートリアル - ネットワーク計画のチェックリスト
 description: Azure VMware Solution のネットワーク接続とネットワーク ポートのネットワーク要件について説明します。
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: 8cee5fa24aab8bd7fe6a9527f9c8e7cdff997511
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/23/2021
+ms.openlocfilehash: 2e7854100df7e19ec8cfcc9b6de647fa8ed31d38
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103462067"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945451"
 ---
 # <a name="networking-planning-checklist-for-azure-vmware-solution"></a>Azure VMware Solution のネットワーク計画のチェックリスト 
 
@@ -88,8 +88,6 @@ Azure VMware Solution プライベート クラウドでは、次に示すよう
 プライベート クラウド環境で実行されるアプリケーションとワークロードには、ルックアップと IP アドレスの割り当てのための名前解決と DHCP サービスが必要です。 これらのサービスを提供するために、DHCP と DNS の適切なインフラストラクチャが必要です。 仮想マシンを構成して、ご自分のプライベート クラウド環境でこれらのサービスを提供することができます。  
 
 ブロードキャスト DHCP トラフィックを WAN 経由でオンプレミスにルーティングして戻すのではなく、NSX に組み込まれている DHCP サービスを使用するか、プライベート クラウドのローカル DHCP サーバーを使用します。
-
-詳細については、「[DHCP サービスを NSX-T ネットワーク セグメントに提供する](deploy-azure-vmware-solution.md#optional-provide-dhcp-services-to-nsx-t-network-segment)」の記事を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 46b056c22a6d1c70a729f5b9558f53c685a878f0
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 2f92c0646ef8c14134e8fc2f9b7558519f71fe8d
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732855"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931003"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL - フレキシブル サーバー (プレビュー)
 
@@ -136,7 +136,7 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | --- | --- | --- |
 | 西ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
 | 北ヨーロッパ | :heavy_check_mark: | :heavy_check_mark: |
-| 英国南部 | :heavy_check_mark: | :x: | 
+| 英国南部 | :heavy_check_mark: | :heavy_check_mark: | 
 | 米国東部 2 | :heavy_check_mark: | :heavy_check_mark: |
 | 米国西部 2 | :heavy_check_mark: | :heavy_check_mark: |
 | 米国中部 | :heavy_check_mark: | :x: | 
@@ -144,8 +144,10 @@ Azure でワークロードを実行する利点の 1 つは、グローバル�
 | カナダ中部 | :heavy_check_mark: | :x: | 
 | Southeast Asia | :heavy_check_mark: | :heavy_check_mark: |
 | 韓国中部 | :heavy_check_mark: | :x: | 
-| Japan East | :heavy_check_mark: | :x: | 
+| Japan East | :heavy_check_mark: | :heavy_check_mark: | 
 | オーストラリア東部 | :heavy_check_mark: | :heavy_check_mark: |
+| フランス中部 | :heavy_check_mark: | :x:|
+| ブラジル南部 | :heavy_check_mark: | :x: |
 
 近日中に新しいリージョンを追加できるよう取り組んでいます。
 

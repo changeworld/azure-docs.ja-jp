@@ -1,18 +1,18 @@
 ---
 title: Azure Data Factory の価格を実例から理解する
 description: このアーティクルでは、詳細例を用いて Azure Data Factory の価格モデルの説明と実演を行います
-author: dcstwh
-ms.author: weetok
+author: shirleywangmsft
+ms.author: shwang
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/14/2020
-ms.openlocfilehash: 3bb9574c74aaa3c2589d0ca93fb906168ca99095
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 48c0f47b3b8ca5eddef76c66ad220a18018dc321
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104783372"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904894"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 

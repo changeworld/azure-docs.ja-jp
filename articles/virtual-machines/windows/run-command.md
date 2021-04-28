@@ -8,14 +8,13 @@ author: bobbytreed
 ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
-ms.custom: devx-track-azurecli
 manager: carmonm
-ms.openlocfilehash: 3271f5461447439772b656b8927a54057c8b0c7e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3911966b2e56c57aa6da74f93ef133cd942f29f4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107786407"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069365"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 

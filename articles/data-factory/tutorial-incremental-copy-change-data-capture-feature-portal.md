@@ -1,17 +1,17 @@
 ---
 title: 変更データ キャプチャを使用してデータを増分コピーする
 description: このチュートリアルでは、Azure SQL Managed Instance データベースから Azure Storage に差分データを増分コピーする Azure Data Factory パイプラインを作成します。
-ms.author: nihurt
-author: hurtn
+ms.author: yexu
+author: dearandyxu
 ms.service: data-factory
 ms.topic: tutorial
 ms.date: 02/18/2021
-ms.openlocfilehash: a00ec8698b188b8fa87935e498e8cfab3aeab5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c7bfaf6bd6ca11593a986ca8d929faf063be720
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101724984"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905776"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>変更データ キャプチャ (CDC) を使用して Azure SQL Managed Instance から Azure Storage へのデータの増分読み込みを行う
 

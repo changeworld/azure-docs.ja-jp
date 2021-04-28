@@ -10,13 +10,13 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 11/23/2020
 ms.author: pafarley
-ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 76e7b061670f603007cefd6d7aed503e0e0d3d6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e069037d2a5f855978a7d4483b12d2e8ce69ae92
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98941777"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071417"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>チュートリアル:写真内にある Azure サービスのロゴを認識する
 

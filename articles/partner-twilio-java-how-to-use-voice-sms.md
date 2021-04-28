@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
-ms.openlocfilehash: e7ff925534a9cab6523097f84a8ae199e9cb83eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 87a41e7da100d8e8e5ad87018f01ee914f8bbd9a
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100548728"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065369"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Java で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -233,7 +233,7 @@ Azure で Java に基づいて Twilio を使用する方法の詳細について
 [verify_phone]: https://www.twilio.com/console/phone-numbers/verified#
 [twilio_api_documentation]: https://www.twilio.com/docs
 [twilio_security_guidelines]: https://www.twilio.com/docs/security
-[twilio_howtos]: https://www.twilio.com/docs/howto
+[twilio_howtos]: https://www.twilio.com/docs/all
 [twilio_on_github]: https://github.com/twilio
 [twilio_support]: https://www.twilio.com/help/contact
 [twilio_quickstarts]: https://www.twilio.com/docs/quickstart

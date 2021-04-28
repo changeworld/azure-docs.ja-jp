@@ -9,15 +9,15 @@ ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: 31f0510ed50c9d48a46524a353d7c872b368f75c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c877ed464d539d6c15e48cecbeba4d3645f2ac8c
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779041"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071435"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>クイック スタート:Azure CDN のプロファイルとエンドポイントの作成 - ARM テンプレート
 

@@ -10,12 +10,12 @@ ms.date: 03/10/2021
 ms.topic: include
 ms.custom: include file
 ms.author: mikben
-ms.openlocfilehash: 322f54e4fa2e8096f68d5bbc216032a5b4e53c22
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 579af219c095fcf2e8faa77e0fb3fe7e2ea55d79
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105726693"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931691"
 ---
 ## <a name="prerequisites"></a>前提条件
 開始する前に、必ず次のことを行ってください。
@@ -176,7 +176,7 @@ async function createChatThread() {
       }
     ]
   };
-  const createChatTtreadResult = await chatClient.createChatThread(
+  const createChatThreadResult = await chatClient.createChatThread(
     createChatThreadRequest,
     createChatThreadOptions
   );
@@ -298,7 +298,7 @@ for await (const message of messages) {
 
 ## <a name="add-a-user-as-a-participant-to-the-chat-thread"></a>チャット スレッドに参加者としてユーザーを追加する
 
-チャット スレッドの作成後、そこにユーザーを追加したり削除したりすることができます。 追加したユーザーには、チャット スレッドにメッセージを送信したり、他の参加者を追加、削除したりできるアクセス権が与えられます。
+チャット スレッドの作成後、ユーザーを追加したり削除したりすることができます。 追加したユーザーには、チャット スレッドにメッセージを送信したり、他の参加者を追加、削除したりできるアクセス権が与えられます。
 
 `addParticipants` メソッドを呼び出す前に必ず、そのユーザーの新しいアクセス トークンと ID を取得しておいてください。 チャット クライアントを初期化するためには、ユーザーにアクセス トークンが必要となります。
 
