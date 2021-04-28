@@ -7,12 +7,12 @@ ms.subservice: billing
 ms.topic: article
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b4d6502e49fdd30a68188a1e580a1c137984c89f
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: f23beeb735c83cdf2d42a01ff684510dbd0d9feb
+ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132382"
+ms.lasthandoff: 03/31/2021
+ms.locfileid: "106058835"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>REST API を使用してサブスクリプションの課金を確認する
 

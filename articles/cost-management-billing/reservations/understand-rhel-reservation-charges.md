@@ -7,12 +7,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 8e735d623cc991d2e3720e0ec418eee77aa8c46c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a10e6204184f28dbb62083bc72c6963ea8db082b
+ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350859"
+ms.lasthandoff: 03/26/2021
+ms.locfileid: "105568632"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Red Hat Linux Enterprise ソフトウェアの予約プラン割引が Azure に適用されるしくみについて説明します
 
@@ -46,7 +46,7 @@ Azure portal マーケットプレース名:
 - Red Hat Enterprise Linux 7.6
 - Red Hat Enterprise Linux 8.2
 
-[プランの適用対象となる Red Hat Enterprise Linux のメーターをご確認ください。](https://isfratio.blob.core.windows.net/isfratio/RHELRatios.csv)
+[プランの適用対象となる Red Hat Enterprise Linux のメーターをご確認ください。](https://phoenixnap.com/kb/how-to-check-redhat-version)
 
 ## <a name="next-steps"></a>次のステップ
 
