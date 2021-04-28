@@ -1,16 +1,16 @@
 ---
-title: Azure の BareMetal インフラストラクチャの概要
+title: Azure の BareMetal インフラストラクチャとは
 description: Azure の BareMetal インフラストラクチャの概要について説明します。
 ms.custom: references_regions
 ms.topic: conceptual
 ms.subservice: workloads
-ms.date: 04/08/2021
-ms.openlocfilehash: 7a4998a096a5c5d9e793c34d5046dce59262a2ae
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.date: 04/14/2021
+ms.openlocfilehash: c0fd250a63ce93d3f8b62dfe76fe753c928801ce
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107257570"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536900"
 ---
 #  <a name="what-is-baremetal-infrastructure-on-azure"></a>Azure の BareMetal インフラストラクチャとは
 
@@ -47,6 +47,22 @@ BareMetal インフラストラクチャには、これらのベネフィット�
 - アプリケーション対応のスナップショット、アーカイブ、ミラーリング、および複製
 
 
+## <a name="baremetal-benefits"></a>BareMetal の利点  
+
+BareMetal インフラストラクチャは、エンタープライズ アプリケーションを実行するための認定を必要とするミッション クリティカルなワークロードを対象としています。 BareMetal インスタンスはお客様専用であり、お客様はオペレーティング システム (OS) にフル アクセス (ルート アクセス) できます。 ニーズに応じて、OS とアプリケーションのインストールを管理します。 セキュリティのために、このインスタンスは、インターネットに接続されていない状態で Azure Virtual Network (VNet) 内にプロビジョニングされます。 BareMetal インスタンスと通信できるのは、仮想マシン (VM) で実行されているサービスと、同じレベル 2 ネットワーク内の他の Azure サービスのみです。  
+
+BareMetal インフラストラクチャには、これらのベネフィットがあります。 
+
+- 専用のワークロード用の認定ハードウェア
+- SAP ([SAP Note #1928533](https://launchpad.support.sap.com/#/notes/1928533) を参照)
+- Oracle ([Oracle ドキュメント ID #948372.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=52088246571495&id=948372.1&_adf.ctrl-state=kwnkj1hzm_52) を参照)
+- ハイパーバイザーを使用しない BareMetal インスタンス、シングル テナントの所有権
+- Azure でホストされるアプリケーション VM と BareMetal インスタンス間の短い待ち時間 (0.35 ミリ秒)
+- すべての Flash SSD と NVMe のサポート
+- 最大 1 PB/テナントのデータベース 
+- 最大 120 万/テナントの IOPS 
+- 50 GB のネットワーク帯域幅 
+
 ## <a name="sku-availability-in-azure-regions"></a>Azure リージョンの SKU の可用性
 
 BareMetal インフラストラクチャには、専用のワークロード用に認定された複数の SKU が用意されています。 ワークロード固有の SKU を使用して、ニーズを満たします。
@@ -71,9 +87,9 @@ BareMetal インフラストラクチャには、専用のワークロード用�
 
 ニーズによっては、BareMetal インフラストラクチャのアプリケーション トポロジが複雑になることがあります。 1 つ以上の場所に、共有または専用ストレージを持つ複数のインスタンスと特別な LAN および WAN 接続をデプロイする場合があります。 そのため、Azure では、プロビジョニング ポータルのフィールドの CSA または GBB によって、BareMetal インフラストラクチャ用にその情報を相談的に取得することができます。 
 
-BareMetal インフラストラクチャがプロビジョニングされた時点で、OS、ネットワーク、ストレージ ボリューム、ゾーンとリージョン内の配置、場所間の WAN 接続は既に事前構成されています。 OS ライセンス (BYOL) を登録し、OS を構成して、アプリケーション層をインストールする準備が整いました。
+BareMetal インフラストラクチャがプロビジョニングされた時点で、OS、ネットワーク、ストレージ ボリューム、ゾーンとリージョン内の配置、場所間の WAN 接続は既に事前構成されています。 OS ライセンス (BYOL) を登録し、OS を構成して、アプリケーション層をインストールする準備が整っています。
 
-Azure portal には、すべての BareMetal インフラストラクチャ リソース、およびその状態と属性が表示されます。 また、そこからインスタンスを操作し、サービス要求とサポート チケットを開くこともできます。 
+すべての BareMetal リソース、およびその状態と属性は、Azure portal で表示できます。 また、そこからインスタンスを操作し、サービス要求とサポート チケットを開くこともできます。 
 
 ## <a name="operational-model"></a>運用モデル
 BareMetal インフラストラクチャは、ISO 27001、ISO 27017、SOC 1、SOC 2 に準拠しています。 また、次のライセンス持ち込み (BYOL) モデルも使用されます (OS、専用のワークロード、およびサードパーティー製のアプリケーション)。  

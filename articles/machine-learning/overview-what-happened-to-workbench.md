@@ -10,12 +10,12 @@ ms.custom: how-to
 ms.author: larryfr
 author: BlackMist
 ms.date: 03/05/2020
-ms.openlocfilehash: c800901ae139b16e75613b0cc8de3a9485186896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c680be897c4c1bf2ccf20df1d34ab6f59f559f2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521375"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816154"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の変更点
 
@@ -35,13 +35,13 @@ Azure Machine Learning Workbench アプリケーションとその他のいく�
 
 Azure Machine Learning の最新リリースには、次の機能が含まれています。
 + [簡略化された Azure リソースのモデル](concept-azure-machine-learning-architecture.md)。
-+ 実験とコンピューティング先を管理するための[新しいポータル UI](how-to-track-experiments.md)。
++ 実験とコンピューティング先を管理するための[新しいポータル UI](how-to-log-view-metrics.md)。
 + 新しく、より包括的な Python <a href="/python/api/overview/azure/ml/intro" target="_blank">SDK</a>。
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
 [アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすいように再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning ワークスペース](concept-workspace.md)だけです。 ワークスペースは、[Azure portal](how-to-manage-workspace.md) ですばやく作成することができます。 ワークスペースを使用することで、複数のユーザーが、トレーニングやコンピューティングターゲットのデプロイ、モデルの実験、Docker イメージ、デプロイされたモデルなどを格納できます。
 
-現在のリリースには新しく改善された CLI と SDK クライアントがありますが、デスクトップ ワークベンチ アプリケーション自体は廃止されました。 実験は、[Azure Machine Learning Studio の ワークスペース ダッシュボード](how-to-monitor-view-training-logs.md#view-the-experiment-in-the-web-portal)で管理できます。 ダッシュボードを使用して、実験履歴の取得、ワークスペースに接続されているコンピューティング ターゲットの管理、モデルと Docker イメージの管理、さらには Web サービスのデプロイも行います。
+現在のリリースには新しく改善された CLI と SDK クライアントがありますが、デスクトップ ワークベンチ アプリケーション自体は廃止されました。 実験は、[Azure Machine Learning Studio の ワークスペース ダッシュボード](how-to-log-view-metrics.md#view-the-experiment-in-the-web-portal)で管理できます。 ダッシュボードを使用して、実験履歴の取得、ワークスペースに接続されているコンピューティング ターゲットの管理、モデルと Docker イメージの管理、さらには Web サービスのデプロイも行います。
 
 <a name="timeline"></a>
 

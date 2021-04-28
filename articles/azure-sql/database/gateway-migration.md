@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 62e2306abc2d3132651fb40aab8c2f5b4d5043f4
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 07611a3620a2fd8efe0da075b03b55a5be3a5be9
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105960879"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505379"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,10 +29,18 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 ## <a name="status-updates"></a>ステータスの更新
 
 # <a name="in-progress"></a>[[実行中]](#tab/in-progress-ip)
+## <a name="may-2021"></a>2021 年 5 月
+新しい SQL ゲートウェイが、次のリージョンに追加されます。
+- 英国南部:  51.140.144.36、51.105.72.32  
+- 米国中西部: 13.71.193.32、13.71.193.33 
+
+この SQL ゲートウェイでは、2021 年 5 月 17 日にお客様のトラフィックの受け入れを開始します。
 
 ## <a name="april-2021"></a>2021 年 4 月
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
-- 米国東部 2: 40.70.144.193 この SQL ゲートウェイは、2021 年 4 月 30 日にお客様のトラフィックの受け入れを開始します。
+- 米国東部 2:  40.70.144.193
+
+この SQL ゲートウェイでは、2021 年 4 月 30 日にお客様のトラフィックの受け入れを開始します。
 
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
 - ノルウェー東部: 51.120.96.33
@@ -46,7 +54,6 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 
 ## <a name="march-2021"></a>2021 年 3 月
 複数のリージョンにある次の SQL ゲートウェイは、非アクティブ化の処理中です。
-
 - ブラジル南部:104.41.11.5
 - 東アジア: 191.234.2.139
 - 米国東部: 191.238.6.43
@@ -59,6 +66,9 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 - 米国西部: 23.99.34.75
 
 (古いハードウェアで実行されている) これらのゲートウェイではお客様のトラフィックをルーティングしていないため、お客様への影響はないと予測されます。 これらのゲートウェイの IP アドレスは、2021 年 3 月 15 日に非アクティブ化されます。
+
+# <a name="completed"></a>[完了](#tab/completed-ip)
+次のゲートウェイの移行が完了しました。 
 
 ## <a name="february-2021"></a>2021 年 2 月
 新しい SQL ゲートウェイが、次のリージョンに追加されます。
@@ -83,8 +93,7 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 
 2021 年 1 月 31 日に、これらの SQL ゲートウェイによって、お客様のトラフィックの受け入れが開始されます。
 
-# <a name="completed"></a>[完了](#tab/completed-ip)
-次のゲートウェイの移行が完了しました。 
+
 
 ### <a name="october-2020"></a>2020 年 10 月
 

@@ -2,19 +2,17 @@
 title: SKU が使用できないエラー
 description: Azure Resource Manager でリソースをデプロイするときに、SKU が使用できないことを示すエラーのトラブルシューティングを行う方法について説明します。
 ms.topic: troubleshooting
-ms.date: 02/18/2020
-ms.openlocfilehash: 5b0bbd653907c109eca526af86979013b3137cfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/14/2021
+ms.openlocfilehash: 3baedf6a5c9f2dbfd3ddf666b458fac649fce2ac
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98737152"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503900"
 ---
 # <a name="resolve-errors-for-sku-not-available"></a>SKU 利用不可エラーを解決する
 
 この記事では、**SkuNotAvailable** エラーを解決する方法について説明します。 そのリージョンまたはゾーン内で、あるいはビジネス ニーズを満たす代替のリージョンまたはゾーン内で適切な SKU が見つからない場合は、Azure サポートに [ SKU 要求](/troubleshoot/azure/general/region-access-request-process)を送信してください。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>症状
 
@@ -30,7 +28,7 @@ for subscription '<subscriptionID>'. Please try another tier or deploy to a diff
 
 このエラーは、選択したリソースの SKU (VM サイズなど) が、選択した場所で利用できない場合に発生します。
 
-Azure スポット VM またはスポット スケール セット インスタンスをデプロイする場合、この場所に Azure スポットの容量はありません。 詳細については、[スポットのエラー メッセージ](../../virtual-machines/error-codes-spot.md)に関する記事を参照してください。
+Azure Spot VM または Spot スケール セット インスタンスをデプロイする場合、この場所には Azure Spot 用の容量はありません。 詳細については、[スポットのエラー メッセージ](../../virtual-machines/error-codes-spot.md)に関する記事を参照してください。
 
 ## <a name="solution-1---powershell"></a>解決策 1 - PowerShell
 
@@ -51,31 +49,67 @@ virtualMachines       Standard_A2    centralus             NotAvailableForSubscr
 virtualMachines       Standard_D1_v2 centralus   {2, 1, 3}                                  MaxResourceVolumeMB
 ```
 
-いくつかの追加のサンプル:
+場所と SKU でフィルター処理するには、次を使用します。
 
 ```azurepowershell-interactive
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("Standard_DS14_v2")}
-Get-AzComputeResourceSku | where {$_.Locations.Contains("centralus") -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains("v3")} | fc
-```
+$SubId = (Get-AzContext).Subscription.Id
 
-末尾に "fc" を追加すると、詳細が返されます。
+$Region = "centralus" # change region here
+$VMSku = "Standard_M" # change VM SKU here
 
-## <a name="solution-2---azure-cli"></a>解決策 2 - Azure CLI
+$VMSKUs = Get-AzComputeResourceSku | where {$_.Locations.Contains($Region) -and $_.ResourceType.Contains("virtualMachines") -and $_.Name.Contains($VMSku)}
 
-リージョンで利用可能な SKU を特定するには、`az vm list-skus` コマンドを使用します。 出力をフィルター処理で使用中の場所に絞り込むには、`--location` パラメーターを使用します。 名前の一部で検索するには、`--size` パラメーターを使用します。
+$OutTable = @()
 
-```azurecli-interactive
-az vm list-skus --location southcentralus --size Standard_F --output table
+foreach ($SkuName in $VMSKUs.Name)
+        {
+            $LocRestriction = if ((($VMSKUs | where Name -EQ $SkuName).Restrictions.Type | Out-String).Contains("Location")){"NotAvavalableInRegion"}else{"Available - No region restrictions applied" }
+            $ZoneRestriction = if ((($VMSKUs | where Name -EQ $SkuName).Restrictions.Type | Out-String).Contains("Zone")){"NotAvavalableInZone: "+(((($VMSKUs | where Name -EQ $SkuName).Restrictions.RestrictionInfo.Zones)| Where-Object {$_}) -join ",")}else{"Available - No zone restrictions applied"}
+            
+            
+            $OutTable += New-Object PSObject -Property @{
+                                                         "Name" = $SkuName
+                                                         "Location" = $Region
+                                                         "Applies to SubscriptionID" = $SubId
+                                                         "Subscription Restriction" = $LocRestriction
+                                                         "Zone Restriction" = $ZoneRestriction
+                                                         }
+         }
+
+$OutTable | select Name, Location, "Applies to SubscriptionID", "Region Restriction", "Zone Restriction" | Sort-Object -Property Name | FT
 ```
 
 このコマンドからは、次のような結果が返されます。
 
 ```output
-ResourceType     Locations       Name              Zones    Capabilities    Restrictions
----------------  --------------  ----------------  -------  --------------  --------------
-virtualMachines  southcentralus  Standard_F1                ...             None
-virtualMachines  southcentralus  Standard_F2                ...             None
-virtualMachines  southcentralus  Standard_F4                ...             None
+Name                   Location  Applies to SubscriptionID            Region Restriction                         Zone Restriction                        
+----                   --------  -------------------------            ------------------------                   ----------------     
+Standard_M128          centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Available - No region restrictions applied Available - No zone restrictions applied
+Standard_M128-32ms     centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Available - No region restrictions applied Available - No zone restrictions applied
+Standard_M128-64ms     centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Available - No region restrictions applied Available - No zone restrictions applied
+Standard_M128dms_v2    centralus xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx NotAvavalableInRegion                      NotAvavalableInZone: 1,2,3
+```
+
+## <a name="solution-2---azure-cli"></a>解決策 2 - Azure CLI
+
+リージョンで利用可能な SKU を特定するには、[az vm list-skus](/cli/azure/vm#az_vm_list_skus) コマンドを使用します。 出力を場所でフィルター処理するには、`--location` パラメーターを使用します。 名前の一部で検索するには、`--size` パラメーターを使用します。 現在のサブスクリプションで使用できないサイズを含むすべての情報を表示するには、`--all` パラメーターを使用します。
+
+Azure CLI バージョン 2.15.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を使用します。 必要に応じて、[インストールを更新](/cli/azure/update-azure-cli)してください。
+
+```azurecli-interactive
+az vm list-skus --location southcentralus --size Standard_F --all --output table
+```
+
+このコマンドからは、次のような結果が返されます。
+
+```output
+ResourceType     Locations       Name              Zones    Restrictions
+---------------  --------------  ----------------  -------  --------------
+virtualMachines  southcentralus  Standard_F1       1,2,3    None
+virtualMachines  southcentralus  Standard_F2       1,2,3    None
+virtualMachines  southcentralus  Standard_F4       1,2,3    None
+...
+virtualMachines  southcentralus  Standard_F72s_v2  1,2,3    NotAvailableForSubscription, type: Zone, locations: southcentralus, zones: 1,2,3
 ...
 ```
 

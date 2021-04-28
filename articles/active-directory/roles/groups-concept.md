@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 051963060531283b868a5a20e13e871de1919ccb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: e1fea64305d4735c5bf1bf59b86ae5283600e622
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256074"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502200"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>クラウド グループを使用して Azure Active Directory でロールの割り当てを管理する (プレビュー)
 
@@ -63,6 +63,7 @@ Azure AD を使用すると、グループに対して isAssignableToRole とい
 - グループ メンバーシップによるロールの割り当てには、新しい [Exchange 管理センター](https://admin.exchange.microsoft.com/)を使用してください。 以前の Exchange 管理センターでは、この機能はまだサポートされていません。 Exchange PowerShell コマンドレットは想定どおりに動作します。
 - Azure Information Protection ポータル (クラシック ポータル) では、グループを介したロール メンバーシップがまだ認識されません。 [統合型の秘密度ラベル付けプラットフォームに移行](/azure/information-protection/configure-policy-migrate-labels)してから、Office 365 Security & Compliance センターを使用して、グループの割り当てを使用してロールを管理することができます。
 - [アプリ管理センター](https://config.office.com/)では、この機能はまだサポートされていません。 ユーザーに直接 Office アプリ管理者ロールを割り当てます。
+- [M365 コンプライアンス センター](https://compliance.microsoft.com/)では、この機能はまだサポートされていません。 このポータルを使用するには、適切な Azure AD ロールに直接ユーザーを割り当てます。
 
 これらの問題は現在修正中です。
 

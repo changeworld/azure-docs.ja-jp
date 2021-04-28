@@ -9,12 +9,12 @@ ms.reviewer: ''
 ms.date: 03/08/2021
 author: ruixinxu
 ms.author: ruxu
-ms.openlocfilehash: 5258d8f16e288e7df7e1286eb1902cc6ba6d10f7
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 52344d0fbc30eb318f7335c2a2a6a5a0eb42f641
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227723"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107898227"
 ---
 # <a name="tutorial-build-machine-learning-applications-using-microsoft-machine-learning-for-apache-spark-preview"></a>チュートリアル: Microsoft Machine Learning for Apache Spark を使用して機械学習アプリケーションを構築する (プレビュー)
 
@@ -249,5 +249,5 @@ display(anamoly_detector.transform(df_timeseriesdata).select("timestamp", "value
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/main/Notebooks) 
+* [Synapse サンプル ノートブックをチェックアウトする](https://github.com/Azure-Samples/Synapse/tree/main/MachineLearning) 
 * [MMLSpark GitHub リポジトリ](https://github.com/Azure/mmlspark)

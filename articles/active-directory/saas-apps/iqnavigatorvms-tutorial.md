@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: beef52641b9744b39873a7f48e39eb2f94ed4c9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2fe674f0f290c58a7e32a05c3666be8fc2c324bc
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92459732"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074585"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-iqnavigator-vms"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と IQNavigator VMS の統合
 
@@ -93,7 +93,7 @@ IQNavigator VMS で Azure AD SSO を構成してテストするには、次の�
     d. **[リレー状態]** ボックスに、`https://<subdomain>.iqnavigator.com` のパターンで URL を入力します。
 
     > [!NOTE]
-    > これらは実際の値ではありません。 これらの値を実際の応答 URL とリレー状態で更新してください。 これらの値を取得するには、[IQNavigator VMS クライアント サポート チーム](https://www.beeline.com/support-iqn/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 これらの値を実際の応答 URL とリレー状態で更新してください。 これらの値を取得するには、[IQNavigator VMS クライアント サポート チーム](https://www.beeline.com/contact-support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. IQNavigator アプリケーションでは、名前識別子の要求で一意のユーザー識別子の値が必要です。 顧客は、名前識別子要求の適切な値をマップできます。 ここでは、デモのために user.UserPrincipalName をマップしました。 ただし、組織の設定に従って、正しい値をマップする必要があります。
 
@@ -135,11 +135,11 @@ IQNavigator VMS で Azure AD SSO を構成してテストするには、次の�
 
 ## <a name="configure-iqnavigator-vms-sso"></a>IQNavigator VMS の SSO の構成
 
-**IQNavigator VMS** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [IQNavigator VMS サポート チーム](https://www.beeline.com/support-iqn/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**IQNavigator VMS** 側でシングル サインオンを構成するには、**アプリのフェデレーション メタデータ URL** を [IQNavigator VMS サポート チーム](https://www.beeline.com/contact-support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-iqnavigator-vms-test-user"></a>IQNavigator VMS テスト ユーザーの作成
 
-このセクションでは、IQNavigator VMS で Britta Simon というユーザーを作成します。 [IQNavigator VMS サポート チーム](https://www.beeline.com/support-iqn/)と連携して、IQNavigator VMS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、IQNavigator VMS で Britta Simon というユーザーを作成します。 [IQNavigator VMS サポート チーム](https://www.beeline.com/contact-support/)と連携して、IQNavigator VMS プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

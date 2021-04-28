@@ -4,12 +4,12 @@ description: Azure Portal を使用して、サーバーレス実行のための
 ms.topic: how-to
 ms.date: 03/26/2020
 ms.custom: devx-track-csharp, mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: ea5b6a9e51b6982a33dc748f72557ed539b8e2e0
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 336e531f4ec64141770fc26d7e6eea9ebfedf922
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106385991"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517142"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
@@ -64,14 +64,14 @@ Azure アカウントで [Azure Portal](https://portal.azure.com) にサイン�
 
     要求 URL に [アクセス キー](functions-bindings-http-webhook-trigger.md#authorization-keys) (`?code=...`) が含まれていた場合は、関数を作成するときに **[匿名]** アクセス レベルではなく **[関数]** を選択することを示します。 この場合は、代わりに `&name=<your_name>` を追加する必要があります。
 
-1. 関数が実行されると、ログにトレース情報が書き込まれます。 トレース出力を表示するには、ポータルの **[Code + Test]\(コード + テスト\)** ページに戻り、ページの下部にある **[ログ]** 矢印を展開します。
+1. 関数が実行されると、ログにトレース情報が書き込まれます。 トレース出力を表示するには、ポータルの **[Code + Test]\(コード + テスト\)** ページに戻り、ページの下部にある **[ログ]** 矢印を展開します。 関数を再度呼び出して、ログに書き込まれたトレース出力を確認します。 
 
-   ![Azure Portal の関数ログ ビューアー。](./media/functions-create-first-azure-function/function-view-logs.png)
+    :::image type="content" source="media/functions-create-first-azure-function/function-view-logs.png" alt-text="Azure portal の関数ログ ビューアー":::
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]

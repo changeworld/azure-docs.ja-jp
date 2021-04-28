@@ -3,13 +3,14 @@ title: カスタム コンテナーを構成する
 description: Azure App Service でカスタム コンテナーを構成する方法について説明します。 この記事では、最も一般的な構成タスクを紹介しています。
 ms.topic: article
 ms.date: 02/23/2021
+ms.custom: devx-track-azurepowershell
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 7bfebe318d93a544c964d70ea0a28144a7f0e43b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 48d2eeec1bdb1b9b4a393b4116092f043716077c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764245"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832035"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Azure App Service のカスタム コンテナーを構成する
 

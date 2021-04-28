@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d707106d66c77ad1f3a1156906add8bb85fd0ce0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 74009759bb9ca2a0516148fc1387b150b67452ab
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305975"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387906"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -53,7 +53,7 @@ CAE を使用するようにアプリケーションを準備する方法につ�
 このプロセスにより、これらの重大なイベントのいずれかが発生してから数分以内に、Microsoft 365 クライアント アプリから組織の SharePoint Online ファイル、電子メール、予定表、タスク、および Teams にアクセスできなくなるというシナリオが可能になります。 
 
 > [!NOTE] 
-> Teams では、ユーザー リスク イベントはまだサポートされていません。
+> Teams と SharePoint Online では、ユーザー リスク イベントはまだサポートされていません。
 
 ### <a name="conditional-access-policy-evaluation-preview"></a>条件付きアクセス ポリシーの評価 (プレビュー)
 

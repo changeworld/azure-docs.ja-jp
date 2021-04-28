@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 03/31/2021
-ms.openlocfilehash: 19c346bd3bdc0a5882244ff595bfeedbde8c06e4
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 5496e1778d47e30d338c38e492f1862212339c48
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106123159"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134251"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-core-web-app"></a>クイックスタート: ASP.NET Core Web アプリで Azure Cache for Redis を使用する 
 
@@ -430,7 +430,7 @@ Web ページにあるナビゲーション バーの **[Azure Cache for Redis T
 Azure へのデプロイについては、次を参照してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](/azure/app-service/tutorial-dotnetcore-sqldb-app)
+> [チュートリアル:Azure App Service での ASP.NET Core および SQL Database アプリの作成](../app-service/tutorial-dotnetcore-sqldb-app.md)
 
 Azure Key Vault にキャッシュ接続のシークレットを格納する方法の詳細については、次を参照してください。
 

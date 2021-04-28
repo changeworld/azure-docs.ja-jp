@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 52b3d902b2cbfdacfe92117dcf0057dab1fe9a83
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 773ae30cd888e76793bd65f8f31a8c110b128c01
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012211"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135223"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>自分のサービス向けに Spring Cloud Config Server インスタンスを設定する
 
@@ -24,7 +24,7 @@ Spring Cloud Config は、分散システムで外部化された構成用に、
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
-* 既にプロビジョニングされ、実行されている Azure Spring Cloud サービス。 Azure Spring Cloud サービスを設定し、起動するには、「[クイックスタート: Azure CLI を使用して Java Spring アプリケーションを起動する](spring-cloud-quickstart.md)」を参照してください。
+* 既にプロビジョニングされ、実行されている Azure Spring Cloud サービス。 Azure Spring Cloud サービスを設定し、起動するには、「[クイックスタート: Azure CLI を使用して Java Spring アプリケーションを起動する](./quickstart.md)」を参照してください。
 
 ## <a name="restriction"></a>Restriction
 
@@ -250,4 +250,4 @@ Azure Spring Cloud では、SSH または HTTP 基本認証によってセキュ
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Spring Cloud Config Server インスタンスを有効にし、構成する方法を学習しました。 アプリケーション管理の詳細については、「[Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-howto-scale-manual.md)」を参照してください。
+この記事では、Spring Cloud Config Server インスタンスを有効にし、構成する方法を学習しました。 アプリケーション管理の詳細については、「[Azure Spring Cloud でアプリケーションをスケーリングする](./how-to-scale-manual.md)」を参照してください。

@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfcbb00ec20797248f41cc1676809f3198d51527
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94874527"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866163"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>クイック スタート:コンソール アプリからのリアルタイム メッセージのブロードキャスト
 
@@ -23,7 +23,7 @@ Azure SignalR サービスは、ブロードキャストなどのサーバーと
 
 このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/core)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 * 任意のテキスト エディターまたはコード エディター。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]

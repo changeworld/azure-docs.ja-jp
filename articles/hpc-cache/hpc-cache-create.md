@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 63a179f7123f088c9c60fbfb8996a5b21d1c704d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02934a1943ef37d282dd2a2e7862c5695bbd6ecb
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773268"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862707"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Azure HPC キャッシュを作成する
 
@@ -107,7 +107,7 @@ Azure HPC Cache では、キャッシュ ヒット率を最大限に高めるた
 > [!NOTE]
 > Azure CLI では、現在のところ、カスタマー マネージド暗号化キーを使用したキャッシュの作成はサポートされていません。 Azure portal を使用します。
 
-[az hpc-cache create](/cli/azure/ext/hpc-cache/hpc-cache#ext-hpc-cache-az-hpc-cache-create) コマンドを使用して、新しい Azure HPC Cache を作成します。
+[az hpc-cache create](/cli/azure/hpc-cache#az_hpc_cache_create) コマンドを使用して、新しい Azure HPC Cache を作成します。
 
 以下の値を指定します。
 
@@ -126,7 +126,7 @@ nets/<cache_subnet_name>"``
   * キャッシュ サイズ (GB)
   * キャッシュ インフラストラクチャで使用される仮想マシンの SKU
 
-  [az hpc-cache skus list](/cli/azure/ext/hpc-cache/hpc-cache/skus) を実行すると、使用可能な SKU と、各 SKU で有効なキャッシュ サイズ オプションが表示されます。 キャッシュ サイズ オプションの範囲は 3 TB ～ 48 TB ですが、サポートされるのは一部の値のみです。
+  [az hpc-cache skus list](/cli/azure/hpc-cache/skus) を実行すると、使用可能な SKU と、各 SKU で有効なキャッシュ サイズ オプションが表示されます。 キャッシュ サイズ オプションの範囲は 3 TB ～ 48 TB ですが、サポートされるのは一部の値のみです。
 
   次の表は、このドキュメントの準備時点 (2020 年 7 月) で有効な、キャッシュ サイズと SKU の組み合わせを示しています。
 
@@ -136,7 +136,7 @@ nets/<cache_subnet_name>"``
   | 6144 GB    | はい         | はい         | no          |
   | 12288 GB   | 可         | はい         | 可         |
   | 24576 GB   | Ｘ          | はい         | 可         |
-  | 49152 GB   | Ｘ          | no          | 可         |
+  | 49152 GB   | Ｘ          | いいえ          | 可         |
 
   料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
 
@@ -239,7 +239,7 @@ nets/<cache_subnet_name>"`
   | 6144 GB    | はい         | はい         | no          |
   | 12,288 GB   | はい         | はい         | はい         |
   | 24,576 GB   | no          | はい         | はい         |
-  | 49,152 GB   | no          | no          | 可         |
+  | 49,152 GB   | no          | いいえ          | 可         |
 
   料金、スループット、およびワークフローに応じてキャッシュのサイズを適切に設定する方法については、ポータルの指示タブにある「**キャッシュ容量を設定する**」セクションを参照してください。
 

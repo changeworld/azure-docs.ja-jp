@@ -7,12 +7,12 @@ ms.topic: how-to
 author: navits09
 ms.author: navits
 ms.date: 12/02/2020
-ms.openlocfilehash: 65df5f178ce0ec845fca6343c51049b6bf426e18
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 001f7453c29e7a8525fb88a96dd9a867468460e3
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106039"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107501435"
 ---
 # <a name="create-a-dynamics-365-for-business-central-offer"></a>Dynamics 365 for Business Central オファーを作成する
 
@@ -33,7 +33,7 @@ ms.locfileid: "107106039"
 
 ## <a name="new-offer"></a>新しいプラン
 
-**[オファー ID]** を入力します。 これは、アカウントのオファーごとに一意の識別子です。
+**[オファー ID]** を入力します。 この値は、アカウントのオファーごとに一意の識別子です。
 
 - この ID は、マーケットプレース オファーの Web アドレスと Azure Resource Manager テンプレート (該当する場合) で顧客に表示されます。
 - オファー ID の長さはパブリッシャー ID の組み合わせで 40 文字以下にする必要があります。
@@ -51,7 +51,7 @@ ms.locfileid: "107106039"
 
 ### <a name="alias"></a>エイリアス
 
-パートナー センター内でのみこのオファーを参照するために使用する、わかりやすい名前を入力します。 この名前 (オファーの作成時に入力した内容が事前に入力されている) は、マーケットプレースでは使用されず、顧客に表示されるオファー名とは異なります。 オファー名を後で更新する場合は、「[オファー登録情報](#offer-listing)」ページに移動してください。
+パートナー センター内でのみこのオファーを参照するために使用する、わかりやすい名前を入力します。 この名前 (オファー作成時に入力した内容によって事前入力済み) は、マーケットプレースでは使用されず、顧客に表示されるオファー名とは異なります。 オファー名を後で更新する場合は、「[オファー登録情報](#offer-listing)」ページに移動してください。
 
 ### <a name="setup-details"></a>セットアップの詳細
 
@@ -118,11 +118,11 @@ ms.locfileid: "107106039"
 > [!NOTE]
 > 1 つの言語でのみ、オファー登録情報の詳細を入力します。 オファーの説明が「このアプリケーションは、[英語以外の言語] でのみ利用可能です」という文言で始まっている場合、英語にする必要はありません。 オファー登録情報の内容で使用されているもの以外の言語でコンテンツを提供するために、"*役に立つリンクの URL*" を指定することもできます。
 
-Microsoft AppSource でのオファー情報の表示例を次に示します (表示されている価格は例示のみを目的としており、実際のコストを反映することを意図していません)。
-<!-- update screen? -->
+Microsoft AppSource でのオファー情報の表示例を次に示します (表示されている価格は単なる例であり、実際のコストを反映するものではありません)。
+
 :::image type="content" source="media/example-d365-business-central.png" alt-text="Microsoft AppSource でこのオファーがどのように表示されるかを示しています。":::
 
-#### <a name="call-out-descriptions"></a>コールアウトの説明
+### <a name="call-out-descriptions"></a>コールアウトの説明
 
 1. ロゴ
 2. 製品
@@ -174,11 +174,11 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 [!INCLUDE [logo tips](../includes/graphics-suggestions.md)]
 
 >[!Note]
->ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
+>ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている `https://upload.xboxlive.com` サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="logos"></a>ロゴ
 
-**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターではこれを使用して、その他の必要なサイズを作成します。 これは、必要に応じて、後で別の画像に置き換えることができます。
+**大** サイズのロゴに PNG ファイルを指定します。 パートナー センターではこの初期ファイルを使用して、その他の必要なサイズを作成します。 必要に応じて、サイズが変更された画像を、後で独自の画像に置き換えることができます。
 
 これらのロゴは、リスト登録のさまざまな場所で使用されます。
 
@@ -225,6 +225,8 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 このページでは、オファーに接続するために使用される技術的な詳細を定義します。 この接続によって、最終顧客がオファーを取得することを選択した場合、Microsoft は最終顧客向けにオファーをプロビジョニングできます。
 
+オファーに関して送信される拡張機能は、[技術的な検証のチェックリスト](/dynamics365/business-central/dev-itpro/developer/devenv-checklist-submission)に指定されている要件を満たしている必要があります。
+
 ### <a name="file-upload"></a>ファイルのアップロード
 
 以前に **[アドオン]** を選択した場合、オファーのパッケージ ファイルと、依存関係があるすべての拡張機能のパッケージ ファイルをアップロードする場所。
@@ -242,14 +244,6 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 続行する前に、 **[下書きの保存]** を選択します。
 
-<!-- ## Test drive technical configuration
-
-This page lets you set up a demonstration ("test drive") that allows customers to try your offer before purchasing it. Learn more in [What is test drive](../what-is-test-drive.md).
-
-To enable a test drive, select the **Enable a test drive** check box on the [Offer setup](#test-drive) tab. To remove test drive from your offer, clear this check box.
-
-When you've finished setting up your test drive, select **Save draft** before continuing.
--->
 ## <a name="supplemental-content"></a>補足コンテンツ
 
 このページでは、オファーの確認に役立つ追加情報を提供できます。 この情報は顧客に表示されることも、マーケットプレースに公開されることもありません。
@@ -285,9 +279,9 @@ When you've finished setting up your test drive, select **Save draft** before co
 このオファーを公開するのが初めての場合、以下のことが可能です。
 
 - オファーの各セクションの完了状態を確認する。
-    - **未開始** – セクションは着手されておらず、完了する必要があります。
-    - **未完了** – 修正が必要なエラーがセクションにあり、追加の情報が必要です。 セクションに戻って更新してください。
-    - **完了** – セクションは完了しています。必須のデータはすべて入力済みであり、エラーはありません。 オファーを送信するには、オファーのセクションがすべて完了状態でなければなりません。
+  - **未開始** – セクションは着手されておらず、完了する必要があります。
+  - **未完了** – 修正が必要なエラーがセクションにあり、追加の情報が必要です。 セクションに戻って更新してください。
+  - **完了** – セクションは完了しています。必須のデータはすべて入力済みであり、エラーはありません。 オファーを送信するには、オファーのセクションがすべて完了状態でなければなりません。
 - **[認定の注意書き]** セクションで、アプリの理解に役立つ補足事項に加えて、テストの指示を認定チームに提供し、アプリが確実に正しくテストされるようにします。
 - **[送信]** を選択して、公開するためにオファーを送信する。 オファーのプレビュー バージョンのレビューと承認が可能になったら、メールが送信されます。 パートナー センターに戻り、 **[一般公開する]** を選択してオファーを一般に公開します。
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 44fe6bb3787e1fe0df7ccf83200497b46c473568
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 79ccd1f8107eb5d287cf74084978b92715b936fa
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107728502"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133747"
 ---
 # <a name="tutorial-create-a-hierarchy-of-iot-edge-devices"></a>チュートリアル:IoT Edge デバイスの階層を作成する
 
@@ -77,7 +77,7 @@ IoT Edge デバイスの階層を作成するには、以下のものが必要�
     --query "properties.outputs.[publicFQDN.value, publicSSH.value]" -o tsv
    ```
 
-   この仮想マシンでは、ユーザーの認証に SSH キーが使用されます。 SSH キーの作成と使用に慣れていない場合は、[Azure の Linux VM に使用する SSH の公開キーと秘密キーの組に関する手順](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に従ってください。
+   この仮想マシンでは、ユーザーの認証に SSH キーが使用されます。 SSH キーの作成と使用に慣れていない場合は、[Azure の Linux VM に使用する SSH の公開キーと秘密キーの組に関する手順](../virtual-machines/linux/mac-create-ssh-keys.md)に従ってください。
 
    IoT Edge バージョン 1.2 はこの ARM テンプレートと共にプレインストールされるため、そのアセットを仮想マシンに手動でインストールする必要はありません。 IoT Edge を自分のデバイスにインストールする場合は、[Azure IoT Edge for Linux (バージョン 1.2) のインストール](how-to-install-iot-edge.md)に関するページまたは [IoT Edge のバージョン 1.2 への更新](how-to-update-iot-edge.md#special-case-update-from-10-or-11-to-12)に関するページを参照してください。
 

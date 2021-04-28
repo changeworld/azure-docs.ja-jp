@@ -6,21 +6,21 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 03/02/2021
 ms.author: anithaa
-ms.openlocfilehash: 2f15b397fbceb9e097d94080ba03fba50a96ed06
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fd0b3ada5fec283562cee9727e3f805a7d34c532
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102048507"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107479051"
 ---
-# <a name="configure-private-endpoints-for-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアのプライベート エンドポイントを構成する
+# <a name="configure-azure-private-link-for-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアの Azure Private Link を構成する
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-この記事では、Azure Cosmos DB 分析ストアのマネージド プライベート エンドポイントを設定する方法について説明します。 トランザクション ストアを使用している場合は、[トランザクション ストアのプライベート エンドポイント](how-to-configure-private-endpoints.md)に関する記事を参照してください。 マネージド プライベート エンドポイントを使用して、Azure Cosmos DB 分析ストアのネットワーク アクセスを Azure Synapse のマネージド仮想ネットワークに制限することができます。 マネージド プライベート エンドポイントによって、分析ストアへのプライベート リンクが確立されます。
+この記事では、Azure Cosmos DB 分析ストアのマネージド プライベート エンドポイントを設定する方法について説明します。 トランザクション ストアを使用している場合は、[トランザクション ストアのプライベート エンドポイント](how-to-configure-private-endpoints.md)に関する記事を参照してください。 [マネージド プライベート エンドポイント](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md)を使用して、Azure Cosmos DB 分析ストアのネットワーク アクセスを、Azure Synapse ワークスペースに関連付けられたマネージド仮想ネットワークに制限することができます。 マネージド プライベート エンドポイントによって、分析ストアへのプライベート リンクが確立されます。
 
-## <a name="enable-private-endpoint-for-the-analytical-store"></a>分析ストアのプライベート エンドポイントを有効にする
+## <a name="enable-a-private-endpoint-for-the-analytical-store"></a>分析ストアのプライベート エンドポイントを有効にする
 
-### <a name="set-up-an-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>マネージド仮想ネットワークを使用して Azure Synapse Analytics ワークスペースを設定する
+### <a name="set-up-azure-synapse-analytics-workspace-with-a-managed-virtual-network"></a>マネージド仮想ネットワークを使用して Azure Synapse Analytics ワークスペースを設定する
 
 [Azure Synapse Analytics でデータ流出を有効にしたワークスペースを作成します。](../synapse-analytics/security/how-to-create-a-workspace-with-data-exfiltration-protection.md) [データ流出を防止](../synapse-analytics/security/workspace-data-exfiltration-protection.md)することで、悪意のあるユーザーが Azure リソースから組織の範囲外の場所にデータをコピーまたは転送できないようにすることができます。
 

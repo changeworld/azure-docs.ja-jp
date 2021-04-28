@@ -8,14 +8,13 @@ ms.subservice: core
 author: lobrien
 ms.author: laobri
 ms.date: 04/24/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 030e09f0bb1514e8d3828da52604d751a2a8a11a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: f3e432573e07146157d76de71e5ef1b328ed5bcf
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520084"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885076"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する
 

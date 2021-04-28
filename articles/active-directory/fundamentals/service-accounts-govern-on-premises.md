@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ea524620f810e0bf1dddc230716031bbc10e69
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: caffa68a111b66f3607954b1086ca858162863a4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642375"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072677"
 ---
 # <a name="governing-on-premises-service-accounts"></a>オンプレミス サービス アカウントの管理
 
@@ -64,7 +64,7 @@ Windows Active Directory には、4 種類のオンプレミス サービス ア
 
 *  **ログオンできるワークステーション**: サービス アカウントがサインインできる場所のアクセス許可を制限します。 マシン上でローカルに実行され、そのマシン上のリソースにのみアクセスする場合は、それ以外の場所でのログオンを制限します。
 
-* [**パスワードを変更できない**](/powershell/module/addsadministration/set-aduser): パラメーターを false に設定することで、サービス アカウントが自身のパスワードを変更できないようにします。
+* [**パスワードを変更できない**](/powershell/module/activedirectory/set-aduser): パラメーターを false に設定することで、サービス アカウントが自身のパスワードを変更できないようにします。
 
  
 ## <a name="build-a-lifecycle-management-process"></a>ライフサイクル管理プロセスを作成する
@@ -151,9 +151,9 @@ Web サイトを実行するために使用され、1 つ以上の SQL データ
 
 * [アカウントの有効期限](/powershell/module/activedirectory/set-adaccountexpiration?view=winserver2012-ps&preserve-view=true)
 
-   * サービス アカウントとして使用されるすべてのユーザー アカウントに対して、現実的で限定された使用終了日を定義します。 これを設定するには、"アカウントの有効期限" フラグを使用します。 詳細については、「[Set-ADAccountExpiration](/powershell/module/addsadministration/set-adaccountexpiration)」を参照してください。 
+   * サービス アカウントとして使用されるすべてのユーザー アカウントに対して、現実的で限定された使用終了日を定義します。 これを設定するには、"アカウントの有効期限" フラグを使用します。 詳細については、「[Set-ADAccountExpiration](/powershell/module/activedirectory/set-adaccountexpiration)」を参照してください。 
 
-* ログオン先 ([LogonWorkstation](/powershell/module/addsadministration/set-aduser))
+* ログオン先 ([LogonWorkstation](/powershell/module/activedirectory/set-aduser))
 
 * [パスワード ポリシー](../../active-directory-domain-services/password-policy.md)の要件
 

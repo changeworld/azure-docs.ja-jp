@@ -5,12 +5,12 @@ author: MalcolmTyrrell
 ms.author: matyrr
 ms.date: 09/03/2020
 ms.topic: how-to
-ms.openlocfilehash: 9a094755dfb9381b1e4d6abdf1c0e6342d7427c1
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ab01143fcab5ceb5468ef8fde233905b8d3e05d1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308441"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124547"
 ---
 # <a name="laying-out-files-for-conversion"></a>変換用のファイルのレイアウト
 
@@ -21,7 +21,7 @@ ms.locfileid: "107308441"
 ファイルをレイアウトするために注意する必要がある重要な点は、資産を処理するときに変換サービスが使用できる一連のすべてのファイルが `BlobPrefix` によって決定されることです。
 
 > [!Note]
-> このサービスを使用すると、input.BlobPrefix の下にあるすべてのファイルがダウンロードされます。 サービスでの問題を回避するために、ファイル名とパスが [Windows パスの長さ制限](https://docs.microsoft.com/windows/win32/fileio/maximum-file-path-limitation)を超えていないことを確認してください。 
+> このサービスを使用すると、input.BlobPrefix の下にあるすべてのファイルがダウンロードされます。 サービスでの問題を回避するために、ファイル名とパスが [Windows パスの長さ制限](/windows/win32/fileio/maximum-file-path-limitation)を超えていないことを確認してください。 
 
 ## <a name="placing-files-so-they-can-be-found"></a>ファイルが見つけることができるように配置する
 

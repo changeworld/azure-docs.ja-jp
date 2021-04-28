@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.date: 04/09/2020
-ms.topic: conceptual
-ms.custom: how-to, designer
-ms.openlocfilehash: 30ae737a170c337fe6be51521aeb358cdcebd44b
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.topic: how-to
+ms.custom: designer
+ms.openlocfilehash: ba5af77022c3f230fdaf77d115a1c1a4b2151c3e
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107340"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888154"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>デザイナーでパイプライン パラメーターを使用して汎用性のあるパイプラインを作成する
 

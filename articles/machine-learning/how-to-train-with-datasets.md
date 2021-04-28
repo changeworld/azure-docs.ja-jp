@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b984a17c8c10c3dff7c57b7d0223ba8b4197012
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: edb7ebc94d2706d1bf20db8ed9a869107163ff8d
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640114"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107387991"
 ---
 # <a name="train-models-with-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを使用してモデルをトレーニングする 
 
@@ -44,7 +44,7 @@ Azure Machine Learning データセットにより、[ScriptRunConfig](/python/a
 
 データセットとしてまだ登録されていない構造化データがある場合は、TabularDataset を作成し、それをローカルまたはリモートの実験用のトレーニング スクリプトで直接使用します。
 
-この例では、未登録の [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) を作成し、トレーニング用の ScriptRunConfig オブジェクトのスクリプト引数として指定します。 この TabularDataset をワークスペースの他の実験で再利用する場合は、[データセットをワークスペースに登録する方法](how-to-create-register-datasets.md#register-datasets)に関する記事を参照してください。
+この例では、未登録の [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) を作成し、トレーニング用の [ScriptRunConfig](/python/api/azureml-core/azureml.core.script_run_config.scriptrunconfig) オブジェクトのスクリプト引数として指定します。 この TabularDataset をワークスペースの他の実験で再利用する場合は、[データセットをワークスペースに登録する方法](how-to-create-register-datasets.md#register-datasets)に関する記事を参照してください。
 
 ### <a name="create-a-tabulardataset"></a>TabularDataset を作成する
 
@@ -119,16 +119,25 @@ run.wait_for_completion(show_output=True)
 
 非構造化データがある場合は、[FileDataset](/python/api/azureml-core/azureml.data.filedataset) を作成し、データ ファイルをマウントまたはダウンロードして、トレーニング用にリモート コンピューティング先でそれを使用できるようにします。 リモート トレーニング実験用に[マウントまたはダウンロード](#mount-vs-download)を使用する状況について説明します。 
 
-次の例では、FileDataset を作成し、データセットをトレーニング スクリプトに引数として渡すことによって、それをコンピューティング先にマウントします。 
+次に例を示します。 
+
+* トレーニング データ用の入力 FileDataset、`mnist_ds` を作成する。
+* トレーニング結果の書き込み先と、それらの結果を FileDataset として昇格させることを指定する。
+* 入力データセットをコンピューティング先にマウントする。
 
 > [!Note]
 > カスタム Docker ベース イメージを使用している場合は、データセットのマウントを機能させるための依存関係として、`apt-get install -y fuse` 経由で fuse をインストールする必要があります。 [カスタム ビルド イメージを構築](how-to-deploy-custom-docker-image.md#build-a-custom-base-image)する方法を確認してください。
 
+ノートブックの例については、[データ入出力を使用してトレーニング実行を構成する方法](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/work-with-data/datasets-tutorial/scriptrun-with-data-input-output/how-to-use-scriptrun.ipynb)に関する記事を参照してください。
+
 ### <a name="create-a-filedataset"></a>FileDataset を作成する
 
-次の例では、未登録の FileDataset を Web URL から作成します。 他のソースから[データセットを作成する方法](how-to-create-register-datasets.md)の詳細を参照してください。
+次の例では、未登録の FileDataset、`mnist_data` を Web URL から作成します。 この FileDataset は、トレーニング実行用の入力データです。
+
+他のソースから[データセットを作成する方法](how-to-create-register-datasets.md)の詳細を参照してください。
 
 ```Python
+
 from azureml.core.dataset import Dataset
 
 web_paths = [
@@ -137,22 +146,49 @@ web_paths = [
             'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
             'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
             ]
+
 mnist_ds = Dataset.File.from_files(path = web_paths)
+
+```
+### <a name="where-to-write-training-output"></a>トレーニング出力の書き込み先
+
+[OutputFileDatasetConfig オブジェクト](/python/api/azureml-core/azureml.data.output_dataset_config.outputfiledatasetconfig)を使用して、トレーニング結果の書き込み先を指定できます。 
+
+OutputFileDatasetConfig オブジェクトを使用すると、次のことができます。 
+
+* 指定したクラウド ストレージに実行の出力をマウントまたはアップロードする。
+* 出力を FileDataset として、これらのサポートされているストレージの種類に保存する。
+    * Azure BLOB
+    * Azure ファイル共有
+    * Azure Data Lake Storage Gen 1 と 2
+* トレーニング実行間のデータ系列を追跡する。
+
+次のコードでは、トレーニング結果を FileDataset として既定の BLOB データストア `def_blob_store` の `outputdataset` フォルダーに保存するように指定します。 
+
+```python
+from azureml.core import Workspace
+from azureml.data import OutputFileDatasetConfig
+
+ws = Workspace.from_config()
+
+def_blob_store = ws.get_default_datastore()
+output = OutputFileDatasetConfig(destination=(def_blob_store, 'sample/outputdataset'))
 ```
 
 ### <a name="configure-the-training-run"></a>トレーニングの実行を構成する
 
-`ScriptRunConfig` コンストラクターの `arguments` パラメーターを介してマウントする場合は、データセットを引数として渡すことをお勧めします。 そうすることで、引数を介してトレーニング スクリプトのデータ パス (マウント ポイント) を取得します。 これにより、任意のクラウド プラットフォームで、ローカル デバッグとリモート トレーニングに、同じトレーニング スクリプトを使用できるようになります。
+`ScriptRunConfig` コンストラクターの `arguments` パラメーターを介してマウントする場合は、データセットを引数として渡すことをお勧めします。 そうすることで、引数を介してトレーニング スクリプトのデータ パス (マウント ポイント) を取得します。 これにより、任意のクラウド プラットフォームで、ローカル デバッグとリモート トレーニングに、同じトレーニング スクリプトを使用できます。
 
-次の例では、`arguments` を介して FileDataset を渡す ScriptRunConfig を作成します。 実行を送信すると、`mnist_ds` データセットによって参照されるデータ ファイルがコンピューティング先にマウントされます。
+次の例では、`arguments` を介して FileDataset を渡す ScriptRunConfig を作成します。 実行を送信すると、データセット `mnist_ds` によって参照されるデータ ファイルがコンピューティング先にマウントされ、トレーニング結果が既定のデータストア内の指定された `outputdataset` フォルダーに保存されます。
 
 ```python
 from azureml.core import ScriptRunConfig
 
+input_data= mnist_ds.as_named_input('input').as_mount()# the dataset will be mounted on the remote compute 
+
 src = ScriptRunConfig(source_directory=script_folder,
-                      script='train_mnist.py',
-                      # the dataset will be mounted on the remote compute and the mounted path passed as an argument to the script
-                      arguments=['--data-folder', mnist_ds.as_mount(), '--regularization', 0.5],
+                      script='dummy_train.py',
+                      arguments=[input_data, output],
                       compute_target=compute_target,
                       environment=myenv)
 
@@ -161,40 +197,31 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-data-in-your-training-script"></a>トレーニング スクリプトのデータを取得する
+### <a name="simple-training-script"></a>単純なトレーニング スクリプト
 
-次のコードは、スクリプトでデータを取得する方法を示しています。
+次のスクリプトは、ScriptRunConfig を介して送信されます。 `mnist_ds ` データセットを入力として読み取って、既定の BLOB データストア `def_blob_store` 内の `outputdataset` フォルダーにファイルを書き込みます。
 
 ```Python
-%%writefile $script_folder/train_mnist.py
+%%writefile $source_directory/dummy_train.py
 
-import argparse
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+import sys
 import os
-import numpy as np
-import glob
 
-from utils import load_data
+print("*********************************************************")
+print("Hello Azure ML!")
 
-# retrieve the 2 arguments configured through `arguments` in the ScriptRunConfig
-parser = argparse.ArgumentParser()
-parser.add_argument('--data-folder', type=str, dest='data_folder', help='data folder mounting point')
-parser.add_argument('--regularization', type=float, dest='reg', default=0.01, help='regularization rate')
-args = parser.parse_args()
+mounted_input_path = sys.argv[1]
+mounted_output_path = sys.argv[2]
 
-data_folder = args.data_folder
-print('Data folder:', data_folder)
-
-# get the file paths on the compute
-X_train_path = glob.glob(os.path.join(data_folder, '**/train-images-idx3-ubyte.gz'), recursive=True)[0]
-X_test_path = glob.glob(os.path.join(data_folder, '**/t10k-images-idx3-ubyte.gz'), recursive=True)[0]
-y_train_path = glob.glob(os.path.join(data_folder, '**/train-labels-idx1-ubyte.gz'), recursive=True)[0]
-y_test = glob.glob(os.path.join(data_folder, '**/t10k-labels-idx1-ubyte.gz'), recursive=True)[0]
-
-# load train and test set into numpy arrays
-X_train = load_data(X_train_path, False) / 255.0
-X_test = load_data(X_test_path, False) / 255.0
-y_train = load_data(y_train_path, True).reshape(-1)
-y_test = load_data(y_test, True).reshape(-1)
+print("Argument 1: %s" % mounted_input_path)
+print("Argument 2: %s" % mounted_output_path)
+    
+with open(mounted_input_path, 'r') as f:
+    content = f.read()
+    with open(os.path.join(mounted_output_path, 'output.csv'), 'w') as fw:
+        fw.write(content)
 ```
 
 ## <a name="mount-vs-download"></a>マウントまたはダウンロード
@@ -257,7 +284,7 @@ src.run_config.source_directory_data_store = "workspaceblobstore"
 
 ## <a name="notebook-examples"></a>ノートブックの例
 
-+ [データセット ノートブック](https://aka.ms/dataset-tutorial)では、この記事の概念を示し、さらに詳しく説明します。
++ その他のデータセット例と概念については、[データセット ノートブック](https://aka.ms/dataset-tutorial)に関する記事を参照してください。
 + [ML パイプラインでデータセットをパラメーター化する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-showcasing-dataset-and-pipelineparameter.ipynb)方法を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング

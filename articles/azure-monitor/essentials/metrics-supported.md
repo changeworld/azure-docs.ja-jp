@@ -4,14 +4,14 @@ description: Azure Monitor で使用できるメトリックの一覧 (リソー
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 04/01/2021
+ms.date: 04/15/2021
 ms.author: robb
-ms.openlocfilehash: 6f664450d5450782d9a01d75abfb5a96b3e0bba6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 1091d103428315a065dd1ff9800ce2ad16632df0
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106221196"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600014"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -281,6 +281,20 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ノード総数|はい|ノード総数|Count|Average|ノードの合計数|Scenario、ClusterName|
 |使用できないコア|はい|使用できないコア|Count|Average|使用できないコアの数|Scenario、ClusterName|
 |使用できないノード|はい|使用できないノード|Count|Average|使用できないノードの数|Scenario、ClusterName|
+
+## <a name="microsoftbingaccounts"></a>microsoft.bing/accounts
+
+|メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
+|---|---|---|---|---|---|---|
+|BlockedCalls|はい|ブロックされた呼び出し|Count|合計|レートまたはクォータの制限を超える呼び出しの回数|ApiName、ServingRegion、StatusCode|
+|ClientErrors|はい|クライアント エラー|Count|合計|クライアントのエラー (HTTP 状態コード 4xx) による呼び出しの回数|ApiName、ServingRegion、StatusCode|
+|DataIn|はい|受信データ|バイト|合計|受信要求コンテンツの長さ (バイト単位)|ApiName、ServingRegion、StatusCode|
+|DataOut|はい|送信データ|バイト|合計|送信応答のコンテンツの長さ (バイト単位)|ApiName、ServingRegion、StatusCode|
+|Latency|はい|Latency|ミリ秒|Average|待機時間 (ミリ秒単位)|ApiName、ServingRegion、StatusCode|
+|ServerErrors|はい|サーバー エラー|Count|合計|サーバーのエラー (HTTP 状態コード 5xx) による呼び出しの回数|ApiName、ServingRegion、StatusCode|
+|SuccessfulCalls|はい|成功した呼び出し|Count|合計|成功した呼び出しの数 (HTTP 状態コード 2xx)|ApiName、ServingRegion、StatusCode|
+|TotalCalls|はい|合計呼び出し数|Count|合計|呼び出しの合計数|ApiName、ServingRegion、StatusCode|
+|TotalErrors|はい|合計エラー数|Count|合計|エラー (HTTP 状態コード 4xx または 5xx) による呼び出しの回数|ApiName、ServingRegion、StatusCode|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
@@ -1734,6 +1748,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |IoTConnectorMeasurementIngestionLatencyMs|はい|Average Group Stage Latency (グループ ステージの平均待機時間)|ミリ秒|Average|IoT コネクタがデバイス データを受信してから、FHIR 変換ステージによってデータが処理されるまでの期間。|Operation、ConnectorName|
 |IoTConnectorNormalizedEvent|はい|Number of Normalized Messages (正規化されたメッセージの数)|Count|SUM|Azure IoT Connector for FHIR の正規化ステージから出力された、マップされた正規化値の合計数。|Operation、ConnectorName|
 |IoTConnectorTotalErrors|はい|Total Error Count|Count|SUM|Azure IoT Connector for FHIR によってログに記録されたエラーの合計数|Name、Operation、ErrorType、ErrorSeverity、ConnectorName|
+|ServiceApiErrors|はい|サービス エラー|Count|SUM|サービスによって生成された内部サーバー エラーの合計数。|Protocol、Authentication、Operation、ResourceType、StatusCode、StatusCodeClass、StatusCodeText|
+|ServiceApiLatency|はい|サービスの待機時間|ミリ秒|Average|サービスの応答待機時間。|Protocol、Authentication、Operation、ResourceType、StatusCode、StatusCodeClass、StatusCodeText|
+|ServiceApiRequests|はい|Service Requests|Count|SUM|サービスによって受信された要求の合計数。|Protocol、Authentication、Operation、ResourceType、StatusCode、StatusCodeClass、StatusCodeText|
 |TotalErrors|はい|合計エラー数|Count|SUM|サービスで発生した内部サーバー エラーの合計数。|Protocol、StatusCode、StatusCodeClass、StatusCodeText|
 |TotalLatency|はい|合計待機時間|ミリ秒|Average|サービスの応答待機時間。|Protocol|
 |TotalRequests|はい|要求の合計数|Count|SUM|サービスによって受信された要求の合計数。|Protocol|
@@ -1803,6 +1820,10 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
+|c2d.commands.failure|はい|失敗したコマンド呼び出し|Count|合計|IoT Central から開始されて失敗したコマンド要求の総数|ディメンションなし|
+|c2d.commands.requestSize|はい|コマンド呼び出しの要求サイズ|バイト|合計|IoT Central から開始されたすべてのコマンド要求の要求サイズ|ディメンションなし|
+|c2d.commands.responseSize|はい|コマンド呼び出しの応答サイズ|バイト|合計|IoT Central から開始されたすべてのコマンド応答の応答サイズ|ディメンションなし|
+|c2d.commands.success|はい|成功したコマンド呼び出し|Count|合計|IoT Central から開始されて成功したコマンド要求の総数|ディメンションなし|
 |c2d.property.read.failure|はい|Failed Device Property Reads from IoT Central (IoT Central からのデバイス プロパティ読み取りの失敗数)|Count|合計|IoT Central から開始されて失敗した、すべてのプロパティ読み取りの数|ディメンションなし|
 |c2d.property.read.success|はい|Successful Device Property Reads from IoT Central (IoT Central からのデバイス プロパティ読み取りの成功数)|Count|合計|IoT Central から開始されて成功した、すべてのプロパティ読み取りの数|ディメンションなし|
 |c2d.property.update.failure|はい|Failed Device Property Updates from IoT Central (IoT Central からのデバイス プロパティ更新の失敗数)|Count|合計|IoT Central から開始されて失敗した、すべてのプロパティ更新の数|ディメンションなし|
@@ -1812,11 +1833,15 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |d2c.property.read.success|はい|Successful Device Property Reads from Devices (デバイスからのデバイス プロパティ読み取りの成功数)|Count|合計|デバイスから開始されて成功した、すべてのプロパティ読み取りの数|ディメンションなし|
 |d2c.property.update.failure|はい|Failed Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の失敗数)|Count|合計|デバイスから開始されて失敗した、すべてのプロパティ更新の数|ディメンションなし|
 |d2c.property.update.success|はい|Successful Device Property Updates from Devices (デバイスからのデバイス プロパティ更新の成功数)|Count|合計|デバイスから開始されて成功した、すべてのプロパティ更新の数|ディメンションなし|
+|d2c.telemetry.ingress.allProtocol|はい|テレメトリ メッセージ送信の合計試行回数|Count|合計|IoT Central アプリケーションに送信しようとした device-to-cloud テレメトリ メッセージの数|ディメンションなし|
+|d2c.telemetry.ingress.success|はい|送信されたテレメトリ メッセージの総数|Count|合計|IoT Central アプリケーションに正常に送信された device-to-cloud テレメトリ メッセージの数|ディメンションなし|
 |dataExport.error|はい|データ エクスポート エラー|Count|合計|データのエクスポートで発生したエラーの数|exportId、exportDisplayName、destinationId、destinationDisplayName|
 |dataExport.messages.filtered|はい|フィルター処理されたデータ エクスポート メッセージ|Count|合計|データ エクスポートのフィルターによって渡されたメッセージの数|exportId、exportDisplayName、destinationId、destinationDisplayName|
 |dataExport.messages.received|はい|受信したデータ エクスポート メッセージ|Count|合計|データ エクスポートのために受信されたメッセージの数 (フィルター処理と強化処理の前)|exportId、exportDisplayName、destinationId、destinationDisplayName|
 |dataExport.messages.written|はい|書き込まれたデータ エクスポート メッセージ|Count|合計|宛先に書き込まれたメッセージの数|exportId、exportDisplayName、destinationId、destinationDisplayName|
-
+|dataExport.statusChange|はい|データ エクスポート状態の変更|Count|合計|状態の変更の数|exportId、exportDisplayName、destinationId、destinationDisplayName、status|
+|deviceDataUsage|はい|デバイス データの合計使用量|バイト|合計|IoT Central アプリケーションに接続されているデバイスの間で転送されたバイト数|ディメンションなし|
+|provisionedDeviceCount|いいえ|プロビジョニングされたデバイスの総数|Count|Average|IoT Central アプリケーションでプロビジョニングされたデバイスの数|ディメンションなし|
 
 ## <a name="microsoftkeyvaultmanagedhsms"></a>microsoft.keyvault/managedhsms
 
@@ -2719,10 +2744,9 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
-|ConnectionCount|はい|Connection Count (接続数)|Count|最大値|ユーザー接続の量。|ディメンションなし|
 |InboundTraffic|はい|受信トラフィック|バイト|合計|サービスの受信トラフィック|ディメンションなし|
 |OutboundTraffic|はい|送信トラフィック|バイト|合計|サービスの送信トラフィック|ディメンションなし|
-
+|TotalConnectionCount|はい|Connection Count (接続数)|Count|最大値|ユーザー接続の量。|ディメンションなし|
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
@@ -3002,7 +3026,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse ワークスペース
-
 |メトリック|診断設定を使用したエクスポートが可能か?|メトリックの表示名|ユニット|集計の種類|説明|Dimensions|
 |---|---|---|---|---|---|---|
 |BuiltinSqlPoolDataProcessedBytes|いいえ|処理済みのデータ (バイト)|バイト|合計|クエリによって処理されたデータの量|ディメンションなし|
@@ -3011,6 +3034,20 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |IntegrationActivityRunsEnded|いいえ|Activity runs ended (終了したアクティビティ実行数)|Count|合計|成功、失敗、または取り消された統合アクティビティの数|Result、FailureType、Activity、ActivityType、Pipeline|
 |IntegrationPipelineRunsEnded|いいえ|Pipeline runs ended (終了したパイプライン実行数)|Count|合計|成功、失敗、または取り消された統合パイプライン実行の数|Result、FailureType、Pipeline|
 |IntegrationTriggerRunsEnded|いいえ|終了したトリガーの実行|Count|合計|成功、失敗、または取り消された統合トリガーの数|Result、FailureType、Trigger|
+|SQLStreamingBackloggedInputEventSources|いいえ|バックログされた入力イベント (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 バックログされた入力イベント ソースの数。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingConversionErrors|いいえ|データ変換エラー (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 想定の出力スキーマに変換できなかった出力イベントの数。 ラー ポリシーを "削除" に変更すると、このシナリオが発生するイベントを削除できます。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingDeserializationError|いいえ|逆シリアル化の入力エラー (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 逆シリアル化できなかった入力イベントの数。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingEarlyInputEvents|いいえ|早期入力イベント (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 早期着信ポリシーに従って、着信時刻と比較してアプリケーション時刻が早いと見なされる入力イベントの数。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingInputEventBytes|いいえ|入力イベントのバイト数 (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 ストリーミング ジョブが受信したデータの量 (バイト単位)。 イベントが入力ソースに送信されることを検証するために使用できます。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingInputEvents|いいえ|入力イベント (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 入力イベント数。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingInputEventsSourcesPerSecond|いいえ|受信した入力ソース (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 1 秒あたりの入力イベント ソース数。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingLateInputEvents|いいえ|遅延入力イベント (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 遅延着信ポリシーに従って、着信時刻と比較してアプリケーション時刻が遅いと見なされる入力イベントの数。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingOutOfOrderEvents|いいえ|順序が不適切なイベント (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 イベント ハブ入力アダプターが受信したイベント ハブ イベント (シリアル化されたメッセージ) の数。このイベントは、不適切な順序で受信されたため、イベント順序付けポリシーに基づいて、ドロップされたか、調整されたタイムスタンプが付けられています。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingOutputEvents|いいえ|出力イベント (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 出力イベント数。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingOutputWatermarkDelaySeconds|いいえ|ウォーターマークの遅延 (プレビュー)|Count|最大値|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 出力ウォーターマークの遅延 (秒単位)。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingResourceUtilization|いいえ|%単位のリソース使用率 (プレビュー)|Percent|最大値|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。
+ パーセントで表されるリソース使用率。 使用率が高い場合は、最大数に近い割り当てリソースがジョブによって使用されていることを示します。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
+|SQLStreamingRuntimeErrors|いいえ|ランタイム エラー (プレビュー)|Count|合計|これは、米国東部、西ヨーロッパで使用可能なプレビュー メトリックです。 クエリ処理に関連するエラーの総数 (イベントの取り込み時、または結果の出力時に見つかったエラーを除く)。|ResourceName、SQLPoolName、SQLDatabaseName、JobName、LogicalName、PartitionId、ProcessorInstance|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools

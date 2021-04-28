@@ -9,14 +9,14 @@ ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
 ms.date: 03/02/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: 1c3d9b286a8262efa126ba9c661c50dd88e78b64
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python, references_regions, contperf-fy21q1
+ms.openlocfilehash: e6b8a4bbbe596ec06f7f9b445dbaa439e1207e46
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103573474"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888712"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>仮想ネットワークの分離とプライバシーの概要
 

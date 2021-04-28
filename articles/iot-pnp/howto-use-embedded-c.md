@@ -1,18 +1,18 @@
 ---
 title: 制約のあるデバイスで IoT プラグ アンド プレイを使用する | Microsoft Docs
 description: 埋め込み C または Azure RTOS 用のいずれかの SDK を使用して、制約のあるデバイスに IoT プラグ アンド プレイを実装する方法について説明します。
-author: elhorton
-ms.author: elhorton
+author: EliotSeattle
+ms.author: eliotgra
 ms.date: 09/23/2020
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: cfa71e02688d5bf63d894ae42dabab7da1d4174c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 6c792fbbb44b7dc769e7cdc56850684bd69ea40b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057316"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864139"
 ---
 # <a name="implement-iot-plug-and-play-on-constrained-devices"></a>制約のあるデバイスに IoT プラグ アンド プレイを実装する
 

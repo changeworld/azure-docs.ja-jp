@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8513127f4a79c9c94323140462ad2d2648a0130d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bc7ac6b97d10e5941e46b8be3e12baff32bded4a
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104577700"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483063"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -100,7 +100,7 @@ Azure SQL Database および Azure Synapse の監査では、監査レコード�
 
   > [!NOTE]
   > - 一時停止している専用 SQL プールで監査を有効にすることはできません。 監査を有効にするには、専用 SQL プールの一時停止を解除します。 専用 SQL プールの詳細については、[こちら](../..//synapse-analytics/sql/best-practices-dedicated-sql-pool.md)を参照してください。
-  > - Azure portal または PowerShell コマンドレットを使用して、監査が Log Analytics ワークスペースまたはハブの送信先に対して構成されている場合、[診断設定](../../azure-monitor/essentials/diagnostic-settings.md)は "SQLSecurityAuditEvents" カテゴリが有効の状態で作成されます。
+  > - Azure portal または PowerShell コマンドレットを使用して、監査が Log Analytics ワークスペースまたはイベント ハブの送信先に対して構成されている場合、[診断設定](../../azure-monitor/essentials/diagnostic-settings.md)は "SQLSecurityAuditEvents" カテゴリが有効の状態で作成されます。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. **[SQL データベース]** ウィンドウまたは **[SQL サーバー]** ウィンドウの [セキュリティ] 見出しの下にある **[監査]** に移動します。

@@ -6,14 +6,14 @@ services: cognitive-services
 author: erindormier
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 05/28/2020
+ms.date: 04/07/2021
 ms.author: egeaney
-ms.openlocfilehash: 88a723abc606a527232b7c1949f35c1fedfdba50
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c7476a3ab885e9c127cbd571ad723864bf0d898
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101706845"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107534555"
 ---
 # <a name="configure-customer-managed-keys-with-azure-key-vault-for-cognitive-services"></a>Cognitive Services 用に Azure Key Vault でカスタマー マネージド キーを構成する
 
@@ -31,10 +31,15 @@ Cognitive Services 用に Azure Key Vault でカスタマー マネージド キ
 * [QnA Maker での保存データの暗号化](../QnAMaker/encrypt-data-at-rest.md)
 * [Translator による保存データの暗号化](../translator/encrypt-data-at-rest.md)
 
+## <a name="speech"></a>音声
+
+* [音声による保存データの暗号化](../speech-service/speech-encryption-of-data-at-rest.md)
+
 ## <a name="decision"></a>決定
 
 * [Content Moderator による保存データの暗号化](../Content-Moderator/encrypt-data-at-rest.md)
 * [Personalizer による保存データの暗号化](../personalizer/encrypt-data-at-rest.md)
+* [Metrics Advisor による保存データの暗号化](../metrics-advisor/encryption.md)
 
 ## <a name="next-steps"></a>次のステップ
 

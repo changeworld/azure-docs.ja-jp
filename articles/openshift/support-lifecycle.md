@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: azure-redhat-openshift
 ms.topic: conceptual
 ms.date: 03/06/2021
-ms.openlocfilehash: 35cbaf2b6d2618d116d2dd322ae5ac28f578cecc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 22ae9bdbee4b9d6f66d08d0e3ffc37675bc5d3da
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107303544"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143559"
 ---
 # <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Azure Red Hat OpenShift 4 のサポート ライフサイクル
 
@@ -114,7 +114,7 @@ N-2 以前のバージョンを使用している場合は、サポート対象�
 
 **"サポート外" とは**
 
-ARO クラスターで、サポートされているバージョンの一覧にない OpenShift バージョンが実行されている場合、または[サポートされていないクラスター構成](https://docs.microsoft.com/azure/openshift/support-policies-v4)を使用している場合、クラスターは "サポート対象外" になります。 その結果、次のような影響が出ています。
+ARO クラスターで、サポートされているバージョンの一覧にない OpenShift バージョンが実行されている場合、または[サポートされていないクラスター構成](./support-policies-v4.md)を使用している場合、クラスターは "サポート対象外" になります。 その結果、次のような影響が出ています。
 - クラスターのサポート チケットを開くときに、クラスターをサポートされているバージョンにアップグレードするように求められます。 サポートを受ける前であり、バージョンのサポート終了後の 30 日間の猶予期間内である場合を除きます。 
 - サポート外のクラスターに対するランタイムまたは SLA の保証は、すべて無効になります。
 - サポート外のクラスターには、ベスト エフォートでのみパッチが適用されます。

@@ -5,18 +5,18 @@ description: Azure Private Link を使用して、仮想ネットワークから
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 92b5283e5779cc79ce0a745190b57884a6ca0f7e
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: cb1a1cdf99e94bb4b4dc0cb6ef66da54a1b93ce8
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106056013"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885796"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペース用に Azure Private Link を構成する
 
@@ -66,7 +66,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace create](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create) コマンドが用意されています。 このコマンドの次のパラメーターは、プライベート ネットワークを使用してワークスペースを作成するために使用できますが、既存の仮想ネットワークが必要です。
+[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace create](/cli/azure/ml/workspace#az_ml_workspace_create) コマンドが用意されています。 このコマンドの次のパラメーターは、プライベート ネットワークを使用してワークスペースを作成するために使用できますが、既存の仮想ネットワークが必要です。
 
 * `--pe-name`:作成するプライベート エンドポイントの名前。
 * `--pe-auto-approval`:ワークスペースへのプライベート エンドポイント接続を自動的に承認するかどうか。
@@ -116,7 +116,7 @@ ws.add_private_endpoint(private_endpoint_config=pe, private_endpoint_auto_approv
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint add](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add) コマンドが用意されています。
+[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint add](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add) コマンドが用意されています。
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -153,7 +153,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint delete](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete) コマンドが用意されています。
+[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace private-endpoint delete](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete) コマンドが用意されています。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
@@ -192,7 +192,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update) コマンドが用意されています。 ワークスペースへのパブリック アクセスを有効にするには、パラメーター `--allow-public-access true` を追加します。
+[機械学習のための Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)には、[az ml workspace update](/cli/azure/ml/workspace#az_ml_workspace_update) コマンドが用意されています。 ワークスペースへのパブリック アクセスを有効にするには、パラメーター `--allow-public-access true` を追加します。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 

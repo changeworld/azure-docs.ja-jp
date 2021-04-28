@@ -3,13 +3,13 @@ title: Azure Monitor のアラート スキーマ定義
 description: Azure Monitor の共通アラート スキーマ定義について
 author: ofirmanor
 ms.topic: conceptual
-ms.date: 09/22/2020
-ms.openlocfilehash: 709ec2dee1be6930ca7c09de334aede8a76e95f4
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.date: 04/12/2021
+ms.openlocfilehash: 6d835b6d2c3519bc47decf8256ab3f3380170df6
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491714"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107565119"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
@@ -72,7 +72,7 @@ ms.locfileid: "106491714"
 
 | フィールド | 説明|
 |:---|:---|
-| alertId | アラート インスタンスを一意に識別する GUID。 |
+| alertId | アラート インスタンスを識別する一意のリソース ID。 |
 | alertRule | そのアラート インスタンスを生成したアラート ルールの名前。 |
 | 重大度 | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、または Sev4。 |
 | signalType | アラート ルールが定義されていたシグナルを示します。 指定できる値Metric、Log、または Activity Log。 |
@@ -110,7 +110,7 @@ ms.locfileid: "106491714"
 
 ## <a name="alert-context"></a>アラート コンテキスト
 
-### <a name="metric-alerts"></a>メトリック アラート
+### <a name="metric-alerts-excluding-availability-tests"></a>メトリック アラート (可用性テストを除く)
 
 #### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
@@ -136,6 +136,37 @@ ms.locfileid: "106491714"
               }
             ],
             "metricValue": 31.1105
+          }
+        ],
+        "windowStartTime": "2019-03-22T13:40:03.064Z",
+        "windowEndTime": "2019-03-22T13:45:03.064Z"
+      }
+    }
+}
+```
+
+### <a name="metric-alerts-availability-tests"></a>メトリック アラート (可用性テスト)
+
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
+
+**サンプル値**
+```json
+{
+  "alertContext": {
+      "properties": null,
+      "conditionType": "WebtestLocationAvailabilityCriteria",
+      "condition": {
+        "windowSize": "PT5M",
+        "allOf": [
+          {
+            "metricName": "Failed Location",
+            "metricNamespace": null,
+            "operator": "GreaterThan",
+            "threshold": "2",
+            "timeAggregation": "Sum",
+            "dimensions": [],
+            "metricValue": 5,
+            "webTestName": "myAvailabilityTest-myApplication"
           }
         ],
         "windowStartTime": "2019-03-22T13:40:03.064Z",

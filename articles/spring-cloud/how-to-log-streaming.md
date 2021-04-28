@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 1eeb291c7a058efd8905e95ebf1ea14fed046691
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: df58be32123f662ae2a2782d6ebb7f19bd5c339c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877448"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134936"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud アプリのログをリアルタイムでストリーム配信する
 
@@ -23,7 +23,7 @@ Azure Spring Cloud では Azure CLI のログ ストリーミングを使って�
 ## <a name="prerequisites"></a>前提条件
 
 * Spring Cloud (最小バージョン 0.2.0) 用の [Azure CLI 拡張機能](/cli/azure/install-azure-cli)のインストール。
-* [Spring Cloud アプリ](./spring-cloud-quickstart.md)などのアプリケーションを実行する **Azure Spring Cloud** のインスタンス。
+* [Spring Cloud アプリ](./quickstart.md)などのアプリケーションを実行する **Azure Spring Cloud** のインスタンス。
 
 > [!NOTE]
 >  ASC CLI 拡張機能はバージョン 0.2.0 から 0.2.1 に更新されました。 この変更によってログ ストリーミングのコマンドの構文が影響を受けます。`az spring-cloud app logs` が `az spring-cloud app log tail` に取って代わります。 コマンド: `az spring-cloud app log tail` は今後のリリースで非推奨になります。 バージョン 0.2.0 を使用している場合、0.2.1 にアップグレードできます。 まず、コマンド `az extension remove -n spring-cloud` を使用して古いバージョンを削除します。  次に、コマンド `az extension add -n spring-cloud` で 0.2.1 をインストールします。
@@ -90,6 +90,5 @@ az spring-cloud app logs -h
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](spring-cloud-quickstart-logs-metrics-tracing.md)
+* [クイック スタート: ログ、メトリック、トレースを使用した Azure Spring Cloud アプリの監視](./quickstart-logs-metrics-tracing.md)
 * [診断設定でログとメトリックを分析する](./diagnostic-services.md)
-

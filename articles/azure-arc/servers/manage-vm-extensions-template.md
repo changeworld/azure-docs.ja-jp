@@ -1,14 +1,15 @@
 ---
 title: Azure Resource Manager テンプレートを使用して VM 拡張機能を有効にする
 description: この記事では、Azure Resource Manager テンプレートを使用して、ハイブリッド環境で実行されている Azure Arc 対応サーバーに仮想マシン拡張機能をデプロイする方法について説明します。
-ms.date: 03/01/2021
+ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 88296cd4f410defcaf7db15507ddac42e80cba2d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d32be184a7e5bb713aee83cd3023f271299d3872
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101688265"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832862"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>ARM テンプレートを使用して VM 拡張機能を有効にする
 
@@ -18,6 +19,9 @@ VM 拡張機能を Azure Resource Manager テンプレートに追加し、テ�
 
 >[!NOTE]
 >複数の拡張機能をまとめてバッチ処理することができますが、順番にインストールされます。 最初の拡張機能のインストールが完了すると、次の拡張機能のインストールが試行されます。
+
+> [!NOTE]
+> Azure Arc 対応サーバーでは、Azure 仮想マシンへの VM 拡張機能のデプロイと管理はサポートされていません。 Azure VM については、次の [VM 拡張機能の概要](../../virtual-machines/extensions/overview.md)に関する記事をご覧ください。
 
 ## <a name="deploy-the-log-analytics-vm-extension"></a>Log Analytics VM 拡張機能をデプロイする
 

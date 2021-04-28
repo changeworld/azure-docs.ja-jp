@@ -5,19 +5,19 @@ description: DevOps プラクティスを適用し、Azure Data Factory と Azur
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, data4ml
+ms.topic: how-to
+ms.custom: devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: e8a8b952d917db3a7eefd2e0371d41287c5be944
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34aa94ea7bef56ecc2e01b792a0f5e8b417804fa
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102612475"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890188"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>データ インジェスト パイプラインの DevOps
 

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: a11dbfbd6d6510b5c421e54cd2547c3aedb1bfb6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: f9f2bf2e2204e6b74bb8a31ac856dbe276a6e983
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100378198"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588753"
 ---
 # <a name="creating-a-new-branch-in-mapping-data-flow"></a>マッピング データ フローでの新しい分岐の作成
 
@@ -27,3 +27,10 @@ ms.locfileid: "100378198"
 次の例では、データ フローがタクシー乗車データを読み取っています。 曜日とベンダーの両方で集計された出力が必要です。 同じソースから読み取る 2 つの異なるデータ フローを作成するのではなく、新しい分岐を追加できます。 これにより、両方の集計を同じデータ フローの一部として実行できます。 
 
 ![ソースからの 2 つの分岐があるデータ フローを示しているスクリーンショット。](media/data-flow/new-branch.png "新しい分岐の追加")
+
+> [!NOTE]
+> 正符号 (+) をクリックして変換をグラフに追加した場合、後続の変換ブロックがある場合にのみ [New Branch]\(新しい分岐\) オプションが表示されます。 これは、[New Branch]\(新しい分岐\) によって既存のストリームへの参照が作成され、さらにアップストリーム処理を実行する必要があるためです。 [New Branch]\(新しい分岐\) オプションが表示されない場合、最初に派生列または他の変換を追加し、その後、前のブロックに戻ります。これにより、オプションとして [New Branch]\(新しい分岐\) が表示されます。
+
+## <a name="next-steps"></a>次のステップ
+
+分岐後、[データ フロー変換](data-flow-transformation-overview.md)の使用が必要になる場合があります。

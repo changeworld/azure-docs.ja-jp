@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: d45c40bb6878da80f68fff9642b55da68706743a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 1020496f7aea0c30ed815f21756addfd9ed0ae09
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305839"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124277"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Web API を呼び出すデスクトップ アプリ:トークンを取得する
 
@@ -284,7 +284,7 @@ WithParentActivityOrWindow(object parent).
 - ``SelectAccount`` により、ユーザーがセッションを確立しているアカウントを含む、アカウントの選択ダイアログ ボックスが STS で強制的に表示されます。 このオプションは、アプリケーション開発者が各種の ID の中からユーザーに選択させる場合に役立ちます。 このオプションを使用すると、MSAL から ID プロバイダーに ``prompt=select_account`` が送信されます。 これは既定のオプションです。 これにより、使用可能な情報 (アカウント、ユーザーのセッションの有無など) に基づいて最適なエクスペリエンスが提供されます。 正当な理由がない限り、このオプションを変更しないでください。
 - ``Consent`` により、以前に同意が得られている場合であっても、アプリケーション開発者がユーザーの同意を求めることができます。 この場合、MSAL から ID プロバイダーに `prompt=consent` が送信されます。 このオプションは、アプリケーションを使用するたびに同意ダイアログ ボックスをユーザーに表示することが組織のガバナンスで求められる、セキュリティを重視する一部のアプリケーションで使用できます。
 - ``ForceLogin`` により、このユーザー プロンプトが不要な場合でも、アプリケーション開発者がサービスによってユーザーに資格情報の入力を求めることができます。 このオプションは、トークンの取得に失敗した場合に、ユーザーが再度サインインできるようにするのに役立ちます。 この場合、MSAL から ID プロバイダーに `prompt=login` が送信されます。 これは、アプリケーションの特定の部分にアクセスするたびにユーザーが再度サインインすることが組織のガバナンスで求められる、セキュリティを重視するアプリケーションで使用されることがあります。
-- ``Create`` により、`prompt=create` を ID プロバイダーに送信することで、外部 ID に使用されるサインアップ エクスペリエンスがトリガーされます。 このプロンプトは、Azure AD B2C アプリには送信しないでください。 詳細については、「[セルフサービス サインアップのユーザー フローをアプリに追加する](https://aka.ms/msal-net-prompt-create)」を参照してください。
+- ``Create`` により、`prompt=create` を ID プロバイダーに送信することで、外部 ID に使用されるサインアップ エクスペリエンスがトリガーされます。 このプロンプトは、Azure AD B2C アプリには送信しないでください。 詳細については、「[セルフサービス サインアップのユーザー フローをアプリに追加する](../external-identities/self-service-sign-up-user-flow.md)」を参照してください。
 - ``Never`` (.NET 4.5 および WinRT の場合のみ) はユーザーに入力を求めませんが、代わりに非表示の埋め込み Web ビューに格納された Cookie の使用を試行します。 詳細については、MSAL.NET の Web ビューを参照してください。 このオプションを使用すると、失敗する場合があります。 その場合、`AcquireTokenInteractive` は、UI 操作が必要であることを通知するために例外をスローします。 別の `Prompt` パラメーターを使用することが必要になります。
 - ``NoPrompt`` は、ID プロバイダーにプロンプトを送信しません。 このオプションは、Azure Active Directory (Azure AD) B2C のプロファイルの編集ポリシーに対してのみ有効です。 詳細については、[Azure AD B2C での詳細](https://aka.ms/msal-net-b2c-specificities)に関するページを参照してください。
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 26262f83e14602d6ea93f96ec47630ef870c357d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d3c65c08691a234934a1641af9cc8203f655ef8c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309307"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144315"
 ---
 # <a name="estimate-azure-monitor-costs"></a>Azure Monitor コストを見積もる
 
@@ -180,7 +180,7 @@ Windows イベントの詳細については、[Windows イベント レコー�
 データ インジェストを管理するために Log Analytics の設定を最適化するための推奨事項を次に示します。
 
 - Windows Virtual Desktop リソースの指定された Log Analytics ワークスペースを使用して、Log Analytics が Windows Virtual Desktop 展開内の仮想マシンのパフォーマンス カウンターとイベントのみを収集するようにします。
-- Log Analytics ストレージの設定を調整してコストを管理します。 保有期間を短縮したり、固定ストレージ価格レベルがコスト効率に優れているかどうかを評価したり、異常な展開の影響を制限するためにインジェストできるデータ量に境界を設定したりすることができます。 詳細については、「[Azure Monitor ログの使用量とコストを管理する](../azure-monitor/platform/manage-cost-storage.md)」をご覧ください。
+- Log Analytics ストレージの設定を調整してコストを管理します。 保有期間を短縮したり、固定ストレージ価格レベルがコスト効率に優れているかどうかを評価したり、異常な展開の影響を制限するためにインジェストできるデータ量に境界を設定したりすることができます。 詳細については、「[Azure Monitor ログの使用量とコストを管理する](../azure-monitor/logs/manage-cost-storage.md)」をご覧ください。
 
 ### <a name="remove-excess-data"></a>余分なデータを削除する
 
@@ -208,7 +208,7 @@ Perf
 
 このクエリでは、Windows Virtual Desktop 向けの Azure Monitor の既定のカウンターだけではなく、環境で有効にしたすべてのパフォーマンス カウンターが表示されます。 この情報は、カウンターの頻度を下げたり、カウンターを完全に削除したりするなど、コストを削減するためにターゲットとなる領域を理解するのに役立ちます。
 
-また、パフォーマンス カウンターを削除することによってコストを削減することもできます。 パフォーマンス カウンターを削除したり、既存のカウンターを編集して頻度を下げたりする方法については、「[パフォーマンスカウンターの構成](../azure-monitor/platform/data-sources-performance-counters.md#configuring-performance-counters)」をご覧ください。
+また、パフォーマンス カウンターを削除することによってコストを削減することもできます。 パフォーマンス カウンターを削除したり、既存のカウンターを編集して頻度を下げたりする方法については、「[パフォーマンスカウンターの構成](../azure-monitor/agents/data-sources-performance-counters.md#configuring-performance-counters)」をご覧ください。
 
 ### <a name="manage-windows-event-logs"></a>Windows イベント ログを管理する
 
@@ -218,7 +218,7 @@ Windows イベントは、すべてのホストが正常な場合にデータ �
 
 Windows Virtual Desktop 診断は、データ ストレージのコストの 1% 未満にあたるため、削除することはお勧めしません。 Windows Virtual Desktop 診断を管理するには、「[診断機能に Log Analytics を使用する](diagnostics-log-analytics.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Windows Virtual Desktop 向けの Azure Monitor の詳細については、次の記事をご覧ください。
 

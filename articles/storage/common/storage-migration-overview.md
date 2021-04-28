@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/31/2021
 ms.service: storage
 ms.subservice: common
-ms.openlocfilehash: f6f00075c7c66679281d776f9472ec4a1a590d76
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 3e9baedafb436bc92f734bf39519918686cec58d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106231020"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124475"
 ---
 # <a name="azure-storage-migration-overview"></a>Azure Storage の移行の概要
 
@@ -28,7 +28,7 @@ ms.locfileid: "106231020"
 - ネットワーク接続ストレージ (NAS) から Azure ファイル オファリングへのファイルの移行:
   - [Azure Files](https://azure.microsoft.com/services/storage/files/)
   - [Azure NetApp Files](https://azure.microsoft.com/services/netapp/)
-  - [独立系ソフトウェア ベンダー (ISV) ソリューション](/azure/storage/solution-integration/validated-partners/primary-secondary-storage/partner-overview)。
+  - [独立系ソフトウェア ベンダー (ISV) ソリューション](../solution-integration/validated-partners/primary-secondary-storage/partner-overview.md)。
 - オブジェクト ストレージ ソリューションから Azure オブジェクト ストレージ プラットフォームへのオブジェクトの移行:
   - [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/)
   - [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)。
@@ -66,7 +66,7 @@ ms.locfileid: "106231020"
 - パフォーマンス特性
 - ターゲット ストレージ サービスの制限
 
-次の図は、推奨される Azure ファイル サービスを見つけるのに役立つ単純なデシジョン ツリーです。 ネイティブの Azure サービスで要件が満たされない場合は、さまざまな[独立系ソフトウェア ベンダー (ISV) ソリューション](/azure/storage/solution-integration/validated-partners/primary-secondary-storage/partner-overview)があります。
+次の図は、推奨される Azure ファイル サービスを見つけるのに役立つ単純なデシジョン ツリーです。 ネイティブの Azure サービスで要件が満たされない場合は、さまざまな[独立系ソフトウェア ベンダー (ISV) ソリューション](../solution-integration/validated-partners/primary-secondary-storage/partner-overview.md)があります。
 
 技術評価を完了し、適切なターゲットを選択したら、コスト評価を行って、最もコスト効率の高いオプションを決定します。
 
@@ -74,31 +74,31 @@ ms.locfileid: "106231020"
 
 デシジョン ツリーを単純にするために、ターゲット ストレージ サービスの制限はこの図に組み込まれていません。 現在の制限の詳細を確認し、それらに基づいて選択内容を変更する必要があるかどうかを判断するには、次を参照してください。
 
-- [ストレージ アカウントの制限](/azure/azure-resource-manager/management/azure-subscription-service-limits#storage-limits)
-- [Blob Storage の制限](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-blob-storage-limits)
-- [Azure Files のスケーラビリティおよびパフォーマンスのターゲット](/azure/storage/files/storage-files-scale-targets)
-- [Azure NetApp Files のリソース制限](/azure/azure-netapp-files/azure-netapp-files-resource-limits)
+- [ストレージ アカウントの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)
+- [Blob Storage の制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-blob-storage-limits)
+- [Azure Files のスケーラビリティおよびパフォーマンスのターゲット](../files/storage-files-scale-targets.md)
+- [Azure NetApp Files のリソース制限](../../azure-netapp-files/azure-netapp-files-resource-limits.md)
 
-これらの制限のいずれかによってサービスの使用がブロックされる場合、Azure では、Azure Marketplace でソリューションを提供する複数のストレージ ベンダーがサポートされています。 ファイル サービスを提供する検証済みの ISV パートナーの詳細については、「[プライマリおよびセカンダリ ストレージの Azure Storage パートナー](/azure/storage/solution-integration/validated-partners/primary-secondary-storage/partner-overview)」を参照してください。
+これらの制限のいずれかによってサービスの使用がブロックされる場合、Azure では、Azure Marketplace でソリューションを提供する複数のストレージ ベンダーがサポートされています。 ファイル サービスを提供する検証済みの ISV パートナーの詳細については、「[プライマリおよびセカンダリ ストレージの Azure Storage パートナー](../solution-integration/validated-partners/primary-secondary-storage/partner-overview.md)」を参照してください。
 
 ##### <a name="select-the-migration-method"></a>移行方式を選択する
 
 ストレージの移行には、2 つの基本的な移行方式があります。
 
-- **オンライン**。 オンライン方式では、データの移行にネットワークを使用します。 パブリック インターネットまたは [Azure ExpressRoute](/azure/expressroute/expressroute-introduction) を使用できます。 サービスにパブリック エンドポイントがない場合は、パブリック インターネットで VPN を使用する必要があります。
+- **オンライン**。 オンライン方式では、データの移行にネットワークを使用します。 パブリック インターネットまたは [Azure ExpressRoute](../../expressroute/expressroute-introduction.md) を使用できます。 サービスにパブリック エンドポイントがない場合は、パブリック インターネットで VPN を使用する必要があります。
 - **オフライン**。 オフライン方式では、[Azure Data Box](https://azure.microsoft.com/services/databox/) デバイスのいずれかを使用します。
 
 オンライン方式とオフライン方式のどちらを使用するかは、使用可能なネットワーク帯域幅によって決まります。 オンライン方式は、必要なタイムライン内に移行を実行するのに十分なネットワーク帯域幅がある場合に推奨されます。
 
 最初の一括移行にはオフライン方式、変更の増分移行にはオンライン方式を使用するというように、両方の方式を組み合わせて使用することも可能です。 両方の方式を同時に使用することは、高度な調整が必要となるため、推奨されません。 両方の方式を使用する場合は、オンラインで移行されるデータ セットと、オフラインで移行されるデータ セットを分離します。
 
-さまざまな移行方式とガイドラインの詳細については、「[データ転送用の Azure ソリューションを選択する](/azure/storage/common/storage-choose-data-transfer-solution)」と「[Azure ファイル共有への移行](/azure/storage/files/storage-files-migration-overview)」を参照してください。
+さまざまな移行方式とガイドラインの詳細については、「[データ転送用の Azure ソリューションを選択する](./storage-choose-data-transfer-solution.md)」と「[Azure ファイル共有への移行](../files/storage-files-migration-overview.md)」を参照してください。
 
 ##### <a name="choose-the-best-migration-tool-for-the-job"></a>ジョブに最適な移行ツールを選択する
 
 移行を実行するために使用できるさまざまな移行ツールがあります。 AzCopy、robocopy、xcopy、rsync などのオープンソースのものもあれば、商用のものもあります。 使用可能な商用ツールとそれらの比較一覧は、[比較表](../solution-integration/validated-partners/data-management/migration-tools-comparison.md)で確認できます。
 
-オープンソース ツールは、小規模な移行に適しています。 Windows ファイル サーバーから Azure Files へ移行する場合、Microsoft では、Azure Files のネイティブ機能から開始し、[Azure File Sync](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-file-sync) を使用することをお勧めしています。さまざまなソース、大容量、または帯域幅調整や監査機能を使用した詳細なレポートなどの特殊な要件から成る、より複雑な移行の場合は、商用ツールを選択することをお勧めします。 これらのツールを使用することで、移行が容易になり、リスクが大幅に軽減されます。 ほとんどの商用ツールでは検出も実行できます。これにより、評価に役立つ入力が提供されます。
+オープンソース ツールは、小規模な移行に適しています。 Windows ファイル サーバーから Azure Files へ移行する場合、Microsoft では、Azure Files のネイティブ機能から開始し、[Azure File Sync](/windows-server/manage/windows-admin-center/azure/azure-file-sync) を使用することをお勧めしています。さまざまなソース、大容量、または帯域幅調整や監査機能を使用した詳細なレポートなどの特殊な要件から成る、より複雑な移行の場合は、商用ツールを選択することをお勧めします。 これらのツールを使用することで、移行が容易になり、リスクが大幅に軽減されます。 ほとんどの商用ツールでは検出も実行できます。これにより、評価に役立つ入力が提供されます。
 
 #### <a name="migration-phase"></a>移行フェーズ
 
@@ -114,13 +114,13 @@ ms.locfileid: "106231020"
 
 ブロックベース デバイスの移行は、通常、仮想マシンまたは物理ホストの移行の一部として行われます。 ブロック ストレージの決定を移行後まで遅らせるのは、よくある誤解です。 ワークロード要件を適切に考慮してこれらの決定を事前に行うことで、クラウドへの移行がスムーズになります。
 
-移行するワークロードと実行方法について調べるには、[Azure Disk Storage に関するドキュメント](/azure/virtual-machines/disks-types)と、[Disk Storage の製品ページ](https://azure.microsoft.com/services/storage/disks/#resources)にあるリソースを参照してください。 要件に適したディスクと、[ディスク バースト](/azure/virtual-machines/disk-bursting)などの最新機能について確認できます。 基になるブロックベース デバイスと共に仮想マシンを移行する方法の詳細については、「[Azure Migrate のドキュメント](/azure/migrate/)」を参照してください。
+移行するワークロードと実行方法について調べるには、[Azure Disk Storage に関するドキュメント](../../virtual-machines/disks-types.md)と、[Disk Storage の製品ページ](https://azure.microsoft.com/services/storage/disks/#resources)にあるリソースを参照してください。 要件に適したディスクと、[ディスク バースト](../../virtual-machines/disk-bursting.md)などの最新機能について確認できます。 基になるブロックベース デバイスと共に仮想マシンを移行する方法の詳細については、「[Azure Migrate のドキュメント](../../migrate/index.yml)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 
-- [データ転送用の Azure ソリューションを選択する](/azure/storage/common/storage-choose-data-transfer-solution)
+- [データ転送用の Azure ソリューションを選択する](./storage-choose-data-transfer-solution.md)
 - [商用移行ツールの比較](../solution-integration/validated-partners/data-management/migration-tools-comparison.md)
-- [Azure ファイル共有への移行](/azure/storage/files/storage-files-migration-overview)
-- [WANdisco LiveData Platform for Azure を使用して Data Lake Storage に移行する](/azure/storage/blobs/migrate-gen2-wandisco-live-data-platform)
-- [AzCopy を使用して Azure Storage にデータをコピーまたは移動する](https://aka.ms/azcopy)
+- [Azure ファイル共有への移行](../files/storage-files-migration-overview.md)
+- [WANdisco LiveData Platform for Azure を使用して Data Lake Storage に移行する](../blobs/migrate-gen2-wandisco-live-data-platform.md)
+- [AzCopy を使用して Azure Storage にデータをコピーまたは移動する](./storage-use-azcopy-v10.md)
 - [AzReplicate を使用して大規模なデータセットを Azure Blob Storage に移行する](https://github.com/Azure/AzReplicate/tree/master/)

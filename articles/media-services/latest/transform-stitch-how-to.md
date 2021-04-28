@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5eacc366961d3101a7eaf8877a34ef2d462ea76b
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c94976fd494cd4745a5da95557f3e6a4954e721a
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106281483"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930661"
 ---
 # <a name="how-to-stitch-two-or-more-video-files-with-net"></a>.NET で 2 つ以上のビデオ ファイルをつなぎ合わせる方法
 
@@ -31,7 +31,3 @@ ms.locfileid: "106281483"
 ## <a name="prerequisites"></a>前提条件
 
 [Media Services .ＮＥＴ サンプル](https://github.com/Azure-Samples/media-services-v3-dotnet/)を複製またはダウンロードします。  下で参照されているコードは、[EncodingWithMESCustomStitchTwoAssets フォルダー](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/VideoEncoding/EncodingWithMESCustomStitchTwoAssets/Program.cs)にあります。
-
-### <a name="net-code"></a>.NET コード
-
-[!code-csharp[Main](../../../media-services-v3-dotnet/VideoEncoding/EncodingWithMESCustomStitchTwoAssets/Program.cs)]

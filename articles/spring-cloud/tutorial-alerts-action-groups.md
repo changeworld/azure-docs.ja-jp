@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 12/29/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: d12a48729616a5181f019f84f19779390e736cb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 919c72453b4fcbe3b7decc7a045a6656171ecb06
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877103"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132451"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>チュートリアル:アラートとアクション グループを使用して Spring Cloud のリソースを監視する
 
@@ -26,7 +26,7 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順では、Azure Spring の要件に加え、デプロイされた Azure Spring Cloud インスタンスが必要となります。  [クイックスタート](spring-cloud-quickstart.md)に従って始めてください。
+このチュートリアルの手順では、Azure Spring の要件に加え、デプロイされた Azure Spring Cloud インスタンスが必要となります。  [クイックスタート](./quickstart.md)に従って始めてください。
 
 以降の手順では、Spring Cloud インスタンスの左側のナビゲーション ペインにある **[アラート]** オプションから **[アクション グループ]** と **[アラート]** の両方を初期化します (この手順は、Azure portal の **[Monitor Overview]\(監視の概要\)** ページから開始することもできます)。 
 
@@ -86,7 +86,7 @@ Azure Spring Cloud のアラートは、使用可能なストレージ、要求�
 
 1. **[Done]** をクリックします。
 
-   監視に使用できる条件の詳細については、「[ユーザー ポータルのメトリック オプション](spring-cloud-concept-metrics.md#user-metrics-options)」を参照してください。
+   監視に使用できる条件の詳細については、「[ユーザー ポータルのメトリック オプション](./concept-metrics.md#user-metrics-options)」を参照してください。
 
 1. **[アクション]** で、 **[アクション グループの選択]** をクリックします。 **[アクション]** ペインで、先ほど定義した **アクション グループ** を選択します。
 

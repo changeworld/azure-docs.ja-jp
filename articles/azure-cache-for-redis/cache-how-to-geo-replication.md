@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
 ms.author: yegu
-ms.openlocfilehash: 8701f7bcb2e7ff705e4f1d1b401f4eb3e680f28b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0be2bb59b46dc827001d89f8e0f1be23f35a714d
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501041"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107536093"
 ---
 # <a name="configure-geo-replication-for-premium-azure-cache-for-redis-instances"></a>Premium Azure Cache for Redis インスタンスの geo レプリケーションを構成する
 
@@ -42,7 +42,7 @@ geo レプリケーションでは一部の機能がサポートされていま�
 
 geo レプリケーションを構成した後、次の制限が、リンク キャッシュ ペアに適用されます。
 
-- セカンダリ リンク キャッシュは読み取り専用です。読み取ることはできますが、データを書き込むことはできません。 
+- セカンダリ リンク キャッシュは読み取り専用です。読み取ることはできますが、データを書き込むことはできません。 geo セカンダリ インスタンスからの読み取りを選択した場合、次の点に注意することが重要です。geo プライマリと geo セカンダリの間で完全なデータ同期 (geo プライマリまたは geo セカンダリが更新されたときと、一部の再起動シナリオ時に発生) が行われているときは必ず、geo プライマリと geo セカンダリの間の完全なデータ同期が完了するまで、geo セカンダリ インスタンスはそれに対するどんな Redis 操作についてもエラー (完全なデータ同期が進行中であることを表示) をスローします。 geo セカンダリから読み取るアプリケーションは、geo セカンダリがこのようなエラーをスローするたびに geo プライマリにフォールバックするように構築する必要があります。 
 - リンクが追加される前にセカンダリ リンク キャッシュにあったデータはすべて削除されます。 ただし、geo レプリケーションが後で削除された場合、レプリケートされたデータはセカンダリ リンク キャッシュに残ります。
 - キャッシュがリンクされている間は、どちらのキャッシュも[スケーリング](cache-how-to-scale.md)できません。
 - キャッシュでクラスタリングが有効になっている場合は、[シャードの数を変更](cache-how-to-premium-clustering.md)できません。

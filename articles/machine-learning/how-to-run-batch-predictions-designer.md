@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.date: 02/05/2021
-ms.topic: conceptual
-ms.custom: how-to, designer
-ms.openlocfilehash: 34d0d31296214355b85c52e4564e9bf6658b2005
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.topic: how-to
+ms.custom: designer
+ms.openlocfilehash: 642b874f5e0cf501acb1627e4388a7e4c456ef29
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962936"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888730"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーを使用してバッチ予測を実行する
 

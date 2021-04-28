@@ -8,16 +8,16 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: dc3451a4b46a317dccda0e4292dcb1712b4171f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 83d10a7a6e9eb14379d32cc88800a2c443feac60
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98878309"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107503050"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
-元の場所を同期先の場所にレプリケートします。
+元の場所を同期先の場所にレプリケートします。 この記事では、azcopy sync コマンドの詳細なリファレンスを提供します。 元の場所と宛先の間で BLOB を同期する方法の詳細については、「[AzCopy v10 を使用して Azure Blob Storage と同期する](storage-use-azcopy-blobs-synchronize.md)」を参照してください。 Azure Files については、「[ファイルを同期する](storage-use-azcopy-files.md#synchronize-files)」を参照してください。
 
 ## <a name="synopsis"></a>概要
 
@@ -38,9 +38,9 @@ sync コマンドは、いくつかの点で copy コマンドと異なります
 ## <a name="related-conceptual-articles"></a>関連する概念に関する記事
 
 - [AzCopy を使ってみる](storage-use-azcopy-v10.md)
+- [チュートリアル:AzCopy を使用してオンプレミスのデータをクラウド ストレージに移行する](storage-use-azcopy-migrate-on-premises-data.md)
 - [AzCopy と Blob Storage でデータを転送する](./storage-use-azcopy-v10.md#transfer-data)
 - [AzCopy とファイル ストレージでデータを転送する](storage-use-azcopy-files.md)
-- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
 
 ### <a name="advanced"></a>詳細設定
 

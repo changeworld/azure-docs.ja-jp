@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/30/2020
 ms.author: normesta
-ms.openlocfilehash: be440407fb6f4d9715ba80c584af023a5f662394
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9ed305dbd081486f0b892fcc38ada83e9666bd9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93324225"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143343"
 ---
 # <a name="premium-tier-for-azure-data-lake-storage"></a>Azure Data Lake Storage の Premium サービス レベル
 
@@ -57,7 +57,7 @@ Premium パフォーマンス レベルでは、Standard パフォーマンス �
 
 ## <a name="enabling-the-premium-performance-tier"></a>Premium パフォーマンス レベルを有効にする 
 
-Azure Data Lake Storage の Premium サービス レベルを使用するには、 **[階層型名前空間]** 設定を **有効** にして BlockBlobStorage アカウントを作成します。 詳細なガイダンスについては、「[BlockBlobStorage アカウントを作成する](storage-blob-create-account-block-blob.md)」を参照してください。
+Azure Data Lake Storage の Premium サービス レベルを使用するには、 **[階層型名前空間]** 設定を **有効** にして BlockBlobStorage アカウントを作成します。 詳細なガイダンスについては、「[BlockBlobStorage アカウントを作成する](../common/storage-account-create.md)」を参照してください。
 
 アカウントを作成するときは、必ず **[Premium]** パフォーマンスのオプションと **[BlockBlobStorage]** アカウントの種類を選択してください。
 
@@ -111,4 +111,3 @@ Azure Data Lake Storage の Premium サービス レベルを、Azure Databricks
 - [チュートリアル:Azure Data Lake Storage Gen2、Azure Databricks、および Spark](data-lake-storage-use-databricks-spark.md) 
 - [Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) HDInsight は現在、高速書き込みが有効になっている HBase クラスターと併せて Premium パフォーマンス レベルを使用するアカウントをサポートしています。
 - [クイック スタート:Synapse ワークスペースを作成する](../../synapse-analytics/quickstart-create-workspace.md)
-

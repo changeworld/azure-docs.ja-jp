@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f540ab40a14af09aa8667860286021f572eb6f1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aec870e6027d9a6d2e6c3b66363f93c73fad5e78
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104587901"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108064145"
 ---
 # <a name="governing-azure-ad-service-accounts"></a>Azure AD サービス アカウントの管理
 
@@ -172,7 +172,7 @@ Microsoft の無料の PowerShell サンプルでは、サービス プリンシ
 
 **プロビジョニング解除のプロセスには、次のタスクが含まれている必要があります。**
 
-1. 関連するアプリケーションまたはスクリプトがプロビジョニング解除されたら、サービス アカウントによる[サインイン](../reports-monitoring/concept-sign-ins.md#sign-ins-report)とリソース アクセスを監視します。
+1. 関連するアプリケーションまたはスクリプトがプロビジョニング解除されたら、サービス アカウントによる[サインイン](../reports-monitoring/concept-sign-ins.md)とリソース アクセスを監視します。
 
    * アカウントがまだアクティブの場合は、それがどのように使用されているかを確認してから、以降の手順を実行します。
  

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/21/2018
 ms.author: nzthiago
 ms.custom: include file
-ms.openlocfilehash: eca2d3359614875e5bff0c9bb67f006f0a8cdba1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 709a06e9c4c027d8d82bdcde25e14b121feac35a
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "77198328"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065665"
 ---
 ## <a name="function-app-timeout-duration"></a><a name="timeout"></a>Function App タイムアウト期間 
 
@@ -24,7 +24,7 @@ ms.locfileid: "77198328"
 | 従量課金 | 1.x | 5 | 10 |
 | 従量課金 | 2.x | 5 | 10 |
 | 従量課金 | 3.x | 5 | 10 |
-| Premium | 1.x | 30 | 無制限 |
+| Premium | 1.x | 無制限 | 無制限 |
 | Premium | 2.x | 30 | 無制限 |
 | Premium | 3.x | 30 | 無制限 |
 | App Service | 1.x | 無制限 | 無制限 |
