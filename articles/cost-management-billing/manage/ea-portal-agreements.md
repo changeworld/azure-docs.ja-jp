@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d03ae5062cc81b3e042ed3b714838e14929dbba2
+ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598010"
+ms.lasthandoff: 03/22/2021
+ms.locfileid: "104778221"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 契約と修正
 
@@ -145,7 +145,7 @@ Microsoft は、購入した月間前払いに含まれる利用に関連する�
 
 ## <a name="requesting-a-quota-increase"></a>クォータの増加要求
 
-いつでも[オンライン要求](https://g.microsoftonline.com/0WAEP00en/6)を送信してクォータの増加を要求できます。 要求を処理するため、次の情報を指定します。
+いつでも[オンライン要求](https://ms.portal.azure.com/)を送信してクォータの増加を要求できます。 要求を処理するため、次の情報を指定します。
 
 - サブスクリプションのアカウント所有者に関連付けられている Microsoft アカウントあるいは職場または学校アカウント。 これは、Microsoft Azure Portal にサインインしてサブスクリプションを管理するために使用されるメール アドレスです。 このアカウントが EA 登録に関連付けられていることも確認してください。
 - クォータを増やす必要があるリソースと量。

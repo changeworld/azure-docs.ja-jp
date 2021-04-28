@@ -5,15 +5,15 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.custom: subject-armqs, devx-track-azurecli
+ms.custom: subject-armqs
 ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: 8d7f71477e50e4771bbc7670312943eadf1a8657
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: ee224f0a437aa5b34f29b1b5baf64e44d61fffb4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103018656"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073001"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>クイックスタート: ARM テンプレートを使用して Azure API for FHIR をデプロイする
 
