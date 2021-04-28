@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
-ms.topic: conceptual
-ms.custom: how-to, data4ml, contperf-fy21q2
-ms.openlocfilehash: e7da81e896c0d59af966cca2760b1adb163762aa
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.topic: how-to
+ms.custom: data4ml, contperf-fy21q2
+ms.openlocfilehash: e73b14e24fffacde11e355ae5a4caf0cb76f07ba
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106067505"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884878"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 
@@ -28,7 +28,7 @@ Azure Machine Learning データセット モニター (プレビュー) を使�
 * **新しいデータを監視** して、ベースライン データセットとターゲット データセットの違いを確認する。
 * **データの特徴をプロファイリング** して、時間の経過と共に統計的な特性がどのように変化するかを追跡する。
 * **データ ドリフトに関するアラートを設定** して、潜在的な問題を早期に警告する。 
-* 非常に多くのドリフトがデータに発生したと判断した場合に、**新しいバージョンのデータセットを作成する (how-to-version-track-datasets)** 。
+* 非常に多くのドリフトがデータに発生したと判断した場合に、 **[新しいバージョンのデータセットを作成](how-to-version-track-datasets.md)** する。
 
 モニターの作成には、[Azure Machine Learning のデータセット](how-to-create-register-datasets.md)が使用されます。 データセットには timestamp 列が含まれている必要があります。
 

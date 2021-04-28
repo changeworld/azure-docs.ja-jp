@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: a84ed5a6f80b038ced2077fe3c038bd9801ca033
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6a8be63c134c25373f85a146ed3df7316e1eb7dc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732943"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132407"
 ---
 # <a name="troubleshooting-azure-spring-cloud-in-virtual-networks"></a>仮想ネットワークでの Azure Spring Cloud のトラブルシューティング
 
@@ -20,7 +20,7 @@ ms.locfileid: "105732943"
 
 ## <a name="i-encountered-a-problem-with-creating-an-azure-spring-cloud-service-instance"></a>Azure Spring Cloud サービス インスタンスの作成で問題が発生した
 
-Azure Spring Cloud のインスタンスを作成するには、仮想ネットワークにインスタンスをデプロイするための十分なアクセス許可が必要です。  Spring Cloud サービス インスタンス自体は、[仮想ネットワークに Azure Spring Cloud サービスのアクセス許可を付与する](spring-cloud-tutorial-deploy-in-azure-virtual-network.md#grant-service-permission-to-the-virtual-network)必要があります。
+Azure Spring Cloud のインスタンスを作成するには、仮想ネットワークにインスタンスをデプロイするための十分なアクセス許可が必要です。  Spring Cloud サービス インスタンス自体は、[仮想ネットワークに Azure Spring Cloud サービスのアクセス許可を付与する](./how-to-deploy-in-azure-virtual-network.md#grant-service-permission-to-the-virtual-network)必要があります。
 
 Azure portal を使用して Azure Spring Cloud サービス インスタンスを設定すると、Azure portal によってアクセス許可が検証されます。
 
@@ -38,7 +38,7 @@ Resource Manager テンプレートを使用して Azure Spring Cloud サービ�
 | エラー メッセージ | 修正方法 |
 |------|------|
 | Azure Spring Cloud によって作成されたリソースは、ポリシーによって許可されていません。 | ネットワーク リソースは、Azure Spring Cloud を独自の仮想ネットワークにデプロイするときに作成されます。 これらの作成をブロックする [Azure Policy](../governance/policy/overview.md) が定義されているかどうかを確認してください。 作成できなかったリソースがエラー メッセージに表示されます。 |
-| 必要なトラフィックが許可リストに登録されていません。 | 必要なトラフィックを許可リストに登録するには、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](spring-cloud-vnet-customer-responsibilities.md)」を参照してください。 |
+| 必要なトラフィックが許可リストに登録されていません。 | 必要なトラフィックを許可リストに登録するには、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](./vnet-customer-responsibilities.md)」を参照してください。 |
 
 ## <a name="my-application-cant-be-registered"></a>アプリケーションを登録できない
 
@@ -46,4 +46,4 @@ Resource Manager テンプレートを使用して Azure Spring Cloud サービ�
 
 ## <a name="other-issues"></a>その他の問題
 
-[Azure Spring Cloud に関する一般的な問題のトラブルシューティング](./spring-cloud-troubleshoot.md)。
+[Azure Spring Cloud に関する一般的な問題のトラブルシューティング](./troubleshoot.md)。

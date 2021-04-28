@@ -11,18 +11,18 @@ author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
 ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 511ee1aa5f5036f5ca5450def0e4481c0608db33
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 23184eee67013e39400446db5f744dd0ddb7bc50
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227349"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575738"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Azure Synapse Analytics と Azure Machine Learning のワークスペースをリンクする (プレビュー)
 
 この記事では、[Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) ワークスペースと [Azure Machine Learning ワークスペース](concept-workspace.md)をリンクするリンク サービスを作成する方法について説明します。
 
-Azure Machine Learning ワークスペースを Azure Synapse ワークスペースとリンクすることで、Apache Spark プールを大規模なデータ ラングリング専用コンピューティングとしてアタッチし、同じノートブックからモデル トレーニングを実施できます。
+Azure Machine Learning ワークスペースを Azure Synapse ワークスペースとリンクすることで、Apache Spark プールを大規模なデータ ラングリング専用コンピューティングとしてアタッチしたり、モデルのトレーニングを実施したりする作業を、すべて同じ Python ノートブックから行うことができます。
 
 ML ワークスペースと Synapse ワークスペースのリンクは、[Python SDK](#link-sdk) または [Azure Machine Learning スタジオ](#link-studio)から行うことができます。
 

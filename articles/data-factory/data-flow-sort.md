@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/14/2020
-ms.openlocfilehash: 26852ec77194714c8236856b7cb496170bf0d777
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a6567f8576e2507704956233bc593b203b48239
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81606338"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588736"
 ---
 # <a name="sort-transformation-in-mapping-data-flow"></a>マッピング データ フローでの並べ替え変換
 
@@ -22,7 +22,7 @@ ms.locfileid: "81606338"
 並べ替え変換を使用すると、現在のデータ ストリームで受信した行を並べ替えることができます。 個々の列を選択し、昇順または降順に並べ替えることができます。
 
 > [!NOTE]
-> マッピング データ フローは、複数のノードやパーティションにデータが分散される Spark クラスター上で実行されます。 後続の変換でデータのパーティションを再作成すると、データが再びシャッフルされるため、並べ替えた順序が失われる可能性があります。
+> マッピング データ フローは、複数のノードやパーティションにデータが分散される Spark クラスター上で実行されます。 後続の変換でデータのパーティションを再作成すると、データが再びシャッフルされるため、並べ替えた順序が失われる可能性があります。 データ フローで並べ替え順序を維持する最善の方法は、変換の [最適化] タブで単一のパーティションを設定し、並べ替え変換をできるだけシンクの近くに保持することです。
 
 ## <a name="configuration"></a>構成
 

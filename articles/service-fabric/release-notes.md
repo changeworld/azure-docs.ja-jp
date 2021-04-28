@@ -1,35 +1,37 @@
 ---
 title: Azure Service Fabric のリリース
 description: Azure Service Fabric のリリース ノート。 Service Fabric の最新の機能および強化に関する情報が含まれます。
-ms.date: 06/10/2019
+ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: f7e929000b85462e7fabf6d717c52abc454b47ad
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e06bb472a87f05eb8830468512c27e3abaeafbe1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313336"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138609"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
+この記事では、Service Fabric のランタイムと SDK に対する最新リリースと更新プログラムの詳細を提供します。
+
+次のリソースも使用できます。
 - <a href="https://github.com/Azure/Service-Fabric-Troubleshooting-Guides" target="blank">トラブルシューティング ガイド</a> 
 - <a href="https://github.com/Azure/service-fabric-issues" target="blank">問題点の追跡</a> 
 - <a href="/azure/service-fabric/service-fabric-support" target="blank">サポート オプション</a> 
 - <a href="/azure/service-fabric/service-fabric-versions" target="blank">サポートされているバージョン</a> 
 - <a href="https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0" target="blank">コード サンプル</a>
 
-この記事では、Service Fabric のランタイムと SDK に対する最新リリースと更新プログラムの詳細を提供します。
 
 ## <a name="service-fabric-80"></a>Service Fabric 8.0
 
 Service Fabric ランタイムの 8.0 リリースでは、ツールと SDK の更新プログラムと共に、さまざまな Azure リージョンへのロールアウトが開始されたことをお知らせします。 .NET SDK、Java SDK、および Service Fabric ランタイムの更新プログラムは、Web Platform Installer、NuGet パッケージ、Maven リポジトリから入手できます。
 
-### <a name="key-announcements"></a>重要な発表
+### <a name="key-announcements"></a>重要なお知らせ
 
 - Windows 向け .NET 5 に対するサポートの **一般提供**
-- [ステートレス NodeType](https://docs.microsoft.com/azure/service-fabric/service-fabric-stateless-node-types) の **一般提供**
+- [ステートレス NodeType](./service-fabric-stateless-node-types.md) の **一般提供**
 - ステートレス サービス インスタンスを移動する機能
 - パラメーター化された DefaultLoad をアプリケーション マニフェストに追加する機能
 - シングルトン レプリカのアップグレード - 一部のクラスター レベル設定をアプリケーション レベルで定義する機能
@@ -55,7 +57,7 @@ Service Fabric ランタイムの 8.0 リリースでは、ツールと SDK の�
 
 ### <a name="service-fabric-72"></a>Service Fabric 7.2
 
-#### <a name="key-announcements"></a>重要な発表
+#### <a name="key-announcements"></a>重要なお知らせ
 
 - **プレビュー**:[**Service Fabric マネージド クラスター**](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-managed-clusters-are-now-in-public-preview/ba-p/1721572)がパブリック プレビューになりました。 Service Fabric マネージド クラスターは、Service Fabric クラスターを構成する基になるリソースを単一の ARM リソースにカプセル化することで、クラスターのデプロイと管理を簡素化することを目的としています。 詳細については、[Service Fabric マネージド クラスターの概要](./overview-managed-cluster.md)に関する記事を参照してください。
 - **プレビュー**:[**ノード数よりも多くの数のインスタンスを持つステートレス サービスのサポート**](./service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)がパブリック プレビューになりました。 配置ポリシーを使用すると、1 つのノードにパーティションの複数のステートレス インスタンスを作成できます。
@@ -88,9 +90,9 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
 7\.1 への更新は、[Azure portal](./service-fabric-cluster-upgrade-version-azure.md#manual-upgrades-with-azure-portal) を使用するか、[Azure Resource Manager デプロイ](./service-fabric-cluster-upgrade-version-azure.md#resource-manager-template)によって行うことができます。
 
 自動アップグレードを有効にした Service Fabric クラスターには、Microsoft が標準的なロールアウト手順を再開した時点で、7.1 更新プログラムが自動で届き始めます。 標準ロールアウトを開始する際は、別途、[Service Fabric テクノロジ コミュニティ サイト](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric)で事前にお知らせいたします。
-また、6.5 から 7.1 までのメジャー リリースについて、サポート終了日の最新情報を[こちら](./service-fabric-versions.md#supported-versions)で公開しています。 
+また、6.5 から 7.1 までのメジャー リリースについて、サポート終了日の最新情報を[こちら](./service-fabric-versions.md)で公開しています。 
 
-#### <a name="key-announcements"></a>重要な発表
+#### <a name="key-announcements"></a>重要なお知らせ
 
 - [**Service Fabric アプリケーション用 Service Fabric マネージド ID**](./concepts-managed-identity.md) を **一般提供**
 - [**Ubuntu 18.04 のサポート**](./service-fabric-tutorial-create-vnet-and-linux-cluster.md)
@@ -143,7 +145,7 @@ Azure Service Fabric 7.0 の提供開始 Azure portal または Azure Resource M
 1 月には、標準のロールアウト手順を再開します。自動アップグレードが有効になっているクラスターは、7.0 更新プログラムの自動的な受信を開始します。 ロールアウトを開始する前に、別の発表を提供します。
 また、このポリシーが考慮されることを示すために、予定されているリリース日も更新します。 将来の[リリース スケジュール](https://github.com/Microsoft/service-fabric/#service-fabric-release-schedule)についてはこちらをご覧ください。
 
-#### <a name="key-announcements"></a>重要な発表
+#### <a name="key-announcements"></a>重要なお知らせ
  - [**アプリケーション サービスでの KeyVaultReference サポート (プレビュー)**](./service-fabric-keyvault-references.md)[マネージド ID](./concepts-managed-identity.md) が有効になっている Service Fabric アプリケーションは、環境変数、アプリケーション パラメーター、またはコンテナー リポジトリ資格情報として Key Vault シークレット URL を直接参照できるようになりました。 Service Fabric は、アプリケーションのマネージド ID を使用してシークレットを自動的に解決します。 
      
 - **ステートレス サービスのアップグレードの安全性の向上**:アプリケーションのアップグレード中に可用性を保証するために、使用可能と見なされる [ステートレス サービスの最小インスタンス数](/dotnet/api/system.fabric.description.statelessservicedescription)を定義するための新しい構成を導入しました。 以前は、すべてのサービスでこの値は 1 であり、変更できませんでした。 この新しいサービスごとの安全性チェックにより、アプリケーションのアップグレード中、クラスターのアップグレード中、Service Fabric の正常性と安全性のチェックに依存するその他のメンテナンス中に、サービスの稼働インスタンスの最小数を維持できるようになります。

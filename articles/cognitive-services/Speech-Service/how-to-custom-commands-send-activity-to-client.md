@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 52a4dbc4ff01515af8cd7d2503877184a09f7e64
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 52e0b750f02044afafe233a76e4f43755d9ed303
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94566097"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725100"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>クライアント アプリケーションへのカスタム コマンド アクティビティの送信
 
@@ -161,4 +161,4 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [方法: Web エンドポイントを設定する (プレビュー)](./how-to-custom-commands-setup-web-endpoints.md)
+> [方法: Web エンドポイントを設定する](./how-to-custom-commands-setup-web-endpoints.md)

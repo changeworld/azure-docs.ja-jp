@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/05/2021
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d0470759a589927b65462f258b20446af608175c
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 69677ed419fa9bac2cbcb06c394c92f68d0b7777
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284042"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107930931"
 ---
 # <a name="configure-azure-cosmos-db-account-with-periodic-backup"></a>定期的バックアップを使用して Azure Cosmos DB アカウントを構成する
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -30,6 +30,9 @@ Azure Cosmos DB では、データのバックアップが一定の間隔で自�
   :::image type="content" source="./media/configure-periodic-backup-restore/automatic-backup.png" alt-text="GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ。" lightbox="./media/configure-periodic-backup-restore/automatic-backup.png" border="false":::
 
 * バックアップは、お使いのアプリケーションのパフォーマンスや可用性に影響を与えずに取得されます。 Azure Cosmos DB では、データのバックアップがバックグラウンドで実行され、プロビジョニング済みのスループット (RU) を余計に消費することも、データベースのパフォーマンスや可用性に影響することもありません。
+
+> [!Note]
+> Synapse Link が有効になっているアカウントはサポートされていません。
 
 ## <a name="backup-storage-redundancy"></a><a id="backup-storage-redundancy"></a>バックアップ ストレージの冗長性
 

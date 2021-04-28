@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 16e8cfd9c6b20e3a8d17ba335079b1b6fe8b499f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bbc294f006859e30aa891c7aa1b9ad4d1665a21c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785021"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139959"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Linux 仮想マシンを更新する
 
@@ -108,7 +108,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 新しい更新プログラムのデプロイを作成するには、 **[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ページが開きます。 次の表で説明されているプロパティの値を入力し、 **[作成]** をクリックします。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 | --- | --- |
 | 名前 |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
@@ -170,7 +170,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 使用している VM で、 **[操作]** の **[変更の追跡]** を選択します。 **[設定の編集]** を選択すると、 **[変更の追跡]** ページが表示されます。 追跡する設定の種類を選択し、 **[+ 追加]** を選択して、設定を構成します。 Linux の場合は、 **[Linux ファイル]** を選択できます。
 
-変更の追跡の詳細については、[VM での変更のトラブルシューティング](../../automation/automation-tutorial-troubleshoot-changes.md)に関するページをご覧ください
+変更の追跡の詳細については、[VM での変更のトラブルシューティング](../../automation/troubleshoot/change-tracking.md)に関するページをご覧ください
 
 ### <a name="view-inventory"></a>インベントリを表示する
 

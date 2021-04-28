@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/25/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 5407213b62902326d53b73e42ee3af1ba9b11524
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f2b2dcc7e22ce904035a6805d78e59ad14f9bff1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877535"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134791"
 ---
 # <a name="self-diagnose-running-azure-spring-cloud-in-vnet"></a>VNET での Azure Spring Cloud の自己診断
 Azure Spring Cloud 診断では、仮想ネットワークで実行される構成なしの対話型トラブルシューティング アプリがサポートされています。 Azure Spring Cloud 診断は、問題点を特定し、問題のトラブルシューティングと解決に役立つ情報を示します。
@@ -61,7 +61,7 @@ Azure Spring Cloud 診断では、仮想ネットワークで実行される構�
 * *必要なアウトバウンド トラフィックは、サブネット 'subnet01' で問題なく解決されました。
 * *必要なアウトバウンド トラフィックは、サブネット 'subnet02' で問題なく解決されました。
 
-いずれかのサブネットが NSG またはファイアウォール規則によってブロックされ、自分ではログをブロックしていない場合は、次のようなエラーが発生します。 [お客様の責任](spring-cloud-vnet-customer-responsibilities.md)を見逃していないかを確認します。
+いずれかのサブネットが NSG またはファイアウォール規則によってブロックされ、自分ではログをブロックしていない場合は、次のようなエラーが発生します。 [お客様の責任](./vnet-customer-responsibilities.md)を見逃していないかを確認します。
     
    ![エンドポイントのエラー](media/spring-cloud-self-diagnose-vnet/self-diagostic-endpoint-failed.png)
 
@@ -70,4 +70,4 @@ Azure Spring Cloud 診断では、仮想ネットワークで実行される構�
    ![診断対象のエンドポイントが不明](media/spring-cloud-self-diagnose-vnet/self-diagostic-endpoint-unknown.png)
 
 ## <a name="see-also"></a>関連項目
-* [Azure Spring Cloud で自己診断する方法](spring-cloud-howto-self-diagnose-solve.md)
+* [Azure Spring Cloud で自己診断する方法](./how-to-self-diagnose-solve.md)

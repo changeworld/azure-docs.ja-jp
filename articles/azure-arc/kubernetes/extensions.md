@@ -7,12 +7,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Azure Arc 対応 Kubernetes に拡張機能をデプロイし、そのライフサイクルを管理する
-ms.openlocfilehash: 854d7418515d7927a3c0b4b8790ed4770af555ab
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 362f1f0ca62c915eb7c17c80084d15aaaa75110e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107312622"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139653"
 ---
 # <a name="kubernetes-cluster-extensions"></a>Kubernetes クラスター拡張機能
 
@@ -27,7 +27,7 @@ Kubernetes 拡張機能を使用すると、Azure Arc 対応 Kubernetes クラ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](/cli/azure/install-azure-cli)。
 - `connectedk8s` (バージョン 1.1.0 以降) および `k8s-extension` (バージョン 0.2.0 以降) の Azure CLI 拡張機能。 次のコマンドを実行して、これらの Azure CLI 拡張機能をインストールします。
   
     ```azurecli
@@ -101,7 +101,7 @@ az k8s-extension create --name azuremonitor-containers  --extension-type Microso
 
 > [!NOTE]
 > * サービスでは、48 時間よりも長く機密情報を保持できません。 Azure Arc 対応 Kubernetes エージェントに 48 時間よりも長くネットワーク接続がなく、クラスターに拡張機能を作成するかどうかを判断できない場合、拡張機能は `Failed` 状態に遷移します。 `Failed` 状態になったら、新しい拡張機能 Azure リソースを作成するために、`k8s-extension create` を再び実行する必要があります。
-> * * Azure Monitor for containers は、シングルトン拡張機能です (クラスターごとに 1 つのみ必要)。 Azure Monitor for containers (拡張機能なし) の以前の Helm チャート インストールをクリーンアップしてから、拡張機能を介して同じものをインストールする必要があります。 指示に従い、[`az k8s-extension create` を実行する前に Helm チャートを削除](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-hybrid)してください。
+> * * Azure Monitor for containers は、シングルトン拡張機能です (クラスターごとに 1 つのみ必要)。 Azure Monitor for containers (拡張機能なし) の以前の Helm チャート インストールをクリーンアップしてから、拡張機能を介して同じものをインストールする必要があります。 指示に従い、[`az k8s-extension create` を実行する前に Helm チャートを削除](../../azure-monitor/containers/container-insights-optout-hybrid.md)してください。
 
 **必須のパラメーター**
 
@@ -248,7 +248,7 @@ az k8s-extension delete --name azuremonitor-containers --cluster-name <clusterNa
 > この拡張機能を表す Azure リソースはただちに削除されます。 Kubernetes クラスターで実行されているエージェントがネットワークに接続していて、目的の状態を取得するために Azure サービスに再びアクセスできる場合にのみ、この拡張機能に関連するクラスターの Helm リリースが削除されます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Arc 対応 Kubernetes で現在使用できるクラスター拡張機能について詳しく学習してださい。
 > [!div class="nextstepaction"]

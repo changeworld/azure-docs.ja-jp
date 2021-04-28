@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/06/2021
-ms.openlocfilehash: 7526644e02b0ed4d0522ad00a27b691ece98754a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 3017d10abc910233e0627037349c0dfd966fd88e
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479238"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883798"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-postgresql---flexible-server"></a>クイックスタート: Azure CLI から Azure Database for PostgreSQL - フレキシブル サーバーに接続してクエリを実行する
 

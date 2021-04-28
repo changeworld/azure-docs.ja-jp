@@ -11,12 +11,12 @@ author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
 ms.custom: data4ml
-ms.openlocfilehash: 41e93584937ca10740e9ee0be3353d1edf5efb3e
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 53521233e4e0b130eb6416f230aba5d01d974b03
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587682"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141741"
 ---
 # <a name="tutorial-create-a-labeling-project-for-multi-class-image-classification"></a>チュートリアル:多クラス画像分類のラベル付けプロジェクトを作成する 
 
@@ -207,8 +207,7 @@ Azure Machine Learning データストアは、サブスクリプション ID �
 
 [!INCLUDE [aml-delete-resource-group](../../includes/aml-delete-resource-group.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [機械学習の画像認識モデルをトレーニングする](/azure/machine-learning/how-to-use-labeled-dataset)
-
+> [機械学習の画像認識モデルをトレーニングする](how-to-use-labeled-dataset.md)

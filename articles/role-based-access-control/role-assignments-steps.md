@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 02/15/2021
+ms.date: 04/14/2021
 ms.author: rolyon
-ms.openlocfilehash: 081335779ffc4b3a6ddf09e56b773c6d34b210be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 40a17da6383fb1f368c74a82fefa71991cdc1b19
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556037"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107517676"
 ---
 # <a name="steps-to-assign-an-azure-role"></a>Azure ロールを割り当てる手順
 
@@ -78,6 +78,8 @@ ms.locfileid: "100556037"
 - `Microsoft.Authorization/roleAssignments/delete`
 
 ご自分のサブスクリプション内でロールを割り当てるためのアクセス許可がご自分のユーザー アカウントにない場合は、ご自分のアカウントが "does not have authorization to perform action 'Microsoft.Authorization/roleAssignments/write' ('Microsoft.Authorization/roleAssignments/write' に対するアクションの実行を承認されていません)" というエラー メッセージが表示されます。この場合は、自分の代わりにアクセス許可を割り当てることができるサブスクリプションの管理者に連絡してください。
+
+サービス プリンシパルを使用してロールを割り当てると、"この操作を完了するのに十分な特権がありません" というエラーが表示されることがあります。 このエラーが表示される場合は、Azure で Azure Active Directory (AD) 内の担当者 ID を参照しようとしているが、サービス プリンシパルの既定では Azure AD を読み取ることができないためである可能性があります。 この場合は、ディレクトリ内のデータを読み取るためのアクセス許可をサービス プリンシパルに付与する必要があります。 または、Azure CLI を使用している場合は、担当者オブジェクト ID を使用して Azure AD 参照をスキップすると、ロールの割り当てを作成できます。 詳細については、「[Azure RBAC のトラブルシューティング](troubleshooting.md)」を参照してください。
 
 ## <a name="step-5-assign-role"></a>手順 5. ロールを割り当てる
 

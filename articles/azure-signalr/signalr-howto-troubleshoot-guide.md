@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: e26def56fbd03626c3efc660db57012ee1b767ea
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ba75af247888a2404619ec0a3db3b0a5d3310502
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048206"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142425"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Azure SignalR Service の一般的な問題に関するトラブルシューティング ガイド
 
@@ -354,7 +354,7 @@ ASP.NET SignalR では、SDK 1.6.0 で既知の問題が修正されました。
 
 [ASP.NET Core パフォーマンスのベスト プラクティス](/aspnet/core/performance/performance-best-practices#avoid-blocking-calls)に関する記事を参照してください。
 
-[スレッド プールの枯渇](https://docs.microsoft.com/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall)の詳細について確認してください。
+[スレッド プールの枯渇](/archive/blogs/vancem/diagnosing-net-core-threadpool-starvation-with-perfview-why-my-service-is-not-saturating-all-cores-or-seems-to-stall)の詳細について確認してください。
 
 ### <a name="how-to-detect-thread-pool-starvation"></a>スレッド プールの枯渇を検出する方法
 
@@ -363,8 +363,8 @@ ASP.NET SignalR では、SDK 1.6.0 で既知の問題が修正されました。
     
   :::image type="content" source="media/signalr-howto-troubleshoot-guide/metrics-thread-count.png" alt-text="Azure App Service の [最大スレッド数] ペインのスクリーンショット。":::
 
-* .NET Framework を使用している場合は、サーバー VM のパフォーマンス モニターで[メトリック](https://docs.microsoft.com/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters)を確認できます。
-* コンテナーで .NET Core を使用している場合は、「[コンテナーでの診断の収集](https://docs.microsoft.com/dotnet/core/diagnostics/diagnostics-in-containers)」を参照してください。
+* .NET Framework を使用している場合は、サーバー VM のパフォーマンス モニターで[メトリック](/dotnet/framework/debug-trace-profile/performance-counters#lock-and-thread-performance-counters)を確認できます。
+* コンテナーで .NET Core を使用している場合は、「[コンテナーでの診断の収集](/dotnet/core/diagnostics/diagnostics-in-containers)」を参照してください。
 
 コードを使用して、スレッド プールの枯渇を検出することもできます。
 

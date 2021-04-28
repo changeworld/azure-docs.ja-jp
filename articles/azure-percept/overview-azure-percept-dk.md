@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: b20448a88cee6c4ea4af0bcbfaa6ec465f2e28bb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5c510bbe6717b37664ac67ea7d10c79d1af74d78
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105560966"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128363"
 ---
 # <a name="azure-percept-dk-overview"></a>Azure Percept DK の概要
 
@@ -31,7 +31,7 @@ Azure Percept DK は、[Azure Percept Studio](./overview-azure-percept-studio.md
 
 - 信頼のハードウェア ルート セキュリティを組み込み。 詳細については、[Azure Percept のセキュリティ](./overview-percept-security.md)に関するページを参照してください。
 
-- [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) やその他の Azure サービス (Azure IoT Hub、Azure Cognitive Services、[Live Video Analytics](https://docs.microsoft.com/azure/media-services/live-video-analytics-edge/overview) など) とのシームレスな統合。
+- [Azure Percept Studio](https://go.microsoft.com/fwlink/?linkid=2135819) やその他の Azure サービス (Azure IoT Hub、Azure Cognitive Services、[Live Video Analytics](../media-services/live-video-analytics-edge/overview.md) など) とのシームレスな統合。
 
 - [Azure Percept Audio](./overview-azure-percept-audio.md) と互換性があります。AI オーディオ ソリューションを構築するためのオプションのアクセサリです。
 

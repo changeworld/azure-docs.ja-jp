@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 330eaf5c12372347917e9f3a4aeafb6a2088c592
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3c7fd6c842d465dd5af5257628044666f10f2ece
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492576"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538193"
 ---
 # <a name="what-is-azure-iot-edge-for-linux-on-windows-preview"></a>Azure IoT Edge for Linux on Windows (プレビュー)
 
@@ -48,7 +48,7 @@ Windows プロセスと Linux 仮想マシンの間の双方向通信では、Wi
 
 IoT Edge for Linux on Windows では、Linux コンポーネントと Windows コンポーネントの間の相互運用性が重視されています。
 
-Windows アプリケーションと IoT Edge モジュールの間の通信方法を示すサンプルについては、[Windows 10 IoT のサンプル](https://github.com/microsoft/Windows-IoT-Samples)を参照してください。
+Windows アプリケーションと IoT Edge モジュールの間の通信方法を示すサンプルについては、[EFLOW と Windows 10 IoT のサンプル](https://aka.ms/AzEFLOW-Samples)を参照してください。
 
 ## <a name="public-preview"></a>パブリック プレビュー
 
@@ -58,7 +58,7 @@ IoT Edge for Linux on Windows は、現在、[パブリック プレビュー](h
 
 IoT Edge サポートとフィードバック チャネルを使用して、IoT Edge for Linux on Windows についてサポートを受けることができます。
 
-**バグ報告** - バグは、IoT Edge オープンソース プロジェクトの [問題ページ](https://github.com/azure/iotedge/issues)で報告できます。 Azure IoT Edge for Linux on Windows に関するバグは、 [iotedge-eflow の問題ページ](https://github.com/azure/iotedge-eflow/issues)で報告できます。
+**バグ報告** - バグは、IoT Edge オープンソース プロジェクトの [問題ページ](https://github.com/azure/iotedge/issues)で報告できます。 Azure IoT Edge for Linux on Windows に関するバグは、 [iotedge-eflow の問題ページ](https://aka.ms/AzEFLOW-Issues)で報告できます。
 
 **Microsoft カスタマー サポート チーム** – [サポート プラン](https://azure.microsoft.com/support/plans/)に加入しているユーザーは、[Azure Portal](https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac) から直接サポート チケットを作成することで、Microsoft カスタマー サポート チームとやり取りをすることができます。
 

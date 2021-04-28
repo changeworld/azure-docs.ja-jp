@@ -8,7 +8,7 @@
 - name: クイックスタート
   expanded: true
   items:
-    - name: 作業開始
+    - name: はじめに
       href: ../../media-services/video-indexer/video-indexer-get-started.md
 - name: ハウツー ガイド
   items:
@@ -40,8 +40,6 @@
   items:
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598144-video-indexer'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Azure のロードマップ

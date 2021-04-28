@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 0b064e8491b5d4fa988e9f476143cc0711e3934a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfa4239fb6a3c78d861885478c1c643151ee6e13
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100651376"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128561"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する
 
@@ -149,4 +149,4 @@ Microsoft Graph の *Files.Read.All* アクセス許可など、一部のアク�
 このシリーズの次のクイックスタートに進んで、アプリケーションにアクセスできるアカウントの種類を構成する方法を確認してください。 たとえば、組織内のユーザーのみにアクセスを制限したり (シングルテナント)、他の Azure AD テナントのユーザーを許可したり (マルチテナント)、個人用 Microsoft アカウントを持つユーザーを許可したり (MSA) することができます。
 
 > [!div class="nextstepaction"]
-> [アプリケーションによってサポートされるアカウントを変更する](quickstart-modify-supported-accounts.md)
+> [アプリケーションによってサポートされるアカウントを変更する](./howto-modify-supported-accounts.md)

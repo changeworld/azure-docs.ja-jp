@@ -5,15 +5,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: e8dd887d151eb553131048f232940555dbef324b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 012aa364fe9e379455b6b63f7c9e541d2d5b97ed
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025035"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726900"
 ---
 # <a name="enable-sql-insights-preview"></a>SQL insights を有効にする (プレビュー)
 この記事では、[SQL insights](sql-insights-overview.md) を有効にして SQL のデプロイを監視する方法について説明します。 監視は、お使いの SQL デプロイに接続し、動的管理ビュー (DMV) を使用して監視データを収集する Azure 仮想マシンから実行されます。 監視プロファイルを使用して、どのようなデータセットを収集するかと、収集の頻度を制御できます。
+
+> [!NOTE]
+> リソース マネージャー テンプレートを使用して、監視プロファイルと仮想マシンを作成することによって SQL Insights を有効にする方法については、「[SQL Insights のリソース マネージャー テンプレートのサンプル](resource-manager-sql-insights.md)」を参照してください。
 
 ## <a name="create-log-analytics-workspace"></a>Log Analytics ワークスペースの作成
 SQL insights のデータは、1 つ以上の [Log Analytics ワークスペース](../logs/data-platform-logs.md#log-analytics-workspaces)に格納されます。  SQL Insights を有効にする前に、[ワークスペースを作成](../logs/quick-create-workspace.md)するか、既存のワークスペースを選択する必要があります。 1 つのワークスペースを複数の監視プロファイルで使用できますが、ワークスペースとプロファイルは同じ Azure リージョン内に置く必要があります。 SQL insights の機能を有効にしてアクセスするには、ワークスペース内で [Log Analytics 共同作成者ロール](../logs/manage-access.md)を持っている必要があります。 
@@ -21,12 +24,15 @@ SQL insights のデータは、1 つ以上の [Log Analytics ワークスペー�
 ## <a name="create-monitoring-user"></a>監視ユーザーを作成する 
 監視対象にする SQL デプロイ上にユーザーが必要です。 異なる種類の SQL デプロイについて、下記の手順に従ってください。
 
+以下の手順では、監視できる SQL の種類ごとのプロセスについて説明します。  一度に複数の SQL リソースでスクリプトを使用して、これを実現するには、次の [README ファイル](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation-README.txt)と[スクリプトの例](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation.ps1)を参照してください。
+
+
 ### <a name="azure-sql-database"></a>Azure SQL データベース
 Azure portal で [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) または[クエリ エディター (プレビュー)](../../azure-sql/database/connect-query-portal.md) を使用して、Azure SQL Database を開きます。
 
 次のスクリプトを実行し、必要なアクセス許可を持つユーザーを作成します。 *user* をユーザー名に、*mystrongpassword* をパスワードに置き換えます。
 
-```
+```sql
 CREATE USER [user] WITH PASSWORD = N'mystrongpassword'; 
 GO 
 GRANT VIEW DATABASE STATE TO [user]; 
@@ -39,11 +45,23 @@ GO
 
 :::image type="content" source="media/sql-insights-enable/telegraf-user-database-verify.png" alt-text="telegraf ユーザー スクリプトを確認します。" lightbox="media/sql-insights-enable/telegraf-user-database-verify.png":::
 
+```sql
+select name as username,
+       create_date,
+       modify_date,
+       type_desc as type,
+       authentication_type_desc as authentication_type
+from sys.database_principals
+where type not in ('A', 'G', 'R', 'X')
+       and sid is not null
+order by username
+```
+
 ### <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
 Azure SQL Managed Instance にログインし、[SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) または同様のツールを使用して次のスクリプトを実行して、必要なアクセス許可を持つ監視ユーザーを作成します。 *user* をユーザー名に、*mystrongpassword* をパスワードに置き換えます。
 
  
-```
+```sql
 USE master; 
 GO 
 CREATE LOGIN [user] WITH PASSWORD = N'mystrongpassword'; 
@@ -58,7 +76,7 @@ GO
 SQL Server を実行している Azure 仮想マシンにログインし、[SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) または同様のツールを使用して次のスクリプトを実行し、必要なアクセス許可を持つ監視ユーザーを作成します。 *user* をユーザー名に、*mystrongpassword* をパスワードに置き換えます。
 
  
-```
+```sql
 USE master; 
 GO 
 CREATE LOGIN [user] WITH PASSWORD = N'mystrongpassword'; 
@@ -67,6 +85,19 @@ GRANT VIEW SERVER STATE TO [user];
 GO 
 GRANT VIEW ANY DEFINITION TO [user]; 
 GO
+```
+
+ユーザーが作成されたことを確認します。
+
+```sql
+select name as username,
+       create_date,
+       modify_date,
+       type_desc as type
+from sys.server_principals
+where type not in ('A', 'G', 'R', 'X')
+       and sid is not null
+order by username
 ```
 
 ## <a name="create-azure-virtual-machine"></a>Azure 仮想マシンを作成する 
@@ -167,7 +198,7 @@ Azure portal で、 **[Azure Monitor]** メニューの **[Insights]** セクシ
 
 ```
 sqlAzureConnections": [ 
-   "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
+   "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
 }
 ```
 
@@ -175,7 +206,7 @@ sqlAzureConnections": [
 
 :::image type="content" source="media/sql-insights-enable/connection-string-sql-database.png" alt-text="SQL データベース接続文字列" lightbox="media/sql-insights-enable/connection-string-sql-database.png":::
 
-読み取り可能なセカンダリを監視するには、接続文字列にキー値 `ApplicationIntent=ReadOnly` を含めます。
+読み取り可能なセカンダリを監視するには、接続文字列にキー値 `ApplicationIntent=ReadOnly` を含めます。 SQL Insights では、1 つのセカンダリの監視がサポートされています。 収集したデータには、プライマリまたはセカンダリを反映するタグが付けられます。 
 
 
 #### <a name="azure-virtual-machines-running-sql-server"></a>SQL Server を実行している Azure 仮想マシン 
@@ -183,7 +214,7 @@ sqlAzureConnections": [
 
 ```
 "sqlVmConnections": [ 
-   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
+   "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
 ] 
 ```
 
@@ -191,15 +222,13 @@ sqlAzureConnections": [
 
 :::image type="content" source="media/sql-insights-enable/sql-vm-security.png" alt-text="SQL 仮想マシンのセキュリティ" lightbox="media/sql-insights-enable/sql-vm-security.png":::
 
-読み取り可能なセカンダリを監視するには、接続文字列にキー値 `ApplicationIntent=ReadOnly` を含めます。
-
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Managed Instance 
 接続文字列を次の形式で入力します。
 
 ```
 "sqlManagedInstanceConnections": [ 
-      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;", 
+      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;", 
     ] 
 ```
 マネージド インスタンスの **[接続文字列]** メニュー項目から詳細を取得します。
@@ -207,8 +236,7 @@ sqlAzureConnections": [
 
 :::image type="content" source="media/sql-insights-enable/connection-string-sql-managed-instance.png" alt-text="SQL Managed Instance の接続文字列" lightbox="media/sql-insights-enable/connection-string-sql-managed-instance.png":::
 
-読み取り可能なセカンダリを監視するには、接続文字列にキー値 `ApplicationIntent=ReadOnly` を含めます。
-
+読み取り可能なセカンダリを監視するには、接続文字列にキー値 `ApplicationIntent=ReadOnly` を含めます。 SQL Insights は、1 つのセカンダリの監視をサポートし、収集されたデータには、プライマリまたはセカンダリを反映するタグが付けられます。 
 
 
 ## <a name="monitoring-profile-created"></a>作成された監視プロファイル 

@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.custom: azure-synapse
 ms.reviewer: igorstan
-ms.openlocfilehash: 8144c588d4b6794cadc0577bf63dabc2cc3e0efd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b661931d13fb179401fff2559579a155bd31dfb
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98677288"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139941"
 ---
 # <a name="use-transactions-in-a-sql-pool-in-azure-synapse"></a>Azure Synapse の SQL プールでトランザクションを使用する 
 
@@ -214,4 +214,4 @@ SQL プールには、トランザクションに関する他の制限事項が�
 
 ## <a name="next-steps"></a>次のステップ
 
-トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](sql-data-warehouse-develop-best-practices-transactions.md)に関する記事をご覧ください。 他の SQL プールのベスト プラクティスの詳細については、「[SQL プールのベスト プラクティス](sql-data-warehouse-best-practices.md)」を参照してください。
+トランザクションの最適化について詳しくは、[トランザクションのベスト プラクティス](sql-data-warehouse-develop-best-practices-transactions.md)に関する記事をご覧ください。 他の SQL プールのベスト プラクティスの詳細については、「[SQL プールのベスト プラクティス](../sql/best-practices-dedicated-sql-pool.md)」を参照してください。

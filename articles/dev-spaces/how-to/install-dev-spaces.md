@@ -4,13 +4,14 @@ services: azure-dev-spaces
 ms.date: 07/24/2019
 ms.topic: conceptual
 description: AKS クラスターで Azure Dev Spaces を有効にして、クライアント側ツールをインストールする方法について説明します。
+ms.custom: devx-track-azurecli
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
-ms.openlocfilehash: 177496a53d204306b2b655b8736ce063dedf0f61
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 079a9e1b28b315457ac20d3aa9e7d29ce28fa077
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102202248"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505362"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>AKS クラスターで Azure Dev Spaces を有効にして、クライアント側ツールをインストールする
 
@@ -18,7 +19,7 @@ ms.locfileid: "102202248"
 
 この記事では、AKS クラスターで Azure Dev Spaces を有効にする方法と、クライアント側ツールをインストールする方法をいくつかを紹介します。
 
-## <a name="enable-azure-dev-spaces-using-the-cli"></a>CLI を使用して Azure Dev Spaces を有効にする
+## <a name="enable-azure-dev-spaces-using-the-azure-cli"></a>Azure CLI を使用して Azure Dev Spaces を有効にする
 
 CLI を使用して Dev Spaces を有効にする前に、以下が必要です。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、[無料のアカウント][az-portal-create-account]を作成できます。
@@ -59,7 +60,7 @@ Azure Dev Spaces クライアント側ツールを使用すると、ローカル
 * [Visual Studio 2019][visual-studio] で、Azure Development ワークロードをインストールします。
 * [Windows][cli-win]、[Mac][cli-mac]、または [Linux][cli-linux] CLI をダウンロードしてインストールします。
 
-## <a name="remove-azure-dev-spaces-using-the-cli"></a>CLI を使用して Azure Dev Spaces を削除する
+## <a name="remove-azure-dev-spaces-using-the-azure-cli"></a>Azure CLI を使用して Azure Dev Spaces を削除する
 
 AKS クラスターから Azure Dev Spaces を削除するには、`azds remove` コマンドを使用します。
 

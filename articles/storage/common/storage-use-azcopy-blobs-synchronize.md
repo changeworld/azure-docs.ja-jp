@@ -4,18 +4,18 @@ description: この記事には、Azure Blob Storage と同期するのに役立
 author: normesta
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 04/02/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: ec341243811eaa271511baba04ea1c48a4fefdab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8b3340c00d856b13edefc7728d5baa327399a441
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105728897"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502931"
 ---
-# <a name="synchronize-with-azure-blob-storage-by-using-azcopy-v10"></a>AzCopy v10 を使用して Azure Blob Storage と同期する
+# <a name="synchronize-with-azure-blob-storage-by-using-azcopy"></a>AzCopy を使用して Azure Blob Storage と同期する
 
 AzCopy v10 コマンドライン ユーティリティを使用して、Azure Blob Storage とローカル ストレージを同期できます。 
 
@@ -41,7 +41,11 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 
 - `--delete-destination` フラグを `true` に設定すると、AzCopy では、プロンプトが表示されずにファイルが削除されます。 AzCopy でファイルが削除される前にプロンプトを表示する場合、`--delete-destination` フラグを `prompt` に設定します。
 
+- `--delete-destination` フラグを `prompt` または `false` に設定する場合は、[sync](storage-ref-azcopy-sync.md) コマンドではなく [copy](storage-ref-azcopy-copy.md) コマンドを使用し、`--overwrite` パラメーターを `ifSourceNewer` に設定することを検討してください。 [copy](storage-ref-azcopy-copy.md) コマンドでは、消費されるメモリ量が少なくなり、発生する課金コストが減ります。これは、コピー操作では、ファイルを移動する前にコピー元またはコピー先のインデックスを作成する必要がないからです。 
+
 - 誤削除を防ぐために、`--delete-destination=prompt|true` フラグを使用する前に[論理的な削除](../blobs/soft-delete-blob-overview.md)機能を有効にしてください。
+
+- sync コマンドを実行するマシンでは、ファイルを転送する必要があるかどうかの判断において最終変更時刻が重要になるため、正確なシステム クロックが必要になります。 システムのクロック スキューが大きい場合は、sync コマンドの実行を計画している時刻にあまりに近い時点で、コピー先でのファイル変更を行わないようにしてください。
 
 ## <a name="update-a-container-with-changes-to-a-local-file-system"></a>ローカル ファイル システムへの変更を使用してコンテナーを更新する
 
@@ -50,10 +54,15 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **例** | `azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive` |
+**構文**
+
+`azcopy sync '<local-directory-path>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+
+**例**
+
+```azcopy
+azcopy sync 'C:\myDirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive
+```
 
 ## <a name="update-a-local-file-system-with-changes-to-a-container"></a>コンテナーへの変更を使用してローカル ファイル システムを更新する
 
@@ -62,10 +71,15 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive` |
-| **例** | `azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive` |
+**構文**
+
+`azcopy sync 'https://<storage-account-name>.blob.core.windows.net/<container-name>' 'C:\myDirectory' --recursive`
+
+**例**
+
+```azcopy
+azcopy sync 'https://mystorageaccount.blob.core.windows.net/mycontainer' 'C:\myDirectory' --recursive
+```
 
 ## <a name="update-a-container-with-changes-in-another-container"></a>別のコンテナーへの変更を使用してコンテナーを更新する
 
@@ -74,10 +88,15 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive` |
-| **例** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive` |
+**構文**
+
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>' --recursive`
+
+**例**
+
+```azcopy
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/mycontainer' 'https://mydestinationaccount.blob.core.windows.net/mycontainer' --recursive
+```
 
 ## <a name="update-a-directory-with-changes-to-a-directory-in-another-container"></a>別のコンテナー内のディレクトリへの変更を使用してディレクトリを更新する
 
@@ -86,10 +105,15 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 > [!TIP]
 > この例では、パス引数を単一引用符 ('') で囲んでいます。 Windows コマンド シェル (cmd.exe) を除き、すべてのコマンド シェルで単一引用符を使用します。 Windows コマンド シェル (cmd.exe) を使用している場合は、単一引用符 ('') ではなく、二重引用符 ("") でパス引数を囲みます。
 
-| 構文/例  |  コード |
-|--------|-----------|
-| **構文** | `azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive` |
-| **例** | `azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive` |
+**構文**
+
+`azcopy sync 'https://<source-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' 'https://<destination-storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive`
+
+**例**
+
+```azcopy
+azcopy sync 'https://mysourceaccount.blob.core.windows.net/<container-name>/myDirectory' 'https://mydestinationaccount.blob.core.windows.net/mycontainer/myDirectory' --recursive
+```
 
 ## <a name="synchronize-with-optional-flags"></a>オプションのフラグに同期させる
 
@@ -101,7 +125,10 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 |パターンに基づいてファイルを除外します。|**--exclude-path**|
 |同期に関連するログ エントリの詳細レベルを指定します。|**--log-level**=\[WARNING\|ERROR\|INFO\|NONE\]|
 
-完全な一覧については、「[オプション](storage-ref-azcopy-sync.md#options)」を参照してください。
+フラグの完全な一覧については、「[オプション](storage-ref-azcopy-sync.md#options)」を参照してください。
+
+> [!NOTE]
+> 既定では、`--recursive` フラグは `true` に設定されています。 `--exclude-pattern` と `--include-pattern` の各フラグはファイル名のみに適用され、ファイル パスの他の部分には適用されません。 
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -111,6 +138,13 @@ AzCopy のダウンロード方法と、ストレージ サービスに認証資
 - [例:ダウンロード](storage-use-azcopy-blobs-download.md)」をご覧ください
 - [例:アカウント間のコピー](storage-use-azcopy-blobs-copy.md)
 - [例:Amazon S3 バケット](storage-use-azcopy-s3.md)
+- [例: Google Cloud Storage](storage-use-azcopy-google-cloud.md)
 - [例:Azure Files](storage-use-azcopy-files.md)
 - [チュートリアル:AzCopy を使用したオンプレミス データのクラウド ストレージへの移行](storage-use-azcopy-migrate-on-premises-data.md)
-- [AzCopy の構成、最適化、トラブルシューティング](storage-use-azcopy-configure.md)
+
+設定の構成、パフォーマンスの最適化、および問題のトラブルシューティングを行うには、次の記事を参照してください。
+
+- [AzCopy の構成設定](storage-ref-azcopy-configuration-settings.md)
+- [AzCopy のパフォーマンスを最適化する](storage-use-azcopy-optimize.md)
+- [ログ ファイルを使用した Azure Storage での AzCopy V10 の問題のトラブルシューティング](storage-use-azcopy-configure.md)
+

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 014bbe4421bf00f35b2d80505cea288e75f8ca94
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4c8a50f419fbf80d9159bbe3748bbe000ef4b369
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103224675"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134197"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-azure-vms"></a>Azure VM における SQL Server についてよく寄せられる質問
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -171,7 +171,7 @@ ms.locfileid: "103224675"
    はい。 SQL Server インストール メディアは、 **C** ドライブ上のフォルダーにあります。 その場所から、 **Setup.exe** を実行して、新しい SQL Server インスタンスを追加するか、またはコンピューター上の SQL Server の他のインストールされている機能を変更します。 一部の機能 (自動バックアップ、自動修正、Azure Key Vault の統合など) は、既定のインスタンスまたは正しく構成された名前付きインスタンス (質問 3 を参照) でしか動作しないので注意が必要です。 [Azure ハイブリッド特典によるソフトウェア アシュアランス](licensing-model-azure-hybrid-benefit-ahb-change.md)、または **従量課金制** ライセンス モデルをご利用のお客様は、余分なライセンス コストを発生させることなく、仮想マシンに複数の SQL Server インスタンスをインストールすることができます。 追加の SQL Server インスタンスは、正しく構成されていなければ、システム リソースに負荷がかかる場合があります。 
 
 1. **1 つの VM 上のインスタンスの最大数とは**
-   SQL Server 2012 から SQL Server 2019 では、スタンドアロン サーバー上で [50 のインスタンス](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP)をサポートできます。 これは、Azure でもオンプレミスでも同じ制限です。 環境をより適切に準備する方法については、[ベスト プラクティス](performance-guidelines-best-practices.md#multiple-instances)を参照してください。 
+   SQL Server 2012 から SQL Server 2019 では、スタンドアロン サーバー上で [50 のインスタンス](/sql/sql-server/editions-and-components-of-sql-server-version-15#RDBMSSP)をサポートできます。 これは、Azure でもオンプレミスでも同じ制限です。 環境をより適切に準備する方法については、[ベスト プラクティス](./performance-guidelines-best-practices-checklist.md)を参照してください。 
 
 1. **SQL Server の既定のインスタンスをアンインストールできますか?**
 
@@ -193,6 +193,7 @@ ms.locfileid: "103224675"
    1. SQL IaaS 拡張機能 (存在する場合) を含めて、SQL Server を完全にアンインストールします。
    1. 無料の [SQL Express エディション](https://www.microsoft.com/sql-server/sql-server-downloads)をインストールします。
    1. [軽量モード](sql-agent-extension-manually-register-single-vm.md)で SQL IaaS Agent 拡張機能に登録します。
+   1. [Azure portal](https://portal.azure.com) で [SQL Server のエディション](change-sql-server-edition.md#change-edition-in-portal)を Express に変更して、課金を停止します。  
    1. (省略可能) サービスのスタートアップを無効にすることで、Express SQL Server サービスを無効にします。 
 
 1. **Azure portal を利用し、同じ VM で複数のインスタンスを管理できますか?**
@@ -346,7 +347,7 @@ ms.locfileid: "103224675"
 * [Windows VM での SQL Server のプロビジョニング](create-sql-vm-portal.md)
 * [Azure VM の SQL Server へのデータベースの移行](migrate-to-vm-from-sql-server.md)
 * [Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](business-continuity-high-availability-disaster-recovery-hadr-overview.md)
-* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)
+* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](./performance-guidelines-best-practices-checklist.md)
 * [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](application-patterns-development-strategies.md)
 
 **Linux VM**:

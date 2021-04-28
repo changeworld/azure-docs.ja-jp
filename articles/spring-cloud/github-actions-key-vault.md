@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9c51a7a953fca4ebdd7014beeb39e732670b15df
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877617"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129029"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する
 
@@ -42,7 +42,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-次に、[GitHub リポジトリを設定して Azure で認証する](./spring-cloud-howto-github-actions.md#set-up-github-repository-and-authenticate)方法の説明に従って、結果を GitHub の **シークレット** に保存します。
+次に、[GitHub リポジトリを設定して Azure で認証する](./how-to-github-actions.md#set-up-github-repository-and-authenticate)方法の説明に従って、結果を GitHub の **シークレット** に保存します。
 
 ## <a name="add-access-policies-for-the-credential"></a>資格情報のアクセス ポリシーを追加する
 上記で作成した資格情報を使うと、キー コンテナーに関する一般的な情報のみを取得できます。保存されているコンテンツは取得できません。  キー コンテナーに保存されているシークレットを取得するには、資格情報のアクセス ポリシーを設定する必要があります。
@@ -114,4 +114,4 @@ jobs:
 ```
 
 ## <a name="next-steps"></a>次の手順
-* [Spring Cloud GitHub Actions](./spring-cloud-howto-github-actions.md)
+* [Spring Cloud GitHub Actions](./how-to-github-actions.md)

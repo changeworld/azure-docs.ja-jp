@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 9b6cf2abfa797965d75bacd0b9c5e2eaf02b57a4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 5a8b722b7bef393422eec395f16de0f38e806152
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308576"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141759"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -439,9 +439,9 @@ Microsoft Azure では、一般的な AI の概念や実践に関するコンテ
 
 | トレーニング用のリソース  | 可用性 |
 |:-------------------|--------------|
-| [Microsoft Docs: データ科学者ロール](https://docs.microsoft.com/learn/roles/data-scientist) | パブリック |
-| [Microsoft Docs: AI エンジニア ロール](https://docs.microsoft.com/learn/roles/ai-engineer) | パブリック |
-| [Microsoft Docs: データ エンジニア ロール](https://docs.microsoft.com/learn/roles/data-engineer) | パブリック |
+| [Microsoft Docs: データ科学者ロール](/learn/roles/data-scientist) | パブリック |
+| [Microsoft Docs: AI エンジニア ロール](/learn/roles/ai-engineer) | パブリック |
+| [Microsoft Docs: データ エンジニア ロール](/learn/roles/data-engineer) | パブリック |
 | [Microsoft AI スクール](https://www.microsoft.com/ai/ai-school) | パブリック |
 | [LinkedIn Learning](https://www.linkedin.com/learning) | パブリック |
 | [Microsoft: 人工知能および分析に関する YouTube のプレイリスト](https://www.youtube.com/c/MicrosoftAzure/playlists?view=50&sort=dd&shelf_id=7) | パブリック |

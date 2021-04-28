@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/31/2021
 ms.reviewer: ''
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4ecaa8a3ee1d11ea13563ae5c74835b8d62fd960
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 65ea6d78eb807671df1732392e112d368877a2b5
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555883"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132055"
 ---
 # <a name="what-is-block-t-sql-crud-feature"></a>ブロック T-SQL CRUD 機能とは
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "106555883"
 
 ## <a name="overview"></a>概要
 
-T-SQL を介してリソースの作成または変更をブロックし、特定のサブスクリプションの Azure Resource Manager テンプレート (ARM テンプレート) を使用してリソース管理を強制するには、Azure portal のサブスクリプション レベルのプレビュー機能を使用できます。 これは、ARM テンプレートを使用して組織の標準を強制するために [Azure ポリシー](/azure/governance/policy/overview) を使用する場合に特に便利です。 T-SQL は Azure ポリシーに準拠していないため、T-SQL の作成または変更の操作にブロックを適用できます。 ブロックされる構文には、Azure SQL のデータベースの CRUD (create、update、delete) ステートメント、つまり `CREATE DATABASE`、`ALTER DATABASE`、`DROP DATABASE` ステートメントが含まれます。 
+T-SQL を介してリソースの作成または変更をブロックし、特定のサブスクリプションの Azure Resource Manager テンプレート (ARM テンプレート) を使用してリソース管理を強制するには、Azure portal のサブスクリプション レベルのプレビュー機能を使用できます。 これは、ARM テンプレートを使用して組織の標準を強制するために [Azure ポリシー](../../governance/policy/overview.md) を使用する場合に特に便利です。 T-SQL は Azure ポリシーに準拠していないため、T-SQL の作成または変更の操作にブロックを適用できます。 ブロックされる構文には、Azure SQL のデータベースの CRUD (create、update、delete) ステートメント、つまり `CREATE DATABASE`、`ALTER DATABASE`、`DROP DATABASE` ステートメントが含まれます。 
 
 T-SQL CRUD 操作は、Azure portal、[PowerShell](/powershell/module/az.resources/register-azproviderfeature)、または [Azure CLI](/cli/azure/feature#az_feature_register) を使用してブロックできます。
 

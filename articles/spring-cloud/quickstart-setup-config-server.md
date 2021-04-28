@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 643d1cd6df3791b2e5ea2118425eecb29dbcdea2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1c456599ac6c2ca87f7beb88398d1ef9117f3106
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877577"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134611"
 ---
 # <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>クイック スタート:Azure Spring Cloud の構成サーバーを設定する
 
@@ -23,7 +23,7 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 
 ## <a name="prerequisites"></a>前提条件
 
-* このシリーズの先行する次のクイックスタートを完了しておきます。「[Azure Spring Cloud サービスのプロビジョニング](spring-cloud-quickstart-provision-service-instance.md)」。
+* このシリーズの先行する次のクイックスタートを完了しておきます。「[Azure Spring Cloud サービスのプロビジョニング](./quickstart-provision-service-instance.md)」。
 
 ## <a name="azure-spring-cloud-config-server-procedures"></a>Azure Spring Cloud 構成サーバーの手順
 
@@ -51,7 +51,7 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 
 #### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 
-次の手順では、Azure portal を使用して、[Piggymetrics サンプル](spring-cloud-quickstart-sample-app-introduction.md)をデプロイするように構成サーバーを設定します。
+次の手順では、Azure portal を使用して、[Piggymetrics サンプル](./quickstart-sample-app-introduction.md)をデプロイするように構成サーバーを設定します。
 
 1. サービスの **[概要]** ページに移動し、 **[Config Server]\(構成サーバー\)** を選択します。
 
@@ -73,7 +73,7 @@ Azure Spring Cloud 構成サーバーは、分散システムのための一元�
 
 #### <a name="cli"></a>[CLI](#tab/Azure-CLI)
 
-次の手順では、Azure CLI を使用して、[Piggymetrics サンプル](spring-cloud-quickstart-sample-app-introduction.md)をデプロイするように構成サーバーを設定します。
+次の手順では、Azure CLI を使用して、[Piggymetrics サンプル](./quickstart-sample-app-introduction.md)をデプロイするように構成サーバーを設定します。
 
 次のように、プロジェクトの git リポジトリの場所を使用して、構成サーバーを設定します。
 
@@ -84,7 +84,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 ::: zone-end
 
 > [!TIP]
-> 構成サーバーにプライベート リポジトリを使用している場合は、[認証の設定に関するチュートリアル](./spring-cloud-howto-config-server.md)を参照してください。
+> 構成サーバーにプライベート リポジトリを使用している場合は、[認証の設定に関するチュートリアル](./how-to-config-server.md)を参照してください。
 
 ## <a name="troubleshooting-of-azure-spring-cloud-config-server"></a>Azure Spring Cloud Config Server のトラブルシューティング
 
@@ -113,7 +113,7 @@ az spring-cloud config-server git set -n <service instance name> --uri https://g
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、サブスクリプションに残っていると課金が継続される Azure リソースを作成しました。 次のクイックスタートに進まない場合は、[リソースのクリーンアップ](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)に関する記事を参照してください。 それ以外の場合は、次のクイックスタートに進んでください。
+このクイックスタートでは、サブスクリプションに残っていると課金が継続される Azure リソースを作成しました。 次のクイックスタートに進まない場合は、[リソースのクリーンアップ](./quickstart-logs-metrics-tracing.md#clean-up-resources)に関する記事を参照してください。 それ以外の場合は、次のクイックスタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [アプリをビルドして配置する](spring-cloud-quickstart-deploy-apps.md)
+> [アプリをビルドして配置する](./quickstart-deploy-apps.md)

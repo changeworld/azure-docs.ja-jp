@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/12/2020
-  ms.openlocfilehash: 703ea98a1db6f706395ea2c5f66bac0edc2b2f01
-  ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+  ms.openlocfilehash: 33448df1c225d3593601fd1a1d3a7205628cbd77
+  ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/14/2021
-  ms.locfileid: "107481686"
+  ms.lasthandoff: 04/28/2021
+  ms.locfileid: "108139023"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
@@ -82,7 +82,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: AutoRest を使用してカスタム SDK を作成する
-      url: how-to-create-custom-sdks.md
+      url: ./how-to-use-apis-sdks.md
 - title: コード サンプルを確認する
   linkLists:
   - linkListType: sample

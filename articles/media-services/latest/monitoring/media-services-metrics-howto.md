@@ -14,18 +14,18 @@ ms.topic: how-to
 ms.date: 03/17/2021
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7f8aa7e8cd38de37f5d3757804f7836612ad64cb
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: b408020ecf6e4618f97c8bc51749278dc0361579
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227757"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138915"
 ---
 # <a name="monitor-media-services-metrics"></a>Media Services のメトリックを監視する
 
 [!INCLUDE [media services api v3 logo](../includes/v3-hr.md)]
 
-[Azure Monitor](/azure/azure-monitor/overview) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 この機能の詳細な説明と、Azure Media Services のメトリックと診断ログを使用する必要がある理由については、[Media Services のメトリックと診断ログの監視](monitor-media-services-data-reference.md)に関するページを参照してください。
+[Azure Monitor](../../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 この機能の詳細な説明と、Azure Media Services のメトリックと診断ログを使用する必要がある理由については、[Media Services のメトリックと診断ログの監視](monitor-media-services-data-reference.md)に関するページを参照してください。
 
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、Azure CLI を使ってクエリを実行したりできます。 この記事では、Azure portal のグラフと Azure CLI を使用してメトリックを監視する方法を示します。
 
@@ -69,8 +69,8 @@ az monitor metrics list --resource \
 
 ## <a name="see-also"></a>関連項目
 
-- [Azure Monitor のメトリック](/azure/azure-monitor/data-platform)
-- [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](/azure/azure-monitor/alerts/alerts-metric)。
+- [Azure Monitor のメトリック](../../../azure-monitor/data-platform.md)
+- [Azure Monitor を使用してメトリック アラートを作成、表示、管理する](../../../azure-monitor/alerts/alerts-metric.md)。
 
 ## <a name="next-steps"></a>次のステップ
 

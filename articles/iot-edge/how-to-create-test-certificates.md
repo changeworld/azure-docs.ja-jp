@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d8cf3dbe9d1dc2ad329a0b5ab8fa9554c85ae55c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adfb46894e769a23a2ac48bdb4ac3e432d9cebce
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199092"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139059"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>IoT Edge デバイスの機能をテストするためのデモ用の証明書を作成する
 
@@ -361,7 +361,7 @@ IoT Hub で認証できるように、IoT デバイスにはデバイス証明�
 次に、ルート CA 証明書を所有している IoT Hub を証明するための検証を実行します。
 最後に、同じルート CA 証明書を使用して、IoT デバイスが IoT Hub で認証できるように、そのデバイスに配置するデバイス証明書を作成します。
 
-このセクションの証明書は、「[Azure IoT Hub での X.509 セキュリティの設定](../iot-hub/iot-hub-security-x509-get-started.md)」の手順に向けたものです。
+このセクションの証明書は、「[Azure IoT Hub での X.509 セキュリティの設定](../iot-hub/tutorial-x509-scripts.md)」の手順に向けたものです。
 
 #### <a name="windows"></a>Windows
 

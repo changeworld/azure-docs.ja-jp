@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 09ec15eb45029c42fd5bc02288a0c45e167e7092
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 4607778c78b8b062b265a5754337c09c41ba83f1
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108146295"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531532"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
 
@@ -21,7 +21,7 @@ ms.locfileid: "108146295"
 
 Azure マネージド ディスク内のデータは、利用できる最も強力なブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使って透過的に暗号化され、FIPS 140-2 に準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:次世代](/windows/desktop/seccng/cng-portal)」を参照してください。
 
-Azure Storage の暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 Azure Storage の暗号化の詳細については、「[Azure Storage の暗号化](../storage/common/storage-service-encryption.md)」をご参照ください。
+Azure Storage の暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 Azure Storage の暗号化の詳細については、「[Azure Storage の暗号化](/azure/storage/common/storage-service-encryption)」をご参照ください。
 
 > [!NOTE]
 > 一時ディスクはマネージド ディスクではなく、ホストで暗号化を有効にしない限り、SSE によって暗号化されません。

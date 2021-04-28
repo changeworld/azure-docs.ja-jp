@@ -5,18 +5,18 @@ description: ID ベースのデータ アクセスを使用して、Azure Machin
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 02/22/2021
-ms.custom: how-to, contperf-fy21q1, devx-track-python, data4ml
-ms.openlocfilehash: a46f54bd037dcf8d71ba3fbafb2ba0fd961a32cc
-ms.sourcegitcommit: c3739cb161a6f39a9c3d1666ba5ee946e62a7ac3
+ms.custom: contperf-fy21q1, devx-track-python, data4ml
+ms.openlocfilehash: 8bc85e8991ebf0a5ba7418f63943b0515c9f264d
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107210654"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885004"
 ---
 # <a name="connect-to-storage-by-using-identity-based-data-access-preview"></a>ID ベースのデータ アクセスを使用してストレージに接続する (プレビュー)
 

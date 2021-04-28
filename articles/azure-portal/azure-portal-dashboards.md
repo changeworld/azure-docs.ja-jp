@@ -3,43 +3,46 @@ title: Azure portal でダッシュボードを作成する
 description: この記事では、Azure portal でダッシュボードを作成およびカスタマイズする方法について説明します。
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 03/16/2021
-ms.openlocfilehash: fa7f1813d86571b568d23d64cab5705f8a117faa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/15/2021
+ms.openlocfilehash: 0666a9f8ca9df2fa44a7eaa4045c9b5e9a724ff5
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774619"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726074"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>Azure portal でダッシュボードを作成する
 
 ダッシュボードは、Azure portal でクラウドリソースを集中的に整理したビューです。 ダッシュボードは、日常業務のタスクをすばやく起動したり、リソースを監視したりできるワークスペースとして使用します。 たとえば、プロジェクト、タスク、またはユーザー ロールに基づいてカスタム ダッシュボードを作成します。
 
-Azure portal には、出発点として既定のダッシュボードが用意されています。 既定のダッシュボードを編集し、追加のダッシュボードを作成およびカスタマイズできます。 この記事では、新しいダッシュボードを作成してカスタマイズする方法について説明します。 ダッシュボードの共有については、「[Azure ロールベースのアクセス制御を使用した Azure ダッシュボードの共有](azure-portal-dashboard-share-access.md)」を参照してください。
+Azure portal には、出発点として既定のダッシュボードが用意されています。 既定のダッシュボードを編集し、追加のダッシュボードを作成およびカスタマイズできます。
+
+> [!NOTE]
+> 各ユーザーは、最大 100 のプライベート ダッシュボードを作成できます。 [ダッシュボードを発行して共有する](azure-portal-dashboard-share-access.md)と、サブスクリプションに Azure リソースとして実装され、この制限にはカウントされません。
+
+この記事では、新しいダッシュボードを作成してカスタマイズする方法について説明します。 ダッシュボードの共有については、「[Azure ロールベースのアクセス制御を使用した Azure ダッシュボードの共有](azure-portal-dashboard-share-access.md)」を参照してください。
 
 ## <a name="create-a-new-dashboard"></a>新しいダッシュボードを作成する
 
-この例では、新しいプライベート ダッシュボードを作成し、名前を割り当てます。 作業を開始するには、次の手順に従います。
+この例では、割り当てられた名前を使用して新しいプライベート ダッシュボードを作成する方法を示します。 すべてのダッシュボードは作成時にプライベートになりますが、必要に応じて、ダッシュボードを発行して組織内の他のユーザーと共有することもできます。
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
 1. Azure portal メニューから、 **[ダッシュボード]** を選択します。 既定のビューがダッシュボードに既に設定されています。
 
-    ![ダッシュボードを開く](./media/azure-portal-dashboards/portal-menu-dashboard.png)
+    ![[ダッシュボード] が選択されている Azure portal のスクリーンショット。](./media/azure-portal-dashboards/portal-menu-dashboard.png)
 
 1. **[新しいダッシュボード ]** 、 **[空のダッシュボード]** の順に選択します。
 
-    ![新しいダッシュボードのスクリーンショット](./media/azure-portal-dashboards/create-new-dashboard.png)
+    ![[新しいダッシュボード] オプションのスクリーンショット。](./media/azure-portal-dashboards/create-new-dashboard.png)
 
-    この操作により、タイルを選択する **[タイル ギャラリー]** と、タイルを配置する空のグリッドが開きます。
+    この操作により、タイルを選択できる **[タイル ギャラリー]** と、タイルを配置する空のグリッドが開きます。
 
 1. ダッシュボード ラベルの **[マイ ダッシュボード]** というテキストを選択し、カスタム ダッシュボードを簡単に識別できる名前を入力します。
 
-    ![タイル ギャラリーと空のグリッドのスクリーンショット](./media/azure-portal-dashboards/dashboard-name.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-name.png" alt-text="空のグリッドと [タイル ギャラリー] のスクリーンショット。":::
 
-1. ページ ヘッダーで、 **[カスタマイズ完了]** を選択して編集モードを終了し、 **[保存]** を選択します。
-
-    :::image type="content" source="media/azure-portal-dashboards/dashboard-save.png" alt-text="ダッシュボードの保存プロセスのスクリーンショット":::
+1. ダッシュボードをそのまま保存するには、ページ ヘッダーの **[カスタマイズ完了]** を選択します。 または、次のセクションに進み、タイルを追加してダッシュボードを保存します。
 
 ダッシュボード ビューに新しいダッシュボードが表示されます。 ダッシュボード名の横にある矢印を選択して、使用可能なダッシュボードを表示します。 リストには、他のユーザーが作成および共有したダッシュボードが含まれる場合があります。
 
@@ -47,15 +50,17 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 次に、ダッシュボードを編集して、Azure リソースを表すタイルの追加、サイズ変更、配置を行いましょう。
 
-### <a name="add-tiles-from-the-tile-gallery"></a>ギャラリーからタイルを追加する
+### <a name="add-tiles-from-the-tile-gallery"></a>タイル ギャラリーからタイルを追加する
 
 ダッシュボードにタイルを追加するには、次の手順に従います。
 
-1. ページ ヘッダーの ![編集アイコン](./media/azure-portal-dashboards/dashboard-edit-icon.png) **[編集]** を選択します。
+1. ダッシュボードのページ ヘッダーの ![編集アイコン](./media/azure-portal-dashboards/dashboard-edit-icon.png) **[編集]** を選択します。
 
-    ![[編集] が強調表示されたダッシュボードのスクリーンショット](./media/azure-portal-dashboards/dashboard-edit.png)
+    ![[編集] オプションが強調表示されたダッシュボードのスクリーンショット。](./media/azure-portal-dashboards/dashboard-edit.png)
 
-1. **[タイル ギャラリー]** を参照するか、検索フィールドを使用して必要なタイルを見つけます。
+1. **[タイル ギャラリー]** を参照するか、検索フィールドを使用して特定のタイルを見つけます。 ダッシュボードに追加するタイルを選択します。
+
+   :::image type="content" source="media/azure-portal-dashboards/dashboard-tile-gallery.png" alt-text="タイル ギャラリーのスクリーンショット。":::
 
 1. **[追加]** を選択して、タイルをデフォルトのサイズと場所でダッシュボードに追加します。 または、タイルをグリッドにドラッグし、希望の場所に配置します。 必要なタイルを追加しますが、いくつかのアイデアを次に示します。
 
@@ -63,13 +68,21 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
     - 複数の組織を操作する場合は、リソースが属する組織を明確に示すために、 **[組織 ID]** タイルをダッシュボードに追加します。
 
-1. ページ ヘッダーで、 **[保存]** を選択します。
+1. 必要に応じて、タイルの右下隅をドラッグ アンド ドロップしてタイルのサイズを変更します。
 
-### <a name="add-tiles-from-a-resource-page"></a>リソース ページからタイルを追加する
+1. 変更を保存するには、ページ ヘッダーの **[保存]** を選択します。 ページ ヘッダーで **[プレビュー]** を選択して、保存せずに変更をプレビューすることもできます。 プレビュー画面で、 **[保存]** を選択して変更を保持するか、 **[破棄]** を選択して削除するか、 **[編集]** を選択して編集オプションに戻り、さらに変更を加えることができます。
 
-ダッシュボードにタイルを追加する別の方法があります。 多くのリソースページには、コマンドバーにプッシュピンアイコンが含まれています。 このアイコンを選択すると、ソース ページを表すタイルが、現在アクティブなダッシュボードにピン留めされます。 
+   :::image type="content" source="media/azure-portal-dashboards/dashboard-save.png" alt-text="[プレビュー]、[保存]、および [破棄] の各オプションのスクリーンショット。":::
+
+### <a name="pin-content-from-a-resource-page"></a>リソース ページからのコンテンツをピン留めする
+
+ダッシュボードにタイルを追加するもう 1 つの方法では、リソース ページから直接行います。
+
+多くのリソース ページには、コマンド バーにピン アイコンがあります。 このアイコンを選択すると、ソース ページを表すタイルを、既存のダッシュボードや作成した新しいダッシュボードにピン留めすることができます。
 
 ![ピン アイコンが含まれたページのコマンド バーのスクリーンショット](./media/azure-portal-dashboards/dashboard-pin-blade.png)
+
+場合によっては、ページ内の特定のコンテンツの近くにピン アイコンが表示されることもあります。この場合、ページ全体ではなく、その特定のコンテンツのタイルをピン留めすることができます。
 
 ### <a name="resize-or-rearrange-tiles"></a>タイルのサイズまたは配置を変更する
 
@@ -79,7 +92,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. タイルの右上隅にあるコンテキスト メニューを選択します。 次に、タイルのサイズを選択します。 任意のサイズをサポートするタイルには、右下隅に "ハンドル" も含まれています。これを使用して、タイルを目的のサイズにドラッグできます。
 
-    ![タイル サイズ メニューが表示されたダッシュボードのスクリーンショット](./media/azure-portal-dashboards/dashboard-tile-resize.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-tile-resize.png" alt-text="タイル サイズ メニューが表示されたダッシュボードのスクリーンショット。":::
 
 1. タイルを選択し、グリッド上の新しい場所にドラッグしてダッシュボードを編集します。
 
@@ -104,11 +117,11 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. コンテキスト メニューから **[タイル データのカスタマイズ]** を選択するか、タイルの左上隅の![フィルター アイコン](./media/azure-portal-dashboards/dashboard-filter.png)を選択します。
 
-    ![タイルのコンテキスト メニューのスクリーンショット](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
+    ![タイルのコンテキスト メニューのスクリーンショット。](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
 1. **[タイル レベルでのダッシュボード時刻の設定を上書きします]** チェックボックスをオンにします。
 
-    ![タイルの時間設定を構成するためのダイアログのスクリーンショット](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
+    ![タイルの時間設定を構成するためのダイアログのスクリーンショット。](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
 
 1. このタイルに表示する期間を選択します。 過去 30 分から過去 30 日までの範囲の中から選択することも、カスタム範囲を定義することもできます。
 
@@ -118,13 +131,13 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 ## <a name="delete-a-tile"></a>タイルを削除する
 
-ダッシュボードからタイルを削除するには、次の手順に従います。
+ダッシュボードからタイルを削除するには、次のいずれかの操作を行います。
 
-* タイルの右上隅のコンテキスト メニューを選択し、 **[ダッシュボードから削除する]** を選択します。 または、
+- タイルの右上隅のコンテキスト メニューを選択し、 **[ダッシュボードから削除する]** を選択します。
 
-* ![編集アイコン](./media/azure-portal-dashboards/dashboard-edit-icon.png) **[編集]** を選択して、カスタマイズ モードに切り替えます。 タイルの右上隅にマウス ポインターを移動し、![削除アイコン](./media/azure-portal-dashboards/dashboard-delete-icon.png) 削除アイコンを選択してダッシュボードからタイルを削除します。
+- ![編集アイコン](./media/azure-portal-dashboards/dashboard-edit-icon.png) **[編集]** を選択して、カスタマイズ モードに切り替えます。 タイルの右上隅にマウス ポインターを移動し、![削除アイコン](./media/azure-portal-dashboards/dashboard-delete-icon.png) 削除アイコンを選択してダッシュボードからタイルを削除します。
 
-   ![ダッシュボードからタイルを削除する方法を示すスクリーンショット](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+   ![ダッシュボードからタイルを削除する方法を示すスクリーンショット。](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
 ## <a name="clone-a-dashboard"></a>ダッシュボードを複製する
 
@@ -170,7 +183,7 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 1. プライベート ダッシュボードの場合は、確認ダイアログで **[OK]** をクリックしてダッシュボードを削除します。 共有ダッシュボードの場合は、確認ダイアログで、この発行済みのダッシュボードが他のユーザーに表示されなくなることを確認するチェックボックスをオンにします。 **[OK]** をクリックします。
 
-    ![削除の確認のスクリーンショット](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+    ![削除の確認のスクリーンショット。](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
 ## <a name="recover-a-deleted-dashboard"></a>削除されたダッシュボードの復旧
 
@@ -178,5 +191,5 @@ Azure portal には、出発点として既定のダッシュボードが用意�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure ロールベースのアクセス制御を使用した Azure ダッシュボードの共有](azure-portal-dashboard-share-access.md)
-* [プログラムによる Azure ダッシュボードの作成](azure-portal-dashboards-create-programmatically.md)
+- [Azure ロールベースのアクセス制御を使用した Azure ダッシュボードの共有](azure-portal-dashboard-share-access.md)
+- [プログラムによる Azure ダッシュボードの作成](azure-portal-dashboards-create-programmatically.md)

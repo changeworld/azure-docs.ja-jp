@@ -3,14 +3,14 @@ title: Azure Automation の Start/Stop VMs during off-hours の削除の概要
 description: この記事では、Start/Stop VMs during off-hours 機能を削除し、Log Analytics ワークスペースから Automation アカウントのリンクを解除する方法について説明します。
 services: automation
 ms.subservice: process-automation
-ms.date: 03/04/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0bab5d8e82ce432e9b3834fe4c003316545eb338
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 9ec76197bfde6bb679f70c44ab01712f9f52bfd2
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122087"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107533943"
 ---
 # <a name="remove-startstop-vms-during-off-hours-from-automation-account"></a>Automation アカウントから Start/Stop VMs during off-hours を削除する
 
@@ -21,6 +21,9 @@ Azure VM の実行状態を管理するために Start/Stop VMs during off-hours
 * 他の管理および監視の目的をサポートしている Automation アカウントとリンクされたワークスペースから機能を削除します。
 
 この機能を削除すると、関連付けられている Runbook のみが削除されますが、デプロイ中に作成されたスケジュールや変数、またはそれ以降に作成されたカスタム定義のものは削除されません。
+
+> [!NOTE]
+> 続行する前に、重要なリソースが誤って削除または変更されることを防ぐ [Resource Manager ロック](../azure-resource-manager/management/lock-resources.md)がサブスクリプション、リソース グループ、リソースで適用されていないことを確認してください。 Start/Stop VMs during off-hours ソリューションをデプロイすると、Automation アカウントの複数の依存リソース (具体的にはその Runbook と変数) に対して、ロック レベルが **CanNotDelete** に設定されます。 Automation アカウントを削除する前に、すべてのロックを削除する必要があります。
 
 ## <a name="delete-the-dedicated-resource-group"></a>専用のリソース グループを削除する
 
