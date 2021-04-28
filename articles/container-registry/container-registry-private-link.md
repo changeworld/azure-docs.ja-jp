@@ -1,14 +1,14 @@
 ---
-title: プライベート リンクを設定する
+title: プライベート リンクを使用してプライベート エンドポイントを設定する
 description: コンテナー レジストリにプライベート エンドポイントを設定し、ローカル仮想ネットワークでプライベート リンク経由のアクセスを有効にします。 プライベート リンク アクセスは、Premium サービス レベルの機能です。
 ms.topic: article
-ms.date: 10/01/2020
-ms.openlocfilehash: 3193c65a2021d29f03bd9ae6cbc00fd6c349d9bf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/31/2021
+ms.openlocfilehash: d3c7c573b0ffc08a85f5cbe5cc62d3f7c052f0af
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93342302"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781435"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Azure Private Link を使用して Azure Container Registry にプライベートで接続する
 
@@ -79,7 +79,7 @@ az network vnet subnet update \
 
 ### <a name="configure-the-private-dns-zone"></a>プライベート DNS ゾーンを構成する
 
-プライベート Azure コンテナー レジストリ ドメイン用の[プライベート DNS ゾーン](../dns/private-dns-privatednszone.md)を作成します。 後の手順で、この DNS ゾーン内にレジストリ ドメインの DNS レコードを作成します。
+プライベート Azure コンテナー レジストリ ドメイン用の[プライベート Azure DNS ゾーン](../dns/private-dns-privatednszone.md)を作成します。 後の手順で、この DNS ゾーン内にレジストリ ドメインの DNS レコードを作成します。 詳細については、この記事で後述する「[DNS の構成オプション](#dns-configuration-options)」を参照してください。
 
 プライベート ゾーンを使用して Azure コンテナー レジストリの既定の DNS 解決をオーバーライドするには、ゾーンに **privatelink.azurecr.io** という名前を付ける必要があります。 次の [az network private-dns zone create][az-network-private-dns-zone-create] コマンドを実行して、プライベート ゾーンを作成します。
 
@@ -126,9 +126,11 @@ az network private-endpoint create \
     --connection-name myConnection
 ```
 
-### <a name="get-private-ip-addresses"></a>プライベート IP アドレスを取得する
+### <a name="get-endpoint-ip-configuration"></a>エンドポイントの IP 構成を取得する
 
-[az network private endpoint show][az-network-private-endpoint-show] を実行し、ネットワーク インターフェイス ID について、エンドポイントにクエリを実行します。
+DNS レコードを構成するには、プライベート エンドポイントの IP 構成を取得します。 この例でのプライベート エンドポイントのネットワーク インターフェイスには、コンテナー レジストリの 2 つのプライベート IP アドレスが関連付けられています。1 つはレジストリ自体用で、もう 1 つはレジストリのデータ エンドポイント用です。 
+
+最初に [az network private endpoint show][az-network-private-endpoint-show] を実行し、ネットワーク インターフェイス ID について、プライベート エンドポイントにクエリを実行します。
 
 ```azurecli
 NETWORK_INTERFACE_ID=$(az network private-endpoint show \
@@ -138,19 +140,29 @@ NETWORK_INTERFACE_ID=$(az network private-endpoint show \
   --output tsv)
 ```
 
-この例のネットワーク インターフェイスには、コンテナーレジストリの 2 つのプライベート IP アドレスが関連付けられています。1 つはレジストリ自体用で、もう 1 つはレジストリのデータ エンドポイント用です。 次の [az resource show][az-resource-show] コマンドでは、コンテナー レジストリとレジストリのデータ エンドポイント用のプライベート IP アドレスが取得されます。
+次の [az network nic show][az-network-nic-show] コマンドでは、コンテナー レジストリとレジストリのデータ エンドポイント用のプライベート IP アドレスが取得されます。
 
 ```azurecli
-PRIVATE_IP=$(az resource show \
+REGISTRY_PRIVATE_IP=$(az network nic show \
   --ids $NETWORK_INTERFACE_ID \
-  --api-version 2019-04-01 \
-  --query 'properties.ipConfigurations[1].properties.privateIPAddress' \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry'].privateIpAddress" \
   --output tsv)
 
-DATA_ENDPOINT_PRIVATE_IP=$(az resource show \
+DATA_ENDPOINT_PRIVATE_IP=$(az network nic show \
   --ids $NETWORK_INTERFACE_ID \
-  --api-version 2019-04-01 \
-  --query 'properties.ipConfigurations[0].properties.privateIPAddress' \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REGISTRY_LOCATION'].privateIpAddress" \
+  --output tsv)
+
+# An FQDN is associated with each IP address in the IP configurations
+
+REGISTRY_FQDN=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry'].privateLinkConnectionProperties.fqdns" \
+  --output tsv)
+
+DATA_ENDPOINT_FQDN=$(az network nic show \
+  --ids $NETWORK_INTERFACE_ID \
+  --query "ipConfigurations[?privateLinkConnectionProperties.requiredMemberName=='registry_data_$REGISTRY_LOCATION'].privateLinkConnectionProperties.fqdns" \
   --output tsv)
 ```
 
@@ -186,7 +198,7 @@ az network private-dns record-set a add-record \
   --record-set-name $REGISTRY_NAME \
   --zone-name privatelink.azurecr.io \
   --resource-group $RESOURCE_GROUP \
-  --ipv4-address $PRIVATE_IP
+  --ipv4-address $REGISTRY_PRIVATE_IP
 
 # Specify registry region in data endpoint name
 az network private-dns record-set a add-record \
@@ -377,15 +389,12 @@ az acr private-endpoint-connection list \
 
 この記事の手順を使用してプライベート エンドポイント接続を設定すると、レジストリでは、レジストリに対する Azure RBAC アクセス許可を持つクライアントとサービスからの接続が自動的に受け入れられます。 エンドポイントを設定して、手動による接続の承認を要求することができます。 プライベート エンドポイント接続を承認および拒否する方法については、「[プライベート エンドポイント接続を管理する](../private-link/manage-private-endpoint.md)」を参照してください。
 
-## <a name="add-zone-records-for-replicas"></a>レプリカのゾーン レコードを追加する
-
-この記事で紹介したように、プライベート エンドポイント接続をレジストリに追加するとき、そのレジストリとそのデータ エンドポイントのために、レジストリが[レプリケート](container-registry-geo-replication.md)されるリージョンで `privatelink.azurecr.io` ゾーンの DNS レコードを作成します。 
-
-新しいレプリカを後で追加する場合、そのリージョンでデータ エンドポイントの新しいゾーン レコードを手動で追加する必要があります。 たとえば、場所 *northeurope* で *myregistry* のレプリカを作成する場合、`myregistry.northeurope.data.azurecr.io` のゾーン レコードを追加します。 手順については、この記事の「[プライベート ゾーンに DNS レコードを作成する](#create-dns-records-in-the-private-zone)」を参照してください。
+> [!IMPORTANT]
+> 現在、プライベート エンドポイントをレジストリから削除すると、プライベート ゾーンへの仮想ネットワークのリンクも削除することが必要になる場合があります。 リンクが削除されない場合、`unresolvable host` のようなエラーが表示されることがあります。
 
 ## <a name="dns-configuration-options"></a>DNS の構成オプション
 
-この例のプライベート エンドポイントは、基本仮想ネットワークに関連付けられているプライベート DNS ゾーンと統合されます。 このセットアップでは、Azure から提供される DNS サー日を直接利用し、レジストリのパブリック FQDN を仮想ネットワークのそのプライベート IP アドレスに解決します。 
+この例のプライベート エンドポイントは、基本仮想ネットワークに関連付けられているプライベート DNS ゾーンと統合されます。 このセットアップでは、Azure で提供される DNS サービスを直接利用して、レジストリのパブリック FQDN を仮想ネットワーク内のそのプライベート IP アドレスに解決します。 
 
 プライベート リンクでは、カスタム DNS ソリューションによるものも含め、プライベート ゾーンを使用する追加の DNS 構成シナリオがサポートされます。 たとえば、カスタム DNS ソリューションを仮想ネットワークにデプロイしたり、ネットワークのオンプレミスで VPN ゲートウェイまたは Azure ExpressRoute を利用して仮想ネットワークに接続したりします。 
 
@@ -393,6 +402,21 @@ az acr private-endpoint-connection list \
 
 > [!IMPORTANT]
 > 高可用性を実現するために複数のリージョンでプライベート エンドポイントを作成した場合は、リージョンごとに個別のリソース グループを使用し、仮想ネットワークとそれに関連付けられたプライベート DNS ゾーンをそこに配置することをお勧めします。 この構成を使用すると、同じプライベート DNS ゾーンの共有による予期しない DNS 解決が発生するのを防ぎます。
+
+### <a name="manually-configure-dns-records"></a>DNS レコードを手動で構成する
+
+一部のシナリオでは、Azure で提供されるプライベート ゾーンを使用するのではなく、プライベート ゾーンで DNS レコードを手動で構成することが必要になる場合があります。 必ず、各エンドポイント (レジストリ エンドポイント、レジストリのデータ エンドポイント、追加のリージョン レプリカ用のデータ エンドポイント) のそれぞれにレコードを作成してください。 すべてのレコードが構成されていないと、レジストリにアクセスできない可能性があります。
+
+> [!IMPORTANT]
+> 新しいレプリカを後で追加する場合、そのリージョンでデータ エンドポイントの新しい DNS レコードを手動で追加する必要があります。 たとえば、場所 northeurope で *myregistry* のレプリカを作成する場合、`myregistry.northeurope.data.azurecr.io` のレコードを追加します。
+
+DNS レコードの作成に必要な FQDN とプライベート IP アドレスは、プライベート エンドポイントのネットワーク インターフェイスに関連付けられます。 この情報を取得するには、Azure CLI またはポータルを使用します。
+
+* Azure CLI を使用して、[az network nic show][az-network-nic-show] コマンドを実行します。 コマンドの例については、この記事で前述した「[エンドポイントの IP 構成を取得する](#get-endpoint-ip-configuration)」を参照してください。
+
+* ポータルで、プライベート エンドポイントに移動し、 **[DNS の構成]** を選択します。
+
+DNS レコードを作成したら、レジストリの FQDN がそれぞれのプライベート IP アドレスに適切に解決されることを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 
@@ -407,7 +431,10 @@ az group delete --name $RESOURCE_GROUP
 ## <a name="next-steps"></a>次のステップ
 
 * Private Link の詳細については、[Azure Private Link](../private-link/private-link-overview.md) に関するドキュメントを参照してください。
+
 * クライアント ファイアウォールの内側からレジストリ アクセス規則を設定する必要がある場合は、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](container-registry-firewall-access-rules.md)」を参照してください。
+
+* [Azure プライベート エンドポイント接続に関する問題のトラブルシューティング](../private-link/troubleshoot-private-endpoint-connectivity.md)
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -419,28 +446,28 @@ az group delete --name $RESOURCE_GROUP
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
-[az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-create]: /cli/azure/acr#az_acr_create
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-acr-repository-show]: /cli/azure/acr/repository#az_acr_repository_show
+[az-acr-repository-list]: /cli/azure/acr/repository#az_acr_repository_list
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-private-endpoint-connection]: /cli/azure/acr/private-endpoint-connection
-[az-acr-private-endpoint-connection-list]: /cli/azure/acr/private-endpoint-connection#az-acr-private-endpoint-connection-list
-[az-acr-private-endpoint-connection-approve]: /cli/azure/acr/private-endpoint-connection#az-acr-private-endpoint-connection-approve
-[az-acr-update]: /cli/azure/acr#az-acr-update
+[az-acr-private-endpoint-connection-list]: /cli/azure/acr/private-endpoint-connection#az_acr_private-endpoint-connection-list
+[az-acr-private-endpoint-connection-approve]: /cli/azure/acr/private-endpoint-connection#az_acr_private_endpoint_connection_approve
+[az-acr-update]: /cli/azure/acr#az_acr_update
 [az-group-create]: /cli/azure/group
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-vm-create]: /cli/azure/vm#az-vm-create
-[az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet/#az-network-vnet-subnet-show
-[az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet/#az-network-vnet-subnet-update
-[az-network-vnet-list]: /cli/azure/network/vnet/#az-network-vnet-list
-[az-network-private-endpoint-create]: /cli/azure/network/private-endpoint#az-network-private-endpoint-create
-[az-network-private-endpoint-show]: /cli/azure/network/private-endpoint#az-network-private-endpoint-show
-[az-network-private-dns-zone-create]: /cli/azure/network/private-dns/zone#az-network-private-dns-zone-create
-[az-network-private-dns-link-vnet-create]: /cli/azure/network/private-dns/link/vnet#az-network-private-dns-link-vnet-create
-[az-network-private-dns-record-set-a-create]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-create
-[az-network-private-dns-record-set-a-add-record]: /cli/azure/network/private-dns/record-set/a#az-network-private-dns-record-set-a-add-record
-[az-resource-show]: /cli/azure/resource#az-resource-show
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-vm-create]: /cli/azure/vm#az_vm_create
+[az-network-vnet-subnet-show]: /cli/azure/network/vnet/subnet/#az_network_vnet_subnet_show
+[az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet/#az_network_vnet_subnet_update
+[az-network-vnet-list]: /cli/azure/network/vnet/#az_network_vnet_list
+[az-network-private-endpoint-create]: /cli/azure/network/private-endpoint#az_network_private_endpoint_create
+[az-network-private-endpoint-show]: /cli/azure/network/private-endpoint#az_network_private_endpoint_show
+[az-network-private-dns-zone-create]: /cli/azure/network/private-dns/zone#az_network_private_dns_zone_create
+[az-network-private-dns-link-vnet-create]: /cli/azure/network/private-dns/link/vnet#az_network_private_dns_link_vnet_create
+[az-network-private-dns-record-set-a-create]: /cli/azure/network/private-dns/record-set/a#az_network_private_dns_record_set_a_create
+[az-network-private-dns-record-set-a-add-record]: /cli/azure/network/private-dns/record-set/a#az_network_private_dns_record_set_a_add_record
+[az-network-nic-show]: /cli/azure/network/nic#az_network_nic_show
 [quickstart-portal]: container-registry-get-started-portal.md
 [quickstart-cli]: container-registry-get-started-azure-cli.md
 [azure-portal]: https://portal.azure.com

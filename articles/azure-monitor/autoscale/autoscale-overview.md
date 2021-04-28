@@ -4,12 +4,12 @@ description: Microsoft Azure の自動スケール
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 4727d562e21b92e58c8091f1161cf53198ff0b26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ac08addac4fb668b58ebb218ffb57bb920813
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101726004"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139689"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Microsoft Azure の自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
@@ -107,7 +107,7 @@ Azure Monitor 自動スケールは、[Virtual Machine Scale Sets](https://azure
 | API Management サービス|[Azure API Management インスタンスを自動的にスケーリングする](../../api-management/api-management-howto-autoscale.md)
 | Azure Data Explorer クラスター|[需要の変化に対応するために Azure Data Explorer のクラスターのスケーリングを管理する](/azure/data-explorer/manage-cluster-horizontal-scaling)|
 | Logic Apps |[統合サービス環境 (ISE) のキャパシティを追加する](../../logic-apps/ise-manage-integration-service-environment.md#add-ise-capacity)|
-| Spring Cloud |[マイクロサービス アプリケーションの自動スケーリングを設定する](../../spring-cloud/spring-cloud-tutorial-setup-autoscale.md)|
+| Spring Cloud |[マイクロサービス アプリケーションの自動スケーリングを設定する](../../spring-cloud/how-to-setup-autoscale.md)|
 | Service Bus |[Azure Service Bus 名前空間のメッセージング ユニットを自動的に更新する](../../service-bus-messaging/automate-update-messaging-units.md)|
 
 ## <a name="next-steps"></a>次のステップ

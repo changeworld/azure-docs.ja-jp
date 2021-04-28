@@ -3,23 +3,22 @@ title: Azure Key Vault とは? | Microsoft Docs
 description: Azure Key Vault で、クラウド アプリケーションやサービスで使われる暗号化キーとシークレットをどのように保護するかについて学習します。
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc00a4f1c1551932b4a30a8ef9b27cb1d4082667
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fafacda322a974d04a04bb5e79d1ee086eaf7a5
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071598"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753400"
 ---
 # <a name="azure-key-vault-basic-concepts"></a>Azure Key Vault の基本的な概念
 
-Azure Key Vault は、シークレットを安全に保管し、それにアクセスするためのクラウド サービスです。 シークレットは、API キー、パスワード、証明書、暗号化キーなど、アクセスを厳密に制御する必要がある任意のものです。 Key Vault サービスでは、ボールトおよび Managed HSM プールという 2 種類のコンテナーがサポートされています。 ボールトでは、ソフトウェアと HSM でバックアップされるキー、シークレット、証明書を保存できます。 Managed HSM プールは、HSM でバックアップされるキーにのみ対応しています。 詳細については、[Azure Key Vault REST API の概要](about-keys-secrets-certificates.md)に関するページを参照してください。
+Azure Key Vault は、シークレットを安全に保管し、それにアクセスするためのクラウド サービスです。 シークレットは、API キー、パスワード、証明書、暗号化キーなど、アクセスを厳密に制御する必要がある任意のものです。 Key Vault サービスでは、ボールトおよびマネージド ハードウェア セキュリティ モジュール (HSM) プールという 2 種類のコンテナーがサポートされています。 ボールトでは、ソフトウェアと HSM でバックアップされるキー、シークレット、証明書を保存できます。 Managed HSM プールは、HSM でバックアップされるキーにのみ対応しています。 詳細については、[Azure Key Vault REST API の概要](about-keys-secrets-certificates.md)に関するページを参照してください。
 
 その他の重要な用語を次に示します。
 
@@ -81,7 +80,7 @@ Azure サブスクリプションを持つユーザーはだれでも、Key Vaul
 
 ## <a name="next-steps"></a>次のステップ
 
-- [コンテナーをセキュリティで保護する](secure-your-key-vault.md)方法を学習する。
+- [コンテナーをセキュリティで保護する](security-overview.md)方法を学習する。
 - [Managed HSM プールをセキュリティで保護する](../managed-hsm/access-control.md)方法を学習する
 
 <!--Image references-->

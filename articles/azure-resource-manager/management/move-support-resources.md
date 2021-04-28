@@ -2,13 +2,13 @@
 title: リソースの種類別の移動操作のサポート
 description: 新しいリソース グループ、サブスクリプション、またはリージョンに移動できる Azure リソースの種類を一覧表示します。
 ms.topic: conceptual
-ms.date: 04/23/2021
-ms.openlocfilehash: 90fd683a12dcc9f9d63003f1fd87332db5f2b9aa
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 04/16/2021
+ms.openlocfilehash: a56a9e6f04aa800e16bbab0190ce7b41d87da590
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945991"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740090"
 ---
 # <a name="move-operation-support-for-resources"></a>リソースの操作のサポートの移動
 
@@ -112,7 +112,6 @@ ms.locfileid: "107945991"
 > - [Microsoft.ImportExport](#microsoftimportexport)
 > - [microsoft.insights](#microsoftinsights)
 > - [Microsoft.IoTCentral](#microsoftiotcentral)
-> - [Microsoft.IoTHub](#microsoftiothub)
 > - [Microsoft.IoTSpaces](#microsoftiotspaces)
 > - [Microsoft.KeyVault](#microsoftkeyvault)
 > - [Microsoft.Kubernetes](#microsoftkubernetes)
@@ -587,7 +586,7 @@ ms.locfileid: "107945991"
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
 > | accounts | はい | はい | いいえ |
-> | Cognitive Search | はい | はい | 手動の手順でサポートされています。<br/><br/> [Azure Cognitive Search サービスを別のリージョンに移行する](../../search/search-howto-move-across-regions.md)方法を参照してください。 |
+> | Cognitive Search | **保留中** | **保留中** | 手動の手順でサポートされています。<br/><br/> [Azure Cognitive Search サービスを別のリージョンに移行する](../../search/search-howto-move-across-regions.md)方法を参照してください。 |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 
@@ -1104,7 +1103,7 @@ ms.locfileid: "107945991"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | accounts | はい | はい | いいえ。 [詳細については、こちらを参照してください](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。 |
+> | accounts | **保留中** | **保留中** | いいえ。 [詳細については、こちらを参照してください](../../azure-monitor/faq.md#how-do-i-move-an-application-insights-resource-to-a-new-region)。 |
 > | actiongroups | はい | はい | いいえ |
 > | activitylogalerts | いいえ | いいえ | いいえ |
 > | alertrules | はい | はい | いいえ |
@@ -1156,7 +1155,7 @@ ms.locfileid: "107945991"
 > [!div class="mx-tableFixed"]
 > | リソースの種類 | Resource group | サブスクリプション | リージョンの移動 |
 > | ------------- | ----------- | ---------- | ----------- |
-> | iothub | はい | はい | はい (ハブを複製) <br/><br/> [IoT ハブを別のリージョンに複製する](../../iot-hub/iot-hub-how-to-clone.md) |
+> | iothub | **保留中** | **保留中** | はい (ハブを複製) <br/><br/> [IoT ハブを別のリージョンに複製する](../../iot-hub/iot-hub-how-to-clone.md) |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
@@ -1434,9 +1433,9 @@ ms.locfileid: "107945991"
 > | natgateways | いいえ | いいえ | いいえ |
 > | networkexperimentprofiles | いいえ | いいえ | いいえ |
 > | networkintentpolicies | はい | はい | いいえ |
-> | networkinterfaces | はい | Yes | はい <br/><br/> NIC を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 |
+> | networkinterfaces | はい | はい | はい <br/><br/> NIC を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 |
 > | networkprofiles | いいえ | いいえ | いいえ |
-> | networksecuritygroups | はい | Yes | はい <br/><br/> ネットワーク セキュリティ グループ (NSG) を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 |
+> | networksecuritygroups | はい | はい | はい <br/><br/> ネットワーク セキュリティ グループ (NSG) を移動するには [Azure Resource Mover](../../resource-mover/tutorial-move-region-virtual-machines.md) を使用します。 |
 > | networkwatchers | いいえ | いいえ | いいえ |
 > | networkwatchers/connectionmonitors | はい | いいえ | いいえ |
 > | networkwatchers/flowlogs | はい | いいえ | いいえ |

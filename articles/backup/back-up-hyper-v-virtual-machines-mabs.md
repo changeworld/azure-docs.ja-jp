@@ -2,13 +2,13 @@
 title: MABS で Hyper-V 仮想マシンをバックアップする
 description: この記事では、Microsoft Azure Backup Server (MABS) を使用した仮想マシンのバックアップと回復の手順について説明します。
 ms.topic: conceptual
-ms.date: 07/18/2019
-ms.openlocfilehash: c1c894df29659dce312d092f1aa3ea5d584e248a
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/20/2021
+ms.openlocfilehash: b4de791269161b477fc07d6539feaa975fdd72ad
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107212"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740000"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Backup Server を使用して Hyper-V 仮想マシンをバックアップする
 
@@ -126,7 +126,7 @@ Windows Server 2012 R2 以降で MABS が実行されている場合は、レプ
 
 バックアップした仮想マシンを回復できる場合は、回復ウィザードを使用して仮想マシンと特定の回復ポイントを選択します。 回復ウィザードを開いて仮想マシンを回復するには、次の手順を実行します。
 
-1. MABS 管理者コンソールで、VM の名前を入力するか、保護されている項目の一覧を展開して回復する VM を選択します。
+1. MABS 管理者コンソールで、VM の名前を入力するか、保護されている項目の一覧を展開し、 **[保護されるすべての HyperV データ]** に移動して、回復する VM を選択します。
 
 2. **[回復ポイント]** ウィンドウのカレンダーで、任意の日付を選択して使用できる回復ポイントを確認します。 次に、 **[パス]** ウィンドウで、回復ウィザードで使用する回復ポイントを選択します。
 

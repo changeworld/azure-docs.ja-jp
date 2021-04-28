@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 03/25/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: ed729dde51316b9a67f396e3f7de3d7d9f6d4568
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 3350924bbf064009523c9b6892856a9c7d4ff818
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378790"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129083"
 ---
 # <a name="use-a-managed-identity-to-connect-azure-sql-database-to-an-azure-spring-cloud-app"></a>マネージド ID を使用して Azure SQL Database を Azure Spring Cloud アプリに接続する
 
@@ -24,8 +24,8 @@ ms.locfileid: "107378790"
 
 ## <a name="prerequisites"></a>前提条件
 この例では、次のリソースを使用します。
-* [Spring Data JPA のチュートリアル](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server)に従って Azure SQL Database をプロビジョニングし、Java アプリでローカルに動作させる
-* [Azure Spring Cloud システムで割り当てられたマネージド ID のチュートリアル](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-howto-enable-system-assigned-managed-identity)に従い、MI を有効にして Azure Spring Cloud アプリをプロビジョニングする
+* [Spring Data JPA のチュートリアル](/azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server)に従って Azure SQL Database をプロビジョニングし、Java アプリでローカルに動作させる
+* [Azure Spring Cloud システムで割り当てられたマネージド ID のチュートリアル](./how-to-enable-system-assigned-managed-identity.md)に従い、MI を有効にして Azure Spring Cloud アプリをプロビジョニングする
 
 ## <a name="grant-permission-to-the-managed-identity"></a>マネージド ID にアクセス許可を付与する
 SQL サーバーに接続して、次の SQL クエリを実行します。
@@ -57,6 +57,6 @@ spring.datasource.url=jdbc:sqlserver://$AZ_DATABASE_NAME.database.windows.net:14
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Spring Cloud でマネージド ID を使用して Storage Blob にアクセスする方法](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/managed-identity-storage-blob)
-* [Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法](./spring-cloud-howto-enable-system-assigned-managed-identity.md)
+* [Azure Spring Cloud アプリケーションのシステム割り当てマネージド ID を有効にする方法](./how-to-enable-system-assigned-managed-identity.md)
 * [Azure リソース用マネージド ID の詳細](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/overview.md)
-* [GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する](./spring-cloud-github-actions-key-vault.md)
+* [GitHub Actions で Key Vault を使用して Azure Spring Cloud を認証する](./github-actions-key-vault.md)

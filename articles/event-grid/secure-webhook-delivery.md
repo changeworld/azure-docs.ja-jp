@@ -3,12 +3,12 @@ title: Azure Event Grid の Azure AD を使用して WebHook 配信をセキュ�
 description: Azure Event Grid を使用して Azure Active Directory によって保護された HTTPS エンドポイントにイベントを配信する方法について説明します
 ms.topic: how-to
 ms.date: 04/13/2021
-ms.openlocfilehash: 0d92b89b1df6b6969491d39b04764f15b7a510d1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6a0f9059e17d96d497b425abc9749e69c5ab4d41
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125807"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575549"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Azure Active Directory で保護されたエンドポイントにイベントを発行する
 この記事では、Azure Active Directory (Azure AD) を使用して、**イベント サブスクリプション** と **Webhook エンドポイント** 間の接続をセキュリティで保護する方法について説明します。 Azure AD アプリケーションとサービス プリンシパルの概要については、[Microsoft ID プラットフォーム (v2.0) の概要](../active-directory/develop/v2-overview.md)に関するページを参照してください。
@@ -20,7 +20,7 @@ ms.locfileid: "108125807"
 
 
 ## <a name="create-an-azure-ad-application"></a>Azure AD アプリケーションを作成する
-保護されたエンドポイント用の Azure AD アプリケーションを作成して、Webhook を Azure AD に登録します。 「[シナリオ: 保護された Web API](../active-directory/develop/scenario-protected-web-api-overview.md)」を参照してください。 デーモン アプリで呼び出されるよう、保護された API を構成します。
+保護されたエンドポイント用の Azure AD アプリケーションを作成して、Webhook を Azure AD に登録します。 「[シナリオ: 保護された Web API](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-overview)」を参照してください。 デーモン アプリで呼び出されるよう、保護された API を構成します。
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Event Grid で Azure AD アプリケーションを使用できるようにします
 このセクションでは、Event Grid を有効にして Azure AD アプリケーションを使用する方法を紹介します。 

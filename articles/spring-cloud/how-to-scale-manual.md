@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/06/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 5632f9a6126615255306cc89425bd08a9ffa9753
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 97261755f55f9193d0169e91597318928bb45b97
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877536"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134701"
 ---
 # <a name="scale-an-application-in-azure-spring-cloud"></a>Azure Spring Cloud でアプリケーションをスケーリングする
 
@@ -29,7 +29,7 @@ ms.locfileid: "104877536"
 以下の手順に従うためには、次の要件を満たす必要があります。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
-* デプロイされた Azure Spring Cloud サービス インスタンス。  [Azure CLI を使用したアプリのデプロイに関するクイックスタート](spring-cloud-quickstart.md)に従って作業を開始してください。
+* デプロイされた Azure Spring Cloud サービス インスタンス。  [Azure CLI を使用したアプリのデプロイに関するクイックスタート](./quickstart.md)に従って作業を開始してください。
 * サービス インスタンスで既に作成してある少なくとも 1 つのアプリケーション。
 
 ## <a name="navigate-to-the-scale-page-in-the-azure-portal"></a>Azure portal で [スケール] ページに移動する
@@ -63,11 +63,11 @@ ms.locfileid: "104877536"
 数秒後、行った変更が **[概要]** ページに表示され、詳細は **[アプリケーション インスタンス]** タブで確認できるようになります。スケーリングには、コードの変更や再デプロイは不要です。
 
 ## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
-Basic レベルをご利用の場合で、かつ、少なくとも 1 つの[制限](spring-cloud-quotas.md)によって制約を受けている場合は、Standard レベルにアップグレードしてください。 そのためには、まず [Standard レベル] 列を選択し、 **[アップグレード]** ボタンをクリックして、[価格レベル] メニューに移動します。
+Basic レベルをご利用の場合で、かつ、少なくとも 1 つの[制限](./quotas.md)によって制約を受けている場合は、Standard レベルにアップグレードしてください。 そのためには、まず [Standard レベル] 列を選択し、 **[アップグレード]** ボタンをクリックして、[価格レベル] メニューに移動します。
 
 ## <a name="next-steps"></a>次のステップ
 
-この例では、Azure Spring Cloud アプリケーションを手動でスケーリングする方法について説明しました。 アラートを設定してアプリケーションを監視する方法については、[自動スケーリングの設定](spring-cloud-tutorial-setup-autoscale.md)に関するページをご覧ください。
+この例では、Azure Spring Cloud アプリケーションを手動でスケーリングする方法について説明しました。 アラートを設定してアプリケーションを監視する方法については、[自動スケーリングの設定](./how-to-setup-autoscale.md)に関するページをご覧ください。
 
 > [!div class="nextstepaction"]
-> [アラートを設定する方法](spring-cloud-tutorial-alerts-action-groups.md)
+> [アラートを設定する方法](./tutorial-alerts-action-groups.md)

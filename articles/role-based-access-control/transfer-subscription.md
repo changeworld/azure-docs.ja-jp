@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 72dc92ae211034e2a49bc77f60880f17ab15dec7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580123"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868179"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure サブスクリプションを別の Azure AD ディレクトリに移転する
 
@@ -116,7 +116,7 @@ ms.locfileid: "106580123"
 
 ### <a name="install-the-azure-resource-graph-extension"></a>Azure Resource Graph 拡張機能をインストールする
 
- [Azure Resource Graph](../governance/resource-graph/index.yml) の Azure CLI 拡張機能である *resource-graph* を使用すると、[az graph](/cli/azure/ext/resource-graph/graph) コマンドを使用して、Azure Resource Manager によって管理されているリソースを照会できます。 このコマンドは、後の手順で使用します。
+ [Azure Resource Graph](../governance/resource-graph/index.yml) の Azure CLI 拡張機能である *resource-graph* を使用すると、[az graph](/cli/azure/graph) コマンドを使用して、Azure Resource Manager によって管理されているリソースを照会できます。 このコマンドは、後の手順で使用します。
 
 1. [az extension list](/cli/azure/extension#az_extension_list) を使用して、*resource-graph* 拡張機能がインストールされているかどうかを確認します。
 
@@ -233,7 +233,7 @@ ms.locfileid: "106580123"
 
 ### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Azure SQL データベースと Azure AD 認証の一覧を表示する
 
-- Azure AD 認証が統合されている Azure SQL データベースを使用しているかどうかを確認するには、[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) と [az graph](/cli/azure/ext/resource-graph/graph) 拡張機能を使用します。 詳細については、「[SQL による Azure Active Directory 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照してください。
+- Azure AD 認証が統合されている Azure SQL データベースを使用しているかどうかを確認するには、[az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) と [az graph](/cli/azure/graph) 拡張機能を使用します。 詳細については、「[SQL による Azure Active Directory 認証の構成と管理](../azure-sql/database/authentication-aad-configure.md)」を参照してください。
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
@@ -255,7 +255,7 @@ ms.locfileid: "106580123"
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. [az graph](/cli/azure/ext/resource-graph/graph) 拡張機能を使用して、Azure AD ディレクトリの既知の依存関係がある他の Azure リソースの一覧を表示します。
+1. [az graph](/cli/azure/graph) 拡張機能を使用して、Azure AD ディレクトリの既知の依存関係がある他の Azure リソースの一覧を表示します。
 
     ```azurecli
     az graph query -q \

@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: c5dfd442bb52a5b1d319bd0a40b656d549134e7e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612327"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737670"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Azure Synapse Analytics で Synapse Studio ノートブックを作成、開発、管理する
 
@@ -40,7 +40,6 @@ Synapse チームは、Microsoft のお客様に一貫したノートブック �
 |%load| サポートされていません |&#9745;|
 |%%html| サポートされていません |&#9745;|
 |ドラッグ アンド ドロップでセルを移動する| サポートされていません |&#9745;|
-|Display() の出力を永続化する|&#9745;| 使用できません |
 |ツールバー ボタンを使用してテキスト セルを書式設定する|&#9745;| 使用できません |
 |セルの操作を元に戻す| &#9745;| 使用できません |
 
@@ -151,6 +150,18 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 |SparkSQL|はい|はい|-|-|-|-|-|-|
 |.NET for Spark (C#)|はい|-|-|-|-|-|-|-|
 
+
+
+### <a name="code-snippets"></a>コード スニペット
+
+Azure Synapse Studio ノートブックには、Spark セッションの構成、Spark DataFrame としてのデータの読み取り、matplotlib でのグラフの描画など、一般的に使用されるコード パターンの入力を容易にするコード スニペットが用意されています。
+
+スニペットは、他の候補と一緒に [IntelliSense](#ide-style-intellisense) に表示されます。 コード スニペットの内容は、コード セル言語に準拠したものとなります。 使用可能なスニペットを確認するには、「**Snippet**」と入力するか、コード セル エディターのスニペットのタイトルに表示されるキーワードを入力します。 たとえば、「**read**」と入力すると、さまざまなデータ ソースからデータを読み取るスニペットの一覧が表示されます。
+
+![Synapse のコード スニペット](./media/apache-spark-development-using-notebooks/synapse-code-snippets.gif#lightbox)
+
+
+
 ### <a name="format-text-cell-with-toolbar-buttons"></a>ツールバー ボタンを使用してテキスト セルを書式設定する
 
 # <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
@@ -182,7 +193,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 # <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 
-省略記号 (...) を選択して、右端にある追加のセル アクション メニューにアクセスします。 その後、 **[Move cell up]\(セルを上に移動\)** または **[Move cell down]\(セルを下に移動\)** を選択して、現在のセルを移動します。 
+省略記号 (...) を選択して、右端にある別のセル アクション メニューにアクセスします。 その後、 **[Move cell up]\(セルを上に移動\)** または **[Move cell down]\(セルを下に移動\)** を選択して、現在のセルを移動します。 
 
 [コマンド モードのショートカット キーを使用](#shortcut-keys-under-command-mode)することもできます。 現在のセルを上に移動するには、**Ctrl + Alt + ↑** キーを押します。 現在のセルを下に移動するには、**Ctrl + Alt + ↓** キーを押します。
 
@@ -199,7 +210,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 # <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 
-セルを削除するには、省略記号 (...) を選択して、右端にある追加のセル アクション メニューにアクセスし、 **[セルの削除]** を選択します。 
+セルを削除するには、省略記号 (...) を選択して、右端にある別のセル アクション メニューにアクセスし、 **[セルの削除]** を選択します。 
 
 [コマンド モードのショートカット キーを使用](#shortcut-keys-under-command-mode)することもできます。 現在のセルを削除するには、**D、D** キーを押します。
   
@@ -274,7 +285,7 @@ IntelliSense の機能は、言語によって異なる成熟度レベルにあ�
 
 # <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 
-右端にある追加のセル アクション メニューにアクセスするには、省略記号 ( **...** ) を選択します。その後、 **[Run cells above]\(上のセルの実行\)** を選択して、現在のセルの上にあるものをすべて順に実行します。 現在のセルの下にあるものをすべて実行するには、 **[Run cells below]\(下のセルの実行\)** を選択します。
+右端にある別のセル アクション メニューにアクセスするには、省略記号 ( **...** ) を選択します。次に、 **[Run cells above]\(上のセルの実行\)** を選択して、現在のセルの上にあるものをすべて順に実行します。 現在のセルの下にあるものをすべて実行するには、 **[Run cells below]\(下のセルの実行\)** を選択します。
 
    ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -468,7 +479,7 @@ Azure Synapse Studio ノートブックでは、使い慣れた Jupyter マジ�
 
 # <a name="classical-notebook"></a>[従来のノートブック](#tab/classical)
 
-ノートブックをパラメーター化するには、省略記号 (...) を選択して、右端にある追加のセル アクション メニューにアクセスします。 次に、 **[パラメーター セルを切り替えます]** を選択して、セルをパラメーター セルとして指定します。
+ノートブックをパラメーター化するには、省略記号 (...) を選択して、右端にある別のセル アクション メニューにアクセスします。 次に、 **[パラメーター セルを切り替えます]** を選択して、セルをパラメーター セルとして指定します。
 
 ![toggle-parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 

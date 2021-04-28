@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 493752a3857b80b43668b6bf1b20480604442955
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 583124e9e3ca657ee13e4726eda981ae26022856
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567997"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138519"
 ---
 # <a name="tutorial-map-an-existing-custom-domain-to-azure-spring-cloud"></a>チュートリアル: 既存のカスタム ドメインを Azure Spring Cloud にマップする
 
@@ -23,7 +23,7 @@ ms.locfileid: "107567997"
 証明書は、Web トラフィックを暗号化します。 これらの TLS/SSL 証明書は、Azure Key Vault に格納できます。 
 
 ## <a name="prerequisites"></a>前提条件
-* Azure Spring Cloud にデプロイされたアプリケーション (「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」を参照するか、既存のアプリを使用してください)。
+* Azure Spring Cloud にデプロイされたアプリケーション (「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](./quickstart.md)」を参照するか、既存のアプリを使用してください)。
 * GoDaddy などのドメイン プロバイダーの DNS レジストリへのアクセス権を持つドメイン名。
 * サードパーティ プロバイダーからのプライベート証明書 (つまり自己署名証明書)。 証明書はドメインと一致している必要があります。
 * [Azure Key Vault](../key-vault/general/overview.md) のデプロイ済みインスタンス
@@ -164,7 +164,7 @@ DNS プロバイダーに移動し、CNAME レコードを追加して、ドメ�
 ![DNS レコード ページ](./media/custom-dns-tutorial/dns-records.png)
 
 ## <a name="map-your-custom-domain-to-azure-spring-cloud-app"></a>Azure Spring Cloud アプリへのカスタム ドメインのマップ
-Azure Spring Cloud にアプリケーションがない場合は、「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](./spring-cloud-quickstart.md)」の手順に従ってください。
+Azure Spring Cloud にアプリケーションがない場合は、「[クイックスタート: Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](./quickstart.md)」の手順に従ってください。
 
 #### <a name="portal"></a>[ポータル](#tab/Azure-portal)
 アプリケーション ページに移動します。
@@ -234,4 +234,4 @@ az spring-cloud app update -n <app name> --resource-group <resource group name> 
 ## <a name="see-also"></a>関連項目
 * [Azure Key Vault とは](../key-vault/general/overview.md)
 * [証明書のインポート](../key-vault/certificates/certificate-scenarios.md#import-a-certificate)
-* [Azure CLI を使用して Spring Cloud アプリを起動する](./spring-cloud-quickstart.md)
+* [Azure CLI を使用して Spring Cloud アプリを起動する](./quickstart.md)
