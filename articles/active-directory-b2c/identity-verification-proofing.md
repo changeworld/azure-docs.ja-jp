@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/23/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: d6e553e93d97f02c618fa33a41b939f90e9042c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 536c63fec9958823191f3b01ad2142022832ef23
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027481"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124385"
 ---
 # <a name="identity-verification-and-proofing-partners"></a>本人確認と証明パートナー
 
@@ -38,9 +38,9 @@ Microsoft は、次の ISV パートナーと提携しています。
 
 ## <a name="additional-information"></a>関連情報
 
-- [Azure AD B2C のカスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Azure AD B2C のカスタム ポリシー](./custom-policy-overview.md)
 
-- [Azure AD B2C のカスタム ポリシーの概要](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Azure AD B2C のカスタム ポリシーの概要](./tutorial-create-user-flows.md?pivots=b2c-custom-policy&tabs=applications)
 
 ## <a name="next-steps"></a>次のステップ
 

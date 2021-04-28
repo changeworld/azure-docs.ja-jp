@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f515725ea0f306546039b92d953254a093b15b8b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 72e27e79bc1eea7633d7594f1f72e31abbfd7744
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106065176"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136519"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-database"></a>移行の概要: SQL Server から Azure SQL Database へ
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -26,11 +26,11 @@ SQL Server データベースを Azure SQL Database に移行するためのオ�
 
 - Azure Virtual Machines 上の SQL Server。  
 - アマゾン ウェブ サービス (AWS) Elastic Compute Cloud (EC2)。
-- AWS Relational Database Service (RDS)。
+- AWS RDS (Relational Database Service)。
 - Google Cloud Platform (GCP) の Compute Engine。  
 - GCP の Cloud SQL for SQL Server。 
 
-その他の移行ガイドについては、[データベースの移行](https://docs.microsoft.com/data-migration)に関するページを参照してください。 
+その他の移行ガイドについては、[データベースの移行](/data-migration)に関するページを参照してください。 
 
 ## <a name="overview"></a>概要
 
@@ -116,7 +116,7 @@ Azure SQL Database の適切なデプロイ モデルとサービス レベル�
 
 ## <a name="compare-migration-options"></a>移行オプションを比較する
 
-移行オプションを比較して、ご自身のビジネス ニーズに合ったパスを選択します。 
+移行オプションを比較して、ビジネス ニーズに合ったパスを選択します。 
 
 次の表では、推奨される移行オプションを比較しています。 
 

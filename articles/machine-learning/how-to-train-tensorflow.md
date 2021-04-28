@@ -8,14 +8,13 @@ ms.subservice: core
 ms.author: minxia
 author: mx-iao
 ms.date: 09/28/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 583f588004f41fc07037e7f5e4ce75538a581c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: 297721d9801385d9fdbff708c723c5b6e02949ad
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518332"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107950606"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な TensorFlow モデルをトレーニングする
 
@@ -23,7 +22,7 @@ ms.locfileid: "102518332"
 
 この例では、ディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類するための TensorFlow モデルをトレーニングして登録します。
 
-TensorFlow モデルを一から開発する場合でも、[既存のモデル](how-to-deploy-existing-model.md)をクラウドに取り込む場合でも、Azure Machine Learning を使用してオープンソースのトレーニング ジョブをスケールアウトし、運用グレードのモデルの構築、デプロイ、バージョン管理、監視を行うことができます。
+TensorFlow モデルを一から開発する場合でも、[既存のモデル](how-to-deploy-and-where.md)をクラウドに取り込む場合でも、Azure Machine Learning を使用してオープンソースのトレーニング ジョブをスケールアウトし、運用グレードのモデルの構築、デプロイ、バージョン管理、監視を行うことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -361,6 +360,6 @@ service = Model.deploy(ws, "tensorflow-web-service", [model])
 
 この記事では、TensorFlow モデルをトレーニングして登録し、デプロイのオプションについて学習しました。 Azure Machine Learning の詳細については、以下の他の記事をご覧ください。
 
-* [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
+* [トレーニング中に実行メトリクスを追跡する](how-to-log-view-metrics.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 * [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

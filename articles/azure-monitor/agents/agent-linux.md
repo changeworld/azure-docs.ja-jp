@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 5171cefdb82b958ae8148ff63f1daef5f67916c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 36b54cc9b4440f883b4335fc6ad2ca069a5b19db
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105044959"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137583"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -71,16 +71,16 @@ python2 実行可能ファイルに *python* という別名を付ける必要�
     ```
 
 ## <a name="supported-linux-hardening"></a>Linux のセキュリティ強化のサポート
-OMS エージェントでは、Linux のカスタマイズが制限されています。 
+OMS エージェントでは、Linux のカスタマイズおよびセキュリティ強化サポートが制限されています。
 
 現在、以下がサポートされています。 
 - FIPS
 
-以下は考慮されていますが、まだサポートされていません。
+次の要素はサポートされていません。
 - CIS
 - SELINUX
 
-その他のセキュリティ強化とカスタマイズの手段は、OMS エージェントではサポートされておらず、その計画もありません。  
+[Azure Monitor エージェント](./azure-monitor-agent-overview.md)では、CIS と SELINUX のセキュリティ強化のサポートが予定されています。 その他のセキュリティ強化とカスタマイズの手段は、OMS エージェントではサポートされておらず、その計画もありません。  
 
 ## <a name="agent-prerequisites"></a>エージェントの前提条件
 

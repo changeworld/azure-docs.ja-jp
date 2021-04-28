@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.custom: subject-monitoring
 ms.date: 10/01/2020
-ms.openlocfilehash: a18ee02b5e91b628a25655949a652270bd7436c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e5fd0fdd5a6f9a4a7537a844b096efdfef253638
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100575152"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816856"
 ---
 # <a name="monitor-azure-machine-learning"></a>Azure Machine Learning の監視
 
@@ -24,8 +24,8 @@ Azure リソースに依存するクリティカルなアプリケーション�
 > [!TIP]
 > このドキュメントは、Azure Machine Learning service と関連する Azure サービスの監視について説明するものであり、記載されている情報は主に "__管理者__" を対象としています。 "__データ サイエンティスト__" または "__開発者__" の方で、"*モデルのトレーニング実行*" に固有の情報を監視したい場合は、次のドキュメントを参照してください。
 >
-> * [トレーニングの実行の開始、監視、およびキャンセル](how-to-manage-runs.md)
-> * [トレーニング実行のメトリックを記録する](how-to-track-experiments.md)
+> * [トレーニングの実行の開始、監視、およびキャンセル](how-to-track-monitor-analyze-runs.md)
+> * [トレーニング実行のメトリックを記録する](how-to-log-view-metrics.md)
 > * [MLflow を使用して実験を追跡する](how-to-use-mlflow.md)
 > * [TensorBoard を使用して実行を視覚化する](how-to-monitor-tensorboard.md)
 >

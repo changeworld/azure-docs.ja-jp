@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fea8f52ebf40ba8195de134098693f90315bb384
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 10742ec277f5742067c432a2823cbb7592e6a752
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103461421"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874697"
 ---
 # <a name="tutorial-develop-iot-edge-modules-with-linux-containers"></a>チュートリアル: Linux コンテナーを使用して IoT Edge モジュールを開発する
 
@@ -44,7 +44,7 @@ Visual Studio Code を使用して、コードを開発し、IoT Edge を実行�
 * コンテナー エンジンを実行できるほとんどのオペレーティング システムを使用して、Linux デバイス用の IoT Edge モジュールを開発することができます。 このチュートリアルでは、Windows コンピューターを使用しますが、macOS または Linux での既知の相違点を指摘します。
 * このチュートリアルの後半でモジュール テンプレート パッケージをプルするために、[Git](https://git-scm.com/) をインストールします。  
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。
 
 Azure IoT Edge デバイス:
 

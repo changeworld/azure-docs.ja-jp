@@ -6,16 +6,16 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: 4c344dc09ad6c8aa4b2aa431952fc271d946b60d
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 9a18609ab0dc41031a22db6d8b21c1fff83920f2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787312"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137312"
 ---
 # <a name="tutorial-pull-azure-industrial-iot-data-into-adx"></a>チュートリアル: Azure Industrial IoT データを ADX にプルする
 
-Azure Industrial IoT (IIoT) プラットフォームは、エッジ モジュールおよびクラウド マイクロサービスを複数の Azure PaaS サービスと組み合わせて、産業用資産検出の機能を提供し、OPC UA を使用してこれらの資産からデータを収集します。 [Azure Data Explorer (ADX)](https://docs.microsoft.com/azure/data-explorer) は、Data Analytics の機能を備えた、IIoT データの本来の宛先です。これを使用すると、IoT Hub に接続されている OPC UA サーバーから OPC Publisher を介して、取り込まれたデータに対して柔軟なクエリを実行できます。 ADX クラスターは IoT Hub から直接データを取り込むことができますが、マイクロサービスの完全なデプロイを使用する場合に提供されるイベント ハブにデータを配置する前に、IIoT プラットフォームはそれをさらに処理して、より役立つものにします (IIoT プラットフォーム アーキテクチャを参照してください)。
+Azure Industrial IoT (IIoT) プラットフォームは、エッジ モジュールおよびクラウド マイクロサービスを複数の Azure PaaS サービスと組み合わせて、産業用資産検出の機能を提供し、OPC UA を使用してこれらの資産からデータを収集します。 [Azure Data Explorer (ADX)](/azure/data-explorer) は、Data Analytics の機能を備えた、IIoT データの本来の宛先です。これを使用すると、IoT Hub に接続されている OPC UA サーバーから OPC Publisher を介して、取り込まれたデータに対して柔軟なクエリを実行できます。 ADX クラスターは IoT Hub から直接データを取り込むことができますが、マイクロサービスの完全なデプロイを使用する場合に提供されるイベント ハブにデータを配置する前に、IIoT プラットフォームはそれをさらに処理して、より役立つものにします (IIoT プラットフォーム アーキテクチャを参照してください)。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -31,13 +31,13 @@ Azure Industrial IoT (IIoT) プラットフォームは、エッジ モジュー
 ![構造体](media/tutorial-iiot-data-adx/industrial-iot-in-azure-data-explorer-pic-1.png)
 
 データを ADX クラスターで使用できるようにして、データのクエリを効率的に実行するために必要な手順を以下に示します。  
-1. ADX クラスターを作成します。 IIoT プラットフォームで既にプロビジョニングされている ADX クラスターがない場合、または別のクラスターを使用する場合は、[こちら](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-cluster)の手順に従ってください。 
-2. [こちら](https://docs.microsoft.com/azure/data-explorer/ingest-data-streaming#enable-streaming-ingestion-on-your-cluster)の説明に従って、ADX クラスターでストリーミング インジェストを有効にします。 
-3. [こちら](https://docs.microsoft.com/azure/data-explorer/create-cluster-database-portal#create-a-database)の手順に従って、ADX データベースを作成します。
+1. ADX クラスターを作成します。 IIoT プラットフォームで既にプロビジョニングされている ADX クラスターがない場合、または別のクラスターを使用する場合は、[こちら](/azure/data-explorer/create-cluster-database-portal#create-a-cluster)の手順に従ってください。 
+2. [こちら](/azure/data-explorer/ingest-data-streaming#enable-streaming-ingestion-on-your-cluster)の説明に従って、ADX クラスターでストリーミング インジェストを有効にします。 
+3. [こちら](/azure/data-explorer/create-cluster-database-portal#create-a-database)の手順に従って、ADX データベースを作成します。
 
-次の手順では、[ADX Web インターフェイス](https://docs.microsoft.com/azure/data-explorer/web-query-data)を使用して、必要なクエリを実行します。 リンクの説明に従って、必ずクラスターを Web インターフェイスに追加してください。  
+次の手順では、[ADX Web インターフェイス](/azure/data-explorer/web-query-data)を使用して、必要なクエリを実行します。 リンクの説明に従って、必ずクラスターを Web インターフェイスに追加してください。  
  
-4. 取り込まれたデータを格納するテーブルを ADX に作成します。  MonitoredItemMessageModel クラスを使用して ADX テーブルのスキーマを定義できますが、最初に、[動的](https://docs.microsoft.com/azure/data-explorer/kusto/query/scalar-data-types/dynamic)な型の列を 1 つ含むステージング テーブルにデータを取り込むことをお勧めします。 これにより、データを処理して複数のユース ケースのニーズに対応する他のテーブルに格納する (他のデータ ソースと結合する可能性があります) 際の柔軟性が向上します。 次の ADX クエリでは、1 つの列 'payload' を含むステージング テーブル 'iiot_stage' が作成されます。
+4. 取り込まれたデータを格納するテーブルを ADX に作成します。  MonitoredItemMessageModel クラスを使用して ADX テーブルのスキーマを定義できますが、最初に、[動的](/azure/data-explorer/kusto/query/scalar-data-types/dynamic)な型の列を 1 つ含むステージング テーブルにデータを取り込むことをお勧めします。 これにより、データを処理して複数のユース ケースのニーズに対応する他のテーブルに格納する (他のデータ ソースと結合する可能性があります) 際の柔軟性が向上します。 次の ADX クエリでは、1 つの列 'payload' を含むステージング テーブル 'iiot_stage' が作成されます。
 
 ```
 .create table ['iiot_stage']  (['payload']:dynamic)
@@ -50,7 +50,7 @@ Azure Industrial IoT (IIoT) プラットフォームは、エッジ モジュー
 ```
 
 5. これで、テーブルでイベント ハブからのデータを受信する準備ができました。 
-6. [こちら](https://docs.microsoft.com/azure/data-explorer/ingest-data-event-hub#connect-to-the-event-hub)の手順を使用して、イベント ハブを ADX クラスターに接続し、ステージング テーブルへのデータの取り込みを開始します。 IIoT プラットフォームによってプロビジョニングされたイベントハブが既にあるため、接続の作成のみ行う必要があります。  
+6. [こちら](/azure/data-explorer/ingest-data-event-hub#connect-to-the-event-hub)の手順を使用して、イベント ハブを ADX クラスターに接続し、ステージング テーブルへのデータの取り込みを開始します。 IIoT プラットフォームによってプロビジョニングされたイベントハブが既にあるため、接続の作成のみ行う必要があります。  
 7. 接続が検証されると、テーブルへのデータの送信が開始されます。少し時間が経過した後に、テーブル内のデータの調査を開始できます。 ADX Web インターフェイスで次のクエリを使用して、10 行のデータ サンプルを確認します。 ここで、ペイロード内のデータが、前述の MonitoredItemMessageModel クラスにどのくらい似ているかを確認できます。
 
 ![クエリ](media/tutorial-iiot-data-adx/industrial-iot-in-azure-data-explorer-pic-2.png)
@@ -95,9 +95,9 @@ iiot_stage
 }
 ```
 
-ADX でのデータ型のマッピングの詳細については、[こちら](https://docs.microsoft.com/azure/data-explorer/kusto/query/scalar-data-types/dynamic)を参照してください。ADX の関数については、[こちら](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/stored-functions)から開始できます。
+ADX でのデータ型のマッピングの詳細については、[こちら](/azure/data-explorer/kusto/query/scalar-data-types/dynamic)を参照してください。ADX の関数については、[こちら](/azure/data-explorer/kusto/query/schema-entities/stored-functions)から開始できます。
  
-11. 更新ポリシーを使用して、前の手順の関数を解析済みのテーブルに適用します。 更新[ポリシー](https://docs.microsoft.com/azure/data-explorer/kusto/management/updatepolicy)は、ソース テーブルに新しいデータが挿入されるたびに、ソース テーブルに挿入されたデータに対して実行される変換クエリに基づいて、ターゲット テーブルにデータを自動的に追加するように ADX に指示します。 次のクエリを使用して、前の手順で作成した関数によって定義された更新ポリシーの宛先として解析済みのテーブルを、ソースとしてステージ テーブルを割り当てることができます。
+11. 更新ポリシーを使用して、前の手順の関数を解析済みのテーブルに適用します。 更新[ポリシー](/azure/data-explorer/kusto/management/updatepolicy)は、ソース テーブルに新しいデータが挿入されるたびに、ソース テーブルに挿入されたデータに対して実行される変換クエリに基づいて、ターゲット テーブルにデータを自動的に追加するように ADX に指示します。 次のクエリを使用して、前の手順で作成した関数によって定義された更新ポリシーの宛先として解析済みのテーブルを、ソースとしてステージ テーブルを割り当てることができます。
 
 ```
 .alter table iiot_parsed policy update

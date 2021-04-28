@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: b-juche
-ms.openlocfilehash: 9a07c6ae48cdca68a95db7770d90076eb8f10f95
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1ec58b056bd610773500c8ace1fb12d268b980e0
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91929458"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726720"
 ---
 # <a name="faqs-about-smb-performance-for-azure-netapp-files"></a>Azure NetApp Files に対する SMB のパフォーマンスに関する FAQ
 
@@ -153,6 +153,9 @@ SMB 署名を使用すると、SMB のパフォーマンスに悪影響があり
 
 ![SMB 署名のパフォーマンスの影響を示すグラフ。](../media/azure-netapp-files/azure-netapp-files-smb-signing-performance.png)
 
+## <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a>SMB 暗号化により、どのような影響がクライアント ワークロードに対して予想されますか。
+
+「[SMB 暗号化に関する FAQ](azure-netapp-files-faqs.md#smb_encryption_impact)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ  
 

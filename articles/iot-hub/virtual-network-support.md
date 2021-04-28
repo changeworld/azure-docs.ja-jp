@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 12/18/2020
 ms.author: jlian
-ms.openlocfilehash: 1e28c7767868904fb20ae6d27c6aea9e7077eb62
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: df38f9b3482847ea0415af5cb47540e244b0510b
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98630295"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739892"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>Private Link とマネージド ID を使用した仮想ネットワークの IoT Hub サポート
 
@@ -174,7 +174,7 @@ az resource show --resource-type Microsoft.Devices/IotHubs --name <iot-hub-resou
 
 ### <a name="egress-connectivity-to-storage-account-endpoints-for-routing"></a>ルーティングのためのストレージ アカウント エンドポイントへのエグレス接続
 
-IoT Hub は、顧客所有のストレージ アカウントにメッセージをルーティングできます。 ファイアウォールの制限が適用されているときに、ルーティング機能でストレージ アカウントにアクセスできるようにするには、IoT Hub に[マネージド ID](#turn-on-managed-identity-for-iot-hub) が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、ストレージ アカウントにアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
+IoT Hub は、顧客所有のストレージ アカウントにメッセージをルーティングできます。 ファイアウォールの制限が適用されているときに、ルーティング機能でストレージ アカウントにアクセスできるようにするには、ハブでマネージド ID を使用してストレージ アカウントにアクセスする必要があります。 まず、ハブに [マネージド ID](#turn-on-managed-identity-for-iot-hub) が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、ストレージ アカウントにアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
 
 1. Azure portal で、ストレージ アカウントの **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
@@ -192,7 +192,7 @@ IoT Hub は、顧客所有のストレージ アカウントにメッセージ�
 
 ### <a name="egress-connectivity-to-event-hubs-endpoints-for-routing"></a>ルーティングのための Event Hubs エンドポイントへのエグレス接続
 
-IoT Hub は、顧客所有の Event Hubs 名前空間にメッセージをルーティングするように構成できます。 ファイアウォールの制限が適用されているときに、ルーティング機能でイベント ハブ リソースにアクセスできるようにするには、IoT Hub にマネージド ID が必要です。 マネージド ID が作成されたら、以下の手順に従って、イベント ハブにアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
+IoT Hub は、顧客所有の Event Hubs 名前空間にメッセージをルーティングするように構成できます。 ファイアウォールの制限が適用されているときに、ルーティング機能で Event Hubs リソースにアクセスできるようにするには、IoT Hub でマネージド ID を使用して Event Hubs リソースにアクセスする必要があります。 まず、ハブにマネージド ID が必要です。 マネージド ID が作成されたら、以下の手順に従って、イベント ハブにアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
 
 1. Azure portal で、Event Hubs の **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 
@@ -210,7 +210,7 @@ IoT Hub は、顧客所有の Event Hubs 名前空間にメッセージをルー
 
 ### <a name="egress-connectivity-to-service-bus-endpoints-for-routing"></a>ルーティングのための Service Bus エンドポイントへのエグレス接続
 
-IoT Hub は、顧客所有の Service Bus 名前空間にメッセージをルーティングするように構成できます。 ファイアウォールの制限が適用されているときに、ルーティング機能で Service Bus リソースにアクセスできるようにするには、IoT Hub にマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、Service Bus にアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
+IoT Hub は、顧客所有の Service Bus 名前空間にメッセージをルーティングするように構成できます。 ファイアウォールの制限が適用されているときに、ルーティング機能で Service Bus リソースにアクセスできるようにするには、IoT Hub でマネージド ID を使用して Service Bus リソースにアクセスする必要があります。 まず、ハブにマネージド ID が必要です。 マネージド ID がプロビジョニングされたら、以下の手順に従って、Service Bus にアクセスするためにハブのリソース ID に Azure RBAC アクセス許可を付与します。
 
 1. Azure portal で、Service Bus の **[アクセス制御 (IAM)]** タブに移動し、 **[ロールの割り当てを追加する]** セクションの下にある **[追加]** をクリックします。
 

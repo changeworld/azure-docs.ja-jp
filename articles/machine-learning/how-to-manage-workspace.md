@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 09/30/2020
-ms.topic: conceptual
-ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 472bc66c75881d622e8ecfe23031f58db773a919
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 04/22/2021
+ms.topic: how-to
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 6271875c368f637140010401cf2ebe21039be9a9
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518927"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897363"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースを作成して管理する 
 
@@ -186,16 +186,6 @@ Azure Machine Learning Python SDK には、[PrivateEndpointConfig](/python/api/a
 > [!IMPORTANT]  
 > Azure Machine Learning ワークスペースでのプライベート エンドポイントの使用は、現在パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。     
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
-
-### <a name="multiple-workspaces-with-private-endpoint"></a>プライベート エンドポイントを使用する複数のワークスペース
-
-プライベート エンドポイントを作成すると、__privatelink.api.azureml.ms__ という名前の新しいプライベート DNS ゾーンが作成されます。 これには、仮想ネットワークへのリンクが含まれます。 プライベート エンドポイントがあるワークスペースを同じリソース グループ内に複数作成した場合、最初のプライベート エンドポイントの仮想ネットワークしか DNS ゾーンに追加されない場合があります。 追加のワークスペースまたはプライベート エンドポイントで使用される仮想ネットワークを追加するには、次の手順に従います。
-
-1. [Azure portal](https://portal.azure.com) で、そのワークスペースが含まれているリソース グループを選択します。 次に、__privatelink.api.azureml.ms__ という名前のプライベート DNS ゾーン リソースを選択します。
-2. __[設定]__ で、 __[仮想ネットワーク リンク]__ を選択します。
-3. __[追加]__ を選択します。 __[仮想ネットワーク リンクの追加]__ ページで一意の __[リンク名]__ を指定し、次いで追加する __仮想ネットワーク__ を選択します。 __[OK]__ を選択して、ネットワーク リンクを追加します。
-
-詳細については、「[Azure プライベート エンドポイントの DNS 構成](../private-link/private-endpoint-dns.md)」をご覧ください。
 
 ### <a name="vulnerability-scanning"></a>脆弱性のスキャン
 

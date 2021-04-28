@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81a909d946b55ee8b06d68aa8bee53bc50d2190e
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 50d8ef544029e7097d90651707da24d603bcecc9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532298"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137961"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -59,7 +59,7 @@ Azure Active Directory では、2021 年 6 月 30 日以降、Azure Active Direc
 - Azure 商用クラウド
 - Office 365 GCC および WW
 
-その他のガイダンスについては、[Azure AD TLS 1.1 と 1.0 の非推奨に備えてお使いの環境で TLS 1.2 のサポートを有効にする](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment)方法に関する記事を参照してください。
+その他のガイダンスについては、[Azure AD TLS 1.1 と 1.0 の非推奨に備えてお使いの環境で TLS 1.2 のサポートを有効にする](/troubleshoot/azure/active-directory/enable-support-tls-environment)方法に関する記事を参照してください。
 
 ---
 
@@ -79,7 +79,7 @@ Multi-Geo の SharePoint Online を使用している組織では、特定の Mu
 **サービス カテゴリ:** その他  
 **製品の機能:** 開発者エクスペリエンス
  
-Azure portal から、削除されたアプリの登録を表示、復元、および完全に削除できるようになりました。 これは、個人の Microsoft アカウントのアプリケーションではなく、ディレクトリに関連付けられたアプリケーションにのみ適用されます。 [詳細については、こちらを参照してください](../develop/quickstart-restore-app.md)。
+Azure portal から、削除されたアプリの登録を表示、復元、および完全に削除できるようになりました。 これは、個人の Microsoft アカウントのアプリケーションではなく、ディレクトリに関連付けられたアプリケーションにのみ適用されます。 [詳細については、こちらを参照してください](../develop/howto-restore-app.md)。
  
 ---
 
@@ -153,7 +153,7 @@ Azure 管理ポータルからユーザー プロファイル情報を更新す�
 **サービス カテゴリ:** Azure AD Domain Services  
 **製品の機能:** Azure AD Domain Services
  
-Azure Active Directory Domain Services のレプリカ セット機能が一般提供されました。 [詳細については、こちらを参照してください](https://docs.microsoft.com/azure/active-directory-domain-services/concepts-replica-sets)。
+Azure Active Directory Domain Services のレプリカ セット機能が一般提供されました。 [詳細については、こちらを参照してください](../../active-directory-domain-services/concepts-replica-sets.md)。
  
 ---
 
@@ -210,7 +210,7 @@ Azure AD アプリ ギャラリーにアプリケーションを公開する場�
 **サービス カテゴリ:** MS Graph  
 **製品の機能:** B2B/B2C
 
-[会社のブランド用の MS Graph API](https://docs.microsoft.com/graph/api/resources/organizationalbrandingproperties) は、Azure AD または Microsoft 365 のログイン エクスペリエンスで使用できます。これを使用すると、プログラムによるブランド化パラメーターの管理が可能になります。
+[会社のブランド用の MS Graph API](/graph/api/resources/organizationalbrandingproperties) は、Azure AD または Microsoft 365 のログイン エクスペリエンスで使用できます。これを使用すると、プログラムによるブランド化パラメーターの管理が可能になります。
 
 ---
 
@@ -768,7 +768,7 @@ Azure Active Directory では、2021 年 6 月 30 日以降、Azure Active Direc
 
 関連するお知らせ - Azure、Office 365、Microsoft 365 サービスの Azure Active Directory へのセキュリティで保護された接続を維持するために、クライアントとサーバーおよびブラウザーとサーバーのすべての組み合わせで、TLS 1.2 と最新の暗号スイートを使用する必要があります。 これは、「[US Gov クラウドでの Azure Active Directory TLS 1.0、TLS 1.1、3DES の非推奨化](whats-new.md#azure-active-directory-tls-10-tls-11-and-3des-deprecation-in-us-gov-cloud)」に関連した変更です。
 
-非推奨のプロトコルを削除するためのガイダンスについては、[Azure AD TLS 1.1 と 1.0 の非推奨に備えて、お使いの環境で TLS 1.2 のサポートを有効にする](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment)方法に関する記事を参照してください。
+非推奨のプロトコルを削除するためのガイダンスについては、[Azure AD TLS 1.1 と 1.0 の非推奨に備えて、お使いの環境で TLS 1.2 のサポートを有効にする](/troubleshoot/azure/active-directory/enable-support-tls-environment)方法に関する記事を参照してください。
 
 ---
 
@@ -997,7 +997,7 @@ Azure、Office 365、Microsoft 365 サービスの Azure Active Directory への
 - Azure US Gov
 - [Office 365 GCC High および DoD](/microsoft-365/compliance/tls-1-2-in-office-365-gcc)
 
-非推奨のプロトコルを削除するためのガイダンスについては、[Azure AD TLS 1.1 と 1.0 の非推奨に備えて、お使いの環境で TLS 1.2 のサポートを有効にする](https://docs.microsoft.com/troubleshoot/azure/active-directory/enable-support-tls-environment)方法に関する記事を参照してください。
+非推奨のプロトコルを削除するためのガイダンスについては、[Azure AD TLS 1.1 と 1.0 の非推奨に備えて、お使いの環境で TLS 1.2 のサポートを有効にする](/troubleshoot/azure/active-directory/enable-support-tls-environment)方法に関する記事を参照してください。
  
 ---
 

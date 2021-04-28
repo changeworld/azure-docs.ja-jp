@@ -8,14 +8,13 @@ ms.subservice: core
 ms.author: aashishb
 author: aashishb
 ms.date: 03/11/2021
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 71cb2e9e112c49d77a2a0b47c24c49cabfa86589
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: 9531862ffb62a92a3b9be33b38e4ecef97bf974e
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103149020"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884662"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>TLS を使用して Azure Machine Learning による Web サービスをセキュリティで保護する
 

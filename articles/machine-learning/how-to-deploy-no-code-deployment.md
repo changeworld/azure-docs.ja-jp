@@ -8,15 +8,15 @@ ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.custom: deploy
 ms.reviewer: larryfr
-ms.openlocfilehash: a17126695aa5138d1df7fd17cfaa2f5f75ad1004
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d1d74369dde0118d055261b8c04df36d250221b4
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "93324914"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889414"
 ---
 # <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
 

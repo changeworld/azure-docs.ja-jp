@@ -2,13 +2,13 @@
 title: 新機能 リリース ノート - Azure Event Grid
 description: 最新のリリース ノート、既知の問題、バグの修正、非推奨の機能、予定されている変更点など、Azure Event Grid の新着情報について説明します。
 ms.topic: overview
-ms.date: 07/23/2020
-ms.openlocfilehash: f135b25f28002c037dd24fa0cb3bb7476a06309f
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.date: 04/27/2021
+ms.openlocfilehash: ccb8df774838a1b71ddec08394d7487bf3176039
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389589"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135925"
 ---
 # <a name="whats-new-in-azure-event-grid"></a>Azure Event Grid の新機能
 
@@ -35,7 +35,7 @@ Azure Event Grid は随時改善されています。 常に最新の開発情�
         - StringNotEndsWith
         - NumberInRange
         - NumberNotInRange
-        - IsNull
+        - IsNullOrUndefined
         - IsNotNull
 - [ Event Grid スキーマから CloudEvents 1.0 スキーマへの変換の許可](cloudevents-schema.md#configure-event-grid-for-cloudevents)
         

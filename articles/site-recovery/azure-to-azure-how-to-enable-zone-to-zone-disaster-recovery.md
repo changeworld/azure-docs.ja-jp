@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: beba8e1d8126818f142e4873d551ed077af869d2
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 786d877328b1ab3d0f03a75604b7345dba14aa9d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102035239"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713410"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>可用性ゾーン間で Azure VM のディザスター リカバリーを有効にする
 
@@ -20,7 +20,7 @@ ms.locfileid: "102035239"
 
 >[!NOTE]
 >
->- ゾーン間ディザスター リカバリーのサポートは、現在、東南アジア、東日本、オーストラリア東部、英国南部、西ヨーロッパ、北ヨーロッパ、米国中部、米国東部、米国西部 2 という 9 つのリージョンに制限されています。  
+>- ゾーン間ディザスター リカバリーのサポートは、現在、東南アジア、東日本、オーストラリア東部、JIO インド西部、英国南部、西ヨーロッパ、北ヨーロッパ、米国中部、米国東部、米国東部 2、米国西部 2 の各リージョンに制限されています。  
 >- Site Recovery では、ゾーン間ディザスター リカバリーが使用されている場合、顧客データがデプロイされているリージョンからそのデータが移動または保存されることはありません。 お客様は、別のリージョンから Recovery Services コンテナーを選択することもできます。 Recovery Services コンテナーにはメタデータが含まれますが、実際の顧客データは含まれません。
 
 Site Recovery サービスは、計画された停止や計画外の停止の際にビジネス アプリの稼働状態を維持することで、事業継続とディザスター リカバリー戦略に貢献します。 リージョン障害が発生した場合にアプリケーションの稼働状態を維持するために、ディザスター リカバリー オプションとして推奨されています。

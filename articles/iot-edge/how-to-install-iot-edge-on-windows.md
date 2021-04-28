@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/20/2021
 ms.author: v-tcassi
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 98b312066294f2c4ed7f9b089e0f8ea1a68fe4be
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2799e25dbd84ff07b375c6fa1b103789aae82b49
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059702"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538420"
 ---
 # <a name="install-and-provision-azure-iot-edge-for-linux-on-a-windows-device-preview"></a>Windows デバイスに Azure IoT Edge for Linux をインストールしてプロビジョニングする (プレビュー)
 
@@ -42,7 +42,7 @@ Azure IoT Edge for Linux on Windows を使用すると、Linux 仮想マシン�
 
   * Windows 10 バージョン 1809 以降、ビルド 17763 以降
   * Professional、Enterprise、または Server エディション
-  * 最小空きメモリ容量: 2 GB
+  * 最小空きメモリ容量: 1 GB
   * 最小空きディスク領域:10 GB
   * Windows 10 を使用して新しいデプロイを作成している場合は、Hyper-V が有効になっていることを確認します。 詳細については、「[Windows 10 上に Hyper-V をインストールする](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)」を参照してください。
   * Windows Server を使用して新しいデプロイを作成している場合は、Hyper-V ロールがインストールされていることを確認します。 詳細については、「[Windows Server 上に Hyper-V ロールをインストールする](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server)」を参照してください。

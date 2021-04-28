@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 03/08/2021
+ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: 88d0a3dcd89ea678d77bc558fc680630bc0f2309
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: e12578fa6da679587d41fb25b17b00eb1645299a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168180"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718415"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Security Center の統合 EDR ソリューションを使用してエンドポイントを保護する: Microsoft Defender for Endpoint
 
@@ -38,7 +38,7 @@ Microsoft Defender for Endpoint は、クラウドで提供される包括的な
 | リリース状態:                  | 一般提供 (GA)                                                                                                                                                                                                                                                                                      |
 | 価格:                        | [Azure Defender for servers](defender-for-servers-introduction.md) が必要                                                                                                                                                                                                                                             |
 | サポート対象のプラットフォーム:            |  • Windows を実行している Azure マシン<br> • Windows を実行している Azure Arc マシン|
-| サポート対象の Windows のバージョン:  |  • **一般提供 (GA) -** Windows Server 2016、2012 R2、2008 R2 SP1 での検出<br> • **プレビュー -** Windows Server 2019、[Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)、[Windows 10 Enterprise マルチセッション](../virtual-desktop/windows-10-multisession-faq.yml) (旧称 Enterprise for Virtual Desktops (EVD)) での検出|
+| 検出がサポートされている Windows のバージョン:  |  • Windows Server 2019、2016、2012 R2、2008 R2 SP1<br> • [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md)<br> • [Windows 10 Enterprise マルチセッション](../virtual-desktop/windows-10-multisession-faq.yml) (旧称 Enterprise for Virtual Desktops (EVD)|
 | サポートされていないオペレーティング システム:  |  • Windows 10 (EVD と WVD 以外)<br> • Linux|
 | 必要なロールとアクセス許可: | 統合を有効または無効にするには: **セキュリティ管理者** または **所有者**<br>Security Center の MDATP アラートを表示するには: **セキュリティ閲覧者**、**閲覧さ**、**リソース グループの共同作成者**、**リソース グループの所有者**、**セキュリティ管理者**、**サブスクリプションの所有者**、または **サブスクリプションの共同作成者**|
 | クラウド:                         | ![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![いいえ](./media/icons/no-icon.png) China Gov、その他の Gov                                                        |
@@ -69,20 +69,22 @@ Azure Security Center を使用してサーバーを監視すると、Microsoft 
 場所を構成した後は、その場所を変更することはできません。 Microsoft Defender for Endpoint のライセンスを所有していて、データを別の場所に移動する必要がある場合は、Microsoft サポートに連絡してテナントをリセットしてください。
 
 
-## <a name="enabling-the-microsoft-defender-for-endpoint-integration"></a>Microsoft Defender for Endpoint 統合を有効にする
+## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>Microsoft Defender for Endpoint 統合を有効にする
 
-1. お使いのマシンが Defender for Endpoint に必要な要件を満たしていることを確認します。
+### <a name="prerequisites"></a>前提条件
 
-    - **Windows のすべてのバージョン**:
-        - 「[デバイス プロキシとインターネット接続の設定を構成する](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)」で説明されているネットワーク設定を構成します。
-        - オンプレミスのマシンに対して Defender for Endpoint をデプロイする場合は、「[Azure Arc 対応サーバーでハイブリッド マシンを接続する](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)」の説明に従って Azure Arc に接続します。
-    - さらに、**Windows Server 2019 マシン** の場合は、有効なエージェントが実行されていて、MicrosoftMonitoringAgent 拡張機能があることを確認します。
+お使いのマシンが Defender for Endpoint に必要な要件を満たしていることを確認します。
 
+1. 「[デバイス プロキシとインターネット接続の設定を構成する](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)」で説明されているネットワーク設定を構成します。
+1. オンプレミスのマシンに対して Defender for Endpoint をデプロイする場合は、「[Azure Arc 対応サーバーでハイブリッド マシンを接続する](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)」の説明に従って Azure Arc に接続します。
+1. Windows Server 2019 マシンのみの場合は、マシンで有効なエージェントが実行されていて、MicrosoftMonitoringAgent 拡張機能があることを確認します。
 1. **Azure Defender for servers** を有効にします。 「[クイックスタート: Azure Defender を有効にする](enable-azure-defender.md)」をご覧ください。
-
 1. ご利用のサーバーに Microsoft Defender for Endpoints のライセンスが既に供与されデプロイ済みの場合は、「[Windows サーバーのオフボード](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)」で説明されている手順を使用して削除します。
-1. Security Center のメニューから、 **[価格と設定]** を選択します。
-1. 変更するサブスクリプションを選択します。
+1. Azure テナント間でサブスクリプションを移動した場合は、手動による準備手順も必要になります。 詳細については、[Microsoft サポートにお問い合わせください](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
+
+
+### <a name="enable-the-integration"></a>統合を有効にする
+1. Security Center のメニューで、 **[価格と設定]** を選択し、変更するサブスクリプションを選択します。
 1. **[脅威検出]** を選択します。
 1. **[データに Microsoft Defender for Endpoint がアクセスすることを許可する]** を選択し、 **[保存]** を選択します。
 

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 796abf8506a832c4053b505e903bb24ef9d09004
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 40d61de140cb0b3537c56af37eb18f004a72c148
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279036"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138897"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -84,7 +84,7 @@ v2 API の Premium Encoder で HEVC を使用していたお客様は、Standard
  
 - 24 時間 365 日体制のライブ イベント サポート
 - ARM REST API、.NET Core 用のクライアント SDK、Node.js、Python、Java、Go、Ruby。
-- カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](https://docs.microsoft.com/azure/media-services/latest/migrate-v-2-v-3-migration-benefits)
+- カスタマー マネージド キー、信頼されたストレージ統合、プライベート リンクのサポート、[その他](./migrate-v-2-v-3-migration-benefits.md)
 
 #### <a name="action-required"></a>必要な操作
 

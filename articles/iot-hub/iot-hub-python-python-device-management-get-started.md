@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
 ms.custom: mqtt, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: c07d26715aff2c8dd5e00a7d7adbb548adf00a28
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b0426c74fd6f3c334880a410bd95b0d952db81f3
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482502"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887395"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 

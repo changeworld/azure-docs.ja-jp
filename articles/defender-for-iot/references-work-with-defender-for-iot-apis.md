@@ -3,12 +3,12 @@ title: Defender for IoT の API を操作する
 description: 外部 REST API を使用してセンサーおよび管理コンソールによって検出されたデータにアクセスし、そのデータに対してアクションを実行します。
 ms.date: 12/14/2020
 ms.topic: reference
-ms.openlocfilehash: d509f2674a61af1d0ab03892186526b1cb109eee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7833a20d4f708ecb5b80394fae2c56fc07c9489
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104778833"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752734"
 ---
 # <a name="defender-for-iot-sensor-and-management-console-apis"></a>Defender for IoT センサーと管理コンソール API
 
@@ -622,7 +622,16 @@ IP アドレスで識別された CVE を表す JSON オブジェクトの配列
 | **engine** | String | いいえ | Protocol Violation、Policy Violation、Malware、Anomaly、または Operational |
 | **sourceDevice** | 数値 | はい | デバイス ID |
 | **destinationDevice** | 数値 | はい | デバイス ID |
+| **sourceDeviceAddress** | 数値 | はい | IP、MAC、Null |
+| **destinationDeviceAddress** | 数値 | はい | IP、MAC、Null |
+| **remediationSteps** | String | はい | アラートに記載されている修復手順 |
 | **additionalInformation** | 追加情報オブジェクト | はい | - |
+
+次の情報には /api/v2/ が必要であることにご注意ください。
+
+- sourceDeviceAddress 
+- destinationDeviceAddress
+- remediationSteps
 
 #### <a name="additional-information-fields"></a>追加情報フィールド
 
@@ -1742,19 +1751,16 @@ response:
 > |--|--|--|
 > | POST | curl -k -d '{"admin_username":"<ADMIN_USERNAME>","admin_password":"<ADMIN_PASSWORD>","username": "<USER_NAME>","new_password": "<NEW_PASSWORD>"}' -H 'Content-Type: application/json'  https://<IP_ADDRESS>/api/external/authentication/set_password_by_admin | curl -k -d '{"admin_user":"adminUser","admin_password": "1234@abcd","username": "myUser","new_password": "abcd@1234"}' -H 'Content-Type: application/json'  https:/<span>/127.0.0.1/api/external/authentication/set_password_by_admin |
 
-## <a name="on-premises-management-console-api-specifications"></a>オンプレミス管理コンソール API の仕様
+## <a name="on-premises-management-console-api-specifications"></a>オンプレミス管理コンソール API の仕様 ##
 
 このセクションでは、次のオンプレミス管理コンソール API について説明します。
+- アラート除外
+- デバイス情報
+- Alert information (アラート情報)
 
-- **/external/v1/alerts/<UUID>**
+### <a name="alert-exclusions"></a>アラートの除外 ###
 
-- **アラートの除外 (メンテナンス期間)**
-
-:::image type="content" source="media/references-work-with-defender-for-iot-apis/alert-exclusion-window.png" alt-text="アラートの除外ウィンドウ。アクティブなルールが表示されています。":::
-
-アラートを送信しない条件を定義します。 たとえば、停止時刻と開始時刻、アラートをトリガーするときに除外するデバイスまたはサブネット、または除外する必要がある Defender for IoT エンジンを定義して更新します。 たとえば、メンテナンス期間中は、重要なデバイスのマルウェア アラートを除き、すべてのアラートの配信を停止したいとします。
-
-ここで定義した API は、オンプレミスの管理コンソールの **[アラートの除外]** ウィンドウに読み取り専用の除外ルールとして表示されます。
+アラートを送信しない条件を定義します。 たとえば、停止時刻と開始時刻、アラートをトリガーするときに除外するデバイスまたはサブネット、または除外する必要がある Defender for IoT エンジンを定義して更新します。 たとえば、メンテナンス期間中は、重要なデバイスのマルウェア アラートを除き、すべてのアラートの配信を停止したいとします。 ここで定義した項目は、オンプレミスの管理コンソールの **[アラートの除外]** ウィンドウに読み取り専用の除外ルールとして表示されます。
 
 #### <a name="externalv1maintenancewindow"></a>/external/v1/maintenanceWindow
 
@@ -1771,15 +1777,15 @@ response:
 
 ```
 
-#### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password
+#### <a name="change-password---externalauthenticationset_password"></a>パスワードを変更する - /external/authentication/set_password 
 
 ユーザーが自分のパスワードを変更できるようにするには、この API を使用します。 すべての Defender for IoT ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
 
-#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin
+#### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>システム管理者によるユーザー パスワードの更新 - /external/authentication/set_password_by_admin 
 
 システム管理者が特定のユーザーのパスワードを変更できるようにするには、この API を使用します。 Defender for IoT 管理者ユーザー ロールは、API で使用できます。 この API を使用するために Defender for IoT のアクセス トークンは必要ありません。
 
-### <a name="retrieve-device-information---externalv1devices"></a>デバイス情報を取得する - /external/v1/devices
+### <a name="retrieve-device-information---externalv1devices"></a>デバイス情報を取得する - /external/v1/devices ###
 
 この API は、オンプレミスの管理コンソールに接続されている Defender for IoT sensors センサーによって検出されたすべてのデバイスの一覧を要求します。
 
@@ -2032,15 +2038,13 @@ response:
 
   `/api/v1/alerts?toTime=<epoch>`
 
-- **siteId**:アラートが検出されたサイト。 [2](#2)
-
-- **zoneId**:アラートが検出されたゾーン。 [2](#2)
-
+- **siteId**:アラートが検出されたサイト。
+- **zoneId**:アラートが検出されたゾーン。
 - **sensor**:アラートが検出されたセンサー。
 
-##### <a name="you-might-not-have-the-site-and-zone-id-if-this-is-the-case-query-all-devices-to-retrieve-the-site-and-zone-id"></a><a id="2">2</a> *サイトとゾーン ID がない可能性があります。この場合は、すべてのデバイスに対してクエリを実行し、サイトとゾーン ID を取得します。*
+*サイトとゾーン ID がない可能性があります。この場合は、すべてのデバイスに対してクエリを実行し、サイトとゾーン ID を取得します。*
 
-#### <a name="alert-fields"></a>アラート フィールド
+#### <a name="alert-fields"></a>アラート フィールド 
 
 | 名前 | Type | Nullable | ［値の一覧］ |
 |--|--|--|--|
@@ -2052,7 +2056,22 @@ response:
 | **engine** | String | いいえ | Protocol Violation、Policy Violation、Malware、Anomaly、または Operational |
 | **sourceDevice** | 数値 | はい | デバイス ID |
 | **destinationDevice** | 数値 | はい | デバイス ID |
+| **sourceDeviceAddress** | 数値 | はい | IP、MAC、Null |
+| **destinationDeviceAddress** | 数値 | はい | IP、MAC、Null |
+| **remediationSteps** | String | はい | アラートに表示される修復手順|
+| **sensorName** | String | はい | コンソールでユーザーが定義したセンサーの名前|
+|**zoneName** | String | はい | コンソールでセンサーに関連付けられたゾーンの名前|
+| **SiteName** | String | はい | コンソールでセンサーに関連付けられたサイトの名前 |
 | **additionalInformation** | 追加情報オブジェクト | はい | - |
+
+次の情報には /api/v2/ が必要であることにご注意ください。
+
+- sourceDeviceAddress 
+- destinationDeviceAddress
+- remediationSteps
+- sensorName
+- zoneName
+- siteName
 
 #### <a name="additional-information-fields"></a>追加情報フィールド
 
@@ -2390,7 +2409,7 @@ UUID を含むアラートに対して実行するアクションを表す JSON 
 
 - **tokenName**:特定のトークン名に関連するログをフィルター処理します。
 
-#### <a name="error-code"></a>エラー コード
+#### <a name="error-code"></a>エラー コード 
 
 - **200 (OK)** :アクションは正常に完了しました。
 

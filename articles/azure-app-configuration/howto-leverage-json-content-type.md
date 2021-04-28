@@ -10,12 +10,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
-ms.openlocfilehash: 19de46bc87b72ada221c63e36e87d0545304d344
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 2be560d16b133696c520b8872406ff6a36b0087b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102122155"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137118"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>コンテンツ タイプを利用して App Configuration に JSON キー値を格納する
 
@@ -170,7 +170,7 @@ az appconfig kv export -d file --format json --path "~/Export.json" --separator 
 ```
 
 > [!NOTE]
-> App Configuration ストアに JSON コンテンツ タイプのないキー値がいくつかある場合、文字列形式の同じファイルにもエクスポートされます。 JSON キー値のみをエクスポートする場合は、一意のラベルまたはプレフィックスを JSON キー値に割り当て、エクスポート時にラベルまたはプレフィックスのフィルター処理を使用します。
+> App Configuration ストアに JSON コンテンツ タイプのないキー値がいくつかある場合、文字列形式の同じファイルにもエクスポートされます。
 
 
 ## <a name="consuming-json-key-values-in-applications"></a>アプリケーションでの JSON キー値の使用

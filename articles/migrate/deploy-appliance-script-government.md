@@ -6,12 +6,12 @@ ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 03/13/2021
-ms.openlocfilehash: c4ca8d8ac24ac174158957e44b5eabe4a89a5340
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0bc2b69a4a1ec31cfa560d51920378fe1ab52b8
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104775206"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714796"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Government でアプライアンスを設定する 
 
@@ -26,7 +26,7 @@ VMware 環境のサーバー、Hyper-V 上のサーバー、物理サーバー�
 
 このスクリプトは、既存の物理サーバーまたは仮想サーバー上に Azure Migrate アプライアンスを設定します。
 
-- アプライアンスとして機能するサーバーは、32 GB のメモリ、8 個の vCPUs、80 GB のディスク ストレージ、および外部仮想スイッチを搭載し、Windows Server 2016 を実行している必要があります。 ここには、静的または動的 IP アドレスと、インターネットへのアクセスが必要です。
+- アプライアンスとして機能するサーバーは、32 GB のメモリ、8 個の vCPUs、80 GB のディスク ストレージ、および外部仮想スイッチを搭載し、Windows Server 2016 を実行している必要があります。 これには、静的または動的 IP アドレスが必要です。 
 - アプライアンスをデプロイする前に、[VMware 上のサーバー](migrate-appliance.md#appliance---vmware)、[Hyper-V 上のサーバー](migrate-appliance.md#appliance---hyper-v)、および[物理サーバー](migrate-appliance.md#appliance---physical)の詳細なアプライアンス要件を確認してください。
 - 既存の Azure Migrate アプライアンスでスクリプトを実行しないでください。
 

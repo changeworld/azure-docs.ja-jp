@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 50b09fd82461221ae6cd008f6918ac2f3a26fd94
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 87b29d7417bfcaff670282377b2fffc6d4713395
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877420"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135043"
 ---
 # <a name="integrate-azure-spring-cloud-with-azure-load-balance-solutions"></a>Azure Spring Cloud と Azure の負荷分散ソリューションを統合する
 
@@ -28,7 +28,7 @@ Azure には、さまざまな負荷分散ソリューションが既に用意�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Spring Cloud:[ Azure Spring Cloud サービスを作成する方法](./spring-cloud-quickstart.md)
+* Azure Spring Cloud:[ Azure Spring Cloud サービスを作成する方法](./quickstart.md)
 * Azure Traffic Manager:[Traffic Manager を作成する方法](../traffic-manager/quickstart-create-traffic-manager-profile.md)
 * Azure App Gateway:[アプリケーション ゲートウェイを作成する方法](../application-gateway/quick-create-portal.md)
 * Azure Front Door:[フロント ドアを作成する方法](../frontdoor/quickstart-create-front-door.md)
@@ -48,7 +48,7 @@ Traffic Manager でエンドポイントを追加します。
 ### <a name="configure-custom-domain"></a>カスタム ドメインを構成する
 構成を終了するには:
 1.  ドメイン プロバイダーの Web サイトにサインインし、カスタム ドメインから Traffic Manager の Azure の既定のドメイン名への CNAME レコード マッピングを作成します。
-1.  [カスタム ドメインを Azure Spring Cloud に追加する方法](spring-cloud-tutorial-custom-domain.md)の手順に従います。
+1.  [カスタム ドメインを Azure Spring Cloud に追加する方法](./tutorial-custom-domain.md)の手順に従います。
 1. Traffic Manager への上記のカスタム ドメイン バインディングを Azure Spring Cloud 対応のアプリ サービスに追加し、そこに SSL 証明書をアップロードします。
 
     ![Traffic Manager 3](media/spring-cloud-load-balancers/traffic-manager-3.png)

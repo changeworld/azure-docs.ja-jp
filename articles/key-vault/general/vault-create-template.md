@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 3/14/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e70906cbf26c899744bfbe137da4ce9cfa651b20
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d157419614ee3a3f89036177e962e5b7fc4466b2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753148"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815034"
 ---
 # <a name="how-to-create-an-azure-key-vault-and-vault-access-policy-by-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure キー コンテナーとコンテナーのアクセス ポリシーを作成する方法
 
@@ -213,10 +213,10 @@ Write-Host "Press [ENTER] to continue..."
 
 - [Azure Key Vault の概要](../general/overview.md)を確認します。
 - [Azure リソース マネージャー](../../azure-resource-manager/management/overview.md)の詳細を確認します。
-- 「[Azure Key Vault のセキュリティの概要](security-overview.md)」を確認する
+- 「[Azure Key Vault のセキュリティの概要](security-features.md)」を確認する
 
 ## <a name="next-steps"></a>次の手順
 
-- [キー コンテナーへのアクセスをセキュリティで保護する](security-overview.md)
+- [キー コンテナーへのアクセスをセキュリティで保護する](security-features.md)
 - [キー コンテナーに対する認証](authentication.md)
 - [Azure Key Vault 開発者ガイド](developers-guide.md)

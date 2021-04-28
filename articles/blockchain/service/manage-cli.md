@@ -4,12 +4,12 @@ description: Azure CLI を使用して Azure Blockchain Service を管理する�
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 63401f5ce5cd35f63915e03b7f0362811d2660ec
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 55df56274aa5baa946b60c27cf49723d59c928a1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768055"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865929"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLI を使用して Azure Blockchain Service を管理する
 
@@ -39,7 +39,7 @@ CLI をインストールしてローカルで使用する場合は、[Azure CLI
 
     Azure CLI の拡張機能の参照を操作する場合は、最初に拡張機能をインストールする必要があります。  Azure CLI 拡張機能を使用すると、コア CLI の一部としてまだ出荷されていない実験用コマンドおよびプレリリース コマンドにアクセスできます。  更新とアンインストールを含む拡張機能の詳細については、「[Azure CLI で拡張機能を使用する](/cli/azure/azure-cli-extensions-overview)」を参照してください。
 
-    次のコマンドを実行して、[Azure Blockchain Service の拡張機能](/cli/azure/ext/blockchain/blockchain)をインストールします。
+    次のコマンドを実行して、[Azure Blockchain Service の拡張機能](/cli/azure/blockchain)をインストールします。
 
     ```azurecli-interactive
     az extension add --name blockchain
@@ -47,7 +47,7 @@ CLI をインストールしてローカルで使用する場合は、[Azure CLI
 
 ## <a name="create-blockchain-member"></a>ブロックチェーン メンバーを作成する
 
-例では、新しいコンソーシアムで Quorum 台帳プロトコルを実行する[ブロックチェーン メンバーを Azure Blockchain Service で作成](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create)します。
+例では、新しいコンソーシアムで Quorum 台帳プロトコルを実行する[ブロックチェーン メンバーを Azure Blockchain Service で作成](/cli/azure/blockchain/member#az_blockchain_member_create)します。
 
 ```azurecli
 az blockchain member create \
@@ -74,7 +74,7 @@ az blockchain member create \
 
 ## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>ブロックチェーン メンバーのパスワードまたはファイアウォール規則を変更する
 
-例では、[ブロックチェーン メンバー](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update)のパスワード、コンソーシアム管理パスワード、およびファイアウォール規則を更新します。
+例では、[ブロックチェーン メンバー](/cli/azure/blockchain/member#az_blockchain_member_update)のパスワード、コンソーシアム管理パスワード、およびファイアウォール規則を更新します。
 
 ```azurecli
 az blockchain member update \
@@ -95,7 +95,7 @@ az blockchain member update \
 
 ## <a name="create-transaction-node"></a>トランザクション ノードを作成する
 
-既存のブロックチェーン メンバーの内部に[トランザクション ノードを作成](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create)します。 トランザクション ノードを追加することにより、セキュリティの分離と負荷の分散を向上させることができます。 たとえば、異なるクライアント アプリケーションごとにトランザクション ノード エンドポイントを作成できます。
+既存のブロックチェーン メンバーの内部に[トランザクション ノードを作成](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_create)します。 トランザクション ノードを追加することにより、セキュリティの分離と負荷の分散を向上させることができます。 たとえば、異なるクライアント アプリケーションごとにトランザクション ノード エンドポイントを作成できます。
 
 ```azurecli
 az blockchain transaction-node create \
@@ -115,7 +115,7 @@ az blockchain transaction-node create \
 
 ## <a name="change-transaction-node-password"></a>トランザクション ノードのパスワードを変更する
 
-例では[トランザクション ノードのパスワードを更新](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update)します。
+例では[トランザクション ノードのパスワードを更新](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_update)します。
 
 ```azurecli
 az blockchain transaction-node update \
@@ -134,7 +134,7 @@ az blockchain transaction-node update \
 
 ## <a name="list-api-keys"></a>API キーのリスト
 
-API キーは、ユーザー名とパスワードのようにノード アクセスに使用できます。 キー ローテーションをサポートするために 2 つの API キーがあります。 [API キーの一覧を表示](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key)するには、次のコマンドを使用します。
+API キーは、ユーザー名とパスワードのようにノード アクセスに使用できます。 キー ローテーションをサポートするために 2 つの API キーがあります。 [API キーの一覧を表示](/cli/azure/blockchain/member#az_blockchain_transaction_node_list-api-key)するには、次のコマンドを使用します。
 
 ```azurecli
 az blockchain member list-api-key \
@@ -149,7 +149,7 @@ az blockchain member list-api-key \
 
 ## <a name="regenerate-api-keys"></a>API キーを再生成する
 
-[API キーを再生成する](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key)には、次のコマンドを使用します。
+[API キーを再生成する](/cli/azure/blockchain/member#az_blockchain_transaction_node_regenerate-api-key)には、次のコマンドを使用します。
 
 ```azurecli
 az blockchain member regenerate-api-key \
@@ -166,7 +166,7 @@ az blockchain member regenerate-api-key \
 
 ## <a name="delete-a-transaction-node"></a>トランザクション ノードを削除する
 
-例では、[ブロックチェーン メンバーのトランザクション ノードを削除](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete)します。
+例では、[ブロックチェーン メンバーのトランザクション ノードを削除](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_delete)します。
 
 ```azurecli
 az blockchain transaction-node delete \
@@ -183,7 +183,7 @@ az blockchain transaction-node delete \
 
 ## <a name="delete-a-blockchain-member"></a>ブロックチェーン メンバーを削除する
 
-例では[ブロックチェーン メンバーを削除](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete)します。
+例では[ブロックチェーン メンバーを削除](/cli/azure/blockchain/member#az_blockchain_member_delete)します。
 
 ```azurecli
 az blockchain member delete \

@@ -4,15 +4,15 @@ description: ドメインの委任を変更し、ドメインのホストに Azu
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.date: 2/19/2019
+ms.date: 04/19/2021
 ms.author: rohink
 ms.topic: conceptual
-ms.openlocfilehash: 9304556edb5e6207296d8ee4e8392e345869cb92
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4753b07cc2f3ccd998c26a3392eb08c8761dd6f7
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76939050"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738848"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS による DNS ゾーンの委任
 
@@ -35,7 +35,7 @@ Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメイ
 DNS サーバーには次の 2 種類があります。
 
 * *権限のある* DNS サーバーは、DNS ゾーンをホストします。 このサーバーは、これらのゾーン内のレコードに対する DNS クエリのみに応答します。
-* *再帰* DNS サーバーは、DNS ゾーンをホストしません。 このサーバーは、権限のある DNS サーバーを呼び出して必要なデータを収集することで、すべての DNS クエリに応答します。
+* "*再帰*" DNS サーバーでは、DNS ゾーンはホストされません。 このサーバーは、権限のある DNS サーバーを呼び出して必要なデータを収集することで、すべての DNS クエリに応答します。
 
 Azure DNS は、権限のある DNS サービスを提供します。  再帰 DNS サービスは提供しません。 Azure の Cloud Services と VM は、Azure のインフラストラクチャの一部として個別に提供されている再帰 DNS サービスを使用するように自動的に構成されます。 これらの DNS 設定を変更する方法については、[Azure での名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)に関するページを参照してください。
 
@@ -68,4 +68,3 @@ PC やモバイル デバイスの DNS クライアントは、通常、クラ�
 ## <a name="next-steps"></a>次のステップ
 
 Azure DNS にドメインを委任する方法については[こちら](dns-delegate-domain-azure-dns.md)を参照してください。
-

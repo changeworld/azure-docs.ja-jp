@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f57d390ed71cb4e0e76972e02170afde7b13e4ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b54e3cb3b4ce7eb8f541755df75e8d6a22eb7c2
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99253461"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575311"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -65,7 +65,7 @@ Windows Server 2012 R2 以降が実行されていて、アプリケーション
 
 ## <a name="automatic-updates"></a>自動更新
 
-Azure AD では、デプロイしたすべてのコネクタの自動更新を提供します。 アプリケーション プロキシ コネクタ アップデーター サービスを実行している限り、コネクタは自動更新されます。 サーバーにコネクタ アップデーター サービスが見つからない場合は、[コネクタを再インストール](application-proxy-add-on-premises-application.md)して更新プログラムを取得する必要があります。
+Azure AD では、デプロイしたすべてのコネクタの自動更新を提供します。 アプリケーション プロキシ コネクタ アップデーター サービスを実行している限り、コネクタは自動的に[最新のメジャー コネクタ リリースを使用して更新](application-proxy-faq.yml#why-is-my-connector-still-using-an-older-version-and-not-auto-upgraded-to-latest-version-)されます。 サーバーにコネクタ アップデーター サービスが見つからない場合は、[コネクタを再インストール](application-proxy-add-on-premises-application.md)して更新プログラムを取得する必要があります。
 
 お使いのコネクタの番まで自動更新を待てない場合は、手動アップグレードを実行できます。 コネクタが配置されたサーバーの [コネクタ ダウンロード ページ](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)に移動し、 **[ダウンロード]** を選択します。 このプロセスによって、ローカル コネクタのアップグレードが開始されます。
 

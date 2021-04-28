@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) でマネージド ID を使用す�
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 3ace7f1c93ab3918f460d245a863db43d98f1db5
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 59da03985f0bc9248fdb498d7b0222158029e0d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102176095"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777673"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Azure Kubernetes Service でマネージド ID を使用する
 
@@ -66,42 +66,14 @@ az group create --name myResourceGroup --location westus2
 az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ```
 
-マネージド ID を使用して正常にクラスターが作成されると、次のサービス プリンシパル プロファイル情報が含まれます。
-
-```output
-"servicePrincipalProfile": {
-    "clientId": "msi"
-  }
-```
-
-次のコマンドを使用して、コントロール プレーン マネージド ID の objectid を照会します。
-
-```azurecli-interactive
-az aks show -g myResourceGroup -n myManagedCluster --query "identity"
-```
-
-結果は次のようになります。
-
-```output
-{
-  "principalId": "<object_id>",   
-  "tenantId": "<tenant_id>",      
-  "type": "SystemAssigned"                                 
-}
-```
-
 クラスターが作成されたら、新しいクラスターにアプリケーションのワークロードをデプロイし、サービス プリンシパル ベースの AKS クラスターの場合と同様に対話できます。
-
-> [!NOTE]
-> 独自の VNet、静的 IP アドレス、またはアタッチされた Azure ディスク (リソースはワーカー ノード リソース グループの外部にある) を作成および使用するには、クラスター System Assigned Managed Identity の PrincipalID を使用してロールの割り当てを実行します。 ロールの割り当ての詳細については、[他の Azure リソースへのアクセスの委任](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)に関する記事を参照してください。
->
-> Azure クラウド プロバイダーによって使用されるクラスター マネージド ID へのアクセス許可が付与されるまでに最大 60 分かかる場合があります。
 
 最後に、クラスターにアクセスする資格情報を取得します。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
+
 ## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>AKS クラスターをマネージド ID に更新する (プレビュー)
 
 次の CLI コマンドを使用し、マネージド ID と連動するよう、サービス プリンシパルで現在動作している AKS クラスターを更新できるようになりました。
@@ -131,6 +103,43 @@ az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identi
 ```
 > [!NOTE]
 > システム割り当てまたはユーザー割り当ての ID がマネージド ID に更新されたら、ノードで `az aks nodepool upgrade --node-image-only` を実行し、マネージド ID への更新を完了します。
+
+## <a name="obtain-and-use-the-system-assigned-managed-identity-for-your-aks-cluster"></a>AKS クラスターに対してシステムで割り当てられたマネージド ID を取得して使用する
+
+次の CLI コマンドを使用して、AKS クラスターでマネージド ID が使用されていることを確認します。
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "servicePrincipalProfile"
+```
+
+クラスターでマネージド ID が使用されている場合は、"msi" という `clientId` 値が表示されます。 代わりに、サービス プリンシパルが使用されているクラスターでは、オブジェクト ID が表示されます。 次に例を示します。 
+
+```output
+{
+  "clientId": "msi"
+}
+```
+
+クラスターでマネージド ID が使用されていることを確認したら、次のコマンドを使用して、コントロール プレーン システムで割り当てられた ID のオブジェクト ID を見つけることができます。
+
+```azurecli-interactive
+az aks show -g <RGName> -n <ClusterName> --query "identity"
+```
+
+```output
+{
+    "principalId": "<object-id>",
+    "tenantId": "<tenant-id>",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+},
+```
+
+> [!NOTE]
+> 独自の VNet、静的 IP アドレス、またはアタッチされた Azure ディスク (リソースはワーカー ノード リソース グループの外部にある) を作成および使用するには、クラスター System Assigned Managed Identity の PrincipalID を使用してロールの割り当てを実行します。 ロールの割り当ての詳細については、[他の Azure リソースへのアクセスの委任](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)に関する記事を参照してください。
+>
+> Azure クラウド プロバイダーによって使用されるクラスター マネージド ID へのアクセス許可が付与されるまでに最大 60 分かかる場合があります。
+
 
 ## <a name="bring-your-own-control-plane-mi"></a>独自のコントロール プレーン MI を使用する
 カスタムのコントロール プレーン ID を使用すると、クラスターの作成前に、既存の ID にアクセス権を付与できます。 この機能により、カスタム VNET や outboundType UDR を、事前作成されたマネージド ID と一緒に使用するなどのシナリオが可能になります。
@@ -205,5 +214,5 @@ az aks create \
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-list]: /cli/azure/identity#az-identity-list
+[az-identity-create]: /cli/azure/identity#az_identity_create
+[az-identity-list]: /cli/azure/identity#az_identity_list

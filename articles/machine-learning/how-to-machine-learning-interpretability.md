@@ -5,18 +5,18 @@ description: Azure Machine Learning Python SDK を使用したトレーニング
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, responsible-ml
+ms.topic: how-to
+ms.custom: responsible-ml
 ms.author: mithigpe
 author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 02/25/2021
-ms.openlocfilehash: 44ccf6b6d2459b87040fcac7d9cdcd336cc7b82f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2adbeb66229f180963eb7d2e235db5e7bebb3ef9
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522038"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889018"
 ---
 # <a name="model-interpretability-in-azure-machine-learning-preview"></a>Azure Machine Learning におけるモデルの解釈可能性 (プレビュー)
 
@@ -104,5 +104,6 @@ Azure Machine Learning コンピューティング上で説明をリモートで
 ## <a name="next-steps"></a>次のステップ
 
 - ローカルと Azure Machine Learning リモート コンピューティング リソースの両方で解釈可能性を有効にし、モデルのトレーニングを行う[方法](how-to-machine-learning-interpretability-aml.md)を参照してください。 
+- [自動機械学習モデルの解釈可能性](how-to-machine-learning-interpretability-automl.md)を有効にする方法について確認します。
 - その他のシナリオについては、[ノートブックのサンプル](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)を参照してください。 
 - テキスト シナリオの解釈可能性に関心がある場合、NLP の解釈可能性の手法については、「[Interpret-text](https://github.com/interpretml/interpret-text)」 (「[Interpret-Community](https://github.com/interpretml/interpret-community/)」に関連するオープン ソース リポジトリ) を参照してください。 `azureml.interpret` パッケージでは、現在これらの手法をサポートしていませんが、[テキスト分類でのノートブックの例](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)を使用して開始できます。

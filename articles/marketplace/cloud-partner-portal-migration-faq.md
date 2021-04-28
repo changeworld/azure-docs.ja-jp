@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: e606e21fe2b80683737970b92d57ce87b9103144
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 7c1e908b5b113c5a2eff81105b1f0cd622c57b5e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106872"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127517"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 
@@ -81,11 +81,11 @@ Dynamics Nav Managed Service オファーと Cortana Intelligence オファー�
 | 仮想マシン | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、[仮想マシン オファーの計画](marketplace-virtual-machines.md)に関する記事を参照してください。 |
 | Azure アプリケーション | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Azure アプリケーション オファーを作成する](create-new-azure-apps-offer.md)」を参照してください。 |
 | Dynamics 365 Business Central | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 Business Central オファーの作成](partner-center-portal/create-new-business-central-offer.md)」を参照してください。 |
-| Dynamics 365 for Customer Engagement および PowerApps | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 for Customer Engagement & PowerApps オファーの作成](partner-center-portal/create-new-customer-engagement-offer.md)」を参照してください。 |
+| Dynamics 365 for Customer Engagement および PowerApps | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 for Customer Engagement & PowerApps オファーの作成](dynamics-365-customer-engage-offer-setup.md)」を参照してください。 |
 | Dynamics 365 for Operations | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Dynamics 365 for Operations オファーの作成](partner-center-portal/create-new-operations-offer.md)」を参照してください。 |
 | Power BI アプリ | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Microsoft AppSource 用の Power BI アプリを作成する](partner-center-portal/create-power-bi-app-offer.md)」を参照してください。 |
 | IoT Edge モジュール | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Azure Marketplace で IoT Edge モジュールのオファーを作成、構成、公開する](partner-center-portal/azure-iot-edge-module-creation.md)」を参照してください。 |
-| コンテナー | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Azure Container オファーを作成する](./create-azure-container-offer.md)」を参照してください。 |
+| コンテナー | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[Azure Container オファーを作成する](./azure-container-offer-setup.md)」を参照してください。 |
 | コンサルティング サービス | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[コンサルティング サービス オファーを作成する](./create-consulting-service-offer.md)」を参照してください。 |
 | マネージド サービス | はい | パートナー センターにサインインして、新しいオファーを作成し、Cloud パートナー ポータルで作成されたオファーを管理します。 詳細については、「[管理サービス オファーの作成](./plan-managed-service-offer.md)」を参照してください。 |
 | Dynamics Nav Managed Service | いいえ | Dynamics NAV Managed Service は [Dynamics 365 Business Central](/dynamics365/business-central/) に発展したため、Dynamics NAV Managed Service のライブ オファーは AppSource から除外されました。 これらのオファーは、顧客が検出できなくなり、パートナー センターには移動されていません。 自分のオファーを AppSource で利用できるようにするには、それらを Dynamics 365 Business Central オファーに適合させた後、[パートナー センター](https://partner.microsoft.com/)に提出してください。 詳細については、「[Dynamics 365 Business Central オファーの作成](partner-center-portal/create-new-business-central-offer.md)」を参照してください。 |

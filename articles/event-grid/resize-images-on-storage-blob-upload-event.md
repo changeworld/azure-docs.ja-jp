@@ -3,12 +3,12 @@ title: チュートリアル:Azure Event Grid を使用して、アップロー�
 description: チュートリアル:Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: ca231fc65162fe38f4dcb8b8d5677ef42c7807bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e88dff9dcf06ad5eb120c11c4c17c3ef318e4418
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550518"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897147"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>チュートリアル:Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -329,3 +329,4 @@ Web アプリでイメージのサイズ変更をテストするには、公開�
 + Azure Functions を利用するもう 1 つのチュートリアルを試すには、「[Azure Logic Apps と統合される関数を作成する](../azure-functions/functions-twitter-email.md)」をご覧ください。
 
 [previous-tutorial]: ../storage/blobs/storage-upload-process-images.md
+

@@ -4,16 +4,16 @@ description: ネットワーク ファイル システム共有をマウント�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8a993d9c1de35132198de5e3becc4f16d6a2a437
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4369619cd83dffe36cf156f523a951e1360438db
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96621299"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717079"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>NFS ファイル共有をマウントする方法
 
@@ -55,7 +55,7 @@ ms.locfileid: "96621299"
 1. 使用するマウント パスを入力し、スクリプトをコピーします。
 1. クライアントに接続し、提供されたマウント スクリプトを使用します。
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="ファイル共有接続ブレードのスクリーンショット":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="ファイル共有接続ブレードのスクリーンショット。":::
 
 これで NFS 共有がマウントされました。
 

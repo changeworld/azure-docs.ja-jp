@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 11/20/2020
 ms.author: parkerra
-ms.openlocfilehash: 596b73f8fb205b6a5681fecf3d00fd2a67c1f59f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2c85e26d5a9115b00621c4099e3ed36afb224e3f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97628714"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107880544"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>Spatial Anchors リソースを作成する
 
@@ -76,7 +76,7 @@ ms.locfileid: "97628714"
 
    [!INCLUDE [resource group intro text](resource-group.md)]
 
-   リソース グループの現在の Spatial Anchors アカウントを表示するには、[az spatial-anchors-account list](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_list) コマンドを使用します。
+   リソース グループの現在の Spatial Anchors アカウントを表示するには、[az spatial-anchors-account list](/cli/azure/spatial-anchors-account#az_spatial_anchors_account_list) コマンドを使用します。
 
    ```azurecli
    az spatial-anchors-account list --resource-group myResourceGroup
@@ -88,13 +88,13 @@ ms.locfileid: "97628714"
    az spatial-anchors-account list
    ```
 
-1. Spatial Anchors アカウントを作成するには、[az spatial-anchors-account create](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_create) コマンドを実行します。
+1. Spatial Anchors アカウントを作成するには、[az spatial-anchors-account create](/cli/azure/spatial-anchors-account#az_spatial_anchors_account_create) コマンドを実行します。
 
    ```azurecli
    az spatial-anchors-account create --resource-group myResourceGroup --name MySpatialAnchorsQuickStart --location eastus2
    ```
 
-1. [az spatial-anchors-account show](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_show) コマンドを使用して、リソースのプロパティを表示します。
+1. [az spatial-anchors-account show](/cli/azure/spatial-anchors-account#az_spatial_anchors_account_show) コマンドを使用して、リソースのプロパティを表示します。
 
    ```azurecli
    az spatial-anchors-account show --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
@@ -102,7 +102,7 @@ ms.locfileid: "97628714"
 
    リソースの **[アカウント ID]** 値とリソースの **[アカウント ドメイン]** 値を後で使用するためにテキスト エディターにコピーします。
 
-1. [az spatial-anchors-account key show](/cli/azure/ext/mixed-reality/spatial-anchors-account/key#ext_mixed_reality_az_spatial_anchors_account_key_show) コマンドを実行して、主キーとセカンダリ キーを取得します。
+1. [az spatial-anchors-account key show](/cli/azure/spatial-anchors-account/key#az_spatial_anchors_account_key_show) コマンドを実行して、主キーとセカンダリ キーを取得します。
 
    ```azurecli
    az spatial-anchors-account key show --resource-group myResourceGroup --name MySpatialAnchorsQuickStart
@@ -110,14 +110,14 @@ ms.locfileid: "97628714"
 
    後で使用するためにキー値をテキスト エディターにコピーします。
 
-   キーを再生成する必要がある場合は、[az spatial-anchors-account key renew](/cli/azure/ext/mixed-reality/spatial-anchors-account/key#ext_mixed_reality_az_spatial_anchors_account_key_renew) コマンドを使用します。
+   キーを再生成する必要がある場合は、[az spatial-anchors-account key renew](/cli/azure/spatial-anchors-account/key#az_spatial_anchors_account_key_renew) コマンドを使用します。
 
    ```azurecli
    az spatial-anchors-account key renew --resource-group myResourceGroup --name example --key primary
    az spatial-anchors-account key renew --resource-group myResourceGroup --name example --key secondary
    ```
 
-[az spatial-anchors-account delete](/cli/azure/ext/mixed-reality/spatial-anchors-account#ext_mixed_reality_az_spatial_anchors_account_delete) コマンドを使用すると、アカウントを削除できます。
+[az spatial-anchors-account delete](/cli/azure/spatial-anchors-account#az_spatial_anchors_account_delete) コマンドを使用すると、アカウントを削除できます。
 
 ```azurecli
 az spatial-anchors-account delete --resource-group myResourceGroup --name MySpatialAnchorsQuickStart

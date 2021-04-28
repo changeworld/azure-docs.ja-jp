@@ -5,24 +5,27 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/25/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: d8c3a2d961cc5b6fd719b77dae07b6e46c3d8b65
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f5bdae17126048da153f70bf27609bcc4b92fe21
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604840"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599589"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H シリーズおよび N シリーズ VM に関する既知の問題
 
 この記事は、[H シリーズ](../../sizes-hpc.md)と [N シリーズ](../../sizes-gpu.md)の HPC および GPU VM の使用時に最近よく発生している問題とその解決方法を一覧で示すことを意図したものです。
 
+## <a name="qp0-access-restriction"></a>qp0 アクセス制限
+
+セキュリティの脆弱性の原因となる可能性がある低レベルのハードウェア アクセスを防ぐために、Queue Pair 0 はゲスト VM からアクセスできません。 これは、通常、ConnectX InfiniBand NIC の管理や、ibdiagnet などの InfiniBand 診断の実行に関連するアクションのみに影響します。エンド ユーザー アプリケーションには影響しません。
+
 ## <a name="mofed-installation-on-ubuntu"></a>Ubuntu での MOFED のインストール
-Ubuntu-18.04 では、Mellanox OFED で、カーネル バージョン `5.4.0-1039-azure #42` 以降との非互換性が示されています。これにより、VM の起動時間が約30 分に増加します。 これは、Mellanox OFED のバージョン 5.2-1.0.4.0 と 5.2-2.2.0.0 の両方について報告されています。
-一時的な解決策は、**Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290** 以降の Marketplace イメージを使用することと、カーネルを更新しないことです。
-この問題は、新しい MOFED で解決されることが予想されています (未定)。
+カーネル バージョン `5.4.0-1039-azure #42` 以降が搭載された Ubuntu 18.04 ベースのマーケットプレース VM イメージでは、一部の古い Mellanox OFED に互換性がないため、場合によっては VM ブート時間が最大 30 分増加します。 これは、Mellanox OFED のバージョン 5.2-1.0.4.0 と 5.2-2.2.0.0 の両方について報告されています。 この問題は、Mellanox OFED 5.3-1.0.0.1 で解決されます。
+互換性のない OFED を使用する必要がある場合は、**Canonical:UbuntuServer:18_04-lts-gen2:18.04.202101290** またはそれ以前のマーケットプレース VM イメージを使用し、カーネルを更新しないようにすることをお勧めします。
 
 ## <a name="mpi-qp-creation-errors"></a>MPI QP 作成エラー
 MPI ワークロードの実行中に、下に示すような InfiniBand QP 作成エラーがスローされた場合、VM を再起動し、ワークロードを再試行することをお勧めします。 この問題は、今後修正される予定です。
@@ -72,10 +75,6 @@ Ubuntu VM イメージ上の cloud-init には、IB インターフェイスを�
       version: 2
     EOF
     ```
-
-## <a name="qp0-access-restriction"></a>qp0 アクセス制限
-
-セキュリティの脆弱性の原因となる可能性がある低レベルのハードウェア アクセスを防ぐために、Queue Pair 0 はゲスト VM からアクセスできません。 これは、通常、ConnectX-5 NIC の管理や、ibdiagnet などの InfiniBand 診断の実行に関連するアクションのみに影響します。エンド ユーザー アプリケーション自体には影響しません。
 
 ## <a name="dram-on-hb-series-vms"></a>HB シリーズ VM の DRAM
 

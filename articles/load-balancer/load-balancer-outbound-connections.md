@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 99f15afdab917fe28e22df8cb0e372b6c30c8526
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3b92ef3ce195a2eee9bce53e08d977593a9f1fc2
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105027331"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107477708"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>アウトバウンド接続に送信元ネットワーク アドレス変換 (SNAT) を使用する
 
@@ -64,7 +64,7 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
   * パブリック IP を持たない仮想マシン。
   * パブリック IP および標準のロード バランサーを持たない仮想マシン。
         
- ### <a name="scenario-1-virtual-machine-with-public-ip"></a><a name="scenario1"></a> シナリオ 1:パブリック IP を持つ仮想マシン。
+ ### <a name="scenario-1-virtual-machine-with-public-ip-either-with-or-without-a-load-balancer"></a><a name="scenario1"></a> シナリオ 1: ロード バランサーの有無にかかわらず、パブリック IP を持つ仮想マシン。
 
  | Associations | Method | IP プロトコル |
  | ---------- | ------ | ------------ |
@@ -72,6 +72,8 @@ SNAT を使用すると、バックエンド インスタンスの **IP マス�
 
  #### <a name="description"></a>説明
 
+ すべてのトラフィックは、仮想マシンのパブリック IP アドレス (インスタンス レベル IP) から要求元のクライアントに戻ります。
+ 
  すべてのアウトバウンド フローについて、インスタンスの NIC の IP 構成に割り当てられたパブリック IP が Azure によって使用されます。 インスタンスには、使用可能なすべてのエフェメラル ポートがあります。 VM が負荷分散されているかどうかは関係ありません。 このシナリオは他のシナリオよりも優先されます。 
 
  VM に割り当てられたパブリック IP は (1 対多ではなく) 1 対 1 の関係であり、1 対 1 のステートレス NAT として実装されます。

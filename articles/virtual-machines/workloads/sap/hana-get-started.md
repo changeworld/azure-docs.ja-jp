@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
-ms.openlocfilehash: 54bfd7c6e691efbd754e9ea2b804e16b3e07ebbe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf55dc19a78b667056da9ef614ec75f3817b5773
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670962"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141201"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines への SAP HANA のインストール
 ## <a name="introduction"></a>はじめに
@@ -94,8 +94,8 @@ Azure Premium Storage または Ultra ディスクの直接接続ディスクを
 
 ## <a name="additional-resources-for-sap-hana-backup"></a>SAP HANA バックアップ用の追加リソース
 Azure VM での SAP HANA データベースのバックアップ方法の詳細については以下を参照してください。
-* [Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](./sap-hana-backup-guide.md)
-* [ファイル レベルの SAP HANA Azure バックアップ](./sap-hana-backup-file-level.md)
+* [Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](../../../backup/sap-hana-db-about.md)
+* [ファイル レベルの SAP HANA Azure バックアップ](../../../backup/sap-hana-db-about.md)
 
 ## <a name="next-steps"></a>次のステップ
 次のドキュメントをお読みください。

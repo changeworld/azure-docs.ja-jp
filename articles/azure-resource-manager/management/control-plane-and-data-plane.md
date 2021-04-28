@@ -3,12 +3,12 @@ title: コントロール プレーンとデータ プレーンの操作
 description: コントロール プレーンとデータ プレーンの操作の違いについて説明します。 コントロール プレーンの操作は、Azure Resource Manager によって処理されます。 データ プレーンの操作は、サービスによって処理されます。
 ms.topic: conceptual
 ms.date: 09/10/2020
-ms.openlocfilehash: 76304c81a1af1eef87d12cfd4130867851a61d28
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40bb3291e4eec589c88bcd6ffd0f94a718ce8d1f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105544096"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132091"
 ---
 # <a name="azure-control-plane-and-data-plane"></a>Azure コントロール プレーンとデータ プレーン
 
@@ -33,7 +33,7 @@ Azure の操作は、コントロール プレーンとデータ プレーンの
 * Azure Germany の場合、URL は `https://management.microsoftazure.de/` です。
 * Microsoft Azure China 21Vianet の場合、URL は `https://management.chinacloudapi.cn` です。
 
-Azure Resource Manager URL を使用する操作を確認するには、[Azure REST API](/rest/api/azure/) を参照してください。 たとえば、MySql の[作成または更新操作](/rest/api/mysql/databases/createorupdate)は、要求 URL が次のようになっているため、コントロール プレーン操作です。
+Azure Resource Manager URL を使用する操作を確認するには、[Azure REST API](/rest/api/azure/) を参照してください。 たとえば、MySql の[作成または更新操作](/rest/api/mysql/flexibleserver(preview)/servers/update)は、要求 URL が次のようになっているため、コントロール プレーン操作です。
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{serverName}/databases/{databaseName}?api-version=2017-12-01
@@ -52,7 +52,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="data-plane"></a>データ プレーン
 
-データ プレーン操作の要求は、インスタンスに固有のエンドポイントに送信されます。 たとえば、Cognitive Services の[言語の検出操作](/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection)は、要求 URL が次のようになっているため、データ プレーン操作です。
+データ プレーン操作の要求は、インスタンスに固有のエンドポイントに送信されます。 たとえば、Cognitive Services の[言語の検出操作](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-language-detection.md)は、要求 URL が次のようになっているため、データ プレーン操作です。
 
 ```http
 POST {Endpoint}/text/analytics/v2.0/languages

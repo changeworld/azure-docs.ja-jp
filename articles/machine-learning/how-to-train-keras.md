@@ -9,14 +9,13 @@ ms.author: minxia
 author: mx-iao
 ms.reviewer: peterlu
 ms.date: 09/28/2020
-ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: 2b4af9dec2bf397ad2766c68d547eeac85a9a9a3
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.openlocfilehash: 5a641f349b070f3b4cb285b3d0007baa54219683
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102518366"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884428"
 ---
 # <a name="train-keras-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して Keras モデルを大規模にトレーニングする
 
@@ -243,7 +242,7 @@ for f in run.get_file_names():
 この記事では、Azure Machine Learning で Keras モデルをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
 
 * [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)
-* [トレーニング中に実行メトリクスを追跡する](how-to-track-experiments.md)
+* [トレーニング中に実行メトリクスを追跡する](how-to-log-view-metrics.md)
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 * [トレーニング済みモデルをデプロイする](how-to-deploy-and-where.md)
 * [Azure での分散型ディープ ラーニング トレーニングの参照アーキテクチャ](/azure/architecture/reference-architectures/ai/training-deep-learning)

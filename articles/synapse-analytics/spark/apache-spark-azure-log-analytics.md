@@ -10,25 +10,25 @@ ms.topic: tutorial
 ms.subservice: spark
 ms.date: 03/25/2021
 ms.custom: references_regions
-ms.openlocfilehash: 243618192593d93bba9d5229e7becfb2af62ce32
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: d32d822d0ca85c25401f17411a8d34b4fb2e1eaf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107729"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125400"
 ---
 # <a name="tutorial-use-azure-log-analytics-to-collect-and-visualize-metrics-and-logs-preview"></a>チュートリアル: Azure Log Analytics を使用してメトリックとログを収集して視覚化する (プレビュー)
 
-このチュートリアルでは、Apache Spark アプリケーションのメトリックとログを収集して [Azure Log Analytics ワークスペース](/azure/azure-monitor/logs/quick-create-workspace)に送信するために、Synapse の組み込みの Azure Log Analytics コネクタを有効にする方法について説明します。 その後、Azure Monitor ブックを利用してメトリックとログを視覚化できます。
+このチュートリアルでは、Apache Spark アプリケーションのメトリックとログを収集して [Azure Log Analytics ワークスペース](../../azure-monitor/logs/quick-create-workspace.md)に送信するために、Synapse の組み込みの Azure Log Analytics コネクタを有効にする方法について説明します。 その後、Azure Monitor ブックを利用してメトリックとログを視覚化できます。
 
 ## <a name="configure-azure-log-analytics-workspace-information-in-synapse-studio"></a>Synapse Studio で Azure Log Analytics ワークスペースの情報を構成する
 
 ### <a name="step-1-create-an-azure-log-analytics-workspace"></a>手順 1: Azure Log Analytics ワークスペースを作成する
 
 以下のドキュメントに従って、Log Analytics ワークスペースを作成できます。
-- [Azure portal で Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace)
-- [Azure CLI を使用して Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/logs/quick-create-workspace-cli)
-- [PowerShell を使用して Azure Monitor の Log Analytics ワークスペースを作成および構成する](https://docs.microsoft.com/azure/azure-monitor/logs/powershell-workspace-configuration)
+- [Azure portal で Log Analytics ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace.md)
+- [Azure CLI を使用して Log Analytics ワークスペースを作成する](../../azure-monitor/logs/quick-create-workspace-cli.md)
+- [PowerShell を使用して Azure Monitor の Log Analytics ワークスペースを作成および構成する](../../azure-monitor/logs/powershell-workspace-configuration.md)
 
 ### <a name="step-2-prepare-a-spark-configuration-file"></a>手順 2: Spark 構成ファイルを準備する
 
@@ -49,7 +49,7 @@ spark.synapse.logAnalytics.secret <LOG_ANALYTICS_WORKSPACE_KEY>
 
 > [!NOTE]
 >
-> Spark アプリケーションを送信するユーザーにシークレットの読み取りアクセス許可を付与する必要があります。 「[Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)」を参照してください。
+> Spark アプリケーションを送信するユーザーにシークレットの読み取りアクセス許可を付与する必要があります。 「[Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../../key-vault/general/rbac-guide.md)」を参照してください。
 
 ワークスペース キーを格納するよう Azure キー コンテナーを構成するには、次の手順に従います。
 
@@ -81,7 +81,7 @@ spark.synapse.logAnalytics.keyVault.key.secret <AZURE_KEY_VAULT_SECRET_KEY_NAME>
 
 > [!NOTE]
 >
-> Synapse ワークスペースに対してシークレットの読み取りアクセス許可を付与する必要があります。 「[Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](https://docs.microsoft.com/azure/key-vault/general/rbac-guide)」を参照してください。
+> Synapse ワークスペースに対してシークレットの読み取りアクセス許可を付与する必要があります。 「[Azure のロールベースのアクセス制御を使用して Key Vault のキー、証明書、シークレットへのアクセス権を付与する](../../key-vault/general/rbac-guide.md)」を参照してください。
 
 ワークスペース キーを格納するように Synapse Studio で Azure Key Vault のリンク サービスを構成するには、次の手順に従います。
 
@@ -123,7 +123,7 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 > - Azure China クラウドの場合は、"spark.synapse.logAnalytics.keyVault.uriSuffix" パラメーターを "ods.opinsights.azure.cn" にする必要があります。 
 > - Azure Gov クラウドの場合は、"spark.synapse.logAnalytics.keyVault.uriSuffix" パラメーターを "ods.opinsights.azure.us" にする必要があります。 
 
-[uri_suffix]: https://docs.microsoft.com/azure/azure-monitor/logs/data-collector-api#request-uri
+[uri_suffix]: ../../azure-monitor/logs/data-collector-api.md#request-uri
 
 
 ### <a name="step-3-upload-your-spark-configuration-to-a-spark-pool"></a>手順 3: Spark 構成を Spark プールにアップロードする
@@ -210,18 +210,14 @@ spark.synapse.logAnalytics.keyVault.linkedServiceName <LINKED_SERVICE_NAME>
 
 Azure Monitor アラートにより、ユーザーは Log Analytics クエリを使用して、設定された頻度でメトリックやログを評価し、その結果に基づいてアラートを発行することができます。
 
-詳細については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log)」を参照してください。
+詳細については、「[Azure Monitor を使用してログ アラートを作成、表示、管理する](../../azure-monitor/alerts/alerts-log.md)」を参照してください。
 
 ## <a name="limitation"></a>制限事項
 
- - [マネージド仮想ネットワーク](https://docs.microsoft.com/azure/synapse-analytics/security/synapse-workspace-managed-vnet)が有効になっている Azure Synapse Analytics ワークスペースはサポートされていません。
- - 次のリージョンは、現在サポートされていません。
-   - 米国東部 2
-   - ノルウェー東部
-   - アラブ首長国連邦北部
+[マネージド仮想ネットワーク](/azure/synapse-analytics/security/synapse-workspace-managed-vnet)が有効になっている Azure Synapse Analytics ワークスペースはサポートされていません。
 
 ## <a name="next-steps"></a>次のステップ
 
- - [Synapse Studio でサーバーレス Apache Spark プールを使用する](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)方法を学習します。
- - [ノートブックで Spark アプリケーションを実行する](https://docs.microsoft.com/azure/synapse-analytics/spark/apache-spark-development-using-notebooks)方法を学習します。
- - [Synapse Studio で Apache Spark ジョブ定義を作成する](https://docs.microsoft.com/azure/synapse-analytics/spark/apache-spark-job-definitions)方法を学習します。
+ - [Synapse Studio でサーバーレス Apache Spark プールを使用する](../quickstart-create-apache-spark-pool-studio.md)方法を学習します。
+ - [ノートブックで Spark アプリケーションを実行する](./apache-spark-development-using-notebooks.md)方法を学習します。
+ - [Synapse Studio で Apache Spark ジョブ定義を作成する](./apache-spark-job-definitions.md)方法を学習します。

@@ -6,12 +6,12 @@ ms.author: vimeht
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 5956b7b74d27a4f9a2b79ee3950c8ac765610c70
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d3f7f4e1cdd56675d6084448abc810c9a41992f9
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558484"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520141"
 ---
 # <a name="device-update-for-iot-hub-resource-management"></a>Device Update for IoT Hub リソース管理
 
@@ -95,6 +95,9 @@ IoT Hub を構成するには
    :::image type="content" source="media/create-device-update-account/instance-configure-selected.png" alt-text="インスタンスの IoT Hub の構成に同意するスクリーンショット。" lightbox="media/create-device-update-account/instance-configure-selected.png":::
 
 3. [更新] をクリックします
+
+   > [!NOTE] 
+   > Azure IoT Hub の Free レベルを使用している場合、許可されるメッセージ ルートの数は 5 つに制限されます。 Device Update for IoT Hub では、4 つのメッセージ ルートが想定どおりに動作するように構成する必要があります。 
 
 [構成されたメッセージ ルートを確認します。](device-update-resources.md) 
 

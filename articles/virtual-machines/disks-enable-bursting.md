@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 5110e580bada7bb1090b17d6df22a9354622e8e4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 7be60cb8c9863878cc4ba2f57098556ccedde01d
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483148"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107892060"
 ---
 # <a name="enable-on-demand-bursting"></a>オンデマンドのバーストを有効にする
 

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: apedward
-ms.openlocfilehash: f82ae60ab7f57b20a727deefa6e286d698ee5b6c
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 4283bccf543dc496342d64cc0e7b898a4f279866
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365758"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141633"
 ---
 # <a name="tutorial-publish-azure-static-web-apps-with-azure-devops"></a>チュートリアル: Azure DevOps を使用して Azure Static Web Apps を発行する
 
@@ -27,7 +27,7 @@ ms.locfileid: "107365758"
 
 - **アクティブな Azure アカウント:** お持ちでない場合は、[無料でアカウントを作成](https://azure.microsoft.com/free/)できます。
 - **Azure DevOps Projects:** お持ちでない場合は、[無料でプロジェクトを作成](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/)できます。
-- **Azure DevOps パイプライン:** ご不明な点がある場合は、まず「[最初のパイプラインの作成](https://docs.microsoft.com/azure/devops/pipelines/create-first-pipeline?view=azure-devops&preserve-view=true)」を参照してください。
+- **Azure DevOps パイプライン:** ご不明な点がある場合は、まず「[最初のパイプラインの作成](/azure/devops/pipelines/create-first-pipeline?preserve-view=true&view=azure-devops)」を参照してください。
 
 ## <a name="create-a-static-web-app-in-an-azure-devops-repository"></a>Azure DevOps リポジトリに静的 Web アプリを作成する
 

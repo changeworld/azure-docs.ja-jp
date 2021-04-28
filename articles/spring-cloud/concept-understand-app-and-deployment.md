@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 5473daedc8a7ad5a3b6ddffc65234160d4b3019d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8a543d3f6a875c41b3657ccc947c6f697bbcfd09
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877626"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129119"
 ---
 # <a name="app-and-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud でのアプリとデプロイ
 
@@ -58,4 +58,4 @@ Azure Spring Cloud の Standard レベルでは、1 つのアプリに 1 つの�
 * **Basic レベルではデプロイ管理を使用できない**:ブルー/グリーン デプロイ機能を使用する場合は、Standard レベルを使用します。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Spring Cloud でステージング環境を設定する](spring-cloud-howto-staging-environment.md)
+* [Azure Spring Cloud でステージング環境を設定する](./how-to-staging-environment.md)

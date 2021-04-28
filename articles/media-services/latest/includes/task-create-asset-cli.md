@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 08/18/2020
 ms.author: inhenkel
 ms.custom: CLI, devx-track-azurecli
-ms.openlocfilehash: e16e3dc6788fb30a87a78fd6d6077087f461cfa7
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 76c6a67b0bad6095a6340ccab4fbd49c7cad1698
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107513520"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107893248"
 ---
 <!--Create a media services asset CLI-->
 

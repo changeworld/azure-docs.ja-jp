@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f28ddfc272e6f95106595958cacfe732b2bfc3cc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: a60634175ff06780372331bef6b28de2edbfea33
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258692"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144639"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud に関する FAQ
 
@@ -63,7 +63,7 @@ Azure Spring Cloud で問題が発生した場合は、[Azure サポート要求
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>私は Spring Cloud 開発者ですが、Azure は初めてです。 Azure Spring Cloud アプリケーションの開発方法を学習するための最もすばやい方法は何ですか?
 
-Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」の手順に従ってください。
+Azure Spring Cloud の使用を開始するための最もすばやい方法として、「[クイック スタート: Azure portal を使用して Azure Spring Cloud アプリケーションを起動する](./quickstart.md)」の手順に従ってください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Azure Spring Cloud はどの Java ランタイムをサポートしていますか?
@@ -96,7 +96,7 @@ Azure Spring Cloud は、Spring Cloud アプリケーションのログとメト
 
 ### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Azure Spring Cloud は分散トレースをサポートしていますか?
 
-はい。 詳細については、[Azure Spring Cloud で分散トレースを使用する](spring-cloud-howto-distributed-tracing.md)」を参照してください。
+はい。 詳細については、[Azure Spring Cloud で分散トレースを使用する](./how-to-distributed-tracing.md)」を参照してください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-resource-types-does-service-binding-support"></a>サービス バインディングでサポートされるリソースの種類は何ですか?
@@ -186,7 +186,7 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 ## <a name="deployment"></a>デプロイ
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Azure Spring Cloud はブルーグリーン デプロイをサポートしていますか?
-はい。 詳細については、[ステージング環境の設定](spring-cloud-howto-staging-environment.md)に関するページを参照してください。
+はい。 詳細については、[ステージング環境の設定](./how-to-staging-environment.md)に関するページを参照してください。
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Kubernetes にアクセスしてアプリケーション コンテナーを操作することはできるのでしょうか?
 
@@ -194,11 +194,11 @@ Azure Spring Cloud に適用される重要なセキュリティ パッチ (CVE 
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud でソースからコンテナーを構築することはできますか?
 
-はい。 詳細については、「[ソース コードから Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」を参照してください。
+はい。 詳細については、「[ソース コードから Spring Cloud アプリケーションを起動する](./quickstart.md)」を参照してください。
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud はアプリ インスタンス内での自動スケーリングをサポートしていますか?
 
-はい。  詳細については、[自動スケーリングの設定](spring-cloud-tutorial-setup-autoscale.md)に関するページを参照してください。
+はい。  詳細については、[自動スケーリングの設定](./how-to-setup-autoscale.md)に関するページを参照してください。
 
 ::: zone pivot="programming-language-java"
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>既存の Spring Cloud マイクロサービスを Azure Spring Cloud に移行するためのベスト プラクティスはどのようなものですか?
@@ -243,4 +243,4 @@ Eureka クライアントには、それに対処するハートビートと再�
 
 ## <a name="next-steps"></a>次のステップ
 
-さらに質問がある場合は、[Azure Spring Cloud のトラブルシューティング ガイド](spring-cloud-troubleshoot.md)に関するページを参照してください。
+さらに質問がある場合は、[Azure Spring Cloud のトラブルシューティング ガイド](./troubleshoot.md)に関するページを参照してください。

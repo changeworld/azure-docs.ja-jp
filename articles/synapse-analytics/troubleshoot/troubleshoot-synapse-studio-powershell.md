@@ -3,17 +3,17 @@ title: Synapse Studio の接続についてのトラブルシューティング
 description: PowerShell を使用した Azure Synapse Studio 接続のトラブルシューティング
 author: saveenr
 ms.service: synapse-analytics
-ms.subservice: workspace
+ms.subservice: troubleshooting
 ms.topic: conceptual
 ms.date: 10/30/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2bbdaef9268239005cdf5ea7fbee6734dadc8113
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 431ceed6f6f272c4473b6fc4e5b59941b4a94b5e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566252"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143217"
 ---
 # <a name="troubleshoot-synapse-studio-connectivity-with-powershell"></a>PowerShell を使用した Synapse Studio 接続のトラブルシューティング
 

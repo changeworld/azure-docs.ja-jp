@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 61c4125038ea0c64ff8489a25f9c63c5cbb82a21
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 7fceffb20f670aedc5d6df01f8a78e027dc7c2dd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104583821"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
@@ -140,8 +140,8 @@ Brightspace by Desire2Learn に対する Azure AD SSO を構成してテスト�
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した Brightspace by Desire2Learn に自動的にサインインされます。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [Brightspace by Desire2Learn] タイルをクリックすると、SSO を設定した Brightspace by Desire2Learn に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [Brightspace by Desire2Learn] タイルをクリックすると、SSO を設定した Brightspace by Desire2Learn に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Brightspace by Desire2Learn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Brightspace by Desire2Learn を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

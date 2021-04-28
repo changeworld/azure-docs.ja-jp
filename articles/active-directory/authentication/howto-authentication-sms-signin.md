@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e9052502eba71f025bb6724278b7001173c5217
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b84d55e2d3a2f49a870c1e57eeed3c5c0caeba4a
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103491619"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107530411"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory"></a>Azure Active Directory を使用して SMS ベース認証用にユーザーを構成して有効にする 
 
@@ -149,7 +149,7 @@ Azure portal でユーザーのアカウントに電話番号を設定しよう�
 
 Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パスワードを使用せずに Azure AD にサインインするその他の方法については、「[Azure AD のパスワードレス認証オプション][concepts-passwordless]」を参照してください。
 
-また、Microsoft Graph REST API ベータ版を使用して、SMS ベースのサインインを[有効][rest-enable]または[無効][rest-disable]にすることができます。
+また、Microsoft Graph REST API を使用して、SMS ベースのサインインを、[有効][rest-enable]または[無効][rest-disable]にすることもできます。
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../fundamentals/sign-up-organization.md
@@ -157,8 +157,8 @@ Microsoft Authenticator アプリや FIDO2 セキュリティ キーなど、パ
 [concepts-passwordless]: concept-authentication-passwordless.md
 [tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [tutorial-sspr]: tutorial-enable-sspr.md
-[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?view=graph-rest-beta&tabs=http
-[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?view=graph-rest-beta&tabs=http
+[rest-enable]: /graph/api/phoneauthenticationmethod-enablesmssignin?tabs=http
+[rest-disable]: /graph/api/phoneauthenticationmethod-disablesmssignin?tabs=http
 
 <!-- EXTERNAL LINKS -->
 [azure-portal]: https://portal.azure.com

@@ -6,17 +6,17 @@ author: gvashishtha
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/17/2020
 ms.author: gopalv
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: f88b6bd79e1004c108ef868f910a4e5a974cc08a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e585f9502025117bae406492131184b0d2ecc41
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508539"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889756"
 ---
 # <a name="advanced-entry-script-authoring"></a>高度なエントリ スクリプトの作成
 

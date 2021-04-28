@@ -5,18 +5,18 @@ description: 自動機械学習の実験のためにデータセットの分割�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, automl
+ms.topic: how-to
+ms.custom: automl
 ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 02/23/2021
-ms.openlocfilehash: 31d3dc2c2d8194541ba1fe7d0865e6c939d75f73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00c3cd6f6a4e5878a3a426aa5622cc53487f2bdd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102501584"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131406"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>自動機械学習の実験でデータの分割とクロス検証を構成する
 
@@ -47,7 +47,7 @@ Azure Machine Learning では、自動 ML を使用して複数の ML モデル�
 
 ## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>機械学習での既定のデータ分割とクロス検証
 
-[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトを使用して、実験とトレーニングの設定を定義します。 次のコード スニペットでは、必須パラメーターのみが定義されていることに注意してください。つまり、`n_cross_validation` または `validation_ data` のパラメーターは **含まれていません**。
+[AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) オブジェクトを使用して、実験とトレーニングの設定を定義します。 次のコード スニペットでは、必須パラメーターのみが定義されていることに注意してください。つまり、`n_cross_validations` または `validation_data` のパラメーターは **含まれていません**。
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -62,7 +62,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-`validation_data` または `n_cross_validation` のいずれかのパラメーターを明示的に指定しない場合は、1 つのデータセット `training_data` で指定された行数に応じて、自動 ML によって既定の方法が適用されます。
+`validation_data` または `n_cross_validations` のいずれかのパラメーターを明示的に指定しない場合は、1 つのデータセット `training_data` で指定された行数に応じて、自動 ML によって既定の方法が適用されます。
 
 |トレーニング&nbsp;データ&nbsp;のサイズ| 検証の方法 |
 |---|-----|

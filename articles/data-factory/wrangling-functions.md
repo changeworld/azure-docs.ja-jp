@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/19/2021
-ms.openlocfilehash: 659f6527d43e1b45a11fddf774050ca6d42bfe12
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: f7a4041d87e00fa01ae5ae4dff0cade3b9755d31
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98896665"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600941"
 ---
 # <a name="transformation-functions-in-power-query-for-data-wrangling"></a>データ ラングリングのための Power Query の変換関数
 
@@ -99,6 +99,23 @@ Azure Data Factory のデータ ラングリングを使用すると、Power Que
 | 行レベルのエラー処理 | 行レベルのエラー処理は現在サポートされていません。 たとえば、列から数値以外の値を除外する方法の 1 つは、テキスト列を数値に変換することです。 変換が失敗したすべてのセルはエラー状態になり、フィルター処理する必要があります。 このシナリオは、スケールアウトされた M では実現できません。 |
 | Table.Transpose | サポートされていません |
 | Table.Pivot | サポートされていません |
+| Table.SplitColumn | 部分的にサポートされています。 |
+
+## <a name="m-script-workarounds"></a>M スクリプトの回避策
+
+### <a name="for-splitcolumn-there-is-an-alternate-for-split-by-length-and-by-position"></a>```SplitColumn``` には、長さおよび位置で分割する代替方法があります
+
+* Table.AddColumn(Source, "First characters", each Text.Start([Email], 7), type text)
+* Table.AddColumn(#"Inserted first characters", "Text range", each Text.Middle([Email], 4, 9), type text)
+
+このオプションは、リボンの [抽出] オプションからアクセスできます
+
+![Power Query の [列の追加]](media/wrangling-data-flow/pq-split.png)
+
+### <a name="for-tablecombinecolumns"></a>```Table.CombineColumns``` の場合
+
+* Table.AddColumn(RemoveEmailColumn, "Name", each [FirstName] & " " & [LastName])
+
 
 ## <a name="next-steps"></a>次のステップ
 

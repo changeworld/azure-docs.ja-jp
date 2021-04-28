@@ -5,22 +5,22 @@ description: 統一されたデータ ラングリング エクスペリエン�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 03/08/2021
-ms.custom: how-to, devx-track-python, data4ml, synapse-azureml
-ms.openlocfilehash: 23184eee67013e39400446db5f744dd0ddb7bc50
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.custom: devx-track-python, data4ml, synapse-azureml
+ms.openlocfilehash: 3ee5986fbe92d7e585a7c9f2f50bdeceb132c268
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575738"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131388"
 ---
 # <a name="link-azure-synapse-analytics-and-azure-machine-learning-workspaces-preview"></a>Azure Synapse Analytics と Azure Machine Learning のワークスペースをリンクする (プレビュー)
 
-この記事では、[Azure Synapse Analytics](/azure/synapse-analytics/overview-what-is) ワークスペースと [Azure Machine Learning ワークスペース](concept-workspace.md)をリンクするリンク サービスを作成する方法について説明します。
+この記事では、[Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) ワークスペースと [Azure Machine Learning ワークスペース](concept-workspace.md)をリンクするリンク サービスを作成する方法について説明します。
 
 Azure Machine Learning ワークスペースを Azure Synapse ワークスペースとリンクすることで、Apache Spark プールを大規模なデータ ラングリング専用コンピューティングとしてアタッチしたり、モデルのトレーニングを実施したりする作業を、すべて同じ Python ノートブックから行うことができます。
 
@@ -35,9 +35,9 @@ ML ワークスペースと Synapse ワークスペースのリンクは、[Pyth
 
 * [Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md?tabs=python)します。
 
-* [Azure portal で Synapse ワークスペースを作成](/azure/synapse-analytics/quickstart-create-workspace)します。
+* [Azure portal で Synapse ワークスペースを作成](../synapse-analytics/quickstart-create-workspace.md)します。
 
-* [Azure portal、Web ツール、または Synapse Studio を使用して Apache Spark プールを作成](/azure/synapse-analytics/quickstart-create-apache-spark-pool-studio)します。
+* [Azure portal、Web ツール、または Synapse Studio を使用して Apache Spark プールを作成](../synapse-analytics/quickstart-create-apache-spark-pool-studio.md)します。
 
 * [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro) をインストールします。
 

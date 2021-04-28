@@ -7,13 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 90b7b6aebfce1c37bef76d371d829048d755e39e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00765a51ad07cd53fde403ed1cfabb73c5692026
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147263"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076871"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -335,7 +334,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-[Azure portal](https://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create)に関する Azure CLI のページを参照してください。
+[Azure portal](https://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create)に関する Azure CLI のページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

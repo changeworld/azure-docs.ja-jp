@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 02/18/2020
-ms.openlocfilehash: 0a3fd1b492d19e241d89cc5477891c7c836e4640
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 063ebc43e0654268b758c705ca2a92b8cf88fb35
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078980"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136303"
 ---
 # <a name="migration-overview-sql-server-to-azure-sql-managed-instance"></a>移行の概要: SQL Server から Azure SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ SQL Server データベースを Azure SQL Managed Instance に移行するた�
 - Google Cloud Platform (GCP) の Compute Engine。  
 - GCP の Cloud SQL for SQL Server。 
 
-その他の移行ガイドについては、[データベースの移行](https://docs.microsoft.com/data-migration)に関するページを参照してください。 
+その他の移行ガイドについては、[データベースの移行](/data-migration)に関するページを参照してください。 
 
 ## <a name="overview"></a>概要
 
@@ -173,7 +173,7 @@ PowerShell ユーティリティでは、Windows Server Active Directory アカ�
 
 ### <a name="encryption"></a>暗号化
 
-ネイティブ復元オプションを使用して、 [Transparent Data Encryption](../../database/transparent-data-encryption-tde-overview.md)  によって保護されているデータベースをマネージド インスタンスに移行する場合は、データベースの復元 "*前*" に、ソース SQL Server インスタンスからターゲット SQL マネージド インスタンスに[対応する証明書を移行します](../../managed-instance/tde-certificate-migrate.md)。 
+ネイティブ復元オプションを使用して、 [Transparent Data Encryption](../../database/transparent-data-encryption-tde-overview.md)  によって保護されているデータベースをマネージド インスタンスに移行する場合は、データベースの復元 "*前*" に、ソース SQL Server インスタンスからターゲット SQL マネージド インスタンスに [対応する証明書を移行します](../../managed-instance/tde-certificate-migrate.md)。 
 
 ### <a name="system-databases"></a>システム データベース
 

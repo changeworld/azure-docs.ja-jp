@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 8e8bdaa7a812d8c7accfea59b58b75a58d50e21e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8e1d16ad0d3fd0e45917754b028c4af362a1e9f4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789611"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142965"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-the-azure-cli"></a>Azure CLI を使用して Azure Spot Virtual Machines をデプロイする
 
@@ -90,7 +90,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 この最初の応答には最大 2 分かかることがあります。 これ以降は、ほぼ瞬時に出力が表示されます。
 
-(ローカル コンピューターと同様) Azure CLI がインストールされているコンピューターから、[az vm simulate-eviction](https://docs.microsoft.com/cli/azure/vm#az_vm_simulate_eviction) を使用して削除をシミュレートします。 リソース グループ名と VM 名を実際の名前に置き換えます。 
+(ローカル コンピューターと同様) Azure CLI がインストールされているコンピューターから、[az vm simulate-eviction](/cli/azure/vm#az_vm_simulate_eviction) を使用して削除をシミュレートします。 リソース グループ名と VM 名を実際の名前に置き換えます。 
 
 ```azurecli-interactive
 az vm simulate-eviction --resource-group mySpotRG --name mySpot

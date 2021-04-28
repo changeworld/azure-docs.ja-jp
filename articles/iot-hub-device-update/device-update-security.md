@@ -3,15 +3,15 @@ title: Device Update for Azure IoT Hub のセキュリティ | Microsoft Docs
 description: Device Update for IoT Hub によってデバイスの安全な更新が保証されるしくみについて説明します。
 author: lichris
 ms.author: lichris
-ms.date: 2/11/2021
+ms.date: 4/15/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: 86b2dbe6a28d1440f93788eb40e133d9b62d3f0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b10049e03e26cfe8da2bd57cc9f69dd933af706b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102489431"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567300"
 ---
 # <a name="device-update-security-model"></a>Device Update のセキュリティ モデル
 
@@ -23,9 +23,11 @@ Device Update ワークフローの各ステップは、さまざまなセキュ
 
 ソリューション オペレーターが Device Update インスタンスに更新をインポートする際、悪意のあるユーザーによる変更またはスワップ アウトが行われていないことを保証するために、更新のバイナリ ファイルはサービスによってアップロードおよびチェックされます。 検証されると、Device Update サービスにより、インポート マニフェストからのファイル ハッシュやその他のメタデータを使用して、内部的な[更新マニフェスト](./update-manifest.md)が生成されます。 その後、この更新マニフェストは Device Update サービスによって署名されます。
 
+更新プログラムのバイナリ ファイルとそれに関連付する顧客のメタデータは、サービスに取り込まれ、Azure に格納された後、Azure storage サービスによって保存時に自動的に暗号化されます。 デバイス更新サービスでは、追加の暗号化は自動的に提供されませんが、コンテンツがデバイス更新サービスに到達する前に、開発者が自分でコンテンツを暗号化できます。
+
 ソリューション オペレーターがデバイスの更新を要求すると、署名されたメッセージが、保護された IoT Hub チャネルを介してデバイスに送信されます。 要求の署名は、デバイスの Device Update エージェントによって真正性が検証されます。 
 
-結果として生成されるバイナリ ダウンロードは、更新マニフェスト署名の検証を通じてセキュリティで保護されます。 更新マニフェストにはバイナリ ファイルのハッシュが含まれているため、マニフェストがいったん信頼されれば、Device Update エージェントはそのハッシュを信頼してバイナリと照合します。 ダウンロードされて検証された更新バイナリは、次に、デバイス上のインストーラーに渡されます。
+結果として生成されるバイナリ ダウンロードは、更新マニフェスト署名の検証を通じてセキュリティで保護されます。 更新マニフェストにはバイナリ ファイルのハッシュが含まれているため、マニフェストがいったん信頼されれば、Device Update エージェントはそのハッシュを信頼してバイナリと照合します。 ダウンロードされて検証された更新プログラムのバイナリは、その後、デバイス上のインストーラーに安全な方法で渡されます。
 
 ## <a name="for-device-builders"></a>デバイス ビルダーの場合
 

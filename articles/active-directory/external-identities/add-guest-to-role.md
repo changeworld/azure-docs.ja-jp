@@ -12,16 +12,18 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e9983c265fcc032908424f747066f8f348771f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 455d0ee4855645104dda662785794225f5a23d2d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87907840"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138061"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する
 
 Azure Active Directory (Azure AD) B2B コラボレーション ユーザーはゲスト ユーザーとしてディレクトリに追加され、ディレクトリのゲスト アクセス許可は既定で制限されています。 一部のゲスト ユーザーを組織内の上位の特権ロールに入れる必要がある場合があります。 上位の特権ロールの定義をサポートするために、ゲスト ユーザーを組織のニーズに合わせて任意のロールに追加することができます。
+
+ディレクトリ ロールがゲスト ユーザーに割り当てられている場合は、ロールに付属する追加アクセス許可がゲスト ユーザーに付与されます。これには、基本の読み取りアクセス許可が含まれます。 「[Azure AD の組み込みロール](../roles/permissions-reference.md)」を参照してください。
 
 ## <a name="default-role"></a>既定のロール
 

@@ -1,19 +1,19 @@
 ---
 title: Azure Image Builder で Windows VM を作成する (プレビュー)
 description: Azure Image Builder で Windows VM を作成します。
-author: cynthn
-ms.author: cynthn
-ms.date: 03/02/2020
+author: kof-f
+ms.author: kofiforson
+ms.date: 04/23/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subervice: image-builder
 ms.colletion: windows
-ms.openlocfilehash: b93d236d0b716bfaf7dfb45b21c9524ece75fcae
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: cd941868cd03a456ba78b57bcfeae5f8adfb59f4
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764569"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107948205"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder"></a>プレビュー:Azure Image Builder で Windows VM を作成する
 

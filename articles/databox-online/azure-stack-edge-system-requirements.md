@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 02/05/2021
+ms.date: 04/26/2021
 ms.author: alkohli
-ms.openlocfilehash: c87c8cfd40903f6296f0a36f5c83c0b5c5cb7818
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e49d460d5ba7bf9131bc0a2f7ec0c1c9a6e653b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831581"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076781"
 ---
 # <a name="azure-stack-edge-pro-system-requirements"></a>Azure Stack Edge Pro のシステム要件
 

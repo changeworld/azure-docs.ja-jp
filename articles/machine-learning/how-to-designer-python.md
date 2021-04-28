@@ -8,14 +8,14 @@ ms.subservice: core
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2020
-ms.topic: conceptual
-ms.custom: how-to, designer, devx-track-python
-ms.openlocfilehash: dcc28d98efbc82079586de8cfbecd35effc93d6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: designer, devx-track-python
+ms.openlocfilehash: ffb46fcc4576e4b4daaf3be02625e9f9cf00a461
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94556235"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885238"
 ---
 # <a name="run-python-code-in-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーでの Python コードの実行
 

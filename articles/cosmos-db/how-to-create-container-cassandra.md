@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
-ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 01030a563c15eee7786058c2eae30d23803dfe42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 80c9ae5ca4b3bb439ced6b7dd5af0d71ed8ae295
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93101648"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074279"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-cassandra-api"></a>Azure Cosmos DB Cassandra API でコンテナーを作成する
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]

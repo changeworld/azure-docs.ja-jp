@@ -3,12 +3,12 @@ title: Azure Event Grid - 配信されたイベントにカスタム ヘッダ�
 description: 配信されたイベントにカスタム ヘッダー (または配信プロパティ) を設定する方法について説明します。
 ms.topic: conceptual
 ms.date: 03/24/2021
-ms.openlocfilehash: fb6f0de7919ed7cf9072c0fa35e8f9be5cb5e7db
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 515f2687781329d0f9f9648460663a0a30f7c637
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278288"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887447"
 ---
 # <a name="custom-delivery-properties"></a>カスタム配信プロパティ
 イベント サブスクリプションを使用すると、配信されたイベントに含まれる HTTP ヘッダーを設定できます。 この機能を使用すると、宛先に必要なカスタム ヘッダーを設定できます。 イベント サブスクリプションを作成するときに、最大 10 個のヘッダーを設定できます。 各ヘッダーの値は、4,096 (4 K) バイトより大きくすることはできません。
@@ -58,7 +58,7 @@ Authorization: BEARER SlAV32hkKG...
 ```
 
 > [!NOTE]
-> Authorization ヘッダーを定義することは、宛先が Webhook の場合、適切なオプションです。 [リソース ID を使用してサブスクライブしている関数](/rest/api/eventgrid/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination)、Service Bus、Event Hubs、および Hybrid Connections には使用しないでください。Event Grid と使用した場合、これらの宛先では独自の認証スキームがサポートされているからです。
+> Authorization ヘッダーを定義することは、宛先が Webhook の場合、適切なオプションです。 [リソース ID を使用してサブスクライブしている関数](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate#azurefunctioneventsubscriptiondestination)、Service Bus、Event Hubs、および Hybrid Connections には使用しないでください。Event Grid と使用した場合、これらの宛先では独自の認証スキームがサポートされているからです。
 
 ### <a name="service-bus-example"></a>Service Bus の例
 Azure Service Bus では、1 つのメッセージを送信するときに、[BrokerProperties HTTP ヘッダー](/rest/api/servicebus/message-headers-and-properties#message-headers)を使用してメッセージ プロパティを定義することがサポートされています。 `BrokerProperties` ヘッダーの値は、JSON 形式で指定する必要があります。 たとえば、Service Bus に 1 つのメッセージを送信するときにメッセージ プロパティを設定する必要がある場合は、次のようにヘッダーを設定します。

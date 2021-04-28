@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de8af71928ad6a83d4930e4e6e0b8dd257148111
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09fc8f9697f418533131e86c069afd3157a71c78
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101666611"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142983"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>SAP HANA 用 Azure NetApp Files 上の NFS v4.1 ボリューム
 
@@ -137,7 +137,7 @@ ANF を使用する際は、基になるインフラストラクチャどのよ�
  
 
 ## <a name="backup"></a>バックアップ
-「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](./sap-hana-backup-guide.md)」の説明にある SAP HANA データベースをバックアップするストリーミング バックアップと Azure Back サービスに加えて、Azure NetApp Files により、ストレージベースのスナップショット バックアップを実行することができるようになります。 
+「[Azure Virtual Machines 上の SAP HANA のバックアップ ガイド](../../../backup/sap-hana-db-about.md)」の説明にある SAP HANA データベースをバックアップするストリーミング バックアップと Azure Back サービスに加えて、Azure NetApp Files により、ストレージベースのスナップショット バックアップを実行することができるようになります。 
 
 SAP HANA では以下がサポートされます。
 

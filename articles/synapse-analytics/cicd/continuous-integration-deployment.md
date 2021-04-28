@@ -1,19 +1,19 @@
 ---
 title: Synapse ワークスペースの継続的インテグレーションとデリバリー
 description: 継続的インテグレーションとデリバリーを使用してワークスペース内の変更をある環境 (開発、テスト、運用) から別の環境にデプロイする方法について説明します。
-services: synapse-analytics
-author: liud
+author: liudan66
 ms.service: synapse-analytics
+ms.subservice: cicd
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: de3738573bb9bb6f045a45d290c74ba9e6902a5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d49deef4cc7f646032219ff9e8f541cc9c1afd6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103561959"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131189"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse ワークスペースの継続的インテグレーションとデリバリー
 
@@ -21,16 +21,61 @@ ms.locfileid: "103561959"
 
 継続的インテグレーション (CI) は、チーム メンバーが変更をバージョン コントロールにコミットするたびに、コードのビルドとテストを自動化するプロセスです。 継続的配置 (CD) は、複数のテスト環境またはステージング環境から運用環境へのビルド、テスト、構成、およびデプロイを行うプロセスです。
 
-Azure Synapse ワークスペースでは、継続的インテグレーションとデリバリー (CI/CD) を使用して、すべてのエンティティをある環境 (開発、テスト、運用) から別の環境に移動します。 ワークスペースを別のワークスペースに昇格させるには、次の 2 つの部分があります。[Resource Manager テンプレート](../../azure-resource-manager/templates/overview.md)を使用して、ワークスペース リソース (プールとワークスペース) を作成または更新します。Azure DevOps の Synapse CI/CD ツールを使用して、アーティファクト (SQL スクリプト、ノートブック、Spark ジョブの定義、パイプライン、データセット、データフローなど) を移行します。 
+Azure Synapse Analytics ワークスペースでは、継続的インテグレーションとデリバリー (CI/CD) を使用して、すべてのエンティティをある環境 (開発、テスト、運用) から別の環境に移動します。 ワークスペースを別のワークスペースに昇格させるには、2 つの部分があります。 まず、[Azure Resource Manager テンプレート (ARM テンプレート)](../../azure-resource-manager/templates/overview.md) を使用して、ワークスペースのリソース (プールとワークスペース) を作成または更新します。 次に、Azure DevOps の Azure Synapse Analytics CI/CD ツールを使用して、アーティファクト (SQL スクリプト、ノートブック、Spark ジョブの定義、パイプライン、データセット、データ フローなど) を移行します。 
 
-この記事では、Azure リリース パイプラインを使用して、複数の環境への Synapse ワークスペースのデプロイを自動化する方法について説明します。
+この記事では、Azure DevOps のリリース パイプラインを使用して、複数の環境への Azure Synapse ワークスペースのデプロイを自動化する方法について説明します。
 
 ## <a name="prerequisites"></a>[前提条件]
 
--   開発に使用されているワークスペースは、Studio の Git リポジトリを使用して構成されています。[Synapse Studio でのソース管理](source-control.md)に関するページを参照してください。
--   リリース パイプラインを実行するための Azure DevOps プロジェクトが準備されています。
+複数の環境への Azure Synapse ワークスペースのデプロイを自動化するには、次の前提条件と構成が満たされている必要があります。
 
-## <a name="set-up-a-release-pipelines"></a>リリース パイプラインの設定
+### <a name="azure-devops"></a>Azure DevOps
+
+- リリース パイプラインを実行するための Azure DevOps プロジェクトが準備されている。
+- リポジトリを表示できるようにするため、[コード "Basic" をチェックインするユーザーに組織レベルでのアクセスを付与します](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page&preserve-view=true)。
+- Azure Synapse リポジトリに対する所有者権限を付与します。
+- セルフホステッド Azure DevOps VM エージェントを作成したこと、または Azure DevOps ホステッド エージェントを使用していることを確認します。
+- [リソース グループの Azure Resource Manager サービス接続を作成する](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml&preserve-view=true)ためのアクセス許可。
+- Azure Active Directory (Azure AD) の管理者は、[Azure DevOps 組織に Azure DevOps Synapse Workspace Deployment Agent 拡張機能をインストールする](/azure/devops/marketplace/install-extension)必要があります。
+- パイプラインを実行するための既存のサービス アカウントを作成または指名します。 サービス アカウントの代わりに個人用アクセス トークンを使用できますが、そのユーザー アカウントが削除されるとパイプラインが機能しなくなります。
+
+### <a name="azure-active-directory"></a>Azure Active Directory
+
+- Azure AD で、デプロイに使用するサービス プリンシパルを作成します。 Synapse ワークスペース デプロイ タスクでは、バージョン 1* 以前のマネージド ID の使用はサポートされていません。
+- この操作には Azure AD の管理者権限が必要です。
+
+### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
+
+> [!NOTE]
+> 次の前提条件は、同じパイプライン、ARM テンプレート、または Azure CLI を使用して自動化およびデプロイできますが、この記事ではその手順を説明していません。
+
+- 開発に使用される "ソース" ワークスペースは、Synapse Studio の Git リポジトリを使用して構成する必要があります。 詳細については、「[Synapse Studio でのソース管理](source-control.md#configuration-method-2-manage-hub)」を参照してください。
+
+- デプロイ先の空のワークスペース。 空のワークスペースを設定するには、次の手順を実行します。
+
+  1. 新しい Azure Synapse Analytics ワークスペースを作成します。
+  1. 新しいワークスペースがホストされるリソース グループに、VM エージェントとサービス プリンシパルの共同作成者権限を付与します。
+  1. 新しいワークスペースでは、Git リポジトリ接続を構成しないでください。
+  1. Azure portal で、新しい Azure Synapse Analytics ワークスペースを見つけて、自分と Azure DevOps パイプラインを実行するユーザーに Azure Synapse Analytics ワークスペースの所有者権限を付与します。 
+  1. Azure DevOps VM エージェントとサービス プリンシパルをワークスペースの共同作成者ロールに追加します (これは継承されているはずですが、そうなっていることを確認します)。
+  1. Azure Synapse Analytics ワークスペースで、 **[Studio]**  >  **[管理]**  >  **[IAM]** に移動します。 Azure DevOps VM エージェントとサービス プリンシパルをワークスペース管理者グループに追加します。
+  1. ワークスペースに使用するストレージ アカウントを開きます。 IAM で、VM エージェントとサービス プリンシパルをストレージ BLOB データ選択共同作成者ロールに追加します。
+  1. サポート サブスクリプションでキー コンテナーを作成し、既存のワークスペースと新しいワークスペースの両方にこのコンテナーに対する GET および LIST アクセス許可が少なくとも付与されるようにします。
+  1. 自動デプロイを機能させるには、リンク サービスで指定されているすべての接続文字列がキー コンテナーにあることを確認します。
+
+### <a name="additional-prerequisites"></a>追加の前提条件
+ 
+ - Spark プールとセルフホステッド統合ランタイムは、パイプラインでは作成されません。 セルフホステッド統合ランタイムを使用するリンク サービスがある場合は、新しいワークスペースに手動で作成します。
+ - ノートブックを開発していて、それらを Spark プールに接続する場合は、ワークスペースで Spark プールを再作成します。
+ - 環境に存在しない Spark プールにリンクされているノートブックは、デプロイされません。
+ - Spark プールの名前は、両方のワークスペースで同じである必要があります。
+ - 両方のワークスペースで、すべてのデータベース、SQL プール、その他のリソースに同じ名前を付けます。
+ - プロビジョニングされた SQL プールをデプロイしようとしたときに一時停止した場合、デプロイは失敗する可能性があります。
+
+詳細については、[Azure Synapse Analytics での CI CD パート 4 - リリース パイプライン](https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434)に関するページを参照してください。 
+
+
+## <a name="set-up-a-release-pipeline"></a>リリース パイプラインの設定
 
 1.  [Azure DevOps](https://dev.azure.com/) で、リリース用に作成されたプロジェクトを開きます。
 
@@ -58,9 +103,9 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
 
     ![アーティファクトの追加](media/release-creation-publish-branch.png)
 
-## <a name="set-up-a-stage-task-for-arm-resource-create-and-update"></a>ARM リソースの作成と更新のステージ タスクを設定する 
+## <a name="set-up-a-stage-task-for-an-arm-template-to-create-and-update-resource"></a>リソースを作成および更新するための ARM テンプレートのステージ タスクを設定する 
 
-リソース (ワークスペース、プールなど) を作成または更新するための Azure Resource Manager デプロイ タスクを追加します。
+Azure Synapse ワークスペース、Spark および SQL プール、キー コンテナーなどのリソースをデプロイするための ARM テンプレートがある場合は、それらのリソースを作成または更新するための Azure Resource Manager デプロイ タスクを追加します。
 
 1. ステージ ビューで、 **[ステージ タスクを表示します]** を選択します。
 
@@ -89,7 +134,7 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
  > [!WARNING]
 > 完全なデプロイ モードでは、リソース グループに存在していても、新しい Resource Manager テンプレート内で指定されていないリソースは、**削除** されます。 詳細については、「[Azure Resource Manager のデプロイ モード](../../azure-resource-manager/templates/deployment-modes.md)」を参照してください。
 
-## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>アーティファクトのデプロイのステージ タスクを設定する 
+## <a name="set-up-a-stage-task-for-synapse-artifacts-deployment"></a>Synapse アーティファクトのデプロイのステージ タスクを設定する 
 
 [Synapse ワークスペースのデプロイ](https://marketplace.visualstudio.com/items?itemName=AzureSynapseWorkspace.synapsecicd-deploy)拡張機能を使用して、データセット、SQL スクリプト、ノートブック、Spark ジョブ定義、データフロー、パイプライン、リンクされたサービス、資格情報、IR (Integration Runtime) などの他のアイテムを Synapse ワークスペースにデプロイします。  
 
@@ -113,7 +158,7 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
 
 1. ターゲット ワークスペースの接続、リソース グループ、および名前を選択します。 
 
-1. **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** ボックスの横にあります)。ターゲットのワークスペースに望ましいパラメーター値を入力します。 
+1. **[…]** を選択します ( **[テンプレート パラメーターのオーバーライド]** ボックスの横にあります)。リンク サービスで使用される接続文字列とアカウント キーを含む、ターゲット ワークスペースの目的のパラメーター値を入力します。 [詳細については、こちらをクリックしてください] (https://techcommunity.microsoft.com/t5/data-architecture-blog/ci-cd-in-azure-synapse-analytics-part-4-the-release-pipeline/ba-p/2034434)
 
     ![Synapse ワークスペースのデプロイ](media/create-release-artifacts-deployment.png)
 
@@ -225,6 +270,7 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
     }
 }
 ```
+
 ここでは、前のテンプレートがどのように構築されるかについて、リソースの種類別に説明します。
 
 #### <a name="notebooks"></a>ノートブック 
@@ -262,19 +308,19 @@ Azure Synapse ワークスペースでは、継続的インテグレーション
 
 ## <a name="best-practices-for-cicd"></a>CI/CD のベスト プラクティス
 
-Synapse ワークスペースとの Git 統合を使用していて、変更を開発からテストを経て運用環境に移行する CI/CD パイプラインがある場合は、次のベスト プラクティスをお勧めします。
+Azure Synapse ワークスペースで Git 統合を使用していて、変更を開発からテストを経て運用環境に移行する CI/CD パイプラインがある場合は、次のベスト プラクティスをお勧めします。
 
--   **Git 統合**。 Git 統合で開発 Synapse ワークスペースのみを構成します。 テスト ワークスペースと運用ワークスペースへの変更は CI/CD を介してデプロイされるので、Git 統合は必要ありません。
+-   **Git 統合**。 Git 統合で開発 Azure Synapse ワークスペースのみを構成します。 テスト ワークスペースと運用ワークスペースへの変更は CI/CD を介してデプロイされるので、Git 統合は必要ありません。
 -   **アーティファクトの移行前にプールを準備します**。 SQL スクリプトまたはノートブックが開発ワークスペース内のプールにアタッチされている場合は、別の環境にも同じ名前のプールが必要です。 
 -   **コードとしてのインフラストラクチャ (IaC)** 。 記述型モデルでのインフラストラクチャ (ネットワーク、仮想マシン、ロード バランサー、接続トポロジ) の管理であり、DevOps チームがソース コードに使用するものと同じバージョン管理を使用します。 
 -   **その他**。 [ADF アーティファクトのベスト プラクティス](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd)に関するページを参照してください
 
 ## <a name="troubleshooting-artifacts-deployment"></a>アーティファクト デプロイのトラブルシューティング 
 
-### <a name="use-the-synapse-workspace-deployment-task"></a>Synapse ワークスペース デプロイ タスクを使用する
+### <a name="use-the-azure-synapse-analytics-workspace-deployment-task"></a>Azure Synapse Analytics ワークスペース デプロイ タスクを使用する
 
-Synapse には、ARM リソースではない複数のアーティファクトがあります。 これは、Azure Data Factory とは異なります。 Synapse アーティファクトをデプロイするために、ARM テンプレート デプロイ タスクを使用しても正しく機能しません。
+Azure Synapse Analytics には、ARM リソースではない複数のアーティファクトがあります。 これは、Azure Data Factory とは異なります。 Azure Synapse Analytics アーティファクトをデプロイするために ARM テンプレート デプロイ タスクを使用しても正しく機能しません。
  
 ### <a name="unexpected-token-error-in-release"></a>リリースにおける予期しないトークン エラー
 
-エスケープ処理されていないパラメーター値がパラメーター ファイルに含まれる場合、リリース パイプラインでファイルを解析できず、"予期しないトークン" エラーが生成されます。 パラメーターをオーバーライドすること、または Azure KeyVault を使用してパラメーター値を取得することをお勧めします。 対処法としてダブル エスケープ文字を使用することもできます。
+エスケープ処理されていないパラメーター値がパラメーター ファイルに含まれる場合、リリース パイプラインでファイルを解析できず、"予期しないトークン" エラーが生成されます。 パラメーターをオーバーライドすること、または Azure Key Vault を使用してパラメーター値を取得することをお勧めします。 対処法としてダブル エスケープ文字を使用することもできます。

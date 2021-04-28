@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2bb019a692178c5b44c3589d401d3b2b34c3dccb
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 5e3b84c0a4b4124a020c54f02393eb1319707c21
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553908"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136465"
 ---
 # <a name="migration-guide-oracle-to-azure-sql-managed-instance"></a>移行ガイド: Oracle から Azure SQL Managed Instance
 
@@ -23,7 +23,7 @@ ms.locfileid: "106553908"
 
 このガイドでは、SQL Server Migration Assistant for Oracle (SSMA for Oracle) を使用して、Oracle のスキーマを Azure SQL Managed Instance に移行する方法について説明します。
 
-その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。
+その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -140,7 +140,7 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 ## <a name="post-migration"></a>移行後
 
-*移行* の段階を正常に完了したら、移行後の一連のタスクを完了して、すべてが可能な限り円滑かつ効率的に機能していることを確認する必要があります。
+*移行* 段階が正常に完了したら、移行後の一連のタスクを完了し、すべてが可能な限り円滑かつ効率的に機能していることを確認する必要があります。
 
 ### <a name="remediate-applications"></a>アプリケーションを修復する
 
@@ -162,7 +162,7 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 移行後の段階は、発生したデータの精度の問題を調整したり、完全性を検証したり、ワークロードでのパフォーマンスの問題に対処したりするために非常に重要です。
 
 > [!NOTE]
-> これらの問題とそれを軽減するための手順の詳細については、「[移行後の検証および最適化ガイド](/sql/relational-databases/post-migration-validation-and-optimization-guide)」を参照してください。
+> これらの問題と、それらを軽減するための具体的な手順の詳細については、「[移行後の検証および最適化ガイド](/sql/relational-databases/post-migration-validation-and-optimization-guide)」を参照してください。
 
 ## <a name="migration-assets"></a>移行資産
 
@@ -178,7 +178,7 @@ SSMA for Oracle を使用すると、データベース オブジェクトとデ
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - さまざまなデータベースおよびデータ移行シナリオや特殊なタスクを支援するために使用できる Microsoft とサードパーティのサービスとツールのマトリックスについては、[データ移行のためのサービスとツール](../../../dms/dms-tools-matrix.md)に関するページを参照してください。
 

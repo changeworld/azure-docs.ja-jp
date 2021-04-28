@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/28/2021
 ms.author: bwren
-ms.openlocfilehash: ac2d1ea17460c56a3369d00d2cc8e41cca616363
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b76812abb80c466480e9982a6c8c4ace64fab624
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310922"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139671"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitor ログで使用量とコストを管理する    
 
@@ -127,7 +127,7 @@ Azure では、[Azure Cost Management と課金](../../cost-management-billing/c
 
 ## <a name="log-analytics-and-azure-defender-security-center"></a>Log Analytics と Azure Defender (Security Center)
 
-[Azure Defender (Security Center)](../../security-center/index.yml) の課金は Log Analytics の課金と密接に結び付けられています。 Azure Defender では、[セキュリティ データの種類](/azure/azure-monitor/reference/tables/tables-category#security)のサブセット (WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus) と、Update Management ソリューションがワークスペースで実行されていないか、またはソリューションのターゲット設定が有効にされている場合に、Update および UpdateSummary データの種類に対して 500 MB/ノード/日の割り当てが行われます ([詳細情報](https://docs.microsoft.com/azure/security-center/security-center-pricing#what-data-types-are-included-in-the-500-mb-free-data-limit))。 ワークスペースがレガシのノードごとの価格レベルにある場合、Azure Defender と Log Analytics の割り当てが結合されて、すべての課金対象の取り込まれたデータにまとめて適用されます。  
+[Azure Defender (Security Center)](../../security-center/index.yml) の課金は Log Analytics の課金と密接に結び付けられています。 Azure Defender では、[セキュリティ データの種類](/azure/azure-monitor/reference/tables/tables-category#security)のサブセット (WindowsEvent、SecurityAlert、SecurityBaseline、SecurityBaselineSummary、SecurityDetection、SecurityEvent、WindowsFirewall、MaliciousIPCommunication、LinuxAuditLog、SysmonEvent、ProtectionStatus) と、Update Management ソリューションがワークスペースで実行されていないか、またはソリューションのターゲット設定が有効にされている場合に、Update および UpdateSummary データの種類に対して 500 MB/ノード/日の割り当てが行われます ([詳細情報](../../security-center/security-center-pricing.md#what-data-types-are-included-in-the-500-mb-data-daily-allowance))。 ワークスペースがレガシのノードごとの価格レベルにある場合、Azure Defender と Log Analytics の割り当てが結合されて、すべての課金対象の取り込まれたデータにまとめて適用されます。  
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
@@ -239,7 +239,7 @@ armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/
 _LogOperation | where Operation == "Workspace Configuration" | where Detail contains "Daily quota"
 ```
 
-_LogOperation 関数の詳細については、[こちら](https://docs.microsoft.com/azure/azure-monitor/logs/monitor-workspace)を参照してください。 
+_LogOperation 関数の詳細については、[こちら](./monitor-workspace.md)を参照してください。 
 
 ### <a name="view-the-effect-of-the-daily-cap"></a>日次上限の効果を表示する
 
@@ -261,7 +261,7 @@ Usage
 
 データ制限のしきい値に達したら Azure Portal に視覚的な合図が表示されますが、この動作は、早急な措置を必要とする運用上の問題を管理する方法と、必ずしも一致していない場合があります。  アラート通知を受け取るには、Azure Monitor で新しいアラート ルールを作成します。  詳細については、[アラートを作成、表示、管理する方法](../alerts/alerts-metric.md)に関するページをご覧ください。
 
-はじめに、`_LogOperation` 関数 ([詳細情報](https://docs.microsoft.com/azure/azure-monitor/logs/monitor-workspace)) を使用して、`Operation` テーブルのクエリを実行するアラートの推奨される設定を次に示します。 
+はじめに、`_LogOperation` 関数 ([詳細情報](./monitor-workspace.md)) を使用して、`Operation` テーブルのクエリを実行するアラートの推奨される設定を次に示します。 
 
 - ターゲット:お客様の Log Analytics リソースを選択します
 - 条件: 
@@ -352,7 +352,7 @@ Event
 
 ### <a name="data-volume-by-solution"></a>ソリューション別のデータ ボリューム
 
-過去 1 か月間 (まだ終わっていない最終日を除く) の課金対象データ ボリュームをソリューション別に表示するために使用するクエリは、[Usage](https://docs.microsoft.com/azure/azure-monitor/reference/tables/usage) データ型を使用して作成できます。
+過去 1 か月間 (まだ終わっていない最終日を除く) の課金対象データ ボリュームをソリューション別に表示するために使用するクエリは、[Usage](/azure/azure-monitor/reference/tables/usage) データ型を使用して作成できます。
 
 ```kusto
 Usage 
@@ -486,7 +486,7 @@ find where TimeGenerated > ago(24h) project _ResourceId, _BilledSize, _IsBillabl
 
 | データ量の多いソース | データ量を削減する方法 |
 | -------------------------- | ------------------------- |
-| データ収集ルール      | [Azure Monitor エージェント](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview)は、データ収集ルールを使用してデータの収集を管理します。 カスタム XPath クエリを使用して、[データの収集を制限](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-azure-monitor-agent#limit-data-collection-with-custom-xpath-queries)することができます。 | 
+| データ収集ルール      | [Azure Monitor エージェント](../agents/azure-monitor-agent-overview.md)は、データ収集ルールを使用してデータの収集を管理します。 カスタム XPath クエリを使用して、[データの収集を制限](../agents/data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)することができます。 | 
 | Container Insights         | 必要なデータのみを収集するように [Container Insights を構成](../containers/container-insights-cost.md#controlling-ingestion-to-reduce-cost)します。 |
 | セキュリティ イベント            | [一般的または最小限のセキュリティ イベント](../../security-center/security-center-enable-data-collection.md#data-collection-tier)を選択します。 <br> 必要なイベントのみを収集するようにセキュリティ監査ポリシーを変更します。 特に、次のイベントを収集する必要性を検討します。 <br> - [フィルタリング プラットフォームの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [レジストリの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10))<br> - [ファイル システムの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10))<br> - [カーネル オブジェクトの監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10))<br> - [ハンドル操作の監査](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10))<br> - リムーバブル記憶域の監査 |
 | パフォーマンス カウンター       | [パフォーマンス カウンターの構成](../agents/data-sources-performance-counters.md)を次のように変更します。 <br> - 収集の頻度を減らす <br> - パフォーマンス カウンターの数を減らす |
@@ -687,7 +687,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 
 ## <a name="late-arriving-data"></a>到着遅延データ   
 
-接続の問題が原因でエージェントが Log Analytics と通信できない場合や、ホストの時刻と日付または時刻が正しくない場合などに、非常に古いタイムスタンプのあるデータが取り込まれる状況が発生する可能性があります。 これらの問題を診断するには、`TimeGenerated` 列に加えて、`_TimeReceived` 列 ([詳細情報](https://docs.microsoft.com/azure/azure-monitor/logs/log-standard-columns#_timereceived)) を使用します。 `TimeReceived` は、そのレコードが Azure クラウド内の Azure Monitor インジェスト ポイントによって受信された時刻です。  
+接続の問題が原因でエージェントが Log Analytics と通信できない場合や、ホストの時刻と日付または時刻が正しくない場合などに、非常に古いタイムスタンプのあるデータが取り込まれる状況が発生する可能性があります。 これらの問題を診断するには、`TimeGenerated` 列に加えて、`_TimeReceived` 列 ([詳細情報](./log-standard-columns.md#_timereceived)) を使用します。 `TimeReceived` は、そのレコードが Azure クラウド内の Azure Monitor インジェスト ポイントによって受信された時刻です。  
 
 ## <a name="limits-summary"></a>制限の概要
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 637616c3698cc9ec0cd13a4584bad24b6ed02c34
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 49c4c579d75b964a4b4c37c8a44bddf1ad08c62b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107315199"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142821"
 ---
 # <a name="high-availability-for-sap-hana-scale-out-system-with-hsr-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server での HSR を使用した SAP HANA スケールアウト システムの高可用性 
 
@@ -105,7 +105,7 @@ HANA スケールアウトのインストールで HANA の高可用性を実現
 
 `/hana/data` と `/hana/log` はローカル ディスク上に展開されるため、ストレージとの通信用に別のサブネットと仮想ネットワーク カードを展開する必要はありません。  
 
-Azure NetApp ボリュームは、[Azure NetApp Files に委任された](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)別のサブネットにデプロイされます: `anf` 10.23.1.0/26。   
+Azure NetApp ボリュームは、[Azure NetApp Files に委任された](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md)別のサブネットにデプロイされます: `anf` 10.23.1.0/26。   
 
 > [!IMPORTANT]
 > 3 番目のサイトへのシステム レプリケーションはサポートされていません。 詳細については、「[SLES - SAP HANA システム レプリケーションのスケールアウトでのパフォーマンス最適化シナリオ](https://documentation.suse.com/sbp/all/html/SLES4SAP-hana-scaleOut-PerfOpt-12/index.html#_important_prerequisites)」の「重要な前提条件」のセクションを参照してください。     

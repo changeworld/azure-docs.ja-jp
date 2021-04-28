@@ -5,18 +5,18 @@ description: Azure Firewall を使用して Azure Machine Learning ワークス�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 295228e9eaa3529b05055869bd46f9aefc938a6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-python
+ms.openlocfilehash: 64d110243a8be5756e7de635b55e229078251a3c
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102212775"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897345"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
 

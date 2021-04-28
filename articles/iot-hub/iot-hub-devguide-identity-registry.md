@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 2d9b0d97fa1823314f5109a1c7fc79054806c148
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42def04db63d81bdb3eff8098daa8c75924bffec
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93146928"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107502081"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリを理解する
 
@@ -106,7 +106,7 @@ IoT ソリューションでデバイスが接続されているかどうかを�
 
 ## <a name="device-and-module-lifecycle-notifications"></a>デバイスまたはモジュールのライフサイクルの通知
 
-IoT Hub は、ライフサイクルの通知を送信することで、ID がいつ作成されたか、またはいつ削除されたかを IoT ソリューションに通知できます。 そのためには、IoT ソリューションでルートを作成し、データ ソースの値を *DeviceLifecycleEvents* または *ModuleLifecycleEvents* に設定する必要があります。 既定では、ライフサイクルの通知は送信されません。つまり、このようなルートは事前に存在しません。 通知メッセージには、プロパティおよび本文が含まれます。
+IoT Hub では、ライフサイクルの通知を送信して、デバイス ID が作成または削除されたときに IoT ソリューションに通知できます。 そのためには、IoT ソリューションでルートを作成し、データ ソースの値を *DeviceLifecycleEvents* に設定する必要があります。 既定では、ライフサイクルの通知は送信されません。つまり、このようなルートは事前に存在しません。 データ ソースを *DeviceLifecycleEvents* に設定してルートを作成することにより、デバイス ID とモジュール ID の両方に対してライフサイクル イベントが送信されます。ただし、モジュール ID とデバイス ID のどちらに対してイベントが生成されたかによって、メッセージの内容は異なります。  IoT Edge モジュールの場合、モジュール ID の作成フローは他のモジュールとは異なることに注意してください。その結果として、IoT Edge モジュールの場合は、更新された IoT Edge モジュール ID に対応する IoT Edge デバイスが実行されている場合にのみ作成通知が送信されます。 他のすべてのモジュールについては、IoT Hub 側でモジュール ID が更新されるたびに、ライフサイクル通知が送信されます。  通知メッセージには、プロパティおよび本文が含まれます。
 
 プロパティ: メッセージ システム プロパティは `$` 記号で始まります。
 

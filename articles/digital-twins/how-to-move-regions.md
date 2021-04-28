@@ -8,12 +8,12 @@ ms.date: 08/26/2020
 ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.service: digital-twins
-ms.openlocfilehash: e268cca87479625af023b5970bb27c56721f6d39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62db56ac9791cea7d6f1a40f794241ed68fa90fa
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102049850"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107483579"
 ---
 # <a name="move-an-azure-digital-twins-instance-to-a-different-azure-region"></a>Azure Digital Twins インスタンスを別の Azure リージョンに移動する
 
@@ -81,9 +81,13 @@ Azure Digital Twins インスタンスを再作成しようとしている場合
 
 Azure Digital Twins Explorer の設定を進めるには、まず、サンプル アプリケーション コードをダウンロードして設定し、コンピューター上で実行します。
 
-サンプルを入手するには、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページを参照してください。 **[ZIP のダウンロード]** ボタンを選択して、このサンプル コードの .zip ファイルを、ご利用のコンピューターに **Azure_Digital_Twins__ADT__explorer.zip** としてダウンロードします。 ファイルを解凍します。
+サンプルを入手するには、[Azure Digital Twins Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/) に関するページに移動してください。 タイトルの下の **[コードの参照]** ボタンを選択すると、サンプルの GitHub リポジトリに移動します。 **[コード]** ボタンと **[ZIP のダウンロード]** を選択してサンプルを *.ZIP* ファイルとしてコンピューターにダウンロードします。
 
-次に、Azure Digital Twins Explorer のアクセス許可を設定し、構成します。 Azure Digital Twins クイックスタートの「[Azure Digital Twins と Azure Digital Twins Explorer を設定する](quickstart-adt-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer)」セクションの指示に従ってください。 このセクションでは、次の手順について説明します。
+:::image type="content" source="media/how-to-move-regions/download-repo-zip.png" alt-text="GitHub にある digital-twins-explorer リポジトリのスクリーンショット。[コード] ボタンが選択され、表示された小さなダイアログ ボックスで [ZIP のダウンロード] ボタンが強調表示されています。" lightbox="media/how-to-move-regions/download-repo-zip.png":::
+
+ファイルを解凍します。
+
+次に、Azure Digital Twins Explorer のアクセス許可を設定し、構成します。 Azure Digital Twins クイックスタートの「[Azure Digital Twins と Azure Digital Twins Explorer を設定する](quickstart-azure-digital-twins-explorer.md#set-up-azure-digital-twins-and-azure-digital-twins-explorer)」セクションの指示に従ってください。 このセクションでは、次の手順について説明します。
 
 1. Azure Digital Twins インスタンスを設定します。 インスタンスは既にあるため、この部分はスキップしてかまいません。
 1. インスタンスへのアクセスを提供するようにローカルの Azure 資格情報を設定します。

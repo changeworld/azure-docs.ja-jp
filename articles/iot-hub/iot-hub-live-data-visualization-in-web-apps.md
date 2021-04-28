@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 53b5add7526b0c20487e8fe3adb0b8ebe207a2ce
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4f2f0678b421ac6965b2848cc25564b4e95c7c6b
+ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200036"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107567066"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Web アプリで Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -25,23 +25,11 @@ ms.locfileid: "102200036"
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-## <a name="what-you-learn"></a>学習内容
+この記事では、お使いのローカル コンピューターで実行されている node.js Web アプリを使って、IoT ハブで受信されるリアルタイム センサー データを視覚化する方法について説明します。 Web アプリをローカルで実行した後は、必要に応じて、Azure App Service で Web アプリをホストする手順に従うことができます。 Power BI を使用して IoT ハブのデータを視覚化したい場合は、[Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
 
-このチュートリアルでは、お使いのローカル コンピューターで実行されている node.js Web アプリを使って、IoT ハブで受信されるリアルタイム センサー データを視覚化する方法について説明します。 Web アプリをローカルで実行した後は、必要に応じて、Azure App Service で Web アプリをホストする手順に従うことができます。 Power BI を使用して IoT ハブのデータを視覚化したい場合は、[Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-power-bi.md)に関するページを参照してください。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="what-you-do"></a>作業内容
-
-* Web アプリがセンサー データの読み取りに使用する IoT Hub にコンシューマー グループを追加する
-* GitHub から Web アプリのコードをダウンロードする
-* Web アプリのコードを調べる
-* Web アプリに必要な IoT Hub の成果物を保持するために環境変数を構成する
-* 開発マシンで Web アプリを実行する
-* Web ページを開いて、IoT Hub からのリアルタイムの温度と湿度のデータを確認する
-* (省略可能) Azure CLI を使用して Azure App Service で Web アプリをホストする
-
-## <a name="what-you-need"></a>必要なもの
-
-* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアルまたはいずれかのデバイス チュートリアル ([Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関するチュートリアルなど) が完了していること。 次の要件について取り上げられています。
+* [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)のチュートリアル、またはいずれかのデバイス チュートリアルを完了してください。 たとえば、[node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md) に関する記事や、[テレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するいずれかのクイックスタートにアクセスできます。 これらの記事では、次の要件について取り上げています。
 
   * 有効な Azure サブスクリプション
   * サブスクリプションの IoT Hub
