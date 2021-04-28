@@ -6,12 +6,12 @@ author: vineetvikram
 ms.author: vivikram
 ms.manager: abhemraj
 ms.date: 03/18/2021
-ms.openlocfilehash: c78778f9152fd4c07fb9e550e562cfef858333c8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff05a01ad8173923ff614657d0231f743f38ba1c
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104786738"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714760"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>スクリプトを使用してアプライアンスを設定する
 
@@ -34,7 +34,7 @@ VMware および Hyper-V 上のサーバーに対してアプライアンスを�
 VMware | メモリが 32 GB、vCPU が 8 個、ディスク ストレージが約 80 GB の Windows Server 2016
 Hyper-V | メモリが 16 GB、vCPU が 8 個、ディスク ストレージが約 80 GB の Windows Server 2016
 
-- サーバーには外部仮想スイッチも必要です。 ここには、静的または動的 IP アドレスと、インターネットへのアクセスが必要です。
+- サーバーには外部仮想スイッチも必要です。 これには、静的または動的 IP アドレスが必要です。 
 - アプライアンスをデプロイする前に、[VMware 上](migrate-appliance.md#appliance---vmware)と [Hyper-V 上のサーバー](migrate-appliance.md#appliance---hyper-v)の詳細なアプライアンス要件を確認してください。
 - 既存の Azure Migrate アプライアンスでスクリプトを実行しないでください。
 

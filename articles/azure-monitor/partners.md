@@ -1,14 +1,16 @@
 ---
 title: Azure Monitor と統合するパートナー
 description: Azure Monitor のパートナーと、そのパートナーとの統合に関するドキュメントにアクセスする方法について説明します。
+author: rboucher
+ms.author: robb
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: 2a8e03d4bcfac81a5a718c3572227d48da23ea5a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.date: 04/14/2021
+ms.openlocfilehash: d449f660fa97af8b5c24542258029834a964b3f2
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374363"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751618"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -111,7 +113,7 @@ Azure により、ユーザーは、多くのパートナー ソリューショ�
 
 Dynatrace OneAgent は、Azure 拡張機能メカニズムによって、Azure VM と App Services に統合されています。 これにより、Dynatrace OneAgent でホスト、ネットワーク、およびサービスについてのパフォーマンス メトリックを収集することができます。 メトリックを表示するだけでなく、Dynatrace は環境を端から端までビジュアル化します。 クライアント側からデータベース層へのトランザクションを表示します。 Dynatrace は、問題の AI ベースの相関関係を提供し、根本原因分析を完全に統合して、コードとデータベースに対するメソッド レベルの洞察を与えます。 この洞察によって、トラブルシューティングとパフォーマンスの最適化がはるかに容易になります。
 
-[Dynatrack のドキュメント](https://help.dynatrace.com/infrastructure-monitoring/paas/how-do-i-monitor-microsoft-azure-web-apps/)
+[Dynatrace ドキュメント](https://www.dynatrace.com/support/help/technology-support/cloud-platforms/microsoft-azure-services/)
 
 
 ## <a name="elastic"></a>Elastic

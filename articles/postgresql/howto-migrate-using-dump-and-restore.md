@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: migration-guide
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 809ff06fe460a06a689d7bbc11cdbd5ee247f585
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: f99e966d3f4230320c71a10cca9cb2a80abc47da
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106450057"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135511"
 ---
 # <a name="migrate-your-postgresql-database-by-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
 [!INCLUDE[applies-to-postgres-single-flexible-server](includes/applies-to-postgres-single-flexible-server.md)]
@@ -117,6 +117,4 @@ pg_dump -h my-source-server-name -U source-server-username -Fc -d source-databas
 ## <a name="next-steps"></a>次の手順
 
 - エクスポートとインポートを使用して PostgreSQL データベースを移行するには、「[エクスポートとインポートを使用した PostgreSQL の移行](howto-migrate-using-export-and-import.md)」を参照してください。
-- Azure Database for PostgreSQL へのデータベースの移行については、「[Database Migration Guide](https://aka.ms/datamigration)」 (データベースの移行ガイド) を参照してください。
-
-
+- Azure Database for PostgreSQL へのデータベースの移行については、「[Database Migration Guide](/data-migration/)」 (データベースの移行ガイド) を参照してください。

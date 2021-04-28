@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: efa5c3192ca6f51c219cc308a776e6db7212103c
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6cf70a6cfa4b1bf0f8d065872698d16977b4cb59
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552242"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127751"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -301,7 +301,7 @@ REST API や PowerShell コマンドレットを使用して、ExpressRoute 回�
 
 ### <a name="i-received-a-notification-about-maintenance-on-my-expressroute-circuit-what-is-the-technical-impact-of-this-maintenance"></a>ExpressRoute 回線でメンテナンスに関する通知を受け取りました。 このメンテナンスによってどのような技術的影響がありますか。
 
-[アクティブ/アクティブ モード](https://docs.microsoft.com/azure/expressroute/designing-for-high-availability-with-expressroute#active-active-connections)で回線を操作する場合は、メンテナンス中の影響は最小限かまったくありません。 回線のプライマリ接続とセカンダリ接続については、個別にメンテナンスを実行します。 通常、予定メンテナンスは、ピアリングの場所のタイム ゾーンで営業時間外に実行されるため、メンテナンス時間を選択することはできません。
+[アクティブ/アクティブ モード](./designing-for-high-availability-with-expressroute.md#active-active-connections)で回線を操作する場合は、メンテナンス中の影響は最小限かまったくありません。 回線のプライマリ接続とセカンダリ接続については、個別にメンテナンスを実行します。 通常、予定メンテナンスは、ピアリングの場所のタイム ゾーンで営業時間外に実行されるため、メンテナンス時間を選択することはできません。
 
 ### <a name="i-received-a-notification-about-a-software-upgrade-or-maintenance-on-my-expressroute-gateway-what-is-the-technical-impact-of-this-maintenance"></a>Azure ExpressRoute ゲートウェイでソフトウェアのアップグレードまたはメンテナンスに関する通知を受け取りました。 このメンテナンスによってどのような技術的影響がありますか。
 

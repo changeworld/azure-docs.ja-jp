@@ -9,18 +9,116 @@ ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 02/18/2021
-ms.openlocfilehash: ea7eda7e50e7d8733fd24a63d533272e5bca6bab
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1de495253dacac5aeab7dcff95f74aeed11782a8
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166685"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750736"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の [**メインの SDK for Python**](/python/api/overview/azure/ml/intro) のリファレンス ページを参照してください。
 
 __RSS フィード__:ご自身のフィード リーダーに次の URL をコピーして貼り付けることで、このページの更新時に通知を受け取ることができます。`https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+
+
+## <a name="2021-04-19"></a>2021-04-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1270"></a>Azure Machine Learning SDK for Python v1.27.0
++ **バグの修正と機能強化**
+  + **azureml-core**
+    + "AZUREML_ARTIFACTS_DEFAULT_TIMEOUT" 環境変数を使用してアーティファクトをアップロードするための既定のタイムアウト値をオーバーライドする機能が追加されました。
+    + ScriptRunConfig の環境オブジェクトの Docker 設定が適用されないバグを修正しました。
+    + コピー先にコピーするときにデータセットをパーティション分割できます。
+    + OutputDatasetConfig にカスタム モードが追加され、リンク関数経由でパイプラインで作成されたデータセットを渡すことができるようになりました。 これらのサポート強化は、PR の表形式パーティション分割を有効にするために実行されました。
+    + KubernetesCompute コンピューティングの新しい種類が azureml-core に追加されました。
+  + **azureml-pipeline-core**
+    + カスタム モードを OutputDatasetConfig に追加し、リンク関数を使用してパイプラインで作成されたデータセットをユーザーがパススルーできるようにします。 ファイル パスの変換先がプレースホルダーをサポートしています。 これらのサポート強化は、PR の表形式パーティション分割を有効にするために実行されました。
+    + KubernetesCompute コンピューティングの新しい種類が azureml-core に追加されました。
+  + **azureml-pipeline-steps**
+    + KubernetesCompute コンピューティングの新しい種類が azureml-core に追加されました。
+  + **azureml-synapse**
+    + Azureml Synapse のウィジェットで Spark UI URL が更新されました。
+  + **azureml-train-automl-client**
+    + 予測タスクの STL フィーチャライザーで、時系列の頻度に基づいて、より堅牢な季節性検出が使用されます。
+  + **azureml-train-core**
+    + 環境オブジェクトの Docker 設定が適用されないバグを修正しました。
+    + KubernetesCompute コンピューティングの新しい種類が azureml-core に追加されました。
+
+
+## <a name="2021-04-05"></a>2021-04-05
+
+### <a name="azure-machine-learning-sdk-for-python-v1260"></a>Azure Machine Learning SDK for Python v1.26.0
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + AutoMLStep の実行で Naive モデルが推奨され、遅延またはローリング ウィンドウ機能で失敗するという問題を修正しました。 これらのモデルは、ターゲットの遅延またはターゲットのローリング ウィンドウのサイズが設定されている場合は推奨されません。
+    +  AutoML 実行を送信するときにコンソール出力が変更され、実行へのポータル リンクが表示されるようになりました。
+  + **azureml-core**
+    + ドキュメントに HDFS モードが追加されました。
+    + glob 構造に基づくファイル データセットのパーティションについて理解するためのサポートが追加されました。
+    + AzureML ワークスペースに関連付けられている更新コンテナー レジストリのサポートが追加されました。
+    + DockerSection の下にある非推奨の環境属性 - "enabled"、"shared_volume"、および "arguments" が、RunConfiguration の Dockersection の一部となりました。
+    + パイプライン CLI の複製に関するドキュメントが更新されました。
+    + 認証用のテナントが含まれるように、ポータル URI が更新されました。
+    + リダイレクトを避けるために、実行 URI から実験名が削除されました。 
+    + 実験 ID を使用するように、実験 URO が更新されました。
+    + AzureML CLI を使用してリモートコンピューティングをアタッチするためにバグが修正されました。
+    + 認証用のテナントが含まれるように、ポータル URI が更新されました。
+    + 実験 ID を使用するように実験 URI が更新されました。
+  + **azureml-interpret**
+    + interpret-community 0.17.0 を使用するように、azureml-interpret が更新されました。
+  + **azureml-opendatasets**
+    + 入力の開始日と終了日の型の検証、および datetime 型ではない場合のエラー表示。
+  + **azureml-parallel-run**
+    + [試験的な機能] ParallelRunConfig に `partition_keys` パラメーターを追加します。指定した場合は、これによって指定されたキーによって、入力データセットがミニバッチにパーティション分割されます。 すべての入力データセットが、パーティション分割されたデータセットである必要があります。
+  + **azureml-pipeline-steps**
+    + バグ修正 - データセットの構成をダウンロードとして渡すときに path_on_compute がサポートされます。
+    + パイプラインで R スクリプトを実行するための CommandStep の使用を優先する RScriptStep が廃止されます。 
+    + パイプラインで ML トレーニング (分散トレーニングを含む) を実行するために CommandStep が使用されるように、EstimatorStep を廃止します。
+  + **azureml-sdk**
+    + azureml-sdk 用に python_requires を < 3.9 に更新しました。
+  + **azureml-train-automl-client**
+    +  AutoML 実行を送信するときにコンソール出力が変更され、実行へのポータル リンクが表示されるようになりました。
+  + **azureml-train-core**
+    + ScriptRunConfig で DockerConfiguration が使用されるように、DockerSection の 'enabled '、'shared_volume'、および 'arguments' 属性を廃止しました。
+    +  MNIST データセットに Azure Open Datasets を使用します。
+    + Hyperdrive エラー メッセージが更新されました。
+
+
+## <a name="2021-03-22"></a>2021-03-22
+
+### <a name="azure-machine-learning-sdk-for-python-v1250"></a>Azure Machine Learning SDK for Python v1.25.0
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    +  AutoML 実行を送信するときにコンソール出力が変更され、実行へのポータル リンクが表示されるようになりました。
+  + **azureml-core**
+    + SDK および CLI でのワークスペースのコンテナー レジストリの更新のサポートが開始されます。
+    + ScriptRunConfig で DockerConfiguration が使用されるように、DockerSection の 'enabled '、'shared_volume'、および 'arguments' 属性を廃止しました。
+    + パイプライン CLI の複製に関するドキュメントが更新されました。
+    + 認証用のテナントが含まれるように、ポータル URI が更新されました。
+    + リダイレクトを避けるために、実行 URI から実験名が削除されました。
+    + 実験 ID を使用するように、実験 URO が更新されました。
+    + AZ CLI を使用してリモート コンピューティングをアタッチするためにバグを修正しました。
+    + 認証用のテナントが含まれるように、ポータル URI が更新されました。
+    + glob 構造に基づくファイル データセットのパーティションについて理解するためのサポートが追加されました。
+  + **azureml-interpret**
+    + interpret-community 0.17.0 を使用するように、azureml-interpret が更新されました。
+  + **azureml-opendatasets**
+    + 入力の開始日と終了日の型の検証、および datetime 型ではない場合のエラー表示。
+  + **azureml-pipeline-core**
+    + バグ修正 - データセットの構成をダウンロードとして渡すときに path_on_compute がサポートされます。
+  + **azureml-pipeline-steps**
+    + バグ修正 - データセットの構成をダウンロードとして渡すときに path_on_compute がサポートされます。
+    + パイプラインで R スクリプトを実行するための CommandStep の使用を優先する RScriptStep が廃止されます。 
+    + パイプラインで ML トレーニング (分散トレーニングを含む) を実行するために CommandStep が使用されるように、EstimatorStep を廃止します。
+  + **azureml-train-automl-runtime**
+    +  AutoML 実行を送信するときにコンソール出力が変更され、実行へのポータル リンクが表示されるようになりました。
+  + **azureml-train-core**
+    + ScriptRunConfig で DockerConfiguration が使用されるように、DockerSection の 'enabled '、'shared_volume'、および 'arguments' 属性を廃止しました。
+    + MNIST データセットに Azure Open Datasets を使用します。
+    + Hyperdrive エラー メッセージが更新されました。
+
 
 ## <a name="2021-03-31"></a>2021-03-31
 ### <a name="azure-machine-learning-studio-notebooks-experience-march-update"></a>Azure Machine Learning Studio のノートブック エクスペリエンス (3 月の更新)
@@ -38,6 +136,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
   + ターミナルでリンクがクリック可能になりました
   + IntelliSense のパフォーマンスの向上
 
+
 ## <a name="2021-03-08"></a>2021-03-08
 
 ### <a name="azure-machine-learning-sdk-for-python-v1240"></a>Azure Machine Learning SDK for Python v1.24.0
@@ -50,8 +149,6 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
     + 列の値で表形式データセット、メタデータでファイル データセットをフィルター処理する機能が追加されました。
   + **azureml-contrib-fairness**
     + `azureml-contrib-fairness` 内に JSON スキーマが組み込まれました。
-  + **azureml-contrib-k8s**
-    + リソース グループとクラスター名ではなく、アタッチする resource_id を指定することが必要になりました。
   + **azureml-contrib-mir**
     + モデルをデプロイするときに show_output を True に設定すると、要求をサーバーに送信する前に、推論構成とデプロイ構成が表示されます。
   + **azureml-core**
@@ -72,7 +169,7 @@ __RSS フィード__:ご自身のフィード リーダーに次の URL をコ�
 ### <a name="azure-machine-learning-studio-notebooks-experience-february-update"></a>Azure Machine Learning スタジオのノートブック エクスペリエンス (2 月の更新)
 + **新機能**
   + [ネイティブ ターミナル (GA)](./how-to-access-terminal.md). ユーザーは、統合ターミナル、およびその統合ターミナルを使用して Git 操作にもアクセスできるようになりました。
-  + [ノートブック スニペット (プレビュー)](https://azure.github.io/azureml-web/docs/vs-code-snippets/snippets)。 一般的な Azure ML コードの抜粋が、すぐに入手できるようになりました。 ツールバーからアクセスできるコード スニペット パネルに移動するか、Ctrl + Space キーを使用してコード内スニペット メニューをアクティブにします。  
+  + ノートブック スニペット (プレビュー)。 一般的な Azure ML コードの抜粋が、すぐに入手できるようになりました。 ツールバーからアクセスできるコード スニペット パネルに移動するか、Ctrl + Space キーを使用してコード内スニペット メニューをアクティブにします。  
   + [キーボード ショートカット](./how-to-run-jupyter-notebooks.md#useful-keyboard-shortcuts)。 Jupyter で使用できるキーボード ショートカットと完全に一致します。 
   + セル パラメーターを示します。 ノートブック内のどのセルがパラメーター セルであり、コンピューティング インスタンスで [Papermill](https://github.com/nteract/papermill) を使用してバラメーター化されたノートブックを実行できるかをユーザーに示します。
   + ターミナルおよびカーネル セッション マネージャー: ユーザーは、コンピューティング上で実行されているすべてのカーネルとターミナル セッションを管理できます。

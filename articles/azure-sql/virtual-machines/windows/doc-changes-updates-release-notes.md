@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: ff4e6e0451b57046fb8f07f5a1051235e1f6d0f5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a42457848c2a21889e15ebe5bc5b6ceaba8d6999
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96325725"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129749"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SQL Server に関するドキュメントの変更
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -118,7 +118,7 @@ Azure では、SQL Server のイメージを組み込んだ仮想マシン (VM) 
 * [Windows VM での SQL Server のプロビジョニング](create-sql-vm-portal.md)
 * [Azure VM の SQL Server へのデータベースの移行](migrate-to-vm-from-sql-server.md)
 * [Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](business-continuity-high-availability-disaster-recovery-hadr-overview.md)
-* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)
+* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](./performance-guidelines-best-practices-checklist.md)
 * [Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画](application-patterns-development-strategies.md)
 
 **Linux VM**:

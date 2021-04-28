@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/24/2021
 ms.author: jeedes
-ms.openlocfilehash: a5daf83346db901288d5bc614f341c354d0c008f
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 62a64270083b7589bb1c6bfb0298ddac8cd71227
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481346"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130703"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cylanceprotect"></a>チュートリアル: Azure Active Directory シングル サインオン (SSO) と CylancePROTECT の統合
 
@@ -151,9 +151,9 @@ CylancePROTECT に対する Azure AD SSO を構成してテストするには、
 
 * Azure portal で [このアプリケーションをテストします] をクリックすると、SSO を設定した CylancePROTECT に自動的にサインインされるはずです。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで [CylancePROTECT] タイルをクリックすると、SSO を設定した CylancePROTECT に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで [CylancePROTECT] タイルをクリックすると、SSO を設定した CylancePROTECT に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-CylancePROTECT を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+CylancePROTECT を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用できます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

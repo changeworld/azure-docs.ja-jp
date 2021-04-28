@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7eadc9121c54b636fa8b42579284d4018043e1c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efdd9666c8876ddaf12b9555fa66beb62c56e93e
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91355127"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740065"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサーの一般的な問題のトラブルシューティング
 
@@ -68,6 +68,86 @@ SQL Managed Instance 内のデータへのアクセス方法の詳細につい�
 ### <a name="cosmosdb-indexing-isnt-enabled"></a>CosmosDB "インデックス付け" が有効でない
 
 Azure Cognitive Search は、Cosmos DB のインデックス付けに暗黙に依存しています。 Cosmos DB の自動インデックス付けをオフにすると、Azure Cognitive Search から成功状態が返されますが、コンテナーの内容をインデックス付けすることができません。 設定を確認してインデックス付けをオンにする手順については、[Azure Cosmos DB でのインデックス付けの管理](../cosmos-db/how-to-manage-indexing-policy.md#use-the-azure-portal)に関する記事をご覧ください。
+
+### <a name="sharepoint-online-conditional-access-policies"></a>SharePoint Online の条件付きアクセス ポリシー
+
+SharePoint Online インデクサーの作成時には、デバイス コードを指定した後に、AAD アプリにログインすることを求められる手順を実行します。 「サインインは成功しましたが、アクセスを要求しているデバイスを管理者が管理する必要があります」というメッセージが表示された場合は、[条件付きアクセス](https://review.docs.microsoft.com/azure/active-directory/conditional-access/overview) ポリシーにより、インデクサーが SharePoint Online ドキュメント ライブラリにアクセスすることがブロックされている可能性があります。
+
+ドキュメント ライブラリへのインデクサーによるアクセスを許可するようにポリシーを更新するには、以下の手順に従います。
+
+1. Azure portal を開き、「**Azure AD 条件付きアクセス**」を検索し、左側のメニューの **[ポリシー]** を選択します。 このページを表示するためのアクセス権がない場合は、アクセス権を持つ他のユーザーを見つけるか、アクセス権を取得する必要があります。
+
+1. SharePoint Online インデクサーによるドキュメント ライブラリへのアクセスをブロックしているポリシーを特定します。 インデクサーをブロックしている可能性のあるポリシーには、 **[ユーザーとグループ]** セクションでのインデクサーの作成手順で認証に使用したユーザー アカウントが含まれています。 ポリシーには次の **条件** も含まれている場合があります。
+    * **Windows** プラットフォームを制限する。
+    * **モバイル アプリとデスクトップ クライアント** を制限する。
+    * **[デバイスの状態]** が **[はい]** に構成されている。
+
+1. インデクサーをブロックしているポリシーがあることを確認したら、次にインデクサーを除外する必要があります。 検索サービスの IP アドレスを取得します。
+
+    1. お使いの検索サービスの完全修飾ドメイン名 (FQDN) を取得します。 これは `<search-service-name>.search.windows.net` のようになります。 FQDN は、Azure portal で検索サービスを調べることで確認できます。
+
+   ![サービスの FQDN を取得する](media\search-indexer-howto-secure-access\search-service-portal.png "サービスの FQDN を取得する")
+
+    検索サービスの IP アドレスは、FQDN の `nslookup` (または `ping`) を実行することで取得できます。 以下の例では、Azure Storage ファイアウォールのインバウンド規則に "150.0.0.1" を追加します。 検索サービス インデクサーが Azure Storage アカウントにアクセスできるようにするには、ファイアウォール設定が更新されてから最大 15 分かかることがあります。
+
+    ```azurepowershell
+
+    nslookup contoso.search.windows.net
+    Server:  server.example.org
+    Address:  10.50.10.50
+    
+    Non-authoritative answer:
+    Name:    <name>
+    Address:  150.0.0.1
+    Aliases:  contoso.search.windows.net
+    ```
+
+1. リージョンのインデクサー実行環境の IP アドレスの範囲を取得します。
+
+    追加の IP アドレスは、インデクサーの[マルチテナント実行環境](search-indexer-securing-resources.md#indexer-execution-environment)からの要求に使用されます。 この IP アドレス範囲は、サービス タグから取得できます。
+
+    `AzureCognitiveSearch` サービス タグの IP アドレス範囲は、[Discovery API (プレビュー)](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) または[ダウンロード可能な JSON ファイル](../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files)経由で取得できます。
+
+    このチュートリアルでは、検索サービスが Azure パブリック クラウドであることを前提として、[Azure パブリック JSON ファイル](https://www.microsoft.com/download/details.aspx?id=56519)をダウンロードする必要があります。
+
+   ![JSON ファイルをダウンロードする](media\search-indexer-troubleshooting\service-tag.png "JSON ファイルをダウンロードする")
+
+    JSON ファイルから、検索サービスが米国中西部にあることを前提として、マルチテナント インデクサー実行環境の IP アドレスの一覧が次のように表示されます。
+
+    ```json
+        {
+          "name": "AzureCognitiveSearch.WestCentralUS",
+          "id": "AzureCognitiveSearch.WestCentralUS",
+          "properties": {
+            "changeNumber": 1,
+            "region": "westcentralus",
+            "platform": "Azure",
+            "systemService": "AzureCognitiveSearch",
+            "addressPrefixes": [
+              "52.150.139.0/26",
+              "52.253.133.74/32"
+            ]
+          }
+        }
+    ```
+
+1. Azure portal の [条件付きアクセス] ページに戻り、左側のメニューで **[ネームド ロケーション]** を選択し、 **[IP 範囲の場所]** を選択します。 新しいネームド ロケーションに名前を付けて、最後の 2 つの手順で収集した検索サービスとインデクサーの実行環境の IP 範囲を追加します。
+    * 検索サービスの IP アドレスでは、有効な IP 範囲のみが受け入れられるため、IP アドレスの末尾に "/32" を追加する必要がある場合があります。
+    * インデクサーの実行環境の IP 範囲は、検索サービスが存在するリージョンの IP 範囲を追加する必要があるだけであることに注意してください。
+
+1. 新しいネームド ロケーションをポリシーから除外します。 
+    1. 左側のメニューの **[ポリシー]** を選択します。 
+    1. インデクサーをブロックしているポリシーを選択します。
+    1. **[条件]** を選択します。
+    1. **[場所]** を選択します。
+    1. **[除外]** を選択し、新しいネームド ロケーションを追加します。
+    1. 変更を **[保存]** します。
+
+1. ポリシーが更新され、新しいポリシー ルールが適用されるまで数分待ちます。
+
+1. インデクサーを再作成することを試みます。
+    1. 作成したデータ ソース オブジェクトに対する更新要求を送信します。
+    1. インデクサー作成要求を再送信します。 新しいコードを使用してログインし、ログインが成功したら、別のインデクサー作成要求を送信します。
 
 ## <a name="document-processing-errors"></a>ドキュメントの処理エラー
 

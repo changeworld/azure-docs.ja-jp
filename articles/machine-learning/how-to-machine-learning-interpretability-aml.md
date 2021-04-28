@@ -11,16 +11,14 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: fda1bc2ef0a112a8a32ba7c4caebf29028c8cdd7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d79458cfc76adcfd35a6b8dee40c0c45786abc28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98222753"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763291"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>解釈可能性パッケージを使用して、Python ML モデルと予測について説明する (プレビュー)
-
-
 
 この攻略ガイドでは、Azure Machine Learning Python SDK の解釈可能性パッケージを使用して次のタスクを実行する方法について学習します。
 
@@ -36,8 +34,9 @@ ms.locfileid: "98222753"
 * モデルと共にスコアリング Explainer をデプロイして、推論中の説明を観察します。
 
 
-
 サポートされている解釈可能性テクニックと機械学習モデルの詳細については、「[Azure Machine Learning でのモデルの解釈可能性](how-to-machine-learning-interpretability.md)」と「[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)」を参照してください。
+
+自動機械学習でトレーニングされたモデルの解釈可能性を有効にする方法のガイダンスについては、[解釈可能性: 自動機械学習モデルのモデルの説明 (プレビュー)](how-to-machine-learning-interpretability-automl.md) に関する記事を参照してください。 
 
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>個人用コンピューターで特徴量の重要度の値を生成する 
 次の例は、Azure サービスに接続することなく、個人用コンピューターで解釈可能性パッケージを使用する方法を示しています。
@@ -296,7 +295,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="visualizations"></a>視覚化
 
-ローカルの Jupyter Notebook に説明をダウンロードしたら、視覚化ダッシュボードを使用してモデルを理解および解釈できます。 Jupyter Notebook に視覚化ダッシュボード ウィジェットを読み込むには、次のコードを使用します。
+ローカルの Jupyter Notebook に説明をダウンロードしたら、説明ダッシュボード内の視覚化を使用してモデルを理解および解釈できます。 Jupyter Notebook に説明ダッシュボード ウィジェットを読み込むには、次のコードを使用します。
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -304,7 +303,7 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
-視覚化では、エンジニアリングされたものと未加工の特徴の両方に関する説明をサポートします。 未加工の説明は元のデータセットの特徴に基づいており、エンジニアリングされた説明は特徴エンジニアリングが適用されたデータセットの特徴に基づいています。
+視覚化では、エンジニアリングされたものと未加工の特徴の両方に関する説明がサポートされます。 未加工の説明は元のデータセットの特徴に基づいており、エンジニアリングされた説明は特徴エンジニアリングが適用されたデータセットの特徴に基づいています。
 
 元のデータセットに関してモデルを解釈しようとする場合、各特徴量の重要度は元のデータセットの列に対応するため、未加工の説明を使用することをお勧めします。 エンジニアリングされた説明が役立つ可能性がある 1 つのシナリオは、カテゴリ特徴から個々のカテゴリの影響を調べる場合です。 ワンホット エンコーディングがカテゴリ特徴に適用される場合、結果として得られるエンジニアリングされた説明には、カテゴリごとに異なる重要度の値が、ワンホット エンジニアリングされた特徴ごとに 1 つずつ含まれます。 これは、データセットのどの部分がモデルに最も有益な情報を提供するかを絞り込む場合に役立ちます。
 
@@ -353,11 +352,11 @@ X、Y、色の各軸に沿ってさまざまなフィルターを選択し、さ
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での視覚化
 
-[リモートの解釈可能性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)の手順 (生成された説明の Azure Machine Learning 実行履歴へのアップロード) を完了すると、[Azure Machine Learning Studio](https://ml.azure.com) に視覚化ダッシュボードが表示されます。 このダッシュボードは、上で説明した視覚化ダッシュボードのより単純なバージョンです。 Azure Machine Learning スタジオには、リアルタイムの計算を実行できるアクティブなコンピューティングがないため、What-If データ ポイントの生成と ICE プロットは無効になります。
+[リモートの解釈可能性](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs)の手順 (生成された説明の Azure Machine Learning 実行履歴へのアップロード) を完了したら、[Azure Machine Learning スタジオ](https://ml.azure.com)に説明ダッシュボードの視覚化を表示できます。 このダッシュボードは、Jupyter Notebook 内で生成されるダッシュボード ウィジェットのより単純なバージョンです。 Azure Machine Learning スタジオには、リアルタイムの計算を実行できるアクティブなコンピューティングがないため、What-If データ ポイントの生成と ICE プロットは無効になります。
 
 データ セット、グローバルおよびローカルの説明が使用可能な場合、すべてのタブにデータが入力されます。 グローバル説明のみを使用できる場合、[個々の特徴量の重要度] タブは無効になります。
 
-Azure Machine Learning Studio の視覚化ダッシュボードにアクセスするには、次のパスのいずれかに従います。
+Azure Machine Learning スタジオの説明ダッシュボードにアクセスするには、こちらのパスのいずれかに従います。
 
 * **[実験]** ウィンドウ (プレビュー)
   1. 左側のウィンドウの **[実験]** を選択して、Azure Machine Learning で実行した実験の一覧を表示します。
@@ -368,7 +367,7 @@ Azure Machine Learning Studio の視覚化ダッシュボードにアクセス�
 
 * **[モデル]** ウィンドウ
   1. 「[Azure Machine Learning を使用してモデルをデプロイする](./how-to-deploy-and-where.md)」の手順に従って元のモデルを登録している場合は、左側のウィンドウの **[モデル]** を選択してそれを表示できます。
-  1. モデルを選択してから **[説明]** タブを選択して、説明の視覚化ダッシュボードを表示します。
+  1. モデルを選択してから **[説明]** タブを選択して、説明ダッシュボードを表示します。
 
 ## <a name="interpretability-at-inference-time"></a>推論時の解釈可能性
 

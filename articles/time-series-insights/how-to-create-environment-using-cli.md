@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e2846b7ba07ec0a7678a8287fe6a84bc169497a3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 07e7f21bd706d9f83d2813b0ab491b01fbc53672
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785129"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867567"
 ---
 # <a name="create-an-azure-time-series-insights-gen2-environment-using-the-azure-cli"></a>Azure CLI を使用して Azure Time Series Insights Gen2 環境を作成する
 
@@ -62,7 +62,7 @@ az tsi environment gen2 create --name "my-tsi-env" --location eastus2 --resource
 
 Azure CLI を使用すると、Time Series Insights 環境などの個々のリソースを削除したり、リソース グループとそのすべてのリソース (Time Series Insights 環境など) を削除したりできます。
 
-[Time Series Insights 環境を削除](/cli/azure/ext/timeseriesinsights/tsi/environment#ext_timeseriesinsights_az_tsi_environment_delete)するには、次のコマンドを実行します。
+[Time Series Insights 環境を削除](/cli/azure/tsi/environment#az_tsi_environment_delete)するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 az tsi environment delete --name "my-tsi-env" --resource-group $rg

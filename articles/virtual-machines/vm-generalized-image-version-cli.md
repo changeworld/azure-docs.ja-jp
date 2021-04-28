@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2bcaf85f61a4d8cf4d23c9c5be7f46d765d77dbb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5e0e5544c5e66f43b56de49beaa3ef3932d33f9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551044"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776881"
 ---
-# <a name="create-a-vm-from-a-generalized-image-version-using-the-cli"></a>CLI を使用して、一般化されたイメージ バージョンから VM を作成する
+# <a name="create-a-vm-from-a-generalized-image-version-using-the-azure-cli"></a>Azure CLI を使用して、一般化されたイメージ バージョンから VM を作成します
 
 Shared Image Gallery に格納されている[一般化されたイメージ バージョン](./shared-image-galleries.md#generalized-and-specialized-images)から VM を作成します。 特殊化されたイメージから VM を作成する場合は、[特殊化されたイメージからの VM の作成](vm-specialized-image-version-powershell.md)に関するページをご覧ください。 
 
 
 ## <a name="get-the-image-id"></a>イメージ ID を取得する
 
-[az sig image-definition list](/cli/azure/sig/image-definition#az-sig-image-definition-list) を使用してギャラリー内のイメージ定義を一覧表示すると、定義の名前と ID を確認できます。
+[az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) を使用してギャラリー内のイメージ定義を一覧表示すると、定義の名前と ID を確認できます。
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -33,7 +33,7 @@ az sig image-definition list --resource-group $resourceGroup --gallery-name $gal
 
 ## <a name="create-the-vm"></a>VM の作成
 
-[az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成します。 イメージの最新バージョンを使用するには、`--image` にイメージ定義の ID を指定します。 
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 イメージの最新バージョンを使用するには、`--image` にイメージ定義の ID を指定します。 
 
 必要に応じて、この例のリソース名を置き換えてください。 
 

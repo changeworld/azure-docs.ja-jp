@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/15/2020
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 462d69a8bde0dec2689ac30620276b5bcd335410
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97516367"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717695"
 ---
 # <a name="secure-your-restful-services"></a>お使いの RESTful サービスを保護する 
 
@@ -230,9 +230,50 @@ Authorization: Bearer <token>
 
 ### <a name="acquiring-an-access-token"></a>アクセス トークンの取得 
 
-アクセス トークンは、[フェデレーション ID プロバイダーから](idp-pass-through-user-flow.md)取得する方法、アクセス トークンを返す REST API を呼び出す方法、[ROPC フロー](../active-directory/develop/v2-oauth-ropc.md)を使用する方法、または[クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)を使用する方法のいずれかで取得できます。  
+アクセス トークンは、[フェデレーション ID プロバイダーから](idp-pass-through-user-flow.md)取得する方法、アクセス トークンを返す REST API を呼び出す方法、[ROPC フロー](../active-directory/develop/v2-oauth-ropc.md)を使用する方法、または[クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)を使用する方法のいずれかで取得できます。 クライアント資格情報フローは、一般的にバックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。
 
-次の例では、REST API の技術プロファイルを使用し、HTTP 基本認証として渡されたクライアント資格情報を使用して Azure AD トークン エンドポイントに要求を行います。 Azure AD でこれを構成するには、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)」をご覧ください。 お使いの ID プロバイダーとのインターフェイスを提供するようにこれを変更する必要があることがあります。 
+#### <a name="acquiring-an-azure-ad-access-token"></a>Azure AD アクセス トークンの取得 
+
+次の例では、REST API の技術プロファイルを使用し、HTTP 基本認証として渡されたクライアント資格情報を使用して Azure AD トークン エンドポイントに要求を行います。 詳しくは、「[Microsoft ID プラットフォームと OAuth 2.0 クライアント資格情報フロー](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md)」をご覧ください。 
+
+Azure AD アクセス トークンを取得するには、Azure AD テナントでアプリケーションを作成します。
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+1. 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure Active Directory]** を選択します。 または、 **[すべてのサービス]** を選択してから、 **[Azure Active Directory]** を検索して選択します。
+1. **[アプリの登録]** を選択し、 **[新規登録]** を選択します。
+1. アプリケーションの **名前** を入力します。 たとえば、*Client_Credentials_Auth_app* のように入力します。
+1. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
+1. **[登録]** を選択します。
+2. **[アプリケーション (クライアント) ID]** を記録します。 
+
+
+クライアント資格情報フローの場合は、アプリケーション シークレットを作成する必要があります。 クライアント シークレットは、"アプリケーション パスワード" とも呼ばれます。 このシークレットは、アクセス トークンを取得するためにアプリケーションによって使用されます。
+
+1. **[Azure AD B2C - アプリの登録]** ページで、作成したアプリケーション (例: *Client_Credentials_Auth_app*) を選択します。
+1. 左側のメニューで、 **[管理]** の **[証明書とシークレット]** を選択します。
+1. **[新しいクライアント シークレット]** を選択します。
+1. **[説明]** ボックスにクライアント シークレットの説明を入力します。 たとえば、*clientsecret1* のようにします。
+1. **[有効期限]** で、シークレットが有効な期間を選択してから、 **[追加]** を選択します。
+1. クライアント アプリケーションのコードで使用できるように、シークレットの **値** を記録します。 このページからの移動後は、このシークレットの値は "二度と表示されません"。 アプリケーションのコード内で、この値をアプリケーション シークレットとして使用します。
+
+#### <a name="create-azure-ad-b2c-policy-keys"></a>Azure AD B2C ポリシー キーの作成
+
+Azure AD B2C テナントで前に記録したクライアント ID およびクライアント シークレットを格納する必要があります。
+
+1. [Azure portal](https://portal.azure.com/) にサインインします。
+2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
+6. **オプション** については、`Manual`を選択します。
+7. ポリシー キーの **名前** を入力します (`SecureRESTClientId`)。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+8. **[シークレット]** に、前に記録したクライアント ID を入力します。
+9. **[キー使用法]** として [`Signature`] を選択します。
+10. **Create** をクリックしてください。
+11. 次の設定で別のポリシー キーを作成します。
+    -   **[名前]** : `SecureRESTClientSecret`。
+    -   **[シークレット]** : 前に記録したクライアント シークレットを入力します
 
 ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換えます。 使用可能なすべてのオプションについては、[RESTful 技術プロファイル](restful-technical-profile.md)のリファレンスを参照してください。
 
@@ -251,7 +292,7 @@ ServiceUrl で、your-tenant-name を Azure AD テナントの名前に置き換
   </CryptographicKeys>
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="client_credentials" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://secureb2cfunction.azurewebsites.net/.default" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="https://graph.microsoft.com/.default" />
   </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="bearerToken" PartnerClaimType="access_token" />

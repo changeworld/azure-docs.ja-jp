@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/09/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: a40f3286b4e832f5c73e650859fa9a1d4fe4b6cb
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b4bb58f106f3255ec6cd80b14b175ff413bc0dc6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256958"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725802"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Mailjet を使用するカスタム メール確認
 
@@ -35,8 +35,6 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 
 カスタム メール確認では、[Mailjet](https://Mailjet.com)、[SendGrid](./custom-email-sendgrid.md)、または [SparkPost](https://sparkpost.com) といったサードパーティの電子メール プロバイダー、カスタム REST API、あるいは任意の HTTP ベースの電子メール プロバイダー (独自のものも含む) を使用する必要があります。 この記事では、Mailjet を使用するソリューションの設定について説明します。
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-mailjet-account"></a>Mailjet アカウントを作成する
 
 まだお持ちでない場合は、まず、Mailjet アカウントを設定してください (Azure のお客様は、電子メールの上限が 200/日である 6,000 の電子メールを使用できます)。 
@@ -44,6 +42,10 @@ Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し�
 1. [Mailjet アカウントの作成](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/)に関するページの設定手順に従います。
 1. 電子メールを送信できるようにするには、送信者のメール アドレスまたはドメインを[登録して確認](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use)します。
 2. [API キーの管理ページ](https://app.mailjet.com/account/api_keys)に移動します。 後の手順で使用するために、**API キー** と **シークレット キー** を記録しておきます。 どちらのキーも、アカウントの作成時に自動的に生成されます。  
+
+> [!IMPORTANT]
+> Mailjet によって、共有 IP アドレスと[専用 IP アドレス](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP)から電子メールを送信する機能が顧客に提供されます。 専用 IP アドレスを使用する場合は、IP アドレスのウォームアップを使用して、独自の評判を適切に築く必要があります。 詳細については、「[IP をウォームアップする方法](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-)」を参照してください。
+
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C ポリシー キーの作成
 
@@ -317,6 +319,9 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 ## <a name="add-otp-technical-profiles"></a>OTP 技術プロファイルの追加
 
 `GenerateOtp` 技術プロファイルによってメール アドレスのコードが生成されます。 `VerifyOtp` 技術プロファイルによって、メール アドレスに関連付けられているコードが検証されます。 ワンタイム パスワードの形式と有効期間の構成を変更できます。 OTP 技術プロファイルの詳細については、[ワンタイム パスワード技術プロファイルの定義](one-time-password-technical-profile.md)に関するページを参照してください。
+
+> [!NOTE]
+> Web.TPEngine.Providers.OneTimePasswordProtocolProvider プロトコルによって生成される OTP コードは、ブラウザー セッションに関連付けられています。 つまり、ユーザーはさまざまなブラウザー セッションで、それぞれ対応するセッションに対して有効な一意の OTP コードを生成できます。 これに対して、組み込みのユーザー フローによって生成される OTP コードはブラウザー セッションに依存しないため、ユーザーが新しいブラウザー セッションで新しい OTP コードを生成すると、それによって前の OTP コードが置き換えられます。
 
 次の技術プロファイルを `<ClaimsProviders>` 要素に追加します。
 

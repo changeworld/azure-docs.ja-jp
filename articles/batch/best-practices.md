@@ -3,12 +3,12 @@ title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
 ms.date: 03/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7ef94b07a5131726c42a94088fd3ee1f413dbec7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1a53915f4cdbae03fd86137f3a436bb6e9a6f615
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802354"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147591"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -32,7 +32,7 @@ ms.locfileid: "104802354"
 - **プールには複数のコンピューティング ノードが必要:** 個々のノードは常に使用可能であるとは限りません。 まれなケースですが、ハードウェア障害、オペレーティング システムの更新、その他の多くの問題によって、個々のノードがオフラインになることがあります。 Batch ワークロードの進捗が確実で保証されている必要がある場合、複数のノードでプールを割り当てる必要があります。
 
 - **サポート終了日 (EOL) が近いイメージは使用しない:**
-    Batch のサポート終了日 (EOL) が近いイメージは、使用しないようにすることを強くお勧めします。 このような日付は、[ `ListSupportedImages` API](https://docs.microsoft.com/rest/api/batchservice/account/listsupportedimages)、[PowerShell](https://docs.microsoft.com/powershell/module/az.batch/get-azbatchsupportedimage)、または [Azure CLI](https://docs.microsoft.com/cli/azure/batch/pool/supported-images) で確認することができます。 プールに関連する EOL 日のビューを定期的に更新し、EOL 日になる前にワークロードを移行することは、お客様の責任となります。 指定されたノード エージェントでカスタム イメージを使用している場合は、カスタム イメージが派生されている、または連携しているイメージについて、Batch のサポート終了日を追跡できていることを確認する必要があります。
+    Batch のサポート終了日 (EOL) が近いイメージは、使用しないようにすることを強くお勧めします。 このような日付は、[ `ListSupportedImages` API](/rest/api/batchservice/account/listsupportedimages)、[PowerShell](/powershell/module/az.batch/get-azbatchsupportedimage)、または [Azure CLI](/cli/azure/batch/pool/supported-images) で確認することができます。 プールに関連する EOL 日のビューを定期的に更新し、EOL 日になる前にワークロードを移行することは、お客様の責任となります。 指定されたノード エージェントでカスタム イメージを使用している場合は、カスタム イメージが派生されている、または連携しているイメージについて、Batch のサポート終了日を追跡できていることを確認する必要があります。
 
 - **リソース名は再利用しないでください。**
     多くの場合、Batch リソース (ジョブ、プールなど) は、時間の経過と共に作成されたり削除されたりします。 たとえば、月曜日にプールを作成し、火曜日に削除した後、木曜日に別のプールを作成することがあります。 新しく作成した各リソースには、以前に使用したことのない一意の名前を付ける必要があります。 一意の名前を付けるには、GUID を使用するか (リソース名全体、またはその一部として)、リソースが作成された時間をリソース名に埋め込みます。 Batch では [DisplayName](/dotnet/api/microsoft.azure.batch.jobspecification.displayname) がサポートされています。これを使用すると、実際のリソース ID が人間にとってわかりやすいものではない場合でも、人が判読できる名前をリソースに付けることができます。 一意の名前を使用すると、ログとメトリックで何らかの処理を行った特定のリソースを簡単に識別できます。 また、リソースのサポート ケースを提出する必要がある場合にも、あいまいさが解消されます。

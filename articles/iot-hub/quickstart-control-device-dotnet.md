@@ -1,6 +1,6 @@
 ---
 title: クイックスタート - Azure IoT Hub からのデバイスの制御に関するクイックスタート (.NET) | Microsoft Docs
-description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行します。 1 つは、Hub に接続されたデバイスをリモートで制御できるサービス アプリケーションです。 もう 1 つのアプリケーションは、Hub に接続されたリモートで制御できるデバイスをシミュレートします。
+description: このクイック スタートでは、2 つのサンプル C# アプリケーションを実行します。 1 つは、Hub に接続されたデバイスをリモートで制御できるサービス アプリケーションです。 もう 1 つのアプリケーションは、ハブに接続されたリモートで制御できるデバイスをシミュレートします。
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -14,18 +14,18 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: b89cc9dfb0a98f61b74ecf42471d08129661fb22
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 92f27c16b5dd45352a3a6cb65dd4bf78e88188f0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059872"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868557"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>クイック スタート:IoT Hub に接続されたデバイスを制御する (.NET)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
-IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバイス テレメトリを格納または処理のためにクラウドに取り込むことができるようにする Azure サービスです。 このクイック スタートでは、"*ダイレクト メソッド*" を使って、IoT Hub に接続されているシミュレートされたデバイスを制御します。 ダイレクト メソッドを使うと、IoT Hub に接続されたデバイスの動作をリモートで変更できます。
+IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバイス テレメトリを格納または処理のためにクラウドに取り込むことができるようにする Azure サービスです。 このクイック スタートでは、"*ダイレクト メソッド*" を使って、IoT Hub に接続されているシミュレートされたデバイスを制御します。 ダイレクト メソッドを使うと、IoT ハブに接続されたデバイスの動作をリモートで変更できます。
 
 このクイック スタートでは、あらかじめ作成されている次の 2 つの .NET アプリケーションを使います。
 
@@ -39,7 +39,7 @@ IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバ�
 
 * このクイック スタートで実行する 2 つのサンプル アプリケーションは、C# を使って書かれています。 開発用マシン上に .NET Core SDK 3.1 以上が必要です。
 
-    複数のプラットフォームに対応する .NET Core SDK を [.NET](https://www.microsoft.com/net/download/all) からダウンロードできます。
+    複数のプラットフォームに対応する .NET Core SDK を [.NET](https://dotnet.microsoft.com/download) からダウンロードできます。
 
     開発コンピューターに現在インストールされている C# のバージョンは、次のコマンドを使って確認できます。
 
@@ -96,7 +96,7 @@ IoT Hub は、クラウドから IoT デバイスを管理し、大量のデバ�
 
 ## <a name="retrieve-the-service-connection-string"></a>サービス接続文字列を取得する
 
-サービス アプリケーションがHub に接続してメッセージを取得できるようにするには、IoT Hub の "_サービス接続文字列_" も必要です。 次のコマンドを実行すると、IoT Hub のサービス接続文字列が取得されます。
+サービス アプリケーションがHub に接続してメッセージを取得できるようにするには、IoT Hub の "_サービス接続文字列_" も必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
 
 ```azurecli-interactive
 az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
@@ -110,7 +110,7 @@ az iot hub connection-string show --policy-name service --name {YourIoTHubName} 
 
 ## <a name="listen-for-direct-method-calls"></a>ダイレクト メソッドの呼び出しをリッスンする
 
-シミュレートされたデバイス アプリケーションは、IoT Hub 上のデバイス固有エンドポイントに接続し、シミュレートされた利用統計情報を送信して、Hub からのダイレクト メソッド呼び出しをリッスンします。 このクイック スタートでは、Hub からのダイレクト メソッド呼び出しは、利用統計情報の送信間隔を変更するようデバイスに指示します。 シミュレートされたデバイスでは、ダイレクト メソッドを実行した後、Hub に受信確認が返送されます。
+シミュレートされたデバイス アプリケーションは、IoT Hub 上のデバイス固有エンドポイントに接続し、シミュレートされた利用統計情報を送信して、Hub からのダイレクト メソッド呼び出しをリッスンします。 このクイック スタートでは、Hub からのダイレクト メソッド呼び出しは、利用統計情報の送信間隔を変更するようデバイスに指示します。 シミュレートされたデバイスでは、ダイレクト メソッドを実行した後、ハブに受信確認が返送されます。
 
 1. ローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Quickstarts\SimulatedDeviceWithCommand** フォルダーに移動します。
 
@@ -132,7 +132,7 @@ az iot hub connection-string show --policy-name service --name {YourIoTHubName} 
 
 ## <a name="call-the-direct-method"></a>ダイレクト メソッドを呼び出す
 
-サービス アプリケーションは、IoT Hub 上のサービス側エンドポイントに接続します。 アプリケーションにより、IoT Hub を通してデバイスへのダイレクト メソッド呼び出しが行われた後、受信確認がリッスンされます。 通常、IoT Hub サービス アプリケーションはクラウドで実行されます。
+サービス アプリケーションは、IoT Hub 上のサービス側エンドポイントに接続します。 アプリケーションにより、IoT ハブを通してデバイスへのダイレクト メソッド呼び出しが行われた後、受信確認がリッスンされます。 通常、IoT Hub サービス アプリケーションはクラウドで実行されます。
 
 1. 別のローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Quickstarts\InvokeDeviceMethod** フォルダーに移動します。
 

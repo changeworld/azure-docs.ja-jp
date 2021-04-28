@@ -12,19 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/05/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: bbb8baf111c62e3a1207de9b910979a77927cd6e
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: c702c41228512eceebeaf45ccae709db38a85a51
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490805"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725686"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files のデュアルプロトコル (NFSv3 と SMB) ボリュームを作成する
 
-Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュアル プロトコルを使用したボリュームの作成がサポートされています。 この記事では、LDAP ユーザー マッピングをサポートする、NFSv3 と SMB のデュアル プロトコルを使用するボリュームを作成する方法について説明します。  
+Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュアル プロトコルを使用したボリュームの作成がサポートされています。 この記事では、LDAP ユーザー マッピングをサポートする、NFSv3 と SMB のデュアル プロトコルを使用するボリュームを作成する方法について説明します。 
 
+NFS ボリュームを作成するには、[NFS ボリュームの作成](azure-netapp-files-create-volumes.md)に関する記事を参照してください。 SMB ボリュームを作成するには、[SMB ボリュームの作成](azure-netapp-files-create-volumes-smb.md)に関する記事を参照してください。 
 
 ## <a name="before-you-begin"></a>開始する前に 
 
@@ -111,6 +112,27 @@ Azure NetApp Files では、NFS (NFSv3 と NFSv4.1)、SMB3、またはデュア�
 
     * 使用する **セキュリティ スタイル** を指定します。NTFS (既定値) または UNIX です。
 
+    * デュアルプロトコル ボリュームに対して SMB3 プロトコル暗号化を有効にする場合は、 **[SMB3 プロトコルの暗号化を有効にする]\(Enable SMB3 Protocol Encryption\)** を選択します。   
+
+        この機能により、移動中の SMB3 データに対してのみ暗号化が有効になります。 NFSv3 の移動中データは暗号化されません。 SMB3 暗号化を使用していない SMB クライアントは、このボリュームにアクセスできません。 保存データは、この設定に関係なく暗号化されます。 詳細については、「[SMB 暗号化に関する FAQ](azure-netapp-files-faqs.md#smb-encryption-faqs)」を参照してください。 
+
+        **SMB3 の暗号化** 機能は現在、プレビューの段階です。 この機能を初めて使用する場合は、使用する前に機能を登録してください。 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+
+        機能の登録の状態を確認します。 
+
+        > [!NOTE]
+        > **RegistrationState** が `Registering` 状態から `Registered` に変化するまでに最大 60 分間かかる場合があります。 この状態が `Registered` になってから続行してください。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
+        ```
+        
+        また、[Azure CLI のコマンド](/cli/azure/feature?preserve-view=true&view=azure-cli-latest) `az feature register` と `az feature show` を使用して、機能を登録し、登録状態を表示することもできます。  
+
     * 必要に応じて、[ボリュームのエクスポート ポリシーを構成します](azure-netapp-files-configure-export-policy.md)。
 
     ![デュアルプロトコルの指定](../media/azure-netapp-files/create-volume-protocol-dual.png)
@@ -140,9 +162,9 @@ Active Directory ユーザーとコンピューター MMC スナップインを�
 
 LDAP ユーザーおよび LDAP グループには、次の属性を設定する必要があります。 
 * LDAP ユーザーに必要な属性:   
-    `uid`: Alice、`uidNumber`: 139、`gidNumber`: 555、`objectClass`: posixAccount
+    `uid: Alice`, `uidNumber: 139`, `gidNumber: 555`, `objectClass: posixAccount`
 * LDAP グループに必要な属性:   
-    `objectClass`: "posixGroup"、`gidNumber`: 555
+    `objectClass: posixGroup`, `gidNumber: 555`
 
 ## <a name="configure-the-nfs-client"></a>NFS クライアントを構成する 
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61993df77b0831926f16339a741a2553e80c2a0d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96903991"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713842"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -24,7 +24,7 @@ ms.locfileid: "96903991"
 ソース コードは、次の GitHub リポジトリに格納されています。
 
 * [接続済みファクトリ ソリューション アクセラレータ](https://github.com/Azure/azure-iot-connected-factory)
-* [デバイス シミュレーション ソリューション アクセラレータ](https://github.com/Azure/device-simulation-dotnet)
+* [デバイス シミュレーション ソリューション アクセラレータ](https://github.com/Azure/azure-iot-pcs-device-simulation)
 
 ### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>リモート監視と予測メンテナンスのソリューション アクセラレータはどこで入手できますか?
 
@@ -36,7 +36,7 @@ ms.locfileid: "96903991"
 
 ### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>デバイス シミュレーション ソリューション アクセラレータはどのようにデプロイしますか?
 
-デバイス シミュレーション ソリューション アクセラレータをデプロイするには、[デバイス シミュレーション](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)の GitHub リポジトリを参照してください。
+デバイス シミュレーション ソリューション アクセラレータをデプロイするには、[デバイス シミュレーション](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)の GitHub リポジトリを参照してください。
 
 ### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>削除されたソリューション アクセラレータに関する情報はどこで入手できますか?
 

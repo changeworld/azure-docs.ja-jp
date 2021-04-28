@@ -4,16 +4,16 @@ description: ネットワーク ファイル システム プロトコルを使�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b549c625f0a6ff0480eafc38f84d292e66350950
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521239"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717133"
 ---
 # <a name="how-to-create-an-nfs-share"></a>NFS 共有を作成する方法
 Azure ファイル共有は、クラウド内に存在するフル マネージドのファイル共有です。 この記事では、NFS プロトコルを使用するファイル共有の作成について説明します。 両方のプロトコルの詳細については、[Azure ファイル共有のプロトコル](storage-files-compare-protocols.md)に関するページを参照してください。
@@ -107,25 +107,24 @@ FileStorage ストレージ アカウントを作成するには、Azure portal 
 
 1. Azure portal の左側のメニューで **[ストレージ アカウント]** を選択します。
 
-    ![Azure portal のメイン ページでストレージ アカウントを選択する](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Azure portal のメイン ページでストレージ アカウントを選択します。](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-2. 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
-3. ストレージ アカウントを作成するサブスクリプションを選択します。
-4. ストレージ アカウントを作成するリソース グループを選択します。
+1. 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
+1. ストレージ アカウントを作成するサブスクリプションを選択します。
+1. ストレージ アカウントを作成するリソース グループを選択します。
+1. 次に、ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
+1. ストレージ アカウントの場所を選択するか、または既定の場所を使います。
+1. **[パフォーマンス]** では **[Premium]** を選択します。
 
-5. 次に、ストレージ アカウントの名前を入力します。 選択する名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 から 24 文字とし、数字と小文字のみを使用できます。
-6. ストレージ アカウントの場所を選択するか、または既定の場所を使います。
-7. **[パフォーマンス]** では **[Premium]** を選択します。
+    **[アカウントの種類]** ドロップダウンにオプションとして **[ファイル共有]** を表示するには、 **[Premium]** を選択する必要があります。
 
-    **[アカウントの種類]** ドロップダウンにオプションとして **[FileStorage]** を表示するには、 **[Premium]** を選択する必要があります。
+1. **[Premium account type]\(Premium アカウントの種類\)** で **[ファイル共有]** を選択します。
 
-8. **[アカウントの種類]** を選択し、 **[FileStorage]** を選択します。
-9. **[レプリケーション]** の設定は、既定値の **[ローカル冗長ストレージ (LRS)]** のままにします。
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="選択された Premium パフォーマンスのスクリーンショット。":::
 
-    ![Premium ファイル共有にストレージ アカウントを作成する方法](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
-
-10. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
-11. **［作成］** を選択します
+1. **[レプリケーション]** の設定は、既定値の **[ローカル冗長ストレージ (LRS)]** のままにします。
+1. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
+1. **［作成］** を選択します
 
 ストレージ アカウント リソースが作成されたら、そこに移動します。
 
@@ -180,7 +179,7 @@ az storage account create \
     
 1. **［作成］** を選択します
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="ファイル共有の作成ブレードのスクリーンショット":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/files-nfs-create-share.png" alt-text="ファイル共有の作成ブレードのスクリーンショット。":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

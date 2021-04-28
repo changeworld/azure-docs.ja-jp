@@ -2,18 +2,18 @@
 title: Azure Managed Disks のサーバー側暗号化
 description: Azure Storage では、保存時に暗号化してデータを保護してから、ストレージ クラスターに保存します。 カスタマー マネージド キーを使用し、独自のキーを使って暗号化を管理できます。また、マネージド ディスクの暗号化には Microsoft のマネージド キーを使用できます。
 author: roygara
-ms.date: 03/11/2021
+ms.date: 04/15/2021
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 786ecef5d62c7dd18e3992fa0b233b27a80d762b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 09ec15eb45029c42fd5bc02288a0c45e167e7092
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721853"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146295"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure Disk Storage のサーバー側暗号化
 
@@ -21,7 +21,7 @@ ms.locfileid: "104721853"
 
 Azure マネージド ディスク内のデータは、利用できる最も強力なブロック暗号の 1 つである 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使って透過的に暗号化され、FIPS 140-2 に準拠しています。 Azure マネージド ディスクの基になっている暗号化モジュールについて詳しくは、「[暗号化 API:次世代](/windows/desktop/seccng/cng-portal)」を参照してください。
 
-Azure Storage の暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 Azure Storage の暗号化の詳細については、「[Azure Storage の暗号化](/azure/storage/common/storage-service-encryption)」をご参照ください。
+Azure Storage の暗号化は、マネージド ディスクのパフォーマンスには影響しません。また、追加のコストはかかりません。 Azure Storage の暗号化の詳細については、「[Azure Storage の暗号化](../storage/common/storage-service-encryption.md)」をご参照ください。
 
 > [!NOTE]
 > 一時ディスクはマネージド ディスクではなく、ホストで暗号化を有効にしない限り、SSE によって暗号化されません。
@@ -81,6 +81,8 @@ Azure Storage の暗号化は、マネージド ディスクのパフォーマ�
 #### <a name="supported-vm-sizes"></a>サポートされる VM のサイズ
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
+
+また、プログラムによって VM のサイズを確認することもできます。 プログラムによってこれを取得する方法については、[Azure PowerShell モジュール](windows/disks-enable-host-based-encryption-powershell.md#finding-supported-vm-sizes)または [Azure CLI](linux/disks-enable-host-based-encryption-cli.md#finding-supported-vm-sizes) の記事の「サポートされている VM のサイズを確認する」セクションを参照してください。
 
 ホストで暗号化を使用してエンドツーエンドの暗号化を有効にするには、[Azure PowerShell モジュール](windows/disks-enable-host-based-encryption-powershell.md)、[Azure CLI](linux/disks-enable-host-based-encryption-cli.md)、または [Azure portal](disks-enable-host-based-encryption-portal.md) のいずれかを使用して暗号化を有効にする方法について説明している記事を参照してください。
 

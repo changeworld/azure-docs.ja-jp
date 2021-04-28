@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: 3370389027805cfb5a68b5b0551d14dc31154804
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 14f7a88e756123b807852d78b6511939b81fd9db
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105611839"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126059"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure の専用 HSM のネットワーク
 
@@ -133,7 +133,7 @@ Command Result : 0 (Success)
 
 ### <a name="alternative-to-using-global-vnet-peering"></a>グローバル VNET ピアリングの使用の代替手段
 グローバル VNet ピアリングの代わりとして使用できるいくつかのアーキテクチャがあります。
-1.  [VNet 間 VPN Gateway 接続](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)を使用します 
+1.  [VNet 間 VPN Gateway 接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を使用します 
 2.  ER 回線で HSM VNET と別の VNET を接続します。 これは、直接のオンプレミスのパスが必要な場合、または VPN VNET に最適です。 
 
 #### <a name="hsm-with-direct-express-route-connectivity"></a>Express Route 直接接続がある HSM

@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 0d935cac68fc1b9e8d97a875c4b6e48078324fb8
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 6ded5d4ed8c2a55939bba908a05adbd2dea2ccbf
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108143613"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714778"
 ---
 # <a name="set-up-dependency-visualization"></a>依存関係の視覚化を設定する
 
@@ -55,7 +55,7 @@ ms.locfileid: "108143613"
     ![新しいワークスペースの追加](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 > [!Note]
-> プライベート エンドポイント接続用に OMS ワークスペースを構成する方法については、[こちら](../azure-monitor/logs/private-link-security.md)をご覧ください。  
+> プライベート エンドポイント接続用に OMS ワークスペースを構成する方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/logs/private-link-security)をご覧ください。  
 
 ## <a name="download-and-install-the-vm-agents"></a>VM エージェントをダウンロードしてインストールする
 

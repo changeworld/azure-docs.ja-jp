@@ -3,22 +3,23 @@ title: Azure Monitor リソース ログでサポートされているサービ�
 description: Azure Monitor のリファレンス - Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.topic: reference
 ms.date: 03/30/2021
-ms.openlocfilehash: a4ab4a2e425b752198223da5efd1b07466ab83d1
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: b9bac212a8be040349a8d78c64d7beab291e1f9e
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106166940"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016024"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているカテゴリ
 
 > [!NOTE]
-> リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が、Azure リソースだけでなくそれ以外のものも含むように移行したため、2019 年 10 月に変更されました。
+> この一覧は、主に自動生成されています。 GitHub を介してこの一覧に加えられた変更は、警告なしで上書きできます。 永続的な更新を行う方法の詳細については、この記事の作成者にお問い合わせください。
 
 [Azure Monitor リソース ログ](../essentials/platform-logs-overview.md)は、Azure サービスによって出力されるログであり、そのサービスやリソースの操作が記述されます。 Azure Monitor を通じて使用できるすべてのリソース ログには、共通の上位スキーマが共有されます。各サービスが、独自のイベントに固有のプロパティを出力するための柔軟性も備わっています。
 
-(`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、[Azure リソース ログの共通のスキーマとサービス固有のスキーマ]()に関するページを参照してください
+リソース ログは、以前は診断ログと呼ばれていました。 この名前は、Azure Monitor によって収集されたログの種類が、Azure リソースだけでなくそれ以外のものも含むように移行したため、2019 年 10 月に変更されました。
 
+(`resourceId` プロパティで使用可能な) リソースの種類と `category` を組み合わせて、スキーマを一意に識別します。 サービス固有のフィールドを含むすべてのリソース ログに共通のスキーマがあり、それぞれのログ カテゴリに対して追加されています。 詳細については、[Azure リソース ログの共通のスキーマとサービス固有のスキーマ]()に関するページを参照してください
 
 ## <a name="costs"></a>コスト
 
@@ -653,14 +654,6 @@ Log Analytics、Azure Storage、またはイベント ハブにデータを送�
 |---|---|---|
 |FrontdoorAccessLog|Frontdoor アクセス ログ|いいえ|
 |FrontdoorWebApplicationFirewallLog|Frontdoor Web アプリケーション ファイアウォール ログ|いいえ|
-
-
-## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
-
-|カテゴリ|カテゴリの表示名|エクスポートのコスト|
-|---|---|---|
-|LoadBalancerAlertEvent|ロード バランサーのアラート イベント|いいえ|
-|LoadBalancerProbeHealthStatus|ロード バランサーのプローブ正常性状態|いいえ|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 93fd286aa76a0409a515abbf8c9dabd88a9a65c4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bfe5dc7c4f6fc40154a6fc9bc3a087873ba9eaef
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877456"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129245"
 ---
 # <a name="manage-and-monitor-app-with-azure-spring-boot-actuator"></a>Azure Spring Boot アクチュエータを使用したアプリの管理と監視
 
@@ -21,7 +21,7 @@ ms.locfileid: "104877456"
 アプリに新しいバイナリをデプロイした後、機能をチェックし、実行中のアプリケーションに関する情報を確認できます。 この記事では、Azure Spring Cloud によって提供されるテスト エンドポイントから API にアクセスし、アプリの実稼働可能な機能を公開する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、Azure Spring Cloud サービスに問題なくデプロイして起動できる Spring Boot 2.x アプリケーションがあることを前提としています。  「[クイック スタート:Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](spring-cloud-quickstart.md)」をご覧ください。
+この記事では、Azure Spring Cloud サービスに問題なくデプロイして起動できる Spring Boot 2.x アプリケーションがあることを前提としています。  「[クイック スタート:Azure portal を使用して既存の Azure Spring Cloud アプリケーションを起動する](./quickstart.md)」をご覧ください。
 
 ## <a name="verify-app-through-test-endpoint"></a>テスト エンドポイントを介してアプリを検証する
 1. **アプリケーション ダッシュボード** にアクセスし、お使いのアプリをクリックして、アプリの概要ページに移動します。
@@ -76,6 +76,5 @@ ms.locfileid: "104877456"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Spring Cloud のメトリックについて](spring-cloud-concept-metrics.md)
-* [Azure Spring Cloud でのアプリの状態の概要](spring-cloud-concept-app-status.md)
-
+* [Azure Spring Cloud のメトリックについて](./concept-metrics.md)
+* [Azure Spring Cloud でのアプリの状態の概要](./concept-app-status.md)

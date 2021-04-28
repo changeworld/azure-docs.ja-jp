@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05a0aeb43b13dc4db28ca8c56fc668756a2a4510
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b05d6c5cc520dd83318203b0bf6d0d7c0ab18382
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258726"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127208"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -327,10 +327,10 @@ ms.locfileid: "107258726"
 先に進む前に知っておくべき IaaS での SQL Server に固有の情報があります。
 
 * **SQL バージョンのサポート**: SAP のお客様に対しては、Microsoft Azure Virtual Machines で SQL Server 2008 R2 以降がサポートされています。 これより前のエディションはサポートされていません。 詳細については、この一般的な [サポートの説明](https://support.microsoft.com/kb/956893) を確認してください。 マイクロソフトは基本的には SQL Server 2008 をサポートしています。 ただし、SQL Server 2008 R2 で導入された SAP の重要な機能によって、SQL Server 2008 R2 が SAP の最小リリースとなっています。 一般的に、Azure IaaS で SAP ワークロードを実行するには、最新の SQL Server リリースを使用することを検討することをお勧めします。 最新の SQL Server リリースは、Azure のサービスと機能の一部との統合性が向上しています。 または、Azure IaaS インフラストラクチャで操作を最適化するように変更します。 そのため、このドキュメントは SQL Server 2016 と SQL Server 2017 に制限されています。
-* **SQL のパフォーマンス**: Microsoft Azure がホストする Virtual Machines は、他のパブリック クラウド仮想化製品と比べて良好に機能しますが、個々の結果は異なる場合があります。 「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)」の記事を参照してください。
+* **SQL のパフォーマンス**: Microsoft Azure がホストする Virtual Machines は、他のパブリック クラウド仮想化製品と比べて良好に機能しますが、個々の結果は異なる場合があります。 「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)」の記事を参照してください。
 * **Azure Marketplace からのイメージの使用**: 新しい Microsoft Azure VM をデプロイする最も早い方法は、Azure Marketplace からのイメージを使用することです。 Azure Marketplace には、最新の SQL Server リリースを含むイメージがあります。 SQL Server が既にインストールされているイメージは、SAP NetWeaver アプリケーション用にすぐに使用することができません。 その理由は、それらのイメージ内に既定の SQL Server 照合順序がインストールされており、SAP NetWeaver システムで必要な照合順序がインストールされていないためです。 このようなイメージを使用するには、「[Microsoft Azure Marketplace からの SQL Server イメージの使用][dbms-guide-5.6]」の章に記載されている手順をご確認ください。 
-*  **1 つの Azure VM 内で SQL Server の複数インスタンスのサポート**: このデプロイ方法はサポートされています。 ただし、リソースの制限事項 (特に、使用している VM の種類のネットワークとストレージの帯域幅に関するもの) に注意してください。 詳細については、「[Azure の仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/sizes)」を参照してください。 これらのクォータ制限により、オンプレミスで実装できるのと同じマルチインスタンス アーキテクチャを実装できなくなる可能性があります。 1 つの VM 内で使用可能なリソースを共有する構成と干渉に関しては、オンプレミスと同じ考慮事項を考慮する必要があります。
-*  **1 つの VM 内の 1 つの SQL Server インスタンス内で複数の SAP データベース**: 上記のように、このような構成はサポートされています。 1 つの SQL Server インスタンスの共有リソースを共有する複数の SAP データベースに関する考慮事項は、オンプレミス デプロイの場合と同じです。 さらに、特定の VM の種類にアタッチできるディスク数などの他の制限も考慮してください。 また、「[Azure の仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/sizes)」で詳しく説明されているように、特定の VM の種類のネットワークと記憶域のクォータ制限もあります。 
+*  **1 つの Azure VM 内で SQL Server の複数インスタンスのサポート**: このデプロイ方法はサポートされています。 ただし、リソースの制限事項 (特に、使用している VM の種類のネットワークとストレージの帯域幅に関するもの) に注意してください。 詳細については、「[Azure の仮想マシンのサイズ](../../sizes.md)」を参照してください。 これらのクォータ制限により、オンプレミスで実装できるのと同じマルチインスタンス アーキテクチャを実装できなくなる可能性があります。 1 つの VM 内で使用可能なリソースを共有する構成と干渉に関しては、オンプレミスと同じ考慮事項を考慮する必要があります。
+*  **1 つの VM 内の 1 つの SQL Server インスタンス内で複数の SAP データベース**: 上記のように、このような構成はサポートされています。 1 つの SQL Server インスタンスの共有リソースを共有する複数の SAP データベースに関する考慮事項は、オンプレミス デプロイの場合と同じです。 さらに、特定の VM の種類にアタッチできるディスク数などの他の制限も考慮してください。 また、「[Azure の仮想マシンのサイズ](../../sizes.md)」で詳しく説明されているように、特定の VM の種類のネットワークと記憶域のクォータ制限もあります。 
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>SAP 関連 SQL Server のデプロイメントの VM/VHD 構造に関する推奨事項
@@ -352,7 +352,7 @@ SQL Server と SAP データベースを実行し、D:\ ドライブに tempdb �
 上の図は簡易な場合を示しています。 記事「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」で説明されているように、Azure Storage の種類、ディスクの数とサイズはさまざまな要素によって変わります。 ただし一般的な推奨事項は次のとおりです。
 
 - SQL Server データ ファイルを含む 1 つの大きなボリュームを使用します。 この構成の背景には、現実には I/O ワークロードが異なり、データベース ファイルのサイズが異なる多数の SAP データベースが存在するという理由があります。
-- パフォーマンスが十分であれば、tempdb には D:\ ドライブを使用してください。 D:\ ドライブに配置した tempdb によってワークロード全体のパフォーマンスが制限される場合は、[この記事](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)で推奨されているように、tempdb を別の Azure Premium Storage または Ultra Disk のディスクに移動することを検討する必要があります。
+- パフォーマンスが十分であれば、tempdb には D:\ ドライブを使用してください。 D:\ ドライブに配置した tempdb によってワークロード全体のパフォーマンスが制限される場合は、[この記事](../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices-checklist.md)で推奨されているように、tempdb を別の Azure Premium Storage または Ultra Disk のディスクに移動することを検討する必要があります。
 
 
 ### <a name="special-for-m-series-vms"></a>M シリーズ VM のみの特殊な推奨事項

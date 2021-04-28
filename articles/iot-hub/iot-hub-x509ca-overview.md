@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - 'Role: System Architecture'
-ms.openlocfilehash: 455f1f3e1c8181646fbe165d0f1aea6a2fb2fb13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7b0cf04adbf3da1f02e9f18b5e3c20760f9dbf53
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92150698"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147195"
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>X.509 CA 証明書を使用したデバイス認証
 
@@ -68,13 +68,13 @@ X.509 CA 証明書を IoT Hub に登録します。この証明書は、登録�
 
 所有の証明ステップには、ユーザーと IoT Hub 間で暗号のチャレンジと応答のプロセスが含まれます。  デジタル証明書の内容がパブリックであるために傍受されやすい場合、IoT Hub は、ユーザーが実際に CA 証明書を所有していることを確かめようとします。  IoT Hub はこれを、ランダム チャレンジを生成することによって行います。このチャレンジには、CA 証明書の対応する秘密キーで署名する必要があります。  前述のように秘密キー シークレットを保存して保護している場合、このステップを完了するための情報を持っているのは当該ユーザーのみです。 秘密キーの秘密性が、この方法における信頼の源です。  チャレンジに署名後、結果を含むファイルをアップロードすることによってこのステップを完了します。
 
-[CA 証明書の登録](iot-hub-security-x509-get-started.md#register-x509-ca-certificates-to-your-iot-hub)方法については、こちらをご覧ください。
+[CA 証明書の登録](./tutorial-x509-scripts.md)方法については、こちらをご覧ください。
 
 ## <a name="how-to-create-a-device-on-iot-hub"></a>IoT Hub 上にデバイスを作成する方法
 
 デバイス偽装を防ぐために、IoT Hub は、どのようなデバイスが必要であるかを指定するようユーザーに要求します。  これは、IoT Hub のデバイス レジストリにデバイス エントリを作成することによって行います。  このプロセスは、IoT Hub [Device Provisioning Service](https://azure.microsoft.com/blog/azure-iot-hub-device-provisioning-service-preview-automates-device-connection-configuration/) を使用している場合は自動化されます。 
 
-手動で IoT Hub にデバイスを作成する方法については、[ここ](iot-hub-security-x509-get-started.md#create-an-x509-device-for-your-iot-hub)を参照してください。
+手動で IoT Hub にデバイスを作成する方法については、[ここ](./tutorial-x509-scripts.md)を参照してください。
 
 IoT ハブの X.509 デバイスを作成する
 
@@ -84,7 +84,7 @@ X.509 CA 証明書を登録し、デバイスに署名して証明書の信頼�
 
 IoT Hub へのデバイス接続が正常に行われると、認証プロセスは完了です。これはまた、セットアップが正しいことも示しています。
 
-このデバイス接続手順を完了する方法については、[ここ](iot-hub-security-x509-get-started.md#authenticate-your-x509-device-with-the-x509-certificates)を参照してください。
+このデバイス接続手順を完了する方法については、[ここ](./tutorial-x509-scripts.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

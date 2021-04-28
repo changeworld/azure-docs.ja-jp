@@ -5,12 +5,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/01/2021
 ms.custom: template-concept
-ms.openlocfilehash: 4da685c247427e78297df1753779ee9b5c7866b8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53f3c79886d26b20a584d747759176ea842741cf
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023199"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739280"
 ---
 # <a name="guide-for-running-functions-on-net-50-in-azure"></a>Azure において関数を .NET 5.0 で実行するためのガイド
 
@@ -74,6 +74,8 @@ ms.locfileid: "105023199"
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_startup":::
 
+このコードでは `using Microsoft.Extensions.DependencyInjection;` が必要です。 
+
 [HostBuilder] は、完全に初期化された [IHost] インスタンス (これを非同期で実行して関数アプリを起動します) をビルドして返すために使用します。 
 
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_host_run":::
@@ -103,7 +105,7 @@ ms.locfileid: "105023199"
  
 :::code language="csharp" source="~/azure-functions-dotnet-worker/samples/FunctionApp/Program.cs" id="docsnippet_dependency_injection" :::
 
-詳細については、「[ASP.NET Core での依存関係の挿入](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true)」を参照してください。
+このコードでは `using Microsoft.Extensions.DependencyInjection;` が必要です。 詳細については、「[ASP.NET Core での依存関係の挿入](/aspnet/core/fundamentals/dependency-injection?view=aspnetcore-5.0&preserve-view=true)」を参照してください。
 
 ### <a name="middleware"></a>ミドルウェア
 
@@ -224,4 +226,4 @@ HTTP トリガーは、受信した HTTP 要求メッセージを、関数に渡
 [HttpResponseData]: /dotnet/api/microsoft.azure.functions.worker.http.httpresponsedata?view=azure-dotnet&preserve-view=true
 [HttpRequest]: /dotnet/api/microsoft.aspnetcore.http.httprequest?view=aspnetcore-5.0&preserve-view=true
 [ObjectResult]: /dotnet/api/microsoft.aspnetcore.mvc.objectresult?view=aspnetcore-5.0&preserve-view=true
-[JsonSerializerOptions]: /api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true
+[JsonSerializerOptions]: /dotnet/api/system.text.json.jsonserializeroptions?view=net-5.0&preserve-view=true

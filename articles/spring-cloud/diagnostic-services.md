@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7e2042294ebaefa2640873bb1ce941d9a60c7834
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259423"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128993"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>診断設定でログとメトリックを分析する
 
@@ -27,7 +27,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 監視するログ カテゴリとメトリック カテゴリを選択します。
 
 > [!TIP]
-> ログをストリーミングするだけの場合は、 こちらの [Azure CLI コマンド](/cli/azure/ext/spring-cloud/spring-cloud/app#ext-spring-cloud-az-spring-cloud-app-logs)を確認してください。
+> ログをストリーミングするだけの場合は、 こちらの [Azure CLI コマンド](/cli/azure/spring-cloud/app#az_spring_cloud_app_logs)を確認してください。
 
 ## <a name="logs"></a>ログ
 
@@ -38,7 +38,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 
 ## <a name="metrics"></a>メトリック
 
-メトリックの完全な一覧については、[Spring Cloud のメトリック](./spring-cloud-concept-metrics.md#user-metrics-options)に関する記事を参照してください。
+メトリックの完全な一覧については、[Spring Cloud のメトリック](./concept-metrics.md#user-metrics-options)に関する記事を参照してください。
 
 まず、これらのサービスのいずれかを有効にしてデータを受信します。 Log Analytics の構成については、「[Azure Monitor で Log Analytics の使用を開始する](../azure-monitor/logs/log-analytics-tutorial.md)」を参照してください。
 
@@ -110,7 +110,7 @@ Azure Spring Cloud の診断機能を使用することで、次のいずれか�
 > [!NOTE]
 > `==` では大文字と小文字が区別されますが、`=~` では区別されません。
 
-Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログのクエリを実行する場合には、[Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)に関するページを確認してください。
+Log Analytics で使用されるクエリ言語の詳細については、「[Azure Monitor ログ クエリ](/azure/data-explorer/kusto/query/)」を参照してください。 一元化されたクライアントからすべての Log Analytics ログのクエリを実行する場合には、[Azure Data Explorer](/azure/data-explorer/query-monitor-data)に関するページを確認してください。
 
 ### <a name="use-your-storage-account"></a>ストレージ アカウントを使用する
 
@@ -208,4 +208,4 @@ AppPlatformLogsforSpring
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)

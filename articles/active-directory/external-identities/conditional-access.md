@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a5388d15b18180539eb95990a29f7ddf4f1951
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646284"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739550"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>B2B コラボレーション ユーザーの条件付きアクセス
 
@@ -67,7 +67,7 @@ ms.locfileid: "101646284"
 6. Fabrikam は、Azure AD Multi-Factor Authentication をサポートするのに十分な Azure AD Premium ライセンスを保有している必要があります。 その後、Contoso のユーザーはこの Fabrikam のライセンスを使用します。 B2B ライセンスの詳細については、「[Azure AD External Identities の課金モデル](./external-identities-pricing.md)」を参照してください。
 
 >[!NOTE]
->予測可能性を確保するため、Azure AD Multi-Factor Authentication はリソース テナントで実行されます。
+>予測可能性を確保するため、Azure AD Multi-Factor Authentication はリソース テナントで実行されます。 ゲスト ユーザーがサインインすると、リソース テナントのサインイン ページが背景に、独自のホーム テナントのサインイン ページと会社のロゴが前景に表示されます。
 
 ### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>B2B ユーザーの Azure AD Multi-Factor Authentication の設定
 

@@ -1,14 +1,14 @@
 ---
 title: 一般的なエラーのトラブルシューティング
 description: ポリシー定義の作成、さまざまな SDK、および Kubernetes のアドオンに関する問題をトラブルシューティングする方法について説明します。
-ms.date: 01/26/2021
+ms.date: 04/19/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4feae11c6d8d78a43bae9882405e292a18e90bd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592608"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725064"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Azure Policy の使用に関するエラーをトラブルシューティングする
 
@@ -124,6 +124,24 @@ Azure Policy によって処理されると予想されているリソースが�
 #### <a name="resolution"></a>解像度
 
 拒否されたポリシー割り当てのエラー メッセージには、ポリシー定義とポリシー割り当て ID が含まれています。 メッセージ内のエラー情報が欠落している場合は、[アクティビティ ログ](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log)でも確認できます。 この情報を使用して、リソースの制限を理解し、許可された値に一致するように要求のリソース プロパティを調整します。
+
+### <a name="scenario-definition-targets-multiple-resource-types"></a>シナリオ: 複数のリソースの種類が定義の対象とされている
+
+#### <a name="issue"></a>問題
+
+複数のリソースの種類を含むポリシー定義が、作成時または更新時に次のエラーで検証に失敗します。
+
+```error
+The policy definition '{0}' targets multiple resource types, but the policy rule is authored in a way that makes the policy not applicable to the target resource types '{1}'.
+```
+
+#### <a name="cause"></a>原因
+
+ポリシー定義ルールに、ターゲット リソースの種類によって評価されない 1 つ以上の条件が含まれています。
+
+#### <a name="resolution"></a>解決方法
+
+エイリアスが使用されている場合、その前に種類の条件を追加することによって、そのエイリアスが属しているリソースの種類に対してのみエイリアスが評価されるようにします。 別の方法としては、ポリシー定義を複数の定義に分割して、複数のリソースの種類をターゲットにしないようにします。
 
 ## <a name="template-errors"></a>テンプレート エラー
 

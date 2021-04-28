@@ -8,12 +8,12 @@ ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a253ff5fde0667c80be5a5b3af00e74abebdc609
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 1070a5ddf298ad88100e7803635e970f9a314e52
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030255"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869583"
 ---
 # <a name="prepare-your-development-and-test-environment-for-iot-edge"></a>IoT Edge のための開発およびテスト環境の準備
 
@@ -57,9 +57,9 @@ IoT Edge 拡張機能に加えて、開発用のその他の拡張機能をイ�
 
 | モジュール テンプレート | 前提条件 |
 | --------------- | ------------ |
-| Azure Functions | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
+| Azure Functions | [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) |
 | C | [Git](https://git-scm.com/) |
-| C# | [.NET Core 2.1 SDK](https://www.microsoft.com/net/download) |
+| C# | [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) |
 | Java | <ul><li>[Java SE Development Kit 10](/azure/developer/java/fundamentals/java-jdk-long-term-support) <li> [JAVA_HOME 環境変数の設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/) <li> [Maven](https://maven.apache.org/)</ul> |
 | Node.js | <ul><li>[Node.js](https://nodejs.org/) <li> [Yeoman](https://www.npmjs.com/package/yo) <li> [Azure IoT Edge Node.js モジュール ジェネレーター](https://www.npmjs.com/package/generator-azure-iot-edge-module)</ul> |
 | Python |<ul><li> [Python](https://www.python.org/downloads/) <li> [Pip](https://pip.pypa.io/en/stable/installing/#installation) <li> [Git](https://git-scm.com/) </ul> |

@@ -4,12 +4,12 @@ description: Azure ストレージ アカウントを使用して転送パイプ
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: 4fe36366011fb790d25419ac46a54c4bf5ad94bf
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c966600b0ca9d65cf533c3c2f0aca211c84917bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785820"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780777"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>成果物を別のレジストリに転送する
 
@@ -416,13 +416,19 @@ az resource delete \
 * **テンプレート デプロイの失敗またはエラー**
   * パイプライン実行が失敗した場合は、実行リソースの `pipelineRunErrorMessage` プロパティを確認します。
   * テンプレート デプロイに関する一般的なエラーについては、「[ARM テンプレート デプロイのトラブルシューティング](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)」を参照してください。
+* **ストレージへのアクセスで問題が発生した**<a name="problems-accessing-storage"></a>
+  * ストレージから `403 Forbidden` エラーが発生した場合は、SAS トークンに問題がある可能性があります。
+  * SAS トークンが現在有効でない可能性があります。 SAS トークンの有効期限が切れているか、SAS トークンの作成後にストレージ アカウント キーが変更された可能性があります。 SAS トークンを使用してストレージ アカウント コンテナーへのアクセスの認証を試みることによって、SAS トークンが有効であることを確認します。 たとえば、新しい Microsoft Edge InPrivate ウィンドウのアドレス バーに既存の BLOB エンドポイント、SAS トークンの順に入力するか、`az storage blob upload` を使用して SAS トークンによってコンテナーに BLOB をアップロードします。
+  * SAS トークンの許可されるリソースの種類が十分でない可能性があります。 SAS トークンに、許可されるリソースの種類 (SAS トークン内の `srt=sco`) のもとでサービス、コンテナー、オブジェクトへのアクセス許可が付与されていることを確認します。
+  * SAS トークンに十分なアクセス許可がない可能性があります。 エクスポート パイプラインの場合、必要な SAS トークンのアクセス許可は、読み取り、書き込み、一覧表示、追加です。 インポート パイプラインの場合、必要な SAS トークンのアクセス許可は読み取り、削除、一覧表示です。 (削除のアクセス許可が必要なのは、インポート パイプラインで `DeleteSourceBlobOnSuccess` オプションが有効になっている場合のみです。)
+  * SAS トークンが HTTPS のみで動作するように構成されていない可能性があります。 SAS トークンが HTTPS のみで動作するように構成されている (SAS トークン内の `spr=https`) ことを確認します。
 * **ストレージ BLOB のエクスポートまたはインポートに関する問題**
-  * SAS トークンの有効期限が切れているか、指定されたエクスポート実行またはインポート実行に対して十分なアクセス許可がない可能性があります。
+  * SAS トークンが無効であるか、指定されたエクスポートまたはインポートの実行に対して十分なアクセス許可がない可能性があります。 「[ストレージへのアクセスで問題が発生した](#problems-accessing-storage)」を参照してください。
   * ソース ストレージ アカウントの既存のストレージ BLOB が、複数のエクスポート実行中に上書きされない可能性があります。 エクスポート実行で OverwriteBlob オプションが設定されており、SAS トークンに十分なアクセス許可があることを確認します。
   * インポート実行が成功した後、ターゲット ストレージ アカウントのストレージ BLOB が削除されない可能性があります。 インポート実行で DeleteBlobOnSuccess オプションが設定されており、SAS トークンに十分なアクセス許可があることを確認します。
   * ストレージ BLOB が作成または削除されません。 エクスポート実行またはインポート実行で指定されたコンテナーが存在するか、または指定されたストレージ BLOB が手動でのインポート実行用に存在することを確認します。 
 * **AzCopy の問題**
-  * [AzCopy の問題のトラブルシューティング](../storage/common/storage-use-azcopy-configure.md#troubleshoot-issues)に関するセクションを参照してください。  
+  * [AzCopy の問題のトラブルシューティング](../storage/common/storage-use-azcopy-configure.md)に関するセクションを参照してください。  
 * **成果物の転送に関する問題**
   * 一部の成果物が転送されないか、または 1 つも転送されません。 エクスポート実行で成果物のスペルを確認し、エクスポート実行とインポート実行で BLOB の名前を確認します。 最大 50 個の成果物を転送していることを確認します。
   * パイプライン実行が完了していない可能性があります。 エクスポート実行またはインポート実行には時間がかかることがあります。 
@@ -441,15 +447,15 @@ az resource delete \
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-login]: /cli/azure/reference-index#az-login
-[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
-[az-keyvault-secret-show]: /cli/azure/keyvault/secret#az-keyvault-secret-show
-[az-keyvault-set-policy]: /cli/azure/keyvault#az-keyvault-set-policy
-[az-storage-container-generate-sas]: /cli/azure/storage/container#az-storage-container-generate-sas
-[az-storage-blob-list]: /cli/azure/storage/blob#az-storage-blob-list
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[az-deployment-group-delete]: /cli/azure/deployment/group#az-deployment-group-delete
-[az-deployment-group-show]: /cli/azure/deployment/group#az-deployment-group-show
-[az-acr-repository-list]: /cli/azure/acr/repository#az-acr-repository-list
-[az-acr-import]: /cli/azure/acr#az-acr-import
-[az-resource-delete]: /cli/azure/resource#az-resource-delete
+[az-login]: /cli/azure/reference-index#az_login
+[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az_keyvault_secret_set
+[az-keyvault-secret-show]: /cli/azure/keyvault/secret#az_keyvault_secret_show
+[az-keyvault-set-policy]: /cli/azure/keyvault#az_keyvault_set_policy
+[az-storage-container-generate-sas]: /cli/azure/storage/container#az_storage_container_generate_sas
+[az-storage-blob-list]: /cli/azure/storage/blob#az_storage-blob-list
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-deployment-group-delete]: /cli/azure/deployment/group#az_deployment_group_delete
+[az-deployment-group-show]: /cli/azure/deployment/group#az_deployment_group_show
+[az-acr-repository-list]: /cli/azure/acr/repository#az_acr_repository_list
+[az-acr-import]: /cli/azure/acr#az_acr_import
+[az-resource-delete]: /cli/azure/resource#az_resource_delete

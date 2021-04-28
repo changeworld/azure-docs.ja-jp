@@ -1,18 +1,19 @@
 ---
 title: 脅威インテリジェンス データを更新する
 description: 脅威インテリジェンス データ パッケージは、新しい Defender for IoT バージョンごとに、またはリリース間で必要に応じて提供されます。
-ms.date: 12/14/2020
+ms.date: 04/17/2021
 ms.topic: how-to
-ms.openlocfilehash: 386d59d33c4f9695b8fc5243dab345321cff4a5f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bb38d0a2486bda336d6881ec6f4c5d680906c973
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104784052"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750466"
 ---
-# <a name="threat-intelligence-research-and-packages"></a>脅威インテリジェンスの調査とパッケージ
+# <a name="threat-intelligence-research-and-packages"></a>脅威インテリジェンスの調査とパッケージ #
+## <a name="overview"></a>概要 ##
 
-Microsoft のセキュリティ チームは、独自の ICS 脅威インテリジェンスおよび脆弱性調査を実施しています。 これらのチームには、MSTIC (Microsoft Threat Intelligence Center)、DART (Microsoft Detection and Response Team)、DCU (Digital Crimes Unit)、Section 52 (ICS 固有のゼロデイ、リバースエンジニアリングのマルウェア、キャンペーン、および敵対者を追跡する IoT/OT/ICS ドメインの専門家) が含まれています。
+Microsoft のセキュリティ チームは、独自の ICS 脅威インテリジェンスおよび脆弱性調査を実施しています。 これらのチームには、MSTIC (Microsoft Threat Intelligence Center)、DART (Microsoft Detection and Response Team)、DCU (Digital Crimes Unit)、Section 52 (ICS 固有のゼロデイ、リバースエンジニアリングのマルウェア、キャンペーン、および敵対者を追跡する IoT/OT/ICS ドメインの専門家) が含まれています
 
 チームは、Microsoft の次の分野に対してセキュリティの検出、分析、および対応を提供します。
 
@@ -27,19 +28,54 @@ Microsoft のセキュリティ チームは、独自の ICS 脅威インテリ�
 - 影響を受ける前に、脅威の完全なコンテキストに対する理解。
 - 関連性、正確性、実用性がより高いデータ。
 
-このインテリジェンスにより、Microsoft プラットフォーム分析を強化するためのコンテキスト情報が追加され、インシデント対応および侵害を調査するために会社の管理サービスがサポートされます。 脅威インテリジェンス パッケージには、署名 (マルウェアの署名を含む)、CVE、およびその他のセキュリティ コンテンツが含まれています。
+このインテリジェンスにより、Microsoft プラットフォーム分析を強化するためのコンテキスト情報が提供され、インシデント対応および侵害を調査するために会社の管理サービスがサポートされます。 脅威インテリジェンス パッケージには、署名 (マルウェアの署名を含む)、CVE、およびその他のセキュリティ コンテンツが含まれています。
 
-パッケージは、Azure Defender for IoT ポータルの **[更新プログラム]** ページからダウンロードできます。
+## <a name="when-are-packages-delivered"></a>パッケージが配信されるタイミング ##
+
+脅威インテリジェンス パッケージは、約 1 か月に 1 回、または必要に応じてより頻繁に提供されます。 新しいパッケージに関するお知らせは、 https://techcommunity.microsoft.com/t5/azure-defender-for-iot/bd-p/AzureDefenderIoT から確認できます。 
+
+## <a name="update-threat-intelligence-packages-to-your-sensors"></a>ご自分のセンサーの脅威インテリジェンス パッケージを更新する ##
+
+ご自分のセンサーの脅威インテリジェンス パッケージの更新では、3 つのオプションを使用できます。
+
+- パッケージが Defender for IoT によって配布されたら、それをセンサーに自動的にプッシュする。
+- 必要に応じて、脅威インテリジェンス パッケージをセンサーに手動でプッシュする。
+- パッケージをダウンロードし、それを 1 つのセンサーまたは複数のセンサーにアップロードする。
+
+Defender for IoT セキュリティ閲覧者のアクセス許可が割り当てられているユーザーは、パッケージを自動および手動でセンサーにプッシュできます。
+
+### <a name="automatically-push-threat-intelligence-updates-to-sensors"></a>脅威インテリジェンスの更新をセンサーに自動的にプッシュする ###
+
+"*クラウド接続*" センサーについては、新しい脅威インテリジェンス パッケージが Defender for IoT によってリリースされると、それに自動的に更新できます。 パッケージが確実に自動更新されるようにするには、 **[Automatic Threat Intelligence Updates]\(脅威インテリジェンスの自動更新\)** オプションが有効になっている状態で、クラウド接続センサーをオンボードします。 詳細については、「[センサーをオンボードする](getting-started.md#onboard-a-sensor)」を参照してください。
+
+### <a name="manually-push-threat-intelligence-updates-to-sensors"></a>脅威インテリジェンスの更新をセンサーに手動でプッシュする ###
+
+ご自分の "*クラウド接続*" センサーは、脅威インテリジェンス パッケージで自動的に更新できます。 ただし、より保守的なアプローチを使用したい場合は、必要と思われるときにのみ、Azure Defender for IoT ポータルからセンサーにパッケージをプッシュすることができます。
+これにより、パッケージをインストールするタイミングを制御できます。これをダウンロードしてご自分のセンサーにアップロードする必要はありません。
+
+**パッケージを手動でプッシュするには:**
+
+1. Azure Defender for IoT の **[Sites and Sensors]\(サイトとセンサー\)** ページに移動します。
+1. センサーの省略記号 ([...]) を選択し、 **[脅威インテリジェンスの更新をプッシュ]** を選択します。 **[脅威インテリジェンスの更新状態]** フィールドに更新の進行状況が表示されます。
+
+#### <a name="change-the-threat-intelligence-update-mode"></a>脅威インテリジェンスの更新モードを変更する ####
+
+最初のオンボード後にセンサーの脅威インテリジェンスの更新モードを変更できます。
+
+**更新モードを変更するには:**
+
+1. センサーの省略記号 ([...]) を選択し、 **[編集]** を選択します。
+1. **[Automatic Threat Intelligence Updates]\(脅威インテリジェンスの自動更新\)** トグルを有効または無効にします。
+
+### <a name="download-packages-and-upload-to-sensors"></a>パッケージをダウンロードしてセンサーにアップロードする ###
+
+パッケージを Defender for IoT ポータルからダウンロードし、個々のセンサーに手動でアップロードできます。 オンプレミスの管理コンソールでセンサーを管理している場合は、脅威インテリジェンス パッケージを管理コンソールにダウンロードし、複数のセンサーに同時にプッシュすることができます。
 
 :::image type="content" source="media/how-to-work-with-threat-intelligence-packages/download-screen.png" alt-text="Azure Defender for IoT ポータルから更新プログラムをダウンロードします。":::
 
-## <a name="update-threat-intelligence-data"></a>脅威インテリジェンス データを更新する
+このオプションは、"*クラウド接続*" センサーと "*ローカル管理*" センサーの両方で使用できます。
 
-脅威インテリジェンス パッケージは、新しい Defender for IoT バージョン更新プログラムごとに、またはリリース間で必要に応じて提供されます。
-
-Defender for IoT ポータルからダウンロードしたパッケージは、個々のセンサーに手動でアップロードできます。 オンプレミスの管理コンソールでセンサーを管理している場合は、脅威インテリジェンス パッケージを管理コンソールにダウンロードし、複数のセンサーに同時にプッシュすることができます。
-
-1 つのセンサーでパッケージを更新するには:
+**1 つのセンサーにアップロードするには:**
 
 1. Azure Defender for IoT の **[更新プログラム]** ページに移動します。
 
@@ -53,7 +89,7 @@ Defender for IoT ポータルからダウンロードしたパッケージは、
 
 6. 新しいパッケージをアップロードします。
 
-複数のセンサーのパッケージを同時に更新するには:
+**複数のセンサーに同時にアップロードするには:**
 
 1. Azure Defender for IoT の **[更新プログラム]** ページに移動します。
 
@@ -69,6 +105,34 @@ Defender for IoT ポータルからダウンロードしたパッケージは、
 
 7. パッケージをアップロードします。
 
+## <a name="review-package-update-status-on-the-sensor"></a>センサーのパッケージの更新状態を確認する ##
+
+パッケージの更新状態とバージョン情報は、センサーの **[システムの設定]** 、 **[脅威インテリジェンス]** セクションに表示されます。  
+
+## <a name="review-package-information-for-cloud-connected-sensors"></a>クラウド接続センサーのパッケージ情報を確認する ##
+
+ご自分のクラウド接続センサーの脅威インテリジェンス パッケージに関する次の情報を確認します。
+
+- インストールされているパッケージのバージョン
+- 脅威インテリジェンスの更新モード
+- 脅威インテリジェンスの更新状態
+
+脅威インテリジェンスの情報を確認するには:
+
+1. Azure Defender for IoT の **[Sites and Sensors]\(サイトとセンサー\)** ページに移動します。
+1. 各センサーにインストールされている **脅威インテリジェンスのバージョン** を確認します。 バージョン名は、パッケージが Defender for IoT によって差作成された日付に基づいています。
+1. **脅威インテリジェンス モード** を確認します。 *[自動]* は、使用可能な新しいパッケージが Defender for IoT によってリリースされると、それがセンサーに自動的にインストールされることを示しています。 *[手動]* は、使用可能な新しいパッケージを必要に応じてセンサーに直接プッシュできることを示しています。
+1. **脅威インテリジェンスの更新状態** を確認します。 次の状態が表示される場合があります。
+
+- 失敗
+- 進行中
+- 利用可能な更新プログラムがあります
+- [OK]
+
+クラウド接続の脅威インテリジェンスの更新に失敗した場合は、 **[Sites and Sensors]\(サイトとセンサー\)** ページの **[Sensor status]\(センサーの状態\)** と **[最終接続日時 (UTC)]** 列の接続情報を確認します。 
+
 ## <a name="see-also"></a>関連項目
 
-[バージョンの更新](how-to-manage-sensors-from-the-on-premises-management-console.md#update-versions)
+[センサーをオンボードする](getting-started.md#onboard-a-sensor)
+
+[管理コンソールからセンサーを管理する](how-to-manage-sensors-from-the-on-premises-management-console.md)

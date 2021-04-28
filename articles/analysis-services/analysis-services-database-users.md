@@ -4,16 +4,16 @@ description: Azure の Analysis Services サーバーでデータベース ロ�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/15/2020
+ms.date: 04/27/2021
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: 31910e92ba4d5cbb1f133eaff6880fafb809b772
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ad6bbd0fffaff3f4deb6b8a11e8b578336a80882
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99054095"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130397"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 

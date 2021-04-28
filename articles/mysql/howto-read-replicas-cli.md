@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a5bc9638e2e6eeff8f2176247f579b64beede90
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 697e594581636bb3940684371661705539068e6a
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94540214"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001666"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Azure CLI と REST API を使用して Azure Database for MySQL の読み取りレプリカを作成および管理する方法
 
@@ -118,7 +118,7 @@ az mysql server delete --resource-group myresourcegroup --name mydemoserver
 [Azure REST API](/rest/api/azure/) を使用して、読み取りレプリカを作成して管理できます。
 
 ### <a name="create-a-read-replica"></a>読み取りレプリカを作成します
-[作成 API](/rest/api/mysql/servers/create) を使用して、読み取りレプリカを作成できます。
+[作成 API](/rest/api/mysql/flexibleserver(preview)/servers/create) を使用して、読み取りレプリカを作成できます。
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{replicaName}?api-version=2017-12-01
@@ -146,14 +146,14 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 > ソース サーバーの設定が新しい値に更新される前に、レプリカの設定をそれと同等以上の値に更新します。 このアクションは、レプリカがマスターに対するあらゆる変更に追従できるようにするのに役立ちます。
 
 ### <a name="list-replicas"></a>レプリカの一覧表示
-[レプリカ一覧表示 API](/rest/api/mysql/replicas/listbyserver) を使用して、ソース サーバーのレプリカの一覧を表示できます。
+[レプリカ一覧表示 API](/rest/api/mysql/flexibleserver(preview)/replicas/listbyserver) を使用して、ソース サーバーのレプリカの一覧を表示できます。
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/servers/{masterServerName}/Replicas?api-version=2017-12-01
 ```
 
 ### <a name="stop-replication-to-a-replica-server"></a>レプリカ サーバーへのレプリケーションを停止します。
-[更新 API](/rest/api/mysql/servers/update) を使用して、ソース サーバーと読み取りレプリカの間のレプリケーションを停止できます。
+[更新 API](/rest/api/mysql/flexibleserver(preview)/servers/update) を使用して、ソース サーバーと読み取りレプリカの間のレプリケーションを停止できます。
 
 ソース サーバーと読み取りレプリカへのレプリケーションを停止した後、それを元に戻すことはできません。 読み取りレプリカは、読み取りと書き込みの両方をサポートするスタンドアロン サーバーになります。 スタンドアロン サーバーをもう一度レプリカにすることはできません。
 
@@ -170,7 +170,7 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 ```
 
 ### <a name="delete-a-source-or-replica-server"></a>ソースまたはレプリカ サーバーの削除
-ソースまたはレプリカ サーバーを削除するには、[削除 API](/rest/api/mysql/servers/delete) を使用します。
+ソースまたはレプリカ サーバーを削除するには、[削除 API](/rest/api/mysql/flexibleserver(preview)/servers/delete) を使用します。
 
 ソース サーバーを削除すると、すべての読み取りレプリカへのレプリケーションが停止されます。 読み取りレプリカは、読み取りと書き込みの両方をサポートするようになったスタンドアロン サーバーになります。
 

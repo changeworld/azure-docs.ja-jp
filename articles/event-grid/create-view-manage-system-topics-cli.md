@@ -3,12 +3,12 @@ title: CLI を使用した Azure Event Grid システム トピックの作成�
 description: この記事では、Azure CLI を使用して、システムのトピックを作成、表示、削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: c1c847c7f25e3a656b798e186a408e560b9ee9e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34a098406762fd57dc9dc4b58fc375286f5d5b13
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98633224"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874299"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Azure CLI を使用した Event Grid システム トピックの作成、表示、管理
 この記事では、Azure CLI を使用してシステム トピックを作成および管理する方法について説明します。 システム トピックの概要については、[システム トピック](system-topics.md)に関するページを参照してください。
@@ -30,7 +30,7 @@ Cloud Shell で:
 ## <a name="create-a-system-topic"></a>システム トピックを作成する
 
 - 最初に Azure ソースにシステム トピックを作成してから、そのトピックのイベント サブスクリプションを作成するには、次の参照トピックを参照してください。
-    - [az eventgrid system-topic create](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-create)
+    - [az eventgrid system-topic create](/cli/azure/eventgrid/system-topic#az_eventgrid_system_topic_create)
 
         ```azurecli-interactive
         # Get the ID of the Azure source (for example: Azure Storage account)
@@ -53,14 +53,14 @@ Cloud Shell で:
         ```azurecli-interactive
         az eventgrid topic-type  list --output json | grep -w id
         ```
-    - [az eventgrid system-topic event-subscription create](/cli/azure/ext/eventgrid/eventgrid/system-topic/event-subscription#ext-eventgrid-az-eventgrid-system-topic-event-subscription-create)
+    - [az eventgrid system-topic event-subscription create](/cli/azure/eventgrid/system-topic/event-subscription#az_eventgrid_system_topic_event-subscription-create)
 
         ```azurecli-interactive
         az eventgrid system-topic event-subscription create --name <SPECIFY EVENT SUBSCRIPTION NAME> \
             -g rg1 --system-topic-name <SYSTEM TOPIC NAME> \
             --endpoint <ENDPOINT URL>         
         ```
-- Azure ソースのイベント サブスクリプションを作成するときに、(暗黙的に) システム トピックを作成するには、[az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) メソッドを使用します。 次に例を示します。
+- Azure ソースのイベント サブスクリプションを作成するときに、(暗黙的に) システム トピックを作成するには、[az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) メソッドを使用します。 次に例を示します。
     
     ```azurecli-interactive
     storageid=$(az storage account show --name <AZURE STORAGE ACCOUNT NAME> --resource-group <AZURE RESOURCE GROUP NAME> --query id --output tsv)
@@ -76,12 +76,12 @@ Cloud Shell で:
 ## <a name="view-all-system-topics"></a>すべてのシステム トピックを表示する
 すべてのシステム トピックと選択したシステム トピックの詳細を表示するには、次のコマンドを使用します。
 
-- [az eventgrid system-topic list](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-list)
+- [az eventgrid system-topic list](/cli/azure/eventgrid/system-topic#az_eventgrid_system_topic_list)
 
     ```azurecli-interactive
     az eventgrid system-topic list   
      ```
-- [az eventgrid system-topic show](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-show)
+- [az eventgrid system-topic show](/cli/azure/eventgrid/system-topic#az_eventgrid_system_topic_show)
 
     ```azurecli-interactive
     az eventgrid system-topic show -g <AZURE RESOURCE GROUP NAME> -n <SYSTEM TOPIC NAME>     
@@ -90,7 +90,7 @@ Cloud Shell で:
 ## <a name="delete-a-system-topic"></a>システム トピックを削除します
 システム トピックを削除するには、次のコマンドを使用します。 
 
-- [az eventgrid system-topic delete](/cli/azure/ext/eventgrid/eventgrid/system-topic#ext-eventgrid-az-eventgrid-system-topic-delete)
+- [az eventgrid system-topic delete](/cli/azure/eventgrid/system-topic#az_eventgrid_system_topic_delete)
 
     ```azurecli-interactive
     az eventgrid system-topic delete -g <AZURE RESOURCE GROUP NAME> --name <SYSTEM TOPIC NAME>   

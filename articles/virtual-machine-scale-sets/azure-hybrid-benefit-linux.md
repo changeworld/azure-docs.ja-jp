@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/20/2021
 ms.author: mathapli
-ms.openlocfilehash: a714434c39a0c40c2e908f2d0c424f02851921a6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: fb5f00cf2e7078ab8d85f0ac1c2a2d54be907f89
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933680"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127175"
 ---
 # <a name="azure-hybrid-benefit-for-linux-virtual-machine-scale-set-public-preview"></a>Linux 仮想マシン スケール セットの Azure ハイブリッド特典 (パブリック プレビュー)
 
-**Linux 仮想マシン スケール セットの Azure ハイブリッド特典は、現在パブリック プレビューの段階です**。 AHB 特典により、RHEL および SLES [仮想マシン スケール セット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)を実行するためのコストを削減できます。
+**Linux 仮想マシン スケール セットの Azure ハイブリッド特典は、現在パブリック プレビューの段階です**。 AHB 特典により、RHEL および SLES [仮想マシン スケール セット](./overview.md)を実行するためのコストを削減できます。
 
 この特典により、スケール セットのインフラストラクチャ コストのみ支払うだけで済みます。 この特典は、すべての RHEL および SLES Marketplace の従量課金制 (PAYG) イメージに利用できます。
 
 
 >[!NOTE]
-> この記事では、Linux VMSS の Azure ハイブリッド特典について説明します。 [こちら](https://docs.microsoft.com/azure/virtual-machines/linux/azure-hybrid-benefit-linux)に Linux VM の AHB に関する個別の記事があります。これは、2020 年 11 月以降、Azure のお客様は既に使用しています。
+> この記事では、Linux VMSS の Azure ハイブリッド特典について説明します。 [こちら](../virtual-machines/linux/azure-hybrid-benefit-linux.md)に Linux VM の AHB に関する個別の記事があります。これは、2020 年 11 月以降、Azure のお客様は既に使用しています。
 
 ## <a name="benefit-description"></a>特典の説明
 Azure ハイブリッドでは、Red Hat または SUSE の既存のクラウド アクセス ライセンスを使用して、仮想マシン スケール セット インスタンスをサブスクリプション持ち込み (BYOS) 課金に柔軟に変換できます。 
@@ -94,7 +94,7 @@ az vmss update -g myResourceGroup -n myVmName --license-type None
 ```
 
 >[!NOTE]
-> スケール セットには、VM を最新のスケール セット モデルで最新の状態にする方法を決定する ["アップグレード ポリシー"](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) があります。 そのため、VMSS に "自動" アップグレード ポリシーがある場合、VM インスタンスの更新に合わせて AHB 特典が自動的に適用されます。 VMSS に、スケジュールされた更新に基づく "ローリング" アップグレード ポリシーがある場合、AHB が適用されます。
+> スケール セットには、VM を最新のスケール セット モデルで最新の状態にする方法を決定する ["アップグレード ポリシー"](./virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) があります。 そのため、VMSS に "自動" アップグレード ポリシーがある場合、VM インスタンスの更新に合わせて AHB 特典が自動的に適用されます。 VMSS に、スケジュールされた更新に基づく "ローリング" アップグレード ポリシーがある場合、AHB が適用されます。
 "手動" アップグレード ポリシーの場合、既存の各 VM の "手動アップグレード" を実行する必要があります。  
 
 ### <a name="cli-example-to-upgrade-virtual-machine-scale-set-instances-in-case-of-manual-upgrade-policy"></a>"手動アップグレード" ポリシーの場合に仮想マシン スケール セット インスタンスをアップグレードする CLI の例 

@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/16/2021
+ms.date: 04/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e694a5f6144cee65be074d05ce0015d31bfdf65e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8f9f6dc1abd08c5e53f3d44a8f6ec1b3e20786ed
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104675827"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717443"
 ---
 # <a name="customize-the-user-interface-with-html-templates-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で HTML テンプレートを使用してユーザー インターフェイスをカスタマイズする
 
@@ -261,7 +261,7 @@ Blob ストレージ内にパブリック コンテナーを作成するには�
 
 UI のカスタマイズを構成するには、**ContentDefinition** とその子要素を基本ファイルから拡張ファイルにコピーします。
 
-1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>です。 この基本ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](./custom-policy-get-started.md)に関するページの前提条件の中で、取得済みになっている必要があります。
+1. ポリシーの基本ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em>です。 この基本ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](./tutorial-create-user-flows.md?pivots=b2c-custom-policy)に関するページの前提条件の中で、取得済みになっている必要があります。
 1. **ContentDefinitions** 要素を検索し、その内容全体をコピーします。
 1. 拡張ファイルを開きます。 たとえば、*TrustFrameworkExtensions.xml* です。 **BuildingBlocks** 要素を検索します。 要素が存在しない場合は追加します。
 1. コピーした **ContentDefinitions** 要素の内容全体を **BuildingBlocks** 要素の子として貼り付けます。
@@ -390,7 +390,7 @@ git clone https://github.com/azure-ad-b2c/html-templates
     
 1. `\*.html` ファイルを保存し、それらを Blob Storage にアップロードします。
 1. ここで、前述のように、HTML ファイルを指すようにポリシーを変更します。
-1. 欠落しているフォント、イメージ、または CSS がある場合は、拡張ポリシーおよび \*.html ファイルでお使いの参照を確認してください。
+1. 欠落しているフォント、イメージ、または CSS がある場合は、拡張ポリシーおよび `\*.html` ファイルでお使いの参照を確認してください。
 
 ## <a name="use-company-branding-assets-in-custom-html"></a>カスタム HTML で会社のブランド資産を使用する
 

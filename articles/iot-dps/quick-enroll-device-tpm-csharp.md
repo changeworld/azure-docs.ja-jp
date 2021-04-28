@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f17c6716fe98a11d03e8d1021bcdb1058fe671
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 73a9b27c7b9119ee49fc451ca0a1c03d8db3db0e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94968113"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868629"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>クイック スタート:C# サービス SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
@@ -26,7 +26,7 @@ ms.locfileid: "94968113"
 
 1. [Visual Studio 2019](https://www.visualstudio.com/vs/) がご利用のコンピューターにインストールされていることを確認します。
 
-1. [.NET Core SDK](https://www.microsoft.com/net/download/windows) がご利用のコンピューターにインストールされていることを確認します。
+1. [.NET Core SDK](https://dotnet.microsoft.com/download) がご利用のコンピューターにインストールされていることを確認します。
 
 1. 続行する前に、「[Azure portal で IoT Hub Device Provisioning Service を設定する](./quick-setup-auto-provision.md)」に記載の手順を済ませてください。
 

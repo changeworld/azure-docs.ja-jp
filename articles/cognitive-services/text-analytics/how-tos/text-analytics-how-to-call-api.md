@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 5790c7c62b9d97df9683773170301b6e09a47667
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029779"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728484"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Text Analytics REST API を呼び出す方法
 
@@ -64,6 +64,8 @@ v3.1-preview.3 以降の Text Analytics API には、2 つの非同期エンド�
 * Text Analytics 用の `/analyze` エンドポイントを使用すると、API の 1 回の呼び出しで、複数のテキスト分析機能を使用して同じテキスト ドキュメントのセットを分析できます。 以前は、複数の機能を使用するには、操作ごとに個別に API を呼び出す必要がありました。 Text Analytics の複数の機能で、大きなドキュメントのセットを分析する必要があるときは、この機能を検討してください。
 
 * Text Analytics for Health 用の `/health` エンドポイント。医療ドキュメントから関連する医療情報を抽出してラベル付けすることができます。  
+
+/analyze と /health エンドポイントは、次のリージョンでのみご利用いただけます。米国西部 2、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ。
 
 非同期に使用できる機能を確認するには、次の表を参照してください。 `/analyze` エンドポイントから呼び出すことができるのは一部の機能だけであることに注意してください。 
 

@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) についてよく寄せられる質
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: references_regions
-ms.openlocfilehash: f13d7a33ce1dc04700932072fe0af80a901c681f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 00ca0579ee47ae38e40e966c818acfb7b48f6c5f
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783199"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015593"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) についてよく寄せられる質問
 
@@ -285,7 +285,7 @@ spec:
 [aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./azure-ad-integration-cli.md
 [node-updates-kured]: node-updates-kured.md
-[aks-preview-cli]: /cli/azure/ext/aks-preview/aks
+[aks-preview-cli]: /cli/azure/aks
 [az-aks-create]: /cli/azure/aks#az_aks_create
 [aks-rm-template]: /azure/templates/microsoft.containerservice/2019-06-01/managedclusters
 [aks-cluster-autoscaler]: cluster-autoscaler.md

@@ -10,15 +10,15 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2020
+ms.date: 4/14/2021
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 2d14ca2423d34926a9e297823a6515c2c5dde06a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4a18e0f257ac8d7b7d981d53249cf29f2f8f38bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105607118"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790151"
 ---
 # <a name="virtual-network-service-tags"></a>仮想ネットワーク サービス タグ
 <a name="network-service-tags"></a>
@@ -135,11 +135,13 @@ ms.locfileid: "105607118"
 
 - [REST](/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](/powershell/module/az.network/Get-AzNetworkServiceTag)
-- [Azure CLI](/cli/azure/network#az-network-list-service-tags)
+- [Azure CLI](/cli/azure/network#az_network_list_service_tags)
 
 > [!NOTE]
-> パブリック プレビューの段階であるため、Discovery API によって返される情報は、JSON のダウンロードによって返される情報よりも新しくない場合があります (次のセクションを参照してください)。
+> 新しいサービス タグ データが API の結果に反映されるまでに、最大 4 週間かかります。 これが行われると、応答メタデータの変更番号が増分されます。 異なる場所の値が指定されると、結果に一時的な違いが生じる場合があります。 結果を使用して NSG ルールを作成する場合は、NSG のリージョンと一致するように場所パラメーターを設定する必要があります。 
 
+> [!NOTE]
+> API データは、NSG ルールで使用できるタグを表します。これは、ダウンロード可能な JSON ファイルに現在あるタグのサブセットです。 パブリック プレビュー中は、更新から次の更新までの間にデータが同じままであることは保証されません。 
 
 ### <a name="discover-service-tags-by-using-downloadable-json-files"></a>ダウンロード可能な JSON ファイルを使用してサービス タグを検出する 
 サービス タグの現在の一覧と IP アドレス範囲の詳細を含む JSON ファイルをダウンロードできます。 これらの一覧は、毎週更新されて公開されます。 各クラウドの場所は次のとおりです。

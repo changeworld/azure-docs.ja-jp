@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: f98f128e56810e3dd710ce454c8dc34b333690d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c6dbab1b7fa1599add9fb48814a1138bf176c81d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879294"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127463"
 ---
 # <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>コマーシャル マーケットプレース用に Azure アプリケーション オファーを計画する
 
@@ -210,7 +210,7 @@ Azure サブスクリプション ID GUID を使用してプレビュー対象�
 Microsoft がサポートするマーケティングおよびセールス チャネルのオプトインを選択できます。 パートナー センターでオファーを作成すると、プロセスの終盤で、次の 2 つのタブが表示されます。
 
 - **CSP を通して再販する**: このオプションを使用して、Microsoft クラウド ソリューションプロバイダー (CSP) パートナーがバンドルされたオファーの一部としてソリューションを再販できるようにします。 詳細については、「[クラウド ソリューション プロバイダー プログラム](./cloud-solution-providers.md)」を参照してください。
-- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 評価のためにオファーを準備する方法の詳細については、「[コマーシャル マーケットプレースでの共同販売オプション](commercial-marketplace-co-sell.md)」を参照してください。 IP 共同販売の要件の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 Microsoft CSP パートナー チャネルを通じたプランのマーケティングの詳細については、「[クラウド ソリューション プロバイダー](cloud-solution-providers.md)」を参照してください。
+- **Microsoft と共同販売する**: このオプションを使用すると、Microsoft セールス チームは、顧客のニーズを評価するときに、IP の共同販売対象ソリューションを検討できます。 評価のためにオファーを準備する方法の詳細については、「[コマーシャル マーケットプレースでの共同販売オプション](./co-sell-configure.md)」を参照してください。 IP 共同販売の要件の詳細については、[共同販売の状態の要件](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status)に関する記事を参照してください。 Microsoft CSP パートナー チャネルを通じたプランのマーケティングの詳細については、「[クラウド ソリューション プロバイダー](cloud-solution-providers.md)」を参照してください。
 
 詳細については、[Azure Marketplace でのビジネスの拡大](https://azuremarketplace.microsoft.com/sell)に関するページを参照してください。
 

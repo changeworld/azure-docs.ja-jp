@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
 ms.custom: synapse-cosmos-db
-ms.openlocfilehash: 253257564ffc96108f282d7de3dbd9f5e8ce68fd
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5423305296e66fc90b0810a4a49e937a85583aa1
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104869873"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905524"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link for Azure Cosmos DB:凖リアルタイム分析のユース ケース
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -140,7 +140,7 @@ Azure Synapse Link を使用すると、Azure Cosmos DB でトランザクショ
 
 * [Azure Synapse Link for Azure Cosmos DB の操作](configure-synapse-link.md)
 
-* [Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問](synapse-link-frequently-asked-questions.md)
+* [Azure Synapse Link for Azure Cosmos DB についてよく寄せられる質問](synapse-link-frequently-asked-questions.yml)
 
 * [Azure Synapse Analytics での Apache Spark](../synapse-analytics/spark/apache-spark-concepts.md)
 

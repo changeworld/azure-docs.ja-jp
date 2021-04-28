@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6634a536828b3c19d771d135fdb3a1224d3dfdf3
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96498848"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717425"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -122,7 +122,7 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 **詳細**: [データの収集とエクスポートに Azure Monitor](../../azure-monitor/overview.md#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。
 
 **ベスト プラクティス**: Endpoint Detection and Response (EDR) 機能を攻撃の調査に統合することで、調査と検出プロセスを高速化し、誤検出を減らします。   
-**詳細**: Security Center のセキュリティ ポリシーを使用して、[エンドポイント統合用に Microsoft Defender を有効](../../security-center/security-center-wdatp.md#enabling-the-microsoft-defender-for-endpoint-integration)にします。 脅威の検出とインシデント対応には、Azure Sentinel の使用を検討してください。
+**詳細**: Security Center のセキュリティ ポリシーを使用して、[Microsoft Defender for Endpoint の統合を有効にします](../../security-center/security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)。 脅威の検出とインシデント対応には、Azure Sentinel の使用を検討してください。
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>エンド ツー エンドのシナリオ ベースのネットワーク監視
 お客様は、仮想ネットワーク、ExpressRoute、Application Gateway、ロード バランサーなどのネットワーク リソースを組み合わせて Azure にエンド ツー エンド ネットワークを構築します。 各ネットワーク リソースは監視することができます。

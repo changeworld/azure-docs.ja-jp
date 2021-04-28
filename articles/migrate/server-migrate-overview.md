@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 7446b2050fdd7bbc7704953c053da0629231191c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a0629d50ee8181ffcbfe7dad32ab76fb3e68fd
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715124"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714166"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware 移行オプションを選択する
 
@@ -34,7 +34,8 @@ Azure Migrate Server Migration ツールを使用して VMware VM を Azure に�
 **ターゲット ディスク** | マネージド ディスク | マネージド ディスク
 **ディスクの制限** | OS ディスク:2 TB<br/><br/> データ ディスク:32 TB<br/><br/> 最大ディスク数:60 | OS ディスク:2 TB<br/><br/> データ ディスク:32 TB<br/><br/> 最大ディスク数:63
 **パススルー ディスク** | サポートされていません | サポートされています
-**UEFI ブート** | サポートされています。 | サポートされています。
+**UEFI ブート** | サポートされています。 | サポートされています。 
+**接続** | パブリック インターネット <br/> Microsoft ピアリングを使用した ExpressRoute <br/> <br/> ExpressRoute プライベート ピアリングまたは S2S VPN 接続経由のレプリケーションにプライベート エンドポイントを使用する方法については、[こちら](./replicate-using-expressroute.md)をご覧ください。 |パブリック インターネット <br/> プライベート ピアリングを使用した ExpressRoute <br/> Microsoft ピアリングを使用した ExpressRoute <br/> サイト間 VPN
 
 ## <a name="compare-deployment-steps"></a>デプロイ手順を比較する
 

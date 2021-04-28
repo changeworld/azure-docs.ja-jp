@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5816bc542ff550accedd33ba9a7fd9d98583b3d1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 275aba6e9c7b87ec7c6fb1cbc986b3ebaa3a9696
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101653764"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130955"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>チュートリアル:Microsoft ID プラットフォームを使用したマルチテナント デーモンを作成する
 
@@ -233,7 +233,7 @@ Visual Studio によってプロジェクトが発行され、ブラウザーで
 1. 同じ URL を、 **[認証]**  >  **[リダイレクト URI]** メニューの値のリストに追加します。 複数のリダイレクト URL がある場合には、リダイレクト URL ごとにそのアプリ サービスの URI を使用している新しいエントリを用意する必要があります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
-必要がなくなったら、「[アプリケーションの登録](#register-your-application)」の手順で作成したアプリ オブジェクトを削除します。  アプリケーションを削除するには、「[自分または自分の組織が作成したアプリケーションを削除する](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization)」の手順に従います。
+必要がなくなったら、「[アプリケーションの登録](#register-your-application)」の手順で作成したアプリ オブジェクトを削除します。  アプリケーションを削除するには、「[自分または自分の組織が作成したアプリケーションを削除する](./howto-remove-app.md#remove-an-application-authored-by-you-or-your-organization)」の手順に従います。
 
 ## <a name="get-help"></a>ヘルプの参照
 

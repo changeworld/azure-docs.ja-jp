@@ -3,12 +3,12 @@ title: Windows 用のゲスト構成ポリシーを作成する方法
 description: Windows に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 ms.date: 03/31/2021
 ms.topic: how-to
-ms.openlocfilehash: 6eaefdbc28b8efc53dc7c4d46eb5d8a56d5be141
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 9bcf7c5b7a70808730f427321bf00d47226d2cd0
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106096599"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108006748"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Windows 用のゲスト構成ポリシーを作成する方法
 
@@ -317,7 +317,7 @@ New-GuestConfigurationPolicy `
 Publish コマンドを実行するには、Azure でポリシーを作成するためのアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md)に関するページに記載されています。 最適な組み込みロールは、**リソース ポリシーの共同作成者** です。
 
 ```azurepowershell-interactive
-Publish-GuestConfigurationPolicy -Path '.\policyDefinitions'
+Publish-GuestConfigurationPolicy -Path '.\policies'
 ```
 
 `Publish-GuestConfigurationPolicy` コマンドレットは、PowerShell パイプラインからパスを受け取ります。 この機能では、パイプされたコマンドの 1 つのセットで、ポリシー ファイルを作成して発行できます。
@@ -396,7 +396,7 @@ New-GuestConfigurationPolicy
     -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' `
     -DisplayName 'Audit Windows Service.' `
     -Description 'Audit if a Windows Service is not enabled on Windows machine.' `
-    -Path '.\policyDefinitions' `
+    -Path '.\policies' `
     -Parameter $PolicyParameterInfo `
     -Version 1.0.0
 ```

@@ -4,16 +4,16 @@ description: データを復旧したり誤削除を回避したりできるよ�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 03/23/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 428ef41340cd565bef0fa3c1e6519fb8862b091a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a0dff310ce4a40b7a66cc548f3c77213f4a10e00
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105727571"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717025"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Azure ファイル共有で論理的な削除を有効にする
 
@@ -26,12 +26,13 @@ Azure Storage では、アプリケーションまたは他のストレージ �
 ## <a name="getting-started"></a>作業の開始
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-1. ストレージ アカウントに移動し、 **[ファイル サービス]** の下にある **[ファイル共有]** を選択します。
+1. ストレージ アカウントに移動し、 **[データ ストレージ]** の下にある **[ファイル共有]** を選択します。
+1. **[論理的な削除]** の横の **[有効]** を選択します。
 1. **[Soft delete for all file shares]\(すべてのファイル共有の論理的な削除\)** に対して **[有効]** を選択します。
 1. **[File share retention period in days]\(ファイル共有の保有期間の日数\)** を選択し、任意の数を入力します。
 1. **[保存]** を選択し、データ保有設定を確認します。
 
-:::image type="content" source="media/storage-how-to-recover-deleted-account/enable-soft-delete-files.png" alt-text="ストレージ アカウントの論理的な削除の設定ペインのスクリーンショット。[ファイル共有] の [論理的な削除] セクション、有効化トグル、[set a retention period]\(保有期間を設定\)、[保存] が強調表示されています。これにより、ストレージ アカウント内のすべてのファイル共有に対して論理的な削除が有効になります。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/files-enable-soft-delete-new-ui.png" alt-text="ストレージ アカウントの論理的な削除の設定ペインのスクリーンショット。[ファイル共有] の [論理的な削除] セクション、有効化トグル、[set a retention period]\(保有期間を設定\)、[保存] が強調表示されています。これにより、ストレージ アカウント内のすべてのファイル共有に対して論理的な削除が有効になります。":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -129,11 +130,12 @@ Restore-AzRmStorageShare -ResourceGroupName $rgname -StorageAccountName $account
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
-1. ストレージ アカウントに移動し、 **[ファイル サービス]** の下にある **[ファイル共有]** を選択します。
+1. ストレージ アカウントに移動し、 **[データ ストレージ]** の下にある **[ファイル共有]** を選択します。
+1. **[論理的な削除]** の横にあるリンクを選択します。
 1. **[Soft delete for all file shares]\(すべてのファイル共有の論理的な削除\)** に対して **[無効]** を選択します。
 1. **[保存]** を選択し、データ保有設定を確認します。
 
-    :::image type="content" source="media/storage-how-to-recover-deleted-account/disable-soft-delete-files.png" alt-text="論理的な削除を無効にすると、ストレージ アカウント内のすべてのファイル共有を、必要なときにすぐ完全に削除することができます。":::
+    :::image type="content" source="media/storage-how-to-recover-deleted-account/files-disable-soft-delete.png" alt-text="論理的な削除を無効にすると、ストレージ アカウント内のすべてのファイル共有を、必要なときにすぐ完全に削除することができます。":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 

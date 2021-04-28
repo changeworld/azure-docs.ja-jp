@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: af653585ec1b57b5fd697dc755e495a96e04e677
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: f03b71f956f075a730939f657f42c94bebec5b02
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565408"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146583"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics の専用 SQL プール (旧称 SQL DW) のトラブルシューティング
 
@@ -55,7 +55,7 @@ ms.locfileid: "107565408"
 | TempDB の領域に関する問題 | [TempDB の領域の使用状況を監視](sql-data-warehouse-manage-monitor.md#monitor-tempdb)します。  TempDB の領域が不足している一般的な原因は次のとおりです。<br>- クエリに割り当てられたリソースが不足しているため、データが TempDB に書き込まれます。  [ワークロード管理](resource-classes-for-workload-management.md)に関する記事を参照してください。 <br>- 統計が不足しているか、期限切れのため、データ移動が過剰になっています。  統計を作成する方法の詳細については、[テーブルの統計の管理](sql-data-warehouse-tables-statistics.md)に関する記事を参照してください。<br>- TempDB の領域はサービス レベルごとに割り当てられます。  [専用 SQL プール (旧称 SQL DW)](sql-data-warehouse-manage-compute-overview.md#scaling-compute) をより大きな DWU 設定にスケーリングすると、TempDB の領域がさらに割り当てられます。|
 | 統計情報の不足を原因とする、クエリのパフォーマンス低下と不適切なプラン | パフォーマンスの低下の最も一般的な原因は、テーブルの統計情報の不足です。  統計を作成する方法と、それらがパフォーマンスにとって重要な理由の詳細については、[テーブルの統計の管理](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。 |
 | 低いコンカレンシーとキューに置かれたクエリ                             | [ワークロード管理](resource-classes-for-workload-management.md) を理解することは、コンカレンシーでのメモリの割り当てのバランスを調整する方法を理解するために重要です。 |
-| ベスト プラクティスを実装する方法                              | クエリのパフォーマンスを向上させる方法については、[専用 SQL プール (旧称 SQL DW) のベスト プラクティス](sql-data-warehouse-best-practices.md)に関する記事をご覧ください。 |
+| ベスト プラクティスを実装する方法                              | クエリのパフォーマンスを向上させる方法については、[専用 SQL プール (旧称 SQL DW) のベスト プラクティス](../sql/best-practices-dedicated-sql-pool.md)に関する記事をご覧ください。 |
 | スケーリングでパフォーマンスを向上させる方法                      | [専用 SQL プール (旧称 SQL DW) をスケーリング](sql-data-warehouse-manage-compute-overview.md)して、クエリのコンピューティング能力を強化するだけで、パフォーマンスを改善できる場合があります。 |
 | インデックスの品質が低いことによるクエリ パフォーマンスの低下     | [列ストア インデックスの品質の低さ](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality)が原因で、クエリの処理速度が低下する場合があります。  詳細と [インデックスを再構築してセグメントの品質を向上する](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)方法に関する記事を参照してください。 |
 

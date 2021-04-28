@@ -4,12 +4,12 @@ description: 複数のメッセージ ブローカーを使用して Service Bus
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9c500a69f853b11437a0dcaa48213fe3a84da53b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc41bcf31102b19dd35f62452b956faf4f029551
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97796637"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750916"
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
@@ -146,6 +146,7 @@ Service Bus では、パーティション分割されたエンティティを�
 * Service Bus は、現在、名前空間あたり最大 100 のパーティション分割されたキューまたはトピックをサポートします。 パーティション分割された各キューまたはトピックは、名前空間あたり 10,000 エンティティのクォータに対してカウントされます (Premium レベルには適用されません)。
 
 ## <a name="next-steps"></a>次のステップ
+Azure portal、PowerShell、CLI、Resource Manager テンプレート、.NET、Java、Python、JavaScript を使用して、パーティション分割を有効にすることができます。 詳細については、[パーティション分割の有効化](enable-partitions.md)に関する記事を参照してください。 
 
 [AMQP 1.0 プロトコル ガイド](service-bus-amqp-protocol-guide.md)で、AMQP 1.0 メッセージング仕様の核となる概念を確認します。
 

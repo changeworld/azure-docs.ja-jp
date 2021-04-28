@@ -2,13 +2,13 @@
 title: バックアップ コンテナーの概要
 description: バックアップ コンテナーの概要。
 ms.topic: conceptual
-ms.date: 08/17/2020
-ms.openlocfilehash: c189997ecc4814917182246b35003649d317ac77
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.openlocfilehash: e2d720da9474a35870de01559201d22c9e5b567f
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92091289"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739082"
 ---
 # <a name="backup-vaults-overview"></a>バックアップ コンテナーの概要
 
@@ -28,7 +28,8 @@ ms.locfileid: "92091289"
 
 ## <a name="encryption-settings-in-the-backup-vault"></a>バックアップ コンテナーの暗号化設定
 
-このセクションでは、バックアップ コンテナーに格納されるバックアップ データを暗号化するために使用できるオプションについて説明します。
+このセクションでは、バックアップ コンテナーに格納されるバックアップ データを暗号化するために使用できるオプションについて説明します。 Azure Backup サービスは、**バックアップ管理サービス** アプリを使用して Azure Key Vault にアクセスしますが、バックアップ コンテナーのマネージド ID は使用しません。
+
 
 ### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>プラットフォーム マネージド キーを使用したバックアップ データの暗号化
 
@@ -87,7 +88,7 @@ Azure Portal ( <https://portal.azure.com> ) にサインインします。
 
 コンテナーを正しく削除するには、次の順序で手順に従う必要があります。
 
-- 保護された項目があるかどうかを確認する必要があります。
+- 保護された項目があるかどうかを確認します。
   - 左側のナビゲーション バーの **[Backup Instances]\(バックアップ インスタンス\)** に移動します。 ここに一覧表示されているすべての項目を最初に削除する必要があります。
 
 これらの手順を完了したら、引き続きコンテナーを削除できます。

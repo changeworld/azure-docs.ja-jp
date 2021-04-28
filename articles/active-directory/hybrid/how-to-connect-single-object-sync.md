@@ -11,12 +11,12 @@ ms.date: 03/19/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 373cebee4e7f95062791d8bc68bfee7d845e1465
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ee850765006af15d8e323831d70dfcd7849d1287
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104725463"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145963"
 ---
 # <a name="azure-ad-connect-single-object-sync"></a>Azure AD Connect 単一オブジェクト同期 
 
@@ -64,7 +64,7 @@ HTML レポートには、次のものがあります。
 
  1. [管理者として実行] オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。 
 
- 2. [実行ポリシー](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy)を RemoteSigned または Unrestricted に設定します。 
+ 2. [実行ポリシー](/powershell/module/microsoft.powershell.security/set-executionpolicy)を RemoteSigned または Unrestricted に設定します。 
 
  3. 同期操作が実行されていないことを確認した後、同期スケジューラを無効にします。 
 
@@ -95,4 +95,4 @@ HTML レポートには、次のものがあります。
 ## <a name="next-steps"></a>次のステップ
 - [オブジェクトの同期に関するトラブルシューティング](tshoot-connect-objectsync.md)
 - [同期されないオブジェクトに関するトラブルシューティング](tshoot-connect-object-not-syncing.md)
-- [Azure AD Connect オブジェクトおよび属性のエンドツーエンド トラブルシューティング](https://docs.microsoft.com/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes)
+- [Azure AD Connect オブジェクトおよび属性のエンドツーエンド トラブルシューティング](/troubleshoot/azure/active-directory/troubleshoot-aad-connect-objects-attributes)

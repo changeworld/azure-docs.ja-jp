@@ -10,15 +10,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2020
+ms.date: 4/16/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ef2e59dab1921eae8e7d88249e75116601c597
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a243b348c01e6d1297a6a1fe016e3b6bc8d98d47
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670875"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719081"
 ---
 # <a name="know-the-terms"></a>用語の確認
 
@@ -41,12 +41,11 @@ ms.locfileid: "101670875"
     - **Type I クラス**:S72、S72m、S96、S144、S144m、S192、S192m、S192xm、S224、および S224m
     - **Type II クラス**:S384、S384m、S384xm、S384xxm、S576m、S576xm、S768m、S768xm、S960m
 - **スタンプ**:HANA L インスタンスの Microsoft 内部デプロイ サイズを定義します。 HANA L インスタンス ユニットをデプロイするは、コンピューティング、ネットワーク、およびストレージ ラックで構成されている HANA L インスタンス スタンプをデータセンターの場所に事前にデプロイする必要があります。 このようなデプロイは HANA L インスタンス スタンプと呼ばれます。またはリビジョン 4 以降では (下記参照) **ラージ インスタンス行** の用語の代わりに使用しています。
-- **リビジョン**:HANA L インスタンス スタンプには、2 つの異なるスタンプ リビジョンがあります。 これらは、アーキテクチャと Azure 仮想マシン ホストとの近接性の点で異なります。
-    - "リビジョン 3" (Rev 3): 2016 年の中頃からデプロイされた元の設計
-    - "リビジョン 4" (Rev 4): Azure VM と HANA L インスタンス ユニット間のネットワーク待機時間を短縮しながら、Azure 仮想マシンのホストにより近い場所を提供できる新しい設計です 
-    - "リビジョン 4.2" (Rev 4.2): 既存のリビジョン 4 の DC では、リソースは BareMetal Infrastructure に再ブランディングされます。  お客様は、Azure portal から BareMetal インスタンスとしてリソースにアクセスできます。 
+- **リビジョン**:HANA L インスタンス スタンプには、2 つの異なるスタンプ リビジョンがあります。 これらは、アーキテクチャと、Azure 仮想マシン ホストとの近接性の点で異なります。
+    - "リビジョン 3" (Rev 3) は、2016 年の中頃からデプロイされた元の設計です。
+    - "リビジョン 4.2" (Rev 4.2) は、Azure 仮想マシン ホストにより近接性がある新しい設計です。 Rev 4.2 では、Azure VM と HANA L インスタンス ユニット間のネットワーク待機時間が非常に短くなっています。 Azure portal 内のリソースは、BareMetal インフラストラクチャと呼ばれます。 お客様は、Azure portal から BareMetal インスタンスとしてリソースにアクセスできます。 
 
 クラウドに SAP ワークロードをデプロイする方法については、他のさまざまなリソースが用意されています。 Azure への SAP HANA のデプロイを計画する場合、Azure IaaS の原則と Azure IaaS での SAP ワークロードのデプロイに関する知識と経験が必要です。 作業を続行する前に、[Azure 仮想マシンでの SAP ソリューションの使用](get-started.md)に関する記事で詳細を確認してください。 
 
-**次の手順**
-- [HLI 認定](hana-certification.md)を参照してください
+## <a name="next-steps"></a>次のステップ
+- [HLI 認定](hana-certification.md)に関するページを参照してください。

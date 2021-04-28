@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 242dd2476783a3d1db6b74452d35e87c5cd189b6
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: da93da4c08a23e158d5a22c4552d5e5754ceb01a
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516554"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988048"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Windows Virtual Desktop の最新情報
 
@@ -315,7 +315,7 @@ Windows Virtual Desktop Azure portal が更新されました。
 
 - Azure Advisor が Windows Virtual Desktop の一部になりました。 Azure portal から Windows Virtual Desktop にアクセスすると、お使いの Windows Virtual Desktop 環境を最適化するための推奨事項を確認できます。 [Azure Advisor](azure-advisor.md) の詳細情報。
 
-- Azure CLI で Windows Virtual Desktop (`az desktopvirtualization`) がサポートされ、Windows Virtual Desktop のデプロイを自動化できるようになりました。 拡張コマンドの一覧については、「[desktopvirtualization](/cli/azure/ext/desktopvirtualization/)」をご覧ください。
+- Azure CLI で Windows Virtual Desktop (`az desktopvirtualization`) がサポートされ、Windows Virtual Desktop のデプロイを自動化できるようになりました。 拡張コマンドの一覧については、「[desktopvirtualization](/cli/azure/desktopvirtualization)」をご覧ください。
 
 - Windows Virtual Desktop の Azure Resource Manager インターフェイスとの完全な互換性が確保されるようにデプロイ テンプレートが更新されました。 このテンプレートは [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates) で見つけることができます。
 

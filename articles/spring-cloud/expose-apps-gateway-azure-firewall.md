@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 6c22d1bae4f1d116aa52846880498c7c2a425174
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7def685cb9e17ff253ade10714ece2259b432db1
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877622"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129011"
 ---
 # <a name="expose-applications-to-the-internet-using-application-gateway-and-azure-firewall"></a>アプリケーション ゲートウェイと Azure Firewall を使用してアプリケーションをインターネットに公開する
 
@@ -24,7 +24,7 @@ ms.locfileid: "104877622"
 
 ## <a name="define-variables"></a>変数の定義
 
-「[Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)](spring-cloud-tutorial-deploy-in-azure-virtual-network.md)」の指示に従い、作成したリソース グループと仮想ネットワークに対して変数を定義します。 実際の環境に基づいて値をカスタマイズします。
+「[Azure 仮想ネットワークに Azure Spring Cloud をデプロイする (VNet インジェクション)](./how-to-deploy-in-azure-virtual-network.md)」の指示に従い、作成したリソース グループと仮想ネットワークに対して変数を定義します。 実際の環境に基づいて値をカスタマイズします。
 
 ```
 SUBSCRIPTION='subscription-id'
@@ -139,5 +139,5 @@ az network public-ip show \
 
 ## <a name="see-also"></a>関連項目
 
-- [VNET での Azure Spring Cloud のトラブルシューティング](spring-cloud-troubleshooting-vnet.md)
-- [VNET での Azure Spring Cloud の実行に関するお客様の責任](spring-cloud-vnet-customer-responsibilities.md)
+- [VNET での Azure Spring Cloud のトラブルシューティング](./troubleshooting-vnet.md)
+- [VNET での Azure Spring Cloud の実行に関するお客様の責任](./vnet-customer-responsibilities.md)

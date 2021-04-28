@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 64107c3f667dd7e59fcf6d191e83457029b3a277
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ec4ca8b24f1e8534e7f8434bc86a2eb2745e946
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100546348"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727044"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -29,9 +29,17 @@ Azure AD エンティティを認証し、Azure AD からのトークンを要�
 - アプリケーションでは、増分同意を有効にできるほか、条件付きアクセスのサポートがより簡単になります。
 - イノベーションを活用できます。
 
-**MSAL.NET は、Microsoft ID プラットフォームと併せて使用する場合にお勧めの認証ライブラリです**。 ADAL.NET に新しい機能は実装されません。 この取り組みは、MSAL の改良に重点を置いています。
+**MSAL.NET または Microsoft.Identity.Web は、Microsoft ID プラットフォームで使用する場合に推奨される認証ライブラリとなりました**。 ADAL.NET に新しい機能は実装されません。 この取り組みは、MSAL の改良に重点を置いています。
 
 この記事では、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) との違いについて説明し、MSAL への移行を支援します。
+
+## <a name="should-you-migrate-to-msalnet-or-to-microsoftidentityweb"></a>MSAL.NET または Microsoft.Identity.Web に移行する場合
+
+MSAL.NET と ADAL.NET を詳細に比較する前に、MSAL.NET を使用するか、または [Microsoft.Identity.Web](microsoft-identity-web.md) のような高レベルの抽象化を使用するかを確認することをお勧めします。
+
+以下のデシジョン ツリーの詳細については、[MSAL.NET のみと、高レベルの抽象化のどちらを使用するべきか](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Is-MSAL.NET-right-for-me%3F)に関するページを参照してください。
+
+:::image type="content" source="media/msal-net-migration/decision-diagram.png" alt-text="ADAL.NET からの移行時に、MSAL.NET、Microsoft.Identity.Web、またはその両方を使用する必要があるかを選択する方法を示すブロック図":::
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL アプリと MSAL アプリの違い
 
@@ -51,7 +59,7 @@ MSAL.NET を使用するには、[Microsoft.Identity.Client](https://www.nuget.o
 
 ### <a name="scopes-not-resources"></a>リソースではなくスコープ
 
-ADAL.NET では *リソース* のトークンが取得されますが、MSAL.NET では *スコープ* のトークンが取得されます。 多くの MSAL.NET AcquireToken オーバーライドでは、スコープ (`IEnumerable<string> scopes`) というパラメーターが必要になります。 このパラメーターは、要求される必要なアクセス許可とリソースを宣言する文字列のシンプルなリストです。 よく知られているスコープとして、[Microsoft Graph のスコープ](/graph/permissions-reference)があります。
+ADAL.NET では *リソース* のトークンが取得されますが、MSAL.NET では *スコープ* のトークンが取得されます。 多くの MSAL.NET AcquireToken オーバーライドでは、スコープ (`IEnumerable<string> scopes`) というパラメーターが必要になります。 このパラメーターは、要求される必要なアクセス許可とリソースを宣言する文字列のシンプルなリストです。 よく知られているスコープは、[Microsoft Graph のスコープ](/graph/permissions-reference)です。
 
 MSAL.NET で v1.0 リソースにアクセスすることもできます。 詳細については、[v1.0 アプリケーションのスコープ](#scopes-for-a-web-api-accepting-v10-tokens)に関する記述を参照してください。
 

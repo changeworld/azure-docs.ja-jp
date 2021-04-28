@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 03b29e6ddd16731073b33fef14d5aafb54df2abe
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: a84ed0efe7cf5f8fe140cb3d47b7ad19d4b8b817
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227859"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108134683"
 ---
 # <a name="self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Azure Spring Cloud での問題の自己診断と解決
 
@@ -24,7 +24,7 @@ Azure Spring Cloud 診断は、構成無しでアプリのトラブルシュー�
 この演習を完了するには、以下が必要です。
 
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* デプロイされた Azure Spring Cloud サービス インスタンス。 [Azure CLI を使用したアプリのデプロイに関するクイックスタート](spring-cloud-quickstart.md)に従って作業を開始してください。
+* デプロイされた Azure Spring Cloud サービス インスタンス。 [Azure CLI を使用したアプリのデプロイに関するクイックスタート](./quickstart.md)に従って作業を開始してください。
 * サービス インスタンスで既に作成してある少なくとも 1 つのアプリケーション。
 
 ## <a name="navigate-to-the-diagnostics-page"></a>診断ページに移動する
@@ -56,5 +56,5 @@ Azure Spring Cloud 診断は、構成無しでアプリのトラブルシュー�
  ![関連する詳細](media/spring-cloud-diagnose/related-details.png)
 
 ## <a name="next-steps"></a>次のステップ
-* [アラートとアクション グループを使用して Spring Cloud のリソースを監視する](spring-cloud-tutorial-alerts-action-groups.md)
-* [Azure Spring Cloud Service のセキュリティ コントロール](spring-cloud-concept-security-controls.md)
+* [アラートとアクション グループを使用して Spring Cloud のリソースを監視する](./tutorial-alerts-action-groups.md)
+* [Azure Spring Cloud Service のセキュリティ コントロール](./concept-security-controls.md)
