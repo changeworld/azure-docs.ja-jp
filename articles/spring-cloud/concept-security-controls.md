@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 1447e7eec9909c8af33005aab00c267e1a251720
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: faa278b60f3b120fc6f1aad14cd6f8b6dbfb1e21
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966828"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129191"
 ---
 # <a name="security-controls-for-azure-spring-cloud-service"></a>Azure Spring Cloud Service のセキュリティ コントロール
 
@@ -38,4 +38,4 @@ ms.locfileid: "105966828"
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)

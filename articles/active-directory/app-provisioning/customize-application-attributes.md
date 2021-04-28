@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: kenwith
-ms.openlocfilehash: 738b89ee9347a25e2d24369a48e966f0bec6daf0
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 8534c21bb0dad782b89c6518ea2313b4232639a6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579469"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128669"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>チュートリアル - Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングをカスタマイズする
 
@@ -113,7 +113,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - ServiceNow
 - Workday から Active Directory / Workday から Azure Active Directory へ
 - SuccessFactors から Active Directory へ / SuccessFactors から Azure Active Directory へ
-- Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)。 [拡張機能の作成](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning-sync-attributes-for-mapping#create-an-extension-attribute-on-a-cloud-only-user)と[既知の制限](https://docs.microsoft.com/azure/active-directory/app-provisioning/known-issues)の詳細を参照してください。 
+- Azure Active Directory ([Azure AD Graph API の既定の属性](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)とカスタム ディレクトリ拡張機能がサポートされる)。 [拡張機能の作成](./user-provisioning-sync-attributes-for-mapping.md#create-an-extension-attribute-on-a-cloud-only-user)と[既知の制限](./known-issues.md)の詳細を参照してください。 
 - [SCIM 2.0](https://tools.ietf.org/html/rfc7643) をサポートするアプリ
 - Workday または SuccessFactors への Azure Active Directory の書き戻しについては、サポートされている属性 (XPATH と JSONPath) の関連メタデータを更新することはサポートされていますが、既定のスキーマに含まれているもの以外の新しい Workday または SuccessFactors の属性を追加することはサポートされていません
 

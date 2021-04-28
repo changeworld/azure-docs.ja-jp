@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 0bd0d9c2230b8400aa3197044f944daceb93c715
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 1337167b13b05122aa38b3142a849129171bdc4d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718523"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140301"
 ---
 # <a name="introduction-to-azure-defender"></a>Azure Defender の概要
 
@@ -20,7 +20,7 @@ Azure Security Center の機能は、クラウド セキュリティの 2 つの
 
 - **クラウド セキュリティ態勢管理 (CSPM)** - Security Center は、すべての Azure ユーザーが **無料** で利用できます。 無料のエクスペリエンスには、セキュリティ スコア、Azure マシンのセキュリティ構成の誤りの検出、資産インベントリなどの CSPM 機能が含まれます。 これらの CSPM 機能を使用して、ハイブリッド クラウドの態勢を強化し、組み込みポリシーへの準拠を追跡します。
 
-- **クラウド ワークロード保護 (CWP)** - Security Center の統合クラウド ワークロード保護プラットフォーム (CWPP) である **Azure Defender** は、Azure とハイブリッド リソースおよびワークロードの高度でインテリジェントな保護を実現します。 Azure Defender を有効にすると、このページで説明するさまざまな追加のセキュリティ機能が提供されます。 組み込みポリシーに加え、Azure Defender プランを有効にすると、カスタム ポリシーおよびイニシアティブを追加できます。 NIST や Azure CIS などの規制基準と [Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)を追加して、コンプライアンスの完全にカスタマイズされたビューを実現できます。
+- **クラウド ワークロード保護 (CWP)** - Security Center の統合クラウド ワークロード保護プラットフォーム (CWPP) である **Azure Defender** は、Azure とハイブリッド リソースおよびワークロードの高度でインテリジェントな保護を実現します。 Azure Defender を有効にすると、このページで説明するさまざまな追加のセキュリティ機能が提供されます。 組み込みポリシーに加え、Azure Defender プランを有効にすると、カスタム ポリシーおよびイニシアティブを追加できます。 NIST や Azure CIS などの規制基準と [Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)を追加して、コンプライアンスの完全にカスタマイズされたビューを実現できます。
 
 Security Center の Azure Defender ダッシュボードにより、環境の CWP 機能を可視化し、制御できます。
 

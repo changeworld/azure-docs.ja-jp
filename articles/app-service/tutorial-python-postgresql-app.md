@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 882a9fb0f8d528ca21cdc8149c60b9d5bdaf1723
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: be55a3fb07b35fccb0f71f9ca7bfd2c88a9d097c
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767097"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017051"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>チュートリアル:PostgreSQL を使用した Django Web アプリを Azure App Service にデプロイする
 
@@ -133,7 +133,7 @@ az extension add --name db-up
 
 `az` コマンドが認識されない場合は、「[初期環境を設定する](#1-set-up-your-initial-environment)」の説明に従って Azure CLI がインストールされていることを確認してください。
 
-次に、[`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) コマンドを使用して Azure に Postgres データベースを作成します。
+次に、[`az postgres up`](/cli/azure/postgres#az_postgres_up) コマンドを使用して Azure に Postgres データベースを作成します。
 
 ```azurecli
 az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
@@ -242,7 +242,7 @@ Django データベースの移行によって、Azure データベース上の 
     cd $APP_PATH
     
     # Activate the venv
-    source /antenv/bin/activate
+    source antenv/bin/activate
 
     # Install requirements
     pip install -r requirements.txt
@@ -402,7 +402,7 @@ az webapp up
 
 ```
 cd $APP_PATH
-source /antenv/bin/activate
+source antenv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
 ```

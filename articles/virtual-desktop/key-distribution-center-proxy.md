@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 79ae61d21693ae56dff280402c7a3d114822be7f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307250"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132361"
 ---
 # <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Kerberos キー配布センター プロキシを構成する (プレビュー)
 
@@ -29,15 +29,15 @@ ms.locfileid: "107307250"
 - ユーザーがアクセスできるデスクトップまたはアプリケーションの一覧を提供する Windows Virtual Desktop クライアントのフィード。 この認証プロセスは Azure Active Directory で実行されるため、このコンポーネントについては、この記事では取り上げません。
 - 使用可能なリソースの 1 つをユーザー選択した結果として得られる RDP セッション。 このコンポーネントでは、Kerberos 認証を使用し、リモート ユーザーには KDC プロキシが必要です。
 
-この記事では、Azure portal で Windows Virtual Desktop クライアントのフィードを構成する方法について説明します。 RD ゲートウェイ ロールを構成する方法については、[RD ゲートウェイ ロールのデプロイ](/azure/virtual-desktop/rd-gateway-role)に関するページを参照してください。
+この記事では、Azure portal で Windows Virtual Desktop クライアントのフィードを構成する方法について説明します。 RD ゲートウェイ ロールを構成する方法については、[RD ゲートウェイ ロールのデプロイ](/windows-server/remote/remote-desktop-services/remote-desktop-gateway-role)に関するページを参照してください。
 
 ## <a name="requirements"></a>必要条件
 
 KDC プロキシを使用して Windows Virtual Desktop セッション ホストを構成するには、次のことが必要です。
 
 - Azure portal と Azure 管理者アカウントにアクセスします。
-- リモート クライアント コンピューターでは、Windows 10 または Windows 7 が実行されている必要があり、[Windows デスクトップ クライアント](/windows-server/remote/remote-desktop-services/clients/windowsdesktop)がインストールされている必要があります。
-- コンピューターに KDC プロキシが既にインストールされている必要があります。 その方法については、[Windows Virtual Desktop の RD ゲートウェイ ロールの設定](rd-gateway-role.md)に関するページを参照してください。
+- リモート クライアント コンピューターでは、Windows 10 または Windows 7 が実行されている必要があり、[Windows デスクトップ クライアント](/windows-server/remote/remote-desktop-services/clients/windowsdesktop)がインストールされている必要があります。 現在、Web クライアントはサポートされていません。
+- コンピューターに KDC プロキシが既にインストールされている必要があります。 その方法については、[Windows Virtual Desktop の RD ゲートウェイ ロールの設定](/windows-server/remote/remote-desktop-services/remote-desktop-gateway-role)に関するページを参照してください。
 - コンピュータの OS は、Windows Server 2016 以降である必要があります。
 
 これらの要件を満たしていることを確認したら、作業を開始できます。
@@ -70,6 +70,6 @@ KDC プロキシを構成するには、次の手順を実行します。
 
 ## <a name="next-steps"></a>次のステップ
 
-KDC プロキシのリモート デスクトップ サービス側を管理し、RD ゲートウェイ ロールを割り当てる方法については、[RD ゲートウェイ ロールのデプロイ](rd-gateway-role.md)に関するページを参照してください。
+KDC プロキシのリモート デスクトップ サービス側を管理し、RD ゲートウェイ ロールを割り当てる方法については、[RD ゲートウェイ ロールのデプロイ](/windows-server/remote/remote-desktop-services/remote-desktop-gateway-role)に関するページを参照してください。
 
 KDC プロキシ サーバーのスケーリングに関心がある場合、KDC プロキシの高可用性を設定する方法については、「[RD Web およびゲートウェイ Web フロントに高可用性を追加する](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha)」を参照してください。

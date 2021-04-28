@@ -9,14 +9,14 @@ ms.subservice: service
 ms.custom: sqldbrb=2
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/10/2021
+ms.date: 04/17/2021
 ms.author: sstein
-ms.openlocfilehash: 9827a40b2ebc91c17ad7b5457259b8d82565edee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7746b8aa84bea9ec8c18b4c4af0851ca3e5e3957
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105640095"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132019"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -61,8 +61,8 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 | 機能 | 詳細 |
 | ---| --- |
-| [分散トランザクション](/azure/azure-sql/database/elastic-transactions-overview) | マネージド インスタンスにまたがる分散トランザクション。 |
-| [インスタンス プール](/azure/sql-database/sql-database-instance-pools) | 比較的小規模な SQL インスタンスをクラウドに移行するための、便利かつ費用対効果に優れた方法です。 |
+| [分散トランザクション](./elastic-transactions-overview.md) | マネージド インスタンスにまたがる分散トランザクション。 |
+| [インスタンス プール](../managed-instance/instance-pools-overview.md) | 比較的小規模な SQL インスタンスをクラウドに移行するための、便利かつ費用対効果に優れた方法です。 |
 | [インスタンス レベルの Azure AD サーバー プリンシパル (ログイン)](/sql/t-sql/statements/create-login-transact-sql) | [CREATE LOGIN FROM EXTERNAL PROVIDER](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current&preserve-view=true) ステートメントを使って、インスタンスレベルのログインを作成します。 |
 | [トランザクション レプリケーション](../managed-instance/replication-transactional-overview.md) | テーブルの変更を、SQL Managed Instance、SQL Database、または SQL Server の他のデータベースにレプリケートします。 または、SQL Managed Instance や SQL Server の他のインスタンスで一部の行が変更されたときに、テーブルを更新します。 詳しくは、[Azure SQL Managed Instance にレプリケーションを構成する方法](../managed-instance/replication-between-two-instances-configure-tutorial.md)に関する記事をご覧ください。 |
 | 脅威の検出 |詳しくは、[Azure SQL Managed Instance で脅威検出を構成する方法](../managed-instance/threat-detection-configure.md)に関する記事をご覧ください。|
@@ -95,6 +95,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 |問題  |検出した日  |Status  |解決した日  |
 |---------|---------|---------|---------|
+|[接続の種類の変更が、フェールオーバー グループ エンドポイント経由の接続に影響しない](#changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint)|2021 年 1 月|回避策あり||
 |[@query パラメーターの使用時、プロシージャ sp_send_dbmail が一時的に失敗する可能性がある](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|2021 年 1 月|回避策あり||
 |[サーバー信頼グループからマネージド インスタンスを削除した後、分散トランザクションを実行できる](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|2020 年 10 月|回避策あり||
 |[マネージド インスタンスのスケーリング操作の後、分散トランザクションを実行できない](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|2020 年 10 月|回避策あり||
@@ -126,6 +127,12 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |ソース データベースにインメモリ OLTP オブジェクトが含まれている場合、Business Critical レベルから General Purpose レベルへの組み込みのポイントインタイム データベース復元は成功しません。||解決済み|2019 年 10 月|
 |セキュリティで保護された接続を使用する外部 (Azure 以外) メール サーバーのデータベース メール機能||解決済み|2019 年 10 月|
 |包含データベースは、SQL Managed Instance 内でサポートされている||解決済み|2019 年 8 月|
+
+### <a name="changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint"></a>接続の種類の変更が、フェールオーバー グループ エンドポイント経由の接続に影響しない
+
+インスタンスが [自動フェールオーバー グループ](./auto-failover-group-overview.md)に参加している場合に、インスタンスの[接続の種類](../managed-instance/connection-types-overview.md)を変更しても、フェールオーバー グループ リスナー エンドポイントを介して確立された接続で有効になりません。
+
+**回避策**: 接続の種類を変更した後に、自動フェールオーバー グループをドロップし、再作成します。
 
 ### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>@query パラメーターの使用時、プロシージャ sp_send_dbmail が一時的に失敗する可能性がある
 

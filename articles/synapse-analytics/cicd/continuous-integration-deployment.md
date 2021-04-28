@@ -3,17 +3,17 @@ title: Synapse ワークスペースの継続的インテグレーションと�
 description: 継続的インテグレーションとデリバリーを使用してワークスペース内の変更をある環境 (開発、テスト、運用) から別の環境にデプロイする方法について説明します。
 author: liudan66
 ms.service: synapse-analytics
-ms.subservice: cicd
+ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2d49deef4cc7f646032219ff9e8f541cc9c1afd6
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 833478d956560c981bd6cc3ba03b48bb602f563c
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108131189"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739676"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Azure Synapse ワークスペースの継続的インテグレーションとデリバリー
 
@@ -25,17 +25,17 @@ Azure Synapse Analytics ワークスペースでは、継続的インテグレ�
 
 この記事では、Azure DevOps のリリース パイプラインを使用して、複数の環境への Azure Synapse ワークスペースのデプロイを自動化する方法について説明します。
 
-## <a name="prerequisites"></a>[前提条件]
+## <a name="prerequisites"></a>前提条件
 
 複数の環境への Azure Synapse ワークスペースのデプロイを自動化するには、次の前提条件と構成が満たされている必要があります。
 
 ### <a name="azure-devops"></a>Azure DevOps
 
 - リリース パイプラインを実行するための Azure DevOps プロジェクトが準備されている。
-- リポジトリを表示できるようにするため、[コード "Basic" をチェックインするユーザーに組織レベルでのアクセスを付与します](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page&preserve-view=true)。
+- リポジトリを表示できるようにするため、[コード "Basic" をチェックインするユーザーに組織レベルでのアクセスを付与します](/azure/devops/organizations/accounts/add-organization-users?view=azure-devops&tabs=preview-page)。
 - Azure Synapse リポジトリに対する所有者権限を付与します。
 - セルフホステッド Azure DevOps VM エージェントを作成したこと、または Azure DevOps ホステッド エージェントを使用していることを確認します。
-- [リソース グループの Azure Resource Manager サービス接続を作成する](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml&preserve-view=true)ためのアクセス許可。
+- [リソース グループの Azure Resource Manager サービス接続を作成する](/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)ためのアクセス許可。
 - Azure Active Directory (Azure AD) の管理者は、[Azure DevOps 組織に Azure DevOps Synapse Workspace Deployment Agent 拡張機能をインストールする](/azure/devops/marketplace/install-extension)必要があります。
 - パイプラインを実行するための既存のサービス アカウントを作成または指名します。 サービス アカウントの代わりに個人用アクセス トークンを使用できますが、そのユーザー アカウントが削除されるとパイプラインが機能しなくなります。
 

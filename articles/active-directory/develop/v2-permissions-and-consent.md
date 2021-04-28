@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/23/2020
+ms.date: 04/14/2021
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: bdcfb0adf2c92fa6e084c2efbc2e5c066a3e3ede
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2a975a0aba06ecfd010fe328ef6c8cda75290f2b
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305856"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107515585"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Microsoft ID プラットフォームでのアクセス許可と同意
 
@@ -43,11 +43,7 @@ Microsoft ID プラットフォームと統合されたサードパーティの�
 
 リソースの機能を細かいアクセス許可セットにまとめると、サードパーティのアプリを、その機能を実行するために必要なアクセス許可のみを要求するように構築できます。 ユーザーと管理者は、アプリによってアクセスできるデータを把握できます。 また、アプリが悪意のある目的を持って動作していないことも確信できます。 開発者は常に最小限の特権の原則に従って、アプリケーションが機能するために必要なアクセス許可のみを要求する必要があります。
 
-OAuth 2.0 では、これらの種類のアクセス許可セットは "*スコープ*" と呼ばれます。 "*アクセス許可*" と呼ばれることもよくあります。 Microsoft ID プラットフォームでは、アクセス許可は文字列値として表現されます。 Microsoft Graph の例では、各アクセス許可の文字列値は次のようになります。
-
-* `Calendars.Read` を使用したユーザーの予定表の読み取り
-* `Calendars.ReadWrite` を使用したユーザーの予定表への書き込み
-* `Mail.Send` を使用したユーザーとしてのメールの送信
+OAuth 2.0 では、これらの種類のアクセス許可セットは "*スコープ*" と呼ばれます。 "*アクセス許可*" と呼ばれることもよくあります。 Microsoft ID プラットフォームでは、アクセス許可は文字列値として表現されます。 `scope` クエリ パラメーターでアクセス許可を指定することによって、アプリが必要なアクセス許可を要求します。 ID プラットフォームは、いくつかの適切に定義された [OpenID connect スコープ](#openid-connect-scopes) とリソースベースのアクセス許可をサポートします (各アクセス許可は、リソースの識別子またはアプリケーション ID の URI にアクセス許可値を追加することによって示されます)。 たとえば、アクセス許可文字列 `https://graph.microsoft.com/Calendars.Read` を使用して、Microsoft Graph のユーザーの予定表を読み取るアクセス許可を要求します。
 
 アプリでは、通常、Microsoft ID プラットフォーム承認エンドポイントへの要求でスコープを指定することにより、これらのアクセス許可を要求します。 ただし、一部の高い特権のアクセス許可は、管理者の同意によってのみ許可することができます。 これらは、[管理者の同意エンドポイント](#admin-restricted-permissions)を使用して要求または付与できます。 詳細については、この後の説明を参照してください。
 

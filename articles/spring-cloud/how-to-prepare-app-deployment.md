@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a90d4c2a8649e270365af9b11fa408b865945f92
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cabc4784dfb19f569212f4d0cb93e6838473e559
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877547"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714490"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Azure Spring Cloud にデプロイするアプリケーションを準備する
 
@@ -142,7 +142,7 @@ Azure Spring Cloud は、Java 8 と Java 11 の両方をサポートしていま
 
 既存の Spring Boot アプリケーションを Azure Spring Cloud にデプロイできるよう準備するには、以降のセクションに示したように、アプリケーションの POM ファイルに Spring Boot と Spring Cloud の依存関係を追加します。
 
-Azure Spring Cloud でサポートされるのは、Spring Boot バージョン 2.1 とバージョン 2.2 のどちらかの Spring Boot アプリのみです。 サポートされている Spring Boot と Spring Cloud の組み合わせを次の表に示します。
+Azure Spring Cloud では、Spring Boot バージョン 2.2、2.3、2.4 がサポートされています。 サポートされている Spring Boot と Spring Cloud の組み合わせを次の表に示します。
 
 Spring Boot のバージョン | Spring Cloud のバージョン
 ---|---

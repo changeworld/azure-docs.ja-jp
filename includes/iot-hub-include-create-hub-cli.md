@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4999bd93f338ca7b34b141b88e06e4a769a4aaa1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766527"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876433"
 ---
 以降のセクションでは、ターミナルを設定し、Azure CLI を使用して IoT ハブを設定します。 Azure CLI コマンドを実行するターミナルを構成するには、ブラウザーベースの Azure Cloud Shell を使用するか、またはローカル ターミナルを使用してください。
 * Cloud Shell を使用するには、次のセクション「[Cloud Shell を起動する](#launch-the-cloud-shell)」に進みます。 
@@ -97,7 +97,7 @@ IoT ハブとリソース グループを作成するには、次のようにし
 このセクションでは、IoT ハブに接続された、シミュレートされた IoT デバイスを作成します。 
 
 シミュレートされたデバイスを作成するには:
-1. CLI シェルで、[az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) コマンドを実行します。 これにより、シミュレートされたデバイスを作成します。 
+1. CLI シェルで、[az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) コマンドを実行します。 これにより、シミュレートされたデバイスを作成します。 
 
     *YourIotHubName*: このプレースホルダーは、実際の IoT Hub に対して選んだ名前に置き換えてください。 
 
@@ -107,7 +107,7 @@ IoT ハブとリソース グループを作成するには、次のようにし
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  [az iot hub device-identity connection-string show](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) コマンドを実行します。 
+1.  [az iot hub device-identity connection-string show](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) コマンドを実行します。 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2020
-ms.openlocfilehash: 36b54cc9b4440f883b4335fc6ad2ca069a5b19db
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 23597804a34a9bc409db179010569024aa472016
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137583"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725928"
 ---
 # <a name="install-log-analytics-agent-on-linux-computers"></a>Linux コンピューターに Log Analytics エージェントをインストールする
 この記事では、次の方法を使用して Linux コンピューターに Log Analytics エージェントをインストールする方法の詳細を説明します。
@@ -80,7 +80,7 @@ OMS エージェントでは、Linux のカスタマイズおよびセキュリ�
 - CIS
 - SELINUX
 
-[Azure Monitor エージェント](./azure-monitor-agent-overview.md)では、CIS と SELINUX のセキュリティ強化のサポートが予定されています。 その他のセキュリティ強化とカスタマイズの手段は、OMS エージェントではサポートされておらず、その計画もありません。  
+[Azure Monitor エージェント](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview)では、CIS と SELINUX のセキュリティ強化のサポートが予定されています。 その他のセキュリティ強化とカスタマイズの手段は、OMS エージェントではサポートされておらず、その計画もありません。  
 
 ## <a name="agent-prerequisites"></a>エージェントの前提条件
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: d0bb5c55d3f7ba0573dfe9b511f4d31dcc64ed85
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ca403a5fdbdaaa8b2922647d832a23e120840c6b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567833"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142479"
 ---
 # <a name="monitor-your-sql-deployments-with-sql-insights-preview"></a>SQL insights を使用して SQL デプロイを監視する (プレビュー)
 SQL Insights は、[Azure SQL ファミリ](../../azure-sql/index.yml)のあらゆる製品を監視するための包括的なソリューションです。 SQL Insights では、[動的管理ビュー](../../azure-sql/database/monitoring-with-dmvs.md)を使用して、正常性の監視、問題の診断、パフォーマンスの調整に必要なデータを公開します。  
@@ -45,10 +45,10 @@ SQL insights では、次の環境で実行されている SQL Server がサポ�
 SQL insights では、次のサポートがないか、サポートが制限されています。
 - **Azure 以外のインスタンス**: Azure の外部の仮想マシンで実行されている SQL Server はサポートされていません。
 - **Azure SQL Database エラスティック プール**: エラスティック プールのメトリックを収集することはできません。 エラスティック プール内のデータベースのメトリックを収集することはできません。
-- **Azure SQL Database の低サービス レベル**: Basic、S0、S1、S2 の各[サービス レベル](../../azure-sql/database/resource-limits-dtu-single-databases.md)のデータベースのメトリックは収集できません。
+- **Azure SQL Database の低サービス レベル**: Basic、S0、S1、S2 の各 [サービス レベル](../../azure-sql/database/resource-limits-dtu-single-databases.md)のデータベースのメトリックは収集できません。
 - **Azure SQL Database サーバーレス サービス レベル**: サーバーレス コンピューティング サービス レベルを使用するデータベースのメトリックは収集できます。 ただし、メトリックを収集するプロセスによって自動一時停止の延期期間タイマーがリセットされ、データベースが自動一時停止状態に入れなくなります。
 - **セカンダリ レプリカ**: メトリックは、データベースごとに 1 つのセカンダリ レプリカに対してのみ収集できます。 データベースに複数のセカンダリ レプリカがある場合、監視できるのは 1 つだけです。
-- **Azure Active Directory による認証**: 監視に対してサポートされている[認証](../../azure-sql/database/logins-create-manage.md#authentication-and-authorization)方法は SQL 認証のみです。 Azure VM の SQL Server の場合、カスタム ドメイン コントローラー上の Active Directory を使用した認証はサポートされていません。  
+- **Azure Active Directory による認証**: 監視に対してサポートされている [認証](../../azure-sql/database/logins-create-manage.md#authentication-and-authorization)方法は SQL 認証のみです。 Azure VM の SQL Server の場合、カスタム ドメイン コントローラー上の Active Directory を使用した認証はサポートされていません。  
 
 ## <a name="open-sql-insights"></a>SQL insights を開く
 Azure portal で、 **[Azure Monitor]** メニューの **[Insights]** セクションから **[SQL (プレビュー)]** を選択し、SQL 分析情報を開きます。 タイルをクリックして、監視している SQL の種類のエクスペリエンスを読み込みます。
@@ -64,7 +64,7 @@ SQL Insights のトラブルシューティングの手順については、「[
 ## <a name="data-collected-by-sql-insights"></a>SQL insights によって収集されるデータ
 SQL Insights は、すべての監視をリモートで実行します。 SQL Server を実行している仮想マシンには、エージェントがインストールされません。 
 
-SQL Insights では、専用の監視仮想マシンを使用して、SQL リソースからデータをリモートで収集します。 各監視仮想マシンには、[Azure Monitor エージェント](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview)と、ワークロードの分析情報 (WLI) 拡張機能がインストールされます。 WLI 拡張機能には、オープンソースの [Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)が含まれています。 SQL Insights では、[データ収集ルール](https://docs.microsoft.com/azure/azure-monitor/agents/data-collection-rule-overview)を使用して、Telegraf の [SQL Server プラグイン](https://www.influxdata.com/integration/microsoft-sql-server/)のデータ収集設定を指定します。
+SQL Insights では、専用の監視仮想マシンを使用して、SQL リソースからデータをリモートで収集します。 各監視仮想マシンには、[Azure Monitor エージェント](../agents/azure-monitor-agent-overview.md)と、ワークロードの分析情報 (WLI) 拡張機能がインストールされます。 WLI 拡張機能には、オープンソースの [Telegraf エージェント](https://www.influxdata.com/time-series-platform/telegraf/)が含まれています。 SQL Insights では、[データ収集ルール](../agents/data-collection-rule-overview.md)を使用して、Telegraf の [SQL Server プラグイン](https://www.influxdata.com/integration/microsoft-sql-server/)のデータ収集設定を指定します。
 
 Azure SQL Database、Azure SQL Managed Instance、および SQL Server 用の、さまざまなデータ セットを使用できます。 下の表で、使用可能なデータについて説明します。 [監視プロファイルを作成](sql-insights-enable.md#create-sql-monitoring-profile)するときに、収集するデータ セットと収集の頻度をカスタマイズできます。
 

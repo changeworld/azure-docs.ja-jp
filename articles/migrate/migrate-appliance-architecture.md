@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: f3a94576ef58eabf9d747c6e6c3a6372569d4cf1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4fc71f3242cc5607acebc68b62c5c0565b8f8e56
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104785242"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107715012"
 ---
 # <a name="azure-migrate-appliance-architecture"></a>Azure Migrate アプライアンスのアーキテクチャ
 
@@ -63,7 +63,7 @@ Azure Migrate アプライアンスは、次のシナリオで使用します。
 ---|---|---|---
 **検出の開始** | 既定では、アプライアンスと vCenter サーバーの通信は TCP ポート 443 で行われます。 vCenter サーバーが別のポートでリッスンしている場合は、それをアプライアンス構成マネージャーで構成できます。 | アプライアンスと Hyper-V ホストとの通信は、WinRM ポート 5985 (HTTP) で行われます。 | アプライアンスと Windows サーバーの通信は WinRM ポート 5985 (HTTP) を介して、Linux サーバーとはポート 22 (TCP) を介して行われます。
 **構成とパフォーマンスのメタデータの収集** | アプライアンスからポート 443 (既定のポート) または vCenter Server がリッスンしているその他のポートで接続することによって、vCenter Server で実行されているサーバーのメタデータが vSphere API を使用して収集されます。 | アプライアンスとポート 5985 のホストとの Common Information Model (CIM) セッションを使用して、Hyper-V ホスト上で実行されているサーバーのメタデータが収集されます。| アプライアンスとポート 5985 のサーバーとの Common Information Model (CIM) セッションを使用して Windows サーバーから、およびポート 22 での SSH 接続を使用して Linux サーバーから、メタデータが収集されます。
-**検出データの送信** | アプライアンスから SSL ポート 443 を介して、収集されたデータが Azure Migrate: Discovery and assessment と Azure Migrate: Server Migration に送信されます。<br/><br/> アプライアンスは、インターネット経由または ExpressRoute 経由で Azure に接続できます (Microsoft ピアリングが必要です)。 | アプライアンスから SSL ポート 443 を介して、収集されたデータが Azure Migrate: Discovery and assessment に送信されます。<br/><br/> アプライアンスは、インターネット経由または ExpressRoute 経由で Azure に接続できます (Microsoft ピアリングが必要です)。| アプライアンスから SSL ポート 443 を介して、収集されたデータが Azure Migrate: Discovery and assessment に送信されます。<br/><br/> アプライアンスは、インターネット経由または ExpressRoute 経由で Azure に接続できます (Microsoft ピアリングが必要です)。
+**検出データの送信** | アプライアンスから SSL ポート 443 を介して、収集されたデータが Azure Migrate: Discovery and assessment と Azure Migrate: Server Migration に送信されます。<br/><br/>  アプライアンスは、インターネット経由または ExpressRoute プライベート ピアリングまたは Microsoft ピアリング回線経由で Azure に接続できます。 | アプライアンスから SSL ポート 443 を介して、収集されたデータが Azure Migrate: Discovery and assessment に送信されます。<br/><br/> アプライアンスは、インターネット経由または ExpressRoute プライベート ピアリングまたは Microsoft ピアリング回線経由で Azure に接続できます。 | アプライアンスから SSL ポート 443 を介して、収集されたデータが Azure Migrate: Discovery and assessment に送信されます。<br/><br/> アプライアンスは、インターネット経由または ExpressRoute プライベート ピアリングまたは Microsoft ピアリング回線経由で Azure に接続できます。 
 **データ収集の頻度** | 構成メタデータは 30 分ごとに収集され、送信されます。 <br/><br/> パフォーマンス メタデータは 20 秒ごとに収集され、10 分ごとに集計されてデータ ポイントが Azure に送信されます。 <br/><br/> ソフトウェア インベントリ データは、12 時間ごとに Azure に送信されます。 <br/><br/> エージェントレスの依存関係データは 5 分ごとに収集され、アプライアンス上で集計されて、6 時間ごとに Azure に送信されます。 <br/><br/> SQL Server 構成データは 24 時間ごとに更新され、パフォーマンス データは 30 秒ごとにキャプチャされます。| 構成メタデータは 30 分ごとに収集され、送信されます。 <br/><br/> パフォーマンス メタデータは 30 秒ごとに収集され、10 分ごとに集計されてデータ ポイントが Azure に送信されます。|  構成メタデータは 30 分ごとに収集され、送信されます。 <br/><br/> パフォーマンス メタデータは 5 分ごとに収集され、10 分ごとに集計されてデータ ポイントが Azure に送信されます。
 **評価と移行** | Azure Migrate: Discovery and assessment ツールを使用して、アプライアンスによって収集されたメタデータから評価を作成できます。<br/><br/>また、Azure Migrate: Server Migration ツールを使用して、VMware 環境で実行しているサーバーの移行を開始し、エージェントレスのサーバー レプリケーションを調整することもできます。| Azure Migrate: Discovery and assessment ツールを使用して、アプライアンスによって収集されたメタデータから評価を作成できます。 | Azure Migrate: Discovery and assessment ツールを使用して、アプライアンスによって収集されたメタデータから評価を作成できます。
 

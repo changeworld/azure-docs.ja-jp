@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 4e22d93d3037c190193f53b7cfdbc87cff2da6ed
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: 499cb3c978a67f9ef71e6ad9dd03be9f05b45729
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504398"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726972"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 のイベント ソース
 
@@ -31,9 +31,12 @@ Azure Time Series Insights Gen2 環境には、最大 2 つのストリーミン
 
 環境のイベント ソースの作成、編集、または削除は、[Azure portal](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment)、[Azure CLI](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source)、[Azure Resource Manager テンプレート](time-series-insights-manage-resources-using-azure-resource-manager-template.md)、および [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) を使用して行うことができます。
 
+> [!WARNING]
+> Time Series Insights によって使用されるハブまたはイベント ソースへのパブリック インターネット アクセスを制限しないでください。そうしないと、必要な接続が切断されます。
+
 ## <a name="start-options"></a>開始オプション
 
-イベント ソースを作成する場合は、収集する既存データを指定することもできます。 この設定はオプションです。 次のオプションを使用できます。
+イベント ソースを作成する場合は、収集する既存データを指定することができます。 この設定はオプションです。 次のオプションを使用できます。
 
 | Name   |  説明  |  Azure Resource Manager テンプレートの例 |
 |----------|-------------|------|
@@ -46,18 +49,17 @@ Azure Time Series Insights Gen2 環境には、最大 2 つのストリーミン
 > - EarliestAvailable を選択し、既存のデータが多数ある場合は、Azure Time Series Insights Gen2 環境がすべてのデータを処理するため、初期の待機時間が長くなる可能性があります。
 > - この長い待機時間は、データのインデックスが作成されると最終的に短くなります。 長い待機時間が継続する場合は、Azure portal からサポート チケットを送信してください。
 
-* EarliestAvailable
+- EarliestAvailable
 
 ![EarliestAvailable の図](media/concepts-streaming-event-sources/event-source-earliest-available.png)
 
-* EventSourceCreationTime
+- EventSourceCreationTime
 
 ![EventSourceCreationTime の図](media/concepts-streaming-event-sources/event-source-creation-time.png)
 
-* CustomEnqueuedTime
+- CustomEnqueuedTime
 
 ![CustomEnqueuedTime の図](media/concepts-streaming-event-sources/event-source-custom-enqueued-time.png)
-
 
 ## <a name="streaming-ingestion-best-practices"></a>ストリーミング インジェストのベスト プラクティス
 
@@ -113,9 +115,9 @@ Azure Time Series Insights Gen2 では、ストリーミング パイプライ�
 
 タイムゾーンのオフセットは、次のいずれかの形式にする必要があります。
 
-±HHMMZ</br>
-±HH:MM</br>
-±HH:MMZ</br>
+±HHMMZ<br />
+±HH:MM<br />
+±HH:MMZ
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 5a4572c1292f691f1883a720d07c3f0130f1c8f3
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 0220c16d7ea3673f55d57ec4c4e0d29b30672683
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480292"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017663"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Azure App Service で Linux コンテナーへの SSH セッションを開く
 
@@ -41,7 +41,7 @@ TCP トンネリングを使用して、認証済みの WebSocket 接続経由�
 
 最初に、[Azure CLI](/cli/azure/install-azure-cli) をインストールする必要があります。 Azure CLI をインストールしないとどのように動作するかを確認するには、[Azure Cloud Shell](../cloud-shell/overview.md) を開きます。 
 
-[az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<subscription-id>_ 、 _\<group-name>_ 、および \_\<app-name>_ を指定します。
+[az webapp remote-connection create](/cli/azure/webapp/remote-connection#az_webapp_remote_connection_create) コマンドを使用して、アプリへのリモート接続を開きます。 アプリの _\<subscription-id>_ 、 _\<group-name>_ 、および \_\<app-name>_ を指定します。
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &

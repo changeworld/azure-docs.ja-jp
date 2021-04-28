@@ -4,12 +4,12 @@ description: Visual Studio Code 用 Azure Functions 拡張機能を使用して�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: d4353e6be313d61716933879efa930e22472781b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2869b2b30722495523a9f0dfb2d70a17a205854
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493950"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871275"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -85,7 +85,7 @@ Azure Storage アカウントなどのその他の必要なリソースは、[Vi
 
 + [PowerShell 7](/powershell/scripting/install/installing-powershell-core-on-windows) を推奨。 バージョン情報については、「[PowerShell のバージョン](functions-reference-powershell.md#powershell-versions)」を参照してください。
 
-+ [.NET Core 3.1 ランタイム](https://www.microsoft.com/net/download)と [.NET Core 2.1 ランタイム](https://dotnet.microsoft.com/download/dotnet-core/2.1)の両方  
++ [.NET Core 3.1 ランタイム](https://dotnet.microsoft.com/download)と [.NET Core 2.1 ランタイム](https://dotnet.microsoft.com/download/dotnet/2.1)の両方  
 
 + [Visual Studio Code 用 PowerShell 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)。  
 

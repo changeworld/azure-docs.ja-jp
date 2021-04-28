@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 1c8ea1580047910cb2d6634aad885d61e99113f3
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 74cbbf13b3ecb0b784138df69a8436930c2766ef
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529978"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108130901"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft ID プラットフォームと OAuth2.0 On-Behalf-Of フロー
 
@@ -202,8 +202,8 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 | assertion |required | 要求で使用されるアクセス トークンの値。|
 | client_id |required | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリ ID。 Azure portal でアプリ ID を調べるには、 **[Active Directory]** 、目的のディレクトリ、アプリケーション名の順に選択します。 |
 | client_secret |required | 呼び出し元のサービスに対して Azure AD に登録されているキー。 この値は登録時にメモしているはずです。 |
-| resource |required | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 これは SAML トークンの対象となるリソースです。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
-| requested_token_use |required | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
+| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 これは SAML トークンの対象となるリソースです。 Azure portal でアプリ ID URI を調べるには、 **[Active Directory]** を選択し、目的のディレクトリを選びます。 アプリケーション名を選択し、 **[すべての設定]** 、 **[プロパティ]** の順に選択します。 |
+| requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
 | requested_token_type | required | 要求するトークンの種類を指定します。 アクセス先のリソースの要件に応じて、値は **urn:ietf:params:oauth:token-type:saml2** または **urn:ietf:params:oauth:token-type:saml1** のいずれかです。 |
 
 応答には、UTF8 および Base64url でエンコードされた SAML トークンが含まれています。
@@ -211,7 +211,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 - **OBO 呼び出しから提供される SAML アサーションの SubjectConfirmationData**:ターゲット アプリケーションで **SubjectConfirmationData** の受信者の値が必要な場合、その値はリソース アプリケーション構成内の非ワイルドカードの応答 URL である必要があります。
 - **SubjectConfirmationData ノード**:このノードは SAML 応答の一部ではないため、**InResponseTo** 属性を含めることはできません。 SAML トークンを受け取るアプリケーションは、**InResponseTo** 属性なしで SAML アサーションを受け入れることができる必要があります。
 
-- **同意**:OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与されている必要があります。 アクセス許可および管理者の同意を得る方法については、「[Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)」を参照してください。
+- **同意**:OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与されている必要があります。 アクセス許可および管理者の同意を得る方法については、「[Azure Active Directory v1.0 エンドポイントでのアクセス許可と同意](../azuread-dev/v1-permissions-consent.md)」を参照してください。
 
 ### <a name="response-with-saml-assertion"></a>SAML アサーションの応答
 

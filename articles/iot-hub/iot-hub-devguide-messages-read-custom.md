@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: 8aebb5b6f6a3ac53bc49fd1d2f75de88667865fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ad57473e0950f031fbeadee2302f85557ed526f
+ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92147641"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107388263"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 
@@ -32,13 +32,14 @@ IoT Hub の[メッセージ ルーティング](iot-hub-devguide-routing-query-s
 
 ## <a name="endpoints-and-routing"></a>エンドポイントとルーティング
 
-IoT ハブは、既定の[組み込みのエンドポイント](iot-hub-devguide-messages-read-builtin.md)を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
+IoT ハブは、既定の[組み込みのエンドポイント](iot-hub-devguide-messages-read-builtin.md)を持ちます。 自分が所有するサブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
 
 ルーティングとカスタム エンドポイントを使用すると、メッセージは、クエリに一致しない場合、組み込みのエンドポイントにのみ配信されます。 メッセージを組み込みのエンドポイントとカスタム エンドポイントに配信するには、組み込み **イベント** エンドポイントにメッセージを送信するルートを追加します。
 
 > [!NOTE]
 > * IoT Hub は、Azure Storage コンテナーに BLOB としてデータを書き込む処理のみをサポートしています。
 > * **セッション** または **重複データ検出** が有効になっている Service Bus のキューおよびトピックは、カスタム エンドポイントとしてはサポートされていません。
+> * Azure portal では、ご自分のハブと同じサブスクリプションにある Azure リソースに対してのみ、カスタム ルーティング エンドポイントを作成できます。 自分が所有する他のサブスクリプションのリソースに対してカスタム エンドポイントを作成できますが、カスタム エンドポイントは、Azure portal とは異なる方法を使用して構成する必要があります。
 
 IoT Hub でのカスタム エンドポイントの作成の詳細については、[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関するページを参照してください。
 

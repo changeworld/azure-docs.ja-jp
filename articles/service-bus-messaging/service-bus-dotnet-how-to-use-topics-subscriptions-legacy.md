@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 28e94cdb0df0a18b41f4c8a0ded362b50df6dcac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a64ccec49248f48a85782cfe9537513a97b2bdfc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652974"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868161"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 このチュートリアルに含まれる手順は次のとおりです。
@@ -30,7 +30,7 @@ ms.locfileid: "100652974"
     3. 名前空間の **トピック** を作成します。
     4. 名前空間のトピックへの **サブスクリプションを 1 つ** 作成します。
 3. [Visual Studio 2017 Update 3 (バージョン 15.3, 26730.01)](https://www.visualstudio.com/vs) 以降。
-4. [NET Core SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
+4. [NET Core SDK](https://dotnet.microsoft.com/download) バージョン 2.0 以降。
  
 ## <a name="send-messages-to-the-topic"></a>トピックにメッセージを送信する
 

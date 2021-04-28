@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 12/09/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q2, automl
-ms.openlocfilehash: b60e5f656b675a1382b8b4776975723a437183bc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2bed95385823a167c7a31eed11d752894984ea38
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104773115"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791879"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>自動機械学習実験の結果を評価
 
@@ -74,7 +74,7 @@ ms.locfileid: "104773115"
 
 |メトリック|説明|計算|
 |--|--|---|
-|AUC | AUC は[受信者操作特性曲線](#roc-curve)の下の領域です。<br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li>`AUC_macro`: クラスごとの AUC の算術平均です。<li> `AUC_micro`: 各クラスの真陽性と偽陽性を組み合わせることで計算されます。 <li> `AUC_weighted`: 各クラスのスコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。   |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
+|AUC | AUC は[受信者操作特性曲線](#roc-curve)の下の領域です。<br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例 <li>`AUC_macro`: クラスごとの AUC の算術平均です。<li> `AUC_micro`: 各クラスの真陽性と偽陽性を組み合わせることで計算されます。 <li> `AUC_weighted`: 各クラスのスコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。<br><br>注: クラスが 2 つしかない場合、自動 ML によって報告された AUC の値が、ROC グラフと一致しない場合があります。 二項分類の場合、AUC の基礎となる scikit-learn の実装で、マクロ、マイクロ、加重平均は実際には適用されません。 代わりに、最も可能性の高い正のクラスの AUC が返されます。 ROC グラフでは、マルチクラスの場合と同様に、二項分類のクラス平均が適用されます。  |[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | 
 |accuracy| 精度は、true クラス ラベルと正確に一致する予測の割合です。 <br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|
 |average_precision|平均適合率は、各しきい値で達成した適合率の加重平均として適合率-再現率曲線をまとめたもので、前のしきい値より増加した再現率を重みとして使用します。 <br><br> **目的:** 1 に近いほど良い <br> **範囲:** [0, 1]<br> <br>サポートされているメトリック名の例<li>`average_precision_score_macro`: 各クラスの平均適合率スコアの算術平均です。<li> `average_precision_score_micro`: 各カットオフでの真陽性と偽陽性を組み合わせることで計算されます。<li>`average_precision_score_weighted`: 各クラスの平均適合率スコアの算術平均で、各クラス内の true インスタンスの数によって重み付けされます。|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)|
 balanced_accuracy|バランスの取れた精度は、各クラスの再現率の算術平均です。<br> <br>**目的:** 1 に近いほど良い <br> **範囲:** [0, 1]|[計算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|
@@ -117,6 +117,7 @@ weighted_accuracy|加重精度は、各サンプルが同じクラスに属す�
 グラフの左上隅に近づく曲線は、最適なモデルである 100% の TPR と 0% の FPR に近づいています。 ランダム モデルでは、左下隅から右上に向かう `y = x` 線に沿って ROC 曲線が生成されます。 ランダム モデルより良くないのは、ROC 曲線が `y = x` 線より下がるものです。
 > [!TIP]
 > 分類の実験では、自動 ML モデル用に生成された各折れ線グラフを使用して、クラスごとにモデルを評価したり、すべてのクラスに対して平均化したりできます。 グラフの右側にある凡例のクラス ラベルをクリックすると、これらのビューを切り替えることができます。
+
 ### <a name="roc-curve-for-a-good-model"></a>適切なモデルの ROC 曲線
 ![適切なモデルの ROC 曲線](./media/how-to-understand-automated-ml/chart-roc-curve-good.png)
 
@@ -234,18 +235,9 @@ spearman_correlation| スピアマンの相関は、2 つのデータセット�
 
 ## <a name="model-explanations-and-feature-importances"></a>モデルの説明と特徴の重要度
 
-モデル評価メトリックおよびグラフは、モデルの一般的な質を測るのに適していますが、信頼できる AI を実現するには、モデルがその予測にデータセットのどの特徴を使用したかを調査することが重要です。 データセットの特徴の相対的なコントビューションを測定してレポートする、モデルの解釈可能性ダッシュボードが自動 ML に備わっているのは、このためです。
+モデル評価メトリックおよびグラフは、モデルの一般的な質を測るのに適していますが、信頼できる AI を実現するには、モデルがその予測にデータセットのどの特徴を使用したかを調査することが重要です。 データセットの特徴の相対的なコントリビューションを測定してレポートする、モデルの説明ダッシュボードが自動 ML に備わっているのは、このためです。 [Azure Machine Learning スタジオで説明ダッシュボードを表示](how-to-use-automated-ml-for-ml-models.md#model-explanations-preview)する方法をご覧ください。
 
-スタジオで解釈可能性ダッシュボードを表示するには、次の手順を実行します。
-1. [スタジオにサインイン](https://ml.azure.com/)し、ワークスペースに移動します。
-2. 左側のメニューで **[実験]** を選択します。
-3. 使用する実験を実験の一覧から選択します。
-4. ページの下部にあるテーブルで、自動 ML 実行を選択します。
-5. **[モデル]** タブで、説明するモデルの **[アルゴリズム名]** を選択します。
-6. そのモデルが最良のモデルである場合、 **[説明]** タブに説明が既に作成されていることがあります。
-7. 新しい説明を作成するには、 **[モデルの説明]** を選択し、説明を計算するリモート コンピューティングを選択します。
-
-[自動 ML のモデルの説明の詳細を参照してください](how-to-machine-learning-interpretability-automl.md)。
+コード ファースト エクスペリエンスについては、[Azure Machine Learning Python SDK を使用した自動 ML 実験のモデルの説明](how-to-machine-learning-interpretability-automl.md)を設定する方法をご覧ください。
 
 > [!NOTE]
 > ForecastTCN モデルは、現在は自動 ML の説明でサポートされていません。また、他の予測モデルでは、解釈可能性ツールへのアクセスが制限される場合があります。

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 85e953951d5368dc97312e7810f3c356bda7c6b6
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 69aaf2032ca321d7c0f8039cde2728134138e95c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106218721"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147897"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>チュートリアル: Azure Active Directory と Five9 Plus Adapter (CTI、Contact Center Agents) の統合
 
@@ -146,8 +146,8 @@ Five9 Plus Adapter (CTI、Contact Center Agents) に対して Azure AD SSO を�
 
 * Azure portal で [このアプリケーションをテストします] をクリックします。すると、SSO を設定した Five9 Plus Adapter (CTI、Contact Center Agents) に自動的にサインインします。
 
-* Microsoft マイ アプリを使用することができます。 マイ アプリで Five9 Plus Adapter (CTI、Contact Center Agents) のタイルをクリックすると、SSO を設定した Five9 Plus Adapter (CTI、Contact Center Agents) に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)に関するページを参照してください。
+* Microsoft マイ アプリを使用することができます。 マイ アプリで Five9 Plus Adapter (CTI、Contact Center Agents) のタイルをクリックすると、SSO を設定した Five9 Plus Adapter (CTI、Contact Center Agents) に自動的にサインインします。 マイ アプリの詳細については、[マイ アプリの概要](../user-help/my-apps-portal-end-user-access.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-Five9 Plus Adapter (CTI、Contact Center Agents) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)をご覧ください。
+Five9 Plus Adapter (CTI、Contact Center Agents) を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を強制する方法](/cloud-app-security/proxy-deployment-any-app)をご覧ください。

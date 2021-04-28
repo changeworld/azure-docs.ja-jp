@@ -5,14 +5,14 @@ description: Intune のカスタム プロファイルを作成して Azure VPN 
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/04/2021
+ms.date: 04/26/2021
 ms.author: cherylmc
-ms.openlocfilehash: ed4da521ccba44d7b4792fa341ff6244eb3736a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92e534eae6b97ba259cc414c1833a78a2d3fe0ad
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99576161"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018290"
 ---
 # <a name="create-custom-intune-profiles-to-deploy-vpn-client-profiles"></a>カスタム Intune プロファイルを作成して VPN クライアント プロファイルをデプロイする
 

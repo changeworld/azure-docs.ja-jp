@@ -10,12 +10,12 @@ ms.author: cherylmc
 ms.custom:
 - contperf-fy21q1
 - e2e-hybrid
-ms.openlocfilehash: b4a2e1b80fe62c5e8f74e35a1a7f61bdddf89c53
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 9a73b3ab2a9ed939001350609a176dba3c2fc44d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066536"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141147"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 
@@ -84,4 +84,4 @@ RSS フィードを購読し、[Azure 更新情報](https://azure.microsoft.com/
 
 - 詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」を参照してください。
 - [サブスクリプションとサービスの制限](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits)に関するページを参照してください。
-- Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
+- Azure のその他の重要な[ネットワーク機能](../networking/fundamentals/networking-overview.md)について参照してください。

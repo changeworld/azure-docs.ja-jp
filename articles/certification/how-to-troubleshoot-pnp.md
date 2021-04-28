@@ -7,12 +7,12 @@ ms.service: certification
 ms.topic: how-to
 ms.date: 04/15/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 591436de14916a919f0179978825b88dcc80117c
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 9b406e489fb83083d47f01e1483160181601d518
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129731"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107558767"
 ---
 # <a name="troubleshoot-your-iot-plug-and-play-certification-project"></a>IoT プラグ アンド プレイ認定プロジェクトのトラブルシューティング
 
@@ -20,7 +20,7 @@ IoT プラグ アンド プレイ認定プロジェクトの接続とテスト�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure Certified Device ポータル](https://certify.azure.com)にサインインして、そこでデバイス用のプロジェクトを作成する必要があります。 詳細については、[チュートリアル](tutorial-01-creating-your-project.md)を参照してください。
+- [Azure Certified Device ポータル](https://certify.azure.com)にサインインし、デバイス用のプロジェクトを作成する必要があります。 詳細については、[チュートリアル](tutorial-01-creating-your-project.md)を参照してください。
 
 ## <a name="when-aics-tests-arent-passing"></a>AICS テストに合格しない場合
 
@@ -42,7 +42,7 @@ IoT プラグ アンド プレイ認定プロジェクトの接続とテスト�
 
 ## <a name="when-you-need-help-with-the-model-repository"></a>モデル リポジトリに関するヘルプが必要な場合
 
-モデル リポジトリに関連する IoT プラグ アンド プレイの問題については、[デバイスのモデル リポジトリに関するドキュメント ガイダンス](../iot-pnp/concepts-model-repository.md)を参照してください。
+モデル リポジトリに関連する IoT プラグ アンド プレイの問題については、[デバイスのモデル リポジトリに関するドキュメント ガイダンス](https://docs.microsoft.com/azure/iot-pnp/concepts-model-repository)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

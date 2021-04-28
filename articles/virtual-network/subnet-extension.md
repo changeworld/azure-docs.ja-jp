@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2019
 ms.author: anupand
-ms.openlocfilehash: 555c903dc3375080a8b0d006d2aac7216854c939
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7effa870bc57bccc33652df343cdb0c187642ce8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99539300"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141129"
 ---
 # <a name="subnet-extension"></a>サブネットの拡張
 パブリック クラウドへのワークロードの移行には、慎重な計画と調整が必要です。 重要な考慮事項の 1 つは、IP アドレスを保持できるかどうかです。 これは特に、アプリケーションに IP アドレスの依存関係がある場合や、特定の IP アドレスを使用するためのコンプライアンス要件がある場合に重要になります。 Azure Virtual Network を使用すると、選択した IP アドレス範囲を使用して VNet とサブネットを作成できるため、この問題を解決できます。
@@ -53,4 +53,4 @@ ms.locfileid: "99539300"
 次のセクションでは、Azure でテストしたサブネットの拡張ソリューションの詳細について説明します。
 
 ## <a name="next-steps"></a>次のステップ 
-[ベンダー ソリューションを使用して、サブネットを Azure に拡張します。](https://github.com/microsoft/Azure-LISP)
+[Azure 拡張ネットワークを使用して、オンプレミスのサブネットを Azure に拡張する](/windows-server/manage/windows-admin-center/azure/azure-extended-network)。

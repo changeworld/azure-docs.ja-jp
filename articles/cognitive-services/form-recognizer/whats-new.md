@@ -7,65 +7,211 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 03/15/2021
+ms.date: 04/14/2021
 ms.author: lajanuar
-ms.openlocfilehash: 81115f5a9ed802f1d07c45ec928dc4b84ea2917b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e952d481daf53b1806dc3cfbb658c8c0c21f6984
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048750"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516299"
 ---
 <!-- markdownlint-disable MD024 -->
+<!-- markdownlint-disable MD036 -->
 # <a name="whats-new-in-form-recognizer"></a>Form Recognizer の新機能
 
 Form Recognizer サービスは、継続的に更新されます。 この記事で、機能の強化、修正、ドキュメントの更新についての最新情報を入手してください。
+
+## <a name="april-2021"></a>2021 年 4 月
+<!-- markdownlint-disable MD029 -->
+
+### <a name="sdk-updates-api--version-21-preview3"></a>SDK の更新 (API バージョン 2.1-preview.3)
+
+### <a name="c-version-310-beta4"></a>**C# バージョン 3.1.0-beta.4**
+
+* **身分証明書のデータ分析用の新しいメソッド**:
+
+   **[StartRecognizeIdDocumentsFromUriAsync](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizeiddocumentsasync?view=azure-dotnet-preview&preserve-view=true)**
+
+   **[StartRecognizeIdDocumentsAsync](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizeiddocumentsasync?view=azure-dotnet-preview&preserve-view=true)**
+
+   フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](concept-identification-cards.md#fields-extracted)」を "_参照_" してください。
+
+* **[StartRecognizeContent](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizecontent?view=azure-dotnet-preview&preserve-view=true)** メソッドに指定できるドキュメント言語のセットが拡大されました。
+
+* **新しいプロパティ `Pages` が次のクラスでサポートされました**:
+
+   **[RecognizeBusinessCardsOptions](/dotnet/api/azure.ai.formrecognizer.recognizebusinesscardsoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
+   **[RecognizeCustomFormsOptions](/dotnet/api/azure.ai.formrecognizer.recognizecustomformsoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
+   **[RecognizeInvoicesOptions](/dotnet/api/azure.ai.formrecognizer.recognizeinvoicesoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
+   **[RecognizeReceiptsOptions](/dotnet/api/azure.ai.formrecognizer.recognizereceiptsoptions?view=azure-dotnet-preview&preserve-view=true)**</br>
+
+   `Pages` プロパティを使用すると、複数のページがある PDF および TIFF ドキュメントの個々のページまたはページの範囲を選択できます。 個々のページの場合は、「`3`」のようにページ番号を入力します。 ページの範囲 (ページ 2 とページ 5 - 7 など) の場合は、「`2, 5-7`」のようにページ番号と範囲をコンマで区切って入力します。    
+
+* **新しいプロパティ `ReadingOrder` が次のクラスでサポートされました**:
+
+   **[RecognizeContentOptions](/dotnet/api/azure.ai.formrecognizer.recognizecontentoptions?view=azure-dotnet-preview&preserve-view=true)**
+
+  `ReadingOrder` プロパティは省略可能なパラメーターであり、これを使用すると、テキスト要素の抽出順序を決めるために、`basic` または `natural` のどちらの読み取り順序アルゴリズムを適用するかを指定できます。 指定しない場合は、既定値の `basic` が使用されます。
+
+#### <a name="breaking-changes"></a>重大な変更
+
+* 既定により、クライアントは、サポートされている最新のサービス バージョンになります。現在は **2.1-preview.3** です。
+
+* **[StartRecognizeCustomForms](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizecustomforms?view=azure-dotnet-preview&preserve-view=true#Azure_AI_FormRecognizer_FormRecognizerClient_StartRecognizeCustomForms_System_String_System_IO_Stream_Azure_AI_FormRecognizer_RecognizeCustomFormsOptions_System_Threading_CancellationToken_)** メソッドで、無効なファイルが渡された場合に `RequestFailedException()` がスローされるようになりました。
+
+### <a name="java-version-310-beta3"></a>**Java バージョン 3.1.0-beta.3**
+
+* **身分証明書のデータ分析用の新しいメソッド**:
+
+  **[beginRecognizeIdDocumentsFromUrl](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizeiddocumentsfromurl?view=azure-java-preview&preserve-view=true)**
+
+  **[beginRecognizeIdDocuments](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizeiddocuments?view=azure-java-preview&preserve-view=true)**
+
+   フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](concept-identification-cards.md#fields-extracted)」を "_参照_" してください。
+
+* **`FormContentType` 列挙型でのカスタムのフォームおよびトレーニング方法を対象にしたビットマップ画像ファイル (.bmp) のサポート**:
+
+* `image/bmp`
+
+* **新しいプロパティ `Pages` が次のクラスでサポートされました**:
+
+   **[RecognizeBusinessCardsOptions](/java/api/com.azure.ai.formrecognizer.models.recognizebusinesscardsoptions?view=azure-java-preview&preserve-view=true)**</br>
+   **[RecognizeCustomFormOptions](/java/api/com.azure.ai.formrecognizer.models.recognizecustomformsoptions?view=azure-java-preview&preserve-view=true)**</br>
+   **[RecognizeInvoicesOptions](/java/api/com.azure.ai.formrecognizer.models.recognizeinvoicesoptions?view=azure-java-preview&preserve-view=true)**</br>
+   **[RecognizeReceiptsOptions](/java/api/com.azure.ai.formrecognizer.models.recognizereceiptsoptions?view=azure-java-preview&preserve-view=true)**</br>
+
+  `Pages` プロパティを使用すると、複数のページがある PDF および TIFF ドキュメントの個々のページまたはページの範囲を選択できます。 個々のページの場合は、「`3`」のようにページ番号を入力します。 ページの範囲 (ページ 2 とページ 5 - 7 など) の場合は、「`2, 5-7`」のようにページ番号と範囲をコンマで区切って入力します。
+
+* **[FormContentType](/java/api/com.azure.ai.formrecognizer.models.formcontenttype?view=azure-java-preview&preserve-view=true#fields) フィールドでのカスタムのフォームおよびトレーニング方法を対象にしたビットマップ画像ファイル (.bmp) のサポート**:
+
+  `image/bmp`
+
+* **新しいキーワード引数 `ReadingOrder` が次のメソッドでサポートされました**:
+
+* **[beginRecognizeContent](https://docs.microsoft.com/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontent?view=azure-java-preview&preserve-view=true)**</br>
+**[beginRecognizeContentFromUrl](/java/api/com.azure.ai.formrecognizer.formrecognizerclient.beginrecognizecontentfromurl?view=azure-java-preview&preserve-view=true)**</br>
+
+   `ReadingOrder` キーワード引数は省略可能なパラメーターであり、これを使用すると、テキスト要素の抽出順序を決めるために、`basic` または `natural` のどちらの読み取り順序アルゴリズムを適用するかを指定できます。 指定しない場合は、既定値の `basic` が使用されます。
+
+* 既定により、クライアントは、サポートされている最新のサービス バージョンになります。現在は **2.1-preview.3** です。
+
+### <a name="javascript-version-310-beta3"></a>**JavaScript バージョン 3.1.0-beta.3**
+
+* **身分証明書のデータ分析用の新しいメソッド**:
+
+    **[beginRecognizeIdDocumentsFromUrl](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-preview&preserve-view=true&branch=main#beginRecognizeIdDocumentsFromUrl_string__BeginRecognizeIdDocumentsOptions_)**
+
+    **[beginRecognizeIdDocuments](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-preview&preserve-view=true&branch=main#beginRecognizeIdDocuments_FormRecognizerRequestBody__BeginRecognizeIdDocumentsOptions_)**
+
+    フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](concept-identification-cards.md#fields-extracted)」を "_参照_" してください。
+
+* **新しいフィールド値が FieldValue インターフェイスに追加されました**:
+
+    `gender`—使用可能な値は `M` `F` `X` のいずれかです。</br>
+   `country`—使用可能な値は [ISO alpha-3](https://www.iso.org/obp/ui/#search) の 3 文字の国番号文字列に従います。
+
+* すべてのフォーム認識メソッド (カスタム フォームおよびすべての事前構築済みモデル) でサポートされている新しいオプション `pages`。 この引数を使用すると、複数のページがある PDF および TIFF ドキュメントの個々のページまたはページの範囲を選択できます。 個々のページの場合は、「`3`」のようにページ番号を入力します。 ページの範囲 (ページ 2 とページ 5 - 7 など) の場合は、「`2, 5-7`」のようにページ番号と範囲をコンマで区切って入力します。
+
+* コンテンツ認識メソッドに **[ReadingOrder](/javascript/api/@azure/ai-form-recognizer/readingorder?view=azure-node-preview&preserve-view=true)** 型のサポートが追加されました。 このオプションを使用すると、認識されたテキスト行の順序を決定するためにサービスで使用されるアルゴリズムを制御できます。 テキスト要素の抽出順序を決めるために、`basic` または `natural` のどちらの読み取り順序アルゴリズムを適用するかを指定できます。 指定しない場合は、既定値の `basic` が使用されます。
+
+* **[FormField](/javascript/api/@azure/ai-form-recognizer/formfield?view=azure-node-preview&preserve-view=true)** 型が複数の異なるインターフェイスに分割されました。 これによって、特定のエッジ ケース (未定義の valueType) を除き、API 互換性の問題は発生しません。
+
+* すべての REST API 呼び出しで **2.1-preview.3** の Form Recognizer サービス エンドポイントに移行しました。
+
+### <a name="python-version--310b4"></a>**Python バージョン 3.1.0b4**
+
+* **身分証明書のデータ分析用の新しいメソッド**:
+
+  **[begin_recognize_id_documents_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true)**
+
+  **[begin_recognize_id_documents](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true)**
+
+  フィールド値の一覧については、Form Recognizer ドキュメントの「[抽出されるフィールド](concept-identification-cards.md#fields-extracted)」を "_参照_" してください。
+
+* **新しいフィールド値が [FieldValueType](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.fieldvaluetype?view=azure-python-preview&preserve-view=true) 列挙型に追加されました**:
+
+   gender—使用可能な値は `M` `F` `X` のいずれかです。
+
+  country—使用可能な値は [ISO alpha-3 国別コード](https://www.iso.org/obp/ui/#search)に従います。
+
+* **[FormContentType](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formcontenttype?view=azure-python-preview&preserve-view=true) 列挙型でのカスタムのフォームおよびトレーニング方法を対象にしたビットマップ画像ファイル (.bmp) のサポート**:
+
+    image/bmp
+
+* **新しいキーワード引数 `pages` が次のメソッドでサポートされました**:
+
+    **[begin_recognize_receipts](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true&branch=main#begin-recognize-receipts-receipt----kwargs-)**
+
+    **[begin_recognize_receipts_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-receipts-from-url-receipt-url----kwargs-)**
+
+   **[begin_recognize_business_cards](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-business-cards-business-card----kwargs-)**
+
+   **[begin_recognize_business_cards_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-business-cards-from-url-business-card-url----kwargs-)**
+
+   **[begin_recognize_invoices](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-invoices-invoice----kwargs-)**
+
+   **[begin_recognize_invoices_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-invoices-from-url-invoice-url----kwargs-)**
+
+   **[begin_recognize_content](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-content-form----kwargs-)**
+
+  **[begin_recognize_content_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-content-from-url-form-url----kwargs-)**
+
+   `pages` キーワード引数を使用すると、複数のページがある PDF および TIFF ドキュメントの個々のページまたはページの範囲を選択できます。 個々のページの場合は、「`3`」のようにページ番号を入力します。 ページの範囲 (ページ 2 とページ 5 - 7 など) の場合は、「`2, 5-7`」のようにページ番号と範囲をコンマで区切って入力します。
+
+* **新しいキーワード引数 `readingOrder` が次のメソッドでサポートされました**:
+
+   **[begin_recognize_content](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-content-form----kwargs-)**
+
+   **[begin_recognize_content_from_url](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python-preview&preserve-view=true#begin-recognize-content-from-url-form-url----kwargs-)**
+
+   `readingOrder` キーワード引数は省略可能なパラメーターであり、これを使用すると、テキスト要素の抽出順序を決めるために、`basic` または `natural` のどちらの読み取り順序アルゴリズムを適用するかを指定できます。 指定しない場合は、既定値の `basic` が使用されます。
 
 ## <a name="march-2021"></a>2021 年 3 月
 
 **Form Recognizer v2.1 パブリック プレビュー 3 が利用可能になりました。** v2.1-preview.3 がリリースされました。次の機能を備えています。
 
-- **新しい事前構築済み ID モデル** 新しい事前構築済み ID モデルを使用すると、お客様は ID を取得して構造化データを返し、処理を自動化できます。 強力な光学式文字認識 (OCR) 機能と ID 理解モデルを組み合わせて、パスポートや米国の運転免許証から、名前、生年月日、発行日、有効期限などの重要な情報を抽出することができます。
+* **新しい事前構築済み ID モデル** 新しい事前構築済み ID モデルを使用すると、お客様は ID を取得して構造化データを返し、処理を自動化できます。 強力な光学式文字認識 (OCR) 機能と ID 理解モデルを組み合わせて、パスポートや米国の運転免許証から、名前、生年月日、発行日、有効期限などの重要な情報を抽出することができます。
 
   [事前作成された ID モデルの詳細情報](concept-identification-cards.md)
 
    :::image type="content" source="./media/id-canada-passport-example.png" alt-text="パスポートの例" lightbox="./media/id-canada-passport-example.png":::
 
-- **事前構築済み請求書モデルの品目抽出** - 事前構築済み請求書モデルは品目抽出をサポートするようになりました。完全な項目とその一部 (説明、金額、数量、製品 ID、日付など) が抽出されるようになりました。 簡単な API または SDK の呼び出しにより、請求書から有用なデータ (テキスト、テーブル、キーと値のペア、品目) を抽出できます。
+* **事前構築済み請求書モデルの品目抽出** - 事前構築済み請求書モデルは品目抽出をサポートするようになりました。完全な項目とその一部 (説明、金額、数量、製品 ID、日付など) が抽出されるようになりました。 簡単な API または SDK の呼び出しにより、請求書から有用なデータ (テキスト、テーブル、キーと値のペア、品目) を抽出できます。
 
    [事前作成された請求書モデルの詳細情報](concept-invoices.md)
 
-- **監視対象テーブルのラベル付けとトレーニング、空の値のラベル付け** - Form Recognizer の [最先端のディープ ラーニング自動テーブル抽出機能](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)に加えて、お客様がテーブルに対してラベル付けとトレーニングを行えるようになりました。 この新しいリリースには、品目とテーブル (動的と固定) にラベルを付けてトレーニングし、キーと値のペアと品目を抽出するカスタム モデルをトレーニングする機能が含まれています。 モデルのトレーニングが完了すると、モデルにより documentResults セクションの JSON 出力の一部として品目が抽出されます。
+* **監視対象テーブルのラベル付けとトレーニング、空の値のラベル付け** - Form Recognizer の [最先端のディープ ラーニング自動テーブル抽出機能](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011)に加えて、お客様がテーブルに対してラベル付けとトレーニングを行えるようになりました。 この新しいリリースには、品目とテーブル (動的と固定) にラベルを付けてトレーニングし、キーと値のペアと品目を抽出するカスタム モデルをトレーニングする機能が含まれています。 モデルのトレーニングが完了すると、モデルにより documentResults セクションの JSON 出力の一部として品目が抽出されます。
 
     :::image type="content" source="./media/table-labeling.png" alt-text="テーブルのラベル付け" lightbox="./media/table-labeling.png":::
 
-    テーブルにラベルを付けることに加え、次は空の値と領域にラベルを付けます。トレーニング セット内の一部のドキュメントに特定のフィールドの値がない場合、これを使用して、分析済みのドキュメントから値が適切に抽出されることがモデルによって認識されるようになります。
+    テーブルにラベルを付けることに加え、空の値と領域にラベルを付けることができるようになりました。トレーニング セット内の一部のドキュメントに特定のフィールドの値がない場合、それらにラベルを付けることで、分析対象のドキュメントから値を適切に抽出するようにモデルに認識させることができます。
 
-- **66 の新しい言語のサポート** - Form Recognizer の Layout API とカスタム モデルは 73 の言語をサポートするようになりました。
+* **66 の新しい言語のサポート** - Form Recognizer の Layout API とカスタム モデルは 73 の言語をサポートするようになりました。
 
   [Form Recognizer の言語サポートの詳細](language-support.md)
 
-- **自然な読み取り順序、手書きの分類、およびページ選択** - この更新により、既定の左から右、また上から下の順序ではなく、自然な読み取り順序でテキスト行の出力を取得することを選択できます。 新しい readingOrder クエリ パラメーターを使用して "自然な" 値に設定すると、より人間にとってわかりやすい読み取り順序の出力が得られます。 さらに、ラテン語の場合、Form Recognizer により、テキスト行が手書きスタイルかどうかが分類され、信頼スコアが与えられます。
+* **自然な読み取り順序、手書きの分類、およびページ選択** - この更新により、既定の左から右、また上から下の順序ではなく、自然な読み取り順序でテキスト行の出力を取得することを選択できます。 新しい readingOrder クエリ パラメーターを使用して "自然な" 値に設定すると、より人間にとってわかりやすい読み取り順序の出力が得られます。 さらに、ラテン語の場合、Form Recognizer により、テキスト行が手書きスタイルかどうかが分類され、信頼スコアが与えられます。
 
-- **事前構築済み領収書モデルの品質改善** この更新プログラムには、特に品目の抽出に関する、事前構築済み領収書モデルの品質改善が多数含まれています。
+* **事前構築済み領収書モデルの品質改善** この更新には、特に品目の抽出に関する、事前構築済み領収書モデルの品質改善が多数含まれています。
 
 ## <a name="november-2020"></a>2020 年 11 月
 
 ### <a name="new-features"></a>新機能
 
-**Form Recognizer v2.1 パブリック プレビュー 2 が利用可能になりました。** v2.1-preview.2 がリリースされました。次の機能を備えています。 
+**Form Recognizer v2.1 パブリック プレビュー 2 が利用可能になりました。** v2.1-preview.2 がリリースされました。次の機能を備えています。
 
-- **新しく事前作成された請求書モデル** - 新しく事前作成された請求書モデルにより、顧客はさまざまな形式で請求書を取得し、構造化されたデータを返して、請求書の処理を自動化することができます。 強力な光学式文字認識 (OCR) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求額、課税額、出荷先、請求先などのテキスト、テーブル、情報が抽出されます。
+- **新しい事前構築済み請求書モデル** - 新しい事前構築済み請求書モデルにより、お客様はさまざまな形式で請求書を取得し、構造化されたデータを返して、請求書の処理を自動化することができます。 強力な光学式文字認識 (OCR) 機能と、請求書を解釈するディープ ラーニング モデルを組み合わせて、英語の請求書から重要な情報を抽出します。 顧客、仕入先、請求書 ID、請求書の期限、合計、請求額、課税額、出荷先、請求先などの重要なテキスト、テーブル、情報が抽出されます。
 
   > [事前作成された請求書モデルの詳細情報](concept-invoices.md)
 
   :::image type="content" source="./media/invoice-example.jpg" alt-text="請求書の例" lightbox="./media/invoice-example.jpg":::
 
-- **強化されたテーブル抽出** - Form Recognizer によって、強力な光学式文字認識 (OCR) 機能とディープ ラーニング テーブル抽出モデルを組み合わせた拡張テーブル抽出が提供されるようになりました。 Form Recognizer では、テーブル (結合された列、行、境界線を含む複雑なテーブルなど) からデータを抽出できます。 
- 
+- **強化されたテーブル抽出** - Form Recognizer によって、強力な光学式文字認識 (OCR) 機能とディープ ラーニング テーブル抽出モデルを組み合わせた拡張テーブル抽出が提供されるようになりました。 Form Recognizer では、テーブル (結合された列、行、境界線を含む複雑なテーブルなど) からデータを抽出できます。
+
   :::image type="content" source="./media/tables-example.jpg" alt-text="テーブルの例" lightbox="./media/tables-example.jpg":::
 
- 
+
   > [レイアウト抽出の詳細情報](concept-layout.md)
 
 - **クライアント ライブラリの更新** - .NET、Python、Java、JavaScript 用の [クライアント ライブラリ](quickstarts/client-library.md)の最新バージョンでは、Form Recognizer 2.1 API がサポートされています。
@@ -77,7 +223,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
   > [Form Recognizer のサンプル ツールを試す](https://fott-preview.azurewebsites.net/)
 
   ![FOTT の例](./media/ui-preview.jpg)
-  
+
 - **フィードバック ループ** - サンプル ラベル付けツールを使用してファイルを分析するときに、それをトレーニング セットに追加し、必要に応じてラベルを調整して、モデルを改善するためにトレーニングできるようになりました。
 - **ドキュメントの自動ラベル付け** - プロジェクト内のラベル付けされた以前のドキュメントに基づいて、追加のドキュメントが自動的にラベル付けされます。
 
@@ -85,13 +231,13 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 ### <a name="new-features"></a>新機能
 
-**Form Recognizer v2.1 パブリック プレビューが利用可能になりました。** V2.1-preview.1 がリリースされました。次の機能を備えています。 
+**Form Recognizer v2.1 パブリック プレビューが利用可能になりました。** V2.1-preview.1 がリリースされました。次の機能を備えています。
 
 
-- **REST API リファレンスが利用可能** - [v2.1-preview.1 リファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)を参照してください 
+- **REST API リファレンスが利用可能** - [v2.1-preview.1 リファレンス](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)を参照してください
 - **英語の他に新たに言語をサポート**。次の [言語](language-support.md)がサポートされるようになりました。`Layout` および `Train Custom Model` の場合: 英語 (`en`)、簡体中国語 (`zh-Hans`)、オランダ語 (`nl`)、フランス語 (`fr`)、ドイツ語 (`de`)、イタリア語 (`it`)、ポルトガル語 (`pt`)、およびスペイン語 (`es`)。
-- **チェックボックス、選択マークの検出** – Form Recognizer では、チェックボックスやオプション ボタンなどの選択マークの検出および抽出がサポートされています。 選択マークは `Layout` で抽出されます。また、`Train Custom Model`_ - [ラベルを使用したトレーニング]_ でラベル付けおよびトレーニングを行って、選択マーク用のキーと値のペアを抽出することもできるようになりました。 
-- **[モデルの作成]** を使用すると、1 つのモデル ID で複数のモデルを構成して呼び出すことができます。 作成済みのモデル ID を使用して分析するドキュメントが送信されると、分類ステップが最初に実行され、適切なカスタム モデルにルーティングされます。 モデルの作成は、`Train Custom Model` -  _[ラベルを使用したトレーニング]_ で使用できます。
+- **チェックボックス、選択マークの検出** – Form Recognizer では、チェックボックスやオプション ボタンなどの選択マークの検出および抽出がサポートされています。 選択マークは `Layout` で抽出されます。また、`Train Custom Model`_ - [ラベルを使用したトレーニング]_ でラベル付けおよびトレーニングを行って、選択マーク用のキーと値のペアを抽出することもできるようになりました。
+- **[モデルの作成]** を使用すると、1 つのモデル ID で複数のモデルを構成して呼び出すことができます。 作成済みのモデル ID を使用して分析するドキュメントを送信すると、分類ステップが最初に実行され、適切なカスタム モデルにルーティングされます。 モデルの作成は、`Train Custom Model` -  _[ラベルを使用したトレーニング]_ で使用できます。
 - **モデル名**。管理と追跡が容易になるように、カスタム モデルにわかりやすい名前を追加します。
 - **[名刺用の新しい事前構築されたモデル](concept-business-cards.md)** 。英語の名刺内の共通のフィールドを抽出するためのものです。
 - **[事前に作成された領収書の新しいロケール](concept-receipts.md)** 。EN-US に加えて、EN-AU、EN-CA、EN-GB、EN-IN でもサポートが利用できるようになりました。
@@ -99,12 +245,12 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 **v2.0** には、次の更新が含まれています。
 
-- NET、Python、Java、および JavaScript 用の[クライアント ライブラリ](quickstarts/client-library.md)が一般提供になりました。 
+- NET、Python、Java、および JavaScript 用の[クライアント ライブラリ](quickstarts/client-library.md)が一般提供になりました。
 
-**新しいサンプル** は GitHub で入手できます。 
+**新しいサンプル** は GitHub で入手できます。
 
-- [知識抽出レシピ - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) では、Form Recognizer の実際のカスタマー エンゲージメントからベスト プラクティスが収集され、これらのプロジェクトの開発時に使用する便利なコード サンプル、チェックリスト、およびサンプル パイプラインが提供されます。 
-- [サンプルラベル付けツール](https://github.com/microsoft/OCR-Form-Tools) が、v2.1 の新機能をサポートするように更新されました。 ツールの概要については、こちらの[クイックスタート](quickstarts/label-tool.md)を参照してください。 
+- [知識抽出レシピ - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) では、Form Recognizer の実際のカスタマー エンゲージメントからベスト プラクティスが収集され、これらのプロジェクトの開発時に使用する便利なコード サンプル、チェックリスト、およびサンプル パイプラインが提供されます。
+- [サンプルラベル付けツール](https://github.com/microsoft/OCR-Form-Tools) が、v2.1 の新機能をサポートするように更新されました。 ツールの概要については、こちらの[クイックスタート](quickstarts/label-tool.md)を参照してください。
 - [インテリジェント キオスク](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) Form Recognizer サンプルでは、`Analyze Receipt` と `Train Custom Model` -  _[ラベルを使用しないトレーニング]_ を統合する方法について示します。
 
 ## <a name="july-2020"></a>2020 年 7 月
@@ -112,13 +258,13 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 ### <a name="new-features"></a>新機能
 <!-- markdownlint-disable MD004 -->
 * **v2.0 リファレンスが使用可能** [v2.0 API リファレンス](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm)と、[.NET](/dotnet/api/overview/azure/ai.formrecognizer-readme)、[Python](/python/api/overview/azure/)、[Java](/java/api/overview/azure/ai-formrecognizer-readme)、および [JavaScript](/javascript/api/overview/azure/) 用のアップデートされた SDK を参照できます。
-* **テーブルの機能強化と抽出の機能強化** には、精度の向上とテーブル抽出の機能強化が含まれています。特に、"_ラベルのないカスタム トレーニング_" でテーブルのヘッダーと構造を学習する機能が追加されています。 
+* **テーブルの機能強化と抽出の機能強化** には、精度の向上とテーブル抽出の機能強化が含まれています。特に、"_ラベルのないカスタム トレーニング_" でテーブルのヘッダーと構造を学習する機能が追加されています。
 
 * **通貨のサポート** - グローバル通貨記号の検出と抽出。
 * **Azure Gov** - Form Recognizer が、Azure Gov でも使用できるようになりました。
-* **強化されたセキュリティ機能**: 
-  * **Bring Your Own Key** - Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれます)](./encrypt-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます また、データを保護するために使われる暗号化キーを監査することもできます。  
-  * **プライベート エンドポイント** – 仮想ネットワーク (VNet) を使用して、[Private Link を介してデータに安全にアクセスできるようになります。](../../private-link/private-link-overview.md)
+* **強化されたセキュリティ機能**:
+  * **Bring Your Own Key** - Form Recognizer は、クラウドに永続化されたときにデータを自動的に暗号化して保護し、セキュリティとコンプライアンスに関する組織のコミットメントを満たすのに役立つようにします。 サブスクリプションでは、Microsoft が管理する暗号化キーが既定で使用されます。 ユーザー独自の暗号化キーを使用してサブスクリプションを管理することもできるようになりました。 [カスタマー マネージド キー (Bring Your Own Key (BYOK) とも呼ばれます)](./encrypt-data-at-rest.md) を使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます また、データを保護するために使われる暗号化キーを監査することもできます。
+  * **プライベート エンドポイント** – 仮想ネットワークを使用して、[Private Link を介してデータに安全にアクセスできるようになります。](../../private-link/private-link-overview.md)
 
 ## <a name="june-2020"></a>2020 年 6 月
 
@@ -126,7 +272,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 * **クライアント SDK への CopyModel API の追加** - クライアント SDK を使用して、サブスクリプション間でモデルをコピーできるようになりました。 この機能の全般的な情報については、[モデルのバックアップと復旧](./disaster-recovery.md)に関する記事を参照してください。
 * **Azure Active Directory の統合** - Azure AD の資格情報を使用して、SDK で Form Recognizer クライアント オブジェクトを認証できるようになりました。
-* **SDK 固有の変更** - これには、小さな機能追加と破壊的な変更の両方が含まれます。 詳細については、SDK の変更ログを参照してください。
+* **SDK 固有の変更** - この変更には、小さな機能追加と破壊的な変更の両方が含まれます。 詳細については、SDK の変更ログを参照してください。
   * [C# SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/formrecognizer/Azure.AI.FormRecognizer/CHANGELOG.md)
   * [Python SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
   * [Java SDK プレビュー 3 変更ログ](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/CHANGELOG.md)
@@ -136,7 +282,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 ### <a name="new-features"></a>新機能
 
-* **Form Recognizer API v2.0 パブリック プレビューの SDK サポート** - 今月、サービス サポートが拡張され、Form Recognizer v2.0 (プレビュー) リリースのプレビュー SDK が含まれるようになりました。 以下のリンクを使用して、任意の言語で作業を開始してください。 
+* **Form Recognizer API v2.0 パブリック プレビューの SDK サポート** - 今月、サービス サポートが拡張され、Form Recognizer v2.0 (プレビュー) リリースのプレビュー SDK が含まれるようになりました。 以下のリンクを使用して、任意の言語で作業を開始してください。
   * [.NET SDK](/dotnet/api/overview/azure/ai.formrecognizer-readme)
   * [Java SDK](/java/api/overview/azure/ai-formrecognizer-readme)
   * [Python SDK](/python/api/overview/azure/ai-formrecognizer-readme)
@@ -147,7 +293,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 * **カスタム モデルのコピー** 新しいカスタム モデルのコピー機能を使用して、リージョン間やサブスクリプション間でモデルをコピーできるようになりました。 Copy Custom Model API を呼び出す前に、ターゲット リソース エンドポイントに対してコピー承認操作を呼び出して、ターゲット リソースにコピーするための承認を取得する必要があります。
 
   * [コピー承認を生成する](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModelAuthorization) REST API
-  * [カスタム モデルをコピーする](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API 
+  * [カスタム モデルをコピーする](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/CopyCustomFormModel) REST API
 
 ### <a name="security-improvements"></a>セキュリティの強化
 
@@ -163,7 +309,7 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
     * 既定値、`no-whitespaces`、`alphanumeric`
   * `number`
     * 既定値、`currency`
-  * `date` 
+  * `date`
     * 既定値、`dmy`、`mdy`、`ymd`
   * `time`
   * `integer`
@@ -185,8 +331,8 @@ Form Recognizer サービスは、継続的に更新されます。 この記事
 
 ### <a name="extraction-enhancements"></a>抽出の機能強化
 
-このリリースでは、抽出の機能強化と精度の向上が行われています。具体的には、テキストの同じ行に複数のキーと値のペアが含まれる場合の、ラベル付けと抽出の機能です。 
- 
+このリリースでは、抽出の機能強化と精度の向上が行われています。具体的には、テキストの同じ行に複数のキーと値のペアが含まれる場合の、ラベル付けと抽出の機能です。
+
 ### <a name="sample-labeling-tool-is-now-open-source"></a>サンプル ラベル付けツールがオープンソースになりました
 
 Form Recognizer のサンプル ラベル付けツールが、オープンソース プロジェクトとして使用できるようになりました。 ソリューションにそれを統合し、ニーズに合わせて顧客固有の変更を行うことができます。
@@ -199,7 +345,7 @@ TLS 1.2 は現在、このサービスへのすべての HTTP 要求に適用さ
 
 ## <a name="january-2020"></a>2020 年 1 月
 
-このリリースでは、Form Recognizer 2.0 (プレビュー) が導入されています。 以下のセクションでは、新機能、機能強化、および変更の詳細について説明します。 
+このリリースでは、Form Recognizer 2.0 (プレビュー) が導入されています。 以下のセクションでは、新機能、機能強化、および変更の詳細について説明します。
 
 ### <a name="new-features"></a>新機能
 

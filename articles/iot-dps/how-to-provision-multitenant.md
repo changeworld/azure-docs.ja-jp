@@ -7,12 +7,12 @@ ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 04ab4ae4d3de6f33f800011b9b0802665d5fb16e
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 0b88923ff6447785a4ef5a7c80e1ff44d1a2b9cb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107228319"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777385"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>マルチテナント用にプロビジョニングする方法 
 
@@ -47,7 +47,7 @@ ms.locfileid: "107228319"
 このセクションでは、Azure Cloud Shell を使用して、**米国西部** と **米国東部** の 2 つのリージョンにテナント用の IoT ハブを作成します。
 
 
-1. Azure Cloud Shell を使用して、[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+1. Azure Cloud Shell を使用して、[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
     次の例では、*contoso-us-resource-group* という名前のリソース グループを *eastus* リージョンに作成します。 この記事で作成するすべてのリソースには、このグループを使用することをお勧めします。 そうすれば、終わった後のクリーンアップが簡単になります。
 
@@ -55,7 +55,7 @@ ms.locfileid: "107228319"
     az group create --name contoso-us-resource-group --location eastus
     ```
 
-2. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、**eastus** リージョンに IoT ハブを作成します。 その IoT ハブは、*contoso-us-resource-group* に追加されます。
+2. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドを使用して、**eastus** リージョンに IoT ハブを作成します。 その IoT ハブは、*contoso-us-resource-group* に追加されます。
 
     次の例では、*contoso-east-hub* という名前の IoT ハブを場所 *eastus* に作成します。 **contoso-east-hub** の代わりに、独自の一意のハブ名を使用する必要があります。
 
@@ -65,7 +65,7 @@ ms.locfileid: "107228319"
     
     このコマンドが完了するまでに数分かかる場合があります。
 
-3. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) コマンドを使用して、**westus** リージョンに IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
+3. Azure Cloud Shell で [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) コマンドを使用して、**westus** リージョンに IoT ハブを作成します。 この IoT ハブも、*contoso-us-resource-group* に追加されます。
 
     次の例では、*contoso-west-hub* という名前の IoT ハブを場所 *westus* に作成します。 **contoso-west-hub** の代わりに、独自の一意のハブ名を使用する必要があります。
 

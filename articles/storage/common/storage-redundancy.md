@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/16/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3665421ddbdd9cf079ff4aab9377fc9164a1599c
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 115587cc567aed42153fcd0b4af404392853d8c7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575362"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127337"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage の冗長性
 
@@ -73,7 +73,7 @@ ZRS をサポートしているストレージ アカウントの種類とリー
 
 | ストレージ アカウントの種類 | サポートされているリージョン | サポートされているサービス |
 |--|--|--|
-| 汎用 v2<sup>1</sup> | (アフリカ) 南アフリカ北部<br /> (アジア太平洋) 東南アジア<br /> (アジア太平洋) オーストラリア東部<br /> (アジア太平洋) 東日本<br /> (カナダ) カナダ中部<br /> (ヨーロッパ) 北ヨーロッパ<br /> (ヨーロッパ) 西ヨーロッパ<br /> (ヨーロッパ) フランス中部<br /> (ヨーロッパ) ドイツ中西部<br /> (ヨーロッパ) 英国南部<br /> (南アメリカ) ブラジル南部<br /> (米国) 米国中部<br /> (米国) 米国東部<br /> (米国) 米国東部 2<br /> (米国) 米国中南部<br /> (米国) 米国西部<br /> (米国) 米国西部 2 | ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
+| 汎用 v2<sup>1</sup> | (アフリカ) 南アフリカ北部<br /> (アジア太平洋) 東南アジア<br /> (アジア太平洋) オーストラリア東部<br /> (アジア太平洋) 東日本<br /> (カナダ) カナダ中部<br /> (ヨーロッパ) 北ヨーロッパ<br /> (ヨーロッパ) 西ヨーロッパ<br /> (ヨーロッパ) フランス中部<br /> (ヨーロッパ) ドイツ中西部<br /> (ヨーロッパ) 英国南部<br /> (南アメリカ) ブラジル南部<br /> (米国) 米国中部<br /> (米国) 米国東部<br /> (米国) 米国東部 2<br /> (米国) 米国中南部<br /> (米国) 米国西部 2 | ブロック blob<br /> ページ BLOB<sup>2</sup><br /> ファイル共有 (標準)<br /> テーブル<br /> キュー<br /> |
 | BlockBlobStorage<sup>1</sup> | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2| Premium ブロック BLOB のみ |
 | FileStorage | 東南アジア<br /> オーストラリア東部<br /> 北ヨーロッパ<br /> 西ヨーロッパ<br /> フランス中部 <br /> 東日本<br /> 英国南部 <br /> 米国東部 <br /> 米国東部 2 <br /> 米国西部 2 | Premium ファイル共有のみ |
 
@@ -139,17 +139,13 @@ GZRS と RA-GZRS は、次のリージョンでサポートされています。
 - (ヨーロッパ) 西ヨーロッパ
 - (ヨーロッパ) フランス中部
 - (ヨーロッパ) ドイツ中西部
-- (ヨーロッパ) ノルウェー東部
-- (ヨーロッパ) スイス北部
 - (ヨーロッパ) 英国南部
-- (中東) アラブ首長国連邦北部
 - (南アメリカ) ブラジル南部
 - (米国) 米国中部
 - (米国) 米国東部
 - (米国) 米国東部 2
 - (米国) 米国中北部
 - (米国) 米国中南部
-- (米国) 米国西部
 - (米国) 米国西部 2
 
 価格については、[BLOB](https://azure.microsoft.com/pricing/details/storage/blobs)、[Files](https://azure.microsoft.com/pricing/details/storage/files/)、[Queues](https://azure.microsoft.com/pricing/details/storage/queues/)、[Tables](https://azure.microsoft.com/pricing/details/storage/tables/) の価格の詳細を参照してください。

@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b4b1234b88eafedbd03b78241baaa40231a6cbd6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bdb890ac70d60e7742c4818fef27d5959c2df801
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97356805"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142299"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -51,7 +51,7 @@ Azure では、Azure VM で実行されている SQL Server 向けのエンタ�
 
 ## <a name="performance"></a>パフォーマンス
 
-Azure 仮想マシンは、さまざまなワークロードのニーズを満たす複数のマシンのサイズを提供します。 また、SQL Server VM では、パフォーマンス要件に合わせて最適化される自動化されたストレージの構成も提供されます。 SQL Server VM のストレージの構成の詳細については、「[SQL Server VM のストレージの構成](storage-configuration.md)」を参照してください。 パフォーマンスを微調整するには、「[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](performance-guidelines-best-practices.md)」を参照してください。
+Azure 仮想マシンは、さまざまなワークロードのニーズを満たす複数のマシンのサイズを提供します。 また、SQL Server VM では、パフォーマンス要件に合わせて最適化される自動化されたストレージの構成も提供されます。 SQL Server VM のストレージの構成の詳細については、「[SQL Server VM のストレージの構成](storage-configuration.md)」を参照してください。 パフォーマンスを微調整するには、「[Azure Virtual Machines 上の SQL Server のパフォーマンスに関するベスト プラクティス](./performance-guidelines-best-practices-checklist.md)」を参照してください。
 
 ## <a name="get-started-with-sql-server-vms"></a>SQL Server VM の使用を開始する
 

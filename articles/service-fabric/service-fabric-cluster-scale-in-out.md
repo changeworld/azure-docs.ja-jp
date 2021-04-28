@@ -3,19 +3,19 @@ title: Service Fabric クラスターをスケールインまたはスケール�
 description: ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定することにより、需要に合わせて Service Fabric クラスターをスケールインまたはスケールアウトします。 Service Fabric クラスターのノードの追加または削除
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 6ee04c73b75d6b335e450ff816c51f0a3089b918
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e7f11aa5fee2b339ea8466dac93e8629419847f0
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94409962"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108018549"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>クラスターをスケールインまたはスケールアウトする
 
 > [!WARNING]
 > スケーリングを行う前にこのセクションをお読みください
 
-アプリケーションのワークロードのソースとなるコンピューティング リソースのスケーリングには、意図的な計画が必要になります。スケーリングには、運用環境においてほとんどの場合 1 時間以上の時間がかかり、ワークロードやビジネス コンテキストを理解する必要があります。実際、このアクティビティを実行した経験がない場合は、このドキュメントの残りの部分に進む前に、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」を読んで理解することをお勧めします。 これは、意図しない LiveSite の問題を回避するための推奨事項です。また、実行することを決定した操作を非運用環境に対して適切にテストすることもお勧めします。 いつでも、[運用上の問題を報告したり、Azure の有料サポートを要求したりする](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure)ことができます。 この記事は、コンテキストが該当するこれらの操作の実行を担当するエンジニア向けに、スケーリング操作を説明します。ただし、どのリソース (CPU、ストレージ、メモリ) をスケーリングするか、どの方向にスケーリングするか (垂直、水平)、どの方法で操作するか (リソース テンプレート デプロイ、ポータル、PowerShell/CLI) など、どのような操作が実際のユース ケースに適しているかを自分で判断して理解する必要があります。
+アプリケーションのワークロードのソースとなるコンピューティング リソースのスケーリングには、意図的な計画が必要になります。スケーリングには、運用環境においてほとんどの場合 1 時間以上の時間がかかり、ワークロードやビジネス コンテキストを理解する必要があります。実際、このアクティビティを実行した経験がない場合は、このドキュメントの残りの部分に進む前に、「[Service Fabric クラスターの容量計画に関する考慮事項](service-fabric-cluster-capacity.md)」を読んで理解することをお勧めします。 これは、意図しない LiveSite の問題を回避するための推奨事項です。また、実行することを決定した操作を非運用環境に対して適切にテストすることもお勧めします。 いつでも、[運用上の問題を報告したり、Azure の有料サポートを要求したりする](service-fabric-support.md#create-an-azure-support-request)ことができます。 この記事は、コンテキストが該当するこれらの操作の実行を担当するエンジニア向けに、スケーリング操作を説明します。ただし、どのリソース (CPU、ストレージ、メモリ) をスケーリングするか、どの方向にスケーリングするか (垂直、水平)、どの方法で操作するか (リソース テンプレート デプロイ、ポータル、PowerShell/CLI) など、どのような操作が実際のユース ケースに適しているかを自分で判断して理解する必要があります。
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

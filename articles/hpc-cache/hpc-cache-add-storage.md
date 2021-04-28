@@ -4,14 +4,14 @@ description: Azure HPC Cache で長期的なファイルの保管にオンプレ
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/22/2021
 ms.author: v-erkel
-ms.openlocfilehash: 44b2534d7aeb12f4819a6c42cfb29d057ce26ddc
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 47cbb3caa46f62ef6b1d4384c50d161963cce908
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259032"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905560"
 ---
 # <a name="add-storage-targets"></a>ストレージ ターゲットを追加する
 
@@ -19,7 +19,7 @@ ms.locfileid: "107259032"
 
 1 つのキャッシュに対して最大 20 個の異なるストレージ ターゲットを定義できます。 このキャッシュでは、すべてのストレージ ターゲットが 1 つの集約された名前空間で提供されます。
 
-名前空間パスは、ストレージ ターゲットを追加した後に個別に構成されます。 一般に、NFS ストレージ ターゲットには、最大 10 個の名前空間パスを指定できますが、一部の大規模構成ではさらに多く指定できます。 詳細については、「[NFS 名前空間パス](add-namespace-paths.md#nfs-namespace-paths)」を参照してください。
+名前空間パスは、ストレージ ターゲットを追加した後に個別に構成されます。
 
 キャッシュの仮想ネットワークからストレージのエクスポートにアクセスできなければならないことに注意してください。 オンプレミスのハードウェア ストレージの場合、NFS ストレージへのアクセスに使用されるホスト名を解決できる DNS サーバーの設定が必要になることがあります。 詳細については、「[DNS アクセス](hpc-cache-prerequisites.md#dns-access)」を参照してください。
 
@@ -126,7 +126,7 @@ Azure HPC Cache では、Azure Blob Storage ターゲットのストレージ �
 
 ### <a name="add-a-blob-storage-target-with-azure-cli"></a>Azure CLI を使用して BLOB ストレージ ターゲットを追加する
 
-Azure Blob ストレージ ターゲットを定義するには、[az hpc-cache blob-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-add) インターフェイスを使用します。
+Azure Blob ストレージ ターゲットを定義するには、[az hpc-cache blob-storage-target add](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_add) インターフェイスを使用します。
 
 > [!NOTE]
 > 現在、Azure CLI コマンドでは、ストレージ ターゲットを追加するときに、名前空間パスを作成する必要があります。 これは、Azure portal インターフェイスで使用されるプロセスとは異なります。
@@ -229,7 +229,7 @@ NFS を使用したストレージ ターゲットについて次の情報を入
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-ストレージ ターゲットを作成するには、Azure CLI コマンド [az hpc-cache nfs-storage-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add) を使用します。
+ストレージ ターゲットを作成するには、Azure CLI コマンド [az hpc-cache nfs-storage-target add](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_add) を使用します。
 
 > [!NOTE]
 > 現在、Azure CLI コマンドでは、ストレージ ターゲットを追加するときに、名前空間パスを作成する必要があります。 これは、Azure portal インターフェイスで使用されるプロセスとは異なります。
@@ -240,7 +240,7 @@ NFS を使用したストレージ ターゲットについて次の情報を入
 * ``--nfs3-target`` - NFS ストレージ システムの IP アドレス (名前を解決できる DNS サーバーへのアクセス権がキャッシュにある場合、ここでは完全修飾ドメイン名を使用できます)。
 * ``--nfs3-usage-model`` - データ キャッシュ プロファイルの 1 つ (前述の「[使用モデルを選択する](#choose-a-usage-model)」を参照)。
 
-  使用モデルの名前を確認するには、コマンド [az hpc-cache usage-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list) を使用します。
+  使用モデルの名前を確認するには、コマンド [az hpc-cache usage-model list](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage_model_list) を使用します。
 
 * ``--junction`` - junction パラメーターによって、クライアント側の仮想ファイル パスがストレージ システム上のエクスポート パスにリンクされます。
 
@@ -350,13 +350,13 @@ Azure portal からキャッシュ インスタンスを開き、左側のサイ
 
 [Azure HPC Cache 向けに Azure CLI を設定します](./az-cli-prerequisites.md)。
 
-[az hpc-cache storage-target list](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) オプションを使用すると、キャッシュ用の既存のストレージ ターゲットを表示することができます。 キャッシュ名とリソース グループを指定します (それがグローバルに設定している場合は除きます)。
+[az hpc-cache storage-target list](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list) オプションを使用すると、キャッシュ用の既存のストレージ ターゲットを表示することができます。 キャッシュ名とリソース グループを指定します (それがグローバルに設定している場合は除きます)。
 
 ```azurecli
 az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
 ```
 
-特定のストレージ ターゲットに関する詳細を表示するには、[az hpc-cache storage-target show](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list) を使用します (ストレージ ターゲットを名前で指定します)。
+特定のストレージ ターゲットに関する詳細を表示するには、[az hpc-cache storage-target show](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage-target-list) を使用します (ストレージ ターゲットを名前で指定します)。
 
 例:
 

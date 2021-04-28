@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 03/19/2021
-ms.openlocfilehash: 6ce7de649876ed8ccff1254f25a7213b407dacae
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: b2e5fdec732b823a42492af03b1cde705814b924
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284087"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136537"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-database"></a>移行ガイド: SQL Server から Azure SQL Database
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "107284087"
 - Compute Engine (Google Cloud Platform - GCP)  
 - Cloud SQL for SQL Server (Google Cloud Platform – GCP) 
 
-移行の詳細については、[移行の概要](sql-server-to-sql-database-overview.md)に関するページを参照してください。 その他の移行ガイドについては、[データベースの移行](https://docs.microsoft.com/data-migration)に関するページを参照してください。 
+移行の詳細については、[移行の概要](sql-server-to-sql-database-overview.md)に関するページを参照してください。 その他の移行ガイドについては、[データベースの移行](/data-migration)に関するページを参照してください。 
 
 :::image type="content" source="media/sql-server-to-database-overview/migration-process-flow-small.png" alt-text="移行プロセス フロー":::
 

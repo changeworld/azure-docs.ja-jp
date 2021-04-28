@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa364ec434db980bf226008537ca928628fcac1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 35aa0110106f121adb9373f83ff29d299ce049fc
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100392087"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135979"
 ---
 # <a name="copy-data-to-and-from-azure-synapse-analytics-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Synapse Analytics との間でデータをコピーする
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -252,7 +252,7 @@ Azure Synapse Analytics の PolyBase は (サービス プリンシパルを使�
 ```
 
 ## <a name="best-practices-when-using-polybase"></a>PolyBase を使用する際のベスト プラクティス
-次のセクションでは、「[ Azure Synapse Analytics のベスト プラクティス](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-best-practices.md)」に記載されている内容に追加するベスト プラクティスを説明します。
+次のセクションでは、「[ Azure Synapse Analytics のベスト プラクティス](../../synapse-analytics/sql/best-practices-dedicated-sql-pool.md)」に記載されている内容に追加するベスト プラクティスを説明します。
 
 ### <a name="required-database-permission"></a>必要なデータベース アクセス許可
 PolyBase を使用するには、データを Azure Synapse Analytics に読み込むために使用されるユーザーが、ターゲット データベースでの ["CONTROL" アクセス許可](/sql/relational-databases/security/permissions-database-engine)を持っている必要があります。 これを実現する方法の 1 つに、ユーザーを "db_owner" ロールのメンバーとして追加するという方法があります。 具体的な手順については、[こちらのセクション](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-manage-security.md#authorization)に従ってください。

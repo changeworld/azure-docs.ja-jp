@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: dd36bb18e84ea299195b77286887a3b279f81469
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c3bc83d19eddc448992e2d3fab7287e8d84e43a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877578"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132721"
 ---
 # <a name="introduction-to-the-sample-app"></a>サンプル アプリの概要
 
@@ -93,4 +93,4 @@ PiggyMetrics は、3 つのコア マイクロサービスに分解されます�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Spring Cloud インスタンスをプロビジョニングする](spring-cloud-quickstart-provision-service-instance.md)
+> [Azure Spring Cloud インスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)

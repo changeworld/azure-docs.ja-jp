@@ -10,12 +10,12 @@ author: julieMSFT
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.date: 03/10/2021
-ms.openlocfilehash: 704c30516e9daf047bf5837aa6e2ed08306193db
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 3564eaf27339c39975a23160c6d269a925317fea
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565646"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143199"
 ---
 # <a name="migrate-a-data-warehouse-to-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics 専用 SQL プールへデータ ウェアハウスを移行する
 
@@ -23,7 +23,7 @@ ms.locfileid: "107565646"
 
 ## <a name="overview"></a>概要
 
-移行を開始する前に、Azure Synapse Analytics がご自分のワークロードに最適なソリューションであることを確認する必要があります。 Azure Synapse Analytics は、大規模なデータの分析を目的として設計された分散システムです。 Azure Synapse Analytics に移行するには、理解するのは難しくなくても実装するのに多少時間がかかる設計変更が必要です。 ビジネスでエンタープライズ クラスのデータ ウェアハウスが必要な場合は、労力に見合うだけの利点があります。 一方、Azure Synapse Analytics ほどの能力を必要としない場合は、[SQL Server](https://docs.microsoft.com/sql/sql-server/) または [Azure SQL Database](https://docs.microsoft.com/azure/azure-sql/) を使う方が高い費用対効果を得られます。
+移行を開始する前に、Azure Synapse Analytics がご自分のワークロードに最適なソリューションであることを確認する必要があります。 Azure Synapse Analytics は、大規模なデータの分析を目的として設計された分散システムです。 Azure Synapse Analytics に移行するには、理解するのは難しくなくても実装するのに多少時間がかかる設計変更が必要です。 ビジネスでエンタープライズ クラスのデータ ウェアハウスが必要な場合は、労力に見合うだけの利点があります。 一方、Azure Synapse Analytics ほどの能力を必要としない場合は、[SQL Server](/sql/sql-server/) または [Azure SQL Database](../../azure-sql/index.yml) を使う方が高い費用対効果を得られます。
 
 Azure Synapse Analytics の使用を検討するのは、次のようなときです。
 
@@ -42,7 +42,7 @@ Azure Synapse Analytics の使用を検討するのは、次のようなとき�
 
 ## <a name="azure-synapse-pathway"></a>Azure Synapse Pathway
 
-顧客にとって障壁となる大きな要因の 1 つが、あるシステムから別のものに移行するときにデータベース オブジェクトを変換することです。 [Azure Synapse Pathway](https://docs.microsoft.com/sql/tools/synapse-pathway/azure-synapse-pathway-overview) を使用すると、既存のデータ ウェアハウスのオブジェクト変換を自動化して、最新のデータ ウェアハウス プラットフォームにアップグレードできるようになります。 これは無料の直感的で使いやすいツールであり、Azure Synapse Analytics へのより迅速な移行を可能にするためにコード翻訳を自動化します。
+顧客にとって障壁となる大きな要因の 1 つが、あるシステムから別のものに移行するときにデータベース オブジェクトを変換することです。 [Azure Synapse Pathway](/sql/tools/synapse-pathway/azure-synapse-pathway-overview) を使用すると、既存のデータ ウェアハウスのオブジェクト変換を自動化して、最新のデータ ウェアハウス プラットフォームにアップグレードできるようになります。 これは無料の直感的で使いやすいツールであり、Azure Synapse Analytics へのより迅速な移行を可能にするためにコード翻訳を自動化します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,7 +61,7 @@ Netezza データ ウェアハウスを Azure Synapse Analytics に移行する�
 - SQL Server オブジェクトを Azure Synapse オブジェクトに移行するための最新バージョンの [Azure Synapse Pathway](https://www.microsoft.com/en-us/download/details.aspx?id=102787) をダウンロードする。
 - Azure Synapse ワークスペースの[専用 SQL プール](../get-started-create-workspace.md)がある。
 
-詳細については、「[Netezza の場合の Azure Synapse Analytics ソリューションと移行](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-best-practices/analytics/analytics-solutions-netezza)」をご覧ください。
+詳細については、「[Netezza の場合の Azure Synapse Analytics ソリューションと移行](/azure/cloud-adoption-framework/migrate/azure-best-practices/analytics/analytics-solutions-netezza)」をご覧ください。
 
 # <a name="migrate-from-snowflake"></a>[Snowflake からの移行](#tab/migratefromSnowflake)
 
@@ -75,11 +75,11 @@ Snowflake データ ウェアハウスを Azure Synapse Analytics に移行す�
 Oracle データ ウェアハウスを Azure Synapse Analytics に移行するには、次の前提条件を満たしていることを確認します。
 
 - データ ウェアハウスまたは分析ワークロードがある。
-- Oracle オブジェクトを SQL Server に変換するための SQL Server Migration Assistant for Oracle をダウンロードする。 詳細については、「[SQL Server への Oracle のデータの移行 (OracleToSQL)](https://docs.microsoft.com/sql/ssma/oracle/migrating-oracle-databases-to-sql-server-oracletosql)」をご覧ください。
+- Oracle オブジェクトを SQL Server に変換するための SQL Server Migration Assistant for Oracle をダウンロードする。 詳細については、「[SQL Server への Oracle のデータの移行 (OracleToSQL)](/sql/ssma/oracle/migrating-oracle-databases-to-sql-server-oracletosql)」をご覧ください。
 - SQL Server オブジェクトを Azure Synapse オブジェクトに移行するための最新バージョンの [Azure Synapse Pathway](https://www.microsoft.com/download/details.aspx?id=102787) をダウンロードする。
 - Azure Synapse ワークスペースの[専用 SQL プール](../get-started-create-workspace.md)がある。
 
-詳細については、「[Oracle データ ウェアハウスの場合の Azure Synapse Analytics ソリューションと移行](https://docs.microsoft.com/azure/cloud-adoption-framework/migrate/azure-best-practices/analytics/analytics-solutions-exadata)」をご覧ください。
+詳細については、「[Oracle データ ウェアハウスの場合の Azure Synapse Analytics ソリューションと移行](/azure/cloud-adoption-framework/migrate/azure-best-practices/analytics/analytics-solutions-exadata)」をご覧ください。
 
 ---
 
@@ -93,14 +93,14 @@ Oracle データ ウェアハウスを Azure Synapse Analytics に移行する�
 
 移行を成功させるには、テーブル スキーマ、コード、データを移行する必要があります。 これらのトピックに関する詳細なガイダンスについては、以下の記事をご覧ください。
 
-- [テーブルの設計を検討する](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-overview)
-- [コードの変更を検討する](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-develop#development-recommendations-and-coding-techniques)
-- [データの移行](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/design-elt-data-loading)
-- [ワークロード管理を検討する](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management)
+- [テーブルの設計を検討する](../sql-data-warehouse/sql-data-warehouse-tables-overview.md)
+- [コードの変更を検討する](../sql-data-warehouse/sql-data-warehouse-overview-develop.md#development-recommendations-and-coding-techniques)
+- [データの移行](../sql-data-warehouse/design-elt-data-loading.md)
+- [ワークロード管理を検討する](../sql-data-warehouse/sql-data-warehouse-workload-management.md)
 
 ## <a name="more-resources"></a>その他のリソース
 
-Customer Advisory Team の Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) に関する優れたガイダンスが、ブログ投稿として公開されています。 移行の詳細については、「[Migrating data to Azure SQL Data Warehouse in practice (Azure SQL Data Warehouse へのデータの実践移行)](https://docs.microsoft.com/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice)」をご覧ください。
+Customer Advisory Team の Azure Synapse Analytics (旧称 Azure SQL Data Warehouse) に関する優れたガイダンスが、ブログ投稿として公開されています。 移行の詳細については、「[Migrating data to Azure SQL Data Warehouse in practice (Azure SQL Data Warehouse へのデータの実践移行)](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice)」をご覧ください。
 
 ## <a name="migration-assets-from-real-world-engagements"></a>実際の取り組みから得られる移行資産
 

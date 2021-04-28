@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: krsh
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 4711ea76af83594ec529cfda13a308fbe6646398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 47fe7b42b68ae42f74a74e5fc69c8d1041d3bf8d
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200457"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727126"
 ---
 # <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>独自のイメージを使用して仮想マシンを作成する方法
 
@@ -48,6 +48,9 @@ ms.locfileid: "103200457"
 Azure Marketplace のすべてのイメージは汎用的な方法で再利用できる必要があります。 これを実現するには、オペレーティング システム VHD を一般化する必要があります。これは、インスタンス固有の識別子とソフトウェア ドライバーを VM からすべて削除する操作です。
 
 ## <a name="bring-your-image-into-azure"></a>イメージを Azure に取り込む
+
+> [!NOTE]
+> 公開するには、SIG を含む Azure サブスクリプションが、公開元アカウントと同じテナントにある必要があります。 また、発行元アカウントには、SIG を含むサブスクリプションへの共同作成者のアクセス権が少なくとも必要です。
 
 Azure にイメージを取り込むには、次の 3 つの方法があります。
 

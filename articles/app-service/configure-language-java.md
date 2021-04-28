@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: cc532c5ac6babb8378860ac5049e931cc7657932
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cbf530b31797c2c72496548b3ed8f2928378ce9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629259"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779491"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
@@ -32,7 +32,10 @@ Java 開発者は、Azure App Service を使用することで、フル マネ�
 
 ### <a name="java-se"></a>Java SE
 
-Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#rest)を参照してください。
+Java SE に .jar ファイルをデプロイするには、Kudu サイトの `/api/zipdeploy/` エンドポイントを使用します。 この API の詳細については、[このドキュメント](./deploy-zip.md#rest)を参照してください。 
+
+> [!NOTE]
+>  App Service でアプリケーションを識別して実行するには、.jar アプリケーションの名前を `app.jar` にする必要があります。 (上記で説明した) Maven プラグインを使用すると、デプロイ中にアプリケーションの名前が自動的に変更されます。 JAR の名前を *app.jar* に変更しない場合は、.jar アプリを実行するコマンドが含まれるシェル スクリプトをアップロードできます。 ポータルの構成セクションで [[スタートアップ ファイル]](faq-app-service-linux.md#built-in-images) テキストボックスにこのスクリプトの絶対パスを貼り付けます。 スタートアップ スクリプトは、配置先のディレクトリからは実行されません。 そのため、スタートアップ スクリプトでファイルを参照するには、常に絶対パスを使用します (例: `java -jar /home/myapp/myapp.jar`)。
 
 ### <a name="tomcat"></a>Tomcat
 
@@ -141,12 +144,12 @@ JFR ファイルをご自分のローカル コンピューターにダウンロ
 
 ::: zone pivot="platform-windows"
 
-Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */home/LogFiles/Application/* ディレクトリにあります。
+Azure portal または [Azure CLI](/cli/azure/webapp/log#az_webapp_log_config) を使用して[アプリケーションのログ記録](troubleshoot-diagnostic-logs.md#enable-application-logging-windows)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 App Service のローカル ファイル システム インスタンスへのログ記録は、構成されてから 12 時間後に無効になります。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */home/LogFiles/Application/* ディレクトリにあります。
 
 ::: zone-end
 ::: zone pivot="platform-linux"
 
-Azure portal または [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) を使用して[アプリケーションのログ記録](troubleshoot-diagnostic-logs.md#enable-application-logging-linuxcontainer)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */home/LogFiles/Application/* ディレクトリにあります。
+Azure portal または [Azure CLI](/cli/azure/webapp/log#az_webapp_log_config) を使用して[アプリケーションのログ記録](troubleshoot-diagnostic-logs.md#enable-application-logging-linuxcontainer)を有効にし、アプリケーションの標準コンソール出力および標準コンソール エラー ストリームをローカル ファイル システムまたは Azure BLOB ストレージに書き込むよう App Service を構成します。 リテンション期間を長くする必要がある場合は、BLOB ストレージ コンテナーに出力を書き込むようアプリケーションを構成します。 Java と Tomcat のアプリ ログは */home/LogFiles/Application/* ディレクトリにあります。
 
 Linux ベースの App Services の Azure Blob Storage のログ記録は [Azure Monitor (プレビュー) を使用してのみ構成できます](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview) 
 

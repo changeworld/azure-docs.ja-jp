@@ -3,14 +3,14 @@ author: baanders
 description: Azure Digital Twins の制限のインクルード ファイル
 ms.service: digital-twins
 ms.topic: include
-ms.date: 6/9/2020
+ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34fec713c3764987f07bc7fb89ecb0a0d770a840
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100370107"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728026"
 ---
 ### <a name="functional-limits"></a>機能制限
 
@@ -46,7 +46,8 @@ ms.locfileid: "100370107"
 | API | 機能 | 既定の制限 | 調整可能? |
 | --- | --- | --- | --- |
 | モデル API | 1 秒あたりの要求回数 | 100 | はい |
-| Digital Twins API | 1 秒あたりの要求回数 | 2,000 | はい |
+| Digital Twins API | 1 秒あたりの読み取り要求の数 | 1,000 | はい |
+| Digital Twins API | 1 秒あたりのパッチ要求の数 | 1,000 | はい |
 | Digital Twins API | **すべてのツインとリレーションシップ** における 1 秒あたりの作成/削除操作の数 | 50 | はい |
 | Digital Twins API | **単一ツイン** またはそのリレーションシップにおける 1 秒あたりの作成/更新/削除の操作の数 | 10 | いいえ |
 | クエリ API | 1 秒あたりの要求回数 | 500 | はい |

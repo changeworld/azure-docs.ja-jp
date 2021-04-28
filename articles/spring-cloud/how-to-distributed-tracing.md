@@ -8,12 +8,12 @@ ms.date: 10/06/2019
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 6bcb020b14952541c673592c1040fca211ed4edf
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 48f80d82c003677f2cacfdef2a57ae1aaa68d59d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011853"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135115"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud"></a>Azure Spring Cloud で分散トレースを使用する
 
@@ -105,7 +105,7 @@ Steeltoe 3.0.0 の場合は、次の NuGet パッケージを追加します。
 
 ## <a name="prerequisites"></a>前提条件
 
-ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 「[初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)」クイックスタートを完了して、Azure Spring Cloud サービスをプロビジョニングして実行します。
+ここで説明する手順の実行には、既にプロビジョニングされ、運用されている Azure Spring Cloud サービスが必要です。 「[初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)」クイックスタートを完了して、Azure Spring Cloud サービスをプロビジョニングして実行します。
 
 ## <a name="add-dependencies"></a>依存関係を追加する
 
@@ -214,4 +214,4 @@ Application Insights では、アプリケーション マップと検索機能�
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 サービスをアプリケーションにバインドする方法については、[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする方法](spring-cloud-howto-bind-cosmos.md)に関する記事を参照してください。
+この記事では、Azure Spring Cloud で分散トレースを有効にして理解する方法を学習しました。 サービスをアプリケーションにバインドする方法については、[Azure Cosmos DB データベースを Azure Spring Cloud アプリケーションにバインドする方法](./how-to-bind-cosmos.md)に関する記事を参照してください。

@@ -4,12 +4,12 @@ description: Azure Relay を使用してオンプレミスの WCF サービス�
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 22b582634b623b39545eca225c8df0130606c2bb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6f12133277d60560a19f35dead3a30be7c934adf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90983881"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137709"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Azure Relay を使用してオンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する
 
@@ -245,7 +245,7 @@ Azure アプリケーションの開発を開始する前に、ツールをダ�
     ![認証を指定][18]
 
 1. **[新しい ASP.NET Web アプリケーションを作成する]** に戻り、 **[作成]** を選択して MVC アプリを作成します。
-1. 新しい Web アプリの Azure リソースを構成する [Web アプリの発行](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)の手順に従います。 その後、このチュートリアルに戻り、次の手順に進みます。
+1. 新しい Web アプリの Azure リソースを構成する [Web アプリの発行](../app-service/quickstart-dotnetcore.md?tabs=netframework48#publish-your-web-app)の手順に従います。 その後、このチュートリアルに戻り、次の手順に進みます。
 1. **ソリューション エクスプローラー** で **[モデル]** を右クリックし、 **[追加]**  >  **[クラス]** を選択します。
 1. クラスに *Product.cs* と名前を付け、 **[追加]** を選択します。
 

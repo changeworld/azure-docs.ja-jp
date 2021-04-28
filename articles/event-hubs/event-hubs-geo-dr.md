@@ -2,13 +2,13 @@
 title: geo ディザスター リカバリー - Azure Event Hubs| Microsoft Docs
 description: Azure Event Hubs で地理的リージョンを使用してフェールオーバーとディザスター リカバリーを実行する方法
 ms.topic: article
-ms.date: 02/10/2021
-ms.openlocfilehash: 091c6c61b079ceb8f96f04e62fb772d91732eb2f
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.date: 04/14/2021
+ms.openlocfilehash: b2cf2b0ebef2b460b626e45d6b52309c9281d6ce
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311211"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739244"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs - geo ディザスター リカバリー 
 
@@ -118,14 +118,6 @@ geo ディザスター リカバリー機能は、[Standard SKU と専用 SKU](h
 
 間違ったリージョンをペアリングしたなど、初期設定にミスがあった場合、2 つの名前空間のペアリングはいつでも解除することができます。 ペアリングした名前空間を通常の名前空間として使用する必要がある場合、エイリアスは削除してください。
 
-## <a name="samples"></a>サンプル
-
-[GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)には、フェールオーバーの設定と開始の方法が紹介されています。 このサンプルで紹介されている概念は次のとおりです。
-
-- Azure Resource Manager を Event Hubs で使用するために Azure Active Directory に必要な設定。 
-- サンプル コードを実行するために必要な手順。 
-- 現在のプライマリ名前空間との間で行う送受信。 
-
 ## <a name="considerations"></a>考慮事項
 
 次の考慮事項にご注意ください。
@@ -194,19 +186,17 @@ Azure Portal を使用して、新しい名前空間でのみ Availability Zones
 > 仮想ネットワークの geo ディザスター リカバリーに関するガイダンスについては、「[Virtual Network - ビジネス継続性](../virtual-network/virtual-network-disaster-recovery-guidance.md)」を参照してください。
  
 ## <a name="next-steps"></a>次のステップ
-
-* [GitHub のサンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient)で、geo ペアリングを作成してディザスター リカバリー シナリオのフェールオーバーを開始する簡単なワークフローの手順について説明します。
-* [REST API リファレンス](/rest/api/eventhub/)で、geo ディザスター リカバリーの構成を実行するための API について説明します。
-
-Event Hubs の詳細については、次のリンクを参照してください。
-
-- Event Hubs の使用
-    - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
-    - [Java](event-hubs-java-get-started-send.md)
-    - [Python](event-hubs-python-get-started-send.md)
-    - [JavaScript](event-hubs-node-get-started-send.md)
-* [Event Hubs の FAQ](event-hubs-faq.yml)
-* [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+次のサンプルまたはリファレンス ドキュメントを確認してください。 
+- [.NET GeoDR サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/DotNet/GeoDRClient) 
+- [Java GeoDR サンプル](https://github.com/Azure-Samples/eventhub-java-manage-event-hub-geo-disaster-recovery)
+- [.NET - Azure.Messaging.EventHubs サンプル](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs/samples)
+- [.NET - Microsoft.Azure.EventHubs サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet)
+- [Java - azure-messaging-eventhubs サンプル](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs)
+- [Java - azure-eventhubs サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java)
+- [Python のサンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)
+- [JavaScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/javascript)
+- [TypeScript のサンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples/typescript)
+- [REST API リファレンス](/rest/api/eventhub/)
 
 [1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png

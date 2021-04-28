@@ -7,12 +7,12 @@ manager: bsiva
 ms.topic: tutorial
 ms.date: 3/2/2021
 ms.author: rahugup
-ms.openlocfilehash: 2c1a0ee78e866a12105eca77653b1063943d06db
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4e9eda21f637c285b218b7fdc627631225efdf12
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561068"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131298"
 ---
 # <a name="java-web-app-containerization-and-migration-to-azure-kubernetes-service"></a>Java Web アプリのコンテナ化と Azure Kubernetes Service への移行
 
@@ -20,7 +20,7 @@ ms.locfileid: "105561068"
 
 Azure Migrate: App Containerization ツールは、現時点で以下をサポートしています。
 
-- ASP.NET アプリをコンテナー化し、それらを AKS の Windows コンテナーにデプロイする。 [詳細情報](./tutorial-containerize-aspnet-kubernetes.md)
+- ASP.NET アプリをコンテナー化し、それらを AKS の Windows コンテナーにデプロイする。 [詳細情報](./tutorial-app-containerization-aspnet-kubernetes.md)
 - (Linux サーバーの) Apache Tomcat 上の Java Web アプリをコンテナー化し、それらを AKS の Linux コンテナーにデプロイする。
 
 
@@ -261,4 +261,4 @@ Dockerfile や Kubernetes YAML 仕様ファイルなど、アプリケーショ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- ASP.NET アプリをコンテナー化し、それらを AKS の Windows コンテナーにデプロイする。 [詳細情報](./tutorial-containerize-aspnet-kubernetes.md)
+- ASP.NET アプリをコンテナー化し、それらを AKS の Windows コンテナーにデプロイする。 [詳細情報](./tutorial-app-containerization-aspnet-kubernetes.md)

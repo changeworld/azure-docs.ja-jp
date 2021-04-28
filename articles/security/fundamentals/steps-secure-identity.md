@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e795431a0a3e42b7aa91ac7dcb95c7bcb9c9990b
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98602444"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107892078"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -75,7 +75,7 @@ Azure AD の[パスワードの動的禁止](../../active-directory/authenticati
 2. 有効期限のルールを無効にする。このルールは、簡単に推測されるパスワード (**Spring2019!** など) をユーザーが使用する原因になります
 3. 文字構成の要件を無効にして、よく攻撃されるパスワードをユーザーが選択するのを防ぐ。これは、文字構成の要件が、パスワードで予測可能な文字置換をユーザーが選択する原因となるためです。
 
-Azure AD で直接 ID を作成した場合、[PowerShell を使用してユーザーのパスワードの期限切れを防ぐ](../../active-directory/authentication/concept-sspr-policy.md)ことができます。 ハイブリッド組織では、[ドメイン グループ ポリシー設定](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))または [Windows PowerShell](/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) を使用してこれらのポリシーを実装する必要があります。
+Azure AD で直接 ID を作成した場合、[PowerShell を使用してユーザーのパスワードの期限切れを防ぐ](../../active-directory/authentication/concept-sspr-policy.md)ことができます。 ハイブリッド組織では、[ドメイン グループ ポリシー設定](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))または [Windows PowerShell](/powershell/module/activedirectory/set-addefaultdomainpasswordpolicy) を使用してこれらのポリシーを実装する必要があります。
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>資格情報の漏洩から保護し、障害に対する回復力を高める
 

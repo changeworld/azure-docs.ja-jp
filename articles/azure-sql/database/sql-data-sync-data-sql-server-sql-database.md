@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c38e4681c76fb0dd52d77c7dc1438b87a9571a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 695409740348e78ae51b263b44d9ed1cbadc1054
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562061"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107531920"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Azure の SQL データ同期とは
 
@@ -151,6 +151,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 - 名前が同じでスキーマが異なるテーブル (たとえば dbo.customers と sales.customers) がある場合は、一方のテーブルのみを同期に追加できます。
 - ユーザー定義データ型の列はサポートされていません
 - 異なるサブスクリプション間でのサーバーの移動はサポートされていません。 
+- 2 つの主キーでケースだけが違っている (例: Foo と foo) 場合、データ同期ではこのシナリオがサポートされません。
 
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 

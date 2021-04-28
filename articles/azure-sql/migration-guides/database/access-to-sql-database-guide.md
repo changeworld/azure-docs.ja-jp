@@ -5,22 +5,22 @@ ms.service: sql-database
 ms.subservice: migration-guide
 ms.custom: ''
 ms.devlang: ''
-ms.topic: conceptual
+ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: f9fa2426e371ab9fd99e88979cbcbbb34adb00d6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 741a47120b9410f91ef7f6de21879aab796e9a5e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105643597"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136730"
 ---
 # <a name="migration-guide-access-to-azure-sql-database"></a>移行ガイド: Access から Azure SQL Database
 
-このガイドでは、SQL Server Migration Assistant for Acces (SSMA for Acces) を使用して、Microsoft Access データベースを Azure SQL データベースに移行する方法について説明します。
+このガイドでは、[SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant for Acces (SSMA for Acces) を使用して、Microsoft Access データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。
 
-その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
+その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -32,7 +32,7 @@ Access データベースから SQL データベースへの移行を始める�
 
 ## <a name="pre-migration"></a>移行前
 
-前提条件を満たしたら、環境のトポロジを検出し、移行の実現可能性を評価する準備が整いました。
+前提条件を満たしたら、環境のトポロジを検出し、[Azure Cloud 移行](https://azure.microsoft.com/migration)の実現可能性を評価する準備が整いました。
 
 
 ### <a name="assess"></a>アクセス 
@@ -146,13 +146,13 @@ SSMA for Access を使用してスキーマを公開し、データを移行す�
 
 ### <a name="perform-tests"></a>テストを実行する
 
-データベース移行に対するテスト アプローチは、次のアクティビティで構成されています。
+データベース移行に対するテスト アプローチは、次のアクティビティで構成されます。
 
-1. **検証テストを作成する**: データベースの移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行する検証クエリを作成する必要があります。 検証クエリには、定義したスコープが含まれている必要があります。
+1. **検証テストを作成する**: データベース移行をテストするには、SQL クエリを使用する必要があります。 ソースとターゲットの両方のデータベースに対して実行する検証クエリを作成する必要があります。 その検証クエリでは、定義されているスコープに対応する必要があります。
 
 1. **テスト環境を設定する**: このテスト環境には、ソース データベースとターゲット データベースのコピーを含める必要があります。 必ずテスト環境を分離してください。
 
-1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
+1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行した後、結果を分析します。
 
 1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行した後、結果を分析および比較します。
 
@@ -185,6 +185,8 @@ SSMA for Access を使用してスキーマを公開し、データを移行す�
 - クラウド移行のためのフレームワークと導入サイクルの詳細については、次を参照してください。
    -  [Azure 向けのクラウド導入フレームワーク](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)
    -  [Azure に移行するワークロードの料金計算とサイズ設定のベスト プラクティス](/azure/cloud-adoption-framework/migrate/azure-best-practices/migrate-best-practices-costs) 
+   -  [クラウド移行リソース](https://azure.microsoft.com/migration/resources)
+
 
 - アプリケーション アクセス レイヤーを評価するには、「[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)」を参照してください。
 - データ アクセス レイヤーの A/B テストの実行方法の詳細については、「[Database Experimentation Assistant の概要](/sql/dea/database-experimentation-assistant-overview)」を参照してください。

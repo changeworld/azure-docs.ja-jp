@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: deb02c161dfe41bf79b7905fde23678425aaf55f
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: c5c596735ad91f38d5ba4217135a9373d2856182
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448374"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538448"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX アプリのアタッチの用語集
 
@@ -33,7 +33,7 @@ MSIX パッケージは、MSIX ファイルまたはアプリケーションで�
 
 ## <a name="msix-share"></a>MSIX 共有
 
-MSIX 共有は、拡張された MSIX パッケージを保持するネットワーク共有です。 MSIX 共有では SMB 3 以降がサポートされています。 アプリケーション ファイルをシステム ドライブに移動することなく、この MSIX 共有からアプリケーションがステージングされます。
+MSIX 共有は、拡張された MSIX パッケージを保持するネットワーク共有です。 MSIX 共有では、SMB 3 以降がサポートされている必要があります。 また、この共有は、ホスト プール システム アカウントの仮想マシン (VM) からアクセス可能である必要があります。 アプリケーション ファイルをシステム ドライブに移動することなく、この MSIX 共有から MSIX パッケージがステージングされます。 
 
 ## <a name="msix-image"></a>MSIX イメージ
 

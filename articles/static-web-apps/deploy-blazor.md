@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 5b8a94409f082177192847f2c65d44a513ecdbe4
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d683507e8c35db5af3ef7e91674f6a55254e22e2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305040"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132425"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>チュートリアル:Azure Static Web Apps での Blazor を使用した静的 Web アプリのビルド
 
@@ -43,17 +43,13 @@ Azure Static Web Apps を使用して、サーバーレス バックエンドで
 
 ## <a name="fallback-route"></a>フォールバック ルート
 
-アプリケーションでは、アプリケーションの特定のルートにマップされる _/counter_ や _/fetchdata_ などの URL が公開されます。 このアプリは単一ページ アプリケーションとして実装されるため、各ルートで _index.html_ ファイルが使用されます。 任意のパスに対する要求で _index.html_ が確実に返されるようにするため、Client プロジェクトの _wwwroot_ フォルダーにある _staticwebapp.config.json_ ファイルに[フォールバック ルート](./routes.md#fallback-routes)が実装されます。
+アプリケーションでは、アプリケーションの特定のルートにマップされる _/counter_ や _/fetchdata_ などの URL が公開されます。 このアプリは単一ページ アプリケーションとして実装されるため、各ルートで _index.html_ ファイルが使用されます。 任意のパスに対する要求で _index.html_ が確実に返されるようにするため、Client プロジェクトの _wwwroot_ フォルダーにある _staticwebapp.config.json_ ファイルに [フォールバック ルート](./configuration.md#fallback-routes)が実装されます。
 
 ```json
 {
-  "routes": [
-    {
-      "route": "/*",
-      "serve": "/index.html",
-      "statusCode": 200
-    }
-  ]
+  "navigationFallback": {
+    "rewrite": "/index.html"
+  }
 }
 ```
 

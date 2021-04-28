@@ -1,21 +1,21 @@
 ---
 title: Azure 仮想マシンでの Visual Studio の使用
 description: Azure 仮想マシンでの Visual Studio の使用。
-author: cathysull
-manager: cathys
+author: andysterland
+manager: andster
 ms.service: virtual-machines
 ms.custom: vs-azure
 ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.author: cathys
+ms.author: andster
 keywords: visualstudio
-ms.openlocfilehash: a6acf27743f17941e14adc3f6deea903f4f5ca87
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f26bec64012e0b0909b7df5422c57ff2cb1c347e
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562080"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478558"
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
 事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure) で入手できます。
@@ -44,7 +44,7 @@ Azure を利用するのが初めてであれば、 [無料の Azure アカウ�
 ## <a name="what-features-are-installed"></a>どのような機能がインストールされていますか。
 各イメージには、その Visual Studio エディションで推奨される機能セットが含まれています。 一般的に、インストールには以下が含まれます。
 
-* 各ワークロードで推奨されているオプションのコンポーネントを含む、使用可能なすべてのワークロード
+* 各ワークロードで推奨されているオプションのコンポーネントを含む、使用可能なすべてのワークロード。 Visual Studio に含まれているワークロード、コンポーネント、および SDK の詳細については、[Visual studio のドキュメント](https://docs.microsoft.com/visualstudio/install/workload-and-component-ids)を参照してください。
 * .NET 4.6.2 および .NET 4.7 SDK、Targeting Packs、および 開発者ツール
 * Visual F#
 * Visual Studio 向け GitHub 拡張

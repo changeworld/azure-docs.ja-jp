@@ -9,14 +9,14 @@ ms.author: laobri
 author: lobrien
 manager: cgronlun
 ms.date: 02/28/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, automl
-ms.openlocfilehash: 0de3c9a7cf464f38a1a12d8bc19451fb1158a5ad
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: 4a045d7475c2380c9e591e18a37c4f9e99501097
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520508"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951938"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
 
@@ -260,7 +260,7 @@ prepped_data = Dataset.get_by_name(ws, 'Data_prepared')
 `AutoMLStep` の出力は、高パフォーマンス モデルとそのモデル自体の最終的なメトリック スコアです。 これらの出力を以降のパイプライン ステップで使用するには、それらを受け取るように `OutputFileDatasetConfig` オブジェクトを準備します。
 
 ```python
-from azureml.pipeline.core import TrainingOutput
+from azureml.pipeline.core import TrainingOutput, PipelineData
 
 metrics_data = PipelineData(name='metrics_data',
                             datastore=datastore,
@@ -450,7 +450,7 @@ with open(model_filename, "rb" ) as f:
 # ... inferencing code not shown ...
 ```
 
-既存のモデルの読み込みと操作の詳細については、「[Azure Machine Learning で既存のモデルを使用する](how-to-deploy-existing-model.md)」を参照してください。
+既存のモデルの読み込みと操作の詳細については、「[Azure Machine Learning で既存のモデルを使用する](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="download-the-results-of-an-automated-ml-run"></a>自動 ML 実行の結果をダウンロードする
 

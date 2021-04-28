@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: reference
 ms.date: 04/04/2021
 ms.author: memildin
-ms.openlocfilehash: 9d376a374d1934f55b6a6fb15f1642c81b30b2fc
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e18c7891b5c036e33382578f404c595c106de381
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718667"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138699"
 ---
 # <a name="archive-for-whats-new-in-azure-security-center"></a>Azure Security Center の最新情報のアーカイブ
 
@@ -891,7 +891,7 @@ Azure Security Center の規制コンプライアンス ダッシュボードに
 - **カナダ連邦の PBMM**
 - **Azure CIS 1.1.0 (新規)** (Azure CIS 1.1.0 のより完全な表現)
 
-さらに、[Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)が最近追加されました。これは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 追加の標準が使用可能になると、ダッシュボードでサポートされます。  
+さらに、[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)が最近追加されました。これは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 追加の標準が使用可能になると、ダッシュボードでサポートされます。  
  
 詳しくは、「[規制コンプライアンス ダッシュボードでの動的コンプライアンス パッケージへの更新](update-regulatory-compliance-packages.md)」を参照してください。
 

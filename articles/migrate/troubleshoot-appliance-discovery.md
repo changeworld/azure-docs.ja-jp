@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 995914fab0e7112327ebf6ab8e32fb67181f481e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7d32bc15e0f15897261a87481c1dd881a4bfa2ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105608920"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108131352"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Azure Migrate アプライアンスと検出のトラブルシューティング
 
@@ -271,20 +271,20 @@ Azure Migrate は、Azure Migrate: Discovery and assessment を使用して、�
 |--|--|--|
 |30000: この SQL Server に関連付けられている資格情報が機能しませんでした。|手動で関連付けられた資格情報が無効であるか、または自動的に関連付けられた資格情報を使用して SQL Server にアクセスできなくなりました。|アプライアンス上に SQL Server の資格情報を追加し、次の SQL 検出サイクルまで待つか、強制的に更新してください。|
 |30001: アプライアンスから SQL Server に接続できません。|1. アプライアンスには SQL Server へのネットワーク通信経路がありません。<br/>2. ファイアウォールが SQL Server とアプライアンス間の接続をブロックしています。|1. アプライアンスから SQL Server に到達できるようにします。<br/>2. アプライアンスから SQL Server への受信接続を許可します。|
-|30003: 証明書が信頼されていません。|信頼された証明書が、SQL Server を実行しているコンピューターにインストールされていません。|信頼された証明書をサーバーに設定してください。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2153616)|
-|30004: 不十分なアクセス許可。|このエラーは、SQL Server インスタンスをスキャンするために必要なアクセス許可がないために発生した可能性があります。 |SQL Server インスタンスとデータベースを検出するために、アプライアンスに指定されている資格情報またはアカウントに sysadmin ロールを付与してください。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2153511)|
-|30005: SQL Server ログインの既定のマスター データベースに問題があるため接続できませんでした。|データベース自体が無効であるか、ログインにデータベースでの CONNECT 権限がありません。|ALTER LOGIN を使用して、既定のデータベースをマスター データベースに設定します。<br/>SQL Server インスタンスとデータベースを検出するために、アプライアンスに指定されている資格情報またはアカウントに sysadmin ロールを付与してください。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2153615)|
-|30006: SQL Server ログインは Windows 認証では使用できません。|1. ログインが SQL Server ログインであっても、サーバーは Windows 認証のみを受け付けます。<br/>2. SQL Server 認証を使用して接続しようとしていますが、使用しているログインが SQL Server に存在しません。<br/>3. ログインで Windows 認証を使用していますが、そのログインは認識できない Windows プリンシパルです。 認識できない Windows プリンシパルは、ログインを Windows で確認できないことを意味します。 これは、信頼されていないドメインからの Windows ログインである可能性があります。|SQL Server 認証を使用して接続しようとしている場合は、SQL Server が混合認証モードで構成されていること、および SQL Server ログインが存在することを確認します。<br/>Windows 認証を使用して接続しようとしている場合は、正しいドメインに適切にログインしていることを確認します。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2153421)|
-|30007: パスワードの有効期限が切れました。|このアカウントのパスワードの有効期限が切れています。|SQL Server のログイン パスワードの有効期限が切れている可能性があります。パスワードを再設定するか、パスワードの有効期限を延長してください。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2153419)|
-|30008: パスワードを変更する必要があります。|このアカウントのパスワードを変更する必要があります。|SQL Server の検出用に提供した資格情報のパスワードを変更してください。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2153318)|
+|30003: 証明書が信頼されていません。|信頼された証明書が、SQL Server を実行しているコンピューターにインストールされていません。|信頼された証明書をサーバーに設定してください。 [詳細情報](/troubleshoot/sql/connect/error-message-when-you-connect)|
+|30004: 不十分なアクセス許可。|このエラーは、SQL Server インスタンスをスキャンするために必要なアクセス許可がないために発生した可能性があります。 |SQL Server インスタンスとデータベースを検出するために、アプライアンスに指定されている資格情報またはアカウントに sysadmin ロールを付与してください。 [詳細情報](/sql/t-sql/statements/grant-server-permissions-transact-sql)|
+|30005: SQL Server ログインの既定のマスター データベースに問題があるため接続できませんでした。|データベース自体が無効であるか、ログインにデータベースでの CONNECT 権限がありません。|ALTER LOGIN を使用して、既定のデータベースをマスター データベースに設定します。<br/>SQL Server インスタンスとデータベースを検出するために、アプライアンスに指定されている資格情報またはアカウントに sysadmin ロールを付与してください。 [詳細情報](/sql/relational-databases/errors-events/mssqlserver-4064-database-engine-error)|
+|30006: SQL Server ログインは Windows 認証では使用できません。|1. ログインが SQL Server ログインであっても、サーバーは Windows 認証のみを受け付けます。<br/>2. SQL Server 認証を使用して接続しようとしていますが、使用しているログインが SQL Server に存在しません。<br/>3. ログインで Windows 認証を使用していますが、そのログインは認識できない Windows プリンシパルです。 認識できない Windows プリンシパルは、ログインを Windows で確認できないことを意味します。 これは、信頼されていないドメインからの Windows ログインである可能性があります。|SQL Server 認証を使用して接続しようとしている場合は、SQL Server が混合認証モードで構成されていること、および SQL Server ログインが存在することを確認します。<br/>Windows 認証を使用して接続しようとしている場合は、正しいドメインに適切にログインしていることを確認します。 [詳細情報](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)|
+|30007: パスワードの有効期限が切れました。|このアカウントのパスワードの有効期限が切れています。|SQL Server のログイン パスワードの有効期限が切れている可能性があります。パスワードを再設定するか、パスワードの有効期限を延長してください。 [詳細情報](/sql/relational-databases/native-client/features/changing-passwords-programmatically)|
+|30008: パスワードを変更する必要があります。|このアカウントのパスワードを変更する必要があります。|SQL Server の検出用に提供した資格情報のパスワードを変更してください。 [詳細情報](/previous-versions/sql/sql-server-2008-r2/cc645934(v=sql.105))|
 |30009: 内部エラーが発生しました。|SQL Server インスタンスとデータベースの検出中に内部エラーが発生しました。 |問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
 |30010: データベースが見つかりません。|選択されたサーバー インスタンスからデータベースが見つかりません。|SQL データベースを検出するためにアプライアンスに指定した資格情報またはアカウントに sysadmin ロールを付与してください。|
 |30011: SQL インスタンスまたはデータベースの評価中に内部エラーが発生しました。|評価の実行中に内部エラーが発生しました。|問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
 |30012: SQL 接続できませんでした。|1. サーバー上のファイアウォールで接続が拒否されました。<br/>2. SQL Server Browser サービス (sqlbrowser) が開始されていません。<br/>3. SQL Server がクライアント要求に応答しませんでした。おそらくサーバーが起動していません。<br/>4. SQL Server クライアントがサーバーに接続できません。 このエラーは、サーバーがリモート接続を許可するように構成されていないことが原因で発生することがあります。<br/>5. SQL Server クライアントがサーバーに接続できません。 このエラーは、クライアントがサーバー名を解決できないか、サーバー名が間違っていることが原因で発生することがあります。<br/>6. TCP または名前付きパイプ プロトコルが有効ではありません。<br/>7. 指定された SQL Server インスタンス名が有効ではありません。|接続の問題のトラブルシューティングを行うには、[こちら](https://go.microsoft.com/fwlink/?linkid=2153317) の対話型ユーザー ガイドをご利用ください。 ガイドに従った後、サービスでデータが更新されるまで 24 時間お待ちください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
-|30013: SQL Server インスタンスへの接続を確立中にエラーが発生しました。|1. SQL Server の名前をアプライアンスから解決できません。<br/>2. SQL Server でリモート接続が許可されません。|アプライアンスから SQL Server に ping を実行できる場合は、24 時間待って、この問題が自動的に解決されるかどうかを確認してください。 そうではない場合は、Microsoft サポートにお問い合わせください。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2153316)|
-|30014: ユーザー名またはパスワードが無効です。| このエラーは、無効なパスワードまたはユーザー名を含む認証の失敗が原因で発生する可能性があります。|有効なユーザー名とパスワードを指定して資格情報を入力してください。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2153315)|
+|30013: SQL Server インスタンスへの接続を確立中にエラーが発生しました。|1. SQL Server の名前をアプライアンスから解決できません。<br/>2. SQL Server でリモート接続が許可されません。|アプライアンスから SQL Server に ping を実行できる場合は、24 時間待って、この問題が自動的に解決されるかどうかを確認してください。 そうではない場合は、Microsoft サポートにお問い合わせください。 [詳細情報](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)|
+|30014: ユーザー名またはパスワードが無効です。| このエラーは、無効なパスワードまたはユーザー名を含む認証の失敗が原因で発生する可能性があります。|有効なユーザー名とパスワードを指定して資格情報を入力してください。 [詳細情報](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)|
 |30015: SQL インスタンスの検出中に内部エラーが発生しました。|SQL インスタンスの検出中に内部エラーが発生しました。|問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
-|30016: タイムアウトが発生したため、インスタンス '%Instance;' への接続に失敗しました。| これは、サーバーのファイアウォールによる接続の拒否が原因で発生することがあります。|SQL Server のファイアウォールが接続を受け入れるように構成されているかどうかを確認します。 エラーが解決しない場合は、Microsoft サポートにお問い合わせください。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2153611)|
+|30016: タイムアウトが発生したため、インスタンス '%Instance;' への接続に失敗しました。| これは、サーバーのファイアウォールによる接続の拒否が原因で発生することがあります。|SQL Server のファイアウォールが接続を受け入れるように構成されているかどうかを確認します。 エラーが解決しない場合は、Microsoft サポートにお問い合わせください。 [詳細情報](/sql/relational-databases/errors-events/mssqlserver-neg2-database-engine-error)|
 |30017: 内部エラーが発生しました。|ハンドルされていない例外です。|問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
 |30018: 内部エラーが発生しました。|SQL インスタンスの一時 DB サイズやファイル サイズなどのデータを収集中に内部エラーが発生しました。|24 時間お待ちください。問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
 |30019: 内部エラーが発生しました。|データベースまたはインスタンスのメモリ使用率などのパフォーマンス メトリックを収集中に内部エラーが発生しました。|24 時間お待ちください。問題が解決しない場合は、Microsoft サポートにお問い合わせください。|

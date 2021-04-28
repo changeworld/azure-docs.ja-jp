@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/12/2021
 ms.author: radeltch
-ms.openlocfilehash: 3d1b05560c02f3bf4de199a3d5cad48907ee16fb
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 435528f7338657bc7e7d486a481cdf0ce48f4d38
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365809"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142893"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性
 
@@ -726,7 +726,7 @@ SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーショ�
 
 ### <a name="additional-setup-in-azure-load-balancer-for-activeread-enabled-setup"></a>アクティブ/読み取り可能のセットアップ用の Azure Load Balancer の追加設定
 
-2 番目の仮想 IP をプロビジョニングするための追加の手順を進めるには、「[手動デプロイ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#manual-deployment)」セクションの説明に従って Azure Load Balancer の構成が完了していることを確認してください。
+2 番目の仮想 IP をプロビジョニングするための追加の手順を進めるには、「[手動デプロイ](#manual-deployment)」セクションの説明に従って Azure Load Balancer の構成が完了していることを確認してください。
 
 1. **標準** ロード バランサーの場合は、前のセクションで作成したのと同じロード バランサーで、下の追加手順に従います。
 
@@ -756,7 +756,7 @@ SAP HANA 2.0 SPS 01 以降では、SAP HANA システム レプリケーショ�
 
 ### <a name="configure-hana-activeread-enabled-system-replication"></a>HANA アクティブ/読み取り可能のシステム レプリケーションの構成
 
-HANA システム レプリケーションを構成する手順については、「[SAP HANA 2.0 システム レプリケーションの構成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel#configure-sap-hana-20-system-replication)」セクションを参照してください。 読み取り可能なセカンダリ シナリオをデプロイする場合、2 番目のノードでシステム レプリケーションを構成するときに、次のコマンドを **hanasid** adm として実行します。
+HANA システム レプリケーションを構成する手順については、「[SAP HANA 2.0 システム レプリケーションの構成](#configure-sap-hana-20-system-replication)」セクションを参照してください。 読み取り可能なセカンダリ シナリオをデプロイする場合、2 番目のノードでシステム レプリケーションを構成するときに、次のコマンドを **hanasid** adm として実行します。
 
 ```
 sapcontrol -nr 03 -function StopWait 600 10 

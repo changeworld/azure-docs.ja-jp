@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 87e75d771c2cc269eaae81c2433f445eb65a17a9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: e108c2fade911c0b0c2f11548004ebbe3c958c51
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107314152"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139401"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Azure Stack Edge Pro GPU デバイスの問題のトラブルシューティング 
 
@@ -146,7 +146,7 @@ ms.locfileid: "107314152"
 |Add-AzureRmEnvironment:この要求の送信中にエラーが発生しました。<br>行: 1 文字: 1<br>+ Add-AzureRmEnvironment -Name Az3 -ARMEndpoint "https://management.dbe ...|このエラーは、Azure Stack Edge Pro デバイスに到達できないか、デバイスが正しく構成されていないことを意味します。 Edge デバイスとクライアントが正しく構成されていることを確認してください。 ガイダンスについては、この表の「**一般的な問題**」の行を参照してください。|
 |サービスからエラーが返されました。 詳細は InnerException を確認してください:基になる接続が閉じられました。SSL/TLS のセキュリティで保護されているチャネルに対する信頼関係を確立できませんでした。 |   このエラーの原因としては、独自の証明書の持ち込みの手順の 1 つ以上が正しく実行されていないことが考えられます。 [こちら](./azure-stack-edge-gpu-connect-resource-manager.md#step-2-create-and-install-certificates)のガイダンスを参照してください。 |
 |操作によって無効な状態コード 'ServiceUnavailable' が返されました <br> 応答状態コードは成功を示していません:503 (サービスは利用できません)。 | このエラーは、次のいずれかの条件の結果である可能性があります。<li>ArmStsPool が停止状態です。</li><li>Azure Resource Manager/セキュリティ トークン サービスの Web サイトのどちらかがダウンしています。</li><li>Azure Resource Manager クラスター リソースがダウンしています。</li><br><strong>注:</strong>アプライアンスを再起動すると問題が解決する場合がありますが、さらにデバッグを行えるようにサポート パッケージを収集してください。|
-|AADSTS50126:ユーザー名またはパスワードが無効です。<br>トレース ID:29317da9-52fc-4ba0-9778-446ae5625e5a<br>関連付け ID:1b9752c4-8cbf-4304-a714-8a16527410f4<br>タイムスタンプ:2019-11-15 09:21:57Z:リモート サーバーがエラー(400) 要求が正しくありません。<br>行: 1 文字: 1 |このエラーは、次のいずれかの条件の結果である可能性があります。<li>ユーザー名とパスワードが無効な場合は、[こちら](/azure/databox-online/azure-stack-edge-gpu-set-azure-resource-manager-password)の手順に従い、正しいパスワードを使用して、顧客が Azure portal からパスワードを変更したことを確認してください。<li>テナント ID が無効な場合、テナント ID は固定 GUID であるため、`c0257de7-538f-415c-993a-1b87a031879d` に設定してください</li>|
+|AADSTS50126:ユーザー名またはパスワードが無効です。<br>トレース ID:29317da9-52fc-4ba0-9778-446ae5625e5a<br>関連付け ID:1b9752c4-8cbf-4304-a714-8a16527410f4<br>タイムスタンプ:2019-11-15 09:21:57Z:リモート サーバーがエラー(400) 要求が正しくありません。<br>行: 1 文字: 1 |このエラーは、次のいずれかの条件の結果である可能性があります。<li>ユーザー名とパスワードが無効な場合は、[こちら](./azure-stack-edge-gpu-set-azure-resource-manager-password.md)の手順に従い、正しいパスワードを使用して、顧客が Azure portal からパスワードを変更したことを確認してください。<li>テナント ID が無効な場合、テナント ID は固定 GUID であるため、`c0257de7-538f-415c-993a-1b87a031879d` に設定してください</li>|
 |connect-AzureRmAccount:AADSTS90056:リソースが無効になっているか、存在しません。 アプリのコードをチェックして、アクセスしようとしているリソースの正確なリソース URL を指定していることを確認します。<br>トレース ID: e19bdbc9-5dc8-4a74-85c3-ac6abdfda115<br>関連付け ID:75c8ef5a-830e-48b5-b039-595a96488ff9 タイムスタンプ:2019-11-18 07:00:51Z:リモート サーバーがエラー(400) Bad を返しました |`Add-AzureRmEnvironment` コマンドで使用したリソース エンドポイントが正しくありません。|
 |クラウドからエンドポイントを取得できません。<br>ネットワークに接続していることを確認してください。 エラーの詳細:HTTPSConnectionPool(host='management.dbg-of4k6suvm.microsoftdatabox.com', port=30005):次の URL で最大再試行回数を超えました: /metadata/endpoints?api-version=2015-01-01 (Caused by SSLError(SSLError("bad handshake:Error([('SSL routines', 'tls_process_server_certificate', 'certificate verify failed')],)",),)) |このエラーは主に Mac/Linux 環境で発生し、次の問題が原因です。<li>PEM 形式の証明書が python 証明書ストアに追加されませんでした。</li> |
 

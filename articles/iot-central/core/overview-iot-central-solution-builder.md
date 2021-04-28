@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 72aa8e5e3284e0ee7fbe63e0fb617b9eba03292e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e762b8c2e2d7f72b89629c520560b205cedcd036
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100416848"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728559"
 ---
 # <a name="iot-central-solution-builder-guide"></a>IoT Central ソリューション ビルダーのガイド
 
@@ -51,6 +51,7 @@ IoT Central には、オペレーターが、接続されているデバイス�
 ソリューション ビルダーは、IoT Central のデータのエクスポートとルールの機能を使用して他のサービスと統合できます。 詳細については、以下をご覧ください。
 
 - [データ エクスポートを使用してクラウドの宛先に IoT データをエクスポートする](howto-export-data.md)
+- [IoT Central に対するデータの変換](howto-transform-data.md)
 - [ワークフローを使用して Azure IoT Central アプリケーションを他のクラウド サービスと統合する](howto-configure-rules-advanced.md)
 - [Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する](howto-create-custom-rules.md)
 - [Azure Databricks を使用したカスタム分析で Azure IoT Central を拡張する](howto-create-custom-analytics.md)

@@ -4,12 +4,12 @@ description: Application Insights では、依存関係が自動的に収集さ�
 ms.topic: reference
 ms.custom: devx-track-dotnet
 ms.date: 05/06/2020
-ms.openlocfilehash: 8a4d79e52465e93fb4db2625217cb37a06917218
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: aa4d39ca8964e95ca787d236223e2b475a9597c1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91930868"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873831"
 ---
 # <a name="dependency-auto-collection"></a>依存関係の自動収集
 
@@ -24,7 +24,7 @@ ms.locfileid: "91930868"
 | ASP.NET WebAPI | 4.5 以降 |
 | ASP.NET Core | 1.1 以降 |
 | <b> 通信ライブラリ</b> |
-| [HttpClient](https://www.microsoft.com/net/) | 4.5 以降、.NET Core 1.1 以降 |
+| [HttpClient](https://dotnet.microsoft.com) | 4.5 以降、.NET Core 1.1 以降 |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 以降、NuGet 4.3.0 |
 | [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0 - 最新の安定版リリース (下記の「注」を参照)。
 | [EventHubs Client SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |

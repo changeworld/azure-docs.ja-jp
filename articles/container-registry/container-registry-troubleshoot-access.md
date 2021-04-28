@@ -3,12 +3,12 @@ title: レジストリに関するネットワークの問題のトラブルシ�
 description: 仮想ネットワークまたはファイアウォールの内側で Azure コンテナー レジストリにアクセスするときの一般的な問題の現象、原因、および解決策
 ms.topic: article
 ms.date: 03/30/2021
-ms.openlocfilehash: ae75959028e19ec61e6dcf41308e54df38139d59
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: dc2110405713791d11fb438565fc091da9c9dd5c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220115"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780754"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>レジストリに関するネットワークの問題のトラブルシューティング
 
@@ -28,6 +28,7 @@ ms.locfileid: "106220115"
 * 仮想ネットワークの設定またはパブリック アクセス規則を追加または変更できない
 * ACR タスクによるイメージのプッシュまたはプルができない
 * Azure Security Center によるレジストリ内のイメージのスキャンができない。または、スキャン結果が Azure Security Center に表示されない
+* プライベート エンドポイントを使用して構成されたレジストリにアクセスしようとすると、エラー `host is not reachable` が発生します。
 
 ## <a name="causes"></a>原因
 
@@ -38,7 +39,7 @@ ms.locfileid: "106220115"
 
 ## <a name="further-diagnosis"></a>詳しい診断 
 
-[az acr check-health](/cli/azure/acr#az-acr-check-health) コマンドを実行して、レジストリ環境の正常性に関する詳細情報を取得し、必要に応じてターゲット レジストリにアクセスします。 たとえば、特定のネットワーク接続や構成の問題を診断します。 
+[az acr check-health](/cli/azure/acr#az_acr_check_health) コマンドを実行して、レジストリ環境の正常性に関する詳細情報を取得し、必要に応じてターゲット レジストリにアクセスします。 たとえば、特定のネットワーク接続や構成の問題を診断します。 
 
 コマンドの例については、「[Azure コンテナー レジストリの正常性のチェック](container-registry-check-health.md)」を参照してください。 エラーが報告された場合は、推奨される対処法について、[エラー リファレンス](container-registry-health-error-reference.md)と次のセクションを確認してください。
 
@@ -86,6 +87,8 @@ ContainerRegistryLoginEvents テーブルのレジストリ リソース ログ�
 
 Private Link のプライベート エンドポイントまたはサービス エンドポイント (プレビュー) のいずれかを使用して、仮想ネットワークが構成されていることを確認します。 現在、Azure Bastion エンドポイントはサポートされていません。
 
+プライベート エンドポイントが構成されている場合は、DNS によってレジストリのパブリック FQDN (*myregistry.azurecr.io* など) がレジストリのプライベート IP アドレスに解決されることを確認します。 DNS の参照には `dig` や `nslookup` などのネットワーク ユーティリティを使用します。 レジストリの FQDN と各データ エンドポイントの FQDN 用に [DNS レコードが構成されている](container-registry-private-link.md#dns-configuration-options)ことを確認します。
+
 ネットワーク内の他のリソースからレジストリへのトラフィックを制限するために使用される NSG ルールとサービス タグを確認します。 
 
 レジストリへのサービス エンドポイントが構成されている場合は、そのネットワーク サブネットからのアクセスを許可するネットワーク規則がレジストリに追加されていることを確認します。 サービス エンドポイントによって、ネットワーク内の仮想マシンおよび AKS クラスターからのアクセスのみがサポートされます。
@@ -94,11 +97,10 @@ Private Link のプライベート エンドポイントまたはサービス �
 
 Azure Firewall または同様のソリューションがネットワークに構成されている場合は、AKS クラスターなどの他のリソースからのエグレス トラフィックが、レジストリ エンドポイントに到達できるようになっていることを確認します。
 
-プライベート エンドポイントが構成されている場合は、DNS によってレジストリのパブリック FQDN (*myregistry.azurecr.io* など) がレジストリのプライベート IP アドレスに解決されることを確認します。 DNS の参照には `dig` や `nslookup` などのネットワーク ユーティリティを使用します。
-
 関連リンク:
 
 * [Azure Private Link を使用して Azure Container Registry にプライベートで接続する](container-registry-private-link.md)
+* [Azure プライベート エンドポイント接続に関する問題のトラブルシューティング](../private-link/troubleshoot-private-endpoint-connectivity.md)
 * [Azure 仮想ネットワークのサービス エンドポイントを使用してコンテナー レジストリへのアクセスを制限する](container-registry-vnet.md)
 * [AKS クラスターに必要な送信ネットワーク規則と FQDN](../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
 * [Kubernetes: DNS 解決のデバッグ](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)

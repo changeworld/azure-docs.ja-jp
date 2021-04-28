@@ -6,12 +6,12 @@ ms.author: mimcco
 ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: cfc20a30104e24a3950c71bdd8377544803d2f25
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9564160698b1f1bf17fc89ec13b1e292aa3b6098
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105604415"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137547"
 ---
 # <a name="azure-percept-firewall-configuration-and-security-recommendations"></a>Azure Percept のファイアウォール構成とセキュリティに関する推奨事項
 
@@ -28,7 +28,7 @@ Azure Percept でのファイアウォールの構成と一般的なセキュリ
 |*.auth.azureperceptdk.azure.net|443|Azure DK SOM の認証と承認|
 |*.auth.projectsantacruz.azure.net|443|Azure DK SOM の認証と承認|
 
-さらに、[Azure IoT Edge で使用される接続](https://docs.microsoft.com/azure/iot-edge/production-checklist#allow-connections-from-iot-edge-devices)の一覧を確認します。
+さらに、[Azure IoT Edge で使用される接続](../iot-edge/production-checklist.md#allow-connections-from-iot-edge-devices)の一覧を確認します。
 
 ## <a name="additional-recommendations-for-deployment-to-production"></a>運用環境にデプロイする場合の追加の推奨事項
 

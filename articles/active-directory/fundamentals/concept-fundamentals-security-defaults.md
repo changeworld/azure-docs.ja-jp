@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/13/2020
+ms.date: 04/20/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa88e1be5c5df5dd09cb5a97c8ece352496ccdb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98600136"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769699"
 ---
 # <a name="what-are-security-defaults"></a>セキュリティの既定値群とは
 
-パスワード スプレー、リプレイ、フィッシングなど、ID 関連の一般的な攻撃がますます広まる中で、セキュリティの管理に困難をきたす場合があります。 セキュリティの既定値群では、次のような構成済みのセキュリティ設定を使用して、これらの攻撃から組織を容易に保護できます。
+パスワード スプレー、リプレイ、フィッシングなど、ID 関連の一般的な攻撃が広まる中で、セキュリティの管理に困難をきたす場合があります。 セキュリティの既定値群では、次のような構成済みのセキュリティ設定を使用して、これらの攻撃から組織を容易に保護できます。
 
 - すべてのユーザーに対して、Azure AD Multi-Factor Authentication への登録を必須にします。
 - 管理者に多要素認証の実行を要求します。
@@ -70,6 +70,9 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 - ユーザー管理者
 - 認証管理者
 
+> [!WARNING]
+> ディレクトリに、グローバル管理者特権が割り当てられているアカウントが少なくとも 2 つあることを確認します。 これは、グローバル管理者のどちらかがロックアウトされた場合に役立ちます。詳細については、「[Azure AD で緊急アクセス用管理者アカウントを管理する](../roles/security-emergency-access.md)」を参照してください。
+
 ### <a name="protecting-all-users"></a>すべてのユーザーの保護
 
 認証の追加のレイヤーが必要なアカウントは管理者アカウントだけであると考えがちです。 管理者は、機密情報への広範なアクセス権を持ち、サブスクリプション全体の設定に変更を加えることができます。 しかし、多くの場合、攻撃者はエンド ユーザーをターゲットにします。 
@@ -80,12 +83,12 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 
 ### <a name="blocking-legacy-authentication"></a>レガシ認証をブロックする
 
-ユーザーがクラウド アプリに簡単にアクセスできるように、Azure AD ではレガシ認証を含め、幅広い認証プロトコルがサポートされています。 "*レガシ認証*" は、以下のものによって行われる認証要求を指す用語です。
+ユーザーがクラウド アプリに簡単にアクセスできるように、Azure AD ではレガシ認証を含め、さまざまな認証プロトコルがサポートされています。 "*レガシ認証*" は、以下のものによって行われる認証要求を指す用語です。
 
 - 先進認証を使用していないクライアント (Office 2010 クライアントなど)。
 - IMAP、SMTP、POP3 などの古いメール プロトコルを使用しているクライアント。
 
-今日では、不正侵入を意図したサインイン試行の大部分がレガシ認証によるものです。 レガシ認証では、Multi-Factor Authentication がサポートされていません。 ディレクトリで Multi-Factor Authentication ポリシーが有効になっている場合でも、攻撃者は古いプロトコルを使用して認証を受け、Multi-Factor Authentication をバイパスできます。 
+現在、危険にさらそうとするすべてのサインイン試行の大部分はレガシ認証から来ています。 レガシ認証では、Multi-Factor Authentication がサポートされていません。 ディレクトリで Multi-Factor Authentication ポリシーが有効になっている場合でも、攻撃者は古いプロトコルを使用して認証を受け、Multi-Factor Authentication をバイパスできます。 
 
 テナントでセキュリティ デフォルトが有効になった後は、古いプロトコルによるすべての認証要求がブロックされます。 セキュリティ既定値は、Exchange Active Sync 基本認証をブロックします。
 
@@ -96,13 +99,13 @@ Microsoft は、誰もがセキュリティの既定値群を利用できるよ�
 
 ### <a name="protecting-privileged-actions"></a>特権アクションの保護
 
-組織では、Azure Resource Manager API によって管理される、次のような各種の Azure サービスを使用します。
+組織では、Azure Resource Manager API によって管理される、次のようなさまざまな Azure サービスを使用します。
 
 - Azure portal 
 - Azure PowerShell 
 - Azure CLI
 
-Azure Resource Manager を使用してご自身のサービスを管理する操作は、高い権限が与えられているアクションです。 Azure Resource Manager では、サービス設定、サブスクリプションの課金など、テナント全体の構成を変更できます。 単一要素認証は、フィッシング、パスワード スプレーなどの各種の攻撃に対して脆弱です。 
+Azure Resource Manager を使用してご自身のサービスを管理する操作は、高い権限が与えられているアクションです。 Azure Resource Manager では、サービス設定、サブスクリプションの課金など、テナント全体の構成を変更できます。 単一要素認証は、フィッシング、パスワード スプレーなどのさまざまな攻撃に対して脆弱です。 
 
 Azure Resource Manager にアクセスして構成を更新しようとするユーザーの ID を検証することが重要です。 アクセスを許可する前に、追加の認証を要求して ID を検証します。
 
@@ -156,7 +159,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 ディレクトリでセキュリティの既定値群を有効にするには、次のようにします。
 
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
-1. **\[Azure Active Directory]**  > **\[プロパティ]** の順に移動します。
+1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。
 1. **[セキュリティの既定値群の管理]** を選択します。
 1. **[セキュリティの既定値群の有効化]** トグルを **[はい]** に設定します。
 1. **[保存]** を選択します。
@@ -170,7 +173,7 @@ Azure Resource Manager にアクセスして構成を更新しようとするユ
 ディレクトリでセキュリティの既定値群を無効にするには、次のようにします。
 
 1. セキュリティ管理者、条件付きアクセス管理者、またはグローバル管理者として、 [Azure portal](https://portal.azure.com)  にサインインします。
-1. **\[Azure Active Directory]**  > **\[プロパティ]** の順に移動します。
+1.  **[Azure Active Directory]**  > **[プロパティ]** の順に移動します。
 1. **[セキュリティの既定値群の管理]** を選択します。
 1. **[セキュリティの既定値群の有効化]** トグルを **[いいえ]** に設定します。
 1. **[保存]** を選択します。

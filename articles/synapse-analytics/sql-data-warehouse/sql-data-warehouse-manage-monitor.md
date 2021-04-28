@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 03/24/2020
+ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: synapse-analytics
-ms.openlocfilehash: 62064eaae6aa7fb3438845170497035473227d30
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c19646a554a9c12315a23cfa272625629c844e37
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98685210"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108127157"
 ---
 # <a name="monitor-your-azure-synapse-analytics-dedicated-sql-pool-workload-using-dmvs"></a>DMV を使用して Azure Synapse Analytics の専用 SQL プールのワークロードを監視する
 
@@ -194,7 +194,7 @@ SELECT
     ssu.pdw_node_id,
     sr.command,
     sr.total_elapsed_time,
-    es.login_name AS 'LoginName',
+    exs.login_name AS 'LoginName',
     DB_NAME(ssu.database_id) AS 'DatabaseName',
     (es.memory_usage * 8) AS 'MemoryUsage (in KB)',
     (ssu.user_objects_alloc_page_count * 8) AS 'Space Allocated For User Objects (in KB)',
@@ -210,6 +210,8 @@ FROM sys.dm_pdw_nodes_db_session_space_usage AS ssu
     INNER JOIN sys.dm_pdw_nodes_exec_sessions AS es ON ssu.session_id = es.session_id AND ssu.pdw_node_id = es.pdw_node_id
     INNER JOIN sys.dm_pdw_nodes_exec_connections AS er ON ssu.session_id = er.session_id AND ssu.pdw_node_id = er.pdw_node_id
     INNER JOIN microsoft.vw_sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
+    LEFT JOIN sys.dm_pdw_exec_requests exr on exr.request_id = sr.request_id
+    LEFT JOIN sys.dm_pdw_exec_sessions exs on exr.session_id = exs.session_id
 WHERE DB_NAME(ssu.database_id) = 'tempdb'
     AND es.session_id <> @@SPID
     AND es.login_name <> 'sa'

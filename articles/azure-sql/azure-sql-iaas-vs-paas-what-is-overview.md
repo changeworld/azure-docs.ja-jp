@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: 394b3390386c60e2a64f52dd944dfcdb0d33951e
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 1202843781ab1c08b2d573967e5118ed04d48990
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727026"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129911"
 ---
 # <a name="what-is-azure-sql"></a>Azure SQL とは 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -168,7 +168,7 @@ Azure SQL Database には、次のデプロイの選択肢があります。
 
 **Azure SQL Managed Instance** は、Azure への既存のアプリケーションの移行を大幅に簡素化し、移行されたデータベース アプリケーションを Azure ですばやく市場に投入できるようにします。
 
-**Azure VM 上の SQL** は、既存または新規のアプリケーションに大規模なデータベースか、あるいは SQL Server または Windows/Linux のすべての機能へのアクセスが必要であり、新しいオンプレミス ハードウェアの取得にかかる時間と経費を回避したい場合に最適です。 また、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合で、SQL Database または SQL Managed Instance が適合しない場合にも適しています。 プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。 その一方で、すべてのソリューションを Azure に移行し、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。 詳細については、 [Azure 仮想マシン上の SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines/windows/performance-guidelines-best-practices.md)に関するページを参照してください。
+**Azure VM 上の SQL** は、既存または新規のアプリケーションに大規模なデータベースか、あるいは SQL Server または Windows/Linux のすべての機能へのアクセスが必要であり、新しいオンプレミス ハードウェアの取得にかかる時間と経費を回避したい場合に最適です。 また、既存のオンプレミス アプリケーションとデータベースを Azure にそのまま移行する場合で、SQL Database または SQL Managed Instance が適合しない場合にも適しています。 プレゼンテーション層、アプリケーション層、およびデータ層を変更する必要がないため、既存のソリューションを再設計する時間と予算が節約されます。 その一方で、すべてのソリューションを Azure に移行し、Azure プラットフォームで必要な一部のパフォーマンスの最適化に集中できます。 詳細については、 [Azure 仮想マシン上の SQL Server のパフォーマンスに関するベスト プラクティス](./virtual-machines/windows/performance-guidelines-best-practices-checklist.md)に関するページを参照してください。
 
 [!INCLUDE [sql-database-create-manage-portal](includes/sql-database-create-manage-portal.md)]
 
