@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: larryfr
 author: Blackmist
 ms.date: 04/02/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 5e9df582ce6eddd50fbecf02858f4afe611dcf18
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.topic: how-to
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d86350bf96e4c91fb7ea0a635387d4da95cc8581
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220217"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888982"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 
@@ -283,7 +283,7 @@ az ml workspace list
 ]
 ```
 
-詳細については、[az ml workspace list](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-list) のドキュメントをご覧ください。
+詳細については、[az ml workspace list](/cli/azure/ml/workspace#az_ml_workspace_list) のドキュメントをご覧ください。
 
 ## <a name="get-workspace-information"></a>ワークスペース情報の取得
 
@@ -316,7 +316,7 @@ az ml workspace show -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-詳細については、[az ml workspace show](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-show) のドキュメントをご覧ください。
+詳細については、[az ml workspace show](/cli/azure/ml/workspace#az_ml_workspace_show) のドキュメントをご覧ください。
 
 ## <a name="update-a-workspace"></a>ワークスペースの更新
 
@@ -349,7 +349,7 @@ az ml workspace update -w <workspace-name> -g <resource-group-name>
 }
 ```
 
-詳細については、「[az ml workspace update](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-update)」のドキュメントをご覧ください。
+詳細については、「[az ml workspace update](/cli/azure/ml/workspace#az_ml_workspace_update)」のドキュメントをご覧ください。
 
 ## <a name="share-a-workspace-with-another-user"></a>別のユーザーとワークスペースの共有
 
@@ -361,7 +361,7 @@ az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user>
 
 Azure Machine Learning を使用した Azure ロールベースのアクセス制御 (Azure RBAC) の詳細については、[ユーザーとロールの管理](how-to-assign-roles.md)に関するページを参照してください。
 
-詳細については、[az ml workspace share](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-share) のドキュメントをご覧ください。
+詳細については、[az ml workspace share](/cli/azure/ml/workspace#az_ml_workspace_share) のドキュメントをご覧ください。
 
 ## <a name="sync-keys-for-dependent-resources"></a>依存リソースのキーの同期
 
@@ -373,7 +373,7 @@ az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 
 キーの変更の詳細については、「[ストレージ アカウント キーの再生成](how-to-change-storage-access-key.md)」を参照してください。
 
-詳細については、[az ml workspace sync-keys](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-sync-keys) のドキュメントをご覧ください。
+詳細については、[az ml workspace sync-keys](/cli/azure/ml/workspace#az_ml_workspace_sync-keys) のドキュメントをご覧ください。
 
 ## <a name="delete-a-workspace"></a>ワークスペースを削除する
 
@@ -392,7 +392,7 @@ az ml workspace delete -w <workspace-name> -g <resource-group-name>
 az group delete -g <resource-group-name>
 ```
 
-詳細については、[az ml workspace delete](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-delete) のドキュメントをご覧ください。
+詳細については、[az ml workspace delete](/cli/azure/ml/workspace#az_ml_workspace_delete) のドキュメントをご覧ください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -413,4 +413,4 @@ Azure Machine Learning ワークスペースでは、一部の操作に対して
 
 ## <a name="next-steps"></a>次のステップ
 
-機械学習の Azure CLI 拡張機能の詳細については、[az ml](/cli/azure/ext/azure-cli-ml/ml) のドキュメントを参照してください。
+機械学習の Azure CLI 拡張機能の詳細については、[az ml](/cli/azure/ml) のドキュメントを参照してください。

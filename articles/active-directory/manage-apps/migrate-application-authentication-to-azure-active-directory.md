@@ -12,12 +12,12 @@ ms.date: 02/05/2021
 ms.author: iangithinji
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3458f358c12ef33a337e50066e83b6e59273ccf1
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b7e4a92f84cdbc0061509fa710de148e9e9f2b52
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376751"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125159"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>アプリケーション認証を Azure Active Directory に移行する
 
@@ -487,7 +487,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 移行プロセス時に、アプリには通常のデプロイ中に使用されるテスト環境が既に存在する場合があります。 移行のテストにこの環境を引き続き使用することができます。 テスト環境を現在使用できない場合は、アプリケーションのアーキテクチャに応じて、Azure App Service または Azure Virtual Machines を使用して設定できることがあります。 アプリの構成を開発するときに使用するテスト Azure AD テナントを別に設定することもできます。 このテナントはクリーンな状態で開始され、どのシステムとも同期するように構成されません。
 
-テスト ユーザーでログインすることで各アプリをテストし、すべての機能が移行前と同じであることを確認できます。 テスト中に、ユーザーが [MFA](/azure/active-directory/authentication/howto-mfa-userstates) または [SSPR](../authentication/tutorial-enable-sspr.md) の設定を更新する必要があることがわかった場合、または移行中にこの機能を追加する場合は、必ず、エンド ユーザーのコミュニケーション計画にそれを追加してください。 [MFA](https://aka.ms/mfatemplates) と [SSPR](https://aka.ms/ssprtemplates) のエンド ユーザー通信テンプレートを参照してください。
+テスト ユーザーでログインすることで各アプリをテストし、すべての機能が移行前と同じであることを確認できます。 テスト中に、ユーザーが [MFA](../authentication/howto-mfa-userstates.md) または [SSPR](../authentication/tutorial-enable-sspr.md) の設定を更新する必要があることがわかった場合、または移行中にこの機能を追加する場合は、必ず、エンド ユーザーのコミュニケーション計画にそれを追加してください。 [MFA](https://aka.ms/mfatemplates) と [SSPR](https://aka.ms/ssprtemplates) のエンド ユーザー通信テンプレートを参照してください。
 
 アプリを移行したら、[Azure portal](https://aad.portal.azure.com/) に移動して、移行が成功したかどうかをテストします。 次の手順に従ってください。
 

@@ -5,18 +5,17 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 04/26/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 06db7bcb5698f152dd5062762fdb3d59ae326e22
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04ded4340eef0bfe5bc91ee2e3f2552975df2e05
+ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102603249"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108065651"
 ---
 Azure ファイル共有の SMB マルチチャネルには、現在、次の制限があります。
-- ローカルでの冗長 FileStorage アカウントでのみ使用できます。
 - Windows クライアントでのみサポートされます。 
 - 最大チャネル数は 4 です。
 - SMB ダイレクトはサポートされていません。

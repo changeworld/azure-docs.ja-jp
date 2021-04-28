@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 09/05/2019
+ms.date: 04/13/2021
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: afb6efcee2ad4f5cf25a411eed353ff2fc27d75c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ab94a83a64ca9770f0c216ddf42145b262629c6d
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96460782"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107598994"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>順序指定クラスター化列ストア インデックスを使用したパフォーマンス チューニング  
 
@@ -44,7 +44,7 @@ FROM sys.pdw_nodes_partitions AS pnp
    JOIN sys.pdw_nodes_column_store_segments AS cls ON pnp.partition_id = cls.partition_id AND pnp.distribution_id  = cls.distribution_id
 JOIN sys.columns as cols ON o.object_id = cols.object_id AND cls.column_id = cols.column_id
 WHERE o.name = '<Table Name>' and cols.name = '<Column Name>'  and TMap.physical_name  not like '%HdTable%'
-ORDER BY o.name, pnp.distribution_id, cls.min_data_id 
+ORDER BY o.name, pnp.distribution_id, cls.min_data_id;
 
 
 ```
@@ -66,7 +66,7 @@ ORDER BY o.name, pnp.distribution_id, cls.min_data_id
 ```sql
 
 CREATE CLUSTERED COLUMNSTORE INDEX MyOrderedCCI ON  T1
-ORDER (Col_C, Col_B, Col_A)
+ORDER (Col_C, Col_B, Col_A);
 
 ```
 
@@ -134,6 +134,13 @@ OPTION (MAXDOP 1);
 5.    Table_A のパーティションごとに手順 3 および 4 を繰り返します。
 6.    すべてのパーティションを Table_A から Table_B に切り替えて再構築したら、Table_A を削除して Table_B の名前を Table_A に変更します。 
 
+>[!TIP]
+> 順序付けされた CCI を持つ専用の SQL プール テーブルでは、ALTER INDEX REBUILD は tempdb を使用してデータを再並べ替えします。 再構築操作中に tempdb を監視します。 tempdb 領域がさらに必要な場合は、プールをスケールアップします。 インデックスの再構築が完了したら、スケール ダウンで戻します。
+>
+> 順序付けされた CCI を持つ専用の SQL プール テーブルでは、ALTER INDEX REORGANIZE でデータの再並べ替えは行われません。 データを再度並べ替えるには、ALTER INDEX REBUILD を使用します。
+>
+> 順序付けされた CCI メンテナンスの詳細については、「[クラスター化列ストア インデックスの最適化](sql-data-warehouse-tables-index.md#optimizing-clustered-columnstore-indexes)」を参照してください。
+
 ## <a name="examples"></a>例
 
 **A.順序指定された列と序数を確認するには:**
@@ -142,15 +149,15 @@ OPTION (MAXDOP 1);
 SELECT object_name(c.object_id) table_name, c.name column_name, i.column_store_order_ordinal 
 FROM sys.index_columns i 
 JOIN sys.columns c ON i.object_id = c.object_id AND c.column_id = i.column_id
-WHERE column_store_order_ordinal <>0
+WHERE column_store_order_ordinal <>0;
 ```
 
 **B.列序数の変更、順序のリストに対する列の追加または削除を行ったり、CCI から順序指定 CCI に変更したりするには:**
 
 ```sql
-CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON  InternetSales
+CREATE CLUSTERED COLUMNSTORE INDEX InternetSales ON dbo.InternetSales
 ORDER (ProductKey, SalesAmount)
-WITH (DROP_EXISTING = ON)
+WITH (DROP_EXISTING = ON);
 ```
 
 ## <a name="next-steps"></a>次のステップ

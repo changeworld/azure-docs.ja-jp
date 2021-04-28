@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 468f1b91d6c6157cd2af6de9599bad7f43c1ad8f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ed73c114c015ce38fefa02d2b71e27e8f85dca39
+ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103492559"
+ms.lasthandoff: 04/07/2021
+ms.locfileid: "107028674"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge セキュリティ マネージャー
 
@@ -119,12 +119,17 @@ HSM PAL は、すべての信頼のルート ハードウェアを抽象化し�
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge セキュリティ マネージャーの統合とメンテナンス
 
-IoT Edge セキュリティ マネージャーの目的は、Azure IoT Edge プラットフォームのセキュリティと整合性を保護するコンポーネントを識別して分離し、独自のセキュリティ強化を図ることです。 デバイス製造元などのサード パーティは、それぞれのデバイス ハードウェアで使用できるカスタム セキュリティ機能を活用する必要があります。  Linux および Windows プラットフォームでトラステッド プラットフォーム モジュール (TPM) を使用して Azure IoT セキュリティ マネージャーのセキュリティを強化する方法が示されているページへのリンクについては、「次の手順」セクションをご覧ください。 これらの例は、ソフトウェアまたは仮想 TPM を使用していますが、個別の TPM デバイスの使用について直接当てはまります。  
+IoT Edge セキュリティ マネージャーの目的は、Azure IoT Edge プラットフォームのセキュリティと整合性を保護するコンポーネントを識別して分離し、独自のセキュリティ強化を図ることです。 デバイス製造元などのサード パーティは、それぞれのデバイス ハードウェアで使用できるカスタム セキュリティ機能を活用する必要があります。  
+
+ソフトウェアまたは仮想 TPM を使用するトラステッド プラットフォーム モジュール (TPM) で Azure IoT セキュリティ マネージャーを強化する方法について説明します。  
+
+[Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイス](how-to-auto-provision-simulated-device-linux.md)を作成し、プロビジョニングする。
+
+<!-- 1.1 -->
+:::moniker range="iotedge-2018-06"
+[Windows 上で、シミュレートされた TPM を使用する IoT Edge デバイス](how-to-auto-provision-simulated-device-windows.md)を作成し、プロビジョニングする。
+:::moniker-end
 
 ## <a name="next-steps"></a>次のステップ
 
 ブログ「[Securing the intelligent edge](https://azure.microsoft.com/blog/securing-the-intelligent-edge/)」(インテリジェント エッジをセキュリティで保護する) を読む。
-
-[Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイス](how-to-auto-provision-simulated-device-linux.md)を作成し、プロビジョニングする。
-
-[Windows 上で、シミュレートされた TPM を使用する IoT Edge デバイス](how-to-auto-provision-simulated-device-windows.md)を作成し、プロビジョニングする。

@@ -12,12 +12,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a73f4eba9581965470b95111e6dda1d8014e4cb
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 02bd0f40a54bcd3f36e28fac2fa3114f87f77ebf
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167500"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146331"
 ---
 # <a name="selective-password-hash-synchronization-configuration-for-azure-ad-connect"></a>Azure AD Connect の選択的なパスワード ハッシュ同期の構成
 
@@ -51,7 +51,7 @@ ms.locfileid: "106167500"
 この属性は、以下のいずれかの方法で、手動で設定できます。
 
 - Active Directory ユーザーとコンピューター UI を使用
-- `Set-ADUser` PowerShell コマンドレットの使用  詳細については、「[Set-ADUser](https://docs.microsoft.com/powershell/module/addsadministration/set-aduser)」を参照してください。
+- `Set-ADUser` PowerShell コマンドレットの使用  詳細については、「[Set-ADUser](/powershell/module/activedirectory/set-aduser)」を参照してください。
 
  
 

@@ -8,14 +8,14 @@ ms.subservice: core
 author: likebupt
 ms.author: keli19
 ms.date: 11/13/2020
-ms.topic: conceptual
-ms.custom: how-to, designer
-ms.openlocfilehash: a2cc0840b7ba4b26cf9f5b1219fc189230870774
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: designer
+ms.openlocfilehash: fca949ae65ea046d6e65ba03da7b9b0107c37fd9
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97739860"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107889378"
 ---
 # <a name="import-data-into-azure-machine-learning-designer"></a>Azure Machine Learning デザイナーにデータをインポートする
 

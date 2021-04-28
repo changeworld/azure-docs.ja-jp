@@ -1,20 +1,20 @@
 ---
 title: クイック スタート:Python を使用して Azure データ ファクトリを作成する
 description: データ ファクトリを使用して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
-author: dcstwh
-ms.author: weetok
+author: ssabat
+ms.author: susabat
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/12/2021
 ms.custom: seo-python-october2019, devx-track-python
-ms.openlocfilehash: 534b5b3aca86cc2f6d7ee2d703939420f80abb8e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 665944688533b4efa6e0e14077ae7df22d352d50
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107365095"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123629"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -75,7 +75,7 @@ Azure Data Factory は、データドリブン型のワークフローを作成�
     ```
     > [!NOTE] 
     > "azure-identity" パッケージは、いくつかの共通の依存関係に関して、"azure-cli" と競合する可能性があります。 認証の問題が発生した場合は、"azure-cli" とその依存関係を削除するか、"azure-cli" パッケージがインストールされていないクリーン マシンを使用して解決してください。
-    > ソブリン クラウドの場合は、適切なクラウド固有の定数を使用する必要があります。  ソブリン クラウドで Python を使用して接続する手順については、[Python マルチクラウド用 Azure ライブラリを使用したすべてのリージョンへの接続](https://docs.microsoft.com/azure/developer/python/azure-sdk-sovereign-domain)に関する記事をご覧ください。
+    > ソブリン クラウドの場合は、適切なクラウド固有の定数を使用する必要があります。  ソブリン クラウドで Python を使用して接続する手順については、[Python マルチクラウド用 Azure ライブラリを使用したすべてのリージョンへの接続](/azure/developer/python/azure-sdk-sovereign-domain)に関する記事をご覧ください。
     
     
 ## <a name="create-a-data-factory-client"></a>データ ファクトリ クライアントを作成する

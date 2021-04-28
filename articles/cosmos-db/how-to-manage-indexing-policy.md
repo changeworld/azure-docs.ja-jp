@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: tisande
-ms.custom: devx-track-python, devx-track-js, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 8d52f8c59e83a4aae8724100770965f756a439fb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp
+ms.openlocfilehash: a01b826f99b7bbfc864ad2a6f2913f4f4a9f3e54
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98015693"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072277"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でインデックス作成ポリシーを管理する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

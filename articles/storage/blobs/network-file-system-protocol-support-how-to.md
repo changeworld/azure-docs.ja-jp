@@ -9,18 +9,20 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 2a37d206955e3372b9ecf97be8d27142bd417192
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 1c71c6b55049d81d5c1ff3e26cba3436f0e2dd23
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490456"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890746"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする
 
 NFS 3.0 プロトコルを使用して、オンプレミスで実行される Linux ベースの Azure 仮想マシン (VM) または Linux システムから BLOB ストレージにコンテナーをマウントすることができます。 この記事では、ステップ バイ ステップ ガイダンスを提供しています。 BLOB ストレージでの NFS 3.0 プロトコルのサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>手順 1:NFS 3.0 プロトコル機能をサブスクリプションに登録する
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. PowerShell コマンド ウィンドウを開きます。 
 
@@ -50,14 +52,54 @@ NFS 3.0 プロトコルを使用して、オンプレミスで実行される Li
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
    ```
+   
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. ターミナル ウィンドウを開きます。
+
+2. `az login` コマンドを使用して Azure サブスクリプションにサインインし、画面上の指示に従います。
+
+   ```azurecli-interactive
+   az login
+   ```
+   
+3. 次のコマンドを使用して、`AllowNFSV3` 機能を登録します。
+
+   ```azurecli-interactive
+   az feature register --namespace Microsoft.Storage --name AllowNFSV3 --subscription <subscription-id>
+   ```
+
+   `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
+
+4. 次のコマンドを使用して、リソース プロバイダーを登録します。
+    
+   ```azurecli-interactive
+   az provider register -n Microsoft.Storage --subscription <subscription-id>
+   ```
+
+   `<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
+
+---
 
 ## <a name="step-2-verify-that-the-feature-is-registered"></a>手順 2:機能が登録されたことを確認する 
 
 登録の承認には、最大 1 時間かかります。 登録が完了したことを確認するには、次のコマンドを使用します。
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
 ```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Storage --name AllowNFSV3 --subscription <subscription-id>
+```
+
+`<subscription-id>` プレースホルダーの値をサブスクリプションの ID に置き換えます。
+
+---
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>手順 3:Azure 仮想ネットワーク (VNet) を作成する
 
@@ -68,15 +110,15 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 
 ## <a name="step-4-configure-network-security"></a>手順 4:ネットワーク セキュリティの構成
 
-アカウント内のデータをセキュリティで保護する唯一の方法は、VNet とその他のネットワーク セキュリティ設定を使用することです。 アカウント キーの承認、Azure Active Directory (AD) セキュリティ、アクセス制御リスト (ACL) などのデータをセキュリティで保護するために使用されるその他のツールは、NFS 3.0 プロトコルのサポートが有効にされているアカウントではまだサポートされません。 
+アカウント内のデータをセキュリティで保護する唯一の方法は、VNet とその他のネットワーク セキュリティ設定を使用することです。 アカウント キーの承認、Azure Active Directory (AD) セキュリティ、アクセス制御リスト (ACL) などのデータをセキュリティで保護するために使用されるその他のツールは、NFS 3.0 プロトコルのサポートが有効にされているアカウントではまだサポートされません。
 
 アカウントのデータをセキュリティで保護するには、次の推奨事項を参照してください。[BLOB ストレージのセキュリティに関する推奨事項](security-recommendations.md#networking)。
 
 ## <a name="step-5-create-and-configure-a-storage-account"></a>手順 5:ストレージ アカウントの作成と構成
 
-NFS 3.0 を使用してコンテナーをマウントするには、その機能をサブスクリプションに登録した **後に** ストレージ アカウントを作成する必要があります。 機能を登録する前に存在していたアカウントを有効にすることはできません。 
+NFS 3.0 を使用してコンテナーをマウントするには、その機能をサブスクリプションに登録した **後に** ストレージ アカウントを作成する必要があります。 機能を登録する前に存在していたアカウントを有効にすることはできません。
 
-この機能のプレビュー リリースでは、NFS 3.0 プロトコルは [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) および [general-purpose V2](../common/storage-account-overview.md#general-purpose-v2-accounts) アカウントでサポートされています。
+この機能のプレビュー リリースでは、NFS 3.0 プロトコルは、標準の汎用 v2 ストレージ アカウントおよび Premium ブロック BLOB ストレージ アカウントでサポートされています。 これらのストレージ アカウントの種類について詳しくは、「[ストレージ アカウントの概要](../common/storage-account-overview.md)」を参照してください。
 
 アカウントを構成するときに、次の値を選択します。
 

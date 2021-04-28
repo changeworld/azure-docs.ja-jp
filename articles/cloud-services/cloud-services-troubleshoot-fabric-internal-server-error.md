@@ -2,17 +2,17 @@
 title: Azure にクラウド サービス (クラシック) をデプロイするときの FabricInternalServerError または ServiceAllocationFailure のトラブルシューティング | Microsoft Docs
 description: この記事では、Azure にクラウド サービス (クラシック) をデプロイするときの FabricInternalServerError または ServiceAllocationFailure 例外を解決する方法について説明します。
 services: cloud-services
-author: mibufo
-ms.author: v-mibufo
+author: mamccrea
+ms.author: mamccrea
 ms.service: cloud-services
 ms.topic: troubleshooting
 ms.date: 02/22/2021
-ms.openlocfilehash: 0a4111f569b751ace80a2a886ed2ce7e4968ce16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0883178779179df2e531123b8a500c62d42530e4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743865"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877446"
 ---
 # <a name="troubleshoot-fabricinternalservererror-or-serviceallocationfailure-when-deploying-a-cloud-service-classic-to-azure"></a>Azure にクラウド サービス (クラシック) をデプロイするときの FabricInternalServerError または ServiceAllocationFailure のトラブルシューティング
 

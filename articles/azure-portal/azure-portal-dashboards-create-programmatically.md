@@ -3,12 +3,12 @@ title: プログラムによる Azure ダッシュボードの作成
 description: Azure portal のダッシュボードをテンプレートとして使用して、プログラムで Azure ダッシュボードを作成することができます。 JSON 参照を含めます。
 ms.topic: how-to
 ms.date: 12/4/2020
-ms.openlocfilehash: 416eeb772e347b28fcb4a4dcc93c746562ea3571
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 92848ac238ff11a90afc82713639b8abebf076ec
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107767061"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878796"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -658,27 +658,27 @@ Azure CLI の環境を準備します。
 
 - これらの例ではダッシュボード [portal-dashboard-template-testvm.json](https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/azure-portal/portal-dashboard-template-testvm.json) を使用します。 山かっこ内の内容を実際の値に置き換えます。
 
-[az portal dashboard create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) コマンドを実行して、ダッシュボードを作成します。
+[az portal dashboard create](/cli/azure/portal/dashboard#az_portal_dashboard_create) コマンドを実行して、ダッシュボードを作成します。
 
 ```azurecli
 az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
    --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-ダッシュボードを更新するには、[az portal dashboard update](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update) コマンドを使用します。
+ダッシュボードを更新するには、[az portal dashboard update](/cli/azure/portal/dashboard#az_portal_dashboard_update) コマンドを使用します。
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
 --input-path portal-dashboard-template-testvm.json --location centralus
 ```
 
-[az portal dashboard show](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show) コマンドを実行して、ダッシュボードの詳細を確認します。
+[az portal dashboard show](/cli/azure/portal/dashboard#az_portal_dashboard_show) コマンドを実行して、ダッシュボードの詳細を確認します。
 
 ```azurecli
 az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
 ```
 
-現在のサブスクリプションのすべてのダッシュボードを表示するには、[az portal dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list) を使用します。
+現在のサブスクリプションのすべてのダッシュボードを表示するには、[az portal dashboard list](/cli/azure/portal/dashboard#az_portal_dashboard_list) を使用します。
 
 ```azurecli
 az portal dashboard list
@@ -694,4 +694,4 @@ az portal dashboard list --resource-group myResourceGroup
 
 デスクトップの詳細については、「[Azure portal の設定を管理する](set-preferences.md)」を参照してください。
 
-ダッシュボードの Azure CLI サポートの詳細については、「[az portal dashboard](/cli/azure/ext/portal/portal/dashboard)」を参照してください。
+ダッシュボードの Azure CLI サポートの詳細については、「[az portal dashboard](/cli/azure/portal/dashboard)」を参照してください。

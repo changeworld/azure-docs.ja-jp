@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d3570a22fdd935237e673ea3e43ab5e463b66456
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b3f0dd599f982e19fee7febc3b85d46f91a55b35
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104590536"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589297"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Azure Digital Twins のツイン モデルについて
 
@@ -32,10 +32,18 @@ DTDL は JSON-LD に基づいており、プログラミング言語に依存し
 
 この記事の残りの部分では、Azure Digital Twins で言語を使用する方法について説明します。
 
-> [!NOTE] 
-> DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。
->
-> Azure Digital Twins に固有の DTDL 機能の詳細については、この記事の後のセクション「[Azure Digital Twins DTDL の実装の仕様](#azure-digital-twins-dtdl-implementation-specifics)」を参照してください。
+### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure Digital Twins DTDL の実装の仕様
+
+DTDL を使用するすべてのサービスで、DTDL の機能がまったく同じに実装されるわけではありません。 たとえば、IoT プラグ アンド プレイではグラフ用の DTDL 機能は使用されず、Azure Digital Twins では現在、DTDL コマンドが実装されていません。 
+
+DTDL モデルに Azure Digital Twins との互換性を与えるには、これらの要件を満たす必要があります。
+
+* モデルの最上位レベルの DTDL 要素は、すべて "*インターフェイス*" 型である必要があります。 これは、Azure Digital Twins モデル API が、インターフェイスまたはインターフェイスの配列を表す JSON オブジェクトを受け取ることができるためです。 その結果、最上位レベルでは他の DTDL 要素型を使用できません。
+* Azure Digital Twins の DTDL では、"*コマンド*" を定義しないでください。
+* Azure Digital Twins では、単一レベルのコンポーネントの入れ子のみが許可されます。 これは、コンポーネントとして使用されているインターフェイスが、それ自体はコンポーネントを含められないことを意味します。 
+* インターフェイスは、他の DTDL インターフェイスの内部にインラインで定義することはできません。それらは、独自の ID を備えた個別の最上位レベルのエンティティとして定義する必要があります。 その後、別のインターフェイスがそのインターフェイスをコンポーネントとして含めるか、継承を通じて含めようとする場合は、その ID を参照できます。
+
+Azure Digital Twins では、プロパティまたはリレーションシップの `writable` 属性も監視されません。 これは DTDL 仕様に従って設定できますが、Azure Digital Twins では使用されません。 代わりに、これらは常に、Azure Digital Twins サービスに対する一般的な書き込みアクセス許可を持つ外部クライアントによって書き込み可能として扱われます。
 
 ## <a name="elements-of-a-model"></a>モデルの要素
 
@@ -50,7 +58,7 @@ DTDL モデルのインターフェイスには、以下の各フィールドを
     
     >[!TIP] 
     >コンポーネントは、モデル インターフェイス内の関連するプロパティをグループ化するために、組織に使用することもできます。 この状況では、各コンポーネントをインターフェイス内の名前空間または "フォルダー" と考えることができます。
-* **Relationship** - リレーションシップを使用すると、あるデジタル ツインと他のデジタル ツインの関係性を表すことができます。 リレーションシップは、さまざまなセマンティックな意味を表すことができます。たとえば、*contains* ("フロアが部屋を含む")、*cools* ("hvac が部屋を冷房する")、*isBilledTo* ("コンプレッサーがユーザーに請求される") などです。リレーションシップにより、ソリューションは相互に関連するエンティティのグラフを提供できます。
+* **Relationship** - リレーションシップを使用すると、あるデジタル ツインと他のデジタル ツインの関係性を表すことができます。 リレーションシップは、さまざまなセマンティックな意味を表すことができます。たとえば、*contains* ("フロアが部屋を含む")、*cools* ("hvac が部屋を冷房する")、*isBilledTo* ("コンプレッサーがユーザーに請求される") などです。リレーションシップにより、ソリューションは相互に関連するエンティティのグラフを提供できます。 リレーションシップには、独自の[プロパティ](#properties-of-relationships)を含めることもできます。
 
 > [!NOTE]
 > [DTDL の仕様](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)では、**Commands** も定義されています。これは、デジタル ツインに対して実行できるメソッドです (リセット コマンドや、ファンをオンまたはオフに切り替えるためのコマンドなど)。 ただし、"*Azure Digital Twins では現在、コマンドがサポートされていません*"。
@@ -73,20 +81,40 @@ Azure Digital Twins モデルのプロパティとテレメトリの違いは次
 
 Azure Digital Twins API からテレメトリ イベントを発行することもできます。 他のテレメトリと同様に、これは存続期間の短いイベントであり、リスナーによる処理が必要です。
 
-### <a name="azure-digital-twins-dtdl-implementation-specifics"></a>Azure Digital Twins DTDL の実装の仕様
+#### <a name="properties-of-relationships"></a>リレーションシップのプロパティ
 
-DTDL モデルに Azure Digital Twins との互換性を与えるには、これらの要件を満たす必要があります。
+DTDL を使用すると、**リレーションシップ** に独自のプロパティを含めることもできます。 DTDL モデル内でリレーションシップを定義する際に、リレーションシップに独自の `properties` フィールドを含めることができます。このフィールドで、リレーションシップ固有の状態を記述するカスタム プロパティを定義できます。
 
-* モデルの最上位レベルの DTDL 要素は、すべて "*インターフェイス*" 型である必要があります。 これは、Azure Digital Twins モデル API が、インターフェイスまたはインターフェイスの配列を表す JSON オブジェクトを受け取ることができるためです。 その結果、最上位レベルでは他の DTDL 要素型を使用できません。
-* Azure Digital Twins の DTDL では、"*コマンド*" を定義しないでください。
-* Azure Digital Twins では、単一レベルのコンポーネントの入れ子のみが許可されます。 これは、コンポーネントとして使用されているインターフェイスが、それ自体はコンポーネントを含められないことを意味します。 
-* インターフェイスは、他の DTDL インターフェイスの内部にインラインで定義することはできません。それらは、独自の ID を備えた個別の最上位レベルのエンティティとして定義する必要があります。 その後、別のインターフェイスがそのインターフェイスをコンポーネントとして含めるか、継承を通じて含めようとする場合は、その ID を参照できます。
+## <a name="model-inheritance"></a>モデルの継承
 
-Azure Digital Twins では、プロパティまたはリレーションシップの `writable` 属性も監視されません。 これは DTDL 仕様に従って設定できますが、Azure Digital Twins では使用されません。 代わりに、これらは常に、Azure Digital Twins サービスに対する一般的な書き込みアクセス許可を持つ外部クライアントによって書き込み可能として扱われます。
+場合によっては、モデルをさらに特殊化したい場合があります。 たとえば、汎用的なモデル *Room* と、特殊化したバリアント *ConferenceRoom* および *Gym* を作成すると便利な場合があります。 特殊化を表現するために、DTDL では継承がサポートされています。インターフェイスは、他の 1 つ以上のインターフェイスを継承できます。 
 
-## <a name="example-model-code"></a>モデル コードの例
+次の例では、*Planet* モデルを前の DTDL 例からより大きな *CelestialBody* モデルのサブタイプとして再イメージ化しています。 "親" モデルが先に定義され、次にフィールド `extends` を使用してその上に "子" モデルが構築されます。
+
+:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
+
+この例では、*CelestialBody* によって *Planet* に名前、質量、および温度が提供されます。 `extends` セクションは、インターフェイス名、またはインターフェイス名の配列です (必要に応じて、拡張インターフェイスが複数の親モデルを継承できます)。
+
+継承が適用されると、拡張インターフェイスは継承チェーン全体のすべてのプロパティを公開します。
+
+拡張インターフェイスでは、親インターフェイスの定義は変更できません。定義を追加することだけができます。 また、いずれかの親インターフェイスで既に定義されている機能を再定義することもできません (機能が同じになるように定義される場合でも)。 たとえば、親インターフェイスが `double` プロパティの *mass* を定義している場合、拡張インターフェイスに *mass* の宣言を含めることはできません (それが同様に `double` である場合でも)。
+
+## <a name="model-code"></a>モデル コード
 
 ツインの型モデルは、任意のテキスト エディターで記述できます。 DTDL 言語は、JSON 構文に従います。そのため、モデルは *json* という拡張子で保存する必要があります。 JSON 拡張子を使用すると、多くのプログラミング テキスト エディターで、DTDL ドキュメントの基本的な構文チェックと強調表示ができるようになります。 また、[Visual Studio Code](https://code.visualstudio.com/) には、[DTDL 拡張子](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)も使用できます。
+
+### <a name="possible-schemas"></a>使用可能なスキーマ
+
+DTDL によると、*Property* および *Telemetry* 属性のスキーマは、標準プリミティブ型の `integer`、`double`、`string`、および `Boolean` と、`DateTime`、`Duration` などのその他の型にすることができます。 
+
+プリミティブ型のほか、*Property* および *Telemetry* フィールドは、これらの複合型を含むことができます。
+* `Object`
+* `Map`
+* `Enum`
+
+*Telemetry* フィールドでは、`Array` もサポートされています。
+
+### <a name="example-model"></a>モデル例
 
 このセクションでは、DTDL インターフェイスとして記述された一般的なモデルの例を示します。 このモデルでは、**惑星** とそれぞれの名前、質量、および温度が記述されています。
  
@@ -106,31 +134,6 @@ Azure Digital Twins では、プロパティまたはリレーションシップ
 
 > [!NOTE]
 > コンポーネント インターフェイス (この例では *Crater*) が、それ (*Planet*) を使用するインターフェイスと同じ配列内に定義されていることに注意してください。 コンポーネントは、インターフェイスが検出されるようにするために、API 呼び出しの中でこのように定義する必要があります。
-
-### <a name="possible-schemas"></a>使用可能なスキーマ
-
-DTDL によると、*Property* および *Telemetry* 属性のスキーマは、標準プリミティブ型の `integer`、`double`、`string`、および `Boolean` と、`DateTime`、`Duration` などのその他の型にすることができます。 
-
-プリミティブ型のほか、*Property* および *Telemetry* フィールドは、これらの複合型を含むことができます。
-* `Object`
-* `Map`
-* `Enum`
-
-*Telemetry* フィールドでは、`Array` もサポートされています。
-
-### <a name="model-inheritance"></a>モデルの継承
-
-場合によっては、モデルをさらに特殊化したい場合があります。 たとえば、汎用的なモデル *Room* と、特殊化したバリアント *ConferenceRoom* および *Gym* を作成すると便利な場合があります。 特殊化を表現するために、DTDL では継承がサポートされています。インターフェイスは、他の 1 つ以上のインターフェイスを継承できます。 
-
-次の例では、*Planet* モデルを前の DTDL 例からより大きな *CelestialBody* モデルのサブタイプとして再イメージ化しています。 "親" モデルが先に定義され、次にフィールド `extends` を使用してその上に "子" モデルが構築されます。
-
-:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
-
-この例では、*CelestialBody* によって *Planet* に名前、質量、および温度が提供されます。 `extends` セクションは、インターフェイス名、またはインターフェイス名の配列です (必要に応じて、拡張インターフェイスが複数の親モデルを継承できます)。
-
-継承が適用されると、拡張インターフェイスは継承チェーン全体のすべてのプロパティを公開します。
-
-拡張インターフェイスでは、親インターフェイスの定義は変更できません。定義を追加することだけができます。 また、いずれかの親インターフェイスで既に定義されている機能を再定義することもできません (機能が同じになるように定義される場合でも)。 たとえば、親インターフェイスが `double` プロパティの *mass* を定義している場合、拡張インターフェイスに *mass* の宣言を含めることはできません (それが同様に `double` である場合でも)。
 
 ## <a name="best-practices-for-designing-models"></a>モデルの設計に関するベストプラクティス
 

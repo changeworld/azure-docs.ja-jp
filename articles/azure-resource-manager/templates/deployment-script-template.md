@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: jgao
-ms.openlocfilehash: 3240cce34a6fa645986a58ab43b28ad38485e97b
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 77865cea4621b36d8b1de0e00f0ce8e00fdba252
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308967"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124961"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>ARM テンプレートでデプロイ スクリプトを使用する
 
@@ -136,7 +136,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) でデプロ�
 
 プロパティ値の詳細:
 
-- `identity`: デプロイ スクリプト API バージョン2020-10-01 以降では、スクリプトで Azure 固有のアクションを実行する必要がない限り、ユーザー割り当てマネージド ID は省略可能です。  API バージョン 2019-10-01-preview では、デプロイ スクリプト サービスでスクリプトを実行するために使用されるため、マネージド ID が必要です。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。
+- `identity`: デプロイ スクリプト API バージョン2020-10-01 以降では、スクリプトで Azure 固有のアクションを実行する必要がない限り、ユーザー割り当てマネージド ID は省略可能です。  API バージョン 2019-10-01-preview では、デプロイ スクリプト サービスでスクリプトを実行するために使用されるため、マネージド ID が必要です。 ID プロパティを指定すると、スクリプト サービスはユーザー スクリプトを呼び出す前に `Connect-AzAccount -Identity` を呼び出します。 現時点では、ユーザー割り当てマネージド ID のみがサポートされています。 別の ID を使ってログインするには、スクリプト内で [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) を呼び出します。
 - `kind`: スクリプトの種類を指定します。 現在、Azure PowerShell および Azure CLI のスクリプトがサポートされています。 値は、**AzurePowerShell** と **AzureCLI** です。
 - `forceUpdateTag`:テンプレートのデプロイ間でこの値を変更すると、デプロイ スクリプトが強制的に再実行されます。 `newGuid()` または `utcNow()` 関数を使用する場合は、どちらの関数もパラメーターの既定値でのみ使用できます。 詳細については、「[スクリプトを複数回実行する](#run-script-more-than-once)」を参照してください。
 - `containerSettings`:Azure Container Instance をカスタマイズするための設定を指定します。 デプロイ スクリプトには、新しい Azure Container Instance が必要です。 既存の Azure Container Instance は指定できません。 ただし、`containerGroupName` を使用して、コンテナー グループ名をカスタマイズできます。 指定しない場合、グループ名は自動的に生成されます。
@@ -250,7 +250,7 @@ reference('<ResourceName>').outputs.text
 
 ## <a name="work-with-outputs-from-cli-script"></a>CLI スクリプトからの出力を操作する
 
-PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポートでは、スクリプト出力を格納するための共通変数は公開されません。代わりに、スクリプトの出力ファイルが存在する場所を格納する `AZ_SCRIPTS_OUTPUT_PATH` という環境変数があります。 デプロイ スクリプトが Resource Manager テンプレートから実行される場合、この環境変数は Bash シェルによって自動的に設定されます。
+PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポートでは、スクリプト出力を格納するための共通変数は公開されません。代わりに、スクリプトの出力ファイルが存在する場所を格納する `AZ_SCRIPTS_OUTPUT_PATH` という環境変数があります。 デプロイ スクリプトが Resource Manager テンプレートから実行される場合、この環境変数は Bash シェルによって自動的に設定されます。 `AZ_SCRIPTS_OUTPUT_PATH` の値は */mnt/azscripts/azscriptoutput/scriptoutputs.json* です。
 
 デプロイ スクリプトの出力は `AZ_SCRIPTS_OUTPUT_PATH` の場所に保存される必要があり、その出力は有効な JSON 文字列オブジェクトでなければなりません。 ファイルの内容は、キーと値のペアとして保存される必要があります。 たとえば、文字列の配列は、`{ "MyResult": [ "foo", "bar"] }` として格納されます。  配列の結果のみ (`[ "foo", "bar" ]` など) の格納は、無効です。
 
@@ -310,6 +310,26 @@ PowerShell デプロイ スクリプトとは異なり、CLI/Bash のサポー�
 デプロイ スクリプトで `$ErrorActionPreference` 変数を使用することで、終了しないエラーに PowerShell が対応する方法を制御できます。 この変数がデプロイ スクリプトに設定されていない場合、スクリプト サービスでは既定値 **Continue** が使用されます。
 
 `$ErrorActionPreference` の設定に関係なく、デプロイ スクリプトでエラーが発生すると、スクリプト サービスによってリソースのプロビジョニングの状態が **失敗** に設定されます。
+
+### <a name="use-environment-variables"></a>環境変数を使用する
+
+デプロイ スクリプトでは、これらの環境変数を使用します。
+
+|環境変数|既定値|システムで予約済み|
+|--------------------|-------------|---------------|
+|AZ_SCRIPTS_AZURE_ENVIRONMENT|AzureCloud|N|
+|AZ_SCRIPTS_CLEANUP_PREFERENCE|OnExpiration|N|
+|AZ_SCRIPTS_OUTPUT_PATH|<AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY>/<AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME>|Y|
+|AZ_SCRIPTS_PATH_INPUT_DIRECTORY|/mnt/azscripts/azscriptinput|Y|
+|AZ_SCRIPTS_PATH_OUTPUT_DIRECTORY|/mnt/azscripts/azscriptoutput|Y|
+|AZ_SCRIPTS_PATH_USER_SCRIPT_FILE_NAME|Azure PowerShell: userscript.ps1; Azure CLI: userscript.sh|Y|
+|AZ_SCRIPTS_PATH_PRIMARY_SCRIPT_URI_FILE_NAME|primaryscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SUPPORTING_SCRIPT_URI_FILE_NAME|supportingscripturi.config|Y|
+|AZ_SCRIPTS_PATH_SCRIPT_OUTPUT_FILE_NAME|scriptoutputs.json|Y|
+|AZ_SCRIPTS_PATH_EXECUTION_RESULTS_FILE_NAME|executionresult.json|Y|
+|AZ_SCRIPTS_USER_ASSIGNED_IDENTITY|/subscriptions/|N|
+
+`AZ_SCRIPTS_OUTPUT_PATH` の使用に関する詳細については、「[CLI スクリプトからの出力を操作する](#work-with-outputs-from-cli-script)」を参照してください。
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>セキュリティで保護された文字列をデプロイ スクリプトに渡す
 
@@ -377,10 +397,10 @@ Timeout             : PT1H
 
 Azure CLI を使用すると、サブスクリプションまたはリソース グループのスコープでデプロイ スクリプトを管理できます。
 
-- [az deployment-scripts delete](/cli/azure/deployment-scripts#az-deployment-scripts-delete):デプロイ スクリプトを削除します。
-- [az deployment-scripts list](/cli/azure/deployment-scripts#az-deployment-scripts-list):すべてのデプロイ スクリプトを一覧表示します。
-- [az deployment-scripts show](/cli/azure/deployment-scripts#az-deployment-scripts-show):デプロイ スクリプトを取得します。
-- [az deployment-scripts show-log](/cli/azure/deployment-scripts#az-deployment-scripts-show-log):デプロイ スクリプトのログを表示します。
+- [az deployment-scripts delete](/cli/azure/deployment-scripts#az_deployment_scripts_delete):デプロイ スクリプトを削除します。
+- [az deployment-scripts list](/cli/azure/deployment-scripts#az_deployment_scripts_list):すべてのデプロイ スクリプトを一覧表示します。
+- [az deployment-scripts show](/cli/azure/deployment-scripts#az_deployment_scripts_show):デプロイ スクリプトを取得します。
+- [az deployment-scripts show-log](/cli/azure/deployment-scripts#az_deployment_scripts_show_log):デプロイ スクリプトのログを表示します。
 
 list コマンドの出力は次のようになります。
 

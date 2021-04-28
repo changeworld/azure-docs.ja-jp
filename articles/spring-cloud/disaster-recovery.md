@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: e18193b40bb7c59a21a279f451673dc7d11140e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e3471d778e0589083caaf2dfedbccc4568de471
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92092904"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144657"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud のディザスター リカバリー
 
@@ -48,7 +48,7 @@ Azure Spring Cloud アプリケーションは、特定のリージョンで実�
 | service-sample-a | 米国東部 | gateway / auth-service / account-service |
 | service-sample-b | 西ヨーロッパ | gateway / auth-service / account-service |
 
-2. サービスのカスタム ドメインを設定します。[カスタム ドメインに関する資料](spring-cloud-tutorial-custom-domain.md)に従って、これら 2 つの既存のサービス インスタンスのカスタム ドメインを設定します。 設定が正常に完了すると、両方のサービス インスタンスがカスタム ドメインの bcdr-test.contoso.com にバインドされます。
+2. サービスのカスタム ドメインを設定します。[カスタム ドメインに関する資料](./tutorial-custom-domain.md)に従って、これら 2 つの既存のサービス インスタンスのカスタム ドメインを設定します。 設定が正常に完了すると、両方のサービス インスタンスがカスタム ドメインの bcdr-test.contoso.com にバインドされます。
 
 3. Traffic Manager と 2 つのエンドポイントを作成します。[Azure portal を使用して Traffic Manager プロファイルを作成します](../traffic-manager/quickstart-create-traffic-manager-profile.md)。
 
@@ -67,4 +67,4 @@ Traffic Manager プロファイルは次のとおりです。
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](spring-cloud-quickstart.md)
+* [クイック スタート: 初めての Azure Spring Cloud アプリケーションをデプロイする](./quickstart.md)

@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 07/14/2020
-ms.topic: conceptual
-ms.custom: how-to, data4ml
-ms.openlocfilehash: f42a2f9e606eaa0475f2e35c479e99545ecf8193
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: data4ml
+ms.openlocfilehash: 4b6ae5668715431875090be999806dc5a9d994c9
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521902"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885094"
 ---
 # <a name="collect-data-from-models-in-production"></a>実稼働環境のモデルからデータを収集する
 

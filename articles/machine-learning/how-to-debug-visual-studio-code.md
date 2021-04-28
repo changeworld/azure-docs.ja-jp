@@ -5,16 +5,16 @@ description: Visual Studio Code を使用して Azure Machine Learning のコー
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 783b5afdaef369582614cde3525f7968fdb5e567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3c4438cdfa8ddd41cb306e84623ccd569ac1680
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508641"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885580"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Visual Studio Code を使用した対話型デバッグ
 
@@ -278,7 +278,7 @@ ip_address: 10.3.0.5
 `ip_address` の値を保存します。 次のセクションで使用します。
 
 > [!TIP]
-> IP アドレスは、このパイプライン ステップの子実行に対する実行ログからも見つけることができます。 この情報を表示する方法の詳細については、「[Azure ML の実験の実行とメトリックを監視する](how-to-track-experiments.md)」を参照してください。
+> IP アドレスは、このパイプライン ステップの子実行に対する実行ログからも見つけることができます。 この情報を表示する方法の詳細については、「[Azure ML の実験の実行とメトリックを監視する](how-to-log-view-metrics.md)」を参照してください。
 
 ### <a name="configure-development-environment"></a>開発環境の設定
 

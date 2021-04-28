@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
-ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: a5669b15c041f663605a62ef8d02b206928d0c14
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b80588ff76d1e1e437731c0de7490c63df6af362
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93101597"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074261"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-api-for-mongodb"></a>MongoDB 用 Azure Cosmos DB API でコンテナーを作成する
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

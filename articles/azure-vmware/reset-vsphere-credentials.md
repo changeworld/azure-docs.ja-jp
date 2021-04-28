@@ -3,12 +3,12 @@ title: Azure VMware Solution の vSphere 資格情報をリセットする
 description: Azure VMware Solution プライベート クラウドの vSphere 資格情報をリセットし、HCX コネクタに最新の vSphere 資格情報が確実に設定されるようにする方法について説明します。
 ms.topic: how-to
 ms.date: 03/31/2021
-ms.openlocfilehash: 793b79e42a0adbca54804d1b66102736aff22d7a
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 3533de03cbea0014a8a50cd0103f96273f0680a7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106109103"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108145305"
 ---
 # <a name="reset-vsphere-credentials-for-azure-vmware-solution"></a>Azure VMware Solution の vSphere 資格情報をリセットする
 
@@ -21,7 +21,7 @@ ms.locfileid: "106109103"
  まず、Azure VMware Solution コンポーネントの資格情報をリセットしましょう。 vCenter Server CloudAdmin と NSX-T の管理者資格情報は期限切れになりませんが、次の手順に従って、これらのアカウントの新しいパスワードを生成できます。
 
 > [!NOTE]
-> HCX、vRealize Orchestrator、vRealizae Operations Manager、VMware Horizon などの接続済みサービスに CloudAdmin の資格情報を使用している場合、パスワードを更新すると接続が停止します。  パスワードのローテーションを開始する前に、これらのサービスを停止する必要があります。  そうしないと、これらのサービスでは古い資格情報を使用して継続的に呼び出しを行うため、vCenter CloudAdmin と NSX-T 管理者のアカウントが一時的にロックされることがあります。  接続済みサービスに個別のアカウントを設定する方法の詳細については、[アクセスと ID の概念](https://docs.microsoft.com/azure/azure-vmware/concepts-identity)に関する記事を参照してください。
+> HCX、vRealize Orchestrator、vRealizae Operations Manager、VMware Horizon などの接続済みサービスに CloudAdmin の資格情報を使用している場合、パスワードを更新すると接続が停止します。  パスワードのローテーションを開始する前に、これらのサービスを停止する必要があります。  そうしないと、これらのサービスでは古い資格情報を使用して継続的に呼び出しを行うため、vCenter CloudAdmin と NSX-T 管理者のアカウントが一時的にロックされることがあります。  接続済みサービスに個別のアカウントを設定する方法の詳細については、[アクセスと ID の概念](./concepts-identity.md)に関する記事を参照してください。
 
 1. Azure portal から Azure Cloud Shell セッションを開きます。
 

@@ -8,14 +8,14 @@ ms.subservice: core
 ms.author: keli19
 author: likebupt
 ms.date: 03/06/2021
-ms.topic: conceptual
-ms.custom: how-to, designer
-ms.openlocfilehash: ed5f59fc1d751f92a7c016aa3586497659f778fd
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.topic: how-to
+ms.custom: designer
+ms.openlocfilehash: 54ba55233df201740e8949018e99e961bdd3c6f7
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105962953"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107884734"
 ---
 # <a name="use-pipeline-parameters-to-retrain-models-in-the-designer"></a>パイプライン パラメーターを使用し、デザイナーのモデルを再トレーニングする
 

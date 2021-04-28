@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: c76d9d06425405cf7f43e089cb9c2995e30410ee
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8edac35fd83ef5dbf122e7f0959564fa072fbadd
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107982"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144927"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>パートナー センターで商業マーケットプレース アカウントを管理する
 
@@ -179,7 +179,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ## <a name="create-a-billing-profile"></a>請求プロファイルを作成する
 
-[Dynamics 365 for Customer Engagement & Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md) オファーまたは [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) オファーを発行する場合は、*請求プロファイル* に入力する必要があります。
+[Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md) オファーまたは [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) オファーを発行する場合は、*請求プロファイル* に入力する必要があります。
 
 請求先住所は、お客様の法人から事前に設定されています。このアドレスは後で更新できます。 一部の国では税と VAT ID のフィールドが必須になりますが、それ以外の国では省略可能です。 国および地域の名前と会社名は編集できません。
 
@@ -189,7 +189,7 @@ Microsoft から支払いを受けたり、租税条約上の権利を申し立�
 
 ## <a name="multi-user-account-management"></a>マルチユーザー アカウント管理
 
-パートナー センターでは、マルチユーザー アカウントのアクセスと管理のために [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) が使用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
+パートナー センターでは、マルチユーザー アカウントのアクセスと管理のために [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) が使用されています。 パートナー センター アカウントには、登録プロセスの過程でお客様の組織の Azure AD が自動的に関連付けられます。
 
 ## <a name="next-steps"></a>次のステップ
 

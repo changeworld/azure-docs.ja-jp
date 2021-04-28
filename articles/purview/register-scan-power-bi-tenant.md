@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 2ecc5df9db51bb6c923b9e0f47163e492bd76cfa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8fb4c797df7961726ca785a56a6ab25807999842
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101695748"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600864"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Power BI テナントの登録とスキャン (プレビュー)
 
@@ -70,15 +70,9 @@ ms.locfileid: "101695748"
 
 Power BI テナントの Admin API に接続するための Purview のマネージド ID のアクセス許可が付与されたので、Azure Purview Studio からスキャンを設定できるようになりました。
 
-まず、Purview URL に特別な機能フラグを追加します 
+1. 左側のナビゲーションで **[ソース]** を選択します。
 
-1. **管理センター** のアイコンを選択します。
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/management-center.png" alt-text="管理センターのアイコン。":::
-
-1. 次に、 **[データ ソース]** で **[+ 新規]** を選択します。
-
-    :::image type="content" source="media/setup-power-bi-scan-catalog-portal/data-sources.png" alt-text="新しいデータ ソースのボタンの画像":::
+1. 次に、 **[登録]** を選択します。
 
     データ ソースとして **[Power BI]** を選択します。
 

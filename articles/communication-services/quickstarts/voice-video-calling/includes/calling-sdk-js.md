@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: mikben
-ms.openlocfilehash: 2ecbd207c4b1946a69b01f43ec2bc77d29b1a8c9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f20099943d3cfa3dd4afc161c26e5582e467ca8d
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106073283"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107589940"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,7 +50,7 @@ Azure Communication Services Calling SDK の主な機能のいくつかは、次
 
 `createCallAgent` メソッドでは、`CommunicationTokenCredential` が引数として使用されます。 これは、[ユーザー アクセス トークン](../../access-tokens.md)を受け取ります。
 
-`callAgent` インスタンスを作成した後、`CallClient` インスタンスで `getDeviceManager` メソッドを使用して `deviceManager` にアクセスできます。
+`CallClient` インスタンスで `getDeviceManager` メソッドを使用して、`deviceManager` にアクセスできます。
 
 ```js
 // Set the logger's log level
@@ -109,9 +109,10 @@ const groupCall = callAgent.startCall([userCallee, pstnCallee], {alternateCaller
 > [!IMPORTANT]
 > 現在、発信ローカル動画ストリームは 1 つしか使用できません。
 
-ビデオ通話を行うには、`deviceManager` の `getCameras()` メソッドを使用してカメラを指定する必要があります。
+ビデオ通話を行うには、`deviceManager` の `getCameras()` メソッドを使用してローカル カメラを列挙する必要があります。
 
 カメラを選択したら、それを使用して `LocalVideoStream` インスタンスを作成します。 `videoOptions` 内のそれを `localVideoStream` 配列内の項目として `startCall` メソッドに渡します。
+
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -146,7 +147,7 @@ const call = callAgent.join(context);
 > [!NOTE]
 > この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling Web SDK の "ベータ" リリースを使用してください
 
-Teams 会議に参加するには、`join` メソッドを使用し、会議リンクまたは座標を渡します。
+Teams 会議に参加するには、`join` メソッドを使用し、会議リンクまたは会議の座標を渡します。
 
 会議リンクを使用して参加する:
 
@@ -173,9 +174,13 @@ const call = callAgent.join(locator);
 
 ```js
 const incomingCallHander = async (args: { incomingCall: IncomingCall }) => {
-
-    //Get incoming call ID
+    const incomingCall = args.incomingCall; 
+    // Get incoming call ID
     var incomingCallId = incomingCall.id
+    // Get information about this Call. This API is provided as a preview for developers
+    // and may change based on feedback that we receive. Do not use this API in a production environment.
+    // To use this api please use 'beta' release of ACS Calling Web SDK
+    var callInfo = incomingCall.info;
 
     // Get information about caller
     var callerInfo = incomingCall.callerInfo
@@ -210,6 +215,12 @@ callAgentInstance.on('incomingCall', incomingCallHander);
    ```js
     const callId: string = call.id;
    ```
+通話に関する情報を取得する:
+> [!NOTE]
+> この API は開発者向けにプレビューとして提供されており、寄せられたフィードバックにもとづいて変更される場合があります。 この API は運用環境で使用しないでください。 この API を使用するには、ACS Calling Web SDK の "ベータ" リリースを使用してください
+   ```js
+   const callInfo = call.info;
+   ```
 
 通話の他の参加者について知るには、"call" インスタンスの `remoteParticipants` コレクションを調べます。
 
@@ -240,6 +251,7 @@ callAgentInstance.on('incomingCall', incomingCallHander);
   - `Connected`: 通話が接続されていることを示します。
   - `LocalHold`: 通話がローカル参加者によって保留にされていることを示します。 ローカル エンドポイントとリモート参加者の間でメディアは送信されていません。
   - `RemoteHold`: 通話がリモート参加者によって保留にされていることを示します。 ローカル エンドポイントとリモート参加者の間でメディアは送信されていません。
+  - `InLobby`: ユーザーがロビーにいることを示します。
   - `Disconnecting`: 通話が `Disconnected` 状態になる前の遷移状態。
   - `Disconnected`: 通話の最終状態。 ネットワーク接続が失われると、2 分後に状態は `Disconnected` になります。
 
@@ -276,17 +288,8 @@ callAgentInstance.on('incomingCall', incomingCallHander);
    const localVideoStreams = call.localVideoStreams;
    ```
 
-### <a name="check-a-callended-event"></a>callEnded イベントを確認する
 
-`call` インスタンスにより、通話が終了したときに `callEnded` イベントが生成されます。 このイベントをリッスンするには、次のコードを使用してサブスクライブします。
 
-```js
-const callEndHander = async (args: { callEndReason: CallEndReason }) => {
-    console.log(args.callEndReason)
-};
-
-call.on('callEnded', callEndHander);
-```
 
 ### <a name="mute-and-unmute"></a>ミュートとミュート解除
 
@@ -304,7 +307,7 @@ await call.unmute();
 
 ### <a name="start-and-stop-sending-local-video"></a>ローカル動画の送信を開始および停止する
 
-動画を開始するには、`deviceManager` オブジェクトで `getCameras` メソッドを使用して、カメラを指定する必要があります。 次に、目的のカメラを引数として `startVideo` メソッドに渡して `LocalVideoStream` の新しいインスタンスを作成します。
+動画を開始するには、`deviceManager` オブジェクトで `getCameras` メソッドを使用して、カメラを列挙する必要があります。 次に、目的のカメラを使用して `LocalVideoStream` の新しいインスタンスを作成し、`LocalVideoStream` オブジェクトを `startVideo` メソッドに渡します。
 
 ```js
 const deviceManager = await callClient.getDeviceManager();
@@ -377,6 +380,7 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
   - `Connected`: 参加者は通話に接続されています。
   - `Hold`: 参加者は保留中です。
   - `EarlyMedia`: 参加者が通話に接続する前に再生されるアナウンス。
+  - `InLobby`: リモート参加要素がロビーにあることを示します。
   - `Disconnected`: 最終状態。 参加者は通話から切断されました。 リモート参加者がネットワーク接続を失うと、2 分後に状態は `Disconnected` に変わります。
 
 - `callEndReason`: 参加者が通話を終了した理由を知るには、`callEndReason` プロパティを調べます。
@@ -412,7 +416,7 @@ call.remoteParticipants; // [remoteParticipant, remoteParticipant....]
 
 ### <a name="add-a-participant-to-a-call"></a>通話に参加者を追加する
 
-通話に参加者 (ユーザーまたは電話番号) を追加するには、`addParticipant` を使用します。 `Identifier` の種類のいずれかを指定します。 これにより、`remoteParticipant` インスタンスが返されます。
+通話に参加者 (ユーザーまたは電話番号) を追加するには、`addParticipant` を使用します。 `Identifier` の種類のいずれかを指定します。 `remoteParticipant` インスタンスを同期的に返します。 参加者が通話に正常に追加されると、通話から `remoteParticipantsUpdated` イベントが発生します。
 
 ```js
 const userIdentifier = { communicationUserId: <ACS_USER_ID> };
@@ -441,7 +445,7 @@ const remoteVideoStream: RemoteVideoStream = call.remoteParticipants[0].videoStr
 const streamType: MediaStreamType = remoteVideoStream.mediaStreamType;
 ```
 
-`RemoteVideoStream` をレンダリングするには、`isAvailableChanged` イベントをサブスクライブする必要があります。 `isAvailable` プロパティが `true` に変更された場合、リモート参加者はストリームを送信しています。 それが発生したら、`VideoStreamRenderer` の新しいインスタンスを作成し、非同期 `createView` メソッドを使用して新しい `VideoStreamRendererView` インスタンスを作成します。  その後、任意の UI 要素に `view.target` を付加できます。
+`RemoteVideoStream` をレンダリングするには、その `isAvailableChanged` イベントをサブスクライブする必要があります。 `isAvailable` プロパティが `true` に変更された場合、リモート参加者はストリームを送信しています。 それが発生したら、`VideoStreamRenderer` の新しいインスタンスを作成し、非同期 `createView` メソッドを使用して新しい `VideoStreamRendererView` インスタンスを作成します。  その後、任意の UI 要素に `view.target` を付加できます。
 
 リモート ストリームの使用可否が変わるたびに、`VideoStreamRenderer` 全体を破棄するか、特定の `VideoStreamRendererView` を破棄するか、それらを保持するかを選択できますが、これによって空の動画フレームが表示されます。
 
@@ -488,7 +492,6 @@ function subscribeToRemoteVideoStream(remoteVideoStream: RemoteVideoStream) {
   ```
 
 ### <a name="videostreamrenderer-methods-and-properties"></a>VideoStreamRenderer のメソッドとプロパティ
-
 リモート動画ストリームをレンダリングするためにアプリケーション UI に付加できる `VideoStreamRendererView` インスタンスを作成し、非同期 `createView()` メソッドを使用します。これにより、ストリームをレンダリングする準備ができたときに解決され、DOM ツリー内のどこにでも追加できる `video` 要素を表す `target` プロパティを含むオブジェクトが返されます
 
   ```js
@@ -523,7 +526,7 @@ view.updateScalingMode('Crop')
 
 ## <a name="device-management"></a>デバイス管理
 
-`deviceManager` で、通話でオーディオとビデオのストリームを送信できるローカル デバイスを指定できます。 これにより、ネイティブ ブラウザー API を使用して、別のユーザーのマイクやカメラにアクセスするためのアクセス許可を要求することもできます。
+`deviceManager` で、通話でオーディオとビデオのストリームを送信できるローカル デバイスを列挙できます。 また、ローカル デバイスのマイクやカメラにアクセスするためのアクセス許可を要求するためにも使用できます。
 
 `callClient.getDeviceManager()` メソッドを呼び出すことによって `deviceManager` にアクセスできます。
 
@@ -533,7 +536,7 @@ const deviceManager = await callClient.getDeviceManager();
 
 ### <a name="get-local-devices"></a>ローカル デバイスを取得する
 
-ローカル デバイスにアクセスするには、`deviceManager` で列挙メソッドを使用します。
+ローカル デバイスにアクセスするには、`deviceManager` で列挙メソッドを使用します。 列挙は非同期アクションです。
 
 ```js
 //  Get a list of available video devices for use.

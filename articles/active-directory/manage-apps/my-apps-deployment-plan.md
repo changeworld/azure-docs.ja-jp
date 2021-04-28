@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/29/2020
 ms.author: baselden
-ms.openlocfilehash: 777daecc119a158f11d865489e4eb497c3bc7899
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 9f05e14de9d6ebe76f722d1e4b21bc2085a74888
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376598"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125138"
 ---
 # <a name="plan-azure-active-directory-my-apps-configuration"></a>Azure Active Directory マイ アプリの構成を計画する
 
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) のマイ アプリは、アプリの起動と
 
 ### <a name="group-owner-consent-for-apps-accessing-data"></a>アプリがデータにアクセスすることへのグループ所有者の同意
 
-グループ所有者とチーム所有者は、アプリケーション (たとえば、サードパーティ ベンダーによって発行されたアプリケーション) が、グループに関連付けられている組織のデータにアクセスすることを承認できます。 詳細については、「[Microsoft Teams でのリソース固有の同意](https://docs.microsoft.com/microsoftteams/resource-specific-consent)」を参照してください。 
+グループ所有者とチーム所有者は、アプリケーション (たとえば、サードパーティ ベンダーによって発行されたアプリケーション) が、グループに関連付けられている組織のデータにアクセスすることを承認できます。 詳細については、「[Microsoft Teams でのリソース固有の同意](/microsoftteams/resource-specific-consent)」を参照してください。 
 
 この機能を許可するか無効にするかを構成できます。
 
@@ -257,4 +257,3 @@ Azure Active Directory 内で必要なタスクを実行するには、最小限
 [Azure AD Multi-Factor Authentication のデプロイを計画する](../authentication/howto-mfa-getstarted.md)
 
 [アプリケーション プロキシのデプロイ計画](application-proxy-deployment-plan.md)
-

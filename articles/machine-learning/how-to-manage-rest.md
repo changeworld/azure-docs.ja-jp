@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 01/31/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: b61050db29ff960b7923f2211b2f09649608b37e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: dcab70d75ca5a46242b1d43d28e148dc5f54b2d2
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102520321"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888964"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>REST を使用して Azure ML リソースの作成、実行、削除を行う
 
@@ -265,7 +265,7 @@ curl -X PUT \
 ```
 
 > [!Note]
-> Windows ターミナルでは、JSON データを送信するときに、二重引用符記号をエスケープすることが必要になる場合があります。 つまり、`"location"` などのテキストが `\"location\"` になります。 
+> Windows Terminal では、JSON データを送信するときに、二重引用符記号をエスケープすることが必要になる場合があります。 つまり、`"location"` などのテキストが `\"location\"` になります。 
 
 要求が成功すると `201 Created` 応答が返されますが、この応答は、プロビジョニング プロセスが開始されたことを意味するにすぎないことに注意してください。 それが正常に完了したことを確認するには、ポーリングする (またはポータルを使用する) 必要があります。
 

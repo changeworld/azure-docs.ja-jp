@@ -10,14 +10,14 @@ author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 01/26/2021
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b842934ea6bb458a59a53ea7068aa9ece98aacf1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: 2874878c8b03b6cf63c2a5214a0de68000d51569
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98796161"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885634"
 ---
 # <a name="data-ingestion-with-azure-data-factory"></a>Azure Data Factory を使用したデータ インジェスト
 

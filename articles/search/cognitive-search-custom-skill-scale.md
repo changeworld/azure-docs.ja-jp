@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: 4fdc222fa20aef6639bf6d5d485f7dcf6b6ca535
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f80e78da5c7d226c704c8b13fc496e416f5d0f0d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105641139"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125591"
 ---
 # <a name="efficiently-scale-out-a-custom-skill"></a>カスタム スキルを効率的にスケールアウトする
 
@@ -26,7 +26,7 @@ ms.locfileid: "105641139"
 
 + カスタム スキルで実装する必要がある入出力インターフェイスの概要については、[カスタム スキル インターフェイス](cognitive-search-custom-skill-interface.md)に関する記事を参照してください。
 
-+ 環境を設定します。 初めに、[このチュートリアルを最初から最後まで](/azure/azure-functions/create-first-function-vs-code-python)実行することで、Visual Studio Code と Python の拡張機能を使用してサーバーレス Azure Functions を設定できます。
++ 環境を設定します。 初めに、[このチュートリアルを最初から最後まで](../azure-functions/create-first-function-vs-code-python.md)実行することで、Visual Studio Code と Python の拡張機能を使用してサーバーレス Azure Functions を設定できます。
 
 ## <a name="skillset-configuration"></a>スキルセットの構成
 

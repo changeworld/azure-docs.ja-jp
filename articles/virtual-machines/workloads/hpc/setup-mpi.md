@@ -5,15 +5,15 @@ author: vermagit
 ms.service: virtual-machines
 ms.subservice: hpc
 ms.topic: article
-ms.date: 03/18/2021
+ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 66de34c43ab1b3a6b4245f77196793bf9ad8530c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f43fc94174ebdcfdf447d3635a696193959849fa
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606642"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107600296"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>HPC の Message Passing Interface を設定する
 
@@ -30,6 +30,13 @@ SR-IOV 対応の [RDMA 対応 VM](../../sizes-hpc.md#rdma-capable-instances) の
 
 > [!NOTE]
 > 次はコード スニペットの例です。 パッケージの最新の安定バージョンを使用するか、 [azhpc イメージ リポジトリ](https://github.com/Azure/azhpc-images/blob/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc/install_mpis.sh)を参照することをお勧めします。
+
+## <a name="choosing-mpi-library"></a>MPI ライブラリを選択する
+HPC アプリケーションで特定の MPI ライブラリが推奨されている場合は、最初にそのバージョンを使用します。 選択できる MPI について柔軟性があり、最高のパフォーマンスを必要とする場合に、HPC-X を試します。 全体として、HPC-X MPI では、InfiniBand インターフェイスに UCX フレームワークを使用して最高のパフォーマンスが発揮され、Mellanox InfiniBand のハードウェアとソフトウェアのすべての機能が利用されます。 さらに、HPC-X と OpenMPI は ABI 互換性があるため、OpenMPI でビルドされた HPC-X で HPC アプリケーションを動的に実行できます。 同様に、Intel MPI、MVAPICH、MPICH は ABI 互換性があります。
+
+次の図は、一般的な MPI ライブラリのアーキテクチャを示しています。
+
+![一般的な MPI ライブラリのアーキテクチャ](./media/mpi-architecture.png)
 
 ## <a name="ucx"></a>UCX
 
@@ -59,8 +66,22 @@ mv hpcx-${HPCX_VERSION}-gcc-MLNX_OFED_LINUX-5.0-1.0.0.0-redhat7.7-x86_64 ${INSTA
 HPCX_PATH=${INSTALL_PREFIX}/hpcx-${HPCX_VERSION}-gcc-MLNX_OFED_LINUX-5.0-1.0.0.0-redhat7.7-x86_64
 ```
 
-HPC-X を実行します
+次のコマンドには、HPC-X と OpenMPI で推奨される mpirun のいくつかの引数が示されています。
+```bash
+mpirun -n $NPROCS --hostfile $HOSTFILE --map-by ppr:$NUMBER_PROCESSES_PER_NUMA:numa:pe=$NUMBER_THREADS_PER_PROCESS -report-bindings $MPI_EXECUTABLE
+```
+ここで、
 
+|パラメーター|Description                                        |
+|---------|---------------------------------------------------|
+|`NPROCS`   |MPI プロセスの数を指定します (例: `-n 16`)。|
+|`$HOSTFILE`|MPI プロセスを実行する場所を示すために、ホスト名または IP アドレスを含むファイルを指定します (例: `--hostfile hosts`)。|
+|`$NUMBER_PROCESSES_PER_NUMA`   |各 NUMA ドメインで実行される MPI プロセスの数を指定します。 例: NUMA あたり 4 つの mpi プロセスを指定するには、`--map-by ppr:4:numa:pe=1` を使用します。|
+|`$NUMBER_THREADS_PER_PROCESS`  |MPI プロセスあたりのスレッド数を指定します。 例: NUMA あたり 1 つの MPI プロセスと 4 つのスレッドを指定するには、`--map-by ppr:1:numa:pe=4` を使用します。|
+|`-report-bindings` |コアにマッピングされている MPI プロセスを出力します。これは、MPI プロセスの固定が正しいことを確認するのに役立ちます。|
+|`$MPI_EXECUTABLE`  |MPI ライブラリにリンクが構築される MPI 実行可能ファイルを指定します。 MPI コンパイラ ラッパーでは、これが自動的に実行されます。 たとえば、`mpicc` や `mpif90` などです。|
+
+OSU 待機時間のマイクロベンチマークを実行する例を次に示します。
 ```bash
 ${HPCX_PATH}mpirun -np 2 --map-by ppr:2:node -x UCX_TLS=rc ${HPCX_PATH}/ompi/tests/osu-micro-benchmarks-5.3.2/osu_latency
 ```
@@ -68,6 +89,11 @@ ${HPCX_PATH}mpirun -np 2 --map-by ppr:2:node -x UCX_TLS=rc ${HPCX_PATH}/ompi/tes
 ### <a name="optimizing-mpi-collectives"></a>MPI コレクティブの最適化
 
 MPI コレクティブ通信プリミティブでは、グループ通信操作を実装するための柔軟で移植可能な方法が提供されます。 これらは、さまざまな科学的並列アプリケーションで広く使用されており、アプリケーションのパフォーマンス全体に大きな影響を与えます。 コレクティブ通信用の HPC-X および HCOLL ライブラリを使用したコレクティブ通信のパフォーマンスを最適化する構成パラメーターについて詳しくは、[TechCommunity の記事](https://techcommunity.microsoft.com/t5/azure-compute/optimizing-mpi-collective-communication-using-hpc-x-on-azurehpc/ba-p/1356740)を参照してください。
+
+たとえば、密結合された MPI アプリケーションで大量のコレクティブ通信が行われていると思われる場合は、Hierarchical Collectives (HCOLL) を有効にしてみることができます。 それらの機能を有効にするには、次のパラメーターを使用します。
+```bash
+-mca coll_hcoll_enable 1 -x HCOLL_MAIN_IB=<MLX device>:<Port>
+```
 
 > [!NOTE] 
 > HPC-X 2.7.4 + では、MOFED の UCX バージョン と HPC-X のものが異なる場合は、明示的に LD_LIBRARY_PATH を渡す必要がある場合があります。
@@ -93,7 +119,7 @@ cd openmpi-${OMPI_VERSION}
 ./configure --prefix=${INSTALL_PREFIX}/openmpi-${OMPI_VERSION} --with-ucx=${UCX_PATH} --with-hcoll=${HCOLL_PATH} --enable-mpirun-prefix-by-default --with-platform=contrib/platform/mellanox/optimized && make -j$(nproc) && make install
 ```
 
-最適なパフォーマンスを得るには、`ucx`と `hcoll` を使用して OpenMPI を実行し ます。
+最適なパフォーマンスを得るには、`ucx`と `hcoll` を使用して OpenMPI を実行し ます。 また、「[HPC-X](#hpc-x)」の例も参照してください。
 
 ```bash
 ${INSTALL_PREFIX}/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml ucx --mca btl ^vader,tcp,openib -x UCX_NET_DEVICES=mlx5_0:1  -x UCX_IB_PKEY=0x0003  ./osu_latency
@@ -103,12 +129,38 @@ ${INSTALL_PREFIX}/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml 
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-選択したバージョンの [Intel MPI](https://software.intel.com/mpi-library/choose-download) をダウンロードします。 バージョンに応じて I_MPI_FABRICS 環境変数を変更します。
+選択したバージョンの [Intel MPI](https://software.intel.com/mpi-library/choose-download) をダウンロードします。 Intel MPI 2019 リリースは、Open Fabrics Alliance (OFA) フレームワークから Open Fabrics Interfaces (OFI) f フレームワークに切り替えられており、現在は libfabric がサポートされています。 InfiniBand のサポートには、mlx と verbs の 2 つのプロバイダーがあります。
+バージョンに応じて I_MPI_FABRICS 環境変数を変更します。
 - Intel MPI 2019 および 2021: `I_MPI_FABRICS=shm:ofi`、`I_MPI_OFI_PROVIDER=mlx` を使用してください。 `mlx`プロバイダーは UCX を使用します。 Verb の使用が不安定で、パフォーマンスが低下しています。 詳しくは、[TechCommunity 記事](https://techcommunity.microsoft.com/t5/azure-compute/intelmpi-2019-on-azure-hpc-clusters/ba-p/1403149)をご覧ください。
 - Intel MPI 2018: `I_MPI_FABRICS=shm:ofa` を使用
 - Intel MPI 2016: `I_MPI_DAPL_PROVIDER=ofa-v2-ib0` を使用
 
+Intel MPI 2019 Update 5 以上の推奨されるいくつかの mpirun 引数を次に示します。
+```bash
+export FI_PROVIDER=mlx
+export I_MPI_DEBUG=5
+export I_MPI_PIN_DOMAIN=numa
+
+mpirun -n $NPROCS -f $HOSTFILE $MPI_EXECUTABLE
+```
+ここで、
+
+|パラメーター|説明                                        |
+|---------|---------------------------------------------------|
+|`FI_PROVIDER`  |使用する libfabric プロバイダーを指定します。これは、使用されている API、プロトコル、およびネットワークに影響します。 verbs はもう 1 つのオプションですが、一般に mlx の方がパフォーマンスに優れています。|
+|`I_MPI_DEBUG`|追加のデバッグ出力のレベルを指定します。これにより、プロセスが固定される場所と使用されるプロトコルとネットワークに関する詳細を指定できます。|
+|`I_MPI_PIN_DOMAIN` |プロセスを固定する方法を指定します。 たとえば、コア、ソケット、または NUMA ドメインへ固定できます。 この例では、この環境変数を numa に設定しています。これは、プロセスが NUMA ノード ドメインに固定されることを意味します。|
+
+### <a name="optimizing-mpi-collectives"></a>MPI コレクティブの最適化
+
+他にもいくつかのオプションを試してみることができます。特に、集合演算で著しく時間がかかっている場合です。 Intel MPI 2019 Update 5 以上では、プロバイダー mlx がサポートされ、UCX フレームワークを使用して InfiniBand と通信します。 また、HCOLL もサポートされています。
+```bash
+export FI_PROVIDER=mlx
+export I_MPI_COLL_EXTERNAL=1
+```
+
 ### <a name="non-sr-iov-vms"></a>SR-IOV 非対応 VM
+
 SR-IOV 非対応 VM の場合、5.x ランタイムの[無料評価版](https://registrationcenter.intel.com/en/forms/?productid=1740)をダウンロードする例は次のとおりです。
 ```bash
 wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
@@ -125,10 +177,9 @@ SUSE Linux Enterprise Server の VM イメージ バージョンが SLES 12 SP3 
 sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
 ```
 
-## <a name="mvapich2"></a>MVAPICH2
+## <a name="mvapich"></a>MVAPICH
 
-MVAPICH2 をビルドします。
-
+MVAPICH2 をビルドする例を次に示します。 以下で使用されているものよりも新しいバージョンを利用できる場合があることに注意してください。
 ```bash
 wget http://mvapich.cse.ohio-state.edu/download/mvapich/mv2/mvapich2-2.3.tar.gz
 tar -xv mvapich2-2.3.tar.gz
@@ -137,11 +188,28 @@ cd mvapich2-2.3
 make -j 8 && make install
 ```
 
-MVAPICH2 を実行します。
-
+OSU 待機時間のマイクロベンチマークを実行する例を次に示します。
 ```bash
 ${INSTALL_PREFIX}/bin/mpirun_rsh -np 2 -hostfile ~/hostfile MV2_CPU_MAPPING=48 ./osu_latency
 ```
+
+次の一覧に、推奨されるいくつかの `mpirun` 引数を示します。
+```bash
+export MV2_CPU_BINDING_POLICY=scatter
+export MV2_CPU_BINDING_LEVEL=numanode
+export MV2_SHOW_CPU_BINDING=1
+export MV2_SHOW_HCA_BINDING=1
+
+mpirun -n $NPROCS -f $HOSTFILE $MPI_EXECUTABLE
+```
+ここで、
+
+|パラメーター|説明                                        |
+|---------|---------------------------------------------------|
+|`MV2_CPU_BINDING_POLICY`   |使用するバインド ポリシーを指定します。これは、プロセスがコア ID に固定される方法に影響します。 この例では、scatter を指定するため、プロセスが NUMA ドメイン間で均等に分散されます。|
+|`MV2_CPU_BINDING_LEVEL`|プロセスを固定する場所を指定します。 この例では numanode に設定しています。これは、プロセスが NUMA ドメインのユニットに固定されることを意味します。|
+|`MV2_SHOW_CPU_BINDING` |プロセスが固定されている場所に関するデバッグ情報を取得する必要がある場合に指定します。|
+|`MV2_SHOW_HCA_BINDING` |各プロセスで使用されているホスト チャネル アダプターに関するデバッグ情報を取得する必要がある場合に指定します。|
 
 ## <a name="platform-mpi"></a>プラットフォーム MPI
 

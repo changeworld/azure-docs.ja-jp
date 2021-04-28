@@ -5,18 +5,18 @@ description: Azure Machine Learning コンピューティング インスタン�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, devx-track-azurecli
+ms.topic: how-to
+ms.custom: devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 4ae4094e4a356c5394c2bdf887d3b60e40989ecd
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628953"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885742"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning コンピューティング インスタンスを作成して管理する
 
@@ -93,7 +93,7 @@ except ComputeTargetException:
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-詳細については、[az ml computetarget create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance) のリファレンスを参照してください。
+詳細については、[az ml computetarget create computeinstance](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance) のリファレンスを参照してください。
 
 # <a name="studio"></a>[スタジオ](#tab/azure-studio)
 
@@ -181,7 +181,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    詳細については、[az ml computetarget の computeinstance の停止](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop)に関する記事をご覧ください。
+    詳細については、[az ml computetarget の computeinstance の停止](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop)に関する記事をご覧ください。
 
 * [開始] 
 
@@ -189,7 +189,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    詳細については、[az ml computetarget の computeinstance の開始](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start)に関する記事をご覧ください。
+    詳細については、[az ml computetarget の computeinstance の開始](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start)に関する記事をご覧ください。
 
 * やり直し 
 
@@ -197,7 +197,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    詳細については、[az ml computetarget の computeinstance 再起動](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart)に関する記事をご覧ください。
+    詳細については、[az ml computetarget の computeinstance 再起動](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart)に関する記事をご覧ください。
 
 * 削除
 
@@ -205,7 +205,7 @@ Azure Machine Learning Studio のワークスペースで、いずれかのノ�
     az ml computetarget delete -n instance -v
     ```
 
-    詳細については、[az ml computetarget の computeinstance の削除](/cli/azure/ext/azure-cli-ml/ml/computetarget#ext-azure-cli-ml-az-ml-computetarget-delete)に関する記事をご覧ください。
+    詳細については、[az ml computetarget の computeinstance の削除](/cli/azure/ml/computetarget#az_ml_computetarget_delete)に関する記事をご覧ください。
 
 # <a name="studio"></a>[スタジオ](#tab/azure-studio)
 

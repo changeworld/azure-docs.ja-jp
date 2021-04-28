@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mjbrown
-ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: f7e9de1f23ec46af08fe96b5db3170fac9a7eb2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-csharp
+ms.openlocfilehash: b6ae973e9008b6753113e6e71361658ab825e4b2
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93101631"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074247"
 ---
 # <a name="create-a-container-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API にコンテナーを作成する
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

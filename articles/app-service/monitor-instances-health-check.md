@@ -6,12 +6,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 12/03/2020
 ms.author: msangapu
-ms.openlocfilehash: e9d92c60e74ac9106246ccd445afaca926065e5f
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 73f3caf77bcf1f0e77f7f97ef747d4a8f35033e5
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104871199"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886642"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>正常性チェックを使用して App Service インスタンスを監視する
 
@@ -51,7 +51,7 @@ ms.locfileid: "104871199"
 | アプリ設定の名前 | 使用できる値 | 説明 |
 |-|-|-|
 |`WEBSITE_HEALTHCHECK_MAXPINGFAILURES` | 2 ～ 10 | ping エラーの最大数。 たとえば、`2` に設定すると、ping に `2` 回失敗した後にインスタンスが削除されます。 さらに、スケール アップまたはスケール アウトする場合は、新しいインスタンスの準備ができていることを保証するために、App Service によって正常性チェック パスに対して ping が実行されます。 |
-|`WEBSITE_HEALTHCHECK_MAXUNHEALTYWORKERPERCENT` | 0 ～ 100 | 正常なインスタンスが過負荷にならないように、ご利用のインスタンスの半分以下が除外されます。 たとえば、App Service プランが 4 つのインスタンスにスケーリングされ、3 つに異常が発生した場合、最大 2 つが除外されます。 他の 2 つのインスタンス (1 つは正常、1 つは異常) は、引き続き要求を受信することになります。 すべてのインスタンスが異常であるという最悪のシナリオでは、何も除外されません。 この動作をオーバーライドするには、アプリ設定を `0` ～ `100` の値に設定します。 これを大きな値に設定すると、異常なインスタンスがさらに多く削除されます (既定は 50)。 |
+|`WEBSITE_HEALTHCHECK_MAXUNHEALTHYWORKERPERCENT` | 0 ～ 100 | 正常なインスタンスが過負荷にならないように、ご利用のインスタンスの半分以下が除外されます。 たとえば、App Service プランが 4 つのインスタンスにスケーリングされ、3 つに異常が発生した場合、最大 2 つが除外されます。 他の 2 つのインスタンス (1 つは正常、1 つは異常) は、引き続き要求を受信することになります。 すべてのインスタンスが異常であるという最悪のシナリオでは、何も除外されません。 この動作をオーバーライドするには、アプリ設定を `0` ～ `100` の値に設定します。 これを大きな値に設定すると、異常なインスタンスがさらに多く削除されます (既定は 50)。 |
 
 #### <a name="authentication-and-security"></a>認証とセキュリティ
 

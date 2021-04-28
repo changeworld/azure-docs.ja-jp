@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 06/08/2020
-ms.openlocfilehash: d8f9d4e0b002348f286f45c6b45c96531c5d6530
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b8c9610ca7043ed6b8baa86e35ea76c74ed75bba
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105558229"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883996"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -84,7 +84,7 @@ Azure に VM を移行する前に、それらに対していくつかの変更�
 
 **操作** | **VMware (エージェントレス移行)** | **VMware (エージェントベース)/物理マシン** | **Hyper-V 上の Windows** 
 --- | --- | --- | ---
-**SAN ポリシーを Online All に構成する**<br/><br/> Azure VM 内の Windows ボリュームで、オンプレミスの VM と同じドライブ文字の割り当てが使用されます。 | Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。<br/><br/> それより前のオペレーティング システムでは、手動で構成します。 | ほとんどの場合、自動的に設定されます。 | 手動で構成します。
+**SAN ポリシーを Online All に構成する**<br/><br/> | Windows Server 2008 R2 以降が実行されているマシンでは、自動的に設定されます。<br/><br/> それより前のオペレーティング システムでは、手動で構成します。 | ほとんどの場合、自動的に設定されます。 | 手動で構成します。
 **Hyper-V ゲスト統合をインストールする** | Windows Server 2003 が実行されているマシンに[手動でインストール](prepare-windows-server-2003-migration.md#install-on-vmware-vms)します。 | Windows Server 2003 が実行されているマシンに[手動でインストール](prepare-windows-server-2003-migration.md#install-on-vmware-vms)します。 | Windows Server 2003 が実行されているマシンに[手動でインストール](prepare-windows-server-2003-migration.md#install-on-hyper-v-vms)します。
 **Azure シリアル コンソールを有効にする**<br/><br/>トラブルシューティングのために、Azure VM の[コンソールを有効](/troubleshoot/azure/virtual-machines/serial-console-windows)にします。 VM を再起動する必要はありません。 Azure VM は、ディスク イメージを使用して起動します。 ディスク イメージ ブートは、新しい VM の再起動に相当します。 | 手動で有効にします。 | 手動で有効にします。 | 手動で有効にします。
 **移行後に接続する**<br/><br/> 移行後に接続するためには、移行前に行うべき手順が数多くあります。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。 | 手動で[設定](#prepare-to-connect-to-azure-windows-vms)します。

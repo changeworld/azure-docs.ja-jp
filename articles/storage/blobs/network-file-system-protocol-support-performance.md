@@ -9,12 +9,12 @@ ms.date: 02/23/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: de511fa30caa608c2dc87b6c0ba166ed56ff9499
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 16c2927aef83dfa1a3a69298e865c5684f40b7b9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490184"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144585"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage-preview"></a>Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 のパフォーマンスに関する考慮事項 (プレビュー)
 
@@ -39,7 +39,7 @@ Azure Blob Storage は、ストレージ アカウントのエグレスとイン
 
 ## <a name="use-premium-performance-tier-for-small-scale-applications"></a>小規模なアプリケーションに Premium パフォーマンス レベルを使用する
 
-クライアントを追加することにより、すべてのアプリケーションをスケールアップできるわけではありません。 そのようなアプリケーションの場合は、[Azure Premium ブロック BLOB ストレージ アカウント](storage-blob-create-account-block-blob.md)を使用することで、低遅延と高トランザクション レートが一貫して提供されます。 Premium ブロック BLOB ストレージ アカウントは、より少ないスレッドとクライアントで最大帯域幅に到達できます。 たとえば、クライアントが 1 つの場合、Standard パフォーマンスの汎用 v2 ストレージ アカウントで使用される同じセットアップと比較して、Premium ブロック BLOB ストレージ アカウントでは **2.3 倍** の帯域幅を実現できます。 
+クライアントを追加することにより、すべてのアプリケーションをスケールアップできるわけではありません。 そのようなアプリケーションの場合は、[Azure Premium ブロック BLOB ストレージ アカウント](../common/storage-account-create.md)を使用することで、低遅延と高トランザクション レートが一貫して提供されます。 Premium ブロック BLOB ストレージ アカウントは、より少ないスレッドとクライアントで最大帯域幅に到達できます。 たとえば、クライアントが 1 つの場合、Standard パフォーマンスの汎用 v2 ストレージ アカウントで使用される同じセットアップと比較して、Premium ブロック BLOB ストレージ アカウントでは **2.3 倍** の帯域幅を実現できます。 
 
 次のグラフの各棒は、Premium と Standard のパフォーマンス ストレージ アカウントで実現される帯域幅の違いを示しています。 クライアントの数が増えるにつれて、その違いは小さくなります。  
 

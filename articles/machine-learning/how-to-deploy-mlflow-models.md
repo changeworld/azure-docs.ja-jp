@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 12/23/2020
-ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: c45b819f9fc02fae40c2bf7fc5c2247c8c0a6147
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.topic: how-to
+ms.custom: devx-track-python
+ms.openlocfilehash: a8f19a9c731b24b5c839a29035aab118b91cf891
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102517482"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885382"
 ---
 # <a name="deploy-mlflow-models-as-azure-web-services-preview"></a>MLflow モデルを Azure Web サービスとしてデプロイする (プレビュー)
 

@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 03/29/2021
+ms.date: 04/16/2021
 ms.author: duau
-ms.openlocfilehash: c4c36013f100d2fc5265024432cc01a6622a4024
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0bbe16fb63a4546b4b4745df16074f6a4b0cb26b
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932371"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107599538"
 ---
 # <a name="azure-route-server-preview-faq"></a>Azure Route Server (プレビュー) に関する FAQ
 
@@ -29,24 +29,33 @@ Azure Route Server は、ネットワーク仮想アプライアンス (NVA) と
 
 いいえ。 Azure Route Server は、高可用性を使用して設計されたサービスです。 [Availability Zones](../availability-zones/az-overview.md) をサポートする Azure リージョンにデプロイされている場合は、ゾーンレベルの冗長性があります。
 
+### <a name="how-many-route-servers-can-i-create-in-a-virtual-network"></a>仮想ネットワークにはいくつのルート サーバーを作成できますか。
+
+VNet 内に作成できるルート サーバーは 1 つだけです。 これは、*RouteServerSubnet* という名前の指定されたサブネットにデプロイする必要があります。
+
+### <a name="does-azure-route-server-support-vnet-peering"></a>Azure Route Server では VNet ピアリングがサポートされていますか。
+
+はい。 Azure Route Server をホスティングしている VNet を別の VNet にピアリングし、後者の VNet でリモート ゲートウェイの使用を有効にした場合、Azure Route Server はその VNet のアドレス空間を学習し、ピアリングされたすべての NVA に送信します。 また、ピアリングされた VNet 内の VM のルーティング テーブルに、NVA からのルートがプログラミングされます。 
+
+
 ### <a name="what-routing-protocols-does-azure-route-server-support"></a><a name = "protocol"></a>Azure Route Server ではどのようなルーティング プロトコルがサポートされていますか。
 
 Azure Route Server では、Border Gateway Protocol (BGP) のみがサポートされています。 仮想ネットワーク内の専用サブネットに Azure Route Server をデプロイする必要があるため、NVA ではマルチホップの外部 BGP をサポートする必要があります。 選択する [ASN](https://en.wikipedia.org/wiki/Autonomous_system_(Internet)) は、NVA で BGP を構成するときに Azure Route Server によって使用されるものと異なる必要があります。
 
 ### <a name="does-azure-route-server-route-data-traffic-between-my-nva-and-my-vms"></a>Azure Route Server では NVA と VM の間でデータ トラフィックがルーティングされますか。
 
-いいえ。 Azure Route Server では、NVA との間でのみ BGP ルートが交換されます。 データ トラフィックは、NVA と、選択した VM の間で直接送受信されます。
+いいえ。 Azure Route Server では、NVA との間でのみ BGP ルートが交換されます。 データ トラフィックは、NVA と宛先 VM の間で直接送受信されます。
 
 ### <a name="does-azure-route-server-store-customer-data"></a>Azure Route Server では、顧客データは保存されますか。
 いいえ。 Azure Route Server が行うのは、BGP ルートを NVA と交換し、それらを仮想ネットワークに伝達することのみです。
 
-### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-will-it-program-all-copies-of-the-route-but-each-with-a-different-next-hop-to-the-vms-in-the-virtual-network"></a>Azure Route Server が複数の NVA から同じルートを受信した場合、仮想ネットワーク内の VM に対してルートのすべてのコピー (ただし、それぞれ次ホップが異なる) がプログラムされますか。
+### <a name="if-azure-route-server-receives-the-same-route-from-more-than-one-nva-how-does-it-handle-them"></a>Azure Route Server が複数の NVA から同じルートを受け取る場合、どのように処理されますか。
 
-はい (ルートの AS パスの長さが同じ場合にのみ)。 VM によってこのルートの宛先にトラフィックが送信されると、VM ホストによって等コスト マルチパス (ECMP) ルーティングが行われます。 ただし、1 つの NVA によって、他の NVA よりも AS パスの長さが短いルートが送信された場合。 Azure Route Server では、仮想ネットワーク内の VM に対して、この NVA に設定された次ホップを持つルートのみがプログラムされます。
+ルートの AS パスの長さが同じ場合、Azure Route Server は、仮想ネットワーク内の VM へのルートの複数のコピーを、それぞれ異なるネクスト ホップで作成します。 VM によってこのルートの宛先にトラフィックが送信されると、VM ホストによって等コスト マルチパス (ECMP) ルーティングが行われます。 ただし、1つの NVA が、他の NVA よりも短い AS パスの長さでルートを送信した場合、Azure Route Server は、この NVA に対してネクスト ホップが設定されているルートのみを、仮想ネットワーク内の VM にプログラムします。
 
-### <a name="does-azure-route-server-support-vnet-peering"></a>Azure Route Server では VNet ピアリングがサポートされていますか。
+### <a name="does-azure-route-server-preserve-the-bgp-communities-of-the-route-it-receives"></a>Azure Route Server は、受信したルートの BGP コミュニティを保持しますか。
 
-はい。 Azure Route Server をホストしている VNet を別の VNet にピアリングし、その VNet で [Use Remote Gateway]\(リモートゲートウェイの使用\) を有効にする場合。 Azure Route Server では、その VNet のアドレス空間が確認され、ピアリングされたすべての NVA にそれらが送信されます。
+はい。Azure Route Server は、BGP コミュニティを使用してルートを伝達します。
 
 ### <a name="what-autonomous-system-numbers-asns-can-i-use"></a>どの自律システム番号 (ASN) を使用できますか。
 

@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 03/29/2021
-ms.openlocfilehash: 5aa34ce15d96112450a7c15debcd92312c1d9e19
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: fc0d0b0a589ff5b8354a56a2f8c95062f4d2d9a9
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284544"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076151"
 ---
 # <a name="what-is-spatial-analysis"></a>空間分析とは
 
@@ -45,7 +45,7 @@ ms.locfileid: "106284544"
 
 ### <a name="public-preview-gating"></a>パブリック プレビューの限定
 
-空間分析向けに設計されたシナリオで空間分析を使用してもらえるように、Microsoft では、お客様がアプリケーション プロセスを通じてこのテクノロジを利用できるようにしています。 空間分析にアクセスするには、最初にオンラインの受付フォームに入力する必要があります。 [アプリケーションはこちらから開始します](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRyQZ7B8Cg2FEjpibPziwPcZUNlQ4SEVORFVLTjlBSzNLRlo0UzRRVVNPVy4u)。
+空間分析向けに設計されたシナリオで空間分析を使用してもらえるように、Microsoft では、お客様がアプリケーション プロセスを通じてこのテクノロジを利用できるようにしています。 空間分析にアクセスするには、最初にオンラインの受付フォームに入力する必要があります。 [アプリケーションはこちらから開始します](https://aka.ms/csgate)。
 
 空間分析パブリック プレビューへのアクセスは、Microsoft の資格基準、審査プロセス、およびこの制限プレビュー期間中での限られた数のお客様に対するサポートの可用性に基づき、Microsoft の独自の判断によって決定されます。 パブリック プレビューでは、Microsoft と重要な関係を持ち、推奨のユース ケースと、責任ある AI へのコミットメントに従った追加シナリオに関して Microsoft と協力することに関心があるお客様を求めています。
 
