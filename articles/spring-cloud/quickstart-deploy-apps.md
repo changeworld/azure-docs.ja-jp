@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 727354593488cd5af77408eaa7c8d9e747a0b071
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 99a2544a755f04bad0fcf36ead865a4311705566
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877590"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132847"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>クイック スタート:アプリをビルドして Azure Spring Cloud にデプロイする
 
@@ -24,8 +24,8 @@ ms.locfileid: "104877590"
 
 * このシリーズの先行する次のクイックスタートを完了しておきます。
 
-  * 「[Azure Spring Cloud サービスのプロビジョニング](spring-cloud-quickstart-provision-service-instance.md)」。
-  * 「[Azure Spring Cloud の構成サーバーを設定する](spring-cloud-quickstart-setup-config-server.md)」。
+  * 「[Azure Spring Cloud サービスのプロビジョニング](./quickstart-provision-service-instance.md)」。
+  * 「[Azure Spring Cloud の構成サーバーを設定する](./quickstart-setup-config-server.md)」。
 
 ## <a name="download-the-sample-app"></a>サンプル アプリ をダウンロードする
 
@@ -183,7 +183,7 @@ https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
 * Maven プラグイン
 * Intellij
 
-Azure CLI または Maven を使用してデプロイする前に、[Azure Spring Cloud のインスタンスのプロビジョニング](spring-cloud-quickstart-provision-service-instance.md)と[構成サーバーの設定](spring-cloud-quickstart-setup-config-server.md)を行う例を完了してください。
+Azure CLI または Maven を使用してデプロイする前に、[Azure Spring Cloud のインスタンスのプロビジョニング](./quickstart-provision-service-instance.md)と[構成サーバーの設定](./quickstart-setup-config-server.md)を行う例を完了してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -313,7 +313,7 @@ Azure にデプロイするには、Azure アカウントで Azure Toolkit for I
 1. **[Name]\(名前\)** フィールドで、既存の **名前** に「 *:gateway*」を追加します。
 1. **[Artifact]\(成果物\)** ボックスで、 *[com.piggymetrics:gateway:1.0-SNAPSHOT]* を選択します。
 1. **[Subscription]\(サブスクリプション\)** ボックスで、自分のサブスクリプションを確認します。
-1. **[Spring Cloud]** ボックスで、「[Azure Spring Cloud インスタンスをプロビジョニングする](./spring-cloud-quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
+1. **[Spring Cloud]** ボックスで、「[Azure Spring Cloud インスタンスをプロビジョニングする](./quickstart-provision-service-instance.md)」で作成した Azure Spring Cloud のインスタンスを選択します。
 1. **[Public Endpoint]\(パブリック エンドポイント\)** を *[Enable]\(有効化\)* に設定します。
 1. **[App:]\(アプリ:\)** ボックスで、 **[Create app]\(アプリの作成\)** を選択します。
 1. 「*gateway*」と入力し、 **[OK]** をクリックします。
@@ -355,7 +355,7 @@ Azure にデプロイするには、Azure アカウントで Azure Toolkit for I
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、サブスクリプションに残っていると課金が継続される Azure リソースを作成しました。 次のクイックスタートに進まない場合は、[リソースのクリーンアップ](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)に関する記事を参照してください。 それ以外の場合は、次のクイックスタートに進んでください。
+このクイックスタートでは、サブスクリプションに残っていると課金が継続される Azure リソースを作成しました。 次のクイックスタートに進まない場合は、[リソースのクリーンアップ](./quickstart-logs-metrics-tracing.md#clean-up-resources)に関する記事を参照してください。 それ以外の場合は、次のクイックスタートに進んでください。
 
 > [!div class="nextstepaction"]
-> [ログ、メトリック、およびトレース](spring-cloud-quickstart-logs-metrics-tracing.md)
+> [ログ、メトリック、およびトレース](./quickstart-logs-metrics-tracing.md)

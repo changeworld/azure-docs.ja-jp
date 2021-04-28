@@ -8,19 +8,19 @@ author: amjads1
 ms.author: amjads
 ms.collection: linux
 ms.date: 02/05/2021
-ms.openlocfilehash: 2e862915bcc524db50e7e66c969b713f729c64aa
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 5ab11ac23fac73341c111d0d81fc225358bb689f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479646"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138285"
 ---
 # <a name="use-the-linux-diagnostic-extension-40-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension 4.0 を使用して、メトリックとログを監視する
 
 このドキュメントでは、Linux Diagnostic Extension (LAD) の最新バージョンについて説明します。
 
 > [!IMPORTANT]
-> バージョン 3.x の詳細については、「[Linux Diagnostic Extension 3.0 を使用して、メトリックとログを監視する](./diagnostics-linux-v3.md)」を参照してください。 バージョン 2.3 以前の詳細については、[Linux VM のパフォーマンスと診断データの監視](https://docs.microsoft.com/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)に関する記事を参照してください。
+> バージョン 3.x の詳細については、「[Linux Diagnostic Extension 3.0 を使用して、メトリックとログを監視する](./diagnostics-linux-v3.md)」を参照してください。 バージョン 2.3 以前の詳細については、[Linux VM のパフォーマンスと診断データの監視](/previous-versions/azure/virtual-machines/linux/classic/diagnostic-extension-v2)に関する記事を参照してください。
 
 ## <a name="introduction"></a>はじめに
 
@@ -52,7 +52,7 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 * LAD 2.3 で有効になっている既定の syslog コレクションをキャプチャします。
 * Azure portal エクスペリエンスを使用して、VM メトリックのチャート作成とアラート通知を行います。
 
-ダウンロード可能な構成は単なる例です。 ニーズに合うように変更します。
+ダウンロード可能な構成は単なる例です。 ニーズに合うように変更してください。
 
 ### <a name="supported-linux-distributions"></a>サポートされている Linux ディストリビューション
 
@@ -255,14 +255,14 @@ sinksConfig | (省略可能) メトリックとイベントの配信が可能な
 
 ARM テンプレート内の SAS トークンを取得するには、`listAccountSas` 関数を使用します。 テンプレートの例については、[List 関数の例](../../azure-resource-manager/templates/template-functions-resource.md#list-example)を参照してください。
 
-必要な SAS トークンを Azure portal で構築できます。
+必要な SAS トークンを Azure portal で作成できます。
 
 1. 拡張機能の書き込み先となる汎用ストレージ アカウントを選択します。
 1. 左側のメニューの **[設定]** で、 **[Shared Access Signature]** を選択します。
 1. 前に説明したように、選択を行います。
 1. **[SAS の生成]** を選択します。
 
-:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="スクリーンショットには、[Shared access signature] ページと、[SAS の生成] ボタンが表示されています。":::
+:::image type="content" source="./media/diagnostics-linux/make_sas.png" alt-text="[SAS の生成] ボタンが示された [Shared access signature] ページが表示されているスクリーンショット。":::
 
 生成された SAS を `storageAccountSasToken` フィールドにコピーします。 先頭の疑問符 (?) を削除します。
 
@@ -281,7 +281,7 @@ ARM テンプレート内の SAS トークンを取得するには、`listAccoun
 },
 ```
 
-省略可能な `sinksConfig` セクションでは、収集された情報が拡張機能によって送信される送信先をさらに定義します。 `"sink"` 配列には、追加のデータ シンクごとのオブジェクトが含まれています。 `"type"` 属性は、オブジェクトの他の属性を決定します。
+省略可能な `sinksConfig` セクションでは、収集された情報が拡張機能によって送信される送信先をさらに定義します。 `"sink"` 配列には、追加のデータ シンクごとのオブジェクトが含まれています。 `"type"` 属性によって、オブジェクトの他の属性が決まります。
 
 要素 | 値
 ------- | -----
@@ -400,7 +400,7 @@ sampleRateInSeconds | (省略可能) 生の (未集計) メトリックを収集
 resourceId | VM または VM が所属する仮想マシン スケール セットの Azure Resource Manager リソース ID。 また、構成でいずれかの `JsonBlob` シンクを使用する場合は、この設定も指定します。
 scheduledTransferPeriod | 集計メトリックが計算され、Azure Monitor メトリックに転送される頻度。 頻度は、IS 8601 の時間間隔として表されます。 最小の転送間隔は 60 秒、つまり、PT1M です。 少なくとも 1 つの `scheduledTransferPeriod` を指定します。
 
-`performanceCounters` セクションで指定されたメトリックのサンプルは、15 秒ごと、またはカウンターに明示的に定義されたサンプル レートで収集されます。 複数の `scheduledTransferPeriod` 頻度が表示されている場合、この例のように、各集計は独立して計算されます。
+`performanceCounters` セクションで指定されたメトリックのサンプルは、15 秒ごと、またはカウンターに明示的に定義されたサンプル レートで収集されます。 この例のように複数の `scheduledTransferPeriod` 頻度が指定されている場合、各集計は独立して計算されます。
 
 #### <a name="performancecounters"></a>performanceCounters
 
@@ -427,7 +427,7 @@ scheduledTransferPeriod | 集計メトリックが計算され、Azure Monitor �
 }
 ```
 
-省略可能な `performanceCounters` セクションでは、メトリックの収集を制御します。 生のサンプルは、[`scheduledTransferPeriod`](#metrics) ごとに集計され、次の値を生成します。
+省略可能な `performanceCounters` セクションでは、メトリックの収集が制御されます。 生のサンプルは、[`scheduledTransferPeriod`](#metrics) ごとに集計され、次の値が生成されます。
 
 * 平均
 * 最小値
@@ -437,17 +437,17 @@ scheduledTransferPeriod | 集計メトリックが計算され、Azure Monitor �
 
 要素 | 値
 ------- | -----
-sinks | (省略可能) LAD が集計したメトリック結果を送信するシンクの名前をコンマで区切ったリスト。 集計されたすべてのメトリックは、一覧表示された各シンクに発行されます。 例: `"EHsink1, myjsonsink"`. 詳細については、「[`sinksConfig`](#sinksconfig)」を参照してください。 
+sinks | (省略可能) LAD で集計したメトリックの結果を送信するシンクの名前をコンマで区切ったリスト。 集計されたすべてのメトリックは、一覧表示された各シンクに発行されます。 例: `"EHsink1, myjsonsink"`. 詳細については、「[`sinksConfig`](#sinksconfig)」を参照してください。 
 type | メトリックの実際のプロバイダーを識別します。
 class | `"counter"` とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counter | `"class"` とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
-counterSpecifier | Azure Monitor メトリック名前空間内で特定のメトリックを識別します。
+counterSpecifier | Azure Monitor メトリック名前空間内の特定のメトリックを識別します。
 condition | (省略可能) メトリックが適用されるオブジェクトのインスタンスを選択します。 または、そのオブジェクトのすべてのインスタンスの集計を選択します。 
-sampleRate | このメトリックの生のサンプルが収集されるレートを設定する IS 8601 間隔。 値が設定されていない場合、収集間隔は [`sampleRateInSeconds`](#ladcfg) の値によって設定されます。 サポートされている最小サンプル レートは 15 秒 (PT15S) です。
+sampleRate | このメトリックの生のサンプルが収集されるレートを設定する IS 8601 の間隔。 値が設定されていない場合、収集間隔は [`sampleRateInSeconds`](#ladcfg) の値によって設定されます。 サポートされている最小サンプル レートは 15 秒 (PT15S) です。
 unit | メトリックの単位を定義します。 次のいずれかの文字列にする必要があります: `"Count"`、`"Bytes"`、`"Seconds"`、`"Percent"`、`"CountPerSecond"`、`"BytesPerSecond"`、`"Millisecond"`。 収集されたデータのコンシューマーは、収集されたデータ値がこの単位に一致することを期待しています。 LAD はこのフィールドを無視します。
-displayName | Azure Monitor メトリックのデータに関連付けられるラベル。 このラベルは、関連付けられているロケール設定によって指定された言語です。 LAD はこのフィールドを無視します。
+displayName | Azure Monitor メトリックのデータに関連付けられるラベル。 このラベルは、関連付けられているロケール設定によって指定された言語で設定します。 LAD はこのフィールドを無視します。
 
-`counterSpecifier` は任意の識別子です。 Azure portal のグラフ作成およびアラート通知機能のようなメトリックのコンシューマーは、メトリックまたはメトリックのインスタンスを識別する "キー" として `counterSpecifier` を使用します。 
+`counterSpecifier` は任意の識別子です。 Azure portal のグラフ作成およびアラート通知機能のようなメトリックのコンシューマーでは、メトリックまたはメトリックのインスタンスを識別する "キー" として `counterSpecifier` が使用されます。 
 
 `builtin` メトリックの場合、`/builtin/` で始まる `counterSpecifier` 値をお勧めします。 メトリックの特定のインスタンスを収集する場合は、`counterSpecifier` 値にインスタンスの識別子を添付します。 次に例をいくつか示します。
 
@@ -455,15 +455,15 @@ displayName | Azure Monitor メトリックのデータに関連付けられる�
 * `/builtin/Disk/FreeSpace(/mnt)` - `/mnt` ファイル システム用の空き領域
 * `/builtin/Disk/FreeSpace` - マウントされたすべてのファイル システムの平均空き領域
 
-LAD でも Azure portal でも、`counterSpecifier` の値がいずれかのパターンに一致することは期待されていません。 `counterSpecifier` 値の構成方法と一致している必要があります。
+LAD でも Azure portal でも、`counterSpecifier` の値がいずれかのパターンに一致することは期待されていません。 `counterSpecifier` 値の構成は一貫した方法で行ってください。
 
-`performanceCounters` を指定すると、LAD は常に Azure Storage のテーブルにデータを書き込みます。 同じデータを JSON BLOB と Event Hubs のどちらか一方または両方に書き込むことができます。 ただし、テーブルへのデータの格納を無効にすることはできません。 
+`performanceCounters` を指定すると、LAD では常に Azure Storage のテーブルにデータが書き込まれます。 同じデータを JSON BLOB と Event Hubs のどちらか一方または両方に書き込むことができます。 ただし、テーブルへのデータの格納を無効にすることはできません。 
 
-同じストレージ アカウント名とエンドポイントを使用する LAD のすべてのインスタンスは、メトリックとログを同じテーブルに追加します。 あまりにも多くの VM が同じテーブル パーティションに書き込んでいる場合、Azure はそのパーティションへの書き込みをスロットルできます。 
+同じストレージ アカウント名とエンドポイントが使用される LAD のすべてのインスタンスでは、メトリックとログが同じテーブルに追加されます。 同じテーブル パーティションに書き込みを行う VM が多すぎる場合、Azure によってそのパーティションへの書き込みが抑えられることがあります。 
 
 `eventVolume` の設定によって、エントリは 1 (小)、10 (中)、100 (大) のパーティションに分散されます。 通常、トラフィックの調整を回避するには、中パーティションで十分です。 
 
-Azure portal の Azure Monitor メトリック機能は、このテーブルのデータを使用して、グラフを生成したり、アラートをトリガーしたりします。 テーブル名は、次の文字列を連結したものです。
+Azure portal の Azure Monitor メトリック機能では、このテーブルのデータを使用して、グラフを生成したり、アラートをトリガーしたりします。 テーブル名は、次の文字列を連結したものです。
 
 * `WADMetrics`
 * テーブルに格納されている集計値の `"scheduledTransferPeriod"`
@@ -485,17 +485,17 @@ Azure portal の Azure Monitor メトリック機能は、このテーブルの�
 }
 ```
 
-省略可能な `syslogEvents` セクションでは、syslog からのログ イベントの収集を制御します。 セクションを省略すると、syslog イベントはまったくキャプチャされません。
+省略可能な `syslogEvents` セクションでは、syslog からのログ イベントの収集を制御します。 このセクションを省略すると、syslog イベントはまったくキャプチャされません。
 
 `syslogEventConfiguration` コレクションには、対象の syslog ファシリティごとに 1 つのエントリがあります。 特定のファシリティで `minSeverity` が `"NONE"` の場合、またはそのファシリティが要素にまったく表示されない場合、そのファシリティからのイベントはキャプチャされません。
 
 要素 | 値
 ------- | -----
-sinks | 個々のログ イベントの発行先となるシンクの名前をコンマで区切ったリスト。 `syslogEventConfiguration` の制限に一致するすべてのログ イベントが、一覧表示されている各シンクに発行されます。 例: `"EHforsyslog"`
+sinks | 個々のログ イベントの発行先となるシンクの名前をコンマで区切ったリスト。 `syslogEventConfiguration` の制限に一致するすべてのログ イベントが、リストされている各シンクに発行されます。 例: `"EHforsyslog"`
 facilityName | syslog ファシリティの名前 (`"LOG\_USER"` や `"LOG\_LOCAL0"` など)。 詳細については、[syslog の man ページ](http://man7.org/linux/man-pages/man3/syslog.3.html)で "ファシリティ" に関するセクションを参照してください。
 minSeverity | syslog の重大度レベル (`"LOG\_ERR"` や `"LOG\_INFO"` など)。 詳細については、[syslog の man ページ](http://man7.org/linux/man-pages/man3/syslog.3.html)で "レベル" に関するセクションを参照してください。 拡張機能は、指定されたレベル以上のファシリティに送信されるイベントをキャプチャします。
 
-`syslogEvents` を指定すると、LAD は常に Azure Storage のテーブルにデータを書き込みます。 同じデータを JSON BLOB と Event Hubs のどちらか一方または両方に書き込むことができます。 ただし、テーブルへのデータの格納を無効にすることはできません。 
+`syslogEvents` を指定すると、LAD では常に Azure Storage のテーブルにデータが書き込まれます。 同じデータを JSON BLOB と Event Hubs のどちらか一方または両方に書き込むことができます。 ただし、テーブルへのデータの格納を無効にすることはできません。 
 
 このテーブルのパーティション分割動作は、`performanceCounters` についての説明と同じです。 テーブル名は、次の文字列を連結したものです。
 
@@ -526,7 +526,7 @@ minSeverity | syslog の重大度レベル (`"LOG\_ERR"` や `"LOG\_INFO"` な�
 
 ### <a name="filelogs"></a>fileLogs
 
-`fileLogs` セクションは、ログ ファイルのキャプチャを制御します。 LAD では、ファイルに書き込まれた新しいテキスト行がキャプチャされます。 テーブル行や、指定されたシンク (`JsonBlob` や `EventHub` など) にそれらを書き込みます。
+`fileLogs` セクションでは、ログ ファイルのキャプチャを制御します。 LAD では、ファイルに書き込まれた新しいテキスト行がキャプチャされます。 テーブル行や、指定されたシンク (`JsonBlob` や `EventHub` など) にそれらを書き込みます。
 
 > [!NOTE]
 > `fileLogs` は `omsagent` という名前の LAD のサブコンポーネントによってキャプチャされます。 `fileLogs` を収集するには、`omsagent` ユーザーが指定したファイルに対する読み取りアクセス許可を持っていることを確認します。 また、そのファイルへのパス内のすべてのディレクトリに対する実行アクセス許可も必要です。 LAD がインストールされたら、`sudo su omsagent -c 'cat /path/to/file'` を実行してアクセス許可を確認できます。
@@ -570,9 +570,9 @@ sinks | (省略可能) ログ行が送信される追加のシンクの名前を
 
 カウンタ | 意味
 ------- | -------
-PercentIdleTime | 集計ウィンドウ中にプロセッサがカーネル アイドル ループを実行していた時間の割合
+PercentIdleTime | 集計ウィンドウ中にプロセッサでカーネル アイドル ループが実行されていた時間の割合
 PercentProcessorTime | 非アイドルのスレッドを実行している時間の割合
-PercentIOWaitTime | IO 操作が完了するのを待つ時間の割合
+PercentIOWaitTime | IO 操作の完了を待機した時間の割合
 PercentInterruptTime | ハードウェアまたはソフトウェア割り込みと DPC (遅延プロシージャ呼び出し) を実行する時間の割合
 PercentUserTime | 集計ウィンドウ中の非アイドル時間のうち、通常の優先度のユーザー モードで消費された時間の割合
 PercentNiceTime | 非アイドル時間のうち、低下した (適した) 優先度で消費された割合
@@ -602,7 +602,7 @@ PercentUsedSwap | 合計スワップに対する使用中のスワップ領域�
 
 ### <a name="builtin-metrics-for-the-network-class"></a>"ネットワーク" クラスの組み込みのメトリック
 
-メトリックのネットワーク クラスは、起動後の個々のネットワーク インターフェイスでのネットワーク アクティビティに関する情報を提供します。 
+"ネットワーク" クラスのメトリックでは、起動後の個々のネットワーク インターフェイスでのネットワーク アクティビティに関する情報が提供されます。 
 
 LAD では帯域幅メトリックは公開されません。 これらのメトリックは、ホスト メトリックから取得できます。
 
@@ -619,7 +619,7 @@ TotalCollisions | 起動後にネットワーク ポートによって報告さ�
 
 ### <a name="builtin-metrics-for-the-file-system-class"></a>ファイル システム クラスの組み込みメトリック
 
-ファイル システム クラスのメトリックは、ファイル システムの使用状況に関する情報を提供します。 絶対値と割合の値は、(root ではなく) 通常のユーザーに表示されるように報告されます。
+"ファイル システム" クラスのメトリックでは、ファイル システムの使用状況に関する情報が提供されます。 絶対値と割合の値は、(root ではなく) 通常のユーザーに表示されるように報告されます。
 
 カウンタ | 意味
 ------- | -------
@@ -684,14 +684,14 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 前述の定義に基づき、このセクションでは LAD 4.0 拡張機能の構成例を示して説明します。 このサンプルを特定のケースに適用するには、独自のストレージ アカウント名、アカウント SAS トークン、Event Hubs SAS トークンを使用します。
 
 > [!NOTE]
-> 設定を公開する方法と保護する方法は、LAD のインストールに Azure CLI を使用するのか、PowerShell を使用するのかによって異なります。 
+> 公開設定と保護された設定を提供する方法は、LAD のインストールに Azure CLI または PowerShell のいずれを使用するかによって異なります。 
 >
 > * Azure CLI を使用する場合、前のサンプル コマンドを使用するには、次の設定を *ProtectedSettings.json* と *PublicSettings.json* に保存します。 
-> * PowerShell を使用する場合、`$protectedSettings = '{ ... }'` を実行して `$protectedSettings` と `$publicSettings` に以下の設定を保存します。
+> * PowerShell を使用する場合、`$protectedSettings = '{ ... }'` を実行して `$protectedSettings` と `$publicSettings` に次の設定を保存します。
 
 ### <a name="protected-settings"></a>保護された設定
 
-保護された設定で次が構成されます。
+保護された設定では次が構成されます。
 
 * ストレージ アカウントです。
 * 一致するアカウント SAS トークン。
@@ -832,7 +832,7 @@ Public 設定により、LAD は次の操作を行います。
 
 構成の `resourceId` は、VM または仮想マシン スケール セットのものと一致する必要があります。
 
-* Azure プラットフォームのメトリックによるチャート作成およびアラート通知では、作業中の VM の `resourceId` が認識されています。 `resourceId` がルックアップ キーとして使用され、VM のデータが検索されます。
+* Azure プラットフォームのメトリックによるチャート作成およびアラート通知では、作業中の VM の `resourceId` が認識されています。 `resourceId` を検索キーとして使用して、VM のデータが検索されることが想定されます。
 * Azure 自動スケーリングを使用する場合、自動スケーリング構成の `resourceId` は LAD で使用する `resourceId` と一致する必要があります。
 * `resourceId` は、LAD によって書き込まれる JSON BLOB の名前に組み込まれています。
 

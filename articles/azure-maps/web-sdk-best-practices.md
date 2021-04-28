@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: ba351053c876c31d945ec7e4127a5caebd6a71ce
-ms.sourcegitcommit: 42e4f986ccd4090581a059969b74c461b70bcac0
+ms.openlocfilehash: 31db8c4d8a371aaad939e3a85972958befb2206e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104877472"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137565"
 ---
 # <a name="azure-maps-web-sdk-best-practices"></a>Azure Maps Web SDK のベスト プラクティス
 
@@ -25,7 +25,7 @@ Azure Maps Web SDK を使用すると、大規模な空間データセットを�
 
 ## <a name="security-basics"></a>セキュリティの基本
 
-アプリケーションの唯一の最重要部分は、セキュリティです。 アプリケーションがセキュリティで保護されていない場合、ユーザー エクスペリエンスがどれほど優れていたとしても、ハッカーがアプリケーションを台無しにする可能性があります。 Azure Maps アプリケーションのセキュリティを確保するためのヒントを次に示します。 Azure を使用する場合は、使用可能なセキュリティ ツールについて理解しておいてください。 Azure のセキュリティの概要については、[こちらのドキュメント](https://docs.microsoft.com/azure/security/fundamentals/overview)を参照してください。
+アプリケーションの唯一の最重要部分は、セキュリティです。 アプリケーションがセキュリティで保護されていない場合、ユーザー エクスペリエンスがどれほど優れていたとしても、ハッカーがアプリケーションを台無しにする可能性があります。 Azure Maps アプリケーションのセキュリティを確保するためのヒントを次に示します。 Azure を使用する場合は、使用可能なセキュリティ ツールについて理解しておいてください。 Azure のセキュリティの概要については、[こちらのドキュメント](../security/fundamentals/overview.md)を参照してください。
 
 > [!IMPORTANT]
 > Azure Maps には、2 つの認証方法が用意されています。
@@ -41,7 +41,7 @@ Azure Maps Web SDK を使用すると、大規模な空間データセットを�
 
 パブリックにアクセスできないデータをアプリケーションに読み込む場合は、データが安全な場所に格納され、安全な方法でアクセスされること、およびアプリケーション自体がロックダウンされていて、目的のユーザーだけが使用できるようになっている必要があります。 これらの手順のどれかが省略された場合、権限のないユーザーがこのデータにアクセスする可能性があります。 Azure Active Directory を使用すると、これをロックダウンしやすくなります。
 
-「[Azure App Service で実行されている Web アプリに認証を追加する](https://docs.microsoft.com/azure/app-service/scenario-secure-app-authentication-app-service)」のチュートリアルを参照してください。
+「[Azure App Service で実行されている Web アプリに認証を追加する](../app-service/scenario-secure-app-authentication-app-service.md)」のチュートリアルを参照してください。
 
 ### <a name="use-the-latest-versions-of-azure-maps"></a>最新バージョンの Azure Maps を使用する
 

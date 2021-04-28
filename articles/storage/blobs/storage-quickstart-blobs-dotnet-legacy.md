@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5eacf9c53715bf42c466aaf6a58938bd681630b9
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 631b01dadacf81d66c3f42dc1401d2cf492316b8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106280651"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869241"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>クイック スタート:.NET 用 Azure Blob Storage クライアント ライブラリ v11
 
@@ -401,5 +401,5 @@ BLOB ストレージに画像をアップロードする Web アプリの作成�
 > [!div class="nextstepaction"]
 > [画像をアップロードして処理する](storage-upload-process-images.md)
 
-* .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://www.microsoft.com/net/learn/get-started/)」を参照してください。
+* .NET Core の詳細については、「[Get started with .NET in 10 minutes (10 分で .NET を使い始める)](https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/intro)」を参照してください。
 * Windows 用 Visual Studio からデプロイできるサンプル アプリケーションを調べるには、「[.NET Photo Gallery Web Application Sample with Azure Blob Storage (Azure Blob Storage を使用した .NET フォト ギャラリー Web アプリケーション サンプル)](https://azure.microsoft.com/resources/samples/storage-blobs-dotnet-webapp/)」を参照してください。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: damendo
-ms.openlocfilehash: b45d066d0996aaba2a25500f8134085f5e9b6ffb
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0c2725ff58e40bc56aac528a17fe4d66a128d475
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535199"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146943"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>REST API を使用したネットワーク セキュリティ グループ のフローのログの構成
 
@@ -31,7 +31,7 @@ ms.locfileid: "107535199"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-PowerShell を使用して REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの Chocolatey にあります。 NSG フロー ログの REST API の詳細な仕様については、[こちら](https://docs.microsoft.com/rest/api/network-watcher/flowlogs)を参照してください 
+PowerShell を使用して REST API を呼び出すには、ARMClient を使用します。 ARMClient は、[Chocolatey 上の ARMClient](https://chocolatey.org/packages/ARMClient) に関するページの Chocolatey にあります。 NSG フロー ログの REST API の詳細な仕様については、[こちら](/rest/api/network-watcher/flowlogs)を参照してください 
 
 このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
 

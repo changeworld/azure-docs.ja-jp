@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: c52279108a8fd8d5a7ac8bbd7c8eb215097b21b0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: caf70a005711decae794b02d4a2ccbaf3c2c32f4
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791357"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108135007"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>GitHub Actions を使用する Azure Spring Cloud CI/CD
 
@@ -57,7 +57,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 
  ![シークレット データを設定する](./media/github-actions/actions2.png)
 
-[GitHub Actions で Key Vault を使用して Azure Spring を認証する](./spring-cloud-github-actions-key-vault.md)方法の記事で説明されているように、GitHub Actions で Key Vault から Azure のログイン資格情報を取得することもできます。
+[GitHub Actions で Key Vault を使用して Azure Spring を認証する](./github-actions-key-vault.md)方法の記事で説明されているように、GitHub Actions で Key Vault から Azure のログイン資格情報を取得することもできます。
 
 ## <a name="provision-service-instance"></a>サービス インスタンスをプロビジョニングする
 Azure Spring Cloud サービス インスタンスをプロビジョニングするには、Azure CLI を使用して次のコマンドを実行します。
@@ -175,7 +175,7 @@ az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTIO
 
  ![シークレット データを設定する](./media/github-actions/actions2.png)
 
-[GitHub Actions で Key Vault を使用して Azure Spring を認証する](./spring-cloud-github-actions-key-vault.md)方法の記事で説明されているように、GitHub Actions で Key Vault から Azure のログイン資格情報を取得することもできます。
+[GitHub Actions で Key Vault を使用して Azure Spring を認証する](./github-actions-key-vault.md)方法の記事で説明されているように、GitHub Actions で Key Vault から Azure のログイン資格情報を取得することもできます。
 
 ## <a name="provision-service-instance"></a>サービス インスタンスをプロビジョニングする
 Azure Spring Cloud サービス インスタンスをプロビジョニングするには、Azure CLI を使用して次のコマンドを実行します。
@@ -289,7 +289,7 @@ jobs:
 ```
 
 ## <a name="deploy-with-maven-plugin"></a>Maven プラグインを使用してデプロイする
-もう 1 つの方法は、Jar のデプロイとアプリ設定の更新に [Maven プラグイン](./spring-cloud-quickstart.md)を使用することです。 コマンド `mvn azure-spring-cloud:deploy` はべき等であり、必要に応じて自動的にアプリを作成します。 対応するアプリを事前に作成する必要はありません。
+もう 1 つの方法は、Jar のデプロイとアプリ設定の更新に [Maven プラグイン](./quickstart.md)を使用することです。 コマンド `mvn azure-spring-cloud:deploy` はべき等であり、必要に応じて自動的にアプリを作成します。 対応するアプリを事前に作成する必要はありません。
 
 ```
 name: AzureSpringCloud
@@ -339,6 +339,6 @@ jobs:
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Spring Cloud GitHub アクションの Key Vault](./spring-cloud-github-actions-key-vault.md)
+* [Spring Cloud GitHub アクションの Key Vault](./github-actions-key-vault.md)
 * [Azure Active Directory のサービス プリンシパル](/cli/azure/ad/sp#az_ad_sp_create_for_rbac)
 * [GitHub Actions for Azure](https://github.com/Azure/actions/)

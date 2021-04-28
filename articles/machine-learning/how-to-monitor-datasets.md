@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 06/25/2020
-ms.topic: how-to
-ms.custom: data4ml, contperf-fy21q2
-ms.openlocfilehash: e73b14e24fffacde11e355ae5a4caf0cb76f07ba
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.topic: conceptual
+ms.custom: how-to, data4ml, contperf-fy21q2
+ms.openlocfilehash: 95fb2dfeea98b988eaeaea43efc4ea44fd6e33fd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107884878"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770311"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>データセットでデータ ドリフトを検出する (プレビュー)
 

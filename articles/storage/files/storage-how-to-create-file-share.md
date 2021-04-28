@@ -5,16 +5,16 @@ description: Azure portal、PowerShell、Azure CLI を使用して Azure ファ�
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 1/20/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 24bee926d84c7a5be3f19c39d39285c2cd486824
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9caabb8dc7f09e4ef3852d9269d178c086744779
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211024"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789809"
 ---
 # <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 Azure ファイル共有を作成するには、その使用方法について 3 つの質問に答える必要があります。
@@ -54,11 +54,11 @@ Azure portal を使用してストレージ アカウントを作成するには
 #### <a name="basics"></a>基本
 ストレージ アカウントを作成するために完了する最初のセクションには、 **[基本]** というラベルが付いています。 これには、ストレージ アカウントを作成するために必要なすべてのフィールドが含まれています。 GPv2 ストレージ アカウントを作成するには、確実に **[パフォーマンス]** オプション ボタンを *[Standard]* に設定し、 **[アカウントの種類]** ドロップダウン リストで *[StorageV2 (汎用 v2)]* を選択します。
 
-![[Standard] が選択された [パフォーマンス] オプション ボタンと、[StorageV2] が選択された [アカウントの種類] のスクリーンショット](media/storage-how-to-create-file-share/create-storage-account-1.png)
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-standard.png" alt-text="[Standard] が選択された [パフォーマンス] オプション ボタンと、[StorageV2] が選択された [アカウントの種類] のスクリーンショット。":::
 
-FileStorage ストレージ アカウントを作成するには、確実に **[パフォーマンス]** オプション ボタンを *[Premium]* に設定し、 **[アカウントの種類]** ドロップダウン リストで *[FileStorage]* を選択します。
+FileStorage ストレージ アカウントを作成するには、確実に **[パフォーマンス]** オプション ボタンを *[Premium]* に設定し、 **[Premium アカウントの種類]** ドロップダウン リストで **[ファイル共有]** を選択します。
 
-![[Premium] が選択された [パフォーマンス] オプション ボタンと、[FileStorage] が選択された [アカウントの種類] のスクリーンショット](media/storage-how-to-create-file-share/create-storage-account-2.png)
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="[Premium] が選択された [パフォーマンス] オプション ボタンと、ファイル ストレージが選択されたアカウントの種類のスクリーンショット。":::
 
 その他の基本フィールドは、ストレージ アカウントの選択とは無関係です。
 - **ストレージ アカウント名**: 作成するストレージ アカウントリソースの名前。 この名前はグローバルに一意である必要がありますが、任意の名前を使用できます。 SMB 経由で Azure ファイル共有をマウントするときに、ストレージ アカウント名がサーバー名として使用されます。
@@ -75,9 +75,12 @@ FileStorage ストレージ アカウントを作成するには、確実に **[
 [詳細] セクションには、Azure ファイル共有のいくつかの重要な設定が含まれています。
 
 - **[安全な転送が必須]** :このフィールドは、ストレージ アカウントへの通信でストレージ アカウントが転送中の暗号化を必要とするかどうかを示します。 SMB 2.1 サポートが必要な場合は、これを無効にする必要があります。
+
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-secure-transfer.png" alt-text="ストレージ アカウントの詳細設定で安全な転送が有効になっていることを示すスクリーンショット。":::
+
 - **[大きいファイルの共有]** :このフィールドでは、ストレージ アカウントに対して最大 100 TiB にまたがるファイル共有を有効にします。 この機能を有効にすると、ストレージ アカウントがローカル冗長およびゾーン冗長ストレージのオプションのみに制限されます。 GPv2 ストレージ アカウントを大きいファイルの共有に対して有効にすると、大きいファイルの共有機能を無効にすることはできません。 すべての Premium ファイル共有が 100 TiB までスケールアップできるため、FileStorage ストレージ アカウント (Premium ファイル共有のストレージ アカウント) にはこのオプションはありません。 
 
-![Azure Files に適用される重要な詳細設定のスクリーンショット](media/storage-how-to-create-file-share/create-storage-account-3.png)
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-large-file-shares.png" alt-text="ストレージ アカウントの [詳細] ブレードの大きいファイルの共有設定のスクリーンショット。":::
 
 [詳細] タブで使用できるその他の設定 (Azure Data Lake Storage Gen 2 の階層型名前空間、既定の BLOB 層、BLOB ストレージ用の NFSv3 など) は、Azure Files には適用されません。
 
@@ -160,7 +163,7 @@ az storage account create \
 
 ---
 
-## <a name="create-file-share"></a>ファイル共有の作成
+## <a name="create-a-file-share"></a>ファイル共有を作成する
 ストレージ アカウントを作成したら、後はファイル共有を作成するだけです。 このプロセスは、Premium ファイル共有と Standard ファイル共有のどちらを使用しているかに関係なく、ほぼ同じです。 次の相違点について検討してください。
 
 Standard ファイル共有は、Standard の層であるトランザクション最適化 (既定)、ホット、クールのいずれかにデプロイできます。 これはストレージ アカウントのファイル共有層ごとのもので、**BLOB のアクセス レベル** の影響を受けません (このプロパティは Azure Blob Storage にのみ関連します。Azure Files には関係ありません)。 共有の層は、デプロイ後いつでも変更できます。 Premium ファイル共有を Standard の層に直接変換することはできません。
@@ -175,9 +178,7 @@ Standard ファイル共有は、Standard の層であるトランザクショ�
 - Premium ファイル共有の場合、クォータは **プロビジョニング済みのサイズ** を意味します。 実際の使用量に関係なく、プロビジョニング済みのサイズが課金される容量です。 Premium ファイル共有を計画する方法の詳細については、[Premium ファイル共有のプロビジョニング](understanding-billing.md#provisioned-model)に関するセクションを参照してください。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
-ストレージ アカウントを作成したばかりの場合は、[デプロイ] 画面から **[リソースに移動]** を選択して移動できます。 ストレージ アカウントで、 **[ファイル共有]** というラベルの付いたタイルを選択します (ストレージ アカウントの目次を介して **ファイル共有** に移動することもできます)。
-
-![[ファイル共有] タイルのスクリーンショット](media/storage-how-to-create-file-share/create-file-share-1.png)
+ストレージ アカウントを作成したばかりの場合は、[デプロイ] 画面から **[リソースに移動]** を選択して移動できます。 ストレージ アカウントに移動したら、ストレージ アカウントの目録で **[ファイル共有]** を選択します。
 
 ファイル共有リストには、このストレージ アカウントで以前に作成したファイル共有がすべて表示されます。ファイル共有がまだ作成されていない場合は、空のテーブルが表示されます。 **[+ ファイル共有]** を選択して、新しいファイル共有を作成します。
 
@@ -235,13 +236,13 @@ az storage share-rm create \
 > [!Note]  
 > ファイル共有の名前はすべて小文字にする必要があります。 ファイル共有とファイルの名前付けの詳細については、「[Naming and referencing shares, directories, files, and metadata (共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照)](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
 
-### <a name="changing-the-tier-of-an-azure-file-share"></a>Azure ファイル共有の層の変更
+### <a name="change-the-tier-of-an-azure-file-share"></a>Azure ファイル共有の層を変更する
 **汎用 v2 (GPv2) ストレージ アカウント** にデプロイされるファイル共有は、トランザクション最適化、ホット、クールのいずれかの層に格納できます。 Azure ファイル共有の層はいつでも変更でき、前述のトランザクション コストが適用されます。
 
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 ストレージ アカウントのメイン ページで、 **[ファイル共有]** を選択し、 **[ファイル共有]** というラベルの付いたタイルを選択します (ストレージ アカウントの目次を介して **[ファイル共有]** に移動することもできます)。
 
-![[ファイル共有] タイルのスクリーンショット](media/storage-how-to-create-file-share/create-file-share-1.png)
+:::image type="content" source="media/storage-files-quick-create-use-windows/click-files.png" alt-text="[ファイル共有] が選択されているストレージ アカウント ブレードのスクリーンショット。":::
 
 ファイル共有のテーブルの一覧で、層を変更するファイル共有を選択します。 ファイル共有の概要ページで、メニューから **[層の変更]** を選択します。
 
@@ -276,6 +277,6 @@ az storage share-rm update \
 ---
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Files のデプロイの計画](storage-files-planning.md)または、[Azure File Sync のデプロイの計画](storage-sync-files-planning.md)。 
+- [Azure Files のデプロイの計画](storage-files-planning.md)または、[Azure File Sync のデプロイの計画](../file-sync/file-sync-planning.md)。 
 - [ネットワークの概要](storage-files-networking-overview.md)。
 - ファイル共有を [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md)、[Linux](storage-how-to-use-files-linux.md) に接続してマウントする。

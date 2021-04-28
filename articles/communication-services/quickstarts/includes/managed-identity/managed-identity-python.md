@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 3fcfb364ebffdd3643e803922cbe4f3dd0d87935
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6a9628f3bd77e2e7001a5c8cf371259c18fa373c
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107511698"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107984390"
 ---
 ## <a name="setting-up"></a>設定
 
-## <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
+### <a name="create-a-new-python-application"></a>新しい Python アプリケーションを作成する
 
 ターミナルまたはコマンド ウィンドウを開き、自分のアプリ用に新しいディレクトリを作成し、そこに移動します。
 

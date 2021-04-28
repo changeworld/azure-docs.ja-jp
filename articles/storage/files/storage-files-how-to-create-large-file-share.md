@@ -8,16 +8,16 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c22b3f3164cbb7c1a7ed150d093f77777c7b1023
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 20f9aaf73fe0cb30b136254d57e6c9b960c16af4
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102501296"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107716985"
 ---
 # <a name="enable-and-create-large-file-shares"></a>大きなファイル共有の有効化と作成
 
-ストレージ アカウントで大きなファイル共有を有効にすると、ファイル共有を 100 TiB までスケール アップでき、標準共有の IOPS とスループットの上限も上がります。 既存のファイル共有のために、既存のストレージ アカウントに対してこのスケーリングを有効にすることもできます。 詳細については、「[ファイル共有とファイルのスケール ターゲット](storage-files-scale-targets.md#azure-files-scale-targets)」を参照してください。 
+ストレージ アカウントで大きなファイル共有を有効にした後は、Azure ファイル共有を 100 TiB までスケールアップできます。 大きなファイル共有を有効にすると、ファイル共有の IOPS とスループットの制限も増加することがあります。 既存および新規のファイル共有のために、既存のストレージ アカウントに対してこのスケーリングを有効にすることもできます。 パフォーマンスの違いの詳細については、[ファイル共有とファイルのスケール ターゲット](storage-files-scale-targets.md#azure-files-scale-targets)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -27,7 +27,7 @@ ms.locfileid: "102501296"
 
 ## <a name="restrictions"></a>制限
 
-現時点では、大きなファイル共有を有効にしたアカウントでは、ローカル冗長ストレージ (LRS) またはゾーン冗長ストレージ (ZRS) のみを使用できます。 geo ゾーン冗長ストレージ (GZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS)、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) はいずれも使用できません。
+現時点では、大きなファイル共有を有効にしたストレージ アカウントでは、ローカル冗長ストレージ (LRS) またはゾーン冗長ストレージ (ZRS) のみを使用できます。 geo ゾーン冗長ストレージ (GZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS)、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) はいずれも使用できません。
 
 アカウントで大きなファイル共有を有効にすると、元に戻すことができません。 有効にした後、アカウントを GZRS、GRS、RA-GRS、または RA-GZRS に変換することはできません。
 
@@ -38,29 +38,12 @@ ms.locfileid: "102501296"
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. Azure Portal で **[すべてのサービス]** を選択します。 
 1. リソースの一覧で、「**Storage Accounts**」と入力します。 入力すると、入力内容に基づいて一覧がフィルター処理されます。 **[ストレージ アカウント]** を選択します。
-1. 表示された **[ストレージ アカウント]** ウィンドウで、 **[追加]** を選択します。
-1. ストレージ アカウントの作成に使用するサブスクリプションを選択します。
-1. **[リソース グループ]** フィールドの下の **[新規作成]** を選択します。 新しいリソース グループの名前を入力します。
-
-    ![ポータルでリソース グループを作成する方法を示すスクリーンショット](media/storage-files-how-to-create-large-file-share/create-large-file-share.png)
-
-1. 次に、ストレージ アカウントの名前を入力します。 この名前は Azure 全体で一意である必要があります。 また、名前の長さは 3 ~ 24 文字にする必要があり、数字と小文字のみを使用できます。
-1. ストレージ アカウントの場所を選択します。
-1. レプリケーションを **[ローカル冗長ストレージ]** または **[ゾーン冗長ストレージ]** に設定します。
-1. 以下のフィールドは既定値のままにします。
-
-   |フィールド  |値  |
-   |---------|---------|
-   |デプロイメント モデル     |リソース マネージャー         |
-   |パフォーマンス     |Standard         |
-   |アカウントの種類     |StorageV2 (汎用 v2)         |
-   |アクセス層     |ホット         |
-
-1. **[詳細]** を選択し、 **[大きなファイル共有]** の右側にある **[有効]** オプション ボタンを選択します。
+1. 表示された **[ストレージ アカウント]** ブレードで、 **[+新規]** を選択します。
+1. [基本] ブレードで、必要に応じて選択内容を入力します。
+1. **[パフォーマンス]** が **[Standard]** に設定されていることを確認します。
+1. **[冗長性]** を **[ローカル冗長ストレージ]** または **[ゾーン冗長ストレージ]** に設定します。
+1. **[詳細]** ブレードを選択し、 **[大きなファイル共有]** の右側にある **[有効]** オプション ボタンを選択します。
 1. **[確認および作成]** を選択して、ストレージ アカウントの設定を確認し、アカウントを作成します。
-
-    ![Azure portal の新しいストレージ アカウントの [有効] オプション ボタンのスクリーンショット](media/storage-files-how-to-create-large-file-share/large-file-shares-advanced-enable.png)
-
 1. **［作成］** を選択します
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -93,11 +76,12 @@ New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAc
 # <a name="portal"></a>[ポータル](#tab/azure-portal)
 
 1. [Azure portal](https://portal.azure.com) を開き、大きなファイル共有を有効にするストレージ アカウントに移動します。
-1. ストレージ アカウントを開き、 **[構成]** を選択します。
+1. ストレージ アカウントを開き、 **[ファイル共有]** を選択します。
 1. **[Large file shares]\(大きなファイル共有\)** で **[有効]** を選択し、 **[保存]** を選択します。
 1. **[概要]** を選択し、 **[最新の情報に更新]** を選択します。
+1. **[容量の共有]** を選択し、 **[100 TiB]** を選択して **[保存]** を選択します。
 
-![Azure portal の既存のストレージ アカウントで [有効] オプション ボタンを選択する](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
+    :::image type="content" source="media/storage-files-how-to-create-large-file-share/files-enable-large-file-share-existing-account.png" alt-text="[ファイル共有] ブレードで [100 TiB] の共有が強調表示されている Azure ストレージ アカウントのスクリーンショット。":::
 
 これで、大きなファイル共有をストレージ アカウントで有効にしました。 次に、増加した容量とスケールを活用するために、[既存の共有のクォータを更新する](#expand-existing-file-shares)必要があります。
 

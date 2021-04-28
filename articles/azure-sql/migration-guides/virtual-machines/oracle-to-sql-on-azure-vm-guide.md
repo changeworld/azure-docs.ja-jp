@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: d4fb33e8e904d12e242f7eeaf9c2dc50a02eff4d
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 2133f3da926dfd1e92d911004393893f58d27db6
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961253"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136454"
 ---
 # <a name="migration-guide-oracle-to-sql-server-on-azure-virtual-machines"></a>移行ガイド: Oracle から Azure Virtual Machines 上の SQL Serverへ
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 このガイドでは、SQL Server Migration Assistant for Oracle を使用して、Oracle スキーマを Azure Virtual Machines 上の SQL Server に移行する方法について説明します。 
 
-その他の移行ガイドについては、[データベースの移行](https://docs.microsoft.com/data-migration)に関するページを参照してください。 
+その他の移行ガイドについては、[データベースの移行](/data-migration)に関するページを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -220,7 +220,7 @@ MAP Toolkit を使用してインベントリ スキャンを実行するには�
    ![SSMA での SQL Server インスタンスを示すスクリーンショット。](./media/oracle-to-sql-on-azure-vm-guide/validate-in-ssms.png)
 
 SSMA を使用する代わりに、SQL Server Integration Services (SSIS) を使用してデータを移行することもできます。 詳細については、次を参照してください。 
-- 記事「[SQL Server Integration Services](https://docs.microsoft.com//sql/integration-services/sql-server-integration-services)」。
+- 記事「[SQL Server Integration Services](//sql/integration-services/sql-server-integration-services)」。
 - ホワイト ペーパー「[SSIS による Azure およびハイブリッド データ移行](https://download.microsoft.com/download/D/2/0/D20E1C5F-72EA-4505-9F26-FEF9550EFD44/SSIS%20Hybrid%20and%20Azure.docx)」。
 
 
@@ -292,5 +292,3 @@ SSMA を使用する代わりに、SQL Server Integration Services (SSIS) を使
 
 - アプリケーション アクセス層を評価するには、[Data Access Migration Toolkit (プレビュー)](https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit)を使用してください。
 - データ アクセス層の A/B テストの実行方法について詳しくは、「[Database Experimentation Assistant の概要](/sql/dea/database-experimentation-assistant-overview)」を参照してください。
-
-

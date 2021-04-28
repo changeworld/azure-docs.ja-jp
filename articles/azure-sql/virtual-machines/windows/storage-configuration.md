@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 982bd9239c5e95c9b7af09b5f54c5a09067ca7c6
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cf41d6f9219397e439e8d89ea011c454662e6903
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105565428"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126491"
 ---
 # <a name="configure-storage-for-sql-server-vms"></a>SQL Server VM のストレージを構成する
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,7 +48,7 @@ SQL Server のギャラリー イメージを使用して Azure VM をプロビ�
 
 **[ストレージの最適化]** では、SQL Server をデプロイする対象のワークロードの種類を選択します。 **[全般]** 最適化オプションの既定では、最大 5,000 IOPS のデータ ディスクが 1 つ使用され、この同じドライブをデータ、トランザクション ログ、TempDB ストレージに使用します。 
 
-**[トランザクション処理]** (OLTP) または **[データ ウェアハウス]** を選択すると、データ用とトランザクション ログ用にそれぞれ個別のディスクが作成され、TempDB 用にはローカル SSD が使用されます。 **[トランザクション処理]** と **[データ ウェアハウス]** でストレージに違いはありませんが、[ストライプの構成とトレース フラグ](#workload-optimization-settings)が変更されます。 Premium Storage を選択すると、[SQL Server VM のパフォーマンスのベスト プラクティス](performance-guidelines-best-practices.md)に関する記事に従って、キャッシュがデータ ドライブについては "*読み取り専用*" に、ログ ドライブについては "*なし*" に設定されます。 
+**[トランザクション処理]** (OLTP) または **[データ ウェアハウス]** を選択すると、データ用とトランザクション ログ用にそれぞれ個別のディスクが作成され、TempDB 用にはローカル SSD が使用されます。 **[トランザクション処理]** と **[データ ウェアハウス]** でストレージに違いはありませんが、[ストライプの構成とトレース フラグ](#workload-optimization-settings)が変更されます。 Premium Storage を選択すると、[SQL Server VM のパフォーマンスのベスト プラクティス](./performance-guidelines-best-practices-checklist.md)に関する記事に従って、キャッシュがデータ ドライブについては "*読み取り専用*" に、ログ ドライブについては "*なし*" に設定されます。 
 
 ![プロビジョニング中の SQL Server VM ストレージの構成](./media/storage-configuration/sql-vm-storage-configuration.png)
 
@@ -197,7 +197,7 @@ Azure portal を使用して書き込みアクセラレーションを有効に�
 スループットを向上させるために、データ ディスクをさらに追加し、ディスク ストライピングを使用できます。 データ ディスクの数を特定するには、ログと tempdb を含む、SQL Server データ ファイルに必要なスループットと帯域幅を分析します。 スループットと帯域幅の制限は、VM のサイズによって異なります。 詳細については、[VM のサイズ](../../../virtual-machines/sizes.md)に関する記事を参照してください。
 
 
-* Windows 8/Windows Server 2012 以降の場合は､次のガイドラインに従った[記憶域スペース](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11))を使用します｡
+* Windows 8/Windows Server 2012 以降の場合は､次のガイドラインに従った[記憶域スペース](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831739(v=ws.11))を使用します｡
 
   1. パーティションの不整合によるパフォーマンスへの影響を回避するために、インタリーブ (ストライプ サイズ) を 64 KB (65,536 バイト) に設定します。 これは､PowerShell を使って設定する必要があります｡
 
@@ -216,9 +216,9 @@ Azure portal を使用して書き込みアクセラレーションを有効に�
       -AllocationUnitSize 65536 -Confirm:$false 
   ```
 
-  * Windows 2008 R2 以前では、ダイナミック ディスク (OS ストライプ ボリューム) を使用できます。ストライプ サイズは常に 64 KB です。 このオプションは、Windows 8/Windows Server 2012 の時点で非推奨となっています。 詳細については、[Windows Storage Management API に移行しつつある仮想ディスク サービス](https://docs.microsoft.com/windows/win32/w8cookbook/vds-is-transitioning-to-wmiv2-based-windows-storage-management-api)に関するページでサポートに関する声明をご覧ください。
+  * Windows 2008 R2 以前では、ダイナミック ディスク (OS ストライプ ボリューム) を使用できます。ストライプ サイズは常に 64 KB です。 このオプションは、Windows 8/Windows Server 2012 の時点で非推奨となっています。 詳細については、[Windows Storage Management API に移行しつつある仮想ディスク サービス](/windows/win32/w8cookbook/vds-is-transitioning-to-wmiv2-based-windows-storage-management-api)に関するページでサポートに関する声明をご覧ください。
  
-  * [記憶域スペース ダイレクト (S2D)](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) を [SQL Server フェールオーバー クラスター インスタンス](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure)で使用している場合は、単一プールを構成する必要があります。 その単一プール上にはさまざまなボリュームを作成できますが、それらはすべて同じ特性 (たとえば、同じキャッシュ ポリシー) を共有します。
+  * [記憶域スペース ダイレクト (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-in-vm) を [SQL Server フェールオーバー クラスター インスタンス](./failover-cluster-instance-storage-spaces-direct-manually-configure.md)で使用している場合は、単一プールを構成する必要があります。 その単一プール上にはさまざまなボリュームを作成できますが、それらはすべて同じ特性 (たとえば、同じキャッシュ ポリシー) を共有します。
  
   * 負荷予測に基づいて、ご使用の記憶域プールに関連付けるディスク数を決定します。 接続できるデータ ディスクの数は VM サイズによって異なることに注意してください。 詳細については、 [仮想マシンのサイズ](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json)に関するページをご覧ください。
 

@@ -6,15 +6,15 @@ author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to, data4ml
+ms.topic: how-to
+ms.custom: data4ml
 ms.date: 05/14/2020
-ms.openlocfilehash: 97922cc8693cddcb13350117b6c17c4220f75337
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: 7fc4a36cc8fedaa5de704f668f8b15aecac98cd7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107227978"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140517"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>ラベル付き Azure Machine Learning データセットを作成して探索する
 
@@ -118,5 +118,3 @@ imgplot = plt.imshow(gray_image)
 ```
 
 ## <a name="next-steps"></a>次のステップ
-
-* 完全なトレーニング サンプルについては、[ラベル付きデータセットのノートブック](/azure/machine-learning/how-to-use-labeled-dataset)を参照してください。

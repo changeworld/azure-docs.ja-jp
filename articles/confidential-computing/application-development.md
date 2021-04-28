@@ -8,12 +8,12 @@ ms.subservice: confidential-computing
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: JenCook
-ms.openlocfilehash: 0ba6ee92111da66a2118ba4c490b94e5bc9449e0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 571c1a4ce545976db09f46a07d963d5344c02c29
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551387"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791015"
 ---
 # <a name="application-development-on-intel-sgx"></a>Intel SGX でのアプリケーション開発 
 
@@ -23,6 +23,7 @@ ms.locfileid: "102551387"
 エンクレーブおよび隔離された環境の利点を活用するには、コンフィデンシャル コンピューティングをサポートするツールを使用する必要があります。 エンクレーブ アプリケーション開発をサポートするさまざまなツールが存在します。 たとえば、次のオープンソース フレームワークを使用できます。 
 
 - [Open Enclave Software Development Kit (OE SDK)](#oe-sdk)
+- [EGo Software Development Kit](#ego)
 - [Confidential Consortium Framework (CCF)](#ccf)
 
 ## <a name="overview"></a>概要
@@ -48,6 +49,10 @@ ms.locfileid: "102551387"
 エンクレーブ内で実行されるコードを記述するには、ご利用のプロバイダーによってサポートされているライブラリまたはフレームワークを使用します。 [Open Enclave SDK](https://github.com/openenclave/openenclave) (OE SDK) は、コンフィデンシャル コンピューティングに対応したさまざまなハードウェアに対する抽象化を可能にするオープンソースの SDK です。 
 
 OE SDK は、あらゆる CSP のハードウェアに対する単一の抽象化レイヤーとして構築されています。 Azure Confidential Computing 仮想マシン上で OE SDK を使用して、エンクレーブ上にアプリケーションを作成、実行することができます。
+
+## <a name="ego-software-development-kit"></a>EGo Software Development Kit <a id="ego"></a>
+
+[EGo](https://ego.dev/) は、Go プログラミング言語で記述されたアプリケーションをエンクレーブ内で実行できるようにするオープンソース SDK です。 EGo は OE SDK の上に構築され、構成証明と封印用のエンクレーブ内 Go ライブラリが付属しています。 既存の多くの Go アプリケーションは、変更せずに EGo 上で実行されます。  
 
 ## <a name="confidential-consortium-framework-ccf"></a>Confidential Consortium Framework (CCF) <a id="ccf"></a>
 

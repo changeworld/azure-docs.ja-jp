@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/16/2021
-ms.openlocfilehash: 8943986bf8e8c082889d3a0b18618ac54c75e6d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 884f048ac099cfc6b799fe266172a0eecef3db6f
+ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022978"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107478371"
 ---
 # <a name="configure-data-collection-for-the-azure-monitor-agent-preview"></a>Azure Monitor エージェント用のデータ収集の構成 (プレビュー)
 
@@ -110,7 +110,7 @@ Windows イベント ログでサポートされている XPath の制限事項�
 
 ## <a name="create-association-using-resource-manager-template"></a>Resource Manager テンプレートを使用して関連付けを作成する
 
-Resource Manager テンプレートを使用してデータ収集ルールを作成することはできませんが、Resource Manager テンプレートを使用して Azure 仮想マシンまたは Azure Arc 対応サーバー間の関連付けを作成することはできます。 サンプル テンプレートについては、「[Azure Monitor のデータ収集ルールの Resource Manager テンプレート サンプル](./resource-manager-data-collection-rules.md)」を参照してください。
+Resource Manager テンプレートを使用して Azure 仮想マシンまたは Azure Arc 対応サーバー間の関連付けを作成することができます。 サンプル テンプレートについては、「[Azure Monitor のデータ収集ルールの Resource Manager テンプレート サンプル](./resource-manager-data-collection-rules.md)」を参照してください。
 
 
 

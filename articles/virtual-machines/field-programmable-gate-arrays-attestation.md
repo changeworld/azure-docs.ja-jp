@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: a3408d30a9caa24355cf3976235c3a9b8061b95f
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c16e324809fd688adf4a970f105cb364e73d7004
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531237"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128795"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>Azure NP シリーズ VM の FPGA 構成証明 (プレビュー)
 
@@ -52,7 +52,7 @@ https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-lates
 
 構成証明サービスからアクセスするには、netlist ファイルを Azure ストレージ BLOB コンテナーにアップロードする必要があります。  
 
-アカウントとコンテナーを作成する方法、および netlist を BLOB としてそのコンテナーにアップロードする方法の詳細については、次のページを参照してください: [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](/azure/storage/blobs/storage-quickstart-blobs-cli)。  
+アカウントとコンテナーを作成する方法、および netlist を BLOB としてそのコンテナーにアップロードする方法の詳細については、次のページを参照してください: [https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-cli](../storage/blobs/storage-quickstart-blobs-cli.md)。  
 
 または、Azure portal を使用することもできます。  
 
@@ -124,5 +124,4 @@ https://fpga-attestation.azurewebsites.net/api/ComputeFPGA_HttpGetStatus
 
 検証が失敗した場合は、手順が失敗したことを示す error-*.txt ファイルが書き込まれます。 また、エラー ログに構成証明に失敗したことが示されている場合は、ログ ファイルを確認してください。 サポートが必要な場合は、サポート要求にオーケストレーション ID と共に、これらすべてのファイルを含めるようにしてください。  
 
-Azure portal を使用して、コンテナーを作成するだけでなく、netlist をアップロードし、ビットストリームおよびログ ファイルをダウンロードすることもできます。 現時点では、構成証明要求を送信し、その進行状況を監視することはサポートされていませんので、前述のように、スクリプトを使用して実行してださい。 
-
+Azure portal を使用して、コンテナーを作成するだけでなく、netlist をアップロードし、ビットストリームおよびログ ファイルをダウンロードすることもできます。 現時点では、構成証明要求を送信し、その進行状況を監視することはサポートされていませんので、前述のように、スクリプトを使用して実行してださい。

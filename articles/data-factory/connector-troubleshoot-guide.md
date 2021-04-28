@@ -4,15 +4,15 @@ description: Azure Data Factory でのコネクタに関する問題のトラブ
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/08/2021
+ms.date: 04/13/2021
 ms.author: jingwang
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9d8f940e3900c00b1c6f6623dfeff2d92ca85aa3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8a903355c9acc5b88801c3ab16360225f6014af0
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042438"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139455"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory コネクタのトラブルシューティング
 
@@ -555,7 +555,109 @@ ms.locfileid: "102042438"
 - **原因**:Dynamics サーバーが不安定であるか、アクセスできないか、ネットワークに問題が発生しています。
 
 - **推奨事項**:詳細については、ネットワーク接続または Dynamics サーバーのログを確認してください。 さらに支援が必要な場合は、Dynamics サポートにお問い合わせください。
+
+
+### <a name="error-code--dynamicsfailedtoconnect"></a>エラー コード: DynamicsFailedToConnect 
+ 
+ - **メッセージ**: `Failed to connect to Dynamics: %message;` 
+ 
+
+ - **原因**: エラー メッセージに `Office 365 auth with OAuth failed` が表示された場合は、OAuth と互換性のない構成がサーバーに存在している可能性があることを意味します。 
+ 
+ - **推奨事項**: 
+    1. エラー メッセージの詳細については、Dynamics サポート チームにお問い合わせください。  
+    1. サービス プリンシパル認証を使用し、「[例: Azure AD サービス プリンシパルと証明書認証を使用した Dynamics Online](./connector-dynamics-crm-office-365.md#example-dynamics-online-using-azure-ad-service-principal-and-certificate-authentication)」を参照してください。 
+ 
+
+ - **原因**: エラー メッセージに `Unable to retrieve authentication parameters from the serviceUri` が表示された場合は、誤った Dynamics サービスの URL またはプロキシ/ファイアウォールを入力してトラフィックを遮断していることを意味します。 
+ 
+ - **推奨事項**:
+    1. リンクされたサービスに正しいサービス URI が指定されていることを確認してください。 
+    1. 自己ホスト型 IR を使用する場合は、ファイアウォール/プロキシによって Dynamics サーバーへの要求が遮断されていないことを確認してください。 
+   
+ 
+ - **原因**: エラー メッセージに `An unsecured or incorrectly secured fault was received from the other party` が表示された場合は、サーバー側から予期しない応答を取得したことを意味します。 
+ 
+ - **推奨事項**: 
+    1. Office 365 認証を使用する場合は、ユーザー名とパスワードが正しいことを確認してください。 
+    1. 正しいサービス URI が入力されていることを確認してください。 
+    1. リージョンの CRM URL ("crm" の後に数字が含まれている URL) を使用する場合は、正しいリージョン識別子を使用していることを確認してください。
+    1. Dynamics サポート チームにお問い合わせください。 
+ 
+
+ - **原因**: エラー メッセージに `No Organizations Found` が表示された場合は、組織名が間違っているか、サービス URL で誤った CRM リージョン識別子が使用されていることを意味します。 
+ 
+ - **推奨事項**: 
+    1. 正しいサービス URI が入力されていることを確認してください。
+    1. リージョンの CRM URL ("crm" の後に数字が含まれている URL) を使用する場合は、正しいリージョン識別子を使用していることを確認してください。 
+    1. Dynamics サポート チームにお問い合わせください。 
+
+ 
+ - **原因**: `401 Unauthorized` および AAD 関連のエラー メッセージが表示された場合は、サービス プリンシパルに問題があることを意味します。 
+
+ - **推奨事項**: エラー メッセージのガイダンスに従って、サービス プリンシパルの問題を修正してください。  
+ 
+ 
+ - **原因**: 他のエラーの場合、通常はサーバー側に問題があります。 
+
+ - **推奨事項**: [XrmToolBox](https://www.xrmtoolbox.com/) を使用して接続します。 エラーが引き続き発生する場合は、Dynamics サポート チームに問い合わせてください。 
+ 
+ 
+### <a name="error-code--dynamicsoperationfailed"></a>エラー コード: DynamicsOperationFailed 
+ 
+- **メッセージ**: `Dynamics operation failed with error code: %code;, error message: %message;.` 
+
+- **原因**: サーバー側で操作が失敗しました。 
+
+- **推奨事項**: エラー メッセージ (`Dynamics operation failed with error code: {code}`) から Dynamics 操作のエラー コードを抽出し、「[Web サービス エラー コード](/powerapps/developer/data-platform/org-service/web-service-error-codes)」で詳細を参照してください。 必要に応じて、Dynamics サポート チームに問い合わせることができます。 
+ 
+ 
+### <a name="error-code--dynamicsinvalidfetchxml"></a>エラー コード: DynamicsInvalidFetchXml 
   
+- **メッセージ**: `The Fetch Xml query specified is invalid.` 
+
+- **原因**: FetchXML にエラーが存在します。  
+
+- **推奨事項**: FetchXML でエラーを修正してください。 
+ 
+ 
+### <a name="error-code--dynamicsmissingkeycolumns"></a>エラー コード: DynamicsMissingKeyColumns 
+ 
+- **メッセージ**: `Input DataSet must contain keycolumn(s) in Upsert/Update scenario. Missing key column(s): %column;`
+ 
+- **原因**: ソース データにシンク エンティティのキー列が含まれていません。 
+
+- **推奨事項**: ソース データ内にキー列があることを確認するか、ソース列をシンク エンティティのキー列にマップします。 
+ 
+ 
+### <a name="error-code--dynamicsprimarykeymustbeguid"></a>エラー コード: DynamicsPrimaryKeyMustBeGuid 
+ 
+- **メッセージ**: `The primary key attribute '%attribute;' must be of type guid.` 
+ 
+- **原因**: 主キー列が 'Guid' 型ではありません。 
+ 
+- **推奨事項**: ソース データの主キー列が 'Guid' 型であることを確認してください。 
+ 
+
+### <a name="error-code--dynamicsalternatekeynotfound"></a>エラー コード: DynamicsAlternateKeyNotFound 
+ 
+- **メッセージ**: `Cannot retrieve key information of alternate key '%key;' for entity '%entity;'.` 
+ 
+- **原因**: 指定された代替キーが存在しません。キー名が間違っているか、アクセス許可が不足している可能性があります。 
+ 
+- **推奨事項**: <br/> 
+    1. キー名の入力ミスを修正します。<br/> 
+    1. エンティティに対する十分なアクセス許可があることを確認します。 
+ 
+ 
+### <a name="error-code--dynamicsinvalidschemadefinition"></a>エラー コード: DynamicsInvalidSchemaDefinition 
+ 
+- **メッセージ**: `The valid structure information (column name and type) are required for Dynamics source.` 
+ 
+- **原因**: 列マッピングのシンク列に 'type' プロパティがありません。 
+ 
+- **推奨事項**: ポータルの JSON エディターを使用して、列マッピングのこれらの列に 'type' プロパティを追加できます。 
+
 
 ## <a name="ftp"></a>FTP
 

@@ -13,12 +13,12 @@ ms.date: 04/16/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: sureshja
-ms.openlocfilehash: fc1b5356ab607ecb60a457a7295831958e6815e1
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 1d117ecaed626c6226a381c34b3d9a0f4f21175b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727062"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126797"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト
 
@@ -53,7 +53,7 @@ Azure AD テナントによってセキュリティ保護されているリソ�
 
 アプリケーションが (登録または[同意](developer-glossary.md#consent)によって) テナント内のリソースへのアクセス許可を与えられると、サービス プリンシパル オブジェクトが作成されます。 [Azure PowerShell](howto-authenticate-service-principal-powershell.md)、[Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli)、[Microsoft Graph](/graph/api/serviceprincipal-post-serviceprincipals?tabs=http)、[Azure portal][AZURE-Portal]、およびその他のツールを使用して、テナントにサービス プリンシパル オブジェクトを作成することもできます。 ポータルを使用する場合、アプリケーションを登録すると、サービス プリンシパルが自動的に作成されます。
 
-2 つ目の種類のサービス プリンシパルは、[マネージド ID](/azure/active-directory/managed-identities-azure-resources/overview) を表す目的で使用されます。 マネージド ID により、開発者は資格情報を管理する必要がなくなります。 マネージド ID は、Azure AD 認証をサポートするリソースに接続するときに使用する ID をアプリケーションに提供します。 マネージド ID が有効になっている場合、そのマネージド ID を表すサービス プリンシパルがテナントに作成されます。 マネージド ID を表すサービス プリンシパルには、権利やアクセス許可を付与できますが、直接更新したり変更を加えたりすることはできません。
+2 つ目の種類のサービス プリンシパルは、[マネージド ID](../managed-identities-azure-resources/overview.md) を表す目的で使用されます。 マネージド ID により、開発者は資格情報を管理する必要がなくなります。 マネージド ID は、Azure AD 認証をサポートするリソースに接続するときに使用する ID をアプリケーションに提供します。 マネージド ID が有効になっている場合、そのマネージド ID を表すサービス プリンシパルがテナントに作成されます。 マネージド ID を表すサービス プリンシパルには、権利やアクセス許可を付与できますが、直接更新したり変更を加えたりすることはできません。
 
 3 つ目の種類のサービス プリンシパルは、レガシ アプリを表します (アプリの登録前に作成されたアプリは、レガシ エクスペリエンスを使用して導入または作成されます)。 レガシ サービス プリンシパルには、資格情報、サービス プリンシパル名、応答 URL など、許可されているユーザーが編集できるプロパティを割り当てることができますが、アプリの登録は関連付けられません。 このサービス プリンシパルは、その作成元のテナントでのみ使用できます。
 

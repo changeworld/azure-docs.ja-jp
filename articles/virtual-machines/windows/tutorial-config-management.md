@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: db7c0f2dbc547d78e3caa9ab37450c86278929bd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13ba043582efe4a9e8d52f96f279b02ad8dab963
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555943"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141363"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>チュートリアル:Azure で変更を監視し、Windows 仮想マシンを更新する
 
@@ -178,7 +178,7 @@ Windows 用の使用できる設定オプションは次のとおりです。
 * Windows レジストリ
 * Windows ファイル
 
-変更の追跡の詳細については、[VM に対する変更のトラブルシューティング](../../automation/automation-tutorial-troubleshoot-changes.md)に関するページをご覧ください。
+変更の追跡の詳細については、[VM に対する変更のトラブルシューティング](../../automation/troubleshoot/change-tracking.md)に関するページをご覧ください。
 
 ### <a name="view-inventory"></a>インベントリを表示する
 

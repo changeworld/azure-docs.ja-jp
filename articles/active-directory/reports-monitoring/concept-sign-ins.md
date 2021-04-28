@@ -4,7 +4,7 @@ description: Azure Active Directory ポータルのサインイン アクティ�
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,28 +13,26 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 03/24/2020
+ms.date: 04/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d61962667953b20f4b542874e902411bb579b9c3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a4cd69224daa05a3e5931fbde1c85bb8dc9e46a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93122845"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719009"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
 
-Azure Active Directory (Azure AD) のレポート アーキテクチャは、次のコンポーネントで構成されます。
+IT 管理者は、IT 環境がどのように動作しているかを知る必要があります。 システムの正常性に関する情報を使用すると、潜在的な問題に対処する必要があるかどうか、およびその方法を評価できます。 
 
-- **アクティビティ** 
-    - **サインイン** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報。
-    - **監査ログ** - [監査ログ](concept-audit-logs.md)は、ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報を提供します。
-    - **プロビジョニング ログ** - [プロビジョニング ログ](./concept-provisioning-logs.md)によって、プロビジョニング サービスによるアクティビティの監視 (ServiceNow のグループや Workday からインポートされたユーザーの作成など) が可能になります。 
-- **Security** 
-    - **リスクの高いサインイン** - [リスクの高いサインイン](../identity-protection/overview-identity-protection.md)は、ユーザー アカウントの正当な所有者ではないユーザーによるサインイン試行の指標です。
-    - **リスクのフラグ付きユーザー** - [リスクの高いユーザー](../identity-protection/overview-identity-protection.md)は、侵害された可能性があるユーザー アカウントの指標です。
+この目標を達成するために、Azure Active Directory ポータルでは、次の 3 つのアクティビティ ログにアクセスできます。
+
+- **サインイン** - サインインと、ユーザーのリソース使用状況に関する情報です。
+- **[監査](concept-audit-logs.md)** - ユーザーやグループの管理、テナントのリソースに適用された更新など、テナントに適用された変更に関する情報。
+- **[プロビジョニング](concept-provisioning-logs.md)** - ServiceNow でのグループの作成や、Workday からインポートされたユーザーなど、プロビジョニング サービスによって実行されるアクティビティ。
 
 この記事では、サインイン レポートの概要について説明します。
 
@@ -99,12 +97,23 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 > 詳細については、「[Frequently asked questions about CA information in all sign-ins](reports-faq.md#conditional-access)」 (すべてのサインインの CA 情報に関してよく寄せられる質問) を参照してください。
 
 
+## <a name="sign-in-error-code"></a>サインイン エラー コード
 
-## <a name="filter-sign-in-activities"></a>サインイン アクティビティのフィルター処理
+サインインに失敗した場合は、関連するログ項目の **[基本情報]** セクションで、理由に関する詳細情報を取得できます。 
+
+![サインイン エラー コード](./media/concept-all-sign-ins/error-code.png)
+ 
+ログ項目にはエラーの理由が表示されますが、[サインイン エラー ルックアップ ツール](https://login.microsoftonline.com/error)を使用して、さらに多くの情報が得られる場合があります。 たとえば、使用可能な場合は、このツールにより修復手順が通知されます。  
+
+![エラー コード ルックアップ ツール](./media/concept-all-sign-ins/error-code-lookup-tool.png)
+
+
+
+## <a name="filter-sign-in-activities&quot;></a>サインイン アクティビティのフィルター処理
 
 まず、報告されたデータを、自分に適したレベルまで絞り込みます。 次に、既定のフィルターとして [日付] フィールドを使用したサインイン データをフィルター処理します。 Azure AD では、さまざまな追加のフィルターを設定できます。
 
-![スクリーンショットには、[フィルターの追加] オプションが示されています。](./media/concept-sign-ins/04.png "サインイン アクティビティ")
+![スクリーンショットには、[フィルターの追加] オプションが示されています。](./media/concept-sign-ins/04.png &quot;サインイン アクティビティ")
 
 **要求 ID** - 確認したい要求の ID です。
 

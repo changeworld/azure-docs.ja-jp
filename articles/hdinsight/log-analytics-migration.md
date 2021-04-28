@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.author: ali
 author: AliciaLiMicrosoft
 ms.date: 04/19/2021
-ms.openlocfilehash: 6659b515ee2d25a4b9136ccfac4cc3444e491438
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 5e312941e02c5605132971a55041a0b4f7d6dbc9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741293"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139095"
 ---
 # <a name="log-analytics-migration-guide-for-azure-hdinsight-clusters"></a>Azure HDInsight クラスター用の Log Analytics 移行ガイド
 
@@ -59,7 +59,7 @@ Azure HDInsight チームは、顧客からのフィードバックを考慮し�
 ## <a name="activate-a-new-azure-monitor-integration"></a>新しい Azure Monitor 統合をアクティブ化する 
 
 > [!NOTE]
-> 新しい統合を有効にする前に、アクセスできるサブスクリプションに Log Analytics ワークスペースを作成しておく必要があります。 Log Analytics ワークスペースの作成方法の詳細については、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/learn/quick-create-workspace.md)」を参照してください。
+> 新しい統合を有効にする前に、アクセスできるサブスクリプションに Log Analytics ワークスペースを作成しておく必要があります。 Log Analytics ワークスペースの作成方法の詳細については、「[Azure portal で Log Analytics ワークスペースを作成する](../azure-monitor/logs/quick-create-workspace.md)」を参照してください。
 
 クラスターのポータル ページに移動し、 **[監視]** セクションに達するまで左側のメニューを下にスクロールして、新しい統合をアクティブ化します。 **[監視]** セクションで、 **[Monitor integration]\(Monitor 統合\)** を選択します。 次に、 **[有効]** を選択すると、ログの送信先となる Log Analytics ワークスペースを選択できます。 ワークスペースを選択したら、 **[保存]** を選択します。 
 
@@ -112,7 +112,7 @@ Azure HDInsight チームは、顧客からのフィードバックを考慮し�
 
 #### <a name="insights"></a>洞察
 
-分析情報は、[Azure ブック](../azure-monitor/platform/workbooks-overview.md)を使用して作成されたクラスター固有の視覚エフェクト ダッシュボードです。 これらのダッシュボードを使用すると、クラスターがどのように実行されているかを示す詳細なグラフや視覚エフェクトが得られます。 これらのダッシュボードには、クラスターの種類、YARN、システム メトリック、およびコンポーネント ログごとにセクションがあります。 クラスターのダッシュボードにアクセスするには、ポータルでクラスターのページにアクセスし、 **[監視]** セクションまで下にスクロールして、 **[分析情報]** ウィンドウを選択します。 新しい統合を有効にした場合、ダッシュボードは自動的に読み込まれます。 ログのクエリを実行すると、グラフが読み込まれるまで数秒かかります。
+分析情報は、[Azure ブック](../azure-monitor/visualize/workbooks-overview.md)を使用して作成されたクラスター固有の視覚エフェクト ダッシュボードです。 これらのダッシュボードを使用すると、クラスターがどのように実行されているかを示す詳細なグラフや視覚エフェクトが得られます。 これらのダッシュボードには、クラスターの種類、YARN、システム メトリック、およびコンポーネント ログごとにセクションがあります。 クラスターのダッシュボードにアクセスするには、ポータルでクラスターのページにアクセスし、 **[監視]** セクションまで下にスクロールして、 **[分析情報]** ウィンドウを選択します。 新しい統合を有効にした場合、ダッシュボードは自動的に読み込まれます。 ログのクエリを実行すると、グラフが読み込まれるまで数秒かかります。
 
 :::image type="content" source="./media/log-analytics-migration/visualization-dashboard.png" lightbox="./media/log-analytics-migration/visualization-dashboard.png" alt-text="視覚エフェクト ダッシュボードを示すスクリーンショット。":::
 
@@ -132,7 +132,7 @@ Azure HDInsight チームは、顧客からのフィードバックを考慮し�
 
 #### <a name="alerts"></a>警告
 
-ログ クエリ エディターで、クラスターおよびワークスペースにカスタム アラートを追加できます。 クラスターまたはワークスペース ポータルから **[ログ]** ウィンドウを選択して、ログ クエリ エディターにアクセスします。 次のスクリーンショットに示すように、クエリを実行し、 **[新しいアラート ルール]** を選択します。 詳細については、[アラートの構成](../azure-monitor/platform/alerts-log.md)に関するページを参照してください。
+ログ クエリ エディターで、クラスターおよびワークスペースにカスタム アラートを追加できます。 クラスターまたはワークスペース ポータルから **[ログ]** ウィンドウを選択して、ログ クエリ エディターにアクセスします。 次のスクリーンショットに示すように、クエリを実行し、 **[新しいアラート ルール]** を選択します。 詳細については、[アラートの構成](../azure-monitor/alerts/alerts-log.md)に関するページを参照してください。
 
 :::image type="content" source="./media/log-analytics-migration/new-rule-alert.png" alt-text="新しいルール アラートを示すスクリーンショット" border="false":::。
 

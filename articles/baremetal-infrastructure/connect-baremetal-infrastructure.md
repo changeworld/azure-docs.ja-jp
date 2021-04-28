@@ -4,12 +4,12 @@ description: Azure portal または Azure CLI を使用して BareMetal イン�
 ms.topic: how-to
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: a7fdc17aa4271915f7dc02aaa2d7a688016bf892
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 8f28579a83c45692e5d1eade2e4632ff8c1c8e42
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579167"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139617"
 ---
 # <a name="connect-baremetal-infrastructure-instances-in-azure"></a>Azure で BareMetal インフラストラクチャ インスタンスを接続する
 
@@ -83,7 +83,7 @@ BareMetal インスタンスのデプロイ中に、デプロイ要求で使用�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-すべての BareMetal インスタンスを表示するには、リソース グループに対して [az baremetalinstance list](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) コマンドを実行します。
+すべての BareMetal インスタンスを表示するには、リソース グループに対して [az baremetalinstance list](/cli/azure/baremetalinstance#az_baremetalinstance_list) コマンドを実行します。
 
 ```azurecli
 az baremetalinstance list --resource-group DSM05A-T550 –output table
@@ -123,11 +123,11 @@ BareMetal インスタンスの一覧で、表示する 1 つのインスタン�
 また、右側には、[Azure 近接配置グループ](../virtual-machines/co-location.md)の名前があります。これは、デプロイされた各 BareMetal インスタンスに対して自動的に作成されます。 アプリケーション レイヤーをホストする Azure VM をデプロイするときは、この近接配置グループを参照します。 BareMetal インスタンスに関連付けられている近接配置グループを使用すると、Azure VM が確実に BareMetal インスタンスの近くにデプロイされるようになります。
  
 >[!TIP]
->リビジョン 4.x と同じ Azure データセンターでアプリケーション レイヤーを検索するには、[最適なネットワーク待ち時間のための Azure 近接配置グループ](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)に関するページを参照してください。
+>リビジョン 4.x と同じ Azure データセンターでアプリケーション レイヤーを検索するには、[最適なネットワーク待ち時間のための Azure 近接配置グループ](../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md)に関するページを参照してください。
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-BareMetal インスタンスの詳細を表示するには、[az baremetalinstance show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) コマンドを実行します。
+BareMetal インスタンスの詳細を表示するには、[az baremetalinstance show](/cli/azure/baremetalinstance#az_baremetalinstance_show) コマンドを実行します。
 
 ```azurecli
 az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
@@ -159,7 +159,7 @@ BareMetal インスタンスに対して、Azure タグの追加または削除�
 
 BareMetal インスタンスへのタグの割り当ては、仮想マシンでのタグの割り当てと同様に機能します。 VM と同様に、タグは Azure メタデータ内に存在します。 BareMeta インスタンスでは、タグに VM の場合と同じ制限があります。
 
-BareMetal インスタンスにタグを追加するには、[az baremetalinstance update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) コマンドを実行します。
+BareMetal インスタンスにタグを追加するには、[az baremetalinstance update](/cli/azure/baremetalinstance#az_baremetalinstance_update) コマンドを実行します。
 
 ```azurecli
 az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
@@ -197,7 +197,7 @@ BareMetal インスタンスを再起動する際には、待ち時間が発生�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-BareMetal インスタンスを再起動するには、[az baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) コマンドを使用します。
+BareMetal インスタンスを再起動するには、[az baremetalinstance restart](/cli/azure/baremetalinstance#az_baremetalinstance_restart) コマンドを使用します。
 
 ```azurecli
 az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01

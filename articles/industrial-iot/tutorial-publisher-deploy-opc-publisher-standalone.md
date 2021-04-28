@@ -6,18 +6,18 @@ ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: tutorial
 ms.date: 3/22/2021
-ms.openlocfilehash: c82d15541459b5b482e427fc707b92755aa02c6c
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: a47f9d6a47876f09ca241c30e3443886642e4fd8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104787231"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108137240"
 ---
 # <a name="tutorial-deploy-the-opc-publisher"></a>チュートリアル: OPC Publisher をデプロイする
 
 OPC Publisher は、オープンで開発された完全にサポートされている Microsoft 製品であり、産業用資産と Microsoft Azure クラウドの間のギャップを埋めます。 このために、OPC UA 対応の資産または産業用接続ソフトウェアに接続し、IEC62541 OPC UA PubSub 標準形式 (バージョン 2.6 以降) など、さまざまな形式でテレメトリ データを [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) に発行します。
 
-これは、[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) でモジュールとして、またはプレーン Docker でコンテナーとして実行されます。 [.NET クロスプラットフォーム ランタイム](https://docs.microsoft.com/dotnet/core/introduction)を利用するので、Linux と Windows 10 でもネイティブに実行されます。
+これは、[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) でモジュールとして、またはプレーン Docker でコンテナーとして実行されます。 [.NET クロスプラットフォーム ランタイム](/dotnet/core/introduction)を利用するので、Linux と Windows 10 でもネイティブに実行されます。
 
 このチュートリアルでは、以下の内容を学習します。
 

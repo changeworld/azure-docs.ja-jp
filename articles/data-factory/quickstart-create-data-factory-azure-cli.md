@@ -9,12 +9,12 @@ ms.date: 03/24/2021
 ms.custom:
 - template-quickstart
 - devx-track-azurecli
-ms.openlocfilehash: 9af5f276e49e9eb2756dc544db353c75c99bc5a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b40407f4c4fb81bbf76bd0b552f3c9f2c827232a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937956"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871526"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>クイックスタート: Azure CLI を使用して Azure データ ファクトリを作成する
 
@@ -73,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-Azure データ ファクトリを作成するには、[az datafactory factory create](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_create) コマンドを実行します。
+Azure データ ファクトリを作成するには、[az datafactory factory create](/cli/azure/datafactory/factory#az_datafactory_factory_create) コマンドを実行します。
 
 ```azurecli
 az datafactory factory create --resource-group ADFQuickStartRG \
@@ -83,7 +83,7 @@ az datafactory factory create --resource-group ADFQuickStartRG \
 > [!IMPORTANT]
 > `ADFTutorialFactory` は、グローバルに一意のデータ ファクトリ名に置き換えてください (ADFTutorialFactorySP1127 など)。
 
-作成したデータ ファクトリは、[az datafactory factory show](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) コマンドを使用して確認できます。
+作成したデータ ファクトリは、[az datafactory factory show](/cli/azure/datafactory/factory#az_datafactory_factory_show) コマンドを使用して確認できます。
 
 ```azurecli
 az datafactory factory show --resource-group ADFQuickStartRG \
@@ -94,7 +94,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
 次に、リンク サービスと 2 つのデータセットを作成します。
 
-1. [az storage account show-connection-string](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) コマンドを使用してストレージ アカウントの接続文字列を取得します。
+1. [az storage account show-connection-string](/cli/azure/datafactory/factory#az_datafactory_factory_show) コマンドを使用してストレージ アカウントの接続文字列を取得します。
 
    ```azurecli
    az storage account show-connection-string --resource-group ADFQuickStartRG \
@@ -115,7 +115,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
    }
    ```
 
-1. [az datafactory linked-service create](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_create) コマンドを使用して、`AzureStorageLinkedService` という名前のリンク サービスを作成します。
+1. [az datafactory linked-service create](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_create) コマンドを使用して、`AzureStorageLinkedService` という名前のリンク サービスを作成します。
 
    ```azurecli
    az datafactory linked-service create --resource-group ADFQuickStartRG \
@@ -146,7 +146,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
    }
    ```
 
-1. [az datafactory dataset create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) コマンドを使用して、`InputDataset` という名前の入力データセットを作成します。
+1. [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) コマンドを使用して、`InputDataset` という名前の入力データセットを作成します。
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -177,7 +177,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
    }
    ```
 
-1. [az datafactory dataset create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) コマンドを使用して、`OutputDataset` という名前の出力データセットを作成します。
+1. [az datafactory dataset create](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) コマンドを使用して、`OutputDataset` という名前の出力データセットを作成します。
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -243,7 +243,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
    }
    ```
 
-1. [az datafactory pipeline create](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create) コマンドを使用して、`Adfv2QuickStartPipeline` という名前のパイプラインを作成します。
+1. [az datafactory pipeline create](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create) コマンドを使用して、`Adfv2QuickStartPipeline` という名前のパイプラインを作成します。
 
    ```azurecli
    az datafactory pipeline create --resource-group ADFQuickStartRG \
@@ -251,7 +251,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
        --pipeline @Adfv2QuickStartPipeline.json
    ```
 
-1. [az datafactory pipeline create-run](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create_run) コマンドを使用してパイプラインを実行します。
+1. [az datafactory pipeline create-run](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create_run) コマンドを使用してパイプラインを実行します。
 
    ```azurecli
    az datafactory pipeline create-run --resource-group ADFQuickStartRG \
@@ -260,7 +260,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 
    このコマンドからは、実行 ID が返されます。 これをコピーしてください。次のコマンドで使用します。
 
-1. [az datafactory pipeline-run show](/cli/azure/ext/datafactory/datafactory/pipeline-run#ext_datafactory_az_datafactory_pipeline_run_show) コマンドを使用して、パイプラインが正常に実行されたことを確認します。
+1. [az datafactory pipeline-run show](/cli/azure/datafactory/pipeline-run#az_datafactory_pipeline_run_show) コマンドを使用して、パイプラインが正常に実行されたことを確認します。
 
    ```azurecli
    az datafactory pipeline-run show --resource-group ADFQuickStartRG \
@@ -277,7 +277,7 @@ az datafactory factory show --resource-group ADFQuickStartRG \
 az group delete --name ADFQuickStartRG
 ```
 
-このリソース グループを何か他の目的で使用する場合は、リソースを個別に削除してください。 たとえば、リンク サービスを削除するには、[az datafactory linked-service delete](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_delete) コマンドを使用します。
+このリソース グループを何か他の目的で使用する場合は、リソースを個別に削除してください。 たとえば、リンク サービスを削除するには、[az datafactory linked-service delete](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_delete) コマンドを使用します。
 
 このクイックスタートでは、次の JSON ファイルを作成しました。
 

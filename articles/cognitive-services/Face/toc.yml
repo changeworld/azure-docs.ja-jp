@@ -23,20 +23,20 @@
       href: Face-API-How-to-Topics/specify-detection-model.md
     - name: グループに顔を追加する
       href: Face-API-How-to-Topics/how-to-add-faces.md
+    - name: PersonDirectory 構造を使用する
+      href: Face-API-How-to-Topics/use-persondirectory.md
+    - name: 大規模なフィーチャーを使用する
+      href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: HeadPose 属性を使用する
       href: Face-API-How-to-Topics/how-to-use-headpose.md
     - name: Face サービスを使用するときの待機時間を軽減する
       href: Face-API-How-to-Topics/how-to-mitigate-latency.md
-    - name: 大規模なフィーチャーを使用する
-      href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: リアルタイムでビデオを分析する
       href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
     - name: 顔データを移行する
       href: Face-API-How-to-Topics/how-to-migrate-face-data.md
     - name: Face コンテナーを使用する
       items:
-        - name: Cognitive Services コンテナーのドキュメント
-          href: /azure/cognitive-services/containers/index?context=/azure/cognitive-services/face/context/context
         - name: コンテナーの概要
           href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
         - name: コンテナーのインストールと実行
@@ -45,6 +45,9 @@
           href: face-resource-container-config.md
         - name: Container Instances の使用
           href: /azure/cognitive-services/containers/azure-container-instance-recipe?context=/azure/cognitive-services/face/context/context
+        - name: すべての Cognitive Services コンテナーのドキュメント
+          href: ../containers/index.yml
+          maintainContext: true
     - name: エンタープライズ対応
       items:
         - name: 仮想ネットワークの設定

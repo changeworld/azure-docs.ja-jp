@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: f94134b2a06155b1b1f390175578e501a840038b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae9a1a374724465148f922efe486c4680e1e36ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101669423"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144279"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>サーバーレス SQL プールのセルフヘルプ
 
@@ -41,7 +41,7 @@ Synapse Studio がサーバーレス SQL プールへの接続を確立できな
 
 - 対象のクエリが CSV ファイルをターゲットとしている場合は、[統計を作成する](develop-tables-statistics.md#statistics-in-serverless-sql-pool)ことを検討してください。 
 
-- クエリを最適化するには、[サーバーレス SQL プールのパフォーマンスのベスト プラクティス](best-practices-sql-on-demand.md)に関するページを参照してください。  
+- クエリを最適化するには、[サーバーレス SQL プールのパフォーマンスのベスト プラクティス](./best-practices-serverless-sql-pool.md)に関するページを参照してください。  
 
 ## <a name="create-statement-is-not-supported-in-master-database"></a>CREATE "ステートメント" はマスター データベースでサポートされていません。
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: tomfitz
 author: tfitzmac
 ms.date: 03/04/2021
-ms.openlocfilehash: 7d3f15c8852e6e25c621baad9bc6f20c303ffdb9
-ms.sourcegitcommit: dac05f662ac353c1c7c5294399fca2a99b4f89c8
+ms.openlocfilehash: 4d6c8306b3dbdfe895055dc008d81cc0d85d8d6c
+ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102125015"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107538063"
 ---
 # <a name="data-types-in-arm-templates"></a>ARM テンプレートのデータ型
 
@@ -143,11 +143,9 @@ param exampleInt int = 1
 
 オブジェクトは左中かっこ (`{`) で始めて、右中かっこ (`}`) で終わります。 オブジェクト内の各プロパティはキーと値で構成されます。 キーと値はコロン (`:`) で区切られます。
 
-JSON では、キーは二重引用符で囲まれています。 各プロパティはコンマで区切られます。
-
-Bicep では、キーは引用符で囲まれません。 プロパティ間にコンマを使用しないでください。
-
 # <a name="json"></a>[JSON](#tab/json)
+
+JSON では、キーは二重引用符で囲まれています。 各プロパティはコンマで区切られます。
 
 ```json
 "parameters": {
@@ -165,6 +163,8 @@ Bicep では、キーは引用符で囲まれません。 プロパティ間に�
 
 # <a name="bicep"></a>[Bicep](#tab/bicep)
 
+Bicep では、キーは引用符で囲まれません。 プロパティ間にコンマを使用しないでください。
+
 ```bicep
 param exampleObject object = {
   name: 'test name'
@@ -173,6 +173,22 @@ param exampleObject object = {
   tier: 1
 }
 ```
+
+オブジェクトのプロパティにアクセスするために、プロパティ アクセサーが使用されます。 これらは、`.` 演算子を使用して構築されます。 次に例を示します。
+
+```bicep
+var x = {
+  y: {
+    z: 'Hello`
+    a: true
+  }
+  q: 42
+}
+```
+
+前の宣言を行うと、式 x.y.z はリテラル文字列の "Hello" に評価されます。 同様に、式 x.q は整数リテラルの 42 に評価されます。
+
+プロパティ アクセサーは、どのオブジェクトでも使用できます。 これには、オブジェクト型とオブジェクト リテラルのパラメーターと変数が含まれます。 オブジェクト型以外の式でプロパティ アクセサーを使用すると、エラーが発生します。
 
 ---
 

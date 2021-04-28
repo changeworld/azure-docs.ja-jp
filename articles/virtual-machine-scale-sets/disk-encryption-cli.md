@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: d347be4e6727cdda659620befe20824678160020
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: af870b3be9c2ab7022a05c9cf9e3a662c5850214
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792437"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875073"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI による仮想マシン スケール セットの OS および接続されているデータ ディスクの暗号化
 
@@ -61,7 +61,7 @@ az vmss extension set \
 
 Azure Key Vault は、キー、シークレット、パスワードを格納して、アプリケーションとサービスに安全に実装できるようにします。 暗号化キーは、ソフトウェア保護を使って Azure Key Vault に格納されます。または、FIPS 140-2 レベル 2 標準に認定された Hardware Security Module (HSM) でキーをインポートまたは生成することもできます。 これらの暗号化キーは、VM に接続された仮想ディスクの暗号化/暗号化解除に使われます。 これらの暗号化キーの制御を維持し、その使用を監査することができます。
 
-一意の *keyvault_name* を定義します｡ [az keyvault create](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-create) を使用して､スケール セットと同じサブスクリプションとリージョンに KeyVault を作成し､ *--enabled-for-disk-encryption* アクセス ポリシーを設定します｡
+一意の *keyvault_name* を定義します｡ [az keyvault create](/cli/azure/keyvault#az_keyvault_create) を使用して､スケール セットと同じサブスクリプションとリージョンに KeyVault を作成し､ *--enabled-for-disk-encryption* アクセス ポリシーを設定します｡
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -75,7 +75,7 @@ az keyvault create --resource-group myResourceGroup --name $keyvault_name --enab
 
 この手順は、ディスク暗号化で使用する既存の Key Vault がある場合にのみ必要です。 前のセクションで Key Vault を作成した場合は、この手順をスキップしてください。
 
-一意の *keyvault_name* を定義します｡ [az keyvault update](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-update) を使用して KeyVault を更新し､ *--enabled-for-disk-encryption* アクセス ポリシーを設定します｡
+一意の *keyvault_name* を定義します｡ [az keyvault update](/cli/azure/keyvault#az_keyvault_update) を使用して KeyVault を更新し､ *--enabled-for-disk-encryption* アクセス ポリシーを設定します｡
 
 ```azurecli-interactive
 # Provide your own unique Key Vault name
@@ -87,7 +87,7 @@ az keyvault update --name $keyvault_name --enabled-for-disk-encryption
 
 ## <a name="enable-encryption"></a>暗号化を有効にする
 
-スケールセット内の VM インスタンスを暗号化するには、まず [az keyvault show](/cli/azure/keyvault#ext-keyvault-preview-az-keyvault-show) を使用して Key Vault のリソース ID に関する一部情報を取得します。 これらの変数は､この後､[az vmss encryption enable](/cli/azure/vmss/encryption#az_vmss_encryption_enable) を使用した暗号化プロセスの開始に使用されます｡
+スケールセット内の VM インスタンスを暗号化するには、まず [az keyvault show](/cli/azure/keyvault#az_keyvault_show) を使用して Key Vault のリソース ID に関する一部情報を取得します。 これらの変数は､この後､[az vmss encryption enable](/cli/azure/vmss/encryption#az_vmss_encryption_enable) を使用した暗号化プロセスの開始に使用されます｡
 
 ```azurecli-interactive
 # Get the resource ID of the Key Vault

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 2/22/2021
-ms.openlocfilehash: 4dd7bbe613b30df2611bfe6631950e121235204a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 4/16/2021
+ms.openlocfilehash: d5b0c8e60632be5e058900680dc376b7f0761150
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101658590"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781579"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database サーバーレス
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -255,7 +255,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 ### <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-最大または最小の仮想コア、および自動一時停止遅延の変更は、Azure CLI の [az sql db update](/cli/azure/sql/db#az-sql-db-update) コマンドと、 `capacity`、`min-capacity`、および `auto-pause-delay` の引数を使用して実行されます。
+最大または最小の仮想コア、および自動一時停止遅延の変更は、Azure CLI の [az sql db update](/cli/azure/sql/db#az_sql_db_update) コマンドと、 `capacity`、`min-capacity`、および `auto-pause-delay` の引数を使用して実行されます。
 
 
 ## <a name="monitoring"></a>監視
@@ -266,7 +266,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 #### <a name="app-package"></a>アプリ パッケージ
 
-アプリ パッケージは、データベースがサーバーレスまたはプロビジョニング済みのどちらのコンピューティング レベルであるかに関係なく、データベースに対する最も外側のリソース管理境界です。 アプリ パッケージには SQL インスタンスと外部サービスが含まれ、両者によって SQL Database のデータベースによって使用されるすべてのユーザー リソースとシステム リソースのスコープが決まります。 外部サービスの例としては、R やフルテキスト検索などがあります。 一般に、アプリ パッケージでの全体的なリソース使用量より、SQL インスタンスの方が優位です。
+アプリ パッケージは、データベースがサーバーレスまたはプロビジョニング済みのどちらのコンピューティング レベルであるかに関係なく、データベースに対する最も外側のリソース管理境界です。 アプリ パッケージには SQL インスタンスおよびフルテキスト検索などの外部サービスが含まれ、このすべてによって SQL Database のデータベースによって使用されるすべてのユーザーおよびシステムのリソースのスコープが決まります。 一般に、アプリ パッケージでの全体的なリソース使用量より、SQL インスタンスの方が優位です。
 
 #### <a name="user-resource-pool"></a>ユーザー リソース プール
 

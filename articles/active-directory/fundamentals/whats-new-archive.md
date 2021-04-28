@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0500c8535c6230bad85c97c23787a405edfbfee
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 045eb501e0e62b6696a2ce059612f62487c41adf
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588209"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017033"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -3102,7 +3102,7 @@ SAML で認証されたオンプレミス アプリで、これらのアプリ�
 
 ![サンプル情報を含む新しい [監査ログ] ページ](media/whats-new/audit-logs-page.png)
 
-新しい **[監査ログ]** ページの詳細については、「[Azure Active Directory ポータルの監査アクティビティ レポート](../reports-monitoring/concept-audit-logs.md#audit-logs)」を参照してください。
+新しい **[監査ログ]** ページの詳細については、「[Azure Active Directory ポータルの監査アクティビティ レポート](../reports-monitoring/concept-audit-logs.md)」を参照してください。
 
 ---
 

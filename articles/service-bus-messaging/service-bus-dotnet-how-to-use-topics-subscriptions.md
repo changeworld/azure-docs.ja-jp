@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 03/16/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 79eb7783fd3daf546539dd5b9048f4e9f484374f
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 7cc854c850b02674151da7c88d94a2800b6572f5
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106279801"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015971"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-net"></a>Azure Service Bus トピックへのメッセージ送信とトピックのサブスクリプションからのメッセージ受信 (.NET)
 このチュートリアルでは、次のタスクを実行する C# アプリケーションを作成します。
@@ -188,7 +188,7 @@ Visual Studio を使用して .NET Core コンソール アプリケーション
     コードの重要な手順を次に示します。
     1. 名前空間への接続文字列を使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを作成します。 
     1. `ServiceBusClient` オブジェクトで [CreateSender](/dotnet/api/azure.messaging.servicebus.servicebusclient.createsender) メソッドを呼び出して、指定した Service Bus トピックに対して [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender) オブジェクトを作成します。 
-    1. ヘルパー メソッド `GetMessages` を呼び出して、Service Bus トピックに送信されるメッセージのキューを取得します。 
+    1. ヘルパー メソッド `CreateMessages` を呼び出して、Service Bus トピックに送信されるメッセージのキューを取得します。 
     1. [ServiceBusSender.CreateMessageBatchAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.createmessagebatchasync) を使用して [ServiceBusMessageBatch](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch) を作成します。
     1. [ServiceBusMessageBatch.TryAddMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessagebatch.tryaddmessage) を使用して、メッセージをバッチに追加します。 メッセージはバッチに追加されると、.NET キューから削除されます。 
     1. [ServiceBusSender.SendMessagesAsync](/dotnet/api/azure.messaging.servicebus.servicebussender.sendmessagesasync) メソッドを使用して、メッセージのバッチを Service Bus トピックに送信します。
