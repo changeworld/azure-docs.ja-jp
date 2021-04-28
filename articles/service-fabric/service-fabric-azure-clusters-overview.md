@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: bbfdc0a30aa673e8602ec9233fde4236c99ef5aa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4aed4ab38db9f8d8b95647b6662245c93778afed
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97882213"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107520158"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上での Service Fabric クラスターの概要
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 クラスターは多数のノードにスケールできます。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、サービスのパーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。
@@ -92,25 +92,7 @@ Azure Service Fabric クラスターはお客様が所有するリソースで�
 詳細については、[クラスターのアップグレード](service-fabric-cluster-upgrade.md)に関するページを参照してください。
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
-クラスターは、次のオペレーティング システムが実行されている仮想マシン上に作成できます。
-
-| オペレーティング システム | サポートされる最も古い Service Fabric のバージョン | サポートされる最新の Service Fabric のバージョン |
-| --- | --- | --- | 
-| Windows Server 2019 | 6.4.654.9590 | 該当なし |
-| Windows Server 2016 | すべてのバージョン | 該当なし |
-| Windows Server 20H2 | 7.2.445.9590 | 該当なし |
-| Windows Server 1809 | 6.4.654.9590 | 7.2.445.9590 |
-| Windows Server 1803 | 6.4 | 7.2.445.9590 |
-| Windows Server 1709 | 6.0 | 7.2.445.9590 |
-| Windows Server 2012 | すべてのバージョン | 該当なし | 
-| Linux Ubuntu 16.04 | 6.0 | 該当なし |
-| Linux Ubuntu 18.04 | 7.1 | 該当なし |
-
-詳細については、[Azure でサポートされているクラスター バージョン](./service-fabric-versions.md#supported-operating-systems)に関するページを参照してください
-
-> [!NOTE]
-> Windows Server 1709 で Service Fabric をデプロイする場合、(1) これは Long Term Servicing Branch ではないため、今後、バージョンの移動が必要になる可能性があります。また、(2) コンテナーをデプロイする場合、Windows Server 2016 で構築されたコンテナーは Windows Server 1709 で動作しません。その逆も同様です (デプロイするにはリビルドが必要です)。
->
+追加情報については、[Azure でサポートされているバージョン](./service-fabric-versions.md)に関するページを参照してください
 
 
 ## <a name="next-steps"></a>次のステップ

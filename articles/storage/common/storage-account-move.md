@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: d894ce71e0ffa5a0894a1f6b0035efe66271ded8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1900326bf03c6a32f25c7a019d8bd1e460735bd6
+ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100591462"
+ms.lasthandoff: 04/14/2021
+ms.locfileid: "107505600"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure ストレージ アカウントを別のリージョンに移動する
 
@@ -55,7 +55,7 @@ Azure portal を使用してテンプレートをエクスポートするには:
 
 2. **[すべてのリソース]** を選択してから、ストレージ アカウントを選択します。
 
-3. **[設定]**  >  **[テンプレートのエクスポート]** を選択します。
+3. **[Automation]**  >  **[テンプレートのエクスポート]** を選択します。
 
 4. **[テンプレートのエクスポート]** ブレードで **[ダウンロード]** を選択します。
 
