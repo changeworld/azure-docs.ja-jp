@@ -4,12 +4,12 @@ description: Linux にランタイムと SDK をインストールし、ロー�
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcf0aeec27415d03c528e42ad5341a92bd299d88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086892"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869403"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -261,7 +261,7 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
 
 ## <a name="set-up-net-core-31-development"></a>.NET Core 3.1 開発環境を設定する
 
-[.NET Core 3.1 SDK for Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core Service Fabric アプリケーション用のパッケージは、NuGet.org でホストされています。
+[.NET Core 3.1 SDK for Ubuntu](/dotnet/core/install/linux-ubuntu) をインストールして、[C# Service Fabric アプリケーションの作成](service-fabric-create-your-first-linux-application-with-csharp.md)を開始します。 .NET Core Service Fabric アプリケーション用のパッケージは、NuGet.org でホストされています。
 
 ## <a name="set-up-java-development"></a>Java 開発をセットアップする
 

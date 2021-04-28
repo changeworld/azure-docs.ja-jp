@@ -3,16 +3,16 @@ title: Azure IoT Hub Device Provisioning Service - デバイスの概念
 description: Azure IoT Hub Device Provisioning Service (DPS) におけるデバイスの再プロビジョニングの概念について説明します
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 04/16/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fbc83ec62c10fae00e371cd9ad95cf2860495fad
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91842854"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575770"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT Hub デバイスの再プロビジョニングの概念
 
@@ -61,6 +61,9 @@ Device Provisioning Service 内の再プロビジョニングのサポートで�
     ![登録エントリに関連付けられているデバイスが新しいプロビジョニング要求を送信するときにポリシーが処理される方法を示す図。](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **再プロビジョニングしない**: デバイスは別のハブに再プロビジョニングされることはありません。 このポリシーは、下位互換性を管理するために提供されます。
+
+> [!NOTE]
+> DPS では、デバイスの新しい[リターン データ](how-to-send-additional-data.md)がある場合に備えて、再プロビジョニング ポリシーに関係なく、常にカスタム割り当て Webhook が呼び出されます。 再プロビジョニング ポリシーが **[再プロビジョニングしない]** に設定されている場合、Webhook は呼び出されますが、デバイスに割り当てられたハブは変更されません。
 
 ### <a name="managing-backwards-compatibility"></a>下位互換性を管理する
 

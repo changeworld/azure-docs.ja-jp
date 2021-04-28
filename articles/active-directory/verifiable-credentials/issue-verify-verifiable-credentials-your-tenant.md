@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: e4772b6701065a44416d849faa9a501bd7895f27
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 310c821bf102d267d0b5f77dbf206b896ab2f1c7
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553381"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739226"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>チュートリアル - テナントを使用して検証可能な資格情報を発行して検証する (プレビュー)
 
@@ -271,7 +271,7 @@ Key Vault のアクセス許可とアクセス制御の詳細については、[
 
   ![認証後の資格情報の追加画面](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
 
-これで、認証に B2C テナントを使用しながら、テナントを使用して VC を生成する検証可能な資格情報を発行しました。
+これで、認証に元の B2C テナントを使用しながら、テナントを使用して VC を生成する検証可能な資格情報を発行しました。
 
   ![Azure AD によって発行され、Azure B2C インスタンスによって認証された VC](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
 

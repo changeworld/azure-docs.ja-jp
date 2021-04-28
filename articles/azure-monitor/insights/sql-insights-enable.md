@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: 012aa364fe9e379455b6b63f7c9e541d2d5b97ed
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 385bf6382fd25406fc9927df806f35dbf973d8fa
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726900"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142533"
 ---
 # <a name="enable-sql-insights-preview"></a>SQL insights を有効にする (プレビュー)
 この記事では、[SQL insights](sql-insights-overview.md) を有効にして SQL のデプロイを監視する方法について説明します。 監視は、お使いの SQL デプロイに接続し、動的管理ビュー (DMV) を使用して監視データを収集する Azure 仮想マシンから実行されます。 監視プロファイルを使用して、どのようなデータセットを収集するかと、収集の頻度を制御できます。
@@ -125,7 +125,7 @@ SQL リソースのネットワーク設定によっては、仮想マシンを 
 
 SQL 分析情報では、そのパブリック エンドポイントおよび仮想ネットワークからの Azure SQL Database へのアクセスをサポートしています。
 
-パブリック エンドポイント経由でアクセスする場合は、 **[ファイアウォールの設定]** ページと [[IP ファイアウォールの設定]](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-firewall-rules) セクションに規則を追加します。  仮想ネットワークからのアクセスを指定する場合は、[仮想ネットワークのファイアウォール規則](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#virtual-network-firewall-rules)を設定し、[Azure Monitor エージェントが必要とするサービス タグ](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking)を設定できます。  [この記事](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-vs-virtual-network-firewall-rules)では、これら 2 種類のファイアウォール規則の違いについて説明します。
+パブリック エンドポイント経由でアクセスする場合は、 **[ファイアウォールの設定]** ページと [[IP ファイアウォールの設定]](../../azure-sql/database/network-access-controls-overview.md#ip-firewall-rules) セクションに規則を追加します。  仮想ネットワークからのアクセスを指定する場合は、[仮想ネットワークのファイアウォール規則](../../azure-sql/database/network-access-controls-overview.md#virtual-network-firewall-rules)を設定し、[Azure Monitor エージェントが必要とするサービス タグ](../agents/azure-monitor-agent-overview.md#networking)を設定できます。  [この記事](../../azure-sql/database/network-access-controls-overview.md#ip-vs-virtual-network-firewall-rules)では、これら 2 種類のファイアウォール規則の違いについて説明します。
 
 :::image type="content" source="media/sql-insights-enable/set-server-firewall.png" alt-text="サーバー ファイアウォールの設定" lightbox="media/sql-insights-enable/set-server-firewall.png":::
 
@@ -134,11 +134,11 @@ SQL 分析情報では、そのパブリック エンドポイントおよび仮
 
 ### <a name="azure-sql-managed-instances"></a>Azure SQL Managed Instance 
 
-監視仮想マシンの場所が SQL MI リソースと同じ VNet 内になる場合は、「[同じ vnet 内で接続する](https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance#connect-inside-the-same-vnet)」を参照してください。 監視仮想マシンの場所が SQL MI リソースとは異なる VNet 内になる場合は、「[異なる vnet 内で接続する](https://docs.microsoft.com/azure/azure-sql/managed-instance/connect-application-instance#connect-inside-a-different-vnet)」を参照してください。
+監視仮想マシンの場所が SQL MI リソースと同じ VNet 内になる場合は、「[同じ vnet 内で接続する](../../azure-sql/managed-instance/connect-application-instance.md#connect-inside-the-same-vnet)」を参照してください。 監視仮想マシンの場所が SQL MI リソースとは異なる VNet 内になる場合は、「[異なる vnet 内で接続する](../../azure-sql/managed-instance/connect-application-instance.md#connect-inside-a-different-vnet)」を参照してください。
 
 
 ### <a name="azure-virtual-machine-and-azure-sql-virtual-machine"></a>Azure 仮想マシンと Azure SQL 仮想マシン  
-監視仮想マシンが SQL 仮想マシンのリソースと同じ VNet にある場合は、「[仮想ネットワーク内で SQL Server に接続する方法](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/ways-to-connect-to-sql#connect-to-sql-server-within-a-virtual-network)」を参照してください。 監視仮想マシンが SQL 仮想マシンのリソースと同じ VNet にある場合は、「[仮想ネットワーク内で SQL Server に接続する方法](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/ways-to-connect-to-sql#connect-to-sql-server-over-the-internet)」を参照してください。
+監視仮想マシンが SQL 仮想マシンのリソースと同じ VNet にある場合は、「[仮想ネットワーク内で SQL Server に接続する方法](../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md#connect-to-sql-server-within-a-virtual-network)」を参照してください。 監視仮想マシンが SQL 仮想マシンのリソースと同じ VNet にある場合は、「[仮想ネットワーク内で SQL Server に接続する方法](../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md#connect-to-sql-server-over-the-internet)」を参照してください。
 
 ## <a name="store-monitoring-password-in-key-vault"></a>Key Vault に監視パスワードを格納する
 SQL ユーザーの接続パスワードは、監視プロファイルの接続文字列に直接入力するのではなく、Key Vault に格納する必要があります。

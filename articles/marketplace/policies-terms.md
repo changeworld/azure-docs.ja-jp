@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 04/16/2021
-ms.openlocfilehash: 7938403e67d7059e8744e7023e8a7614df37e20f
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bc66c922f5d5954adce0361ed88fc80ba80e0836
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599623"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108133099"
 ---
 # <a name="commercial-marketplace-policies-and-terms"></a>商業マーケットプレースのポリシーと利用規約
 
@@ -24,8 +24,8 @@ _Microsoft コマーシャル マーケットプレース_ とは、Microsoft �
 
 ## <a name="publisher-agreement"></a>発行元契約
 
-- [Microsoft Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560)
-- [Microsoft Publisher Agreement の変更履歴](https://go.microsoft.com/fwlink/?linkid=2159975&clcid=0x409)
+- [Microsoft Publisher Agreement](/legal/marketplace/msft-publisher-agreement)
+- [Microsoft Publisher Agreement の変更履歴](/legal/marketplace/mpa-change-history)
 
 Microsoft Publisher Agreement には、コマーシャル マーケットプレースでプランを公開するための関係について記載されています。 これはコマーシャル マーケットプレースのオンライン ストアでのプランの公開および掲載に関連する、パートナー センターの機能へのアクセスと使用を規定するものです。
 

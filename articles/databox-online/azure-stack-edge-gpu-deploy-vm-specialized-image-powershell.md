@@ -6,38 +6,30 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 03/30/2021
+ms.date: 04/15/2021
 ms.author: alkohli
-ms.openlocfilehash: d03aeb9759fb321b580fa65e06dc09ccde4a44a0
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 6bfa42e99f295b429eba40a27eb59becb8aa80a1
+ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106555877"
+ms.lasthandoff: 04/16/2021
+ms.locfileid: "107575950"
 ---
-# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-device-via-azure-powershell"></a>Azure PowerShell を使用して、Azure Stack Edge Pro デバイス上に特殊化されたイメージから VM をデプロイする 
+# <a name="deploy-a-vm-from-a-specialized-image-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Azure PowerShell を使用して、特殊化されたイメージから Azure Stack Edge Pro GPU デバイスに VM をデプロイする 
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-この記事では、特殊化されたイメージから Azure Stack Edge Pro デバイスに仮想マシン (VM) をデプロイするために必要な手順について説明します。 
+この記事では、特殊化されたイメージから Azure Stack Edge Pro GPU デバイスに仮想マシン (VM) をデプロイするために必要な手順について説明します。 
 
-## <a name="about-specialized-images"></a>特殊化されたイメージについて
+Azure Stack Edge Pro GPU で VM をデプロイするための一般化されたイメージを準備するには、[Windows VHD から一般化されたイメージを準備する](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)方法または [ISO から一般化されたイメージを準備する](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md)方法に関する記事をご覧ください。
+
+## <a name="about-vm-images"></a>VM イメージについて
 
 Windows VHD または VHDX を使用すると、"*特殊化された*" イメージまたは "*一般化された*" イメージを作成できます。 次の表は、"*特殊化*" されたイメージと "*一般化*" されたイメージの主な違いをまとめたものです。
 
+[!INCLUDE [about-vm-images-for-azure-stack-edge](../../includes/azure-stack-edge-about-vm-images.md)]
 
-|イメージの種類  |一般化されたイメージ  |専用イメージ  |
-|---------|---------|---------|
-|移行先     |どのシステムにもデプロイされる         | 特定のシステムが対象        |
-|ブート後のセットアップ     | VM の初回ブート時にセットアップが必要。          | セットアップは不要。 <br> VM はプラットフォームによってオンにされる。        |
-|構成     |ホスト名、管理者ユーザー、その他の VM 固有の設定が必要。         |事前に構成済み。         |
-|用途     |同じイメージから複数の新しい VM を作成する。         |特定のマシンを移行する、または以前のバックアップから VM を復元する。         |
-
-
-この記事では、特殊化されたイメージからのデプロイに必要な手順を取り上げます。 一般化されたイメージからデプロイするには、お使いのデバイスでの[一般化された Windows VHD の使用](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)に関するページを参照してください。
-
-
-## <a name="vm-image-workflow"></a>VM イメージのワークフロー
+## <a name="workflow"></a>ワークフロー
 
 特殊化されたイメージから VM をデプロイするための大まかなワークフローは次のとおりです。
 
@@ -45,27 +37,25 @@ Windows VHD または VHDX を使用すると、"*特殊化された*" イメー
 1. VHD から新しいマネージド ディスクを作成します。
 1. マネージド ディスクから新しい仮想マシンを作成し、マネージド ディスクをアタッチします。
 
-
 ## <a name="prerequisites"></a>前提条件
 
-PowerShell を使用してデバイス上に VM をデプロイする前に、以下を確認してください。
+PowerShell を使用してデバイスに VM をデプロイする前に、以下を確認してください。
 
-- デバイスへの接続に使用するクライアントにアクセスできること。
-    - クライアントが、[サポートされている OS](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) を実行していること。
+- デバイスへの接続に使用するクライアントにアクセスできる。
+    - クライアントは[サポートされている OS](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) を実行している。
     - [Azure Resource Manager へのデバイスの接続](azure-stack-edge-gpu-connect-resource-manager.md)に関する記事の手順に従って、クライアントがデバイスのローカル Azure Resource Manager に接続できるように構成されていること。
 
 ## <a name="verify-the-local-azure-resource-manager-connection"></a>ローカル Azure Resource Manager への接続を確認する
 
 クライアントがローカル Azure Resource Manager に接続できることを確認します。 
 
-1. ローカル デバイス API を呼び出して認証を行います。
+1. ローカル デバイス API を呼び出して認証します。
 
     ```powershell
     Login-AzureRMAccount -EnvironmentName <Environment Name>
     ```
 
-2. Azure Resource Manager を介して接続するには、ユーザー名 `EdgeArmUser` とパスワードを指定します。 パスワードを忘れた場合は、[Azure Resource Manager のパスワードをリセットし](azure-stack-edge-gpu-set-azure-resource-manager-password.md)、そのパスワードを使用してサインインします。
- 
+2. ユーザー名 (`EdgeArmUser`) とパスワードを指定して Azure Resource Manager 経由で接続します。 パスワードを忘れた場合は、[Azure Resource Manager のパスワードをリセットし](azure-stack-edge-gpu-set-azure-resource-manager-password.md)、そのパスワードを使用してサインインします。
 
 ## <a name="deploy-vm-from-specialized-image"></a>特殊化されたイメージから VM をデプロイする
 
@@ -75,10 +65,10 @@ PowerShell を使用してデバイス上に VM をデプロイする前に、�
 
 VHD をローカル ストレージ アカウントにコピーするには、次の手順に従います。
 
-1. 自分の Azure Stack Edge のローカル BLOB ストレージ アカウントにソース VHD をコピーします。 
+1. 自分の Azure Stack Edge のローカル BLOB ストレージ アカウントにソース VHD をコピーします。
 
 1. 結果の URI をメモしておきます。 この URI は、後の手順で使用します。
-    
+
     ローカル ストレージ アカウントを作成してアクセスする方法については、「[Azure PowerShell を使用して Azure Stack Edge デバイスに VM をデプロイする](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)」の「[ストレージ アカウントの作成](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#create-a-storage-account)」から「[VHD のアップロード](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md#upload-a-vhd)」までのセクションを参照してください。 
 
 ## <a name="create-a-managed-disk-from-vhd"></a>VHD からマネージド ディスクを作成する
@@ -301,7 +291,5 @@ VHD をローカル ストレージ アカウントにコピーするには、�
 
 ## <a name="next-steps"></a>次のステップ
 
-デプロイの性質に応じて、次のいずれかの手順を選択できます。
-
-- [Azure PowerShell を使用して、一般化されたイメージから VM をデプロイする](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md)  
-- [Azure portal を使用して VM をデプロイする](azure-stack-edge-gpu-deploy-virtual-machine-portal.md)
+- [Azure Stack Edge Pro GPU に VM をデプロイするために Windows VHD から一般化されたイメージを準備する](azure-stack-edge-gpu-prepare-windows-vhd-generalized-image.md)
+- [Azure Stack Edge Pro GPU に VM をデプロイするために ISO から一般化されたイメージを準備する](azure-stack-edge-gpu-prepare-windows-generalized-image-iso.md)

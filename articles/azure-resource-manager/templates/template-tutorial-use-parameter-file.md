@@ -5,13 +5,12 @@ author: mumian
 ms.date: 09/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: b6257161017afc9dab692c43fcc64e5d961a90ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81ce0d00079c65ae76a31ec474b5bc632746db2d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97368428"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074229"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>チュートリアル:パラメーター ファイルを使用して ARM テンプレートをデプロイする
 

@@ -4,13 +4,13 @@ description: この記事では、Azure Automation Runbook に関する問題の
 services: automation
 ms.date: 02/11/2021
 ms.topic: troubleshooting
-ms.custom: has-adal-ref
-ms.openlocfilehash: ea9d8a4899b0d725c9791192d68373b44acee11f
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.custom: has-adal-ref, devx-track-azurepowershell
+ms.openlocfilehash: 7964bc62aefc912a0f61744841784600575c98de
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168741"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831224"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbook の問題のトラブルシューティング
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: 928b1a6dcff7ad186bf5fe9ce07d1a886d429867
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 27e8c108447a3e16a5e61854eb9d43c4a8efffee
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105933340"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126910"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -152,7 +152,7 @@ Secure LDAP を使用するために、ネットワーク トラフィックは�
 
     *.PFX* 証明書ファイルを保護するには、 **[セキュリティ]** ページで **[パスワード]** のオプションを選択します。 暗号化アルゴリズムは、*TripleDES-SHA1* である必要があります。 パスワードの入力と確認入力を行って、 **[次へ]** を選択します。 このパスワードは、次のセクションでマネージド ドメインに対して Secure LDAP を有効にする際に使用します。
 
-    [PowerShell の export-pfxcertificate コマンドレット](/powershell/module/pkiclient/export-pfxcertificate)を使用してエクスポートする場合は、TripleDES_SHA1 を使用して *-CryptoAlgorithmOption* フラグを渡す必要があります。
+    [PowerShell の export-pfxcertificate コマンドレット](/powershell/module/pki/export-pfxcertificate)を使用してエクスポートする場合は、TripleDES_SHA1 を使用して *-CryptoAlgorithmOption* フラグを渡す必要があります。
 
     ![パスワードを暗号化する方法を示すスクリーンショット](./media/tutorial-configure-ldaps/encrypt.png)
 
@@ -240,7 +240,7 @@ LDAPS を使用してマネージド ドメインに正常に接続できるよ�
     | source                            | IP アドレス |
     | ソース IP アドレス/CIDR 範囲 | 実際の環境の有効な IP アドレスまたはその範囲 |
     | Source port ranges                | *            |
-    | 到着地                       | Any          |
+    | 宛先                       | Any          |
     | 宛先ポート範囲           | 636          |
     | Protocol                          | TCP          |
     | アクション                            | Allow        |
@@ -312,7 +312,7 @@ LDAP.exe が接続できないというエラーが表示される場合は、�
 
 クライアントは、指定された名前を使用して TLS 接続の確立を試みます。 トラフィックは、経路の端から端まで通過する必要があります。 DC は、サーバー認証証明書の公開キーを送信します。証明書には、正しい使用法が記載されている必要があります。また、サブジェクト名で署名されている名前は、そのサーバーが接続先の DNS 名であることをクライアントから信頼されるように矛盾のない (つまり、ワイルドカードが機能し、スペルミスがない) ものである必要があります。この場合、クライアントは発行者を信頼する必要があります。 イベント ビューアーのシステム ログで、そのチェーンに問題があるかどうかを確認し、ソースが Schannel であるイベントをフィルター処理できます。 これらの要素が整うと、セッション キーが形成されます。  
 
-詳細については、[TLS ハンドシェイク](https://docs.microsoft.com/windows/win32/secauthn/tls-handshake-protocol)に関する記事をご覧ください。
+詳細については、[TLS ハンドシェイク](/windows/win32/secauthn/tls-handshake-protocol)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -336,4 +336,4 @@ LDAP.exe が接続できないというエラーが表示される場合は、�
 <!-- EXTERNAL LINKS -->
 [rsat]: /windows-server/remote/remote-server-administration-tools
 [ldap-query-basics]: /windows/desktop/ad/creating-a-query-filter
-[New-SelfSignedCertificate]: /powershell/module/pkiclient/new-selfsignedcertificate
+[New-SelfSignedCertificate]: /powershell/module/pki/new-selfsignedcertificate

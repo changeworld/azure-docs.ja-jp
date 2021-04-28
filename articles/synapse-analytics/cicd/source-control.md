@@ -3,17 +3,17 @@ title: Synapse Studio でのソース管理
 description: Azure Synapse Studio でソース管理を構成する方法について説明します
 author: liud
 ms.service: synapse-analytics
-ms.subservice: workspace
+ms.subservice: cicd
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 8f1b459c2644472463004c231f5827ff653d2da1
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 4ece05601efb515b3eab0f884aeff3d8add1bed0
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567844"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128903"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Azure Synapse Studio でのソース管理
 

@@ -46,8 +46,9 @@
         - name: Container Instances の使用
           maintainContext: true
           href: ../containers/azure-container-instance-recipe.md
-        - name: Cognitive Services コンテナーのドキュメント
+        - name: すべての Cognitive Services コンテナーのドキュメント
           href: ../containers/index.yml
+          maintainContext: true
     - name: モデルのバックアップと復旧
       href: disaster-recovery.md
     - name: エンタープライズ対応

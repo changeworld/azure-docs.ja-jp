@@ -6,12 +6,12 @@ title: Azure Spring Cloud の参照アーキテクチャ
 ms.author: akaleshian
 ms.service: spring-cloud
 description: この参照アーキテクチャは、Azure Spring Cloud を使用するための一般的なエンタープライズ ハブとスポーク設計を使用した基盤です。
-ms.openlocfilehash: 74183ca2decf8487e5c41cf36d5784538021077f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d45d70227be2d88ca69e8a88bbc116a7f8045e74
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877499"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132685"
 ---
 # <a name="azure-spring-cloud-reference-architecture"></a>Azure Spring Cloud の参照アーキテクチャ
 
@@ -212,7 +212,7 @@ Azure Spring Cloud は、基本コンポーネントとして AKS を使用し�
 | 6.5 | Network Watcher が [有効] になっていることを保証します。 |
 | 6.6 | インターネットからの UDP を使用したイングレスが制限されるようにします。 |
 
-Azure Spring Cloud では、セキュリティで保護された環境にデプロイされている場合、Azure から送信される管理トラフィックが必要です。 これを実現するには、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](./spring-cloud-vnet-customer-responsibilities.md)」に一覧表示されているネットワークとアプリケーションの規則を許可する必要があります。
+Azure Spring Cloud では、セキュリティで保護された環境にデプロイされている場合、Azure から送信される管理トラフィックが必要です。 これを実現するには、「[VNET での Azure Spring Cloud の実行に関するお客様の責任](./vnet-customer-responsibilities.md)」に一覧表示されているネットワークとアプリケーションの規則を許可する必要があります。
 
 #### <a name="application-security"></a>アプリケーションのセキュリティ
 
@@ -253,16 +253,16 @@ CIS コントロール 8.1 および 8.2 では、ローテーションが確実
 [5]: /azure/devops/pipelines/
 [6]: ../application-gateway/index.yml
 [7]: ../web-application-firewall/index.yml
-[8]: ./spring-cloud-tutorial-config-server.md
+[8]: ./how-to-config-server.md
 [9]: https://steeltoe.io/
 [10]: https://github.com/Azure/azure-spring-cloud-reference-architecture
-[11]: ./spring-cloud-tutorial-deploy-in-azure-virtual-network.md#virtual-network-requirements
-[12]: ./spring-cloud-vnet-customer-responsibilities.md#azure-spring-cloud-network-requirements
-[13]: ./spring-cloud-vnet-customer-responsibilities.md#azure-spring-cloud-fqdn-requirements--application-rules
-[14]: ./spring-cloud-howto-staging-environment.md
+[11]: ./how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements
+[12]: ./vnet-customer-responsibilities.md#azure-spring-cloud-network-requirements
+[13]: ./vnet-customer-responsibilities.md#azure-spring-cloud-fqdn-requirements--application-rules
+[14]: ./how-to-staging-environment.md
 [15]: https://devblogs.microsoft.com/java/monitor-applications-and-dependencies-in-azure-spring-cloud/
 [16]: /azure/architecture/framework/
-[17]: ./spring-cloud-tutorial-deploy-in-azure-virtual-network.md#virtual-network-requirements
+[17]: ./how-to-deploy-in-azure-virtual-network.md#virtual-network-requirements
 [18]: https://cloudsecurityalliance.org/
 [19]: https://cloudsecurityalliance.org/research/working-groups/cloud-controls-matrix
 [20]: /azure/security/benchmarks/v2-cis-benchmark

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 01/29/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b62e341d35a4ff7fd5a7ddd6d9f19b138aaf0aa9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8c926c2fbc5b19f67fb78d321ee3293c73be939
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99071649"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869349"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>ブロック BLOB データに対してポイントインタイム リストアを実行する
 
@@ -86,7 +86,7 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI を使用してポイントインタイム リストアを構成するには、まず、Azure CLI バージョン 2.2.0 以降をインストールします。 次に、[az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update) コマンドを呼び出して、ポイントインタイム リストアと、ストレージ アカウントのその他の必須なデータ保護設定を有効にします。
+Azure CLI を使用してポイントインタイム リストアを構成するには、まず、Azure CLI バージョン 2.2.0 以降をインストールします。 次に、[az storage account blob-service-properties update](/cli/azure/storage/account/blob-service-properties#az_storage_account_blob_service_properties_update) コマンドを呼び出して、ポイントインタイム リストアと、ストレージ アカウントのその他の必須なデータ保護設定を有効にします。
 
 次の例では、論理的な削除を有効にして論理的な削除の保持期間を 14 日に設定し、変更フィードとバージョン管理を有効にし、復元期間が 7 日に設定されているポイントインタイム リストアを有効にします。 例を実行するときは、必ず山かっこ内の値を実際の値に置き換えてください。
 

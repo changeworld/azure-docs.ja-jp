@@ -1,26 +1,25 @@
 ---
-title: 新しい更新プログラムのインポート方法 | Microsoft Docs
-description: 新しい更新プログラムを IoT Hub の Device Update for IoT Hub にインポートするための How-To ガイド。
+title: 新しい更新プログラムの追加方法 | Microsoft Docs
+description: 新しい更新プログラムを Device Update for IoT Hub に追加するための攻略ガイド。
 author: andrewbrownmsft
 ms.author: andbrown
-ms.date: 2/11/2021
+ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ede0d279b8769f49afcdae1cb9352c1b47fb59b5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ebfeee2828b3a36f9cf47891f8aea6d889db85bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105932405"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763579"
 ---
-# <a name="import-new-update"></a>新しい更新プログラムのインポート
-新しい更新プログラムを Device Update for IoT Hub にインポートする方法について説明します。 基本的な[インポートの概念](import-concepts.md)をまだ理解していない場合は、理解しておいてください。
+# <a name="add-an-update-to-device-update-for-iot-hub"></a>Device Update for IoT Hub に更新プログラムを追加する
+新しい更新プログラムを Device Update for IoT Hub に追加する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * [Device Update for IoT Hub が有効になっている IoT ハブにアクセスできること](create-device-update-account.md)。 
-* Device Update 用にプロビジョニングされている、IoT Hub 内の IoT デバイス (またはシミュレーター)。
-   * 実際のデバイスを使用する場合は、イメージ更新用の更新イメージ ファイル、またはパッケージの更新用の [APT マニフェスト ファイル](device-update-apt-manifest.md)が必要です。
+* [Device Update 用にプロビジョニングされている](device-update-agent-provisioning.md)、IoT Hub 内の IoT デバイス (またはシミュレーター)。
 * [PowerShell 5](/powershell/scripting/install/installing-powershell) 以降 (Linux、macOS、Windows のインストールを含む)
 * サポートされているブラウザー:
   * [Microsoft Edge](https://www.microsoft.com/edge)
@@ -29,9 +28,19 @@ ms.locfileid: "105932405"
 > [!NOTE]
 > このサービスに送信された一部のデータは、このインスタンスが作成されたリージョン外のリージョンで処理される可能性があります。
 
-## <a name="create-device-update-import-manifest"></a>Device Update のインポート マニフェストを作成する
+## <a name="obtain-an-update-for-your-devices"></a>デバイスの更新プログラムを入手する
 
-1. 更新イメージ ファイルまたは APT マニフェスト ファイルが、PowerShell からアクセスできるディレクトリに配置されていることを確認します。
+Device Update を設定し、デバイスをプロビジョニングしたので、これらのデバイスに配置する更新ファイルが必要になります。
+
+OEM またはソリューション インテグレーターからデバイスを購入した場合、その組織によって更新ファイルが提供される可能性が高いため、更新プログラムを作成する必要はありません。 OEM またはソリューション インテグレーターに問い合わせて、更新プログラムの入手方法を確認してください。
+
+使用するデバイス用のソフトウェアが組織で既に作成されている場合は、その同じグループによって、そのソフトウェア用の更新プログラムが作成されます。 Device Update for IoT Hub を使用して配置される更新プログラムを作成する場合は、シナリオに応じて、[イメージベースまたはパッケージベースの方法](understand-device-update.md#support-for-a-wide-range-of-update-artifacts)のいずれかで開始します。 注: 独自の更新プログラムを作成しようとしていますが、まだ着手したばかりの場合、GitHub が、開発を管理するための優れたオプションになります。 [GitHub Actions](https://docs.github.com/en/actions/guides/about-continuous-integration) を使用すると、ソース コードを格納して管理し、継続的インテグレーション (CI) と継続的配置 (CD) を実施できます。
+
+## <a name="create-a-device-update-import-manifest"></a>Device Update のインポート マニフェストを作成する
+
+基本的な[インポートの概念](import-concepts.md)をまだ理解していない場合は、理解しておいてください。
+
+1. 更新ファイルが、PowerShell からアクセスできるディレクトリに配置されていることを確認します。
 
 2. 更新イメージファイルまたは APT マニフェスト ファイルが配置されているディレクトリに、 **AduUpdate.psm1** という名前のテキスト ファイルを作成します。 次に、 [AduUpdate.psm1](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) PowerShell コマンドレットを開き、内容をテキスト ファイルにコピーして、テキスト ファイルを保存します。
 
@@ -67,7 +76,7 @@ ms.locfileid: "105932405"
     | updateFilePath(s) | コンピューター上の更新プログラム ファイルへのパス
 
 
-## <a name="review-generated-import-manifest"></a>生成されたインポート マニフェストを確認する
+## <a name="review-the-generated-import-manifest"></a>生成されたインポート マニフェストを確認する
 
 例:
 ```json
@@ -110,10 +119,10 @@ ms.locfileid: "105932405"
 }
 ```
 
-## <a name="import-update"></a>更新プログラムのインポート
+## <a name="import-an-update"></a>更新プログラムをインポートする
 
-[!NOTE]
-次の手順は、Azure portal ユーザー インターフェイスを使用して更新プログラムをインポートする方法を示しています。 [IoT Hub API のデバイス更新](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) プログラムを使用して、更新プログラムをインポートすることもできます。 
+> [!NOTE]
+> 次の手順は、Azure portal ユーザー インターフェイスを使用して更新プログラムをインポートする方法を示しています。 [IoT Hub API のデバイス更新](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) プログラムを使用して、更新プログラムをインポートすることもできます。 
 
 1. [Azure portal](https://portal.azure.com) にログインし、Device Update がある IoT Hub に移動します。
 

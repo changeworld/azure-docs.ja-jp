@@ -2,13 +2,13 @@
 title: カスタマー マネージド キーを使用したバックアップ データの暗号化
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/19/2021
+ms.openlocfilehash: bd51be06e707674f3e35b3478d7f99d096be912a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167892"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718775"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -44,7 +44,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
     >Az モジュール 5.3.0 以上を使用して、Recovery Services コンテナーでのバックアップ用のカスタマー マネージド キーを使用します。
     
     >[!Warning]
-    >Backup 用の暗号化キーを管理するために PowerShell を使用している場合は、ポータルからキーを更新しないことをお勧めします。<br></br>ポータルからキーを更新すると、新しいモデルをサポートする PowerShell 更新プログラムが利用可能になるまで、PowerShell を使用して暗号化キーを更新できなくなります。 ただし、Azure portal からキーを更新し続けることはできます。
+    >Backup 用の暗号化キーを管理するために PowerShell を使用している場合は、ポータルからキーを更新しないことをお勧めします。<br>ポータルからキーを更新すると、新しいモデルをサポートする PowerShell 更新プログラムが利用可能になるまで、PowerShell を使用して暗号化キーを更新できなくなります。 ただし、Azure portal からキーを更新し続けることはできます。
 
 自分の Recovery Services コンテナーを作成して構成していない場合は、[こちらで方法を確認](backup-create-rs-vault.md)してください。
 
@@ -383,6 +383,16 @@ Azure VM で実行されているバックアップ SAP HANA または SQL デ�
 **[キー コンテナーから選ぶ]** オプションを使用すると、選択したキーの自動ローテーションを有効にできます。 これにより、次のバージョンに手動で更新する手間を省くことができます。 ただし、このオプションを使用すると、次のようになります。
 - キー バージョンの更新が有効になるまでに最大で 1 時間かかる場合があります。
 - キーの新しいバージョンが有効になると、キーの更新が有効になった後、少なくとも 1 回の後続バックアップ ジョブまで、古いバージョンも使用可能 (有効な状態) になります。
+
+### <a name="using-azure-policies-for-auditing-and-enforcing-encryption-utilizing-customer-managed-keys-in-preview"></a>カスタマー マネージド キーによる監査と暗号化適用のための Azure ポリシーの使用 (プレビュー)
+
+Azure Backup により、Azure ポリシーを使用して、Recovery Services コンテナー内のデータに、カスタマー マネージド キーを使用して監査を行い、暗号化を適用することができます。 Azure ポリシーを使用した場合:
+
+- 監査ポリシーを使用して、2021 年 4 月 1 日以降に有効になったカスタマー マネージド キーにより、暗号化された資格情報コンテナーを監査できます。 この日付より前に CMK 暗号化が有効になっている資格情報コンテナーの場合は、ポリシーの適用に失敗したり、不正な結果が表示されることがあります (つまり、**CMK 暗号化** が有効になっているにもかかわらず、これらのコンテナーが非準拠として報告される場合があります)。
+- 2021 年 4 月 1 日より前に **CMK 暗号化** が有効になった資格情報コンテナーの監査ポリシーを使用するには、Azure portal を使用して暗号化キーを更新します。 これにより、新しいモデルにアップグレードできます。 暗号化キーを変更しない場合は、キー URI またはキー選択オプションを使用して、同じキーを再度指定します。 
+
+   >[!Warning]
+    >Backup 用の暗号化キーを管理するために PowerShell を使用している場合は、ポータルからキーを更新しないことをお勧めします。<br>ポータルからキーを更新すると、新しいモデルをサポートする PowerShell 更新プログラムが利用可能になるまで、PowerShell を使用して暗号化キーを更新できなくなります。 ただし、Azure portal からキーを更新し続けることはできます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 

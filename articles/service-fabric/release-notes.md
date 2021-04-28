@@ -5,12 +5,12 @@ ms.date: 04/13/2021
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: e06bb472a87f05eb8830468512c27e3abaeafbe1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2a035f531e03dc42e8be4f3dab403406eb7c8f14
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108138609"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107518628"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -31,7 +31,7 @@ Service Fabric ランタイムの 8.0 リリースでは、ツールと SDK の�
 ### <a name="key-announcements"></a>重要なお知らせ
 
 - Windows 向け .NET 5 に対するサポートの **一般提供**
-- [ステートレス NodeType](./service-fabric-stateless-node-types.md) の **一般提供**
+- [ステートレス NodeType](https://docs.microsoft.com/azure/service-fabric/service-fabric-stateless-node-types) の **一般提供**
 - ステートレス サービス インスタンスを移動する機能
 - パラメーター化された DefaultLoad をアプリケーション マニフェストに追加する機能
 - シングルトン レプリカのアップグレード - 一部のクラスター レベル設定をアプリケーション レベルで定義する機能

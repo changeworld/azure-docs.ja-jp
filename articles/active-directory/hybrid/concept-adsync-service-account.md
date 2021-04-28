@@ -15,12 +15,12 @@ ms.date: 03/17/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca99a997d621bfd2455e909b36b6802775b20ac2
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: dfa329999cb7b53835907196ceaa9b02920da149
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106074609"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124259"
 ---
 # <a name="adsync-service-account"></a>ADSync サービス アカウント
 Azure AD Connect は、Active Directory と Azure Active Directory の間の同期を調整するオンプレミス サービスをインストールします。  Microsoft Azure AD Sync 同期サービス (ADSync) は、オンプレミス環境内のサーバー上で実行されます。  サービスの資格情報は、高速インストールでは既定で設定されますが、組織のセキュリティ要件を満たすようにカスタマイズできます。  これらの資格情報は、オンプレミス フォレストまたは Azure Active Directory への接続には使用されません。
@@ -53,8 +53,8 @@ ADSync サービス アカウントの選択は重要な計画上の決定であ
 - 太字でない部分 - サポートされているオプション 
 - ローカル アカウント - サーバー上のローカル ユーザー アカウント 
 - ドメイン アカウント - ドメイン ユーザー アカウント 
-- sMSA - [スタンドアロンの管理されたサービス アカウント](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
-- gMSA - [グループの管理されたサービス アカウント](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
+- sMSA - [スタンドアロンの管理されたサービス アカウント](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd548356(v=ws.10))
+- gMSA - [グループの管理されたサービス アカウント](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11)) 
 
 |マシンの種類 |**LocalDB </br> 高速**|**LocalDB/LocalSQL</br> カスタム**|**リモート SQL</br> カスタム**|
 |-----|-----|-----|-----|
@@ -69,11 +69,11 @@ ADSync サービス アカウントの選択は重要な計画上の決定であ
 
 仮想サービス アカウントは、同期エンジンと SQL が同じサーバー上にあるシナリオで使用するためのものです。 リモートの SQL を使用する場合は、代わりにグループの管理されたサービス アカウントを使用することをお勧めします。 
 
-[Windows データ保護 API (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx) の問題のため、ドメイン コントローラーで仮想サービス アカウントを使用することはできません。 
+[Windows データ保護 API (DPAPI)](/previous-versions/ms995355(v=msdn.10)) の問題のため、ドメイン コントローラーで仮想サービス アカウントを使用することはできません。 
 
 ## <a name="managed-service-account"></a>管理されたサービス アカウント 
 
-リモートの SQL Server を使う場合は、グループの管理されたサービス アカウントを使うことをお勧めします。 グループの管理されたサービス アカウント用の Active Directory を準備する方法について詳しくは、「[グループの管理されたサービス アカウントの概要](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))」をご覧ください。 
+リモートの SQL Server を使う場合は、グループの管理されたサービス アカウントを使うことをお勧めします。 グループの管理されたサービス アカウント用の Active Directory を準備する方法について詳しくは、「[グループの管理されたサービス アカウントの概要](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831782(v=ws.11))」をご覧ください。 
 
 このオプションを使用するには、[[必須コンポーネントのインストール]](how-to-connect-install-custom.md#install-required-components) ページで **[既存のサービス アカウントを使用する]** を選択し、 **[管理されたサービス アカウント]** を選択します。 
 

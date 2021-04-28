@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/01/2021
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: dd3aeaf133c02ef54eceaff776ead34cc2318260
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 9c5e7d1cf318e50e778c59b97b20b03d23fbfe5c
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220479"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903130"
 ---
 # <a name="authorize-access-to-blobs-with-azcopy-and-azure-active-directory-azure-ad"></a>AzCopy と Azure Active Directory (Azure AD) を使用して BLOB へのアクセスを承認する
 
@@ -159,7 +159,7 @@ azcopy login --service-principal  --application-id application-id --tenant-id=te
 
 承認にご自分の資格情報を使用する場合は、ご自分のアプリ登録に証明書をアップロードした後、その証明書を使用してログインできます。
 
-ご自分のアプリ登録にご使用の証明書をアップロードするだけでなく、AzCopy が実行されるマシンまたは VM 上に証明書のコピーを保存する必要もあります。 この証明書のコピーは、.PFX または .PEM 形式で、秘密キーが含まれている必要があります。 秘密キーはパスワードで保護する必要があります。 Windows を使用していて、ご使用の証明書が証明書ストア内にのみ存在する場合は、必ず、その証明書 (秘密キーを含む) を PFX ファイルにエクスポートしてください。 ガイダンスについては、「[Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate)」を参照してください。
+ご自分のアプリ登録にご使用の証明書をアップロードするだけでなく、AzCopy が実行されるマシンまたは VM 上に証明書のコピーを保存する必要もあります。 この証明書のコピーは、.PFX または .PEM 形式で、秘密キーが含まれている必要があります。 秘密キーはパスワードで保護する必要があります。 Windows を使用していて、ご使用の証明書が証明書ストア内にのみ存在する場合は、必ず、その証明書 (秘密キーを含む) を PFX ファイルにエクスポートしてください。 ガイダンスについては、「[Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate)」を参照してください。
 
 次に、`AZCOPY_SPA_CERT_PASSWORD` 環境変数を、証明書のパスワードに設定します。
 

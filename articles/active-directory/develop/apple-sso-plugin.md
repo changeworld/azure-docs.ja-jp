@@ -13,19 +13,19 @@ ms.date: 09/15/2020
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 05bfcc86c72d9eb393da919035ce198948b943f2
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 69df3dc8ef9f2ab4519f5bcb8947da221908f5a7
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559130"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126743"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Apple デバイス用の Microsoft Enterprise SSO プラグイン (プレビュー)
 
 >[!IMPORTANT]
 > この機能[!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
-*Apple デバイス用の Microsoft Enterprise SSO プラグイン* は、Apple の[エンタープライズ シングル サインオン](https://developer.apple.com/documentation/authenticationservices)機能をサポートするすべてのアプリケーションで、macOS、iOS、iPadOS 上の Azure Active Directory (Azure AD) アカウントに対するシングル サインオン (SSO) を提供します。 このプラグインにより、業務に必要だが、最新の ID ライブラリやプロトコルはまだサポートしていない古いアプリケーションにも SSO が提供されます。 Microsoft は Apple と密接に連携してこのプラグインを開発し、アプリケーションの使いやすさを向上させ、利用可能な最高の保護を提供しています。
+*Apple デバイス用の Microsoft Enterprise SSO プラグイン* は、Apple の [エンタープライズ シングル サインオン](https://developer.apple.com/documentation/authenticationservices)機能をサポートするすべてのアプリケーションで、macOS、iOS、iPadOS 上の Azure Active Directory (Azure AD) アカウントに対するシングル サインオン (SSO) を提供します。 このプラグインにより、業務に必要だが、最新の ID ライブラリやプロトコルはまだサポートしていない古いアプリケーションにも SSO が提供されます。 Microsoft は Apple と密接に連携してこのプラグインを開発し、アプリケーションの使いやすさを向上させ、利用可能な最高の保護を提供しています。
 
 Enterprise SSO プラグインは現在、次のアプリの組み込み機能です。
 
@@ -54,7 +54,7 @@ Apple デバイス用の Microsoft Enterprise SSO プラグインを使用する
 
 ### <a name="ios-requirements"></a>iOS の要件:
 - iOS 13.0 以降がデバイスにインストールされている必要があります。
-- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションは [Microsoft Authenticator アプリ](/azure/active-directory/user-help/user-help-auth-app-overview)です。
+- Apple デバイス用の Microsoft Enterprise SSO プラグインを提供する Microsoft アプリケーションが、デバイスにインストールされている必要があります。 パブリック プレビューでは、これらのアプリケーションは [Microsoft Authenticator アプリ](../user-help/user-help-auth-app-overview.md)です。
 
 
 ### <a name="macos-requirements"></a>macOS の要件:

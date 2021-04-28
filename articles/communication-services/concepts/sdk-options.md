@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/25/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d71720b446baa8e2e5e15c407a69d9ff884004b2
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 21910718d837750db7ae87afa36a2e7576a729cf
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307692"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016565"
 ---
 # <a name="sdks-and-rest-apis"></a>SDK と REST API
 
@@ -31,7 +31,7 @@ Communication Services API は、他の Azure REST API と共に [docs.microsoft
 | Azure Resource Manager | Azure.ResourceManager.Communication | [REST](https://docs.microsoft.com/rest/api/communication/communicationservice)| Communication Services のリソースをプロビジョニングおよび管理します|
 | 共通 | Azure.Communication.Common| REST | 他の SDK の基本型を指定します |
 | ID | Azure.Communication.Identity| [REST](https://docs.microsoft.com/rest/api/communication/communicationidentity)| ユーザーを管理し、トークンにアクセスします|
-| 電話番号 _(ベータ)_| Azure.Communication.PhoneNumbers| [REST](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)| 電話番号を取得して管理します |
+| 電話番号 _(ベータ)_| Azure.Communication.PhoneNumbers| [REST](/rest/api/communication/phonenumbers)| 電話番号を取得して管理します |
 | チャット | Azure.Communication.Chat| 独自の通知を含む [REST](https://docs.microsoft.com/rest/api/communication/) | アプリケーションにリアルタイムのテキスト ベースのチャットを追加します |
 | SMS| Azure.Communication.SMS | [REST](https://docs.microsoft.com/rest/api/communication/sms)| SMS メッセージを送信および受信します|
 | 呼び出し| Azure.Communication.Calling | 独自の転送 | 音声、ビデオ、画面共有、およびその他のリアルタイム データ通信機能を使用します |
@@ -60,8 +60,8 @@ Azure Resource Manager、ID、および SMS SDK はサービス統合に重点�
 
 | API                                                                                                                          | スロットル            |
 |------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| [すべての電話番号検索プラン API](https://docs.microsoft.com/rest/api/communication/phonenumberadministration)         | 4 要求/日      |
-| [電話番号プラン (購入)](https://docs.microsoft.com/rest/api/communication/phonenumberadministration/purchasesearch) | 1 月に 1 回の購入  |
+| [すべての電話番号検索プラン API](/rest/api/communication/phonenumbers)         | 4 要求/日      |
+| [電話番号プラン (購入)](/rest/api/communication/phonenumbers/purchasephonenumbers) | 1 月に 1 回の購入  |
 | [SMS を送信する](https://docs.microsoft.com/rest/api/communication/sms/send)                                                       | 200 要求/分 |
 
 

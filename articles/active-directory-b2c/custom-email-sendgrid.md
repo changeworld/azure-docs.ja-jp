@@ -8,29 +8,41 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/15/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c5381a93308b5b3c8988cb8e25df541af1043418
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: d63e7916423038e53c375b2be4114582cf4d6152
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105031309"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725766"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
-Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し、自分のアプリケーションに新規登録したユーザーにカスタマイズしたメールを送信します。 [DisplayControls](display-controls.md) (現在プレビュー段階)、およびサードパーティの電子メール プロバイダーである SendGrid を使用することで、独自の電子メール テンプレートや *From:* のアドレスと件名を使用できるだけでなく、ローカライズやカスタムのワンタイム パスワード (OTP) 設定をサポートできます。
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
+
+Azure Active Directory B2C (Azure AD B2C) でカスタム メールを使用し、自分のアプリケーションに新規登録したユーザーにカスタマイズしたメールを送信します。 サード パーティの電子メール プロバイダーである SendGrid を使用すると、独自の電子メール テンプレート、および *From:* アドレスと件名を使用でき、ローカライズとカスタムのワンタイム パスワード (OTP) 設定をサポートできます。
+
+::: zone pivot="b2c-user-flow"
+
+[!INCLUDE [active-directory-b2c-limited-to-custom-policy](../../includes/active-directory-b2c-limited-to-custom-policy.md)]
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
 
 カスタム メール確認では、[SendGrid](https://sendgrid.com)、[Mailjet](https://Mailjet.com)、または [SparkPost](https://sparkpost.com) といったサードパーティの電子メール プロバイダー、カスタム REST API、あるいは任意の HTTP ベースの電子メール プロバイダー (独自のものも含む) を使用する必要があります。 この記事では、SendGrid を使用するソリューションの設定について説明します。
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid アカウントの作成
 
 まだ用意していない場合、まず、SendGrid アカウントを設定してください (Azure のお客様は毎月、25,000 の無料電子メールをロック解除できます)。 設定方法については、「[SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md)」の「[SendGrid アカウントの作成](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)」セクションをご覧ください。
 
 [SendGrid API キー](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)を作成するセクションを必ず完了してください。 後の手順で使用するために、API キーを記録しておきます。
+
+> [!IMPORTANT]
+> SendGrid によって、共有 IP アドレスと[専用 IP アドレス](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/)から電子メールを送信する機能が顧客に提供されます。 専用 IP アドレスを使用する場合は、IP アドレスのウォームアップを使用して、独自の評判を適切に築く必要があります。 詳細については、「[IP アドレスのウォームアップ](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)」を参照してください。
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Azure AD B2C ポリシー キーの作成
 
@@ -290,6 +302,9 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
 ## <a name="add-otp-technical-profiles"></a>OTP 技術プロファイルの追加
 
 `GenerateOtp` 技術プロファイルによってメール アドレスのコードが生成されます。 `VerifyOtp` 技術プロファイルによって、メール アドレスに関連付けられているコードが検証されます。 ワンタイム パスワードの形式と有効期間の構成を変更できます。 OTP 技術プロファイルの詳細については、[ワンタイム パスワード技術プロファイルの定義](one-time-password-technical-profile.md)に関するページを参照してください。
+
+> [!NOTE]
+> Web.TPEngine.Providers.OneTimePasswordProtocolProvider プロトコルによって生成される OTP コードは、ブラウザー セッションに関連付けられています。 つまり、ユーザーはさまざまなブラウザー セッションで、それぞれ対応するセッションに対して有効な一意の OTP コードを生成できます。 これに対して、組み込みのユーザー フローによって生成される OTP コードはブラウザー セッションに依存しないため、ユーザーが新しいブラウザー セッションで新しい OTP コードを生成すると、これによって前の OTP コードが置き換えられます。
 
 次の技術プロファイルを `<ClaimsProviders>` 要素に追加します。
 
@@ -556,3 +571,5 @@ Localization 要素を使用すると、ユーザー体験に関するポリシ�
 
 - [カスタム メール確認 - DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - カスタム REST API や任意の HTTP ベース SMTP メール プロバイダーの使用方法については、「[Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する](restful-technical-profile.md)」を参照してください。
+
+::: zone-end

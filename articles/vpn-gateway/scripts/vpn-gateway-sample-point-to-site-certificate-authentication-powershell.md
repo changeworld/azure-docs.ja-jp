@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: sample
 ms.date: 02/11/2021
 ms.author: alzam
-ms.openlocfilehash: 04d0fe2b322f6b70cb1cda8d61fbd49638ec214a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9310920ead3b36516a9beb16e7cb9be732e7628f
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100385831"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107948259"
 ---
 # <a name="configure-a-point-to-site-vpn---certificate-authentication---powershell-script-sample"></a>ポイント対サイト VPN を構成する - 証明書認証 - PowerShell サンプル スクリプト
 
@@ -111,7 +111,7 @@ Remove-AzResourceGroup -Name TestRG1
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | パブリック IP アドレスを作成します。 |
 | [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | 新しいゲートウェイ IP 構成を作成します。 |
 | [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | VPN ゲートウェイを作成します。 |
-| [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) | 新しい自己署名ルート証明書を作成します。 |
+| [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate) | 新しい自己署名ルート証明書を作成します。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | リソース グループと、それに含まれているすべてのリソースを削除します。 |
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | 仮想ネットワークのサブネット構成を設定します。 |
 

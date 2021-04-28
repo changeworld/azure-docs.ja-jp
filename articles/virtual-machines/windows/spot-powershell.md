@@ -9,19 +9,19 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 9a2ad2eb197af613919efa4414da1759cd47e2e7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bcf3cb5a020bb2efd5a2528c28421deba206ee31
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802745"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108125267"
 ---
 # <a name="deploy-azure-spot-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して Azure スポット仮想マシンをデプロイする
 
 
 [Azure スポット仮想マシン](../spot-vms.md)を使用すると、非常に低コストで未使用の容量を利用できます。 Azure で容量の回復が必要になると常に、Azure インフラストラクチャによって Azure スポット仮想マシンが削除されます。 したがって、Azure スポット仮想マシンは、バッチ処理ジョブ、開発/テスト環境、大規模なコンピューティング ワークロードなど、中断してもかまわないワークロードに最適です。
 
-Azure スポット仮想マシンの価格は、リージョンと SKU に基づいて変動します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。 最大価格の設定の詳細については、[Azure スポット仮想マシンの価格](../spot-vms.md#pricing)に関するページを参照してください。
+Azure スポット仮想マシンの価格は、リージョンと SKU に基づいて変動します。 詳細については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) と [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) の VM 価格を参照してください。 最大価格の設定の詳細については、[Azure Spot Virtual Machines の価格](../spot-vms.md#pricing)に関するページを参照してください。
 
 VM に対して、1 時間あたりに支払うことができる最大価格を設定するオプションがあります。 Azure スポット仮想マシンの最大価格は、小数点以下最大 5 桁を使用して米ドル (USD) で設定できます。 たとえば、`0.98765` の値は、1 時間あたり $0.98765 米ドルの最大価格になります。 最大価格を `-1` に設定した場合、VM は価格に基づいて削除されません。 VM の価格は、使用可能な容量とクォータがある限り、現在のスポットの価格または標準 VM の価格のいずれか低い方になります。
 
@@ -99,7 +99,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 
 この最初の応答には最大 2 分かかることがあります。 これ以降は、ほぼ瞬時に出力が表示されます。
 
-Az PowerShell モジュールがインストールされているコンピューター (ローカル コンピューターなど) から、[Set-AzVM](https://docs.microsoft.com/powershell/module/az.compute/set-azvm) を使用して削除をシミュレートします。 リソース グループ名と VM 名を実際の名前に置き換えます。 
+Az PowerShell モジュールがインストールされているコンピューター (ローカル コンピューターなど) から、[Set-AzVM](/powershell/module/az.compute/set-azvm) を使用して削除をシミュレートします。 リソース グループ名と VM 名を実際の名前に置き換えます。 
 
 ```azurepowershell-interactive
 Set-AzVM -ResourceGroupName "mySpotRG" -Name "mySpotVM" -SimulateEviction

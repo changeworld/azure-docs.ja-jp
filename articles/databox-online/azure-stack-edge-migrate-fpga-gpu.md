@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 430e34a1ca631be00ef46170affd4b56c79894a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5ad065ff74a7cec293b83497d6258bcf62975f26
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566406"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139293"
 ---
 # <a name="migrate-workloads-from-an-azure-stack-edge-pro-fpga-to-an-azure-stack-edge-pro-gpu"></a>Azure Stack Edge Pro FPGA から Azure Stack Edge Pro GPU へのワークロードの移行
 
@@ -157,10 +157,10 @@ Edge ローカル共有内のデータはデバイスに残ります。 次の�
 
 次の手順に従って、ターゲット デバイスで Edge クラウド共有のデータを同期します。
 
-1. ソース デバイスに作成された共有名に対応する[共有を追加](azure-stack-edge-j-series-manage-shares.md#add-a-share)します。 共有を作成するときに、 **[BLOB コンテナーを選択]** が **[既存のものを使用]** に設定されていることを確認した後、前のデバイスで使用されていたコンテナーを選択します。
-1. 以前のデバイスへのアクセス権を持っていた[ユーザーを追加](azure-stack-edge-j-series-manage-users.md#add-a-user)します。
-1. Azure から[共有のデータを更新します](azure-stack-edge-j-series-manage-shares.md#refresh-shares)。 共有を更新することにより、既存のコンテナーから共有にすべてのクラウド データが取り込まれます。
-1. 共有に関連付ける帯域幅スケジュールを再作成します。 詳細な手順については、[帯域幅スケジュールの追加](azure-stack-edge-j-series-manage-bandwidth-schedules.md#add-a-schedule)に関するセクションを参照してください。
+1. ソース デバイスに作成された共有名に対応する[共有を追加](./azure-stack-edge-gpu-manage-shares.md#add-a-share)します。 共有を作成するときに、 **[BLOB コンテナーを選択]** が **[既存のものを使用]** に設定されていることを確認した後、前のデバイスで使用されていたコンテナーを選択します。
+1. 以前のデバイスへのアクセス権を持っていた[ユーザーを追加](./azure-stack-edge-gpu-manage-users.md#add-a-user)します。
+1. Azure から[共有のデータを更新します](./azure-stack-edge-gpu-manage-shares.md#refresh-shares)。 共有を更新することにより、既存のコンテナーから共有にすべてのクラウド データが取り込まれます。
+1. 共有に関連付ける帯域幅スケジュールを再作成します。 詳細な手順については、[帯域幅スケジュールの追加](./azure-stack-edge-gpu-manage-bandwidth-schedules.md#add-a-schedule)に関するセクションを参照してください。
 
 
 ### <a name="2-from-edge-local-shares"></a>2. Edge ローカル共有から

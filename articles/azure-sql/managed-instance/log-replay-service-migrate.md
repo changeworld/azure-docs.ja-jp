@@ -3,18 +3,18 @@ title: Log Replay Service を使用して SQL Managed Instance にデータベ�
 description: Log Replay Service を使用して SQL Server から SQL Managed Instance にデータベースを移行する方法について説明します
 services: sql-database
 ms.service: sql-managed-instance
-ms.custom: seo-lt-2019, sqldbrb=1
+ms.custom: seo-lt-2019, sqldbrb=1, devx-track-azurecli
 ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: sstein
 ms.date: 03/31/2021
-ms.openlocfilehash: 8e78db5b9d496c2ac13c9f1214b386770c11e21e
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 730a03ce06efe96347d32409961638532823f6dc
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075902"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107883582"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Log Replay Service (プレビュー) を使用して SQL Server から SQL Managed Instance にデータベースを移行する
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

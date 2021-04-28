@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: a94f3cc6b2387857d19c7b98fa0be64dd6646ec9
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 2d2c33d0b6f86bc1a779361b86d242cde4c5df38
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713860"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873669"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Protocol Buffers を使用してテレメトリをシリアル化する
 
@@ -37,7 +37,7 @@ Protobuf では、データをシリアル化するためにコンパイル済�
 この攻略ガイドの手順を実行するには、次が必要です。
 
 * Visual Studio Code。 [Mac、Linux、および Windows 用の Visual Studio Code をダウンロード](https://code.visualstudio.com/download)できます。
-* .NET Core。 [Mac、Linux、および Windows 用の .NET Core をダウンロード](https://www.microsoft.com/net/download)できます。
+* .NET Core。 [Mac、Linux、および Windows 用の .NET Core をダウンロード](https://dotnet.microsoft.com/download)できます。
 * Postman。 [Mac、Windows、または Linux 用の Postman をダウンロード](https://www.getpostman.com/apps)できます。
 * [Azure サブスクリプションにデプロイされた IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。 このガイドの手順を完了するには、IoT ハブの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 * SQL API を使用し、かつ[強力な一貫性](../cosmos-db/how-to-manage-database-account.md)を確保するように構成された、[Azure サブスクリプションにデプロイ済みの Cosmos DB データベース](../cosmos-db/create-sql-api-dotnet.md#create-account)。 このガイドの手順を完了するには、Cosmos DB データベースの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。

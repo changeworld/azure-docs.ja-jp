@@ -6,19 +6,19 @@ ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 564c7cf6e9627db08d543b964ce476e71bfb473d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.openlocfilehash: 22c4fc0680d8666d8c2dfafb8829436e27cf1ebd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93040739"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725712"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>マッピング データ フローをパラメーター化する
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Azure Data Factory のマッピング データ フローでは、パラメーターの使用をサポートします。 データ フロー定義内でパラメーターを定義し、式全体で使用します。 パラメーター値を設定するには、データ フローの実行アクティブティ経由でパイプラインを呼び出します。 データ フロー アクティビティの式で値を設定するには、次の 3 つのオプションがあります。
+Azure Data Factory および Azure Synapse Analytics のマッピング データ フローでは、パラメーターの使用がサポートされます。 データ フロー定義内でパラメーターを定義し、式全体で使用します。 パラメーター値を設定するには、データ フローの実行アクティブティ経由でパイプラインを呼び出します。 データ フロー アクティビティの式で値を設定するには、次の 3 つのオプションがあります。
 
 * パイプラインの制御フローの式を使用して動的な値を設定する
 * データ フロー式の言語を使用して動的な値を設定する

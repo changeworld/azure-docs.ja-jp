@@ -10,19 +10,19 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: f20af8c61bbfbbbbc20c29470648c3df6a272396
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 429a0d19a0d82ee53c228ad5bfac5ac1d5101fa2
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285498"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136609"
 ---
 # <a name="migration-guide-ibm-db2-to-azure-sql-database"></a>移行ガイド: IBM Db2 から Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 このガイドでは、[SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant for Db2 を使用して、IBM Db2 データベースを Azure SQL Database に[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。 
 
-その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
+その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -109,7 +109,7 @@ SSMA for Db2 を使用して、データベース オブジェクトとデータ
 
 スキーマを発行し、データを移行するには、次の手順を行います。
 
-1. スキーマを公開します。 **Azure SQL Database メタデータ エクスプローラー** の **[データベース]** ノードで、データベースを右クリックします。 次に、 **[データベースと同期する]** を選択します。
+1. スキーマを発行します。 **Azure SQL Database メタデータ エクスプローラー** の **[データベース]** ノードで、データベースを右クリックします。 次に、 **[データベースと同期する]** を選択します。
 
    :::image type="content" source="media/db2-to-sql-database-guide/synchronize-with-database.png" alt-text="データベースと同期するオプションを示すスクリーンショット。":::
 
@@ -141,7 +141,7 @@ SSMA for Db2 を使用して、データベース オブジェクトとデータ
 1. **検証テストを作成する**: データベースの移行をテストするには、SQL クエリを使用する必要があります。 ソース データベースとターゲット データベースの両方に対して実行する検証クエリを作成する必要があります。 検証クエリには、定義したスコープが含まれている必要があります。
 1. **テスト環境を設定する**: テスト環境には、ソース データベースとターゲット データベースのコピーが含まれている必要があります。 必ずテスト環境を分離してください。
 1. **検証テストを実行する**: ソースとターゲットに対して検証テストを実行してから、結果を分析します。
-1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行し、結果を分析して比較します。
+1. **パフォーマンス テストを実行する**: ソースとターゲットに対してパフォーマンス テストを実行した後、結果を分析および比較します。
 
 ## <a name="advanced-features"></a>高度な機能 
 
@@ -164,7 +164,7 @@ SQL Server の一部の機能は、[データベース互換レベル](/sql/rela
 
 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - さまざまなデータベースおよびデータ移行シナリオを支援するために使用できる Microsoft とサードパーティのサービスとツールについては、[データ移行のためのサービスとツール](../../../dms/dms-tools-matrix.md)に関するページをご覧ください。
 

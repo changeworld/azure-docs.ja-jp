@@ -8,12 +8,12 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2650da2579f13ec1588af7a25e5b28908209bc82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed2d48288bf97fe3ebaa1e8ffc1336d8a82d940e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101700186"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719027"
 ---
 # <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>Azure Cloud Services (延長サポート) 構成 networkConfiguration スキーマ
 
@@ -70,7 +70,7 @@ ms.locfileid: "101700186"
 | VirtualNetworkSite | 省略可能。 クラウド サービスをデプロイする仮想ネットワーク サイトの名前を指定します。 この設定では、仮想ネットワーク サイトは作成されません。 お使いの仮想ネットワークのネットワーク ファイルに既に定義されているサイトを参照します。 クラウド サービスがメンバーになることができる仮想ネットワークは 1 つだけです。 この設定を指定しない場合、クラウド サービスは仮想ネットワークにデプロイされません。 仮想ネットワークの名前は、`name` 属性の文字列で定義されます。|
 | InstanceAddress | 省略可能。 仮想ネットワーク内の 1 つのサブネットまたはサブネットのセットへのロールの関連付けを指定します。 ロール名をインスタンス アドレスに関連付ける場合、このロールに関連付けたいサブネットを指定できます。 `InstanceAddress` はサブネット要素を含んでいます。 この 1 つまたは複数のサブネットに関連付けられているロールの名前は、`roleName` 属性の文字列で定義されます。|
 | Subnet | 省略可能。 ネットワーク構成ファイル内のサブネット名に対応するサブネットを指定します。 サブネットの名前は、`name` 属性の文字列で定義されます。|
-| ReservedIP | 省略可能。 デプロイに関連付けられる予約済み IP アドレスを指定します。 予約済み IP アドレスの作成には、Create Reserved IP Address を使用する必要があります。 クラウド サービス内の各デプロイは、1 つの予約済み IP アドレスに関連付けることができます。 予約済み IP アドレスの名前は、`name` 属性の文字列で定義されます。|
+| ReservedIP | 省略可能。 デプロイに関連付けられる予約済み IP アドレスを指定します。 予約済み IP の割り当て方法は、テンプレートと powershell のデプロイ用に `Static` として指定する必要があります。 クラウド サービス内の各デプロイは、1 つの予約済み IP アドレスにのみ関連付けることができます。 予約済み IP アドレスの名前は、`name` 属性の文字列で定義されます。|
 
 ## <a name="see-also"></a>関連項目
 [クラウド サービス (延長サポート) 構成スキーマ](schema-cscfg-file.md)。

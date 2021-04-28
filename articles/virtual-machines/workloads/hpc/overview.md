@@ -8,12 +8,12 @@ ms.subservice: hpc
 ms.topic: overview
 ms.date: 04/09/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 554764b89e5da4cd6777ec89fcb2f2d5ad104ebf
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 8017b3e84c80acc71fca1442c4493bd1ec239175
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600269"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141219"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>InfiniBand 対応の H シリーズおよび N シリーズの VM でのハイ パフォーマンス コンピューティング
 
@@ -47,5 +47,5 @@ SR-IOV が有効な H シリーズと N シリーズでは、ほとんどすべ�
 - InfiniBand 対応の [H シリーズ](../../sizes-hpc.md)および [N シリーズ](../../sizes-gpu.md)の VM の[構成と最適化](configure.md)について学習します。
 - [HBv3 シリーズの概要](hb-series-overview.md)と [HC シリーズの概要](hc-series-overview.md)に関するページを参照して、パフォーマンスとスケーラビリティのためにワークロードを最適に構成する方法を学習します。
 - [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表、HPC ワークロードの例、およびパフォーマンスの結果について参照します。
-- [Azure での HPC アプリケーションの最適化に関する学習モジュール](https://docs.microsoft.com/learn/modules/optimize-tightly-coupled-hpc-apps/)を使用して、知識をテストします。
+- [Azure での HPC アプリケーションの最適化に関する学習モジュール](/learn/modules/optimize-tightly-coupled-hpc-apps/)を使用して、知識をテストします。
 - HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。

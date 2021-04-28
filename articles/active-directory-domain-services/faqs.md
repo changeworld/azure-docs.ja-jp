@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/09/2021
 ms.author: justinha
-ms.openlocfilehash: 3d0f2b44f37cb318be2117b5dc5d8b42b418ff19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32dcf2b387231d50796de0036388b53cab83bf72
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100090991"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749332"
 ---
 # <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>Azure Active Directory (AD) Domain Services に関してよく寄せられる質問 (FAQ)
 
@@ -36,6 +36,7 @@ ms.locfileid: "100090991"
 * [Azure AD Domain Services のマネージド ドメインにドメイン コントローラーを追加することはできますか。](#can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain)
 * [自分のディレクトリに招待したゲスト ユーザーは Azure AD Domain Services を使用できますか。](#can-guest-users-be-invited-to-my-directory-use-azure-ad-domain-services)
 * [既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、または仮想ネットワークに移動できますか。](#can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network)
+* [既存の Azure AD Domain Services ドメイン名を変更できますか。](#can-i-rename-an-existing-azure-ad-domain-services-domain-name)
 * [Azure AD Domain Services には高可用性オプションが含まれていますか。](#does-azure-ad-domain-services-include-high-availability-options)
 
 ### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>1 つの Azure AD ディレクトリに対して複数のマネージド ドメインを作成することはできますか。
@@ -77,6 +78,9 @@ ms.locfileid: "100090991"
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>既存の Azure AD Domain Services マネージド ドメインを別のサブスクリプション、リソース グループ、リージョン、または仮想ネットワークに移動できますか。
 いいえ。 Azure AD Domain Services マネージド ドメインを作成した後は、そのマネージド ドメインを別のリソース グループ、仮想ネットワーク、サブスクリプションなどに移動することはできません。マネージド ドメインをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、仮想ネットワークを慎重に選択してください。
+
+### <a name="can-i-rename-an-existing-azure-ad-domain-services-domain-name"></a>既存の Azure AD Domain Services ドメイン名を変更できますか。
+いいえ。 Azure AD Domain Services マネージド ドメインを作成した後は、DNS ドメイン名を変更することはできません。 マネージド ドメインを作成するときは、DNS ドメイン名を慎重に選択してください。 DNS ドメイン名を選択する際の考慮事項については、[Azure AD Domain Services マネージド ドメインを作成して構成するためのチュートリアル](tutorial-create-instance.md#create-a-managed-domain)を参照してください。
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Azure AD Domain Services には高可用性オプションが含まれていますか。
 

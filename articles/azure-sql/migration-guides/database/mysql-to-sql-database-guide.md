@@ -9,19 +9,19 @@ ms.topic: how-to
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 03/19/2021
-ms.openlocfilehash: d4510aa5cda61dac88102c89b3e03da231380bd6
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 6aa6537cefb110662f9fbc535832d8c9423a6f68
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389453"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136591"
 ---
 # <a name="migration-guide-mysql-to-azure-sql-database"></a>移行ガイド: MySQL から Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
 
 このガイドでは、[SQL Server Migration](https://azure.microsoft.com/en-us/migration/sql-server/) Assistant for MySQL (SSMA for MySQL) を使用して、MySQL データベースを Azure SQL データベースに[移行する方法](https://azure.microsoft.com/migration/migration-journey)について説明します。 
 
-その他の移行ガイドについては、「[Azure データベースの移行ガイド](https://docs.microsoft.com/data-migration)」を参照してください。 
+その他の移行ガイドについては、「[Azure データベースの移行ガイド](/data-migration)」を参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -169,7 +169,7 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 
 データ SQL エンジニアリング チームが、これらのリソースを開発しました。 このチームの主要な作業は、Microsoft の Azure データ プラットフォームへのデータ プラットフォーム移行プロジェクトの複雑な近代化を容易にし、迅速に進めることです。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 - ワークロードを Azure に移行することで実現できるコスト削減額を見積もるには、「[Azure 総保有コスト (TCO) 計算ツール](https://aka.ms/azure-tco)」を参照してください。
 
@@ -180,4 +180,3 @@ SQL Server Migration Assistant (SSMA) for MySQL を使用すると、データ�
 - 移行に関する動画については、[移行工程の概要と、移行と評価のための推奨されるツールとサービス](https://azure.microsoft.com/resources/videos/overview-of-migration-and-recommended-tools-services/)に関する記事を参照してください。
 
 - [クラウド移行リソース](https://azure.microsoft.com/migration/resources/)の詳細については、「[クラウド移行ソリューション](https://azure.microsoft.com/migration)」を参照してください。
-

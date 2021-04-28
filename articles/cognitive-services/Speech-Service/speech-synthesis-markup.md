@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5a3459c0264d087759572bffc497430cdb69ac9
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 1d21691af4d52892f507695a56331816b14bf517
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966947"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588379"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML) を使用して合成を改善する
 
@@ -27,11 +27,9 @@ SSML の Speech Service の実装は、World Wide Web コンソーシアムの[�
 > [!IMPORTANT]
 > 中国語、日本語、韓国語の文字は、2 文字としてカウントされ課金されます。 詳細については、[価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページをご覧ください。
 
-## <a name="standard-neural-and-custom-voices"></a>標準音声、ニューラル音声、およびカスタム音声
+## <a name="neural-and-custom-voices"></a>ニューラル音声およびカスタム音声
 
-音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。 サポートされている言語、ロケール、および音声 (ニューラルと標準) の完全な一覧については、[言語のサポート](language-support.md)に関するページを参照してください。
-
-標準音声、ニューラル音声、およびカスタム音声の詳細については、[テキスト読み上げの概要](text-to-speech.md)に関するページを参照してください。
+人間の声のようなニューラル音声を使用するか、製品やブランドに固有のカスタム音声を作成します。 サポートされている言語、ロケール、および音声の完全な一覧については、[言語のサポート](language-support.md)に関するページを参照してください。 ニューラル音声とカスタム音声の詳細については、[テキスト読み上げの概要](text-to-speech.md)に関するページを参照してください。
 
 
 > [!NOTE]
@@ -194,12 +192,9 @@ speechConfig!.setPropertyTo(
 
 ## <a name="adjust-speaking-styles"></a>話し方を調整する
 
-> [!IMPORTANT]
-> ニューラル音声でのみ、話し方を調整できます。
+既定では、テキスト読み上げサービスは、ニューラル音声のニュートラルな話し方を使用してテキストを合成します。 明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、`mstts:express-as` 要素を使用してカスタマー サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
 
-既定では、テキスト読み上げサービスは、標準の音声とニューラル音声の両方のニュートラルな話し方を使用してテキストを合成します。 ニューラル音声を使用すると、明るさ、共感、落ち着きなどのさまざまな感情を表現するように話し方を調整することや、`mstts:express-as` 要素を使用してカスタマー サービス、ニュース放送、音声アシスタントなどのさまざまなシナリオに合わせて音声を最適化することができます。 これは、Speech Service に固有の省略可能な要素です。
-
-現在、これらのニューラル音声では話し方の調整がサポートされています。
+現在、次のニューラル音声で、話し方の調整がサポートされています。
 * `en-US-AriaNeural`
 * `en-US-JennyNeural`
 * `en-US-GuyNeural`
@@ -215,11 +210,11 @@ speechConfig!.setPropertyTo(
 
 ユースケースに合わせて話し方の強度をさらに変更できます。 `styledegree` でより強いスタイルやより柔らかいスタイルを指定して、音声の表現力を高めたり抑えたりできます。 現在、話し方の調整は、中国語 (標準、簡体字) のニューラル音声でサポートされています。
 
-話し方とその強度を調整する以外に、`role` パラメーターを調整して、音声が異なる年齢と性別を模倣するようにすることもできます。 たとえば、女性の音声を模倣するために、男性の音声のピッチを上げ、イントネーションを変更することはできますが、音声名は変更されません。 現在、ロールプレイの調整は、次の中国語 (標準、簡体字) のニューラル音声でサポートされています。
+話し方とその強度を調整する以外に、`role` パラメーターを調整して、音声が異なる年齢と性別を模倣するようにすることもできます。 たとえば、女性の音声を模倣するために、男性の音声のピッチを上げ、イントネーションを変更することはできますが、音声名は変更されません。 現在、ロールの調整は、次の中国語 (標準、簡体字) のニューラル音声でサポートされています。
 * `zh-CN-XiaomoNeural`
 * `zh-CN-XiaoxuanNeural`
 
-上記の変更は文章レベルで適用され、スタイルおよびロールプレイは音声によって異なります。 スタイルまたはロールプレイがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。 各音声に対してサポートされているスタイルとロールプレイは、[音声リスト API](rest-text-to-speech.md#get-a-list-of-voices) を通じて、またはコードなしの [Audio Content Creation](https://aka.ms/audiocontentcreation) プラットフォームを使用して確認できます。
+上記の変更は文章レベルで適用され、スタイルおよびロールプレイは音声によって異なります。 スタイルまたはロールプレイがサポートされていない場合、サービスは既定のニュートラルな話し方の音声を返します。 各音声に対してサポートされているスタイルとロールは、[音声リスト API](rest-text-to-speech.md#get-a-list-of-voices) を通じて、またはコードなしの [Audio Content Creation](https://aka.ms/audiocontentcreation) プラットフォームを使用して確認できます。
 
 **構文**
 
@@ -631,7 +626,7 @@ A good place to start is by trying out the slew of educational apps that are hel
 
 IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`、`zh-TW`) の発音セットが定義されています。
 
-次に示すように、カスタム辞書では `alphabet` 属性の谷として `sapi` を使用できます。
+カスタム辞書では、次に示すように、`alphabet` 属性の値として `sapi` を使用できます。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -717,7 +712,7 @@ IPA は覚えにくいため、Speech サービスでは、7 つの言語 (`en-U
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
-    <voice name="en-US-Guy24kRUS">
+    <voice name="en-US-AriaNeural">
         Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
     </voice>
 </speak>
@@ -1020,7 +1015,7 @@ Bookmark reached. Audio offset: 1462.5ms, bookmark text: flower_2.
 
 # <a name="swift"></a>[Swift](#tab/swift)
 
-詳細については、「<a href="https://docs.microsoft.com/swift/cognitive-services/speech/spxspeechsynthesizer#addbookmarkreachedeventhandler" target="_blank"> `addBookmarkReachedEventHandler` </a>」を参照してください。
+詳細については、「<a href="/objectivec/cognitive-services/speech/spxspeechsynthesizer" target="_blank"> `addBookmarkReachedEventHandler` </a>」を参照してください。
 
 ---
 

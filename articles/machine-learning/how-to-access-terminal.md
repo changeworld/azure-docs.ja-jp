@@ -8,15 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.custom: how-to
+ms.topic: how-to
 ms.date: 02/05/2021
-ms.openlocfilehash: 6f6c8e309fde92b0c2cf6fabac3489557b0b6b93
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: bff14ddd6a361c93c416aa746640b774afc43961
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106062388"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897237"
 ---
 # <a name="access-a-compute-instance-terminal-in-your-workspace"></a>ワークスペースでコンピューティング インスタンスのターミナルにアクセスする
 

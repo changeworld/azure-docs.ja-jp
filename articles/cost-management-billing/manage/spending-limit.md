@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 03/29/2021
 ms.author: banders
-ms.openlocfilehash: df5c5ed74a5e0a63727962fa86d261cfb588a384
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 47f1a1ed182420852682e908c7cd8b5e094bc085
+ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690563"
+ms.lasthandoff: 03/30/2021
+ms.locfileid: "105932558"
 ---
 # <a name="azure-spending-limit"></a>Azure の使用制限
 
-Azure の使用制限により、クレジット額を超過する支出が防止されます。 Azure 無料アカウント、または複数月にわたるクレジットが含まれるサブスクリプション タイプにサインアップする新規のお客様に対してはすべて、既定で使用制限が有効化されます。 使用制限はクレジットの金額と等価であり、変更できません。 たとえば Azure 無料アカウントにサインアップした場合、使用制限は 200 ドルであり、500 ドルに変更することはできません。 ただし、使用制限の削除はできます。 したがって選択肢は、制限なしとするか、またはクレジットと同額の制限を設けるかのどちらかとなります。 ほとんどの種類の支出は、これで防止されます。 使用制限は、コミットメント プランや従量課金制価格を使用したサブスクリプションでは利用できません。 [Azure のサブスクリプションの種類と使用制限の利用の可否を網羅した一覧](https://azure.microsoft.com/support/legal/offer-details/)をご覧ください。
+Azure の使用制限により、クレジット額を超過する支出が防止されます。 Azure 無料アカウント、または複数月にわたるクレジットが含まれるサブスクリプション タイプにサインアップする新規のお客様に対してはすべて、既定で使用制限が有効化されます。 使用制限はクレジットの金額と等価です。 使用制限の金額を変更することはできません。 たとえば Azure 無料アカウントにサインアップした場合、使用制限は 200 ドルであり、500 ドルに変更することはできません。 ただし、使用制限の削除はできます。 したがって選択肢は、制限なしとするか、またはクレジットと同額の制限を設けるかのどちらかとなります。 ほとんどの種類の支出は、これで防止されます。 使用制限は、コミットメント プランや従量課金制価格を使用したサブスクリプションでは利用できません。 [Azure のサブスクリプションの種類と使用制限の利用の可否を網羅した一覧](https://azure.microsoft.com/support/legal/offer-details/)をご覧ください。
 
 ## <a name="reaching-a-spending-limit"></a>使用制限への到達
 

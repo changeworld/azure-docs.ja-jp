@@ -6,12 +6,12 @@ ms.service: azure
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 12b90bf709cb20bed844940570663a76052a540d
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 2110bd812827ab4ff47f170a74a71f90df061833
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101738941"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108129659"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -109,7 +109,7 @@ Azure Spring Cloud は、クラウドでのアプリケーションのビルド�
 
 > **使用する場合:** Azure で Spring Boot または Spring Cloud ベースのマイクロサービスを実行する運用コストを最小限に抑える場合は、フル マネージドサービスとしての Azure Spring Cloud がお勧めです。 
 >
-> **概要:** [初めての Azure Spring Cloud アプリケーションをデプロイする](../../spring-cloud/spring-cloud-quickstart.md)
+> **概要:** [初めての Azure Spring Cloud アプリケーションをデプロイする](../../spring-cloud/quickstart.md)
 
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Azure サービスでアプリケーションを強化する

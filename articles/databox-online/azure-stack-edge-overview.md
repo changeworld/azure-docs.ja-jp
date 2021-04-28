@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 03/15/2021
 ms.author: alkohli
-ms.openlocfilehash: e6cd1f8a1f7d1777e786ab91637b4065a2c5e850
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: b4405c3d1c6588a67acfc66e458a3c9120d2110d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104585946"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108139131"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>FPGA 搭載の Azure Stack Edge Pro とは
 
@@ -86,7 +86,7 @@ Azure Stack Edge Pro 物理デバイス、Azure リソース、およびデー�
     
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、すべての Azure 地域で利用できます。 パフォーマンスを最適にするには、ストレージ アカウントによって Azure Stack Edge Pro のデータが格納されるリージョンと、デバイスが配置されている場所を、近くにする必要があります。 デバイスから離れた場所にあるストレージ アカウントは、待ち時間が長くなり、パフォーマンスが低下します。
 
-Azure Stack Edge サービスは、非リージョン サービスです。 詳細については、「[Azure のリージョンと Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview)」をご覧ください。 Azure Stack Edge サービスは、特定の Azure リージョンに依存しません。そのため、ゾーン全体の障害やリージョン全体の障害に対する回復性があります。
+Azure Stack Edge サービスは、非リージョン サービスです。 詳細については、「[Azure のリージョンと Availability Zones](../availability-zones/az-overview.md)」をご覧ください。 Azure Stack Edge サービスは、特定の Azure リージョンに依存しません。そのため、ゾーン全体の障害やリージョン全体の障害に対する回復性があります。
 
 ## <a name="next-steps"></a>次のステップ
 

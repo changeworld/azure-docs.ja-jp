@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: nibaccam
-author: aniththa
+author: cartacioS
 ms.reviewer: nibaccam
 ms.date: 12/20/2020
-ms.topic: conceptual
-ms.custom: how-to, automl
-ms.openlocfilehash: 2e06375441d6540d6630cfe9d4d8c3beec558879
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.topic: how-to
+ms.custom: automl
+ms.openlocfilehash: e744f7bb4d457e18f73c308fa5eaf29918b97e88
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103562724"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888316"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 
@@ -180,15 +180,15 @@ Included | トレーニングに含める列を指定します。
 
 [![イテレーションの詳細](media/how-to-use-automated-ml-for-ml-models/iteration-details.png)](media/how-to-use-automated-ml-for-ml-models/iteration-details-expanded.png)
 
-## <a name="model-explanations"></a>モデルの説明
+## <a name="model-explanations-preview"></a>モデルの説明 (プレビュー)
 
-モデルについて理解を深めるには、モデルの説明ダッシュボードを使用して、モデルの予測に影響を与えたデータ機能 (未加工または処理適用) を確認します。 
+モデルについて理解を深めるために、モデルの説明ダッシュボードを使用して、モデルの予測に影響を与えたデータ機能 (未加工または処理適用) を確認できます。 
 
-モデルの説明ダッシュボードには、トレーニングされたモデルの全体的な分析と共にその予測と説明が表示されます。 また、個々のデータ ポイントと個々の特徴量の重要度にドリル ダウンすることもできます。 [説明ダッシュボードの視覚化と特定のプロットについて学習してください](how-to-machine-learning-interpretability-aml.md#visualizations)。
+モデルの説明ダッシュボードには、トレーニングされたモデルの全体的な分析と共にその予測と説明が表示されます。 また、個々のデータ ポイントと個々の特徴量の重要度にドリル ダウンすることもできます。 [説明ダッシュボードの視覚化について詳細を確認してください](how-to-machine-learning-interpretability-aml.md#visualizations)。
 
 特定のモデルの説明を取得するには、次の手順を実行します。 
 
-1. **[モデル]** タブで、使用するモデルを選択します。 
+1. **[モデル]** タブで、理解を深めるモデルを選択します。 
 1. **[モデルの説明]** ボタンを選択し、説明の生成に使用できるコンピューティングを提供します。
 1. **[子の実行]** タブで状態を確認します。 
 1. 完了したら、説明ダッシュボードが含まれている **[説明 (プレビュー)]** タブに移動します。 

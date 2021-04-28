@@ -7,16 +7,16 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 2a26a71e956a7e1313af9e99cc92232d0caf91e7
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: f08b9db58ee0e4ec7711afb95085ef27fa5db13c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104877649"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132541"
 ---
 # <a name="troubleshoot-common-azure-spring-cloud-issues"></a>Azure Spring Cloud に関する一般的な問題のトラブルシューティング
 
-この記事では、Azure Spring Cloud の開発に関する問題のトラブルシューティングについて説明します。 詳しくは、「[よく寄せられる質問](spring-cloud-faq.md)」をご覧ください。
+この記事では、Azure Spring Cloud の開発に関する問題のトラブルシューティングについて説明します。 詳しくは、「[よく寄せられる質問](./faq.md)」をご覧ください。
 
 ## <a name="availability-performance-and-application-issues"></a>可用性、パフォーマンス、アプリケーションの問題
 
@@ -58,7 +58,7 @@ Azure Log Analytics にログをエクスポートしてください。 Spring �
     * 最初のメモリの爆発的な増加。
     * 特定の論理パスに対するメモリ割り当ての急増。
     * 段階的なメモリ リーク。
-  詳しくは、[メトリック](spring-cloud-concept-metrics.md)に関する記事をご覧ください。
+  詳しくは、[メトリック](./concept-metrics.md)に関する記事をご覧ください。
   
 * アプリケーションの起動に失敗した場合は、アプリケーションに有効な jvm パラメーターがあることを確認します。 jvm メモリの設定が高すぎる場合、ログに次のエラー メッセージが含まれている可能性があります。
 
@@ -80,11 +80,11 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 2. 監視するアプリケーションを指定するには、**App=** フィルターを追加します。
 3. **インスタンス** ごとにメトリックを分割します。
 
-"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、[Azure Spring Cloud でアプリケーションをスケーリングする](spring-cloud-howto-scale-manual.md)」をご覧ください。
+"*すべてのインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、アプリケーションをスケールアウトするか、CPU またはメモリの使用量をスケールアップする必要があります。 詳細については、[Azure Spring Cloud でアプリケーションをスケーリングする](./how-to-scale-manual.md)」をご覧ください。
 
 "*一部のインスタンス*" で CPU またはメモリの使用率が高くなっている場合は、インスタンスの状態とその検出状態を確認します。
 
-詳しくは、「[Azure Spring Cloud のメトリック](spring-cloud-concept-metrics.md)」をご覧ください。
+詳しくは、「[Azure Spring Cloud のメトリック](./concept-metrics.md)」をご覧ください。
 
 すべてのインスタンスが稼働している場合は、Azure Log Analytics に移動して、アプリケーション ログのクエリを実行し、コードのロジックを調べます。 これは、いずれかがスケールのパーティション分割に影響している可能性があるかどうかを確認するのに役立ちます。 詳しくは、「[診断設定でログとメトリックを分析する](diagnostic-services.md)」をご覧ください。
 
@@ -96,7 +96,7 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 * 指定した Java ランタイム バージョンのローカル環境で、アプリケーションを実行できる。
 * 環境の構成 (CPU、RAM、およびインスタンス) が、アプリケーション プロバイダーが定めた最小要件を満たしている。
-* 構成項目に適切な値が設定されている。 詳細については、[構成サーバー](spring-cloud-howto-config-server.md)に関するページを参照してください。
+* 構成項目に適切な値が設定されている。 詳細については、[構成サーバー](./how-to-config-server.md)に関するページを参照してください。
 * 環境変数に適切な値が設定されている。
 * JVM パラメーターに適切な値が設定されている。
 * 埋め込まれている "_構成サーバー_" および "_Spring サービス レジストリ_" サービスを無効にするか、アプリケーション パッケージから削除することをお勧めします。
@@ -111,7 +111,7 @@ Azure portal を使用して Azure Spring Cloud サービス インスタンス�
 一方、[Azure CLI](/cli/azure/get-started-with-azure-cli) または [Azure Resource Manager テンプレート](../azure-resource-manager/index.yml)を使用して Azure Spring Cloud サービス インスタンスを設定する場合には、次のことを確認してください。
 
 * サブスクリプションがアクティブである。
-* 場所が Azure Spring Cloud で[サポートされている](spring-cloud-faq.md)。
+* 場所が Azure Spring Cloud で[サポートされている](./faq.md)。
 * インスタンスのリソース グループが既に作成されている。
 * リソース名が、名前付け規則に準拠している 使用できる文字は小文字、数字、およびハイフンのみです。 先頭の文字は英字にする必要があります。 末尾の文字は、文字または数字にする必要があります。 値は 2 文字以上 32 文字以下にする必要があります。
 
@@ -151,7 +151,7 @@ Azure portal または Resource Manager テンプレートを使用して、JAR 
 
 `az spring-cloud app show-deploy-log -n <app-name>`
 
-ただし、1 つの Azure Spring Cloud サービス インスタンスから一度にトリガーできるビルド ジョブは、ソース パッケージ 1 つにつき 1 件のみであることに注意してください。 詳しくは、「[アプリケーションをデプロイする](spring-cloud-quickstart.md)」および「[Azure Spring Cloud でステージング環境を設定する](spring-cloud-howto-staging-environment.md)」をご覧ください。
+ただし、1 つの Azure Spring Cloud サービス インスタンスから一度にトリガーできるビルド ジョブは、ソース パッケージ 1 つにつき 1 件のみであることに注意してください。 詳しくは、「[アプリケーションをデプロイする](./quickstart.md)」および「[Azure Spring Cloud でステージング環境を設定する](./how-to-staging-environment.md)」をご覧ください。
 
 ### <a name="my-application-cant-be-registered"></a>アプリケーションを登録できない
 
@@ -227,4 +227,4 @@ Azure Log Analytics について詳しくは、「[Azure Monitor で Log Analyti
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Spring Cloud での問題を自己診断して解決する方法](spring-cloud-howto-self-diagnose-solve.md)
+* [Azure Spring Cloud での問題を自己診断して解決する方法](./how-to-self-diagnose-solve.md)

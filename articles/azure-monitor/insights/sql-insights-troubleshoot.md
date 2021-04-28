@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/04/2021
-ms.openlocfilehash: 4d4a801d0cf0a2355334272053ff86dd846b6bbf
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 9228faade46c2bfec3ed5170be5e256ead7d5220
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107030306"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017908"
 ---
 # <a name="troubleshooting-sql-insights-preview"></a>SQL insights のトラブルシューティング (プレビュー)
 SQL insights でのデータ収集の問題をトラブルシューティングするには、 **[プロファイルの管理]** タブで監視マシンの状態を確認します。ここには、以下の状態のいずれかが表示されています。
@@ -28,7 +28,7 @@ SQL insights でのデータ収集の問題をトラブルシューティング�
 
 SQL insights では、次のクエリを使用してこの情報を取得します。
 
-```
+```kusto
 InsightsMetrics 
     | extend Tags = todynamic(Tags) 
     | extend SqlInstance = tostring(Tags.sql_instance) 
@@ -163,14 +163,14 @@ Key Vault にアクセスするためのアクセス許可は、監視仮想マ�
 
 SQL insights では、次のクエリを使用してこの情報を取得します。
 
-```
+```kusto
 InsightsMetrics 
     | extend Tags = todynamic(Tags) 
     | extend SqlInstance = tostring(Tags.sql_instance) 
     | where TimeGenerated > ago(240m) and isnotempty(SqlInstance) and Namespace == 'sqlserver_server_properties' and Name == 'uptime' 
 ```
 
-```
+```kusto
 WorkloadDiagnosticLogs
 | summarize Errors = countif(Status == 'Error')
 ```

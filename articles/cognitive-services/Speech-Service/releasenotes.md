@@ -8,17 +8,23 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/27/2021
+ms.date: 04/20/2021
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 4acd25fc410f179414395ea5c7d03c3b6200e828
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: f97ecedd4088a825b9ec5a076f4da70df92a3269
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122120"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775405"
 ---
 # <a name="speech-service-release-notes"></a>Speech Service リリース ノート
+
+## <a name="text-to-speech-2021-april-release"></a>テキスト読み上げの 2021 年 4 月のリリース
+
+**ニューラル TTS は 21 のリージョンで利用可能**
+
+- **12 の新しいリージョンが追加** - ニューラル TTS は、`Japan East`、`Japan West`、`Korea Central`、`North Central US`、`North Europe`、`South Central US`、`Southeast Asia`、`UK South`、`west Central US`、`West Europe`、`West US`、`West US 2` の 12 の新しいリージョンで利用できるようになりました。 サポートされている 21 のリージョンの完全な一覧については、[こちら](regions.md#text-to-speech)をご覧ください。
 
 ## <a name="text-to-speech-2021-march-release"></a>テキスト読み上げの 2021 年 3 月のリリース
 
@@ -51,7 +57,7 @@ ms.locfileid: "106122120"
 
 - **C++/C#/Java/Python**: 最新バージョンの GStreamer (1.18.3) に移行し、Windows、Linux、および Android のあらゆるメディア形式の文字起こしのサポートが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)のドキュメントを参照してください。
 - **C++、C#、Java、Objective-C、Python**: 圧縮された TTS または合成オーディオのデコードのサポートが SDK に追加されました。 出力オーディオ形式を PCM に設定し、システムで GStreamer を使用できる場合、SDK は圧縮されたオーディオをサービスに自動的に要求して、帯域幅を節約し、クライアントのオーディオをデコードします。 `SpeechServiceConnection_SynthEnableCompressedAudioTransmission` を `false` に設定し、この機能を無効にできます。 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace#propertyid)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.propertyid?view=azure-dotnet)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.propertyid?view=azure-java-stable)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxpropertyid)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.propertyid?view=azure-python) の詳細。
-- **JavaScript**: Node.js ユーザーが [`AudioConfig.fromWavFileInput` API](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_) を使用できるようになりました。 これは、[GitHub イシュー #252](https://github.com/microsoft/cognitive-services-speech-sdk-JavaScript/issues/252) に対応するものです。
+- **JavaScript**: Node.js ユーザーが [`AudioConfig.fromWavFileInput` API](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/audioconfig?view=azure-node-latest#fromWavFileInput_File_) を使用できるようになりました。 これは、[GitHub イシュー #252](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/252) に対応するものです。
 - **C++、C#、Java、Objective-C、Python**: 利用可能なすべての合成音声を返す、TTS 用の `GetVoicesAsync()` メソッドが追加されました。 [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#getvoicesasync)、[C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-dotnet#methods)、[Java](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.speechsynthesizer?view=azure-java-stable#methods)、[Objective-C](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxspeechsynthesizer#getvoiceasync)、[Python](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechsynthesizer?view=azure-python#methods) の詳細。
 - **C++/C#/Java/JavaScript/Objective-C/Python**: 同期口形素アニメーションを返す TTS または音声合成用に `VisemeReceived` イベントが追加されました。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-speech-synthesis-viseme)のドキュメントを参照してください。
 - **C++/C#/Java/JavaScript/Objective-C/Python**: TTS 用に `BookmarkReached` イベントが追加されました。 入力 SSML でブックマークを設定し、各ブックマークのオーディオ オフセットを取得することができます。 [こちら](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-synthesis-markup#bookmark-element)のドキュメントを参照してください。
@@ -61,6 +67,10 @@ ms.locfileid: "106122120"
 - **C++、C#、Java、Objective-C、Python**: オーディオ マイクとスピーカー コントロール用の別個の共有ライブラリのサポートが追加されました。 これにより、必要なオーディオ ライブラリの依存関係がない環境で、SDK を使用できるようになります。
 - **Objective-C/Swift**: アンブレラ ヘッダーを持つモジュール フレームワークのサポートが追加されました。 これにより、iOS/Mac Objective-C/Swift アプリで Speech SDK をモジュールとしてインポートできます。 これは、[GitHub イシュー #452](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/452) に対応するものです。
 - **Python**: [Python 3.9](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstarts/setup-platform?pivots=programming-language-python) のサポートが追加され、Python の [3.5 のサポート終了](https://devguide.python.org/devcycle/#end-of-life-branches)に伴って Python 3.5 のサポートが停止しました。
+
+**既知の問題**
+
+- **C++/C#/Java**: `DialogServiceConnector` は `CustomCommandsConfig` を使用して Custom Commands アプリケーションにアクセスすることはできません。代わりに、接続エラーが発生します。 これは、`config.SetServiceProperty("X-CommandsAppId", "your-application-id", ServicePropertyChannel.UriQueryParameter)` を使用してアプリケーション ID を要求に手動で追加することで回避できます。 `CustomCommandsConfig` の予期される動作は、次のリリースで復元されます。
 
 #### <a name="improvements"></a>機能強化
 
@@ -132,7 +142,7 @@ ms.locfileid: "106122120"
 **新機能**
 - **[すべて]** : TTS 音声合成 API により、カスタム ニューラル音声のプライベート プレビューで 48 KHz の出力形式を使用できます: Audio48Khz192KBitRateMonoMp3、audio-48khz-192kbitrate-mono-mp3、Audio48Khz96KBitRateMonoMp3、audio-48khz-96kbitrate-mono-mp3、Raw48Khz16BitMonoPcm、raw-48khz-16bit-mono-pcm、Riff48Khz16BitMonoPcm、riff-48khz-16bit-mono-pcm。
 - **[すべて]** : カスタム音声も使いやすくなっています。 `EndpointId` によるカスタム音声の設定のサポートが追加されました ([C++](/cpp/cognitive-services/speech/speechconfig#setendpointid)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.endpointid#Microsoft_CognitiveServices_Speech_SpeechConfig_EndpointId)、[Java](/java/api/com.microsoft.cognitiveservices.speech.speechconfig.setendpointid#com_microsoft_cognitiveservices_speech_SpeechConfig_setEndpointId_String_)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig#endpointId)、[Objective-C](/objectivec/cognitive-services/speech/spxspeechconfiguration#endpointid)、[Python](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig#endpoint-id))。 この変更の前は、カスタム音声ユーザーは `FromEndpoint` メソッドを使用してエンドポイント URL を設定する必要がありました。 現在は、お客様は、パブリック音声と同様に `FromSubscription` メソッドを使用でき、`EndpointId` を設定することによりデプロイ ID を指定できます。 これにより、カスタム音声の設定が簡単になります。 
-- **C++、C#、Java、Objective-C、Python**: `IntentRecognizer` から、最上位の意図以外のものを取得できます。 `LanguageUnderstandingModel FromEndpoint` メソッドで `verbose=true` URI パラメーターを使用することにより、トップ スコアの意図だけでなく、すべての意図が含まれる JSON 結果の構成がサポートされるようになりました。 これは、[GitHub イシュー #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880) に対応するものです。 [こちらで](./quickstarts/intent-recognition.md#add-a-languageunderstandingmodel-and-intents)更新されたドキュメントを参照してください。
+- **C++、C#、Java、Objective-C、Python**: `IntentRecognizer` から、最上位の意図以外のものを取得できます。 `LanguageUnderstandingModel FromEndpoint` メソッドで `verbose=true` URI パラメーターを使用することにより、トップ スコアの意図だけでなく、すべての意図が含まれる JSON 結果の構成がサポートされるようになりました。 これは、[GitHub イシュー #880](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/880) に対応するものです。 [こちらで](./get-started-intent-recognition.md#add-a-languageunderstandingmodel-and-intents)更新されたドキュメントを参照してください。
 - **C++、C#、Java**: 音声アシスタントまたはボットのリスニングをすぐに停止します。 `DialogServiceConnector` ([C++](/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)、[Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)) に、`ListenOnceAsync()` に付随する `StopListeningAsync()` メソッドが用意されました。 これにより、オーディオ キャプチャが直ちに停止され、結果が適切に待機されるので、"今すぐ停止" ボタンがクリックされたときのシナリオに最適です。
 - **C++、C#、Java、JavaScript**: 音声アシスタントまたはボットによる基になるシステムのエラーへの対応が向上します。 `DialogServiceConnector` ([C++](/cpp/cognitive-services/speech/dialog-dialogserviceconnector)、[C#](/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)、[Java](/java/api/com.microsoft.cognitiveservices.speech.dialog.dialogserviceconnector)、[JavaScript](/javascript/api/microsoft-cognitiveservices-speech-sdk/dialogserviceconnector)) に、新しい `TurnStatusReceived` イベント ハンドラーが追加されました。 これらのオプション イベントは、ボットでのすべての [`ITurnContext`](/dotnet/api/microsoft.bot.builder.iturncontext) の解決に対応し、ターン実行エラーが発生したときに報告されます。たとえば、ハンドルされない例外、タイムアウト、または Direct Line Speech とボットの間のネットワーク切断の結果などです。 `TurnStatusReceived` により、エラー状態への対応が簡単になります。 たとえば、ボットによるバックエンド データベース クエリ (製品の検索など) の時間が長すぎる場合、`TurnStatusReceived` を使用することにより、クライアントで "申し訳ありません、よく聞き取れませんでした。もう一度試していただけますか" といったメッセージを再表示できます。
 - **C++、C#** : Speech SDK を使用できるプラットフォームが増えます。 [Speech SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)で、Windows ARM および ARM64 デスクトップ ネイティブ バイナリがサポートされるようになり (UWP は既にサポートされています)、より多くのマシンの種類で Speech SDK を使用できるようになります。
@@ -527,7 +537,7 @@ SPX は、コードを記述せずに Azure 音声サービスを使用するた
 
 **サンプル**
 - **Go**: [音声認識](./get-started-speech-to-text.md?pivots=programming-language-go)と [カスタム音声アシスタント](./quickstarts/voice-assistants.md?pivots=programming-language-go)のクイックスタートを追加しました。 サンプル コードは[こちら](https://github.com/microsoft/cognitive-services-speech-sdk-go/tree/master/samples)を参照してください。 
-- **JavaScript**:[音声合成](./get-started-text-to-speech.md?pivots=programming-language-javascript)、[翻訳](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script)、および [意図認識](./quickstarts/intent-recognition.md?pivots=programming-language-javascript)のクイックスタートを追加しました。
+- **JavaScript**:[音声合成](./get-started-text-to-speech.md?pivots=programming-language-javascript)、[翻訳](./get-started-speech-translation.md?pivots=programming-language-csharp&tabs=script)、および [意図認識](./get-started-intent-recognition.md?pivots=programming-language-javascript)のクイックスタートを追加しました。
 - [C\#](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/uwp/keyword-recognizer) および [Java](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/java/android/keyword-recognizer) (Android) のキーワード認識サンプル。  
 
 **COVID-19 の影響によるテストの短縮:** 過去数週間にわたってリモートにて作業を行っているため、通常ならば実施するはずの手動による検証テストを行うことができませんでした。 問題発生の可能性が想定される変更はいっさい行っていません。また、自動テストはすべて成功しました。 何らかの問題が発生した場合には、[GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?q=is%3Aissue+is%3Aopen) にてお知らせください。<br>

@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 7aac3a38b82b86edc47f48e50d26b5b269486701
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 15caaad0539c9c8c61c8fef6c81761054c68f431
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375238"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073253"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API についてよく寄せられる質問
 
 > [!TIP]
-> この FAQ で質問に対する回答が見つからない場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) の Computer Vision API コミュニティに質問するか、[UserVoice のヘルプとサポート](https://cognitive.uservoice.com/)にご連絡ください
+> この FAQ で質問に対する回答が見つからない場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) の Computer Vision API コミュニティに質問するか、UserVoice のヘルプとサポートにご連絡ください
 
 ---
 

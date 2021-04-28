@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
 ms.custom: devx-track-js
-ms.openlocfilehash: 9aca1e76c825de52744da817f6a0bf236eef617c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: ff9760e72c8ba3f652310c96ef09cfcc9ad41198
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107313608"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141465"
 ---
 # <a name="accessing-user-information-in-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューでのユーザー情報へのアクセス
 
@@ -64,7 +64,7 @@ console.log(getUserInfo());
 
 ## <a name="api-functions"></a>API 関数
 
-Azure Functions バックエンドを介して Static Web Apps で使用できる API 関数では、クライアント アプリケーションと同じユーザー情報にアクセスできます。 API では、ユーザーを特定できる情報を受け取りますが、ユーザーが認証されているか、必要なロールと一致する場合は、独自のチェックを実行しません。 アクセス制御規則は、[`staticwebapp.config.json`](routes.md) ファイルで定義されています。
+Azure Functions バックエンドを介して Static Web Apps で使用できる API 関数では、クライアント アプリケーションと同じユーザー情報にアクセスできます。 API では、ユーザーを特定できる情報を受け取りますが、ユーザーが認証されているか、必要なロールと一致する場合は、独自のチェックを実行しません。 アクセス制御規則は、[`staticwebapp.config.json`](configuration.md#routes) ファイルで定義されています。
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 

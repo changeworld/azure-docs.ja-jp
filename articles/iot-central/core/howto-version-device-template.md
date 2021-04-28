@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 93545c63013c95e3db498b079061da3d9b189efd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03d4b0e43c9f692b90f4ab5d4d136dac92b74de6
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95995762"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107715048"
 ---
 # <a name="create-a-new-device-template-version"></a>デバイス テンプレートの新しいバージョンを作成する
 
@@ -86,7 +86,7 @@ IoT Central UI でこの情報を表示するには、デバイス テンプレ�
 
 ## <a name="version-an-interface"></a>インターフェイスのバージョンを更新する
 
-インターフェイスのバージョンを更新すると、作成済みのインターフェイス内にある機能を追加、更新、削除できます。
+インターフェイスのバージョンを更新すると、作成済みのインターフェイス内にある機能を追加および更新できます。
 
 インターフェイスのバージョンを更新するには次を行います。
 

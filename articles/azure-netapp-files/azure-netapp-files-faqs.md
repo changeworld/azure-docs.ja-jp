@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: ae94ac9719a827a2d1af258398988f0972e61b3a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: a8c06b25b923d663e982e940100be7b9a2a009e1
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305516"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726846"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -213,6 +213,43 @@ SMB クライアントで報告されるボリューム サイズは、Azure Net
 ### <a name="how-can-i-obtain-the-ip-address-of-an-smb-volume-via-the-portal"></a>ポータルを使用して SMB ボリュームの IP アドレスを取得するにはどうすればよいですか?
 
 ボリュームの概要ペインの **[JSON ビュー]** リンクを使用して、 **[プロパティ]**  ->  **[mountTargets]** の下で **[startIp]** 識別子を探します。
+
+### <a name="smb-encryption-faqs"></a>SMB 暗号化に関する FAQ
+
+このセクションでは、SMB 暗号化 (SMB 3.0 および SMB 3.1.1) に関してよく寄せられる質問に回答します。
+
+#### <a name="what-is-smb-encryption"></a>SMB 暗号化とは  
+
+[SMB 暗号化](/windows-server/storage/file-server/smb-security)は、SMB データをエンド ツー エンドで暗号化し、信頼できないネットワークで発生する傍受からデータを保護できます。 SMB 暗号化は、SMB 3.0 以上でサポートされています。 
+
+#### <a name="how-does-smb-encryption-work"></a>SMB 暗号化は、どのように機能しますか。
+
+要求をストレージに送信するときに、クライアントは要求を暗号化します。この暗号化がストレージによって解除されます。 応答は、同様にサーバーによって暗号化され、クライアントによって暗号化が解除されます。
+
+#### <a name="which-clients-support-smb-encryption"></a>SMB 暗号化をサポートしているのは、どのクライアントですか。
+
+SMB 暗号化は、Windows 10、および Windows 2012 以降のバージョンでサポートされています。
+
+#### <a name="with-azure-netapp-files-at-what-layer-is-smb-encryption-enabled"></a>Azure NetApp Files では、どのレイヤーで SMB 暗号化が有効になっていますか。  
+
+SMB 暗号化は共有レベルで有効になっています。
+
+#### <a name="what-forms-of-smb-encryption-are-used-by-azure-netapp-files"></a>Azure NetApp Files では、どのような形式の SMB 暗号化が使用されますか。
+
+SMB 3.0 では AES-CCM アルゴリズムが、SMB 3.1.1 では AES-GCM アルゴリズムが採用されています。
+
+#### <a name="is-smb-encryption-required"></a>SMB 暗号化は必須ですか。
+
+SMB 暗号化は必須ではありません。 そのため、ユーザーが Azure NetApp Files で有効にするように要求した場合に、特定の共有に対してのみ有効になります。 Azure NetApp Files 共有がインターネットに公開されることはありません。 特定の VNet 内から、VPN または ExpressRoute 経由でのみアクセスできます。したがって、Azure NetApp Files 共有は本質的にセキュリティで保護されています。 SMB 暗号化を有効にするかどうかは、ユーザーが選択します。 この機能を有効にする前に、パフォーマンスの低下が予想されることを理解しておいてください。
+
+#### <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a><a name="smb_encryption_impact"></a>SMB 暗号化により、どのような影響がクライアント ワークロードに対して予想されますか。
+
+SMB 暗号化は、クライアント (メッセージの暗号化と復号化のための CPU オーバーヘッド) とストレージ (スループットの低下) の両方に影響を与えますが、次の表は、ストレージに対する影響のみを示しています。 ワークロードを運用環境にデプロイする前に、自分のアプリケーションのパフォーマンスに対する暗号化の影響をテストする必要があります。
+
+|     I/O プロファイル       |     影響        |
+|-  |-  |
+|     ワークロードの読み取りと書き込み      |     10% ～ 15%        |
+|     メタデータ集中型        |     5%    |
 
 ## <a name="capacity-management-faqs"></a>容量管理に関する FAQ
 

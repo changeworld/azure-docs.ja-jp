@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/17/2021
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: bc7ac6b97d10e5941e46b8be3e12baff32bded4a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ee8451365dd6a5d4e8e4b155c081e24e959730af
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483063"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128471"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure SQL Database および Azure Synapse Analytics の監査
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -81,7 +81,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 - VNet またはファイアウォールの背後にある Azure Storage アカウントに監査ログを書き込むことができます。 具体的な手順については、[VNet とファイアウォールの背後にあるストレージ アカウントに監査を書き込む](audit-write-storage-account-behind-vnet-firewall.md)方法に関する記事を参照してください。
 - ログの形式、ストレージ フォルダーの階層、および命名規則の詳細については、[BLOB 監査ログ形式のリファレンス](./audit-log-format.md)に関するドキュメントを参照してください。
 - [読み取り専用レプリカ](read-scale-out.md)での監査は自動的に有効になります。 ストレージ フォルダーの階層、命名規則、ログ形式の詳細については、「[SQL Database 監査ログの形式](audit-log-format.md)」を参照してください。
-- Azure AD Authentication を使用している場合は、失敗したログインのレコードは SQL 監査ログに表示 "*されません*"。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md)にアクセスする必要があります。
+- Azure AD Authentication を使用している場合は、失敗したログインのレコードは SQL 監査ログに表示 "*されません*"。 失敗したログインの監査レコードを表示するには、これらのイベントの詳細をログに記録している [Azure Active Directory ポータル](../../active-directory/reports-monitoring/concept-sign-ins.md)にアクセスする必要があります。
 - ログインはゲートウェイによって、データベースが置かれている特定のインスタンスにルーティングされます。  AAD ログインの場合、そのユーザーを使用し、要求されたデータベースへのログインを試行する前に、資格情報が検証されます。  不合格になった場合、要求されたデータベースがアクセスされることはなく、監査は行われません。  SQL ログインの場合、要求されたデータで資格情報が検証されます。そのため、この場合、監査できます。  ログイン成功 (明らかにデータベースにアクセスできる) は、いずれの場合も監査されます。
 - 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](threat-detection-overview.md)に関するページを参照してください。
 

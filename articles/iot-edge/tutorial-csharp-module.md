@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: b7695c825dbdd2c207c87799ea801026f7506bcb
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: e24c04152911f976907e6bdc433c33e035ade639
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106219452"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874731"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-using-linux-containers"></a>チュートリアル: Linux コンテナーを使用して C# の IoT Edge モジュールを開発する
 
@@ -60,7 +60,7 @@ Linux コンテナーを使用して C# モジュールを開発してデプロ�
 これらのチュートリアルを完了するには、開発マシンでさらに次の前提条件を整えます。
 
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download)。
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1)。
 
 ## <a name="create-a-module-project"></a>モジュール プロジェクトを作成する
 

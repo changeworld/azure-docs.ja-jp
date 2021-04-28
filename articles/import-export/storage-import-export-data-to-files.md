@@ -9,12 +9,12 @@ ms.date: 03/03/2021
 ms.author: alkohli
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: b62c3c4be4fdffd9f509b86d248cd028518ae89a
-ms.sourcegitcommit: 24a12d4692c4a4c97f6e31a5fbda971695c4cd68
+ms.openlocfilehash: 9c13ffc597349cdd2b304889d142ca7c2f89c713
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2021
-ms.locfileid: "102181943"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861537"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -183,7 +183,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
 
 ### <a name="create-a-job"></a>ジョブの作成
 
-1. [az extension add](/cli/azure/extension#az_extension_add) コマンドを使用して、[az import-export](/cli/azure/ext/import-export/import-export) 拡張機能を追加します。
+1. [az extension add](/cli/azure/extension#az_extension_add) コマンドを使用して、[az import-export](/cli/azure/import-export) 拡張機能を追加します。
 
     ```azurecli
     az extension add --name import-export
@@ -201,19 +201,19 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
     az storage account create -resource-group myierg -name myssdocsstorage --https-only
     ```
 
-1. ディスクを受け取ることができる場所の一覧を取得するには、[az import-export location list](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_list) コマンドを使用します。
+1. ディスクを受け取ることができる場所の一覧を取得するには、[az import-export location list](/cli/azure/import-export/location#az_import_export_location_list) コマンドを使用します。
 
     ```azurecli
     az import-export location list
     ```
 
-1. [az import-export location show](/cli/azure/ext/import-export/import-export/location#ext_import_export_az_import_export_location_show) コマンドを使用して、リージョンの場所を取得します。
+1. [az import-export location show](/cli/azure/import-export/location#az_import_export_location_show) コマンドを使用して、リージョンの場所を取得します。
 
     ```azurecli
     az import-export location show --location "West US"
     ```
 
-1. 次の [az import-export create](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_create) コマンドを実行して、インポート ジョブを作成します。
+1. 次の [az import-export create](/cli/azure/import-export#az_import_export_create) コマンドを実行して、インポート ジョブを作成します。
 
     ```azurecli
     az import-export create \
@@ -241,13 +241,13 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
    > 1 人のユーザーの電子メール アドレスを指定する代わりに、グループ メール アドレスを提供します。 これにより、管理者が離れる場合でも、通知を受信します。
 
 
-1. [az import-export list](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_list) コマンドを使用して、リソース グループ myierg のすべてのジョブを表示します。
+1. [az import-export list](/cli/azure/import-export#az_import_export_list) コマンドを使用して、リソース グループ myierg のすべてのジョブを表示します。
 
     ```azurecli
     az import-export list --resource-group myierg
     ```
 
-1. ジョブを更新するかジョブをキャンセルするには、[az import-export update](/cli/azure/ext/import-export/import-export#ext_import_export_az_import_export_update) コマンドを実行します。
+1. ジョブを更新するかジョブをキャンセルするには、[az import-export update](/cli/azure/import-export#az_import_export_update) コマンドを実行します。
 
     ```azurecli
     az import-export update --resource-group myierg --name MyIEjob1 --cancel-requested true

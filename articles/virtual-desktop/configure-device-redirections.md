@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 5eca75da57027789a06259e22e7c6cd5231404b6
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 37ecd06c4e3e71234e8fb1b6bad0cd05482dd31b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448153"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727850"
 ---
 # <a name="configure-device-redirections"></a>デバイスのリダイレクトを構成する
 
@@ -53,7 +53,7 @@ PowerShell または Azure portal を使用してホスト プール用の RDP �
 >[!NOTE]
 >`camerastoredirect:s:` プロパティが無効になっている場合でも、ローカル カメラは `devicestoredirect:s:` プロパティを介してリダイレクトされる可能性があります。 カメラのリダイレクトを完全に無効にするには、`camerastoredirect:s:` を設定し、`devicestoredirect:s:` を設定するか、カメラを含まないプラグ アンド プレイ デバイスのサブセットを定義します。
 
-KSCATEGORY_VIDEO_CAMERA インターフェイスのセミコロンで区切られた一覧 (`camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` など) を使用して、特定のカメラをリダイレクトすることもできます。 
+KSCATEGORY_VIDEO_CAMERA インターフェイスのセミコロンで区切られた一覧 (`camerastoredirect:s:\?\usb#vid_0bda&pid_58b0&mi` など) を使用して、特定のカメラをリダイレクトすることもできます。
 
 ### <a name="clipboard-redirection"></a>クリップボードのリダイレクト
 
@@ -100,6 +100,8 @@ COM ポートのリダイレクトを構成するには、次の RDP プロパ�
 - `drivestoredirect:s:`: ローカル ドライブのリダイレクトを無効にします。
 
 セミコロン区切りの一覧 (`drivestoredirect:s:C:;E:;` など) を使用して、特定のドライブを選択することもできます。
+
+Web クライアントのファイル転送を構成するには、`drivestoredirect:s:*` を設定します。
 
 ### <a name="printer-redirection"></a>プリンターのリダイレクト
 

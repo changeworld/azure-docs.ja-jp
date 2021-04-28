@@ -5,12 +5,12 @@ ms.custom: references_regions
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 1971e847745853730938409961b0531213932917
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 838eb517697c0625139058a19c7def764e869ed5
+ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108129587"
+ms.lasthandoff: 04/17/2021
+ms.locfileid: "107588175"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight リリース ノート
 
@@ -69,11 +69,11 @@ HDInsight は Azure 仮想マシン スケール セットに段階的に移行�
 ### <a name="os-version-upgrade"></a>OS バージョンのアップグレード
 現在、HDInsight クラスターは Ubuntu 16.04 LTS で実行されています。 [Ubuntu のリリース サイクル](https://ubuntu.com/about/release-cycle)に関する記事で言及されているように、Ubuntu 16.04 カーネルは、2021 年 4 月にサポート終了 (EOL) となります。 2021 年 5 月から、Ubuntu 18.04 で実行される新しい HDInsight 4.0 クラスター イメージのロールアウトが開始されます。 新しく作成された HDInsight 4.0 クラスターは、使用可能になった後、既定では Ubuntu 18.04 で実行されます。 Ubuntu 16.04 上の既存のクラスターは、完全サポートでそのまま実行されます。
 
-HDInsight 3.6 は、Ubuntu 16.04 で引き続き実行されます。 2021 年 6 月 30 日で標準サポートが終了し、2021 年 7 月 1 日から Basic サポートに変更されます。 日付とサポート オプションの詳細については、「[Azure HDInsight のバージョン](./hdinsight-component-versioning.md#supported-hdinsight-versions)」を参照してください。 Ubuntu 18.04 は、HDInsight 3.6 ではサポートされません。 Ubuntu 18.04 を使用する場合は、クラスターを HDInsight 4.0 に移行する必要があります。 
+HDInsight 3.6 は、Ubuntu 16.04 で引き続き実行されます。 2021 年 6 月 30 日で標準サポートが終了し、2021 年 7 月 1 日から Basic サポートに変更されます。 日付とサポート オプションの詳細については、「[Azure HDInsight のバージョン](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions)」を参照してください。 Ubuntu 18.04 は、HDInsight 3.6 ではサポートされません。 Ubuntu 18.04 を使用する場合は、クラスターを HDInsight 4.0 に移行する必要があります。 
 
 既存のクラスターを Ubuntu 18.04 に移動する場合は、クラスターを削除して再作成する必要があります。 Ubuntu 18.04 のサポートが利用可能になった後、クラスターの作成または再作成を計画してください。 新しいイメージがすべてのリージョンで利用可能になった後、別の通知が送信されます。
 
-Ubuntu 18.04 仮想マシン (VM) 上のエッジ ノードにデプロイされているスクリプト アクションとカスタム アプリケーションを事前にテストすることを強くお勧めします。 [18.04-LTS で単純な Ubuntu Linux VM を作成](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)し、その後、その VM で [Secure Shell (SSH) キー ペア](../virtual-machines/linux/mac-create-ssh-keys.md#ssh-into-your-vm)を作成および使用して、エッジ ノードにデプロイされているスクリプト アクションとカスタム アプリケーションを実行およびテストできます。
+Ubuntu 18.04 仮想マシン (VM) 上のエッジ ノードにデプロイされているスクリプト アクションとカスタム アプリケーションを事前にテストすることを強くお勧めします。 [18.04-LTS で単純な Ubuntu Linux VM を作成](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/)し、その後、その VM で [Secure Shell (SSH) キー ペア](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys#ssh-into-your-vm)を作成および使用して、エッジ ノードにデプロイされているスクリプト アクションとカスタム アプリケーションを実行およびテストできます。
 
 ### <a name="disable-stardard_a5-vm-size-as-head-node-for-hdinsgiht-40"></a>HDInsgiht 4.0 のヘッド ノードとしての Stardard_A5 VM サイズの無効化
 HDInsight クラスターのヘッド ノードは、クラスターの初期化と管理を担当します。 Standard_A5 VM サイズには、HDInsight 4.0 のヘッド ノードとして信頼性の問題があります。 2021 年 5 月の次回のリリース以降、お客様は、ヘッド ノードとして Standard_A5 VM サイズを使用した新しいクラスターを作成できなくなります。 E2_v3 や E2s_v3 など、他の 2 コア VM は使用できます。 既存のクラスターはそのまま実行されます。 運用 HDInsight クラスターの高可用性と信頼性を確保するために、ヘッド ノードには 4 コアの VM を強くお勧めします。

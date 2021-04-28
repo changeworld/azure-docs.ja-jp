@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 18672d76c262f8919489ccf132532c117666abe4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ae0d4c0fc3ee3f621cc7d90238d9a8ac7b3f773c
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99492180"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108142238"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion とは
 
@@ -58,4 +58,4 @@ RSS フィードを購読し、[Azure の更新情報](https://azure.microsoft.c
 ## <a name="next-steps"></a>次のステップ
 
 * [チュートリアル: Azure Bastion ホストを作成し、Windows VM に接続する](tutorial-create-host-portal.md)。
-* Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
+* Azure のその他の重要な[ネットワーク機能](../networking/fundamentals/networking-overview.md)について参照してください。
