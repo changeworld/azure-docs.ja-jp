@@ -60,7 +60,7 @@ ASE を作成した後は、次の項目を調整できます。
 * IP SSL に使用できる IP アドレスの数
 * フロントエンドまたはワーカーによって使用される Compute リソースのサイズ (フロントエンドの最小サイズは P2)
 
-App Service Environment の手動スケーリング、管理、監視について詳しくは、[App Service Environment を構成する方法][ASEConfig]に関するページを参照してください 
+App Service Environment の手動スケーリング、管理、監視について詳しくは、[App Service 環境を構成する方法][ASEConfig]に関するページを参照してください 
 
 自動スケーリングについては、[App Service Environment の自動スケーリングを構成する方法][ASEAutoscale]に関するページを参照してください
 

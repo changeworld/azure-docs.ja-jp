@@ -140,4 +140,4 @@ App Service プランは、**PerSiteScaling** プロパティを true に設定�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure App Service プランの詳細な概要](overview-hosting-plans.md)
-- [App Service 環境の概要](environment/app-service-app-service-environment-intro.md)
+- [App Service Environment の概要](environment/app-service-app-service-environment-intro.md)

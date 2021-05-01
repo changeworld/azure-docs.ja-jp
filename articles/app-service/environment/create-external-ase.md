@@ -55,7 +55,7 @@ ASE を作成する方法は、3 つあります。
 
 ## <a name="create-an-ase-and-an-app-service-plan-together"></a>ASE と App Service プランを一緒に作成する
 
-App Service プランは、アプリのコンテナーです。 App Service でアプリを作成するときは、App Service プランを選択または作成します。App Service Environment に App Service プランが存在し、App Service プランにアプリが存在します。
+App Service プランは、アプリのコンテナーです。 App Service でアプリを作成するときは、App Service プランを選択または作成します。 App Service Environment に App Service プランが存在し、App Service プランにアプリが存在します。
 
 App Service プランを作成中に ASE を作成するには、次の手順を実行します。
 
