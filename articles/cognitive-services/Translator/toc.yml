@@ -134,6 +134,8 @@
           href: custom-translator/training-and-model.md
         - name: BLEU スコア
           href: custom-translator/what-is-bleu-score.md
+        - name: カスタマー マネージド キー
+          href: encrypt-data-at-rest.md
 - name: ドキュメント変換
   items:
     - name: ドキュメント変換とは
@@ -164,22 +166,12 @@
           href: document-translation/reference/get-translation-status.md
         - name: 翻訳の取り消し
           href: document-translation/reference/cancel-translation.md
-- name: 操作方法ガイド
-  items:
-    - name: エンタープライズ対応
-      items:
-        - name: 仮想ネットワークの設定
-          href: ../cognitive-services-virtual-networks.md?context=/azure/cognitive-services/translator/context/context
-        - name: カスタマー マネージド キーを使用する
-          href: encrypt-data-at-rest.md
 - name: リソース
   items:
-    - name: エンタープライズ対応
-      items:
-        - name: リージョンのサポート
-          href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-        - name: コンプライアンスと認定資格
-          href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
+    - name: リージョンのサポート
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: コンプライアンスと認定資格
+      href: 'https://www.microsoft.com/translator/business/notrace/'
     - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/translator/context/context
     - name: コード サンプル (GitHub)

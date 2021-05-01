@@ -16,7 +16,7 @@
     - name: REST API とクライアント ライブラリ
       href: quickstarts/rest-api-and-client-library.md
 - name: サンプル
-  href: 'https://docs.microsoft.com/en-us/samples/browse/?products=azure&terms=metrics-advisor'
+  href: /samples/browse/?products=azure&terms=metrics-advisor
 - name: 操作方法ガイド
   items:
     - name: データをオンボードする

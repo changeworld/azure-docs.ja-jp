@@ -177,6 +177,22 @@
       href: /cli/azure/dt
     - name: DTDL v2 の仕様
       href: 'https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md'
+    - name: クエリ言語リファレンス
+      items:
+        - name: 句
+          items:
+            - name: SELECT
+              href: reference-query-clause-select.md
+            - name: FROM
+              href: reference-query-clause-from.md
+            - name: JOIN
+              href: reference-query-clause-join.md
+            - name: WHERE
+              href: reference-query-clause-where.md
+        - name: 関数
+          href: reference-query-functions.md
+        - name: 演算子
+          href: reference-query-operators.md
 - name: リソース
   items:
     - name: Digital Twins サービスに関する制約
