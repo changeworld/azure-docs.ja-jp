@@ -320,9 +320,9 @@
             - name: ラベルの付いたデータの取得
               displayName: 'data, dataset, labeling'
               href: how-to-create-labeling-projects.md
-            - name: ラベル イメージ
+            - name: 画像とテキストにラベルを付ける
               displayName: 'data, dataset, labeling'
-              href: how-to-label-images.md
+              href: how-to-label-data.md
             - name: ラベル付きのデータセットを作成する
               displayName: 'data, labels, torchvision'
               href: how-to-use-labeled-dataset.md

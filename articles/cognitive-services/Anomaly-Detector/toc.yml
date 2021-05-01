@@ -24,7 +24,7 @@
     - name: Jupyter Notebook (多変量)
       href: 'https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb'
     - name: Azure サンプル
-      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=anomaly-detector'
+      href: /samples/browse/?products=azure&terms=anomaly-detector
 - name: 操作方法ガイド
   items:
     - name: データの異常を特定する
@@ -95,7 +95,7 @@
     - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/anomaly-detector/context/context
     - name: Microsoft Learn モジュール
-      href: 'https://docs.microsoft.com/learn/modules/intro-to-anomaly-detector/'
+      href: /learn/modules/intro-to-anomaly-detector/
     - name: ユーザー生成コンテンツ
       href: user-generated-content.md
     - name: Microsoft Teams 上での Anomaly Detector Advisors グループへの参加
