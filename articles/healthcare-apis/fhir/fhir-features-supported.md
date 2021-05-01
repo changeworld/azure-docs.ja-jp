@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 4/15/2021
 ms.author: cavoeg
-ms.openlocfilehash: 56e3ba46ffb43aec907d729a2e74cdf6f7a62c32
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: e012bc2bc3c9ec1ab9351ed937e2c5049eef20d5
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530644"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108316013"
 ---
 # <a name="features"></a>特徴
 
@@ -29,24 +29,24 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 
 | API                            | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説                                             |
 |--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
-| 読み取り                           | はい       | Yes       | はい       |                                                     |
-| vread                          | はい       | Yes       | はい       |                                                     |
-| update                         | はい       | Yes       | はい       |                                                     |
-| オプティミスティック ロック付きの update | はい       | Yes       | はい       |                                                     |
-| update (条件付き)           | はい       | Yes       | はい       |                                                     |
+| 読み取り                           | はい       | はい       | はい       |                                                     |
+| vread                          | はい       | はい       | はい       |                                                     |
+| update                         | はい       | はい       | はい       |                                                     |
+| オプティミスティック ロック付きの update | はい       | はい       | はい       |                                                     |
+| update (条件付き)           | はい       | はい       | はい       |                                                     |
 | patch                          | いいえ        | いいえ        | いいえ        |                                                     |
-| delete                         | はい       | Yes       | Yes       |  下記のメモを参照してください。                                   |
+| delete                         | はい       | はい       | はい       |  下記のメモを参照してください。                                   |
 | delete (条件付き)           | いいえ        | いいえ        | いいえ        |                                                     |
-| history                        | はい       | Yes       | はい       |                                                     |
-| create                         | はい       | Yes       | はい       | POST/PUT の両方をサポートします                               |
-| create (条件付き)           | はい       | Yes       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| 検索                         | Partial   | Partial   | Partial   | 下の「検索」セクションを参照してください。                           |
-| chained search                 | Partial       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
-| reverse chained search         | Partial       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
-| capabilities                   | はい       | Yes       | はい       |                                                     |
-| batch (バッチ)                          | はい       | Yes       | はい       |                                                     |
+| history                        | はい       | はい       | はい       |                                                     |
+| create                         | はい       | はい       | はい       | POST/PUT の両方をサポートします                               |
+| create (条件付き)           | はい       | はい       | はい       | イシュー [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
+| 検索                         | 部分的   | 部分的   | 部分的   | 「 [FHIR 検索の概要」を](overview-of-search.md)参照してください。                           |
+| chained search                 | 部分的       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
+| reverse chained search         | 部分的       | はい       | 部分的   | 下記のメモ2を参照してください。                                   |
+| capabilities                   | はい       | はい       | はい       |                                                     |
+| batch (バッチ)                          | はい       | はい       | はい       |                                                     |
 | transaction                    | いいえ        | はい       | いいえ        |                                                     |
-| paging                         | 部分的   | Partial   | 部分的   | `self` と `next` がサポートされています                     |
+| paging                         | 部分的   | 部分的   | 部分的   | `self` と `next` がサポートされています                     |
 | intermediaries                 | いいえ        | いいえ        | いいえ        |                                                     |
 
 > [!Note]
@@ -58,76 +58,16 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 
   Cosmos でサポートされている Azure API for FHIR とオープンソースの FHIR サーバーでは、チェーン検索と逆連鎖検索は MVP 実装です。 Cosmos DB でチェーン検索を実行するために、この実装は検索式を処理し、サブクエリを発行して、一致したリソースを解決します。 これは、式の各レベルに対して行われます。 クエリが100を超える結果を返す場合は、エラーがスローされます。 既定では、チェーン検索は機能フラグの背後にあります。 Cosmos DB でチェーン検索を使用するには、ヘッダーを使用し `x-ms-enable-chained-search: true` ます。 詳細については、「 [PR 1695](https://github.com/microsoft/fhir-server/pull/1695)」を参照してください。
 
-## <a name="search"></a>検索
-
-すべての検索パラメーターの種類がサポートされています。 
-
-| 検索パラメーターの種類 | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
-|-----------------------|-----------|-----------|-----------|---------|
-| Number                | はい       | Yes       | はい       |         |
-| Date/DateTime         | はい       | Yes       | はい       |         |
-| String                | はい       | Yes       | はい       |         |
-| トークン                 | はい       | Yes       | はい       |         |
-| リファレンス             | はい       | Yes       | はい       |         |
-| Composite             | はい       | Yes       | はい       |         |
-| Quantity              | はい       | Yes       | はい       |         |
-| URI                   | はい       | Yes       | はい       |         |
-| Special               | いいえ        | いいえ        | いいえ        |         |
-
-
-| 修飾子             | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
-|-----------------------|-----------|-----------|-----------|---------|
-|`:missing`             | はい       | Yes       | Yes       |         |
-|`:exact`               | Yes       | Yes       | Yes       |         |
-|`:contains`            | Yes       | Yes       | Yes       |         |
-|`:text`                | Yes       | Yes       | はい       |         |
-|`:[type]` (参照)  | Yes       | Yes       | Yes       |         |
-|`:not`                 | Yes       | Yes       | Yes       |         |
-|`:below` (URI)         | はい       | Yes       | Yes       |         |
-|`:above` (URI)         | いいえ        | いいえ        | いいえ        | イシュー [#158](https://github.com/Microsoft/fhir-server/issues/158) |
-|`:in` (トークン)          | いいえ        | いいえ        | いいえ        |         |
-|`:below` (トークン)       | いいえ        | いいえ        | いいえ        |         |
-|`:above` (トークン)       | いいえ        | いいえ        | いいえ        |         |
-|`:not-in` (トークン)      | いいえ        | いいえ        | いいえ        |         |
-
-| 一般的な検索パラメーター | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
-|-------------------------| ----------| ----------| ----------|---------|
-| `_id`                   | はい       | Yes       | Yes       |         |
-| `_lastUpdated`          | Yes       | Yes       | Yes       |         |
-| `_tag`                  | Yes       | Yes       | Yes       |         |
-| `_list`                 | Yes       | Yes       | Yes       |         |
-| `_type`                 | Yes       | Yes       | はい       | イシュー [#1562](https://github.com/microsoft/fhir-server/issues/1562)        |
-| `_security`             | Yes       | Yes       | はい       |         |
-| `_profile`              | 部分的   | Partial   | 部分的   | STU3 でサポートされています。 2021 年 2 月 20 日 **以降** にデータベースを作成した場合は、R4 でもサポートされます。 Microsoft では、2021 年 2 月 20 日より前に作成されたデータベースでも _profile を利用できるようにするべく取り組んでいます。 |
-| `_text`                 | いいえ        | いいえ        | いいえ        |         |
-| `_content`              | いいえ        | いいえ        | いいえ        |         |
-| `_has`                  | いいえ        | いいえ        | いいえ        |         |
-| `_query`                | いいえ        | いいえ        | いいえ        |         |
-| `_filter`               | いいえ        | いいえ        | いいえ        |         |
-
-| 検索結果のパラメーター | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
-|-------------------------|-----------|-----------|-----------|---------|
-| `_elements`             | はい       | Yes       | Yes       | イシュー [#1256](https://github.com/microsoft/fhir-server/issues/1256)        |
-| `_count`                | はい       | Yes       | はい       | `_count` の上限は 1000 文字です。 1000 より大きい値に設定すると、1000 個だけが返され、バンドルで警告が返されます。 |
-| `_include`              | はい       | Yes       | Yes       |含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても :iterate のサポートは含まれません。|
-| `_revinclude`           | はい       | Yes       | Yes       | 含まれる項目は 100 に制限されています。 Cosmos DB 上の PaaS や OSS に含めても [:iterate のサポートは含まれません](https://github.com/microsoft/fhir-server/issues/1313)。 イシュー [#1319](https://github.com/microsoft/fhir-server/issues/1319)|
-| `_summary`              | 部分的   | Partial   | Partial   | `_summary=count` がサポートされています |
-| `_total`                | Partial   | Partial   | Partial   | `_total=none` および `_total=accurate`      |
-| `_sort`                 | Partial   | Partial   | Partial   |   `_sort=_lastUpdated` がサポートされています       |
-| `_contained`            | いいえ        | いいえ        | いいえ        |         |
-| `containedType`         | いいえ        | いいえ        | いいえ        |         |
-| `_score`                | いいえ        | いいえ        | いいえ        |         |
-
 ## <a name="extended-operations"></a>拡張操作
 
 サポートされており、RESTful API を拡張するあらゆる操作。
 
 | 検索パラメーターの種類 | サポート対象 - PaaS | サポート対象 - OSS (SQL) | サポート対象 - OSS (Cosmos DB) | 解説 |
 |------------------------|-----------|-----------|-----------|---------|
-| $export (システム全体) | はい       | Yes       | はい       |         |
-| Patient/$export        | はい       | Yes       | はい       |         |
-| Group/$export          | はい       | Yes       | Yes       |         |
-| $convert-data          | Yes       | Yes       | はい       |         |
+| $export (システム全体) | はい       | はい       | はい       |         |
+| Patient/$export        | はい       | はい       | はい       |         |
+| Group/$export          | はい       | はい       | Yes       |         |
+| $convert-data          | Yes       | はい       | はい       |         |
 
 
 ## <a name="persistence"></a>永続化

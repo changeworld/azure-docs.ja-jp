@@ -38,7 +38,7 @@
     - name: Face コンテナーを使用する
       items:
         - name: コンテナーの概要
-          href: /azure/cognitive-services/cognitive-services-container-support?context=/azure/cognitive-services/face/context/context
+          href: ../cognitive-services-container-support.md?context=%2fazure%2fcognitive-services%2fface%2fcontext%2fcontext
         - name: コンテナーのインストールと実行
           href: face-how-to-install-containers.md
         - name: コンテナーを構成する
@@ -93,7 +93,7 @@
         - name: コンプライアンスと認定資格
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 学習モジュール
-      href: 'https://docs.microsoft.com/learn/modules/detect-analyze-faces/'
+      href: /learn/modules/detect-analyze-faces/
     - name: サポート オプションとヘルプ オプション
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/face/context/context
     - name: Azure の更新情報
