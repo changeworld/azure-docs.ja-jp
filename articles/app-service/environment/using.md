@@ -48,7 +48,7 @@ ASE 内にアプリを作成するには:
     ![Isolated v2 価格レベル][2]
 
     > [!NOTE]
-    > 同じ App Service プランに Linux アプリと Windows アプリを含めることはできませんが、それらを同じ App Service Environment に含めることはできます。
+    > 同じ App Service プランに Linux アプリと Windows アプリを含めることはできませんが、それらを同じ App Service 環境に含めることはできます。
     >
 
 1. **Next:監視** を選択します。お使いのアプリで App Insights を有効にする場合は、作成フロー中のここで、それを行うことができます。 

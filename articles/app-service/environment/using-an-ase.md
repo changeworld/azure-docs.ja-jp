@@ -14,7 +14,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 03/29/2021
 ms.locfileid: "100594047"
 ---
-# <a name="use-an-app-service-environment"></a>App Service Environment の使用
+# <a name="use-an-app-service-environment"></a>App Service 環境の使用
 
 App Service Environment (ASE) は、ユーザーの Azure Virtual Network インスタンス内のサブネットに Azure App Service をデプロイしたものです。 ASE は次の要素で構成されます。
 
@@ -71,7 +71,7 @@ ASE 内にアプリを作成するには:
     ![[分離] 価格レベル][2]
 
     > [!NOTE]
-    > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service Environment に追加することはできます。
+    > Linux アプリと Windows アプリを同じ App Service プランに追加することはできませんが、同じ App Service 環境に追加することはできます。
     >
 
 1. **[確認および作成]** を選択し、情報が正しいことを確認して、 **[作成]** を選択します。
