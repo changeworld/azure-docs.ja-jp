@@ -161,7 +161,7 @@ SQL Server インスタンスを移行するには、「[Azure SQL Managed Insta
 
 **Managed Instance のパフォーマンスを SQL Server のパフォーマンスと比較するにはどうすればよいですか?**
 
-マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL マネージド インスタンスと SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。
+マネージド インスタンスと SQL Server のパフォーマンスを比較するために、まずは「[Azure SQL Managed Instance と SQL Server のパフォーマンス比較に関するベスト プラクティス](https://techcommunity.microsoft.com/t5/azure-sql-database/the-best-practices-for-performance-comparison-between-azure-sql/ba-p/683210)」の記事をご覧ください。
 
 **Managed Instance と SQL Server の間でパフォーマンスの差が生じる原因は何ですか?**
 
