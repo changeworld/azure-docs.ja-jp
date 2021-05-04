@@ -7,12 +7,12 @@ ms.author: jodowns
 ms.service: frontdoor
 ms.topic: sample
 ms.date: 04/16/2021
-ms.openlocfilehash: e939aec8f1cf5fa615904bb81bad82ea3cf22c61
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 0da7da3748f9c1dc088d0cee615b429927a40f92
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587478"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107890692"
 ---
 # <a name="azure-resource-manager-templates-for-azure-front-door"></a>Azure Front Door 用 Azure Resource Manager テンプレート
 
@@ -27,6 +27,8 @@ ms.locfileid: "107587478"
 | [[ルール セット]](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rule-set/) | Front Door のプロファイルとルール セットを作成します。  |
 | [マネージド ルール セットを使用する WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-waf-managed/) | マネージド ルール セットを使用して、Front Door プロファイルと WAF を作成します。  |
 | [カスタム ルールを使用する WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-waf-custom/) | カスタム ルールを使用して、Front Door プロファイルと WAF を作成します。  |
+| [レート制限を含む WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-rate-limit/) | レート制限を実行するためのカスタム ルールを使用して、Front Door プロファイルと WAF を作成します。  |
+| [ジオフィルタリングを含む WAF ポリシー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-geo-filtering/) | ジオフィルタリングを実行するためのカスタム ルールを使用して、Front Door プロファイルと WAF を作成します。  |
 |**App Service オリジン**| **説明** |
 | [App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-standard-premium-app-service-public) | パブリック エンドポイントを使用する App Service アプリと Front Door プロファイルを作成します。  |
 | [Private Link を使用する App Service](https://github.com/Azure/azure-quickstart-templates/tree/master/201-front-door-premium-app-service-private-link) | プライベート エンドポイントを使用する App Service アプリと Front Door プロファイルを作成します。  |

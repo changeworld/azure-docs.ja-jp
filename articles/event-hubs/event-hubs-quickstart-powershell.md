@@ -3,12 +3,12 @@ title: 'クイックスタート: PowerShell を使用したイベント ハブ�
 description: このクイック スタートでは、Azure PowerShell を使用してイベント ハブを作成したうえで、.NET Standard SDK を使用してイベントの送受信を行う方法について説明します。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: be2761bedd3198d25cb279e6a8ff188db6a51de2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "88933955"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873777"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>クイック スタート: Azure PowerShell を使用したイベント ハブの作成
 
@@ -24,7 +24,7 @@ Azure Event Hubs はビッグ データ ストリーミング プラットフォ
 
 - Azure のサブスクリプション。 お持ちでない場合は、開始する前に[無料アカウントを作成][]してください。
 - [Visual Studio 2019](https://www.visualstudio.com/vs)。
-- [.NET Standard SDK](https://www.microsoft.com/net/download/windows) バージョン 2.0 以降。
+- [.NET Core SDK](https://dotnet.microsoft.com/download) バージョン 2.0 以降。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

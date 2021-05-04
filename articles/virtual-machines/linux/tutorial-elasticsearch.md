@@ -1,27 +1,24 @@
 ---
 title: ElasticSearch を Azure の開発仮想マシンにデプロイする
-description: チュートリアル - Elastic Stack を Azure の開発 Linux VM にインストールする
+description: Elastic Stack (ELK) を Azure の開発 Linux VM にインストールします
 services: virtual-machines
-documentationcenter: virtual-machines
 author: rloutlaw
 manager: justhe
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: b3213d7de9aee88486fa1db1388c51948fbde430
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ce28efa30b04a2a762c39f47dac739633eac209
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557813"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818478"
 ---
-# <a name="install-the-elastic-stack-on-an-azure-vm"></a>Elastic Stack を Azure VM にインストールする
+# <a name="install-the-elastic-stack-elk-on-an-azure-vm"></a>Elastic Stack (ELK) を Azure VM にインストールする
 
 この記事では、[Elasticsearch](https://www.elastic.co/products/elasticsearch)、[Logstash](https://www.elastic.co/products/logstash)、および[Kibana](https://www.elastic.co/products/kibana) を、Azure の Ubuntu VM にデプロイする方法について説明します。 実行中の Elastic Stack を表示するために、必要に応じて Kibana に接続し、サンプル ログ データを使用できます。 
 
@@ -165,7 +162,7 @@ sudo systemctl start logstash.service
 sudo /usr/share/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 ```
 
-これは、標準入力を標準出力にエコーする基本的な logstash [パイプライン](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html)です。 
+これは、標準入力を標準出力にエコーする基本的な Logstash [パイプライン](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html)です。 
 
 ```output
 The stdin plugin is now waiting for input:

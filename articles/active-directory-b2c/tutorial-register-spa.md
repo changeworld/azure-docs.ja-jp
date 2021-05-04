@@ -12,12 +12,12 @@ ms.date: 08/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2eaf1dce432821dcfc693dc69dcf975a3d8be8d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f79eee17a78bd5cfc9024a333142deaaa44b3e2
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92503863"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071138"
 ---
 # <a name="tutorial-register-a-single-page-application-spa-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C にシングルページ アプリケーション (SPA) を登録する
 
@@ -34,12 +34,12 @@ Azure AD B2C により、シングルページ アプリケーションでユー
 
 これが **推奨される** 方法です。 有効期間が制限された更新トークンを使用すると、Safari ITP のような[最新のブラウザーの Cookie プライバシー制限](../active-directory/develop/reference-third-party-cookies-spas.md)にアプリケーションを適合させることができます。
 
-このフローを活用するために、アプリケーションで、これをサポートする認証ライブラリ ([MSAL.js 2.x](https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa) など) を使用できます。 
+このフローを活用するために、アプリケーションで、これをサポートする認証ライブラリ ([MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) など) を使用できます。 
 
 ![シングルページ アプリケーション認証](./media/tutorial-single-page-app/spa-app-auth.svg)
 
 ### <a name="implicit-grant-flow"></a>暗黙的な許可のフロー
-- [OAuth 2.0 暗黙的フロー](implicit-flow-single-page-application.md)。 [MSAL.js 1.x](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) のような一部のフレームワークでは、暗黙的な許可フローのみがサポートされます。 暗黙的な許可フローでは、**ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。 
+- [OAuth 2.0 暗黙的フロー](implicit-flow-single-page-application.md)。 [MSAL.js 1.x](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core) などの一部のライブラリでは、暗黙的な許可フローのみがサポートされます。 暗黙的な許可フローでは、**ID** と **アクセス** トークンを取得することがアプリケーションに許可されます。 認証コード フロートは異なり、暗黙的な許可フローでは **更新トークン** が返されません。 
 
 ![シングルページ アプリケーション暗黙的](./media/tutorial-single-page-app/spa-app.svg)
 

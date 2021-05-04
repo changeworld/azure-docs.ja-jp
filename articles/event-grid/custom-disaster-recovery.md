@@ -2,14 +2,14 @@
 title: Azure Event Grid のカスタム トピック用のディザスター リカバリー
 description: このチュートリアルでは、Event Grid サービスがリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
 ms.topic: tutorial
-ms.date: 07/07/2020
+ms.date: 04/22/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4b387a673cf49f30d40b44bb8d5e1f4dac51d0c
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020145"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895705"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Event Grid のカスタム トピック用に独自のディザスター リカバリーを構築する
 ディザスター リカバリーは、アプリケーションの機能の深刻な損失からの復旧に重点を置きます。 このチュートリアルでは、Event Grid サービスが特定のリージョンで異常な状態になった場合に復旧するためのイベント処理アーキテクチャを設定する方法について説明します。
@@ -91,6 +91,9 @@ ms.locfileid: "96020145"
 ### <a name="basic-client-side-implementation"></a>基本的なクライアント側の実装
 
 次のサンプル コードは、常にお客様のプライマリ トピックへの発行を最初に試行するシンプルな .NET 発行元です。 成功しなかった場合は、セカンダリ トピックにフェールオーバーされます。 どちらの場合でも、`https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` に対して GET を実行することで、他のトピックの正常性 API がチェックされます。 正常なトピックは、 **/api/health** エンドポイントに対して GET が実行された場合に常に **200 OK** で応答します。
+
+> [!NOTE]
+> 次のサンプル コードは、デモンストレーションのみを目的としており、運用環境での使用を目的としていません。 
 
 ```csharp
 using System;

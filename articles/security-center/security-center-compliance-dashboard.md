@@ -1,24 +1,18 @@
 ---
 title: チュートリアル:規制に対するコンプライアンスのチェック - Azure Security Center
 description: チュートリアル:Azure Security Center を使用して規制に対するコンプライアンスを向上させる方法について説明します。
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 06a42629df1f22eeb7a90ef5ce4da2ef53162391
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739010"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123161"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 
@@ -26,7 +20,7 @@ Azure Security Center では、**規制コンプライアンス ダッシュボ�
 
 Security Center では、ハイブリッド クラウド環境を継続的に評価して、サブスクリプションに適用される標準の制御とベスト プラクティスに従ってリスク要因を分析します。 ダッシュボードには、これらの標準へのコンプライアンスの状態が反映されます。 
 
-Azure サブスクリプションで Security Center を有効にすると、[Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)がそのサブスクリプションに自動的に割り当てられます。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
+Azure サブスクリプションで Security Center を有効にすると、[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)がそのサブスクリプションに自動的に割り当てられます。 この広く遵守されているベンチマークは、クラウド中心のセキュリティに重点を置いた [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) と [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) の統制に基づいています。
 
 規制コンプライアンス ダッシュボードには、選択した標準または規制について、お客様の環境におけるすべての評価の状態が表示されます。 推奨事項に基づいて行動し、お客様の環境内のリスク要因を減らしていくと、コンプライアンス体制は強化されます。
 
@@ -135,14 +129,15 @@ Security Center のワークフロー自動化機能を使用すると、規制�
 - [PDF 以外の形式でコンプライアンス データを含むレポートをダウンロードする方法はありますか?](#how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf)
 - [規制コンプライアンス ダッシュボードで一部のポリシーの例外を作成するにはどうすればよいですか?](#how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard)
 - [規制コンプライアンス ダッシュボードを使用するには、Azure Defender のプランまたはライセンスが必要ですか?](#what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard)
+- [使用すべきベンチマークや標準はどうすればわかりますか?](#how-do-i-know-which-benchmark-or-standard-to-use)
 
 ### <a name="what-standards-are-supported-in-the-compliance-dashboard"></a>コンプライアンス ダッシュボードではどの標準がサポートされていますか?
 既定では、規制コンプライアンス ダッシュボードには Azure セキュリティ ベンチマークが表示されます。 Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインです。 詳細については、「[Azure セキュリティ ベンチマークの概要](../security/benchmarks/introduction.md)」を参照してください。
 
 他の標準へのコンプライアンスを追跡するには、それらをダッシュボードに明示的に追加する必要があります。
  
-Azure CIS 1.1.0 (新規)、NIST SP 800-53 R4、NIST SP 800-171 R2、SWIFT CSP CSCF-v2020、UK Official および UK NHS、HIPAA HITRUST、Canada Federal PBMM、ISO 27001、SOC2-TSP、PCI-DSS 3.2.1 などの標準を追加できます。  
- 
+Azure CIS 1.3.0、NIST SP 800-53、NIST SP 800-171、SWIFT CSP CSCF-v2020、UK Official および UK NHS、HIPAA、Canada Federal PBMM、ISO 27001、SOC2-TSP、PCI-DSS 3.2.1 などの他の標準を追加できます。  
+
 標準がダッシュボードにさらに追加されると、「[規制コンプライアンス ダッシュボードで標準セットをカスタマイズする](update-regulatory-compliance-packages.md)」に記載されている情報に反映されます。
 
 ### <a name="why-do-some-controls-appear-grayed-out"></a>一部の制御が淡色表示されるのはなぜですか?
@@ -195,7 +190,12 @@ Security Center に組み込まれ、セキュリティ スコアに含まれる
 ご利用のいずれかの Azure リソースの種類に対していずれかの Azure Defender パッケージが有効になっている場合は、Security Center で規制コンプライアンス ダッシュボードとそのすべてのデータにアクセスできます。
 
 
+### <a name="how-do-i-know-which-benchmark-or-standard-to-use"></a>使用すべきベンチマークや標準はどうすればわかりますか?
+[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction) (ASB) は、Microsoft が定義したセキュリティに関する推奨事項とベスト プラクティスの標準的なセットであり、[CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/) や [NIST SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) などの一般的なコンプライアンス制御フレームワークに沿っています。 ASB は非常に包括的なベンチマークであり、さまざまな Azure サービスの最新のセキュリティ機能を推奨するように設計されています。 自社のセキュリティ体制を最大限に強化し、コンプライアンスの状態を業界標準に合わせることができるようにしたいお客様には ASB をお勧めします。
 
+[CIS ベンチマーク](https://www.cisecurity.org/benchmark/azure/)は、Center for Internet Security (CIS) という独立団体によって作成されたもので、コア Azure サービスのサブセットに関する推奨事項が含まれています。 Microsoft は CIS と協力し、Azure の最新の機能強化に合わせてそれらの推奨事項を更新するよう努めていますが、これが遅れて古くなってしまう場合があります。 それでも、CIS によるこの客観的な第三者評価を、初期の主要なセキュリティ ベースラインとして使用したいと考えているお客様もいます。
+
+Azure セキュリティ ベンチマークがリリースされて以来、CIS ベンチマークに代わるものとしてこれに移行することを多くのお客様が選択しています。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -4,12 +4,12 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 12/09/2020
 ms.topic: include
-ms.openlocfilehash: 269cae85c0f007c487f063b1f7ca7ea4dca15376
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: cc022470bf9ff799d6396f871f4a6c224d01a295
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104303"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931587"
 ---
 Custom Vision REST API の使用を開始します。 API を呼び出し、画像分類モデルを構築するには、これらの手順に従います。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -175,7 +175,7 @@ JSON 応答には、イテレーション ID (`"id"`) など、トレーニン�
 * `{projectId}` を独自のプロジェクト ID に置き換えます。
 * `{iterationId}` を前の手順で返された ID に置き換えます。
 * `{publishedName}` を、自分の予測モデルに割り当てる名前に置き換えます。
-* `{predictionId}` を独自の予測リソース ID に置き換えます。 これは、Azure portal の予測リソースの **[概要]** タブに、**サブスクリプション ID** として表示されます。
+* `{predictionId}` を独自の予測リソース ID に置き換えます。 予測リソース ID は、Azure portal の対象のリソースの **[プロパティ]** タブに、**リソース ID** として表示されます。
 * 必要に応じて、他の URL パラメーターを使用します。 [Publish Iteration](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fdded5) API を参照してください。
 
 ## <a name="test-the-prediction-endpoint"></a>予測エンドポイントをテストする

@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
-ms.openlocfilehash: c28cfbbdff9e3fbf6cfe8d53ab7529c2ce9bd96e
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 5bd83dce0fa7154d14c22b1d1076e3bd1c7bcc76
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725156"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931567"
 ---
 .NET 用 Custom Vision クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、物体検出モデルを構築するためのコード例を試してみましょう。 プロジェクトを作成し、タグを追加し、サンプル画像でプロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -172,7 +172,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 
 ## <a name="publish-the-current-iteration"></a>現在のイテレーションを公開する
 
-このメソッドでは、モデルの現在のイテレーションをクエリの実行に使用できるようにします。 モデル名は、予測要求を送信するための参照として使用できます。 `predictionResourceId` には、独自の値を入力する必要があります。 予測リソース ID は、Azure portal の対象のリソースの **[概要]** タブに、**サブスクリプション ID** として表示されます。
+このメソッドでは、モデルの現在のイテレーションをクエリの実行に使用できるようにします。 モデル名は、予測要求を送信するための参照として使用できます。 `predictionResourceId` には、独自の値を入力する必要があります。 予測リソース ID は、Azure portal の対象のリソースの **[プロパティ]** タブに、**リソース ID** として表示されます。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ObjectDetection/Program.cs?name=snippet_publish)]
 

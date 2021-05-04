@@ -7,22 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 03/19/2021
+ms.date: 04/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: e37ff8a003bc10d69fd32794f26acfa8f5326423
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 606755333856f6dd97ab6c5158ac67f122a1237d
+ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073533"
+ms.lasthandoff: 04/15/2021
+ms.locfileid: "107516429"
 ---
-<!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
 >
-> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。 
+> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。
 
 [リファレンス ドキュメント](/python/api/azure-ai-formrecognizer) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/azure/ai/formrecognizer) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-formrecognizer/) | [サンプル](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples)
 
@@ -49,7 +48,7 @@ pip install azure-ai-formrecognizer --pre
 ```
 
 > [!NOTE]
-> Form Recognizer 3.1.0 SDK は、"_API バージョン 2.1 プレビュー 2_" を反映しています。 "_API バージョン 2.1 プレビュー 3_" には [**REST API**](../../quickstarts/client-library.md) を使用してください。
+> Form Recognizer 3.1.0b4 は最新の SDK レビュー バージョンであり、"_API バージョン 2.1 preview.3_" を反映しています。
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -71,7 +70,7 @@ pip install azure-ai-formrecognizer
 > [!TIP]
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/FormRecognizerQuickstart.py) にあり、このクイックスタートのコード例が含まれています。
 
-自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 
+自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_creds)]
 
@@ -111,8 +110,9 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * [領収書を分析する](#analyze-receipts)
 * [名刺を分析する](#analyze-business-cards)
 * [請求書を分析する](#analyze-invoices)
-* [カスタム モデルをトレーニングする](#train-a-custom-model)
+* [身分証明書を分析する](#analyze-identity-documents)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
+* [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
@@ -137,8 +137,9 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 トレーニングとテスト データの URL への参照を追加する必要があります。
 
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
-  
+
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
+
 * 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。 
 
 > [!NOTE]
@@ -178,16 +179,89 @@ Confidence score: 1.0
 
 ```
 
+## <a name="analyze-receipts"></a>領収書を分析する
+
+このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。 URL からレシートを分析するには、`begin_recognize_receipts_from_url` メソッドを使用します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
+
+> [!TIP]
+> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_receipts` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
+
+### <a name="output"></a>出力
+
+```console
+ReceiptType: Itemized has confidence 0.659
+MerchantName: Contoso Contoso has confidence 0.516
+MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
+MerchantPhoneNumber: None has confidence 0.99
+TransactionDate: 2019-06-10 has confidence 0.985
+TransactionTime: 13:59:00 has confidence 0.968
+Receipt Items:
+...Item #1
+......Name: 8GB RAM (Black) has confidence 0.916
+......TotalPrice: 999.0 has confidence 0.559
+...Item #2
+......Quantity: None has confidence 0.858
+......Name: SurfacePen has confidence 0.858
+......TotalPrice: 99.99 has confidence 0.386
+Subtotal: 1098.99 has confidence 0.964
+Tax: 104.4 has confidence 0.713
+Total: 1203.39 has confidence 0.774
+```
+
+## <a name="analyze-business-cards"></a>名刺を分析する
+
+#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+
+このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。 
+
+URL から名刺を分析するには、`begin_recognize_business_cards_from_url` メソッドを使用します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
+
+> [!TIP]
+> ローカルにある名刺の画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_business_cards` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+---
+
 ## <a name="analyze-invoices"></a>請求書を分析する
 
 #### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
 
-このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。 URL から請求書を分析するには、`begin_recognize_invoices_from_url` メソッドを使用します。 
+このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。 
+
+URL から請求書を分析するには、`begin_recognize_invoices_from_url` メソッドを使用します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_invoice)]
 
 > [!TIP]
 > ローカルの請求書画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_invoices` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
+
+#### <a name="v20"></a>[v2.0](#tab/ga)
+
+> [!IMPORTANT]
+> この機能は、選択した API バージョンでは使用できません。
+
+---
+
+## <a name="analyze-identity-documents"></a>身分証明書を分析する
+
+#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
+
+このセクションでは、Form Recognizer のあらかじめ構築された ID モデルを使用して、政府発行の身分証明書 (世界各国のパスポートと米国の運転免許証) から重要な情報を分析および抽出する方法を示します。 請求書分析の詳細については、[あらかじめ構築された身分証明書モデルの概念ガイド](../../concept-identification-cards.md)を参照してください。
+
+URL から身分証明書を分析するには、`begin_recognize_id_documents_from_url` メソッドを使用します。
+
+:::code language="python" source="~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py" id="snippet_id":::
+
+> [!TIP]
+> 身分証明書の画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true#methods) のメソッドを "_参照_" してください (`begin_recognize_id_documents` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードも "_参照_" してください。
 
 #### <a name="v20"></a>[v2.0](#tab/ga)
 
@@ -210,7 +284,6 @@ Confidence score: 1.0
 次のコードは、トレーニング クライアントを `begin_training` 関数と共に使用して、特定のドキュメント セットでモデルをトレーニングします。 返される `CustomFormModel` オブジェクトには、モデルが分析できるフォームの種類と、それぞれのフォームの種類から抽出できるフィールドに関する情報が含まれています。 次のコード ブロックは、この情報をコンソールに出力します。
 
 [!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_train)]
-
 
 ### <a name="output"></a>出力
 
@@ -304,7 +377,6 @@ Document errors: []
 > [!TIP]
 > ローカルの画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_custom_forms` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
 
-
 ### <a name="output"></a>出力
 
 前の例のモデルを使用すると、次の出力が得られます。
@@ -328,58 +400,10 @@ Field 'Tax' has label 'Tax' with value 'None' and a confidence score of None
 Field 'Total' has label 'Total' with value 'None' and a confidence score of None
 ```
 
-## <a name="analyze-receipts"></a>領収書を分析する
-
-このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。 URL からレシートを分析するには、`begin_recognize_receipts_from_url` メソッドを使用します。 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart.py?name=snippet_receipts)]
-
-> [!TIP]
-> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_receipts` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
-
-### <a name="output"></a>出力
-
-```console
-ReceiptType: Itemized has confidence 0.659
-MerchantName: Contoso Contoso has confidence 0.516
-MerchantAddress: 123 Main Street Redmond, WA 98052 has confidence 0.986
-MerchantPhoneNumber: None has confidence 0.99
-TransactionDate: 2019-06-10 has confidence 0.985
-TransactionTime: 13:59:00 has confidence 0.968
-Receipt Items:
-...Item #1
-......Name: 8GB RAM (Black) has confidence 0.916
-......TotalPrice: 999.0 has confidence 0.559
-...Item #2
-......Quantity: None has confidence 0.858
-......Name: SurfacePen has confidence 0.858
-......TotalPrice: 99.99 has confidence 0.386
-Subtotal: 1098.99 has confidence 0.964
-Tax: 104.4 has confidence 0.713
-Total: 1203.39 has confidence 0.774
-```
-
-## <a name="analyze-business-cards"></a>名刺を分析する
-
-#### <a name="v21-preview"></a>[v2.1 プレビュー](#tab/preview)
-
-このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から共通フィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。 URL から名刺を分析するには、`begin_recognize_business_cards_from_url` メソッドを使用します。 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/FormRecognizer/FormRecognizerQuickstart-preview.py?name=snippet_bc)]
-
-> [!TIP]
-> ローカルにある名刺の画像を分析することもできます。 [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) のメソッドを参照してください (`begin_recognize_business_cards` など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples) 上のサンプル コードを参照してください。
-
-#### <a name="v20"></a>[v2.0](#tab/ga)
-
-> [!IMPORTANT]
-> この機能は、選択した API バージョンでは使用できません。
-
----
 
 ## <a name="manage-your-custom-models"></a>カスタム モデルを管理する
 
-このセクションでは、アカウントに格納されているカスタム モデルを管理する方法について説明します。 
+このセクションでは、アカウントに格納されているカスタム モデルを管理する方法について説明します。
 
 ### <a name="check-the-number-of-models-in-the-formrecognizer-resource-account"></a>FormRecognizer リソース アカウント内のモデルの数を確認する
 

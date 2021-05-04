@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: 6cf76e980fab4e5be3f8c2c6d72baff05ab03815
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 5afa90e948a4153f2a27b97d619830586aecfa11
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106108389"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107905254"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>チュートリアル:Kubernetes 上のシークレット ストア CSI ドライバー向けに Azure Key Vault プロバイダーを構成して実行する
 
@@ -296,11 +296,7 @@ kubectl exec nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 シークレットの内容が表示されていることを確認します。
 
 ## <a name="resources"></a>リソース
-[Azure Key Vault について](overview.md)
-[Azure Key Vault 開発者ガイド](developers-guide.md)
-[CSI シークレット ドライバー](https://secrets-store-csi-driver.sigs.k8s.io/introduction.html)
+- [Azure Key Vault について](overview.md)
+- [Azure Key Vault 開発者ガイド](developers-guide.md)
+- [CSI シークレット ドライバー](https://azure.github.io/secrets-store-csi-driver-provider-azure/)
 
-
-キー コンテナーが回復可能であることを確認するには、以下を参照してください。
-> [!div class="nextstepaction"]
-> [論理的な削除を有効にする](./key-vault-recovery.md)

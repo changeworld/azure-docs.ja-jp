@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 0012c3d208998786ef5aa34320f3bccc4e51ebe6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: fb13e5015a589efc575d5a7bbb8b662fc23b72be
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107782785"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076403"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル:マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
 
@@ -249,6 +249,9 @@ az webapp config connection-string delete --resource-group myResourceGroup --nam
 ![ソリューション エクスプローラーから発行する](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
 発行ページで **[発行]** をクリックします。 
+
+> [!IMPORTANT]
+> App Service 名が既存の[アプリの登録](../active-directory/manage-apps/add-application-portal.md)と一致していないことを確認してください。 これにより、プリンシパル ID の競合が発生します。
 
 **「[チュートリアル: Azure App Service での ASP.NET Core および SQL Database アプリの作成](tutorial-dotnetcore-sqldb-app.md)」からこのチュートリアルに進んできた場合は**、以下のコマンドで、Git を使用して変更を発行します。
 

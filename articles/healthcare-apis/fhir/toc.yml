@@ -86,6 +86,17 @@
           href: configure-export-data.md
         - name: Private Link を構成する
           href: configure-private-link.md
+    - name: 検索
+      expand: false
+      items:
+        - name: FHIR 検索の概要
+          href: overview-of-search.md
+        - name: カスタム検索パラメーターの定義
+          href: how-to-do-custom-search.md
+        - name: インデックス再作成ジョブの実行方法
+          href: how-to-run-a-reindex.md
+        - name: Azure API for FHIR を検索する
+          href: search-samples.md
     - name: データのエクスポート
       expanded: false
       items:

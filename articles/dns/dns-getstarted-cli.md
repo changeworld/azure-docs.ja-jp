@@ -9,18 +9,20 @@ ms.topic: quickstart
 ms.date: 10/20/2020
 ms.author: rohink
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1929cd512d18d7fd234aff1f55814c423455e63b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 873b218c4186978225b9a8b5db5ef0c80e61bb28
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94561371"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949958"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure DNS ゾーンとレコードを作成する
 
 この記事では、Windows、Mac、Linux で使用できる Azure CLI を使用して、最初の DNS ゾーンとレコードを作成する手順について説明します。 これらの手順は、[Azure portal](dns-getstarted-portal.md) または [Azure PowerShell](dns-getstarted-powershell.md) を使用して実行することもできます。
 
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 最後に、DNS ゾーンをインターネットに公開するには、ドメインのネーム サーバーを構成する必要があります。 ここでは、その手順について説明します。
+
+:::image type="content" source="media/dns-getstarted-portal/environment-diagram.png" alt-text="Azure portal を使用した DNS デプロイ環境の図。" border="false":::
 
 Azure DNS は、プライベート DNS ゾーンもサポートします。 プライベート DNS ゾーンの詳細については、「[Using Azure DNS for private domains (プライベート ドメインでの Azure DNS の使用)](private-dns-overview.md)」をご覧ください。 プライベート DNS ゾーンを作成する例については、[CLI で Azure DNS プライベート ゾーンを使用するための基礎](./private-dns-getstarted-cli.md)に関するページを参照してください。
 

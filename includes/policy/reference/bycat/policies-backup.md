@@ -2,19 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cb710e1a8abd084340323bd22dfe4247f8e1a2c5
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 85c49cea063e79a3fb6c50232b5204b7e6e9b50c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498928"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866681"
 ---
 |名前<br /><sub>(Azure portal)</sub> |説明 |効果 |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[仮想マシンに対して Azure Backup を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F013e242c-8828-4970-87b3-ab247555486d) |Azure Backup を有効にして、Azure Virtual Machines を保護します。 Azure Backup は、Azure 向けの安全で費用対効果の高いデータ保護ソリューションです。 |AuditIfNotExists、Disabled |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachines_EnableAzureBackup_Audit.json) |
+|[仮想マシンに対して Azure Backup を有効にする必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F013e242c-8828-4970-87b3-ab247555486d) |Azure Backup を有効にして、Azure Virtual Machines を保護します。 Azure Backup は、Azure 向けの安全で費用対効果の高いデータ保護ソリューションです。 |AuditIfNotExists、Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachines_EnableAzureBackup_Audit.json) |
+|[\[プレビュー\]: Azure Recovery Services vaults should use customer-managed keys for encrypting backup data (Azure Recovery Services コンテナーでは、バックアップ データを暗号化するために、カスタマー マネージド キーを使用する必要がある)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2e94d99a-8a36-4563-bc77-810d8893b671) |カスタマー マネージド キーを使用して、バックアップ データの保存時の暗号化を管理します。 既定では、顧客データはサービス マネージド キーを使用して暗号化されますが、規制コンプライアンス標準を満たすためには一般に、CMK が必要です。 カスタマー マネージド キーを使用すると、自分が作成して所有する Azure Key Vault キーを使用してデータを暗号化できます。 ローテーションや管理など、キーのライフサイクルを完全に制御し、責任を負うことになります。 詳細については、[https://aka.ms/AB-CmkEncryption](https://aka.ms/AB-CmkEncryption) をご覧ください。 |Audit、Deny、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/AzBackupRSVault_CMKEnabled_Audit.json) |
 |[\[プレビュー\]: Azure Recovery Services コンテナーではプライベート リンクを使用する必要がある](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fdeeddb44-9f94-4903-9fa0-081d524406e3) |Azure Private Link を使用すると、接続元または接続先にパブリック IP アドレスを使用せずに、仮想ネットワークを Azure サービスに接続できます。 Private Link プラットフォームでは、Azure のバックボーン ネットワークを介してコンシューマーとサービスの間の接続が処理されます。 プライベート エンドポイントを Azure Recovery Services コンテナーにマッピングすることにより、データ漏えいのリスクが軽減されます。 プライベート リンクの詳細については、[https://aka.ms/AB-PrivateEndpoints](https://aka.ms/AB-PrivateEndpoints) を参照してください。 |Audit、Disabled |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/RecoveryServices_PrivateEndpoint_Audit.json) |
 |[\[プレビュー\]: 特定のタグが付いた仮想マシンで、既定のポリシーを使用して新しい Recovery Services コンテナーへのバックアップを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F83644c87-93dd-49fe-bf9f-6aff8fd0834e) |仮想マシンと同じ場所およびリソース グループに復旧サービス コンテナーをデプロイして、すべての仮想マシンにバックアップを適用します。 組織内の異なるアプリケーション チームに別個のリソース グループが割り当てられていて、独自のバックアップと復元を管理する必要がある場合は、これを行うと便利です。 割り当てのスコープを制御するために、指定したタグを含む仮想マシンを必要に応じて含めることができます。 [https://aka.ms/AzureVMAppCentricBackupIncludeTag](https://aka.ms/AzureVMAppCentricBackupIncludeTag)に関するページを参照してください。 |deployIfNotExists、auditIfNotExists、disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineApplicationCentricBackup_Backup_Deploy_WithTag.json) |
 |[\[プレビュー\]: 特定のタグが付いた仮想マシンで、同じ場所にある既存の Recovery Services コンテナーへのバックアップを構成する](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F345fa903-145c-4fe1-8bcd-93ec2adccde8) |すべての仮想マシンを仮想マシンと同じ場所およびサブスクリプション内の既存の中央復旧サービス コンテナーにバックアップして、それらのマシンにバックアップを適用します。 組織に、サブスクリプション内のすべてのリソースのバックアップを管理する中央のチームがある場合は、これを行うと便利です。 割り当てのスコープを制御するために、指定したタグを含む仮想マシンを必要に応じて含めることができます。 [https://aka.ms/AzureVMCentralBackupIncludeTag](https://aka.ms/AzureVMCentralBackupIncludeTag)に関するページを参照してください。 |deployIfNotExists、auditIfNotExists、disabled |[2.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Backup/VirtualMachineWithTag_Backup_Deploy.json) |

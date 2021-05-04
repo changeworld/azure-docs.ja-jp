@@ -5,14 +5,14 @@ keywords: Azure, 人工知能, ai, 自然言語処理, nlp, 自然言語理解, 
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 04/13/2021
+ms.date: 04/16/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: f46586b3f120cf191d88b7de9cf8686ca9b16cca
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 3a83e6d62b030c436af31cc853ef0e5c109679a1
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107503773"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945145"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -20,7 +20,7 @@ ms.locfileid: "107503773"
 
 Language Understanding (LUIS) は、カスタムの機械学習インテリジェンスをユーザーの自然言語での会話テキストに適用して、全体の意味を予測し、関連性のある詳細な情報を引き出す、クラウドベースの会話型 AI サービスです。 LUIS には、[カスタム ポータル](https://www.luis.ai)、[API][endpoint-apis]、および [SDK クライアント ライブラリ](client-libraries-rest-api.md)を介してアクセスできます。
 
-初めてのユーザーは、次の手順に従って [LUIS ポータルにサインイン](sign-in-luis-portal.md "LUIS ポータルにサインインする")してください。作業を開始するにあたり、LUIS の[作成済みドメイン](luis-get-started-create-app.md) アプリを試すことも、[独自のアプリを作成](get-started-portal-build-app.md)することもできます。
+初めてのユーザーは、次の手順に従って [LUIS ポータルにサインイン](sign-in-luis-portal.md "LUIS ポータルにサインインする")してください。作業を開始するにあたり、LUIS の[作成済みドメイン アプリ](luis-get-started-create-app.md)を試すこともできます。
 
 このドキュメントには、次の種類の記事が含まれています。  
 
@@ -31,7 +31,7 @@ Language Understanding (LUIS) は、カスタムの機械学習インテリジ�
 
 ## <a name="what-does-luis-offer"></a>LUIS によって提供されるもの 
 
-* **シンプル**: LUIS を使用するにあたり、社内の AI の専門知識や事前の機械学習の知識は必要ありません。 数回クリックするだけで、独自の会話型 AI アプリケーションを作成できます。 用意されている[クイックスタート](get-started-portal-build-app.md)のいずれかに従ってカスタム アプリケーションを作成することも、[作成済みドメイン](luis-get-started-create-app.md) アプリのいずれかを使用することもできます。
+* **シンプル**: LUIS を使用するにあたり、社内の AI の専門知識や事前の機械学習の知識は必要ありません。 数回クリックするだけで、独自の会話型 AI アプリケーションを作成できます。 用意されている[クイックスタート](luis-get-started-create-app.md)のいずれかに従ってカスタム アプリケーションを作成することも、[作成済みドメイン](luis-get-started-create-app.md) アプリのいずれかを使用することもできます。
 * **セキュリティ、プライバシー、およびコンプライアンス**: Azure インフラストラクチャによって支えられている LUIS は、エンタープライズグレードのセキュリティ、プライバシー、およびコンプライアンスを提供します。 ユーザーのデータはユーザーのもののままです。ユーザーは、いつでもデータを削除できます。 データは、ストレージ内にあるときは暗号化されます。 詳細については、[こちら](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy)をご覧ください。
 * **統合**: LUIS アプリは、[Microsoft Bot Framework](https://docs.microsoft.com/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)、[音声サービス](../Speech-Service/quickstarts/intent-recognition.md)などの他の Microsoft サービスと簡単に統合できます。
 

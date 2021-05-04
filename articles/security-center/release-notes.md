@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/20/2021
+ms.date: 04/27/2021
 ms.author: memildin
-ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 35873711753400132f47933f009365cc6383429b
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751205"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123485"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure Security Center の最新情報
 
@@ -31,11 +31,14 @@ Security Center で近日中に公開を "*予定されている*" 変更につ�
 - [最近プルされたコンテナー レジストリ イメージが毎週再スキャンされるようになる (一般提供)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Azure Defender for Kubernetes を使用したハイブリッドおよびマルチクラウド Kubernetes デプロイの保護 (プレビュー)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
 - [Azure Defender for DNS および Azure Defender for Resource Manager を有効にする際の推奨事項 (プレビュー)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
+- [追加された 3 つの規制コンプライアンス標準: Azure CIS 1.3.0、CMMC レベル 3、New Zealand ISM Restricted](#three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted)
 - [ゲスト構成に関連する 4 つの新しい推奨事項 (プレビュー)](#four-new-recommendations-related-to-guest-configuration-preview)
 - [CMK の推奨事項をベスト プラクティスのセキュリティ コントロールに移動](#cmk-recommendations-moved-to-best-practices-security-control)
 - [11 個の Azure Defender アラートを非推奨化](#11-azure-defender-alerts-deprecated)
 - ["システムの更新プログラムを適用する" セキュリティ コントロールの 2 つの推奨事項を非推奨化](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
 - [[Azure Defender for SQL on machine] タイルを Azure Defender ダッシュボードから削除](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
+- [21 個の推奨事項をセキュリティ コントロール間で移動](#21-recommendations-moved-between-security-controls)
+
 
 ### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>最近プルされたコンテナー レジストリ イメージが毎週再スキャンされるようになる (一般提供)
 
@@ -80,6 +83,24 @@ Azure Defender プランを有効にすると、料金が発生します。 リ�
 
 > [!TIP]
 > プレビューの推奨事項によってリソースが異常な状態になることはありません。これらの推奨事項は、セキュリティ スコアの計算には含まれません。 これらの推奨事項はプレビュー期間が終了した時点でスコアに反映されるため、可能な限り修復してください。 これらの推奨事項に対応する方法については、「[Azure Security Center の修復レコメンデーション](security-center-remediate-recommendations.md)」を参照してください。
+
+
+### <a name="three-regulatory-compliance-standards-added-azure-cis-130-cmmc-level-3-and-new-zealand-ism-restricted"></a>追加された 3 つの規制コンプライアンス標準: Azure CIS 1.3.0、CMMC レベル 3、New Zealand ISM Restricted
+
+Azure Security Center で使用するための 3 つの標準が追加されました。 規制コンプライアンス ダッシュボードを使用して、次の標準への準拠を追跡できるようになりました。
+
+- [CIS Microsoft Azure Foundations Benchmark 1.3.0](../governance/policy/samples/cis-azure-1-3-0.md)
+- [CMMC レベル 3](../governance/policy/samples/cmmc-l3.md)
+- [New Zealand ISM Restricted](../governance/policy/samples/new-zealand-ism.md)
+
+「[規制コンプライアンス ダッシュボードで標準セットをカスタイマイズする](update-regulatory-compliance-packages.md)」で説明するように、これらをサブスクリプションに割り当てることができます。
+
+:::image type="content" source="media/release-notes/additional-regulatory-compliance-standards.png" alt-text="Azure Security Center の規制コンプライアンス ダッシュボードで使用するために追加された 3 つの標準。" lightbox="media/release-notes/additional-regulatory-compliance-standards.png":::
+
+詳細情報:
+- [規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ](update-regulatory-compliance-packages.md)
+- [チュートリアル:規制に対するコンプライアンスの向上](security-center-compliance-dashboard.md)
+- [FAQ - 規制コンプライアンス ダッシュボード](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
 
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>ゲスト構成に関連する 4 つの新しい推奨事項 (プレビュー)
 
@@ -160,6 +181,19 @@ Azure Security Center のセキュリティ コントロールは、関連する
 ### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>[Azure Defender for SQL on machine] タイルを Azure Defender ダッシュボードから削除
 
 Azure Defender ダッシュボードの適用範囲には、お使いの環境用の関連 Azure Defender プランのタイルが含まれています。 保護されているリソースと保護されていないリソースの数のレポートに関する問題が発生したため、問題が解決されるまでは、**Azure Defender for SQL on machine** のリソース適用範囲の状態を一時的に削除することにしました。
+
+
+### <a name="21-recommendations-moved-between-security-controls"></a>21 個の推奨事項をセキュリティ コントロール間で移動 
+
+次の推奨事項は、別のセキュリティ コントロールに移動されました。 セキュリティ コントロールは、関連するセキュリティ推奨事項の論理グループであり、脆弱な攻撃対象領域を反映しています。 この移動によって、これらの各推奨事項は、その目標を達成するために最も適したコントロールに含められます。
+
+各セキュリティ コントロールに含まれる推奨事項については、「[セキュリティ コントロールとその推奨事項](secure-score-security-controls.md#security-controls-and-their-recommendations)」を参照してください。
+
+|推奨 |変更と影響  |
+|---------|---------|
+|脆弱性評価を SQL サーバー上で有効にする必要がある<br>脆弱性評価を SQL マネージド インスタンス上で有効にする必要がある<br>SQL データベースの脆弱性を新たに修復する必要がある<br>VM 内の SQL データベースの脆弱性を修復する必要があります     |脆弱性の修復 (6 ポイント分) から<br>セキュリティ構成の修復 (4 ポイント分) に移動されます。<br>お客様の環境によっては、これらの推奨事項がスコアに与える影響が少なくなります。|
+|複数の所有者がサブスクリプションに割り当てられている必要がある<br>Automation アカウント変数は、暗号化する必要がある<br> IoT デバイス - Auditd プロセスでイベントの送信が停止された<br> IoT デバイス - オペレーティング システムのベースラインの検証に失敗した<br> IoT デバイス - TLS 暗号スイートのアップグレードが必要<br> IoT デバイス - デバイス上でポートを開く<br> IoT デバイス - チェーンのうちの 1 つに制限の緩すぎるファイアウォール ポリシーが見つかりました<br> IoT デバイス - 入力チェーンに制限の緩すぎるファイアウォール ルールが見つかりました<br> IoT デバイス - 出力チェーンに制限の緩すぎるファイアウォール ルールが見つかりました<br>IoT Hub の診断ログを有効にする必要がある<br> IoT デバイス - エージェントで低使用率のメッセージが送信されている<br>IoT デバイス - 既定の IP フィルター ポリシーを拒否にする必要がある<br>IoT デバイス - IP フィルター ルールの IP 範囲が広い<br>IoT デバイス - エージェントのメッセージ間隔とサイズを調整する必要がある<br>IoT デバイス - 認証の資格情報が同一<br>IoT デバイス - 監査対象プロセスでイベントの送信が停止された<br>IoT デバイス - オペレーティング システム (OS) のベースライン構成を修正する必要がある|**セキュリティのベスト プラクティスの実装** に移動されます。<br>推奨事項が「セキュリティのベスト プラクティスの実装」セキュリティ コントロールに移動される (ポイントは発生しない) と、この推奨事項はセキュリティ スコアに影響を及ぼさなくなります。|
+|||
 
 
 ## <a name="march-2021"></a>2021 年 3 月
@@ -284,7 +318,7 @@ Security Center によって、ほぼすべてのセキュリティに関する�
 これにより、ページには以下が表示されます。
 
 1. 各セキュリティ コントロールの最大スコアと現在のスコア。
-1. **クイック修正** や **プレビュー** などのタグに代わるアイコン。
+1. **修正** や **プレビュー** などのタグに代わるアイコン。
 1. 各推奨事項に関連する[ポリシー イニシアチブ](security-policy-concept.md)を示す新しい列。これは、"コントロールでグループ化" が無効になっている場合に表示されます。
 
 :::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Azure Security Center の推奨事項ページの機能強化 - 2021 年 3 月" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
@@ -430,7 +464,7 @@ Security Center の規制コンプライアンス ダッシュボードを使用
 
 詳細については、次のページを参照してください。
 
-- [Azure セキュリティ ベンチマークについての詳細情報](https://docs.microsoft.com/security/benchmark/azure/introduction)
+- [Azure セキュリティ ベンチマークについての詳細情報](/security/benchmark/azure/introduction)
 - [規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>オンプレミスおよびマルチクラウド マシンの脆弱性評価が一般提供 (GA) リリース
@@ -545,7 +579,7 @@ Security Center のデータを表示するアクセス許可がないユーザ�
 
 ### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure セキュリティ ベンチマークのカバレッジを広げるために追加される、35 個のプレビュー推奨事項
 
-[Azure セキュリティ ベンチマーク](https://docs.microsoft.com/security/benchmark/azure/introduction)が Azure Security Center の既定のポリシー イニシアティブになりました。 
+[Azure セキュリティ ベンチマーク](/security/benchmark/azure/introduction)が Azure Security Center の既定のポリシー イニシアティブになりました。 
 
 このベンチマークのカバー範囲を拡大するために、次の 35 個のプレビュー推奨事項が Security Center に追加されています。
 
@@ -563,7 +597,7 @@ Security Center のデータを表示するアクセス許可がないユーザ�
 
 関連リンク:
 
-- [Azure セキュリティ ベンチマークについての詳細情報](https://docs.microsoft.com/security/benchmark/azure/introduction)
+- [Azure セキュリティ ベンチマークについての詳細情報](/security/benchmark/azure/introduction)
 - [Azure Database for MariaDB についての詳細情報](../mariadb/overview.md)
 - [Azure Database for MySQL についての詳細情報](../mysql/overview.md)
 - [Azure Database for PostgreSQL についての詳細情報](../postgresql/overview.md)
@@ -743,13 +777,13 @@ Security Center のカバレッジと機能が拡張されるにつれて、セ�
 
 - **環境** - AWS、GCP、または Azure リソース (または任意の組み合わせ) の推奨事項を表示します
 - **重大度** - Security Center によって設定された重大度分類に従って推奨事項を表示します
-- **応答アクション** - Security Center の応答オプションの可用性に応じて推奨事項を表示します (クイック修正、拒否、強制)
+- **応答アクション** - Security Center の応答オプションの可用性に応じて推奨事項を表示します (修正、拒否、強制)
 
     > [!TIP]
     > 応答アクション フィルターは、 **[Quick fix available (Yes/No)]\(クイック修正を使用できます (はい/いいえ)\)** フィルターに置き換わるものです。 
     > 
     > これらの応答オプションの詳細については、次を参照してください。
-    > - [クイック修正による修復](security-center-remediate-recommendations.md#quick-fix-remediation)
+    > - [修正ボタン](security-center-remediate-recommendations.md#fix-button)
     > - [適用/拒否の推奨事項を使用した構成ミスの防止](prevent-misconfigurations.md)
 
 :::image type="content" source="./media/release-notes/added-recommendations-filters.png" alt-text="セキュリティ コントロールにグループ化された推奨事項" lightbox="./media/release-notes/added-recommendations-filters.png":::
@@ -789,7 +823,7 @@ Azure Security Center の連続エクスポート ツールを使用すると、
 
 ### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>Azure セキュリティ ベンチマークのカバレッジを広げるために追加された、29 個のプレビュー推奨事項
 
-Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 [Azure セキュリティ ベンチマークの詳細を確認してください](https://docs.microsoft.com/security/benchmark/azure/introduction)。
+Azure セキュリティ ベンチマークは Microsoft が作成したもので、一般的なコンプライアンス フレームワークに基づくセキュリティとコンプライアンスのベスト プラクティスに関する Azure 固有のガイドラインのセットです。 [Azure セキュリティ ベンチマークの詳細を確認してください](/security/benchmark/azure/introduction)。
 
 ベンチマークのカバレッジを拡大するために、次の 29 個のプレビュー推奨事項が Security Center に追加されています。
 
@@ -806,7 +840,7 @@ Azure セキュリティ ベンチマークは Microsoft が作成したもの�
 
 関連リンク:
 
-- [Azure セキュリティ ベンチマークについての詳細情報](https://docs.microsoft.com/security/benchmark/azure/introduction)
+- [Azure セキュリティ ベンチマークについての詳細情報](/security/benchmark/azure/introduction)
 - [Azure API アプリについての詳細情報](../app-service/app-service-web-tutorial-rest-api.md)
 - [Azure 関数アプリについての詳細情報](../azure-functions/functions-overview.md)
 - [Azure Web アプリについての詳細情報](../app-service/overview.md)

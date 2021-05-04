@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/19/2021
+ms.date: 04/22/2021
 ms.author: curtand
-ms.openlocfilehash: 1062c8dfe416af2d39063bf71f39d52e151e28d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 593ec6588e2f55cb9f379dcfac437956bcabc10b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100096074"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951350"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>[自分のサインイン] ページから最近のサインイン アクティビティを表示および検索する
 
@@ -29,18 +29,18 @@ ms.locfileid: "100096074"
 >[!Note]
 > 個人用 Microsoft アカウントでのサインイン時にエラーが発生した場合でも、組織のドメイン名 (contoso.com など) または組織の **テナント ID** (管理者から入手) を使用して、次のいずれかの URL でサインインできます。
 >
->   - https://myaccount.microsoft.com?tenantId=*your_domain_name*
->   - https://myaccount.microsoft.com?tenant=*your_tenant_ID*
+>   - `https://myaccount.microsoft.com?tenantId=<your_domain_name>`
+>   - `https://myaccount.microsoft.com?tenant=<your_tenant_ID>`
 
 ## <a name="view-your-recent-sign-in-activity"></a>最近のサインイン アクティビティを表示する
 
 1. 職場または学校アカウントにサインインした後、、 https://myaccount.microsoft.com/ ページに移動します。
 
-2. 左側のナビゲーション ウィンドウから **[自分のサインイン]** を選択するか、 **[自分のサインイン]** ブロックから **[最近のアクティビティを確認する]** リンクを選択します。
+1. 左側のナビゲーション ウィンドウから **[自分のサインイン]** を選択するか、 **[自分のサインイン]** ブロックから **[最近のアクティビティを確認する]** リンクを選択します。
 
     ![[最近のアクティビティ] リンクが強調表示されている [マイ アカウント] ページ](media/my-account-portal/my-account-portal-sign-ins.png)
 
-3. サインイン項目を展開し、それぞれに覚えがあることを確認します。 覚えがないサインイン項目を見つけた場合は、お使いのアカウントにセキュリティ侵害が発生した場合に備えて、お使いのパスワードを変更してください。
+1. サインイン項目を展開し、それぞれに覚えがあることを確認します。 覚えがないサインイン項目を見つけた場合は、お使いのアカウントにセキュリティ侵害が発生した場合に備えて、お使いのパスワードを変更してください。
 
     ![サインインの詳細が展開されている [最近のアクティビティ] ページ](media/my-account-portal-sign-ins-page/recent-activity.png)
 
@@ -74,9 +74,51 @@ ms.locfileid: "100096074"
 
 ![通常とは異なるサインインを試行したかどうかを確認するためのタイル](media/my-account-portal-sign-ins-page/this-wasnt-me.png)
 
+## <a name="view-sign-in-activity-on-android"></a>Android でのサインイン アクティビティの表示
+
+セキュリティ情報を表示または変更するときは毎回、操作を進めるために、職場または学校アカウントにサインインする必要があります。
+
+1. Microsoft Authenticator アプリを開き、職場または学校アカウントのホーム ページを選択します。
+
+1. **[Recent account activity]\(最近のアカウント アクティビティ\)** を選択します。
+
+    ![最近のサインイン アクティビティへのリンクが強調表示されている職場または学校アカウントのホーム ページ](media/my-account-portal-sign-ins-page/android-recent-activity.png)
+
+1. サインインに成功した場合は、各サインイン項目を確認し、それぞれについて認識しているかどうかを確かめます。 覚えがないサインイン項目を見つけた場合は、お使いのアカウントにセキュリティ侵害が発生した場合に備えて、お使いのパスワードを変更してください。
+
+    ![サインインの詳細が表示されている [最近のアクティビティ] ページ](media/my-account-portal-sign-ins-page/android-activity-page.png)
+
+## <a name="change-your-password-on-android"></a>Android でのパスワードの変更
+
+管理者は、ユーザーが Authenticator アプリでパスワードをリセットできるようにすることができます。 サインインしてセキュリティ情報を表示または変更するときは毎回、操作を進めるために、職場または学校アカウントにサインインする必要があります。
+
+1. Microsoft Authenticator アプリを開き、職場または学校アカウントのホーム ページを選択します。
+
+1. **[パスワードの変更]** を選択します。
+
+    ![[パスワードの変更] リンクが強調表示されている職場または学校アカウントのホーム ページ](media/my-account-portal-sign-ins-page/android-change-password.png)
+
+1. サインインに成功した場合は、 **[パスワードの変更]** ページで、パスワード情報を更新できます。
+
+    ![古いパスワードと新しいパスワードのエントリが表示されている [最近のアクティビティ] ページ](media/my-account-portal-sign-ins-page/android-password-page.png)
+
+## <a name="update-security-info-on-android"></a>Android でのセキュリティ情報の更新
+
+サインインしてセキュリティ情報を表示または変更するときは毎回、操作を進めるために、職場または学校アカウントにサインインする必要があります。
+
+1. Microsoft Authenticator アプリを開き、職場または学校アカウントのホーム ページを選択します。
+
+1. **[セキュリティ情報の更新]** を選択します。
+
+    ![[セキュリティ情報の更新] リンクが強調表示されている職場または学校アカウントのホーム ページ](media/my-account-portal-sign-ins-page/android-update-security-info.png)
+
+1. サインインに成功した場合は、 **[セキュリティ情報]** ページで、セキュリティの詳細を更新できます。
+
+    ![セキュリティ情報が表示されている [最近のアクティビティ] ページ](media/my-account-portal-sign-ins-page/android-security-info-page.png)
+
 ## <a name="next-steps"></a>次のステップ
 
-最近のサインイン アクティビティを表示した後に、次の操作を実行できます。
+最近のサインイン情報を表示した後で、次の操作を実行できます。
 
 - [セキュリティ情報](./security-info-setup-signin.md)を表示または管理する。
 

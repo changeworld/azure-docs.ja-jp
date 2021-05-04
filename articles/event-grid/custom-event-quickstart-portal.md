@@ -1,14 +1,14 @@
 ---
 title: クイック スタート:カスタム イベントを Web エンドポイントに送信する - Event Grid、Azure portal
 description: クイック スタート:Azure Event Grid と Azure portal を使用して、カスタム トピックを発行したり、そのトピックに対するイベントをサブスクライブしたりします。 イベントは、Web アプリケーションによって処理されます。
-ms.date: 07/07/2020
+ms.date: 04/22/2021
 ms.topic: quickstart
-ms.openlocfilehash: 592e2d6b7393da8cb55a457b022d6c2358048cfe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91ac5cfd65910a6297f78f34943331d5b911559b
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96013668"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895745"
 ---
 # <a name="quickstart-route-custom-events-to-web-endpoint-with-the-azure-portal-and-event-grid"></a>クイック スタート:Azure portal と Event Grid を使ったカスタム イベントの Web エンドポイントへのルーティング
 
@@ -200,3 +200,11 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 - [Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [Azure Event Grid と Logic Apps で仮想マシンの変更を監視する](monitor-virtual-machine-changes-event-grid-logic-app.md)
 - [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md)
+
+さまざまなプログラミング言語を使用して Event Grid でイベントを発行および使用する方法については、次のサンプルを参照してください。 
+
+- [.NET 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-net/azure-event-grid-sdk-samples/)
+- [Java 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-java/eventgrid-samples/)
+- [Python 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-python/eventgrid-samples/)
+- [JavaScript 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-js/eventgrid-javascript/)
+- [TypeScript 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-js/eventgrid-typescript/)

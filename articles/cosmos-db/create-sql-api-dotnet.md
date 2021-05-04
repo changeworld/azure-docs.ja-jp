@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/07/2021
 ms.custom: devx-track-dotnet, devx-track-azurecli
-ms.openlocfilehash: 21b2459294b3465ba147cb454b93ac0da0081c5d
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a805e26ef3776be7bb97c93d23b5c83e1dfc67af
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480887"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001936"
 ---
 # <a name="quickstart-build-a-net-console-app-to-manage-azure-cosmos-db-sql-api-resources"></a>クイック スタート:Azure Cosmos DB SQL API リソースを管理する .NET コンソール アプリを構築する
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]

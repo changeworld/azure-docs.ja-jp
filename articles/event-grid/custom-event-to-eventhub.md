@@ -4,12 +4,12 @@ description: クイック スタート:Azure Event Grid と Azure CLI を使用�
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e1989c94cc7b260cfc36a3129d2743350ca430bf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 37523e907eb891a326c8dbe975593554958a44b9
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780495"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897921"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>クイックスタート: Azure CLI と Event Grid を使用してカスタム イベントを Azure Event Hubs にルーティングする
 
@@ -117,3 +117,11 @@ az group delete --name gridResourceGroup
 - [Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [Azure Event Grid と Logic Apps で仮想マシンの変更を監視する](monitor-virtual-machine-changes-event-grid-logic-app.md)
 - [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md)
+
+さまざまなプログラミング言語を使用して Event Grid でイベントを発行および使用する方法については、次のサンプルを参照してください。 
+
+- [.NET 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-net/azure-event-grid-sdk-samples/)
+- [Java 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-java/eventgrid-samples/)
+- [Python 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-python/eventgrid-samples/)
+- [JavaScript 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-js/eventgrid-javascript/)
+- [TypeScript 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-js/eventgrid-typescript/)

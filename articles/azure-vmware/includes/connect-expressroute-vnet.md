@@ -3,22 +3,21 @@ title: ExpressRoute を仮想ネットワーク ゲートウェイに接続す�
 description: ExpressRoute を仮想ネットワーク ゲートウェイに接続する手順。
 ms.topic: include
 ms.date: 12/08/2020
-ms.openlocfilehash: 6e2e3748dbfd8d69b53dcc4c3a09809756ac48dc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 115e8829723c25fb1644f3f5652fbace529a05cb
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103494362"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945687"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-configure-networking.md -->
 
-1. [Azure に vSphere クラスターをデプロイする](../tutorial-create-private-cloud.md)チュートリアルで作成したプライベート クラウドに移動します。 **[管理]** の下の **[接続]** を選択し、 **[ExpressRoute]** タブを選択します。
 
-1. 承認キーをコピーします。 承認キーがない場合は作成する必要があります。 **[+ Request an authorization key]\(+ 承認キーの要求\)** を選択します。
+1. ExpressRoute 承認キーを要求します。
 
-   :::image type="content" source="../media/expressroute-global-reach/start-request-authorization-key.png" alt-text="認可キーをコピーします。承認キーがない場合は作成する必要があります。[+ Request an authorization key]\(+ 承認キーの要求\) を選択します。" border="true" lightbox="../media/expressroute-global-reach/start-request-authorization-key.png":::
+   [!INCLUDE [request-authorization-key](request-authorization-key.md)]
 
-1. 前の手順で作成した仮想ネットワーク ゲートウェイに移動し、 **[設定]** の下の **[接続]** を選択します。 **[接続]** ページで、 **[+ 追加]** を選択します。
+1. 使用する予定の仮想ネットワーク ゲートウェイに移動し、 **[接続]**  >  **[+ 追加]** の順に選択します。
 
 1. **[接続の追加]** ページで、各フィールドの値を指定し、 **[OK]** を選択します。 
 
@@ -27,9 +26,9 @@ ms.locfileid: "103494362"
    | **名前**  | 接続名を入力します。  |
    | **接続の種類**  | **[ExpressRoute]** を選択します。  |
    | **承認の利用**  | このボックスが選択されていることを確認します。  |
-   | **仮想ネットワーク ゲートウェイ** | 前に作成した仮想ネットワーク ゲートウェイ。  |
-   | **承認キー**  | リソース グループの [ExpressRoute] タブで承認キーをコピーし、貼り付けます。 |
-   | **ピア回線の URI**  | リソース グループの [ExpressRoute] タブで ExpressRoute ID をコピーし、貼り付けます。  |
+   | **仮想ネットワーク ゲートウェイ** | 使用する仮想ネットワーク ゲートウェイ。  |
+   | **承認キー**  | 前にコピーした承認キーを貼り付けます。 |
+   | **ピア回線の URI**  | 前にコピーした ExpressRoute ID を貼り付けます。  |
 
    :::image type="content" source="../media/expressroute-global-reach/expressroute-add-connection.png" alt-text="ExpressRoute を仮想ネットワークゲートウェイに接続するための [接続の追加] ページのスクリーンショット。":::
 

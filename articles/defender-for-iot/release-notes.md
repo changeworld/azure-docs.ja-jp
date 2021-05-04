@@ -2,19 +2,34 @@
 title: Azure Defender for IoT の新機能
 description: この記事では、Defender for IoT の最新リリースに含まれる新機能について説明します。
 ms.topic: overview
-ms.date: 04/19/2021
-ms.openlocfilehash: da5358ccf0f69ca2ba8f5722b75889b6b7c92c07
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.date: 04/25/2021
+ms.openlocfilehash: f7631caedcb26227abf65d6fad216fc629d41dd4
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752608"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987095"
 ---
-# <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT の新機能
+# <a name="whats-new-in-azure-defender-for-iot"></a>Azure Defender for IoT の新機能  
 
 この記事では、Defender for IoT の新機能と機能強化の一覧を示します。
 
-記載されている機能はプレビュー段階です。 [Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはまだ一般提供されていない Azure 機能に適用される追加の法律条項が含まれています。
+記載されている機能はプレビュー段階です。 [Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)には、ベータ版、プレビュー版、またはその他のまだ一般提供されていない Azure 機能に適用される他の法律条項が含まれています。
+
+## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Azure Defender for IoT のバージョン管理とサポート 
+
+以下の一覧は、Defender for IoT のサポートと破壊的変更のポリシー、および現在使用可能な Azure Defender for IoT のバージョンを示しています。 
+
+### <a name="servicing-information-and-timelines"></a>サービスの情報とタイムライン 
+
+Microsoft では、Azure Defender for IoT の更新プログラムを四半期に 1 回以上リリースする予定です。 Azure Defender for IoT センサーの各一般提供 (GA) バージョンとオンプレミス管理コンソールは、リリース後最大 9 か月間サポートされます。 修正プログラムと新しい機能は、現在サポートされている最新の GA バージョンに適用され、以前の GA バージョンには適用されません。
+
+### <a name="versions-and-support-dates"></a>バージョンとサポートの日付
+
+| Version | リリース日 | サポート終了日 |
+|--|--|--|
+| 10.0 | 2021 年 1 月 | 2021 年 10 月 |
+| 10.3 | 2021 年 4 月 | 2022 年 2 月 |
 
 ## <a name="april-2021"></a>2021 年 4 月
 

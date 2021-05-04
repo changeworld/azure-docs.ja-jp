@@ -7,16 +7,16 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: quickstart
-ms.date: 12/02/2020
+ms.topic: include
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01149eed5cc4195ca501507e7fe1d66fffecb84d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2f01b1d222470c49505638be64180948b6f7e046
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327249"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728260"
 ---
 光学式文字認識 REST API を使用して、印刷されたテキストや手書きのテキストを読み取ります。
 
@@ -37,6 +37,8 @@ ms.locfileid: "107327249"
 
 OCR サービスは、画像に映っているテキストを読み取って、文字ストリームに変換することができます。 テキスト認識の詳細については、[光学式文字認識 (OCR) の概要](../overview-ocr.md)を参照してください。
 
+### <a name="call-the-read-api"></a>Read API を呼び出す
+
 このサンプルを作成して実行するには、次の手順を実行します。
 
 1. テキスト エディターに次のコマンドをコピーします。
@@ -53,6 +55,8 @@ curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/r
 ```
 
 応答には `Operation-Location` ヘッダーが含まれ、その値は一意の URL になります。 この URL を使用して、読み取り操作の結果に対してクエリを実行します。 URL の有効期間は 48 時間です。
+
+### <a name="get-read-results"></a>読み取りの結果を取得する
 
 1. テキスト エディターに次のコマンドをコピーします。
 1. URL を前の手順でコピーした `Operation-Location` 値に置き換えます。
@@ -131,7 +135,9 @@ curl -v -X GET "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/re
 
 ## <a name="next-steps"></a>次のステップ
 
-OCR API の詳細を確認します。 API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005/console)をお試しください。
+このクイックスタートでは、Read REST API を呼び出す方法について説明しました。 次は、Read API の機能の詳細について学習しましょう。
 
 > [!div class="nextstepaction"]
-> [OCR API の詳細](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+>[Read API を呼び出す](../Vision-API-How-to-Topics/call-read-api.md)
+
+* [OCR の概要](../overview-ocr.md)

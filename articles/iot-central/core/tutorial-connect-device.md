@@ -11,12 +11,12 @@ ms.custom:
 - mqtt
 - device-developer
 zone_pivot_groups: programming-languages-set-twenty-six
-ms.openlocfilehash: bbf94b6e000d5c082debd6a0d41a8d62b8b3f26e
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: 479c12ca00614b2d34bd08f41e3451826a253035
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106491102"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001820"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application"></a>チュートリアル:クライアント アプリケーションを作成して Azure IoT Central アプリケーションに接続する
 
@@ -83,7 +83,7 @@ ms.locfileid: "106491102"
 > [!div class="nextstepaction"]
 > [ゲートウェイ デバイス テンプレートを作成する](./tutorial-define-gateway-device-type.md)
 
-デバイス開発者として、Java を使用してデバイスを作成する方法の基本を学習しました。推奨される次の手順は以下のとおりです。
+デバイス開発者として、デバイスを作成する方法の基本を学習しました。推奨される次のステップは以下のとおりです。
 
 * デバイス コードを実装する際のデバイス テンプレートの役割について詳しくは、「[デバイス テンプレートとは](./concepts-device-templates.md)」をご覧ください。
 * IoT Central にデバイスを登録する方法と IoT Central でデバイスの接続を保護する方法の詳細については、「[Azure IoT Central に接続する](./concepts-get-connected.md)」を参照してください。

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 9b848f6c86f2ff2e95fa5cc191b088b7175f2311
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 789f493640e9795c58fd278db6cc0b11902c1cfa
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318760"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107925343"
 ---
 Python 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -22,6 +22,8 @@ Python 用 Anomaly Detector (多変量) クライアント ライブラリは、
 * 時系列のグループからシステム レベルの異常を検出する。
 * 個々の時系列では得られる情報が少なく、すべての信号に着目して問題を検出する必要がある。
 * システム正常性をさまざまな側面から測定する数十個から数百個にのぼる各種センサーを使用して高価な物理資産の予測メンテナンスを行う。
+
+[ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [パッケージ (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/) | [サンプル コード](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py) | [Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -124,8 +126,7 @@ def train(self, start_time, end_time, max_tryout=500):
     model_status = None
     tryout_count = 0
     while (tryout_count < max_tryout and model_status != "READY"):
-        model_status = self.ad_client.get_multivariate_model(trained_model_id).additional_properties["summary"][
-            "status"]
+        model_status = self.ad_client.get_multivariate_model(trained_model_id).model_info.status
         tryout_count += 1
         time.sleep(2)
     
@@ -234,6 +235,11 @@ if __name__ == '__main__':
 
 ```
 
+実行する前に、このクイックスタートの派生元である[完全なサンプル コード](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)と自分のプロジェクトを照合しておくと役立つ場合があります。
+
+また、作業の開始を支援するための[詳細な Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) も用意されています。
+
 `python` コマンドとファイル名を使用してアプリケーションを実行します。
+
 
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

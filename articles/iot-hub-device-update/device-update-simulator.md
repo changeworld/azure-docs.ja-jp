@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/11/2021
 ms.topic: tutorial
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 90e72bd12d9115e5ff95213428ae4ac37979dcf3
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 77bfab51cf7ccc9ec6ffe3b0018c0a488b601a0a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120097"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070211"
 ---
 # <a name="device-update-for-azure-iot-hub-tutorial-using-the-ubuntu-1804-x64-simulator-reference-agent"></a>Ubuntu (18.04 x64) Simulator Reference Agent を使用した Device Update for Azure IoT Hub のチュートリアル
 
@@ -112,7 +112,7 @@ IoT デバイスでデバイス更新エージェントを実行するには、�
 
 1. Azure portal から Device Update IoT Hub を起動します。
 2. 新しいデバイスを作成します。
-3. ページの左側で、[エクスプローラー] > [IoT デバイス] の順に移動し、[新規] を選択します。
+3. ページの左側で、[IoT デバイス] に移動し、[新規] を選択します。
 4. [デバイス ID] にデバイスの名前を指定します。[キーの自動生成] チェックボックスがオンになっていることを確認します。
 5. [保存] を選択します。
 6. [デバイス] ページに戻ると、作成したデバイスが一覧に表示されているはずです。 そのデバイスを選択します。

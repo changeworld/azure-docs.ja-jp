@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/25/2021
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8c7ab1038cbe62d6f15faf56796193df12b38546
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2d8ae81ac6ce9d53688499518c57b1c4a82cd055
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105568768"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107949670"
 ---
 # <a name="tutorial-add-modules-to-azure-resource-manager-bicep-file"></a>チュートリアル: Azure Resource Manager Bicep ファイルにモジュールを追加する
 
@@ -111,8 +111,8 @@ Azure portal からリソース グループを探すことでデプロイを確
 
 1. [Azure portal](https://portal.azure.com) にサインインします。
 1. 左側のメニューから **[リソース グループ]** を選択します。
-1. このチュートリアルでデプロイした新しいリソース グループが 2 つ表示されます。
-1. どちらかのリソース グループを選択して、デプロイ済みのリソースを確認します。 その環境用のパラメーター ファイルに指定した値と一致していることがわかります。
+1. このチュートリアルでデプロイした新しいリソース グループが表示されます。
+1. リソース グループを選択して、デプロイ済みのリソースを確認します。 テンプレート ファイルに指定した値と一致していることがわかります。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

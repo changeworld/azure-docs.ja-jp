@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 28c54865ab9c2876d998896f5f536a11088962f8
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 90ff0a42a9d82fc0bf4f9235e235c774a2d0e75d
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566428"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108146565"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics でサーバーレス SQL プールを使う際の OPENROWSET の使用方法
 
@@ -52,7 +52,7 @@ Synapse SQL の OPENROWSET 関数は、データ ソースからファイルの�
     > `DATA_SOURCE` を指定しない `OPENROWSET` では、ストレージ ファイルにすばやく簡単にアクセスできますが、認証オプションが限られます。 例として、Azure AD プリンシパルは、[Azure AD ID](develop-storage-files-storage-access-control.md?tabs=user-identity) を使用した場合にのみファイルにアクセスできるほか、公開されているファイルにアクセスすることができます。 より強力な認証オプションが必要な場合は、`DATA_SOURCE` オプションを使用して、ストレージへのアクセスに使用する資格情報を定義します。
 
 
-## <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 データベース ユーザーが `OPENROWSET` 関数を使用するには `ADMINISTER BULK OPERATIONS` 権限が必要です。
 
@@ -227,6 +227,7 @@ CSV パーサー バージョン 2.0 の詳細:
 - 行の最大サイズの上限は 8 MB です。
 - 次のオプションはサポートされていません。DATA_COMPRESSION
 - 引用符で囲まれた空の文字列 ("") は、空の文字列として解釈されます。
+- DATEFORMAT SET オプションは受け付けられません。
 - DATE データ型でサポートされている形式: YYYY-MM-DD
 - TIME データ型でサポートされている形式: HH:MM:SS[.秒の小数部]
 - DATETIME2 データ型でサポートされている形式: YYYY-MM-DD HH:MM:SS[.秒の小数部]
@@ -256,7 +257,7 @@ Parquet ファイルには、読み取られる列のメタデータが含まれ
 CSV ファイルの場合、列名はヘッダー行から読み取ることができます。 HEADER_ROW 引数を使用して、ヘッダー行が存在するかどうかを指定できます。 HEADER_ROW = FALSE の場合、汎用の列名が使用されます: C1、C2、...Cn の n はファイル内の列番号です。 データ型は、最初の 100 データ行から推論されます。 サンプルについては、「[スキーマを指定せずに CSV ファイルを読み取る](#read-csv-files-without-specifying-schema)」を参照してください。
 
 > [!IMPORTANT]
-> 情報不足のために適切なデータ型を推論できず、代わりにより大きいデータ型が使用される場合もあります。 この場合、パフォーマンスのオーバーヘッドが発生します。特に、varchar (8000) として推論される文字型の列で大きな影響があります。 最適なパフォーマンスを得るには、[推論されたデータ型を確認](best-practices-sql-on-demand.md#check-inferred-data-types)し、[適切なデータ型を使用](best-practices-sql-on-demand.md#use-appropriate-data-types)してください。
+> 情報不足のために適切なデータ型を推論できず、代わりにより大きいデータ型が使用される場合もあります。 この場合、パフォーマンスのオーバーヘッドが発生します。特に、varchar (8000) として推論される文字型の列で大きな影響があります。 最適なパフォーマンスを得るには、[推論されたデータ型を確認](./best-practices-serverless-sql-pool.md#check-inferred-data-types)し、[適切なデータ型を使用](./best-practices-serverless-sql-pool.md#use-appropriate-data-types)してください。
 
 ### <a name="type-mapping-for-parquet"></a>Parquet の型マッピング
 
@@ -403,4 +404,4 @@ AS [r]
 
 ## <a name="next-steps"></a>次のステップ
 
-その他のサンプルについては、[データ ストレージに対するクエリに関するクイックスタート](query-data-storage.md)を参照して、`OPENROWSET` を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法について学習してください。 最適なパフォーマンスが得られるように、[ベスト プラクティス](best-practices-sql-on-demand.md)をご確認ください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。
+その他のサンプルについては、[データ ストレージに対するクエリに関するクイックスタート](query-data-storage.md)を参照して、`OPENROWSET` を使用して [CSV](query-single-csv-file.md)、[PARQUET](query-parquet-files.md)、および [JSON](query-json-files.md) ファイル形式を読み取る方法について学習してください。 最適なパフォーマンスが得られるように、[ベスト プラクティス](./best-practices-serverless-sql-pool.md)をご確認ください。 また、[CETAS](develop-tables-cetas.md) を使用してクエリの結果を Azure Storage に保存する方法も確認できます。

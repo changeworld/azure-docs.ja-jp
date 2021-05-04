@@ -13,12 +13,12 @@ ms.date: 10/05/2020
 ms.author: jmprieur
 ms.reviewer: marsma
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 1b539c168deab7c1893f071a2453be28310fc132
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a31bf345f523eea940be5d56495890e8ab5c6dbd
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022927"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861645"
 ---
 # <a name="quickstart-get-a-token-and-call-the-microsoft-graph-api-by-using-a-console-apps-identity"></a>クイックスタート: コンソール アプリの ID を使用してトークンを取得し、Microsoft Graph API を呼び出す
 
@@ -32,7 +32,7 @@ ms.locfileid: "105022927"
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートには [.Net Core 3.1](https://www.microsoft.com/net/download/dotnet-core) が必要ですが、.Net Core 5.0 でも動作します。
+このクイックスタートには [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download) が必要ですが、.NET 5.0 SDK でも動作します。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-the-app"></a>アプリを登録してダウンロードする

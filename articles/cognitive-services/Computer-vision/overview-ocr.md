@@ -11,18 +11,16 @@ ms.topic: overview
 ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: da4ada8b505c747d24738e175a1701b5ea73b4e4
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 9eb35c892db113807d3c401306485a836a1d970b
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536737"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107947431"
 ---
 # <a name="what-is-optical-character-recognition"></a>光学式文字認識とは
 
-光学式文字認識 (OCR) サービスを使用すると、道路標識や製品の写真などの画像や、送り状、請求書、財務報告書、記事などのドキュメントから、印刷または手書きのテキストを抽出できます。 ディープ ラーニング ベースのモデルを使用して、さまざまなサーフェスや背景のテキストを操作します。
-
-OCR API では、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 [クイックスタート](./quickstarts-sdk/client-library.md)に従って始めてください。
+光学式文字認識 (OCR) を使用すると、道路標識や製品の写真などの画像や、送り状、請求書、財務報告書、記事などのドキュメントから、印刷または手書きのテキストを抽出できます。 Microsoft の OCR テクノロジでは、[複数の言語](./language-support.md)で印刷されたテキストの抽出がサポートされます。 [クイックスタート](./quickstarts-sdk/client-library.md)に従って始めてください。
 
 ![OCR のデモ](./Images/ocr-demo.gif)
 
@@ -32,8 +30,11 @@ OCR API では、[複数の言語](./language-support.md)で印刷されたテ�
 <!--* The [conceptual articles](Vision-API-How-to-Topics/call-read-api.md) provide in-depth explanations of the service's functionality and features.
 * The [tutorials](./tutorials/storage-lab-tutorial.md) are longer guides that show you how to use this service as a component in broader business solutions. -->
 
-## <a name="supported-languages"></a>サポートされている言語
-OCR API では、印刷スタイルのテキストとして合計 73 言語がサポートされています。 [OCR でサポートされている言語](./language-support.md#optical-character-recognition-ocr)の完全な一覧を参照してください。 手書きスタイルの OCR は、英語でのみサポートされています。
+## <a name="read-api"></a>Read API 
+
+Computer Vision の [Read API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) は、印刷されたテキスト (複数の言語)、手書きのテキスト (英語のみ)、数字、通貨記号を、画像や複数ページの PDF ドキュメントから抽出する、Azure の最新の OCR テクノロジです ([新機能について学習する](./whats-new.md))。 これは、テキストの多い画像や、混合言語を含む複数ページの PDF ドキュメントからテキストを抽出するように最適化されています。 同じ画像またはドキュメントで、印刷と手書き両方のテキストの検出がサポートされています。
+
+![OCR で画像やドキュメントからテキストを抽出して構造化された出力に変換するしくみ](./Images/how-ocr-works.svg)
 
 ## <a name="input-requirements"></a>入力の要件
 
@@ -43,13 +44,10 @@ OCR API では、印刷スタイルのテキストとして合計 73 言語が�
 * PDF ファイルと TIFF ファイルの場合は、最大 2,000 ページ (Free レベルの場合は最初の 2 ページのみ) が処理されます。
 * ファイル サイズは 50 MB 未満 (Free レベルの場合は 4 MB)、寸法は 50 x 50 ピクセル以上 10,000 x 10,000 ピクセル以下にする必要があります。 
 
-## <a name="read-api"></a>Read API 
+## <a name="supported-languages"></a>サポートされている言語
+読み取り API では、印刷スタイルのテキストとして合計 73 言語がサポートされています。 [OCR でサポートされている言語](./language-support.md#optical-character-recognition-ocr)の完全な一覧を参照してください。 手書きスタイルの OCR は、英語でのみサポートされています。
 
-Computer Vision の [Read API](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005) は、印刷されたテキスト (複数の言語)、手書きのテキスト (英語のみ)、数字、通貨記号を、画像や複数ページの PDF ドキュメントから抽出する、Azure の最新の OCR テクノロジです ([新機能について学習する](./whats-new.md))。 これは、テキストの多い画像や、混合言語を含む複数ページの PDF ドキュメントからテキストを抽出するように最適化されています。 同じ画像またはドキュメントで、印刷と手書き両方のテキストの検出がサポートされています。
-
-![OCR で画像やドキュメントからテキストを抽出して構造化された出力に変換するしくみ](./Images/how-ocr-works.svg)
-
-### <a name="key-features"></a>主要な機能
+## <a name="key-features"></a>主要な機能
 
 Read API には次の機能があります。 
 

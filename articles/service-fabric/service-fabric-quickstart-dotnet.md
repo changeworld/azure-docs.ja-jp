@@ -4,12 +4,12 @@ description: このクイック スタートでは、Service Fabric Reliable Ser
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 15e2180e44acaa5ebefb403b2da3755396a45ba4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 665376a7616e146dbbf86caf0b4a2b62de7e5506
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96575892"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108136897"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>クイック スタート: Service Fabric に .NET Reliable Services アプリケーションをデプロイする
 
@@ -114,7 +114,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="debug-in-visual-studio"></a>Visual Studio でのデバッグ
 
-アプリケーションは正常に実行されているはずですが、デバッガーを使用して、アプリケーションの主要部分がどのように動作しているかを確認することができます。 Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整できます。 このアプリケーションでは、データは信頼性の高いディクショナリを使ってバックエンド サービスに保存されます。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、Visual Studio の **Voting** プロジェクトのプロパティで、 **[アプリケーション デバッグ モード]** を変更してください。
+アプリケーションは正常に実行されているはずですが、デバッガーを使用して、アプリケーションの主要部分がどのように動作しているかを確認することができます。 Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整できます。 このアプリケーションでは、データは信頼性の高いディクショナリを使ってバックエンド サービスに保存されます。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、*Voting* プロジェクトの **[プロパティ]** を開き、[ **[アプリケーション デバッグ モード]**](service-fabric-manage-application-in-visual-studio.md#to-set-the-application-debug-mode-property) を *[自動アップグレード]* に変更します。
 
 コードでどのような処理が実行されているのかを確認するには、次の手順に従います。
 
@@ -159,7 +159,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
     ![バージョンの変更ダイアログ](./media/service-fabric-quickstart-dotnet/change-version.png)
 7. **[Service Fabric アプリケーションの発行]** ダイアログで、**[アプリケーションをアップグレードする] チェック ボックス** をオンにします。
-8.  **[ターゲット プロファイル]** を **[PublishProfiles\Local.5Node.xml]** に変更し、**[接続のエンドポイント]** を **[ローカル クラスター]** に設定します。 
+8.  **[ターゲット プロファイル]** を **[PublishProfiles\Local.5Node.xml]** に変更し、**[接続のエンドポイント]** を **[ローカル クラスター]** に設定します。
 9. **[アプリケーションをアップグレードする]** を選択します。
 
     ![[発行] ダイアログのアップグレード設定](./media/service-fabric-quickstart-dotnet/upgrade-app.png)

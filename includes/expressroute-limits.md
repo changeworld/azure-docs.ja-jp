@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/12/2021
 ms.author: duau
 ms.custom: include file
-ms.openlocfilehash: 6f8ed3381f056238bdbb24fe52c5f859afef7d03
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 1b72f4ee82150a7aad2edf2cbbb1fabaf942a90b
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98147652"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107925212"
 ---
 | リソース | 制限 |
 | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "98147652"
 | ExpressRoute Standard の Azure Microsoft ピアリングにアドバタイズされる最大ルート数 |200 |
 | ExpressRoute Premium アドオンの Azure Microsoft ピアリングにアドバタイズされる最大ルート数 |200 |
 | 同じピアリング場所で同じ仮想ネットワークにリンクされる ExpressRoute 回線の最大数 |4 |
-| さまざまなピアリング場所で同じ仮想ネットワークにリンクされる ExpressRoute の最大数 |4 |
+| さまざまなピアリング場所で同じ仮想ネットワークにリンクされる ExpressRoute の最大数 |16 (詳細については、「[ゲートウェイの SKU](../articles/expressroute/expressroute-about-virtual-network-gateways.md#aggthroughput)」を参照してください。) |
 | ExpressRoute 回線あたりで許可される仮想ネットワークのリンク数 |「[ExpressRoute 回線あたりの仮想ネットワーク数](#vnetpercircuit)」の表を参照してください。  |
 
 #### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a>ExpressRoute 回線あたりの仮想ネットワーク数

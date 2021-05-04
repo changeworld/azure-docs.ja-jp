@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: overview
 ms.date: 2/25/2021
-ms.openlocfilehash: af3f54778882df9aaa06297f291c12a0f4b1577c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: bc35f79bae0cd75b24b119e951f27b289ebef704
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046047"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007360"
 ---
 # <a name="register-and-scan-sap-ecc-source-preview"></a>SAP ECC ソースを登録してスキャンする (プレビュー)
 
@@ -35,7 +35,7 @@ SAP ECC ソースでは、SAP ECC インスタンスからメタデータを抽�
 
     :::image type="content" source="media/register-scan-sapecc-source/requirement.png" alt-text="前提条件" border="true":::
 
-5.  コネクタにより、Java コネクタ (JCo) 3.0 API を使用して SAP からメタデータが読み取られます。 そのため、セルフホステッド統合ランタイムがインストールされている仮想マシンで Java コネクタが使用可能であることを確認します。
+5.  コネクタにより、[SAP Java コネクタ (JCo)](https://support.sap.com/en/product/connectors/jco.html) 3.0 API を使用して SAP からメタデータが読み取られます。 そのため、セルフホステッド統合ランタイムがインストールされている仮想マシンで Java コネクタが使用可能であることを確認します。
     環境に合った JCo ディストリビューションを使用していることを確認してください。 たとえば、Microsoft Windows コンピューターで、sapjco3.jar と sapjco3.dll ファイルが使用可能であることを確認します。
 
     > [!Note] 

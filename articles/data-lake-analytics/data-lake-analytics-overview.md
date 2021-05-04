@@ -7,12 +7,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: f2916b45c04aac3e36e8dfb82a6bb9b332f55286
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 4932bf500de38a59a72d7a052529af1d9790ab30
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102449154"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107929419"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Azure Data Lake Analytics とは
 
@@ -47,7 +47,10 @@ Data Lake Analytics は、ビッグ データ ワークロードを実行する�
 
 ## <a name="works-with-all-your-azure-data"></a>すべての Azure データに対応
   
-Data Lake Analytics は、最高レベルのパフォーマンス、スループット、および並列化のために Azure Data Lake Storage と連携し、Azure Storage Blob、Azure SQL Database、Azure Synapse Analytics とも連動します。
+Data Lake Analytics は、最高レベルのパフォーマンス、スループット、および並列化のために **Azure Data Lake Storage Gen1** と連携し、Azure Storage Blob、Azure SQL Database、Azure Synapse Analytics とも連動します。
+
+   > [!NOTE]
+   > Data Lake Analytics は、まだ Azure Data Lake Storage Gen2 とは連携していません。通知があるまでお待ちください。
 
 ## <a name="in-region-data-residency"></a>リージョンのデータ所在地
   

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 03/03/2021
 ms.custom: template-quickstart, references_regions, devx-track-azurecli
 keywords: Kubernetes, Arc, Azure, クラスター
-ms.openlocfilehash: 21ec5000ed7ef9df1805fa6ec43e20efc0f82182
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8da5ba5c4408cb96008c3d9802ce3a5ccdc25f1f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481244"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140177"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>クイックスタート: 既存の Kubernetes クラスターを Azure Arc に接続する 
 
@@ -26,7 +26,12 @@ ms.locfileid: "107481244"
 * 稼働している Kubernetes クラスター。 お持ちでない場合は、次のいずれかのオプションを使用してクラスターを作成できます。
     * [Docker 内の Kubernetes (KIND)](https://kind.sigs.k8s.io/)
     * [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) または [Windows](https://docs.docker.com/docker-for-windows/#kubernetes) 用の Docker を使用して Kubernetes クラスターを作成する
-    * [クラスター API](https://cluster-api.sigs.k8s.io/user/quick-start.html) を使用したセルフマネージド Kubernetes クラスター
+    * [Cluster API](https://cluster-api.sigs.k8s.io/user/quick-start.html) を使用したセルフマネージド Kubernetes クラスター
+    * OpenShift クラスターを Azure Arc に接続したい場合は、`az connectedk8s connect` を実行する前に、クラスターで次のコマンドを 1 回だけ実行する必要があります。
+        
+        ```console
+        oc adm policy add-scc-to-user privileged system:serviceaccount:azure-arc:azure-arc-kube-aad-proxy-sa
+        ```
 
     >[!NOTE]
     > クラスターには、オペレーティング システムとアーキテクチャの種類が `linux/amd64` であるノードが少なくとも 1 つ含まれている必要があります。 `linux/arm64` ノードのみが含まれるクラスターはまだサポートされていません。
@@ -36,12 +41,14 @@ ms.locfileid: "107481244"
 
 * [Helm 3 の最新リリース](https://helm.sh/docs/intro/install)をインストールします。
 
-- バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* バージョン 2.16.0 以降の [Azure CLI をインストールするか、それにアップグレードします](/cli/azure/install-azure-cli)
 * `connectedk8s` Azure CLI 拡張機能バージョン 1.0.0 以降をインストールします。
   
   ```azurecli
   az extension add --name connectedk8s
   ```
+
+
 
 >[!TIP]
 > `connectedk8s` 拡張機能が既にインストールされている場合は、次のコマンドを使用して最新バージョンに更新してください - `az extension update --name connectedk8s`
@@ -68,7 +75,7 @@ ms.locfileid: "107481244"
 | `https://mcr.microsoft.com`                                                                            | Azure Arc エージェント用のコンテナー イメージをプルするために必要です。                                                                  |  
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`, `https://wcus.his.arc.azure.com`, `https://scus.his.arc.azure.com`, `https://sea.his.arc.azure.com`, `https://uks.his.arc.azure.com`, `https://wus2.his.arc.azure.com`, `https://ae.his.arc.azure.com`, `https://eus2.his.arc.azure.com`, `https://ne.his.arc.azure.com` |  システムによって割り当てられたマネージド サービス ID (MSI) 証明書をプルするために必要です。                                                                  |
 
-## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用の 2 つのプロバイダーを登録する
+## <a name="register-providers-for-azure-arc-enabled-kubernetes"></a>Azure Arc 対応 Kubernetes 用のプロバイダーを登録する
 
 1. 次のコマンドを入力します。
     ```azurecli

@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 01/03/2021
 ms.author: memildin
-ms.openlocfilehash: dcbb4977e1bfd17f0cbed61abf9ba335615b7799
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fbd7b13e07a19c75c4f41ff4f3e2bdc66e585c9e
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443762"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903526"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure Security Center におけるアクセス許可
 
@@ -39,7 +39,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 | イニシアティブを追加する、または割り当てる (規制コンプライアンス標準を含む)                                                                           | -                             | -              | -                                                      | -                        | ✔                 |
 | Azure Defender を有効または無効にする                                                                                                               | -                             | ✔             | -                                                      | -                        | ✔                 |
 | 自動プロビジョニングを有効または無効にする                                                                                                            | -                             | ✔             | -                                                      | ✔                       | ✔                  |
-| セキュリティに関する推奨事項をリソースに適用する</br> (および[クイック修復](security-center-remediate-recommendations.md#quick-fix-remediation)を使用する) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
+| セキュリティに関する推奨事項をリソースに適用する</br> (および [[修正する]](security-center-remediate-recommendations.md#fix-button) を使用する) | -                             | -              | ✔                                                     | ✔                        | ✔                 |
 | アラートを無視する                                                                                                                                | -                             | ✔             | -                                                      | ✔                       | ✔                  |
 | アラートと推奨事項を表示する                                                                                                               | ✔                            | ✔              | ✔                                                     | ✔                        | ✔                 |
 

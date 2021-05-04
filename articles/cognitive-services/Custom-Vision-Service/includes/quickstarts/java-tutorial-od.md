@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: 16112ffe7ba5fbc23335f9b60cdcbc045ea7cd2b
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 7a5a4415a581cca63719cf77c0a3a5566e8aee42
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725139"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931711"
 ---
 Java 用の Custom Vision クライアント ライブラリを使用して物体検出モデルを構築してみましょう。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -179,7 +179,7 @@ mkdir -p src/main/java
 
 ## <a name="publish-the-current-iteration"></a>現在のイテレーションを公開する
 
-このメソッドでは、モデルの現在のイテレーションをクエリの実行に使用できるようにします。 モデル名は、予測要求を送信するための参照として使用できます。 `predictionResourceId` には、独自の値を入力する必要があります。 予測リソース ID は、Azure portal の対象のリソースの **[概要]** タブに、**サブスクリプション ID** として表示されます。
+このメソッドでは、モデルの現在のイテレーションをクエリの実行に使用できるようにします。 モデル名は、予測要求を送信するための参照として使用できます。 `predictionResourceId` には、独自の値を入力する必要があります。 予測リソース ID は、Azure portal の対象のリソースの **[プロパティ]** タブに、**リソース ID** として表示されます。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_publishOD)]
 

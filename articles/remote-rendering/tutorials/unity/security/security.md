@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: d30ab051e58573daefd16f178feb4fc94f2ec83f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739748"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835472"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>チュートリアル:Azure Remote Rendering とモデル ストレージのセキュリティ保護
 
@@ -405,8 +405,10 @@ Unity エディターでは、AAD 認証がアクティブである場合、ア�
     **AADAuthentication** コンポーネントはビュー コントローラーを備えているため、セッション承認のモーダル パネルの後にプロンプトを表示するように自動的にフックアップされます。
 1. **AppMenu** の右側のパネルに表示される手順に従います。
     次のように表示されます。![AppMenu の右側に表示されるインストラクション パネルを示す図。](./media/device-flow-instructions.png)
+    
     指定されたコードをセカンダリ デバイス (または同じデバイス上のブラウザー) に入力した後、自分の資格情報を使用してログインすると、要求元のアプリケーション (この場合は Unity エディター) にアクセス トークンが返されます。
-1. その後は、アプリケーションのすべての処理が通常どおりに続行されます。 想定したとおりに一連のステージが進行しない場合は、何かエラーが発生していないか Unity コンソールで確認してください。
+
+その後は、アプリケーションのすべての処理が通常どおりに続行されます。 想定したとおりに一連のステージが進行しない場合は、何かエラーが発生していないか Unity コンソールで確認してください。
 
 ## <a name="build-to-device"></a>デバイスにビルドする
 

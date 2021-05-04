@@ -9,14 +9,14 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: cdfeb2fdeefabb0d2d4af2fb63222adda5d023fb
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 37778bc096c9089e3706907fcdd6b9c816cc5fbc
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576027"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817488"
 ---
-# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル:ML 実験を運用 Python コードに変換する
+# <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>チュートリアル: ML 実験を運用 Python コードに変換する
 
 このチュートリアルでは、MLOpsPython コード テンプレートと Azure Machine Learning を使用して、Juptyer ノートブックを Python スクリプトに変換し、テストと自動化を容易にする方法について学習します。 通常、このプロセスは、Juptyer ノートブックから実験またはトレーニング コードを取得して Python スクリプトに変換するために使用されます。 これらのスクリプトは、運用環境でのテストおよび CI/CD 自動化に使用できます。 
 
@@ -527,5 +527,5 @@ def test_train_model():
 ここでは、実験コードから運用環境のコードへの変換方法について説明しました。さらに詳しい情報と次のステップについては、次のリンクを参照してください。
 
 + [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): Azure Pipelines と Azure Machine Learning を使用して独自のモデルをトレーニング、評価、デプロイする CI/CD パイプラインを作成します。
-+ [Azure ML の実験の実行とメトリックを監視する](./how-to-track-experiments.md)
++ [Azure ML の実験の実行とメトリックを監視する](./how-to-log-view-metrics.md)
 + [ML Web サービス エンドポイントからのデータを監視および収集する](./how-to-enable-app-insights.md)

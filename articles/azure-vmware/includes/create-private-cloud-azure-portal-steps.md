@@ -2,32 +2,44 @@
 title: Azure VMware Solution のプライベート クラウドを作成する
 description: Azure portal を使用して、Azure VMware Solution のプライベート クラウドを作成する手順です。
 ms.topic: include
-ms.date: 04/07/2021
-ms.openlocfilehash: 6b4e5631d1a4b6c5bf56b01aba12752595ef63b8
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 04/23/2021
+ms.openlocfilehash: 40bd1880511f22d9518d0c4526bc697a3693a518
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107073530"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945815"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->
 
+Azure portal または Azure CLI を使用して、Azure VMware Solution のプライベート クラウドを作成できます。
+
+
+### <a name="portal"></a>[ポータル](#tab/azure-portal)
+
 1. [Azure portal](https://portal.azure.com) にサインインします。
 
-1. **[新しいリソースを作成]** を選択します。 **[Marketplace を検索]** テキスト ボックスに「`Azure VMware Solution`」と入力し、一覧から **[Azure VMware Solution]** を選択します。 **[Azure VMware Solution]** ウィンドウで、 **[作成]** を選択します。
+1. **[新しいリソースを作成]** を選択します。 
 
-1. **[基本]** タブで、各フィールドの値を入力します。 次の表に、フィールドのプロパティの一覧を示します。
+1. **[Marketplace を検索]** テキスト ボックスに「`Azure VMware Solution`」と入力し、一覧から **[Azure VMware Solution]** を選択します。 
+
+1. **[Azure VMware Solution]** ウィンドウで、 **[作成]** を選択します。
+
+1. **[基本]** タブで、各フィールドの値を入力します。 
+
+   >[!TIP]
+   >この情報は、このクイック スタートの[計画フェーズ](../production-ready-deployment-steps.md)で収集しました。
 
    | フィールド   | 値  |
    | ---| --- |
-   | **サブスクリプション** | デプロイに使用する予定のサブスクリプション。|
-   | **リソース グループ** | プライベート クラウド リソースのリソース グループ。 |
-   | **場所** | 場所 (**米国東部** など) を選択します。|
-   | **リソース名** | Azure VMware Solution のプライベート クラウドの名前。 |
-   | **SKU** | 次の SKU 値を選択します。AV36 |
-   | **ホスト** | プライベート クラウド クラスターに追加するホストの数。 既定値は 3 です。この値は、デプロイ後に増減できます。  |
+   | **サブスクリプション** | デプロイに使用する予定のサブスクリプションを選択します。|
+   | **リソース グループ** | プライベート クラウド リソースのリソース グループを選択します。 |
+   | **場所** | 場所 (**米国東部** など) を選択します。 これは、計画フェーズ中に定義した "*リージョン*" です。 |
+   | **リソース名** | Azure VMware Solution のプライベート クラウドの名前を指定します。 |
+   | **SKU** | **[AV36]** を選択します。 |
+   | **ホスト** | プライベート クラウド クラスターに割り当てられているホストの数を表示します。 既定値は 3 です。この値は、デプロイ後に増減できます。  |
    | **アドレス ブロック** | プライベート クラウドの CIDR ネットワークの IP アドレス ブロックを入力します (例: 10.175.0.0/22)。 |
-   | **Virtual Network** | Virtual Network を選択するか、Azure VMware Solution プライベート クラウド用に新しいものを作成します。  |
+   | **Virtual Network** | これは空のままにしておきます。Azure VMware Solution ExpressRoute 回線が、デプロイ後の手順で確立されるためです。   |
 
    :::image type="content" source="../media/tutorial-create-private-cloud/create-private-cloud.png" alt-text="[基本] タブで、フィールドの値を入力します。" border="true":::
 
@@ -39,3 +51,34 @@ ms.locfileid: "107073530"
 1. デプロイが成功したことを確認します。 作成したリソース グループに移動し、プライベート クラウドを選択します。  デプロイが完了すると、状態が **[成功]** として表示されます。 
 
    :::image type="content" source="../media/tutorial-create-private-cloud/validate-deployment.png" alt-text="デプロイが成功したことを確認します。" border="true":::
+
+
+### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+Azure portal の代わりに、Azure Cloud Shell が使用されている Azure CLI を使って、Azure VMware Solution のプライベート クラウドを作成できます。 Azure VMware Solution で使用できるコマンドの一覧については、[Azure VMware コマンド](/cli/azure/ext/vmware/vmware)のページを参照してください。
+
+Azure CLI の使用を開始するには:
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+
+1. ['az group create'](/cli/azure/group) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+
+   ```azurecli-interactive
+   
+   az group create --name myResourceGroup --location eastus
+   ```
+
+2. リソース グループとプライベート クラウドの名前、場所、クラスターのサイズを指定します。
+
+   | プロパティ  | 説明  |
+   | --------- | ------------ |
+   | **-g** (リソース グループ名)     | プライベート クラウド リソースのリソース グループの名前。        |
+   | **-n** (プライベート クラウド名)     | Azure VMware Solution のプライベート クラウドの名前。        |
+   | **--location**     | プライベート クラウドに使用される場所。         |
+   | **--cluster-size**     | クラスターのサイズ。 最小値は 3 です。         |
+   | **--network-block**     | プライベート クラウドに使用する CIDR IP アドレスのネットワーク ブロック。 アドレス ブロックは、サブスクリプションとオンプレミス ネットワークにある他の仮想ネットワークで使用されているアドレス ブロックと重複しないようにする必要があります。        |
+   | **--sku** | SKU 値: AV36 |
+
+   ```azurecli-interactive 
+   az vmware private-cloud create -g myResourceGroup -n myPrivateCloudName --location eastus --cluster-size 3 --network-block xx.xx.xx.xx/22 --sku AV36
+   ```

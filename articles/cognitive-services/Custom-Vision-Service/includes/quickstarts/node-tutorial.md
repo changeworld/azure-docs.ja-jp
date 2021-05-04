@@ -4,12 +4,12 @@ ms.author: areddish
 ms.service: cognitive-services
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 2d0cb2e9fed754cd373a37c1477b3133a83f3e76
-ms.sourcegitcommit: 2c1b93301174fccea00798df08e08872f53f669c
+ms.openlocfilehash: fd96054edf376ca19946fc13f9593be72ee0a0ec
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104803380"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931689"
 ---
 このガイドでは、Node.js 用の Custom Vision クライアント ライブラリを使用して画像分類モデルを構築する際の足がかりとして役立つ手順とサンプル コードを紹介します。 プロジェクトを作成し、タグを追加し、プロジェクトをトレーニングして、プロジェクトの予測エンドポイント URL を使用してプログラムでテストします。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -77,9 +77,9 @@ npm install @azure/cognitiveservices-customvision-prediction
 > [!IMPORTANT]
 > Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Custom Vision Training リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **キーとエンドポイント** のページにあります。 
 >
->予測リソース ID の値は、対象のリソースの **[プロパティ]** タブに、**サブスクリプション ID** として表示されます。
+>予測リソース ID は、Azure portal の対象のリソースの **[プロパティ]** タブに、**リソース ID** として表示されます。
 >
-> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services-security.md)に関するページを参照してください。
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services-security.md)に関する記事を参照してください。
 
 また、プロジェクト名と、非同期呼び出しのタイムアウト パラメーターのフィールドも追加します。
 

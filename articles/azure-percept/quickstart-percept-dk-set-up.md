@@ -7,12 +7,12 @@ ms.service: azure-percept
 ms.topic: quickstart
 ms.date: 03/17/2021
 ms.custom: template-quickstart
-ms.openlocfilehash: 8cecd1b57395fa51fd95c824e88885d9c3ae3f09
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7056027965bd5e0f41c07835d21b454ab772a55a
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023301"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108132253"
 ---
 # <a name="set-up-your-azure-percept-dk-and-deploy-your-first-ai-model"></a>Azure Percept DK を設定し、最初の AI モデルをデプロイする
 
@@ -130,7 +130,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
     - S1 (Standard) 価格レベルを選択します。
 
     > [!NOTE]
-    > 最終的に、エッジ AI アプリケーションの[メッセージ スループット](https://docs.microsoft.com/azure/iot-hub/iot-hub-scaling#message-throughput)を引き上げる必要が生じた場合は、Azure portal でいつでも [IoT ハブを上位の Standard レベルにアップグレード](https://docs.microsoft.com/azure/iot-hub/iot-hub-upgrade)できます。 B および F レベルでは、Azure Percept はサポートされません。
+    > 最終的に、エッジ AI アプリケーションの[メッセージ スループット](../iot-hub/iot-hub-scaling.md#message-throughput)を引き上げる必要が生じた場合は、Azure portal でいつでも [IoT ハブを上位の Standard レベルにアップグレード](../iot-hub/iot-hub-upgrade.md)できます。 B および F レベルでは、Azure Percept はサポートされません。
 
 1. IoT ハブのデプロイには数分かかる場合があります。 デプロイが完了したら、 **[登録]** をクリックします。
 
@@ -142,7 +142,7 @@ Azure アカウントがサブスクリプションにおける "所有者" ま�
 
     :::image type="content" source="./media/quickstart-percept-dk-setup/main-18-finalize.png" alt-text="セットアップの終了処理を行います。":::
 
-1. **[デバイスのセットアップが完了しました]** ページが表示されたら、開発キットは正常に IoT ハブにリンクされ、必要なソフトウェアがダウンロードされています。 page, your dev kit has successfully linked to your IoT Hub and downloaded the necessary software. 開発キットが Wi-Fi アクセス ポイントから自動的に切断されて、これら 2 つの通知が表示されます。
+1. **[デバイスのセットアップが完了しました]** ページが表示されたら、開発キットは正常に IoT ハブにリンクされ、必要なソフトウェアがダウンロードされています。 開発キットは正常に IoT ハブにリンクされ、必要なソフトウェアがダウンロードされています。 開発キットが Wi-Fi アクセス ポイントから自動的に切断されて、これら 2 つの通知が表示されます。
 
     <!---
     > [!NOTE]

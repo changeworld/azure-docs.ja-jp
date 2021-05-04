@@ -1,6 +1,6 @@
 ---
 title: Azure CLI を使用して可用性セットに VM をデプロイする
-description: このチュートリアルでは、Azure CLI を使って、可用性セットに高可用性仮想マシンを展開する方法について説明します
+description: Azure CLI を使用して可用性セットに高可用性仮想マシンをデプロイする方法について説明します
 documentationcenter: ''
 services: virtual-machines
 author: mimckitt
@@ -10,12 +10,12 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 7c45f08a339ca8878bb9e2840faa8a412f3e60e0
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 21f7d3e6f624c3a8e550a33293b46284bf5c5815
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765973"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816298"
 ---
 # <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Azure CLI を使用して可用性セットに仮想マシンを作成およびデプロイする
 

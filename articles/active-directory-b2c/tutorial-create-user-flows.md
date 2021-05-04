@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/08/2021
+ms.date: 04/26/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: e41c1e74dbe428ee38d4480a1587050b7f96a55f
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: fa1250189c5ba11426ac993bed8fde398ae37ea2
+ms.sourcegitcommit: 12f15775e64e7a10a5daebcc52154370f3e6fa0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226228"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108001468"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "107226228"
 
 ::: zone pivot="b2c-user-flow"
 > [!IMPORTANT]
-> ユーザー フローのバージョンを参照する方法が変更されました。 これまでは、V1 (運用対応) バージョンと V1.1 および V2 (プレビュー) バージョンが提供されていました。 現在は、ユーザー フローは **推奨** (次世代プレビュー) バージョンと **標準** (一般提供) バージョンに統合されています。 V1.1 と V2 の従来のプレビュー ユーザー フローはすべて、**2021 年 8 月 1 日** までに非推奨になる予定です。 詳細については、[Azure AD B2C のユーザー フローのバージョン](user-flow-versions.md)に関するページを参照してください。
+> ユーザー フローのバージョンを参照する方法が変更されました。 これまでは、V1 (運用対応) バージョンと V1.1 および V2 (プレビュー) バージョンが提供されていました。 今回、ユーザー フローが 2 つのバージョンに統合されました。最新の機能を備えた **推奨** ユーザー フローと **標準 (レガシ)** ユーザー フローです。 パブリック クラウドでは、すべてのレガシ プレビュー ユーザー フロー (V1.1 および V2) が、**2021 年 8 月 1 日** までに非推奨となる予定です。 詳細については、[Azure AD B2C のユーザー フローのバージョン](user-flow-versions.md)に関するページを参照してください。 *これらの変更は、Azure パブリック クラウドにのみ適用されます。その他の環境では、[レガシ ユーザー フローのバージョンの管理](user-flow-versions-legacy.md)が引き続き使用されます。* 
 ::: zone-end
 
 ## <a name="prerequisites"></a>前提条件
@@ -50,9 +50,11 @@ ms.locfileid: "107226228"
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
 - まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
 - Azure AD B2C と通信できるように、自分が作成した[テナントにアプリケーションを登録](tutorial-register-applications.md)します。
-- [Facebook アカウントでのサインアップとサインインの設定](identity-provider-facebook.md)に関する記事の手順を完了して、Facebook アプリケーションを構成します。 Facebook アプリケーションがなくてもカスタム ポリシーを使用できますが、カスタム ポリシーでソーシャル ログインを有効にする方法を見せる目的でこのチュートリアルで使用されています。
+- [Facebook アプリケーションを作成します](identity-provider-facebook.md#create-a-facebook-application)。 [Facebook アカウントを使用したサインアップとサインインの設定](identity-provider-facebook.md)に関する記事に記載されている前提条件と手順の再設定はスキップしてください。 Facebook アプリケーションがなくてもカスタム ポリシーを使用できますが、カスタム ポリシーでソーシャル ログインを有効にする方法を見せる目的でこのチュートリアルで使用されています。
+
 ::: zone-end
 
 ::: zone pivot="b2c-user-flow"

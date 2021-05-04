@@ -1,30 +1,28 @@
 ---
 title: Microsoft OPC Publisher
 description: この記事では、OPC Publisher Edge モジュールの概要を紹介します。
-author: jehona-m
+author: v-condav
 ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: conceptual
 ms.date: 3/22/2021
-ms.openlocfilehash: 3a44bdbadfe6ecd86a1b98fb7002f2d75c23bb6a
-ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+ms.openlocfilehash: 6df39c93e9bcfca522ac61a863c87269216cc592
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2021
-ms.locfileid: "104800535"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816172"
 ---
 # <a name="what-is-the-opc-publisher"></a>OPC Publisher とは
 
-OPC Publisher は、オープンで開発された完全にサポートされている Microsoft 製品であり、産業用資産と Microsoft Azure クラウドの間のギャップを埋めます。 これを行うために、OPC UA 対応の資産または産業用接続ソフトウェアに接続し、IEC62541 OPC UA PubSub 標準形式 (バージョン2.6 以降) などのさまざまな形式で Azure IoT Hub にテレメトリ データを発行します。
-
-これは、Azure IoT Edge でモジュールとして、またはプレーン Docker でコンテナーとして実行されます。 .NET クロスプラットフォーム ランタイムを利用するので、Linux と Windows 10 でネイティブにも実行されます。
+OPC Publisher は、産業用資産と Microsoft Azure クラウドの間のギャップを埋める、完全にサポートされている Microsoft 製品です。 このために、OPC UA 対応の資産または産業用接続ソフトウェアを Microsoft Azure クラウドに接続します。 さらに、収集した利用統計情報を、IEC62541 OPC UA PubSub 標準形式 (バージョン 2.6 以降) を含むさまざまな形式で Azure IoT Hub に発行します。 OPC Publisher は、Azure IoT Edge でモジュールとして、またはプレーン Docker でコンテナーとして実行されます。 .NET クロスプラットフォーム ランタイムを利用するので、Linux と Windows 10 の両方でネイティブに実行されます。
 
 OPC Publisher は、以下の方法を説明するリファレンス実装です。
 
 - 既存の OPC UA サーバーに接続する。
-- OPC UA Pub/Sub 形式で OPC UA サーバーから取得した、JSON でエンコードされた利用統計情報を、JSON ペイロードを使用して Azure IoT Hub に発行します。
+- OPC UA サーバーから取得した、JSON でエンコードされた利用統計情報を、JSON ペイロードを使用して OPC UA Pub/Sub 形式で Azure IoT Hub に発行します。
 
-Azure IoT Hub クライアント SDK でサポートされている任意のトランスポート プロトコルを使用できます。HTTPS、AMQP、および MQTT です。
+HTTPS、AMQP、MQTT など、Azure IoT Hub クライアント SDK でサポートされている任意のトランスポート プロトコルを使用できます。
 
 リファレンス実装には以下が含まれます。
 

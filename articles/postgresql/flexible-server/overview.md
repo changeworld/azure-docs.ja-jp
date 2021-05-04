@@ -6,15 +6,15 @@ ms.author: sunila
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 04/05/2021
-ms.openlocfilehash: 090d38a92da126cd4fd8423231f856d22ea9a64c
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/22/2021
+ms.openlocfilehash: efa5502c89a68be05ef8f7dc1d3d57c57e732caa
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107106838"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987076"
 ---
-# <a name="azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL - フレキシブル サーバー
+# <a name="overview---azure-database-for-postgresql---flexible-server"></a>概要 - Azure Database for PostgreSQL - フレキシブル サーバー
 
 PostgreSQL コミュニティ エディションを使用する [Azure Database for PostgreSQL](../overview.md) は、次の 3 つのデプロイ モードで利用できます。
 
@@ -85,6 +85,10 @@ Azure Database for PostgreSQL - フレキシブル サーバーは、データ�
 ## <a name="monitoring-and-alerting"></a>監視とアラート
 
 フレキシブル サーバー サービスには、組み込みのパフォーマンス監視機能とアラート機能が搭載されています。 すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 メトリックにアラートを構成できます。 このサービスを使用すると、リソースの使用状況を監視するためのホスト サーバー メトリックが公開され、遅いクエリのログを構成できます。 これらのツールを使用すると、ワークロードをすばやく最適化し、最適なパフォーマンスが得られるようにサーバーを構成することができます。
+
+## <a name="built-in-pgbouncer"></a>組み込みの PgBouncer
+
+フレキシブル サーバーには、組み込みの PgBouncer (接続プーラー) が付属しています。 必要に応じてこれを有効にし、同じホスト名とポート 6432 を使用して、PgBouncer 経由でアプリケーションをデータベース サーバーに接続できます。
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
 

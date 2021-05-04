@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: overview
-ms.date: 03/03/2021
+ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 author: msmimart
 manager: celested
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6325a890ea297a3aa2bdad76a1d95c10448a7b61
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: cc163f02873cf1827af515791e254261149fc4f9
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102033915"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108124439"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フローに条件付きアクセスを追加する
 
@@ -161,9 +161,78 @@ Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー 
 
 複数の条件付きアクセス ポリシーは、いつでも個々のユーザーに適用される可能性があります。 この場合、最も厳格なアクセス制御ポリシーが優先されます。 たとえば、あるポリシーでは多要素認証 (MFA) を要求し、別のポリシーではアクセスをブロックする場合、ユーザーはブロックされます。
 
+## <a name="conditional-access-template-1-sign-in-risk-based-conditional-access"></a>条件付きアクセス テンプレート 1: サインイン リスクベースの条件付きアクセス
+
+ほとんどのユーザーは、追跡できる正常な動作をしています。この規範から外れた場合は、そのユーザーにサインインを許可すると危険であることがあります。 そのユーザーをブロックしたり、多要素認証を実行してユーザーが本人であることを証明するように求めたりすることが必要な場合もあります。
+
+サインイン リスクは、特定の認証要求が ID 所有者によって承認されていない可能性があることを表します。 P2 ライセンスを所持する組織では、[Azure AD Identity Protection のサインイン リスク検出](../active-directory/identity-protection/concept-identity-protection-risks.md#sign-in-risk)を組み込んだ条件付きアクセス ポリシーを作成できます。 [B2C の Identity Protection の検出に関する制限事項](./identity-protection-investigate-risk.md?pivots=b2c-user-flow#service-limitations-and-considerations)に注意してください。
+
+リスクが検出された場合、ユーザーは、多要素認証を実行して自己修復し、危険なサインイン イベントを閉じて、管理者に対する不要なノイズが発生しないようにすることができます。
+
+組織では、次のいずれかのオプションを選択して、サインイン リスクが中または高のときに多要素認証 (MFA) を要求する、サインイン リスクベースの条件付きアクセス ポリシーを有効にする必要があります。
+
+### <a name="enable-with-conditional-access-policy"></a>条件付きアクセス ポリシーを有効にする
+
+1. **Azure portal** にサインインします。
+2. **[Azure AD B2C]**  >  **[セキュリティ]**  >  **[条件付きアクセス]** を参照します。
+3. **[新しいポリシー]** を選択します。
+4. ポリシーに名前を付けます。 ポリシーの名前に対する意味のある標準を組織で作成することをお勧めします。
+5. **[割り当て]** で、 **[ユーザーとグループ]** を選択します。
+   1. **[Include]\(含める\)** で、 **[すべてのユーザー]** を選択します。
+   2. **[除外]** で、 **[ユーザーとグループ]** を選択し、組織の緊急アクセス用または非常用アカウントを選択します。 
+   3. **[Done]** を選択します。
+6. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[すべてのクラウド アプリ]** を選択します。
+7. **[条件]**  >  **[サインイン リスク]** で、 **[構成]** を **[はい]** に設定します。 **[このポリシーを適用するサインイン リスク レベルを選択します]** で、以下の操作を実行します。 
+   1. **[高]** と **[中]** を選択します。
+   2. **[Done]** を選択します。
+8. **[アクセス制御]**  >  **[許可]** で、 **[アクセス権の付与]** 、 **[Require multi-factor authentication]\(多要素認証を要求する\)** の順に選択し、 **[Select]\(選択する\)** を選択します。
+9. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。
+10. **[作成]** を選択して、ポリシーを作成および有効化します。
+
+### <a name="enable-with-conditional-access-apis"></a>条件付きアクセス API を有効にする
+
+条件付きアクセス API を使用してサインイン リスクベースの条件付きアクセス ポリシーを作成するには、[条件付きアクセス API](../active-directory/conditional-access/howto-conditional-access-apis.md#graph-api) に関するドキュメントをご覧ください。
+
+次のテンプレートを使用すると、レポート専用モードで、表示名が "CA002: Require MFA for medium+ sign-in risk" の条件付きアクセス ポリシーを作成できます。
+
+```json
+{
+    "displayName": "Template 1: Require MFA for medium+ sign-in risk",
+    "state": "enabledForReportingButNotEnforced",
+    "conditions": {
+        "signInRiskLevels": [ "high" ,
+            "medium"
+        ],
+        "applications": {
+            "includeApplications": [
+                "All"
+            ]
+        },
+        "users": {
+            "includeUsers": [
+                "All"
+            ],
+            "excludeUsers": [
+                "f753047e-de31-4c74-a6fb-c38589047723"
+            ]
+        }
+    },
+    "grantControls": {
+        "operator": "OR",
+        "builtInControls": [
+            "mfa"
+        ]
+    }
+}
+```
+
 ## <a name="enable-multi-factor-authentication-optional"></a>多要素認証を有効にする (オプション)
 
-ユーザー フローに条件付きアクセスを追加する場合は、**多要素認証 (MFA)** の使用を検討してください。 ユーザーは、SMS または音声によるワンタイム コードか、メールによるワンタイム パスワードを多要素認証に使用できます。 MFA の設定は、条件付きアクセスの設定とは別になっています。 MFA を **[常にオン]** に設定すると、条件付きアクセスの設定に関係なく MFA が常に必須になります。 または、MFA を **[条件付き]** に設定すると、アクティブな条件付きアクセス ポリシーで MFA が求められる場合にのみ MFA が必須になります。
+ユーザー フローに条件付きアクセスを追加する場合は、**多要素認証 (MFA)** の使用を検討してください。 ユーザーは、SMS または音声によるワンタイム コードか、メールによるワンタイム パスワードを多要素認証に使用できます。 MFA の設定は、条件付きアクセスの設定とは別になっています。 これらの MFA オプションから選択できます。
+
+   - **[オフ]** - サインイン時に MFA が適用されることはありません。ユーザーは、サインアップ時またはサインイン時に MFA への登録を求められません。
+   - **[常にオン]** - 条件付きアクセスの設定に関係なく、MFA が常に必須になります。 ユーザーが MFA にまだ登録されていない場合は、サインイン時に登録するよう求められます。 サインアップ時に、ユーザーは MFA に登録するよう求められます。
+   - **[条件付き (プレビュー)]** - アクティブな条件付きアクセス ポリシーで求められる場合にのみ、MFA が必須になります。 条件付きアクセスの評価の結果がリスクのない MFA チャレンジである場合、サインイン時に MFA が適用されます。 結果がリスクによる MFA チャレンジであり、"*なおかつ*" ユーザーが MFA に登録されていない場合は、サインインがブロックされます。 サインアップ時には、ユーザーは MFA への登録を求められません。
 
 > [!IMPORTANT]
 > 条件付きアクセス ポリシーで MFA によるアクセスが許可されていても、ユーザーが電話番号を登録していない場合は、そのユーザーがブロックされることがあります。
@@ -184,9 +253,9 @@ Azure AD 条件付きアクセス ポリシーを追加した後、ユーザー 
  
    ![[プロパティ] で MFA と条件付きアクセスを構成する](media/conditional-access-user-flow/add-conditional-access.png)
 
-1. **[多要素認証]** セクションで、目的の **MFA メソッド** を選択し、 **[MFA の適用]** で **[条件付き (推奨)]** を選択します。
+1. **[多要素認証]** セクションで、目的の **[方法の種類]** を選択し、 **[MFA enforcement]\(MFA の適用\)** で **[条件付き (プレビュー)]** を選択します。
  
-1. **[条件付きアクセス]** セクションで、 **[Enforce conditional access policies]\(条件付きアクセス ポリシーを適用する\)** チェック ボックスをオンにします。
+1. **[条件付きアクセス (プレビュー)]** セクションで、 **[Enforce conditional access policies]\(条件付きアクセス ポリシーを適用する\)** チェック ボックスをオンにします。
 
 1. **[保存]** を選択します。
 

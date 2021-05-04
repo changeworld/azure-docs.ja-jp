@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Gen2 の環境を設定する - Azure Time Series Insights Gen2 | Microsoft Docs
 description: チュートリアル:Azure Time Series Insights Gen2 で環境を設定する方法について説明します。
-author: deepakpalled
-ms.author: dpalled
-manager: diviso
+author: riserrad
+ms.author: riserrad
+manager: edett
 ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 02/25/2021
+ms.date: 04/23/2021
 ms.custom: seodec18
-ms.openlocfilehash: 76a33bdb773645c9e8f97a47b1378d813b165631
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3994802e82b126f426a75a26d399f6f86e21797
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103464179"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107952012"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>チュートリアル:Azure Time Series Insights Gen2 環境を設定する
 
@@ -113,19 +113,18 @@ ms.locfileid: "103464179"
    | **IoT Hub name (IoT ハブの名前)** | デバイス シミュレーター用に作成した IoT ハブの名前を選択します。 |
    | **IoT Hub access policy (IoT ハブのアクセス ポリシー)** | **[iothubowner]** を選びます。 |
    | **IoT Hub コンシューマー グループ** | **[New]\(新規\)** を選択し、一意の名前を入力します。次に、 **[+ Add]\(追加\)** を選択します。 コンシューマー グループは、Azure Time Series Insights Gen2 で一意の値である必要があります。 |
+   | **開始オプション** | **[Beginning now]\(今すぐ開始\)** を選択します。 |
    | **Timestamp property \(タイムスタンプのプロパティ\)** | この値は、受信したテレメトリ データで **タイムスタンプ** プロパティを識別するために使用されます。 このチュートリアルでは、このボックスを空のままにします。 このシミュレーターでは、IoT ハブからの受信タイムスタンプを使用します。これが Azure Time Series Insights Gen2 の既定の設定です。 |
 
-1. **[確認および作成]** を選択します。
-
-   [![作成した IoT ハブをイベント ソースとして構成します。](media/tutorial-set-up-environment/configure-event-source.png)](media/tutorial-set-up-environment/configure-event-source.png#lightbox)
+   :::image type="content" source="media/tutorial-set-up-environment/configure-event-source.png" alt-text="作成された IoT ハブをイベント ソースとして構成する" lightbox="media/tutorial-set-up-environment/configure-event-source.png":::
 
 1. **[確認および作成]** を選択します。
 
-    [![[Review + create]\(確認と作成\) ページと [Create]\(作成\) ボタン。](media/tutorial-set-up-environment/environment-confirmation.png)](media/tutorial-set-up-environment/environment-confirmation.png#lightbox)
+   :::image type="content" source="media/tutorial-set-up-environment/environment-confirmation.png" alt-text="[確認および作成] ページと [作成] ボタン" lightbox="media/tutorial-set-up-environment/environment-confirmation.png":::
 
-    デプロイの状態を確認できます。
+   デプロイの状態を確認できます。
 
-    [![デプロイが完了したことを示す通知。](media/tutorial-set-up-environment/deployment-notification.png)](media/tutorial-set-up-environment/deployment-notification.png#lightbox)
+   [![デプロイが完了したことを示す通知。](media/tutorial-set-up-environment/deployment-notification.png)](media/tutorial-set-up-environment/deployment-notification.png#lightbox)
 
 1. デプロイの詳細を展開します。
 

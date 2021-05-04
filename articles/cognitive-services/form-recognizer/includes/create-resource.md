@@ -5,12 +5,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 03/15/2021
 ms.author: lajanuar
-ms.openlocfilehash: ed5f94bdc372e317e9e312db07665d233b1b4139
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 734b548953c4ede5e7d09feb0042509ae5528e82
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103467310"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108026142"
 ---
 Azure portal に移動し、<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title="新しい Form Recognizer リソースを作成します" target="_blank">新しい Form Recognizer リソースを作成します </a>。 **[作成]** ウィンドウには以下の情報が表示されます。
 
@@ -23,6 +23,6 @@ Azure portal に移動し、<a href="https://ms.portal.azure.com/#create/Microso
 | **価格レベル** | リソースのコストは、選択した価格レベルと使用量に依存します。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
 
 > [!NOTE]
-> 通常、Azure portal で Cognitive Service リソースを作成するときに、マルチ サービスのサブスクリプション キー (複数の Cognitive Services で使用) または 単一サービスのサブスクリプション キー (特定の Cognitive Services でのみ使用) を作成するオプションがあります。 ただしマルチサービス サブスクリプションには、現在 Form Recognizer は含まれていません。
+> Azure portal で Cognitive Service リソースを作成するときに、マルチ サービスのサブスクリプション キー (複数の Cognitive Services で使用) または単一サービスのサブスクリプション キー (特定の Cognitive Services でのみ使用) を作成するオプションがあります。 現在、マルチサービス サブスクリプションには、Form Recognizer は含まれていません。
 
 Form Recognizer リソースがデプロイが完了すると、ポータルの **[すべてのリソース]** の一覧からこれを検索して選択します。 キーとエンドポイントは、リソースの [key and endpoint]\(キーとエンドポイント\) ページの [リソース管理] にあります。 これらの両方を一時的な場所に保存してから、先に進んでください。

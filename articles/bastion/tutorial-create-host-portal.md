@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 02/12/2021
+ms.date: 04/27/2021
 ms.author: cherylmc
-ms.openlocfilehash: 3b365e347802824e855797afb8c68e5249bf0adb
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 772cc22a0f8163e0d99599ebf1f4cdfd1ab1d103
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579622"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108128195"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm-through-a-browser"></a>チュートリアル:Bastion を構成し、ブラウザーを介して Windows VM に接続する
 
@@ -21,8 +21,9 @@ ms.locfileid: "106579622"
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * VNet 用の Bastion ホストを作成する
-> * Windows 仮想マシンに接続する
+> * VNet の Bastion ホストを作成する。
+> * 仮想マシンからパブリック IP アドレスを削除する。
+> * Windows 仮想マシンに接続する。
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -55,7 +56,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 1. **［作成］** を選択します
 1. **[Bastion の作成]** ページで、新しい Bastion リソースを構成します。
 
-   :::image type="content" source="./media/tutorial-create-host-portal/bastion-basics.png" alt-text="Bastion ホストの作成" lightbox="./media/tutorial-create-host-portal/bastion-basics.png":::
+   :::image type="content" source="./media/tutorial-create-host-portal/create.png" alt-text="[Bastion の作成] ポータル ページのスクリーンショット。" lightbox="./media/tutorial-create-host-portal/create-expand.png":::
 
     * **サブスクリプション**:新しい Bastion リソースの作成に使用する Azure サブスクリプションです。
     * **リソース グループ**:新しい Bastion リソースが作成される Azure リソース グループです。 既存のリソース グループがない場合は、新しいものを作成できます。
@@ -68,14 +69,20 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
          * サブネットは、少なくとも /27 以上である必要があります。
 
       追加のフィールドに入力する必要はありません。 **[OK]** を選択し、ページの上部にある **[Bastion の作成]** を選択して、Bastion の構成ページに戻ります。
-    * **[パブリック IP アドレス]** : RDP/SSH でアクセスされる (ポート 443 経由) Bastion リソースのパブリック IP です。 新しいパブリック IP を作成します。 パブリック IP アドレスは、作成している Bastion リソースと同じリージョン内にある必要があります。 この IP アドレスは、接続先の VM とは何の関係もありません。 Bastion ホスト リソースのパブリック IP です。
+    * **[パブリック IP アドレス]** : RDP または SSH でアクセスされる (ポート 443 経由) Bastion リソースのパブリック IP アドレスです。 新しいパブリック IP アドレスを作成します。 パブリック IP アドレスは、作成している Bastion リソースと同じリージョン内にある必要があります。 この IP アドレスは、接続先の VM とは何の関係もありません。 Bastion ホスト リソースのパブリック IP アドレスです。
     * **パブリック IP アドレス名**:パブリック IP アドレス リソースの名前です。 このチュートリアルでは、既定値のままにしておいてかまいません。
     * **パブリック IP アドレスの SKU**: この設定は既定で **[標準]** に事前入力されます。 Azure Bastion では、標準パブリック IP SKU のみが使用およびサポートされます。
     * **割り当て**: この設定は既定で **[静的]** に事前入力されます。
 
 1. 設定の指定が完了したら、 **[確認および作成]** を選択します。 これにより、値が検証されます。 検証に合格したら、Bastion リソースを作成できます。
-1. **［作成］** を選択します
+
+   :::image type="content" source="./media/tutorial-create-host-portal/validation.png" alt-text="検証ページのスクリーンショット。":::
+1. 設定を確認します。 次に、ページの下部にある **[作成]** を選択します。
 1. デプロイが進行中であることを知らせるメッセージが表示されます。 リソースが作成されたときに、状態がこのページに表示されます。 Bastion リソースを作成してデプロイするには、約 5 分かかります。
+
+## <a name="remove-a-vm-public-ip-address"></a>VM のパブリック IP アドレスを削除する
+
+[!INCLUDE [Remove a public IP address from a VM](../../includes/bastion-remove-ip.md)]
 
 ## <a name="connect-to-a-vm"></a>VM への接続
 
@@ -91,7 +98,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、Bastion ホストを作成し、それを仮想ネットワークに関連付けて、Windows VM に接続しました。 Azure Bastion サブネットでネットワーク セキュリティ グループを使用することを選択できます。 これを行うには、次を参照してください。
+このチュートリアルでは、Bastion ホストを作成し、それを仮想ネットワークに関連付けました。 その後、VM からパブリック IP アドレスを削除したうえで、その VM に接続しました。 Azure Bastion サブネットでネットワーク セキュリティ グループを使用することを選択できます。 これを行うには、次を参照してください。
 
 > [!div class="nextstepaction"]
 > [NSG を使用する](bastion-nsg.md)

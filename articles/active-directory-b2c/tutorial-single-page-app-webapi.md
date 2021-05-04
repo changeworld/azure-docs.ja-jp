@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4ed332e9aa0048c87329ce25d0a63b619d2a196
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93421092"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108070581"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>チュートリアル:Azure AD B2C を使用して、シングルページ アプリケーションから Node.js Web API へのアクセスを保護および許可する
 
@@ -112,7 +112,7 @@ app.use((req, res, next) => {
 
 SPA 内の設定を変更するには:
 
-1. 前のチュートリアルでダウンロードまたは複製した [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] プロジェクトで、*JavaScriptSPA* フォルダー内の *apiConfig.js* ファイルを開きます。
+1. 前のチュートリアルでダウンロードまたは複製した [ms-identity-b2c-javascript-spa][github-js-spa] プロジェクトで、*App* フォルダー内の *apiConfig.js* ファイルを開きます。
 1. 先ほど作成した *demo.read* スコープの URI と Web API の URL を使用してサンプルを構成します。
     1. `apiConfig` 定義で、`b2cScopes` 値を、*demo.read* スコープの完全な URI (前に記録した **スコープ** 値) に置き換えます。
     1. `webApi` 値のドメインを、前の手順で Web API アプリケーションを登録したときに追加したリダイレクト URI に変更します。
@@ -202,4 +202,4 @@ SPA 内の設定を変更するには:
 > [Azure Active Directory B2C で使用できるアプリケーションの種類 >](application-types.md)
 
 <!-- Links - EXTERNAL -->
-[github-js-spa]: https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp
+[github-js-spa]: https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa

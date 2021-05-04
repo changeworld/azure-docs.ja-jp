@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: jeedes
-ms.openlocfilehash: 41f6db8cf2454c224addac525e9d039954a95712
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30c3ecb64b8fdb2ff1bf3569803b07d9f0646347
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104601501"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108138069"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>チュートリアル:Dropbox Business と Azure Active Directory の統合
 
@@ -85,6 +85,7 @@ Dropbox Business に対して Azure AD SSO を構成してテストするには�
     
      b. **[識別子 (エンティティ ID)]** ボックスに、`Dropbox` という値を入力します。
     
+    c. **[応答 URL]** フィールドに、「`https://www.dropbox.com/saml_login`」と入力します
     > [!NOTE]
     > **Dropbox サイン SSO ID** は、Dropbox サイトの [Dropbox] > [Admin console]\(管理コンソール\) > [Settings]\(設定\) > [Single sign-on]\(シングル サインオン\) > [SSO sign-in URL]\(SSO サインイン URL\) で確認できます。
 

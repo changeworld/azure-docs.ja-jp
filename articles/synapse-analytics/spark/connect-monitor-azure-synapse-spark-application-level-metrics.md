@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 01/22/2021
-ms.openlocfilehash: d22975199eedae353f2dc12588671ae4b54c85ab
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 45ccced6f083e0d304651a0cea7df90c6396fd88
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105109320"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143253"
 ---
 # <a name="tutorial-connect-and-monitor-azure-synapse-spark-application-level-metrics"></a>チュートリアル: Azure Synapse Spark アプリケーション レベルのメトリックの接続と監視
 
@@ -190,13 +190,13 @@ Prometheus API によって、指定された Spark アプリケーションの�
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/metrics/executors/prometheus?format=html
 ```
 
-| パラメーター          | 必須 | 説明                                                                               |
-| ------------------ | -------- | ----------------------------------------------------------------------------------------- |
-| endpoint           | True     | ワークスペース開発エンドポイント (例: https://myworkspace.dev.azuresynapse.net )。 |
-| livyApiVersion     | True     | 要求の有効な api-version。 現時点では 2019-11-01-preview                    |
-| sparkPoolName      | True     | Spark プールの名前。                                                                   |
-| sessionID          | True     | セッションの識別子。                                                               |
-| sparkApplicationId | True     | Spark アプリケーション ID                                                                      |
+| パラメーター          | 必須 | 説明                                                                                 |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------|
+| endpoint           | True     | ワークスペース開発エンドポイント (例: `https://myworkspace.dev.azuresynapse.net.`) |
+| livyApiVersion     | True     | 要求の有効な api-version。 現時点では 2019-11-01-preview                      |
+| sparkPoolName      | True     | Spark プールの名前。                                                                     |
+| sessionID          | True     | セッションの識別子。                                                                 |
+| sparkApplicationId | True     | Spark アプリケーション ID                                                                        |
 
 サンプルの要求: 
 
@@ -227,13 +227,13 @@ metrics_executor_completedTasks_total{application_id="application_1605509647837_
 GET https://{endpoint}/livyApi/versions/{livyApiVersion}/sparkpools/{sparkPoolName}/sessions/{sessionId}/applications/{sparkApplicationId}/executors
 ```
 
-| パラメーター          | 必須 | 説明                                                                               |
-| ------------------ | -------- | ----------------------------------------------------------------------------------------- |
-| endpoint           | True     | ワークスペース開発エンドポイント (例: https://myworkspace.dev.azuresynapse.net )。 |
-| livyApiVersion     | True     | 要求の有効な api-version。 現時点では 2019-11-01-preview                    |
-| sparkPoolName      | True     | Spark プールの名前。                                                                   |
-| sessionID          | True     | セッションの識別子。                                                               |
-| sparkApplicationId | True     | Spark アプリケーション ID                                                                      |
+| パラメーター          | 必須 | 説明                                                                                 |
+| ------------------ | -------- | --------------------------------------------------------------------------------------------|
+| endpoint           | True     | ワークスペース開発エンドポイント (例: `https://myworkspace.dev.azuresynapse.net.`) |
+| livyApiVersion     | True     | 要求の有効な api-version。 現時点では 2019-11-01-preview                      |
+| sparkPoolName      | True     | Spark プールの名前。                                                                     |
+| sessionID          | True     | セッションの識別子。                                                                 |
+| sparkApplicationId | True     | Spark アプリケーション ID                                                                        |
 
 要求のサンプル
 

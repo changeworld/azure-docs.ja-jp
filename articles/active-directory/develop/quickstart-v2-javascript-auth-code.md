@@ -12,20 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1e99e8ff25d895ba2248ddd1ba2520e9f14871a7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4ba36b80fc6a521b22dc812bdf67c3985a455ff4
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105022808"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108071895"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>クイックスタート: PKCE 対応の承認コード フローを使用して JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する 
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow-with-pkce"></a>クイックスタート: PKCE 対応の承認コード フローを使用して JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
-このクイックスタートでは、PKCE (Proof Key for Code Exchange) 対応の承認コード フローを使用して、JavaScript シングルページ アプリケーション (SPA) でユーザーをサインインし、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法を示します。 
+このクイックスタートでは、PKCE (Proof Key for Code Exchange) 対応の承認コード フローを使用して、JavaScript シングルページ アプリケーション (SPA) でユーザーをサインインし、Microsoft Graph を呼び出す方法を示すコード サンプルをダウンロードして実行します。 このコード サンプルでは、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得する方法を示します。
 
 図については、「[このサンプルのしくみ](#how-the-sample-works)」を参照してください。
-
-このクイックスタートでは、承認コード フローで MSAL.js v2 を使用します。 暗黙的なフローで MSAL.js v1 を使用する同様のクイックスタートについては、[クイックスタート: JavaScript シングルページ アプリ内でのユーザーのサインイン](./quickstart-v2-javascript.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -87,7 +85,7 @@ ms.locfileid: "105022808"
 > *app* フォルダーで、*authConfig.js* ファイルを開き、`msalConfig` オブジェクトの `clientID`、`authority`、`redirectUri` の値を更新します。
 >
 > ```javascript
-> // Config object to be passed to Msal on creation
+> // Config object to be passed to MSAL on creation
 > const msalConfig = {
 >   auth: {
 >     clientId: "Enter_the_Application_Id_Here",
@@ -107,14 +105,14 @@ ms.locfileid: "105022808"
 
 > [!div renderon="docs"]
 >
-> 以下の説明に従って、`msalConfig` セクションの値を変更します。
+> `msalConfig` セクションの値を変更します。
 >
 > - `Enter_the_Application_Id_Here` は、登録したアプリケーションの **アプリケーション (クライアント) ID** です。
 >
 >    **[アプリケーション (クライアント) ID]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
-> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウドのインスタンスです。 メイン (グローバル) Azure クラウドの場合は、「`https://login.microsoftonline.com/`」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」を参照してください。
-> - `Enter_the_Tenant_info_here` には、次のいずれかが設定されます。
->   - お使いのアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **テナント ID** または **テナント名** に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
+> - `Enter_the_Cloud_Instance_Id_Here` は、Azure クラウド インスタンスです。 メイン (グローバル) Azure クラウドの場合は、「`https://login.microsoftonline.com/`」と入力します。 **各国** のクラウド (中国など) の場合は、「[各国のクラウド](authentication-national-cloud.md)」を参照してください。
+> - `Enter_the_Tenant_info_here` は次のいずれかになります。
+>   - ご自分のアプリケーションで "*この組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を **テナント ID** または **テナント名** に置き換えます。 たとえば、「 `contoso.microsoft.com` 」のように入力します。
 >
 >    **[ディレクトリ (テナント) ID]** の値を見つけるには、Azure portal でアプリ登録の **[概要]** ページに移動します。
 >   - アプリケーションで "*任意の組織のディレクトリ内のアカウント*" がサポートされる場合は、この値を `organizations` に置き換えます。
@@ -133,11 +131,12 @@ ms.locfileid: "105022808"
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
+>
 > アプリのプロパティの値を使用してプロジェクトを構成しました。
 
 > [!div renderon="docs"]
 >
-> 次に、引き続き同じフォルダー内の *graphConfig.js* ファイルを編集して、`apiConfig` オブジェクトの `graphMeEndpoint` と `graphMailEndpoint` の値を更新します。
+> 次に、*graphConfig.js*  ファイルを開いて、`apiConfig` オブジェクトの `graphMeEndpoint` と `graphMailEndpoint` の値を更新します。
 >
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
@@ -168,15 +167,17 @@ ms.locfileid: "105022808"
 Node.js を使用して Web サーバーでプロジェクトを実行します。
 
 1. サーバーを起動するために、プロジェクト ディレクトリ内から次のコマンドを実行します。
+
     ```console
     npm install
     npm start
     ```
-1. `http://localhost:3000/` を参照します。
+
+1. 「 `http://localhost:3000/` 」を参照してください。
 
 1. **[サインイン]** を選択してサインイン プロセスを開始してから、Microsoft Graph API を呼び出します。
 
-    初回サインイン時に、自分のプロファイルにアプリケーションがアクセスして自分をサインインさせることについて同意を求められます。 正常にサインインした後は、ユーザー プロファイル情報がページに表示されている必要があります。
+    初回サインイン時に、自分のプロファイルにアプリケーションがアクセスして自分をサインインさせることについて同意を求められます。 正常にサインインすると、ユーザー プロファイル情報がページに表示されます。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -184,7 +185,7 @@ Node.js を使用して Web サーバーでプロジェクトを実行します�
 
 ![シングルページ アプリケーションの認証コード フローを示す図。](media/quickstart-v2-javascript-auth-code/diagram-01-auth-code-flow.png)
 
-### <a name="msaljs"></a>msal.js
+### <a name="msaljs"></a>MSAL.js
 
 MSAL.js ライブラリは、ユーザーをサインインさせ、Microsoft ID プラットフォームによって保護された API へのアクセスに使用されるトークンを要求します。 サンプルの *index.html* ファイルにはこのライブラリへの参照が含まれています。
 

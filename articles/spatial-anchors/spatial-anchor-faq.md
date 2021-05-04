@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fc92543f5954cda9db42e53cab18db1d8f3366c3
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 73971d4e7b7e05a03ed0490ff013977e57721b8d
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107284206"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896623"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Azure Spatial Anchors についてよく寄せられる質問
 
@@ -88,7 +88,7 @@ Azure Spatial Anchors は、[Azure サービス契約条件](https://go.microsof
 
 **Q:Azure Spatial Anchors はどのリージョンで利用できますか?**
 
-**A:** Azure Spatial Anchors は、現在、米国西部 2、米国東部、米国東部 2、米国中南部、西ヨーロッパ、北ヨーロッパ、英国南部、およびオーストラリア東部で利用できます。 今後、さらに多くのリージョンで利用できるようになります。
+**A:** Azure Spatial Anchors は、現在、米国西部 2、米国東部、米国東部 2、米国中南部、西ヨーロッパ、北ヨーロッパ、英国南部、オーストラリア東部、東南アジア、および韓国中部で利用できます。 今後、さらに多くのリージョンで利用できるようになります。
 
 つまり、このサービスを提供するコンピューティングとストレージの両方がこれらのリージョン内にあります。 ただし、クライアントの場所に制限はありません。 
 

@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.date: 04/01/2021
 ms.author: mbaldwin
 author: msmbaldwin
-ms.openlocfilehash: b56031d131743a3dc8c97bcd3e85d4653cdd2833
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: a9df83535bf0ee7a6c484a7682392d2ad0ef59f7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484185"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815326"
 ---
 # <a name="what-is-azure-key-vault-managed-hsm"></a>Azure Key Vault Managed HSM とは
 
-Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、**FIPS 140-2 レベル 3** 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。  
+Azure Key Vault Managed HSM は、フル マネージド、高可用性、シングル テナント、標準準拠を特徴とするクラウド サービスで、**FIPS 140-2 レベル 3** 適合の HSM を使用してクラウド アプリケーションの暗号化キーを保護することができます。 価格情報については、[Azure Key Vault の価格に関するページ](https://azure.microsoft.com/pricing/details/key-vault/)の「マネージド HSM プール」セクションを参照してください。 
 
 ## <a name="why-use-managed-hsm"></a>Managed HSM を使用する理由
 
@@ -51,6 +51,6 @@ Azure Key Vault Managed HSM は、フル マネージド、高可用性、シン
 
 - HSM で保護されたキーをオンプレミス HSM で生成し、それらを Managed HSM に対して安全にインポートすることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 「[クイック スタート:Azure CLI を使用してマネージド HSM をプロビジョニングしてアクティブにする](quick-create-cli.md)」を参照して、マネージド HSM を作成してアクティブにします。
 - [Azure Key Vault Managed HSM を使用しているときのベスト プラクティス](best-practices.md)に関するページを参照してください。

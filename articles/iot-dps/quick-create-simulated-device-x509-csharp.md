@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 7d2a21a30cefbc6e83e48c29d81191323387b8f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a328115c606cb4bface2d3dc7b8f0c502d063e9f
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101705545"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987436"
 ---
 # <a name="quickstart-create-and-provision-an-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>クイックスタート: IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、X.509 のデバイスを作成してプロビジョニングする
 
@@ -45,7 +45,7 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp.git
     ```
 
-1. お使いのマシンに [.NET Core 3.0.0 SDK 以降](https://www.microsoft.com/net/download/windows)がインストールされていることを確認します。 次のコマンドを使用してバージョンを確認してください。
+1. お使いのマシンに [.NET Core 3.1 SDK 以降](https://dotnet.microsoft.com/download)がインストールされていることを確認します。 次のコマンドを使用してバージョンを確認してください。
 
     ```bash
     dotnet --info
@@ -169,7 +169,6 @@ Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポ
 引き続きデバイス クライアント サンプルを使用する場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されているデバイス クライアント サンプルの出力ウィンドウを閉じます。
-1. マシンに表示されている TPM シミュレーター ウィンドウを閉じます。
 1. Azure portal の左側のメニューで **[すべてのリソース]** を選択し、Device Provisioning Service を選択します。 **[概要]** ブレードの上部で、ペインの上部にある **[削除]** をクリックします。  
 1. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、IoT ハブを選択します。 **[概要]** ブレードの上部で、ペインの上部にある **[削除]** をクリックします。  
 

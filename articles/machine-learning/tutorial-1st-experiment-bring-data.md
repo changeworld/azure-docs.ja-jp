@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 02/11/2021
 ms.custom: tracking-python, contperf-fy21q3
-ms.openlocfilehash: 503d1d1220cd4704a6e70d0b7e575a70275e5e4d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e664b08f7ca487236e5e2780d183c19d342a915b
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105936837"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107888028"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>チュートリアル:独自のデータを使用する (4 部構成中の第 4 部)
 
@@ -235,7 +235,7 @@ python 06-run-pytorch-data.py
 
 ### <a name="inspect-the-log-file"></a><a name="inspect-log"></a> ログ ファイルの確認
 
-スタジオで、前の URL 出力を選択することによって実験の実行に移動し、 **[出力 + ログ]** を選択します。 `70_driver_log.txt` ファイルを選択します。 次の出力が表示されます。
+スタジオで、前の URL 出力を選択することによって実験の実行に移動し、 **[出力 + ログ]** を選択します。 `70_driver_log.txt` ファイルを選択します。 次の出力が見えるまでログ ファイルを下へスクロールします。
 
 ```txt
 Processing 'input'.

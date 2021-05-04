@@ -4,12 +4,12 @@ ms.custom: devx-track-java
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/13/2020
-ms.openlocfilehash: c169572e8af8ba992e604fc51b31db1146f11fda
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: f4a82598adaa38b652a3cf786652dc7988d1469a
+ms.sourcegitcommit: bd1a4e4df613ff24e954eb3876aebff533b317ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113076"
+ms.lasthandoff: 04/23/2021
+ms.locfileid: "107931687"
 ---
 Java 用の Custom Vision クライアント ライブラリを使用して画像分類モデルを構築してみましょう。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 この例は、独自の画像認識アプリを構築するためのテンプレートとしてご利用ください。
 
@@ -101,9 +101,9 @@ mkdir -p src/main/java
 > [!IMPORTANT]
 > Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Custom Vision リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **キーとエンドポイント** のページにあります。 トレーニング リソース用の API エンドポイントに加え、トレーニング リソース用と予測リソース用の両方のキーを取得する必要があります。
 >
-> 予測リソース ID の値は、対象のリソースの **[プロパティ]** タブに、**サブスクリプション ID** として表示されます。
+> 予測リソース ID は、Azure portal の対象のリソースの **[プロパティ]** タブに、**リソース ID** として表示されます。
 > 
-> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services-security.md)に関するページを参照してください。
+> 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services-security.md)に関する記事を参照してください。
 
 アプリケーションの **main** メソッドで、このクイックスタートで使用するメソッドの呼び出しを追加します。 その定義は後から行います。
 
@@ -174,7 +174,7 @@ T## 新しい Custom Vision プロジェクトを作成する
 
 ## <a name="publish-the-current-iteration"></a>現在のイテレーションを公開する
 
-このメソッドでは、モデルの現在のイテレーションをクエリの実行に使用できるようにします。 モデル名は、予測要求を送信するための参照として使用できます。 `predictionResourceId` には、独自の値を入力する必要があります。 予測リソース ID は、Azure portal の対象のリソースの **[概要]** タブに、**サブスクリプション ID** として表示されます。
+このメソッドでは、モデルの現在のイテレーションをクエリの実行に使用できるようにします。 モデル名は、予測要求を送信するための参照として使用できます。 `predictionResourceId` には、独自の値を入力する必要があります。 予測リソース ID は、Azure portal の対象のリソースの **[プロパティ]** タブに、**リソース ID** として表示されます。
 
 [!code-java[](~/cognitive-services-quickstart-code/java/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?name=snippet_publish)]
 

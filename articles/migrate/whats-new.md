@@ -7,12 +7,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: cca4612d3b22296209b4adfc6be97cbe95477aa3
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.openlocfilehash: 3f49c0acc99f82cc2986ca896d40b3998cf47c5c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104786670"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835004"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Azure Migrate の新着情報
 
@@ -22,13 +22,12 @@ ms.locfileid: "104786670"
 - Azure Migrate アプライアンスでの複数のサーバー資格情報の指定によるインストールされているアプリケーション (ソフトウェア インベントリ) の検出、エージェントレスの依存関係分析、および VMware 環境の SQL Server インスタンスおよびデータベースの検出のサポート。 [詳細情報](tutorial-discover-vmware.md#provide-server-credentials)
 - VMware 環境で実行されている SQL Server インスタンスおよびデータベースの検出と評価は、現在プレビュー段階にあります。 詳細は[こちら](concepts-azure-sql-assessment-calculation.md)をご覧ください。始めるには、[検出](tutorial-discover-vmware.md)と[評価](tutorial-assess-sql.md)に関するチュートリアルを参照してください。
 - エージェントレスの VMware 移行では、vCenter あたり 500 台の VM を同時にレプリケートできるようになりました。
-- Azure Migrate で、エージェントレスの移行手法を使用して VMware VM を Azure に移行する間、VMware VM に Azure VM エージェントが自動的にインストールされるようになりました。
 
 ## <a name="update-january-2021"></a>更新 (2021 年 1 月)
 -  Azure Migrate: カスタマー マネージド キー (CMK) によるサーバー側暗号化でディスクが暗号化された Azure 仮想マシンに、Server Migration ツールを使用して、VMware 仮想マシンや物理サーバー、さらに他のクラウドの仮想マシンを移行できるようになりました。
 
 ## <a name="update-december-2020"></a>更新 (2020 年 12 月)
-- Azure Migrate で、エージェントレスの移行手法を使用して VMware VM を Azure に移行する間、VMware VM に Azure VM エージェントが自動的にインストールされるようになりました。
+- Azure Migrate で、エージェントレスの移行手法を使用して VMware VM を Azure に移行する間、VMware VM に Azure VM エージェントが自動的にインストールされるようになりました。 (Windows Server 2008 R2 以降)
 - サーバー側暗号化 (SSE) とカスタマー マネージド キー (CMK) によってディスクが暗号化された Azure 仮想マシンに対し、Azure Migrate Server Migration (エージェントレス レプリケーション) を使用して VMware VM を移行する方法が Azure portal から利用できるようになりました。
 
 ## <a name="update-september-2020"></a>更新 (2020 年 9 月)

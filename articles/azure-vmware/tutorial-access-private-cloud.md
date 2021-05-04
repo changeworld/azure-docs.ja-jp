@@ -3,12 +3,12 @@ title: チュートリアル - プライベート クラウドにアクセスす
 description: Azure VMware Solution プライベート クラウドにアクセスする方法を学習する
 ms.topic: tutorial
 ms.date: 03/13/2021
-ms.openlocfilehash: f2af1cffda08bf4b9c62e63f32d36cc9bbd7024a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: d2046acaf483022f977559fe74254ca58b8c42ea
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103494395"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945649"
 ---
 # <a name="tutorial-access-an-azure-vmware-solution-private-cloud"></a>チュートリアル:Azure VMware Solution プライベート クラウドにアクセスする
 
@@ -24,7 +24,31 @@ Azure VMware Solution では、オンプレミスの vCenter でプライベー�
 
 ## <a name="create-a-new-windows-virtual-machine"></a>新しい Windows 仮想マシンを作成する
 
-[!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
+1. リソース グループで、 **[+ 追加]** を選択します。次に、**Microsoft Windows 10** を検索して選択し、 **[作成]** を選択します。
+
+   :::image type="content" source="media/tutorial-access-private-cloud/ss8-azure-w10vm-create.png" alt-text="ジャンプ ボックス用に新しい Windows 10 VM を追加する方法を示すスクリーンショット。" border="true":::
+
+1. フィールドに必要な情報を入力し、 **[確認および作成]** を選択します。 
+
+   フィールドの詳細については、次の表を参照してください。
+
+   | フィールド | 値 |
+   | --- | --- |
+   | **[サブスクリプション]** | 値には、リソース グループが属しているサブスクリプションが事前に設定されています。 |
+   | **リソース グループ** | 値には、前のチュートリアルで作成した現在のリソース グループが事前に設定されています。  |
+   | **仮想マシン名** | VM の一意の名前を入力します。 |
+   | **リージョン** | VM の地理的な場所を選択します。 |
+   | **可用性オプション** | 既定値を選択したままにします。 |
+   | **Image** | VM イメージを選択します。 |
+   | **[サイズ]** | 既定のサイズ値をそのまま使用します。 |
+   | **認証の種類**  | **[パスワード]** を選択します。 |
+   | **ユーザー名** | VM にログオンするためのユーザー名を入力します。 |
+   | **パスワード** | VM にログオンするためのパスワードを入力します。 |
+   | **[パスワードの確認入力]** | VM にログオンするためのパスワードを入力します。 |
+   | **パブリック インバウンド ポート** | **[なし]** を選択します。 [なし] を選択した場合は、[JIT アクセス](../security-center/security-center-just-in-time.md#jit-configure)を使用して、VM にアクセスする必要があるときにのみ VM へのアクセスを制御できます。 あるいは、ネットワーク ポートを公開せずにインターネットから安全にジャンプ ボックス サーバーにアクセスするようにする場合は、[Azure Bastion](../bastion/tutorial-create-host-portal.md) を使用することもできます。  |
+
+
+1. 検証に合格したら、 **[作成]** を選択して仮想マシンの作成プロセスを開始します。
 
 ## <a name="connect-to-the-local-vcenter-of-your-private-cloud"></a>プライベート クラウドのローカル vCenter に接続する
 

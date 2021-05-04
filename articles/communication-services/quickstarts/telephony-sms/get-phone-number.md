@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.custom: references_regions
 zone_pivot_groups: acs-azp-java-net-python-csharp-js
-ms.openlocfilehash: 19bb79f9a4deaebfacc75918c46a5516d2d398be
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 269967db4daed2bb3c42e668e2b36d74f8b0f45c
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498197"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107904588"
 ---
 # <a name="quickstart-manage-phone-numbers"></a>クイックスタート: 電話番号を管理する
 
@@ -45,7 +45,7 @@ ms.locfileid: "107498197"
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-よくある質問と問題:
+一般的な質問と問題:
 
 - 電話の購入は、米国でのみサポートされています。 電話番号を購入する場合は、以下を確認してください。
   - 関連付けられている Azure サブスクリプションの請求先住所が米国内にあること。 現時点では、リソースを別のサブスクリプションに移動することはできません。

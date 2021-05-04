@@ -1,19 +1,19 @@
 ---
-title: クイックスタート - Azure Communication Services を使用して Teams 会議への参加を iOS アプリに追加する
+title: クイックスタート - Azure Communication Services を使用して Microsoft Teams 会議への参加を iOS アプリに追加する
 description: このクイックスタートでは、iOS 用の Azure Communication Services Teams Embed ライブラリを使用する方法について説明します。
 author: palatter
 ms.author: palatter
 ms.date: 01/25/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 4d28864d41d6540afc87126daf589ed2929f891d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 222ae284f77950c729a6a790e2ad29453a9ce34a
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104803147"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903169"
 ---
-このクイックスタートでは、iOS 用の Azure Communication Services Teams Embed ライブラリを使用して Teams 会議に参加する方法について説明します。
+このクイックスタートでは、iOS 用の Azure Communication Services Teams Embed ライブラリを使用して Microsoft Teams 会議に参加する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ platform :ios, '12.0'
 use_frameworks!
 
 target 'TeamsEmbedGettingStarted' do
-    pod 'AzureCommunication', '~> 1.0.0-beta.8'
+    pod 'AzureCommunication', '~> 1.0.0-beta.11'
 end
 
 azure_libs = [
@@ -76,10 +76,6 @@ end
 プロジェクト ツリーの `Info.plist` のエントリを右クリックし、 **[Open As]\(形式を指定して開く\)**  >  **[Source Code]\(ソース コード\)** の順に選択します。 最上位の `<dict>` セクションに以下の行を追加してから、ファイルを保存します。
 
 ```xml
-<key>NSBluetoothAlwaysUsageDescription</key>
-<string></string>
-<key>NSBluetoothPeripheralUsageDescription</key>
-<string></string>
 <key>NSCameraUsageDescription</key>
 <string></string>
 <key>NSContactsUsageDescription</key>
@@ -90,10 +86,10 @@ end
 
 ### <a name="add-the-teams-embed-framework"></a>Teams Embed フレームワークを追加する
 
-1. フレームワークをダウンロードします。
+1. [`MicrosoftTeamsSDK` iOS パッケージ](https://github.com/Azure/communication-teams-embed/releases)をダウンロードします。
 2. プロジェクト ルートに `Frameworks` フォルダーを作成します。 例: `\TeamsEmbedGettingStarted\Frameworks\`
-3. このフォルダーに、ダウンロードした `TeamsAppSDK.framework` フレームワークと `MeetingUIClient.framework` フレームワークをコピーします。
-4. `TeamsAppSDK.framework` と `MeetingUIClient.framework` を全般タブのプロジェクト ターゲットに追加します。[`Add Other`]\(その他のものを追加\)  ->  [`Add Files...`]\(ファイルを追加\) を使用してフレームワーク ファイルに移動し、それらを追加します。
+3. ダウンロードした `TeamsAppSDK.framework`、`MeetingUIClient.framework`、およびリリース バンドルで提供されているその他のフレームワークを、このフォルダーにコピーします。
+4. フレームワークを全般タブのプロジェクト ターゲットに追加します。[`Add Other`]\(その他のものを追加\) -> [`Add Files...`]\(ファイルを追加\) を使用してフレームワーク ファイルに移動し、それらを追加します。
 
 :::image type="content" source="../media/ios/xcode-add-frameworks.png" alt-text="Xcode で追加されたフレームワークを示すスクリーンショット。":::
 
@@ -103,33 +99,10 @@ end
 
 ### <a name="turn-off-bitcode"></a>ビットコードをオフにする
 
-プロジェクトのビルド設定で、[`Enable Bitcode`]\(ビットコードの有効化\) オプションを [`No`]\(いいえ\) に設定します。 この設定を見つけるには、フィルターを [`basic`]\(基本\) から [`all`]\(すべて\) に変更します。右側の検索バーを使用してもかまいません。
+プロジェクトの [`Build Settings`]\(ビルド設定\) で [`Enable Bitcode`]\(ビットコードの有効化\) オプションを [`No`]\(いいえ\) に設定します。 この設定を見つけるには、フィルターを [`Basic`]\(基本\) から [`All`]\(すべて\) に変更します。右側の検索バーを使用してもかまいません。
 
 :::image type="content" source="../media/ios/xcode-bitcode-option.png" alt-text="Xcode のビットコード オプションを示すスクリーンショット。":::
 
-### <a name="add-framework-signing-script"></a>フレームワークの署名スクリプトを追加する
-
-アプリ ターゲットを選択し、[`Build Phases`]\(ビルド フェーズ\) タブを選択します。次に、[`+`] をクリックし、続けて [`New Run Script Phase`]\(新しい実行スクリプト フェーズ\) をクリックします。 この新しいフェーズが [`Embed Frameworks`]\(Embed フレームワーク\) フェーズの後に発生するようにしてください。
-
-
-
-:::image type="content" source="../media/ios/xcode-build-script.png" alt-text="Xcode でのビルド スクリプトの追加を示すスクリーンショット。":::
-
-```bash
-#!/bin/sh
-if [ -d "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/TeamsAppSDK.framework/Frameworks ]; then
-    pushd "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/TeamsAppSDK.framework/Frameworks
-    for EACH in *.framework; do
-        echo "-- signing ${EACH}"
-        /usr/bin/codesign --force --deep --sign "${EXPANDED_CODE_SIGN_IDENTITY}" --entitlements "${TARGET_TEMP_DIR}/${PRODUCT_NAME}.app.xcent" --timestamp=none $EACH
-        echo "-- moving ${EACH}"
-        mv -nv ${EACH} ../../
-    done
-    rm -rf "${TARGET_BUILD_DIR}"/"${PRODUCT_NAME}".app/Frameworks/TeamsAppSDK.framework/Frameworks
-    popd
-    echo "BUILD DIR ${TARGET_BUILD_DIR}"
-fi
-```
 
 ### <a name="turn-on-voice-over-ip-background-mode"></a>Voice over IP バックグラウンド モードを有効にする
 
@@ -218,18 +191,23 @@ Azure Communication Services Teams Embed ライブラリが備える主な機能
 | 名前                                  | 説明                                                  |
 | ------------------------------------- | ------------------------------------------------------------ |
 | MeetingUIClient | MeetingUIClient は、Teams Embed ライブラリへのメイン エントリ ポイントです。 |
+| MeetingUIClientMeetingJoinOptions | MeetingUIClientMeetingJoinOptions は、表示名など、構成可能なオプションに使用されます。 |
+| MeetingUIClientGroupCallJoinOptions | MeetingUIClientMeetingJoinOptions は、表示名など、構成可能なオプションに使用されます。 |
+| MeetingUIClientTeamsMeetingLinkLocator | MeetingUIClientTeamsMeetingLinkLocator は、会議に参加するための会議 URL を設定するために使用されます。 |
+| MeetingUIClientGroupCallLocator | MeetingUIClientGroupCallLocator は、参加するグループ ID を設定するために使用されます。 |
+| MeetingUIClientCallState | MeetingUIClientCallState は、呼び出し状態の変化をレポートする目的で使用されます。 `connecting`、`waitingInLobby`、`connected`、`ended` の各オプションがあります。 |
 | MeetingUIClientDelegate | MeetingUIClientDelegate は、呼び出し状態の変化など、イベントを受け取る目的で使用されます。 |
-| MeetingJoinOptions | MeetingJoinOptions は、表示名など、構成可能なオプションに使用されます。 | 
-| CallState | CallState は、呼び出し状態の変化をレポートする目的で使用されます。 connecting、waitingInLobby、connected、ended の各オプションがあります。 |
+| MeetingUIClientIdentityProviderDelegate | MeetingUIClientIdentityProviderDelegate は、ユーザーの詳細を会議内のユーザーにマップするために使用されます。 |
+| MeetingUIClientUserEventDelegate | MeetingUIClientUserEventDelegate は、UI でのユーザー操作に関する情報を提供します。 |
 
 ## <a name="create-and-authenticate-the-client"></a>クライアントを作成して認証する
 
-会議への参加を可能にするユーザー アクセス トークンを使用して `MeetingUIClient` インスタンスを初期化します。 **ViewController.swift** で `viewDidLoad` コールバックに次のコードを追加します。
+ユーザー アクセス トークンを使用して `MeetingUIClient` インスタンスを初期化します。これにより、会議に参加できるようになります。 **ViewController.swift** で `viewDidLoad` コールバックに次のコードを追加します。
 
 ```swift
 do {
     let communicationTokenRefreshOptions = CommunicationTokenRefreshOptions(initialToken: "<USER_ACCESS_TOKEN>", refreshProactively: true, tokenRefresher: fetchTokenAsync(completionHandler:))
-    let credential = try CommunicationTokenCredential(with: communicationTokenRefreshOptions)
+    let credential = try CommunicationTokenCredential(withOptions: communicationTokenRefreshOptions)
     meetingUIClient = MeetingUIClient(with: credential)
 }
 catch {
@@ -244,7 +222,7 @@ catch {
 `fetchTokenAsync` メソッドを作成します。 その後、ユーザー トークンを取得するための `fetchToken` ロジックを追加します。
 
 ```swift
-private func fetchTokenAsync(completionHandler: @escaping TokenRefreshOnCompletion) {
+private func fetchTokenAsync(completionHandler: @escaping TokenRefreshHandler) {
     func getTokenFromServer(completionHandler: @escaping (String) -> Void) {
         completionHandler("<USER_ACCESS_TOKEN>")
     }
@@ -258,13 +236,13 @@ private func fetchTokenAsync(completionHandler: @escaping TokenRefreshOnCompleti
 
 ## <a name="join-a-meeting"></a>会議に参加する
 
-`joinMeeting` メソッドは、 *[Join Meeting]\(会議に参加する\)* ボタンをタップしたときに実行されるアクションとして設定されます。 `MeetingUIClient` を使用して会議に参加するように実装を更新します。
+`join` メソッドは、 *[Join Meeting]\(会議に参加する\)* ボタンをタップしたときに実行されるアクションとして設定されます。 `MeetingUIClient` を使用して会議に参加するように実装を更新します。
 
 ```swift
 private func joinMeeting() {
-    let meetingJoinOptions = MeetingJoinOptions(displayName: "John Smith")
-        
-    meetingUIClient?.join(meetingUrl: "<MEETING_URL>", meetingJoinOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
+    let meetingJoinOptions = MeetingUIClientMeetingJoinOptions(displayName: "John Smith", enablePhotoSharing: true, enableNamePlateOptionsClickDelegate: true)
+    let meetingLocator = MeetingUIClientTeamsMeetingLinkLocator(meetingLink: "<MEETING_URL>")
+    meetingUIClient?.join(meetingLocator: meetingLocator, joinCallOptions: meetingJoinOptions, completionHandler: { (error: Error?) in
         if (error != nil) {
             print("Join meeting failed: \(error!)")
         }
@@ -272,12 +250,12 @@ private func joinMeeting() {
 }
 ```
 
-`<MEETING URL>` は、Teams 会議のリンクに置き換えます。
+`<MEETING URL>` は、Microsoft Teams 会議のリンクに置き換えます。
 
-### <a name="get-a-teams-meeting-link"></a>Teams 会議のリンクを取得する
+### <a name="get-a-microsoft-teams-meeting-link"></a>Microsoft Teams 会議のリンクを取得する
 
-Teams 会議のリンクは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)で詳しく説明されています。
-Communication Services 通話 SDK は、Teams 会議のフル リンクを受け入れます。 このリンクは、`onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)からアクセスできます。必要な会議情報は、Teams 会議の招待自体に含まれる **[会議に参加]** の URL から取得することもできます。
+Microsoft Teams 会議のリンクは、Graph API を使用して取得できます。 この点については、[Graph のドキュメント](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta&preserve-view=true)で詳しく説明されています。
+Communication Services 通話 SDK は、Microsoft Teams 会議のフル リンクを受け入れます。 このリンクは、`onlineMeeting` リソースの一部として返され、[`joinWebUrl` プロパティ](/graph/api/resources/onlinemeeting?view=graph-rest-beta&preserve-view=true)からアクセスできます。必要な会議情報は、Teams 会議の招待自体に含まれる **[会議に参加]** の URL から取得することもできます。
 
 ## <a name="run-the-code"></a>コードの実行
 
@@ -300,48 +278,6 @@ Microsoft Teams SDK では、100 を超える文字列とリソースがサポ�
 2. パッケージに含まれている Localizations.zip を解凍します
 3. 解凍したフォルダーから、アプリのサポート対象に基づいてローカライズ フォルダーを TeamsAppSDK.framework のルートにコピーします
 
-## <a name="preparation-for-app-store-upload"></a>App Store のアップロードを準備する
-
-アーカイブする場合は、i386 アーキテクチャと x86_64 アーキテクチャをフレームワークから削除します。
-
-アプリケーションをアーカイブしたい場合は、`i386` アーキテクチャと `x86_64` アーキテクチャの削除スクリプトをビルド フェーズに追加します (フレームワークの codesign フェーズの前)。
-
-プロジェクト ナビゲーターで自分のプロジェクトを選択します。 [Editor]\(エディター\) ペインで [Build Phases]\(ビルド フェーズ\) に移動し、[+] 記号をクリックして、[Create a New Run Script Phase]\(新しい実行スクリプト フェーズの作成\) をクリックします。
-
-```bash
-echo "Target architectures: $ARCHS"
-APP_PATH="${TARGET_BUILD_DIR}/${WRAPPER_NAME}"
-find "$APP_PATH" -name '*.framework' -type d | while read -r FRAMEWORK
-do
-FRAMEWORK_EXECUTABLE_NAME=$(defaults read "$FRAMEWORK/Info.plist" CFBundleExecutable)
-FRAMEWORK_EXECUTABLE_PATH="$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME"
-echo "Executable is $FRAMEWORK_EXECUTABLE_PATH"
-echo $(lipo -info "$FRAMEWORK_EXECUTABLE_PATH")
-FRAMEWORK_TMP_PATH="$FRAMEWORK_EXECUTABLE_PATH-tmp"
-# remove simulator's archs if location is not simulator's directory
-case "${TARGET_BUILD_DIR}" in
-*"iphonesimulator")
-    echo "No need to remove archs"
-    ;;
-*)
-    if $(lipo "$FRAMEWORK_EXECUTABLE_PATH" -verify_arch "i386") ; then
-    lipo -output "$FRAMEWORK_TMP_PATH" -remove "i386" "$FRAMEWORK_EXECUTABLE_PATH"
-    echo "i386 architecture removed"
-    rm "$FRAMEWORK_EXECUTABLE_PATH"
-    mv "$FRAMEWORK_TMP_PATH" "$FRAMEWORK_EXECUTABLE_PATH"
-    fi
-    if $(lipo "$FRAMEWORK_EXECUTABLE_PATH" -verify_arch "x86_64") ; then
-    lipo -output "$FRAMEWORK_TMP_PATH" -remove "x86_64" "$FRAMEWORK_EXECUTABLE_PATH"
-    echo "x86_64 architecture removed"
-    rm "$FRAMEWORK_EXECUTABLE_PATH"
-    mv "$FRAMEWORK_TMP_PATH" "$FRAMEWORK_EXECUTABLE_PATH"
-    fi
-    ;;
-esac
-echo "Completed for executable $FRAMEWORK_EXECUTABLE_PATH"
-echo $(lipo -info "$FRAMEWORK_EXECUTABLE_PATH")
-done
-```
 
 ## <a name="sample-code"></a>サンプル コード
 

@@ -10,12 +10,12 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: cd39f6c484ebe116918611bb1d543c1919a3cb0a
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: c289e69345b2fe537fd80f2cd8b59bc13ce8287b
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106222947"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017303"
 ---
 # <a name="tutorial---configure-your-azure-active-directory-to-issue-verifiable-credentials-preview"></a>チュートリアル - Azure Active Directory を構成して検証可能な資格情報 (プレビュー) を発行する
 
@@ -92,7 +92,7 @@ ms.locfileid: "106222947"
 
 ## <a name="create-a-modified-rules-and-display-file"></a>変更されたルールおよび表示ファイルの作成
 
-このセクションでは、自分のテナントで最初の検証可能な資格情報を作成するために、サンプル発行者アプリでルールと表示のファイルを使用してそれらをわずかに変更します。
+このセクションでは、自分のテナントで最初の検証可能な資格情報を作成するために、[サンプル発行者アプリ](https://github.com/Azure-Samples/active-directory-verifiable-credentials/)でルールと表示のファイルを使用してそれらをわずかに変更します。
 
 1. ルールと表示、両方の json ファイルを一時フォルダーにコピーし、それらの名前をそれぞれ **MyFirstVC-display.json** と **MyFirstVC-rules.json** に変更します。 どちらのファイルも **issuer\issuer_config** にあります
 
@@ -125,16 +125,16 @@ ms.locfileid: "106222947"
       
     ```
 
-次に、type フィールドを "MyFirstVC" に変更します。 
+   次に、type フィールドを "MyFirstVC" に変更します。 
 
-  ```json
-   "type": ["MyFirstVC"]
+   ```json
+    "type": ["MyFirstVC"]
   
-  ```
+   ```
 
-その変更を保存します。
+   その変更を保存します。
 
- >[!NOTE]
+   >[!NOTE]
    > チュートリアルのこの時点では、 **"configuration"** または **"client_id"** を変更しません。 [スタート ガイド](get-started-verifiable-credentials.md)で使用した Microsoft B2C テナントをここでも使用します。 次のチュートリアルでは自分の Azure AD を使用します。
 
 3. コード エディターで MyFirstVC-display.json ファイルを開きます。
@@ -172,17 +172,22 @@ ms.locfileid: "106222947"
       }
    ```
 
-この検証可能な資格情報がサンプル コードのバージョンとは明らかに異なって見えるように、いくつかの変更を加えます。 
-    
-```json
-     "card": {
-        "title": "My First VC",
-        "issuedBy": "Your Issuer Name",
-        "backgroundColor": "#ffffff",
-        "textColor": "#000000",
-```
+   この検証可能な資格情報がサンプル コードのバージョンとは明らかに異なって見えるように、いくつかの変更を加えます。 
 
-これらの変更を保存します。
+    ```json
+         "card": {
+            "title": "My First VC",
+            "issuedBy": "Your Issuer Name",
+            "backgroundColor": "#ffffff",
+            "textColor": "#000000",
+          }
+    ```
+ 
+   >[!NOTE]
+   > 資格情報が読み取り可能かつアクセス可能になるように、少なくとも 4.5:1 の[コントラスト比](https://www.w3.org/WAI/WCAG21/Techniques/general/G18)でテキスト色と背景色を選択することを強くお勧めします。  
+
+   これらの変更を保存します。
+
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
 最初の検証可能な資格情報を作成した後、構成およびルール ファイルを保持できる BLOB ストレージ コンテナーを作成する必要があります。
@@ -296,33 +301,33 @@ ms.locfileid: "106222947"
     node app.js
     ```
 
-6. 別のコマンド プロンプトを使用して ngrok を実行し、URL を 8081 で設定します
+6. 別のコマンド プロンプトを使用して ngrok を実行し、8081 に URL を設定します。 [ngrok npm パッケージ](https://www.npmjs.com/package/ngrok/)を使用して、ngrok をグローバルにインストールできます。
 
     ```terminal
     ngrok http 8081
     ```
     
     >[!IMPORTANT]
-    > [このアプリまたは Web サイトは危険であるおそれがあります] という警告にお気づきになるかもしれません。 ここでメッセージの表示が予想されるのは、自分の DID をドメインにまだリンクしていないためです。 [DNS バインド](how-to-dnsbind.md)の手順に従って、それを構成してください。
+    > このアプリまたは Web サイトが危険である可能性があるという警告が表示される場合があります。 自分の DID をドメインにまだリンクしていないため、ここでメッセージが表示されるのは想定通りです。 [DNS バインド](how-to-dnsbind.md)の手順に従って、これを構成します。
 
     
 7. ngrok によって生成された HTTPS URL を開きます。
 
     ![NGROK 転送エンドポイント](media/enable-your-tenant-verifiable-credentials/ngrok-url-screen.png)
 
-8. **[GET CREDENTIAL]\(資格情報の取得\)** を選択します
-9. Authenticator で、QR コードをスキャンします。
-10. **[このアプリまたは Web サイトは危険であるおそれがあります]** という警告メッセージで、 **[詳細設定]** を選択します。
+8. **[資格情報の取得]** を選択します
+9. Authenticator で QR コードをスキャンします。
+10. **[このアプリまたは Web サイトは危険であるおそれがあります]** という警告メッセージが表示されたら **[詳細設定]** を選択します。
 
   ![最初の警告](media/enable-your-tenant-verifiable-credentials/site-warning.png)
 
 11. 危険な Web サイトの警告で、 **[このまま続行 (安全ではありません)]** を選択します
 
-  ![発行者についての 2 つ目の警告](media/enable-your-tenant-verifiable-credentials/site-warning-proceed.png)
+  ![発行者に関する 2 番目の警告](media/enable-your-tenant-verifiable-credentials/site-warning-proceed.png)
 
 
-12. **[資格情報の追加]** 画面で、いくつかの点に注目します。 
-    1. 画面の上部に、赤い **[未検証]** メッセージが見えます
+12. **[視覚情報の追加]** 画面に以下が表示されます。 
+    1. 画面上部に、赤色で **[未確認]** というメッセージが表示されます。
     1. 資格情報は、表示ファイルに加えた変更に基づいてカスタマイズされています。
     1. **[アカウントにサインインする]** オプションでは、**didplayground.b2clogin.com** が参照されています。
     
@@ -333,9 +338,9 @@ ms.locfileid: "106222947"
 
   ![認証後の資格情報の追加画面](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
 
-これで、認証には B2C テナントを使用したまま、検証可能な資格情報の生成に自分たちのテナントを使用して VC を発行することができました。
+これで、認証に B2C テナントを使用しながら、テナントを使用して VC を生成する検証可能な資格情報を発行しました。
 
-  ![自分の Azure AD によって発行され、Azure B2C インスタンスによって認証された VC](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
+  ![Azure AD によって発行され、Azure B2C インスタンスによって認証された VC](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
 
 
 ## <a name="test-verifying-the-vc-using-the-sample-app"></a>サンプル アプリを使用した VC の検証のテスト
@@ -363,13 +368,13 @@ ms.locfileid: "106222947"
     control-c
     ```
 
-4. 次に、検証者のポートを 8082 にして ngrok を実行します。
+4. 次に、検証ツール ポート 8082 を使用して ngrok を実行します。
 
     ```cmd
     ngrok http 8082
     ```
 
-5. 次のターミナル ウィンドウで、検証者アプリに移動して、発行者アプリを実行したのと同様の方法で、それを実行します。
+5. 別のターミナル ウィンドウで検証ツール アプリに移動し、発行者アプリを実行したときと同じように実行します。
 
     ```cmd
     cd ..
@@ -377,7 +382,7 @@ ms.locfileid: "106222947"
     node app.js
     ```
 
-6. ブラウザーで ngrok URL を開き、モバイル デバイスで Authenticator を使用して QR コードをスキャンします。
+6. ブラウザーで ngrok URL を開き、モバイル デバイスの Authenticator を使用して QR コードをスキャンします。
 7. 自分のモバイル デバイスで、 **[新しいアクセス許可の要求]** 画面の **[許可]** を選択します。
 
     >[!NOTE]

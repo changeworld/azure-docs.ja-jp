@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: overview
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7f8bc4cadc720c7ac02a7246e741552e81eb3876
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ab54192480a1c36a27c175254d6d4d275b67c8b7
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057152"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835328"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 

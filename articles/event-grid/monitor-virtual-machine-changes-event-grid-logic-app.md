@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 1a5d8c36382433024efd1f1cc6ba9fd878d28ddc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a170b062127f55ece83dd717d8bd7a00e6531b9b
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92329527"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897002"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>チュートリアル:Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する
 
@@ -264,3 +264,11 @@ Azure やサードパーティのリソースに生じた特定のイベント�
 ## <a name="next-steps"></a>次のステップ
 
 * [Event Grid を使ったカスタム イベントの作成とルーティング](../event-grid/custom-event-quickstart.md)
+
+さまざまなプログラミング言語を使用して Event Grid でイベントを発行および使用する方法については、次のサンプルを参照してください。 
+
+- [.NET 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-net/azure-event-grid-sdk-samples/)
+- [Java 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-java/eventgrid-samples/)
+- [Python 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-python/eventgrid-samples/)
+- [JavaScript 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-js/eventgrid-javascript/)
+- [TypeScript 用の Azure Event Grid サンプル](/samples/azure/azure-sdk-for-js/eventgrid-typescript/)

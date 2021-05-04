@@ -1,28 +1,27 @@
 ---
-title: チュートリアル - VMware HCX をデプロイして構成する
+title: VMware HCX をデプロイして構成する
 description: Azure VMware Solution プライベート クラウドのために VMware HCX ソリューションをデプロイして構成する方法について説明します。
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: 9ee451ce4be59c51299d66e4042ed344026100cf
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.date: 04/23/2021
+ms.openlocfilehash: a75d7f0ea8fba9649715e2207c086c9bd7ac2019
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107011002"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945721"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX をデプロイして構成する
 
-この記事では、Azure VMware Solution プライベート クラウドのためにオンプレミスの VMware HCX コネクタをデプロイして構成する方法について説明します。 VMware HCX を使用すると、さまざまな移行の種類を通じて、Azure VMware Solution やその他の接続されたサイトに VMware のワークロードを移行できます。 Azure VMware Solution では HCX Cloud Manager をデプロイして構成するため、オンプレミスの VMware データセンターで HCX コネクタをダウンロードし、アクティブ化して構成する必要があります。
+このチュートリアルでは、Azure VMware Solution プライベート クラウドのためにオンプレミスの VMware HCX コネクタをデプロイして構成します。 VMware HCX を使用すると、さまざまな移行の種類を通じて、Azure VMware Solution やその他の接続されたサイトに VMware のワークロードを移行できます。 Azure VMware Solution では HCX Cloud Manager をデプロイして構成するため、オンプレミスの VMware データセンターで HCX コネクタをダウンロードし、アクティブ化して構成する必要があります。
 
-VMware HCX Advanced コネクタは、Azure VMware Solution にあらかじめデプロイされています。 最大 3 つのサイト接続 (オンプレミスからクラウド、またはクラウドからクラウド) がサポートされます。 3 つを超えるサイト接続が必要な場合は、[VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを有効にするために[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を送信してください。  
+VMware HCX Advanced コネクタは、Azure VMware Solution にあらかじめデプロイされています。 最大 3 つのサイト接続 (オンプレミスからクラウド、またはクラウドからクラウド) がサポートされます。 3 つより多いサイト接続が必要な場合は、[VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを使用し、[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を通じてそれを有効にしてください。 
 
->[!TIP]
->VMware Configuration Maximums ツールでは、オンプレミスの Connector と Cloud Manager との間におけるサイト ペアの最大数は 25 と説明されていますが、ライセンスにより、HCX Advanced Edition では 3 に、HCX Enterprise Edition では 10 に制限されます。
+>[!IMPORTANT]
+>VMware Configuration Maximums ツールでは、オンプレミスの HCX Connector と HCX Cloud Manager との間におけるサイト ペアの最大数は 25 と説明されていますが、ライセンスにより、HCX Advanced Edition では 3 に、HCX Enterprise Edition では 10 に制限されます。
+>
+>VMware HCX Enterprise は、Azure VMware Solution でプレビュー サービスとして使用できます。 これは無料で、プレビュー サービスの使用条件が適用されます。 VMware HCX Enterprise サービスが一般提供されると、課金に切り替わるという通知が 30 日前に届きます。 サービスを無効にするかオプトアウトするオプションも用意されます。 再デプロイなしでの HCX Enterprise から HCX Advanced へのダウングレードは可能ですが、そのアクションを実行するためにはサポート チケットを記録する必要があります。 ダウングレードを計画する場合は、移行がスケジュールされていないこと、また、RAV、MON などの機能が使用されていないことを確認してください。
 
->[!NOTE]
->VMware HCX Enterprise は、Azure VMware Solution でプレビュー サービスとして使用できます。 これは無料で、プレビュー サービスの使用条件が適用されます。 VMware HCX Enterprise サービスが一般提供されると、課金に切り替わるという通知が 30 日前に届きます。 サービスを無効にするかオプトアウトするオプションも用意されます。 再デプロイなしでの HCx Enterprise から HCX Advanced へのダウングレードは可能ですが、そのアクションを実行するためにはサポート チケットを記録する必要があります。 ダウングレードを計画する場合は、移行がスケジュールされていないこと、また、RAV、MON などの機能が使用されていないことを確認してください。
-
-まず、「[開始する前に](#before-you-begin)」、「[ソフトウェア バージョンの要件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)」、および「[前提条件](#prerequisites)」を確認してください。 
+まず、「[開始する前に](#before-you-begin)」、「[ソフトウェア バージョンの要件](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-54E5293B-8707-4D29-BFE8-EE63539CC49B.html)」、および「[前提条件](#prerequisites)」の各セクションを確認してください。 
 
 では、以下のために必要なすべての手順について説明します。
 
@@ -49,8 +48,7 @@ VMware HCX Advanced コネクタは、Azure VMware Solution にあらかじめ�
 
 ## <a name="prerequisites"></a>前提条件
 
-VMware HCX Enterprise を使用する場合は、Azure VMware Solution のサポート チャネルを介してアクティブ化を要求したことを確認してください。
-
+VMware HCX Enterprise を使用する予定がある場合は、[サポート リクエスト](https://portal.azure.com/#create/Microsoft.Support)を通じて [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) アドオンを有効にしてあることを確認してください。
 
 ### <a name="on-premises-vsphere-environment"></a>オンプレミスの vSphere 環境
 
@@ -66,7 +64,7 @@ VMware HCX Enterprise を使用する場合は、Azure VMware Solution のサポ
 
 [!INCLUDE [hcx-network-segments](includes/hcx-network-segments.md)]
    
-## <a name="download-the-vmware-hcx-connector-ova"></a>VMware HCX コネクタ OVA をダウンロードする
+## <a name="step-1-download-the-vmware-hcx-connector-ova"></a>手順 1. VMware HCX コネクタ OVA をダウンロードする
 
 仮想アプライアンスをオンプレミスの vCenter にデプロイする前に、VMware HCX コネクタ OVA をダウンロードする必要があります。  
 
@@ -92,12 +90,11 @@ VMware HCX Enterprise を使用する場合は、Azure VMware Solution のサポ
 
 1. VMware HCX コネクタ OVA ファイルをダウンロードするための任意のオプションを選択します。
 
-## <a name="deploy-the-vmware-hcx-connector-ova-on-premises"></a>VMware HCX コネクタ OVA をオンプレミスにデプロイする
+## <a name="step-2-deploy-the-vmware-hcx-connector-ova-on-premises"></a>手順 2. VMware HCX コネクタ OVA をオンプレミスにデプロイする
 
 1. オンプレミスの vCenter で、VMware HCX コネクタをオンプレミスの vCenter にデプロイするための [OVF テンプレート](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html)を選択します。 
 
-   > [!TIP]
-   > 前のセクションでダウンロードした OVA ファイルを選択します。  
+1. ダウンロードした OVA ファイルに移動して選択し、 **[開く]** を選択します。
 
    :::image type="content" source="media/tutorial-vmware-hcx/select-ovf-template.png" alt-text="OVF テンプレートを参照しているスクリーンショット。" lightbox="media/tutorial-vmware-hcx/select-ovf-template.png":::
 
@@ -122,23 +119,20 @@ VMware HCX Enterprise を使用する場合は、Azure VMware Solution のサポ
 この手順全体の概要については、動画「[Azure VMware Solution: HCX アプライアンスのデプロイ](https://www.youtube.com/embed/UKmSTYrL6AY)」を参照してください。 
 
 
-## <a name="activate-vmware-hcx"></a>VMware HCX をアクティブにする
+## <a name="step-3-activate-vmware-hcx"></a>手順 3. VMware HCX をアクティブにする
 
 VMware HCX コネクタ OVA をオンプレミスにデプロイし、アプライアンスを起動したら、アクティブにすることができます。 まず、ライセンス キーを Azure VMware Solution ポータルから取得する必要があります。
 
 1. Azure VMware Solution ポータルで、 **[管理]**  >  **[接続]** の順に移動し、 **[HCX]** タブを選択してから **[追加]** を選択します。
 
-1. **管理者** の資格情報を使用して、`https://HCXManagerIP:9443` でオンプレミスの VMware HCX Manager にサインインし、サインインします。 
+1. **管理者** の資格情報を使用して、`https://HCXManagerIP:9443` でオンプレミスの VMware HCX Manager にサインインし、サインインします。  VMware HCX Manager の IP アドレスと共に、必ず `9443` のポート番号を含めてください。
 
    > [!TIP]
    > **管理者** ユーザーのパスワードは、VMware HCX Manager OVA ファイルのデプロイ中に定義しました。
 
-   > [!IMPORTANT]
-   > VMware HCX Manager の IP アドレスと共に、必ず `9443` のポート番号を含めてください。
-
 1. **[Licensing]\(ライセンス\)** で、 **[HCX Advanced Key]\(HCX Advanced キー\)** にキーを入力し、 **[Activate]** \(アクティブ化\) を選択します。  
    
-    > [!NOTE]
+    > [!IMPORTANT]
     > VMware HCX Manager では、インターネット アクセスが開かれているか、プロキシが構成されている必要があります。
 
 1. **[Datacenter Location]\(データセンターの場所\)** で、VMware HCX Manager をオンプレミスにインストールする最も近い場所を指定します。 その後 **[続行]** を選択します。
@@ -171,7 +165,7 @@ VMware HCX コネクタ OVA をオンプレミスにデプロイし、アプラ�
    > [!IMPORTANT]
    > HCX Advanced と HCX Enterprise のどちらを使用しているかにかかわらず、VMware の[サポート技術情報の記事 81558](https://kb.vmware.com/s/article/81558) からパッチをインストールする必要がある場合があります。 
 
-## <a name="configure-the-vmware-hcx-connector"></a>VMware HCX コネクタを構成する
+## <a name="step-4-configure-the-vmware-hcx-connector"></a>手順 4. VMware HCX コネクタを構成する
 
 これで、サイトのペアリングを追加し、ネットワークとコンピューティングのプロファイルを作成し、移行、ネットワーク拡張、ディザスター リカバリーなどのサービスを有効にする準備ができました。 
 
@@ -199,7 +193,7 @@ Azure VMware Solution で、VMware HCX Cloud Manager をデータセンターの
 
 ### <a name="create-network-profiles"></a>ネットワーク プロファイルを作成する
 
-VMware HCX コネクタによって、複数の IP セグメントを必要とする (自動化) 仮想アプライアンスのサブセットがデプロイされます。 ネットワーク プロファイルを作成するときには、IP セグメントを使用します。これらは、[VMware HCX ネットワーク セグメントのデプロイ前準備と計画段階](production-ready-deployment-steps.md#vmware-hcx-network-segments)の間に特定したものです。
+VMware HCX コネクタによって、複数の IP セグメントを必要とする (自動化) 仮想アプライアンスのサブセットがデプロイされます。 ネットワーク プロファイルを作成するときには、IP セグメントを使用します。これらは、[VMware HCX ネットワーク セグメントのデプロイ前準備と計画段階](production-ready-deployment-steps.md#define-vmware-hcx-network-segments)の間に特定したものです。
 
 4 つのネットワーク プロファイルを作成します。
 
@@ -344,9 +338,9 @@ VMware HCX コネクタによって、複数の IP セグメントを必要と�
 
 この手順全体の概要については、動画「[Azure VMware Solution: サービス メッシュ](https://www.youtube.com/embed/COY3oIws108)」を参照してください。
 
-### <a name="optional-create-a-network-extension"></a>(省略可能) ネットワーク拡張機能を作成する
+### <a name="step-5-create-a-network-extension"></a>手順 5. ネットワーク拡張機能を作成する
 
-オンプレミス環境から Azure VMware Solution までネットワークを拡張する場合は、これらの手順に従います。
+これはオプションの手順であり、オンプレミス環境から Azure VMware Solution までネットワークを拡張します。
 
 1. **[Services]\(サービス\)** で、 **[Network Extension]\(ネットワーク拡張機能\)**  >  **[Create a Network Extension]\(ネットワーク拡張機能の作成\)** の順に選択します。
 

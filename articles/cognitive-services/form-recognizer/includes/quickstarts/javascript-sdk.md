@@ -7,15 +7,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 04/14/2021
 ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 52acb6d0e99d54491dc1ce30545629ba246acc77
-ms.sourcegitcommit: ba676927b1a8acd7c30708144e201f63ce89021d
+ms.openlocfilehash: feff8b003428fd61fba826d05f8212fa8d9788f9
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/07/2021
-ms.locfileid: "102445674"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107601942"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -23,7 +23,7 @@ ms.locfileid: "102445674"
 <!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
 >
-> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。 
+> * この記事のコードでは、単純化するために、同期メソッドと、セキュリティで保護されていない資格情報の格納を使用しています。 以下のリファレンス ドキュメントを参照してください。
 
 [リファレンスのドキュメント](../../index.yml) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/) | [パッケージ (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer) | [サンプル](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
@@ -32,7 +32,7 @@ ms.locfileid: "102445674"
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * 最新バージョンの [Node.js](https://nodejs.org/)
 * トレーニング データのセットを含む Azure Storage Blob。 トレーニング データ セットをまとめるためのヒントとオプションについては、「[カスタム モデルのトレーニング データ セットを作成する](../../build-training-data-set.md)」を参照してください。 このクイックスタートでは、[サンプル データ セット](https://go.microsoft.com/fwlink/?linkid=2090451)の **Train** フォルダーにあるファイルを使用できます (*sample_data.zip* をダウンロードして展開します)。
-* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成</a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** をクリックします。
+* Azure サブスクリプションを用意できたら、Azure portal で <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Form Recognizer リソースを作成"  target="_blank">Form Recognizer リソースを作成</a>し、自分のキーとエンドポイントを取得します。 デプロイされたら、 **[リソースに移動]** を選択します。
   * 自分のアプリケーションを Form Recognizer API に接続するには、作成したリソースのキーとエンドポイントが必要になります。 このクイックスタートで後に示すコードに、自分のキーとエンドポイントを貼り付けます。
   * Free 価格レベル (`F0`) を使用してサービスを試用し、後から運用環境用の有料レベルにアップグレードすることができます。
 
@@ -40,13 +40,13 @@ ms.locfileid: "102445674"
 
 ### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
-コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。 
+コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-`npm init` コマンドを実行し、`package.json` ファイルを使用して node アプリケーションを作成します。 
+`npm init` コマンドを実行し、`package.json` ファイルを使用して node アプリケーションを作成します。
 
 ```console
 npm init
@@ -69,18 +69,18 @@ npm install @azure/ai-form-recognizer
 > [!TIP]
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/FormRecognizer/FormRecognizerQuickstart.js) にあり、このクイックスタートのコード例が含まれています。
 
-自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。 
+自分のリソースの Azure エンドポイントおよびキー用の変数を作成します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Form Recognizer リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。 
+> Azure Portal にアクセスします。 「**前提条件**」セクションで作成した Form Recognizer リソースが正常にデプロイされた場合、 **[次の手順]** の下にある **[リソースに移動]** ボタンをクリックします。 キーとエンドポイントは、リソースの **[key and endpoint]\(キーとエンドポイント\)** ページの **[リソース管理]** にあります。
 >
 > 終わったらコードからキーを削除し、公開しないよう注意してください。 運用環境では、資格情報を安全に格納して利用するための方法を用いることを検討してください。 詳細については、Cognitive Services の[セキュリティ](../../../cognitive-services-security.md)に関するページを参照してください。
 
 ## <a name="object-model"></a>オブジェクト モデル
 
-Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`FormRecognizerClient` です。認識されたフォームのフィールドやコンテンツをサービスに照会するときに使用します。 もう 1 つは `FormTrainingClient` です。認識精度を高めるために使用できるカスタム モデルを作成したり管理したりするときに使用します。 
+Form Recognizer で作成できるクライアントは 2 種類あります。 1 つは、`FormRecognizerClient` です。認識されたフォームのフィールドやコンテンツをサービスに照会するときに使用します。 もう 1 つは `FormTrainingClient` です。認識精度を高めるために使用できるカスタム モデルを作成および管理するときに使用します。
 
 ### <a name="formrecognizerclient"></a>FormRecognizerClient
 
@@ -88,13 +88,13 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 
 * 対象のカスタム フォームを分析するようトレーニングされたカスタム モデルを使用して、フォームのフィールドやコンテンツを認識する。 これらの値は、`RecognizedForm` オブジェクトのコレクションとして返されます。
 * モデルをトレーニングせずにフォームのコンテンツ (表、行、単語など) を認識する。 フォームのコンテンツは、`FormPage` オブジェクトのコレクションとして返されます。
-* Form Recognizer サービスの事前トレーニング済みの領収書モデルを使用して、領収書から一般的なフィールドを認識する。 これらのフィールドとメタデータは、`RecognizedReceipt` のコレクションとして返されます。
+* Form Recognizer サービスの事前トレーニング済みのモデルを使用して、米国の領収書、名刺、請求書、および身分証明書から一般的なフィールドを認識する。
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
 `FormTrainingClient` には、以下を目的とした操作が用意されています。
 
-* カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を分析する。 モデルによって分析されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。 トレーニング データセットの作成について詳しくは、[ラベル付けなしのモデル トレーニングに関するサービス ドキュメント](#train-a-model-without-labels)を参照してください。
+* カスタム モデルをトレーニングして、対象のカスタム フォームにあるすべてのフィールドと値を分析する。 モデルによって分析されるフォームの種類とそれぞれのフォームの種類で抽出されるフィールドを示す `CustomFormModel` が返されます。 詳細については、[ラベル付けなしのモデル トレーニングに関するサービスのドキュメント](#train-a-model-without-labels)を "_参照_" してください。
 * 対象のカスタム フォームにラベル付けすることによって指定した特定のフィールドと値を分析するように、カスタム モデルをトレーニングする。 モデルによって抽出されるフィールドと各フィールドの推定精度を示す `CustomFormModel` が返されます。 トレーニング データセットへのラベルの適用について詳しくは、[ラベル付けを使用したモデル トレーニングに関するサービス ドキュメント](#train-a-model-with-labels)を参照してください。
 * アカウントに作成されたモデルを管理する。
 * Form Recognizer リソース間でカスタム モデルをコピーする。
@@ -109,34 +109,33 @@ Form Recognizer で作成できるクライアントは 2 種類あります。 
 * [クライアントを認証する](#authenticate-the-client)
 * [レイアウトを分析する](#analyze-layout)
 * [領収書を分析する](#analyze-receipts)
+* [名刺を分析する](#analyze-business-cards)
+* [請求書を分析する](#analyze-invoices)
+* [身分証明書を分析する](#analyze-identity-documents)
 * [カスタム モデルをトレーニングする](#train-a-custom-model)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルを管理する](#manage-your-custom-models)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
 
-
-
 定義したサブスクリプション変数を使用してクライアント オブジェクトを認証します。 新しいクライアント オブジェクトを作成せずに、必要に応じて API キーを更新できるように、`AzureKeyCredential` オブジェクトを使用します。 また、トレーニング クライアント オブジェクトも作成します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_auth)]
 
-
 ## <a name="get-assets-for-testing"></a>テスト用のアセットを取得する
 
 また、トレーニング データとテスト データの URL への参照を追加する必要もあります。
-* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
-   
-   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
-* 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。 
 
+* [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
+
+   :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="SAS URL の取得":::
+* 以下のサンプルに含まれるフォームや領収書のサンプル画像を使用します ([GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/assets) から入手することもできます)。または、上記の手順を使用して、Blob Storage 内の各ドキュメントの SAS URL を取得することもできます。
 
 ## <a name="analyze-layout"></a>レイアウトを分析する
 
 Form Recognizer を使用すると、ドキュメント内の表、行、および単語を分析できます。モデルをトレーニングする必要はありません。 レイアウトの抽出の詳細については、[レイアウトの概念ガイド](../../concept-layout.md)を参照してください。 指定された URI にあるファイルの内容を分析するには、`beginRecognizeContentFromUrl` メソッドを使用します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
-
 
 > [!TIP]
 > また、ローカルのファイルから内容を取得することもできます。 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) のメソッドを参照してください (**beginRecognizeContent** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上のサンプル コードを参照してください。
@@ -157,7 +156,61 @@ cell [1,3] has text $56,651.49
 cell [1,5] has text PT
 ```
 
+## <a name="analyze-receipts"></a>領収書を分析する
 
+このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。
+
+URI からレシートを分析するには、`beginRecognizeReceiptsFromUrl` メソッドを使用します。 次のコードは、指定された URI で領収書を処理し、主要なフィールドと値をコンソールに出力します。
+
+[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
+
+> [!TIP]
+> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) のメソッドを参照してください (**beginRecognizeReceipts** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上のサンプル コードを参照してください。
+
+### <a name="output"></a>出力
+
+```console
+status: notStarted
+status: running
+status: succeeded
+First receipt:
+  Receipt Type: 'Itemized', with confidence of 0.659
+  Merchant Name: 'Contoso Contoso', with confidence of 0.516
+  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
+    Item Name: '8GB RAM (Black)', with confidence of 0.916
+    Item Name: 'SurfacePen', with confidence of 0.858
+  Total: '1203.39', with confidence of 0.774
+```
+
+## <a name="analyze-business-cards"></a>名刺を分析する
+
+このセクションでは、事前トレーニング済みのモデルを使用して、英語の名刺から一般的なフィールドを分析、抽出する方法を示します。 名刺の分析の詳細については、[名刺の概念ガイド](../../concept-business-cards.md)を参照してください。
+
+URL から名刺を分析するには、`beginRecognizeBusinessCardsFromURL` メソッドを使用します。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js" id="snippet_bc":::
+
+> [!TIP]
+> ローカルにある名刺の画像を分析することもできます。 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) のメソッドを参照してください (**beginRecognizeBusinessCards** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上のサンプル コードを参照してください。
+
+## <a name="analyze-invoices"></a>請求書を分析する
+
+このセクションでは、事前トレーニング済みのモデルを使用して、売上請求書から共通フィールドを分析、抽出する方法を示します。 請求書の分析の詳細については、[請求書の概念ガイド](../../concept-invoices.md)を参照してください。
+
+URL から請求書を分析するには、`beginRecognizeInvoicesFromUrl` メソッドを使用します。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js" id="snippet_invoice":::
+
+> [!TIP]
+> ローカルにある名刺の画像を分析することもできます。 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) のメソッドを参照してください (**beginRecognizeInvoices** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上のサンプル コードを参照してください。
+
+## <a name="analyze-identity-documents"></a>身分証明書を分析する
+
+このセクションでは、Form Recognizer のあらかじめ構築された ID モデルを使用して、政府発行の身分証明書 (世界各国のパスポートと米国の運転免許証) から重要な情報を分析および抽出する方法を示します。 請求書分析の詳細については、[あらかじめ構築された身分証明書モデルの概念ガイド](../../concept-identification-cards.md)を参照してください。
+
+URL から身分証明書を分析するには、`beginRecognizeIdDocumentsFromUrl` メソッドを使用します。
+
+:::code language="javascript" source="~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js" id="snippet_id":::
 
 ## <a name="train-a-custom-model"></a>カスタム モデルをトレーニングする
 
@@ -170,14 +223,13 @@ cell [1,5] has text PT
 
 カスタム モデルをトレーニングして、トレーニング ドキュメントに手動でラベルを付けることなく、カスタム フォームにあるすべてのフィールドと値を分析できるようにします。
 
-次の関数は、指定された一連のドキュメントでモデルをトレーニングし、モデルの状態をコンソールに出力します。 
+次の関数は、指定された一連のドキュメントでモデルをトレーニングし、モデルの状態をコンソールに出力します。
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_train)]
 
-
 ### <a name="output"></a>出力
 
-これは、[JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer) から入手できるトレーニング データを使用してトレーニングされたモデルの出力です。このサンプル出力は、読みやすくするために一部が省略されています。
+これは、[JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer) から入手できるトレーニング データを使用してトレーニングされたモデルの出力です。 このサンプル出力は、読みやすくするために一部が省略されています。
 
 ```console
 training status: creating
@@ -199,15 +251,15 @@ The model found field 'field-7'
 Document name: Form_1.jpg
 Document status: succeeded
 Document page count: 1
-Document errors: 
+Document errors:
 Document name: Form_2.jpg
 Document status: succeeded
 Document page count: 1
-Document errors: 
+Document errors:
 Document name: Form_3.jpg
 Document status: succeeded
 Document page count: 1
-Document errors: 
+Document errors:
 ...
 ```
 
@@ -217,10 +269,9 @@ Document errors:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_trainlabels)]
 
+### <a name="output"></a>出力
 
-### <a name="output"></a>出力 
-
-これは、[JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) から入手できるトレーニング データを使用してトレーニングされたモデルの出力です。このサンプル出力は、読みやすくするために一部が省略されています。
+これは、[JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) から入手できるトレーニング データを使用してトレーニングされたモデルの出力です。 このサンプル出力は、読みやすくするために一部が省略されています。
 
 ```console
 training status: creating
@@ -264,7 +315,6 @@ Document errors: undefined
 > [!TIP]
 > ローカルのファイルを分析することもできます。 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) のメソッドを参照してください (**beginRecognizeCustomForms** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上のサンプル コードを参照してください。
 
-
 ### <a name="output"></a>出力
 
 ```console
@@ -301,32 +351,6 @@ Field Signature has value 'undefined' with a confidence score of undefined
 Field Subtotal has value 'undefined' with a confidence score of undefined
 Field Tax has value 'undefined' with a confidence score of undefined
 Field Total has value 'undefined' with a confidence score of undefined
-```
-
-## <a name="analyze-receipts"></a>領収書を分析する
-
-このセクションでは、事前トレーニング済みの領収書モデルを使用して、米国のレシートから共通フィールドを分析、抽出する方法を示します。 レシートの分析の詳細については、[レシートの概念ガイド](../../concept-receipts.md)を参照してください。
-
-URI からレシートを分析するには、`beginRecognizeReceiptsFromUrl` メソッドを使用します。 次のコードは、指定された URI で領収書を処理し、主要なフィールドと値をコンソールに出力します。
-
-[!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_receipts)]
-
-> [!TIP]
-> ローカルにあるレシートの画像を分析することもできます。 [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) のメソッドを参照してください (**beginRecognizeReceipts** など)。 また、ローカルの画像に関連したシナリオについては、[GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples) 上のサンプル コードを参照してください。
-
-### <a name="output"></a>出力
-
-```console
-status: notStarted
-status: running
-status: succeeded
-First receipt:
-  Receipt Type: 'Itemized', with confidence of 0.659
-  Merchant Name: 'Contoso Contoso', with confidence of 0.516
-  Transaction Date: 'Sun Jun 09 2019 17:00:00 GMT-0700 (Pacific Daylight Time)', with confidence of 0.985
-    Item Name: '8GB RAM (Black)', with confidence of 0.916
-    Item Name: 'SurfacePen', with confidence of 0.858
-  Total: '1203.39', with confidence of 0.774
 ```
 
 ## <a name="manage-your-custom-models"></a>カスタム モデルを管理する

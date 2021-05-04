@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 03/29/2021
 ms.author: pafarley
-ms.openlocfilehash: 407ef167ca05f08d349a017c60164e2fe67977a6
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0af6c97d6179a645b078f2335ff38f48890c42a3
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327417"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728196"
 ---
 <a name="HOLTop"></a>
 
@@ -79,7 +79,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 > [!TIP]
 > クイックスタートのコード ファイル全体を一度にご覧いただけます。 これは [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs) にあり、このクイックスタートのコード例が含まれています。
 
-プロジェクト ディレクトリから、好みのエディターまたは IDE で *ComputerVisionQuickstart.cs* ファイルを開きます。 次の `using` ディレクティブを追加します。
+プロジェクト ディレクトリから、好みのエディターまたは IDE で *Program.cs* ファイルを開きます。 次の `using` ディレクティブを追加します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_using)]
 
@@ -150,19 +150,19 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_visualfeatures)]
 
-次のいずれかのコード ブロックを **AnalyzeImageUrl** メソッドに挿入して、その機能を実装します。 末尾に右角かっこを追加することを忘れないでください。
-
-```csharp
-}
-```
-
-### <a name="analyze"></a>分析
+### <a name="call-the-analyze-api"></a>Analyze API を呼び出す
 
 **AnalyzeImageAsync** メソッドは、抽出されたすべての情報を含む **ImageAnalysis** オブジェクトを返します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_analyze_call)]
 
 以降のセクションでは、この情報の解析方法について詳しく説明します。
+
+次のコード ブロックのいずれかを **AnalyzeImageUrl** メソッドに挿入して、上記で要求した視覚的特徴からのデータを解析します。 末尾に右角かっこを追加することを忘れないでください。
+
+```csharp
+}
+```
 
 ### <a name="get-image-description"></a>画像の説明の取得
 

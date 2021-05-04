@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39eec4fb6e9907b36908a87c09aceabd0dd1a678
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 8c18dd231a708030e3a454ab8708e3f0f11dbecf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106075168"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861825"
 ---
 # <a name="tutorial-enable-users-to-unlock-their-account-or-reset-passwords-using-azure-active-directory-self-service-password-reset"></a>チュートリアル:Azure Active Directory のセルフサービス パスワード リセットを使用して、ユーザーが自分のアカウントのロック解除またはパスワードのリセットを実行できるようにする
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) のセルフサービス パスワード リ�
 
 このチュートリアルを完了するには、以下のリソースと特権が必要です。
 
-* 少なくとも Azure AD Free または試用版ライセンスが有効になっている、動作している Azure AD テナント。 Free レベルでは、SSPR は Azure AD のクラウド ユーザーに対してのみ機能します。
+* 少なくとも Azure AD Free または試用版ライセンスが有効になっている、動作している Azure AD テナント。 Free レベルでは、SSPR は Azure AD のクラウド ユーザーに対してのみ機能します。 Free レベルでは、パスワードの変更がサポートされていますが、パスワードのリセットはサポートされていません。 
     * このシリーズの後の方のチュートリアルでは、オンプレミスのパスワード ライトバック用の Azure AD Premium P1 または試用版ライセンスが必要です。
     * 必要に応じて、[Azure アカウントを無料で作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)します。
 * "*グローバル管理者*" 特権を持つアカウント。
@@ -113,7 +113,7 @@ Azure AD では、SSPR を有効にするユーザーを *[なし]* 、 *[選択
 
 ## <a name="test-self-service-password-reset"></a>セルフサービス パスワード リセット をテストする
 
-SSPR を有効にして設定したら、前のセクションで選択したグループ (*Test-SSPR-Group* など) に属しているユーザーを使用して SSPR プロセスをテストします。 次の例では、*testuser* アカウントを使用します。 独自のユーザー アカウントを指定してください。このチュートリアルの最初のセクションで SSPR を有効にしたグループに属しているものです。 It's part of the group you enabled for SSPR in the first section of this tutorial.
+SSPR を有効にして設定したら、前のセクションで選択したグループ (*Test-SSPR-Group* など) に属しているユーザーを使用して SSPR プロセスをテストします。 次の例では、*testuser* アカウントを使用します。 独自のユーザー アカウントを指定してください。このチュートリアルの最初のセクションで SSPR を有効にしたグループに属しているものです。 このチュートリアルの最初のセクションで SSPR を有効にしたグループに属しているものです。
 
 > [!NOTE]
 > セルフサービス パスワード リセットをテストする場合は、管理者以外のアカウントを使用します。 既定では、Azure AD によってセルフサービス パスワード リセットが管理者に対して有効になっています。 自分のパスワードをリセットするには 2 つの認証方法を使用する必要があります。 詳細については、「[管理者リセット ポリシーの相違点](concept-sspr-policy.md#administrator-reset-policy-differences)」を参照してください。

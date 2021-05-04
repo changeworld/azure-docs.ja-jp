@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 7b7adde8a6e60042bec7695e4553d6470e548316
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: df89335880802680e6074c467227ca49a841d5ca
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106055690"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108016655"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 
@@ -129,6 +129,7 @@ Microsoft ID プラットフォームは、登録済みのアプリケーショ�
 1. **[追加]** を選択します。
 1. クライアント アプリケーションのコードで使用できるように、"*シークレットの値を記録します*"。 このページからの移動後は、このシークレットの値は "*二度と表示されません*"。
 
+セキュリティ上の理由から、Microsoft は 24 か月を超えるクライアント シークレットの作成を制限しており、これを 12 か月未満の値に設定することを強くお勧めします。
 
 ## <a name="next-steps"></a>次のステップ
 

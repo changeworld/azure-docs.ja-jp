@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: クイック スタート - Azure Digital Twins Explorer サンプルを使用して、事前構築済みのシナリオを視覚化し、精査します。
 author: baanders
 ms.author: baanders
-ms.date: 9/24/2020
+ms.date: 4/27/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: adafbdb903c9ba827e8ccf56890c69ee2ce4eaf5
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: ca50c0221843b4e24a6287177f36608b86a0a1a9
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107491104"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075772"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-azure-digital-twins-explorer"></a>クイック スタート - Azure Digital Twins Explorer を使用して、Azure Digital Twins のサンプル シナリオを精査する
 
@@ -89,7 +89,7 @@ Azure Digital Twins Explorer アプリケーションは、ローカル コン�
 
    数秒後、ブラウザー ウィンドウが開き、ブラウザーにアプリが表示されます。
 
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリがブラウザー ウィンドウに表示されている。このアプリは Azure Digital Twins Explorer と呼ばれ、クエリ エクスプローラー、モデル ビュー、グラフ ビュー、プロパティ エクスプローラーのボックスが含まれる。画面上にはまだデータがない。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="localhost:3000 で実行中のアプリが表示されたブラウザー ウィンドウ。このアプリは Azure Digital Twins Explorer と呼ばれ、クエリ エクスプローラー、モデル、グラフ ビュー、プロパティの各パネルが含まれています。画面上にデータはまだありません。" lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
 1. 設定したインスタンスを操作できるように Azure Digital Twins Explorer を構成するために、下の図に示されているように、ウィンドウ右上隅の **[サインイン]** ボタンを選択します。
 
@@ -132,23 +132,18 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 
 次の手順に従いモデルをアップロードします。
 
-1. **[モデル ビュー]** ボックスの **[Upload a Model]\(モデルのアップロード\)** アイコンを選択します。
+1. **[モデル]** パネルで **[Upload a Model]\(モデルのアップロード\)** アイコンを選択します。
 
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/upload-model.png" alt-text="[モデル ビュー] ボックスの中央のアイコンが強調表示されている。クラウドに向かう矢印を示している。" lightbox="media/quickstart-azure-digital-twins-explorer/upload-model.png":::
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/upload-model.png" alt-text="[モデル] パネルで中央のアイコンが強調表示されています。クラウドに向かう矢印が示されています。" lightbox="media/quickstart-azure-digital-twins-explorer/upload-model.png":::
  
-1. 表示されたファイル セレクター ボックスで、ダウンロードしたリポジトリの **digital-twins-explorer-main/client/examples** フォルダーに移動します。
+1. 表示されたファイル セレクター ウィンドウで、ダウンロードしたリポジトリの **digital-twins-explorer-main/client/examples** フォルダーに移動します。
 1. **Room.json** と **Floor.json** を選択し、 **[OK]** を選択します。 必要に応じて別のモデルもアップロードできますが、このクイックスタートでは使用しません。
-1. Azure アカウントへのサインインを求めるポップアップ ダイアログ ボックスに従います。
 
->[!NOTE]
->次のようなエラー メッセージが表示されることがあります。:::image type="content" source="media/quickstart-azure-digital-twins-explorer/error-models-popup.png" alt-text="&quot;Error: Error fetching models: ClientAuthError: Error opening popup window. This can happen if you are using IE or if popups are blocked in the browser. &quot; (エラー: モデルをフェッチしているときにエラーが発生しました: ClientAuthError: ポップアップ ウィンドウを開いているときにエラーが発生しました。これは、IE を使用しているか、ポップアップがブラウザーでブロックされている場合に発生します。) という、一番下に [閉じる] ボタンを備えたポップアップ ボックスが表示される。" border="false"::: 
-> ポップアップ ブロッカーを無効にするか、別のブラウザーを使用してみてください。
-
-これで、Azure Digital Twins Explorer によって、これらのモデル ファイルが Azure Digital Twins インスタンスにアップロードされます。 これらは、フレンドリ名と完全なモデル ID と共に **[モデル ビュー]** ボックスに表示されます。 **[モデルの表示]** という情報アイコンを選択すると、それらの背後にある DTDL コードが表示されます。
+これで、Azure Digital Twins Explorer によって、これらのモデル ファイルが Azure Digital Twins インスタンスにアップロードされます。 これらは、フレンドリ名および完全なモデル ID と共に **[モデル]** パネルに表示されます。 **[モデルの表示]** という情報アイコンを選択すると、それらの背後にある DTDL コードが表示されます。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/model-info.png" alt-text="Floor (dtmi:example:Floor;1) と Room (dtmi:example:Room;1) という 2 つのモデルの定義が一覧表示されている [モデル ビュー] ボックス。各モデルの [モデルの表示] 情報アイコン (円の中にアルファベットの &quot;i&quot;) が強調表示されている。" lightbox="media/quickstart-azure-digital-twins-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/model-info.png" alt-text="Floor (dtmi:example:Floor;1) と Room (dtmi:example:Room;1) という 2 つのモデル定義が表示された [モデル] パネルのビュー。各モデルの [モデルの表示] 情報アイコン (円の中にアルファベットの &quot;i&quot;) が強調表示されています。" lightbox="media/quickstart-azure-digital-twins-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -173,15 +168,15 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 
 こちらの手順に従いグラフをインポートします。
 
-1. **[グラフ ビュー]** ボックスの **[Import Graph]\(グラフのインポート\)** アイコンを選択します。
+1. **[TWIN GRAPH]\(ツイン グラフ\)** パネルで、 **[Import Graph]\(グラフのインポート\)** アイコンを選択します。
 
-   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/import-graph.png" alt-text="[グラフ ビュー] ボックスで強調表示されているアイコン。クラウドに向かう矢印を示している。" lightbox="media/quickstart-azure-digital-twins-explorer/import-graph.png":::
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/import-graph.png" alt-text="[グラフ ビュー] パネルでアイコンが強調表示されています。クラウドに向かう矢印が示されています。" lightbox="media/quickstart-azure-digital-twins-explorer/import-graph.png":::
 
-2. ファイル セレクター ボックスで **digital-twins-explorer-main/client/examples** フォルダーに移動し、**buildingScenario.xlsx** スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 **[OK]** を選択します。
+2. ファイル セレクター ウィンドウで、**digital-twins-explorer-main/client/examples** フォルダーに移動し、**buildingScenario.xlsx** スプレッドシート ファイルを選択します。 このファイルには、サンプル グラフの説明が含まれています。 **[OK]** を選択します。
 
    数秒後、Azure Digital Twins Explorer で **[インポート]** ビューが開き、読み込まれるグラフのプレビューが表示されます。
 
-3. グラフのアップロードを確認するには、 **[グラフ ビュー]** ボックスの右上隅にある **[保存]** アイコンを選択します。
+3. グラフのアップロードを確認するには、 **[TWIN GRAPH]\(ツイン グラフ\)** パネルの右上隅にある **[保存]** アイコンを選択します。
 
    :::row:::
     :::column:::
@@ -199,21 +194,23 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
     :::column-end:::
     :::column:::
     :::column-end:::
-    :::column:::
-    :::column-end:::
    :::row-end:::
 
-5. これでグラフが Azure Digital Twins Explorer にアップロードされました。 グラフを表示するには、Azure Digital Twins Explorer ウィンドウの上部付近にある **Graph エクスプローラー** ボックスの **[クエリの実行]** ボタンを選択します。
+5. これでグラフが Azure Digital Twins Explorer にアップロードされました。 **[TWIN GRAPH]\(ツイン グラフ\)** パネルに切り替えます。
+ 
+   :::image type="content" source="media/quickstart-azure-digital-twins-explorer/twin-graph-tab.png" alt-text="[TWIN GRAPH]\(ツイン グラフ\) タブが強調表示されています。" lightbox="media/quickstart-azure-digital-twins-explorer/twin-graph-tab.png":::
+
+6. グラフを表示するには、Azure Digital Twins Explorer ウィンドウの上部付近にある、 **[クエリ エクスプローラー]** パネルの **[クエリの実行]** ボタンを選択します。
 
    :::image type="content" source="media/quickstart-azure-digital-twins-explorer/run-query.png" alt-text="ウィンドウの右上隅にある [クエリの実行] ボタンが強調表示されている。" lightbox="media/quickstart-azure-digital-twins-explorer/run-query.png":::
 
-このアクションにより、すべてのデジタル ツインを選択して表示する既定のクエリが実行されます。 Azure Digital Twins Explorer によって、サービスからすべてのツインとリレーションシップが取得されます。 これらによって定義されたグラフが **[グラフ ビュー]** ボックスに描画されます。
+このアクションにより、すべてのデジタル ツインを選択して表示する既定のクエリが実行されます。 Azure Digital Twins Explorer によって、サービスからすべてのツインとリレーションシップが取得されます。 これらによって定義されたグラフが **[TWIN GRAPH]\(ツイン グラフ\)** パネルに描画されます。
 
 ## <a name="explore-the-graph"></a>グラフを精査する
 
 次は、アップロードしたサンプル シナリオのグラフを確認しましょう。
 
-:::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="ツイン グラフが存在する [グラフ ビュー] ボックスのビュー。&quot;floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;room1&quot; という円に接続されている。&quot;floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;room0&quot; という円に接続されている。":::
+:::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="ツイン グラフが存在する [グラフ ビュー] パネルのビュー。&quot;floor1&quot; という円が &quot;contains&quot; という矢印によって &quot;room1&quot; という円に接続されています。&quot;floor0&quot; という円が &quot;contains&quot; という矢印によって &quot;room0&quot; という円に接続されています。":::
 
 円 (グラフの "ノード") は、デジタル ツインを表します。 線はリレーションシップを表します。 **Floor0** ツインには **Room0** が含まれており、**Floor1** ツインには **Room1** が含まれています。
 
@@ -221,13 +218,13 @@ Azure Digital Twins ソリューションで実行する最初の手順は、対
 
 ### <a name="view-twin-properties"></a>ツインのプロパティを表示する
 
-ツインを選択すると、そのプロパティと値を **[PROPERTY EXPLORER]\(プロパティ エクスプローラー\)** ボックスに一覧表示できます。
+ツインを選択すると、そのプロパティと値の一覧を **[プロパティ]** パネルに表示できます。
 
 次に示すのは、Room0 のプロパティです。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room0.png" alt-text="枠で強調表示された [Property Explorer]\(プロパティ エクスプローラー\) ボックスに Room0 のプロパティが表示されている。たとえば、$dtId フィールドは Room0、Temperature フィールドは 70、Humidity フィールドは 30 となっている。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room0.png" alt-text="Room0 のプロパティを示す [プロパティ] パネルが強調表示されています。たとえば、$dtId フィールドは Room0、Temperature フィールドは 70、Humidity フィールドは 30 になっています。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -239,7 +236,7 @@ Room0 の温度は 70 度です。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room1.png" alt-text="枠で強調表示された [Property Explorer]\(プロパティ エクスプローラー\) ボックスに Room1 のプロパティが表示されている。たとえば、$dtId フィールドは Room1、Temperature フィールドは 80、Humidity フィールドは 60 となっている。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/properties-room1.png" alt-text="Room1 のプロパティを示す [プロパティ] パネルが強調表示されています。たとえば、$dtId フィールドは Room1、Temperature フィールドは 80、Humidity フィールドは 60 になっています。" lightbox="media/quickstart-azure-digital-twins-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -255,9 +252,9 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 このセクションでは、クエリを実行して、温度が 75 度を上回っている環境内のツインの数はいくつかという質問への回答を得ます。
 
-回答を得るためには、 **[QUERY EXPLORER]\(クエリ エクスプローラー\)** ボックスで次のクエリを実行します。
+回答を得るには、 **[クエリ エクスプローラー]** パネルで次のクエリを実行します。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="TemperatureQuery":::
 
 先ほどツインのプロパティを確認したことを思い出してください。Room0 の温度は 70 度、Room1 の温度は 80 度です。 したがって、ここで結果として返されるのは Room1 のみです。
     
@@ -270,13 +267,17 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 グラフに表されたツインのプロパティは、Azure Digital Twins Explorer を使用して編集できます。 このセクションでは、Room0 の温度を 76 度に上げます。
 
-最初に、 **[PROPERTY EXPLORER]\(プロパティ エクスプローラー\)** ボックスで **Room0** を選択し、そのプロパティ リストを呼び出します。
+まず、次のクエリを再実行して、すべてのデジタル ツインを選択します。 これにより、 **[TWIN GRAPH]\(ツイン グラフ\)** パネルに完全なグラフがもう一度表示されます。
+
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="GetAllTwins":::
+
+**[Room0]** を選択して、 **[プロパティ]** パネルにプロパティの一覧を表示します。
 
 このリストのプロパティは編集することができます。 温度の値 **70** を選択して、新しい値を入力できるようにします。 「**76**」と入力し、 **[保存]** アイコンを選択して、温度を **76** 度に更新します。
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png" alt-text="Room0 のプロパティを表示する [Property Explorer]\(プロパティ エクスプローラー\) ボックス。温度の値が編集可能な状態で &quot;76&quot; と表示されている。また、[保存] アイコンが強調表示されている。" lightbox="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png" alt-text="Room0 のプロパティを示す [プロパティ] パネル。温度値は編集可能なボックスであり、&quot;76&quot; と表示されています。また、[保存] アイコンが強調表示されています。" lightbox="media/quickstart-azure-digital-twins-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -288,7 +289,7 @@ Azure Digital Twins の主な機能は、環境についての質問に答える
 
 グラフでの更新内容が Room0 の温度に正常に登録されたことを確認するには、先ほどのクエリを再実行して、温度が 75 度を超えるすべてのツインを環境から取得します。
 
-:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="TemperatureQuery":::
+:::code language="sql" source="~/digital-twins-docs-samples/queries/examples.sql" id="TemperatureQuery":::
 
 Room0 の温度が 70 度から 76 度に変更されたので、今度は、両方のツインが結果に表示されているはずです。
 

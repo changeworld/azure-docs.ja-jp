@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: eae4d00cd7b1a0ff90648086320135505a0d900a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f9ba38b6493ee3dcb246382407552091b97454f0
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107318765"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108121214"
 ---
 Java 用 Anomaly Detector (多変量) クライアント ライブラリを使ってみましょう。 サービスによって提供されるアルゴリズムを使用してパッケージをインストールするには、次の手順に従います。 新しい多変量異常検出 API を使用すると、機械学習の知識やラベル付けされたデータがなくても、一連のメトリックから異常を検出できる高度な AI を開発者が容易に統合することができます。 異なる信号間の依存関係や相互相関が自動的に主要な要因として考慮されます。 これにより、複雑なシステムを障害から予防的に保護することができます。
 
@@ -22,6 +22,8 @@ Java 用 Anomaly Detector (多変量) クライアント ライブラリは、�
 * 時系列のグループからシステム レベルの異常を検出する。
 * 個々の時系列では得られる情報が少なく、すべての信号に着目して問題を検出する必要がある。
 * システム正常性をさまざまな側面から測定する数十個から数百個にのぼる各種センサーを使用して高価な物理資産の予測メンテナンスを行う。
+
+[ライブラリ ソース コード](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector) | [パッケージ (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/) | [サンプル コード](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -151,7 +153,7 @@ AnomalyDetectorClient anomalyDetectorClient = new AnomalyDetectorClientBuilder()
 
 まず、モデル要求を構築する必要があります。 開始時刻と終了時刻は、必ずデータソースに合わせて調整してください。
 
- Anomaly Detector (多変量) API を使用するには、検出を使用する前に独自のモデルをトレーニングする必要があります。 トレーニングに使用するデータは時系列のバッチであり、各時系列は、timestamp と value の 2 つの列を含む CSV 形式である必要があります。 すべての時系列を 1 つの ZIP ファイルに圧縮し、[Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs) にアップロードする必要があります。 既定では、時系列の変数を表すためにこのファイル名が使用されます。 あるいは、変数の名前を .zip ファイル名とは異なるものにしたい場合は、追加の meta.json ファイルを ZIP ファイルに含めることもできます。 [BLOB の SAS (Shared Access Signature) URL](../../../../storage/common/storage-sas-overview.md) を生成したら、ZIP ファイルの URL をトレーニングに使用できます。
+Anomaly Detector (多変量) API を使用するには、検出を使用する前に独自のモデルをトレーニングする必要があります。 トレーニングに使用するデータは、時系列のバッチです。各時系列は、 **"timestamp"** と **"value"** の 2 つの列だけを含む CSV ファイルに含まれている必要があります (列名はまったく同じである必要があります)。 各 CSV ファイルには、時系列の各変数にちなんで名前を付ける必要があります。 すべての時系列を 1 つの ZIP ファイルに圧縮し、[Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs) にアップロードします。ZIP ファイル名の要件はありません。 あるいは、変数の名前を .zip ファイル名とは異なるものにしたい場合は、追加の meta.json ファイルを ZIP ファイルに含めることもできます。 [BLOB の SAS (Shared Access Signature) URL](../../../../storage/common/storage-sas-overview.md) を生成したら、ZIP ファイルの URL をトレーニングに使用できます。
 
 ```java
 Path path = Paths.get("test-data.csv");
@@ -253,6 +255,8 @@ Response<Void> deleteMultivariateModelWithResponse = anomalyDetectorClient.delet
 gradle build
 ```
 ### <a name="run-the-application"></a>アプリケーションの実行
+
+実行する前に、実際のコードを[完全なサンプル コード](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/src/samples/java/com/azure/ai/anomalydetector/MultivariateSample.java)に照らして確認することをお勧めします。
 
 `run` ゴールを使用してアプリケーションを実行します。
 

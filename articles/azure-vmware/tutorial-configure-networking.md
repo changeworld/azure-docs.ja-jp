@@ -2,13 +2,14 @@
 title: チュートリアル - Azure で VMware プライベート クラウド用のネットワークを構成する
 description: Azure にプライベート クラウドをデプロイするために必要なネットワークを作成して構成する方法について説明します
 ms.topic: tutorial
-ms.date: 03/13/2021
-ms.openlocfilehash: c609d191191cd9de111e83fe62761b149405cccc
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: contperf-fy21q4
+ms.date: 04/23/2021
+ms.openlocfilehash: 13f74c6120bd78127a2989218b3d535989bb7861
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103494364"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107945688"
 ---
 # <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>チュートリアル:Azure で VMware プライベート クラウド用のネットワークを構成する
 
@@ -20,10 +21,7 @@ Azure VMware Solution プライベート クラウドには、Azure Virtual Netw
 > * 仮想ネットワークの作成
 > * 仮想ネットワーク ゲートウェイの作成
 > * ExpressRoute 回線をゲートウェイに接続する
-> * vCenter および NSX Manager の URL を見つける
 
-## <a name="prerequisites"></a>前提条件 
-[Azure VMware Solution のプライベート クラウド](tutorial-create-private-cloud.md)を作成した仮想ネットワーク。 
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
@@ -88,15 +86,7 @@ Azure VMware Solution プライベート クラウドには、Azure Virtual Netw
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
 
-## <a name="locate-the-urls-for-vcenter-and-nsx-manager"></a>vCenter および NSX Manager の URL を見つける
-
-vCenter と NSX Manager にサインインするには、vCenter Web クライアントと NSX-T Manager サイトの URL が必要です。 
-
-Azure VMware Solution プライベート クラウドに移動し、 **[管理]** の下の **[ID]** を選択します。ここで必要な情報を確認します。
-
-:::image type="content" source="./media/tutorial-access-private-cloud/ss4-display-identity.png" alt-text="vCenter と NSX-T の資格情報および Web クライアントの URL のスクリーンショット。" border="true" lightbox="media/tutorial-access-private-cloud/ss4-display-identity.png":::
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、以下の内容を学習しました。
 
@@ -104,7 +94,7 @@ Azure VMware Solution プライベート クラウドに移動し、 **[管理]*
 > * 仮想ネットワークの作成
 > * 仮想ネットワーク ゲートウェイの作成
 > * ExpressRoute 回線をゲートウェイに接続する
-> * vCenter および NSX Manager の URL を見つける
+
 
 次のチュートリアルに進み、vCenter の VM に使用される NSX-T ネットワーク セグメントを作成する方法を学習します。
 

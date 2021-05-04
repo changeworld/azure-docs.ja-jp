@@ -6,15 +6,15 @@ author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: 62801d40295762b0066f0d2887d7d528ee7b7c2a
-ms.sourcegitcommit: b4647f06c0953435af3cb24baaf6d15a5a761a9c
+ms.openlocfilehash: 194836dc68ea5ddc5afbfff7e7031c6461515fe2
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2021
-ms.locfileid: "101656824"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107885760"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
@@ -53,11 +53,7 @@ Azure Machine Learning のデータのラベル付け機能を通じて、ラベ
 * ラベルのセットから "*1 つのラベル*" だけを画像に適用する場合は、プロジェクトに対して **[イメージ分類の複数クラス]** を選択します。
 * ラベルのセットから "*1 つまたは複数*" のラベルを画像に適用する場合は、プロジェクトに対して **[Image Classification Multi-label]\(画像分類の複数ラベル\)** を選択します。 たとえば、犬の写真には "*犬*" と "*日中*" の両方のラベルが付けられる可能性があります。
 * 画像内の各オブジェクトにラベルと境界ボックスを割り当てる場合は、プロジェクトに対して **[オブジェクト ID (四角形領域)]** を選択します。
-* 画像内の各オブジェクトにラベルを割り当て、その周囲にポリゴンを描画する場合は、プロジェクトに対して **[インスタンスのセグメント化 (ポリゴン)] (プレビュー)** を選択します。
-
-> [!IMPORTANT]
-> "インスタンスのセグメント化 (ポリゴン)" はパブリック プレビューの段階にあります。
-> プレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+* 画像内の各オブジェクトにラベルを割り当て、その周囲にポリゴンを描画する場合は、プロジェクトに対して **[インスタンスのセグメント化 (ポリゴン)]** を選択します。
 
 続行する準備ができたら、 **[次へ]** を選択します。
 
