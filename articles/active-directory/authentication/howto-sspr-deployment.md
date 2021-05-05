@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55fc4c0b5f3e2bbf57c972ad4a7fd2c9bdd3810e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f3e7792546531d7f443a44b127620d508816edcb
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104579197"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285774"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory のセルフサービス パスワード リセットのデプロイを計画する
 
@@ -87,7 +87,7 @@ Azure Active Directory はユーザーごとのライセンスであり、機能
 |チュートリアル |[Azure AD のセルフサービス パスワード リセット のパイロット展開を完了する](./tutorial-enable-sspr.md) |
 | |「[パスワード ライトバックを有効にする](./tutorial-enable-sspr-writeback.md)」を使用して、パスワード ライトバックを有効にする |
 | |[Windows 10 のログイン画面からの Azure AD パスワード リセット](./howto-sspr-windows.md) |
-| よく寄せられる質問|[パスワード管理に関するよく寄せられる質問 (FAQ)](./active-directory-passwords-faq.md) |
+| よく寄せられる質問|[パスワード管理に関するよく寄せられる質問 (FAQ)](./active-directory-passwords-faq.yml) |
 
 
 ### <a name="solution-architecture"></a>ソリューションのアーキテクチャ
@@ -328,7 +328,7 @@ Azure portal で構築済みのレポートを使用して、SSPR のパフォ�
 
 * 「[セルフサービスのパスワードのリセットのトラブルシューティング](./troubleshoot-sspr.md)」を参照してください 
 
-* 「[パスワード管理に関するよく寄せられる質問 (FAQ)](./active-directory-passwords-faq.md)」に従ってください 
+* 「[パスワード管理に関するよく寄せられる質問 (FAQ)](./active-directory-passwords-faq.yml)」に従ってください 
 
 ### <a name="helpful-documentation"></a>役に立つドキュメント
 

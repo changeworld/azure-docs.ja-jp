@@ -1,19 +1,19 @@
 ---
 title: Azure 上で VMware を実行する場合のアプリケーション高可用性の確保
 description: CloudSimple プライベート クラウド内で実行されているアプリケーションの一般的なアプリケーション エラー シナリオに対処するための CloudSimple 高可用性機能について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 6c80b9fd65588fe6c390f44b34509168f3bfb549
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 20cd474c36749cfbe9848dd54f2a38892bd80ec0
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106077688"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177748"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Azure 上で VMware を実行する場合のアプリケーション高可用性の確保
 

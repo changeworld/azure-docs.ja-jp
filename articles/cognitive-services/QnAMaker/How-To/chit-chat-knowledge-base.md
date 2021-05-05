@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1208d95a282ca6e236d9d6be8013f51dead90d13
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0463ccf12a254ebda1ee3d6f9cc9bfe7f43b4e80
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "94376656"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108178720"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>ナレッジ ベースにおしゃべりを追加する
 
@@ -22,7 +22,7 @@ ms.locfileid: "94376656"
 
 このデータセットには、複数のペルソナ (Professional、Friendly、Witty など) の音声の約 100 のシナリオのおしゃべりが含まれています。 ボットの音声に最も近いペルソナを選択します。 ユーザー クエリを指定すると、QnA Maker がそれを、最も近い既知のおしゃべり QnA と一致させようとします。
 
-さまざまなパーソナリティのいくつかの例を、次に示します。 すべてのパーソナリティの[データセット](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)とパーソナリティの詳細を確認できます。
+さまざまなパーソナリティのいくつかの例を、次に示します。 すべてのパーソナリティの[データセット](https://github.com/microsoft/botframework-cli/blob/main/packages/qnamaker/docs/chit-chat-dataset.md)とパーソナリティの詳細を確認できます。
 
 `When is your birthday?` のユーザー クエリでは、パーソナリティごとに定型の応答が用意されています。
 

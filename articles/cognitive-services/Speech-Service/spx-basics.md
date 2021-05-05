@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 01/13/2021
+ms.date: 04/28/2021
 ms.author: trbye
-ms.openlocfilehash: 53138a22c58e89ade4af234630e9429a19738a6a
-ms.sourcegitcommit: 7edadd4bf8f354abca0b253b3af98836212edd93
+ms.openlocfilehash: e0a2646dad0be024573c8d02bf4e2749eaeb20c2
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2021
-ms.locfileid: "102556470"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227987"
 ---
 # <a name="get-started-with-the-azure-speech-cli"></a>Azure Speech CLI の概要
 

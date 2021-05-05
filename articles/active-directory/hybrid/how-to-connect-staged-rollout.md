@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 756e5e96a8040fb3d93273a5521236d46879e60d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 8534d4dd8df1e60e1b341088cbfaaa944ec1221b
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107306383"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073397"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>段階的なロールアウトを使用してクラウド認証に移行する
 
@@ -38,10 +38,12 @@ ms.locfileid: "107306383"
 -   フェデレーション ドメインを持つ Azure Active Director (Azure AD) テナントがあること。
 
 -   次の 2 つのオプションのいずれかに移行することを決定しました：
-    - **オプション A** - *パスワード ハッシュの同期 (sync)*  + *シームレス シングル サインオン (SSO)* 。  詳細については、[パスワード ハッシュ同期](whatis-phs.md)および[シームレス SSO](how-to-connect-sso.md) に関する記事を参照してください
-    - **オプション B** - *パス スルー認証* + *シームレス SSO*。  詳細については、「[パススルー認証とは](how-to-connect-pta.md)」を参照してください  
+    - **オプション A** - *パスワード ハッシュ同期*。  詳細については、[パスワード ハッシュ同期の概要](whatis-phs.md)ページを参照してください。 
+    - **オプション B** - *パススルー認証*。  詳細については、「[パススルー認証とは](how-to-connect-pta.md)」を参照してください  
     
-    *シームレス SSO* は、オプションですが、企業ネットワーク内からドメインに参加しているマシンを実行しているユーザーに対して、サイレント サインイン エクスペリエンスを実現できるようにするようお勧めします。
+    いずれのオプションでも、サイレント サインインできるよう、シングル サインオン (SSO) を有効にすることをお勧めします。 
+    Windows 7 または 8.1 のドメイン参加デバイスの場合、シームレス SSO の使用をお勧めします。 詳細については、[シームレス SSO の概要](how-to-connect-sso.md)ページを参照してください。 
+    Windows 10、Windows Server 2016、およびそれ以降のバージョンの場合、[Azure AD 参加デバイス](../devices/concept-azure-ad-join.md)、[ハイブリッド Azure AD 参加デバイス](../devices/concept-azure-ad-join-hybrid.md)、または個人デバイスを [職場または学校アカウントの追加] で登録し、[プライマリ更新トークン (PRT)](../devices/concept-primary-refresh-token.md) 経由の SSO を使用することをお勧めします。
 
 -   クラウド認証に移行するユーザーに必要なすべての適切なテナント ブランドと条件付きアクセスポリシーを構成しました。
 

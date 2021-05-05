@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 11/06/2020
-ms.openlocfilehash: 08363a1a1de8f95c4ff74fbe20f4052796c41f49
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: b1551b4d9c28a693adb74436b6490ce7af62a977
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108018513"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279854"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
@@ -39,7 +39,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 サンプルのロジック アプリ テンプレートについては、次の例をご覧ください。
 
 * このトピックのサンプルで使用されている[完全なテンプレート](#full-example-template)
-* GitHub にある[サンプルのクイックスタート ロジック アプリ テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create)
+* GitHub にある[サンプルのクイックスタート ロジック アプリ テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json)
 
 Logic Apps REST API については、最初に [Azure Logic Apps REST API の概要](/rest/api/logic)をご覧ください。
 

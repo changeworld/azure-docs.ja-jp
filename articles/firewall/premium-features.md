@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 04/07/2021
+ms.date: 04/22/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: fdf0113d73b0b2e82ec889caf2a82c77bb7a040c
-ms.sourcegitcommit: b28e9f4d34abcb6f5ccbf112206926d5434bd0da
+ms.openlocfilehash: fa7d17b208c4a950e82a8bdc4db243ebb44e4c41
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107226703"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896281"
 ---
 # <a name="azure-firewall-premium-preview-features"></a>Azure Firewall Premium プレビューの機能
 
@@ -155,6 +155,7 @@ Azure Firewall Premium プレビューには、次の既知の問題がありま
 |IDPS バイパス|IDPS バイパスは TLS 終了のトラフィックでは機能せず、送信元 IP アドレスと送信元 IP グループはサポートされません。|修正プログラムが一般提供される予定です。|
 |TLS 1.3 のサポート|TLS 1.3 は部分的にサポートされています。 クライアントからファイアウォールへの TLS トンネルは TLS 1.2 に基づいており、ファイアウォールから外部 Web サーバーへは TLS 1.3 に基づいています。|更新を調査中です。|
 |KeyVault のプライベート エンドポイント|KeyVault は、プライベート エンドポイント アクセスをサポートして、ネットワークへの露出を制限します。 [KeyVault のドキュメント](../key-vault/general/overview-vnet-service-endpoints.md#trusted-services)で説明されているように、例外が構成されている場合、信頼された Azure サービスはこの制限を回避できます。 Azure Firewall は現在信頼されたサービスとして列挙されていないため、KeyVault にアクセスできません。|修正プログラムが一般提供される予定です。|
+|IP グループのサポート|Azure Firewall Premium プレビューでは、IP グループはサポートされていません。|修正プログラムが一般提供される予定です。|
 
 
 ## <a name="next-steps"></a>次のステップ

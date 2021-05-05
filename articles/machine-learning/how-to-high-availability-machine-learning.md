@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 09/16/2020
-ms.openlocfilehash: f2ff4d57db8b419bf4d18b6b19e89075ae74c512
-ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
+ms.openlocfilehash: 1e25985d2868ddb6ad48b1f0931a3dce32819faa
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107885040"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279966"
 ---
 # <a name="increase-azure-machine-learning-resiliency"></a>Azure Machine Learning の回復性を高める
 
@@ -102,4 +102,4 @@ Azure Machine Learning は複数の Azure サービスに依存しており、�
 
 ## <a name="next-steps"></a>次のステップ
 
-関連付けられたリソースを使用して高可用性設定で Azure Machine Learning をデプロイするには、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced)を使用します。
+関連付けられたリソースを使用して高可用性設定で Azure Machine Learning をデプロイするには、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced)を使用します。

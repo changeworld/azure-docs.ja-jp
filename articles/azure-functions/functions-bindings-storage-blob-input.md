@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 191722d02b493cfe0197c3e45771543fd8c5926a
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 4aaf63d2a4d49f7fff35eb7386b71ac271f1eac9
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105961049"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108227400"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions における Azure Blob Storage の入力バインド
 
@@ -276,7 +276,6 @@ import logging
 import azure.functions as func
 
 
-# The type func.InputStream is not supported for blob input binding.
 # The input binding field inputblob can either be 'bytes' or 'str' depends
 # on dataType in function.json, 'binary' or 'string'.
 def main(queuemsg: func.QueueMessage, inputblob: bytes) -> bytes:
