@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: reference
 ms.date: 04/12/2021
-ms.openlocfilehash: 1670d1bb291e30295018146f2a24c5282feac6e7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 107d10bec77ea7bb2b67ae86f48d5b88a286869d
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311653"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108229506"
 ---
 # <a name="cef-and-commonsecuritylog-field-mapping"></a>CEF および CommonSecurityLog フィールドのマッピング
 
@@ -72,7 +72,6 @@ ms.locfileid: "107311653"
 
 |CEF キー名  |CommonSecurityLog での名前  |説明  |
 |---------|---------|---------|
-|end     |  EndTime       | イベントに関連するアクティビティが終了した時刻。        |
 |externalId    |   ExternalID      | 発信元デバイスによって使用されている ID。 一般に、これらの値は、イベントにそれぞれが関連付けられている、増加してゆく値です。        |
 |fileCreateTime     |  FileCreateTime      | ファイルが作成された日時。        |
 |fileHash     |   FileHash      |   ファイルのハッシュ。      |
@@ -111,7 +110,6 @@ ms.locfileid: "107311653"
 
 |CEF キー名  |CommonSecurityLog での名前  |説明  |
 |---------|---------|---------|
-|原因     |  理由      |監査イベントが生成された理由。 <br><br>たとえば、`Bad password` または `Unknown user` です。         |
 |要求     |   RequestURL      | HTTP 要求のためにアクセスされる URL (プロトコルを含む)。 たとえば、`http://www/secure.com` のように指定します。        |
 |requestClientApplication     |   RequestClientApplication      |   要求に関連付けられているユーザー エージェント。      |
 | requestContext | RequestContext | HTTP 参照元など、要求送信元のコンテンツについて説明します。 |
@@ -131,7 +129,6 @@ ms.locfileid: "107311653"
 | sproc | SourceProcessName | イベントの発信元プロセスの名前。|
 | spt | SourcePort | 発信元ポート番号。 <br>有効なポート番号は `0` - `65535` です。 |
 | src | SourceIP |IP ネットワーク内でイベントによって参照されている、IPv4 アドレスとしての発信元。 |
-| start | StartTime | イベントによって参照されているアクティビティが開始された時刻。 |
 | suid | SourceUserID | ID で発信元ユーザーを識別します。 |
 | suser | SourceUserName | 名前で発信元ユーザーを識別します。 |
 | type | EventType | イベントの種類。 値は次のとおりです。 <br>- `0`: 基本イベント <br>- `1`: 集計済み <br>- `2`: 相関イベント <br>- `3`: アクション イベント <br><br>**注**: 基本イベントについてはこのイベントを省略できます。 |

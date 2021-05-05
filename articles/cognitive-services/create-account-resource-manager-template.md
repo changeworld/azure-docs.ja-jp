@@ -7,15 +7,15 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: quickstart
-ms.date: 3/22/2021
+ms.date: 04/28/2021
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: c3d74f8552f06290b43f6078bb7fcdd55c8b5f40
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: b67639c5a6f55c45e42e3a17187356caf32451a6
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108072273"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278454"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Cognitive Services リソースを作成する
 
@@ -32,7 +32,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![コグニティブ サービスを Azure にデプロイする](../media/template-deployments/deploy-to-azure.svg "コグニティブ サービスを Azure にデプロイする")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
+[![コグニティブ サービスを Azure にデプロイする](../media/template-deployments/deploy-to-azure.svg "コグニティブ サービスを Azure にデプロイする")](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cognitiveservices%2Fcognitive-services-universalkey%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-cognitive-services-universalkey/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.cognitiveservices/cognitive-services-universalkey/azuredeploy.json":::
 
 テンプレートには、1 つの Azure リソースが定義されています。
 * [Microsoft.CognitiveServices/accounts](/azure/templates/microsoft.cognitiveservices/accounts): Cognitive Services リソースを作成します。
@@ -53,7 +53,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 
 1. **[Deploy to Azure]** (Azure にデプロイ) ボタンをクリックします。
 
-    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cognitive-services-universalkey%2Fazuredeploy.json)
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.cognitiveservices%2Fcognitive-services-universalkey%2Fazuredeploy.json)
 
 2. 次の値を入力します。
 
@@ -81,7 +81,7 @@ Azure Resource Manager テンプレート (ARM テンプレート) を使用し�
 ```azurecli-interactive
 read -p "Enter a name for your new resource group:" resourceGroupName &&
 read -p "Enter the location (i.e. centralus):" location &&
-templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-cognitive-services-universalkey/azuredeploy.json" &&
+templateUri="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.cognitiveservices/cognitive-services-universalkey/azuredeploy.json" &&
 az group create --name $resourceGroupName --location "$location" &&
 az deployment group create --resource-group $resourceGroupName --template-uri  $templateUri &&
 echo "Press [ENTER] to continue ..." &&
@@ -91,7 +91,6 @@ read
 ---
 
 [!INCLUDE [Register Azure resource for subscription](./includes/register-resource-subscription.md)]
-
 
 ## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 

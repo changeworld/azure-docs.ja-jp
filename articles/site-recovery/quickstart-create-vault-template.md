@@ -1,17 +1,17 @@
 ---
 title: Azure Resource Manager テンプレートを使用して Azure Recovery Services コンテナーを作成するためのクイックスタート。
 description: このクイックスタートでは、Azure Resource Manager テンプレート (ARM テンプレート) を使用して Azure Recovery Services コンテナーを作成する方法について説明します。
-ms.date: 04/29/2020
+ms.date: 04/28/2021
 ms.topic: quickstart
 ms.custom:
 - subject-armqs
 - mode-arm
-ms.openlocfilehash: 11a88b5485ad970802a65af31daccdb30a1c86df
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 453c1a14a54011d8124588911da1cde64fe2ea28
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533252"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108277302"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-an-arm-template"></a>クイック スタート:ARM テンプレートを使用して Recovery Services コンテナーを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "107533252"
 
 環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.recoveryservices%2Frecovery-services-vault-create%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -31,7 +31,7 @@ ms.locfileid: "107533252"
 
 このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-recovery-services-vault-create/)からのものです。
 
-:::code language="json" source="~/quickstart-templates/101-recovery-services-vault-create/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.recoveryservices/recovery-services-vault-create/azuredeploy.json":::
 
 テンプレートでは、次の 2 つの Azure リソースが定義されています。
 
@@ -48,7 +48,7 @@ ms.locfileid: "107533252"
 
 1. Azure にサインインしてテンプレートを開くには、 **[Azure へのデプロイ]** イメージを選択します。
 
-   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-recovery-services-vault-create%2Fazuredeploy.json)
+   [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.recoveryservices%2Frecovery-services-vault-create%2Fazuredeploy.json)
 
 1. 次の値を選択または入力します。
 

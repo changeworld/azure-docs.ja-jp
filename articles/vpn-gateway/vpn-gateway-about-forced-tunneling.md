@@ -1,5 +1,6 @@
 ---
-title: 'Azure VPN Gateway:強制トンネリングを構成する - サイト間接続: クラシック'
+title: '強制トンネリングを構成する - サイト間接続: クラシック'
+titleSuffix: Azure VPN Gateway
 description: クラシック デプロイ モデルを使用して作成された仮想ネットワークの強制トンネリングを構成する方法について説明します。
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: af4359efb48898c12bb8ee7ffb882448b5012d19
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61f42ac26f5890ff8ab611e81406d3607b8d5005
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92151354"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292164"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用した 強制トンネリングの構成
 

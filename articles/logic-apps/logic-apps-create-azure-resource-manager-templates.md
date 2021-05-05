@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 4535e6bf11f8c2abf20b1b323925c3fc3299d362
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3debd58aadb98ab1e78692411e8d0bb66635f0da
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90971793"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108279300"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps でのデプロイを自動化するために Azure Resource Manager テンプレートを作成する
 
 この記事では、ロジック アプリの作成とデプロイを自動化するために、ロジック アプリ用の [Azure Resource Manager テンプレート](../azure-resource-manager/management/overview.md)を作成する方法について説明します。 デプロイに必要なワークフロー定義やその他のリソースを含むテンプレートの構造と構文の概要については、「[Overview: Automate deployment for logic apps with Azure Resource Manager templates](logic-apps-azure-resource-manager-templates-overview.md)」 (概要: Azure Resource Manager テンプレートを使用してロジック アプリのデプロイを自動化する) を参照してください。
 
-Azure Logic Apps には、ロジック アプリの作成だけでなく、デプロイに使用するリソースとパラメーターの定義にも再利用できる[あらかじめ構築されたロジック アプリ Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)が用意されています。 このテンプレートを独自のビジネス シナリオで使用することも、要件に合わせてカスタマイズすることもできます。
+Azure Logic Apps には、ロジック アプリの作成だけでなく、デプロイに使用するリソースとパラメーターの定義にも再利用できる[あらかじめ構築されたロジック アプリ Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json)が用意されています。 このテンプレートを独自のビジネス シナリオで使用することも、要件に合わせてカスタマイズすることもできます。
 
 > [!IMPORTANT]
 > テンプレート内の接続で使用する Azure のリソース グループと場所が、ロジック アプリと同じものであることを確認してください。

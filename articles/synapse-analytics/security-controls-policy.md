@@ -1,19 +1,19 @@
 ---
 title: Azure Synapse Analytics 用の Azure Policy 規制コンプライアンス コントロール
 description: Azure Synapse Analytics に対して使用できる Azure Policy 規制コンプライアンス コントロールの一覧を示します。 これらの組み込みポリシー定義により、Azure リソースのコンプライアンスを管理するための一般的な方法が提供されます。
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 ms.topic: reference
 author: julieMSFT
 ms.author: jrasnick
 ms.service: synapse-analytics
 ms.subservice: security
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 4e7eb10c8c196dcb84e23796f51b32443bcaebaa
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ad2d14aed9c34e21876ac8a156528c5014bfa60f
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108122981"
+ms.locfileid: "108178119"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-synapse-analytics"></a>Azure Synapse Analytics 用の Azure Policy 規制コンプライアンス コントロール
 

@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 04/16/2021
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 3a83e6d62b030c436af31cc853ef0e5c109679a1
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.openlocfilehash: 3a7484269f16cc55fa16597e74b1d0671d16d980
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107945145"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108290598"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -33,13 +33,13 @@ Language Understanding (LUIS) は、カスタムの機械学習インテリジ�
 
 * **シンプル**: LUIS を使用するにあたり、社内の AI の専門知識や事前の機械学習の知識は必要ありません。 数回クリックするだけで、独自の会話型 AI アプリケーションを作成できます。 用意されている[クイックスタート](luis-get-started-create-app.md)のいずれかに従ってカスタム アプリケーションを作成することも、[作成済みドメイン](luis-get-started-create-app.md) アプリのいずれかを使用することもできます。
 * **セキュリティ、プライバシー、およびコンプライアンス**: Azure インフラストラクチャによって支えられている LUIS は、エンタープライズグレードのセキュリティ、プライバシー、およびコンプライアンスを提供します。 ユーザーのデータはユーザーのもののままです。ユーザーは、いつでもデータを削除できます。 データは、ストレージ内にあるときは暗号化されます。 詳細については、[こちら](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy)をご覧ください。
-* **統合**: LUIS アプリは、[Microsoft Bot Framework](https://docs.microsoft.com/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)、[音声サービス](../Speech-Service/quickstarts/intent-recognition.md)などの他の Microsoft サービスと簡単に統合できます。
+* **統合**: LUIS アプリは、[Microsoft Bot Framework](/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)、[音声サービス](../speech-service/get-started-intent-recognition.md)などの他の Microsoft サービスと簡単に統合できます。
 
 
 ## <a name="luis-scenarios"></a>LUIS のシナリオ
-* [エンタープライズ グレードの会話型ボットの作成](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/conversational-bot): この参照アーキテクチャでは、Azure Bot Framework を使用してエンタープライズ グレードの会話型ボット (チャットボット) を作成する方法について説明します。
-* [商用チャットボット](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/commerce-chatbot): Azure Bot Service と Language Understanding サービスを組み合わせることで、開発者は銀行、旅行、エンターテイメントなどのさまざまなシナリオ用の会話型インターフェイスを作成できます。
-* [音声アシスタントを使用した IoT デバイスの制御](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/iot-controlling-devices-with-voice-assistant): 接続されたテレビや冷蔵庫から、接続された発電所のデバイスまで、インターネットにアクセス可能なすべてのデバイスとのシームレスな会話型インターフェイスを作成できます。
+* [エンタープライズ グレードの会話型ボットの作成](/azure/architecture/reference-architectures/ai/conversational-bot): この参照アーキテクチャでは、Azure Bot Framework を使用してエンタープライズ グレードの会話型ボット (チャットボット) を作成する方法について説明します。
+* [商用チャットボット](/azure/architecture/solution-ideas/articles/commerce-chatbot): Azure Bot Service と Language Understanding サービスを組み合わせることで、開発者は銀行、旅行、エンターテイメントなどのさまざまなシナリオ用の会話型インターフェイスを作成できます。
+* [音声アシスタントを使用した IoT デバイスの制御](/azure/architecture/solution-ideas/articles/iot-controlling-devices-with-voice-assistant): 接続されたテレビや冷蔵庫から、接続された発電所のデバイスまで、インターネットにアクセス可能なすべてのデバイスとのシームレスな会話型インターフェイスを作成できます。
 
 
 ## <a name="application-development-life-cycle"></a>アプリケーション開発ライフ サイクル
@@ -50,7 +50,7 @@ Language Understanding (LUIS) は、カスタムの機械学習インテリジ�
 -   **作成**: お使いの作成リソースを使用してアプリを開発します。 [意図](luis-concept-intent.md)と[エンティティ](luis-concept-entity-types.md)を定義することから始めます。 次に、各意図のトレーニング用の[発話](luis-concept-utterance.md)を追加します。 
 -   **テストと改善**: 他の発話でモデルのテストを開始して、アプリの動作を把握し、改善が必要かどうかを判断することができます。 これらの[ベスト プラクティス](luis-concept-best-practices.md)に従うことで、アプリケーションを改善できます。 
 -   **公開**: 予測用にアプリをデプロイし、予測リソースを使用してエンドポイントに対してクエリを実行します。 作成および予測リソースの詳細については、[こちら](luis-how-to-azure-subscription.md#luis-resources)を参照してください。 
--   **接続**: [Microsoft Bot Framework](https://docs.microsoft.com/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)、[音声サービス](../Speech-Service/quickstarts/intent-recognition.md)などの他のサービスに接続します。 
+-   **接続**: [Microsoft Bot Framework](/composer/tutorial/tutorial-luis)、[QnA Maker](../QnAMaker/choose-natural-language-processing-service.md)、[音声サービス](../speech-service/get-started-intent-recognition.md)などの他のサービスに接続します。 
 -   **調整**: [エンドポイントの発話を確認](luis-concept-review-endpoint-utterances.md)し、実際の例を使用してアプリケーションを改善します
 
 アプリケーションの計画と作成の詳細については、[こちら](luis-how-plan-your-app.md)を参照してください。
