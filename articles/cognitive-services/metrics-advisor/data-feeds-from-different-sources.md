@@ -216,7 +216,7 @@ The timestamp field must match one of these two formats:
 
 * **[テーブル名]** : クエリ対象のテーブルを指定します。 これは、Azure Storage アカウント インスタンスにあります。 **[Table service]** セクションで **[テーブル]** をクリックします。
 
-* **クエリ**: クエリで `@StartTime` を使用できます。 `@StartTime` は、スクリプト内で yyyy-MM-ddTHH:mm:ss 形式の文字列に置き換えられます。 ヒント: Azure ストレージ エクスプローラーを使用して、特定の時間範囲でクエリを作成し、問題なく実行されることを確認してから、置換を実行します。
+* **クエリ**: クエリで `@StartTime` を使用できます。 `@StartTime` は、スクリプト内で yyyy-MM-ddTHH:mm:ss 形式の文字列に置き換えられます。 ヒント: Azure Storage Explorer を使用して、特定の時間範囲でクエリを作成し、問題なく実行されることを確認してから、置換を実行します。
 
     ``` mssql
     date ge datetime'@StartTime' and date lt datetime'@EndTime'
