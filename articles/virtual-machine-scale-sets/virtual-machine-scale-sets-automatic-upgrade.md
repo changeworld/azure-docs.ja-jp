@@ -9,12 +9,12 @@ ms.subservice: automatic-os-upgrade
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
-ms.openlocfilehash: 047eab6cb90caa18362830c8c74656f76865a9ec
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 17a5e49cce4445ef5ef917dcb1b8f5250cd5e069
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762877"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074477"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure 仮想マシン スケール セットによる OS イメージの自動アップグレード
 
@@ -79,7 +79,7 @@ OS の自動アップグレードには、次の特徴があります。
 ### <a name="service-fabric-requirements"></a>Service Fabric の要件
 
 Service Fabric を使用している場合は、次の条件が満たされていることを確認します。
--   Service Fabric の[持続性レベル](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)はシルバーまたはゴールドであり、ブロンズではありません (OS の自動アップグレードがサポートされるステートレス専用ノードタイプを除く)。
+-   Service Fabric の[持続性レベル](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)はシルバーまたはゴールドであり、ブロンズではありません (OS イメージの自動アップグレードをサポートするステートレス専用のノードの種類を除く)。
 -   スケール セット モデル定義の Service Fabric 拡張機能には、TypeHandlerVersion 1.1 以降が必要です。
 -   持続性レベルは、スケール セット モデル定義の Service Fabric クラスターと Service Fabric 拡張機能で同じである必要があります。
 - 追加の正常性プローブやアプリケーション正常性拡張機能を使用する必要はありません。
@@ -163,7 +163,7 @@ OS のアップグレード中は、スケール セット内の VM インスタ
 ```
 
 > [!NOTE]
-> Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとにロールアウトされます。 Service Fabric で OS の自動アップグレードを利用するには、シルバー以上の持続性レベルを使用するように、クラスターのノードタイプが構成されている必要があります。 ブロンズ持続性レベルの場合、OS の自動アップグレードは、ステートレス ノードタイプでのみサポートされます。 Service Fabric クラスターの持続性の特徴の詳細については、[こちらのドキュメント](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)を参照してください。
+> Service Fabric と OS 自動アップグレードを使用している場合、Service Fabric で実行されているサービスの高可用性を維持するために、新しい OS イメージは更新ドメインごとにロールアウトされます。 Service Fabric で OS の自動アップグレードを利用するには、クラスターのノードの種類が、シルバー以上の持続性レベルを使用するように構成されている必要があります。 ブロンズの持続性レベルの場合、OS イメージの自動アップグレードは、ステートレスのノードの種類でのみサポートされます。 Service Fabric クラスターの持続性の特徴の詳細については、[こちらのドキュメント](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)を参照してください。
 
 ### <a name="keep-credentials-up-to-date"></a>資格情報を最新に保つ
 スケール セットが外部のリソースにアクセスするときに資格情報を使用する場合、たとえば、VM 拡張機能がストレージ アカウントの SAS トークンを使用するように構成されている場合には、資格情報が最新であることを確認してください。 証明書やトークンなどの資格情報の期限が切れている場合は、アップグレードは失敗し、VM の最初のバッチは障害が発生した状態になります。

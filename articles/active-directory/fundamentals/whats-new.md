@@ -16,12 +16,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50d8ef544029e7097d90651707da24d603bcecc9
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ab14df388579f46d9467c9d4d68146450691270c
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108137961"
+ms.locfileid: "108180394"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -101,7 +101,7 @@ Azure portal から、削除されたアプリの登録を表示、復元、お�
 **サービス カテゴリ:** アプリ プロキシ  
 **製品の機能:** アクセス制御
  
-この新しい機能を使用すると、アプリケーションがホストされている最も近いリージョンのアプリケーション プロキシ サービスにコネクタ グループを割り当てることができます。 これにより、アプリがホーム テナントのリージョン以外のリージョンでホストされているシナリオで、アプリのパフォーマンスを向上させることができます。 [詳細については、こちらを参照してください](../manage-apps/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview)。 
+この新しい機能を使用すると、アプリケーションがホストされている最も近いリージョンのアプリケーション プロキシ サービスにコネクタ グループを割り当てることができます。 これにより、アプリがホーム テナントのリージョン以外のリージョンでホストされているシナリオで、アプリのパフォーマンスを向上させることができます。 [詳細については、こちらを参照してください](../app-proxy/application-proxy-network-topology.md#optimize-connector-groups-to-use-closest-application-proxy-cloud-service-preview)。 
  
 ---
 

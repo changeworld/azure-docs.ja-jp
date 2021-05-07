@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 97f9d0e0037090a8c058eb6e2393451d975e79c6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91eaf655a3259cff31767353fb2c2b7fcd787d63
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103472260"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108122963"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Synapse ワークスペースのアクセス制御を設定する方法 
 
@@ -128,7 +128,7 @@ SQL プール、Apache Spark プールと統合ランタイムを作成するに
 
 - Azure ポータルを開きます
 - ワークスペース `workspace1` を見つけます
-- `workspace1` の "**Azure 共同作成者**" ロールを `workspace1_SynapseAdministrators` に割り当てます。 
+- `workspace1` の Azure **共同作成者** ロールを `workspace1_SynapseAdministrators` に割り当てます。 
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>手順 6:"SQL Active Directory 管理者" ロールを割り当てる
 

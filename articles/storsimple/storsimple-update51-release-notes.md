@@ -5,14 +5,14 @@ author: alkohli
 ms.assetid: ''
 ms.service: storsimple
 ms.topic: conceptual
-ms.date: 03/18/2021
+ms.date: 04/14/2021
 ms.author: alkohli
-ms.openlocfilehash: cdb971851ba678ce18f5a1c7954e5620740f3a4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 735d7c1a25acb767f9d6352f6c8887af4b9464c0
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104657571"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107895921"
 ---
 # <a name="storsimple-8000-series-update-51-release-notes"></a>StorSimple 8000 シリーズ Update 5.1 リリース ノート
 
@@ -20,21 +20,20 @@ ms.locfileid: "104657571"
 
 次のリリース ノートでは、StorSimple 8000 シリーズの Update 5.1 の新機能について説明し、未解決の重要な問題を示します。 また、このリリースに含まれる StorSimple のソフトウェアの更新プログラムの一覧も含まれています。
 
-Update 5.1 は、Update 5 を実行しているすべての StorSimple デバイスに適用できます。 5 より前のバージョンを使用している場合は、最初に update 5 を適用してから 5.1 を適用します。 Update 5.1 に関連付けられているデバイスのバージョンは、6.3.9600.17885 です。
+Update 5.1 は、Update 5 を実行しているすべての StorSimple デバイスに適用できます。 5 より前のバージョンを使用している場合は、最初に Update 5 を適用し、その後 Update 5.1 を適用します。 Update 5.1 に関連付けられているデバイスのバージョンは、6.3.9600.17885 です。
 
 StorSimple ソリューションの更新プログラムをデプロイする前に、リリース ノートに含まれる情報を確認してください。
 
 > [!IMPORTANT]
 >
-> * Update 5.1 は必須の更新プログラムであり、すぐにインストールする必要があります。 詳しくは、[Update 5.1 の適用方法](storsimple-8000-install-update-51.md)に関するページをご覧ください。
-> * Update 5.1 には、セキュリティ更新プログラムのみが含まれています。 この更新プログラムのインストールには 30 分程度かかります。 デバイスの動作を保証するために、Update 5.1 を適用することを強くお勧めします。
-> * 新しいリリースについては、更新プログラムの公開を段階的に行うため、更新プログラムが即座に表示されない場合があります。 これらの更新プログラムは間もなく利用可能になるため、数日待ってから、もう一度、更新プログラムの有無を確認してください。
+> * Update 5.1 は必須の更新プログラムであり、デバイスの動作を保証するために、直ちにインストールする必要があります。 Update 5.0 が、サポートされる最小バージョンです。
+> * Update 5.1 には、インストールに約 30 分かかるセキュリティ更新プログラムがあります。 詳しくは、[Update 5.1 の適用方法](storsimple-8000-install-update-51.md)に関するページをご覧ください。
 
 ## <a name="whats-new-in-update-51"></a>Update 5.1 の新機能
 
 Update 5.1 では、主に次の機能強化とバグ修正が行われています。
 
-* **TLS 1.2** - この StorSimple の更新プログラムでは、すべてのクライアントに TLS 1.2 が適用されます。 これは、すべての StorSimple 8000 シリーズ デバイスの必須の更新プログラムです。
+* **TLS 1.2** - この StorSimple の更新プログラムでは、すべてのクライアントに TLS 1.2 が適用されます。 TLS 1.2 は、すべての StorSimple 8000 シリーズ デバイスの必須の更新プログラムです。
 
    次の警告が表示された場合は、続行する前にデバイスでソフトウェアを更新する必要があります。
 
@@ -46,7 +45,7 @@ Update 5.1 では、新しい問題は見つかっていません。 以前の�
 
 ## <a name="storsimple-cloud-appliance-updates-in-update-51"></a>Update 5.1 における StorSimple Cloud Appliance の更新プログラム
 
-この更新プログラムはStorSimple Cloud Appliance (仮想デバイスとも呼ばれます) には適用できません。 新しいクラウド アプライアンスは、Update 5.1 のイメージを使用して作成する必要があります。 StorSimple Cloud Appliance の作成方法については、[StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)に関する記事をご覧ください。
+この更新プログラムはStorSimple Cloud Appliance (仮想デバイスとも呼ばれます) には適用できません。 Update 5.1 イメージを使用して、新しいクラウド アプライアンスを作成する必要があります。 StorSimple Cloud Appliance の作成方法については、[StorSimple Cloud Appliance のデプロイと管理](storsimple-8000-cloud-appliance-u2.md)に関する記事をご覧ください。
 
 ## <a name="next-step"></a>次のステップ
 

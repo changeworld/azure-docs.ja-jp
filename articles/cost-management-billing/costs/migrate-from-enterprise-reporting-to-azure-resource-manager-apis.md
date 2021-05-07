@@ -6,14 +6,14 @@ ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: reference
-ms.date: 11/19/2020
+ms.date: 03/10/2021
 ms.author: banders
-ms.openlocfilehash: 93dda4fc3a152b0a07a95ff327c9ea619f25787c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 24fbf52c8fd0338537862a54e15e8a249541a701
+ms.sourcegitcommit: b572ce40f979ebfb75e1039b95cea7fce1a83452
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96355822"
+ms.lasthandoff: 03/11/2021
+ms.locfileid: "102635792"
 ---
 # <a name="migrate-from-enterprise-reporting-to-azure-resource-manager-apis"></a>Enterprise Reporting から Azure Resource Manager API への移行
 
@@ -51,28 +51,7 @@ Azure Resource Manager API をプログラムから呼び出すためのサー�
 
 ### <a name="azure-billing-hierarchy-access"></a>Azure 課金階層アクセス
 
-エンタープライズ課金アカウント、部署、加入契約アカウントの各スコープに対するアクセス許可をサービス プリンシパルに割り当てるには、[Billing Permissions](/rest/api/billing/2019-10-01-preview/billingpermissions) API、[Billing Role Definitions](/rest/api/billing/2019-10-01-preview/billingroledefinitions) API、[Billing Role Assignments](/rest/api/billing/2019-10-01-preview/billingroleassignments) API を使用します。
-
-- サービス プリンシパルが特定のスコープ (課金アカウント、部署など) で既に有しているアクセス許可を確認するには、Billing Permissions API を使用します。
-- サービス プリンシパルに割り当てることのできるロールを列挙するには、Billing Role Definitions API を使用します。
-  - 現時点では、読み取り専用の EA 管理者ロールと読み取り専用の部門管理者ロールのみ、サービス プリンシパルに割り当てることができます。
-- サービス プリンシパルにロールを割り当てるには、Billing Role Assignments API を使用します。
-
-次に示したのは、Role Assignments API を呼び出して課金アカウントへのアクセス権をサービス プリンシパルに与える例です。 こうした 1 回限りのアクセス許可の構成を行う場合は、[PostMan](https://postman.com) の使用をお勧めします。
-
-```json
-POST https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/createBillingRoleAssignment?api-version=2019-10-01-preview
-```
-
-#### <a name="request-body"></a>要求本文
-
-```json
-{
-  "principalId": "00000000-0000-0000-0000-000000000000",
-  "billingRoleDefinitionId": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/providers/Microsoft.Billing/billingRoleDefinition/10000000-aaaa-bbbb-cccc-100000000000"
-}
-
-```
+エンタープライズ課金アカウント、部署、登録アカウントの各スコープに対するアクセス許可をサービス プリンシパルに割り当てるには、「[Azure Enterprise Agreement サービス プリンシパル名にロールを割り当てる](../manage/assign-roles-azure-service-principals.md)」を参照してください。
 
 ### <a name="azure-role-based-access-control"></a>Azure ロールベースのアクセス制御
 

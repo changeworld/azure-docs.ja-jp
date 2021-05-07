@@ -3,12 +3,12 @@ title: Azure Service Bus エンティティにアクセスするためにアプ�
 description: この記事では、Azure Service Bus エンティティ (キュー、トピックなど) にアクセスするための Azure Active Directory を使用したアプリケーションの認証に関する情報を提供します。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: c4e19c0ab26d491ba0b95159e274383431aefaee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fc009c5a84c577c5904b3e0fc834295aa355e802
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92518230"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108123107"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Azure Service Bus エンティティにアクセスするために Azure Active Directory を使用してアプリケーションを認証および承認する
 Azure Service Bus では、Azure Active Directory (Azure AD) を使用して Service Bus エンティティ (キュー、トピック、サブスクリプション、またはフィルター) への要求を承認することがサポートされています。 Azure AD では、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、サービス プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与します。 ロールとロールの割り当ての詳細については、[各種ロールの理解](../role-based-access-control/overview.md)に関するページを参照してください。
@@ -125,29 +125,22 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 ### <a name="permissions-for-the-service-bus-api"></a>Service Bus API のアクセス許可
 アプリケーションがコンソール アプリケーションである場合は、ネイティブ アプリケーションを登録し、**Microsoft.ServiceBus** に対する API アクセス許可を **必要なアクセス許可** セットに追加する必要があります。 また、ネイティブ アプリケーションには、識別子として機能する、Azure AD の **リダイレクト URI** も必要です。この URI はネットワーク宛先である必要はありません。 この例では、サンプル コードが `https://servicebus.microsoft.com` を既に使っているため、この URI を使います。
 
-### <a name="client-libraries-for-token-acquisition"></a>トークン取得のためのクライアント ライブラリ  
-アプリケーションを登録し、Azure Service Bus でデータを送受信するためのアクセス許可をこれに付与したら、セキュリティ プリンシパルを認証して OAuth 2.0 トークンを取得するためのコードをアプリケーションに追加できます。 認証してトークンを取得するには、[Microsoft ID プラットフォームの認証ライブラリ](../active-directory/develop/reference-v2-libraries.md)か、OpenID または Connect 1.0 をサポートする別のオープンソース ライブラリのいずれかを使用することができます。 その後、アプリケーションでアクセス トークンを使用して、Azure Service Bus に対する要求を承認することができます。
+### <a name="authenticating-the-service-bus-client"></a>Service Bus クライアントを認証する   
+アプリケーションを登録して、Azure Service Bus でデータを送受信するためのアクセス許可を付与したら、クライアントのシークレット資格情報を使用してクライアントを認証することで、Azure Service Bus に対して要求を行うことができるようになります。
 
 トークンの取得がサポートされるシナリオの一覧は、[Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) GitHub リポジトリの[シナリオ](https://aka.ms/msal-net-scenarios)のセクションを参照してください。
 
-## <a name="sample-on-github"></a>GitHub 上のサンプル
-GitHub の次のサンプルを参照してください: [Service Bus の Azure ロールベースのアクセス制御](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl) 
+# <a name="net"></a>[.NET](#tab/dotnet)
+最新の [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) ライブラリを使用して、[ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) を、[Azure.Identity](https://www.nuget.org/packages/Azure.Identity) ライブラリで定義されている [ClientSecretCredential](/dotnet/api/azure.identity.clientsecretcredential) で認証することができます。
+```cs
+TokenCredential credential = new ClientSecretCredential("<tenant_id>", "<client_id>", "<client_secret>");
+var client = new ServiceBusClient("<fully_qualified_namespace>", credential);
+```
 
-**[Interactive User Login]\(対話型のユーザー ログイン\)** オプションではなく、 **[Client Secret Login]\(クライアント シークレット ログイン\)** オプションを使用します。 クライアント シークレット オプションを使用すると、ポップアップ ウィンドウが表示されません。 アプリケーションでは、認証にテナント ID とアプリ ID が利用されます。 
-
-### <a name="run-the-sample"></a>サンプルを実行する
-
-サンプルを実行する前に、**app.config** ファイルを編集し、シナリオに応じて、次の値を設定します。
-
-- `tenantId`:**TenantId** の値に設定します。
-- `clientId`:**ApplicationId** の値に設定します。
-- `clientSecret`:クライアント シークレットを使ってサインオンする場合は、Azure AD で作成します。 また、ネイティブ アプリの代わりに Web アプリまたは API を使います。 また、前に作成した名前空間の **[アクセス制御 (IAM)]** にアプリを追加します。
-- `serviceBusNamespaceFQDN`:新しく作成した Service Bus 名前空間の完全な DNS 名に設定します (例: `example.servicebus.windows.net`)。
-- `queueName`:作成したキューの名前に設定します。
-- 前の手順においてアプリで指定したリダイレクト URI です。
-
-コンソール アプリケーションを実行すると、シナリオを選択するように求められます。 数値を入力し、Enter キーを押して、 **[Interactive User Login]\(対話型のユーザー ログイン\)** を選択します。 アプリケーションはログイン ウィンドウを表示し、Service Bus へのアクセスの同意を求めた後、サービスを使ってログイン ID を用いた送信/受信シナリオを実行します。
-
+古い .NET パッケージを使用している場合は、下のサンプルを参照してください。
+- [Microsoft.Azure.ServiceBus での RoleBasedAccessControl](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/RoleBasedAccessControl)
+- [WindowsAzure.ServiceBus での RoleBasedAccessControl](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/RoleBasedAccessControl)
+---
 
 ## <a name="next-steps"></a>次のステップ
 - Azure RBAC の詳細については、「[Azure ロールベースのアクセス制御 (Azure RBAC) とは](../role-based-access-control/overview.md)」を参照してください。

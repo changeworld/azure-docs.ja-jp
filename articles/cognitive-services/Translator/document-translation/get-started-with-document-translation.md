@@ -6,12 +6,12 @@ manager: nitinme
 ms.author: lajanuar
 author: laujan
 ms.date: 03/05/2021
-ms.openlocfilehash: 780e6defe4f7d09e2d136c080525447ffd29bbb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a9ec36483196ea6214742522f88ddffcd8a3b899
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105612383"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292830"
 ---
 # <a name="get-started-with-document-translation-preview"></a>ドキュメント翻訳を使ってみる (プレビュー)
 
@@ -261,7 +261,7 @@ gradle run
 
 > [!IMPORTANT]
 >
-> 下のコード サンプルでは、示されている場所でキーとエンドポイントをハードコーディングします。作業終了後は、コードからキーを削除し、公開しないように注意してください。  資格情報を安全に格納してアクセスする方法については、「[Azure Cognitive Services のセキュリティ](/azure/cognitive-services/cognitive-services-security?tabs=command-line%2Ccsharp)」を参照してください。
+> 下のコード サンプルでは、示されている場所でキーとエンドポイントをハードコーディングします。作業終了後は、コードからキーを削除し、公開しないように注意してください。  資格情報を安全に格納してアクセスする方法については、「[Azure Cognitive Services のセキュリティ](../../cognitive-services-security.md?tabs=command-line%2ccsharp)」を参照してください。
 >
 > 操作によっては、次のフィールドの更新が必要になる場合があります。
 >>>

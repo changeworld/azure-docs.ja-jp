@@ -8,20 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/01/2021
+ms.date: 04/22/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dd21c1dca0dd54331780ba98f9c53d5b99d6b4e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: abe9d9cd46c7d4cbcb383ee9a37fc84cd64fcea8
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100557221"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896006"
 ---
-# <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>ユーザー フローの電話でのサインアップとサインインを設定する (プレビュー)
-
-> [!NOTE]
-> ユーザー フローの電話でのサインアップとサインインおよび回復用メール機能は、パブリック プレビュー段階にあります。
+# <a name="set-up-phone-sign-up-and-sign-in-for-user-flows"></a>ユーザー フローの電話でのサインアップとサインインを設定する
 
 メール アドレスとユーザー名に加えて、電話でのサインアップとサインインをローカル アカウント ID プロバイダーに追加することで、電話番号をサインアップ オプションとしてテナント全体で有効にできます。 ローカル アカウントに対して電話でのサインアップとサインインを有効にすると、ユーザー フローに電話でのサインアップを追加できるようになります。
 
@@ -32,6 +29,8 @@ ms.locfileid: "100557221"
 - [電話でのサインアップをユーザー フローに追加して](#add-phone-sign-up-to-a-user-flow)、ユーザーが自分の電話番号を使用してアプリケーションにサインアップできるようにします。
 
 - [回復用メール プロンプト (プレビュー) を有効にして](#enable-the-recovery-email-prompt-preview)、ユーザーが携帯電話を持っていないときにアカウントを回復するために使用できるメール アドレスをユーザーが指定できるようにします。
+
+- サインアップまたはサインインのフロー中にユーザーに[同意情報を表示](#enable-consent-information)します。 既定の同意情報を表示するか、独自の同意情報をカスタマイズできます。
 
 電話でのサインアップを使用したユーザー フローを構成するときは、多要素認証 (MFA) が既定で無効化されます。 電話でのサインアップを使用したユーザー フローで MFA を有効にすることはできますが、電話番号がプライマリ ID として使用されるため、2 番目の認証要素に使用できる唯一のオプションは電子メールによるワンタイム パスコードです。
 
@@ -139,6 +138,44 @@ ms.locfileid: "100557221"
    - 既にサインアップしていても、回復用メールを提供していないユーザーについては、サインイン時にこれを提供するように求められます。
 
 4. メール アドレスを入力し、 **[確認コードの送信]** を選択します。 指定したメール アドレスの受信トレイにコードが送信されていることを確認します。 コードを取得し、 **[確認コード]** ボックスに入力します。 次に、 **[コードの確認]** を選択します。
+
+## <a name="enable-consent-information"></a>同意情報を有効にする
+
+サインアップおよびサインインのフローに同意情報を含めることを強くお勧めします。 サンプル テキストが提供されています。 [CTIA Web サイト](https://www.ctia.org/programs)にある「Short Code Monitoring Handbook」(ショート コード監視に関するハンドブック) を参照し、ご自身のコンプライアンス ニーズを満たすための最終的なテキストと機能の構成に関するガイダンスについては、法務またはコンプライアンスの専門家に相談してください。
+>
+> "*電話番号を入力すると、テキスト メッセージによって送信されるワンタイム パスコードの受信に同意したことになり、 *&lt;挿入: アプリケーション名&gt; にサインインできるようになります*"。標準メッセージとデータの通信料が適用される場合があります。*
+>
+> *&lt;挿入: プライバシーに関する声明へのリンク&gt;*<br/>*&lt;挿入: サービス利用規約へのリンク&gt;*
+
+同意情報を有効にするには
+
+1. [Azure portal](https://portal.azure.com) にサインインします。
+2. ポータル ツール バーにある **[ディレクトリ + サブスクリプション]** アイコンを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+3. Azure portal で、 **[Azure AD B2C]** を検索して選択します。
+4. Azure AD B2C の **[ポリシー]** で、 **[ユーザー フロー]** を選択します。
+5. 一覧からユーザー フローを選択します。
+6. **[カスタマイズ]** で、 **[言語]** を選択します。
+7. 同意テキストを表示するには、 **[言語のカスタマイズを有効化]** を選択します。
+  
+    ![言語のカスタマイズを有効化](./media/phone-authentication-user-flows/enable-language-customization.png)
+
+8. 同意情報をカスタマイズするには、一覧から言語を選択します。
+9. 言語パネルで、 **[Phone signIn page]\(電話サインイン ページ\)** を選択します。
+10. [既定値のダウンロード] を選択します。
+
+    ![既定値のダウンロード](./media/phone-authentication-user-flows/phone-sign-in-language-override.png)
+
+11. ダウンロードした JSON ファイルを開きます。 次のテキストを検索し、それをカスタマイズします。
+
+    - **disclaimer_link_1_url**: **override** を "true" に変更し、プライバシー情報の URL を追加します。
+
+    - **disclaimer_link_2_url**: **override** を "true" に変更し、使用条件の URL を追加します。  
+
+    - **disclaimer_msg_intro**: **override** を "true" に変更し、**value** を目的の免責の文字列に変更します。  
+
+12. ファイルを保存します。 **[Upload new overrides]\(新しいオーバーライドのアップロード\)** で、ファイルを参照して選択します。 "オーバーライドは正常にアップロードされました" という通知が表示されたことを確認します。
+
+13. **[Phone signUp page]\(電話サインアップ ページ\)** を選択し、手順 10 から 12 を繰り返します。 
 
 ## <a name="next-steps"></a>次のステップ
 

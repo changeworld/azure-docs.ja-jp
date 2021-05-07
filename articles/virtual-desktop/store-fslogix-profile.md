@@ -3,15 +3,15 @@ title: Storage FSLogix プロファイル コンテナー Windows Virtual Deskto
 description: Azure Storage で Windows Virtual Desktop FSLogix プロファイルを保存するためのオプション
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 04/27/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 1ff8c645b1ad670f3824920d39aa0c6bf9783408
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 34be20a1b8768414efa0ea32382dea6eab66035a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106445552"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073199"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Windows Virtual Desktop の FSLogix プロファイル コンテナーのストレージ オプション
 
@@ -29,7 +29,7 @@ Windows Virtual Desktop では、推奨されるユーザー プロファイル 
 |プラットフォーム サービス|はい。Azure ネイティブ ソリューションです。|はい。Azure ネイティブ ソリューションです。|いいえ。自己管理型です。|
 |リージョン別の提供状況|すべてのリージョン|[リージョンの選択](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|すべてのリージョン|
 |冗長性|ローカル冗長、ゾーン冗長、地域冗長、地域ゾーン冗長|ローカル冗長|ローカル冗長/ゾーン冗長/geo 冗長|
-|サービス レベルとパフォーマンス| Standard (トランザクション最適化)<br>Premium<br>共有あたり最大 100K IOPS と 10 GBps、約 3 ミリ秒の待ち時間|Standard<br>Premium<br>Ultra<br>ボリュームあたり最大 320k (16K) IOPS と 4.5 GBps、約 1 ミリ秒の待ち時間|Standard HDD: ディスクあたり最大 500 IOPS の上限<br>Standard SSD: ディスクあたり最大 4k IOPS の上限<br>Premium SSD: ディスクあたり最大 20k IOPS の上限<br>記憶域スペース ダイレクトには Premium ディスクをお勧めします|
+|サービス レベルとパフォーマンス| Standard (トランザクション最適化)<br>Premium<br>共有あたり最大 100K IOPS と 10 GBps、約 3 ミリ秒の待ち時間|Standard<br>Premium<br>Ultra<br>ボリュームあたり最大 4.5 GBps、約 1 ミリ秒の待ち時間。 IOPS とパフォーマンスの詳細については、「[Azure NetApp Files のパフォーマンスに関する考慮事項](../azure-netapp-files/azure-netapp-files-performance-considerations.md)」および [FAQ](../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-convert-throughput-based-service-levels-of-azure-netapp-files-to-iops) を参照してください。|Standard HDD: ディスクあたり最大 500 IOPS の上限<br>Standard SSD: ディスクあたり最大 4k IOPS の上限<br>Premium SSD: ディスクあたり最大 20k IOPS の上限<br>記憶域スペース ダイレクトには Premium ディスクをお勧めします|
 |容量|共有あたり 100 TiB、汎用目的アカウントあたり最大 5 PiB |ボリュームあたり 100 TiB、サブスクリプションあたり最大 12.5 PiB|ディスクあたりの最大 32 TiB|
 |必要なインフラストラクチャ|最小共有サイズ 1 GiB|最小容量プール 4 TiB、最小ボリュームサイズ 100 GiB|Azure IaaS (+ Cloud Witness) で 2 つの VM、またはディスクのコストなしで 3 つの VM|
 |プロトコル|SMB 3.0 または 2.1、NFSv 4.1 (プレビュー)、REST|NFSv3、NFSv4.1 (プレビュー)、SMB 3.x/2.x|NFSv3、NFSv4.1、SMB 3.1|

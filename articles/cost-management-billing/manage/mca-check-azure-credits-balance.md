@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: cf5772e9cf08eaa7f34acd59a9c96da6f20cd03d
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 96c37ded2750ad3e4882b203d71c75c9f4608e9d
+ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131413"
+ms.lasthandoff: 04/03/2021
+ms.locfileid: "106285911"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Microsoft 顧客契約の Azure クレジット残高を追跡する
 
@@ -37,7 +37,7 @@ Microsoft 顧客契約の課金アカウントでは、クレジットが課金�
 
     ![ポータルでの [コストの管理と請求] の検索を示すスクリーンショット。](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. クレジット残高を追跡する課金アカウントを [課金スコープ] ページで選択します。 課金アカウントの種類は、**Microsoft 顧客契約**である必要があります。
+3. クレジット残高を追跡する課金アカウントを [課金スコープ] ページで選択します。 課金アカウントの種類は、**Microsoft 顧客契約** である必要があります。
 
     ![課金スコープを示すスクリーンショット。](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 

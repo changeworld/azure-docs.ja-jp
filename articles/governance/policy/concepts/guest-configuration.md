@@ -3,12 +3,12 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成クライアントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 6fb3ed3644ccdb5de8f03bedf56943a91570322b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e1867c2ba86d237a7b8937b689fef11235c1a202
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105733028"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108073703"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
@@ -29,7 +29,8 @@ Azure Policy では、Azure 内で実行するマシンと [Arc に接続され�
 
 ## <a name="resource-provider"></a>リソース プロバイダー
 
-ゲストの構成を使用するには、リソース プロバイダーを登録する必要があります。 ゲスト構成ポリシーの割り当てがポータルを通じて行われた場合、またはサブスクリプションが Azure Security Center に登録されている場合は、リソース プロバイダーが自動的に登録されます。 [ポータル](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)、または [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) を使用して手動で登録できます。
+ゲストの構成を使用するには、リソース プロバイダーを登録する必要があります。
+ゲスト構成ポリシーの割り当てがポータルを通じて行われた場合、またはサブスクリプションが Azure Security Center に登録されている場合は、リソース プロバイダーが自動的に登録されます。 [ポータル](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)、[Azure PowerShell](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-powershell)、または [Azure CLI](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-cli) を使用して手動で登録できます。
 
 ## <a name="deploy-requirements-for-azure-virtual-machines"></a>Azure 仮想マシンの要件をデプロイする
 
@@ -83,19 +84,17 @@ Azure Arc マシンは、オンプレミスのネットワーク インフラス
 
 ### <a name="communicate-over-virtual-networks-in-azure"></a>Azure の仮想ネットワークを介して通信する
 
-通信に仮想ネットワークを使用する仮想マシンでは、ポート `443` で Azure データセンターへの発信アクセスが必要です。 アウトバウンド トラフィックが許可されないプライベート仮想ネットワークを Azure で使用している場合は、ネットワーク セキュリティ グループ規則で例外を構成する必要があります。 サービス タグ "GuestAndHybridManagement" を使用して、ゲスト構成サービスを参照できます。
+Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 [サービス タグ](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" を使用することで、Azure データセンターの [IP 範囲の一覧](https://www.microsoft.com/en-us/download/details.aspx?id=56519)を手動で維持することなく、ゲスト構成サービスを参照できます。
 
 ### <a name="communicate-over-private-link-in-azure"></a>Azure で Private Link を介して通信する
 
-仮想マシンは、ゲスト構成サービスとの通信に [Private Link](../../../private-link/private-link-overview.md) を使用できます。 この機能を有効にするには、名前 `EnablePrivateNeworkGC` (Network の "t" はありません) と値 `TRUE` を使用してタグを適用します。 タグは、ゲスト構成ポリシー定義をマシンに適用する前または後に適用できます。
+仮想マシンは、ゲスト構成サービスとの通信に [Private Link](../../../private-link/private-link-overview.md) を使用できます。 この機能を有効にするには、名前 `EnablePrivateNetworkGC` と値 `TRUE` を使用してタグを適用します。 タグは、ゲスト構成ポリシー定義をマシンに適用する前または後に適用できます。
 
 Azure [仮想パブリック IP アドレス](../../../virtual-network/what-is-ip-address-168-63-129-16.md)を使用してトラフィックがルーティングされて、Azure プラットフォーム リソースとの、セキュリティで保護された認証済みチャネルが確立されます。
 
 ### <a name="azure-arc-connected-machines"></a>Azure Arc の接続されたマシン
 
 Azure Arc によって接続されている Azure の外部にあるノードでは、ゲスト構成サービスへの接続が必要です。 ネットワークとプロキシの要件に関する詳細は、[Azure Arc のドキュメント](../../../azure-arc/servers/overview.md)で提供されています。
-
-Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 [サービス タグ](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" を使用して、ゲスト構成サービスを参照できます。
 
 プライベート データセンターの Arc 接続サーバーでは、次のパターンを使用してトラフィックを許可します。
 

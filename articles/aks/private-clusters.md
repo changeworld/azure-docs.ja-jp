@@ -4,12 +4,12 @@ description: プライベート Azure Kubernetes Service (AKS) クラスター�
 services: container-service
 ms.topic: article
 ms.date: 3/31/2021
-ms.openlocfilehash: 76785caedb9ca97d947e83f5aa8ff5b32d827914
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 20adab9a42cabc0f3fc62378427d2c7bdb669806
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772903"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072389"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>プライベート Azure Kubernetes Service クラスターを作成する
 
@@ -185,6 +185,7 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitn
 > [kubernet で独自のルート テーブル](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet)を使用し、プライベート クラスターで独自の DNS を使用する場合、クラスターの作成は失敗します。 作成を成功させるためには、クラスターの作成に失敗した後、ノード リソース グループの [RouteTable](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) をサブネットに関連付ける必要があります。
 
 ## <a name="limitations"></a>制限事項 
+* AKS-RunCommand コマンドは、AKS マネージド AAD と Private Link が有効になっているクラスターに対しては機能しません。
 * 承認済み IP 範囲は、プライベート API サーバー エンドポイントには適用できません。パブリック API サーバーにのみ適用されます
 * [Azure Private Link サービスの制限事項][private-link-service]は、プライベート クラスターに適用されます。
 * Azure DevOps Microsoft でホストするエージェントとプライベート クラスターの組み合わせはサポートされていません。 [セルフホステッド エージェント](/azure/devops/pipelines/agents/agents?tabs=browser)を使用することを検討してください。 

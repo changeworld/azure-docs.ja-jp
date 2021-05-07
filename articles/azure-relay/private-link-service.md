@@ -3,12 +3,13 @@ title: Azure Relay と Azure Private Link サービスの統合
 description: Azure Relay を Azure Private Link サービスと統合する方法を説明します
 ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: 13644082160704ba9918e6bd6257fa314bb463a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 162b4a36e1da974a9a4c40ed67a3d6ce74ff6404
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98134383"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108292902"
 ---
 # <a name="integrate-azure-relay-with-azure-private-link"></a>Azure Relay と Azure Private Link の統合 
 Azure **Private Link サービス** を使用すると、自分の仮想ネットワーク内のプライベート エンドポイント経由で、Azure サービス (Azure Relay、Azure Service Bus、Azure Event Hubs、Azure Storage、Azure Cosmos DB など) や、Azure でホストされている顧客またはパートナーのサービスにアクセスできます。 詳細については、「[Azure Private Link とは](../private-link/private-link-overview.md)」を参照してください。

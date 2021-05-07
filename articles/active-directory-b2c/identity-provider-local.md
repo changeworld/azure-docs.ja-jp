@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 01/19/2021
+ms.date: 04/22/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: d9eb28ad19d53df542769a89b839668bbb205e30
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 48d6f6fc983de3f9a98b81011db1a8843f678939
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256108"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896263"
 ---
 # <a name="set-up-the-local-account-identity-provider"></a>ローカル アカウント ID プロバイダーを設定する
 
@@ -47,7 +47,7 @@ Azure AD B2C には、ユーザーの認証に使用できるさまざまな方�
 
 ![ユーザー名でのサインアップまたはサインインの操作](./media/identity-provider-local/local-account-username-experience.png)
 
-## <a name="phone-sign-in-preview"></a>電話でのサインイン (プレビュー)
+## <a name="phone-sign-in"></a>電話によるサインイン
 
 パスワードレス認証は、認証の一種であり、ユーザーはパスワードを使用してサインインする必要がありません。 電話でのサインアップとサインインを使用すると、ユーザーはプライマリ ログイン ID として電話番号を使用してアプリにサインアップできます。 ユーザーは、サインアップとサインインの際に次の操作を行います。
 
@@ -81,9 +81,9 @@ Azure AD B2C には、ユーザーの認証に使用できるさまざまな方�
 ![電話での回復のユーザー フロー](./media/identity-provider-local/local-account-change-phone-flow.png)
 
 
-## <a name="phone-or-email-sign-in-preview"></a>電話またはメール アドレスでのサインイン (プレビュー)
+## <a name="phone-or-email-sign-in"></a>電話またはメール アドレスでのサインイン
 
-[電話でのサインイン](#phone-sign-in-preview)と[メール アドレスでのサインイン](#email-sign-in)を組み合わせることを選択できます。 サインアップまたはサインインのページで、ユーザーは電話番号またはメール アドレスを入力できます。 ユーザー入力に基づいて、対応するフローにユーザーが移動されます。 
+[電話でのサインイン](#phone-sign-in)と[メール アドレスでのサインイン](#email-sign-in)を組み合わせることを選択できます。 サインアップまたはサインインのページで、ユーザーは電話番号またはメール アドレスを入力できます。 ユーザー入力に基づいて、対応するフローにユーザーが移動されます。 
 
 ![電話またはメール アドレスでのサインアップまたはサインインの操作](./media/identity-provider-local/local-account-phone-and-email-experience.png)
 
