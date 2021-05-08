@@ -27,7 +27,7 @@ Azure Machine Learning を使って Azure Kubernetes Service (AKS) 上の Web �
 - __Logging__
 - __モデル データ収集__
 - __認証__
-- __TLS 終了__
+- __TLS 終端__
 - GPU や Field Programmable Gate Array (FPGA) などの __ハードウェア アクセラレータ__ オプション
 
 Azure Kubernetes Service にデプロイするときは、__ご利用のワークスペースに接続されている__ AKS クラスターにデプロイします。 AKS クラスターのワークスペースへの接続に関する詳細については、「[Azure Kubernetes Service クラスターを作成してアタッチする](how-to-create-attach-kubernetes.md)」を参照してください。
