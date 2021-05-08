@@ -426,7 +426,7 @@ az acr token delete --name MyToken --registry myregistry
 ## <a name="next-steps"></a>次のステップ
 
 * スコープ マップとトークンを管理するには、[az acr scope-map][az-acr-scope-map] および [az acr token][az-acr-token] コマンド グループの追加コマンドを使用します。
-* Azure Active Directory ID、サービス プリンシパル、管理者アカウントの使用など、Azure コンテナー レジストリで認証を行うための他のオプションについては、[認証の概要](container-registry-authentication.md)に関するページを参照してください。
+* Azure Active Directory ID、サービス プリンシパル、管理者アカウントの使用など、Azure Container Registry で認証を行うための他のオプションについては、[認証の概要](container-registry-authentication.md)に関するページを参照してください。
 
 
 <!-- LINKS - External -->
