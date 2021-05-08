@@ -9,12 +9,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 04/15/2021
 ms.author: apimpm
-ms.openlocfilehash: b4413bc53cf5c86c311d049046db790582737ca4
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: afe41f7db56be5de56831d039a1161f1ee2c69f5
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741317"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108285270"
 ---
 # <a name="api-management-developer-portal---frequently-asked-questions"></a>API Management 開発者ポータル - よく寄せられる質問
 

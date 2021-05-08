@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 9c3f973da688a20fa60f2fb649b2c8d689bc2a98
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 61ecbcdd1a96fcc36caa7d0d8c21c66d856d7f89
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076651"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107989002"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Azure Arc 対応 SQL Managed Instance の機能
 
@@ -35,27 +35,29 @@ Azure Arc 対応 SQL Managed Instance では、SQL Server の最新の安定し�
   
 |機能|Azure Arc 対応 SQL Managed Instance|
 |-------------|----------------|
-|ログ配布|はい| 
-|バックアップ圧縮|はい|
-|データベース スナップショット|はい|
 |Always On フェールオーバー クラスター インスタンス<sup>1</sup>| 適用外。 同様の機能を使用可能 |
 |Always On 可用性グループ<sup>2</sup>|HA 機能が計画されています。|
 |基本的な可用性グループ <sup>2</sup>|HA 機能が計画されています。|
 |最小レプリカ コミット可用性グループ <sup>2</sup>|HA 機能が計画されています。|
 |クラスターを使用しない可用性グループ|はい|
+|データベースのバックアップ | はい - `COPY_ONLY` 「[BACKUP - (Transact-SQL)](/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current&preserve-view=true)」を参照|
+|バックアップ圧縮|はい|
+|バックアップ ミラー |Yes|
+|バックアップの暗号化|Yes|
+|Azure へのバックアップ (URL へのバックアップ)|はい|
+|データベース スナップショット|はい|
+|高速復旧|はい|
+|ホット アド メモリと CPU|はい|
+|ログ配布|はい| 
 |オンライン ページおよびファイルの復元|はい|
 |オンラインのインデックス構築|はい|
-|再開可能なオンライン インデックス再構築|はい|
 |オンラインのスキーマ変更|はい|
-|高速復旧|はい|
-|ミラー化バックアップ|はい|
-|ホット アド メモリと CPU|はい|
-|暗号化されたバックアップ|はい|
-|Azure へのハイブリッド バックアップ (URL へのバックアップ)|はい|
+|再開可能なオンライン インデックス再構築|はい|
 
 <sup>1</sup> ポッドで障害が発生した場合は、新しい SQL Managed Instance が開始され、データが含まれる永続ボリュームに再アタッチされます。 [Kubernetes の永続ボリュームの詳細については、こちらを参照してください](https://kubernetes.io/docs/concepts/storage/persistent-volumes)。
 
-<sup>2</sup> 今後のリリースで AG 機能が提供されます 
+<sup>2</sup> 今後のリリースで AG 機能が提供されます。 
+
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
 

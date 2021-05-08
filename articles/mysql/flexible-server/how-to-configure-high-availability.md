@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: d65b074385311e74444929ef74901e402e29ec03
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e217dcaeafd553803f5c9699ab6d7779ed755b67
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93241737"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818290"
 ---
 # <a name="manage-zone-redundant-high-availability-in-azure-database-for-mysql-flexible-server-preview"></a>Azure Database for MySQL フレキシブル サーバーのゾーン冗長の高可用性を管理する (プレビュー)
 
@@ -62,6 +62,27 @@ ms.locfileid: "93241737"
 5.  **[Disable HA]\(高可用性を無効にする\)** ボタンをクリックして、高可用性を無効にします。
 
 6.  高可用性のデプロイの使用停止が進行中であることを示す通知が表示されます。
+
+
+## <a name="forced-failover"></a>強制フェールオーバー
+
+プライマリからスタンバイ フレキシブル サーバーへのフェールオーバーを強制するには、次の手順に従います
+
+1.  [Azure portal](https://portal.azure.com/) で、高可用性機能が有効になっている既存の Azure Database for MySQL フレキシブル サーバーを選択します。
+
+2.  フレキシブル サーバー ページで、前面パネルから **[高可用性]** をクリックして、[高可用性] ページを開きます。
+
+3.  **プライマリ可用性ゾーン** と **スタンバイ可用性ゾーン** を確認します
+
+4.  **[強制フェールオーバー]** をクリックして、手動フェールオーバーの手順を開始します。 ポップアップが表示されると、プライマリの現在のワークロードと最後のチェックポイントの状態に応じて、フェールオーバーの予想時間がわかります。メッセージを読んで、[OK] をクリックしてください。
+ 
+5. フェールオーバーが進行中であることを示す通知が表示されます。
+
+6. スタンバイ サーバーへのフェールオーバーが成功すると、通知がポップアップ表示されます。
+
+7. 新しい **プライマリ可用性ゾーン** と **スタンバイ可用性ゾーン** を確認します。
+
+![強制フェールオーバーの方法](media/how-to-configure-high-availability/how-to-forced-failover.png) 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: メディア ブループリント サンプル コントロール
 description: メディア ブループリント サンプルのコントロール マッピング。 それぞれのコントロールは、評価を支援する 1 つまたは複数の Azure Policy 定義に対応します。
 ms.date: 04/13/2021
 ms.topic: sample
-ms.openlocfilehash: 4c04c661d7dd8b2b07a05c20524258d6bb887e62
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f2750f4733a3a815236778c846bde4e186f30512
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376700"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161323"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>メディア ブループリント サンプルのコントロール マッピング
 
@@ -229,13 +229,13 @@ ms.locfileid: "107376700"
 - 攻撃から保護するため、お使いの仮想マシン スケール セットの OS 脆弱性を監査します。
 
 > [!NOTE]
-> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。 
+> 特定の Azure Policy 定義を利用できるかどうかは、Azure Government とその他の National Clouds で異なる場合があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 ここではメディア ブループリント サンプルのコントロール マッピングを確認しました。 次に、概要と、このサンプルをデプロイする方法を確認するには、次の記事を参照してください。
 
-> [!div class="next step action"]
+> [!div class="nextstepaction"]
 > [メディア ブループリント - コントロール マッピング](./control-mapping.md)
 > [メディア ブループリント - デプロイ手順](./deploy.md)
 

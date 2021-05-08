@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e112060db4a44884d3094a939b03ff106ba72e65
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2c00f001ae3cba9420a137a42f9f696619584d50
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96492201"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817379"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
@@ -60,7 +60,7 @@ Visual Studio で、新しい Windows コンソール アプリケーション�
 
 プロジェクトの次のパッケージを参照してください。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 - [.NET 用 Azure コア ライブラリ](https://www.nuget.org/packages/Azure.Core/): このパッケージは、Azure クライアント パイプラインの実装です。
 - [.NET 用 Azure Storage Blob クライアント ライブラリ](https://www.nuget.org/packages/Azure.Storage.Blobs/): このパッケージを使用すると、ストレージ アカウント内の BLOB リソースにプログラムでアクセスできます。
@@ -80,7 +80,7 @@ NuGet を使用してパッケージを取得できます。 次の手順に従�
    - **Azure.Storage.Files.Shares**
    - **System.Configuration.ConfigurationManager**
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 - [.NET 用 Microsoft Azure Storage 共通ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/):このパッケージを使用すると、ストレージ アカウント内の共通リソースにプログラムでアクセスできます。
 - [.NET 用 Microsoft Azure Storage Blob ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/):このパッケージを使用すると、ストレージ アカウント内の BLOB リソースにプログラムでアクセスできます。
@@ -105,13 +105,13 @@ NuGet を使用してパッケージを取得できます。 次の手順に従�
 
 次に、プロジェクトの *App.config* ファイルに資格情報を保存します。 **ソリューション エクスプローラー** で `App.config` をダブルクリックし、次の例のようにファイルを編集します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 `myaccount` を実際のストレージ アカウント名に置き換え、`mykey` を実際のストレージ アカウント キーに置き換えます。
 
 :::code language="xml" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/app.config" highlight="5,6,7":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 `myaccount` を実際のストレージ アカウント名に置き換え、`StorageAccountKeyEndingIn==` を実際のストレージ アカウント キーに置き換えます。
 
@@ -137,11 +137,11 @@ NuGet を使用してパッケージを取得できます。 次の手順に従�
 
 **ソリューション エクスプローラー** で *Program.cs* ファイルを開き、次の using ディレクティブをファイルの先頭に追加します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_UsingStatements":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -158,13 +158,13 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 
 *Program.cs* ファイルに、プログラムでファイル共有にアクセスするための次のコードを追加します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 ファイル共有は、まだ存在しない場合は次のメソッドで作成します。 メソッドにより、最初に、接続文字列から [ShareClient](/dotnet/api/azure.storage.files.shares.shareclient) オブジェクトが作成されます。 その後、サンプルにおいては、前に作成したファイルのダウンロードが試みられます。 `Main()` からこのメソッドを呼び出します。
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CreateShare":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 次に、前に示したコードの後にある `Main()` メソッドに次のコードを追加し、接続文字列を取得します。 このコードでは、前の手順で作成したファイルへの参照を取得し、その内容を出力します。
 
@@ -212,11 +212,11 @@ Azure Files クライアント ライブラリのバージョン 5.x 以降の�
 
 次の例では、共有の現在の使用状況を確認する方法と、共有のクォータを設定する方法を示します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_SetMaxShareSize":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -254,13 +254,13 @@ if (share.Exists())
 
 Azure Files クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 次のメソッドの例の場合、指定した共有内のファイルで SAS が返されます。
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_GetFileSasUri":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 また、保存されているアクセス ポリシーをファイル共有に作成して、Shared Access Signature を管理することもできます。 保存されているアクセス ポリシーを使用すると、SAS が危害を受けた場合に SAS を失効させることができるため、保存されているアクセス ポリシーを作成することをお勧めします。 次の例では、共有に対して保存されているアクセス ポリシーを作成します。 この例では、そのポリシーを使用して、共有内のファイルの SAS に制約を指定しています。
 
@@ -325,11 +325,11 @@ Azure Files クライアント ライブラリのバージョン 5.x 以降の�
 
 次の例では、同じ共有内の別のファイルに、ファイルをコピーします。 この操作を使用すると同じストレージ アカウント内のファイルがコピーされるため、[共有キー認証](/rest/api/storageservices/authorize-with-shared-key)を使用してコピーを行うことができます。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CopyFile":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -379,11 +379,11 @@ if (share.Exists())
 
 次の例では、ファイルを作成し、同じストレージ アカウント内の BLOB にそれをコピーします。 この例では、ソース ファイルの SAS を作成します。サービスはこれを使用してコピー操作中にソース ファイルへのアクセスを承認します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CopyFileToBlob":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -441,11 +441,11 @@ Azure Files クライアント ライブラリのバージョン 8.5 以降を�
 
 次の例では、ファイル共有スナップショットを作成します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_CreateShareSnapshot":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 storageAccount = CloudStorageAccount.Parse(ConnectionString); 
@@ -462,11 +462,11 @@ var snapshotShare = myShare.Snapshot();
 
 次の例では、共有上のスナップショットの一覧が表示されます。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_ListShareSnapshots":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
@@ -478,11 +478,11 @@ var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
 
 次の例では、共有スナップショット内のファイルとディレクトリを参照します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_ListSnapshotContents":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); 
@@ -498,11 +498,11 @@ var items = rootDirectory.ListFilesAndDirectories();
 
 ファイル共有の共有スナップショットを照会することで、ファイル共有スナップショットからファイルを復元できます。 その後、特定の共有スナップショットに属するファイルを取得できます。 そのバージョンを使用して、ファイルを直接読み取ったり、復元したりします。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_RestoreFileFromSnapshot":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
@@ -533,11 +533,11 @@ fileInliveShare.StartCopyAsync(new Uri(sourceUri));
 
 次の例では、ファイル共有スナップショットを削除します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_DeleteSnapshot":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 ```csharp
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
@@ -553,11 +553,11 @@ Azure Storage Analytics により Azure Files のメトリクスがサポート�
 
 次のコード例では、.NET クライアント ライブラリを使用して、Azure Files のメトリクスを有効にする方法を示します。
 
-# <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
+# <a name="azure-net-sdk-v12"></a>[Azure \.NET SDK v12](#tab/dotnet)
 
 :::code language="csharp" source="~/azure-storage-snippets/files/howto/dotnet/dotnet-v12/FileShare.cs" id="snippet_UseMetrics":::
 
-# <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
+# <a name="azure-net-sdk-v11"></a>[Azure \.NET SDK v11](#tab/dotnetv11)
 
 まず、*Program.cs* ファイルに、先ほど追加したディレクティブと共に、次の `using` ディレクティブを追加します。
 

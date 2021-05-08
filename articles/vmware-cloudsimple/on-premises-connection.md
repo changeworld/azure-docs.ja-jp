@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - ExpressRoute を使用したオンプレミス接続
 description: CloudSimple リージョン ネットワークから ExpressRoute を使用してオンプレミス接続を要求する方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 27d1d9e54838d9f45a28d634fa1c24fb8785aee1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a710000a27a0b41079a1cba7482b3fdcaa966edc
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899237"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108185326"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>ExpressRoute を使用してオンプレミスから CloudSimple に接続する
 

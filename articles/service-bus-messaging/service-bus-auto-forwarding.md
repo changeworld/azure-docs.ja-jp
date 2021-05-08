@@ -2,14 +2,14 @@
 title: Azure Service Bus メッセージング エンティティの自動転送
 description: この記事では、Azure Service Bus キューまたはサブスクリプションを別のキューまたはトピックにチェーンする方法について説明します。
 ms.topic: article
-ms.date: 01/20/2021
+ms.date: 04/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 78fb7478e0584d7c6dc79829d4bb242a448d43bd
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98678990"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988696"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 
@@ -18,22 +18,16 @@ Service Bus の *自動転送* 機能を使用すると、キューまたはサ�
 > [!NOTE]
 > Service Bus の Basic レベルでは、自動転送機能がサポートされていません。 Standard レベルと Premium レベルでは、この機能がサポートされています。 これらのレベルの違いについては、「[Service Bus の価格](https://azure.microsoft.com/pricing/details/service-bus/)」を参照してください。
 
-## <a name="using-autoforwarding"></a>自動転送の利用
-
-自動転送は､以下の例のように､ソースの [QueueDescription][QueueDescription] オブジェクトまたは [SubscriptionDescription][SubscriptionDescription] オブジェクトの [QueueDescription.ForwardTo][QueueDescription.ForwardTo] または [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] プロパティを、次の例のように設定することで有効にできます。
-
-```csharp
-SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
-srcSubscription.ForwardTo = destTopic;
-namespaceManager.CreateSubscription(srcSubscription));
-```
-
 転送先エンティティは、ソース エンティティの作成時に存在している必要があります。 転送先エンティティが存在しない場合、Service Bus は、ソース エンティティを作成するように要求されたときに例外を返します。
 
+## <a name="scenarios"></a>シナリオ
+
+### <a name="scale-out-an-individual-topic"></a>個々のトピックをスケールアウトする
 自動転送を使用すると、トピックを個々にスケールアウトできます。 Service Bus は、[特定のトピックのサブスクリプションの数](service-bus-quotas.md)を 2,000 に制限します。 第 2 レベルのトピックを作成することで、追加のサブスクリプションに対応できます。 Service Bus のサブスクリプションの数に関する制限がない場合でも、トピックの 2 番目のレベルを追加することで、トピック全体のスループットを向上させることができます。
 
 ![自動転送シナリオの図。1 つの注文トピックを通じて処理されるメッセージを示しています。この注文トピックは、第 2 レベルの 3 つの注文トピックのいずれかに分岐されます。][0]
 
+### <a name="decouple-message-senders-from-receivers"></a>メッセージの送信者と受信者を分離する
 また、自動転送を使用して、メッセージの送信者と受信者を分離することもできます。 たとえば、注文処理、在庫管理、顧客関係管理の 3 つのモジュールで構成される ERP システムがあるとします。 これらのモジュールはそれぞれ、対応するトピックにエンキューされるメッセージを生成します。 Alice と Bob は、顧客に関連するすべてのメッセージに関心のある営業担当者です。 これらのメッセージを受信するため、Alice と Bob は、ERP トピックごとに個人用のキューとサブスクリプションを作成して、自動的にすべてのメッセージが自分のキューに転送されるようにします。
 
 ![自動転送シナリオの図。3 つの処理モジュールによって、3 つの対応するトピックを通じて 2 つの個別のキューに向けてメッセージが送信されています。][1]
@@ -59,22 +53,9 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 4 ホップを超えるチェーンを作成しないでください。 4 ホップを超えるメッセージは配信不能です。
 
 ## <a name="next-steps"></a>次の手順
+さまざまな方法 (Azure portal、PowerShell、CLI、Azure Resource Management テンプレートなど) で自動転送を有効または無効に設定する方法については、[キューとサブスクリプションの自動転送の有効化](enable-auto-forward.md)に関する記事を参照してください。
 
-自動転送についての詳細は、次のリファレンス トピックを参照してください。
 
-* [ForwardTo][QueueDescription.ForwardTo]
-* [QueueDescription][QueueDescription]
-* [SubscriptionDescription][SubscriptionDescription]
-
-Service Bus のパフォーマンスの向上について詳しくは、以下をご覧ください。 
-
-* [Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
-* [パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]。
-
-[QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
-[SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo
-[QueueDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
-[SubscriptionDescription]: /dotnet/api/microsoft.servicebus.messaging.queuedescription
 [0]: ./media/service-bus-auto-forwarding/IC628631.gif
 [1]: ./media/service-bus-auto-forwarding/IC628632.gif
 [Partitioned messaging entities]: service-bus-partitioning.md

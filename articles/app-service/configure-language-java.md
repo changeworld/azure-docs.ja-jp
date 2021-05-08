@@ -11,18 +11,52 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: cbf530b31797c2c72496548b3ed8f2928378ce9f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4d66b766e1fb3996194b34f88abb4245398f70d2
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779491"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108017069"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Azure App Service 向けの Java アプリを構成する
 
 Java 開発者は、Azure App Service を使用することで、フル マネージド サービス上で Java SE、Tomcat、JBoss EAP の Web アプリケーションを迅速にビルド、デプロイ、スケーリングすることができます。 アプリケーションのデプロイは、Maven プラグインを使用して、コマンド ラインから、または IntelliJ、Eclipse、Visual Studio Code などのエディターで行います。
 
 このガイドでは、App Service を使用する Java 開発者向けに主要な概念と手順を示します。 Azure App Service を使用したことがない場合は、まず [Java クイック スタート](quickstart-java.md)をお読みください。 Java 開発に限られない、App Service の使用に関する一般的な質問については、[App Service の FAQ](faq-configuration-and-management.md) に関する記事で回答されています。
+
+## <a name="show-java-version"></a>Java バージョンを表示する
+
+::: zone pivot="platform-windows"  
+
+現在の Java バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp config show --name <app-name> --resource-group <resource-group-name> --query "[javaVersion, javaContainer, javaContainerVersion]"
+```
+
+サポートされているすべての Java バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp list-runtimes | grep java
+```
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+現在の Java バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+サポートされているすべての Java バージョンを表示するには、[Cloud Shell](https://shell.azure.com) で次のコマンドを実行します。
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
+```
+
+::: zone-end
 
 ## <a name="deploying-your-app"></a>アプリのデプロイ
 
@@ -464,6 +498,236 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
         <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
     </resource-env-ref>
     ```
+
+#### <a name="shared-server-level-resources"></a>共有のサーバーレベル リソース
+
+Windows での App Service 上の Tomcat インストールは、App Service プランの共有領域に存在します。 サーバー全体の構成では、Tomcat インストールを直接変更することはできません。 Tomcat インストールにサーバー レベルの構成変更を加えるには、Tomcat をローカル フォルダーにコピーする必要があります。そこで、Tomcat の構成を変更できます。 
+
+##### <a name="automate-creating-custom-tomcat-on-app-start"></a>アプリ起動時のカスタム Tomcat の作成を自動化する
+
+スタートアップ スクリプトを使用すると、Web アプリが起動する前にアクションを実行できます。 Tomcat をカスタマイズするためのスタートアップ スクリプトでは、次の手順を完了する必要があります。
+
+1. Tomcat が既にローカルにコピーされ、構成されているかどうかを確認します。 そうなっている場合は、ここでスタートアップ スクリプトを終了できます。
+2. Tomcat をローカルにコピーします。
+3. 必要な構成変更を行います。
+4. 構成が正常に完了したことを示します。
+
+この手順を完了する PowerShell スクリプトを次に示します。
+
+```powershell
+    # Check for marker file indicating that config has already been done
+    if(Test-Path "$Env:LOCAL_EXPANDED\tomcat\config_done_marker"){
+        return 0
+    }
+
+    # Delete previous Tomcat directory if it exists
+    # In case previous config could not be completed or a new config should be forcefully installed
+    if(Test-Path "$Env:LOCAL_EXPANDED\tomcat"){
+        Remove-Item "$Env:LOCAL_EXPANDED\tomcat" --recurse
+    }
+
+    # Copy Tomcat to local
+    # Using the environment variable $AZURE_TOMCAT90_HOME uses the 'default' version of Tomcat
+    Copy-Item -Path "$Env:AZURE_TOMCAT90_HOME\*" -Destination "$Env:LOCAL_EXPANDED\tomcat" -Recurse
+
+    # Perform the required customization of Tomcat
+    {... customization ...}
+
+    # Mark that the operation was a success
+    New-Item -Path "$Env:LOCAL_EXPANDED\tomcat\config_done_marker" -ItemType File
+```
+
+##### <a name="transforms"></a>変換
+
+Tomcat バージョンをカスタマイズするための一般的なユース ケースは、`server.xml`、`context.xml`、または `web.xml` の Tomcat 構成ファイルの変更です。 App Service では、プラットフォーム機能を提供するために、既にこれらのファイルを変更しています。 これらの機能を引き続き使用するには、これらのファイルを変更するときに、そこに含まれている内容を保持することが重要です。 これを実現するには、[XSL 変換 (XSLT)](https://www.w3schools.com/xml/xsl_intro.asp) を使用することをお勧めします。 ファイルの元の内容を保持したまま XML ファイルを変更するには、XSL 変換を使用します。
+
+###### <a name="example-xslt-file"></a>XSLT ファイルの例
+
+この変換の例では、`server.xml` に新しいコネクタ ノードを追加します。 "*恒等変換*" に注意してください。これにより、ファイルの元の内容が保持されます。
+
+```xml
+    <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:output method="xml" indent="yes"/>
+  
+    <!-- Identity transform: this ensures that the original contents of the file are included in the new file -->
+    <!-- Ensure that your transform files include this block -->
+    <xsl:template match="@* | node()" name="Copy">
+      <xsl:copy>
+        <xsl:apply-templates select="@* | node()"/>
+      </xsl:copy>
+    </xsl:template>
+  
+    <xsl:template match="@* | node()" mode="insertConnector">
+      <xsl:call-template name="Copy" />
+    </xsl:template>
+  
+    <xsl:template match="comment()[not(../Connector[@scheme = 'https']) and
+                                   contains(., '&lt;Connector') and
+                                   (contains(., 'scheme=&quot;https&quot;') or
+                                    contains(., &quot;scheme='https'&quot;))]">
+      <xsl:value-of select="." disable-output-escaping="yes" />
+    </xsl:template>
+  
+    <xsl:template match="Service[not(Connector[@scheme = 'https'] or
+                                     comment()[contains(., '&lt;Connector') and
+                                               (contains(., 'scheme=&quot;https&quot;') or
+                                                contains(., &quot;scheme='https'&quot;))]
+                                    )]
+                        ">
+      <xsl:copy>
+        <xsl:apply-templates select="@* | node()" mode="insertConnector" />
+      </xsl:copy>
+    </xsl:template>
+  
+    <!-- Add the new connector after the last existing Connnector if there is one -->
+    <xsl:template match="Connector[last()]" mode="insertConnector">
+      <xsl:call-template name="Copy" />
+  
+      <xsl:call-template name="AddConnector" />
+    </xsl:template>
+  
+    <!-- ... or before the first Engine if there is no existing Connector -->
+    <xsl:template match="Engine[1][not(preceding-sibling::Connector)]"
+                  mode="insertConnector">
+      <xsl:call-template name="AddConnector" />
+  
+      <xsl:call-template name="Copy" />
+    </xsl:template>
+  
+    <xsl:template name="AddConnector">
+      <!-- Add new line -->
+      <xsl:text>&#xa;</xsl:text>
+      <!-- This is the new connector -->
+      <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true" 
+                 maxThreads="150" scheme="https" secure="true" 
+                 keystroreFile="${{user.home}}/.keystore" keystorePass="changeit"
+                 clientAuth="false" sslProtocol="TLS" />
+    </xsl:template>
+
+    </xsl:stylesheet>
+```
+
+###### <a name="function-for-xsl-transform"></a>XSL 変換のための関数
+
+PowerShell には、XSL 変換を使用して XML ファイルを変換するための組み込みツールがあります。 次のスクリプトは、この変換を実行するために `startup.ps1` で使用できる関数の例です。
+
+```powershell
+    function TransformXML{
+        param ($xml, $xsl, $output)
+
+        if (-not $xml -or -not $xsl -or -not $output)
+        {
+            return 0
+        }
+
+        Try
+        {
+            $xslt_settings = New-Object System.Xml.Xsl.XsltSettings;
+            $XmlUrlResolver = New-Object System.Xml.XmlUrlResolver;
+            $xslt_settings.EnableScript = 1;
+
+            $xslt = New-Object System.Xml.Xsl.XslCompiledTransform;
+            $xslt.Load($xsl,$xslt_settings,$XmlUrlResolver);
+            $xslt.Transform($xml, $output);
+
+        }
+
+        Catch
+        {
+            $ErrorMessage = $_.Exception.Message
+            $FailedItem = $_.Exception.ItemName
+            Write-Host  'Error'$ErrorMessage':'$FailedItem':' $_.Exception;
+            return 0
+        }
+        return 1
+    }
+```
+
+##### <a name="app-settings"></a>アプリ設定
+
+プラットフォームでは、カスタム バージョンの Tomcat がインストールされている場所も認識している必要があります。 インストールの場所は、`CATALINA_BASE` のアプリ設定で設定できます。
+
+この設定は、次のように、Azure CLI を使用して変更できます。
+
+```powershell
+    az webapp config appsettings set -g $MyResourceGroup -n $MyUniqueApp --settings CATALINA_BASE="%LOCAL_EXPANDED%\tomcat"
+```
+
+または、次のように、この設定を Azure portal で手動で変更できます。
+
+1. **[設定]**  >  **[構成]**  >  **[アプリケーションの設定]** の順に移動します。
+1. **[新しいアプリケーション設定]** を選択します。
+1. 次の値を使用して設定を作成します。
+   1. **名前**: `CATALINA_BASE`
+   1. **値**: `"%LOCAL_EXPANDED%\tomcat"`
+
+##### <a name="example-startupps1"></a>startup.ps1 の例
+
+次のサンプル スクリプトでは、カスタム Tomcat をローカル フォルダーにコピーし、XSL 変換を実行してから、変換が成功したことを示します。
+
+```powershell
+    # Locations of xml and xsl files
+    $target_xml="$Env:LOCAL_EXPANDED\tomcat\conf\server.xml"
+    $target_xsl="$Env:HOME\site\server.xsl"
+    
+    # Define the transform function
+    # Useful if transforming multiple files
+    function TransformXML{
+        param ($xml, $xsl, $output)
+    
+        if (-not $xml -or -not $xsl -or -not $output)
+        {
+            return 0
+        }
+    
+        Try
+        {
+            $xslt_settings = New-Object System.Xml.Xsl.XsltSettings;
+            $XmlUrlResolver = New-Object System.Xml.XmlUrlResolver;
+            $xslt_settings.EnableScript = 1;
+    
+            $xslt = New-Object System.Xml.Xsl.XslCompiledTransform;
+            $xslt.Load($xsl,$xslt_settings,$XmlUrlResolver);
+            $xslt.Transform($xml, $output);
+        }
+    
+        Catch
+        {
+            $ErrorMessage = $_.Exception.Message
+            $FailedItem = $_.Exception.ItemName
+            echo  'Error'$ErrorMessage':'$FailedItem':' $_.Exception;
+            return 0
+        }
+        return 1
+    }
+    
+    $success = TransformXML -xml $target_xml -xsl $target_xsl -output $target_xml
+    
+    # Check for marker file indicating that config has already been done
+    if(Test-Path "$Env:LOCAL_EXPANDED\tomcat\config_done_marker"){
+        return 0
+    }
+    
+    # Delete previous Tomcat directory if it exists
+    # In case previous config could not be completed or a new config should be forcefully installed
+    if(Test-Path "$Env:LOCAL_EXPANDED\tomcat"){
+        Remove-Item "$Env:LOCAL_EXPANDED\tomcat" --recurse
+    }
+    
+    md -Path "$Env:LOCAL_EXPANDED\tomcat"
+    
+    # Copy Tomcat to local
+    # Using the environment variable $AZURE_TOMCAT90_HOME uses the 'default' version of Tomcat
+    Copy-Item -Path "$Env:AZURE_TOMCAT90_HOME\*" "$Env:LOCAL_EXPANDED\tomcat" -Recurse
+    
+    # Perform the required customization of Tomcat
+    $success = TransformXML -xml $target_xml -xsl $target_xsl -output $target_xml
+    
+    # Mark that the operation was a success if successful
+    if($success){
+        New-Item -Path "$Env:LOCAL_EXPANDED\tomcat\config_done_marker" -ItemType File
+    }
+```
 
 #### <a name="finalize-configuration"></a>構成を完了する
 

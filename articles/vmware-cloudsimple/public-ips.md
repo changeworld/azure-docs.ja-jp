@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - パブリック IP アドレスの割り当て
 description: プライベート クラウド環境で仮想マシンのパブリック IP アドレスを割り当てる方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/15/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bb46ad726cd3b99324e9bb96b998ed1b4da885de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 75378ba712a1e71dcd0e16af661672df76c6a9e3
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899186"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108185308"
 ---
 # <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>プライベート クラウド環境のためにパブリック IP アドレスを割り当てる
 

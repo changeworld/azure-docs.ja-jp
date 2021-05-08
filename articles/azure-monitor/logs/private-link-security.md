@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 97e589755602c14a11873fee5288ee8c6e24ba83
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 67af304de8ca6b7210e9a5d132a0eb7db3657a53
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107714294"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107988372"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Azure Private Link を使用して、ネットワークを Azure Monitor に安全に接続する
 
@@ -165,14 +165,13 @@ Azure Monitor リソース (Log Analytics ワークスペースと Application I
 ## <a name="review-and-validate-your-private-link-setup"></a>自分の Private Link セットアップを確認および検証する
 
 ### <a name="reviewing-your-endpoints-dns-settings"></a>エンドポイントの DNS 設定の確認
-作成したプライベート エンドポイントには今、次の 4 つの DNS ゾーンが構成されているはずです。
-
-[![プライベート エンドポイント DNS ゾーンのスクリーンショット。](./media/private-link-security/private-endpoint-dns-zones.png)](./media/private-link-security/private-endpoint-dns-zones-expanded.png#lightbox)
+作成したプライベート エンドポイントには今、次の 5 つの DNS ゾーンが構成されているはずです。
 
 * privatelink-monitor-azure-com
 * privatelink-oms-opinsights-azure-com
 * privatelink-ods-opinsights-azure-com
 * privatelink-agentsvc-azure-automation-net
+* privatelink-blob-core-windows-net
 
 > [!NOTE]
 > これらのゾーンのそれぞれで、特定の Azure Monitor エンドポイントが VNet の IP プールからのプライベート IP にマップされます。 以下の画像に示されている IP アドレスは単なる例です。 実際の構成では、代わりに、独自のネットワークからのプライベート IP が表示されるはずです。
@@ -294,7 +293,65 @@ Azure Portal にアクセスします。 Azure Monitor Application Insights コ�
 
 プライベート リンク スコープを作成して管理するには、[REST API](/rest/api/monitor/privatelinkscopes(preview)/private%20link%20scoped%20resources%20(preview)) または [Azure CLI (az monitor private-link-scope)](/cli/azure/monitor/private-link-scope) を使用します。
 
-ネットワーク アクセスを管理するには、[Log Analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace)または [Application Insights コンポーネント](/cli/azure/ext/application-insights/monitor/app-insights/component)でフラグ `[--ingestion-access {Disabled, Enabled}]` と `[--query-access {Disabled, Enabled}]` を使用します。
+ワークスペースまたはコンポーネントでネットワーク アクセス フラグを管理するには、[Log Analytics ワークスペース](/cli/azure/monitor/log-analytics/workspace)または [Application Insights コンポーネント](/cli/azure/ext/application-insights/monitor/app-insights/component)でフラグ `[--ingestion-access {Disabled, Enabled}]` と `[--query-access {Disabled, Enabled}]` を使用します。
+
+### <a name="example-arm-template"></a>ARM テンプレートの例
+次の ARM テンプレートによって、以下が作成されます。
+* "my-scope" という名前のプライベート リンク スコープ (AMPLS)
+* "my-workspace" という名前の Log Analytics ワークスペース
+* "my-scope" AMPLS にスコープ付きリソースを追加します ("my-workspace-connection" という名前)
+
+```
+{
+    "$schema": https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#,
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "private_link_scope_name": {
+            "defaultValue": "my-scope",
+            "type": "String"
+        },
+        "workspace_name": {
+            "defaultValue": "my-workspace",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.insights/privatelinkscopes",
+            "apiVersion": "2019-10-17-preview",
+            "name": "[parameters('private_link_scope_name')]",
+            "location": "global",
+            "properties": {}
+        },
+        {
+            "type": "microsoft.operationalinsights/workspaces",
+            "apiVersion": "2020-10-01",
+            "name": "[parameters('workspace_name')]",
+            "location": "westeurope",
+            "properties": {
+                "sku": {
+                    "name": "pergb2018"
+                },
+                "publicNetworkAccessForIngestion": "Enabled",
+                "publicNetworkAccessForQuery": "Enabled"
+            }
+        },
+        {
+            "type": "microsoft.insights/privatelinkscopes/scopedresources",
+            "apiVersion": "2019-10-17-preview",
+            "name": "[concat(parameters('private_link_scope_name'), '/', concat(parameters('workspace_name'), '-connection'))]",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/privatelinkscopes', parameters('private_link_scope_name'))]",
+                "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspace_name'))]"
+            ],
+            "properties": {
+                "linkedResourceId": "[resourceId('microsoft.operationalinsights/workspaces', parameters('workspace_name'))]"
+            }
+        }
+    ]
+}
+```
 
 ## <a name="collect-custom-logs-and-iis-log-over-private-link"></a>Private Link 経由でカスタム ログと IIS ログを収集する
 

@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 03/31/2021
 ms.author: banders
-ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: b20134cbfb85c2dcaef1227e6390c8c6047ad5be
+ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98735777"
+ms.lasthandoff: 04/01/2021
+ms.locfileid: "106109392"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し
 
@@ -76,6 +76,10 @@ Microsoft では、サブスクリプションが取り消された後、お客�
 1. Azure portal の [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ページでサブスクリプションを選択します。
 1. 削除するサブスクリプションを選択します。
 1. **[概要]** を選択し、 **[サブスクリプションの削除]** を選択します。
+
+## <a name="delete-other-subscriptions"></a>他のサブスクリプションを削除する
+
+手動で削除できるサブスクリプションの種類は、無料試用版のサブスクリプションのみです。 その他の種類のサブスクリプションは、従量課金制サブスクリプションも含め、すべて[サブスクリプションの取り消し](#cancel-subscription-in-the-azure-portal)プロセスを通じて削除する必要があります。 つまり、無料試用版サブスクリプションを除き、サブスクリプションを直接削除することはできません。 ただし、サブスクリプションを取り消した後、[Azure サポート リクエスト](https://go.microsoft.com/fwlink/?linkid=2083458)を作成して、サブスクリプションを直ちに削除するよう依頼することはできます。
 
 ## <a name="reactivate-a-subscription"></a>サブスクリプションの再アクティブ化
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: devx-track-java
-ms.openlocfilehash: 5ea00adacff1f76eb5ec81728e3a11f703a5fe8c
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 8b9ffad004f2bb9c16ca31e44d044e71c679dced
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106276265"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161449"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Java から Queue Storage を使用する方法
 
@@ -48,52 +48,52 @@ ms.locfileid: "106276265"
    ```
 
    ```powershell
-    mvn archetype:generate `
-        --define interactiveMode=n `
-        --define groupId=com.queues.howto `
-        --define artifactId=queues-howto-v12 `
-        --define archetypeArtifactId=maven-archetype-quickstart `
-        --define archetypeVersion=1.4
-    ```
+   mvn archetype:generate `
+       --define interactiveMode=n `
+       --define groupId=com.queues.howto `
+       --define artifactId=queues-howto-v12 `
+       --define archetypeArtifactId=maven-archetype-quickstart `
+       --define archetypeVersion=1.4
+   ```
 
 1. プロジェクトの生成からの出力は、次のようになります。
 
-    ```console
-    [INFO] Scanning for projects...
-    [INFO]
-    [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
-    [INFO] Building Maven Stub Project (No POM) 1
-    [INFO] --------------------------------[ pom ]---------------------------------
-    [INFO]
-    [INFO] >>> maven-archetype-plugin:3.1.2:generate (default-cli) > generate-sources @ standalone-pom >>>
-    [INFO]
-    [INFO] <<< maven-archetype-plugin:3.1.2:generate (default-cli) < generate-sources @ standalone-pom <<<
-    [INFO]
-    [INFO]
-    [INFO] --- maven-archetype-plugin:3.1.2:generate (default-cli) @ standalone-pom ---
-    [INFO] Generating project in Batch mode
-    [INFO] ----------------------------------------------------------------------------
-    [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
-    [INFO] ----------------------------------------------------------------------------
-    [INFO] Parameter: groupId, Value: com.queues.howto
-    [INFO] Parameter: artifactId, Value: queues-howto-v12
-    [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-    [INFO] Parameter: package, Value: com.queues.howto
-    [INFO] Parameter: packageInPathFormat, Value: com/queues/howto
-    [INFO] Parameter: version, Value: 1.0-SNAPSHOT
-    [INFO] Parameter: package, Value: com.queues.howto
-    [INFO] Parameter: groupId, Value: com.queues.howto
-    [INFO] Parameter: artifactId, Value: queues-howto-v12
-    [INFO] Project created from Archetype in dir: C:\queues\queues-howto-v12
-    [INFO] ------------------------------------------------------------------------
-    [INFO] BUILD SUCCESS
-    [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  6.775 s
-    [INFO] Finished at: 2020-08-17T15:27:31-07:00
-    [INFO] ------------------------------------------------------------------------
-        ```
+   ```console
+   [INFO] Scanning for projects...
+   [INFO]
+   [INFO] ------------------< org.apache.maven:standalone-pom >-------------------
+   [INFO] Building Maven Stub Project (No POM) 1
+   [INFO] --------------------------------[ pom ]---------------------------------
+   [INFO]
+   [INFO] >>> maven-archetype-plugin:3.1.2:generate (default-cli) > generate-sources @ standalone-pom >>>
+   [INFO]
+   [INFO] <<< maven-archetype-plugin:3.1.2:generate (default-cli) < generate-sources @ standalone-pom <<<
+   [INFO]
+   [INFO]
+   [INFO] --- maven-archetype-plugin:3.1.2:generate (default-cli) @ standalone-pom ---
+   [INFO] Generating project in Batch mode
+   [INFO] ----------------------------------------------------------------------------
+   [INFO] Using following parameters for creating project from Archetype: maven-archetype-quickstart:1.4
+   [INFO] ----------------------------------------------------------------------------
+   [INFO] Parameter: groupId, Value: com.queues.howto
+   [INFO] Parameter: artifactId, Value: queues-howto-v12
+   [INFO] Parameter: version, Value: 1.0-SNAPSHOT
+   [INFO] Parameter: package, Value: com.queues.howto
+   [INFO] Parameter: packageInPathFormat, Value: com/queues/howto
+   [INFO] Parameter: version, Value: 1.0-SNAPSHOT
+   [INFO] Parameter: package, Value: com.queues.howto
+   [INFO] Parameter: groupId, Value: com.queues.howto
+   [INFO] Parameter: artifactId, Value: queues-howto-v12
+   [INFO] Project created from Archetype in dir: C:\queues\queues-howto-v12
+   [INFO] ------------------------------------------------------------------------
+   [INFO] BUILD SUCCESS
+   [INFO] ------------------------------------------------------------------------
+   [INFO] Total time:  6.775 s
+   [INFO] Finished at: 2020-08-17T15:27:31-07:00
+   [INFO] ------------------------------------------------------------------------
+   ```
 
-1. Switch to the newly created `queues-howto-v12` directory.
+1. 新しく作成した `queues-howto-v12` ディレクトリに切り替えます。
 
    ```console
    cd queues-howto-v12

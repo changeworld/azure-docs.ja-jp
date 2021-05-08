@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: d0e79e42c7c004638336ada23de663bbe74b7e48
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f5c0e8ae52d2af25c41550df1c59680d47360477
+ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92532647"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107987850"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---flexible-server"></a>Azure Database for PostgreSQL (フレキシブル サーバー) でのバックアップと復元
 
@@ -69,9 +69,9 @@ Azure portal で "[使用されたバックアップ ストレージ](../concept
 
 ポイントインタイム リストアは複数のシナリオで役に立ちます。 たとえば、ユーザーが誤ってデータを削除したとき、重要なテーブルやデータベースを削除したとき、またはアプリケーションの不具合が原因で、適切なデータが不適切なデータで誤って上書きされた場合などです。 トランザクション ログの継続的バックアップによって、最後のトランザクションに復元できるようになります。
 
-最も早い復元ポイントとカスタム復元ポイントのどちらかを選択できます。
+最新の復元ポイントとカスタム復元ポイントのどちらかを選択できます。
 
--   **最も早い復元ポイント**:これは、保持期間に応じて、復元可能な最も早い時刻になります。 最も古いバックアップ時刻が自動選択され、ポータルに表示されます。 これは、特定の時点から開始する調査またはテストを行う場合に便利です。
+-   **最新の復元ポイント (現在)** : これは、サーバーを最新の時点に復元できる、既定のオプションです。 
 
 -   **カスタム復元ポイント**:このオプションを使用すると、このフレキシブル サーバーに定義されている保持期間内の特定の時点を選択できます。 既定では、UTC の最新の時刻が自動選択され、テスト目的で最後にコミットされたトランザクションに復元する場合に便利です。 必要に応じて、他の日付と時刻を選択することもできます。 
 

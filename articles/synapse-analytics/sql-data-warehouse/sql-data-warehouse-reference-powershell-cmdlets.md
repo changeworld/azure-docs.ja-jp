@@ -11,14 +11,14 @@ ms.date: 04/17/2018
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 1f00f470fb0aa8ac98b431c6fc9428f501b553ed
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 8a056be34b9771188fb88e4d1f7db78eb82d1b4e
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107566445"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108162403"
 ---
-# <a name="powershell--rest-apis-for-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) 用の PowerShell および REST API 
+# <a name="powershell--rest-apis-for-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Azure Synapse Analytics での専用 SQL プール (旧称 SQL DW) 用の PowerShell および REST API
 
 Azure PowerShell コマンドレットまたは REST API を使用して、多くの専用 SQL プール管理タスクを管理できます。  以下の例では、PowerShell コマンドを使用して、専用 SQL プール (旧称 SQL DW) での一般的なタスクを自動化する方法を示します。  適切な REST の例については、 [REST を使用したのスケーラビリティの管理](sql-data-warehouse-manage-compute-rest-api.md)に関する記事をご覧ください。
 
@@ -39,13 +39,13 @@ Azure PowerShell コマンドレットまたは REST API を使用して、多�
 
 "Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを一時停止します。  サーバーは "ResourceGroup1" という名前の Asure リソース グループ内にあります。
 
-```Powershell
+```powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
 
 バリエーションであるこの例では、取得したオブジェクトを [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) にパイプ処理します。  その結果、データベースが一時停止されます。 最後のコマンドは結果を表示します。
 
-```Powershell
+```powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $resultDatabase = $database | Suspend-AzSqlDatabase
 $resultDatabase
@@ -55,13 +55,13 @@ $resultDatabase
 
 "Server01" という名前のサーバーでホストされている "Database02" という名前のデータベースを再開します。 サーバーは "ResourceGroup1" という名前のリソース グループ内にあります。
 
-```Powershell
+```powershell
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
 この例では、"ResourceGroup1" という名前のリソース グループに含まれている "Server01" という名前のサーバーから "Database02" という名前のデータベースを取得します。 取得したオブジェクトを [Resume-AzSqlDatabase](/powershell/module/az.sql/resume-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) にパイプ処理します。
 
-```Powershell
+```powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 $resultDatabase = $database | Resume-AzSqlDatabase
 ```

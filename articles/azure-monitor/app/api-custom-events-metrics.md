@@ -4,12 +4,12 @@ description: デバイスまたはデスクトップ アプリケーション、
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8e866dc30d83f1b1f080a1be385026dcfbc77320
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: c43ecced4c87deda3e3d92a470d6694dfd1813e2
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106122103"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108331522"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -42,7 +42,7 @@ Application Insights SDK の参照がまだない場合:
   * [ASP.NET Core プロジェクト](./asp-net-core.md)
   * [Java プロジェクト](./java-get-started.md)
   * [Node.js プロジェクト](./nodejs.md)
-  * [各 Web ページの JavaScript](./javascript.md) 
+  * [各 Web ページの JavaScript](./javascript.md)
 * デバイスまたは Web サーバー コードに次を追加します。
 
     *C#:* `using Microsoft.ApplicationInsights;`
@@ -66,6 +66,7 @@ AzureFunctions v2 + または Azure WebJobs v3 + を使用する場合は、こ�
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
 ```
+
 このメソッドが現在不使用のメッセージであることがわかっている場合は、[microsoft/ApplicationInsights-dotnet # 1152](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1152) にアクセスして詳細を確認してください。
 
 *Visual Basic*
@@ -78,7 +79,7 @@ Private Dim telemetry As New TelemetryClient
 
 ```java
 private TelemetryClient telemetry = new TelemetryClient();
-``` 
+```
 
 *Node.js*
 
@@ -148,8 +149,6 @@ telemetry.trackEvent({name: "WinGame"});
 
 テレメトリは、[Application Insights ログのタブ](../logs/log-query-overview.md)または[使用エクスペリエンス](usage-overview.md)の `customEvents` テーブルにあります。 イベントは、`trackEvent(..)` または[クリック分析自動収集プラグイン](javascript-click-analytics-plugin.md)から取得できます。
 
- 
-
 [サンプリング](./sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、したがって `customEvents | summarize sum(itemCount)` などのコードを使用する必要があります。
 
 ## <a name="getmetric"></a>GetMetric
@@ -177,15 +176,15 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
 
 *JavaScript*
 
- ```javascript
+```javascript
 appInsights.trackMetric("queueLength", 42.0);
- ```
+```
 
 *C#*
 
 ```csharp
 var sample = new MetricTelemetry();
-sample.Name = "metric name";
+sample.Name = "queueLength";
 sample.Value = 42.3;
 telemetryClient.TrackMetric(sample);
 ```
@@ -198,9 +197,9 @@ telemetry.trackMetric("queueLength", 42.0);
 
 *Node.js*
 
- ```javascript
+```javascript
 telemetry.trackMetric({name: "queueLength", value: 42.0});
- ```
+```
 
 ### <a name="custom-metrics-in-analytics"></a>Analytics でのカスタム メトリック
 
@@ -504,7 +503,7 @@ trackTrace({
 メッセージ コンテンツで検索できますが、(プロパティ値とは異なり) フィルター処理はできません。
 
 `message` のサイズ制限は、プロパティの制限よりも非常に高くなっています。
-TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。  
+TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、メッセージ中で POST データをエンコードできます。
 
 加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 次に例を示します。
 
@@ -601,7 +600,7 @@ finally
 }
 ```
 
-サーバー SDK には、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡する[依存関係モジュール](./asp-net-dependencies.md)が含まれています。 このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。 
+サーバー SDK には、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡する[依存関係モジュール](./asp-net-dependencies.md)が含まれています。 このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。
 
 Java では、[Java エージェント](./java-agent.md)を使用して、特定の依存関係呼び出しを自動的に追跡できます。
 
@@ -633,7 +632,7 @@ dependencies
 
 *C#*
 
- ```csharp
+```csharp
 telemetry.Flush();
 // Allow some time for flushing before shutdown.
 System.Threading.Thread.Sleep(5000);
@@ -798,8 +797,6 @@ telemetry.trackEvent("WinGame", properties, metrics);
 
 > [!NOTE]
 > プロパティで個人を特定できる情報を記録しないように注意します。
->
->
 
 ### <a name="alternative-way-to-set-properties-and-metrics"></a>プロパティとメトリックを設定する別の方法
 
@@ -820,8 +817,6 @@ telemetry.TrackEvent(event);
 
 > [!WARNING]
 > Track*() を複数回呼び出すために、同じテレメトリ項目インスタンス (この例では `event`) を再利用しないでください。 再利用すると、正しくない構成でテレメトリが送信される場合があります。
->
->
 
 ### <a name="custom-measurements-and-properties-in-analytics"></a>Analytics でのカスタム測定とプロパティ
 
@@ -912,7 +907,6 @@ gameTelemetry.TrackEvent("WinGame")
 import com.microsoft.applicationinsights.TelemetryClient;
 import com.microsoft.applicationinsights.TelemetryContext;
 ...
-
 
 TelemetryClient gameTelemetry = new TelemetryClient();
 TelemetryContext context = gameTelemetry.getContext();

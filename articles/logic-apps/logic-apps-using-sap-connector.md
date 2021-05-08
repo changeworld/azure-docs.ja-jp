@@ -7,14 +7,14 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 03/30/2021
+ms.date: 04/27/2021
 tags: connectors
-ms.openlocfilehash: ec5046e40b6fade0e4d56023c404cc736a46f105
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 0bdb19104d7773d63f583b4013ac9d80893500ae
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105969106"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108147267"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
@@ -32,11 +32,11 @@ ms.locfileid: "105969106"
 
     * Premium レベルの[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) でロジック アプリを実行している場合は、「[ISE の前提条件](#ise-prerequisites)」を参照してください。
 
-* Logic Apps からアクセスする [SAP アプリケーション サーバー](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)または [SAP メッセージ サーバー](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。 コネクタで使用できる SAP サーバーと SAP アクションの詳細については、「[SAP 互換性](#sap-compatibility)」を参照してください。
+* Logic Apps からアクセスする [SAP アプリケーション サーバー](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server)または [SAP メッセージ サーバー](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm)。 コネクタで使用できる SAP サーバーの詳細については、「[SAP 互換性](#sap-compatibility)」を参照してください。
 
     * RFC の使用を許可するように SAP サーバーを構成する必要があります。 詳細については、SAP ノート「[460089 - 外部 RFC プログラム用の最小認可プロファイル](https://launchpad.support.sap.com/#/notes/460089)」を参照してください。 
 
-* SAP サーバーに送信するメッセージの内容 (サンプル IDoc ファイルなど)。 この内容は XML 形式で、使用する SAP アクションの名前空間を含んでいる必要があります。 [XML エンベロープにラップすることによって、フラット ファイル スキーマを持つ IDoc を送信する](#send-flat-file-idocs)ことができます。
+* SAP サーバーに送信するメッセージの内容 (サンプル IDoc ファイルなど)。 この内容は XML 形式とし、使用する [SAP アクション](#actions)の名前空間を含める必要があります。 [XML エンベロープにラップすることによって、フラット ファイル スキーマを持つ IDoc を送信する](#send-flat-file-idocs)ことができます。
 
 * **When a message is received from SAP (SAP からメッセージを受信したとき)** というトリガーを使用する場合は、以下の操作も行う必要があります。
 
@@ -63,35 +63,9 @@ SAP コネクタでは、SAP NetWeaver ベースのシステムの、次のメ�
 
 * Remote Function Call (RFC) と Transactional RFC (tRFC)
 
-SAP コネクタでは、[SAP .NET Connector (NCo) ライブラリ](https://support.sap.com/en/product/connectors/msnet.html)が使用されています。 コネクタでは、次の SAP アクションとトリガーを使用できます。
+SAP コネクタでは、[SAP .NET Connector (NCo) ライブラリ](https://support.sap.com/en/product/connectors/msnet.html)が使用されています。 
 
-* **[Send message to SAP]\(SAP にメッセージを送信する\)** を行って [[send IDocs over tRFC]\(tRFC 経由で IDoc を送信する\)](#send-idoc-action) アクション。これを使用すると、次のことができます。
-
-    * [RFC 経由で BAPI 関数を呼び出す](#call-bapi-action)
-
-    * SAP システムで RFC/tRFC を呼び出す
-
-    * ステートフル セッションを作成または閉じる
-
-    * BAPI トランザクションをコミットまたはロールバックする
-
-    * トランザクション識別子を確認する
-
-    * IDoc を送信し、その番号から IDoc の状態を取得して、トランザクションの IDoc の一覧を取得する
-
-    * SAP テーブルを読み取る
-
-* **[When a message is received from SAP]\(SAP からメッセージを受信したとき\)** トリガーを使用すると、次のことができます。
-
-    * tRFC 経由で IDoc を受信する
-
-    * tRFC 経由で BAPI 関数を呼び出す
-
-    * SAP システムで RFC/tRFC を呼び出す
-
-* **[Generate schemas]\(スキーマを生成する\)** アクション。これは、IDoc、BAPI、RFC 用に SAP アーティファクトのスキーマを生成するために使用できます。
-
-これらの SAP アクションを使用するには、最初にユーザー名とパスワードを使用して接続を認証する必要があります。 SAP コネクタでは、[Secure Network Communications (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true) もサポートされています。 SNC は、SAP NetWeaver シングル サインオン (SSO)、または外部製品の追加のセキュリティ機能に使用できます。 SNC を使用する場合は、「[SNC の前提条件](#snc-prerequisites)」を参照してください。
+使用可能な [SAP トリガー](#triggers)と [SAP アクション](#actions)を使用するには、最初にユーザー名とパスワードを使用して自分の接続を認証する必要があります。 SAP コネクタでは、[Secure Network Communications (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true) もサポートされています。 SNC は、SAP NetWeaver シングル サインオン (SSO)、または外部製品の追加のセキュリティ機能に使用できます。 SNC を使用する場合は、「[SNC の前提条件](#snc-prerequisites)」を参照してください。
 
 ### <a name="migrate-to-current-connector"></a>最新のコネクタに移行する
 
@@ -911,7 +885,7 @@ SAP から自分のロジック アプリに IDoc を送信するには、次の
 
 * 応答メッセージの構造。 この情報を使用して応答を解析します。 
 
-要求メッセージを送信するには、汎用 SAP アクションである "**SAP にメッセージを送信する**"、またはターゲットとなる "**BAPI の呼び出し**" アクションを使用します。
+要求メッセージを送信するには、汎用 SAP アクションである **[SAP にメッセージを送信する]** 、またはターゲットとなる **[\[BAPI] SAP でのメソッドの呼び出し]** アクションを使用します。
 
 ### <a name="sample-xml-schemas"></a>XML スキーマのサンプル
 
@@ -1005,7 +979,7 @@ SAP から自分のロジック アプリに IDoc を送信するには、次の
 
 #### <a name="xml-samples-for-bapi-requests"></a>BAPI 要求の XML サンプル
 
-次の XML サンプルは、[BAPI メソッドを呼び出す](#call-bapi-action)要求の例です。
+次の XML サンプルは、[BAPI メソッドを呼び出す](#actions)要求の例です。
 
 > [!NOTE]
 > SAP では、Logic Apps によって入力フィルターなしで発行される RFC `RPY_BOR_TREE_INIT` に対する応答においてビジネス オブジェクトを記述することにより、外部システムでそれを使用できるようになります。 Logic Apps により、出力テーブル `BOR_TREE` が検査されます。 `SHORT_TEXT` フィールドは、ビジネス オブジェクトの名前に使用されます。 出力テーブルで SAP から返されないビジネス オブジェクトでは、Logic Apps にアクセスできません。
@@ -1379,7 +1353,7 @@ Logic Apps から SAP に接続する場合、接続の既定の言語は英語�
 
 ### <a name="confirm-transaction-explicitly"></a>トランザクションを明示的に確認する
 
-Logic Apps から SAP にトランザクションを送信する場合、この交換は SAP ドキュメントの「[Transactional RFC Server Programs](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)」 (トランザクション RFC サーバー プログラム) で説明されている 2 つの手順で行われます。 既定では、 **[SAP に送信する]** アクションで、関数転送とトランザクション確認の両方の手順が 1 回の呼び出しで処理されます。 SAP コネクタには、これらの手順を分離するオプションが用意されています。 IDoc を送信することができ、トランザクションを自動的に確認するのではなく、明示的な **[Confirm transaction ID]\(トランザクション ID の確認\)** アクションを使用することができます。
+Logic Apps から SAP にトランザクションを送信する場合、この交換は SAP ドキュメントの「[Transactional RFC Server Programs](https://help.sap.com/doc/saphelp_nwpi71/7.1/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true)」 (トランザクション RFC サーバー プログラム) で説明されている 2 つの手順で行われます。 既定では、 **[SAP に送信する]** アクションで、関数転送とトランザクション確認の両方の手順が 1 回の呼び出しで処理されます。 SAP コネクタには、これらの手順を分離するオプションが用意されています。 IDoc を送信することができます。さらに、トランザクションを自動的に確認するのではなく、明示的な **[\[IDOC] Confirm transaction ID]\([IDOC] トランザクション ID を確認する\)** アクションを使用することができます。
 
 トランザクション ID の確認を分離するこの機能は、SAP でトランザクションを複製したくない場合に役立ちます。たとえば、ネットワークの問題などが原因でエラーが発生する可能性のあるシナリオの場合です。 トランザクション ID を個別に確認することで、トランザクションは SAP システム内で 1 回だけ完了します。
 
@@ -1387,13 +1361,13 @@ Logic Apps から SAP にトランザクションを送信する場合、この�
 
 1. 空のロジック アプリを作成し、HTTP トリガーを追加します。
 
-1. SAP コネクタから、 **[Send IDOC]\(IDOC の送信\)** アクションを追加します。 SAP システムに送信する IDoc の詳細を入力します。
+1. SAP コネクタから、 **[\[IDOC] Send document to SAP]\([IDOC] SAP にドキュメントを送信する\)** アクションを追加します。 SAP システムに送信する IDoc の詳細を入力します。
 
 1. トランザクション ID を別の手順で明示的に確認するには、 **[TID の確認]** フィールドで **[いいえ]** を選択します。 省略可能な **[トランザクション ID の GUID]** フィールドについては、手動で値を指定するか、またはコネクタで自動的に生成し、[IDOC の送信] アクションからの応答でこの GUID が返されるようにすることができます。
 
    ![[Send IDOC]\(IDOC の送信\) アクションのプロパティ](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 
-1. トランザクション ID を明示的に確認するには、 **[Confirm transaction ID]\(トランザクション ID の確認\)** アクションを追加し、[重複する IDoc が SAPに送信されるのを確実に防ぎます](#avoid-sending-duplicate-idocs)。 **[Transaction ID]\(トランザクション ID\)** ボックス内をクリックし、動的コンテンツ リストが表示されるようにします。 そのリストから、 **[Send IDOC]\(IDOC の送信\)** アクションから返された **[Transaction ID]\(トランザクション ID\)** の値を選択します。
+1. トランザクション ID を明示的に確認するには、 **[\[IDOC] Confirm transaction ID]\([IDOC] トランザクション ID を確認する\)** アクションを追加し、[重複する IDoc が SAP に送信されるのを確実に回避](#avoid-sending-duplicate-idocs)します。 **[Transaction ID]\(トランザクション ID\)** ボックス内をクリックし、動的コンテンツ リストが表示されるようにします。 そのリストから、 **[\[IDOC] Send document to SAP]\([IDOC] SAP にドキュメントを送信する\)** アクションから返された **[Transaction ID]\(トランザクション ID\)** の値を選択します。
 
    ![[Transaction ID]\(トランザクション ID\) アクション](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
 
@@ -1417,9 +1391,9 @@ Logic Apps から SAP にトランザクションを送信する場合、この�
 
     1. **[値]** では、 **[初期値を入力]** テキスト ボックスを選択して、動的コンテンツ メニューを開きます。 **[式]** タブを選択します。関数の一覧で、関数 `guid()` を入力します。 次に、 **[OK]** を選択して変更を保存します。 **[値]** フィールドに、GUID を生成する `guid()` 関数が設定されます。
 
-1. **[変数を初期化する]** アクションの後に、 **[Send IDOC]\(IDOC を送信する\)** アクションを追加します。
+1. **[変数を初期化する]** アクションの後に、 **[\[IDOC] Send document to SAP]\([IDOC] SAP にドキュメントを送信する\)** を追加します。
 
-1. **[Send IDOC]\(IDOC を送信する\)** アクションのエディターで、次の設定を構成します。 そして、変更を保存します。
+1. **[\[IDOC] Send document to SAP]\([IDOC] SAP にドキュメントを送信する\)** アクションのエディターで、次の設定を構成します。 そして、変更を保存します。
 
     1. **[IDOC type]\(IDOC の種類\)** でメッセージの種類を選択し、 **[Input IDOC message]\(IDOC メッセージを入力する\)** でメッセージを指定します。
 
@@ -1431,15 +1405,15 @@ Logic Apps から SAP にトランザクションを送信する場合、この�
 
     1. **[Add new parameter list]\(新しいパラメーター リストの追加\)**  >  **[Transaction ID GUID]\(トランザクション ID GUID\)** を選択します。 テキスト ボックスを選択して、動的コンテンツ メニューを開きます。 **[変数]** タブで、作成した変数の名前を選択します。 たとえば、「 `IDOCtransferID` 」のように入力します。
 
-1. **[Send IDOC]\(IDOC を送信する\)** アクションのタイトル バーで、 **[...]**  >  **[設定]** を選択します。 **[再試行ポリシー]** の場合は、 **[既定]** &gt; **[完了]** を選択することをお勧めします。 ただし、代わりに、特定のニーズに合わせてカスタム ポリシーを構成することもできます。 カスタム ポリシーでは、一時的なネットワーク障害を克服するために、少なくとも 1 回の再試行を構成することをお勧めします。
+1. **[\[IDOC] Send document to SAP]\([IDOC] SAP にドキュメントを送信する\)** アクションのタイトル バーで、 **[...]**  >  **[設定]** の順に選択します。 **[再試行ポリシー]** の場合は、 **[既定]** &gt; **[完了]** を選択することをお勧めします。 ただし、代わりに、特定のニーズに合わせてカスタム ポリシーを構成することもできます。 カスタム ポリシーでは、一時的なネットワーク障害を克服するために、少なくとも 1 回の再試行を構成することをお勧めします。
 
-1. **[Send IDOC]\(IDOC を送信する\)** アクションの後に、 **[Confirm transaction ID]\(トランザクション ID を確認する\)** アクションを追加します。
+1. **[\[IDOC] Send document to SAP]\([IDOC] SAP にドキュメントを送信する\)** アクションの後に、 **[\[IDOC] Confirm transaction ID]\(トランザクション ID を確認する\)** アクションを追加します。
 
-1. **[Confirm transaction ID]\(トランザクション ID を確認する\)** アクションのエディターで、次の設定を構成します。 そして、変更を保存します。
+1. **[\[IDOC] Confirm transaction ID]\(トランザクション ID を確認する\)** アクションのエディターで、次の設定を構成します。 そして、変更を保存します。
 
     1. **[トランザクション ID]** に、変数の名前をもう一度入力します。 たとえば、「 `IDOCtransferID` 」のように入力します。
 
-1. 必要に応じて、テスト環境で重複除去を検証します。 前の手順で使用したのと同じ **[トランザクション ID]** GUID を使用して **[Send IDOC]\(IDOC を送信する\)** アクションを繰り返します。 同じ IDoc を 2 回送信すると、SAP が tRFC 呼び出しの重複を識別し、1 つの受信 IDoc メッセージに対する 2 つの呼び出しを解決できることを検証できます。
+1. 必要に応じて、テスト環境で重複除去を検証します。 前の手順で使用したのと同じ **[トランザクション ID]** GUID を使用して **[\[IDOC] Send document to SAP]\([IDOC] SAP にドキュメントを送信する\)** アクションを繰り返します。 同じ IDoc を 2 回送信すると、SAP が tRFC 呼び出しの重複を識別し、1 つの受信 IDoc メッセージに対する 2 つの呼び出しを解決できることを検証できます。
 
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限事項
 
@@ -1449,59 +1423,205 @@ Logic Apps から SAP にトランザクションを送信する場合、この�
 
   * 送信シナリオの場合、フェールオーバー モードのデータ ゲートウェイ クラスターがサポートされます。 
 
-  * 負荷分散モードのデータ ゲートウェイ クラスターは、ステートフル SAP アクションではサポートされません。 このようなアクションには、**ステートフル セッションの作成**、**BAPI トランザクションのコミット**、**BAPI トランザクションのロールバック**、**ステートフル セッションの終了**、および **セッション ID** 値を指定するすべてのアクションがあります。 ステートフル通信は、同じデータ ゲートウェイ クラスター ノードに保持する必要があります。 
+  * 負荷分散モードのデータ ゲートウェイ クラスターは、ステートフル [SAP アクション](#actions)ではサポートされません。 このようなアクションとしては、 **[\[BAPI - RFC] ステートフル セッションの作成]** 、 **[\[BAPI] トランザクションのコミット]** 、 **[\[BAPI] トランザクションのロールバック]** 、 **[\[BAPI - RFC] ステートフル セッションの終了]** に加えて、 **[セッション ID]** 値を指定するすべてのアクションが挙げられます。 ステートフル通信は、同じデータ ゲートウェイ クラスター ノードに保持する必要があります。 
 
   * ステートフル SAP アクションの場合は、非クラスター モードで、またはフェールオーバー用に設定されているクラスターで、データゲート ウェイを使用します。
 
 * 現在、SAP コネクタは SAP ルーター文字列をサポートしていない。 オンプレミス データ ゲートウェイは、接続する SAP システムと同じ LAN 上に存在する必要があります。
 
-## <a name="connector-reference"></a>コネクタのレファレンス
+* [ISE のロジック アプリ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)の場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
 
-コネクタの Swagger ファイルに記述される、トリガー、アクション、制限などのこのコネクタの技術的詳細については、[コネクタの参照ページ](/connectors/sap/)を参照してください。 Logic Apps に関するその他のドキュメントについては、次のアクションを参照してください。
+## <a name="connector-reference"></a>コネクタのレファレンス 
 
-* [BAPI の呼び出し](#call-bapi-action)
+SAP コネクタの詳細については、[コネクタのリファレンス](/connectors/sap/)を参照してください。 SAP コネクタ、トリガー、およびアクションの制限、パラメーター、および戻り値については詳細を確認できます。
 
-* [IDOC の送信](#send-idoc-action)
+### <a name="triggers"></a>トリガー
 
-> [!NOTE]
-> [統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) のロジック アプリの場合、このコネクタの ISE のラベルが付いたバージョンでは、代わりに [ISE メッセージ制限](../logic-apps/logic-apps-limits-and-config.md#message-size-limits)が使用されます。
+:::row:::
+    :::column span="1":::
+        [**SAP からメッセージを受信したとき**](/connectors/sap/#when-a-message-is-received)
+    :::column-end:::
+    :::column span="3":::
+        SAP からメッセージを受信したときは、何らかの処理を行ってください。 
+    :::column-end:::
+:::row-end:::
 
-### <a name="call-bapi-action"></a>Call BAPI (BAPI の呼び出し) アクション
+### <a name="actions"></a>アクション
 
-[Call BAPI (`CallBapi`)](
-https://docs.microsoft.com/connectors/sap/#call-bapi-(preview)) (BAPI の呼び出し) アクションを使用すると、SAP サーバーの BAPI メソッドを呼び出します。 
-
-呼び出しには、次のパラメーターを使用する必要があります。 
-
-* **Business Object** (`businessObject`)。検索可能なドロップダウン メニューです。
-
-* **Method** (`method`)。**Business Object** を選択した後に使用可能なメソッドを設定します。 使用できるメソッドは、選択した **Business Object** によって異なります。
-
-* **Input BAPI parameters** (`body`)。呼び出しの BAPI メソッド入力パラメーター値を含む XML ドキュメント、または BAPI パラメーターを含むストレージ BLOB の URI を呼び出します。
-
-Call BAPI (BAPI の呼び出し) アクションを使用する方法の詳細な例については、[BAPI 要求の XML サンプル](#xml-samples-for-bapi-requests)に関するセクションを参照してください。
-
-> [!TIP]
-> Logic Apps デザイナーを使用して BAPI 要求を編集している場合は、次の検索関数を使用できます。 
-> 
-> * デザイナーでオブジェクトを選択すると、使用可能なメソッドのドロップダウン メニューが表示されます。
-> * BAPI API の呼び出しによって提供される検索可能なリストを使用して、ビジネス オブジェクトの種類をキーワードでフィルター処理します。
-
-### <a name="send-idoc-action"></a>Send IDoc (IDoc を送信する) アクション
-
-[Send IDoc (`SendIDoc`)](/connectors/sap/) (IDoc を送信する) アクションを使用すると、SAP サーバーに IDoc メッセージが送信されます。
-
-呼び出しには、次のパラメーターを使用する必要があります。 
-
-* **IDOC type with optional extension** (`idocType`)。検索可能なドロップダウン メニューです。
-
-    * 省略可能なパラメーター **SAP release version** (`releaseVersion`) を使用すると、IDoc の種類を選択した後に値が設定されます。これは、選択した IDoc の種類によって異なります。
-
-* **Input IDOC message** (`body`)。IDoc ペイロードを含む XML ドキュメント、または IDoc XML ドキュメントを含むストレージ BLOB の URI を呼び出します。 このドキュメントは、WE60 IDoc のドキュメントに従った SAP IDOC XML スキーマ、または一致する SAP IDoc アクション URI 用に生成されたスキーマのいずれかに準拠している必要があります。
-
-Send IDoc (IDoc を送信する) アクションの詳細な使用方法の例については、[IDoc メッセージを SAP サーバーに送信する方法に関するチュートリアル](#send-idoc-messages-to-sap-server)を参照してください。
-
-省略可能なパラメーター **Confirm TID** (`confirmTid`) を使用する方法については、[トランザクションを明示的に確認する方法に関するチュートリアル](#confirm-transaction-explicitly)を参照してください。
+:::row:::
+    :::column span="1":::
+        [ **[BAPI - RFC] ステートフル セッションの終了**](/connectors/sap/#[bapi---rfc]-close-stateful-session-(preview))
+    :::column-end:::
+    :::column span="3":::
+        SAP システムへの既存のステートフル接続セッションを終了します。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[BAPI - RFC] ステートフル セッションの作成**](/connectors/sap/#[bapi---rfc]-create-stateful-session-(preview))
+    :::column-end:::
+    :::column span="3":::
+        SAP システムへのステートフル接続セッションを作成します。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[BAPI] SAP でのメソッドの呼び出し**](/connectors/sap/#[bapi]-call-method-in-sap-(preview))
+    :::column-end:::
+    :::column span="3":::
+        ご利用の SAP システムで BAPI メソッドを呼び出します。
+        \
+        \
+        呼び出しには、次のパラメーターを使用する必要があります:     \
+        \
+        **Business Object** (`businessObject`)。検索可能なドロップダウン メニューです。
+        \
+        \
+        **Method** (`method`)。**Business Object** を選択した後に使用可能なメソッドを設定します。 使用できるメソッドは、選択した **Business Object** によって異なります。
+        \
+        \
+        **Input BAPI parameters** (`body`)。呼び出しの BAPI メソッド入力パラメーター値を含む XML ドキュメント、または BAPI パラメーターを含むストレージ BLOB の URI を呼び出します。
+        \
+        \
+        **[[BAPI] SAP でのメソッドの呼び出し]** アクションを使用する方法の詳細な例については、[BAPI 要求の XML サンプル](#xml-samples-for-bapi-requests)に関するセクションを参照してください。 
+        \
+        Logic Apps デザイナーを使用して BAPI 要求を編集している場合は、次の検索関数を使用できます:     \
+        \
+        デザイナーでオブジェクトを選択すると、使用可能なメソッドのドロップダウン メニューが表示されます。
+        \
+        \
+        BAPI API の呼び出しによって提供される検索可能なリストを使用して、ビジネス オブジェクトの種類をキーワードでフィルター処理します。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[BAPI] トランザクションのコミット**](/connectors/sap/#[bapi]-commit-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        セッションの BAPI トランザクションをコミットします。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[BAPI] トランザクションのロールバック**](/connectors/sap/#[bapi]-roll-back-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        セッションの BAPI トランザクションをロールバックします。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[IDOC - RFC] トランザクション ID を確認する**](/connectors/sap/#[idoc---rfc]-confirm-transaction-id-(preview))
+    :::column-end:::
+    :::column span="3":::
+        トランザクション識別子の確認を SAP に送信します。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[IDOC] トランザクションの IDOC リストを取得する**](/connectors/sap/#[idoc]-get-idoc-list-for-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        セッション識別子またはトランザクション識別子で、トランザクションの IDoc のリストを取得します。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[IDOC] IDOC の状態を取得する**](/connectors/sap/#[idoc]-get-idoc-status-(preview))
+    :::column-end:::
+    :::column span="3":::
+        IDoc の状態を取得します。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[IDOC] SAP にドキュメントを送信する**](/connectors/sap/#[idoc]-send-document-to-sap-(preview))
+    :::column-end:::
+    :::column span="3":::
+        ご利用の SAP サーバーに IDoc メッセージを送信します。
+        \
+        \
+        呼び出しには、次のパラメーターを使用する必要があります:     \
+        \
+        **IDOC type with optional extension** (`idocType`)。検索可能なドロップダウン メニューです。
+        \
+        \
+        **Input IDOC message** (`body`)。IDoc ペイロードを含む XML ドキュメント、または IDoc XML ドキュメントを含むストレージ BLOB の URI を呼び出します。 このドキュメントは、WE60 IDoc のドキュメントに従った SAP IDOC XML スキーマ、または一致する SAP IDoc アクション URI 用に生成されたスキーマのいずれかに準拠している必要があります。
+        \
+        \
+        省略可能なパラメーター **SAP release version** (`releaseVersion`) を使用すると、IDoc の種類を選択した後に値が設定されます。これは、選択した IDoc の種類によって異なります。
+        \
+        \
+        Send IDoc (IDoc を送信する) アクションの詳細な使用方法の例については、[IDoc メッセージを SAP サーバーに送信する方法に関するチュートリアル](#send-idoc-messages-to-sap-server)を参照してください。
+        \
+        \
+        省略可能なパラメーター **Confirm TID** (`confirmTid`) を使用する方法については、[トランザクションを明示的に確認する方法に関するチュートリアル](#confirm-transaction-explicitly)を参照してください。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[RFC] RFC をトランザクションに追加する**](/connectors/sap/#[rfc]-add-rfc-to-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        ご利用のトランザクションに RFC 呼び出しを追加します。 
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[RFC] SAP での関数の呼び出し**](/connectors/sap/#[rfc]-call-function-in-sap-(preview))
+    :::column-end:::
+    :::column span="3":::
+        ご利用の SAP システム上で、RFC 操作 (sRFC、tRFC、または qRFC) を呼び出します。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[RFC] トランザクションのコミット**](/connectors/sap/#[rfc]-commit-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        セッションおよびキューの RFC トランザクションをコミットします。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[RFC] トランザクションの作成**](/connectors/sap/#[rfc]-create-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        識別子およびキュー名で新しいトランザクションを作成します。 トランザクションが存在する場合は、その詳細を取得します。 
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [ **[RFC] トランザクションの取得**](/connectors/sap/#[rfc]-get-transaction-(preview))
+    :::column-end:::
+    :::column span="3":::
+        識別子およびキュー名でトランザクションの詳細を取得します。 新しいトランザクションが存在しない場合は作成します。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [**[スキーマの生成]**](/connectors/sap/#generate-schemas)
+    :::column-end:::
+    :::column span="3":::
+        IDoc、BAPI、RFC 用に SAP 成果物のスキーマを生成します。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [**SAP テーブルの読み取り**](/connectors/sap/#read-sap-table-(preview))
+    :::column-end:::
+    :::column span="3":::
+        SAP テーブルを読み取ります。
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column span="1":::
+        [**SAP にメッセージを送信する**](/connectors/sap/#send-message-to-sap)
+    :::column-end:::
+    :::column span="3":::
+        メッセージの種類 (RFC、BAPI、IDoc) を SAP に送信します。
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: scottnap
-ms.openlocfilehash: 7c3ae14cd409e7bfc9be77c1a593964b73a12ddc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 36987789487e97f42a51ff509df58ee0ff2dd2ed
+ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791051"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107951254"
 ---
 # <a name="about-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Azure Virtual WAN ハブのネットワーク仮想アプライアンスについて (プレビュー)
 
@@ -77,7 +77,7 @@ Virtual WAN ハブを Azure 仮想ネットワークに接続するためには�
 
 |地理的リージョン | Azure Azure リージョン|
 |---|---|
-| 北米| カナダ中部、カナダ東部、米国中部、米国東部、米国東部 2、米国中北部、米国中西部、米国西部、米国西部 2 |
+| 北米| カナダ中部、カナダ東部、米国中部、米国東部、米国東部 2、米国中南部、米国中北部、米国中西部、米国西部、米国西部 2 |
 | 南アメリカ | ブラジル南部、ブラジル南東部 |
 | ヨーロッパ | フランス中部、フランス南部、ドイツ北部、ドイツ中西部、北ヨーロッパ、ノルウェー東部、ノルウェー西部、スイス北部、スイス西部、英国南部、英国西部、西ヨーロッパ|
 |  中東 | アラブ首長国連邦北部 |
