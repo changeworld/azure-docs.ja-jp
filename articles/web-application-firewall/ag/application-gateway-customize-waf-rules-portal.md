@@ -4,15 +4,15 @@ description: この記事では、Azure portal を使用して Application Gatew
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 04/21/2021
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab122d178e5390a53e5a3a39f1b7763b298dc6d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74048374"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878328"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Azure portal を使用した Web アプリケーション ファイアウォール規則のカスタマイズ
 
@@ -21,7 +21,7 @@ Azure Application Gateway Web アプリケーション ファイアウォール 
 >[!NOTE]
 > アプリケーション ゲートウェイが WAF レベルを使用していない場合、アプリケーション ゲートウェイを WAF レベルにアップグレードするオプションが右側のウィンドウに表示されます。 
 
-![WAF を有効にする][fig1]
+:::image type="content" source="../media/application-gateway-customize-waf-rules-portal/1.png" alt-text="WAF を有効にする"::: 
 
 ## <a name="view-rule-groups-and-rules"></a>ルール グループとルールの表示
 
@@ -37,16 +37,13 @@ Azure Application Gateway Web アプリケーション ファイアウォール 
 > [!IMPORTANT]
 > ルール グループまたはルールを無効にする場合は、注意を使用します。 これにより、セキュリティ リスクが増大する可能性があります。
 
-ルールの無効化は、ルール グループ全体を対象にすることも、1 つまたは複数のルール グループに含まれる特定のルールを対象にすることもできます。 
-
 **ルール グループまたは特定のルールを無効にするには**
 
    1. 無効にするルールまたはルール グループを検索します。
    2. 無効にするルールのチェック ボックスをオンにします。 
    3. ページの上部で、選択したルールについてのアクション (有効/無効) を選択します。
-   2. **[保存]** を選択します。 
-
-![変更を保存する][3]
+   2. **[保存]** を選択します。
+    :::image type="content" source="../media/application-gateway-customize-waf-rules-portal/figure3.png" alt-text="無効化されたルールの保存"::: 
 
 ## <a name="mandatory-rules"></a>必須ルール
 
@@ -66,6 +63,3 @@ CRS 3.x 固有:
 ## <a name="next-steps"></a>次のステップ
 
 無効にするルールを構成したら、WAF ログを表示する方法を学習できます。 詳細については、[Application Gateway の診断](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging)に関するトピックを参照してください。
-
-[fig1]: ../media/application-gateway-customize-waf-rules-portal/1.png
-[3]: ../media/application-gateway-customize-waf-rules-portal/figure3.png

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory ポータルのサインイン アクティビティ レポート | Microsoft Docs
-description: Azure Active Directory ポータルのサインイン アクティビティ レポートの概要
+title: Azure Active Directory のサインイン ログ | Microsoft Docs
+description: Azure Active Directory のサインイン ログの概要。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,61 +13,75 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/19/2021
+ms.date: 04/26/2021
 ms.author: markvi
-ms.reviewer: dhanyahk
+ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a4cd69224daa05a3e5931fbde1c85bb8dc9e46a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e524430d696dab7233f4ebb3403f08b2a8030412
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719009"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126707"
 ---
-# <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのサインイン アクティビティ レポート
+# <a name="sign-ins-logs-in-azure-active-directory"></a>Azure Active Directory のサインイン ログ
 
 IT 管理者は、IT 環境がどのように動作しているかを知る必要があります。 システムの正常性に関する情報を使用すると、潜在的な問題に対処する必要があるかどうか、およびその方法を評価できます。 
 
 この目標を達成するために、Azure Active Directory ポータルでは、次の 3 つのアクティビティ ログにアクセスできます。
 
-- **サインイン** - サインインと、ユーザーのリソース使用状況に関する情報です。
+- **[サインイン](concept-sign-ins.md)** - サインインとユーザーのリソース使用状況に関する情報。
 - **[監査](concept-audit-logs.md)** - ユーザーやグループの管理、テナントのリソースに適用された更新など、テナントに適用された変更に関する情報。
 - **[プロビジョニング](concept-provisioning-logs.md)** - ServiceNow でのグループの作成や、Workday からインポートされたユーザーなど、プロビジョニング サービスによって実行されるアクティビティ。
 
 この記事では、サインイン レポートの概要について説明します。
 
-## <a name="prerequisites"></a>前提条件
 
-### <a name="who-can-access-the-data"></a>誰がデータにアクセスできますか。
+## <a name="what-can-you-do-with-it"></a>できること
 
-* セキュリティ管理者、セキュリティ閲覧者、グローバル閲覧者、およびレポート閲覧者ロールのユーザー
-* グローバル管理者
-* 任意のユーザー (非管理者) が自分のサインインにアクセス可能 
+サインイン ログを見れば、たとえば次のことが分かります。
 
-### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>サインイン アクティビティにアクセスするために必要な Azure AD ライセンスを教えてください。
+- ユーザーのサインインにどのようなパターンがあるか。
+
+- 1 週間で何人のユーザーがサインインを行ったか。
+
+- これらのサインインはどのような状態か。
+
+
+## <a name="who-can-access-it"></a>だれがアクセスできるのか。
+
+自分のサインイン ログにはいつでもアクセスできます。 
+
+以下に該当するユーザーだけが、別のユーザーのサインイン ログにアクセスできます。
+
+- グローバル管理者
+
+- 次のいずれかのロールのユーザー
+    - セキュリティ管理者
+
+    - セキュリティ閲覧者
+
+    - グローバル閲覧者
+
+    - レポート閲覧者
+
+
+
+## <a name="what-azure-ad-license-do-you-need"></a>必要な Azure AD ライセンス
 
 サインイン アクティビティ レポートは、[Azure AD のすべてのエディション](reference-reports-data-retention.md#how-long-does-azure-ad-store-the-data)で使用でき、Microsoft Graph API を使用してアクセスすることもできます。
 
-## <a name="sign-ins-report"></a>サインイン レポート
 
-ユーザーのサインイン レポートは、次の質問に対する回答を提示します。
+## <a name="where-can-you-find-it-in-the-azure-portal"></a>Azure portal での閲覧方法
 
-* ユーザーのサインインにどのようなパターンがあるか。
-* 1 週間で何人のユーザーがサインインを行ったか。
-* これらのサインインはどのような状態か。
+Azure portal でログにアクセスする方法はいくつかあります。 たとえば、[Azure Active Directory] メニューの **[監視]** セクションでログを開けます。  
 
-[[Azure portal]](https://portal.azure.com) メニューで **[Azure Active Directory]** を選択するか、任意のページから **[Azure Active Directory]** を検索して選択します。
+![サインイン ログを開く](./media/concept-sign-ins/sign-ins-logs-menu.png)
 
-![[Azure Active Directory] を選択する](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
+こちらのリンク ([https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)) から直接サインイン ログにアクセスすることもできます。
 
-**[監視]** で **[サインイン]** を選択して、[サインイン レポート](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)を開きます。
 
-![スクリーンショットには、[監視] メニューから選択された [サインイン] が示されています。](./media/concept-sign-ins/monitoring-sign-ins-in-azure-active-directory.png "サインイン アクティビティ")
-
-一部のサインイン レコードがポータルに表示されるまでに、最大 2 時間かかることがあります。
-
-> [!IMPORTANT]
-> サインイン レポートには、**対話型** のサインイン、つまりユーザーがユーザー名とパスワードを使用して手動で行うサインインのみが表示されます。 サービス間の認証のような対話型ではないサインインは、サインイン レポートに表示されません。 
+## <a name="what-is-the-default-view"></a>既定の表示項目
 
 サインイン ログには、次のものを示す既定のリスト ビューがあります。
 
@@ -92,9 +106,6 @@ IT 管理者は、IT 環境がどのように動作しているかを知る必�
 
 ![スクリーンショットには、詳細情報ビューが示されています。](./media/concept-sign-ins/basic-sign-in.png "サインイン アクティビティ")
 
-> [!NOTE]
-> すべてのサインイン レポートで、条件付きアクセス ポリシーのトラブルシューティングを実行できるようになりました。 サインイン レコードの **[条件付きアクセス]** タブをクリックして、条件付きアクセスの状態を確認し、サインインに適用されたポリシーの詳細と各ポリシーの結果を調べることができます。
-> 詳細については、「[Frequently asked questions about CA information in all sign-ins](reports-faq.md#conditional-access)」 (すべてのサインインの CA 情報に関してよく寄せられる質問) を参照してください。
 
 
 ## <a name="sign-in-error-code"></a>サインイン エラー コード
@@ -111,7 +122,8 @@ IT 管理者は、IT 環境がどのように動作しているかを知る必�
 
 ## <a name="filter-sign-in-activities&quot;></a>サインイン アクティビティのフィルター処理
 
-まず、報告されたデータを、自分に適したレベルまで絞り込みます。 次に、既定のフィルターとして [日付] フィールドを使用したサインイン データをフィルター処理します。 Azure AD では、さまざまな追加のフィルターを設定できます。
+
+ログのデータをフィルター処理して、必要な範囲まで絞り込めます。
 
 ![スクリーンショットには、[フィルターの追加] オプションが示されています。](./media/concept-sign-ins/04.png &quot;サインイン アクティビティ")
 
@@ -249,7 +261,7 @@ Azure AD と Azure portal には両方とも、サインイン データへの�
 - サインインの状態
 
 > [!NOTE]
-> IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 IP アドレスのマッピングは、多くの場合、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから、モバイル プロバイダーや VPN が IP アドレスを発行しているという事実によって、複雑になります。 現在の Azure AD レポートでは、IP アドレスの物理的な場所の変換は、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートで対応されています。
+> IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 IP アドレスのマッピングは、多くの場合、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから、モバイル プロバイダーや VPN が IP アドレスを発行しているという事実によって、複雑になります。 現時点では、トレース、レジストリ データ、逆引きなどの情報に基づいて IP アドレスを物理的な場所に変換するのがいいでしょう。
 
 **[ユーザー]** ページの **[アクティビティ]** セクションの **[サインイン]** をクリックすると、すべてのユーザー サインインの完全な概要が表示されます。
 
@@ -287,6 +299,7 @@ Microsoft 365 のアクティビティ ログは、[Microsoft 365 管理セン�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [サインイン アクティビティ レポートのエラー コード](reference-sign-ins-error-codes.md)
+* [サインイン アクティビティ レポートのエラー コード]()
 * [Azure AD のデータ保有ポリシー](reference-reports-data-retention.md)
 * [Azure AD のレポート待機時間](reference-reports-latencies.md)
+* [サインイン レポート中の Microsoft ファースト パーティー アプリケーション](/troubleshoot/azure/active-directory/verify-first-party-apps-sign-in#application-ids-for-commonly-used-microsoft-applications)

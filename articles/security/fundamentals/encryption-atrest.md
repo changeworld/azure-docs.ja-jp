@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 1318aaf50d4f05b8a999e5661318dc83997a2f02
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6c302b10baad157cd70751d49fe6d50911c2ce75
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96920783"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074792"
 ---
 # <a name="azure-data-encryption-at-rest"></a>保存時の Azure データの暗号化
 
@@ -91,7 +91,7 @@ Microsoft Cloud サービスは、IaaS、PaaS、SaaS の3 つのクラウド モ
 
 ### <a name="encryption-at-rest-for-paas-customers"></a>PaaS 顧客のための保存時の暗号化
 
-サービスとしてのプラットフォーム (PaaS) 顧客のデータは通常、Blob Storage などのストレージ サービスに存在しますが、仮想マシンなどのアプリケーションの実行環境でキャッシュまたは格納される場合もあります。 使用できる保存時の暗号化オプションを確認するには、下の、使用しているストレージとアプリケーション プラットフォームの表を調べてください。
+サービスとしてのプラットフォーム (PaaS) 顧客のデータは通常、Blob Storage などのストレージ サービスに存在しますが、仮想マシンなどのアプリケーションの実行環境でキャッシュまたは格納される場合もあります。 使用できる保存時の暗号化のオプションを確認するには、[データ暗号化モデル: サポート サービスの表](encryption-models.md#supporting-services)で、使用しているストレージとアプリケーション プラットフォームを調べてください。
 
 ### <a name="encryption-at-rest-for-iaas-customers"></a>IaaS 顧客のための保存時の暗号化
 
@@ -99,7 +99,7 @@ Microsoft Cloud サービスは、IaaS、PaaS、SaaS の3 つのクラウド モ
 
 #### <a name="encrypted-storage"></a>暗号化されたストレージ
 
-PaaS と同様、IaaS ソリューションは、保存時のデータの暗号化を保存する他の Azure サービスを利用できます。 この場合は、それぞれ使用している Azure サービスによって提供されるように、保存時の暗号化の暗号化を有効にできます。 次の表には、保存時暗号化モデルがサポートされている主要なストレージ、サービスとアプリケーション プラットフォームおよびモデルが挙げられています。
+PaaS と同様、IaaS ソリューションは、保存時のデータの暗号化を保存する他の Azure サービスを利用できます。 この場合は、それぞれ使用している Azure サービスによって提供されるように、保存時の暗号化の暗号化を有効にできます。 [データ暗号化モデル: サポート サービスの表](encryption-models.md#supporting-services)には、サポートされている保存時の暗号化の主要なストレージ、サービス、アプリケーション プラットフォームとモデルが列挙されています。
 
 #### <a name="encrypted-compute"></a>暗号化されたコンピューティング
 

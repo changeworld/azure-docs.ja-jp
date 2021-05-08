@@ -12,12 +12,12 @@ ms.date: 02/05/2021
 ms.author: iangithinji
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7e4a92f84cdbc0061509fa710de148e9e9f2b52
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 736f21927b6a76be5f5d849099db465fcc9835cf
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108125159"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318965"
 ---
 # <a name="migrate-application-authentication-to-azure-active-directory"></a>アプリケーション認証を Azure Active Directory に移行する
 
@@ -83,7 +83,7 @@ Azure AD には、[ID 管理機能の完全なスイート](../fundamentals/acti
 
 **Azure AD を使用すると、次のようにしてインフラストラクチャのコストを削減できます。**
 
-- [Azure AD アプリケーション プロキシ](./application-proxy.md)を使用して、オンプレミス アプリへのセキュリティで保護されたリモート アクセスを提供する。
+- [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy.md)を使用して、オンプレミス アプリへのセキュリティで保護されたリモート アクセスを提供する。
 
 - [信頼されたユニバーサル ID プロバイダーとして Azure AD を設定する](../hybrid/plan-connect-user-signin.md#choosing-the-user-sign-in-method-for-your-organization)ことによって、テナントのオンプレミスの資格情報アプローチからアプリを分離する。
 
@@ -288,7 +288,7 @@ D
 
 Azure AD はこれらのレガシ アプリに大きな利点をもたらすことができます。これらのアプリに対して、そのアプリにまったく触れることなく、[多要素認証](../authentication/concept-mfa-howitworks.md)、[条件付きアクセス](../conditional-access/overview.md)、[Identity Protection](../identity-protection/index.yml)、[委任されたアプリケーション アクセス](./access-panel-manage-self-service-access.md)、[アクセス レビュー](../governance/manage-user-access-with-access-reviews.md#create-and-perform-an-access-review)など、最新の Azure AD セキュリティとガバナンス機能を有効にすることができるからです。
 
-まず、シンプルな認証方法 (パスワード保管など) を使用し、Azure AD の [アプリケーション プロキシ](./application-proxy-configure-single-sign-on-password-vaulting.md)で **これらのアプリをクラウドに拡張** してユーザーを迅速に移行するか、既にデプロイされている可能性のあるアプリケーション配信コントローラーとの [パートナー統合](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/)を利用します。
+まず、シンプルな認証方法 (パスワード保管など) を使用し、Azure AD の [アプリケーション プロキシ](../app-proxy/application-proxy-configure-single-sign-on-password-vaulting.md)で **これらのアプリをクラウドに拡張** してユーザーを迅速に移行するか、既にデプロイされている可能性のあるアプリケーション配信コントローラーとの [パートナー統合](https://azure.microsoft.com/services/active-directory/sso/secure-hybrid-access/)を利用します。
 
 ### <a name="new-line-of-business-lob-apps"></a>新しい基幹業務 (LoB) アプリ
 
@@ -477,7 +477,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 - **SaaS アプリケーション** – [数百の SaaS アプリ チュートリアル](../saas-apps/tutorial-list.md)の一覧と、完全な [Azure AD SSO デプロイ計画](https://aka.ms/ssodeploymentplan)を参照し、エンドツーエンド プロセスをご確認ください。
 
-- **オンプレミスで実行するアプリケーション** – [Azure AD アプリケーション プロキシに関する](./application-proxy.md)詳細を確認し、完全な [Azure AD アプリケーション プロキシのデプロイ計画](https://aka.ms/AppProxyDPDownload)を使用して、すぐに作業を開始します。
+- **オンプレミスで実行するアプリケーション** – [Azure AD アプリケーション プロキシに関する](../app-proxy/application-proxy.md)詳細を確認し、完全な [Azure AD アプリケーション プロキシのデプロイ計画](https://aka.ms/AppProxyDPDownload)を使用して、すぐに作業を開始します。
 
 - **開発中のアプリ** – 詳細な [統合](../develop/quickstart-register-app.md)と [登録](../develop/quickstart-register-app.md)のガイダンスを参照してください。
 
@@ -505,7 +505,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 | **SAML ベースの SSO** | **[シングル サインオン]** の下にある [[SAML 設定のテスト]](./debug-saml-sso-issues.md) ボタンを使用します。 |
 | **パスワードベースの SSO** | [マイ アプリによるセキュリティで保護されたサインイン拡張機能](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension)をダウンロードしてインストールします。 この拡張機能は、SSO プロセスを使用する必要がある組織の任意のクラウド アプリを開始する場合に役立ちます。 |
 
-|  **[アプリケーション プロキシ](./application-proxy.md)** | コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](./application-proxy-troubleshoot.md)に関する記事をご覧ください。 |
+|  **[アプリケーション プロキシ](../app-proxy/application-proxy.md)** | コネクタが実行されていて、アプリケーションに割り当てられていることを確認します。 詳細については、[アプリケーション プロキシのトラブルシューティング ガイド](../app-proxy/application-proxy-troubleshoot.md)に関する記事をご覧ください。 |
 
 ### <a name="troubleshoot"></a>トラブルシューティング
 
@@ -553,7 +553,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 **アプリを検出できるようにする**
 
-[MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) ポータル エクスペリエンスを **ユーザーに示します**。 ここで、すべてのクラウドベースのアプリ、[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) を使用して利用できるアプリ、およびこれらのアプリにアクセスする権限がある場合は[アプリケーション プロキシ](./application-proxy.md)を使用しているアプリにアクセスできます。
+[MyApps](../user-help/my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) ポータル エクスペリエンスを **ユーザーに示します**。 ここで、すべてのクラウドベースのアプリ、[Azure AD Connect](../hybrid/whatis-azure-ad-connect.md) を使用して利用できるアプリ、およびこれらのアプリにアクセスする権限がある場合は[アプリケーション プロキシ](../app-proxy/application-proxy.md)を使用しているアプリにアクセスできます。
 
 
 次のようにして、ユーザーにアプリを検出する方法を説明できます。
@@ -581,7 +581,7 @@ Azure AD でサポートされているアプリとリソースのユーザー�
 
 - **アプリを検索して、最近使用したアプリを表示する**
 
-- 適切な外部 URL に、[アプリケーション プロキシ](./application-proxy.md)で構成した **内部 URL を自動的に変換** する。 これで、ユーザーはどこにいるかに関係なく、使い慣れたリンクを使用できるようになります。
+- 適切な外部 URL に、[アプリケーション プロキシ](../app-proxy/application-proxy.md)で構成した **内部 URL を自動的に変換** する。 これで、ユーザーはどこにいるかに関係なく、使い慣れたリンクを使用できるようになります。
 
 **ユーザーが Office.com からアプリを開けるようにします。**
 

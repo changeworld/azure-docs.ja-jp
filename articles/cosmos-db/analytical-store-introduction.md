@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/12/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: eaabc663ba243423bddf7ef6abfe41182e06b4f9
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 1ac3c25458df19ca1db7ee16e5c231512a7663b0
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364609"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076907"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Azure Cosmos DB 分析ストアとは
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -39,7 +39,7 @@ Azure Synapse Link を使用すると、Azure Synapse Analytics から Azure Cos
 
 Azure Cosmos DB コンテナーで分析ストアを有効にすると、コンテナー内のオペレーショナル データに基づいて、新しい列ストアが内部的に作成されます。 この列ストアは、そのコンテナーに対する行指向のトランザクション ストアとは別に保持されます。 オペレーショナル データに対する挿入、更新、削除は、分析ストアに自動的に同期されます。 データを同期するために変更フィードや ETL は必要ありません。
 
-### <a name="column-store-for-analytical-workloads-on-operational-data"></a>オペレーショナル データに対する分析ワークロードでの列ストア
+## <a name="column-store-for-analytical-workloads-on-operational-data"></a>オペレーショナル データに対する分析ワークロードでの列ストア
 
 通常、分析ワークロードには、選択したフィールドの集計と順次スキャンが含まれます。 分析ストアでは、データを列優先の順序で格納することにより、各フィールドの値のグループをまとめてシリアル化することができます。 この形式を使用すると、特定のフィールドのスキャンまたは統計計算に必要な IOPS が減少します。 大きなデータ セットに対するスキャンのクエリ応答時間が大幅に向上します。 
 
@@ -55,27 +55,34 @@ Azure Cosmos DB コンテナーで分析ストアを有効にすると、コン�
 
 :::image type="content" source="./media/analytical-store-introduction/transactional-analytical-data-stores.png" alt-text="Azure Cosmos DB でのトランザクション行ストアと分析列ストアの比較" border="false":::
 
-### <a name="decoupled-performance-for-analytical-workloads"></a>分析ワークロードの分離されたパフォーマンス
+## <a name="decoupled-performance-for-analytical-workloads"></a>分析ワークロードの分離されたパフォーマンス
 
 分析ストアはトランザクション ストアとは別のものであるため、分析クエリが原因でトランザクション ワークロードのパフォーマンスが影響を受けることはありません。  要求ユニット (RU) を分析ストアのために別に割り当てる必要はありません。
 
-### <a name="auto-sync"></a>自動同期
+## <a name="auto-sync"></a>自動同期
 
 自動同期とは、Azure Cosmos DB の完全に管理された機能のことであり、オペレーショナル データの挿入、更新、削除が、ほぼリアルタイムでトランザクション ストアから分析ストアに自動的に同期されます。 自動同期の待機時間は通常 2 分以内です。 コンテナーを多数備えた共有スループット データベースの場合は、個々のコンテナーの自動同期の待機時間が長くなり、最大で 5 分かかる可能性があります。 この待機時間がお客様のシナリオにどのように適合するかについて、詳細を把握したいと考えています。 そのため、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)までご連絡ください。
 
-自動同期機能と分析ストアの併用により、主に次のような利点があります。
+自動同期プロセスの各実行の終了時に、トランザクション データがすぐに Azure Synapse Analytics ランタイムで使用できるようになります。
 
-### <a name="scalability--elasticity"></a>スケーラビリティと弾力性
+* Azure Synapse Analytics Spark プールは、自動的に更新される Spark テーブルを通じて、または常にデータの最後の状態を読み取る `spark.read` コマンドを介して、最新の更新を含むすべてのデータを読み取ることができます。
+
+*  Azure Synapse Analytics SQL サーバーレス プールは、自動的に更新されるビューを通じて、または常にデータの最新の状態を読み取る ` OPENROWSET` コマンドと一緒に `SELECT` を介して、最新の更新を含むすべてのデータを読み取ることができます。
+
+> [!NOTE]
+> トランザクション データは、トランザクション TTL が 2 分より短い場合でも、分析ストアと同期されます。 
+
+## <a name="scalability--elasticity"></a>スケーラビリティと弾力性
 
 行方向のパーティション分割を使用することにより、Azure Cosmos DB のトランザクション ストアでは、ダウンタイムなしで、ストレージとスループットを弾力的にスケーリングできます。 トランザクション ストアでの行方向のパーティション分割を使うと、自動同期のスケーラビリティと弾力性が提供され、データがほぼリアルタイムで分析ストアに同期されます。 データの同期は、トランザクション トラフィックのスループットが 1000 操作/秒または 100 万操作/秒のいずれであっても行われ、トランザクション ストアにプロビジョニングされたスループットには影響しません。 
 
-### <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>スキーマの更新を自動的に処理する
+## <a name="automatically-handle-schema-updates"></a><a id="analytical-schema"></a>スキーマの更新を自動的に処理する
 
 Azure Cosmos DB のトランザクション ストアはスキーマに依存せず、スキーマやインデックスを管理する必要なしに、アプリケーション上で反復処理を実行できます。 これに対し、Azure Cosmos DB の分析ストアは、分析クエリのパフォーマンスを最適化するためにスキーマ化されています。 Azure Cosmos DB では、自動同期機能により、トランザクション ストアからの最新の更新に対するスキーマの推論が管理されます。  また、入れ子になったデータ型の処理を含む、すぐに使用できる分析ストアのスキーマ表現も管理されます。
 
 スキーマが進化し、新しいプロパティが時間と共に追加されると、分析ストアにより、トランザクション ストア内のすべての履歴スキーマに対して、統合されたスキーマが自動的に提供されます。
 
-#### <a name="schema-constraints"></a>スキーマの制約
+### <a name="schema-constraints"></a>スキーマの制約
 
 次の制約は、分析ストアでスキーマを自動的に推論して正しく表すことができるようにするときに、Azure Cosmos DB 内のオペレーショナル データに適用されます。
 
@@ -110,16 +117,7 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
 
 * 現時点では、空白 (空白スペース) を含む列名を読み取る Azure Synapse Spark はサポートされていません。
 
-* 明示的な `null` 値に関しては、異なる動作を想定しています。
-  * Azure Synapse の Spark プールは、これらの値を `0` (ゼロ) として読み取ります。
-  * Azure Synapse の SQL サーバーレス プールでは、コレクション内の最初のドキュメントが同じプロパティに `non-numeric` データ型の値を持つ場合、この値を `NULL` として読み取ります。
-  * Azure Synapse の SQL サーバーレス プールでは、コレクション内の最初のドキュメントが同じプロパティに `numeric` データ型の値を持つ場合、この値を `0` (ゼロ) として読み取ります。
-
-* 存在しない列に関しては、異なる動作を想定しています。
-  * Azure Synapse の Spark プールは、これらの列を `undefined` として表示します。
-  * Azure Synapse の SQL サーバーレス プールは、これらの列を `NULL` として表示します。
-
-#### <a name="schema-representation"></a>スキーマ表現
+### <a name="schema-representation"></a>スキーマ表現
 
 分析ストアには、2 つのスキーマ表現モードがあります。 これらのモードでは、ポリモーフィック型スキーマを処理する列形式の表現の簡略さと、クエリ エクスペリエンスの簡略さとの間でトレードオフがあります。
 
@@ -127,7 +125,7 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
 * 完全に忠実なスキーマ表現
 
 > [!NOTE]
-> SQL (コア) API アカウントの場合、分析ストアを有効にすると、分析ストアの既定のスキーマ表現が適切に定義されます。 MongoDB アカウント用の Azure Cosmos DB API の場合、分析ストアの既定のスキーマ表現は完全に忠実なスキーマ表現になります。 これらの API のそれぞれに、既定のオファリングとは異なるスキーマ表現を必要とするシナリオがある場合は、[Azure Cosmos DB チーム](mailto:cosmosdbsynapselink@microsoft.com)に連絡して、有効にしてください。
+> SQL (コア) API アカウントの場合、分析ストアを有効にすると、分析ストアの既定のスキーマ表現が適切に定義されます。 MongoDB アカウント用の Azure Cosmos DB API の場合、分析ストアの既定のスキーマ表現は完全に忠実なスキーマ表現になります。 
 
 **適切に定義されたスキーマ表現**
 
@@ -150,6 +148,14 @@ Azure Cosmos DB のトランザクション ストアはスキーマに依存せ
 * 適切に定義されたスキーマのさまざまな型に関しては、異なる動作を想定しています。
   * Azure Synapse の Spark プールは、これらの値を `undefined` として表示します。
   * Azure Synapse の SQL サーバーレス プールは、これらの値を `NULL` として表示します。
+
+* 明示的な `null` 値に関しては、異なる動作を想定しています。
+  * Azure Synapse の Spark プールは、これらの値を `0` (ゼロ) として読み取ります。 そしてこれは、列の値が null 以外になるとすぐに `undefined` に変更されます。
+  * Azure Synapse の SQL サーバーレス プールは、これらの値を `NULL` として読み取ります。
+    
+* 存在しない列に関しては、異なる動作を想定しています。
+  * Azure Synapse の Spark プールは、これらの列を `undefined` として表示します。
+  * Azure Synapse の SQL サーバーレス プールは、これらの列を `NULL` として表示します。
 
 
 **完全に忠実なスキーマ表現**
@@ -195,28 +201,39 @@ salary: 1000000
 |ObjectId   |".objectId"    | ObjectId("5f3f7b59330ec25c132623a2")|
 |ドキュメント   |".object" |    {"a": "a"}|
 
-### <a name="cost-effective-archival-of-historical-data"></a>履歴データのコスト効率に優れたアーカイブ
+* 明示的な `null` 値に関しては、異なる動作を想定しています。
+  * Azure Synapse の Spark プールは、これらの値を `0` (ゼロ) として読み取ります。
+  * Azure Synapse の SQL サーバーレス プールは、これらの値を `NULL` として読み取ります。
+  
+* 存在しない列に関しては、異なる動作を想定しています。
+  * Azure Synapse の Spark プールは、これらの列を `undefined` として表示します。
+  * Azure Synapse の SQL サーバーレス プールは、これらの列を `NULL` として表示します。
+
+## <a name="cost-effective-archival-of-historical-data"></a>履歴データのコスト効率に優れたアーカイブ
 
 データの階層化とは、異なるシナリオ用に最適化されたストレージ インフラストラクチャ間にデータを分離することです。 これにより、エンドツーエンドのデータ スタックの全体的なパフォーマンスとコスト効果が向上します。 分析ストアにより、Azure Cosmos DB では、トランザクション ストアから分析ストアへの異なるデータ レイアウトでのデータの自動階層化がサポートされるようになりました。 ストレージ コストに関してトランザクション ストアより分析ストアの方が最適化されているため、より長い期間のオペレーショナル データを履歴分析用に保持することができます。
 
 分析ストアを有効にした後は、トランザクション ワークロードのデータ保持ニーズに基づいて、一定期間後にトランザクション ストアからレコードが自動的に削除されるように、"トランザクション ストアの Time to Live (トランザクション TTL)" プロパティを構成できます。 同様に、"分析ストアの Time to Live (分析 TTL)" を使用すると、トランザクション ストアからは独立して、分析ストアに保持されるデータのライフサイクルを管理できます。 分析ストアを有効にし、TTL プロパティを構成することにより、2 つのストアのデータ保持期間をシームレスに階層化し、定義することができます。
 
-### <a name="global-distribution"></a>グローバル分散
+> [!NOTE]
+>現在、分析ストアではバックアップと復元がサポートされていません。 バックアップ ポリシーを分析ストアに依存して計画することはできません。 詳細については、[こちらの](synapse-link.md#limitations)ドキュメントの制限事項に関するセクションを参照してください。 分析ストア内のデータには、トランザクション ストアに存在するものとは異なるスキーマがあることに注意することが重要です。 RU コストをかけずに分析ストアのデータのスナップショットを生成することはできますが、このスナップショットを使用したトランザクション ストアのバックフィードは保証できません。 このプロセスはサポートされていません。
+
+## <a name="global-distribution"></a>グローバル分散
 
 グローバルに分散された Azure Cosmos DB アカウントがある場合、コンテナーの分析ストアを有効にした後、そのアカウントのすべてのリージョンでそれを使用できるようになります。  オペレーショナル データに対する変更はすべて、すべてのリージョンにグローバルにレプリケートされます。 Azure Cosmos DB のデータの最も近いリージョン コピーに対して、分析クエリを効率的に実行できます。
 
-### <a name="security"></a>Security
+## <a name="security"></a>セキュリティ
 
 分析ストアでの認証は、特定のデータベースに対するトランザクション ストアと同じです。 認証には主キーまたは読み取り専用キーを使用できます。 Synapse Studio のリンクされたサービスを利用して、Azure Cosmos DB のキーが Spark ノートブックに貼り付けられないようにすることができます。 このリンクされたサービスへのアクセスは、ワークスペースにアクセスできるすべてのユーザーが利用できます。
 
-### <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>複数の Azure Synapse Analytics ランタイムのサポート
+## <a name="support-for-multiple-azure-synapse-analytics-runtimes"></a>複数の Azure Synapse Analytics ランタイムのサポート
 
 分析ストアは、コンピューティング ランタイムに依存せずに、分析ワークロードに対してスケーラビリティ、弾力性、パフォーマンスを提供するように最適化されています。 ストレージ テクノロジは、手作業を必要とせずに分析ワークロードを最適化するように、自己管理されています。
 
 分析ストレージ システムを分析コンピューティング システムから切り離すことによって、Azure Cosmos DB 分析ストア内のデータのクエリを、Azure Synapse Analytics でサポートされている異なる分析ランタイムから同時に実行できます。 現在、Azure Synapse Analytics では、Apache Spark とサーバーレス SQL プールが Azure Cosmos DB 分析ストアでサポートされています。
 
 > [!NOTE]
-> Azure Synapse Analytics のランタイムを使用すると、分析ストアからの読み取りのみが可能です。 トランザクション ストアへのデータの書き戻しは、サービス レイヤーとして行うことができます。
+> Azure Synapse Analytics のランタイムを使用した分析ストアからの読み取りだけが可能です。 また、その逆も同様で、Azure Synapse Analytics ランタイムは分析ストアからの読み取りだけが可能です。 自動同期プロセスだけが分析ストア内のデータを変更できます。 組み込み Azure Cosmos DB OLTP SDK を使用して、Azure Synapse Analytics Spark プールで Cosmos DB トランザクション ストアにデータを書き戻すことができます。
 
 ## <a name="pricing"></a><a id="analytical-store-pricing"></a> 価格
 
@@ -253,11 +270,11 @@ Azure Cosmos DB コンテナーで分析ストアを有効にするためのだ�
 *   コンテナー レベルで分析 TTL をトランザクション TTL 以上に設定することにより、分析ストアでのオペレーショナル データの長期保持を実現できます。
 *   分析 TTL とトランザクション TTL を同じに設定することにより、分析ストアでトランザクション ストアをミラー化することができます。
 
-コンテナーで分析ストアを有効にできる場合:
+コンテナーで分析ストアを有効にする方法:
 
-* Azure portal から、分析 TTL オプションは既定値の -1 に設定されます。 この値は、データ エクスプローラーのコンテナーの設定に移動することで、"n" 秒に変更できます。 
+* Azure portal から、分析 TTL オプションをオンにすると、既定値の -1 に設定されます。 この値は、データ エクスプローラーのコンテナーの設定に移動することで、"n" 秒に変更できます。 
  
-* Azure SDK、PowerShell、または CLI から、これを -1 または "n" に設定して、分析 TTL オプションを有効にできます。 
+* Azure Management SDK、Azure Cosmos DB SDK、PowerShell、または CLI から、これを -1 または "n" 秒に設定して、分析 TTL オプションを有効にできます。 
 
 詳細については、[コンテナーで分析 TTL を構成する方法](configure-synapse-link.md#create-analytical-ttl)に関するページを参照してください。
 
@@ -269,6 +286,6 @@ Azure Cosmos DB コンテナーで分析ストアを有効にするためのだ�
 
 * [Azure Synapse Link for Azure Cosmos DB の概要](configure-synapse-link.md)
 
-* [Azure Cosmos DB の Synapse Link に関してよく寄せられる質問](synapse-link-frequently-asked-questions.md)
+* [Azure Cosmos DB の Synapse Link に関してよく寄せられる質問](synapse-link-frequently-asked-questions.yml)
 
 * [Azure Synapse Link for Azure Cosmos DB のユース ケース](synapse-link-use-cases.md)

@@ -11,12 +11,12 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 9/01/2020
-  ms.openlocfilehash: af32e4ebc08811ed5d4e9a583173f45368ba1148
-  ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+  ms.openlocfilehash: 5d1f9f33868545d1cf1c9001772617a737ca94e3
+  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/14/2021
-  ms.locfileid: "107504954"
+  ms.lasthandoff: 05/06/2021
+  ms.locfileid: "108735805"
 landingContent:
 - title: Face サービスについて
   linkLists:
@@ -55,11 +55,11 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: .NET SDK の使用
-      url: ./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp
+      url: quickstarts/client-libraries.md?pivots=programming-language-csharp
     - text: Python SDK の使用
-      url: ./quickstarts/client-libraries.md?pivots=programming-language-python%253fpivots%253dprogramming-language-python
+      url: quickstarts/client-libraries.md?pivots=programming-language-python
     - text: Go SDK の使用
-      url: ./quickstarts/client-libraries.md?pivots=programming-language-go%253fpivots%253dprogramming-language-go
+      url: quickstarts/client-libraries.md?pivots=programming-language-go
   - linkListType: how-to-guide
     links:
     - text: 顔認識モデルを指定する

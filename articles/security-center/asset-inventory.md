@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 02/10/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 873fdba1d24db55b3269cc2c13f0140da4a9b4e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a6fcb3b3fece367ab950426c29df2d1b39735957
+ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100393355"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108228725"
 ---
 # <a name="explore-and-manage-your-resources-with-asset-inventory"></a>資産インベントリを使用してリソースの調査と管理を行う
 
@@ -128,8 +128,6 @@ ARG は、大規模なクエリの実行機能によってリソースを効率�
 1. 現在選択されているフィルター オプションを、Resource Graph エクスプローラーでクエリとして表示するには、 **[クエリを開く]** を選択します。
 
     ![ARG でのインベントリ クエリ](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
-
-1. 以前に定義したロジック アプリを実行するには 
 
 1. フィルターを定義してページを開いたままにしておくと、Security Center で結果が自動的に更新されません。 ページを手動で再読み込みするか、 **[更新]** を選択しない限り、リソースを変更しても表示される結果には影響しません。
 

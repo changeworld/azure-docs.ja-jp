@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/16/2021
 ms.author: pepogors
-ms.openlocfilehash: 9cc2a9d189e7a781dc6ba64a65af022150392485
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 1d4c92d91a620a56afbee9a1f41c8a67aa4b8f6a
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727764"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072983"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Availability Zones をまたがる Azure Service Fabric クラスターのデプロイ
 Azure の Availability Zones は高可用性を備えたサービスで、アプリケーションとデータをデータセンターの障害から保護します。 可用性ゾーンは、Azure リージョン内に独立した電源、冷却手段、ネットワークを備えた一意の物理的な場所です。
@@ -386,9 +386,9 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 複数の可用性ゾーンをサポートするために Service Fabric nodeType を有効にする必要があります。
 
 * 最初の値は **multipleAvailabilityZones** であり、nodeType には true に設定する必要があります。
-* 2 番目の値は **sfZonalUpgradeMode** であり、省略可能です。 AZ が複数ある nodeType がクラスター内に既に存在する場合、このプロパティを変更することはできません。
+* 2 番目の値は **sfZonalUpgradeMode** であり、省略可能です。 AZ が複数あるノードの種類がクラスター内に既に存在する場合、このプロパティを変更することはできません。
   プロパティは、アップグレード ドメイン内の VM の論理グループ化を制御します。
-  **値が "Parallel" に設定されている場合:** nodeType の下にある VM は、5 UD のゾーン情報を無視して UD にグループ化されます。 この結果、すべてのゾーンの UD0 が同時にアップグレードされます。 このデプロイ モードはアップグレードの場合は高速ですが、更新プログラムを一度に 1 ゾーンずつ適用する必要があるとしている SDP のガイドラインに沿っていないため、推奨されません。
+  **値が "Parallel" に設定されている場合:** ノードの種類の下にある VM は、5 UD のゾーン情報を無視して UD にグループ化されます。 この結果、すべてのゾーンの UD0 が同時にアップグレードされます。 このデプロイ モードはアップグレードの場合は高速ですが、更新プログラムを一度に 1 ゾーンずつ適用する必要があるとしている安全なデプロイ プラクティスに沿っていないため、推奨されません。
   **値が省略されているか、"Hierarchical" に設定されている場合:** VM は、最大 15 の UD に、ゾーン分布を反映するようにグループ化されます。 3 つのゾーンそれぞれに 5 つの UD があります。 これにより、更新はゾーンごとに実行され、1 つ目のゾーン内で 5 UD が完了して初めて次のゾーンへと移動し、ゆっくりと 15 UD (3 ゾーン、5 UD) すべてが更新されます。クラスターとユーザー アプリケーションの観点からは、こちらの方がより安全です。
   このプロパティは、ServiceFabric アプリケーションおよびコード アップグレードのアップグレード動作を定義するだけです。 基になる仮想マシン スケール セットのアップグレードは、引き続きすべての AZ で並列に実行されます。
   このプロパティは、複数のゾーンが有効になっていないノード型の UD 分布には影響しません。
@@ -422,7 +422,7 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 >[!NOTE]
 > * パブリック IP と Load Balancer リソースは、この記事で既に説明したように、Standard SKU を使用する必要があります。
 > * nodeType の "multipleAvailabilityZones" プロパティは、nodeType の作成時にのみ定義できます。後で変更することはできません。 このため、既存の nodeTypes をこのプロパティで構成することはできません。
-> * "SfZonalUpgradeMode" を省略した場合、または "Hierarchical" に設定した場合、クラスター内のアップグレード ドメインが増えるにつれて、クラスターとアプリケーションのデプロイ速度が低下します。 15 のアップグレード ドメインのアップグレード期間に組み入れるようにアップグレード ポリシーのタイムアウトを適切に調整することが重要です。 アプリとクラスターの両方のアップグレード ポリシーを更新して、デプロイが Azure リソース サービスのデプロイ タイムアウト (12 時間) を超えないようにする必要があります。 つまり、デプロイに、15 UD で 12 時間を超えないようにする必要があるので、 UD あたり 40 分以内ということになります。
+> * "SfZonalUpgradeMode" を省略した場合、または "Hierarchical" に設定した場合、クラスター内のアップグレード ドメインが増えるにつれて、クラスターとアプリケーションのデプロイ速度が低下します。 15 のアップグレード ドメインのアップグレード期間に組み入れるようにアップグレード ポリシーのタイムアウトを適切に調整することが重要です。 アプリとクラスターの両方のアップグレード ポリシーを更新して、デプロイが Azure Resource Service のデプロイ タイムアウト (12 時間) を超えないようにする必要があります。 つまり、デプロイに、15 UD で 12 時間を超えないようにする必要があるので、 UD あたり 40 分以内ということになります。
 > * 1 ゾーン ダウン シナリオでクラスターが存続できるようにするには、クラスターを **reliabilityLevel = Platinum** に設定してください。
 
 >[!NOTE]
@@ -430,12 +430,12 @@ Set-AzureRmPublicIpAddress -PublicIpAddress $PublicIP
 > デプロイ速度を優先する場合、またはステートレス ワークロードだけが複数の AZ を持つノードの種類で実行される場合は、sfZonalUpgradeMode を Parallel に設定します。 これにより、UD ウォークがすべて AZ で並列に実行されます。
 
 ### <a name="migration-to-the-node-type-with-multiple-availability-zones"></a>複数の Availability Zones を持つノードの種類への移行
-すべての移行シナリオで、複数の可用性ゾーンがサポートされる新しい nodeType を追加する必要があります。 既存の nodeType を移行して複数のゾーンをサポートすることはできません。
-[こちら](./service-fabric-scale-up-primary-node-type.md)の記事には、新しい nodeType を追加し、さらに IP や LB リソースなどの新しい nodeType に必要な他のリソースを追加する詳細な手順が記載されています。 同じ記事には、複数の可用性ゾーンを持つ nodeType がクラスターに追加された後、既存の nodeType をインベントリから削除する方法も記載されています。
+すべての移行シナリオで、複数の可用性ゾーンがサポートされる新しいノードの種類を追加する必要があります。 既存の nodeType を移行して複数のゾーンをサポートすることはできません。
+[こちら](./service-fabric-scale-up-primary-node-type.md)の記事には、新しい nodeType を追加し、さらに IP や LB リソースなどの新しいノードの種類に必要な他のリソースを追加する詳細な手順が記載されています。 同じ記事には、複数の可用性ゾーンを持つ nodeType がクラスターに追加された後、既存のノードの種類をインベントリから削除する方法も記載されています。
 
-* 基本的な LB および IP リソースを使用している nodeType からの移行:これは、AZ ごとに 1 つのノードの種類を持つソリューションについて、[ここで](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip)既に説明されています。 
-    新しいノード の種類の場合、唯一の違いは、AZ ごとに 1 つではなく、すべての AZ について仮想マシン スケール セットが 1 つ、ノードの種類が 1 つだけであるということです。
-* 標準 SKU LB および IP リソースを NSG で使用している nodeType からの移行: 前に説明したものと同じ手順に従いますが、新しい LB、IP、NSG リソースを追加する必要はなく、同じリソースを新しい nodeType で再利用できます。
+* LB および IP リソース用の Basic SKU を使用している nodeType からの移行: これは、AZ ごとに 1 つのノードの種類を持つソリューションについて、[こちらで](#migrate-to-using-availability-zones-from-a-cluster-using-a-basic-sku-load-balancer-and-a-basic-sku-ip)既に説明されています。 
+    新しいノードの種類の場合、唯一の違いは、AZ ごとに 1 つではなく、すべての AZ について仮想マシン スケール セットが 1 つ、ノードの種類が 1 つだけであるということです。
+* LB および IP リソース用の Standard SKU を NSG で使用している nodeType からの移行: 前に説明したものと同じ手順に従いますが、新しい LB、IP、NSG リソースを追加する必要はなく、同じリソースを新しい nodeType で再利用できます。
 
 
 [sf-architecture]: ./media/service-fabric-cross-availability-zones/sf-cross-az-topology.png

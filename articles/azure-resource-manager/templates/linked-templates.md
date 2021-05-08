@@ -3,12 +3,13 @@ title: デプロイ用のテンプレートをリンクする
 description: Azure Resource Manager テンプレート (ARM テンプレート) でリンクされたテンプレートを使用して、モジュール式のテンプレート ソリューションを作成する方法について説明します。 パラメーターの値を渡す方法、パラメーター ファイルを指定する方法、および URL を動的に作成する方法を示します。
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 981e9f10e118012911108d634fbb8bdb9524cb88
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a014fae0825bc3bfe6e7a808582d071e1f240ade
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105543977"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318407"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 

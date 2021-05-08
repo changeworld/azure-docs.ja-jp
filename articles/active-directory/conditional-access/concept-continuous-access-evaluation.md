@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 08/28/2020
+ms.date: 04/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74009759bb9ca2a0516148fc1387b150b67452ab
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 374fa4db4441dc82f9d14eef9cdd7589a9a82fad
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107387906"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108126851"
 ---
 # <a name="continuous-access-evaluation"></a>継続的アクセス評価
 
@@ -130,8 +130,12 @@ CAE 対応クライアントを使用していない場合でも、[構成可能
 1. **Azure portal** に、条件付きアクセス管理者、セキュリティ管理者、または全体管理者としてサインインします。
 1. **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[継続的アクセス評価]** の順に移動します。
 1. **[プレビューの有効化]** を選択します。
+1. **[保存]** を選択します。
 
 このページで、必要に応じて、プレビューの対象となるユーザーとグループを制限できます。
+
+> [!WARNING]
+> 継続的アクセス評価を無効にするには **[プレビューの有効化]** を選択して **[プレビューの無効化]** を選択し、それから **[保存]** を選択します。
 
 ![Azure portal で CAE プレビューを有効にする](./media/concept-continuous-access-evaluation/enable-cae-preview.png)
 

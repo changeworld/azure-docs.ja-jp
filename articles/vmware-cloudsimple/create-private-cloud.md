@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - CloudSimple プライベート クラウドの作成
 description: CloudSimple プライベート クラウドを作成し、VMware のワークロードを運用上の柔軟性と継続性とともにクラウドに拡張する方法について説明します。
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2f4af4a36e719cbf15b3f0af77db81a32f2f2e42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02cab9ee72dcd13b2ed8cd255ec4bb555b3894cc
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97896279"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108177802"
 ---
 # <a name="create-a-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドを作成する
 

@@ -3,18 +3,18 @@ title: クイックスタート - コスト分析を使用して Azure のコス
 description: このクイック スタートは、コスト分析を使用して Azure 組織のコストを調査および分析するために役立ちます。
 author: bandersmsft
 ms.author: banders
-ms.date: 01/04/2021
+ms.date: 03/10/2021
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 83f2d87e3f4a03ff17526ea5706e4f87b8f39487
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.custom: contperf-fy21q2, devx-track-azurecli
+ms.openlocfilehash: 9769b6ecb04ca513c4b48ec3d0ca32bdd3c64b5f
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882451"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107887113"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -68,11 +68,9 @@ Azure Cost Management データに対するアクセス権の割り当てにつ�
 
 ### <a name="understand-forecast"></a>予測について
 
-コスト予測では、選択した期間における推定コストの予測が表示されます。 このモデルは、時系列回帰モデルに基づいています。 コストを正確に予測するために、少なくとも 10 日間のコストと使用状況の最新データが必要です。 指定の期間に対して、予測モデルでは、予測期間のトレーニング データの同等の部分が必要です。 たとえば、3 か月の予測には、少なくとも 3 か月間のコストと使用状況の最新データが必要です。
+コスト予測では、最近の使用状況に基づいて、選択した期間の推定コストの予測が表示されます。 コスト分析で予算が設定されている場合は、予測支出が予算しきい値を超える可能性が高い時期を確認できます。 予測モデルでは、最大 1 年間の将来のコストを予測できます。 選択したディメンションの詳細な予測コストを表示するには、フィルターを選択します。
 
-このモデルでは、最大 6 か月間のトレーニング データを使用して、1 年間のコストを予測します。 予測が変更されるには、少なくとも 7 日間のトレーニング データが必要です。 予測は、コストや使用パターンにおける急増や急減など、大幅な変化に基づいています。 予測では、 **[Group by]\(グループ化\)** プロパティ内の項目ごとに個々の予測が生成されることはありません。 合計の累積コストの予測のみが提供されます。 複数の通貨を使用する場合、モデルではコストの予測が米国ドルでのみ提供されます。
-
-モデルはデータの急減および急増に依存するため、予約インスタンスのような大規模の購入は予測を人為的に膨らませる原因となります。 予測期間と購入規模は、予測が影響を受ける期間に影響を与えます。 支出が安定すると、予測は通常に戻ります。
+予測モデルは、時系列回帰モデルに基づいています。 コストを正確に予測するために、少なくとも 10 日間のコストと使用状況の最新データが必要です。 指定の期間に対して、予測モデルでは、予測期間のトレーニング データの同等の部分が必要です。 たとえば、3 か月の予測には、少なくとも 3 か月間のコストと使用状況の最新データが必要です。
 
 ## <a name="customize-cost-views"></a>コスト ビューをカスタマイズする
 
@@ -171,7 +169,7 @@ Azure タグ ポリシーを使用してコスト データの可視性を向上
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-サブスクリプションの月度累計使用量情報を照会するには、サインイン後、[az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) コマンドを使用します。
+サブスクリプションの月度累計使用量情報を照会するには、サインイン後、[az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query) コマンドを使用します。
 
 ```azurecli
 az costmanagement query --timeframe MonthToDate --type Usage \
@@ -188,7 +186,7 @@ az costmanagement query --timeframe MonthToDate --type Usage \
 
 **--dataset-filter** パラメーターには、JSON 文字列または `@json-file` を指定します。
 
-[az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) コマンドを使用して、利用状況データを Azure ストレージ アカウントにエクスポートすることもできます。 そこからデータをダウンロードすることができます。
+[az costmanagement export](/cli/azure/costmanagement/export) コマンドを使用して、利用状況データを Azure ストレージ アカウントにエクスポートすることもできます。 そこからデータをダウンロードすることができます。
 
 1. リソース グループを作成するか、または既存のリソース グループを使用します。 リソース グループを作成するには、[az group create](/cli/azure/group#az_group_create) コマンドを実行します。
 
@@ -202,7 +200,7 @@ az costmanagement query --timeframe MonthToDate --type Usage \
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) コマンドを実行して、エクスポートを作成します。
+1. [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) コマンドを実行して、エクスポートを作成します。
 
    ```azurecli
    az costmanagement export create --name DemoExport --type Usage \

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2021
+ms.date: 04/22/2021
 ms.author: b-juche
-ms.openlocfilehash: f023bfa2b3941f7d667f4be34a8ee8dc1ed9a9c3
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b5abb26a5a96b73f06f25661c62061f664069ee3
+ms.sourcegitcommit: b4032c9266effb0bf7eb87379f011c36d7340c2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750196"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107903490"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -44,15 +44,36 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |  単一のボリュームの最大サイズ     |    100 TiB    |    いいえ    |
 |  1 つのファイルの最大サイズ     |    16 TiB    |    いいえ    |    
 |  1 つのディレクトリ内のディレクトリ メタデータの最大サイズ      |    320 MB    |    いいえ    |    
+|  1 つのディレクトリに含まれるファイルの最大数  | "*約*" 400 万個。 <br> 「[ディレクトリのサイズが上限に近づいているかどうかの確認](#directory-limit)」を参照してください。  |    いいえ    |   
 |  ボリュームあたりのファイルの最大数 ([maxfiles](#maxfiles))     |    1 億    |    はい    |    
 |  ボリュームあたりのエクスポート ポリシー ルールの最大数     |    5  |    いいえ    | 
 |  手動 QoS ボリュームに割り当てられた最小スループット     |    1 MiB/秒   |    No    |    
 |  手動 QoS ボリュームに割り当てられた最大スループット     |    4,500 MiB/秒    |    No    |    
 |  リージョン間レプリケーション データ保護ボリュームの数 (宛先ボリューム)     |    5    |    はい    |     
 
-ディレクトリがディレクトリ メタデータのサイズ上限 (320 MB) に近づいているかどうかを確認するには、「[ディレクトリがサイズ制限に近づいているかどうかを確認するにはどうすればよいですか?](azure-netapp-files-faqs.md#how-do-i-determine-if-a-directory-is-approaching-the-limit-size)」を参照してください。   
-
 詳細については、「[容量管理に関する FAQ](azure-netapp-files-faqs.md#capacity-management-faqs)」を参照してください。
+
+## <a name="determine-if-a-directory-is-approaching-the-limit-size"></a>ディレクトリのサイズが上限に近づいているかどうかの確認<a name="directory-limit"></a>  
+
+クライアントから `stat` コマンドを使用することで、ディレクトリがディレクトリ メタデータのサイズ上限 (320 MB) に近づいているかどうかを確認できます。   
+
+320 MB のディレクトリの場合、ブロック数は 655,360、各ブロック サイズは 512 バイトです  (つまり、320 x 1,024 x 1,024/512)。320 MB のディレクトリの場合、この数値は最大約 400 万ファイルに換算できます。 ただし、ASCII 以外の文字を含むファイルがディレクトリ内にどの程度存在するかといった要因によっては、実際の最大ファイル数が少なくなる場合があります。 そのため、次のように `stat` コマンドを使用して、ディレクトリが上限に近づいているかどうかを確認する必要があります。  
+
+例 :
+
+```console
+[makam@cycrh6rtp07 ~]$ stat bin
+File: 'bin'
+Size: 4096            Blocks: 8          IO Block: 65536  directory
+
+[makam@cycrh6rtp07 ~]$ stat tmp
+File: 'tmp'
+Size: 12288           Blocks: 24         IO Block: 65536  directory
+ 
+[makam@cycrh6rtp07 ~]$ stat tmp1
+File: 'tmp1'
+Size: 4096            Blocks: 8          IO Block: 65536  directory
+```
 
 ## <a name="maxfiles-limits"></a>maxfiles の制限 <a name="maxfiles"></a> 
 

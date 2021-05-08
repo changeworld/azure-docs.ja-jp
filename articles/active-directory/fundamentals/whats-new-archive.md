@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 045eb501e0e62b6696a2ce059612f62487c41adf
-ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
+ms.openlocfilehash: 3501dd56aac9dcd2de04e94ecc94316bce987aac
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108017033"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108180484"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報のアーカイブ
 
@@ -2447,7 +2447,7 @@ Azure Monitor を設定する方法については、[Azure Monitor の Azure AD
 
 この変更期間中もアプリケーション プロキシ サービスへの接続を維持するには、クライアントとサーバーおよびブラウザーとサーバーの組み合わせを TLS 1.2 を使用するように更新することをお勧めします。 また、アプリケーション プロキシ サービスから公開されるアプリに従業員がアクセスする際に使用するすべてのクライアント システムを含めることもお勧めします。
 
-詳しくは、「[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](../manage-apps/application-proxy-add-on-premises-application.md)」を参照してください。
+詳しくは、「[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](../app-proxy/application-proxy-add-on-premises-application.md)」を参照してください。
 
 ---
 
@@ -2738,7 +2738,7 @@ Azure AD が更新されて、会社のブランドがサインイン ページ�
 
 お客様にクラス最高の暗号化を提供するために、Application Proxy サービスでは TLS 1.2 プロトコルのみにアクセスを制限しています。 この変更は、TLS 1.2 プロトコルのみを既に使用しているお客様に徐々に適用されているため、変更を意識することはありません。
 
-2019 年 8 月 31日で TLS 1.0 と TLS 1.1 が廃止されますが、改めて事前通知を行いますので、この変更に備える時間が与えられます。 この変更に備えるために、Application Proxy を通じて発行されたアプリへのアクセスにユーザーが使用するすべてのクライアントを含む、クライアントとサーバーおよびブラウザーとサーバーの組み合わせが、TLS 1.2 プロトコルを使用して Application Proxy サービスへの接続を維持するように更新されていることを確認してください。 詳しくは、「[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](../manage-apps/application-proxy-add-on-premises-application.md#prerequisites)」を参照してください。
+2019 年 8 月 31日で TLS 1.0 と TLS 1.1 が廃止されますが、改めて事前通知を行いますので、この変更に備える時間が与えられます。 この変更に備えるために、Application Proxy を通じて発行されたアプリへのアクセスにユーザーが使用するすべてのクライアントを含む、クライアントとサーバーおよびブラウザーとサーバーの組み合わせが、TLS 1.2 プロトコルを使用して Application Proxy サービスへの接続を維持するように更新されていることを確認してください。 詳しくは、「[Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する](../app-proxy/application-proxy-add-on-premises-application.md#prerequisites)」を参照してください。
 
 ---
 
@@ -3771,7 +3771,7 @@ Microsoft では、Azure AD に対してより大規模な IP 範囲の導入を
 
 この設定は、リモート デスクトップなどの ActiveX コントロールを使用するアプリとの互換性はありません。 このような状況の場合は、この設定をオフにすることをお勧めします。
 
-HTTP 専用 Cookie の設定について詳しくは、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../manage-apps/application-proxy-add-on-premises-application.md)」をご覧ください。
+HTTP 専用 Cookie の設定について詳しくは、「[Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../app-proxy/application-proxy-add-on-premises-application.md)」をご覧ください。
 
 ---
 

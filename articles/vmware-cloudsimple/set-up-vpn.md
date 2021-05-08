@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - オンプレミスとプライベート クラウド間の VPN を構成する
 description: オンプレミス ネットワークと CloudSimple プライベート クラウド間でサイト対サイトまたはポイント対サイト VPN 接続を構成する方法について説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b7a119b538ee07b961011bfa98d748f92cc76f0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 49dc804e4dc482f49ca21354d594a84092b8868b
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97899220"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108180898"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドへの VPN 接続を構成する
 
