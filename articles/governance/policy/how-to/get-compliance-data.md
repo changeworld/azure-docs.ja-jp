@@ -1,14 +1,14 @@
 ---
 title: ポリシーのコンプライアンス データを取得する
 description: Azure Policy の評価と効果によって、コンプライアンスが決まります。 Azure リソースのコンプライアンスの詳細を取得する方法を説明します。
-ms.date: 03/16/2021
+ms.date: 04/19/2021
 ms.topic: how-to
-ms.openlocfilehash: cdd23d685750fb8a5d3803f4b6030e7e67bbddce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1a9a7fcbbcbd7f490b2f665b40c7ed922ec61ee
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104598543"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864597"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure リソースのコンプライアンス データを取得する
 
@@ -35,6 +35,8 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 - 既にスコープに割り当てられているポリシーまたはイニシアティブが更新される。 このシナリオでの評価サイクルとタイミングは、スコープへの新しい割り当ての場合と同じです。
 
 - Azure Resource Manager、REST API、またはサポート対象の SDK を介した割り当てで、リソースがスコープでデプロイまたは更新される。 このシナリオでは、個々のリソースに対する効果的なイベント (追加、監査、拒否、展開) とコンプライアンス ステータスの情報が、約 15 分後にポータルおよび SDKで利用可能です。 このイベントによって、他のリソースの評価が行われることはありません。
+
+- サブスクリプション (リソースの種類 `Microsoft.Resource/subscriptions` ) が、サブスクリプション リソースの種類をターゲットとしたポリシー定義が割り当てられている[管理グループ階層](../../management-groups/overview.md)内で、作成または移動されています。 サブスクリプションでサポートされている影響 (audit、auditIfNotExist、deployIfNotExists、modify)、ログ記録、および修復アクションの評価には、約 30 分かかります。
 
 - [ポリシー適用除外](../concepts/exemption-structure.md)が作成、更新、または削除される。 このシナリオでは、定義された適用除外スコープに対して、対応する割り当てが評価されます。
 

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0e1c5f08c4292e4f3dfec448d8bf54d5d5601840
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7a4d0c4a9df3cb5b07267cc540e5cf1651861545
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99050500"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207953"
 ---
 # <a name="query-units-in-azure-digital-twins"></a>Azure Digital Twins のクエリ ユニット 
 
@@ -41,8 +41,8 @@ Azure Digital Twins の [SDK](how-to-use-apis-sdks.md) を使用すると、ペ�
 
 Azure Digital Twins のクエリの詳細については、次を参照してください。
 
-* "[*概念: クエリ言語*](concepts-query-language.md)
-* [*方法: ツイン グラフにクエリを実行する*](how-to-query-graph.md)
+* [概念:クエリ言語](concepts-query-language.md)
+* [ツイン グラフにクエリを実行する方法](how-to-query-graph.md)
 * [クエリ API リファレンス ドキュメント](/rest/api/digital-twins/dataplane/query/querytwins)
 
-Azure Digital Twins のクエリ関連の制限については、[*Azure Digital Twins サービスの制限*](reference-service-limits.md)に関する記事をご覧ください。
+Azure Digital Twins のクエリ関連の制限については、[Azure Digital Twins サービスの制限](reference-service-limits.md)に関する記事をご覧ください。

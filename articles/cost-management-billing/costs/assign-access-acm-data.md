@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: cb54c5f7334120f6cd01ed1704939c5c1a55e7c6
+ms.sourcegitcommit: c8b50a8aa8d9596ee3d4f3905bde94c984fc8aa2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "91371968"
+ms.lasthandoff: 03/28/2021
+ms.locfileid: "105645289"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -39,9 +39,9 @@ Azure EA サブスクリプションのコスト データを表示するには�
 | 課金アカウント<sup>1</sup> | [https://ea.azure.com](https://ea.azure.com/) | エンタープライズ管理者 | なし | マイクロソフト エンタープライズ契約のすべてのサブスクリプション |
 | 部署 | [https://ea.azure.com](https://ea.azure.com/) | 部門管理者 | **DA ビューの請求額** の有効化 | 部署にリンクされている、登録アカウントに属しているすべてのサブスクリプション |
 | 登録アカウント<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | アカウント所有者 | **AO ビューの請求額** の有効化 | 登録アカウントのすべてのサブスクリプション |
-| 管理グループ | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額** の有効化 | 管理グループ下のすべてのサブスクリプション |
-| サブスクリプション | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額** の有効化 | サブスクリプションに含まれているすべてのリソース/リソース グループ |
-| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額** の有効化 | リソース グループに含まれるすべてのリソース |
+| 管理グループ | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または共同作成者) | **AO ビューの請求額** の有効化 | 管理グループ下のすべてのサブスクリプション |
+| サブスクリプション | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または共同作成者) | **AO ビューの請求額** の有効化 | サブスクリプションに含まれているすべてのリソース/リソース グループ |
+| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または共同作成者) | **AO ビューの請求額** の有効化 | リソース グループに含まれるすべてのリソース |
 
 <sup>1</sup> 請求先アカウントも、"マイクロソフト エンタープライズ契約" または "登録" と呼ばれます。
 
@@ -52,8 +52,8 @@ Azure EA サブスクリプションのコスト データを表示するには�
 
 他の Azure サブスクリプションのコスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス許可が必要です。
 
-- Azure アカウント
 - 管理グループ
+- サブスクリプション
 - Resource group
 
 パートナーによって顧客が Microsoft 顧客契約にオンボードされた後は、さまざまなスコープが利用可能です。 CSP のお客様は、CSP パートナーによって有効化された場合は Cost Management の機能を使用できます。 詳細については、「[パートナー向け Azure Cost Management の概要](get-started-partners.md)」を参照してください。

@@ -4,14 +4,15 @@ description: Azure portal から Azure Database for PostgreSQL - Hyperscale (Cit
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 04/07/2021
-ms.openlocfilehash: 04dd37e3e9abbfbec7badb036802e645cc7732b0
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8e22de5288380490490c91846322e418f98dfcd4
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108012"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108317258"
 ---
 # <a name="manage-scheduled-maintenance-settings-for-azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – Hyperscale (Citus) の予定メンテナンス設定の管理
 

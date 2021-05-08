@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3393856b25040cff603ea2ef51e8adbcba78dc26
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7bed0f3b10dd057073203bb9c2e336299c50662
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102034695"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207989"
 ---
 # <a name="what-is-an-ontology"></a>オントロジとは 
 
@@ -42,16 +42,16 @@ DTDL を使用した業界標準のオントロジを統合するための戦略
 
 | 戦略 | 説明 | リソース |
 | --- | --- | --- |
-| **採用** | 広く採用されている業界標準に基づいて構築されたオープンソースの DTDL オントロジーを使用して、ソリューションを開始できます。 これらのモデル セットは、すぐに使用することも、カスタマイズされたソリューションのために独自の追加を加えて拡張することもできます。 | "[*概念: 業界標準のオントロジの採用*](concepts-ontologies-adopt.md)"&nbsp;&nbsp;&nbsp;<br><br>"[*概念: オントロジの拡張*](concepts-ontologies-extend.md)"&nbsp;&nbsp; |
-| **CONVERT** | 別の標準形式で表されている既存のモデルが既にある場合は、それらを DTDL に変換して Azure Digital Twins で使用できます。 | "[*概念: オントロジの変換*](concepts-ontologies-convert.md)"&nbsp;&nbsp;<br><br>"[*概念: オントロジの拡張*](concepts-ontologies-extend.md)"&nbsp;&nbsp; |
-| **作成者** | インスピレーションとして適用可能な業界標準を使用して、独自のカスタム DTDL モデルをゼロからいつでも作成できます。 | "[*概念: DTDL モデル*](concepts-models.md)" |
+| **採用** | 広く採用されている業界標準に基づいて構築されたオープンソースの DTDL オントロジーを使用して、ソリューションを開始できます。 これらのモデル セットは、すぐに使用することも、カスタマイズされたソリューションのために独自の追加を加えて拡張することもできます。 | "[概念: 業界標準のオントロジの採用](concepts-ontologies-adopt.md)"&nbsp;&nbsp;&nbsp;<br><br>"[概念: オントロジの拡張](concepts-ontologies-extend.md)"&nbsp;&nbsp; |
+| **CONVERT** | 別の標準形式で表されている既存のモデルが既にある場合は、それらを DTDL に変換して Azure Digital Twins で使用できます。 | "[概念: オントロジの変換](concepts-ontologies-convert.md)"&nbsp;&nbsp;<br><br>"[概念: オントロジの拡張](concepts-ontologies-extend.md)"&nbsp;&nbsp; |
+| **作成者** | インスピレーションとして適用可能な業界標準を使用して、独自のカスタム DTDL モデルをゼロからいつでも作成できます。 | "[概念: DTDL モデル](concepts-models.md)" |
 
 ### <a name="using-ontology-strategies-in-a-model-development-path"></a>モデル開発パスでのオントロジ戦略の使用
 
 オントロジを Azure Digital Twins に統合するためにどのような戦略を選択した場合でも、下の完全なパスに従って、オントロジを DTDL モデルとして作成し、アップロードできます。
 
 1. 最初に、[Azure Digital Twins での DTDL モデリング](concepts-models.md)を確認し、理解します。
-1. 上で選択したオントロジ統合戦略を進めます。自分のオントロジに基づいて、モデルを [**採用**](concepts-ontologies-adopt.md)、[**変換**](concepts-ontologies-convert.md)、または [**作成**](concepts-models.md)します。
+1. 上で選択したオントロジ統合戦略を進めます。自分のオントロジに基づいて、モデルを[採用](concepts-ontologies-adopt.md)、[変換](concepts-ontologies-convert.md)、または[作成](concepts-models.md)します。
     1. 必要に応じて、オントロジを[拡張](concepts-ontologies-extend.md)して、自分のニーズに合わせてカスタマイズします。
 1. モデルを[検証](how-to-parse-models.md)して、それが有効な DTDL ドキュメントであることを確認します。
 1. [API](how-to-manage-model.md#upload-models) または [Azure Digital Twins のモデル アップローダー](https://github.com/Azure/opendigitaltwins-building-tools/tree/master/ModelUploader)のようなサンプルを使用して、完成したモデルを Azure Digital Twins にアップロードします。
@@ -63,8 +63,8 @@ DTDL を使用した業界標準のオントロジを統合するための戦略
 ## <a name="next-steps"></a>次のステップ
 
 オントロジの採用、変換、作成の戦略について詳しく確認します。
-* "[*概念: 業界標準のオントロジの採用*](concepts-ontologies-adopt.md)"
-* "[*概念: オントロジの変換*](concepts-ontologies-convert.md)"
-* [*方法: DTDL モデルの管理*](how-to-manage-model.md)
+* "[概念: 業界標準のオントロジの採用](concepts-ontologies-adopt.md)"
+* "[概念: オントロジの変換](concepts-ontologies-convert.md)"
+* [方法: DTDL モデルの管理](how-to-manage-model.md)
 
-または、モデルを使用してデジタル ツインを作成する方法について学習してください。"[*概念: デジタル ツインとツイン グラフ*](concepts-twins-graph.md)"。
+または、モデルを使用してデジタル ツインを作成する方法について学習してください。"[概念: デジタル ツインとツイン グラフ](concepts-twins-graph.md)"。

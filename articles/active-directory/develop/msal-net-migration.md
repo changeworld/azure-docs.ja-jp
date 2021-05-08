@@ -13,12 +13,12 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 2ec4ca8b24f1e8534e7f8434bc86a2eb2745e946
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 0e7dc3540dc54e0563a5ea416510bddb9a41fb65
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727044"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861699"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
@@ -49,7 +49,7 @@ MSAL.NET と ADAL.NET を詳細に比較する前に、MSAL.NET を使用する�
 
 ただし、アプリケーションで以前のバージョンの [Active Directory フェデレーション サービス (AD FS)](/windows-server/identity/active-directory-federation-services) を使用してユーザーをサインインさせる必要がある場合は、引き続き ADAL.NET を使用する必要があります。 詳細については、「[ADFS support](https://aka.ms/msal-net-adfs-support)」 (ADFS のサポート) を参照してください。
 
-次の図は、ADAL.NET と MSAL.NET の違いをいくつかまとめたものです。![並列されたコード](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
+次の図は、パブリック クライアント アプリケーションの ADAL.NET と MSAL.NET の違いをいくつかまとめたものです。![並列されたコード](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
 
 ### <a name="nuget-packages-and-namespaces"></a>NuGet パッケージと名前空間
 
@@ -128,20 +128,20 @@ MSAL.NET および v2.0 エンドポイントではまだ、すべての許可�
 
 Grant | ADAL.NET | MSAL.NET
 ----- |----- | -----
-Interactive | [対話型認証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [MSAL.NET での対話型のトークンの取得](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
-統合 Windows 認証 | [Windows での統合認証 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [統合 Windows 認証](msal-authentication-flows.md#integrated-windows-authentication)
-ユーザー名/パスワード | [ユーザー名とパスワードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [ユーザー名とパスワードによる認証](msal-authentication-flows.md#usernamepassword)
-デバイス コード フロー | [Web ブラウザーを使用しないデバイスのデバイス プロファイル](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [デバイス コード フロー](msal-authentication-flows.md#device-code)
+Interactive | [対話型認証](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [MSAL.NET での対話型のトークンの取得](scenario-desktop-acquire-token.md?tabs=dotnet#acquire-a-token-interactively)
+統合 Windows 認証 | [Windows での統合認証 (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [統合 Windows 認証](scenario-desktop-acquire-token.md?tabs=dotnet#integrated-windows-authentication)
+ユーザー名/パスワード | [ユーザー名とパスワードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-username-and-password)| [ユーザー名とパスワードによる認証](scenario-desktop-acquire-token.md?tabs=dotnet#username-and-password)
+デバイス コード フロー | [Web ブラウザーを使用しないデバイスのデバイス プロファイル](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Device-profile-for-devices-without-web-browsers) | [デバイス コード フロー](scenario-desktop-acquire-token.md?tabs=dotnet#command-line-tool-without-a-web-browser)
 
 #### <a name="confidential-client-applications"></a>機密クライアント アプリケーション
 
-以下は、Web アプリケーション、Web API、デーモン アプリケーション用の ADAL.NET と MSAL.NET でサポートされている許可です。
+以下は、Web アプリケーション、Web API、デーモン アプリケーション用の ADAL.NET、MSAL.NET、および Microsoft.Identity.Web でサポートされている許可です。
 
 アプリの種類 | Grant | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
-Web アプリ、Web API、デーモン | クライアントの資格情報 | [ADAL.NET のクライアント資格情報フロー](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET のクライアント資格情報フロー](msal-authentication-flows.md#client-credentials)
-Web API | 次の代理 | [ADAL.NET でのユーザーの代わりのサービス間呼び出し](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [MSAL.NET での次の代理](msal-authentication-flows.md#on-behalf-of)
-Web アプリ | 承認コード | [ADAL.NET を使用する Web アプリの承認コードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [MSAL.NET を使用する Web アプリの承認コードでのトークンの取得](msal-authentication-flows.md#authorization-code)
+Web アプリ、Web API、デーモン | クライアントの資格情報 | [ADAL.NET のクライアント資格情報フロー](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [MSAL.NET のクライアント資格情報フロー](scenario-daemon-acquire-token.md?tabs=dotnet#acquiretokenforclient-api)
+Web API | 次の代理 | [ADAL.NET でのユーザーの代わりのサービス間呼び出し](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [MSAL.NET での次の代理](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/on-behalf-of)
+Web アプリ | 承認コード | [ADAL.NET を使用する Web アプリの承認コードでのトークンの取得](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-with-authorization-codes-on-web-apps) | [MSAL.NET を使用する Web アプリの承認コードでのトークンの取得](scenario-web-app-call-api-acquire-token.md?tabs=aspnetcore)
 
 ### <a name="cache-persistence"></a>キャッシュの永続化
 

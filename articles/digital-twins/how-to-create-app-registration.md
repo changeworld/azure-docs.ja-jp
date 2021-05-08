@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/13/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: bd45bb264f8e29a2aad870a7daff45fdd44e0d3c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b22552147bec789c4b1d796cad2c52165d266334
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478813"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207719"
 ---
 # <a name="create-an-app-registration-to-use-with-azure-digital-twins"></a>Azure Digital Twins で使用するアプリ登録を作成する
 
@@ -94,7 +94,7 @@ Azure Digital Twins インスタンスを使用する場合、カスタム ク�
 
 アプリ登録を正常に設定するには、サブスクリプションの所有者または管理者からの追加のアクションが組織で必要になる可能性があります。 必要な手順は、組織の具体的な設定によって異なることがあります。
 
-サブスクリプションの所有者または管理者による実行が必要になる可能性がある一般的な潜在的なアクティビティのいくつかを次に示します。 これらの操作は、Azure portal の [*Azure AD アプリ登録*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)のページから実行できます。
+サブスクリプションの所有者または管理者による実行が必要になる可能性がある一般的な潜在的なアクティビティのいくつかを次に示します。 これらの操作は、Azure portal の [Azure AD アプリ登録](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)のページから実行できます。
 * アプリ登録に対する管理者の同意を付与する。 組織では、サブスクリプション内のすべてのアプリ登録について、Azure AD で *[管理者の同意が必要]* がグローバルに有効になっている可能性があります。 その場合は、有効にするアプリ登録について、アプリ登録の *[API のアクセス許可]* ページで所有者/管理者がユーザーの会社に対してこのボタンを選択する必要があります。
 
     :::image type="content" source="media/how-to-create-app-registration/grant-admin-consent.png" alt-text=" [API のアクセス許可] にある [管理者の同意の付与] ボタンのポータル ビュー":::
@@ -105,11 +105,11 @@ Azure Digital Twins インスタンスを使用する場合、カスタム ク�
 * Web およびデスクトップへのアクセスに特定の応答 URL を設定する
 * 暗黙の OAuth2 認証フローを許可する
 
-アプリ登録とそのさまざまな設定オプションの詳細については、「[*Microsoft ID プラットフォームにアプリケーションを登録する*](/graph/auth-register-app-v2)」を参照してください。
+アプリ登録とそのさまざまな設定オプションの詳細については、「[Microsoft ID プラットフォームにアプリケーションを登録する](/graph/auth-register-app-v2)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 この記事では、クライアント アプリケーションを Azure Digital Twins API で認証するために使用できる Azure AD アプリの登録を設定しました。
 
 次に、認証メカニズムについて、アプリの登録を使用するものと、使用しないものについて確認します。
-* [*方法: アプリ認証コードを作成する*](how-to-authenticate-client.md)
+* [方法: アプリ認証コードを作成する](how-to-authenticate-client.md)

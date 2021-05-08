@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 954dd8ad65d0a9c90e19530d541c19b5034bc175
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88006215"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108208115"
 ---
 # <a name="building-an-accessible-application"></a>アクセス可能なアプリケーションをビルド
 
@@ -179,4 +179,4 @@ Microsoft Learn を使用したアクセス可能なアプリの開発につい�
 > [WebAim の色のコントラスト チェッカー](https://webaim.org/resources/contrastchecker/)
 
 > [!div class="nextstepaction"]
-> [No Coffee Vision Simulator](https://chrome.google.com/webstore/detail/nocoffee/jjeeggmbnhckmgdhmgdckeigabjfbddl?hl=en-US)
+> [No Coffee Vision Simulator](https://uxpro.cc/toolbox/nocoffee/)

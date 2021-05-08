@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ea412b695c12f3ff7fdfa6250e2a474b618b8032
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 925eb2aee84b135663f80dedd713151ff70898ed
+ms.sourcegitcommit: a5dd9799fa93c175b4644c9fe1509e9f97506cc6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102430923"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108207917"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>Azure Digital Twins の内外でイベントをルーティングする
 
@@ -46,7 +46,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 コンピューティング リソースは、セキュリティとアクセス許可を個別に確立する必要もあります。
 
-デジタル ツイン イベントを処理するように Azure 関数を設定する手順については、[*方法:データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)に関するページを参照してください。
+デジタル ツイン イベントを処理するように Azure 関数を設定する手順については、[方法: データを処理するための Azure 関数の設定](how-to-create-azure-function.md)に関するページを参照してください。
 
 ## <a name="create-an-endpoint"></a>エンドポイントの作成
 
@@ -79,7 +79,7 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 1. まず、`DigitalTwinsEventRoute` オブジェクトが作成され、コンストラクターはエンドポイントの名前を受け取ります。 この `endpointName` フィールドは、Event Hub、Event Grid、または Service Bus などのエンドポイントを識別します。 この登録呼び出しを行う前に、これらのエンドポイントをサブスクリプションに作成し、コントロール プレーン API を使用して Azure Digital Twins にアタッチする必要があります。
 
-2. また、イベント ルート オブジェクトには [**Filter**](how-to-manage-routes-apis-cli.md#filter-events)フィールドがあります。このルートの後に続くイベントの種類を制限するために使用できます。 `true` のフィルターを使用すると、追加のフィルター処理を適用せずにルートが有効になります (`false` のフィルターによって、ルートは無効になります)。 
+2. また、イベント ルート オブジェクトには [Filter](how-to-manage-routes-apis-cli.md#filter-events) フィールドがあります。このルートの後に続くイベントの種類を制限するために使用できます。 `true` のフィルターを使用すると、追加のフィルター処理を適用せずにルートが有効になります (`false` のフィルターによって、ルートは無効になります)。 
 
 3. このイベント ルート オブジェクトは、ルートの名前と共に `CreateOrReplaceEventRouteAsync` に渡されます。
 
@@ -95,11 +95,11 @@ Azure Digital Twins データを送信する主なケースが 2 つあります
 
 いずれかの条件が満たされた場合、イベントは削除されるか、配信不能になります。 既定では、各エンドポイントは配信不能を有効に **しません**。 この処理を有効にするには、エンドポイントの作成時に、配信不能イベントを保持するようにストレージ アカウントを指定する必要があります。 その後で、このストレージ アカウントからイベントをプルして配信を解決できます。
 
-配信不能の場所を設定するには、コンテナーを含むストレージ アカウントが必要です。 エンドポイントの作成時に、このコンテナーの URL を指定します。 配信不能メッセージは、コンテナーの URL として、SAS トークンで提供されます。 このトークンには、ストレージ アカウント内の送信先コンテナーに対する `write` アクセス許可のみが必要です。 正しい形式の URL は次の形式になります。`https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+配信不能の場所を設定するには、コンテナーを含むストレージ アカウントが必要です。 エンドポイントの作成時に、このコンテナーの URL を指定します。 配信不能メッセージは、コンテナーの URL として、SAS トークンで提供されます。 このトークンには、ストレージ アカウント内の送信先コンテナーに対する `write` アクセス許可のみが必要です。 完全な形式の URL は次の形式になります: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
-SAS トークンの詳細については、以下を参照してください。[*Shared Access Signatures (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する*](../storage/common/storage-sas-overview.md)
+SAS トークンの詳細については、次を参照してください:[共有アクセス署名 (SAS) を使用して Azure Storage リソースへの制限付きアクセスを許可する](../storage/common/storage-sas-overview.md)
 
-配信不能処理を構成してエンドポイントを設定する方法については、操作方法ガイドの「[*Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)*](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering)」を参照してください。
+配信不能処理を構成してエンドポイントを設定する方法については、操作方法ガイドの「[Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)](how-to-manage-routes-apis-cli.md#create-an-endpoint-with-dead-lettering) 」を参照してください。
 
 ### <a name="types-of-event-messages"></a>イベントメッセージの種類
 
@@ -110,7 +110,7 @@ SAS トークンの詳細については、以下を参照してください。[
 ## <a name="next-steps"></a>次のステップ
 
 イベント ルートを設定および管理する方法を見る:
-* [*方法:エンドポイントとルートを管理する*](how-to-manage-routes-apis-cli.md)
+* [エンドポイントとルートを管理する](how-to-manage-routes-apis-cli.md)に関するページ
 
 または、Azure Functions を使用して Azure Digital Twins 内でイベントをルーティングする方法を見る:
-* [*方法:データを処理するための Azure 関数の設定*](how-to-create-azure-function.md)
+* [データを処理するための Azure 関数の設定](how-to-create-azure-function.md)に関するページ
