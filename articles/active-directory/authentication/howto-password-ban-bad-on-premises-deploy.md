@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5134c0eeaf3ebd1467b35cf825aa64bd1b445bd5
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 0b947d9169347c00b693f27a3683a76173188070
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107010581"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175066"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>オンプレミスの Azure Active Directory パスワード保護を計画してデプロイする
 
@@ -128,14 +128,14 @@ Azure AD パスワード保護 プロキシ サービスには、次の要件が
 * Azure AD パスワード保護プロキシ サービスがホストされているすべてのマシンを、このプロキシ サービスにログオンする機能をドメイン コントローラーに許可するように、構成する必要があります。 この機能は、"ネットワーク経由でコンピューターへアクセス" 特権の割り当てによって制御されます。
 * Azure AD パスワード保護プロキシ サービスがホストされているすべてのマシンを、送信 TLS 1.2 HTTP トラフィックを許可するように構成する必要があります。
 * Azure AD に Azure AD パスワード保護プロキシ サービスとフォレストを登録する "*グローバル管理者*" または "*セキュリティ管理者*" アカウント。
-* [アプリケーション プロキシ環境の設定手順](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)で指定されている一連のポートと URL に対して、ネットワーク アクセスを有効にする必要があります。
+* [アプリケーション プロキシ環境の設定手順](../app-proxy/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment)で指定されている一連のポートと URL に対して、ネットワーク アクセスを有効にする必要があります。
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Microsoft Azure AD Connect エージェント アップデーターの前提条件
 
 Microsoft Azure AD Connect エージェント アップデーター サービスは、Azure AD パスワード保護プロキシ サービスとサイド バイ サイドでインストールされます。 Microsoft Azure AD Connect エージェント アップデーター サービスを機能させるには、追加の構成が必要です。
 
 * お使いの環境で HTTP プロキシ サーバーを使用している場合は、「[既存のオンプレミス プロキシ サーバーと連携する](../manage-apps/application-proxy-configure-connectors-with-proxy-servers.md)」に明記されているガイドラインに従ってください。
-* Microsoft Azure AD Connect Agent Updater サービスでは、[TLS 要件](../manage-apps/application-proxy-add-on-premises-application.md#tls-requirements)で指定されている TLS 1.2 の手順も必要です。
+* Microsoft Azure AD Connect Agent Updater サービスでは、[TLS 要件](../app-proxy/application-proxy-add-on-premises-application.md#tls-requirements)で指定されている TLS 1.2 の手順も必要です。
 
 > [!WARNING]
 > Azure AD パスワード保護プロキシと Azure AD アプリケーション プロキシでは、異なるバージョンの Microsoft Azure AD Connect エージェント アップデーター サービスがインストールされます。そのため、説明ではアプリケーション プロキシの内容を示しています。 これらの異なるバージョンは、サイドバイサイドでインストールされた場合に互換性がないため、これを実行するとエージェント アップデーター サービスがソフトウェアの更新のために Azure に接続できなくなります。そのため、Azure AD パスワード保護プロキシとアプリケーション プロキシを同じコンピューター上にインストールしないでください。

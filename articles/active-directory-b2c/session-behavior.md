@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/04/2021
+ms.date: 04/22/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 3a3cdb93ee4cbf4a2e15540b9daf78b6c231d393
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 3898de5bf01ea03a5ad7f951a97da82a6a8c4b14
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104579741"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107896227"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でセッションの動作を構成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "104579741"
 
 ユーザーが初めてアプリケーションにサインインしたときに、Azure AD B2C によって Cookie ベースのセッションが保持されます。 それ以降の認証要求では、Azure AD B2C によって Cookie ベースのセッションが読み取られて検証され、アクセス トークンが発行されます。ユーザーにサインインを求めるメッセージが再び表示されることはありません。 Cookie ベースのセッションが有効期限切れまたは無効になった場合、ユーザーはもう一度サインインするように求められます。  
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>[前提条件]
 
 [!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
 
@@ -123,7 +123,7 @@ KMSI 機能は、Azure AD B2C ディレクトリでローカル アカウント�
 
 KMSI は、個々のユーザー フロー レベルで構成できます。 ユーザー フローに対して KMSI を有効にする前に、次の点を考慮してください。
 
-- KMSI は、**推奨** バージョンのサインアップ/サインイン (SUSI)、サインイン、およびプロファイル編集ユーザー フローに対してのみサポートされています。 現在 **Standard** または **レガシー プレビュー (v2)** バージョンのユーザー フローを使用しており、この状況で KMSI を有効にするには、これらのユーザー フローの **推奨** バージョンを新たに作成する必要があります。
+- KMSI は、**推奨** バージョンのサインアップ/サインイン (SUSI)、サインイン、およびプロファイル編集ユーザー フローに対してのみサポートされています。 現在、**標準 (レガシ)** または **レガシー プレビュー (v2)** バージョンのユーザー フローを使用しており、この状況で KMSI を有効にするには、これらのユーザー フローの **推奨** バージョンを新たに作成する必要があります。
 - KMSI は、パスワード リセット フローまたはサインアップ ユーザー フローではサポートされていません。
 - テナント内のすべてのアプリケーションに対して KMSI を有効にする場合は、テナント内のすべてのユーザー フローに対して KMSI を有効にすることをお勧めします。 セッション中に複数のポリシーがユーザーに提示され、KMSI が有効になっていないユーザーが、セッションから KMSI Cookie を削除する可能性があるためです。
 - 公共のコンピューターで KMSI を有効にすることはできません。
@@ -154,7 +154,7 @@ KMSI は、個々のユーザー フロー レベルで構成できます。 ユ
 
 KMSI を有効にするには、コンテンツ定義の `DataUri` 要素を [ページ識別子](contentdefinitions.md#datauri) `unifiedssp` に設定し、[ページ バージョン](page-layout.md)を *1.1.0* 以上に設定します。
 
-1. ポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。 この拡張ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](custom-policy-get-started.md)に関するページの前提条件の中で、取得済みになっている必要があります。
+1. ポリシーの拡張ファイルを開きます。 たとえば、<em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>です。 この拡張ファイルは、カスタム ポリシー スターター パックに含まれているポリシー ファイルの 1 つであり、[カスタム ポリシーの概要](tutorial-create-user-flows.md?pivots=b2c-custom-policy)に関するページの前提条件の中で、取得済みになっている必要があります。
 1. **BuildingBlocks** 要素を検索します。 要素が存在しない場合は追加します。
 1. **ContentDefinitions** 要素をポリシーの **BuildingBlocks** 要素に追加します。
 

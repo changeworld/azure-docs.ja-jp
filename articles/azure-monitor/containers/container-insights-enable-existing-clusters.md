@@ -3,13 +3,13 @@ title: デプロイされている Azure Kubernetes Service (AKS) クラスタ�
 description: Container insights を使用して、自分のサブスクリプションに既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.custom: devx-track-terraform
-ms.openlocfilehash: 2fc46c987477a728f9e4e3fb69b5022c8756459c
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.custom: devx-track-terraform, devx-track-azurepowershell
+ms.openlocfilehash: 7ab840f2de90f316461c84e2698e9b760c082e03
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108073901"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318641"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 

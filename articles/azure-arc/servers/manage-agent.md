@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバー エージェントの管理
 description: この記事では、Azure Arc 対応サーバー Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
-ms.date: 02/10/2021
+ms.date: 04/27/2021
 ms.topic: conceptual
-ms.openlocfilehash: 36ae081f939cbf865db7755a2f766a7ccd87d619
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 25cd997bc1b90da07fd9c463f0097c7bdf53b885
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587628"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108076619"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
@@ -181,6 +181,8 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 * **Logs** - 現在のディレクトリに、トラブルシューティングの際に役立つログを含む .zip ファイルを作成します。
 
 * **Version** - Connected Machine エージェントのバージョンを表示します。
+
+* **-useStderr** - エラーと詳細出力が stderr に送られます。 結果を JSON 形式で出力するには、`-json` パラメーターを含めます。
 
 * **-h または --help** - 使用可能なコマンドライン パラメーターを表示します。
 

@@ -2,16 +2,20 @@
 title: Azure Event Grid - トピックまたはドメインの診断ログを有効にする
 description: この記事では、Azure Event Grid トピックの診断ログを有効にする手順について説明します。
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: ff00c1438c49cbc9f9e67eba0cf0acef7991a5a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/22/2021
+ms.openlocfilehash: 78dfeed0cedfe96d9a0d70411aecc7c7f2c51a72
+ms.sourcegitcommit: 19dcad80aa7df4d288d40dc28cb0a5157b401ac4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96576453"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107897777"
 ---
 #  <a name="enable-diagnostic-logs-for-azure-event-grid-topics-or-domains"></a>Azure Event Grid のトピックまたはドメインの診断ログを有効にする
 この記事では、Event Grid のトピックまたはドメインの診断設定を有効にする手順について説明します。  これらの設定を行うと、**発行エラーと配信エラー** のログをキャプチャして表示することができます。 
+
+> [!IMPORTANT]
+> 診断ログのスキーマについては、[診断ログ](diagnostic-logs.md)に関する記事を参照してください。 
+
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 05/18/2020
+ms.date: 04/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 62bfc528886767bc09159ca2a2696c8c9264b307
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: adea0e63c9e285a751a1a0508e84c5b83a10e994
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96349941"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108074693"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
@@ -52,7 +52,7 @@ Install-WindowsFeature RSAT-AD-Tools
 ![構成](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
 
 >[!NOTE]
->AD DS 用の RAST が既にインストールされているドメイン コントローラーにファイル **C:\Program files \microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** を、コピーし、そこでこの PowerShell モジュールを使用することもできます。
+>AD DS 用の RAST が既にインストールされているドメイン コントローラーにファイル **C:\Program files \microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** を、コピーし、そこでこの PowerShell モジュールを使用することもできます。  一部のコマンドレットは Azure AD Connect をホストしているコンピューター上でのみ実行できることに注意してください。
 
 ADSyncConfig の使用を開始するには、Windows PowerShell ウィンドウにモジュールを読み込む必要があります。 
 

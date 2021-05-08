@@ -10,12 +10,12 @@ ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: baad1a0b173ae89fec9d160572224c6cb0aa615d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c2de1dc71579e6915a54e3815edd2858532ba263
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103574630"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108075935"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>クライアント アプリケーションからの要求を承認するために Azure AD からトークンを取得する
 
@@ -69,7 +69,7 @@ Azure AD へのアプリケーションの登録について詳しくは、「[A
 
 ### <a name="create-a-client-secret"></a>クライアント シークレットの作成
 
-アプリケーションでは、トークンを要求するときに ID を証明するためにクライアント シークレットが必要です。 クライアント シークレットを追加するには、次の手順のようにします。
+アプリケーションでは、トークンを要求するときに ID を証明するためにクライアント シークレットが必要です。 セキュリティ上の理由から、Microsoft は 24 か月を超えるクライアント シークレットの作成を制限しており、これを 12 か月未満の値に設定することを強くお勧めします。 クライアント シークレットを追加するには、次の手順のようにします。
 
 1. Azure portal でアプリの登録に移動します。
 1. **[証明書とシークレット]** の設定を選択します。

@@ -6,12 +6,13 @@ ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 10/7/2020
-ms.openlocfilehash: 031246efa35eee5e2e4470b94d56e47cba0ad8ad
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a75aca174fd2fda6ccb4c12346a617e24814caf4
+ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102038324"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108318371"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 

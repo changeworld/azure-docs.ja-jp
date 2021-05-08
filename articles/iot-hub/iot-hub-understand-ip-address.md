@@ -6,13 +6,13 @@ ms.author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 1bfae8c7afbfdc6e73dd8bb17b94e6543361e9ce
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: 7d807a15d358bd621baedbff253f0c731e43ed26
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83848230"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874173"
 ---
 # <a name="iot-hub-ip-addresses"></a>IoT Hub の IP アドレス
 
@@ -45,7 +45,7 @@ IoT Hub  パブリック エンドポイントの IP アドレス プレフィ�
 
 ## <a name="limitations-and-workarounds"></a>制限事項と回避策
 
-* IoT Hub IP フィルター機能では、規則の数は 10 個に制限されています。 この上限は、Azure カスタマー サポートへリクエストすることで上げることができます。 
+* IoT Hub IP フィルター機能では、規則の数は 100 個に制限されています。 この上限は、Azure カスタマー サポートへリクエストすることで上げることができます。 
 
 * 構成済みの [IP フィルタリング規則](iot-hub-ip-filtering.md) は、IoT Hub の組み込みイベント ハブ エンドポイントではなく、IoT Hub IP エンドポイントにのみ適用されます。 また、メッセージが格納されているイベント ハブに IP フィルターを適用する必要がある場合は、独自のイベント ハブ リソースを使用して、目的の IP フィルタリング規則を直接構成することもできます。 これを行うには、独自のイベント ハブ リソースをプロビジョニングし、[メッセージ ルーティング](./iot-hub-devguide-messages-d2c.md) を設定して、IoT Hub の組み込みイベント ハブの代わりにメッセージをそのリソースに送信する必要があります。 最後に、上の表で説明したように、メッセージ ルーティング機能を有効にするには、IoT Hub の IP アドレス プレフィックスからプロビジョニング済みのイベント ハブリソースへの接続を許可する必要もあります。
 

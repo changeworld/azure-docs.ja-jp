@@ -3,12 +3,12 @@ title: Azure Backup の新着情報
 description: Azure Backup の新機能について説明しています。
 ms.topic: conceptual
 ms.date: 04/22/2021
-ms.openlocfilehash: 09a1008871df61cdf38097b692b99237f97057b9
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: 57b650d482c9d29776aa6cf9dd5ba01d6a5ef757
+ms.sourcegitcommit: 5ce88326f2b02fda54dad05df94cf0b440da284b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326508"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107886336"
 ---
 # <a name="whats-new-in-azure-backup"></a>Azure Backup の新着情報
 
@@ -91,7 +91,7 @@ Azure Backup では、Azure Resource Manager (ARM) テンプレートを使用�
 
 Azure VM でホストされている SAP HANA データベースの増分バックアップが、Azure Backup でサポートされるようになりました。 これにより、SAP HANA データのバックアップを、いっそう高速に、コスト効率よく行うことができます。
 
-詳細については、[バックアップポリシーの作成時に使用できるさまざまなオプション](/azure/backup/sap-hana-faq-backup-azure-vm#policy)および [SAP HANA データベース用のバックアップ ポリシーを作成する方法](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)に関するページを参照してください。
+詳細については、[バックアップポリシーの作成時に使用できるさまざまなオプション](/sap-hana-faq-backup-azure-vm.yml#policy)および [SAP HANA データベース用のバックアップ ポリシーを作成する方法](tutorial-backup-sap-hana-db.md#creating-a-backup-policy)に関するページを参照してください。
 
 ## <a name="backup-center-in-preview"></a>バックアップ センター (プレビュー段階)
 
@@ -171,6 +171,6 @@ Azure Backup では、カスタマー マネージド キーを使用して暗�
 
 詳細については、[カスタマー マネージド キーを使用した Azure Backup の暗号化](encryption-at-rest-with-cmk.md)に関する記事を参照してください。 
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 - [Azure Backup のガイダンスとベスト プラクティス](guidance-best-practices.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb,
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e0801daa5bf83889be87987d440e377287b5ea
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c792888b65f331332c320deecbcd2b5f8d7e2ee3
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92366192"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108175768"
 ---
 # <a name="conditional-access-block-access"></a>条件付きアクセス:アクセスのブロック
 
@@ -79,6 +79,9 @@ ms.locfileid: "92366192"
    1. **[選択]** を選択します。
 1. 設定を確認し、 **[ポリシーの有効化]** を **[レポート専用]** に設定します。
 1. **[作成]** を選択して、ポリシーを作成および有効化します。
+
+> [!NOTE]
+> 条件付きアクセス ポリシーは、第 1 段階認証が完了した後で適用されます。 条件付きアクセスはサービス拒否 (DoS) 攻撃などのシナリオに対する組織の防御の最前線を意図したものではありませんが、これらのイベントからのシグナルを使用してアクセス権を判定できます。
 
 ## <a name="next-steps"></a>次のステップ
 

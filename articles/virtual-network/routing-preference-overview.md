@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2021
 ms.author: mnayak
-ms.openlocfilehash: 44edd9273730ff7ba81a3ad5af2408ff6b7b7a5c
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 588af3ff739d82029260909d23a7639bc2cbcb8d
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060637"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069941"
 ---
 # <a name="what-is-routing-preference"></a>ルーティング設定とは
 
@@ -76,5 +76,6 @@ Azure のルーティング優先設定を使用すると、Azure とインタ�
 
 ## <a name="next-steps"></a>次のステップ
 
+* [インターネット経由で Microsoft Azure サービスへの接続を最適化する方法について - 動画](https://www.youtube.com/watch?v=j6A_Mbpuh6s&list=PLLasX02E8BPA5V-waZPcelhg9l3IkeUQo&index=12) 
 * [Azure PowerShell を使用して VM 用にルーティング優先設定を構成する](configure-routing-preference-virtual-machine-powershell.md)
 * [Azure CLI を使用して VM 用にルーティング優先設定を構成する](configure-routing-preference-virtual-machine-cli.md)

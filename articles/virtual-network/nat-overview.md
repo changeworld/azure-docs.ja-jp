@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 3a4e9649d921c6af34d99ab290adb96be3ad1282
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 20870a62b6ea074837db070b39d5a9edf3db19ac
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106058529"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108069887"
 ---
 # <a name="what-is-virtual-network-nat"></a>Virtual Network NAT とは
 
@@ -142,5 +142,6 @@ Virtual Network NAT と NAT ゲートウェイ リソースは、すべての Az
 
 ## <a name="next-steps"></a>次のステップ
 
+* [Azure NAT ゲートウェイを使用してよりよいアウトバウンド接続を実現する方法](https://www.youtube.com/watch?v=2Ng_uM0ZaB4)について説明します。
 * [NAT ゲートウェイ リソース](./nat-gateway-resource.md)について学習する。
 * [UserVoice で Virtual Network NAT の新機能の構築を提案する](https://aka.ms/natuservoice)。

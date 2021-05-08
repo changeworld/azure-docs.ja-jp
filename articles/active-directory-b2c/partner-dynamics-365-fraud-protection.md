@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/10/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 8a94500f1669e47065f6ea9789b18442e0c8349e
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: ef1067504a0dd45add4b178446716864e60c802f
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 04/28/2021
-ms.locfileid: "108127013"
+ms.locfileid: "108175534"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用した Microsoft Dynamics 365 Fraud Protection の構成
 
@@ -100,14 +100,14 @@ CORS の設定、**許可された配信元** `https://{your_tenant_name}.b2clog
 
 | アプリケーションの設定 | source | Notes |
 | :-------- | :------------| :-----------|
-|FraudProtectionSettings:InstanceId | Microsoft DFP 構成 |     |
-|FraudProtectionSettings:DeviceFingerprintingCustomerId | Microsoft デバイス フィンガープリント カスタマー ID |     |
+| FraudProtectionSettings:InstanceId | Microsoft DFP 構成 |     |
+| FraudProtectionSettings:DeviceFingerprintingCustomerId | Microsoft デバイス フィンガープリント カスタマー ID |     |
 | FraudProtectionSettings:ApiBaseUrl |  Microsoft DFP Portal からのベース URL   | 実稼働 API を呼び出すには、"-int" を削除します。|
-|  TokenProviderConfig:リソース  | ベース URL - `https://api.dfp.dynamics-int.com`     | 実稼働 API を呼び出すには、"-int" を削除します。|
-|   TokenProviderConfig:ClientId       |Fraud Protection マーチャント Azure AD クライアント アプリケーション ID      |       |
-| TokenProviderConfig:Authority | https://login.microsoftonline.com/<directory_ID> | Fraud Protection マーチャント Azure AD テナント オーソリティ |
-| TokenProviderConfig:CertificateThumbprint* | マーチャント Azure AD クライアント アプリケーションに対する認証に使用する、証明書のサムプリント |
-| TokenProviderConfig:ClientSecret* | マーチャント Azure AD クライアント アプリケーションのシークレット | シークレット マネージャーの使用をお勧めします。 |
+| FraudProtectionSettings:TokenProviderConfig:Resource | ベース URL - `https://api.dfp.dynamics-int.com`     | 実稼働 API を呼び出すには、"-int" を削除します。|
+| FraudProtectionSettings:TokenProviderConfig:ClientId |Fraud Protection マーチャント Azure AD クライアント アプリケーション ID      |       |
+| FraudProtectionSettings:TokenProviderConfig:Authority | https://login.microsoftonline.com/<directory_ID> | Fraud Protection マーチャント Azure AD テナント オーソリティ |
+| FraudProtectionSettings:TokenProviderConfig:CertificateThumbprint* | マーチャント Azure AD クライアント アプリケーションに対する認証に使用する、証明書のサムプリント |
+| FraudProtectionSettings:TokenProviderConfig:ClientSecret* | マーチャント Azure AD クライアント アプリケーションのシークレット | シークレット マネージャーの使用をお勧めします。 |
 
 \* 証明書で認証するかパスワードなどのシークレットを使用して認証するかに応じて、2 つのマークされたパラメーターのうち 1 つだけを設定します。
 

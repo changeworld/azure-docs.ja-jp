@@ -7,14 +7,14 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: f72a3739fac1e7d6afdafd2676ea6fcefe847b2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 60ad4ece6de40b61b1d25e61963b30c084639eba
+ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101710585"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108072965"
 ---
-# <a name="vnet-peering-and-azure-bastion-preview"></a>VNet ピアリングと Azure Bastion のアーキテクチャ (プレビュー)
+# <a name="vnet-peering-and-azure-bastion"></a>VNet ピアリングと Azure Bastion
 
 Azure Bastion と VNet ピアリングは一緒に使用できます。 VNet ピアリングが構成されている場合、ピアリングされた各 VNet に Azure Bastion をデプロイする必要はありません。 つまり、Azure Bastion ホストが 1 つの仮想ネットワーク (VNet) 内に構成されている場合は、追加の Bastion ホストをデプロイしなくても、ピアリングされた VNet にデプロイされている VM に接続するために使用できます。 VNet ピアリングの詳細については、[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)に関するページを参照してください。
 
