@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: 0199a47b2306d7d461ba61057c7ab1015015df08
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: b191941dff66f28467030a3f367837ca4ed9656c
+ms.sourcegitcommit: dd425ae91675b7db264288f899cff6add31e9f69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835562"
+ms.lasthandoff: 05/01/2021
+ms.locfileid: "108330820"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 
@@ -81,7 +81,7 @@ PowerShell では、`New-AzVM` を使用し、' を使用して SSH キーを VM
 公開キーを Azure VM に、秘密キーをローカル システム上に配置した状態で、VM の IP アドレスまたは DNS 名を使用して、VM に SSH 接続します。 次のコマンドの *azureuser* と *10.111.12.123* を、管理者のユーザー名、IP アドレス (または完全修飾ドメイン名)、および自分の秘密キーへのパスに置き換えてください。
 
 ```bash
-ssh -i ~/.ssh/id_rsa.pub azureuser@10.111.12.123
+ssh -i ~/.ssh/id_rsa azureuser@10.111.12.123
 ```
 
 キーの組を作成したときにパスフレーズを構成してある場合、入力を求められたら、そのパスフレーズを入力します。

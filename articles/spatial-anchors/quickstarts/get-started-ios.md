@@ -8,13 +8,13 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.custom: has-adal-ref
-ms.openlocfilehash: 4434118313989eb8bc70f1d44e977b2df3633050
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.custom: has-adal-ref, devx-track-azurecli
+ms.openlocfilehash: 1a345ae901358342563e287cc4ff26cbd07ffc79
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96009077"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108288168"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>クイック スタート:Azure Spatial Anchors を使用する iOS アプリを Swift または Objective-C で作成する
 

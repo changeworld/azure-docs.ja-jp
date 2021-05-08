@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 29821733b73717634aa8f0ab72270f058ffd3ddc
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 0728b45a72f7d4fe67807be5c9c2b5290af11c51
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107309392"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108143469"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Azure Static Web Apps プレビューの認証と承認
 
@@ -24,11 +24,11 @@ Azure Static Web Apps では、次のプロバイダーでの認証を管理す�
 - Google<sup>1</sup>
 - Twitter
 
-プロバイダー固有の [招待](#invitations)によってユーザーはロールに関連付けられ、承認されたユーザーには、_staticwebapp.config.json_ ファイルに定義された規則によって[ルート](routes.md)へのアクセス権が付与されます。
+プロバイダー固有の [招待](#invitations)によってユーザーはロールに関連付けられ、承認されたユーザーには、_staticwebapp.config.json_ ファイルに定義された規則によって [ルート](configuration.md#routes)へのアクセス権が付与されます。
 
 すべての認証プロバイダーは、既定で有効になっています。 認証プロバイダーを制限するには、カスタム ルート規則によって[アクセスをブロック](#block-an-authorization-provider)します。
 
-認証と承認のトピックは、ルーティングの概念とかなり重複します。 この記事と併せて、[ルーティング ガイド](routes.md)を是非お読みください。
+認証と承認のトピックは、ルーティングの概念とかなり重複します。 この記事と併せて、[構成ガイド](configuration.md#routes)を是非お読みください。
 
 ## <a name="roles"></a>ロール
 
@@ -123,7 +123,7 @@ https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 
 ## <a name="system-folder"></a>システム フォルダー
 
-Azure Static Web Apps では、`/.auth` システム フォルダーを使用して、承認関連の API へのアクセスが提供されています。 `/.auth` フォルダー下のいずれかのルートをエンドユーザーに直接公開するのではなく、[ルーティング規則](routes.md)を作成してわかりやすい URL を作ることを検討してください。
+Azure Static Web Apps では、`/.auth` システム フォルダーを使用して、承認関連の API へのアクセスが提供されています。 `/.auth` フォルダー下のいずれかのルートをエンドユーザーに直接公開するのではなく、[ルーティング規則](configuration.md#routes)を作成してわかりやすい URL を作ることを検討してください。
 
 ## <a name="login"></a>ログイン
 
@@ -189,7 +189,7 @@ Azure Static Web Apps では、`/.auth` システム フォルダーを使用し
 
 承認プロバイダーを使用しないように、アプリを制限することができます。 たとえば、お使いのアプリ上で、[電子メール アドレスを公開するプロバイダー](#provider-user-details)のみに統一したい場合があります。
 
-プロバイダーをブロックするには、[ルート規則](routes.md)を作成して、ブロックされたプロバイダー固有のルートへの要求に 404 を返すことができます。 たとえば、プロバイダーとして Twitter を制限するには、次のルート規則を追加します。
+プロバイダーをブロックするには、[ルート規則](configuration.md#routes)を作成して、ブロックされたプロバイダー固有のルートへの要求に 404 を返すことができます。 たとえば、プロバイダーとして Twitter を制限するには、次のルート規則を追加します。
 
 ```json
 {

@@ -1,14 +1,14 @@
 ---
 title: Azure Arc 対応サーバーを計画およびデプロイする方法
 description: 多数のマシンを Azure Arc 対応サーバーに対して有効にして、Azure で、重要なセキュリティ、管理、監視の機能の構成を簡略化する方法について説明します。
-ms.date: 03/18/2021
+ms.date: 04/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5aa7022dba943fa3de247404522408f4660e80e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3f8fe410da56f627ceab5f17c980f2daa1a262c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023284"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831980"
 ---
 # <a name="plan-and-deploy-arc-enabled-servers"></a>Arc 対応サーバーの計画およびデプロイ
 
@@ -83,7 +83,7 @@ IT インフラストラクチャ サービスまたはビジネス アプリケ
 |-----|-------|---------|
 |Resource Health アラートを作成する |サーバーが Azure へのハートビートの送信を 15 分より長く停止する場合は、それがオフラインであるか、ネットワーク接続がブロックされているか、エージェントが実行されていないことを意味する可能性があります。 これらのインシデントに対応して調査し、[Resource Health アラート](../..//service-health/resource-health-alert-monitor-guide.md)を使用してその開始時に通知を受け取る方法の計画を作成します。<br><br> アラートの構成時には以下のように指定します。<br> **リソースの種類** = **Azure Arc 対応サーバー**<br> **現在のリソースの状態** = **使用不可**<br> **以前のリソースの状態** = **使用可能** | 1 時間 |
 |Azure Advisor アラートを作成する | 優れたエクスペリエンスと最新のセキュリティおよびバグの修正プログラムについては、Azure Arc 対応サーバー エージェントを最新の状態に保つことをお勧めします。 古くなったエージェントは、[Azure Advisor アラート](../../advisor/advisor-alerts-portal.md)で識別されます。<br><br> アラートの構成時には以下のように指定します。<br> **推奨の種類** = **最新バージョンの Azure Connected Machine Agent にアップグレードする** | 1 時間 |
-|サブスクリプションまたはリソース グループのスコープに [Azure ポリシーを割り当てる](../../governance/policy/assign-policy-portal.md) |**Azure Monitor for VMs の有効化** [ポリシー](../../azure-monitor/vm/vminsights-enable-policy.md) (およびニーズに合ったその他のポリシー) をサブスクリプションまたはリソース グループ スコープに割り当てます。 Azure Policy により、お使いの環境全体で Azure Monitor for VMs に必要なエージェントをインストールするポリシーの定義を割り当てることができます。| 場合により異なる |
+|サブスクリプションまたはリソース グループのスコープに [Azure ポリシーを割り当てる](../../governance/policy/assign-policy-portal.md) |**Azure Monitor for VMs の有効化** [ポリシー](../../azure-monitor/vm/vminsights-enable-policy.md) (およびニーズに合ったその他のポリシー) をサブスクリプションまたはリソース グループ スコープに割り当てます。 Azure Policy により、お使いの環境全体で VM インサイトに必要なエージェントをインストールするポリシーの定義を割り当てることができます。| 場合により異なる |
 |[Arc 対応サーバーに対して Update Management を有効にする](../../automation/update-management/enable-from-automation-account.md) |Azure Automation で Update Management を構成して、Arc 対応サーバーに登録されている Windows と Linux の仮想マシンのオペレーティング システム更新プログラムを管理します。 | 約 15 分 |
 
 ## <a name="next-steps"></a>次のステップ

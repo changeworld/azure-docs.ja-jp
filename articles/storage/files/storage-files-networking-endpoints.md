@@ -7,13 +7,13 @@ ms.topic: how-to
 ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 42e83facec7817b6588bf69977fea5ab74b6b10d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 706ce7fbcc727be365c8b9ebc65d8ac2c9817c2f
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107759881"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108287628"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>Azure Files ネットワーク エンドポイントの構成
 

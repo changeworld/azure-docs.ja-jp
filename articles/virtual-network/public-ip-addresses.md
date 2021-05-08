@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: d1d412774dc68cba0c24709c7fc8a7999e0aeab8
-ms.sourcegitcommit: 99fc6ced979d780f773d73ec01bf651d18e89b93
+ms.openlocfilehash: 121c22e3a25a95fa64f6f779ebc0827bb6c123c7
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106094763"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015953"
 ---
 # <a name="public-ip-addresses"></a>パブリック IP アドレス
 
@@ -147,6 +147,8 @@ DNS レコードには [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvi
 
 パブリック IP アドレスには、**動的** または **静的** を選択します。 [IP アドレスをネットワーク インターフェイスに割り当てる方法](virtual-network-network-interface-addresses.md)を参照してください。
 
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
+
 ## <a name="internet-facing-load-balancers"></a>インターネットに接続するロード バランサー
 
 パブリック IP アドレスをロード バランサーの **フロントエンド** 構成に割り当てることで、パブリック IP アドレスと [SKU](#sku) あるいは [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を関連付けることができます。 このパブリック IP は、負荷分散された IP として機能します。 
@@ -154,6 +156,8 @@ DNS レコードには [Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvi
 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 ロード バランサーのフロントエンドには、複数のパブリック IP アドレスを割り当てることができます。 この構成により、TLS ベースの Web サイトを含むマルチテナント環境のような[マルチ VIP](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) シナリオを実現できます。 
 
 Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
+
+[!INCLUDE [ephemeral-ip-note.md](../../includes/ephemeral-ip-note.md)]
 
 ## <a name="vpn-gateways"></a>VPN ゲートウェイ
 
@@ -189,7 +193,7 @@ Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の S
 | --- | --- | --- | --- |
 | 仮想マシン |ネットワーク インターフェイス |はい |はい |
 | インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
-| VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ |
+| VPN Gateway |ゲートウェイ IP の構成 |はい |はい (VPNGwAZ のみ) |
 | Application gateway |フロント エンド構成 |はい (V1 のみ) |はい (V2 のみ) |
 | Azure Firewall | フロント エンド構成 | いいえ | はい|
 

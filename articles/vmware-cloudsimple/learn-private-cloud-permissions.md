@@ -1,19 +1,19 @@
 ---
 title: Azure VMware Solution by CloudSimple - プライベート クラウドのアクセス許可モデル
 description: CloudSimple プライベート クラウドのアクセス許可モデル、グループ、およびカテゴリについて説明します
-author: Ajayan1008
-ms.author: v-hborys
+author: shortpatti
+ms.author: v-patsho
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1c8cfeda008955006f2fbad1df58c8047bd36541
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be77be14acf05aa543c1494f16e499f00598e2b4
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97898047"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108184516"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>VMware vCenter の CloudSimple プライベート クラウド アクセス許可モデル
 

@@ -8,13 +8,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: mbaldwin
-ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: ba299ff52ccdf811d739efdb1d379889444a02b8
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 9688ca47efabd8023f29879f9963ab43f0882cf4
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107868395"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286386"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>チュートリアル:.NET で仮想マシンを使用して Azure Key Vault を使用する
 

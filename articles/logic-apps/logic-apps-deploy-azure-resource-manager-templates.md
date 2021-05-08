@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e4672225f65eab6cac98ece488ed07dda17b1ec4
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 0f8a71aa4545316313f4ef2d9f349646ca8769d7
+ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108076637"
+ms.lasthandoff: 04/29/2021
+ms.locfileid: "108278436"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps 用の Azure Resource Manager テンプレートをデプロイする
 
@@ -31,7 +31,7 @@ ms.locfileid: "108076637"
 
 ロジック アプリ テンプレートを Azure に自動的にデプロイするには、次の **[Azure に配置する]** ボタンを選択します。これにより、Azure portal にサインインし、ロジック アプリに関する情報の入力を求められます。 その後、ロジック アプリ テンプレートまたはパラメーターに必要な変更を加えることができます。
 
-[![Azure へのデプロイ](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![Azure へのデプロイ](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.logic%2Flogic-app-create%2Fazuredeploy.json)
 
 たとえば、Azure portal にサインインした後に次の情報の入力を求められます。
 
@@ -60,7 +60,7 @@ Visual Studio を使用して作成した Azure Resource Group プロジェク�
 特定の "*Azure リソース グループ*" にデプロイするには、次のコマンドを使用します。
 
 ```powershell
-New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json
 ```
 
 詳細については、以下のトピックを参照してください。
@@ -75,7 +75,7 @@ New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -Te
 特定の "*Azure リソース グループ*" にデプロイするには、次のコマンドを使用します。
 
 ```azurecli
-az deployment group create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+az deployment group create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.logic/logic-app-create/azuredeploy.json
 ```
 
 詳細については、以下のトピックを参照してください。

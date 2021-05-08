@@ -1,18 +1,18 @@
 ---
 title: Azure API Management 用の組み込みポリシー定義
 description: Azure API Management 用の Azure Policy 組み込みポリシー定義を一覧表示します。 これらの組み込みポリシー定義は、お使いの Azure リソースを管理するための方法を示します。
-ms.date: 04/21/2021
+ms.date: 04/28/2021
 author: georgewallace
 ms.author: gwallace
 ms.service: api-management
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ec15a1c3a856d6de4a5c77db74f09c1adc9b9ec7
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.openlocfilehash: d2d3fac2bee78b44db824b3878960c4e639c1f4d
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107866251"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108184113"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Azure API Management 用の Azure Policy 組み込みポリシー定義
 

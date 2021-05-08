@@ -3,12 +3,12 @@ title: Azure Arc 対応サーバーを使用した VM 拡張機能の管理
 description: Azure Arc 対応サーバーを使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67f1b5b3db6ef446342e8381d54d487af1f3426a
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: e28cd7753fc85f2e40385c65392fea73502aa05b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389793"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832844"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Azure Arc 対応サーバーを使用した仮想マシン拡張機能の管理
 
@@ -30,7 +30,7 @@ Azure Arc 対応サーバーによる VM 拡張機能のサポートには、次
 
 - Log Analytics エージェント VM 拡張機能を有効にすることで、[Azure Monitor のログ](../../azure-monitor/logs/data-platform-logs.md)を使用して分析用のログ データを収集します。 これは、さまざまな種類のソースのデータに対して複雑な分析を行うときに便利です。
 
-- [Azure Monitor for VMs](../../azure-monitor/vm/vminsights-overview.md) を使用して、Windows VM および Linux VM のパフォーマンスを分析し、それらのプロセスや、他のリソースおよび外部プロセスへの依存関係を監視します。 これは、Log Analytics エージェントと Dependency Agent の両方の VM 拡張機能を有効にすることで実現されます。
+- [VM インサイト](../../azure-monitor/vm/vminsights-overview.md)を使用して、Windows および Linux VM のパフォーマンスを分析し、それらの VM による処理や、他のリソースおよび外部の処理の利用状況を監視します。 これは、Log Analytics エージェントと Dependency Agent の両方の VM 拡張機能を有効にすることで実現されます。
 
 - スクリプトをダウンロードし、カスタム スクリプト拡張機能を使用してハイブリッド接続マシンで実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。
 

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f2a8368a5473a3f3d2f679b2be696ca04bc6e5e4
-ms.sourcegitcommit: 2e123f00b9bbfebe1a3f6e42196f328b50233fc5
+ms.openlocfilehash: 2e0a04cef7952822931887f038410ff867cc2afe
+ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108070769"
+ms.lasthandoff: 04/30/2021
+ms.locfileid: "108286728"
 ---
 # <a name="whats-new-in-computer-vision"></a>Computer Vision の新機能
 
@@ -26,8 +26,8 @@ ms.locfileid: "108070769"
 ### <a name="computer-vision-v32-ga"></a>Computer Vision v3.2 GA
 
 Computer Vision API v3.2 の一般提供が開始されました。次の点が更新されています。
-* 改善された画像のタグ付けモデル: ビジュアル コンテンツを分析し、画像に表示されているオブジェクト、アクション、およびコンテンツに基づいて、関連するタグを生成します。 これは、[Tag Image API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) を介して利用できます。 詳細については、画像分析の[使用法ガイド](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi)および[概要](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis)に関するページを参照してください。
-* 更新されたコンテンツ モデレーション モデル: アダルト コンテンツの存在を検出し、成人向け、わいせつ、または不快なビジュアル コンテンツを含む画像をフィルター処理するためのフラグを提供します。 これは、[Analyze API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) を介して利用できます。 詳細については、画像分析の[使用法ガイド](https://docs.microsoft.com/azure/cognitive-services/computer-vision/vision-api-how-to-topics/howtocallvisionapi)および[概要](https://docs.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis)に関するページを参照してください。
+* 改善された画像のタグ付けモデル: ビジュアル コンテンツを分析し、画像に表示されているオブジェクト、アクション、およびコンテンツに基づいて、関連するタグを生成します。 これは、[Tag Image API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f200) を介して利用できます。 詳細については、画像分析の[使用法ガイド](./vision-api-how-to-topics/howtocallvisionapi.md)および[概要](./overview-image-analysis.md)に関するページを参照してください。
+* 更新されたコンテンツ モデレーション モデル: アダルト コンテンツの存在を検出し、成人向け、わいせつ、または不快なビジュアル コンテンツを含む画像をフィルター処理するためのフラグを提供します。 これは、[Analyze API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/56f91f2e778daf14a499f21b) を介して利用できます。 詳細については、画像分析の[使用法ガイド](./vision-api-how-to-topics/howtocallvisionapi.md)および[概要](./overview-image-analysis.md)に関するページを参照してください。
 * [73 言語で利用可能な OCR (Read)](./language-support.md#optical-character-recognition-ocr)。これには、簡易字中国語と繁体字中国語、日本語、韓国語、ラテン語系の言語が含まれます。
 * [OCR (Read)](./overview-ocr.md) は、オンプレミス デプロイ用の[ディストリビューションレス コンテナー](./computer-vision-how-to-install-containers.md?tabs=version-3-2)としても利用できます。
 

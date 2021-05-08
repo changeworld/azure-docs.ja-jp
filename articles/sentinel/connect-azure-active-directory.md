@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/20/2021
+ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: f8931fedb380cf81d72b7b5280a5795498daaa57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc499e54ebc700f87edbc904165000155211ca1b
+ms.sourcegitcommit: aaba99b8b1c545ad5d19f400bcc2d30d59c63f39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99251983"
+ms.lasthandoff: 04/26/2021
+ms.locfileid: "108007126"
 ---
 # <a name="connect-azure-active-directory-azure-ad-data-to-azure-sentinel"></a>Azure Active Directory (Azure AD) データを Azure Sentinel に接続する
 
 Azure Sentinel の組み込みコネクタを使用して、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) からデータを収集し、それを Azure Sentinel にストリーミングできます。 コネクタを使用すると、次の種類のログをストリーミングできます。
 
-- [**サインイン ログ**](../active-directory/reports-monitoring/concept-all-sign-ins.md)には、ユーザーが認証要素を提供する [対話型ユーザー サインイン](../active-directory/reports-monitoring/concept-all-sign-ins.md#user-sign-ins)に関する情報が含まれています。
+- [**サインイン ログ**](../active-directory/reports-monitoring/concept-all-sign-ins.md)には、ユーザーが認証要素を提供する対話型ユーザー サインインに関する情報が含まれています。
 
     Azure AD コネクタには、次の 3 つの追加カテゴリのサインイン ログが含まれるようになりました。現時点ではすべて **プレビュー** 段階です。
     
@@ -44,7 +44,7 @@ Azure Sentinel の組み込みコネクタを使用して、[Azure Active Direct
 > 前述のように、使用可能なログの種類の一部は現在 **プレビュー** です。 ベータ版、プレビュー版、または一般提供としてまだリリースされていない Azure の機能に適用されるその他の法律条項については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 ## <a name="prerequisites"></a>前提条件
 
-- 任意の Azure AD ライセンス (Free、O365、P1、P2) があれば、Azure Sentinel にサインイン ログを取り込むことができます。 Azure Monitor (Log Analytics) と Azure Sentinel には、追加のギガバイト単位の料金が適用される場合があります。
+- サインイン ログを Azure Sentinel に取り込むには、Azure Active Directory P1 または P2 ライセンスが必要です。 他の種類のログを取り込む場合、任意の Azure AD ライセンス (Free/O365/P1/P2) で十分です。 Azure Monitor (Log Analytics) と Azure Sentinel には、追加のギガバイト単位の料金が適用される場合があります。
 
 - ユーザーには、ワークスペースの Azure Sentinel 共同作成者ロールを割り当てる必要があります。
 

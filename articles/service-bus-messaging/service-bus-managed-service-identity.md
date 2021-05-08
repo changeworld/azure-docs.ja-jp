@@ -3,12 +3,12 @@ title: Azure Service Bus での Azure リソースのマネージド ID
 description: この記事では、Azure Service Bus エンティティ (キュー、トピック、サブスクリプション) にアクセスするためにマネージド ID を使用する方法について説明します。
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: cdf23e5ad944d686c4cfebf257b4ae70458d1207
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 3efe513d5e19ca13567b05e8f8d0aafb402ae879
+ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988732"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108161125"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Azure Service Bus リソースにアクセスするために Azure Active Directory を使用してマネージド ID を認証する
 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、デプロイに関連付けられ、その下でアプリケーション コードが実行されるセキュリティ保護された ID を作成できる Azure 間機能です。 この ID は、アプリケーションに必要な特定の Azure リソースにアクセスするためのカスタム アクセス許可を付与するアクセス制御ロールに関連付けることができます。
@@ -122,7 +122,7 @@ Azure ロールの割り当ての詳細については、[Azure Active Directory
 
 Default.aspx ページはランディング ページです。 コードは Default.aspx.cs ファイルにあります。 いくつかの入力フィールドと、Service Bus に接続してメッセージを送受信するための **send** ボタンおよび **receive** ボタンを備えた最小限の Web アプリケーションが作成されます。
 
-TokenCredential を受け取るコンストラクターを使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient?view=azure-dotnet) オブジェクトを初期化する方法に注意してください。 DefaultAzureCredential は TokenCredential から派生したもので、ここで渡すことができます。 そのため、保持および使用するシークレットはありません。 マネージド ID コンテキストから Service Bus へのフローと承認ハンドシェイクは、トークン資格情報によって自動的に処理されます。 これは SAS を使用するよりも単純なモデルです。
+TokenCredential を受け取るコンストラクターを使用して [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient) オブジェクトを初期化する方法に注意してください。 DefaultAzureCredential は TokenCredential から派生したもので、ここで渡すことができます。 そのため、保持および使用するシークレットはありません。 マネージド ID コンテキストから Service Bus へのフローと承認ハンドシェイクは、トークン資格情報によって自動的に処理されます。 これは SAS を使用するよりも単純なモデルです。
 
 これらの変更を行ったら、アプリケーションを発行して実行します。 適切な発行データを簡単に取得するには、Visual Studio で発行プロファイルをダウンロードしてインポートします。
 

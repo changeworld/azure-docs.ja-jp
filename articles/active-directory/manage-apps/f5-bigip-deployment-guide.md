@@ -12,12 +12,12 @@ ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 139009c55573e1e115a22069671f66e93695a635
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aeb48b5ee2bd3fbb127b3a88e7dda4946e96c163
+ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783325"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108184786"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>セキュリティで保護されたハイブリッド アクセスのために F5 BIG-IP Virtual Edition VM を Azure IaaS にデプロイするチュートリアル
 
@@ -249,7 +249,7 @@ BIG-IP の **アクセス ガイド付き構成** を使用して SHA を実装�
  |送信先 IP アドレス|BIG-IP-VM のすべてのセカンダリ プライベート IP のコンマ区切りリスト|
  |宛先ポート| 80,443|
  |プロトコル| TCP |
- |アクション| Allow|
+ |アクション| 許可|
  |優先度|100 ～ 4096 の範囲の使用可能な最小値|
  |名前 | わかりやすい名前 (たとえば、「`BIG-IP-VM_Web_Services_80_443`」)|
 
@@ -265,7 +265,7 @@ BIG-IP システムは Web 構成 UI を使用して管理します。この UI 
 
 - BIG-IP-VM の内部ネットワークに接続された VPN クライアントから
 
-- [Azure AD アプリケーション プロキシ](./application-proxy-add-on-premises-application.md)経由で公開する
+- [Azure AD アプリケーション プロキシ](../app-proxy/application-proxy-add-on-premises-application.md)経由で公開する
 
 残りの構成に進む前に、最も適切な方法を決定する必要があります。 必要に応じて、インターネットから Web 構成に直接接続できます。そのためには、パブリック IP を使用して BIG-IP のプライマリ IP アドレスを構成します。 次に、そのプライマリ IP への 8443 トラフィックを許可する NSG ルールを追加します。 ソースを必ず独自の信頼された IP に限定してください。そうしないと、だれでも接続できるようになります。
 

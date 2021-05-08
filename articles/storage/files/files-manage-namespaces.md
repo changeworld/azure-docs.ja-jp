@@ -7,15 +7,15 @@ ms.topic: how-to
 ms.date: 3/02/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a8f1b8c54ad4fd42cc8ebda4965aaf1233143f39
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: f571fa6e04d19412db856a42232cb2d151ceb6ab
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107741504"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108141489"
 ---
 # <a name="how-to-use-dfs-namespaces-with-azure-files"></a>Azure Files で DFS 名前空間を使用する方法
-[分散ファイル システム名前空間](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview) (一般的に DFS 名前空間や DFS-N と呼ばれます) は、運用環境における SMB ファイル共有のデプロイとメンテナンスを単純化する目的で広く使用されている Windows Server サーバー ロールです。 DFS 名前空間は、ストレージの名前空間仮想化技術です。つまり、これを使用すると、ファイル共有の UNC パスと実際のファイル共有自体との間に間接的なレイヤーを設けることができます。 DFS 名前空間は SMB ファイル共有と連動します。その働きは、ファイル共有のホストを選びません。たとえば、Azure File Sync の有無に関係なく、オンプレミスの Windows ファイル サーバーでホストされている SMB 共有で使用できるほか、Azure ファイル共有で直接使用することもできます。また、Azure NetApp Files などサードパーティのオファリングでホストされている SMB ファイル共有や、他のクラウドでホストされているファイル共有で使用することも可能です。 
+[分散ファイル システム名前空間](/windows-server/storage/dfs-namespaces/dfs-overview) (一般的に DFS 名前空間や DFS-N と呼ばれます) は、運用環境における SMB ファイル共有のデプロイとメンテナンスを単純化する目的で広く使用されている Windows Server サーバー ロールです。 DFS 名前空間は、ストレージの名前空間仮想化技術です。つまり、これを使用すると、ファイル共有の UNC パスと実際のファイル共有自体との間に間接的なレイヤーを設けることができます。 DFS 名前空間は SMB ファイル共有と連動します。その働きは、ファイル共有のホストを選びません。たとえば、Azure File Sync の有無に関係なく、オンプレミスの Windows ファイル サーバーでホストされている SMB 共有で使用できるほか、Azure ファイル共有で直接使用することもできます。また、Azure NetApp Files などサードパーティのオファリングでホストされている SMB ファイル共有や、他のクラウドでホストされているファイル共有で使用することも可能です。 
 
 根本として、SMB 共有のユーザー フレンドリな UNC パス (`\\contoso\shares\ProjectX` など) とその基になる UNC パス (`\\Server01-Prod\ProjectX` や `\\storageaccount.file.core.windows.net\projectx` など) との間のマッピングが、DFS 名前空間によって提供されます。 エンド ユーザーは自分のファイル共有に移動したい場合、ユーザー フレンドリな UNC パスを入力しますが、その SMB クライアントがアクセスするのは、マッピングの基になる SMB パスです。 この基本的な概念を、既存のファイル サーバー名 (`\\MyServer\ProjectX` など) の引き継ぎに応用することもできます。 この機能を使用して次のシナリオを実現できます。
 
@@ -39,7 +39,7 @@ DFS 名前空間には、主要な名前空間として次の 2 種類があり�
 - **ドメインベースの名前空間**: Windows Server AD ドメインの一部としてホストされる名前空間。 AD の一部としてホストされる名前空間には、ドメイン名を含む UNC パスが割り当てられます。たとえば、ドメインが `contoso.com` の場合は、`\\contoso.com\shares\myshare` となります。 ドメインベースの名前空間でサポートされるスケールの上限の方が大きく、また、AD による冗長性が組み込まれています。 ドメインベースの名前空間を、フェールオーバー クラスター上のクラスター リソースにすることはできません。 
 - **スタンドアロンの名前空間**: Windows Server AD の一部としてホストされるのではなく、個々のサーバー上でホストされる名前空間。 スタンドアロンの名前空間には、スタンドアロン サーバーの名前に基づく名前、たとえば `\\MyStandaloneServer\shares\myshare` が割り当てられます。この場合、スタンドアロン サーバーの名前は `MyStandaloneServer` です。 スタンドアロンの名前空間は、ドメインベースの名前空間に比べてサポートされるスケール ターゲットは低いものの、フェールオーバー クラスター上のクラスター リソースとしてホストすることができます。
 
-## <a name="requirements"></a>必要条件
+## <a name="requirements"></a>要件
 Azure Files および File Sync で DFS 名前空間を使用するには、次のリソースが必要となります。
 
 - Active Directory ドメイン。 オンプレミスや Azure 仮想マシン (VM)、さらに別のクラウドなど、これはどこにホストされていてもかまいません。
@@ -75,7 +75,7 @@ DFS 名前空間の重要な用途として、ファイル共有の物理的な�
 ルート統合はさまざまなデータセンター移行シナリオで有効に活用できますが、その利便性が特に発揮されるのは、クラウドネイティブな Azure ファイル共有の導入時です。理由は次のとおりです。
 
 - Azure ファイル共有では、既存のオンプレミス サーバー名を維持できません。
-- Azure ファイル共有には、ストレージ アカウントの完全修飾ドメイン名 (FQDN) でアクセスする必要があります。 たとえば、ストレージ アカウント `storageaccount` にある `share` という Azure ファイル共有は常に、`\\storageaccount.file.core.windows.net\share` という UNC パスでアクセスされます。 これはエンド ユーザーの混乱を招く可能性があります。エンド ユーザーは、短い名前 ( `\\MyServer\share` など) や組織のドメイン名のサブドメインになっている名前を期待するためです。 `\\MyServer.contoso.com\share`).
+- Azure ファイル共有には、ストレージ アカウントの完全修飾ドメイン名 (FQDN) でアクセスする必要があります。 たとえば、ストレージ アカウント `storageaccount` にある `share` という Azure ファイル共有は常に、`\\storageaccount.file.core.windows.net\share` という UNC パスでアクセスされます。 短い名前 (例: `\\MyServer\share`) や組織のドメイン名のサブドメインとなる名前を想定しているエンド ユーザーの混乱を招くかもしれません。 `\\MyServer.contoso.com\share`).
 
 ルート統合は、スタンドアロンの名前空間でのみ使用することができます。 ドメインベースの既存の名前空間があって、既にファイル共有に使用している場合、ルート統合された名前空間を作成する必要はありません。
 
@@ -207,7 +207,7 @@ New-DfsnFolder -Path $sharePath -TargetPath $targetUNC
 
 名前空間、フォルダー、フォルダー ターゲットを作成したら、DFS 名前空間を通じてファイル共有をマウントすることができます。 ドメインベースの名前空間を使用している場合、共有の完全なパスは `\\<domain-name>\<namespace>\<share>` となります。 スタンドアロンの名前空間を使用している場合、共有の完全なパスは `\\<DFS-server>\<namespace>\<share>` となります。 スタンドアロンの名前空間と併せてルート統合を使用している場合は、以前のサーバー名 (`\\<old-server>\<share>` など) で直接アクセスすることができます。
 
-## <a name="see-also"></a>関連項目
+## <a name="see-also"></a>こちらもご覧ください
 - Azure ファイル共有のデプロイ: [Azure Files のデプロイの計画](storage-files-planning.md)と[ファイル共有の作成方法](storage-how-to-create-file-share.md)。
 - ファイル共有のアクセスの構成: [ID ベースの認証](storage-files-active-directory-overview.md)と[直接アクセスに関するネットワークの考慮事項](storage-files-networking-overview.md)。
-- [Windows Server 分散ファイル システムの名前空間](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview)
+- [Windows Server 分散ファイル システムの名前空間](/windows-server/storage/dfs-namespaces/dfs-overview)

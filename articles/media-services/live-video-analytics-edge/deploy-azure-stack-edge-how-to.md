@@ -3,12 +3,12 @@ title: Live Video Analytics を Azure Stack Edge にデプロイする
 description: この記事では、Live Video Analytics を Azure Stack Edge にデプロイするときに役立つ手順を示します。
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: b5be85e93b81f5cf50284533f21e688384558494
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 3f751a69bf4d5efca80047479917b5f40e14fe3f
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561153"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108144729"
 ---
 # <a name="deploy-live-video-analytics-on-azure-stack-edge"></a>Live Video Analytics を Azure Stack Edge にデプロイする
 
@@ -37,11 +37,17 @@ Live Video Analytics では、IoT Hub を介してデプロイを行います。
 
 ## <a name="configuring-azure-stack-edge-for-using-live-video-analytics"></a>Live Video Analytics を使用するための Azure Stack Edge の構成
 
-Azure Stack Edge は、サービスとしてのハードウェア ソリューションであり、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 詳細については、[Azure Stack Edge と詳細な設定手順](../../databox-online/azure-stack-edge-deploy-prep.md)を参照してください。 最初に、以下のリンクの指示に従います。
+Azure Stack Edge は、サービスとしてのハードウェア ソリューションであり、ネットワーク データ転送機能を備えた AI 対応のエッジ コンピューティング デバイスです。 詳細については、[Azure Stack Edge と詳細な設定手順](../../databox-online/azure-stack-edge-gpu-deploy-prep.md)を参照してください。 最初に、以下のリンクの指示に従います。
 
-* [Azure Stack Edge および Data Box Gateway リソースの作成](../../databox-online/azure-stack-edge-deploy-prep.md)
-* [インストールと設定](../../databox-online/azure-stack-edge-deploy-install.md)
-* [接続とアクティブ化](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md)
+* [Azure Stack Edge および Data Box Gateway リソースの作成](../../databox-online/azure-stack-edge-gpu-deploy-prep.md?tabs=azure-portal#create-a-new-resource)
+* [インストールと設定](../../databox-online/azure-stack-edge-gpu-deploy-install.md)
+* 接続とアクティブ化
+
+    1. [のインスタンスに接続するときには、](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)
+    2. [ネットワークを構成する](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)
+    3. [デバイスを構成する](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)
+    4. [証明書の構成](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)
+    5. [アクティブ化](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)
 * [Azure Stack Edge への IoT ハブのアタッチ](../../databox-online/azure-stack-edge-gpu-deploy-configure-compute.md#configure-compute)
 ### <a name="enable-compute-prerequisites-on-the-azure-stack-edge-local-ui"></a>Azure Stack Edge ローカル UI でのコンピューティングに関する前提条件の有効化
 
@@ -50,7 +56,14 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
 * 自分の Azure Stack Edge リソースをアクティブにしていること。
 * Azure Stack Edge リソースにアクセスするために、PowerShell 5.0 以降を実行している Windows クライアント システムにアクセスできること。
 * Kubernetes クラスターをデプロイするには、[ローカル Web UI](../../databox-online/azure-stack-edge-deploy-connect-setup-activate.md#connect-to-the-local-web-ui-setup) を使用して自分の Azure Stack Edge リソースを構成する必要があります。 
+
+    * 接続と構成:
     
+        1. [のインスタンスに接続するときには、](../../databox-online/azure-stack-edge-gpu-deploy-connect.md)
+        2. [ネットワークを構成する](../../databox-online/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md)
+        3. [デバイスを構成する](../../databox-online/azure-stack-edge-gpu-deploy-set-up-device-update-time.md)
+        4. [証明書の構成](../../databox-online/azure-stack-edge-gpu-deploy-configure-certificates.md)
+        5. [アクティブ化](../../databox-online/azure-stack-edge-gpu-deploy-activate.md)
     * コンピューティングを有効にするには、自分のデバイスのローカル Web UI で [コンピューティング] ページに移動します。
     
         * コンピューティングを有効にしたいネットワーク インターフェイスを選択します。 [有効化] を選択します。 コンピューティングを有効にすると、そのネットワーク インターフェイスでデバイスの仮想スイッチが作成されます。
@@ -58,7 +71,7 @@ Azure Stack Edge は、サービスとしてのハードウェア ソリュー�
         * [適用] を選択します (この操作には約 2 分かかります)。
         
         > [!div class="mx-imgBorder"]
-        > :::image type="content" source="./media/deploy-azure-stack-edge-how-to/azure-stack-edge-commercial.png" alt-text="Azure Stack Edge ローカル UI でのコンピューティングに関する前提条件":::
+        > :::image type="content" source="../../databox-online/media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png" alt-text="Azure Stack Edge ローカル UI でのコンピューティングに関する前提条件":::
 
         * Kubernetes API および Azure Stack Edge リソース用に DNS を更新していない場合は、Windows のホスト ファイルを更新できます。
         

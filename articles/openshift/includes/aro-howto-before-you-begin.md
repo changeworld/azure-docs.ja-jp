@@ -2,12 +2,12 @@
 author: sabbour
 ms.author: asabbour
 ms.date: 4/5/2020
-ms.openlocfilehash: 1fded0ad08af4b1e5d915e32e09087c1a78bd318
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: d888d4df3f578bf88f8f38cb979ed70f681c64e8
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520559"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108157573"
 ---
 ### <a name="create-the-cluster"></a>クラスターを作成する
 
@@ -20,7 +20,7 @@ Azure Red Hat OpenShift クラスターを管理するには、[oc](https://docs
 > [!NOTE]
 > [OpenShift コマンド ライン](../tutorial-connect-cluster.md)を[Azure Cloud Shell](https://shell.azure.com/) にインストールし、以下のすべてのコマンドライン操作に使用することをお勧めします。 shell.azure.com から、または次のリンクをクリックして、シェルを起動します。
 >
-> [![埋め込みの起動](https://docs.microsoft.com/azure/includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png "Azure Cloud Shell を起動する")](https://shell.azure.com/bash)
+> [![埋め込みの起動](/azure/includes/media/cloud-shell-try-it/hdi-launch-cloud-shell.png "Azure Cloud Shell を起動する")](https://shell.azure.com/bash)
 
 チュートリアルに従って CLI をインストールし、クラスターの資格情報を取得して、Web コンソールと OpenShift CLI を使用して[クラスターに接続](../tutorial-connect-cluster.md)します。
 

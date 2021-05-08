@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/22/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 6f70ae726cf41395e46760dc5cf7da5b4d61478a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 40e3e804d62bfd0ece669ebd46891f0c72dcb71e
+ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104802898"
+ms.lasthandoff: 04/28/2021
+ms.locfileid: "108140337"
 ---
 # <a name="how-to-configure-blob-indexing-in-cognitive-search"></a>Cognitive Search で BLOB のインデックス作成を構成する方法
 
@@ -113,6 +113,7 @@ api-key: [admin key]
 > [!IMPORTANT]
 > インデックス内のキー フィールドに対して明示的なマッピングが存在しない場合、Azure Cognitive Search は自動的に `metadata_storage_path` をキーおよび Base-64 エンコード キー値として使用します (上記の 2 つ目の選択肢)。
 >
+> カスタム メタデータ プロパティをキーとして使用する場合は、そのプロパティを変更しないでください。 キー プロパティが変更されると、インデクサーでは同じ BLOB に対して重複したドキュメントを追加します。
 
 #### <a name="example"></a>例
 

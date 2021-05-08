@@ -3,18 +3,18 @@ title: チュートリアル - Azure Cost Management からデータをエクス
 description: この記事では、外部システムで使用できるように Azure Cost Management データをエクスポートし、管理する方法を紹介します。
 author: bandersmsft
 ms.author: banders
-ms.date: 12/7/2020
+ms.date: 04/26/2021
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e3c1fa071cd23b871f754e89d6f17eb2cc44b394
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 37804be38918713cdfa7aea59763054e444daa7e
+ms.sourcegitcommit: 2f322df43fb3854d07a69bcdf56c6b1f7e6f3333
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400354"
+ms.lasthandoff: 04/27/2021
+ms.locfileid: "108015719"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル:データをエクスポートし、管理する
 
@@ -33,11 +33,14 @@ Azure のコスト データを Azure Storage にエクスポートするスケ�
 > * データが収集されたことを確認する
 
 ## <a name="prerequisites"></a>前提条件
+
 データのエクスポートは、[Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) や [Microsoft 顧客契約](get-started-partners.md)のお客様など、さまざまな Azure アカウントの種類で使用できます。 サポートされているアカウントの種類の完全な一覧については、「[Understand Cost Management data (Cost Management データの概要)](understand-cost-mgt-data.md)」を参照してください。 ユーザーおよびグループによるデータのエクスポートについては、サブスクリプションに従い、次の Azure のアクセス許可、またはスコープがサポートされています。 スコープの詳細については、「[Understand and work with scopes (スコープを理解して使用する)](understand-work-scopes.md)」を参照してください。
 
-- 所有者: サブスクリプションのスケジュールされたエクスポートを作成、変更、または削除できます。
-- 共同作成者: スケジュールされたエクスポートを作成、変更、または削除できます。 他のユーザーが作成したスケジュールされたエクスポートの名前を変更できます。
-- 閲覧者: アクセス許可を持っているエクスポートをスケジュールできます。
+- 所有者 - サブスクリプションのスケジュールされたエクスポートを作成、変更、または削除できます。
+- 共同作成者 - スケジュールされたエクスポートを作成、変更、または削除できます。 他のユーザーが作成したスケジュールされたエクスポートの名前を変更できます。
+- 閲覧者 - アクセス許可を持っているエクスポートをスケジュールできます。
+
+Enterprise Agreement および Microsoft 顧客契約のスコープのエクスポートを構成するために必要なアクセス権など、スコープの詳細については、「[スコープを理解して使用する](understand-work-scopes.md)」を参照してください。
 
 Azure Storage アカウントの場合:
 - エクスポートに関するアクセス許可に関係なく、構成されているストレージ アカウントを変更するには書き込みアクセス許可が必要です。
@@ -64,9 +67,9 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
     - **[Amortized cost (Usage and Purchases)]\(分散コスト (使用量と購入額)\)** - 購入の分散コスト (Azure の予約など) をエクスポートする場合に選択します
 1. **[エクスポートの種類]** で、次のいずれかを選択します。
     - **[月度累計コストの日単位のエクスポート]** - 月度累計コストに関する新しいエクスポート ファイルが毎日提供されます。 最新のデータは、以前の毎日のエクスポートから集計されます。
-    - **[Weekly export of cost for the last 7 days]\(過去 7 日間のコストに関する週単位のエクスポート\)** - 選択した開始日からさかのぼって 7 日間のコストに関するエクスポートが週単位で作成されます。
-    - **[Monthly export of last month's costs]\(先月のコストに関する月単位のエクスポート\)** - エクスポートを作成している月の前月のコストに関するエクスポートが提供されます。 それ以降は、スケジュールによって、毎月 5 日に前月分のコストを使用してエクスポートが実行されます。
-    - **[One-time export]\(1 回限りのエクスポート\)** - 履歴データの日付範囲を選択して、Azure Blob Storage にエクスポートすることができます。 選択した日付から最大 90 日間の履歴コストをエクスポートできます。 このエクスポートはすぐに実行され、2 時間以内にストレージ アカウント内で利用できます。
+    - **[過去 7 日間のコストの週単位のエクスポート]** - 選択したエクスポートの開始日からさかのぼって 7 日間のコストに関するエクスポートが週単位で作成されます。
+    - **[先月のコストに関する月単位のエクスポート]** - エクスポートを作成している現在の月の前月のコストに関するエクスポートが提供されます。 それ以降は、スケジュールによって、毎月 5 日に前月分のコストを使用してエクスポートが実行されます。
+    - **[ワンタイム エクスポート]** - 履歴データの日付範囲を選択して、Azure Blob Storage にエクスポートすることができます。 選択した日付から最大 90 日間の履歴コストをエクスポートできます。 このエクスポートはすぐに実行され、2 時間以内にストレージ アカウント内で利用できます。
         エクスポートの種類に応じて、開始日を選択するか、 **[開始日]** と **[To]\(終了日\)** の日付を選択します。
 1. Azure ストレージ アカウントのサブスクリプションを指定し、お使いのリソース グループを選択するか、新しいリソース グループを作成します。
 1. ストレージ アカウント名を選択するか、新しいアカウントを作成します。
@@ -81,11 +84,13 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+プログラムによってエクスポートを作成する場合は、ストレージ アカウントが存在するサブスクリプションに `Microsoft.CostManagementExports` リソース プロバイダーを手動で登録する必要があります。 Azure portal を使用してエクスポートを作成すると、自動的に登録が行われます。 リソース プロバイダーの登録方法の詳細については、「[リソース プロバイダーの登録](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)」を参照してください。
+
 まず、Azure CLI の環境を準備します。
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-1. サインイン後、現在のエクスポートを表示するには、[az costmanagement export list](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_list) コマンドを使用します。
+1. サインイン後、現在のエクスポートを表示するには、[az costmanagement export list](/cli/azure/costmanagement/export#az_costmanagement_export_list) コマンドを使用します。
 
    ```azurecli
    az costmanagement export list --scope "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -108,7 +113,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create) コマンドを実行して、エクスポートを作成します。
+1. [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create) コマンドを実行して、エクスポートを作成します。
 
    ```azurecli
    az costmanagement export create --name DemoExport --type ActualCost \
@@ -122,14 +127,14 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 
    この例では、`MonthToDate` を使用します。 この場合、月度累計コストに関するエクスポート ファイルが毎日作成されます。 最新のデータは、当月における日単位のエクスポートをさかのぼって集計されます。
 
-1. エクスポート操作の詳細を確認するには、[az costmanagement export show](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_show) コマンドを使用します。
+1. エクスポート操作の詳細を確認するには、[az costmanagement export show](/cli/azure/costmanagement/export#az_costmanagement_export_show) コマンドを使用します。
 
    ```azurecli
    az costmanagement export show --name DemoExport \
       --scope "subscriptions/00000000-0000-0000-0000-000000000000"
    ```
 
-1. [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update) コマンドを使用してエクスポートを更新します。
+1. [az costmanagement export update](/cli/azure/costmanagement/export#az_costmanagement_export_update) コマンドを使用してエクスポートを更新します。
 
    ```azurecli
    az costmanagement export update --name DemoExport
@@ -141,13 +146,15 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com/) にサイン�
 >[!NOTE]
 >最初は、エクスポートが実行されるまで 12 時間から 24 時間かかることがあります。 ただし、エクスポートされたファイルにデータが表示されるまでに、さらに時間がかかる場合もあります。
 
-エクスポートは、[az costmanagement export delete](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_delete) コマンドを使用して削除できます。
+エクスポートは、[az costmanagement export delete](/cli/azure/costmanagement/export#az_costmanagement_export_delete) コマンドを使用して削除できます。
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+プログラムによってエクスポートを作成する場合は、ストレージ アカウントが存在するサブスクリプションに `Microsoft.CostManagementExports` リソース プロバイダーを手動で登録する必要があります。 Azure portal を使用してエクスポートを作成すると、自動的に登録が行われます。 リソース プロバイダーの登録方法の詳細については、「[リソース プロバイダーの登録](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)」を参照してください。
 
 まず、Azure PowerShell の環境を準備します。
 

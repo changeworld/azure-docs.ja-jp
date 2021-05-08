@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: 6500805a4dc7e26f5e1bc601df9ea78279ae17e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16cf1b89c2660d2505685fa931cc8b97ccb42a9b
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101709344"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992292"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Microsoft 365 Defender から Azure Sentinel にデータを接続する
 
@@ -35,7 +35,7 @@ ms.locfileid: "101709344"
 
 インシデント統合と共に Azure Sentinel の [Microsoft 365 Defender (M365D)](/microsoft-365/security/mtp/microsoft-threat-protection) コネクタを使用すると、すべての M365D インシデントとアラートを Azure Sentinel にストリーミングし、両方のポータル間でインシデントの同期を維持することができます。 M365D インシデントには、すべてのアラート、エンティティ、およびその他の関連情報が含まれています。これらは M365D のコンポーネント サービスである **Microsoft Defender for Endpoint**、**Microsoft Defender for Identity**、**Microsoft Defender for Office 365**、および **Microsoft Cloud App Security** によって強化され、アラートがグループ化されています。
 
-このコネクタを使用すると、Microsoft Defender for Endpoint から Azure Sentinel に **詳細な捜索** イベントをストリーミングできます。これにより、MDE の詳細な捜索クエリを Azure Sentinel にコピーすること、Sentinel アラートを MDE の未加工のイベント データを使用して強化し、追加の分析情報を提供すること、リテンション期間を長くしてログを Log Analytics に格納することができます。
+このコネクタを使用すると、Microsoft Defender for Endpoint から Azure Sentinel に **詳細な捜索** イベントをストリーミングできます。これにより、Defender for Endpoint の詳細な捜索クエリを Azure Sentinel にコピーすること、Sentinel アラートを Defender for Endpoint の未加工のイベント データを使用して強化し、追加の分析情報を提供すること、リテンション期間を長くしてログを Log Analytics に格納することができます。
 
 インシデント統合と詳細な捜索イベントの収集の詳細については、「[Microsoft 365 Defender と Azure Sentinel の統合](microsoft-365-defender-sentinel-integration.md)」を参照してください。
 
@@ -60,7 +60,7 @@ ms.locfileid: "101709344"
     > [!NOTE]
     > Microsoft 365 Defender コネクタを有効にすると、すべての M365D コンポーネントのコネクタ (この記事の冒頭で説明したもの) がバックグラウンドで自動的に接続されます。 コンポーネントのコネクタのいずれかを切断するには、最初に Microsoft 365 Defender コネクタを切断する必要があります。
 
-1. M365 Defender インシデント データのクエリを実行するには、クエリ ウィンドウで次のステートメントを使用します。
+1. Microsoft 365 Defender インシデント データのクエリを実行するには、クエリ ウィンドウで次のステートメントを使用します。
     ```kusto
     SecurityIncident
     | where ProviderName == "Microsoft 365 Defender"
@@ -92,7 +92,7 @@ ms.locfileid: "101709344"
 
 コネクタ ページのデータ グラフは、データを取り込んでいることを示しています。 インシデント、アラート、およびイベントごとに 1 行ずつ表示されており、イベント行は有効なすべてのテーブル全体のイベント ボリュームの集計であることがわかります。 コネクタを有効にすると、次の KQL クエリを使用して、より具体的なグラフを生成できます。
 
-受信 M365 Defender インシデントのグラフには、次の KQL クエリを使用します。
+受信 Microsoft 365 Defender インシデントのグラフには、次の KQL クエリを使用します。
 
 ```kusto
 let Now = now(); 

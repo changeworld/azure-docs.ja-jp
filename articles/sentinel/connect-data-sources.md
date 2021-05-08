@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 936789ef292ac6d06b9fd3ac1e9a81219f39e4ef
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: c4bcfb6c2814fb6b2e1260dad2a0546de21c5ae8
+ms.sourcegitcommit: 18cd3c1c8cc47258c6a1a04e0e03d6248c52ef24
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307828"
+ms.lasthandoff: 04/25/2021
+ms.locfileid: "107992108"
 ---
 # <a name="connect-data-sources"></a>データ ソースの接続
 
@@ -56,7 +56,7 @@ Azure Sentinel では、次のデータ接続方法がサポートされてい�
     - [Azure Web Application Firewall (WAF)](connect-azure-waf.md) (以前の Microsoft WAF)
     - [Cloud App Security](connect-cloud-app-security.md)
     - [ドメイン ネーム サーバー](connect-dns.md)
-    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) - M365D のインシデントと MDE の生データが含まれます
+    - [Microsoft 365 Defender](connect-microsoft-365-defender.md) - M365D のインシデントと Defender for Endpoint の生データが含まれます
     - [Microsoft Defender for Endpoint](connect-microsoft-defender-advanced-threat-protection.md) (以前の Microsoft Defender Advanced Threat Protection)
     - [Microsoft Defender for Identity](connect-azure-atp.md) (以前の Azure Advanced Threat Protection)
     - [Microsoft Defender for Office 365](connect-office-365-advanced-threat-protection.md) (以前の Office 365 Advanced Threat Protection)
